@@ -107,9 +107,7 @@ namespace Crystallography.Controls
 
         private bool xLog = false;
 
-        /// <summary>
-        /// X軸が対数スケールかどうか
-        /// </summary>
+        /// <summary>X軸が対数スケールかどうか</summary>
         [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
         public bool XLog
         {
@@ -119,9 +117,7 @@ namespace Crystallography.Controls
 
         private bool yLog = false;
 
-        /// <summary>
-        /// Y軸が対数スケールかどうか
-        /// </summary>
+        /// <summary>Y軸が対数スケールかどうか</summary>
         [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
         public bool YLog
         {
@@ -131,9 +127,7 @@ namespace Crystallography.Controls
 
         private bool isIntegerX = false;
 
-        /// <summary>
-        /// Xの値が０以上の整数値かどうか
-        /// </summary>
+        /// <summary>Xの値が０以上の整数値かどうか</summary>
         [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
         public bool IsIntegerX
         {
@@ -143,9 +137,7 @@ namespace Crystallography.Controls
 
         private bool isIntegerY = false;
 
-        /// <summary>
-        /// Yの値が０以上の整数値かどうか
-        /// </summary>
+        /// <summary>Yの値が０以上の整数値かどうか</summary>
         [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
         public bool IsIntegerY
         {
@@ -238,9 +230,7 @@ namespace Crystallography.Controls
             this.yLog = yLog;
         }
 
-        /// <summary>
-        /// 対数目盛の場合は軸を変換する
-        /// </summary>
+        /// <summary>対数目盛の場合は軸を変換する</summary>
         private void convertAxis()
         {
             destData = new Ellipse[data.Count];
@@ -272,9 +262,7 @@ namespace Crystallography.Controls
             }
         }
 
-        /// <summary>
-        /// 現在のプロファイルから描画範囲の上限、下限値を設定　描画範囲は変更しない
-        /// </summary>
+        /// <summary>現在のプロファイルから描画範囲の上限、下限値を設定　描画範囲は変更しない</summary>
         private void setDrawRangeLimit()
         {
             if (destData == null || destData.Length < 2) return;
@@ -340,9 +328,7 @@ namespace Crystallography.Controls
             }
         }
 
-        /// <summary>
-        /// 描画範囲Upper,LowerをMaximal,Minimalに設定する
-        /// </summary>
+        /// <summary>描画範囲Upper,LowerをMaximal,Minimalに設定する</summary>
         private void resetDrawRange()
         {
             LowerX = MinimalX;

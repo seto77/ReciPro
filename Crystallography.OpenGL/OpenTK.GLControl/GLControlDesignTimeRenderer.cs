@@ -12,24 +12,16 @@ namespace OpenTK.GLControl
     /// </summary>
     internal class GLControlDesignTimeRenderer
     {
-        /// <summary>
-        /// The GLControl that needs to be rendered at design-time.
-        /// </summary>
+        /// <summary>The GLControl that needs to be rendered at design-time.</summary>
         private readonly GLControl _owner;
 
-        /// <summary>
-        /// The angle (yaw) of the design-time cube.
-        /// </summary>
+        /// <summary>The angle (yaw) of the design-time cube.</summary>
         private float _designTimeCubeYaw;
 
-        /// <summary>
-        /// The angle (pitch) of the design-time cube.
-        /// </summary>
+        /// <summary>The angle (pitch) of the design-time cube.</summary>
         private float _designTimeCubeRoll = 0; //260317Cl 明示的に初期化 (CS0649対策)
 
-        /// <summary>
-        /// Endpoints that can make a cube.  We only use this in design mode.
-        /// </summary>
+        /// <summary>Endpoints that can make a cube.  We only use this in design mode.</summary>
         private static (Vector3, Vector3)[] CubeLines { get; } = new (Vector3, Vector3)[]
         {
             (new Vector3(-1, -1, -1), new Vector3(+1, -1, -1)),
@@ -50,9 +42,7 @@ namespace OpenTK.GLControl
             (new Vector3(+1, +1, +1), new Vector3(+1, -1, +1)),
         };
 
-        /// <summary>
-        /// Instantiate a new design-timer renderer for the given GLControl.
-        /// </summary>
+        /// <summary>Instantiate a new design-timer renderer for the given GLControl.</summary>
         /// <param name="owner">The GLControl that needs to be rendered at
         /// design-time.</param>
         public GLControlDesignTimeRenderer(GLControl owner)
@@ -63,9 +53,7 @@ namespace OpenTK.GLControl
             _designTimeCubeYaw += -10 * (float)(Math.PI / 97);
         }
 
-        /// <summary>
-        /// Draw a simple cube, in an ortho projection, using GDI+.
-        /// </summary>
+        /// <summary>Draw a simple cube, in an ortho projection, using GDI+.</summary>
         /// <param name="graphics">The GDI+ Graphics object to draw on.</param>
         /// <param name="color">The color for the cube.</param>
         /// <param name="cx">The X coordinate of the center point of the cube,

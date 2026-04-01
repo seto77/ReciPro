@@ -19,9 +19,7 @@ public class Smoothing
             return new Profile(SavitzkyGolayAccuracy([.. profile.Pt], pointNum, order));
     }
 
-    /// <summary>
-    /// サビツキーゴレイのスムージング
-    /// </summary>
+    /// <summary>サビツキーゴレイのスムージング</summary>
     /// <param name="profile">フィッティングするプロファイル</param>
     /// <param name="pointNum">ポイント数</param>
     /// <param name="order">次数</param>
@@ -58,9 +56,7 @@ public class Smoothing
         return smoothPt;
     }
 
-    /// <summary>
-    /// サビツキーゴレイのスムージング
-    /// </summary>
+    /// <summary>サビツキーゴレイのスムージング</summary>
     /// <param name="profile">フィッティングするプロファイル</param>
     /// <param name="pointNum">ポイント数</param>
     /// <param name="order">次数</param>

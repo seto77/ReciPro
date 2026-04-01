@@ -42,9 +42,7 @@ namespace Crystallography.Controls
 
         private bool logScrollBar = false;
 
-        /// <summary>
-        /// スクロールバーがログスケールで動くかどうか
-        /// </summary>
+        /// <summary>スクロールバーがログスケールで動くかどうか</summary>
         [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
         public bool LogScrollBar
         {

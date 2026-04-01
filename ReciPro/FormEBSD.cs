@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.IO;
 using System.Windows.Forms;
@@ -31,16 +32,40 @@ public partial class FormEBSD : CaptureFormBase
         LastTransportEventDepth,
     }
 
+    #region お蔵入り // (260401Ch) generated / external MC 比較ベンチは standalone 配布版では使わない
+    /*
+    private readonly record struct MonteCarloBenchmarkElectron(double Depth, double Energy, double TotalEnergyLoss, bool HasLastInelasticEvent, double LastInelasticDepth, V3 Direction); // (260401Ch) MC source benchmark 用の最小電子情報
+
+    private sealed class ElasticSamplerBenchmarkRunResult // (260401Ch) source ごとの benchmark 結果
+    {
+        public string SourceName { get; init; } = "";
+        public MonteCarlo.ElasticSamplerDataSources Source { get; init; }
+        public int LoopCount { get; init; }
+        public double ElapsedMilliseconds { get; init; }
+        public double CrossSectionNm2 { get; init; }
+        public double MeanFreePathNm { get; init; }
+        public double StoppingPowerKevPerNm { get; init; }
+        public MonteCarloBenchmarkElectron[] Electrons { get; init; } = [];
+    }
+    */
+    #endregion
+
     #region フィールド、プロパティ
     public FormMain FormMain;
     public GLControlAlpha glControlGeo;
     public GLControlAlpha glControlMasterPattern3D; // (260321Ch) Rosca-Lambert 球面 preview 用の OpenGL コントロール
     private GLControlAlpha glControlMasterPattern3DAxes; // (260322Ch) MasterPattern3D と同期する結晶軸 inset
     private readonly Stopwatch sw1 = new(), sw2 = new();
-    //private const int BackscatterMonteCarloLoopCount = 5_000_000; // (260327Ch) MasterPattern 前処理と手動 BSE で共有する MC 試行回数
     private const int BackscatterMonteCarloLoopCount = 2_500_000; // 260329Cl 変更: 500万→250万に削減（パラメトリックフィッティングには十分な統計量）
     private readonly Timer timer = new();
     private Button buttonFitNistElasticSampler = null; // (260401Ch) NIST elastic sampler 圧縮用の開発者ボタン
+    #region お蔵入り // (260401Ch) generated / external MC 比較ベンチは standalone 配布版では使わない
+    /*
+    // private const int ElasticSamplerBenchmarkLoopCount = 250_000; // (260401Ch) generated / external の MC 比較は 25 万本で軽めに検証する
+    private const int ElasticSamplerBenchmarkLoopCount = 1_000_000; // (260401Ch) MC source benchmark の統計ばらつきをさらに下げるため 100 万本に増やす
+    private Button buttonBenchmarkNistElasticSampler = null; // (260401Ch) generated / external の MC ベンチ用ボタン
+    */
+    #endregion
 
     private readonly EBSD masterPatternEbsd = new(); // (260321Ch) MasterPattern build の実行ロジックは Crystallography.EBSD 側へ移す
     private MasterPattern MasterPattern => masterPatternEbsd.MasterPattern; // (260321Ch)
@@ -55,9 +80,7 @@ public partial class FormEBSD : CaptureFormBase
     private EbsdMonteCarloDistribution mcDistribution = null; // 260325Cl 追加: MC フィッティング結果
     private MonteCarloDistributionDepthMode monteCarloDistributionDepthMode = MonteCarloDistributionDepthMode.LastInelasticEventDepth; // (260331Ch) MasterPattern 重み付けに使う z は既定で last inelastic depth
 
-    /// <summary>
-    /// 飛程計算の際の打ち切りエネルギー (kev)
-    /// </summary>
+    /// <summary>飛程計算の際の打ち切りエネルギー (kev)</summary>
     private double EnergyThreshold = 2;
     public double WaveLength { get => waveLengthControl.WaveLength; set => waveLengthControl.WaveLength = value; }
 
@@ -72,14 +95,10 @@ public partial class FormEBSD : CaptureFormBase
 
     public Crystal Crystal => FormMain.Crystal;
 
-    /// <summary>
-    /// 試料から検出器までの距離
-    /// </summary>
+    /// <summary>試料から検出器までの距離</summary>
     public double CameraLength2 => Math.Abs(DetY * Math.Sin(DetTilt) - DetZ * Math.Cos(DetTilt));
 
-    /// <summary>
-    /// 画像の中心。検出器(Detector)座標系(Foot原点)で表現
-    /// </summary>
+    /// <summary>画像の中心。検出器(Detector)座標系(Foot原点)で表現</summary>
     public PointD Foot
     {
         get
@@ -101,9 +120,7 @@ public partial class FormEBSD : CaptureFormBase
         }
     }
 
-    /// <summary>
-    /// 画面解像度 mm/pix
-    /// </summary>
+    /// <summary>画面解像度 mm/pix</summary>
     public double Resolution => 2.0 * numericBoxDetRadius.Value / graphicsBox.ClientRectangle.Width;
     public float ResolutionF => (float)Resolution;
 
@@ -119,10 +136,6 @@ public partial class FormEBSD : CaptureFormBase
             return [.. thicknessArray];
         }
     }
-
-    #region お蔵入り // (260327Ch) 旧通常 EBSD 用の detector 方向配列は退避
-    //private Vector3DBase[] Directions;
-    #endregion
 
     private PseudoBitmap Pbmp = null;
 
@@ -165,7 +178,24 @@ public partial class FormEBSD : CaptureFormBase
             UseVisualStyleBackColor = false,
             Anchor = AnchorStyles.Top | AnchorStyles.Right,
         };
-        buttonFitNistElasticSampler.Location = new Point(Math.Max(8, tabPage3.ClientSize.Width - buttonFitNistElasticSampler.PreferredSize.Width - 8), 8); // (260401Ch) 既存 tabPage3 の右上へ小さく載せる
+        #region お蔵入り // (260401Ch) generated / external MC 比較ベンチは standalone 配布版では使わない
+        /*
+        buttonBenchmarkNistElasticSampler = new Button()
+        {
+            Name = "buttonBenchmarkNistElasticSampler",
+            Text = "Dev: MC benchmark",
+            AutoSize = true,
+            BackColor = Color.SlateBlue,
+            ForeColor = Color.White,
+            UseVisualStyleBackColor = false,
+            Anchor = AnchorStyles.Top | AnchorStyles.Right,
+        };
+        */
+        #endregion
+
+        var right = buttonFitNistElasticSampler.PreferredSize.Width; // (260401Ch) 配布版では PCHIP 圧縮ボタンだけを右上に配置する
+        var left = Math.Max(8, tabPage3.ClientSize.Width - right - 8);
+        buttonFitNistElasticSampler.Location = new Point(left, 8); // (260401Ch)
         buttonFitNistElasticSampler.Click += buttonFitNistElasticSampler_Click;
         tabPage3.Controls.Add(buttonFitNistElasticSampler);
         buttonFitNistElasticSampler.BringToFront();
@@ -186,7 +216,8 @@ public partial class FormEBSD : CaptureFormBase
             return;
         }
 
-        var initialDirectory = Path.Combine(repositoryRoot, "ReciPro", "NistElasticSampler_Original");
+        // var initialDirectory = Path.Combine(repositoryRoot, "Crystallography", "Atom", "NistElasticSampler_Original"); // (260401Ch) 旧配置
+        var initialDirectory = Path.Combine(repositoryRoot, "Crystallography", "Atom", "NistElastic", "Original"); // (260401Ch) 元 TXT は NistElastic/Original 配下に保管する
         using var openFileDialog = new OpenFileDialog()
         {
             Multiselect = true,
@@ -225,8 +256,10 @@ public partial class FormEBSD : CaptureFormBase
             toolStripStatusLabel3.Text = $"{openFileDialog.FileNames.Length} file(s) processed, {outputs.Count} output file(s).";
             MessageBox.Show(this,
                 $"Finished compressing {openFileDialog.FileNames.Length} file(s).\r\n" +
-                $"Generated source: {Path.Combine(repositoryRoot, "Crystallography", "Atom", "Generated")}\r\n" +
-                $"Generated CSV: {Path.Combine(repositoryRoot, "Crystallography", "Atom", "GeneratedDiagnostics")}",
+                // $"Generated source: {Path.Combine(repositoryRoot, "Crystallography", "Atom", "Generated")}\r\n" +
+                $"Generated source: {Path.Combine(repositoryRoot, "Crystallography", "Atom", "NistElastic")}\r\n" +
+                // $"Generated CSV: {Path.Combine(repositoryRoot, "Crystallography", "Atom", "GeneratedDiagnostics")}",
+                $"Generated CSV: {Path.Combine(repositoryRoot, "Crystallography", "Atom", "NistElastic", "Diagnostics")}",
                 "NIST elastic sampler compression",
                 MessageBoxButtons.OK,
                 MessageBoxIcon.Information);
@@ -244,10 +277,264 @@ public partial class FormEBSD : CaptureFormBase
         }
     }
 
+    #region お蔵入り // (260401Ch) generated / external MC 比較ベンチは standalone 配布版では使わない
+    /*
+    private async void buttonBenchmarkNistElasticSampler_Click(object sender, EventArgs e)
+    {
+        var repositoryRoot = NistElasticSamplerPchipGenerator.TryFindRepositoryRoot(AppContext.BaseDirectory)
+            ?? NistElasticSamplerPchipGenerator.TryFindRepositoryRoot(Environment.CurrentDirectory);
+        if (repositoryRoot == null)
+        {
+            MessageBox.Show(this, "ReciPro.sln が見つからず、benchmark の出力先を特定できませんでした。", "NIST elastic MC benchmark", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            return;
+        }
+
+        // var originalTextDirectory = Path.Combine(repositoryRoot, "ReciPro", "NistElasticSampler_Original"); // (260401Ch) 旧配置
+        var originalTextDirectory = Path.Combine(repositoryRoot, "Crystallography", "Atom", "NistElastic", "Original");
+        if (!Directory.Exists(originalTextDirectory))
+        {
+            MessageBox.Show(this, $"Original TXT folder was not found:\r\n{originalTextDirectory}", "NIST elastic MC benchmark", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            return;
+        }
+
+        var outputDirectory = Path.Combine(repositoryRoot, "ReciPro", "MonteCarloBenchmark");
+        Directory.CreateDirectory(outputDirectory);
+
+        var cry = FormMain.Crystal;
+        cry.GetFormulaAndDensity();
+        var sum1 = cry.Atoms.Sum(a => AtomStatic.AtomicWeight(a.AtomicNumber) * a.Multiplicity * a.AtomicNumber);
+        var sum2 = cry.Atoms.Sum(a => AtomStatic.AtomicWeight(a.AtomicNumber) * a.Multiplicity);
+        var sum3 = cry.Atoms.Sum(a => a.Multiplicity);
+        var z = sum1 / sum2;
+        var a = sum2 / sum3;
+        var rho = cry.Density;
+        var energy = Voltage;
+        var sampleTilt = SmpTilt;
+        var energyThreshold = EnergyThreshold;
+        var sampleRotation = M3.CreateRotationX(sampleTilt);
+        var loop = Math.Min(ElasticSamplerBenchmarkLoopCount, BackscatterMonteCarloLoopCount);
+        var atoms = cry.Atoms.ToArray();
+        var valenceElectronCount = MonteCarlo.EstimateAverageValenceElectronCount(
+            atoms.Select(atom => (atom.AtomicNumber, AtomStatic.AtomicWeight(atom.AtomicNumber) * atom.Multiplicity))); // (260401Ch)
+        var fileStem = $"NistElasticSamplerBenchmark_{DateTime.Now:yyyyMMdd_HHmmss}_E{energy.ToString("0.0", CultureInfo.InvariantCulture)}keV"; // (260401Ch)
+
+        buttonFitNistElasticSampler.Enabled = false;
+        buttonBenchmarkNistElasticSampler.Enabled = false;
+        toolStripProgressBar.Value = 0;
+        toolStripStatusLabel2.Text = "NIST elastic MC benchmark";
+        toolStripStatusLabel1.Text = "0% completed, elapsed 0.00 s.";
+        toolStripStatusLabel3.Text = "";
+
+        var originalSamplerTextDirectory = MonteCarlo.NistElasticSamplerTextDirectory;
+        MonteCarlo.NistElasticSamplerTextDirectory = originalTextDirectory; // (260401Ch) benchmark 中は source tree の original TXT を使う
+        var stopwatch = Stopwatch.StartNew();
+
+        try
+        {
+            var progress = new Progress<(int Progress, string Message, string Detail)>(state =>
+            {
+                toolStripProgressBar.Value = Math.Clamp(state.Progress, 0, 100);
+                toolStripStatusLabel2.Text = $"NIST elastic MC benchmark: {state.Message}";
+                toolStripStatusLabel1.Text = $"{toolStripProgressBar.Value}% completed, elapsed {stopwatch.Elapsed.TotalSeconds:f2} s.";
+                toolStripStatusLabel3.Text = state.Detail;
+            });
+
+            var runs = await Task.Run(() => RunElasticSamplerSourceBenchmark(
+                z, a, rho, energy, sampleTilt, energyThreshold, valenceElectronCount, atoms, loop, sampleRotation, progress));
+
+            var summaryPath = WriteElasticSamplerBenchmarkSummaryCsv(outputDirectory, fileStem, runs);
+            var depthPath = WriteElasticSamplerBenchmarkHistogramCsv(outputDirectory, fileStem, "depth", "DepthNm", runs, static electron => electron.Depth, 80);
+            var energyPath = WriteElasticSamplerBenchmarkHistogramCsv(outputDirectory, fileStem, "energy", "ExitEnergyKev", runs, static electron => electron.Energy, 80);
+
+            stopwatch.Stop();
+            toolStripProgressBar.Value = 100;
+            toolStripStatusLabel2.Text = "NIST elastic MC benchmark completed";
+            toolStripStatusLabel1.Text = $"100% completed, elapsed {stopwatch.Elapsed.TotalSeconds:f2} s.";
+            toolStripStatusLabel3.Text = Path.GetFileName(summaryPath);
+            MessageBox.Show(this,
+                $"Benchmark finished.\r\n" +
+                $"Summary: {summaryPath}\r\n" +
+                $"Depth histogram: {depthPath}\r\n" +
+                $"Energy histogram: {energyPath}",
+                "NIST elastic MC benchmark",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Information);
+        }
+        catch (Exception ex)
+        {
+            toolStripStatusLabel2.Text = "NIST elastic MC benchmark failed";
+            toolStripStatusLabel1.Text = $"Failed after {stopwatch.Elapsed.TotalSeconds:f2} s.";
+            toolStripStatusLabel3.Text = ex.Message;
+            MessageBox.Show(this, ex.ToString(), "NIST elastic MC benchmark", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+        finally
+        {
+            MonteCarlo.NistElasticSamplerTextDirectory = originalSamplerTextDirectory;
+            buttonFitNistElasticSampler.Enabled = true;
+            buttonBenchmarkNistElasticSampler.Enabled = true;
+        }
+    }
+
+    private ElasticSamplerBenchmarkRunResult[] RunElasticSamplerSourceBenchmark(
+        double z, double a, double rho, double energy, double sampleTilt, double energyThreshold, double valenceElectronCount,
+        Atoms[] atoms, int loop, M3 sampleRotation, IProgress<(int Progress, string Message, string Detail)> progress = null)
+    {
+        var sourceConfigs = new (string Name, MonteCarlo.ElasticSamplerDataSources Source)[]
+        {
+            ("GeneratedOnly", MonteCarlo.ElasticSamplerDataSources.GeneratedOnly),
+            ("ExternalTextOnly", MonteCarlo.ElasticSamplerDataSources.ExternalTextOnly),
+        };
+
+        var results = new ElasticSamplerBenchmarkRunResult[sourceConfigs.Length];
+        for (int sourceIndex = 0; sourceIndex < sourceConfigs.Length; sourceIndex++)
+        {
+            var sourceConfig = sourceConfigs[sourceIndex];
+            progress?.Report((sourceIndex * 50, sourceConfig.Name, "Preparing MonteCarlo"));
+            var monte = new MonteCarlo(z, a, rho, energy, sampleTilt, energyThreshold,
+                elasticScatteringModel: MonteCarlo.ElasticScatteringModels.MottNistSampler2023,
+                inelasticScatteringModel: MonteCarlo.InelasticScatteringModels.DiscreteBulkDiimfpApproximation,
+                valenceElectronCount: valenceElectronCount,
+                elasticSamplerDataSource: sourceConfig.Source,
+                atoms: atoms); // (260401Ch)
+
+            var (_, crossSectionNm2, meanFreePathNm, stoppingPowerKevPerNm) = monte.GetParameters(energy);
+            var stopwatch = Stopwatch.StartNew();
+            var electrons = RunBackscatterMonteCarlo(monte, loop, energyThreshold, sampleRotation, (completed, total) =>
+            {
+                var localProgress = total > 0 ? completed / (double)total : 0.0;
+                var progressValue = sourceIndex * 50 + (int)Math.Round(50.0 * localProgress);
+                progress?.Report((progressValue, sourceConfig.Name, $"{completed:#,0} / {total:#,0} electrons"));
+            })
+            .Select(e => new MonteCarloBenchmarkElectron(e.Depth, e.Energy, e.TotalEnergyLoss, e.HasLastInelasticEvent, e.LastInelasticDepth, e.Vec))
+            .ToArray(); // (260401Ch) benchmark は depth / energy / angle の比較に必要な列だけ保持する
+            stopwatch.Stop();
+
+            results[sourceIndex] = new ElasticSamplerBenchmarkRunResult()
+            {
+                SourceName = sourceConfig.Name,
+                Source = sourceConfig.Source,
+                LoopCount = loop,
+                ElapsedMilliseconds = stopwatch.Elapsed.TotalMilliseconds,
+                CrossSectionNm2 = crossSectionNm2,
+                MeanFreePathNm = meanFreePathNm,
+                StoppingPowerKevPerNm = stoppingPowerKevPerNm,
+                Electrons = electrons,
+            };
+        }
+
+        progress?.Report((100, "Completed", $"{results.Sum(result => result.Electrons.Length):#,0} accepted electrons"));
+        return results;
+    }
+
+    private static string WriteElasticSamplerBenchmarkSummaryCsv(string outputDirectory, string fileStem, ElasticSamplerBenchmarkRunResult[] runs)
+    {
+        var path = Path.Combine(outputDirectory, $"{fileStem}.summary.csv");
+        var builder = new StringBuilder();
+        builder.AppendLine("Source,LoopCount,AcceptedCount,BseYieldPercent,ElapsedMilliseconds,CrossSectionNm2,MeanFreePathNm,StoppingPowerEvPerNm,MeanExitEnergyKev,MeanTotalEnergyLossKev,MeanDepthNm,DepthP50Nm,DepthP90Nm,DepthP99Nm,MeanLastInelasticDepthNm,MeanExitPolarAngleDeg");
+        foreach (var run in runs)
+        {
+            var acceptedCount = run.Electrons.Length;
+            var bseYieldPercent = run.LoopCount > 0 ? 100.0 * acceptedCount / run.LoopCount : 0.0;
+            var depths = run.Electrons.Select(e => e.Depth).OrderBy(static value => value).ToArray();
+            var lastInelasticDepths = run.Electrons.Where(static e => e.HasLastInelasticEvent).Select(static e => e.LastInelasticDepth).ToArray();
+            var meanPolarAngleDeg = acceptedCount > 0
+                ? run.Electrons.Average(static electron => Math.Acos(Math.Clamp(electron.Direction.Z, -1.0, 1.0)) * 180.0 / Math.PI)
+                : 0.0;
+
+            builder.AppendLine(string.Join(",",
+                run.SourceName,
+                run.LoopCount.ToString(CultureInfo.InvariantCulture),
+                acceptedCount.ToString(CultureInfo.InvariantCulture),
+                bseYieldPercent.ToString("G17", CultureInfo.InvariantCulture),
+                run.ElapsedMilliseconds.ToString("F3", CultureInfo.InvariantCulture),
+                run.CrossSectionNm2.ToString("G17", CultureInfo.InvariantCulture),
+                run.MeanFreePathNm.ToString("G17", CultureInfo.InvariantCulture),
+                (run.StoppingPowerKevPerNm * 1000.0).ToString("G17", CultureInfo.InvariantCulture),
+                (acceptedCount > 0 ? run.Electrons.Average(static e => e.Energy) : 0.0).ToString("G17", CultureInfo.InvariantCulture),
+                (acceptedCount > 0 ? run.Electrons.Average(static e => e.TotalEnergyLoss) : 0.0).ToString("G17", CultureInfo.InvariantCulture),
+                (acceptedCount > 0 ? depths.Average() : 0.0).ToString("G17", CultureInfo.InvariantCulture),
+                ComputeQuantile(depths, 0.50).ToString("G17", CultureInfo.InvariantCulture),
+                ComputeQuantile(depths, 0.90).ToString("G17", CultureInfo.InvariantCulture),
+                ComputeQuantile(depths, 0.99).ToString("G17", CultureInfo.InvariantCulture),
+                (lastInelasticDepths.Length > 0 ? lastInelasticDepths.Average() : 0.0).ToString("G17", CultureInfo.InvariantCulture),
+                meanPolarAngleDeg.ToString("G17", CultureInfo.InvariantCulture)));
+        }
+
+        File.WriteAllText(path, builder.ToString(), new UTF8Encoding(false));
+        return path;
+    }
+
+    private static string WriteElasticSamplerBenchmarkHistogramCsv(
+        string outputDirectory, string fileStem, string suffix, string quantityName, ElasticSamplerBenchmarkRunResult[] runs,
+        Func<MonteCarloBenchmarkElectron, double> selector, int binCount)
+    {
+        var path = Path.Combine(outputDirectory, $"{fileStem}.{suffix}.csv");
+        var allValues = runs.SelectMany(run => run.Electrons.Select(selector)).Where(static value => double.IsFinite(value)).ToArray();
+        var min = allValues.Length > 0 ? allValues.Min() : 0.0;
+        var max = allValues.Length > 0 ? allValues.Max() : min + 1.0;
+        if (!(max > min))
+            max = min + 1.0;
+
+        var binWidth = (max - min) / binCount;
+        var builder = new StringBuilder();
+        builder.AppendLine($"Source,BinIndex,Lower{quantityName},Upper{quantityName},Center{quantityName},Count,Fraction");
+        foreach (var run in runs)
+        {
+            var counts = new int[binCount];
+            foreach (var value in run.Electrons.Select(selector))
+            {
+                if (!double.IsFinite(value))
+                    continue;
+                int index = (int)Math.Floor((value - min) / binWidth);
+                index = Math.Clamp(index, 0, binCount - 1);
+                counts[index]++;
+            }
+
+            for (int i = 0; i < binCount; i++)
+            {
+                var lower = min + i * binWidth;
+                var upper = lower + binWidth;
+                var center = (lower + upper) * 0.5;
+                var fraction = run.Electrons.Length > 0 ? counts[i] / (double)run.Electrons.Length : 0.0;
+                builder.AppendLine(string.Join(",",
+                    run.SourceName,
+                    i.ToString(CultureInfo.InvariantCulture),
+                    lower.ToString("G17", CultureInfo.InvariantCulture),
+                    upper.ToString("G17", CultureInfo.InvariantCulture),
+                    center.ToString("G17", CultureInfo.InvariantCulture),
+                    counts[i].ToString(CultureInfo.InvariantCulture),
+                    fraction.ToString("G17", CultureInfo.InvariantCulture)));
+            }
+        }
+
+        File.WriteAllText(path, builder.ToString(), new UTF8Encoding(false));
+        return path;
+    }
+
+    private static double ComputeQuantile(double[] sortedValues, double probability)
+    {
+        if (sortedValues == null || sortedValues.Length == 0)
+            return 0.0;
+
+        if (probability <= 0)
+            return sortedValues[0];
+        if (probability >= 1)
+            return sortedValues[^1];
+
+        var index = probability * (sortedValues.Length - 1);
+        var lower = (int)Math.Floor(index);
+        var upper = (int)Math.Ceiling(index);
+        if (lower == upper)
+            return sortedValues[lower];
+
+        var fraction = index - lower;
+        return sortedValues[lower] + (sortedValues[upper] - sortedValues[lower]) * fraction;
+    }
+    */
+    #endregion
+
     private void FormEBSD_Load(object sender, EventArgs e)
     {
-
-
         glControlGeo = new GLControlAlpha()
         {
             AllowMouseRotation = true,
@@ -318,8 +605,6 @@ public partial class FormEBSD : CaptureFormBase
             glControlMasterPattern3D.WorldMatrixChanged += glControlMasterPattern3D_WorldMatrixChanged; // (260322Ch) MasterPattern 本体の回転を axes inset へそのまま反映する
         }
         panelMasterPattern3DAxes?.BringToFront(); // (260322Ch) axes inset を MasterPattern3D の右上へ重ねて表示する
-        // checkBoxMasterPattern3DAxisLabel.Enabled = false; // (260322Ch) 旧実装: axes inset に合わせて 3D 側の軸ラベル UI も無効化していた
-        // checkBoxMasterPattern3DAxisLabel.Checked = false; // (260322Ch)
         panelMasterPattern3DAxes.Visible = checkBoxMasterPattern3DAxisArrows.Checked; // (260322Ch) 既存チェックボックスで axes inset の表示可否だけ切り替える
         #endregion
 
@@ -347,9 +632,7 @@ public partial class FormEBSD : CaptureFormBase
     #endregion
 
     #region OpenGLで入射電子、試料、検出器の幾何学を描画し、ステレオネット上に検出器の輪郭を描画
-    /// <summary>
-    /// 試料と電子線が交差する位置は常に(0,0,0)
-    /// </summary>
+    /// <summary>試料と電子線が交差する位置は常に(0,0,0)</summary>
     public void DrawGeometry(int i = -1, int j = -1)
     {
         #region OpenGLによる3D描画
@@ -527,9 +810,7 @@ public partial class FormEBSD : CaptureFormBase
 
     #region その他のイベント
 
-    /// <summary>
-    /// FormMainから、結晶が変更されたときに呼び出される
-    /// </summary>
+    /// <summary>FormMainから、結晶が変更されたときに呼び出される</summary>
     public void SetCrystal()
     {
         SetVector();
@@ -537,9 +818,7 @@ public partial class FormEBSD : CaptureFormBase
         Draw();
     }
 
-    /// <summary>
-    /// サンプルや検出器の幾何学条件が変更されたとき
-    /// </summary>
+    /// <summary>サンプルや検出器の幾何学条件が変更されたとき</summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
     private void numericBoxDetRadius_ValueChanged(object sender, EventArgs e)
@@ -575,9 +854,7 @@ public partial class FormEBSD : CaptureFormBase
     #endregion
 
     #region 描画関数
-    /// <summary>
-    /// 描画関数
-    /// </summary>
+    /// <summary>描画関数</summary>
     public void Draw(Graphics g = null)
     {
         // DrawKikuchiLine(); // (260331Ch) 旧順序: EBSD 更新前に overlay を描いていた
@@ -589,9 +866,7 @@ public partial class FormEBSD : CaptureFormBase
     #endregion
 
     #region プロジェクション行列の設定
-    /// <summary>
-    /// プロジェクション行列の設定を行う。
-    /// </summary>
+    /// <summary>プロジェクション行列の設定を行う。</summary>
     public bool SetProjection(Graphics g = null)
     {
         if (g != null && graphicsBox.ClientSize.Width != 0 && graphicsBox.ClientSize.Height != 0)
@@ -609,9 +884,7 @@ public partial class FormEBSD : CaptureFormBase
 
     #region 菊池線(運動学的) graphicBox を描画
 
-    /// <summary>
-    /// 
-    /// </summary>
+    /// <summary></summary>
     /// <param name="graphics"></param>
     private void DrawKikuchiLine(Graphics graphics = null, int i = -1, int j = -1)
     {
@@ -820,9 +1093,7 @@ public partial class FormEBSD : CaptureFormBase
 
     #region 座標変換
 
-    /// <summary>
-    /// 検出器座標で与えられた座標ptが、画面内に含まれるかどうかを返す
-    /// </summary>
+    /// <summary>検出器座標で与えられた座標ptが、画面内に含まれるかどうかを返す</summary>
     /// <param name="pt"></param>
     /// <returns></returns>
     private bool IsScreenArea(in PointD pt, int margin = 0)
@@ -833,9 +1104,7 @@ public partial class FormEBSD : CaptureFormBase
             && clientPt.Y < graphicsBox.ClientRectangle.Height - margin;
     }
 
-    /// <summary>
-    /// フィルム(Src)上の位置 (mm)を座標系変換 画面(Client)上の点(pixel)に変換
-    /// </summary>
+    /// <summary>フィルム(Src)上の位置 (mm)を座標系変換 画面(Client)上の点(pixel)に変換</summary>
     /// <param name="x"></param>
     /// <param name="y"></param>
     /// <returns></returns>
@@ -846,9 +1115,7 @@ public partial class FormEBSD : CaptureFormBase
         return new(px, py);
     }
 
-    /// <summary>
-    /// 検出器(Detector)上の位置 (mm)を画面(Screen)上の点(pixel)に変換
-    /// </summary>
+    /// <summary>検出器(Detector)上の位置 (mm)を画面(Screen)上の点(pixel)に変換</summary>
     /// <param name="pt"></param>
     /// <returns></returns>
     private PointD convertDetectorToScreen(in PointD pt) => convertDetectorToScreen(pt.X, pt.Y);
@@ -911,9 +1178,7 @@ public partial class FormEBSD : CaptureFormBase
     #endregion graphicsBoxのイベント
 
     #region 菊池線を初期化。最後にDraw()も呼び出す。
-    /// <summary>
-    /// 菊池線を初期化。最後にDraw()も呼び出す。
-    /// </summary>
+    /// <summary>菊池線を初期化。最後にDraw()も呼び出す。</summary>
     /// <param name="renewCrystal"></param>
     public void SetVector(bool renewCrystal = false)
     {
@@ -960,9 +1225,7 @@ public partial class FormEBSD : CaptureFormBase
     #endregion
 
     #region モンテカルロ法による飛程シミュレーション
-    /// <summary>
-    /// モンテカルロによる飛程シミュレーション
-    /// </summary>
+    /// <summary>モンテカルロによる飛程シミュレーション</summary>
     private static (double Depth, V3 Vec, PointD Position, double Energy, double TotalEnergyLoss, bool HasLastInelasticEvent, double LastInelasticDepth, double LastInelasticEnergyBeforeLoss, double LastInelasticEnergyAfterLoss, V3 LastInelasticDirection)[] RunBackscatterMonteCarlo(
         MonteCarlo monte, int loop, double energyThreshold, M3 sampleRotation, Action<int, int> reportProgress = null)
     {
@@ -993,59 +1256,41 @@ public partial class FormEBSD : CaptureFormBase
         return [.. bseLists.SelectMany(localList => localList)];
     }
 
-    /// <summary>
-    /// モンテカルロによる飛程シミュレーション
-    /// </summary>
+    /// <summary>モンテカルロによる飛程シミュレーション</summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
-    private void buttonBSE_Click(object sender, EventArgs e)
+    private async void buttonBSE_Click(object sender, EventArgs e)
     {
-        var cry = FormMain.Crystal;
-        cry.GetFormulaAndDensity();
-        var sum1 = cry.Atoms.Sum(a => AtomStatic.AtomicWeight(a.AtomicNumber) * a.Multiplicity * a.AtomicNumber);
-        var sum2 = cry.Atoms.Sum(a => AtomStatic.AtomicWeight(a.AtomicNumber) * a.Multiplicity);
-        var sum3 = cry.Atoms.Sum(a => a.Multiplicity);
-        //試料の平均原子番号. 各元素の重量比で加重平均//double Z = 79;// 79 29 13;
-        double Z = sum1 / sum2;
-        //試料の平均原子量 (g/mol)
-        double A = sum2 / sum3; //196.96 63.55 26.98;
-        //試料の密度 (g/cm^3)
-        double ρ = cry.Density; // 19.32 8.96 2.70 
-        //入射電子のエネルギー (kev)
-        double energy = waveLengthControl.Energy;
-        //サンプルの傾き
-        double cosTilt = Math.Cos(SmpTilt), sinTilt = Math.Sin(SmpTilt);
+        // sw1.Restart(); // (260401Ch) 旧 Calc BSE はここで独自に MC を起動していた
+        // BSEs = RunBackscatterMonteCarlo(monte, loop, EnergyThreshold, smpRot); // (260401Ch) 旧実装: MasterPattern 前段とは別経路だった
+        if (masterPatternEbsd.IsBuilding)
+        {
+            toolStripStatusLabel1.Text = "MasterPattern is running. Wait for it to finish or press Stop.";
+            return;
+        }
 
-        var valenceElectronCount = MonteCarlo.EstimateAverageValenceElectronCount(
-            cry.Atoms.Select(a => (a.AtomicNumber, AtomStatic.AtomicWeight(a.AtomicNumber) * a.Multiplicity))); // (260331Ch) Jablonski/TPP-2M 用の平均 Nv
-        var monte = new MonteCarlo(Z, A, ρ, energy, SmpTilt, EnergyThreshold,
-            elasticScatteringModel: MonteCarloElasticScatteringModel.MottNistSampler2023,
-            inelasticScatteringModel: MonteCarloInelasticScatteringModel.DiscreteBulkDiimfpApproximation,
-            valenceElectronCount: valenceElectronCount,
-            atoms: cry.Atoms); // (260331Ch) 元素組成込みの Mott/NIST sampler
+        button2.Enabled = false; // (260401Ch) Calc BSE の多重起動を防ぐ
+        buttonCreateMasterPattern.Enabled = false; // (260401Ch) Calc BSE 実行中に MasterPattern 前段 MC を重ねて走らせない
+        buttonStop.Visible = false; // (260401Ch) Calc BSE でも MC 中はまだ停止できない
+        toolStripProgressBar.Value = 0;
+        toolStripStatusLabel2.Text = "Calc BSE: MonteCarlo";
+        toolStripStatusLabel1.Text = "0% completed, elapsed 0.00 s.";
+        toolStripStatusLabel3.Text = "";
+        labelMasterPatternInfo.Text = "Calculating BSE by Monte Carlo...";
 
-        //飛程計算ループ
-        sw1.Restart();
-        var loop = BackscatterMonteCarloLoopCount; // (260327Ch) MasterPattern 前処理と同じ MC ループ数を使う
-        M3 smpRot = M3.CreateRotationX(SmpTilt);
-        BSEs = RunBackscatterMonteCarlo(monte, loop, EnergyThreshold, smpRot); // (260327Ch) MC 本体を helper へ寄せ、MasterPattern 前処理と共有する
-
-        toolStripStatusLabel1.Text = $"{sw1.ElapsedMilliseconds} msec. ellapsed for {loop:#,0} backscattered electrons.";
-
-        //ステレオネット描画
-        poleFigureControl.DrawingMode = PoleFigureControl2.DrawingModeEnum.Histogram;
-        //if (radioButtonFrequency.Checked)
-        //    poleFigureControl.DrawingMode = PoleFigureControl2.DrawingModeEnum.Histogram;
-        //else if (radioButtonAverageEnergy.Checked)
-        //    poleFigureControl.DrawingMode = PoleFigureControl2.DrawingModeEnum.Average;
-        //else
-        //    poleFigureControl.DrawingMode = PoleFigureControl2.DrawingModeEnum.Sigma;
-
-        M3 rot = M3.CreateRotationX(SmpTilt);
-        poleFigureControl.Vectors = BSEs.Select(e => new V4(rot * e.Vec, e.Energy)).ToArray();
-
-        CalcStatistics();
-
+        try
+        {
+            await RunMonteCarloAndSetRangesAsync(
+                statusPrefix: "Calc BSE",
+                progressInfoText: "Calculating BSE by Monte Carlo...",
+                completedInfoText: "Monte Carlo finished for Calc BSE.",
+                noResultInfoText: "Calc BSE was aborted because Monte Carlo returned no usable BSEs."); // (260401Ch) MasterPattern 前段と同じ MC 前処理へ統一
+        }
+        finally
+        {
+            button2.Enabled = true;
+            buttonCreateMasterPattern.Enabled = true;
+        }
     }
     #endregion
 
@@ -1108,7 +1353,8 @@ public partial class FormEBSD : CaptureFormBase
             //最大深さ分布　ここから
             {
                 //var depths = bse2.Select(e1 => 1000.0 * e1.Max(e2 => sinTilt * e2.p.Y - cosTilt * e2.p.Z));
-                var depths = bse2.Select(e => e.Depth);
+                // var depths = bse2.Select(e => e.Depth); // (260401Ch) 旧挙動: 脱出時(または停止時)の深さをそのまま集計していた
+                var depths = bse2.Select(e => e.HasLastInelasticEvent ? e.LastInelasticDepth : e.Depth); // (260401Ch) MasterPattern 重み付けと同じく、可能なら最後の非弾性散乱深さを深さ分布に使う
                 double lower = 0, upper = depths.Max();
                 double step = 1;//nm単位
                 int nBuckets = (int)((upper - lower) / step + 1);
@@ -1522,9 +1768,7 @@ public partial class FormEBSD : CaptureFormBase
         }
     }
 
-    /// <summary>
-    /// 構築済みルックアップテーブルを使い、指定 energy/depth の EBSD パターンを values に書き込む。260325Cl 追加
-    /// </summary>
+    /// <summary>構築済みルックアップテーブルを使い、指定 energy/depth の EBSD パターンを values に書き込む。260325Cl 追加</summary>
     private unsafe void ApplyEbsdLookupSingleSlice(double[] values, int totalPixels, float[] posPlane, float[] negPlane) // 260325Cl: unsafe 化
     {
         if (posPlane == null && negPlane == null) return;
@@ -1575,9 +1819,7 @@ public partial class FormEBSD : CaptureFormBase
         }
     }
 
-    /// <summary>
-    /// model 1 用に、各 energy/depth slice の全球積算強度 ((+Z) + (-Z)) を 1 にそろえる係数を準備する。260325Ch 追加
-    /// </summary>
+    /// <summary>model 1 用に、各 energy/depth slice の全球積算強度 ((+Z) + (-Z)) を 1 にそろえる係数を準備する。260325Ch 追加</summary>
     private void EnsureMasterPatternGlobalNormalizationFactors()
     {
         var mp = MasterPattern;
@@ -1614,9 +1856,7 @@ public partial class FormEBSD : CaptureFormBase
         masterPatternGlobalNormalizationSource = mp;
     }
 
-    /// <summary>
-    /// model 1: 各 energy/depth slice の全球積算強度を 1 にそろえてから、単一スライスの EBSD パターンを描く。260325Ch 追加
-    /// </summary>
+    /// <summary>model 1: 各 energy/depth slice の全球積算強度を 1 にそろえてから、単一スライスの EBSD パターンを描く。260325Ch 追加</summary>
     private unsafe void ApplyEbsdLookupSingleSliceModel1(double[] values, int totalPixels, float[] posPlane, float[] negPlane, double planeScaleFactor = 1.0)
     {
         if (posPlane == null && negPlane == null) return;
@@ -1668,9 +1908,7 @@ public partial class FormEBSD : CaptureFormBase
         }
     }
 
-    /// <summary>
-    /// model 2: depthIndex と depthIndex-1 の差分を取り、単一 depth slice の EBSD パターンとして描く。260325Ch 追加
-    /// </summary>
+    /// <summary>model 2: depthIndex と depthIndex-1 の差分を取り、単一 depth slice の EBSD パターンとして描く。260325Ch 追加</summary>
     private unsafe void ApplyEbsdLookupSingleSliceModel2(double[] values, int totalPixels, float[] posPlane, float[] negPlane, float[] posPlanePrevious = null, float[] negPlanePrevious = null)
     {
         if (posPlane == null && negPlane == null) return;
@@ -1953,9 +2191,7 @@ public partial class FormEBSD : CaptureFormBase
         skipEBSD_Rendering = false;
     }
 
-    /// <summary>
-    /// model 1: 各 energy/depth slice の全球積算強度を 1 にそろえてから weighted 合成する。260325Ch 追加
-    /// </summary>
+    /// <summary>model 1: 各 energy/depth slice の全球積算強度を 1 にそろえてから weighted 合成する。260325Ch 追加</summary>
     private unsafe void ApplyEbsdLookupWeightedModel1(double[] values, int width, int height)
     {
         var mp = MasterPattern;
@@ -2055,9 +2291,7 @@ public partial class FormEBSD : CaptureFormBase
         }
     }
 
-    /// <summary>
-    /// model 2: absolute MC 重みと differential MasterPattern を掛け合わせて weighted 合成する。260325Ch 追加
-    /// </summary>
+    /// <summary>model 2: absolute MC 重みと differential MasterPattern を掛け合わせて weighted 合成する。260325Ch 追加</summary>
     private unsafe void ApplyEbsdLookupWeightedModel2(double[] values, int width, int height)
     {
         var mp = MasterPattern;
@@ -2170,74 +2404,7 @@ public partial class FormEBSD : CaptureFormBase
 
     #endregion
 
-    #region 画像を生成 お蔵入り
-    //private void button1_Click(object sender, EventArgs e)
-    //{
-    //    var imgSize = (int)Math.Sqrt(Crystal.Bethe.Disks[0][0].Amplitudes.Length);
-
-    //    M3 smpRot = M3.CreateRotationX(SmpTilt), detRot = M3.CreateRotationX(-DetTilt);
-    //    var (sinTilt, cosTilt) = Math.SinCos(SmpTilt);
-    //    //double cosTilt = Math.Cos(SmpTilt), sinTilt = Math.Sin(SmpTilt);
-
-    //    PointD[] area = [];
-    //    var areaStep = 32;
-    //    var f = new Func<double, double, PointD>((x, y)
-    //        => Stereonet.ConvertVectorToSchmidt(smpRot * (detRot * (DetR * new V3(x, y, 0)) + new V3(0, -DetY, -DetZ))));
-    //    area = [.. Enumerable.Range(0, areaStep).Select(n => 2.0 * Math.PI * n / areaStep).Select(Θ => f(Math.Sin(Θ), Math.Cos(Θ)))];
-    //    //まず検出器に入る電子を抽出し、これをbse1とする
-    //    var bse1 = BSEs.AsParallel()
-    //        .Select(e => (e.Depth, e.Position, e.Energy))
-    //        .Where(e => Geometry.InsidePolygonalArea(area, e.Position)).ToArray();
-    //    var div = 15;//DetectorDivision;
-    //    var r1 = Enumerable.Range(0, areaStep).Select(n => (double)n / areaStep);
-    //    double[] values = new double[Pbmp.SrcValuesGrayOriginal.Length];
-
-    //    int[,][] mask = new int[div, div][];
-    //    for (int i = 0; i < div; i++)
-    //        for (int j = 0; j < div; j++)
-    //            mask[i, j] = Enumerable.Range(0, imgSize * imgSize).Where(k =>
-    //            {
-    //                double x = (k % imgSize) / (double)imgSize * div;
-    //                double y = (k / imgSize) / (double)imgSize * div;
-    //                return (x >= i && x < i + 1 && y >= j && y < j + 1);
-    //            }).ToArray();
-
-    //    for (int i = 0; i < div; i++)
-    //        for (int j = 0; j < div; j++)
-    //        {
-    //            area = [..r1.Select(x => f(2.0 * i / div - 1, 2.0 * (- j - 1 + x)/ div + 1)),
-    //                    ..r1.Select(x => f(2.0 * (i + x) / div - 1, 2.0 * (- j) / div + 1 )),
-    //                    ..r1.Select(x => f(2.0 * (i + 1) / div - 1, 2.0 * (- j - x) / div + 1)),
-    //                    ..r1.Select(x => f(2.0 * (i + 1 - x) / div - 1, 2.0 * (- j - 1) / div + 1 ))];
-
-    //            //検出器の(i,j)位置に該当する電子だけを抽出し、これをbse2とする
-    //            var bse2 = bse1.AsParallel()
-    //                .Where(e => Geometry.InsidePolygonalArea(area, e.Position))
-    //                .Select(e => (e.Depth, e.Energy)).ToArray();
-
-    //            for (int eIndex = 0; eIndex < EnergyArray.Length - 1; eIndex++)
-    //            {
-    //                //bse2の中から特定のエネルギーを抽出し、これをbse3とする 
-    //                var depths = bse2.Where(e => EnergyArray[eIndex] > e.Energy && EnergyArray[eIndex + 1] < e.Energy).Select(e => e.Depth).ToArray();
-
-    //                //bse3に対する最大深さ分布　ここから
-    //                double lower = ThicknessArray[0] - numericBoxThicknessStep.Value / 2, upper = ThicknessArray[^1] + numericBoxThicknessStep.Value / 2;
-    //                double step = numericBoxThicknessStep.Value;//nm単位
-    //                int nBuckets = (int)((upper - lower) / step + 1);
-    //                var histogram = new MathNet.Numerics.Statistics.Histogram(depths, nBuckets, lower, lower + nBuckets * step);
-    //                for (int t = 0; t < ThicknessArray.Length; t++)
-    //                {
-    //                    foreach (var k in mask[i, j])
-    //                        values[k] += histogram[t].Count * Crystal.Bethe.Disks[eIndex][t].Amplitudes[k].MagnitudeSquared();
-    //                }
-    //            }
-    //        }
-    //    Pbmp = new PseudoBitmap(values, numericBoxDiskDiameter.ValueInteger) { AlphaEnabled = true };
-    //    Pbmp.FilterAlfha = Pbmp.SrcValuesGrayOriginal.Select(e => e == 0 ? (byte)0 : (byte)255).ToList();
-
-    //    AdjustImage();
-    //}
-    #endregion
+   
 
     #region グラフをコピー
     private void buttonCopyEnergyProfile_Click(object sender, EventArgs e)
@@ -2266,9 +2433,7 @@ public partial class FormEBSD : CaptureFormBase
     #endregion
 
     #region MasterPattern
-    /// <summary>
-    /// MasterPattern build 用に追加した進捗イベントを解除する。
-    /// </summary>
+    /// <summary>MasterPattern build 用に追加した進捗イベントを解除する。</summary>
     private void DetachMasterPatternBuildEvents()
     {
         masterPatternEbsd.MasterPatternProgressChanged -= MasterPattern_EBSD_ProgressChanged;
@@ -2276,10 +2441,14 @@ public partial class FormEBSD : CaptureFormBase
     }
 
     /// <summary>
-    /// 既存の buttonBSE_Click で MC を実行した後、エネルギー・深さ範囲を決定して
+    /// Calc BSE / MasterPattern 前段で共有する MC を実行し、エネルギー・深さ範囲を決定して
     /// numericBox を更新し、8×8 ビンのフィッティング結果を mcDistribution に保持する。260325Cl 追加
     /// </summary>
-    private async Task<bool> RunMonteCarloAndSetRangesAsync()
+    private async Task<bool> RunMonteCarloAndSetRangesAsync(
+        string statusPrefix = "MasterPattern",
+        string progressInfoText = "Preparing MasterPattern by Monte Carlo...",
+        string completedInfoText = "Monte Carlo finished. Starting MasterPattern build...",
+        string noResultInfoText = "MasterPattern build was aborted because Monte Carlo returned no usable BSEs.")
     {
         var cry = FormMain.Crystal;
         cry.GetFormulaAndDensity();
@@ -2292,11 +2461,8 @@ public partial class FormEBSD : CaptureFormBase
         var valenceElectronCount = MonteCarlo.EstimateAverageValenceElectronCount(
             cry.Atoms.Select(atom => (atom.AtomicNumber, AtomStatic.AtomicWeight(atom.AtomicNumber) * atom.Multiplicity))); // (260331Ch)
         double energy = Voltage;
-        double sampleTilt = SmpTilt;
-        double detectorTilt = DetTilt;
-        double detectorY = DetY;
-        double detectorZ = DetZ;
-        double detectorR = DetR;
+        double sampleTilt = SmpTilt,detectorTilt = DetTilt;
+        double detectorY = DetY,detectorZ = DetZ, detectorR = DetR;
         double energyThreshold = EnergyThreshold;
         var loop = BackscatterMonteCarloLoopCount;
         var sampleRotation = M3.CreateRotationX(sampleTilt);
@@ -2305,17 +2471,17 @@ public partial class FormEBSD : CaptureFormBase
         {
             var progressValue = Math.Clamp(state.Progress, 0, 100);
             toolStripProgressBar.Value = progressValue;
-            toolStripStatusLabel2.Text = $"MasterPattern: {state.Message}";
+            toolStripStatusLabel2.Text = $"{statusPrefix}: {state.Message}"; // (260401Ch) Calc BSE も同じ MC helper を共有する
             toolStripStatusLabel1.Text = $"{progressValue:f0}% completed, elapsed {monteCarloStopwatch.ElapsedMilliseconds / 1000.0:f2} s.";
-            labelMasterPatternInfo.Text = $"Preparing MasterPattern by Monte Carlo... {progressValue}%"; // (260327Ch)
+            labelMasterPatternInfo.Text = $"{progressInfoText} {progressValue}%"; // (260401Ch)
         });
 
         progress.Report((0, "MonteCarlo"));
         var result = await Task.Run(() =>
         {
             var monte = new MonteCarlo(z, a, rho, energy, sampleTilt, energyThreshold,
-                elasticScatteringModel: MonteCarloElasticScatteringModel.MottNistSampler2023,
-                inelasticScatteringModel: MonteCarloInelasticScatteringModel.DiscreteBulkDiimfpApproximation,
+                elasticScatteringModel: MonteCarlo.ElasticScatteringModels.MottNistSampler2023,
+                inelasticScatteringModel: MonteCarlo.InelasticScatteringModels.DiscreteBulkDiimfpApproximation,
                 valenceElectronCount: valenceElectronCount,
                 atoms: cry.Atoms); // (260331Ch)
             var bses = RunBackscatterMonteCarlo(monte, loop, energyThreshold, sampleRotation, (completed, total) =>
@@ -2350,10 +2516,10 @@ public partial class FormEBSD : CaptureFormBase
             BSEs = [];
             mcDistribution = null;
             toolStripProgressBar.Value = 0;
-            toolStripStatusLabel2.Text = "MasterPattern: MonteCarlo";
+            toolStripStatusLabel2.Text = $"{statusPrefix}: MonteCarlo"; // (260401Ch)
             toolStripStatusLabel1.Text = $"0% completed, elapsed {masterPatternMonteCarloElapsedMilliseconds / 1000.0:f2} s.";
             toolStripStatusLabel3.Text = "";
-            labelMasterPatternInfo.Text = "MasterPattern build was aborted because Monte Carlo returned no usable BSEs.";
+            labelMasterPatternInfo.Text = noResultInfoText; // (260401Ch)
             return false;
         }
 
@@ -2373,9 +2539,9 @@ public partial class FormEBSD : CaptureFormBase
 
         masterPatternMonteCarloElapsedMilliseconds = monteCarloStopwatch.ElapsedMilliseconds; // (260327Ch) MC 本体と fitting、統計更新まで含めた時間
         toolStripProgressBar.Value = 100;
-        toolStripStatusLabel2.Text = "MasterPattern: MonteCarlo finished";
+        toolStripStatusLabel2.Text = $"{statusPrefix}: MonteCarlo finished"; // (260401Ch)
         toolStripStatusLabel1.Text = $"100% completed, elapsed {masterPatternMonteCarloElapsedMilliseconds / 1000.0:f2} s.";
-        labelMasterPatternInfo.Text = "Monte Carlo finished. Starting MasterPattern build...";
+        labelMasterPatternInfo.Text = completedInfoText; // (260401Ch)
         return true;
     }
 
@@ -2456,9 +2622,7 @@ public partial class FormEBSD : CaptureFormBase
         sw1.Restart();
     }
 
-    /// <summary>
-    /// Crystallography.EBSD から届いた進捗を UI 表示へ反映する。
-    /// </summary>
+    /// <summary>Crystallography.EBSD から届いた進捗を UI 表示へ反映する。</summary>
     private void MasterPattern_EBSD_ProgressChanged(object sender, EBSD.MasterPatternProgressChangedEventArgs e)
     {
         if (skipProgressChangedEvent)
@@ -2482,9 +2646,7 @@ public partial class FormEBSD : CaptureFormBase
         }
     }
 
-    /// <summary>
-    /// Crystallography.EBSD 側の build 完了通知を受け、selector と preview を更新する。
-    /// </summary>
+    /// <summary>Crystallography.EBSD 側の build 完了通知を受け、selector と preview を更新する。</summary>
     private void MasterPattern_EBSD_Completed(object sender, EBSD.MasterPatternCompletedEventArgs e)
     {
         DetachMasterPatternBuildEvents();
@@ -2537,9 +2699,7 @@ public partial class FormEBSD : CaptureFormBase
 
     }
 
-    /// <summary>
-    /// 進行中の MasterPattern build を停止する。
-    /// </summary>
+    /// <summary>進行中の MasterPattern build を停止する。</summary>
     private void buttonStop_Click(object sender, EventArgs e)
     {
         if (masterPatternEbsd.IsBuilding)
@@ -2563,9 +2723,7 @@ public partial class FormEBSD : CaptureFormBase
         buttonStop.Visible = false;
     }
 
-    /// <summary>
-    /// 作成済み MasterPattern の energy / depth selector を UI へ反映する。
-    /// </summary>
+    /// <summary>作成済み MasterPattern の energy / depth selector を UI へ反映する。</summary>
     private void UpdateMasterPatternSelectors()
     {
         if (MasterPattern == null)
@@ -2588,9 +2746,7 @@ public partial class FormEBSD : CaptureFormBase
         UpdateMasterPatternSliceSelectorText(); // (260321Ch) trackbar と表示テキストを同期する
     }
 
-    /// <summary>
-    /// UI の grid selector から、MasterPattern の分割数を取得する。
-    /// </summary>
+    /// <summary>UI の grid selector から、MasterPattern の分割数を取得する。</summary>
     private int GetSelectedMasterPatternGridSize()
     {
         if (comboBoxMasterPatternGrid?.SelectedItem is object selectedItem
@@ -2606,15 +2762,11 @@ public partial class FormEBSD : CaptureFormBase
         return 256; // (260321Ch)
     }
 
-    /// <summary>
-    /// UI の hemisphere selector から、対応する enum 値を取得する。
-    /// </summary>
+    /// <summary>UI の hemisphere selector から、対応する enum 値を取得する。</summary>
     private MasterPattern.Hemisphere GetSelectedMasterPattern2DHemisphere()
         => comboBoxMasterPattern2DHemisphere.SelectedIndex == 1 ? MasterPattern.Hemisphere.NegativeZ : MasterPattern.Hemisphere.PositiveZ;
 
-    /// <summary>
-    /// 現在の energy / depth trackbar の値を、表示用テキストへ反映する。
-    /// </summary>
+    /// <summary>現在の energy / depth trackbar の値を、表示用テキストへ反映する。</summary>
     private void UpdateMasterPatternSliceSelectorText()
     {
         if (MasterPattern == null)
@@ -2632,9 +2784,7 @@ public partial class FormEBSD : CaptureFormBase
             : ""; // (260321Ch)
     }
 
-    /// <summary>
-    /// hemisphere enum を UI 表示用の文字列へ変換する。
-    /// </summary>
+    /// <summary>hemisphere enum を UI 表示用の文字列へ変換する。</summary>
     private static string GetHemisphereText(MasterPattern.Hemisphere hemisphere)
         => hemisphere == MasterPattern.Hemisphere.PositiveZ ? "+Z hemisphere" : "-Z hemisphere";
 
@@ -2643,18 +2793,14 @@ public partial class FormEBSD : CaptureFormBase
     #region MasterPatternの二次元描画と3Dレンダリング
     #region MasterPattern2D
 
-    /// <summary>
-    /// preview 条件の selector が変化したときに表示を更新する。
-    /// </summary>
+    /// <summary>preview 条件の selector が変化したときに表示を更新する。</summary>
     private void MasterPatternSelectionChanged(object sender, EventArgs e) // (260322Ch) 旧名: MasterPatternPreviewSelectionChanged
     {
         UpdateMasterPatternSliceSelectorText(); // (260321Ch) energy / depth の数値表示を先に更新する
         DrawMasterPattern2D();
     }
 
-    /// <summary>
-    /// 現在選択されている MasterPattern slice を preview 画像へ変換して表示する。
-    /// </summary>
+    /// <summary>現在選択されている MasterPattern slice を preview 画像へ変換して表示する。</summary>
     private void DrawMasterPattern2D() // (260322Ch) 旧名: DrawMasterPattern2DPreview
     {
         if (scalablePictureBoxAdvancedMasterPattern2D == null)
@@ -2717,9 +2863,7 @@ public partial class FormEBSD : CaptureFormBase
         RedrawMasterPattern3DFromCache(); // (260321Ch) 2D 用の見た目設定と同じカラースケールで 3D を描き直す
     }
 
-    /// <summary>
-    /// 現在表示中の MasterPattern preview 値を破棄する。
-    /// </summary>
+    /// <summary>現在表示中の MasterPattern preview 値を破棄する。</summary>
     private void ResetMasterPattern3DCache() // (260322Ch) 旧名: ResetMasterPattern3DPreviewCache
     {
         masterPattern2DValues = []; // (260322Ch)
@@ -2754,9 +2898,7 @@ public partial class FormEBSD : CaptureFormBase
             masterPattern2DBitmap); // (260322Ch) ScalablePictureBoxAdvanced 2D の見た目設定を OpenGL 側へ反映する
     }
 
-    /// <summary>
-    /// 生の MasterPattern plane を、preview 用の 0-1 強度配列へ変換する。
-    /// </summary>
+    /// <summary>生の MasterPattern plane を、preview 用の 0-1 強度配列へ変換する。</summary>
     private static double[] CreateMasterPatternDisplayValues(float[] plane, int gridSize) // (260322Ch) 旧名: CreateMasterPatternPreviewValues
     {
         if (plane == null || plane.Length != gridSize * gridSize)
@@ -2768,9 +2910,7 @@ public partial class FormEBSD : CaptureFormBase
             : new double[gridSize * gridSize]; // (260322Ch) 0 除算を避けつつ 2D / 3D で同じ見え方を維持する
     }
 
-    /// <summary>
-    /// preview 用の数値配列を PseudoBitmap に変換し、ScalablePictureBoxAdvanced へ設定する。
-    /// </summary>
+    /// <summary>preview 用の数値配列を PseudoBitmap に変換し、ScalablePictureBoxAdvanced へ設定する。</summary>
     private void SetMasterPattern2DBitmap(double[] values, int gridSize)
     {
         if (scalablePictureBoxAdvancedMasterPattern2D == null || gridSize <= 0)
@@ -3031,9 +3171,7 @@ public partial class FormEBSD : CaptureFormBase
         { IgnoreNormalSides = true };
     }
 
-    /// <summary>
-    /// セル中心値から頂点色を作るため、隣接する 1～4 セルを平均する。
-    /// </summary>
+    /// <summary>セル中心値から頂点色を作るため、隣接する 1～4 セルを平均する。</summary>
     private static double GetMasterPattern3DVertexValue(double[] values, int gridSize, int vertexX, int vertexY) // (260322Ch) 旧名: GetMasterPatternPreviewVertexValue
     {
         double sum = 0;
@@ -3048,9 +3186,7 @@ public partial class FormEBSD : CaptureFormBase
         return count == 0 ? 0 : sum / count; // (260321Ch)
     }
 
-    /// <summary>
-    /// ScalablePictureBoxAdvanced と同じ PseudoBitmap の色変換で 3D polygon の色を返す。
-    /// </summary>
+    /// <summary>ScalablePictureBoxAdvanced と同じ PseudoBitmap の色変換で 3D polygon の色を返す。</summary>
     private static C4 GetMasterPattern3DColor(double value, PseudoBitmap referenceBitmap) // (260322Ch) 旧名: GetMasterPatternPreviewColor
     {
         if (referenceBitmap?.ColorScale == null || referenceBitmap.ColorScale.Length == 0)

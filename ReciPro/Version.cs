@@ -424,9 +424,7 @@ internal static class Version
     public static string VersionAndDate => History[10..][..20];
     public static double VersionValue => Convert.ToDouble(VersionAndDate[3..^12]);
 
-    /// <summary>
-    /// はじめに
-    /// </summary>
+    /// <summary>はじめに</summary>
     public const string Introduction =
         "Introduction:"
         + "\r\nThe software “ReciPro” supports many crystallographic calculations, simulation of/indexing  diffraction pattern, and so on."
@@ -438,34 +436,26 @@ internal static class Version
         + "\r\n - ReciPro identifies diffraction spots in the observed image."
         ;
 
-    /// <summary>
-    /// 謝辞
-    /// </summary>
+    /// <summary>謝辞</summary>
     public const string Acknowledge =
         "Acknowledgement:"
         + "\r\n　Thanks to Daisuke Hamane (Tokyo Univ.),  Akira Miyake (Kyoto Univ.)"
         + "Shoichi Toh (Kyushu Univ.), and many other contributors"
         ;
 
-    /// <summary>
-    /// 使い方
-    /// </summary>
+    /// <summary>使い方</summary>
     public const string Manual =
         "Manual:"
         + "\r\n　See \"Help\" => \"Help\""
         ;
 
-    /// <summary>
-    /// 著作権
-    /// </summary>
+    /// <summary>著作権</summary>
     public const string CopyRight =
         "Copyrights:"
         + "\r\n　Dr. Y. Seto holds the copyrights of ReciPro."
         ;
 
-    /// <summary>
-    /// 使用条件
-    /// </summary>
+    /// <summary>使用条件</summary>
     public const string Condition =
         "License:"
         + "\r\n ReciPro is a　free (non-charge) software for academic, scientific, and educational users."
@@ -474,9 +464,7 @@ internal static class Version
         ;
 
 
-    /// <summary>
-    /// 免責事項
-    /// </summary>
+    /// <summary>免責事項</summary>
     public const string Exemption =
         "Disclaimer:"
         + "\r\n ReciPro is provided by the author \"as is\" and \"with all faults.\" "
@@ -484,9 +472,7 @@ internal static class Version
         + "\r\n The author will not be liable for any damages you may suffer in connection with using ReciPro."
         ;
 
-    /// <summary>
-    /// 連絡先
-    /// </summary>
+    /// <summary>連絡先</summary>
     public const string Adress =
         "Contact:"
         + "\r\n If you find any problems of ReciPro to be improved, feel free to contact me by following e-mail;"

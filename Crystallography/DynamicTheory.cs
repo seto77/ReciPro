@@ -13,9 +13,7 @@
         public class MultiSlice
         {
             /*
-            /// <summary>
-            /// Interaction parameter. 2 * PI/rambda/kV*(m0*c^2 + e0*kV*1000) / (2*m0*c^2 + e0*kV*1000). Kirklandの教科書 p79 (5.6)
-            /// </summary>
+            /// <summary>Interaction parameter. 2 * PI/rambda/kV*(m0*c^2 + e0*kV*1000) / (2*m0*c^2 + e0*kV*1000). Kirklandの教科書 p79 (5.6)</summary>
             public double Sigma = 2 * Math.PI * UniversalConstants.e0 * UniversalConstants.h;
 
             BackgroundWorker worker = new BackgroundWorker();
@@ -335,9 +333,7 @@
                 return propagator;
             }
 
-            /// <summary>
-            /// 正方形のスライスを想定.
-            /// </summary>
+            /// <summary>正方形のスライスを想定.</summary>
             public class Slice
             {
                 public List<PointD> AtomPosition;

@@ -171,9 +171,7 @@ public class PseudoBitmap : IDisposable
         ColorScale = ColorScaleGrayLiner;
     }
 
-    /// <summary>
-    /// List<uint>型がソースデータであるグレー実画像のコンストラクタ
-    /// </summary>
+    /// <summary>List<uint>型がソースデータであるグレー実画像のコンストラクタ</summary>
     /// <param name="valueGray"></param>
     /// <param name="bitsPerPixels"></param>
     /// <param name="width"></param>
@@ -186,9 +184,7 @@ public class PseudoBitmap : IDisposable
         : this(valueGray.Select(a => (double)a).ToArray(), width, scaleR, scaleG, scaleB, realImage)
     { }
 
-    /// <summary>
-    /// List<uint>型がソースデータであるグレー実画像のコンストラクタ
-    /// </summary>
+    /// <summary>List<uint>型がソースデータであるグレー実画像のコンストラクタ</summary>
     /// <param name="valueGray"></param>
     /// <param name="scale"></param>
     /// <param name="width"></param>
@@ -201,9 +197,7 @@ public class PseudoBitmap : IDisposable
     {
     }
 
-    /// <summary>
-    /// グレーの実画像を描画する.
-    /// </summary>
+    /// <summary>グレーの実画像を描画する.</summary>
     /// <param name="valueR"></param>
     /// <param name="valueG"></param>
     /// <param name="valueB"></param>
@@ -212,9 +206,7 @@ public class PseudoBitmap : IDisposable
         : this(value.Select(a => (double)a).ToArray(), width, scaleR, scaleG, scaleB, realImage)
     { }
 
-    /// <summary>
-    /// double型がソースデータであるグレー実画像のコンストラクタ
-    /// </summary>
+    /// <summary>double型がソースデータであるグレー実画像のコンストラクタ</summary>
     /// <param name="values"></param>
     /// <param name="width"></param>
     /// <param name="scaleR"></param>
@@ -234,9 +226,7 @@ public class PseudoBitmap : IDisposable
         }
     }
 
-    /// <summary>
-    /// double型がソースデータであるグレー実画像のコンストラクタ
-    /// </summary>
+    /// <summary>double型がソースデータであるグレー実画像のコンストラクタ</summary>
     /// <param name="values"></param>
     /// <param name="width"></param>
     /// <param name="scaleR"></param>
@@ -346,9 +336,7 @@ public class PseudoBitmap : IDisposable
 
     #region プロパティ
 
-    /// <summary>
-    /// グレイスケールモードの時、SrcValuesGrayOriginalをSrcValuesGrayとは異なる配列として確保する。newの直後に設定しないといけない。
-    /// </summary>
+    /// <summary>グレイスケールモードの時、SrcValuesGrayOriginalをSrcValuesGrayとは異なる配列として確保する。newの直後に設定しないといけない。</summary>
     public bool ReserveSrcValuesGrayOriginal
     {
         set
@@ -365,19 +353,13 @@ public class PseudoBitmap : IDisposable
         }
     }
 
-    /// <summary>
-    /// アルファチャンネルが有効かどうか. FilterAlphaもセットしないと、機能しない.
-    /// </summary>
+    /// <summary>アルファチャンネルが有効かどうか. FilterAlphaもセットしないと、機能しない.</summary>
     public bool AlphaEnabled { set; get; } = false;
 
-    /// <summary>
-    /// 上下方向の反転をするかどうか
-    /// </summary>
+    /// <summary>上下方向の反転をするかどうか</summary>
     public bool VerticalFlip { set; get; } = false;
 
-    /// <summary>
-    /// 左右方向の反転をするかどうか
-    /// </summary>
+    /// <summary>左右方向の反転をするかどうか</summary>
     public bool HorizontalFlip { set; get; } = false;
 
     public enum Scales { GrayLinear, ColdWarmLinear, RotationLinear, SpectrumLinear, FireLinear, GrayLog, ColdWarmLog, RotationLog, SpectrumLog, FireLog, }
@@ -417,9 +399,7 @@ public class PseudoBitmap : IDisposable
 
     public PointF Center;//虚画像のときの中心ピクセル位置
 
-    /// <summary>
-    /// Imageの幅
-    /// </summary>
+    /// <summary>Imageの幅</summary>
     public int Width { get; set; }
 
     public int Height { get; set; }//高さ
@@ -434,54 +414,38 @@ public class PseudoBitmap : IDisposable
     public List<bool> Filter1 = [], Filter2 = [], Filter3 = [], Filter4 = [], Filter5 = [];
     public bool Filter1Visible = true, Filter2Visible = true, Filter3Visible = true, Filter4Visible = true, Filter5Visible = true;
 
-    /// <summary>
-    /// 透明度フィルター. 0が透明、255が不透明. AlphaEnabledがTrueの時だけ使われる.
-    /// </summary>
+    /// <summary>透明度フィルター. 0が透明、255が不透明. AlphaEnabledがTrueの時だけ使われる.</summary>
     public List<byte> FilterAlfha { get; set; } = [];
 
     public (byte R, byte G, byte B)[] ColorScale;
 
     public List<uint> SrcValuesR = [], SrcValuesG = [], SrcValuesB = [];
 
-    /// <summary>
-    /// グレースケールの画像データ (BlurModeが有効の時は、フィルター後のデータ)
-    /// </summary>
+    /// <summary>グレースケールの画像データ (BlurModeが有効の時は、フィルター後のデータ)</summary>
     public double[] SrcValuesGray;
 
-    /// <summary>
-    /// グレースケールのもとの画像データ
-    /// </summary>
+    /// <summary>グレースケールのもとの画像データ</summary>
     public double[] SrcValuesGrayOriginal;
 
-    /// <summary>
-    /// Blurモードの列挙体
-    /// </summary>
+    /// <summary>Blurモードの列挙体</summary>
     public enum BlurModeEnum { Gaussian, Lorentzian, None }
 
     private enum ImageSouceEnum { GrayDouble, GrayUint, ColorDouble, ColorUint }
 
-    /// <summary>
-    /// グレイスケールとして表示するかどうか　(ソースがグレースケールかどうかは無関係)
-    /// </summary>
+    /// <summary>グレイスケールとして表示するかどうか　(ソースがグレースケールかどうかは無関係)</summary>
     public bool GrayScale;
 
-    /// <summary>
-    /// ソースがグレースケールかどうか (グレースケールとして表示するかどうかは無関係)
-    /// </summary>
+    /// <summary>ソースがグレースケールかどうか (グレースケールとして表示するかどうかは無関係)</summary>
     public bool IsSrcGray = false;
 
     public UniversalConstants.LengthUnit Unit = UniversalConstants.LengthUnit.mm;
     public double PixelSizeX = 1;//単位はunit
     public double PixelSizeY = 1;
 
-    /// <summary>
-    /// 表示する強度の上限 (画像中の最大強度という意味ではない）
-    /// </summary>
+    /// <summary>表示する強度の上限 (画像中の最大強度という意味ではない）</summary>
     public double MaxValue = 255;
 
-    /// <summary>
-    /// 表示する強度の下限 (画像中の最大強度という意味ではない）
-    /// </summary>
+    /// <summary>表示する強度の下限 (画像中の最大強度という意味ではない）</summary>
     public double MinValue = 0;
 
     //public int BitsPerPixels = 8;
@@ -490,39 +454,29 @@ public class PseudoBitmap : IDisposable
 
     public Bitmap SrcBitmap;//実画像のときの元画像
 
-    /// <summary>
-    /// 画像に関連付けた情報 (なんでも)
-    /// </summary>
+    /// <summary>画像に関連付けた情報 (なんでも)</summary>
     public object Tag { get; set; }
 
     public Profile FrequencyProfile { get; set; }
 
-    /// <summary>
-    /// 1ピクセルが相当する数値 (単位は PixelUnitで指定)
-    /// </summary>
+    /// <summary>1ピクセルが相当する数値 (単位は PixelUnitで指定)</summary>
     public double PixelScale;
 
-    /// <summary>
-    /// ピクセルの単位
-    /// </summary>
+    /// <summary>ピクセルの単位</summary>
     public LengthUnitEnum PixelUnit;
 
     #endregion プロパティ
 
     #region 操作
 
-    /// <summary>
-    /// オリジナルのピクセル強度データにリセットする。Grayスケールモードの時だけ有効。
-    /// </summary>
+    /// <summary>オリジナルのピクセル強度データにリセットする。Grayスケールモードの時だけ有効。</summary>
     public void SetOriginalGray()
     {
         if (IsSrcGray)
             SrcValuesGray = SrcValuesGrayOriginal;
     }
 
-    /// <summary>
-    /// ダスト＆スクラッチを施す。Grayスケールモードの時だけ有効。
-    /// </summary>
+    /// <summary>ダスト＆スクラッチを施す。Grayスケールモードの時だけ有効。</summary>
     /// <param name="radius"></param>
     /// <param name="threshold"></param>
     /// <param name="applyToOriginal"></param>
@@ -537,9 +491,7 @@ public class PseudoBitmap : IDisposable
         }
     }
 
-    /// <summary>
-    /// ガウシアンBlurを施す。Grayスケールモードの時だけ有効。
-    /// </summary>
+    /// <summary>ガウシアンBlurを施す。Grayスケールモードの時だけ有効。</summary>
     /// <param name="hwhm">半値半幅</param>
     /// <param name="mode"></param>
     /// <param name="applyToOriginal"></param>
@@ -559,9 +511,7 @@ public class PseudoBitmap : IDisposable
         }
     }
 
-    /// <summary>
-    /// 指定されたピクセルのカラー値を返す
-    /// </summary>
+    /// <summary>指定されたピクセルのカラー値を返す</summary>
     /// <param name="x">xピクセル値</param>
     /// <param name="y">yピクセル値</param>
     /// <returns></returns>
@@ -622,17 +572,13 @@ public class PseudoBitmap : IDisposable
         GrayScale = false;
     }
 
-    /// <summary>
-    /// グレースケールの時のx, y位置の生の強度を返す. グレースケールではなかったら常に0を返す.
-    /// </summary>
+    /// <summary>グレースケールの時のx, y位置の生の強度を返す. グレースケールではなかったら常に0を返す.</summary>
     /// <param name="x"></param>
     /// <param name="y"></param>
     /// <returns></returns>
     public double GetPixelRawValue(double x, double y) => GetPixelRawValue((int)(x + 0.5), (int)(y + 0.5));
 
-    /// <summary>
-    /// グレースケールの時のx, y位置の生の強度を返す グレースケールではなかったら常に0を返す.
-    /// </summary>
+    /// <summary>グレースケールの時のx, y位置の生の強度を返す グレースケールではなかったら常に0を返す.</summary>
     /// <param name="x"></param>
     /// <param name="y"></param>
     /// <returns></returns>
@@ -645,9 +591,7 @@ public class PseudoBitmap : IDisposable
             return 0;
     }
 
-    /// <summary>
-    /// 指定されたピクセルの複素数値を返す
-    /// </summary>
+    /// <summary>指定されたピクセルの複素数値を返す</summary>
     /// <param name="x"></param>
     /// <param name="y"></param>
     /// <returns></returns>
@@ -661,9 +605,7 @@ public class PseudoBitmap : IDisposable
 
     public Complex[] GetPixelComplex(double x, double y) => GetPixelComplex((int)Math.Round(x), (int)Math.Round(y));
 
-    /// <summary>
-    /// 等倍のイメージを取得する
-    /// </summary>
+    /// <summary>等倍のイメージを取得する</summary>
     /// <param name="srcCenter"></param>
     /// <param name="zoom"></param>
     /// <param name="destSize"></param>
@@ -674,9 +616,7 @@ public class PseudoBitmap : IDisposable
         return bmp;
     }
 
-    /// <summary>
-    /// 指定された範囲のイメージを取得する
-    /// </summary>
+    /// <summary>指定された範囲のイメージを取得する</summary>
     /// <param name="srcCenter"></param>
     /// <param name="zoom"></param>
     /// <param name="destSize"></param>
@@ -685,9 +625,7 @@ public class PseudoBitmap : IDisposable
         ? null
         : GetImage(GetDrawingArea(srcCenter, zoom, destSize), destSize);
 
-    /// <summary>
-    /// 描画範囲を得る
-    /// </summary>
+    /// <summary>描画範囲を得る</summary>
     /// <param name="srcCenter"></param>
     /// <param name="zoom"></param>
     /// <param name="destSize"></param>
@@ -704,9 +642,7 @@ public class PseudoBitmap : IDisposable
     private RectangleD justBeforeSrcRect;
     private Size justBeforeDestSize;
 
-    /// <summary>
-    /// 指定された範囲のイメージを取得する
-    /// </summary>
+    /// <summary>指定された範囲のイメージを取得する</summary>
     /// <param name="srcRect"></param>
     /// <param name="destSize"></param>
     /// <returns></returns>
@@ -949,9 +885,7 @@ public class PseudoBitmap : IDisposable
         return destBmp;
     }
 
-    /// <summary>
-    /// 実画像モードのとき回転操作を施す
-    /// </summary>
+    /// <summary>実画像モードのとき回転操作を施す</summary>
     /// <param name="bmp"></param>
     /// <param name="angle"></param>
     /// <returns></returns>

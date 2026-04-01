@@ -40,60 +40,38 @@ public partial class FormImageSimulator : CaptureFormBase
         }
     }
 
-    /// <summary>
-    /// Bloch波の数
-    /// </summary>
+    /// <summary>Bloch波の数</summary>
     public int BlochNum { get => numericBoxNumOfBlochWave.ValueInteger; set => numericBoxNumOfBlochWave.Value = value; }
 
-    /// <summary>
-    /// 試料の厚み (nm) (シリアルモードではないとき)
-    /// </summary>
+    /// <summary>試料の厚み (nm) (シリアルモードではないとき)</summary>
     public double Thickness { get => numericBoxThickness.Value; set => numericBoxThickness.Value = value; }
 
     #region 電子顕微鏡の共通パラメータ
 
-    /// <summary>
-    /// 電子の加速電圧 (kV)
-    /// </summary>
+    /// <summary>電子の加速電圧 (kV)</summary>
     public double AccVol { get => numericBoxAccVol.Value; set => numericBoxAccVol.Value = value; }
-    /// <summary>
-    /// 電子の波長 (nm)
-    /// </summary>
+    /// <summary>電子の波長 (nm)</summary>
     public double Lambda => UniversalConstants.Convert.EnergyToElectronWaveLength(AccVol);
 
-    /// <summary>
-    /// デフォーカス値 (nm) (シリアルモードではないとき) 
-    /// </summary>
+    /// <summary>デフォーカス値 (nm) (シリアルモードではないとき)</summary>
     public double Defocus { get => numericBoxDefocus.Value; set => numericBoxDefocus.Value = value; }
 
-    /// <summary>
-    /// 球面収差 Cs (nm) numericBoxCsで表示されているのはmm単位なので、1E6/1E-6 倍変換して get/set
-    /// </summary>
+    /// <summary>球面収差 Cs (nm) numericBoxCsで表示されているのはmm単位なので、1E6/1E-6 倍変換して get/set</summary>
     public double Cs { get => numericBoxCs.Value * 1E6; set => numericBoxCs.Value = value * 1E-6; }
 
-    /// <summary>
-    /// 色収差 Cc (nm) numericBoxCcで表示されているのはmm単位なので、1E6/1E-6 倍変換して get/set
-    /// </summary>
+    /// <summary>色収差 Cc (nm) numericBoxCcで表示されているのはmm単位なので、1E6/1E-6 倍変換して get/set</summary>
     public double Cc { get => numericBoxCc.Value * 1E6; set => numericBoxCc.Value = value * 1E-6; }
 
-    /// <summary>
-    /// 電子の加速電圧の揺らぎ (kV) numericBoxDeltaVで表示されているのはFWHMだが、2 * Sqrt(2 * Log(2)) で割って1000倍して、eV単位の標準偏差に変換する
-    /// </summary>
+    /// <summary>電子の加速電圧の揺らぎ (kV) numericBoxDeltaVで表示されているのはFWHMだが、2 * Sqrt(2 * Log(2)) で割って1000倍して、eV単位の標準偏差に変換する</summary>
     public double DeltaVol { get => DeltaVolFWHM / 2 / Sqrt(2 * Log(2)); set => DeltaVolFWHM = value * 2 * Sqrt(2 * Log(2)); }
 
-    /// <summary>
-    /// 電子の加速電圧の揺らぎ FWHM (kV) 
-    /// </summary>
+    /// <summary>電子の加速電圧の揺らぎ FWHM (kV)</summary>
     public double DeltaVolFWHM { get => numericBoxDeltaV.Value / 1000; set => numericBoxDeltaV.Value = value * 1000;}
 
-    /// <summary>
-    /// Δ
-    /// </summary>
+    /// <summary>Δ</summary>
     public double Delta => Cc * DeltaVol / AccVol;
 
-    /// <summary>
-    /// Scherzer focus (nm) getのみ
-    /// </summary>
+    /// <summary>Scherzer focus (nm) getのみ</summary>
     public double Scherzer => Cs > 0 ? -Sqrt(4.0 / 3.0 * Cs * Lambda) : Sqrt(4.0 / 3.0 * -Cs * Lambda);
 
     #endregion
@@ -103,14 +81,10 @@ public partial class FormImageSimulator : CaptureFormBase
     private BetheMethod.Beam[] BeamsInside { get; set; }
 
     #region 計算する画像サイズ、解像度に関するプロパティ
-    /// <summary>
-    /// イメージの解像度 (nm/pix)
-    /// </summary>
+    /// <summary>イメージの解像度 (nm/pix)</summary>
     public double ImageResolution { get => numericBoxResolution.Value / 1000.0; set => numericBoxResolution.Value = value * 1000.0; }
 
-    /// <summary>
-    /// イメージサイズ 
-    /// </summary>
+    /// <summary>イメージサイズ</summary>
     public Size ImageSize { get => new(numericBoxWidth.ValueInteger, numericBoxHeight.ValueInteger); set { numericBoxWidth.Value = value.Width; numericBoxHeight.Value = value.Height; } }
     #endregion
 
@@ -201,9 +175,7 @@ public partial class FormImageSimulator : CaptureFormBase
                 radioButtonModeTransmissionCrossCoefficient.Checked = true;
         }
     }
-    /// <summary>
-    /// 対物絞りのサイズ (rad)
-    /// </summary>
+    /// <summary>対物絞りのサイズ (rad)</summary>
     public double HRTEM_ObjAperRadius
     {
         get => checkBoxOpenAperture.Checked ? double.PositiveInfinity : numericBoxObjAperRadius.Value / 1000;
@@ -219,62 +191,40 @@ public partial class FormImageSimulator : CaptureFormBase
         }
     }
 
-    /// <summary>
-    /// 対物絞りの中心位置X (rad)
-    /// </summary>
+    /// <summary>対物絞りの中心位置X (rad)</summary>
     public double HRTEM_ObjAperX { get => numericBoxHRTEM_ObjAperX.Value / 1000; set => numericBoxHRTEM_ObjAperX.Value = value * 1000; }
-    /// <summary>
-    /// 対物絞りの中心位置Y (rad)
-    /// </summary>
+    /// <summary>対物絞りの中心位置Y (rad)</summary>
     public double HRTEM_ObjAperY { get => numericBoxHRTEM_ObjAperY.Value / 1000; set => numericBoxHRTEM_ObjAperY.Value = value * 1000; }
 
-    /// <summary>
-    /// 絞りの開放状態
-    /// </summary>
+    /// <summary>絞りの開放状態</summary>
     public bool HRTEM_OpenObjAper { get => checkBoxOpenAperture.Checked; set => checkBoxOpenAperture.Checked = value; }
 
-    /// <summary>
-    /// β (illumination semiangle) (rad) 
-    /// </summary>
+    /// <summary>β (illumination semiangle) (rad)</summary>
     public double HRTEM_Beta { get => numericBoxHRTEM_BetaAgnle.Value / 1000; set => numericBoxHRTEM_BetaAgnle.Value = value * 1000; }
 
     #endregion
 
     #region STEMモード固有
 
-    /// <summary>
-    /// STEMモードの時のみ有効.実効的光源サイズ (nm単位) 
-    /// </summary>
+    /// <summary>STEMモードの時のみ有効.実効的光源サイズ (nm単位)</summary>
     public double STEM_SourceSizeFWHM { get => numericBoxSTEM_EffectiveSourceSize.Value / 1000; set => numericBoxSTEM_EffectiveSourceSize.Value = value * 1000; }
 
-    /// <summary>
-    /// STEMモードの時のみ有効. 実効光源サイズ (nm) (STEM計算に必要) 2 * Sqrt(2 * Log(2)) で割って、標準偏差に変換する
-    /// </summary>
+    /// <summary>STEMモードの時のみ有効. 実効光源サイズ (nm) (STEM計算に必要) 2 * Sqrt(2 * Log(2)) で割って、標準偏差に変換する</summary>
     public double STEM_SourceSizeSigma { get => STEM_SourceSizeFWHM / 2 / Sqrt(2 * Log(2)); set => STEM_SourceSizeFWHM = value * 2 * Sqrt(2 * Log(2)); }
 
-    /// <summary>
-    /// STEM検出器の内径角度 (rad)
-    /// </summary>
+    /// <summary>STEM検出器の内径角度 (rad)</summary>
     public double STEM_DetectorInnerAngle { get => numericBoxSTEM_DetectorInnerAngle.Value / 1000; set => numericBoxSTEM_DetectorInnerAngle.Value = value * 1000; }
 
-    /// <summary>
-    /// STEM検出器の外径角度 (rad)
-    /// </summary>
+    /// <summary>STEM検出器の外径角度 (rad)</summary>
     public double STEM_DetectorOuterAngle { get => numericBoxSTEM_DetectorOuterAngle.Value / 1000; set => numericBoxSTEM_DetectorOuterAngle.Value = value * 1000; }
 
-    /// <summary>
-    /// STEM時の収束角(rad)
-    /// </summary>
+    /// <summary>STEM時の収束角(rad)</summary>
     public double STEM_ConvergenceAngle { get => numericBoxSTEM_ConvergenceAngle.Value / 1000; set => numericBoxSTEM_ConvergenceAngle.Value = value * 1000; }
 
-    /// <summary>
-    /// STEMモードの時のみ有効. 収束ビームを分解する角度. Rad単位 (表示上は mrad なので1000倍に変換される)
-    /// </summary>
+    /// <summary>STEMモードの時のみ有効. 収束ビームを分解する角度. Rad単位 (表示上は mrad なので1000倍に変換される)</summary>
     public double STEM_AngularResolution { get => numericBoxSTEM_AngleResolution.Value / 1000; set => numericBoxSTEM_AngleResolution.Value = value * 1000; }
 
-    /// <summary>
-    /// STEMモードの時のみ有効. TDS計算の際の、サンプルのスライス厚み.　(nm単位)
-    /// </summary>
+    /// <summary>STEMモードの時のみ有効. TDS計算の際の、サンプルのスライス厚み.　(nm単位)</summary>
     public double STEM_SliceThickness { get => numericBoxSTEM_SliceThicknessForInelastic.Value; set => numericBoxSTEM_SliceThicknessForInelastic.Value = value; }
 
 
@@ -361,9 +311,7 @@ public partial class FormImageSimulator : CaptureFormBase
         NumericBoxAccVol_ValueChanged(sender, e);
     }
 
-    /// <summary>
-    /// このフォームのVisibleが変更されたとき。
-    /// </summary>
+    /// <summary>このフォームのVisibleが変更されたとき。</summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
     private void FormImageSimulator_VisibleChanged(object sender, EventArgs e)
@@ -396,9 +344,7 @@ public partial class FormImageSimulator : CaptureFormBase
     #endregion PseudoBitmapに格納する情報
 
     #region Simulateボタン
-    /// <summary>
-    /// Simulateボタンが押されたとき
-    /// </summary>
+    /// <summary>Simulateボタンが押されたとき</summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
     public void ButtonSimulate_Click(object sender, EventArgs e)
@@ -715,9 +661,7 @@ public partial class FormImageSimulator : CaptureFormBase
 
     #region 計算結果をPictureBoxにセット
 
-    /// <summary>
-    /// PseudoBitmapを作成
-    /// </summary>
+    /// <summary>PseudoBitmapを作成</summary>
     /// <param name="tLen"></param>
     /// <param name="dLen"></param>
     /// <param name="images"></param>
@@ -975,16 +919,12 @@ public partial class FormImageSimulator : CaptureFormBase
 
     #region 電子顕微鏡の各種光学パラメータや試料パラメータのイベント
 
-    /// <summary>
-    /// 電子顕微鏡の各種光学パラメータが変更されたとき。レンズ関数を描画
-    /// </summary>
+    /// <summary>電子顕微鏡の各種光学パラメータが変更されたとき。レンズ関数を描画</summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
     private void NumericBoxTEMproperty_ValueChanged(object sender, EventArgs e) => FormCTF.Renew();
 
-    /// <summary>
-    /// 加速電圧が変更されたとき。波長を変更、シェルツァーフォーカス変更、レンズ関数描画、ビームの個数計算
-    /// </summary>
+    /// <summary>加速電圧が変更されたとき。波長を変更、シェルツァーフォーカス変更、レンズ関数描画、ビームの個数計算</summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
     private void NumericBoxAccVol_ValueChanged(object sender, EventArgs e)
@@ -995,9 +935,7 @@ public partial class FormImageSimulator : CaptureFormBase
         NumericBoxObjAperRadius_ValueChanged(sender, e);
 
     }
-    /// <summary>
-    /// 球面収差が変更されたとき。シェルツァーフォーカス変更、レンズ関数描画
-    /// </summary>
+    /// <summary>球面収差が変更されたとき。シェルツァーフォーカス変更、レンズ関数描画</summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
     private void NumericBoxCs_ValueChanged(object sender, EventArgs e)
@@ -1006,9 +944,7 @@ public partial class FormImageSimulator : CaptureFormBase
         FormCTF.Renew();
     }
 
-    /// <summary>
-    /// STEMの収束角、検出器範囲が変更されたとき、半径(nm^-1)の換算値を変更
-    /// </summary>
+    /// <summary>STEMの収束角、検出器範囲が変更されたとき、半径(nm^-1)の換算値を変更</summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
     private void numericBoxSTEM_ConvergenceAngle_ValueChanged(object sender, EventArgs e)
@@ -1020,9 +956,7 @@ public partial class FormImageSimulator : CaptureFormBase
     }
 
 
-    /// <summary>
-    /// デフォーカスが変更されたとき。シリアルモードのデフォーカス開始値変更、レンズ関数描画
-    /// </summary>
+    /// <summary>デフォーカスが変更されたとき。シリアルモードのデフォーカス開始値変更、レンズ関数描画</summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
     private void NumericBoxDefocus_ValueChanged(object sender, EventArgs e)
@@ -1030,16 +964,12 @@ public partial class FormImageSimulator : CaptureFormBase
         numericBoxDefocusStart.Value = numericBoxDefocus.Value;
         FormCTF.Renew();
     }
-    /// <summary>
-    /// 試料厚みが変更されたとき。シリアルモードの試料厚み開始値変更
-    /// </summary>
+    /// <summary>試料厚みが変更されたとき。シリアルモードの試料厚み開始値変更</summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
     private void NumericBoxThickness_ValueChanged(object sender, EventArgs e) => numericBoxThicknessStart.Value = numericBoxThickness.Value;
 
-    /// <summary>
-    /// 対物絞りの半径やシフトが変更されたとき。絞り半径のnm^-1換算値を設定、内側ビームの個数計算
-    /// </summary>
+    /// <summary>対物絞りの半径やシフトが変更されたとき。絞り半径のnm^-1換算値を設定、内側ビームの個数計算</summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
     private void NumericBoxObjAperRadius_ValueChanged(object sender, EventArgs e)
@@ -1053,9 +983,7 @@ public partial class FormImageSimulator : CaptureFormBase
         CalculateInsideSpotInfo();
     }
 
-    /// <summary>
-    /// シリアルモードの試料厚み、ステップ、個数が変更されたとき。厚みリストを変更
-    /// </summary>
+    /// <summary>シリアルモードの試料厚み、ステップ、個数が変更されたとき。厚みリストを変更</summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
     private void NumericBoxThicknessSerial_ValueChanged(object sender, EventArgs e)
@@ -1064,9 +992,7 @@ public partial class FormImageSimulator : CaptureFormBase
         for (int i = 1; i < numericBoxThicknessNum.ValueInteger; i++)
             textBoxThicknessList.Text += "\r\n" + (numericBoxThicknessStart.Value + numericBoxThicknessStep.Value * i).ToString();
     }
-    /// <summary>
-    /// シリアルモードのデフォーカス、ステップ、個数が変更されたとき。デフォーカスリストを変更
-    /// </summary>
+    /// <summary>シリアルモードのデフォーカス、ステップ、個数が変更されたとき。デフォーカスリストを変更</summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
     private void NumericBoxDefocusSerial_ValueChanged(object sender, EventArgs e)
@@ -1075,9 +1001,7 @@ public partial class FormImageSimulator : CaptureFormBase
         for (int i = 1; i < numericBoxDefocusNum.ValueInteger; i++)
             textBoxDefocusList.Text += "\r\n" + (numericBoxDefocusStart.Value + numericBoxDefocusStep.Value * i).ToString();
     }
-    /// <summary>
-    /// ブロッホ波の個数が変更されたとき。FormDiffractionSimulator中のブロッホ波個数を変更、スポット情報更新
-    /// </summary>
+    /// <summary>ブロッホ波の個数が変更されたとき。FormDiffractionSimulator中のブロッホ波個数を変更、スポット情報更新</summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
     private void NumericBoxNumOfBlochWave_ValueChanged(object sender, EventArgs e)
@@ -1087,9 +1011,7 @@ public partial class FormImageSimulator : CaptureFormBase
         CalculateInsideSpotInfo();
     }
 
-    /// <summary>
-    /// 現在のパラメータに従って、対物絞り内のスポット情報を計算。SpotInfoのテーブルを更新。FormDiffractionSimulatorが表示されていれば更新
-    /// </summary>
+    /// <summary>現在のパラメータに従って、対物絞り内のスポット情報を計算。SpotInfoのテーブルを更新。FormDiffractionSimulatorが表示されていれば更新</summary>
     public void CalculateInsideSpotInfo()
     {
         if (!this.Visible)
@@ -1128,9 +1050,7 @@ public partial class FormImageSimulator : CaptureFormBase
     #endregion
 
     #region スポット情報ボタン
-    /// <summary>
-    /// スポット情報ボタン
-    /// </summary>
+    /// <summary>スポット情報ボタン</summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
     private void ButtonDetailsOfSpots_Click(object sender, EventArgs e)
@@ -1142,9 +1062,7 @@ public partial class FormImageSimulator : CaptureFormBase
 
     #region チェックボックス On/Offやボタン押下イベントに伴うパネル類のEnabled, visible設定
 
-    /// <summary>
-    /// 連続画像モード関連のチェックボックス
-    /// </summary>
+    /// <summary>連続画像モード関連のチェックボックス</summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
     private void CheckBoxSerialDefocus_CheckedChanged(object sender, EventArgs e)

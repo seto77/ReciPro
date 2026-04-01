@@ -12,9 +12,7 @@ namespace ReciPro.Properties {
     using System;
     
     
-    /// <summary>
-    ///   ローカライズされた文字列などを検索するための、厳密に型指定されたリソース クラスです。
-    /// </summary>
+    /// <summary>ローカライズされた文字列などを検索するための、厳密に型指定されたリソース クラスです。</summary>
     // このクラスは StronglyTypedResourceBuilder クラスが ResGen
     // または Visual Studio のようなツールを使用して自動生成されました。
     // メンバーを追加または削除するには、.ResX ファイルを編集して、/str オプションと共に
@@ -32,9 +30,7 @@ namespace ReciPro.Properties {
         internal Resources() {
         }
         
-        /// <summary>
-        ///   このクラスで使用されているキャッシュされた ResourceManager インスタンスを返します。
-        /// </summary>
+        /// <summary>このクラスで使用されているキャッシュされた ResourceManager インスタンスを返します。</summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
@@ -60,9 +56,7 @@ namespace ReciPro.Properties {
             }
         }
         
-        /// <summary>
-        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
-        /// </summary>
+        /// <summary>型 System.Drawing.Bitmap のローカライズされたリソースを検索します。</summary>
         public static System.Drawing.Bitmap bethe {
             get {
                 object obj = ResourceManager.GetObject("bethe", resourceCulture);
@@ -70,9 +64,7 @@ namespace ReciPro.Properties {
             }
         }
         
-        /// <summary>
-        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
-        /// </summary>
+        /// <summary>型 System.Drawing.Bitmap のローカライズされたリソースを検索します。</summary>
         public static System.Drawing.Bitmap geometry {
             get {
                 object obj = ResourceManager.GetObject("geometry", resourceCulture);
@@ -80,9 +72,7 @@ namespace ReciPro.Properties {
             }
         }
         
-        /// <summary>
-        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
-        /// </summary>
+        /// <summary>型 System.Drawing.Bitmap のローカライズされたリソースを検索します。</summary>
         public static System.Drawing.Bitmap kaeru {
             get {
                 object obj = ResourceManager.GetObject("kaeru", resourceCulture);
@@ -90,9 +80,7 @@ namespace ReciPro.Properties {
             }
         }
         
-        /// <summary>
-        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
-        /// </summary>
+        /// <summary>型 System.Drawing.Bitmap のローカライズされたリソースを検索します。</summary>
         public static System.Drawing.Bitmap kaeru1 {
             get {
                 object obj = ResourceManager.GetObject("kaeru1", resourceCulture);
@@ -100,9 +88,7 @@ namespace ReciPro.Properties {
             }
         }
         
-        /// <summary>
-        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
-        /// </summary>
+        /// <summary>型 System.Drawing.Bitmap のローカライズされたリソースを検索します。</summary>
         public static System.Drawing.Bitmap TwoDimensionalPseudoVoigt {
             get {
                 object obj = ResourceManager.GetObject("TwoDimensionalPseudoVoigt", resourceCulture);

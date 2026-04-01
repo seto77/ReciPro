@@ -3,32 +3,22 @@
 namespace Crystallography;
 
 [Serializable()]
-/// <summary>
-/// Seitz表記によるSymmetry operationを表現するクラス SymmatryStaticで初期化される
-/// </summary>
+/// <summary>Seitz表記によるSymmetry operationを表現するクラス SymmatryStaticで初期化される</summary>
 public readonly struct SymmetryOperation
 {
     #region フィールド、プロパティ
     public ushort SeriesNumber { get; }
 
-    /// <summary>
-    /// 回転の次数. 1, 2, 3, 4, 6, -1, -2(=m), -3, -4, -6のいずれか
-    /// </summary>
+    /// <summary>回転の次数. 1, 2, 3, 4, 6, -1, -2(=m), -3, -4, -6のいずれか</summary>
     public short Order { get; }
 
-    /// <summary>
-    /// 回転の方向. trueは +1か falseは -1のいずれか
-    /// </summary>
+    /// <summary>回転の方向. trueは +1か falseは -1のいずれか</summary>
     public bool Sense { get; }
 
-    /// <summary>
-    /// 回転の軸.
-    /// </summary>
+    /// <summary>回転の軸.</summary>
     public (int U, int V, int W) Direction { get; }
 
-    /// <summary>
-    /// 並進ベクトル
-    /// </summary>
+    /// <summary>並進ベクトル</summary>
     public (double U, double V, double W) Translation { get; }
 
     #endregion

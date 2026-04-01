@@ -162,9 +162,7 @@ public class ConvertCrystalData
 
     #region SMAPの出力ファイル(*.out)読込
 
-    /// <summary>
-    /// SMAPのoutファイル読み込み
-    /// </summary>
+    /// <summary>SMAPのoutファイル読み込み</summary>
     /// <param name="str"></param>
     /// <returns></returns>
     public static Crystal[] ConvertFromSMAP(string[] str)
@@ -260,9 +258,7 @@ public class ConvertCrystalData
         return [.. cry];
     }
 
-    /// <summary>
-    /// ConvertFromSMAPから呼び出される
-    /// </summary>
+    /// <summary>ConvertFromSMAPから呼び出される</summary>
     /// <param name="x"></param>
     /// <returns></returns>
     public static double ZeroToOne(double x)
@@ -346,9 +342,7 @@ public class ConvertCrystalData
     }
 
 
-    /// <summary>
-    /// amcファイルの読み込み
-    /// </summary>
+    /// <summary>amcファイルの読み込み</summary>
     /// <param name="str"></param>
     /// <returns></returns>
     public static Crystal2 ConvertFromAmc(string[] str)
@@ -948,9 +942,7 @@ public class ConvertCrystalData
         return ConvertFromCIF(str);
     }
 
-    /// <summary>
-    /// CIFファイルを読み込む
-    /// </summary>
+    /// <summary>CIFファイルを読み込む</summary>
     /// <param name="str"></param>
     /// <returns></returns>
     private static Crystal2 ConvertFromCIF(string[] str)

@@ -8,17 +8,11 @@ namespace Crystallography
     {
 
         #region プロパティ 基本 https://www.ccpem.ac.uk/mrc_format/mrc2014.php
-        /// <summary>
-        /// number of columns in 3D data array (fast axis)
-        /// </summary>
+        /// <summary>number of columns in 3D data array (fast axis)</summary>
         public int NX { get; set; }
-        /// <summary>
-        /// number of rows in 3D data array (medium axis)
-        /// </summary>
+        /// <summary>number of rows in 3D data array (medium axis)</summary>
         public int NY { get; set; }
-        /// <summary>
-        /// number of sections in 3D data array (slow axis)
-        /// </summary>
+        /// <summary>number of sections in 3D data array (slow axis)</summary>
         public int NZ { get; set; }
         /// <summary>
         /// 0: 8-bit signed integer (range -128 to 127);
@@ -29,117 +23,67 @@ namespace Crystallography
         /// 6: 16-bit unsigned integer;
         /// </summary>
         public int MODE { get; set; }
-        /// <summary>
-        /// location of first column in unit cell
-        /// </summary>
+        /// <summary>location of first column in unit cell</summary>
         public int NXSTART { get; set; }
-        /// <summary>
-        /// location of first row in unit cell
-        /// </summary>
+        /// <summary>location of first row in unit cell</summary>
         public int NYSTART { get; set; }
-        /// <summary>
-        /// location of first section in unit cell
-        /// </summary>
+        /// <summary>location of first section in unit cell</summary>
         public int NZSTART { get; set; }
-        /// <summary>
-        /// sampling along X axis of unit cell
-        /// </summary>
+        /// <summary>sampling along X axis of unit cell</summary>
         public int MX { get; set; }
-        /// <summary>
-        /// sampling along Y axis of unit cell
-        /// </summary>
+        /// <summary>sampling along Y axis of unit cell</summary>
         public int MY { get; set; }
-        /// <summary>
-        /// sampling along Z axis of unit cell
-        /// </summary>
+        /// <summary>sampling along Z axis of unit cell</summary>
         public int MZ { get; set; }
-        /// <summary>
-        /// cell dimensions in angstroms
-        /// </summary>
+        /// <summary>cell dimensions in angstroms</summary>
         public double[] CELLA { get; set; }
-        /// <summary>
-        /// cell angles in degrees
-        /// </summary>
+        /// <summary>cell angles in degrees</summary>
         public double[] CELLB { get; set; }
 
-        /// <summary>
-        /// axis corresp to cols (1,2,3 for X,Y,Z)
-        /// </summary>
+        /// <summary>axis corresp to cols (1,2,3 for X,Y,Z)</summary>
         public int MAPC { get; set; }
 
-        /// <summary>
-        /// axis corresp to rows (1,2,3 for X,Y,Z)
-        /// </summary>
+        /// <summary>axis corresp to rows (1,2,3 for X,Y,Z)</summary>
         public int MAPR { get; set; }
 
-        /// <summary>
-        /// axis corresp to sections (1,2,3 for X,Y,Z)
-        /// </summary>
+        /// <summary>axis corresp to sections (1,2,3 for X,Y,Z)</summary>
         public int MAPS { get; set; }
 
-        /// <summary>
-        /// minimum density value
-        /// </summary>
+        /// <summary>minimum density value</summary>
         public double DMIN { get; set; }
 
-        /// <summary>
-        /// maximum density value
-        /// </summary>
+        /// <summary>maximum density value</summary>
         public double DMAX { get; set; }
-        /// <summary>
-        /// mean density value
-        /// </summary>
+        /// <summary>mean density value</summary>
         public double DMEAN { get; set; }
 
-        /// <summary>
-        /// space group number
-        /// </summary>
+        /// <summary>space group number</summary>
         public int ISPG { get; set; }
-        /// <summary>
-        /// size of extended header (which follows main header) in bytes
-        /// </summary>
+        /// <summary>size of extended header (which follows main header) in bytes</summary>
         public int NSYMBT { get; set; }
-        /// <summary>
-        /// extra space used for anything - 0 by default
-        /// </summary>
+        /// <summary>extra space used for anything - 0 by default</summary>
         public int EXTLA { get; set; }
 
-        /// <summary>
-        /// code for the type of extended header
-        /// </summary>
+        /// <summary>code for the type of extended header</summary>
         public string EXTTYP { get; set; }
-        /// <summary>
-        /// version of the MRC format
-        /// </summary>
+        /// <summary>version of the MRC format</summary>
         public int NVERSION { get; set; }
 
-        /// <summary>
-        /// phase origin (pixels) or origin of subvolume (A)
-        /// </summary>
+        /// <summary>phase origin (pixels) or origin of subvolume (A)</summary>
         public double[] ORIGIN { get; set; }
 
-        /// <summary>
-        /// character string 'MAP ' to identify file type
-        /// </summary>
+        /// <summary>character string 'MAP ' to identify file type</summary>
         public string MAP { get; set; }
-        /// <summary>
-        /// machine stamp encoding byte ordering of data
-        /// </summary>
+        /// <summary>machine stamp encoding byte ordering of data</summary>
         public string MACHST { get; set; }
 
-        /// <summary>
-        /// rms deviation of map from mean density
-        /// </summary>
+        /// <summary>rms deviation of map from mean density</summary>
         public double RMS { get; set; }
 
-        /// <summary>
-        /// number of labels being used
-        /// </summary>
+        /// <summary>number of labels being used</summary>
         public int NLABEL { get; set; }
 
-        /// <summary>
-        /// 10 80-character text labels
-        /// </summary>
+        /// <summary>10 80-character text labels</summary>
         public string LABEL { get; set; }
 
         #endregion
@@ -183,9 +127,7 @@ namespace Crystallography
         ///  Application name
         /// </summary>
         public string Application { get; set; }//
-        /// <summary>
-        ///  68; 0x0044; 16 chars; Bitmask 1 – #4; 
-        /// </summary>
+        /// <summary>68; 0x0044; 16 chars; Bitmask 1 – #4;</summary>
         public string Application_version { get; set; }//
 
         //電子銃 
@@ -310,9 +252,7 @@ namespace Crystallography
         ///   Nominal camera length[m]
         /// </summary>
         public double Camera_length { get; set; }//
-        /// <summary>
-        /// 309 0x0135 Int32 Bitmask 2 – #1
-        /// </summary>
+        /// <summary>309 0x0135 Int32 Bitmask 2 – #1</summary>
         public int Spot_index { get; set; }// 
         /// <summary>
         /// 313 0x0139 Float64 Bitmask 2 – #2;
@@ -342,9 +282,7 @@ namespace Crystallography
 
 
         //EFTEM イメージ
-        /// <summary>
-        ///  354 0x0162 Bool Bitmask 2 – #7
-        /// </summary>
+        /// <summary>354 0x0162 Bool Bitmask 2 – #7</summary>
         public bool Slit_inserted { get; set; }//
         /// <summary>
         /// 355 0x0163 Float64 Bitmask 2 – #8;
@@ -395,13 +333,9 @@ namespace Crystallography
         /// Camera or dose fraction exposure time
         /// </summary>
         public double Integration_time { get; set; }// 
-        /// <summary>
-        /// 427 0x01AB Int32 Bitmask 2 – #17 -
-        /// </summary>
+        /// <summary>427 0x01AB Int32 Bitmask 2 – #17 -</summary>
         public int Binning_Width { get; set; }// 
-        /// <summary>
-        /// 431 0x01AF Int32 Bitmask 2 – #18 -
-        /// </summary>
+        /// <summary>431 0x01AF Int32 Bitmask 2 – #18 -</summary>
         public int Binning_Height { get; set; }// 
 
 
@@ -412,105 +346,55 @@ namespace Crystallography
         /// </summary>
         public string Camera_name { get; set; }//
 
-        /// <summary>
-        /// 451 0x01C3 Int32 Bitmask 2 – #20 -
-        /// </summary>
+        /// <summary>451 0x01C3 Int32 Bitmask 2 – #20 -</summary>
         public int Readout_area_left { get; set; }// 
-        /// <summary>
-        /// 455 0x01C7 Int32 Bitmask 2 – #21 -
-        /// </summary>
+        /// <summary>455 0x01C7 Int32 Bitmask 2 – #21 -</summary>
         public int Readout_area_top { get; set; }// 
-        /// <summary>
-        /// 459 0x01CB Int32 Bitmask 2 – #22 -
-        /// </summary>
+        /// <summary>459 0x01CB Int32 Bitmask 2 – #22 -</summary>
         public int Readout_area_right { get; set; }// 
-        /// <summary>
-        /// 463 0x01CF Int32 Bitmask 2 – #23 -
-        /// </summary>
+        /// <summary>463 0x01CF Int32 Bitmask 2 – #23 -</summary>
         public int Readout_area_bottom { get; set; }// 
-        /// <summary>
-        /// 467 0x01D3 Bool Bitmask 2 – #24. -
-        /// </summary>
+        /// <summary>467 0x01D3 Bool Bitmask 2 – #24. -</summary>
         public bool Ceta_noise_reduction { get; set; }// 
-        /// <summary>
-        /// 468 0x01D4 Int32 Bitmask 2 – #25. Number of frames summed for dynamic range
-        /// </summary>
+        /// <summary>468 0x01D4 Int32 Bitmask 2 – #25. Number of frames summed for dynamic range</summary>
         public int Ceta_frames_summed { get; set; }// 
-        /// <summary>
-        /// 472 0x01D8 Bool Bitmask 2 – #26. -
-        /// </summary>
+        /// <summary>472 0x01D8 Bool Bitmask 2 – #26. -</summary>
         public bool Direct_detector_electron_counting { get; set; }// 
-        /// <summary>
-        /// 473 0x01D9 Bool Bitmask 2 – #27 -
-        /// </summary>
+        /// <summary>473 0x01D9 Bool Bitmask 2 – #27 -</summary>
         public bool Direct_detector_align_frames { get; set; }// 
-        /// <summary>
-        ///  474 0x01DA Int32 Bitmask 2 – #28 -
-        /// </summary>
+        /// <summary>474 0x01DA Int32 Bitmask 2 – #28 -</summary>
         public int Camera_param_reserved_0 { get; set; }// 
-        /// <summary>
-        /// 478 0x01DE Int32 Bitmask 2 – #29 -
-        /// </summary>
+        /// <summary>478 0x01DE Int32 Bitmask 2 – #29 -</summary>
         public int Camera_param_reserved_1 { get; set; }// 
-        /// <summary>
-        /// 482 0x01E2 Int32 Bitmask 2 – #30 -
-        /// </summary>
+        /// <summary>482 0x01E2 Int32 Bitmask 2 – #30 -</summary>
         public int Camera_param_reserved_2 { get; set; }// 
-        /// <summary>
-        /// 486 0x01E6 Int32 Bitmask 2 – #31 -
-        /// </summary>
+        /// <summary>486 0x01E6 Int32 Bitmask 2 – #31 -</summary>
         public int Camera_param_reserved_3 { get; set; }// 
-        /// <summary>
-        /// 490 0x01EA UInt32 NA Individual bits indicate which metadata fields are set.
-        /// </summary>
+        /// <summary>490 0x01EA UInt32 NA Individual bits indicate which metadata fields are set.</summary>
         public uint Bitmask_3 { get; set; }// 
-        /// <summary>
-        /// 494 0x01EE Int32 Bitmask 3 – #0 -
-        /// </summary>
+        /// <summary>494 0x01EE Int32 Bitmask 3 – #0 -</summary>
         public int Camera_param_reserved_4 { get; set; }// 
-        /// <summary>
-        /// 498 0x01F2 Int32 Bitmask 3 – #1 -
-        /// </summary>
+        /// <summary>498 0x01F2 Int32 Bitmask 3 – #1 -</summary>
         public int Camera_param_reserved_5 { get; set; }// 
-        /// <summary>
-        /// 502 0x01F6 Int32 Bitmask 3 – #2 -
-        /// </summary>
+        /// <summary>502 0x01F6 Int32 Bitmask 3 – #2 -</summary>
         public int Camera_param_reserved_6 { get; set; }// 
-        /// <summary>
-        /// 506 0x01FA Int32 Bitmask 3 – #3 -
-        /// </summary>
+        /// <summary>506 0x01FA Int32 Bitmask 3 – #3 -</summary>
         public int Camera_param_reserved_7 { get; set; }// 
-        /// <summary>
-        /// 519 0x0207 16 chars Bitmask 3 – #7 -
-        /// </summary>
+        /// <summary>519 0x0207 16 chars Bitmask 3 – #7 -</summary>
         public string STEM_Detector_name { get; set; }// 
-        /// <summary>
-        /// 535 0x0217 Float64 Bitmask 3 – #8 -
-        /// </summary>
+        /// <summary>535 0x0217 Float64 Bitmask 3 – #8 -</summary>
         public double Gain { get; set; }// 
-        /// <summary>
-        /// 543 0x021F Float64 Bitmask 3 – #9 -
-        /// </summary>
+        /// <summary>543 0x021F Float64 Bitmask 3 – #9 -</summary>
         public double Offset { get; set; }// 
-        /// <summary>
-        /// 551 0x0227 Int32 Bitmask 3 – #10 -
-        /// </summary>
+        /// <summary>551 0x0227 Int32 Bitmask 3 – #10 -</summary>
         public int STEM_param_reserved_0 { get; set; }// 
-        /// <summary>
-        /// 555 0x022B Int32 Bitmask 3 – #11 -
-        /// </summary>
+        /// <summary>555 0x022B Int32 Bitmask 3 – #11 -</summary>
         public int STEM_param_reserved_1 { get; set; }// 
-        /// <summary>
-        /// 559 0x022F Int32 Bitmask 3 – #12 -
-        /// </summary>
+        /// <summary>559 0x022F Int32 Bitmask 3 – #12 -</summary>
         public int STEM_param_reserved_2 { get; set; }// 
-        /// <summary>
-        /// 563 0x0233 Int32 Bitmask 3 – #13 -
-        /// </summary>
+        /// <summary>563 0x0233 Int32 Bitmask 3 – #13 -</summary>
         public int STEM_param_reserved_3 { get; set; }// 
-        /// <summary>
-        /// 567 0x0237 Int32 Bitmask 3 – #14 -
-        /// </summary>
+        /// <summary>567 0x0237 Int32 Bitmask 3 – #14 -</summary>
         public int STEM_param_reserved_4 { get; set; }// 
 
         //スキャン設定
@@ -524,78 +408,46 @@ namespace Crystallography
         /// Frame time [sec] (currently it will not be used)
         /// </summary>
         public double Frame_time { get; set; }// 
-        /// <summary>
-        /// 587 0x024B Int32 Bitmask 3 – #17 -
-        /// </summary>
+        /// <summary>587 0x024B Int32 Bitmask 3 – #17 -</summary>
         public int Scan_size_left { get; set; }// 
-        /// <summary>
-        ///  591 0x024F Int32 Bitmask 3 – #18 -
-        /// </summary>
+        /// <summary>591 0x024F Int32 Bitmask 3 – #18 -</summary>
         public int Scan_size_top { get; set; }//
-        /// <summary>
-        /// 595 0x0253 Int32 Bitmask 3 – #19 -
-        /// </summary>
+        /// <summary>595 0x0253 Int32 Bitmask 3 – #19 -</summary>
         public int Scan_size_right { get; set; }// 
-        /// <summary>
-        /// 599 0x0257 Int32 Bitmask 3 – #20 -
-        /// </summary>
+        /// <summary>599 0x0257 Int32 Bitmask 3 – #20 -</summary>
         public int Scan_size_bottom { get; set; }// 
-        /// <summary>
-        /// 603 0x025B Float64 Bitmask 3 – #21 Field of view[m]
-        /// </summary>
+        /// <summary>603 0x025B Float64 Bitmask 3 – #21 Field of view[m]</summary>
         public double Full_scan_FOV_X { get; set; }// 
-        /// <summary>
-        /// 611 0x0263 Float64 Bitmask 3 – #22 -
-        /// </summary>
+        /// <summary>611 0x0263 Float64 Bitmask 3 – #22 -</summary>
         public double Full_scan_FOV_Y { get; set; }// 
 
 
         //EDS元素マップ
-        /// <summary>
-        /// 619 0x026B 16 chars Bitmask 3 – #23 -
-        /// </summary>
+        /// <summary>619 0x026B 16 chars Bitmask 3 – #23 -</summary>
         public string Element { get; set; }
-        /// <summary>
-        /// 635 0x027B Float64 Bitmask 3 – #24 -
-        /// </summary>
+        /// <summary>635 0x027B Float64 Bitmask 3 – #24 -</summary>
         public double Energy_interval_lower { get; set; }
-        /// <summary>
-        /// 643 0x0283 Float64 Bitmask 3 – #25 -
-        /// </summary>
+        /// <summary>643 0x0283 Float64 Bitmask 3 – #25 -</summary>
         public double Energy_interval_higher { get; set; }
-        /// <summary>
-        /// 651 0x028B Int32 Bitmask 3 – #26 -
-        /// </summary>
+        /// <summary>651 0x028B Int32 Bitmask 3 – #26 -</summary>
         public int Method { get; set; }
 
 
         //ドーズ 
-        /// <summary>
-        /// 655 0x028F Bool Bitmask 3 – #27 -
-        /// </summary>
+        /// <summary>655 0x028F Bool Bitmask 3 – #27 -</summary>
         bool Is_dose_fraction { get; set; }
-        /// <summary>
-        /// 656 0x0290 Int32 Bitmask 3 – #28 -
-        /// </summary>
+        /// <summary>656 0x0290 Int32 Bitmask 3 – #28 -</summary>
         int Fraction_number { get; set; }
-        /// <summary>
-        /// 660 0x0294 Int32 Bitmask 3 – #29 -
-        /// </summary>
+        /// <summary>660 0x0294 Int32 Bitmask 3 – #29 -</summary>
         int Start_frame { get; set; }
-        /// <summary>
-        /// 664 0x0298 Int32 Bitmask 3 – #30 -
-        /// </summary>
+        /// <summary>664 0x0298 Int32 Bitmask 3 – #30 -</summary>
         int End_frame { get; set; }
 
         //再構築
-        /// <summary>
-        /// 668 0x029C 80 chars Bitmask 3 – #31 -
-        /// </summary>
+        /// <summary>668 0x029C 80 chars Bitmask 3 – #31 -</summary>
         string Input_stack_filename { get; set; }
 
-        /// <summary>
-        /// 748 0x02EC UInt32 NA. Individual bits indicate which metadata fields are set.
-        /// </summary>
+        /// <summary>748 0x02EC UInt32 NA. Individual bits indicate which metadata fields are set.</summary>
         uint Bitmask_4 { get; set; }
         /// <summary>
         /// 752 0x02F0 Float64 Bitmask 4 – #0
@@ -603,18 +455,14 @@ namespace Crystallography
         /// </summary>
         double Alpha_tilt_min { get; set; }
 
-        /// <summary>
-        /// 760 0x02F8 Float64 Bitmask 4 – #1
-        /// </summary>
+        /// <summary>760 0x02F8 Float64 Bitmask 4 – #1</summary>
         double Alpha_tilt_max { get; set; }
         #endregion
 
         public List<List<double>> Images { get; set; }
 
 
-        /// <summary>
-        /// コンストラクタ 引数のファイル名で初期化
-        /// </summary>
+        /// <summary>コンストラクタ 引数のファイル名で初期化</summary>
         /// <param name="filename"></param>
         public MRC(string filename)
         {

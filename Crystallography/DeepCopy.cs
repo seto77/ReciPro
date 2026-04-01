@@ -30,9 +30,7 @@ namespace Crystallography
     }
      */
 
-    /// <summary>
-    ///
-    /// </summary>
+    /// <summary></summary>
     public static class Deep
     {
         //Element element = Deep.Copy<Element>(e);みたいな感じで使う

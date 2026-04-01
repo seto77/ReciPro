@@ -2,9 +2,7 @@
 
 public static class AtomStaticSub
 {
-    /// <summary>
-    /// MassAbsorptionCoefficient[z][n] z:原子番号, n: データ番号 4万行もあって、超巨大。どうにかする?
-    /// </summary>
+    /// <summary>MassAbsorptionCoefficient[z][n] z:原子番号, n: データ番号 4万行もあって、超巨大。どうにかする?</summary>
     /// 
     public static readonly (double X, double Y)[][][] MassAbsorptionCoefficient =
 

@@ -13,14 +13,10 @@ public sealed class EbsdMonteCarloDistribution
 {
     public int BinCount { get; }
 
-    /// <summary>
-    /// ビンごとの正規化重み。BinWeights[binI, binJ] は double[energyCount * depthCount]。 // (260327Ch)
-    /// </summary>
+    /// <summary>ビンごとの正規化重み。BinWeights[binI, binJ] は double[energyCount * depthCount]。 // (260327Ch)</summary>
     public double[,][] BinWeights { get; }
 
-    /// <summary>
-    /// model 2 用。detector bin の absolute 強度を保った depth-slice 重み。260325Ch 追加
-    /// </summary>
+    /// <summary>model 2 用。detector bin の absolute 強度を保った depth-slice 重み。260325Ch 追加</summary>
     public double[,][] BinAbsoluteSliceWeights { get; }
 
     public EbsdMonteCarloDistribution(

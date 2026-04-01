@@ -6,49 +6,37 @@ using System.Text;
 
 namespace Crystallography
 {
-    /// <summary>
-    /// STLファイル
-    /// </summary>
+    /// <summary>STLファイル</summary>
     public class StlFile
     {
         #region Constructions
-        /// <summary>
-        /// コンストラクタ
-        /// </summary>
+        /// <summary>コンストラクタ</summary>
         public StlFile()
         {
         }
         #endregion Constructions
 
         #region Constants
-        /// <summary>
-        /// バイナリ形式I/O時の有効最大ヘッダバイト数
-        /// </summary>
+        /// <summary>バイナリ形式I/O時の有効最大ヘッダバイト数</summary>
         private const int HeaderLength = 80;
         #endregion Constants
 
         #region Properties
-        /// <summary>
-        /// ヘッダーテキスト
-        /// </summary>
+        /// <summary>ヘッダーテキスト</summary>
         /// <remarks>
         /// 初期値は null なので必要に応じて領域確保してください
         /// バイナリ形式のI/Oでは最大80バイトまで
         /// </remarks>
         public byte[] Header { get; set; }
 
-        /// <summary>
-        /// フッターテキスト
-        /// </summary>
+        /// <summary>フッターテキスト</summary>
         /// <remarks>
         /// 初期値は null なので必要に応じて領域確保してください
         /// ASCII形式のI/Oのみ利用
         /// </remarks>
         public byte[] Footer { get; set; }
 
-        /// <summary>
-        /// ファセット(三角形)配列
-        /// </summary>
+        /// <summary>ファセット(三角形)配列</summary>
         /// <remarks>
         /// 初期値は null なので必要に応じて領域確保してください
         /// </remarks>
@@ -56,9 +44,7 @@ namespace Crystallography
         #endregion Properties
 
         #region Methods
-        /// <summary>
-        /// バイナリ形式でのSTLファイル書き込み
-        /// </summary>
+        /// <summary>バイナリ形式でのSTLファイル書き込み</summary>
         /// <param name="filePath">ファイルパス</param>
         /// <returns>正常終了した場合は true、その他の場合は false</returns>
         /// <remarks>前提としてリトルエンディアンとする</remarks>
@@ -120,9 +106,7 @@ namespace Crystallography
             return true;
         }
 
-        /// <summary>
-        /// バイナリ形式でのSTLファイル読み込み
-        /// </summary>
+        /// <summary>バイナリ形式でのSTLファイル読み込み</summary>
         /// <param name="filePath">ファイルパス</param>
         /// <returns>正常終了した場合は true、その他の場合は false</returns>
         /// <remarks>前提としてリトルエンディアンとする</remarks>
@@ -189,9 +173,7 @@ namespace Crystallography
             return true;
         }
 
-        /// <summary>
-        /// テキスト(ASCII)形式でのSTLファイル書き込み
-        /// </summary>
+        /// <summary>テキスト(ASCII)形式でのSTLファイル書き込み</summary>
         /// <param name="filePath">ファイルパス</param>
         /// <returns>正常終了した場合は true、その他の場合は false</returns>
         public bool WriteAscii(string filePath)
@@ -238,9 +220,7 @@ namespace Crystallography
             return true;
         }
 
-        /// <summary>
-        /// テキスト(ASCII)形式でのSTLファイル読み込み
-        /// </summary>
+        /// <summary>テキスト(ASCII)形式でのSTLファイル読み込み</summary>
         /// <param name="filePath">ファイルパス</param>
         /// <returns>正常終了した場合は true、その他の場合は false</returns>
         public bool ReadAscii(string filePath)
@@ -330,15 +310,11 @@ namespace Crystallography
         #endregion Methods
     }
 
-    /// <summary>
-    /// 頂点
-    /// </summary>
+    /// <summary>頂点</summary>
     public struct StlVertex
     {
         #region Constructions
-        /// <summary>
-        /// コンストラクタ
-        /// </summary>
+        /// <summary>コンストラクタ</summary>
         public StlVertex(float x, float y, float z)
         {
             X = x;
@@ -348,39 +324,27 @@ namespace Crystallography
         #endregion Constructions
 
         #region Properties
-        /// <summary>
-        /// X成分
-        /// </summary>
+        /// <summary>X成分</summary>
         public float X { get; set; }
 
-        /// <summary>
-        /// Y成分
-        /// </summary>
+        /// <summary>Y成分</summary>
         public float Y { get; set; }
 
-        /// <summary>
-        /// Z成分
-        /// </summary>
+        /// <summary>Z成分</summary>
         public float Z { get; set; }
         #endregion Properties
     }
 
-    /// <summary>
-    /// ファセット（3頂点と1法線で表現する三角形）
-    /// </summary>
+    /// <summary>ファセット（3頂点と1法線で表現する三角形）</summary>
     public class StlFacet
     {
         #region Constructions
-        /// <summary>
-        /// コンストラクタ
-        /// </summary>
+        /// <summary>コンストラクタ</summary>
         public StlFacet()
         {
         }
 
-        /// <summary>
-        /// コンストラクタ
-        /// </summary>
+        /// <summary>コンストラクタ</summary>
         public StlFacet(in StlVertex normal, in StlVertex vertex1, in StlVertex vertex2, in StlVertex vertex3)
         {
             Normal = normal;
@@ -391,24 +355,16 @@ namespace Crystallography
         #endregion Constructions
 
         #region Properties
-        /// <summary>
-        /// 法線
-        /// </summary>
+        /// <summary>法線</summary>
         public StlVertex Normal;
 
-        /// <summary>
-        /// 1点目頂点
-        /// </summary>
+        /// <summary>1点目頂点</summary>
         public StlVertex Vertex1;
 
-        /// <summary>
-        /// 2点目頂点
-        /// </summary>
+        /// <summary>2点目頂点</summary>
         public StlVertex Vertex2;
 
-        /// <summary>
-        /// 3点目頂点
-        /// </summary>
+        /// <summary>3点目頂点</summary>
         public StlVertex Vertex3;
         #endregion Properties
     }

@@ -19,9 +19,7 @@ public static class TkEx
 {
     #region V2dに関する拡張メソッド
 
-    /// <summary>
-    /// 拡張メソッド.
-    /// </summary>
+    /// <summary>拡張メソッド.</summary>
     /// <param name="v"></param>
     /// <returns></returns>
     public static V2f ToV2f(in this V2d v) => new((float)v.X, (float)v.Y);
@@ -30,23 +28,17 @@ public static class TkEx
 
     #region V3dに関するメソッド
 
-    /// <summary>
-    /// 拡張メソッド.
-    /// </summary>
+    /// <summary>拡張メソッド.</summary>
     /// <param name="v"></param>
     /// <returns></returns>
     public static V3f ToV3f(in this V3d v) => new((float)v.X, (float)v.Y, (float)v.Z);
 
-    /// <summary>
-    /// 拡張メソッド.
-    /// </summary>
+    /// <summary>拡張メソッド.</summary>
     /// <param name="v"></param>
     /// <returns></returns>
     public static Vector3DBase ToVector3DBase(in this V3d v) => new(v.X, v.Y, v.Z);
 
-    /// <summary>
-    /// 拡張メソッド.
-    /// </summary>
+    /// <summary>拡張メソッド.</summary>
     /// <param name="v"></param>
     /// <returns></returns>
     public static V4d ToV4d(in this V3d v) => new(v.X, v.Y, v.Z, 1);
@@ -57,16 +49,12 @@ public static class TkEx
 
     #region V3fに関する拡張メソッド
 
-    /// <summary>
-    /// 拡張メソッド.
-    /// </summary>
+    /// <summary>拡張メソッド.</summary>
     /// <param name="v"></param>
     /// <returns></returns>
     public static C4 ToC4(in this V3f v, in float A) => new(v.X, v.Y, v.Z, A);
 
-    /// <summary>
-    /// 拡張メソッド.
-    /// </summary>
+    /// <summary>拡張メソッド.</summary>
     /// <param name="v"></param>
     /// <returns></returns>
     public static V3d ToV3d(in this V3f v) => new(v.X, v.Y, v.Z);
@@ -78,24 +66,18 @@ public static class TkEx
 
     #region V4fに関する拡張メソッド
 
-    /// <summary>
-    /// 拡張メソッド.
-    /// </summary>
+    /// <summary>拡張メソッド.</summary>
     /// <param name="v"></param>
     /// <returns></returns>
     public static float[] ToArray(in this V4f v) => [v.X, v.Y, v.Z, v.W];
 
-    /// <summary>
-    /// 拡張メソッド.
-    /// </summary>
+    /// <summary>拡張メソッド.</summary>
     /// <param name="v"></param>
     /// <returns></returns>
     public static C4 ToC4(in this V4f v) => new(v.X, v.Y, v.Z, v.W);
 
 
-    /// <summary>
-    /// 拡張メソッド.
-    /// </summary>
+    /// <summary>拡張メソッド.</summary>
     /// <param name="v"></param>
     /// <returns></returns>
     public static V3d ToV3d(in this V4f v) => new(v.X, v.Y, v.Z);
@@ -104,37 +86,27 @@ public static class TkEx
 
     #region V4dに関する拡張メソッド
 
-    /// <summary>
-    /// 拡張メソッド.
-    /// </summary>
+    /// <summary>拡張メソッド.</summary>
     /// <param name="v"></param>
     /// <returns></returns>
     public static V4f ToV4f(in this V4d v) => new((float)v.X, (float)v.Y, (float)v.Z, (float)v.W);
 
-    /// <summary>
-    /// 拡張メソッド.
-    /// </summary>
+    /// <summary>拡張メソッド.</summary>
     /// <param name="v"></param>
     /// <returns></returns>
     public static V3f ToV3f(in this V4d v) => new((float)v.X, (float)v.Y, (float)v.Z);
 
-    /// <summary>
-    /// 拡張メソッド.
-    /// </summary>
+    /// <summary>拡張メソッド.</summary>
     /// <param name="v"></param>
     /// <returns></returns>
     public static double[] ToArray(in this V4d v) => [v.X, v.Y, v.Z, v.W];
 
-    /// <summary>
-    /// 拡張メソッド.
-    /// </summary>
+    /// <summary>拡張メソッド.</summary>
     /// <param name="v"></param>
     /// <returns></returns>
     public static float[] ToArrayF(in this V4d v) => [(float)v.X, (float)v.Y, (float)v.Z, (float)v.W];
 
-    /// <summary>
-    /// 拡張メソッド.
-    /// </summary>
+    /// <summary>拡張メソッド.</summary>
     /// <param name="v"></param>
     /// <returns></returns>
     public static C4 ToC4(in this V4d v) => new((float)v.X, (float)v.Y, (float)v.Z, (float)v.W);
@@ -143,16 +115,12 @@ public static class TkEx
 
     #region C4に関する拡張メソッド
 
-    /// <summary>
-    /// 拡張メソッド.
-    /// </summary>
+    /// <summary>拡張メソッド.</summary>
     /// <param name="v"></param>
     /// <returns></returns>
     public static V4f ToV4f(in this C4 c) => new(c.R, c.G, c.B, c.A);
 
-    /// <summary>
-    /// 拡張メソッド. Aチャンネルを削除してVector3に変換.
-    /// </summary>
+    /// <summary>拡張メソッド. Aチャンネルを削除してVector3に変換.</summary>
     /// <param name="c"></param>
     /// <returns></returns>
     public static V3f ToV3f(in this C4 c) => new(c.R, c.G, c.B);
@@ -164,9 +132,7 @@ public static class TkEx
 
     #region M4dに関する拡張メソッド
 
-    /// <summary>
-    /// 拡張メソッド.
-    /// </summary>
+    /// <summary>拡張メソッド.</summary>
     /// <param name="v"></param>
     /// <returns></returns>
     public static M4f ToM4f(in this M4d m) => new(
@@ -176,9 +142,7 @@ public static class TkEx
         (float)m.M41, (float)m.M42, (float)m.M43, (float)m.M44
        );
 
-    /// <summary>
-    /// 拡張メソッド.
-    /// </summary>
+    /// <summary>拡張メソッド.</summary>
     /// <param name="v"></param>
     /// <returns></returns>
     public static Matrix3D ToMatrix3D(in this M4d m) => new(
@@ -191,9 +155,7 @@ public static class TkEx
 
     #region M3dに関する拡張メソッド
 
-    /// <summary>
-    /// 拡張メソッド.
-    /// </summary>
+    /// <summary>拡張メソッド.</summary>
     /// <param name="v"></param>
     /// <returns></returns>
     public static M3f ToM3f(in this M3d m) => new(
@@ -202,9 +164,7 @@ public static class TkEx
         (float)m.M31, (float)m.M32, (float)m.M33
        );
 
-    /// <summary>
-    /// 拡張メソッド.
-    /// </summary>
+    /// <summary>拡張メソッド.</summary>
     /// <param name="v"></param>
     /// <returns></returns>
     public static Matrix3D ToMatrix3D(in this M3d m) => new(
@@ -214,9 +174,7 @@ public static class TkEx
        );
 
 
-    /// <summary>
-    /// 拡張メソッド.
-    /// </summary>
+    /// <summary>拡張メソッド.</summary>
     /// <param name="v"></param>
     /// <returns></returns>
     public static M4d ToMatrix4d(in this M3d m) => new(m);

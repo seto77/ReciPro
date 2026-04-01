@@ -86,9 +86,7 @@ namespace Crystallography.Controls
         [System.Runtime.InteropServices.DllImport("USER32.dll")]
         private static extern uint SendMessage(System.IntPtr hWnd, uint msg, uint wParam, uint lParam);
 
-        /// <summary>
-        /// リッチエディットボックスのフォントが勝手に変わるのを抑制する
-        /// </summary>
+        /// <summary>リッチエディットボックスのフォントが勝手に変わるのを抑制する</summary>
         /// <param name="RichTextBoxCtrl">フォントが勝手に変わるのを抑制するリッチテキストボックス</param>
         private static void NoRichTextChange(RichTextBox RichTextBoxCtrl)
         {

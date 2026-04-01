@@ -15,46 +15,30 @@ public enum IsothermalPressure
     BM3, BM4, Vinet, Vinet3, AP2, Keane
 }
 
-/// <summary>
-/// EOS の概要の説明です。
-/// </summary>
+/// <summary>EOS の概要の説明です。</summary>
 [Serializable()]
 public class EOS
 {
     #region プロパティ
-    /// <summary>
-    /// EOSを有効かするかどうか
-    /// </summary>
+    /// <summary>EOSを有効かするかどうか</summary>
     public bool Enabled { get; set; } = false;
 
-    /// <summary>
-    /// Standard Cell Volume
-    /// </summary>
+    /// <summary>Standard Cell Volume</summary>
     public double CellVolume0 { get; set; }
 
-    /// <summary>
-    /// Standard Temperature in Kelvin
-    /// </summary>
+    /// <summary>Standard Temperature in Kelvin</summary>
     public double T0 { get; set; } = 300;
 
-    /// <summary>
-    /// Isothermal Bulk Modulus at Standard temperature
-    /// </summary>
+    /// <summary>Isothermal Bulk Modulus at Standard temperature</summary>
     public double K0 { get; set; }
 
-    /// <summary>
-    /// First Pressure Derivative Of Bulk Modulus
-    /// </summary>
+    /// <summary>First Pressure Derivative Of Bulk Modulus</summary>
     public double Kp0 { get; set; }
 
-    /// <summary>
-    /// First Pressure Derivative Of Bulk Modulus at infinity
-    /// </summary>
+    /// <summary>First Pressure Derivative Of Bulk Modulus at infinity</summary>
     public double KpInfinity { get; set; }
 
-    /// <summary>
-    /// Second Pressure derivative Of Bulk Modulus
-    /// </summary>
+    /// <summary>Second Pressure derivative Of Bulk Modulus</summary>
     public double Kpp0 { get; set; }
 
 
@@ -62,79 +46,49 @@ public class EOS
     public double Vinet3rd_Beta { get; set; }
     public double Vinet3rd_Psi { get; set; }
 
-    /// <summary>
-    /// Grüneisen Parameter at Standard Volume
-    /// </summary>
+    /// <summary>Grüneisen Parameter at Standard Volume</summary>
     public double Gamma0 { get; set; }
 
-    /// <summary>
-    /// Debye Temperature at Standard Volume
-    /// </summary>
+    /// <summary>Debye Temperature at Standard Volume</summary>
     public double Theta0 { get; set; }
 
-    /// <summary>
-    /// Volume dependence of Grüneisen parameter
-    /// </summary>
+    /// <summary>Volume dependence of Grüneisen parameter</summary>
     public double Q { get; set; }
 
-    /// <summary>
-    /// Derivative of bulk modulus by temperature (∂KT0 /∂T)
-    /// </summary>
+    /// <summary>Derivative of bulk modulus by temperature (∂KT0 /∂T)</summary>
     public double KperT { get; set; }
 
-    /// <summary>
-    /// Thermal expansivity coefficients A (10^-5/K)
-    /// </summary>
+    /// <summary>Thermal expansivity coefficients A (10^-5/K)</summary>
     public double A { get; set; }
 
-    /// <summary>
-    /// Thermal expansivity coefficients B (10^-9/K)
-    /// </summary>
+    /// <summary>Thermal expansivity coefficients B (10^-9/K)</summary>
     public double B { get; set; }
 
-    /// <summary>
-    /// Thermal expansivity coefficients C (K)
-    /// </summary>
+    /// <summary>Thermal expansivity coefficients C (K)</summary>
     public double C { get; set; }
 
-    /// <summary>
-    /// Thermal Pressure Approach (T-dependence K0&V0  or Mie-Gruneisen)
-    /// </summary>
+    /// <summary>Thermal Pressure Approach (T-dependence K0&V0  or Mie-Gruneisen)</summary>
     public ThermalPressure ThermalPressureApproach { get; set; } = ThermalPressure.MieGruneisen;
 
-    /// <summary>
-    /// IsothermalPressureApproach (Vinet or Birch-Murnaghan)
-    /// </summary>
+    /// <summary>IsothermalPressureApproach (Vinet or Birch-Murnaghan)</summary>
     public IsothermalPressure IsothermalPressureApproach { get; set; } = IsothermalPressure.BM3;
 
-    /// <summary>
-    /// Number of formula in unit cell
-    /// </summary>
+    /// <summary>Number of formula in unit cell</summary>
     public double Z { get; set; }
 
-    /// <summary>
-    /// The total number of electrons in the unit cell
-    /// </summary>
+    /// <summary>The total number of electrons in the unit cell</summary>
     public double Ze { get; set; }
 
-    /// <summary>
-    /// atoms per formula
-    /// </summary>
+    /// <summary>atoms per formula</summary>
     public int N { get; set; }
 
-    /// <summary>
-    /// Note
-    /// </summary>
+    /// <summary>Note</summary>
     public string Note { get; set; }
 
-    /// <summary>
-    /// Temperature in Kelvin
-    /// </summary>
+    /// <summary>Temperature in Kelvin</summary>
     public double Temperature { get; set; } = 300;
 
-    /// <summary>
-    /// Pressure in GPa
-    /// </summary>
+    /// <summary>Pressure in GPa</summary>
     public double Pressure { get; set; } = 0;
 
     #endregion 
@@ -197,9 +151,7 @@ public class EOS
     }
 
 
-    /// <summary>
-    /// MieGruneisenによるThermal pressureの計算
-    /// </summary>
+    /// <summary>MieGruneisenによるThermal pressureの計算</summary>
     /// <param name="z">Number of formula in unit cell</param>
     /// <param name="n"> atoms per formula</param>
     /// <param name="theta0">Debye Temperature at Standard Volume</param>
@@ -226,9 +178,7 @@ public class EOS
         return deltaPth;
     }
 
-    /// <summary>
-    /// MieGruneisenによるThermal pressureの計算 (Yokoo et alなど)
-    /// </summary>
+    /// <summary>MieGruneisenによるThermal pressureの計算 (Yokoo et alなど)</summary>
     /// <param name="z">Number of formula in unit cell</param>
     /// <param name="n"> atoms per formula</param>
     /// <param name="theta0">Debye Temperature at Standard Volume</param>
@@ -276,9 +226,7 @@ public class EOS
         return 3 * k0 * (1 - x) / Math.Pow(x, 5) * Math.Exp(C0 * (1 - x)) * (1 + x * C2 * (1 - x));
     }
 
-    /// <summary>
-    /// 3次のBurchiNurnaghan
-    /// </summary>
+    /// <summary>3次のBurchiNurnaghan</summary>
     /// <param name="k0"></param>
     /// <param name="k_prime"></param>
     /// <param name="v0"></param>
@@ -287,9 +235,7 @@ public class EOS
     public static double BirchMurnaghan3rd(double k0, double k_prime, double v0, double v)
         => BirchMurnaghan3rd(k0, k_prime, v0 / v);
 
-    /// <summary>
-    /// 3次のBurchiNurnaghan
-    /// </summary>
+    /// <summary>3次のBurchiNurnaghan</summary>
     /// <param name="k0"></param>
     /// <param name="k_prime"></param>
     /// <param name="v0"></param>
@@ -355,9 +301,7 @@ public class EOS
     }
 
 
-    /// <summary>
-    /// ∫z^3/(e^z-1)dz 0～xの積分を求める関数
-    /// </summary>
+    /// <summary>∫z^3/(e^z-1)dz 0～xの積分を求める関数</summary>
     /// <param name="x"></param>
     /// <returns></returns>
     private static double integ(double x)
@@ -427,9 +371,7 @@ public class EOS
     }
 
 
-    /// <summary>
-    /// Au (Fratanduono et al., 2021) Thermal pressureなし
-    /// </summary>
+    /// <summary>Au (Fratanduono et al., 2021) Thermal pressureなし</summary>
     /// <param name="v0"></param>
     /// <param name="v"></param>
     /// <returns></returns>
@@ -442,9 +384,7 @@ public class EOS
         return p_t0;
     }
 
-    /// <summary>
-    /// Pt (Fratanduono et al., 2021) Thermal pressureなし
-    /// </summary>
+    /// <summary>Pt (Fratanduono et al., 2021) Thermal pressureなし</summary>
     /// <param name="v0"></param>
     /// <param name="v"></param>
     /// <returns></returns>
@@ -542,9 +482,7 @@ public class EOS
         return 3 * BT * ((1 - X) / X / X) * Math.Exp(1.5 * (BprimeT - 1) * (1 - X)) + AlfaT * BT * (T - 300) / 10000;
     }
 
-    /// <summary>
-    /// Pt(Matsui2009)の状態方程式
-    /// </summary>
+    /// <summary>Pt(Matsui2009)の状態方程式</summary>
     /// <param name="T"></param>
     /// <param name="T0"></param>
     /// <param name="a"></param>

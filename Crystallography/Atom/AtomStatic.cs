@@ -36,9 +36,7 @@ public static partial class AtomStatic // (260401Ch) generated NIST elastic samp
 
     #region static readonly フィールド
 
-    /// <summary>
-    /// 同位体存在度. IsotopeAbundance[z][a]: z 原子番号, a 質量数
-    /// </summary>
+    /// <summary>同位体存在度. IsotopeAbundance[z][a]: z 原子番号, a 質量数</summary>
     public static readonly Dictionary<int, double>[] IsotopeAbundance = [
 			#region
 			new() {{0,0}},
@@ -470,9 +468,7 @@ public static partial class AtomStatic // (260401Ch) generated NIST elastic samp
 			#endregion
 		];
 
-    /// <summary>
-    /// 純元素の密度
-    /// </summary>
+    /// <summary>純元素の密度</summary>
     public static readonly double[] NominalDensity = [
             #region
             0 ,
@@ -571,9 +567,7 @@ public static partial class AtomStatic // (260401Ch) generated NIST elastic samp
             #endregion
         ];
 
-    /// <summary>
-    /// X線による原子散乱因子 XrayScattering[AtomicNumber][SubNumber]
-    /// </summary>
+    /// <summary>X線による原子散乱因子 XrayScattering[AtomicNumber][SubNumber]</summary>
     public static readonly ES[][] XrayScattering =
         [
     
@@ -1645,9 +1639,7 @@ new(1.59158,   2.99874,   0.556367  ,   3.41054,   0.180994  ,   1.01462,   3.81
         #endregion
     ];
 
-    /// <summary>
-    /// 電子線による原子散乱因子 ElectronScatteringKirkrand[AtomicNumber]
-    /// </summary>
+    /// <summary>電子線による原子散乱因子 ElectronScatteringKirkrand[AtomicNumber]</summary>
     public static readonly ES[] ElectronScatteringKirkrand =
     [
 				#region
@@ -2070,9 +2062,7 @@ new(4.86738014,0.319974401,4.58872425,
         #endregion
     ];
 
-    /// <summary>
-    /// 中性子の散乱長 単位はfm
-    /// </summary>
+    /// <summary>中性子の散乱長 単位はfm</summary>
     public static readonly Complex[][] NeutronCoherentScattering =
         [
 			#region 単位はfm
@@ -2484,31 +2474,68 @@ new(4.86738014,0.319974401,4.58872425,
                     #endregion
     ];
 
+
+    /// <summary>(260331Ch) TPP-2M の平均価電子数 Nv。Jablonski / Tanuma / Powell の IMFP 論文の元素表を優先し、未収録元素は後段の簡易推定へフォールバックする</summary>
+    public static readonly Dictionary<int, (double ValenceElectrons, double BandGapEv)> ElementInelasticParameters = new()
+    {
+        [3] = (1.0, 0.0),
+        [4] = (2.0, 0.0),
+        [6] = (4.0, 0.0),
+        [11] = (1.0, 0.0),
+        [12] = (2.0, 0.0),
+        [13] = (3.0, 0.0),
+        [14] = (4.0, 1.1),
+        [19] = (1.0, 0.0),
+        [21] = (3.0, 0.0),
+        [22] = (4.0, 0.0),
+        [23] = (5.0, 0.0),
+        [24] = (6.0, 0.0),
+        [26] = (8.0, 0.0),
+        [27] = (9.0, 0.0),
+        [28] = (10.0, 0.0),
+        [29] = (11.0, 0.0),
+        [32] = (4.0, 0.67),
+        [39] = (3.0, 0.0),
+        [41] = (5.0, 0.0),
+        [42] = (6.0, 0.0),
+        [44] = (8.0, 0.0),
+        [45] = (9.0, 0.0),
+        [46] = (10.0, 0.0),
+        [47] = (11.0, 0.0),
+        [49] = (3.0, 0.0),
+        [50] = (4.0, 0.0),
+        [55] = (1.0, 0.0),
+        [64] = (9.0, 0.0),
+        [65] = (9.0, 0.0),
+        [66] = (9.0, 0.0),
+        [72] = (4.0, 0.0),
+        [73] = (5.0, 0.0),
+        [74] = (6.0, 0.0),
+        [75] = (7.0, 0.0),
+        [76] = (8.0, 0.0),
+        [77] = (9.0, 0.0),
+        [78] = (10.0, 0.0),
+        [79] = (11.0, 0.0),
+        [83] = (5.0, 0.0),
+    };
+
     #endregion
 
     #region ElasticScattering クラス
     public class ES
     {
         #region フィールド、プロパティ
-        /// <summary>
-        /// Valence　価数
-        /// </summary>
+        /// <summary>Valence　価数</summary>
         public readonly int Valence;
 
-        /// <summary>
-        /// 散乱因子の計算方法
-        /// </summary>
+        /// <summary>散乱因子の計算方法</summary>
         public readonly string Method;
 
-        /// <summary>
-        /// 引数がS2 (単位: nm^-2), 戻り値が振幅 (単位: nm)の関数
-        /// </summary>
+        /// <summary>引数がS2 (単位: nm^-2), 戻り値が振幅 (単位: nm)の関数</summary>
         public Func<double, double> Factor { get; }
 
 
-        /// <summary>
-        /// 引数が r (原子の中心からの距離)、戻り値(単位: volt * angstrom)が投影ポテンシャルの関数
-        /// </summary>
+        /// <summary>引数が r (原子の中心からの距離)、戻り値(単位: volt * angstrom)が投影ポテンシャルの関数</summary>
         public Func<double, double> ProjectedPotential { get; }
 
         private readonly (double A, double B)[] Prms = [];
@@ -2534,9 +2561,7 @@ new(4.86738014,0.319974401,4.58872425,
             Factor = new Func<double, double>(s2 => (Prms.Sum(p => p.A * Math.Exp(-s2 * 0.01 * p.B)) + c) * 0.1);
         }
 
-        /// <summary>
-        /// 電子線用のコンストラクタ (Five gaussian)
-        /// </summary>
+        /// <summary>電子線用のコンストラクタ (Five gaussian)</summary>
         /// <param name="a1"></param>
         /// <param name="a2"></param>
         /// <param name="a3"></param>
@@ -2557,9 +2582,7 @@ new(4.86738014,0.319974401,4.58872425,
             Factor = new Func<double, double>(s2 => Prms.Sum(p => p.A * Math.Exp(-s2 * 0.01 * p.B)) * 0.1);//0.1倍や0.01倍は単位の修正
         }
 
-        /// <summary>
-        /// 電子線用のコンストラクタ (Eight gaussian)
-        /// </summary>
+        /// <summary>電子線用のコンストラクタ (Eight gaussian)</summary>
         /// <param name="gaussian"></param>
         public ES(double a1, double a2, double a3, double a4, double a5, double a6, double a7, double a8, double b1, double b2, double b3, double b4, double b5, double b6, double b7, double b8)
         {
@@ -2569,9 +2592,7 @@ new(4.86738014,0.319974401,4.58872425,
             Factor = new Func<double, double>(s2 => Prms.Sum(p => p.A * Math.Exp(-s2 * 0.01 * p.B)) * 0.1);//0.1倍や0.01倍は単位の修正
         }
 
-        /// <summary>
-        /// 電子線用のコンストラクタ (3 lorentian, 3 gaussian)
-        /// </summary>
+        /// <summary>電子線用のコンストラクタ (3 lorentian, 3 gaussian)</summary>
         /// <param name="a1"></param>
         /// <param name="a2"></param>
         /// <param name="a3"></param>
@@ -2609,9 +2630,7 @@ new(4.86738014,0.319974401,4.58872425,
 
         #region 非弾性散乱因子の計算
 
-        /// <summary>
-        /// 局所形式の非弾性散乱因子 (TDS吸収ポテンシャル) 
-        /// </summary>
+        /// <summary>局所形式の非弾性散乱因子 (TDS吸収ポテンシャル)</summary>
         /// <param name="kV">kV(電子のエネルギー)</param>
         /// <param name="s2">S2 (単位: nm^-2, S = sinθ/λ = 1/2d)</param>
         /// <param name="m">温度因子 m (単位: nm^2), NaNの場合はゼロにして計算</param>
@@ -2637,9 +2656,7 @@ new(4.86738014,0.319974401,4.58872425,
         }
        
 
-        /// <summary>
-        /// 局所形式の非弾性散乱因子 FlatEwald近似 未完成
-        /// </summary>
+        /// <summary>局所形式の非弾性散乱因子 FlatEwald近似 未完成</summary>
         /// <param name="kV"></param>
         /// <param name="g"> g ベクトル 単位は nm </param>
         /// <param name="h"> hベクトル 単位はnm</param>
@@ -2824,9 +2841,7 @@ new(4.86738014,0.319974401,4.58872425,
             }, inner, outer, nTheta);
         }
 
-        /// <summary>
-        /// 非局所形式の非弾性散乱因子　近軸近似(ビーム径射角ゼロ) Flat Ewald球近似 遅いので、没?
-        /// </summary>
+        /// <summary>非局所形式の非弾性散乱因子　近軸近似(ビーム径射角ゼロ) Flat Ewald球近似 遅いので、没?</summary>
         /// <param name="kV"></param>
         /// <param name="g"></param>
         /// <param name="h"></param>
@@ -2961,9 +2976,7 @@ new(4.86738014,0.319974401,4.58872425,
     #endregion
 
     #region　原子量
-    /// <summary>
-    /// 原子量を返す　引数は原子番号
-    /// </summary>
+    /// <summary>原子量を返す　引数は原子番号</summary>
     /// <param name="z"></param>
     /// <returns></returns>
     public static double AtomicWeight(int z) => z switch
@@ -3077,9 +3090,7 @@ new(4.86738014,0.319974401,4.58872425,
         #endregion
     };
 
-    /// <summary>
-    /// 原子量を返す　引数は原子名
-    /// </summary>
+    /// <summary>原子量を返す　引数は原子名</summary>
     /// <param name="atomicName"></param>
     /// <returns></returns>
     public static double AtomicWeight(string atomicName)
@@ -3089,9 +3100,7 @@ new(4.86738014,0.319974401,4.58872425,
     #endregion
 
     #region 原子名 <=> 原子番号
-    /// <summary>
-    /// 原子名を与えて、原子番号を返す. 文字列textから適宜原子名を抽出する.
-    /// </summary>
+    /// <summary>原子名を与えて、原子番号を返す. 文字列textから適宜原子名を抽出する.</summary>
     /// <param name="text"></param>
     /// <returns></returns>
     public static int AtomicNumber2(string text)
@@ -3113,9 +3122,7 @@ new(4.86738014,0.319974401,4.58872425,
         return number;
     }
 
-    /// <summary>
-    /// 原子名を与えて、原子番号を返す
-    /// </summary>
+    /// <summary>原子名を与えて、原子番号を返す</summary>
     /// <param name="atomicName"></param>
     /// <returns></returns>
     public static int AtomicNumber(string atomicName, bool caseSensitive = true)
@@ -3237,9 +3244,7 @@ new(4.86738014,0.319974401,4.58872425,
         #endregion
     }
 
-    /// <summary>
-    /// 原子番号を与えて、原子名を返す
-    /// </summary>
+    /// <summary>原子番号を与えて、原子名を返す</summary>
     /// <param name="z"></param>
     /// <returns></returns>
     public static string AtomicName(int z) => z switch
@@ -3356,9 +3361,7 @@ new(4.86738014,0.319974401,4.58872425,
     #endregion
 
     #region イオン半径
-    /// <summary>
-    /// イオン半径
-    /// </summary>
+    /// <summary>イオン半径</summary>
     /// <param name="z"></param>
     /// <returns></returns>
     public static double AtomicRadius(int z) => z switch
@@ -3472,9 +3475,7 @@ new(4.86738014,0.319974401,4.58872425,
         #endregion
     };
 
-    /// <summary>
-    /// イオン半径
-    /// </summary>
+    /// <summary>イオン半径</summary>
     /// <param name="AtomicName"></param>
     /// <returns></returns>
     public static double AtomicRadius(string AtomicName) => AtomicName switch
@@ -3589,18 +3590,14 @@ new(4.86738014,0.319974401,4.58872425,
     #endregion
 
     #region 特性X線エネルギー、波長、吸収端エネルギー
-    /// <summary>
-    /// 原子番号 z, 線種 line を入力すると 特性X線エネルギー (kev) を返す。 対応する原子、線種がない場合はNaNを返す
-    /// </summary>
+    /// <summary>原子番号 z, 線種 line を入力すると 特性X線エネルギー (kev) を返す。 対応する原子、線種がない場合はNaNを返す</summary>
     /// <param name="z"></param>
     /// <param name="line"></param>
     /// <returns></returns>
     public static double CharacteristicXrayEnergy(int z, XrayLine line)
         => UniversalConstants.Convert.WavelengthToXrayEnergy(CharacteristicXrayWavelength(z, line) * 0.1) / 1000;
 
-    /// <summary>
-    /// 原子番号 z, 線種 line を入力すると X線吸収端エネルギー (kev) を返す。 対応する原子、線種がない場合はNaNを返す
-    /// </summary>
+    /// <summary>原子番号 z, 線種 line を入力すると X線吸収端エネルギー (kev) を返す。 対応する原子、線種がない場合はNaNを返す</summary>
     /// <param name="z"></param>
     /// <param name="line"></param>
     /// <returns></returns>
@@ -5324,9 +5321,7 @@ new(4.86738014,0.319974401,4.58872425,
         #endregion
     }
 
-    /// <summary>
-    /// 原子番号 z, 線種 line を入力すると 波長 (Å) を返す。 対応する原子、線種がない場合はNaNを返す
-    /// </summary>
+    /// <summary>原子番号 z, 線種 line を入力すると 波長 (Å) を返す。 対応する原子、線種がない場合はNaNを返す</summary>
     /// <param name="z"></param>
     /// <param name="line"></param>
     /// <returns></returns>
@@ -7389,9 +7384,7 @@ new(4.86738014,0.319974401,4.58872425,
 
     private static readonly Lock lockObjForMassAbsorption = new();
 
-    /// <summary>
-    /// 質量吸収係数を覚えておく
-    /// </summary>
+    /// <summary>質量吸収係数を覚えておく</summary>
     //private static readonly Dictionary<double, double>[] massAbsorption = new Dictionary<double, double>[100];
     // (260320Ch) 並列参照時の安全性を上げるため ConcurrentDictionary を利用する
     private static readonly ConcurrentDictionary<double, double>[] massAbsorption = new ConcurrentDictionary<double, double>[100];
@@ -7406,9 +7399,7 @@ new(4.86738014,0.319974401,4.58872425,
             return massAbsorption[z] ??= new ConcurrentDictionary<double, double>();
     }
 
-    /// <summary>
-    /// エネルギー(keV)と吸収体元素を与えて、質量吸収係数を返す
-    /// </summary>
+    /// <summary>エネルギー(keV)と吸収体元素を与えて、質量吸収係数を返す</summary>
     /// <param name="energy"></param>
     /// <param name="z"></param>
     /// <returns></returns>
@@ -7506,9 +7497,7 @@ new(4.86738014,0.319974401,4.58872425,
     #endregion
 
     #region MeanExcitationEnergy
-    /// <summary>
-    /// 平均イオン化エネルギー(keV), mode 1: Ducumb et al. 1968, mode 2: Berger 1964, mode 3: Pouchou and Pichoir 1991
-    /// </summary>
+    /// <summary>平均イオン化エネルギー(keV), mode 1: Ducumb et al. 1968, mode 2: Berger 1964, mode 3: Pouchou and Pichoir 1991</summary>
     /// <param name="z"></param>
     /// <returns></returns>
     public static double MeanExcitationEnergy(int z, int mode = 0) => mode switch
@@ -7520,9 +7509,7 @@ new(4.86738014,0.319974401,4.58872425,
     #endregion
 
     #region Stopping Power Factor
-    /// <summary>
-    /// Stopping Power Factor
-    /// </summary>
+    /// <summary>Stopping Power Factor</summary>
     /// <param name="z"></param>
     /// <param name="line"></param>
     /// <param name="incidentEnergy"></param>
@@ -7532,9 +7519,7 @@ new(4.86738014,0.319974401,4.58872425,
     #endregion
 
     #region Back Scattered Factor
-    /// <summary>
-    /// Back Scattered Factor
-    /// </summary> Ec臨界励起エネルギー, E0入射エネルギー, z原子番号
+    /// <summary>Back Scattered Factor</summary> Ec臨界励起エネルギー, E0入射エネルギー, z原子番号
     /// <param name="z"></param>
     /// <param name="line"></param>
     /// <param name="incidentEnergy"></param>
@@ -7570,9 +7555,7 @@ new(4.86738014,0.319974401,4.58872425,
 
 
     #region デバッグ用 http://www.nist.gov/pml/data/ffast/index.cfm のデータを読み込んで、コードを吐き出す関数
-    /// <summary>
-    /// http://www.nist.gov/pml/data/ffast/index.cfm のデータを読み込んで、コードを吐き出す関数
-    /// </summary>
+    /// <summary>http://www.nist.gov/pml/data/ffast/index.cfm のデータを読み込んで、コードを吐き出す関数</summary>
     public static void ReadChantlerData(string[] fileNames)
     {
         #region

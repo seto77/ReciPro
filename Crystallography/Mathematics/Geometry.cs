@@ -15,9 +15,7 @@ public static class Geometry
         MathNet.Numerics.Control.TryUseNativeMKL();
     }
 
-    /// <summary>
-    /// 楕円をとおる5点以上の点pt[]が与えられたとき最小2乗法から中心位置を返す関数
-    /// </summary>
+    /// <summary>楕円をとおる5点以上の点pt[]が与えられたとき最小2乗法から中心位置を返す関数</summary>
     /// <param name="pt"></param>
     /// <param name="focus1"></param>
     /// <param name="focus2"></param>
@@ -47,9 +45,7 @@ public static class Geometry
         return new PointD(-(b * e - 2 * c * d) / (b * b - 4 * a * c), -(b * d - 2 * a * e) / (b * b - 4 * a * c));
     }
 
-    /// <summary>
-    /// 与えられたPointD[]にもっとも近い楕円の方程式 a*x^2 + b*x*y + c*y^2 + d*x + e*y = 1000000 の a,b,c,d,eの5つのパラメータを返す
-    /// </summary>
+    /// <summary>与えられたPointD[]にもっとも近い楕円の方程式 a*x^2 + b*x*y + c*y^2 + d*x + e*y = 1000000 の a,b,c,d,eの5つのパラメータを返す</summary>
     /// <param name="point"></param>
     /// <returns></returns>
     public static double[] GetParameterOfCurveOfSecondaryDegree(PointD[] point)
@@ -89,9 +85,7 @@ public static class Geometry
         return [a, b, c, d, e];
     }
 
-    /// <summary>
-    /// 半径Rの円がカメラ長FD, 傾きphi と　tau　のときどのような矩形(offset, width, height, cos, sin)になるかを返す
-    /// </summary>
+    /// <summary>半径Rの円がカメラ長FD, 傾きphi と　tau　のときどのような矩形(offset, width, height, cos, sin)になるかを返す</summary>
     /// <param name="center"></param>
     /// <param name="radius"></param>
     /// <param name="FilmDistance"></param>
@@ -152,9 +146,7 @@ public static class Geometry
         return (OffSet, Width, Height, Cos, Sin);
     }
 
-    /// <summary>
-    ///  楕円の中心群とそれらの半径から、真の中心のオフセット位置(offset)と傾き(tau, phi)とそれらの誤差を返す
-    /// </summary>
+    /// <summary>楕円の中心群とそれらの半径から、真の中心のオフセット位置(offset)と傾き(tau, phi)とそれらの誤差を返す</summary>
     /// <param name="EllipseCenter"></param>
     /// <param name="Radius"></param>
     /// <param name="CameraLength"></param>
@@ -203,9 +195,7 @@ public static class Geometry
         GetTiltAndOffset(EllipseCenter, Radius, CameraLength, ref offset, ref tau, ref phi);
     }
 
-    /// <summary>
-    /// 楕円の中心群とそれらの半径から、真の中心のオフセット位置(offset)と傾き(tau, phi)を返す
-    /// </summary>
+    /// <summary>楕円の中心群とそれらの半径から、真の中心のオフセット位置(offset)と傾き(tau, phi)を返す</summary>
     /// <param name="CenterPt"></param>
     /// <param name="Peaks"></param>
     /// <param name="PixelSize"></param>
@@ -418,9 +408,7 @@ public static class Geometry
         tau = bestTau;
     }
 
-    /// <summary>
-    /// 楕円の方程式から、その楕円群をもっとも真円に近づけるパラメータ(PixX, PixY, Ksi)を求める
-    /// </summary>
+    /// <summary>楕円の方程式から、その楕円群をもっとも真円に近づけるパラメータ(PixX, PixY, Ksi)を求める</summary>
     /// <param name="ellipse"></param>
     /// <param name="PixX"></param>
     /// <param name="PixY"></param>
@@ -536,16 +524,12 @@ public static class Geometry
     }
 
 
-    /// <summary>
-    /// 与えられた点(右回りか左回り)で囲まれる面積を返す
-    /// </summary>
+    /// <summary>与えられた点(右回りか左回り)で囲まれる面積を返す</summary>
     /// <param name="pt"></param>
     /// <returns></returns>
     public static double GetPolygonalArea(PointD[] pt) => GetPolygonalArea(pt.Select(p => (p.X, p.Y)).ToArray());
 
-    /// <summary>
-    /// 与えられた点(右回りか左回り)で囲まれる面積を返す
-    /// </summary>
+    /// <summary>与えられた点(右回りか左回り)で囲まれる面積を返す</summary>
     /// <param name="pt"></param>
     /// <returns></returns>
     public static double GetPolygonalArea((double X, double Y)[] pt)
@@ -565,9 +549,7 @@ public static class Geometry
         return [.. results.Select(r => new PointD(r.X, r.Y))];
     }
 
-    /// <summary>
-    /// 与えられた点pt(右回りか左回り)で構成される多角形と、ある直線(ax+by>c)で囲まれる多角形を返す  (ax+by＜c)の時は全ての係数の符号を逆転
-    /// </summary>
+    /// <summary>与えられた点pt(右回りか左回り)で構成される多角形と、ある直線(ax+by>c)で囲まれる多角形を返す  (ax+by＜c)の時は全ての係数の符号を逆転</summary>
     /// <param name="pt"></param>
     /// <returns></returns>
     public static (double X, double Y)[] GetPolygonDividedByLine((double X, double Y)[] pt, double a, double b, double c)
@@ -624,9 +606,7 @@ public static class Geometry
         return [.. ptBeta];
     }
 
-    /// <summary>
-    /// 2次元において、直線 a x + b y = c　が 点pt1とpt2を結ぶ直線と交わる交点を返す
-    /// </summary>
+    /// <summary>2次元において、直線 a x + b y = c　が 点pt1とpt2を結ぶ直線と交わる交点を返す</summary>
     /// <param name="p1"></param>
     /// <param name="p2"></param>
     /// <param name="a"></param>
@@ -648,9 +628,7 @@ public static class Geometry
             );
     }
 
-    /// <summary>
-    /// 3次元平面 a x + b y + c z = d (法線ベクトル(a,b,c))が、点pt1とpt2を結ぶ直線と交わる交点を返す. 平面方程式がa x + b y + c z + d = 0 ではないことに注意
-    /// </summary>
+    /// <summary>3次元平面 a x + b y + c z = d (法線ベクトル(a,b,c))が、点pt1とpt2を結ぶ直線と交わる交点を返す. 平面方程式がa x + b y + c z + d = 0 ではないことに注意</summary>
     /// <param name="a"></param>
     /// <param name="b"></param>
     /// <param name="c"></param>
@@ -661,9 +639,7 @@ public static class Geometry
     public static Vector3DBase GetCrossPoint(in double a, in double b, in double c, in double d, Vector3D p1, Vector3D p2)
         => GetCrossPoint(a, b, c, d, new Vector3D(p1.X, p1.Y, p1.Z), new Vector3DBase(p2.X, p2.Y, p2.Z));
 
-    /// <summary>
-    /// 3次元平面 a x + b y + c z = d (法線ベクトル(a,b,c))が、点pt1とpt2を結ぶ直線と交わる交点を返す. 平面方程式がa x + b y + c z + d = 0 ではないことに注意
-    /// </summary>
+    /// <summary>3次元平面 a x + b y + c z = d (法線ベクトル(a,b,c))が、点pt1とpt2を結ぶ直線と交わる交点を返す. 平面方程式がa x + b y + c z + d = 0 ではないことに注意</summary>
     /// <param name="a"></param>
     /// <param name="b"></param>
     /// <param name="c"></param>
@@ -674,9 +650,7 @@ public static class Geometry
     public static Vector3DBase GetCrossPoint(in double a, in double b, in double c, in double d, Vector3DBase p1, Vector3DBase p2) 
         => GetCrossPoint(a, b, c, d, p1.ToOpenTK(), p2.ToOpenTK()).ToVector3DBase();
 
-    /// <summary>
-    /// 3次元平面 a x + b y + c z = d (法線ベクトル(a,b,c))が、点pt1とpt2を結ぶ直線と交わる交点を返す. 平面方程式がa x + b y + c z + d = 0 ではないことに注意
-    /// </summary>
+    /// <summary>3次元平面 a x + b y + c z = d (法線ベクトル(a,b,c))が、点pt1とpt2を結ぶ直線と交わる交点を返す. 平面方程式がa x + b y + c z + d = 0 ではないことに注意</summary>
     /// <param name="a"></param>
     /// <param name="b"></param>
     /// <param name="c"></param>
@@ -736,9 +710,7 @@ public static class Geometry
         return p * d / (a * p.X + b * p.Y + c * p.Z);
     }
 
-    /// <summary>
-    /// sourcePointsで指定されたラインプロファイルを、areaで指定された範囲内で切り取る。
-    /// </summary>
+    /// <summary>sourcePointsで指定されたラインプロファイルを、areaで指定された範囲内で切り取る。</summary>
     /// <param name="sourcePoints"></param>
     /// <param name="area"></param>
     /// <returns></returns>
@@ -790,9 +762,7 @@ public static class Geometry
         }
     }
 
-    /// <summary>
-    /// GetPointsWithinRectangle()が呼び出す
-    /// </summary>
+    /// <summary>GetPointsWithinRectangle()が呼び出す</summary>
     /// <param name="p1"></param>
     /// <param name="p2"></param>
     /// <param name="rect"></param>
@@ -883,9 +853,7 @@ public static class Geometry
         }
     }
 
-    /// <summary>
-    ///  3次元において、平面 a x + b y + c z + d = 0 (法線ベクトル(a,b,c))と、点(x, y, z)との距離(絶対値)を返す
-    /// </summary>
+    /// <summary>3次元において、平面 a x + b y + c z + d = 0 (法線ベクトル(a,b,c))と、点(x, y, z)との距離(絶対値)を返す</summary>
     /// <param name="a"></param>
     /// <param name="b"></param>
     /// <param name="c"></param>
@@ -899,16 +867,12 @@ public static class Geometry
 
     #region 点集合から最小二乗法による平面パラメータdouble[]{a,b,c,d} (但し、平面方程式 a x + b y + c z + d = 0) を返す. 
 
-    /// <summary>
-    /// 点集合から最小二乗法による平面パラメータdouble[]{a,b,c,d} (但し、平面方程式 a x + b y + c z + d = 0) を返す
-    /// </summary>
+    /// <summary>点集合から最小二乗法による平面パラメータdouble[]{a,b,c,d} (但し、平面方程式 a x + b y + c z + d = 0) を返す</summary>
     /// <param name="points"></param>
     /// <returns>double[]{a,b,c,d} (但し、平面方程式 a x + b y + c z + d = 0)</returns>
     public static (double A, double B, double C, double D) GetPlaneEquationFromPoints(IEnumerable<V3d> points) => GetPlaneEquationFromPoints(points.AsValueEnumerable());
 
-    /// <summary>
-    /// 点集合から最小二乗法による平面パラメータdouble[]{a,b,c,d} (但し、平面方程式 a x + b y + c z + d = 0) を返す
-    /// </summary>
+    /// <summary>点集合から最小二乗法による平面パラメータdouble[]{a,b,c,d} (但し、平面方程式 a x + b y + c z + d = 0) を返す</summary>
     /// <param name="points"></param>
     /// <returns>double[]{a,b,c,d} (但し、平面方程式 a x + b y + c z + d = 0)</returns>
     public static (double A, double B, double C, double D) GetPlaneEquationFromPoints(ValueEnumerable<ZLinq.Linq.FromEnumerable<V3d>,V3d> points)
@@ -936,9 +900,7 @@ public static class Geometry
     #endregion
 
 
-    /// <summary>
-    /// 与えられた平面(double[4],  a x + b y + c z + d >= 0 )の集合で、空間が閉じるかどうかを判定
-    /// </summary>
+    /// <summary>与えられた平面(double[4],  a x + b y + c z + d >= 0 )の集合で、空間が閉じるかどうかを判定</summary>
     /// <param name="prms"></param>
     /// <returns></returns>
     public static bool Enclosed(double[][] bounds)
@@ -959,9 +921,7 @@ public static class Geometry
         return false;
     }
 
-    /// <summary>
-    /// 境界面によって切り取られた多角形の頂点座標を求める.
-    /// </summary>
+    /// <summary>境界面によって切り取られた多角形の頂点座標を求める.</summary>
     /// <param name="p">切り取られる面 (double[4],  a x + b y + c z + d = 0) </param>
     /// <param name="bounds">境界面 (double[4],  a x + b y + c z + d >= 0 ) </param>
     /// <returns></returns>
@@ -1042,17 +1002,13 @@ public static class Geometry
         return [.. pts.Select(p => new double[] { p.X, p.Y, p.Z })];
     }
 
-    /// <summary>
-    /// 境界面によって切り取られた多角形の頂点座標を求める.
-    /// </summary>
+    /// <summary>境界面によって切り取られた多角形の頂点座標を求める.</summary>
     /// <param name="i">切り取られる面のインデックス</param>
     /// <param name="bounds">境界面 (ただしiは除く) (double[4],  a x + b y + c z + d >= 0 ) </param>
     /// <returns></returns>
     public static double[][] GetClippedPolygon(int i, double[][] bounds) => GetClippedPolygon(bounds[i], bounds);
 
-    /// <summary>
-    /// ベクトルa1 => ベクトルb1 かつ ベクトルa2 => ベクトルb2に写すような回転行列を求める. a1,a2,b1,b2の長さは1でなくても構わない（関数中で規格化する）
-    /// </summary>
+    /// <summary>ベクトルa1 => ベクトルb1 かつ ベクトルa2 => ベクトルb2に写すような回転行列を求める. a1,a2,b1,b2の長さは1でなくても構わない（関数中で規格化する）</summary>
     /// <param name="a1"></param>
     /// <param name="a2"></param>
     /// <param name="b1"></param>

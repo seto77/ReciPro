@@ -7,9 +7,7 @@ namespace ReciPro;
 
 internal static class Program
 {
-    /// <summary>
-    /// アプリケーションのメイン エントリ ポイントです。
-    /// </summary>
+    /// <summary>アプリケーションのメイン エントリ ポイントです。</summary>
     [STAThread]
     private static void Main()
     {

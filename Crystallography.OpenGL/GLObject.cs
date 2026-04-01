@@ -30,14 +30,10 @@ using PT = OpenTK.Graphics.OpenGL4.PrimitiveType;
 namespace Crystallography.OpenGL;
 
 #region Vertex 頂点構造体
-/// <summary>
-/// 頂点要素（シェーダの頂点要素と合わせる）
-/// </summary>
+/// <summary>頂点要素（シェーダの頂点要素と合わせる）</summary>
 public readonly struct Vertex
 {
-    /// <summary>
-    /// 0: テクスチャ無しポリゴン. 1: テクスチャ有りポリゴン. 2: 文字列.
-    /// </summary>
+    /// <summary>0: テクスチャ無しポリゴン. 1: テクスチャ有りポリゴン. 2: 文字列.</summary>
     public readonly int ObjType;
 
     public readonly int Argb;
@@ -48,9 +44,7 @@ public readonly struct Vertex
 
     public readonly V2f Uv;
 
-    /// <summary>
-    /// テクスチャ無しのポリゴン
-    /// </summary>
+    /// <summary>テクスチャ無しのポリゴン</summary>
     /// <param name="position"></param>
     /// <param name="normal"></param>
     /// <param name="argb"></param>
@@ -63,9 +57,7 @@ public readonly struct Vertex
         ObjType = 0;
     }
 
-    /// <summary>
-    /// テクスチャ無しのポリゴン
-    /// </summary>
+    /// <summary>テクスチャ無しのポリゴン</summary>
     /// <param name="position"></param>
     /// <param name="normal"></param>
     /// <param name="argb"></param>
@@ -141,9 +133,7 @@ public class Location
 #endregion
 
 #region GLObjectクラス (抽象クラス)
-/// <summary>
-/// OpenGLで描画するオブジェクトを表現する抽象クラス
-/// </summary>
+/// <summary>OpenGLで描画するオブジェクトを表現する抽象クラス</summary>
 //[Guid("71D52F24-787B-4646-AC8E-2910CC38E267")]
 public abstract class GLObject
 {
@@ -171,97 +161,63 @@ public abstract class GLObject
     internal int Program = -1;
     internal int ContextKey = 0; // (260319Ch) GPU 側 cache を GLControl 単位で分離するための key
 
-    /// <summary>
-    /// 頂点
-    /// </summary>
+    /// <summary>頂点</summary>
     internal Vertex[] Vertices;
 
-    /// <summary>
-    /// 頂点の順番リスト (全てのタイプが連結されている)
-    /// </summary>
+    /// <summary>頂点の順番リスト (全てのタイプが連結されている)</summary>
     internal uint[] Indices;
 
-    /// <summary>
-    /// プリミティブのタイプおよびそのタイプの順番リストの長さ
-    /// </summary>
+    /// <summary>プリミティブのタイプおよびそのタイプの順番リストの長さ</summary>
     internal (PT Type, int Count)[] Primitives;
 
     #endregion
 
     #region publicな フィールド & プロパティ
     
-    /// <summary>
-    /// 自由に情報を格納するためのTag
-    /// </summary>
+    /// <summary>自由に情報を格納するためのTag</summary>
     public object Tag = null;
 
-    /// <summary>
-    /// オブジェクトを一意に識別する番号
-    /// </summary>
+    /// <summary>オブジェクトを一意に識別する番号</summary>
     public int SerialNumber;
 
-    /// <summary>
-    /// 物体に外接する外接球の中心座標 (wは常に1にする)
-    /// </summary>
+    /// <summary>物体に外接する外接球の中心座標 (wは常に1にする)</summary>
     public V4d CircumscribedSphereCenter = new(0, 0, 0, 1);
 
-    /// <summary>
-    /// 物体に外接する外接球の半径
-    /// </summary>
+    /// <summary>物体に外接する外接球の半径</summary>
     public double CircumscribedSphereRadius = 0;
 
-    /// <summary>
-    /// 法線方向の正負を無視する
-    /// </summary>
+    /// <summary>法線方向の正負を無視する</summary>
     public bool IgnoreNormalSides;
 
-    /// <summary>
-    /// クリップされた場合、断面ポリゴンを描画するかどうか. 初期値はtrue. Polygon(平面)はfalse
-    /// </summary>
+    /// <summary>クリップされた場合、断面ポリゴンを描画するかどうか. 初期値はtrue. Polygon(平面)はfalse</summary>
     public bool ShowClippedSection = true;
 
-    /// <summary>
-    /// 描画モード
-    /// </summary>
+    /// <summary>描画モード</summary>
     public DrawingMode Mode;
 
-    /// <summary>
-    /// 素材
-    /// </summary>
+    /// <summary>素材</summary>
     public Material Material;
 
-    /// <summary>
-    /// 線の太さ (edgeを描画する場合)
-    /// </summary>
+    /// <summary>線の太さ (edgeを描画する場合)</summary>
     public float LineWidth = 1f;
 
-    /// <summary>
-    /// 描画するかどうか
-    /// </summary>
+    /// <summary>描画するかどうか</summary>
     public bool Rendered = true;
 
-    /// <summary>
-    /// trueの時は(Vertexの色ではなく)Material構造体中のColorが使われる
-    /// </summary>
+    /// <summary>trueの時は(Vertexの色ではなく)Material構造体中のColorが使われる</summary>
     public bool UseFixedArgb = true;
 
-    /// <summary>
-    /// Z sorting で透明度を計算する時のZを一時期的に格納する変数
-    /// </summary>
+    /// <summary>Z sorting で透明度を計算する時のZを一時期的に格納する変数</summary>
     public double Z;
 
-    /// <summary>
-    /// 物体の回転状態や並進状態を表す. 
-    /// </summary>
+    /// <summary>物体の回転状態や並進状態を表す.</summary>
     public M4f ObjectMatrix = M4f.Identity;
 
 
     #endregion publicなフィールド
 
     #region コンストラクタ、デストラクタ
-    /// <summary>
-    /// 静的コンストラクタ
-    /// </summary>
+    /// <summary>静的コンストラクタ</summary>
     static GLObject()
     {
         //ビデオカード検索
@@ -279,9 +235,7 @@ public abstract class GLObject
     }
 
 
-    /// <summary>
-    /// コンストラクタ、デストラクタ
-    /// </summary>
+    /// <summary>コンストラクタ、デストラクタ</summary>
     /// <param name="material"></param>
     /// <param name="mode"></param>
     public GLObject(Material material, DrawingMode mode)
@@ -310,9 +264,7 @@ public abstract class GLObject
     #endregion
 
     #region 静的メソッド
-    /// <summary>
-    /// 静的メソッド. program番号をセットし、各バッファオブジェクトなどGPUに転送する. 描画前に必ず一度実行する必要がある。
-    /// </summary>
+    /// <summary>静的メソッド. program番号をセットし、各バッファオブジェクトなどGPUに転送する. 描画前に必ず一度実行する必要がある。</summary>
     /// <param name="program"></param>
     /// <param name="objects"></param>
     // public static void Generate(int program, IEnumerable<GLObject> objects)
@@ -422,9 +374,7 @@ public abstract class GLObject
         }
     }
 
-    /// <summary>
-    /// 静的メソッド. パラメータのロケーションをセット
-    /// </summary>
+    /// <summary>静的メソッド. パラメータのロケーションをセット</summary>
     /// <param name="Program"></param>
     public static Location GetLocation(int Program)
     {
@@ -551,9 +501,7 @@ public abstract class GLObject
         }
     }
 
-    /// <summary>
-    /// 物体の材質と要素をGPUに送信する。Render()関数から呼び出される。
-    /// </summary>
+    /// <summary>物体の材質と要素をGPUに送信する。Render()関数から呼び出される。</summary>
     /// <param name="drawSurfaces">Surfaceモードか否か</param>
     private void SetMaterialAndDrawElements(bool drawSurfaces, PT mode, int count, int offset)
     {
@@ -709,9 +657,7 @@ public abstract class GLObject
 #endregion
 
 #region クリップ
-/// <summary>
-/// 描画範囲をクリップ(切り取る)する.
-/// </summary>
+/// <summary>描画範囲をクリップ(切り取る)する.</summary>
 public class Clip
 {
     private readonly List<Quads> Planes = [];
@@ -829,9 +775,7 @@ public class Lines : GLObject
 #endregion
 
 #region 三角形、四角形、円板、多角形
-/// <summary>
-/// 多角形 (凸多角形) 点集合が完全に平面に乗らない場合でも、最小二乗法で法線を求める
-/// </summary>
+/// <summary>多角形 (凸多角形) 点集合が完全に平面に乗らない場合でも、最小二乗法で法線を求める</summary>
 public class Polygon : GLObject
 {
     public Polygon(Material mat, DrawingMode mode) : base(mat, mode) { }
@@ -841,9 +785,7 @@ public class Polygon : GLObject
 
     public Polygon(Material mat, DrawingMode mode, params V3d[] vertices) : this(vertices.ToArray(), mat, mode) { }
 
-    /// <summary>
-    ///
-    /// </summary>
+    /// <summary></summary>
     /// <param name="vertices"></param>
     /// <param name="mat"></param>
     /// <param name="mode"></param>
@@ -898,9 +840,7 @@ public class Polygon : GLObject
             Primitives[2] = (PT.Points, indicesList.Count - 2);
         }
     }
-    /// <summary>
-    /// 多角形を分解する (Quadsにして返す)
-    /// </summary>
+    /// <summary>多角形を分解する (Quadsにして返す)</summary>
     /// <param name="order"></param>
     /// <returns></returns>
     public Polygon[] Decompose(int order = 1)
@@ -946,9 +886,7 @@ public class Polygon : GLObject
     }
 
 
-    /// <summary>
-    /// Decomposeから呼びばれる再帰的関数
-    /// </summary>
+    /// <summary>Decomposeから呼びばれる再帰的関数</summary>
     /// <param name="srcVertex"></param>
     /// <param name="ord"></param>
     /// <returns></returns>
@@ -985,9 +923,7 @@ public class Polygon : GLObject
     }
 }
 
-/// <summary>
-/// 三角形
-/// </summary>
+/// <summary>三角形</summary>
 /// <remarks>
 /// 三角形
 /// </remarks>
@@ -1002,9 +938,7 @@ public class Triangle(V3d a, V3d b, V3d c, Material mat, DrawingMode mode) : Pol
    : this(new V3d(a.X, a.Y, a.Z), new V3d(b.X, b.Y, b.Z), new V3d(c.X, c.Y, c.Z), mat, mode) { }
 }
 
-/// <summary>
-/// 四角形
-/// </summary>
+/// <summary>四角形</summary>
 public class Quads : Polygon
 {
     public Quads(Vector3DBase a, Vector3DBase b, Vector3DBase c, Vector3DBase d, Material mat, DrawingMode mode)
@@ -1017,9 +951,7 @@ public class Quads : Polygon
         : base(vertices, mat, mode) { }
 }
 
-/// <summary>
-/// 円 (ディスク)
-/// </summary>
+/// <summary>円 (ディスク)</summary>
 public class Disk(V3d origin, V3d normal, double radius, Material mat, DrawingMode mode, int slices = 60) : Polygon(
          //260317Cl 変更: Enumerable.Range → ValueEnumerable.Range
          ValueEnumerable.Range(0, slices).Select(i =>
@@ -1045,9 +977,7 @@ public class Disk(V3d origin, V3d normal, double radius, Material mat, DrawingMo
     { LineWidth = lineWidth; }
 }
 
-/// <summary>
-/// 穴あきディスク
-/// </summary>
+/// <summary>穴あきディスク</summary>
 public class HoledDisk : GLObject
 {
     public double RadiusInner, RadiusOuter;
@@ -1129,17 +1059,13 @@ public class HoledDisk : GLObject
 #endregion
 
 #region 多面体、立方体
-/// <summary>
-/// 多面体 (凸多面体)
-/// </summary>
+/// <summary>多面体 (凸多面体)</summary>
 public class Polyhedron : GLObject
 {
     public Polyhedron(IEnumerable<Vector3DBase> vertices, Material mat, DrawingMode mode)
         : this(vertices.Select(v => new V3d(v.X, v.Y, v.Z)), mat, mode) { }
 
-    /// <summary>
-    ///
-    /// </summary>
+    /// <summary></summary>
     /// <param name="vertices"></param>
     /// <param name="mat"></param>
     /// <param name="mode"></param>
@@ -1254,9 +1180,7 @@ public class Polyhedron : GLObject
     }
 }
 
-/// <summary>
-/// 平行六面体(原点と3辺のベクトルで定義)
-/// </summary>
+/// <summary>平行六面体(原点と3辺のベクトルで定義)</summary>
 public class Parallelepiped(V3d o, V3d a, V3d b, V3d c, Material mat, DrawingMode mode)
     : Polyhedron([o, o + a, o + b, o + c, o + a + b, o + b + c, o + c + a, o + a + b + c], mat, mode)
 {
@@ -1265,9 +1189,7 @@ public class Parallelepiped(V3d o, V3d a, V3d b, V3d c, Material mat, DrawingMod
 #endregion
 
 #region 球体 楕円球、真球
-/// <summary>
-/// 楕円球 (原点と3方向のベクトルで定義される).  6*(2*slices+1)^2 の頂点が生成される
-/// </summary>
+/// <summary>楕円球 (原点と3方向のベクトルで定義される).  6*(2*slices+1)^2 の頂点が生成される</summary>
 public class Ellipsoid : GLObject
 {
     public static int DefaultSlices = 2;
@@ -1280,9 +1202,7 @@ public class Ellipsoid : GLObject
     public Ellipsoid(Vector3DBase o, Vector3DBase a, Vector3DBase b, Vector3DBase c, Material mat, DrawingMode mode, int slices = 0)
     : this(new V3d(o.X, o.Y, o.Z), new V3d(a.X, a.Y, a.Z), new V3d(b.X, b.Y, b.Z), new V3d(c.X, c.Y, c.Z), mat, mode, slices) { }
 
-    /// <summary>
-    /// 楕円球 (中心位置と3方向のベクトルで定義される).  6*(2*slices+1)^2 の頂点が生成される
-    /// </summary>
+    /// <summary>楕円球 (中心位置と3方向のベクトルで定義される).  6*(2*slices+1)^2 の頂点が生成される</summary>
     /// <param name="o">中心位置</param>
     /// <param name="v1">中心位置からのベクトル1</param>
     /// <param name="v2">中心位置からのベクトル2</param>
@@ -1375,9 +1295,7 @@ public class Ellipsoid : GLObject
     }
 }
 
-/// <summary>
-/// Spehere 球体 (原点と半径で定義される)
-/// </summary>
+/// <summary>Spehere 球体 (原点と半径で定義される)</summary>
 public class Sphere : Ellipsoid
 {
     public double Radius;
@@ -1386,9 +1304,7 @@ public class Sphere : Ellipsoid
     public Sphere(Vector3DBase o, double radius, Material mat, DrawingMode mode, int slices = 0)
       : this(new V3d(o.X, o.Y, o.Z), radius, mat, mode, slices) { }
 
-    /// <summary>
-    /// 球体 (原点と半径で定義される)　6*(2*slices+1)^2 の頂点が生成される
-    /// </summary>
+    /// <summary>球体 (原点と半径で定義される)　6*(2*slices+1)^2 の頂点が生成される</summary>
     /// <param name="o">中心位置</param>
     /// <param name="radius">半径</param>
     /// <param name="mat">素材</param>
@@ -1405,9 +1321,7 @@ public class Sphere : Ellipsoid
     public static uint[] DefaultIndices;
     public static (PT Type, int Count)[] DefaultPrimitives;
 
-    /// <summary>
-    /// Default形状ついて、Program番号と(VBO, VAO, EBO)を対応付けるDictionary.
-    /// </summary>
+    /// <summary>Default形状ついて、Program番号と(VBO, VAO, EBO)を対応付けるDictionary.</summary>
     // static public Dictionary<int, (int VBO, int VAO, int EBO)> DefaultDictionary { get; set; } = [];
     static public Dictionary<(int ContextKey, int Program), (int VBO, int VAO, int EBO)> DefaultDictionary { get; set; } = []; // (260319Ch) default sphere VAO は context 単位で分離
 
@@ -1445,9 +1359,7 @@ public class Pipe : GLObject
     public Pipe(in V3d o, in V3d vec, in double r1, in double r2, Material mat, DrawingMode mode, bool sole = true, int slices = 0, int stacks = 0)
         : this(in o, in vec, in r1, in r2, mat, null, mode, sole, slices, stacks) { }
 
-    /// <summary>
-    /// パイプ
-    /// </summary>
+    /// <summary>パイプ</summary>
     /// <param name="o">始点の位置</param>
     /// <param name="vec">始点から終点へのベクトル</param>
     /// <param name="r1">始点側の半径</param>
@@ -1623,9 +1535,7 @@ public class Pipe : GLObject
 /// </summary>
 public class Cone : Pipe
 {
-    /// <summary>
-    /// Default形状ついて、Program番号と(VBO, VAO, EBO)を対応付けるDictionary.
-    /// </summary>
+    /// <summary>Default形状ついて、Program番号と(VBO, VAO, EBO)を対応付けるDictionary.</summary>
     // static public Dictionary<int, (int VBO, int VAO, int EBO)> DefaultDictionary { get; set; } = [];
     static public Dictionary<(int ContextKey, int Program), (int VBO, int VAO, int EBO)> DefaultDictionary { get; set; } = []; // (260319Ch) default cone VAO は context 単位で分離
 
@@ -1651,9 +1561,7 @@ public class Cone : Pipe
     public Cone(Vector3DBase o, Vector3DBase vec, double r, Material mat, DrawingMode mode, bool sole = true, int slices = 0, int stacks = 0)
         : this(new V3d(o.X, o.Y, o.Z), new V3d(vec.X, vec.Y, vec.Z), r, mat, mode, sole, slices, stacks) { UseDefault = slices == 0; }
 
-    /// <summary>
-    /// 円錐
-    /// </summary>
+    /// <summary>円錐</summary>
     /// <param name="o">頂点の位置</param>
     /// <param name="vec">頂点から底面中心へのベクトル</param>
     /// <param name="r">底面の半径</param>
@@ -1696,9 +1604,7 @@ public class Cylinder : Pipe
     public Cylinder(Vector3DBase o, Vector3DBase vec, double r, Material mat1, Material mat2, DrawingMode mode, bool sole = true, int slices = 0, int stacks = 0)
        : this(new V3d(o.X, o.Y, o.Z), new V3d(vec.X, vec.Y, vec.Z), r, mat1, mat2, mode, sole, slices, stacks) { }
 
-    /// <summary>
-    /// 円柱 (始点の位置、始点から終点へのベクトル、半径で定義される)
-    /// </summary>
+    /// <summary>円柱 (始点の位置、始点から終点へのベクトル、半径で定義される)</summary>
     /// <param name="o">始点の位置</param>
     /// <param name="vec">始点から終点へのベクトル</param>
     /// <param name="r">半径</param>
@@ -1714,9 +1620,7 @@ public class Cylinder : Pipe
      : base(in o, in vec, r, r, mat1, mat2, mode, sole, slices, stacks) { UseDefault = slices == 0; }
 
 
-    /// <summary>
-    /// Default形状ついて、Program番号と(VBO, VAO, EBO)を対応付けるDictionary.
-    /// </summary>
+    /// <summary>Default形状ついて、Program番号と(VBO, VAO, EBO)を対応付けるDictionary.</summary>
     // static public Dictionary<int, (int VBO, int VAO, int EBO)> DefaultDictionary { get; set; } = [];
     static public Dictionary<(int ContextKey, int Program), (int VBO, int VAO, int EBO)> DefaultDictionary { get; set; } = []; // (260319Ch) default cylinder VAO は context 単位で分離
 
@@ -1747,9 +1651,7 @@ public class Cylinder : Pipe
 #endregion
 
 #region Torus (ドーナッツ)
-/// <summary>
-/// Torus (ドーナッツ).  中心(V3)、法線(V3), 大半径(double), 小半径(double)で定義される
-/// </summary>
+/// <summary>Torus (ドーナッツ).  中心(V3)、法線(V3), 大半径(double), 小半径(double)で定義される</summary>
 public class Torus : GLObject
 {
     public const int DefaultSlices1 = 45;
@@ -1760,9 +1662,7 @@ public class Torus : GLObject
     public double Radius1;
     public double Radius2;
 
-    /// <summary>
-    /// Torus (ドーナッツ).  中心(V3)、法線(V3), 大半径(double), 小半径(double)で定義される
-    /// </summary>
+    /// <summary>Torus (ドーナッツ).  中心(V3)、法線(V3), 大半径(double), 小半径(double)で定義される</summary>
     /// <param name="o">中心位置</param>
     /// <param name="a">中心位置からのベクトル1</param>
     /// <param name="b">中心位置からのベクトル2</param>
@@ -1860,9 +1760,7 @@ public class Torus : GLObject
 #endregion
 
 #region メッシュ
-/// <summary>
-/// メッシュ
-/// </summary>
+/// <summary>メッシュ</summary>
 public class Mesh : GLObject
 {
     public Mesh(double[] data, int width, Material mat, DrawingMode mode) : base(mat, mode)
@@ -1952,9 +1850,7 @@ public class ColoredSurfaceMesh : GLObject
 #endregion
 
 #region 文字オブジェクト
-/// <summary>
-/// 文字オブジェクト
-/// </summary>
+/// <summary>文字オブジェクト</summary>
 public class TextObject : GLObject
 {
     // private static readonly Dictionary<(int program, string Text, float FontSize, int Argb, bool WhiteEdge), (int TextureNum, Vertex[] Vertices)> dic = [];

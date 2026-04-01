@@ -17,54 +17,34 @@ public class Marquardt
     {
         #region 組み込み関数
 
-        /// <summary>
-        /// Gaussian 1次元, パラメータは 0: X0, 1: H, 2: A
-        /// </summary>
+        /// <summary>Gaussian 1次元, パラメータは 0: X0, 1: H, 2: A</summary>
         G1,
 
-        /// <summary>
-        /// Gaussian 2次元真円, パラメータは 0: X0, 1: Y0, 2: H, 3: A
-        /// </summary>
+        /// <summary>Gaussian 2次元真円, パラメータは 0: X0, 1: Y0, 2: H, 3: A</summary>
         G2,
 
-        /// <summary>
-        /// Gaussian 2次元楕円, パラメータは 0: X0, 1: Y0, 2: H1, 3: H2, 4: T, 5: A
-        /// </summary>
+        /// <summary>Gaussian 2次元楕円, パラメータは 0: X0, 1: Y0, 2: H1, 3: H2, 4: T, 5: A</summary>
         G2E,
 
-        /// <summary>
-        /// Lorenzian 1次元, パラメータは 0: X0, 1: H, 2: A
-        /// </summary>
+        /// <summary>Lorenzian 1次元, パラメータは 0: X0, 1: H, 2: A</summary>
         L1,
 
-        /// <summary>
-        /// Lorenzian 2次元真円, パラメータは 0: X0, 1: Y0, 2: H, 3: A
-        /// </summary>
+        /// <summary>Lorenzian 2次元真円, パラメータは 0: X0, 1: Y0, 2: H, 3: A</summary>
         L2,
 
-        /// <summary>
-        /// Lorenzian 2次元楕円, パラメータは 0: X0, 1: Y0, 2: H1, 3: H2, 4: T, 5: A
-        /// </summary>
+        /// <summary>Lorenzian 2次元楕円, パラメータは 0: X0, 1: Y0, 2: H1, 3: H2, 4: T, 5: A</summary>
         L2E,
 
-        /// <summary>
-        /// PseudoVoigt 1次元, パラメータは 0: X0, 1: H, 2: Eta, 3: A
-        /// </summary>
+        /// <summary>PseudoVoigt 1次元, パラメータは 0: X0, 1: H, 2: Eta, 3: A</summary>
         PV1,
 
-        /// <summary>
-        /// PseudoVoigt 2次元真円, パラメータは 0: X0, 1: Y0, 2: H, 3: Eta, 4: A
-        /// </summary>
+        /// <summary>PseudoVoigt 2次元真円, パラメータは 0: X0, 1: Y0, 2: H, 3: Eta, 4: A</summary>
         PV2,
 
-        /// <summary>
-        /// PseudoVoigt 2次元楕円, パラメータは 0: X0, 1: Y0, 2: H1, 3: H2, 4: T, 5: Eta, 6: A
-        /// </summary>
+        /// <summary>PseudoVoigt 2次元楕円, パラメータは 0: X0, 1: Y0, 2: H1, 3: H2, 4: T, 5: Eta, 6: A</summary>
         PV2E,
 
-        /// <summary>
-        /// 平面 (B0 + Bx X + By Y), パラメータは 0: B0, 1: Bx, 2: By
-        /// </summary>
+        /// <summary>平面 (B0 + Bx X + By Y), パラメータは 0: B0, 1: Bx, 2: By</summary>
         Plane
 
         #endregion 組み込み関数
@@ -72,46 +52,30 @@ public class Marquardt
 
     public class Function
     {
-        /// <summary>
-        /// 実質的な無限小 infinitesimal
-        /// </summary>
+        /// <summary>実質的な無限小 infinitesimal</summary>
         private const double inf = 1E-10;
 
         #region プロパティ
 
-        /// <summary>
-        /// 関数の表式. Func内の1番目は座標値, 2番目はパラメータ, 3番目は返り値
-        /// </summary>
+        /// <summary>関数の表式. Func内の1番目は座標値, 2番目はパラメータ, 3番目は返り値</summary>
         public Func<double[], double[], double> Formula { get; set; }
 
-        /// <summary>
-        /// 複数の座標値に対する関数の表式. Func内の1番目は座標値の, 2番目はパラメータ, 3番目は返り値
-        /// </summary>
+        /// <summary>複数の座標値に対する関数の表式. Func内の1番目は座標値の, 2番目はパラメータ, 3番目は返り値</summary>
         public Func<double[][], double[], double[]> FormulaEx { get; set; }
 
-        /// <summary>
-        /// パラメータ配列
-        /// </summary>
+        /// <summary>パラメータ配列</summary>
         public double[] Prms { get; set; }
 
-        /// <summary>
-        /// パラメータ配列. AddPrmsされたときに、1世代前のパラメータとして保存される
-        /// </summary>
+        /// <summary>パラメータ配列. AddPrmsされたときに、1世代前のパラメータとして保存される</summary>
         public double[] PrmsPrev { get; set; }
 
-        /// <summary>
-        /// パラメータの数
-        /// </summary>
+        /// <summary>パラメータの数</summary>
         public int PrmLength { get; }
 
-        /// <summary>
-        /// 制約条件. double[] をdouble[]に変換する. nullでもよい.
-        /// </summary>
+        /// <summary>制約条件. double[] をdouble[]に変換する. nullでもよい.</summary>
         public Func<double[], double[]> Constraints { get; set; }
 
-        /// <summary>
-        /// 微分値が解析的にわかっている場合のみ設定. nullでもよい.
-        /// </summary>
+        /// <summary>微分値が解析的にわかっている場合のみ設定. nullでもよい.</summary>
         public Func<double[], double[], double[]> Derivatives { get; set; }
 
         public int Length { get => Prms.Length; }
@@ -119,9 +83,7 @@ public class Marquardt
 
         private readonly double[] steps;
 
-        /// <summary>
-        /// コンストラクタ
-        /// </summary>
+        /// <summary>コンストラクタ</summary>
         /// <param name="formula"></param>
         /// <param name="parameters"></param>
         /// <param name="constraints"></param>
@@ -137,9 +99,7 @@ public class Marquardt
             PrmLength = Prms.Length;
         }
 
-        /// <summary>
-        /// 関数形を指定したコンストラクタ
-        /// </summary>
+        /// <summary>関数形を指定したコンストラクタ</summary>
         /// <param name="type"></param>
         /// <param name="parameters">
         /// Gaussian1 or Lorenzian1の場合: 0: X0, 1: H, 2: A
@@ -214,9 +174,7 @@ public class Marquardt
             PrmLength = Prms.Length;
         }
 
-        /// <summary>
-        /// 偏微分値を得る
-        /// </summary>
+        /// <summary>偏微分値を得る</summary>
         /// <param name="x"></param>
         /// <returns></returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -238,17 +196,13 @@ public class Marquardt
             return derivative;
         }
 
-        /// <summary>
-        /// 与えられた座標での値を得る
-        /// </summary>
+        /// <summary>与えられた座標での値を得る</summary>
         /// <param name="x"></param>
         /// <returns></returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public double GetValue(params double[] x) => Formula(x, Prms);
 
-        /// <summary>
-        /// 与えられた座標での値を得る
-        /// </summary>
+        /// <summary>与えられた座標での値を得る</summary>
         /// <param name="x"></param>
         /// <returns></returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -259,9 +213,7 @@ public class Marquardt
                 x.AsParallel().Select(x1 => Formula(x1, Prms)).ToArray();
         }
 
-        /// <summary>
-        /// 全パラメータを指定量だけ変化させる. 制約条件も課す。
-        /// </summary>
+        /// <summary>全パラメータを指定量だけ変化させる. 制約条件も課す。</summary>
         /// <param name="delta"></param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void AddPrms(double[] delta)
@@ -274,9 +226,7 @@ public class Marquardt
             ApplyConstraints();
         }
 
-        /// <summary>
-        /// 全パラメータを一世代前のものに戻す
-        /// </summary>
+        /// <summary>全パラメータを一世代前のものに戻す</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void RevertPrms()
         {
@@ -284,9 +234,7 @@ public class Marquardt
                 Prms[i] = PrmsPrev[i];
         }
 
-        /// <summary>
-        /// 全パラメータに制約を課す
-        /// </summary>
+        /// <summary>全パラメータに制約を課す</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void ApplyConstraints()
         {
@@ -298,9 +246,7 @@ public class Marquardt
     public static double RambdaCoeff1 { get; set; } = 0.1;
     public static double RambdaCoeff2 { get; set; } = 8;
 
-    /// <summary>
-    /// 静的メソッド. Marquardt法によるフィッティングを実行する.
-    /// </summary>
+    /// <summary>静的メソッド. Marquardt法によるフィッティングを実行する.</summary>
     /// <param name="obsValues">観測値. x は座標, y は強度、 wは重み(分散の逆数)</param>
     /// <param name="functions">Functinクラスの配列.</param>
     /// <returns>Prms[i][j]はi番目のFunctionのj番目の最適パラメータ. Errorはまだ未実装. Rは残差</returns>
@@ -435,9 +381,7 @@ public class Marquardt
 
     #region 組み込み関数
 
-    /// <summary>
-    /// ローレンツ関数 1次元
-    /// </summary>
+    /// <summary>ローレンツ関数 1次元</summary>
     /// <param name="x">xの値</param>
     /// <param name="x0">xの中心値</param>
     /// <param name="h">半値半幅 </param>
@@ -446,9 +390,7 @@ public class Marquardt
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static double Lorenzian(in double x, in double x0, in double h, in double a) => a / (pi * h) / (1 + (x - x0) / h * (x - x0) / h);
 
-    /// <summary>
-    /// ローレンツ関数 2次元 (真円)
-    /// </summary>
+    /// <summary>ローレンツ関数 2次元 (真円)</summary>
     /// <param name="x">xの値</param>
     /// <param name="y">yの値</param>
     /// <param name="x0">xの中心値</param>
@@ -460,9 +402,7 @@ public class Marquardt
     public static double Lorenzian(in double x, in double y, in double x0, in double y0, in double h, in double a)
         => a / (2 * pi * h * h) / (1 + c * (x - x0) / h * (x - x0) / h + c * (y - y0) / h * (y - y0) / h);
 
-    /// <summary>
-    /// ローレンツ関数 2次元 (楕円)
-    /// </summary>
+    /// <summary>ローレンツ関数 2次元 (楕円)</summary>
     /// <param name="x">xの値</param>
     /// <param name="y">yの値</param>
     /// <param name="x0">xの中心値</param>
@@ -481,9 +421,7 @@ public class Marquardt
         return a / (2 * pi * h1 * h2) / (1 + c * X / h1 * X / h1 + c * Y / h2 * Y / h2);
     }
 
-    /// <summary>
-    /// ガウス関数 1次元
-    /// </summary>
+    /// <summary>ガウス関数 1次元</summary>
     /// <param name="x">xの値</param>
     /// <param name="x0">xの中心値</param>
     /// <param name="h">半値半幅 </param>
@@ -492,9 +430,7 @@ public class Marquardt
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static double Gaussian(in double x, in double x0, in double h, in double a) => a * sqrtln2 / sqrtpi / h * Math.Exp(-ln2 * (x - x0) / h * (x - x0) / h);
 
-    /// <summary>
-    /// ガウス関数 2次元 (真円)
-    /// </summary>
+    /// <summary>ガウス関数 2次元 (真円)</summary>
     /// <param name="x">xの値</param>
     /// <param name="y">yの値</param>
     /// <param name="x0">xの中心値</param>
@@ -506,9 +442,7 @@ public class Marquardt
     public static double Gaussian(in double x, in double y, in double x0, in double y0, in double h, in double a)
         => a * ln2 / pi / h / h * Exp(-ln2 * ((x - x0) * (x - x0) + (y - y0) * (y - y0)) / h / h);
 
-    /// <summary>
-    /// ガウス関数 2次元 (楕円)
-    /// </summary>
+    /// <summary>ガウス関数 2次元 (楕円)</summary>
     /// <param name="x">xの値</param>
     /// <param name="y">yの値</param>
     /// <param name="x0">xの中心値</param>
@@ -527,9 +461,7 @@ public class Marquardt
         return a * ln2_pi / h1 / h2 * Exp(-ln2 * (X * X / h1 / h1 + Y * Y / h2 / h2));
     }
 
-    /// <summary>
-    /// 疑似フォークト関数 1次元
-    /// </summary>
+    /// <summary>疑似フォークト関数 1次元</summary>
     /// <param name="x">xの値</param>
     /// <param name="x0">xの中心値</param>
     /// <param name="h">半値半幅 </param>
@@ -540,9 +472,7 @@ public class Marquardt
     public static double PseudoVoigt(in double x, in double x0, in double h, in double eta, in double a)
         => eta * Lorenzian(x, x0, h, a) + (1 - eta) * Gaussian(x, x0, h, a);
 
-    /// <summary>
-    /// 疑似フォークト関数 2次元 (真円)
-    /// </summary>
+    /// <summary>疑似フォークト関数 2次元 (真円)</summary>
     /// <param name="x">xの値</param>
     /// <param name="y">yの値</param>
     /// <param name="x0">xの中心値</param>
@@ -556,9 +486,7 @@ public class Marquardt
     public static double PseudoVoigt(in double x, in double y, in double x0, in double y0, in double h, in double eta, in double a)
         => eta * Lorenzian(x, y, x0, y0, h, a) + (1 - eta) * Gaussian(x, y, x0, y0, h, a);
 
-    /// <summary>
-    /// 疑似フォークト関数 2次元 (楕円)
-    /// </summary>
+    /// <summary>疑似フォークト関数 2次元 (楕円)</summary>
     /// <param name="x">xの値</param>
     /// <param name="y">yの値</param>
     /// <param name="x0">xの中心値</param>

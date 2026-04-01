@@ -22,9 +22,7 @@ public partial class FormDiffractionSimulatorDynamicCompression : CaptureFormBas
 
     private void FormDiffractionSimulatorDynamicCompression_Load(object sender, EventArgs e) => CrystalControl = FormDiffractionSimulator.formMain.crystalControl;
 
-    /// <summary>
-    /// Pasteボタンを押したときの動作
-    /// </summary>
+    /// <summary>Pasteボタンを押したときの動作</summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
     private void buttonPaste_Click(object sender, EventArgs e)
@@ -122,9 +120,7 @@ public partial class FormDiffractionSimulatorDynamicCompression : CaptureFormBas
 
     private readonly Stopwatch sw = new();
 
-    /// <summary>
-    /// 実行ボタン
-    /// </summary>
+    /// <summary>実行ボタン</summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
     private void buttonExecute_Click(object sender, EventArgs e)
@@ -496,9 +492,7 @@ public partial class FormDiffractionSimulatorDynamicCompression : CaptureFormBas
         error3 = excitationError * excitationError * excitationError;
     }
 
-    /// <summary>
-    /// 回折スポットおよび指数ラベルの描画
-    /// </summary>
+    /// <summary>回折スポットおよび指数ラベルの描画</summary>
     /// <param name="graphics">描画対象のグラフィックオブジェクト</param>
     /// <param name="drawLabel">ラベルを描画するかどうか</param>
     /// <param name="outputOnlySpotInformation">このフラグがTrueの場合は、画面描画は行わずにspotの情報だけを返す</param>
@@ -538,9 +532,7 @@ public partial class FormDiffractionSimulatorDynamicCompression : CaptureFormBas
 
     private PointD startArea = new PointD(double.NaN, double.NaN), endArea;
 
-    /// <summary>
-    /// フィルム座標で与えられたptが、検出器内に含まれるかどうかを返す。OverlapPivture機能がOFFの場合は、常に検出器設定が
-    /// </summary>
+    /// <summary>フィルム座標で与えられたptが、検出器内に含まれるかどうかを返す。OverlapPivture機能がOFFの場合は、常に検出器設定が</summary>
     /// <param name="pt"></param>
     /// <returns></returns>
     public bool IsDetectorArea(PointD pt)

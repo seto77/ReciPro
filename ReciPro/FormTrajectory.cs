@@ -109,9 +109,10 @@ public partial class FormTrajectory : CaptureFormBase
 
         var valenceElectronCount = MonteCarlo.EstimateAverageValenceElectronCount(
             cry.Atoms.Select(a => (a.AtomicNumber, AtomStatic.AtomicWeight(a.AtomicNumber) * a.Multiplicity))); // (260331Ch) Jablonski/TPP-2M 用の平均 Nv
-        var monte = new MonteCarlo(Z, A, ρ, energy, tilt,
-            elasticScatteringModel: MonteCarloElasticScatteringModel.MottNistSampler2023,
-            inelasticScatteringModel: MonteCarloInelasticScatteringModel.DiscreteBulkDiimfpApproximation,
+        var monte = new MonteCarlo(Z, A, ρ, energy, tilt,2,
+            MonteCarlo.StoppingPowerModels.JablonskiModified2008,
+            MonteCarlo.ElasticScatteringModels.MottNistSampler2023,
+            MonteCarlo.InelasticScatteringModels.DiscreteBulkDiimfpApproximation,
             valenceElectronCount: valenceElectronCount,
             atoms: cry.Atoms); // (260331Ch) 元素組成込みの Mott/NIST sampler を試せるようにする
 

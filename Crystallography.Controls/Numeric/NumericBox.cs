@@ -28,9 +28,7 @@ public partial class NumericBox : CaptureUserControlBase
 
     #region プロパティ
 
-    /// <summary>
-    /// VisualStudioデザイナーの編集の時はTrue
-    /// </summary>
+    /// <summary>VisualStudioデザイナーの編集の時はTrue</summary>
     public new bool DesignMode
     {
         get
@@ -56,9 +54,7 @@ public partial class NumericBox : CaptureUserControlBase
     public int RoundErrorAccuracy { get; set; } = -1;
 
 
-    /// <summary>
-    /// UpDownボタンを有効にするかどうか
-    /// </summary>
+    /// <summary>UpDownボタンを有効にするかどうか</summary>
     [DefaultValue(false)]
     [Category("Appearance properties")]
     public bool ShowUpDown
@@ -74,24 +70,18 @@ public partial class NumericBox : CaptureUserControlBase
     }
     private bool showUpDown = false;
 
-    /// <summary>
-    /// UpDownボタンが有効な場合、Incrementを取得/設定
-    /// </summary>
+    /// <summary>UpDownボタンが有効な場合、Incrementを取得/設定</summary>
     [DefaultValue(1.0)]
     [Category("Value properties")]
     public double UpDown_Increment { set; get; } = 1.0;
 
 
-    /// <summary>
-    /// UpDownボタンが有効な場合、Incrementを自動で調整するかどうか
-    /// </summary>
+    /// <summary>UpDownボタンが有効な場合、Incrementを自動で調整するかどうか</summary>
     [DefaultValue(false)]
     [Category("Value properties")]
     public bool SmartIncrement { set; get; } = false;
 
-    /// <summary>
-    /// 最大値
-    /// </summary>
+    /// <summary>最大値</summary>
     [DefaultValue(double.PositiveInfinity)]
     [Category("Value properties")]
     public double Maximum
@@ -110,9 +100,7 @@ public partial class NumericBox : CaptureUserControlBase
     }
     private double maximum = double.PositiveInfinity;
 
-    /// <summary>
-    /// 最小値
-    /// </summary>
+    /// <summary>最小値</summary>
     [DefaultValue(double.NegativeInfinity)]
     [Category("Value properties")]
     public double Minimum
@@ -131,9 +119,7 @@ public partial class NumericBox : CaptureUserControlBase
     }
     private double minimum = double.NegativeInfinity;
 
-    /// <summary>
-    /// Maximum, Minimumの範囲に入力値を制限する。範囲外の場合は、自動的にどちらかの場合に変更される
-    /// </summary>
+    /// <summary>Maximum, Minimumの範囲に入力値を制限する。範囲外の場合は、自動的にどちらかの場合に変更される</summary>
     [DefaultValue(true)]
     [Category("Value properties")]
     public bool RestrictLimitValue { set; get; } = true;
@@ -158,9 +144,7 @@ public partial class NumericBox : CaptureUserControlBase
     public double MinimalStep => DecimalPlaces >= 0 ? Math.Pow(10, -DecimalPlaces) : 1;
 
     #region ヘッダー＆フッター の文字、フォント、色
-    /// <summary>
-    /// 数値の前に表示するテキスト
-    /// </summary>
+    /// <summary>数値の前に表示するテキスト</summary>
     [DefaultValue("")]
     [Localizable(true)]
     [Category("Font && Color")]
@@ -184,9 +168,7 @@ public partial class NumericBox : CaptureUserControlBase
     [Category("Font && Color")]
     public Color HeaderBackColor { set => labelHeader.BackColor = value; get => labelHeader.BackColor; }
 
-    /// <summary>
-    /// 数値の後に表示するテキスト
-    /// </summary>
+    /// <summary>数値の後に表示するテキスト</summary>
     [DefaultValue("")]
     [Category("Font && Color")]
     [Localizable(true)]
@@ -223,9 +205,7 @@ public partial class NumericBox : CaptureUserControlBase
     [Localizable(true)]
     [Category("Font && Color")]
     [DefaultValue(typeof(Font), "Segoe UI Symbol, 9.75pt")]
-    /// <summary>
-    /// font
-    /// </summary>
+    /// <summary>font</summary>
     public Font TextFont
     {
         set
@@ -248,18 +228,14 @@ public partial class NumericBox : CaptureUserControlBase
     }
 
 
-    /// <summary>
-    /// ＋を表示するかどうか
-    /// </summary>
+    /// <summary>＋を表示するかどうか</summary>
     [DefaultValue(false)]
     [Category("Appearance properties")]
     public bool ShowPositiveSign { set; get; } = false;
 
 
 
-    /// <summary>
-    /// コントロールが保持している値
-    /// </summary>
+    /// <summary>コントロールが保持している値</summary>
     [DefaultValue(0.0)]
     [Category("Value properties")]
     public double Value
@@ -293,31 +269,23 @@ public partial class NumericBox : CaptureUserControlBase
     }
     private double numericalValue = 0;
 
-    /// <summary>
-    /// コントロールが保持している値の整数値 (getのみ)
-    /// </summary>
+    /// <summary>コントロールが保持している値の整数値 (getのみ)</summary>
     [Category("Value properties")]
     [DefaultValue(0)]
     public int ValueInteger { get => (int)numericalValue; }
 
-    /// <summary>
-    /// Radianとして値を入力/取得
-    /// </summary>
+    /// <summary>Radianとして値を入力/取得</summary>
     [DefaultValue(0.0)]
     [Category("Value properties")]
     public double RadianValue { set => Value = value * 180.0 / Math.PI; get => Value / 180.0 * Math.PI; }
 
-    /// <summary>
-    /// 3桁区切りでカンマを表示させる
-    /// </summary>
+    /// <summary>3桁区切りでカンマを表示させる</summary>
     [DefaultValue(false)]
     [Category("Appearance properties")]
     public bool ThonsandsSeparator { set { thonsandsSeparator = value; textBox.Text = GetString(); } get => thonsandsSeparator; }
     private bool thonsandsSeparator = false;
 
-    /// <summary>
-    /// 小数点以下の桁数
-    /// </summary>
+    /// <summary>小数点以下の桁数</summary>
     [DefaultValue(-1)]
     [Category("Appearance properties")]
     public int DecimalPlaces
@@ -334,23 +302,17 @@ public partial class NumericBox : CaptureUserControlBase
     }
     private int decimalPlaces = -1;
 
-    /// <summary>
-    /// 小数点以下のゼロの記号を削除するかどうか
-    /// </summary>
+    /// <summary>小数点以下のゼロの記号を削除するかどうか</summary>
     [DefaultValue(false)]
     [Category("Appearance properties")]
     public bool TrimEndZero { get; set; } = false;
 
-    /// <summary>
-    /// 読み取り専用かどうか
-    /// </summary>
+    /// <summary>読み取り専用かどうか</summary>
     [DefaultValue(false)]
     [Category("Appearance properties")]
     public bool ReadOnly { set { textBox.ReadOnly = value; numericUpDown.Enabled = !value; } get => textBox.ReadOnly; }
 
-    /// <summary>
-    /// 複数行表示をするかどうか
-    /// </summary>
+    /// <summary>複数行表示をするかどうか</summary>
     [DefaultValue(false)]
     [Category("Appearance properties")]
     public bool Multiline
@@ -375,17 +337,13 @@ public partial class NumericBox : CaptureUserControlBase
         get => textBox.Multiline;
     }
 
-    /// <summary>
-    /// 値が分数に出来る場合、分数表示をするか
-    /// </summary>
+    /// <summary>値が分数に出来る場合、分数表示をするか</summary>
     [Category("Appearance properties")]
     [DefaultValue(false)]
     public bool ShowFraction { set; get; } = false;
 
 
-    /// <summary>
-    /// 値が三角関数に出来る場合、三角関数で表示するか
-    /// </summary>
+    /// <summary>値が三角関数に出来る場合、三角関数で表示するか</summary>
     [DefaultValue(false)]
     [Category("Appearance properties")]
     public bool ShowTrigonomeric { set; get; } = false;
@@ -528,9 +486,7 @@ public partial class NumericBox : CaptureUserControlBase
         }
     }
 
-    /// <summary>
-    /// 現在のnumericalValueからテキストボックスの文字列を設定する
-    /// </summary>
+    /// <summary>現在のnumericalValueからテキストボックスの文字列を設定する</summary>
     /// <returns></returns>
     internal string GetString()
     {

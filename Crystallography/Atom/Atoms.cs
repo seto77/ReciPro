@@ -133,14 +133,10 @@ public class Atoms : System.IEquatable<Atoms>, ICloneable
 
     public Material Material => new(Argb, (Ambient, Diffusion, Specular, Shininess, Emission));
 
-    /// <summary>
-    /// OpenGL描画時に、ラベルを表示するか
-    /// </summary>
+    /// <summary>OpenGL描画時に、ラベルを表示するか</summary>
     public bool ShowLabel = false;
 
-    /// <summary>
-    /// OpenGLの描画時に有効にするかどうか
-    /// </summary>
+    /// <summary>OpenGLの描画時に有効にするかどうか</summary>
     public bool GLEnabled = true;
     #endregion
 
@@ -152,9 +148,7 @@ public class Atoms : System.IEquatable<Atoms>, ICloneable
     }
 
 
-    /// <summary>
-    /// ワイコフポジションだけ指定して、原子位置は実態のないコンストラクタ
-    /// </summary>
+    /// <summary>ワイコフポジションだけ指定して、原子位置は実態のないコンストラクタ</summary>
     /// <param name="wyk"></param>
     public Atoms(WyckoffPosition wyk, string label, int atomicNumber, int subXray, int subElectron, double[] isotope,
          double occ, DiffuseScatteringFactor dsf)
@@ -187,9 +181,7 @@ public class Atoms : System.IEquatable<Atoms>, ICloneable
         Isotope = isotope;
     }
 
-    /// <summary>
-    /// 基本コンストラクタ
-    /// </summary>
+    /// <summary>基本コンストラクタ</summary>
     /// <param name="label"></param>
     /// <param name="atomicNumber"></param>
     /// <param name="subXray"></param>
@@ -227,9 +219,7 @@ public class Atoms : System.IEquatable<Atoms>, ICloneable
         ElementName = AtomicNumber.ToString() + ": " + AtomStatic.AtomicName(atomicNumber);
     }
 
-    /// <summary>
-    /// 基本コンストラクタ + エラー
-    /// </summary>
+    /// <summary>基本コンストラクタ + エラー</summary>
     /// <param name="label"></param>
     /// <param name="atomicNumber"></param>
     /// <param name="subXray"></param>
@@ -252,9 +242,7 @@ public class Atoms : System.IEquatable<Atoms>, ICloneable
         Occ_err = occ_err;
     }
 
-    /// <summary>
-    /// 基本コンストラクタ + エラー + Material
-    /// </summary>
+    /// <summary>基本コンストラクタ + エラー + Material</summary>
     /// <param name="label"></param>
     /// <param name="atomicNumber"></param>
     /// <param name="subXray"></param>
@@ -286,9 +274,7 @@ public class Atoms : System.IEquatable<Atoms>, ICloneable
     #endregion
 
     #region ResetSymmetry  対称性をリセットして、等価な原子位置や、ワイコフ位置などを再設定する。
-    /// <summary>
-    /// 対称性をリセットして、等価な原子位置や、ワイコフ位置などを再設定する。
-    /// </summary>
+    /// <summary>対称性をリセットして、等価な原子位置や、ワイコフ位置などを再設定する。</summary>
     /// <param name="symmetrySeriesNumber"></param>
     public void ResetSymmetry(int symmetrySeriesNumber)
     {
@@ -306,9 +292,7 @@ public class Atoms : System.IEquatable<Atoms>, ICloneable
     #endregion
 
     #region ResetVesta()  Vestaの色、材質にセットする。
-    /// <summary>
-    /// Vestaの色、材質にセットする。
-    /// </summary>
+    /// <summary>Vestaの色、材質にセットする。</summary>
     public void ResetVesta()
     {
         Texture = Material.DefaultTexture;
@@ -317,17 +301,13 @@ public class Atoms : System.IEquatable<Atoms>, ICloneable
     #endregion
 
     #region 原子位置の乱数変化、微小変化      テストコード
-    /// <summary>
-    /// 多重度を保ったまま、原子位置を乱数的的に変化させる。ワイコフ位置も多重度をもとにきまる
-    /// </summary>
+    /// <summary>多重度を保ったまま、原子位置を乱数的的に変化させる。ワイコフ位置も多重度をもとにきまる</summary>
     /// <param name="r"></param>
     public static void RandomizeKeepintMultiplicity(Random r)
     {
     }
 
-    /// <summary>
-    /// ワイコフ位置を保ったまま、原子位置を乱数的に変化させる
-    /// </summary>
+    /// <summary>ワイコフ位置を保ったまま、原子位置を乱数的に変化させる</summary>
     /// <param name="seed"></param>
     public void RandomizeKeepingWykoff(Random r)
     {
@@ -342,9 +322,7 @@ public class Atoms : System.IEquatable<Atoms>, ICloneable
         Z = Atom[0].Z;
     }
 
-    /// <summary>
-    /// ワイコフ位置を保ったまま、原子位置を現在の位置からわずかに変化させる
-    /// </summary>
+    /// <summary>ワイコフ位置を保ったまま、原子位置を現在の位置からわずかに変化させる</summary>
     /// <param name="threshold">動かす最大値 (相対位置) </param>
     public void ShakeKeepingWykoff(double threshold, Random r)
     {
@@ -361,17 +339,13 @@ public class Atoms : System.IEquatable<Atoms>, ICloneable
     #endregion
 
     #region 電子線、X線、中性子の、原子散乱因子の計算 
-    /// <summary>
-    /// 電子線の原子散乱因子を計算 s2の単位はnm^-2
-    /// </summary>
+    /// <summary>電子線の原子散乱因子を計算 s2の単位はnm^-2</summary>
     /// <param name="S2">S2: (sin(theta)/ramda)^2, unit is nm^-2</param>
     /// <returns></returns>
     public double GetAtomicScatteringFactorForElectron(double s2)
         => AtomStatic.ElectronScatteringPeng[AtomicNumber][SubNumberElectron].Factor(s2) * Occ;
 
-    /// <summary>
-    /// X線の原子散乱因子を計算 s2の単位はnm^-2
-    /// </summary>
+    /// <summary>X線の原子散乱因子を計算 s2の単位はnm^-2</summary>
     /// <param name="s2"> unit is nm^-2</param>
     /// <returns></returns>
     public double GetAtomicScatteringFactorForXray(double s2)
@@ -464,192 +438,104 @@ public class DiffuseScatteringFactor
     //641ページ
 
     #region B type. Getのみ
-    /// <summary>
-    /// unit: nm^2
-    /// </summary>
+    /// <summary>unit: nm^2</summary>
     public double Biso => OriginalType == Type.B ? Iso : Iso * PI2 * 8;
 
-    /// <summary>
-    /// unit: nm^2. g=000の時のBiso. Acta Cryst. (1959). 12, 609 , Hamilton の式に従って、Bisoを計算
-    /// </summary>
+    /// <summary>unit: nm^2. g=000の時のBiso. Acta Cryst. (1959). 12, 609 , Hamilton の式に従って、Bisoを計算</summary>
     public double Biso000 => (B11 * a2 + B22 * b2 + B33 * c2 + 2 * B12 * ab + 2 * B23 * bc + 2 * B31 * ca) * 4.0 / 3.0;
 
-    /// <summary>
-    /// 温度因子がゼロの場合はtrue
-    /// </summary>
+    /// <summary>温度因子がゼロの場合はtrue</summary>
     public bool IsZero => UseIso ? Biso == 0 : B11 == 0 && B22 == 0 && B33 == 0 && B12 == 0 && B23 == 0 && B31 == 0;
 
-    /// <summary>
-    /// unit: nm^2
-    /// </summary>
+    /// <summary>unit: nm^2</summary>
     public double Biso_err => OriginalType == Type.B ? Iso_err : Iso_err * PI2 * 8;
-    /// <summary>
-    /// unit: none
-    /// </summary>
+    /// <summary>unit: none</summary>
     public double B11 => OriginalType == Type.B ? Aniso11 : Aniso11 * coeff11;
-    /// <summary>
-    /// unit: none
-    /// </summary>
+    /// <summary>unit: none</summary>
     public double B22 => OriginalType == Type.B ? Aniso22 : Aniso22 * coeff22;
-    /// <summary>
-    /// unit: none
-    /// </summary>
+    /// <summary>unit: none</summary>
     public double B33 => OriginalType == Type.B ? Aniso33 : Aniso33 * coeff33;
-    /// <summary>
-    /// unit: none
-    /// </summary>
+    /// <summary>unit: none</summary>
     public double B12 => OriginalType == Type.B ? Aniso12 : Aniso12 * coeff12;
-    /// <summary>
-    /// unit: none
-    /// </summary>
+    /// <summary>unit: none</summary>
     public double B23 => OriginalType == Type.B ? Aniso23 : Aniso23 * coeff23;
-    /// <summary>
-    /// unit: none
-    /// </summary>
+    /// <summary>unit: none</summary>
     public double B31 => OriginalType == Type.B ? Aniso31 : Aniso31 * coeff31;
-    /// <summary>
-    /// unit: none
-    /// </summary>
+    /// <summary>unit: none</summary>
     public double B11_err => OriginalType == Type.B ? Aniso11_err : Aniso11_err * coeff11;
-    /// <summary>
-    /// unit: none
-    /// </summary>
+    /// <summary>unit: none</summary>
     public double B22_err => OriginalType == Type.B ? Aniso22_err : Aniso22_err * coeff22;
-    /// <summary>
-    /// unit: none
-    /// </summary>
+    /// <summary>unit: none</summary>
     public double B33_err => OriginalType == Type.B ? Aniso33_err : Aniso33_err * coeff33;
-    /// <summary>
-    /// unit: none
-    /// </summary>
+    /// <summary>unit: none</summary>
     public double B12_err => OriginalType == Type.B ? Aniso12_err : Aniso12_err * coeff12;
-    /// <summary>
-    /// unit: none
-    /// </summary>
+    /// <summary>unit: none</summary>
     public double B23_err => OriginalType == Type.B ? Aniso23_err : Aniso23_err * coeff23;
-    /// <summary>
-    /// unit: none
-    /// </summary>
+    /// <summary>unit: none</summary>
     public double B31_err => OriginalType == Type.B ? Aniso31_err : Aniso31_err * coeff31;
 
     #endregion
 
     #region U type. Getのみ
-    /// <summary>
-    /// 単位は nm^2
-    /// </summary>
+    /// <summary>単位は nm^2</summary>
     public double Uiso => OriginalType == Type.U ? Iso : Iso / PI2 / 8;
-    /// <summary>
-    /// 単位は nm^2
-    /// </summary>
+    /// <summary>単位は nm^2</summary>
     public double Uiso_err => OriginalType == Type.U ? Iso_err : Iso_err / PI2 / 8;
-    /// <summary>
-    /// 単位は nm^2
-    /// </summary>
+    /// <summary>単位は nm^2</summary>
     public double U11 => OriginalType == Type.U ? Aniso11 : Aniso11 / coeff11;
-    /// <summary>
-    /// 単位は nm^2
-    /// </summary>
+    /// <summary>単位は nm^2</summary>
     public double U22 => OriginalType == Type.U ? Aniso22 : Aniso22 / coeff22;
-    /// <summary>
-    /// 単位は nm^2
-    /// </summary>
+    /// <summary>単位は nm^2</summary>
     public double U33 => OriginalType == Type.U ? Aniso33 : Aniso33 / coeff33;
-    /// <summary>
-    /// 単位は nm^2
-    /// </summary>
+    /// <summary>単位は nm^2</summary>
     public double U12 => OriginalType == Type.U ? Aniso12 : Aniso12 / coeff12;
-    /// <summary>
-    /// 単位は nm^2
-    /// </summary>
+    /// <summary>単位は nm^2</summary>
     public double U23 => OriginalType == Type.U ? Aniso23 : Aniso23 / coeff23;
-    /// <summary>
-    /// 単位は nm^2
-    /// </summary>
+    /// <summary>単位は nm^2</summary>
     public double U31 => OriginalType == Type.U ? Aniso31 : Aniso31 / coeff31;
-    /// <summary>
-    /// 単位は nm^2
-    /// </summary>
+    /// <summary>単位は nm^2</summary>
     public double U11_err => OriginalType == Type.U ? Aniso11_err : Aniso11_err / coeff11;
-    /// <summary>
-    /// 単位は nm^2
-    /// </summary>
+    /// <summary>単位は nm^2</summary>
     public double U22_err => OriginalType == Type.U ? Aniso22_err : Aniso22_err / coeff22;
-    /// <summary>
-    /// 単位は nm^2
-    /// </summary>
+    /// <summary>単位は nm^2</summary>
     public double U33_err => OriginalType == Type.U ? Aniso33_err : Aniso33_err / coeff33;
-    /// <summary>
-    /// 単位は nm^2
-    /// </summary>
+    /// <summary>単位は nm^2</summary>
     public double U12_err => OriginalType == Type.U ? Aniso12_err : Aniso12_err / coeff12;
-    /// <summary>
-    /// 単位は nm^2
-    /// </summary>
+    /// <summary>単位は nm^2</summary>
     public double U23_err => OriginalType == Type.U ? Aniso23_err : Aniso23_err / coeff23;
-    /// <summary>
-    /// 単位は nm^2
-    /// </summary>
+    /// <summary>単位は nm^2</summary>
     public double U31_err => OriginalType == Type.U ? Aniso31_err : Aniso31_err / coeff31;
     #endregion
 
     #region オリジナルの値 
-    /// <summary>
-    /// 単位は nm^2
-    /// </summary>
+    /// <summary>単位は nm^2</summary>
     public double Iso { get; set; }
-    /// <summary>
-    /// 単位は nm^2
-    /// </summary>
+    /// <summary>単位は nm^2</summary>
     public double Iso_err { get; set; }
-    /// <summary>
-    /// 単位は Uの場合 nm^2,  Bの場合　無次元
-    /// </summary>
+    /// <summary>単位は Uの場合 nm^2,  Bの場合　無次元</summary>
     public double Aniso11 { get; set; }
-    /// <summary>
-    /// 単位は Uの場合 nm^2,  Bの場合　無次元
-    /// </summary>
+    /// <summary>単位は Uの場合 nm^2,  Bの場合　無次元</summary>
     public double Aniso22 { get; set; }
-    /// <summary>
-    /// 単位は Uの場合 nm^2,  Bの場合　無次元
-    /// </summary>
+    /// <summary>単位は Uの場合 nm^2,  Bの場合　無次元</summary>
     public double Aniso33 { get; set; }
-    /// <summary>
-    /// 単位は Uの場合 nm^2,  Bの場合　無次元
-    /// </summary>
+    /// <summary>単位は Uの場合 nm^2,  Bの場合　無次元</summary>
     public double Aniso12 { get; set; }
-    /// <summary>
-    /// 単位は Uの場合 nm^2,  Bの場合　無次元
-    /// </summary>
+    /// <summary>単位は Uの場合 nm^2,  Bの場合　無次元</summary>
     public double Aniso23 { get; set; }
-    /// <summary>
-    /// 単位は Uの場合 nm^2,  Bの場合　無次元
-    /// </summary>
+    /// <summary>単位は Uの場合 nm^2,  Bの場合　無次元</summary>
     public double Aniso31 { get; set; }
 
-    /// <summary>
-    /// 単位は Uの場合 nm^2,  Bの場合　無次元
-    /// </summary>
+    /// <summary>単位は Uの場合 nm^2,  Bの場合　無次元</summary>
     public double Aniso11_err { get; set; }
-    /// <summary>
-    /// 単位は Uの場合 nm^2,  Bの場合　無次元
-    /// </summary>
+    /// <summary>単位は Uの場合 nm^2,  Bの場合　無次元</summary>
     public double Aniso22_err { get; set; }
-    /// <summary>
-    /// 単位は Uの場合 nm^2,  Bの場合　無次元
-    /// </summary>
+    /// <summary>単位は Uの場合 nm^2,  Bの場合　無次元</summary>
     public double Aniso33_err { get; set; }
-    /// <summary>
-    /// 単位は Uの場合 nm^2,  Bの場合　無次元
-    /// </summary>
+    /// <summary>単位は Uの場合 nm^2,  Bの場合　無次元</summary>
     public double Aniso12_err { get; set; }
-    /// <summary>
-    /// 単位は Uの場合 nm^2,  Bの場合　無次元
-    /// </summary>
+    /// <summary>単位は Uの場合 nm^2,  Bの場合　無次元</summary>
     public double Aniso23_err { get; set; }
-    /// <summary>
-    /// 単位は Uの場合 nm^2,  Bの場合　無次元
-    /// </summary>
+    /// <summary>単位は Uの場合 nm^2,  Bの場合　無次元</summary>
     public double Aniso31_err { get; set; }
 
     #endregion
@@ -698,9 +584,7 @@ public class DiffuseScatteringFactor
     {
     }
 
-    /// <summary>
-    /// コンストラクタ. B##は無次元, 他はnm^2. Cellの 単位は nm & radians.
-    /// </summary>
+    /// <summary>コンストラクタ. B##は無次元, 他はnm^2. Cellの 単位は nm & radians.</summary>
     /// <param name="t"></param>
     /// <param name="useIso"></param>
     /// <param name="iso"></param>

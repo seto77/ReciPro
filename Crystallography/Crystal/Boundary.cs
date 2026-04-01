@@ -5,9 +5,7 @@ using System.Xml.Serialization;
 
 namespace Crystallography
 {
-    /// <summary>
-    /// 境界を表現するクラス. 主にReciProのStructure Viewerから呼び出される.
-    /// </summary>
+    /// <summary>境界を表現するクラス. 主にReciProのStructure Viewerから呼び出される.</summary>
     [Serializable()]
     public class Bound
     {
@@ -22,9 +20,7 @@ namespace Crystallography
         public double Distance { get; set; }
         public double MultipleOfD { get; set; }
 
-        /// <summary>
-        /// 平行移動量(nm)
-        /// </summary>
+        /// <summary>平行移動量(nm)</summary>
         public double Translation { get; set; }
 
         public bool Enabled { get; set; } = true;
@@ -32,9 +28,7 @@ namespace Crystallography
         public Bound()
         { }
 
-        /// <summary>
-        /// Boundクラスを生成. distanceはnm単位であることに注意
-        /// </summary>
+        /// <summary>Boundクラスを生成. distanceはnm単位であることに注意</summary>
         /// <param name="enabled"></param>
         /// <param name="crystal"></param>
         /// <param name="h"></param>
@@ -83,9 +77,7 @@ namespace Crystallography
         }
     }
 
-    /// <summary>
-    /// 境界を表現するクラス. 主にReciProのStructure Viewerから呼び出される.
-    /// </summary>
+    /// <summary>境界を表現するクラス. 主にReciProのStructure Viewerから呼び出される.</summary>
     [Serializable()]
     public class LatticePlane
     {

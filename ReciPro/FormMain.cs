@@ -97,9 +97,7 @@ public partial class FormMain : CaptureFormBase
 
     #region プロパティ、フィールド、イベントハンドラ
 
-    /// <summary>
-    /// VisualStudioデザイナーの編集の時はTrue
-    /// </summary>
+    /// <summary>VisualStudioデザイナーの編集の時はTrue</summary>
     public new bool DesignMode
     {
         get
@@ -191,9 +189,7 @@ public partial class FormMain : CaptureFormBase
 
     #region コンストラクト、ロード
 
-    /// <summary>
-    /// コンストラクタ
-    /// </summary>
+    /// <summary>コンストラクタ</summary>
     public FormMain()
     {
 
@@ -263,9 +259,7 @@ public partial class FormMain : CaptureFormBase
 
     }
 
-    /// <summary>
-    /// フォームロード時
-    /// </summary>
+    /// <summary>フォームロード時</summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
     private void FormMain_Load(object sender, EventArgs e)
@@ -488,9 +482,7 @@ public partial class FormMain : CaptureFormBase
         }
     }
 
-    /// <summary>
-    /// クローズ時
-    /// </summary>
+    /// <summary>クローズ時</summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
     private void FormMain_FormClosing(object sender, FormClosingEventArgs e)
@@ -701,16 +693,12 @@ public partial class FormMain : CaptureFormBase
 
     #region 回転操作
 
-    /// <summary>
-    /// 回転量と回転角度を指定して、全フォームに回転命令を出す
-    /// </summary>
+    /// <summary>回転量と回転角度を指定して、全フォームに回転命令を出す</summary>
     /// <param name="axis"></param>
     /// <param name="angle"></param>
     public void Rotate((double X, double Y, double Z) axis, double angle) => Rotate(new Vector3DBase(axis.X, axis.Y, axis.Z), angle);
 
-    /// <summary>
-    /// 回転量と回転角度を指定して、全フォームに回転命令を出す
-    /// </summary>
+    /// <summary>回転量と回転角度を指定して、全フォームに回転命令を出す</summary>
     /// <param name="axis"></param>
     /// <param name="angle"></param>
     public void Rotate(Vector3DBase axis, double angle)
@@ -745,9 +733,7 @@ public partial class FormMain : CaptureFormBase
         SetRotation(Crystals[0].RotationMatrix);
     }
 
-    /// <summary>
-    /// 回転行列を指定して、全フォームの回転状態をセットする
-    /// </summary>
+    /// <summary>回転行列を指定して、全フォームの回転状態をセットする</summary>
     /// <param name="mat"></param>
     public void SetRotation(Matrix3D mat)
     {
@@ -958,9 +944,7 @@ public partial class FormMain : CaptureFormBase
 
     public bool SkipEulerChange = false;
 
-    /// <summary>
-    /// オイラー角の入力ボックスからの変更イベント
-    /// </summary>
+    /// <summary>オイラー角の入力ボックスからの変更イベント</summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
     private void numericUpDownEulerAngle_ValueChanged(object sender, EventArgs e)
@@ -1031,9 +1015,7 @@ public partial class FormMain : CaptureFormBase
 
     private void CrystalControl_SymmetryInformation_VisibleChanged(object sender, EventArgs e) => toolStripButtonSymmetryInformation.Checked = crystalControl.FormSymmetryInformation.Visible;
 
-    /// <summary>
-    /// ToolStripボタンを押されたら、各機能を起動/終了する
-    /// </summary>
+    /// <summary>ToolStripボタンを押されたら、各機能を起動/終了する</summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
     public void toolStripButtons_MouseDown(object sender, MouseEventArgs e)
@@ -1286,9 +1268,7 @@ public partial class FormMain : CaptureFormBase
         }
     }
 
-    /// <summary>
-    /// 選択結晶をCIF形式で保存
-    /// </summary>
+    /// <summary>選択結晶をCIF形式で保存</summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
     private void exportAsCIFFormatToolStripMenuItem_Click(object sender, EventArgs e) => ExportCIF();
@@ -1665,9 +1645,7 @@ public partial class FormMain : CaptureFormBase
     }
 
 
-    /// <summary>
-    /// 進捗状況を更新
-    /// </summary>
+    /// <summary>進捗状況を更新</summary>
     /// <param name="current"></param>
     /// <param name="total"></param>
     /// <param name="elapsedMilliseconds">経過時間</param>

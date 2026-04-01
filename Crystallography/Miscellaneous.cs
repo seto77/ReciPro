@@ -53,9 +53,7 @@ public static class Miscellaneous
     }
 
 
-    /// <summary>
-    /// 数字に stとかthみたいな文字を追加した文字列で返す
-    /// </summary>
+    /// <summary>数字に stとかthみたいな文字を追加した文字列で返す</summary>
     /// <param name="number"></param>
     /// <returns></returns>
     public static string Ordinal(this int number)
@@ -73,9 +71,7 @@ public static class Miscellaneous
         };
     }
 
-    /// <summary>
-    /// 有限の数字かどうかを判定する
-    /// </summary>
+    /// <summary>有限の数字かどうかを判定する</summary>
     /// <param name="d"></param>
     /// <returns></returns>
     public static bool IsFiniteNumber(params double[] d)
@@ -91,9 +87,7 @@ public static class Miscellaneous
     private static bool isDecimalPointCommaFlag = true;
     private static bool isDecimalPointComma = false;
 
-    /// <summary>
-    /// 小数点がカンマかどうかを判定する
-    /// </summary>
+    /// <summary>小数点がカンマかどうかを判定する</summary>
     public static bool IsDecimalPointComma
     {
         get
@@ -109,9 +103,7 @@ public static class Miscellaneous
 
     public static (int Division, int Modulus) DivMod(int n, int m) => (n / m, n % m);
 
-    /// <summary>
-    /// ファイルが使用中かどうかをチェック
-    /// </summary>
+    /// <summary>ファイルが使用中かどうかをチェック</summary>
     /// <param name="path"></param>
     /// <returns></returns>
     public static bool isFileExistsAndLocked(string path)
@@ -158,9 +150,7 @@ public static class Miscellaneous
 
 
 
-/// <summary>
-/// プロパティグリッドのプロパティの並び順をソート
-/// </summary>
+/// <summary>プロパティグリッドのプロパティの並び順をソート</summary>
 public class DefinitionOrderTypeConverter : TypeConverter
 {
     public override PropertyDescriptorCollection GetProperties(ITypeDescriptorContext context, object value, Attribute[] attributes)
@@ -177,8 +167,6 @@ public class DefinitionOrderTypeConverter : TypeConverter
         return pdc.Sort([.. list]);
     }
 
-    /// <summary>
-    /// GetPropertiesをサポートしていることを表明する。
-    /// </summary>
+    /// <summary>GetPropertiesをサポートしていることを表明する。</summary>
     public override bool GetPropertiesSupported(ITypeDescriptorContext context) => true;
 }

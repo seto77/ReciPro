@@ -49,9 +49,7 @@ public partial class FormDiffractionSimulator : CaptureFormBase
 
     #region 計算モード
     public enum CalcModes { Excitation, Kinematical, Dynamical }
-    /// <summary>
-    /// 計算モードを取得/設定
-    /// </summary>
+    /// <summary>計算モードを取得/設定</summary>
     public CalcModes CalcMode
     {
         get
@@ -77,9 +75,7 @@ public partial class FormDiffractionSimulator : CaptureFormBase
 
     #region 光学モード
     public enum BeamModes { Parallel, PrecessionElectron, PrecessionXray, Convergence }
-    /// <summary>
-    /// 光学系を取得/設定
-    /// </summary>
+    /// <summary>光学系を取得/設定</summary>
     public BeamModes BeamMode
     {
         get
@@ -134,9 +130,7 @@ public partial class FormDiffractionSimulator : CaptureFormBase
 
     #region シミュレーション画面のプロパティ
 
-    /// <summary>
-    /// 中心位置を固定するかどうか
-    /// </summary>
+    /// <summary>中心位置を固定するかどうか</summary>
     public bool IsCenterFixed
     {
         get => checkBoxFixCenter.Checked;
@@ -150,9 +144,7 @@ public partial class FormDiffractionSimulator : CaptureFormBase
         }
     }
 
-    /// <summary>
-    /// シミュレーション画像を水平反転するかどうか
-    /// </summary>
+    /// <summary>シミュレーション画像を水平反転するかどうか</summary>
     public bool FlipHorizontally
     {
         get => checkBoxFlipHorizontally.Checked;
@@ -165,9 +157,7 @@ public partial class FormDiffractionSimulator : CaptureFormBase
             }
         }
     }
-    /// <summary>
-    /// シミュレーション画像を上下反転するかどうか
-    /// </summary>
+    /// <summary>シミュレーション画像を上下反転するかどうか</summary>
     public bool FlipVertically
     {
         get => checkBoxFlipVertically.Checked;
@@ -181,9 +171,7 @@ public partial class FormDiffractionSimulator : CaptureFormBase
         }
     }
 
-    /// <summary>
-    /// シミュレーション画像を明暗反転させるかどうか
-    /// </summary>
+    /// <summary>シミュレーション画像を明暗反転させるかどうか</summary>
     public bool NegativeImage
     {
         get => checkBoxNegativeImage.Checked;
@@ -227,9 +215,7 @@ public partial class FormDiffractionSimulator : CaptureFormBase
 
     }
 
-    /// <summary>
-    /// 画面解像度 mm/pix
-    /// </summary>
+    /// <summary>画面解像度 mm/pix</summary>
     public double Resolution
     {
         set
@@ -317,9 +303,7 @@ public partial class FormDiffractionSimulator : CaptureFormBase
 
 
     public Matrix3D DetectorRotationInv => FormDiffractionSimulatorGeometry.DetectorRotationInv;
-    /// <summary>
-    /// 画像の中心。検出器(Detector)座標系(Foot原点)で表現
-    /// </summary>
+    /// <summary>画像の中心。検出器(Detector)座標系(Foot原点)で表現</summary>
     public PointD Foot { get; set; } = new PointD(0, 0);
 
      public PointD FixedCenter
@@ -346,25 +330,17 @@ public partial class FormDiffractionSimulator : CaptureFormBase
     #endregion
 
     #region イベント制御
-    /// <summary>
-    /// コントロールイベントをスキップする
-    /// </summary>
+    /// <summary>コントロールイベントをスキップする</summary>
     public bool SkipEvent { get; set; } = false;
 
     private bool skipDrawing = false;
-    /// <summary>
-    /// 描画をスキップする (Draw関数に入ったらすぐに判定) (コントロールイベントをスキップする場合は、SkipEventを使う)
-    /// </summary>
+    /// <summary>描画をスキップする (Draw関数に入ったらすぐに判定) (コントロールイベントをスキップする場合は、SkipEventを使う)</summary>
     public bool SkipDrawing { set { skipDrawing = value; if (!value) Draw(); } get => skipDrawing; }
 
-    /// <summary>
-    /// スポット位置などは計算するが、最終的なレンダリングを行うかどうか。
-    /// </summary>
+    /// <summary>スポット位置などは計算するが、最終的なレンダリングを行うかどうか。</summary>
     public bool SkipRendering { get; set; } = false;
 
-    /// <summary>
-    /// このフラグがtrueの時は、計算をキャンセルする
-    /// </summary>
+    /// <summary>このフラグがtrueの時は、計算をキャンセルする</summary>
     public bool CancelSetVector { get; set; } = false;
     #endregion
 
@@ -526,9 +502,7 @@ public partial class FormDiffractionSimulator : CaptureFormBase
     #endregion
 
     #region プロジェクション行列の設定
-    /// <summary>
-    /// プロジェクション行列の設定を行う。
-    /// </summary>
+    /// <summary>プロジェクション行列の設定を行う。</summary>
     public bool SetProjection(Graphics g = null)
     {
         float xSign = FlipHorizontally ? -1 : 1;
@@ -551,9 +525,7 @@ public partial class FormDiffractionSimulator : CaptureFormBase
 
     private void Draw(object sender, EventArgs e) => Draw();
 
-    /// <summary>
-    /// 逆空間描画関数
-    /// </summary>
+    /// <summary>逆空間描画関数</summary>
     /// <param name="g">Graphicsオブジェクトを指定</param>
     /// <param name="drawLabel">ラベルを書く時は、true</param>
     /// <param name="drawOverlappedImage">オーバーラップイメージを描く時はtrue. ただし、trueでも、画像がセットされていない場合は描かない　</param>
@@ -686,9 +658,7 @@ public partial class FormDiffractionSimulator : CaptureFormBase
         Draw3D();
     }
 
-    /// <summary>
-    /// 与えられた点集合 pts の中から、もっとも指定した方向に近い点を返す. deg 0 : 右, deg 90: 下, deg 180: 左, deg -90:上
-    /// </summary>
+    /// <summary>与えられた点集合 pts の中から、もっとも指定した方向に近い点を返す. deg 0 : 右, deg 90: 下, deg 180: 左, deg -90:上</summary>
     /// <param name="list"></param>
     /// <param name="origin"></param>
     /// <returns></returns>
@@ -711,9 +681,7 @@ public partial class FormDiffractionSimulator : CaptureFormBase
 
     #region DrawDiffractionSpots
 
-    /// <summary>
-    /// 回折スポットおよび指数ラベルの描画
-    /// </summary>
+    /// <summary>回折スポットおよび指数ラベルの描画</summary>
     /// <param name="graphics">描画対象のグラフィックオブジェクト</param>
     /// <param name="drawLabel">ラベルを描画するかどうか</param>
     /// <param name="outputOnlySpotInformation">このフラグがTrueの場合は、画面描画は行わずにspotの情報だけを返す</param>
@@ -1474,9 +1442,7 @@ public partial class FormDiffractionSimulator : CaptureFormBase
         Draw();
     }
 
-    /// <summary>
-    /// 画像サイズのnumericBoxが変更されたとき
-    /// </summary>
+    /// <summary>画像サイズのnumericBoxが変更されたとき</summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
     private void NumericBoxClientSize_ValueChanged(object sender, EventArgs e)
@@ -1489,9 +1455,7 @@ public partial class FormDiffractionSimulator : CaptureFormBase
 
     }
 
-    /// <summary>
-    /// カメラ長2がこのフォームから変更されたとき
-    /// </summary>
+    /// <summary>カメラ長2がこのフォームから変更されたとき</summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
     private void numericUpDownCamaraLength2_ValueChanged(object sender, EventArgs e)
@@ -1638,9 +1602,7 @@ public partial class FormDiffractionSimulator : CaptureFormBase
 
     #region 座標変換関連の関数
 
-    /// <summary>
-    /// 画面の中で最大と最小の2θを返す
-    /// </summary>
+    /// <summary>画面の中で最大と最小の2θを返す</summary>
     private (double min2Theta, double max2Theta) get2ThetaRange()
     {
         int width = graphicsBox.ClientSize.Width, height = graphicsBox.ClientSize.Height;
@@ -1675,9 +1637,7 @@ public partial class FormDiffractionSimulator : CaptureFormBase
         return (min2Theta, max2Theta);
     }
 
-    /// <summary>
-    /// 座標変換 画面(Screen)上の点(pixel)を検出器(Detector)上の位置 (mm)に変換
-    /// </summary>
+    /// <summary>座標変換 画面(Screen)上の点(pixel)を検出器(Detector)上の位置 (mm)に変換</summary>
     /// <param name="x"></param>
     /// <param name="y"></param>
     /// <returns></returns>
@@ -1690,18 +1650,14 @@ public partial class FormDiffractionSimulator : CaptureFormBase
             (y - graphicsBox.ClientSize.Height / 2.0) * Resolution - Foot.Y);
     }
 
-    /// <summary>
-    /// 座標変換 画面(Screen)上の点(pixel)を検出器(Detector)上の位置 (mm)に変換
-    /// </summary>
+    /// <summary>座標変換 画面(Screen)上の点(pixel)を検出器(Detector)上の位置 (mm)に変換</summary>
     /// <param name="p"></param>
     /// <returns></returns>
     private PointD convertScreenToDetector(in Point p) => convertScreenToDetector(p.X, p.Y);
 
 
 
-    /// <summary>
-    /// 座標変換 画面(Screen)上の点(pixel) を 実空間座標(mm, ３次元座標)に変換
-    /// </summary>
+    /// <summary>座標変換 画面(Screen)上の点(pixel) を 実空間座標(mm, ３次元座標)に変換</summary>
     /// <param name="x"></param>
     /// <param name="y"></param>
     /// <returns></returns>
@@ -1711,18 +1667,14 @@ public partial class FormDiffractionSimulator : CaptureFormBase
         return convertDetectorToReal(p);//実空間の座標に変換
     }
 
-    /// <summary>
-    /// 座標系変換 画面(Client)上の点(pixel) を 逆空間上の点(mm^-1)に変換 　回転している場合はOriginal座標系に戻して変換。
-    /// </summary>
+    /// <summary>座標系変換 画面(Client)上の点(pixel) を 逆空間上の点(mm^-1)に変換 　回転している場合はOriginal座標系に戻して変換。</summary>
     /// <param name="x"></param>
     /// <param name="y"></param>
     /// <returns></returns>
     private Vector3DBase convertScreenToReciprocal(int x, int y, bool originalCoordinate)
         => convertRealToReciprocal(convertScreenToReal(x, y), originalCoordinate);
 
-    /// <summary>
-    /// フィルム(Src)上の位置 (mm)を座標系変換 画面(Client)上の点(pixel)に変換
-    /// </summary>
+    /// <summary>フィルム(Src)上の位置 (mm)を座標系変換 画面(Client)上の点(pixel)に変換</summary>
     /// <param name="x"></param>
     /// <param name="y"></param>
     /// <returns></returns>
@@ -1736,16 +1688,12 @@ public partial class FormDiffractionSimulator : CaptureFormBase
         return new(px, py);
     }
 
-    /// <summary>
-    /// 検出器(Detector)上の位置 (mm)を画面(Screen)上の点(pixel)に変換
-    /// </summary>
+    /// <summary>検出器(Detector)上の位置 (mm)を画面(Screen)上の点(pixel)に変換</summary>
     /// <param name="pt"></param>
     /// <returns></returns>
     private PointD convertDetectorToScreen(in PointD pt) => convertDetectorToScreen(pt.X, pt.Y);
 
-    /// <summary>
-    /// 座標変換 検出器(Detector)上の点(Foot中心, mm単位) を 実空間座標(mm単位, ３次元座標)に変換
-    /// </summary>
+    /// <summary>座標変換 検出器(Detector)上の点(Foot中心, mm単位) を 実空間座標(mm単位, ３次元座標)に変換</summary>
     /// <param name="x"></param>
     /// <param name="y"></param>
     /// <returns></returns>
@@ -1761,9 +1709,7 @@ public partial class FormDiffractionSimulator : CaptureFormBase
 
     private Vector3DBase convertDetectorToReal(in PointD pt) => convertDetectorToReal(pt.X, pt.Y);
 
-    /// <summary>
-    /// 実空間座標(mm単位, ３次元座標)を逆空間座標に変換
-    /// </summary>
+    /// <summary>実空間座標(mm単位, ３次元座標)を逆空間座標に変換</summary>
     /// <param name="v"></param>
     /// <param name="originalCoordinate"></param>
     /// <returns></returns>
@@ -1789,9 +1735,7 @@ public partial class FormDiffractionSimulator : CaptureFormBase
         }
     }
 
-    /// <summary>
-    /// 逆空間座標を実空間座標に変換。　 逆空間座標のy,zの符号を反転することに注意
-    /// </summary>
+    /// <summary>逆空間座標を実空間座標に変換。　 逆空間座標のy,zの符号を反転することに注意</summary>
     /// <param name="g"></param>
     /// <returns></returns>
     public Vector3DBase ConvertReciprocalToReal(Vector3DBase g)
@@ -1799,9 +1743,7 @@ public partial class FormDiffractionSimulator : CaptureFormBase
 
     // return p * d / (a * p.X + b * p.Y + c * p.Z);
 
-    /// <summary>
-    /// 逆空間座標を検出器座標に変換。　 逆空間座標のy,zの符号を反転することに注意
-    /// </summary>
+    /// <summary>逆空間座標を検出器座標に変換。　 逆空間座標のy,zの符号を反転することに注意</summary>
     /// <param name="g"></param>
     /// <returns></returns>
     private PointD convertReciprocalToDetector(Vector3DBase g)
@@ -1837,9 +1779,7 @@ public partial class FormDiffractionSimulator : CaptureFormBase
         }
     }
 
-    /// <summary>
-    /// 検出器座標で与えられた座標ptが、画面内に含まれるかどうかを返す
-    /// </summary>
+    /// <summary>検出器座標で与えられた座標ptが、画面内に含まれるかどうかを返す</summary>
     /// <param name="pt"></param>
     /// <returns></returns>
     private bool IsScreenArea(in PointD pt, int margin = 0)
@@ -2065,9 +2005,7 @@ public partial class FormDiffractionSimulator : CaptureFormBase
     #endregion graphicsBoxのイベント
 
     #region その他メニューアイテム
-    /// <summary>
-    /// ダイナミックコンプレッション
-    /// </summary>
+    /// <summary>ダイナミックコンプレッション</summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
     private void dynamicCompressionToolStripMenuItem_Click(object sender, EventArgs e)
@@ -2076,9 +2014,7 @@ public partial class FormDiffractionSimulator : CaptureFormBase
         FormDiffractionSimulatorDynamicCompression.Visible = true;
     }
 
-    /// <summary>
-    /// ベーテ法を説明するPDFを表示
-    /// </summary>
+    /// <summary>ベーテ法を説明するPDFを表示</summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
     private void basicConceptOfBethesMethodToolStripMenuItem_Click(object sender, EventArgs e)
@@ -2088,9 +2024,7 @@ public partial class FormDiffractionSimulator : CaptureFormBase
         f.ShowDialog();
     }
 
-    /// <summary>
-    /// プリセットメニュー
-    /// </summary>
+    /// <summary>プリセットメニュー</summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
     private void presetToolStripMenuItem_Click(object sender, EventArgs e)
@@ -2351,9 +2285,7 @@ public partial class FormDiffractionSimulator : CaptureFormBase
     }
     #endregion
 
-    /// <summary>
-    /// カラースケールの変更
-    /// </summary>
+    /// <summary>カラースケールの変更</summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
     private void comboBoxScaleColorScale_SelectedIndexChanged(object sender, EventArgs e)
@@ -2368,9 +2300,7 @@ public partial class FormDiffractionSimulator : CaptureFormBase
         Draw();
     }
 
-    /// <summary>
-    /// Gaussian / Solid sphereの切り替え
-    /// </summary>
+    /// <summary>Gaussian / Solid sphereの切り替え</summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
     private void radioButtonPointSpread_CheckedChanged(object sender, EventArgs e)
@@ -2383,9 +2313,7 @@ public partial class FormDiffractionSimulator : CaptureFormBase
         Draw();
     }
 
-    /// <summary>
-    /// Optics (平行、歳差(電子)、歳差(X線)、収束)が変更されたとき 
-    /// </summary>
+    /// <summary>Optics (平行、歳差(電子)、歳差(X線)、収束)が変更されたとき</summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
     private void radioButtonBeamParallel_CheckedChanged(object sender, EventArgs e)
@@ -2474,9 +2402,7 @@ public partial class FormDiffractionSimulator : CaptureFormBase
     }
 
 
-    /// <summary>
-    /// 計算方法 (励起誤差、運動学、動力学)のラジオボタンが変更されたとき
-    /// </summary>
+    /// <summary>計算方法 (励起誤差、運動学、動力学)のラジオボタンが変更されたとき</summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
     private void radioButtonIntensityCalculationMethod_CheckedChanged(object sender, EventArgs e)
@@ -2531,9 +2457,7 @@ public partial class FormDiffractionSimulator : CaptureFormBase
     }
 
 
-    /// <summary>
-    /// ビーム詳細情報がクリックされたとき
-    /// </summary>
+    /// <summary>ビーム詳細情報がクリックされたとき</summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
     private void ButtonDetailsOfSpots_Click(object sender, EventArgs e)
@@ -2697,9 +2621,7 @@ public partial class FormDiffractionSimulator : CaptureFormBase
         }
     }
 
-    /// <summary>
-    /// Collective image, TIFF
-    /// </summary>
+    /// <summary>Collective image, TIFF</summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
     private void AsCollectiveImageTiffFormatToolStripMenuItem_Click(object sender, EventArgs e)
@@ -3277,9 +3199,7 @@ public partial class FormDiffractionSimulator : CaptureFormBase
         FormDiffractionSimulatorHolder.Draw();
     }
 
-    /// <summary>
-    /// メインウィンドウから回転行列が変更されたときに呼び出される。
-    /// </summary>
+    /// <summary>メインウィンドウから回転行列が変更されたときに呼び出される。</summary>
     /// <exception cref="NotImplementedException"></exception>
     internal void RotationChanged()
     {

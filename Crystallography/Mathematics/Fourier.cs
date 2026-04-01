@@ -19,9 +19,7 @@ public class FFTW
     IntPtr plan;
     readonly double coeff;
 
-    /// <summary>
-    ///  Initializes FFTW and all arrays. n: Logical size of the transform
-    /// </summary>
+    /// <summary>Initializes FFTW and all arrays. n: Logical size of the transform</summary>
     /// <param name="width"></param>
     /// <param name="height"></param>
     /// <param name="direction"></param>
@@ -85,9 +83,7 @@ public static class Fourier
     private static readonly int MaxDenominator = 8000;//必ず偶数
     private static readonly int MaxCooleyTukeyTable = 13;
 
-    /// <summary>
-    /// 複素数valuesのmodulus(長さ)を得る
-    /// </summary>
+    /// <summary>複素数valuesのmodulus(長さ)を得る</summary>
     /// <param name="values"></param>
     /// <param name="normarize"></param>
     /// <returns></returns>
@@ -121,9 +117,7 @@ public static class Fourier
         }
     }
 
-    /// <summary>
-    /// 複素数valuesのmodulus(長さ)を得る
-    /// </summary>
+    /// <summary>複素数valuesのmodulus(長さ)を得る</summary>
     /// <param name="values"></param>
     /// <param name="normarize"></param>
     /// <returns></returns>
@@ -151,9 +145,7 @@ public static class Fourier
         }
     }
 
-    /// <summary>
-    /// 2次元FFT
-    /// </summary>
+    /// <summary>2次元FFT</summary>
     /// <param name="values"></param>
     /// <param name="wide"></param>
     /// <returns></returns>
@@ -169,9 +161,7 @@ public static class Fourier
         return FFT(src, FourierDirectionEnum.Forward);
     }
 
-    /// <summary>
-    /// 2次元FFT
-    /// </summary>
+    /// <summary>2次元FFT</summary>
     /// <param name="values"></param>
     /// <param name="wide"></param>
     /// <returns></returns>
@@ -192,9 +182,7 @@ public static class Fourier
         return FFT(src, null, direction);
     }
 
-    /// <summary>
-    /// 2次元FFT
-    /// </summary>
+    /// <summary>2次元FFT</summary>
     /// <param name="src"></param>
     /// <param name="direction"></param>
     /// <returns></returns>
@@ -285,9 +273,7 @@ public static class Fourier
         dest = FFT(src, direction);
     }
 
-    /// <summary>
-    /// 一次元FFT
-    /// </summary>
+    /// <summary>一次元FFT</summary>
     /// <param name="src"></param>
     /// <param name="direction"></param>
     /// <returns></returns>

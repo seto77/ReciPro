@@ -6,9 +6,7 @@ using ZLinq;
 
 namespace Crystallography;
 
-/// <summary>
-/// SymmetryStaticクラス 空間群に関する静的な情報を提供する
-/// </summary>
+/// <summary>SymmetryStaticクラス 空間群に関する静的な情報を提供する</summary>
 public static class SymmetryStatic
 {
     #region const 定数
@@ -16,9 +14,7 @@ public static class SymmetryStatic
     private const double d18 = 1.0 / 8.0, d38 = 3.0 / 8.0, d58 = 5.0 / 8.0, d78 = 7.0 / 8.0;
     private const double d1_12 = 1.0 / 12.0, d5_12 = 5.0 / 12.0, d7_12 = 7.0 / 12.0, d11_12 = 11.0 / 12.0;
     private const string m = "monoclinic", t = "triclinic", o = "orthorhombic", te = "tetragonal", tr = "trigonal", c = "cubic", h = "hexagonal";
-    /// <summary>
-    /// 原子の等価位置を判定する閾値 (単位は単位格子の分率)
-    /// </summary>
+    /// <summary>原子の等価位置を判定する閾値 (単位は単位格子の分率)</summary>
     public const double Th = 0.0001;
 
     #endregion
@@ -10970,9 +10966,7 @@ new(-4,+1,(0,1,0),(0,d12,d14)),
 
     public static readonly Symmetry[] Symmetries;
 
-    /// <summary>
-    /// WyckoffPositions[i][j]: 通し番号がi番目の空間群のj番目のワイコフ位置
-    /// </summary>
+    /// <summary>WyckoffPositions[i][j]: 通し番号がi番目の空間群のj番目のワイコフ位置</summary>
     public static readonly WyckoffPosition[][] WyckoffPositions;
 
     /// <summary>
@@ -11527,9 +11521,7 @@ new(-4,+1,(0,1,0),(0,d12,d14)),
             #endregion
         ];
 
-    /// <summary>
-    /// 0:通し番号 1:空間群番号 2:空間群のSub番号 3:点群番号 4:ラウエ群番号 5:結晶系番号
-    /// </summary>
+    /// <summary>0:通し番号 1:空間群番号 2:空間群のSub番号 3:点群番号 4:ラウエ群番号 5:結晶系番号</summary>
     public static readonly ushort[][] NumArray =
         [
             #region numArrayの定義
@@ -12084,9 +12076,7 @@ new(-4,+1,(0,1,0),(0,d12,d14)),
     #endregion
 
     #region static コンストラクタ
-    /// <summary>
-    /// 静的コンストラクタ
-    /// </summary>
+    /// <summary>静的コンストラクタ</summary>
     static SymmetryStatic()
     {
         TotalSpaceGroupNumber = BelongingNumberOfSymmetry.Sum(b1 => b1.Sum(b2 => b2.Length));
@@ -12202,9 +12192,7 @@ new(-4,+1,(0,1,0),(0,d12,d14)),
     #endregion
 
     #region seriesNumber <=> コンボボックス番号
-    /// <summary>
-    /// seriesNumberを与えられたとき、その空間群が属する、結晶系・点群・空間群のコンボボックス上の順番をかえす
-    /// </summary>
+    /// <summary>seriesNumberを与えられたとき、その空間群が属する、結晶系・点群・空間群のコンボボックス上の順番をかえす</summary>
     /// <param name="seriesNumber"></param>
     /// <returns></returns>
     public static (int CrystalSystem, int PointGroup, int SpaceGroup) GetSystemAndGroupFromSeriesNumber(int seriesNumber)
@@ -12219,9 +12207,7 @@ new(-4,+1,(0,1,0),(0,d12,d14)),
     #endregion
 
     #region 空間群のInternationalTable番号とそのサブシリーズ番号をもとに通し番号を返す
-    /// <summary>
-    /// 空間群のInternationalTable番号とそのサブシリーズ番号をもとに通し番号を返す
-    /// </summary>
+    /// <summary>空間群のInternationalTable番号とそのサブシリーズ番号をもとに通し番号を返す</summary>
     /// <param name="number">InternationalTable番号</param>
     /// <param name="sub">サブシリーズ番号</param>
     /// <returns>通し番号</returns>
@@ -12348,9 +12334,7 @@ new(-4,+1,(0,1,0),(0,d12,d14)),
 
     #region お蔵入り
     /*
-/// <summary>
-/// 基底の面指数を先頭にした行列を返す。基底とは可能な限り h >= k >= l かつ h>0, k>0, l>0 に近づくような指数をさす。
-/// </summary>
+/// <summary>基底の面指数を先頭にした行列を返す。基底とは可能な限り h >= k >= l かつ h>0, k>0, l>0 に近づくような指数をさす。</summary>
 /// <param name="index"></param>
 /// <param name="sym"></param>
 /// <returns></returns>
@@ -12681,9 +12665,7 @@ public static (int H, int K, int L) GetRootPlaneIndex((int H, int K, int L) inde
      */
     #endregion
 
-    /// <summary>
-    /// 面指数が基底であるかどうか判定する。
-    /// </summary>
+    /// <summary>面指数が基底であるかどうか判定する。</summary>
     /// <param name="index">面指数</param>
     /// <param name="sym">対称性</param>
     /// <param name="indices">等価な面指数の群</param>
@@ -12768,9 +12750,7 @@ public static (int H, int K, int L) GetRootPlaneIndex((int H, int K, int L) inde
     */
     #endregion
 
-    /// <summary>
-    /// 対称性 sym に従って(hkl)と等価な結晶面を生成する
-    /// </summary>
+    /// <summary>対称性 sym に従って(hkl)と等価な結晶面を生成する</summary>
     /// <param name="addInversionCenter"> 対称心を加えるか。デフォルトはfalse. </param>
     /// <param name="sort"> Trueの場合は先頭が基底の指数になるように並び替えを行う </param>
     /// <returns></returns>
@@ -13607,9 +13587,7 @@ public static (int H, int K, int L) GetRootPlaneIndex((int H, int K, int L) inde
         #endregion
     }
 
-    /// <summary>
-    /// 二つの面(index1), (index2)が等価かどうかを判定する
-    /// </summary>
+    /// <summary>二つの面(index1), (index2)が等価かどうかを判定する</summary>
     /// <param name="index1"></param>
     /// <param name="index2"></param>
     /// <param name="sym"></param>
@@ -13621,9 +13599,7 @@ public static (int H, int K, int L) GetRootPlaneIndex((int H, int K, int L) inde
 
     #region 軸の等価性についてのメソッド 
 
-    /// <summary>
-    /// 軸指数が基底であるかどうか判定する。
-    /// </summary>
+    /// <summary>軸指数が基底であるかどうか判定する。</summary>
     /// <param name="index"></param>
     /// <param name="sym"></param>
     /// <param name="addInversion">対称心を付与するか。デフォルトはfalse。</param>
@@ -14009,9 +13985,7 @@ public static (int H, int K, int L) GetRootPlaneIndex((int H, int K, int L) inde
     */
     #endregion
 
-    /// <summary>
-    /// 対称性に従って[uvw]と等価な結晶軸を生成する
-    /// </summary>
+    /// <summary>対称性に従って[uvw]と等価な結晶軸を生成する</summary>
     /// <param name="sym"></param>
     /// <param name="inversionCenter">対称心を付与するか。デフォルトはfalse。</param>
     /// <returns></returns>
@@ -14810,9 +14784,7 @@ public static (int H, int K, int L) GetRootPlaneIndex((int H, int K, int L) inde
         #endregion
     }
 
-    /// <summary>
-    /// 二つの軸[u1,v1,w1]と[u2,v2,w2]が等価な軸であるかどうかを判定
-    /// </summary>
+    /// <summary>二つの軸[u1,v1,w1]と[u2,v2,w2]が等価な軸であるかどうかを判定</summary>
     /// <param name="sym"></param>
     /// <returns></returns>
     public static bool CheckEquivalentAxes(int u1, int v1, int w1, int u2, int v2, int w2, Symmetry sym)

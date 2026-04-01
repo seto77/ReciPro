@@ -15,9 +15,7 @@ using System;
 namespace Crystallography.Controls {
     
     
-    /// <summary>
-    ///Represents a strongly typed in-memory cache of data.
-    ///</summary>
+    /// <summary>Represents a strongly typed in-memory cache of data.</summary>
     [global::System.Serializable()]
     [global::System.ComponentModel.DesignerCategoryAttribute("code")]
     [global::System.ComponentModel.ToolboxItem(true)]
@@ -449,9 +447,7 @@ namespace Crystallography.Controls {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public delegate void DataTableCrystalDatabaseRowChangeEventHandler(object sender, DataTableCrystalDatabaseRowChangeEvent e);
         
-        /// <summary>
-        ///Represents the strongly named DataTable class.
-        ///</summary>
+        /// <summary>Represents the strongly named DataTable class.</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
         public partial class DataTableScatteringFactorDataTable : global::System.Data.TypedTableBase<DataTableScatteringFactorRow> {
@@ -864,9 +860,7 @@ namespace Crystallography.Controls {
             }
         }
         
-        /// <summary>
-        ///Represents the strongly named DataTable class.
-        ///</summary>
+        /// <summary>Represents the strongly named DataTable class.</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
         public partial class DataTableAtomDataTable : global::System.Data.TypedTableBase<DataTableAtomRow> {
@@ -1259,9 +1253,7 @@ namespace Crystallography.Controls {
             }
         }
         
-        /// <summary>
-        ///Represents the strongly named DataTable class.
-        ///</summary>
+        /// <summary>Represents the strongly named DataTable class.</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
         public partial class DataTableBondDataTable : global::System.Data.TypedTableBase<DataTableBondRow> {
@@ -1608,9 +1600,7 @@ namespace Crystallography.Controls {
             }
         }
         
-        /// <summary>
-        ///Represents the strongly named DataTable class.
-        ///</summary>
+        /// <summary>Represents the strongly named DataTable class.</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
         public partial class DataTableBoundDataTable : global::System.Data.TypedTableBase<DataTableBoundRow> {
@@ -1967,9 +1957,7 @@ namespace Crystallography.Controls {
             }
         }
         
-        /// <summary>
-        ///Represents the strongly named DataTable class.
-        ///</summary>
+        /// <summary>Represents the strongly named DataTable class.</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
         public partial class DataTableLatticePlaneDataTable : global::System.Data.TypedTableBase<DataTableLatticePlaneRow> {
@@ -2298,9 +2286,7 @@ namespace Crystallography.Controls {
             }
         }
         
-        /// <summary>
-        ///Represents the strongly named DataTable class.
-        ///</summary>
+        /// <summary>Represents the strongly named DataTable class.</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
         public partial class DataTableCrystalDatabaseDataTable : global::System.Data.TypedTableBase<DataTableCrystalDatabaseRow> {
@@ -2809,9 +2795,7 @@ namespace Crystallography.Controls {
             }
         }
         
-        /// <summary>
-        ///Represents strongly named DataRow class.
-        ///</summary>
+        /// <summary>Represents strongly named DataRow class.</summary>
         public partial class DataTableScatteringFactorRow : global::System.Data.DataRow {
             
             private DataTableScatteringFactorDataTable tableDataTableScatteringFactor;
@@ -3188,9 +3172,7 @@ namespace Crystallography.Controls {
             }
         }
         
-        /// <summary>
-        ///Represents strongly named DataRow class.
-        ///</summary>
+        /// <summary>Represents strongly named DataRow class.</summary>
         public partial class DataTableAtomRow : global::System.Data.DataRow {
             
             private DataTableAtomDataTable tableDataTableAtom;
@@ -3511,9 +3493,7 @@ namespace Crystallography.Controls {
             }
         }
         
-        /// <summary>
-        ///Represents strongly named DataRow class.
-        ///</summary>
+        /// <summary>Represents strongly named DataRow class.</summary>
         public partial class DataTableBondRow : global::System.Data.DataRow {
             
             private DataTableBondDataTable tableDataTableBond;
@@ -3750,9 +3730,7 @@ namespace Crystallography.Controls {
             }
         }
         
-        /// <summary>
-        ///Represents strongly named DataRow class.
-        ///</summary>
+        /// <summary>Represents strongly named DataRow class.</summary>
         public partial class DataTableBoundRow : global::System.Data.DataRow {
             
             private DataTableBoundDataTable tableDataTableBound;
@@ -4017,9 +3995,7 @@ namespace Crystallography.Controls {
             }
         }
         
-        /// <summary>
-        ///Represents strongly named DataRow class.
-        ///</summary>
+        /// <summary>Represents strongly named DataRow class.</summary>
         public partial class DataTableLatticePlaneRow : global::System.Data.DataRow {
             
             private DataTableLatticePlaneDataTable tableDataTableLatticePlane;
@@ -4228,9 +4204,7 @@ namespace Crystallography.Controls {
             }
         }
         
-        /// <summary>
-        ///Represents strongly named DataRow class.
-        ///</summary>
+        /// <summary>Represents strongly named DataRow class.</summary>
         public partial class DataTableCrystalDatabaseRow : global::System.Data.DataRow {
             
             private DataTableCrystalDatabaseDataTable tableDataTableCrystalDatabase;
@@ -4764,9 +4738,7 @@ namespace Crystallography.Controls {
 
         }
         
-        /// <summary>
-        ///Row event argument class
-        ///</summary>
+        /// <summary>Row event argument class</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public class DataTableScatteringFactorRowChangeEvent : global::System.EventArgs {
             
@@ -4798,9 +4770,7 @@ namespace Crystallography.Controls {
             }
         }
         
-        /// <summary>
-        ///Row event argument class
-        ///</summary>
+        /// <summary>Row event argument class</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public class DataTableAtomRowChangeEvent : global::System.EventArgs {
             
@@ -4832,9 +4802,7 @@ namespace Crystallography.Controls {
             }
         }
         
-        /// <summary>
-        ///Row event argument class
-        ///</summary>
+        /// <summary>Row event argument class</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public class DataTableBondRowChangeEvent : global::System.EventArgs {
             
@@ -4866,9 +4834,7 @@ namespace Crystallography.Controls {
             }
         }
         
-        /// <summary>
-        ///Row event argument class
-        ///</summary>
+        /// <summary>Row event argument class</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public class DataTableBoundRowChangeEvent : global::System.EventArgs {
             
@@ -4900,9 +4866,7 @@ namespace Crystallography.Controls {
             }
         }
         
-        /// <summary>
-        ///Row event argument class
-        ///</summary>
+        /// <summary>Row event argument class</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public class DataTableLatticePlaneRowChangeEvent : global::System.EventArgs {
             
@@ -4934,9 +4898,7 @@ namespace Crystallography.Controls {
             }
         }
         
-        /// <summary>
-        ///Row event argument class
-        ///</summary>
+        /// <summary>Row event argument class</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public class DataTableCrystalDatabaseRowChangeEvent : global::System.EventArgs {
             

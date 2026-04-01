@@ -58,15 +58,11 @@ public static class DiffractionOptics
         }
     }
 
-    /// <summary>
-    /// 回折光学系のパラメータ. 主にIPAnzlyzerとReciProから利用。
-    /// </summary>
+    /// <summary>回折光学系のパラメータ. 主にIPAnzlyzerとReciProから利用。</summary>
     [Serializable()]
     public class Parameter
     {
-        /// <summary>
-        /// "FlatPanel" か "Gandolfi"
-        /// </summary>
+        /// <summary>"FlatPanel" か "Gandolfi"</summary>
         public string cameraMode;
 
         public string FootMode = "False";// 以前は SACLA_EH5 TrueであればFootモード、FalseであればDirectSpotモード
@@ -106,27 +102,21 @@ public static class DiffractionOptics
         public string sphericalRadiusInverse;
         public string GandolfiRadius;
 
-        /// <summary>
-        /// Concentric か Radial
-        /// </summary>
+        /// <summary>Concentric か Radial</summary>
         public string IntegrationMode;
 
         public string ConcentricStart;
         public string ConcentricEnd;
         public string ConcentricStep;
 
-        /// <summary>
-        /// Angle, Length, d-spacing
-        /// </summary>
+        /// <summary>Angle, Length, d-spacing</summary>
         public string ConcentricUnit;
 
         public string RadialRadius;
         public string RadialWidth;
         public string RadialStep;
 
-        /// <summary>
-        /// Angle, d-spacing
-        /// </summary>
+        /// <summary>Angle, d-spacing</summary>
         public string RadialUnit;
 
         //Rectangle or Sector

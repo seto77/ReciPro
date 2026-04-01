@@ -4,8 +4,8 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>net10.0-windows10.0.26100.0</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
-    <AssemblyVersion>2026.3.31.0955</AssemblyVersion>
-    <FileVersion>2026.3.31.0955</FileVersion>
+    <AssemblyVersion>2026.4.1.0226</AssemblyVersion>
+    <FileVersion>2026.4.1.0226</FileVersion>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <ApplicationIcon>App.ico</ApplicationIcon>
@@ -105,9 +105,11 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     --> <!-- (260331Ch) 旧 text sampler 配布設定 -->
+    <!--
     <Content Include="NistElasticSampler\E_*.BIN">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content> <!-- (260331Ch) float32 binary sampler を配布物へ同梱 -->
+    </Content>
+    --> <!-- (260401Ch) generated data を既定化したため runtime 用 sampler ファイルの配布は停止 -->
   </ItemGroup>
 
   <ItemGroup>

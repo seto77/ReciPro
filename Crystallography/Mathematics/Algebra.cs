@@ -4,9 +4,7 @@ namespace Crystallography;
 
 static public class Algebra
 {
-    /// <summary>
-    /// 3つの整数が与えられたとき、それが既約かどうかを判定し、既約であれば1、そうでないときは最大公約数(2以上の整数)を返す。
-    /// </summary>
+    /// <summary>3つの整数が与えられたとき、それが既約かどうかを判定し、既約であれば1、そうでないときは最大公約数(2以上の整数)を返す。</summary>
     /// <param name="a"></param>
     /// <param name="b"></param>
     /// <param name="c"></param>
@@ -27,9 +25,7 @@ static public class Algebra
         return 1;
     }
 
-    /// <summary>
-    /// 3つの整数が与えられたとき、それが既約かどうかを判定し、既約であれば1、そうでないときは最大公約数(2以上の整数)を返す。
-    /// </summary>
+    /// <summary>3つの整数が与えられたとき、それが既約かどうかを判定し、既約であれば1、そうでないときは最大公約数(2以上の整数)を返す。</summary>
     /// <param name="a"></param>
     /// <param name="b"></param>
     /// <param name="c"></param>

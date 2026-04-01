@@ -4,9 +4,7 @@ using System.Linq;
 
 namespace Crystallography;
 
-/// <summary>
-/// Symmetry の概要の説明です。
-/// </summary>
+/// <summary>Symmetry の概要の説明です。</summary>
 [Serializable()]
 public readonly struct Symmetry
 {
@@ -133,9 +131,7 @@ public readonly struct Symmetry
     #endregion
 
     #region 静的メソッド
-    /// <summary>
-    /// 禁制則に抵触する指数を判定するFuncのリストを返す
-    /// </summary>
+    /// <summary>禁制則に抵触する指数を判定するFuncのリストを返す</summary>
     /// <param name="sym"></param>
     /// <returns></returns>
     public static List<Func<int, int, int, string>> SetExtinctionFunc(Symmetry sym)

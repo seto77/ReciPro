@@ -32,9 +32,7 @@ public partial class FormDiffractionSimulatorGeometry : CaptureFormBase
     /// </summary>
     public Matrix3D DetectorRotation { get; set; } = new Matrix3D();
 
-    /// <summary>
-    /// DetectorRotationの逆行列
-    /// </summary>
+    /// <summary>DetectorRotationの逆行列</summary>
     public Matrix3D DetectorRotationInv { get; set; } = new Matrix3D();
 
 

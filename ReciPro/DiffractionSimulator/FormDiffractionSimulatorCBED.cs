@@ -72,9 +72,7 @@ public partial class FormDiffractionSimulatorCBED : CaptureFormBase
 
     public double ImagePixelSize { get; set; } = 0;
 
-    /// <summary>
-    /// 中心付近の1ピクセル当たりの角度(radian)
-    /// </summary>
+    /// <summary>中心付近の1ピクセル当たりの角度(radian)</summary>
     public double AngleResolution { get; set; }
 
 

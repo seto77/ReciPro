@@ -670,9 +670,7 @@ public partial class FormPolycrystallineDiffractionSimulator : CaptureFormBase
 
     private List<long> beforeSeconds = new List<long>();
 
-    /// <summary>
-    /// backGroundWorkerから途中経過報告を受ける
-    /// </summary>
+    /// <summary>backGroundWorkerから途中経過報告を受ける</summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
     private void backgroundWorkerMain_ProgressChanged(object sender, ProgressChangedEventArgs e)

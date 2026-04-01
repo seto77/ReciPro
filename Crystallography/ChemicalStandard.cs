@@ -8,73 +8,45 @@ namespace Crystallography
     [Serializable()]
     public class Element
     {
-        /// <summary>
-        /// 原子番号
-        /// </summary>
+        /// <summary>原子番号</summary>
         public int Z;
 
-        /// <summary>
-        /// 原子名
-        /// </summary>
+        /// <summary>原子名</summary>
         public string AtomicName;
 
-        /// <summary>
-        /// 存在度
-        /// </summary>
+        /// <summary>存在度</summary>
         public double MolarAbundance;
 
-        /// <summary>
-        /// 重量比
-        /// </summary>
+        /// <summary>重量比</summary>
         public double WeightRatio;
 
-        /// <summary>
-        /// 原子量
-        /// </summary>
+        /// <summary>原子量</summary>
         public double MolarWeight;
 
-        /// <summary>
-        /// 同位体比
-        /// </summary>
+        /// <summary>同位体比</summary>
         //public Dictionary<int, double> Isotopes;
-        /// <summary>
-        /// X線検出時間
-        /// </summary>
+        /// <summary>X線検出時間</summary>
         public double XrayCountTime;
 
-        /// <summary>
-        /// X線強度
-        /// </summary>
+        /// <summary>X線強度</summary>
         public double XrayCPS;
 
-        /// <summary>
-        /// X線種類
-        /// </summary>
+        /// <summary>X線種類</summary>
         public XrayLine Line;
 
-        /// <summary>
-        /// 価数
-        /// </summary>
+        /// <summary>価数</summary>
         public double Valence;
 
-        /// <summary>
-        /// K-ratio
-        /// </summary>
+        /// <summary>K-ratio</summary>
         public double Kratio;
 
-        /// <summary>
-        /// 電流値
-        /// </summary>
+        /// <summary>電流値</summary>
         public double BeamCurrent;
 
-        /// <summary>
-        /// この元素が100%存在した場合の強度 (マトリックス効果を考慮しない)
-        /// </summary>
+        /// <summary>この元素が100%存在した場合の強度 (マトリックス効果を考慮しない)</summary>
         public double ApparentFullCPS;
 
-        /// <summary>
-        /// この元素が100%存在した場合の強度 (マトリックス効果を考慮)
-        /// </summary>
+        /// <summary>この元素が100%存在した場合の強度 (マトリックス効果を考慮)</summary>
         public double IdealFullCPS;
 
         public string StandardName;
@@ -121,19 +93,13 @@ namespace Crystallography
     [Serializable()]
     public class Molecule
     {
-        /// <summary>
-        /// 価数
-        /// </summary>
+        /// <summary>価数</summary>
         public double Valence;
 
-        /// <summary>
-        /// 分子量
-        /// </summary>
+        /// <summary>分子量</summary>
         public double MolarWeight;
 
-        /// <summary>
-        /// 構成元素リスト
-        /// </summary>
+        /// <summary>構成元素リスト</summary>
         public List<Element> Elements;
 
         public string Formula;
@@ -149,9 +115,7 @@ namespace Crystallography
         public Molecule()
         { }
 
-        /// <summary>
-        /// 単原子分子のコンストラクタ
-        /// </summary>
+        /// <summary>単原子分子のコンストラクタ</summary>
         /// <param name="z">原子番号</param>
         /// <param name="valence">価数</param>
         /// <param name="weightRatio">重量比</param>
@@ -171,9 +135,7 @@ namespace Crystallography
             }
         }
 
-        /// <summary>
-        /// 複合原子分子
-        /// </summary>
+        /// <summary>複合原子分子</summary>
         /// <param name="formula">組成式(文字列)</param>
         /// <param name="valence">価数</param>
         /// <param name="weightRatio">重量比</param>
@@ -193,9 +155,7 @@ namespace Crystallography
             MolarAbundance = molarAbundance;
         }
 
-        /// <summary>
-        /// 複合原子分子
-        /// </summary>
+        /// <summary>複合原子分子</summary>
         /// <param name="elemenets">Element[] 配列</param>
         /// <param name="valence">価数</param>
         /// <param name="weightRatio">重量比</param>
@@ -215,9 +175,7 @@ namespace Crystallography
             MolarAbundance = molarAbundance;
         }
 
-        /// <summary>
-        /// 原子番号Zの元素を含むかどうか。含んでいたらそのindexを、含んでいなかったら-1を返す
-        /// </summary>
+        /// <summary>原子番号Zの元素を含むかどうか。含んでいたらそのindexを、含んでいなかったら-1を返す</summary>
         /// <param name="z"></param>
         /// <returns></returns>
         public int Contain(int z)
@@ -243,9 +201,7 @@ namespace Crystallography
             new Molecule("SO4", -2),
             new Molecule("PO4", -2  )};
 
-        /// <summary>
-        /// 二つのMoleculeを結合した分子式(文字列)を返す
-        /// </summary>
+        /// <summary>二つのMoleculeを結合した分子式(文字列)を返す</summary>
         /// <param name="m1"></param>
         /// <param name="m2"></param>
         /// <returns></returns>
@@ -281,9 +237,7 @@ namespace Crystallography
             return formula;
         }
 
-        /// <summary>
-        /// 文字列を分解して、化学組成を返す。戻り値は、Dictionary<Key, Value> で、Keyには原子番号、Valueにはモル比
-        /// </summary>
+        /// <summary>文字列を分解して、化学組成を返す。戻り値は、Dictionary<Key, Value> で、Keyには原子番号、Valueにはモル比</summary>
         /// <param name="compound"></param>
         /// <returns></returns>
         public static Dictionary<int, double> GetFormula(string str)
@@ -412,9 +366,7 @@ namespace Crystallography
             CalculateElementRatio();
         }
 
-        /// <summary>
-        /// Moleculeを追加する. weightモードではないときは、molarモード. molarモードのときは全てのMoleculeのweight値を再計算する.
-        /// </summary>
+        /// <summary>Moleculeを追加する. weightモードではないときは、molarモード. molarモードのときは全てのMoleculeのweight値を再計算する.</summary>
         /// <param name="e"></param>
         /// <param name="WeightMode"></param>
         public void AddMolecule(Molecule e, bool calcZAFParameters = true, bool calcIdealAndApparentIntensity = true)
@@ -448,17 +400,13 @@ namespace Crystallography
                 CaluculateIdealIntensity();
         }
 
-        /// <summary>
-        /// Moleculeをすべて削除
-        /// </summary>
+        /// <summary>Moleculeをすべて削除</summary>
         public void RemoveMoleculeAll()
         {
             Molecules.Clear();
         }
 
-        /// <summary>
-        /// index位置のMoleculeを削除. indexが不正の時は何もしない
-        /// </summary>
+        /// <summary>index位置のMoleculeを削除. indexが不正の時は何もしない</summary>
         /// <param name="index"></param>
         public void RemoveMoleculeAt(int index)
         {
@@ -644,9 +592,7 @@ namespace Crystallography
 
     public static class ZAFCorrection
     {
-        /// <summary>
-        /// 連続X線による蛍光励起補正
-        /// </summary>
+        /// <summary>連続X線による蛍光励起補正</summary>
         /// <param name="elements"></param>
         /// <param name="index"></param>
         /// <param name="E0"></param>
@@ -691,14 +637,10 @@ namespace Crystallography
 
         private static Lock lockObJforBetaArray = new Lock();
 
-        /// <summary>
-        /// betaの値を保管する一時変数.
-        /// </summary>
+        /// <summary>betaの値を保管する一時変数.</summary>
         private static Dictionary<double, double[]>[] betaArray = new Dictionary<double, double[]>[100];
 
-        /// <summary>
-        /// 特性X線による蛍光励起補正
-        /// </summary>
+        /// <summary>特性X線による蛍光励起補正</summary>
         /// <param name="elements"></param>
         /// <param name="index"></param>
         /// <param name="E0"></param>
@@ -794,9 +736,7 @@ namespace Crystallography
             return fchGamma;
         }
 
-        /// <summary>
-        /// 阻止能
-        /// </summary>
+        /// <summary>阻止能</summary>
         /// <param name="elements"></param>
         /// <param name="index"></param>
         /// <param name="incidentEnergy"></param>
@@ -814,9 +754,7 @@ namespace Crystallography
             return s;
         }
 
-        /// <summary>
-        /// 後方散乱係数
-        /// </summary>
+        /// <summary>後方散乱係数</summary>
         /// <param name="elements"></param>
         /// <param name="index"></param>
         /// <param name="incidentEnergy"></param>
@@ -834,9 +772,7 @@ namespace Crystallography
             return r;
         }
 
-        /// <summary>
-        /// 吸収係数
-        /// </summary>
+        /// <summary>吸収係数</summary>
         /// <param name="elements"></param>
         /// <param name="index"></param>
         /// <param name="incidentEnergy"></param>

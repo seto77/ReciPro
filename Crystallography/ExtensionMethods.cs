@@ -22,9 +22,7 @@ namespace Crystallography;
 #region MathNet の拡張
 public static class MathnetEx
 {
-    /// <summary>
-    /// 拡張メソッド. 逆行列に変換する。逆行列の計算に失敗した場合は、nullを返す。
-    /// </summary>
+    /// <summary>拡張メソッド. 逆行列に変換する。逆行列の計算に失敗した場合は、nullを返す。</summary>
     /// <param name="mat"></param>
     /// <returns></returns>
     public static Matrix<double> TryInverse(this Matrix<double> mat)
@@ -41,9 +39,7 @@ public static class MathnetEx
         }
     }
 
-    /// <summary>
-    /// 拡張メソッド. 逆行列に変換する。逆行列の計算に失敗した場合は、nullを返す。
-    /// </summary>
+    /// <summary>拡張メソッド. 逆行列に変換する。逆行列の計算に失敗した場合は、nullを返す。</summary>
     /// <param name="mat"></param>
     /// <returns></returns>
     public static Matrix TryInverse(this Matrix mat)
@@ -60,9 +56,7 @@ public static class MathnetEx
         }
     }
 
-    /// <summary>
-    /// 拡張メソッド. 逆行列に変換する。成功した場合はtrueを返す。
-    /// </summary>
+    /// <summary>拡張メソッド. 逆行列に変換する。成功した場合はtrueを返す。</summary>
     /// <param name="mat"></param>
     /// <param name="matInv"></param>
     /// <returns></returns>
@@ -72,9 +66,7 @@ public static class MathnetEx
         return matInv != null;
     }
 
-    /// <summary>
-    /// 拡張メソッド. 逆行列に変換する。成功した場合はtrueを返す。
-    /// </summary>
+    /// <summary>拡張メソッド. 逆行列に変換する。成功した場合はtrueを返す。</summary>
     /// <param name="mat"></param>
     /// <param name="matInv"></param>
     /// <returns></returns>
@@ -84,9 +76,7 @@ public static class MathnetEx
         return mat != null;
     }
 
-    /// <summary>
-    /// 拡張メソッド. 逆行列に変換する。成功した場合はtrueを返す。
-    /// </summary>
+    /// <summary>拡張メソッド. 逆行列に変換する。成功した場合はtrueを返す。</summary>
     /// <param name="mat"></param>
     /// <param name="matInv"></param>
     /// <returns></returns>
@@ -277,17 +267,13 @@ public static class StringEx
 {
     public static System.Globalization.CultureInfo InvCul = System.Globalization.CultureInfo.InvariantCulture;
 
-    /// <summary>
-    /// 拡張メソッド.  指定したseparatorで文字を区切り、文字の配列を返す.
-    /// </summary>
+    /// <summary>拡張メソッド.  指定したseparatorで文字を区切り、文字の配列を返す.</summary>
     /// <param name="c"></param>
     /// <returns></returns>
     public static string[] Split(this string s, string separator, bool removeEmptyEntries = true)
         => s.Split([separator], removeEmptyEntries ? StringSplitOptions.RemoveEmptyEntries : StringSplitOptions.None);
 
-    /// <summary>
-    /// 拡張メソッド.  指定したseparatorで文字を区切り、文字の配列を返す.
-    /// </summary>
+    /// <summary>拡張メソッド.  指定したseparatorで文字を区切り、文字の配列を返す.</summary>
     /// <param name="s"></param>
     /// <param name="separator"></param>
     /// <param name="removeEmptyEntries"></param>
@@ -296,17 +282,13 @@ public static class StringEx
          => s.Split([separator], removeEmptyEntries ? StringSplitOptions.RemoveEmptyEntries : StringSplitOptions.None);
 
 
-    /// <summary>
-    /// 拡張メソッド.  スペースかカンマで文字を区切り、文字の配列を返す.
-    /// </summary>
+    /// <summary>拡張メソッド.  スペースかカンマで文字を区切り、文字の配列を返す.</summary>
     /// <returns></returns>
     public static string[] Split(this string s, bool removeEmptyEntries = true)
         => s.Split([" ", ","], removeEmptyEntries ? StringSplitOptions.RemoveEmptyEntries : StringSplitOptions.None);
 
 
-    /// <summary>
-    /// 拡張メソッド. ConvertToDoubleを拡張メソッドとして呼び出す. 実数と、分数に対応. 変換できない場合はNaNを返す
-    /// </summary>
+    /// <summary>拡張メソッド. ConvertToDoubleを拡張メソッドとして呼び出す. 実数と、分数に対応. 変換できない場合はNaNを返す</summary>
     /// <param name="s"></param>
     /// <returns></returns>
     public static double ToDouble(this string s)
@@ -329,9 +311,7 @@ public static class StringEx
         //return !s.Contains('/') ? Convert.ToDouble(s) : s.Split("/", true)[0].ToDouble() / s.Split("/", true)[1].ToDouble();
     }
 
-    /// <summary>
-    /// 拡張メソッド.  ConvertToInt32を拡張メソッドとして呼び出す. 変換できない場合は例外発生
-    /// </summary>
+    /// <summary>拡張メソッド.  ConvertToInt32を拡張メソッドとして呼び出す. 変換できない場合は例外発生</summary>
     /// <param name="s"></param>
     /// <returns></returns>
     public static int ToInt(this string s) => Convert.ToInt32(s);
@@ -346,16 +326,12 @@ public static class DoubleEx
     const double rad = 0.01745329251994329576923690768489;
     const double deg = 57.295779513082320876798154814105;
 
-    /// <summary>
-    /// 拡張メソッド. 数値をRadianに変換.
-    /// </summary>
+    /// <summary>拡張メソッド. 数値をRadianに変換.</summary>
     /// <param name="c"></param>
     /// <returns></returns>
     public static double ToRadians(in this double d) => d * rad;
 
-    /// <summary>
-    /// 拡張メソッド. 数値をRadianに変換.
-    /// </summary>
+    /// <summary>拡張メソッド. 数値をRadianに変換.</summary>
     /// <param name="c"></param>
     /// <returns></returns>
     public static double ToDegrees(in this double d) => d * deg;
@@ -371,9 +347,7 @@ public static class DoubleEx
 public static class MemoryPackEx
 {
 
-    /// <summary>
-    /// 静的メソッド　MemoryPackでシリアライズしてbyte[]配列を返す
-    /// </summary>
+    /// <summary>静的メソッド　MemoryPackでシリアライズしてbyte[]配列を返す</summary>
     /// <param name="val"></param>
     /// <returns></returns>
     public static byte[] Serialize<T>(T val, System.IO.Compression.CompressionLevel level= System.IO.Compression.CompressionLevel.Optimal, int window =22 )
@@ -383,9 +357,7 @@ public static class MemoryPackEx
         return compressor.ToArray();
     }
 
-    /// <summary>
-    /// 静的メソッド　MemoryPackでシリアライズしてbyte[]配列を返す  先頭に1バイトのヘッダーを付加する
-    /// </summary>
+    /// <summary>静的メソッド　MemoryPackでシリアライズしてbyte[]配列を返す  先頭に1バイトのヘッダーを付加する</summary>
     /// <param name="val"></param>
     /// <returns></returns>
     public static byte[] Serialize<T>(byte header, T val, System.IO.Compression.CompressionLevel level = System.IO.Compression.CompressionLevel.Optimal, int window = 22)
@@ -402,9 +374,7 @@ public static class MemoryPackEx
         return buffer;
     }
 
-    /// <summary>
-    /// MemoryPackでシリアライズされた byte[] 配列からTを返す. 不適切な入力値だった場合は default(T)) 返し。
-    /// </summary>
+    /// <summary>MemoryPackでシリアライズされた byte[] 配列からTを返す. 不適切な入力値だった場合は default(T)) 返し。</summary>
     /// <param name="bytes"></param>
     /// <returns></returns>
     public static T Deserialize<T>(byte[] bytes)
@@ -423,9 +393,7 @@ public static class MemoryPackEx
 #endregion
 
 #region Graphicsクラス
-/// <summary>
-/// Graphics クラスの描画関数にdoubleを受けられるにようにした拡張メソッド
-/// </summary>
+/// <summary>Graphics クラスの描画関数にdoubleを受けられるにようにした拡張メソッド</summary>
 public static class GraphicsAlpha
 {
     #region 座標変換
@@ -490,9 +458,7 @@ public static class GraphicsAlpha
             graphics.DrawEllipse(new Pen(c, 0.0001f), (float)(pt.X - radius), (float)(pt.Y - radius), (float)(2 * radius), (float)(2 * radius));
     }
 
-    /// <summary>
-    /// 拡張メソッド
-    /// </summary>
+    /// <summary>拡張メソッド</summary>
     /// <param name="graphics"></param>
     /// <param name="s"></param>
     /// <param name="font"></param>
@@ -515,9 +481,7 @@ public static class GraphicsAlpha
     public static void DrawString(this Graphics graphics, string s, Font font, Color color, PointD pt, bool resetTransform = false)
         => DrawString(graphics, s, font, color, pt.X, pt.Y, resetTransform);
 
-    /// <summary>
-    /// 
-    /// </summary>
+    /// <summary></summary>
     /// <param name="graphics"></param>
     /// <param name="text">描画する文字列</param>
     /// <param name="font">描画に使用するフォント</param>
@@ -546,9 +510,7 @@ public static class GraphicsAlpha
         graphics.DrawString(text, font, new SolidBrush(color), x, y);
     }
 
-    /// <summary>
-    /// Graphics.DrawStringで文字列を描画した時の大きさと位置を正確に計測する
-    /// </summary>
+    /// <summary>Graphics.DrawStringで文字列を描画した時の大きさと位置を正確に計測する</summary>
     /// <param name="g">文字列を描画するGraphics</param>
     /// <param name="text">描画する文字列</param>
     /// <param name="font">描画に使用するフォント</param>
@@ -583,9 +545,7 @@ public static class GraphicsAlpha
         return resultRect;
     }
 
-    /// <summary>
-    /// 指定されたBitmapで、backColor以外の色が使われている範囲を計測する
-    /// </summary>
+    /// <summary>指定されたBitmapで、backColor以外の色が使われている範囲を計測する</summary>
     private static Rectangle MeasureForegroundArea(Bitmap bmp, Color backColor)
     {
         int backColorArgb = backColor.ToArgb();

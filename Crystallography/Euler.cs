@@ -10,9 +10,7 @@ using DVec = MathNet.Numerics.LinearAlgebra.Double.DenseVector;
 
 namespace Crystallography;
 
-/// <summary>
-/// Euler の概要の説明です。
-/// </summary>
+/// <summary>Euler の概要の説明です。</summary>
 public class Euler
 {
     public Euler()
@@ -307,9 +305,7 @@ public class Euler
                             );
     }
 
-    /// <summary>
-    /// 回転行列をEuler角(Z-X-Zセッティング)に変換
-    /// </summary>
+    /// <summary>回転行列をEuler角(Z-X-Zセッティング)に変換</summary>
     /// <param name="EulerMatrix"></param>
     /// <returns></returns>
     public static (double Phi, double Theta, double Psi) FromMatrix(Matrix3D EulerMatrix)
@@ -348,9 +344,7 @@ public class Euler
         return (phi, theta, psi);
     }
 
-    /// <summary>
-    /// Euler角(Z-X-Zセッティング)を回転行列に変換
-    /// </summary>
+    /// <summary>Euler角(Z-X-Zセッティング)を回転行列に変換</summary>
     /// <param name="phi"></param>
     /// <param name="theta"></param>
     /// <param name="psi"></param>
@@ -376,9 +370,7 @@ public class Euler
             );
     }
 
-    /// <summary>
-    /// rotに最も近い、任意のセッティングのオイラー角に分解する.
-    /// </summary>
+    /// <summary>rotに最も近い、任意のセッティングのオイラー角に分解する.</summary>
     /// <param name="targetRotation"></param>
     /// <param name="settings">settings配列の長さは最大で3. V: 回転軸、Angle: 初期(あるいは固定)角度、Variable: Trueで変数、Falseで固定</param>
     /// <returns></returns>

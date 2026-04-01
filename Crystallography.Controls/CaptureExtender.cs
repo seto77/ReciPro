@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Reflection;
@@ -6,9 +6,7 @@ using System.Windows.Forms;
 
 namespace Crystallography.Controls;
 
-/// <summary>
-/// (260323Ch) Form / UserControl / Control / ToolStripItem に設計時の Capture フラグを付与する extender component。
-/// </summary>
+/// <summary>(260323Ch) Form / UserControl / Control / ToolStripItem に設計時の Capture フラグを付与する extender component。</summary>
 [ProvideProperty("Capture", typeof(Component))]
 [DesignerCategory("Component")]
 [ToolboxItem(true)]

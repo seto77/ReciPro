@@ -38,9 +38,7 @@ public class PeakFunction : IComparable
     public int GroupIndex;
     public Color Color;
 
-    /// <summary>
-    /// Fitting時に、PeakTop(X値)を探すか。falseの場合は、初期X値をそのまま使う
-    /// </summary>
+    /// <summary>Fitting時に、PeakTop(X値)を探すか。falseの場合は、初期X値をそのまま使う</summary>
     public bool SearchPeakTop { get; set; } = false;
 
     public int CompareTo(object o)
@@ -401,9 +399,7 @@ public class FittingPeak
     }
 
 
-    /// <summary>
-    /// 複数ピークをフィッティングする. 戻り値は、R値
-    /// </summary>
+    /// <summary>複数ピークをフィッティングする. 戻り値は、R値</summary>
     /// <param name="_pt">フィッティング対象プロファイルのデータ配列</param>
     /// <param name="BackgroundFitting">バックグラウンドをフィッティングするかどうか</param>
     /// <param name="RemoveBadSN">SN比の悪いピークについてはNaNを返すかどうか</param>
@@ -883,9 +879,7 @@ public class FittingPeak
         return new PointD(offset.X + (int)(center.X + 0.5 - range), offset.Y + (int)(center.Y + 0.5 - range));
     }
 
-    /// <summary>
-    /// 二次元データに対してPseudoVoigt関数でフィッティングする
-    /// </summary>
+    /// <summary>二次元データに対してPseudoVoigt関数でフィッティングする</summary>
     /// <param name="intensity"></param>
     /// <returns></returns>
     public static PointD FitPeakAsPseudoVoigtByMarcal2D(double[,] intensity)

@@ -14,9 +14,7 @@ public partial class FormRotationMatrix : CaptureFormBase
 {
 
     #region プロパティ
-    /// <summary>
-    ///  R_base  =R_ex ^-1 * R_reci の関係がある.
-    /// </summary>
+    /// <summary>R_base  =R_ex ^-1 * R_reci の関係がある.</summary>
     public Matrix3D RotBase { get; set; } = new Matrix3D();
 
     public Matrix3D RotReciPro => Euler.ToMatrix(FormMain.Phi, FormMain.Theta, FormMain.Psi);
@@ -58,9 +56,7 @@ public partial class FormRotationMatrix : CaptureFormBase
 
     #region コンストラクタ、ロード、クローズ、Visible
 
-    /// <summary>
-    /// 起動時
-    /// </summary>
+    /// <summary>起動時</summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
     private void FormRotationMatrix_Load(object sender, EventArgs e)
@@ -302,9 +298,7 @@ public partial class FormRotationMatrix : CaptureFormBase
         NumericBoxExp_ValueChanged(new object(), new EventArgs());
     }
 
-    /// <summary>
-    /// 角度をセット. 
-    /// </summary>
+    /// <summary>角度をセット.</summary>
     /// <param name="fromExp">trueの時は、Experimental coordinatesの制限を解除して、オイラー角を更新する。</param>
     public void SetRotation(bool renewExpEuler = true)
     {
@@ -370,9 +364,7 @@ public partial class FormRotationMatrix : CaptureFormBase
 
     #region OpenGL
 
-    /// <summary>
-    /// 軸オブジェクトを生成
-    /// </summary>
+    /// <summary>軸オブジェクトを生成</summary>
     /// <param name="gl"></param>
     private static void setAxes(GLControlAlpha gl)
     {
@@ -405,9 +397,7 @@ public partial class FormRotationMatrix : CaptureFormBase
 
     }
 
-    /// <summary>
-    /// ゴニオオブジェクトを生成
-    /// </summary>
+    /// <summary>ゴニオオブジェクトを生成</summary>
     /// <param name="gl"></param>
     /// <param name="dir"></param>
     /// <param name="angle"></param>
@@ -534,9 +524,7 @@ public partial class FormRotationMatrix : CaptureFormBase
         => glControlReciProGonio.WorldMatrix = Matrix4d.Identity;
 
 
-    /// <summary>
-    /// ラジオボタンのチェック状態
-    /// </summary>
+    /// <summary>ラジオボタンのチェック状態</summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
     private void RadioButton_CheckedChanged(object sender, EventArgs e)

@@ -30,9 +30,7 @@ namespace Crystallography
 
         /*
         double[] blur = new double[0];
-        /// <summary>
-        /// 画像を指定したfilmBlur量でにじませる
-        /// </summary>
+        /// <summary>画像を指定したfilmBlur量でにじませる</summary>
         /// <param name="pixels"></param>
         /// <param name="filmBlur"></param>
         /// <returns></returns>

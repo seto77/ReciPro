@@ -3,9 +3,7 @@ using System.Numerics;
 
 namespace Crystallography;
 
-/// <summary>
-/// Plane の概要の説明です。
-/// </summary>
+/// <summary>Plane の概要の説明です。</summary>
 [Serializable()]
 public class Plane : IComparable, IComparable<Plane>
 {

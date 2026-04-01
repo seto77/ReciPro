@@ -9,9 +9,7 @@ namespace Crystallography;
 
 public static class BitmapConverter
 {
-    /// <summary>
-    /// byte配列を、ビットマップ画像に変換。配列の長さによって、グレースケールか、カラーかを、自動で判別
-    /// </summary>
+    /// <summary>byte配列を、ビットマップ画像に変換。配列の長さによって、グレースケールか、カラーかを、自動で判別</summary>
     /// <param name="rgb"></param>
     /// <param name="width"></param>
     /// <param name="height"></param>
@@ -128,9 +126,7 @@ public static class BitmapConverter
         return values;
     }
 
-    /// <summary>
-    /// 32bitビットマップ画像から、BGRAの順で各ピクセルの情報をもつbyte配列を返す。Lengthは width * height * 4 となる。
-    /// </summary>
+    /// <summary>32bitビットマップ画像から、BGRAの順で各ピクセルの情報をもつbyte配列を返す。Lengthは width * height * 4 となる。</summary>
     /// <param name="bmp"></param>
     /// <returns></returns>
     public static byte[] ToByteBGRA(Bitmap bmp)

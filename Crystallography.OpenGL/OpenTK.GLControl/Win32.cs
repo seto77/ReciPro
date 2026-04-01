@@ -3,9 +3,7 @@ using System.Runtime.InteropServices;
 
 namespace OpenTK.GLControl
 {
-    /// <summary>
-    /// P/Invoke functions and declarations for Microsoft Windows (32-bit and 64-bit).
-    /// </summary>
+    /// <summary>P/Invoke functions and declarations for Microsoft Windows (32-bit and 64-bit).</summary>
     internal static class Win32
     {
         #region Enums

@@ -113,9 +113,7 @@ public partial class BondInputControl : CaptureUserControlBase
     #endregion
 
     #region データベース操作
-    /// <summary>
-    /// データベースにbondsを追加する
-    /// </summary>
+    /// <summary>データベースにbondsを追加する</summary>
     /// <param name="bonds"></param>
     public void Add(Bonds bonds)
     {
@@ -126,9 +124,7 @@ public partial class BondInputControl : CaptureUserControlBase
         ItemsChanged?.Invoke(this, new EventArgs());
     }
 
-    /// <summary>
-    /// データベースに原子を追加する
-    /// </summary>
+    /// <summary>データベースに原子を追加する</summary>
     /// <param name="bonds"></param>
     public void AddRange(IEnumerable<Bonds> bonds)
     {
@@ -145,9 +141,7 @@ public partial class BondInputControl : CaptureUserControlBase
         }
     }
 
-    /// <summary>
-    /// データベースのi番目の原子を削除
-    /// </summary>
+    /// <summary>データベースのi番目の原子を削除</summary>
     /// <param name="i"></param>
     public void Delete(int i)
     {
@@ -157,9 +151,7 @@ public partial class BondInputControl : CaptureUserControlBase
 
     }
 
-    /// <summary>
-    /// データベースのi番目の原子を置換
-    /// </summary>
+    /// <summary>データベースのi番目の原子を置換</summary>
     /// <param name="bonds"></param>
     /// <param name="i"></param>
     public void Replace(Bonds bonds, int i)
@@ -169,9 +161,7 @@ public partial class BondInputControl : CaptureUserControlBase
         ItemsChanged?.Invoke(this, new EventArgs());
     }
 
-    /// <summary>
-    /// データベースの原子を全て削除する
-    /// </summary>
+    /// <summary>データベースの原子を全て削除する</summary>
     public void Clear()
     {
         table.Clear();
@@ -179,9 +169,7 @@ public partial class BondInputControl : CaptureUserControlBase
         ItemsChanged?.Invoke(this, new EventArgs());
     }
 
-    /// <summary>
-    /// データベース中の全ての原子を取得
-    /// </summary>
+    /// <summary>データベース中の全ての原子を取得</summary>
     /// <returns></returns>
     public Bonds[] GetAll() => table.GetAll();
 
@@ -189,9 +177,7 @@ public partial class BondInputControl : CaptureUserControlBase
 
     #region 追加/削除/置換 ボタン
 
-    /// <summary>
-    /// 追加ボタン
-    /// </summary>
+    /// <summary>追加ボタン</summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
     private void buttonAdd_Click(object sender, System.EventArgs e)
@@ -204,9 +190,7 @@ public partial class BondInputControl : CaptureUserControlBase
         }
     }
 
-    /// <summary>
-    /// 変更ボタン
-    /// </summary>
+    /// <summary>変更ボタン</summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
     private void buttonChange_Click(object sender, System.EventArgs e)
@@ -219,9 +203,7 @@ public partial class BondInputControl : CaptureUserControlBase
         }
     }
 
-    /// <summary>
-    /// 削除ボタン
-    /// </summary>
+    /// <summary>削除ボタン</summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
     private void buttonDelete_Click(object sender, System.EventArgs e)
@@ -240,9 +222,7 @@ public partial class BondInputControl : CaptureUserControlBase
 
     #region bindingSourceイベント
 
-    /// <summary>
-    /// 選択行が変更されたとき
-    /// </summary>
+    /// <summary>選択行が変更されたとき</summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
     private void bindingSource_PositionChanged(object sender, System.EventArgs e)

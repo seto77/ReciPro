@@ -66,9 +66,7 @@ public partial class SymmetryControl : CaptureUserControlBase
         }
     }
 
-    /// <summary>
-    /// 長さの単位の get/set
-    /// </summary>
+    /// <summary>長さの単位の get/set</summary>
     [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     public LengthUnitEnum LengthUnit
     {
@@ -80,9 +78,7 @@ public partial class SymmetryControl : CaptureUserControlBase
         }
     }
 
-    /// <summary>
-    /// Cell constants の get/set. 単位はnm, radian.
-    /// </summary>
+    /// <summary>Cell constants の get/set. 単位はnm, radian.</summary>
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     [Browsable(false)]
     public (double A, double B, double C, double Alpha, double Beta, double Gamma) CellConstants
@@ -136,9 +132,7 @@ public partial class SymmetryControl : CaptureUserControlBase
     public double Gamma { get => numericBoxGamma.RadianValue; set => numericBoxGamma.RadianValue = value; }
 
 
-    /// <summary>
-    /// Cell constants error の get/set. 単位はnm, radian.
-    /// </summary>
+    /// <summary>Cell constants error の get/set. 単位はnm, radian.</summary>
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     [Browsable(false)]
     public (double AErr, double BErr, double CErr, double AlphaErr, double BetaErr, double GammaErr) CellConstantsErr

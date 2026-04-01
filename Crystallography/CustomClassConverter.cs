@@ -3,9 +3,7 @@ using System.ComponentModel;
 
 namespace Crystallography
 {
-    /// <summary>
-    /// 変換を行う
-    /// </summary>
+    /// <summary>変換を行う</summary>
     public class ConverterBase : ExpandableObjectConverter
     {
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)

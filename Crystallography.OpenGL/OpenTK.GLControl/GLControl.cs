@@ -18,9 +18,7 @@ namespace OpenTK.GLControl
     /// </summary>
     public class GLControl : Control
     {
-        /// <summary>
-        /// The OpenGL configuration of this control.
-        /// </summary>
+        /// <summary>The OpenGL configuration of this control.</summary>
         private GLControlSettings _glControlSettings;
 
         /// <summary>
@@ -147,9 +145,7 @@ namespace OpenTK.GLControl
         }
         private GLControl? _sharedContext;
 
-        /// <summary>
-        /// Gets the <see cref="IGraphicsContext"/> instance that is associated with the <see cref="GLControl"/>.
-        /// </summary>
+        /// <summary>Gets the <see cref="IGraphicsContext"/> instance that is associated with the <see cref="GLControl"/>.</summary>
         [Browsable(false)]
         public IGLFWGraphicsContext? Context => _nativeWindow?.Context;
 
@@ -200,9 +196,7 @@ namespace OpenTK.GLControl
         [Browsable(false)]
         public bool HasValidContext => _nativeWindow != null;
 
-        /// <summary>
-        /// Gets the aspect ratio of this GLControl.
-        /// </summary>
+        /// <summary>Gets the aspect ratio of this GLControl.</summary>
         [Description("The aspect ratio of the client area of this GLControl.")]
         [Category("Layout")]
         public float AspectRatio
@@ -237,9 +231,7 @@ namespace OpenTK.GLControl
         {
         }
 
-        /// <summary>
-        /// Constructs a new instance with the specified GLControlSettings.
-        /// </summary>
+        /// <summary>Constructs a new instance with the specified GLControlSettings.</summary>
         /// <param name="glControlSettings">The preferred configuration for the OpenGL
         /// renderer.  If null, 'GLControlSettings.Default' will be used instead.</param>
         public GLControl(GLControlSettings? glControlSettings)
@@ -307,9 +299,7 @@ namespace OpenTK.GLControl
             }
         }
 
-        /// <summary>
-        /// Construct the child NativeWindow that will wrap the underlying GLFW instance.
-        /// </summary>
+        /// <summary>Construct the child NativeWindow that will wrap the underlying GLFW instance.</summary>
         /// <param name="glControlSettings">The settings to use for
         /// the new GLFW window.</param>
         private void CreateNativeWindow(GLControlSettings glControlSettings)
@@ -362,9 +352,7 @@ namespace OpenTK.GLControl
             }
         }
 
-        /// <summary>
-        /// Ensure that the required underlying GLFW window has been created.
-        /// </summary>
+        /// <summary>Ensure that the required underlying GLFW window has been created.</summary>
         // FIXME: In .net5.0+ we could add this attribute.
         // This is not strictly true in DesignMode, but maybe it's better than nothing?
         //[MemberNotNull("_nativeWindow")]
@@ -456,9 +444,7 @@ namespace OpenTK.GLControl
             else throw new NotSupportedException("The current operating system is not supported by this control.");
         }
 
-        /// <summary>
-        /// Enable/disable NativeInput for the given NativeWindow.
-        /// </summary>
+        /// <summary>Enable/disable NativeInput for the given NativeWindow.</summary>
         /// <param name="isEnabled">Whether NativeInput support should be enabled or disabled.</param>
         private unsafe void EnableNativeInput(NativeWindow nativeWindow, bool isEnabled)
         {
@@ -483,9 +469,7 @@ namespace OpenTK.GLControl
             else throw new NotSupportedException("The current operating system is not supported by this control.");
         }
 
-        /// <summary>
-        /// Determine if native input is enabled for the given NativeWindow.
-        /// </summary>
+        /// <summary>Determine if native input is enabled for the given NativeWindow.</summary>
         /// <param name="nativeWindow">The NativeWindow to query.</param>
         /// <returns>True if native input is enabled; false if it is not.</returns>
         private unsafe bool IsNativeInputEnabled(NativeWindow nativeWindow)
@@ -550,9 +534,7 @@ namespace OpenTK.GLControl
             DestroyNativeWindow();
         }
 
-        /// <summary>
-        /// Destroy the child NativeWindow that wraps the underlying GLFW instance.
-        /// </summary>
+        /// <summary>Destroy the child NativeWindow that wraps the underlying GLFW instance.</summary>
         private void DestroyNativeWindow()
         {
             if (_nativeWindow != null)
@@ -568,9 +550,7 @@ namespace OpenTK.GLControl
         /// </summary>
         private static readonly object EVENT_LOAD = new();
 
-        /// <summary>
-        /// An event hook, triggered when the control is created for the first time.
-        /// </summary>
+        /// <summary>An event hook, triggered when the control is created for the first time.</summary>
         [Category("Behavior")]
         [Description("Occurs when the GLControl is first created.")]
         public event EventHandler Load
@@ -579,9 +559,7 @@ namespace OpenTK.GLControl
             remove => Events.RemoveHandler(EVENT_LOAD, value);
         }
 
-        /// <summary>
-        /// Raises the CreateControl event.
-        /// </summary>
+        /// <summary>Raises the CreateControl event.</summary>
         [EditorBrowsable(EditorBrowsableState.Advanced)]
         protected override void OnCreateControl()
         {
@@ -590,9 +568,7 @@ namespace OpenTK.GLControl
             OnLoad(EventArgs.Empty);
         }
 
-        /// <summary>
-        /// The Load event is fired before the control becomes visible for the first time.
-        /// </summary>
+        /// <summary>The Load event is fired before the control becomes visible for the first time.</summary>
         [EditorBrowsable(EditorBrowsableState.Advanced)]
         protected virtual void OnLoad(EventArgs e)
         {
@@ -601,9 +577,7 @@ namespace OpenTK.GLControl
             ((EventHandler?)Events[EVENT_LOAD])?.Invoke(this, e); //260317Cl nullable化
         }
 
-        /// <summary>
-        /// This is raised by WinForms to paint this instance.
-        /// </summary>
+        /// <summary>This is raised by WinForms to paint this instance.</summary>
         /// <param name="e">A PaintEventArgs object that describes which areas
         /// of the control need to be painted.</param>
         protected override void OnPaint(PaintEventArgs e)
@@ -647,9 +621,7 @@ namespace OpenTK.GLControl
             base.OnResize(e);
         }
 
-        /// <summary>
-        /// Resize the native window to fit this control.
-        /// </summary>
+        /// <summary>Resize the native window to fit this control.</summary>
         private void ResizeNativeWindow()
         {
             if (IsDesignMode)
@@ -717,9 +689,7 @@ namespace OpenTK.GLControl
             }
         }
 
-        /// <summary>
-        /// Swaps the front and back buffers, presenting the rendered scene to the user.
-        /// </summary>
+        /// <summary>Swaps the front and back buffers, presenting the rendered scene to the user.</summary>
         public void SwapBuffers()
         {
             if (IsDesignMode)

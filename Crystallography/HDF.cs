@@ -7,14 +7,10 @@ using System.Linq;
 namespace Crystallography;
 public class HDF
 {
-    /// <summary>
-    /// データ型が不明なときに使うダミークラス
-    /// </summary>
+    /// <summary>データ型が不明なときに使うダミークラス</summary>
     private class Unknown() { }
 
-    /// <summary>
-    /// IH5Datasetを使いやすくするため拡張したクラス (階層構造を把握するためにPathを追加した)
-    /// </summary>
+    /// <summary>IH5Datasetを使いやすくするため拡張したクラス (階層構造を把握するためにPathを追加した)</summary>
     public class H5DatasetAdv
     {
         private readonly IH5Dataset dataset;
@@ -51,31 +47,21 @@ public class HDF
 
         //public IH5Dataset DatasetOriginal => dataset;
 
-        /// <summary>
-        /// Datasetの名前
-        /// </summary>
+        /// <summary>Datasetの名前</summary>
         public string Name => dataset.Name;
 
-        /// <summary>
-        /// Datasetの次元など
-        /// </summary>
+        /// <summary>Datasetの次元など</summary>
         public IH5Dataspace Space => dataset.Space;
 
-        /// <summary>
-        /// データセットのデータ型など
-        /// </summary>
+        /// <summary>データセットのデータ型など</summary>
         public IH5DataType Type => dataset.Type;
 
-        /// <summary>
-        /// データ読み込み
-        /// </summary>
+        /// <summary>データ読み込み</summary>
         /// <typeparam name="T"></typeparam>
         /// <returns></returns>
         public T Read<T>() => dataset.Read<T>();
 
-        /// <summary>
-        /// データ読み込み (多次元配列の一部を読み込むときに使用)
-        /// </summary>
+        /// <summary>データ読み込み (多次元配列の一部を読み込むときに使用)</summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="rank"></param>
         /// <param name="starts"></param>
@@ -94,9 +80,7 @@ public class HDF
         public T Read<T>(int[] starts, int[] blocks) => Read<T>([.. starts.Select(s => (ulong)s)], [.. blocks.Select(b => (ulong)b)]);
 
 
-        /// <summary>
-        /// 数値配列(1次元)データを読み込み、double配列に変換して返す
-        /// </summary>
+        /// <summary>数値配列(1次元)データを読み込み、double配列に変換して返す</summary>
         /// <returns></returns>
         public double[] ReadAsDoubleArray()
         {
@@ -124,9 +108,7 @@ public class HDF
                 return null;
         }
 
-        /// <summary>
-        /// 数値配列(2次元以上)データを読み込み、double配列(1次元)に変換して返す
-        /// </summary>
+        /// <summary>数値配列(2次元以上)データを読み込み、double配列(1次元)に変換して返す</summary>
         /// <returns></returns>
         public double[] ReadAsDoubleArray(ulong[] starts, ulong[] blocks)
         {
@@ -154,22 +136,16 @@ public class HDF
                 return null;
         }
 
-        /// <summary>
-        /// 数値配列(2次元以上)データを読み込み、double配列(1次元)に変換して返す
-        /// </summary>
+        /// <summary>数値配列(2次元以上)データを読み込み、double配列(1次元)に変換して返す</summary>
         /// <returns></returns>
         public double[] ReadAsDoubleArray(int[] starts, int[] blocks)
             =>ReadAsDoubleArray([.. starts.Select(s => (ulong)s)], [.. blocks.Select(b => (ulong)b)]);
 
-        /// <summary>
-        /// データ読み込み (文字列専用)
-        /// </summary>
+        /// <summary>データ読み込み (文字列専用)</summary>
         /// <returns></returns>
         public string ReadStr() => dataset.Read<string>();
 
-        /// <summary>
-        /// データ(形式は問わないが、配列はNG)を読み込み文字列として返す
-        /// </summary>
+        /// <summary>データ(形式は問わないが、配列はNG)を読み込み文字列として返す</summary>
         /// <returns></returns>
         public string ReadAsStr()
         {
@@ -200,14 +176,10 @@ public class HDF
         }
     }
 
-    /// <summary>
-    /// HDFファイルに含まれるDatasetのリスト
-    /// </summary>
+    /// <summary>HDFファイルに含まれるDatasetのリスト</summary>
     public List<H5DatasetAdv> Datasets = [];
 
-    /// <summary>
-    /// pathで指定したデータセットを取得する
-    /// </summary>
+    /// <summary>pathで指定したデータセットを取得する</summary>
     /// <param name="path"></param>
     /// <returns></returns>
     public H5DatasetAdv GetDataset(string path)
@@ -216,9 +188,7 @@ public class HDF
         return (dataset!=null && path == dataset.Path) ? dataset : null;
     }
 
-    /// <summary>
-    /// HDFクラスのコンストラクタ
-    /// </summary>
+    /// <summary>HDFクラスのコンストラクタ</summary>
     /// <param name="filename"></param>
     public HDF(string filename)
     {
@@ -412,9 +382,7 @@ public class HDF
         return (default, default, default, default);
     }
 
-    /// <summary>
-    /// datasetを指定して、単一の値(0次元)を得る
-    /// </summary>
+    /// <summary>datasetを指定して、単一の値(0次元)を得る</summary>
     /// <typeparam name="T"></typeparam>
     /// <param name="dataset"></param>
     /// <returns></returns>
@@ -428,9 +396,7 @@ public class HDF
     //        return (default, false);
     //}
 
-    /// <summary>
-    /// datasetを指定して、1次元配列を得る
-    /// </summary>
+    /// <summary>datasetを指定して、1次元配列を得る</summary>
     /// <typeparam name="T"></typeparam>
     /// <param name="dataset"></param>
     /// <returns></returns>
@@ -451,9 +417,7 @@ public class HDF
     //        return (default, false);
     //}
 
-    /// <summary>
-    /// datasetを指定して、2次元配列を得る
-    /// </summary>
+    /// <summary>datasetを指定して、2次元配列を得る</summary>
     /// <typeparam name="T"></typeparam>
     /// <param name="dataset"></param>
     /// <returns></returns>

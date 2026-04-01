@@ -12,9 +12,7 @@ namespace Crystallography.OpenGL.Properties {
     using System;
     
     
-    /// <summary>
-    ///   ローカライズされた文字列などを検索するための、厳密に型指定されたリソース クラスです。
-    /// </summary>
+    /// <summary>ローカライズされた文字列などを検索するための、厳密に型指定されたリソース クラスです。</summary>
     // このクラスは StronglyTypedResourceBuilder クラスが ResGen
     // または Visual Studio のようなツールを使用して自動生成されました。
     // メンバーを追加または削除するには、.ResX ファイルを編集して、/str オプションと共に
@@ -32,9 +30,7 @@ namespace Crystallography.OpenGL.Properties {
         internal Resources() {
         }
         
-        /// <summary>
-        ///   このクラスで使用されているキャッシュされた ResourceManager インスタンスを返します。
-        /// </summary>
+        /// <summary>このクラスで使用されているキャッシュされた ResourceManager インスタンスを返します。</summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
@@ -60,18 +56,14 @@ namespace Crystallography.OpenGL.Properties {
             }
         }
         
-        /// <summary>
-        ///   fragDDP に類似しているローカライズされた文字列を検索します。
-        /// </summary>
+        /// <summary>fragDDP に類似しているローカライズされた文字列を検索します。</summary>
         internal static string fragDDP {
             get {
                 return ResourceManager.GetString("fragDDP", resourceCulture);
             }
         }
 
-        /// <summary>
-        ///   fragFXAA に類似しているローカライズされた文字列を検索します。
-        /// </summary>
+        /// <summary>fragFXAA に類似しているローカライズされた文字列を検索します。</summary>
         internal static string fragFXAA {
             get {
                 return ResourceManager.GetString("fragFXAA", resourceCulture);
@@ -114,9 +106,7 @@ namespace Crystallography.OpenGL.Properties {
             }
         }
 
-        /// <summary>
-        ///   fragPPLLText に類似しているローカライズされた文字列を検索します。
-        /// </summary>
+        /// <summary>fragPPLLText に類似しているローカライズされた文字列を検索します。</summary>
         internal static string fragPPLLText {
             get {
                 return ResourceManager.GetString("fragPPLLText", resourceCulture);
@@ -152,9 +142,7 @@ namespace Crystallography.OpenGL.Properties {
             }
         }
 
-        /// <summary>
-        ///   fragZSORTText に類似しているローカライズされた文字列を検索します。
-        /// </summary>
+        /// <summary>fragZSORTText に類似しているローカライズされた文字列を検索します。</summary>
         internal static string fragZSORTText {
             get {
                 return ResourceManager.GetString("fragZSORTText", resourceCulture);
@@ -222,9 +210,7 @@ namespace Crystallography.OpenGL.Properties {
             }
         }
 
-        /// <summary>
-        ///   vertText に類似しているローカライズされた文字列を検索します。
-        /// </summary>
+        /// <summary>vertText に類似しているローカライズされた文字列を検索します。</summary>
         internal static string vertText {
             get {
                 return ResourceManager.GetString("vertText", resourceCulture);

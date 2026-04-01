@@ -40,9 +40,7 @@ namespace ReciPro
         {
             public AreaDetector AreaDetector;
 
-            /// <summary>
-            /// プロパティ ダイレクトスポットを取得する.存在しない場合はPointD(NaN,NaN)を返す.
-            /// </summary>
+            /// <summary>プロパティ ダイレクトスポットを取得する.存在しない場合はPointD(NaN,NaN)を返す.</summary>
             public PointD DirectSpotPosition
             {
                 get
@@ -54,9 +52,7 @@ namespace ReciPro
                 }
             }
 
-            /// <summary>
-            /// プロパティ ダイレクトスポットのIndex(No)を取得する. 存在しない場合は-1を返す.
-            /// </summary>
+            /// <summary>プロパティ ダイレクトスポットのIndex(No)を取得する. 存在しない場合は-1を返す.</summary>
             public int DirectSpotNo
             {
                 get
@@ -68,9 +64,7 @@ namespace ReciPro
                 }
             }
 
-            /// <summary>
-            /// プロパティ x,yがピクセル座標、zが積分強度を格納したタプル
-            /// </summary>
+            /// <summary>プロパティ x,yがピクセル座標、zが積分強度を格納したタプル</summary>
             public List<(int No, double X, double Y, double A)> Spots
             {
                 get
@@ -100,9 +94,7 @@ namespace ReciPro
                 }
             }
 
-            /// <summary>
-            /// プロパティ d値のリストを返す
-            /// </summary>
+            /// <summary>プロパティ d値のリストを返す</summary>
             public List<double> Dscacing
             {
                 get
@@ -116,9 +108,7 @@ namespace ReciPro
                 }
             }
 
-            /// <summary>
-            /// プロパティ　逆格子ベクトルの配列を返す
-            /// </summary>
+            /// <summary>プロパティ　逆格子ベクトルの配列を返す</summary>
             public List<Vector3DBase> ReciprocalVectors
             {
                 get
@@ -134,9 +124,7 @@ namespace ReciPro
                 }
             }
 
-            /// <summary>
-            /// スポット追加
-            /// </summary>
+            /// <summary>スポット追加</summary>
             /// <param name="direct"></param>
             /// <param name="range"></param>
             /// <param name="prmsPv"></param>
@@ -145,9 +133,7 @@ namespace ReciPro
             public void Add(bool direct, double range, double[] prmsPv, double[] prmsBg, double r)
                 => Add(direct, range, prmsPv[0], prmsPv[1], prmsPv[2], prmsPv[3], prmsPv[4], prmsPv[5], prmsPv[6], prmsBg[0], prmsBg[1], prmsBg[2], r);
 
-            /// <summary>
-            /// スポット追加
-            /// </summary>
+            /// <summary>スポット追加</summary>
             /// <param name="direct"></param>
             /// <param name="x0"></param>
             /// <param name="y0"></param>
@@ -174,9 +160,7 @@ namespace ReciPro
                     this.Rows[i]["No"] = i; // (260322Ch) 行番号の振り直しはその場で行う
             }
 
-            /// <summary>
-            /// スポット削除
-            /// </summary>
+            /// <summary>スポット削除</summary>
             /// <param name="pt"></param>
             public void Remove(int index)
             {
@@ -193,9 +177,7 @@ namespace ReciPro
                     this.Rows[i]["No"] = i; // (260322Ch)
             }
 
-            /// <summary>
-            /// DaraRowに変換するメソッド. Addから呼ばれる
-            /// </summary>
+            /// <summary>DaraRowに変換するメソッド. Addから呼ばれる</summary>
             /// <param name="direct"></param>
             /// <param name="x0"></param>
             /// <param name="y0"></param>
@@ -215,9 +197,7 @@ namespace ReciPro
                 return dr;
             }
 
-            /// <summary>
-            /// indexで指定されたスポットの情報を変更する
-            /// </summary>
+            /// <summary>indexで指定されたスポットの情報を変更する</summary>
             /// <param name="index"></param>
             /// <returns></returns>
             public void SetPrms(int index, double range, double[] prmsPv, double[] prmsBg, double r)
@@ -227,9 +207,7 @@ namespace ReciPro
                 setRow((DataTableSpotRow)Rows[index], null, range, prmsPv, prmsBg, r);
             }
 
-            /// <summary>
-            /// indexで指定されたスポットの情報を返す
-            /// </summary>
+            /// <summary>indexで指定されたスポットの情報を返す</summary>
             /// <param name="index"></param>
             /// <returns></returns>
             public (bool Direct, int No, double Range, double X0, double Y0, double H1, double H2, double Theta, double Eta, double A, double B0, double Bx, double By, double R) GetPrms(int index)
@@ -289,9 +267,7 @@ namespace ReciPro
                 => (range, x0, y0, h1, h2, theta / 180.0 * Math.PI, eta, a, b0 - bx * x0 - by * y0, bx, by, r);
 
 
-            /// <summary>
-            /// d値の値を再計算する
-            /// </summary>
+            /// <summary>d値の値を再計算する</summary>
             public void ResetDspacing()
             {
                 if (AreaDetector == null || DirectSpotPosition.IsNaN)
@@ -301,9 +277,7 @@ namespace ReciPro
                     Rows[i]["d"] = 1 / AreaDetector.convertClientToReciprocalSpace((double)Rows[i]["x0"], (double)Rows[i]["y0"]).Length;
             }
 
-            /// <summary>
-            /// ダイレクトスポットを、引数の番号indexで指定する。d値の再計算も行われる
-            /// </summary>
+            /// <summary>ダイレクトスポットを、引数の番号indexで指定する。d値の再計算も行われる</summary>
             /// <param name="index"></param>
             public void SetDirectNo(int index)
             {

@@ -95,26 +95,18 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
 
     #region PDIndexer関連
 
-    /// <summary>
-    /// フレキシブルモード. PDIndexerで利用
-    /// </summary>
+    /// <summary>フレキシブルモード. PDIndexerで利用</summary>
     [NonSerialized]
     [XmlIgnore]
     public bool FlexibleMode = false;
 
-    /// <summary>
-    /// 保護される結晶であるかどうか. PDIndexerで利用
-    /// </summary>
+    /// <summary>保護される結晶であるかどうか. PDIndexerで利用</summary>
     public bool Reserved = false;
 
-    /// <summary>
-    /// 残差. AtomicPositionFinderから呼ばれる。
-    /// </summary>
+    /// <summary>残差. AtomicPositionFinderから呼ばれる。</summary>
     public double Residual = 0;
 
-    /// <summary>
-    /// 全体的な回折強度.  PDIndexerから呼ばれる.
-    /// </summary>
+    /// <summary>全体的な回折強度.  PDIndexerから呼ばれる.</summary>
     [NonSerialized]
     [XmlIgnore]
     public double DiffractionPeakIntensity = -1;
@@ -127,77 +119,57 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
     #endregion
 
     #region 結晶面、晶帯軸、逆格子点ベクトル、菊池線ベクトルなど
-    /// <summary>
-    ///
-    /// </summary>
+    /// <summary></summary>
     [NonSerialized]
     [XmlIgnore]
     public List<Plane> Plane = [];
 
     public List<Plane> FlexiblePlane = [];
 
-    /// <summary>
-    /// 軸ベクトル配列
-    /// </summary>
+    /// <summary>軸ベクトル配列</summary>
     [NonSerialized]
     [XmlIgnore]
     public List<Vector3D> VectorOfAxis = [];
 
-    /// <summary>
-    /// 面ベクトル配列
-    /// </summary>
+    /// <summary>面ベクトル配列</summary>
     [NonSerialized]
     [XmlIgnore]
     public List<Vector3D> VectorOfPlane = [];
 
-    /// <summary>
-    /// 逆格子点ベクトル (kinematical)
-    /// </summary>
+    /// <summary>逆格子点ベクトル (kinematical)</summary>
     [NonSerialized]
     [XmlIgnore]
     public Vector3D[] VectorOfG = [];
 
-    /// <summary>
-    /// 逆格子点ベクトル (kinematical)のパラレルクエリ。VectorOfGを初期化すると、これもセットで初期化される。
-    /// </summary>
+    /// <summary>逆格子点ベクトル (kinematical)のパラレルクエリ。VectorOfGを初期化すると、これもセットで初期化される。</summary>
     [NonSerialized]
     [XmlIgnore]
     public ParallelQuery<Vector3D> VectorOfG_P;
 
 
-    /// <summary>
-    /// 菊池線ベクトル
-    /// </summary>
+    /// <summary>菊池線ベクトル</summary>
     [NonSerialized]
     [XmlIgnore]
     public List<Vector3D> VectorOfG_KikuchiLine = [];
 
-    /// <summary>
-    /// 極ベクトル
-    /// </summary>
+    /// <summary>極ベクトル</summary>
     [NonSerialized]
     [XmlIgnore]
     public List<Vector3D> VectorOfPole = [];
     #endregion
 
     #region ベーテ法
-    /// <summary>
-    /// ベーテ法による動力学回折を提供するフィールド
-    /// </summary>
+    /// <summary>ベーテ法による動力学回折を提供するフィールド</summary>
     [NonSerialized]
     [XmlIgnore]
     public BetheMethod Bethe;
     #endregion
 
     #region 格子定数関係
-    /// <summary>
-    /// 格子定数
-    /// </summary>
+    /// <summary>格子定数</summary>
     public double A, B, C, Alpha, Beta, Gamma;
 
-    /// <summary>
-    /// 格子定数の誤差
-    /// </summary>
+    /// <summary>格子定数の誤差</summary>
     public double A_err, B_err, C_err, Alpha_err, Beta_err, Gamma_err;  //格子定数の誤差
     public (double A, double B, double C, double Alpha, double Beta, double Gamma) CellValue
     {
@@ -221,86 +193,62 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
     [XmlIgnore]
     private double sigma11, sigma22, sigma33, sigma23, sigma31, sigma12;
 
-    /// <summary>
-    /// 単位格子体積(nm^3)
-    /// </summary>
+    /// <summary>単位格子体積(nm^3)</summary>
     [NonSerialized]
     [XmlIgnore]
     public double Volume, Volume_err;
 
-    /// <summary>
-    /// a軸ベクトル
-    /// </summary>
+    /// <summary>a軸ベクトル</summary>
     [NonSerialized]
     [XmlIgnore]
     public Vector3DBase A_Axis;
 
-    /// <summary>
-    /// b軸ベクトル
-    /// </summary>
+    /// <summary>b軸ベクトル</summary>
     [NonSerialized]
     [XmlIgnore]
     public Vector3DBase B_Axis;
 
-    /// <summary>
-    /// c軸ベクトル
-    /// </summary>
+    /// <summary>c軸ベクトル</summary>
     [NonSerialized]
     [XmlIgnore]
     public Vector3DBase C_Axis;
 
-    /// <summary>
-    /// a*軸ベクトル
-    /// </summary>
+    /// <summary>a*軸ベクトル</summary>
     [NonSerialized]
     [XmlIgnore]
     public Vector3DBase A_Star;
 
-    /// <summary>
-    /// b*軸ベクトル
-    /// </summary>
+    /// <summary>b*軸ベクトル</summary>
     [NonSerialized]
     [XmlIgnore]
     public Vector3DBase B_Star;
 
-    /// <summary>
-    /// c*軸ベクトル
-    /// </summary>
+    /// <summary>c*軸ベクトル</summary>
     [NonSerialized]
     [XmlIgnore]
     public Vector3DBase C_Star;
 
-    /// <summary>
-    /// 逆格子行列 (1行目にa*, 2行目にb*, 3行目にｃ*)
-    /// </summary>
+    /// <summary>逆格子行列 (1行目にa*, 2行目にb*, 3行目にｃ*)</summary>
     [NonSerialized]
     [XmlIgnore]
     public Matrix3D MatrixInverse = new();
 
-    /// <summary>
-    /// 逆格子行列の転置行列
-    /// </summary>
+    /// <summary>逆格子行列の転置行列</summary>
     [NonSerialized]
     [XmlIgnore]
     public Matrix3D MatrixInverseTransposed = new();
 
-    /// <summary>
-    /// 実格子行列 (1列目にa, 2列目にb, 3列目にｃ)
-    /// </summary>
+    /// <summary>実格子行列 (1列目にa, 2列目にb, 3列目にｃ)</summary>
     [NonSerialized]
     [XmlIgnore]
     public Matrix3D MatrixReal = new();
     #endregion
 
     #region 対称性関係
-    /// <summary>
-    /// 空間群の通し番号
-    /// </summary>
+    /// <summary>空間群の通し番号</summary>
     public int SymmetrySeriesNumber = 0;
 
-    /// <summary>
-    /// 対称性
-    /// </summary>
+    /// <summary>対称性</summary>
     [NonSerialized]
     [XmlIgnore]
     public Symmetry Symmetry;
@@ -311,13 +259,9 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
     #endregion
 
     #region 結晶の名称、色、文献情報
-    /// <summary>
-    /// 結晶の名称
-    /// </summary>
+    /// <summary>結晶の名称</summary>
     public string Name = "";
-    /// <summary>
-    /// 結晶の色
-    /// </summary>
+    /// <summary>結晶の色</summary>
     public int Argb;
 
     public string Note = "";
@@ -339,9 +283,7 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
     #endregion
 
     #region 密度、化学組成関連
-    /// <summary>
-    /// 密度 (g/cc)
-    /// </summary>
+    /// <summary>密度 (g/cc)</summary>
     [NonSerialized]
     [XmlIgnore]
     public double Density, Density_err;//密度
@@ -362,39 +304,29 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
     [XmlIgnore]
     public int ChemicalFormulaZ;
 
-    /// <summary>
-    /// 元素名配列
-    /// </summary>
+    /// <summary>元素名配列</summary>
     [NonSerialized]
     [XmlIgnore]
     public string[] ElementName;
 
-    /// <summary>
-    /// 元素番号配列
-    /// </summary>
+    /// <summary>元素番号配列</summary>
     [NonSerialized]
     [XmlIgnore]
     public double[] ElementNum;
     #endregion
 
     #region 原子情報
-    /// <summary>
-    /// 原子の情報を取り扱うAtomsクラスの配列
-    /// </summary>
+    /// <summary>原子の情報を取り扱うAtomsクラスの配列</summary>
     public Atoms[] Atoms = [];
 
-    /// <summary>
-    /// 原子の情報を取り扱うAtomsクラスのParallelQuery
-    /// </summary>
+    /// <summary>原子の情報を取り扱うAtomsクラスのParallelQuery</summary>
     [NonSerialized]
     [XmlIgnore]
     public ParallelQuery<Atoms> AtomsP;
     #endregion
 
     #region 結合情報、格子面、描画境界の情報　StructureViewerで使用
-    /// <summary>
-    /// 結合の情報を取り扱うBondクラスの配列
-    /// </summary>
+    /// <summary>結合の情報を取り扱うBondクラスの配列</summary>
     public Bonds[] Bonds = [];
 
     public Bound[] Bounds;
@@ -404,29 +336,19 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
 
     #region 歪みテンソル、応力テンソル、弾性定数
 
-    /// <summary>
-    /// 格子歪みテンソル
-    /// </summary>
+    /// <summary>格子歪みテンソル</summary>
     public Matrix3D Strain = new(0, 0, 0, 0, 0, 0, 0, 0, 0);
 
-    /// <summary>
-    /// 応力テンソル
-    /// </summary>
+    /// <summary>応力テンソル</summary>
     public Matrix3D Stress = new(0, 0, 0, 0, 0, 0, 0, 0, 0);
 
-    /// <summary>
-    /// ヒル定数
-    /// </summary>
+    /// <summary>ヒル定数</summary>
     public double HillCoefficient = 0;
 
-    /// <summary>
-    /// 弾性定数 (保存用)
-    /// </summary>
+    /// <summary>弾性定数 (保存用)</summary>
     public double[] ElasticStiffnessArray = new double[21];
 
-    /// <summary>
-    /// 弾性定数マトリックス
-    /// </summary>
+    /// <summary>弾性定数マトリックス</summary>
     [XmlIgnore]
     public double[,] ElasticStiffness
     {
@@ -471,21 +393,15 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
     #endregion
 
     #region EOS関連
-    /// <summary>
-    /// EOSのパラメータ
-    /// </summary>
+    /// <summary>EOSのパラメータ</summary>
     public EOS EOSCondition = new();
 
-    /// <summary>
-    /// EOSを利用するかどうか
-    /// </summary>
+    /// <summary>EOSを利用するかどうか</summary>
     public bool DoesUseEOS = false;
     #endregion
 
     #region 多結晶体に関する情報 
-    /// <summary>
-    /// 方位とサイズを保持したCrystalliteクラス配列 (多結晶体計算時に用いる)
-    /// </summary>
+    /// <summary>方位とサイズを保持したCrystalliteクラス配列 (多結晶体計算時に用いる)</summary>
     [NonSerialized]
     [XmlIgnore]
     public Crystallite Crystallites;
@@ -493,9 +409,7 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
     public double AngleResolution = 2;
     public int SubDivision = 4;
 
-    /// <summary>
-    /// 結晶子のサイズ (単位:nm)
-    /// </summary>
+    /// <summary>結晶子のサイズ (単位:nm)</summary>
     public double GrainSize = 100;
 
     public int id = 0;
@@ -625,16 +539,12 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
     #endregion コンストラクタ
 
     #region Crystal2クラスに変換
-    /// <summary>
-    /// Crystal2クラスに変換します。
-    /// </summary>
+    /// <summary>Crystal2クラスに変換します。</summary>
     public Crystal2 ToCrystal2() => Crystal2.FromCrystal(this);
     #endregion
 
     #region 各軸のベクトルや補助定数(sigmaなど)を設定
-    /// <summary>
-    /// 格子定数から、各軸のベクトルや補助定数(sigmaなど)を設定する
-    /// </summary>
+    /// <summary>格子定数から、各軸のベクトルや補助定数(sigmaなど)を設定する</summary>
     public void SetAxis()
     {
         #region まず、対称性に即した格子定数になるように強制する
@@ -746,9 +656,7 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
 
     #region 結晶幾何学関連
 
-    /// <summary>
-    /// (h,k,l)面の面間隔を計算します
-    /// </summary>
+    /// <summary>(h,k,l)面の面間隔を計算します</summary>
     /// <param name="h"></param>
     /// <param name="k"></param>
     /// <param name="l"></param>
@@ -765,9 +673,7 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
         };
     }
 
-    /// <summary>
-    /// (h1 k1 l1)面と(h2 l2 k2)面のなす角を計算します
-    /// </summary>
+    /// <summary>(h1 k1 l1)面と(h2 l2 k2)面のなす角を計算します</summary>
     /// <param name="h1"></param>
     /// <param name="k1"></param>
     /// <param name="l1"></param>
@@ -783,9 +689,7 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
         return Math.Acos(temp);
     }
 
-    /// <summary>
-    /// 軸[pqr]の周期の長さ
-    /// </summary>
+    /// <summary>軸[pqr]の周期の長さ</summary>
     /// <param name="u"></param>
     /// <param name="v"></param>
     /// <param name="w"></param>
@@ -796,9 +700,7 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
         return Math.Sqrt(u * u * A * A + v * v * B * B + w * w * C * C + 2 * v * w * B * C * Math.Cos(Alpha) + 2 * w * u * C * A * Math.Cos(Beta) + 2 * u * v * A * B * Math.Cos(Gamma));
     }
 
-    /// <summary>
-    /// 二軸のなす角
-    /// </summary>
+    /// <summary>二軸のなす角</summary>
     /// <param name="u1"></param>
     /// <param name="v1"></param>
     /// <param name="w1"></param>
@@ -812,9 +714,7 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
         return Math.Acos(1.0 / GetLengthAxis(u1, v1, w1) / GetLengthAxis(u2, v2, w2) * (u1 * u2 * A * A + v1 * v2 * B * B + w1 * w2 * C * C + (v1 * w2 + w1 * v2) * B * C * Math.Cos(Alpha) + (w1 * u2 + u1 * w2) * C * A * Math.Cos(Beta) + (u1 * v2 + v1 * u2) * A * B * Math.Cos(Gamma)));
     }
 
-    /// <summary>
-    /// 面の垂線と軸のなす角
-    /// </summary>
+    /// <summary>面の垂線と軸のなす角</summary>
     /// <param name="h"></param>
     /// <param name="k"></param>
     /// <param name="l"></param>
@@ -828,9 +728,7 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
         return Math.Acos(GetLengthPlane(h, k, l) / GetLengthAxis(u, v, w) * (h * u + k * v + l * w));
     }
 
-    /// <summary>
-    /// 2面から成る晶帯軸
-    /// </summary>
+    /// <summary>2面から成る晶帯軸</summary>
     /// <param name="h1"></param>
     /// <param name="k1"></param>
     /// <param name="l1"></param>
@@ -850,9 +748,7 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
         return $" {u} {v} {w}";
     }
 
-    /// <summary>
-    /// a,b,c軸ベクトルからhkl面の方向ベクトル計算
-    /// </summary>
+    /// <summary>a,b,c軸ベクトルからhkl面の方向ベクトル計算</summary>
     /// <param name="h"></param>
     /// <param name="k"></param>
     /// <param name="l"></param>
@@ -867,9 +763,7 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
             -h * (b.Y * c.X - b.X * c.Y) - k * (c.Y * a.X - c.X * a.Y) - l * (a.Y * b.X - a.X * b.Y)
             );
 
-    /// <summary>
-    /// hkl面の方向ベクトル計算
-    /// </summary>
+    /// <summary>hkl面の方向ベクトル計算</summary>
     /// <param name="h"></param>
     /// <param name="k"></param>
     /// <param name="l"></param>
@@ -881,9 +775,7 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
             -h * (B_Axis.Y * C_Axis.X - B_Axis.X * C_Axis.Y) - k * (C_Axis.Y * A_Axis.X - C_Axis.X * A_Axis.Y) - l * (A_Axis.Y * B_Axis.X - A_Axis.X * B_Axis.Y)
             );
 
-    /// <summary>
-    /// 既約かどうか判定
-    /// </summary>
+    /// <summary>既約かどうか判定</summary>
     /// <param name="a"></param>
     /// <param name="b"></param>
     /// <param name="c"></param>
@@ -899,9 +791,7 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
         return true;
     }
 
-    /// <summary>
-    /// 二組の(hkl)が既約かどうかを判定
-    /// </summary>
+    /// <summary>二組の(hkl)が既約かどうかを判定</summary>
     /// <param name="index1"></param>
     /// <param name="index2"></param>
     /// <returns></returns>
@@ -940,9 +830,7 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
 
     #region 軸ベクトルの計算
 
-    /// <summary>
-    ///　引数で指定された指数の軸ベクトルを計算し、VectorOfAxisに格納
-    /// </summary>
+    /// <summary>引数で指定された指数の軸ベクトルを計算し、VectorOfAxisに格納</summary>
     /// <param name="indices"></param>
     public void SetVectorOfAxis((int U, int V, int W)[] indices)
     {
@@ -952,9 +840,7 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
             VectorOfAxis.Add(new Vector3D(U * A_Axis + V * B_Axis + W * C_Axis) { Index = (U, V, W) });
     }
 
-    /// <summary>
-    /// 引数で指定されたuMax,vMax,wMaxの範囲で軸ベクトルを計算し、VectorOfAxisに格納
-    /// </summary>
+    /// <summary>引数で指定されたuMax,vMax,wMaxの範囲で軸ベクトルを計算し、VectorOfAxisに格納</summary>
     /// <param name="uMax"></param>
     /// <param name="vMax"></param>
     /// <param name="wMax"></param>
@@ -981,9 +867,7 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
 
     #region 面ベクトルの計算
 
-    /// <summary>
-    /// 引数で指定された指数の面ベクトルを計算し、VectorOfPlaneに格納
-    /// </summary>
+    /// <summary>引数で指定された指数の面ベクトルを計算し、VectorOfPlaneに格納</summary>
     /// <param name="indices"></param>
     public void SetVectorOfPlane((int h, int k, int l)[] indices, WaveSource waveSource)
     {
@@ -1007,9 +891,7 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
 
  
 
-    /// <summary>
-    /// 引数で指定されたhMax,kMax,lMaxの範囲で軸ベクトルを計算し、VectorOfAxisに格納
-    /// </summary>
+    /// <summary>引数で指定されたhMax,kMax,lMaxの範囲で軸ベクトルを計算し、VectorOfAxisに格納</summary>
     /// <param name="hMax"></param>
     /// <param name="kMax"></param>
     /// <param name="lMax"></param>
@@ -1032,9 +914,7 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
 
 
     readonly FrozenSet<(int h, int k, int l)> directions = [(1, 0, 0), (-1, 0, 0), (0, 1, 0), (0, -1, 0), (0, 0, 1), (0, 0, -1)];
-    /// <summary>
-    /// 面間隔d_limit以上の面を検索、ソートする。
-    /// </summary>
+    /// <summary>面間隔d_limit以上の面を検索、ソートする。</summary>
     /// <param name="dMax">この値以上の面を検索する</param>
     /// <param name="dMin">この値以下の面を検索する</param>
     /// <param name="excludeEquivalentPlane">trueのときは結晶学的に等価な面を排除する</param>
@@ -1288,9 +1168,7 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
 
     #region 逆格子ベクトルの計算
 
-    /// <summary>
-    /// h, k, l の指数をIntひとつに変換する。(hkl) & h>0 あるいは (0kl) & k > 0 あるいは (00l) & l > 0 の指数しか取り扱わないことに注意
-    /// </summary>
+    /// <summary>h, k, l の指数をIntひとつに変換する。(hkl) & h>0 あるいは (0kl) & k > 0 あるいは (00l) & l > 0 の指数しか取り扱わないことに注意</summary>
     /// <param name="h"></param>
     /// <param name="k"></param>
     /// <param name="l"></param>
@@ -1301,17 +1179,13 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
     private readonly Lock lockObj = new();
 
 
-    /// <summary>
-    /// dMin以上の逆格子ベクトルを計算し、wavesorceに従って、構造因子を計算
-    /// </summary>
+    /// <summary>dMin以上の逆格子ベクトルを計算し、wavesorceに従って、構造因子を計算</summary>
     /// <param name="dMin"></param>
     /// <param name="wavesource"></param>
     /// <param name="excludeLatticeCondition"></param>
     public void SetVectorOfG(double dMin, WaveSource wavesource, int maxNum = 25000)  => SetVectorOfG(dMin, double.PositiveInfinity, wavesource, maxNum);
 
-    /// <summary>
-    /// dMin以上、dMax以下の範囲で逆格子ベクトルを計算し、wavesorceに従って、構造因子を計算
-    /// </summary>
+    /// <summary>dMin以上、dMax以下の範囲で逆格子ベクトルを計算し、wavesorceに従って、構造因子を計算</summary>
     /// <param name="dMin"></param>
     /// <param name="dMax"></param>
     /// <param name="wavesource"></param>
@@ -1463,9 +1337,7 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
 
     #region 回折強度の強いものを検索
 
-    /// <summary>
-    /// 現在の結晶構造で強度が上位最大16位までのものを検索し、返す
-    /// </summary>
+    /// <summary>現在の結晶構造で強度が上位最大16位までのものを検索し、返す</summary>
     /// <param name="waveLength">X線の波長を指定 単位はnm </param>
     /// <param name="maxNum"> 計算する結晶面の数 </param>
     /// <returns></returns>
@@ -1569,9 +1441,7 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
         return false;
     }
 
-    /// <summary>
-    /// ワイコフ位置を保ったまま、原子位置を乱数的に変化させる
-    /// </summary>
+    /// <summary>ワイコフ位置を保ったまま、原子位置を乱数的に変化させる</summary>
     /// <param name="seed"></param>
     public void RandomizeAllAtomicPositionKeepingWykoff(Random r)
     {
@@ -1579,9 +1449,7 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
             Atoms[i].RandomizeKeepingWykoff(r);
     }
 
-    /// <summary>
-    /// 原子の位置を再調整して、もっとも原点位置に近い原子をAtoms[i]=0に入れる
-    /// </summary>
+    /// <summary>原子の位置を再調整して、もっとも原点位置に近い原子をAtoms[i]=0に入れる</summary>
     public void ReCoordinateAtom()
     {
         for (int i = 0; i < Atoms.Length; i++)
@@ -1621,9 +1489,7 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
     }
 
     //(h,k,l)の構造散乱因子(熱散漫散乱込み)のF (複素数) を計算する (h, k, lが非整数の場合に対応させたテストコード)
-    /// <summary>
-    /// 構造因子を求める s2の単位はnm^-2
-    /// </summary>
+    /// <summary>構造因子を求める s2の単位はnm^-2</summary>
     /// <param name="wave"></param>
     /// <param name="atomsArray"></param>
     /// <param name="h"></param>
@@ -1691,9 +1557,7 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
         return new Complex(realSum, imagSum);// Complex(Real, Inverse);
         #endregion
     }
-    /// <summary>
-    /// 構造散乱因子(熱散漫散乱込み)のF (複素数) を求める s2の単位はnm^-2
-    /// </summary>
+    /// <summary>構造散乱因子(熱散漫散乱込み)のF (複素数) を求める s2の単位はnm^-2</summary>
     /// <param name="wave"></param>
     /// <param name="atomsArray"></param>
     /// <param name="h"></param>
@@ -1761,9 +1625,7 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
         return new Complex(realSum, imagSum);// Complex(Real, Inverse);
         #endregion
     }
-    /// <summary>
-    /// 構造散乱因子(熱散漫散乱込み)のF (複素数) を求める s2の単位はnm^-2
-    /// </summary>
+    /// <summary>構造散乱因子(熱散漫散乱込み)のF (複素数) を求める s2の単位はnm^-2</summary>
     /// <param name="index"></param>
     /// <param name="waveSource"></param>
     /// <returns></returns>
@@ -1773,9 +1635,7 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
         return GetStructureFactor(waveSource, Atoms, index, vec.Length2 / 4.0);
     }
 
-    /// <summary>
-    /// 粉末回折実験における(h,k,l)の回折強度と位置を計算する
-    /// </summary>
+    /// <summary>粉末回折実験における(h,k,l)の回折強度と位置を計算する</summary>
     /// <param name="ramda">波長</param>
     public void SetPeakIntensity(WaveSource waveSource, WaveColor waveColor, double ramda, Profile whiteProfile)
     {
@@ -1848,9 +1708,7 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
     #endregion
 
     #region 対称性・原子位置・組成などの再計算
-    /// <summary>
-    /// 対称性、原子の位置、組成などを再計算する
-    /// </summary>
+    /// <summary>対称性、原子の位置、組成などを再計算する</summary>
     internal void Reset()
     {
         Symmetry = SymmetryStatic.Symmetries[SymmetrySeriesNumber];
@@ -1883,9 +1741,7 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
     }
 
 
-    /// <summary>
-    /// 現在の原子種と格子定数から、組成と密度を計算します。
-    /// </summary>
+    /// <summary>現在の原子種と格子定数から、組成と密度を計算します。</summary>
     public void GetFormulaAndDensity()
     {
         #region
@@ -2054,9 +1910,7 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
     #endregion
 
     #region 指定した原子(target)の近辺にある原子を探索し、相対座標、距離、ラベルを返す. (絶対座標でないことに注意)
-    /// <summary>
-    /// 指定した原子(target)の近辺にある原子を探索し、相対座標(絶対座標でないことに注意)、距離、ラベルを返す. 
-    /// </summary>
+    /// <summary>指定した原子(target)の近辺にある原子を探索し、相対座標(絶対座標でないことに注意)、距離、ラベルを返す.</summary>
     /// <param name="target"></param>
     /// <param name="maxLength"> nm 単位</param>
     /// <returns></returns>

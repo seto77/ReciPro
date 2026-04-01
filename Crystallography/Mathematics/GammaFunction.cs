@@ -187,9 +187,7 @@ namespace Crystallography
             return r;
         }
 
-        /// <summary>
-        /// Returns the greatest common divisor of two integers using euclids algorithm.
-        /// </summary>
+        /// <summary>Returns the greatest common divisor of two integers using euclids algorithm.</summary>
         /// <returns>gcd(a,b)</returns>
         public static long Gcd(long a, long b)
         {
@@ -203,9 +201,7 @@ namespace Crystallography
             return Math.Abs(a);
         }
 
-        /// <summary>
-        /// Computes the extended greatest common divisor, such that a*x + b*y = gcd(a,b).
-        /// </summary>
+        /// <summary>Computes the extended greatest common divisor, such that a*x + b*y = gcd(a,b).</summary>
         /// <returns>gcd(a,b)</returns>
         /// <example>
         /// <code>
@@ -250,9 +246,7 @@ namespace Crystallography
             }
         }
 
-        /// <summary>
-        /// Returns the least common multiple of two integers using euclids algorithm.
-        /// </summary>
+        /// <summary>Returns the least common multiple of two integers using euclids algorithm.</summary>
         /// <returns>lcm(a,b)</returns>
         public static long Lcm(long a, long b)
         {
@@ -262,9 +256,7 @@ namespace Crystallography
             return Math.Abs(a * b) / Gcd(a, b);
         }
 
-        /// <summary>
-        /// Returns the natural logarithm of Gamma for a real value > 0
-        /// </summary>
+        /// <summary>Returns the natural logarithm of Gamma for a real value > 0</summary>
         /// <param name="xx">A real value for Gamma calculation</param>
         /// <returns>A value ln|Gamma(xx))| for xx > 0</returns>
         public static double GammaLn(double xx)
@@ -286,9 +278,7 @@ namespace Crystallography
         private static double[] coefficient = new double[]{76.18009172947146,-86.50535032941677,
                                                    24.01409824083091,-1.231739572450155,0.1208650973866179e-2,-0.5395239384953e-5};
 
-        /// <summary>
-        /// Returns Gamma for a real value > 0
-        /// </summary>
+        /// <summary>Returns Gamma for a real value > 0</summary>
         /// <param name="xx">A real value for Gamma calculation</param>
         /// <returns>A value Gamma(xx))| for xx > 0</returns>
         /*public static double Gamma(double xx)
@@ -309,9 +299,7 @@ namespace Crystallography
             //return Math.Exp(GammaLn(xx-1));
         }*/
 
-        /// <summary>
-        /// Returns a factorial of an integer number (n!)
-        /// </summary>
+        /// <summary>Returns a factorial of an integer number (n!)</summary>
         /// <param name="n">The value to be factorialized</param>
         /// <returns>The double precision result</returns>
         public static double Factorial(int n)
@@ -333,9 +321,7 @@ namespace Crystallography
             return a[n];
         }
 
-        /// <summary>
-        /// Returns a binomial coefficient of n and k as a double precision number
-        /// </summary>
+        /// <summary>Returns a binomial coefficient of n and k as a double precision number</summary>
         /// <param name="n"></param>
         /// <param name="k"></param>
         /// <returns></returns>
@@ -346,9 +332,7 @@ namespace Crystallography
             return Math.Floor(0.5 + Math.Exp(FactorialLn(n) - FactorialLn(k) - FactorialLn(n - k)));
         }
 
-        /// <summary>
-        ///
-        /// </summary>
+        /// <summary></summary>
         /// <param name="n"></param>
         /// <returns></returns>
         public static double FactorialLn(int n)
@@ -370,9 +354,7 @@ namespace Crystallography
             }
         }
 
-        /// <summary>
-        ///
-        /// </summary>
+        /// <summary></summary>
         /// <param name="z"></param>
         /// <param name="w"></param>
         /// <returns></returns>

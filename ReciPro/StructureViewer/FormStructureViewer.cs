@@ -32,9 +32,7 @@ public partial class FormStructureViewer : CaptureFormBase
     public FormMain formMain;
     //private FormAtom formAtom;
 
-    /// <summary>
-    /// 原子位置をシフトさせるベクトル. 単位格子の描画も、このベクトルに従ってシフトする
-    /// </summary>
+    /// <summary>原子位置をシフトさせるベクトル. 単位格子の描画も、このベクトルに従ってシフトする</summary>
     private V3 shift;
 
     private Matrix3d axes;
@@ -81,17 +79,11 @@ public partial class FormStructureViewer : CaptureFormBase
     #region ローカルクラス
     private class atomID(in int index, in bool isInside, in int cellKey)
     {
-        /// <summary>
-        /// Boundsの内部かどうか
-        /// </summary>
+        /// <summary>Boundsの内部かどうか</summary>
         public bool IsInside = isInside;
-        /// <summary>
-        /// 結晶構造ファイルの何番目の原子か (等価なものは同じ番号になる)
-        /// </summary>
+        /// <summary>結晶構造ファイルの何番目の原子か (等価なものは同じ番号になる)</summary>
         public int Index = index;
-        /// <summary>
-        /// 所属しているセルの場所
-        /// </summary>
+        /// <summary>所属しているセルの場所</summary>
         public int CellKey = cellKey;
 
         public static int ComposeKey(int a, int b, int c) => a * 512 * 512 + b * 512 + c;
@@ -471,9 +463,7 @@ public partial class FormStructureViewer : CaptureFormBase
     #endregion
 
     #region Bounds (境界面)を初期化
-    /// <summary>
-    /// 境界面を初期化
-    /// </summary>
+    /// <summary>境界面を初期化</summary>
     private void initBounds()
     {
         sw.Restart();
@@ -531,9 +521,7 @@ public partial class FormStructureViewer : CaptureFormBase
 
     #region Bounds (境界面) の GLObjects の生成
 
-    /// <summary>
-    /// 境界面オブジェクトを生成
-    /// </summary>
+    /// <summary>境界面オブジェクトを生成</summary>
     private void setBoundPlanes()
     {
         sw.Restart();
@@ -577,9 +565,7 @@ public partial class FormStructureViewer : CaptureFormBase
 
     #region 原子 GLObjectsの生成
 
-    /// <summary>
-    /// 原子オブジェクトを生成
-    /// </summary>
+    /// <summary>原子オブジェクトを生成</summary>
     public void setAtoms()
     {
         sw.Restart();
@@ -670,9 +656,7 @@ public partial class FormStructureViewer : CaptureFormBase
 
     #region Bonds(結合)とPolyhedra (配位多面体)オブジェクトの生成
 
-    /// <summary>
-    /// Bondの頂点を表すためのテンポラリーなクラス
-    /// </summary>
+    /// <summary>Bondの頂点を表すためのテンポラリーなクラス</summary>
     private readonly struct bondVertex(in int objIndex, in int atomIndex, in int cellKey, in V3 origin, in int serial, in double r, in Material bondMat, in Material polyMat)
     {
         public readonly int ObjIndex = objIndex, AtomIndex = atomIndex, Key = cellKey, Serial = serial;
@@ -681,9 +665,7 @@ public partial class FormStructureViewer : CaptureFormBase
         public readonly Material BondMat = bondMat, PolyMat = polyMat;
     }
 
-    /// <summary>
-    /// 結合(Bonds)と配位多面体(Polyhera)オブジェクトを生成
-    /// </summary>
+    /// <summary>結合(Bonds)と配位多面体(Polyhera)オブジェクトを生成</summary>
     private void setBondsAndPolyhedra()
     {
         sw.Restart();
@@ -815,9 +797,7 @@ public partial class FormStructureViewer : CaptureFormBase
     #endregion
 
     #region 余分な原子を削除
-    /// <summary>
-    /// 余分な原子を削除する
-    /// </summary>
+    /// <summary>余分な原子を削除する</summary>
     private void removeObjects()
     {
         sw.Restart();
@@ -874,9 +854,7 @@ public partial class FormStructureViewer : CaptureFormBase
     #endregion
 
     #region GLObjectsをシェーダに転送
-    /// <summary>
-    /// GLObjectsを転送する
-    /// </summary>
+    /// <summary>GLObjectsを転送する</summary>
     private void transferGLObjects()
     {
         glControlMain.MakeCurrent();
@@ -890,9 +868,7 @@ public partial class FormStructureViewer : CaptureFormBase
     #endregion
 
     #region 単位格子面オブジェクトを生成
-    /// <summary>
-    /// 単位格子面オブジェクトを生成
-    /// </summary>
+    /// <summary>単位格子面オブジェクトを生成</summary>
     private void setUnitCellPlanes()
     {
         sw.Restart();
@@ -961,9 +937,7 @@ public partial class FormStructureViewer : CaptureFormBase
 
     #region 結晶格子面 GLObjectsの生成
 
-    /// <summary>
-    /// 格子面オブジェクトを生成
-    /// </summary>
+    /// <summary>格子面オブジェクトを生成</summary>
     public void SetLatticePlanes()
     {
         sw.Restart();
@@ -1029,9 +1003,7 @@ public partial class FormStructureViewer : CaptureFormBase
 
     #region 結晶格子軸を生成
 
-    /// <summary>
-    /// 格子軸GLControlを生成
-    /// </summary>
+    /// <summary>格子軸GLControlを生成</summary>
     private void setAxesControl()
     {
         sw.Restart();
@@ -1058,9 +1030,7 @@ public partial class FormStructureViewer : CaptureFormBase
 
     #region 結晶構造をセッティング (SetGLObjects)
 
-    /// <summary>
-    /// 結晶構造をセッティング
-    /// </summary>
+    /// <summary>結晶構造をセッティング</summary>
     /// <param name="_crystal">nullでない場合は、Bounds と Lattice planes に関するコントロールがリセットされる</param>
     public void SetGLObjects(Crystal _crystal = null)
     {
@@ -1117,9 +1087,7 @@ public partial class FormStructureViewer : CaptureFormBase
     #endregion
 
     #region Draw
-    /// <summary>
-    /// OpenGLによる描画を行う。
-    /// </summary>
+    /// <summary>OpenGLによる描画を行う。</summary>
     public void Draw()
     {
         var sw = new Stopwatch();
@@ -1144,9 +1112,7 @@ public partial class FormStructureViewer : CaptureFormBase
 
     //Point animatitonStartPt, animationEndPt;
 
-    /// <summary>
-    /// マウスドラッグで回転
-    /// </summary>
+    /// <summary>マウスドラッグで回転</summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
     private void glControlMain_MouseMove(object sender, MouseEventArgs e)
@@ -1207,9 +1173,7 @@ public partial class FormStructureViewer : CaptureFormBase
         }
     }
 
-    /// <summary>
-    /// ピクチャーボックスをクリックしたとき原子の配位環境などを表示する
-    /// </summary>
+    /// <summary>ピクチャーボックスをクリックしたとき原子の配位環境などを表示する</summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
     private void glControlMain_MouseDown(object sender, MouseEventArgs e)
@@ -1561,9 +1525,7 @@ public partial class FormStructureViewer : CaptureFormBase
         SetGLObjects(null);
     }
 
-    /// <summary>
-    /// 境界面のコントロールに変化があったとき
-    /// </summary>
+    /// <summary>境界面のコントロールに変化があったとき</summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
     private void BoundControl_BoundsChanged(object sender, EventArgs e)
@@ -1647,9 +1609,7 @@ public partial class FormStructureViewer : CaptureFormBase
     #endregion
 
     #region 凡例の描画
-    /// <summary>
-    /// 凡例部分の描画
-    /// </summary>
+    /// <summary>凡例部分の描画</summary>
     private void SetLegend()
     {
         sw.Restart();
@@ -1974,9 +1934,7 @@ public partial class FormStructureViewer : CaptureFormBase
             Clipboard.SetDataObject(glControlMain.GenerateBitmap());
     }
 
-    /// <summary>
-    /// 角度をリセットする
-    /// </summary>
+    /// <summary>角度をリセットする</summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
     private void toolStripButtonResetRotation_Click(object sender, EventArgs e) => formMain.SetRotation(new Matrix3D());

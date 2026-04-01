@@ -315,14 +315,10 @@ public partial class AtomControl : CaptureUserControlBase
     public int SelectedTabIndex { get => tabControl.SelectedIndex; set => tabControl.SelectedIndex = value; }
     #endregion
 
-    /// <summary>
-    /// 原子のパラメータが変更された時のイベント
-    /// </summary>
+    /// <summary>原子のパラメータが変更された時のイベント</summary>
     public event EventHandler ItemsChanged;
 
-    /// <summary>
-    /// GLEnabledチェックが変更された時だけのイベント. (今のところFormStructureだけが受け取る)
-    /// </summary>
+    /// <summary>GLEnabledチェックが変更された時だけのイベント. (今のところFormStructureだけが受け取る)</summary>
     public event EventHandler GLEnableChanged;
 
     #endregion プロパティ
@@ -490,9 +486,7 @@ public partial class AtomControl : CaptureUserControlBase
 
 
     #region データベース操作
-    /// <summary>
-    /// データベースに原子を追加する
-    /// </summary>
+    /// <summary>データベースに原子を追加する</summary>
     /// <param name="atoms"></param>
     public void Add(Atoms atoms)
     {
@@ -502,9 +496,7 @@ public partial class AtomControl : CaptureUserControlBase
         ItemsChanged?.Invoke(this, new EventArgs());
     }
 
-    /// <summary>
-    /// データベースに原子を追加する
-    /// </summary>
+    /// <summary>データベースに原子を追加する</summary>
     /// <param name="atoms"></param>
     public void AddRange(IEnumerable<Atoms> atoms)
     {
@@ -521,9 +513,7 @@ public partial class AtomControl : CaptureUserControlBase
         }
     }
 
-    /// <summary>
-    /// i番目の原子を削除
-    /// </summary>
+    /// <summary>i番目の原子を削除</summary>
     /// <param name="i"></param>
     public void Delete(int i)
     {
@@ -531,9 +521,7 @@ public partial class AtomControl : CaptureUserControlBase
         ItemsChanged?.Invoke(this, new EventArgs());
     }
 
-    /// <summary>
-    /// 引数の原子をi番目と入れ替え
-    /// </summary>
+    /// <summary>引数の原子をi番目と入れ替え</summary>
     /// <param name="atoms"></param>
     /// <param name="i"></param>
     public void Replace(Atoms atoms, int i)
@@ -544,9 +532,7 @@ public partial class AtomControl : CaptureUserControlBase
 
 
 
-    /// <summary>
-    /// データベースの原子を削除する
-    /// </summary>
+    /// <summary>データベースの原子を削除する</summary>
     /// <param name="atoms"></param>
     public void Clear()
     {
@@ -554,9 +540,7 @@ public partial class AtomControl : CaptureUserControlBase
         ItemsChanged?.Invoke(this, new EventArgs());
     }
 
-    /// <summary>
-    /// 指定した空間群番号に従って全ての原子の情報を再設定する。
-    /// </summary>
+    /// <summary>指定した空間群番号に従って全ての原子の情報を再設定する。</summary>
     public void ResetSymmetry(int symmetrySeriesNumber)
     {
         //SymmetrySeriesNumber = symmetrySeriesNumber;
@@ -569,9 +553,7 @@ public partial class AtomControl : CaptureUserControlBase
         ItemsChanged?.Invoke(this, new EventArgs());
     }
 
-    /// <summary>
-    /// データベース中の全ての原子を取得
-    /// </summary>
+    /// <summary>データベース中の全ての原子を取得</summary>
     /// <returns></returns>
     public Atoms[] GetAll() => table.GetAll();
 
@@ -582,9 +564,7 @@ public partial class AtomControl : CaptureUserControlBase
 
 
     #region Atomクラスを画面下部から生成/に表示
-    /// <summary>
-    /// 引数のAtomを、画面下部に表示する
-    /// </summary>
+    /// <summary>引数のAtomを、画面下部に表示する</summary>
     /// <param name="atoms"></param>
     public void SetToInterface(Atoms atoms)
     {
@@ -642,9 +622,7 @@ public partial class AtomControl : CaptureUserControlBase
     }
 
 
-    /// <summary>
-    /// 画面下部の情報から、Atomを生成する
-    /// </summary>
+    /// <summary>画面下部の情報から、Atomを生成する</summary>
     /// <returns></returns>
     private Atoms GetFromInterface()
     {
@@ -727,9 +705,7 @@ public partial class AtomControl : CaptureUserControlBase
         }
     }
 
-    /// <summary>
-    /// 引数原子をi番目に設定し、そのAppearance (Material Property)をさらに引数と同じ元素に対して適用
-    /// </summary>
+    /// <summary>引数原子をi番目に設定し、そのAppearance (Material Property)をさらに引数と同じ元素に対して適用</summary>
     /// <param name="atoms"></param>
     public void CopyAppearance(Atoms atoms, int i)
     {
@@ -743,9 +719,7 @@ public partial class AtomControl : CaptureUserControlBase
         }
         ItemsChanged?.Invoke(this, new EventArgs());
     }
-    /// <summary>
-    /// 引数原子をi番目に設定し、さらにそのDebyeWaller因子を　同じ元素　あるいは　全元素 に対して適用
-    /// </summary>
+    /// <summary>引数原子をi番目に設定し、さらにそのDebyeWaller因子を　同じ元素　あるいは　全元素 に対して適用</summary>
     /// <param name="atoms"></param>
     public void CopyDebyeWaller(Atoms atoms, int i, bool onlySameElements)
     {

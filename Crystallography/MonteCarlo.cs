@@ -3,234 +3,102 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using V3 = OpenTK.Mathematics.Vector3d;
-using ZLinq;
+using System.Threading;
 
 namespace Crystallography;
-
-public enum MonteCarloStoppingPowerModel
-{
-    /// <summary>
-    /// Joy &amp; Luo (1989) の経験的阻止能モデル。
-    /// Bethe 式を低エネルギー側に拡張したもので、物質定数 k と平均イオン化ポテンシャル J を用いる。
-    /// 計算が軽く実装も単純だが、低エネルギー領域 (&lt;5 keV) での精度はやや劣る。
-    /// </summary>
-    JoyLuo1989, // 260331Cl コメント追加
-
-    /// <summary>
-    /// Jablonski (2008) の修正阻止能モデル。
-    /// TPP-2M で求めた非弾性平均自由行程 (IMFP) を基に阻止能を導出する。
-    /// 密度 ρ やプラズマエネルギーなどの材料パラメータを反映するため、
-    /// 特に低エネルギー領域や EBSD で扱う BSE エネルギー範囲での精度が JoyLuo1989 より高い。
-    /// </summary>
-    JablonskiModified2008, // 260331Cl コメント追加
-}
-
-public enum MonteCarloElasticScatteringModel
-{
-    /// <summary>
-    /// 遮蔽 Rutherford 散乱モデル。
-    /// 散乱角分布を解析的に計算でき非常に高速。軽元素〜中程度の原子番号では十分な精度がある。
-    /// 重元素 (Au, W など) では大角散乱の確率を過小評価する傾向があり、
-    /// 定量的な BSE 深さ分布の精度が必要な場合は MottNistSampler2023 が望ましい。
-    /// </summary>
-    ScreenedRutherford, // 260331Cl コメント追加
-
-    /// <summary>
-    /// NIST Electron Elastic-Scattering Cross-Section Database (SRD 64) に基づく Mott 散乱サンプラー。
-    /// 部分波展開による正確な微分断面積テーブルから散乱角を逆関数法でサンプリングする。
-    /// 重元素で Screened Rutherford との差が大きく、BSE 収率や深さ分布の精度が向上する。
-    /// データファイル (E_ZZ.TXT) の読み込みが必要で、初回にやや時間がかかる。
-    /// 混合物系では元素ごとの巨視的断面積で重み付けして散乱元素を選択する。
-    /// </summary>
-    MottNistSampler2023, // 260331Cl コメント追加
-}
-
-public enum MonteCarloInelasticScatteringModel
-{
-    /// <summary>
-    /// 連続減速近似 (CSDA)。非弾性散乱を離散イベントとして扱わず、
-    /// ステップごとに阻止能 × 飛行距離だけエネルギーを連続的に減少させる。
-    /// 最も高速だが「最後の非弾性散乱」を定義できないため、
-    /// EBSD の非弾性散乱深さ・エネルギー分布の解析には使用不可 (HasLastInelasticEvent = false)。
-    /// </summary>
-    ContinuousSlowingDownApproximation, // 260331Cl コメント追加
-
-    /// <summary>
-    /// 離散非弾性散乱モデル (平均損失)。非弾性散乱イベントごとに平均エネルギー損失を一定値として失う。
-    /// イベント発生位置 (深さ) の統計は正しく再現されるが、エネルギー損失の確率的ばらつきがない。
-    /// 計算速度は離散モデルの中で最速。深さ分布の概形を素早く確認するのに適する。
-    /// </summary>
-    DiscreteMeanLoss, // 260331Cl コメント追加
-
-    // 260401Cl DiscreteExponentialLoss を除去 (指数分布は実際の損失スペクトルと形が大きく異なり非推奨のため)
-
-    /// <summary>
-    /// 離散非弾性散乱モデル (簡易バルク DIIMFP 近似)。
-    /// プラズモンピーク・低損失テール・高損失テールの 3 成分を混合した損失分布からサンプリングする。
-    /// エネルギー損失の確率的ばらつきを物理的に最も妥当な形で再現するため、
-    /// 「最後の非弾性散乱後のエネルギー」の分布解析に最適。計算コストは DiscreteMeanLoss よりやや大きい。
-    /// </summary>
-    DiscreteBulkDiimfpApproximation, // 260331Cl コメント追加
-}
 
 //Electron beam-specimen interactions and simulation methods in microscopy 2018
 //Eqs (2.38), (2.41), (2.42) などを参考
 public class MonteCarlo
 {
-    // 260401Cl NistElasticBinaryMagic, NistElasticBinaryVersion を除去 (BIN 形式読み取りを廃止)
-    private const int NistElasticEnergyCount = 101; // (260331Ch) NIST sampler energies: 50 eV - 20 keV, log spaced
-    private const int NistElasticPhiCount = 2001; // (260331Ch) X = cos(theta) from +1 to -1 with step 0.001
-    private readonly Random Rnd = Random.Shared;
-    public readonly double Z;  // 260401Cl 平均原子番号 (混合物の場合は重み付き平均)
-    public readonly double A;  // 260401Cl 平均原子量 (g/mol)
-    public readonly double ρ;  // 260401Cl 密度 (g/cm³)
-    public readonly double InitialKev; // 260401Cl 入射電子のエネルギー (keV)
-    public readonly double Tilt;       // 260401Cl 試料表面の傾斜角 (rad, X軸回り)
-    public readonly double coeff0; // 260401Cl Screened Rutherford 遮蔽パラメータ α の係数: 0.0034 * Z^(2/3)。α = coeff0 / E で遮蔽効果を表す
-    public readonly double coeff1; // 260401Cl 弾性散乱断面積 σ_E の係数: Ze²/(8πε₀)。Rutherford 散乱の微分断面積の前因子
-    public readonly double coeff2; // 260401Cl 弾性平均自由行程 λ_el の係数: A/(N_A·ρ) [nm³]。λ_el = coeff2 / σ_E で求まる
-    public readonly double coeff3; // 260401Cl Joy-Luo 阻止能 dE/ds の係数 (keV/nm 単位)。Bethe 式の前因子 -Z·N_A·ρ·e⁴/(4πε₀²·A) を含む
-    public readonly double k;   // 260401Cl Joy-Luo 阻止能の低エネルギー補正係数。Z 依存の経験的パラメータ (k = 0.0299·ln(Z) + 0.7307)
-    public readonly double J;   // 260401Cl 平均イオン化ポテンシャル (eV)。Bethe 阻止能式で物質のエネルギー損失特性を決める定数
-    public readonly double tan;  // 260401Cl tan(tilt): 試料表面境界の判定に使用 (Y·tan ≥ Z で試料内)
-    public readonly double cos;  // 260401Cl cos(tilt): 深さ d の更新時の射影成分 (d += s·(sin·vY - cos·vZ))
-    public readonly double sin;  // 260401Cl sin(tilt): 深さ d の更新時の射影成分
-    public readonly double ValenceElectronCount, BandGapEv; // (260331Ch) TPP-2M に使う平均価電子数 Nv / バンドギャップ Eg
-    public readonly MonteCarloStoppingPowerModel StoppingPowerModel; // (260331Ch) 阻止能モデルの切替
-    public readonly MonteCarloElasticScatteringModel ElasticScatteringModel; // (260331Ch) 弾性散乱モデルの切替
-    public readonly MonteCarloInelasticScatteringModel InelasticScatteringModel; // (260331Ch) 非弾性散乱モデルの切替
-    public readonly double ThresholdKev; // 260401Cl シミュレーション打ち切りエネルギー (keV)。電子エネルギーがこれ以下になると追跡を終了する
-    private readonly ElasticSpecies[] ElasticComponents = []; // (260331Ch) Mott/NIST sampler 用の元素組成と数密度
-    private readonly double TotalElasticNumberDensityPerNm3; // (260331Ch) 混合系の全元素数密度合計 [1/nm³]。巨視的断面積 Σ = Σ_i(n_i·σ_i) から有効微視的断面積 σ_eff = Σ/n_total を逆算する際に使う
-    // 260401Cl TPP-2M (Tanuma-Powell-Penn, 2M パラメータ版) の材料定数。非弾性平均自由行程 λ_in(E) = E / {Ep²·[β·ln(γE) - C/E + D/E²]} で使用
-    private readonly double TppPlasmaEnergyEv; // 260401Cl 自由電子プラズマエネルギー Ep = 28.8·√(Nv·ρ/A) [eV]。価電子のプラズモン励起エネルギーに対応
-    private readonly double TppBeta;   // 260401Cl TPP-2M の β パラメータ。ln(γE) の係数で、IMFP のエネルギー依存の主項を制御
-    private readonly double TppGamma;  // 260401Cl TPP-2M の γ パラメータ [1/eV]。γE が対数項の引数で、密度依存 (0.191·ρ^(-0.5))
-    private readonly double TppC;      // 260401Cl TPP-2M の C パラメータ。1/E 項の係数で低エネルギー側の IMFP 補正に寄与
-    private readonly double TppD;      // 260401Cl TPP-2M の D パラメータ。1/E² 項の係数でさらに低エネルギー側の補正
-    private readonly TransportParameters[] TransportParameterCache = []; // (260331Ch) 1 eV 刻みの輸送パラメータ cache
-    private readonly MottElasticMixtureEntry[] MottElasticMixtureCache = []; // (260331Ch) NIST sampler の混合断面積/CDF cache
-    private readonly BulkLossSamplerEntry[] BulkLossSamplerCache = []; // (260331Ch) 軽量な bulk DIIMFP 近似 sampler cache
-
-    public static MonteCarloStoppingPowerModel DefaultStoppingPowerModel { get; set; } = MonteCarloStoppingPowerModel.JablonskiModified2008; // (260331Ch)
-    public static MonteCarloElasticScatteringModel DefaultElasticScatteringModel { get; set; } = MonteCarloElasticScatteringModel.ScreenedRutherford; // (260331Ch) 旧挙動を既定にして比較しやすくする
-    public static MonteCarloInelasticScatteringModel DefaultInelasticScatteringModel { get; set; } = MonteCarloInelasticScatteringModel.DiscreteMeanLoss; // (260331Ch) まずは離散イベント化の影響を比較しやすい既定値にする
-    // public static string NistElasticSamplerDirectory { get; set; } =
-    //     Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "ReciPro", "MonteCarlo", "NistElasticSampler"); // (260331Ch) 旧既定値
-    public static string NistElasticSamplerDirectory { get; set; } =
-        Path.Combine(AppContext.BaseDirectory, "NistElasticSampler"); // (260331Ch) 配布物に同梱した sampler を既定で使う
-
-    private static readonly object NistElasticSamplerSync = new(); // (260331Ch) NIST テーブル cache のスレッド同期用
-    private static readonly Dictionary<int, NistElasticScatteringTable> NistElasticSamplerCache = []; // 260401Cl 原子番号→NIST弾性散乱テーブルの static cache。全 MonteCarlo インスタンスで共有
-    private static readonly double LogNistElasticMinEnergyEv = Math.Log(50.0); // (260331Ch) NIST テーブルの最小エネルギー 50 eV の自然対数
-    private static readonly double LogNistElasticMaxEnergyEv = Math.Log(20000.0); // (260331Ch) NIST テーブルの最大エネルギー 20 keV の自然対数
-    private static readonly double LogNistElasticEnergyStep = (LogNistElasticMaxEnergyEv - LogNistElasticMinEnergyEv) / 100.0; // (260331Ch) 対数エネルギー軸の 101 点間隔
-    private const double NistElasticCrossSectionUnitNm2 = 2.8002852E-3; // (260331Ch) Bohr 半径の二乗 a₀² から nm² への換算係数: 1 a₀² = 2.8002852×10⁻³ nm²
-
-    /// <summary>混合物中の各元素の原子番号・数密度・NIST散乱テーブルを保持する。Mott 散乱サンプリング時に元素選択と角度サンプリングに使用。</summary>
-    private readonly record struct ElasticSpecies(int AtomicNumber, double NumberDensityPerNm3, NistElasticScatteringTable NistElasticTable); // (260331Ch) Mott/NIST sampler の毎イベント lock/dictionary lookup を避ける
-
-    /// <summary>NIST SRD 64 の弾性散乱データを保持するテーブル。101 エネルギー点 (50 eV〜20 keV, 対数等間隔) ごとに全断面積と累積角度分布を格納。</summary>
-    private sealed class NistElasticScatteringTable // (260331Ch)
+    #region モデル
+    public enum StoppingPowerModels
     {
-        public int AtomicNumber;
-        public NistElasticPchipRuntimeElement GeneratedPchipRuntimeElement; // 260401Cl PCHIP 補間で生成済みの高速ルックアップデータ (存在すれば Phi[] より優先)
-        public readonly double[] SigmaA0Squared = new double[NistElasticEnergyCount]; // 260401Cl 各エネルギーでの弾性散乱全断面積 σ [a₀² 単位]
-        public readonly double[][] Phi = new double[NistElasticEnergyCount][]; // 260401Cl 累積散乱角分布 Φ(cosθ)。cosθ = 1〜-1 を 0.001 刻み 2001 点で格納。逆関数法で散乱角をサンプリング
+        /// <summary>
+        /// Joy &amp; Luo (1989) の経験的阻止能モデル。
+        /// Bethe 式を低エネルギー側に拡張したもので、物質定数 k と平均イオン化ポテンシャル J を用いる。
+        /// 計算が軽く実装も単純だが、低エネルギー領域 (&lt;5 keV) での精度はやや劣る。
+        /// </summary>
+        JoyLuo1989, // 260331Cl コメント追加
+
+        /// <summary>
+        /// Jablonski (2008) の修正阻止能モデル。
+        /// TPP-2M で求めた非弾性平均自由行程 (IMFP) を基に阻止能を導出する。
+        /// 密度 ρ やプラズマエネルギーなどの材料パラメータを反映するため、
+        /// 特に低エネルギー領域や EBSD で扱う BSE エネルギー範囲での精度が JoyLuo1989 より高い。
+        /// </summary>
+        JablonskiModified2008, // 260331Cl コメント追加
     }
 
-    /// <summary>混合物系の弾性散乱における各エネルギーでの巨視的断面積と元素選択 CDF。散乱イベント発生時にどの元素で散乱するかを確率的に決定する。</summary>
-    private sealed class MottElasticMixtureEntry // (260331Ch)
+    public enum ElasticScatteringModels
     {
-        public readonly double TotalMacroscopicCrossSectionPerNm; // 260401Cl 全元素の巨視的弾性散乱断面積の合計 Σ_total = Σ_i(n_i·σ_i) [1/nm]。逆数が弾性平均自由行程
-        public readonly double[] CumulativeProbabilities; // 260401Cl 元素選択用の累積確率。i 番目の元素が選ばれる確率 = n_i·σ_i / Σ_total
+        /// <summary>
+        /// 遮蔽 Rutherford 散乱モデル。
+        /// 散乱角分布を解析的に計算でき非常に高速。軽元素〜中程度の原子番号では十分な精度がある。
+        /// 重元素 (Au, W など) では大角散乱の確率を過小評価する傾向があり、
+        /// 定量的な BSE 深さ分布の精度が必要な場合は MottNistSampler2023 が望ましい。
+        /// </summary>
+        ScreenedRutherford, // 260331Cl コメント追加
 
-        public MottElasticMixtureEntry(double totalMacroscopicCrossSectionPerNm, double[] cumulativeProbabilities)
-        {
-            TotalMacroscopicCrossSectionPerNm = totalMacroscopicCrossSectionPerNm;
-            CumulativeProbabilities = cumulativeProbabilities;
-        }
+        /// <summary>
+        /// NIST Electron Elastic-Scattering Cross-Section Database (SRD 64) に基づく Mott 散乱サンプラー。
+        /// 部分波展開による正確な微分断面積テーブルから散乱角を逆関数法でサンプリングする。
+        /// 重元素で Screened Rutherford との差が大きく、BSE 収率や深さ分布の精度が向上する。
+        /// データファイル (E_ZZ.TXT) の読み込みが必要で、初回にやや時間がかかる。
+        /// 混合物系では元素ごとの巨視的断面積で重み付けして散乱元素を選択する。
+        /// </summary>
+        MottNistSampler2023, // 260331Cl コメント追加
     }
 
-    /// <summary>DiscreteBulkDiimfpApproximation 用のエネルギー損失サンプラー。低損失・プラズモン・高損失テールの 3 成分混合 PDF から CDF を構築し、逆関数法でサンプリングする。</summary>
-    private sealed class BulkLossSamplerEntry // (260331Ch)
-    {
-        public readonly double MinLossKev;  // 260401Cl 損失スペクトルの最小エネルギー損失 (keV)。バンドギャップ以上の値
-        public readonly double LossStepKev; // 260401Cl CDF の 1 ビンあたりのエネルギー幅 (keV)
-        public readonly double[] CumulativeProbabilities; // 260401Cl エネルギー損失分布の累積確率 (256 ビン)。逆関数法でサンプリング
+    #region お蔵入り // (260401Ch) generated / external の source flag 比較経路は配布版では使わない
+    // public enum ElasticSamplerDataSources
+    // {
+    //     /// <summary>260401Ch generated PCHIP を優先し、存在しなければ外部 TXT にフォールバックする既定動作</summary>
+    //     Auto,
+    //     /// <summary>260401Ch generated PCHIP のみを使う。未生成元素は Mott sampler が使えず Screened Rutherford に落ちる</summary>
+    //     GeneratedOnly,
+    //     /// <summary>260401Ch 外部 TXT テーブルのみを使う。圧縮前との比較ベンチ用</summary>
+    //     ExternalTextOnly,
+    // }
+    #endregion
 
-        public BulkLossSamplerEntry(double minLossKev, double lossStepKev, double[] cumulativeProbabilities)
-        {
-            MinLossKev = minLossKev;
-            LossStepKev = lossStepKev;
-            CumulativeProbabilities = cumulativeProbabilities;
-        }
+    public enum InelasticScatteringModels
+    {
+        /// <summary>
+        /// 連続減速近似 (CSDA)。非弾性散乱を離散イベントとして扱わず、
+        /// ステップごとに阻止能 × 飛行距離だけエネルギーを連続的に減少させる。
+        /// 最も高速だが「最後の非弾性散乱」を定義できないため、
+        /// EBSD の非弾性散乱深さ・エネルギー分布の解析には使用不可 (HasLastInelasticEvent = false)。
+        /// </summary>
+        ContinuousSlowingDownApproximation, // 260331Cl コメント追加
+
+        /// <summary>
+        /// 離散非弾性散乱モデル (平均損失)。非弾性散乱イベントごとに平均エネルギー損失を一定値として失う。
+        /// イベント発生位置 (深さ) の統計は正しく再現されるが、エネルギー損失の確率的ばらつきがない。
+        /// 計算速度は離散モデルの中で最速。深さ分布の概形を素早く確認するのに適する。
+        /// </summary>
+        DiscreteMeanLoss, // 260331Cl コメント追加
+
+        // 260401Cl DiscreteExponentialLoss を除去 (指数分布は実際の損失スペクトルと形が大きく異なり非推奨のため)
+
+        /// <summary>
+        /// 離散非弾性散乱モデル (簡易バルク DIIMFP 近似)。
+        /// プラズモンピーク・低損失テール・高損失テールの 3 成分を混合した損失分布からサンプリングする。
+        /// エネルギー損失の確率的ばらつきを物理的に最も妥当な形で再現するため、
+        /// 「最後の非弾性散乱後のエネルギー」の分布解析に最適。計算コストは DiscreteMeanLoss よりやや大きい。
+        /// </summary>
+        DiscreteBulkDiimfpApproximation, // 260331Cl コメント追加
     }
+    #endregion
 
-    /// <summary>後方散乱電子の詳細情報。EBSD パターン形成に寄与する電子の最後の非弾性散乱の深さ・エネルギー・方向を記録する。</summary>
-    public readonly record struct BackscatteredElectronDetail( // (260331Ch) EBSD 寄与電子の最後の非弾性散乱情報を後段で解析できるようにする
-        double Depth,                        // 260401Cl 電子が試料表面を脱出した (または停止した) 時点での表面からの深さ (nm)
-        V3 Direction,                        // 260401Cl 脱出時の進行方向の単位ベクトル
-        double Energy,                       // 260401Cl 脱出時のエネルギー (keV)
-        double TotalEnergyLoss,              // 260401Cl 入射エネルギーからの総エネルギー損失 (keV)
-        bool HasLastInelasticEvent,          // 260401Cl 離散非弾性散乱イベントが 1 回以上発生したか (CSDA モードでは常に false)
-        double LastInelasticDepth,           // 260401Cl 最後の非弾性散乱が起きた深さ (nm)。EBSD の情報深さに直結
-        double LastInelasticEnergyBeforeLoss, // 260401Cl 最後の非弾性散乱直前のエネルギー (keV)
-        double LastInelasticEnergyAfterLoss,  // 260401Cl 最後の非弾性散乱直後のエネルギー (keV)。この電子が回折に寄与する
-        V3 LastInelasticDirection);           // 260401Cl 最後の非弾性散乱時点での進行方向。回折条件の評価に使用
+    #region const, static 定数
 
-    /// <summary>あるエネルギーにおける電子輸送パラメータの一式。弾性・非弾性散乱のステップ長と方向・エネルギー損失の計算に使う。</summary>
-    private readonly record struct TransportParameters( // (260331Ch) 1 ステップで使う輸送パラメータをまとめて扱う
-        double ScreeningParameter,      // 260401Cl Screened Rutherford の遮蔽パラメータ α = coeff0/E。原子核電荷の遮蔽効果を表し、散乱角分布の前方集中度を制御
-        double ElasticCrossSectionNm2,  // 260401Cl 弾性散乱全断面積 σ_el [nm²]。単一散乱イベントの確率を決める
-        double ElasticMeanFreePathNm,   // 260401Cl 弾性平均自由行程 λ_el = 1/(n·σ_el) [nm]。連続する弾性散乱間の平均飛行距離
-        double StoppingPowerKevPerNm,   // 260401Cl 阻止能 dE/ds [keV/nm] (負値)。単位飛行距離あたりのエネルギー損失率
-        double InelasticMeanFreePathNm, // 260401Cl 非弾性平均自由行程 λ_in [nm]。TPP-2M で計算。連続する非弾性散乱間の平均飛行距離
-        double MeanInelasticLossKev);   // 260401Cl 1 回の非弾性散乱あたりの平均エネルギー損失 <ΔE> = |dE/ds|·λ_in [keV]
+    public const double Th = 0.0000001; // 260401Cl 方向ベクトル回転時の特異点判定閾値。vZ ≈ -1 (ほぼ真下向き) のとき回転行列が退化するのを避ける
 
-    // (260331Ch) TPP-2M の平均価電子数 Nv。Jablonski / Tanuma / Powell の IMFP 論文の元素表を優先し、未収録元素は後段の簡易推定へフォールバックする
-    private static readonly Dictionary<int, (double ValenceElectrons, double BandGapEv)> ElementInelasticParameters = new()
-    {
-        [3] = (1.0, 0.0),
-        [4] = (2.0, 0.0),
-        [6] = (4.0, 0.0),
-        [11] = (1.0, 0.0),
-        [12] = (2.0, 0.0),
-        [13] = (3.0, 0.0),
-        [14] = (4.0, 1.1),
-        [19] = (1.0, 0.0),
-        [21] = (3.0, 0.0),
-        [22] = (4.0, 0.0),
-        [23] = (5.0, 0.0),
-        [24] = (6.0, 0.0),
-        [26] = (8.0, 0.0),
-        [27] = (9.0, 0.0),
-        [28] = (10.0, 0.0),
-        [29] = (11.0, 0.0),
-        [32] = (4.0, 0.67),
-        [39] = (3.0, 0.0),
-        [41] = (5.0, 0.0),
-        [42] = (6.0, 0.0),
-        [44] = (8.0, 0.0),
-        [45] = (9.0, 0.0),
-        [46] = (10.0, 0.0),
-        [47] = (11.0, 0.0),
-        [49] = (3.0, 0.0),
-        [50] = (4.0, 0.0),
-        [55] = (1.0, 0.0),
-        [64] = (9.0, 0.0),
-        [65] = (9.0, 0.0),
-        [66] = (9.0, 0.0),
-        [72] = (4.0, 0.0),
-        [73] = (5.0, 0.0),
-        [74] = (6.0, 0.0),
-        [75] = (7.0, 0.0),
-        [76] = (8.0, 0.0),
-        [77] = (9.0, 0.0),
-        [78] = (10.0, 0.0),
-        [79] = (11.0, 0.0),
-        [83] = (5.0, 0.0),
-    };
+    private static readonly double log50 = Math.Log(50.0); // (260331Ch) NIST テーブルの最小エネルギー 50 eV の自然対数
+    private static readonly double log20000 = Math.Log(20000.0); // (260331Ch) NIST テーブルの最大エネルギー 20 keV の自然対数
+    private static readonly double LogNistElasticEnergyStep = (log20000 - log50) / 100.0; // (260331Ch) 対数エネルギー軸の 101 点間隔
+
 
     // 260401Cl Jablonski (2008) 修正阻止能モデルのフィッティング定数 D1〜D5。
     // 阻止能 S(E) = D1·E^D2·ln(D3·E)·(ρ+D4)^D5 / λ_in  [eV/Å] の形で使用。
@@ -239,10 +107,164 @@ public class MonteCarlo
     private const double Jablonski2008D3 = 0.0545126; // (260331Ch)
     private const double Jablonski2008D4 = -0.0254488; // (260331Ch)
     private const double Jablonski2008D5 = 0.326907; // (260331Ch)
+    private const int NistElasticEnergyCount = 101; // (260331Ch) NIST sampler energies: 50 eV - 20 keV, log spaced
+    #region お蔵入り // (260401Ch) オリジナル TXT の 2001 点 CDF は配布版ランタイムでは使わない
+    // private const int NistElasticPhiCount = 2001; // (260331Ch) X = cos(theta) from +1 to -1 with step 0.001
+    #endregion
 
-    /// <summary>
-    /// コンストラクタ
-    /// </summary>
+    #endregion
+
+
+
+    private readonly Random Rnd = Random.Shared;
+    /// <summary>平均原子番号 (混合物の場合は重み付き平均) </summary>
+    public readonly double Z;
+    /// <summary>平均原子量 (g/mol) </summary>
+    public readonly double A;
+    /// <summary>密度 (g/cm³) </summary>
+    public readonly double ρ;  // 260401Cl 密度 (g/cm³)
+    /// <summary>260401Cl 入射電子のエネルギー (keV)</summary>
+    public readonly double InitialKev;
+    /// <summary>260401Cl 試料表面の傾斜角 (rad, X軸回り)</summary>
+    public readonly double Tilt;
+    /// <summary>260401Cl Screened Rutherford 遮蔽パラメータ α の係数: 0.0034 * Z^(2/3)。α = coeff0 / E で遮蔽効果を表す</summary>
+    public readonly double coeff0;
+    /// <summary>260401Cl 弾性散乱断面積 σ_E の係数: Ze²/(8πε₀)。Rutherford 散乱の微分断面積の前因子</summary>
+    public readonly double coeff1;
+    /// <summary>260401Cl 弾性平均自由行程 λ_el の係数: A/(N_A·ρ) [nm³]。λ_el = coeff2 / σ_E で求まる</summary>
+    public readonly double coeff2;
+    /// <summary>260401Cl Joy-Luo 阻止能 dE/ds の係数 (keV/nm 単位)。Bethe 式の前因子 -Z·N_A·ρ·e⁴/(4πε₀²·A) を含む</summary>
+    public readonly double coeff3;
+    /// <summary>260401Cl Joy-Luo 阻止能の低エネルギー補正係数。Z 依存の経験的パラメータ (k = 0.0299·ln(Z) + 0.7307)</summary>
+    public readonly double k;
+    /// <summary>260401Cl 平均イオン化ポテンシャル (eV)。Bethe 阻止能式で物質のエネルギー損失特性を決める定数</summary>
+    public readonly double J;
+    /// <summary>260401Cl tan(tilt): 試料表面境界の判定に使用 (Y·tan ≥ Z で試料内)</summary>
+    public readonly double tan;
+    /// <summary>260401Cl cos(tilt): 深さ d の更新時の射影成分 (d += s·(sin·vY - cos·vZ))</summary>
+    public readonly double cos;
+    /// <summary>260401Cl sin(tilt): 深さ d の更新時の射影成分</summary>
+    public readonly double sin;
+    /// <summary>(260331Ch) TPP-2M に使う平均価電子数 Nv</summary>
+    public readonly double ValenceElectronCount;
+    /// <summary>(260331Ch) バンドギャップ Eg (eV)</summary>
+    public readonly double BandGapEv;
+    /// <summary>(260331Ch) 阻止能モデルの切替</summary>
+    public readonly StoppingPowerModels StoppingPowerModel;
+    /// <summary>(260331Ch) 弾性散乱モデルの切替</summary>
+    public readonly ElasticScatteringModels ElasticScatteringModel;
+    /// <summary>(260331Ch) 非弾性散乱モデルの切替</summary>
+    public readonly InelasticScatteringModels InelasticScatteringModel;
+    /// <summary>260401Cl シミュレーション打ち切りエネルギー (keV)。電子エネルギーがこれ以下になると追跡を終了する</summary>
+    public readonly double ThresholdKev;
+    /// <summary>(260331Ch) Mott/NIST sampler 用の元素組成と数密度</summary>
+    private readonly ElasticSpecies[] ElasticComponents = [];
+    /// <summary>(260331Ch) 混合系の全元素数密度合計 [1/nm³]。巨視的断面積 Σ = Σ_i(n_i·σ_i) から有効微視的断面積 σ_eff = Σ/n_total を逆算する際に使う</summary>
+    private readonly double TotalElasticNumberDensityPerNm3;
+    /// <summary>260401Cl TPP-2M (Tanuma-Powell-Penn, 2M パラメータ版) の材料定数。非弾性平均自由行程 λ_in(E) = E / {Ep²·[β·ln(γE) - C/E + D/E²]} で使用</summary>
+    /// <summary>260401Cl 自由電子プラズマエネルギー Ep = 28.8·√(Nv·ρ/A) [eV]。価電子のプラズモン励起エネルギーに対応</summary>
+    private readonly double TppPlasmaEnergyEv;
+    /// <summary>260401Cl TPP-2M の β パラメータ。ln(γE) の係数で、IMFP のエネルギー依存の主項を制御</summary>
+    private readonly double TppBeta;
+    /// <summary>260401Cl TPP-2M の γ パラメータ [1/eV]。γE が対数項の引数で、密度依存 (0.191·ρ^(-0.5))</summary>
+    private readonly double TppGamma;
+    /// <summary>260401Cl TPP-2M の C パラメータ。1/E 項の係数で低エネルギー側の IMFP 補正に寄与</summary>
+    private readonly double TppC;
+    /// <summary>260401Cl TPP-2M の D パラメータ。1/E² 項の係数でさらに低エネルギー側の補正</summary>
+    private readonly double TppD;
+    /// <summary>(260331Ch) 1 eV 刻みの輸送パラメータ cache</summary>
+    private readonly TransportParameters[] TransportParameterCache = [];
+    /// <summary>(260331Ch) NIST sampler の混合断面積/CDF cache</summary>
+    private readonly MottElasticMixtureEntry[] MottElasticMixtureCache = [];
+    /// <summary>(260331Ch) 軽量な bulk DIIMFP 近似 sampler cache</summary>
+    private readonly BulkLossSamplerEntry[] BulkLossSamplerCache = [];
+    #region お蔵入り // (260401Ch) generated / external の source flag 比較経路は配布版では使わない
+    // /// <summary>260401Ch generated / external / auto の sampler source flag。MC ベンチで圧縮版と元テーブルを比較するために使う</summary>
+    // public readonly ElasticSamplerDataSources ElasticSamplerDataSource;
+    //
+    // /// <summary>(260331Ch) 配布物に同梱した sampler を既定で使う</summary>
+    // public static string NistElasticSamplerDirectory { get; set; } = Path.Combine(AppContext.BaseDirectory, "NistElasticSampler");
+    // /// <summary>260401Ch 元の TXT テーブル置き場。ベンチ時は source tree の NistElasticSampler_Original を指す</summary>
+    // public static string NistElasticSamplerTextDirectory { get; set; } = Path.Combine(AppContext.BaseDirectory, "NistElasticSampler_Original");
+    // /// <summary>260401Ch constructor で source 未指定時に使う既定値</summary>
+    // public static ElasticSamplerDataSources DefaultElasticSamplerDataSource { get; set; } = ElasticSamplerDataSources.Auto;
+    #endregion
+
+    /// <summary>(260331Ch) NIST テーブル cache のスレッド同期用</summary>
+    private static readonly Lock lockObj = new();
+    /// <summary>260401Cl 原子番号→NIST弾性散乱テーブルの static cache。全 MonteCarlo インスタンスで共有</summary>
+    #region お蔵入り // (260401Ch) source flag ごとの cache は配布版では使わない
+    // private static readonly Dictionary<(int AtomicNumber, ElasticSamplerDataSources Source), NistElasticScatteringTable> NistElasticSamplerCache = [];
+    #endregion
+    private static readonly Dictionary<int, NistElasticScatteringTable> NistElasticSamplerCache = []; // (260401Ch) 配布版は generated data のみを原子番号ごとに cache する
+    /// <summary>(260331Ch) Bohr 半径の二乗 a₀² から nm² への換算係数: 1 a₀² = 2.8002852×10⁻³ nm²</summary>
+    private const double NistElasticCrossSectionUnitNm2 = 2.8002852E-3;
+
+    #region class, record
+
+    /// <summary>混合物中の各元素の原子番号・数密度・NIST散乱テーブルを保持する。Mott 散乱サンプリング時に元素選択と角度サンプリングに使用。</summary>
+    private readonly record struct ElasticSpecies(int AtomicNumber, double NumberDensityPerNm3, NistElasticScatteringTable NistElasticTable); // (260331Ch) Mott/NIST sampler の毎イベント lock/dictionary lookup を避ける
+
+    /// <summary>NIST SRD 64 の弾性散乱データを保持するテーブル。101 エネルギー点 (50 eV〜20 keV, 対数等間隔) ごとに全断面積と累積角度分布を格納。</summary>
+    private sealed class NistElasticScatteringTable // (260331Ch)
+    {
+        public int AtomicNumber;
+        /// <summary>260401Cl PCHIP 補間で生成済みの高速ルックアップデータ (存在すれば Phi[] より優先)</summary>
+        public NistElasticPchipRuntimeElement GeneratedPchipRuntimeElement;
+        /// <summary>260401Cl 各エネルギーでの弾性散乱全断面積 σ [a₀² 単位]</summary>
+        public readonly double[] SigmaA0Squared = new double[NistElasticEnergyCount];
+        #region お蔵入り // (260401Ch) オリジナル TXT の 2001 点 CDF は配布版ランタイムでは使わない
+        // /// <summary>260401Cl 累積散乱角分布 Φ(cosθ)。cosθ = 1〜-1 を 0.001 刻み 2001 点で格納。逆関数法で散乱角をサンプリング</summary>
+        // public readonly double[][] Phi = new double[NistElasticEnergyCount][];
+        #endregion
+    }
+
+    /// <summary>混合物系の弾性散乱における各エネルギーでの巨視的断面積と元素選択 CDF。散乱イベント発生時にどの元素で散乱するかを確率的に決定する。</summary>
+    private sealed class MottElasticMixtureEntry(double totalMacroscopicCrossSectionPerNm, double[] cumulativeProbabilities) // (260331Ch)
+    {
+        /// <summary>260401Cl 全元素の巨視的弾性散乱断面積の合計 Σ_total = Σ_i(n_i·σ_i) [1/nm]。逆数が弾性平均自由行程</summary>
+        public readonly double TotalMacroscopicCrossSectionPerNm = totalMacroscopicCrossSectionPerNm;
+        /// <summary>260401Cl 元素選択用の累積確率。i 番目の元素が選ばれる確率 = n_i·σ_i / Σ_total</summary>
+        public readonly double[] CumulativeProbabilities = cumulativeProbabilities;
+    }
+
+    /// <summary>DiscreteBulkDiimfpApproximation 用のエネルギー損失サンプラー。低損失・プラズモン・高損失テールの 3 成分混合 PDF から CDF を構築し、逆関数法でサンプリングする。</summary>
+    private sealed class BulkLossSamplerEntry(double minLossKev, double lossStepKev, double[] cumulativeProbabilities) // (260331Ch)
+    {
+        /// <summary>260401Cl 損失スペクトルの最小エネルギー損失 (keV)。バンドギャップ以上の値</summary>
+        public readonly double MinLossKev = minLossKev;
+        /// <summary>260401Cl CDF の 1 ビンあたりのエネルギー幅 (keV)</summary>
+        public readonly double LossStepKev = lossStepKev;
+        /// <summary>260401Cl エネルギー損失分布の累積確率 (256 ビン)。逆関数法でサンプリング</summary>
+        public readonly double[] CumulativeProbabilities = cumulativeProbabilities;
+    }
+
+    /// <summary>後方散乱電子の詳細情報。EBSD パターン形成に寄与する電子の最後の非弾性散乱の深さ・エネルギー・方向を記録する。</summary>
+    /// <param name="Depth">260401Cl 電子が試料表面を脱出した (または停止した) 時点での表面からの深さ (nm)</param>
+    /// <param name="Direction">260401Cl 脱出時の進行方向の単位ベクトル</param>
+    /// <param name="Energy">260401Cl 脱出時のエネルギー (keV)</param>
+    /// <param name="TotalEnergyLoss">260401Cl 入射エネルギーからの総エネルギー損失 (keV)</param>
+    /// <param name="HasLastInelasticEvent">260401Cl 離散非弾性散乱イベントが 1 回以上発生したか (CSDA モードでは常に false)</param>
+    /// <param name="LastInelasticDepth">260401Cl 最後の非弾性散乱が起きた深さ (nm)。EBSD の情報深さに直結</param>
+    /// <param name="LastInelasticEnergyBeforeLoss">260401Cl 最後の非弾性散乱直前のエネルギー (keV)</param>
+    /// <param name="LastInelasticEnergyAfterLoss">260401Cl 最後の非弾性散乱直後のエネルギー (keV)。この電子が回折に寄与する</param>
+    /// <param name="LastInelasticDirection">260401Cl 最後の非弾性散乱時点での進行方向。回折条件の評価に使用</param>
+    public readonly record struct BackscatteredElectronDetail( // (260331Ch) EBSD 寄与電子の最後の非弾性散乱情報を後段で解析できるようにする
+        double Depth, V3 Direction, double Energy, double TotalEnergyLoss, bool HasLastInelasticEvent,
+        double LastInelasticDepth, double LastInelasticEnergyBeforeLoss, double LastInelasticEnergyAfterLoss, V3 LastInelasticDirection);
+
+    /// <summary>あるエネルギーにおける電子輸送パラメータの一式。弾性・非弾性散乱のステップ長と方向・エネルギー損失の計算に使う。</summary>
+    /// <param name="ScreeningParameter">260401Cl Screened Rutherford の遮蔽パラメータ α = coeff0/E。原子核電荷の遮蔽効果を表し、散乱角分布の前方集中度を制御</param>
+    /// <param name="ElasticCrossSectionNm2">260401Cl 弾性散乱全断面積 σ_el [nm²]。単一散乱イベントの確率を決める</param>
+    /// <param name="ElasticMeanFreePathNm">260401Cl 弾性平均自由行程 λ_el = 1/(n·σ_el) [nm]。連続する弾性散乱間の平均飛行距離</param>
+    /// <param name="StoppingPowerKevPerNm">260401Cl 阻止能 dE/ds [keV/nm] (負値)。単位飛行距離あたりのエネルギー損失率</param>
+    /// <param name="InelasticMeanFreePathNm">260401Cl 非弾性平均自由行程 λ_in [nm]。TPP-2M で計算。連続する非弾性散乱間の平均飛行距離</param>
+    /// <param name="MeanInelasticLossKev">260401Cl 1 回の非弾性散乱あたりの平均エネルギー損失 &lt;ΔE&gt; = |dE/ds|·λ_in [keV]</param>
+    private readonly record struct TransportParameters( // (260331Ch) 1 ステップで使う輸送パラメータをまとめて扱う
+        double ScreeningParameter, double ElasticCrossSectionNm2, double ElasticMeanFreePathNm, double StoppingPowerKevPerNm, double InelasticMeanFreePathNm, double MeanInelasticLossKev);
+    #endregion
+
+    /// <summary>コンストラクタ</summary>
     /// <param name="z">原子番号 (単位無し)</param>
     /// <param name="a">原子量 (g/mol)</param>
     /// <param name="_ρ">密度 (g/cm^3)</param>
@@ -256,31 +278,25 @@ public class MonteCarlo
     /// <param name="bandGapEv">TPP-2M に使うバンドギャップ Eg (eV)。null のときは 0 eV。</param>
     /// <param name="atoms">Mott/NIST sampler 用の元素組成。null のときは平均 Z 近似のまま扱う。</param>
     public MonteCarlo(
-        double z,
-        double a,
-        double _ρ,
-        double kev,
-        double tilt,
-        double thresholdKev = 2,
-        MonteCarloStoppingPowerModel? stoppingPowerModel = null,
-        MonteCarloElasticScatteringModel? elasticScatteringModel = null,
-        MonteCarloInelasticScatteringModel? inelasticScatteringModel = null,
+        double z, double a, double _ρ, double kev, double tilt, double thresholdKev = 2,
+        StoppingPowerModels stoppingPowerModel = StoppingPowerModels.JablonskiModified2008,
+        ElasticScatteringModels elasticScatteringModel = ElasticScatteringModels.MottNistSampler2023,
+        InelasticScatteringModels inelasticScatteringModel = InelasticScatteringModels.DiscreteBulkDiimfpApproximation,
         double? valenceElectronCount = null,
         double? bandGapEv = null,
         IEnumerable<Atoms> atoms = null)
     {
-        Z = z;
-        A = a;
-        ρ = _ρ;
-        InitialKev = kev;
-        Tilt = tilt;
-        ThresholdKev = thresholdKev;
-        StoppingPowerModel = stoppingPowerModel ?? DefaultStoppingPowerModel; // (260331Ch)
-        ElasticScatteringModel = elasticScatteringModel ?? DefaultElasticScatteringModel; // (260331Ch)
-        InelasticScatteringModel = inelasticScatteringModel ?? DefaultInelasticScatteringModel; // (260331Ch)
+        Z = z; A = a; ρ = _ρ; 
+        InitialKev = kev; Tilt = tilt; ThresholdKev = thresholdKev; 
+        StoppingPowerModel = stoppingPowerModel;
+        ElasticScatteringModel = elasticScatteringModel;
+        InelasticScatteringModel = inelasticScatteringModel;
+        #region お蔵入り // (260401Ch) generated / external の source flag 比較経路は配布版では使わない
+        // ElasticSamplerDataSource = elasticSamplerDataSource ?? DefaultElasticSamplerDataSource;
+        #endregion
         ValenceElectronCount = valenceElectronCount is > 0 ? valenceElectronCount.Value : EstimateValenceElectronCount(z); // (260331Ch)
         BandGapEv = bandGapEv is >= 0 ? bandGapEv.Value : 0.0; // (260331Ch)
-        ElasticComponents = atoms is null ? [] : BuildElasticSpecies(atoms, ρ); // (260331Ch) Mott/NIST は元素組成から混合断面積を作る
+        ElasticComponents = atoms is null ? [] : BuildElasticSpecies(atoms, ρ); // (260401Ch) 配布版は generated data だけから Mott sampler を構築する
         for (int i = 0; i < ElasticComponents.Length; i++)
             TotalElasticNumberDensityPerNm3 += ElasticComponents[i].NumberDensityPerNm3;
 
@@ -315,9 +331,7 @@ public class MonteCarlo
         BulkLossSamplerCache = BuildBulkLossSamplerCache(); // (260331Ch) 簡易 bulk DIIMFP sampler
     }
 
-    /// <summary>
-    /// 混合物の各元素の原子番号と質量比から、TPP-2M に使う平均価電子数 Nv を質量加重平均で推定する。
-    /// </summary>
+    /// <summary>混合物の各元素の原子番号と質量比から、TPP-2M に使う平均価電子数 Nv を質量加重平均で推定する。</summary>
     public static double EstimateAverageValenceElectronCount(IEnumerable<(int AtomicNumber, double Weight)> components)
     {
         double sum = 0, weightSum = 0;
@@ -361,8 +375,10 @@ public class MonteCarlo
         foreach (var (atomicNumber, count) in counts)
         {
             var numberDensityPerNm3 = density * UniversalConstants.A * count / totalWeightPerFormula * 1E-21; // (260331Ch) ρ[g/cm3] から元素ごとの数密度 [1/nm3] を作る
-            // species[index++] = new ElasticSpecies(atomicNumber, numberDensityPerNm3); // (260331Ch) 旧実装: NIST table を毎回辞書から取り直していた
-            species[index++] = new ElasticSpecies(atomicNumber, numberDensityPerNm3, GetNistElasticScatteringTable(atomicNumber));
+            #region お蔵入り // (260401Ch) source flag 比較経路
+            // species[index++] = new ElasticSpecies(atomicNumber, numberDensityPerNm3, GetNistElasticScatteringTable(atomicNumber, elasticSamplerDataSource));
+            #endregion
+            species[index++] = new ElasticSpecies(atomicNumber, numberDensityPerNm3, GetNistElasticScatteringTable(atomicNumber)); // (260401Ch) 配布版は generated data のみを使う
         }
         return species;
     }
@@ -373,7 +389,7 @@ public class MonteCarlo
     /// </summary>
     private MottElasticMixtureEntry[] BuildMottElasticMixtureCache()
     {
-        if (ElasticScatteringModel != MonteCarloElasticScatteringModel.MottNistSampler2023 ||
+        if (ElasticScatteringModel != ElasticScatteringModels.MottNistSampler2023 ||
             ElasticComponents.Length == 0 || !(TotalElasticNumberDensityPerNm3 > 0))
             return [];
 
@@ -573,9 +589,9 @@ public class MonteCarlo
         //電子の質量 (kg) × 電子の速度の2乗 (m^2/s^2)
         var mv2 = UniversalConstants.Convert.EnergyToElectronMass(kev) * UniversalConstants.Convert.EnergyToElectronVelositySquared(kev);
         //散乱係数 / トータル散乱断面積 / 平均自由行程
-        double α, σ_E, λ_el;
-        if (ElasticScatteringModel == MonteCarloElasticScatteringModel.MottNistSampler2023 &&
-            TryGetMottElasticTransport(kev, out σ_E, out λ_el))
+        double α;
+        if (ElasticScatteringModel == ElasticScatteringModels.MottNistSampler2023 &&
+            TryGetMottElasticTransport(kev, out double σ_E, out double λ_el))
         {
             α = double.NaN; // (260331Ch) Mott sampler では screening parameter を使わない
         }
@@ -624,7 +640,7 @@ public class MonteCarlo
     /// </summary>
     private double SampleElasticScatteringCosTheta(double kev, double α)
     {
-        if (ElasticScatteringModel == MonteCarloElasticScatteringModel.MottNistSampler2023 &&
+        if (ElasticScatteringModel == ElasticScatteringModels.MottNistSampler2023 &&
             TrySampleMottElasticCosTheta(kev, out var cosTheta))
             return cosTheta;
 
@@ -669,31 +685,33 @@ public class MonteCarlo
         var target = Rnd.NextDouble();
         if (table.GeneratedPchipRuntimeElement is not null)
             return AtomStatic.TryEvaluateGeneratedNistElasticPchipCosTheta(table.GeneratedPchipRuntimeElement, energyIndex, target, out cosTheta); // (260401Ch) generated data の PCHIP 評価は AtomStatic 側へ集約
-
-        var phi = table.Phi[energyIndex];
-        if (phi is null)
-            return false;
-
-        int upper = Array.BinarySearch(phi, target);
-        if (upper < 0)
-            upper = ~upper;
-        upper = Math.Clamp(upper, 1, phi.Length - 1);
-        int lower = upper - 1;
-        var phi0 = phi[lower];
-        var phi1 = phi[upper];
-        var x0 = 1.0 - lower * 0.001;
-        var x1 = 1.0 - upper * 0.001;
-        cosTheta = Math.Clamp(phi1 > phi0 ? x0 + (target - phi0) * (x1 - x0) / (phi1 - phi0) : x0, -1.0, 1.0);
-        return true;
+        #region お蔵入り // (260401Ch) オリジナル TXT の 2001 点 CDF 逆補間は配布版ランタイムでは使わない
+        // var phi = table.Phi[energyIndex];
+        // if (phi is null)
+        //     return false;
+        //
+        // int upper = Array.BinarySearch(phi, target);
+        // if (upper < 0)
+        //     upper = ~upper;
+        // upper = Math.Clamp(upper, 1, phi.Length - 1);
+        // int lower = upper - 1;
+        // var phi0 = phi[lower];
+        // var phi1 = phi[upper];
+        // var x0 = 1.0 - lower * 0.001;
+        // var x1 = 1.0 - upper * 0.001;
+        // cosTheta = Math.Clamp(phi1 > phi0 ? x0 + (target - phi0) * (x1 - x0) / (phi1 - phi0) : x0, -1.0, 1.0);
+        // return true;
+        #endregion
+        return false; // (260401Ch) generated data が無ければ Mott sampler は失敗として上位で Screened Rutherford にフォールバック
     }
 
     /// <summary>NIST テーブルの 101 エネルギー点のうち、指定エネルギーに最も近いインデックスを返す (対数軸上で最近傍)。</summary>
     private static int GetNearestNistElasticEnergyIndex(double energyEv)
     {
         var logEnergy = Math.Log(energyEv);
-        int lowerIndex = (int)Math.Floor((logEnergy - LogNistElasticMinEnergyEv) / LogNistElasticEnergyStep);
+        int lowerIndex = (int)Math.Floor((logEnergy - log50) / LogNistElasticEnergyStep);
         lowerIndex = Math.Clamp(lowerIndex, 0, 99);
-        var lowerEnergy = LogNistElasticMinEnergyEv + lowerIndex * LogNistElasticEnergyStep;
+        var lowerEnergy = log50 + lowerIndex * LogNistElasticEnergyStep;
         var upperEnergy = lowerEnergy + LogNistElasticEnergyStep;
         return logEnergy - lowerEnergy < upperEnergy - logEnergy ? lowerIndex : lowerIndex + 1;
     }
@@ -702,9 +720,9 @@ public class MonteCarlo
     private static int GetLowerNistElasticEnergyIndex(double energyEv, out double fraction)
     {
         var logEnergy = Math.Log(energyEv);
-        int lowerIndex = (int)Math.Floor((logEnergy - LogNistElasticMinEnergyEv) / LogNistElasticEnergyStep);
+        int lowerIndex = (int)Math.Floor((logEnergy - log50) / LogNistElasticEnergyStep);
         lowerIndex = Math.Clamp(lowerIndex, 0, 99);
-        var lowerEnergy = LogNistElasticMinEnergyEv + lowerIndex * LogNistElasticEnergyStep;
+        var lowerEnergy = log50 + lowerIndex * LogNistElasticEnergyStep;
         var upperEnergy = lowerEnergy + LogNistElasticEnergyStep;
         fraction = (logEnergy - lowerEnergy) / (upperEnergy - lowerEnergy);
         return lowerIndex;
@@ -712,53 +730,53 @@ public class MonteCarlo
 
     /// <summary>
     /// 指定原子番号の NIST 弾性散乱テーブルを取得する。
-    /// 生成済み PCHIP データ → TXT ファイルの優先順でロードし、static cache に保存。
+    /// 配布版では generated PCHIP データのみをロードし、static cache に保存する。
     /// </summary>
     private static NistElasticScatteringTable GetNistElasticScatteringTable(int atomicNumber)
     {
-        lock (NistElasticSamplerSync)
+        lock (lockObj)
         {
             if (NistElasticSamplerCache.TryGetValue(atomicNumber, out var cached))
                 return cached;
         }
 
-        var pathText = Path.Combine(NistElasticSamplerDirectory, $"E_{atomicNumber:00}.TXT");
-        // 260401Cl BIN 形式読み取りを廃止。生成済み PCHIP → TXT の 2 段フォールバックに変更
-        NistElasticScatteringTable table = TryLoadGeneratedNistElasticPchipTable(atomicNumber) ?? TryLoadNistElasticTextTable(pathText);
+        var table = TryLoadGeneratedNistElasticPchipTable(atomicNumber); // (260401Ch) standalone 配布では generated data のみを使う
 
-        lock (NistElasticSamplerSync)
+        lock (lockObj)
             NistElasticSamplerCache[atomicNumber] = table;
         return table;
     }
 
-    // 260401Cl TryLoadNistElasticBinaryTable メソッドを除去 (BIN 形式読み取りを廃止)
-
-    /// <summary>NIST SRD 64 オリジナルのテキスト形式 (*.TXT) から弾性散乱テーブルをロードする。PCHIP が利用不可な場合のフォールバック。</summary>
-    private static NistElasticScatteringTable TryLoadNistElasticTextTable(string path)
-    {
-        if (!File.Exists(path))
-            return null;
-
-        try
-        {
-            using var reader = new StreamReader(path);
-            var table = new NistElasticScatteringTable();
-            for (int i = 0; i < NistElasticEnergyCount; i++)
-            {
-                _ = reader.ReadLine(); // (260331Ch) NIST sampler 内のブロック番号。Fortran 版でも未使用
-                table.SigmaA0Squared[i] = double.Parse(reader.ReadLine() ?? throw new InvalidDataException(path), CultureInfo.InvariantCulture);
-                var phi = new double[NistElasticPhiCount];
-                for (int j = 0; j < phi.Length; j++)
-                    phi[j] = double.Parse(reader.ReadLine() ?? throw new InvalidDataException(path), CultureInfo.InvariantCulture);
-                table.Phi[i] = phi;
-            }
-            return table;
-        }
-        catch
-        {
-            return null;
-        }
-    }
+    #region お蔵入り // (260401Ch) 配布版では外部 TXT 経路を使わない
+    // // 260401Cl TryLoadNistElasticBinaryTable メソッドを除去 (BIN 形式読み取りを廃止)
+    //
+    // /// <summary>NIST SRD 64 オリジナルのテキスト形式 (*.TXT) から弾性散乱テーブルをロードする。PCHIP が利用不可な場合のフォールバック。</summary>
+    // private static NistElasticScatteringTable TryLoadNistElasticTextTable(string path)
+    // {
+    //     if (!File.Exists(path))
+    //         return null;
+    //
+    //     try
+    //     {
+    //         using var reader = new StreamReader(path);
+    //         var table = new NistElasticScatteringTable();
+    //         for (int i = 0; i < NistElasticEnergyCount; i++)
+    //         {
+    //             _ = reader.ReadLine(); // (260331Ch) NIST sampler 内のブロック番号。Fortran 版でも未使用
+    //             table.SigmaA0Squared[i] = double.Parse(reader.ReadLine() ?? throw new InvalidDataException(path), CultureInfo.InvariantCulture);
+    //             var phi = new double[NistElasticPhiCount];
+    //             for (int j = 0; j < phi.Length; j++)
+    //                 phi[j] = double.Parse(reader.ReadLine() ?? throw new InvalidDataException(path), CultureInfo.InvariantCulture);
+    //             table.Phi[i] = phi;
+    //         }
+    //         return table;
+    //     }
+    //     catch
+    //     {
+    //         return null;
+    //     }
+    // }
+    #endregion
 
     /// <summary>コード生成済みの PCHIP 補間データから弾性散乱テーブルを構築する。ファイル I/O 不要で最も高速。</summary>
     private static NistElasticScatteringTable TryLoadGeneratedNistElasticPchipTable(int atomicNumber)
@@ -784,7 +802,7 @@ public class MonteCarlo
     /// </summary>
     private double GetStoppingPower(double kev, double mv2)
     {
-        if (StoppingPowerModel == MonteCarloStoppingPowerModel.JoyLuo1989)
+        if (StoppingPowerModel == StoppingPowerModels.JoyLuo1989)
             return coeff3 / mv2 * Math.Log(1.166 * k + 0.583 / UniversalConstants.eV_joule / J * mv2);
 
         var energyEv = kev * 1000.0;
@@ -794,7 +812,7 @@ public class MonteCarlo
 
         var spEvPerAngstrom = StoppingPowerModel switch
         {
-            MonteCarloStoppingPowerModel.JablonskiModified2008
+            StoppingPowerModels.JablonskiModified2008
                 => Jablonski2008D1 * Math.Pow(energyEv, Jablonski2008D2) * Math.Log(Jablonski2008D3 * energyEv) * Math.Pow(ρ + Jablonski2008D4, Jablonski2008D5) / λ_in,
             _ => throw new ArgumentOutOfRangeException(),
         };
@@ -822,7 +840,7 @@ public class MonteCarlo
     /// </summary>
     private static double EstimateValenceElectronCount(double atomicNumber)
     {
-        if (ElementInelasticParameters.TryGetValue((int)Math.Round(atomicNumber), out var exact))
+        if (AtomStatic.ElementInelasticParameters.TryGetValue((int)Math.Round(atomicNumber), out var exact))
             return exact.ValenceElectrons;
 
         int lower = (int)Math.Floor(atomicNumber), upper = (int)Math.Ceiling(atomicNumber);
@@ -837,7 +855,7 @@ public class MonteCarlo
     /// <summary>整数原子番号から価電子数を推定する。既知元素表→周期律に基づく簡易推定の順で決定。</summary>
     private static double EstimateElementValenceElectronCount(int atomicNumber)
     {
-        if (ElementInelasticParameters.TryGetValue(atomicNumber, out var exact))
+        if (AtomStatic.ElementInelasticParameters.TryGetValue(atomicNumber, out var exact))
             return exact.ValenceElectrons;
 
         return atomicNumber switch
@@ -877,9 +895,9 @@ public class MonteCarlo
 
         var lossKev = InelasticScatteringModel switch
         {
-            MonteCarloInelasticScatteringModel.DiscreteMeanLoss => meanLossKev,
+            InelasticScatteringModels.DiscreteMeanLoss => meanLossKev,
             // 260401Cl DiscreteExponentialLoss の分岐を除去
-            MonteCarloInelasticScatteringModel.DiscreteBulkDiimfpApproximation => SampleBulkLossKev(currentKev, meanLossKev),
+            InelasticScatteringModels.DiscreteBulkDiimfpApproximation => SampleBulkLossKev(currentKev, meanLossKev),
             _ => 0.0,
         };
         return Math.Min(lossKev, currentKev);
@@ -922,7 +940,7 @@ public class MonteCarlo
     /// <returns>返り値は、座標 p (nm単位)と エネルギー e (kev単位) のタプル配列</returns>
     public List<(V3 p, double e)> GetTrajectories()
     {
-        if (InelasticScatteringModel != MonteCarloInelasticScatteringModel.ContinuousSlowingDownApproximation)
+        if (InelasticScatteringModel != InelasticScatteringModels.ContinuousSlowingDownApproximation)
             return GetTrajectoriesDiscreteInelastic(); // (260331Ch) 旧 CSDA 実装は残し、比較できるように分岐する
 
         var trajectory = new List<(V3 p, double e)>(100) { (new V3(0, 0, 0), InitialKev) };
@@ -1065,7 +1083,7 @@ public class MonteCarlo
     /// </summary>
     public BackscatteredElectronDetail GetBackscatteredElectronDetail()
     {
-        if (InelasticScatteringModel != MonteCarloInelasticScatteringModel.ContinuousSlowingDownApproximation)
+        if (InelasticScatteringModel != InelasticScatteringModels.ContinuousSlowingDownApproximation)
             return GetBackscatteredElectronDetailDiscreteInelastic(); // (260331Ch)
 
         double e = InitialKev;
@@ -1203,6 +1221,5 @@ public class MonteCarlo
             lastInelasticEnergyAfterLoss,
             lastInelasticDirection);
     }
-    public const double Th = 0.0000001; // 260401Cl 方向ベクトル回転時の特異点判定閾値。vZ ≈ -1 (ほぼ真下向き) のとき回転行列が退化するのを避ける
 
 }

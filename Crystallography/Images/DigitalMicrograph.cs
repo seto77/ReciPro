@@ -27,9 +27,7 @@ public class DigitalMicrograph
         }
     }
 
-    /// <summary>
-    /// マルチバイトデータのバイト順
-    /// </summary>
+    /// <summary>マルチバイトデータのバイト順</summary>
     public enum ByteOrderEnum { BigEndian, LittleEndian }
 
     public class Loader

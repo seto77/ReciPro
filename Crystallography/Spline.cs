@@ -50,9 +50,7 @@ namespace Crystallography
                  );
         }
 
-        /// <summary>
-        /// 距離の近いものをつなげていって並び替え
-        /// </summary>
+        /// <summary>距離の近いものをつなげていって並び替え</summary>
         /// <param name="pt"></param>
         /// <returns></returns>
         public List<PointD> sort(List<PointD> pt)
@@ -105,9 +103,7 @@ namespace Crystallography
             return destPt;
         }
 
-        /// <summary>
-        /// 最後の三点（pt1, pt2, pt3)から端点(pt0)を計算する
-        /// </summary>
+        /// <summary>最後の三点（pt1, pt2, pt3)から端点(pt0)を計算する</summary>
         /// <param name="pt1"></param>
         /// <param name="pt2"></param>
         /// <param name="pt3"></param>
@@ -121,9 +117,7 @@ namespace Crystallography
         }
     }
 
-    /// <summary>
-    /// Spline関数を引くための静的メソッドを提供します。
-    /// </summary>
+    /// <summary>Spline関数を引くための静的メソッドを提供します。</summary>
     public class Spline
     {
         public Spline()

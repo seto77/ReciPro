@@ -222,9 +222,7 @@ public partial class DataSet
         public void SetFlag(int i, bool flag) => Rows[i][columnFlag] = flag;
         public bool GetFlag(int i) => (bool)Rows[i][columnFlag];
 
-        /// <summary>
-        /// 引数はbindingSourceMain.Currentオブジェクト. 
-        /// </summary>
+        /// <summary>引数はbindingSourceMain.Currentオブジェクト.</summary>
         /// <param name="o"></param>
         /// <returns></returns>
         public Crystal2 Get(object o) => o is DataRowView drv && drv.Row is DataTableCrystalDatabaseRow r ? Crystal2.Deserialize((byte[]) r[Crystal2Column]) : null;
@@ -240,9 +238,7 @@ public partial class DataSet
 
         public void Remove(int i) => Rows.RemoveAt(i);
 
-        /// <summary>
-        /// srcCrystalは bindingSourceMain.Currentオブジェクト. 
-        /// </summary>
+        /// <summary>srcCrystalは bindingSourceMain.Currentオブジェクト.</summary>
         /// <param name="srcCrystal"></param>
         /// <param name="targetCrystal"></param>
         public void Replace(object srcCrystal, Crystal2 targetCrystal)

@@ -100,9 +100,7 @@ public partial class FormSpotIDV2 : CaptureFormBase
 
     #region 画像読み込み関連
 
-    /// <summary>
-    /// 画像読み込み
-    /// </summary>
+    /// <summary>画像読み込み</summary>
     /// <param name="fileName"></param>
     private void readImage(string fileName)
     {
@@ -162,9 +160,7 @@ public partial class FormSpotIDV2 : CaptureFormBase
         dataSet.DataTableSpot.AreaDetector = new AreaDetector(p.Width, p.Height, PixelSize, DirectSpot, waveLengthControl1.Property, CameraLength);
     }
 
-    /// <summary>
-    /// ScalablePictureBoxAdvancedのフィルターが変更されたとき
-    /// </summary>
+    /// <summary>ScalablePictureBoxAdvancedのフィルターが変更されたとき</summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
     private void ScalablePictureBoxAdvanced_FilterChanged(object sender, EventArgs e)
@@ -385,9 +381,7 @@ public partial class FormSpotIDV2 : CaptureFormBase
         Enabled = true;
     }
 
-    /// <summary>
-    /// スポットをフィッティングする。スポット位置のみが指定された場合。
-    /// </summary>
+    /// <summary>スポットをフィッティングする。スポット位置のみが指定された場合。</summary>
     /// <param name="pt"></param>
     /// <returns></returns>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -435,9 +429,7 @@ public partial class FormSpotIDV2 : CaptureFormBase
         return (r.Prms[0], r.Prms[1], r.R);
     }
 
-    /// <summary>
-    /// 検索対象のピクセルを設定する
-    /// </summary>
+    /// <summary>検索対象のピクセルを設定する</summary>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     private static (double[] x, double y, double w)[] getPixels(IEnumerable<(double[] x, double y)> src, double radius, double cX, double cY)
     {
@@ -460,9 +452,7 @@ public partial class FormSpotIDV2 : CaptureFormBase
         }).Where(p => p.w != 0).ToArray();
     }
 
-    /// <summary>
-    /// スポットをフィッティングする。初期値を指定。
-    /// </summary>
+    /// <summary>スポットをフィッティングする。初期値を指定。</summary>
     /// <param name="pt"></param>
     /// <returns></returns>
     private (double X0, double Y0, double H1, double H2, double T, double Eta, double A, double B0, double Bx, double By, double R)
@@ -658,9 +648,7 @@ public partial class FormSpotIDV2 : CaptureFormBase
 
     #region スポット情報テーブルに関連するメソッド
 
-    /// <summary>
-    /// スポット情報テーブルの内容が変更したとき
-    /// </summary>
+    /// <summary>スポット情報テーブルの内容が変更したとき</summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
     private void bindingSourceObsSpots_ListChanged(object sender, ListChangedEventArgs e)
@@ -701,9 +689,7 @@ public partial class FormSpotIDV2 : CaptureFormBase
     }
 
 
-    /// <summary>
-    /// スポット情報テーブルのカレントが変更したとき
-    /// </summary>
+    /// <summary>スポット情報テーブルのカレントが変更したとき</summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
     private void bindingSourceSpot_CurrentChanged(object sender, EventArgs e)
@@ -733,9 +719,7 @@ public partial class FormSpotIDV2 : CaptureFormBase
         }
     }
 
-    /// <summary>
-    /// セルコンテンツがクリックされたとき
-    /// </summary>
+    /// <summary>セルコンテンツがクリックされたとき</summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
     private void dataGridViewSpots_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -773,9 +757,7 @@ public partial class FormSpotIDV2 : CaptureFormBase
         }
     }
 
-    /// <summary>
-    /// 行のヘッダーがダブルクリックされたとき画像を拡大
-    /// </summary>
+    /// <summary>行のヘッダーがダブルクリックされたとき画像を拡大</summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
 
@@ -1040,9 +1022,7 @@ public partial class FormSpotIDV2 : CaptureFormBase
         }).ToList();
     }
 
-    /// <summary>
-    /// 観察されたスポットの内、2つのスポットを説明しうる回転を探索し、その回転行列リストを返す。
-    /// </summary>
+    /// <summary>観察されたスポットの内、2つのスポットを説明しうる回転を探索し、その回転行列リストを返す。</summary>
     /// <param name="gVectors"></param>
     /// <param name="obsSpotsReciprocal"></param>
     /// <returns></returns>
@@ -1193,14 +1173,10 @@ public partial class FormSpotIDV2 : CaptureFormBase
         public Matrix3D Rotation;
         public double Residual;
 
-        /// <summary>
-        /// 観測された回折スポット配列に対して、このGrainで説明可能であったindicesのリスト
-        /// </summary>
+        /// <summary>観測された回折スポット配列に対して、このGrainで説明可能であったindicesのリスト</summary>
         public (int No, int H, int K, int L)[] Indices;
 
-        /// <summary>
-        /// このGrainによって出現する全てのスポットの位置(x,y)と強度(z)
-        /// </summary>
+        /// <summary>このGrainによって出現する全てのスポットの位置(x,y)と強度(z)</summary>
         public Vector3D[] Spots;
 
         public int ID;
@@ -1220,9 +1196,7 @@ public partial class FormSpotIDV2 : CaptureFormBase
 
     #region お蔵入り
 
-    /// <summary>
-    /// 観察されたスポットの内、2つのスポットを説明しうる回転を探索し、その回転行列リストを返す。
-    /// </summary>
+    /// <summary>観察されたスポットの内、2つのスポットを説明しうる回転を探索し、その回転行列リストを返す。</summary>
     /// <param name="gVectors"></param>
     /// <param name="obsSpotsReciprocal"></param>
     /// <returns></returns>
@@ -1414,9 +1388,7 @@ public partial class FormSpotIDV2 : CaptureFormBase
 
     #region 各種イベント
 
-    /// <summary>
-    /// シンボル、ラベルの表示のチェックボックスイベント
-    /// </summary>
+    /// <summary>シンボル、ラベルの表示のチェックボックスイベント</summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
     private void checkBoxShowObsSpots_CheckedChanged(object sender, EventArgs e)

@@ -3,9 +3,7 @@ using System;
 
 namespace Crystallography;
 
-/// <summary>
-/// Atoms2クラス
-/// </summary>
+/// <summary>Atoms2クラス</summary>
 //[Serializable()]
 [MemoryPackable]
 public partial class Atoms2
@@ -35,9 +33,7 @@ public partial class Atoms2
     [MemoryPackInclude]
     private byte[][] anisoBytes;//B(U)11, B(U)22, B(U)33, B(U)12, B(U)23, B(U)31の順番
 
-    /// <summary>
-    /// x,y,zの順番. 無次元
-    /// </summary>
+    /// <summary>x,y,zの順番. 無次元</summary>
     [MemoryPackIgnore]
     public string[] PositionTexts
     {
@@ -51,25 +47,19 @@ public partial class Atoms2
         set => positionBytes = value == null ? null : Array.ConvertAll(value, Crystal2.ToBytes);
     }
 
-    /// <summary>
-    /// Occ. 無次元
-    /// </summary>
+    /// <summary>Occ. 無次元</summary>
     [MemoryPackIgnore]
     //public string OccText { get => Crystal2.ToString(occBytes); set => occBytes = Crystal2.ToBytes(value); }
     // (260320Ch) 未設定時は null を返して getter 側の NRE を防ぐ
     public string OccText { get => occBytes == null ? null : Crystal2.ToString(occBytes); set => occBytes = Crystal2.ToBytes(value); }
 
-    /// <summary>
-    /// 単位は Å^2. 
-    /// </summary>
+    /// <summary>単位は Å^2.</summary>
     [MemoryPackIgnore]
     //public string IsoText { get => Crystal2.ToString(isoBytes); set => isoBytes = Crystal2.ToBytes(value); }
     // (260320Ch) 未設定時は null を返して getter 側の NRE を防ぐ
     public string IsoText { get => isoBytes == null ? null : Crystal2.ToString(isoBytes); set => isoBytes = Crystal2.ToBytes(value); }
 
-    /// <summary>
-    /// Bの場合は、無次元. Uの場合、Å^2. 
-    /// </summary>
+    /// <summary>Bの場合は、無次元. Uの場合、Å^2.</summary>
     [MemoryPackIgnore]
     public string[] AnisoTexts
     {
@@ -86,9 +76,7 @@ public partial class Atoms2
     [MemoryPackConstructor]
     public Atoms2() { }
 
-    /// <summary>
-    /// コンストラクタ. Uの単位はÅ
-    /// </summary>
+    /// <summary>コンストラクタ. Uの単位はÅ</summary>
     /// <param name="label"></param>
     /// <param name="atomNo"></param>
     /// <param name="sfx"></param>

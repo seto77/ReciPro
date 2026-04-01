@@ -201,9 +201,7 @@ public static partial class NativeWrapper
 
     #region Nativeライブラリが有効かどうか
 
-    /// <summary>
-    /// Native ライブラリが有効かどうか
-    /// </summary>
+    /// <summary>Native ライブラリが有効かどうか</summary>
     public static bool Enabled { get; }
     public static string? LastLoadError { get; private set; }
 
@@ -359,9 +357,7 @@ public static partial class NativeWrapper
     #region 単純な四則演算
 
     #region 行列×行列
-    /// <summary>
-    ///　Eigenライブラリーを利用して、非対称複素行列の乗算を求める
-    /// </summary>
+    /// <summary>Eigenライブラリーを利用して、非対称複素行列の乗算を求める</summary>
     /// <param name="dim"></param>
     /// <param name="matrix1"></param>
     /// <param name="matrix2"></param>
@@ -538,9 +534,7 @@ public static partial class NativeWrapper
     #endregion
 
     #region Eigenライブラリーを利用して、非対称複素行列の要素ごとの掛算(アダマール積)を求める
-    /// <summary>
-    ///　Eigenライブラリーを利用して、非対称複素行列の乗算を求める. 
-    /// </summary>
+    /// <summary>Eigenライブラリーを利用して、非対称複素行列の乗算を求める.</summary>
     /// <param name="dim"></param>
     /// <param name="matrix1"></param>
     /// <param name="matrix2"></param>
@@ -555,9 +549,7 @@ public static partial class NativeWrapper
     #endregion
 
     #region Eigenライブラリーを利用して、非対称複素行列の乗算を求める
-    /// <summary>
-    ///　Eigenライブラリーを利用して、非対称複素行列の乗算を求める. matrix1の形状は崩れるかもしれない
-    /// </summary>
+    /// <summary>Eigenライブラリーを利用して、非対称複素行列の乗算を求める. matrix1の形状は崩れるかもしれない</summary>
     /// <param name="dim"></param>
     /// <param name="matrix1"></param>
     /// <param name="matrix2"></param>
@@ -591,9 +583,7 @@ public static partial class NativeWrapper
     #endregion
 
     #region 逆行列
-    /// <summary>
-    /// Eigenライブラリーを利用して、非対称複素行列の逆行列を求める
-    /// </summary>
+    /// <summary>Eigenライブラリーを利用して、非対称複素行列の逆行列を求める</summary>
     /// <param name="mat"></param>
     /// <returns></returns>
     static unsafe public Complex[] Inverse(int dim, Complex[] mat)
@@ -605,9 +595,7 @@ public static partial class NativeWrapper
         return values;
     }
 
-    /// <summary>
-    /// Eigenライブラリーを利用して、非対称複素行列の逆行列を求める
-    /// </summary>
+    /// <summary>Eigenライブラリーを利用して、非対称複素行列の逆行列を求める</summary>
     /// <param name="mat"></param>
     /// <returns></returns>
     static unsafe public Complex[]? Inverse(Complex[] mat) //260317Cl 戻り値をnullable化
@@ -616,9 +604,7 @@ public static partial class NativeWrapper
         return dim * dim == mat.Length ? Inverse(dim, mat) : null;
     }
 
-    /// <summary>
-    /// Eigenライブラリーを利用して、実数行列の逆行列を求める
-    /// </summary>
+    /// <summary>Eigenライブラリーを利用して、実数行列の逆行列を求める</summary>
     /// <param name="mat"></param>
     /// <returns></returns>
     static unsafe public double[] Inverse(int dim, double[] mat)
@@ -630,9 +616,7 @@ public static partial class NativeWrapper
         return values;
     }
 
-    /// <summary>
-    /// Eigenライブラリーを利用して、実数行列の逆行列を求める
-    /// </summary>
+    /// <summary>Eigenライブラリーを利用して、実数行列の逆行列を求める</summary>
     /// <param name="mat"></param>
     /// <returns></returns>
     static unsafe public double[]? Inverse(double[] mat) //260317Cl 戻り値をnullable化
@@ -655,9 +639,7 @@ public static partial class NativeWrapper
         return (values, vectors);
     }
 
-    /// <summary>
-    /// 既存バッファーへ固有値・固有ベクトルを書き込む overload。 (260321Ch)
-    /// </summary>
+    /// <summary>既存バッファーへ固有値・固有ベクトルを書き込む overload。 (260321Ch)</summary>
     static unsafe public void EigenSolver(int dim, Complex[] mat, ref Complex[] eigenvalues, ref Complex[] eigenvectors)
     {
         if (eigenvalues is null || eigenvalues.Length < dim)
@@ -711,9 +693,7 @@ public static partial class NativeWrapper
             _AdJointMul_Mul_Mul(dim, (double*)_mat1, (double*)_mat2, (double*)_mat3, (double*)res);
     }
 
-    /// <summary>
-    /// STEM用の特殊関数。透過係数を求める。
-    /// </summary>
+    /// <summary>STEM用の特殊関数。透過係数を求める。</summary>
     /// <param name="dim"></param>
     /// <param name="thickness"></param>
     /// <param name="kg_z"></param>
@@ -739,9 +719,7 @@ public static partial class NativeWrapper
             _GenerateTC2(dim, thickness, _kg_z, (double*)_val, (double*)_vec, (double*)_tc_k, (double*)_tc_kq);
     }
 
-    /// <summary>
-    /// 横ベクトル×正方行列×縦ベクトルの掛算. STEMの非弾性散乱を求めるときに使用
-    /// </summary>
+    /// <summary>横ベクトル×正方行列×縦ベクトルの掛算. STEMの非弾性散乱を求めるときに使用</summary>
     /// <param name="dim"></param>
     /// <param name="rowVec"></param>
     /// <param name="sqMtx"></param>
@@ -755,9 +733,7 @@ public static partial class NativeWrapper
 
         return result;
     }
-    /// <summary>
-    /// 横ベクトル×正方行列×縦ベクトルの掛算. STEMの非弾性散乱を求めるときに使用
-    /// </summary>
+    /// <summary>横ベクトル×正方行列×縦ベクトルの掛算. STEMの非弾性散乱を求めるときに使用</summary>
     /// <param name="dim"></param>
     /// <param name="rowVec"></param>
     /// <param name="sqMtx"></param>
@@ -787,9 +763,7 @@ public static partial class NativeWrapper
     #endregion
 
     #region CBED
-    /// <summary>
-    /// Eigenライブラリーを利用して固有値解を求めて、CBEDの解を求める
-    /// </summary>
+    /// <summary>Eigenライブラリーを利用して固有値解を求めて、CBEDの解を求める</summary>
     /// <param name="potential"></param>
     /// <param name="psi0"></param>
     /// <param name="thickness"></param>
@@ -798,9 +772,7 @@ public static partial class NativeWrapper
     unsafe static public Complex[] CBEDSolver_Eigen(Complex[] potential, Complex[] psi0, double[] thickness)
     => CBEDSolver(potential, psi0, thickness, true);
 
-    /// <summary>
-    /// Eigenライブラリーを利用してMatrix exponentialを解いて、CBEDの解を求める. 
-    /// </summary>
+    /// <summary>Eigenライブラリーを利用してMatrix exponentialを解いて、CBEDの解を求める.</summary>
     /// <param name="potential"></param>
     /// <param name="psi0"></param>
     /// <param name="thickness"></param>
@@ -826,9 +798,7 @@ public static partial class NativeWrapper
         return result;
     }
 
-    /// <summary>
-    /// STEM用ソルバー
-    /// </summary>
+    /// <summary>STEM用ソルバー</summary>
     /// <param name="potential"></param>
     /// <param name="psi0"></param>
     /// <param name="thickness"></param>
@@ -882,9 +852,7 @@ public static partial class NativeWrapper
 
 
     #region EBSD
-    /// <summary>
-    /// EBSD強度を計算する。原子位置でのブロッホ波場に基づく。
-    /// </summary>
+    /// <summary>EBSD強度を計算する。原子位置でのブロッホ波場に基づく。</summary>
     /// <param name="eigenValues">固有値 γ_j (bLen個)</param>
     /// <param name="eigenVectors">固有ベクトル C (bLen×bLen, column-major)</param>
     /// <param name="alpha">励起振幅 α_j (bLen個)</param>
@@ -911,9 +879,7 @@ public static partial class NativeWrapper
         return intensity;
     }
 
-    /// <summary>
-    /// bLen を明示し、大きめの作業配列を再利用できるようにした overload。 (260321Ch)
-    /// </summary>
+    /// <summary>bLen を明示し、大きめの作業配列を再利用できるようにした overload。 (260321Ch)</summary>
     public static unsafe double[] EBSDSolver(
         int bLen, Complex[] eigenValues, Complex[] eigenVectors, Complex[] alpha,
         Complex[] phaseNG, double[] sigma, double[] thicknesses)
@@ -958,9 +924,7 @@ public static partial class NativeWrapper
         return (intensity, tdsIntensity);
     }
 
-    /// <summary>
-    /// bLen を明示し、大きめの作業配列を再利用できるようにした overload。 (260321Ch)
-    /// </summary>
+    /// <summary>bLen を明示し、大きめの作業配列を再利用できるようにした overload。 (260321Ch)</summary>
     public static unsafe (double[] intensity, double[] tdsIntensity) EBSDSolverWithTDS(
         int bLen, Complex[] eigenValues, Complex[] eigenVectors, Complex[] alpha,
         Complex[] phaseNG, double[] sigma, Complex[] muBack, double tdsCoeff, double[] thicknesses)

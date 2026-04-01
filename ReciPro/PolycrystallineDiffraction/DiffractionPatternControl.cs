@@ -106,59 +106,45 @@ public partial class DiffractionPatternControl : CaptureUserControlBase
 
     #region 画像のプロパティ関連
 
-    /// <summary>
-    /// イメージの横幅(ピクセル単位)
-    /// </summary>
+    /// <summary>イメージの横幅(ピクセル単位)</summary>
     public int ImageWidth
     {
         get => (int)numericUpDownImageWidth.Value;
         set => numericUpDownImageWidth.Value = value;
     }
 
-    /// <summary>
-    /// イメージの高さ(ピクセル単位)
-    /// </summary>
+    /// <summary>イメージの高さ(ピクセル単位)</summary>
     public int ImageHeight
     {
         get => (int)numericUpDownImageHeight.Value;
         set => numericUpDownImageHeight.Value = value;
     }
 
-    /// <summary>
-    /// イメージの全ピクセル数
-    /// </summary>
+    /// <summary>イメージの全ピクセル数</summary>
     public int ImageLength => ImageHeight * ImageWidth;
 
-    /// <summary>
-    /// イメージの解像度 (mm/pixel)
-    /// </summary>
+    /// <summary>イメージの解像度 (mm/pixel)</summary>
     public double Resolution
     {
         get => numericBoxImageResolution.Value;
         set => numericBoxImageResolution.Value = value;
     }
 
-    /// <summary>
-    /// イメージの傾きPhi
-    /// </summary>
+    /// <summary>イメージの傾きPhi</summary>
     public double Phi
     {
         set => numericBoxPhi.RadianValue = value;
         get => numericBoxPhi.RadianValue;
     }
 
-    /// <summary>
-    /// イメージの傾きTau
-    /// </summary>
+    /// <summary>イメージの傾きTau</summary>
     public double Tau
     {
         set => numericBoxTau.RadianValue = value;
         get => numericBoxTau.RadianValue;
     }
 
-    /// <summary>
-    /// イメージの傾き
-    /// </summary>
+    /// <summary>イメージの傾き</summary>
     public Matrix3D Rotation => Matrix3D.Rot(new Vector3D(Math.Cos(Phi), Math.Sin(Phi), 0), Tau);
 
     private delegate void callBack();
@@ -188,9 +174,7 @@ public partial class DiffractionPatternControl : CaptureUserControlBase
 
     private AreaDetector detectorProperty = null;
 
-    /// <summary>
-    /// 画像プロパティ
-    /// </summary>
+    /// <summary>画像プロパティ</summary>
     [Browsable(false)]
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public AreaDetector DetectorProperty
@@ -245,9 +229,7 @@ public partial class DiffractionPatternControl : CaptureUserControlBase
         get => panelSimulationCheck.Enabled;
     }
 
-    /// <summary>
-    /// フィルムにじみ量
-    /// </summary>
+    /// <summary>フィルムにじみ量</summary>
     public double FilmBlur
     {
         set
@@ -264,41 +246,27 @@ public partial class DiffractionPatternControl : CaptureUserControlBase
 
     #region ピクセル配列群
 
-    /// <summary>
-    /// フィルターされたピクセル配列
-    /// </summary>
+    /// <summary>フィルターされたピクセル配列</summary>
     public bool[] Filter;
 
-    /// <summary>
-    ///  リファレンス画像のピクセル配列
-    /// </summary>
+    /// <summary>リファレンス画像のピクセル配列</summary>
     public double[] SrcPixels;
 
-    /// <summary>
-    /// trueがバックグランドのみからなる領域
-    /// </summary>
+    /// <summary>trueがバックグランドのみからなる領域</summary>
     public bool[] BackgroundArea;
 
-    /// <summary>
-    /// バックグラウンドのピクセル配列
-    /// </summary>
+    /// <summary>バックグラウンドのピクセル配列</summary>
     public double[] BackgroundPixels;
 
-    /// <summary>
-    /// 回折リングのピクセル配列
-    /// </summary>
+    /// <summary>回折リングのピクセル配列</summary>
     public double[] DiffractionPixels;
 
     public double[] DiffractionPixelsTemp;
 
-    /// <summary>
-    /// バックグランド + 回折リング × スケール因子 のピクセル配列
-    /// </summary>
+    /// <summary>バックグランド + 回折リング × スケール因子 のピクセル配列</summary>
     public double[] SimulatedPixels;
 
-    /// <summary>
-    /// 最終的に描画するピクセル配列
-    /// </summary>
+    /// <summary>最終的に描画するピクセル配列</summary>
     public double[] DestPixels;
 
     #endregion ピクセル配列群
@@ -389,9 +357,7 @@ public partial class DiffractionPatternControl : CaptureUserControlBase
 
     private readonly Lock lockObj = new();
 
-    /// <summary>
-    /// Frequencyを計算
-    /// </summary>
+    /// <summary>Frequencyを計算</summary>
     /// <param name="pixels"></param>
     /// <returns></returns>
 
@@ -1177,9 +1143,7 @@ public partial class DiffractionPatternControl : CaptureUserControlBase
 
     private double lpo_residual;
 
-    /// <summary>
-    /// 指定された
-    /// </summary>
+    /// <summary>指定された</summary>
     /// <param name="addCrystals"></param>
     /// <param name="removeCrystals"></param>
     /// <param name="resetIndex"></param>
@@ -1250,9 +1214,7 @@ public partial class DiffractionPatternControl : CaptureUserControlBase
 
     private double[] blur = Array.Empty<double>();
 
-    /// <summary>
-    /// 画像を指定したfilmBlur量でにじませる
-    /// </summary>
+    /// <summary>画像を指定したfilmBlur量でにじませる</summary>
     /// <param name="pixels"></param>
     /// <param name="filmBlur"></param>
     /// <returns></returns>
@@ -1305,9 +1267,7 @@ public partial class DiffractionPatternControl : CaptureUserControlBase
 
     #endregion Debyeリングシミュレーション関連
 
-    /// <summary>
-    /// スケールファクター（DiffractionPixelsを何倍にするか）の最適値をセットし、その残差を得る。
-    /// </summary>
+    /// <summary>スケールファクター（DiffractionPixelsを何倍にするか）の最適値をセットし、その残差を得る。</summary>
     public double RefineScaleFactor()
     {
         double[] squareSum = new double[ImageHeight], product = new double[ImageHeight];
@@ -1331,9 +1291,7 @@ public partial class DiffractionPatternControl : CaptureUserControlBase
         return Residual();
     }
 
-    /// <summary>
-    /// 現在のシミュレーション画像と生画像の残差を得る
-    /// </summary>
+    /// <summary>現在のシミュレーション画像と生画像の残差を得る</summary>
     /// <returns></returns>
     public double Residual()
     {
@@ -1354,9 +1312,7 @@ public partial class DiffractionPatternControl : CaptureUserControlBase
     }
 
     /*
-    /// <summary>
-    /// 現在のシミュレーション画像と生画像の残差を得る
-    /// </summary>
+    /// <summary>現在のシミュレーション画像と生画像の残差を得る</summary>
     /// <returns></returns>
     public double ResidualOfDiffractionPixels(double[] diffractionPixels = null)
     {
@@ -1380,9 +1336,7 @@ public partial class DiffractionPatternControl : CaptureUserControlBase
     }
      */
 
-    /// <summary>
-    /// 生画像の二乗和を得る
-    /// </summary>
+    /// <summary>生画像の二乗和を得る</summary>
     /// <returns></returns>
     public double InitialResidual()
     {
@@ -1397,9 +1351,7 @@ public partial class DiffractionPatternControl : CaptureUserControlBase
         return residual;
     }
 
-    /// <summary>
-    /// バックグラウンド範囲を抽出する
-    /// </summary>
+    /// <summary>バックグラウンド範囲を抽出する</summary>
     /// <returns></returns>
     public void SetBackgroundArea()
     {
@@ -1456,9 +1408,7 @@ public partial class DiffractionPatternControl : CaptureUserControlBase
 
     private delegate Matrix[] RefineBackGroundDelegate(int start, int end);
 
-    /// <summary>
-    /// バックグラウンドパラメータとスケールファクターを最適化し、最適化後の残差を返す
-    /// </summary>
+    /// <summary>バックグラウンドパラメータとスケールファクターを最適化し、最適化後の残差を返す</summary>
     /// <param name="prm"></param>
     /// <returns></returns>
     public double RefineBackGround(BackGroundParameter prm)
@@ -1608,9 +1558,7 @@ public partial class DiffractionPatternControl : CaptureUserControlBase
 
     public double filmBlurStep = 5;
 
-    /// <summary>
-    /// FilmBlurを最適化し、最適化後の残差を返す
-    /// </summary>
+    /// <summary>FilmBlurを最適化し、最適化後の残差を返す</summary>
     /// <returns></returns>
     public double RefineFilmBlur()
     {
@@ -1645,9 +1593,7 @@ public partial class DiffractionPatternControl : CaptureUserControlBase
     public double offsetStep = 0.2;
     public int offsetSearchRange = 2;//
 
-    /// <summary>
-    /// CenterOffsetを最適化し、最適化後の残差を返す. ScaleFactorも同時に直す
-    /// </summary>
+    /// <summary>CenterOffsetを最適化し、最適化後の残差を返す. ScaleFactorも同時に直す</summary>
     /// <returns></returns>
     public double RefineCenterOffset()
     {
@@ -1981,9 +1927,7 @@ public partial class DiffractionPatternControl : CaptureUserControlBase
             checkedListBoxPlaneList.SetItemChecked(i, false);
     }
 
-    /// <summary>
-    /// 回折に寄与した結晶数と面指数の情報を表示する
-    /// </summary>
+    /// <summary>回折に寄与した結晶数と面指数の情報を表示する</summary>
     public void DiffractionInformation()
     {
         /*   if (PolyCrystal == null) return;
@@ -2025,9 +1969,7 @@ public partial class DiffractionPatternControl : CaptureUserControlBase
            */
     }
 
-    /// <summary>
-    /// 画像保存ボタンを押したときの動作
-    /// </summary>
+    /// <summary>画像保存ボタンを押したときの動作</summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
     private void buttonSaveImage_Click(object sender, EventArgs e)

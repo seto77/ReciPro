@@ -372,9 +372,7 @@ public partial class CrystalDatabaseControl : CaptureUserControlBase
     #endregion
 
     #region データベースの正当性チェック
-    /// <summary>
-    /// 分割ファイルがきちんと作成されているかをチェック
-    /// </summary>
+    /// <summary>分割ファイルがきちんと作成されているかをチェック</summary>
     /// <param name="filename"></param>
     /// <returns></returns>
     public (bool Valid, int DataNum, int FileNum, long[] FileSizes, byte[][] CheckSums) CheckDatabaseFiles(string filename, bool checkMD5)
@@ -423,9 +421,7 @@ public partial class CrystalDatabaseControl : CaptureUserControlBase
     }
 
 
-    /// <summary>
-    /// MD5を取得する。ファイルが存在しない場合は null を返す。
-    /// </summary>
+    /// <summary>MD5を取得する。ファイルが存在しない場合は null を返す。</summary>
     /// <param name="path"></param>
     /// <returns></returns>
     private static byte[] getMD5(string path)
@@ -454,9 +450,7 @@ public partial class CrystalDatabaseControl : CaptureUserControlBase
 
     #region CODデータベースのダウロード、読み込み
 
-    /// <summary>
-    /// CODデータベースのダウンロードや読み込み. 
-    /// </summary>
+    /// <summary>CODデータベースのダウンロードや読み込み.</summary>
     /// <returns>正常に読み込めた場合はtrue, 途中キャンセルされたりした場合はfalse</returns>
     public bool ReadCOD()
     {
@@ -594,9 +588,7 @@ public partial class CrystalDatabaseControl : CaptureUserControlBase
     #endregion
 
     #region 進捗状況のレポート
-    /// <summary>
-    /// 進捗状況
-    /// </summary>
+    /// <summary>進捗状況</summary>
     /// <param name="current"></param>
     /// <param name="total"></param>
     /// <param name="elapsedMilliseconds">経過時間</param>

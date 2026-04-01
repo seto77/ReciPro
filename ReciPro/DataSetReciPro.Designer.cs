@@ -13,9 +13,7 @@
 namespace ReciPro {
     
     
-    /// <summary>
-    ///Represents a strongly typed in-memory cache of data.
-    ///</summary>
+    /// <summary>Represents a strongly typed in-memory cache of data.</summary>
     [global::System.Serializable()]
     [global::System.ComponentModel.DesignerCategoryAttribute("code")]
     [global::System.ComponentModel.ToolboxItem(true)]
@@ -377,9 +375,7 @@ namespace ReciPro {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public delegate void DataTableBetheRowChangeEventHandler(object sender, DataTableBetheRowChangeEvent e);
         
-        /// <summary>
-        ///Represents the strongly named DataTable class.
-        ///</summary>
+        /// <summary>Represents the strongly named DataTable class.</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
         public partial class DataTableSpotDataTable : global::System.Data.TypedTableBase<DataTableSpotRow> {
@@ -869,9 +865,7 @@ namespace ReciPro {
             }
         }
         
-        /// <summary>
-        ///Represents the strongly named DataTable class.
-        ///</summary>
+        /// <summary>Represents the strongly named DataTable class.</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
         public partial class DataTableCandidateDataTable : global::System.Data.TypedTableBase<DataTableCandidateRow> {
@@ -1144,9 +1138,7 @@ namespace ReciPro {
             }
         }
         
-        /// <summary>
-        ///Represents the strongly named DataTable class.
-        ///</summary>
+        /// <summary>Represents the strongly named DataTable class.</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
         public partial class DataTableGrainDataTable : global::System.Data.TypedTableBase<DataTableGrainRow> {
@@ -1433,9 +1425,7 @@ namespace ReciPro {
             }
         }
         
-        /// <summary>
-        ///Represents the strongly named DataTable class.
-        ///</summary>
+        /// <summary>Represents the strongly named DataTable class.</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
         public partial class DataTableBetheDataTable : global::System.Data.TypedTableBase<DataTableBetheRow> {
@@ -1978,9 +1968,7 @@ namespace ReciPro {
             }
         }
         
-        /// <summary>
-        ///Represents strongly named DataRow class.
-        ///</summary>
+        /// <summary>Represents strongly named DataRow class.</summary>
         public partial class DataTableSpotRow : global::System.Data.DataRow {
             
             private DataTableSpotDataTable tableDataTableSpot;
@@ -2203,9 +2191,7 @@ namespace ReciPro {
             }
         }
         
-        /// <summary>
-        ///Represents strongly named DataRow class.
-        ///</summary>
+        /// <summary>Represents strongly named DataRow class.</summary>
         public partial class DataTableCandidateRow : global::System.Data.DataRow {
             
             private DataTableCandidateDataTable tableDataTableCandidate;
@@ -2302,9 +2288,7 @@ namespace ReciPro {
             }
         }
         
-        /// <summary>
-        ///Represents strongly named DataRow class.
-        ///</summary>
+        /// <summary>Represents strongly named DataRow class.</summary>
         public partial class DataTableGrainRow : global::System.Data.DataRow {
             
             private DataTableGrainDataTable tableDataTableGrain;
@@ -2429,9 +2413,7 @@ namespace ReciPro {
             }
         }
         
-        /// <summary>
-        ///Represents strongly named DataRow class.
-        ///</summary>
+        /// <summary>Represents strongly named DataRow class.</summary>
         public partial class DataTableBetheRow : global::System.Data.DataRow {
             
             private DataTableBetheDataTable tableDataTableBethe;
@@ -3004,9 +2986,7 @@ namespace ReciPro {
             }
         }
         
-        /// <summary>
-        ///Row event argument class
-        ///</summary>
+        /// <summary>Row event argument class</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public class DataTableSpotRowChangeEvent : global::System.EventArgs {
             
@@ -3038,9 +3018,7 @@ namespace ReciPro {
             }
         }
         
-        /// <summary>
-        ///Row event argument class
-        ///</summary>
+        /// <summary>Row event argument class</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public class DataTableCandidateRowChangeEvent : global::System.EventArgs {
             
@@ -3072,9 +3050,7 @@ namespace ReciPro {
             }
         }
         
-        /// <summary>
-        ///Row event argument class
-        ///</summary>
+        /// <summary>Row event argument class</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public class DataTableGrainRowChangeEvent : global::System.EventArgs {
             
@@ -3106,9 +3082,7 @@ namespace ReciPro {
             }
         }
         
-        /// <summary>
-        ///Row event argument class
-        ///</summary>
+        /// <summary>Row event argument class</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         public class DataTableBetheRowChangeEvent : global::System.EventArgs {
             

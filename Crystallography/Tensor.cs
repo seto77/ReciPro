@@ -34,9 +34,7 @@
             E33 = e33;
         }
 
-        /// <summary>
-        /// オイラー回転によって変換されるテンソル量を返す
-        /// </summary>
+        /// <summary>オイラー回転によって変換されるテンソル量を返す</summary>
         /// <param name="tensor"></param>
         /// <param name="phi"></param>
         /// <param name="rho"></param>

@@ -2,14 +2,10 @@
 
 namespace Crystallography;
 
-/// <summary>
-/// ステレオネット投影に関する静的メソッドを提供する
-/// </summary>
+/// <summary>ステレオネット投影に関する静的メソッドを提供する</summary>
 public static class Stereonet
 {
-    /// <summary>
-    /// ウルフネット上の点を返す
-    /// </summary>
+    /// <summary>ウルフネット上の点を返す</summary>
     /// <param name="vec"></param>
     /// <returns></returns>
     public static PointD ConvertVectorToWulff(Vector3DBase vec)
@@ -19,9 +15,7 @@ public static class Stereonet
         return v.Z >= -0.999999 ? new PointD(v.X / (1 + v.Z), v.Y / (1 + v.Z)) : new PointD(-100, -100);
     }
 
-    /// <summary>
-    /// シュミット上の点を返す
-    /// </summary>
+    /// <summary>シュミット上の点を返す</summary>
     /// <param name="vec"></param>
     /// <returns></returns>
     public static PointD ConvertVectorToSchmidt(Vector3DBase vec)

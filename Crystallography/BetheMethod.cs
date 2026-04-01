@@ -24,9 +24,7 @@ using DVec = MathNet.Numerics.LinearAlgebra.Complex.DenseVector;
 
 namespace Crystallography;
 
-/// <summary>
-/// Bethe法による動力学計算を提供するクラス。すべて、単位はnm
-/// </summary>
+/// <summary>Bethe法による動力学計算を提供するクラス。すべて、単位はnm</summary>
 [Serializable]
 public class BetheMethod
 {
@@ -39,9 +37,7 @@ public class BetheMethod
     // a1 * b1 + a2 * b2 + a3 * b3
     private static double Dot3(double a1, double b1, double a2, double b2, double a3, double b3)
         => Math.FusedMultiplyAdd(a1, b1, Math.FusedMultiplyAdd(a2, b2, a3 * b3));
-    /// <summary>
-    /// (001)ベクトル
-    /// </summary>
+    /// <summary>(001)ベクトル</summary>
     private static readonly Vector3DBase zNorm = new(0, 0, 1);
     public static bool EigenEnabled, MklEnabled, BlasEnabled, CudaEnabled;
 
@@ -50,14 +46,10 @@ public class BetheMethod
 
     #region フィールド、プロパティ
 
-    /// <summary>
-    /// 加速電圧 単位はkV
-    /// </summary>
+    /// <summary>加速電圧 単位はkV</summary>
     private double AccVoltage { get; set; }
     private Crystal Crystal { get; }
-    /// <summary>
-    /// 結晶の方位
-    /// </summary>
+    /// <summary>結晶の方位</summary>
     private Matrix3D BaseRotation { get; set; } = null;
     public double AlphaMax { get; set; }
     public double Cs { get; set; }
@@ -65,9 +57,7 @@ public class BetheMethod
     public Vector3DBase[] BeamDirections { get; set; }
     public int RotationArrayValidLength { get; set; } = 0;
 
-    /// <summary>
-    /// サンプル表面(から内部への)の法線単位ベクトル. ReciProの座標系は、画面右が+X、上が+Y,手前が+Zなので、初期値は(0,0,-1)
-    /// </summary>==null
+    /// <summary>サンプル表面(から内部への)の法線単位ベクトル. ReciProの座標系は、画面右が+X、上が+Y,手前が+Zなので、初期値は(0,0,-1)</summary>==null
     public Vector3D Surface { get; set; } = new Vector3D(0, 0, -1);
     public int MaxNumOfBloch { get; set; }
     public double Thickness { get; set; }
@@ -129,9 +119,7 @@ public class BetheMethod
     #endregion
     public bool IsEBSDNew_Busy => bwEBSDNew is null || bwEBSDNew.IsBusy; // (260327Ch) 以後はこちらを EBSD の本命 worker の稼働状態として使う
 
-    /// <summary>
-    /// CBEDのディスク情報 Disks[Z(thickness)_index][G_index], EBSDのときは [Voltage][Z(thickness)_index]
-    /// </summary>
+    /// <summary>CBEDのディスク情報 Disks[Z(thickness)_index][G_index], EBSDのときは [Voltage][Z(thickness)_index]</summary>
     [XmlIgnore]
     public CBED_Disk[][] Disks { get; set; }
 
@@ -159,19 +147,13 @@ public class BetheMethod
 
     private readonly Lock lockObj1 = new(), lockObj2 = new();
 
-    /// <summary>
-    /// Result_STEM_Ela[thickness][defocus]
-    /// </summary>
+    /// <summary>Result_STEM_Ela[thickness][defocus]</summary>
     public (Size Size, double Resolution, double[] Thicknesses, double[] Defocusses, Matrix3D rot, double[][][] ImageBoth, double[][][] ImageEla, double[][][] ImageTDS) ResultSTEM;
 
-    /// <summary>
-    /// Result_STEM_TDS[thickness][defocus]
-    /// </summary>
+    /// <summary>Result_STEM_TDS[thickness][defocus]</summary>
     public (Size Size, double Resolution, double[] Thicknesses, double[] Defocusses, Matrix3D rot, double[][][] Image) ResultHRTEM;
 
-    /// <summary>
-    /// 
-    /// </summary>
+    /// <summary></summary>
     public (int Width, int Height, double Resolution, double[][][] Image) Result_Potential;
 
     #endregion
@@ -240,9 +222,7 @@ public class BetheMethod
             bwCBED.CancelAsync();
     }
 
-    /// <summary>
-    ///
-    /// </summary>
+    /// <summary></summary>
     /// <param name="maxNumOfBloch"></param>
     /// <param name="voltage">加速電圧(kV)</param>
     /// <param name="rotation">基準となる方位</param>
@@ -260,9 +240,7 @@ public class BetheMethod
         bwCBED.RunWorkerAsync((LACBED, solver, thread));
     }
 
-    /// <summary>
-    /// CBED計算
-    /// </summary>
+    /// <summary>CBED計算</summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
     private unsafe void cbed_DoWork(object sender, DoWorkEventArgs e)
@@ -606,9 +584,7 @@ public class BetheMethod
         return (equivalentBeamDirection, equivalentSurface);
     }
 
-    /// <summary>
-    /// 原子位置とビーム集合から、EBSD solver に渡す位相因子行列を column-major で作る。
-    /// </summary>
+    /// <summary>原子位置とビーム集合から、EBSD solver に渡す位相因子行列を column-major で作る。</summary>
     private Complex[] CreatePhaseFactors((double x, double y, double z, double sigma)[] atomArray, int nAtoms, Beam[] beams)
     {
         var beamCount = beams?.Length ?? 0;
@@ -626,9 +602,7 @@ public class BetheMethod
         return phaseNG; // (260321Ch)
     }
 
-    /// <summary>
-    /// 1 つのビーム集合に対する後方散乱 TDS 行列を作る。
-    /// </summary>
+    /// <summary>1 つのビーム集合に対する後方散乱 TDS 行列を作る。</summary>
     private Complex[] CreateMasterPatternMuBack(double voltage, Beam[] beams)
     {
         var beamCount = beams?.Length ?? 0;
@@ -649,9 +623,7 @@ public class BetheMethod
         return muBack; // (260321Ch)
     }
 
-    /// <summary>
-    /// MasterPattern 用のポテンシャル行列を ArrayPool から確保して構築する。
-    /// </summary>
+    /// <summary>MasterPattern 用のポテンシャル行列を ArrayPool から確保して構築する。</summary>
     private Complex[] RentMasterPatternPotentialMatrix(Beam[] beams)
     {
         var beamCount = beams?.Length ?? 0;
@@ -663,9 +635,7 @@ public class BetheMethod
         return potentialMatrix;
     }
 
-    /// <summary>
-    /// MasterPattern 前計算で借りた Complex 配列を返却する。
-    /// </summary>
+    /// <summary>MasterPattern 前計算で借りた Complex 配列を返却する。</summary>
     private static void ReturnMasterPatternBuffer(Complex[] buffer)
     {
         if (buffer != null)
@@ -1922,9 +1892,7 @@ public class BetheMethod
 
     #region お蔵入り // (260327Ch) 旧 EBSD solver と専用 helper は参照されなくなったのでコメントアウトして退避
     /*
-    /// <summary>
-    /// EBSD計算用 ずっと悩んでいたバージョン。 結局Claudeに助けてもらって、上のバージョンに落ち着いた。
-    /// </summary>
+    /// <summary>EBSD計算用 ずっと悩んでいたバージョン。 結局Claudeに助けてもらって、上のバージョンに落ち着いた。</summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
     private void ebsd_DoWork_old(object sender, DoWorkEventArgs e)
@@ -2121,9 +2089,7 @@ public class BetheMethod
 
     #region 平行ビーム電子回折
 
-    /// <summary>
-    /// 平行ビームの電子回折計算
-    /// </summary>
+    /// <summary>平行ビームの電子回折計算</summary>
     /// <param name="maxNumOfBloch"></param>
     /// <param name="voltage"></param>
     /// <param name="rotation"></param>
@@ -2196,9 +2162,7 @@ public class BetheMethod
 
     #region Precession electron diffraction
 
-    /// <summary>
-    /// PEDの計算
-    /// </summary>
+    /// <summary>PEDの計算</summary>
     /// <param name="maxNumOfBloch"></param>
     /// <param name="voltage"></param>
     /// <param name="baseRotation"></param>
@@ -2956,9 +2920,7 @@ public class BetheMethod
 
     #region HRTEM Simulation
 
-    /// <summary>
-    /// 
-    /// </summary>
+    /// <summary></summary>
     /// <param name="BlochNum">ブロッホ波の数</param>
     /// <param name="AccVol">加速電圧(kv)</param>
     /// <param name="rot"></param>
@@ -3159,17 +3121,13 @@ public class BetheMethod
         }
         return U;
     }
-    /// <summary>
-    /// 局所ポテンシャル形式で計算
-    /// </summary>
+    /// <summary>局所ポテンシャル形式で計算</summary>
     /// <param name="g"></param>
     /// <param name="h"></param>
     /// <returns></returns>
     public (Complex Real, Complex Imag) getU(Beam g) => getU(AccVoltage, g);
 
-    /// <summary>
-    /// g=0 のuの値を得る
-    /// </summary>
+    /// <summary>g=0 のuの値を得る</summary>
     /// <param name="voltage"></param>
     /// <returns></returns>
     public (Complex Real, Complex Imag) getU(double voltage) => getU(voltage, new Beam((0, 0, 0), new Vector3DBase(0, 0, 0)));
@@ -3197,9 +3155,7 @@ public class BetheMethod
     #endregion
 
     #region ポテンシャルのマトリックス
-    /// <summary>
-    /// ポテンシャルマトリックスを求める. k0の単位はnm^-1. 
-    /// </summary>
+    /// <summary>ポテンシャルマトリックスを求める. k0の単位はnm^-1.</summary>
     /// <param name="b"></param>
     /// <returns></returns>
     private Complex[] getPotentialMatrix(Beam[] b)
@@ -3262,9 +3218,7 @@ public class BetheMethod
     #endregion
 
     #region 固有値問題対象のマトリックス
-    /// <summary>
-    /// 固有値問題マトリックスを求める. k0の単位はnm^-1. パフォーマンス上の理由から、一次元配列にしている。
-    /// </summary>
+    /// <summary>固有値問題マトリックスを求める. k0の単位はnm^-1. パフォーマンス上の理由から、一次元配列にしている。</summary>
     /// <param name="b"></param>
     /// <returns></returns>
     private Complex[] getEigenMatrix(Beam[] b, Complex[] potentialMatrix = null)
@@ -3273,9 +3227,7 @@ public class BetheMethod
         getEigenMatrix(b.Length, b, ref eigenMatrix, potentialMatrix);
         return eigenMatrix;
     }
-    /// <summary>
-    /// 固有値問題マトリックスを求める. k0の単位はnm^-1. パフォーマンス上の理由から、一次元配列にしている。メモリ節約したい場合はeigenMatrixをShared.Rentして渡すこと。
-    /// </summary>
+    /// <summary>固有値問題マトリックスを求める. k0の単位はnm^-1. パフォーマンス上の理由から、一次元配列にしている。メモリ節約したい場合はeigenMatrixをShared.Rentして渡すこと。</summary>
     /// <param name="dim"></param>
     /// <param name="b"></param>
     /// <param name="eigenMatrix"></param>
@@ -3324,9 +3276,7 @@ public class BetheMethod
     static int compose((int h, int k, int l) index) => ((index.h + 255) << 20) + ((index.k + 255) << 10) + index.l + 255;
     static (int h, int k, int l) decompose(int key) => ((key >> 20) - 255, ((key << 12) >> 22) - 255, ((key << 22) >> 22) - 255);
 
-    /// <summary>
-    /// 格子タイプに対応する direction セットを返す。260318Cl 追加
-    /// </summary>
+    /// <summary>格子タイプに対応する direction セットを返す。260318Cl 追加</summary>
     private FrozenSet<(int h, int k, int l)> GetDirection()
     {
         if (Crystal.Symmetry.LatticeTypeStr == "F") return directionF;
@@ -3385,9 +3335,7 @@ public class BetheMethod
         gCache = [.. candidates];
     }
 
-    /// <summary>
-    /// 候補となるgVectorを検索する.
-    /// </summary>
+    /// <summary>候補となるgVectorを検索する.</summary>
     /// <param name="baseRotation">結晶方位</param>
     /// <param name="vecK0">ビーム方位</param>
     /// <param name="maxNumOfBloch">指定しない場合は MaxNumOfBloch を使用 </param>
@@ -3527,9 +3475,7 @@ public class BetheMethod
 
     #region P, Q のリセットやゲット
 
-    /// <summary>
-    /// 引数のBeamsとrotationをもとに、PとQだけセットして返す。ほかのパラメータは放置.
-    /// </summary>
+    /// <summary>引数のBeamsとrotationをもとに、PとQだけセットして返す。ほかのパラメータは放置.</summary>
     /// <param name="baseRotation"></param>
     /// <param name="k0"></param>
     /// <returns></returns>
@@ -3540,9 +3486,7 @@ public class BetheMethod
         return newBeams;
     }
 
-    /// <summary>
-    /// 引数の Beams と rotation をもとに、指定した表面法線で P と Q を再計算する。
-    /// </summary>
+    /// <summary>引数の Beams と rotation をもとに、指定した表面法線で P と Q を再計算する。</summary>
     public Beam[] reset_gVectors(Beam[] beams, Matrix3D baseRotation, Vector3DBase vecK0, Vector3DBase surface)
     {
         var newBeams = GC.AllocateUninitializedArray<Beam>(beams.Length);
@@ -3553,9 +3497,7 @@ public class BetheMethod
     public void reset_gVectors(int dim, Beam[] beams, Matrix3D baseRotation, Vector3DBase vecK0, ref Beam[] newBeams)
         => reset_gVectors(dim, beams, baseRotation, vecK0, Surface, ref newBeams); // (260321Ch) 固定表面版 wrapper
 
-    /// <summary>
-    /// 指定した表面法線で P, Q を再計算する内部実装。
-    /// </summary>
+    /// <summary>指定した表面法線で P, Q を再計算する内部実装。</summary>
     public void reset_gVectors(int dim, Beam[] beams, Matrix3D baseRotation, Vector3DBase vecK0, Vector3DBase surface, ref Beam[] newBeams)
     {
         // var mat = baseRotation * Crystal.MatrixInverseTransposed; // (260321Ch) 旧実装: 毎回 g = mat * hkl を再計算していた
@@ -3594,16 +3536,12 @@ public class BetheMethod
 
     private double getP(in Vector3DBase g, in Vector3DBase vecK0) => getP(g, vecK0, Surface); // (260321Ch) 固定表面版 wrapper
 
-    /// <summary>
-    /// 指定した表面法線に対する P を求める。
-    /// </summary>
+    /// <summary>指定した表面法線に対する P を求める。</summary>
     private static double getP(in Vector3DBase g, in Vector3DBase vecK0, Vector3DBase surface) => 2 * surface * (vecK0 + g);
 
     private (double Q, double P) getQP(in Vector3DBase g, in Vector3DBase vecK0) => getQP(g, vecK0, Surface); // (260321Ch) 固定表面版 wrapper
 
-    /// <summary>
-    /// 指定した表面法線に対する Q, P を求める。
-    /// </summary>
+    /// <summary>指定した表面法線に対する Q, P を求める。</summary>
     private static (double Q, double P) getQP(in Vector3DBase g, in Vector3DBase vecK0, Vector3DBase surface) => (getQ(g, vecK0), getP(g, vecK0, surface));
 
     public (double Q, double P) getQP(in Vector3DBase g, double kvac, double u0, Vector3DBase beamDirection = null)
@@ -3612,9 +3550,7 @@ public class BetheMethod
     #endregion
 
     #region K0ベクトルを求める
-    /// <summary>
-    /// K0ベクトルを求める。K0ベクトルは、XY方向を保存したままZ方向のみ変化する。
-    /// </summary>
+    /// <summary>K0ベクトルを求める。K0ベクトルは、XY方向を保存したままZ方向のみ変化する。</summary>
     /// <param name="beamRotation"></param>
     /// <param name="kvac"></param>
     /// <param name="u0"></param>
@@ -3622,9 +3558,7 @@ public class BetheMethod
     public Vector3DBase getVecK0(double kvac, double u0, Vector3DBase beamDirection = null)
         => getVecK0(kvac, u0, beamDirection, GetEbsdSurfaceNormal(beamDirection)); // (260321Ch) local-surface mode に追従する
 
-    /// <summary>
-    /// 指定した表面法線に対して K0 ベクトルを求める。
-    /// </summary>
+    /// <summary>指定した表面法線に対して K0 ベクトルを求める。</summary>
     public Vector3DBase getVecK0(double kvac, double u0, Vector3DBase beamDirection, Vector3DBase surface)
     {
         // |k0|^2 - |kvac|^2 = u0
@@ -3644,50 +3578,34 @@ public class BetheMethod
 
     public class Beam
     {
-        /// <summary>
-        /// 指数
-        /// </summary>
+        /// <summary>指数</summary>
         public int H => Index.H;
         public int K => Index.K;
         public int L => Index.L;
 
-        /// <summary>
-        /// 指数
-        /// </summary>
+        /// <summary>指数</summary>
         public (int H, int K, int L) Index;
 
-        /// <summary>
-        /// 逆格子ベクトル
-        /// </summary>
+        /// <summary>逆格子ベクトル</summary>
         public Vector3DBase Vec;
 
-        /// <summary>
-        /// 励起誤差
-        /// </summary>
+        /// <summary>励起誤差</summary>
         public double S => Math.Sqrt(P * P / 4 + Q) - P / 2;
 
         public Complex Ureal;
 
         public Complex Uimag;
 
-        /// <summary>
-        /// k0^2 - (k0 + g)^2 = - g (2 k0 +g) (2 k0 S 励起誤差とわずかに定義が違う)
-        /// </summary>
+        /// <summary>k0^2 - (k0 + g)^2 = - g (2 k0 +g) (2 k0 S 励起誤差とわずかに定義が違う)</summary>
         public double Q;
 
-        /// <summary>
-        /// 2 n (k0 + g) 大塚さんの資料参考
-        /// </summary>
+        /// <summary>2 n (k0 + g) 大塚さんの資料参考</summary>
         public double P;
 
-        /// <summary>
-        /// 振幅
-        /// </summary>
+        /// <summary>振幅</summary>
         public Complex Psi;
 
-        /// <summary>
-        /// 強度を保存する(PED計算の時のみ使用)
-        /// </summary>
+        /// <summary>強度を保存する(PED計算の時のみ使用)</summary>
         public double intensity = 0;
 
 
@@ -3697,14 +3615,10 @@ public class BetheMethod
         /// </summary>
         public Complex Lenz = new(1, 0);
 
-        /// <summary>
-        /// 評価値
-        /// </summary>
+        /// <summary>評価値</summary>
         public double Rating => Vec.Length * Q * Q;
 
-        /// <summary>
-        /// コンストラクタ
-        /// </summary>
+        /// <summary>コンストラクタ</summary>
         /// <param name="hkl">指数</param>
         /// <param name="vec">逆格子ベクトル</param>
         /// <param name="s">励起誤差</param>
@@ -3766,21 +3680,15 @@ public class BetheMethod
     #region CBED_Diskクラス
     public class CBED_Disk(int[] hkl, Vector3DBase vec, double thickness, Complex[] amplitudes)
     {
-        /// <summary>
-        /// 指数
-        /// </summary>
+        /// <summary>指数</summary>
         public readonly int H = hkl[0], K = hkl[1], L = hkl[2];
 
-        /// <summary>
-        /// 厚み
-        /// </summary>
+        /// <summary>厚み</summary>
         public readonly double Thickness = thickness;
 
         public readonly Vector3DBase G = vec;
 
-        /// <summary>
-        /// 振幅を格納した配列
-        /// </summary>
+        /// <summary>振幅を格納した配列</summary>
         public Complex[] Amplitudes;
 
         public readonly Complex[] RawAmplitudes = amplitudes;

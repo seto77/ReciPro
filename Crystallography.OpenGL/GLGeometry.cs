@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using M3d = OpenTK.Mathematics.Matrix3d;
 using V2d = OpenTK.Mathematics.Vector2d;
@@ -95,9 +95,7 @@ public static class GLGeometry
         return (iList, center, norm);
     }
 
-    /// <summary>
-    /// Z軸(001)を引数のベクトルvに回転させる行列を生成する
-    /// </summary>
+    /// <summary>Z軸(001)を引数のベクトルvに回転させる行列を生成する</summary>
     /// <param name="v"></param>
     /// <returns></returns>
     public static M3d CreateRotationFromZ(V3d v)
@@ -111,9 +109,7 @@ public static class GLGeometry
             return M3d.CreateFromAxisAngle(V3d.Cross(v, Z), V3d.CalculateAngle(Z, v));
     }
 
-    /// <summary>
-    /// Z軸(001)を引数のベクトルvに回転させる行列を生成する
-    /// </summary>
+    /// <summary>Z軸(001)を引数のベクトルvに回転させる行列を生成する</summary>
     /// <param name="v"></param>
     /// <returns></returns>
     public static M3d CreateRotationToZ(V3d v)

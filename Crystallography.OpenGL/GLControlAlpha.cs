@@ -43,52 +43,32 @@ public unsafe partial class GLControlAlpha : UserControl
     }
 
     #region static な property, field. OpengGLのバージョン関連
-    /// <summary>
-    /// OpenGLを無効にするか。 Versionチェックが出来ないときなどに、Trueになる。
-    /// </summary>
+    /// <summary>OpenGLを無効にするか。 Versionチェックが出来ないときなどに、Trueになる。</summary>
     public static bool DisablingOpenGL { get; set; }
 
-    /// <summary>
-    /// 動作しているOpenGLのバージョン (3桁整数, 430など)
-    /// </summary>
+    /// <summary>動作しているOpenGLのバージョン (3桁整数, 430など)</summary>
     public static int Version { get; }
 
-    /// <summary>
-    /// 動作しているOpenGLのバージョン (文字列, 4.3.0など)
-    /// </summary>
+    /// <summary>動作しているOpenGLのバージョン (文字列, 4.3.0など)</summary>
     public static string VersionStr => $"{Version / 100}.{Version / 10 % 10}.{Version % 10}";
 
-    /// <summary>
-    /// Z-sortのために最低必要なOpenGLのバージョン (3桁整数, 410など)
-    /// </summary>
+    /// <summary>Z-sortのために最低必要なOpenGLのバージョン (3桁整数, 410など)</summary>
     //public static int VersionForZsort { get; } = 150;
     public static int VersionForZsort { get; } = 410; // (260319Ch) 共通描画パスの下限を OpenGL 4.1 core に引き上げる
-    /// <summary>
-    /// Z-sortのために最低必要なOpenGLのバージョン (文字列, 4.1.0など)
-    /// </summary>
+    /// <summary>Z-sortのために最低必要なOpenGLのバージョン (文字列, 4.1.0など)</summary>
     public static string VersionForZsortStr => $"{VersionForZsort / 100}.{VersionForZsort / 10 % 10}.{VersionForZsort % 10}";
-    /// <summary>
-    /// Z-sortの条件を満たしているか
-    /// </summary>
+    /// <summary>Z-sortの条件を満たしているか</summary>
     public static bool ZsortEnabled => VersionForZsort <= Version;
 
-    /// <summary>
-    /// PPLLのために最低必要なOpenGLのバージョン (3桁整数, 430など)
-    /// </summary>
+    /// <summary>PPLLのために最低必要なOpenGLのバージョン (3桁整数, 430など)</summary>
     public static int VersionForPpll { get; } = 430;
-    /// <summary>
-    /// PPLLのために最低必要なOpenGLのバージョン (文字列, 3.3.0など)
-    /// </summary>
+    /// <summary>PPLLのために最低必要なOpenGLのバージョン (文字列, 3.3.0など)</summary>
     public static string VersionForPpllStr => $"{VersionForPpll / 100}.{VersionForPpll / 10 % 10}.{VersionForPpll % 10}";
 
-    /// <summary>
-    /// PPLLのバージョンを満たしているか.
-    /// </summary>
+    /// <summary>PPLLのバージョンを満たしているか.</summary>
     public static bool PpllEnabled => VersionForPpll <= Version;
 
-    /// <summary>
-    /// DDPのために最低必要なOpenGLのバージョン (3桁整数, 410など)
-    /// </summary>
+    /// <summary>DDPのために最低必要なOpenGLのバージョン (3桁整数, 410など)</summary>
     public static int VersionForDdp { get; } = 410; // (260319Ch) Dual depth peeling は draw-buffers blend を使う 4.1 core を前提とする
     public static string VersionForDdpStr => $"{VersionForDdp / 100}.{VersionForDdp / 10 % 10}.{VersionForDdp % 10}";
     public static bool DdpEnabled => VersionForDdp <= Version;
@@ -141,17 +121,11 @@ public unsafe partial class GLControlAlpha : UserControl
     public enum TranslatingModes { Object, View }
     public enum PostAntiAliasingModes { None, FXAA } // (260319Ch) True MSAA is difficult for OIT paths, so allow a post AA fallback
     public enum FragShaders {
-        /// <summary>
-        /// Per-Pixel Linked List (PPLL)
-        /// </summary>
+        /// <summary>Per-Pixel Linked List (PPLL)</summary>
         PPLL,
-        /// <summary>
-        /// Object-level Z (depth) sorting with alpha blending (ZSORT)
-        /// </summary>
+        /// <summary>Object-level Z (depth) sorting with alpha blending (ZSORT)</summary>
         ZSORT,
-        /// <summary>
-        /// Double depth peeling (DDP)
-        /// </summary>
+        /// <summary>Double depth peeling (DDP)</summary>
         DDP
 
     }
@@ -165,9 +139,7 @@ public unsafe partial class GLControlAlpha : UserControl
     public new PaintEventHandler Paint;
 
 
-    /// <summary>
-    /// WorldMatrixが変化したときに発生するイベント. 
-    /// </summary>
+    /// <summary>WorldMatrixが変化したときに発生するイベント.</summary>
     [Browsable(true)]
     [Description("WorldMatrixが変化したときに発生するイベント. マウスで回転させた場合や、WorldMatrixに直接 set したときに発生。")]
     public event EventHandler WorldMatrixChanged;
@@ -178,9 +150,7 @@ public unsafe partial class GLControlAlpha : UserControl
 
     public string ToolTip { set { toolTip.SetToolTip(glControl, value); } }
 
-    /// <summary>
-    /// VisualStudioデザイナーの編集の時はTrue
-    /// </summary>
+    /// <summary>VisualStudioデザイナーの編集の時はTrue</summary>
     public new bool DesignMode
     {
         get
@@ -208,15 +178,11 @@ public unsafe partial class GLControlAlpha : UserControl
     // could support higher resolutions, but this is reasonable for
     // this application
 
-    /// <summary>
-    /// 画像の最大幅 (PPLLのパラメータ)
-    /// </summary>
+    /// <summary>画像の最大幅 (PPLLのパラメータ)</summary>
     [Category("Rendering properties")]
     public int MaxWidth { get; set; } = 2560;
 
-    /// <summary>
-    /// 画像の最大高さ (PPLLのパラメータ)
-    /// </summary>
+    /// <summary>画像の最大高さ (PPLLのパラメータ)</summary>
     [Category("Rendering properties")]
     public int MaxHeight { get; set; } = 1440;
 
@@ -228,15 +194,11 @@ public unsafe partial class GLControlAlpha : UserControl
     [Category("Rendering properties")]
     public int NodeCoefficient { get; set; } = 10;
 
-    /// <summary>
-    /// PPLL時に、どれだけの数の重なり合いを考慮するかをパラメータ.
-    /// </summary>
+    /// <summary>PPLL時に、どれだけの数の重なり合いを考慮するかをパラメータ.</summary>
     [Category("Rendering properties")]
     public int MaxFragments { get; set; } = 100;
 
-    /// <summary>
-    /// DDP 時に最大何回 peel pass を回すか. 1 pass で前後 2 層ずつ進む。
-    /// </summary>
+    /// <summary>DDP 時に最大何回 peel pass を回すか. 1 pass で前後 2 層ずつ進む。</summary>
     [Category("Rendering properties")]
     public int DualDepthPeelingPasses { get; set; } = 12; // (260319Ch) 品質と速度の中間点として 24 層相当を既定値にする
 
@@ -247,9 +209,7 @@ public unsafe partial class GLControlAlpha : UserControl
     [Category("Rendering properties")]
     public bool DualDepthPeelingUseOcclusionQuery { get; set; } = false; // (260319Ch) 速度優先の既定値では query の同期待ちを避ける
 
-    /// <summary>
-    /// OIT 系パスの最終画像に対する後段 AA.
-    /// </summary>
+    /// <summary>OIT 系パスの最終画像に対する後段 AA.</summary>
     [Category("Rendering properties")]
     public PostAntiAliasingModes PostAntiAliasing
     {
@@ -272,9 +232,7 @@ public unsafe partial class GLControlAlpha : UserControl
     public FragShaders FragShader { get; } = FragShaders.ZSORT;
 
     #region Depth Cueing
-    /// <summary>
-    /// Depth cueingのプロパティ。変更すると、SetDepthCueing()が走る.
-    /// </summary>
+    /// <summary>Depth cueingのプロパティ。変更すると、SetDepthCueing()が走る.</summary>
     [Category("Rendering properties")]
     public (bool Enabled, double Zfar, double Znear) DepthCueing
     {
@@ -295,21 +253,15 @@ public unsafe partial class GLControlAlpha : UserControl
     public static bool DisableTextRendering { get; set; } = true;
 
     #region マウス関連
-    /// <summary>
-    /// マウスによる回転操作を許可するか
-    /// </summary>
+    /// <summary>マウスによる回転操作を許可するか</summary>
     [Category("Mouse Operation")]
     public bool AllowMouseRotation { get; set; } = true;
 
-    /// <summary>
-    /// マウスによる平行移動操作を許可するか
-    /// </summary>
+    /// <summary>マウスによる平行移動操作を許可するか</summary>
     [Category("Mouse Operation")]
     public bool AllowMouseTranslating { get; set; } = true;
 
-    /// <summary>
-    /// マウスによるスケーリング操作を許可するか
-    /// </summary>
+    /// <summary>マウスによるスケーリング操作を許可するか</summary>
     [Category("Mouse Operation")]
     public bool AllowMouseScaling { get; set; } = true;
 
@@ -322,16 +274,12 @@ public unsafe partial class GLControlAlpha : UserControl
     #endregion
 
 
-    /// <summary>
-    /// 投影モード
-    /// </summary>
+    /// <summary>投影モード</summary>
     [Category("Rendering properties")]
     public ProjectionModes ProjectionMode { get => projectionMode; set { projectionMode = value; setProjMatrix(); } }
     private ProjectionModes projectionMode = ProjectionModes.Orhographic;
 
-    /// <summary>
-    /// バックグラウンドカラー
-    /// </summary>
+    /// <summary>バックグラウンドカラー</summary>
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     [Category("Rendering properties")]
     public Col4 BackgroundColor { get => backgroundColor; set { backgroundColor = value; Render(); } }
@@ -339,9 +287,7 @@ public unsafe partial class GLControlAlpha : UserControl
 
     #region Geometry関連
 
-    /// <summary>
-    /// 光源(Light)の位置
-    /// </summary>
+    /// <summary>光源(Light)の位置</summary>
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     [Category("Geometry")]
     public Vec3d LightPosition { get => lightPosition; set { lightPosition = value; lightPositionF = value.ToV3f(); Render(); } }
@@ -349,16 +295,12 @@ public unsafe partial class GLControlAlpha : UserControl
     private Vec3d lightPosition = new(10, 10, 10);
     private Vec3f lightPositionF = new(10, 10, 10);
 
-    /// <summary>
-    /// 回転中心座標 (ワールド回転および光源に対して共通)
-    /// </summary>
+    /// <summary>回転中心座標 (ワールド回転および光源に対して共通)</summary>
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     [Category("Geometry")]
     public Vec3d RotationCenter { get; set; } = new Vec3d(0, 0, 0);
 
-    /// <summary>
-    /// ワールド座標系マトリックス. setすると、Renderし、WorldMatrixChangedイベントが発生
-    /// </summary>
+    /// <summary>ワールド座標系マトリックス. setすると、Renderし、WorldMatrixChangedイベントが発生</summary>
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     [Category("Geometry")]
     public Mat4d WorldMatrix
@@ -397,9 +339,7 @@ public unsafe partial class GLControlAlpha : UserControl
     }
     public static List<(string Product, string Version)> GraphicsInfo { get; set; } = [];
 
-    /// <summary>
-    /// カメラの位置
-    /// </summary>
+    /// <summary>カメラの位置</summary>
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     [Category("Geometry")]
     public Vec3d ViewFrom { get => viewFrom; set { viewFrom = value; viewFromF = value.ToV3f(); setViewMatrix(); } }
@@ -407,27 +347,21 @@ public unsafe partial class GLControlAlpha : UserControl
     private Vec3d viewFrom = new(0, 0, 20);
     private Vec3f viewFromF = new(0, 0, 20);
 
-    /// <summary>
-    /// カメラのターゲット
-    /// </summary>
+    /// <summary>カメラのターゲット</summary>
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     [Category("Geometry")]
     public Vec3d ViewTo { get => viewTo; set { viewTo = value; setViewMatrix(); } }
 
     private Vec3d viewTo = new(0, 0, 0);
 
-    /// <summary>
-    /// カメラの上方向
-    /// </summary>
+    /// <summary>カメラの上方向</summary>
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     [Category("Geometry")]
     public Vec3d ViewUp { get => viewUp; set { viewUp = value; setViewMatrix(); } }
 
     private Vec3d viewUp = new(0, 1, 0);
 
-    /// <summary>
-    /// カメラ(ビュー)マトリックス
-    /// </summary>
+    /// <summary>カメラ(ビュー)マトリックス</summary>
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     [Category("Geometry")]
     public Mat4d ViewMatrix { get => viewMatrix; set { viewMatrix = value; viewMatrixF = value.ToM4f(); Render(); } }
@@ -437,33 +371,25 @@ public unsafe partial class GLControlAlpha : UserControl
 
     private void setViewMatrix() => ViewMatrix = Mat4d.LookAt(ViewFrom, ViewTo, ViewUp);
 
-    /// <summary>
-    /// 投影面における中心位置(2次元)
-    /// </summary>
+    /// <summary>投影面における中心位置(2次元)</summary>
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     [Category("Geometry")]
     public Vec2d ProjCenter { get => projCenter; set { projCenter = value; setProjMatrix(); } }
 
     private Vec2d projCenter = new(0, 0);
 
-    /// <summary>
-    /// 投影面の横の長さ(GL空間での単位)
-    /// </summary>
+    /// <summary>投影面の横の長さ(GL空間での単位)</summary>
     [Category("Geometry")]
     public double ProjWidth { get => projWidth; set { projWidth = value; setProjMatrix(); } }
 
     private double projWidth = 4f;
 
-    /// <summary>
-    /// 投影面のアスペクト比
-    /// </summary>
+    /// <summary>投影面のアスペクト比</summary>
     [Category("Geometry")]
     // private double ProjAspect => glControl == null ? 0 : (double)glControl.ClientSize.Height / glControl.ClientSize.Width;
     private double ProjAspect => glControl is null || glControl.ClientSize.Width <= 0 || glControl.ClientSize.Height <= 0 ? 0d : (double)glControl.ClientSize.Height / glControl.ClientSize.Width; // (260320Ch) 0 除算や退化アスペクト比を避ける
 
-    /// <summary>
-    /// プロジェクション(投影)マトリックス
-    /// </summary>
+    /// <summary>プロジェクション(投影)マトリックス</summary>
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     [Category("Geometry")]
     public Mat4d ProjMatrix { get => projMatrix; set { projMatrix = value; projMatrixF = value.ToM4f(); Render(); } }
@@ -489,9 +415,7 @@ public unsafe partial class GLControlAlpha : UserControl
     #endregion プロパティ
 
     #region ロード関連
-    /// <summary>
-    /// //バージョンチェック。メモリの例外（通常のCatchでは捉えられない）を吐くので別メソッドにした。
-    /// </summary>
+    /// <summary>//バージョンチェック。メモリの例外（通常のCatchでは捉えられない）を吐くので別メソッドにした。</summary>
     /// <returns></returns>
     //[HandleProcessCorruptedStateExceptions] //260317Cl 削除 SYSLIB0032: .NET Core以降では無視される属性
     private static string[] CheckVersion()
@@ -561,9 +485,7 @@ public unsafe partial class GLControlAlpha : UserControl
         return 0;
     }
 
-    /// <summary>
-    /// GLControlのGraphicsを得る。メモリの例外（通常のCatchでは捉えられない）を吐くので別メソッドにした。
-    /// </summary>
+    /// <summary>GLControlのGraphicsを得る。メモリの例外（通常のCatchでは捉えられない）を吐くので別メソッドにした。</summary>
     /// <param name="control"></param>
     /// <returns></returns>
     //[HandleProcessCorruptedStateExceptions] //260317Cl 削除 SYSLIB0032: .NET Core以降では無視される属性
@@ -573,9 +495,7 @@ public unsafe partial class GLControlAlpha : UserControl
         catch { return null; }
     }
 
-    /// <summary>
-    /// 静的コンストラクタ. バージョン情報などはここでチェック
-    /// </summary>
+    /// <summary>静的コンストラクタ. バージョン情報などはここでチェック</summary>
     static GLControlAlpha()
     {
         //ビデオカード検索
@@ -598,9 +518,7 @@ public unsafe partial class GLControlAlpha : UserControl
         }
     }
 
-    /// <summary>
-    /// コンストラクタ. Zsort, DDP, PPLLは、コンストラクタで決める. 生成後に変更はできない。
-    /// </summary>
+    /// <summary>コンストラクタ. Zsort, DDP, PPLLは、コンストラクタで決める. 生成後に変更はできない。</summary>
     public GLControlAlpha(FragShaders shaders = FragShaders.ZSORT)
     {
         InitializeComponent();
@@ -754,9 +672,7 @@ public unsafe partial class GLControlAlpha : UserControl
     }
 
     #region　Shaderの作成 (CreateShader)
-    /// <summary>
-    /// シェーダーを作成する。SetShaderから呼ばれる
-    /// </summary>
+    /// <summary>シェーダーを作成する。SetShaderから呼ばれる</summary>
     /// <param name="vertexShaderCode"></param>
     /// <param name="fragmentShaderCode"></param>
     /// <returns></returns>
@@ -1025,9 +941,7 @@ public unsafe partial class GLControlAlpha : UserControl
     #endregion ロード関連
 
     #region Shader Storage の初期化
-    /// <summary>
-    /// Shader Storage の初期化
-    /// </summary>
+    /// <summary>Shader Storage の初期化</summary>
     private void initShaderStorage()
     {
         glControl.MakeCurrent();
@@ -1257,9 +1171,7 @@ public unsafe partial class GLControlAlpha : UserControl
 
     #region クリップ操作
 
-    /// <summary>
-    /// Clipをセットする。nullをセットした場合はクリップが無効化される
-    /// </summary>
+    /// <summary>Clipをセットする。nullをセットした場合はクリップが無効化される</summary>
     /// <param name="clip"></param>
     public void SetClip(Clip clip)
     {
@@ -1275,9 +1187,7 @@ public unsafe partial class GLControlAlpha : UserControl
     #region レンダリング
     public bool SkipRendering = false;
 
-    /// <summary>
-    /// レンダリング
-    /// </summary>
+    /// <summary>レンダリング</summary>
     public void Render()
     {
         if (InvokeRequired)//別スレッドから呼び出されたとき Invokeして呼びなおす

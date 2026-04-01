@@ -12,14 +12,10 @@ namespace OpenTK.GLControl
     /// </summary>
     public class GLControlSettings
     {
-        /// <summary>
-        /// Gets the default settings for a <see cref="GLControl"/>.
-        /// </summary>
+        /// <summary>Gets the default settings for a <see cref="GLControl"/>.</summary>
         public static readonly GLControlSettings Default = new GLControlSettings();
 
-        /// <summary>
-        /// Gets or sets a value representing the current version of the graphics API.
-        /// </summary>
+        /// <summary>Gets or sets a value representing the current version of the graphics API.</summary>
         /// <remarks>
         /// <para>
         /// OpenGL 3.3 is selected by default, and runs on almost any hardware made within the last ten years.
@@ -46,14 +42,10 @@ namespace OpenTK.GLControl
         /// </summary>
         public bool AutoLoadBindings { get; set; } = true;
 
-        /// <summary>
-        /// Gets or sets a value representing the current graphics profile flags.
-        /// </summary>
+        /// <summary>Gets or sets a value representing the current graphics profile flags.</summary>
         public ContextFlags Flags { get; set; } = ContextFlags.Default;
 
-        /// <summary>
-        /// Gets or sets a value representing the current graphics API profile.
-        /// </summary>
+        /// <summary>Gets or sets a value representing the current graphics API profile.</summary>
         /// <remarks>
         /// <para>
         /// This only has an effect on OpenGL 3.2 and higher. On older versions, this setting does nothing.
@@ -61,9 +53,7 @@ namespace OpenTK.GLControl
         /// </remarks>
         public ContextProfile Profile { get; set; } = ContextProfile.Core;
 
-        /// <summary>
-        /// Gets or sets a value representing the current graphics API.
-        /// </summary>
+        /// <summary>Gets or sets a value representing the current graphics API.</summary>
         /// <remarks>
         /// <para>
         /// If this is changed, you'll have to modify the API version as well, as the versioning of OpenGL and OpenGL ES
@@ -79,76 +69,56 @@ namespace OpenTK.GLControl
         /// </summary>
         public bool IsEventDriven { get; set; } = true;
 
-        /// <summary>
-        /// Gets or sets the context to share.
-        /// </summary>
+        /// <summary>Gets or sets the context to share.</summary>
         public IGLFWGraphicsContext? SharedContext { get; set; }
 
-        /// <summary>
-        /// Gets or sets a value indicating the number of samples that should be used.
-        /// </summary>
+        /// <summary>Gets or sets a value indicating the number of samples that should be used.</summary>
         /// <remarks>
         /// <c>0</c> indicates that no multisampling should be used;
         /// otherwise multisampling is used if available. The actual number of samples is the closest matching the given number that is supported.
         /// </remarks>
         public int NumberOfSamples { get; set; }
 
-        /// <summary>
-        /// Gets or sets a value indicating the number of stencil bits used for OpenGL context creation.
-        /// </summary>
+        /// <summary>Gets or sets a value indicating the number of stencil bits used for OpenGL context creation.</summary>
         /// <remarks>
         /// Default value is 8.
         /// </remarks>
         public int? StencilBits { get; set; }
 
-        /// <summary>
-        /// Gets or sets a value indicating the number of depth bits used for OpenGL context creation.
-        /// </summary>
+        /// <summary>Gets or sets a value indicating the number of depth bits used for OpenGL context creation.</summary>
         /// <remarks>
         /// Default value is 24.
         /// </remarks>
         public int? DepthBits { get; set; }
 
-        /// <summary>
-        /// Gets or sets a value indicating the number of red bits used for OpenGL context creation.
-        /// </summary>
+        /// <summary>Gets or sets a value indicating the number of red bits used for OpenGL context creation.</summary>
         /// <remarks>
         /// Default value is 8.
         /// </remarks>
         public int? RedBits { get; set; }
 
-        /// <summary>
-        /// Gets or sets a value indicating the number of green bits used for OpenGL context creation.
-        /// </summary>
+        /// <summary>Gets or sets a value indicating the number of green bits used for OpenGL context creation.</summary>
         /// <remarks>
         /// Default value is 8.
         /// </remarks>
         public int? GreenBits { get; set; }
 
-        /// <summary>
-        /// Gets or sets a value indicating the number of blue bits used for OpenGL context creation.
-        /// </summary>
+        /// <summary>Gets or sets a value indicating the number of blue bits used for OpenGL context creation.</summary>
         /// <remarks>
         /// Default value is 8.
         /// </remarks>
         public int? BlueBits { get; set; }
 
-        /// <summary>
-        /// Gets or sets a value indicating the number of alpha bits used for OpenGL context creation.
-        /// </summary>
+        /// <summary>Gets or sets a value indicating the number of alpha bits used for OpenGL context creation.</summary>
         /// <remarks>
         /// Default value is 8.
         /// </remarks>
         public int? AlphaBits { get; set; }
 
-        /// <summary>
-        /// Gets or sets a value indicating whether the backbuffer should be sRGB capable.
-        /// </summary>
+        /// <summary>Gets or sets a value indicating whether the backbuffer should be sRGB capable.</summary>
         public bool SrgbCapable { get; set; }
 
-        /// <summary>
-        /// Make a perfect shallow copy of this object.
-        /// </summary>
+        /// <summary>Make a perfect shallow copy of this object.</summary>
         /// <returns>A perfect shallow copy of this GLControlSettings object.</returns>
         public GLControlSettings Clone()
         {

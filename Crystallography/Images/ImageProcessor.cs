@@ -11,9 +11,7 @@ namespace Crystallography;
 public static class ImageProcess
 {
     #region Gaussian Blur
-    /// <summary>
-    /// GaussianBlurを施す。
-    /// </summary>
+    /// <summary>GaussianBlurを施す。</summary>
     /// <param name="pixels">画像データの一次元配列</param>
     /// <param name="width">画像の幅</param>
     /// <param name="radius">ピクセル単位でのフィルムにじみ半値幅</param>
@@ -75,9 +73,7 @@ public static class ImageProcess
         return blurTemp[0];
     }
 
-    /// <summary>
-    /// GaussianBlurを施す。横方向と縦方向を分離するため、高速。
-    /// </summary>
+    /// <summary>GaussianBlurを施す。横方向と縦方向を分離するため、高速。</summary>
     /// <param name="pixels">画像データの一次元配列</param>
     /// <param name="width">画像の幅</param>
     /// <param name="hwhm">ピクセル単位でのフィルムにじみ半値半幅</param>
@@ -89,9 +85,7 @@ public static class ImageProcess
         return results;
     }
 
-    /// <summary>
-    /// GaussianBlurを施す。横方向と縦方向を分離するため、高速。pixelsが直接書き換えられる。
-    /// </summary>
+    /// <summary>GaussianBlurを施す。横方向と縦方向を分離するため、高速。pixelsが直接書き換えられる。</summary>
     /// <param name="pixels">画像データの一次元配列</param>
     /// <param name="width">画像の幅</param>
     /// <param name="hwhm">ピクセル単位でのフィルムにじみ半値半幅</param>
@@ -100,9 +94,7 @@ public static class ImageProcess
         GaussianBlurFast(pixels, width, hwhm, pixels);
     }
 
-    /// <summary>
-    /// GaussianBlurを施す。横方向と縦方向を分離するため、高速。
-    /// </summary>
+    /// <summary>GaussianBlurを施す。横方向と縦方向を分離するため、高速。</summary>
     /// <param name="pixels">画像データの一次元配列</param>
     /// <param name="width">画像の幅</param>
     /// <param name="radius">ピクセル単位でのフィルムにじみ半値半幅　</param>
@@ -173,9 +165,7 @@ public static class ImageProcess
 
     #endregion
 
-    /// <summary>
-    /// 周囲のピクセルと比べて、標準偏差 × threshold以上外れたピクセルは、周囲のピクセルの平均強度にする。
-    /// </summary>
+    /// <summary>周囲のピクセルと比べて、標準偏差 × threshold以上外れたピクセルは、周囲のピクセルの平均強度にする。</summary>
     /// <param name="pixels"></param>
     /// <param name="width"></param>
     /// <param name="threshold"></param>
@@ -222,9 +212,7 @@ public static class ImageProcess
 
     private static readonly Lock lockObj = new Lock();
 
-    /// <summary>
-    /// 画像中から、スポットを検出する。戻り値はList<Vector3DBase>. X, Y: スポットのピクセル上の位置,  Int: 強度
-    /// </summary>
+    /// <summary>画像中から、スポットを検出する。戻り値はList<Vector3DBase>. X, Y: スポットのピクセル上の位置,  Int: 強度</summary>
     /// <param name="pixels"></param>
     /// <param name="width"></param>
     /// <param name="distanceOfNearestSpots"></param>
@@ -274,9 +262,7 @@ public static class ImageProcess
         return vec;
     }
 
-    /// <summary>
-    /// 画像を微分する
-    /// </summary>
+    /// <summary>画像を微分する</summary>
     /// <param name="pixels"></param>
     /// <param name="width"></param>
     /// <returns></returns>
@@ -317,9 +303,7 @@ public static class ImageProcess
         }
     }
 
-    /// <summary>
-    /// 画像中からラインプロファイルを取得する
-    /// </summary>
+    /// <summary>画像中からラインプロファイルを取得する</summary>
     /// <param name="pixels">なるべくParallelQuery<(double X, double Y, double Z)>の方がよい</param>
     /// <param name="imageWidth"></param>
     /// <param name="start"></param>

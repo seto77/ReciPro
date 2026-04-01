@@ -44,9 +44,7 @@ public class Statistics
     //    catch { return 0; }
     //}
 
-    /// <summary>
-    /// 標本の総和を1に規格化します
-    /// </summary>
+    /// <summary>標本の総和を1に規格化します</summary>
     /// <param name="values"></param>
     /// <returns></returns>
     public static double[] Normarize(params double[] values)
@@ -70,9 +68,7 @@ public class Statistics
         }
     }
 
-    /// <summary>
-    /// 標本標準分散を求めます
-    /// </summary>
+    /// <summary>標本標準分散を求めます</summary>
     /// <param name="values"></param>
     /// <returns></returns>
     public static double Variance(params double[] values)
@@ -92,9 +88,7 @@ public class Statistics
         catch { return 0; }
     }
 
-    /// <summary>
-    /// 共分散を求めます
-    /// </summary>
+    /// <summary>共分散を求めます</summary>
     /// <param name="values1"></param>
     /// <param name="values2"></param>
     /// <returns></returns>
@@ -113,9 +107,7 @@ public class Statistics
         catch { return 0; }
     }
 
-    /// <summary>
-    /// 標本標準偏差を求めます
-    /// </summary>
+    /// <summary>標本標準偏差を求めます</summary>
     /// <param name="values"></param>
     /// <returns></returns>
     public static double Deviation(params double[] values)
@@ -123,9 +115,7 @@ public class Statistics
         return Math.Sqrt(Variance(values));
     }
 
-    /// <summary>
-    /// 二変量の相関係数を求めます
-    /// </summary>
+    /// <summary>二変量の相関係数を求めます</summary>
     /// <param name="values1"></param>
     /// <param name="values2"></param>
     /// <returns></returns>
@@ -148,9 +138,7 @@ public class Statistics
         return Covariance / Math.Sqrt(Variance1 * Variance2);
     }
 
-    /// <summary>
-    /// 二変量のx[],y[]の一次関数近似をおこない傾きを返します
-    /// </summary>
+    /// <summary>二変量のx[],y[]の一次関数近似をおこない傾きを返します</summary>
     /// <param name="x"></param>
     /// <param name="y"></param>
     /// <returns></returns>
@@ -160,9 +148,7 @@ public class Statistics
         return (x.Length * SigmaProduct(x, y) - x.Sum() * y.Sum()) / (x.Length * SigmaSquare(x) - x.Sum() * y.Sum());
     }
 
-    /// <summary>
-    /// 二変量のx[],y[]の共分散行列の主成分分析から回帰直線を求めます。返す形は x sin(theta) - y cos(theta) = A ただし0 ＜ theta ＜ PI
-    /// </summary>
+    /// <summary>二変量のx[],y[]の共分散行列の主成分分析から回帰直線を求めます。返す形は x sin(theta) - y cos(theta) = A ただし0 ＜ theta ＜ PI</summary>
     /// <param name="values1"></param>
     /// <param name="values2"></param>
     /// <returns></returns>
@@ -183,9 +169,7 @@ public class Statistics
         }
     }
 
-    /// <summary>
-    /// 二変量のpt[].x, pt.y[]の共分散行列の主成分分析から回帰直線を求めます。返す形は x sin(theta) - y cos(theta) = A ただし0 ＜ theta ＜ PI
-    /// </summary>
+    /// <summary>二変量のpt[].x, pt.y[]の共分散行列の主成分分析から回帰直線を求めます。返す形は x sin(theta) - y cos(theta) = A ただし0 ＜ theta ＜ PI</summary>
     /// <param name="values1"></param>
     /// <param name="values2"></param>
     /// <returns></returns>
@@ -201,9 +185,7 @@ public class Statistics
         LineFitting(values1, values2, ref theta, ref A);
     }
 
-    /// <summary>
-    /// Pt[]を受け取ってその重心座標をかえします。
-    /// </summary>
+    /// <summary>Pt[]を受け取ってその重心座標をかえします。</summary>
     /// <param name="pt"></param>
     /// <returns></returns>
     public static PointD FindCenterPt(PointD[] pt)
@@ -218,9 +200,7 @@ public class Statistics
         return new PointD(values1.Average(), values2.Average());
     }
 
-    /// <summary>
-    /// 変量valuesの総和を求めます
-    /// </summary>
+    /// <summary>変量valuesの総和を求めます</summary>
     /// <param name="x"></param>
     /// <returns></returns>
     public static double Sigma(params double[] values)
@@ -233,9 +213,7 @@ public class Statistics
 
 
 
-    /// <summary>
-    /// 変量valuesの二乗和を求めます
-    /// </summary>
+    /// <summary>変量valuesの二乗和を求めます</summary>
     /// <param name="x"></param>
     /// <returns></returns>
     public static double SigmaSquare(params double[] values)
@@ -246,9 +224,7 @@ public class Statistics
         return sum;
     }
 
-    /// <summary>
-    /// 変量valuesの二乗和を求めます
-    /// </summary>
+    /// <summary>変量valuesの二乗和を求めます</summary>
     /// <param name="x"></param>
     /// <returns></returns>
     public static int SumSquare(params int[] values)
@@ -259,9 +235,7 @@ public class Statistics
         return sum;
     }
 
-    /// <summary>
-    /// 変量values1とvalues2の積の和を求めます
-    /// </summary>
+    /// <summary>変量values1とvalues2の積の和を求めます</summary>
     /// <param name="x"></param>
     /// <returns></returns>
     public static double SigmaProduct(double[] values1, double[] values2)
@@ -276,9 +250,7 @@ public class Statistics
 
     public static Lock lockObject = new();
 
-    /// <summary>
-    /// 平均mu, 標準偏差sigmaの正規分布乱数を得る。Box-Muller法による。
-    /// </summary>
+    /// <summary>平均mu, 標準偏差sigmaの正規分布乱数を得る。Box-Muller法による。</summary>
     /// <param name="mu">平均値</param>
     /// <param name="sigma">標準偏差</param>
     /// <returns>指定した正規分布に即した乱数</returns>
@@ -305,9 +277,7 @@ public class Statistics
     private static double Alpha, Beta, BoxMuller1, BoxMuller2;
     private static bool Flag = false;
 
-    /// <summary>
-    /// 平均mu, 標準偏差sigmaの対数正規分布乱数を得る。平均と標準偏差を変換し、Box-Muller法によるNormlDistribution関数を呼び出す。
-    /// </summary>
+    /// <summary>平均mu, 標準偏差sigmaの対数正規分布乱数を得る。平均と標準偏差を変換し、Box-Muller法によるNormlDistribution関数を呼び出す。</summary>
     /// <param name="mu">平均値</param>
     /// <param name="sigma">標準偏差</param>
     /// <returns>指定した対数正規分布に即した乱数</returns>
@@ -319,9 +289,7 @@ public class Statistics
             return Math.Exp(NormalDistribution(Math.Log(mu * mu) - Math.Log(mu * mu + sigma * sigma) / 2.0, Math.Sqrt(Math.Log(1 + sigma / mu * sigma / mu))));
     }
 
-    /// <summary>
-    /// 数値配列を受け取って頻度分布を返す
-    /// </summary>
+    /// <summary>数値配列を受け取って頻度分布を返す</summary>
     /// <param name="values"></param>
     /// <param name="division">指定した分割数になるように、データを丸める (0の時は丸めなし)</param>
     /// <returns></returns>
@@ -376,9 +344,7 @@ public class Statistics
 
     public static class Combination
     {
-        /// <summary>
-        /// n 個から m個の組み合わせを求める(重複あり/なし)
-        /// </summary>
+        /// <summary>n 個から m個の組み合わせを求める(重複あり/なし)</summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="items">items は、配列、Listなどが受け取れる</param>
         /// <param name="m">m は、選び取る数</param>

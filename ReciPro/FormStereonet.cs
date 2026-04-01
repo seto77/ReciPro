@@ -137,9 +137,7 @@ public partial class FormStereonet : CaptureFormBase
 
     #region 描画関連
 
-    /// <summary>
-    /// プロジェクション行列の設定を行う。
-    /// </summary>
+    /// <summary>プロジェクション行列の設定を行う。</summary>
     public bool SetProjection(Graphics g)
     {
         if (g != null && graphicsBox.ClientSize.Width != 0 && graphicsBox.ClientSize.Height != 0)
@@ -324,9 +322,7 @@ public partial class FormStereonet : CaptureFormBase
     private readonly List<double> cos = new(360);
     private readonly List<double> tan = new(360);
 
-    /// <summary>
-    /// ステレオネットの輪郭を描く
-    /// </summary>
+    /// <summary>ステレオネットの輪郭を描く</summary>
     /// <param name="g"></param>
     private void DrawOutline(Graphics g)
     {
@@ -448,9 +444,7 @@ public partial class FormStereonet : CaptureFormBase
         g.DrawLine(pen90, -1f, 0f, 1f, 0f);
     }
 
-    /// <summary>
-    /// ステレオネット中の点を描く
-    /// </summary>
+    /// <summary>ステレオネット中の点を描く</summary>
     /// <param name="g"></param>
     private void DrawStereoNet(Graphics g)
     {
@@ -619,9 +613,7 @@ public partial class FormStereonet : CaptureFormBase
         }
     }
 
-    /// <summary>
-    /// 大円描画
-    /// </summary>
+    /// <summary>大円描画</summary>
     /// <param name="g"></param>
     private void DrawCircles(Graphics g)
     {
@@ -1198,9 +1190,7 @@ public partial class FormStereonet : CaptureFormBase
         Draw();
     }
 
-    /// <summary>
-    /// 指数リストボックスの項目描画
-    /// </summary>
+    /// <summary>指数リストボックスの項目描画</summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
     private void listBoxSpecifiedIndices_DrawItem(object sender, DrawItemEventArgs e)

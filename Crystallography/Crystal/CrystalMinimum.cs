@@ -56,9 +56,7 @@ public partial class Crystal2
     [MemoryPackIgnore]
     public static byte ID => 0;
 
-    /// <summary>
-    /// a,b,c,alpha,beta,gammaの順番. 単位はAと度. エラーは 「9.726|5|」のような形式で表現
-    /// </summary>
+    /// <summary>a,b,c,alpha,beta,gammaの順番. 単位はAと度. エラーは 「9.726|5|」のような形式で表現</summary>
     [MemoryPackIgnore]
     public string[] CellTexts
     {
@@ -73,9 +71,7 @@ public partial class Crystal2
     }
 
 
-    /// <summary>
-    /// a,b,c,α,β,γ の順番. Getのみ. 長さはA, 角度は度単位.
-    /// </summary>
+    /// <summary>a,b,c,α,β,γ の順番. Getのみ. 長さはA, 角度は度単位.</summary>
     [MemoryPackIgnore]
     public ((double A, double B, double C, double Alpha, double Beta, double Gamma) Values, (double A, double B, double C, double Alpha, double Beta, double Gamma) Errors) Cell
     {
@@ -87,9 +83,7 @@ public partial class Crystal2
         }
     }
 
-    /// <summary>
-    /// a,b,c,α,β,γ の順番. Getのみ. 長さはA, 角度は度単位. エラーの値は含まない.
-    /// </summary>
+    /// <summary>a,b,c,α,β,γ の順番. Getのみ. 長さはA, 角度は度単位. エラーの値は含まない.</summary>
     [MemoryPackIgnore]
     public (double A, double B, double C, double Alpha, double Beta, double Gamma) CellOnlyValue
     {
@@ -102,9 +96,7 @@ public partial class Crystal2
         }
     }
 
-    /// <summary>
-    /// a,b,c,α,β,γ の順番. Getのみ. 長さはA, 角度は度単位. エラーの値は含まない.
-    /// </summary>
+    /// <summary>a,b,c,α,β,γ の順番. Getのみ. 長さはA, 角度は度単位. エラーの値は含まない.</summary>
     [MemoryPackIgnore]
     public (float A, float B, float C, float Alpha, float Beta, float Gamma) CellOnlyValueFloat
     {
@@ -118,9 +110,7 @@ public partial class Crystal2
     }
 
 
-    /// <summary>
-    /// a,b,c,α,β,γ の順番. Getのみ. 長さはnm, 角度はradian.
-    /// </summary>
+    /// <summary>a,b,c,α,β,γ の順番. Getのみ. 長さはnm, 角度はradian.</summary>
     [MemoryPackIgnore]
     public ((double A, double B, double C, double Alpha, double Beta, double Gamma) Values, (double A, double B, double C, double Alpha, double Beta, double Gamma) Errors) Cell_nm_radian
     {
@@ -132,9 +122,7 @@ public partial class Crystal2
         }
     }
 
-    /// <summary>
-    /// a,b,c,α,β,γ の順番. Getのみ. 長さはnm, 角度はradian. エラーの値は含まない.
-    /// </summary>
+    /// <summary>a,b,c,α,β,γ の順番. Getのみ. 長さはnm, 角度はradian. エラーの値は含まない.</summary>
     [MemoryPackIgnore]
     public (double A, double B, double C, double Alpha, double Beta, double Gamma) CellOnlyValue_nm_radian
     {
@@ -254,15 +242,11 @@ public partial class Crystal2
         return c2;
     }
 
-    /// <summary>
-    /// MemoryPackでシリアライズして byte[] 配列を返す
-    /// </summary>
+    /// <summary>MemoryPackでシリアライズして byte[] 配列を返す</summary>
     /// <returns></returns>
     public byte[] Serialize() => Serialize(this);
 
-    /// <summary>
-    /// 静的メソッド　MemoryPackでシリアライズしてbyte[]配列を返す
-    /// </summary>
+    /// <summary>静的メソッド　MemoryPackでシリアライズしてbyte[]配列を返す</summary>
     /// <param name="c"></param>
     /// <returns></returns>
     public static byte[] Serialize(Crystal2 c )
@@ -272,9 +256,7 @@ public partial class Crystal2
         return compressor.ToArray();
     }
 
-    /// <summary>
-    /// MemoryPackでシリアライズされた byte[] 配列からCrystal2を返す. 不適切な入力値だった場合は null 返し。
-    /// </summary>
+    /// <summary>MemoryPackでシリアライズされた byte[] 配列からCrystal2を返す. 不適切な入力値だった場合は null 返し。</summary>
     /// <param name="bytes"></param>
     /// <returns></returns>
     public static Crystal2 Deserialize(byte[] bytes)
@@ -335,9 +317,7 @@ public partial class Crystal2
         { '0', 0 }, { '1', 1 }, { '2', 2 }, { '3', 3 },  { '4', 4 }, { '5', 5 }, { '6', 6 }, { '7', 7 }, { '8', 8 }, { '9', 9 }, { '.', 10 }, { '/', 11 }, { '-', 12 }, { '(', 13 }, { ')', 13 }, { 'E', 14 },
     }.ToFrozenDictionary();
 
-    /// <summary>
-    /// 
-    /// </summary>
+    /// <summary></summary>
     /// <param name="s"></param>
     /// <returns></returns>
     public static byte[] ToBytes(string s)

@@ -13,9 +13,7 @@ public partial class WaveLengthControl : CaptureUserControlBase
 
     #region プロパティ
 
-    /// <summary>
-    /// VisualStudioデザイナーの編集の時はTrue
-    /// </summary>
+    /// <summary>VisualStudioデザイナーの編集の時はTrue</summary>
     public new bool DesignMode
     {
         get
@@ -33,9 +31,7 @@ public partial class WaveLengthControl : CaptureUserControlBase
         }
     }
 
-    /// <summary>
-    /// コントロールの配置をLeftToRightか、TopDownにするか
-    /// </summary>
+    /// <summary>コントロールの配置をLeftToRightか、TopDownにするか</summary>
     // (260322Ch) WFO1000: Microsoft ??????????????????? ???????????
     [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     public FlowDirection Direction
@@ -69,9 +65,7 @@ public partial class WaveLengthControl : CaptureUserControlBase
 
     
     bool monochrome = true;
-    /// <summary>
-    /// 単色モードかどうか falseの場合は白色モード
-    /// </summary>
+    /// <summary>単色モードかどうか falseの場合は白色モード</summary>
     [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     public bool Monochrome
     {
@@ -101,9 +95,7 @@ public partial class WaveLengthControl : CaptureUserControlBase
     }
 
     public bool showWaveSource = true;
-    /// <summary>
-    /// WaveSourceを表示するかどうか
-    /// </summary>
+    /// <summary>WaveSourceを表示するかどうか</summary>
     [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     public bool ShowWaveSource
     {
@@ -113,9 +105,7 @@ public partial class WaveLengthControl : CaptureUserControlBase
 
     public string waveLengthText = "0.4";
 
-    /// <summary>
-    /// 波長をÅ単位のテキスト形式で取得/設定
-    /// </summary>
+    /// <summary>波長をÅ単位のテキスト形式で取得/設定</summary>
     [Browsable(false)]
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public string WaveLengthText
@@ -134,9 +124,7 @@ public partial class WaveLengthControl : CaptureUserControlBase
         get => numericBoxWaveLength.Text;
     }
 
-    /// <summary>
-    /// 波長をnm単位のdoubleで取得/設定
-    /// </summary>
+    /// <summary>波長をnm単位のdoubleで取得/設定</summary>
     [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     public double WaveLength
     {
@@ -156,9 +144,7 @@ public partial class WaveLengthControl : CaptureUserControlBase
     }
 
     WaveSource waveSource = WaveSource.Xray;
-    /// <summary>
-    /// 線源を取得/設定
-    /// </summary>
+    /// <summary>線源を取得/設定</summary>
     [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     public WaveSource WaveSource
     {
@@ -185,9 +171,7 @@ public partial class WaveLengthControl : CaptureUserControlBase
 
     private int _XrayWaveSourceElementNumber = 0;
 
-    /// <summary>
-    /// X線の線源の元素を取得/設定
-    /// </summary>
+    /// <summary>X線の線源の元素を取得/設定</summary>
     [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     public int XrayWaveSourceElementNumber
     {
@@ -209,9 +193,7 @@ public partial class WaveLengthControl : CaptureUserControlBase
         }
     }
 
-    /// <summary>
-    /// X線の線源のLineを取得/設定
-    /// </summary>
+    /// <summary>X線の線源のLineを取得/設定</summary>
     [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     public XrayLine XrayWaveSourceLine
     {
@@ -242,9 +224,7 @@ public partial class WaveLengthControl : CaptureUserControlBase
 
 
 
-    /// <summary>
-    /// 電子線加速電圧(kV)をテキスト形式で取得/設定
-    /// </summary>
+    /// <summary>電子線加速電圧(kV)をテキスト形式で取得/設定</summary>
     [Browsable(false)]
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public string EnergyText
@@ -263,9 +243,7 @@ public partial class WaveLengthControl : CaptureUserControlBase
         }
     }
 
-    /// <summary>
-    /// 
-    /// </summary>
+    /// <summary></summary>
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     [Browsable(false)]
     public WaveProperty Property
@@ -304,9 +282,7 @@ public partial class WaveLengthControl : CaptureUserControlBase
 
 
 
-    /// <summary>
-    /// X線のElementが変更されたとき
-    /// </summary>
+    /// <summary>X線のElementが変更されたとき</summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
     private void comboBoxXRayElement_SelectedIndexChanged(object sender, EventArgs e)
@@ -350,9 +326,7 @@ public partial class WaveLengthControl : CaptureUserControlBase
 
     }
 
-    /// <summary>
-    /// X線のラインが変更したとき
-    /// </summary>
+    /// <summary>X線のラインが変更したとき</summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
     private void comboBoxXrayLine_SelectedIndexChanged(object sender, EventArgs e)
@@ -371,15 +345,11 @@ public partial class WaveLengthControl : CaptureUserControlBase
         }
     }
 
-    /// <summary>
-    /// 現状の原子番号、線種で、特性X線の波長とエネルギーをリセット
-    /// </summary>
+    /// <summary>現状の原子番号、線種で、特性X線の波長とエネルギーをリセット</summary>
     public void SetCharacteristicXray() => comboBoxXrayLine_SelectedIndexChanged(new object(), new EventArgs());
 
 
-    /// <summary>
-    /// 線源が変更されたとき
-    /// </summary>
+    /// <summary>線源が変更されたとき</summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
     private void radioButtonWaveSource_CheckedChanged(object sender, EventArgs e)
@@ -409,9 +379,7 @@ public partial class WaveLengthControl : CaptureUserControlBase
 
     private bool skipEvent = false;
 
-    /// <summary>
-    /// 波長が直接変更されたとき
-    /// </summary>
+    /// <summary>波長が直接変更されたとき</summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
     private void numericBoxWaveLength_ValueChanged(object sender, EventArgs e)
@@ -430,9 +398,7 @@ public partial class WaveLengthControl : CaptureUserControlBase
         WavelengthChanged?.Invoke(this, new EventArgs());
     }
 
-    /// <summary>
-    /// エネルギーが直接変更されたとき
-    /// </summary>
+    /// <summary>エネルギーが直接変更されたとき</summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
     private void numericBoxEnergy_ValueChanged(object sender, EventArgs e)

@@ -66,9 +66,7 @@ public struct RectangleD
     public readonly SizeD ToSizeD() => new(Width, Height);
     public readonly SizeF ToSizeF() => new((float)Width, (float)Height);
 
-    /// <summary>
-    /// 四捨五入して整数サイズに変換
-    /// </summary>
+    /// <summary>四捨五入して整数サイズに変換</summary>
     /// <returns></returns>
     public readonly Size ToSize() => new((int)(Width + 0.5), (int)(Height + 0.5));
 
@@ -190,9 +188,7 @@ public partial struct PointD : IComparable, IEquatable<PointD>
         else return Y.CompareTo(((PointD)obj).Y);
     }
 
-    /// <summary>
-    /// Get the string representation
-    /// </summary>
+    /// <summary>Get the string representation</summary>
     /// <returns></returns>
     public override readonly string ToString() => $"({X}, {Y})"; //260317Cl string.Format → 文字列補間
 

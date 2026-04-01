@@ -59,9 +59,7 @@ public static partial class ImageIO
 
     private static readonly char[] separator = ['='];
 
-    /// <summary>
-    /// 拡張子を渡して、その拡張子が読み込み可能かどうかを返す。
-    /// </summary>
+    /// <summary>拡張子を渡して、その拡張子が読み込み可能かどうかを返す。</summary>
     /// <param name="_ext"></param>
     /// <returns></returns>
     public static bool IsReadable(string _ext)
@@ -160,9 +158,7 @@ public static partial class ImageIO
     }
     #endregion
 
-    /// <summary>
-    /// 指定された file を読み込み、読み込んだ内容はRing.***に保存される。失敗したときは false を返す。flagはノーマライズするかどうか。
-    /// </summary>
+    /// <summary>指定された file を読み込み、読み込んだ内容はRing.***に保存される。失敗したときは false を返す。flagはノーマライズするかどうか。</summary>
     /// <param name="str"></param>
     /// <returns></returns>
     public static bool ReadImage(string str, bool? flag = null)

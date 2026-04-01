@@ -133,16 +133,12 @@ public partial class Bonds
 
     #region static メソッド、コンストラクタ
 
-    /// <summary>
-    /// Vesta標準のボンドを生成. 入力形式は、原子番号の配列
-    /// </summary>
+    /// <summary>Vesta標準のボンドを生成. 入力形式は、原子番号の配列</summary>
     /// <param name="atomicNumbers"></param>
     /// <returns></returns>
     public static Bonds[] GetVestaBonds(IEnumerable<int> atomicNumbers) => GetVestaBonds(atomicNumbers.Select(n => $"{n}: {AtomStatic.AtomicName(n)}"));
 
-    /// <summary>
-    /// Vesta標準のボンドを生成. 入力形式は、 "26: Fe" のような原子番号と元素記号のセットにした文字列の配列
-    /// </summary>
+    /// <summary>Vesta標準のボンドを生成. 入力形式は、 "26: Fe" のような原子番号と元素記号のセットにした文字列の配列</summary>
     /// <param name="elementNames"></param>
     /// <returns></returns>
     public static Bonds[] GetVestaBonds(IEnumerable<string> elementNames)

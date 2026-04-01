@@ -18,9 +18,7 @@ public partial class CrystalControl : CaptureUserControlBase
 {
     #region プロパティ、フィールド、イベントハンドラ
 
-    /// <summary>
-    /// VisualStudioデザイナーの編集の時はTrue
-    /// </summary>
+    /// <summary>VisualStudioデザイナーの編集の時はTrue</summary>
     public new bool DesignMode
     {
         get
@@ -209,9 +207,7 @@ public partial class CrystalControl : CaptureUserControlBase
 
     #region Crystalクラスを画面下部 から生成/にセット
 
-    /// <summary>
-    /// Formに入力された内容からからCrystalを生成する
-    /// </summary>
+    /// <summary>Formに入力された内容からからCrystalを生成する</summary>
     public void GenerateFromInterface()
     {
         if (SkipEvent) return;
@@ -260,9 +256,7 @@ public partial class CrystalControl : CaptureUserControlBase
     }
 
 
-    /// <summary>
-    /// 現在のCrystalによってFormのテキストボックスなどを設定する。
-    /// </summary>
+    /// <summary>現在のCrystalによってFormのテキストボックスなどを設定する。</summary>
     /// <param name="ChangeCellParameter">コントロールのCellParaterを変化させた時はFalse</param>
     public void SetToInterface(bool ChangeCellParameter = true)
     {
@@ -360,9 +354,7 @@ public partial class CrystalControl : CaptureUserControlBase
     #endregion
 
     #region EOS関連
-    /// <summary>
-    /// 外部から呼び出されることを想定.
-    /// </summary>
+    /// <summary>外部から呼び出されることを想定.</summary>
     public void CalculateEOS() => eosControl.CalculatePressure();
 
     #endregion EOSタブの入力設定
@@ -402,9 +394,7 @@ public partial class CrystalControl : CaptureUserControlBase
     #endregion Polycrystalline関連
 
     #region poleFigureの右クリックメニュー
-    /// <summary>
-    /// poleFigureの右クリックメニュー　読み込み
-    /// </summary>
+    /// <summary>poleFigureの右クリックメニュー　読み込み</summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
     private void readToolStripMenuItem_Click(object sender, EventArgs e)
@@ -437,9 +427,7 @@ public partial class CrystalControl : CaptureUserControlBase
         //}
     }
 
-    /// <summary>
-    /// poleFigureの右クリックメニュー　書き込み
-    /// </summary>
+    /// <summary>poleFigureの右クリックメニュー　書き込み</summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
     private void saveToolStripMenuItem_Click(object sender, EventArgs e)
@@ -469,9 +457,7 @@ public partial class CrystalControl : CaptureUserControlBase
         //}
     }
 
-    /// <summary>
-    /// poleFigureの右クリックメニュー　ctfファイルで出力
-    /// </summary>
+    /// <summary>poleFigureの右クリックメニュー　ctfファイルで出力</summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
     private void asCTFFilecomatibleToCHANNEL5FileToolStripMenuItem_Click(object sender, EventArgs e)
@@ -535,9 +521,7 @@ public partial class CrystalControl : CaptureUserControlBase
         #endregion Export CTFボタンをクリックしたときの動作
     }
 
-    /// <summary>
-    /// poleFigureの右クリックメニュー　txtファイルで出力
-    /// </summary>
+    /// <summary>poleFigureの右クリックメニュー　txtファイルで出力</summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
     private void asTXTFileAllEulerAngleAndDensityToolStripMenuItem_Click(object sender, EventArgs e)
@@ -703,9 +687,7 @@ public partial class CrystalControl : CaptureUserControlBase
         formStrain.Visible = !formStrain.Visible;
     }
 
-    /// <summary>
-    /// 空間群P1に変換
-    /// </summary>
+    /// <summary>空間群P1に変換</summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
     private void convertToP1ToolStripMenuItem_Click(object sender, EventArgs e) => toSuperStructure(1, 1, 1);
@@ -726,9 +708,7 @@ public partial class CrystalControl : CaptureUserControlBase
     #region 空間群を変換する関数群
 
     #region 超構造に変換
-    /// <summary>
-    /// 超構造に変換する関数
-    /// </summary>
+    /// <summary>超構造に変換する関数</summary>
     /// <param name="_u"></param>
     /// <param name="_v"></param>
     /// <param name="_w"></param>
@@ -802,9 +782,7 @@ public partial class CrystalControl : CaptureUserControlBase
             toAnotherSpaceGroup(dlg.SeriesNum);
     }
 
-    /// <summary>
-    /// 別の空間群に変換する 原子位置や格子定数のエラー、および熱散漫散乱因子の変換は考慮していない
-    /// </summary>
+    /// <summary>別の空間群に変換する 原子位置や格子定数のエラー、および熱散漫散乱因子の変換は考慮していない</summary>
     public void toAnotherSpaceGroup(int destNum)
     {
         var srcNum = symmetryControl.SymmetrySeriesNumber;
@@ -931,9 +909,7 @@ public partial class CrystalControl : CaptureUserControlBase
     #endregion
 
     #region Monoclinic用の関数
-    /// <summary>
-    /// 原子位置を変換。Monoclinic用。
-    /// </summary>
+    /// <summary>原子位置を変換。Monoclinic用。</summary>
     /// <param name="x"></param>
     /// <param name="y"></param>
     /// <param name="z"></param>

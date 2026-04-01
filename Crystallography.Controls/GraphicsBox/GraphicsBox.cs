@@ -6,45 +6,33 @@ using System.Windows.Forms;
 
 namespace Crystallography.Controls;
 
-/// <summary>
-/// PictureBox の標準機能に、呼び出し側が継続して描画できる描画バッファとマウスホイール通知を加えたコントロール。
-/// </summary>
+/// <summary>PictureBox の標準機能に、呼び出し側が継続して描画できる描画バッファとマウスホイール通知を加えたコントロール。</summary>
 [Serializable]
 public class GraphicsBox : PictureBox
 {
-    /// <summary>
-    /// マウスホイール入力後に通知するイベントデリゲート。
-    /// </summary>
+    /// <summary>マウスホイール入力後に通知するイベントデリゲート。</summary>
     public delegate void evMouseWheeled(object sender, MouseEventArgs e);
 
     private Bitmap graphicsLayerBitmap = null; // (260322Ch) 描画バッファの内容を保持する
     private Graphics graphicsLayer = null; // (260322Ch) 呼び出し側が使い回せる描画バッファ用 Graphics を保持する
 
-    /// <summary>
-    /// マウスホイール入力後に通知する互換イベント。
-    /// </summary>
+    /// <summary>マウスホイール入力後に通知する互換イベント。</summary>
     public event evMouseWheeled MouseWheeled;
 
-    /// <summary>
-    /// GraphicBox の既定コンストラクタ。
-    /// </summary>
+    /// <summary>GraphicBox の既定コンストラクタ。</summary>
     public GraphicsBox()
     {
         InitializeGraphicBox();
     }
 
-    /// <summary>
-    /// コンテナへ自動登録する互換コンストラクタ。
-    /// </summary>
+    /// <summary>コンテナへ自動登録する互換コンストラクタ。</summary>
     public GraphicsBox(IContainer container)
         : this()
     {
         container?.Add(this); // (260322Ch) designer 生成コードからそのまま使えるようにする
     }
 
-    /// <summary>
-    /// 呼び出し側が描画バッファへの描画に使う Graphics を返す。返された Graphics は破棄しないこと。
-    /// </summary>
+    /// <summary>呼び出し側が描画バッファへの描画に使う Graphics を返す。返された Graphics は破棄しないこと。</summary>
     [Browsable(false)]
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public Graphics Graphics
@@ -56,9 +44,7 @@ public class GraphicsBox : PictureBox
         }
     }
 
-    /// <summary>
-    /// Font を別名で公開するプロパティ。
-    /// </summary>
+    /// <summary>Font を別名で公開するプロパティ。</summary>
     [Category("Appearance")]
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
     public Font Fonts
@@ -75,9 +61,7 @@ public class GraphicsBox : PictureBox
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public Bitmap RenderedImage => CreateRenderedBitmap();
 
-    /// <summary>
-    /// 現在表示される合成画像を新しい Bitmap として生成する。
-    /// </summary>
+    /// <summary>現在表示される合成画像を新しい Bitmap として生成する。</summary>
     public Bitmap CreateRenderedBitmap()
     {
         var width = Math.Max(1, ClientSize.Width);
@@ -94,9 +78,7 @@ public class GraphicsBox : PictureBox
         return bitmap;
     }
 
-    /// <summary>
-    /// 描画バッファだけをクリアして再描画する。
-    /// </summary>
+    /// <summary>描画バッファだけをクリアして再描画する。</summary>
     public void ClearGraphicsLayer()
     {
         EnsureGraphicsLayer();
@@ -104,9 +86,7 @@ public class GraphicsBox : PictureBox
         Invalidate();
     }
 
-    /// <summary>
-    /// 描画バッファの Bitmap を取得する。呼び出し側で破棄しないこと。
-    /// </summary>
+    /// <summary>描画バッファの Bitmap を取得する。呼び出し側で破棄しないこと。</summary>
     [Browsable(false)]
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public Bitmap GraphicsLayerBitmap
@@ -118,9 +98,7 @@ public class GraphicsBox : PictureBox
         }
     }
 
-    /// <summary>
-    /// 描画バッファを必要に応じて作り直す。
-    /// </summary>
+    /// <summary>描画バッファを必要に応じて作り直す。</summary>
     private void EnsureGraphicsLayer()
     {
         var width = Math.Max(1, ClientSize.Width);
@@ -131,9 +109,7 @@ public class GraphicsBox : PictureBox
         RecreateGraphicsLayer(true);
     }
 
-    /// <summary>
-    /// 描画バッファを再作成する。必要に応じて従前内容を左上基準で引き継ぐ。
-    /// </summary>
+    /// <summary>描画バッファを再作成する。必要に応じて従前内容を左上基準で引き継ぐ。</summary>
     private void RecreateGraphicsLayer(bool preserveContents)
     {
         var width = Math.Max(1, ClientSize.Width);
@@ -156,9 +132,7 @@ public class GraphicsBox : PictureBox
         previousBitmap?.Dispose();
     }
 
-    /// <summary>
-    /// コントロール初期状態を設定する。
-    /// </summary>
+    /// <summary>コントロール初期状態を設定する。</summary>
     private void InitializeGraphicBox()
     {
         SetStyle(ControlStyles.AllPaintingInWmPaint, true);
@@ -169,9 +143,7 @@ public class GraphicsBox : PictureBox
         DoubleBuffered = true;
     }
 
-    /// <summary>
-    /// PictureBox の描画後に描画バッファを重ねる。
-    /// </summary>
+    /// <summary>PictureBox の描画後に描画バッファを重ねる。</summary>
     protected override void OnPaint(PaintEventArgs pe)
     {
         base.OnPaint(pe);
@@ -181,9 +153,7 @@ public class GraphicsBox : PictureBox
         pe.Graphics.DrawImageUnscaled(graphicsLayerBitmap, 0, 0); // (260322Ch) 継承元のPictureBoxのImageと描画バッファを合成して表示する
     }
 
-    /// <summary>
-    /// サイズ変更時に描画バッファを再作成する。
-    /// </summary>
+    /// <summary>サイズ変更時に描画バッファを再作成する。</summary>
     protected override void OnResize(EventArgs e)
     {
         base.OnResize(e);
@@ -191,18 +161,14 @@ public class GraphicsBox : PictureBox
         Invalidate();
     }
 
-    /// <summary>
-    /// ハンドル作成後に描画バッファを確保する。
-    /// </summary>
+    /// <summary>ハンドル作成後に描画バッファを確保する。</summary>
     protected override void OnHandleCreated(EventArgs e)
     {
         base.OnHandleCreated(e);
         RecreateGraphicsLayer(true);
     }
 
-    /// <summary>
-    /// クリック時にフォーカスを受けてホイール入力を受けやすくする。
-    /// </summary>
+    /// <summary>クリック時にフォーカスを受けてホイール入力を受けやすくする。</summary>
     protected override void OnMouseDown(MouseEventArgs e)
     {
         // Focus(); // (260322Ch) 旧案: 条件を見ずに Focus を呼んでいた
@@ -211,18 +177,14 @@ public class GraphicsBox : PictureBox
         base.OnMouseDown(e);
     }
 
-    /// <summary>
-    /// ホイール入力後に互換イベントを通知する。
-    /// </summary>
+    /// <summary>ホイール入力後に互換イベントを通知する。</summary>
     protected override void OnMouseWheel(MouseEventArgs e)
     {
         base.OnMouseWheel(e);
         MouseWheeled?.Invoke(this, e); // (260322Ch) マウスホイール入力の処理後に通知する
     }
 
-    /// <summary>
-    /// 描画バッファを破棄する。
-    /// </summary>
+    /// <summary>描画バッファを破棄する。</summary>
     protected override void Dispose(bool disposing)
     {
         if (disposing)

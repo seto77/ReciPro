@@ -354,9 +354,7 @@ public partial class SearchCrystalControl : CaptureUserControlBase
 
     }
 
-    /// <summary>
-    /// テキストボックスで改行文字が押されたときに検索を実行する
-    /// </summary>
+    /// <summary>テキストボックスで改行文字が押されたときに検索を実行する</summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
     private void textBoxSearchName_KeyDown(object sender, KeyEventArgs e)

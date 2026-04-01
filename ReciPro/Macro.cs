@@ -490,9 +490,7 @@ public class Macro : MacroBase
     #endregion
 
     #region STEMとHRTEMの親クラスであり、ImageSimulatorの子クラス。
-    /// <summary>
-    /// STEMとHRTEMの親クラスであり、ImageSimulatorの子クラス。
-    /// </summary>
+    /// <summary>STEMとHRTEMの親クラスであり、ImageSimulatorの子クラス。</summary>
     /// <param name="_p"></param>
     /// <param name="mode"></param>
     public class STEMandHRTEM_class(Macro _p, FormImageSimulator.ImageModes mode) : ImageSimulationClass(_p, mode)

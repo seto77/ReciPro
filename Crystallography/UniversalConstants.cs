@@ -83,64 +83,40 @@ public static class UniversalConstants
 {
     public enum LengthUnit { km, m, cm, mm, um, nm, pm, fm }
 
-    /// <summary>
-    /// アボガドロ数 (1/mol)
-    /// </summary>
+    /// <summary>アボガドロ数 (1/mol)</summary>
     public const double A = 6.0221367E23;
 
-    /// <summary>
-    /// 電子の静止質量 (kg)
-    /// </summary>
+    /// <summary>電子の静止質量 (kg)</summary>
     public const double m0 = 9.1093897E-31;
 
-    /// <summary>
-    /// 電子の電荷(C)
-    /// </summary>
+    /// <summary>電子の電荷(C)</summary>
     public const double e0 = 1.60217733E-19;
 
-    /// <summary>
-    /// プランク定数 (J s = m^2 kg /s) (2006 科学技術データ委員会)
-    /// </summary>
+    /// <summary>プランク定数 (J s = m^2 kg /s) (2006 科学技術データ委員会)</summary>
     public const double h = 6.62606896E-34;
 
-    /// <summary>
-    /// プランク定数 (eV/s)(2006 科学技術データ委員会)
-    /// </summary>
+    /// <summary>プランク定数 (eV/s)(2006 科学技術データ委員会)</summary>
     public const double h_eV = 4.135667516E-15; //
 
-    /// <summary>
-    /// 1eVのジュール(kg m^2/s^2)
-    /// </summary>
+    /// <summary>1eVのジュール(kg m^2/s^2)</summary>
     public const double eV_joule = 1.602176565E-19;
 
-    /// <summary>
-    /// 光速 (m/s)
-    /// </summary>
+    /// <summary>光速 (m/s)</summary>
     public const double c = 2.99792458E+8; // 定義値
 
-    /// <summary>
-    /// 光速の2乗 (m^2/s^2)
-    /// </summary>
+    /// <summary>光速の2乗 (m^2/s^2)</summary>
     public const double c2 = 8.987551787368176E+16;
 
-    /// <summary>
-    /// 中性子の質量 (kg)
-    /// </summary>
+    /// <summary>中性子の質量 (kg)</summary>
     public const double n0 = 1.674927351E-27;
 
-    /// <summary>
-    /// 気体定数
-    /// </summary>
+    /// <summary>気体定数</summary>
     public const double R = 8.3144621;
 
-    /// <summary>
-    /// ボーア半径 (m)
-    /// </summary>
+    /// <summary>ボーア半径 (m)</summary>
     public const double a0 = 0.52917721067E-10;
 
-    /// <summary>
-    /// Rydberg 定数 (eV)
-    /// </summary>
+    /// <summary>Rydberg 定数 (eV)</summary>
     public const double Ry = 13.60569253;
 
     /// <summary>
@@ -159,9 +135,7 @@ public static class UniversalConstants
 
     public static class Convert
     {
-        /// <summary>
-        /// エネルギー(kev)を与えて電子の速度(m/s)を返す
-        /// </summary>
+        /// <summary>エネルギー(kev)を与えて電子の速度(m/s)を返す</summary>
         /// <param name="kev"></param>
         /// <returns></returns>
         public static double EnergyToElectronVelosity(in double kev)
@@ -171,9 +145,7 @@ public static class UniversalConstants
             return c * Math.Sqrt(1 - 1 / tmp / tmp);
         }
 
-        /// <summary>
-        /// エネルギー(kev)を与えて電子の速度の2乗(m^2/s^2)を返す
-        /// </summary>
+        /// <summary>エネルギー(kev)を与えて電子の速度の2乗(m^2/s^2)を返す</summary>
         /// <param name="kev"></param>
         /// <returns></returns>
         public static double EnergyToElectronVelositySquared(in double kev)
@@ -182,9 +154,7 @@ public static class UniversalConstants
             return c2 * (1 - 1 / tmp / tmp);
         }
 
-        /// <summary>
-        /// エネルギー(kev)を与えて電子の重量(kg)を返す
-        /// </summary>
+        /// <summary>エネルギー(kev)を与えて電子の重量(kg)を返す</summary>
         /// <param name="kev"></param>
         /// <returns></returns>
         public static double EnergyToElectronMass(in double kev)
@@ -194,30 +164,22 @@ public static class UniversalConstants
             return m0 * (1 + kev * 0.0019569507450453425);
         }
 
-        /// <summary>
-        /// 中性子の速度(m/μs)を与えて波長(nm)を返す
-        /// </summary>
+        /// <summary>中性子の速度(m/μs)を与えて波長(nm)を返す</summary>
         /// <param name="velocity"></param>
         /// <returns></returns>
         public static double NeutronVelocityToWavelength(in double velocity) => h / n0 / velocity * 1.0E3;
 
-        /// <summary>
-        /// 中性子の波長(nm)を与えて速度(m/μs)を返す
-        /// </summary>
+        /// <summary>中性子の波長(nm)を与えて速度(m/μs)を返す</summary>
         /// <param name="velocity"></param>
         /// <returns></returns>
         public static double WavelengthToNeutronVelocity(in double wavelength) => h / n0 / wavelength * 1.0E3;
 
-        /// <summary>
-        /// 中性子の速度を与えてエネルギー(eV)を返す
-        /// </summary>
+        /// <summary>中性子の速度を与えてエネルギー(eV)を返す</summary>
         /// <param name="velocity"></param>
         /// <returns></returns>
         public static double NeutronVelocityToNeutronEnergy(in double velocity) => n0 * velocity * velocity / 2.0 / eV_joule;
 
-        /// <summary>
-        /// 電子の波長(nm)をエネルギー(kV)に変換
-        /// </summary>
+        /// <summary>電子の波長(nm)をエネルギー(kV)に変換</summary>
         /// <param name="kiloVoltage"></param>
         /// <returns></returns>
         public static double WaveLengthToElectronEnergy(in double waveLength)
@@ -230,25 +192,19 @@ public static class UniversalConstants
             return (-b + Math.Sqrt(b * b + 4 * a * c / waveLength * c / waveLength)) / 2 / a;
         }
 
-        /// <summary>
-        /// 電磁波の波長(nm)をエネルギー(eV)に変換
-        /// </summary>
+        /// <summary>電磁波の波長(nm)をエネルギー(eV)に変換</summary>
         /// <param name="waveLength"></param>
         /// <returns></returns>
         public static double WavelengthToXrayEnergy(in double waveLength)
             => 6.62606896 / 1.60217733 * 2.99792458 / waveLength * 100.0;
 
-        /// <summary>
-        /// 中性子の波長(nm)をエネルギー(eV)に変換
-        /// </summary>
+        /// <summary>中性子の波長(nm)をエネルギー(eV)に変換</summary>
         /// <param name="velocity"></param>
         /// <returns></returns>
         public static double WaveLengthToNeutronEnergy(in double wavelength)
             => 6.62606896 * 6.62606896 / 1.674927351 / wavelength / wavelength / 2.0 / 1.602176565 * 1.0E5;
 
-        /// <summary>
-        /// 電磁波のエネルギー(ev)を波長(nm)に変換
-        /// </summary>
+        /// <summary>電磁波のエネルギー(ev)を波長(nm)に変換</summary>
         /// <param name="energy"></param>
         /// <returns></returns>
         public static double EnergyToXrayWaveLength(in double energy)
@@ -272,24 +228,18 @@ public static class UniversalConstants
         public static double EnergyToElectronWaveNumber(in double kiloVoltage)
             => Math.Sqrt(kiloVoltage * 1000.0 * (1 + kiloVoltage * 0.9784753725226711491437618236159 / 1000)) / 1.2264262862108010441350327657997;
 
-        /// <summary>
-        /// 電子線の波数(nm^-1)をエネルギー(kV)に変換 
-        /// </summary>
+        /// <summary>電子線の波数(nm^-1)をエネルギー(kV)に変換</summary>
         /// <param name="kiloVoltage"></param>
         /// <returns></returns>
         public static double ElectronWaveNumberToEnergy(in double wavenumber) => WaveLengthToElectronEnergy(1 / wavenumber);
 
 
-        /// <summary>
-        /// 中性子のエネルギー(kV)を波長(nm)に変換
-        /// </summary>
+        /// <summary>中性子のエネルギー(kV)を波長(nm)に変換</summary>
         /// <param name="energy"></param>
         /// <returns></returns>
         public static double EnergyToNeutronWaveLength(in double energy) => 6.62606896 * Math.Sqrt(1 / 1.674927351 / energy / 2.0 / 1.602176565 * 1.0E5);
 
-        /// <summary>
-        /// 面間隔d(nm)と取り出し角(2Θ)を与えるとブラッグ条件を満たす入射線の波長(nm)を返す
-        /// </summary>
+        /// <summary>面間隔d(nm)と取り出し角(2Θ)を与えるとブラッグ条件を満たす入射線の波長(nm)を返す</summary>
         /// <param name="d"></param>
         /// <param name="takeoffAngle"></param>
         /// <returns></returns>

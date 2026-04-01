@@ -60,9 +60,7 @@ public partial class ScalablePictureBox : CaptureUserControlBase
         {
         }
 
-        /// <summary>
-        /// Circleのコンストラクタ
-        /// </summary>
+        /// <summary>Circleのコンストラクタ</summary>
         /// <param name="label"></param>
         /// <param name="position"></param>
         /// <param name="radius"></param>
@@ -90,9 +88,7 @@ public partial class ScalablePictureBox : CaptureUserControlBase
         }
 
 
-        /// <summary>
-        /// Crossのコンストラクタ
-        /// </summary>
+        /// <summary>Crossのコンストラクタ</summary>
         /// <param name="position"></param>
         /// <param name="label"></param>
         /// <param name="color1"></param>
@@ -107,9 +103,7 @@ public partial class ScalablePictureBox : CaptureUserControlBase
             CrossSize = (float)size;
         }
 
-        /// <summary>
-        /// Lineのコンストラクタ
-        /// </summary>
+        /// <summary>Lineのコンストラクタ</summary>
         /// <param name="label"></param>
         /// <param name="position1"></param>
         /// <param name="position2"></param>
@@ -142,9 +136,7 @@ public partial class ScalablePictureBox : CaptureUserControlBase
 
     #region プロパティ
 
-    /// <summary>
-    /// VisualStudioデザイナーの編集の時はTrue
-    /// </summary>
+    /// <summary>VisualStudioデザイナーの編集の時はTrue</summary>
     public new bool DesignMode
     {
         get
@@ -162,9 +154,7 @@ public partial class ScalablePictureBox : CaptureUserControlBase
         }
     }
 
-    /// <summary>
-    /// 上下方向の反転をするかどうか
-    /// </summary>
+    /// <summary>上下方向の反転をするかどうか</summary>
     [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     public bool VerticalFlip
     {
@@ -179,9 +169,7 @@ public partial class ScalablePictureBox : CaptureUserControlBase
 
     // private bool horizontalFlip = false; // (260322Ch) 旧コード: HorizontalFlip をローカル field と PseudoBitmap で二重管理していた
 
-    /// <summary>
-    /// 上下方向の反転をするかどうか
-    /// </summary>
+    /// <summary>上下方向の反転をするかどうか</summary>
     [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     public bool HorizontalFlip
     {
@@ -199,9 +187,7 @@ public partial class ScalablePictureBox : CaptureUserControlBase
 
     private double _Zoom = 1;
 
-    /// <summary>
-    /// 表示倍率
-    /// </summary>
+    /// <summary>表示倍率</summary>
     [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     public double Zoom
     {
@@ -219,9 +205,7 @@ public partial class ScalablePictureBox : CaptureUserControlBase
     private PointD _Center = new(double.NaN, double.NaN);
 
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-    /// <summary>
-    /// 中心ピクセル
-    /// </summary>
+    /// <summary>中心ピクセル</summary>
     public PointD Center
     {
         set
@@ -248,25 +232,19 @@ public partial class ScalablePictureBox : CaptureUserControlBase
         get { return (Zoom, new PointD(Center.X, Center.Y)); }
     }
 
-    /// <summary>
-    /// ZoomやCenter位置を固定するかどうか
-    /// </summary>
+    /// <summary>ZoomやCenter位置を固定するかどうか</summary>
     [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     public bool FixZoomAndCenter { get; set; } = false;
 
     public Size CanvasSize { get { return pictureBox.ClientSize; } }
 
-    /// <summary>
-    /// フォーカスイベント(Enter)を有効にするかどうか
-    /// </summary>
+    /// <summary>フォーカスイベント(Enter)を有効にするかどうか</summary>
     [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     public bool FocusEventEnabled { get; set; } = false;
 
     private bool showFocusRectangle = false;
 
-    /// <summary>
-    /// 外枠を表示する
-    /// </summary>
+    /// <summary>外枠を表示する</summary>
     [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     public bool ShowRimRentangle
     {
@@ -283,9 +261,7 @@ public partial class ScalablePictureBox : CaptureUserControlBase
 
     private bool showAreaRectangle = false;
 
-    /// <summary>
-    /// AreaRectangleで指定した矩形を表示するかどうか
-    /// </summary>
+    /// <summary>AreaRectangleで指定した矩形を表示するかどうか</summary>
     [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     public bool ShowAreaRectangle
     {
@@ -314,14 +290,10 @@ public partial class ScalablePictureBox : CaptureUserControlBase
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public List<Symbol> Symbols { set; get; } = [];
 
-    /// <summary>
-    /// 左上に表示するテキスト
-    /// </summary>
+    /// <summary>左上に表示するテキスト</summary>
     public override string Text { get => label.Text; set => label.Text = value; }
 
-    /// <summary>
-    /// 左上に表示するテキストの色
-    /// </summary>
+    /// <summary>左上に表示するテキストの色</summary>
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public Color TextColor { get => label.ForeColor; set => label.ForeColor = value; }
 
@@ -372,9 +344,7 @@ public partial class ScalablePictureBox : CaptureUserControlBase
     /// <summary>スクロールバーが表示されているかどうかを取得する。読み取り専用.</summary>
     public bool ScrollBarVisible => hScrollBar.Visible || vScrollBarVisible;
 
-    /// <summary>
-    /// 現在のソース画像中の描画範囲 RectangleD　を得る。読み取り専用.
-    /// </summary>
+    /// <summary>現在のソース画像中の描画範囲 RectangleD　を得る。読み取り専用.</summary>
     public RectangleD DrawingArea => PseudoBitmap.GetDrawingArea(Center, Zoom, pictureBox.ClientSize);
 
     private double ClampZoomValue(double value)
@@ -462,9 +432,7 @@ public partial class ScalablePictureBox : CaptureUserControlBase
 
 
 
-    /// <summary>
-    /// centerの位置が適切かどうか(=はみ出していないか)チェックする
-    /// </summary>
+    /// <summary>centerの位置が適切かどうか(=はみ出していないか)チェックする</summary>
     /// <returns></returns>
     private void checkInvalidCenter()
     {
@@ -680,9 +648,7 @@ public partial class ScalablePictureBox : CaptureUserControlBase
 
     #endregion
 
-    /// <summary>
-    /// PictureBoxのPaintイベント
-    /// </summary>
+    /// <summary>PictureBoxのPaintイベント</summary>
     public event PaintEventHandler Paint2;
     private void pictureBox_Paint(object sender, PaintEventArgs e)
     {
@@ -846,16 +812,12 @@ public partial class ScalablePictureBox : CaptureUserControlBase
             }
     }
 
-    /// /// <summary>
-    /// コントロール全体のペイントイベント
-    /// </summary>
+    /// /// <summary>コントロール全体のペイントイベント</summary>
     public event PaintEventHandler PaintControl;
 
     private void ScalablePictureBox_Paint(object sender, PaintEventArgs e) => PaintControl?.Invoke(sender, e);
 
-    /// <summary>
-    /// コントロール全体がリサイズされたとき
-    /// </summary>
+    /// <summary>コントロール全体がリサイズされたとき</summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
     private void ScalablePictureBox_Resize(object sender, EventArgs e)
@@ -877,9 +839,7 @@ public partial class ScalablePictureBox : CaptureUserControlBase
 
     #region イベント
 
-    /// <summary>
-    /// マウスイベント用のデリゲート
-    /// </summary>
+    /// <summary>マウスイベント用のデリゲート</summary>
     /// <param name="sender">sender</param>
     /// <param name="e">e</param>
     /// <param name="pt">ソース画像座標</param>
@@ -904,9 +864,7 @@ public partial class ScalablePictureBox : CaptureUserControlBase
 
     #endregion イベント
 
-    /// <summary>
-    /// 初期化直後、画面リサイズ後、Zoom変更後にPictureBox,ScrollBarコントロールなどを適切に配置するメソッド
-    /// </summary>
+    /// <summary>初期化直後、画面リサイズ後、Zoom変更後にPictureBox,ScrollBarコントロールなどを適切に配置するメソッド</summary>
     private void setControlLayout()
     {
         hScrollBar.Location = new Point(0, this.ClientSize.Height - hScrollBar.Height);
@@ -1010,17 +968,13 @@ public partial class ScalablePictureBox : CaptureUserControlBase
 
     #region 座標変換関連
 
-    /// <summary>
-    /// クライアントのPointをソースのPointに変換
-    /// </summary>
+    /// <summary>クライアントのPointをソースのPointに変換</summary>
     /// <param name="clientPt"></param>
     /// <returns></returns>
     public PointD ConvertToSrcPt(Point clientPt)
     { return ConvertToSrcPt(new PointD(clientPt.X, clientPt.Y)); }
 
-    /// <summary>
-    /// クライアントのPointDをソースのPointDに変換
-    /// </summary>
+    /// <summary>クライアントのPointDをソースのPointDに変換</summary>
     /// <param name="clientPt"></param>
     /// <returns></returns>
     public PointD ConvertToSrcPt(PointD clientPt)
@@ -1039,17 +993,13 @@ public partial class ScalablePictureBox : CaptureUserControlBase
         return new PointD(x, y);
     }
 
-    /// <summary>
-    /// クライアントのRectangleをSrcのRectangleに変換
-    /// </summary>
+    /// <summary>クライアントのRectangleをSrcのRectangleに変換</summary>
     /// <param name="clientRect"></param>
     /// <returns></returns>
     public RectangleD ConvertToSrcRect(Rectangle clientRect)
     { return ConvertToSrcRect(new RectangleD(clientRect.X, clientRect.Y, clientRect.Width, clientRect.Height)); }
 
-    /// <summary>
-    /// クライアントのRectangleDをSrcのRectangleDに変換
-    /// </summary>
+    /// <summary>クライアントのRectangleDをSrcのRectangleDに変換</summary>
     /// <param name="clientRect"></param>
     /// <returns></returns>
     public RectangleD ConvertToSrcRect(RectangleD clientRect)
@@ -1059,9 +1009,7 @@ public partial class ScalablePictureBox : CaptureUserControlBase
         return new RectangleD(ul, new SizeD(lr.X - ul.X, lr.Y - ul.Y));
     }
 
-    /// <summary>
-    /// ソースのPointDをクライアントのPointDに変換
-    /// </summary>
+    /// <summary>ソースのPointDをクライアントのPointDに変換</summary>
     /// <param name="srcPt"></param>
     /// <returns></returns>
     public PointD ConvertToClientPt(PointD srcPt)
@@ -1069,9 +1017,7 @@ public partial class ScalablePictureBox : CaptureUserControlBase
         return new PointD(((srcPt.X - _Center.X) * Zoom + pictureBox.ClientSize.Width / 2.0f), ((srcPt.Y - _Center.Y) * Zoom + pictureBox.ClientSize.Height / 2.0f));
     }
 
-    /// <summary>
-    /// ソースのRectangleDをクライアントのRectangleDに変換
-    /// </summary>
+    /// <summary>ソースのRectangleDをクライアントのRectangleDに変換</summary>
     /// <param name="srcRect"></param>
     /// <returns></returns>
     public RectangleD ConvertToClientRect(RectangleD srcRect)
@@ -1087,9 +1033,7 @@ public partial class ScalablePictureBox : CaptureUserControlBase
     {
     }
 
-    /// <summary>
-    /// 現在表示している画像をBitmapクラスで返す
-    /// </summary>
+    /// <summary>現在表示している画像をBitmapクラスで返す</summary>
     /// <returns></returns>
     public Bitmap GetBitmapImage()
     {

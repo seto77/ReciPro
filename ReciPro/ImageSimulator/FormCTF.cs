@@ -38,9 +38,7 @@ public partial class FormCTF : CaptureFormBase
     #region コントラスト伝達描画関連
     private readonly Color colorSinW = Color.FromArgb(0, 0, 255), colorCosW = Color.FromArgb(128, 0, 255),
         colorEs = Color.Green, colorEc = Color.Red, colorPCTF = Color.FromArgb(0, 64, 128), colorACTF = Color.FromArgb(64, 0, 64);
-    /// <summary>
-    /// レンズの各種関数のグラフを描画
-    /// </summary>
+    /// <summary>レンズの各種関数のグラフを描画</summary>
     public void Renew()
     {
         if (Visible == false)
@@ -163,9 +161,7 @@ public partial class FormCTF : CaptureFormBase
         graphControl.Draw();
     }
 
-    /// <summary>
-    /// グラフのコピーボタン。エクセルに張り付けられるように
-    /// </summary>
+    /// <summary>グラフのコピーボタン。エクセルに張り付けられるように</summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
     private void ButtonCopyGraph_Click(object sender, EventArgs e)

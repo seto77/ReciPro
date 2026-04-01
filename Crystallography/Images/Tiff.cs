@@ -8,22 +8,16 @@ namespace Crystallography;
 
 public class Tiff
 {
-    /// <summary>
-    /// マルチバイトデータのバイト順 正順の場合はMotorola, 逆順はIntel
-    /// </summary>
+    /// <summary>マルチバイトデータのバイト順 正順の場合はMotorola, 逆順はIntel</summary>
     public enum TiffByteOrder
     {
         Motorola, Intel
     }
 
-    /// <summary>
-    /// データタイプ
-    /// </summary>
+    /// <summary>データタイプ</summary>
     public enum TiffDataType
     {
-        /// <summary>
-        /// 1バイト整数
-        /// </summary>
+        /// <summary>1バイト整数</summary>
         ByteType,
 
         AsciiType, //１バイトのASCII文字
@@ -154,9 +148,7 @@ public class Tiff
             Writer(filename, [srcData], sampleFormat, imageWidth);
     }
 
-    /// <summary>
-    /// TIFFデータを書き込む. SampeleFormatが1のときは整数(byte, ushort, uint)、3の時はfloat, 1と3以外: 全て整数の場合は整数, そうでなければfloatに変換
-    /// </summary>
+    /// <summary>TIFFデータを書き込む. SampeleFormatが1のときは整数(byte, ushort, uint)、3の時はfloat, 1と3以外: 全て整数の場合は整数, そうでなければfloatに変換</summary>
     /// <typeparam name="T"></typeparam>
     /// <param name="srcData"></param>
     /// <param name="imageWidth"></param>
@@ -273,33 +265,23 @@ public class Tiff
 
     public class Loader
     {
-        /// <summary>
-        /// バイトオーダー
-        /// </summary>
+        /// <summary>バイトオーダー</summary>
         private TiffByteOrder byteOrder;
 
-        /// <summary>
-        /// バージョン番号
-        /// </summary>
+        /// <summary>バージョン番号</summary>
         public int Version;
 
-        /// <summary>
-        /// 格納しているイメージの数
-        /// </summary>
+        /// <summary>格納しているイメージの数</summary>
         public int NumberOfFrames => Images.Count;
 
         public TiffByteOrder ByteOrder { get => byteOrder; set => byteOrder = value; }
 
         public List<imageProperty> Images = [];
 
-        /// <summary>
-        /// イメージの幅(ピクセル)
-        /// </summary>
+        /// <summary>イメージの幅(ピクセル)</summary>
         public int ImageWidth;
 
-        /// <summary>
-        /// イメージの高さ(ピクセル)
-        /// </summary>
+        /// <summary>イメージの高さ(ピクセル)</summary>
         public int ImageLength;
 
         public bool IsGray;
@@ -313,37 +295,25 @@ public class Tiff
             public int BitsPerSampleGreen;
             public int BitsPerSampleBlue;
 
-            /// <summary>
-            /// 1: 非圧縮
-            /// </summary>
+            /// <summary>1: 非圧縮</summary>
             public int Compression;
 
-            /// <summary>
-            /// 0: 黒モードモノクロ (0が白い),   1: 白モードモノクロ (0が黒い),  2: RGBダイレクトカラー (0が黒い)
-            /// </summary>
+            /// <summary>0: 黒モードモノクロ (0が白い),   1: 白モードモノクロ (0が黒い),  2: RGBダイレクトカラー (0が黒い)</summary>
             public int PhotometricInterpretation;
 
-            /// <summary>
-            /// イメージの幅(ピクセル)
-            /// </summary>
+            /// <summary>イメージの幅(ピクセル)</summary>
             public int ImageWidth;
 
-            /// <summary>
-            /// イメージの高さ(ピクセル)
-            /// </summary>
+            /// <summary>イメージの高さ(ピクセル)</summary>
             public int ImageLength;
 
             public double ResolutionX;
             public double ResolutionY;
 
-            /// <summary>
-            /// 1: 整数, 3:float
-            /// </summary>
+            /// <summary>1: 整数, 3:float</summary>
             public int SampleFormat = 1;
 
-            /// <summary>
-            /// 1: 単位なし, 2:inch,  3:cm
-            /// </summary>
+            /// <summary>1: 単位なし, 2:inch,  3:cm</summary>
             public int ResolutionUnit = 2;
 
             public int[] ColorMapRed;
@@ -741,9 +711,7 @@ public class Tiff
         }
 
 
-        /// <summary>
-        /// ファイルからbyteCountだけ読み込んで、数値に変換して返す。signは符号付きの場合はtrue。
-        /// </summary>
+        /// <summary>ファイルからbyteCountだけ読み込んで、数値に変換して返す。signは符号付きの場合はtrue。</summary>
         /// <param name="br"></param>
         /// <param name="byteCount"></param>
         /// <param name="byteOrder"></param>

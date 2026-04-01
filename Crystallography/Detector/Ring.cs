@@ -10,21 +10,15 @@ namespace Crystallography;
 public class IntegralProperty
 {
     //光学系全体に関係するところ
-    /// <summary>
-    /// 線源の波長
-    /// </summary>
+    /// <summary>線源の波長</summary>
     public double WaveLength;
 
     public WaveProperty WaveProperty;
 
-    /// <summary>
-    /// カメラ長1 (サンプルからダイレクトスポットまでの距離)
-    /// </summary>
+    /// <summary>カメラ長1 (サンプルからダイレクトスポットまでの距離)</summary>
     public double FilmDistance;//カメラ長
 
-    /// <summary>
-    /// カメラ長1 (サンプルからダイレクトスポットまでの距離)
-    /// </summary>
+    /// <summary>カメラ長1 (サンプルからダイレクトスポットまでの距離)</summary>
     public double CameraLength1 => FilmDistance;//カメラ長
 
     public enum CameraEnum { FlatPanel, Gandolfi }
@@ -33,68 +27,44 @@ public class IntegralProperty
 
     //IPの性質に関するところ
 
-    /// <summary>
-    /// ソース画像の幅
-    /// </summary>
+    /// <summary>ソース画像の幅</summary>
     public int SrcWidth;
 
-    /// <summary>
-    /// ソース画像の高さ
-    /// </summary>
+    /// <summary>ソース画像の高さ</summary>
     public int SrcHeight;
 
-    /// <summary>
-    /// センター(Direct Spot)のx位置
-    /// </summary>
+    /// <summary>センター(Direct Spot)のx位置</summary>
     public double CenterX;
 
-    /// <summary>
-    /// センター(Direct Spot)のy位置
-    /// </summary>
+    /// <summary>センター(Direct Spot)のy位置</summary>
     public double CenterY;
 
-    /// <summary>
-    /// ピクセルサイズ
-    /// </summary>
+    /// <summary>ピクセルサイズ</summary>
     public double PixSizeX, PixSizeY;
 
-    /// <summary>
-    /// ピクセルの歪み角度
-    /// </summary>
+    /// <summary>ピクセルの歪み角度</summary>
     public double ksi = 0;
 
-    /// <summary>
-    /// IPの回転角度
-    /// </summary>
+    /// <summary>IPの回転角度</summary>
     public double phi;
 
-    /// <summary>
-    /// IPの回転軸の角度;
-    /// </summary>
+    /// <summary>IPの回転軸の角度;</summary>
     public double tau;
 
     public double GandolfiRadius { get; set; }
 
-    /// <summary>
-    /// 湾曲パラメータ
-    /// </summary>
+    /// <summary>湾曲パラメータ</summary>
     public double SpericalRadiusInverse { get; set; } = 0;
 
     //一次元化の方法
 
-    /// <summary>
-    /// trueの場合はコンセントリックモード　falseの場合はラディアルモード
-    /// </summary>
+    /// <summary>trueの場合はコンセントリックモード　falseの場合はラディアルモード</summary>
     public bool ConcentricMode;
 
-    /// <summary>
-    /// コンセントリックモードの場合、start, end ,stepがアングルモードかd値モードか。　ラディアルモードの場合, RadiusとRadiusRangeがアングルモードか角度モードか
-    /// </summary>
+    /// <summary>コンセントリックモードの場合、start, end ,stepがアングルモードかd値モードか。　ラディアルモードの場合, RadiusとRadiusRangeがアングルモードか角度モードか</summary>
     public HorizontalAxis Mode;
 
-    /// <summary>
-    /// コンセントリック、ラディアルモード両方で、積分対象となる角度範囲を表示するかどうか
-    /// </summary>
+    /// <summary>コンセントリック、ラディアルモード両方で、積分対象となる角度範囲を表示するかどうか</summary>
 
     public double StepAngle, StartAngle, EndAngle;
     public double StepLength, StartLength, EndLength;
@@ -104,9 +74,7 @@ public class IntegralProperty
     public double RadialRadiusAngle, RadialRadiusAngleRange;
     public double RadialRadiusDspacing, RadialRadiusDspacingRange;
 
-    /// <summary>
-    /// trueの場合は矩形モード falseの場合はセクターモード
-    /// </summary>
+    /// <summary>trueの場合は矩形モード falseの場合はセクターモード</summary>
     public bool IsRectangle;
 
     public int ThresholdMax, ThresholdMin;//閾値
@@ -135,9 +103,7 @@ public class IntegralProperty
     }
 }
 
-/// <summary>
-/// DebyeScherrer の概要の説明です。
-/// </summary>
+/// <summary>DebyeScherrer の概要の説明です。</summary>
 public static class Ring
 {
     #region フィールド、メソッド、enum
@@ -166,64 +132,40 @@ public static class Ring
         Rigaku_RAxis_IV_Osc,//RAxisIVの揺動
         Tiff,//Tiff
 
-        /// <summary>
-        /// MarresearchのMARファイル
-        /// </summary>
+        /// <summary>MarresearchのMARファイル</summary>
         MAR,
 
-        /// <summary>
-        /// MarresearchのCCD
-        /// </summary>
+        /// <summary>MarresearchのCCD</summary>
         MCCD,
 
-        /// <summary>
-        /// Perkin Elmer社のフラットパネル
-        /// </summary>
+        /// <summary>Perkin Elmer社のフラットパネル</summary>
         HIS,
 
-        /// <summary>
-        /// HDF5形式 (SACLAのbl3)
-        /// </summary>
+        /// <summary>HDF5形式 (SACLAのbl3)</summary>
         HDF5,
 
-        /// <summary>
-        /// DigitalMicrograph
-        /// </summary>
+        /// <summary>DigitalMicrograph</summary>
         DM,
 
-        /// <summary>
-        /// ADSC社
-        /// </summary>
+        /// <summary>ADSC社</summary>
         ADSC,
 
-        /// <summary>
-        /// RadIcon社 (拡張子raw)
-        /// </summary>
+        /// <summary>RadIcon社 (拡張子raw)</summary>
         RadIcon,
 
-        /// <summary>
-        /// Dexela社, (拡張子SMV)
-        /// </summary>
+        /// <summary>Dexela社, (拡張子SMV)</summary>
         SMV,
 
-        /// <summary>
-        /// RadIcon社、PFで使用されている (references\ImageExsample\BL18c 柴咲さん )
-        /// </summary>
+        /// <summary>RadIcon社、PFで使用されている (references\ImageExsample\BL18c 柴咲さん )</summary>
         RadIconPF,
 
-        /// <summary>
-        /// MRC2014ファイル. FEI社のTEMのカメラで使われる. http://www.ccpem.ac.uk/mrc_format/mrc_format.php および \references\TalosF200\Manual を参照
-        /// </summary>
+        /// <summary>MRC2014ファイル. FEI社のTEMのカメラで使われる. http://www.ccpem.ac.uk/mrc_format/mrc_format.php および \references\TalosF200\Manual を参照</summary>
         MRC,
 
-        /// <summary>
-        /// PILATUSで出力されたcbfファイルを、ADXVというソフトで変換したフォーマット (拡張子img). (references\ImageExsample\ADXV 柴咲さん )
-        /// </summary>
+        /// <summary>PILATUSで出力されたcbfファイルを、ADXVというソフトで変換したフォーマット (拡張子img). (references\ImageExsample\ADXV 柴咲さん )</summary>
         ADXV,
 
-        /// <summary>
-        /// NeXus Data Format (拡張子nxs), X-Spectrum社　LAMBDAX線検出器　. (\references\ImageExsample\LAMBDA (20250516平尾さんより))
-        /// </summary>
+        /// <summary>NeXus Data Format (拡張子nxs), X-Spectrum社　LAMBDAX線検出器　. (\references\ImageExsample\LAMBDA (20250516平尾さんより))</summary>
         NXS,
 
 
@@ -268,15 +210,11 @@ public static class Ring
     public static bool[] IsThresholdUnder = [];//飽和しているかどうか
 
 
-    /// <summary>
-    /// 指定された積分領域(矩形、セクター)の範囲外の場合はtrue
-    /// </summary>
+    /// <summary>指定された積分領域(矩形、セクター)の範囲外の場合はtrue</summary>
     public static bool[] IsOutsideOfIntegralRegion = [];//積分エリアの外(或いは選択領域の外)
 
 
-    /// <summary>
-    /// 指定された積分対象角度の範囲外の場合はtrue
-    /// </summary>
+    /// <summary>指定された積分対象角度の範囲外の場合はtrue</summary>
     public static bool[] IsOutsideOfIntegralProperty = [];//エリアの外(或いは選択領域の外)
                                                               //public static ParallelQuery<bool> IsOutsideOfIntegralPropertyP;
 
@@ -296,13 +234,9 @@ public static class Ring
     public static IntegralProperty IP;
 
     /*
-		/// <summary>
-		/// 1ピクセルが相当する実空間(あるいは逆空間)の長さ (単位は PixelUnitで指定)
-		/// </summary>
+		/// <summary>1ピクセルが相当する実空間(あるいは逆空間)の長さ (単位は PixelUnitで指定)</summary>
 		public static double PixelScale;
-		/// <summary>
-		/// 1ピクセルが相当する実空間(あるいは逆空間)の単位
-		/// </summary>
+		/// <summary>1ピクセルが相当する実空間(あるいは逆空間)の単位</summary>
 		public static PixelUnitEnum PixelUnit;
 		*/
 
@@ -314,9 +248,7 @@ public static class Ring
 
     public static double TIA_PixelSize;
 
-    /// <summary>
-    /// 生データのピクセルあたりのビット数
-    /// </summary>
+    /// <summary>生データのピクセルあたりのビット数</summary>
     public static int BitsPerPixels = 4;
 
     private static double TanKsi, SinTau, CosTau, SinPhi, CosPhi, Numer1, Numer2, Numer3, Denom1, Denom2;
@@ -562,9 +494,7 @@ public static class Ring
     #endregion
 
     #region 画像の回転・反転
-    /// <summary>
-    /// 画像を、反転、回転させる. rotateは0: 無回転、1:90度回転, 2: 180度回転、 3: 270度回転
-    /// </summary>
+    /// <summary>画像を、反転、回転させる. rotateは0: 無回転、1:90度回転, 2: 180度回転、 3: 270度回転</summary>
     /// <param name="src"></param>
     /// <param name="width"></param>
     /// <param name="flipV"></param>
@@ -1075,9 +1005,7 @@ public static class Ring
 
         #endregion 積分角度範囲を除去するとき
     }
-    /// <summary>
-    /// ピクセル座標(detX, detY)を実空間座標(X,Y,Z)に変換する。事前にピクセルサイズや、SetTiltParameterが設定されている必要がある。
-    /// </summary>
+    /// <summary>ピクセル座標(detX, detY)を実空間座標(X,Y,Z)に変換する。事前にピクセルサイズや、SetTiltParameterが設定されている必要がある。</summary>
     /// <param name="detX"></param>
     /// <param name="detY"></param>
     /// <returns></returns>
@@ -1119,9 +1047,7 @@ public static class Ring
     #endregion
 
     #region CircumferentialBlur 円周方向ににじませた画像を作成
-    /// <summary>
-    /// 円周方向ににじませた画像を作成(完全に歪んでいない正方形ピクセルを仮定)
-    /// </summary>
+    /// <summary>円周方向ににじませた画像を作成(完全に歪んでいない正方形ピクセルを仮定)</summary>
     /// <param name="angle"></param>
     public static void CircumferentialBlur(double theta)
     {
@@ -1187,9 +1113,7 @@ public static class Ring
     #endregion
 
     #region GetCorrectedImageArray 傾き補正やピクセル補正を除去して正確なイメージを作り出す
-    /// <summary>
-    /// 傾き補正やピクセル補正を除去して正確なイメージを作り出すメソッド
-    /// </summary>
+    /// <summary>傾き補正やピクセル補正を除去して正確なイメージを作り出すメソッド</summary>
     /// <param name="iP"></param>
     /// <param name="newPixelSize"></param>
     /// <param name="width"></param>
@@ -1289,9 +1213,7 @@ public static class Ring
     #endregion
 
 
-    /// <summary>
-    /// 傾き補正やピクセル補正を除去して切り開き画像を作り出すメソッド
-    /// </summary>
+    /// <summary>傾き補正やピクセル補正を除去して切り開き画像を作り出すメソッド</summary>
     /// <param name="iP"></param>
     /// <param name="sweepDivision"></param>
     /// <param name="width"></param>
@@ -1468,9 +1390,7 @@ public static class Ring
     #endregion
 
     #region お蔵入り GetUnrolledImageArrayThread
-    /// <summary>
-    /// 傾き補正やピクセル補正を除去して切り開き画像を作り出すメソッドのスレッド
-    /// </summary>
+    /// <summary>傾き補正やピクセル補正を除去して切り開き画像を作り出すメソッドのスレッド</summary>
     /// <param name="iP"></param>
     /// <param name="sweepDivision"></param>
     /// <param name="width"></param>
@@ -1784,9 +1704,7 @@ public static class Ring
     }
     #endregion
 
-    /// <summary>
-    /// 2theta-intensity histogram
-    /// </summary>
+    /// <summary>2theta-intensity histogram</summary>
     /// <param name="iP"></param>
     /// <returns></returns>
     private static Profile GetConcenrticProfile(IntegralProperty iP)
@@ -2101,9 +2019,7 @@ public static class Ring
     }
 
     #region GetProfile　Gandlfi用
-    /// <summary>
-    /// ガンドルフィーカメラ用の計算
-    /// </summary>
+    /// <summary>ガンドルフィーカメラ用の計算</summary>
     /// <param name="xMin"></param>
     /// <param name="xMax"></param>
     /// <param name="yMin"></param>
@@ -2277,9 +2193,7 @@ public static class Ring
     #endregion
 
     #region GetProfile 旧バージョン  FindParameterで使う
-    /// <summary>
-    /// TiltCorrectionの時にのみ呼ばれる 
-    /// </summary>
+    /// <summary>TiltCorrectionの時にのみ呼ばれる</summary>
     /// <param name="iP"></param>
     /// <returns></returns>
     public static Profile GetProfileForFindTiltCorrection(IntegralProperty iP)
@@ -2328,9 +2242,7 @@ public static class Ring
 
     private delegate void GetProfileThreadDelegateWithTiltCorrection(int xMin, int xMax, int yMin, int yMax, ref double[] profile, ref double[] pixels);
 
-    /// <summary>
-    /// 2theta-intensity histgram (旧バージョン)
-    /// </summary>
+    /// <summary>2theta-intensity histgram (旧バージョン)</summary>
     /// <param name="xMin"></param>
     /// <param name="xMax"></param>
     /// <param name="yMin"></param>
@@ -2638,9 +2550,7 @@ public static class Ring
     #endregion
 
     #region GetProfile新バージョン
-    /// <summary>
-    ///  2theta-intensity histgram (新バージョン)
-    /// </summary>
+    /// <summary>2theta-intensity histgram (新バージョン)</summary>
     /// <param name="xMin"></param>
     /// <param name="xMax"></param>
     /// <param name="yMin"></param>
@@ -2884,9 +2794,7 @@ public static class Ring
         return (profile, pixels);
     }
 
-    /// <summary>
-    /// ポリゴンの面積を求める
-    /// </summary>
+    /// <summary>ポリゴンの面積を求める</summary>
     /// <param name="n"></param>
     /// <param name="pt"></param>
     /// <returns></returns>

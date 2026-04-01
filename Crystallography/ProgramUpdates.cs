@@ -79,9 +79,7 @@ public static class ProgramUpdates
         return (bytesReceived, totalBytesToReceive, stopwatch.ElapsedMilliseconds, message);
     }
 
-    /// <summary>
-    /// 260317Cl 追加 HttpClientでファイルをダウンロードし進捗を報告する
-    /// </summary>
+    /// <summary>260317Cl 追加 HttpClientでファイルをダウンロードし進捗を報告する</summary>
     public static async System.Threading.Tasks.Task DownloadFileWithProgressAsync(
         string url, string path, IProgress<(long Current, long Total, long ElapsedMilliseconds, string Message)> progress, Stopwatch stopwatch)
     {

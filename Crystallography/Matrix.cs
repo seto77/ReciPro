@@ -12,9 +12,7 @@ using OpenTK.Mathematics;
 
 namespace Crystallography;
 
-/// <summary>
-/// 3行3列行列と静的関数を提供 Eijはi行j列の要素を意味する
-/// </summary>
+/// <summary>3行3列行列と静的関数を提供 Eijはi行j列の要素を意味する</summary>
 [Serializable()]
 public class Matrix3D : ICloneable
 {
@@ -28,9 +26,7 @@ public class Matrix3D : ICloneable
 
     #region コンストラクタ
 
-    /// <summary>
-    /// コンストラクタ。引数無しの場合は、単位行列を返す
-    /// </summary>
+    /// <summary>コンストラクタ。引数無しの場合は、単位行列を返す</summary>
     public Matrix3D()
     {
         E11 = 1; E12 = 0; E13 = 0;
@@ -126,15 +122,11 @@ public class Matrix3D : ICloneable
 
     public double[] ToArrayRight() => [E11, E12, E13, E21, E22, E23, E31, E32, E33];
 
-    /// <summary>
-    /// E11, E12, E13, E21, E22, E23, E31, E32, E33
-    /// </summary>
+    /// <summary>E11, E12, E13, E21, E22, E23, E31, E32, E33</summary>
     /// <returns></returns>
     public double[] ToArrayRowMajorOrder() => [E11, E12, E13, E21, E22, E23, E31, E32, E33];
 
-    /// <summary>
-    /// E11, E21, E31, E12, E22, E32, E13, E23, E33
-    /// </summary>
+    /// <summary>E11, E21, E31, E12, E22, E32, E13, E23, E33</summary>
     /// <returns></returns>
     public double[] ToArrayColumnMajorOrder() => [E11, E21, E31, E12, E22, E32, E13, E23, E33];
 
@@ -257,9 +249,7 @@ public class Matrix3D : ICloneable
             Dot3(m.E31, v.X, m.E32, v.Y, m.E33, v.Z));
 
 
-    /// <summary>
-    /// Matrix3Dとタプル(x,y,z)の乗算. (x,y,z)を縦方向のベクトルとして計算する。
-    /// </summary>
+    /// <summary>Matrix3Dとタプル(x,y,z)の乗算. (x,y,z)を縦方向のベクトルとして計算する。</summary>
     /// <param name="m"></param>
     /// <param name="v"></param>
     /// <returns></returns>
@@ -332,17 +322,13 @@ public class Matrix3D : ICloneable
     public static Matrix3D ExchangeZ_X_Y(Matrix3D m) => new(-m.E31, m.E11, -m.E21, -m.E32, m.E12, -m.E22, -m.E33, m.E13, -m.E23);
 
 
-    /// <summary>
-    /// ベクトルvの方向の周りに,thetaだけ回転させる行列を生成する
-    /// </summary>
+    /// <summary>ベクトルvの方向の周りに,thetaだけ回転させる行列を生成する</summary>
     /// <param name="v">回転軸</param>
     /// <param name="theta">回転角度</param>
     /// <returns></returns>
     public static Matrix3D Rot(Vector3DBase v, in double theta) => Rot((v.X, v.Y, v.Z), theta);
 
-    /// <summary>
-    /// ベクトルvの方向の周りに,thetaだけ回転させる行列を生成する
-    /// </summary>
+    /// <summary>ベクトルvの方向の周りに,thetaだけ回転させる行列を生成する</summary>
     /// <param name="v">回転軸</param>
     /// <param name="theta">回転角度</param>
     /// <returns></returns>
@@ -383,9 +369,7 @@ public class Matrix3D : ICloneable
     }
     public static Matrix3D Rot(Vector3d v, double theta) => Rot(new Vector3DBase(v.X, v.Y, v.Z), theta);
 
-    /// <summary>
-    /// オイラー角(Z-X-Zセッティング)を指定して回転行列を生成する。
-    /// </summary>
+    /// <summary>オイラー角(Z-X-Zセッティング)を指定して回転行列を生成する。</summary>
     /// <param name="phi"></param>
     /// <param name="theta"></param>
     /// <param name="psi"></param>
@@ -414,9 +398,7 @@ public class Matrix3D : ICloneable
             );
     }
 
-    /// <summary>
-    /// X軸の回りにtheta回転する行列を生成する
-    /// </summary>
+    /// <summary>X軸の回りにtheta回転する行列を生成する</summary>
     /// <param name="theta"></param>
     /// <returns></returns>
     public static Matrix3D RotX(double theta)
@@ -432,9 +414,7 @@ public class Matrix3D : ICloneable
         };
     }
 
-    /// <summary>
-    /// Y軸の回りにtheta回転する行列を生成する
-    /// </summary>
+    /// <summary>Y軸の回りにtheta回転する行列を生成する</summary>
     /// <param name="theta"></param>
     /// <returns></returns>
     public static Matrix3D RotY(double theta)
@@ -450,9 +430,7 @@ public class Matrix3D : ICloneable
         };
     }
 
-    /// <summary>
-    /// Z軸の回りにtheta回転する行列を生成する
-    /// </summary>
+    /// <summary>Z軸の回りにtheta回転する行列を生成する</summary>
     /// <param name="theta"></param>
     /// <returns></returns>
     public static Matrix3D RotZ(double theta)
@@ -513,9 +491,7 @@ public class Matrix3D : ICloneable
             cosKsi * cosPhi * cosTheta - sinKsi * sinPhi);
     }
 
-    /// <summary>
-    /// 等面積空間の行列を作成, phi, theta, ksiは0~1の範囲で入力
-    /// </summary>
+    /// <summary>等面積空間の行列を作成, phi, theta, ksiは0~1の範囲で入力</summary>
     /// <param name="phi"></param>
     /// <param name="theta"></param>
     /// <param name="ksi"></param>
@@ -536,55 +512,39 @@ public class Matrix3D : ICloneable
         return m1 * m2 * m3;
     }
 
-    /// <summary>
-    /// ゼロ行列かどうかを判定
-    /// </summary>
+    /// <summary>ゼロ行列かどうかを判定</summary>
     /// <param name="m"></param>
     /// <returns></returns>
     public static bool IsZero(Matrix3D m)
         => m.E11 == 0 && m.E12 == 0 && m.E13 == 0 && m.E21 == 0 && m.E22 == 0 && m.E23 == 0 && m.E31 == 0 && m.E32 == 0 && m.E33 == 0;
 
-    /// <summary>
-    /// ゼロ行列かどうかを判定
-    /// </summary>
+    /// <summary>ゼロ行列かどうかを判定</summary>
     /// <returns></returns>
     public bool IsZero() => IsZero(this);
 
-    /// <summary>
-    /// 単位行列かどうかを判定
-    /// </summary>
+    /// <summary>単位行列かどうかを判定</summary>
     /// <param name="m"></param>
     /// <returns></returns>
     public static bool IsIdentity(Matrix3D m)
     => m.E11 == 1 && m.E12 == 0 && m.E13 == 0 && m.E21 == 0 && m.E22 == 1 && m.E23 == 0 && m.E31 == 0 && m.E32 == 0 && m.E33 == 1;
 
-    /// <summary>
-    /// 単位行列かどうかを判定
-    /// </summary>
+    /// <summary>単位行列かどうかを判定</summary>
     /// <returns></returns>
     public bool IsIdentity() => IsIdentity(this);
 
-    /// <summary>
-    /// 対角成分の和を求める
-    /// </summary>
+    /// <summary>対角成分の和を求める</summary>
     /// <returns></returns>
     public double SumOfDiagonalCompenent() => SumOfDiagonalCompenent(this);
 
-    /// <summary>
-    /// 対角成分の和を求める
-    /// </summary>
+    /// <summary>対角成分の和を求める</summary>
     /// <param name="m"></param>
     /// <returns></returns>
     public static double SumOfDiagonalCompenent(Matrix3D m) => m.E11 + m.E22 + m.E33;
 
-    /// <summary>
-    /// ゼロ行列 (定数)
-    /// </summary>
+    /// <summary>ゼロ行列 (定数)</summary>
     public static readonly Matrix3D ZeroMatrix = new(0, 0, 0, 0, 0, 0, 0, 0, 0);
 
-    /// <summary>
-    /// 単位行列 (定数)
-    /// </summary>
+    /// <summary>単位行列 (定数)</summary>
     public static readonly Matrix3D IdentityMatrix = new(1, 0, 0, 0, 1, 0, 0, 0, 1);
 
     public bool Equals(Matrix3D m)
@@ -596,9 +556,7 @@ public class Matrix3D : ICloneable
     }
 }
 
-/// <summary>
-/// 3次元ベクトルの基本的な機能を提供する
-/// </summary>
+/// <summary>3次元ベクトルの基本的な機能を提供する</summary>
 [Serializable()]
 [TypeConverter(typeof(Vector3DConverter))]
 public class Vector3DBase : ICloneable
@@ -615,57 +573,31 @@ public class Vector3DBase : ICloneable
         return new Vector3D(X, Y, Z);
     }
 
-    public Vector3DBase()
-    {
-        X = 0; Y = 0; Z = 0;
-    }
+    public Vector3DBase()    {        X = 0; Y = 0; Z = 0;    }
 
-    public Vector3DBase(double x, double y, double z)
-    {
-        X = x; Y = y; Z = z;
-    }
+    public Vector3DBase(double x, double y, double z)    {        X = x; Y = y; Z = z;    }
 
-    public Vector3DBase((double X, double Y, double Z) v)
-    {
-        X = v.X; Y = v.Y; Z = v.Z;
-    }
+    public Vector3DBase((double X, double Y, double Z) v)    {        X = v.X; Y = v.Y; Z = v.Z;    }
 
     public Vector3DBase(double[] v)
     {
-        if (v.Length == 3)
-        {
-            X = v[0]; Y = v[1]; Z = v[2];
-        }
-        else
-        {
-            X = 0; Y = 0; Z = 0;
-        }
+        if (v.Length == 3)        {            X = v[0]; Y = v[1]; Z = v[2];        }
+        else        {            X = 0; Y = 0; Z = 0;        }
     }
 
     public Vector3DBase(float[] v)
     {
-        if (v.Length == 3)
-        {
-            X = v[0]; Y = v[1]; Z = v[2];
-        }
-        else
-        {
-            X = 0; Y = 0; Z = 0;
-        }
+        if (v.Length == 3)        {            X = v[0]; Y = v[1]; Z = v[2];        }
+        else        {            X = 0; Y = 0; Z = 0;        }
     }
 
-    public Vector3DBase(Vector3DBase v)
-    {
-        X = v.X; Y = v.Y; Z = v.Z;
-    }
+    public Vector3DBase(Vector3DBase v)    {        X = v.X; Y = v.Y; Z = v.Z;    }
 
     public double[] ToDoubleArray() => [X, Y, Z];
 
     public float[] ToSingleArray() => [(float)X, (float)Y, (float)Z];
 
-    /// <summary>
-    /// X,Y座標をPointDクラスに映す (Zは破棄)
-    /// </summary>
+    /// <summary>X,Y座標をPointDクラスに映す (Zは破棄)</summary>
     /// <returns></returns>
     public PointD ToPointD => new(X, Y);
 
@@ -716,29 +648,19 @@ public class Vector3DBase : ICloneable
 
     #endregion 演算子のオーバーロード
 
-    /// <summary>
-    /// 原点からの長さを返す
-    /// </summary>
+    /// <summary>原点からの長さを返す</summary>
     /// <returns></returns>
     public double Length => Math.Sqrt(Length2);
 
-    /// <summary>
-    /// 原点からの長さの二乗を返す
-    /// </summary>
+    /// <summary>原点からの長さの二乗を返す</summary>
     /// <returns></returns>
     public double Length2 => X * X + Y * Y + Z * Z;
 
-    /// <summary>
-    /// X * X + Y * Y
-    /// </summary>
+    /// <summary>X * X + Y * Y</summary>
     public double X2Y2 => X * X + Y * Y;
-    /// <summary>
-    /// Y * Y + Z * Z
-    /// </summary>
+    /// <summary>Y * Y + Z * Z</summary>
     public double Y2Z2 => Y * Y + Z * Z;
-    /// <summary>
-    /// Z * Z + X * X
-    /// </summary>
+    /// <summary>Z * Z + X * X</summary>
     public double Z2Y2 => Z * Z + X * X;
     public double X2 => X * X;
     public double Y2 => Y * Y;
@@ -776,9 +698,7 @@ public class Vector3DBase : ICloneable
     public Vector3D ToVector3D() => new(X, Y, Z);
 
 
-    /// <summary>
-    /// 2つのベクトルの外積を返す
-    /// </summary>
+    /// <summary>2つのベクトルの外積を返す</summary>
     /// <param name="v1"></param>
     /// <param name="v2"></param>
     /// <returns></returns>
@@ -786,18 +706,14 @@ public class Vector3DBase : ICloneable
         => new(v1.Y * v2.Z - v1.Z * v2.Y, v1.Z * v2.X - v1.X * v2.Z, v1.X * v2.Y - v1.Y * v2.X);
 
 
-    /// <summary>
-    /// 2つのベクトルの外積を返す
-    /// </summary>
+    /// <summary>2つのベクトルの外積を返す</summary>
     /// <param name="v1"></param>
     /// <param name="v2"></param>
     /// <returns></returns>
     public static Vector3DBase VectorProduct(in (double X, double Y, double Z) v1, in (double X, double Y, double Z) v2)
         => new(v1.Y * v2.Z - v1.Z * v2.Y, v1.Z * v2.X - v1.X * v2.Z, v1.X * v2.Y - v1.Y * v2.X);
 
-    /// <summary>
-    /// 2つのベクトル間の角度を返す
-    /// </summary>
+    /// <summary>2つのベクトル間の角度を返す</summary>
     /// <param name="v1"></param>
     /// <param name="v2"></param>
     /// <returns></returns>
@@ -811,9 +727,7 @@ public class Vector3DBase : ICloneable
             return aCos < -1 ? Math.PI / 2 : Math.Acos(aCos);
     }
 
-    /// <summary>
-    /// 平均値を返す
-    /// </summary>
+    /// <summary>平均値を返す</summary>
     /// <param name="vectors"></param>
     /// <returns></returns>
     public static Vector3DBase Average(IEnumerable<Vector3DBase> vectors)
@@ -832,9 +746,7 @@ public class Vector3DBase : ICloneable
     public override string ToString() => $"({X}, {Y}, {Z})"; //260317Cl string.Format → 文字列補間
 }
 
-/// <summary>
-/// 3次元ベクトルと静的関数を提供
-/// </summary>
+/// <summary>3次元ベクトルと静的関数を提供</summary>
 [Serializable()]
 public class Vector3D : Vector3DBase, IComparable<Vector3D>, ICloneable
 {
@@ -843,14 +755,10 @@ public class Vector3D : Vector3DBase, IComparable<Vector3D>, ICloneable
     public double d { get; set; }
     public string Text { get; set; }
 
-    /// <summary>
-    /// 初期値は false
-    /// </summary>
+    /// <summary>初期値は false</summary>
     public bool Flag1 { get; set; } = false;
 
-    /// <summary>
-    /// 初期値は false
-    /// </summary>
+    /// <summary>初期値は false</summary>
     public bool Flag2 { get; set; } = false;
 
     [XmlIgnore]
@@ -979,9 +887,7 @@ public class Vector3D : Vector3DBase, IComparable<Vector3D>, ICloneable
         Z = v.Z;
     }
 
-    /// <summary>
-    /// 二つのベクトル間の距離を返す
-    /// </summary>
+    /// <summary>二つのベクトル間の距離を返す</summary>
     /// <param name="v1"></param>
     /// <param name="v2"></param>
     /// <returns></returns>
@@ -990,9 +896,7 @@ public class Vector3D : Vector3DBase, IComparable<Vector3D>, ICloneable
         return Math.Sqrt((v1.X - v2.X) * (v1.X - v2.X) + (v1.Y - v2.Y) * (v1.Y - v2.Y) + (v1.Z - v2.Z) * (v1.Z - v2.Z));
     }
 
-    /// <summary>
-    /// 二つのベクトル間の距離の2乗を返す
-    /// </summary>
+    /// <summary>二つのベクトル間の距離の2乗を返す</summary>
     /// <param name="v1"></param>
     /// <param name="v2"></param>
     /// <returns></returns>
@@ -1001,9 +905,7 @@ public class Vector3D : Vector3DBase, IComparable<Vector3D>, ICloneable
         return (v1.X - v2.X) * (v1.X - v2.X) + (v1.Y - v2.Y) * (v1.Y - v2.Y) + (v1.Z - v2.Z) * (v1.Z - v2.Z);
     }
 
-    /// <summary>
-    /// vの方向が同じで長さが1のベクトルを返す
-    /// </summary>
+    /// <summary>vの方向が同じで長さが1のベクトルを返す</summary>
     /// <param name="v"></param>
     /// <returns></returns>
     public static Vector3D Normarize(Vector3D v)
@@ -1012,9 +914,7 @@ public class Vector3D : Vector3DBase, IComparable<Vector3D>, ICloneable
         return l > 0 ? new Vector3D(v.X / l, v.Y / l, v.Z / l) : v;
     }
 
-    /// <summary>
-    /// 3次元ベクトルvのステレオネット上での位置をPointFで返す
-    /// </summary>
+    /// <summary>3次元ベクトルvのステレオネット上での位置をPointFで返す</summary>
     /// <param name="v"></param>
     /// <returns></returns>
     public static PointF StereoNetPoint(Vector3D v)
@@ -1026,9 +926,7 @@ public class Vector3D : Vector3DBase, IComparable<Vector3D>, ICloneable
             return new PointF(-100, -100);
     }
 
-    /// <summary>
-    /// ステレオネット上での位置に対応する3次元ベクトルを返す
-    /// </summary>
+    /// <summary>ステレオネット上での位置に対応する3次元ベクトルを返す</summary>
     /// <param name="pt"></param>
     /// <returns></returns>
     public static Vector3D SphereVector(PointF pt)
@@ -1037,9 +935,7 @@ public class Vector3D : Vector3DBase, IComparable<Vector3D>, ICloneable
         return new Vector3D(2 * pt.X / denominator, 2 * pt.Y / denominator, 2 / denominator - 1);
     }
 
-    /// <summary>
-    /// ステレオネット上での位置に対応する3次元ベクトルを返す
-    /// </summary>
+    /// <summary>ステレオネット上での位置に対応する3次元ベクトルを返す</summary>
     /// <param name="pt"></param>
     /// <returns></returns>
     public static Vector3D SphereVector(PointD pt)
@@ -1048,9 +944,7 @@ public class Vector3D : Vector3DBase, IComparable<Vector3D>, ICloneable
         return new Vector3D(2 * pt.X / denominator, 2 * pt.Y / denominator, 2 / denominator - 1);
     }
 
-    /// <summary>
-    /// 2つの3次元ベクトル間の角度を返す
-    /// </summary>
+    /// <summary>2つの3次元ベクトル間の角度を返す</summary>
     /// <param name="v1"></param>
     /// <param name="v2"></param>
     /// <returns></returns>
@@ -1062,9 +956,7 @@ public class Vector3D : Vector3DBase, IComparable<Vector3D>, ICloneable
         return Math.Acos(aCos);
     }
 
-    /// <summary>
-    /// 2つのステレオネット上の点の間の角度を返す
-    /// </summary>
+    /// <summary>2つのステレオネット上の点の間の角度を返す</summary>
     /// <param name="pt1"></param>
     /// <param name="pt2"></param>
     /// <returns></returns>
@@ -1076,9 +968,7 @@ public class Vector3D : Vector3DBase, IComparable<Vector3D>, ICloneable
         return Math.Acos(aCos);
     }
 
-    /// <summary>
-    /// 2つのステレオネット上の点の間の角度を返す
-    /// </summary>
+    /// <summary>2つのステレオネット上の点の間の角度を返す</summary>
     /// <param name="pt1"></param>
     /// <param name="pt2"></param>
     /// <returns></returns>
@@ -1090,18 +980,14 @@ public class Vector3D : Vector3DBase, IComparable<Vector3D>, ICloneable
         return Math.Acos(aCos);
     }
 
-    /// <summary>
-    /// 2つのベクトルの外積を返す
-    /// </summary>
+    /// <summary>2つのベクトルの外積を返す</summary>
     /// <param name="v1"></param>
     /// <param name="v2"></param>
     /// <returns></returns>
     public static Vector3D VectorProduct(Vector3D v1, Vector3D v2)
         => new(v1.Y * v2.Z - v1.Z * v2.Y, v1.Z * v2.X - v1.X * v2.Z, v1.X * v2.Y - v1.Y * v2.X);
 
-    /// <summary>
-    /// 座標一ずつを加減算し、0から1の範囲内に収める
-    /// </summary>
+    /// <summary>座標一ずつを加減算し、0から1の範囲内に収める</summary>
     /// <param name="v"></param>
     /// <returns></returns>
     public static Vector3D InnerLattice(Vector3D v)
@@ -1113,9 +999,7 @@ public class Vector3D : Vector3DBase, IComparable<Vector3D>, ICloneable
         return new Vector3D(x, y, z, false);
     }
 
-    /// <summary>
-    /// 座標一ずつを加減算し、0から1の範囲内に収める
-    /// </summary>
+    /// <summary>座標一ずつを加減算し、0から1の範囲内に収める</summary>
     /// <param name="v"></param>
     /// <returns></returns>
     public Vector3D InnerLattice()
@@ -1127,9 +1011,7 @@ public class Vector3D : Vector3DBase, IComparable<Vector3D>, ICloneable
         return new Vector3D(x, y, z, false);
     }
 
-    /// <summary>
-    /// 座標一ずつを加減算し、0から1の範囲内に収める
-    /// </summary>
+    /// <summary>座標一ずつを加減算し、0から1の範囲内に収める</summary>
     /// <param name="v"></param>
     /// <returns></returns>
     public void InnerLatticeThis()
@@ -1153,9 +1035,7 @@ public class Vector3D : Vector3DBase, IComparable<Vector3D>, ICloneable
     }
 }
 
-/// <summary>
-/// 4元数と静的関数を提供
-/// </summary>
+/// <summary>4元数と静的関数を提供</summary>
 public class Quaternion
 {
     public double W, X, Y, Z;
@@ -1273,9 +1153,7 @@ public class Quaternion
         return new Quaternion(q1.W - q2.W, q1.X - q2.X, q1.Y - q2.Y, q1.Z - q2.Z);
     }
 
-    /// <summary>
-    ///
-    /// </summary>
+    /// <summary></summary>
     /// <param name="q"></param>
     /// <param name="v"></param>
     /// <returns></returns>
@@ -1293,9 +1171,7 @@ public class Quaternion
         return new Vector3DBase(x, y, z);
     }
 
-    /// <summary>
-    /// 共役四元数 (X,Y,Zの符号を逆転させたもの) を得る
-    /// </summary>
+    /// <summary>共役四元数 (X,Y,Zの符号を逆転させたもの) を得る</summary>
     /// <param name="q"></param>
     /// <returns></returns>
     public static Quaternion Conjugate(Quaternion q)
@@ -1303,9 +1179,7 @@ public class Quaternion
         return new Quaternion(q.W, -q.X, -q.Y, -q.Z);
     }
 
-    /// <summary>
-    /// 共役四元数 (X,Y,Zの符号を逆転させたもの) を得る
-    /// </summary>
+    /// <summary>共役四元数 (X,Y,Zの符号を逆転させたもの) を得る</summary>
     /// <param name="q"></param>
     /// <returns></returns>
     public Quaternion Conjugate()
@@ -1313,9 +1187,7 @@ public class Quaternion
         return Conjugate(this);
     }
 
-    /// <summary>
-    /// 逆四元数 (W,X,Y,Zの符号を逆転させたもの) を得る
-    /// </summary>
+    /// <summary>逆四元数 (W,X,Y,Zの符号を逆転させたもの) を得る</summary>
     /// <param name="q"></param>
     /// <returns></returns>
     public static Quaternion Invert(Quaternion q)
@@ -1323,9 +1195,7 @@ public class Quaternion
         return new Quaternion(-q.W, -q.X, -q.Y, -q.Z);
     }
 
-    /// <summary>
-    /// 逆四元数 (X,Y,Zの符号を逆転させたもの) を得る
-    /// </summary>
+    /// <summary>逆四元数 (X,Y,Zの符号を逆転させたもの) を得る</summary>
     /// <param name="q"></param>
     /// <returns></returns>
     public Quaternion Invert()
@@ -1333,9 +1203,7 @@ public class Quaternion
         return Invert(this);
     }
 
-    /// <summary>
-    /// ノルムの自乗値を得る
-    /// </summary>
+    /// <summary>ノルムの自乗値を得る</summary>
     /// <param name="q"></param>
     /// <returns></returns>
     public static double NormSquared(Quaternion q)
@@ -1343,9 +1211,7 @@ public class Quaternion
         return q.W * q.W + q.X * q.X + q.Y * q.Y + q.Z * q.Z;
     }
 
-    /// <summary>
-    /// ノルムの自乗値を得る
-    /// </summary>
+    /// <summary>ノルムの自乗値を得る</summary>
     /// <param name="q"></param>
     /// <returns></returns>
     public double NormSqured()
@@ -1353,9 +1219,7 @@ public class Quaternion
         return NormSquared(this);
     }
 
-    /// <summary>
-    /// ノルム(長さ)を得る
-    /// </summary>
+    /// <summary>ノルム(長さ)を得る</summary>
     /// <param name="q"></param>
     /// <returns></returns>
     public static double Norm(Quaternion q)
@@ -1363,18 +1227,14 @@ public class Quaternion
         return Math.Sqrt(q.NormSqured());
     }
 
-    /// <summary>
-    /// ノルム(長さ)を得る
-    /// </summary>
+    /// <summary>ノルム(長さ)を得る</summary>
     /// <returns></returns>
     public double Norm()
     {
         return Norm(this);
     }
 
-    /// <summary>
-    /// 正規化四元数(≒3次元回転)を得る
-    /// </summary>
+    /// <summary>正規化四元数(≒3次元回転)を得る</summary>
     /// <param name="q"></param>
     /// <returns></returns>
     public static Quaternion Normarize(Quaternion q)
@@ -1382,9 +1242,7 @@ public class Quaternion
         return q / q.Norm();
     }
 
-    /// <summary>
-    /// 対数Quatanion (方向が回転軸で長さがθ/2のベクトル)を得る.
-    /// </summary>
+    /// <summary>対数Quatanion (方向が回転軸で長さがθ/2のベクトル)を得る.</summary>
     /// <param name="q"></param>
     /// <returns></returns>
     public static Vector3DBase ToLogQuaternion(Quaternion q)
@@ -1397,9 +1255,7 @@ public class Quaternion
             return v / v.Length * theta;
     }
 
-    /// <summary>
-    /// 対数Quatanion (方向が回転軸で長さがθ/2のベクトル)を得る.
-    /// </summary>
+    /// <summary>対数Quatanion (方向が回転軸で長さがθ/2のベクトル)を得る.</summary>
     /// <param name="q"></param>
     /// <returns></returns>
     public Vector3DBase ToLogQuaternion()

@@ -16,18 +16,12 @@ public partial class FormDiffractionSimulatorHolder : CaptureFormBase
     public FormDiffractionSimulator FormDiffractionSimulator;
     private PointD centerPt = new(0, 0);
 
-    /// <summary>
-    /// 親フォームから呼ばれるイベントをスキップするかどうか
-    /// </summary>
+    /// <summary>親フォームから呼ばれるイベントをスキップするかどうか</summary>
     private bool skipEventFromParent = false;
-    /// <summary>
-    /// このフォームから呼ばれるイベントをスキップするかどうか
-    /// </summary>
+    /// <summary>このフォームから呼ばれるイベントをスキップするかどうか</summary>
     private bool skipEventFromThis = false;
 
-    /// <summary>
-    /// 主軸の方向（ラジアン）
-    /// </summary>
+    /// <summary>主軸の方向（ラジアン）</summary>
     public double PrimaryAxisDirection { get => numericBoxTiltXDirection.RadianValue; set => numericBoxTiltXDirection.RadianValue = value; }
 
     private int boxWidth => graphicsBox.ClientSize.Width;
@@ -46,9 +40,7 @@ public partial class FormDiffractionSimulatorHolder : CaptureFormBase
         Matrix3D.RotX((radioButtonTiltY_Plus.Checked ? -1 : 1) * numericBoxTiltY.RadianValue) *
         Matrix3D.RotZ(numericBoxTiltXDirection.RadianValue).Inverse();
 
-    /// <summary>
-    /// Trigonometric Function Table
-    /// </summary>
+    /// <summary>Trigonometric Function Table</summary>
     private readonly List<(double Sin, double Cos, double Tan)> TF =
         [.. Enumerable.Range(0, 360).Select(n => n * Math.PI / 180.0).Select(e => (Math.Sin(e), Math.Cos(e), Math.Tan(e)))];
 
@@ -98,9 +90,7 @@ public partial class FormDiffractionSimulatorHolder : CaptureFormBase
         graphicsBox.Refresh();
     }
 
-    /// <summary>
-    /// ステレオネットの輪郭を描く
-    /// </summary>
+    /// <summary>ステレオネットの輪郭を描く</summary>
     /// <param name="g"></param>
     private void DrawOutline(Graphics g)
     {
@@ -153,9 +143,7 @@ public partial class FormDiffractionSimulatorHolder : CaptureFormBase
         //g.DrawLine()
     }
 
-    /// <summary>
-    /// ステレオネットに晶帯軸を描く
-    /// </summary>
+    /// <summary>ステレオネットに晶帯軸を描く</summary>
     /// <param name="g"></param>
     private void DrawStereoNet(Graphics g)
     {
@@ -289,9 +277,7 @@ public partial class FormDiffractionSimulatorHolder : CaptureFormBase
     #endregion
 
     #region 親フォームから呼ばれるイベント処理
-    /// <summary>
-    /// 親フォームから結晶変更を通知されたときの処理
-    /// </summary>
+    /// <summary>親フォームから結晶変更を通知されたときの処理</summary>
     internal void CrystalChanged()
     {
         if (skipEventFromParent) return;
@@ -301,9 +287,7 @@ public partial class FormDiffractionSimulatorHolder : CaptureFormBase
         Draw();
     }
 
-    /// <summary>
-    /// 親フォームから回転変更を通知されたときの処理
-    /// </summary>
+    /// <summary>親フォームから回転変更を通知されたときの処理</summary>
     internal void RotationChanged()
     {
         if (skipEventFromParent) return;

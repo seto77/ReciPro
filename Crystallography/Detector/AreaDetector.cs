@@ -4,80 +4,50 @@ using System.Threading.Tasks;
 
 namespace Crystallography
 {
-    /// <summary>
-    /// 二次元検出器クラス
-    /// </summary>
+    /// <summary>二次元検出器クラス</summary>
     [Serializable]
     public class AreaDetector
     {
-        /// <summary>
-        /// Detectorのカメラ長(mm)
-        /// </summary>
+        /// <summary>Detectorのカメラ長(mm)</summary>
         public double CameraLength { get; set; }
 
-        /// <summary>
-        /// 入射線源の波長 (nm)
-        /// </summary>
+        /// <summary>入射線源の波長 (nm)</summary>
         public double WaveLength { get { return WaveProperty.WaveLength; } set { WaveProperty.WaveLength = value; } }
 
-        /// <summary>
-        /// 入射線の種類
-        /// </summary>
+        /// <summary>入射線の種類</summary>
         public WaveSource WaveSource { get { return WaveProperty.Source; } set { WaveProperty.Source = value; } }
 
-        /// <summary>
-        /// 入射線の発散角 (radian)
-        /// </summary>
+        /// <summary>入射線の発散角 (radian)</summary>
         public double Convergence { get { return WaveProperty.Convergence; } set { WaveProperty.Convergence = value; } }
 
-        /// <summary>
-        /// 入射線の単色性
-        /// </summary>
+        /// <summary>入射線の単色性</summary>
         public double Monochromaticity { get { return WaveProperty.Monochromaticity; } set { WaveProperty.Monochromaticity = value; } }
 
-        /// <summary>
-        /// 入射線のプロパティ
-        /// </summary>
+        /// <summary>入射線のプロパティ</summary>
         public WaveProperty WaveProperty { set; get; }
 
-        /// <summary>
-        /// Detectorの幅(ピクセル)
-        /// </summary>
+        /// <summary>Detectorの幅(ピクセル)</summary>
         public int ImageWidth { get; set; }
 
-        /// <summary>
-        /// Detectorの高さ(ピクセル)
-        /// </summary>
+        /// <summary>Detectorの高さ(ピクセル)</summary>
         public int ImageHeight { get; set; }
 
-        /// <summary>
-        /// Detectorの全ピクセル数
-        /// </summary>
+        /// <summary>Detectorの全ピクセル数</summary>
         public int ImageLength { get { return ImageWidth * ImageHeight; } }
 
-        /// <summary>
-        /// Detectorの解像度 (mm/pixel)
-        /// </summary>
+        /// <summary>Detectorの解像度 (mm/pixel)</summary>
         public double Resolution { get; set; }
 
-        /// <summary>
-        /// Detectorの中心(ダイレクトスポット)位置 (ピクセル単位)
-        /// </summary>
+        /// <summary>Detectorの中心(ダイレクトスポット)位置 (ピクセル単位)</summary>
         public PointD Center { get; set; }
 
-        /// <summary>
-        /// マスクされたピクセル
-        /// </summary>
+        /// <summary>マスクされたピクセル</summary>
         public bool[] MaskedArea { get; set; }
 
-        /// <summary>
-        /// ピクセルが対応する逆空間ベクトルと面積
-        /// </summary>
+        /// <summary>ピクセルが対応する逆空間ベクトルと面積</summary>
         public ((double X, double Y, double Z) Vec, double Area)[] Reciprocal { get; set; }
 
-        /// <summary>
-        /// 逆空間における最大Z値
-        /// </summary>
+        /// <summary>逆空間における最大Z値</summary>
         public double MaxReciproZ { get; set; }
 
         public AreaDetector(int width, int height, double resolution, PointD center, WaveProperty waveProperty, double cameraLength)
@@ -92,9 +62,7 @@ namespace Crystallography
 
         //public byte[] PolycrystallineImageArray;
 
-        /// <summary>
-        /// ピクセル位置X,Yが相当する逆空間ベクトルを返す
-        /// </summary>
+        /// <summary>ピクセル位置X,Yが相当する逆空間ベクトルを返す</summary>
         /// <param name="x"></param>
         /// <param name="y"></param>
         /// <returns></returns>
@@ -147,9 +115,7 @@ namespace Crystallography
             }
         }
 
-        /// <summary>
-        /// ピクセルが対応する逆空間の面積およびベクトルを計算し、ReciprocalAreasにセットする
-        /// </summary>
+        /// <summary>ピクセルが対応する逆空間の面積およびベクトルを計算し、ReciprocalAreasにセットする</summary>
         private void SetReciporocalAreaAndVectors()
         {
             Reciprocal = new ((double X, double Y, double Z) Vec, double Area)[ImageWidth * ImageHeight];

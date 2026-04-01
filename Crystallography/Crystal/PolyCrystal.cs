@@ -20,48 +20,34 @@ public class Crystallite
     [XmlIgnoreAttribute]
     public Crystal BaseCrystal = null;
 
-    /// <summary>
-    /// 角度分解能 Degree単位
-    /// </summary>
+    /// <summary>角度分解能 Degree単位</summary>
     [XmlIgnoreAttribute]
     public double AngleResolution { get => BaseCrystal.AngleResolution; set => BaseCrystal.AngleResolution = value; }
 
-    /// <summary>
-    /// 一つの結晶子が受け持つ角度を分割する数
-    /// </summary>
+    /// <summary>一つの結晶子が受け持つ角度を分割する数</summary>
     [XmlIgnoreAttribute]
     public int SubDiv { get => BaseCrystal.SubDivision; set => BaseCrystal.SubDivision = value; }
 
-    /// <summary>
-    /// 結晶子のサイズ
-    /// </summary>
+    /// <summary>結晶子のサイズ</summary>
     [XmlIgnoreAttribute]
     public double GrainSize { get => BaseCrystal.GrainSize; set => BaseCrystal.GrainSize = value; }
 
-    /// <summary>
-    /// 多結晶体全体のRotation　
-    /// </summary>
+    /// <summary>多結晶体全体のRotation</summary>
     public Matrix3D WholeRotation = Matrix3D.IdentityMatrix;
 
     public int SquareDiv => (int)(90.0 / BaseCrystal.AngleResolution);
     public int RotationDiv => (int)(360.0 / BaseCrystal.AngleResolution);
 
-    /// <summary>
-    /// 全結晶子の数
-    /// </summary>
+    /// <summary>全結晶子の数</summary>
     public int TotalCrystalline => 6 * SquareDiv * SquareDiv * RotationDiv;
 
     public int ImageWidh { get; set; }
     public int ImageHeight { get; set; }
 
-    /// <summary>
-    /// [n][] n番目の結晶方位について、エワルド球に近い逆格子ベクトルの番号
-    /// </summary>
+    /// <summary>[n][] n番目の結晶方位について、エワルド球に近い逆格子ベクトルの番号</summary>
     public int[][] ValidIndex;
 
-    /// <summary>
-    /// [n][m][] n番目の結晶方位の、m番目の逆格子ベクトルが、考慮すべきSubRotation番号
-    /// </summary>
+    /// <summary>[n][m][] n番目の結晶方位の、m番目の逆格子ベクトルが、考慮すべきSubRotation番号</summary>
     //public ushort[][][] ValidSubRotNum;
 
     /// <summary>
@@ -70,9 +56,7 @@ public class Crystallite
     /// </summary>
     public (int Index, double Intensity)[][] Pixel;
 
-    /// <summary>
-    /// ｎ番目の角度範囲の結晶子が受け持つ立体角
-    /// </summary>
+    /// <summary>ｎ番目の角度範囲の結晶子が受け持つ立体角</summary>
     public double[] SolidAngle;
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -80,9 +64,7 @@ public class Crystallite
         // a1 * b1 + a2 * b2 + a3 * b3
         => Math.FusedMultiplyAdd(a1, b1, Math.FusedMultiplyAdd(a2, b2, a3 * b3));
 
-    /// <summary>
-    /// ｎ番目の角度範囲の結晶子の濃度
-    /// </summary>
+    /// <summary>ｎ番目の角度範囲の結晶子の濃度</summary>
     public double[] Density;
 
     //[n][angle][] n番目の逆格子ベクトルが ある回転角(angle)でエワルド球に一致したとき、そのピクセルを原点とした、強度順で並び替えたピクセル位置
@@ -93,27 +75,19 @@ public class Crystallite
 
     public double[] DeviationThreshold;
 
-    /// <summary>
-    /// 結晶子の回転行列
-    /// </summary>
+    /// <summary>結晶子の回転行列</summary>
     public Matrix3D[] Rotations = null;
 
     private Matrix3D[] Rotations1 = null;
     private Matrix3D[] Rotations2 = null;
 
-    /// <summary>
-    /// 結晶子の回転行列の前半 (z軸の方向に対応)
-    /// </summary>
+    /// <summary>結晶子の回転行列の前半 (z軸の方向に対応)</summary>
     private Matrix3D[] SubRot1;
 
-    /// <summary>
-    /// 結晶の回転行列の後半 (Z軸の回転に対応)
-    /// </summary>
+    /// <summary>結晶の回転行列の後半 (Z軸の回転に対応)</summary>
     private Matrix3D[] SubRot2;
 
-    /// <summary>
-    /// 全逆格子ベクトルの数
-    /// </summary>
+    /// <summary>全逆格子ベクトルの数</summary>
     public int G_VectorNumber => G != null ? G.Length : -1;
 
     /// <summary>
@@ -171,9 +145,7 @@ public class Crystallite
             SetGVector(BaseCrystal, detector, applyTiltMatrix, removeZeroIntensity, calcSpotShape);
     }
 
-    /// <summary>
-    /// 結晶の逆格子ベクトルを初期化
-    /// </summary>
+    /// <summary>結晶の逆格子ベクトルを初期化</summary>
     /// <param name="width"></param>
     /// <param name="height"></param>
     /// <param name="center"></param>
@@ -267,9 +239,7 @@ public class Crystallite
             setSpotShapes(detector);
     }
 
-    /// <summary>
-    /// 各結晶子が受け持つ
-    /// </summary>
+    /// <summary>各結晶子が受け持つ</summary>
     /// <param name="detector"></param>
     public void setSpotShapes(AreaDetector detector)
     {
@@ -355,9 +325,7 @@ public class Crystallite
     public static object lockObject = new object();
     private static Random rn = new Random();
 
-    /// <summary>
-    ///
-    /// </summary>
+    /// <summary></summary>
     /// <param name="seed"></param>
     /// <param name="number"></param>
     /// <param name="directionalDensity"></param>
@@ -416,9 +384,7 @@ public class Crystallite
     */
     #endregion お蔵入り中
 
-    /// <summary>
-    /// 近い方位を計算するためのプライベート変数
-    /// </summary>
+    /// <summary>近い方位を計算するためのプライベート変数</summary>
     private Vector3DBase[][][] vec;
 
     private void initializeVec()
@@ -437,9 +403,7 @@ public class Crystallite
         }
     }
 
-    /// <summary>
-    /// n番目の結晶子に近い方位を計算し、指定された密度で返す
-    /// </summary>
+    /// <summary>n番目の結晶子に近い方位を計算し、指定された密度で返す</summary>
     /// <param name="n"></param>
     /// <returns></returns>
     public void GetBiasedDirection(int n, ref int[] densityIndex, ref double[] densityValue, double range, double ratio)
@@ -503,9 +467,7 @@ public class Crystallite
         }
     }
 
-    /// <summary>
-    /// 通し番号n から、面番号planeやxy座標を返す
-    /// </summary>
+    /// <summary>通し番号n から、面番号planeやxy座標を返す</summary>
     /// <param name="n"></param>
     /// <param name="plane"></param>
     /// <param name="x"></param>
@@ -526,9 +488,7 @@ public class Crystallite
         return plane * SquareDiv * SquareDiv * RotationDiv + y * SquareDiv * RotationDiv + x * RotationDiv + rot;
     }
 
-    /// <summary>
-    /// 指定した角度分解能で、全球を分割し、角度情報をRotations, SubRotationsに格納
-    /// </summary>
+    /// <summary>指定した角度分解能で、全球を分割し、角度情報をRotations, SubRotationsに格納</summary>
     public void setCrystallineRotation()
     {
 
@@ -611,9 +571,7 @@ public class Crystallite
         _ => m,
     };
 
-    /// <summary>
-    /// あるplane,x,y,rotに属するSubRotations配列を返す。あらかじめsetCrystallineRotation()で初期化しておく必要がある
-    /// </summary>
+    /// <summary>あるplane,x,y,rotに属するSubRotations配列を返す。あらかじめsetCrystallineRotation()で初期化しておく必要がある</summary>
     /// <param name="plane"></param>
     /// <param name="x"></param>
     /// <param name="y"></param>
@@ -629,9 +587,7 @@ public class Crystallite
         return m;
     }
 
-    /// <summary>
-    /// あるplane,x,y,rotに属するSubRotations配列を返す。あらかじめsetCrystallineRotation()で初期化しておく必要がある
-    /// </summary>
+    /// <summary>あるplane,x,y,rotに属するSubRotations配列を返す。あらかじめsetCrystallineRotation()で初期化しておく必要がある</summary>
     /// <param name="plane"></param>
     /// <param name="x"></param>
     /// <param name="y"></param>
@@ -648,9 +604,7 @@ public class Crystallite
         return getSubRotations(plane, x, y, rot);
     }
 
-    /// <summary>
-    /// ある角度範囲が受け持つ立体角を初期化
-    /// </summary>
+    /// <summary>ある角度範囲が受け持つ立体角を初期化</summary>
     private void setCrystallineSolidAngle()
     {
         SolidAngle = new double[TotalCrystalline];
@@ -675,9 +629,7 @@ public class Crystallite
         });
     }
 
-    /// <summary>
-    /// 各Crystallineの回折が寄与するピクセルのindexと指数を計算し、PixelIndexとPixelIntensityに格納する
-    /// </summary>
+    /// <summary>各Crystallineの回折が寄与するピクセルのindexと指数を計算し、PixelIndexとPixelIntensityに格納する</summary>
     /// <param name="detector">AreaDetectorクラスの情報を与える</param>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public void SetDiffractedPixels(AreaDetector detector)
@@ -848,9 +800,7 @@ public class Crystallite
         }
     }
 
-    /// <summary>
-    /// SpotIDから呼ばれる。
-    /// </summary>
+    /// <summary>SpotIDから呼ばれる。</summary>
     /// <param name="detector"></param>
     /// <param name="m"></param>
     /// <param name="calculateOnlySpotPositon"></param>
@@ -960,9 +910,7 @@ public class Crystallite
 
 #region お蔵入り中のPowderクラス
 
-/// <summary>
-/// 多結晶体を取り扱う.
-/// </summary>
+/// <summary>多結晶体を取り扱う.</summary>
 [Serializable()]
 public static class Powder
 {
@@ -1006,9 +954,7 @@ public static class Powder
         return Array.Empty<double>();
     }
 
-    /// <summary>
-    /// 多結晶体のディフラクションパターンを計算する
-    /// </summary>
+    /// <summary>多結晶体のディフラクションパターンを計算する</summary>
     /// <param name="rotation">回転行列</param>
     /// <param name="resetIndex">既に計算済みの回折に寄与する逆格子ベクトルをリセットする。もともと計算していなかったらこの値に関わらず再計算する。</param>
     /// <param name="renewRvector">イメージ中の各ピクセルが対応する逆空間ベクトルおよび面積をリセットする。もともと計算していなかったらこの値に関わらず再計算する。</param>

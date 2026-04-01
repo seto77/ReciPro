@@ -217,9 +217,7 @@ public static class XYFile
         else return [];
     }
 
-    /// <summary>
-    /// 複数のプロファイルを含むCSV形式(PDI独自形式)
-    /// </summary>
+    /// <summary>複数のプロファイルを含むCSV形式(PDI独自形式)</summary>
     /// <param name="fileName"></param>
     /// <returns></returns>
     public static DiffractionProfile2[] ReadCSVFile(string fileName)
@@ -282,9 +280,7 @@ public static class XYFile
 
 
 
-    /// <summary>
-    /// よく分からないファイルを読み込む
-    /// </summary>
+    /// <summary>よく分からないファイルを読み込む</summary>
     /// <param name="fileName"></param>
     /// <param name="separater"></param>
     /// <returns></returns>

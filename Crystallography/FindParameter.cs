@@ -46,9 +46,7 @@ namespace Crystallography
             }
         }
 
-        /// <summary>
-        /// 一枚の写真中の2つのピークの位置とd値からd1に対するSin(2θ)を返す関数
-        /// </summary>
+        /// <summary>一枚の写真中の2つのピークの位置とd値からd1に対するSin(2θ)を返す関数</summary>
         /// <param name="L1"></param>
         /// <param name="L2"></param>
         /// <param name="d1"></param>
@@ -87,9 +85,7 @@ namespace Crystallography
             return Math.Sqrt(bestSinTheta);
         }
 
-        /// <summary>
-        /// 一枚の写真中の2つのピークの位置とd値から波長を返す関数　初期値として現在の波長を渡す
-        /// </summary>
+        /// <summary>一枚の写真中の2つのピークの位置とd値から波長を返す関数　初期値として現在の波長を渡す</summary>
         /// <param name="L1"></param>
         /// <param name="L2"></param>
         /// <param name="d1"></param>
@@ -101,9 +97,7 @@ namespace Crystallography
             return 2 * d1 * GetSinTheta(L1, L2, d1, d2, WaveLength);
         }
 
-        /// <summary>
-        /// 一枚の写真中の複数のピークを同時に渡してその加重平均から波長と誤差を計算する　(FindWaveLength2を内部的に呼び出す)
-        /// </summary>
+        /// <summary>一枚の写真中の複数のピークを同時に渡してその加重平均から波長と誤差を計算する　(FindWaveLength2を内部的に呼び出す)</summary>
         /// <param name="p"></param>
         /// <param name="WaveLength"></param>
         /// <param name="WaveLengthDev"></param>
@@ -142,9 +136,7 @@ namespace Crystallography
             }
         }
 
-        /// <summary>
-        /// 一枚の写真中の複数のピークを同時に渡してその加重平均から波長と誤差を計算する　(FindWaveLength2を内部的に呼び出す)
-        /// </summary>
+        /// <summary>一枚の写真中の複数のピークを同時に渡してその加重平均から波長と誤差を計算する　(FindWaveLength2を内部的に呼び出す)</summary>
         /// <param name="p"></param>
         /// <param name="WaveLength"></param>
         /// <param name="WaveLengthDev"></param>
@@ -183,9 +175,7 @@ namespace Crystallography
             }
         }
 
-        /// <summary>
-        /// 一枚の写真中の複数のピークと波長+カメラ長からピクセルサイズを計算する　(全パターンからの算出)
-        /// </summary>
+        /// <summary>一枚の写真中の複数のピークと波長+カメラ長からピクセルサイズを計算する　(全パターンからの算出)</summary>
         /// <param name="p"></param>
         /// <param name="WaveLength"></param>
         /// <param name="WaveLengthDev"></param>
@@ -224,9 +214,7 @@ namespace Crystallography
             }
         }
 
-        /// <summary>
-        /// 固定されたピクセルサイズとフィルム距離から波長をかえす
-        /// </summary>
+        /// <summary>固定されたピクセルサイズとフィルム距離から波長をかえす</summary>
         /// <param name="p"></param>
         /// <param name="PixelSize"></param>
         /// <param name="FilmDistance"></param>
@@ -256,9 +244,7 @@ namespace Crystallography
             }
         }
 
-        /// <summary>
-        /// １枚のイメージからフィルム距離を返す。波長と、各面の真の面間隔と実測した2θが必要
-        /// </summary>
+        /// <summary>１枚のイメージからフィルム距離を返す。波長と、各面の真の面間隔と実測した2θが必要</summary>
         /// <param name="p"></param>
         /// <param name="WaveLength"></param>
         /// <param name="FilmDistance"></param>
@@ -287,9 +273,7 @@ namespace Crystallography
             }
         }
 
-        /// <summary>
-        /// 2枚のフィルム距離の異なる画像からフィルム距離を返す。フィルム距離の差(誤差無し)が必要
-        /// </summary>
+        /// <summary>2枚のフィルム距離の異なる画像からフィルム距離を返す。フィルム距離の差(誤差無し)が必要</summary>
         /// <param name="p"></param>
         /// <param name="FilmDistanceDiscrepancy"></param>
         /// <param name="FilmDistance"></param>
@@ -324,9 +308,7 @@ namespace Crystallography
             }
         }
 
-        /// <summary>
-        /// 2枚のフィルム距離の異なる画像からフィルム距離を返す。フィルム距離の差(誤差無し)が必要
-        /// </summary>
+        /// <summary>2枚のフィルム距離の異なる画像からフィルム距離を返す。フィルム距離の差(誤差無し)が必要</summary>
         /// <param name="p"></param>
         /// <param name="FilmDistanceDiscrepancy"></param>
         /// <param name="FilmDistance"></param>
