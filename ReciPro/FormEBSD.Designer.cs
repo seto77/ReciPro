@@ -148,6 +148,13 @@
             panelMasterPattern3D = new System.Windows.Forms.Panel();
             panelMasterPattern3DAxes = new System.Windows.Forms.Panel();
             groupBoxMasterPattern = new System.Windows.Forms.GroupBox();
+            flowLayoutPanel5 = new System.Windows.Forms.FlowLayoutPanel();
+            buttonMasterPattern2DCopy = new System.Windows.Forms.Button();
+            flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
+            buttonMasterPattern3DCopy = new System.Windows.Forms.Button();
+            checkBoxMasterPattern3DAxisLabel = new System.Windows.Forms.CheckBox();
+            checkBoxMasterPattern3DAxisArrows = new System.Windows.Forms.CheckBox();
+            flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
             flowLayoutPanelMasterPattern3DViewAlong = new System.Windows.Forms.FlowLayoutPanel();
             buttonMasterPattern3DViewAlong = new System.Windows.Forms.Button();
             labelMasterPattern3DViewAlongOpenBracket = new System.Windows.Forms.Label();
@@ -155,18 +162,11 @@
             numericBoxMasterPattern3DViewAlongV = new NumericBox();
             numericBoxMasterPattern3DViewAlongW = new NumericBox();
             labelMasterPattern3DViewAlongCloseBracket = new System.Windows.Forms.Label();
-            buttonMasterPattern3DCopy = new System.Windows.Forms.Button();
-            checkBoxMasterPattern3DAxisLabel = new System.Windows.Forms.CheckBox();
-            checkBoxMasterPattern3DAxisArrows = new System.Windows.Forms.CheckBox();
-            buttonMasterPattern2DCopy = new System.Windows.Forms.Button();
             groupBoxEBSDPattern = new System.Windows.Forms.GroupBox();
+            flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             panel1 = new System.Windows.Forms.Panel();
             panel3 = new System.Windows.Forms.Panel();
             panel4 = new System.Windows.Forms.Panel();
-            flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
-            flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
-            flowLayoutPanel5 = new System.Windows.Forms.FlowLayoutPanel();
             flowLayoutPanelViewAlong.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)graphicsBox).BeginInit();
             ((System.ComponentModel.ISupportInitialize)trackBarStrSize).BeginInit();
@@ -194,12 +194,12 @@
             ((System.ComponentModel.ISupportInitialize)trackBarMasterPatternDepth).BeginInit();
             panelMasterPattern3D.SuspendLayout();
             groupBoxMasterPattern.SuspendLayout();
+            flowLayoutPanel5.SuspendLayout();
+            flowLayoutPanel4.SuspendLayout();
+            flowLayoutPanel3.SuspendLayout();
             flowLayoutPanelMasterPattern3DViewAlong.SuspendLayout();
             groupBoxEBSDPattern.SuspendLayout();
             flowLayoutPanel1.SuspendLayout();
-            flowLayoutPanel3.SuspendLayout();
-            flowLayoutPanel4.SuspendLayout();
-            flowLayoutPanel5.SuspendLayout();
             SuspendLayout();
             // 
             // panelGeometry
@@ -209,8 +209,8 @@
             // 
             // numericBoxSampleTilt
             // 
-            numericBoxSampleTilt.BackColor = System.Drawing.Color.Transparent;
             resources.ApplyResources(numericBoxSampleTilt, "numericBoxSampleTilt");
+            numericBoxSampleTilt.BackColor = System.Drawing.Color.Transparent;
             numericBoxSampleTilt.Maximum = 0D;
             numericBoxSampleTilt.Minimum = -90D;
             numericBoxSampleTilt.Name = "numericBoxSampleTilt";
@@ -289,6 +289,7 @@
             // 
             // graphControlDepthProfile
             // 
+            resources.ApplyResources(graphControlDepthProfile, "graphControlDepthProfile");
             graphControlDepthProfile.AllowMouseOperation = true;
             graphControlDepthProfile.AxisLineColor = System.Drawing.Color.Gray;
             graphControlDepthProfile.AxisTextColor = System.Drawing.Color.Black;
@@ -302,7 +303,6 @@
             graphControlDepthProfile.DivisionLineYVisible = true;
             graphControlDepthProfile.FixRangeHorizontal = false;
             graphControlDepthProfile.FixRangeVertical = false;
-            resources.ApplyResources(graphControlDepthProfile, "graphControlDepthProfile");
             graphControlDepthProfile.GraphTitle = "";
             graphControlDepthProfile.IsIntegerX = false;
             graphControlDepthProfile.IsIntegerY = false;
@@ -340,6 +340,7 @@
             // 
             // graphControlEnergyProfile
             // 
+            resources.ApplyResources(graphControlEnergyProfile, "graphControlEnergyProfile");
             graphControlEnergyProfile.AllowMouseOperation = true;
             graphControlEnergyProfile.AxisLineColor = System.Drawing.Color.Gray;
             graphControlEnergyProfile.AxisTextColor = System.Drawing.Color.Black;
@@ -353,7 +354,6 @@
             graphControlEnergyProfile.DivisionLineYVisible = true;
             graphControlEnergyProfile.FixRangeHorizontal = false;
             graphControlEnergyProfile.FixRangeVertical = false;
-            resources.ApplyResources(graphControlEnergyProfile, "graphControlEnergyProfile");
             graphControlEnergyProfile.GraphTitle = "";
             graphControlEnergyProfile.IsIntegerX = false;
             graphControlEnergyProfile.IsIntegerY = false;
@@ -395,8 +395,8 @@
             // 
             // numericBoxDetTilt
             // 
-            numericBoxDetTilt.BackColor = System.Drawing.Color.Transparent;
             resources.ApplyResources(numericBoxDetTilt, "numericBoxDetTilt");
+            numericBoxDetTilt.BackColor = System.Drawing.Color.Transparent;
             numericBoxDetTilt.Maximum = 180D;
             numericBoxDetTilt.Minimum = 0D;
             numericBoxDetTilt.Name = "numericBoxDetTilt";
@@ -408,8 +408,8 @@
             // 
             // numericBoxDetRadius
             // 
-            numericBoxDetRadius.BackColor = System.Drawing.Color.Transparent;
             resources.ApplyResources(numericBoxDetRadius, "numericBoxDetRadius");
+            numericBoxDetRadius.BackColor = System.Drawing.Color.Transparent;
             numericBoxDetRadius.Maximum = 180D;
             numericBoxDetRadius.Minimum = 0D;
             numericBoxDetRadius.Name = "numericBoxDetRadius";
@@ -421,8 +421,8 @@
             // 
             // numericBoxZofDet
             // 
-            numericBoxZofDet.BackColor = System.Drawing.Color.Transparent;
             resources.ApplyResources(numericBoxZofDet, "numericBoxZofDet");
+            numericBoxZofDet.BackColor = System.Drawing.Color.Transparent;
             numericBoxZofDet.Maximum = 1000D;
             numericBoxZofDet.Minimum = -1000D;
             numericBoxZofDet.Name = "numericBoxZofDet";
@@ -432,8 +432,8 @@
             // 
             // numericBoxYofDet
             // 
-            numericBoxYofDet.BackColor = System.Drawing.Color.Transparent;
             resources.ApplyResources(numericBoxYofDet, "numericBoxYofDet");
+            numericBoxYofDet.BackColor = System.Drawing.Color.Transparent;
             numericBoxYofDet.Maximum = 1000D;
             numericBoxYofDet.Minimum = -1000D;
             numericBoxYofDet.Name = "numericBoxYofDet";
@@ -475,8 +475,8 @@
             // 
             // colorControlExcessLine
             // 
-            colorControlExcessLine.Argb = -2039584;
             resources.ApplyResources(colorControlExcessLine, "colorControlExcessLine");
+            colorControlExcessLine.Argb = -2039584;
             colorControlExcessLine.BackColor = System.Drawing.SystemColors.Control;
             colorControlExcessLine.Blue = 224;
             colorControlExcessLine.BlueF = 0.8784314F;
@@ -506,8 +506,8 @@
             // 
             // colorControlString
             // 
-            colorControlString.Argb = -1;
             resources.ApplyResources(colorControlString, "colorControlString");
+            colorControlString.Argb = -1;
             colorControlString.BackColor = System.Drawing.SystemColors.Control;
             colorControlString.Blue = 255;
             colorControlString.BlueF = 1F;
@@ -522,8 +522,8 @@
             // 
             // colorControlBackGround
             // 
-            colorControlBackGround.Argb = -14671840;
             resources.ApplyResources(colorControlBackGround, "colorControlBackGround");
+            colorControlBackGround.Argb = -14671840;
             colorControlBackGround.BackColor = System.Drawing.SystemColors.Control;
             colorControlBackGround.Blue = 32;
             colorControlBackGround.BlueF = 0.1254902F;
@@ -562,8 +562,8 @@
             // 
             // numericBoxKikuchiThreadSholdOfStructureFactor
             // 
-            numericBoxKikuchiThreadSholdOfStructureFactor.BackColor = System.Drawing.Color.Transparent;
             resources.ApplyResources(numericBoxKikuchiThreadSholdOfStructureFactor, "numericBoxKikuchiThreadSholdOfStructureFactor");
+            numericBoxKikuchiThreadSholdOfStructureFactor.BackColor = System.Drawing.Color.Transparent;
             numericBoxKikuchiThreadSholdOfStructureFactor.Maximum = 1000D;
             numericBoxKikuchiThreadSholdOfStructureFactor.Minimum = 1D;
             numericBoxKikuchiThreadSholdOfStructureFactor.Name = "numericBoxKikuchiThreadSholdOfStructureFactor";
@@ -575,8 +575,8 @@
             // 
             // numericBoxKikuchiThresholdOfLength
             // 
-            numericBoxKikuchiThresholdOfLength.BackColor = System.Drawing.Color.Transparent;
             resources.ApplyResources(numericBoxKikuchiThresholdOfLength, "numericBoxKikuchiThresholdOfLength");
+            numericBoxKikuchiThresholdOfLength.BackColor = System.Drawing.Color.Transparent;
             numericBoxKikuchiThresholdOfLength.Maximum = 100D;
             numericBoxKikuchiThresholdOfLength.Minimum = 0D;
             numericBoxKikuchiThresholdOfLength.Name = "numericBoxKikuchiThresholdOfLength";
@@ -684,6 +684,7 @@
             // 
             // groupBoxOutput
             // 
+            resources.ApplyResources(groupBoxOutput, "groupBoxOutput");
             groupBoxOutput.Controls.Add(flowLayoutPanelOutputRange);
             groupBoxOutput.Controls.Add(label3);
             groupBoxOutput.Controls.Add(label4);
@@ -695,7 +696,6 @@
             groupBoxOutput.Controls.Add(label8);
             groupBoxOutput.Controls.Add(label7);
             groupBoxOutput.Controls.Add(label10);
-            resources.ApplyResources(groupBoxOutput, "groupBoxOutput");
             groupBoxOutput.Name = "groupBoxOutput";
             groupBoxOutput.TabStop = false;
             // 
@@ -781,8 +781,8 @@
             // 
             // comboBoxGradient
             // 
-            comboBoxGradient.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             resources.ApplyResources(comboBoxGradient, "comboBoxGradient");
+            comboBoxGradient.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             comboBoxGradient.FormattingEnabled = true;
             comboBoxGradient.Items.AddRange(new object[] { resources.GetString("comboBoxGradient.Items"), resources.GetString("comboBoxGradient.Items1") });
             comboBoxGradient.Name = "comboBoxGradient";
@@ -790,8 +790,8 @@
             // 
             // comboBoxScale
             // 
-            comboBoxScale.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             resources.ApplyResources(comboBoxScale, "comboBoxScale");
+            comboBoxScale.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             comboBoxScale.FormattingEnabled = true;
             comboBoxScale.Items.AddRange(new object[] { resources.GetString("comboBoxScale.Items"), resources.GetString("comboBoxScale.Items1"), resources.GetString("comboBoxScale.Items2"), resources.GetString("comboBoxScale.Items3") });
             comboBoxScale.Name = "comboBoxScale";
@@ -934,10 +934,10 @@
             // 
             // tabControl1
             // 
+            resources.ApplyResources(tabControl1, "tabControl1");
             tabControl1.Controls.Add(tabPage1);
             tabControl1.Controls.Add(tabPage2);
             tabControl1.Controls.Add(tabPage3);
-            resources.ApplyResources(tabControl1, "tabControl1");
             tabControl1.HotTrack = true;
             tabControl1.Multiline = true;
             tabControl1.Name = "tabControl1";
@@ -945,16 +945,17 @@
             // 
             // tabPage1
             // 
+            resources.ApplyResources(tabPage1, "tabPage1");
             tabPage1.BackColor = System.Drawing.SystemColors.Control;
             tabPage1.Controls.Add(groupBoxEBSDGeometry);
             tabPage1.Controls.Add(groupBoxSampleCondition);
             tabPage1.Controls.Add(flowLayoutPanelViewAlong);
             tabPage1.Controls.Add(panelGeometry);
-            resources.ApplyResources(tabPage1, "tabPage1");
             tabPage1.Name = "tabPage1";
             // 
             // groupBoxEBSDGeometry
             // 
+            resources.ApplyResources(groupBoxEBSDGeometry, "groupBoxEBSDGeometry");
             groupBoxEBSDGeometry.Controls.Add(label2);
             groupBoxEBSDGeometry.Controls.Add(label17);
             groupBoxEBSDGeometry.Controls.Add(label16);
@@ -962,7 +963,6 @@
             groupBoxEBSDGeometry.Controls.Add(numericBoxDetRadius);
             groupBoxEBSDGeometry.Controls.Add(numericBoxZofDet);
             groupBoxEBSDGeometry.Controls.Add(numericBoxDetTilt);
-            resources.ApplyResources(groupBoxEBSDGeometry, "groupBoxEBSDGeometry");
             groupBoxEBSDGeometry.Name = "groupBoxEBSDGeometry";
             groupBoxEBSDGeometry.TabStop = false;
             // 
@@ -978,10 +978,10 @@
             // 
             // groupBoxSampleCondition
             // 
+            resources.ApplyResources(groupBoxSampleCondition, "groupBoxSampleCondition");
             groupBoxSampleCondition.Controls.Add(waveLengthControl);
             groupBoxSampleCondition.Controls.Add(label18);
             groupBoxSampleCondition.Controls.Add(numericBoxSampleTilt);
-            resources.ApplyResources(groupBoxSampleCondition, "groupBoxSampleCondition");
             groupBoxSampleCondition.Name = "groupBoxSampleCondition";
             groupBoxSampleCondition.TabStop = false;
             // 
@@ -992,6 +992,7 @@
             // 
             // tabPage2
             // 
+            resources.ApplyResources(tabPage2, "tabPage2");
             tabPage2.BackColor = System.Drawing.SystemColors.Control;
             tabPage2.Controls.Add(label15);
             tabPage2.Controls.Add(button2);
@@ -1001,7 +1002,6 @@
             tabPage2.Controls.Add(poleFigureControl);
             tabPage2.Controls.Add(graphControlDepthProfile);
             tabPage2.Controls.Add(graphControlEnergyProfile);
-            resources.ApplyResources(tabPage2, "tabPage2");
             tabPage2.Name = "tabPage2";
             // 
             // label15
@@ -1012,6 +1012,7 @@
             // 
             // tabPage3
             // 
+            resources.ApplyResources(tabPage3, "tabPage3");
             tabPage3.BackColor = System.Drawing.SystemColors.Control;
             tabPage3.Controls.Add(checkBoxDrawDetectorOutline);
             tabPage3.Controls.Add(groupBoxDetectorOutline);
@@ -1022,14 +1023,13 @@
             tabPage3.Controls.Add(checkBoxShowGIndices);
             tabPage3.Controls.Add(colorControlBackGround);
             tabPage3.Controls.Add(checkBoxShowZoneAxisIndices);
-            resources.ApplyResources(tabPage3, "tabPage3");
             tabPage3.Name = "tabPage3";
             // 
             // groupBoxDetectorOutline
             // 
+            resources.ApplyResources(groupBoxDetectorOutline, "groupBoxDetectorOutline");
             groupBoxDetectorOutline.Controls.Add(checkBoxShowMesh);
             groupBoxDetectorOutline.Controls.Add(checkBoxShowCircle);
-            resources.ApplyResources(groupBoxDetectorOutline, "groupBoxDetectorOutline");
             groupBoxDetectorOutline.Name = "groupBoxDetectorOutline";
             groupBoxDetectorOutline.TabStop = false;
             // 
@@ -1053,10 +1053,10 @@
             // 
             // groupBox2
             // 
+            resources.ApplyResources(groupBox2, "groupBox2");
             groupBox2.Controls.Add(trackBarStrSize);
             groupBox2.Controls.Add(label1);
             groupBox2.Controls.Add(colorControlString);
-            resources.ApplyResources(groupBox2, "groupBox2");
             groupBox2.Name = "groupBox2";
             groupBox2.TabStop = false;
             // 
@@ -1071,21 +1071,21 @@
             // 
             // groupBoxLatticePlanes
             // 
+            resources.ApplyResources(groupBoxLatticePlanes, "groupBoxLatticePlanes");
             groupBoxLatticePlanes.Controls.Add(radioButtonKikuchiThresholdOfLength);
             groupBoxLatticePlanes.Controls.Add(radioButtonKikuchiThresholdOfStructureFactor);
             groupBoxLatticePlanes.Controls.Add(numericBoxKikuchiThreadSholdOfStructureFactor);
             groupBoxLatticePlanes.Controls.Add(numericBoxKikuchiThresholdOfLength);
-            resources.ApplyResources(groupBoxLatticePlanes, "groupBoxLatticePlanes");
             groupBoxLatticePlanes.Name = "groupBoxLatticePlanes";
             groupBoxLatticePlanes.TabStop = false;
             // 
             // groupBoxKikuchiLines
             // 
+            resources.ApplyResources(groupBoxKikuchiLines, "groupBoxKikuchiLines");
             groupBoxKikuchiLines.Controls.Add(colorControlExcessLine);
             groupBoxKikuchiLines.Controls.Add(checkBoxKikuchiLine_Kinematical);
             groupBoxKikuchiLines.Controls.Add(trackBarLineWidth);
             groupBoxKikuchiLines.Controls.Add(label11);
-            resources.ApplyResources(groupBoxKikuchiLines, "groupBoxKikuchiLines");
             groupBoxKikuchiLines.Name = "groupBoxKikuchiLines";
             groupBoxKikuchiLines.TabStop = false;
             // 
@@ -1107,6 +1107,7 @@
             // 
             // groupBoxSimulationParameters
             // 
+            resources.ApplyResources(groupBoxSimulationParameters, "groupBoxSimulationParameters");
             groupBoxSimulationParameters.Controls.Add(numericBoxMaxNumOfG);
             groupBoxSimulationParameters.Controls.Add(labelMasterPatternGrid);
             groupBoxSimulationParameters.Controls.Add(checkBoxNonLocalAbsorption);
@@ -1118,7 +1119,6 @@
             groupBoxSimulationParameters.Controls.Add(numericBoxThicknessStart);
             groupBoxSimulationParameters.Controls.Add(numericBoxEnergyEnd);
             groupBoxSimulationParameters.Controls.Add(numericBoxThicknessEnd);
-            resources.ApplyResources(groupBoxSimulationParameters, "groupBoxSimulationParameters");
             groupBoxSimulationParameters.Name = "groupBoxSimulationParameters";
             groupBoxSimulationParameters.TabStop = false;
             // 
@@ -1129,8 +1129,8 @@
             // 
             // comboBoxMasterPatternGrid
             // 
-            comboBoxMasterPatternGrid.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             resources.ApplyResources(comboBoxMasterPatternGrid, "comboBoxMasterPatternGrid");
+            comboBoxMasterPatternGrid.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             comboBoxMasterPatternGrid.FormattingEnabled = true;
             comboBoxMasterPatternGrid.Items.AddRange(new object[] { resources.GetString("comboBoxMasterPatternGrid.Items"), resources.GetString("comboBoxMasterPatternGrid.Items1"), resources.GetString("comboBoxMasterPatternGrid.Items2"), resources.GetString("comboBoxMasterPatternGrid.Items3"), resources.GetString("comboBoxMasterPatternGrid.Items4"), resources.GetString("comboBoxMasterPatternGrid.Items5"), resources.GetString("comboBoxMasterPatternGrid.Items6"), resources.GetString("comboBoxMasterPatternGrid.Items7"), resources.GetString("comboBoxMasterPatternGrid.Items8"), resources.GetString("comboBoxMasterPatternGrid.Items9") });
             comboBoxMasterPatternGrid.Name = "comboBoxMasterPatternGrid";
@@ -1138,38 +1138,38 @@
             // 
             // statusStrip1
             // 
+            resources.ApplyResources(statusStrip1, "statusStrip1");
             statusStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
             statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { toolStripProgressBar, toolStripStatusLabel1, toolStripStatusLabel2, toolStripStatusLabel3 });
-            resources.ApplyResources(statusStrip1, "statusStrip1");
             statusStrip1.Name = "statusStrip1";
             // 
             // toolStripProgressBar
             // 
-            toolStripProgressBar.Name = "toolStripProgressBar";
             resources.ApplyResources(toolStripProgressBar, "toolStripProgressBar");
+            toolStripProgressBar.Name = "toolStripProgressBar";
             // 
             // toolStripStatusLabel1
             // 
-            toolStripStatusLabel1.Name = "toolStripStatusLabel1";
             resources.ApplyResources(toolStripStatusLabel1, "toolStripStatusLabel1");
+            toolStripStatusLabel1.Name = "toolStripStatusLabel1";
             // 
             // toolStripStatusLabel2
             // 
-            toolStripStatusLabel2.Name = "toolStripStatusLabel2";
             resources.ApplyResources(toolStripStatusLabel2, "toolStripStatusLabel2");
+            toolStripStatusLabel2.Name = "toolStripStatusLabel2";
             // 
             // toolStripStatusLabel3
             // 
-            toolStripStatusLabel3.Name = "toolStripStatusLabel3";
             resources.ApplyResources(toolStripStatusLabel3, "toolStripStatusLabel3");
+            toolStripStatusLabel3.Name = "toolStripStatusLabel3";
             // 
             // scalablePictureBoxAdvancedMasterPattern2D
             // 
+            resources.ApplyResources(scalablePictureBoxAdvancedMasterPattern2D, "scalablePictureBoxAdvancedMasterPattern2D");
             scalablePictureBoxAdvancedMasterPattern2D.ClampIntensityRangeToNewData = false;
             scalablePictureBoxAdvancedMasterPattern2D.ColorVisible = true;
             scalablePictureBoxAdvancedMasterPattern2D.DecimalPlacesForIntensity = 5;
             scalablePictureBoxAdvancedMasterPattern2D.FixZoomAndCenter = false;
-            resources.ApplyResources(scalablePictureBoxAdvancedMasterPattern2D, "scalablePictureBoxAdvancedMasterPattern2D");
             scalablePictureBoxAdvancedMasterPattern2D.FrequencyGraphVisible = false;
             scalablePictureBoxAdvancedMasterPattern2D.GradiaentVisible = true;
             scalablePictureBoxAdvancedMasterPattern2D.ImageFilter_DustAndScratches = false;
@@ -1265,8 +1265,8 @@
             // 
             // comboBoxMasterPattern2DHemisphere
             // 
-            comboBoxMasterPattern2DHemisphere.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             resources.ApplyResources(comboBoxMasterPattern2DHemisphere, "comboBoxMasterPattern2DHemisphere");
+            comboBoxMasterPattern2DHemisphere.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             comboBoxMasterPattern2DHemisphere.FormattingEnabled = true;
             comboBoxMasterPattern2DHemisphere.Items.AddRange(new object[] { resources.GetString("comboBoxMasterPattern2DHemisphere.Items"), resources.GetString("comboBoxMasterPattern2DHemisphere.Items1") });
             comboBoxMasterPattern2DHemisphere.Name = "comboBoxMasterPattern2DHemisphere";
@@ -1288,19 +1288,20 @@
             // 
             // panelMasterPattern3D
             // 
+            resources.ApplyResources(panelMasterPattern3D, "panelMasterPattern3D");
             panelMasterPattern3D.BackColor = System.Drawing.SystemColors.Control;
             panelMasterPattern3D.Controls.Add(panelMasterPattern3DAxes);
-            resources.ApplyResources(panelMasterPattern3D, "panelMasterPattern3D");
             panelMasterPattern3D.Name = "panelMasterPattern3D";
             // 
             // panelMasterPattern3DAxes
             // 
-            panelMasterPattern3DAxes.BackColor = System.Drawing.SystemColors.Control;
             resources.ApplyResources(panelMasterPattern3DAxes, "panelMasterPattern3DAxes");
+            panelMasterPattern3DAxes.BackColor = System.Drawing.SystemColors.Control;
             panelMasterPattern3DAxes.Name = "panelMasterPattern3DAxes";
             // 
             // groupBoxMasterPattern
             // 
+            resources.ApplyResources(groupBoxMasterPattern, "groupBoxMasterPattern");
             groupBoxMasterPattern.Controls.Add(flowLayoutPanel5);
             groupBoxMasterPattern.Controls.Add(flowLayoutPanel4);
             groupBoxMasterPattern.Controls.Add(flowLayoutPanel3);
@@ -1311,9 +1312,61 @@
             groupBoxMasterPattern.Controls.Add(buttonFitNistElasticSampler);
             groupBoxMasterPattern.Controls.Add(flowLayoutPanelMasterPatternSelectors);
             groupBoxMasterPattern.Controls.Add(labelMasterPatternInfo);
-            resources.ApplyResources(groupBoxMasterPattern, "groupBoxMasterPattern");
             groupBoxMasterPattern.Name = "groupBoxMasterPattern";
             groupBoxMasterPattern.TabStop = false;
+            // 
+            // flowLayoutPanel5
+            // 
+            resources.ApplyResources(flowLayoutPanel5, "flowLayoutPanel5");
+            flowLayoutPanel5.Controls.Add(buttonMasterPattern2DCopy);
+            flowLayoutPanel5.Controls.Add(labelMasterPattern2DHemisphere);
+            flowLayoutPanel5.Controls.Add(comboBoxMasterPattern2DHemisphere);
+            flowLayoutPanel5.Name = "flowLayoutPanel5";
+            // 
+            // buttonMasterPattern2DCopy
+            // 
+            resources.ApplyResources(buttonMasterPattern2DCopy, "buttonMasterPattern2DCopy");
+            buttonMasterPattern2DCopy.Name = "buttonMasterPattern2DCopy";
+            buttonMasterPattern2DCopy.UseVisualStyleBackColor = true;
+            // 
+            // flowLayoutPanel4
+            // 
+            resources.ApplyResources(flowLayoutPanel4, "flowLayoutPanel4");
+            flowLayoutPanel4.Controls.Add(buttonMasterPattern3DCopy);
+            flowLayoutPanel4.Controls.Add(checkBoxMasterPattern3DAxisLabel);
+            flowLayoutPanel4.Controls.Add(checkBoxMasterPattern3DAxisArrows);
+            flowLayoutPanel4.Name = "flowLayoutPanel4";
+            // 
+            // buttonMasterPattern3DCopy
+            // 
+            resources.ApplyResources(buttonMasterPattern3DCopy, "buttonMasterPattern3DCopy");
+            buttonMasterPattern3DCopy.Name = "buttonMasterPattern3DCopy";
+            buttonMasterPattern3DCopy.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxMasterPattern3DAxisLabel
+            // 
+            resources.ApplyResources(checkBoxMasterPattern3DAxisLabel, "checkBoxMasterPattern3DAxisLabel");
+            checkBoxMasterPattern3DAxisLabel.Checked = true;
+            checkBoxMasterPattern3DAxisLabel.CheckState = System.Windows.Forms.CheckState.Checked;
+            checkBoxMasterPattern3DAxisLabel.Name = "checkBoxMasterPattern3DAxisLabel";
+            checkBoxMasterPattern3DAxisLabel.UseVisualStyleBackColor = true;
+            checkBoxMasterPattern3DAxisLabel.CheckedChanged += checkBoxMasterPattern3DAxisLabel_CheckedChanged;
+            // 
+            // checkBoxMasterPattern3DAxisArrows
+            // 
+            resources.ApplyResources(checkBoxMasterPattern3DAxisArrows, "checkBoxMasterPattern3DAxisArrows");
+            checkBoxMasterPattern3DAxisArrows.Checked = true;
+            checkBoxMasterPattern3DAxisArrows.CheckState = System.Windows.Forms.CheckState.Checked;
+            checkBoxMasterPattern3DAxisArrows.Name = "checkBoxMasterPattern3DAxisArrows";
+            checkBoxMasterPattern3DAxisArrows.UseVisualStyleBackColor = true;
+            checkBoxMasterPattern3DAxisArrows.CheckedChanged += checkBoxMasterPattern3DAxisArrows_CheckedChanged;
+            // 
+            // flowLayoutPanel3
+            // 
+            resources.ApplyResources(flowLayoutPanel3, "flowLayoutPanel3");
+            flowLayoutPanel3.Controls.Add(buttonCreateMasterPattern);
+            flowLayoutPanel3.Controls.Add(buttonStop);
+            flowLayoutPanel3.Name = "flowLayoutPanel3";
             // 
             // flowLayoutPanelMasterPattern3DViewAlong
             // 
@@ -1382,45 +1435,22 @@
             resources.ApplyResources(labelMasterPattern3DViewAlongCloseBracket, "labelMasterPattern3DViewAlongCloseBracket");
             labelMasterPattern3DViewAlongCloseBracket.Name = "labelMasterPattern3DViewAlongCloseBracket";
             // 
-            // buttonMasterPattern3DCopy
-            // 
-            resources.ApplyResources(buttonMasterPattern3DCopy, "buttonMasterPattern3DCopy");
-            buttonMasterPattern3DCopy.Name = "buttonMasterPattern3DCopy";
-            buttonMasterPattern3DCopy.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxMasterPattern3DAxisLabel
-            // 
-            resources.ApplyResources(checkBoxMasterPattern3DAxisLabel, "checkBoxMasterPattern3DAxisLabel");
-            checkBoxMasterPattern3DAxisLabel.Checked = true;
-            checkBoxMasterPattern3DAxisLabel.CheckState = System.Windows.Forms.CheckState.Checked;
-            checkBoxMasterPattern3DAxisLabel.Name = "checkBoxMasterPattern3DAxisLabel";
-            checkBoxMasterPattern3DAxisLabel.UseVisualStyleBackColor = true;
-            checkBoxMasterPattern3DAxisLabel.CheckedChanged += checkBoxMasterPattern3DAxisLabel_CheckedChanged;
-            // 
-            // checkBoxMasterPattern3DAxisArrows
-            // 
-            resources.ApplyResources(checkBoxMasterPattern3DAxisArrows, "checkBoxMasterPattern3DAxisArrows");
-            checkBoxMasterPattern3DAxisArrows.Checked = true;
-            checkBoxMasterPattern3DAxisArrows.CheckState = System.Windows.Forms.CheckState.Checked;
-            checkBoxMasterPattern3DAxisArrows.Name = "checkBoxMasterPattern3DAxisArrows";
-            checkBoxMasterPattern3DAxisArrows.UseVisualStyleBackColor = true;
-            checkBoxMasterPattern3DAxisArrows.CheckedChanged += checkBoxMasterPattern3DAxisArrows_CheckedChanged;
-            // 
-            // buttonMasterPattern2DCopy
-            // 
-            resources.ApplyResources(buttonMasterPattern2DCopy, "buttonMasterPattern2DCopy");
-            buttonMasterPattern2DCopy.Name = "buttonMasterPattern2DCopy";
-            buttonMasterPattern2DCopy.UseVisualStyleBackColor = true;
-            // 
             // groupBoxEBSDPattern
             // 
+            resources.ApplyResources(groupBoxEBSDPattern, "groupBoxEBSDPattern");
             groupBoxEBSDPattern.Controls.Add(flowLayoutPanel1);
             groupBoxEBSDPattern.Controls.Add(graphicsBox);
             groupBoxEBSDPattern.Controls.Add(buttonSaveImage);
             groupBoxEBSDPattern.Controls.Add(groupBoxOutput);
-            resources.ApplyResources(groupBoxEBSDPattern, "groupBoxEBSDPattern");
             groupBoxEBSDPattern.Name = "groupBoxEBSDPattern";
             groupBoxEBSDPattern.TabStop = false;
+            // 
+            // flowLayoutPanel1
+            // 
+            resources.ApplyResources(flowLayoutPanel1, "flowLayoutPanel1");
+            flowLayoutPanel1.Controls.Add(checkBoxShowOverlays);
+            flowLayoutPanel1.Controls.Add(checkBoxShowDyanmicalEBSD);
+            flowLayoutPanel1.Name = "flowLayoutPanel1";
             // 
             // panel1
             // 
@@ -1436,36 +1466,6 @@
             // 
             resources.ApplyResources(panel4, "panel4");
             panel4.Name = "panel4";
-            // 
-            // flowLayoutPanel1
-            // 
-            resources.ApplyResources(flowLayoutPanel1, "flowLayoutPanel1");
-            flowLayoutPanel1.Controls.Add(checkBoxShowOverlays);
-            flowLayoutPanel1.Controls.Add(checkBoxShowDyanmicalEBSD);
-            flowLayoutPanel1.Name = "flowLayoutPanel1";
-            // 
-            // flowLayoutPanel3
-            // 
-            resources.ApplyResources(flowLayoutPanel3, "flowLayoutPanel3");
-            flowLayoutPanel3.Controls.Add(buttonCreateMasterPattern);
-            flowLayoutPanel3.Controls.Add(buttonStop);
-            flowLayoutPanel3.Name = "flowLayoutPanel3";
-            // 
-            // flowLayoutPanel4
-            // 
-            resources.ApplyResources(flowLayoutPanel4, "flowLayoutPanel4");
-            flowLayoutPanel4.Controls.Add(buttonMasterPattern3DCopy);
-            flowLayoutPanel4.Controls.Add(checkBoxMasterPattern3DAxisLabel);
-            flowLayoutPanel4.Controls.Add(checkBoxMasterPattern3DAxisArrows);
-            flowLayoutPanel4.Name = "flowLayoutPanel4";
-            // 
-            // flowLayoutPanel5
-            // 
-            resources.ApplyResources(flowLayoutPanel5, "flowLayoutPanel5");
-            flowLayoutPanel5.Controls.Add(buttonMasterPattern2DCopy);
-            flowLayoutPanel5.Controls.Add(labelMasterPattern2DHemisphere);
-            flowLayoutPanel5.Controls.Add(comboBoxMasterPattern2DHemisphere);
-            flowLayoutPanel5.Name = "flowLayoutPanel5";
             // 
             // FormEBSD
             // 
@@ -1525,18 +1525,18 @@
             panelMasterPattern3D.ResumeLayout(false);
             groupBoxMasterPattern.ResumeLayout(false);
             groupBoxMasterPattern.PerformLayout();
+            flowLayoutPanel5.ResumeLayout(false);
+            flowLayoutPanel5.PerformLayout();
+            flowLayoutPanel4.ResumeLayout(false);
+            flowLayoutPanel4.PerformLayout();
+            flowLayoutPanel3.ResumeLayout(false);
+            flowLayoutPanel3.PerformLayout();
             flowLayoutPanelMasterPattern3DViewAlong.ResumeLayout(false);
             flowLayoutPanelMasterPattern3DViewAlong.PerformLayout();
             groupBoxEBSDPattern.ResumeLayout(false);
             groupBoxEBSDPattern.PerformLayout();
             flowLayoutPanel1.ResumeLayout(false);
             flowLayoutPanel1.PerformLayout();
-            flowLayoutPanel3.ResumeLayout(false);
-            flowLayoutPanel3.PerformLayout();
-            flowLayoutPanel4.ResumeLayout(false);
-            flowLayoutPanel4.PerformLayout();
-            flowLayoutPanel5.ResumeLayout(false);
-            flowLayoutPanel5.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -1671,7 +1671,6 @@
         private System.Windows.Forms.GroupBox groupBoxKikuchiLines;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBoxDetectorOutline;
-        private System.Windows.Forms.CheckBox checkBox2;
         private System.Windows.Forms.CheckBox checkBoxShowCircle;
         private System.Windows.Forms.CheckBox checkBoxShowMesh;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;

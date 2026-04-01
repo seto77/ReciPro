@@ -124,14 +124,26 @@
   <data name="buttonViewQuarter.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
+  <data name="buttonViewQuarter.Text" xml:space="preserve">
+    <value>鳥観図</value>
+  </data>
   <data name="buttonViewFromSurfaceNormal.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
+  </data>
+  <data name="buttonViewFromSurfaceNormal.Text" xml:space="preserve">
+    <value>表面法線方向</value>
   </data>
   <data name="buttonFromX.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
+  <data name="buttonFromX.Text" xml:space="preserve">
+    <value>X軸 (試料回転軸) </value>
+  </data>
   <data name="buttonViewFromZ.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
+  </data>
+  <data name="buttonViewFromZ.Text" xml:space="preserve">
+    <value>Z軸 (電子線入射方向) </value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="button2.AutoSize" type="System.Boolean, mscorlib">
@@ -362,25 +374,13 @@
     <value>メイリオ, 9pt</value>
   </data>
   <data name="buttonStop.Location" type="System.Drawing.Point, System.Drawing">
-    <value>164, 641</value>
+    <value>159, 0</value>
   </data>
   <data name="buttonStop.Size" type="System.Drawing.Size, System.Drawing">
     <value>42, 28</value>
   </data>
   <data name="buttonStop.Text" xml:space="preserve">
     <value>停止</value>
-  </data>
-  <data name="groupBoxOutput.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt, style=Bold</value>
-  </data>
-  <data name="groupBoxOutput.Text" xml:space="preserve">
-    <value>出力パラメータ</value>
-  </data>
-  <data name="flowLayoutPanelOutputRange.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 42</value>
-  </data>
-  <data name="flowLayoutPanelOutputRange.Size" type="System.Drawing.Size, System.Drawing">
-    <value>506, 25</value>
   </data>
   <data name="label9.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -432,6 +432,12 @@
   </data>
   <data name="trackBarOutputThickness.Location" type="System.Drawing.Point, System.Drawing">
     <value>371, 3</value>
+  </data>
+  <data name="flowLayoutPanelOutputRange.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 42</value>
+  </data>
+  <data name="flowLayoutPanelOutputRange.Size" type="System.Drawing.Size, System.Drawing">
+    <value>506, 25</value>
   </data>
   <data name="label3.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -505,11 +511,14 @@
   <data name="label10.Text" xml:space="preserve">
     <value>明るさ</value>
   </data>
+  <data name="groupBoxOutput.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt, style=Bold</value>
+  </data>
+  <data name="groupBoxOutput.Text" xml:space="preserve">
+    <value>出力パラメータ</value>
+  </data>
   <data name="checkBoxShowOverlays.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
-  </data>
-  <data name="checkBoxShowOverlays.Location" type="System.Drawing.Point, System.Drawing">
-    <value>67, 28</value>
   </data>
   <data name="checkBoxShowOverlays.Size" type="System.Drawing.Size, System.Drawing">
     <value>111, 22</value>
@@ -584,7 +593,7 @@
     <value>メイリオ, 9pt</value>
   </data>
   <data name="checkBoxShowDyanmicalEBSD.Location" type="System.Drawing.Point, System.Drawing">
-    <value>184, 28</value>
+    <value>120, 3</value>
   </data>
   <data name="checkBoxShowDyanmicalEBSD.Size" type="System.Drawing.Size, System.Drawing">
     <value>325, 22</value>
@@ -600,27 +609,6 @@
   </data>
   <data name="checkBoxDrawDetectorOutline.Text" xml:space="preserve">
     <value>検出器の輪郭</value>
-  </data>
-  <data name="tabControl1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt, style=Bold</value>
-  </data>
-  <data name="tabPage1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
-  <data name="tabPage1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 48</value>
-  </data>
-  <data name="tabPage1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>306, 639</value>
-  </data>
-  <data name="tabPage1.Text" xml:space="preserve">
-    <value>SEM-EBSD設定</value>
-  </data>
-  <data name="groupBoxEBSDGeometry.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
-  <data name="groupBoxEBSDGeometry.Text" xml:space="preserve">
-    <value>EBSDのセッティング</value>
   </data>
   <data name="label17.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -643,11 +631,11 @@
   <data name="label16.Text" xml:space="preserve">
     <value>検出器の半径</value>
   </data>
-  <data name="groupBoxSampleCondition.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="groupBoxEBSDGeometry.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
-  <data name="groupBoxSampleCondition.Text" xml:space="preserve">
-    <value>SEMのセッティング</value>
+  <data name="groupBoxEBSDGeometry.Text" xml:space="preserve">
+    <value>EBSDのセッティング</value>
   </data>
   <data name="label18.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -658,23 +646,35 @@
   <data name="label18.Text" xml:space="preserve">
     <value>試料の傾き</value>
   </data>
+  <data name="groupBoxSampleCondition.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="groupBoxSampleCondition.Text" xml:space="preserve">
+    <value>SEMのセッティング</value>
+  </data>
+  <data name="tabPage1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="tabPage1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 27</value>
+  </data>
+  <data name="tabPage1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>306, 660</value>
+  </data>
+  <data name="tabPage1.Text" xml:space="preserve">
+    <value>SEM-EBSD設定</value>
+  </data>
   <data name="tabPage2.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt, style=Bold</value>
   </data>
-  <data name="tabPage2.Text" xml:space="preserve">
-    <value>BSE分布</value>
-  </data>
-  <data name="tabPage3.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
-  <data name="tabPage3.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="tabPage2.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 27</value>
   </data>
-  <data name="tabPage3.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="tabPage2.Size" type="System.Drawing.Size, System.Drawing">
     <value>306, 660</value>
   </data>
-  <data name="tabPage3.Text" xml:space="preserve">
-    <value>補助図形</value>
+  <data name="tabPage2.Text" xml:space="preserve">
+    <value>BSE分布</value>
   </data>
   <data name="checkBoxShowMesh.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -733,14 +733,20 @@
   <data name="checkBoxShowZoneAxisIndices.Text" xml:space="preserve">
     <value>晶帯軸の指数を表示</value>
   </data>
-  <data name="groupBoxSimulationParameters.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="tabPage3.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="tabPage3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 27</value>
+  </data>
+  <data name="tabPage3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>306, 660</value>
+  </data>
+  <data name="tabPage3.Text" xml:space="preserve">
+    <value>補助図形</value>
+  </data>
+  <data name="tabControl1.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt, style=Bold</value>
-  </data>
-  <data name="groupBoxSimulationParameters.Location" type="System.Drawing.Point, System.Drawing">
-    <value>13, 464</value>
-  </data>
-  <data name="groupBoxSimulationParameters.Text" xml:space="preserve">
-    <value>動力学計算のパラメータ</value>
   </data>
   <data name="labelMasterPatternGrid.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -757,8 +763,14 @@
   <data name="comboBoxMasterPatternGrid.Location" type="System.Drawing.Point, System.Drawing">
     <value>314, 21</value>
   </data>
-  <data name="flowLayoutPanelMasterPatternSelectors.Size" type="System.Drawing.Size, System.Drawing">
-    <value>498, 27</value>
+  <data name="groupBoxSimulationParameters.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt, style=Bold</value>
+  </data>
+  <data name="groupBoxSimulationParameters.Location" type="System.Drawing.Point, System.Drawing">
+    <value>13, 464</value>
+  </data>
+  <data name="groupBoxSimulationParameters.Text" xml:space="preserve">
+    <value>動力学計算のパラメータ</value>
   </data>
   <data name="labelMasterPatternEnergy.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -811,17 +823,23 @@
   <data name="trackBarMasterPatternDepth.Location" type="System.Drawing.Point, System.Drawing">
     <value>366, 4</value>
   </data>
+  <data name="flowLayoutPanelMasterPatternSelectors.Size" type="System.Drawing.Size, System.Drawing">
+    <value>498, 27</value>
+  </data>
   <data name="labelMasterPattern2DHemisphere.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
   <data name="labelMasterPattern2DHemisphere.Location" type="System.Drawing.Point, System.Drawing">
-    <value>118, 28</value>
+    <value>62, 6</value>
   </data>
   <data name="labelMasterPattern2DHemisphere.Size" type="System.Drawing.Size, System.Drawing">
     <value>32, 18</value>
   </data>
   <data name="labelMasterPattern2DHemisphere.Text" xml:space="preserve">
     <value>半球</value>
+  </data>
+  <data name="comboBoxMasterPattern2DHemisphere.Location" type="System.Drawing.Point, System.Drawing">
+    <value>98, 2</value>
   </data>
   <data name="buttonCreateMasterPattern.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -832,14 +850,59 @@
   <data name="buttonCreateMasterPattern.Text" xml:space="preserve">
     <value>マスターパターンを構築</value>
   </data>
-  <data name="groupBoxMasterPattern.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9.75pt, style=Bold</value>
+  <data name="buttonMasterPattern2DCopy.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
   </data>
-  <data name="groupBoxMasterPattern.Text" xml:space="preserve">
-    <value>マスターパターン</value>
+  <data name="buttonMasterPattern2DCopy.Size" type="System.Drawing.Size, System.Drawing">
+    <value>54, 28</value>
   </data>
-  <data name="flowLayoutPanelMasterPattern3DViewAlong.Size" type="System.Drawing.Size, System.Drawing">
-    <value>244, 28</value>
+  <data name="buttonMasterPattern2DCopy.Text" xml:space="preserve">
+    <value>コピー</value>
+  </data>
+  <data name="flowLayoutPanel5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>214, 28</value>
+  </data>
+  <data name="buttonMasterPattern3DCopy.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="buttonMasterPattern3DCopy.Size" type="System.Drawing.Size, System.Drawing">
+    <value>54, 28</value>
+  </data>
+  <data name="buttonMasterPattern3DCopy.Text" xml:space="preserve">
+    <value>コピー</value>
+  </data>
+  <data name="checkBoxMasterPattern3DAxisLabel.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="checkBoxMasterPattern3DAxisLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>66, 3</value>
+  </data>
+  <data name="checkBoxMasterPattern3DAxisLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>111, 22</value>
+  </data>
+  <data name="checkBoxMasterPattern3DAxisLabel.Text" xml:space="preserve">
+    <value>結晶軸のラベル</value>
+  </data>
+  <data name="checkBoxMasterPattern3DAxisArrows.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="checkBoxMasterPattern3DAxisArrows.Location" type="System.Drawing.Point, System.Drawing">
+    <value>183, 3</value>
+  </data>
+  <data name="checkBoxMasterPattern3DAxisArrows.Size" type="System.Drawing.Size, System.Drawing">
+    <value>91, 22</value>
+  </data>
+  <data name="checkBoxMasterPattern3DAxisArrows.Text" xml:space="preserve">
+    <value>結晶軸の3D</value>
+  </data>
+  <data name="flowLayoutPanel4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>277, 28</value>
+  </data>
+  <data name="flowLayoutPanel3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>11, 637</value>
+  </data>
+  <data name="flowLayoutPanel3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>204, 28</value>
   </data>
   <data name="buttonMasterPattern3DViewAlong.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -865,44 +928,20 @@
   <data name="labelMasterPattern3DViewAlongCloseBracket.Location" type="System.Drawing.Point, System.Drawing">
     <value>232, 3</value>
   </data>
-  <data name="buttonMasterPattern3DCopy.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+  <data name="flowLayoutPanelMasterPattern3DViewAlong.Size" type="System.Drawing.Size, System.Drawing">
+    <value>244, 28</value>
   </data>
-  <data name="buttonMasterPattern3DCopy.Size" type="System.Drawing.Size, System.Drawing">
-    <value>54, 28</value>
+  <data name="groupBoxMasterPattern.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9.75pt, style=Bold</value>
   </data>
-  <data name="buttonMasterPattern3DCopy.Text" xml:space="preserve">
-    <value>コピー</value>
+  <data name="groupBoxMasterPattern.Text" xml:space="preserve">
+    <value>マスターパターン</value>
   </data>
-  <data name="checkBoxMasterPattern3DAxisLabel.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+  <data name="flowLayoutPanel1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>63, 22</value>
   </data>
-  <data name="checkBoxMasterPattern3DAxisLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>111, 22</value>
-  </data>
-  <data name="checkBoxMasterPattern3DAxisLabel.Text" xml:space="preserve">
-    <value>結晶軸のラベル</value>
-  </data>
-  <data name="checkBoxMasterPattern3DAxisArrows.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
-  <data name="checkBoxMasterPattern3DAxisArrows.Location" type="System.Drawing.Point, System.Drawing">
-    <value>473, 29</value>
-  </data>
-  <data name="checkBoxMasterPattern3DAxisArrows.Size" type="System.Drawing.Size, System.Drawing">
-    <value>91, 22</value>
-  </data>
-  <data name="checkBoxMasterPattern3DAxisArrows.Text" xml:space="preserve">
-    <value>結晶軸の3D</value>
-  </data>
-  <data name="buttonMasterPattern2DCopy.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
-  <data name="buttonMasterPattern2DCopy.Size" type="System.Drawing.Size, System.Drawing">
-    <value>54, 28</value>
-  </data>
-  <data name="buttonMasterPattern2DCopy.Text" xml:space="preserve">
-    <value>コピー</value>
+  <data name="flowLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>448, 28</value>
   </data>
   <data name="groupBoxEBSDPattern.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 10pt, style=Bold</value>
