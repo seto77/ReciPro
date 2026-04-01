@@ -219,6 +219,16 @@ internal sealed class NistElasticPchipRuntimeElement // (260401Ch) generated デ
     public double[][] Slope { get; }
 }
 
+public sealed class NistElasticCompressionRunResult // (260401Ch) developer tool から扱いやすいよう出力先と成果物をまとめる
+{
+    public string RepositoryRoot { get; init; } = "";
+    public string OriginalDirectory { get; init; } = "";
+    public string GeneratedDirectory { get; init; } = "";
+    public string DiagnosticsDirectory { get; init; } = "";
+    public int SourceFileCount { get; init; }
+    public IReadOnlyList<string> OutputPaths { get; init; } = [];
+}
+
 public static class NistElasticSamplerPchipGenerator
 {
     private const int CoordinateDescentPassCount = 3; // (260401Ch)
@@ -243,26 +253,51 @@ public static class NistElasticSamplerPchipGenerator
         return null;
     }
 
+    public static string GetOriginalDirectory(string repositoryRoot)
+    {
+        ValidateRepositoryRoot(repositoryRoot);
+        return Path.Combine(repositoryRoot, "Crystallography", "Atom", "NistElastic", "Original"); // (260401Ch) 元 TXT は NistElastic/Original にそろえる
+    }
+
+    public static string GetGeneratedDirectory(string repositoryRoot)
+    {
+        ValidateRepositoryRoot(repositoryRoot);
+        return Path.Combine(repositoryRoot, "Crystallography", "Atom", "NistElastic"); // (260401Ch)
+    }
+
+    public static string GetDiagnosticsDirectory(string repositoryRoot)
+    {
+        ValidateRepositoryRoot(repositoryRoot);
+        return Path.Combine(GetGeneratedDirectory(repositoryRoot), "Diagnostics"); // (260401Ch)
+    }
+
+    public static NistElasticCompressionRunResult GenerateCompressedSourcesToRepository(
+        IEnumerable<string> sourcePaths, string repositoryRoot, IProgress<NistElasticCompressionProgress> progress = null)
+    {
+        ValidateRepositoryRoot(repositoryRoot);
+        var normalizedSources = NormalizeSourcePaths(sourcePaths); // (260401Ch) UI 側に正規化ロジックを持ち込まない
+        var outputs = GenerateCompressedSources(normalizedSources, repositoryRoot, progress); // (260401Ch) 実処理は既存 generator をそのまま使う
+        return new NistElasticCompressionRunResult()
+        {
+            RepositoryRoot = repositoryRoot,
+            OriginalDirectory = GetOriginalDirectory(repositoryRoot),
+            GeneratedDirectory = GetGeneratedDirectory(repositoryRoot),
+            DiagnosticsDirectory = GetDiagnosticsDirectory(repositoryRoot),
+            SourceFileCount = normalizedSources.Length,
+            OutputPaths = [.. outputs],
+        };
+    }
+
     public static IReadOnlyList<string> GenerateCompressedSources(IEnumerable<string> sourcePaths, string repositoryRoot, IProgress<NistElasticCompressionProgress> progress = null)
     {
-        if (sourcePaths == null)
-            throw new ArgumentNullException(nameof(sourcePaths));
-        if (string.IsNullOrWhiteSpace(repositoryRoot))
-            throw new ArgumentException("Repository root must not be empty.", nameof(repositoryRoot));
-
-        var normalizedSources = sourcePaths
-            .Where(path => !string.IsNullOrWhiteSpace(path))
-            .Select(Path.GetFullPath)
-            .Where(File.Exists)
-            .Distinct(StringComparer.OrdinalIgnoreCase)
-            .OrderBy(ParseAtomicNumberFromPath)
-            .ToArray();
+        ValidateRepositoryRoot(repositoryRoot);
+        var normalizedSources = NormalizeSourcePaths(sourcePaths);
 
         if (normalizedSources.Length == 0)
             return [];
 
-        var generatedDirectory = Path.Combine(repositoryRoot, "Crystallography", "Atom", "NistElastic"); // (260401Ch)
-        var diagnosticsDirectory = Path.Combine(generatedDirectory, "Diagnostics"); // (260401Ch)
+        var generatedDirectory = GetGeneratedDirectory(repositoryRoot); // (260401Ch)
+        var diagnosticsDirectory = GetDiagnosticsDirectory(repositoryRoot); // (260401Ch)
         Directory.CreateDirectory(generatedDirectory);
         Directory.CreateDirectory(diagnosticsDirectory);
 
@@ -279,6 +314,26 @@ public static class NistElasticSamplerPchipGenerator
 
         outputs.Add(WriteGeneratedRegistrySource(generatedDirectory));
         return outputs;
+    }
+
+    private static void ValidateRepositoryRoot(string repositoryRoot)
+    {
+        if (string.IsNullOrWhiteSpace(repositoryRoot))
+            throw new ArgumentException("Repository root must not be empty.", nameof(repositoryRoot));
+    }
+
+    private static string[] NormalizeSourcePaths(IEnumerable<string> sourcePaths)
+    {
+        if (sourcePaths == null)
+            throw new ArgumentNullException(nameof(sourcePaths));
+
+        return sourcePaths
+            .Where(path => !string.IsNullOrWhiteSpace(path))
+            .Select(Path.GetFullPath)
+            .Where(File.Exists)
+            .Distinct(StringComparer.OrdinalIgnoreCase)
+            .OrderBy(ParseAtomicNumberFromPath)
+            .ToArray();
     }
 
     internal static int ParseAtomicNumberFromPath(string path)

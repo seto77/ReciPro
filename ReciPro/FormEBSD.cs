@@ -58,7 +58,6 @@ public partial class FormEBSD : CaptureFormBase
     private readonly Stopwatch sw1 = new(), sw2 = new();
     private const int BackscatterMonteCarloLoopCount = 2_500_000; // 260329Cl 変更: 500万→250万に削減（パラメトリックフィッティングには十分な統計量）
     private readonly Timer timer = new();
-    private Button buttonFitNistElasticSampler = null; // (260401Ch) NIST elastic sampler 圧縮用の開発者ボタン
     #region お蔵入り // (260401Ch) generated / external MC 比較ベンチは standalone 配布版では使わない
     /*
     // private const int ElasticSamplerBenchmarkLoopCount = 250_000; // (260401Ch) generated / external の MC 比較は 25 万本で軽めに検証する
@@ -162,43 +161,8 @@ public partial class FormEBSD : CaptureFormBase
 
         // InitializeMasterPatternPreviewControls(); // (260321Ch) 旧案: preview UI をコード側で組み立てていた
         buttonStop.Click += buttonStop_Click; // (260327Ch) 既存の Stop ボタンは MasterPattern build 停止に使う
-        InitializeNistElasticSamplerDeveloperTool(); // (260401Ch) PCHIP 圧縮ツールは Designer を汚さずコード側で追加
+        // InitializeNistElasticSamplerDeveloperTool(); // (260401Ch) 旧実装: PCHIP 圧縮ツールはコード側で動的追加していた
         UpdateEbsdTiltCoeffs(); // 260325Cl: tilt 係数を初期値で計算
-    }
-
-    private void InitializeNistElasticSamplerDeveloperTool()
-    {
-        buttonFitNistElasticSampler = new Button()
-        {
-            Name = "buttonFitNistElasticSampler",
-            Text = "Dev: PCHIP圧縮",
-            AutoSize = true,
-            BackColor = Color.DarkOliveGreen,
-            ForeColor = Color.White,
-            UseVisualStyleBackColor = false,
-            Anchor = AnchorStyles.Top | AnchorStyles.Right,
-        };
-        #region お蔵入り // (260401Ch) generated / external MC 比較ベンチは standalone 配布版では使わない
-        /*
-        buttonBenchmarkNistElasticSampler = new Button()
-        {
-            Name = "buttonBenchmarkNistElasticSampler",
-            Text = "Dev: MC benchmark",
-            AutoSize = true,
-            BackColor = Color.SlateBlue,
-            ForeColor = Color.White,
-            UseVisualStyleBackColor = false,
-            Anchor = AnchorStyles.Top | AnchorStyles.Right,
-        };
-        */
-        #endregion
-
-        var right = buttonFitNistElasticSampler.PreferredSize.Width; // (260401Ch) 配布版では PCHIP 圧縮ボタンだけを右上に配置する
-        var left = Math.Max(8, tabPage3.ClientSize.Width - right - 8);
-        buttonFitNistElasticSampler.Location = new Point(left, 8); // (260401Ch)
-        buttonFitNistElasticSampler.Click += buttonFitNistElasticSampler_Click;
-        tabPage3.Controls.Add(buttonFitNistElasticSampler);
-        buttonFitNistElasticSampler.BringToFront();
     }
 
     private void Timer_Tick(object sender, EventArgs e)
@@ -217,7 +181,7 @@ public partial class FormEBSD : CaptureFormBase
         }
 
         // var initialDirectory = Path.Combine(repositoryRoot, "Crystallography", "Atom", "NistElasticSampler_Original"); // (260401Ch) 旧配置
-        var initialDirectory = Path.Combine(repositoryRoot, "Crystallography", "Atom", "NistElastic", "Original"); // (260401Ch) 元 TXT は NistElastic/Original 配下に保管する
+        var initialDirectory = NistElasticSamplerPchipGenerator.GetOriginalDirectory(repositoryRoot); // (260401Ch) 圧縮元の既定フォルダ解決も Crystallography 側へ寄せる
         using var openFileDialog = new OpenFileDialog()
         {
             Multiselect = true,
@@ -248,18 +212,18 @@ public partial class FormEBSD : CaptureFormBase
 
         try
         {
-            var outputs = await Task.Run(() => NistElasticSamplerPchipGenerator.GenerateCompressedSources(openFileDialog.FileNames, repositoryRoot, progress));
+            var compressionResult = await Task.Run(() => NistElasticSamplerPchipGenerator.GenerateCompressedSourcesToRepository(openFileDialog.FileNames, repositoryRoot, progress)); // (260401Ch) 実処理は Crystallography.Atom.NistElastic 側の API を呼ぶ
             stopwatch.Stop();
             toolStripProgressBar.Value = 100;
             toolStripStatusLabel2.Text = "NIST elastic compression completed";
             toolStripStatusLabel1.Text = $"100% completed, elapsed {stopwatch.Elapsed.TotalSeconds:f2} s.";
-            toolStripStatusLabel3.Text = $"{openFileDialog.FileNames.Length} file(s) processed, {outputs.Count} output file(s).";
+            toolStripStatusLabel3.Text = $"{compressionResult.SourceFileCount} file(s) processed, {compressionResult.OutputPaths.Count} output file(s).";
             MessageBox.Show(this,
-                $"Finished compressing {openFileDialog.FileNames.Length} file(s).\r\n" +
+                $"Finished compressing {compressionResult.SourceFileCount} file(s).\r\n" +
                 // $"Generated source: {Path.Combine(repositoryRoot, "Crystallography", "Atom", "Generated")}\r\n" +
-                $"Generated source: {Path.Combine(repositoryRoot, "Crystallography", "Atom", "NistElastic")}\r\n" +
+                $"Generated source: {compressionResult.GeneratedDirectory}\r\n" +
                 // $"Generated CSV: {Path.Combine(repositoryRoot, "Crystallography", "Atom", "GeneratedDiagnostics")}",
-                $"Generated CSV: {Path.Combine(repositoryRoot, "Crystallography", "Atom", "NistElastic", "Diagnostics")}",
+                $"Generated CSV: {compressionResult.DiagnosticsDirectory}",
                 "NIST elastic sampler compression",
                 MessageBoxButtons.OK,
                 MessageBoxIcon.Information);

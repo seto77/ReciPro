@@ -121,7 +121,7 @@
     <value>17, 17</value>
   </metadata>
   <metadata name="statusStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>707, 17</value>
+    <value>548, 17</value>
   </metadata>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="statusStrip1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
@@ -224,7 +224,7 @@
     <value>0</value>
   </data>
   <metadata name="toolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>492, 17</value>
+    <value>376, 17</value>
   </metadata>
   <data name="listBox.ToolTip" xml:space="preserve">
     <value>Crystal list is displayed here.
@@ -2995,7 +2995,7 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>2, 0, 2, 0</value>
   </data>
   <metadata name="toolStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>354, 17</value>
+    <value>271, 17</value>
   </metadata>
   <data name="toolStrip1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>None</value>
@@ -3073,8 +3073,8 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>120, 36</value>
   </data>
   <data name="toolStripButtonDatabase.Text" xml:space="preserve">
-    <value> Crystal
- Database</value>
+    <value>  Crystal
+  Database</value>
   </data>
   <data name="toolStripButtonDatabase.ToolTipText" xml:space="preserve">
     <value>Open "Crystal database" function</value>
@@ -3119,8 +3119,8 @@ To delete all crystals in the list, click the 'All Clear' button.</value>
     <value>120, 36</value>
   </data>
   <data name="toolStripButtonSymmetryInformation.Text" xml:space="preserve">
-    <value>Symmetry
-Information</value>
+    <value>  Symmetry
+  Information</value>
   </data>
   <data name="toolStripButtonSymmetryInformation.ToolTipText" xml:space="preserve">
     <value>Open "Symmetry Information" function</value>
@@ -3166,8 +3166,8 @@ Information</value>
     <value>120, 36</value>
   </data>
   <data name="toolStripButtonScatteringFactor.Text" xml:space="preserve">
-    <value> Scattering
-Factor</value>
+    <value>  Scattering
+  Factor</value>
   </data>
   <data name="toolStripButtonScatteringFactor.ToolTipText" xml:space="preserve">
     <value>Open "Scattering Factor" function</value>
@@ -3234,8 +3234,8 @@ Factor</value>
     <value>120, 37</value>
   </data>
   <data name="toolStripButtonRotation.Text" xml:space="preserve">
-    <value> Rotation
- Geometry</value>
+    <value>  Rotation
+  Geometry</value>
   </data>
   <data name="toolStripButtonRotation.ToolTipText" xml:space="preserve">
     <value> Open "Rotation
@@ -3292,8 +3292,8 @@ Factor</value>
     <value>120, 37</value>
   </data>
   <data name="toolStripButtonStructureViewer.Text" xml:space="preserve">
-    <value> Structure
- Viewer</value>
+    <value>  Structure
+  Viewer</value>
   </data>
   <data name="toolStripButtonStructureViewer.ToolTipText" xml:space="preserve">
     <value>Open "Structure Viewer" function</value>
@@ -3340,7 +3340,7 @@ Factor</value>
     <value>120, 36</value>
   </data>
   <data name="toolStripButtonStereonet.Text" xml:space="preserve">
-    <value> Stereonet</value>
+    <value>  Stereonet</value>
   </data>
   <data name="toolStripButtonStereonet.ToolTipText" xml:space="preserve">
     <value>Open "Stereonet" function</value>
@@ -3377,8 +3377,8 @@ Factor</value>
     <value>120, 36</value>
   </data>
   <data name="toolStripButtonDiffractionSingle.Text" xml:space="preserve">
-    <value> Diffraction
- Simulator</value>
+    <value>  Diffraction
+  Simulator</value>
   </data>
   <data name="toolStripButtonDiffractionSingle.ToolTipText" xml:space="preserve">
     <value>Open "Diffraction Simulator" function</value>
@@ -3426,8 +3426,8 @@ Factor</value>
     <value>120, 36</value>
   </data>
   <data name="toolStripButtonTrajectorySimulator.Text" xml:space="preserve">
-    <value> Trajectory
- Simulator</value>
+    <value>  Trajectory
+  Simulator</value>
   </data>
   <data name="toolStripButtonTrajectorySimulator.ToolTipText" xml:space="preserve">
     <value>Open  'Trajectory
@@ -3618,7 +3618,7 @@ Factor</value>
     <value>120, 39</value>
   </data>
   <data name="toolStripButtonSpotIDv2.Text" xml:space="preserve">
-    <value>Spot ID v2</value>
+    <value>  Spot ID v2</value>
   </data>
   <data name="toolStripButtonSpotIDv2.ToolTipText" xml:space="preserve">
     <value>Open "Spot ID v2" function</value>
@@ -3629,15 +3629,54 @@ Factor</value>
   <data name="toolStripButtonEBSD.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9pt</value>
   </data>
+  <data name="toolStripButtonEBSD.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        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
+</value>
+  </data>
+  <data name="toolStripButtonEBSD.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
   <data name="toolStripButtonEBSD.ImageScaling" type="System.Windows.Forms.ToolStripItemImageScaling, System.Windows.Forms">
     <value>None</value>
   </data>
   <data name="toolStripButtonEBSD.Size" type="System.Drawing.Size, System.Drawing">
-    <value>120, 34</value>
+    <value>120, 36</value>
   </data>
   <data name="toolStripButtonEBSD.Text" xml:space="preserve">
-    <value>EBSD (under
-construction)</value>
+    <value>    EBSD
+    simulator</value>
   </data>
   <data name="toolStripButtonEBSD.ToolTipText" xml:space="preserve">
     <value>Open EBSD function</value>
@@ -3694,7 +3733,7 @@ construction)</value>
     <value>Magenta</value>
   </data>
   <data name="toolStripButtonDiffractionPoly.Size" type="System.Drawing.Size, System.Drawing">
-    <value>120, 36</value>
+    <value>102, 36</value>
   </data>
   <data name="toolStripButtonDiffractionPoly.Text" xml:space="preserve">
     <value> Powder
@@ -3710,7 +3749,7 @@ construction)</value>
     <value>0, 0, 0, 0</value>
   </data>
   <data name="toolStrip1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>121, 609</value>
+    <value>121, 622</value>
   </data>
   <data name="toolStrip1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -3752,7 +3791,7 @@ construction)</value>
     <value>toolStripContainer1</value>
   </data>
   <metadata name="menuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>203, 17</value>
+    <value>157, 17</value>
   </metadata>
   <data name="menuStrip1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>None</value>
@@ -4056,7 +4095,7 @@ construction)</value>
     <value>1</value>
   </data>
   <metadata name="contextMenuStripListBox.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>860, 17</value>
+    <value>663, 17</value>
   </metadata>
   <data name="contextMenuStripListBox.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
@@ -4095,7 +4134,7 @@ construction)</value>
     <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <metadata name="timer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>607, 17</value>
+    <value>467, 17</value>
   </metadata>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>

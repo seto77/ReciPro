@@ -44,6 +44,7 @@
             buttonFromX = new System.Windows.Forms.Button();
             buttonViewFromZ = new System.Windows.Forms.Button();
             button2 = new System.Windows.Forms.Button();
+            buttonFitNistElasticSampler = new System.Windows.Forms.Button();
             graphControlDepthProfile = new GraphControl();
             poleFigureControl = new PoleFigureControl2();
             graphControlEnergyProfile = new GraphControl();
@@ -259,6 +260,15 @@
             button2.Name = "button2";
             button2.UseVisualStyleBackColor = true;
             button2.Click += buttonBSE_Click;
+            // 
+            // buttonFitNistElasticSampler
+            // 
+            resources.ApplyResources(buttonFitNistElasticSampler, "buttonFitNistElasticSampler");
+            buttonFitNistElasticSampler.BackColor = System.Drawing.Color.DarkOliveGreen;
+            buttonFitNistElasticSampler.ForeColor = System.Drawing.Color.White;
+            buttonFitNistElasticSampler.Name = "buttonFitNistElasticSampler";
+            buttonFitNistElasticSampler.UseVisualStyleBackColor = false;
+            buttonFitNistElasticSampler.Click += buttonFitNistElasticSampler_Click;
             // 
             // graphControlDepthProfile
             // 
@@ -1233,6 +1243,7 @@
             groupBoxMasterPattern.Controls.Add(panelMasterPattern3D);
             groupBoxMasterPattern.Controls.Add(labelMasterPattern2DHemisphere);
             groupBoxMasterPattern.Controls.Add(comboBoxMasterPattern2DHemisphere);
+            groupBoxMasterPattern.Controls.Add(buttonFitNistElasticSampler);
             groupBoxMasterPattern.Controls.Add(flowLayoutPanelMasterPatternSelectors);
             groupBoxMasterPattern.Controls.Add(buttonCreateMasterPattern);
             groupBoxMasterPattern.Controls.Add(labelMasterPatternInfo);
@@ -1434,6 +1445,7 @@
         private System.Windows.Forms.Button buttonFromX;
         private System.Windows.Forms.Button buttonViewFromSurfaceNormal;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button buttonFitNistElasticSampler;
         private PoleFigureControl2 poleFigureControl;
         private System.Windows.Forms.CheckBox checkBoxDrawAxesInStereonet;
         private NumericBox numericBoxDetTilt;

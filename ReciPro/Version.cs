@@ -7,6 +7,7 @@ internal static class Version
     
     public const string History =
         "History" +
+        "\r\n ver4.919(2026/03/20)  Improved the EBSD simulation, and fixed many minor bugs." +
         "\r\n ver4.919(2026/03/20)  Improved the OpenGL renderings and EBSD simulations, and fixed many minor bugs." +
         "\r\n ver4.918(2026/03/13)  Improved the Native Library to enable automatic switching between non-AVX, AVX2 and AVX512." +
         "\r\n ver4.917(2026/03/05)  Added several 'Macro' functions (see https://github.com/seto77/ReciPro/issues/36)." +
