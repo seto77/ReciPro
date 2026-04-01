@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.IO;
 using System.Windows.Forms;
 using Crystallography.OpenGL;
 using V3 = OpenTK.Mathematics.Vector3d;
@@ -39,6 +40,7 @@ public partial class FormEBSD : CaptureFormBase
     //private const int BackscatterMonteCarloLoopCount = 5_000_000; // (260327Ch) MasterPattern 前処理と手動 BSE で共有する MC 試行回数
     private const int BackscatterMonteCarloLoopCount = 2_500_000; // 260329Cl 変更: 500万→250万に削減（パラメトリックフィッティングには十分な統計量）
     private readonly Timer timer = new();
+    private Button buttonFitNistElasticSampler = null; // (260401Ch) NIST elastic sampler 圧縮用の開発者ボタン
 
     private readonly EBSD masterPatternEbsd = new(); // (260321Ch) MasterPattern build の実行ロジックは Crystallography.EBSD 側へ移す
     private MasterPattern MasterPattern => masterPatternEbsd.MasterPattern; // (260321Ch)
@@ -147,12 +149,99 @@ public partial class FormEBSD : CaptureFormBase
 
         // InitializeMasterPatternPreviewControls(); // (260321Ch) 旧案: preview UI をコード側で組み立てていた
         buttonStop.Click += buttonStop_Click; // (260327Ch) 既存の Stop ボタンは MasterPattern build 停止に使う
+        InitializeNistElasticSamplerDeveloperTool(); // (260401Ch) PCHIP 圧縮ツールは Designer を汚さずコード側で追加
         UpdateEbsdTiltCoeffs(); // 260325Cl: tilt 係数を初期値で計算
+    }
+
+    private void InitializeNistElasticSamplerDeveloperTool()
+    {
+        buttonFitNistElasticSampler = new Button()
+        {
+            Name = "buttonFitNistElasticSampler",
+            Text = "Dev: PCHIP圧縮",
+            AutoSize = true,
+            BackColor = Color.DarkOliveGreen,
+            ForeColor = Color.White,
+            UseVisualStyleBackColor = false,
+            Anchor = AnchorStyles.Top | AnchorStyles.Right,
+        };
+        buttonFitNistElasticSampler.Location = new Point(Math.Max(8, tabPage3.ClientSize.Width - buttonFitNistElasticSampler.PreferredSize.Width - 8), 8); // (260401Ch) 既存 tabPage3 の右上へ小さく載せる
+        buttonFitNistElasticSampler.Click += buttonFitNistElasticSampler_Click;
+        tabPage3.Controls.Add(buttonFitNistElasticSampler);
+        buttonFitNistElasticSampler.BringToFront();
     }
 
     private void Timer_Tick(object sender, EventArgs e)
     {
         graphicsBox.Refresh();
+    }
+
+    private async void buttonFitNistElasticSampler_Click(object sender, EventArgs e)
+    {
+        var repositoryRoot = NistElasticSamplerPchipGenerator.TryFindRepositoryRoot(AppContext.BaseDirectory)
+            ?? NistElasticSamplerPchipGenerator.TryFindRepositoryRoot(Environment.CurrentDirectory);
+        if (repositoryRoot == null)
+        {
+            MessageBox.Show(this, "ReciPro.sln が見つからず、generated source の出力先を特定できませんでした。", "NIST elastic sampler compression", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            return;
+        }
+
+        var initialDirectory = Path.Combine(repositoryRoot, "ReciPro", "NistElasticSampler_Original");
+        using var openFileDialog = new OpenFileDialog()
+        {
+            Multiselect = true,
+            Filter = "NIST elastic sampler (E_*.TXT)|E_*.TXT|Text files (*.txt)|*.txt",
+            Title = "Select NIST elastic sampler files",
+            InitialDirectory = Directory.Exists(initialDirectory) ? initialDirectory : repositoryRoot,
+            RestoreDirectory = true,
+            CheckFileExists = true,
+        };
+        if (openFileDialog.ShowDialog(this) != DialogResult.OK || openFileDialog.FileNames.Length == 0)
+            return;
+
+        buttonFitNistElasticSampler.Enabled = false;
+        toolStripProgressBar.Value = 0;
+        toolStripStatusLabel2.Text = "NIST elastic compression";
+        toolStripStatusLabel1.Text = "0% completed, elapsed 0.00 s.";
+        toolStripStatusLabel3.Text = "";
+
+        var stopwatch = Stopwatch.StartNew();
+        var progress = new Progress<NistElasticCompressionProgress>(state =>
+        {
+            var progressValue = Math.Clamp((int)Math.Round(100.0 * state.OverallProgress), 0, 100);
+            toolStripProgressBar.Value = progressValue;
+            toolStripStatusLabel2.Text = $"NIST elastic compression: Z={state.AtomicNumber}, block {state.BlockIndex}/{state.BlockCount}, {state.Phase}";
+            toolStripStatusLabel1.Text = $"{progressValue}% completed, elapsed {stopwatch.Elapsed.TotalSeconds:f2} s.";
+            toolStripStatusLabel3.Text = $"File {state.FileIndex}/{state.FileCount}: {Path.GetFileName(state.SourcePath)}";
+        });
+
+        try
+        {
+            var outputs = await Task.Run(() => NistElasticSamplerPchipGenerator.GenerateCompressedSources(openFileDialog.FileNames, repositoryRoot, progress));
+            stopwatch.Stop();
+            toolStripProgressBar.Value = 100;
+            toolStripStatusLabel2.Text = "NIST elastic compression completed";
+            toolStripStatusLabel1.Text = $"100% completed, elapsed {stopwatch.Elapsed.TotalSeconds:f2} s.";
+            toolStripStatusLabel3.Text = $"{openFileDialog.FileNames.Length} file(s) processed, {outputs.Count} output file(s).";
+            MessageBox.Show(this,
+                $"Finished compressing {openFileDialog.FileNames.Length} file(s).\r\n" +
+                $"Generated source: {Path.Combine(repositoryRoot, "Crystallography", "Atom", "Generated")}\r\n" +
+                $"Generated CSV: {Path.Combine(repositoryRoot, "Crystallography", "Atom", "GeneratedDiagnostics")}",
+                "NIST elastic sampler compression",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Information);
+        }
+        catch (Exception ex)
+        {
+            toolStripStatusLabel2.Text = "NIST elastic compression failed";
+            toolStripStatusLabel1.Text = $"Failed after {stopwatch.Elapsed.TotalSeconds:f2} s.";
+            toolStripStatusLabel3.Text = ex.Message;
+            MessageBox.Show(this, ex.ToString(), "NIST elastic sampler compression", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+        finally
+        {
+            buttonFitNistElasticSampler.Enabled = true;
+        }
     }
 
     private void FormEBSD_Load(object sender, EventArgs e)
@@ -2589,7 +2678,6 @@ public partial class FormEBSD : CaptureFormBase
         {
             int gridSize = MasterPattern.GridSize; // (260322Ch)
             ResetMasterPattern3DCache(); // (260321Ch) selector 未選択時は古い 3D preview を残さない
-            // SetMasterPattern2DBitmap(CreateMasterPatternPlaceholderValues(MasterPattern.GridSize), MasterPattern.GridSize); // (260322Ch) 旧実装
             SetMasterPattern2DBitmap(new double[gridSize * gridSize], gridSize); // (260322Ch)
             ClearMesh(); // (260321Ch)
             return;
@@ -2601,7 +2689,6 @@ public partial class FormEBSD : CaptureFormBase
         {
             int gridSize = MasterPattern.GridSize; // (260322Ch)
             ResetMasterPattern3DCache(); // (260321Ch) plane が存在しないときは cached slice を破棄する
-            // SetMasterPattern2DBitmap(CreateMasterPatternPlaceholderValues(MasterPattern.GridSize), MasterPattern.GridSize); // (260322Ch) 旧実装
             SetMasterPattern2DBitmap(new double[gridSize * gridSize], gridSize); // (260322Ch)
             ClearMesh(); // (260321Ch)
             return;

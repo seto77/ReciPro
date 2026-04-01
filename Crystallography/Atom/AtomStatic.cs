@@ -13,7 +13,8 @@ using Edge = Crystallography.XrayLineEdge;
 namespace Crystallography;
 #endregion
 
-public static class AtomStatic
+// public static class AtomStatic
+public static partial class AtomStatic // (260401Ch) generated NIST elastic sampler データを partial class で追加できるようにする
 {
     #region 静的コンストラクタ
     static AtomStatic()
@@ -29,6 +30,7 @@ public static class AtomStatic
         //			AtomConstantsSub.LinearAbsorptionCoefficient[i][j][k] = new PointD(AtomConstantsSub.MassAbsorptionCoefficient[i][j][k]) * AtomStatic.NominalDensity(i);
         //	}
         //}
+        RegisterGeneratedNistElasticPchip(GeneratedNistElasticPchipElements); // (260401Ch) 開発者ツールで生成した圧縮 elastic sampler を静的初期化時に登録
     }
     #endregion
 
