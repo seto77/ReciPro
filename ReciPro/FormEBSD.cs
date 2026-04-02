@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
-using System.Globalization;
 using System.Linq;
 using System.IO;
 using System.Windows.Forms;
@@ -15,7 +14,6 @@ using C4 = OpenTK.Mathematics.Color4;
 using System.Diagnostics;
 using System.Drawing.Drawing2D;
 using MathNet.Numerics;
-using System.ComponentModel;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Scripting.Utils;
@@ -51,6 +49,10 @@ public partial class FormEBSD : CaptureFormBase
     #endregion
 
     #region フィールド、プロパティ
+
+    const double Inv_PI = 1 / Math.PI;
+    const double Half_PI = 0.5 * Math.PI;
+
     public FormMain FormMain;
     public GLControlAlpha glControlGeo;
     public GLControlAlpha glControlMasterPattern3D; // (260321Ch) Rosca-Lambert 球面 preview 用の OpenGL コントロール
@@ -159,9 +161,7 @@ public partial class FormEBSD : CaptureFormBase
     {
         InitializeComponent();
 
-        // InitializeMasterPatternPreviewControls(); // (260321Ch) 旧案: preview UI をコード側で組み立てていた
         buttonStop.Click += buttonStop_Click; // (260327Ch) 既存の Stop ボタンは MasterPattern build 停止に使う
-        // InitializeNistElasticSamplerDeveloperTool(); // (260401Ch) 旧実装: PCHIP 圧縮ツールはコード側で動的追加していた
         UpdateEbsdTiltCoeffs(); // 260325Cl: tilt 係数を初期値で計算
     }
 
@@ -515,7 +515,6 @@ public partial class FormEBSD : CaptureFormBase
             WorldMatrix = M4.CreateRotationZ(-Math.PI / 2 * 0.2) * M4.CreateRotationY(-Math.PI / 2 * 0.8) * M4.CreateRotationZ(-Math.PI / 2),
         };
         panelGeometry.Controls.Add(glControlGeo);
-        // EnsureMasterPatternPreviewControl(); // (260322Ch) 旧実装: preview 初期化を helper へまとめていた
         if (comboBoxMasterPatternGrid != null && comboBoxMasterPatternGrid.SelectedIndex < 0)
         {
             int defaultIndex = comboBoxMasterPatternGrid.FindStringExact("256");
@@ -524,7 +523,6 @@ public partial class FormEBSD : CaptureFormBase
         if (comboBoxMasterPattern2DHemisphere != null && comboBoxMasterPattern2DHemisphere.SelectedIndex < 0 && comboBoxMasterPattern2DHemisphere.Items.Count > 0)
             comboBoxMasterPattern2DHemisphere.SelectedIndex = 0; // (260322Ch) MasterPattern2D の初期表示半球を +Z にそろえる
         #region MasterPattern3D control // (260322Ch)
-        // EnsureMasterPattern3DControl(); // (260322Ch) 旧実装: Rosca-Lambert 球面 preview 用の GLControl 生成を helper 化していた
         if (glControlMasterPattern3D == null && panelMasterPattern3D != null)
         {
             glControlMasterPattern3D = new GLControlAlpha()
@@ -579,8 +577,7 @@ public partial class FormEBSD : CaptureFormBase
         SetVector();
         ResetMasterPattern3DAxes(); // (260322Ch) MasterPattern3D axes inset の結晶軸オブジェクトを生成する
         DrawGeometry();
-        comboBoxGradient.SelectedIndex = 0;
-        comboBoxScale.SelectedIndex = 0;
+        comboBoxGradient.SelectedIndex = comboBoxScale.SelectedIndex = 0;
         NumericBoxEnergyStart_ValueChanged(sender, e);
         NumericBoxThicknessStart_ValueChanged(sender, e);
         DrawMasterPattern2D(); // (260322Ch) 空の MasterPattern2D でも初期状態を描画しておく
@@ -595,7 +592,7 @@ public partial class FormEBSD : CaptureFormBase
 
     #endregion
 
-    #region OpenGLで入射電子、試料、検出器の幾何学を描画し、ステレオネット上に検出器の輪郭を描画
+    #region DrawGeometry() OpenGLで入射電子、試料、検出器の幾何学を描画し、ステレオネット上に検出器の輪郭を描画
     /// <summary>試料と電子線が交差する位置は常に(0,0,0)</summary>
     public void DrawGeometry(int i = -1, int j = -1)
     {
@@ -710,10 +707,7 @@ public partial class FormEBSD : CaptureFormBase
 
     private void buttonMasterPattern3DViewAlong_Click(object sender, EventArgs e)
     {
-        if (glControlMasterPattern3D == null
-            || Crystal?.A_Axis == null
-            || Crystal.B_Axis == null
-            || Crystal.C_Axis == null)
+        if (glControlMasterPattern3D == null || Crystal?.A_Axis == null || Crystal.B_Axis == null || Crystal.C_Axis == null)
             return;
 
         // var zoneAxis = new Vector3DBase(numericBoxMasterPattern3DViewAlongU.Value, numericBoxMasterPattern3DViewAlongV.Value, numericBoxMasterPattern3DViewAlongW.Value); // (260322Ch) 旧案: [u v w] を直交座標 x,y,z と同一視していた
@@ -822,19 +816,17 @@ public partial class FormEBSD : CaptureFormBase
     public void Draw(Graphics g = null)
     {
         DrawEBSD();
-        DrawKikuchiLine(g);
+        DrawOverlays(g);
         DrawGeometry();
     }
     #endregion
 
-    #region MasterPattern から EBSD パターンを生成 // 260325Cl 追加
+    #region MasterPattern から EBSD パターンを生成、描画
 
     bool skipEBSD_Rendering = false;
     private double[] ebsdValues = []; // 260325Cl: EBSD パターン描画用バッファ (サイズ変更時のみ再割り当て)
-    private int ebsdCachedWidth = 0, ebsdCachedHeight = 0; // 260325Cl: PseudoBitmap 再生成判定用
+    private (int Width, int Height) ebsdCachedSize = (0, 0); // 260325Cl: PseudoBitmap 再生成判定用
     private int masterPatternCombinationModel = 2; // (260325Ch) 0=current, 1=globally normalized master, 2=absolute MC x differential master
-    private double[] masterPatternGlobalNormalizationFactors = []; // (260325Ch) model 1 用。各 energy/depth slice の全球積算強度を 1 にそろえる係数
-    private MasterPattern masterPatternGlobalNormalizationSource = null; // (260325Ch) 現在の model 1 規格化係数が対応している MasterPattern
 
     // 260325Cl 追加: ピクセルごとの MasterPattern 参照テーブル (エネルギー・深さに依存しない)
     // 正方格子: idx[i] = 左上グリッドインデックス, wt[i*2] = fw, wt[i*2+1] = fh, posZ[i] = 半球
@@ -880,19 +872,12 @@ public partial class FormEBSD : CaptureFormBase
         }
 
         // 260325Cl: tilt 係数はキャッシュ済み (UpdateEbsdTiltCoeffs で更新)
-        var yCoeffPy = ebsdYCoeffPy;
-        var zCoeffPy = ebsdZCoeffPy;
-        var yConst = ebsdYConst;
-        var zConst = ebsdZConst;
+        double yCoeffPy = ebsdYCoeffPy, zCoeffPy = ebsdZCoeffPy, yConst = ebsdYConst, zConst = ebsdZConst;
 
         var Ri = Crystal.RotationMatrix.Inverse();
-        double ax = -Ri.E11, ay = -Ri.E21, az = -Ri.E31;
-        double bx = Ri.E12 * yCoeffPy + Ri.E13 * zCoeffPy;
-        double by = Ri.E22 * yCoeffPy + Ri.E23 * zCoeffPy;
-        double bz = Ri.E32 * yCoeffPy + Ri.E33 * zCoeffPy;
-        double cx = Ri.E12 * yConst + Ri.E13 * zConst;
-        double cy = Ri.E22 * yConst + Ri.E23 * zConst;
-        double cz = Ri.E32 * yConst + Ri.E33 * zConst;
+        double ax = -Ri.E11, ay = -Ri.E21, az = -Ri.E31, bx = Ri.E12 * yCoeffPy + Ri.E13 * zCoeffPy;
+        double by = Ri.E22 * yCoeffPy + Ri.E23 * zCoeffPy, bz = Ri.E32 * yCoeffPy + Ri.E33 * zCoeffPy;
+        double cx = Ri.E12 * yConst + Ri.E13 * zConst, cy = Ri.E22 * yConst + Ri.E23 * zConst, cz = Ri.E32 * yConst + Ri.E33 * zConst;
 
         double scaleW = DetR / width, scaleH = DetR / height;
         double ax2 = ax * scaleW, ay2 = ay * scaleW, az2 = az * scaleW;
@@ -901,9 +886,7 @@ public partial class FormEBSD : CaptureFormBase
         var gridSize = MasterPattern.GridSize;
         ebsdLookupGridSize = gridSize; // 260325Cl: Apply 用にキャッシュ
         var startPxFactor = 1 - width; // (260325Ch) 列方向は等間隔なので、旧 pxFactor 再計算を増分更新へ置き換える
-        var dxStep = 2.0 * ax2; // (260325Ch)
-        var dyStep = 2.0 * ay2; // (260325Ch)
-        var dzStep = 2.0 * az2; // (260325Ch)
+        double dxStep = 2.0 * ax2, dyStep = 2.0 * ay2, dzStep = 2.0 * az2; // (260325Ch)
 
         fixed (int* pIdx = ebsdLookupIdx)
         fixed (float* pWt = ebsdLookupWt)
@@ -911,7 +894,7 @@ public partial class FormEBSD : CaptureFormBase
         {
             var pIdx0 = pIdx; var pWt0 = pWt; var pPosZ0 = pPosZ;
 
-            if (isHexGrid) // 260331Cl: 六方格子パス
+            if (isHexGrid) // 六方格子パス
             {
                 var gs = gridSize; // Parallel.For のキャプチャ用ローカル
                 Parallel.For(0, height, h =>
@@ -930,9 +913,7 @@ public partial class FormEBSD : CaptureFormBase
 
                         // 球面→六方格子
                         var (hx, hy) = MasterPattern.SphereToRoscaLambertHex(nx, ny, Math.Abs(nz));
-                        MasterPattern.GetHexBarycentricLookup(hx, hy, gs,
-                            out int idx0, out int idx1, out int idx2,
-                            out float bw0, out float bw1, out float bw2);
+                        MasterPattern.GetHexBarycentricLookup(hx, hy, gs, out int idx0, out int idx1, out int idx2, out float bw0, out float bw1, out float bw2);
 
                         int i3 = i * 3;
                         pIdx0[i3] = idx0; pIdx0[i3 + 1] = idx1; pIdx0[i3 + 2] = idx2;
@@ -942,13 +923,11 @@ public partial class FormEBSD : CaptureFormBase
                     }
                 });
             }
-            else // 正方格子パス (既存)
+            else // 正方格子パス 
             {
                 var sqLim = MasterPattern.SquareLimit;
                 var invStep = gridSize / (2.0 * sqLim);
-                var inv_PI = 1.0 / Math.PI;
                 var gridMax = gridSize - 1;
-                var roscaRadiusScale = Math.PI * 0.5;
 
                 Parallel.For(0, height, h =>
                 {
@@ -961,24 +940,23 @@ public partial class FormEBSD : CaptureFormBase
                     {
                         int i = rowOffset + w;
                         double absDx = Math.Abs(dx), absDy = Math.Abs(dy);
-                        double invLen = 1.0 / Math.Sqrt(dx * dx + dy * dy + dz * dz);
-                        double absDzNorm = Math.Abs(dz) * invLen;
+                        double invLen = 1.0 / Math.Sqrt(dx * dx + dy * dy + dz * dz), absDzNorm = Math.Abs(dz) * invLen;
                         pPosZ0[i] = dz >= 0;
 
                         double a, b;
                         if (absDx < 1e-15 && absDy < 1e-15) { a = 0; b = 0; }
                         else
                         {
-                            double edgeRadius = Math.Sqrt(Math.Max(0.0, roscaRadiusScale * (1.0 - absDzNorm)));
+                            double edgeRadius = Math.Sqrt(Math.Max(0.0, Half_PI * (1.0 - absDzNorm)));
                             if (absDx >= absDy)
                             {
                                 a = dx >= 0 ? edgeRadius : -edgeRadius;
-                                b = 4.0 * a * inv_PI * Math.Atan(dy / dx);
+                                b = 4.0 * a * Inv_PI * Math.Atan(dy / dx);
                             }
                             else
                             {
                                 b = dy >= 0 ? edgeRadius : -edgeRadius;
-                                a = 4.0 * b * inv_PI * Math.Atan(dx / dy);
+                                a = 4.0 * b * Inv_PI * Math.Atan(dx / dy);
                             }
                         }
 
@@ -1000,8 +978,9 @@ public partial class FormEBSD : CaptureFormBase
         }
     }
 
+    #region masterPatternCombinationModel 0 — current
     /// <summary>構築済みルックアップテーブルを使い、指定 energy/depth の EBSD パターンを values に書き込む。260325Cl 追加</summary>
-    private unsafe void ApplyEbsdLookupSingleSlice(double[] values, int totalPixels, float[] posPlane, float[] negPlane) // 260325Cl: unsafe 化
+    private unsafe void ApplyEbsdLookupSingleSliceModel0(double[] values, int totalPixels, float[] posPlane, float[] negPlane) // 260325Cl: unsafe 化
     {
         if (posPlane == null && negPlane == null) return;
 
@@ -1012,8 +991,8 @@ public partial class FormEBSD : CaptureFormBase
         fixed (float* pWt = ebsdLookupWt)
         fixed (bool* pPosZ = ebsdLookupPosZ)
         fixed (double* pVal = values)
-        fixed (float* pPos = posPlane ?? Array.Empty<float>())
-        fixed (float* pNeg = negPlane ?? Array.Empty<float>())
+        fixed (float* pPos = posPlane ?? [])
+        fixed (float* pNeg = negPlane ?? [])
         {
             var pIdx0 = pIdx; var pWt0 = pWt; var pPosZ0 = pPosZ;
             var pVal0 = pVal; var pPos0 = pPos; var pNeg0 = pNeg;
@@ -1022,20 +1001,18 @@ public partial class FormEBSD : CaptureFormBase
 
             if (isHexGrid) // 260331Cl: 六方格子パス — 3 近傍バリセントリック補間
             {
-                System.Threading.Tasks.Parallel.For(0, totalPixels, i =>
+                Parallel.For(0, totalPixels, i =>
                 {
                     float* plane = pPosZ0[i] ? pPos0 : pNeg0;
                     bool hasPlane = pPosZ0[i] ? hasPos : hasNeg;
                     if (!hasPlane) { pVal0[i] = 0; return; }
                     int i3 = i * 3;
-                    pVal0[i] = pWt0[i3] * plane[pIdx0[i3]]
-                             + pWt0[i3 + 1] * plane[pIdx0[i3 + 1]]
-                             + pWt0[i3 + 2] * plane[pIdx0[i3 + 2]];
+                    pVal0[i] = pWt0[i3] * plane[pIdx0[i3]] + pWt0[i3 + 1] * plane[pIdx0[i3 + 1]] + pWt0[i3 + 2] * plane[pIdx0[i3 + 2]];
                 });
             }
             else // 正方格子パス (既存)
             {
-                System.Threading.Tasks.Parallel.For(0, totalPixels, i =>
+                Parallel.For(0, totalPixels, i =>
                 {
                     float* plane = pPosZ0[i] ? pPos0 : pNeg0;
                     bool hasPlane = pPosZ0[i] ? hasPos : hasNeg;
@@ -1043,16 +1020,120 @@ public partial class FormEBSD : CaptureFormBase
                     int idx = pIdx0[i];
                     int i2 = i * 2;
                     float fw = pWt0[i2], fh = pWt0[i2 + 1];
-                    float w0 = (1 - fw), w1 = fw;
-                    pVal0[i] = (w0 * plane[idx] + w1 * plane[idx + 1]) * (1 - fh)
-                             + (w0 * plane[idx + gs] + w1 * plane[idx + gs + 1]) * fh;
+                    float w0 = 1 - fw, w1 = fw;
+                    pVal0[i] = (w0 * plane[idx] + w1 * plane[idx + 1]) * (1 - fh) + (w0 * plane[idx + gs] + w1 * plane[idx + gs + 1]) * fh;
                 });
             }
         }
     }
 
+    /// <summary>
+    /// 構築済みルックアップテーブルと MC フィッティング結果を使い、
+    /// 全エネルギー・深さの加重平均 EBSD パターンを計算する。260325Cl 追加
+    /// </summary>
+    private unsafe void ApplyEbsdLookupWeightedModel0(double[] values, int width, int height)
+    {
+        var mp = MasterPattern;
+        var dist = mcDistribution;
+        int eLen = mp.Energies.Length, dLen = mp.Depths.Length, totalPixels = width * height;
+        int binCount = dist.BinCount, gs = ebsdLookupGridSize;
+
+        Array.Clear(values);
+
+        // ピクセルごとの加重合計を並列で計算
+        fixed (int* pIdx = ebsdLookupIdx)
+        fixed (float* pWt = ebsdLookupWt)
+        fixed (bool* pPosZ = ebsdLookupPosZ)
+        fixed (double* pVal = values)
+        {
+            var pIdx0 = pIdx; var pWt0 = pWt; var pPosZ0 = pPosZ; var pVal0 = pVal;
+            var isHexGrid = ebsdLookupGridType == MasterPattern.Types.Hexagonal; // 260331Cl
+
+            Parallel.For(0, height, h =>
+            {
+                // この行のピクセルの検出器 Y 座標 (ビン補間用)
+                // 260325Cl: スクリーン h=0 → pyFactor≈-DetR (検出器底) → detNormY≈-1, 符号反転しない
+                double detNormY = (2.0 * h + 1 - height) / (double)height;
+                double by = (1 - detNormY) * 0.5 * binCount - 0.5;
+                int bj0 = Math.Clamp((int)Math.Floor(by), 0, binCount - 2);
+                double fy = Math.Clamp(by - bj0, 0, 1);
+
+                for (int w = 0; w < width; w++)
+                {
+                    int i = h * width + w;
+
+                    // 検出器 X 座標
+                    double detNormX = -(2.0 * w + 1 - width) / (double)width; // 260325Cl: スクリーン X は検出器面 X と反転 (BuildEbsdLookupTable で -Ri.E11 を使用)
+                    double bx = (detNormX + 1) * 0.5 * binCount - 0.5;
+                    int bi0 = Math.Clamp((int)Math.Floor(bx), 0, binCount - 2);
+                    double fx = Math.Clamp(bx - bi0, 0, 1);
+
+                    // ビン重みのバイリニア補間係数
+                    double c00 = (1 - fx) * (1 - fy), c10 = fx * (1 - fy), c01 = (1 - fx) * fy, c11 = fx * fy;
+
+                    var bw00 = dist.BinWeights[bi0, bj0];
+                    var bw10 = dist.BinWeights[bi0 + 1, bj0];
+                    var bw01 = dist.BinWeights[bi0, bj0 + 1];
+                    var bw11 = dist.BinWeights[bi0 + 1, bj0 + 1];
+
+                    // ルックアップテーブルからマスターパターン補間パラメータ取得
+                    bool posZ = pPosZ0[i];
+
+                    // 全エネルギー・深さで加重合計
+                    double sum = 0;
+
+                    if (isHexGrid) // 260331Cl: 六方格子
+                    {
+                        int i3 = i * 3;
+                        int hIdx0 = pIdx0[i3], hIdx1 = pIdx0[i3 + 1], hIdx2 = pIdx0[i3 + 2];
+                        float hw0 = pWt0[i3], hw1 = pWt0[i3 + 1], hw2 = pWt0[i3 + 2];
+                        for (int ei = 0; ei < eLen; ei++)
+                            for (int di = 0; di < dLen; di++)
+                            {
+                                int wIdx = ei * dLen + di;
+                                double weight = c00 * bw00[wIdx] + c10 * bw10[wIdx] + c01 * bw01[wIdx] + c11 * bw11[wIdx];
+                                if (weight < 1e-15) continue;
+                                var plane = posZ
+                                    ? mp.GetPlane(MasterPattern.Hemisphere.PositiveZ, ei, di)
+                                    : mp.GetPlane(MasterPattern.Hemisphere.NegativeZ, ei, di);
+                                if (plane == null || plane.Length == 0) continue;
+                                sum += weight * (hw0 * plane[hIdx0] + hw1 * plane[hIdx1] + hw2 * plane[hIdx2]);
+                            }
+                    }
+                    else // 正方格子
+                    {
+                        int idx = pIdx0[i];
+                        int i2 = i * 2;
+                        float mpFw = pWt0[i2], mpFh = pWt0[i2 + 1];
+                        float mpW0 = 1 - mpFw, mpW1 = mpFw;
+                        float mpFh1 = 1 - mpFh;
+                        for (int ei = 0; ei < eLen; ei++)
+                            for (int di = 0; di < dLen; di++)
+                            {
+                                int wIdx = ei * dLen + di;
+                                double weight = c00 * bw00[wIdx] + c10 * bw10[wIdx] + c01 * bw01[wIdx] + c11 * bw11[wIdx];
+                                if (weight < 1e-15) continue;
+                                var plane = posZ
+                                    ? mp.GetPlane(MasterPattern.Hemisphere.PositiveZ, ei, di)
+                                    : mp.GetPlane(MasterPattern.Hemisphere.NegativeZ, ei, di);
+                                if (plane == null || plane.Length == 0) continue;
+                                double intensity = (mpW0 * plane[idx] + mpW1 * plane[idx + 1]) * mpFh1 + (mpW0 * plane[idx + gs] + mpW1 * plane[idx + gs + 1]) * mpFh;
+                                sum += weight * intensity;
+                            }
+                    }
+                    pVal0[i] = sum;
+                }
+            });
+        }
+    }
+    #endregion
+
+    #region masterPatternCombinationModel 1 — globally normalized master
+    private double[] masterPatternGlobalNormalizationFactors = []; // (260325Ch) model 1 用。各 energy/depth slice の全球積算強度を 1 にそろえる係数
+    private MasterPattern masterPatternGlobalNormalizationSource = null; // (260325Ch) 現在の model 1 規格化係数が対応している MasterPattern
+
     /// <summary>model 1 用に、各 energy/depth slice の全球積算強度 ((+Z) + (-Z)) を 1 にそろえる係数を準備する。260325Ch 追加</summary>
-    private void EnsureMasterPatternGlobalNormalizationFactors()
+    private void EnsureMasterPatternGlobalNormalizationFactorsModel1()
     {
         var mp = MasterPattern;
         if (mp == null)
@@ -1140,7 +1221,98 @@ public partial class FormEBSD : CaptureFormBase
         }
     }
 
-    /// <summary>model 2: depthIndex と depthIndex-1 の差分を取り、単一 depth slice の EBSD パターンとして描く。260325Ch 追加</summary>
+    /// <summary>model 1: 各 energy/depth slice の全球積算強度を 1 にそろえてから weighted 合成する。260325Ch 追加</summary>
+    private unsafe void ApplyEbsdLookupWeightedModel1(double[] values, int width, int height)
+    {
+        var mp = MasterPattern;
+        var dist = mcDistribution;
+        int eLen = mp.Energies.Length, dLen = mp.Depths.Length;
+        int totalPixels = width * height;
+        int binCount = dist.BinCount;
+        var gs = ebsdLookupGridSize;
+        var planeScaleFactors = masterPatternGlobalNormalizationFactors;
+
+        Array.Clear(values);
+
+        fixed (int* pIdx = ebsdLookupIdx)
+        fixed (float* pWt = ebsdLookupWt)
+        fixed (bool* pPosZ = ebsdLookupPosZ)
+        fixed (double* pVal = values)
+        {
+            var pIdx0 = pIdx; var pWt0 = pWt; var pPosZ0 = pPosZ; var pVal0 = pVal;
+            var isHexGrid = ebsdLookupGridType == MasterPattern.Types.Hexagonal; // 260331Cl
+
+            Parallel.For(0, height, h =>
+            {
+                double detNormY = (2.0 * h + 1 - height) / (double)height;
+                double by = (1 - detNormY) * 0.5 * binCount - 0.5;
+                int bj0 = Math.Clamp((int)Math.Floor(by), 0, binCount - 2);
+                double fy = Math.Clamp(by - bj0, 0, 1);
+
+                for (int w = 0; w < width; w++)
+                {
+                    int i = h * width + w;
+                    double detNormX = -(2.0 * w + 1 - width) / (double)width;
+                    double bx = (detNormX + 1) * 0.5 * binCount - 0.5;
+                    int bi0 = Math.Clamp((int)Math.Floor(bx), 0, binCount - 2);
+                    double fx = Math.Clamp(bx - bi0, 0, 1);
+
+                    double c00 = (1 - fx) * (1 - fy), c10 = fx * (1 - fy), c01 = (1 - fx) * fy, c11 = fx * fy;
+
+                    double[] bw00 = dist.BinWeights[bi0, bj0], bw10 = dist.BinWeights[bi0 + 1, bj0], bw01 = dist.BinWeights[bi0, bj0 + 1], bw11 = dist.BinWeights[bi0 + 1, bj0 + 1];
+                    bool posZ = pPosZ0[i];
+
+                    double sum = 0;
+                    if (isHexGrid) // 260331Cl
+                    {
+                        int i3 = i * 3;
+                        int hIdx0 = pIdx0[i3], hIdx1 = pIdx0[i3 + 1], hIdx2 = pIdx0[i3 + 2];
+                        float hw0 = pWt0[i3], hw1 = pWt0[i3 + 1], hw2 = pWt0[i3 + 2];
+                        for (int ei = 0; ei < eLen; ei++)
+                            for (int di = 0; di < dLen; di++)
+                            {
+                                int wIdx = ei * dLen + di;
+                                double weight = c00 * bw00[wIdx] + c10 * bw10[wIdx] + c01 * bw01[wIdx] + c11 * bw11[wIdx];
+                                if (weight < 1e-15) continue;
+                                double planeScaleFactor = (uint)wIdx < (uint)planeScaleFactors.Length ? planeScaleFactors[wIdx] : 0.0;
+                                if (planeScaleFactor < 1e-30) continue;
+                                var plane = posZ ? mp.GetPlane(MasterPattern.Hemisphere.PositiveZ, ei, di) : mp.GetPlane(MasterPattern.Hemisphere.NegativeZ, ei, di);
+                                if (plane == null || plane.Length == 0) continue;
+                                sum += weight * (hw0 * plane[hIdx0] + hw1 * plane[hIdx1] + hw2 * plane[hIdx2]) * planeScaleFactor;
+                            }
+                    }
+                    else
+                    {
+                        int idx = pIdx0[i];
+                        int i2 = i * 2;
+                        float mpFw = pWt0[i2], mpFh = pWt0[i2 + 1];
+                        float mpW0 = 1 - mpFw, mpW1 = mpFw;
+                        float mpFh1 = 1 - mpFh;
+                        for (int ei = 0; ei < eLen; ei++)
+                            for (int di = 0; di < dLen; di++)
+                            {
+                                int wIdx = ei * dLen + di;
+                                double weight = c00 * bw00[wIdx] + c10 * bw10[wIdx]
+                                              + c01 * bw01[wIdx] + c11 * bw11[wIdx];
+                                if (weight < 1e-15) continue;
+                                double planeScaleFactor = (uint)wIdx < (uint)planeScaleFactors.Length ? planeScaleFactors[wIdx] : 0.0;
+                                if (planeScaleFactor < 1e-30) continue;
+                                var plane = posZ ? mp.GetPlane(MasterPattern.Hemisphere.PositiveZ, ei, di) : mp.GetPlane(MasterPattern.Hemisphere.NegativeZ, ei, di);
+                                if (plane == null || plane.Length == 0) continue;
+                                double intensity = (mpW0 * plane[idx] + mpW1 * plane[idx + 1]) * mpFh1
+                                                 + (mpW0 * plane[idx + gs] + mpW1 * plane[idx + gs + 1]) * mpFh;
+                                sum += weight * intensity * planeScaleFactor;
+                            }
+                    }
+                    pVal0[i] = sum;
+                }
+            });
+        }
+    }
+    #endregion
+
+    #region masterPatternCombinationModel 2 — absolute MC x differential master
+    /// <summary>Model 2: depthIndex と depthIndex-1 の差分を取り、単一 depth slice の EBSD パターンとして描く。260325Ch 追加</summary>
     private unsafe void ApplyEbsdLookupSingleSliceModel2(double[] values, int totalPixels, float[] posPlane, float[] negPlane, float[] posPlanePrevious = null, float[] negPlanePrevious = null)
     {
         if (posPlane == null && negPlane == null) return;
@@ -1152,10 +1324,10 @@ public partial class FormEBSD : CaptureFormBase
         fixed (float* pWt = ebsdLookupWt)
         fixed (bool* pPosZ = ebsdLookupPosZ)
         fixed (double* pVal = values)
-        fixed (float* pPos = posPlane ?? Array.Empty<float>())
-        fixed (float* pNeg = negPlane ?? Array.Empty<float>())
-        fixed (float* pPosPrev = posPlanePrevious ?? Array.Empty<float>())
-        fixed (float* pNegPrev = negPlanePrevious ?? Array.Empty<float>())
+        fixed (float* pPos = posPlane ?? [])
+        fixed (float* pNeg = negPlane ?? [])
+        fixed (float* pPosPrev = posPlanePrevious ?? [])
+        fixed (float* pNegPrev = negPlanePrevious ?? [])
         {
             var pIdx0 = pIdx; var pWt0 = pWt; var pPosZ0 = pPosZ;
             var pVal0 = pVal; var pPos0 = pPos; var pNeg0 = pNeg; var pPosPrev0 = pPosPrev; var pNegPrev0 = pNegPrev;
@@ -1208,316 +1380,6 @@ public partial class FormEBSD : CaptureFormBase
         }
     }
 
-    /// <summary>
-    /// 構築済みルックアップテーブルと MC フィッティング結果を使い、
-    /// 全エネルギー・深さの加重平均 EBSD パターンを計算する。260325Cl 追加
-    /// </summary>
-    private unsafe void ApplyEbsdLookupWeighted(double[] values, int width, int height)
-    {
-        var mp = MasterPattern;
-        var dist = mcDistribution;
-        int eLen = mp.Energies.Length, dLen = mp.Depths.Length, totalPixels = width * height;
-        int binCount = dist.BinCount, gs = ebsdLookupGridSize;
-
-        Array.Clear(values);
-
-        // ピクセルごとの加重合計を並列で計算
-        fixed (int* pIdx = ebsdLookupIdx)
-        fixed (float* pWt = ebsdLookupWt)
-        fixed (bool* pPosZ = ebsdLookupPosZ)
-        fixed (double* pVal = values)
-        {
-            var pIdx0 = pIdx; var pWt0 = pWt; var pPosZ0 = pPosZ; var pVal0 = pVal;
-            var isHexGrid = ebsdLookupGridType == MasterPattern.Types.Hexagonal; // 260331Cl
-
-            System.Threading.Tasks.Parallel.For(0, height, h =>
-            {
-                // この行のピクセルの検出器 Y 座標 (ビン補間用)
-                // 260325Cl: スクリーン h=0 → pyFactor≈-DetR (検出器底) → detNormY≈-1, 符号反転しない
-                double detNormY = (2.0 * h + 1 - height) / (double)height;
-                double by = (1 - detNormY) * 0.5 * binCount - 0.5;
-                int bj0 = Math.Clamp((int)Math.Floor(by), 0, binCount - 2);
-                double fy = Math.Clamp(by - bj0, 0, 1);
-
-                for (int w = 0; w < width; w++)
-                {
-                    int i = h * width + w;
-
-                    // 検出器 X 座標
-                    double detNormX = -(2.0 * w + 1 - width) / (double)width; // 260325Cl: スクリーン X は検出器面 X と反転 (BuildEbsdLookupTable で -Ri.E11 を使用)
-                    double bx = (detNormX + 1) * 0.5 * binCount - 0.5;
-                    int bi0 = Math.Clamp((int)Math.Floor(bx), 0, binCount - 2);
-                    double fx = Math.Clamp(bx - bi0, 0, 1);
-
-                    // ビン重みのバイリニア補間係数
-                    double c00 = (1 - fx) * (1 - fy), c10 = fx * (1 - fy), c01 = (1 - fx) * fy, c11 = fx * fy;
-
-                    var bw00 = dist.BinWeights[bi0, bj0];
-                    var bw10 = dist.BinWeights[bi0 + 1, bj0];
-                    var bw01 = dist.BinWeights[bi0, bj0 + 1];
-                    var bw11 = dist.BinWeights[bi0 + 1, bj0 + 1];
-
-                    // ルックアップテーブルからマスターパターン補間パラメータ取得
-                    bool posZ = pPosZ0[i];
-
-                    // 全エネルギー・深さで加重合計
-                    double sum = 0;
-
-                    if (isHexGrid) // 260331Cl: 六方格子
-                    {
-                        int i3 = i * 3;
-                        int hIdx0 = pIdx0[i3], hIdx1 = pIdx0[i3 + 1], hIdx2 = pIdx0[i3 + 2];
-                        float hw0 = pWt0[i3], hw1 = pWt0[i3 + 1], hw2 = pWt0[i3 + 2];
-                        for (int ei = 0; ei < eLen; ei++)
-                            for (int di = 0; di < dLen; di++)
-                            {
-                                int wIdx = ei * dLen + di;
-                                double weight = c00 * bw00[wIdx] + c10 * bw10[wIdx]
-                                              + c01 * bw01[wIdx] + c11 * bw11[wIdx];
-                                if (weight < 1e-15) continue;
-                                var plane = posZ
-                                    ? mp.GetPlane(MasterPattern.Hemisphere.PositiveZ, ei, di)
-                                    : mp.GetPlane(MasterPattern.Hemisphere.NegativeZ, ei, di);
-                                if (plane == null || plane.Length == 0) continue;
-                                sum += weight * (hw0 * plane[hIdx0] + hw1 * plane[hIdx1] + hw2 * plane[hIdx2]);
-                            }
-                    }
-                    else // 正方格子
-                    {
-                        int idx = pIdx0[i];
-                        int i2 = i * 2;
-                        float mpFw = pWt0[i2], mpFh = pWt0[i2 + 1];
-                        float mpW0 = 1 - mpFw, mpW1 = mpFw;
-                        float mpFh1 = 1 - mpFh;
-                        for (int ei = 0; ei < eLen; ei++)
-                            for (int di = 0; di < dLen; di++)
-                            {
-                                int wIdx = ei * dLen + di;
-                                double weight = c00 * bw00[wIdx] + c10 * bw10[wIdx]
-                                              + c01 * bw01[wIdx] + c11 * bw11[wIdx];
-                                if (weight < 1e-15) continue;
-                                var plane = posZ
-                                    ? mp.GetPlane(MasterPattern.Hemisphere.PositiveZ, ei, di)
-                                    : mp.GetPlane(MasterPattern.Hemisphere.NegativeZ, ei, di);
-                                if (plane == null || plane.Length == 0) continue;
-                                double intensity = (mpW0 * plane[idx] + mpW1 * plane[idx + 1]) * mpFh1
-                                                 + (mpW0 * plane[idx + gs] + mpW1 * plane[idx + gs + 1]) * mpFh;
-                                sum += weight * intensity;
-                            }
-                    }
-                    pVal0[i] = sum;
-                }
-            });
-        }
-    }
-
-    public void DrawEBSD()
-    {
-        if (MasterPattern == null)
-            return;
-
-        if (skipEBSD_Rendering) return;
-        skipEBSD_Rendering = true;
-
-        int width = graphicsBox.ClientRectangle.Width, height = graphicsBox.ClientRectangle.Height;
-        if (width <= 0 || height <= 0) { skipEBSD_Rendering = false; return; }
-
-        sw1.Restart();
-
-        // Step 1: ルックアップテーブル構築 (方向計算 + Rosca-Lambert + 補間係数)
-        BuildEbsdLookupTable(width, height);
-
-        var totalPixels = width * height;
-        if (ebsdValues.Length != totalPixels)
-            ebsdValues = new double[totalPixels];
-
-        string statusText;
-
-        var useBseDistribution = checkBoxWithBSEDistribution.Checked && mcDistribution != null; // (260327Ch) チェック時だけ BSE 分布つき合成を表示する
-
-        // 260325Cl: BSE 分布を使う場合は加重平均、そうでなければ単一スライス
-        if (useBseDistribution)
-        {
-            // Step 2a: 全エネルギー・深さの加重平均パターン
-            switch (masterPatternCombinationModel)
-            {
-                case 1:
-                    EnsureMasterPatternGlobalNormalizationFactors();
-                    ApplyEbsdLookupWeightedModel1(ebsdValues, width, height);
-                    statusText = $"EBSD weighted pattern (model=1, globally normalized master, {MasterPattern.Energies.Length} energies × {MasterPattern.Depths.Length} depths), {sw1.ElapsedMilliseconds} ms."; // (260325Ch)
-                    break;
-                case 2:
-                    ApplyEbsdLookupWeightedModel2(ebsdValues, width, height);
-                    statusText = $"EBSD weighted pattern (model=2, absolute MC x differential master, {MasterPattern.Energies.Length} energies × {MasterPattern.Depths.Length} depths), {sw1.ElapsedMilliseconds} ms."; // (260325Ch)
-                    break;
-                default://0
-                    // ApplyEbsdLookupWeighted(ebsdValues, width, height); // (260325Ch) 旧実装
-                    ApplyEbsdLookupWeighted(ebsdValues, width, height);
-                    statusText = $"EBSD weighted pattern (model=0, current), {MasterPattern.Energies.Length} energies × {MasterPattern.Depths.Length} depths, {sw1.ElapsedMilliseconds} ms."; // (260325Ch)
-                    break;
-            }
-        }
-        else
-        {
-            // Step 2b: 単一スライス (従来動作)
-            var energyIndex = trackBarOutputEnergy.Value;
-            var depthIndex = trackBarOutputThickness.Value;
-            if ((uint)energyIndex >= (uint)MasterPattern.Energies.Length || (uint)depthIndex >= (uint)MasterPattern.Depths.Length)
-            {
-                skipEBSD_Rendering = false;
-                return;
-            }
-
-            var mp = MasterPattern;
-            var posPlane = mp.GetPlane(MasterPattern.Hemisphere.PositiveZ, energyIndex, depthIndex);
-            var negPlane = mp.GetPlane(MasterPattern.Hemisphere.NegativeZ, energyIndex, depthIndex);
-            var energy = MasterPattern.Energies[energyIndex];
-            var depth = MasterPattern.Depths[depthIndex];
-            switch (masterPatternCombinationModel)
-            {
-                case 1:
-                    EnsureMasterPatternGlobalNormalizationFactors();
-                    var planeIndex = energyIndex * mp.Depths.Length + depthIndex; // (260325Ch) model 1 の規格化係数参照用
-                    var planeScaleFactor = (uint)planeIndex < (uint)masterPatternGlobalNormalizationFactors.Length ? masterPatternGlobalNormalizationFactors[planeIndex] : 0.0; // (260325Ch)
-                    ApplyEbsdLookupSingleSliceModel1(ebsdValues, totalPixels, posPlane, negPlane, planeScaleFactor);
-                    statusText = $"EBSD from MasterPattern (model=1): E={energy:g} kV, depth={depth:g} nm, {sw1.ElapsedMilliseconds} ms."; // (260325Ch)
-                    break;
-                case 2:
-                    var posPlanePrevious = depthIndex > 0 ? mp.GetPlane(MasterPattern.Hemisphere.PositiveZ, energyIndex, depthIndex - 1) : null; // (260325Ch)
-                    var negPlanePrevious = depthIndex > 0 ? mp.GetPlane(MasterPattern.Hemisphere.NegativeZ, energyIndex, depthIndex - 1) : null; // (260325Ch)
-                    ApplyEbsdLookupSingleSliceModel2(ebsdValues, totalPixels, posPlane, negPlane, posPlanePrevious, negPlanePrevious);
-                    statusText = $"EBSD from MasterPattern (model=2): E={energy:g} kV, depth slice={depth:g} nm, {sw1.ElapsedMilliseconds} ms."; // (260325Ch)
-                    break;
-                default:
-                    // ApplyEbsdLookupSingleSlice(ebsdValues, totalPixels, posPlane, negPlane); // (260325Ch) 旧実装
-                    ApplyEbsdLookupSingleSlice(ebsdValues, totalPixels, posPlane, negPlane);
-                    statusText = $"EBSD from MasterPattern (model=0): E={energy:g} kV, depth={depth:g} nm, {sw1.ElapsedMilliseconds} ms."; // (260325Ch)
-                    break;
-            }
-        }
-
-        // Step 3: 表示
-        if (Pbmp == null || ebsdCachedWidth != width || ebsdCachedHeight != height)
-        {
-            Pbmp?.Dispose();
-            Pbmp = new PseudoBitmap(ebsdValues, width) { AlphaEnabled = true };
-            Pbmp.FilterAlfha = Enumerable.Repeat((byte)255, totalPixels).ToList();
-            ebsdCachedWidth = width;
-            ebsdCachedHeight = height;
-            groupBoxOutput.Enabled = true;
-        }
-        else
-        {
-            Pbmp.SrcValuesGray = ebsdValues;
-            Pbmp.SrcValuesGrayOriginal = ebsdValues;
-        }
-
-        AdjustImage();
-        toolStripStatusLabel1.Text = statusText;
-
-        skipEBSD_Rendering = false;
-    }
-
-    /// <summary>model 1: 各 energy/depth slice の全球積算強度を 1 にそろえてから weighted 合成する。260325Ch 追加</summary>
-    private unsafe void ApplyEbsdLookupWeightedModel1(double[] values, int width, int height)
-    {
-        var mp = MasterPattern;
-        var dist = mcDistribution;
-        int eLen = mp.Energies.Length, dLen = mp.Depths.Length;
-        int totalPixels = width * height;
-        int binCount = dist.BinCount;
-        var gs = ebsdLookupGridSize;
-        var planeScaleFactors = masterPatternGlobalNormalizationFactors;
-
-        Array.Clear(values);
-
-        fixed (int* pIdx = ebsdLookupIdx)
-        fixed (float* pWt = ebsdLookupWt)
-        fixed (bool* pPosZ = ebsdLookupPosZ)
-        fixed (double* pVal = values)
-        {
-            var pIdx0 = pIdx; var pWt0 = pWt; var pPosZ0 = pPosZ; var pVal0 = pVal;
-            var isHexGrid = ebsdLookupGridType == MasterPattern.Types.Hexagonal; // 260331Cl
-
-            System.Threading.Tasks.Parallel.For(0, height, h =>
-            {
-                double detNormY = (2.0 * h + 1 - height) / (double)height;
-                double by = (1 - detNormY) * 0.5 * binCount - 0.5;
-                int bj0 = Math.Clamp((int)Math.Floor(by), 0, binCount - 2);
-                double fy = Math.Clamp(by - bj0, 0, 1);
-
-                for (int w = 0; w < width; w++)
-                {
-                    int i = h * width + w;
-                    double detNormX = -(2.0 * w + 1 - width) / (double)width;
-                    double bx = (detNormX + 1) * 0.5 * binCount - 0.5;
-                    int bi0 = Math.Clamp((int)Math.Floor(bx), 0, binCount - 2);
-                    double fx = Math.Clamp(bx - bi0, 0, 1);
-
-                    double c00 = (1 - fx) * (1 - fy);
-                    double c10 = fx * (1 - fy);
-                    double c01 = (1 - fx) * fy;
-                    double c11 = fx * fy;
-
-                    var bw00 = dist.BinWeights[bi0, bj0];
-                    var bw10 = dist.BinWeights[bi0 + 1, bj0];
-                    var bw01 = dist.BinWeights[bi0, bj0 + 1];
-                    var bw11 = dist.BinWeights[bi0 + 1, bj0 + 1];
-                    bool posZ = pPosZ0[i];
-
-                    double sum = 0;
-                    if (isHexGrid) // 260331Cl
-                    {
-                        int i3 = i * 3;
-                        int hIdx0 = pIdx0[i3], hIdx1 = pIdx0[i3 + 1], hIdx2 = pIdx0[i3 + 2];
-                        float hw0 = pWt0[i3], hw1 = pWt0[i3 + 1], hw2 = pWt0[i3 + 2];
-                        for (int ei = 0; ei < eLen; ei++)
-                            for (int di = 0; di < dLen; di++)
-                            {
-                                int wIdx = ei * dLen + di;
-                                double weight = c00 * bw00[wIdx] + c10 * bw10[wIdx]
-                                              + c01 * bw01[wIdx] + c11 * bw11[wIdx];
-                                if (weight < 1e-15) continue;
-                                double planeScaleFactor = (uint)wIdx < (uint)planeScaleFactors.Length ? planeScaleFactors[wIdx] : 0.0;
-                                if (planeScaleFactor < 1e-30) continue;
-                                var plane = posZ
-                                    ? mp.GetPlane(MasterPattern.Hemisphere.PositiveZ, ei, di)
-                                    : mp.GetPlane(MasterPattern.Hemisphere.NegativeZ, ei, di);
-                                if (plane == null || plane.Length == 0) continue;
-                                sum += weight * (hw0 * plane[hIdx0] + hw1 * plane[hIdx1] + hw2 * plane[hIdx2]) * planeScaleFactor;
-                            }
-                    }
-                    else
-                    {
-                        int idx = pIdx0[i];
-                        int i2 = i * 2;
-                        float mpFw = pWt0[i2], mpFh = pWt0[i2 + 1];
-                        float mpW0 = 1 - mpFw, mpW1 = mpFw;
-                        float mpFh1 = 1 - mpFh;
-                        for (int ei = 0; ei < eLen; ei++)
-                            for (int di = 0; di < dLen; di++)
-                            {
-                                int wIdx = ei * dLen + di;
-                                double weight = c00 * bw00[wIdx] + c10 * bw10[wIdx]
-                                              + c01 * bw01[wIdx] + c11 * bw11[wIdx];
-                                if (weight < 1e-15) continue;
-                                double planeScaleFactor = (uint)wIdx < (uint)planeScaleFactors.Length ? planeScaleFactors[wIdx] : 0.0;
-                                if (planeScaleFactor < 1e-30) continue;
-                                var plane = posZ
-                                    ? mp.GetPlane(MasterPattern.Hemisphere.PositiveZ, ei, di)
-                                    : mp.GetPlane(MasterPattern.Hemisphere.NegativeZ, ei, di);
-                                if (plane == null || plane.Length == 0) continue;
-                                double intensity = (mpW0 * plane[idx] + mpW1 * plane[idx + 1]) * mpFh1
-                                                 + (mpW0 * plane[idx + gs] + mpW1 * plane[idx + gs + 1]) * mpFh;
-                                sum += weight * intensity * planeScaleFactor;
-                            }
-                    }
-                    pVal0[i] = sum;
-                }
-            });
-        }
-    }
-
     /// <summary>model 2: absolute MC 重みと differential MasterPattern を掛け合わせて weighted 合成する。260325Ch 追加</summary>
     private unsafe void ApplyEbsdLookupWeightedModel2(double[] values, int width, int height)
     {
@@ -1538,7 +1400,7 @@ public partial class FormEBSD : CaptureFormBase
             var pIdx0 = pIdx; var pWt0 = pWt; var pPosZ0 = pPosZ; var pVal0 = pVal;
             var isHexGrid = ebsdLookupGridType == MasterPattern.Types.Hexagonal; // 260331Cl
 
-            System.Threading.Tasks.Parallel.For(0, height, h =>
+            Parallel.For(0, height, h =>
             {
                 double detNormY = (2.0 * h + 1 - height) / (double)height;
                 double by = (1 - detNormY) * 0.5 * binCount - 0.5;
@@ -1553,15 +1415,9 @@ public partial class FormEBSD : CaptureFormBase
                     int bi0 = Math.Clamp((int)Math.Floor(bx), 0, binCount - 2);
                     double fx = Math.Clamp(bx - bi0, 0, 1);
 
-                    double c00 = (1 - fx) * (1 - fy);
-                    double c10 = fx * (1 - fy);
-                    double c01 = (1 - fx) * fy;
-                    double c11 = fx * fy;
+                    double c00 = (1 - fx) * (1 - fy), c10 = fx * (1 - fy), c01 = (1 - fx) * fy, c11 = fx * fy;
 
-                    var bw00 = dist.BinAbsoluteSliceWeights[bi0, bj0];
-                    var bw10 = dist.BinAbsoluteSliceWeights[bi0 + 1, bj0];
-                    var bw01 = dist.BinAbsoluteSliceWeights[bi0, bj0 + 1];
-                    var bw11 = dist.BinAbsoluteSliceWeights[bi0 + 1, bj0 + 1];
+                    double[] bw00 = dist.BinAbsoluteSliceWeights[bi0, bj0], bw10 = dist.BinAbsoluteSliceWeights[bi0 + 1, bj0], bw01 = dist.BinAbsoluteSliceWeights[bi0, bj0 + 1], bw11 = dist.BinAbsoluteSliceWeights[bi0 + 1, bj0 + 1];
                     bool posZ = pPosZ0[i];
 
                     double sum = 0;
@@ -1574,8 +1430,7 @@ public partial class FormEBSD : CaptureFormBase
                             for (int di = 0; di < dLen; di++)
                             {
                                 int wIdx = ei * dLen + di;
-                                double weight = c00 * bw00[wIdx] + c10 * bw10[wIdx]
-                                              + c01 * bw01[wIdx] + c11 * bw11[wIdx];
+                                double weight = c00 * bw00[wIdx] + c10 * bw10[wIdx] + c01 * bw01[wIdx] + c11 * bw11[wIdx];
                                 if (weight < 1e-15) continue;
                                 var plane = posZ
                                     ? mp.GetPlane(MasterPattern.Hemisphere.PositiveZ, ei, di)
@@ -1628,6 +1483,140 @@ public partial class FormEBSD : CaptureFormBase
             });
         }
     }
+    #endregion
+
+    public void DrawEBSD()
+    {
+        if (MasterPattern == null || skipEBSD_Rendering)         return;
+
+        int width = graphicsBox.ClientRectangle.Width, height = graphicsBox.ClientRectangle.Height;
+        if (width <= 0 || height <= 0)  return; 
+
+        skipEBSD_Rendering = true;
+        sw1.Restart();
+
+        // Step 1: ルックアップテーブル構築 (方向計算 + Rosca-Lambert + 補間係数)
+        BuildEbsdLookupTable(width, height);
+
+        var totalPixels = width * height;
+        if (ebsdValues.Length != totalPixels)
+            ebsdValues = new double[totalPixels];
+
+        string statusText;
+
+        var useBseDistribution = checkBoxWithBSEDistribution.Checked && mcDistribution != null; // (260327Ch) チェック時だけ BSE 分布つき合成を表示する
+
+        // 260325Cl: BSE 分布を使う場合は加重平均、そうでなければ単一スライス
+        if (useBseDistribution)
+        {
+            // Step 2a: 全エネルギー・深さの加重平均パターン
+            switch (masterPatternCombinationModel)
+            {
+                case 1:
+                    EnsureMasterPatternGlobalNormalizationFactorsModel1();
+                    ApplyEbsdLookupWeightedModel1(ebsdValues, width, height);
+                    statusText = $"EBSD weighted pattern (model=1, globally normalized master, {MasterPattern.Energies.Length} energies × {MasterPattern.Depths.Length} depths), {sw1.ElapsedMilliseconds} ms."; // (260325Ch)
+                    break;
+                case 2:
+                    ApplyEbsdLookupWeightedModel2(ebsdValues, width, height);
+                    statusText = $"EBSD weighted pattern (model=2, absolute MC x differential master, {MasterPattern.Energies.Length} energies × {MasterPattern.Depths.Length} depths), {sw1.ElapsedMilliseconds} ms."; // (260325Ch)
+                    break;
+                default://0
+                    ApplyEbsdLookupWeightedModel0(ebsdValues, width, height);
+                    statusText = $"EBSD weighted pattern (model=0, current), {MasterPattern.Energies.Length} energies × {MasterPattern.Depths.Length} depths, {sw1.ElapsedMilliseconds} ms."; // (260325Ch)
+                    break;
+            }
+        }
+        else
+        {
+            // Step 2b: 単一スライス (従来動作)
+            var energyIndex = trackBarOutputEnergy.Value;
+            var depthIndex = trackBarOutputThickness.Value;
+            if ((uint)energyIndex >= (uint)MasterPattern.Energies.Length || (uint)depthIndex >= (uint)MasterPattern.Depths.Length)
+            {
+                skipEBSD_Rendering = false;
+                return;
+            }
+
+            var mp = MasterPattern;
+            var posPlane = mp.GetPlane(MasterPattern.Hemisphere.PositiveZ, energyIndex, depthIndex);
+            var negPlane = mp.GetPlane(MasterPattern.Hemisphere.NegativeZ, energyIndex, depthIndex);
+            var energy = MasterPattern.Energies[energyIndex];
+            var depth = MasterPattern.Depths[depthIndex];
+            switch (masterPatternCombinationModel)
+            {
+                case 1:
+                    EnsureMasterPatternGlobalNormalizationFactorsModel1();
+                    var planeIndex = energyIndex * mp.Depths.Length + depthIndex; // (260325Ch) model 1 の規格化係数参照用
+                    var planeScaleFactor = (uint)planeIndex < (uint)masterPatternGlobalNormalizationFactors.Length ? masterPatternGlobalNormalizationFactors[planeIndex] : 0.0; // (260325Ch)
+                    ApplyEbsdLookupSingleSliceModel1(ebsdValues, totalPixels, posPlane, negPlane, planeScaleFactor);
+                    statusText = $"EBSD from MasterPattern (model=1): E={energy:g} kV, depth={depth:g} nm, {sw1.ElapsedMilliseconds} ms."; // (260325Ch)
+                    break;
+                case 2:
+                    var posPlanePrevious = depthIndex > 0 ? mp.GetPlane(MasterPattern.Hemisphere.PositiveZ, energyIndex, depthIndex - 1) : null; // (260325Ch)
+                    var negPlanePrevious = depthIndex > 0 ? mp.GetPlane(MasterPattern.Hemisphere.NegativeZ, energyIndex, depthIndex - 1) : null; // (260325Ch)
+                    ApplyEbsdLookupSingleSliceModel2(ebsdValues, totalPixels, posPlane, negPlane, posPlanePrevious, negPlanePrevious);
+                    statusText = $"EBSD from MasterPattern (model=2): E={energy:g} kV, depth slice={depth:g} nm, {sw1.ElapsedMilliseconds} ms."; // (260325Ch)
+                    break;
+                default:
+                    // ApplyEbsdLookupSingleSlice(ebsdValues, totalPixels, posPlane, negPlane); // (260325Ch) 旧実装
+                    ApplyEbsdLookupSingleSliceModel0(ebsdValues, totalPixels, posPlane, negPlane);
+                    statusText = $"EBSD from MasterPattern (model=0): E={energy:g} kV, depth={depth:g} nm, {sw1.ElapsedMilliseconds} ms."; // (260325Ch)
+                    break;
+            }
+        }
+
+        // Step 3: 表示
+        if (Pbmp == null || ebsdCachedSize.Width != width || ebsdCachedSize.Height != height)
+        {
+            Pbmp?.Dispose();
+            Pbmp = new PseudoBitmap(ebsdValues, width) { AlphaEnabled = true, FilterAlfha = [.. Enumerable.Repeat((byte)255, totalPixels)] };
+            ebsdCachedSize = (width, height);
+            groupBoxOutput.Enabled = true;
+        }
+        else
+            Pbmp.SrcValuesGray = Pbmp.SrcValuesGrayOriginal = ebsdValues;
+
+        #region 画像のコントラストやスケールを設定
+        var colorScale = comboBoxScale.SelectedIndex;
+        //GrayかColorか
+        if (colorScale == 0)
+            Pbmp.SetScaleGray();
+        else if (colorScale == 1)
+            Pbmp.SetScaleColdWarm();
+        else if (colorScale == 2)
+            Pbmp.SetScaleSpectrum();
+        else
+            Pbmp.SetScaleFire();
+
+        //Negativeかどうか
+        Pbmp.IsNegative = comboBoxGradient.SelectedIndex == 1;
+
+        var maxRatio = (double)trackBarIntensityBrightnessMax.Value / trackBarIntensityBrightnessMax.Maximum;
+        var minRatio = (double)trackBarIntensityBrightnessMin.Value / trackBarIntensityBrightnessMin.Maximum;
+
+        double max = Pbmp.SrcValuesGray.Max(), min = Pbmp.SrcValuesGray.Min(), dev = max - min;
+
+        Pbmp.MaxValue = dev * maxRatio + min;
+        Pbmp.MinValue = dev * minRatio + min;
+
+        #endregion
+
+        if (checkBoxShowDyanmicalEBSD.Checked && Pbmp != null)
+        {
+            var graphics = graphicsBox.Graphics;
+            graphics.SmoothingMode = SmoothingMode.None;
+            graphics.InterpolationMode = InterpolationMode.NearestNeighbor;
+            graphics.PixelOffsetMode = PixelOffsetMode.Half;
+
+            var bmp = Pbmp.GetImage(new RectangleD(0, 0, Pbmp.Width, Pbmp.Height), graphicsBox.ClientSize);
+            graphics.DrawImage(bmp, new RectangleD(-DetR, -DetR - Foot.Y, DetR * 2, DetR * 2));
+        }
+
+        toolStripStatusLabel1.Text = statusText;
+
+        skipEBSD_Rendering = false;
+    }
 
     #endregion
 
@@ -1648,34 +1637,25 @@ public partial class FormEBSD : CaptureFormBase
     }
     #endregion
 
-    #region 菊池線(運動学的) graphicBox を描画
+    #region DrawOverlay() 補助図形をGraphicBoxに描画
 
     /// <summary></summary>
     /// <param name="graphics"></param>
-    private void DrawKikuchiLine(Graphics graphics = null, int i = -1, int j = -1)
+    private void DrawOverlays(Graphics graphics = null, int i = -1, int j = -1)
     {
         if (InvokeRequired)//別スレッドから呼び出されたとき Invokeして呼びなおす
         {
-            Invoke(new Action(() => DrawKikuchiLine(graphics, i, j)), null);
+            Invoke(new Action(() => DrawOverlays(graphics, i, j)), null);
             return;
         }
         //グラフィックスボックスに描画する場合
         graphics ??= graphicsBox.Graphics;
+        if (!SetProjection(graphics)) 
+            return;
 
-        if (!SetProjection(graphics)) return;
 
-        graphics.Clear(colorControlBackGround.Color);
-
-        if (checkBoxShowDyanmicalEBSD.Checked && Pbmp != null)
-        {
-            graphics.SmoothingMode = SmoothingMode.None;
-            graphics.InterpolationMode = InterpolationMode.NearestNeighbor;
-            graphics.PixelOffsetMode = PixelOffsetMode.Half;
-
-            var bmp = Pbmp.GetImage(new RectangleD(0, 0, Pbmp.Width, Pbmp.Height), graphicsBox.ClientSize);
-            graphics.DrawImage(bmp, new RectangleD(-DetR, -DetR - Foot.Y, DetR * 2, DetR * 2));
-        }
-
+        if (!checkBoxShowDyanmicalEBSD.Checked || Pbmp == null)
+            graphics.Clear(colorControlBackGround.Color);
 
         if (checkBoxShowOverlays.Checked)
         {
@@ -1689,79 +1669,81 @@ public partial class FormEBSD : CaptureFormBase
 
             var Tau = numericBoxDetTilt.RadianValue - numericBoxSampleTilt.RadianValue;
 
-            foreach (var g in Crystal.VectorOfG_KikuchiLine)
-            {
-                double sinTheta = WaveLength * g.Length / 2, sin2Theta = sinTheta * sinTheta;
-
-                Vector3DBase vec1 = Crystal.RotationMatrix * g;
-
-                //vec2は、検出器法線がZ軸と一致するようにX軸を回転軸に回転させたベクトル
-                var vec2 = Matrix3D.Rot(new Vector3DBase(1, 0, 0), -Tau) * vec1;
-
-                //vec3は、検出器法線(Z軸)を軸としてpsiだけ回転させて、(0,y,z)の形になるようにしたベクトル
-                var psi = Math.Atan2(vec2.X, vec2.Y);
-                var (sinPsi, cosPsi) = Math.SinCos(psi);
-                var vec3 = Matrix3D.Rot(new Vector3DBase(0, 0, 1), psi) * vec2;
-
-                //vec3normは、vec3を規格化したベクトル
-                var vec3norm = vec3.Normarize();
-                double sinPhi = vec3norm.Y, sin2Phi = sinPhi * sinPhi;
-                double cosPhi = vec3norm.Z;
-
-                double P = (sin2Phi - sin2Theta) / (CameraLength2 * CameraLength2 * (1 - sin2Theta)), Psqrt = Math.Sqrt(P);
-                double Q = P * (sin2Phi - sin2Theta) / sin2Theta, Qsqrt = Math.Sqrt(Q);
-                double Y = CameraLength2 * sinPhi * cosPhi / (sin2Phi - sin2Theta);
-
-                if (!double.IsNaN(Psqrt) && !double.IsNaN(Qsqrt))
+            #region 菊池線の表示と菊池線指数の表示
+            if (checkBoxShowKikuchiLines.Checked || checkBoxShowGIndices.Checked)
+                foreach (var g in Crystal.VectorOfG_KikuchiLine)
                 {
-                    // y= sinh(x) の逆関数は x = log{y+ sqrt(y*y+1)}
-                    double omegaMax = Math.Log(diag * Psqrt + Math.Sqrt(diag * Psqrt * diag * Psqrt + 1)) * 2;
-                    var pts = new List<PointD>();
-                    for (double omega = -omegaMax; omega < omegaMax; omega += omegaMax / 500)
-                    {
-                        double x = Math.Sinh(omega) / Psqrt, y = -Math.Cosh(omega) / Qsqrt;
-                        var pt = new PointD(cosPsi * x - sinPsi * (y - Y), sinPsi * x + cosPsi * (y - Y));
+                    double sinTheta = WaveLength * g.Length / 2, sin2Theta = sinTheta * sinTheta;
 
-                        if (IsScreenArea(pt))
-                            pts.Add(pt);
-                    }
+                    Vector3DBase vec1 = Crystal.RotationMatrix * g;
 
-                    if (pts.Count > 1)
+                    //vec2は、検出器法線がZ軸と一致するようにX軸を回転軸に回転させたベクトル
+                    var vec2 = Matrix3D.Rot(new Vector3DBase(1, 0, 0), -Tau) * vec1;
+
+                    //vec3は、検出器法線(Z軸)を軸としてpsiだけ回転させて、(0,y,z)の形になるようにしたベクトル
+                    var psi = Math.Atan2(vec2.X, vec2.Y);
+                    var (sinPsi, cosPsi) = Math.SinCos(psi);
+                    var vec3 = Matrix3D.Rot(new Vector3DBase(0, 0, 1), psi) * vec2;
+
+                    //vec3normは、vec3を規格化したベクトル
+                    var vec3norm = vec3.Normarize();
+                    double sinPhi = vec3norm.Y, sin2Phi = sinPhi * sinPhi;
+                    double cosPhi = vec3norm.Z;
+
+                    double P = (sin2Phi - sin2Theta) / (CameraLength2 * CameraLength2 * (1 - sin2Theta)), Psqrt = Math.Sqrt(P);
+                    double Q = P * (sin2Phi - sin2Theta) / sin2Theta, Qsqrt = Math.Sqrt(Q);
+                    double Y = CameraLength2 * sinPhi * cosPhi / (sin2Phi - sin2Theta);
+
+                    if (!double.IsNaN(Psqrt) && !double.IsNaN(Qsqrt))
                     {
-                        //菊池線描画
-                        if (checkBoxShowKikuchiLines.Checked)
+                        // y= sinh(x) の逆関数は x = log{y+ sqrt(y*y+1)}
+                        double omegaMax = Math.Log(diag * Psqrt + Math.Sqrt(diag * Psqrt * diag * Psqrt + 1)) * 2;
+                        var pts = new List<PointD>();
+                        for (double omega = -omegaMax; omega < omegaMax; omega += omegaMax / 500)
                         {
-                            if (checkBoxKikuchiLine_Kinematical.Checked)
-                                penExcess.Color = Blend(colorControlExcessLine.Color, colorControlBackGround.Color, g.RelativeIntensity);
-                            graphics.DrawLines(penExcess, pts.ToArray());
+                            double x = Math.Sinh(omega) / Psqrt, y = -Math.Cosh(omega) / Qsqrt;
+                            var pt = new PointD(cosPsi * x - sinPsi * (y - Y), sinPsi * x + cosPsi * (y - Y));
+
+                            if (IsScreenArea(pt))
+                                pts.Add(pt);
                         }
 
-
-                        //ラベル描画
-                        if (checkBoxShowGIndices.Checked) // 260331Cl checkBoxShowGIndices で制御
+                        if (pts.Count > 1)
                         {
-                            //まず傾きをみて線のどちら側にラベルを付けるかを決める。θは -π ~ +πの範囲で調節
-                            var original = graphics.Transform;
-                            var θ = Math.Atan2(pts[^1].Y - pts[0].Y, pts[^1].X - pts[0].X);
-                            if (-Math.PI / 2 < θ && θ < Math.PI / 2)
+                            //菊池線描画
+                            if (checkBoxShowKikuchiLines.Checked)
                             {
-                                graphics.TranslateTransform(pts[0].X, pts[0].Y);
-                                graphics.RotateTransform(θ);
+                                if (checkBoxKikuchiLine_Kinematical.Checked)
+                                    penExcess.Color = Blend(colorControlExcessLine.Color, colorControlBackGround.Color, g.RelativeIntensity);
+                                graphics.DrawLines(penExcess, pts.ToArray());
                             }
-                            else
+
+
+                            //ラベル描画
+                            if (checkBoxShowGIndices.Checked) // 260331Cl checkBoxShowGIndices で制御
                             {
-                                graphics.TranslateTransform(pts[^1].X, pts[^1].Y);
-                                graphics.RotateTransform(θ + Math.PI);
+                                //まず傾きをみて線のどちら側にラベルを付けるかを決める。θは -π ~ +πの範囲で調節
+                                var original = graphics.Transform;
+                                var θ = Math.Atan2(pts[^1].Y - pts[0].Y, pts[^1].X - pts[0].X);
+                                if (-Math.PI / 2 < θ && θ < Math.PI / 2)
+                                {
+                                    graphics.TranslateTransform(pts[0].X, pts[0].Y);
+                                    graphics.RotateTransform(θ);
+                                }
+                                else
+                                {
+                                    graphics.TranslateTransform(pts[^1].X, pts[^1].Y);
+                                    graphics.RotateTransform(θ + Math.PI);
+                                }
+                                graphics.DrawString(g.Text, font, brush, new PointF(0, 0));
+                                graphics.Transform = original;
                             }
-                            graphics.DrawString(g.Text, font, brush, new PointF(0, 0));
-                            graphics.Transform = original;
                         }
                     }
                 }
-            }
+            #endregion
 
-
-            // 260331Cl 追加: 晶帯軸ラベルをバンド交点に表示
+            #region 晶帯軸ラベルをバンド交点に表示
             if (checkBoxShowZoneAxisIndices.Checked && checkBoxShowOverlays.Checked && Crystal.VectorOfG_KikuchiLine.Count >= 2)
             {
                 var rot = Crystal.RotationMatrix;
@@ -1820,7 +1802,9 @@ public partial class FormEBSD : CaptureFormBase
                         graphics.DrawString(label, font, brush, new PointF((float)ptZA.X - size.Width / 2, (float)ptZA.Y - size.Height / 2));
                     }
             }
+            #endregion
 
+            #region 検出器のアウトラインを表示
             if (checkBoxDrawDetectorOutline.Checked)
             {
                 //検出器を示す円を描画
@@ -1843,6 +1827,7 @@ public partial class FormEBSD : CaptureFormBase
                     }
                 }
             }
+            #endregion
         }
         graphicsBox.Refresh();
     }
@@ -1907,7 +1892,7 @@ public partial class FormEBSD : CaptureFormBase
             if ((uint)i < (uint)DetectorDivision && (uint)j < (uint)DetectorDivision)
             {
                 //
-                DrawKikuchiLine(null, i, j);
+                DrawOverlays(null, i, j);
                 DrawGeometry(i, j);
                 CalcStatistics(i, j);
             }
@@ -2006,7 +1991,7 @@ public partial class FormEBSD : CaptureFormBase
         var reportStep = reportProgress == null ? int.MaxValue : Math.Max(1, loop / 100); // (260327Ch) UI へは 1% ごとにだけ流す
         int completed = 0;
 
-        System.Threading.Tasks.Parallel.For(0, loop,
+        Parallel.For(0, loop,
             () => new List<(double Depth, V3 Vec, PointD Position, double Energy, double TotalEnergyLoss, bool HasLastInelasticEvent, double LastInelasticDepth, double LastInelasticEnergyBeforeLoss, double LastInelasticEnergyAfterLoss, V3 LastInelasticDirection)>(256),
             (index, state, localList) =>
             {
@@ -2107,8 +2092,7 @@ public partial class FormEBSD : CaptureFormBase
             //エネルギー分布を描画 ここから
             //if(false)
             {
-                double step = 0.25;//kev単位
-                double lower = 0, upper = (energy - EnergyThreshold);
+                double step = 0.25, lower = 0, upper = energy - EnergyThreshold;//kev単位
                 int nBuckets = (int)((upper - lower) / step);
                 var histogram = new MathNet.Numerics.Statistics.Histogram(bse2.Select(e => energy - e.Energy), nBuckets, lower, lower + nBuckets * step);
                 var pts = new List<PointD>();
@@ -2128,8 +2112,7 @@ public partial class FormEBSD : CaptureFormBase
                 //var depths = bse2.Select(e1 => 1000.0 * e1.Max(e2 => sinTilt * e2.p.Y - cosTilt * e2.p.Z));
                 // var depths = bse2.Select(e => e.Depth); // (260401Ch) 旧挙動: 脱出時(または停止時)の深さをそのまま集計していた
                 var depths = bse2.Select(e => e.HasLastInelasticEvent ? e.LastInelasticDepth : e.Depth); // (260401Ch) MasterPattern 重み付けと同じく、可能なら最後の非弾性散乱深さを深さ分布に使う
-                double lower = 0, upper = depths.Max();
-                double step = 1;//nm単位
+                double step = 1, lower = 0, upper = depths.Max();//nm単位
                 int nBuckets = (int)((upper - lower) / step + 1);
                 var histogram = new MathNet.Numerics.Statistics.Histogram(depths, nBuckets, lower, lower + nBuckets * step);
                 var pts = new List<PointD>();
@@ -2302,37 +2285,10 @@ public partial class FormEBSD : CaptureFormBase
     //}
     #endregion
 
-    private void AdjustImage()
-    {
-        if (Pbmp == null)
-            return;
-        var colorScale = comboBoxScale.SelectedIndex;
-        //GrayかColorか
-        if (colorScale == 0)
-            Pbmp.SetScaleGray();
-        else if (colorScale == 1)
-            Pbmp.SetScaleColdWarm();
-        else if (colorScale == 2)
-            Pbmp.SetScaleSpectrum();
-        else
-            Pbmp.SetScaleFire();
-
-        //Negativeかどうか
-        Pbmp.IsNegative = comboBoxGradient.SelectedIndex == 1;
-
-        var maxRatio = (double)trackBarIntensityBrightnessMax.Value / trackBarIntensityBrightnessMax.Maximum;
-        var minRatio = (double)trackBarIntensityBrightnessMin.Value / trackBarIntensityBrightnessMin.Maximum;
-
-        double max = Pbmp.SrcValuesGray.Max(), min = Pbmp.SrcValuesGray.Min(), dev = max - min;
-
-        Pbmp.MaxValue = dev * maxRatio + min;
-        Pbmp.MinValue = dev * minRatio + min;
-
-        // Draw(); // (260331Ch) 旧実装: DrawEBSD -> AdjustImage -> DrawEBSD の再入を招きやすかった
-        DrawKikuchiLine();
-        DrawGeometry();
-        Application.DoEvents();
-    }
+    //private void AdjustImage()
+    //{
+     
+    //}
 
 
     #endregion
@@ -2349,7 +2305,7 @@ public partial class FormEBSD : CaptureFormBase
         textBoxEnergy.Text = EnergyArray[trackBarOutputEnergy.Value].ToString();
         Draw();
     }
-    private void trackBarIntensityBrightnessMax_ValueChanged(object sender, EventArgs e) => AdjustImage();
+    private void trackBarIntensityBrightnessMax_ValueChanged(object sender, EventArgs e) => Draw();
 
     #endregion
 
@@ -2358,9 +2314,6 @@ public partial class FormEBSD : CaptureFormBase
         if (Pbmp != null)
             Clipboard.SetDataObject(Pbmp.GetImage());
     }
-
-
-
 
 
     #region グラフをコピー
@@ -2412,15 +2365,10 @@ public partial class FormEBSD : CaptureFormBase
         var sum1 = cry.Atoms.Sum(a => AtomStatic.AtomicWeight(a.AtomicNumber) * a.Multiplicity * a.AtomicNumber);
         var sum2 = cry.Atoms.Sum(a => AtomStatic.AtomicWeight(a.AtomicNumber) * a.Multiplicity);
         var sum3 = cry.Atoms.Sum(a => a.Multiplicity);
-        double z = sum1 / sum2;
-        double a = sum2 / sum3;
-        double rho = cry.Density;
+        double z = sum1 / sum2, a = sum2 / sum3, rho = cry.Density;
         var valenceElectronCount = MonteCarlo.EstimateAverageValenceElectronCount(
             cry.Atoms.Select(atom => (atom.AtomicNumber, AtomStatic.AtomicWeight(atom.AtomicNumber) * atom.Multiplicity))); // (260331Ch)
-        double energy = Voltage;
-        double sampleTilt = SmpTilt, detectorTilt = DetTilt;
-        double detectorY = DetY, detectorZ = DetZ, detectorR = DetR;
-        double energyThreshold = EnergyThreshold;
+        double energy = Voltage, sampleTilt = SmpTilt, detectorTilt = DetTilt, detectorY = DetY, detectorZ = DetZ, detectorR = DetR, energyThreshold = EnergyThreshold;
         var loop = BackscatterMonteCarloLoopCount;
         var sampleRotation = M3.CreateRotationX(sampleTilt);
         var monteCarloStopwatch = Stopwatch.StartNew();
@@ -2444,7 +2392,7 @@ public partial class FormEBSD : CaptureFormBase
             var bses = RunBackscatterMonteCarlo(monte, loop, energyThreshold, sampleRotation, (completed, total) =>
                 progress.Report(((int)Math.Round(90.0 * completed / total), "MonteCarlo"))); // (260327Ch) fitting 分を残して 90% まで使う
             if (bses.Length == 0)
-                return (Bses: bses, Distribution: (EbsdMonteCarloDistribution)null, Energies: Array.Empty<double>(), Depths: Array.Empty<double>(),
+                return (Bses: bses, Distribution: (EbsdMonteCarloDistribution)null, Energies: [], Depths: [],
                     energyStart: 0.0, energyEnd: 0.0, energyStep: 0.0, depthStart: 0.0, depthEnd: 0.0, depthStep: 0.0);
 
             progress.Report((92, "Analyzing Monte Carlo ranges"));
@@ -2568,8 +2516,7 @@ public partial class FormEBSD : CaptureFormBase
             throw;
         }
 
-        trackBarMasterPatternEnergy.Enabled = false;
-        trackBarMasterPatternDepth.Enabled = false;
+        trackBarMasterPatternEnergy.Enabled = trackBarMasterPatternDepth.Enabled = false;
         buttonStop.Visible = true;
         toolStripProgressBar.Value = 0;
         toolStripStatusLabel2.Text = "MasterPattern: Starting Bethe calculation";
@@ -2649,8 +2596,7 @@ public partial class FormEBSD : CaptureFormBase
         groupBoxOutput.Enabled = true;
         trackBarOutputEnergy.Maximum = Math.Max(0, MasterPattern.Energies.Length - 1);
         trackBarOutputThickness.Maximum = Math.Max(0, MasterPattern.Depths.Length - 1);
-        trackBarOutputEnergy.Value = 0;
-        trackBarOutputThickness.Value = 0;
+        trackBarOutputEnergy.Value = trackBarOutputThickness.Value = 0;
         textBoxEnergy.Text = MasterPattern.Energies.Length > 0 ? MasterPattern.Energies[0].ToString() : "";
         textBoxThickness.Text = MasterPattern.Depths.Length > 0 ? MasterPattern.Depths[0].ToString() : "";
 
@@ -2685,21 +2631,17 @@ public partial class FormEBSD : CaptureFormBase
     {
         if (MasterPattern == null)
         {
-            trackBarMasterPatternEnergy.Enabled = false;
-            trackBarMasterPatternDepth.Enabled = false;
-            textBoxMasterPatternEnergy.Text = "";
-            textBoxMasterPatternDepth.Text = "";
+            trackBarMasterPatternEnergy.Enabled = trackBarMasterPatternDepth.Enabled = false;
+            textBoxMasterPatternEnergy.Text = textBoxMasterPatternDepth.Text = "";
             return;
         }
 
-        trackBarMasterPatternEnergy.Minimum = 0;
-        trackBarMasterPatternDepth.Minimum = 0;
+        trackBarMasterPatternEnergy.Minimum = trackBarMasterPatternDepth.Minimum = 0;
         trackBarMasterPatternEnergy.Maximum = Math.Max(0, MasterPattern.Energies.Length - 1);
         trackBarMasterPatternDepth.Maximum = Math.Max(0, MasterPattern.Depths.Length - 1);
         trackBarMasterPatternEnergy.Enabled = MasterPattern.Energies.Length > 0;
         trackBarMasterPatternDepth.Enabled = MasterPattern.Depths.Length > 0;
-        trackBarMasterPatternEnergy.Value = 0;
-        trackBarMasterPatternDepth.Value = 0;
+        trackBarMasterPatternEnergy.Value = trackBarMasterPatternDepth.Value = 0;
         UpdateMasterPatternSliceSelectorText(); // (260321Ch) trackbar と表示テキストを同期する
     }
 
@@ -2775,8 +2717,8 @@ public partial class FormEBSD : CaptureFormBase
         }
 
         var selectedHemisphere = GetSelectedMasterPattern2DHemisphere();
-        int selectedEnergyIndex = trackBarMasterPatternEnergy.Enabled ? trackBarMasterPatternEnergy.Value : -1;
-        int selectedDepthIndex = trackBarMasterPatternDepth.Enabled ? trackBarMasterPatternDepth.Value : -1;
+        int selectedEnergyIndex = trackBarMasterPatternEnergy.Enabled ? trackBarMasterPatternEnergy.Value : -1,
+            selectedDepthIndex = trackBarMasterPatternDepth.Enabled ? trackBarMasterPatternDepth.Value : -1;
         if (selectedEnergyIndex < 0 || selectedDepthIndex < 0)
         {
             int gridSize = MasterPattern.GridSize; // (260322Ch)
@@ -2823,9 +2765,7 @@ public partial class FormEBSD : CaptureFormBase
     /// <summary>現在表示中の MasterPattern preview 値を破棄する。</summary>
     private void ResetMasterPattern3DCache() // (260322Ch) 旧名: ResetMasterPattern3DPreviewCache
     {
-        masterPattern2DValues = []; // (260322Ch)
-        masterPattern3DValuesPositive = []; // (260322Ch)
-        masterPattern3DValuesNegative = []; // (260322Ch)
+        masterPattern2DValues = masterPattern3DValuesPositive = masterPattern3DValuesNegative = []; // (260322Ch)
         masterPattern3DCacheGridSize = 0; // (260322Ch)
     }
 
@@ -2835,13 +2775,8 @@ public partial class FormEBSD : CaptureFormBase
     /// </summary>
     private void RedrawMasterPattern3DFromCache() // (260322Ch) 旧名: RedrawMasterPattern3DPreviewFromCache
     {
-        if (masterPattern2DBitmap == null || masterPattern3DCacheGridSize <= 0)
-        {
-            ClearMesh();
-            return;
-        }
-
-        if (masterPattern2DValues == null || masterPattern2DValues.Length != masterPattern3DCacheGridSize * masterPattern3DCacheGridSize)
+        if (masterPattern2DBitmap == null || masterPattern3DCacheGridSize <= 0
+            || masterPattern2DValues == null || masterPattern2DValues.Length != masterPattern3DCacheGridSize * masterPattern3DCacheGridSize)
         {
             ClearMesh();
             return;
@@ -3176,8 +3111,6 @@ public partial class FormEBSD : CaptureFormBase
     #endregion
 
     #endregion
-
-
 
     private void checkBoxWithBSEDistribution_CheckedChanged(object sender, EventArgs e)
     {

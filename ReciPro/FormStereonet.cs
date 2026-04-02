@@ -1525,12 +1525,9 @@ public partial class FormStereonet : CaptureFormBase
         Draw();
     }
 
-    private void radioButtonDelimiterNone_CheckedChanged(object sender, EventArgs e)
-    {
-        Draw();
-    }
+    private void radioButtonDelimiterNone_CheckedChanged(object sender, EventArgs e) => Draw();
 
-   
-   
+
+
 }
 

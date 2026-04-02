@@ -160,6 +160,9 @@
   <data name="checkBoxShowError.Text" xml:space="preserve">
     <value>誤差表示</value>
   </data>
+  <data name="checkBoxShowError.ToolTip" xml:space="preserve">
+    <value>誤差を表示</value>
+  </data>
   <data name="label48.Location" type="System.Drawing.Point, System.Drawing">
     <value>331, 54</value>
   </data>
@@ -172,11 +175,23 @@
   <data name="numericBoxBeta.Size" type="System.Drawing.Size, System.Drawing">
     <value>68, 27</value>
   </data>
+  <data name="numericBoxBeta.ToolTip" xml:space="preserve">
+    <value>格子定数 β (度)</value>
+  </data>
+  <data name="numericBoxBeta.ToolTip1" xml:space="preserve">
+    <value>格子定数 β (度)</value>
+  </data>
   <data name="numericBoxAlpha.Location" type="System.Drawing.Point, System.Drawing">
     <value>195, 0</value>
   </data>
   <data name="numericBoxAlpha.Size" type="System.Drawing.Size, System.Drawing">
     <value>68, 27</value>
+  </data>
+  <data name="numericBoxAlpha.ToolTip" xml:space="preserve">
+    <value>格子定数 α (度)</value>
+  </data>
+  <data name="numericBoxAlpha.ToolTip1" xml:space="preserve">
+    <value>格子定数 α (度)</value>
   </data>
   <data name="label47.Location" type="System.Drawing.Point, System.Drawing">
     <value>331, 0</value>
@@ -302,17 +317,53 @@
   <data name="comboBoxSpaceGroup.Size" type="System.Drawing.Size, System.Drawing">
     <value>179, 26</value>
   </data>
+  <data name="comboBoxSpaceGroup.ToolTip" xml:space="preserve">
+    <value>HM記法で空間群を設定</value>
+  </data>
   <data name="comboBoxPointGroup.Location" type="System.Drawing.Point, System.Drawing">
     <value>53, 45</value>
   </data>
   <data name="comboBoxPointGroup.Size" type="System.Drawing.Size, System.Drawing">
     <value>179, 26</value>
   </data>
+  <data name="comboBoxPointGroup.ToolTip" xml:space="preserve">
+    <value>HM記法で点群を設定</value>
+  </data>
+  <data name="comboBoxCrystalSystem.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="comboBoxCrystalSystem.Items" xml:space="preserve">
+    <value>不明</value>
+  </data>
+  <data name="comboBoxCrystalSystem.Items1" xml:space="preserve">
+    <value>三斜晶系</value>
+  </data>
+  <data name="comboBoxCrystalSystem.Items2" xml:space="preserve">
+    <value>単斜晶系</value>
+  </data>
+  <data name="comboBoxCrystalSystem.Items3" xml:space="preserve">
+    <value>直方晶系</value>
+  </data>
+  <data name="comboBoxCrystalSystem.Items4" xml:space="preserve">
+    <value>正方晶系</value>
+  </data>
+  <data name="comboBoxCrystalSystem.Items5" xml:space="preserve">
+    <value>三方晶系</value>
+  </data>
+  <data name="comboBoxCrystalSystem.Items6" xml:space="preserve">
+    <value>六方晶系</value>
+  </data>
+  <data name="comboBoxCrystalSystem.Items7" xml:space="preserve">
+    <value>立方晶系</value>
+  </data>
   <data name="comboBoxCrystalSystem.Location" type="System.Drawing.Point, System.Drawing">
     <value>53, 17</value>
   </data>
   <data name="comboBoxCrystalSystem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>179, 25</value>
+    <value>179, 26</value>
+  </data>
+  <data name="comboBoxCrystalSystem.ToolTip" xml:space="preserve">
+    <value>結晶系を設定</value>
   </data>
   <data name="label20.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -322,6 +373,9 @@
   </data>
   <data name="label20.Text" xml:space="preserve">
     <value>空間群</value>
+  </data>
+  <data name="label20.ToolTip" xml:space="preserve">
+    <value>HM記法で空間群を設定</value>
   </data>
   <data name="label17.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -335,6 +389,9 @@
   <data name="label17.Text" xml:space="preserve">
     <value>検索</value>
   </data>
+  <data name="label17.ToolTip" xml:space="preserve">
+    <value>空間群を検索</value>
+  </data>
   <data name="label19.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
@@ -347,8 +404,14 @@
   <data name="label19.Text" xml:space="preserve">
     <value>結晶系</value>
   </data>
+  <data name="label19.ToolTip" xml:space="preserve">
+    <value>結晶系を設定</value>
+  </data>
   <data name="textBoxSearch.Location" type="System.Drawing.Point, System.Drawing">
     <value>54, 105</value>
+  </data>
+  <data name="textBoxSearch.ToolTip" xml:space="preserve">
+    <value>空間群を検索</value>
   </data>
   <data name="label21.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -358,6 +421,9 @@
   </data>
   <data name="label21.Text" xml:space="preserve">
     <value>点群</value>
+  </data>
+  <data name="label21.ToolTip" xml:space="preserve">
+    <value>HM記法で点群を設定</value>
   </data>
   <data name="groupBoxSymmetry.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -379,44 +445,5 @@
   </data>
   <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
     <value>596, 132</value>
-  </data>
-  <data name="checkBoxShowError.ToolTip" xml:space="preserve">
-    <value>誤差を表示</value>
-  </data>
-  <data name="numericBoxBeta.ToolTip" xml:space="preserve">
-    <value>格子定数 β (度)</value>
-  </data>
-  <data name="numericBoxBeta.ToolTip1" xml:space="preserve">
-    <value>格子定数 β (度)</value>
-  </data>
-  <data name="numericBoxAlpha.ToolTip" xml:space="preserve">
-    <value>格子定数 α (度)</value>
-  </data>
-  <data name="numericBoxAlpha.ToolTip1" xml:space="preserve">
-    <value>格子定数 α (度)</value>
-  </data>
-  <data name="comboBoxSpaceGroup.ToolTip" xml:space="preserve">
-    <value>HM記法で空間群を設定</value>
-  </data>
-  <data name="comboBoxPointGroup.ToolTip" xml:space="preserve">
-    <value>HM記法で点群を設定</value>
-  </data>
-  <data name="comboBoxCrystalSystem.ToolTip" xml:space="preserve">
-    <value>結晶系を設定</value>
-  </data>
-  <data name="label20.ToolTip" xml:space="preserve">
-    <value>HM記法で空間群を設定</value>
-  </data>
-  <data name="label17.ToolTip" xml:space="preserve">
-    <value>空間群を検索</value>
-  </data>
-  <data name="label19.ToolTip" xml:space="preserve">
-    <value>結晶系を設定</value>
-  </data>
-  <data name="textBoxSearch.ToolTip" xml:space="preserve">
-    <value>空間群を検索</value>
-  </data>
-  <data name="label21.ToolTip" xml:space="preserve">
-    <value>HM記法で点群を設定</value>
   </data>
 </root>

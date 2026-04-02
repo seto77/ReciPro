@@ -1,10 +1,12 @@
-﻿using IronPython.Runtime.Operations;
+﻿#region using
+using IronPython.Runtime.Operations;
 using System;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+#endregion
 
 namespace Crystallography.Controls;
 
@@ -511,6 +513,7 @@ public partial class SymmetryControl : CaptureUserControlBase
     }
     #endregion
 
+    #region nm/Åの切り替え
     private void radioButtonNanoMeter_CheckedChanged(object sender, EventArgs e)
     {
         var (a, b, c, aErr, bErr, cErr) = (numericBoxA.Value, numericBoxB.Value, numericBoxC.Value, numericBoxAErr.Value, numericBoxBErr.Value, numericBoxCErr.Value);
@@ -537,5 +540,6 @@ public partial class SymmetryControl : CaptureUserControlBase
         }
         SkipEvent = false;
     }
+    #endregion
 }
 
