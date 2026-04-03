@@ -188,25 +188,44 @@ public static class ImageProcess
         if (index.Count == 0)
             return results;
 
-        Parallel.For(radiusPlusOne, height - radiusPlusOne, y =>
+        var neighborCount = index.Count; // (260403Ch) ThreadLocal 配列の使用長を固定値として扱う
+        var threadLocalNeighbors = new ThreadLocal<double[]>(() => null, true); // (260403Ch) 行ごとの近傍バッファをスレッドごとに再利用する
+        try
         {
-            double[] list1 = new double[index.Count];
-            int pos = y * width;
-            fixed (double* s = &pixels[pos + radiusPlusOne], d = &results[pos + radiusPlusOne])
+            Parallel.For(radiusPlusOne, height - radiusPlusOne, y =>
             {
-                double* src = s, dst = d;
-                for (int x = radiusPlusOne; x < width - radiusPlusOne; x++, src++, dst++)
+                var list1 = threadLocalNeighbors.Value ??= ArrayPool<double>.Shared.Rent(neighborCount); // (260403Ch) neighborCount はこの呼び出し中で固定
+                int pos = y * width;
+                fixed (double* s = &pixels[pos + radiusPlusOne], d = &results[pos + radiusPlusOne])
                 {
-                    for (int i = 0; i < index.Count; i++)
-                        list1[i] = *(src + index[i]);
-                    double average = list1.Average();
-                    double valiance = list1.Average(e => e * e) - average * average;
+                    double* src = s, dst = d;
+                    for (int x = radiusPlusOne; x < width - radiusPlusOne; x++, src++, dst++)
+                    {
+                        double sum = 0, sumSq = 0; // (260403Ch) ArrayPool の prefix だけを使うので LINQ 集計を外す
+                        for (int i = 0; i < neighborCount; i++)
+                        {
+                            var value = *(src + index[i]);
+                            list1[i] = value; // (260403Ch) 旧 list1 の役割を保ちつつ再利用する
+                            sum += value; // (260403Ch)
+                            sumSq += value * value; // (260403Ch)
+                        }
+                        // double average = list1.Average();
+                        // double valiance = list1.Average(e => e * e) - average * average; // (260403Ch) 変更前
+                        double average = sum / neighborCount; // (260403Ch)
+                        double valiance = sumSq / neighborCount - average * average; // (260403Ch)
 
-                    if ((*src - average) * (*src - average) > valiance * threshold * threshold)
-                        *dst = average;
+                        if ((*src - average) * (*src - average) > valiance * threshold * threshold)
+                            *dst = average;
+                    }
                 }
-            }
-        });
+            });
+        }
+        finally
+        {
+            foreach (var list1 in threadLocalNeighbors.Values.OfType<double[]>()) // (260403Ch)
+                ArrayPool<double>.Shared.Return(list1);
+            threadLocalNeighbors.Dispose(); // (260403Ch)
+        }
         return results;
     }
 

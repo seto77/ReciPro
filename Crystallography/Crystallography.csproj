@@ -4,15 +4,20 @@
     <OutputType>Library</OutputType>
     <TargetFramework>net10.0-windows10.0.26100.0</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
-    <AssemblyVersion>2026.4.1.2239</AssemblyVersion>
-    <FileVersion>2026.4.1.2239</FileVersion>
+    <AssemblyVersion>2026.4.2.1226</AssemblyVersion>
+    <FileVersion>2026.4.2.1226</FileVersion>
     <SupportedOSPlatformVersion>7.0</SupportedOSPlatformVersion>
     <Platforms>x64</Platforms>
     <PublishReadyToRun>true</PublishReadyToRun>
     <OptimizationPreference>Speed</OptimizationPreference>
+    <!--
     <TieredCompilation>false</TieredCompilation>
     <TieredCompilationQuickJit>false</TieredCompilationQuickJit>
     <TieredCompilationQuickJitForLoops>false</TieredCompilationQuickJitForLoops>
+    -->
+    <!-- (260402Ch) 起動後の実行性能を重視して tiered compilation と dynamic PGO を有効化し、QuickJit 系は既定値へ戻す -->
+    <TieredCompilation>true</TieredCompilation>
+    <TieredPGO>true</TieredPGO>
     <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
   </PropertyGroup>
 

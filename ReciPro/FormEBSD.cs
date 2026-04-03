@@ -49,7 +49,11 @@ public partial class FormEBSD : CaptureFormBase
     #endregion
 
     #region フィールド、プロパティ
+    
 
+    /// <summary>
+    /// 
+    /// </summary>
     const double Inv_PI = 1 / Math.PI;
     const double Half_PI = 0.5 * Math.PI;
 
@@ -180,7 +184,6 @@ public partial class FormEBSD : CaptureFormBase
             return;
         }
 
-        // var initialDirectory = Path.Combine(repositoryRoot, "Crystallography", "Atom", "NistElasticSampler_Original"); // (260401Ch) 旧配置
         var initialDirectory = NistElasticSamplerPchipGenerator.GetOriginalDirectory(repositoryRoot); // (260401Ch) 圧縮元の既定フォルダ解決も Crystallography 側へ寄せる
         using var openFileDialog = new OpenFileDialog()
         {
@@ -866,9 +869,11 @@ public partial class FormEBSD : CaptureFormBase
         var wtCount = isHexGrid ? totalPixels * 3 : totalPixels * 2;
         if (ebsdLookupIdx.Length != idxCount)
         {
-            ebsdLookupIdx = new int[idxCount];
-            ebsdLookupWt = new float[wtCount];
-            ebsdLookupPosZ = new bool[totalPixels];
+            //ebsdLookupIdx = new int[idxCount]; // 260402Cl 変更前
+            //ebsdLookupWt = new float[wtCount]; // 260402Cl 変更前
+            ebsdLookupIdx = GC.AllocateUninitializedArray<int>(idxCount); // 260402Cl 直後に全要素上書きされるため未初期化で確保
+            ebsdLookupWt = GC.AllocateUninitializedArray<float>(wtCount); // 260402Cl
+            ebsdLookupPosZ = GC.AllocateUninitializedArray<bool>(totalPixels); // 260402Cl
         }
 
         // 260325Cl: tilt 係数はキャッシュ済み (UpdateEbsdTiltCoeffs で更新)
@@ -1880,8 +1885,6 @@ public partial class FormEBSD : CaptureFormBase
 
     #region 菊池線 graphicsBoxのイベント (graphicsBox上のマウスイベントも含む)
 
-    //private bool MouseRangingMode = false;
-    //private Point MouseRangeStart, MouseRangeEnd;//, startAnimation;
     private void graphicsBox_MouseDown(object sender, MouseEventArgs e)
     {
         if (e.Clicks == 2)
@@ -2019,8 +2022,6 @@ public partial class FormEBSD : CaptureFormBase
     /// <param name="e"></param>
     private async void buttonBSE_Click(object sender, EventArgs e)
     {
-        // sw1.Restart(); // (260401Ch) 旧 Calc BSE はここで独自に MC を起動していた
-        // BSEs = RunBackscatterMonteCarlo(monte, loop, EnergyThreshold, smpRot); // (260401Ch) 旧実装: MasterPattern 前段とは別経路だった
         if (masterPatternEbsd.IsBuilding)
         {
             toolStripStatusLabel1.Text = "MasterPattern is running. Wait for it to finish or press Stop.";
@@ -2086,7 +2087,6 @@ public partial class FormEBSD : CaptureFormBase
             var bse2 = BSEs.AsParallel().Where(e =>
             Geometry.InsidePolygonalArea(area, e.Position)).ToArray();
             #endregion
-            // bse2 = bse2.Where(e => e[^1].e > energy - 2.5 && e[^1].e < energy - 1.5 && e.Length>2).ToArray();
 
             var count = bse2.Length;
             //エネルギー分布を描画 ここから
@@ -2109,8 +2109,6 @@ public partial class FormEBSD : CaptureFormBase
 
             //最大深さ分布　ここから
             {
-                //var depths = bse2.Select(e1 => 1000.0 * e1.Max(e2 => sinTilt * e2.p.Y - cosTilt * e2.p.Z));
-                // var depths = bse2.Select(e => e.Depth); // (260401Ch) 旧挙動: 脱出時(または停止時)の深さをそのまま集計していた
                 var depths = bse2.Select(e => e.HasLastInelasticEvent ? e.LastInelasticDepth : e.Depth); // (260401Ch) MasterPattern 重み付けと同じく、可能なら最後の非弾性散乱深さを深さ分布に使う
                 double step = 1, lower = 0, upper = depths.Max();//nm単位
                 int nBuckets = (int)((upper - lower) / step + 1);
@@ -2145,123 +2143,13 @@ public partial class FormEBSD : CaptureFormBase
 
     #region 現在のパラメータでEBSDを動力学計算
 
-    #region お蔵入り
-    //private void buttonSimulateEBSD_Click(object sender, EventArgs e)
-    //{
-    //    if (Crystal.Bethe.IsCBED_Busy) return;
-    //    if (masterPatternEbsd.IsBuilding)
-    //    {
-    //        toolStripStatusLabel1.Text = "MasterPattern is running. Wait for it to finish or press Stop.";
-    //        return;
-    //    }
-
-    //    buttonStop.Visible = true;
-    //    sw1.Restart();
-    //    //FormDiffractionSimulator.SkipDrawing = true;
-
-
-    //    //方位配列を作る 
-
-    //    var (sin, cos) = Math.SinCos(DetTilt);
-    //    var rotDet = new M4(1, 0, 0, 0,
-    //                        0, cos, -sin, DetY - DetY * cos + DetZ * sin,
-    //                        0, sin, cos, DetZ - DetY * sin - DetZ * cos,
-    //                        0, 0, 0, 1);
-
-    //    var rotSmp = M4.CreateRotationX(numericBoxSampleTilt.RadianValue + Math.PI);
-
-    //    var size = numericBoxDiskDiameter.ValueInteger;
-    //    var directions = new List<Vector3DBase>();
-    //    for (int h = 0; h < size; h++)
-    //        for (int w = 0; w < size; w++)
-    //        {
-    //            //検出器の座標
-    //            var vec = rotDet * new V4(DetR * (2 * w + 1) / size - DetR, DetR * (2 * h + 1) / size - DetR + DetY, DetZ, 1);
-    //            vec = rotSmp * vec;
-
-    //            directions.Add(new Vector3DBase(-vec.X, -vec.Y, -vec.Z).Normarize());
-    //        }
-
-    //    Directions = [.. directions];
-
-    //    var solver = BetheMethod.Solver.Eigen_Eigen;
-    //    Crystal.Bethe.EBSD_Completed += Bethe_EBSD_Completed;
-    //    Crystal.Bethe.EBSD_ProgressChanged += Bethe_EBSD_ProgressChanged;
-    //    Crystal.Bethe.RunEBSD(MaxNumOfBloch, EnergyArray, Crystal.RotationMatrix, ThicknessArray, Directions, solver, 32, checkBoxNonLocalAbsorption.Checked, checkBoxTDSBackground.Checked);
-    //}
-    #endregion
+ 
 
     #region BackgroundWorkerからのProgressChanged, Completed
 
     private bool skipProgressChangedEvent = false;
 
-    #region お蔵入り
-    //private void Bethe_EBSD_ProgressChanged(object sender, ProgressChangedEventArgs e)
-    //{
-    //    if (skipProgressChangedEvent) return;
-    //    skipProgressChangedEvent = true;
-
-    //    var current = e.ProgressPercentage;
-    //    var message = (string)e.UserState;
-    //    if (message.StartsWith("Compiling disks", StringComparison.Ordinal))
-    //    {
-    //        //if (sw1.IsRunning)
-    //        //{
-    //        //    sw1.Stop();
-    //        //    sw2.Restart();
-    //        //}
-    //        //var sec = sw2.ElapsedMilliseconds / 1000.0;
-    //        //var totalsec = sec + sw1.ElapsedMilliseconds / 1000.0;
-    //        //toolStripProgressBar.Value = current / 10;
-    //        //toolStripStatusLabel2.Text = "Compiling disks:";
-    //        //toolStripStatusLabel1.Text = "Ellapsed time : " + totalsec.ToString("f2") + " s.,  ";
-    //        //toolStripStatusLabel1.Text += $"{current / 10.0:f1} % completed,  wait for more {sec * (1000 - current) / current:f2} s.";
-    //    }
-    //    else
-    //    {
-    //        var sec = sw1.ElapsedMilliseconds / 1000.0;
-    //        var progress = (int)(100.0 * current / DivisionNumber);
-    //        if (progress <= 100)
-    //            toolStripProgressBar.Value = (int)(100.0 * current / DivisionNumber);
-    //        toolStripStatusLabel2.Text = message;
-    //        toolStripStatusLabel1.Text = "Ellapsed time : " + sec.ToString("f2") + " s.,  time/pixel: ";
-    //        toolStripStatusLabel1.Text += sec / current > 0.9 ? $"{sec / current:f2} s.,  " : $"{sec / current * 1000:f2} ms., ";
-    //        toolStripStatusLabel1.Text += $"{100.0 * current / DivisionNumber:f1} % completed,  wait for {sec * (DivisionNumber - current) / current:f2} s.";
-    //    }
-    //    Application.DoEvents();
-    //    skipProgressChangedEvent = false;
-    //}
-    #endregion
-
-    #region お蔵入り
-    //private void Bethe_EBSD_Completed(object sender, RunWorkerCompletedEventArgs e)
-    //{
-    //    buttonStop.Visible = false;
-    //    Crystal.Bethe.EBSD_Completed -= Bethe_EBSD_Completed;
-    //    Crystal.Bethe.EBSD_ProgressChanged -= Bethe_EBSD_ProgressChanged;
-    //    sw2.Stop();
-    //    var sec1 = sw1.ElapsedMilliseconds / 1000.0;
-    //    var sec2 = sw2.ElapsedMilliseconds / 1000.0;
-
-    //    if (!e.Cancelled)
-    //    {
-    //        toolStripStatusLabel2.Text = "100% completed!  ";
-    //        toolStripStatusLabel1.Text = $"Total time: {sec1 + sec2:f2} s.   ";
-    //        toolStripStatusLabel1.Text += $"Bloch problem: {sec1:f2} s. (";
-    //        toolStripStatusLabel1.Text += sec1 / DivisionNumber > 1 ? $"{sec1 / DivisionNumber:f2} s " : $"{sec1 / DivisionNumber * 1000:f2} ms ";
-    //        toolStripStatusLabel1.Text += $"/pixes).   Compiling disks: {sec2:f2} s.";
-
-    //        groupBoxOutput.Enabled = true;
-    //        generateImage();
-    //    }
-    //    else
-    //    {
-    //        toolStripStatusLabel1.Text = "Time ellapsed: " + (sec1 + sec2).ToString("f2") + " sec.,  Manually interupted.";
-    //        groupBoxOutput.Enabled = false;
-    //    }
-    //    Application.DoEvents();
-    //}
-    #endregion
+ 
 
     #endregion
 
@@ -2269,26 +2157,7 @@ public partial class FormEBSD : CaptureFormBase
 
     #region EBSD計算後、画像を生成
 
-    #region　お蔵入り
-    //private void generateImage(bool resetDisks = true)
-    //{
-    //    if (Crystal.Bethe.Disks == null || trackBarOutputEnergy.Value >= Crystal.Bethe.Disks.Length || trackBarOutputThickness.Value >= Crystal.Bethe.Disks[0].Length)
-    //        return;
-
-    //    var disk = Crystal.Bethe.Disks[trackBarOutputEnergy.Value][trackBarOutputThickness.Value];
-    //    Pbmp = new PseudoBitmap(disk.Amplitudes.Select(e => e.MagnitudeSquared()).ToArray(), numericBoxDiskDiameter.ValueInteger) { AlphaEnabled = true };
-
-    //    Pbmp.FilterAlfha = Pbmp.SrcValuesGrayOriginal.Select(e => e == 0 ? (byte)0 : (byte)255).ToList();
-
-    //    AdjustImage();
-
-    //}
-    #endregion
-
-    //private void AdjustImage()
-    //{
-     
-    //}
+   
 
 
     #endregion
@@ -2400,8 +2269,7 @@ public partial class FormEBSD : CaptureFormBase
                 monteCarloDistributionDepthMode == MonteCarloDistributionDepthMode.LastInelasticEventDepth && e.HasLastInelasticEvent
                     ? e.LastInelasticDepth
                     : e.Depth,
-                e.Vec,
-                e.Energy)).ToArray(); // (260331Ch) P(z_last_inelastic, Ω_exit, E_exit) と P(z_last_event, Ω_exit, E_exit) を切替
+                    e.Vec, e.Energy)).ToArray(); // (260331Ch) P(z_last_inelastic, Ω_exit, E_exit) と P(z_last_event, Ω_exit, E_exit) を切替
             var (energyLoss80, depth99) = EbsdMonteCarloDistribution.ComputeRangesFromMC(bseRaw, energy); // (260327Ch)
             var grid = EbsdMonteCarloDistribution.ComputeGridFromRanges(energy, energyLoss80, depth99); // (260327Ch)
 
@@ -2410,9 +2278,7 @@ public partial class FormEBSD : CaptureFormBase
                 bseRaw, energy,
                 sampleTilt, detectorTilt, detectorY, detectorZ, detectorR,
                 grid.energies, grid.depths);
-            return (Bses: bses, Distribution: distribution, Energies: grid.energies, Depths: grid.depths,
-                energyStart: grid.energyStart, energyEnd: grid.energyEnd, energyStep: grid.energyStep,
-                depthStart: grid.depthStart, depthEnd: grid.depthEnd, depthStep: grid.depthStep);
+            return (Bses: bses, Distribution: distribution, Energies: grid.energies, Depths: grid.depths, grid.energyStart, grid.energyEnd, grid.energyStep, grid.depthStart, grid.depthEnd, grid.depthStep);
         });
 
         if (result.Bses == null || result.Bses.Length == 0)
@@ -2439,7 +2305,7 @@ public partial class FormEBSD : CaptureFormBase
 
         poleFigureControl.DrawingMode = PoleFigureControl2.DrawingModeEnum.Histogram;
         var poleFigureRotation = M3.CreateRotationX(sampleTilt);
-        poleFigureControl.Vectors = BSEs.Select(e => new V4(poleFigureRotation * e.Vec, e.Energy)).ToArray();
+        poleFigureControl.Vectors = [.. BSEs.Select(e => new V4(poleFigureRotation * e.Vec, e.Energy))];
         CalcStatistics();
 
         masterPatternMonteCarloElapsedMilliseconds = monteCarloStopwatch.ElapsedMilliseconds; // (260327Ch) MC 本体と fitting、統計更新まで含めた時間
@@ -2916,7 +2782,7 @@ public partial class FormEBSD : CaptureFormBase
         glControlMasterPattern3D.Refresh();
     }
 
-    private IEnumerable<GLObject> CreateMasterPattern3DAxisLabelObjects()
+    private List<GLObject> CreateMasterPattern3DAxisLabelObjects()
     {
         if (glControlMasterPattern3D == null || !checkBoxMasterPattern3DAxisLabel.Checked || Crystal?.A_Axis == null || Crystal.B_Axis == null || Crystal.C_Axis == null)
             return [];
@@ -2940,7 +2806,7 @@ public partial class FormEBSD : CaptureFormBase
     /// Rosca-Lambert 等積正方形の強度分布を、球面上の三角形メッシュへ変換する。
     /// 以前のようにセルごとに GLObject を分けず、半球ごとに 1 メッシュへまとめて描画負荷を下げる。
     /// </summary>
-    private static GLObject CreateMesh_Square(double[] values, int gridSize, MasterPattern.Hemisphere hemisphere, PseudoBitmap referenceBitmap)
+    private static ColoredSurfaceMesh CreateMesh_Square(double[] values, int gridSize, MasterPattern.Hemisphere hemisphere, PseudoBitmap referenceBitmap)
     {
         var previewGrid = gridSize; // (260322Ch) メッシュ描画で十分高速なので元の格子サイズをそのまま使う
         var previewValues = values; // (260322Ch)
@@ -2995,7 +2861,7 @@ public partial class FormEBSD : CaptureFormBase
     /// 六方格子の plane データを六方 Lambert 座標系のまま球面メッシュに変換する。260331Cl 追加
     /// セル中心を頂点とし、隣接 3 セルで三角形を構成する。
     /// </summary>
-    private static GLObject CreateMesh_Hex(double[] values, int gridSize, MasterPattern.Hemisphere hemisphere, PseudoBitmap referenceBitmap)
+    private static ColoredSurfaceMesh CreateMesh_Hex(double[] values, int gridSize, MasterPattern.Hemisphere hemisphere, PseudoBitmap referenceBitmap)
     {
         if (gridSize <= 1 || values == null || values.Length != gridSize * gridSize)
             return null;
@@ -3057,7 +2923,7 @@ public partial class FormEBSD : CaptureFormBase
             return null;
 
         return new ColoredSurfaceMesh(
-            positionList.ToArray(), argbList.ToArray(), indexList.ToArray(),
+            [.. positionList], [.. argbList], [.. indexList],
             new Material(C4.White) { Emission = 1f, Ambient = 0f, Diffuse = 0f, Specular = 0f, SpecularPower = 1f },
             DrawingMode.Surfaces)
         { IgnoreNormalSides = true };

@@ -2609,9 +2609,10 @@ public partial class FormDiffractionSimulator : CaptureFormBase
                         image.SetField(TiffTag.COMPRESSION, Compression.LZW);
                         //image.SetField(TiffTag.FILLORDER, FillOrder.MSB2LSB);
                         var src = disk.PBitmap.SrcValuesGray.Select(v => (float)v).ToArray();
+                        var buffer = new byte[width * sizeof(float)]; // 260402Cl ループ外に移動
                         for (int i = 0; i < height; i++)
                         {
-                            var buffer = new byte[width * sizeof(float)];
+                            //var buffer = new byte[width * sizeof(float)]; // 260402Cl 変更前
                             Buffer.BlockCopy(src, i * width * sizeof(float), buffer, 0, buffer.Length);
                             image.WriteScanline(buffer, i);
                         }
@@ -2684,9 +2685,10 @@ public partial class FormDiffractionSimulator : CaptureFormBase
             image.SetField(TiffTag.PHOTOMETRIC, Photometric.MINISBLACK);
             image.SetField(TiffTag.COMPRESSION, Compression.LZW);
             //image.SetField(TiffTag.FILLORDER, FillOrder.MSB2LSB);
+            var buffer = new byte[width * sizeof(float)]; // 260402Cl ループ外に移動
             for (int i = 0; i < height; i++)
             {
-                var buffer = new byte[width * sizeof(float)];
+                //var buffer = new byte[width * sizeof(float)]; // 260402Cl 変更前
                 Buffer.BlockCopy(imageArray, i * width * sizeof(float), buffer, 0, buffer.Length);
                 image.WriteScanline(buffer, i);
             }

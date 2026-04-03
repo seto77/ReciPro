@@ -823,11 +823,15 @@ public static partial class NativeWrapper
     #endregion
 
     #region HRTEM simulation
-    static public double[] HRTEM_Solver(double[] gPsi, double[] gVec, double[] gLenz, double[] rVec, bool quasiMode)
+    static public double[] HRTEM_Solver(double[] gPsi, double[] gVec, double[] gLenz, double[] rVec, bool quasiMode, int rVecLength = -1)
     {
         var gDim = gPsi.Length / 2;
         var lDim = gLenz.Length / gPsi.Length;
-        var rDim = rVec.Length / 2;
+        var validRVecLength = rVecLength < 0 ? rVec.Length : Math.Min(rVecLength, rVec.Length); // (260403Ch) ArrayPool バッファの前半だけを solver に渡せるようにする
+        if ((validRVecLength & 1) != 0)
+            throw new ArgumentException("rVecLength must be even.", nameof(rVecLength)); // (260403Ch)
+        // var rDim = rVec.Length / 2; // (260403Ch) 変更前
+        var rDim = validRVecLength / 2; // (260403Ch)
 
         var results = new double[lDim * rDim];
 

@@ -1573,33 +1573,24 @@ public class BetheMethod
                 }
                 finally
                 {
-                    foreach (var beams in threadLocalBeams.Values)
-                        if (beams != null)
-                            ArrayPool<Beam>.Shared.Return(beams); // (260321Ch)
-                    foreach (var gMap in threadLocalGMap.Values)
-                        if (gMap != null)
-                            ArrayPool<int>.Shared.Return(gMap); // (260321Ch)
-                    foreach (var phaseFiltered in threadLocalPhaseFiltered.Values)
-                        if (phaseFiltered != null)
-                            Shared.Return(phaseFiltered); // (260321Ch)
-                    foreach (var muBackFiltered in threadLocalMuBackFiltered.Values)
-                        if (muBackFiltered != null)
-                            Shared.Return(muBackFiltered); // (260321Ch)
-                    foreach (var eigenMatrix in threadLocalEigenMatrix.Values)
-                        if (eigenMatrix != null)
-                            Shared.Return(eigenMatrix); // (260321Ch)
-                    foreach (var psi0 in threadLocalPsi0.Values)
-                        if (psi0 != null)
-                            Shared.Return(psi0); // (260321Ch)
-                    foreach (var alpha in threadLocalAlpha.Values)
-                        if (alpha != null)
-                            Shared.Return(alpha); // (260321Ch)
-                    foreach (var eigenValues in threadLocalEigenValues.Values)
-                        if (eigenValues != null)
-                            Shared.Return(eigenValues); // (260321Ch)
-                    foreach (var eigenVectors in threadLocalEigenVectors.Values)
-                        if (eigenVectors != null)
-                            Shared.Return(eigenVectors); // (260321Ch)
+                    foreach (var beams in threadLocalBeams.Values.OfType<Beam[]>()) // (260403Ch) null 除外は OfType に寄せる
+                        ArrayPool<Beam>.Shared.Return(beams);
+                    foreach (var gMap in threadLocalGMap.Values.OfType<int[]>())
+                        ArrayPool<int>.Shared.Return(gMap);
+                    foreach (var phaseFiltered in threadLocalPhaseFiltered.Values.OfType<Complex[]>())
+                        Shared.Return(phaseFiltered);
+                    foreach (var muBackFiltered in threadLocalMuBackFiltered.Values.OfType<Complex[]>())
+                        Shared.Return(muBackFiltered);
+                    foreach (var eigenMatrix in threadLocalEigenMatrix.Values.OfType<Complex[]>())
+                        Shared.Return(eigenMatrix);
+                    foreach (var psi0 in threadLocalPsi0.Values.OfType<Complex[]>())
+                        Shared.Return(psi0);
+                    foreach (var alpha in threadLocalAlpha.Values.OfType<Complex[]>())
+                        Shared.Return(alpha);
+                    foreach (var eigenValues in threadLocalEigenValues.Values.OfType<Complex[]>())
+                        Shared.Return(eigenValues);
+                    foreach (var eigenVectors in threadLocalEigenVectors.Values.OfType<Complex[]>())
+                        Shared.Return(eigenVectors);
 
                     threadLocalBeams.Dispose(); // (260321Ch)
                     threadLocalGMap.Dispose(); // (260321Ch)
@@ -2558,25 +2549,37 @@ public class BetheMethod
         bwSTEM.ReportProgress(0, "Calculating I_elastic(Q)");//状況を報告
         Complex[,,] I_Elas = new Complex[qList.Count, tLen, dLen];
         count = 0;
-        tcP.ForAll(kIndex =>
+        var threadLocalIElas = new ThreadLocal<Complex[]>(() => null, true); // (260403Ch) 弾性項の一時配列はスレッドごとに使い回す
+        try
         {
-            foreach (var (qIndex, n, r, lenz) in CollectionsMarshal.AsSpan(list[kIndex]))
+            tcP.ForAll(kIndex =>
             {
-                var i_Elas = new Complex[tLen];
-                foreach (var (g, g_q) in g_qIndex[qIndex].Where(e => D(Beams[e.g].Vec.ToPointD + k_xy[kIndex])))
-                    for (int t = 0; t < tLen; t++)
-                    {
-                        //i_Elas[t] += 1;
-                        i_Elas[t] += tc[kIndex][t][g] * (r[0] * tc[n[0]][t][g_q] + r[1] * tc[n[1]][t][g_q] + r[2] * tc[n[2]][t][g_q] + r[3] * tc[n[3]][t][g_q]).Conjugate();
-                    }
-                lock (lockObj1)
-                    for (int t = 0; t < tLen; t++)
-                        for (int d = 0; d < dLen; d++)
-                            I_Elas[qIndex, t, d] += i_Elas[t] * lenz[d];
-            }
-            if (bwSTEM.CancellationPending) return;
-            if (Interlocked.Increment(ref count) % 10 == 0) bwSTEM.ReportProgress((int)(1E6 * count / tcPArray.Length), "Calculating I_elastic(Q)");//状況を報告
-        });
+                var iElas = threadLocalIElas.Value ??= Shared.Rent(tLen); // (260403Ch) tLen はこの呼び出し中で固定
+
+                foreach (var (qIndex, n, r, lenz) in CollectionsMarshal.AsSpan(list[kIndex]))
+                {
+                    iElas.AsSpan(0, tLen).Clear(); // (260403Ch) 使用範囲だけ初期化する
+                    foreach (var (g, g_q) in g_qIndex[qIndex].Where(e => D(Beams[e.g].Vec.ToPointD + k_xy[kIndex])))
+                        for (int t = 0; t < tLen; t++)
+                        {
+                            //i_Elas[t] += 1;
+                            iElas[t] += tc[kIndex][t][g] * (r[0] * tc[n[0]][t][g_q] + r[1] * tc[n[1]][t][g_q] + r[2] * tc[n[2]][t][g_q] + r[3] * tc[n[3]][t][g_q]).Conjugate();
+                        }
+                    lock (lockObj1)
+                        for (int t = 0; t < tLen; t++)
+                            for (int d = 0; d < dLen; d++)
+                                I_Elas[qIndex, t, d] += iElas[t] * lenz[d];
+                }
+                if (bwSTEM.CancellationPending) return;
+                if (Interlocked.Increment(ref count) % 10 == 0) bwSTEM.ReportProgress((int)(1E6 * count / tcPArray.Length), "Calculating I_elastic(Q)");//状況を報告
+            });
+        }
+        finally
+        {
+            foreach (var iElas in threadLocalIElas.Values.OfType<Complex[]>()) // (260403Ch)
+                Shared.Return(iElas);
+            threadLocalIElas.Dispose(); // (260403Ch)
+        }
         #endregion
 
         #region 非弾性散乱を計算する場合
@@ -2660,88 +2663,131 @@ public class BetheMethod
             #endregion
 
             #region メインのループ
-            for (int t = 0; t < Thicknesses.Length; t++)
+            var sumLen = qList.Count * dLen; // 260402Cl ArrayPool 化
+            var threadLocalExpKgz = new ThreadLocal<Complex[]>(() => null, true); // (260402Ch) 非 Eigen 経路の指数配列はスレッド単位で再利用する
+            var threadLocalExpLambda = new ThreadLocal<Complex[]>(() => null, true); // (260402Ch)
+            var threadLocalSumTmp = new ThreadLocal<Complex[]>(() => null, true); // (260403Ch) 非弾性項の一時配列をスレッドごとに再利用する
+            var threadLocalTcKq = new ThreadLocal<Complex[]>(() => null, true); // (260403Ch)
+            try
             {
-                var sum = new Complex[qList.Count * dLen];//ゼロ初期化が必要
-                foreach (var thickness in _thick[t])
+                for (int t = 0; t < Thicknesses.Length; t++)
                 {
-                    if (bwSTEM.CancellationPending) return;
-
-                    #region まず厚み_thick[t][_t]における透過係数_tc_kを計算
-                    //validTc = validTc.WithDegreeOfParallelism(1);
-                    validTc.ForAll(kIndex =>
+                    //var sum = new Complex[qList.Count * dLen];//ゼロ初期化が必要 // 260402Cl 変更前
+                    var sum = Shared.Rent(sumLen); // 260402Cl ArrayPool 化
+                    Array.Clear(sum, 0, sumLen); // ゼロ初期化が必要 (+=で累積)
+                    try
                     {
-                        if (EigenEnabled)
+                        foreach (var thickness in _thick[t])
                         {
-                            fixed (Complex* _tc_k = tc_k, _eVal = eVal[kIndex], _eVec = eVec[kIndex])
-                            fixed (double* _kg_z = kg_z[kIndex])
-                                NativeWrapper.GenerateTC1(bLen, thickness, _kg_z, _eVal, _eVec, _tc_k + kIndex * bLen);
-                        }
-                        else
-                        {
-                            Complex[] exp_kgz = new Complex[bLen], exp_λ = new Complex[bLen];
-                            for (int i = 0; i < bLen; i++)
+                            if (bwSTEM.CancellationPending) return;
+
+                            #region まず厚み_thick[t][_t]における透過係数_tc_kを計算
+                            //validTc = validTc.WithDegreeOfParallelism(1);
+                            validTc.ForAll(kIndex =>
                             {
-                                exp_kgz[i] = Exp(TwoPiI * kg_z[kIndex][i] * thickness);
-                                exp_λ[i] = Exp(TwoPiI * eVal[kIndex][i] * thickness);
-                                tc_k[kIndex * bLen + i] = 0;
-                            }
-
-                            for (int g = 0; g < bLen; g++)
-                                for (int j = 0; j < bLen; j++)
-                                    tc_k[kIndex * bLen + g] += eVec[kIndex][j * bLen + g] * exp_kgz[g] * exp_λ[j];
-                        }
-                    });
-                    #endregion
-
-                    tcP.ForAll(kIndex =>
-                    {
-                        Complex[] sumTmp = Shared.Rent(list[kIndex].Count * dLen), tc_kq = Shared.Rent(bLen);
-                        try
-                        {
-                            fixed (Complex* _tc_k = tc_k, _U = U, _tc_kq = tc_kq)
-                                for (int i = 0; i < list[kIndex].Count; i++)
+                                if (EigenEnabled)
                                 {
-                                    Complex tmp;
-                                    var (qIndex, n, r, lenz) = list[kIndex][i];
-                                    //厚み_thick[t][_t]における透過係数_tc_kqを計算
-                                    if (EigenEnabled)
-                                    {
-                                        NativeWrapper.BlendAndConjugate(bLen, _tc_k + n[0] * bLen, _tc_k + n[1] * bLen, _tc_k + n[2] * bLen, _tc_k + n[3] * bLen, r[0], r[1], r[2], r[3], _tc_kq);
-                                        tmp = NativeWrapper.RowVec_SqMat_ColVec(bLen, _tc_kq, _U + qIndex * bLen2, _tc_k + kIndex * bLen);
-                                    }
-                                    else
-                                    {
-                                        MathNet.Numerics.LinearAlgebra.Vector<Complex> tc_kq_vec = new DVec(bLen);
-                                        for (int j = 0; j < 4; j++)
-                                            tc_kq_vec += (new DVec(tc_k[(n[j] * bLen)..((n[j] + 1) * bLen)]).Conjugate() * r[j]);
-                                        tmp = tc_kq_vec * (new DMat(bLen, bLen, U[(qIndex * bLen2)..((qIndex + 1) * bLen2)]) * new DVec(tc_k[(kIndex * bLen)..((kIndex + 1) * bLen)]));
-                                    }
-                                    for (int dIndex = 0; dIndex < dLen; dIndex++)
-                                        sumTmp[i * dLen + dIndex] = tmp * lenz[dIndex];
+                                    fixed (Complex* _tc_k = tc_k, _eVal = eVal[kIndex], _eVec = eVec[kIndex])
+                                    fixed (double* _kg_z = kg_z[kIndex])
+                                        NativeWrapper.GenerateTC1(bLen, thickness, _kg_z, _eVal, _eVec, _tc_k + kIndex * bLen);
                                 }
-                            lock (lockObj1)
-                                for (int i = 0; i < list[kIndex].Count; i++)
-                                    for (int d = 0; d < dLen; d++)
-                                        sum[list[kIndex][i].qIndex * dLen + d] += sumTmp[i * dLen + d];
+                                else
+                                {
+                                    var expKgz = threadLocalExpKgz.Value ??= Shared.Rent(bLen); // (260403Ch) bLen はこの呼び出し中で固定
+
+                                    var expLambda = threadLocalExpLambda.Value ??= Shared.Rent(bLen); // (260403Ch) bLen はこの呼び出し中で固定
+
+                                    for (int i = 0; i < bLen; i++)
+                                    {
+                                        expKgz[i] = Exp(TwoPiI * kg_z[kIndex][i] * thickness);
+                                        expLambda[i] = Exp(TwoPiI * eVal[kIndex][i] * thickness);
+                                        tc_k[kIndex * bLen + i] = 0;
+                                    }
+
+                                    for (int g = 0; g < bLen; g++)
+                                        for (int j = 0; j < bLen; j++)
+                                            tc_k[kIndex * bLen + g] += eVec[kIndex][j * bLen + g] * expKgz[g] * expLambda[j];
+                                }
+                            });
+                            #endregion
+
+                            tcP.ForAll(kIndex =>
+                            {
+                                var sumTmpLength = list[kIndex].Count * dLen;
+                                var sumTmp = threadLocalSumTmp.Value;
+                                if (sumTmp is null || sumTmp.Length < sumTmpLength)
+                                {
+                                    if (sumTmp != null)
+                                        Shared.Return(sumTmp); // (260403Ch)
+                                    // Complex[] sumTmp = Shared.Rent(list[kIndex].Count * dLen), tc_kq = Shared.Rent(bLen); // (260403Ch) 変更前
+                                    sumTmp = Shared.Rent(sumTmpLength); // (260403Ch) スレッドごとの一時バッファを使い回す
+                                    threadLocalSumTmp.Value = sumTmp; // (260403Ch)
+                                }
+
+                                var tc_kq = threadLocalTcKq.Value ??= Shared.Rent(bLen); // (260403Ch) bLen はこの呼び出し中で固定
+
+                                fixed (Complex* _tc_k = tc_k, _U = U, _tc_kq = tc_kq)
+                                    for (int i = 0; i < list[kIndex].Count; i++)
+                                    {
+                                        Complex tmp;
+                                        var (qIndex, n, r, lenz) = list[kIndex][i];
+                                        //厚み_thick[t][_t]における透過係数_tc_kqを計算
+                                        if (EigenEnabled)
+                                        {
+                                            NativeWrapper.BlendAndConjugate(bLen, _tc_k + n[0] * bLen, _tc_k + n[1] * bLen, _tc_k + n[2] * bLen, _tc_k + n[3] * bLen, r[0], r[1], r[2], r[3], _tc_kq);
+                                            tmp = NativeWrapper.RowVec_SqMat_ColVec(bLen, _tc_kq, _U + qIndex * bLen2, _tc_k + kIndex * bLen);
+                                        }
+                                        else
+                                        {
+                                            MathNet.Numerics.LinearAlgebra.Vector<Complex> tc_kq_vec = new DVec(bLen);
+                                            for (int j = 0; j < 4; j++)
+                                                tc_kq_vec += (new DVec(tc_k[(n[j] * bLen)..((n[j] + 1) * bLen)]).Conjugate() * r[j]);
+                                            tmp = tc_kq_vec * (new DMat(bLen, bLen, U[(qIndex * bLen2)..((qIndex + 1) * bLen2)]) * new DVec(tc_k[(kIndex * bLen)..((kIndex + 1) * bLen)]));
+                                        }
+                                        for (int dIndex = 0; dIndex < dLen; dIndex++)
+                                            sumTmp[i * dLen + dIndex] = tmp * lenz[dIndex];
+                                    }
+                                lock (lockObj1)
+                                    for (int i = 0; i < list[kIndex].Count; i++)
+                                        for (int d = 0; d < dLen; d++)
+                                            sum[list[kIndex][i].qIndex * dLen + d] += sumTmp[i * dLen + d];
+
+                                if (Interlocked.Increment(ref count) % 1000 == 0) bwSTEM.ReportProgress((int)(1E6 / total * count), "Calculating I_inelastic(Q)");//状況を報告
+                            });
+
                         }
-                        finally { Shared.Return(sumTmp); Shared.Return(tc_kq); }
 
-                        if (Interlocked.Increment(ref count) % 1000 == 0) bwSTEM.ReportProgress((int)(1E6 / total * count), "Calculating I_inelastic(Q)");//状況を報告
-                    });
-
-                }
-
-                var coeff = 2 * Math.PI / kvac * tStep[t];
-                Parallel.For(0, qList.Count, qIndex =>
-                {
-                    for (int dIndex = 0; dIndex < dLen; dIndex++)
-                    {
-                        I_Inel[qIndex, t, dIndex] = sum[qIndex * dLen + dIndex] * coeff;
-                        if (t > 0)
-                            I_Inel[qIndex, t, dIndex] += I_Inel[qIndex, t - 1, dIndex];
+                        var coeff = 2 * Math.PI / kvac * tStep[t];
+                        Parallel.For(0, qList.Count, qIndex =>
+                        {
+                            for (int dIndex = 0; dIndex < dLen; dIndex++)
+                            {
+                                I_Inel[qIndex, t, dIndex] = sum[qIndex * dLen + dIndex] * coeff;
+                                if (t > 0)
+                                    I_Inel[qIndex, t, dIndex] += I_Inel[qIndex, t - 1, dIndex];
+                            }
+                        });
                     }
-                });
+                    finally
+                    {
+                        Shared.Return(sum); // (260402Ch) cancel / 例外時も返却する
+                    }
+                }
+            }
+            finally
+            {
+                foreach (var expKgz in threadLocalExpKgz.Values.OfType<Complex[]>()) // (260403Ch)
+                    Shared.Return(expKgz);
+                foreach (var expLambda in threadLocalExpLambda.Values.OfType<Complex[]>())
+                    Shared.Return(expLambda);
+                foreach (var sumTmp in threadLocalSumTmp.Values.OfType<Complex[]>())
+                    Shared.Return(sumTmp);
+                foreach (var tcKq in threadLocalTcKq.Values.OfType<Complex[]>())
+                    Shared.Return(tcKq);
+                threadLocalExpKgz.Dispose(); // (260402Ch)
+                threadLocalExpLambda.Dispose(); // (260402Ch)
+                threadLocalSumTmp.Dispose(); // (260403Ch)
+                threadLocalTcKq.Dispose(); // (260403Ch)
             }
 
             #endregion
@@ -2901,18 +2947,18 @@ public class BetheMethod
         {
             //単位格子軸の0.5倍だけシフトさせておく
             var r = new PointD(-(n % width - cX) * res + shift.X, -(height - 1 - n / width - cY) * res + shift.Y);
-            var sums = new Complex[2];
+            //var sums = new Complex[2]; // 260402Cl 変更前
+            Complex sumCry = default, sumTher = default; // 260402Cl ヒープ割り当て廃止
             foreach (var (uCry, uTher, vec) in gList)
             {
                 var exp = Exp(vec * r * TwoPiI);
-                sums[0] += uCry * exp;
-                sums[1] += uTher * exp;
+                sumCry += uCry * exp; // 260402Cl sums[0] → sumCry
+                sumTher += uTher * exp; // 260402Cl sums[1] → sumTher
             }
-            for (var i = 0; i < sums.Length; i++)
-            {
-                images[i * 2][n] = phase ? sums[i].Magnitude : sums[i].Real;
-                images[i * 2 + 1][n] = phase ? sums[i].Phase : sums[i].Imaginary;
-            }
+            images[0][n] = phase ? sumCry.Magnitude : sumCry.Real; // 260402Cl 展開
+            images[1][n] = phase ? sumCry.Phase : sumCry.Imaginary;
+            images[2][n] = phase ? sumTher.Magnitude : sumTher.Real;
+            images[3][n] = phase ? sumTher.Phase : sumTher.Imaginary;
         });
         return images;
     }
@@ -3010,36 +3056,73 @@ public class BetheMethod
             {
                 var (gPsi, gVec, gLenz) = NativeWrapper.HRTEM_Helper(gList);
                 int divTotal = Environment.ProcessorCount * 4, step = width * height / divTotal;
-                Parallel.For(0, divTotal, div =>
+                var threadLocalRVec = new ThreadLocal<double[]>(() => null, true); // (260403Ch) ネイティブ solver 入力座標をスレッドごとに再利用する
+                try
                 {
-                    int start = step * div, count = div == divTotal - 1 ? width * height - start : step;
-                    var rVec = ValueEnumerable.Range(start, count).SelectMany(n => new[] { res * (n % width - cX) + shift.X, -res * (n / width - cY) + shift.Y }).ToArray();//Y座標はマイナス。
-                    var results = NativeWrapper.HRTEM_Solver(gPsi, gVec, gLenz, rVec, quasiMode);
-                    for (var i = 0; i < defLen; i++)
-                        //260317Cl 変更: Array.Copy → Span.CopyTo
-                        results.AsSpan(i * count, count).CopyTo(_images[t][i].AsSpan(start, count));
-                });
+                    Parallel.For(0, divTotal, div =>
+                    {
+                        int start = step * div, count = div == divTotal - 1 ? width * height - start : step;
+                        int vecLength = count * 2;
+                        var rVec = threadLocalRVec.Value;
+                        if (rVec is null || rVec.Length < vecLength)
+                        {
+                            if (rVec != null)
+                                ArrayPool<double>.Shared.Return(rVec); // (260403Ch)
+                            // var rVec = ValueEnumerable.Range(start, count).SelectMany(n => new[] { res * (n % width - cX) + shift.X, -res * (n / width - cY) + shift.Y }).ToArray(); // (260403Ch) 変更前
+                            rVec = ArrayPool<double>.Shared.Rent(vecLength); // (260403Ch)
+                            threadLocalRVec.Value = rVec; // (260403Ch)
+                        }
+                        for (int n = 0; n < count; n++)
+                        {
+                            int pixel = start + n;
+                            int offset = n * 2;
+                            rVec[offset] = res * (pixel % width - cX) + shift.X; // (260403Ch) Y座標はマイナス。
+                            rVec[offset + 1] = -res * (pixel / width - cY) + shift.Y; // (260403Ch)
+                        }
+                        var results = NativeWrapper.HRTEM_Solver(gPsi, gVec, gLenz, rVec, quasiMode, vecLength); // (260403Ch) ArrayPool バッファの使用長を明示する
+                        for (var i = 0; i < defLen; i++)
+                            //260317Cl 変更: Array.Copy → Span.CopyTo
+                            results.AsSpan(i * count, count).CopyTo(_images[t][i].AsSpan(start, count));
+                    });
+                }
+                finally
+                {
+                    foreach (var rVec in threadLocalRVec.Values.OfType<double[]>()) // (260403Ch)
+                        ArrayPool<double>.Shared.Return(rVec);
+                    threadLocalRVec.Dispose(); // (260403Ch)
+                }
             }
             else//Managed
             {
-                Parallel.For(0, width * height, n =>
+                var threadLocalSums = new ThreadLocal<Complex[]>(() => null, true); // (260402Ch) ピクセルごとの一時配列をスレッド単位で再利用する
+                try
                 {
-                    PointD r = new((n % width - cX) * res + shift.X, -(n / width - cY) * res + shift.Y), _vec = new(double.NaN, double.NaN);//Y座標はマイナス。
-                    var sums = new Complex[defLen];
-                    var exp = new Complex(0, 0);
-                    foreach (var (Psi, Vec, Lenz) in gList)
+                    Parallel.For(0, width * height, n =>
                     {
-                        if (_vec != Vec)
-                            exp = Exp(Vec * r * TwoPiI);
+                        PointD r = new((n % width - cX) * res + shift.X, -(n / width - cY) * res + shift.Y), _vec = new(double.NaN, double.NaN);//Y座標はマイナス。
+                        var sums = threadLocalSums.Value ??= Shared.Rent(defLen); // (260403Ch) defLen はこの呼び出し中で固定
+                        sums.AsSpan(0, defLen).Clear(); // (260402Ch) 各画素の加算前に使用範囲だけ初期化する
+                        var exp = new Complex(0, 0);
+                        foreach (var (Psi, Vec, Lenz) in gList)
+                        {
+                            if (_vec != Vec)
+                                exp = Exp(Vec * r * TwoPiI);
 
-                        for (var (i, f) = (0, Psi * exp); i < defLen; i++)
-                            sums[i] += f * Lenz[i];
+                            for (var (i, f) = (0, Psi * exp); i < defLen; i++)
+                                sums[i] += f * Lenz[i];
 
-                        _vec = Vec;
-                    }
-                    for (var i = 0; i < defLen; i++)
-                        _images[t][i][n] = quasiMode ? sums[i].MagnitudeSquared() : Math.Abs(sums[i].Real);
-                });
+                            _vec = Vec;
+                        }
+                        for (var i = 0; i < defLen; i++)
+                            _images[t][i][n] = quasiMode ? sums[i].MagnitudeSquared() : Math.Abs(sums[i].Real);
+                    });
+                }
+                finally
+                {
+                    foreach (var sums in threadLocalSums.Values.OfType<Complex[]>()) // (260403Ch)
+                        Shared.Return(sums);
+                    threadLocalSums.Dispose(); // (260402Ch)
+                }
             }
             //return images;
         }

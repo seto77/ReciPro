@@ -326,8 +326,10 @@ public class EBSD
                 {
                     var amplitudes = disk.Amplitudes;
                     var hemisphereLength = request.GridSize * request.GridSize;
-                    var positivePlane = new float[hemisphereLength];
-                    var negativePlane = new float[hemisphereLength];
+                    // var positivePlane = new float[hemisphereLength]; // (260402Ch) 変更前
+                    // var negativePlane = new float[hemisphereLength]; // (260402Ch) 変更前
+                    var positivePlane = GC.AllocateUninitializedArray<float>(hemisphereLength); // (260402Ch) 直後に全要素を書き切るため未初期化で確保
+                    var negativePlane = GC.AllocateUninitializedArray<float>(hemisphereLength); // (260402Ch)
                     for (int i = 0; i < hemisphereLength; i++)
                     {
                         var amplitude = i < amplitudes.Length ? amplitudes[i] : Complex.Zero; // (260321Ch) 念のため不足時は 0 で埋める
@@ -1280,7 +1282,8 @@ public sealed class MasterPattern
         int N = (gridSize - 1) / 2;
         double extent = Hex_preg; // 六方格子の外接円半径 = 最大対角線の半分
         double step = 2.0 * extent / gridSize;
-        var image = new float[gridSize * gridSize];
+        // var image = new float[gridSize * gridSize]; // (260402Ch) 変更前
+        var image = GC.AllocateUninitializedArray<float>(gridSize * gridSize); // (260402Ch) 全画素を補間結果で埋める
         for (int py = 0; py < gridSize; py++)
             for (int px = 0; px < gridSize; px++)
             {
@@ -1300,7 +1303,8 @@ public sealed class MasterPattern
         if (hexPlane == null || hexPlane.Length != gridSize * gridSize || gridSize <= 1)
             return new float[gridSize * gridSize];
 
-        var squarePlane = new float[gridSize * gridSize];
+        // var squarePlane = new float[gridSize * gridSize]; // (260402Ch) 変更前
+        var squarePlane = GC.AllocateUninitializedArray<float>(gridSize * gridSize); // (260402Ch) 全画素を書き切る
         double step = 2.0 * SquareLimit / gridSize;
         for (int h = 0; h < gridSize; h++)
             for (int w = 0; w < gridSize; w++)

@@ -709,16 +709,35 @@ public partial class FormStructureViewer : CaptureFormBase
             var cArray = dic1[bond.Element1];
             var vArray = dic1[bond.Element2];
 
-            Parallel.ForEach(cArray.Select(o => o.Key).Distinct(), ckey =>
+            //260403Cl key→(Start,End)の辞書を事前構築 (FindIndex/FindLastIndexの線形検索を置換)
+            var vRanges = new Dictionary<int, (int Start, int End)>();
+            for (int i = 0; i < vArray.Length;)
             {
-                //検索対象の頂点のインデックスを作成
-                var vertexIndices = neighborKeys
-                .Select(key => key + ckey)
-                .Select(key => (Start: Array.FindIndex(vArray, d => d.Key == key), End: Array.FindLastIndex(vArray, d => d.Key == key)))
-                .Where(d => d.Start >= 0).SelectMany(d => Enumerable.Range(d.Start, d.End - d.Start + 1)).ToArray();
+                int key = vArray[i].Key, s = i;
+                while (i < vArray.Length && vArray[i].Key == key) i++;
+                vRanges[key] = (s, i);
+            }
+            var cRanges = new Dictionary<int, (int Start, int End)>();
+            for (int i = 0; i < cArray.Length;)
+            {
+                int key = cArray[i].Key, s = i;
+                while (i < cArray.Length && cArray[i].Key == key) i++;
+                cRanges[key] = (s, i);
+            }
 
-                int start = cArray.FindIndex(d => d.Key == ckey), end = Array.FindLastIndex(cArray, d => d.Key == ckey) + 1;
-                for (int i = start; i < end; i++)
+            Parallel.ForEach(cRanges.Keys, ckey =>
+            {
+                //260403Cl 検索対象の頂点のインデックスを作成 (辞書ルックアップに変更)
+                var vertexList = new List<int>();
+                foreach (var nk in neighborKeys)
+                    if (vRanges.TryGetValue(nk + ckey, out var vr))
+                        for (int j = vr.Start; j < vr.End; j++)
+                            vertexList.Add(j);
+                var vertexIndices = vertexList.ToArray();
+
+                var (cStart, cEnd) = cRanges[ckey]; //260403Cl 辞書ルックアップに変更
+                //int start = cArray.FindIndex(d => d.Key == ckey), end = Array.FindLastIndex(cArray, d => d.Key == ckey) + 1;
+                for (int i = cStart; i < cEnd; i++)
                 {
                     //ボンド長さの条件を満たす頂点インデックスを検索
                     var vIndices = vertexIndices.Where(j => within((vArray[j].O - cArray[i].O).LengthSquared, max2, min2)).ToArray();
@@ -804,10 +823,14 @@ public partial class FormStructureViewer : CaptureFormBase
         //ボンドを構成する原子だが、描画範囲外のため孤立してしまった原子を削除
 
         //ボンドを構成するvertex側の原子のシリアル番号を取得
+        //var vertexSerials = GLObjectsP //260403Cl ToHashSetに変更 (線形検索→O(1)ルックアップ)
+        //    .Where(obj => obj is Cylinder)
+        //    .SelectMany(obj => new[] { (obj.Tag as bondID).SerialNumber1, (obj.Tag as bondID).SerialNumber2 })
+        //    .Distinct().ToArray();
         var vertexSerials = GLObjectsP
             .Where(obj => obj is Cylinder)
             .SelectMany(obj => new[] { (obj.Tag as bondID).SerialNumber1, (obj.Tag as bondID).SerialNumber2 })
-            .Distinct().ToArray();
+            .ToHashSet();
 
         //範囲外であり、なおかつ、上のシリアル番号に含まれない原子を取得
         int n = 0;
