@@ -701,6 +701,8 @@ public partial class FormDiffractionSimulator : CaptureFormBase
         #region ガウス関数で描画するローカル関数
         //int bgR = colorControlBackGround.Color.R, bgG = colorControlBackGround.Color.G, bgB = colorControlBackGround.Color.B;
         int gradation = 32;
+        var reuseBrush = new SolidBrush(Color.Black); //260403Cl GDIオブジェクト再利用
+        var reusePath = new GraphicsPath(); //260403Cl GDIオブジェクト再利用
         double fillCircleSpread(Color c, PointD pt, double intensity, double sigma)
         {
             //計算する二次元ガウス関数は、 f(x,y) = intensity/ (2 pi sigma^2) *  e^{- (x^2+y^2) /2/sigma^2)
@@ -739,17 +741,18 @@ public partial class FormDiffractionSimulator : CaptureFormBase
                     alpha = 255;
                 }
 
-                var brush = new SolidBrush(Color.FromArgb(alpha, c));
+                //var brush = new SolidBrush(Color.FromArgb(alpha, c)); //260403Cl Brush/Path再利用に変更
+                reuseBrush.Color = Color.FromArgb(alpha, c);
                 if (j < gradation - 1 && radius2 > 0)
                 {
-                    var path = new GraphicsPath();
-                    path.AddArc((float)(pt.X - radius1), (float)(pt.Y - radius1), (float)(radius1 * 2), (float)(radius1 * 2), 0, 360);
-                    path.AddArc((float)(pt.X - radius2), (float)(pt.Y - radius2), (float)(radius2 * 2), (float)(radius2 * 2), 0, -360);
-                    graphics.FillPath(brush, path);
+                    reusePath.Reset(); //260403Cl 再利用
+                    reusePath.AddArc((float)(pt.X - radius1), (float)(pt.Y - radius1), (float)(radius1 * 2), (float)(radius1 * 2), 0, 360);
+                    reusePath.AddArc((float)(pt.X - radius2), (float)(pt.Y - radius2), (float)(radius2 * 2), (float)(radius2 * 2), 0, -360);
+                    graphics.FillPath(reuseBrush, reusePath);
                 }
                 else
                 {
-                    graphics.FillEllipse(brush, (float)(pt.X - radius1), (float)(pt.Y - radius1), (float)(2 * radius1), (float)(2 * radius1));
+                    graphics.FillEllipse(reuseBrush, (float)(pt.X - radius1), (float)(pt.Y - radius1), (float)(2 * radius1), (float)(2 * radius1));
                     return maxRadius;
                 }
             }
@@ -803,8 +806,11 @@ public partial class FormDiffractionSimulator : CaptureFormBase
                     .Select(g => new Vector3D(crystal.RotationMatrix * g) { Index = g.Index, Flag1 = true, RelativeIntensity = g.RelativeIntensity, Text = g.Text })//回転させて新しいリストを作る
                     .Where(g => g.Length2 - 2 * g.Z * maxEwaldR < 0 && g.Z2 / g.Length2 > minCosTheta2).ToList();//限界エワルド球に入り、後方散乱して検出器に入る可能性のある逆格子だけを選別
                 if (gVector.Count == 0) return null;
-                //indexだけを保存するリストも作成しておく (高速化のため)
-                var indexList = gVector.Select(g => g.Index).ToList();
+                //260403Cl indexから位置へのDictionaryを構築 (IndexOfの線形検索→O(1)ルックアップ)
+                //var indexList = gVector.Select(g => g.Index).ToList();
+                var indexDict = new Dictionary<(int h, int k, int l), int>();
+                for (int i = 0; i < gVector.Count; i++)
+                    indexDict.TryAdd(gVector[i].Index, i);
                 //原点を通る直線状にある逆格子ベクトルをまとめる
                 Parallel.ForEach(gVector, g =>
                 {
@@ -814,8 +820,7 @@ public partial class FormDiffractionSimulator : CaptureFormBase
                         int h = g.Index.h / n, k = g.Index.k / n, l = g.Index.l / n;//既約なh,k,lを計算
                         for (int m = 1; m < n; m++)//既約なh,k,lが存在するとは限らないので、h,k,lを整数倍して探索する
                         {
-                            var j = indexList.IndexOf((m * h, m * k, m * l));
-                            if (j != -1)
+                            if (indexDict.TryGetValue((m * h, m * k, m * l), out var j)) //260403Cl Dictionary化
                             {
                                 g.Flag1 = false;
                                 lock (lockObj)
@@ -1542,25 +1547,27 @@ public partial class FormDiffractionSimulator : CaptureFormBase
 
                 var latticeType = crystal.Symmetry.LatticeTypeStr;
 
+                //260403Cl 3回のWhere走査を1回のforeachに統合
                 var noConditionColor = formMain.Crystals.Length == 1 && !checkBoxUseCrystalColor.Checked ? colorControlNoCondition.Color.ToArgb() : crystal.Argb;
-                foreach (var gtemp in crystal.VectorOfG.Where(g => g.Extinction.Length == 0))
-                {
-                    gtemp.Flag1 = true;
-                    gtemp.Argb = noConditionColor;
-                }
-
                 var latticeColor = colorControlForbiddenLattice.Color.ToArgb();
-                foreach (var gtemp in crystal.VectorOfG.Where(g => g.Extinction.Length > 0 && g.Extinction[0] == latticeType))
-                {
-                    gtemp.Flag1 = !checkBoxExtinctionLattice.Checked;
-                    gtemp.Argb = latticeColor;
-                }
-
                 var screwGlideColor = colorControlScrewGlide.Color.ToArgb();
-                foreach (var gtemp in crystal.VectorOfG.Where(g => g.Extinction.Length > 0 && g.Extinction[0] != latticeType))
+                foreach (var gtemp in crystal.VectorOfG)
                 {
-                    gtemp.Flag1 = !checkBoxExtinctionAll.Checked;
-                    gtemp.Argb = screwGlideColor;
+                    if (gtemp.Extinction.Length == 0)
+                    {
+                        gtemp.Flag1 = true;
+                        gtemp.Argb = noConditionColor;
+                    }
+                    else if (gtemp.Extinction[0] == latticeType)
+                    {
+                        gtemp.Flag1 = !checkBoxExtinctionLattice.Checked;
+                        gtemp.Argb = latticeColor;
+                    }
+                    else
+                    {
+                        gtemp.Flag1 = !checkBoxExtinctionAll.Checked;
+                        gtemp.Argb = screwGlideColor;
+                    }
                 }
             }
         }
