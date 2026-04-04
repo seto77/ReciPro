@@ -32,7 +32,6 @@ namespace Crystallography.Controls
 
         #endregion
 
-        // (260322Ch) WFO1000: Microsoft ??????????????????? ???????????
         [System.ComponentModel.Browsable(false)]
         [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
         public string[] HelpItems
@@ -204,19 +203,19 @@ namespace Crystallography.Controls
 
         public void SelectMacro(string macroName)
         {
-            if (listBoxMacro.Items.Cast<macro>().Any(m => m.Name == macroName))
-                listBoxMacro.SelectedIndex = listBoxMacro.Items.IndexOf(listBoxMacro.Items.Cast<macro>().First(m => m.Name == macroName));
+            if (listBoxMacro.Items.Cast<Macro>().Any(m => m.Name == macroName))
+                listBoxMacro.SelectedIndex = listBoxMacro.Items.IndexOf(listBoxMacro.Items.Cast<Macro>().First(m => m.Name == macroName));
         }
 
         public void RunMacroName(string macroName, bool _stepByStepMode = false)
         {
             stepByStepMode = _stepByStepMode;
-            if (!listBoxMacro.Items.Cast<macro>().Any(m => m.Name == macroName))
+            if (!listBoxMacro.Items.Cast<Macro>().Any(m => m.Name == macroName))
             {
                 MessageBox.Show("The macro name is not found");
                 return;
             }
-            RunMacro(listBoxMacro.Items.Cast<macro>().First(m => m.Name == macroName).Body);
+            RunMacro(listBoxMacro.Items.Cast<Macro>().First(m => m.Name == macroName).Body);
         }
 
         public void RunMacro() => RunMacro(exRichTextBox.Text);
@@ -329,17 +328,17 @@ namespace Crystallography.Controls
         #region リストボックス操作
         private void buttonAddMacro_Click(object sender, EventArgs e)
         {
-            var m = new macro(textBoxMacroName.Text, exRichTextBox.Text);
+            var m = new Macro(textBoxMacroName.Text, exRichTextBox.Text);
             var items = listBoxMacro.Items;
             if (m.Name.Length == 0)
             {
                 MessageBox.Show("Please input macro name", "Alert");
                 return;
             }
-            else if (listBoxMacro.Items.Cast<macro>().Any(o => o.Name == m.Name))
+            else if (listBoxMacro.Items.Cast<Macro>().Any(o => o.Name == m.Name))
             {
                 if (MessageBox.Show("The name already exists. Do you replace the macro?", "Alert", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                    items[items.IndexOf(items.Cast<macro>().First(item => item.Name == m.Name))] = m;
+                    items[items.IndexOf(items.Cast<Macro>().First(item => item.Name == m.Name))] = m;
                 setMenuItemOfMain();
             }
             else
@@ -353,7 +352,7 @@ namespace Crystallography.Controls
         {
             if (listBoxMacro.SelectedIndex >= 0)
             {
-                listBoxMacro.Items[listBoxMacro.SelectedIndex] = new macro(textBoxMacroName.Text, exRichTextBox.Text);
+                listBoxMacro.Items[listBoxMacro.SelectedIndex] = new Macro(textBoxMacroName.Text, exRichTextBox.Text);
                 setMenuItemOfMain();
             }
         }
@@ -381,7 +380,7 @@ namespace Crystallography.Controls
             if (listBoxMacro.SelectedIndex < 0)
                 return;
 
-            var value = (macro)listBoxMacro.SelectedItem;
+            var value = (Macro)listBoxMacro.SelectedItem;
             if (textBoxMacroName.Text != value.Name)
                 textBoxMacroName.Text = value.Name;
             if (exRichTextBox.Text != value.Body)
@@ -420,9 +419,9 @@ namespace Crystallography.Controls
             //CTRL+S 上書き
             if (e.Modifiers == Keys.Control & e.KeyCode == Keys.S)
             {
-                if (listBoxMacro.SelectedIndex >= 0 && textBoxMacroName.Text == ((macro)listBoxMacro.SelectedItem).Name)
+                if (listBoxMacro.SelectedIndex >= 0 && textBoxMacroName.Text == ((Macro)listBoxMacro.SelectedItem).Name)
                 {
-                    listBoxMacro.Items[listBoxMacro.SelectedIndex] = new macro(textBoxMacroName.Text, exRichTextBox.Text);
+                    listBoxMacro.Items[listBoxMacro.SelectedIndex] = new Macro(textBoxMacroName.Text, exRichTextBox.Text);
                 }
             }
             //F10 次のステップに進む
@@ -435,7 +434,7 @@ namespace Crystallography.Controls
         {
             var list = new List<string>();
             for (int i = 0; i < listBoxMacro.Items.Count; i++)
-                list.Add(((macro)listBoxMacro.Items[i]).Name);
+                list.Add(((Macro)listBoxMacro.Items[i]).Name);
             obj.SetMacroToMenu(list.ToArray());
         }
 
@@ -443,7 +442,7 @@ namespace Crystallography.Controls
         {
             listBoxMacro.Items.Clear();
             for (int i = 0; i < list.Length; i++)
-                listBoxMacro.Items.Add(new macro(list[i].Key, list[i].Value));
+                listBoxMacro.Items.Add(new Macro(list[i].Key, list[i].Value));
         }
 
         [System.ComponentModel.Browsable(false)]
@@ -455,7 +454,7 @@ namespace Crystallography.Controls
                 var strList = new List<string>();
                 for (int i = 0; i < listBoxMacro.Items.Count; i++)
                 {
-                    var m = (macro)listBoxMacro.Items[i];
+                    var m = (Macro)listBoxMacro.Items[i];
                     strList.Add(m.Name);
                     strList.Add(m.Body);
                 }
@@ -484,13 +483,13 @@ namespace Crystallography.Controls
 
                 listBoxMacro.Items.Clear();
                 for (int i = 0; i < strList.Count; i += 2)
-                    listBoxMacro.Items.Add(new macro(strList[i], strList[i + 1]));
+                    listBoxMacro.Items.Add(new Macro(strList[i], strList[i + 1]));
                 if (listBoxMacro.Items.Count > 0)
                     setMenuItemOfMain();
             }
         }
 
-        private struct macro(string name, string body)
+        private struct Macro(string name, string body)
         {
             public string Name = name;
             public string Body = body;
