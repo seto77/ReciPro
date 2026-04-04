@@ -144,7 +144,8 @@
       <DiagnosticsFormat />
       <MinimalRebuild>
       </MinimalRebuild>
-      <AdditionalOptions>/arch:AVX /arch:AVX2 /arch:AVX512 %(AdditionalOptions)</AdditionalOptions>
+      <!-- <AdditionalOptions>/arch:AVX /arch:AVX2 /arch:AVX512 %(AdditionalOptions)</AdditionalOptions> -->
+      <AdditionalOptions>/arch:AVX /arch:AVX2 /arch:AVX512 -Wno-nonportable-include-path %(AdditionalOptions)</AdditionalOptions><!-- (260404Ch) -->
       <LanguageStandard_C>stdclatest</LanguageStandard_C>
       <BuildStlModules>true</BuildStlModules>
     </ClCompile>
@@ -200,7 +201,8 @@
       </OffloadArch>
       <DiagnosticsFormat>
       </DiagnosticsFormat>
-      <FloatingPointModel>Fast</FloatingPointModel>
+      <!-- <FloatingPointModel>Fast</FloatingPointModel> -->
+      <FloatingPointModel>Precise</FloatingPointModel><!-- (260404Ch) -->
       <UndefineAllPreprocessorDefinitions>
       </UndefineAllPreprocessorDefinitions>
       <AdditionalIncludeDirectories>Crystallography.Native;Eigen;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
@@ -212,8 +214,8 @@
       <MinimalRebuild>
       </MinimalRebuild>
       <LanguageStandard_C>stdclatest</LanguageStandard_C>
-      <AdditionalOptions>
-      </AdditionalOptions>
+      <!-- <AdditionalOptions></AdditionalOptions> -->
+      <AdditionalOptions>-Wno-nonportable-include-path %(AdditionalOptions)</AdditionalOptions><!-- (260404Ch) -->
       <CCppSupport>Cpp20Support</CCppSupport>
       <SYCLOptimization />
       <FSYCLEarlyOptimizations>Default</FSYCLEarlyOptimizations>

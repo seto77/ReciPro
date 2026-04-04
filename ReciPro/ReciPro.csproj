@@ -4,8 +4,8 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>net10.0-windows10.0.26100.0</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
-    <AssemblyVersion>2026.4.2.1226</AssemblyVersion>
-    <FileVersion>2026.4.2.1226</FileVersion>
+    <AssemblyVersion>2026.4.4.0551</AssemblyVersion>
+    <FileVersion>2026.4.4.0551</FileVersion>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <ApplicationIcon>App.ico</ApplicationIcon>
@@ -26,6 +26,8 @@
     <!-- (260402Ch) 起動後の実行性能を重視して tiered compilation と dynamic PGO を有効化し、QuickJit 系は既定値へ戻す -->
     <TieredCompilation>true</TieredCompilation>
     <TieredPGO>true</TieredPGO>
+    <!-- <NoWarn>$(NoWarn);SYSLIB0051</NoWarn> -->
+    <NoWarn>$(NoWarn);SYSLIB0051</NoWarn><!-- (260404Ch) Typed DataSet generated serialization code emits obsolete formatter warnings on net10. -->
     <!-- 260402Cl 追加: ServerGC + DATAS無効化 (ベンチマーク比較用) -->
     <ServerGarbageCollection>true</ServerGarbageCollection>
     <Platforms>x64</Platforms>

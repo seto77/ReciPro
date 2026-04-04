@@ -1,0 +1,2 @@
+# (260404Ch) Suppress known false-positive Eigen allocation warnings while keeping other default checks.
+Checks: '-clang-analyzer-unix.Malloc,-clang-analyzer-unix.MismatchedDeallocator'
