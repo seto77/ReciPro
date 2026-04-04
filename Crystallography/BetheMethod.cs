@@ -3661,12 +3661,15 @@ public class BetheMethod
 
     public class Beam
     {
-        /// <summary>指数</summary>
+        /// <summary>指数 h</summary>
         public int H => Index.H;
+        /// <summary>指数 k</summary>
         public int K => Index.K;
+
+        /// <summary>指数 l</summary>
         public int L => Index.L;
 
-        /// <summary>指数</summary>
+        /// <summary>指数 hkl</summary>
         public (int H, int K, int L) Index;
 
         /// <summary>逆格子ベクトル</summary>
@@ -3753,9 +3756,7 @@ public class BetheMethod
         public static Beam operator +(Beam b1, Beam b2) => new((b1.H + b2.H, b1.K + b2.K, b1.L + b2.L), b1.Vec + b2.Vec);
 
         public override string ToString()
-        {
-            return $"{H} {K} {L}, (x, y, z)=({Vec.X}, {Vec.Y}, {Vec.Z}), Length={Vec.Length}, Q={Q} ";
-        }
+             => $"{H} {K} {L}, (x, y, z)=({Vec.X}, {Vec.Y}, {Vec.Z}), Length={Vec.Length}, Q={Q} ";
     }
 
     #endregion
