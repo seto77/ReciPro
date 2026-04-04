@@ -1,0 +1,42 @@
+# (260404Ch) Align Git line ending normalization with the Windows/Visual Studio workflow used in this repository.
+* text=auto
+
+# (260404Ch) Keep repository metadata text files on CRLF as well.
+/.gitattributes text eol=crlf
+/.gitignore text eol=crlf
+
+# (260404Ch) Keep Visual Studio solutions, projects, and source assets on CRLF.
+*.sln text eol=crlf
+*.cs text eol=crlf
+*.csproj text eol=crlf
+*.vcxproj text eol=crlf
+*.vcxproj.filters text eol=crlf
+*.props text eol=crlf
+*.targets text eol=crlf
+*.resx text eol=crlf
+*.xml text eol=crlf
+*.xsc text eol=crlf
+*.xsd text eol=crlf
+*.xss text eol=crlf
+*.settings text eol=crlf
+*.pubxml text eol=crlf
+*.config text eol=crlf
+*.json text eol=crlf
+*.md text eol=crlf
+*.txt text eol=crlf
+*.yml text eol=crlf
+*.yaml text eol=crlf
+*.editorconfig text eol=crlf
+*.rc text eol=crlf
+*.c text eol=crlf
+*.cpp text eol=crlf
+*.h text eol=crlf
+*.hpp text eol=crlf
+*.inl text eol=crlf
+*.bat text eol=crlf
+*.cmd text eol=crlf
+*.ps1 text eol=crlf
+
+# (260404Ch) Keep cross-platform scripts on LF.
+*.py text eol=lf
+*.sh text eol=lf
