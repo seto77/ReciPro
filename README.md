@@ -2,7 +2,7 @@
 
 *ReciPro* is a free and open-source GUI-based multipurpose crystallographic software that provides seamless access to functions to explore crystal databases, visualize crystal structures and goniometer settings, simulate diffraction patterns and high-resolution microscope images, and analyze diffraction data. These features are linked through a user-friendly GUI, and the results can be synchronously displayed almost in real time. *ReciPro* will assist a wide range of crystallographers (including beginners) using X-ray, electron and neutron diffraction crystallography and TEM.
 
-*ReciPro* has been continuously developed since 2002 and has been downloaded >10,000 times since its release on GitHub (Mar 2020). It is already in use by hundreds of users in more than a dozen laboratories at universities and companies.
+*ReciPro* has been continuously developed since 2002 and has been available on GitHub since March 2020. It has been downloaded more than 25,000 times from GitHub, and is used by hundreds of users in more than a dozen laboratories at universities and companies.
 
 ***[See also Wiki to learn how to use!](https://github.com/seto77/ReciPro/wiki)***
 
