@@ -3,5 +3,5 @@ bin/
 _tempbuild/
 Backup/
 references/
-Diagnostics/
 Crystallography/Atom/NistElastic/Original/
+Crystallography/Atom/NistElastic/Diagnostics/
