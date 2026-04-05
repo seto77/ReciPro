@@ -17,7 +17,7 @@
     <ApplicationHighDpiMode>PerMonitorV2</ApplicationHighDpiMode>
     <ApplicationUseCompatibleTextRendering>true</ApplicationUseCompatibleTextRendering>
     <ApplicationVisualStyles>true</ApplicationVisualStyles>
-    <SupportedOSPlatformVersion>7.0</SupportedOSPlatformVersion>
+    <!-- <SupportedOSPlatformVersion>7.0</SupportedOSPlatformVersion> --><!-- 260405Cl .NET 10はWindows7非対応のため削除。CI TFMミスマッチ(NU1201)の原因 -->
     <!--
     <TieredCompilation>false</TieredCompilation>
     <TieredCompilationQuickJit>false</TieredCompilationQuickJit>

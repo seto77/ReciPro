@@ -2,12 +2,12 @@
 
   <PropertyGroup>
     <OutputType>Library</OutputType>
-    <TargetFramework>net10.0-windows10.0.26100.0</TargetFramework>
+    <TargetFramework>net10.0-windows</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <AssemblyVersion>2026.4.5.0352</AssemblyVersion>
-    <FileVersion>2026.4.5.0352</FileVersion>
-    <SupportedOSPlatformVersion>7.0</SupportedOSPlatformVersion>
+    <AssemblyVersion>2026.4.5.0610</AssemblyVersion>
+    <FileVersion>2026.4.5.0610</FileVersion>
+    <!-- <SupportedOSPlatformVersion>7.0</SupportedOSPlatformVersion> --><!-- 260405Cl .NET 10はWindows7非対応のため削除 -->
     <Platforms>x64</Platforms>
     <!--
     <TieredCompilation>false</TieredCompilation>
