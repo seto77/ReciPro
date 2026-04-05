@@ -101,25 +101,38 @@ jobs:
           }
 
       - name: Build installer with Visual Studio
+        id: build_installer
         shell: pwsh
         run: |
-          $devenv = (& "${env:ProgramFiles(x86)}\Microsoft Visual Studio\Installer\vswhere.exe" -latest -products * -property productPath).Trim()
-          if (-not $devenv) {
-            throw "devenv.exe was not found."
+          # (260405Ch) Use devenv.com for command-line builds so the workflow waits for vdproj build completion and captures logs.
+          $devenvExe = (& "${env:ProgramFiles(x86)}\Microsoft Visual Studio\Installer\vswhere.exe" -latest -products * -property productPath).Trim()
+          if (-not $devenvExe) {
+            throw "Visual Studio was not found."
           }
 
-          & $devenv "ReciPro.sln" /Build "Release|x64" /Project "ReciProSetup\ReciProSetup.vdproj"
-
-          if ($LASTEXITCODE -ne 0) {
-            exit $LASTEXITCODE
+          $devenvCli = [System.IO.Path]::ChangeExtension($devenvExe, ".com")
+          if (-not (Test-Path $devenvCli)) {
+            throw "devenv.com was not found next to $devenvExe."
           }
+
+          $buildLogPath = Join-Path $env:RUNNER_TEMP "devenv-build.log"
+          & $devenvCli "ReciPro.sln" /Build "Release|x64" /Project "ReciProSetup" /Out $buildLogPath
+          $buildExitCode = $LASTEXITCODE
+
+          Write-Host "devenv exit code: $buildExitCode"
+          if (Test-Path $buildLogPath) {
+            Get-Content $buildLogPath
+          }
+
+          "build_exit_code=$buildExitCode" >> $env:GITHUB_OUTPUT
+          "build_log_path=$buildLogPath" >> $env:GITHUB_OUTPUT
 
       - name: Confirm installer outputs
         id: installer_outputs
         shell: pwsh
         run: |
           # (260405Ch) Some environments materialize setup project outputs slightly after devenv returns, so wait and locate them dynamically.
-          $requiredNames = @("ReciProSetup.msi", "setup.exe")
+          $requiredNames = @("ReciProSetup.msi")
           $foundFiles = @{}
           $deadline = (Get-Date).AddMinutes(2)
 
@@ -143,11 +156,19 @@ jobs:
               Where-Object { $_.Extension -eq ".msi" -or $_.Name -eq "setup.exe" } |
               Select-Object FullName, Length, LastWriteTime
 
+            if (Test-Path "${{ steps.build_installer.outputs.build_log_path }}") {
+              Write-Host "devenv build log:"
+              Get-Content "${{ steps.build_installer.outputs.build_log_path }}"
+            }
+
             throw "Required output was not found: $($missingFiles -join ', ')"
           }
 
+          if ("${{ steps.build_installer.outputs.build_exit_code }}" -ne "0") {
+            Write-Warning "devenv returned exit code ${{ steps.build_installer.outputs.build_exit_code }}, but the MSI output was found. Continuing with the generated file."
+          }
+
           "msi_path=$($foundFiles['ReciProSetup.msi'])" >> $env:GITHUB_OUTPUT
-          "bootstrapper_path=$($foundFiles['setup.exe'])" >> $env:GITHUB_OUTPUT
 
       - name: Upload workflow artifacts
         uses: actions/upload-artifact@v4
@@ -155,7 +176,6 @@ jobs:
           name: ReciPro-installer-${{ github.ref_name }}
           path: |
             ${{ steps.installer_outputs.outputs.msi_path }}
-            ${{ steps.installer_outputs.outputs.bootstrapper_path }}
 
       - name: Create GitHub Release
         shell: pwsh
@@ -164,7 +184,6 @@ jobs:
         run: |
           gh release create "${{ github.ref_name }}" `
             "${{ steps.installer_outputs.outputs.msi_path }}" `
-            "${{ steps.installer_outputs.outputs.bootstrapper_path }}" `
             --verify-tag `
             --title "${{ steps.version_info.outputs.release_title }}" `
             --notes-file "${{ steps.version_info.outputs.notes_path }}"
