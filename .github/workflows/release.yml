@@ -34,7 +34,9 @@ jobs:
 
           # 同じバージョンのリリースが既にあればスキップ
           gh release view $tag 2>&1 | Out-Null
-          if ($LASTEXITCODE -eq 0) {
+          $releaseExists = ($LASTEXITCODE -eq 0)
+          $global:LASTEXITCODE = 0  # gh の exit code をリセット
+          if ($releaseExists) {
             Write-Host "Release $tag already exists. Skipping."
             "needed=false" >> $env:GITHUB_OUTPUT
             return
