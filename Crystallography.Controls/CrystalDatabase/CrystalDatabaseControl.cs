@@ -18,8 +18,8 @@ using System.Security.Cryptography;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Windows.Media.Core;
-using Windows.UI.StartScreen;
+//using Windows.Media.Core; //260405Cl 未使用のWinRT参照を削除
+//using Windows.UI.StartScreen; //260405Cl 未使用のWinRT参照を削除
 using ZLinq;
 using static Community.CsharpSqlite.Sqlite3;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;

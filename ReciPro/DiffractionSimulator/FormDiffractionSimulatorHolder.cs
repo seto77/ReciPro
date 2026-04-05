@@ -5,7 +5,7 @@ using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Security.Policy;
 using System.Windows.Forms;
-using Windows.Devices.Radios;
+//using Windows.Devices.Radios; //260405Cl 未使用のWinRT参照を削除
 #endregion 
 
 namespace ReciPro;

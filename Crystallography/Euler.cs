@@ -5,7 +5,7 @@ using OpenTK.Mathematics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Windows.Networking.BackgroundTransfer;
+//using Windows.Networking.BackgroundTransfer; //260405Cl 未使用のWinRT参照を削除
 using DVec = MathNet.Numerics.LinearAlgebra.Double.DenseVector;
 
 namespace Crystallography;
