@@ -6,7 +6,12 @@ on:
     branches: [master]
     paths:
       - "ReciPro/Version.cs"
-  workflow_dispatch: # GitHub Actions UI から手動トリガー可能
+  workflow_dispatch:
+    inputs:
+      force:
+        description: "既存リリースを削除してリビルドする"
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -33,14 +38,21 @@ jobs:
           $ver = $Matches[1]
           $tag = "v.$ver"
 
-          # 同じバージョンのリリースが既にあればスキップ
+          # 同じバージョンのリリースが既にあればスキップ (force 時は既存を削除して続行)
           gh release view $tag 2>&1 | Out-Null
           $releaseExists = ($LASTEXITCODE -eq 0)
-          $global:LASTEXITCODE = 0  # gh の exit code をリセット
+          $global:LASTEXITCODE = 0
           if ($releaseExists) {
-            Write-Host "Release $tag already exists. Skipping."
-            "needed=false" >> $env:GITHUB_OUTPUT
-            return
+            if ("${{ inputs.force }}" -eq "true") {
+              Write-Host "Force mode: deleting existing release $tag..."
+              gh release delete $tag --yes
+              git push origin :refs/tags/$tag 2>&1 | Out-Null
+              $global:LASTEXITCODE = 0
+            } else {
+              Write-Host "Release $tag already exists. Skipping."
+              "needed=false" >> $env:GITHUB_OUTPUT
+              return
+            }
           }
 
           # History の先頭行をリリースノートに使う
