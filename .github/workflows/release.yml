@@ -209,8 +209,8 @@ jobs:
         timeout-minutes: 10
         shell: pwsh
         run: |
-          # 260405Cl devenv.com はテレメトリ(Chrome/GCM)が終了せずハングするため、
-          # バックグラウンドで起動し MSI 出現を監視して強制終了する。
+          # 260405Cl devenv.com は .exe を別プロセスで起動して即終了し、
+          # さらにテレメトリ(Chrome/GCM)でハングするため、MSI 出現を監視して強制終了する。
           $devenvExe = (& "${env:ProgramFiles(x86)}\Microsoft Visual Studio\Installer\vswhere.exe" -latest -products * -property productPath).Trim()
           if (-not $devenvExe) { throw "Visual Studio was not found." }
 
@@ -218,37 +218,35 @@ jobs:
           if (-not (Test-Path $devenvCli)) { throw "devenv.com was not found next to $devenvExe." }
 
           $buildLogPath = Join-Path $env:RUNNER_TEMP "devenv-build.log"
-          $msiPath = "ReciProSetup\Release\ReciProSetup.msi"
 
-          # devenv をバックグラウンド起動
-          $proc = Start-Process -FilePath $devenvCli -ArgumentList "`"${{ steps.pack_solution.outputs.solution_path }}`" /Build `"Release|x64`" /Project `"ReciProSetup`" /Out `"$buildLogPath`"" -PassThru -NoNewWindow
+          # devenv をバックグラウンド起動 (devenv.com は .exe を spawn して即終了するため戻り値に依存しない)
+          Start-Process -FilePath $devenvCli -ArgumentList "`"${{ steps.pack_solution.outputs.solution_path }}`" /Build `"Release|x64`" /Project `"ReciProSetup`" /Out `"$buildLogPath`""
 
-          # MSI が生成されるか、devenv が自力で終了するまで待機 (最大5分)
+          # MSI を再帰検索で待機 (出力先が vdproj 設定に依存するため固定パスを使わない)
           $deadline = (Get-Date).AddMinutes(5)
-          while (-not $proc.HasExited -and (Get-Date) -lt $deadline) {
-            if (Test-Path $msiPath) {
-              Write-Host "MSI detected, waiting 10s for post-build events..."
-              Start-Sleep -Seconds 10
+          $msiFile = $null
+          while ((Get-Date) -lt $deadline) {
+            $msiFile = Get-ChildItem -Path "ReciProSetup" -Filter "ReciProSetup.msi" -Recurse -ErrorAction SilentlyContinue | Select-Object -First 1
+            if ($msiFile) {
+              Write-Host "MSI detected at $($msiFile.FullName), waiting 15s for post-build events..."
+              Start-Sleep -Seconds 15
               break
             }
-            Start-Sleep -Seconds 2
+            Start-Sleep -Seconds 3
           }
 
-          # devenv がまだ生きていたら強制終了
-          if (-not $proc.HasExited) {
-            Write-Host "Stopping devenv (pid $($proc.Id)) to avoid telemetry hang..."
-            Stop-Process -Id $proc.Id -Force -ErrorAction SilentlyContinue
-            Start-Sleep -Seconds 2
-          }
+          # devenv 関連プロセスを全て強制終了
+          Get-Process -Name devenv -ErrorAction SilentlyContinue | Stop-Process -Force -ErrorAction SilentlyContinue
+          Start-Sleep -Seconds 2
 
           if (Test-Path $buildLogPath) {
             Get-Content $buildLogPath
           }
 
-          if (-not (Test-Path $msiPath)) {
+          if (-not $msiFile) {
             throw "MSI was not produced within the time limit."
           }
-          Write-Host "MSI built successfully: $msiPath"
+          Write-Host "MSI built successfully: $($msiFile.FullName)"
 
           "build_exit_code=0" >> $env:GITHUB_OUTPUT
           "build_log_path=$buildLogPath" >> $env:GITHUB_OUTPUT
