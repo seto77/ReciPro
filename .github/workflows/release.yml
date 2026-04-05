@@ -12,6 +12,7 @@ permissions:
 jobs:
   release:
     runs-on: windows-2025-vs2026 # (260405Ch) net10.0-windows + WinForms setup build needs Visual Studio 18 on GitHub-hosted runners.
+    timeout-minutes: 30 # 260405Cl 追加: devenv ハング時に無限待ちしないようジョブ全体にタイムアウト設定
 
     steps:
       - name: Checkout
@@ -202,6 +203,7 @@ jobs:
 
       - name: Build installer with Visual Studio
         id: build_installer
+        timeout-minutes: 10 # 260405Cl 追加: devenv ハング防止
         shell: pwsh
         run: |
           # (260405Ch) Build vdproj from a packaging-only solution so setup can resolve project outputs without rebuilding managed projects.
