@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "wordpress": {
+      "command": "python",
+      "args": ["C:\\Users\\seto\\.claude\\mcp-servers\\wordpress-mcp\\server.py"],
+      "env": {
+        "WP_URL": "https://yseto.net",
+        "WP_USER": "seto",
+        "WP_APP_PASSWORD": "yQE5 G53T kcAB YhfB gUnA blvN"
+      }
+    }
+  }
+}

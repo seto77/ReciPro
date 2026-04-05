@@ -7,7 +7,7 @@ internal static class Version
     
     public const string History =
         "History" +
-        "\r\n ver4.922(2026/04/05)  Greatly reduced the size of the installer package." +
+        "\r\n ver4.923(2026/04/05)  Greatly reduced the size of the installer package." +
         "\r\n ver4.921(2026/04/01)  Improved the EBSD simulation, and fixed many minor bugs." +
         "\r\n ver4.919(2026/03/20)  Improved the OpenGL renderings and EBSD simulations, and fixed many minor bugs." +
         "\r\n ver4.918(2026/03/13)  Improved the Native Library to enable automatic switching between non-AVX, AVX2 and AVX512." +
