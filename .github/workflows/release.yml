@@ -1,0 +1,111 @@
+# (260405Ch) Build ReciProSetup on v* tag push and publish a GitHub Release using the latest Version.cs history line
+name: Build And Release Installer
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: windows-2022
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Setup .NET 10
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: "10.0.x"
+
+      - name: Restore managed dependencies
+        shell: pwsh
+        run: dotnet restore ReciPro\ReciPro.csproj
+
+      - name: Read release info from Version.cs
+        id: version_info
+        shell: pwsh
+        run: |
+          $versionFile = "ReciPro\Version.cs"
+          $content = Get-Content $versionFile -Raw
+          $historyRegex = [regex]::Matches($content, 'ver[^\r\n"]+')
+
+          if ($historyRegex.Count -eq 0) {
+            throw "Could not find a release history line in $versionFile."
+          }
+
+          $latestHistory = $historyRegex[0].Value.Trim()
+          if ($latestHistory -notmatch '^ver(?<Version>[0-9][0-9A-Za-z\.\-_]*)') {
+            throw "Could not parse version number from history line: $latestHistory"
+          }
+
+          $historyTag = "v$($Matches.Version)"
+          $tagName = "${{ github.ref_name }}"
+
+          if ($historyTag -ne $tagName) {
+            throw "Tag '$tagName' does not match Version.cs latest history '$historyTag'."
+          }
+
+          $releaseTitle = "ReciPro $tagName"
+          $notesPath = Join-Path $env:RUNNER_TEMP "release-notes.txt"
+          @(
+            $latestHistory
+            ""
+            "Built automatically from tag $tagName."
+          ) | Set-Content -Path $notesPath -Encoding UTF8
+
+          "latest_history=$latestHistory" >> $env:GITHUB_OUTPUT
+          "release_title=$releaseTitle" >> $env:GITHUB_OUTPUT
+          "notes_path=$notesPath" >> $env:GITHUB_OUTPUT
+
+      - name: Build installer with Visual Studio
+        shell: pwsh
+        run: |
+          $devenv = (& "${env:ProgramFiles(x86)}\Microsoft Visual Studio\Installer\vswhere.exe" -latest -products * -property productPath).Trim()
+          if (-not $devenv) {
+            throw "devenv.exe was not found."
+          }
+
+          & $devenv "ReciPro.sln" /Build "Release|x64" /Project "ReciProSetup\ReciProSetup.vdproj"
+
+          if ($LASTEXITCODE -ne 0) {
+            exit $LASTEXITCODE
+          }
+
+      - name: Confirm installer outputs
+        shell: pwsh
+        run: |
+          $requiredFiles = @(
+            "ReciProSetup\ReciProSetup.msi",
+            "ReciProSetup\setup.exe"
+          )
+
+          foreach ($file in $requiredFiles) {
+            if (-not (Test-Path $file)) {
+              throw "Required output was not found: $file"
+            }
+          }
+
+      - name: Upload workflow artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: ReciPro-installer-${{ github.ref_name }}
+          path: |
+            ReciProSetup\ReciProSetup.msi
+            ReciProSetup\setup.exe
+
+      - name: Create GitHub Release
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release create "${{ github.ref_name }}" `
+            "ReciProSetup\ReciProSetup.msi" `
+            "ReciProSetup\setup.exe" `
+            --verify-tag `
+            --title "${{ steps.version_info.outputs.release_title }}" `
+            --notes-file "${{ steps.version_info.outputs.notes_path }}"
