@@ -154,7 +154,7 @@
         {
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_07D15F89DA164DF7941B1AA178A081F2"
             {
-            "SourcePath" = "8:..\\LICENSE.rtf"
+            "SourcePath" = "8:LICENSE.rtf"
             "TargetName" = "8:LICENSE.rtf"
             "Tag" = "8:"
             "Folder" = "8:_8D34FBFE90514435B92DE2FC35EB8380"
@@ -194,7 +194,7 @@
             }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_87A612AB8D72488890567A679035722E"
             {
-            "SourcePath" = "8:..\\REQUIREMENT.rtf"
+            "SourcePath" = "8:REQUIREMENT.rtf"
             "TargetName" = "8:REQUIREMENT.rtf"
             "Tag" = "8:"
             "Folder" = "8:_8D34FBFE90514435B92DE2FC35EB8380"
@@ -374,7 +374,7 @@
         "UseSystemSearchPath" = "11:TRUE"
         "TargetPlatform" = "3:1"
         "PreBuildEvent" = "8:"
-        "PostBuildEvent" = "8:\"C:\\Program Files (x86)\\Windows Kits\\10\\bin\\10.0.26100.0\\x86\\MsiInfo.exe\" \"$(BuiltOuputPath)\" /W 10\r\n\r\nCALL cscript.exe \"$(ProjectDir)EnableLaunchApplication.js\" \"$(BuiltOuputPath)\"\r\nexplorer $(ProjectDir)\r\n\"C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe\" https://github.com/seto77/ReciPro/releases\r\n\r\n"
+        "PostBuildEvent" = "8:CALL cscript.exe \"$(ProjectDir)EnableLaunchApplication.js\" \"$(BuiltOuputPath)\"\r\n"
         "RunPostBuildEvent" = "3:0"
         }
         "Registry"

@@ -1,0 +1,7 @@
+.mcp.json
+bin/
+_tempbuild/
+Backup/
+references/
+Diagnostics/
+Crystallography/Atom/NistElastic/Original/

@@ -1,162 +1,135 @@
-# (260405Ch) Build ReciProSetup on v* tag push and publish a GitHub Release using the latest Version.cs history line
+# 260405Cl Version.cs の History 先頭行が変わったら自動でインストーラをビルド・リリースする
 name: Build And Release Installer
 
 on:
   push:
-    tags:
-      - "v*"
+    branches: [master]
+    paths:
+      - "ReciPro/Version.cs"
 
 permissions:
   contents: write
 
 jobs:
   release:
-    runs-on: windows-2025-vs2026 # (260405Ch) net10.0-windows + WinForms setup build needs Visual Studio 18 on GitHub-hosted runners.
-    timeout-minutes: 30 # 260405Cl 追加: devenv ハング時に無限待ちしないようジョブ全体にタイムアウト設定
-    env: # 260405Cl 追加: CI で VS テレメトリを無効化し devenv ハングを防止
-      VSCMD_SKIP_SENDTELEMETRY: "1"
-      DOTNET_CLI_TELEMETRY_OPTOUT: "1"
+    runs-on: windows-2025-vs2026
+    timeout-minutes: 30
 
     steps:
       - name: Checkout
         uses: actions/checkout@v5
 
+      - name: Parse version and check if release needed
+        id: version
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          $content = Get-Content "ReciPro\Version.cs" -Raw
+          if ($content -notmatch 'ver(\d+\.\d+)\(') {
+            throw "Could not parse version from Version.cs History."
+          }
+          $ver = $Matches[1]
+          $tag = "v.$ver"
+
+          # 同じバージョンのリリースが既にあればスキップ
+          gh release view $tag 2>&1 | Out-Null
+          if ($LASTEXITCODE -eq 0) {
+            Write-Host "Release $tag already exists. Skipping."
+            "needed=false" >> $env:GITHUB_OUTPUT
+            return
+          }
+
+          # History の先頭行をリリースノートに使う
+          $historyLine = ([regex]::Match($content, 'ver[^\r\n"]+').Value).Trim()
+          $notesPath = Join-Path $env:RUNNER_TEMP "release-notes.txt"
+          $historyLine | Set-Content -Path $notesPath -Encoding UTF8
+
+          Write-Host "New version detected: $ver (tag: $tag)"
+          "needed=true"           >> $env:GITHUB_OUTPUT
+          "version=$ver"          >> $env:GITHUB_OUTPUT
+          "tag=$tag"              >> $env:GITHUB_OUTPUT
+          "product_version=0.$ver" >> $env:GITHUB_OUTPUT
+          "notes_path=$notesPath" >> $env:GITHUB_OUTPUT
+
+      # ---- 以降、新バージョンが検出されたときのみ実行 ----
+
       - name: Setup .NET 10
+        if: steps.version.outputs.needed == 'true'
         uses: actions/setup-dotnet@v5
         with:
           dotnet-version: "10.0.x"
 
       - name: Restore managed dependencies
+        if: steps.version.outputs.needed == 'true'
         shell: pwsh
         run: dotnet restore ReciPro\ReciPro.csproj
 
-      - name: Confirm installer project sources
+      - name: Find devenv.com
+        if: steps.version.outputs.needed == 'true'
+        id: devenv
         shell: pwsh
         run: |
-          # (260405Ch) Fail early with a clear message if installer project sources were not committed to GitHub.
-          $requiredSources = @(
-            "ReciProSetup\ReciProSetup.vdproj",
-            "ReciProSetup\EnableLaunchApplication.js",
-            "LICENSE.rtf",
-            "REQUIREMENT.rtf"
-          )
-
-          $missingSources = $requiredSources | Where-Object { -not (Test-Path $_) }
-          if ($missingSources.Count -gt 0) {
-            throw "Installer source files are missing from the checkout: $($missingSources -join ', ')"
-          }
-
-      - name: Read release info from Version.cs
-        id: version_info
-        shell: pwsh
-        run: |
-          $versionFile = "ReciPro\Version.cs"
-          $content = Get-Content $versionFile -Raw
-          $historyRegex = [regex]::Matches($content, 'ver[^\r\n"]+')
-
-          if ($historyRegex.Count -eq 0) {
-            throw "Could not find a release history line in $versionFile."
-          }
-
-          $latestHistory = $historyRegex[0].Value.Trim()
-          if ($latestHistory -notmatch '^ver(?<Version>[0-9][0-9A-Za-z\.\-_]*)') {
-            throw "Could not parse version number from history line: $latestHistory"
-          }
-
-          $historyTag = "v.$($Matches.Version)" # 260405Cl v.X.XXX 形式に合わせる (既存ユーザーの自動更新との互換性)
-          $tagName = "${{ github.ref_name }}"
-
-          if ($historyTag -ne $tagName) {
-            throw "Tag '$tagName' does not match Version.cs latest history '$historyTag'."
-          }
-
-          $releaseTitle = "ReciPro $tagName"
-          $notesPath = Join-Path $env:RUNNER_TEMP "release-notes.txt"
-          @(
-            $latestHistory
-            ""
-            "Built automatically from tag $tagName."
-          ) | Set-Content -Path $notesPath -Encoding UTF8
-
-          "latest_history=$latestHistory" >> $env:GITHUB_OUTPUT
-          "release_title=$releaseTitle" >> $env:GITHUB_OUTPUT
-          "notes_path=$notesPath" >> $env:GITHUB_OUTPUT
-
-      - name: Disable out-of-proc setup project build
-        shell: pwsh
-        run: |
-          # (260405Ch) Force installer builds to run in-proc so devenv does not return before MSI generation completes.
-          $visualStudioRoot = "HKCU:\Software\Microsoft\VisualStudio"
-          $configKeys = Get-ChildItem $visualStudioRoot -ErrorAction SilentlyContinue |
-            Where-Object { $_.PSChildName -like '17.0*_Config' -or $_.PSChildName -like '18.0*_Config' }
-
-          if ($configKeys.Count -eq 0) {
-            Write-Warning "No Visual Studio *_Config registry keys were found under $visualStudioRoot."
-          }
-
-          foreach ($configKey in $configKeys) {
-            $msbuildKey = Join-Path $configKey.PSPath "MSBuild"
-            if (-not (Test-Path $msbuildKey)) {
-              New-Item -Path $msbuildKey -Force | Out-Null
-            }
-
-            New-ItemProperty -Path $msbuildKey -Name DisableOutOfProcBuild -PropertyType DWord -Value 1 -Force | Out-Null
-            Write-Host "Set DisableOutOfProcBuild=1 at $msbuildKey"
-          }
+          $devenvExe = (& "${env:ProgramFiles(x86)}\Microsoft Visual Studio\Installer\vswhere.exe" -latest -products * -property productPath).Trim()
+          if (-not $devenvExe) { throw "Visual Studio was not found." }
+          $cli = [System.IO.Path]::ChangeExtension($devenvExe, ".com")
+          if (-not (Test-Path $cli)) { throw "devenv.com was not found." }
+          Write-Host "devenv.com: $cli"
+          "cli=$cli" >> $env:GITHUB_OUTPUT
 
       - name: Build native runtime binaries
+        if: steps.version.outputs.needed == 'true'
         shell: pwsh
         run: |
-          # (260405Ch) Build Crystallography.Native separately because the main solution build does not include it in Release|x64.
-          $devenvExe = (& "${env:ProgramFiles(x86)}\Microsoft Visual Studio\Installer\vswhere.exe" -latest -products * -property productPath).Trim()
-          if (-not $devenvExe) {
-            throw "Visual Studio was not found."
-          }
-
-          $devenvCli = [System.IO.Path]::ChangeExtension($devenvExe, ".com")
-          if (-not (Test-Path $devenvCli)) {
-            throw "devenv.com was not found next to $devenvExe."
-          }
-
-          $buildLogPath = Join-Path $env:RUNNER_TEMP "devenv-native-build.log"
-          & $devenvCli "ReciPro.sln" /Build "Release|x64" /Project "Crystallography.Native" /Out $buildLogPath
-          $buildExitCode = $LASTEXITCODE
-
-          if (Test-Path $buildLogPath) {
-            Get-Content $buildLogPath
-          }
-
-          if ($buildExitCode -ne 0) {
-            throw "Crystallography.Native build failed with exit code $buildExitCode."
-          }
+          $log = Join-Path $env:RUNNER_TEMP "devenv-native.log"
+          & "${{ steps.devenv.outputs.cli }}" "ReciPro.sln" /Build "Release|x64" /Project "Crystallography.Native" /Out $log
+          if (Test-Path $log) { Get-Content $log }
+          if ($LASTEXITCODE -ne 0) { throw "Crystallography.Native build failed (exit $LASTEXITCODE)." }
 
       - name: Build managed application
+        if: steps.version.outputs.needed == 'true'
+        shell: pwsh
+        run: dotnet build ReciPro\ReciPro.csproj -c Release -p:Platform=x64 --no-restore
+
+      - name: Update installer version in vdproj
+        if: steps.version.outputs.needed == 'true'
         shell: pwsh
         run: |
-          # (260405Ch) Build managed projects with dotnet to avoid devenv-triggered file locking inside obj during CI.
-          dotnet build ReciPro\ReciPro.csproj -c Release -p:Platform=x64 --no-restore
+          $vdproj = Get-Content "ReciProSetup\ReciProSetup.vdproj" -Raw
 
-      - name: Confirm packaging inputs
+          # ProductVersion を更新 (例: "8:0.4.922")
+          $vdproj = $vdproj -replace '"ProductVersion" = "8:[^"]*"', '"ProductVersion" = "8:${{ steps.version.outputs.product_version }}"'
+
+          # ProductCode と PackageCode を新しい GUID に更新 (UpgradeCode は変えない)
+          $newProductCode = ([guid]::NewGuid()).ToString("B").ToUpper()
+          $newPackageCode = ([guid]::NewGuid()).ToString("B").ToUpper()
+          $vdproj = $vdproj -replace '"ProductCode" = "8:\{[^}]+\}"', "`"ProductCode`" = `"8:$newProductCode`""
+          $vdproj = $vdproj -replace '"PackageCode" = "8:\{[^}]+\}"', "`"PackageCode`" = `"8:$newPackageCode`""
+
+          Set-Content "ReciProSetup\ReciProSetup.vdproj" $vdproj -NoNewline
+          Write-Host "ProductVersion = 0.${{ steps.version.outputs.version }}"
+          Write-Host "ProductCode    = $newProductCode"
+          Write-Host "PackageCode    = $newPackageCode"
+
+      - name: Disable out-of-proc setup project build
+        if: steps.version.outputs.needed == 'true'
         shell: pwsh
         run: |
-          # (260405Ch) Validate that setup packaging prerequisites exist before running the setup project.
-          $requiredOutputs = @(
-            "ReciPro\bin\Release\ReciPro.exe",
-            "ReciPro\bin\Release\Crystallography.Native.dll",
-            "ReciPro\bin\Release\Crystallography.Native.avx2.dll",
-            "ReciPro\bin\Release\Crystallography.Native.avx512.dll"
-          )
-
-          $missingOutputs = $requiredOutputs | Where-Object { -not (Test-Path $_) }
-          if ($missingOutputs.Count -gt 0) {
-            throw "Setup packaging inputs are missing: $($missingOutputs -join ', ')"
-          }
+          $visualStudioRoot = "HKCU:\Software\Microsoft\VisualStudio"
+          Get-ChildItem $visualStudioRoot -ErrorAction SilentlyContinue |
+            Where-Object { $_.PSChildName -like '17.0*_Config' -or $_.PSChildName -like '18.0*_Config' } |
+            ForEach-Object {
+              $key = Join-Path $_.PSPath "MSBuild"
+              if (-not (Test-Path $key)) { New-Item -Path $key -Force | Out-Null }
+              New-ItemProperty -Path $key -Name DisableOutOfProcBuild -PropertyType DWord -Value 1 -Force | Out-Null
+              Write-Host "Set DisableOutOfProcBuild=1 at $key"
+            }
 
       - name: Create installer-only solution
+        if: steps.version.outputs.needed == 'true'
         id: pack_solution
         shell: pwsh
         run: |
-          # (260405Ch) Generate a temporary solution that keeps project output metadata for vdproj while skipping managed rebuilds.
           $solutionPath = Join-Path (Get-Location) "ReciProSetup.CI.sln"
           @'
           Microsoft Visual Studio Solution File, Format Version 12.00
@@ -177,137 +150,62 @@ jobs:
           EndProject
           Global
           	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-          		Debug|x64 = Debug|x64
           		Release|x64 = Release|x64
           	EndGlobalSection
           	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-          		{D01883A1-458D-4127-8E9B-EEC176201483}.Debug|x64.ActiveCfg = Debug|x64
           		{D01883A1-458D-4127-8E9B-EEC176201483}.Release|x64.ActiveCfg = Release|x64
-          		{3AABEFB0-E84E-4AF6-8496-4D1F33C8F517}.Debug|x64.ActiveCfg = Debug|x64
           		{3AABEFB0-E84E-4AF6-8496-4D1F33C8F517}.Release|x64.ActiveCfg = Release|x64
-          		{FD96FE43-6DEE-4520-BB26-CFF7976DE27D}.Debug|x64.ActiveCfg = Debug|x64
           		{FD96FE43-6DEE-4520-BB26-CFF7976DE27D}.Release|x64.ActiveCfg = Release|x64
-          		{BE7CC301-70E0-4BAA-9349-FDA49B38CC93}.Debug|x64.ActiveCfg = Debug|x64
           		{BE7CC301-70E0-4BAA-9349-FDA49B38CC93}.Release|x64.ActiveCfg = Release|x64
-          		{0A6070E5-8843-4C4B-A4ED-4ABC55BFDBDD}.Debug|x64.ActiveCfg = Debug|x64
           		{0A6070E5-8843-4C4B-A4ED-4ABC55BFDBDD}.Release|x64.ActiveCfg = Release|x64
-          		{8083E96B-786B-4351-87EF-8546C9C8B297}.Debug|x64.ActiveCfg = Debug
-          		{8083E96B-786B-4351-87EF-8546C9C8B297}.Debug|x64.Build.0 = Debug
           		{8083E96B-786B-4351-87EF-8546C9C8B297}.Release|x64.ActiveCfg = Release
           		{8083E96B-786B-4351-87EF-8546C9C8B297}.Release|x64.Build.0 = Release
           	EndGlobalSection
-          	GlobalSection(SolutionProperties) = preSolution
-          		HideSolutionNode = FALSE
-          	EndGlobalSection
           EndGlobal
           '@ | Set-Content -Path $solutionPath -Encoding ASCII
-
-          "solution_path=$solutionPath" >> $env:GITHUB_OUTPUT
+          "path=$solutionPath" >> $env:GITHUB_OUTPUT
 
       - name: Build installer with Visual Studio
         id: build_installer
+        if: steps.version.outputs.needed == 'true'
         timeout-minutes: 10
         shell: pwsh
         run: |
-          # 260405Cl devenv.com は .exe を別プロセスで起動して即終了し、
-          # さらにテレメトリ(Chrome/GCM)でハングするため、MSI 出現を監視して強制終了する。
-          $devenvExe = (& "${env:ProgramFiles(x86)}\Microsoft Visual Studio\Installer\vswhere.exe" -latest -products * -property productPath).Trim()
-          if (-not $devenvExe) { throw "Visual Studio was not found." }
+          $log = Join-Path $env:RUNNER_TEMP "devenv-setup.log"
+          & "${{ steps.devenv.outputs.cli }}" "${{ steps.pack_solution.outputs.path }}" /Build "Release|x64" /Project "ReciProSetup" /Out $log
+          $exitCode = $LASTEXITCODE
+          if (Test-Path $log) { Get-Content $log }
+          if ($exitCode -ne 0) { throw "ReciProSetup build failed (exit $exitCode)." }
 
-          $devenvCli = [System.IO.Path]::ChangeExtension($devenvExe, ".com")
-          if (-not (Test-Path $devenvCli)) { throw "devenv.com was not found next to $devenvExe." }
-
-          $buildLogPath = Join-Path $env:RUNNER_TEMP "devenv-build.log"
-
-          # devenv をバックグラウンド起動 (devenv.com は .exe を spawn して即終了するため戻り値に依存しない)
-          Start-Process -FilePath $devenvCli -ArgumentList "`"${{ steps.pack_solution.outputs.solution_path }}`" /Build `"Release|x64`" /Project `"ReciProSetup`" /Out `"$buildLogPath`""
-
-          # MSI を再帰検索で待機 (出力先が vdproj 設定に依存するため固定パスを使わない)
-          $deadline = (Get-Date).AddMinutes(5)
-          $msiFile = $null
-          while ((Get-Date) -lt $deadline) {
-            $msiFile = Get-ChildItem -Path "ReciProSetup" -Filter "ReciProSetup.msi" -Recurse -ErrorAction SilentlyContinue | Select-Object -First 1
-            if ($msiFile) {
-              Write-Host "MSI detected at $($msiFile.FullName), waiting 15s for post-build events..."
-              Start-Sleep -Seconds 15
-              break
-            }
-            Start-Sleep -Seconds 3
-          }
-
-          # devenv 関連プロセスを全て強制終了
-          Get-Process -Name devenv -ErrorAction SilentlyContinue | Stop-Process -Force -ErrorAction SilentlyContinue
-          Start-Sleep -Seconds 2
-
-          if (Test-Path $buildLogPath) {
-            Get-Content $buildLogPath
-          }
-
-          if (-not $msiFile) {
-            throw "MSI was not produced within the time limit."
-          }
-          Write-Host "MSI built successfully: $($msiFile.FullName)"
-
-          "build_exit_code=0" >> $env:GITHUB_OUTPUT
-          "build_log_path=$buildLogPath" >> $env:GITHUB_OUTPUT
-
-      - name: Confirm installer outputs
-        id: installer_outputs
-        shell: pwsh
-        run: |
-          # (260405Ch) Some environments materialize setup project outputs slightly after devenv returns, so wait and locate them dynamically.
-          $requiredNames = @("ReciProSetup.msi")
-          $foundFiles = @{}
-          $deadline = (Get-Date).AddMinutes(2)
-
-          do {
-            Get-ChildItem -Path . -Recurse -File -ErrorAction SilentlyContinue |
-              Where-Object { $requiredNames -contains $_.Name } |
-              ForEach-Object { $foundFiles[$_.Name] = $_.FullName }
-
-            $missingFiles = $requiredNames | Where-Object { -not $foundFiles.ContainsKey($_) }
-            if ($missingFiles.Count -eq 0) {
-              break
-            }
-
-            Start-Sleep -Seconds 2
-          } while ((Get-Date) -lt $deadline)
-
-          $missingFiles = $requiredNames | Where-Object { -not $foundFiles.ContainsKey($_) }
-          if ($missingFiles.Count -gt 0) {
-            Write-Host "Located installer-like files:"
-            Get-ChildItem -Path . -Recurse -File -ErrorAction SilentlyContinue |
-              Where-Object { $_.Extension -eq ".msi" -or $_.Name -eq "setup.exe" } |
-              Select-Object FullName, Length, LastWriteTime
-
-            if (Test-Path "${{ steps.build_installer.outputs.build_log_path }}") {
-              Write-Host "devenv build log:"
-              Get-Content "${{ steps.build_installer.outputs.build_log_path }}"
-            }
-
-            throw "Required output was not found: $($missingFiles -join ', ')"
-          }
-
-          if ("${{ steps.build_installer.outputs.build_exit_code }}" -ne "0") {
-            Write-Warning "devenv returned exit code ${{ steps.build_installer.outputs.build_exit_code }}, but the MSI output was found. Continuing with the generated file."
-          }
-
-          "msi_path=$($foundFiles['ReciProSetup.msi'])" >> $env:GITHUB_OUTPUT
+          # MSI の存在確認
+          $msi = Get-ChildItem -Path "ReciProSetup" -Filter "ReciProSetup.msi" -Recurse -ErrorAction SilentlyContinue | Select-Object -First 1
+          if (-not $msi) { throw "ReciProSetup.msi was not found." }
+          Write-Host "MSI built: $($msi.FullName)"
+          "msi_path=$($msi.FullName)" >> $env:GITHUB_OUTPUT
 
       - name: Upload workflow artifacts
+        if: steps.version.outputs.needed == 'true'
         uses: actions/upload-artifact@v4
         with:
-          name: ReciPro-installer-${{ github.ref_name }}
-          path: |
-            ${{ steps.installer_outputs.outputs.msi_path }}
+          name: ReciPro-installer-v.${{ steps.version.outputs.version }}
+          path: ${{ steps.build_installer.outputs.msi_path }}
 
-      - name: Create GitHub Release
+      - name: Create tag and GitHub Release
+        if: steps.version.outputs.needed == 'true'
         shell: pwsh
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          gh release create "${{ github.ref_name }}" `
-            "${{ steps.installer_outputs.outputs.msi_path }}" `
-            --verify-tag `
-            --title "${{ steps.version_info.outputs.release_title }}" `
-            --notes-file "${{ steps.version_info.outputs.notes_path }}"
+          $tag = "${{ steps.version.outputs.tag }}"
+
+          # タグを作成してプッシュ
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git tag -a $tag -m "ReciPro ${{ steps.version.outputs.version }}"
+          git push origin $tag
+
+          # リリースを作成して MSI を添付
+          gh release create $tag `
+            "${{ steps.build_installer.outputs.msi_path }}" `
+            --title "ReciPro $tag" `
+            --notes-file "${{ steps.version.outputs.notes_path }}"
