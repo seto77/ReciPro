@@ -63,7 +63,7 @@ jobs:
             throw "Could not parse version number from history line: $latestHistory"
           }
 
-          $historyTag = "v$($Matches.Version)"
+          $historyTag = "v.$($Matches.Version)" # 260405Cl v.X.XXX 形式に合わせる (既存ユーザーの自動更新との互換性)
           $tagName = "${{ github.ref_name }}"
 
           if ($historyTag -ne $tagName) {
