@@ -797,6 +797,9 @@
   <data name="toolStripLabel1.Text" xml:space="preserve">
     <value>機能</value>
   </data>
+  <data name="toolStripSeparator15.Size" type="System.Drawing.Size, System.Drawing">
+    <value>120, 6</value>
+  </data>
   <data name="toolStripButtonDatabase.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
@@ -846,6 +849,9 @@
   <data name="toolStripButtonDatabase.ToolTipText" xml:space="preserve">
     <value>「結晶データベース」機能を開く</value>
   </data>
+  <data name="toolStripSeparator14.Size" type="System.Drawing.Size, System.Drawing">
+    <value>120, 6</value>
+  </data>
   <data name="toolStripButtonSymmetryInformation.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
@@ -880,6 +886,9 @@
   <data name="toolStripButtonSymmetryInformation.ToolTipText" xml:space="preserve">
     <value>「対称性情報」機能を開く</value>
   </data>
+  <data name="toolStripSeparator9.Size" type="System.Drawing.Size, System.Drawing">
+    <value>120, 6</value>
+  </data>
   <data name="toolStripButtonScatteringFactor.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
@@ -905,11 +914,17 @@
         AAAAAElFTkSuQmCC
 </value>
   </data>
+  <data name="toolStripButtonScatteringFactor.Size" type="System.Drawing.Size, System.Drawing">
+    <value>120, 36</value>
+  </data>
   <data name="toolStripButtonScatteringFactor.Text" xml:space="preserve">
     <value>散乱因子</value>
   </data>
   <data name="toolStripButtonScatteringFactor.ToolTipText" xml:space="preserve">
     <value>「散乱因子」機能を開く</value>
+  </data>
+  <data name="toolStripSeparator12.Size" type="System.Drawing.Size, System.Drawing">
+    <value>120, 6</value>
   </data>
   <data name="toolStripButtonRotation.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -968,6 +983,9 @@
     <value>「回転ジオメトリ」
 機能を開く</value>
   </data>
+  <data name="toolStripSeparator8.Size" type="System.Drawing.Size, System.Drawing">
+    <value>120, 6</value>
+  </data>
   <data name="toolStripButtonStructureViewer.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
@@ -1013,6 +1031,9 @@
   <data name="toolStripButtonStructureViewer.ToolTipText" xml:space="preserve">
     <value>Structure Viewer (V) 結晶の三次元構造を描画します。</value>
   </data>
+  <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>120, 6</value>
+  </data>
   <data name="toolStripButtonStereonet.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
@@ -1050,6 +1071,9 @@
     <value>Stereo Net.
 ステレオネットを表示します。</value>
   </data>
+  <data name="toolStripSeparator7.Size" type="System.Drawing.Size, System.Drawing">
+    <value>120, 6</value>
+  </data>
   <data name="toolStripButtonDiffractionSingle.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
@@ -1075,6 +1099,9 @@
   </data>
   <data name="toolStripButtonDiffractionSingle.ToolTipText" xml:space="preserve">
     <value>「回折シミュレータ」機能を開く</value>
+  </data>
+  <data name="toolStripSeparator4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>120, 6</value>
   </data>
   <data name="toolStripButtonTrajectorySimulator.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -1113,6 +1140,9 @@
   <data name="toolStripButtonTrajectorySimulator.ToolTipText" xml:space="preserve">
     <value>「軌道シミュレータ」
 機能を開く</value>
+  </data>
+  <data name="toolStripSeparator10.Size" type="System.Drawing.Size, System.Drawing">
+    <value>120, 6</value>
   </data>
   <data name="toolStripButtonImageSimulator.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -1180,6 +1210,9 @@
   <data name="toolStripButtonImageSimulator.ToolTipText" xml:space="preserve">
     <value>「HRTEMシミュレータ」機能を開く</value>
   </data>
+  <data name="toolStripSeparator13.Size" type="System.Drawing.Size, System.Drawing">
+    <value>120, 6</value>
+  </data>
   <data name="toolStripButtonSpotIDv1.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
@@ -1211,6 +1244,9 @@ v1</value>
   </data>
   <data name="toolStripButtonSpotIDv1.ToolTipText" xml:space="preserve">
     <value>「スポットID v1」機能を開く</value>
+  </data>
+  <data name="toolStripSeparator2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>120, 6</value>
   </data>
   <data name="toolStripButtonSpotIDv2.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -1269,6 +1305,9 @@ v2</value>
   <data name="toolStripButtonSpotIDv2.ToolTipText" xml:space="preserve">
     <value>「スポットID v2」機能を開く</value>
   </data>
+  <data name="toolStripSeparator24.Size" type="System.Drawing.Size, System.Drawing">
+    <value>120, 6</value>
+  </data>
   <data name="toolStripButtonEBSD.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
@@ -1322,6 +1361,9 @@ v2</value>
   <data name="toolStripButtonEBSD.ToolTipText" xml:space="preserve">
     <value>EBSD機能を開く</value>
   </data>
+  <data name="toolStripSeparator19.Size" type="System.Drawing.Size, System.Drawing">
+    <value>120, 6</value>
+  </data>
   <data name="toolStripButtonDiffractionPoly.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
@@ -1357,6 +1399,9 @@ v2</value>
         awj0gaZgnjfwtrR9Rwn/gXaMTyp7By0FJQbvAFjQKxpaY84h5zASnuNNdMn/AfW2LkF/dtz+AAAAAElF
         TkSuQmCC
 </value>
+  </data>
+  <data name="toolStripButtonDiffractionPoly.Size" type="System.Drawing.Size, System.Drawing">
+    <value>120, 36</value>
   </data>
   <data name="toolStripButtonDiffractionPoly.ToolTipText" xml:space="preserve">
     <value>粉末回折機能を開く</value>
@@ -1437,49 +1482,58 @@ v2</value>
     <value>ファイル</value>
   </data>
   <data name="toolTipToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>443, 24</value>
+    <value>417, 24</value>
   </data>
   <data name="toolTipToolStripMenuItem.Text" xml:space="preserve">
     <value>ツールチップを表示</value>
   </data>
   <data name="toolStripSeparator11.Size" type="System.Drawing.Size, System.Drawing">
-    <value>440, 6</value>
+    <value>414, 6</value>
   </data>
   <data name="resetRegistryToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>443, 24</value>
+    <value>417, 24</value>
   </data>
   <data name="resetRegistryToolStripMenuItem.Text" xml:space="preserve">
-    <value>レジストリを初期化 (再起動が必要)</value>
+    <value>レジストリを初期化 (要再起動)</value>
   </data>
   <data name="toolStripMenuItemDisableNative.Size" type="System.Drawing.Size, System.Drawing">
-    <value>443, 24</value>
+    <value>417, 24</value>
   </data>
   <data name="toolStripMenuItemDisableNative.Text" xml:space="preserve">
-    <value>Crystallography.Native.dll を無効化 (再起動が必要)</value>
+    <value>Crystallography.Native.dll を無効化 (要再起動)</value>
   </data>
   <data name="disableOpneGLToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>443, 24</value>
+    <value>417, 24</value>
   </data>
   <data name="disableOpneGLToolStripMenuItem.Text" xml:space="preserve">
-    <value>OpenGLを無効化 (再起動が必要)</value>
+    <value>OpenGLによる全てのレンダリングを無効化 (要再起動)</value>
   </data>
   <data name="toolStripMenuItemDisableTextRendering.Size" type="System.Drawing.Size, System.Drawing">
-    <value>443, 24</value>
+    <value>417, 24</value>
   </data>
   <data name="toolStripMenuItemDisableTextRendering.Text" xml:space="preserve">
-    <value>OpenGLによるテキストレンダリングを無効化 (再起動が必要)</value>
+    <value>OpenGLによるテキストレンダリングを無効化 (要再起動)</value>
+  </data>
+  <data name="toolStripMenuItemUseMKL.Size" type="System.Drawing.Size, System.Drawing">
+    <value>417, 24</value>
+  </data>
+  <data name="toolStripMenuItemUseMKL.Text" xml:space="preserve">
+    <value>MKL ライブラリを使用</value>
+  </data>
+  <data name="toolStripMenuItemUseMKL.ToolTipText" xml:space="preserve">
+    <value>Intel MKL を有効化し行列計算を高速化します。初回使用時に約55MBダウンロードします。</value>
   </data>
   <data name="toolStripSeparator20.Size" type="System.Drawing.Size, System.Drawing">
-    <value>440, 6</value>
+    <value>414, 6</value>
   </data>
   <data name="powderDiffractionFunctionToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>443, 24</value>
+    <value>417, 24</value>
   </data>
   <data name="toolStripSeparatorCapture.Size" type="System.Drawing.Size, System.Drawing">
-    <value>440, 6</value>
+    <value>414, 6</value>
   </data>
   <data name="captureGUIToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>443, 24</value>
+    <value>417, 24</value>
   </data>
   <data name="optionToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>86, 24</value>
@@ -1559,7 +1613,10 @@ v2</value>
 </value>
   </data>
   <data name="englishToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>236, 26</value>
+    <value>255, 26</value>
+  </data>
+  <data name="englishToolStripMenuItem.Text" xml:space="preserve">
+    <value>English (requires restart)</value>
   </data>
   <data name="japaneseToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -1570,7 +1627,10 @@ v2</value>
 </value>
   </data>
   <data name="japaneseToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>236, 26</value>
+    <value>255, 26</value>
+  </data>
+  <data name="japaneseToolStripMenuItem.Text" xml:space="preserve">
+    <value>Japanese (requires restart)</value>
   </data>
   <data name="languageToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>84, 24</value>

@@ -152,15 +152,45 @@ public partial class FormMovie : CaptureFormBase
             };
 
             encoding = true; //260405Cl
+
+            //進捗ダイアログを表示 260405Cl
+            var progressForm = new Form
+            {
+                Text = "Encoding...",
+                AutoScaleMode = AutoScaleMode.Dpi,
+                ClientSize = new System.Drawing.Size(500, 25),
+                FormBorderStyle = FormBorderStyle.FixedDialog,
+                StartPosition = FormStartPosition.CenterParent,
+                MinimizeBox = false, MaximizeBox = false, ControlBox = false,
+            };
+            var codecName = codec == VideoCodec.H264 ? "H.264" : "H.265"; //260405Cl
+            var progressBar = new ProgressBar { Dock = DockStyle.Fill, Maximum = frames.Count, Style = ProgressBarStyle.Continuous };
+            progressForm.Text = $"{codecName} / {speed} - 0.0% - 00:00:00 / --:--:--";
+            progressForm.Controls.Add(progressBar);
+            progressForm.Show(this);
+
+            var sw = System.Diagnostics.Stopwatch.StartNew(); //260405Cl
+            var progress = new Progress<int>(v =>
+            {
+                progressBar.Value = v;
+                var percent = 100.0 * v / frames.Count;
+                var elapsed = sw.Elapsed;
+                var remaining = v > 0 ? TimeSpan.FromTicks(elapsed.Ticks * (frames.Count - v) / v) : TimeSpan.Zero;
+                progressForm.Text = $"{codecName} / {speed} - {percent:0.0}% - {elapsed:hh\\:mm\\:ss} / {remaining:hh\\:mm\\:ss}";
+            });
             await Task.Run(() =>
             {
-                var settings = new VideoEncoderSettings(width, height, framerate, codec);
-                settings.EncoderPreset = preset;
+                var settings = new VideoEncoderSettings(width, height, framerate, codec)                {                    EncoderPreset = preset                };
                 using var file = MediaBuilder.CreateContainer(fileName).WithVideo(settings).Create();
                 var size = new System.Drawing.Size(width, height);
-                foreach (var frame in frames)
-                    file.Video.AddFrame(ImageData.FromArray(frame, ImagePixelFormat.Bgr24, size));
+                for (int i = 0; i < frames.Count; i++)
+                {
+                    file.Video.AddFrame(ImageData.FromArray(frames[i], ImagePixelFormat.Bgr24, size));
+                    ((IProgress<int>)progress).Report(i + 1);
+                }
             });
+
+            progressForm.Close();
             encoding = false; //260405Cl
 
             FormMain.Enabled = Caller.Enabled = true;
@@ -190,9 +220,6 @@ public partial class FormMovie : CaptureFormBase
         Visible = true;
     }
 
-    private void numericBoxAxisU_ReadOnlyChanged(object sender, EventArgs e)
-    {
-
-    }
+ 
 }
 

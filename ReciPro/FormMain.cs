@@ -149,6 +149,12 @@ public partial class FormMain : CaptureFormBase
         get => toolStripMenuItemDisableNative != null && toolStripMenuItemDisableNative.Checked;
         set => toolStripMenuItemDisableNative.Checked = value;
     }
+    //260405Cl 追加
+    public bool UseMKL
+    {
+        get => toolStripMenuItemUseMKL != null && toolStripMenuItemUseMKL.Checked;
+        set => toolStripMenuItemUseMKL.Checked = value;
+    }
     public static Languages Language => Thread.CurrentThread.CurrentUICulture.Name == "en" ? Languages.English : Languages.Japanese;
     public double Phi { get => (double)numericUpDownEulerPhi.Value / 180.0 * Math.PI; set => numericUpDownEulerPhi.Value = (decimal)(value / Math.PI * 180.0); }
     public double Theta { get => (double)numericUpDownEulerTheta.Value / 180.0 * Math.PI; set => numericUpDownEulerTheta.Value = (decimal)(value / Math.PI * 180.0); }
@@ -243,9 +249,23 @@ public partial class FormMain : CaptureFormBase
             return;
 
         //MainWindowの場所を読み込むため (InitializeComponentの後に読み込む)
+        //260405Cl 起動時はUseMKLのCheckedChangedを抑制 (ip未初期化、ダウンロードダイアログ抑制のため)
+        toolStripMenuItemUseMKL.CheckedChanged -= toolStripMenuItemUseMKL_CheckedChanged;
         Registry(Reg.Mode.Read);
+        toolStripMenuItemUseMKL.CheckedChanged += toolStripMenuItemUseMKL_CheckedChanged;
 
-
+        //260405Cl 起動時: UseMKLがチェックされていてDLLが存在する場合のみMKLを有効化
+        if (toolStripMenuItemUseMKL.Checked && MklFilesExist())
+        {
+            if (MathNet.Numerics.Control.TryUseNativeMKL())
+                BetheMethod.MklEnabled = true;
+            else
+                toolStripMenuItemUseMKL.Checked = false; //ロード失敗時はチェックを外す
+        }
+        else if (toolStripMenuItemUseMKL.Checked && !MklFilesExist())
+        {
+            toolStripMenuItemUseMKL.Checked = false; //DLLがない場合はチェックを外す
+        }
 
         sw.Restart();
 
@@ -536,6 +556,8 @@ public partial class FormMain : CaptureFormBase
             else if (mode == Reg.Mode.Write)
                 Reg.RW(key, mode, this, nameof(DisableNative), DisableNative);
 
+            //260405Cl MKLライブラリを使うかどうか
+            Reg.RW(key, mode, this, nameof(UseMKL), UseMKL);
 
             Reg.RW(key, mode, commonDialog, nameof(commonDialog.AutomaticallyClose), commonDialog.AutomaticallyClose);
 
@@ -1644,6 +1666,122 @@ public partial class FormMain : CaptureFormBase
 
     }
 
+    //260405Cl 追加: MKLライブラリのダウンロードと有効化
+    private static readonly string[] MklFileNames = ["libMathNetNumericsMKL.dll", "libiomp5md.dll"];
+    private static string MklDirectory => AppDomain.CurrentDomain.BaseDirectory;
+
+    private static bool MklFilesExist() => MklFileNames.All(f => File.Exists(Path.Combine(MklDirectory, f)));
+
+    private async void toolStripMenuItemUseMKL_CheckedChanged(object sender, EventArgs e)
+    {
+        if (toolStripMenuItemUseMKL.Checked)
+        {
+            if (!MklFilesExist())
+            {
+                var result = MessageBox.Show(
+                    "MKL library is not found.\r\nDownload Intel MKL native library (~55 MB)?",
+                    "Use MKL Library", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (result != DialogResult.Yes)
+                {
+                    toolStripMenuItemUseMKL.CheckedChanged -= toolStripMenuItemUseMKL_CheckedChanged;
+                    toolStripMenuItemUseMKL.Checked = false;
+                    toolStripMenuItemUseMKL.CheckedChanged += toolStripMenuItemUseMKL_CheckedChanged;
+                    return;
+                }
+
+                toolStripProgressBar.Visible = true;
+                sw.Restart();
+                try
+                {
+                    var progress = new Progress<(long Current, long Total, long ElapsedMilliseconds, string Message)>(p => ip.Report(p));
+                    await DownloadAndExtractMklAsync(progress);
+                    toolStripProgressBar.Visible = false;
+                    toolStripStatusLabel.Text = "MKL library downloaded successfully.";
+                }
+                catch (Exception ex)
+                {
+                    toolStripProgressBar.Visible = false;
+                    toolStripMenuItemUseMKL.CheckedChanged -= toolStripMenuItemUseMKL_CheckedChanged;
+                    toolStripMenuItemUseMKL.Checked = false;
+                    toolStripMenuItemUseMKL.CheckedChanged += toolStripMenuItemUseMKL_CheckedChanged;
+                    MessageBox.Show($"Failed to download MKL library.\r\n{ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+            }
+
+            // MKLを有効化
+            if (MathNet.Numerics.Control.TryUseNativeMKL())
+            {
+                BetheMethod.MklEnabled = true;
+                toolStripStatusLabel.Text = "MKL library enabled.";
+            }
+            else
+            {
+                toolStripMenuItemUseMKL.CheckedChanged -= toolStripMenuItemUseMKL_CheckedChanged;
+                toolStripMenuItemUseMKL.Checked = false;
+                toolStripMenuItemUseMKL.CheckedChanged += toolStripMenuItemUseMKL_CheckedChanged;
+                MessageBox.Show("Failed to load MKL library.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        else
+        {
+            // MKLを無効化 (managed実装にフォールバック)
+            MathNet.Numerics.Control.UseManaged();
+            BetheMethod.MklEnabled = false;
+            toolStripStatusLabel.Text = "MKL library disabled. Using managed implementation.";
+        }
+    }
+
+    private static readonly System.Net.Http.HttpClient mklHttpClient = new();
+
+    private async Task DownloadAndExtractMklAsync(IProgress<(long Current, long Total, long ElapsedMilliseconds, string Message)> progress)
+    {
+        var nupkgUrl = "https://www.nuget.org/api/v2/package/MathNet.Numerics.MKL.Win-x64/3.0.0";
+        var tempFile = Path.Combine(Path.GetTempPath(), "MathNet.Numerics.MKL.Win-x64.3.0.0.nupkg");
+
+        try
+        {
+            // NuGetパッケージをダウンロード
+            using (var response = await mklHttpClient.GetAsync(new Uri(nupkgUrl), System.Net.Http.HttpCompletionOption.ResponseHeadersRead))
+            {
+                response.EnsureSuccessStatusCode();
+                var totalBytes = response.Content.Headers.ContentLength ?? -1;
+                using var contentStream = await response.Content.ReadAsStreamAsync();
+                using var fileStream = new FileStream(tempFile, FileMode.Create, FileAccess.Write, FileShare.None, 8192, true);
+                var buffer = new byte[8192];
+                long bytesRead = 0;
+                int read;
+                long counter = 0;
+                while ((read = await contentStream.ReadAsync(buffer)) > 0)
+                {
+                    await fileStream.WriteAsync(buffer.AsMemory(0, read));
+                    bytesRead += read;
+                    if (counter++ % 10 == 0)
+                        progress?.Report(ProgramUpdates.ProgressMessage(bytesRead, totalBytes, sw));
+                }
+            }
+
+            // nupkgはZIPファイルなので展開してDLLを取り出す
+            using var archive = System.IO.Compression.ZipFile.OpenRead(tempFile);
+            foreach (var fileName in MklFileNames)
+            {
+                var entry = archive.GetEntry($"runtimes/win-x64/native/{fileName}");
+                if (entry != null)
+                {
+                    var destPath = Path.Combine(MklDirectory, fileName);
+                    using var entryStream = entry.Open();
+                    using var destStream = new FileStream(destPath, FileMode.Create, FileAccess.Write, FileShare.None);
+                    entryStream.CopyTo(destStream);
+                }
+            }
+        }
+        finally
+        {
+            if (File.Exists(tempFile))
+                File.Delete(tempFile);
+        }
+    }
 
     /// <summary>進捗状況を更新</summary>
     /// <param name="current"></param>
