@@ -4,8 +4,8 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>net10.0-windows10.0.26100.0</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
-    <AssemblyVersion>2026.4.4.0736</AssemblyVersion>
-    <FileVersion>2026.4.4.0736</FileVersion>
+    <AssemblyVersion>2026.4.5.0019</AssemblyVersion>
+    <FileVersion>2026.4.5.0019</FileVersion>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <ApplicationIcon>App.ico</ApplicationIcon>
@@ -100,7 +100,8 @@
     <Content Include="doc\ReciProManual(ja).pdf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="ffmpeg\ffmpeg.exe">
+    <!-- 260405Cl ffmpeg.exe → FFMediaToolkit + 最小DLLに変更 -->
+    <Content Include="ffmpeg\*.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="initial.xml">
@@ -123,6 +124,7 @@
 
   <ItemGroup>
     <PackageReference Include="BitMiracle.LibTiff.NET" Version="2.4.660" />
+    <PackageReference Include="FFMediaToolkit" Version="4.8.1" />
     <PackageReference Include="IronPython" Version="3.4.2" />
     <PackageReference Include="MathNet.Numerics" Version="6.0.0-beta2" />
     <PackageReference Include="MathNet.Numerics.MKL.Win-x64" Version="3.0.0" />
@@ -167,12 +169,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="ffmpeg\ffplay.exe">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="ffmpeg\ffprobe.exe">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
+    <!-- 260405Cl ffplay/ffprobe 削除 -->
     <None Update="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

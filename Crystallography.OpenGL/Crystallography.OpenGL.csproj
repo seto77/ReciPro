@@ -5,8 +5,8 @@
     <TargetFramework>net10.0-windows10.0.26100.0</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <AssemblyVersion>2026.4.4.0736</AssemblyVersion>
-    <FileVersion>2026.4.4.0736</FileVersion>
+    <AssemblyVersion>2026.4.4.2356</AssemblyVersion>
+    <FileVersion>2026.4.4.2356</FileVersion>
     <SupportedOSPlatformVersion>7.0</SupportedOSPlatformVersion>
     <Platforms>x64</Platforms>
     <!--

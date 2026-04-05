@@ -1,8 +1,13 @@
 ﻿using Crystallography.OpenGL;
-using System.Diagnostics;
+using FFMediaToolkit; //260405Cl 追加
+using FFMediaToolkit.Encoding; //260405Cl 追加
+using FFMediaToolkit.Graphics; //260405Cl 追加
 using System.Drawing;
+using System.Drawing.Imaging;
+using System.Collections.Generic; //260405Cl 追加
 using System.IO;
 using System.Reflection;
+using System.Threading.Tasks; //260405Cl 追加
 using System.Windows.Forms;
 
 namespace ReciPro;
@@ -24,6 +29,9 @@ public partial class FormMovie : CaptureFormBase
     public Vector3DBase C => FormMain.Crystal.C_Axis;
 
     public Matrix3D Rot => FormMain.Crystal.RotationMatrix;
+
+    private static bool ffmpegLoaded = false; //260405Cl 追加
+    private bool encoding = false; //260405Cl 追加: エンコード中フラグ
 
     public FormMovie()
     {
@@ -72,8 +80,11 @@ public partial class FormMovie : CaptureFormBase
         }
     }
 
-    private void buttonOK_Click(object sender, EventArgs e)
+    //260405Cl 変更: ffmpeg.exe Process.Start → FFMediaToolkit API, async化
+    //private void buttonOK_Click(object sender, EventArgs e) // 旧実装: ffmpeg.exe を Process.Start で呼び出し
+    private async void buttonOK_Click(object sender, EventArgs e)
     {
+        if (encoding) return; //260405Cl エンコード中は無視
         Visible = false;
 
         if (Direction.X == 0 && Direction.Y == 0 && Direction.Z == 0)
@@ -87,45 +98,70 @@ public partial class FormMovie : CaptureFormBase
         {
             FormMain.Enabled = Caller.Enabled = false;
 
-            //実行パスを取得
-            var path = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location) + "\\";
-
-            //pngファイルが残っている場合があるので念のため削除
-            foreach (var pathFrom in Directory.EnumerateFiles(path + "ffmpeg\\", "*.png"))
-                File.Delete(pathFrom);
+            //FFmpegライブラリの初期化 (初回のみ) 260405Cl
+            if (!ffmpegLoaded)
+            {
+                var ffmpegDir = Path.Combine(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location), "ffmpeg");
+                foreach (var name in new[] { "libwinpthread-1", "libgcc_s_seh-1", "libstdc++-6", "zlib1",
+                    "libx264-165", "libx265", "avutil-59", "swresample-5", "avcodec-61",
+                    "avformat-61", "swscale-8" })
+                    System.Runtime.InteropServices.NativeLibrary.Load(Path.Combine(ffmpegDir, name + ".dll"));
+                FFmpegLoader.FFmpegPath = ffmpegDir;
+                ffmpegLoaded = true;
+            }
 
             var framerate = 30;
-            var bmp = new Bitmap(2, 2);
+            var codec = radioButtonH264.Checked ? VideoCodec.H264 : VideoCodec.H265; //260405Cl 変更
+            var speed = (string)comboBoxSpeed.SelectedItem;
+
+            //UIスレッドで全フレームのビットマップデータを収集 260405Cl
+            var frames = new List<byte[]>();
+            int width = 0, height = 0;
             for (int i = 0; i < Duration * framerate; i++)
             {
                 FormMain.Rotate(Direction, Speed * Math.PI / framerate / 180.0);
-
-                if (Target is GLControlAlpha c)
-                    bmp = c.GenerateBitmap();
-                else
-                    bmp = Func();
-
+                var bmp = Target is GLControlAlpha c ? c.GenerateBitmap() : Func();
                 if (bmp.Width % 2 != 0 || bmp.Height % 2 != 0)
                     bmp = bmp.Clone(new Rectangle(0, 0, bmp.Width - bmp.Width % 2, bmp.Height - bmp.Height % 2), bmp.PixelFormat);
-
-                bmp.Save(path + $@"ffmpeg\{i:0000}.png", System.Drawing.Imaging.ImageFormat.Png);
+                width = bmp.Width;
+                height = bmp.Height;
+                //Bitmapのピクセルデータをbyte[]にコピー
+                var rect = new Rectangle(0, 0, bmp.Width, bmp.Height);
+                var bits = bmp.LockBits(rect, ImageLockMode.ReadOnly, PixelFormat.Format24bppRgb);
+                var stride = bits.Stride;
+                var data = new byte[stride * bmp.Height];
+                System.Runtime.InteropServices.Marshal.Copy(bits.Scan0, data, 0, data.Length);
+                bmp.UnlockBits(bits);
+                frames.Add(data);
             }
-            var codec = radioButtonH264.Checked ? "libx264" : "libx265";
-            var speed = (string)comboBoxSpeed.SelectedItem;
 
-            var p = Process.Start(new ProcessStartInfo()
+            //バックグラウンドスレッドでエンコード 260405Cl
+            var fileName = dlg.FileName;
+            var preset = speed switch
             {
-                WorkingDirectory = path + "ffmpeg",
-                FileName = path + "ffmpeg\\ffmpeg.exe",
-                Arguments = "-framerate 30 -i %04d.png -c:v " + codec + " -pix_fmt yuv420p -preset " + speed + " -tune animation -y out.mp4",
-                WindowStyle = ProcessWindowStyle.Minimized,
-            });
-            p.WaitForExit(120000);
-            File.Move(path + "ffmpeg\\out.mp4", dlg.FileName, true);
+                "ultrafast" => EncoderPreset.UltraFast,
+                "superfast" => EncoderPreset.SuperFast,
+                "veryfast" => EncoderPreset.VeryFast,
+                "faster" => EncoderPreset.Faster,
+                "fast" => EncoderPreset.Fast,
+                "medium" => EncoderPreset.Medium,
+                "slow" => EncoderPreset.Slow,
+                "slower" => EncoderPreset.Slower,
+                "veryslow" => EncoderPreset.VerySlow,
+                _ => EncoderPreset.Medium,
+            };
 
-            //pngファイル削除
-            foreach (var pathFrom in Directory.EnumerateFiles(path + "ffmpeg\\", "*.png"))
-                File.Delete(pathFrom);
+            encoding = true; //260405Cl
+            await Task.Run(() =>
+            {
+                var settings = new VideoEncoderSettings(width, height, framerate, codec);
+                settings.EncoderPreset = preset;
+                using var file = MediaBuilder.CreateContainer(fileName).WithVideo(settings).Create();
+                var size = new System.Drawing.Size(width, height);
+                foreach (var frame in frames)
+                    file.Video.AddFrame(ImageData.FromArray(frame, ImagePixelFormat.Bgr24, size));
+            });
+            encoding = false; //260405Cl
 
             FormMain.Enabled = Caller.Enabled = true;
         }
@@ -135,6 +171,7 @@ public partial class FormMovie : CaptureFormBase
 
     public void Execute(Control target, Form caller)
     {
+        if (encoding) return; //260405Cl エンコード中は開かない
         Target = target;
         Caller = caller;
         Location = new Point(caller.Location.X + 10, caller.Location.Y + 10);
@@ -144,6 +181,7 @@ public partial class FormMovie : CaptureFormBase
 
     public void Execute(Func<Bitmap> func, Form caller)
     {
+        if (encoding) return; //260405Cl エンコード中は開かない
         Target = null;
         Func = func;
         Caller = caller;

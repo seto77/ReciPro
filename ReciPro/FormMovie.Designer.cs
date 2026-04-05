@@ -674,7 +674,7 @@ partial class FormMovie
         // 
         comboBoxSpeed.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
         comboBoxSpeed.FormattingEnabled = true;
-        comboBoxSpeed.Items.AddRange(new object[] { "ultrafast", "superfast", "veryfast", "faster", "fast", "medium", "slow", "slower", "veryslow", "placebo" });
+        comboBoxSpeed.Items.AddRange(new object[] { "ultrafast", "superfast", "veryfast", "faster", "fast", "medium", "slow", "slower", "veryslow" }); //260405Cl "placebo"削除
         comboBoxSpeed.Location = new System.Drawing.Point(9, 366);
         comboBoxSpeed.Name = "comboBoxSpeed";
         comboBoxSpeed.Size = new System.Drawing.Size(75, 23);
