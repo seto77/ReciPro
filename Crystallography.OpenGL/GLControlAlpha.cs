@@ -148,6 +148,7 @@ public unsafe partial class GLControlAlpha : UserControl
 
     #region プロパティ
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)] //260405Cl 追加
     public string ToolTip { set { toolTip.SetToolTip(glControl, value); } }
 
     /// <summary>VisualStudioデザイナーの編集の時はTrue</summary>
@@ -179,10 +180,12 @@ public unsafe partial class GLControlAlpha : UserControl
     // this application
 
     /// <summary>画像の最大幅 (PPLLのパラメータ)</summary>
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)] //260405Cl 追加
     [Category("Rendering properties")]
     public int MaxWidth { get; set; } = 2560;
 
     /// <summary>画像の最大高さ (PPLLのパラメータ)</summary>
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)] //260405Cl 追加
     [Category("Rendering properties")]
     public int MaxHeight { get; set; } = 1440;
 
@@ -191,14 +194,17 @@ public unsafe partial class GLControlAlpha : UserControl
     /// ここの数値をどれくらい大きくするか。オリジナルでは20にしていたが。。。
     /// この値を変更しても、SetShader()は実行されない (その後FragShaderを変更する必要あり)。
     /// </summary>
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)] //260405Cl 追加
     [Category("Rendering properties")]
     public int NodeCoefficient { get; set; } = 10;
 
     /// <summary>PPLL時に、どれだけの数の重なり合いを考慮するかをパラメータ.</summary>
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)] //260405Cl 追加
     [Category("Rendering properties")]
     public int MaxFragments { get; set; } = 100;
 
     /// <summary>DDP 時に最大何回 peel pass を回すか. 1 pass で前後 2 層ずつ進む。</summary>
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)] //260405Cl 追加
     [Category("Rendering properties")]
     public int DualDepthPeelingPasses { get; set; } = 12; // (260319Ch) 品質と速度の中間点として 24 層相当を既定値にする
 
@@ -206,10 +212,12 @@ public unsafe partial class GLControlAlpha : UserControl
     /// DDP peel loop の終了判定に occlusion query を使うか。
     /// 既定では GPU/CPU stall を避けるため無効。
     /// </summary>
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)] //260405Cl 追加
     [Category("Rendering properties")]
     public bool DualDepthPeelingUseOcclusionQuery { get; set; } = false; // (260319Ch) 速度優先の既定値では query の同期待ちを避ける
 
     /// <summary>OIT 系パスの最終画像に対する後段 AA.</summary>
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)] //260405Cl 追加
     [Category("Rendering properties")]
     public PostAntiAliasingModes PostAntiAliasing
     {
@@ -233,6 +241,7 @@ public unsafe partial class GLControlAlpha : UserControl
 
     #region Depth Cueing
     /// <summary>Depth cueingのプロパティ。変更すると、SetDepthCueing()が走る.</summary>
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)] //260405Cl 追加
     [Category("Rendering properties")]
     public (bool Enabled, double Zfar, double Znear) DepthCueing
     {
@@ -254,20 +263,25 @@ public unsafe partial class GLControlAlpha : UserControl
 
     #region マウス関連
     /// <summary>マウスによる回転操作を許可するか</summary>
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)] //260405Cl 追加
     [Category("Mouse Operation")]
     public bool AllowMouseRotation { get; set; } = true;
 
     /// <summary>マウスによる平行移動操作を許可するか</summary>
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)] //260405Cl 追加
     [Category("Mouse Operation")]
     public bool AllowMouseTranslating { get; set; } = true;
 
     /// <summary>マウスによるスケーリング操作を許可するか</summary>
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)] //260405Cl 追加
     [Category("Mouse Operation")]
     public bool AllowMouseScaling { get; set; } = true;
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)] //260405Cl 追加
     [Category("Mouse Operation")]
     public RotationModes RotationMode { get; set; } = RotationModes.Object;
 
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)] //260405Cl 追加
     [Category("Mouse Operation")]
     public TranslatingModes TranslatingMode { get; set; } = TranslatingModes.View;
 
@@ -275,6 +289,7 @@ public unsafe partial class GLControlAlpha : UserControl
 
 
     /// <summary>投影モード</summary>
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)] //260405Cl 追加
     [Category("Rendering properties")]
     public ProjectionModes ProjectionMode { get => projectionMode; set { projectionMode = value; setProjMatrix(); } }
     private ProjectionModes projectionMode = ProjectionModes.Orhographic;
@@ -379,6 +394,7 @@ public unsafe partial class GLControlAlpha : UserControl
     private Vec2d projCenter = new(0, 0);
 
     /// <summary>投影面の横の長さ(GL空間での単位)</summary>
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)] //260405Cl 追加
     [Category("Geometry")]
     public double ProjWidth { get => projWidth; set { projWidth = value; setProjMatrix(); } }
 

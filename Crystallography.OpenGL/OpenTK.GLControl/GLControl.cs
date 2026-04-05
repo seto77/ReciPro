@@ -43,6 +43,7 @@ namespace OpenTK.GLControl
         /// Gets or sets a value representing the current graphics API.
         /// This value cannot be changed after the control has been initialized (before <see cref="OnHandleCreated(EventArgs)"/> is triggered).
         /// </summary>
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)] //260405Cl 追加
         [Category("OpenGL")]
         public ContextAPI API
         {
@@ -64,6 +65,7 @@ namespace OpenTK.GLControl
         /// Gets or sets a value representing the current graphics API profile.
         /// This value cannot be changed after the control has been initialized (before <see cref="OnHandleCreated(EventArgs)"/> is triggered).
         /// </summary>
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)] //260405Cl 追加
         [Category("OpenGL")]
         public ContextProfile Profile
         {
@@ -85,6 +87,7 @@ namespace OpenTK.GLControl
         /// Gets or sets a value representing the current graphics profile flags.
         /// This value cannot be changed after the control has been initialized (before <see cref="OnHandleCreated(EventArgs)"/> is triggered).
         /// </summary>
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)] //260405Cl 追加
         [Category("OpenGL")]
         public ContextFlags Flags
         {
@@ -106,6 +109,7 @@ namespace OpenTK.GLControl
         /// Gets or sets a value representing the current version of the graphics API.
         /// This value cannot be changed after the control has been initialized (before <see cref="OnHandleCreated(EventArgs)"/> is triggered).
         /// </summary>
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)] //260405Cl 追加
         [Category("OpenGL")]
         public Version APIVersion
         {
@@ -127,6 +131,7 @@ namespace OpenTK.GLControl
         /// Gets or sets the <see cref="GLControl"/> used to share OpenGL resources.
         /// This value cannot be changed after the control has been initialized (before <see cref="OnHandleCreated(EventArgs)"/> is triggered).
         /// </summary>
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)] //260405Cl 追加
         [Category("OpenGL")]
         public GLControl? SharedContext
         {
@@ -154,6 +159,7 @@ namespace OpenTK.GLControl
         /// An event-driven window will wait for events before updating/rendering. It is useful for non-game applications,
         /// where the program only needs to do any processing after the user inputs something.
         /// </summary>
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)] //260405Cl 追加
         [Category("Behavior")]
         public bool IsEventDriven
         {
