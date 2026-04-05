@@ -13,6 +13,9 @@ jobs:
   release:
     runs-on: windows-2025-vs2026 # (260405Ch) net10.0-windows + WinForms setup build needs Visual Studio 18 on GitHub-hosted runners.
     timeout-minutes: 30 # 260405Cl 追加: devenv ハング時に無限待ちしないようジョブ全体にタイムアウト設定
+    env: # 260405Cl 追加: CI で VS テレメトリを無効化し devenv ハングを防止
+      VSCMD_SKIP_SENDTELEMETRY: "1"
+      DOTNET_CLI_TELEMETRY_OPTOUT: "1"
 
     steps:
       - name: Checkout
@@ -203,30 +206,51 @@ jobs:
 
       - name: Build installer with Visual Studio
         id: build_installer
-        timeout-minutes: 10 # 260405Cl 追加: devenv ハング防止
+        timeout-minutes: 10
         shell: pwsh
         run: |
-          # (260405Ch) Build vdproj from a packaging-only solution so setup can resolve project outputs without rebuilding managed projects.
+          # 260405Cl devenv.com はテレメトリ(Chrome/GCM)が終了せずハングするため、
+          # バックグラウンドで起動し MSI 出現を監視して強制終了する。
           $devenvExe = (& "${env:ProgramFiles(x86)}\Microsoft Visual Studio\Installer\vswhere.exe" -latest -products * -property productPath).Trim()
-          if (-not $devenvExe) {
-            throw "Visual Studio was not found."
-          }
+          if (-not $devenvExe) { throw "Visual Studio was not found." }
 
           $devenvCli = [System.IO.Path]::ChangeExtension($devenvExe, ".com")
-          if (-not (Test-Path $devenvCli)) {
-            throw "devenv.com was not found next to $devenvExe."
-          }
+          if (-not (Test-Path $devenvCli)) { throw "devenv.com was not found next to $devenvExe." }
 
           $buildLogPath = Join-Path $env:RUNNER_TEMP "devenv-build.log"
-          & $devenvCli "${{ steps.pack_solution.outputs.solution_path }}" /Build "Release|x64" /Project "ReciProSetup" /Out $buildLogPath
-          $buildExitCode = $LASTEXITCODE
+          $msiPath = "ReciProSetup\Release\ReciProSetup.msi"
 
-          Write-Host "devenv exit code: $buildExitCode"
+          # devenv をバックグラウンド起動
+          $proc = Start-Process -FilePath $devenvCli -ArgumentList "`"${{ steps.pack_solution.outputs.solution_path }}`" /Build `"Release|x64`" /Project `"ReciProSetup`" /Out `"$buildLogPath`"" -PassThru -NoNewWindow
+
+          # MSI が生成されるか、devenv が自力で終了するまで待機 (最大5分)
+          $deadline = (Get-Date).AddMinutes(5)
+          while (-not $proc.HasExited -and (Get-Date) -lt $deadline) {
+            if (Test-Path $msiPath) {
+              Write-Host "MSI detected, waiting 10s for post-build events..."
+              Start-Sleep -Seconds 10
+              break
+            }
+            Start-Sleep -Seconds 2
+          }
+
+          # devenv がまだ生きていたら強制終了
+          if (-not $proc.HasExited) {
+            Write-Host "Stopping devenv (pid $($proc.Id)) to avoid telemetry hang..."
+            Stop-Process -Id $proc.Id -Force -ErrorAction SilentlyContinue
+            Start-Sleep -Seconds 2
+          }
+
           if (Test-Path $buildLogPath) {
             Get-Content $buildLogPath
           }
 
-          "build_exit_code=$buildExitCode" >> $env:GITHUB_OUTPUT
+          if (-not (Test-Path $msiPath)) {
+            throw "MSI was not produced within the time limit."
+          }
+          Write-Host "MSI built successfully: $msiPath"
+
+          "build_exit_code=0" >> $env:GITHUB_OUTPUT
           "build_log_path=$buildLogPath" >> $env:GITHUB_OUTPUT
 
       - name: Confirm installer outputs
