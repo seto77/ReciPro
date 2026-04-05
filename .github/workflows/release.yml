@@ -100,11 +100,111 @@ jobs:
             Write-Host "Set DisableOutOfProcBuild=1 at $msbuildKey"
           }
 
+      - name: Build native runtime binaries
+        shell: pwsh
+        run: |
+          # (260405Ch) Build Crystallography.Native separately because the main solution build does not include it in Release|x64.
+          $devenvExe = (& "${env:ProgramFiles(x86)}\Microsoft Visual Studio\Installer\vswhere.exe" -latest -products * -property productPath).Trim()
+          if (-not $devenvExe) {
+            throw "Visual Studio was not found."
+          }
+
+          $devenvCli = [System.IO.Path]::ChangeExtension($devenvExe, ".com")
+          if (-not (Test-Path $devenvCli)) {
+            throw "devenv.com was not found next to $devenvExe."
+          }
+
+          $buildLogPath = Join-Path $env:RUNNER_TEMP "devenv-native-build.log"
+          & $devenvCli "ReciPro.sln" /Build "Release|x64" /Project "Crystallography.Native" /Out $buildLogPath
+          $buildExitCode = $LASTEXITCODE
+
+          if (Test-Path $buildLogPath) {
+            Get-Content $buildLogPath
+          }
+
+          if ($buildExitCode -ne 0) {
+            throw "Crystallography.Native build failed with exit code $buildExitCode."
+          }
+
+      - name: Build managed application
+        shell: pwsh
+        run: |
+          # (260405Ch) Build managed projects with dotnet to avoid devenv-triggered file locking inside obj during CI.
+          dotnet build ReciPro\ReciPro.csproj -c Release -p:Platform=x64 --no-restore
+
+      - name: Confirm packaging inputs
+        shell: pwsh
+        run: |
+          # (260405Ch) Validate that setup packaging prerequisites exist before running the setup project.
+          $requiredOutputs = @(
+            "ReciPro\bin\Release\ReciPro.exe",
+            "ReciPro\bin\Release\Crystallography.Native.dll",
+            "ReciPro\bin\Release\Crystallography.Native.avx2.dll",
+            "ReciPro\bin\Release\Crystallography.Native.avx512.dll"
+          )
+
+          $missingOutputs = $requiredOutputs | Where-Object { -not (Test-Path $_) }
+          if ($missingOutputs.Count -gt 0) {
+            throw "Setup packaging inputs are missing: $($missingOutputs -join ', ')"
+          }
+
+      - name: Create installer-only solution
+        id: pack_solution
+        shell: pwsh
+        run: |
+          # (260405Ch) Generate a temporary solution that keeps project output metadata for vdproj while skipping managed rebuilds.
+          $solutionPath = Join-Path (Get-Location) "ReciProSetup.CI.sln"
+          @'
+          Microsoft Visual Studio Solution File, Format Version 12.00
+          # Visual Studio Version 18
+          VisualStudioVersion = 18.0.11205.157
+          MinimumVisualStudioVersion = 10.0.40219.1
+          Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReciPro", "ReciPro\ReciPro.csproj", "{D01883A1-458D-4127-8E9B-EEC176201483}"
+          EndProject
+          Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Crystallography", "Crystallography\Crystallography.csproj", "{3AABEFB0-E84E-4AF6-8496-4D1F33C8F517}"
+          EndProject
+          Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Crystallography.Controls", "Crystallography.Controls\Crystallography.Controls.csproj", "{FD96FE43-6DEE-4520-BB26-CFF7976DE27D}"
+          EndProject
+          Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Crystallography.OpenGL", "Crystallography.OpenGL\Crystallography.OpenGL.csproj", "{BE7CC301-70E0-4BAA-9349-FDA49B38CC93}"
+          EndProject
+          Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Crystallography.Native", "Crystallography.Native\Crystallography.Native.vcxproj", "{0A6070E5-8843-4C4B-A4ED-4ABC55BFDBDD}"
+          EndProject
+          Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "ReciProSetup", "ReciProSetup\ReciProSetup.vdproj", "{8083E96B-786B-4351-87EF-8546C9C8B297}"
+          EndProject
+          Global
+          	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+          		Debug|x64 = Debug|x64
+          		Release|x64 = Release|x64
+          	EndGlobalSection
+          	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+          		{D01883A1-458D-4127-8E9B-EEC176201483}.Debug|x64.ActiveCfg = Debug|x64
+          		{D01883A1-458D-4127-8E9B-EEC176201483}.Release|x64.ActiveCfg = Release|x64
+          		{3AABEFB0-E84E-4AF6-8496-4D1F33C8F517}.Debug|x64.ActiveCfg = Debug|x64
+          		{3AABEFB0-E84E-4AF6-8496-4D1F33C8F517}.Release|x64.ActiveCfg = Release|x64
+          		{FD96FE43-6DEE-4520-BB26-CFF7976DE27D}.Debug|x64.ActiveCfg = Debug|x64
+          		{FD96FE43-6DEE-4520-BB26-CFF7976DE27D}.Release|x64.ActiveCfg = Release|x64
+          		{BE7CC301-70E0-4BAA-9349-FDA49B38CC93}.Debug|x64.ActiveCfg = Debug|x64
+          		{BE7CC301-70E0-4BAA-9349-FDA49B38CC93}.Release|x64.ActiveCfg = Release|x64
+          		{0A6070E5-8843-4C4B-A4ED-4ABC55BFDBDD}.Debug|x64.ActiveCfg = Debug|x64
+          		{0A6070E5-8843-4C4B-A4ED-4ABC55BFDBDD}.Release|x64.ActiveCfg = Release|x64
+          		{8083E96B-786B-4351-87EF-8546C9C8B297}.Debug|x64.ActiveCfg = Debug
+          		{8083E96B-786B-4351-87EF-8546C9C8B297}.Debug|x64.Build.0 = Debug
+          		{8083E96B-786B-4351-87EF-8546C9C8B297}.Release|x64.ActiveCfg = Release
+          		{8083E96B-786B-4351-87EF-8546C9C8B297}.Release|x64.Build.0 = Release
+          	EndGlobalSection
+          	GlobalSection(SolutionProperties) = preSolution
+          		HideSolutionNode = FALSE
+          	EndGlobalSection
+          EndGlobal
+          '@ | Set-Content -Path $solutionPath -Encoding ASCII
+
+          "solution_path=$solutionPath" >> $env:GITHUB_OUTPUT
+
       - name: Build installer with Visual Studio
         id: build_installer
         shell: pwsh
         run: |
-          # (260405Ch) Use devenv.com for command-line builds so the workflow waits for vdproj build completion and captures logs.
+          # (260405Ch) Build vdproj from a packaging-only solution so setup can resolve project outputs without rebuilding managed projects.
           $devenvExe = (& "${env:ProgramFiles(x86)}\Microsoft Visual Studio\Installer\vswhere.exe" -latest -products * -property productPath).Trim()
           if (-not $devenvExe) {
             throw "Visual Studio was not found."
@@ -116,7 +216,7 @@ jobs:
           }
 
           $buildLogPath = Join-Path $env:RUNNER_TEMP "devenv-build.log"
-          & $devenvCli "ReciPro.sln" /Build "Release|x64" /Project "ReciProSetup" /Out $buildLogPath
+          & $devenvCli "${{ steps.pack_solution.outputs.solution_path }}" /Build "Release|x64" /Project "ReciProSetup" /Out $buildLogPath
           $buildExitCode = $LASTEXITCODE
 
           Write-Host "devenv exit code: $buildExitCode"
