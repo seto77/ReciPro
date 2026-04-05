@@ -26,6 +26,22 @@ jobs:
         shell: pwsh
         run: dotnet restore ReciPro\ReciPro.csproj
 
+      - name: Confirm installer project sources
+        shell: pwsh
+        run: |
+          # (260405Ch) Fail early with a clear message if installer project sources were not committed to GitHub.
+          $requiredSources = @(
+            "ReciProSetup\ReciProSetup.vdproj",
+            "ReciProSetup\EnableLaunchApplication.js",
+            "LICENSE.rtf",
+            "REQUIREMENT.rtf"
+          )
+
+          $missingSources = $requiredSources | Where-Object { -not (Test-Path $_) }
+          if ($missingSources.Count -gt 0) {
+            throw "Installer source files are missing from the checkout: $($missingSources -join ', ')"
+          }
+
       - name: Read release info from Version.cs
         id: version_info
         shell: pwsh
