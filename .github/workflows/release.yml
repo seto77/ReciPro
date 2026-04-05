@@ -6,6 +6,7 @@ on:
     branches: [master]
     paths:
       - "ReciPro/Version.cs"
+  workflow_dispatch: # GitHub Actions UI から手動トリガー可能
 
 permissions:
   contents: write
@@ -47,12 +48,17 @@ jobs:
           $notesPath = Join-Path $env:RUNNER_TEMP "release-notes.txt"
           $historyLine | Set-Content -Path $notesPath -Encoding UTF8
 
-          Write-Host "New version detected: $ver (tag: $tag)"
+          # AssemblyVersion / FileVersion 用のタイムスタンプ (yyyy.M.d.HHmm UTC)
+          $now = [System.DateTime]::UtcNow
+          $assemblyVer = "$($now.Year).$($now.Month).$($now.Day).$($now.ToString('HHmm'))"
+
+          Write-Host "New version detected: $ver (tag: $tag, assembly: $assemblyVer)"
           "needed=true"           >> $env:GITHUB_OUTPUT
           "version=$ver"          >> $env:GITHUB_OUTPUT
           "tag=$tag"              >> $env:GITHUB_OUTPUT
           "product_version=0.$ver" >> $env:GITHUB_OUTPUT
           "notes_path=$notesPath" >> $env:GITHUB_OUTPUT
+          "assembly_version=$assemblyVer" >> $env:GITHUB_OUTPUT
 
       # ---- 以降、新バージョンが検出されたときのみ実行 ----
 
@@ -91,7 +97,7 @@ jobs:
       - name: Build managed application
         if: steps.version.outputs.needed == 'true'
         shell: pwsh
-        run: dotnet build ReciPro\ReciPro.csproj -c Release -p:Platform=x64 --no-restore
+        run: dotnet build ReciPro\ReciPro.csproj -c Release -p:Platform=x64 -p:AssemblyVersion=${{ steps.version.outputs.assembly_version }} -p:FileVersion=${{ steps.version.outputs.assembly_version }} --no-restore
 
       - name: Update installer version in vdproj
         if: steps.version.outputs.needed == 'true'
