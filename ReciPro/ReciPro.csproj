@@ -2,10 +2,10 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net10.0-windows10.0.26100.0</TargetFramework>
+    <TargetFramework>net10.0-windows</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
-    <AssemblyVersion>2026.4.5.0352</AssemblyVersion>
-    <FileVersion>2026.4.5.0352</FileVersion>
+    <AssemblyVersion>2026.4.5.0622</AssemblyVersion>
+    <FileVersion>2026.4.5.0622</FileVersion>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <ApplicationIcon>App.ico</ApplicationIcon>
@@ -27,7 +27,7 @@
     <TieredCompilation>true</TieredCompilation>
     <TieredPGO>true</TieredPGO>
     <!-- <NoWarn>$(NoWarn);SYSLIB0051</NoWarn> -->
-    <NoWarn>$(NoWarn);SYSLIB0051</NoWarn><!-- (260404Ch) Typed DataSet generated serialization code emits obsolete formatter warnings on net10. -->
+    <NoWarn>$(NoWarn);SYSLIB0051;WFO1000</NoWarn><!-- (260404Ch) SYSLIB0051: Typed DataSet serialization; (260405Cl) WFO1000: DesignerSerializationVisibility on net10 -->
     <!-- 260402Cl 追加: ServerGC + DATAS無効化 (ベンチマーク比較用) -->
     <ServerGarbageCollection>true</ServerGarbageCollection>
     <Platforms>x64</Platforms>
