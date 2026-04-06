@@ -22,7 +22,7 @@
 * *ReciPro* runs on Windows OS with ***.Net Desktop Runtime 10.0*** (NOT ***.Net Runtime 10.0***), which can be installed from [here](https://dotnet.microsoft.com/download/dotnet/10.0).
 * *ReciPro* is distributed under the **MIT license** (free for anyone to use, modify, and redistribute).
 
-### Note on Windows Security Warnings (260320Ch)
+### Note on Windows Security Warnings
 
 * Please download *ReciPro* only from the official GitHub Releases page: https://github.com/seto77/ReciPro/releases/latest
 * On some Windows systems, Microsoft Defender SmartScreen or Smart App Control may display a warning before the installer is executed. This may happen for newly built or narrowly distributed research software, and the warning itself does not necessarily mean that the installer is malicious.
