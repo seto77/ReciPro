@@ -43,7 +43,7 @@
             buttonViewFromSurfaceNormal = new System.Windows.Forms.Button();
             buttonFromX = new System.Windows.Forms.Button();
             buttonViewFromZ = new System.Windows.Forms.Button();
-            button2 = new System.Windows.Forms.Button();
+            buttonCalcBSE = new System.Windows.Forms.Button();
             buttonFitNistElasticSampler = new System.Windows.Forms.Button();
             graphControlDepthProfile = new GraphControl();
             poleFigureControl = new PoleFigureControl2();
@@ -144,7 +144,7 @@
             labelMasterPattern2DHemisphere = new System.Windows.Forms.Label();
             comboBoxMasterPattern2DHemisphere = new System.Windows.Forms.ComboBox();
             buttonCreateMasterPattern = new System.Windows.Forms.Button();
-            labelMasterPatternInfo = new System.Windows.Forms.Label();
+            // labelMasterPatternInfo = new System.Windows.Forms.Label(); // 260406Cl 廃止
             panelMasterPattern3D = new System.Windows.Forms.Panel();
             panelMasterPattern3DAxes = new System.Windows.Forms.Panel();
             groupBoxMasterPattern = new System.Windows.Forms.GroupBox();
@@ -271,12 +271,12 @@
             buttonViewFromZ.UseVisualStyleBackColor = true;
             buttonViewFromZ.Click += buttonViewFromZ_Click;
             // 
-            // button2
+            // buttonCalcBSE
             // 
-            resources.ApplyResources(button2, "button2");
-            button2.Name = "button2";
-            button2.UseVisualStyleBackColor = true;
-            button2.Click += buttonBSE_Click;
+            resources.ApplyResources(buttonCalcBSE, "buttonCalcBSE");
+            buttonCalcBSE.Name = "buttonCalcBSE";
+            buttonCalcBSE.UseVisualStyleBackColor = true;
+            buttonCalcBSE.Click += buttonBSE_Click;
             // 
             // buttonFitNistElasticSampler
             // 
@@ -995,7 +995,7 @@
             resources.ApplyResources(tabPage2, "tabPage2");
             tabPage2.BackColor = System.Drawing.SystemColors.Control;
             tabPage2.Controls.Add(label15);
-            tabPage2.Controls.Add(button2);
+            tabPage2.Controls.Add(buttonCalcBSE);
             tabPage2.Controls.Add(label13);
             tabPage2.Controls.Add(checkBoxDrawAxesInStereonet);
             tabPage2.Controls.Add(label14);
@@ -1280,11 +1280,9 @@
             buttonCreateMasterPattern.Name = "buttonCreateMasterPattern";
             buttonCreateMasterPattern.UseVisualStyleBackColor = false;
             buttonCreateMasterPattern.Click += buttonCreateMasterPattern_Click;
-            // 
-            // labelMasterPatternInfo
-            // 
-            resources.ApplyResources(labelMasterPatternInfo, "labelMasterPatternInfo");
-            labelMasterPatternInfo.Name = "labelMasterPatternInfo";
+            // 260406Cl labelMasterPatternInfo 廃止 (ステータスバーに統合)
+            // resources.ApplyResources(labelMasterPatternInfo, "labelMasterPatternInfo");
+            // labelMasterPatternInfo.Name = "labelMasterPatternInfo";
             // 
             // panelMasterPattern3D
             // 
@@ -1311,7 +1309,7 @@
             groupBoxMasterPattern.Controls.Add(panelMasterPattern3D);
             groupBoxMasterPattern.Controls.Add(buttonFitNistElasticSampler);
             groupBoxMasterPattern.Controls.Add(flowLayoutPanelMasterPatternSelectors);
-            groupBoxMasterPattern.Controls.Add(labelMasterPatternInfo);
+            // groupBoxMasterPattern.Controls.Add(labelMasterPatternInfo); // 260406Cl 廃止
             groupBoxMasterPattern.Name = "groupBoxMasterPattern";
             groupBoxMasterPattern.TabStop = false;
             // 
@@ -1438,9 +1436,8 @@
             // groupBoxEBSDPattern
             // 
             resources.ApplyResources(groupBoxEBSDPattern, "groupBoxEBSDPattern");
-            groupBoxEBSDPattern.Controls.Add(flowLayoutPanel1);
             groupBoxEBSDPattern.Controls.Add(graphicsBox);
-            groupBoxEBSDPattern.Controls.Add(buttonSaveImage);
+            groupBoxEBSDPattern.Controls.Add(flowLayoutPanel1);
             groupBoxEBSDPattern.Controls.Add(groupBoxOutput);
             groupBoxEBSDPattern.Name = "groupBoxEBSDPattern";
             groupBoxEBSDPattern.TabStop = false;
@@ -1448,6 +1445,7 @@
             // flowLayoutPanel1
             // 
             resources.ApplyResources(flowLayoutPanel1, "flowLayoutPanel1");
+            flowLayoutPanel1.Controls.Add(buttonSaveImage);
             flowLayoutPanel1.Controls.Add(checkBoxShowOverlays);
             flowLayoutPanel1.Controls.Add(checkBoxShowDyanmicalEBSD);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
@@ -1550,7 +1548,7 @@
         private System.Windows.Forms.Button buttonViewFromZ;
         private System.Windows.Forms.Button buttonFromX;
         private System.Windows.Forms.Button buttonViewFromSurfaceNormal;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button buttonCalcBSE;
         private System.Windows.Forms.Button buttonFitNistElasticSampler;
         private PoleFigureControl2 poleFigureControl;
         private System.Windows.Forms.CheckBox checkBoxDrawAxesInStereonet;
@@ -1643,7 +1641,7 @@
         private System.Windows.Forms.Label labelMasterPatternDepthUnit;
         private System.Windows.Forms.TrackBar trackBarMasterPatternDepth;
         private System.Windows.Forms.Button buttonCreateMasterPattern;
-        private System.Windows.Forms.Label labelMasterPatternInfo;
+        // private System.Windows.Forms.Label labelMasterPatternInfo; // 260406Cl 廃止
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelMasterPatternSelectors;
         private System.Windows.Forms.GroupBox groupBoxMasterPattern;
         private System.Windows.Forms.Button buttonMasterPattern3DCopy;

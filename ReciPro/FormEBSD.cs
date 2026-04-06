@@ -81,6 +81,8 @@ public partial class FormEBSD : CaptureFormBase
     private int masterPattern3DCacheGridSize = 0; // (260322Ch) 旧名: masterPattern3DPreviewGridSize。0 は有効な MasterPattern3D キャッシュが未作成であることを示す
     private MasterPattern.Types masterPattern3DCacheGridType = MasterPattern.Types.Square; // 260331Cl
     private long masterPatternMonteCarloElapsedMilliseconds = 0; // (260327Ch) MasterPattern build 前段の MC + fitting の経過時間
+    private System.Threading.CancellationTokenSource monteCarloCts; // 260406Cl 追加: MonteCarlo 計算のキャンセル用
+    private void DisposeMonteCarloCts() { monteCarloCts?.Dispose(); monteCarloCts = null; } // 260406Cl 追加
 
     private EbsdMonteCarloDistribution mcDistribution = null; // 260325Cl 追加: MC フィッティング結果
     private MonteCarloDistributionDepthMode monteCarloDistributionDepthMode = MonteCarloDistributionDepthMode.LastInelasticEventDepth; // (260331Ch) MasterPattern 重み付けに使う z は既定で last inelastic depth
@@ -717,13 +719,13 @@ public partial class FormEBSD : CaptureFormBase
         var zoneAxis = numericBoxMasterPattern3DViewAlongU.Value * Crystal.A_Axis + numericBoxMasterPattern3DViewAlongV.Value * Crystal.B_Axis + numericBoxMasterPattern3DViewAlongW.Value * Crystal.C_Axis; // (260322Ch) 結晶学的 [u v w] を実空間ベクトルへ変換する
         if (zoneAxis.Length2 < 1e-12)
         {
-            toolStripStatusLabel1.Text = "Zone axis [u v w] cannot be [0 0 0]."; // (260322Ch) 無効な軸指定はそのまま無視せず状態欄へ知らせる
+            toolStripStatusLabel2.Text = "Zone axis [u v w] cannot be [0 0 0]."; // (260322Ch) 無効な軸指定はそのまま無視せず状態欄へ知らせる // 260406Cl Label1→Label2: 進捗専用に整理
             return;
         }
 
         // glControlMasterPattern3D.WorldMatrix = GLGeometry.CreateRotationToZ(zoneAxis.ToOpenTK()).ToMatrix4d(); // (260322Ch) 旧検討: Z軸を zone axis 側へ倒すと「axis 方向から眺める」向きと逆になる
         glControlMasterPattern3D.WorldMatrix = GLGeometry.CreateRotationFromZ(zoneAxis.ToOpenTK()).ToMatrix4d(); // (260322Ch) zone axis が viewer の +Z 方向を向くように回転する
-        toolStripStatusLabel1.Text = $"MasterPattern3D view: [{numericBoxMasterPattern3DViewAlongU.Value:g} {numericBoxMasterPattern3DViewAlongV.Value:g} {numericBoxMasterPattern3DViewAlongW.Value:g}]"; // (260322Ch)
+        toolStripStatusLabel2.Text = $"MasterPattern3D view: [{numericBoxMasterPattern3DViewAlongU.Value:g} {numericBoxMasterPattern3DViewAlongV.Value:g} {numericBoxMasterPattern3DViewAlongW.Value:g}]"; // (260322Ch) // 260406Cl Label1→Label2: 進捗専用に整理
     }
 
     #endregion
@@ -1618,7 +1620,9 @@ public partial class FormEBSD : CaptureFormBase
             graphics.DrawImage(bmp, new RectangleD(-DetR, -DetR - Foot.Y, DetR * 2, DetR * 2));
         }
 
-        toolStripStatusLabel1.Text = statusText;
+        // toolStripStatusLabel1.Text = statusText; // 260406Cl Label1は進捗専用に整理。描画結果の説明はLabel2+Label3へ分割
+        toolStripStatusLabel2.Text = "EBSD rendering";
+        toolStripStatusLabel3.Text = statusText;
 
         skipEBSD_Rendering = false;
     }
@@ -1987,14 +1991,16 @@ public partial class FormEBSD : CaptureFormBase
 
     #region モンテカルロ法による飛程シミュレーション
     /// <summary>モンテカルロによる飛程シミュレーション</summary>
+    // private static ... RunBackscatterMonteCarlo(..., Action<int, int> reportProgress = null) // 260406Cl 旧シグネチャ: CancellationToken なし
     private static (double Depth, V3 Vec, PointD Position, double Energy, double TotalEnergyLoss, bool HasLastInelasticEvent, double LastInelasticDepth, double LastInelasticEnergyBeforeLoss, double LastInelasticEnergyAfterLoss, V3 LastInelasticDirection)[] RunBackscatterMonteCarlo(
-        MonteCarlo monte, int loop, double energyThreshold, M3 sampleRotation, Action<int, int> reportProgress = null)
+        MonteCarlo monte, int loop, double energyThreshold, M3 sampleRotation, Action<int, int> reportProgress = null, System.Threading.CancellationToken cancellationToken = default) // 260406Cl CancellationToken 追加
     {
         var bseLists = new System.Collections.Concurrent.ConcurrentBag<List<(double Depth, V3 Vec, PointD Position, double Energy, double TotalEnergyLoss, bool HasLastInelasticEvent, double LastInelasticDepth, double LastInelasticEnergyBeforeLoss, double LastInelasticEnergyAfterLoss, V3 LastInelasticDirection)>>(); // (260331Ch) 最後の非弾性散乱情報も保持する
         var reportStep = reportProgress == null ? int.MaxValue : Math.Max(1, loop / 100); // (260327Ch) UI へは 1% ごとにだけ流す
         int completed = 0;
 
         Parallel.For(0, loop,
+            new ParallelOptions { CancellationToken = cancellationToken }, // 260406Cl 追加: キャンセル対応
             () => new List<(double Depth, V3 Vec, PointD Position, double Energy, double TotalEnergyLoss, bool HasLastInelasticEvent, double LastInelasticDepth, double LastInelasticEnergyBeforeLoss, double LastInelasticEnergyAfterLoss, V3 LastInelasticDirection)>(256),
             (index, state, localList) =>
             {
@@ -2024,18 +2030,21 @@ public partial class FormEBSD : CaptureFormBase
     {
         if (masterPatternEbsd.IsBuilding)
         {
-            toolStripStatusLabel1.Text = "MasterPattern is running. Wait for it to finish or press Stop.";
+            // toolStripStatusLabel1.Text = "MasterPattern is running. Wait for it to finish or press Stop."; // 260406Cl Label1→Label2: 進捗専用に整理
+            toolStripStatusLabel2.Text = "MasterPattern is running. Wait for it to finish or press Stop.";
             return;
         }
 
-        button2.Enabled = false; // (260401Ch) Calc BSE の多重起動を防ぐ
+        buttonCalcBSE.Enabled = false; // (260401Ch) Calc BSE の多重起動を防ぐ
         buttonCreateMasterPattern.Enabled = false; // (260401Ch) Calc BSE 実行中に MasterPattern 前段 MC を重ねて走らせない
-        buttonStop.Visible = false; // (260401Ch) Calc BSE でも MC 中はまだ停止できない
+        // buttonStop.Visible = false; // (260401Ch) Calc BSE でも MC 中はまだ停止できない // 260406Cl 旧: MC 中も Stop を表示するよう変更
+        monteCarloCts = new System.Threading.CancellationTokenSource(); // 260406Cl 追加
+        buttonStop.Visible = true; // 260406Cl MC 中も Stop ボタンを表示
         toolStripProgressBar.Value = 0;
         toolStripStatusLabel2.Text = "Calc BSE: MonteCarlo";
         toolStripStatusLabel1.Text = "0% completed, elapsed 0.00 s.";
         toolStripStatusLabel3.Text = "";
-        labelMasterPatternInfo.Text = "Calculating BSE by Monte Carlo...";
+        // labelMasterPatternInfo.Text = "Calculating BSE by Monte Carlo..."; // 260406Cl 廃止: Label2 "Calc BSE: MonteCarlo" で代替
 
         try
         {
@@ -2043,11 +2052,14 @@ public partial class FormEBSD : CaptureFormBase
                 statusPrefix: "Calc BSE",
                 progressInfoText: "Calculating BSE by Monte Carlo...",
                 completedInfoText: "Monte Carlo finished for Calc BSE.",
-                noResultInfoText: "Calc BSE was aborted because Monte Carlo returned no usable BSEs."); // (260401Ch) MasterPattern 前段と同じ MC 前処理へ統一
+                noResultInfoText: "Calc BSE was aborted because Monte Carlo returned no usable BSEs.",
+                cancellationToken: monteCarloCts.Token); // (260401Ch) MasterPattern 前段と同じ MC 前処理へ統一 // 260406Cl cancellationToken 追加
         }
         finally
         {
-            button2.Enabled = true;
+            DisposeMonteCarloCts(); // 260406Cl
+            buttonStop.Visible = false; // 260406Cl MC 完了後は Stop を隠す
+            buttonCalcBSE.Enabled = true;
             buttonCreateMasterPattern.Enabled = true;
         }
     }
@@ -2141,26 +2153,8 @@ public partial class FormEBSD : CaptureFormBase
 
     #endregion
 
-    #region 現在のパラメータでEBSDを動力学計算
+   private bool skipProgressChangedEvent = false;
 
- 
-
-    #region BackgroundWorkerからのProgressChanged, Completed
-
-    private bool skipProgressChangedEvent = false;
-
- 
-
-    #endregion
-
-    #endregion
-
-    #region EBSD計算後、画像を生成
-
-   
-
-
-    #endregion
 
     #region 画像出力パラメータのイベント
 
@@ -2223,11 +2217,13 @@ public partial class FormEBSD : CaptureFormBase
     /// Calc BSE / MasterPattern 前段で共有する MC を実行し、エネルギー・深さ範囲を決定して
     /// numericBox を更新し、8×8 ビンのフィッティング結果を mcDistribution に保持する。260325Cl 追加
     /// </summary>
+    // private async Task<bool> RunMonteCarloAndSetRangesAsync(...) // 260406Cl 旧シグネチャ: CancellationToken なし
     private async Task<bool> RunMonteCarloAndSetRangesAsync(
         string statusPrefix = "MasterPattern",
         string progressInfoText = "Preparing MasterPattern by Monte Carlo...",
         string completedInfoText = "Monte Carlo finished. Starting MasterPattern build...",
-        string noResultInfoText = "MasterPattern build was aborted because Monte Carlo returned no usable BSEs.")
+        string noResultInfoText = "MasterPattern build was aborted because Monte Carlo returned no usable BSEs.",
+        System.Threading.CancellationToken cancellationToken = default) // 260406Cl CancellationToken 追加
     {
         var cry = FormMain.Crystal;
         cry.GetFormulaAndDensity();
@@ -2247,73 +2243,87 @@ public partial class FormEBSD : CaptureFormBase
             toolStripProgressBar.Value = progressValue;
             toolStripStatusLabel2.Text = $"{statusPrefix}: {state.Message}"; // (260401Ch) Calc BSE も同じ MC helper を共有する
             toolStripStatusLabel1.Text = $"{progressValue:f0}% completed, elapsed {monteCarloStopwatch.ElapsedMilliseconds / 1000.0:f2} s.";
-            labelMasterPatternInfo.Text = $"{progressInfoText} {progressValue}%"; // (260401Ch)
+            // labelMasterPatternInfo.Text = $"{progressInfoText} {progressValue}%"; // (260401Ch) // 260406Cl 廃止: Label1の進捗%とLabel2のタスク名で代替
         });
 
-        progress.Report((0, "MonteCarlo"));
-        var result = await Task.Run(() =>
+        // 260406Cl: OperationCanceledException を捕捉して MC キャンセル時も安全に return false する
+        try
         {
-            var monte = new MonteCarlo(z, a, rho, energy, sampleTilt, energyThreshold,
-                elasticScatteringModel: MonteCarlo.ElasticScatteringModels.MottNistSampler2023,
-                inelasticScatteringModel: MonteCarlo.InelasticScatteringModels.DiscreteBulkDiimfpApproximation,
-                valenceElectronCount: valenceElectronCount,
-                atoms: cry.Atoms); // (260331Ch)
-            var bses = RunBackscatterMonteCarlo(monte, loop, energyThreshold, sampleRotation, (completed, total) =>
-                progress.Report(((int)Math.Round(90.0 * completed / total), "MonteCarlo"))); // (260327Ch) fitting 分を残して 90% まで使う
-            if (bses.Length == 0)
-                return (Bses: bses, Distribution: (EbsdMonteCarloDistribution)null, Energies: [], Depths: [],
-                    energyStart: 0.0, energyEnd: 0.0, energyStep: 0.0, depthStart: 0.0, depthEnd: 0.0, depthStep: 0.0);
+            progress.Report((0, "MonteCarlo"));
+            var result = await Task.Run(() =>
+            {
+                var monte = new MonteCarlo(z, a, rho, energy, sampleTilt, energyThreshold,
+                    elasticScatteringModel: MonteCarlo.ElasticScatteringModels.MottNistSampler2023,
+                    inelasticScatteringModel: MonteCarlo.InelasticScatteringModels.DiscreteBulkDiimfpApproximation,
+                    valenceElectronCount: valenceElectronCount,
+                    atoms: cry.Atoms); // (260331Ch)
+                var bses = RunBackscatterMonteCarlo(monte, loop, energyThreshold, sampleRotation, (completed, total) =>
+                    progress.Report(((int)Math.Round(90.0 * completed / total), "MonteCarlo")), cancellationToken); // (260327Ch) fitting 分を残して 90% まで使う // 260406Cl cancellationToken 追加
+                if (bses.Length == 0)
+                    return (Bses: bses, Distribution: (EbsdMonteCarloDistribution)null, Energies: [], Depths: [],
+                        energyStart: 0.0, energyEnd: 0.0, energyStep: 0.0, depthStart: 0.0, depthEnd: 0.0, depthStep: 0.0);
 
-            progress.Report((92, "Analyzing Monte Carlo ranges"));
-            var bseRaw = bses.Select(e => (
-                monteCarloDistributionDepthMode == MonteCarloDistributionDepthMode.LastInelasticEventDepth && e.HasLastInelasticEvent
-                    ? e.LastInelasticDepth
-                    : e.Depth,
-                    e.Vec, e.Energy)).ToArray(); // (260331Ch) P(z_last_inelastic, Ω_exit, E_exit) と P(z_last_event, Ω_exit, E_exit) を切替
-            var (energyLoss80, depth99) = EbsdMonteCarloDistribution.ComputeRangesFromMC(bseRaw, energy); // (260327Ch)
-            var grid = EbsdMonteCarloDistribution.ComputeGridFromRanges(energy, energyLoss80, depth99); // (260327Ch)
+                progress.Report((92, "Analyzing Monte Carlo ranges"));
+                var bseRaw = bses.Select(e => (
+                    monteCarloDistributionDepthMode == MonteCarloDistributionDepthMode.LastInelasticEventDepth && e.HasLastInelasticEvent
+                        ? e.LastInelasticDepth
+                        : e.Depth,
+                        e.Vec, e.Energy)).ToArray(); // (260331Ch) P(z_last_inelastic, Ω_exit, E_exit) と P(z_last_event, Ω_exit, E_exit) を切替
+                var (energyLoss80, depth99) = EbsdMonteCarloDistribution.ComputeRangesFromMC(bseRaw, energy); // (260327Ch)
+                var grid = EbsdMonteCarloDistribution.ComputeGridFromRanges(energy, energyLoss80, depth99); // (260327Ch)
 
-            progress.Report((95, "Fitting Monte Carlo distribution"));
-            var distribution = new EbsdMonteCarloDistribution(
-                bseRaw, energy,
-                sampleTilt, detectorTilt, detectorY, detectorZ, detectorR,
-                grid.energies, grid.depths);
-            return (Bses: bses, Distribution: distribution, Energies: grid.energies, Depths: grid.depths, grid.energyStart, grid.energyEnd, grid.energyStep, grid.depthStart, grid.depthEnd, grid.depthStep);
-        });
+                progress.Report((95, "Fitting Monte Carlo distribution"));
+                var distribution = new EbsdMonteCarloDistribution(
+                    bseRaw, energy,
+                    sampleTilt, detectorTilt, detectorY, detectorZ, detectorR,
+                    grid.energies, grid.depths);
+                return (Bses: bses, Distribution: distribution, Energies: grid.energies, Depths: grid.depths, grid.energyStart, grid.energyEnd, grid.energyStep, grid.depthStart, grid.depthEnd, grid.depthStep);
+            }, cancellationToken); // 260406Cl cancellationToken を Task.Run にも渡す
 
-        if (result.Bses == null || result.Bses.Length == 0)
+            if (result.Bses == null || result.Bses.Length == 0)
+            {
+                masterPatternMonteCarloElapsedMilliseconds = monteCarloStopwatch.ElapsedMilliseconds; // (260327Ch)
+                BSEs = [];
+                mcDistribution = null;
+                toolStripProgressBar.Value = 0;
+                toolStripStatusLabel2.Text = $"{statusPrefix}: MonteCarlo"; // (260401Ch)
+                toolStripStatusLabel1.Text = $"0% completed, elapsed {masterPatternMonteCarloElapsedMilliseconds / 1000.0:f2} s.";
+                // toolStripStatusLabel3.Text = ""; // 260406Cl 旧: 空文字→noResultInfoText に変更
+                toolStripStatusLabel3.Text = noResultInfoText; // 260406Cl labelMasterPatternInfo廃止: 結果なし理由をLabel3へ移動
+                return false;
+            }
+
+            BSEs = result.Bses;
+            numericBoxEnergyStart.Value = result.energyStart;
+            numericBoxEnergyEnd.Value = result.energyEnd;
+            numericBoxEnergyStep.Value = result.energyStep;
+            numericBoxThicknessStart.Value = result.depthStart;
+            numericBoxThicknessEnd.Value = result.depthEnd;
+            numericBoxThicknessStep.Value = result.depthStep;
+            mcDistribution = result.Distribution;
+
+            poleFigureControl.DrawingMode = PoleFigureControl2.DrawingModeEnum.Histogram;
+            var poleFigureRotation = M3.CreateRotationX(sampleTilt);
+            poleFigureControl.Vectors = [.. BSEs.Select(e => new V4(poleFigureRotation * e.Vec, e.Energy))];
+            CalcStatistics();
+
+            masterPatternMonteCarloElapsedMilliseconds = monteCarloStopwatch.ElapsedMilliseconds; // (260327Ch) MC 本体と fitting、統計更新まで含めた時間
+            toolStripProgressBar.Value = 100;
+            toolStripStatusLabel2.Text = $"{statusPrefix}: MonteCarlo finished"; // (260401Ch)
+            toolStripStatusLabel1.Text = $"100% completed, elapsed {masterPatternMonteCarloElapsedMilliseconds / 1000.0:f2} s.";
+            // labelMasterPatternInfo.Text = completedInfoText; // (260401Ch) // 260406Cl 廃止
+            toolStripStatusLabel3.Text = completedInfoText; // 260406Cl labelMasterPatternInfo廃止: 完了メッセージをLabel3へ移動
+            return true;
+        }
+        catch (OperationCanceledException) // 260406Cl 追加: Stop ボタンで MC がキャンセルされた場合
         {
-            masterPatternMonteCarloElapsedMilliseconds = monteCarloStopwatch.ElapsedMilliseconds; // (260327Ch)
-            BSEs = [];
-            mcDistribution = null;
+            masterPatternMonteCarloElapsedMilliseconds = monteCarloStopwatch.ElapsedMilliseconds;
             toolStripProgressBar.Value = 0;
-            toolStripStatusLabel2.Text = $"{statusPrefix}: MonteCarlo"; // (260401Ch)
-            toolStripStatusLabel1.Text = $"0% completed, elapsed {masterPatternMonteCarloElapsedMilliseconds / 1000.0:f2} s.";
+            toolStripStatusLabel2.Text = $"{statusPrefix}: MonteCarlo cancelled";
+            toolStripStatusLabel1.Text = $"Stopped after {monteCarloStopwatch.ElapsedMilliseconds / 1000.0:f2} s.";
             toolStripStatusLabel3.Text = "";
-            labelMasterPatternInfo.Text = noResultInfoText; // (260401Ch)
             return false;
         }
-
-        BSEs = result.Bses;
-        numericBoxEnergyStart.Value = result.energyStart;
-        numericBoxEnergyEnd.Value = result.energyEnd;
-        numericBoxEnergyStep.Value = result.energyStep;
-        numericBoxThicknessStart.Value = result.depthStart;
-        numericBoxThicknessEnd.Value = result.depthEnd;
-        numericBoxThicknessStep.Value = result.depthStep;
-        mcDistribution = result.Distribution;
-
-        poleFigureControl.DrawingMode = PoleFigureControl2.DrawingModeEnum.Histogram;
-        var poleFigureRotation = M3.CreateRotationX(sampleTilt);
-        poleFigureControl.Vectors = [.. BSEs.Select(e => new V4(poleFigureRotation * e.Vec, e.Energy))];
-        CalcStatistics();
-
-        masterPatternMonteCarloElapsedMilliseconds = monteCarloStopwatch.ElapsedMilliseconds; // (260327Ch) MC 本体と fitting、統計更新まで含めた時間
-        toolStripProgressBar.Value = 100;
-        toolStripStatusLabel2.Text = $"{statusPrefix}: MonteCarlo finished"; // (260401Ch)
-        toolStripStatusLabel1.Text = $"100% completed, elapsed {masterPatternMonteCarloElapsedMilliseconds / 1000.0:f2} s.";
-        labelMasterPatternInfo.Text = completedInfoText; // (260401Ch)
-        return true;
     }
 
     /// <summary>
@@ -2333,12 +2343,14 @@ public partial class FormEBSD : CaptureFormBase
             return;
 
         buttonCreateMasterPattern.Enabled = false; // (260327Ch) MC 前処理中の多重起動を防ぐ
-        buttonStop.Visible = false; // (260327Ch) MC 前処理はまだ停止できないため、Bethe 開始まで出さない
+        // buttonStop.Visible = false; // (260327Ch) MC 前処理はまだ停止できないため、Bethe 開始まで出さない // 260406Cl 旧: MC 中も Stop を表示するよう変更
+        monteCarloCts = new System.Threading.CancellationTokenSource(); // 260406Cl 追加
+        buttonStop.Visible = true; // 260406Cl MC 中も Stop ボタンを表示
         toolStripProgressBar.Value = 0;
         toolStripStatusLabel2.Text = "MasterPattern: MonteCarlo";
         toolStripStatusLabel1.Text = "0% completed, elapsed 0.00 s.";
         toolStripStatusLabel3.Text = ""; // (260327Ch) 前回の完了時間表示をクリア
-        labelMasterPatternInfo.Text = "Preparing MasterPattern by Monte Carlo...";
+        // labelMasterPatternInfo.Text = "Preparing MasterPattern by Monte Carlo..."; // 260406Cl 廃止: Label2 "MasterPattern: MonteCarlo" で代替
         sw2.Restart(); // (260327Ch) MasterPattern 全体の経過時間
         masterPatternMonteCarloElapsedMilliseconds = 0;
         EBSD.MasterPatternBuildRequest request = null;
@@ -2346,11 +2358,14 @@ public partial class FormEBSD : CaptureFormBase
         try
         {
             // 260325Cl: まず MC を実行してレンジとフィッティングを決定
-            if (!await RunMonteCarloAndSetRangesAsync())
+            if (!await RunMonteCarloAndSetRangesAsync(cancellationToken: monteCarloCts.Token)) // 260406Cl cancellationToken 追加
             {
+                DisposeMonteCarloCts(); // 260406Cl
+                buttonStop.Visible = false; // 260406Cl MC 失敗/キャンセル時は Stop を隠す
                 buttonCreateMasterPattern.Enabled = true; // (260327Ch)
                 return;
             }
+            DisposeMonteCarloCts(); // 260406Cl MC 完了後は CTS を破棄 (Bethe は masterPatternEbsd が管理)
 
             // var request = CreateMasterPatternBuildRequest(); // (260321Ch) 旧実装: request 生成を別 helper に切り出していた
             request = new EBSD.MasterPatternBuildRequest(
@@ -2376,6 +2391,7 @@ public partial class FormEBSD : CaptureFormBase
         }
         catch
         {
+            DisposeMonteCarloCts(); // 260406Cl
             DetachMasterPatternBuildEvents();
             buttonCreateMasterPattern.Enabled = true; // (260327Ch)
             buttonStop.Visible = false; // (260327Ch)
@@ -2383,11 +2399,12 @@ public partial class FormEBSD : CaptureFormBase
         }
 
         trackBarMasterPatternEnergy.Enabled = trackBarMasterPatternDepth.Enabled = false;
-        buttonStop.Visible = true;
+        // buttonStop.Visible = true; // 260406Cl 旧: MC 開始時から表示済みなのでここでは不要 (Bethe 開始時点で既に表示中)
         toolStripProgressBar.Value = 0;
         toolStripStatusLabel2.Text = "MasterPattern: Starting Bethe calculation";
         // labelMasterPatternInfo.Text = $"Building {GetHemisphereText(request.Hemisphere)} master grid ({request.GridSize} x {request.GridSize})..."; // (260321Ch) 旧案: 単一半球計算を前提にしていた
-        labelMasterPatternInfo.Text = $"Building full sphere master grid ({request.GridSize} x {request.GridSize})...";
+        // labelMasterPatternInfo.Text = $"Building full sphere master grid ({request.GridSize} x {request.GridSize})..."; // 260406Cl 廃止: Label3へ移動
+        toolStripStatusLabel3.Text = $"Full sphere, grid {request.GridSize} x {request.GridSize}"; // 260406Cl labelMasterPatternInfo廃止: グリッド情報をLabel3へ
         toolStripStatusLabel1.Text = "0% completed, elapsed 0.00 s."; // (260327Ch)
         sw1.Restart();
     }
@@ -2407,7 +2424,7 @@ public partial class FormEBSD : CaptureFormBase
             toolStripStatusLabel2.Text = $"MasterPattern: {e.UserState}";
             toolStripStatusLabel1.Text = $"{progress:f0}% completed, elapsed {sec:f2} s.";
             // labelMasterPatternInfo.Text = $"Building {GetHemisphereText(e.Request.Hemisphere)} master grid... {progress}%"; // (260321Ch) 旧案: 単一半球計算を前提にしていた
-            labelMasterPatternInfo.Text = $"Building full sphere master grid... {progress}%";
+            // labelMasterPatternInfo.Text = $"Building full sphere master grid... {progress}%"; // 260406Cl 廃止: Label1の進捗%とLabel2のタスク名で代替
             // Application.DoEvents(); // (260327Ch) ProgressChanged 再入の原因になるため停止
         }
         finally
@@ -2429,7 +2446,7 @@ public partial class FormEBSD : CaptureFormBase
             toolStripStatusLabel2.Text = "MasterPattern failed";
             toolStripStatusLabel1.Text = $"Failed after {sw2.ElapsedMilliseconds / 1000.0:f2} s.";
             toolStripStatusLabel3.Text = "";
-            labelMasterPatternInfo.Text = "MasterPattern build failed.";
+            // labelMasterPatternInfo.Text = "MasterPattern build failed."; // 260406Cl 廃止: Label2 "MasterPattern failed" で代替
             UpdateMasterPatternSelectors();
             DrawMasterPattern2D();
             return;
@@ -2440,7 +2457,7 @@ public partial class FormEBSD : CaptureFormBase
             toolStripStatusLabel2.Text = "MasterPattern cancelled";
             toolStripStatusLabel1.Text = $"Stopped after {sw2.ElapsedMilliseconds / 1000.0:f2} s.";
             toolStripStatusLabel3.Text = "";
-            labelMasterPatternInfo.Text = "MasterPattern build was cancelled.";
+            // labelMasterPatternInfo.Text = "MasterPattern build was cancelled."; // 260406Cl 廃止: Label2 "MasterPattern cancelled" で代替
             UpdateMasterPatternSelectors();
             DrawMasterPattern2D();
             return;
@@ -2454,9 +2471,10 @@ public partial class FormEBSD : CaptureFormBase
         var totalSec = sw2.ElapsedMilliseconds / 1000.0;
         var monteCarloSec = masterPatternMonteCarloElapsedMilliseconds / 1000.0;
         toolStripStatusLabel1.Text = $"100% completed, elapsed {totalSec:f2} s.";
-        toolStripStatusLabel3.Text = $"Total {totalSec:f2} s. (Monte Carlo {monteCarloSec:f2} s, MasterPattern {sec:f2} s, {e.Request.GridSize} x {e.Request.GridSize}, full sphere)";
+        // toolStripStatusLabel3.Text = $"Total {totalSec:f2} s. (Monte Carlo {monteCarloSec:f2} s, MasterPattern {sec:f2} s, {e.Request.GridSize} x {e.Request.GridSize}, full sphere)"; // 260406Cl 旧: energies/depths 情報を統合
+        toolStripStatusLabel3.Text = $"Total {totalSec:f2} s. (MC {monteCarloSec:f2} s, Bethe {sec:f2} s), {e.Request.GridSize} x {e.Request.GridSize}, full sphere, {MasterPattern?.Energies.Length ?? 0} energies, {MasterPattern?.Depths.Length ?? 0} depths"; // 260406Cl labelMasterPatternInfo廃止: energies/depths をLabel3へ統合
         // labelMasterPatternInfo.Text = $"Ready: {GetHemisphereText(e.Request.Hemisphere)}, {MasterPattern?.Energies.Length ?? 0} energies, {MasterPattern?.Depths.Length ?? 0} depths."; // (260321Ch) 旧案
-        labelMasterPatternInfo.Text = $"Ready: full sphere, {MasterPattern?.Energies.Length ?? 0} energies, {MasterPattern?.Depths.Length ?? 0} depths.";
+        // labelMasterPatternInfo.Text = $"Ready: full sphere, {MasterPattern?.Energies.Length ?? 0} energies, {MasterPattern?.Depths.Length ?? 0} depths."; // 260406Cl 廃止: Label3へ統合
 
         // 260325Cl 追加: MasterPattern 完了時に groupBoxOutput を有効化し、trackbar を同期する
         groupBoxOutput.Enabled = true;
@@ -2468,9 +2486,18 @@ public partial class FormEBSD : CaptureFormBase
 
     }
 
-    /// <summary>進行中の MasterPattern build を停止する。</summary>
+    /// <summary>進行中の MonteCarlo / MasterPattern build を停止する。</summary>
     private void buttonStop_Click(object sender, EventArgs e)
     {
+        // 260406Cl 追加: MC 実行中のキャンセル
+        // MC と Bethe は排他的に実行される (buttonCalcBSE/buttonCreateMasterPattern が互いの Enabled を制御するため同時には走らない)
+        if (monteCarloCts != null && !monteCarloCts.IsCancellationRequested)
+        {
+            monteCarloCts.Cancel();
+            toolStripStatusLabel2.Text = "MonteCarlo cancel requested";
+            return;
+        }
+
         if (masterPatternEbsd.IsBuilding)
         {
             masterPatternEbsd.CancelMasterPatternBuild();
@@ -2574,7 +2601,8 @@ public partial class FormEBSD : CaptureFormBase
         if (MasterPattern == null)
         {
             int selectedGridSize = GetSelectedMasterPatternGridSize(); // (260322Ch) 未作成時も selector に合わせた正方格子サイズを使う
-            labelMasterPatternInfo.Text = "MasterPattern preview is empty.";
+            // labelMasterPatternInfo.Text = "MasterPattern preview is empty."; // 260406Cl 廃止: Label2へ移動
+            toolStripStatusLabel2.Text = "MasterPattern preview is empty.";
             ResetMasterPattern3DCache(); // (260321Ch) build 前は 3D 再描画用のキャッシュも空にしておく
             // SetMasterPattern2DBitmap(CreateMasterPatternPlaceholderValues(GetSelectedMasterPatternGridSize()), GetSelectedMasterPatternGridSize()); // (260322Ch) 旧実装: helper が新規配列を返していた
             SetMasterPattern2DBitmap(new double[selectedGridSize * selectedGridSize], selectedGridSize); // (260322Ch) helper を介さず空の placeholder 配列をその場で生成する
@@ -2616,7 +2644,9 @@ public partial class FormEBSD : CaptureFormBase
 
         var energy = MasterPattern.Energies[selectedEnergyIndex];
         var depth = MasterPattern.Depths[selectedDepthIndex];
-        labelMasterPatternInfo.Text = $"Preview: {GetHemisphereText(selectedHemisphere)}, E = {energy:g} kV, depth = {depth:g} nm";
+        // labelMasterPatternInfo.Text = $"Preview: {GetHemisphereText(selectedHemisphere)}, E = {energy:g} kV, depth = {depth:g} nm"; // 260406Cl 廃止: Label2+Label3へ分割
+        toolStripStatusLabel2.Text = "MasterPattern preview";
+        toolStripStatusLabel3.Text = $"{GetHemisphereText(selectedHemisphere)}, E = {energy:g} kV, depth = {depth:g} nm";
         masterPattern2DValues = displayValues; // 260331Cl 2D 表示キャッシュ (六方格子座標)
         masterPattern3DValuesPositive = positiveDisplayValues; // 260331Cl 3D 球面キャッシュ
         masterPattern3DValuesNegative = negativeDisplayValues; // 260331Cl 3D 球面キャッシュ

@@ -121,6 +121,9 @@
   <data name="waveLengthControl.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
+  <data name="waveLengthControl.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
   <data name="buttonViewQuarter.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
@@ -146,17 +149,17 @@
     <value>Z軸 (電子線入射方向) </value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="button2.AutoSize" type="System.Boolean, mscorlib">
+  <data name="buttonCalcBSE.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="button2.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+  <data name="buttonCalcBSE.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
-  <data name="button2.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="buttonCalcBSE.Size" type="System.Drawing.Size, System.Drawing">
     <value>78, 28</value>
   </data>
-  <data name="button2.Text" xml:space="preserve">
+  <data name="buttonCalcBSE.Text" xml:space="preserve">
     <value>分布を計算</value>
   </data>
   <data name="checkBoxDrawAxesInStereonet.Font" type="System.Drawing.Font, System.Drawing">
@@ -520,6 +523,9 @@
   <data name="checkBoxShowOverlays.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
+  <data name="checkBoxShowOverlays.Location" type="System.Drawing.Point, System.Drawing">
+    <value>63, 5</value>
+  </data>
   <data name="checkBoxShowOverlays.Size" type="System.Drawing.Size, System.Drawing">
     <value>111, 22</value>
   </data>
@@ -593,7 +599,7 @@
     <value>メイリオ, 9pt</value>
   </data>
   <data name="checkBoxShowDyanmicalEBSD.Location" type="System.Drawing.Point, System.Drawing">
-    <value>120, 3</value>
+    <value>180, 5</value>
   </data>
   <data name="checkBoxShowDyanmicalEBSD.Size" type="System.Drawing.Size, System.Drawing">
     <value>325, 22</value>
@@ -944,10 +950,10 @@
     <value>EBSDパターン</value>
   </data>
   <data name="flowLayoutPanel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>63, 22</value>
+    <value>4, 24</value>
   </data>
   <data name="flowLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>448, 28</value>
+    <value>514, 30</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
