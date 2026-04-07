@@ -45,7 +45,7 @@ internal static class Version
         "\r\n ver4.884(2024/05/24)  Fixed a bug in the calculations of dynamical theory." +
         "\r\n ver4.883(2024/04/06)  Fixed minor bugs in the 'CBED setting'. Update bundled libraries." +
         "\r\n ver4.882(2024/03/16)  Improved GUI in the 'Diffraction simulator'. (see https://github.com/seto77/ReciPro/issues/30, thanks to lukmuk-san)" +
-        "\r\n ver4.881(2024/03/11)  Checked security problem ((see https://github.com/seto77/ReciPro/issues/31)." +
+        "\r\n ver4.881(2024/03/11)  Checked security problem (see https://github.com/seto77/ReciPro/issues/31)." +
         "\r\n ver4.880(2024/03/09)  Improved GUI in the 'Diffraction simulator'. (see https://github.com/seto77/ReciPro/issues/30, thanks to lukmuk-san)" +
         "\r\n ver4.879(2024/03/05)  Fixed GUI in the 'HRTEM/STEM simulator'. (see https://github.com/seto77/ReciPro/issues/29, thanks to JingshanDu-san)" +
         "\r\n ver4.878(2024/02/13)  Added options for saving movies." +
@@ -73,7 +73,7 @@ internal static class Version
         "\r\n ver4.853(2023/03/09)  Corrected errors in formulas in STEM simulations. Added LA-CBED calculation mode." +
         "\r\n ver4.852(2023/03/04)  Fixed minor GUI bugs on HRTEM/STEM simulation." +
         "\r\n ver4.851(2023/03/02)  Fixed minor GUI bugs on HRTEM/STEM simulation." +
-        "\r\n ver4.850(2023/03/01)  Improved STEM simulation. If you find anything wrong with the SETM simulation, please report anything!" +
+        "\r\n ver4.850(2023/03/01)  Improved STEM simulation. If you find anything wrong with the STEM simulation, please report anything!" +
         "\r\n ver4.849(2023/02/11)  Improved: Overall speedup with SIMD calculation." +
         "\r\n ver4.848(2022/12/28)  Added the function to convert the current space group to a convertible space group. Fixed minor bugs on 'Spot ID v1'." +
         "\r\n ver4.847(2022/12/23)  Added functions to save/copy images for 'Spot ID v2'." +
@@ -81,7 +81,7 @@ internal static class Version
         "\r\n ver4.843(2022/11/29)  Fixed minor bugs." +
         "\r\n ver4.841(2022/11/16)  Target framework has been changed to .Net Desktop Runtime 7.0." +
         "\r\n ver4.840(2022/11/10)  Fixed a bug that occurred when starting 'Diffraction Simulator' (see https://github.com/seto77/ReciPro/issues/16)." +
-        "\r\n ver4.839(2022/11/07)  Added a function to simulate X-ray precession camara." +
+        "\r\n ver4.839(2022/11/07)  Added a function to simulate X-ray precession camera." +
         "\r\n ver4.838(2022/10/21)  Improved compatibility of importing CIF files." +
         "\r\n ver4.837(2022/10/20)  Added a function to output superstructure." +
         "\r\n ver4.836(2022/08/30)  The compiler for C++ code was changed to Clang." +
@@ -96,7 +96,7 @@ internal static class Version
         "\r\n ver4.827(2021/12/01)  Fixed a CultureInfo problem. (see https://github.com/seto77/ReciPro/issues/10)" +
         "\r\n ver4.826(2021/11/18)  Fixed minor bugs." +
         "\r\n ver4.820(2021/11/12)  Target framework has been changed to .Net Desktop Runtime 6.0." +
-        "\r\n ver4.819(2021/10/27)  Improved an interface of Kikuchi line simulation. Speed up & fix bug on the dynamical diffraction simulator." +
+        "\r\n ver4.819(2021/10/27)  Improved the interface of Kikuchi line simulation. Speed up & fix bug on the dynamical diffraction simulator." +
         "\r\n ver4.817(2021/09/17)  Fixed minor bugs." +
         "\r\n ver4.815(2021/09/02)  Improved: User interfaces and tooltips." +
         "\r\n ver4.814(2021/08/29)  Fixed minor bugs: Drawing overlapping area of CBED disks (see https://github.com/seto77/ReciPro/issues/8)." +
@@ -107,7 +107,7 @@ internal static class Version
         "\r\n ver4.809(2021/07/16)  Fixed minor bugs. Renewed AMCSD database, and improved loading speed of the database." +
         "\r\n ver4.808(2021/07/08)  Fixed a minor bug about a compile option for native (c++) codes." +
         "\r\n ver4.807(2021/07/06)  Fixed minor bugs. Improved a rendering speed of 'Structure Viewer'." +
-        "\r\n ver4.806(2021/05/25)  Fixed a distribution failure of language resource files." +
+        "\r\n ver4.806(2021/05/25)  Fixed distribution failure of language resource files." +
         "\r\n ver4.802(2021/05/24)  Target framework has been changed to .Net Desktop Runtime 5.0." +
         "\r\n ver4.800(2021/05/20)  Fixed bugs on native (c++) codes. Changed CBED interface." +
         "\r\n ver4.799(2021/05/10)  Fixed bugs on native (c++) codes." +
@@ -117,7 +117,7 @@ internal static class Version
         "\r\n ver4.794(2021/03/08)  Added new algorithm for CBED calculation (matrix exponential method) " +
         "\r\n ver4.793(2021/02/26)  Fixed bugs in 'Diffraction simulator'." +
         "\r\n ver4.792(2020/12/28)  Fixed a bug on 'Parallels Desktop' for Mac (OpenGL drawing problem)." +
-        "\r\n ver4.791(2020/11/06)  Fixed a bug when Kikuchi line drawing. Improved speed of 'Structure Viewer' drawing." +
+        "\r\n ver4.791(2020/11/06)  Fixed a bug in Kikuchi line drawing. Improved speed of 'Structure Viewer' drawing." +
         "\r\n ver4.790(2020/11/02)  Improved: GUI of 'Diffraction Simulator'." +
         "\r\n ver4.789(2020/10/26)  Improved: Speed up drawing of 'Diffraction Simulator'." +
         "\r\n ver4.788(2020/10/20)  Fixed a bug when calculating electron diffraction for crystals in AMCSD." +
@@ -172,14 +172,14 @@ internal static class Version
         "\r\n ver4.713(2019/09/06)  Fixed minor bugs on HRTEM image simulation. " +
         "\r\n ver4.711(2019/09/04)  Improved: HRTEM image simulation. Transmission cross coefficient model is added." +
         "\r\n ver4.704(2019/09/03)  Improved: HRTEM image simulation. Through-focus/defocus mode is now available." +
-        "\r\n ver4.703(2019/08/26)  Add: HRTEM image simulation is now available. Very thanks to Dr. Ohtsuka." +
+        "\r\n ver4.703(2019/08/26)  Added: HRTEM image simulation is now available. Many thanks to Dr. Ohtsuka." +
         "\r\n ver4.694(2019/08/18)  Fixed minor bugs on 'Diffraction Simulator'. Changed .Net framework version to 4.8" +
         "\r\n ver4.693(2019/08/06)  Fixed minor bugs on 'Spot ID'" +
         "\r\n ver4.692(2019/08/05)  Improved function on 'Spot ID'" +
         "\r\n ver4.687(2019/08/02)  Improved calculation speed for the PED simulation" +
         "\r\n ver4.686(2019/07/24)  Fixed minor bugs in PED simulation" +
         "\r\n ver4.683(2019/07/20)  Added a function: In 'Diffraction Simulator', precession electron diffraction (PED) mode is now available." +
-        "\r\n ver4.682(2019/07/18)  Fixed a minor bug (eigen solver did not property work)." +
+        "\r\n ver4.682(2019/07/18)  Fixed a minor bug (eigen solver did not properly work)." +
         "\r\n ver4.681(2019/07/08)  Fixed minor bugs on 'Spot ID'" +
         "\r\n ver4.680(2019/07/06)  Added 'Rotation Geometry' form." +
         "\r\n ver4.670(2019/06/12)  Improved functions on 'Spot ID'." +
@@ -190,29 +190,29 @@ internal static class Version
         "\r\n ver4.663(2019/04/16)  Fixed minor bugs." +
         "\r\n ver4.662(2019/04/12)  Fixed minor bugs." +
         "\r\n ver4.661(2019/04/11)  Fixed minor bugs." +
-        "\r\n ver4.660(2019/04/10)  Changed the installer. ClickOnce version will be not maintained in the future." +
+        "\r\n ver4.660(2019/04/10)  Changed the installer. ClickOnce version will not be maintained in the future." +
         "\r\n ver4.654(2019/04/09)  Improved the update function for zip version." +
         "\r\n ver4.653(2019/04/08)  Fixed minor bugs." +
         "\r\n ver4.652(2019/04/04)  Fixed minor bugs." +
         "\r\n ver4.651(2019/03/27)  Corrected typos of Wyckoff positions and site symmetries in some space groups." +
         "\r\n ver4.650(2019/03/25)  Minor bugs fixed." +
         "\r\n ver4.649(2019/03/18)  Minor bugs fixed & Improved calculation speed of dynamic diffraction intensity." +
-        "\r\n ver4.648(2019/03/11)  Fixed minor bugs and improved a calculation speed on 'SPot ID'" +
-        "\r\n ver4.647(2019/03/10)  Fixed minor bugs on 'SPot ID'" +
-        "\r\n ver4.646(2019/03/08)  Fixed minor bugs on 'SPot ID'" +
-        "\r\n ver4.645(2019/03/07)  Fixed minor bugs on 'SPot ID'" +
-        "\r\n ver4.643(2019/03/06)  Fixed minor bugs on 'SPot ID'" +
-        "\r\n ver4.642(2019/03/05)  Improved calculation speed of 'SPot ID'" +
-        "\r\n ver4.641(2019/03/04)  Improved calculation speed of 'SPot ID'" +
+        "\r\n ver4.648(2019/03/11)  Fixed minor bugs and improved a calculation speed on 'Spot ID'" +
+        "\r\n ver4.647(2019/03/10)  Fixed minor bugs on 'Spot ID'" +
+        "\r\n ver4.646(2019/03/08)  Fixed minor bugs on 'Spot ID'" +
+        "\r\n ver4.645(2019/03/07)  Fixed minor bugs on 'Spot ID'" +
+        "\r\n ver4.643(2019/03/06)  Fixed minor bugs on 'Spot ID'" +
+        "\r\n ver4.642(2019/03/05)  Improved calculation speed of 'Spot ID'" +
+        "\r\n ver4.641(2019/03/04)  Improved calculation speed of 'Spot ID'" +
         "\r\n ver4.64 (2019/03/03)  Changed Visual Studio version to 2019." +
-        "\r\n ver4.636(2019/03/01)  Improved some functions in 'SPot ID'." +
-        "\r\n ver4.635(2019/02/28)  Improved some functions in 'SPot ID'." +
-        "\r\n ver4.634(2019/02/27)  Improved some functions in 'SPot ID'." +
-        "\r\n ver4.633(2019/02/26)  Improved some functions in 'SPot ID'." +
-        "\r\n ver4.632(2019/02/22)  Improved some functions in 'SPot ID'." +
+        "\r\n ver4.636(2019/03/01)  Improved some functions in 'Spot ID'." +
+        "\r\n ver4.635(2019/02/28)  Improved some functions in 'Spot ID'." +
+        "\r\n ver4.634(2019/02/27)  Improved some functions in 'Spot ID'." +
+        "\r\n ver4.633(2019/02/26)  Improved some functions in 'Spot ID'." +
+        "\r\n ver4.632(2019/02/22)  Improved some functions in 'Spot ID'." +
         "\r\n ver4.631(2019/02/21)  Fixed minor bugs. (copy functions in 'Structure Viewer' and 'Spot ID')" +
         "\r\n ver4.630(2019/02/20)  Fixed a minor bug. Changed .Net framework version to 4.7.2." +
-        "\r\n ver4.629(2019/02/20)  Added a function: OpenGL can be manually disabled by pressing 'CTRL' button on boot." +
+        "\r\n ver4.629(2019/02/20)  Added a function: OpenGL can be manually disabled by pressing 'CTRL' key on startup." +
         "\r\n ver4.628(2019/02/19)  Fixed a bug of calculations of anisotropic Debye-Waller effects." +
         "\r\n ver4.627(2019/02/17)  Minor bug fixed." +
         "\r\n ver4.625(2019/02/13)  Fixed minor bugs." +
@@ -239,7 +239,7 @@ internal static class Version
         "\r\n ver4.512(2018/10/19)  Added a solver library for CBED calculation." +
         "\r\n ver4.511(2018/10/18)  Minor improvements to CBED calculation." +
         "\r\n ver4.51 (2018/10/16)  Minor improvements to CBED calculation." +
-        "\r\n ver4.50 (2018/10/16)  Added a dynamic simulation mode (CBED pattern) by the Bethe method (beta). Very thanks to Dr. Ohtuka & Dr. Igami!" +
+        "\r\n ver4.50 (2018/10/16)  Added a dynamic simulation mode (CBED pattern) by the Bethe method (beta). Many thanks to Dr. Ohtsuka & Dr. Igami!" +
         "\r\n ver4.42 (2018/10/11)  Minor improvements." +
         "\r\n ver4.41 (2018/10/05)  Fixed minor bugs about the Bethe method." +
         "\r\n ver4.40 (2018/09/23)  Added a dynamic simulation mode (SAED pattern) by the Bethe method (beta)." +
@@ -253,24 +253,24 @@ internal static class Version
         "\r\n ver4.345(2018/02/22)  Minor bug fixed." +
         "\r\n ver4.344(2018/02/22)  Minor bug fixed." +
         "\r\n ver4.343(2018/02/22)  Minor bug fixed." +
-        "\r\n ver4.342(2018/02/21)  Added some options on 'Diffraction Simulator' which enable to copy detector area." +
+        "\r\n ver4.342(2018/02/21)  Added some options on 'Diffraction Simulator' to enable copying the detector area." +
         "\r\n ver4.341(2018/02/21)  Fixed a minor bug." +
         "\r\n ver4.34 (2018/02/20)  Improved. 'Diffraction Simulator' is now capable of selection of multiple crystals. (need Ctrl + Click)" +
         "\r\n ver4.334(2018/02/19)  Fixed minor bugs." +
         "\r\n ver4.333(2018/02/19)  Fixed minor bugs." +
         "\r\n ver4.332(2018/02/13)  Fixed minor bugs." +
         "\r\n ver4.331(2018/02/08)  Fixed minor bugs." +
-        "\r\n ver4.33 (2018/02/07)  Improved: Rotation state is individually reserved in each crystal. " +
+        "\r\n ver4.33 (2018/02/07)  Improved: Rotation state is individually preserved for each crystal. " +
         "\r\n ver4.32 (2018/02/05)  Added: The nearest zone axis can be shown in the main form. " +
         "\r\n ver4.317(2018/02/03)  Fixed minor bugs on 'Single crystal diffraction' form. " +
         "\r\n ver4.316(2018/01/26)  Fixed minor bugs on 'Single crystal diffraction' form. " +
         "\r\n ver4.312(2018/01/25)  Improved 'Single crystal diffraction' form. " +
         "\r\n ver4.311(2018/01/20)  Improved the 'Overlap picture' function on 'Single crystal diffraction' form." +
-        "\r\n ver4.31 (2018/01/19)  Changed graphics interface for 'Single crystal diffraction' form from OpenGL to GDI+, and then the metafile (vector object) of diffraction patterns can be exported to your clipboard. The 'Operlap picture' function is now under construction" +
-        "\r\n ver4.30 (2017/12/24)  Changed graphics interface for 'Streonet' form from OpenGL to GDI+, and then the metafile (vector object) of stereonet can be exported to your clipboard." +
+        "\r\n ver4.31 (2018/01/19)  Changed graphics interface for 'Single crystal diffraction' form from OpenGL to GDI+, and then the metafile (vector object) of diffraction patterns can be exported to your clipboard. The 'Overlap picture' function is now under construction" +
+        "\r\n ver4.30 (2017/12/24)  Changed graphics interface for 'Stereonet' form from OpenGL to GDI+, and then the metafile (vector object) of stereonet can be exported to your clipboard." +
         "\r\n ver4.29 (2017/09/01)  Added 'Point Spread' mode on 'Single Crystal Diffraction'." +
-        "\r\n ver4.283(2017/05/28)  Fixed a small bug on 'Strain control' function'." +
-        "\r\n ver4.282(2017/05/26)  Added 'Strain control' function'." +
+        "\r\n ver4.283(2017/05/28)  Fixed a small bug on 'Strain control' function." +
+        "\r\n ver4.282(2017/05/26)  Added 'Strain control' function." +
         "\r\n ver4.281(2017/04/26)  Improved SACLA simulation on 'Single Crystal Diffraction'." +
         "\r\n ver4.280(2016/12/31)  Improved a compatibility for CIF format." +
         "\r\n ver4.279(2016/12/18)  Fixed minor bugs." +
@@ -282,7 +282,7 @@ internal static class Version
         "\r\n ver4.272(2015/12/18)  Fixed a minor bug on input form for rhombohedral settings." +
         "\r\n ver4.271(2015/12/11)  Fixed a minor bug on Wyckoff positions" +
         "\r\n ver4.270(2015/09/25)  Fixed a minor bug on 'Structure Viewer'.(thx Dr. Fukui)" +
-        "\r\n ver4.269(2015/06/30)  Added: enable to simulate Back Laue camera." +
+        "\r\n ver4.269(2015/06/30)  Added: Back Laue camera simulation." +
         "\r\n ver4.268(2015/05/13)  Fixed a minor bug on reading *.ipa files." +
         "\r\n ver4.267(2015/03/25)  Fixed a minor bug on single diffraction simulation" +
         "\r\n ver4.266(2015/03/18)  Fixed a bug on Debye-Waller factor calculations (thx Dr. Koga)" +
@@ -297,7 +297,7 @@ internal static class Version
         "\r\n ver4.25 (2014/11/06)  Added: SACLA EH5 optics for single crystal diffraction mode." +
         "\r\n ver4.242(2014/10/27)  Fixed a bug on scattering factor information." +
         "\r\n ver4.241(2014/10/21)  Fixed minor bugs on OpenGL calculations." +
-        "\r\n ver4.24 (2014/07/14)  Improved 'Powder Diffraction'. (but all function are not implemented yet)" +
+        "\r\n ver4.24 (2014/07/14)  Improved 'Powder Diffraction'. (but not all functions are implemented yet)" +
         "\r\n ver4.234(2013/12/17)  Improved language option" +
         "\r\n ver4.233(2013/10/28)  Improved appearance for >100% DPI scaling" +
         "\r\n ver4.232(2013/10/15)  Improved appearance for >100% DPI scaling" +
@@ -319,7 +319,7 @@ internal static class Version
         "\r\n ver4.17 (2011/12/28)  Improved: Space groups A1, B1, C1, and F1 were added." +
         "\r\n ver4.161(2011/12/05)  Fixed: a small bug on Debye ring simulation was fixed." +
         "\r\n ver4.16 (2011/12/04)  Improved: speed up of calculation of Debye ring simulation." +
-        "\r\n ver4.15 (2011/11/24)  Improved: More strict polycrystalline diffraction pattern can be calculated considering beam convergence and monochromaticity." +
+        "\r\n ver4.15 (2011/11/24)  Improved: Stricter polycrystalline diffraction pattern can be calculated considering beam convergence and monochromaticity." +
         "\r\n ver4.142(2011/11/20)  Improved: Stereonet simulator can draw vectors of specified indices selected by users." +
         "\r\n ver4.141(2011/11/07)  Fixed: PolycrystallineDiffractionSimulation" +
         "\r\n ver4.14 (2011/11/01)  Fixed the critical mistake on polycrystalline diffraction simulation: Intensity calculation was corrected." +
@@ -430,7 +430,7 @@ internal static class Version
     /// <summary>はじめに</summary>
     public const string Introduction =
         "Introduction:"
-        + "\r\nThe software “ReciPro” supports many crystallographic calculations, simulation of/indexing  diffraction pattern, and so on."
+        + "\r\nThe software “ReciPro” supports many crystallographic calculations, simulation of/indexing diffraction patterns, and so on."
         + "\r\n - ReciPro provides many crystallographic calculations for 530 (Hall symbol) space groups."
         + "\r\n - ReciPro includes many atomic properties."
         + "\r\n - ReciPro can simulate diffraction patterns for various optics."
@@ -461,8 +461,8 @@ internal static class Version
     /// <summary>使用条件</summary>
     public const string Condition =
         "License:"
-        + "\r\n ReciPro is a　free (non-charge) software for academic, scientific, and educational users."
-        + "\r\n The people or companies engaged in commercial enterprise may also use ReciPro for their buisiness."
+        + "\r\n ReciPro is free-of-charge software for academic, scientific, and educational users."
+        + "\r\n The people or companies engaged in commercial enterprise may also use ReciPro for their business."
         + "\r\n The use of ReciPro is limited to non-military and non-illegal purposes."
         ;
 
@@ -478,7 +478,7 @@ internal static class Version
     /// <summary>連絡先</summary>
     public const string Adress =
         "Contact:"
-        + "\r\n If you find any problems of ReciPro to be improved, feel free to contact me by following e-mail;"
+        + "\r\n If you find any problems with ReciPro, feel free to contact me by following e-mail;"
         + "\r\n mail: seto.y@omu.ac.jp"
         + "\r\n Home Page: https://yseto.net/"
         ;
