@@ -1,0 +1,31 @@
+cff-version: 1.2.0
+message: "If you use ReciPro in academic work, please cite the article below. If you refer to the software itself, please cite this repository."
+type: software
+title: "ReciPro"
+authors:
+  - family-names: "Seto"
+    given-names: "Yusuke"
+    affiliation: "Osaka Metropolitan University, Japan"
+  - family-names: "Ohtsuka"
+    given-names: "Masahiro"
+    affiliation: "Nagoya University, Japan"
+url: "https://github.com/seto77/ReciPro"
+repository-code: "https://github.com/seto77/ReciPro"
+license: "MIT"
+abstract: "Free and open-source GUI-based multipurpose crystallographic software for crystallographic calculations, crystal structure visualization, diffraction and microscopy simulation, and diffraction data analysis tools."
+
+preferred-citation:
+  type: article
+  authors:
+    - family-names: "Seto"
+      given-names: "Yusuke"
+    - family-names: "Ohtsuka"
+      given-names: "Masahiro"
+  title: "ReciPro: free and open-source multipurpose crystallographic software integrating a crystal model database and viewer, diffraction and microscopy simulators, and diffraction data analysis tools"
+  journal: "Journal of Applied Crystallography"
+  year: 2022
+  volume: 55
+  issue: 2
+  start: 397
+  end: 410
+  doi: "10.1107/S1600576722000139"
