@@ -1,4 +1,4 @@
-﻿# ReciPro
+# ReciPro
 
 *ReciPro* is a free and open-source GUI-based multipurpose crystallographic software that provides seamless access to functions to explore crystal databases, visualize crystal structures and goniometer settings, simulate diffraction patterns and high-resolution microscope images, and analyze diffraction data. These features are linked through a user-friendly GUI, and the results can be synchronously displayed almost in real time. *ReciPro* will assist a wide range of crystallographers (including beginners) using X-ray, electron and neutron diffraction crystallography and TEM.
 
@@ -10,9 +10,18 @@
 
 ## Authors
 
-*ReciPro* is developed by [Seto Y.](https://yseto.net/) (Osaka Metropolitan University, Japan) and [Ohtsuka M.](https://profs.provost.nagoya-u.ac.jp/html/100006527_en.html) (Nagoya University, Japan). The functions and algorithms are presented in [the paper](https://github.com/seto77/ReciPro/blob/master/ReciProSetoOhtsuka2022.pdf). If you use this software to write an academic paper, please cite the following reference:
+*ReciPro* is developed by [Seto Y.](https://yseto.net/) (Osaka Metropolitan University, Japan) and [Ohtsuka M.](https://profs.provost.nagoya-u.ac.jp/html/100006527_en.html) (Nagoya University, Japan). The functions and algorithms are presented in [the paper](https://github.com/seto77/ReciPro/blob/master/ReciProSetoOhtsuka2022.pdf).
+
+## Citation
+
+If you use *ReciPro* in academic work, please use the **Cite this repository** link shown on the GitHub repository page. The citation metadata is provided by `CITATION.cff`, and the preferred citation is the following article:
 
   * [Seto, Y. & Ohtsuka, M. (2022). *J. Appl. Cryst.* **55**, 397-410, doi: 10.1107/S1600576722000139.](https://doi.org/10.1107/S1600576722000139)
+
+You may also cite the software repository itself when appropriate:
+
+  * Repository: https://github.com/seto77/ReciPro
+  * Releases: https://github.com/seto77/ReciPro/releases/latest
 
 ***
 
