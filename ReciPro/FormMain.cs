@@ -236,6 +236,9 @@ public partial class FormMain : CaptureFormBase
 
         InitializeComponent();
 
+        //260413Cl DPI スケーリング補正 (ListBox.ColumnWidth は自動スケール対象外)
+        listBox.ColumnWidth = (int)(listBox.ColumnWidth * DeviceDpi / 96.0);
+
         toolStripMenuItemDisableNative.Enabled = NativeWrapper.Enabled;
         if (!NativeWrapper.Enabled)
         {
