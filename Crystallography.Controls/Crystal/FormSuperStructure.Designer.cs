@@ -24,115 +24,113 @@ partial class FormSuperStructure
     /// </summary>
     private void InitializeComponent()
     {
-            this.numericBoxA = new Crystallography.Controls.NumericBox();
-            this.numericBoxB = new Crystallography.Controls.NumericBox();
-            this.numericBoxC = new Crystallography.Controls.NumericBox();
-            this.buttonOK = new System.Windows.Forms.Button();
-            this.buttonCancel = new System.Windows.Forms.Button();
-            this.SuspendLayout();
-            // 
-            // numericBoxA
-            // 
-            this.numericBoxA.BackColor = System.Drawing.Color.Transparent;
-            this.numericBoxA.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.numericBoxA.HeaderText = "a × ";
-            this.numericBoxA.Location = new System.Drawing.Point(9, 9);
-            this.numericBoxA.Margin = new System.Windows.Forms.Padding(0);
-            this.numericBoxA.Maximum = 100D;
-            this.numericBoxA.MaximumSize = new System.Drawing.Size(1000, 25);
-            this.numericBoxA.Minimum = 1D;
-            this.numericBoxA.MinimumSize = new System.Drawing.Size(1, 25);
-            this.numericBoxA.Name = "numericBoxA";
-            this.numericBoxA.RadianValue = 0.017453292519943295D;
-            this.numericBoxA.RoundErrorAccuracy = -1;
-            this.numericBoxA.ShowUpDown = true;
-            this.numericBoxA.Size = new System.Drawing.Size(77, 25);
-            this.numericBoxA.TabIndex = 0;
-            this.numericBoxA.Value = 1D;
-            // 
-            // numericBoxB
-            // 
-            this.numericBoxB.BackColor = System.Drawing.Color.Transparent;
-            this.numericBoxB.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.numericBoxB.HeaderText = "b × ";
-            this.numericBoxB.Location = new System.Drawing.Point(96, 9);
-            this.numericBoxB.Margin = new System.Windows.Forms.Padding(0);
-            this.numericBoxB.Maximum = 100D;
-            this.numericBoxB.MaximumSize = new System.Drawing.Size(1000, 25);
-            this.numericBoxB.Minimum = 1D;
-            this.numericBoxB.MinimumSize = new System.Drawing.Size(1, 25);
-            this.numericBoxB.Name = "numericBoxB";
-            this.numericBoxB.RadianValue = 0.017453292519943295D;
-            this.numericBoxB.RoundErrorAccuracy = -1;
-            this.numericBoxB.ShowUpDown = true;
-            this.numericBoxB.Size = new System.Drawing.Size(77, 25);
-            this.numericBoxB.TabIndex = 0;
-            this.numericBoxB.Value = 1D;
-            // 
-            // numericBoxC
-            // 
-            this.numericBoxC.BackColor = System.Drawing.Color.Transparent;
-            this.numericBoxC.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.numericBoxC.HeaderText = "c × ";
-            this.numericBoxC.Location = new System.Drawing.Point(187, 9);
-            this.numericBoxC.Margin = new System.Windows.Forms.Padding(0);
-            this.numericBoxC.Maximum = 100D;
-            this.numericBoxC.MaximumSize = new System.Drawing.Size(1000, 25);
-            this.numericBoxC.Minimum = 1D;
-            this.numericBoxC.MinimumSize = new System.Drawing.Size(1, 25);
-            this.numericBoxC.Name = "numericBoxC";
-            this.numericBoxC.RadianValue = 0.017453292519943295D;
-            this.numericBoxC.RoundErrorAccuracy = -1;
-            this.numericBoxC.ShowUpDown = true;
-            this.numericBoxC.Size = new System.Drawing.Size(77, 25);
-            this.numericBoxC.TabIndex = 0;
-            this.numericBoxC.Value = 1D;
-            // 
-            // buttonOK
-            // 
-            this.buttonOK.AutoSize = true;
-            this.buttonOK.Location = new System.Drawing.Point(138, 40);
-            this.buttonOK.Name = "buttonOK";
-            this.buttonOK.Size = new System.Drawing.Size(60, 25);
-            this.buttonOK.TabIndex = 1;
-            this.buttonOK.Text = "OK";
-            this.buttonOK.UseVisualStyleBackColor = true;
-            this.buttonOK.Click += new System.EventHandler(this.buttonOK_Click);
-            // 
-            // buttonCancel
-            // 
-            this.buttonCancel.AutoSize = true;
-            this.buttonCancel.Location = new System.Drawing.Point(204, 40);
-            this.buttonCancel.Name = "buttonCancel";
-            this.buttonCancel.Size = new System.Drawing.Size(60, 25);
-            this.buttonCancel.TabIndex = 1;
-            this.buttonCancel.Text = "Cancel";
-            this.buttonCancel.UseVisualStyleBackColor = true;
-            this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
-            // 
-            // FormSuperStructure
-            // 
-            this.AcceptButton = this.buttonOK;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.AutoSize = true;
-            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.CancelButton = this.buttonCancel;
-            this.ClientSize = new System.Drawing.Size(270, 71);
-            this.ControlBox = false;
-            this.Controls.Add(this.buttonCancel);
-            this.Controls.Add(this.buttonOK);
-            this.Controls.Add(this.numericBoxC);
-            this.Controls.Add(this.numericBoxB);
-            this.Controls.Add(this.numericBoxA);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Name = "FormSuperStructure";
-            this.ShowIcon = false;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Set superstructure size";
-            this.TopMost = true;
-            this.ResumeLayout(false);
-            this.PerformLayout();
+        numericBoxA = new NumericBox();
+        numericBoxB = new NumericBox();
+        numericBoxC = new NumericBox();
+        buttonOK = new System.Windows.Forms.Button();
+        buttonCancel = new System.Windows.Forms.Button();
+        SuspendLayout();
+        // 
+        // numericBoxA
+        // 
+        numericBoxA.BackColor = System.Drawing.Color.Transparent;
+        numericBoxA.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+        numericBoxA.HeaderText = "a × ";
+        numericBoxA.Location = new System.Drawing.Point(9, 9);
+        numericBoxA.Margin = new System.Windows.Forms.Padding(0);
+        numericBoxA.Maximum = 100D;
+        numericBoxA.MaximumSize = new System.Drawing.Size(1000, 25);
+        numericBoxA.Minimum = 1D;
+        numericBoxA.MinimumSize = new System.Drawing.Size(1, 25);
+        numericBoxA.Name = "numericBoxA";
+        numericBoxA.RadianValue = 0.017453292519943295D;
+        numericBoxA.ShowUpDown = true;
+        numericBoxA.Size = new System.Drawing.Size(77, 25);
+        numericBoxA.TabIndex = 0;
+        numericBoxA.Value = 1D;
+        // 
+        // numericBoxB
+        // 
+        numericBoxB.BackColor = System.Drawing.Color.Transparent;
+        numericBoxB.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+        numericBoxB.HeaderText = "b × ";
+        numericBoxB.Location = new System.Drawing.Point(96, 9);
+        numericBoxB.Margin = new System.Windows.Forms.Padding(0);
+        numericBoxB.Maximum = 100D;
+        numericBoxB.MaximumSize = new System.Drawing.Size(1000, 25);
+        numericBoxB.Minimum = 1D;
+        numericBoxB.MinimumSize = new System.Drawing.Size(1, 25);
+        numericBoxB.Name = "numericBoxB";
+        numericBoxB.RadianValue = 0.017453292519943295D;
+        numericBoxB.ShowUpDown = true;
+        numericBoxB.Size = new System.Drawing.Size(77, 25);
+        numericBoxB.TabIndex = 0;
+        numericBoxB.Value = 1D;
+        // 
+        // numericBoxC
+        // 
+        numericBoxC.BackColor = System.Drawing.Color.Transparent;
+        numericBoxC.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+        numericBoxC.HeaderText = "c × ";
+        numericBoxC.Location = new System.Drawing.Point(187, 9);
+        numericBoxC.Margin = new System.Windows.Forms.Padding(0);
+        numericBoxC.Maximum = 100D;
+        numericBoxC.MaximumSize = new System.Drawing.Size(1000, 25);
+        numericBoxC.Minimum = 1D;
+        numericBoxC.MinimumSize = new System.Drawing.Size(1, 25);
+        numericBoxC.Name = "numericBoxC";
+        numericBoxC.RadianValue = 0.017453292519943295D;
+        numericBoxC.ShowUpDown = true;
+        numericBoxC.Size = new System.Drawing.Size(77, 25);
+        numericBoxC.TabIndex = 0;
+        numericBoxC.Value = 1D;
+        // 
+        // buttonOK
+        // 
+        buttonOK.AutoSize = true;
+        buttonOK.Location = new System.Drawing.Point(138, 40);
+        buttonOK.Name = "buttonOK";
+        buttonOK.Size = new System.Drawing.Size(60, 25);
+        buttonOK.TabIndex = 1;
+        buttonOK.Text = "OK";
+        buttonOK.UseVisualStyleBackColor = true;
+        buttonOK.Click += buttonOK_Click;
+        // 
+        // buttonCancel
+        // 
+        buttonCancel.AutoSize = true;
+        buttonCancel.Location = new System.Drawing.Point(204, 40);
+        buttonCancel.Name = "buttonCancel";
+        buttonCancel.Size = new System.Drawing.Size(60, 25);
+        buttonCancel.TabIndex = 1;
+        buttonCancel.Text = "Cancel";
+        buttonCancel.UseVisualStyleBackColor = true;
+        buttonCancel.Click += buttonCancel_Click;
+        // 
+        // FormSuperStructure
+        // 
+        AcceptButton = buttonOK;
+        AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+        AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+        AutoSize = true;
+        AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+        CancelButton = buttonCancel;
+        ClientSize = new System.Drawing.Size(270, 71);
+        ControlBox = false;
+        Controls.Add(buttonCancel);
+        Controls.Add(buttonOK);
+        Controls.Add(numericBoxC);
+        Controls.Add(numericBoxB);
+        Controls.Add(numericBoxA);
+        Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
+        FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+        Name = "FormSuperStructure";
+        ShowIcon = false;
+        StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+        Text = "Set superstructure size";
+        TopMost = true;
+        ResumeLayout(false);
+        PerformLayout();
 
     }
 

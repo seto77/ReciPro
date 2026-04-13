@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <metadata name="captureExtender.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="radioButtonIsotoropy.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -221,10 +224,10 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxBiso.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 27</value>
+    <value>1000, 28</value>
   </data>
   <data name="numericBoxBiso.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 17</value>
+    <value>1, 18</value>
   </data>
   <data name="numericBoxBiso.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>1, 1, 1, 1</value>
@@ -236,7 +239,7 @@
     <value>0</value>
   </data>
   <data name="numericBoxBiso.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>Arial, 9.75pt</value>
+    <value>Segoe UI Symbol, 9pt</value>
   </data>
   <data name="&gt;&gt;numericBoxBiso.Name" xml:space="preserve">
     <value>numericBoxBiso</value>
@@ -269,10 +272,10 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxBisoerr.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 27</value>
+    <value>1000, 28</value>
   </data>
   <data name="numericBoxBisoerr.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 17</value>
+    <value>1, 18</value>
   </data>
   <data name="numericBoxBisoerr.Size" type="System.Drawing.Size, System.Drawing">
     <value>70, 24</value>
@@ -281,7 +284,7 @@
     <value>1</value>
   </data>
   <data name="numericBoxBisoerr.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>Arial, 9.75pt</value>
+    <value>Segoe UI Symbol, 9pt</value>
   </data>
   <data name="&gt;&gt;numericBoxBisoerr.Name" xml:space="preserve">
     <value>numericBoxBisoerr</value>
@@ -296,7 +299,7 @@
     <value>1</value>
   </data>
   <data name="flowLayoutPanelIso.Location" type="System.Drawing.Point, System.Drawing">
-    <value>30, 27</value>
+    <value>30, 29</value>
   </data>
   <data name="flowLayoutPanelIso.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -443,7 +446,7 @@
     <value>Label: </value>
   </data>
   <metadata name="toolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
+    <value>157, 17</value>
   </metadata>
   <data name="label1.ToolTip" xml:space="preserve">
     <value>Label</value>
@@ -464,7 +467,7 @@
     <value>Fill</value>
   </data>
   <data name="textBoxLabel.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Arial, 9pt</value>
+    <value>Segoe UI Symbol, 9pt</value>
   </data>
   <data name="textBoxLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>Disable</value>
@@ -476,7 +479,7 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="textBoxLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>77, 21</value>
+    <value>77, 23</value>
   </data>
   <data name="textBoxLabel.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -539,7 +542,7 @@
     <value>Fill</value>
   </data>
   <data name="comboBoxAtom.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Arial, 9pt</value>
+    <value>Segoe UI Symbol, 9pt</value>
   </data>
   <data name="comboBoxAtom.ItemHeight" type="System.Int32, mscorlib">
     <value>15</value>
@@ -2846,10 +2849,10 @@ Error</value>
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxB22.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 27</value>
+    <value>1000, 28</value>
   </data>
   <data name="numericBoxB22.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 17</value>
+    <value>1, 18</value>
   </data>
   <data name="numericBoxB22.Size" type="System.Drawing.Size, System.Drawing">
     <value>81, 24</value>
@@ -2858,7 +2861,7 @@ Error</value>
     <value>0</value>
   </data>
   <data name="numericBoxB22.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>Arial, 9.75pt</value>
+    <value>Segoe UI Symbol, 9pt</value>
   </data>
   <data name="&gt;&gt;numericBoxB22.Name" xml:space="preserve">
     <value>numericBoxB22</value>
@@ -2891,10 +2894,10 @@ Error</value>
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxB22err.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 27</value>
+    <value>1000, 28</value>
   </data>
   <data name="numericBoxB22err.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 17</value>
+    <value>1, 18</value>
   </data>
   <data name="numericBoxB22err.Size" type="System.Drawing.Size, System.Drawing">
     <value>66, 24</value>
@@ -2903,7 +2906,7 @@ Error</value>
     <value>1</value>
   </data>
   <data name="numericBoxB22err.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>Arial, 9.75pt</value>
+    <value>Segoe UI Symbol, 9pt</value>
   </data>
   <data name="&gt;&gt;numericBoxB22err.Name" xml:space="preserve">
     <value>numericBoxB22err</value>
@@ -2936,10 +2939,10 @@ Error</value>
     <value>5, 0, 0, 0</value>
   </data>
   <data name="numericBoxB23.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 27</value>
+    <value>1000, 28</value>
   </data>
   <data name="numericBoxB23.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 17</value>
+    <value>1, 18</value>
   </data>
   <data name="numericBoxB23.Size" type="System.Drawing.Size, System.Drawing">
     <value>81, 24</value>
@@ -2948,7 +2951,7 @@ Error</value>
     <value>2</value>
   </data>
   <data name="numericBoxB23.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>Arial, 9.75pt</value>
+    <value>Segoe UI Symbol, 9pt</value>
   </data>
   <data name="&gt;&gt;numericBoxB23.Name" xml:space="preserve">
     <value>numericBoxB23</value>
@@ -2981,10 +2984,10 @@ Error</value>
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxB23err.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 27</value>
+    <value>1000, 28</value>
   </data>
   <data name="numericBoxB23err.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 17</value>
+    <value>1, 18</value>
   </data>
   <data name="numericBoxB23err.Size" type="System.Drawing.Size, System.Drawing">
     <value>66, 24</value>
@@ -2993,7 +2996,7 @@ Error</value>
     <value>3</value>
   </data>
   <data name="numericBoxB23err.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>Arial, 9.75pt</value>
+    <value>Segoe UI Symbol, 9pt</value>
   </data>
   <data name="&gt;&gt;numericBoxB23err.Name" xml:space="preserve">
     <value>numericBoxB23err</value>
@@ -3026,10 +3029,10 @@ Error</value>
     <value>5, 0, 0, 0</value>
   </data>
   <data name="numericBoxB33.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 27</value>
+    <value>1000, 28</value>
   </data>
   <data name="numericBoxB33.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 17</value>
+    <value>1, 18</value>
   </data>
   <data name="numericBoxB33.Size" type="System.Drawing.Size, System.Drawing">
     <value>81, 24</value>
@@ -3038,7 +3041,7 @@ Error</value>
     <value>4</value>
   </data>
   <data name="numericBoxB33.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>Arial, 9.75pt</value>
+    <value>Segoe UI Symbol, 9pt</value>
   </data>
   <data name="&gt;&gt;numericBoxB33.Name" xml:space="preserve">
     <value>numericBoxB33</value>
@@ -3071,10 +3074,10 @@ Error</value>
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxB33err.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 27</value>
+    <value>1000, 28</value>
   </data>
   <data name="numericBoxB33err.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 17</value>
+    <value>1, 18</value>
   </data>
   <data name="numericBoxB33err.Size" type="System.Drawing.Size, System.Drawing">
     <value>66, 24</value>
@@ -3083,7 +3086,7 @@ Error</value>
     <value>5</value>
   </data>
   <data name="numericBoxB33err.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>Arial, 9.75pt</value>
+    <value>Segoe UI Symbol, 9pt</value>
   </data>
   <data name="&gt;&gt;numericBoxB33err.Name" xml:space="preserve">
     <value>numericBoxB33err</value>
@@ -3143,10 +3146,10 @@ Error</value>
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxB11.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 27</value>
+    <value>1000, 28</value>
   </data>
   <data name="numericBoxB11.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 17</value>
+    <value>1, 18</value>
   </data>
   <data name="numericBoxB11.Size" type="System.Drawing.Size, System.Drawing">
     <value>81, 24</value>
@@ -3155,7 +3158,7 @@ Error</value>
     <value>0</value>
   </data>
   <data name="numericBoxB11.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>Arial, 9.75pt</value>
+    <value>Segoe UI Symbol, 9pt</value>
   </data>
   <data name="&gt;&gt;numericBoxB11.Name" xml:space="preserve">
     <value>numericBoxB11</value>
@@ -3188,10 +3191,10 @@ Error</value>
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxB11err.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 27</value>
+    <value>1000, 28</value>
   </data>
   <data name="numericBoxB11err.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 17</value>
+    <value>1, 18</value>
   </data>
   <data name="numericBoxB11err.Size" type="System.Drawing.Size, System.Drawing">
     <value>66, 24</value>
@@ -3200,7 +3203,7 @@ Error</value>
     <value>1</value>
   </data>
   <data name="numericBoxB11err.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>Arial, 9.75pt</value>
+    <value>Segoe UI Symbol, 9pt</value>
   </data>
   <data name="&gt;&gt;numericBoxB11err.Name" xml:space="preserve">
     <value>numericBoxB11err</value>
@@ -3233,10 +3236,10 @@ Error</value>
     <value>5, 0, 0, 0</value>
   </data>
   <data name="numericBoxB12.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 27</value>
+    <value>1000, 28</value>
   </data>
   <data name="numericBoxB12.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 17</value>
+    <value>1, 18</value>
   </data>
   <data name="numericBoxB12.Size" type="System.Drawing.Size, System.Drawing">
     <value>81, 24</value>
@@ -3245,7 +3248,7 @@ Error</value>
     <value>2</value>
   </data>
   <data name="numericBoxB12.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>Arial, 9.75pt</value>
+    <value>Segoe UI Symbol, 9pt</value>
   </data>
   <data name="&gt;&gt;numericBoxB12.Name" xml:space="preserve">
     <value>numericBoxB12</value>
@@ -3278,10 +3281,10 @@ Error</value>
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxB12err.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 27</value>
+    <value>1000, 28</value>
   </data>
   <data name="numericBoxB12err.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 17</value>
+    <value>1, 18</value>
   </data>
   <data name="numericBoxB12err.Size" type="System.Drawing.Size, System.Drawing">
     <value>66, 24</value>
@@ -3290,7 +3293,7 @@ Error</value>
     <value>3</value>
   </data>
   <data name="numericBoxB12err.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>Arial, 9.75pt</value>
+    <value>Segoe UI Symbol, 9pt</value>
   </data>
   <data name="&gt;&gt;numericBoxB12err.Name" xml:space="preserve">
     <value>numericBoxB12err</value>
@@ -3323,10 +3326,10 @@ Error</value>
     <value>5, 0, 0, 0</value>
   </data>
   <data name="numericBoxB13.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 27</value>
+    <value>1000, 28</value>
   </data>
   <data name="numericBoxB13.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 17</value>
+    <value>1, 18</value>
   </data>
   <data name="numericBoxB13.Size" type="System.Drawing.Size, System.Drawing">
     <value>81, 24</value>
@@ -3335,7 +3338,7 @@ Error</value>
     <value>4</value>
   </data>
   <data name="numericBoxB13.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>Arial, 9.75pt</value>
+    <value>Segoe UI Symbol, 9pt</value>
   </data>
   <data name="&gt;&gt;numericBoxB13.Name" xml:space="preserve">
     <value>numericBoxB13</value>
@@ -3368,10 +3371,10 @@ Error</value>
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxB13err.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 27</value>
+    <value>1000, 28</value>
   </data>
   <data name="numericBoxB13err.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 17</value>
+    <value>1, 18</value>
   </data>
   <data name="numericBoxB13err.Size" type="System.Drawing.Size, System.Drawing">
     <value>66, 24</value>
@@ -3380,7 +3383,7 @@ Error</value>
     <value>5</value>
   </data>
   <data name="numericBoxB13err.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>Arial, 9.75pt</value>
+    <value>Segoe UI Symbol, 9pt</value>
   </data>
   <data name="&gt;&gt;numericBoxB13err.Name" xml:space="preserve">
     <value>numericBoxB13err</value>
@@ -3569,7 +3572,7 @@ Error</value>
     <value>3</value>
   </data>
   <data name="comboBoxScatteringFactorElectron.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Arial, 9pt</value>
+    <value>Segoe UI Symbol, 9pt</value>
   </data>
   <data name="comboBoxScatteringFactorElectron.ItemHeight" type="System.Int32, mscorlib">
     <value>15</value>
@@ -4076,7 +4079,7 @@ Error</value>
     <value>225, 7</value>
   </data>
   <data name="checkBoxShowLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>83, 19</value>
+    <value>91, 19</value>
   </data>
   <data name="checkBoxShowLabel.TabIndex" type="System.Int32, mscorlib">
     <value>89</value>
@@ -4481,13 +4484,13 @@ Error</value>
     <value>NoControl</value>
   </data>
   <data name="buttonApplyToSameElement.Location" type="System.Drawing.Point, System.Drawing">
-    <value>100, 0</value>
+    <value>97, 0</value>
   </data>
   <data name="buttonApplyToSameElement.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
   <data name="buttonApplyToSameElement.Size" type="System.Drawing.Size, System.Drawing">
-    <value>144, 27</value>
+    <value>140, 27</value>
   </data>
   <data name="buttonApplyToSameElement.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -4538,7 +4541,7 @@ Error</value>
     <value>0, 0, 0, 0</value>
   </data>
   <data name="buttonAddAtom.Size" type="System.Drawing.Size, System.Drawing">
-    <value>42, 27</value>
+    <value>39, 27</value>
   </data>
   <data name="buttonAddAtom.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -4580,7 +4583,7 @@ Error</value>
     <value>NoControl</value>
   </data>
   <data name="buttonChange.Location" type="System.Drawing.Point, System.Drawing">
-    <value>42, 0</value>
+    <value>39, 0</value>
   </data>
   <data name="buttonChange.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -4622,7 +4625,7 @@ Error</value>
     <value>Segoe UI Symbol, 9pt</value>
   </data>
   <data name="buttonApplyToAllElements.Location" type="System.Drawing.Point, System.Drawing">
-    <value>244, 0</value>
+    <value>237, 0</value>
   </data>
   <data name="buttonApplyToAllElements.Size" type="System.Drawing.Size, System.Drawing">
     <value>128, 27</value>
@@ -4862,10 +4865,10 @@ Error</value>
     <value>68</value>
   </data>
   <metadata name="bindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>107, 17</value>
+    <value>248, 17</value>
   </metadata>
   <metadata name="dataSet.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>238, 17</value>
+    <value>379, 17</value>
   </metadata>
   <data name="dataGridView.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -4947,6 +4950,12 @@ Error</value>
   </data>
   <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
     <value>576, 350</value>
+  </data>
+  <data name="&gt;&gt;captureExtender.Name" xml:space="preserve">
+    <value>captureExtender</value>
+  </data>
+  <data name="&gt;&gt;captureExtender.Type" xml:space="preserve">
+    <value>Crystallography.Controls.CaptureExtender, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;toolTip.Name" xml:space="preserve">
     <value>toolTip</value>
@@ -5036,6 +5045,6 @@ Error</value>
     <value>AtomControl</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>System.Windows.Forms.UserControl, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>Crystallography.Controls.CaptureUserControlBase, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
   </data>
 </root>

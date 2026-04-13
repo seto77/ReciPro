@@ -451,7 +451,7 @@
             numericBoxOcc.SkipEventDuringInput = false;
             numericBoxOcc.SmartIncrement = true;
             numericBoxOcc.ThonsandsSeparator = true;
-            toolTip.SetToolTip(numericBoxOcc, resources.GetString("numericBoxOcc.ToolTip"));
+            toolTip.SetToolTip(numericBoxOcc, resources.GetString("numericBoxOcc.ToolTip1"));
             numericBoxOcc.TrimEndZero = true;
             // 
             // numericBoxZ
@@ -1335,7 +1335,6 @@
             dataGridView.Name = "dataGridView";
             dataGridView.RowHeadersVisible = false;
             dataGridView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            //dataGridView.RowTemplate.Height = 21;                                                                                                   // 260413Cl DPIスケーリング対応のため削除
             dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             dataGridView.CellValueChanged += dataGridViewAtom_CellValueChanged;
             dataGridView.CurrentCellDirtyStateChanged += dataGridView_CurrentCellDirtyStateChanged;
@@ -1473,7 +1472,6 @@
             // AtomControl
             // 
             resources.ApplyResources(this, "$this");
-            AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             Controls.Add(dataGridView);
             Controls.Add(panel1);

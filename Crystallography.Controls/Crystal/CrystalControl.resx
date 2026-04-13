@@ -304,13 +304,13 @@
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
   <data name="numericBoxVolumeAng.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+    <value>Segoe UI Symbol, 9pt</value>
   </data>
   <data name="numericBoxVolumeAng.FooterText" xml:space="preserve">
     <value>Å³</value>
   </data>
   <data name="numericBoxVolumeAng.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+    <value>Segoe UI Symbol, 9pt</value>
   </data>
   <data name="numericBoxVolumeAng.HeaderText" xml:space="preserve">
     <value>Cell Volume</value>
@@ -338,7 +338,7 @@
     <value>90</value>
   </data>
   <data name="numericBoxVolumeAng.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+    <value>Segoe UI Symbol, 9pt</value>
   </data>
   <metadata name="toolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>157, 17</value>
@@ -368,13 +368,13 @@
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
   <data name="numericBoxCellVolumeNm.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+    <value>Segoe UI Symbol, 9pt</value>
   </data>
   <data name="numericBoxCellVolumeNm.FooterText" xml:space="preserve">
     <value>nm³</value>
   </data>
   <data name="numericBoxCellVolumeNm.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+    <value>Segoe UI Symbol, 9pt</value>
   </data>
   <data name="numericBoxCellVolumeNm.Location" type="System.Drawing.Point, System.Drawing">
     <value>176, 4</value>
@@ -398,7 +398,7 @@
     <value>90</value>
   </data>
   <data name="numericBoxCellVolumeNm.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+    <value>Segoe UI Symbol, 9pt</value>
   </data>
   <data name="numericBoxCellVolumeNm.ToolTip" xml:space="preserve">
     <value>Cell volume in nm³</value>
@@ -422,13 +422,13 @@
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
   <data name="numericBoxCellMass.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+    <value>Segoe UI Symbol, 9pt</value>
   </data>
   <data name="numericBoxCellMass.FooterText" xml:space="preserve">
     <value>× 10⁻²⁴ g</value>
   </data>
   <data name="numericBoxCellMass.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+    <value>Segoe UI Symbol, 9pt</value>
   </data>
   <data name="numericBoxCellMass.HeaderText" xml:space="preserve">
     <value>Cell Mass</value>
@@ -455,7 +455,7 @@
     <value>90</value>
   </data>
   <data name="numericBoxCellMass.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+    <value>Segoe UI Symbol, 9pt</value>
   </data>
   <data name="numericBoxCellMass.ToolTip" xml:space="preserve">
     <value>Cell mass in 10⁻²⁴ g</value>
@@ -515,7 +515,7 @@
     <value>90</value>
   </data>
   <data name="numericBoxMolarVolume.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+    <value>Segoe UI Symbol, 9pt</value>
   </data>
   <data name="numericBoxMolarVolume.ToolTip" xml:space="preserve">
     <value>Molar Volume in cm³/mol</value>
@@ -944,13 +944,13 @@
     <value>Arial, 9pt</value>
   </data>
   <data name="resetToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>217, 22</value>
+    <value>254, 22</value>
   </data>
   <data name="resetToolStripMenuItem.Text" xml:space="preserve">
     <value>Set Debye-Waller Factors to Zero</value>
   </data>
   <data name="contextMenuStrip2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>218, 26</value>
+    <value>255, 26</value>
   </data>
   <data name="&gt;&gt;contextMenuStrip2.Name" xml:space="preserve">
     <value>contextMenuStrip2</value>
@@ -2763,7 +2763,7 @@
     <value>4, 2, 0, 0</value>
   </data>
   <data name="label29.Size" type="System.Drawing.Size, System.Drawing">
-    <value>52, 17</value>
+    <value>53, 17</value>
   </data>
   <data name="label29.TabIndex" type="System.Int32, mscorlib">
     <value>138</value>
@@ -2787,7 +2787,7 @@
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
   <data name="numericUpDownAngleSubDivision.Location" type="System.Drawing.Point, System.Drawing">
-    <value>218, 2</value>
+    <value>219, 2</value>
   </data>
   <data name="numericUpDownAngleSubDivision.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 4, 0</value>
@@ -2823,7 +2823,7 @@
     <value>NoControl</value>
   </data>
   <data name="label101.Location" type="System.Drawing.Point, System.Drawing">
-    <value>274, 4</value>
+    <value>275, 4</value>
   </data>
   <data name="label101.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 2, 4, 0</value>
@@ -2853,7 +2853,7 @@
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
   <data name="numericUpDownCrystallineSize.Location" type="System.Drawing.Point, System.Drawing">
-    <value>309, 2</value>
+    <value>310, 2</value>
   </data>
   <data name="numericUpDownCrystallineSize.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -2886,7 +2886,7 @@
     <value>NoControl</value>
   </data>
   <data name="label99.Location" type="System.Drawing.Point, System.Drawing">
-    <value>357, 4</value>
+    <value>358, 4</value>
   </data>
   <data name="label99.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 2, 4, 0</value>

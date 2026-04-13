@@ -180,7 +180,7 @@
             tabControl.Controls.Add(tabPageGroupInfo);
             tabControl.Controls.Add(tabPageConditions);
             tabControl.Controls.Add(tabPageWyckoff);
-            tabControl.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            tabControl.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
             tabControl.Location = new System.Drawing.Point(90, 14);
             tabControl.Name = "tabControl";
             tabControl.SelectedIndex = 0;
@@ -196,10 +196,10 @@
             tabPageGroupInfo.Controls.Add(label);
             tabPageGroupInfo.Controls.Add(richTextBoxCS);
             tabPageGroupInfo.Controls.Add(groupBoxPointGroup);
-            tabPageGroupInfo.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-            tabPageGroupInfo.Location = new System.Drawing.Point(4, 23);
+            tabPageGroupInfo.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            tabPageGroupInfo.Location = new System.Drawing.Point(4, 24);
             tabPageGroupInfo.Name = "tabPageGroupInfo";
-            tabPageGroupInfo.Size = new System.Drawing.Size(612, 141);
+            tabPageGroupInfo.Size = new System.Drawing.Size(612, 140);
             tabPageGroupInfo.TabIndex = 0;
             tabPageGroupInfo.Text = "Group Info";
             // 
@@ -213,7 +213,7 @@
             groupBoxSpaceGroup.Controls.Add(richTextBoxSG_SF);
             groupBoxSpaceGroup.Controls.Add(label6);
             groupBoxSpaceGroup.Controls.Add(richTextBoxSG_HM_full);
-            groupBoxSpaceGroup.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            groupBoxSpaceGroup.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
             groupBoxSpaceGroup.Location = new System.Drawing.Point(204, 4);
             groupBoxSpaceGroup.Name = "groupBoxSpaceGroup";
             groupBoxSpaceGroup.Size = new System.Drawing.Size(336, 132);
@@ -235,20 +235,22 @@
             // 
             // label8
             // 
-            label8.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            label8.AutoSize = true;
+            label8.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
             label8.Location = new System.Drawing.Point(12, 76);
             label8.Name = "label8";
-            label8.Size = new System.Drawing.Size(64, 16);
+            label8.Size = new System.Drawing.Size(64, 15);
             label8.TabIndex = 1;
             label8.Text = "SF symbol:";
             label8.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label9
             // 
-            label9.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            label9.AutoSize = true;
+            label9.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
             label9.Location = new System.Drawing.Point(8, 104);
             label9.Name = "label9";
-            label9.Size = new System.Drawing.Size(68, 16);
+            label9.Size = new System.Drawing.Size(73, 15);
             label9.TabIndex = 1;
             label9.Text = "Hall symbol:";
             label9.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -267,10 +269,11 @@
             // 
             // label5
             // 
-            label5.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            label5.AutoSize = true;
+            label5.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
             label5.Location = new System.Drawing.Point(12, 20);
             label5.Name = "label5";
-            label5.Size = new System.Drawing.Size(64, 16);
+            label5.Size = new System.Drawing.Size(72, 15);
             label5.TabIndex = 1;
             label5.Text = "HM symbol:";
             label5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -289,10 +292,11 @@
             // 
             // label6
             // 
-            label6.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            label6.AutoSize = true;
+            label6.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
             label6.Location = new System.Drawing.Point(4, 48);
             label6.Name = "label6";
-            label6.Size = new System.Drawing.Size(72, 16);
+            label6.Size = new System.Drawing.Size(77, 15);
             label6.TabIndex = 1;
             label6.Text = "Full notation:";
             label6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -323,7 +327,7 @@
             // 
             // label12
             // 
-            label12.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            label12.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
             label12.Location = new System.Drawing.Point(0, 36);
             label12.Name = "label12";
             label12.Size = new System.Drawing.Size(68, 16);
@@ -333,10 +337,11 @@
             // 
             // label
             // 
-            label.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            label.AutoSize = true;
+            label.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
             label.Location = new System.Drawing.Point(4, 8);
             label.Name = "label";
-            label.Size = new System.Drawing.Size(80, 16);
+            label.Size = new System.Drawing.Size(84, 15);
             label.TabIndex = 1;
             label.Text = "Crystal System";
             label.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -359,7 +364,7 @@
             groupBoxPointGroup.Controls.Add(label11);
             groupBoxPointGroup.Controls.Add(richTextBoxPG_HM);
             groupBoxPointGroup.Controls.Add(richTextBoxPG_SF);
-            groupBoxPointGroup.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            groupBoxPointGroup.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
             groupBoxPointGroup.Location = new System.Drawing.Point(4, 64);
             groupBoxPointGroup.Name = "groupBoxPointGroup";
             groupBoxPointGroup.Size = new System.Drawing.Size(196, 76);
@@ -369,20 +374,22 @@
             // 
             // label10
             // 
-            label10.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            label10.AutoSize = true;
+            label10.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
             label10.Location = new System.Drawing.Point(4, 22);
             label10.Name = "label10";
-            label10.Size = new System.Drawing.Size(70, 12);
+            label10.Size = new System.Drawing.Size(72, 15);
             label10.TabIndex = 1;
             label10.Text = "HM symbol:";
             label10.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label11
             // 
-            label11.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            label11.AutoSize = true;
+            label11.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
             label11.Location = new System.Drawing.Point(4, 46);
             label11.Name = "label11";
-            label11.Size = new System.Drawing.Size(68, 16);
+            label11.Size = new System.Drawing.Size(64, 15);
             label11.TabIndex = 1;
             label11.Text = "SF symbol:";
             label11.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -417,15 +424,15 @@
             tabPageConditions.Controls.Add(label49);
             tabPageConditions.Controls.Add(richTextBoxExtinctionRule);
             tabPageConditions.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-            tabPageConditions.Location = new System.Drawing.Point(4, 23);
+            tabPageConditions.Location = new System.Drawing.Point(4, 24);
             tabPageConditions.Name = "tabPageConditions";
-            tabPageConditions.Size = new System.Drawing.Size(612, 141);
+            tabPageConditions.Size = new System.Drawing.Size(612, 140);
             tabPageConditions.TabIndex = 1;
             tabPageConditions.Text = "Conditions";
             // 
             // label49
             // 
-            label49.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            label49.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
             label49.Location = new System.Drawing.Point(6, 6);
             label49.Name = "label49";
             label49.Size = new System.Drawing.Size(202, 16);
@@ -441,7 +448,7 @@
             richTextBoxExtinctionRule.Location = new System.Drawing.Point(6, 24);
             richTextBoxExtinctionRule.Name = "richTextBoxExtinctionRule";
             richTextBoxExtinctionRule.ReadOnly = true;
-            richTextBoxExtinctionRule.Size = new System.Drawing.Size(525, 116);
+            richTextBoxExtinctionRule.Size = new System.Drawing.Size(525, 115);
             richTextBoxExtinctionRule.TabIndex = 6;
             richTextBoxExtinctionRule.Text = "";
             // 
@@ -450,9 +457,9 @@
             captureExtender.SetCapture(tabPageWyckoff, true);
             tabPageWyckoff.Controls.Add(dataGridView1);
             tabPageWyckoff.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-            tabPageWyckoff.Location = new System.Drawing.Point(4, 23);
+            tabPageWyckoff.Location = new System.Drawing.Point(4, 24);
             tabPageWyckoff.Name = "tabPageWyckoff";
-            tabPageWyckoff.Size = new System.Drawing.Size(612, 141);
+            tabPageWyckoff.Size = new System.Drawing.Size(612, 140);
             tabPageWyckoff.TabIndex = 2;
             tabPageWyckoff.Text = "Wyckoff Positions";
             // 
@@ -470,9 +477,8 @@
             dataGridView1.MultiSelect = false;
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersVisible = false;
-            //dataGridView1.RowTemplate.Height = 21;                                                                                                  // 260413Cl DPIスケーリング対応のため削除
             dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            dataGridView1.Size = new System.Drawing.Size(633, 140);
+            dataGridView1.Size = new System.Drawing.Size(633, 139);
             dataGridView1.TabIndex = 0;
             // 
             // columnMultiplicityDataGridViewTextBoxColumn
@@ -627,7 +633,7 @@
             // 
             // label4
             // 
-            label4.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            label4.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
             label4.Location = new System.Drawing.Point(4, 29);
             label4.Name = "label4";
             label4.Size = new System.Drawing.Size(56, 16);
@@ -693,7 +699,7 @@
             groupBoxGeometricsCalculation.Controls.Add(label37);
             groupBoxGeometricsCalculation.Controls.Add(textBoxZoneAxis);
             groupBoxGeometricsCalculation.Controls.Add(panel1);
-            groupBoxGeometricsCalculation.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            groupBoxGeometricsCalculation.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
             groupBoxGeometricsCalculation.Location = new System.Drawing.Point(0, 192);
             groupBoxGeometricsCalculation.Name = "groupBoxGeometricsCalculation";
             groupBoxGeometricsCalculation.Size = new System.Drawing.Size(716, 133);
@@ -713,19 +719,19 @@
             // 
             // numericUpDownW2
             // 
-            numericUpDownW2.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            numericUpDownW2.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
             numericUpDownW2.Location = new System.Drawing.Point(501, 75);
             numericUpDownW2.Maximum = new decimal(new int[] { 20, 0, 0, 0 });
             numericUpDownW2.Minimum = new decimal(new int[] { 20, 0, 0, int.MinValue });
             numericUpDownW2.Name = "numericUpDownW2";
-            numericUpDownW2.Size = new System.Drawing.Size(36, 21);
+            numericUpDownW2.Size = new System.Drawing.Size(36, 23);
             numericUpDownW2.TabIndex = 11;
             numericUpDownW2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             numericUpDownW2.ValueChanged += numericUpDown_ValueChanged;
             // 
             // label42
             // 
-            label42.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            label42.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
             label42.Location = new System.Drawing.Point(370, 108);
             label42.Name = "label42";
             label42.Size = new System.Drawing.Size(175, 16);
@@ -734,72 +740,72 @@
             // 
             // numericUpDownU2
             // 
-            numericUpDownU2.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            numericUpDownU2.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
             numericUpDownU2.Location = new System.Drawing.Point(429, 75);
             numericUpDownU2.Maximum = new decimal(new int[] { 20, 0, 0, 0 });
             numericUpDownU2.Minimum = new decimal(new int[] { 20, 0, 0, int.MinValue });
             numericUpDownU2.Name = "numericUpDownU2";
-            numericUpDownU2.Size = new System.Drawing.Size(36, 21);
+            numericUpDownU2.Size = new System.Drawing.Size(36, 23);
             numericUpDownU2.TabIndex = 9;
             numericUpDownU2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             numericUpDownU2.ValueChanged += numericUpDown_ValueChanged;
             // 
             // numericUpDownU1
             // 
-            numericUpDownU1.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            numericUpDownU1.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
             numericUpDownU1.Location = new System.Drawing.Point(429, 32);
             numericUpDownU1.Maximum = new decimal(new int[] { 20, 0, 0, 0 });
             numericUpDownU1.Minimum = new decimal(new int[] { 20, 0, 0, int.MinValue });
             numericUpDownU1.Name = "numericUpDownU1";
-            numericUpDownU1.Size = new System.Drawing.Size(36, 21);
+            numericUpDownU1.Size = new System.Drawing.Size(36, 23);
             numericUpDownU1.TabIndex = 6;
             numericUpDownU1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             numericUpDownU1.ValueChanged += numericUpDown_ValueChanged;
             // 
             // numericUpDownL2
             // 
-            numericUpDownL2.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            numericUpDownL2.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
             numericUpDownL2.Location = new System.Drawing.Point(193, 75);
             numericUpDownL2.Maximum = new decimal(new int[] { 20, 0, 0, 0 });
             numericUpDownL2.Minimum = new decimal(new int[] { 20, 0, 0, int.MinValue });
             numericUpDownL2.Name = "numericUpDownL2";
-            numericUpDownL2.Size = new System.Drawing.Size(36, 21);
+            numericUpDownL2.Size = new System.Drawing.Size(36, 23);
             numericUpDownL2.TabIndex = 5;
             numericUpDownL2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             numericUpDownL2.ValueChanged += numericUpDown_ValueChanged;
             // 
             // numericUpDownV2
             // 
-            numericUpDownV2.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            numericUpDownV2.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
             numericUpDownV2.Location = new System.Drawing.Point(465, 75);
             numericUpDownV2.Maximum = new decimal(new int[] { 20, 0, 0, 0 });
             numericUpDownV2.Minimum = new decimal(new int[] { 20, 0, 0, int.MinValue });
             numericUpDownV2.Name = "numericUpDownV2";
-            numericUpDownV2.Size = new System.Drawing.Size(36, 21);
+            numericUpDownV2.Size = new System.Drawing.Size(36, 23);
             numericUpDownV2.TabIndex = 10;
             numericUpDownV2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             numericUpDownV2.ValueChanged += numericUpDown_ValueChanged;
             // 
             // numericUpDownK2
             // 
-            numericUpDownK2.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            numericUpDownK2.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
             numericUpDownK2.Location = new System.Drawing.Point(157, 75);
             numericUpDownK2.Maximum = new decimal(new int[] { 20, 0, 0, 0 });
             numericUpDownK2.Minimum = new decimal(new int[] { 20, 0, 0, int.MinValue });
             numericUpDownK2.Name = "numericUpDownK2";
-            numericUpDownK2.Size = new System.Drawing.Size(36, 21);
+            numericUpDownK2.Size = new System.Drawing.Size(36, 23);
             numericUpDownK2.TabIndex = 4;
             numericUpDownK2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             numericUpDownK2.ValueChanged += numericUpDown_ValueChanged;
             // 
             // numericUpDownV1
             // 
-            numericUpDownV1.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            numericUpDownV1.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
             numericUpDownV1.Location = new System.Drawing.Point(465, 32);
             numericUpDownV1.Maximum = new decimal(new int[] { 20, 0, 0, 0 });
             numericUpDownV1.Minimum = new decimal(new int[] { 20, 0, 0, int.MinValue });
             numericUpDownV1.Name = "numericUpDownV1";
-            numericUpDownV1.Size = new System.Drawing.Size(36, 21);
+            numericUpDownV1.Size = new System.Drawing.Size(36, 23);
             numericUpDownV1.TabIndex = 7;
             numericUpDownV1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             numericUpDownV1.ValueChanged += numericUpDown_ValueChanged;
@@ -815,12 +821,12 @@
             // 
             // numericUpDownK1
             // 
-            numericUpDownK1.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            numericUpDownK1.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
             numericUpDownK1.Location = new System.Drawing.Point(157, 29);
             numericUpDownK1.Maximum = new decimal(new int[] { 20, 0, 0, 0 });
             numericUpDownK1.Minimum = new decimal(new int[] { 20, 0, 0, int.MinValue });
             numericUpDownK1.Name = "numericUpDownK1";
-            numericUpDownK1.Size = new System.Drawing.Size(36, 21);
+            numericUpDownK1.Size = new System.Drawing.Size(36, 23);
             numericUpDownK1.TabIndex = 1;
             numericUpDownK1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             numericUpDownK1.ValueChanged += numericUpDown_ValueChanged;
@@ -836,12 +842,12 @@
             // 
             // numericUpDownH2
             // 
-            numericUpDownH2.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            numericUpDownH2.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
             numericUpDownH2.Location = new System.Drawing.Point(121, 75);
             numericUpDownH2.Maximum = new decimal(new int[] { 20, 0, 0, 0 });
             numericUpDownH2.Minimum = new decimal(new int[] { 20, 0, 0, int.MinValue });
             numericUpDownH2.Name = "numericUpDownH2";
-            numericUpDownH2.Size = new System.Drawing.Size(36, 21);
+            numericUpDownH2.Size = new System.Drawing.Size(36, 23);
             numericUpDownH2.TabIndex = 3;
             numericUpDownH2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             numericUpDownH2.ValueChanged += numericUpDown_ValueChanged;
@@ -866,24 +872,24 @@
             // 
             // numericUpDownW1
             // 
-            numericUpDownW1.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            numericUpDownW1.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
             numericUpDownW1.Location = new System.Drawing.Point(501, 32);
             numericUpDownW1.Maximum = new decimal(new int[] { 20, 0, 0, 0 });
             numericUpDownW1.Minimum = new decimal(new int[] { 20, 0, 0, int.MinValue });
             numericUpDownW1.Name = "numericUpDownW1";
-            numericUpDownW1.Size = new System.Drawing.Size(36, 21);
+            numericUpDownW1.Size = new System.Drawing.Size(36, 23);
             numericUpDownW1.TabIndex = 8;
             numericUpDownW1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             numericUpDownW1.ValueChanged += numericUpDown_ValueChanged;
             // 
             // numericUpDownH1
             // 
-            numericUpDownH1.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            numericUpDownH1.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
             numericUpDownH1.Location = new System.Drawing.Point(121, 29);
             numericUpDownH1.Maximum = new decimal(new int[] { 20, 0, 0, 0 });
             numericUpDownH1.Minimum = new decimal(new int[] { 20, 0, 0, int.MinValue });
             numericUpDownH1.Name = "numericUpDownH1";
-            numericUpDownH1.Size = new System.Drawing.Size(36, 21);
+            numericUpDownH1.Size = new System.Drawing.Size(36, 23);
             numericUpDownH1.TabIndex = 0;
             numericUpDownH1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             numericUpDownH1.ValueChanged += numericUpDown_ValueChanged;
@@ -918,12 +924,12 @@
             // 
             // numericUpDownL1
             // 
-            numericUpDownL1.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            numericUpDownL1.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
             numericUpDownL1.Location = new System.Drawing.Point(193, 29);
             numericUpDownL1.Maximum = new decimal(new int[] { 20, 0, 0, 0 });
             numericUpDownL1.Minimum = new decimal(new int[] { 20, 0, 0, int.MinValue });
             numericUpDownL1.Name = "numericUpDownL1";
-            numericUpDownL1.Size = new System.Drawing.Size(36, 21);
+            numericUpDownL1.Size = new System.Drawing.Size(36, 23);
             numericUpDownL1.TabIndex = 2;
             numericUpDownL1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             numericUpDownL1.ValueChanged += numericUpDown_ValueChanged;
@@ -1034,7 +1040,7 @@
             // 
             // label16
             // 
-            label16.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            label16.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
             label16.Location = new System.Drawing.Point(462, 15);
             label16.Name = "label16";
             label16.Size = new System.Drawing.Size(55, 16);
@@ -1043,7 +1049,7 @@
             // 
             // label29
             // 
-            label29.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            label29.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
             label29.Location = new System.Drawing.Point(145, 13);
             label29.Name = "label29";
             label29.Size = new System.Drawing.Size(55, 16);
@@ -1099,7 +1105,7 @@
             // 
             // label40
             // 
-            label40.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            label40.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
             label40.Location = new System.Drawing.Point(17, 108);
             label40.Name = "label40";
             label40.Size = new System.Drawing.Size(176, 16);
@@ -1146,7 +1152,7 @@
             // 
             // label17
             // 
-            label17.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            label17.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
             label17.Location = new System.Drawing.Point(371, 11);
             label17.Name = "label17";
             label17.Size = new System.Drawing.Size(55, 16);
@@ -1166,6 +1172,7 @@
             ClientSize = new System.Drawing.Size(718, 328);
             Controls.Add(groupBoxSymmetryInformation);
             Controls.Add(groupBoxGeometricsCalculation);
+            Font = new System.Drawing.Font("Segoe UI Symbol", 10F);
             Name = "FormSymmetryInformation";
             ShowIcon = false;
             StartPosition = System.Windows.Forms.FormStartPosition.Manual;
@@ -1175,8 +1182,11 @@
             groupBoxSymmetryInformation.ResumeLayout(false);
             tabControl.ResumeLayout(false);
             tabPageGroupInfo.ResumeLayout(false);
+            tabPageGroupInfo.PerformLayout();
             groupBoxSpaceGroup.ResumeLayout(false);
+            groupBoxSpaceGroup.PerformLayout();
             groupBoxPointGroup.ResumeLayout(false);
+            groupBoxPointGroup.PerformLayout();
             tabPageConditions.ResumeLayout(false);
             tabPageWyckoff.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
