@@ -310,6 +310,9 @@
   <data name="numericBoxThicknessStep.Size" type="System.Drawing.Size, System.Drawing">
     <value>138, 24</value>
   </data>
+  <data name="numericBoxThicknessStep.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
   <data name="numericBoxMaxNumOfG.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
@@ -361,6 +364,9 @@
   <data name="numericBoxThicknessStart.Size" type="System.Drawing.Size, System.Drawing">
     <value>138, 24</value>
   </data>
+  <data name="numericBoxThicknessStart.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
   <data name="numericBoxThicknessEnd.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
@@ -372,6 +378,9 @@
   </data>
   <data name="numericBoxThicknessEnd.Location" type="System.Drawing.Point, System.Drawing">
     <value>177, 54</value>
+  </data>
+  <data name="numericBoxThicknessEnd.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
   </data>
   <data name="buttonStop.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -553,6 +562,9 @@
   <data name="numericBoxEnergyEnd.Location" type="System.Drawing.Point, System.Drawing">
     <value>180, 87</value>
   </data>
+  <data name="numericBoxEnergyEnd.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
   <data name="numericBoxEnergyStart.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
@@ -568,6 +580,9 @@
   <data name="numericBoxEnergyStart.Size" type="System.Drawing.Size, System.Drawing">
     <value>176, 24</value>
   </data>
+  <data name="numericBoxEnergyStart.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
   <data name="numericBoxEnergyStep.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
@@ -582,6 +597,9 @@
   </data>
   <data name="numericBoxEnergyStep.Size" type="System.Drawing.Size, System.Drawing">
     <value>134, 24</value>
+  </data>
+  <data name="numericBoxEnergyStep.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
   </data>
   <data name="label13.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>

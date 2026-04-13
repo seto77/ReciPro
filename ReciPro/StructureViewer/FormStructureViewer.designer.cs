@@ -1951,7 +1951,6 @@
             // FormStructureViewer
             // 
             resources.ApplyResources(this, "$this");
-            AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F); // 260329Cl 追加: 96dpi基準
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             Controls.Add(splitContainer1);
             Controls.Add(panelClientSize);
