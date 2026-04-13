@@ -51,11 +51,13 @@
             resources.ApplyResources(labelHeader, "labelHeader");
             labelHeader.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             labelHeader.Name = "labelHeader";
+            labelHeader.UseCompatibleTextRendering = false;                                                                                           // 260413Cl 追加 textBox(GDI)と描画エンジンを揃えベースラインずれを解消
             //
             // labelFooter
             //
             resources.ApplyResources(labelFooter, "labelFooter");
             labelFooter.Name = "labelFooter";
+            labelFooter.UseCompatibleTextRendering = false;                                                                                           // 260413Cl 追加 textBox(GDI)と描画エンジンを揃えベースラインずれを解消
             //
             // spinButtonPanel                                                                                                                        // 260413Cl 追加
             //
