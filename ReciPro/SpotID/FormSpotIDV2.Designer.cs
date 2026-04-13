@@ -474,7 +474,7 @@ namespace ReciPro
             dataGridViewSpots.Name = "dataGridViewSpots";
             dataGridViewSpots.RowHeadersVisible = false;
             dataGridViewSpots.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            dataGridViewSpots.RowTemplate.Height = 21;
+            //dataGridViewSpots.RowTemplate.Height = 21;                                                                                              // 260413Cl DPIスケーリング対応のため削除
             dataGridViewSpots.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             dataGridViewSpots.CellContentClick += dataGridViewSpots_CellContentClick;
             dataGridViewSpots.RowHeaderMouseDoubleClick += DataGridViewSpots_RowHeaderMouseDoubleClick;
@@ -802,7 +802,7 @@ namespace ReciPro
             dataGridViewGrains.Name = "dataGridViewGrains";
             dataGridViewGrains.ReadOnly = true;
             dataGridViewGrains.RowHeadersVisible = false;
-            dataGridViewGrains.RowTemplate.Height = 21;
+            //dataGridViewGrains.RowTemplate.Height = 21;                                                                                             // 260413Cl DPIスケーリング対応のため削除
             dataGridViewGrains.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             // 
             // noDataGridViewTextBoxColumn2
@@ -846,7 +846,7 @@ namespace ReciPro
             dataGridViewCandidates.Name = "dataGridViewCandidates";
             dataGridViewCandidates.ReadOnly = true;
             dataGridViewCandidates.RowHeadersVisible = false;
-            dataGridViewCandidates.RowTemplate.Height = 21;
+            //dataGridViewCandidates.RowTemplate.Height = 21;                                                                                         // 260413Cl DPIスケーリング対応のため削除
             dataGridViewCandidates.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             // 
             // noDataGridViewTextBoxColumn1

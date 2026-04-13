@@ -16,7 +16,9 @@ namespace Crystallography.Controls
             InitializeComponent();
 
             textBox.ContextMenuStrip = contextMenuStripBody;
-            numericUpDown.ContextMenuStrip = contextMenuStripUpDown;
+            //numericUpDown.ContextMenuStrip = contextMenuStripUpDown;                                                                                // 260413Cl
+            if (spinButton != null)                                                                                                                   // 260413Cl デザイン時はbaseがspinButtonを生成しないためnullガード
+                spinButton.ContextMenuStrip = contextMenuStripUpDown;
 
             textBox.MouseUp += textBox_MouseUp;
             textBox.MouseMove += textBox_MouseMove;

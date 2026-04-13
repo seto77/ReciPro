@@ -28,10 +28,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NumericBox));
             textBox = new System.Windows.Forms.TextBox();
             labelHeader = new System.Windows.Forms.Label();
-            numericUpDown = new System.Windows.Forms.NumericUpDown();
             labelFooter = new System.Windows.Forms.Label();
             toolTip = new System.Windows.Forms.ToolTip(components);
-            ((System.ComponentModel.ISupportInitialize)numericUpDown).BeginInit();
             SuspendLayout();
             // 
             // textBox
@@ -53,14 +51,6 @@
             labelHeader.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             labelHeader.Name = "labelHeader";
             // 
-            // numericUpDown
-            // 
-            resources.ApplyResources(numericUpDown, "numericUpDown");
-            numericUpDown.Minimum = new decimal(new int[] { 100, 0, 0, int.MinValue });
-            numericUpDown.Name = "numericUpDown";
-            numericUpDown.TabStop = false;
-            numericUpDown.ValueChanged += numericUpDown_ValueChanged;
-            // 
             // labelFooter
             // 
             resources.ApplyResources(labelFooter, "labelFooter");
@@ -69,16 +59,13 @@
             // NumericBox
             // 
             resources.ApplyResources(this, "$this");
-            AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             BackColor = System.Drawing.Color.Transparent;
             Controls.Add(textBox);
-            Controls.Add(numericUpDown);
             Controls.Add(labelHeader);
             Controls.Add(labelFooter);
             Name = "NumericBox";
             SizeChanged += numericBox_SizeChanged;
-            ((System.ComponentModel.ISupportInitialize)numericUpDown).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -88,6 +75,7 @@
         private System.Windows.Forms.Label labelFooter;
         public System.Windows.Forms.ToolTip toolTip;
         internal System.Windows.Forms.TextBox textBox;
-        internal System.Windows.Forms.NumericUpDown numericUpDown;
+        //internal System.Windows.Forms.NumericUpDown numericUpDown;                                                                                  // 260413Cl
+        internal SpinButton spinButton;                                                                                                               // 260413Cl 追加
     }
 }

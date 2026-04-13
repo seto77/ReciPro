@@ -429,8 +429,9 @@
             dataGridView.AllowUserToResizeRows = false;
             dataGridView.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
             dataGridView.AutoGenerateColumns = false;
-            dataGridView.ColumnHeadersHeight = 30;
-            dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            //dataGridView.ColumnHeadersHeight = 30;                                                                                                  // 260413Cl DPIスケーリング対応のため削除
+            //dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;                 // 260413Cl
+            dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;                          // 260413Cl DisableResizing→AutoSize
             dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { rDataGridViewTextBoxColumn1, hDataGridViewTextBoxColumn, kDataGridViewTextBoxColumn, lDataGridViewTextBoxColumn, dDataGridViewTextBoxColumn1, gXDataGridViewTextBoxColumn1, gYDataGridViewTextBoxColumn1, gZDataGridViewTextBoxColumn1, gDataGridViewTextBoxColumn1, ugReDataGridViewTextBoxColumn2, ugImDataGridViewTextBoxColumn2, ugReDataGridViewTextBoxColumn3, ugImDataGridViewTextBoxColumn3, sgDataGridViewTextBoxColumn1, pgDataGridViewTextBoxColumn1, qgDataGridViewTextBoxColumn1, φReDataGridViewTextBoxColumn1, φImDataGridViewTextBoxColumn1, φ2DataGridViewTextBoxColumn1, σΦ2DataGridViewTextBoxColumn });
             dataGridView.DataMember = "DataTableBethe";
             dataGridView.DataSource = dataSetBindingSource;
@@ -451,7 +452,7 @@
             dataGridView.ReadOnly = true;
             dataGridView.RowHeadersVisible = false;
             dataGridView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            dataGridView.RowTemplate.Height = 21;
+            //dataGridView.RowTemplate.Height = 21;                                                                                                   // 260413Cl DPIスケーリング対応のため削除 (デフォルトはフォント由来でDPI追従)
             dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             dataGridView.Size = new System.Drawing.Size(1085, 272);
             dataGridView.TabIndex = 0;

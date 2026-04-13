@@ -470,7 +470,7 @@
             dataGridView1.MultiSelect = false;
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersVisible = false;
-            dataGridView1.RowTemplate.Height = 21;
+            //dataGridView1.RowTemplate.Height = 21;                                                                                                  // 260413Cl DPIスケーリング対応のため削除
             dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             dataGridView1.Size = new System.Drawing.Size(633, 140);
             dataGridView1.TabIndex = 0;

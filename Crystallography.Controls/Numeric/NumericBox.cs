@@ -63,8 +63,9 @@ public partial class NumericBox : CaptureUserControlBase
         set
         {
             showUpDown = value;
-            numericUpDown.Visible = false;
-            numericUpDown.Visible = showUpDown;
+            if (spinButton == null) return; // 260413Cl デザイン時はnull
+            spinButton.Visible = false;
+            spinButton.Visible = showUpDown;
             Refresh();
         }
     }
@@ -211,7 +212,7 @@ public partial class NumericBox : CaptureUserControlBase
         set
         {
             textBox.Font = value;
-            numericUpDown.Font = value;
+            //numericUpDown.Font = value;                                                                                                             // 260413Cl SpinButtonはネイティブ描画のためFont不要
             if (Multiline)
             {
                 MinimumSize = new Size(0, 0);
@@ -310,7 +311,15 @@ public partial class NumericBox : CaptureUserControlBase
     /// <summary>読み取り専用かどうか</summary>
     [DefaultValue(false)]
     [Category("Appearance properties")]
-    public bool ReadOnly { set { textBox.ReadOnly = value; numericUpDown.Enabled = !value; } get => textBox.ReadOnly; }
+    public bool ReadOnly                                                                                                                              // 260413Cl null安全化
+    {
+        set
+        {
+            textBox.ReadOnly = value;
+            if (spinButton != null) spinButton.Enabled = !value;
+        }
+        get => textBox.ReadOnly;
+    }
 
     /// <summary>複数行表示をするかどうか</summary>
     [DefaultValue(false)]
@@ -382,6 +391,21 @@ public partial class NumericBox : CaptureUserControlBase
     {
         InitializeComponent();
         if (DesignMode) return;
+
+        // 260413Cl SpinButtonはDesigner.cs/resxに載せるとVSデザイナに剥がされるため、実行時にのみ動的生成する。
+        // デザイン時にspinButtonに触れないよう、setter側にnullガードを入れてある。
+        spinButton = new SpinButton
+        {
+            Name = "spinButton",
+            Dock = DockStyle.Right,
+            Visible = showUpDown,                // 既に設定済みのShowUpDownを反映
+            Enabled = !textBox.ReadOnly,         // 既に設定済みのReadOnlyを反映
+        };
+        spinButton.UpClick += spinButton_UpClick;
+        spinButton.DownClick += spinButton_DownClick;
+        Controls.Add(spinButton);
+        if (Controls.Contains(textBox))
+            Controls.SetChildIndex(spinButton, Controls.GetChildIndex(textBox) + 1);
     }
 
   
@@ -571,10 +595,13 @@ public partial class NumericBox : CaptureUserControlBase
         //}
     }
 
-    private void numericUpDown_ValueChanged(object sender, EventArgs e)
-    {
-        numericUpDown.ValueChanged -= numericUpDown_ValueChanged;
+    // 260413Cl 追加 SpinButton置き換えに伴い、Up/Downを分離したハンドラに書き換え
+    private void spinButton_UpClick(object sender, EventArgs e) => applySpinStep(+1);
+    private void spinButton_DownClick(object sender, EventArgs e) => applySpinStep(-1);
 
+    // 260413Cl 追加 旧numericUpDown_ValueChangedの処理を direction 引数化して共通化
+    private void applySpinStep(int direction)
+    {
         if (SmartIncrement)
         {
             double value = Math.Abs(this.Value);
@@ -590,7 +617,7 @@ public partial class NumericBox : CaptureUserControlBase
                 n = -1;
 
             double step = 0;
-            if ((numericUpDown.Value == 1 && sign == 1) || numericUpDown.Value == -1 && sign == -1)
+            if ((direction == 1 && sign == 1) || (direction == -1 && sign == -1))
             {
                 if (value < Math.Pow(10, n) * 2.0)
                     step = Math.Pow(10, n - 1);
@@ -628,14 +655,8 @@ public partial class NumericBox : CaptureUserControlBase
         }
         else
         {
-            if (numericUpDown.Value == 1)
-                this.Value += UpDown_Increment;
-            else
-                this.Value -= UpDown_Increment;
+            this.Value += direction * UpDown_Increment;
         }
-        numericUpDown.Value = 0;
-
-        numericUpDown.ValueChanged += numericUpDown_ValueChanged;
     }
 
 

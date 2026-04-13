@@ -130,7 +130,7 @@
             dataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle10;
             dataGridView.RowHeadersVisible = false;
             dataGridView.RowHeadersWidth = 44;
-            dataGridView.RowTemplate.Height = 21;
+            //dataGridView.RowTemplate.Height = 21;                                                                                                   // 260413Cl DPIスケーリング対応のため削除
             dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             dataGridView.Size = new System.Drawing.Size(913, 526);
             dataGridView.TabIndex = 76;

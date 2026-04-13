@@ -149,7 +149,7 @@
             this.dataGridView.Name = "dataGridView";
             this.dataGridView.ReadOnly = true;
             this.dataGridView.RowHeadersVisible = false;
-            this.dataGridView.RowTemplate.Height = 21;
+            //this.dataGridView.RowTemplate.Height = 21;                                                                                              // 260413Cl DPIスケーリング対応のため削除
             this.dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView.Size = new System.Drawing.Size(784, 196);
             this.dataGridView.TabIndex = 7;
@@ -453,7 +453,7 @@
             this.dataGridViewDebug.Name = "dataGridViewDebug";
             this.dataGridViewDebug.ReadOnly = true;
             this.dataGridViewDebug.RowHeadersVisible = false;
-            this.dataGridViewDebug.RowTemplate.Height = 21;
+            //this.dataGridViewDebug.RowTemplate.Height = 21;                                                                                         // 260413Cl DPIスケーリング対応のため削除
             this.dataGridViewDebug.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.dataGridViewDebug.Size = new System.Drawing.Size(214, 301);
             this.dataGridViewDebug.TabIndex = 7;

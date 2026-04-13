@@ -141,7 +141,7 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             dataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
             dataGridView.RowHeadersVisible = false;
-            dataGridView.RowTemplate.Height = 21;
+            //dataGridView.RowTemplate.Height = 21;                                                                                                   // 260413Cl DPIスケーリング対応のため削除
             dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             toolTip.SetToolTip(dataGridView, resources.GetString("dataGridView.ToolTip"));
             dataGridView.CellValueChanged += dataGridView_CellValueChanged;

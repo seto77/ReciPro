@@ -1335,7 +1335,7 @@
             dataGridView.Name = "dataGridView";
             dataGridView.RowHeadersVisible = false;
             dataGridView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            dataGridView.RowTemplate.Height = 21;
+            //dataGridView.RowTemplate.Height = 21;                                                                                                   // 260413Cl DPIスケーリング対応のため削除
             dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             dataGridView.CellValueChanged += dataGridViewAtom_CellValueChanged;
             dataGridView.CurrentCellDirtyStateChanged += dataGridView_CurrentCellDirtyStateChanged;

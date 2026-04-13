@@ -51,7 +51,7 @@
             this.dataGridView.Location = new System.Drawing.Point(2, 1);
             this.dataGridView.Name = "dataGridView";
             this.dataGridView.RowHeadersVisible = false;
-            this.dataGridView.RowTemplate.Height = 21;
+            //this.dataGridView.RowTemplate.Height = 21;                                                                                              // 260413Cl DPIスケーリング対応のため削除
             this.dataGridView.Size = new System.Drawing.Size(343, 231);
             this.dataGridView.TabIndex = 0;
             this.dataGridView.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dataGridView_CellValidating);

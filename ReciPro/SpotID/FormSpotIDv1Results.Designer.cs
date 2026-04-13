@@ -231,7 +231,7 @@
             this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.RowTemplate.Height = 21;
+            //this.dataGridView1.RowTemplate.Height = 21;                                                                                             // 260413Cl DPIスケーリング対応のため削除
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(974, 309);
             this.dataGridView1.TabIndex = 2;
@@ -265,7 +265,7 @@
             this.dataGridView2.MultiSelect = false;
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.ReadOnly = true;
-            this.dataGridView2.RowTemplate.Height = 21;
+            //this.dataGridView2.RowTemplate.Height = 21;                                                                                             // 260413Cl DPIスケーリング対応のため削除
             this.dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView2.Size = new System.Drawing.Size(974, 309);
             this.dataGridView2.TabIndex = 3;

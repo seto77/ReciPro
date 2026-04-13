@@ -332,8 +332,22 @@ public static partial class ImageIO
 
     #region  rawファイル (RadIcon など)
 
-    static readonly Size[] RadIconSize 
-        = [new (688, 2064), new(1548, 2064), new(2064, 2236), new(2080, 2238), new(3096, 3100), new(1300, 4608), new(2940, 4608), new(5888, 4608),];
+    /// <summary> 指定された行幅wに対して、行折り返し不連続性と縦方向連続性の平均を計算する </summary> 
+    private static (double WrapAvg, double VertAvg) CalcWrapAndVertAvg(int w, int h)
+    {
+        double wrapSum = 0, vertSum = 0;
+        for (int row = 0; row < h - 1; row++)
+        {
+            int rowStart = row * w;
+            wrapSum += Math.Abs(Ring.Intensity[rowStart + w] - Ring.Intensity[rowStart + w - 1]);// 行折り返し不連続性: 行末と次行先頭のピクセル差
+            for (int x = 0; x < w; x++)
+                vertSum += Math.Abs(Ring.Intensity[rowStart + w + x] - Ring.Intensity[rowStart + x]); // 縦方向連続性: 同列の隣接行ピクセル差
+        }
+        return (wrapSum / Math.Max(h - 1, 1), vertSum / Math.Max((long)(h - 1) * w, 1));
+    }
+
+    static readonly Size[] RadIconSize
+        = [new (688, 2064), new(2048, 2048), new(2064, 1548), new(2064, 2236), new(2080, 2238), new(3096, 3100), new(1300, 4608), new(2940, 4608), new(5888, 4608),];
     public static bool RadIcon(string str)
     {
         try
@@ -357,6 +371,23 @@ public static partial class ImageIO
                     Ring.Intensity[n] = val;
                 }
                 br.Close();
+
+                //全く同じファイルサイズで、2064x1548と1548x2064のケースがある (20200410辻野さんへの対応)
+                //横方向連続性、縦方向連続性、行折り返し不連続性を評価しRing.SrcImgSizeのwidthとheightを入れ替える
+                if (Ring.SrcImgSize.Width != Ring.SrcImgSize.Height)
+                {
+                    var original = CalcWrapAndVertAvg(Ring.SrcImgSize.Width, Ring.SrcImgSize.Height);
+                    var swapped = CalcWrapAndVertAvg(Ring.SrcImgSize.Height, Ring.SrcImgSize.Width);
+
+                    bool swapNeeded;
+                    if (original.WrapAvg == 0 || swapped.WrapAvg == 0)// どちらか一方でもwrapAvgがゼロなら、vertAvgだけで評価 (小さい方が正しい向き)
+                        swapNeeded = swapped.VertAvg < original.VertAvg;
+                    else// スコア = 行折り返し不連続性 / 縦方向連続性 (大きいほど行幅が正しい)
+                        swapNeeded = swapped.WrapAvg / (swapped.VertAvg + 1e-10) > original.WrapAvg / (original.VertAvg + 1e-10);
+
+                    if (swapNeeded)
+                        Ring.SrcImgSize = new Size(Ring.SrcImgSize.Height, Ring.SrcImgSize.Width);
+                }
 
                 Ring.BitsPerPixels = 16;
                 Ring.ImageType = Ring.ImageTypeEnum.RadIcon;

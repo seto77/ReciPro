@@ -115,7 +115,7 @@
             dataGridView2.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridView2.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridView2.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridView2.RowTemplate.Height = 21;
+            //dataGridView2.RowTemplate.Height = 21;                                                                                                  // 260413Cl DPIスケーリング対応のため削除
             dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             // 
             // dataGridViewTextBoxColumn1
