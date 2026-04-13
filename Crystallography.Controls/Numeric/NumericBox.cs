@@ -63,9 +63,9 @@ public partial class NumericBox : CaptureUserControlBase
         set
         {
             showUpDown = value;
-            if (spinButton == null) return; // 260413Cl デザイン時はnull
-            spinButton.Visible = false;
-            spinButton.Visible = showUpDown;
+            if (spinButtonPanel == null) return;                                                                                                      // 260413Cl デザイン時でもPanelはあるが念のためガード
+            spinButtonPanel.Visible = false;
+            spinButtonPanel.Visible = showUpDown;
             Refresh();
         }
     }
@@ -393,19 +393,33 @@ public partial class NumericBox : CaptureUserControlBase
         if (DesignMode) return;
 
         // 260413Cl SpinButtonはDesigner.cs/resxに載せるとVSデザイナに剥がされるため、実行時にのみ動的生成する。
-        // デザイン時にspinButtonに触れないよう、setter側にnullガードを入れてある。
+        // spinButtonPanelはDesigner.csで管理されており、そのClientRect内に配置する。
         spinButton = new SpinButton
         {
             Name = "spinButton",
-            Dock = DockStyle.Right,
-            Visible = showUpDown,                // 既に設定済みのShowUpDownを反映
-            Enabled = !textBox.ReadOnly,         // 既に設定済みのReadOnlyを反映
+            Enabled = !textBox.ReadOnly,
         };
         spinButton.UpClick += spinButton_UpClick;
         spinButton.DownClick += spinButton_DownClick;
-        Controls.Add(spinButton);
-        if (Controls.Contains(textBox))
-            Controls.SetChildIndex(spinButton, Controls.GetChildIndex(textBox) + 1);
+        spinButtonPanel.Controls.Add(spinButton);
+        spinButtonPanel.Visible = showUpDown;
+
+        // 260413Cl textBoxの高さに追従させるためsizeChangedを購読
+        textBox.SizeChanged += (_, _) => alignSpinButton();
+        spinButtonPanel.SizeChanged += (_, _) => alignSpinButton();
+        alignSpinButton();
+    }
+
+    // 260413Cl 追加 SpinButtonをtextBoxと同じY座標・同じ高さに揃える
+    // (spinButtonPanel.Top=0なので、textBox.Top(NumericBox座標系)と
+    //  spinButton.Top(spinButtonPanel座標系)は同値として扱える)
+    private void alignSpinButton()
+    {
+        if (spinButton == null || spinButtonPanel == null) return;
+        spinButton.Width = spinButtonPanel.ClientSize.Width;
+        spinButton.Height = textBox.Height;
+        spinButton.Left = 0;
+        spinButton.Top = textBox.Top - spinButtonPanel.Top;
     }
 
   

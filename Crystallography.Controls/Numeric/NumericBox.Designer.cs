@@ -29,6 +29,7 @@
             textBox = new System.Windows.Forms.TextBox();
             labelHeader = new System.Windows.Forms.Label();
             labelFooter = new System.Windows.Forms.Label();
+            spinButtonPanel = new System.Windows.Forms.Panel();                                                                                       // 260413Cl 追加 SpinButtonの入れ物
             toolTip = new System.Windows.Forms.ToolTip(components);
             SuspendLayout();
             // 
@@ -50,18 +51,25 @@
             resources.ApplyResources(labelHeader, "labelHeader");
             labelHeader.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             labelHeader.Name = "labelHeader";
-            // 
+            //
             // labelFooter
-            // 
+            //
             resources.ApplyResources(labelFooter, "labelFooter");
             labelFooter.Name = "labelFooter";
-            // 
+            //
+            // spinButtonPanel                                                                                                                        // 260413Cl 追加
+            //
+            resources.ApplyResources(spinButtonPanel, "spinButtonPanel");
+            spinButtonPanel.Name = "spinButtonPanel";
+            spinButtonPanel.BackColor = System.Drawing.Color.Transparent;
+            //
             // NumericBox
-            // 
+            //
             resources.ApplyResources(this, "$this");
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             BackColor = System.Drawing.Color.Transparent;
             Controls.Add(textBox);
+            Controls.Add(spinButtonPanel);                                                                                                            // 260413Cl 追加 textBoxの直後に配置
             Controls.Add(labelHeader);
             Controls.Add(labelFooter);
             Name = "NumericBox";
@@ -76,6 +84,7 @@
         public System.Windows.Forms.ToolTip toolTip;
         internal System.Windows.Forms.TextBox textBox;
         //internal System.Windows.Forms.NumericUpDown numericUpDown;                                                                                  // 260413Cl
+        internal System.Windows.Forms.Panel spinButtonPanel;                                                                                          // 260413Cl 追加 SpinButtonの入れ物
         internal SpinButton spinButton;                                                                                                               // 260413Cl 追加
     }
 }
