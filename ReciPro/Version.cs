@@ -7,6 +7,7 @@ internal static class Version
     
     public const string History =
         "History" +
+        "\r\n ver4.924(2026/04/15)  Enhanced the macro-related features." +
         "\r\n ver4.923(2026/04/05)  Fixed minor bugs. " +
         "\r\n ver4.922(2026/04/05)  Greatly reduced the size of the installer package." +
         "\r\n ver4.921(2026/04/01)  Improved the EBSD simulation, and fixed many minor bugs." +
