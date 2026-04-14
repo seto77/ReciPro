@@ -97,11 +97,13 @@ public partial class FormImageSimulator : CaptureFormBase
 
     public double SerialImageThicknessStart { get => numericBoxThicknessStart.Value; set => numericBoxThicknessStart.Value = value; }
     public double SerialImageThicknessStep { get => numericBoxThicknessStep.Value; set => numericBoxThicknessStep.Value = value; }
-    public int SerialImageThicknessNum { get => numericBoxThicknessNum.ValueInteger; set => numericBoxThicknessStep.Value = value; }
+    // public int SerialImageThicknessNum { get => numericBoxThicknessNum.ValueInteger; set => numericBoxThicknessStep.Value = value; } // (260414Ch) 旧実装: setter が個数ではなく step を書き換えていた
+    public int SerialImageThicknessNum { get => numericBoxThicknessNum.ValueInteger; set => numericBoxThicknessNum.Value = value; }
 
     public double SerialImageDefocusStart { get => numericBoxDefocusStart.Value; set => numericBoxDefocusStart.Value = value; }
     public double SerialImageDefocusStep { get => numericBoxDefocusStep.Value; set => numericBoxDefocusStep.Value = value; }
-    public int SerialImageDefocusNum { get => numericBoxDefocusNum.ValueInteger; set => numericBoxDefocusStep.Value = value; }
+    // public int SerialImageDefocusNum { get => numericBoxDefocusNum.ValueInteger; set => numericBoxDefocusStep.Value = value; } // (260414Ch) 旧実装: setter が個数ではなく step を書き換えていた
+    public int SerialImageDefocusNum { get => numericBoxDefocusNum.ValueInteger; set => numericBoxDefocusNum.Value = value; }
     public double[] ThicknessArray
     {
         get
