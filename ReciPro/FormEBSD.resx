@@ -334,18 +334,6 @@
   <data name="buttonViewQuarter.Text" xml:space="preserve">
     <value>Bird's-Eye View</value>
   </data>
-  <data name="&gt;&gt;buttonViewQuarter.Name" xml:space="preserve">
-    <value>buttonViewQuarter</value>
-  </data>
-  <data name="&gt;&gt;buttonViewQuarter.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;buttonViewQuarter.Parent" xml:space="preserve">
-    <value>flowLayoutPanelViewAlong</value>
-  </data>
-  <data name="&gt;&gt;buttonViewQuarter.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <data name="buttonViewFromSurfaceNormal.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
@@ -369,18 +357,6 @@
   </data>
   <data name="buttonViewFromSurfaceNormal.Text" xml:space="preserve">
     <value>Surface Normal</value>
-  </data>
-  <data name="&gt;&gt;buttonViewFromSurfaceNormal.Name" xml:space="preserve">
-    <value>buttonViewFromSurfaceNormal</value>
-  </data>
-  <data name="&gt;&gt;buttonViewFromSurfaceNormal.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;buttonViewFromSurfaceNormal.Parent" xml:space="preserve">
-    <value>flowLayoutPanelViewAlong</value>
-  </data>
-  <data name="&gt;&gt;buttonViewFromSurfaceNormal.ZOrder" xml:space="preserve">
-    <value>1</value>
   </data>
   <data name="buttonFromX.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
@@ -406,18 +382,6 @@
   <data name="buttonFromX.Text" xml:space="preserve">
     <value>X Axis (Rotation Axis)</value>
   </data>
-  <data name="&gt;&gt;buttonFromX.Name" xml:space="preserve">
-    <value>buttonFromX</value>
-  </data>
-  <data name="&gt;&gt;buttonFromX.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;buttonFromX.Parent" xml:space="preserve">
-    <value>flowLayoutPanelViewAlong</value>
-  </data>
-  <data name="&gt;&gt;buttonFromX.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
   <data name="buttonViewFromZ.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
@@ -441,18 +405,6 @@
   </data>
   <data name="buttonViewFromZ.Text" xml:space="preserve">
     <value>Z Axis (Beam Direction)</value>
-  </data>
-  <data name="&gt;&gt;buttonViewFromZ.Name" xml:space="preserve">
-    <value>buttonViewFromZ</value>
-  </data>
-  <data name="&gt;&gt;buttonViewFromZ.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;buttonViewFromZ.Parent" xml:space="preserve">
-    <value>flowLayoutPanelViewAlong</value>
-  </data>
-  <data name="&gt;&gt;buttonViewFromZ.ZOrder" xml:space="preserve">
-    <value>3</value>
   </data>
   <data name="buttonCalcBSE.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 4</value>
@@ -1951,18 +1903,6 @@ Kikuchi lines under this value are simulated.
   <data name="flowLayoutPanelOutputRange.TabIndex" type="System.Int32, mscorlib">
     <value>147</value>
   </data>
-  <data name="&gt;&gt;flowLayoutPanelOutputRange.Name" xml:space="preserve">
-    <value>flowLayoutPanelOutputRange</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanelOutputRange.Type" xml:space="preserve">
-    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanelOutputRange.Parent" xml:space="preserve">
-    <value>groupBoxOutput</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanelOutputRange.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <data name="label9.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -1987,18 +1927,6 @@ Kikuchi lines under this value are simulated.
   <data name="label9.Text" xml:space="preserve">
     <value>Energy</value>
   </data>
-  <data name="&gt;&gt;label9.Name" xml:space="preserve">
-    <value>label9</value>
-  </data>
-  <data name="&gt;&gt;label9.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label9.Parent" xml:space="preserve">
-    <value>flowLayoutPanelOutputRange</value>
-  </data>
-  <data name="&gt;&gt;label9.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <data name="textBoxEnergy.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
@@ -2016,18 +1944,6 @@ Kikuchi lines under this value are simulated.
   </data>
   <data name="textBoxEnergy.Text" xml:space="preserve">
     <value>20</value>
-  </data>
-  <data name="&gt;&gt;textBoxEnergy.Name" xml:space="preserve">
-    <value>textBoxEnergy</value>
-  </data>
-  <data name="&gt;&gt;textBoxEnergy.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;textBoxEnergy.Parent" xml:space="preserve">
-    <value>flowLayoutPanelOutputRange</value>
-  </data>
-  <data name="&gt;&gt;textBoxEnergy.ZOrder" xml:space="preserve">
-    <value>1</value>
   </data>
   <data name="label12.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2053,18 +1969,6 @@ Kikuchi lines under this value are simulated.
   <data name="label12.Text" xml:space="preserve">
     <value>kV</value>
   </data>
-  <data name="&gt;&gt;label12.Name" xml:space="preserve">
-    <value>label12</value>
-  </data>
-  <data name="&gt;&gt;label12.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label12.Parent" xml:space="preserve">
-    <value>flowLayoutPanelOutputRange</value>
-  </data>
-  <data name="&gt;&gt;label12.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
   <data name="trackBarOutputEnergy.AutoSize" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
@@ -2079,18 +1983,6 @@ Kikuchi lines under this value are simulated.
   </data>
   <data name="trackBarOutputEnergy.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
-  </data>
-  <data name="&gt;&gt;trackBarOutputEnergy.Name" xml:space="preserve">
-    <value>trackBarOutputEnergy</value>
-  </data>
-  <data name="&gt;&gt;trackBarOutputEnergy.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TrackBar, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;trackBarOutputEnergy.Parent" xml:space="preserve">
-    <value>flowLayoutPanelOutputRange</value>
-  </data>
-  <data name="&gt;&gt;trackBarOutputEnergy.ZOrder" xml:space="preserve">
-    <value>3</value>
   </data>
   <data name="label5.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2116,18 +2008,6 @@ Kikuchi lines under this value are simulated.
   <data name="label5.Text" xml:space="preserve">
     <value>Depth</value>
   </data>
-  <data name="&gt;&gt;label5.Name" xml:space="preserve">
-    <value>label5</value>
-  </data>
-  <data name="&gt;&gt;label5.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label5.Parent" xml:space="preserve">
-    <value>flowLayoutPanelOutputRange</value>
-  </data>
-  <data name="&gt;&gt;label5.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
   <data name="textBoxThickness.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
@@ -2145,18 +2025,6 @@ Kikuchi lines under this value are simulated.
   </data>
   <data name="textBoxThickness.Text" xml:space="preserve">
     <value>20</value>
-  </data>
-  <data name="&gt;&gt;textBoxThickness.Name" xml:space="preserve">
-    <value>textBoxThickness</value>
-  </data>
-  <data name="&gt;&gt;textBoxThickness.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;textBoxThickness.Parent" xml:space="preserve">
-    <value>flowLayoutPanelOutputRange</value>
-  </data>
-  <data name="&gt;&gt;textBoxThickness.ZOrder" xml:space="preserve">
-    <value>5</value>
   </data>
   <data name="label6.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2182,18 +2050,6 @@ Kikuchi lines under this value are simulated.
   <data name="label6.Text" xml:space="preserve">
     <value>nm</value>
   </data>
-  <data name="&gt;&gt;label6.Name" xml:space="preserve">
-    <value>label6</value>
-  </data>
-  <data name="&gt;&gt;label6.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label6.Parent" xml:space="preserve">
-    <value>flowLayoutPanelOutputRange</value>
-  </data>
-  <data name="&gt;&gt;label6.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
   <data name="trackBarOutputThickness.AutoSize" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
@@ -2208,18 +2064,6 @@ Kikuchi lines under this value are simulated.
   </data>
   <data name="trackBarOutputThickness.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
-  </data>
-  <data name="&gt;&gt;trackBarOutputThickness.Name" xml:space="preserve">
-    <value>trackBarOutputThickness</value>
-  </data>
-  <data name="&gt;&gt;trackBarOutputThickness.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TrackBar, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;trackBarOutputThickness.Parent" xml:space="preserve">
-    <value>flowLayoutPanelOutputRange</value>
-  </data>
-  <data name="&gt;&gt;trackBarOutputThickness.ZOrder" xml:space="preserve">
-    <value>7</value>
   </data>
   <data name="label3.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2248,18 +2092,6 @@ Kikuchi lines under this value are simulated.
   <data name="label3.Text" xml:space="preserve">
     <value>Polarity</value>
   </data>
-  <data name="&gt;&gt;label3.Name" xml:space="preserve">
-    <value>label3</value>
-  </data>
-  <data name="&gt;&gt;label3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label3.Parent" xml:space="preserve">
-    <value>groupBoxOutput</value>
-  </data>
-  <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
   <data name="label4.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -2287,18 +2119,6 @@ Kikuchi lines under this value are simulated.
   <data name="label4.Text" xml:space="preserve">
     <value>Color</value>
   </data>
-  <data name="&gt;&gt;label4.Name" xml:space="preserve">
-    <value>label4</value>
-  </data>
-  <data name="&gt;&gt;label4.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label4.Parent" xml:space="preserve">
-    <value>groupBoxOutput</value>
-  </data>
-  <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
   <data name="checkBoxWithBSEDistribution.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -2316,18 +2136,6 @@ Kikuchi lines under this value are simulated.
   </data>
   <data name="checkBoxWithBSEDistribution.Text" xml:space="preserve">
     <value>Show image with BSE angular/energy distributions</value>
-  </data>
-  <data name="&gt;&gt;checkBoxWithBSEDistribution.Name" xml:space="preserve">
-    <value>checkBoxWithBSEDistribution</value>
-  </data>
-  <data name="&gt;&gt;checkBoxWithBSEDistribution.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkBoxWithBSEDistribution.Parent" xml:space="preserve">
-    <value>groupBoxOutput</value>
-  </data>
-  <data name="&gt;&gt;checkBoxWithBSEDistribution.ZOrder" xml:space="preserve">
-    <value>3</value>
   </data>
   <data name="comboBoxGradient.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9pt</value>
@@ -2349,18 +2157,6 @@ Kikuchi lines under this value are simulated.
   </data>
   <data name="comboBoxGradient.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
-  </data>
-  <data name="&gt;&gt;comboBoxGradient.Name" xml:space="preserve">
-    <value>comboBoxGradient</value>
-  </data>
-  <data name="&gt;&gt;comboBoxGradient.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;comboBoxGradient.Parent" xml:space="preserve">
-    <value>groupBoxOutput</value>
-  </data>
-  <data name="&gt;&gt;comboBoxGradient.ZOrder" xml:space="preserve">
-    <value>4</value>
   </data>
   <data name="comboBoxScale.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9pt</value>
@@ -2389,18 +2185,6 @@ Kikuchi lines under this value are simulated.
   <data name="comboBoxScale.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
   </data>
-  <data name="&gt;&gt;comboBoxScale.Name" xml:space="preserve">
-    <value>comboBoxScale</value>
-  </data>
-  <data name="&gt;&gt;comboBoxScale.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;comboBoxScale.Parent" xml:space="preserve">
-    <value>groupBoxOutput</value>
-  </data>
-  <data name="&gt;&gt;comboBoxScale.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
   <data name="trackBarIntensityBrightnessMax.AutoSize" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
@@ -2416,18 +2200,6 @@ Kikuchi lines under this value are simulated.
   <data name="trackBarIntensityBrightnessMax.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
   </data>
-  <data name="&gt;&gt;trackBarIntensityBrightnessMax.Name" xml:space="preserve">
-    <value>trackBarIntensityBrightnessMax</value>
-  </data>
-  <data name="&gt;&gt;trackBarIntensityBrightnessMax.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TrackBar, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;trackBarIntensityBrightnessMax.Parent" xml:space="preserve">
-    <value>groupBoxOutput</value>
-  </data>
-  <data name="&gt;&gt;trackBarIntensityBrightnessMax.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
   <data name="trackBarIntensityBrightnessMin.AutoSize" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
@@ -2442,18 +2214,6 @@ Kikuchi lines under this value are simulated.
   </data>
   <data name="trackBarIntensityBrightnessMin.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
-  </data>
-  <data name="&gt;&gt;trackBarIntensityBrightnessMin.Name" xml:space="preserve">
-    <value>trackBarIntensityBrightnessMin</value>
-  </data>
-  <data name="&gt;&gt;trackBarIntensityBrightnessMin.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TrackBar, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;trackBarIntensityBrightnessMin.Parent" xml:space="preserve">
-    <value>groupBoxOutput</value>
-  </data>
-  <data name="&gt;&gt;trackBarIntensityBrightnessMin.ZOrder" xml:space="preserve">
-    <value>7</value>
   </data>
   <data name="label8.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2476,18 +2236,6 @@ Kikuchi lines under this value are simulated.
   <data name="label8.Text" xml:space="preserve">
     <value>Max</value>
   </data>
-  <data name="&gt;&gt;label8.Name" xml:space="preserve">
-    <value>label8</value>
-  </data>
-  <data name="&gt;&gt;label8.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label8.Parent" xml:space="preserve">
-    <value>groupBoxOutput</value>
-  </data>
-  <data name="&gt;&gt;label8.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
   <data name="label7.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -2509,18 +2257,6 @@ Kikuchi lines under this value are simulated.
   <data name="label7.Text" xml:space="preserve">
     <value>Min</value>
   </data>
-  <data name="&gt;&gt;label7.Name" xml:space="preserve">
-    <value>label7</value>
-  </data>
-  <data name="&gt;&gt;label7.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label7.Parent" xml:space="preserve">
-    <value>groupBoxOutput</value>
-  </data>
-  <data name="&gt;&gt;label7.ZOrder" xml:space="preserve">
-    <value>9</value>
-  </data>
   <data name="label10.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -2541,18 +2277,6 @@ Kikuchi lines under this value are simulated.
   </data>
   <data name="label10.Text" xml:space="preserve">
     <value>Brightness</value>
-  </data>
-  <data name="&gt;&gt;label10.Name" xml:space="preserve">
-    <value>label10</value>
-  </data>
-  <data name="&gt;&gt;label10.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label10.Parent" xml:space="preserve">
-    <value>groupBoxOutput</value>
-  </data>
-  <data name="&gt;&gt;label10.ZOrder" xml:space="preserve">
-    <value>10</value>
   </data>
   <data name="checkBoxShowOverlays.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -3256,18 +2980,6 @@ Kikuchi lines under this value are simulated.
   <data name="label17.Text" xml:space="preserve">
     <value>Detector tilt</value>
   </data>
-  <data name="&gt;&gt;label17.Name" xml:space="preserve">
-    <value>label17</value>
-  </data>
-  <data name="&gt;&gt;label17.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label17.Parent" xml:space="preserve">
-    <value>groupBoxEBSDGeometry</value>
-  </data>
-  <data name="&gt;&gt;label17.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
   <data name="label16.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -3285,18 +2997,6 @@ Kikuchi lines under this value are simulated.
   </data>
   <data name="label16.Text" xml:space="preserve">
     <value>Detector radius</value>
-  </data>
-  <data name="&gt;&gt;label16.Name" xml:space="preserve">
-    <value>label16</value>
-  </data>
-  <data name="&gt;&gt;label16.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label16.Parent" xml:space="preserve">
-    <value>groupBoxEBSDGeometry</value>
-  </data>
-  <data name="&gt;&gt;label16.ZOrder" xml:space="preserve">
-    <value>2</value>
   </data>
   <data name="label15.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -3318,18 +3018,6 @@ Kikuchi lines under this value are simulated.
   </data>
   <data name="label15.Text" xml:space="preserve">
     <value>The stereonet center is the surface normal direction</value>
-  </data>
-  <data name="&gt;&gt;label15.Name" xml:space="preserve">
-    <value>label15</value>
-  </data>
-  <data name="&gt;&gt;label15.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label15.Parent" xml:space="preserve">
-    <value>tabPage2</value>
-  </data>
-  <data name="&gt;&gt;label15.ZOrder" xml:space="preserve">
-    <value>0</value>
   </data>
   <data name="&gt;&gt;checkBoxShowMesh.Name" xml:space="preserve">
     <value>checkBoxShowMesh</value>
@@ -3364,18 +3052,6 @@ Kikuchi lines under this value are simulated.
   <data name="groupBoxDetectorOutline.TabIndex" type="System.Int32, mscorlib">
     <value>133</value>
   </data>
-  <data name="&gt;&gt;groupBoxDetectorOutline.Name" xml:space="preserve">
-    <value>groupBoxDetectorOutline</value>
-  </data>
-  <data name="&gt;&gt;groupBoxDetectorOutline.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;groupBoxDetectorOutline.Parent" xml:space="preserve">
-    <value>tabPage3</value>
-  </data>
-  <data name="&gt;&gt;groupBoxDetectorOutline.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
   <data name="checkBoxShowMesh.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -3396,18 +3072,6 @@ Kikuchi lines under this value are simulated.
   </data>
   <data name="checkBoxShowMesh.Text" xml:space="preserve">
     <value>Show mesh</value>
-  </data>
-  <data name="&gt;&gt;checkBoxShowMesh.Name" xml:space="preserve">
-    <value>checkBoxShowMesh</value>
-  </data>
-  <data name="&gt;&gt;checkBoxShowMesh.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkBoxShowMesh.Parent" xml:space="preserve">
-    <value>groupBoxDetectorOutline</value>
-  </data>
-  <data name="&gt;&gt;checkBoxShowMesh.ZOrder" xml:space="preserve">
-    <value>0</value>
   </data>
   <data name="checkBoxShowCircle.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -3430,18 +3094,6 @@ Kikuchi lines under this value are simulated.
   <data name="checkBoxShowCircle.Text" xml:space="preserve">
     <value>Show circle</value>
   </data>
-  <data name="&gt;&gt;checkBoxShowCircle.Name" xml:space="preserve">
-    <value>checkBoxShowCircle</value>
-  </data>
-  <data name="&gt;&gt;checkBoxShowCircle.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkBoxShowCircle.Parent" xml:space="preserve">
-    <value>groupBoxDetectorOutline</value>
-  </data>
-  <data name="&gt;&gt;checkBoxShowCircle.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
   <data name="groupBox2.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 377</value>
   </data>
@@ -3453,18 +3105,6 @@ Kikuchi lines under this value are simulated.
   </data>
   <data name="groupBox2.Text" xml:space="preserve">
     <value>Text Settings</value>
-  </data>
-  <data name="&gt;&gt;groupBox2.Name" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;groupBox2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;groupBox2.Parent" xml:space="preserve">
-    <value>tabPage3</value>
-  </data>
-  <data name="&gt;&gt;groupBox2.ZOrder" xml:space="preserve">
-    <value>2</value>
   </data>
   <data name="checkBoxShowKikuchiLines.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -3487,18 +3127,6 @@ Kikuchi lines under this value are simulated.
   <data name="checkBoxShowKikuchiLines.Text" xml:space="preserve">
     <value>Show Kikuchi lines</value>
   </data>
-  <data name="&gt;&gt;checkBoxShowKikuchiLines.Name" xml:space="preserve">
-    <value>checkBoxShowKikuchiLines</value>
-  </data>
-  <data name="&gt;&gt;checkBoxShowKikuchiLines.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkBoxShowKikuchiLines.Parent" xml:space="preserve">
-    <value>tabPage3</value>
-  </data>
-  <data name="&gt;&gt;checkBoxShowKikuchiLines.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
   <data name="groupBoxLatticePlanes.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 278</value>
   </data>
@@ -3511,18 +3139,6 @@ Kikuchi lines under this value are simulated.
   <data name="groupBoxLatticePlanes.Text" xml:space="preserve">
     <value>Kikuchi Line Criteria</value>
   </data>
-  <data name="&gt;&gt;groupBoxLatticePlanes.Name" xml:space="preserve">
-    <value>groupBoxLatticePlanes</value>
-  </data>
-  <data name="&gt;&gt;groupBoxLatticePlanes.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;groupBoxLatticePlanes.Parent" xml:space="preserve">
-    <value>tabPage3</value>
-  </data>
-  <data name="&gt;&gt;groupBoxLatticePlanes.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
   <data name="groupBoxKikuchiLines.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 109</value>
   </data>
@@ -3531,18 +3147,6 @@ Kikuchi lines under this value are simulated.
   </data>
   <data name="groupBoxKikuchiLines.TabIndex" type="System.Int32, mscorlib">
     <value>130</value>
-  </data>
-  <data name="&gt;&gt;groupBoxKikuchiLines.Name" xml:space="preserve">
-    <value>groupBoxKikuchiLines</value>
-  </data>
-  <data name="&gt;&gt;groupBoxKikuchiLines.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;groupBoxKikuchiLines.Parent" xml:space="preserve">
-    <value>tabPage3</value>
-  </data>
-  <data name="&gt;&gt;groupBoxKikuchiLines.ZOrder" xml:space="preserve">
-    <value>5</value>
   </data>
   <data name="checkBoxShowGIndices.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -3562,18 +3166,6 @@ Kikuchi lines under this value are simulated.
   <data name="checkBoxShowGIndices.Text" xml:space="preserve">
     <value>Show Kikuchi line indices</value>
   </data>
-  <data name="&gt;&gt;checkBoxShowGIndices.Name" xml:space="preserve">
-    <value>checkBoxShowGIndices</value>
-  </data>
-  <data name="&gt;&gt;checkBoxShowGIndices.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkBoxShowGIndices.Parent" xml:space="preserve">
-    <value>tabPage3</value>
-  </data>
-  <data name="&gt;&gt;checkBoxShowGIndices.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
   <data name="checkBoxShowZoneAxisIndices.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -3591,18 +3183,6 @@ Kikuchi lines under this value are simulated.
   </data>
   <data name="checkBoxShowZoneAxisIndices.Text" xml:space="preserve">
     <value>Show zone axis indices</value>
-  </data>
-  <data name="&gt;&gt;checkBoxShowZoneAxisIndices.Name" xml:space="preserve">
-    <value>checkBoxShowZoneAxisIndices</value>
-  </data>
-  <data name="&gt;&gt;checkBoxShowZoneAxisIndices.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkBoxShowZoneAxisIndices.Parent" xml:space="preserve">
-    <value>tabPage3</value>
-  </data>
-  <data name="&gt;&gt;checkBoxShowZoneAxisIndices.ZOrder" xml:space="preserve">
-    <value>8</value>
   </data>
   <data name="&gt;&gt;labelMasterPatternGrid.Name" xml:space="preserve">
     <value>labelMasterPatternGrid</value>
@@ -3676,18 +3256,6 @@ Kikuchi lines under this value are simulated.
   <data name="labelMasterPatternGrid.Text" xml:space="preserve">
     <value>Grid</value>
   </data>
-  <data name="&gt;&gt;labelMasterPatternGrid.Name" xml:space="preserve">
-    <value>labelMasterPatternGrid</value>
-  </data>
-  <data name="&gt;&gt;labelMasterPatternGrid.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;labelMasterPatternGrid.Parent" xml:space="preserve">
-    <value>groupBoxSimulationParameters</value>
-  </data>
-  <data name="&gt;&gt;labelMasterPatternGrid.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
   <data name="comboBoxMasterPatternGrid.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
@@ -3732,18 +3300,6 @@ Kikuchi lines under this value are simulated.
   </data>
   <data name="comboBoxMasterPatternGrid.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
-  </data>
-  <data name="&gt;&gt;comboBoxMasterPatternGrid.Name" xml:space="preserve">
-    <value>comboBoxMasterPatternGrid</value>
-  </data>
-  <data name="&gt;&gt;comboBoxMasterPatternGrid.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;comboBoxMasterPatternGrid.Parent" xml:space="preserve">
-    <value>groupBoxSimulationParameters</value>
-  </data>
-  <data name="&gt;&gt;comboBoxMasterPatternGrid.ZOrder" xml:space="preserve">
-    <value>3</value>
   </data>
   <metadata name="statusStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>157, 17</value>
@@ -3967,18 +3523,6 @@ Kikuchi lines under this value are simulated.
   <data name="labelMasterPatternEnergy.Text" xml:space="preserve">
     <value>Energy</value>
   </data>
-  <data name="&gt;&gt;labelMasterPatternEnergy.Name" xml:space="preserve">
-    <value>labelMasterPatternEnergy</value>
-  </data>
-  <data name="&gt;&gt;labelMasterPatternEnergy.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;labelMasterPatternEnergy.Parent" xml:space="preserve">
-    <value>flowLayoutPanelMasterPatternSelectors</value>
-  </data>
-  <data name="&gt;&gt;labelMasterPatternEnergy.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <data name="textBoxMasterPatternEnergy.Location" type="System.Drawing.Point, System.Drawing">
     <value>52, 2</value>
   </data>
@@ -3990,18 +3534,6 @@ Kikuchi lines under this value are simulated.
   </data>
   <data name="textBoxMasterPatternEnergy.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
-  </data>
-  <data name="&gt;&gt;textBoxMasterPatternEnergy.Name" xml:space="preserve">
-    <value>textBoxMasterPatternEnergy</value>
-  </data>
-  <data name="&gt;&gt;textBoxMasterPatternEnergy.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;textBoxMasterPatternEnergy.Parent" xml:space="preserve">
-    <value>flowLayoutPanelMasterPatternSelectors</value>
-  </data>
-  <data name="&gt;&gt;textBoxMasterPatternEnergy.ZOrder" xml:space="preserve">
-    <value>1</value>
   </data>
   <data name="labelMasterPatternEnergyUnit.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -4021,18 +3553,6 @@ Kikuchi lines under this value are simulated.
   <data name="labelMasterPatternEnergyUnit.Text" xml:space="preserve">
     <value>kV</value>
   </data>
-  <data name="&gt;&gt;labelMasterPatternEnergyUnit.Name" xml:space="preserve">
-    <value>labelMasterPatternEnergyUnit</value>
-  </data>
-  <data name="&gt;&gt;labelMasterPatternEnergyUnit.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;labelMasterPatternEnergyUnit.Parent" xml:space="preserve">
-    <value>flowLayoutPanelMasterPatternSelectors</value>
-  </data>
-  <data name="&gt;&gt;labelMasterPatternEnergyUnit.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
   <data name="trackBarMasterPatternEnergy.AutoSize" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
@@ -4050,18 +3570,6 @@ Kikuchi lines under this value are simulated.
   </data>
   <data name="trackBarMasterPatternEnergy.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
-  </data>
-  <data name="&gt;&gt;trackBarMasterPatternEnergy.Name" xml:space="preserve">
-    <value>trackBarMasterPatternEnergy</value>
-  </data>
-  <data name="&gt;&gt;trackBarMasterPatternEnergy.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TrackBar, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;trackBarMasterPatternEnergy.Parent" xml:space="preserve">
-    <value>flowLayoutPanelMasterPatternSelectors</value>
-  </data>
-  <data name="&gt;&gt;trackBarMasterPatternEnergy.ZOrder" xml:space="preserve">
-    <value>3</value>
   </data>
   <data name="labelMasterPatternDepth.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -4081,18 +3589,6 @@ Kikuchi lines under this value are simulated.
   <data name="labelMasterPatternDepth.Text" xml:space="preserve">
     <value>Depth</value>
   </data>
-  <data name="&gt;&gt;labelMasterPatternDepth.Name" xml:space="preserve">
-    <value>labelMasterPatternDepth</value>
-  </data>
-  <data name="&gt;&gt;labelMasterPatternDepth.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;labelMasterPatternDepth.Parent" xml:space="preserve">
-    <value>flowLayoutPanelMasterPatternSelectors</value>
-  </data>
-  <data name="&gt;&gt;labelMasterPatternDepth.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
   <data name="textBoxMasterPatternDepth.Location" type="System.Drawing.Point, System.Drawing">
     <value>293, 2</value>
   </data>
@@ -4104,18 +3600,6 @@ Kikuchi lines under this value are simulated.
   </data>
   <data name="textBoxMasterPatternDepth.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
-  </data>
-  <data name="&gt;&gt;textBoxMasterPatternDepth.Name" xml:space="preserve">
-    <value>textBoxMasterPatternDepth</value>
-  </data>
-  <data name="&gt;&gt;textBoxMasterPatternDepth.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;textBoxMasterPatternDepth.Parent" xml:space="preserve">
-    <value>flowLayoutPanelMasterPatternSelectors</value>
-  </data>
-  <data name="&gt;&gt;textBoxMasterPatternDepth.ZOrder" xml:space="preserve">
-    <value>5</value>
   </data>
   <data name="labelMasterPatternDepthUnit.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -4135,18 +3619,6 @@ Kikuchi lines under this value are simulated.
   <data name="labelMasterPatternDepthUnit.Text" xml:space="preserve">
     <value>nm</value>
   </data>
-  <data name="&gt;&gt;labelMasterPatternDepthUnit.Name" xml:space="preserve">
-    <value>labelMasterPatternDepthUnit</value>
-  </data>
-  <data name="&gt;&gt;labelMasterPatternDepthUnit.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;labelMasterPatternDepthUnit.Parent" xml:space="preserve">
-    <value>flowLayoutPanelMasterPatternSelectors</value>
-  </data>
-  <data name="&gt;&gt;labelMasterPatternDepthUnit.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
   <data name="trackBarMasterPatternDepth.AutoSize" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
@@ -4164,18 +3636,6 @@ Kikuchi lines under this value are simulated.
   </data>
   <data name="trackBarMasterPatternDepth.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
-  </data>
-  <data name="&gt;&gt;trackBarMasterPatternDepth.Name" xml:space="preserve">
-    <value>trackBarMasterPatternDepth</value>
-  </data>
-  <data name="&gt;&gt;trackBarMasterPatternDepth.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TrackBar, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;trackBarMasterPatternDepth.Parent" xml:space="preserve">
-    <value>flowLayoutPanelMasterPatternSelectors</value>
-  </data>
-  <data name="&gt;&gt;trackBarMasterPatternDepth.ZOrder" xml:space="preserve">
-    <value>7</value>
   </data>
   <data name="labelMasterPattern2DHemisphere.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -4327,18 +3787,6 @@ Kikuchi lines under this value are simulated.
   <data name="panelMasterPattern3DAxes.TabIndex" type="System.Int32, mscorlib">
     <value>147</value>
   </data>
-  <data name="&gt;&gt;panelMasterPattern3DAxes.Name" xml:space="preserve">
-    <value>panelMasterPattern3DAxes</value>
-  </data>
-  <data name="&gt;&gt;panelMasterPattern3DAxes.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;panelMasterPattern3DAxes.Parent" xml:space="preserve">
-    <value>panelMasterPattern3D</value>
-  </data>
-  <data name="&gt;&gt;panelMasterPattern3DAxes.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <data name="&gt;&gt;flowLayoutPanel5.Name" xml:space="preserve">
     <value>flowLayoutPanel5</value>
   </data>
@@ -4444,18 +3892,6 @@ Kikuchi lines under this value are simulated.
   <data name="flowLayoutPanel5.TabIndex" type="System.Int32, mscorlib">
     <value>154</value>
   </data>
-  <data name="&gt;&gt;flowLayoutPanel5.Name" xml:space="preserve">
-    <value>flowLayoutPanel5</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanel5.Type" xml:space="preserve">
-    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanel5.Parent" xml:space="preserve">
-    <value>groupBoxMasterPattern</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanel5.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <data name="buttonMasterPattern2DCopy.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -4479,18 +3915,6 @@ Kikuchi lines under this value are simulated.
   </data>
   <data name="buttonMasterPattern2DCopy.Text" xml:space="preserve">
     <value>Copy</value>
-  </data>
-  <data name="&gt;&gt;buttonMasterPattern2DCopy.Name" xml:space="preserve">
-    <value>buttonMasterPattern2DCopy</value>
-  </data>
-  <data name="&gt;&gt;buttonMasterPattern2DCopy.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;buttonMasterPattern2DCopy.Parent" xml:space="preserve">
-    <value>flowLayoutPanel5</value>
-  </data>
-  <data name="&gt;&gt;buttonMasterPattern2DCopy.ZOrder" xml:space="preserve">
-    <value>0</value>
   </data>
   <data name="flowLayoutPanel4.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -4543,18 +3967,6 @@ Kikuchi lines under this value are simulated.
   <data name="flowLayoutPanel4.TabIndex" type="System.Int32, mscorlib">
     <value>153</value>
   </data>
-  <data name="&gt;&gt;flowLayoutPanel4.Name" xml:space="preserve">
-    <value>flowLayoutPanel4</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanel4.Type" xml:space="preserve">
-    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanel4.Parent" xml:space="preserve">
-    <value>groupBoxMasterPattern</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanel4.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
   <data name="buttonMasterPattern3DCopy.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -4579,18 +3991,6 @@ Kikuchi lines under this value are simulated.
   <data name="buttonMasterPattern3DCopy.Text" xml:space="preserve">
     <value>Copy</value>
   </data>
-  <data name="&gt;&gt;buttonMasterPattern3DCopy.Name" xml:space="preserve">
-    <value>buttonMasterPattern3DCopy</value>
-  </data>
-  <data name="&gt;&gt;buttonMasterPattern3DCopy.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;buttonMasterPattern3DCopy.Parent" xml:space="preserve">
-    <value>flowLayoutPanel4</value>
-  </data>
-  <data name="&gt;&gt;buttonMasterPattern3DCopy.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <data name="checkBoxMasterPattern3DAxisLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -4612,18 +4012,6 @@ Kikuchi lines under this value are simulated.
   <data name="checkBoxMasterPattern3DAxisLabel.Text" xml:space="preserve">
     <value>Show Axis Labels</value>
   </data>
-  <data name="&gt;&gt;checkBoxMasterPattern3DAxisLabel.Name" xml:space="preserve">
-    <value>checkBoxMasterPattern3DAxisLabel</value>
-  </data>
-  <data name="&gt;&gt;checkBoxMasterPattern3DAxisLabel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkBoxMasterPattern3DAxisLabel.Parent" xml:space="preserve">
-    <value>flowLayoutPanel4</value>
-  </data>
-  <data name="&gt;&gt;checkBoxMasterPattern3DAxisLabel.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
   <data name="checkBoxMasterPattern3DAxisArrows.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -4642,18 +4030,6 @@ Kikuchi lines under this value are simulated.
   <data name="checkBoxMasterPattern3DAxisArrows.Text" xml:space="preserve">
     <value>Show Axis Arrows</value>
   </data>
-  <data name="&gt;&gt;checkBoxMasterPattern3DAxisArrows.Name" xml:space="preserve">
-    <value>checkBoxMasterPattern3DAxisArrows</value>
-  </data>
-  <data name="&gt;&gt;checkBoxMasterPattern3DAxisArrows.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkBoxMasterPattern3DAxisArrows.Parent" xml:space="preserve">
-    <value>flowLayoutPanel4</value>
-  </data>
-  <data name="&gt;&gt;checkBoxMasterPattern3DAxisArrows.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
   <data name="flowLayoutPanel3.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -4668,18 +4044,6 @@ Kikuchi lines under this value are simulated.
   </data>
   <data name="flowLayoutPanel3.TabIndex" type="System.Int32, mscorlib">
     <value>152</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanel3.Name" xml:space="preserve">
-    <value>flowLayoutPanel3</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanel3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanel3.Parent" xml:space="preserve">
-    <value>groupBoxMasterPattern</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanel3.ZOrder" xml:space="preserve">
-    <value>2</value>
   </data>
   <data name="flowLayoutPanelMasterPattern3DViewAlong.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -4768,18 +4132,6 @@ Kikuchi lines under this value are simulated.
   <data name="flowLayoutPanelMasterPattern3DViewAlong.TabIndex" type="System.Int32, mscorlib">
     <value>151</value>
   </data>
-  <data name="&gt;&gt;flowLayoutPanelMasterPattern3DViewAlong.Name" xml:space="preserve">
-    <value>flowLayoutPanelMasterPattern3DViewAlong</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanelMasterPattern3DViewAlong.Type" xml:space="preserve">
-    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanelMasterPattern3DViewAlong.Parent" xml:space="preserve">
-    <value>groupBoxMasterPattern</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanelMasterPattern3DViewAlong.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
   <data name="buttonMasterPattern3DViewAlong.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -4807,18 +4159,6 @@ Kikuchi lines under this value are simulated.
   <data name="buttonMasterPattern3DViewAlong.Text" xml:space="preserve">
     <value>View Along</value>
   </data>
-  <data name="&gt;&gt;buttonMasterPattern3DViewAlong.Name" xml:space="preserve">
-    <value>buttonMasterPattern3DViewAlong</value>
-  </data>
-  <data name="&gt;&gt;buttonMasterPattern3DViewAlong.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;buttonMasterPattern3DViewAlong.Parent" xml:space="preserve">
-    <value>flowLayoutPanelMasterPattern3DViewAlong</value>
-  </data>
-  <data name="&gt;&gt;buttonMasterPattern3DViewAlong.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <data name="labelMasterPattern3DViewAlongOpenBracket.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -4839,18 +4179,6 @@ Kikuchi lines under this value are simulated.
   </data>
   <data name="labelMasterPattern3DViewAlongOpenBracket.Text" xml:space="preserve">
     <value>[</value>
-  </data>
-  <data name="&gt;&gt;labelMasterPattern3DViewAlongOpenBracket.Name" xml:space="preserve">
-    <value>labelMasterPattern3DViewAlongOpenBracket</value>
-  </data>
-  <data name="&gt;&gt;labelMasterPattern3DViewAlongOpenBracket.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;labelMasterPattern3DViewAlongOpenBracket.Parent" xml:space="preserve">
-    <value>flowLayoutPanelMasterPattern3DViewAlong</value>
-  </data>
-  <data name="&gt;&gt;labelMasterPattern3DViewAlongOpenBracket.ZOrder" xml:space="preserve">
-    <value>1</value>
   </data>
   <data name="numericBoxMasterPattern3DViewAlongU.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
@@ -4891,18 +4219,6 @@ Kikuchi lines under this value are simulated.
   <data name="numericBoxMasterPattern3DViewAlongU.TextFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
-  <data name="&gt;&gt;numericBoxMasterPattern3DViewAlongU.Name" xml:space="preserve">
-    <value>numericBoxMasterPattern3DViewAlongU</value>
-  </data>
-  <data name="&gt;&gt;numericBoxMasterPattern3DViewAlongU.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;numericBoxMasterPattern3DViewAlongU.Parent" xml:space="preserve">
-    <value>flowLayoutPanelMasterPattern3DViewAlong</value>
-  </data>
-  <data name="&gt;&gt;numericBoxMasterPattern3DViewAlongU.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
   <data name="numericBoxMasterPattern3DViewAlongV.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
@@ -4941,18 +4257,6 @@ Kikuchi lines under this value are simulated.
   </data>
   <data name="numericBoxMasterPattern3DViewAlongV.TextFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
-  </data>
-  <data name="&gt;&gt;numericBoxMasterPattern3DViewAlongV.Name" xml:space="preserve">
-    <value>numericBoxMasterPattern3DViewAlongV</value>
-  </data>
-  <data name="&gt;&gt;numericBoxMasterPattern3DViewAlongV.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;numericBoxMasterPattern3DViewAlongV.Parent" xml:space="preserve">
-    <value>flowLayoutPanelMasterPattern3DViewAlong</value>
-  </data>
-  <data name="&gt;&gt;numericBoxMasterPattern3DViewAlongV.ZOrder" xml:space="preserve">
-    <value>3</value>
   </data>
   <data name="numericBoxMasterPattern3DViewAlongW.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
@@ -4993,18 +4297,6 @@ Kikuchi lines under this value are simulated.
   <data name="numericBoxMasterPattern3DViewAlongW.TextFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
-  <data name="&gt;&gt;numericBoxMasterPattern3DViewAlongW.Name" xml:space="preserve">
-    <value>numericBoxMasterPattern3DViewAlongW</value>
-  </data>
-  <data name="&gt;&gt;numericBoxMasterPattern3DViewAlongW.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;numericBoxMasterPattern3DViewAlongW.Parent" xml:space="preserve">
-    <value>flowLayoutPanelMasterPattern3DViewAlong</value>
-  </data>
-  <data name="&gt;&gt;numericBoxMasterPattern3DViewAlongW.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
   <data name="labelMasterPattern3DViewAlongCloseBracket.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -5025,18 +4317,6 @@ Kikuchi lines under this value are simulated.
   </data>
   <data name="labelMasterPattern3DViewAlongCloseBracket.Text" xml:space="preserve">
     <value>]</value>
-  </data>
-  <data name="&gt;&gt;labelMasterPattern3DViewAlongCloseBracket.Name" xml:space="preserve">
-    <value>labelMasterPattern3DViewAlongCloseBracket</value>
-  </data>
-  <data name="&gt;&gt;labelMasterPattern3DViewAlongCloseBracket.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;labelMasterPattern3DViewAlongCloseBracket.Parent" xml:space="preserve">
-    <value>flowLayoutPanelMasterPattern3DViewAlong</value>
-  </data>
-  <data name="&gt;&gt;labelMasterPattern3DViewAlongCloseBracket.ZOrder" xml:space="preserve">
-    <value>5</value>
   </data>
   <data name="&gt;&gt;flowLayoutPanel1.Name" xml:space="preserve">
     <value>flowLayoutPanel1</value>
@@ -5100,18 +4380,6 @@ Kikuchi lines under this value are simulated.
   </data>
   <data name="flowLayoutPanel1.TabIndex" type="System.Int32, mscorlib">
     <value>140</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanel1.Name" xml:space="preserve">
-    <value>flowLayoutPanel1</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanel1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanel1.Parent" xml:space="preserve">
-    <value>groupBoxEBSDPattern</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanel1.ZOrder" xml:space="preserve">
-    <value>1</value>
   </data>
   <data name="panel1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Left</value>

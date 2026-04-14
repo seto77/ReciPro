@@ -1,7 +1,7 @@
 ﻿using System.Drawing;
 namespace Crystallography.Controls
 {
-    partial class ExRichTextBox
+    partial class PyRichTextBox
     {
         
         /// <summary>必要なデザイナー変数です。</summary>

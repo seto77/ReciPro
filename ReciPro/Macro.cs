@@ -59,6 +59,58 @@ public class Macro : MacroBase
     [Help("Sleep in millisecond.","int millisecond")]
     public static void Sleep(int millisec) => Thread.Sleep(millisec);
 
+    // 260414Cl 追加 初心者向けサンプルマクロ。FormMacro が初回表示時にリストが空なら挿入する。
+    // print() は使えないので Step by step 実行時にデバッグパネルで値を確認する作法を教える構成。
+    public override (string name, string body)[] SampleMacros =>
+    [
+        ("01. Basic loop",
+         """
+         # Loop 10 times and compute the squares.
+         # Run this with "Step by step" and watch 'i' and 'sq'
+         # change in the debug panel. This is how ReciPro macros
+         # inspect values (print() does not work here).
+         for i in range(10):
+             sq = i * i
+         """),
+        ("02. Using math",
+         """
+         # The math module is pre-imported. Use it directly.
+         r = 5.0
+         area = math.pi * r * r
+         circumference = 2 * math.pi * r
+         # Run in Step mode to see 'area' and 'circumference'.
+         """),
+        ("03. Rotate crystal",
+         """
+         # Rotate the current crystal by 30 degrees around the a-axis.
+         ReciPro.Dir.RotateAroundAxisInDeg(1, 0, 0, 30)
+         """),
+        ("04. Align to zone axis",
+         """
+         # Align so that the [001] zone axis is normal to the screen.
+         ReciPro.Dir.ProjectAlongAxis(0, 0, 1)
+         """),
+        ("05. Loop crystals",
+         """
+         # Collect the names of the first 5 crystals in the list.
+         names = []
+         for i in range(5):
+             ReciPro.CrystalList.SelectedIndex = i
+             names.append(ReciPro.Crystal.Name)
+         # Run in Step mode to watch 'names' grow line by line.
+         """),
+        ("06. Diffraction pattern",
+         """
+         # Show the [001] diffraction pattern of the first crystal
+         # in the list with 200 keV electrons.
+         ReciPro.CrystalList.SelectedIndex = 0
+         ReciPro.DifSim.Open()
+         ReciPro.DifSim.Source_Electron()
+         ReciPro.DifSim.Energy = 200
+         ReciPro.Dir.ProjectAlongAxis(0, 0, 1)
+         """),
+    ];
+
     #endregion
 
     #region ファイルクラス
