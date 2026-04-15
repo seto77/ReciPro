@@ -118,8 +118,6 @@ DataSet.cs
 DataSet.Designer.cs
 DistributionGraphControl.cs
 DistributionGraphControl.Designer.cs
-ExRichTextBox.cs
-ExRichTextBox.Designer.cs
 FormCaptureGUI.cs
 FormCaptureGUI.Designer.cs
 FormCrystalSelection.cs
@@ -140,6 +138,8 @@ Macro/
  FormMacro.cs
  FormMacro.Designer.cs
  Macro.cs
+ PyRichTextBox.cs
+ PyRichTextBox.Designer.cs
 Numeric/
  FormCalculator.cs
  FormCalculator.Designer.cs

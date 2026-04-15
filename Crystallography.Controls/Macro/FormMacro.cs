@@ -37,6 +37,12 @@ public partial class FormMacro : CaptureFormBase
     // 260414Cl 追加 ダーティ時に "*" を付与する基準タイトル。コンストラクタで Text から取得する
     private readonly string _titleBase;
 
+    // 260415Cl 追加 サンプルマクロ表示トグル用フィールド。表示状態は checkBoxSamples.Checked が真実の情報源。
+    private MacroEntry[] _userMacroSnapshot = [];
+    private int _userSelectedIndex = -1;
+    // Cancel 時に checkBoxSamples.Checked を戻す際の CheckedChanged 再入防止ガード
+    private bool _suppressSamplesToggleEvent = false;
+
     #endregion
 
     [System.ComponentModel.Browsable(false)]
@@ -91,30 +97,104 @@ public partial class FormMacro : CaptureFormBase
         pyRichTextBox.SelectionChanged += updateStatusPos;
         updateStatusPos(null, null);
 
-        // 260414Cl 追加 初回表示時にマクロリストが空なら obj.SampleMacros から挿入する。
-        // 呼び出し側 (FormMain) の ZippedMacros 読み込みより後になるよう Shown で検知。
-        this.Shown += loadSampleMacrosIfEmpty;
+        // 260415Cl 削除 Shown 時の自動サンプル挿入を撤去 (旧: this.Shown += loadSampleMacrosIfEmpty;)
+        // 理由: 初回起動時の言語でユーザーのマクロリストに英語サンプルが永続保存され、
+        // 後から日本語 UI に切り替えても英語のまま残ってしまう問題があったため。
+        // 代替: Designer 配置の checkBoxSamples から常時・現行言語で参照できる。
+
+        // 260415Cl 追加 派生クラスが SampleMacros を上書きしていなければチェックボックスは非表示
+        var _samples = obj?.SampleMacros;
+        if (_samples == null || _samples.Length == 0)
+            checkBoxSamples.Visible = false;
 
         splitContainer2.SplitterDistance = splitContainer2.Width;
     }
 
-    // 260414Cl 追加 初回表示時 (Shown は 1 回限り発火) に呼ばれ、保存済みマクロが 0 件なら
-    // MacroBase.SampleMacros から初心者向けテンプレを挿入する。
-    private void loadSampleMacrosIfEmpty(object sender, EventArgs e)
+    // 260415Cl 追加 listBoxMacro を items で置き換え、selectIdx を選択してエディタへ反映する共通処理。
+    // skipEvent ガード + BeginUpdate/EndUpdate で SelectedIndexChanged / TextChanged / 再描画を抑止する。
+    private void replaceListBoxAndSelect(MacroEntry[] items, int selectIdx)
     {
-        if (listBoxMacro.Items.Count > 0) return;
-        var samples = obj.SampleMacros;
-        if (samples == null || samples.Length == 0) return;
         skipEvent = true;
         try
         {
-            foreach (var (name, body) in samples)
-                listBoxMacro.Items.Add(new MacroEntry(name, body));
+            listBoxMacro.BeginUpdate();
+            try
+            {
+                listBoxMacro.Items.Clear();
+                foreach (var m in items)
+                    listBoxMacro.Items.Add(m);
+            }
+            finally { listBoxMacro.EndUpdate(); }
+
+            int idx = selectIdx >= 0 && selectIdx < listBoxMacro.Items.Count ? selectIdx
+                    : listBoxMacro.Items.Count > 0 ? 0 : -1;
+            if (idx >= 0)
+            {
+                listBoxMacro.SelectedIndex = idx;
+                var v = (MacroEntry)listBoxMacro.SelectedItem;
+                textBoxMacroName.Text = v.Name;
+                pyRichTextBox.Text = v.Body;
+            }
+            else
+            {
+                textBoxMacroName.Text = "";
+                pyRichTextBox.Text = "";
+            }
         }
         finally { skipEvent = false; }
-        if (listBoxMacro.Items.Count > 0)
+    }
+
+    // 260415Cl 改修 checkBoxSamples.CheckedChanged でサンプル表示とユーザーマクロをトグル切り替え (旧: samplesToolStripMenuItem.Click)
+    private void toggleSamplesMode(object sender, EventArgs e)
+    {
+        if (_suppressSamplesToggleEvent) return;
+
+        if (checkBoxSamples.Checked)
         {
-            listBoxMacro.SelectedIndex = 0;
+            // 未保存変更の確認
+            if (_isDirty && _previousSelectedIndex >= 0 && _previousSelectedIndex < listBoxMacro.Items.Count)
+            {
+                var dr = MessageBox.Show(
+                    "Save changes to the current macro?",
+                    "Unsaved changes",
+                    MessageBoxButtons.YesNoCancel,
+                    MessageBoxIcon.Warning);
+                if (dr == DialogResult.Cancel || (dr == DialogResult.Yes && !saveCurrentToIndex(_previousSelectedIndex)))
+                {
+                    // Cancel / 保存失敗 → checkBoxSamples を元に戻す (CheckedChanged 再入は _suppress で無効化)
+                    _suppressSamplesToggleEvent = true;
+                    try { checkBoxSamples.Checked = false; }
+                    finally { _suppressSamplesToggleEvent = false; }
+                    return;
+                }
+            }
+
+            // 現在のユーザーマクロを退避してサンプルを読み込む
+            _userMacroSnapshot = listBoxMacro.Items.Cast<MacroEntry>().ToArray();
+            _userSelectedIndex = listBoxMacro.SelectedIndex;
+
+            var samples = obj.SampleMacros;
+            var sampleEntries = samples == null ? []
+                : Array.ConvertAll(samples, s => new MacroEntry(s.name, s.body));
+            replaceListBoxAndSelect(sampleEntries, 0);
+            setDirty(false);
+
+            // 読み取り専用モードへ (編集・削除・並び替えボタンを無効化)
+            pyRichTextBox.ReadOnly = true;
+            textBoxMacroName.ReadOnly = true;
+            buttonAdd.Enabled = buttonChange.Enabled = buttonDeleteProfile.Enabled = false;
+            buttonUpper.Enabled = buttonLower.Enabled = false;
+        }
+        else
+        {
+            // ユーザーマクロへ復元
+            replaceListBoxAndSelect(_userMacroSnapshot, _userSelectedIndex);
+            setDirty(false);
+
+            pyRichTextBox.ReadOnly = false;
+            textBoxMacroName.ReadOnly = false;
+            _previousSelectedIndex = listBoxMacro.SelectedIndex;
+            updateListButtons();
             setMenuItemOfMain();
         }
     }
@@ -528,6 +608,19 @@ public partial class FormMacro : CaptureFormBase
             }
             _previousSelectedIndex = listBoxMacro.SelectedIndex;
             updateListButtons();
+            return;
+        }
+
+        // 260415Cl 追加 サンプル表示モードではダーティチェック不要・読み取り専用で表示するだけ
+        if (checkBoxSamples.Checked)
+        {
+            if (listBoxMacro.SelectedIndex >= 0)
+            {
+                var v = (MacroEntry)listBoxMacro.SelectedItem;
+                skipEvent = true;
+                try { textBoxMacroName.Text = v.Name; pyRichTextBox.Text = v.Body; }
+                finally { skipEvent = false; }
+            }
             return;
         }
 

@@ -60,57 +60,297 @@ public class Macro : MacroBase
     [Help("Pauses execution for the specified number of milliseconds.", "int millisec")]
     public static void Sleep(int millisec) => Thread.Sleep(millisec);
 
-    // 260414Cl 追加 初心者向けサンプルマクロ。FormMacro が初回表示時にリストが空なら挿入する。
+    // 260415Cl 改修 英語/日本語を隣接ペア配置、1-2行の短いサンプルを統合、行幅を約1.5倍に拡大 (旧: 並列2配列・15件)
     // print() は使えないので Step by step 実行時にデバッグパネルで値を確認する作法を教える構成。
+    // 260415Cl 言語判定は ReciPro 全体と統一して FormMain.Language を使用 (旧: 個別の CultureInfo 判定)
     public override (string name, string body)[] SampleMacros =>
+        FormMain.Language == Languages.Japanese ? _sampleMacrosJa : _sampleMacrosEn;
+
+    // マスター配列: 各要素で英語版 (nameEn, bodyEn) と日本語版 (nameJa, bodyJa) を並べて定義することで、
+    // 英語/日本語の内容対応を見失わずに保守できる。_sampleMacrosEn/Ja はこの配列から Array.ConvertAll で生成。
+    private static readonly (string nameEn, string bodyEn, string nameJa, string bodyJa)[] _sampleMacros =
     [
-        ("01. Basic loop",
-         """
-         # Loop 10 times and compute the squares.
-         # Run this with "Step by step" and watch 'i' and 'sq'
-         # change in the debug panel. This is how ReciPro macros
-         # inspect values (print() does not work here).
-         for i in range(10):
-             sq = i * i
-         """),
-        ("02. Using math",
-         """
-         # The math module is pre-imported. Use it directly.
-         r = 5.0
-         area = math.pi * r * r
-         circumference = 2 * math.pi * r
-         # Run in Step mode to see 'area' and 'circumference'.
-         """),
-        ("03. Rotate crystal",
-         """
-         # Rotate the current crystal by 30 degrees around the a-axis.
-         ReciPro.Dir.RotateAroundAxisInDeg(1, 0, 0, 30)
-         """),
-        ("04. Align to zone axis",
-         """
-         # Align so that the [001] zone axis is normal to the screen.
-         ReciPro.Dir.ProjectAlongAxis(0, 0, 1)
-         """),
-        ("05. Loop crystals",
-         """
-         # Collect the names of the first 5 crystals in the list.
-         names = []
-         for i in range(5):
-             ReciPro.CrystalList.SelectedIndex = i
-             names.append(ReciPro.Crystal.Name)
-         # Run in Step mode to watch 'names' grow line by line.
-         """),
-        ("06. Diffraction pattern",
-         """
-         # Show the [001] diffraction pattern of the first crystal
-         # in the list with 200 keV electrons.
-         ReciPro.CrystalList.SelectedIndex = 0
-         ReciPro.DifSim.Open()
-         ReciPro.DifSim.Source_Electron()
-         ReciPro.DifSim.Energy = 200
-         ReciPro.Dir.ProjectAlongAxis(0, 0, 1)
-         """),
+        (
+            "01. Basic loop and if",
+            """
+            # Loop 10 times computing the squares. Inside the loop, an if/else classifies 'i' as "even" or "odd"
+            # and an if adds a "big" flag once 'sq' exceeds 25. Run with "Step by step" mode and watch
+            # 'i', 'sq', 'kind', 'big' change in the debug panel (print() is not available here).
+            for i in range(10):
+                sq = i * i
+                if i % 2 == 0:
+                    kind = "even"
+                else:
+                    kind = "odd"
+                big = sq > 25
+            """,
+            "01. 基本的なループと条件分岐",
+            """
+            # 10 回ループして二乗を計算し、ループ内の if/else で 'i' を "even" / "odd" に分類しつつ、
+            # 'sq' が 25 を超えたら 'big' フラグを立てます。「Step by step」モードで実行すると、デバッグ
+            # パネルで i・sq・kind・big の値の変化を確認できます (print() は使えません)。
+            for i in range(10):
+                sq = i * i
+                if i % 2 == 0:
+                    kind = "even"
+                else:
+                    kind = "odd"
+                big = sq > 25
+            """
+        ),
+        (
+            "02. Math functions",
+            """
+            # The math module is pre-imported, so you can use it directly without an explicit import statement.
+            # This sample shows pi, trigonometric (sin/cos), sqrt, exponential (exp), and logarithm (log).
+            # Run in Step mode to inspect each variable in the debug panel.
+            r = 5.0
+            area          = math.pi * r * r            # circle area
+            circumference = 2 * math.pi * r            # circle circumference
+            s   = math.sin(math.pi / 6)                # sin(30°) = 0.5
+            c   = math.cos(math.pi / 3)                # cos(60°) = 0.5
+            t   = math.tan(math.pi / 4)                # tan(45°) = 1.0
+            rt2 = math.sqrt(2)                         # square root of 2
+            e2  = math.exp(2)                          # e^2 ≈ 7.389
+            ln  = math.log(math.e)                     # natural log of e = 1.0
+            lg  = math.log10(1000)                     # base-10 log of 1000 = 3.0
+            """,
+            "02. 数学関数の使用",
+            """
+            # math モジュールはあらかじめ import 済みなので、明示的な import 文なしにそのまま使えます。
+            # このサンプルでは pi, 三角関数 (sin/cos/tan), sqrt, 指数関数 (exp), 対数関数 (log) を扱います。
+            # Step モードで実行して各変数の値をデバッグパネルで確認しましょう。
+            r = 5.0
+            area          = math.pi * r * r            # 円の面積
+            circumference = 2 * math.pi * r            # 円周の長さ
+            s   = math.sin(math.pi / 6)                # sin(30°) = 0.5
+            c   = math.cos(math.pi / 3)                # cos(60°) = 0.5
+            t   = math.tan(math.pi / 4)                # tan(45°) = 1.0
+            rt2 = math.sqrt(2)                         # 2 の平方根
+            e2  = math.exp(2)                          # e^2 ≒ 7.389
+            ln  = math.log(math.e)                     # e の自然対数 = 1.0
+            lg  = math.log10(1000)                     # 1000 の常用対数 = 3.0
+            """
+        ),
+        (
+            "03. Rotation and alignment",
+            """
+            # Rotate the crystal around the a-axis [100] by 30 degrees, then align the [001] zone axis to the
+            # screen normal, and finally rotate so that the (110) plane becomes parallel to the screen.
+            ReciPro.Dir.RotateAroundAxisInDeg(1, 0, 0, 30)
+            ReciPro.Dir.ProjectAlongAxis(0, 0, 1)
+            ReciPro.Dir.ProjectAlongPlane(1, 1, 0)
+            """,
+            "03. 回転と方位の整合",
+            """
+            # 結晶を a軸 [100] 周りに 30° 回転させ、続いて [001] 晶帯軸を画面法線方向に整合させ、
+            # 最後に (110) 面が画面と平行になるよう回転させます。Step モードで各操作を順に確認できます。
+            ReciPro.Dir.RotateAroundAxisInDeg(1, 0, 0, 30)
+            ReciPro.Dir.ProjectAlongAxis(0, 0, 1)
+            ReciPro.Dir.ProjectAlongPlane(1, 1, 0)
+            """
+        ),
+        (
+            "04. File I/O and crystal info",
+            """
+            # Load a crystal list (*.xml) or an individual crystal file (CIF / AMC), read the name,
+            # chemical formula, and density of the selected crystal, and export it as CIF.
+            # Each file operation opens a dialog. Run in Step mode to inspect the variables.
+            ReciPro.File.ReadCrystalList()
+            ReciPro.File.ReadCrystal()
+            name    = ReciPro.Crystal.Name
+            formula = ReciPro.Crystal.ChemicalFormula
+            density = ReciPro.Crystal.Density
+            ReciPro.File.ExportAsCIF()
+            """,
+            "04. ファイル入出力と結晶情報",
+            """
+            # 結晶リスト (*.xml) または個別の結晶ファイル (CIF / AMC) を読み込み、選択中の結晶の
+            # 名前・化学式・密度を取得し、CIF 形式でエクスポートします。ファイル操作はダイアログで
+            # パスを指定します。Step モードで実行して各変数の値を確認しましょう。
+            ReciPro.File.ReadCrystalList()
+            ReciPro.File.ReadCrystal()
+            name    = ReciPro.Crystal.Name
+            formula = ReciPro.Crystal.ChemicalFormula
+            density = ReciPro.Crystal.Density
+            ReciPro.File.ExportAsCIF()
+            """
+        ),
+        (
+            "05. Scan crystal list",
+            """
+            # Scan the crystal list: collect all names, and find the indices of every crystal whose
+            # chemical formula is "Mg2SiO4". Use CrystalList.Count to iterate the whole list safely.
+            # Run in Step mode to watch 'names' and 'mg2sio4' grow in the debug panel.
+            names = []
+            mg2sio4 = []
+            for i in range(ReciPro.CrystalList.Count):
+                ReciPro.CrystalList.SelectedIndex = i
+                names.append(ReciPro.Crystal.Name)
+                if ReciPro.Crystal.ChemicalFormula == "Mg2SiO4":
+                    mg2sio4.append(i)
+            """,
+            "05. 結晶リストの走査",
+            """
+            # 結晶リスト全件を走査し、全結晶名を収集しつつ化学式が "Mg2SiO4" のものの index を集めます。
+            # CrystalList.Count を使うと全件を安全にループできます。
+            # Step モードで実行すると names と mg2sio4 が増えていく様子をデバッグパネルで確認できます。
+            names = []
+            mg2sio4 = []
+            for i in range(ReciPro.CrystalList.Count):
+                ReciPro.CrystalList.SelectedIndex = i
+                names.append(ReciPro.Crystal.Name)
+                if ReciPro.Crystal.ChemicalFormula == "Mg2SiO4":
+                    mg2sio4.append(i)
+            """
+        ),
+        (
+            "06. Diffraction pattern setup",
+            """
+            # Open the Diffraction Simulator and display the [001] electron diffraction pattern of the first
+            # crystal in the list at 200 keV. This demonstrates the typical simulation setup sequence.
+            ReciPro.CrystalList.SelectedIndex = 0
+            ReciPro.DifSim.Open()
+            ReciPro.DifSim.Source_Electron()
+            ReciPro.DifSim.Energy = 200
+            ReciPro.Dir.ProjectAlongAxis(0, 0, 1)
+            """,
+            "06. 回折パターンシミュレーション設定",
+            """
+            # 回折シミュレーターを開き、リスト最初の結晶の [001] 入射電子回折パターンを 200 keV で表示します。
+            # 一般的な回折シミュレーションのセットアップ手順を示したサンプルです。
+            ReciPro.CrystalList.SelectedIndex = 0
+            ReciPro.DifSim.Open()
+            ReciPro.DifSim.Source_Electron()
+            ReciPro.DifSim.Energy = 200
+            ReciPro.Dir.ProjectAlongAxis(0, 0, 1)
+            """
+        ),
+        (
+            "07. Save diffraction image",
+            """
+            # Simulate the [001] electron diffraction pattern and save it as a PNG file.
+            # When SaveAsPng() is called without a filename, a save dialog opens to choose the output path.
+            ReciPro.DifSim.Open()
+            ReciPro.DifSim.Source_Electron()
+            ReciPro.DifSim.Energy = 200
+            ReciPro.Dir.ProjectAlongAxis(0, 0, 1)
+            ReciPro.DifSim.SaveAsPng()
+            """,
+            "07. 回折パターン画像の保存",
+            """
+            # [001] 入射の電子回折パターンをシミュレートして PNG ファイルとして保存します。
+            # SaveAsPng() をファイル名なしで呼ぶと、保存ダイアログが開いて出力先を選択できます。
+            ReciPro.DifSim.Open()
+            ReciPro.DifSim.Source_Electron()
+            ReciPro.DifSim.Energy = 200
+            ReciPro.Dir.ProjectAlongAxis(0, 0, 1)
+            ReciPro.DifSim.SaveAsPng()
+            """
+        ),
+        (
+            "07-01. Tilt series (rotate + save)",
+            """
+            # Variation of 08: rotate around the c-axis in 10° steps and save a PNG at each orientation.
+            dir_path = ReciPro.File.GetDirectoryPath()
+            ReciPro.DifSim.Open()
+            ReciPro.DifSim.Source_Electron()
+            ReciPro.DifSim.Energy = 200
+            for i in range(36):
+                ReciPro.Dir.RotateAroundAxisInDeg(0, 0, 1, 10)
+                fname = dir_path + "tilt_" + str(i * 10).zfill(3) + ".png"
+                ReciPro.DifSim.SaveAsPng(fname)
+            """,
+            "07-01. 傾斜シリーズ (回転 + 保存)",
+            """
+            # 08 のバリエーション: c軸周りに 10° ずつ回転しながら各方位の PNG を連続保存します。
+            dir_path = ReciPro.File.GetDirectoryPath()
+            ReciPro.DifSim.Open()
+            ReciPro.DifSim.Source_Electron()
+            ReciPro.DifSim.Energy = 200
+            for i in range(36):
+                ReciPro.Dir.RotateAroundAxisInDeg(0, 0, 1, 10)
+                fname = dir_path + "tilt_" + str(i * 10).zfill(3) + ".png"
+                ReciPro.DifSim.SaveAsPng(fname)
+            """
+        ),
+        (
+            "07-02. Multi-step rotation loop",
+            """
+            # Variation of 08: iterate b-axis rotations in Step mode to observe each orientation change.
+            ReciPro.Dir.ProjectAlongAxis(0, 0, 1)
+            for step in range(18):
+                ReciPro.Dir.RotateAroundAxisInDeg(0, 1, 0, 5)
+                angle = (step + 1) * 5
+            """,
+            "07-02. 複数ステップ回転ループ",
+            """
+            # 08 のバリエーション: b軸周りの回転を Step モードで観察します。
+            ReciPro.Dir.ProjectAlongAxis(0, 0, 1)
+            for step in range(18):
+                ReciPro.Dir.RotateAroundAxisInDeg(0, 1, 0, 5)
+                angle = (step + 1) * 5
+            """
+        ),
+        (
+            "07-03. Energy series",
+            """
+            # Variation of 08: save a PNG for each electron energy from 100 to 300 keV in 50 keV steps.
+            dir_path = ReciPro.File.GetDirectoryPath()
+            ReciPro.DifSim.Open()
+            ReciPro.DifSim.Source_Electron()
+            ReciPro.Dir.ProjectAlongAxis(0, 0, 1)
+            for kev in range(100, 301, 50):
+                ReciPro.DifSim.Energy = kev
+                fname = dir_path + "energy_" + str(kev) + "keV.png"
+                ReciPro.DifSim.SaveAsPng(fname)
+            """,
+            "07-03. 加速電圧シリーズ",
+            """
+            # 08 のバリエーション: 加速電圧 100〜300 keV を 50 keV 刻みで変えながら PNG を連続保存します。
+            dir_path = ReciPro.File.GetDirectoryPath()
+            ReciPro.DifSim.Open()
+            ReciPro.DifSim.Source_Electron()
+            ReciPro.Dir.ProjectAlongAxis(0, 0, 1)
+            for kev in range(100, 301, 50):
+                ReciPro.DifSim.Energy = kev
+                fname = dir_path + "energy_" + str(kev) + "keV.png"
+                ReciPro.DifSim.SaveAsPng(fname)
+            """
+        ),
+        (
+            "08. Spot info (dynamical)",
+            """
+            # Calculate dynamical diffraction for the [001] zone axis with 200 keV electrons, then save the
+            # spot information (CSV: hkl, d-spacing, excitation error, amplitudes, intensities) as a text file.
+            ReciPro.DifSim.Open()
+            ReciPro.DifSim.Source_Electron()
+            ReciPro.DifSim.Energy = 200
+            ReciPro.Dir.ProjectAlongAxis(0, 0, 1)
+            ReciPro.DifSim.Calc_Dynamical()
+            csv = ReciPro.DifSim.SpotInfo()
+            ReciPro.File.SaveText(csv)
+            """,
+            "08. スポット情報 (動力学計算)",
+            """
+            # [001] 晶帯軸に対して 200 keV の電子で動力学回折計算を行い、スポット情報
+            # (hkl, 面間隔, 励起誤差, 振幅, 強度などを含む CSV) をテキストファイルとして保存します。
+            ReciPro.DifSim.Open()
+            ReciPro.DifSim.Source_Electron()
+            ReciPro.DifSim.Energy = 200
+            ReciPro.Dir.ProjectAlongAxis(0, 0, 1)
+            ReciPro.DifSim.Calc_Dynamical()
+            csv = ReciPro.DifSim.SpotInfo()
+            ReciPro.File.SaveText(csv)
+            """
+        ),
     ];
+
+    private static readonly (string name, string body)[] _sampleMacrosEn =
+        Array.ConvertAll(_sampleMacros, m => (name: m.nameEn, body: m.bodyEn));
+
+    private static readonly (string name, string body)[] _sampleMacrosJa =
+        Array.ConvertAll(_sampleMacros, m => (name: m.nameJa, body: m.bodyJa));
 
     #endregion
 
@@ -204,6 +444,11 @@ public class Macro : MacroBase
         // (260414Ch) Help text revised to use consistent property/method wording.
         [Help("Gets or sets the index of the selected crystal in the crystal list.")]
         public int SelectedIndex { get => main.SelectedCrystalIndex; set => main.SelectedCrystalIndex = value; }
+
+        // 260415Cl 追加 結晶リスト全件数 (マクロサンプル 05 等で利用)
+        // 注: main.Crystals は選択中の結晶のみを返すので使用不可。listBox.Items.Count を返す main.CrystalCount を使う。
+        [Help("Gets the number of crystals currently in the crystal list.")]
+        public int Count { get => main.CrystalCount; }
 
         [Help("Adds the crystal currently shown in 'Crystal Information' to the end of the list.")]
         public void Add() => Execute(() => main.AddCrystal());

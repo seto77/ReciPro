@@ -190,6 +190,8 @@ public partial class FormMain : CaptureFormBase
     public string CurrentZoneAxis { get; set; } = "";
 
     public int SelectedCrystalIndex { get => listBox.SelectedIndex; set => listBox.SelectedIndex = value; }
+    // 260415Cl 追加 結晶リストの全件数 (listBox.Items.Count の公開ラッパー)。マクロ API の CrystalList.Count から使用。
+    public int CrystalCount => listBox.Items.Count;
 
     #endregion
 
