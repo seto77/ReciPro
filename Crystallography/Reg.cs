@@ -1,6 +1,9 @@
 ﻿using MemoryPack;
 using MemoryPack.Compression;
 using Microsoft.Win32;
+using System;
+using System.Linq.Expressions;
+using System.Reflection;
 using System.Threading;
 using System.Windows.Forms;
 
@@ -10,16 +13,44 @@ public static class Reg
 {
     public enum Mode { Read, Write };
 
-    public static void RW<T>(RegistryKey key, Mode mode, object owner, string propName, T p)
+    // 呼び出し側を Reg.RW(key, mode, () => owner.Prop) と書けるようにするオーバーロード。
+    public static void RW<T>(RegistryKey key, Mode mode, Expression<Func<T>> expr)
     {
-        RW<T> (key, mode, owner, propName);
+        if (expr.Body is not MemberExpression me) return;
+        var owner = EvaluateExpression(me.Expression);
+        if (owner == null) return;
+        RW<T>(key, mode, owner, me.Member.Name);
+    }
+
+    // Expression.Lambda().Compile() は 1 呼び出しあたり数 ms かかる。
+    // レジストリ読み書きは FormMain.Registry(mode) で 70+ 回連続呼び出しされるため、
+    // Compile を避けて MemberExpression チェーンを手で辿る。
+    private static object EvaluateExpression(Expression expr)
+    {
+        return expr switch
+        {
+            null => null,
+            ConstantExpression ce => ce.Value,
+            MemberExpression me => me.Member switch
+            {
+                FieldInfo fi => fi.GetValue(EvaluateExpression(me.Expression)),
+                PropertyInfo pi => pi.GetValue(EvaluateExpression(me.Expression)),
+                _ => Expression.Lambda(expr).Compile().DynamicInvoke()
+            },
+            _ => Expression.Lambda(expr).Compile().DynamicInvoke()
+        };
     }
 
     public static void RW<T>(RegistryKey key, Mode mode, object owner, string propName)
     {
         if (owner == null)
             return;
-        var prop = owner.GetType().GetProperty(propName);
+        // PropertyInfo が無ければ FieldInfo にフォールバック (public field を rw(() => ...) から扱うため)
+        var ownerType = owner.GetType();
+        var prop = ownerType.GetProperty(propName);
+        var field = prop == null ? ownerType.GetField(propName) : null;
+        if (prop == null && field == null)
+            return;
 
         string regName;
 
@@ -33,7 +64,7 @@ public static class Reg
         else if (owner is ToolStripItem t)
             regName = t.Name + "." + propName;
         else
-            regName = $"{prop.ReflectedType.FullName}.{propName}";
+            regName = $"{(prop?.ReflectedType ?? field.ReflectedType).FullName}.{propName}";
 
         if (mode == Mode.Read)
         {//読込の時
@@ -46,7 +77,12 @@ public static class Reg
                 using var decompressor = new BrotliDecompressor();
                 var val = MemoryPackSerializer.Deserialize<T>(decompressor.Decompress(buffer));
                 if (regName != "System.Globalization.CultureInfo.Name")
-                    prop.SetValue(owner, val);
+                {
+                    if (prop != null)
+                        prop.SetValue(owner, val);
+                    else
+                        field.SetValue(owner, val);
+                }
                 else
                 {
                     Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(val.ToString().ToLower().StartsWith("ja") ? "ja" : "en");
@@ -58,7 +94,8 @@ public static class Reg
         else
         {//書込の時
             using var compressor = new BrotliCompressor(System.IO.Compression.CompressionLevel.Optimal);
-            MemoryPackSerializer.Serialize(compressor, (T)prop.GetValue(owner));
+            var value = prop != null ? (T)prop.GetValue(owner) : (T)field.GetValue(owner);
+            MemoryPackSerializer.Serialize(compressor, value);
             key.SetValue(regName, compressor.ToArray());
         }
     }

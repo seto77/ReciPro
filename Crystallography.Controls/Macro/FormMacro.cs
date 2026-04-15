@@ -178,25 +178,19 @@ public partial class FormMacro : CaptureFormBase
                 : Array.ConvertAll(samples, s => new MacroEntry(s.name, s.body));
             replaceListBoxAndSelect(sampleEntries, 0);
             setDirty(false);
-
-            // 読み取り専用モードへ (編集・削除・並び替えボタンを無効化)
-            pyRichTextBox.ReadOnly = true;
-            textBoxMacroName.ReadOnly = true;
-            buttonAdd.Enabled = buttonChange.Enabled = buttonDeleteProfile.Enabled = false;
-            buttonUpper.Enabled = buttonLower.Enabled = false;
+            pyRichTextBox.ReadOnly = textBoxMacroName.ReadOnly = true;
         }
         else
         {
             // ユーザーマクロへ復元
             replaceListBoxAndSelect(_userMacroSnapshot, _userSelectedIndex);
             setDirty(false);
-
-            pyRichTextBox.ReadOnly = false;
-            textBoxMacroName.ReadOnly = false;
+            pyRichTextBox.ReadOnly = textBoxMacroName.ReadOnly = false;
             _previousSelectedIndex = listBoxMacro.SelectedIndex;
-            updateListButtons();
             setMenuItemOfMain();
         }
+        // 260415Cl 両分岐共通の再描画 (updateListButtons が checkBoxSamples.Checked を見て編集系を一括制御)
+        updateListButtons();
     }
 
     private void FormMacro_FormClosing(object sender, FormClosingEventArgs e)
@@ -503,7 +497,13 @@ public partial class FormMacro : CaptureFormBase
             MessageBox.Show("Please input macro name", "Alert");
             return false;
         }
-        listBoxMacro.Items[index] = new MacroEntry(textBoxMacroName.Text, pyRichTextBox.Text);
+        // 260415Cl Items[index] への代入は ListBox 内部で SelectedIndexChanged を発火させるため、
+        // skipEvent で再入ガードし、事前に dirty を解除して未保存確認ダイアログの多重表示を防ぐ。
+        setDirty(false);
+        skipEvent = true;
+        try { listBoxMacro.Items[index] = new MacroEntry(textBoxMacroName.Text, pyRichTextBox.Text); }
+        finally { skipEvent = false; }
+        _previousSelectedIndex = listBoxMacro.SelectedIndex;
         setMenuItemOfMain();
         return true;
     }
@@ -531,25 +531,30 @@ public partial class FormMacro : CaptureFormBase
     private void buttonAddMacro_Click(object sender, EventArgs e)
     {
         var m = new MacroEntry(textBoxMacroName.Text, pyRichTextBox.Text);
-        var items = listBoxMacro.Items;
         if (m.Name.Length == 0)
         {
             MessageBox.Show("Please input macro name", "Alert");
             return;
         }
-        if (items.Cast<MacroEntry>().Any(o => o.Name == m.Name))
-        {
-            if (MessageBox.Show("The name already exists. Do you replace the macro?", "Alert", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                items[items.IndexOf(items.Cast<MacroEntry>().First(item => item.Name == m.Name))] = m;
-            setMenuItemOfMain();
-        }
-        else
-        {
-            items.Add(m);
-            setMenuItemOfMain();
-        }
-        // 260414Cl 追加 Add / Replace 後はダーティ解消し、直前選択を最新状態にしておく
+        // 260415Cl 旧: Any + First + IndexOf の三重走査 → 単一ループで一発検索に簡素化
+        var items = listBoxMacro.Items;
+        int existing = -1;
+        for (int i = 0; i < items.Count; i++)
+            if (((MacroEntry)items[i]).Name == m.Name) { existing = i; break; }
+        if (existing >= 0 && MessageBox.Show("The name already exists. Do you replace the macro?", "Alert", MessageBoxButtons.YesNo) != DialogResult.Yes)
+            return;
+
+        // 260415Cl Items[i]=x / Items.Add は SelectedIndexChanged を発火させ得るため、
+        // dirty を先に解除 + skipEvent ガードで未保存確認ダイアログの多重表示を防ぐ。
         setDirty(false);
+        skipEvent = true;
+        try
+        {
+            if (existing >= 0) items[existing] = m;
+            else items.Add(m);
+        }
+        finally { skipEvent = false; }
+        setMenuItemOfMain();
         _previousSelectedIndex = listBoxMacro.SelectedIndex;
     }
 
@@ -557,11 +562,8 @@ public partial class FormMacro : CaptureFormBase
     {
         // 260414Cl 旧: Items[...] への直接代入 + setMenuItemOfMain() をインライン展開していたが、
         // saveCurrentToIndex に集約 (名前未入力チェックも共通化)。
-        if (saveCurrentToIndex(listBoxMacro.SelectedIndex))
-        {
-            setDirty(false);
-            _previousSelectedIndex = listBoxMacro.SelectedIndex;
-        }
+        // 260415Cl saveCurrentToIndex が setDirty / _previousSelectedIndex 更新を内包するため、呼び出し側での重複処理を削除。
+        saveCurrentToIndex(listBoxMacro.SelectedIndex);
     }
 
     private void buttonDeleteMacro_Click(object sender, EventArgs e)
@@ -664,11 +666,15 @@ public partial class FormMacro : CaptureFormBase
     }
 
     // 260414Cl 追加 選択状態に応じてボタンの Enabled を設定 (旧 listBox_SelectedIndexChanged から抽出)
+    // 260415Cl サンプル表示モードでは一括で編集系を無効化 (旧: toggleSamplesMode 側で手動 disable)
     private void updateListButtons()
     {
-        buttonChange.Enabled = buttonDeleteProfile.Enabled = listBoxMacro.SelectedIndex >= 0;
-        buttonLower.Enabled = listBoxMacro.SelectedIndex >= 0 && listBoxMacro.SelectedIndex < listBoxMacro.Items.Count - 1;
-        buttonUpper.Enabled = listBoxMacro.SelectedIndex >= 1;
+        bool editable = !checkBoxSamples.Checked;
+        int idx = listBoxMacro.SelectedIndex;
+        buttonAdd.Enabled = editable;
+        buttonChange.Enabled = buttonDeleteProfile.Enabled = editable && idx >= 0;
+        buttonLower.Enabled = editable && idx >= 0 && idx < listBoxMacro.Items.Count - 1;
+        buttonUpper.Enabled = editable && idx >= 1;
     }
 
     private void buttonUpper_Click(object sender, EventArgs e)
@@ -702,13 +708,10 @@ public partial class FormMacro : CaptureFormBase
         if (e.Modifiers == Keys.Control && e.KeyCode == Keys.S)
         {
             // 260414Cl 名前一致条件を維持しつつ saveCurrentToIndex に委譲 (重複削除)
+            // 260415Cl saveCurrentToIndex が setDirty / _previousSelectedIndex を内包するため後処理を削除。
             if (listBoxMacro.SelectedIndex >= 0
-                && textBoxMacroName.Text == ((MacroEntry)listBoxMacro.SelectedItem).Name
-                && saveCurrentToIndex(listBoxMacro.SelectedIndex))
-            {
-                setDirty(false);
-                _previousSelectedIndex = listBoxMacro.SelectedIndex;
-            }
+                && textBoxMacroName.Text == ((MacroEntry)listBoxMacro.SelectedItem).Name)
+                saveCurrentToIndex(listBoxMacro.SelectedIndex);
         }
         // F10 次のステップに進む
         if (e.KeyCode == Keys.F10 && buttonNextStep.Visible)
@@ -716,13 +719,9 @@ public partial class FormMacro : CaptureFormBase
     }
     #endregion
 
+    // 260415Cl 簡素化 旧: List<string> + for ループ
     private void setMenuItemOfMain()
-    {
-        var list = new List<string>();
-        for (int i = 0; i < listBoxMacro.Items.Count; i++)
-            list.Add(((MacroEntry)listBoxMacro.Items[i]).Name);
-        obj.SetMacroToMenu([.. list]);
-    }
+        => obj.SetMacroToMenu([.. listBoxMacro.Items.Cast<MacroEntry>().Select(m => m.Name)]);
 
     public void SetMacroList(KeyValuePair<string, string>[] list)
     {
@@ -745,10 +744,15 @@ public partial class FormMacro : CaptureFormBase
     {
         get
         {
+            // 260415Cl サンプル表示中は listBoxMacro にサンプルが入っているため、退避済みユーザーマクロを参照する。
+            // これを怠るとプログラム終了時にサンプルがユーザー保存領域 (レジストリ) に書き込まれてしまう。
+            var entries = checkBoxSamples.Checked
+                ? _userMacroSnapshot
+                : listBoxMacro.Items.Cast<MacroEntry>().ToArray();
+
             var strList = new List<string>();
-            for (int i = 0; i < listBoxMacro.Items.Count; i++)
+            foreach (var m in entries)
             {
-                var m = (MacroEntry)listBoxMacro.Items[i];
                 strList.Add(m.Name);
                 strList.Add(m.Body);
             }

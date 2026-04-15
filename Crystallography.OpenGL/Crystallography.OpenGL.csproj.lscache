@@ -302,7 +302,7 @@ Properties/Resources.Designer.cs
  System.Windows.Forms.Analyzers.CSharp.dll
 <DOTNET>/
  packs/Microsoft.WindowsDesktop.App.Ref/10.0.5/analyzers/dotnet/System.Windows.Forms.Analyzers.dll
- sdk/10.0.201/Sdks/Microsoft.NET.Sdk/analyzers/
+ sdk/10.0.300-preview.0.26177.108/Sdks/Microsoft.NET.Sdk/analyzers/
   Microsoft.CodeAnalysis.CSharp.NetAnalyzers.dll
   Microsoft.CodeAnalysis.NetAnalyzers.dll
 <NUGET>/memorypack.generator/1.21.4/analyzers/dotnet/cs/MemoryPack.Generator.dll
@@ -310,5 +310,5 @@ Properties/Resources.Designer.cs
 [analyzerConfigFiles]
 ../.editorconfig
 .editorconfig
-<DOTNET>/sdk/10.0.201/Sdks/Microsoft.NET.Sdk/analyzers/build/config/analysislevel_10_default.globalconfig
+<DOTNET>/sdk/10.0.300-preview.0.26177.108/Sdks/Microsoft.NET.Sdk/analyzers/build/config/analysislevel_10_default.globalconfig
 obj/x64/Release/net10.0-windows/Crystallography.OpenGL.GeneratedMSBuildEditorConfig.editorconfig

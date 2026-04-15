@@ -8,6 +8,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Linq.Expressions;//260415Cl 追加: Registry() 内の rw() ローカル関数のため
 using System.Net;
 using System.Reflection;
 using System.Runtime.InteropServices;
@@ -542,12 +543,18 @@ public partial class FormMain : CaptureFormBase
             if (mode == Reg.Mode.Write)
                 key.SetValue("Version", Version.VersionValue);
 
-            Reg.RW<string>(key, mode, Thread.CurrentThread.CurrentUICulture, "Name");
+            //260415Cl 追加: ラムダ式ショートハンド。owner 変数の一次受けを廃止し、
+            //Reg.RW(key, mode, owner, nameof(owner.X), owner.X) という冗長な呼び出しをrw(() => owner.X) の一行にまとめるためのローカル関数。
+            void rw<T>(Expression<Func<T>> e) => Reg.RW(key, mode, e);
 
-            Reg.RW(key, mode, this, nameof(Bounds), Bounds);
+            //260415Cl Reg.RW<string>(key, mode, Thread.CurrentThread.CurrentUICulture, "Name");
+            rw(() => Thread.CurrentThread.CurrentUICulture.Name);
+
+            //260415Cl owner 一次受け廃止 + rw() ラムダ式呼び出しに書き換え
+            rw(() => Bounds);
             //WindowLocation.Adjust(this);//20250804にコメントアウト (浜根氏の問題に対処)
-            Reg.RW(key, mode, this, nameof(DisableOpenGL), DisableOpenGL);
-            Reg.RW(key, mode, this, nameof(DisableTextRendering), DisableTextRendering);
+            rw(() => DisableOpenGL);
+            rw(() => DisableTextRendering);
 
             if (commonDialog == null)
                 return;
@@ -555,90 +562,66 @@ public partial class FormMain : CaptureFormBase
             //Crystallography.Native.dllを使うかどうか
             if (mode == Reg.Mode.Read && toolStripMenuItemDisableNative.Enabled)
             {
-                Reg.RW(key, mode, this, nameof(DisableNative), DisableNative);
+                rw(() => DisableNative);
                 BetheMethod.EigenEnabled = !toolStripMenuItemDisableNative.Checked;
             }
             else if (mode == Reg.Mode.Write)
-                Reg.RW(key, mode, this, nameof(DisableNative), DisableNative);
+                rw(() => DisableNative);
 
             //260405Cl MKLライブラリを使うかどうか
-            Reg.RW(key, mode, this, nameof(UseMKL), UseMKL);
+            rw(() => UseMKL);
 
-            Reg.RW(key, mode, commonDialog, nameof(commonDialog.AutomaticallyClose), commonDialog.AutomaticallyClose);
+            //260415Cl Reg.RW(key, mode, commonDialog, nameof(commonDialog.AutomaticallyClose), commonDialog.AutomaticallyClose);
+            rw(() => commonDialog.AutomaticallyClose);
 
             if (FormStereonet == null)
                 return;
 
             #region Stereonet
-            { 
-                var owner = FormStereonet;
-                Reg.RW(key, mode, owner, nameof(owner.Bounds), owner.Bounds);
-            }
+            rw(() => FormStereonet.Bounds);
             #endregion
 
             #region SpotIDv1
-            {
-                var owner = FormSpotIDv1;
-                Reg.RW(key, mode, owner, nameof(owner.Bounds), owner.Bounds);
-            }
+            rw(() => FormSpotIDv1.Bounds);
             #endregion
 
             #region DiffractionSimulator
             FormDiffractionSimulator.CancelSetVector = true;
-            {
-                var owner = FormDiffractionSimulator;
+   
+            rw(() => FormDiffractionSimulator.Bounds);
+            rw(() => FormDiffractionSimulator.Resolution);
+            rw(() => FormDiffractionSimulator.ResolutionUnit);
+            rw(() => FormDiffractionSimulator.FlipHorizontally);
+            rw(() => FormDiffractionSimulator.FlipVertically);
+            rw(() => FormDiffractionSimulator.NegativeImage);
+            rw(() => FormDiffractionSimulator.IsCenterFixed);
 
-                Reg.RW(key, mode, owner, nameof(owner.Bounds), owner.Bounds);
+            rw(() => FormDiffractionSimulator.waveLengthControl.WaveSource);
+            rw(() => FormDiffractionSimulator.waveLengthControl.Energy);
+            rw(() => FormDiffractionSimulator.waveLengthControl.XrayWaveSourceElementNumber);
+            rw(() => FormDiffractionSimulator.waveLengthControl.XrayWaveSourceLine);
 
-                Reg.RW(key, mode, owner, nameof(owner.Resolution), owner.Resolution);
-                Reg.RW(key, mode, owner, nameof(owner.ResolutionUnit), owner.ResolutionUnit);
-
-                Reg.RW(key, mode, owner, nameof(owner.FlipHorizontally), owner.FlipHorizontally);
-                Reg.RW(key, mode, owner, nameof(owner.FlipVertically), owner.FlipVertically);
-                Reg.RW(key, mode, owner, nameof(owner.NegativeImage), owner.NegativeImage);
-
-                Reg.RW(key, mode, owner, nameof(owner.IsCenterFixed), owner.IsCenterFixed);
-
-            }
-            {
-                var owner = FormDiffractionSimulator.waveLengthControl;
-                Reg.RW(key, mode, owner, nameof(owner.WaveSource), owner.WaveSource);
-                Reg.RW(key, mode, owner, nameof(owner.Energy), owner.Energy);
-                Reg.RW(key, mode, owner, nameof(owner.XrayWaveSourceElementNumber), owner.XrayWaveSourceElementNumber);
-                Reg.RW(key, mode, owner, nameof(owner.XrayWaveSourceLine), owner.XrayWaveSourceLine);
-            }
-            {
-                var owner = FormDiffractionSimulator.FormDiffractionSimulatorGeometry;
-                Reg.RW(key, mode, owner, nameof(owner.FootX), owner.FootX);
-                Reg.RW(key, mode, owner, nameof(owner.FootY), owner.FootY);
-                Reg.RW(key, mode, owner, nameof(owner.CameraLength2), owner.CameraLength2);
-                Reg.RW(key, mode, owner, nameof(owner.DetectorWidth), owner.DetectorWidth);
-                Reg.RW(key, mode, owner, nameof(owner.DetectorHeight), owner.DetectorHeight);
-                Reg.RW(key, mode, owner, nameof(owner.Tau), owner.Tau);
-                Reg.RW(key, mode, owner, nameof(owner.Phi), owner.Phi);
-            }
+            rw(() => FormDiffractionSimulator.FormDiffractionSimulatorGeometry.FootX);
+            rw(() => FormDiffractionSimulator.FormDiffractionSimulatorGeometry.FootY);
+            rw(() => FormDiffractionSimulator.FormDiffractionSimulatorGeometry.CameraLength2);
+            rw(() => FormDiffractionSimulator.FormDiffractionSimulatorGeometry.DetectorWidth);
+            rw(() => FormDiffractionSimulator.FormDiffractionSimulatorGeometry.DetectorHeight);
+            rw(() => FormDiffractionSimulator.FormDiffractionSimulatorGeometry.Tau);
+            rw(() => FormDiffractionSimulator.FormDiffractionSimulatorGeometry.Phi);
             FormDiffractionSimulator.CancelSetVector = false;
             #endregion
 
             #region ImageSimulator
-            {
-                var owner = FormImageSimulator;
-                Reg.RW(key, mode, owner, nameof(owner.Bounds), owner.Bounds);
-                Reg.RW(key, mode, owner, nameof(owner.Setting), owner.Setting);
-            }
-            { 
-                var owner = FormImageSimulator.FormPresets;
-                Reg.RW(key, mode, owner,nameof(owner.Settings), owner.Settings);
-            }
+
+            rw(() => FormImageSimulator.Bounds);
+            rw(() => FormImageSimulator.Setting);
+            rw(() => FormImageSimulator.FormPresets.Settings);
             #endregion
 
             #region SpotID_V2
-            {
-                var owner = FormSpotIDv2;
-                Reg.RW(key, mode, owner, nameof(owner.NearestNeighbor), owner.NearestNeighbor);
-                Reg.RW(key, mode, owner, nameof(owner.FittingRange),owner.FittingRange);
-                Reg.RW(key, mode, owner, nameof(owner.ToleranceLength),owner.ToleranceLength);
-            }
+            rw(() => FormSpotIDv2.NearestNeighbor);
+            rw(() => FormSpotIDv2.FittingRange);
+            rw(() => FormSpotIDv2.ToleranceLength);
             #endregion
 
             if (mode == Reg.Mode.Read)

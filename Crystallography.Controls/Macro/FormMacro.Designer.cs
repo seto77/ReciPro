@@ -98,14 +98,13 @@
             // 
             // splitContainer3.Panel1
             // 
-            resources.ApplyResources(splitContainer3.Panel1, "splitContainer3.Panel1");
             splitContainer3.Panel1.Controls.Add(listBoxMacro);
             splitContainer3.Panel1.Controls.Add(flowLayoutPanel3);
             splitContainer3.Panel1.Controls.Add(flowLayoutPanel2);
+            resources.ApplyResources(splitContainer3.Panel1, "splitContainer3.Panel1");
             // 
             // splitContainer3.Panel2
             // 
-            resources.ApplyResources(splitContainer3.Panel2, "splitContainer3.Panel2");
             splitContainer3.Panel2.Controls.Add(pyRichTextBox);
             splitContainer3.Panel2.Controls.Add(panelGutter);
             splitContainer3.Panel2.Controls.Add(flowLayoutPanel4);
@@ -188,9 +187,9 @@
             // 
             // panelGutter
             // 
-            resources.ApplyResources(panelGutter, "panelGutter");
             panelGutter.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             panelGutter.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            resources.ApplyResources(panelGutter, "panelGutter");
             panelGutter.Name = "panelGutter";
             // 
             // flowLayoutPanel4
@@ -229,17 +228,14 @@
             // 
             // splitContainer2.Panel1
             // 
-            resources.ApplyResources(splitContainer2.Panel1, "splitContainer2.Panel1");
             splitContainer2.Panel1.Controls.Add(splitContainer3);
             // 
             // splitContainer2.Panel2
             // 
-            resources.ApplyResources(splitContainer2.Panel2, "splitContainer2.Panel2");
             splitContainer2.Panel2.Controls.Add(dataGridViewDebug);
             // 
             // dataGridViewDebug
             // 
-            resources.ApplyResources(dataGridViewDebug, "dataGridViewDebug");
             dataGridViewDebug.AllowUserToAddRows = false;
             dataGridViewDebug.AllowUserToDeleteRows = false;
             dataGridViewDebug.AllowUserToResizeRows = false;
@@ -257,6 +253,7 @@
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             dataGridViewDebug.DefaultCellStyle = dataGridViewCellStyle2;
+            resources.ApplyResources(dataGridViewDebug, "dataGridViewDebug");
             dataGridViewDebug.MultiSelect = false;
             dataGridViewDebug.Name = "dataGridViewDebug";
             dataGridViewDebug.ReadOnly = true;
@@ -282,12 +279,10 @@
             // 
             // splitContainer1.Panel1
             // 
-            resources.ApplyResources(splitContainer1.Panel1, "splitContainer1.Panel1");
             splitContainer1.Panel1.Controls.Add(tableLayoutPanel1);
             // 
             // splitContainer1.Panel2
             // 
-            resources.ApplyResources(splitContainer1.Panel2, "splitContainer1.Panel2");
             splitContainer1.Panel2.Controls.Add(dataGridView);
             // 
             // tableLayoutPanel1
@@ -338,7 +333,6 @@
             // 
             // dataGridView
             // 
-            resources.ApplyResources(dataGridView, "dataGridView");
             dataGridView.AllowUserToAddRows = false;
             dataGridView.AllowUserToDeleteRows = false;
             dataGridView.AllowUserToResizeRows = false;
@@ -355,6 +349,7 @@
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             dataGridView.DefaultCellStyle = dataGridViewCellStyle4;
+            resources.ApplyResources(dataGridView, "dataGridView");
             dataGridView.MultiSelect = false;
             dataGridView.Name = "dataGridView";
             dataGridView.ReadOnly = true;
@@ -377,43 +372,43 @@
             // 
             // menuStrip1
             // 
-            resources.ApplyResources(menuStrip1, "menuStrip1");
             menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { fileToolStripMenuItem });
+            resources.ApplyResources(menuStrip1, "menuStrip1");
             menuStrip1.Name = "menuStrip1";
             // 
             // fileToolStripMenuItem
             // 
-            resources.ApplyResources(fileToolStripMenuItem, "fileToolStripMenuItem");
             fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { readToolStripMenuItem, saveToolStripMenuItem });
+            resources.ApplyResources(fileToolStripMenuItem, "fileToolStripMenuItem");
             fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             // 
             // readToolStripMenuItem
             // 
-            resources.ApplyResources(readToolStripMenuItem, "readToolStripMenuItem");
             readToolStripMenuItem.Name = "readToolStripMenuItem";
+            resources.ApplyResources(readToolStripMenuItem, "readToolStripMenuItem");
             readToolStripMenuItem.Click += readToolStripMenuItem_Click;
             // 
             // saveToolStripMenuItem
             // 
-            resources.ApplyResources(saveToolStripMenuItem, "saveToolStripMenuItem");
             saveToolStripMenuItem.Name = "saveToolStripMenuItem";
+            resources.ApplyResources(saveToolStripMenuItem, "saveToolStripMenuItem");
             saveToolStripMenuItem.Click += saveToolStripMenuItem_Click;
             // 
             // statusStrip1
             // 
-            resources.ApplyResources(statusStrip1, "statusStrip1");
             statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { statusLabelPos });
+            resources.ApplyResources(statusStrip1, "statusStrip1");
             statusStrip1.Name = "statusStrip1";
             // 
             // statusLabelPos
             // 
-            resources.ApplyResources(statusLabelPos, "statusLabelPos");
             statusLabelPos.Name = "statusLabelPos";
+            resources.ApplyResources(statusLabelPos, "statusLabelPos");
             // 
             // FormMacro
             // 
-            resources.ApplyResources(this, "$this");
             AllowDrop = true;
+            resources.ApplyResources(this, "$this");
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             Controls.Add(splitContainer1);
             Controls.Add(statusStrip1);

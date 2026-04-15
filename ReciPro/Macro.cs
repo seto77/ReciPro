@@ -60,11 +60,11 @@ public class Macro : MacroBase
     [Help("Pauses execution for the specified number of milliseconds.", "int millisec")]
     public static void Sleep(int millisec) => Thread.Sleep(millisec);
 
+
+    #region マクロサンプル集
     // 260415Cl 改修 英語/日本語を隣接ペア配置、1-2行の短いサンプルを統合、行幅を約1.5倍に拡大 (旧: 並列2配列・15件)
-    // print() は使えないので Step by step 実行時にデバッグパネルで値を確認する作法を教える構成。
     // 260415Cl 言語判定は ReciPro 全体と統一して FormMain.Language を使用 (旧: 個別の CultureInfo 判定)
-    public override (string name, string body)[] SampleMacros =>
-        FormMain.Language == Languages.Japanese ? _sampleMacrosJa : _sampleMacrosEn;
+    public override (string name, string body)[] SampleMacros => FormMain.Language == Languages.Japanese ? _sampleMacrosJa : _sampleMacrosEn;
 
     // マスター配列: 各要素で英語版 (nameEn, bodyEn) と日本語版 (nameJa, bodyJa) を並べて定義することで、
     // 英語/日本語の内容対応を見失わずに保守できる。_sampleMacrosEn/Ja はこの配列から Array.ConvertAll で生成。
@@ -346,12 +346,11 @@ public class Macro : MacroBase
         ),
     ];
 
-    private static readonly (string name, string body)[] _sampleMacrosEn =
-        Array.ConvertAll(_sampleMacros, m => (name: m.nameEn, body: m.bodyEn));
+    private static readonly (string name, string body)[] _sampleMacrosEn = Array.ConvertAll(_sampleMacros, m => (name: m.nameEn, body: m.bodyEn));
 
-    private static readonly (string name, string body)[] _sampleMacrosJa =
-        Array.ConvertAll(_sampleMacros, m => (name: m.nameJa, body: m.bodyJa));
-
+    private static readonly (string name, string body)[] _sampleMacrosJa = Array.ConvertAll(_sampleMacros, m => (name: m.nameJa, body: m.bodyJa));
+    #endregion
+    
     #endregion
 
     #region ファイルクラス
