@@ -4,7 +4,7 @@ Last updated: 2026-04-17
 
 ## Views
 
-### Daily (最大1年保持)
+### Daily (最大14日保持)
 | Date | Total Views | Unique Visitors |
 | ---- | ---- | ---- |
 | 2026-04-16 | 93 | 30 |
@@ -20,16 +20,8 @@ Last updated: 2026-04-17
 | 2026-04-06 | 106 | 38 |
 | 2026-04-05 | 67 | 16 |
 | 2026-04-04 | 22 | 12 |
-| 2026-04-03 | 82 | 35 |
-| 2026-04-02 | 69 | 32 |
-| 2026-04-01 | 44 | 22 |
-| 2026-03-31 | 62 | 27 |
-| 2026-03-30 | 57 | 32 |
-| 2026-03-29 | 28 | 16 |
-| 2026-03-28 | 33 | 10 |
-| 2026-03-27 | 60 | 26 |
 
-### Weekly
+### Weekly (最大14週保持)
 | Period | Total Views | Unique Visitors |
 | ---- | ---- | ---- |
 | 2026-W16 | 329 | 147 |
@@ -37,20 +29,20 @@ Last updated: 2026-04-17
 | 2026-W14 | 403 | 176 |
 | 2026-W13 | 121 | 52 |
 
-### Monthly
+### Monthly (最大12か月保持)
 | Period | Total Views | Unique Visitors |
 | ---- | ---- | ---- |
 | 2026-04 | 1089 | 477 |
 | 2026-03 | 240 | 111 |
 
-### Yearly
+### Yearly (無制限)
 | Period | Total Views | Unique Visitors |
 | ---- | ---- | ---- |
 | 2026 | 1329 | 588 |
 
 ## Clones
 
-### Daily (最大1年保持)
+### Daily (最大14日保持)
 | Date | Total Clones | Unique Cloners |
 | ---- | ---- | ---- |
 | 2026-04-16 | 7 | 4 |
@@ -66,16 +58,8 @@ Last updated: 2026-04-17
 | 2026-04-06 | 23 | 16 |
 | 2026-04-05 | 212 | 99 |
 | 2026-04-04 | 30 | 18 |
-| 2026-04-03 | 11 | 9 |
-| 2026-04-02 | 6 | 5 |
-| 2026-04-01 | 47 | 29 |
-| 2026-03-31 | 27 | 19 |
-| 2026-03-30 | 5 | 5 |
-| 2026-03-29 | 18 | 15 |
-| 2026-03-28 | 9 | 6 |
-| 2026-03-27 | 14 | 9 |
 
-### Weekly
+### Weekly (最大14週保持)
 | Period | Total Clones | Unique Cloners |
 | ---- | ---- | ---- |
 | 2026-W16 | 122 | 68 |
@@ -83,20 +67,20 @@ Last updated: 2026-04-17
 | 2026-W14 | 338 | 184 |
 | 2026-W13 | 41 | 30 |
 
-### Monthly
+### Monthly (最大12か月保持)
 | Period | Total Clones | Unique Cloners |
 | ---- | ---- | ---- |
 | 2026-04 | 498 | 275 |
 | 2026-03 | 73 | 54 |
 
-### Yearly
+### Yearly (無制限)
 | Period | Total Clones | Unique Cloners |
 | ---- | ---- | ---- |
 | 2026 | 571 | 329 |
 
 ## Referrers
 
-### Daily (最大1年保持)
+### Daily (最大14日保持)
 | Date Collected | Referrer | Total Count | Unique |
 | ---- | ---- | ---- | ---- |
 | 2026-04-17 | Google | 150 | 71 |
@@ -170,7 +154,7 @@ Last updated: 2026-04-17
 | 2026-04-11 | search.brave.com | 4 | 1 |
 | 2026-04-11 | statics.teams.cdn.office.net | 4 | 3 |
 
-### Weekly
+### Weekly (最大14週保持)
 | Period | Referrer | Total Count | Unique |
 | ---- | ---- | ---- | ---- |
 | 2026-W16 | Google | 296 | 147 |
@@ -195,7 +179,7 @@ Last updated: 2026-04-17
 | 2026-W15 | statics.teams.cdn.office.net | 20 | 15 |
 | 2026-W15 | Baidu | 16 | 2 |
 
-### Monthly
+### Monthly (最大12か月保持)
 | Period | Referrer | Total Count | Unique |
 | ---- | ---- | ---- | ---- |
 | 2026-04 | Google | 1034 | 509 |
@@ -211,7 +195,7 @@ Last updated: 2026-04-17
 | 2026-04 | Baidu | 16 | 2 |
 | 2026-04 | perplexity.ai | 7 | 7 |
 
-### Yearly
+### Yearly (無制限)
 | Period | Referrer | Total Count | Unique |
 | ---- | ---- | ---- | ---- |
 | 2026 | Google | 1034 | 509 |
@@ -229,7 +213,7 @@ Last updated: 2026-04-17
 
 ## Popular Paths
 
-### Daily (最大1年保持)
+### Daily (最大14日保持)
 | Date Collected | Path | Title | Total Count | Unique |
 | ---- | ---- | ---- | ---- | ---- |
 | 2026-04-17 | /seto77/ReciPro | Overview | 240 | 154 |
@@ -303,7 +287,7 @@ Last updated: 2026-04-17
 | 2026-04-11 | /seto77/ReciPro/blob/master/README.md | /blob/master/README.md | 10 | 9 |
 | 2026-04-11 | /seto77/ReciPro/releases/tag/v.4.904 | /releases/tag/v.4.904 | 10 | 1 |
 
-### Weekly
+### Weekly (最大14週保持)
 | Period | Path | Title | Total Count | Unique |
 | ---- | ---- | ---- | ---- | ---- |
 | 2026-W16 | /seto77/ReciPro | Overview | 486 | 305 |
@@ -330,7 +314,7 @@ Last updated: 2026-04-17
 | 2026-W15 | /seto77/ReciPro/tree/master | /tree/master | 40 | 28 |
 | 2026-W15 | /seto77/ReciPro/releases/tag/v.4.904 | /releases/tag/v.4.904 | 10 | 1 |
 
-### Monthly
+### Monthly (最大12か月保持)
 | Period | Path | Title | Total Count | Unique |
 | ---- | ---- | ---- | ---- | ---- |
 | 2026-04 | /seto77/ReciPro | Overview | 1732 | 1043 |
@@ -347,7 +331,7 @@ Last updated: 2026-04-17
 | 2026-04 | /seto77/ReciPro/releases/tag/v.4.904 | /releases/tag/v.4.904 | 20 | 2 |
 | 2026-04 | /seto77/ReciPro/tree/master/ReciProSetup | /tree/master/ReciProSetup | 12 | 10 |
 
-### Yearly
+### Yearly (無制限)
 | Period | Path | Title | Total Count | Unique |
 | ---- | ---- | ---- | ---- | ---- |
 | 2026 | /seto77/ReciPro | Overview | 1732 | 1043 |
@@ -368,7 +352,7 @@ Last updated: 2026-04-17
 
 | Release Tag | Release Date | Asset Name | Download Count |
 | ---- | ---- | ---- | ---- |
-| v.4.924 | 2026-04-14 | ReciProSetup.msi | 142 |
+| v.4.924 | 2026-04-14 | ReciProSetup.msi | 143 |
 | v.4.923 | 2026-04-05 | ReciProSetup.msi | 241 |
 | v.4.922 | 2026-04-05 | ReciProSetup.msi | 7 |
 | v.4.921 | 2026-04-01 | ReciProSetup.msi | 87 |
@@ -506,11 +490,11 @@ Last updated: 2026-04-17
 | v.4.760 | 2020-03-03 | ReciProSetup.msi | 67 |
 | v.4.754 | 2020-03-01 | ReciProSetup.msi | 39 |
 
-**TOTAL: 27668**
+**TOTAL: 27669**
 
 ## Stats
 
-### Daily (最大1年保持)
+### Daily (最大14日保持)
 | Date | Stars | Forks | Open Issues | Watchers |
 | ---- | ---- | ---- | ---- | ---- |
 | 2026-04-17 | 164 | 13 | 34 | 7 |
@@ -518,18 +502,18 @@ Last updated: 2026-04-17
 | 2026-04-12 | 161 | 13 | 34 | 7 |
 | 2026-04-11 | 161 | 13 | 34 | 7 |
 
-### Weekly
+### Weekly (最大14週保持)
 | Period | Stars | Forks | Open Issues | Watchers |
 | ---- | ---- | ---- | ---- | ---- |
 | 2026-W16 | 164 | 13 | 34 | 7 |
 | 2026-W15 | 161 | 13 | 34 | 7 |
 
-### Monthly
+### Monthly (最大12か月保持)
 | Period | Stars | Forks | Open Issues | Watchers |
 | ---- | ---- | ---- | ---- | ---- |
 | 2026-04 | 164 | 13 | 34 | 7 |
 
-### Yearly
+### Yearly (無制限)
 | Period | Stars | Forks | Open Issues | Watchers |
 | ---- | ---- | ---- | ---- | ---- |
 | 2026 | 164 | 13 | 34 | 7 |
