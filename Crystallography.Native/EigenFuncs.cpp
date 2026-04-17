@@ -11,6 +11,7 @@
 
 #define EIGEN_NO_DEBUG // コード内のassertを無効化．
 #define EIGEN_DONT_PARALLELIZE // 並列を無効化．
+#define EIGEN_UNROLLING_LIMIT 200 // 260415Cl 追加 デフォルト110から増やしミニ行列演算のループ展開を促進
 #define EIGENFUNCS_EXPORTS
 
 //#include <complex>
@@ -330,8 +331,6 @@ extern "C" {
 		}
 	}
 
-
-
 	// EBSD強度計算ソルバー
 	EIGEN_FUNCS_API void _EBSDSolver(
 		int bLen, int nAtoms, int tLen,
@@ -411,9 +410,6 @@ extern "C" {
 			}
 		}
 	}
-
-
-
 
 	// 260316Cl 追加
 	// EBSD強度 + TDS バックグラウンド一括計算ソルバー

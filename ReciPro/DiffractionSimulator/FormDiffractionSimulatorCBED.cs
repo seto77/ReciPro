@@ -24,25 +24,62 @@ public partial class FormDiffractionSimulatorCBED : CaptureFormBase
     private double Voltage => FormDiffractionSimulator.waveLengthControl.Energy;
     private Crystal Crystal => FormDiffractionSimulator.formMain.Crystal;
 
+    // 260416Cl Division が変わらない限り結果は同じなのでキャッシュ化。
+    // 以前は毎呼び出しで Parallel.For が走り、ProgressChanged ハンドラ内で 4 回も参照されるため UI スレッドが周期的にフリーズしていた。
+    private int _divisionNumberCache = -1;
+    private int _divisionNumberCacheKey = -1;
+
+    //public int DivisionNumber
+    //{
+    //    get
+    //    {
+    //        int count = 0;
+    //        double radius = Division / 2.0;
+    //        if (radius > 3000)
+    //            return -1;
+    //        double radius2 = radius * radius;
+    //        Parallel.For(0, Division, h =>
+    //        {
+    //            double pY = h - radius + 0.5, pY2 = pY * pY;
+    //            for (int w = 0; w < Division; w++)
+    //            {
+    //                double pX = w - radius + 0.5;
+    //                if (pX * pX + pY2 <= radius2)
+    //                    Interlocked.Increment(ref count);
+    //            }
+    //        });
+    //        return count;
+    //    }
+    //}
     public int DivisionNumber
     {
         get
         {
-            int count = 0;
-            double radius = Division / 2.0;
+            int div = Division;
+            if (_divisionNumberCacheKey == div)
+                return _divisionNumberCache;
+
+            double radius = div / 2.0;
             if (radius > 3000)
+            {
+                _divisionNumberCacheKey = div;
+                _divisionNumberCache = -1;
                 return -1;
+            }
             double radius2 = radius * radius;
-            Parallel.For(0, Division, h =>
+            int count = 0;
+            Parallel.For(0, div, h =>
             {
                 double pY = h - radius + 0.5, pY2 = pY * pY;
-                for (int w = 0; w < Division; w++)
+                for (int w = 0; w < div; w++)
                 {
                     double pX = w - radius + 0.5;
                     if (pX * pX + pY2 <= radius2)
                         Interlocked.Increment(ref count);
                 }
             });
+            _divisionNumberCacheKey = div;
+            _divisionNumberCache = count;
             return count;
         }
     }

@@ -192,7 +192,8 @@
       <OptimizeForWindowsApplication>false</OptimizeForWindowsApplication>
       <OffloadOpenMP>
       </OffloadOpenMP>
-      <InterproceduralOptimization>NoIPO</InterproceduralOptimization>
+      <!-- <InterproceduralOptimization>NoIPO</InterproceduralOptimization> -->
+      <InterproceduralOptimization>true</InterproceduralOptimization><!-- 260415Cl ClangCL で ThinLTO 相当を有効化 -->
       <EnableMatrixMultiplyLibraryCall>Yes</EnableMatrixMultiplyLibraryCall>
       <GenerateAlternateCodePaths>$(NativeAltCodePaths)</GenerateAlternateCodePaths>
       <OffloadConstructs>
@@ -201,8 +202,8 @@
       </OffloadArch>
       <DiagnosticsFormat>
       </DiagnosticsFormat>
-      <!-- <FloatingPointModel>Fast</FloatingPointModel> -->
-      <FloatingPointModel>Precise</FloatingPointModel><!-- (260404Ch) -->
+      <!-- <FloatingPointModel>Precise</FloatingPointModel> --><!-- (260404Ch) -->
+      <FloatingPointModel>Fast</FloatingPointModel><!-- 260415Cl 速度優先のため Fast に戻す -->
       <UndefineAllPreprocessorDefinitions>
       </UndefineAllPreprocessorDefinitions>
       <AdditionalIncludeDirectories>Crystallography.Native;Eigen;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
