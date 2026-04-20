@@ -4,6 +4,7 @@ using OpenTK.GLControl;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics; // 260420Cl 追加 静的コンストラクタでの例外ログ出力用
 using System.Drawing;
 using System.Linq;
 using System.Management;
@@ -514,11 +515,24 @@ public unsafe partial class GLControlAlpha : UserControl
     /// <summary>静的コンストラクタ. バージョン情報などはここでチェック</summary>
     static GLControlAlpha()
     {
+        // 260420Cl WMI/OpenGL 初期化を try/catch で囲む。
+        //   issues #48 #55 で Windows 10 環境において WMI リポジトリ破損等で
+        //   ManagementException("Classe non valide") が発生し、静的コンストラクタが
+        //   TypeInitializationException を投げてアプリ全体が起動不能になる事例が報告されている。
+        //   ここで例外を握り潰し、OpenGL 無効化フォールバック(DisablingOpenGL=true)へ倒す。
+
         //ビデオカード検索
-        using var searcher = new ManagementObjectSearcher(new SelectQuery("Win32_VideoController")); // (260320Ch) WMI リソースを確実に解放する
-        using var videoControllers = searcher.Get();
-        foreach (ManagementObject envVar in videoControllers)
-            GraphicsInfo.Add((Convert.ToString(envVar["name"]) ?? string.Empty, Convert.ToString(envVar["DriverVersion"]) ?? string.Empty)); // (260320Ch) null 安全に GPU 情報を記録する
+        try // 260420Cl 追加 WMI クエリを try/catch で保護
+        {
+            using var searcher = new ManagementObjectSearcher(new SelectQuery("Win32_VideoController")); // (260320Ch) WMI リソースを確実に解放する
+            using var videoControllers = searcher.Get();
+            foreach (ManagementObject envVar in videoControllers)
+                GraphicsInfo.Add((Convert.ToString(envVar["name"]) ?? string.Empty, Convert.ToString(envVar["DriverVersion"]) ?? string.Empty)); // (260320Ch) null 安全に GPU 情報を記録する
+        }
+        catch (Exception e) // 260420Cl 追加 WMI リポジトリ破損や Win32_VideoController 未提供環境で落ちないようにする
+        {
+            Debug.WriteLine($"GLControlAlpha: WMI Win32_VideoController query failed: {e.Message}");
+        }
 
         //if(GraphicsInfo.Count>1 && GraphicsInfo[0].Product.Contains("Radeon"))
         //    DisableTextRendering = true;
@@ -526,7 +540,16 @@ public unsafe partial class GLControlAlpha : UserControl
         //using var glcontrol = new GLControl();
         //glcontrol.MakeCurrent();
         //var ver = CheckVersion();
-        Version = checkSupportedVersion(FragShaders.PPLL, FragShaders.ZSORT); // (260319Ch) まず 4.3、次に 4.1 を試して実際に使える上限を判定
+        try // 260420Cl 追加 OpenGL コンテキスト生成/シェーダ検査中の例外もフォールバック処理へ倒す
+        {
+            Version = checkSupportedVersion(FragShaders.PPLL, FragShaders.ZSORT); // (260319Ch) まず 4.3、次に 4.1 を試して実際に使える上限を判定
+        }
+        catch (Exception e) // 260420Cl 追加 ドライバ不良でもアプリ自体は起動を継続させる
+        {
+            Debug.WriteLine($"GLControlAlpha: OpenGL version check failed: {e.Message}");
+            Version = 0;
+        }
+
         if (Version == 0)
         {
             DisablingOpenGL = true;
@@ -1107,7 +1130,7 @@ public unsafe partial class GLControlAlpha : UserControl
     #endregion
 
     #region GlObjectの追加/削除
-    public void MakeCurrent() => glControl.MakeCurrent();
+    public void MakeCurrent() { if (glControl != null) glControl.MakeCurrent(); } // 260420Cl DisablingOpenGL 時は glControl が null のため null ガード
 
     public void AddObjects(GLObject obj)
     {
@@ -1191,6 +1214,7 @@ public unsafe partial class GLControlAlpha : UserControl
     /// <param name="clip"></param>
     public void SetClip(Clip clip)
     {
+        if (Program < 1 || glControl == null) return; // 260420Cl 追加 DisablingOpenGL 時の二次的 NullReferenceException を回避
         glControl.MakeCurrent();
         Clip = clip;
         clip?.Generate(Program);
@@ -1619,6 +1643,7 @@ public unsafe partial class GLControlAlpha : UserControl
 
     public Bitmap GenerateBitmap()
     {
+        if (Program < 1 || glControl == null) return null; // 260420Cl 追加 DisablingOpenGL 時は null を返す (呼び出し側は null チェックするか操作失敗として扱う)
         glControl.MakeCurrent();
         var bmp = new Bitmap(glControl.ClientSize.Width, glControl.Height);
         var data = bmp.LockBits(Rectangle.FromLTRB(0, 0, bmp.Width, bmp.Height), System.Drawing.Imaging.ImageLockMode.WriteOnly, System.Drawing.Imaging.PixelFormat.Format24bppRgb);

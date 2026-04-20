@@ -363,6 +363,11 @@ extern "C" {
 			for (int jp = 0; jp < bLen; ++jp)
 				lam(j, jp) = two_pi_i * (vals[j] - conj(vals[jp]));
 
+		// 260420Cl 追加: S と F (および lam) はいずれも Hermitian なので、sum = Σ S(j,jp)·F(j,jp) は
+		// 対角項の real 和 + 上三角 (j<jp) の real 和の 2 倍に分解でき、内側ループが約 1/2 で済む。
+		// S = B†·diag(σ)·B (σ 実) → Hermitian、lam(j,jp) = 2πi(γ_j - conj(γ_jp)) → Hermitian、
+		// expAccum(j,jp) = exp(lam(j,jp)·dt) も Hermitian、F = (expAccum-1)/lam も Hermitian。
+
 		// 等間隔判定
 		bool isUniform = (tLen >= 2) && (abs(thicknesses[1] - 2.0 * thicknesses[0]) < 1e-10);
 
@@ -370,24 +375,41 @@ extern "C" {
 		{
 			double dt = thicknesses[0];
 			Mat expStep(bLen, bLen);
+			// 260420Cl 変更: expStep も Hermitian (lam が Hermitian で Hadamard exp) なので上三角だけ計算し、
+			// 下三角は conjugate で埋める。expStep は後段の Hadamard product でも使うため完全に埋める必要あり。
 			for (int j = 0; j < bLen; ++j)
-				for (int jp = 0; jp < bLen; ++jp)
-					expStep(j, jp) = exp(lam(j, jp) * dt);
+			{
+				expStep(j, j) = exp(lam(j, j) * dt);
+				for (int jp = j + 1; jp < bLen; ++jp)
+				{
+					auto v = exp(lam(j, jp) * dt);
+					expStep(j, jp) = v;
+					expStep(jp, j) = conj(v);
+				}
+			}
 
 			Mat expAccum = expStep;
 
 			for (int t = 0; t < tLen; ++t)
 			{
 				double thick = thicknesses[t];
-				dcomplex sum = 0;
+				double sumReal = 0; // 260420Cl 変更: Hermitian 対称性から結果は実数 → 実数で直接累積
+				// 対角項: Hermitian のため S(j,j), F(j,j) ともに実数値。積も実数。
 				for (int j = 0; j < bLen; ++j)
-					for (int jp = 0; jp < bLen; ++jp)
+				{
+					auto l = lam(j, j);
+					dcomplex F = (abs(l) < 1e-15) ? dcomplex(thick, 0) : (expAccum(j, j) - 1.0) / l;
+					sumReal += (S(j, j) * F).real();
+				}
+				// 非対角 (j<jp): S(jp,j)·F(jp,j) = conj(S(j,jp)·F(j,jp)) なので 2·Re を取って上三角だけ。
+				for (int j = 0; j < bLen; ++j)
+					for (int jp = j + 1; jp < bLen; ++jp)
 					{
 						auto l = lam(j, jp);
 						dcomplex F = (abs(l) < 1e-15) ? dcomplex(thick, 0) : (expAccum(j, jp) - 1.0) / l;
-						sum += S(j, jp) * F;
+						sumReal += 2.0 * (S(j, jp) * F).real();
 					}
-				intensity[t] = max(0.0, sum.real());
+				intensity[t] = max(0.0, sumReal);
 
 				if (t < tLen - 1)
 					expAccum.array() *= expStep.array();
@@ -398,15 +420,21 @@ extern "C" {
 			for (int t = 0; t < tLen; ++t)
 			{
 				double thick = thicknesses[t];
-				dcomplex sum = 0;
+				double sumReal = 0; // 260420Cl 変更: Hermitian 対称性から実数で直接累積
 				for (int j = 0; j < bLen; ++j)
-					for (int jp = 0; jp < bLen; ++jp)
+				{
+					auto l = lam(j, j);
+					dcomplex F = (abs(l) < 1e-15) ? dcomplex(thick, 0) : (exp(l * thick) - 1.0) / l;
+					sumReal += (S(j, j) * F).real();
+				}
+				for (int j = 0; j < bLen; ++j)
+					for (int jp = j + 1; jp < bLen; ++jp)
 					{
 						auto l = lam(j, jp);
 						dcomplex F = (abs(l) < 1e-15) ? dcomplex(thick, 0) : (exp(l * thick) - 1.0) / l;
-						sum += S(j, jp) * F;
+						sumReal += 2.0 * (S(j, jp) * F).real();
 					}
-				intensity[t] = max(0.0, sum.real());
+				intensity[t] = max(0.0, sumReal);
 			}
 		}
 	}
@@ -455,6 +483,12 @@ extern "C" {
 			for (int jp = 0; jp < bLen; ++jp)
 				lam(j, jp) = two_pi_i * (vals[j] - conj(vals[jp]));
 
+		// 260420Cl 追加: S, CUC, lam, expAccum, F はいずれも Hermitian のため sumS, sumM とも
+		// 対角 (実数) + 上三角 (2·Re) に分解して内側ループを半減。
+		// CUC の Hermitian 性: CUC_pre = C†·U·C (U Hermitian) は Hermitian。
+		// CUC(j,jp) *= tdsCoeff·conj(a[j])·a[jp] を適用しても Hermitian 性を保存する
+		// (CUC(jp,j) = conj(CUC_pre(j,jp))·tdsCoeff·conj(a[jp])·a[j] = conj(CUC(j,jp)))。
+
 		// 等間隔判定
 		bool isUniform = (tLen >= 2) && (abs(thicknesses[1] - 2.0 * thicknesses[0]) < 1e-10);
 
@@ -462,26 +496,44 @@ extern "C" {
 		{
 			double dt = thicknesses[0];
 			Mat expStep(bLen, bLen);
+			// 260420Cl 変更: expStep は Hermitian。上三角を計算し下三角は conjugate で埋める。
+			// 後段の Hadamard 累積で両側が必要なため完全に埋める。
 			for (int j = 0; j < bLen; ++j)
-				for (int jp = 0; jp < bLen; ++jp)
-					expStep(j, jp) = exp(lam(j, jp) * dt);
+			{
+				expStep(j, j) = exp(lam(j, j) * dt);
+				for (int jp = j + 1; jp < bLen; ++jp)
+				{
+					auto v = exp(lam(j, jp) * dt);
+					expStep(j, jp) = v;
+					expStep(jp, j) = conj(v);
+				}
+			}
 
 			Mat expAccum = expStep;
 
 			for (int t = 0; t < tLen; ++t)
 			{
 				double thick = thicknesses[t];
-				dcomplex sumS = 0, sumM = 0;
+				double sumSReal = 0, sumMReal = 0; // 260420Cl 変更: 対称性により結果は実数
+				// 対角項
 				for (int j = 0; j < bLen; ++j)
-					for (int jp = 0; jp < bLen; ++jp)
+				{
+					auto l = lam(j, j);
+					dcomplex F = (abs(l) < 1e-15) ? dcomplex(thick, 0) : (expAccum(j, j) - 1.0) / l;
+					sumSReal += (S(j, j) * F).real();
+					sumMReal += (CUC(j, j) * F).real();
+				}
+				// 非対角 (上三角のみ、2 倍で計上)
+				for (int j = 0; j < bLen; ++j)
+					for (int jp = j + 1; jp < bLen; ++jp)
 					{
 						auto l = lam(j, jp);
 						dcomplex F = (abs(l) < 1e-15) ? dcomplex(thick, 0) : (expAccum(j, jp) - 1.0) / l;
-						sumS += S(j, jp) * F;
-						sumM += CUC(j, jp) * F;
+						sumSReal += 2.0 * (S(j, jp) * F).real();
+						sumMReal += 2.0 * (CUC(j, jp) * F).real();
 					}
-				intensity[t] = max(0.0, sumS.real());
-				tdsIntensity[t] = max(0.0, sumM.real());
+				intensity[t] = max(0.0, sumSReal);
+				tdsIntensity[t] = max(0.0, sumMReal);
 
 				if (t < tLen - 1)
 					expAccum.array() *= expStep.array();
@@ -492,17 +544,24 @@ extern "C" {
 			for (int t = 0; t < tLen; ++t)
 			{
 				double thick = thicknesses[t];
-				dcomplex sumS = 0, sumM = 0;
+				double sumSReal = 0, sumMReal = 0; // 260420Cl 変更
 				for (int j = 0; j < bLen; ++j)
-					for (int jp = 0; jp < bLen; ++jp)
+				{
+					auto l = lam(j, j);
+					dcomplex F = (abs(l) < 1e-15) ? dcomplex(thick, 0) : (exp(l * thick) - 1.0) / l;
+					sumSReal += (S(j, j) * F).real();
+					sumMReal += (CUC(j, j) * F).real();
+				}
+				for (int j = 0; j < bLen; ++j)
+					for (int jp = j + 1; jp < bLen; ++jp)
 					{
 						auto l = lam(j, jp);
 						dcomplex F = (abs(l) < 1e-15) ? dcomplex(thick, 0) : (exp(l * thick) - 1.0) / l;
-						sumS += S(j, jp) * F;
-						sumM += CUC(j, jp) * F;
+						sumSReal += 2.0 * (S(j, jp) * F).real();
+						sumMReal += 2.0 * (CUC(j, jp) * F).real();
 					}
-				intensity[t] = max(0.0, sumS.real());
-				tdsIntensity[t] = max(0.0, sumM.real());
+				intensity[t] = max(0.0, sumSReal);
+				tdsIntensity[t] = max(0.0, sumMReal);
 			}
 		}
 	}

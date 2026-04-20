@@ -845,12 +845,41 @@ public static partial class NativeWrapper
 
     static public (double[] gPsi, double[] gVec, double[] gLenz) HRTEM_Helper(IEnumerable<(Complex Psi, PointD Vec, Complex[] Lenz)> g)
     {
-        var gP = g.AsParallel();
-        return (
-            gP.SelectMany(e => new[] { e.Psi.Real, e.Psi.Imaginary }).ToArray(),
-            gP.SelectMany(e => new[] { e.Vec.X, e.Vec.Y }).ToArray(),
-            gP.SelectMany(e => e.Lenz.SelectMany(l => new[] { l.Real, l.Imaginary }).ToArray()).ToArray()
-            );
+        // 260420Cl 変更: 旧実装は AsParallel + SelectMany × 3 + 入れ子 new double[] で、
+        // g の要素数 × Lenz.Length の tiny array アロケーションを大量発生させていた。
+        // 並列化のうまみは無視できる一方、GC 圧力だけが大きかったため、
+        // 一度 IList<T> に具体化して for ループで埋める素朴な実装に戻す。
+        var list = g as IList<(Complex Psi, PointD Vec, Complex[] Lenz)> ?? g.ToArray();
+        var gLen = list.Count;
+        if (gLen == 0)
+            return ([], [], []);
+        var lDim = list[0].Lenz.Length;
+        var gPsi = new double[gLen * 2];
+        var gVec = new double[gLen * 2];
+        var gLenz = new double[gLen * lDim * 2];
+        for (int i = 0; i < gLen; i++)
+        {
+            var (psi, vec, lenz) = list[i];
+            gPsi[2 * i] = psi.Real;
+            gPsi[2 * i + 1] = psi.Imaginary;
+            gVec[2 * i] = vec.X;
+            gVec[2 * i + 1] = vec.Y;
+            var dst = i * lDim * 2;
+            for (int k = 0; k < lDim; k++)
+            {
+                var l = lenz[k];
+                gLenz[dst + 2 * k] = l.Real;
+                gLenz[dst + 2 * k + 1] = l.Imaginary;
+            }
+        }
+        return (gPsi, gVec, gLenz);
+        // 260420Cl 旧実装 (SelectMany チェーン + AsParallel):
+        // var gP = g.AsParallel();
+        // return (
+        //     gP.SelectMany(e => new[] { e.Psi.Real, e.Psi.Imaginary }).ToArray(),
+        //     gP.SelectMany(e => new[] { e.Vec.X, e.Vec.Y }).ToArray(),
+        //     gP.SelectMany(e => e.Lenz.SelectMany(l => new[] { l.Real, l.Imaginary }).ToArray()).ToArray()
+        //     );
     }
     #endregion
 

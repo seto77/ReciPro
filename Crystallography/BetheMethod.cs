@@ -321,10 +321,23 @@ public class BetheMethod
                     var alpha = evd.EigenVectors.LU().Solve(psi0);
 
                     var resultMat = new DMat(bLen, tLen);
+                    // 260420Cl 変更: Vector indexer 呼び出しと t 非依存の TwoPiI*γ を t ループ外に追い出して内側アロケーション/乗算を削減
+                    var twoPiIEigVals = new Complex[bLen];
+                    var alphaVals = new Complex[bLen];
+                    for (int i = 0; i < bLen; i++)
+                    {
+                        twoPiIEigVals[i] = TwoPiI * evd.EigenValues[i];
+                        alphaVals[i] = alpha[i];
+                    }
                     for (int t = 0; t < tLen; t++)
                     {
                         //ガンマの対称行列×アルファを作成
-                        var gammmaAlpha = new DVec([.. evd.EigenValues.Select((ev, i) => Exp(TwoPiI * ev * Thicknesses[t]) * alpha[i])]);
+                        var gammmaValues = new Complex[bLen];
+                        var thicknessT = Thicknesses[t];
+                        for (int i = 0; i < bLen; i++)
+                            gammmaValues[i] = Exp(twoPiIEigVals[i] * thicknessT) * alphaVals[i];
+                        var gammmaAlpha = new DVec(gammmaValues);
+                        // var gammmaAlpha = new DVec([.. evd.EigenValues.Select((ev, i) => Exp(TwoPiI * ev * Thicknesses[t]) * alpha[i])]); // 260420Cl 旧実装
                         //深さtにおけるψを求める
                         resultMat.SetColumn(t, evd.EigenVectors.Multiply(gammmaAlpha));
                     }
@@ -396,16 +409,22 @@ public class BetheMethod
             Parallel.For(0, Thicknesses.Length, t =>
             {
                 Disks[t] = new CBED_Disk[Beams.Length];
+                // 260420Cl 変更: 内側 r ループと g ループの順序を入れ替え、各 r について
+                // diskAmplitude[r] == null の判定を 1 回で済ませる (cache 局所性も改善)
+                var bdLen = BeamDirections.Length;
+                var amplitudesAll = new Complex[Beams.Length][];
                 for (int g = 0; g < Beams.Length; g++)
+                    amplitudesAll[g] = new Complex[bdLen];
+                for (int r = 0; r < bdLen; r++)
                 {
-                    var amplitudes = new Complex[BeamDirections.Length];
-                    for (int r = 0; r < BeamDirections.Length; r++)
-                        if (diskAmplitude[r] is not null)
-                            amplitudes[r] = diskAmplitude[r][t * bLen + g];
-
-                    Disks[t][g] = new CBED_Disk([Beams[g].H, Beams[g].K, Beams[g].L], Beams[g].Vec, Thicknesses[t], amplitudes);
-
+                    var da = diskAmplitude[r];
+                    if (da is null) continue;
+                    var baseIdx = t * bLen;
+                    for (int g = 0; g < Beams.Length; g++)
+                        amplitudesAll[g][r] = da[baseIdx + g];
                 }
+                for (int g = 0; g < Beams.Length; g++)
+                    Disks[t][g] = new CBED_Disk([Beams[g].H, Beams[g].K, Beams[g].L], Beams[g].Vec, Thicknesses[t], amplitudesAll[g]);
             });
 
             //ここから、diskの重なり合いを計算
@@ -433,9 +452,17 @@ public class BetheMethod
             {
                 if (!bwCBED.CancellationPending)
                 {
+                    // 260420Cl 変更: LINQ Select(...).ToArray() 相当を for ループに置換してホットパスのアロケーションとデリゲート呼び出しを除去
                     var intensities = new double[Thicknesses.Length][];
                     for (int t = 0; t < Thicknesses.Length; t++)
-                        intensities[t] = [.. Disks[t][g1].RawAmplitudes.Select(a => a.MagnitudeSquared())];
+                    {
+                        var raw = Disks[t][g1].RawAmplitudes;
+                        var arr = new double[raw.Length];
+                        for (int r = 0; r < raw.Length; r++)
+                            arr[r] = raw[r].MagnitudeSquared();
+                        intensities[t] = arr;
+                    }
+                    // intensities[t] = [.. Disks[t][g1].RawAmplitudes.Select(a => a.MagnitudeSquared())]; // 260420Cl 旧実装
 
                     for (int r1 = 0; r1 < BeamDirections.Length; r1++)
                     {
@@ -453,8 +480,16 @@ public class BetheMethod
                         }
                     }
 
+                    // 260420Cl 変更: LINQ Select(...).ToArray() 相当を for ループ化して一時デリゲートと配列列挙を除去
                     for (int t = 0; t < Thicknesses.Length; t++)
-                        Disks[t][g1].Amplitudes = [.. intensities[t].Select(intensity => new Complex(Math.Sqrt(intensity), 0))];
+                    {
+                        var src = intensities[t];
+                        var amps = new Complex[src.Length];
+                        for (int r = 0; r < src.Length; r++)
+                            amps[r] = new Complex(Math.Sqrt(src[r]), 0);
+                        Disks[t][g1].Amplitudes = amps;
+                    }
+                    // Disks[t][g1].Amplitudes = [.. intensities[t].Select(intensity => new Complex(Math.Sqrt(intensity), 0))]; // 260420Cl 旧実装
                 }
                 bwCBED.ReportProgress(Interlocked.Increment(ref count) * 1000 / Beams.Length, "Compiling disks");//進捗状況を報告
             });
@@ -2550,6 +2585,9 @@ public class BetheMethod
         Complex[,,] I_Elas = new Complex[qList.Count, tLen, dLen];
         count = 0;
         var threadLocalIElas = new ThreadLocal<Complex[]>(() => null, true); // (260403Ch) 弾性項の一時配列はスレッドごとに使い回す
+        // 260420Cl 追加: qIndex 毎のロックを事前確保して I_Elas/sum の加算を per-qIndex で直列化する。
+        // 旧 lockObj1 (単一ロック) では全スレッドが qIndex 違いでも待機していたが、衝突するのは同一 qIndex 時のみのため粒度を細かくする。
+        var qIndexLocks = ValueEnumerable.Range(0, qList.Count).Select(_ => new Lock()).ToArray();
         try
         {
             tcP.ForAll(kIndex =>
@@ -2565,7 +2603,8 @@ public class BetheMethod
                             //i_Elas[t] += 1;
                             iElas[t] += tc[kIndex][t][g] * (r[0] * tc[n[0]][t][g_q] + r[1] * tc[n[1]][t][g_q] + r[2] * tc[n[2]][t][g_q] + r[3] * tc[n[3]][t][g_q]).Conjugate();
                         }
-                    lock (lockObj1)
+                    // lock (lockObj1) // 260420Cl 旧実装: 単一ロックで全 qIndex を直列化していた
+                    lock (qIndexLocks[qIndex])
                         for (int t = 0; t < tLen; t++)
                             for (int d = 0; d < dLen; d++)
                                 I_Elas[qIndex, t, d] += iElas[t] * lenz[d];
@@ -2747,10 +2786,22 @@ public class BetheMethod
                                         for (int dIndex = 0; dIndex < dLen; dIndex++)
                                             sumTmp[i * dLen + dIndex] = tmp * lenz[dIndex];
                                     }
-                                lock (lockObj1)
-                                    for (int i = 0; i < list[kIndex].Count; i++)
-                                        for (int d = 0; d < dLen; d++)
-                                            sum[list[kIndex][i].qIndex * dLen + d] += sumTmp[i * dLen + d];
+                                // 260420Cl 変更: per-qIndex ロック化 (詳細は qIndexLocks 初期化箇所)
+                                {
+                                    var lst = list[kIndex];
+                                    var cnt = lst.Count;
+                                    for (int i = 0; i < cnt; i++)
+                                    {
+                                        var qIdx = lst[i].qIndex;
+                                        lock (qIndexLocks[qIdx])
+                                            for (int d = 0; d < dLen; d++)
+                                                sum[qIdx * dLen + d] += sumTmp[i * dLen + d];
+                                    }
+                                }
+                                // lock (lockObj1) // 260420Cl 旧実装
+                                //     for (int i = 0; i < list[kIndex].Count; i++)
+                                //         for (int d = 0; d < dLen; d++)
+                                //             sum[list[kIndex][i].qIndex * dLen + d] += sumTmp[i * dLen + d];
 
                                 if (Interlocked.Increment(ref count) % 1000 == 0) bwSTEM.ReportProgress((int)(1E6 / total * count), "Calculating I_inelastic(Q)");//状況を報告
                             });
