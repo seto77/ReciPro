@@ -363,10 +363,7 @@ extern "C" {
 			for (int jp = 0; jp < bLen; ++jp)
 				lam(j, jp) = two_pi_i * (vals[j] - conj(vals[jp]));
 
-		// 260420Cl 追加: S と F (および lam) はいずれも Hermitian なので、sum = Σ S(j,jp)·F(j,jp) は
-		// 対角項の real 和 + 上三角 (j<jp) の real 和の 2 倍に分解でき、内側ループが約 1/2 で済む。
-		// S = B†·diag(σ)·B (σ 実) → Hermitian、lam(j,jp) = 2πi(γ_j - conj(γ_jp)) → Hermitian、
-		// expAccum(j,jp) = exp(lam(j,jp)·dt) も Hermitian、F = (expAccum-1)/lam も Hermitian。
+		// 260420Cl S, F, lam, expAccum は全て Hermitian → sum = diag の real 和 + 上三角の 2·Re 和 で内側ループを半減
 
 		// 等間隔判定
 		bool isUniform = (tLen >= 2) && (abs(thicknesses[1] - 2.0 * thicknesses[0]) < 1e-10);
@@ -375,8 +372,7 @@ extern "C" {
 		{
 			double dt = thicknesses[0];
 			Mat expStep(bLen, bLen);
-			// 260420Cl 変更: expStep も Hermitian (lam が Hermitian で Hadamard exp) なので上三角だけ計算し、
-			// 下三角は conjugate で埋める。expStep は後段の Hadamard product でも使うため完全に埋める必要あり。
+			// 260420Cl expStep も Hermitian → 上三角計算 + 下三角は conj。後段 Hadamard 累積で両側要るため完全に埋める
 			for (int j = 0; j < bLen; ++j)
 			{
 				expStep(j, j) = exp(lam(j, j) * dt);
@@ -393,15 +389,13 @@ extern "C" {
 			for (int t = 0; t < tLen; ++t)
 			{
 				double thick = thicknesses[t];
-				double sumReal = 0; // 260420Cl 変更: Hermitian 対称性から結果は実数 → 実数で直接累積
-				// 対角項: Hermitian のため S(j,j), F(j,j) ともに実数値。積も実数。
+				double sumReal = 0;
 				for (int j = 0; j < bLen; ++j)
 				{
 					auto l = lam(j, j);
 					dcomplex F = (abs(l) < 1e-15) ? dcomplex(thick, 0) : (expAccum(j, j) - 1.0) / l;
 					sumReal += (S(j, j) * F).real();
 				}
-				// 非対角 (j<jp): S(jp,j)·F(jp,j) = conj(S(j,jp)·F(j,jp)) なので 2·Re を取って上三角だけ。
 				for (int j = 0; j < bLen; ++j)
 					for (int jp = j + 1; jp < bLen; ++jp)
 					{
@@ -420,7 +414,7 @@ extern "C" {
 			for (int t = 0; t < tLen; ++t)
 			{
 				double thick = thicknesses[t];
-				double sumReal = 0; // 260420Cl 変更: Hermitian 対称性から実数で直接累積
+				double sumReal = 0;
 				for (int j = 0; j < bLen; ++j)
 				{
 					auto l = lam(j, j);
@@ -483,11 +477,7 @@ extern "C" {
 			for (int jp = 0; jp < bLen; ++jp)
 				lam(j, jp) = two_pi_i * (vals[j] - conj(vals[jp]));
 
-		// 260420Cl 追加: S, CUC, lam, expAccum, F はいずれも Hermitian のため sumS, sumM とも
-		// 対角 (実数) + 上三角 (2·Re) に分解して内側ループを半減。
-		// CUC の Hermitian 性: CUC_pre = C†·U·C (U Hermitian) は Hermitian。
-		// CUC(j,jp) *= tdsCoeff·conj(a[j])·a[jp] を適用しても Hermitian 性を保存する
-		// (CUC(jp,j) = conj(CUC_pre(j,jp))·tdsCoeff·conj(a[jp])·a[j] = conj(CUC(j,jp)))。
+		// 260420Cl S, CUC, lam, expAccum, F はいずれも Hermitian → 対角 + 上三角 2·Re で sumS/sumM を半減。CUC の a[j]a[jp] 係数も Hermitian 性を保存
 
 		// 等間隔判定
 		bool isUniform = (tLen >= 2) && (abs(thicknesses[1] - 2.0 * thicknesses[0]) < 1e-10);
@@ -496,8 +486,7 @@ extern "C" {
 		{
 			double dt = thicknesses[0];
 			Mat expStep(bLen, bLen);
-			// 260420Cl 変更: expStep は Hermitian。上三角を計算し下三角は conjugate で埋める。
-			// 後段の Hadamard 累積で両側が必要なため完全に埋める。
+			// 260420Cl expStep も Hermitian → 上三角計算 + 下三角 conj で埋める
 			for (int j = 0; j < bLen; ++j)
 			{
 				expStep(j, j) = exp(lam(j, j) * dt);
@@ -514,8 +503,7 @@ extern "C" {
 			for (int t = 0; t < tLen; ++t)
 			{
 				double thick = thicknesses[t];
-				double sumSReal = 0, sumMReal = 0; // 260420Cl 変更: 対称性により結果は実数
-				// 対角項
+				double sumSReal = 0, sumMReal = 0;
 				for (int j = 0; j < bLen; ++j)
 				{
 					auto l = lam(j, j);
@@ -523,7 +511,6 @@ extern "C" {
 					sumSReal += (S(j, j) * F).real();
 					sumMReal += (CUC(j, j) * F).real();
 				}
-				// 非対角 (上三角のみ、2 倍で計上)
 				for (int j = 0; j < bLen; ++j)
 					for (int jp = j + 1; jp < bLen; ++jp)
 					{
@@ -544,7 +531,7 @@ extern "C" {
 			for (int t = 0; t < tLen; ++t)
 			{
 				double thick = thicknesses[t];
-				double sumSReal = 0, sumMReal = 0; // 260420Cl 変更
+				double sumSReal = 0, sumMReal = 0;
 				for (int j = 0; j < bLen; ++j)
 				{
 					auto l = lam(j, j);

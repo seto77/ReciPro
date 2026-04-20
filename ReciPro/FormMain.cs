@@ -466,6 +466,9 @@ public partial class FormMain : CaptureFormBase
         //ReadInitialRegistry();
         Registry(Reg.Mode.Read);
 
+        // 260420Cl 追加: レジストリから復元した Bounds が画面外 (モニタ構成変更や最小化 Bounds=-32000 の残存) の場合にプライマリ画面へ再配置する (#55 関連)。
+        WindowLocation.EnsureVisible(this);
+
         Text = "ReciPro  " + Version.VersionAndDate;
         if (glControlAxes == null)
             Text += "  (3D rendering disable mode)";
@@ -518,6 +521,10 @@ public partial class FormMain : CaptureFormBase
         //FormStructureViewer.Close();
         //FormDiffractionSimulator.Close();
         e.Cancel = false;
+        // 260420Cl 追加: 最小化状態で閉じると Bounds = {-32000, -32000, ...} が保存されて次回起動時に画面外になる (#55 関連)。
+        // 最小化/最大化時は WindowState を一旦 Normal に戻し、RestoreBounds 相当を保存する。
+        if (WindowState != FormWindowState.Normal)
+            WindowState = FormWindowState.Normal;
         //SaveInitialRegistry();
         Registry(Reg.Mode.Write);
 

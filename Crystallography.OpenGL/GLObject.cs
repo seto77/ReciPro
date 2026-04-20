@@ -7,6 +7,7 @@ using System.Runtime.InteropServices;
 using OpenTK.Graphics.OpenGL4;
 using System.Windows.Forms;
 using System.Drawing;
+using System.Diagnostics; // 260420Cl 追加 静的コンストラクタでの例外ログ出力用
 using System.Management;
 using System.Threading;
 using ZLinq;
@@ -222,10 +223,18 @@ public abstract class GLObject
     {
         //ビデオカード検索
         GraphicsInfo = [];
-        using var searcher = new ManagementObjectSearcher(new SelectQuery("Win32_VideoController")); // (260320Ch) WMI searcher を確実に破棄する
-        using var videoControllers = searcher.Get();
-        foreach (ManagementObject envVar in videoControllers)
-            GraphicsInfo.Add((Convert.ToString(envVar["name"]) ?? string.Empty, Convert.ToString(envVar["DriverVersion"]) ?? string.Empty)); // (260320Ch) null 安全な文字列化へ統一する
+        // 260420Cl WMI リポジトリ破損等で ManagementException が発生しても静的コンストラクタを通すため try/catch で保護 (GLControlAlpha 側と同じ対策)
+        try
+        {
+            using var searcher = new ManagementObjectSearcher(new SelectQuery("Win32_VideoController")); // (260320Ch) WMI searcher を確実に破棄する
+            using var videoControllers = searcher.Get();
+            foreach (ManagementObject envVar in videoControllers)
+                GraphicsInfo.Add((Convert.ToString(envVar["name"]) ?? string.Empty, Convert.ToString(envVar["DriverVersion"]) ?? string.Empty)); // (260320Ch) null 安全な文字列化へ統一する
+        }
+        catch (Exception e)
+        {
+            Debug.WriteLine($"GLObject: WMI Win32_VideoController query failed: {e.Message}");
+        }
 
         // var flag = GraphicsInfo.Select(g => g.Product.ToLower()).Any(p => p.Contains("nvidia") || p.Contains("amd"));
         var flag = GraphicsInfo.Any(static g => g.Product.Contains("nvidia", StringComparison.OrdinalIgnoreCase) || g.Product.Contains("amd", StringComparison.OrdinalIgnoreCase)); // (260320Ch) ToLower の一時文字列を作らず大小無視で判定する

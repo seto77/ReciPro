@@ -1130,7 +1130,7 @@ public unsafe partial class GLControlAlpha : UserControl
     #endregion
 
     #region GlObjectの追加/削除
-    public void MakeCurrent() { if (glControl != null) glControl.MakeCurrent(); } // 260420Cl DisablingOpenGL 時は glControl が null のため null ガード
+    public void MakeCurrent() => glControl?.MakeCurrent(); // 260420Cl DisablingOpenGL 時は glControl が null のため null 条件演算子でガード
 
     public void AddObjects(GLObject obj)
     {
