@@ -63,6 +63,7 @@
             rDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             hDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             kDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            iDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();                                                            // 260421Cl 追加 Miller-Bravais i 列
             lDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             dDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             gXDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -432,7 +433,8 @@
             //dataGridView.ColumnHeadersHeight = 30;                                                                                                  // 260413Cl DPIスケーリング対応のため削除
             //dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;                 // 260413Cl
             dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;                          // 260413Cl DisableResizing→AutoSize
-            dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { rDataGridViewTextBoxColumn1, hDataGridViewTextBoxColumn, kDataGridViewTextBoxColumn, lDataGridViewTextBoxColumn, dDataGridViewTextBoxColumn1, gXDataGridViewTextBoxColumn1, gYDataGridViewTextBoxColumn1, gZDataGridViewTextBoxColumn1, gDataGridViewTextBoxColumn1, ugReDataGridViewTextBoxColumn2, ugImDataGridViewTextBoxColumn2, ugReDataGridViewTextBoxColumn3, ugImDataGridViewTextBoxColumn3, sgDataGridViewTextBoxColumn1, pgDataGridViewTextBoxColumn1, qgDataGridViewTextBoxColumn1, φReDataGridViewTextBoxColumn1, φImDataGridViewTextBoxColumn1, φ2DataGridViewTextBoxColumn1, σΦ2DataGridViewTextBoxColumn });
+            //260421Cl i 列を追加 (h, k, i, l の順) 初期状態は非表示
+            dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { rDataGridViewTextBoxColumn1, hDataGridViewTextBoxColumn, kDataGridViewTextBoxColumn, iDataGridViewTextBoxColumn, lDataGridViewTextBoxColumn, dDataGridViewTextBoxColumn1, gXDataGridViewTextBoxColumn1, gYDataGridViewTextBoxColumn1, gZDataGridViewTextBoxColumn1, gDataGridViewTextBoxColumn1, ugReDataGridViewTextBoxColumn2, ugImDataGridViewTextBoxColumn2, ugReDataGridViewTextBoxColumn3, ugImDataGridViewTextBoxColumn3, sgDataGridViewTextBoxColumn1, pgDataGridViewTextBoxColumn1, qgDataGridViewTextBoxColumn1, φReDataGridViewTextBoxColumn1, φImDataGridViewTextBoxColumn1, φ2DataGridViewTextBoxColumn1, σΦ2DataGridViewTextBoxColumn });
             dataGridView.DataMember = "DataTableBethe";
             dataGridView.DataSource = dataSetBindingSource;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -481,7 +483,16 @@
             kDataGridViewTextBoxColumn.Name = "kDataGridViewTextBoxColumn";
             kDataGridViewTextBoxColumn.ReadOnly = true;
             kDataGridViewTextBoxColumn.Width = 40;
-            // 
+            //
+            // iDataGridViewTextBoxColumn (260421Cl 追加 Miller-Bravais i)
+            //
+            iDataGridViewTextBoxColumn.DataPropertyName = "i";
+            iDataGridViewTextBoxColumn.HeaderText = "i";
+            iDataGridViewTextBoxColumn.Name = "iDataGridViewTextBoxColumn";
+            iDataGridViewTextBoxColumn.ReadOnly = true;
+            iDataGridViewTextBoxColumn.Width = 40;
+            iDataGridViewTextBoxColumn.Visible = false;                                                                                                   // 初期状態は非表示 (FormMain.UseMillerBravais && Capable で表示)
+            //
             // lDataGridViewTextBoxColumn
             // 
             lDataGridViewTextBoxColumn.DataPropertyName = "l";
@@ -996,6 +1007,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn rDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn hDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn kDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn iDataGridViewTextBoxColumn;                                                                // 260421Cl 追加 Miller-Bravais i
         private System.Windows.Forms.DataGridViewTextBoxColumn lDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn gXDataGridViewTextBoxColumn1;

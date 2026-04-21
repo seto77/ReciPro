@@ -1435,7 +1435,9 @@ namespace ReciPro {
             private global::System.Data.DataColumn columnh;
             
             private global::System.Data.DataColumn columnk;
-            
+
+            private global::System.Data.DataColumn columni;                                                                                               // 260421Cl 追加 Miller-Bravais i 指数
+
             private global::System.Data.DataColumn columnl;
             
             private global::System.Data.DataColumn columnd;
@@ -1527,6 +1529,15 @@ namespace ReciPro {
                 }
             }
             
+            //260421Cl 追加 Miller-Bravais i 指数
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn iColumn {
+                get {
+                    return this.columni;
+                }
+            }
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public global::System.Data.DataColumn lColumn {
@@ -1701,10 +1712,11 @@ namespace ReciPro {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public DataTableBetheRow AddDataTableBetheRow(
-                        double R, 
-                        int h, 
-                        int k, 
-                        int l, 
+                        double R,
+                        int h,
+                        int k,
+                        int i,                                                                                                                            // 260421Cl 追加 Miller-Bravais i
+                        int l,
                         double d, 
                         double gX, 
                         double gY, 
@@ -1726,6 +1738,7 @@ namespace ReciPro {
                         R,
                         h,
                         k,
+                        i,                                                                                                                                // 260421Cl 追加 Miller-Bravais i
                         l,
                         d,
                         gX,
@@ -1768,6 +1781,7 @@ namespace ReciPro {
                 this.columnR = base.Columns["R"];
                 this.columnh = base.Columns["h"];
                 this.columnk = base.Columns["k"];
+                this.columni = base.Columns["i"];                                                                                                         // 260421Cl 追加
                 this.columnl = base.Columns["l"];
                 this.columnd = base.Columns["d"];
                 this.columngX = base.Columns["gX"];
@@ -1796,6 +1810,8 @@ namespace ReciPro {
                 base.Columns.Add(this.columnh);
                 this.columnk = new global::System.Data.DataColumn("k", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnk);
+                this.columni = new global::System.Data.DataColumn("i", typeof(int), null, global::System.Data.MappingType.Element);                       // 260421Cl 追加 Miller-Bravais i 指数
+                base.Columns.Add(this.columni);                                                                                                           // 260421Cl
                 this.columnl = new global::System.Data.DataColumn("l", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnl);
                 this.columnd = new global::System.Data.DataColumn("d", typeof(double), null, global::System.Data.MappingType.Element);
@@ -2473,6 +2489,23 @@ namespace ReciPro {
                 }
             }
             
+            //260421Cl 追加 Miller-Bravais i 指数
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public int i {
+                get {
+                    try {
+                        return ((int)(this[this.tableDataTableBethe.iColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("テーブル \'DataTableBethe\' にある列 \'i\' の値は DBNull です。", e);
+                    }
+                }
+                set {
+                    this[this.tableDataTableBethe.iColumn] = value;
+                }
+            }
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public int l {

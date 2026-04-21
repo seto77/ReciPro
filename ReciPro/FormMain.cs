@@ -156,6 +156,28 @@ public partial class FormMain : CaptureFormBase
         get => toolStripMenuItemUseMKL != null && toolStripMenuItemUseMKL.Checked;
         set => toolStripMenuItemUseMKL.Checked = value;
     }
+    //260421Cl 追加: 4 指数 (Miller-Bravais) 表記を有効にするかどうか。レジストリに保存。
+    // 実際の表示切替は IsMillerBravaisActive で「UseMillerBravais && 晶系が4指数可」を判定してから行う。
+    public bool UseMillerBravais
+    {
+        get => toolStripMenuItemUseMillerBravais != null && toolStripMenuItemUseMillerBravais.Checked;
+        set => toolStripMenuItemUseMillerBravais.Checked = value;
+    }
+    //260421Cl 追加: 現在の Crystal が 4 指数 Miller-Bravais 表記に対応可能か (六方晶 or 三方晶の Hexagonal axes のみ true)。
+    // Rhombohedral axes セッティングは 3 指数のみのため false。
+    public static bool IsMillerBravaisCapable(Crystal crystal)
+    {
+        if (crystal?.Symmetry == null) return false;
+        var sys = crystal.Symmetry.CrystalSystemNumber;
+        // 六方晶 (6) は常に可。三方晶 (5) のうち Rhombohedral axes ("R") 以外のみ可。
+        return sys == 6 || (sys == 5 && crystal.Symmetry.SpaceGroupHMsubStr != "R");
+    }
+    /// <summary>UseMillerBravais が有効かつ現在結晶が 4 指数対応の場合のみ true</summary>
+    public bool IsMillerBravaisActive => UseMillerBravais && IsMillerBravaisCapable(Crystal);
+
+    //260421Cl 追加: 面 (hkl) を 3 指数 / 4 指数どちらで表示するかを useMB で切替えるヘルパー。
+    public static string PlaneString(int h, int k, int l, bool useMB, string sep = " ")
+        => useMB ? $"{h}{sep}{k}{sep}{-(h + k)}{sep}{l}" : $"{h}{sep}{k}{sep}{l}";
     public static Languages Language => Thread.CurrentThread.CurrentUICulture.Name == "en" ? Languages.English : Languages.Japanese;
     public double Phi { get => (double)numericUpDownEulerPhi.Value / 180.0 * Math.PI; set => numericUpDownEulerPhi.Value = (decimal)(value / Math.PI * 180.0); }
     public double Theta { get => (double)numericUpDownEulerTheta.Value / 180.0 * Math.PI; set => numericUpDownEulerTheta.Value = (decimal)(value / Math.PI * 180.0); }
@@ -578,6 +600,9 @@ public partial class FormMain : CaptureFormBase
             //260405Cl MKLライブラリを使うかどうか
             rw(() => UseMKL);
 
+            //260421Cl Miller-Bravais (4指数) 表記を使うかどうか
+            rw(() => UseMillerBravais);
+
             //260415Cl Reg.RW(key, mode, commonDialog, nameof(commonDialog.AutomaticallyClose), commonDialog.AutomaticallyClose);
             rw(() => commonDialog.AutomaticallyClose);
 
@@ -594,7 +619,7 @@ public partial class FormMain : CaptureFormBase
 
             #region DiffractionSimulator
             FormDiffractionSimulator.CancelSetVector = true;
-   
+
             rw(() => FormDiffractionSimulator.Bounds);
             rw(() => FormDiffractionSimulator.Resolution);
             rw(() => FormDiffractionSimulator.ResolutionUnit);
@@ -739,7 +764,7 @@ public partial class FormMain : CaptureFormBase
             {
                 var newAxis = checkBoxFixAxis.Checked ?
                      Crystals[i].RotationMatrix * (numericBoxAxisU.Value * Crystal.A_Axis + numericBoxAxisV.Value * Crystal.B_Axis + numericBoxAxisW.Value * Crystal.C_Axis) :
-                     Crystals[i].RotationMatrix * (numericBoxPlaneH.Value * Crystal.A_Star + numericBoxPlaneK.Value * Crystal.B_Star + numericBoxPlaneL.Value * Crystal.C_Star);
+                     Crystals[i].RotationMatrix * (hklControlPlane.H * Crystal.A_Star + hklControlPlane.K * Crystal.B_Star + hklControlPlane.L * Crystal.C_Star);                                // 260421Cl HKLControl統合
                 if (Vector3DBase.AngleBetVectors(newAxis, axis) < Math.PI / 2)
                     rot = Matrix3D.Rot(newAxis, angle);
                 else
@@ -882,9 +907,10 @@ public partial class FormMain : CaptureFormBase
 
     public void SetPlane(int h, int k, int l)
     {
-        numericBoxPlaneH.Value = h;
-        numericBoxPlaneK.Value = k;
-        numericBoxPlaneL.Value = l;
+        // 260421Cl HKLControl 経由に変更
+        hklControlPlane.H = h;
+        hklControlPlane.K = k;
+        hklControlPlane.L = l;
     }
     public void SetAxis(int u, int v, int w)
     {
@@ -899,7 +925,7 @@ public partial class FormMain : CaptureFormBase
     {
         if (Crystal == null) return;
         double u = numericBoxAxisU.Value, v = numericBoxAxisV.Value, w = numericBoxAxisW.Value;
-        double h = numericBoxPlaneH.Value, k = numericBoxPlaneK.Value, l = numericBoxPlaneL.Value;
+        double h = hklControlPlane.H, k = hklControlPlane.K, l = hklControlPlane.L;                                                                       // 260421Cl HKLControl統合
 
         Vector3DBase xVector, yVector, zVector;
         Vector3DBase aAxis = Crystal.A_Axis, bAxis = Crystal.B_Axis, cAxis = Crystal.C_Axis;
@@ -1124,6 +1150,8 @@ public partial class FormMain : CaptureFormBase
             SkipEulerChange = false;
 
             numericBoxMaxUVW_ValueChanged(sender, e);
+
+            UpdateMillerBravaisDisplay();                                                                                                                 // 260421Cl 結晶切替時に4指数表示を更新
 
             if (SkipDrawing) return;
 
@@ -1878,6 +1906,30 @@ public partial class FormMain : CaptureFormBase
     }
     #endregion
 
+    #region Miller-Bravais (4 指数) 表示の同期
+
+    //260421Cl 追加: UseMillerBravais と晶系に応じて hklControlPlane.ShowIIndex と配下フォームの表示を更新する。
+    // Crystal 変更時 / メニューチェック変更時 / FormMovie 起動時 などから呼ぶ。
+    public void UpdateMillerBravaisDisplay()
+    {
+        var active = IsMillerBravaisActive;
+        if (hklControlPlane != null)
+            hklControlPlane.ShowIIndex = active;
+        FormMovie?.OnMillerBravaisChanged(active);
+        FormDiffractionSimulator?.FormDiffractionBeamTable?.UpdateMillerBravaisColumnVisibility(active);
+    }
+
+    //260421Cl 追加: メニューチェック変更ハンドラ (Designer からバインド)
+    private void toolStripMenuItemUseMillerBravais_CheckedChanged(object sender, EventArgs e)
+    {
+        UpdateMillerBravaisDisplay();
+        // 関連する再描画・再計算を呼びたい場面では個別フォームで対応
+        if (FormDiffractionSimulator != null && FormDiffractionSimulator.Visible)
+            FormDiffractionSimulator.Draw();
+    }
+
+    #endregion
+
     #region 晶帯軸/結晶面 設定
     private void checkBoxFixAxis_CheckedChanged(object sender, EventArgs e)
     {
@@ -1892,7 +1944,7 @@ public partial class FormMain : CaptureFormBase
 
     private void checkBoxFixPlane_CheckedChanged(object sender, EventArgs e)
     {
-        if (numericBoxPlaneH.Value == 0 && numericBoxPlaneK.Value == 0 && numericBoxPlaneL.Value == 0)
+        if (hklControlPlane.H == 0 && hklControlPlane.K == 0 && hklControlPlane.L == 0)                                                                   // 260421Cl HKLControl統合
         {
             checkBoxFixePlane.Checked = false;
             return;

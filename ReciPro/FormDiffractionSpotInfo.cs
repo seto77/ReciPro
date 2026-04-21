@@ -95,21 +95,22 @@ public partial class FormDiffractionSpotInfo : CaptureFormBase
         }
 
         double coeff = 1 / gamma;
+        //260421Cl i 列追加により Ug 系列 index が +1 ずれる (9→10, 10→11, 11→12, 12→13)
         if (radioButtonUnitEV.Checked)
         {
             coeff = 1 / gamma * 6.62606896 * 6.62606896 / 2 / 9.1093897 / 1.60217733; //coeff = 1 / gamma * UniversalConstants.h * UniversalConstants.h / 2 / UniversalConstants.m0 / UniversalConstants.e0 * 1e18;
-            dataGridView.Columns[9].HeaderText = "Vg re";
-            dataGridView.Columns[10].HeaderText = "Vg im";
-            dataGridView.Columns[11].HeaderText = "V'g re";
-            dataGridView.Columns[12].HeaderText = "V'g im";
+            dataGridView.Columns[10].HeaderText = "Vg re";
+            dataGridView.Columns[11].HeaderText = "Vg im";
+            dataGridView.Columns[12].HeaderText = "V'g re";
+            dataGridView.Columns[13].HeaderText = "V'g im";
 
         }
         else
         {
-            dataGridView.Columns[9].HeaderText = "Ug re";
-            dataGridView.Columns[10].HeaderText = "Ug im";
-            dataGridView.Columns[11].HeaderText = "U'g re";
-            dataGridView.Columns[12].HeaderText = "U'g im";
+            dataGridView.Columns[10].HeaderText = "Ug re";
+            dataGridView.Columns[11].HeaderText = "Ug im";
+            dataGridView.Columns[12].HeaderText = "U'g re";
+            dataGridView.Columns[13].HeaderText = "U'g im";
         }
 
         var rows = new List<DataSetReciPro.DataTableBetheRow>(Beams.Length);
@@ -124,6 +125,7 @@ public partial class FormDiffractionSpotInfo : CaptureFormBase
             r.R = beam.Rating;
             r.h = beam.H;
             r.k = beam.K;
+            r.i = -(beam.H + beam.K);                                                                                                                     // 260421Cl Miller-Bravais i = -(h+k) を自動計算
             r.l = beam.L;
             r.d = 1 / k;
             r.gX = Math.Abs(beam.Vec.X) > 1e-12 ? g.X : 0;
@@ -200,13 +202,15 @@ public partial class FormDiffractionSpotInfo : CaptureFormBase
         if (dataSet.DataTableBethe.Rows.Count > 1)
         {
             var sb = new StringBuilder();
+            //260421Cl h, k に加えて i もスペース区切りに含める (l が h k l グループの最後のためタブで閉じる)
             for (int i = 0; i < dataGridView.Columns.Count; i++)
                 if (dataGridView.Columns[i].Visible)
                 {
-                    if (dataGridView.Columns[i].HeaderText == "h" || dataGridView.Columns[i].HeaderText == "k")
-                        sb.Append(dataGridView.Columns[i].HeaderText);
+                    var hdr = dataGridView.Columns[i].HeaderText;
+                    if (hdr == "h" || hdr == "k" || hdr == "i")
+                        sb.Append(hdr);
                     else
-                        sb.Append($"{dataGridView.Columns[i].HeaderText}\t");
+                        sb.Append($"{hdr}\t");
                 }
             sb.Append("\r\n");
 
@@ -215,9 +219,8 @@ public partial class FormDiffractionSpotInfo : CaptureFormBase
                 for (int i = 0; i < dataGridView.ColumnCount; i++)
                     if (dataGridView.Columns[i].Visible)
                     {
-                        if (dataGridView.Columns[i].HeaderText == "h")
-                            sb.Append($"{dataGridView[i, j].Value} ");
-                        else if (dataGridView.Columns[i].HeaderText == "k")
+                        var hdr = dataGridView.Columns[i].HeaderText;
+                        if (hdr == "h" || hdr == "k" || hdr == "i")
                             sb.Append($"{dataGridView[i, j].Value} ");
                         else
                             sb.Append($"{dataGridView[i, j].Value}\t");
@@ -227,6 +230,9 @@ public partial class FormDiffractionSpotInfo : CaptureFormBase
             Clipboard.SetDataObject(sb.ToString());
         }
     }
+
+    //260421Cl 追加: Miller-Bravais i 列の表示/非表示を切替える (FormMain から呼ばれる)
+    public void UpdateMillerBravaisColumnVisibility(bool show) => iDataGridViewTextBoxColumn.Visible = show;
 
 
 
@@ -259,7 +265,8 @@ public partial class FormDiffractionSpotInfo : CaptureFormBase
 
         for (int j = 0; j < dataGridView.Rows.Count; j++)
         {
-            var (h, k, l) = ((int)dataGridView[1, j].Value, (int)dataGridView[2, j].Value, (int)dataGridView[3, j].Value);
+            //260421Cl i 列追加により l 列 index が 3 → 4 にずれる
+            var (h, k, l) = ((int)dataGridView[1, j].Value, (int)dataGridView[2, j].Value, (int)dataGridView[4, j].Value);
             if (h == 0 && k == 0 && l == 0)
                 sb.Append($"000 \t");
             //sb.Append($"{h} {k} {l} 000 \t");
@@ -277,8 +284,9 @@ public partial class FormDiffractionSpotInfo : CaptureFormBase
 
             sb.Append($"{thickness}\t");
 
+            //260421Cl i 列追加により σ|Φ|² 列 index が 18 → 19 にずれる
             for (int j = 0; j < dataGridView.Rows.Count; j++)
-                sb.Append($"{dataGridView[18, j].Value}\t");
+                sb.Append($"{dataGridView[19, j].Value}\t");
 
             sb.Append("\r\n");
             if (thickness % 10 == 0)

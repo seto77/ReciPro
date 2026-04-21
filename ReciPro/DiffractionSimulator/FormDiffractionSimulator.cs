@@ -1863,11 +1863,13 @@ public partial class FormDiffractionSimulator : CaptureFormBase
                         list.Add(gVector[i]);
                 list = [.. list.OrderBy(g => g.Length2)];
 
+                //260421Cl Miller-Bravais 4 指数対応
+                var useMB = formMain.IsMillerBravaisActive;
                 var sb = new StringBuilder();
-                sb.Append($"The spot is a supoerposition of mutiple of g = {list[0].Index.h} {list[0].Index.k} {list[0].Index.l}\r\n");
-                sb.Append($"Coordinates of g = {list[0].Index.h} {list[0].Index.k} {list[0].Index.l}: ({list[0].X:f4}, {list[0].Y:f4}, {list[0].Z:f4})  in nm⁻¹\r\n");
+                sb.Append($"The spot is a supoerposition of mutiple of g = {FormMain.PlaneString(list[0].Index.h, list[0].Index.k, list[0].Index.l, useMB)}\r\n");
+                sb.Append($"Coordinates of g = {FormMain.PlaneString(list[0].Index.h, list[0].Index.k, list[0].Index.l, useMB)}: ({list[0].X:f4}, {list[0].Y:f4}, {list[0].Z:f4})  in nm⁻¹\r\n");
                 for (int i = 0; i < list.Count; i++)
-                    sb.Append($"  {i}   g = {list[i].Index.h} {list[i].Index.k} {list[i].Index.l};   F² = {list[i].F.MagnitudeSquared():f4}\r\n");
+                    sb.Append($"  {i}   g = {FormMain.PlaneString(list[i].Index.h, list[i].Index.k, list[i].Index.l, useMB)};   F² = {list[i].F.MagnitudeSquared():f4}\r\n");
 
                 MessageBox.Show(sb.ToString(), "Information on the clicked g vector");
             }
@@ -1882,7 +1884,7 @@ public partial class FormDiffractionSimulator : CaptureFormBase
                 var dev = Math.Abs(EwaldRadius - Math.Sqrt(vec.Length2 - 2 * vec.Z * EwaldRadius + EwaldRadius * EwaldRadius));
 
                 MessageBox.Show(
-                    $"Index: g = {g.Index.h} {g.Index.k} {g.Index.l}\r\n" +
+                    $"Index: g = {FormMain.PlaneString(g.Index.h, g.Index.k, g.Index.l, formMain.IsMillerBravaisActive)}\r\n" +                           // 260421Cl Miller-Bravais 対応
                     $"d-spacing: {g.d:f4} nm\r\n" +
                     $"Length: {1 / g.d:f4} nm⁻¹\r\n" +
                     $"Coordinate (nm⁻¹): {vec.X:f4}, {vec.Y:f4}, {vec.Z:f4}\r\n" +

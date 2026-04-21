@@ -68,9 +68,11 @@
             numericBoxAxisV = new NumericBox();
             numericBoxAxisW = new NumericBox();
             tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
-            numericBoxPlaneL = new NumericBox();
-            numericBoxPlaneH = new NumericBox();
-            numericBoxPlaneK = new NumericBox();
+            //260421Cl 旧: numericBoxPlaneL/H/K を個別配置。HKLControl 統合に伴い3個削除し、hklControlPlane 1個で代替
+            //numericBoxPlaneL = new NumericBox();
+            //numericBoxPlaneH = new NumericBox();
+            //numericBoxPlaneK = new NumericBox();
+            hklControlPlane = new HKLControl();                                                                                                           // 260421Cl 追加
             label11 = new System.Windows.Forms.Label();
             label12 = new System.Windows.Forms.Label();
             flowLayoutPanelSetPlane = new System.Windows.Forms.FlowLayoutPanel();
@@ -159,6 +161,7 @@
             disableOpneGLToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             toolStripMenuItemDisableTextRendering = new System.Windows.Forms.ToolStripMenuItem();
             toolStripMenuItemUseMKL = new System.Windows.Forms.ToolStripMenuItem();
+            toolStripMenuItemUseMillerBravais = new System.Windows.Forms.ToolStripMenuItem();                                                             // 260421Cl 追加
             toolStripSeparator20 = new System.Windows.Forms.ToolStripSeparator();
             powderDiffractionFunctionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             toolStripSeparatorCapture = new System.Windows.Forms.ToolStripSeparator();
@@ -547,53 +550,26 @@
             // tableLayoutPanel7
             // 
             resources.ApplyResources(tableLayoutPanel7, "tableLayoutPanel7");
-            tableLayoutPanel7.Controls.Add(numericBoxPlaneL, 3, 0);
-            tableLayoutPanel7.Controls.Add(numericBoxPlaneH, 0, 0);
-            tableLayoutPanel7.Controls.Add(numericBoxPlaneK, 0, 0);
-            tableLayoutPanel7.Controls.Add(label11, 4, 0);
+            //260421Cl numericBoxPlaneH/K/L を hklControlPlane 1 個に統合。col 指定が 5列→3列に縮小
+            //tableLayoutPanel7.Controls.Add(numericBoxPlaneL, 3, 0);
+            //tableLayoutPanel7.Controls.Add(numericBoxPlaneH, 0, 0);
+            //tableLayoutPanel7.Controls.Add(numericBoxPlaneK, 0, 0);
+            tableLayoutPanel7.Controls.Add(hklControlPlane, 1, 0);                                                                                        // 260421Cl 追加
+            tableLayoutPanel7.Controls.Add(label11, 2, 0);                                                                                                // 260421Cl col 4→2
             tableLayoutPanel7.Controls.Add(label12, 0, 0);
             tableLayoutPanel7.Name = "tableLayoutPanel7";
             toolTip.SetToolTip(tableLayoutPanel7, resources.GetString("tableLayoutPanel7.ToolTip"));
-            // 
-            // numericBoxPlaneL
-            // 
-            resources.ApplyResources(numericBoxPlaneL, "numericBoxPlaneL");
-            numericBoxPlaneL.BackColor = System.Drawing.SystemColors.Control;
-            numericBoxPlaneL.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxPlaneL.HeaderBackColor = System.Drawing.SystemColors.Control;
-            numericBoxPlaneL.Maximum = 50D;
-            numericBoxPlaneL.Minimum = -50D;
-            numericBoxPlaneL.Name = "numericBoxPlaneL";
-            numericBoxPlaneL.ShowUpDown = true;
-            numericBoxPlaneL.SkipEventDuringInput = false;
-            numericBoxPlaneL.ThonsandsSeparator = true;
-            // 
-            // numericBoxPlaneH
-            // 
-            resources.ApplyResources(numericBoxPlaneH, "numericBoxPlaneH");
-            numericBoxPlaneH.BackColor = System.Drawing.SystemColors.Control;
-            numericBoxPlaneH.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxPlaneH.HeaderBackColor = System.Drawing.SystemColors.Control;
-            numericBoxPlaneH.Maximum = 50D;
-            numericBoxPlaneH.Minimum = -50D;
-            numericBoxPlaneH.Name = "numericBoxPlaneH";
-            numericBoxPlaneH.ShowUpDown = true;
-            numericBoxPlaneH.SkipEventDuringInput = false;
-            numericBoxPlaneH.ThonsandsSeparator = true;
-            toolTip.SetToolTip(numericBoxPlaneH, resources.GetString("numericBoxPlaneH.ToolTip1"));
-            // 
-            // numericBoxPlaneK
-            // 
-            resources.ApplyResources(numericBoxPlaneK, "numericBoxPlaneK");
-            numericBoxPlaneK.BackColor = System.Drawing.SystemColors.Control;
-            numericBoxPlaneK.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxPlaneK.HeaderBackColor = System.Drawing.SystemColors.Control;
-            numericBoxPlaneK.Maximum = 50D;
-            numericBoxPlaneK.Minimum = -50D;
-            numericBoxPlaneK.Name = "numericBoxPlaneK";
-            numericBoxPlaneK.ShowUpDown = true;
-            numericBoxPlaneK.SkipEventDuringInput = false;
-            numericBoxPlaneK.ThonsandsSeparator = true;
+            //
+            // hklControlPlane (260421Cl 追加)
+            //
+            hklControlPlane.Dock = System.Windows.Forms.DockStyle.Fill;
+            hklControlPlane.Margin = new System.Windows.Forms.Padding(0);
+            hklControlPlane.Maximum = 50D;
+            hklControlPlane.Minimum = -50D;
+            hklControlPlane.Name = "hklControlPlane";
+            hklControlPlane.ShowUpDown = true;
+            hklControlPlane.ThousandsSeparator = true;
+            toolTip.SetToolTip(hklControlPlane, "Set crystal plane");
             // 
             // label11
             // 
@@ -1155,7 +1131,7 @@
             // optionToolStripMenuItem
             // 
             captureExtender.SetCapture(optionToolStripMenuItem, true);
-            optionToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { toolTipToolStripMenuItem, toolStripSeparator11, resetRegistryToolStripMenuItem, toolStripMenuItemDisableNative, disableOpneGLToolStripMenuItem, toolStripMenuItemDisableTextRendering, toolStripMenuItemUseMKL, toolStripSeparator20, powderDiffractionFunctionToolStripMenuItem, toolStripSeparatorCapture, captureGUIToolStripMenuItem });
+            optionToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { toolTipToolStripMenuItem, toolStripSeparator11, resetRegistryToolStripMenuItem, toolStripMenuItemDisableNative, disableOpneGLToolStripMenuItem, toolStripMenuItemDisableTextRendering, toolStripMenuItemUseMKL, toolStripMenuItemUseMillerBravais, toolStripSeparator20, powderDiffractionFunctionToolStripMenuItem, toolStripSeparatorCapture, captureGUIToolStripMenuItem });   // 260421Cl UseMillerBravais 追加
             optionToolStripMenuItem.Name = "optionToolStripMenuItem";
             resources.ApplyResources(optionToolStripMenuItem, "optionToolStripMenuItem");
             // 
@@ -1198,11 +1174,19 @@
             resources.ApplyResources(toolStripMenuItemDisableTextRendering, "toolStripMenuItemDisableTextRendering");
             // 
             // toolStripMenuItemUseMKL
-            // 
+            //
             toolStripMenuItemUseMKL.CheckOnClick = true;
             toolStripMenuItemUseMKL.Name = "toolStripMenuItemUseMKL";
             resources.ApplyResources(toolStripMenuItemUseMKL, "toolStripMenuItemUseMKL");
             toolStripMenuItemUseMKL.CheckedChanged += toolStripMenuItemUseMKL_CheckedChanged;
+            //
+            // toolStripMenuItemUseMillerBravais (260421Cl 追加)
+            //
+            toolStripMenuItemUseMillerBravais.CheckOnClick = true;
+            toolStripMenuItemUseMillerBravais.Name = "toolStripMenuItemUseMillerBravais";
+            toolStripMenuItemUseMillerBravais.Text = "Use Miller-Bravais (hkil) index";
+            toolStripMenuItemUseMillerBravais.ToolTipText = "When enabled, hexagonal / trigonal (hexagonal axes) crystals show four-index Miller-Bravais indices.";
+            toolStripMenuItemUseMillerBravais.CheckedChanged += toolStripMenuItemUseMillerBravais_CheckedChanged;
             // 
             // toolStripSeparator20
             // 
@@ -1537,9 +1521,11 @@
         private System.Windows.Forms.ToolStripMenuItem languageToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem englishToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem japaneseToolStripMenuItem;
-        private NumericBox numericBoxPlaneL;
-        private NumericBox numericBoxPlaneH;
-        private NumericBox numericBoxPlaneK;
+        //260421Cl 旧: numericBoxPlaneH/K/L → HKLControl 統合のため削除
+        //private NumericBox numericBoxPlaneL;
+        //private NumericBox numericBoxPlaneH;
+        //private NumericBox numericBoxPlaneK;
+        private HKLControl hklControlPlane;                                                                                                               // 260421Cl 追加
         public System.Windows.Forms.ToolStripButton toolStripButtonSpotIDv1;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.Label labelCurrentIndex;
@@ -1610,6 +1596,7 @@
         private System.Windows.Forms.ToolStripMenuItem renameToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemDisableNative;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemUseMKL;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemUseMillerBravais;                                                                 // 260421Cl 追加
         private System.Windows.Forms.ToolStripSeparator toolStripSeparatorCapture; // 260323Cl 追加
         private System.Windows.Forms.ToolStripMenuItem captureGUIToolStripMenuItem; // 260323Cl 追加
     }

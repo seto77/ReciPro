@@ -1334,8 +1334,9 @@ public partial class FormSpotIDV2 : CaptureFormBase
                         //シンボルを更新
                         foreach (var spot in g.Spots)
                         {
+                            //260421Cl Miller-Bravais 4 指数対応
                             var s = new ScalablePictureBox.Symbol(
-                                $"{name}{n}: {spot.Index.h} {spot.Index.k} {spot.Index.l}",
+                                $"{name}{n}: {FormMain.PlaneString(spot.Index.h, spot.Index.k, spot.Index.l, FormMain.IsMillerBravaisActive)}",
                                 new PointD(spot.X, spot.Y),
                                 Color.LightGreen, Color.DarkGreen, 5);
                             s.Tag = tagCalcSpot;
@@ -1364,8 +1365,9 @@ public partial class FormSpotIDV2 : CaptureFormBase
                 //シンボルを更新
                 foreach (var spot in g.Spots)
                 {
+                    //260421Cl Miller-Bravais 4 指数対応
                     var s = new ScalablePictureBox.Symbol(
-                       spot.Index.h + " " + spot.Index.k + " " + spot.Index.l,
+                       ReciPro.FormMain.PlaneString(spot.Index.h, spot.Index.k, spot.Index.l, FormMain.IsMillerBravaisActive),
                        new PointD(spot.X, spot.Y),
                         Color.LightGreen, Color.DarkGreen, 5);
                     s.Tag = tagCalcSpot;
