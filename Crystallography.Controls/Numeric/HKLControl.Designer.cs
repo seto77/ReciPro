@@ -121,5 +121,6 @@ partial class HKLControl
     private NumericBox numericBoxH;
     private NumericBox numericBoxK;
     private NumericBox numericBoxL;
-    private System.Windows.Forms.Label labelI;
+    // 260422Cl public 化: HKLControl を配置した外部 Form のデザイナ/コードから labelI.Visible を制御できるようにする
+    public System.Windows.Forms.Label labelI;
 }

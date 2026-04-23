@@ -82,7 +82,8 @@ public partial class FormMovie : CaptureFormBase
     }
 
     //260421Cl 追加: Miller-Bravais 表示切替時に FormMain から呼ばれる
-    public void OnMillerBravaisChanged(bool active) => hklControlPlane.ShowIIndex = active;
+    //260422Cl ShowIIndex 廃止 → labelI.Visible で直接制御
+    public void OnMillerBravaisChanged(bool active) => hklControlPlane.labelI.Visible = active;
 
     //260405Cl 変更: ffmpeg.exe Process.Start → FFMediaToolkit API, async化
     //private void buttonOK_Click(object sender, EventArgs e) // 旧実装: ffmpeg.exe を Process.Start で呼び出し

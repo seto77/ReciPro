@@ -1908,13 +1908,14 @@ public partial class FormMain : CaptureFormBase
 
     #region Miller-Bravais (4 指数) 表示の同期
 
-    //260421Cl 追加: UseMillerBravais と晶系に応じて hklControlPlane.ShowIIndex と配下フォームの表示を更新する。
+    //260421Cl 追加: UseMillerBravais と晶系に応じて hklControlPlane.labelI.Visible と配下フォームの表示を更新する。
     // Crystal 変更時 / メニューチェック変更時 / FormMovie 起動時 などから呼ぶ。
     public void UpdateMillerBravaisDisplay()
     {
+        //260422Cl ShowIIndex プロパティ廃止 → labelI.Visible で直接制御 (i 値自体は常時裏で計算)
         var active = IsMillerBravaisActive;
         if (hklControlPlane != null)
-            hklControlPlane.ShowIIndex = active;
+            hklControlPlane.labelI.Visible = active;
         FormMovie?.OnMillerBravaisChanged(active);
         FormDiffractionSimulator?.FormDiffractionBeamTable?.UpdateMillerBravaisColumnVisibility(active);
     }
@@ -1923,8 +1924,8 @@ public partial class FormMain : CaptureFormBase
     private void toolStripMenuItemUseMillerBravais_CheckedChanged(object sender, EventArgs e)
     {
         UpdateMillerBravaisDisplay();
-        // 関連する再描画・再計算を呼びたい場面では個別フォームで対応
-        if (FormDiffractionSimulator != null && FormDiffractionSimulator.Visible)
+        // 現在の結晶が 4 指数非対応の場合、トグルしても描画結果は変わらないので Draw() 省略    // 260422Cl
+        if (FormDiffractionSimulator != null && FormDiffractionSimulator.Visible && IsMillerBravaisCapable(Crystal))
             FormDiffractionSimulator.Draw();
     }
 
