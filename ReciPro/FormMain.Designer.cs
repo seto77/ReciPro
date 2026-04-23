@@ -68,11 +68,10 @@
             numericBoxAxisV = new NumericBox();
             numericBoxAxisW = new NumericBox();
             tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
-            //260421Cl 旧: numericBoxPlaneL/H/K を個別配置。HKLControl 統合に伴い3個削除し、hklControlPlane 1個で代替
-            //numericBoxPlaneL = new NumericBox();
-            //numericBoxPlaneH = new NumericBox();
-            //numericBoxPlaneK = new NumericBox();
-            hklControlPlane = new HKLControl();                                                                                                           // 260421Cl 追加
+            //260422Cl HKLControl 統合を revert し、numericBoxPlaneH/K/L を元の直接配置に戻す
+            numericBoxPlaneL = new NumericBox();
+            numericBoxPlaneH = new NumericBox();
+            numericBoxPlaneK = new NumericBox();
             label11 = new System.Windows.Forms.Label();
             label12 = new System.Windows.Forms.Label();
             flowLayoutPanelSetPlane = new System.Windows.Forms.FlowLayoutPanel();
@@ -550,26 +549,54 @@
             // tableLayoutPanel7
             // 
             resources.ApplyResources(tableLayoutPanel7, "tableLayoutPanel7");
-            //260421Cl numericBoxPlaneH/K/L を hklControlPlane 1 個に統合。col 指定が 5列→3列に縮小
-            //tableLayoutPanel7.Controls.Add(numericBoxPlaneL, 3, 0);
-            //tableLayoutPanel7.Controls.Add(numericBoxPlaneH, 0, 0);
-            //tableLayoutPanel7.Controls.Add(numericBoxPlaneK, 0, 0);
-            tableLayoutPanel7.Controls.Add(hklControlPlane, 1, 0);                                                                                        // 260421Cl 追加
-            tableLayoutPanel7.Controls.Add(label11, 2, 0);                                                                                                // 260421Cl col 4→2
+            //260422Cl HKLControl revert → 元の numericBoxPlaneH/K/L 5列配置に戻す
+            tableLayoutPanel7.Controls.Add(numericBoxPlaneL, 3, 0);
+            tableLayoutPanel7.Controls.Add(numericBoxPlaneH, 0, 0);
+            tableLayoutPanel7.Controls.Add(numericBoxPlaneK, 0, 0);
+            tableLayoutPanel7.Controls.Add(label11, 4, 0);
             tableLayoutPanel7.Controls.Add(label12, 0, 0);
             tableLayoutPanel7.Name = "tableLayoutPanel7";
             toolTip.SetToolTip(tableLayoutPanel7, resources.GetString("tableLayoutPanel7.ToolTip"));
             //
-            // hklControlPlane (260421Cl 追加)
+            // numericBoxPlaneL
             //
-            hklControlPlane.Dock = System.Windows.Forms.DockStyle.Fill;
-            hklControlPlane.Margin = new System.Windows.Forms.Padding(0);
-            hklControlPlane.Maximum = 50D;
-            hklControlPlane.Minimum = -50D;
-            hklControlPlane.Name = "hklControlPlane";
-            hklControlPlane.ShowUpDown = true;
-            hklControlPlane.ThousandsSeparator = true;
-            toolTip.SetToolTip(hklControlPlane, "Set crystal plane");
+            resources.ApplyResources(numericBoxPlaneL, "numericBoxPlaneL");
+            numericBoxPlaneL.BackColor = System.Drawing.SystemColors.Control;
+            numericBoxPlaneL.FooterBackColor = System.Drawing.SystemColors.Control;
+            numericBoxPlaneL.HeaderBackColor = System.Drawing.SystemColors.Control;
+            numericBoxPlaneL.Maximum = 50D;
+            numericBoxPlaneL.Minimum = -50D;
+            numericBoxPlaneL.Name = "numericBoxPlaneL";
+            numericBoxPlaneL.ShowUpDown = true;
+            numericBoxPlaneL.SkipEventDuringInput = false;
+            numericBoxPlaneL.ThonsandsSeparator = true;
+            //
+            // numericBoxPlaneH
+            //
+            resources.ApplyResources(numericBoxPlaneH, "numericBoxPlaneH");
+            numericBoxPlaneH.BackColor = System.Drawing.SystemColors.Control;
+            numericBoxPlaneH.FooterBackColor = System.Drawing.SystemColors.Control;
+            numericBoxPlaneH.HeaderBackColor = System.Drawing.SystemColors.Control;
+            numericBoxPlaneH.Maximum = 50D;
+            numericBoxPlaneH.Minimum = -50D;
+            numericBoxPlaneH.Name = "numericBoxPlaneH";
+            numericBoxPlaneH.ShowUpDown = true;
+            numericBoxPlaneH.SkipEventDuringInput = false;
+            numericBoxPlaneH.ThonsandsSeparator = true;
+            toolTip.SetToolTip(numericBoxPlaneH, resources.GetString("numericBoxPlaneH.ToolTip1"));
+            //
+            // numericBoxPlaneK
+            //
+            resources.ApplyResources(numericBoxPlaneK, "numericBoxPlaneK");
+            numericBoxPlaneK.BackColor = System.Drawing.SystemColors.Control;
+            numericBoxPlaneK.FooterBackColor = System.Drawing.SystemColors.Control;
+            numericBoxPlaneK.HeaderBackColor = System.Drawing.SystemColors.Control;
+            numericBoxPlaneK.Maximum = 50D;
+            numericBoxPlaneK.Minimum = -50D;
+            numericBoxPlaneK.Name = "numericBoxPlaneK";
+            numericBoxPlaneK.ShowUpDown = true;
+            numericBoxPlaneK.SkipEventDuringInput = false;
+            numericBoxPlaneK.ThonsandsSeparator = true;
             // 
             // label11
             // 
@@ -1521,11 +1548,10 @@
         private System.Windows.Forms.ToolStripMenuItem languageToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem englishToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem japaneseToolStripMenuItem;
-        //260421Cl 旧: numericBoxPlaneH/K/L → HKLControl 統合のため削除
-        //private NumericBox numericBoxPlaneL;
-        //private NumericBox numericBoxPlaneH;
-        //private NumericBox numericBoxPlaneK;
-        private HKLControl hklControlPlane;                                                                                                               // 260421Cl 追加
+        //260422Cl HKLControl revert → numericBoxPlaneH/K/L のフィールド宣言を復活
+        private NumericBox numericBoxPlaneL;
+        private NumericBox numericBoxPlaneH;
+        private NumericBox numericBoxPlaneK;
         public System.Windows.Forms.ToolStripButton toolStripButtonSpotIDv1;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.Label labelCurrentIndex;

@@ -1156,37 +1156,149 @@ If a plane index is also specified, that plane direction is shown upward.</value
     <value>True</value>
   </data>
   <data name="tableLayoutPanel7.ColumnCount" type="System.Int32, mscorlib">
-    <value>3</value>
+    <value>5</value>
   </data>
-  <!--260421Cl hklControlPlane (HKL 統合コントロール) エントリ -->
-  <data name="hklControlPlane.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+  <data name="numericBoxPlaneL.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="numericBoxPlaneL.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
-  <data name="hklControlPlane.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 0</value>
+  <data name="numericBoxPlaneL.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 5.76pt</value>
   </data>
-  <data name="hklControlPlane.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="numericBoxPlaneL.Location" type="System.Drawing.Point, System.Drawing">
+    <value>89, 0</value>
+  </data>
+  <data name="numericBoxPlaneL.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
-  <data name="hklControlPlane.Size" type="System.Drawing.Size, System.Drawing">
-    <value>123, 25</value>
+  <data name="numericBoxPlaneL.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 30</value>
   </data>
-  <data name="hklControlPlane.TabIndex" type="System.Int32, mscorlib">
-    <value>43</value>
+  <data name="numericBoxPlaneL.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1, 20</value>
   </data>
-  <data name="&gt;&gt;hklControlPlane.Name" xml:space="preserve">
-    <value>hklControlPlane</value>
+  <data name="numericBoxPlaneL.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 1, 0</value>
   </data>
-  <data name="&gt;&gt;hklControlPlane.Type" xml:space="preserve">
-    <value>Crystallography.Controls.HKLControl, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  <data name="numericBoxPlaneL.Size" type="System.Drawing.Size, System.Drawing">
+    <value>41, 25</value>
   </data>
-  <data name="&gt;&gt;hklControlPlane.Parent" xml:space="preserve">
+  <data name="numericBoxPlaneL.TabIndex" type="System.Int32, mscorlib">
+    <value>45</value>
+  </data>
+  <data name="numericBoxPlaneL.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="&gt;&gt;numericBoxPlaneL.Name" xml:space="preserve">
+    <value>numericBoxPlaneL</value>
+  </data>
+  <data name="&gt;&gt;numericBoxPlaneL.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericBoxPlaneL.Parent" xml:space="preserve">
     <value>tableLayoutPanel7</value>
   </data>
-  <data name="&gt;&gt;hklControlPlane.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;numericBoxPlaneL.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <!--260421Cl numericBoxPlaneH/K/L の resx エントリは HKLControl 統合により削除-->
+  <data name="numericBoxPlaneH.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="numericBoxPlaneH.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="numericBoxPlaneH.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 5.76pt</value>
+  </data>
+  <data name="numericBoxPlaneH.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 0</value>
+  </data>
+  <data name="numericBoxPlaneH.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="numericBoxPlaneH.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 30</value>
+  </data>
+  <data name="numericBoxPlaneH.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1, 20</value>
+  </data>
+  <data name="numericBoxPlaneH.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 1, 0</value>
+  </data>
+  <data name="numericBoxPlaneH.Size" type="System.Drawing.Size, System.Drawing">
+    <value>41, 25</value>
+  </data>
+  <data name="numericBoxPlaneH.TabIndex" type="System.Int32, mscorlib">
+    <value>43</value>
+  </data>
+  <data name="numericBoxPlaneH.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="numericBoxPlaneH.ToolTip" xml:space="preserve">
+    <value>Set crystal plane</value>
+  </data>
+  <data name="numericBoxPlaneH.ToolTip1" xml:space="preserve">
+    <value>Set crystal plane</value>
+  </data>
+  <data name="&gt;&gt;numericBoxPlaneH.Name" xml:space="preserve">
+    <value>numericBoxPlaneH</value>
+  </data>
+  <data name="&gt;&gt;numericBoxPlaneH.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericBoxPlaneH.Parent" xml:space="preserve">
+    <value>tableLayoutPanel7</value>
+  </data>
+  <data name="&gt;&gt;numericBoxPlaneH.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="numericBoxPlaneK.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="numericBoxPlaneK.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="numericBoxPlaneK.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 5.76pt</value>
+  </data>
+  <data name="numericBoxPlaneK.Location" type="System.Drawing.Point, System.Drawing">
+    <value>48, 0</value>
+  </data>
+  <data name="numericBoxPlaneK.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="numericBoxPlaneK.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 30</value>
+  </data>
+  <data name="numericBoxPlaneK.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1, 20</value>
+  </data>
+  <data name="numericBoxPlaneK.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 1, 0</value>
+  </data>
+  <data name="numericBoxPlaneK.Size" type="System.Drawing.Size, System.Drawing">
+    <value>41, 25</value>
+  </data>
+  <data name="numericBoxPlaneK.TabIndex" type="System.Int32, mscorlib">
+    <value>44</value>
+  </data>
+  <data name="numericBoxPlaneK.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="&gt;&gt;numericBoxPlaneK.Name" xml:space="preserve">
+    <value>numericBoxPlaneK</value>
+  </data>
+  <data name="&gt;&gt;numericBoxPlaneK.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericBoxPlaneK.Parent" xml:space="preserve">
+    <value>tableLayoutPanel7</value>
+  </data>
+  <data name="&gt;&gt;numericBoxPlaneK.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
 
   <data name="label11.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1306,7 +1418,7 @@ If a plane index is also specified, that plane direction is shown upward.</value
     <value>2</value>
   </data>
   <data name="tableLayoutPanel7.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="hklControlPlane" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="label11" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="label12" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0,Percent,100,AutoSize,0" /&gt;&lt;Rows Styles="Percent,100" /&gt;&lt;/TableLayoutSettings&gt;</value>
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="numericBoxPlaneL" Row="0" RowSpan="1" Column="3" ColumnSpan="1" /&gt;&lt;Control Name="numericBoxPlaneH" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="numericBoxPlaneK" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="label11" Row="0" RowSpan="1" Column="4" ColumnSpan="1" /&gt;&lt;Control Name="label12" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0,Percent,33.33333,Percent,33.33333,Percent,33.33333,AutoSize,0" /&gt;&lt;Rows Styles="Percent,100" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
   <data name="flowLayoutPanelSetPlane.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>

@@ -76,14 +76,10 @@ public partial class FormMovie : CaptureFormBase
         else if (radioButtonPlane.Checked)
         {
             var rot = new Matrix3D(A, B, C).Inverse();
-            //260421Cl HKLControl 統合
-            Direction = Rot * (hklControlPlane.H * rot.Row1 + hklControlPlane.K * rot.Row2 + hklControlPlane.L * rot.Row3);
+            //260422Cl HKLControl revert
+            Direction = Rot * (numericBoxPlaneH.Value * rot.Row1 + numericBoxPlaneK.Value * rot.Row2 + numericBoxPlaneL.Value * rot.Row3);
         }
     }
-
-    //260421Cl 追加: Miller-Bravais 表示切替時に FormMain から呼ばれる
-    //260422Cl ShowIIndex 廃止 → labelI.Visible で直接制御
-    public void OnMillerBravaisChanged(bool active) => hklControlPlane.labelI.Visible = active;
 
     //260405Cl 変更: ffmpeg.exe Process.Start → FFMediaToolkit API, async化
     //private void buttonOK_Click(object sender, EventArgs e) // 旧実装: ffmpeg.exe を Process.Start で呼び出し

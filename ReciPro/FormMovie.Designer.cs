@@ -49,11 +49,10 @@ partial class FormMovie
         numericBoxAxisV = new NumericBox();
         numericBoxAxisW = new NumericBox();
         tableLayoutPanelPlane = new System.Windows.Forms.TableLayoutPanel();
-        //260421Cl 旧: NumericBox×3 → HKLControl 統合のため削除
-        //numericBoxPlaneL = new NumericBox();
-        //numericBoxPlaneH = new NumericBox();
-        //numericBoxPlaneK = new NumericBox();
-        hklControlPlane = new HKLControl();                                                                                                               // 260421Cl 追加
+        //260422Cl HKLControl revert → NumericBox×3 の元配置に戻す
+        numericBoxPlaneL = new NumericBox();
+        numericBoxPlaneH = new NumericBox();
+        numericBoxPlaneK = new NumericBox();
         label11 = new System.Windows.Forms.Label();
         label12 = new System.Windows.Forms.Label();
         radioButtonCurrent = new System.Windows.Forms.RadioButton();
@@ -498,13 +497,17 @@ partial class FormMovie
         // tableLayoutPanelPlane
         // 
         tableLayoutPanelPlane.AutoSize = true;
-        //260421Cl 5列 → 3列に変更 (HKLControl 1個に集約)
-        tableLayoutPanelPlane.ColumnCount = 3;
+        //260422Cl HKLControl revert → 5列構成に戻す
+        tableLayoutPanelPlane.ColumnCount = 5;
         tableLayoutPanelPlane.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-        tableLayoutPanelPlane.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+        tableLayoutPanelPlane.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+        tableLayoutPanelPlane.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+        tableLayoutPanelPlane.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
         tableLayoutPanelPlane.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-        tableLayoutPanelPlane.Controls.Add(hklControlPlane, 1, 0);                                                                                        // 260421Cl 追加
-        tableLayoutPanelPlane.Controls.Add(label11, 2, 0);                                                                                                // 260421Cl col 4→2
+        tableLayoutPanelPlane.Controls.Add(numericBoxPlaneL, 3, 0);
+        tableLayoutPanelPlane.Controls.Add(numericBoxPlaneH, 0, 0);
+        tableLayoutPanelPlane.Controls.Add(numericBoxPlaneK, 0, 0);
+        tableLayoutPanelPlane.Controls.Add(label11, 4, 0);
         tableLayoutPanelPlane.Controls.Add(label12, 0, 0);
         tableLayoutPanelPlane.Enabled = false;
         tableLayoutPanelPlane.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
@@ -517,17 +520,83 @@ partial class FormMovie
         tableLayoutPanelPlane.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
         tableLayoutPanelPlane.Size = new System.Drawing.Size(158, 29);
         tableLayoutPanelPlane.TabIndex = 88;
+        //260422Cl HKLControl revert → NumericBox×3 の元ブロックに戻す
         //
-        // hklControlPlane (260421Cl 追加)
+        // numericBoxPlaneL
         //
-        hklControlPlane.Dock = System.Windows.Forms.DockStyle.Fill;
-        hklControlPlane.Margin = new System.Windows.Forms.Padding(0, 3, 0, 0);
-        hklControlPlane.Maximum = 50D;
-        hklControlPlane.Minimum = -50D;
-        hklControlPlane.Name = "hklControlPlane";
-        hklControlPlane.ShowUpDown = true;
-        hklControlPlane.ThousandsSeparator = true;
-        hklControlPlane.ValueChanged += numericBoxAxisU_ValueChanged;
+        numericBoxPlaneL.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+        numericBoxPlaneL.BackColor = System.Drawing.SystemColors.Control;
+        numericBoxPlaneL.Dock = System.Windows.Forms.DockStyle.Fill;
+        numericBoxPlaneL.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
+        numericBoxPlaneL.FooterBackColor = System.Drawing.SystemColors.Control;
+        numericBoxPlaneL.HeaderBackColor = System.Drawing.SystemColors.Control;
+        numericBoxPlaneL.Location = new System.Drawing.Point(100, 3);
+        numericBoxPlaneL.Margin = new System.Windows.Forms.Padding(0, 3, 0, 0);
+        numericBoxPlaneL.Maximum = 50D;
+        numericBoxPlaneL.MaximumSize = new System.Drawing.Size(1000, 28);
+        numericBoxPlaneL.Minimum = -50D;
+        numericBoxPlaneL.MinimumSize = new System.Drawing.Size(1, 18);
+        numericBoxPlaneL.Name = "numericBoxPlaneL";
+        numericBoxPlaneL.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
+        numericBoxPlaneL.RoundErrorAccuracy = -1;
+        numericBoxPlaneL.ShowUpDown = true;
+        numericBoxPlaneL.Size = new System.Drawing.Size(44, 26);
+        numericBoxPlaneL.SkipEventDuringInput = false;
+        numericBoxPlaneL.TabIndex = 2;
+        numericBoxPlaneL.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
+        numericBoxPlaneL.ThonsandsSeparator = true;
+        numericBoxPlaneL.ValueChanged += numericBoxAxisU_ValueChanged;
+        //
+        // numericBoxPlaneH
+        //
+        numericBoxPlaneH.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+        numericBoxPlaneH.BackColor = System.Drawing.SystemColors.Control;
+        numericBoxPlaneH.Dock = System.Windows.Forms.DockStyle.Fill;
+        numericBoxPlaneH.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
+        numericBoxPlaneH.FooterBackColor = System.Drawing.SystemColors.Control;
+        numericBoxPlaneH.HeaderBackColor = System.Drawing.SystemColors.Control;
+        numericBoxPlaneH.Location = new System.Drawing.Point(12, 3);
+        numericBoxPlaneH.Margin = new System.Windows.Forms.Padding(0, 3, 0, 0);
+        numericBoxPlaneH.Maximum = 50D;
+        numericBoxPlaneH.MaximumSize = new System.Drawing.Size(1000, 28);
+        numericBoxPlaneH.Minimum = -50D;
+        numericBoxPlaneH.MinimumSize = new System.Drawing.Size(1, 18);
+        numericBoxPlaneH.Name = "numericBoxPlaneH";
+        numericBoxPlaneH.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
+        numericBoxPlaneH.RoundErrorAccuracy = -1;
+        numericBoxPlaneH.ShowUpDown = true;
+        numericBoxPlaneH.Size = new System.Drawing.Size(44, 26);
+        numericBoxPlaneH.SkipEventDuringInput = false;
+        numericBoxPlaneH.TabIndex = 0;
+        numericBoxPlaneH.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
+        numericBoxPlaneH.ThonsandsSeparator = true;
+        numericBoxPlaneH.ToolTip = "Set crystal plane";
+        numericBoxPlaneH.ValueChanged += numericBoxAxisU_ValueChanged;
+        //
+        // numericBoxPlaneK
+        //
+        numericBoxPlaneK.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+        numericBoxPlaneK.BackColor = System.Drawing.SystemColors.Control;
+        numericBoxPlaneK.Dock = System.Windows.Forms.DockStyle.Fill;
+        numericBoxPlaneK.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
+        numericBoxPlaneK.FooterBackColor = System.Drawing.SystemColors.Control;
+        numericBoxPlaneK.HeaderBackColor = System.Drawing.SystemColors.Control;
+        numericBoxPlaneK.Location = new System.Drawing.Point(56, 3);
+        numericBoxPlaneK.Margin = new System.Windows.Forms.Padding(0, 3, 0, 0);
+        numericBoxPlaneK.Maximum = 50D;
+        numericBoxPlaneK.MaximumSize = new System.Drawing.Size(1000, 28);
+        numericBoxPlaneK.Minimum = -50D;
+        numericBoxPlaneK.MinimumSize = new System.Drawing.Size(1, 18);
+        numericBoxPlaneK.Name = "numericBoxPlaneK";
+        numericBoxPlaneK.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
+        numericBoxPlaneK.RoundErrorAccuracy = -1;
+        numericBoxPlaneK.ShowUpDown = true;
+        numericBoxPlaneK.Size = new System.Drawing.Size(44, 26);
+        numericBoxPlaneK.SkipEventDuringInput = false;
+        numericBoxPlaneK.TabIndex = 1;
+        numericBoxPlaneK.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
+        numericBoxPlaneK.ThonsandsSeparator = true;
+        numericBoxPlaneK.ValueChanged += numericBoxAxisU_ValueChanged;
         // 
         // label11
         // 
@@ -686,11 +755,10 @@ partial class FormMovie
     private NumericBox numericBoxAxisV;
     private NumericBox numericBoxAxisW;
     private System.Windows.Forms.TableLayoutPanel tableLayoutPanelPlane;
-    //260421Cl HKLControl 統合により削除
-    //private NumericBox numericBoxPlaneL;
-    //private NumericBox numericBoxPlaneH;
-    //private NumericBox numericBoxPlaneK;
-    public HKLControl hklControlPlane;                                                                                                                    // 260421Cl public で外部 (FormMain) からアクセス
+    //260422Cl HKLControl revert → フィールド宣言復活
+    private NumericBox numericBoxPlaneL;
+    private NumericBox numericBoxPlaneH;
+    private NumericBox numericBoxPlaneK;
     private System.Windows.Forms.Label label11;
     private System.Windows.Forms.Label label12;
     private System.Windows.Forms.RadioButton radioButtonCurrent;
