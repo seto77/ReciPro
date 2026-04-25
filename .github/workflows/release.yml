@@ -205,7 +205,8 @@ jobs:
 
       - name: Upload workflow artifacts
         if: steps.version.outputs.needed == 'true'
-        uses: actions/upload-artifact@v4
+        # 260425Cl Node.js 20 廃止対応 (v6 で Node.js 24 がデフォルト)
+        uses: actions/upload-artifact@v6
         with:
           name: ReciPro-installer-v.${{ steps.version.outputs.version }}
           path: ${{ steps.build_installer.outputs.msi_path }}
