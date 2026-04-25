@@ -8,6 +8,9 @@ using ZLinq;
 
 namespace Crystallography.Controls;
 
+// 260424Cl 追加 NumericBoxのHeader/Footerラベルの配置方向
+public enum NumericBoxOrientation { Horizontal, Vertical }
+
 [TypeConverter(typeof(DefinitionOrderTypeConverter))]
 [DefaultEvent("ValueChanged")]
 public partial class NumericBox : CaptureUserControlBase
@@ -70,6 +73,23 @@ public partial class NumericBox : CaptureUserControlBase
         }
     }
     private bool showUpDown = false;
+
+    /// <summary>UpDownボタンの横幅(ピクセル)。Dock=Rightのspinボタン用Panelの幅を設定する。</summary>
+    [DefaultValue(17)]                                                                                                                                // 260423Cl 追加
+    [Category("Appearance properties")]
+    public int UpDownWidth
+    {
+        get => upDownWidth;
+        set
+        {
+            if (value < 1) value = 1;
+            upDownWidth = value;
+            if (spinButtonPanel == null) return;
+            spinButtonPanel.Width = value;
+            alignSpinButton();
+        }
+    }
+    private int upDownWidth = 17;                                                                                                                     // 260423Cl 追加 既定値はresxと同値
 
     /// <summary>UpDownボタンが有効な場合、Incrementを取得/設定</summary>
     [DefaultValue(1.0)]
@@ -145,11 +165,37 @@ public partial class NumericBox : CaptureUserControlBase
     public double MinimalStep => DecimalPlaces >= 0 ? Math.Pow(10, -DecimalPlaces) : 1;
 
     #region ヘッダー＆フッター の文字、フォント、色
+
+    /// <summary>ヘッダ/フッタラベルの配置方向 (Horizontal: Header=Left, Footer=Right / Vertical: Header=Top, Footer=Bottom)</summary>
+    [DefaultValue(NumericBoxOrientation.Horizontal)]                                                                                                  // 260424Cl 追加
+    [Category("Appearance properties")]
+    public NumericBoxOrientation LabelOrientation
+    {
+        get => labelOrientation;
+        set
+        {
+            if (labelOrientation == value) return;
+            labelOrientation = value;
+            applyLabelOrientation();
+        }
+    }
+    private NumericBoxOrientation labelOrientation = NumericBoxOrientation.Horizontal;                                                                // 260424Cl 追加
+
     /// <summary>数値の前に表示するテキスト</summary>
     [DefaultValue("")]
     [Localizable(true)]
     [Category("Font && Color")]
-    public string HeaderText { set => labelHeader.Text = value; get => labelHeader.Text; }
+    //public string HeaderText { set => labelHeader.Text = value; get => labelHeader.Text; }                                                           // 260424Cl 変更
+    public string HeaderText                                                                                                                          // 260424Cl 変更 空文字の場合はVerticalモード時にラベルを非表示化
+    {
+        set
+        {
+            if (labelHeader.Text == value) return;
+            labelHeader.Text = value;
+            updateLabelVisibility();
+        }
+        get => labelHeader.Text;
+    }
 
     [Category("Font && Color")]
     [Localizable(true)]
@@ -173,7 +219,17 @@ public partial class NumericBox : CaptureUserControlBase
     [DefaultValue("")]
     [Category("Font && Color")]
     [Localizable(true)]
-    public string FooterText { set => labelFooter.Text = value; get => labelFooter.Text; }
+    //public string FooterText { set => labelFooter.Text = value; get => labelFooter.Text; }                                                           // 260424Cl 変更
+    public string FooterText                                                                                                                          // 260424Cl 変更 空文字の場合はVerticalモード時にラベルを非表示化
+    {
+        set
+        {
+            if (labelFooter.Text == value) return;
+            labelFooter.Text = value;
+            updateLabelVisibility();
+        }
+        get => labelFooter.Text;
+    }
 
     [Category("Font && Color")]
     [DefaultValue(typeof(Padding), "0,2,0,0")]
@@ -209,22 +265,7 @@ public partial class NumericBox : CaptureUserControlBase
     /// <summary>font</summary>
     public Font TextFont
     {
-        set
-        {
-            textBox.Font = value;
-            //numericUpDown.Font = value;                                                                                                             // 260413Cl SpinButtonはネイティブ描画のためFont不要
-            if (Multiline)
-            {
-                MinimumSize = new Size(0, 0);
-                MaximumSize = new Size(0, 0);
-            }
-            else
-            {
-                //this.Height = textBox.Height + 2;
-                MinimumSize = new Size(1, textBox.Height - 5);
-                MaximumSize = new Size(1000, textBox.Height + 5);
-            }
-        }
+        set => textBox.Font = value;                                                                                                                  // 260424Cl 変更 MinimumSize/MaximumSizeの自動クランプを撤廃
         get => textBox.Font;
     }
 
@@ -324,25 +365,9 @@ public partial class NumericBox : CaptureUserControlBase
     /// <summary>複数行表示をするかどうか</summary>
     [DefaultValue(false)]
     [Category("Appearance properties")]
-    public bool Multiline
+    public bool Multiline                                                                                                                             // 260424Cl 変更 MinimumSize/MaximumSizeの自動クランプを撤廃
     {
-        set
-        {
-            textBox.Multiline = value;
-            if (value)
-            {
-                //textBox.Dock = DockStyle.Fill;
-                MinimumSize = new Size(0, 0);
-                MaximumSize = new Size(0, 0);
-            }
-            else
-            {
-                //textBox.Dock = DockStyle.None;
-                //this.Height = textBox.Height;
-                MinimumSize = new Size(1, textBox.Height - 5);
-                MaximumSize = new Size(1000, textBox.Height + 5);
-            }
-        }
+        set => textBox.Multiline = value;
         get => textBox.Multiline;
     }
 
@@ -398,10 +423,13 @@ public partial class NumericBox : CaptureUserControlBase
         {
             Name = "spinButton",
             Enabled = !textBox.ReadOnly,
+            Margin = new Padding(0,0,0,0),
+            Padding = new Padding(0,0,0,0),
         };
         spinButton.UpClick += spinButton_UpClick;
         spinButton.DownClick += spinButton_DownClick;
         spinButtonPanel.Controls.Add(spinButton);
+        spinButtonPanel.Width = upDownWidth;                                                                                                          // 260423Cl 追加 UpDownWidthプロパティ値をPanelへ反映
         spinButtonPanel.Visible = showUpDown;
 
         // 260413Cl textBoxの高さに追従させるためsizeChangedを購読
@@ -422,7 +450,32 @@ public partial class NumericBox : CaptureUserControlBase
         spinButton.Top = textBox.Top - spinButtonPanel.Top;
     }
 
-  
+    // 260424Cl 追加 LabelOrientationに応じてlabelHeader/labelFooterのDockを切り替える
+    private void applyLabelOrientation()
+    {
+        if (labelHeader == null || labelFooter == null) return;
+        if (labelOrientation == NumericBoxOrientation.Vertical)
+        {
+            labelHeader.Dock = DockStyle.Top;
+            labelFooter.Dock = DockStyle.Bottom;
+        }
+        else
+        {
+            labelHeader.Dock = DockStyle.Left;
+            labelFooter.Dock = DockStyle.Right;
+        }
+        updateLabelVisibility();
+    }
+
+    // 260424Cl 追加 HeaderText/FooterTextが空ならラベルを非表示にして余白(Vertical時は改行、Horizontal時はPadding分)を詰める
+    private void updateLabelVisibility()
+    {
+        if (labelHeader == null || labelFooter == null) return;
+        labelHeader.Visible = !string.IsNullOrEmpty(labelHeader.Text);
+        labelFooter.Visible = !string.IsNullOrEmpty(labelFooter.Text);
+    }
+
+
 
 
     private bool skipTextChangeEvent = false;//テキストチェンジイベント自体をキャンセルする　

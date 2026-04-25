@@ -2,12 +2,10 @@ version=1
 
 # This file caches language service data to improve the performance of C# Dev Kit.
 # It is not intended for manual editing. It can safely be deleted and will be
-# regenerated automatically.
+# regenerated automatically. For more information, see https://aka.ms/lscache
 #
-# To exclude from version control, add *.lscache to your .gitignore file.
-#
-# To disable caching, add the following to your VS Code settings:
-#   "dotnet.projectsystem.enableLanguageServiceCache": false
+# To control where cache files are stored, use the following VS Code setting:
+#   "dotnet.projectsystem.cacheInProjectFolder": true
 
 [project]
 language=C#
@@ -145,17 +143,19 @@ Numeric/
  FormCalculator.Designer.cs
  FormNumericUpdownControl.cs
  FormNumericUpdownControl.Designer.cs
+ HKLControl.cs
+ HKLControl.Designer.cs
  NumericBox.cs
  NumericBox.Designer.cs
  NumericBoxWithMenu.cs
  NumericBoxWithMenu.Designer.cs
+ SpinButton.cs
 obj/x64/Release/net10.0-windows/
  .NETCoreApp,Version=v10.0.AssemblyAttributes.cs
  Crystallography.Controls.AssemblyInfo.cs
  Crystallography.Controls.GlobalUsings.g.cs
 SaclaControl.cs
 SaclaControl.Designer.cs
-SpinButton.cs
 TrackBarAdvanced.cs
 TrackBarAdvanced.Designer.cs
 Wave/

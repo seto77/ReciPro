@@ -203,28 +203,28 @@ public partial class FormDiffractionSpotInfo : CaptureFormBase
         {
             var sb = new StringBuilder();
             //260421Cl h, k に加えて i もスペース区切りに含める (l が h k l グループの最後のためタブで閉じる)
-            for (int i = 0; i < dataGridView.Columns.Count; i++)
-                if (dataGridView.Columns[i].Visible)
-                {
-                    var hdr = dataGridView.Columns[i].HeaderText;
-                    if (hdr == "h" || hdr == "k" || hdr == "i")
-                        sb.Append(hdr);
-                    else
-                        sb.Append($"{hdr}\t");
-                }
+            //260422Cl 列メタ情報 (visible / header / スペース区切りか) をループ外で一度だけ取得
+            var colCount = dataGridView.ColumnCount;
+            var visible = new bool[colCount];
+            var headers = new string[colCount];
+            var spaceSep = new bool[colCount];
+            for (int i = 0; i < colCount; i++)
+            {
+                visible[i] = dataGridView.Columns[i].Visible;
+                headers[i] = dataGridView.Columns[i].HeaderText;
+                spaceSep[i] = headers[i] == "h" || headers[i] == "k" || headers[i] == "i";
+            }
+
+            for (int i = 0; i < colCount; i++)
+                if (visible[i])
+                    sb.Append(spaceSep[i] ? headers[i] : $"{headers[i]}\t");
             sb.Append("\r\n");
 
             for (int j = 0; j < dataGridView.Rows.Count; j++)
             {
-                for (int i = 0; i < dataGridView.ColumnCount; i++)
-                    if (dataGridView.Columns[i].Visible)
-                    {
-                        var hdr = dataGridView.Columns[i].HeaderText;
-                        if (hdr == "h" || hdr == "k" || hdr == "i")
-                            sb.Append($"{dataGridView[i, j].Value} ");
-                        else
-                            sb.Append($"{dataGridView[i, j].Value}\t");
-                    }
+                for (int i = 0; i < colCount; i++)
+                    if (visible[i])
+                        sb.Append(spaceSep[i] ? $"{dataGridView[i, j].Value} " : $"{dataGridView[i, j].Value}\t");
                 sb.Append("\r\n");
             }
             Clipboard.SetDataObject(sb.ToString());
@@ -232,7 +232,7 @@ public partial class FormDiffractionSpotInfo : CaptureFormBase
     }
 
     //260421Cl 追加: Miller-Bravais i 列の表示/非表示を切替える (FormMain から呼ばれる)
-    public void UpdateMillerBravaisColumnVisibility(bool show) => iDataGridViewTextBoxColumn.Visible = show;
+    public void UpdatePlaneIndices(bool show) => iDataGridViewTextBoxColumn.Visible = show;
 
 
 

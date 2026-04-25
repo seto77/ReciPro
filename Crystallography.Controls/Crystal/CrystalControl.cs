@@ -44,7 +44,7 @@ public partial class CrystalControl : CaptureUserControlBase
     public bool SymmetryInformationVisible { set => FormSymmetryInformation.Visible = value; get => FormSymmetryInformation.Visible; }
 
     [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
-    public bool ScatteringFactorVisible { set { FormScatteringFactor.Visible = value; } get => FormScatteringFactor.Visible; }
+    public bool ScatteringFactorVisible { set => FormScatteringFactor.Visible = value; get => FormScatteringFactor.Visible; }
 
     public bool StrainControlVisible { get => formStrain.Visible; }
 
@@ -182,16 +182,15 @@ public partial class CrystalControl : CaptureUserControlBase
         FormScatteringFactor = new FormScatteringFactor { CrystalControl = this, Visible = false };
         FormSymmetryInformation = new FormSymmetryInformation { CrystalControl = this, Visible = false };
         formStrain = new FormStrain { CrystalControl = this, Visible = false };
+
+        FormScatteringFactor.VisibleChanged += new EventHandler(formScatteringFactor_VisibleChanged);
+        FormSymmetryInformation.VisibleChanged += new EventHandler(formSymmetryInformation_VisibleChanged);
     }
 
     private void CrystalForm_Load(object sender, System.EventArgs e)
     {
         textBoxTitle.Size = new Size(tabPageReference.Width - textBoxTitle.Location.X - 2, tabPageReference.Height - textBoxTitle.Location.Y - 2);
-        FormScatteringFactor.VisibleChanged += new EventHandler(formScatteringFactor_VisibleChanged);
-        FormSymmetryInformation.VisibleChanged += new EventHandler(formSymmetryInformation_VisibleChanged);
-
         typeof(UserControl).GetProperty("DoubleBuffered", BindingFlags.Instance | BindingFlags.NonPublic).SetValue(this, true, null);
-
     }
 
 
@@ -1007,4 +1006,10 @@ public partial class CrystalControl : CaptureUserControlBase
     #endregion
 
     private void buttonStressSet_Click(object sender, EventArgs e) => GenerateFromInterface();
+
+    /// <summary>Miller-Bravais指数を有効化する</summary>
+    public bool MillerBravais
+    {
+        set => FormScatteringFactor.MillerBravais = value && crystal.MillerBravaisCapable;
+    }
 }

@@ -74,6 +74,8 @@ public partial class FormStructureViewer : CaptureFormBase
     private ToolStripMenuItem enableDDPToolStripMenuItem = null;
     private bool ddpDeveloperModeEnabled = false;
     private bool updatingTransparencyModeItems = false;
+
+    public bool MillerBravaisActive => formMain.MillerBravaisActive;
     #endregion
 
     #region ローカルクラス
@@ -345,6 +347,8 @@ public partial class FormStructureViewer : CaptureFormBase
         numericBoxClientWidth.Value = splitContainer1.Panel1.Width;
         numericBoxClientHeight.Value = splitContainer1.Panel1.Height;
         SkipEvent = false;
+
+        UpdatePlaneIndices();
     }
 
     private void FormStructureViewer_VisibleChanged(object sender, EventArgs e)
@@ -2036,5 +2040,11 @@ public partial class FormStructureViewer : CaptureFormBase
     }
     #endregion
 
+
+    public void UpdatePlaneIndices()
+    {
+        if (latticePlaneControl != null)
+            latticePlaneControl.MillerBravaisIndexActive = MillerBravaisActive;
+    }
 }
 

@@ -49,7 +49,6 @@ partial class FormMovie
         numericBoxAxisV = new NumericBox();
         numericBoxAxisW = new NumericBox();
         tableLayoutPanelPlane = new System.Windows.Forms.TableLayoutPanel();
-        //260422Cl HKLControl revert → NumericBox×3 の元配置に戻す
         numericBoxPlaneL = new NumericBox();
         numericBoxPlaneH = new NumericBox();
         numericBoxPlaneK = new NumericBox();
@@ -61,6 +60,7 @@ partial class FormMovie
         radioButtonH265 = new System.Windows.Forms.RadioButton();
         comboBoxSpeed = new System.Windows.Forms.ComboBox();
         label1 = new System.Windows.Forms.Label();
+        numericBoxPlaneI = new NumericBox();
         tableLayoutPanelCurrent.SuspendLayout();
         tableLayoutPanel2.SuspendLayout();
         tableLayoutPanelAxis.SuspendLayout();
@@ -104,7 +104,6 @@ partial class FormMovie
         numericBoxSpeed.MinimumSize = new System.Drawing.Size(1, 20);
         numericBoxSpeed.Name = "numericBoxSpeed";
         numericBoxSpeed.RadianValue = 0.52359877559829882D;
-        numericBoxSpeed.RoundErrorAccuracy = -1;
         numericBoxSpeed.ShowUpDown = true;
         numericBoxSpeed.Size = new System.Drawing.Size(166, 27);
         numericBoxSpeed.SkipEventDuringInput = false;
@@ -332,7 +331,6 @@ partial class FormMovie
         numericBoxDuration.MinimumSize = new System.Drawing.Size(1, 20);
         numericBoxDuration.Name = "numericBoxDuration";
         numericBoxDuration.RadianValue = 0.20943951023931953D;
-        numericBoxDuration.RoundErrorAccuracy = -1;
         numericBoxDuration.ShowUpDown = true;
         numericBoxDuration.Size = new System.Drawing.Size(156, 27);
         numericBoxDuration.SkipEventDuringInput = false;
@@ -405,7 +403,6 @@ partial class FormMovie
         numericBoxAxisU.MinimumSize = new System.Drawing.Size(1, 18);
         numericBoxAxisU.Name = "numericBoxAxisU";
         numericBoxAxisU.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
-        numericBoxAxisU.RoundErrorAccuracy = -1;
         numericBoxAxisU.ShowUpDown = true;
         numericBoxAxisU.Size = new System.Drawing.Size(44, 26);
         numericBoxAxisU.SkipEventDuringInput = false;
@@ -457,7 +454,6 @@ partial class FormMovie
         numericBoxAxisV.MinimumSize = new System.Drawing.Size(1, 18);
         numericBoxAxisV.Name = "numericBoxAxisV";
         numericBoxAxisV.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
-        numericBoxAxisV.RoundErrorAccuracy = -1;
         numericBoxAxisV.ShowUpDown = true;
         numericBoxAxisV.Size = new System.Drawing.Size(44, 26);
         numericBoxAxisV.SkipEventDuringInput = false;
@@ -484,7 +480,6 @@ partial class FormMovie
         numericBoxAxisW.MinimumSize = new System.Drawing.Size(1, 18);
         numericBoxAxisW.Name = "numericBoxAxisW";
         numericBoxAxisW.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
-        numericBoxAxisW.RoundErrorAccuracy = -1;
         numericBoxAxisW.ShowUpDown = true;
         numericBoxAxisW.Size = new System.Drawing.Size(44, 26);
         numericBoxAxisW.SkipEventDuringInput = false;
@@ -496,19 +491,19 @@ partial class FormMovie
         // 
         // tableLayoutPanelPlane
         // 
-        tableLayoutPanelPlane.AutoSize = true;
-        //260422Cl HKLControl revert → 5列構成に戻す
-        tableLayoutPanelPlane.ColumnCount = 5;
+        tableLayoutPanelPlane.ColumnCount = 6;
         tableLayoutPanelPlane.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-        tableLayoutPanelPlane.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-        tableLayoutPanelPlane.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-        tableLayoutPanelPlane.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+        tableLayoutPanelPlane.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+        tableLayoutPanelPlane.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+        tableLayoutPanelPlane.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+        tableLayoutPanelPlane.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
         tableLayoutPanelPlane.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-        tableLayoutPanelPlane.Controls.Add(numericBoxPlaneL, 3, 0);
         tableLayoutPanelPlane.Controls.Add(numericBoxPlaneH, 0, 0);
         tableLayoutPanelPlane.Controls.Add(numericBoxPlaneK, 0, 0);
-        tableLayoutPanelPlane.Controls.Add(label11, 4, 0);
         tableLayoutPanelPlane.Controls.Add(label12, 0, 0);
+        tableLayoutPanelPlane.Controls.Add(label11, 5, 0);
+        tableLayoutPanelPlane.Controls.Add(numericBoxPlaneL, 4, 0);
+        tableLayoutPanelPlane.Controls.Add(numericBoxPlaneI, 3, 0);
         tableLayoutPanelPlane.Enabled = false;
         tableLayoutPanelPlane.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
         tableLayoutPanelPlane.Location = new System.Drawing.Point(4, 214);
@@ -518,19 +513,18 @@ partial class FormMovie
         tableLayoutPanelPlane.Padding = new System.Windows.Forms.Padding(1, 0, 1, 0);
         tableLayoutPanelPlane.RowCount = 1;
         tableLayoutPanelPlane.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-        tableLayoutPanelPlane.Size = new System.Drawing.Size(158, 29);
+        tableLayoutPanelPlane.Size = new System.Drawing.Size(162, 29);
         tableLayoutPanelPlane.TabIndex = 88;
-        //260422Cl HKLControl revert → NumericBox×3 の元ブロックに戻す
-        //
+        // 
         // numericBoxPlaneL
-        //
+        // 
         numericBoxPlaneL.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
         numericBoxPlaneL.BackColor = System.Drawing.SystemColors.Control;
         numericBoxPlaneL.Dock = System.Windows.Forms.DockStyle.Fill;
         numericBoxPlaneL.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
         numericBoxPlaneL.FooterBackColor = System.Drawing.SystemColors.Control;
         numericBoxPlaneL.HeaderBackColor = System.Drawing.SystemColors.Control;
-        numericBoxPlaneL.Location = new System.Drawing.Point(100, 3);
+        numericBoxPlaneL.Location = new System.Drawing.Point(114, 3);
         numericBoxPlaneL.Margin = new System.Windows.Forms.Padding(0, 3, 0, 0);
         numericBoxPlaneL.Maximum = 50D;
         numericBoxPlaneL.MaximumSize = new System.Drawing.Size(1000, 28);
@@ -538,24 +532,23 @@ partial class FormMovie
         numericBoxPlaneL.MinimumSize = new System.Drawing.Size(1, 18);
         numericBoxPlaneL.Name = "numericBoxPlaneL";
         numericBoxPlaneL.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
-        numericBoxPlaneL.RoundErrorAccuracy = -1;
         numericBoxPlaneL.ShowUpDown = true;
-        numericBoxPlaneL.Size = new System.Drawing.Size(44, 26);
+        numericBoxPlaneL.Size = new System.Drawing.Size(34, 26);
         numericBoxPlaneL.SkipEventDuringInput = false;
         numericBoxPlaneL.TabIndex = 2;
         numericBoxPlaneL.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
         numericBoxPlaneL.ThonsandsSeparator = true;
         numericBoxPlaneL.ValueChanged += numericBoxAxisU_ValueChanged;
-        //
+        // 
         // numericBoxPlaneH
-        //
+        // 
         numericBoxPlaneH.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
         numericBoxPlaneH.BackColor = System.Drawing.SystemColors.Control;
         numericBoxPlaneH.Dock = System.Windows.Forms.DockStyle.Fill;
         numericBoxPlaneH.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
         numericBoxPlaneH.FooterBackColor = System.Drawing.SystemColors.Control;
         numericBoxPlaneH.HeaderBackColor = System.Drawing.SystemColors.Control;
-        numericBoxPlaneH.Location = new System.Drawing.Point(12, 3);
+        numericBoxPlaneH.Location = new System.Drawing.Point(46, 3);
         numericBoxPlaneH.Margin = new System.Windows.Forms.Padding(0, 3, 0, 0);
         numericBoxPlaneH.Maximum = 50D;
         numericBoxPlaneH.MaximumSize = new System.Drawing.Size(1000, 28);
@@ -563,25 +556,24 @@ partial class FormMovie
         numericBoxPlaneH.MinimumSize = new System.Drawing.Size(1, 18);
         numericBoxPlaneH.Name = "numericBoxPlaneH";
         numericBoxPlaneH.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
-        numericBoxPlaneH.RoundErrorAccuracy = -1;
         numericBoxPlaneH.ShowUpDown = true;
-        numericBoxPlaneH.Size = new System.Drawing.Size(44, 26);
+        numericBoxPlaneH.Size = new System.Drawing.Size(34, 26);
         numericBoxPlaneH.SkipEventDuringInput = false;
         numericBoxPlaneH.TabIndex = 0;
         numericBoxPlaneH.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
         numericBoxPlaneH.ThonsandsSeparator = true;
         numericBoxPlaneH.ToolTip = "Set crystal plane";
         numericBoxPlaneH.ValueChanged += numericBoxAxisU_ValueChanged;
-        //
+        // 
         // numericBoxPlaneK
-        //
+        // 
         numericBoxPlaneK.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
         numericBoxPlaneK.BackColor = System.Drawing.SystemColors.Control;
         numericBoxPlaneK.Dock = System.Windows.Forms.DockStyle.Fill;
         numericBoxPlaneK.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
         numericBoxPlaneK.FooterBackColor = System.Drawing.SystemColors.Control;
         numericBoxPlaneK.HeaderBackColor = System.Drawing.SystemColors.Control;
-        numericBoxPlaneK.Location = new System.Drawing.Point(56, 3);
+        numericBoxPlaneK.Location = new System.Drawing.Point(12, 3);
         numericBoxPlaneK.Margin = new System.Windows.Forms.Padding(0, 3, 0, 0);
         numericBoxPlaneK.Maximum = 50D;
         numericBoxPlaneK.MaximumSize = new System.Drawing.Size(1000, 28);
@@ -589,9 +581,8 @@ partial class FormMovie
         numericBoxPlaneK.MinimumSize = new System.Drawing.Size(1, 18);
         numericBoxPlaneK.Name = "numericBoxPlaneK";
         numericBoxPlaneK.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
-        numericBoxPlaneK.RoundErrorAccuracy = -1;
         numericBoxPlaneK.ShowUpDown = true;
-        numericBoxPlaneK.Size = new System.Drawing.Size(44, 26);
+        numericBoxPlaneK.Size = new System.Drawing.Size(34, 26);
         numericBoxPlaneK.SkipEventDuringInput = false;
         numericBoxPlaneK.TabIndex = 1;
         numericBoxPlaneK.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
@@ -603,7 +594,7 @@ partial class FormMovie
         label11.AutoSize = true;
         label11.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
         label11.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-        label11.Location = new System.Drawing.Point(144, 0);
+        label11.Location = new System.Drawing.Point(148, 0);
         label11.Margin = new System.Windows.Forms.Padding(0);
         label11.Name = "label11";
         label11.Padding = new System.Windows.Forms.Padding(0, 4, 0, 0);
@@ -670,6 +661,7 @@ partial class FormMovie
         radioButtonH265.Name = "radioButtonH265";
         radioButtonH265.Size = new System.Drawing.Size(52, 19);
         radioButtonH265.TabIndex = 90;
+        radioButtonH265.TabStop = true;
         radioButtonH265.Text = "H265";
         radioButtonH265.UseVisualStyleBackColor = true;
         // 
@@ -677,7 +669,7 @@ partial class FormMovie
         // 
         comboBoxSpeed.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
         comboBoxSpeed.FormattingEnabled = true;
-        comboBoxSpeed.Items.AddRange(new object[] { "ultrafast", "superfast", "veryfast", "faster", "fast", "medium", "slow", "slower", "veryslow" }); //260405Cl "placebo"削除
+        comboBoxSpeed.Items.AddRange(new object[] { "ultrafast", "superfast", "veryfast", "faster", "fast", "medium", "slow", "slower", "veryslow" });
         comboBoxSpeed.Location = new System.Drawing.Point(9, 366);
         comboBoxSpeed.Name = "comboBoxSpeed";
         comboBoxSpeed.Size = new System.Drawing.Size(75, 23);
@@ -692,9 +684,34 @@ partial class FormMovie
         label1.TabIndex = 92;
         label1.Text = "Encode speed";
         // 
+        // numericBoxPlaneI
+        // 
+        numericBoxPlaneI.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+        numericBoxPlaneI.BackColor = System.Drawing.SystemColors.Control;
+        numericBoxPlaneI.Dock = System.Windows.Forms.DockStyle.Fill;
+        numericBoxPlaneI.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
+        numericBoxPlaneI.FooterBackColor = System.Drawing.SystemColors.Control;
+        numericBoxPlaneI.HeaderBackColor = System.Drawing.SystemColors.Control;
+        numericBoxPlaneI.Location = new System.Drawing.Point(80, 3);
+        numericBoxPlaneI.Margin = new System.Windows.Forms.Padding(0, 3, 0, 0);
+        numericBoxPlaneI.Maximum = 50D;
+        numericBoxPlaneI.MaximumSize = new System.Drawing.Size(1000, 28);
+        numericBoxPlaneI.Minimum = -50D;
+        numericBoxPlaneI.MinimumSize = new System.Drawing.Size(1, 18);
+        numericBoxPlaneI.Name = "numericBoxPlaneI";
+        numericBoxPlaneI.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
+        numericBoxPlaneI.ReadOnly = true;
+        numericBoxPlaneI.ShowUpDown = true;
+        numericBoxPlaneI.Size = new System.Drawing.Size(34, 26);
+        numericBoxPlaneI.SkipEventDuringInput = false;
+        numericBoxPlaneI.TabIndex = 2;
+        numericBoxPlaneI.TextBoxBackColor = System.Drawing.SystemColors.Control;
+        numericBoxPlaneI.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
+        numericBoxPlaneI.ThonsandsSeparator = true;
+        // 
         // FormMovie
         // 
-        AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F); // 260329Cl 変更: Font→Dpi, 96dpi基準に統一
+        AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
         AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
         AutoSize = true;
         AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
@@ -767,4 +784,5 @@ partial class FormMovie
     private System.Windows.Forms.RadioButton radioButtonH265;
     private System.Windows.Forms.ComboBox comboBoxSpeed;
     private System.Windows.Forms.Label label1;
+    private NumericBox numericBoxPlaneI;
 }

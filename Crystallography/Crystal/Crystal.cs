@@ -7,6 +7,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Numerics;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.Threading.Tasks;
@@ -413,6 +414,10 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
     public double GrainSize = 100;
 
     public int id = 0;
+    #endregion
+
+    #region MillerBravais指数が可能かどうか
+    public bool MillerBravaisCapable => SymmetryStatic.MillerBravaisCapable(SymmetrySeriesNumber);
     #endregion
 
     #endregion プロパティ、フィールド

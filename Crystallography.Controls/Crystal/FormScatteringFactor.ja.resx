@@ -117,7 +117,23 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="dataGridViewTextBoxColumnD.Width" type="System.Int32, mscorlib">
+    <value>75</value>
+  </data>
+  <data name="dataGridViewTextBoxColumnQ.Width" type="System.Int32, mscorlib">
+    <value>90</value>
+  </data>
+  <data name="dataGridViewTextBoxColumnTwoTheta.Width" type="System.Int32, mscorlib">
+    <value>75</value>
+  </data>
+  <data name="dataGridViewTextBoxColumnIntPercent.Width" type="System.Int32, mscorlib">
+    <value>120</value>
+  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="dataGridView.Size" type="System.Drawing.Size, System.Drawing">
+    <value>882, 282</value>
+  </data>
   <data name="label2.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9.75pt</value>
   </data>
@@ -125,7 +141,7 @@
     <value>69, 20</value>
   </data>
   <data name="label2.Text" xml:space="preserve">
-    <value>d値の上限</value>
+    <value>d値の下限</value>
   </data>
   <data name="checkBoxHideProhibitedPlanes.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9.75pt</value>
@@ -151,7 +167,6 @@
   <data name="checkBoxHideEquivalentPlane.Text" xml:space="preserve">
     <value>等価な面は非表示</value>
   </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="buttonCopyClipboard.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -167,11 +182,17 @@
   <data name="checkBoxBragBrentano.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9.75pt</value>
   </data>
+  <data name="checkBoxBragBrentano.Location" type="System.Drawing.Point, System.Drawing">
+    <value>239, 0</value>
+  </data>
   <data name="checkBoxBragBrentano.Size" type="System.Drawing.Size, System.Drawing">
     <value>175, 24</value>
   </data>
   <data name="checkBoxBragBrentano.Text" xml:space="preserve">
     <value>粉末回折(BB光学系)強度</value>
+  </data>
+  <data name="waveLengthControl1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
   </data>
   <data name="label8.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -181,6 +202,9 @@
   </data>
   <data name="label8.Text" xml:space="preserve">
     <value>単位</value>
+  </data>
+  <data name="label8.ToolTip" xml:space="preserve">
+    <value>空間群を検索</value>
   </data>
   <data name="checkBoxTest.Size" type="System.Drawing.Size, System.Drawing">
     <value>52, 24</value>
@@ -194,13 +218,37 @@
   <data name="panel2.Location" type="System.Drawing.Point, System.Drawing">
     <value>237, 83</value>
   </data>
+  <data name="numericBoxThresholdD.FooterFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9pt</value>
+  </data>
+  <data name="numericBoxThresholdD.HeaderFont" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="numericBoxThresholdD.Location" type="System.Drawing.Point, System.Drawing">
+    <value>449, 21</value>
+  </data>
+  <data name="numericBoxThresholdD.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 28</value>
+  </data>
+  <data name="numericBoxThresholdD.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1, 18</value>
+  </data>
+  <data name="numericBoxThresholdD.Size" type="System.Drawing.Size, System.Drawing">
+    <value>98, 24</value>
+  </data>
+  <data name="numericBoxThresholdD.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="panel3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>882, 116</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>882, 398</value>
+  </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9.75pt</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>散乱因子</value>
-  </data>
-  <data name="label8.ToolTip" xml:space="preserve">
-    <value>空間群を検索</value>
   </data>
 </root>

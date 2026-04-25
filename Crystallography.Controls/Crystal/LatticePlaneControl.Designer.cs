@@ -35,23 +35,23 @@
             enabledDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             hDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             kDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            iDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             lDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             Translation = new System.Windows.Forms.DataGridViewTextBoxColumn();
             colorDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewImageColumn();
             bindingSource = new System.Windows.Forms.BindingSource(components);
             dataSet = new DataSet();
             panel2 = new System.Windows.Forms.Panel();
-            numericBoxDistance = new NumericBox();
-            numericBoxK = new NumericBox();
-            label5 = new System.Windows.Forms.Label();
-            numericBoxL = new NumericBox();
-            label4 = new System.Windows.Forms.Label();
-            colorControl = new ColorControl();
-            label3 = new System.Windows.Forms.Label();
+            flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             label1 = new System.Windows.Forms.Label();
             numericBoxH = new NumericBox();
-            label6 = new System.Windows.Forms.Label();
+            numericBoxK = new NumericBox();
+            numericBoxI = new NumericBox();
+            numericBoxL = new NumericBox();
             label2 = new System.Windows.Forms.Label();
+            numericBoxDistance = new NumericBox();
+            colorControl = new ColorControl();
+            label6 = new System.Windows.Forms.Label();
             dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
@@ -66,6 +66,7 @@
             ((System.ComponentModel.ISupportInitialize)bindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataSet).BeginInit();
             panel2.SuspendLayout();
+            flowLayoutPanel1.SuspendLayout();
             SuspendLayout();
             // 
             // dataGridViewImageColumn3
@@ -82,6 +83,7 @@
             panel1.Controls.Add(buttonChangeBond);
             panel1.Controls.Add(buttonDeleteBond);
             panel1.Name = "panel1";
+            toolTip.SetToolTip(panel1, resources.GetString("panel1.ToolTip"));
             // 
             // buttonAddBond
             // 
@@ -89,6 +91,7 @@
             buttonAddBond.BackColor = System.Drawing.Color.SteelBlue;
             buttonAddBond.ForeColor = System.Drawing.Color.White;
             buttonAddBond.Name = "buttonAddBond";
+            toolTip.SetToolTip(buttonAddBond, resources.GetString("buttonAddBond.ToolTip"));
             buttonAddBond.UseVisualStyleBackColor = false;
             buttonAddBond.Click += buttonAdd_Click;
             // 
@@ -98,6 +101,7 @@
             buttonChangeBond.BackColor = System.Drawing.Color.SteelBlue;
             buttonChangeBond.ForeColor = System.Drawing.Color.White;
             buttonChangeBond.Name = "buttonChangeBond";
+            toolTip.SetToolTip(buttonChangeBond, resources.GetString("buttonChangeBond.ToolTip"));
             buttonChangeBond.UseVisualStyleBackColor = false;
             buttonChangeBond.Click += buttonChange_Click;
             // 
@@ -107,24 +111,27 @@
             buttonDeleteBond.BackColor = System.Drawing.Color.IndianRed;
             buttonDeleteBond.ForeColor = System.Drawing.Color.White;
             buttonDeleteBond.Name = "buttonDeleteBond";
+            toolTip.SetToolTip(buttonDeleteBond, resources.GetString("buttonDeleteBond.ToolTip"));
             buttonDeleteBond.UseVisualStyleBackColor = false;
             buttonDeleteBond.Click += buttonDelete_Click;
             // 
             // dataGridView
             // 
+            resources.ApplyResources(dataGridView, "dataGridView");
             dataGridView.AllowUserToAddRows = false;
             dataGridView.AllowUserToDeleteRows = false;
             dataGridView.AllowUserToResizeColumns = false;
             dataGridView.AllowUserToResizeRows = false;
             dataGridView.AutoGenerateColumns = false;
             dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { enabledDataGridViewCheckBoxColumn, hDataGridViewTextBoxColumn, kDataGridViewTextBoxColumn, lDataGridViewTextBoxColumn, Translation, colorDataGridViewTextBoxColumn });
+            dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { enabledDataGridViewCheckBoxColumn, hDataGridViewTextBoxColumn, kDataGridViewTextBoxColumn, iDataGridViewTextBoxColumn, lDataGridViewTextBoxColumn, Translation, colorDataGridViewTextBoxColumn });
             dataGridView.DataSource = bindingSource;
-            resources.ApplyResources(dataGridView, "dataGridView");
             dataGridView.MultiSelect = false;
             dataGridView.Name = "dataGridView";
             dataGridView.RowHeadersVisible = false;
             dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            toolTip.SetToolTip(dataGridView, resources.GetString("dataGridView.ToolTip"));
+            dataGridView.CellFormatting += dataGridView_CellFormatting;
             dataGridView.CellValueChanged += dataGridView_CellValueChanged;
             dataGridView.CurrentCellDirtyStateChanged += dataGridView_CurrentCellDirtyStateChanged;
             // 
@@ -149,6 +156,13 @@
             kDataGridViewTextBoxColumn.Name = "kDataGridViewTextBoxColumn";
             kDataGridViewTextBoxColumn.ReadOnly = true;
             kDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // iDataGridViewTextBoxColumn
+            // 
+            resources.ApplyResources(iDataGridViewTextBoxColumn, "iDataGridViewTextBoxColumn");
+            iDataGridViewTextBoxColumn.Name = "iDataGridViewTextBoxColumn";
+            iDataGridViewTextBoxColumn.ReadOnly = true;
+            iDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // lDataGridViewTextBoxColumn
             // 
@@ -189,19 +203,104 @@
             // 
             // panel2
             // 
-            panel2.Controls.Add(numericBoxDistance);
-            panel2.Controls.Add(numericBoxK);
-            panel2.Controls.Add(label5);
-            panel2.Controls.Add(numericBoxL);
-            panel2.Controls.Add(label4);
-            panel2.Controls.Add(colorControl);
-            panel2.Controls.Add(label3);
-            panel2.Controls.Add(label1);
-            panel2.Controls.Add(numericBoxH);
-            panel2.Controls.Add(label6);
-            panel2.Controls.Add(label2);
             resources.ApplyResources(panel2, "panel2");
+            panel2.Controls.Add(flowLayoutPanel1);
+            panel2.Controls.Add(numericBoxDistance);
+            panel2.Controls.Add(colorControl);
+            panel2.Controls.Add(label6);
             panel2.Name = "panel2";
+            toolTip.SetToolTip(panel2, resources.GetString("panel2.ToolTip"));
+            // 
+            // flowLayoutPanel1
+            // 
+            resources.ApplyResources(flowLayoutPanel1, "flowLayoutPanel1");
+            flowLayoutPanel1.Controls.Add(label1);
+            flowLayoutPanel1.Controls.Add(numericBoxH);
+            flowLayoutPanel1.Controls.Add(numericBoxK);
+            flowLayoutPanel1.Controls.Add(numericBoxI);
+            flowLayoutPanel1.Controls.Add(numericBoxL);
+            flowLayoutPanel1.Controls.Add(label2);
+            flowLayoutPanel1.Name = "flowLayoutPanel1";
+            toolTip.SetToolTip(flowLayoutPanel1, resources.GetString("flowLayoutPanel1.ToolTip"));
+            // 
+            // label1
+            // 
+            resources.ApplyResources(label1, "label1");
+            label1.Name = "label1";
+            toolTip.SetToolTip(label1, resources.GetString("label1.ToolTip"));
+            // 
+            // numericBoxH
+            // 
+            resources.ApplyResources(numericBoxH, "numericBoxH");
+            numericBoxH.BackColor = System.Drawing.SystemColors.Control;
+            numericBoxH.DecimalPlaces = 0;
+            numericBoxH.FooterBackColor = System.Drawing.SystemColors.Control;
+            numericBoxH.HeaderBackColor = System.Drawing.SystemColors.Control;
+            numericBoxH.LabelOrientation = NumericBoxOrientation.Vertical;
+            numericBoxH.Maximum = 24D;
+            numericBoxH.Minimum = -24D;
+            numericBoxH.Name = "numericBoxH";
+            numericBoxH.ShowUpDown = true;
+            numericBoxH.SkipEventDuringInput = false;
+            numericBoxH.ThonsandsSeparator = true;
+            toolTip.SetToolTip(numericBoxH, resources.GetString("numericBoxH.ToolTip"));
+            numericBoxH.ValueChanged += numericBoxH_ValueChanged;
+            // 
+            // numericBoxK
+            // 
+            resources.ApplyResources(numericBoxK, "numericBoxK");
+            numericBoxK.BackColor = System.Drawing.SystemColors.Control;
+            numericBoxK.DecimalPlaces = 0;
+            numericBoxK.FooterBackColor = System.Drawing.SystemColors.Control;
+            numericBoxK.HeaderBackColor = System.Drawing.SystemColors.Control;
+            numericBoxK.LabelOrientation = NumericBoxOrientation.Vertical;
+            numericBoxK.Maximum = 24D;
+            numericBoxK.Minimum = -24D;
+            numericBoxK.Name = "numericBoxK";
+            numericBoxK.ShowUpDown = true;
+            numericBoxK.SkipEventDuringInput = false;
+            numericBoxK.ThonsandsSeparator = true;
+            toolTip.SetToolTip(numericBoxK, resources.GetString("numericBoxK.ToolTip"));
+            numericBoxK.ValueChanged += numericBoxH_ValueChanged;
+            // 
+            // numericBoxI
+            // 
+            resources.ApplyResources(numericBoxI, "numericBoxI");
+            numericBoxI.BackColor = System.Drawing.SystemColors.Control;
+            numericBoxI.DecimalPlaces = 0;
+            numericBoxI.FooterBackColor = System.Drawing.SystemColors.Control;
+            numericBoxI.HeaderBackColor = System.Drawing.SystemColors.Control;
+            numericBoxI.LabelOrientation = NumericBoxOrientation.Vertical;
+            numericBoxI.Maximum = 24D;
+            numericBoxI.Minimum = -24D;
+            numericBoxI.Name = "numericBoxI";
+            numericBoxI.ReadOnly = true;
+            numericBoxI.SkipEventDuringInput = false;
+            numericBoxI.TextBoxBackColor = System.Drawing.SystemColors.Control;
+            numericBoxI.ThonsandsSeparator = true;
+            toolTip.SetToolTip(numericBoxI, resources.GetString("numericBoxI.ToolTip"));
+            // 
+            // numericBoxL
+            // 
+            resources.ApplyResources(numericBoxL, "numericBoxL");
+            numericBoxL.BackColor = System.Drawing.SystemColors.Control;
+            numericBoxL.DecimalPlaces = 0;
+            numericBoxL.FooterBackColor = System.Drawing.SystemColors.Control;
+            numericBoxL.HeaderBackColor = System.Drawing.SystemColors.Control;
+            numericBoxL.LabelOrientation = NumericBoxOrientation.Vertical;
+            numericBoxL.Maximum = 24D;
+            numericBoxL.Minimum = -24D;
+            numericBoxL.Name = "numericBoxL";
+            numericBoxL.ShowUpDown = true;
+            numericBoxL.SkipEventDuringInput = false;
+            numericBoxL.ThonsandsSeparator = true;
+            toolTip.SetToolTip(numericBoxL, resources.GetString("numericBoxL.ToolTip"));
+            // 
+            // label2
+            // 
+            resources.ApplyResources(label2, "label2");
+            label2.Name = "label2";
+            toolTip.SetToolTip(label2, resources.GetString("label2.ToolTip"));
             // 
             // numericBoxDistance
             // 
@@ -215,50 +314,13 @@
             numericBoxDistance.ShowUpDown = true;
             numericBoxDistance.SkipEventDuringInput = false;
             numericBoxDistance.ThonsandsSeparator = true;
+            toolTip.SetToolTip(numericBoxDistance, resources.GetString("numericBoxDistance.ToolTip"));
             numericBoxDistance.UpDown_Increment = 0.1D;
-            // 
-            // numericBoxK
-            // 
-            resources.ApplyResources(numericBoxK, "numericBoxK");
-            numericBoxK.BackColor = System.Drawing.SystemColors.Control;
-            numericBoxK.DecimalPlaces = 0;
-            numericBoxK.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxK.HeaderBackColor = System.Drawing.SystemColors.Control;
-            numericBoxK.Maximum = 24D;
-            numericBoxK.Minimum = -24D;
-            numericBoxK.Name = "numericBoxK";
-            numericBoxK.ShowUpDown = true;
-            numericBoxK.SkipEventDuringInput = false;
-            numericBoxK.ThonsandsSeparator = true;
-            // 
-            // label5
-            // 
-            resources.ApplyResources(label5, "label5");
-            label5.Name = "label5";
-            // 
-            // numericBoxL
-            // 
-            resources.ApplyResources(numericBoxL, "numericBoxL");
-            numericBoxL.BackColor = System.Drawing.SystemColors.Control;
-            numericBoxL.DecimalPlaces = 0;
-            numericBoxL.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxL.HeaderBackColor = System.Drawing.SystemColors.Control;
-            numericBoxL.Maximum = 24D;
-            numericBoxL.Minimum = -24D;
-            numericBoxL.Name = "numericBoxL";
-            numericBoxL.ShowUpDown = true;
-            numericBoxL.SkipEventDuringInput = false;
-            numericBoxL.ThonsandsSeparator = true;
-            // 
-            // label4
-            // 
-            resources.ApplyResources(label4, "label4");
-            label4.Name = "label4";
             // 
             // colorControl
             // 
-            colorControl.Argb = -16192;
             resources.ApplyResources(colorControl, "colorControl");
+            colorControl.Argb = -16192;
             colorControl.BackColor = System.Drawing.SystemColors.Control;
             colorControl.Blue = 192;
             colorControl.BlueF = 0.7529412F;
@@ -270,40 +332,13 @@
             colorControl.Name = "colorControl";
             colorControl.Red = 255;
             colorControl.RedF = 1F;
-            // 
-            // label3
-            // 
-            resources.ApplyResources(label3, "label3");
-            label3.Name = "label3";
-            // 
-            // label1
-            // 
-            resources.ApplyResources(label1, "label1");
-            label1.Name = "label1";
-            // 
-            // numericBoxH
-            // 
-            resources.ApplyResources(numericBoxH, "numericBoxH");
-            numericBoxH.BackColor = System.Drawing.SystemColors.Control;
-            numericBoxH.DecimalPlaces = 0;
-            numericBoxH.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxH.HeaderBackColor = System.Drawing.SystemColors.Control;
-            numericBoxH.Maximum = 24D;
-            numericBoxH.Minimum = -24D;
-            numericBoxH.Name = "numericBoxH";
-            numericBoxH.ShowUpDown = true;
-            numericBoxH.SkipEventDuringInput = false;
-            numericBoxH.ThonsandsSeparator = true;
+            toolTip.SetToolTip(colorControl, resources.GetString("colorControl.ToolTip1"));
             // 
             // label6
             // 
             resources.ApplyResources(label6, "label6");
             label6.Name = "label6";
-            // 
-            // label2
-            // 
-            resources.ApplyResources(label2, "label2");
-            label2.Name = "label2";
+            toolTip.SetToolTip(label6, resources.GetString("label6.ToolTip"));
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -373,6 +408,7 @@
             Controls.Add(panel1);
             Controls.Add(panel2);
             Name = "LatticePlaneControl";
+            toolTip.SetToolTip(this, resources.GetString("$this.ToolTip"));
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView).EndInit();
@@ -380,6 +416,8 @@
             ((System.ComponentModel.ISupportInitialize)dataSet).EndInit();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
+            flowLayoutPanel1.ResumeLayout(false);
+            flowLayoutPanel1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
 
@@ -400,9 +438,6 @@
         private System.Windows.Forms.BindingSource bindingSource;
         private DataSet dataSet;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
@@ -412,14 +447,17 @@
         private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn2;
         private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn4;
         private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn5;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn enabledDataGridViewCheckBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn hDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn kDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn lDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Translation;
-        private System.Windows.Forms.DataGridViewImageColumn colorDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn6;
         private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn7;
         private System.Windows.Forms.ToolTip toolTip;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private NumericBox numericBoxI;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn enabledDataGridViewCheckBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn hDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn kDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn iDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn lDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Translation;
+        private System.Windows.Forms.DataGridViewImageColumn colorDataGridViewTextBoxColumn;
     }
 }

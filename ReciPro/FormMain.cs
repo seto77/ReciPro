@@ -156,24 +156,17 @@ public partial class FormMain : CaptureFormBase
         get => toolStripMenuItemUseMKL != null && toolStripMenuItemUseMKL.Checked;
         set => toolStripMenuItemUseMKL.Checked = value;
     }
-    //260421Cl 追加: 4 指数 (Miller-Bravais) 表記を有効にするかどうか。レジストリに保存。
+    
+    // 4 指数 (Miller-Bravais) 表記を有効にするかどうか。レジストリに保存。
     // 実際の表示切替は IsMillerBravaisActive で「UseMillerBravais && 晶系が4指数可」を判定してから行う。
     public bool UseMillerBravais
     {
         get => toolStripMenuItemUseMillerBravais != null && toolStripMenuItemUseMillerBravais.Checked;
         set => toolStripMenuItemUseMillerBravais.Checked = value;
     }
-    //260421Cl 追加: 現在の Crystal が 4 指数 Miller-Bravais 表記に対応可能か (六方晶 or 三方晶の Hexagonal axes のみ true)。
-    // Rhombohedral axes セッティングは 3 指数のみのため false。
-    public static bool IsMillerBravaisCapable(Crystal crystal)
-    {
-        if (crystal?.Symmetry == null) return false;
-        var sys = crystal.Symmetry.CrystalSystemNumber;
-        // 六方晶 (6) は常に可。三方晶 (5) のうち Rhombohedral axes ("R") 以外のみ可。
-        return sys == 6 || (sys == 5 && crystal.Symmetry.SpaceGroupHMsubStr != "R");
-    }
+
     /// <summary>UseMillerBravais が有効かつ現在結晶が 4 指数対応の場合のみ true</summary>
-    public bool IsMillerBravaisActive => UseMillerBravais && IsMillerBravaisCapable(Crystal);
+    public bool MillerBravaisActive => UseMillerBravais && Crystal.MillerBravaisCapable;
 
     //260421Cl 追加: 面 (hkl) を 3 指数 / 4 指数どちらで表示するかを useMB で切替えるヘルパー。
     public static string PlaneString(int h, int k, int l, bool useMB, string sep = " ")
@@ -1151,25 +1144,25 @@ public partial class FormMain : CaptureFormBase
 
             numericBoxMaxUVW_ValueChanged(sender, e);
 
-            UpdateMillerBravaisDisplay();                                                                                                                 // 260421Cl 結晶切替時に4指数表示を更新
+            UpdatePlaneIndices();                                                                                                                 // 260421Cl 結晶切替時に4指数表示を更新
 
             if (SkipDrawing) return;
 
             if (FormStructureViewer != null && FormStructureViewer.Visible)
                 FormStructureViewer.SetGLObjects(crystalControl.Crystal);
-            
+
             if (FormStereonet != null && FormStereonet.Visible)
                 FormStereonet.SetCrystal();
-           
+
             if (FormDiffractionSimulator != null && FormDiffractionSimulator.Visible)
                 FormDiffractionSimulator.SetCrystal();
-          
+
             if (FormSpotIDv2 != null && FormSpotIDv2.Visible)
                 FormSpotIDv2.SetCrystal();
-           
+
             if (FormRotation != null && FormRotation.Visible)
                 FormRotation.SetRotation();
-           
+
             if (FormImageSimulator != null && FormImageSimulator.Visible)
                 FormImageSimulator.RotationChanged();
 
@@ -1244,8 +1237,8 @@ public partial class FormMain : CaptureFormBase
         var newCrystal = new Crystal(c);
 
         var index = newCrystal.Name.LastIndexOf(" #");
-        if (index >= 0 && int.TryParse(newCrystal.Name[(index+2)..], out int num))
-            newCrystal.Name = newCrystal.Name[0..(index+2)] + (num + 1).ToString();
+        if (index >= 0 && int.TryParse(newCrystal.Name[(index + 2)..], out int num))
+            newCrystal.Name = newCrystal.Name[0..(index + 2)] + (num + 1).ToString();
         else
             newCrystal.Name += " #1";
 
@@ -1297,7 +1290,7 @@ public partial class FormMain : CaptureFormBase
 
     private void listBox_MouseDown(object sender, MouseEventArgs e)
     {
-        if(renameTextBox != null && groupBoxCrystalList.Controls.Contains(renameTextBox))
+        if (renameTextBox != null && groupBoxCrystalList.Controls.Contains(renameTextBox))
             renameTextBox_Leave(sender, e);
 
         var index = listBox.IndexFromPoint(e.Location);
@@ -1548,6 +1541,16 @@ public partial class FormMain : CaptureFormBase
 
     private void githubWikiToolStripMenuItem_Click(object sender, EventArgs e)
         => Process.Start(new ProcessStartInfo("https://github.com/seto77/ReciPro/wiki") { UseShellExecute = true });
+
+
+    //260421Cl 追加: メニューチェック変更ハンドラ (Designer からバインド)
+    private void toolStripMenuItemUseMillerBravais_CheckedChanged(object sender, EventArgs e)
+    {
+        UpdatePlaneIndices();
+        // 現在の結晶が 4 指数非対応の場合、トグルしても描画結果は変わらないので Draw() 省略    // 260422Cl
+        if (FormDiffractionSimulator != null && FormDiffractionSimulator.Visible && MillerBravaisActive)
+            FormDiffractionSimulator.Draw();
+    }
 
     #endregion FileMenu
 
@@ -1854,7 +1857,7 @@ public partial class FormMain : CaptureFormBase
     #endregion
 
     #region 最も近いUVWを検索
-    private void labelCurrentIndex_DoubleClick(object sender, EventArgs e) 
+    private void labelCurrentIndex_DoubleClick(object sender, EventArgs e)
         => numericBoxMaxUVW.Visible = !numericBoxMaxUVW.Visible;
     private void numericBoxMaxUVW_ValueChanged(object sender, EventArgs e)
     {
@@ -1912,20 +1915,20 @@ public partial class FormMain : CaptureFormBase
     // Crystal 変更時 / メニューチェック変更時 などから呼ぶ。
     //260422Cl FormMain/FormMovie の Plane 入力は NumericBox ベースに revert したため、
     // 現状 4 指数表示の切替対象は FormDiffractionSpotInfo の i 列のみ。
-    public void UpdateMillerBravaisDisplay()
+    public void UpdatePlaneIndices()
     {
-        var active = IsMillerBravaisActive;
-        FormDiffractionSimulator?.FormDiffractionBeamTable?.UpdateMillerBravaisColumnVisibility(active);
+        var active = MillerBravaisActive;
+        FormDiffractionSimulator?.UpdatePlaneIndices();
+        FormStructureViewer?.UpdatePlaneIndices();
+        crystalControl.MillerBravais = active;
+
+        numericBoxPlaneI.Visible = active;
+        var w = LogicalToDeviceUnits(active ? 33 : 38);                                                                                                   // 260424Cl 4指数表示時はI列分の幅を確保するため H/K/L を狭める
+        var udw = LogicalToDeviceUnits(active ? 13 : 17);
+        numericBoxPlaneH.Width = numericBoxPlaneK.Width = numericBoxPlaneL.Width = w;
+        numericBoxPlaneH.UpDownWidth = numericBoxPlaneK.UpDownWidth = numericBoxPlaneL.UpDownWidth = udw;
     }
 
-    //260421Cl 追加: メニューチェック変更ハンドラ (Designer からバインド)
-    private void toolStripMenuItemUseMillerBravais_CheckedChanged(object sender, EventArgs e)
-    {
-        UpdateMillerBravaisDisplay();
-        // 現在の結晶が 4 指数非対応の場合、トグルしても描画結果は変わらないので Draw() 省略    // 260422Cl
-        if (FormDiffractionSimulator != null && FormDiffractionSimulator.Visible && IsMillerBravaisCapable(Crystal))
-            FormDiffractionSimulator.Draw();
-    }
 
     #endregion
 
@@ -1951,7 +1954,11 @@ public partial class FormMain : CaptureFormBase
         if (checkBoxFixePlane.Checked)
             checkBoxFixAxis.Checked = false;
     }
+
+    private void numericBoxPlaneK_ValueChanged(object sender, EventArgs e) 
+        => numericBoxPlaneI.Value = -numericBoxPlaneH.Value - numericBoxPlaneK.Value;
     #endregion
+
 
 }
 

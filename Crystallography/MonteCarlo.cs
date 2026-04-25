@@ -79,8 +79,6 @@ public class MonteCarlo
         /// </summary>
         DiscreteMeanLoss, // 260331Cl コメント追加
 
-        // 260401Cl DiscreteExponentialLoss を除去 (指数分布は実際の損失スペクトルと形が大きく異なり非推奨のため)
-
         /// <summary>
         /// 離散非弾性散乱モデル (簡易バルク DIIMFP 近似)。
         /// プラズモンピーク・低損失テール・高損失テールの 3 成分を混合した損失分布からサンプリングする。

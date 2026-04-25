@@ -12671,7 +12671,7 @@ public static (int H, int K, int L) GetRootPlaneIndex((int H, int K, int L) inde
     /// <param name="indices">等価な面指数の群</param>
     /// <param name="CalcNotEvenRoot">基底でなくても等価な面指数を計算するときはtrue。デフォルトはfalse</param>
     /// <returns>基底のときは true</returns>
-    public static bool IsRootPlane((int h, int k, int l) index, Symmetry sym, out (int h, int k, int l)[] indices, bool addInversion = false) 
+    public static bool IsRootPlane((int h, int k, int l) index, Symmetry sym, out (int h, int k, int l)[] indices, bool addInversion = false)
         => index == (indices = GenerateEquivalentPlanes(index, sym, addInversion, true))[0];
 
     #region お蔵入り
@@ -12756,7 +12756,7 @@ public static (int H, int K, int L) GetRootPlaneIndex((int H, int K, int L) inde
     /// <returns></returns>
     public static (int H, int K, int L)[] GenerateEquivalentPlanes((int H, int K, int L) index, Symmetry sym, bool addInversionCenter = false, bool sort = true)
     {
-        if (index==(0,0,0)) return [(0, 0, 0)];
+        if (index == (0, 0, 0)) return [(0, 0, 0)];
 
         #region addInversion がtrueであれば対称心を付与した点群に変換する
         var pgNum = addInversionCenter ? sym.PointGroupNumber switch
@@ -13604,9 +13604,9 @@ public static (int H, int K, int L) GetRootPlaneIndex((int H, int K, int L) inde
     /// <param name="sym"></param>
     /// <param name="addInversion">対称心を付与するか。デフォルトはfalse。</param>
     /// <returns></returns>
-    public static bool IsRootAxis((int U, int V, int W) index, Symmetry sym, out (int U, int V, int W)[] indices, bool addInversion = false) 
+    public static bool IsRootAxis((int U, int V, int W) index, Symmetry sym, out (int U, int V, int W)[] indices, bool addInversion = false)
         => index == (indices = GenerateEquivalentAxes(index, sym, addInversion, true))[0];
-  
+
     #region お蔵入り
     /*
     int u = index.U, v = index.V, w = index.W;
@@ -13989,14 +13989,14 @@ public static (int H, int K, int L) GetRootPlaneIndex((int H, int K, int L) inde
     /// <param name="sym"></param>
     /// <param name="inversionCenter">対称心を付与するか。デフォルトはfalse。</param>
     /// <returns></returns>
-    public static (int U, int V, int W)[] GenerateEquivalentAxes((int U, int V, int W) index, Symmetry sym, bool addInversionCenter = false, bool sort=true)
+    public static (int U, int V, int W)[] GenerateEquivalentAxes((int U, int V, int W) index, Symmetry sym, bool addInversionCenter = false, bool sort = true)
     {
-        if(index == (0,0,0)) return [(0, 0, 0)];
+        if (index == (0, 0, 0)) return [(0, 0, 0)];
 
         #region addInversion がtrueであれば対称心を付与した点群に変換する
         var pgNum = addInversionCenter ? sym.PointGroupNumber switch
         {
-           
+
             0 or 1 or 2 => 2,//　unknown, 1, -1 => -1
             3 or 4 or 5 => 5,// 2, m, 2/m => 2/m
             6 or 7 or 8 => 8,// 222, mm2, mmm => mmm
@@ -14009,7 +14009,7 @@ public static (int H, int K, int L) GetRootPlaneIndex((int H, int K, int L) inde
             28 or 29 => 29,// 23, m3 => m3
             30 or 31 or 32 => 32,// 432, -43m, m3m => m3m
             _ => 2
-            
+
         } : sym.PointGroupNumber;
         #endregion
 
@@ -14758,16 +14758,16 @@ public static (int H, int K, int L) GetRootPlaneIndex((int H, int K, int L) inde
                             return b.V.CompareTo(a.V);
                     });
             }
-            else if(pgNum >= 9 && pgNum <= 15)//tetragonalの場合
+            else if (pgNum >= 9 && pgNum <= 15)//tetragonalの場合
                 Array.Sort(array, static (a, b) =>
                 {
                     if (a.W != b.W)
                         return b.W.CompareTo(a.W);
                     if (a.U != b.U)
                         return b.U.CompareTo(a.U);
-                    else 
+                    else
                         return b.V.CompareTo(a.V);
-                    
+
                 });
             else//それ以外の結晶系の時
                 Array.Sort(array, static (a, b) =>
@@ -14790,6 +14790,26 @@ public static (int H, int K, int L) GetRootPlaneIndex((int H, int K, int L) inde
     public static bool CheckEquivalentAxes(int u1, int v1, int w1, int u2, int v2, int w2, Symmetry sym)
         => GenerateEquivalentAxes((u1, v1, w1), sym, false).Contains((u2, v2, w2));
 
+    #endregion
+
+    #region MillerBravais指数 (4指数) 表示が適用可能かの判定
+    public static bool MillerBravaisCapable(Crystal crystal)
+    {
+        if (crystal?.Symmetry == null) return false;
+        return MillerBravaisCapable(crystal.SymmetrySeriesNumber);
+    }
+
+    public static bool MillerBravaisCapable(Symmetry symmetry)
+        => MillerBravaisCapable(symmetry.SeriesNumber);
+
+    public static bool MillerBravaisCapable(int SeriesNumber)
+        => SeriesNumber switch
+        {
+            < 430 => false,
+            > 488 => false,
+            434 or 437 or 445 or 451 or 453 or 459 or 461 => false,
+            _ => true
+        };
     #endregion
 
 }

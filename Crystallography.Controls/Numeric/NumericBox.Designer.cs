@@ -29,7 +29,7 @@
             textBox = new System.Windows.Forms.TextBox();
             labelHeader = new System.Windows.Forms.Label();
             labelFooter = new System.Windows.Forms.Label();
-            spinButtonPanel = new System.Windows.Forms.Panel();                                                                                       // 260413Cl 追加 SpinButtonの入れ物
+            spinButtonPanel = new System.Windows.Forms.Panel();
             toolTip = new System.Windows.Forms.ToolTip(components);
             SuspendLayout();
             // 
@@ -51,27 +51,25 @@
             resources.ApplyResources(labelHeader, "labelHeader");
             labelHeader.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             labelHeader.Name = "labelHeader";
-            labelHeader.UseCompatibleTextRendering = false;                                                                                           // 260413Cl 追加 textBox(GDI)と描画エンジンを揃えベースラインずれを解消
-            //
+            // 
             // labelFooter
-            //
+            // 
             resources.ApplyResources(labelFooter, "labelFooter");
             labelFooter.Name = "labelFooter";
-            labelFooter.UseCompatibleTextRendering = false;                                                                                           // 260413Cl 追加 textBox(GDI)と描画エンジンを揃えベースラインずれを解消
-            //
-            // spinButtonPanel                                                                                                                        // 260413Cl 追加
-            //
+            // 
+            // spinButtonPanel
+            // 
+            spinButtonPanel.BackColor = System.Drawing.Color.Transparent;
             resources.ApplyResources(spinButtonPanel, "spinButtonPanel");
             spinButtonPanel.Name = "spinButtonPanel";
-            spinButtonPanel.BackColor = System.Drawing.Color.Transparent;
-            //
+            // 
             // NumericBox
-            //
+            // 
             resources.ApplyResources(this, "$this");
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             BackColor = System.Drawing.Color.Transparent;
             Controls.Add(textBox);
-            Controls.Add(spinButtonPanel);                                                                                                            // 260413Cl 追加 textBoxの直後に配置
+            Controls.Add(spinButtonPanel);
             Controls.Add(labelHeader);
             Controls.Add(labelFooter);
             Name = "NumericBox";

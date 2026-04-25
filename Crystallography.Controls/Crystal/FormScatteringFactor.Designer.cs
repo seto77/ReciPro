@@ -26,9 +26,9 @@
         {
             components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormScatteringFactor));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormScatteringFactor));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -37,29 +37,28 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            dataGridView2 = new System.Windows.Forms.DataGridView();
-            dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            K = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            F = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            RelInt = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            Condition = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            dataGridView = new System.Windows.Forms.DataGridView();
+            dataGridViewTextBoxColumnH = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumnK = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumnI = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumnL = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumnMulti = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumnD = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumnQ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumnTwoTheta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumnFreal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumnFinv = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumnFabs = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumnFsq = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumnIntPercent = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumnIntCondition = new System.Windows.Forms.DataGridViewTextBoxColumn();
             bindingSourceScatteringFactor = new System.Windows.Forms.BindingSource(components);
             dataSet = new DataSet();
-            numericUpDownThresholdD = new System.Windows.Forms.NumericUpDown();
             label2 = new System.Windows.Forms.Label();
             checkBoxHideProhibitedPlanes = new System.Windows.Forms.CheckBox();
             checkBoxHideEquivalentPlane = new System.Windows.Forms.CheckBox();
-            label13 = new System.Windows.Forms.Label();
             buttonCopyClipboard = new System.Windows.Forms.Button();
-            label18 = new System.Windows.Forms.Label();
             checkBoxBragBrentano = new System.Windows.Forms.CheckBox();
             waveLengthControl1 = new WaveLengthControl();
             toolTip = new System.Windows.Forms.ToolTip(components);
@@ -84,151 +83,167 @@
             panel2 = new System.Windows.Forms.Panel();
             radioButtonNanoMeter = new System.Windows.Forms.RadioButton();
             radioButtonAngstrom = new System.Windows.Forms.RadioButton();
-            ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
+            panel3 = new System.Windows.Forms.Panel();
+            numericBoxCutoffD = new NumericBox();
+            ((System.ComponentModel.ISupportInitialize)dataGridView).BeginInit();
             ((System.ComponentModel.ISupportInitialize)bindingSourceScatteringFactor).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataSet).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDownThresholdD).BeginInit();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
+            panel3.SuspendLayout();
             SuspendLayout();
             // 
-            // dataGridView2
+            // dataGridView
             // 
-            dataGridView2.AllowUserToAddRows = false;
-            dataGridView2.AllowUserToDeleteRows = false;
-            dataGridView2.AllowUserToResizeRows = false;
+            dataGridView.AllowUserToAddRows = false;
+            dataGridView.AllowUserToDeleteRows = false;
+            dataGridView.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            dataGridView2.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            resources.ApplyResources(dataGridView2, "dataGridView2");
-            dataGridView2.AutoGenerateColumns = false;
-            dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { dataGridViewTextBoxColumn1, K, dataGridViewTextBoxColumn3, dataGridViewTextBoxColumn4, dataGridViewTextBoxColumn5, dataGridViewTextBoxColumn6, dataGridViewTextBoxColumn7, dataGridViewTextBoxColumn9, dataGridViewTextBoxColumn10, F, dataGridViewTextBoxColumn11, RelInt, Condition });
-            dataGridView2.DataSource = bindingSourceScatteringFactor;
-            dataGridView2.MultiSelect = false;
-            dataGridView2.Name = "dataGridView2";
-            dataGridView2.ReadOnly = true;
-            dataGridView2.RowHeadersVisible = false;
-            dataGridView2.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            dataGridView2.RowTemplate.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridView2.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.SystemColors.Control;
-            dataGridView2.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("メイリオ", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 128);
-            dataGridView2.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridView2.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridView2.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            //dataGridView2.RowTemplate.Height = 21;                                                                                                  // 260413Cl DPIスケーリング対応のため削除
-            dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            dataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridView.AutoGenerateColumns = false;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            dataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { dataGridViewTextBoxColumnH, dataGridViewTextBoxColumnK, dataGridViewTextBoxColumnI, dataGridViewTextBoxColumnL, dataGridViewTextBoxColumnMulti, dataGridViewTextBoxColumnD, dataGridViewTextBoxColumnQ, dataGridViewTextBoxColumnTwoTheta, dataGridViewTextBoxColumnFreal, dataGridViewTextBoxColumnFinv, dataGridViewTextBoxColumnFabs, dataGridViewTextBoxColumnFsq, dataGridViewTextBoxColumnIntPercent, dataGridViewTextBoxColumnIntCondition });
+            dataGridView.DataSource = bindingSourceScatteringFactor;
+            resources.ApplyResources(dataGridView, "dataGridView");
+            dataGridView.MultiSelect = false;
+            dataGridView.Name = "dataGridView";
+            dataGridView.ReadOnly = true;
+            dataGridView.RowHeadersVisible = false;
+            dataGridView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            dataGridView.RowTemplate.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridView.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.SystemColors.Control;
+            dataGridView.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("メイリオ", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 128);
+            dataGridView.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridView.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridView.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            dataGridView.CellFormatting += dataGridView2_CellFormatting;
             // 
-            // dataGridViewTextBoxColumn1
+            // dataGridViewTextBoxColumnH
             // 
-            dataGridViewTextBoxColumn1.DataPropertyName = "H";
-            dataGridViewCellStyle2.NullValue = null;
-            dataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle2;
-            resources.ApplyResources(dataGridViewTextBoxColumn1, "dataGridViewTextBoxColumn1");
-            dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            dataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // K
-            // 
-            K.DataPropertyName = "K";
-            resources.ApplyResources(K, "K");
-            K.Name = "K";
-            K.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            dataGridViewTextBoxColumn3.DataPropertyName = "L";
+            dataGridViewTextBoxColumnH.DataPropertyName = "H";
             dataGridViewCellStyle3.NullValue = null;
-            dataGridViewTextBoxColumn3.DefaultCellStyle = dataGridViewCellStyle3;
-            resources.ApplyResources(dataGridViewTextBoxColumn3, "dataGridViewTextBoxColumn3");
-            dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            dataGridViewTextBoxColumn3.ReadOnly = true;
+            dataGridViewTextBoxColumnH.DefaultCellStyle = dataGridViewCellStyle3;
+            resources.ApplyResources(dataGridViewTextBoxColumnH, "dataGridViewTextBoxColumnH");
+            dataGridViewTextBoxColumnH.Name = "dataGridViewTextBoxColumnH";
+            dataGridViewTextBoxColumnH.ReadOnly = true;
             // 
-            // dataGridViewTextBoxColumn4
+            // dataGridViewTextBoxColumnK
             // 
-            dataGridViewTextBoxColumn4.DataPropertyName = "Multi";
-            resources.ApplyResources(dataGridViewTextBoxColumn4, "dataGridViewTextBoxColumn4");
-            dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            dataGridViewTextBoxColumn4.ReadOnly = true;
+            dataGridViewTextBoxColumnK.DataPropertyName = "K";
+            resources.ApplyResources(dataGridViewTextBoxColumnK, "dataGridViewTextBoxColumnK");
+            dataGridViewTextBoxColumnK.Name = "dataGridViewTextBoxColumnK";
+            dataGridViewTextBoxColumnK.ReadOnly = true;
             // 
-            // dataGridViewTextBoxColumn5
+            // dataGridViewTextBoxColumnI
             // 
-            dataGridViewTextBoxColumn5.DataPropertyName = "D";
-            dataGridViewCellStyle4.Format = "G7";
+            resources.ApplyResources(dataGridViewTextBoxColumnI, "dataGridViewTextBoxColumnI");
+            dataGridViewTextBoxColumnI.Name = "dataGridViewTextBoxColumnI";
+            dataGridViewTextBoxColumnI.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumnL
+            // 
+            dataGridViewTextBoxColumnL.DataPropertyName = "L";
             dataGridViewCellStyle4.NullValue = null;
-            dataGridViewTextBoxColumn5.DefaultCellStyle = dataGridViewCellStyle4;
-            resources.ApplyResources(dataGridViewTextBoxColumn5, "dataGridViewTextBoxColumn5");
-            dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            dataGridViewTextBoxColumn5.ReadOnly = true;
+            dataGridViewTextBoxColumnL.DefaultCellStyle = dataGridViewCellStyle4;
+            resources.ApplyResources(dataGridViewTextBoxColumnL, "dataGridViewTextBoxColumnL");
+            dataGridViewTextBoxColumnL.Name = "dataGridViewTextBoxColumnL";
+            dataGridViewTextBoxColumnL.ReadOnly = true;
             // 
-            // dataGridViewTextBoxColumn6
+            // dataGridViewTextBoxColumnMulti
             // 
-            dataGridViewTextBoxColumn6.DataPropertyName = "Q";
+            dataGridViewTextBoxColumnMulti.DataPropertyName = "Multi";
+            resources.ApplyResources(dataGridViewTextBoxColumnMulti, "dataGridViewTextBoxColumnMulti");
+            dataGridViewTextBoxColumnMulti.Name = "dataGridViewTextBoxColumnMulti";
+            dataGridViewTextBoxColumnMulti.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumnD
+            // 
+            dataGridViewTextBoxColumnD.DataPropertyName = "D";
             dataGridViewCellStyle5.Format = "G7";
-            dataGridViewTextBoxColumn6.DefaultCellStyle = dataGridViewCellStyle5;
-            resources.ApplyResources(dataGridViewTextBoxColumn6, "dataGridViewTextBoxColumn6");
-            dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            dataGridViewTextBoxColumn6.ReadOnly = true;
+            dataGridViewCellStyle5.NullValue = null;
+            dataGridViewTextBoxColumnD.DefaultCellStyle = dataGridViewCellStyle5;
+            resources.ApplyResources(dataGridViewTextBoxColumnD, "dataGridViewTextBoxColumnD");
+            dataGridViewTextBoxColumnD.Name = "dataGridViewTextBoxColumnD";
+            dataGridViewTextBoxColumnD.ReadOnly = true;
             // 
-            // dataGridViewTextBoxColumn7
+            // dataGridViewTextBoxColumnQ
             // 
-            dataGridViewTextBoxColumn7.DataPropertyName = "TwoTheta";
+            dataGridViewTextBoxColumnQ.DataPropertyName = "Q";
             dataGridViewCellStyle6.Format = "G7";
-            dataGridViewTextBoxColumn7.DefaultCellStyle = dataGridViewCellStyle6;
-            resources.ApplyResources(dataGridViewTextBoxColumn7, "dataGridViewTextBoxColumn7");
-            dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
-            dataGridViewTextBoxColumn7.ReadOnly = true;
+            dataGridViewTextBoxColumnQ.DefaultCellStyle = dataGridViewCellStyle6;
+            resources.ApplyResources(dataGridViewTextBoxColumnQ, "dataGridViewTextBoxColumnQ");
+            dataGridViewTextBoxColumnQ.Name = "dataGridViewTextBoxColumnQ";
+            dataGridViewTextBoxColumnQ.ReadOnly = true;
             // 
-            // dataGridViewTextBoxColumn9
+            // dataGridViewTextBoxColumnTwoTheta
             // 
-            dataGridViewTextBoxColumn9.DataPropertyName = "F_real";
+            dataGridViewTextBoxColumnTwoTheta.DataPropertyName = "TwoTheta";
             dataGridViewCellStyle7.Format = "G7";
-            dataGridViewTextBoxColumn9.DefaultCellStyle = dataGridViewCellStyle7;
-            resources.ApplyResources(dataGridViewTextBoxColumn9, "dataGridViewTextBoxColumn9");
-            dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
-            dataGridViewTextBoxColumn9.ReadOnly = true;
+            dataGridViewTextBoxColumnTwoTheta.DefaultCellStyle = dataGridViewCellStyle7;
+            resources.ApplyResources(dataGridViewTextBoxColumnTwoTheta, "dataGridViewTextBoxColumnTwoTheta");
+            dataGridViewTextBoxColumnTwoTheta.Name = "dataGridViewTextBoxColumnTwoTheta";
+            dataGridViewTextBoxColumnTwoTheta.ReadOnly = true;
             // 
-            // dataGridViewTextBoxColumn10
+            // dataGridViewTextBoxColumnFreal
             // 
-            dataGridViewTextBoxColumn10.DataPropertyName = "F_inv";
+            dataGridViewTextBoxColumnFreal.DataPropertyName = "F_real";
             dataGridViewCellStyle8.Format = "G7";
-            dataGridViewTextBoxColumn10.DefaultCellStyle = dataGridViewCellStyle8;
-            resources.ApplyResources(dataGridViewTextBoxColumn10, "dataGridViewTextBoxColumn10");
-            dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
-            dataGridViewTextBoxColumn10.ReadOnly = true;
+            dataGridViewTextBoxColumnFreal.DefaultCellStyle = dataGridViewCellStyle8;
+            resources.ApplyResources(dataGridViewTextBoxColumnFreal, "dataGridViewTextBoxColumnFreal");
+            dataGridViewTextBoxColumnFreal.Name = "dataGridViewTextBoxColumnFreal";
+            dataGridViewTextBoxColumnFreal.ReadOnly = true;
             // 
-            // F
+            // dataGridViewTextBoxColumnFinv
             // 
-            F.DataPropertyName = "F";
+            dataGridViewTextBoxColumnFinv.DataPropertyName = "F_inv";
             dataGridViewCellStyle9.Format = "G7";
-            F.DefaultCellStyle = dataGridViewCellStyle9;
-            resources.ApplyResources(F, "F");
-            F.Name = "F";
-            F.ReadOnly = true;
+            dataGridViewTextBoxColumnFinv.DefaultCellStyle = dataGridViewCellStyle9;
+            resources.ApplyResources(dataGridViewTextBoxColumnFinv, "dataGridViewTextBoxColumnFinv");
+            dataGridViewTextBoxColumnFinv.Name = "dataGridViewTextBoxColumnFinv";
+            dataGridViewTextBoxColumnFinv.ReadOnly = true;
             // 
-            // dataGridViewTextBoxColumn11
+            // dataGridViewTextBoxColumnFabs
             // 
-            dataGridViewTextBoxColumn11.DataPropertyName = "F2";
+            dataGridViewTextBoxColumnFabs.DataPropertyName = "F";
             dataGridViewCellStyle10.Format = "G7";
-            dataGridViewTextBoxColumn11.DefaultCellStyle = dataGridViewCellStyle10;
-            resources.ApplyResources(dataGridViewTextBoxColumn11, "dataGridViewTextBoxColumn11");
-            dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
-            dataGridViewTextBoxColumn11.ReadOnly = true;
+            dataGridViewTextBoxColumnFabs.DefaultCellStyle = dataGridViewCellStyle10;
+            resources.ApplyResources(dataGridViewTextBoxColumnFabs, "dataGridViewTextBoxColumnFabs");
+            dataGridViewTextBoxColumnFabs.Name = "dataGridViewTextBoxColumnFabs";
+            dataGridViewTextBoxColumnFabs.ReadOnly = true;
             // 
-            // RelInt
+            // dataGridViewTextBoxColumnFsq
             // 
-            RelInt.DataPropertyName = "RelInt";
+            dataGridViewTextBoxColumnFsq.DataPropertyName = "F2";
             dataGridViewCellStyle11.Format = "G7";
-            RelInt.DefaultCellStyle = dataGridViewCellStyle11;
-            resources.ApplyResources(RelInt, "RelInt");
-            RelInt.Name = "RelInt";
-            RelInt.ReadOnly = true;
+            dataGridViewTextBoxColumnFsq.DefaultCellStyle = dataGridViewCellStyle11;
+            resources.ApplyResources(dataGridViewTextBoxColumnFsq, "dataGridViewTextBoxColumnFsq");
+            dataGridViewTextBoxColumnFsq.Name = "dataGridViewTextBoxColumnFsq";
+            dataGridViewTextBoxColumnFsq.ReadOnly = true;
             // 
-            // Condition
+            // dataGridViewTextBoxColumnIntPercent
             // 
-            Condition.DataPropertyName = "Condition";
-            resources.ApplyResources(Condition, "Condition");
-            Condition.Name = "Condition";
-            Condition.ReadOnly = true;
+            dataGridViewTextBoxColumnIntPercent.DataPropertyName = "RelInt";
+            dataGridViewCellStyle12.Format = "G7";
+            dataGridViewTextBoxColumnIntPercent.DefaultCellStyle = dataGridViewCellStyle12;
+            resources.ApplyResources(dataGridViewTextBoxColumnIntPercent, "dataGridViewTextBoxColumnIntPercent");
+            dataGridViewTextBoxColumnIntPercent.Name = "dataGridViewTextBoxColumnIntPercent";
+            dataGridViewTextBoxColumnIntPercent.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumnIntCondition
+            // 
+            dataGridViewTextBoxColumnIntCondition.DataPropertyName = "Condition";
+            resources.ApplyResources(dataGridViewTextBoxColumnIntCondition, "dataGridViewTextBoxColumnIntCondition");
+            dataGridViewTextBoxColumnIntCondition.Name = "dataGridViewTextBoxColumnIntCondition";
+            dataGridViewTextBoxColumnIntCondition.ReadOnly = true;
             // 
             // bindingSourceScatteringFactor
             // 
@@ -241,17 +256,6 @@
             dataSet.Namespace = "http://tempuri.org/DataSet1.xsd";
             dataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // numericUpDownThresholdD
-            // 
-            numericUpDownThresholdD.DecimalPlaces = 4;
-            resources.ApplyResources(numericUpDownThresholdD, "numericUpDownThresholdD");
-            numericUpDownThresholdD.Increment = new decimal(new int[] { 1, 0, 0, 65536 });
-            numericUpDownThresholdD.Maximum = new decimal(new int[] { 1000, 0, 0, 0 });
-            numericUpDownThresholdD.Minimum = new decimal(new int[] { 1, 0, 0, 65536 });
-            numericUpDownThresholdD.Name = "numericUpDownThresholdD";
-            numericUpDownThresholdD.Value = new decimal(new int[] { 1, 0, 0, 0 });
-            numericUpDownThresholdD.ValueChanged += numericUpDownThresholdD_ValueChanged;
-            // 
             // label2
             // 
             resources.ApplyResources(label2, "label2");
@@ -263,7 +267,7 @@
             checkBoxHideProhibitedPlanes.Checked = true;
             checkBoxHideProhibitedPlanes.CheckState = System.Windows.Forms.CheckState.Checked;
             checkBoxHideProhibitedPlanes.Name = "checkBoxHideProhibitedPlanes";
-            checkBoxHideProhibitedPlanes.CheckedChanged += numericUpDownThresholdD_ValueChanged;
+            checkBoxHideProhibitedPlanes.CheckedChanged += numericBoxCutoffD_ValueChanged;
             // 
             // checkBoxHideEquivalentPlane
             // 
@@ -271,12 +275,7 @@
             checkBoxHideEquivalentPlane.Checked = true;
             checkBoxHideEquivalentPlane.CheckState = System.Windows.Forms.CheckState.Checked;
             checkBoxHideEquivalentPlane.Name = "checkBoxHideEquivalentPlane";
-            checkBoxHideEquivalentPlane.CheckedChanged += numericUpDownThresholdD_ValueChanged;
-            // 
-            // label13
-            // 
-            resources.ApplyResources(label13, "label13");
-            label13.Name = "label13";
+            checkBoxHideEquivalentPlane.CheckedChanged += numericBoxCutoffD_ValueChanged;
             // 
             // buttonCopyClipboard
             // 
@@ -284,11 +283,6 @@
             buttonCopyClipboard.Name = "buttonCopyClipboard";
             buttonCopyClipboard.UseVisualStyleBackColor = true;
             buttonCopyClipboard.Click += buttonCopyClipBoard_Click;
-            // 
-            // label18
-            // 
-            resources.ApplyResources(label18, "label18");
-            label18.Name = "label18";
             // 
             // checkBoxBragBrentano
             // 
@@ -488,51 +482,66 @@
             radioButtonAngstrom.TabStop = true;
             radioButtonAngstrom.UseVisualStyleBackColor = true;
             // 
+            // panel3
+            // 
+            panel3.Controls.Add(checkBoxTest);
+            panel3.Controls.Add(numericBoxCutoffD);
+            panel3.Controls.Add(waveLengthControl1);
+            panel3.Controls.Add(panel2);
+            panel3.Controls.Add(panel1);
+            panel3.Controls.Add(checkBoxHideEquivalentPlane);
+            panel3.Controls.Add(checkBoxBragBrentano);
+            panel3.Controls.Add(buttonCopyClipboard);
+            panel3.Controls.Add(checkBoxHideProhibitedPlanes);
+            panel3.Controls.Add(label2);
+            resources.ApplyResources(panel3, "panel3");
+            panel3.Name = "panel3";
+            // 
+            // numericBoxCutoffD
+            // 
+            numericBoxCutoffD.BackColor = System.Drawing.Color.Transparent;
+            numericBoxCutoffD.DecimalPlaces = 3;
+            resources.ApplyResources(numericBoxCutoffD, "numericBoxCutoffD");
+            numericBoxCutoffD.Maximum = 10D;
+            numericBoxCutoffD.Minimum = 0.001D;
+            numericBoxCutoffD.Name = "numericBoxCutoffD";
+            numericBoxCutoffD.RadianValue = 0.017453292519943295D;
+            numericBoxCutoffD.ShowUpDown = true;
+            numericBoxCutoffD.SmartIncrement = true;
+            numericBoxCutoffD.Value = 1D;
+            numericBoxCutoffD.ValueChanged += numericBoxCutoffD_ValueChanged;
+            // 
             // FormScatteringFactor
             // 
             resources.ApplyResources(this, "$this");
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             captureExtender.SetCapture(this, true);
-            Controls.Add(panel2);
-            Controls.Add(checkBoxTest);
-            Controls.Add(waveLengthControl1);
-            Controls.Add(buttonCopyClipboard);
-            Controls.Add(dataGridView2);
-            Controls.Add(label2);
-            Controls.Add(label18);
-            Controls.Add(numericUpDownThresholdD);
-            Controls.Add(label13);
-            Controls.Add(checkBoxHideProhibitedPlanes);
-            Controls.Add(checkBoxBragBrentano);
-            Controls.Add(checkBoxHideEquivalentPlane);
-            Controls.Add(panel1);
+            Controls.Add(dataGridView);
+            Controls.Add(panel3);
             Name = "FormScatteringFactor";
             ShowIcon = false;
             FormClosing += FormCrystallographicInformation_FormClosing;
             Load += FormCrystallographicInformation_Load;
             VisibleChanged += FormScatteringFactor_VisibleChanged;
-            ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView).EndInit();
             ((System.ComponentModel.ISupportInitialize)bindingSourceScatteringFactor).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataSet).EndInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDownThresholdD).EndInit();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
+            panel3.ResumeLayout(false);
+            panel3.PerformLayout();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
 
         private System.Windows.Forms.CheckBox checkBoxHideEquivalentPlane;
         private System.Windows.Forms.CheckBox checkBoxHideProhibitedPlanes;
-        private System.Windows.Forms.DataGridView dataGridView2;
-        private System.Windows.Forms.NumericUpDown numericUpDownThresholdD;
+        private System.Windows.Forms.DataGridView dataGridView;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Button buttonCopyClipboard;
-        private System.Windows.Forms.Label label18;
         private System.Windows.Forms.CheckBox checkBoxBragBrentano;
         private System.Windows.Forms.BindingSource bindingSourceScatteringFactor;
         private WaveLengthControl waveLengthControl1;
@@ -555,22 +564,25 @@
         private NumericBox numericBoxL_min;
         private NumericBox numericBoxK_min;
         private NumericBox numericBoxH_max;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn K;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
-        private System.Windows.Forms.DataGridViewTextBoxColumn F;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
-        private System.Windows.Forms.DataGridViewTextBoxColumn RelInt;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Condition;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.RadioButton radioButtonNanoMeter;
         private System.Windows.Forms.RadioButton radioButtonAngstrom;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Panel panel3;
+        private NumericBox numericBoxCutoffD;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumnH;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumnK;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumnI;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumnL;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumnMulti;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumnD;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumnQ;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumnTwoTheta;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumnFreal;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumnFinv;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumnFabs;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumnFsq;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumnIntPercent;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumnIntCondition;
     }
 }

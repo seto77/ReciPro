@@ -33,7 +33,9 @@ public partial class LatticePlaneControl : CaptureUserControlBase
 
     public event EventHandler ItemsChanged;
 
-    private DataSet.DataTableLatticePlaneDataTable table;
+    private readonly DataSet.DataTableLatticePlaneDataTable table;
+
+    public bool MillerBravaisIndexActive { set => iDataGridViewTextBoxColumn.Visible = value; }
 
     #endregion
 
@@ -199,5 +201,17 @@ public partial class LatticePlaneControl : CaptureUserControlBase
         }
     }
     #endregion
+
+    private void numericBoxH_ValueChanged(object sender, EventArgs e) => numericBoxI.Value = -numericBoxH.Value - numericBoxK.Value;
+
+    private void dataGridView_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+    {
+        if (e.RowIndex < 0 || dataGridView.Columns[e.ColumnIndex] != iDataGridViewTextBoxColumn) return;
+        var row = dataGridView.Rows[e.RowIndex];
+        var h = Convert.ToInt32(row.Cells[hDataGridViewTextBoxColumn.Index].Value);
+        var k = Convert.ToInt32(row.Cells[kDataGridViewTextBoxColumn.Index].Value);
+        e.Value = (-h - k).ToString(); // (260424Ch) TextBoxCell の表示値は string にして DataGridView の型不一致を避ける
+        e.FormattingApplied = true;
+    }
 }
 

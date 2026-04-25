@@ -120,99 +120,107 @@
   <metadata name="captureExtender.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="dataGridView2.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Bottom, Left, Right</value>
-  </data>
-  <data name="dataGridViewTextBoxColumn1.HeaderText" xml:space="preserve">
+  <data name="dataGridViewTextBoxColumnH.HeaderText" xml:space="preserve">
     <value>h</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="dataGridViewTextBoxColumn1.Width" type="System.Int32, mscorlib">
+  <data name="dataGridViewTextBoxColumnH.Width" type="System.Int32, mscorlib">
     <value>30</value>
   </data>
-  <metadata name="K.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="dataGridViewTextBoxColumnK.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <data name="K.HeaderText" xml:space="preserve">
+  <data name="dataGridViewTextBoxColumnK.HeaderText" xml:space="preserve">
     <value>k</value>
   </data>
-  <data name="K.Width" type="System.Int32, mscorlib">
+  <data name="dataGridViewTextBoxColumnK.Width" type="System.Int32, mscorlib">
     <value>30</value>
   </data>
-  <data name="dataGridViewTextBoxColumn3.HeaderText" xml:space="preserve">
+  <metadata name="dataGridViewTextBoxColumnI.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="dataGridViewTextBoxColumnI.HeaderText" xml:space="preserve">
+    <value>i</value>
+  </data>
+  <data name="dataGridViewTextBoxColumnI.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="dataGridViewTextBoxColumnI.Width" type="System.Int32, mscorlib">
+    <value>30</value>
+  </data>
+  <data name="dataGridViewTextBoxColumnL.HeaderText" xml:space="preserve">
     <value>l</value>
   </data>
-  <data name="dataGridViewTextBoxColumn3.Width" type="System.Int32, mscorlib">
+  <data name="dataGridViewTextBoxColumnL.Width" type="System.Int32, mscorlib">
     <value>30</value>
   </data>
-  <data name="dataGridViewTextBoxColumn4.HeaderText" xml:space="preserve">
+  <data name="dataGridViewTextBoxColumnMulti.HeaderText" xml:space="preserve">
     <value>Multi.</value>
   </data>
-  <data name="dataGridViewTextBoxColumn4.Width" type="System.Int32, mscorlib">
+  <data name="dataGridViewTextBoxColumnMulti.Width" type="System.Int32, mscorlib">
     <value>45</value>
   </data>
-  <data name="dataGridViewTextBoxColumn5.HeaderText" xml:space="preserve">
+  <data name="dataGridViewTextBoxColumnD.HeaderText" xml:space="preserve">
     <value>d (Å)</value>
   </data>
-  <data name="dataGridViewTextBoxColumn5.Width" type="System.Int32, mscorlib">
+  <data name="dataGridViewTextBoxColumnD.Width" type="System.Int32, mscorlib">
     <value>70</value>
   </data>
-  <data name="dataGridViewTextBoxColumn6.HeaderText" xml:space="preserve">
+  <data name="dataGridViewTextBoxColumnQ.HeaderText" xml:space="preserve">
     <value>q (2π/d)</value>
   </data>
-  <data name="dataGridViewTextBoxColumn6.Width" type="System.Int32, mscorlib">
+  <data name="dataGridViewTextBoxColumnQ.Width" type="System.Int32, mscorlib">
     <value>75</value>
   </data>
-  <data name="dataGridViewTextBoxColumn7.HeaderText" xml:space="preserve">
+  <data name="dataGridViewTextBoxColumnTwoTheta.HeaderText" xml:space="preserve">
     <value>2θ (°)</value>
   </data>
-  <data name="dataGridViewTextBoxColumn7.Width" type="System.Int32, mscorlib">
+  <data name="dataGridViewTextBoxColumnTwoTheta.Width" type="System.Int32, mscorlib">
     <value>70</value>
   </data>
-  <data name="dataGridViewTextBoxColumn9.HeaderText" xml:space="preserve">
+  <data name="dataGridViewTextBoxColumnFreal.HeaderText" xml:space="preserve">
     <value>F_real</value>
   </data>
-  <data name="dataGridViewTextBoxColumn9.Width" type="System.Int32, mscorlib">
+  <data name="dataGridViewTextBoxColumnFreal.Width" type="System.Int32, mscorlib">
     <value>70</value>
   </data>
-  <data name="dataGridViewTextBoxColumn10.HeaderText" xml:space="preserve">
+  <data name="dataGridViewTextBoxColumnFinv.HeaderText" xml:space="preserve">
     <value>F_inv</value>
   </data>
-  <data name="dataGridViewTextBoxColumn10.Width" type="System.Int32, mscorlib">
+  <data name="dataGridViewTextBoxColumnFinv.Width" type="System.Int32, mscorlib">
     <value>70</value>
   </data>
-  <metadata name="F.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="dataGridViewTextBoxColumnFabs.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <data name="F.HeaderText" xml:space="preserve">
+  <data name="dataGridViewTextBoxColumnFabs.HeaderText" xml:space="preserve">
     <value>|F|</value>
   </data>
-  <data name="F.Width" type="System.Int32, mscorlib">
+  <data name="dataGridViewTextBoxColumnFabs.Width" type="System.Int32, mscorlib">
     <value>70</value>
   </data>
-  <data name="dataGridViewTextBoxColumn11.HeaderText" xml:space="preserve">
+  <data name="dataGridViewTextBoxColumnFsq.HeaderText" xml:space="preserve">
     <value>F^2</value>
   </data>
-  <data name="dataGridViewTextBoxColumn11.Width" type="System.Int32, mscorlib">
+  <data name="dataGridViewTextBoxColumnFsq.Width" type="System.Int32, mscorlib">
     <value>70</value>
   </data>
-  <metadata name="RelInt.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="dataGridViewTextBoxColumnIntPercent.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <data name="RelInt.HeaderText" xml:space="preserve">
+  <data name="dataGridViewTextBoxColumnIntPercent.HeaderText" xml:space="preserve">
     <value>Rel. Int. (%)</value>
   </data>
-  <data name="RelInt.Width" type="System.Int32, mscorlib">
+  <data name="dataGridViewTextBoxColumnIntPercent.Width" type="System.Int32, mscorlib">
     <value>90</value>
   </data>
-  <metadata name="Condition.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="dataGridViewTextBoxColumnIntCondition.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <data name="Condition.HeaderText" xml:space="preserve">
+  <data name="dataGridViewTextBoxColumnIntCondition.HeaderText" xml:space="preserve">
     <value>Condition</value>
   </data>
-  <data name="Condition.Width" type="System.Int32, mscorlib">
+  <data name="dataGridViewTextBoxColumnIntCondition.Width" type="System.Int32, mscorlib">
     <value>80</value>
   </data>
   <metadata name="bindingSourceScatteringFactor.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
@@ -221,58 +229,31 @@
   <metadata name="dataSet.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>373, 17</value>
   </metadata>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="dataGridView.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="dataGridView2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 110</value>
+  <data name="dataGridView.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 116</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="dataGridView2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 4, 3, 4</value>
+  <data name="dataGridView.Size" type="System.Drawing.Size, System.Drawing">
+    <value>857, 282</value>
   </data>
-  <data name="dataGridView2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>824, 284</value>
+  <data name="dataGridView.TabIndex" type="System.Int32, mscorlib">
+    <value>14</value>
   </data>
-  <data name="dataGridView2.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+  <data name="&gt;&gt;dataGridView.Name" xml:space="preserve">
+    <value>dataGridView</value>
   </data>
-  <data name="&gt;&gt;dataGridView2.Name" xml:space="preserve">
-    <value>dataGridView2</value>
-  </data>
-  <data name="&gt;&gt;dataGridView2.Type" xml:space="preserve">
+  <data name="&gt;&gt;dataGridView.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;dataGridView2.Parent" xml:space="preserve">
+  <data name="&gt;&gt;dataGridView.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;dataGridView2.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="numericUpDownThresholdD.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="numericUpDownThresholdD.Location" type="System.Drawing.Point, System.Drawing">
-    <value>520, 22</value>
-  </data>
-  <data name="numericUpDownThresholdD.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 4, 3, 4</value>
-  </data>
-  <data name="numericUpDownThresholdD.Size" type="System.Drawing.Size, System.Drawing">
-    <value>61, 25</value>
-  </data>
-  <data name="numericUpDownThresholdD.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;numericUpDownThresholdD.Name" xml:space="preserve">
-    <value>numericUpDownThresholdD</value>
-  </data>
-  <data name="&gt;&gt;numericUpDownThresholdD.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;numericUpDownThresholdD.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;numericUpDownThresholdD.ZOrder" xml:space="preserve">
-    <value>7</value>
+  <data name="&gt;&gt;dataGridView.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="label2.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -281,10 +262,10 @@
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
   <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>443, 3</value>
+    <value>433, 1</value>
   </data>
   <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>144, 17</value>
+    <value>106, 17</value>
   </data>
   <data name="label2.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -299,10 +280,10 @@
     <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;label2.Parent" xml:space="preserve">
-    <value>$this</value>
+    <value>panel3</value>
   </data>
   <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>9</value>
   </data>
   <data name="checkBoxHideProhibitedPlanes.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -311,8 +292,9 @@
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
   <data name="checkBoxHideProhibitedPlanes.Location" type="System.Drawing.Point, System.Drawing">
-    <value>239, 64</value>
+    <value>229, 62</value>
   </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="checkBoxHideProhibitedPlanes.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 4, 3, 4</value>
   </data>
@@ -332,10 +314,10 @@
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;checkBoxHideProhibitedPlanes.Parent" xml:space="preserve">
-    <value>$this</value>
+    <value>panel3</value>
   </data>
   <data name="&gt;&gt;checkBoxHideProhibitedPlanes.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>8</value>
   </data>
   <data name="checkBoxHideEquivalentPlane.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -344,7 +326,7 @@
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
   <data name="checkBoxHideEquivalentPlane.Location" type="System.Drawing.Point, System.Drawing">
-    <value>239, 40</value>
+    <value>229, 38</value>
   </data>
   <data name="checkBoxHideEquivalentPlane.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 4, 3, 4</value>
@@ -365,43 +347,16 @@
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;checkBoxHideEquivalentPlane.Parent" xml:space="preserve">
-    <value>$this</value>
+    <value>panel3</value>
   </data>
   <data name="&gt;&gt;checkBoxHideEquivalentPlane.ZOrder" xml:space="preserve">
-    <value>11</value>
-  </data>
-  <data name="label13.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="label13.Location" type="System.Drawing.Point, System.Drawing">
-    <value>582, 26</value>
-  </data>
-  <data name="label13.Size" type="System.Drawing.Size, System.Drawing">
-    <value>28, 20</value>
-  </data>
-  <data name="label13.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <data name="label13.Text" xml:space="preserve">
-    <value>Å</value>
-  </data>
-  <data name="&gt;&gt;label13.Name" xml:space="preserve">
-    <value>label13</value>
-  </data>
-  <data name="&gt;&gt;label13.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label13.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;label13.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>5</value>
   </data>
   <data name="buttonCopyClipboard.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
   <data name="buttonCopyClipboard.Location" type="System.Drawing.Point, System.Drawing">
-    <value>440, 78</value>
+    <value>430, 76</value>
   </data>
   <data name="buttonCopyClipboard.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 4, 3, 4</value>
@@ -422,37 +377,10 @@
     <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;buttonCopyClipboard.Parent" xml:space="preserve">
-    <value>$this</value>
+    <value>panel3</value>
   </data>
   <data name="&gt;&gt;buttonCopyClipboard.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="label18.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="label18.Location" type="System.Drawing.Point, System.Drawing">
-    <value>502, 24</value>
-  </data>
-  <data name="label18.Size" type="System.Drawing.Size, System.Drawing">
-    <value>17, 20</value>
-  </data>
-  <data name="label18.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <data name="label18.Text" xml:space="preserve">
-    <value>&lt;</value>
-  </data>
-  <data name="&gt;&gt;label18.Name" xml:space="preserve">
-    <value>label18</value>
-  </data>
-  <data name="&gt;&gt;label18.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label18.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;label18.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>7</value>
   </data>
   <data name="checkBoxBragBrentano.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -461,13 +389,13 @@
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
   <data name="checkBoxBragBrentano.Location" type="System.Drawing.Point, System.Drawing">
-    <value>238, 1</value>
+    <value>228, -1</value>
   </data>
   <data name="checkBoxBragBrentano.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 4, 3, 4</value>
   </data>
   <data name="checkBoxBragBrentano.Size" type="System.Drawing.Size, System.Drawing">
-    <value>199, 38</value>
+    <value>196, 38</value>
   </data>
   <data name="checkBoxBragBrentano.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
@@ -483,10 +411,10 @@
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;checkBoxBragBrentano.Parent" xml:space="preserve">
-    <value>$this</value>
+    <value>panel3</value>
   </data>
   <data name="&gt;&gt;checkBoxBragBrentano.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>6</value>
   </data>
   <data name="waveLengthControl1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -498,7 +426,7 @@
     <value>Arial, 9pt</value>
   </data>
   <data name="waveLengthControl1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 2</value>
+    <value>0, 0</value>
   </data>
   <data name="waveLengthControl1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -510,7 +438,7 @@
     <value>200, 0</value>
   </data>
   <data name="waveLengthControl1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>200, 97</value>
+    <value>200, 99</value>
   </data>
   <data name="waveLengthControl1.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
@@ -525,7 +453,7 @@
     <value>Crystallography.Controls.WaveLengthControl, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;waveLengthControl1.Parent" xml:space="preserve">
-    <value>$this</value>
+    <value>panel3</value>
   </data>
   <data name="&gt;&gt;waveLengthControl1.ZOrder" xml:space="preserve">
     <value>2</value>
@@ -579,7 +507,7 @@
     <value>True</value>
   </data>
   <data name="checkBoxTest.Location" type="System.Drawing.Point, System.Drawing">
-    <value>600, 2</value>
+    <value>590, 0</value>
   </data>
   <data name="checkBoxTest.Size" type="System.Drawing.Size, System.Drawing">
     <value>48, 21</value>
@@ -597,10 +525,10 @@
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;checkBoxTest.Parent" xml:space="preserve">
-    <value>$this</value>
+    <value>panel3</value>
   </data>
   <data name="&gt;&gt;checkBoxTest.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>0</value>
   </data>
   <data name="label1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1161,7 +1089,7 @@
     <value>8</value>
   </data>
   <data name="panel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>617, 8</value>
+    <value>607, 6</value>
   </data>
   <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
     <value>202, 97</value>
@@ -1179,10 +1107,10 @@
     <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;panel1.Parent" xml:space="preserve">
-    <value>$this</value>
+    <value>panel3</value>
   </data>
   <data name="&gt;&gt;panel1.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>4</value>
   </data>
   <data name="panel2.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
@@ -1272,7 +1200,7 @@
     <value>1</value>
   </data>
   <data name="panel2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>237, 84</value>
+    <value>227, 82</value>
   </data>
   <data name="panel2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -1290,10 +1218,73 @@
     <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;panel2.Parent" xml:space="preserve">
-    <value>$this</value>
+    <value>panel3</value>
   </data>
   <data name="&gt;&gt;panel2.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>3</value>
+  </data>
+  <data name="numericBoxCutoffD.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="numericBoxCutoffD.FooterText" xml:space="preserve">
+    <value>Å</value>
+  </data>
+  <data name="numericBoxCutoffD.HeaderText" xml:space="preserve">
+    <value>&gt;</value>
+  </data>
+  <data name="numericBoxCutoffD.Location" type="System.Drawing.Point, System.Drawing">
+    <value>469, 24</value>
+  </data>
+  <data name="numericBoxCutoffD.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="numericBoxCutoffD.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 100</value>
+  </data>
+  <data name="numericBoxCutoffD.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>10, 20</value>
+  </data>
+  <data name="numericBoxCutoffD.Size" type="System.Drawing.Size, System.Drawing">
+    <value>102, 26</value>
+  </data>
+  <data name="numericBoxCutoffD.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;numericBoxCutoffD.Name" xml:space="preserve">
+    <value>numericBoxCutoffD</value>
+  </data>
+  <data name="&gt;&gt;numericBoxCutoffD.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericBoxCutoffD.Parent" xml:space="preserve">
+    <value>panel3</value>
+  </data>
+  <data name="&gt;&gt;numericBoxCutoffD.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="panel3.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="panel3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="panel3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>857, 116</value>
+  </data>
+  <data name="panel3.TabIndex" type="System.Int32, mscorlib">
+    <value>15</value>
+  </data>
+  <data name="&gt;&gt;panel3.Name" xml:space="preserve">
+    <value>panel3</value>
+  </data>
+  <data name="&gt;&gt;panel3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panel3.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;panel3.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -1305,7 +1296,7 @@
     <value>96, 96</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>831, 398</value>
+    <value>857, 398</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
@@ -1325,82 +1316,88 @@
   <data name="&gt;&gt;captureExtender.Type" xml:space="preserve">
     <value>Crystallography.Controls.CaptureExtender, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;dataGridViewTextBoxColumn1.Name" xml:space="preserve">
-    <value>dataGridViewTextBoxColumn1</value>
+  <data name="&gt;&gt;dataGridViewTextBoxColumnH.Name" xml:space="preserve">
+    <value>dataGridViewTextBoxColumnH</value>
   </data>
-  <data name="&gt;&gt;dataGridViewTextBoxColumn1.Type" xml:space="preserve">
+  <data name="&gt;&gt;dataGridViewTextBoxColumnH.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;K.Name" xml:space="preserve">
-    <value>K</value>
+  <data name="&gt;&gt;dataGridViewTextBoxColumnK.Name" xml:space="preserve">
+    <value>dataGridViewTextBoxColumnK</value>
   </data>
-  <data name="&gt;&gt;K.Type" xml:space="preserve">
+  <data name="&gt;&gt;dataGridViewTextBoxColumnK.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;dataGridViewTextBoxColumn3.Name" xml:space="preserve">
-    <value>dataGridViewTextBoxColumn3</value>
+  <data name="&gt;&gt;dataGridViewTextBoxColumnI.Name" xml:space="preserve">
+    <value>dataGridViewTextBoxColumnI</value>
   </data>
-  <data name="&gt;&gt;dataGridViewTextBoxColumn3.Type" xml:space="preserve">
+  <data name="&gt;&gt;dataGridViewTextBoxColumnI.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;dataGridViewTextBoxColumn4.Name" xml:space="preserve">
-    <value>dataGridViewTextBoxColumn4</value>
+  <data name="&gt;&gt;dataGridViewTextBoxColumnL.Name" xml:space="preserve">
+    <value>dataGridViewTextBoxColumnL</value>
   </data>
-  <data name="&gt;&gt;dataGridViewTextBoxColumn4.Type" xml:space="preserve">
+  <data name="&gt;&gt;dataGridViewTextBoxColumnL.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;dataGridViewTextBoxColumn5.Name" xml:space="preserve">
-    <value>dataGridViewTextBoxColumn5</value>
+  <data name="&gt;&gt;dataGridViewTextBoxColumnMulti.Name" xml:space="preserve">
+    <value>dataGridViewTextBoxColumnMulti</value>
   </data>
-  <data name="&gt;&gt;dataGridViewTextBoxColumn5.Type" xml:space="preserve">
+  <data name="&gt;&gt;dataGridViewTextBoxColumnMulti.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;dataGridViewTextBoxColumn6.Name" xml:space="preserve">
-    <value>dataGridViewTextBoxColumn6</value>
+  <data name="&gt;&gt;dataGridViewTextBoxColumnD.Name" xml:space="preserve">
+    <value>dataGridViewTextBoxColumnD</value>
   </data>
-  <data name="&gt;&gt;dataGridViewTextBoxColumn6.Type" xml:space="preserve">
+  <data name="&gt;&gt;dataGridViewTextBoxColumnD.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;dataGridViewTextBoxColumn7.Name" xml:space="preserve">
-    <value>dataGridViewTextBoxColumn7</value>
+  <data name="&gt;&gt;dataGridViewTextBoxColumnQ.Name" xml:space="preserve">
+    <value>dataGridViewTextBoxColumnQ</value>
   </data>
-  <data name="&gt;&gt;dataGridViewTextBoxColumn7.Type" xml:space="preserve">
+  <data name="&gt;&gt;dataGridViewTextBoxColumnQ.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;dataGridViewTextBoxColumn9.Name" xml:space="preserve">
-    <value>dataGridViewTextBoxColumn9</value>
+  <data name="&gt;&gt;dataGridViewTextBoxColumnTwoTheta.Name" xml:space="preserve">
+    <value>dataGridViewTextBoxColumnTwoTheta</value>
   </data>
-  <data name="&gt;&gt;dataGridViewTextBoxColumn9.Type" xml:space="preserve">
+  <data name="&gt;&gt;dataGridViewTextBoxColumnTwoTheta.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;dataGridViewTextBoxColumn10.Name" xml:space="preserve">
-    <value>dataGridViewTextBoxColumn10</value>
+  <data name="&gt;&gt;dataGridViewTextBoxColumnFreal.Name" xml:space="preserve">
+    <value>dataGridViewTextBoxColumnFreal</value>
   </data>
-  <data name="&gt;&gt;dataGridViewTextBoxColumn10.Type" xml:space="preserve">
+  <data name="&gt;&gt;dataGridViewTextBoxColumnFreal.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;F.Name" xml:space="preserve">
-    <value>F</value>
+  <data name="&gt;&gt;dataGridViewTextBoxColumnFinv.Name" xml:space="preserve">
+    <value>dataGridViewTextBoxColumnFinv</value>
   </data>
-  <data name="&gt;&gt;F.Type" xml:space="preserve">
+  <data name="&gt;&gt;dataGridViewTextBoxColumnFinv.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;dataGridViewTextBoxColumn11.Name" xml:space="preserve">
-    <value>dataGridViewTextBoxColumn11</value>
+  <data name="&gt;&gt;dataGridViewTextBoxColumnFabs.Name" xml:space="preserve">
+    <value>dataGridViewTextBoxColumnFabs</value>
   </data>
-  <data name="&gt;&gt;dataGridViewTextBoxColumn11.Type" xml:space="preserve">
+  <data name="&gt;&gt;dataGridViewTextBoxColumnFabs.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;RelInt.Name" xml:space="preserve">
-    <value>RelInt</value>
+  <data name="&gt;&gt;dataGridViewTextBoxColumnFsq.Name" xml:space="preserve">
+    <value>dataGridViewTextBoxColumnFsq</value>
   </data>
-  <data name="&gt;&gt;RelInt.Type" xml:space="preserve">
+  <data name="&gt;&gt;dataGridViewTextBoxColumnFsq.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;Condition.Name" xml:space="preserve">
-    <value>Condition</value>
+  <data name="&gt;&gt;dataGridViewTextBoxColumnIntPercent.Name" xml:space="preserve">
+    <value>dataGridViewTextBoxColumnIntPercent</value>
   </data>
-  <data name="&gt;&gt;Condition.Type" xml:space="preserve">
+  <data name="&gt;&gt;dataGridViewTextBoxColumnIntPercent.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewTextBoxColumnIntCondition.Name" xml:space="preserve">
+    <value>dataGridViewTextBoxColumnIntCondition</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewTextBoxColumnIntCondition.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;bindingSourceScatteringFactor.Name" xml:space="preserve">

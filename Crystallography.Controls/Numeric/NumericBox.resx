@@ -146,7 +146,7 @@
     <value>No</value>
   </data>
   <data name="textBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>83, 25</value>
+    <value>66, 25</value>
   </data>
   <data name="textBox.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -200,7 +200,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;labelHeader.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="labelFooter.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -239,7 +239,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;labelFooter.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="spinButtonPanel.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Right</value>
@@ -252,6 +252,9 @@
   </data>
   <data name="spinButtonPanel.Size" type="System.Drawing.Size, System.Drawing">
     <value>17, 26</value>
+  </data>
+  <data name="spinButtonPanel.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
   </data>
   <data name="spinButtonPanel.Visible" type="System.Boolean, mscorlib">
     <value>False</value>

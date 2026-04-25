@@ -359,6 +359,8 @@ public partial class FormDiffractionSimulator : CaptureFormBase
         }
     }
 
+    public bool MillerBravaisActive => formMain.MillerBravaisActive;
+
     #endregion
 
     #region コンストラクタ、ロード、クローズ
@@ -1086,13 +1088,19 @@ public partial class FormDiffractionSimulator : CaptureFormBase
     }
     #endregion
 
-    #region DrawDiffractionSpostLabel
+    #region DrawDiffractionSpotsLabel
 
     public void DrawDiffractionSpotsLabel(Graphics graphics, Vector3D g, PointD pt, double radius, double error)
     {
         double alphaCoeff = (double)trackBarSpotOpacity.Value / trackBarSpotOpacity.Maximum;
         var sb = new StringBuilder();
-        if (toolStripButtonIndexLabels.Checked) sb.AppendLine(g.Text);
+        if (toolStripButtonIndexLabels.Checked)
+        {
+            if (MillerBravaisActive)
+                sb.AppendLine($"{g.Index.h} {g.Index.k} {-g.Index.h - g.Index.k} {g.Index.l}");
+            else
+                sb.AppendLine(g.Text);
+        }
         if (toolStripButtonDspacing.Checked) sb.AppendLine($"{g.d * 10:#.###} Å");
         if (toolStripButtonDspacingInv.Checked) sb.AppendLine($"{1 / g.d:#.###} /nm");
         if (toolStripButtonDistance.Checked) sb.AppendLine($"{CameraLength2 * Math.Tan(2 * Math.Asin(WaveLength / g.d / 2)):#.###} mm");
@@ -1109,8 +1117,6 @@ public partial class FormDiffractionSimulator : CaptureFormBase
         var p = convertDetectorToScreen(pt) + new PointD(radius / 1.4142 / Resolution + 3, radius / 1.4142 / Resolution + 3);
         graphics.DrawString(sb.ToString(), font, Color.FromArgb((int)(alphaCoeff * 255), colorControlString.Color), p, true);
 
-        //var brush = new SolidBrush(Color.FromArgb((int)(alphaCoeff * 255), colorControlString.Color));
-        //graphics.DrawString(sb.ToString(), font, brush, (float)(pt.X + radius / 1.4142 + 3 * Resolution), (float)(pt.Y + radius / 1.4142 + 3 * Resolution));
     }
 
     #endregion
@@ -1864,10 +1870,11 @@ public partial class FormDiffractionSimulator : CaptureFormBase
                 list = [.. list.OrderBy(g => g.Length2)];
 
                 //260421Cl Miller-Bravais 4 指数対応
-                var useMB = formMain.IsMillerBravaisActive;
+                var useMB = formMain.MillerBravaisActive;
+                var g0 = FormMain.PlaneString(list[0].Index.h, list[0].Index.k, list[0].Index.l, useMB);                                                  // 260422Cl list[0] の指数文字列を一度だけ計算
                 var sb = new StringBuilder();
-                sb.Append($"The spot is a supoerposition of mutiple of g = {FormMain.PlaneString(list[0].Index.h, list[0].Index.k, list[0].Index.l, useMB)}\r\n");
-                sb.Append($"Coordinates of g = {FormMain.PlaneString(list[0].Index.h, list[0].Index.k, list[0].Index.l, useMB)}: ({list[0].X:f4}, {list[0].Y:f4}, {list[0].Z:f4})  in nm⁻¹\r\n");
+                sb.Append($"The spot is a supoerposition of mutiple of g = {g0}\r\n");
+                sb.Append($"Coordinates of g = {g0}: ({list[0].X:f4}, {list[0].Y:f4}, {list[0].Z:f4})  in nm⁻¹\r\n");
                 for (int i = 0; i < list.Count; i++)
                     sb.Append($"  {i}   g = {FormMain.PlaneString(list[i].Index.h, list[i].Index.k, list[i].Index.l, useMB)};   F² = {list[i].F.MagnitudeSquared():f4}\r\n");
 
@@ -1884,7 +1891,7 @@ public partial class FormDiffractionSimulator : CaptureFormBase
                 var dev = Math.Abs(EwaldRadius - Math.Sqrt(vec.Length2 - 2 * vec.Z * EwaldRadius + EwaldRadius * EwaldRadius));
 
                 MessageBox.Show(
-                    $"Index: g = {FormMain.PlaneString(g.Index.h, g.Index.k, g.Index.l, formMain.IsMillerBravaisActive)}\r\n" +                           // 260421Cl Miller-Bravais 対応
+                    $"Index: g = {FormMain.PlaneString(g.Index.h, g.Index.k, g.Index.l, formMain.MillerBravaisActive)}\r\n" +                           // 260421Cl Miller-Bravais 対応
                     $"d-spacing: {g.d:f4} nm\r\n" +
                     $"Length: {1 / g.d:f4} nm⁻¹\r\n" +
                     $"Coordinate (nm⁻¹): {vec.X:f4}, {vec.Y:f4}, {vec.Z:f4}\r\n" +
@@ -3219,6 +3226,12 @@ public partial class FormDiffractionSimulator : CaptureFormBase
             FormDiffractionSimulatorHolder.RotationChanged();
     }
 
-   
+    public void UpdatePlaneIndices()
+    {
+        FormDiffractionBeamTable?.UpdatePlaneIndices(MillerBravaisActive);
+        Draw();
+    }
+
+
 }
 

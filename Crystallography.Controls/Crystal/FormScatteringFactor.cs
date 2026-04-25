@@ -11,9 +11,8 @@ public partial class FormScatteringFactor : CaptureFormBase
 {
     public Crystal Crystal { get => CrystalControl.Crystal; }
     public CrystalControl CrystalControl;
-    
+
     /// <summary>長さの単位の get/set</summary>
-    // (260322Ch) WFO1000: Microsoft ??????????????????? ???????????
     [System.ComponentModel.Browsable(false)]
     [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
     public LengthUnitEnum LengthUnit
@@ -26,6 +25,15 @@ public partial class FormScatteringFactor : CaptureFormBase
         }
     }
 
+    /// <summary>
+    /// d値のカットオフ (常にnm単位)
+    /// </summary>
+    public double CutoffD => LengthUnit== LengthUnitEnum.NanoMeter ? numericBoxCutoffD.Value : numericBoxCutoffD.Value/10;
+
+
+    public bool MillerBravais { get => dataGridViewTextBoxColumnI.Visible; set => dataGridViewTextBoxColumnI.Visible = value; }
+
+
     #region 起動, 終了
     public FormScatteringFactor()
     {
@@ -35,7 +43,7 @@ public partial class FormScatteringFactor : CaptureFormBase
     {
         //CrystalContorolでCystalが変更されたときのイベントを登録
         CrystalControl.CrystalChanged += new EventHandler(crystalControl_CrystalChanged);
-        typeof(DataGridView).GetProperty("DoubleBuffered", BindingFlags.Instance | BindingFlags.NonPublic).SetValue(dataGridView2, true, null);
+        typeof(DataGridView).GetProperty("DoubleBuffered", BindingFlags.Instance | BindingFlags.NonPublic).SetValue(dataGridView, true, null);
 
     }
 
@@ -50,7 +58,7 @@ public partial class FormScatteringFactor : CaptureFormBase
     //CrystalContorolでCystalが変更されたとき
     private void crystalControl_CrystalChanged(object sender, EventArgs e)
     {
-        numericUpDownThresholdD.Minimum = (decimal)((Crystal.A + Crystal.B + Crystal.C) / 20);
+        numericBoxCutoffD.Minimum = (Crystal.A + Crystal.B + Crystal.C) / 20;
         if (this.Visible)
             SetSortedPlanes();
     }
@@ -61,7 +69,7 @@ public partial class FormScatteringFactor : CaptureFormBase
             SetSortedPlanes();
     }
 
-    private void numericUpDownThresholdD_ValueChanged(object sender, EventArgs e)
+    private void numericBoxCutoffD_ValueChanged(object sender, EventArgs e)
     {
         SetSortedPlanes();
     }
@@ -70,16 +78,16 @@ public partial class FormScatteringFactor : CaptureFormBase
     {
         var str = new StringBuilder();
 
-        for (int i = 0; i < dataGridView2.Columns.Count; i++)
-            if (dataGridView2.Columns[i].Visible)
-                str.Append(dataGridView2.Columns[i].HeaderText + "\t");
+        for (int i = 0; i < dataGridView.Columns.Count; i++)
+            if (dataGridView.Columns[i].Visible)
+                str.Append(dataGridView.Columns[i].HeaderText + "\t");
         str.Append("\r\n");
 
-        for (int j = 0; j < dataGridView2.Rows.Count; j++)
+        for (int j = 0; j < dataGridView.Rows.Count; j++)
         {
-            for (int i = 0; i < dataGridView2.ColumnCount; i++)
-                if (dataGridView2.Columns[i].Visible)
-                    str.Append($"{dataGridView2[i, j].Value}\t");
+            for (int i = 0; i < dataGridView.ColumnCount; i++)
+                if (dataGridView.Columns[i].Visible)
+                    str.Append($"{dataGridView[i, j].Value}\t");
             str.Append("\r\n");
         }
         Clipboard.SetDataObject(str.ToString());
@@ -119,7 +127,7 @@ public partial class FormScatteringFactor : CaptureFormBase
 
         var c = (Crystal)Crystal.Clone();
 
-        c.SetVectorOfG((double)numericUpDownThresholdD.Value / 10, waveLengthControl1.WaveSource);
+        c.SetVectorOfG(CutoffD, waveLengthControl1.WaveSource);
 
         Array.Sort(c.VectorOfG, (g1, g2) => g2.d.CompareTo(g1.d));
 
@@ -154,20 +162,15 @@ public partial class FormScatteringFactor : CaptureFormBase
 
         //一旦bindingSourceを解除
         var dataMember = bindingSourceScatteringFactor.DataMember;
-        //dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-        dataGridView2.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
-        dataGridView2.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.None;
+        dataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
+        dataGridView.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.None;
         bindingSourceScatteringFactor.DataMember = "";
 
 
         dataSet.DataTableScatteringFactor.Clear();
-        for (int i = 0; i < this.dataGridView2.Columns.Count; i++)
-            this.dataGridView2.Columns[i].Visible = true;
 
-        if (!checkBoxHideEquivalentPlane.Checked)
-            this.dataGridView2.Columns[3].Visible = false; //Multiを消す
-        if (checkBoxHideProhibitedPlanes.Checked)
-            this.dataGridView2.Columns[12].Visible = false;
+        this.dataGridView.Columns[nameof(dataGridViewTextBoxColumnMulti)].Visible = checkBoxHideEquivalentPlane.Checked; 
+        this.dataGridView.Columns[nameof(dataGridViewTextBoxColumnIntCondition)].Visible = !checkBoxHideProhibitedPlanes.Checked; 
 
         foreach (Vector3D g in c.VectorOfG)
         {
@@ -186,13 +189,10 @@ public partial class FormScatteringFactor : CaptureFormBase
                 }
             }
         }
-        dataGridView2.DefaultCellStyle.Format = "";
-        dataGridView2.VirtualMode = true;
+        dataGridView.DefaultCellStyle.Format = "";
+        dataGridView.VirtualMode = true;
 
         bindingSourceScatteringFactor.DataMember = dataMember;
-        //dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-        //dataGridView2.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
-        //dataGridView2.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.DisplayedCells;
     }
 
     /// <summary>テストコード</summary>
@@ -204,13 +204,11 @@ public partial class FormScatteringFactor : CaptureFormBase
 
         //一旦bindingSourceを解除
         var dataMember = bindingSourceScatteringFactor.DataMember;
-        dataGridView2.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
-        dataGridView2.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.None;
+        dataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
+        dataGridView.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.None;
         bindingSourceScatteringFactor.DataMember = "";
 
         dataSet.DataTableScatteringFactor.Clear();
-        for (int i = 0; i < dataGridView2.Columns.Count; i++)
-            this.dataGridView2.Columns[i].Visible = true;
 
         for (double h = numericBoxH_min.Value; h <= numericBoxH_max.Value + 1e-10; h += numericBoxH_step.Value)
             for (double k = numericBoxK_min.Value; k <= numericBoxK_max.Value + 1e-10; k += numericBoxK_step.Value)
@@ -223,8 +221,8 @@ public partial class FormScatteringFactor : CaptureFormBase
 
                     dataSet.DataTableScatteringFactor.Add(h, k, l, 1, d, twoTheta, F, F.MagnitudeSquared(), []);
                 }
-        dataGridView2.DefaultCellStyle.Format = "g8";
-        dataGridView2.VirtualMode = true;
+        dataGridView.DefaultCellStyle.Format = "g8";
+        dataGridView.VirtualMode = true;
         bindingSourceScatteringFactor.DataMember = dataMember;
     }
 
@@ -239,8 +237,20 @@ public partial class FormScatteringFactor : CaptureFormBase
 
     private void radioButtonNanoMeter_CheckedChanged(object sender, EventArgs e)
     {
-        SetSortedPlanes();
-        dataGridView2.Columns[4].HeaderText = LengthUnit == LengthUnitEnum.Angstrom ? "d (Å)" : "d (nm)";
+        dataGridViewTextBoxColumnD.HeaderText = LengthUnit == LengthUnitEnum.Angstrom ? "d (Å)" : "d (nm)";
+        numericBoxCutoffD.FooterText = LengthUnit == LengthUnitEnum.Angstrom ? "Å" : "nm";
+        numericBoxCutoffD.Value = LengthUnit == LengthUnitEnum.Angstrom ? numericBoxCutoffD.Value * 10 : numericBoxCutoffD.Value / 10;
 
+        //SetSortedPlanes();
+    }
+
+    private void dataGridView2_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+    {
+        if (e.RowIndex < 0 || dataGridView.Columns[e.ColumnIndex] != dataGridViewTextBoxColumnI) return;
+        var row = dataGridView.Rows[e.RowIndex];
+        var h = Convert.ToInt32(row.Cells[dataGridViewTextBoxColumnH.Index].Value);
+        var k = Convert.ToInt32(row.Cells[dataGridViewTextBoxColumnK.Index].Value);
+        e.Value = (-h - k).ToString(); // (260424Ch) TextBoxCell の表示値は string にして DataGridView の型不一致を避ける
+        e.FormattingApplied = true;
     }
 }

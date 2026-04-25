@@ -1322,6 +1322,8 @@ public partial class FormSpotIDV2 : CaptureFormBase
             scalablePictureBoxAdvanced.Symbols.RemoveAll(s => s.Tag == tagCalcSpot);//まず、全部削除
 
             var calcSpots = new List<ScalablePictureBox.Symbol>();
+            //260422Cl Miller-Bravais 判定はループ外で一度だけ取得
+            var useMB = FormMain.MillerBravaisActive;
             if (dataGridViewGrains.SelectedRows.Count > 1)
             {
                 foreach (DataGridViewRow r in dataGridViewGrains.Rows)
@@ -1334,9 +1336,8 @@ public partial class FormSpotIDV2 : CaptureFormBase
                         //シンボルを更新
                         foreach (var spot in g.Spots)
                         {
-                            //260421Cl Miller-Bravais 4 指数対応
                             var s = new ScalablePictureBox.Symbol(
-                                $"{name}{n}: {FormMain.PlaneString(spot.Index.h, spot.Index.k, spot.Index.l, FormMain.IsMillerBravaisActive)}",
+                                $"{name}{n}: {FormMain.PlaneString(spot.Index.h, spot.Index.k, spot.Index.l, useMB)}",
                                 new PointD(spot.X, spot.Y),
                                 Color.LightGreen, Color.DarkGreen, 5);
                             s.Tag = tagCalcSpot;
@@ -1365,9 +1366,8 @@ public partial class FormSpotIDV2 : CaptureFormBase
                 //シンボルを更新
                 foreach (var spot in g.Spots)
                 {
-                    //260421Cl Miller-Bravais 4 指数対応
                     var s = new ScalablePictureBox.Symbol(
-                       ReciPro.FormMain.PlaneString(spot.Index.h, spot.Index.k, spot.Index.l, FormMain.IsMillerBravaisActive),
+                       FormMain.PlaneString(spot.Index.h, spot.Index.k, spot.Index.l, useMB),                                                             // 260422Cl Miller-Bravais 4 指数対応 (useMB は呼出元で hoist)
                        new PointD(spot.X, spot.Y),
                         Color.LightGreen, Color.DarkGreen, 5);
                     s.Tag = tagCalcSpot;

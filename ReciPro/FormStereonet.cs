@@ -64,6 +64,8 @@ public partial class FormStereonet : CaptureFormBase
             Color.Orange.ToArgb(),
         ];
 
+    public bool MillerBravaisActive => formMain.MillerBravaisActive;
+
     #endregion
 
     #region 起動、終了
@@ -279,7 +281,7 @@ public partial class FormStereonet : CaptureFormBase
                     if (checkBox3dOptionLabel.Checked)
                     {
                         string str;
-                        if (HexagonalLattice && checkBoxUseMillerBravaisIndex.Checked && radioButtonPlanes.Checked)
+                        if (MillerBravaisActive)
                             str = $"({index.X} {index.Y}{delimiter}{-index.X - index.Y}{delimiter}{index.Z})";
                         else
                             str = radioButtonAxes.Checked ? $"[{index.X}{delimiter}{index.Y}{delimiter}{index.Z}]" : $"({index.X}{delimiter}{index.Y}{delimiter}{index.Z})";
@@ -488,7 +490,7 @@ public partial class FormStereonet : CaptureFormBase
                             if (drawString)
                             {
                                 string str;
-                                if (HexagonalLattice && checkBoxUseMillerBravaisIndex.Checked && radioButtonPlanes.Checked)
+                                if (MillerBravaisActive && radioButtonPlanes.Checked)
                                     str = $"({index.X}{delimiter}{index.Y}{delimiter}{-index.X - index.Y}{delimiter}{index.Z})";
                                 else
                                     str = radioButtonAxes.Checked ? $"[{index.X}{delimiter}{index.Y}{delimiter}{index.Z}]" : $"({index.X}{delimiter}{index.Y}{delimiter}{index.Z})";
@@ -867,9 +869,7 @@ public partial class FormStereonet : CaptureFormBase
         if (formMain.Crystal == null)
             return;
 
-        checkBoxUseMillerBravaisIndex.Visible = HexagonalLattice && radioButtonPlanes.Checked;
-
-        checkBoxUseMillerBravais_CheckedChanged(this, EventArgs.Empty);
+        UpdatePlaneIndices();
 
 
         setVector();
@@ -891,8 +891,7 @@ public partial class FormStereonet : CaptureFormBase
     {
         if (!((RadioButton)sender).Checked) return;
 
-        checkBoxUseMillerBravaisIndex.Visible = HexagonalLattice && radioButtonPlanes.Checked;
-        checkBoxUseMillerBravais_CheckedChanged(sender, e);
+        UpdatePlaneIndices();
 
         if (radioButtonAxes.Checked)
         {
@@ -1083,7 +1082,7 @@ public partial class FormStereonet : CaptureFormBase
             if (!rb.Checked) return;//チェックされたとき以外は無視
         }
 
-        checkBoxUseMillerBravais_CheckedChanged(this, EventArgs.Empty);
+        UpdatePlaneIndices();
 
         numericBox1.HeaderText = numericBox2.HeaderText = numericBox3.HeaderText = numericBox4.HeaderText =
             radioButtonRange.Checked ? "±" : "";
@@ -1196,6 +1195,7 @@ public partial class FormStereonet : CaptureFormBase
     private void listBoxSpecifiedIndices_DrawItem(object sender, DrawItemEventArgs e)
     {
         e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
+        e.Graphics.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
         //背景を描画する
         //項目が選択されている時は強調表示される
         e.DrawBackground();
@@ -1213,7 +1213,7 @@ public partial class FormStereonet : CaptureFormBase
             Brush b = new SolidBrush(e.ForeColor);
 
             //文字列の描画
-            if (HexagonalLattice && checkBoxUseMillerBravaisIndex.Visible && checkBoxUseMillerBravaisIndex.Checked && radioButtonPlanes.Checked)  //ミラー・ブレヴェ指数で表示
+            if (MillerBravaisActive && !radioButtonAxes.Checked)  //ミラー・ブレヴェ指数で表示
             {
                 var (h, k, l) = row.Indices[0];
                 e.Graphics.DrawString($"{h} {k} {-h - k} {l}", e.Font, b, new Rectangle(e.Bounds.X + ih, e.Bounds.Y, e.Bounds.Width - ih, e.Bounds.Height));
@@ -1517,9 +1517,10 @@ public partial class FormStereonet : CaptureFormBase
     }
 
     #endregion
-    private void checkBoxUseMillerBravais_CheckedChanged(object sender, EventArgs e)
+
+    public void UpdatePlaneIndices()
     {
-        flowLayoutPanelI.Visible = HexagonalLattice && radioButtonPlanes.Checked && checkBoxUseMillerBravaisIndex.Checked && radioButtonSpecifiedIndices.Checked;
+        flowLayoutPanelI.Visible = MillerBravaisActive && radioButtonPlanes.Checked;
         if (flowLayoutPanelI.Visible)
             numericBox4.Value = -numericBox1.Value - numericBox2.Value;
         Draw();

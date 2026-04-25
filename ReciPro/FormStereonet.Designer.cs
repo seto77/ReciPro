@@ -200,7 +200,6 @@ namespace ReciPro
             numericBox4 = new NumericBox();
             flowLayoutPanelL = new System.Windows.Forms.FlowLayoutPanel();
             numericBox3 = new NumericBox();
-            checkBoxUseMillerBravaisIndex = new System.Windows.Forms.CheckBox();
             panel3 = new System.Windows.Forms.Panel();
             panel4 = new System.Windows.Forms.Panel();
             panel1 = new System.Windows.Forms.Panel();
@@ -1453,7 +1452,6 @@ namespace ReciPro
             resources.ApplyResources(flowLayoutPanelIndices, "flowLayoutPanelIndices");
             flowLayoutPanelIndices.Controls.Add(flowLayoutPanelIndexFilter);
             flowLayoutPanelIndices.Controls.Add(flowLayoutPanelIndex);
-            flowLayoutPanelIndices.Controls.Add(checkBoxUseMillerBravaisIndex);
             flowLayoutPanelIndices.Name = "flowLayoutPanelIndices";
             // 
             // flowLayoutPanelIndexFilter
@@ -1576,15 +1574,6 @@ namespace ReciPro
             numericBox3.ThonsandsSeparator = true;
             numericBox3.Value = 2D;
             numericBox3.ValueChanged += numericUpDown_ValueChanged;
-            // 
-            // checkBoxUseMillerBravaisIndex
-            // 
-            resources.ApplyResources(checkBoxUseMillerBravaisIndex, "checkBoxUseMillerBravaisIndex");
-            checkBoxUseMillerBravaisIndex.Checked = true;
-            checkBoxUseMillerBravaisIndex.CheckState = System.Windows.Forms.CheckState.Checked;
-            checkBoxUseMillerBravaisIndex.Name = "checkBoxUseMillerBravaisIndex";
-            checkBoxUseMillerBravaisIndex.UseVisualStyleBackColor = true;
-            checkBoxUseMillerBravaisIndex.CheckedChanged += checkBoxUseMillerBravais_CheckedChanged;
             // 
             // panel3
             // 
@@ -1777,7 +1766,6 @@ namespace ReciPro
             // FormStereonet
             // 
             resources.ApplyResources(this, "$this");
-            AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F); // 260329Cl 追加: 96dpi基準
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             captureExtender.SetCapture(this, true);
             Controls.Add(panel3);
@@ -2039,7 +2027,6 @@ namespace ReciPro
         private System.Windows.Forms.GroupBox groupBoxProjectionScheme;
         private System.Windows.Forms.CheckBox checkBoxShowIndexLabels;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelIndexFilter;
-        private System.Windows.Forms.CheckBox checkBoxUseMillerBravaisIndex;
         private NumericBox numericBox4;
         private System.Windows.Forms.Label labelI;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelH;

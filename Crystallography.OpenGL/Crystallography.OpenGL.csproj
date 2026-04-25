@@ -5,8 +5,8 @@
     <TargetFramework>net10.0-windows</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <AssemblyVersion>2026.4.15.0756</AssemblyVersion>
-    <FileVersion>2026.4.15.0756</FileVersion>
+    <AssemblyVersion>2026.4.25.0122</AssemblyVersion>
+    <FileVersion>2026.4.25.0122</FileVersion>
     <!-- <SupportedOSPlatformVersion>7.0</SupportedOSPlatformVersion> --><!-- 260405Cl .NET 10はWindows7非対応のため削除 -->
     <Platforms>x64</Platforms>
     <!--
@@ -31,7 +31,7 @@
     <PackageReference Include="MathNet.Numerics" Version="6.0.0-beta2" />
     <PackageReference Include="OpenTK" Version="4.9.4" />
     <PackageReference Include="SimdLinq" Version="1.3.2" />
-    <PackageReference Include="System.Management" Version="10.0.6" />
+    <PackageReference Include="System.Management" Version="10.0.7" />
     <PackageReference Include="ZLinq" Version="1.5.6" />
   </ItemGroup>
 

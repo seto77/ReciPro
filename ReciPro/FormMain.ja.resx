@@ -299,6 +299,148 @@
   <data name="groupBoxProjectAlong.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
+  <data name="label12.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 8pt</value>
+  </data>
+  <data name="label12.Size" type="System.Drawing.Size, System.Drawing">
+    <value>13, 39</value>
+  </data>
+  <data name="numericBoxPlaneH.Location" type="System.Drawing.Point, System.Drawing">
+    <value>13, 0</value>
+  </data>
+  <data name="numericBoxPlaneH.Size" type="System.Drawing.Size, System.Drawing">
+    <value>37, 43</value>
+  </data>
+  <data name="numericBoxPlaneH.ToolTip" xml:space="preserve">
+    <value>結晶面を設定</value>
+  </data>
+  <data name="numericBoxPlaneH.ToolTip1" xml:space="preserve">
+    <value>結晶面を設定</value>
+  </data>
+  <data name="numericBoxPlaneK.Location" type="System.Drawing.Point, System.Drawing">
+    <value>50, 0</value>
+  </data>
+  <data name="numericBoxPlaneK.Size" type="System.Drawing.Size, System.Drawing">
+    <value>37, 43</value>
+  </data>
+  <data name="numericBoxPlaneI.Location" type="System.Drawing.Point, System.Drawing">
+    <value>87, 0</value>
+  </data>
+  <data name="numericBoxPlaneL.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 43</value>
+  </data>
+  <data name="numericBoxPlaneL.Size" type="System.Drawing.Size, System.Drawing">
+    <value>37, 43</value>
+  </data>
+  <data name="label11.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 8pt</value>
+  </data>
+  <data name="label11.Location" type="System.Drawing.Point, System.Drawing">
+    <value>37, 43</value>
+  </data>
+  <data name="label11.Size" type="System.Drawing.Size, System.Drawing">
+    <value>13, 39</value>
+  </data>
+  <data name="flowLayoutPanel1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>2, 122</value>
+  </data>
+  <data name="flowLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>138, 90</value>
+  </data>
+  <data name="buttonSetPlane.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="buttonSetPlane.Size" type="System.Drawing.Size, System.Drawing">
+    <value>72, 24</value>
+  </data>
+  <data name="buttonSetPlane.Text" xml:space="preserve">
+    <value>結晶面</value>
+  </data>
+  <data name="buttonSetPlane.ToolTip" xml:space="preserve">
+    <value>指定された面を画面手前方向にセットします。
+軸指数が指定されているときは、その面方向が画面上向きに表示されます。</value>
+  </data>
+  <data name="checkBoxFixePlane.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="checkBoxFixePlane.Location" type="System.Drawing.Point, System.Drawing">
+    <value>75, 12</value>
+  </data>
+  <data name="checkBoxFixePlane.Size" type="System.Drawing.Size, System.Drawing">
+    <value>51, 22</value>
+  </data>
+  <data name="checkBoxFixePlane.Text" xml:space="preserve">
+    <value>固定</value>
+  </data>
+  <data name="checkBoxFixePlane.ToolTip" xml:space="preserve">
+    <value>チェックすると、指定した面が空間内で固定されます。</value>
+  </data>
+  <data name="flowLayoutPanelSetPlane.Location" type="System.Drawing.Point, System.Drawing">
+    <value>2, 88</value>
+  </data>
+  <data name="flowLayoutPanelSetPlane.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 3, 0, 0</value>
+  </data>
+  <data name="label9.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 8pt</value>
+  </data>
+  <data name="label9.Size" type="System.Drawing.Size, System.Drawing">
+    <value>13, 39</value>
+  </data>
+  <data name="numericBoxAxisU.Location" type="System.Drawing.Point, System.Drawing">
+    <value>13, 0</value>
+  </data>
+  <data name="numericBoxAxisU.Size" type="System.Drawing.Size, System.Drawing">
+    <value>37, 43</value>
+  </data>
+  <data name="numericBoxAxisU.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="numericBoxAxisU.ToolTip" xml:space="preserve">
+    <value>結晶軸を設定</value>
+  </data>
+  <data name="numericBoxAxisU.ToolTip1" xml:space="preserve">
+    <value>結晶軸を設定</value>
+  </data>
+  <data name="numericBoxAxisV.Location" type="System.Drawing.Point, System.Drawing">
+    <value>50, 0</value>
+  </data>
+  <data name="numericBoxAxisV.Size" type="System.Drawing.Size, System.Drawing">
+    <value>37, 43</value>
+  </data>
+  <data name="numericBoxAxisV.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="numericBoxAxisV.ToolTip" xml:space="preserve">
+    <value>結晶軸を設定</value>
+  </data>
+  <data name="numericBoxAxisV.ToolTip1" xml:space="preserve">
+    <value>結晶軸を設定</value>
+  </data>
+  <data name="numericBoxAxisW.Size" type="System.Drawing.Size, System.Drawing">
+    <value>37, 43</value>
+  </data>
+  <data name="numericBoxAxisW.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="numericBoxAxisW.ToolTip" xml:space="preserve">
+    <value>結晶軸を設定</value>
+  </data>
+  <data name="numericBoxAxisW.ToolTip1" xml:space="preserve">
+    <value>結晶軸を設定</value>
+  </data>
+  <data name="label10.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 8pt</value>
+  </data>
+  <data name="label10.Location" type="System.Drawing.Point, System.Drawing">
+    <value>124, 0</value>
+  </data>
+  <data name="label10.Size" type="System.Drawing.Size, System.Drawing">
+    <value>13, 39</value>
+  </data>
+  <data name="flowLayoutPanel2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>2, 45</value>
+  </data>
   <data name="buttonSetAxis.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
@@ -327,147 +469,8 @@
   <data name="checkBoxFixAxis.ToolTip" xml:space="preserve">
     <value>チェックすると、指定した軸が空間内で固定されます。</value>
   </data>
-  <data name="numericBoxAxisU.Location" type="System.Drawing.Point, System.Drawing">
-    <value>13, 0</value>
-  </data>
-  <data name="numericBoxAxisU.Size" type="System.Drawing.Size, System.Drawing">
-    <value>37, 22</value>
-  </data>
-  <data name="numericBoxAxisU.ToolTip" xml:space="preserve">
-    <value>結晶軸を設定</value>
-  </data>
-  <data name="numericBoxAxisU.ToolTip1" xml:space="preserve">
-    <value>結晶軸を設定</value>
-  </data>
-  <data name="label9.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 8pt</value>
-  </data>
-  <data name="label9.Size" type="System.Drawing.Size, System.Drawing">
-    <value>13, 21</value>
-  </data>
-  <data name="label10.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 8pt</value>
-  </data>
-  <data name="label10.Location" type="System.Drawing.Point, System.Drawing">
-    <value>124, 0</value>
-  </data>
-  <data name="label10.Size" type="System.Drawing.Size, System.Drawing">
-    <value>13, 21</value>
-  </data>
-  <data name="numericBoxAxisV.Location" type="System.Drawing.Point, System.Drawing">
-    <value>50, 0</value>
-  </data>
-  <data name="numericBoxAxisV.Size" type="System.Drawing.Size, System.Drawing">
-    <value>37, 22</value>
-  </data>
-  <data name="numericBoxAxisV.ToolTip" xml:space="preserve">
-    <value>結晶軸を設定</value>
-  </data>
-  <data name="numericBoxAxisV.ToolTip1" xml:space="preserve">
-    <value>結晶軸を設定</value>
-  </data>
-  <data name="numericBoxAxisW.Location" type="System.Drawing.Point, System.Drawing">
-    <value>87, 0</value>
-  </data>
-  <data name="numericBoxAxisW.Size" type="System.Drawing.Size, System.Drawing">
-    <value>37, 22</value>
-  </data>
-  <data name="numericBoxAxisW.ToolTip" xml:space="preserve">
-    <value>結晶軸を設定</value>
-  </data>
-  <data name="numericBoxAxisW.ToolTip1" xml:space="preserve">
-    <value>結晶軸を設定</value>
-  </data>
-  <data name="tableLayoutPanel5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>138, 22</value>
-  </data>
-  <data name="numericBoxPlaneL.Location" type="System.Drawing.Point, System.Drawing">
-    <value>87, 0</value>
-  </data>
-  <data name="numericBoxPlaneL.Size" type="System.Drawing.Size, System.Drawing">
-    <value>37, 25</value>
-  </data>
-  <data name="numericBoxPlaneH.Location" type="System.Drawing.Point, System.Drawing">
-    <value>13, 0</value>
-  </data>
-  <data name="numericBoxPlaneH.Size" type="System.Drawing.Size, System.Drawing">
-    <value>37, 25</value>
-  </data>
-  <data name="numericBoxPlaneH.ToolTip" xml:space="preserve">
-    <value>結晶面を設定</value>
-  </data>
-  <data name="numericBoxPlaneH.ToolTip1" xml:space="preserve">
-    <value>結晶面を設定</value>
-  </data>
-  <data name="numericBoxPlaneK.Location" type="System.Drawing.Point, System.Drawing">
-    <value>50, 0</value>
-  </data>
-  <data name="numericBoxPlaneK.Size" type="System.Drawing.Size, System.Drawing">
-    <value>37, 25</value>
-  </data>
-  <data name="label11.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 8pt</value>
-  </data>
-  <data name="label11.Location" type="System.Drawing.Point, System.Drawing">
-    <value>124, 0</value>
-  </data>
-  <data name="label11.Size" type="System.Drawing.Size, System.Drawing">
-    <value>13, 21</value>
-  </data>
-  <data name="label12.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 8pt</value>
-  </data>
-  <data name="label12.Size" type="System.Drawing.Size, System.Drawing">
-    <value>13, 21</value>
-  </data>
-  <data name="tableLayoutPanel7.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 76</value>
-  </data>
-  <data name="tableLayoutPanel7.ToolTip" xml:space="preserve">
-    <value>結晶面を設定できます</value>
-  </data>
-  <data name="buttonSetPlane.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
-  <data name="buttonSetPlane.Size" type="System.Drawing.Size, System.Drawing">
-    <value>72, 24</value>
-  </data>
-  <data name="buttonSetPlane.Text" xml:space="preserve">
-    <value>結晶面</value>
-  </data>
-  <data name="buttonSetPlane.ToolTip" xml:space="preserve">
-    <value>指定された面を画面手前方向にセットします。
-軸指数が指定されているときは、その面方向が画面上向きに表示されます。</value>
-  </data>
-  <data name="checkBoxFixePlane.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
-  <data name="checkBoxFixePlane.Location" type="System.Drawing.Point, System.Drawing">
-    <value>75, 5</value>
-  </data>
-  <data name="checkBoxFixePlane.Size" type="System.Drawing.Size, System.Drawing">
-    <value>51, 22</value>
-  </data>
-  <data name="checkBoxFixePlane.Text" xml:space="preserve">
-    <value>固定</value>
-  </data>
-  <data name="checkBoxFixePlane.ToolTip" xml:space="preserve">
-    <value>チェックすると、指定した面が空間内で固定されます。</value>
-  </data>
-  <data name="flowLayoutPanelSetPlane.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 49</value>
-  </data>
-  <data name="flowLayoutPanelSetPlane.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 3, 0, 0</value>
-  </data>
-  <data name="tableLayoutPanel4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>2, 22</value>
-  </data>
-  <data name="tableLayoutPanel4.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="tableLayoutPanel4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>138, 101</value>
+  <data name="flowLayoutPanelSetAxis.Location" type="System.Drawing.Point, System.Drawing">
+    <value>2, 21</value>
   </data>
   <data name="groupBoxProjectAlong.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9.75pt</value>
@@ -476,7 +479,7 @@
     <value>0, 356</value>
   </data>
   <data name="groupBoxProjectAlong.Size" type="System.Drawing.Size, System.Drawing">
-    <value>142, 125</value>
+    <value>142, 171</value>
   </data>
   <data name="groupBoxProjectAlong.Text" xml:space="preserve">
     <value>軸/面投影</value>
@@ -1487,6 +1490,9 @@ v2</value>
   <data name="toolTipToolStripMenuItem.Text" xml:space="preserve">
     <value>ツールチップを表示</value>
   </data>
+  <data name="toolStripMenuItemUseMillerBravais.Size" type="System.Drawing.Size, System.Drawing">
+    <value>417, 24</value>
+  </data>
   <data name="toolStripSeparator11.Size" type="System.Drawing.Size, System.Drawing">
     <value>414, 6</value>
   </data>
@@ -1615,9 +1621,6 @@ v2</value>
   <data name="englishToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>255, 26</value>
   </data>
-  <data name="englishToolStripMenuItem.Text" xml:space="preserve">
-    <value>English (requires restart)</value>
-  </data>
   <data name="japaneseToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABMAAAASCAYAAAC5DOVpAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAA
@@ -1628,9 +1631,6 @@ v2</value>
   </data>
   <data name="japaneseToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>255, 26</value>
-  </data>
-  <data name="japaneseToolStripMenuItem.Text" xml:space="preserve">
-    <value>Japanese (requires restart)</value>
   </data>
   <data name="languageToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>84, 24</value>

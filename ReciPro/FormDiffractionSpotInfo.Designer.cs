@@ -60,27 +60,6 @@
             flowLayoutPanelEnergyUnit = new System.Windows.Forms.FlowLayoutPanel();
             label14 = new System.Windows.Forms.Label();
             dataGridView = new System.Windows.Forms.DataGridView();
-            rDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            hDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            kDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            iDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();                                                            // 260421Cl 追加 Miller-Bravais i 列
-            lDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            dDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            gXDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            gYDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            gZDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            gDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ugReDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ugImDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ugReDataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ugImDataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            sgDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            pgDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            qgDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            φReDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            φImDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            φ2DataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            σΦ2DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             dataSetBindingSource = new System.Windows.Forms.BindingSource(components);
             dataSet = new DataSetReciPro();
             label16 = new System.Windows.Forms.Label();
@@ -113,6 +92,27 @@
             checkBoxAutoRowSize = new System.Windows.Forms.CheckBox();
             numericBoxEffectiveDigit = new NumericBox();
             button1 = new System.Windows.Forms.Button();
+            rDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            hDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            kDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            iDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            lDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            dDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            gXDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            gYDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            gZDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            gDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ugReDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ugImDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ugReDataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ugImDataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            sgDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            pgDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            qgDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            φReDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            φImDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            φ2DataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            σΦ2DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             flowLayoutPanelVoltageWaveLength.SuspendLayout();
             flowLayoutPanelLatticeAngles.SuspendLayout();
             flowLayoutPanelVolumeThickness.SuspendLayout();
@@ -430,10 +430,7 @@
             dataGridView.AllowUserToResizeRows = false;
             dataGridView.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
             dataGridView.AutoGenerateColumns = false;
-            //dataGridView.ColumnHeadersHeight = 30;                                                                                                  // 260413Cl DPIスケーリング対応のため削除
-            //dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;                 // 260413Cl
-            dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;                          // 260413Cl DisableResizing→AutoSize
-            //260421Cl i 列を追加 (h, k, i, l の順) 初期状態は非表示
+            dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { rDataGridViewTextBoxColumn1, hDataGridViewTextBoxColumn, kDataGridViewTextBoxColumn, iDataGridViewTextBoxColumn, lDataGridViewTextBoxColumn, dDataGridViewTextBoxColumn1, gXDataGridViewTextBoxColumn1, gYDataGridViewTextBoxColumn1, gZDataGridViewTextBoxColumn1, gDataGridViewTextBoxColumn1, ugReDataGridViewTextBoxColumn2, ugImDataGridViewTextBoxColumn2, ugReDataGridViewTextBoxColumn3, ugImDataGridViewTextBoxColumn3, sgDataGridViewTextBoxColumn1, pgDataGridViewTextBoxColumn1, qgDataGridViewTextBoxColumn1, φReDataGridViewTextBoxColumn1, φImDataGridViewTextBoxColumn1, φ2DataGridViewTextBoxColumn1, σΦ2DataGridViewTextBoxColumn });
             dataGridView.DataMember = "DataTableBethe";
             dataGridView.DataSource = dataSetBindingSource;
@@ -454,180 +451,10 @@
             dataGridView.ReadOnly = true;
             dataGridView.RowHeadersVisible = false;
             dataGridView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            //dataGridView.RowTemplate.Height = 21;                                                                                                   // 260413Cl DPIスケーリング対応のため削除 (デフォルトはフォント由来でDPI追従)
             dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             dataGridView.Size = new System.Drawing.Size(1085, 272);
             dataGridView.TabIndex = 0;
             dataGridView.Scroll += DataGridView_Scroll;
-            // 
-            // rDataGridViewTextBoxColumn1
-            // 
-            rDataGridViewTextBoxColumn1.DataPropertyName = "R";
-            rDataGridViewTextBoxColumn1.HeaderText = "R";
-            rDataGridViewTextBoxColumn1.Name = "rDataGridViewTextBoxColumn1";
-            rDataGridViewTextBoxColumn1.ReadOnly = true;
-            rDataGridViewTextBoxColumn1.Width = 43;
-            // 
-            // hDataGridViewTextBoxColumn
-            // 
-            hDataGridViewTextBoxColumn.DataPropertyName = "h";
-            hDataGridViewTextBoxColumn.HeaderText = "h";
-            hDataGridViewTextBoxColumn.Name = "hDataGridViewTextBoxColumn";
-            hDataGridViewTextBoxColumn.ReadOnly = true;
-            hDataGridViewTextBoxColumn.Width = 40;
-            // 
-            // kDataGridViewTextBoxColumn
-            // 
-            kDataGridViewTextBoxColumn.DataPropertyName = "k";
-            kDataGridViewTextBoxColumn.HeaderText = "k";
-            kDataGridViewTextBoxColumn.Name = "kDataGridViewTextBoxColumn";
-            kDataGridViewTextBoxColumn.ReadOnly = true;
-            kDataGridViewTextBoxColumn.Width = 40;
-            //
-            // iDataGridViewTextBoxColumn (260421Cl 追加 Miller-Bravais i)
-            //
-            iDataGridViewTextBoxColumn.DataPropertyName = "i";
-            iDataGridViewTextBoxColumn.HeaderText = "i";
-            iDataGridViewTextBoxColumn.Name = "iDataGridViewTextBoxColumn";
-            iDataGridViewTextBoxColumn.ReadOnly = true;
-            iDataGridViewTextBoxColumn.Width = 40;
-            iDataGridViewTextBoxColumn.Visible = false;                                                                                                   // 初期状態は非表示 (FormMain.UseMillerBravais && Capable で表示)
-            //
-            // lDataGridViewTextBoxColumn
-            // 
-            lDataGridViewTextBoxColumn.DataPropertyName = "l";
-            lDataGridViewTextBoxColumn.HeaderText = "l";
-            lDataGridViewTextBoxColumn.Name = "lDataGridViewTextBoxColumn";
-            lDataGridViewTextBoxColumn.ReadOnly = true;
-            lDataGridViewTextBoxColumn.Width = 36;
-            // 
-            // dDataGridViewTextBoxColumn1
-            // 
-            dDataGridViewTextBoxColumn1.DataPropertyName = "d";
-            dDataGridViewTextBoxColumn1.HeaderText = "d";
-            dDataGridViewTextBoxColumn1.Name = "dDataGridViewTextBoxColumn1";
-            dDataGridViewTextBoxColumn1.ReadOnly = true;
-            dDataGridViewTextBoxColumn1.Width = 40;
-            // 
-            // gXDataGridViewTextBoxColumn1
-            // 
-            gXDataGridViewTextBoxColumn1.DataPropertyName = "gX";
-            gXDataGridViewTextBoxColumn1.HeaderText = "gX";
-            gXDataGridViewTextBoxColumn1.Name = "gXDataGridViewTextBoxColumn1";
-            gXDataGridViewTextBoxColumn1.ReadOnly = true;
-            gXDataGridViewTextBoxColumn1.Width = 50;
-            // 
-            // gYDataGridViewTextBoxColumn1
-            // 
-            gYDataGridViewTextBoxColumn1.DataPropertyName = "gY";
-            gYDataGridViewTextBoxColumn1.HeaderText = "gY";
-            gYDataGridViewTextBoxColumn1.Name = "gYDataGridViewTextBoxColumn1";
-            gYDataGridViewTextBoxColumn1.ReadOnly = true;
-            gYDataGridViewTextBoxColumn1.Width = 51;
-            // 
-            // gZDataGridViewTextBoxColumn1
-            // 
-            gZDataGridViewTextBoxColumn1.DataPropertyName = "gZ";
-            gZDataGridViewTextBoxColumn1.HeaderText = "gZ";
-            gZDataGridViewTextBoxColumn1.Name = "gZDataGridViewTextBoxColumn1";
-            gZDataGridViewTextBoxColumn1.ReadOnly = true;
-            gZDataGridViewTextBoxColumn1.Width = 49;
-            // 
-            // gDataGridViewTextBoxColumn1
-            // 
-            gDataGridViewTextBoxColumn1.DataPropertyName = "|g|";
-            gDataGridViewTextBoxColumn1.HeaderText = "|g|";
-            gDataGridViewTextBoxColumn1.Name = "gDataGridViewTextBoxColumn1";
-            gDataGridViewTextBoxColumn1.ReadOnly = true;
-            gDataGridViewTextBoxColumn1.Width = 46;
-            // 
-            // ugReDataGridViewTextBoxColumn2
-            // 
-            ugReDataGridViewTextBoxColumn2.DataPropertyName = "Ug re";
-            ugReDataGridViewTextBoxColumn2.HeaderText = "Ug re";
-            ugReDataGridViewTextBoxColumn2.Name = "ugReDataGridViewTextBoxColumn2";
-            ugReDataGridViewTextBoxColumn2.ReadOnly = true;
-            ugReDataGridViewTextBoxColumn2.Width = 67;
-            // 
-            // ugImDataGridViewTextBoxColumn2
-            // 
-            ugImDataGridViewTextBoxColumn2.DataPropertyName = "Ug im";
-            ugImDataGridViewTextBoxColumn2.HeaderText = "Ug im";
-            ugImDataGridViewTextBoxColumn2.Name = "ugImDataGridViewTextBoxColumn2";
-            ugImDataGridViewTextBoxColumn2.ReadOnly = true;
-            ugImDataGridViewTextBoxColumn2.Width = 69;
-            // 
-            // ugReDataGridViewTextBoxColumn3
-            // 
-            ugReDataGridViewTextBoxColumn3.DataPropertyName = "U'g re";
-            ugReDataGridViewTextBoxColumn3.HeaderText = "U'g re";
-            ugReDataGridViewTextBoxColumn3.Name = "ugReDataGridViewTextBoxColumn3";
-            ugReDataGridViewTextBoxColumn3.ReadOnly = true;
-            ugReDataGridViewTextBoxColumn3.Width = 70;
-            // 
-            // ugImDataGridViewTextBoxColumn3
-            // 
-            ugImDataGridViewTextBoxColumn3.DataPropertyName = "U'g im";
-            ugImDataGridViewTextBoxColumn3.HeaderText = "U'g im";
-            ugImDataGridViewTextBoxColumn3.Name = "ugImDataGridViewTextBoxColumn3";
-            ugImDataGridViewTextBoxColumn3.ReadOnly = true;
-            ugImDataGridViewTextBoxColumn3.Width = 72;
-            // 
-            // sgDataGridViewTextBoxColumn1
-            // 
-            sgDataGridViewTextBoxColumn1.DataPropertyName = "Sg";
-            sgDataGridViewTextBoxColumn1.HeaderText = "Sg";
-            sgDataGridViewTextBoxColumn1.Name = "sgDataGridViewTextBoxColumn1";
-            sgDataGridViewTextBoxColumn1.ReadOnly = true;
-            sgDataGridViewTextBoxColumn1.Width = 48;
-            // 
-            // pgDataGridViewTextBoxColumn1
-            // 
-            pgDataGridViewTextBoxColumn1.DataPropertyName = "Pg";
-            pgDataGridViewTextBoxColumn1.HeaderText = "Pg";
-            pgDataGridViewTextBoxColumn1.Name = "pgDataGridViewTextBoxColumn1";
-            pgDataGridViewTextBoxColumn1.ReadOnly = true;
-            pgDataGridViewTextBoxColumn1.Width = 49;
-            // 
-            // qgDataGridViewTextBoxColumn1
-            // 
-            qgDataGridViewTextBoxColumn1.DataPropertyName = "Qg";
-            qgDataGridViewTextBoxColumn1.HeaderText = "Qg";
-            qgDataGridViewTextBoxColumn1.Name = "qgDataGridViewTextBoxColumn1";
-            qgDataGridViewTextBoxColumn1.ReadOnly = true;
-            qgDataGridViewTextBoxColumn1.Width = 51;
-            // 
-            // φReDataGridViewTextBoxColumn1
-            // 
-            φReDataGridViewTextBoxColumn1.DataPropertyName = "Φ re";
-            φReDataGridViewTextBoxColumn1.HeaderText = "Φ re";
-            φReDataGridViewTextBoxColumn1.Name = "φReDataGridViewTextBoxColumn1";
-            φReDataGridViewTextBoxColumn1.ReadOnly = true;
-            φReDataGridViewTextBoxColumn1.Width = 60;
-            // 
-            // φImDataGridViewTextBoxColumn1
-            // 
-            φImDataGridViewTextBoxColumn1.DataPropertyName = "Φ im";
-            φImDataGridViewTextBoxColumn1.HeaderText = "Φ im";
-            φImDataGridViewTextBoxColumn1.Name = "φImDataGridViewTextBoxColumn1";
-            φImDataGridViewTextBoxColumn1.ReadOnly = true;
-            φImDataGridViewTextBoxColumn1.Width = 62;
-            // 
-            // φ2DataGridViewTextBoxColumn1
-            // 
-            φ2DataGridViewTextBoxColumn1.DataPropertyName = "|Φ|^2";
-            φ2DataGridViewTextBoxColumn1.HeaderText = "|Φ|^2";
-            φ2DataGridViewTextBoxColumn1.Name = "φ2DataGridViewTextBoxColumn1";
-            φ2DataGridViewTextBoxColumn1.ReadOnly = true;
-            φ2DataGridViewTextBoxColumn1.Width = 63;
-            // 
-            // σΦ2DataGridViewTextBoxColumn
-            // 
-            σΦ2DataGridViewTextBoxColumn.DataPropertyName = "Σ|Φ|^2";
-            σΦ2DataGridViewTextBoxColumn.HeaderText = "Σ|Φ|^2";
-            σΦ2DataGridViewTextBoxColumn.Name = "σΦ2DataGridViewTextBoxColumn";
-            σΦ2DataGridViewTextBoxColumn.ReadOnly = true;
-            σΦ2DataGridViewTextBoxColumn.Width = 72;
             // 
             // dataSetBindingSource
             // 
@@ -922,6 +749,174 @@
             button1.Visible = false;
             button1.Click += button1_Click;
             // 
+            // rDataGridViewTextBoxColumn1
+            // 
+            rDataGridViewTextBoxColumn1.DataPropertyName = "R";
+            rDataGridViewTextBoxColumn1.HeaderText = "R";
+            rDataGridViewTextBoxColumn1.Name = "rDataGridViewTextBoxColumn1";
+            rDataGridViewTextBoxColumn1.ReadOnly = true;
+            rDataGridViewTextBoxColumn1.Width = 43;
+            // 
+            // hDataGridViewTextBoxColumn
+            // 
+            hDataGridViewTextBoxColumn.DataPropertyName = "h";
+            hDataGridViewTextBoxColumn.HeaderText = "h";
+            hDataGridViewTextBoxColumn.Name = "hDataGridViewTextBoxColumn";
+            hDataGridViewTextBoxColumn.ReadOnly = true;
+            hDataGridViewTextBoxColumn.Width = 40;
+            // 
+            // kDataGridViewTextBoxColumn
+            // 
+            kDataGridViewTextBoxColumn.DataPropertyName = "k";
+            kDataGridViewTextBoxColumn.HeaderText = "k";
+            kDataGridViewTextBoxColumn.Name = "kDataGridViewTextBoxColumn";
+            kDataGridViewTextBoxColumn.ReadOnly = true;
+            kDataGridViewTextBoxColumn.Width = 40;
+            // 
+            // iDataGridViewTextBoxColumn
+            // 
+            iDataGridViewTextBoxColumn.DataPropertyName = "i";
+            iDataGridViewTextBoxColumn.HeaderText = "i";
+            iDataGridViewTextBoxColumn.Name = "iDataGridViewTextBoxColumn";
+            iDataGridViewTextBoxColumn.ReadOnly = true;
+            iDataGridViewTextBoxColumn.Width = 40;
+            // 
+            // lDataGridViewTextBoxColumn
+            // 
+            lDataGridViewTextBoxColumn.DataPropertyName = "l";
+            lDataGridViewTextBoxColumn.HeaderText = "l";
+            lDataGridViewTextBoxColumn.Name = "lDataGridViewTextBoxColumn";
+            lDataGridViewTextBoxColumn.ReadOnly = true;
+            lDataGridViewTextBoxColumn.Width = 36;
+            // 
+            // dDataGridViewTextBoxColumn1
+            // 
+            dDataGridViewTextBoxColumn1.DataPropertyName = "d";
+            dDataGridViewTextBoxColumn1.HeaderText = "d";
+            dDataGridViewTextBoxColumn1.Name = "dDataGridViewTextBoxColumn1";
+            dDataGridViewTextBoxColumn1.ReadOnly = true;
+            dDataGridViewTextBoxColumn1.Width = 40;
+            // 
+            // gXDataGridViewTextBoxColumn1
+            // 
+            gXDataGridViewTextBoxColumn1.DataPropertyName = "gX";
+            gXDataGridViewTextBoxColumn1.HeaderText = "gX";
+            gXDataGridViewTextBoxColumn1.Name = "gXDataGridViewTextBoxColumn1";
+            gXDataGridViewTextBoxColumn1.ReadOnly = true;
+            gXDataGridViewTextBoxColumn1.Width = 50;
+            // 
+            // gYDataGridViewTextBoxColumn1
+            // 
+            gYDataGridViewTextBoxColumn1.DataPropertyName = "gY";
+            gYDataGridViewTextBoxColumn1.HeaderText = "gY";
+            gYDataGridViewTextBoxColumn1.Name = "gYDataGridViewTextBoxColumn1";
+            gYDataGridViewTextBoxColumn1.ReadOnly = true;
+            gYDataGridViewTextBoxColumn1.Width = 51;
+            // 
+            // gZDataGridViewTextBoxColumn1
+            // 
+            gZDataGridViewTextBoxColumn1.DataPropertyName = "gZ";
+            gZDataGridViewTextBoxColumn1.HeaderText = "gZ";
+            gZDataGridViewTextBoxColumn1.Name = "gZDataGridViewTextBoxColumn1";
+            gZDataGridViewTextBoxColumn1.ReadOnly = true;
+            gZDataGridViewTextBoxColumn1.Width = 49;
+            // 
+            // gDataGridViewTextBoxColumn1
+            // 
+            gDataGridViewTextBoxColumn1.DataPropertyName = "|g|";
+            gDataGridViewTextBoxColumn1.HeaderText = "|g|";
+            gDataGridViewTextBoxColumn1.Name = "gDataGridViewTextBoxColumn1";
+            gDataGridViewTextBoxColumn1.ReadOnly = true;
+            gDataGridViewTextBoxColumn1.Width = 46;
+            // 
+            // ugReDataGridViewTextBoxColumn2
+            // 
+            ugReDataGridViewTextBoxColumn2.DataPropertyName = "Ug re";
+            ugReDataGridViewTextBoxColumn2.HeaderText = "Ug re";
+            ugReDataGridViewTextBoxColumn2.Name = "ugReDataGridViewTextBoxColumn2";
+            ugReDataGridViewTextBoxColumn2.ReadOnly = true;
+            ugReDataGridViewTextBoxColumn2.Width = 67;
+            // 
+            // ugImDataGridViewTextBoxColumn2
+            // 
+            ugImDataGridViewTextBoxColumn2.DataPropertyName = "Ug im";
+            ugImDataGridViewTextBoxColumn2.HeaderText = "Ug im";
+            ugImDataGridViewTextBoxColumn2.Name = "ugImDataGridViewTextBoxColumn2";
+            ugImDataGridViewTextBoxColumn2.ReadOnly = true;
+            ugImDataGridViewTextBoxColumn2.Width = 69;
+            // 
+            // ugReDataGridViewTextBoxColumn3
+            // 
+            ugReDataGridViewTextBoxColumn3.DataPropertyName = "U'g re";
+            ugReDataGridViewTextBoxColumn3.HeaderText = "U'g re";
+            ugReDataGridViewTextBoxColumn3.Name = "ugReDataGridViewTextBoxColumn3";
+            ugReDataGridViewTextBoxColumn3.ReadOnly = true;
+            ugReDataGridViewTextBoxColumn3.Width = 70;
+            // 
+            // ugImDataGridViewTextBoxColumn3
+            // 
+            ugImDataGridViewTextBoxColumn3.DataPropertyName = "U'g im";
+            ugImDataGridViewTextBoxColumn3.HeaderText = "U'g im";
+            ugImDataGridViewTextBoxColumn3.Name = "ugImDataGridViewTextBoxColumn3";
+            ugImDataGridViewTextBoxColumn3.ReadOnly = true;
+            ugImDataGridViewTextBoxColumn3.Width = 72;
+            // 
+            // sgDataGridViewTextBoxColumn1
+            // 
+            sgDataGridViewTextBoxColumn1.DataPropertyName = "Sg";
+            sgDataGridViewTextBoxColumn1.HeaderText = "Sg";
+            sgDataGridViewTextBoxColumn1.Name = "sgDataGridViewTextBoxColumn1";
+            sgDataGridViewTextBoxColumn1.ReadOnly = true;
+            sgDataGridViewTextBoxColumn1.Width = 48;
+            // 
+            // pgDataGridViewTextBoxColumn1
+            // 
+            pgDataGridViewTextBoxColumn1.DataPropertyName = "Pg";
+            pgDataGridViewTextBoxColumn1.HeaderText = "Pg";
+            pgDataGridViewTextBoxColumn1.Name = "pgDataGridViewTextBoxColumn1";
+            pgDataGridViewTextBoxColumn1.ReadOnly = true;
+            pgDataGridViewTextBoxColumn1.Width = 49;
+            // 
+            // qgDataGridViewTextBoxColumn1
+            // 
+            qgDataGridViewTextBoxColumn1.DataPropertyName = "Qg";
+            qgDataGridViewTextBoxColumn1.HeaderText = "Qg";
+            qgDataGridViewTextBoxColumn1.Name = "qgDataGridViewTextBoxColumn1";
+            qgDataGridViewTextBoxColumn1.ReadOnly = true;
+            qgDataGridViewTextBoxColumn1.Width = 51;
+            // 
+            // φReDataGridViewTextBoxColumn1
+            // 
+            φReDataGridViewTextBoxColumn1.DataPropertyName = "Φ re";
+            φReDataGridViewTextBoxColumn1.HeaderText = "Φ re";
+            φReDataGridViewTextBoxColumn1.Name = "φReDataGridViewTextBoxColumn1";
+            φReDataGridViewTextBoxColumn1.ReadOnly = true;
+            φReDataGridViewTextBoxColumn1.Width = 60;
+            // 
+            // φImDataGridViewTextBoxColumn1
+            // 
+            φImDataGridViewTextBoxColumn1.DataPropertyName = "Φ im";
+            φImDataGridViewTextBoxColumn1.HeaderText = "Φ im";
+            φImDataGridViewTextBoxColumn1.Name = "φImDataGridViewTextBoxColumn1";
+            φImDataGridViewTextBoxColumn1.ReadOnly = true;
+            φImDataGridViewTextBoxColumn1.Width = 62;
+            // 
+            // φ2DataGridViewTextBoxColumn1
+            // 
+            φ2DataGridViewTextBoxColumn1.DataPropertyName = "|Φ|^2";
+            φ2DataGridViewTextBoxColumn1.HeaderText = "|Φ|^2";
+            φ2DataGridViewTextBoxColumn1.Name = "φ2DataGridViewTextBoxColumn1";
+            φ2DataGridViewTextBoxColumn1.ReadOnly = true;
+            φ2DataGridViewTextBoxColumn1.Width = 63;
+            // 
+            // σΦ2DataGridViewTextBoxColumn
+            // 
+            σΦ2DataGridViewTextBoxColumn.DataPropertyName = "Σ|Φ|^2";
+            σΦ2DataGridViewTextBoxColumn.HeaderText = "Σ|Φ|^2";
+            σΦ2DataGridViewTextBoxColumn.Name = "σΦ2DataGridViewTextBoxColumn";
+            σΦ2DataGridViewTextBoxColumn.ReadOnly = true;
+            σΦ2DataGridViewTextBoxColumn.Width = 72;
+            // 
             // FormDiffractionSpotInfo
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -1004,27 +999,6 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox textBoxSemiangle;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.DataGridViewTextBoxColumn rDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn hDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn kDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn iDataGridViewTextBoxColumn;                                                                // 260421Cl 追加 Miller-Bravais i
-        private System.Windows.Forms.DataGridViewTextBoxColumn lDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn gXDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn gYDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn gZDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn gDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ugReDataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ugImDataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ugReDataGridViewTextBoxColumn3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ugImDataGridViewTextBoxColumn3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn sgDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn pgDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn qgDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn φReDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn φImDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn φ2DataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn σΦ2DataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn rDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
@@ -1048,5 +1022,26 @@
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         private System.Windows.Forms.CheckBox checkBoxAutoRowSize;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn rDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn hDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn kDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn iDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn lDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn gXDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn gYDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn gZDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn gDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ugReDataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ugImDataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ugReDataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ugImDataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn sgDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn pgDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn qgDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn φReDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn φImDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn φ2DataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn σΦ2DataGridViewTextBoxColumn;
     }
 }
