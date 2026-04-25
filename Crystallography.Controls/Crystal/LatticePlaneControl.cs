@@ -35,6 +35,9 @@ public partial class LatticePlaneControl : CaptureUserControlBase
 
     private readonly DataSet.DataTableLatticePlaneDataTable table;
 
+    // 260425Cl WFO1000 対策: デザイナのシリアライゼーション対象から除外
+    [System.ComponentModel.Browsable(false)]
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
     public bool MillerBravaisIndexActive { set => iDataGridViewTextBoxColumn.Visible = value; }
 
     #endregion

@@ -1008,6 +1008,9 @@ public partial class CrystalControl : CaptureUserControlBase
     private void buttonStressSet_Click(object sender, EventArgs e) => GenerateFromInterface();
 
     /// <summary>Miller-Bravais指数を有効化する</summary>
+    // 260425Cl WFO1000 対策: デザイナのシリアライゼーション対象から除外
+    [Browsable(false)]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public bool MillerBravais
     {
         set => FormScatteringFactor.MillerBravais = value && crystal.MillerBravaisCapable;

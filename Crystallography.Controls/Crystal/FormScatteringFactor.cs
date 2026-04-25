@@ -31,6 +31,9 @@ public partial class FormScatteringFactor : CaptureFormBase
     public double CutoffD => LengthUnit== LengthUnitEnum.NanoMeter ? numericBoxCutoffD.Value : numericBoxCutoffD.Value/10;
 
 
+    // 260425Cl WFO1000 対策: デザイナのシリアライゼーション対象から除外
+    [System.ComponentModel.Browsable(false)]
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
     public bool MillerBravais { get => dataGridViewTextBoxColumnI.Visible; set => dataGridViewTextBoxColumnI.Visible = value; }
 
 
