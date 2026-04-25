@@ -1915,11 +1915,14 @@ public partial class FormMain : CaptureFormBase
     // Crystal 変更時 / メニューチェック変更時 などから呼ぶ。
     //260422Cl FormMain/FormMovie の Plane 入力は NumericBox ベースに revert したため、
     // 現状 4 指数表示の切替対象は FormDiffractionSpotInfo の i 列のみ。
+    //260425Cl FormStereonet / FormImageSimulator も同期対象に追加
     public void UpdatePlaneIndices()
     {
         var active = MillerBravaisActive;
         FormDiffractionSimulator?.UpdatePlaneIndices();
         FormStructureViewer?.UpdatePlaneIndices();
+        FormStereonet?.UpdatePlaneIndices();
+        FormImageSimulator?.UpdatePlaneIndices();
         crystalControl.MillerBravais = active;
 
         numericBoxPlaneI.Visible = active;

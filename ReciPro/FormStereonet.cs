@@ -1,4 +1,4 @@
-﻿#region using
+﻿﻿﻿#region using
 using Crystallography.OpenGL;
 using MathNet.Numerics;
 using System.Collections.Generic;
@@ -31,7 +31,8 @@ public partial class FormStereonet : CaptureFormBase
 
     private bool skipEvent = false;
 
-    private string delimiter => radioButtonDelimiterNone.Checked ? "" : radioButtonDelimiterSpace.Checked ? " " : ",";
+    //private string delimiter => radioButtonDelimiterNone.Checked ? "" : radioButtonDelimiterSpace.Checked ? " " : ",";
+    private string delimiter => radioButtonDelimiterNone.Checked ? " " : radioButtonDelimiterSpace.Checked ? " " : ","; // 260425Cl None選択時にHAIR SPACE(U+200A,最細)を挿入
 
     public class IndexInfo
     {

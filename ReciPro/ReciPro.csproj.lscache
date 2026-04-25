@@ -340,7 +340,7 @@ Version.cs
   IronPython.Modules.dll
   IronPython.SQLite.dll
   IronPython.Wpf.dll
- mathnet.numerics.providers.mkl/5.0.0/lib/net6.0/MathNet.Numerics.Providers.MKL.dll
+ mathnet.numerics.providers.mkl/6.0.0-beta2/lib/net8.0/MathNet.Numerics.Providers.MKL.dll
  mathnet.numerics/6.0.0-beta2/lib/net8.0/MathNet.Numerics.dll
  memorypack.core/1.21.4/lib/net8.0/MemoryPack.Core.dll
  mono.unix/7.1.0-final.1.21458.1/lib/net6.0/Mono.Unix.dll

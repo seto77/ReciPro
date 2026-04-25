@@ -254,6 +254,12 @@ public partial class FormImageSimulator : CaptureFormBase
     public FormMain FormMain;
     public FormDiffractionSpotInfo FormDiffractionSpotInfo;
 
+    //260425Cl 追加: Miller-Bravais 4 指数表示が有効か (FormMain と同期)
+    public bool MillerBravaisActive => FormMain.MillerBravaisActive;
+
+    //260425Cl 追加: FormMain から呼ばれて配下フォーム (FormDiffractionSpotInfo) の i 列を切替
+    public void UpdatePlaneIndices() => FormDiffractionSpotInfo?.UpdatePlaneIndices(MillerBravaisActive);
+
     public FormPresets FormPresets;
     public FormCTF FormCTF;
 

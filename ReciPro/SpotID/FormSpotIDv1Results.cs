@@ -27,9 +27,11 @@ namespace ReciPro
             label1.Text = zoneaxis.Count.ToString() + " candidates are found.";
             this.zoneAxis = zoneaxis;
 
+            //260425Cl Miller-Bravais 判定はループ外で一度だけ取得
+            var useMB = formTEMID?.formMain?.MillerBravaisActive ?? false;
             for (int i = 0; i < zoneaxis.Count; i++)
                 if (zoneaxis[i].plane1.IsRootIndex)
-                    dataSet.Tables[0].Rows.Add(GetTabelRows(i, photo, zoneaxis[i]));
+                    dataSet.Tables[0].Rows.Add(GetTabelRows(i, photo, zoneaxis[i], useMB));            // 260425Cl Miller-Bravais 4 指数対応
             if (photo.IsTriangleMode)
             {
                 dataGridView1.Columns[5].Visible = true;
@@ -60,17 +62,21 @@ namespace ReciPro
             }
         }
 
-        public static object[] GetTabelRows(int i, PhotoInformation photo, ZoneAxis zoneaxis) => new object[] {
+        //260425Cl Miller-Bravais 4 指数対応 (旧シグネチャ: GetTabelRows(int i, PhotoInformation photo, ZoneAxis zoneaxis))
+        public static object[] GetTabelRows(int i, PhotoInformation photo, ZoneAxis zoneaxis, bool useMB = false) => new object[] {
                 i,
                 $"[{zoneaxis.u} {zoneaxis.v} {zoneaxis.w}]",
 
-                $"{zoneaxis.plane1.h} {zoneaxis.plane1.k} {zoneaxis.plane1.l}",
+                //$"{zoneaxis.plane1.h} {zoneaxis.plane1.k} {zoneaxis.plane1.l}",
+                FormMain.PlaneString(zoneaxis.plane1.h, zoneaxis.plane1.k, zoneaxis.plane1.l, useMB),                                                        // 260425Cl Miller-Bravais 4 指数対応
                 $"{zoneaxis.plane1.d:f3}nm ({(zoneaxis.plane1.d-photo.d1)/photo.d1 * 100:f3}%)",
 
-                $"{zoneaxis.plane2.h} {zoneaxis.plane2.k} {zoneaxis.plane2.l}",
+                //$"{zoneaxis.plane2.h} {zoneaxis.plane2.k} {zoneaxis.plane2.l}",
+                FormMain.PlaneString(zoneaxis.plane2.h, zoneaxis.plane2.k, zoneaxis.plane2.l, useMB),                                                        // 260425Cl Miller-Bravais 4 指数対応
                 $"{zoneaxis.plane2.d:f3}nm ({(zoneaxis.plane2.d-photo.d2)/photo.d2 * 100:f3}%)",
 
-                $"{zoneaxis.plane3.h} {zoneaxis.plane3.k} {zoneaxis.plane3.l}",
+                //$"{zoneaxis.plane3.h} {zoneaxis.plane3.k} {zoneaxis.plane3.l}",
+                FormMain.PlaneString(zoneaxis.plane3.h, zoneaxis.plane3.k, zoneaxis.plane3.l, useMB),                                                        // 260425Cl Miller-Bravais 4 指数対応
                 $"{zoneaxis.plane3.d:f3}nm ({(zoneaxis.plane3.d-photo.d3)/photo.d3 * 100:f3}%)",
 
                 $"{zoneaxis.Theta/Math.PI*180:f3}° ({(zoneaxis.Theta-photo.Theta)/Math.PI*180:f3}°)",
