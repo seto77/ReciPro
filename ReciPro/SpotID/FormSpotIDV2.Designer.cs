@@ -89,6 +89,15 @@ namespace ReciPro
             bindingSourceObsSpots = new System.Windows.Forms.BindingSource(components);
             dataSet = new DataSetReciPro();
             pictureBox1 = new System.Windows.Forms.PictureBox();
+            panel1 = new System.Windows.Forms.Panel();
+            groupBoxOptics = new System.Windows.Forms.GroupBox();
+            radioButtonPixelSizeUnitInverse = new System.Windows.Forms.RadioButton();
+            radioButtonPixelSizeUnitReal = new System.Windows.Forms.RadioButton();
+            numericBoxCameraLength = new NumericBox();
+            numericBoxPixelSize = new NumericBox();
+            waveLengthControl1 = new WaveLengthControl();
+            checkBoxShowDebyeRing = new System.Windows.Forms.CheckBox();
+            checkBoxGuideCircles = new System.Windows.Forms.CheckBox();
             groupBoxIndex = new System.Windows.Forms.GroupBox();
             buttonIdentifySpots = new System.Windows.Forms.Button();
             numericBoxSemiangle = new NumericBox();
@@ -112,14 +121,6 @@ namespace ReciPro
             checkBoxIgnoreMultipleDiffraction = new System.Windows.Forms.CheckBox();
             buttonRefineThicknessAndDirection = new System.Windows.Forms.Button();
             buttonStop = new System.Windows.Forms.Button();
-            groupBoxOptics = new System.Windows.Forms.GroupBox();
-            radioButtonPixelSizeUnitInverse = new System.Windows.Forms.RadioButton();
-            radioButtonPixelSizeUnitReal = new System.Windows.Forms.RadioButton();
-            numericBoxCameraLength = new NumericBox();
-            numericBoxPixelSize = new NumericBox();
-            waveLengthControl1 = new WaveLengthControl();
-            checkBoxGuideCircles = new System.Windows.Forms.CheckBox();
-            checkBoxShowDebyeRing = new System.Windows.Forms.CheckBox();
             menuStrip = new System.Windows.Forms.MenuStrip();
             fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             readToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -155,45 +156,49 @@ namespace ReciPro
             ((System.ComponentModel.ISupportInitialize)bindingSourceObsSpots).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataSet).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            panel1.SuspendLayout();
+            groupBoxOptics.SuspendLayout();
             groupBoxIndex.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewGrains).BeginInit();
             ((System.ComponentModel.ISupportInitialize)bindingSourceGrains).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridViewCandidates).BeginInit();
             ((System.ComponentModel.ISupportInitialize)bindingSourceCandidates).BeginInit();
-            groupBoxOptics.SuspendLayout();
             menuStrip.SuspendLayout();
             statusStrip.SuspendLayout();
             SuspendLayout();
             // 
             // splitContainer1
             // 
+            resources.ApplyResources(splitContainer1, "splitContainer1");
             splitContainer1.BackColor = System.Drawing.SystemColors.Control;
             splitContainer1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             splitContainer1.Cursor = System.Windows.Forms.Cursors.VSplit;
-            resources.ApplyResources(splitContainer1, "splitContainer1");
             splitContainer1.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
             splitContainer1.Name = "splitContainer1";
             // 
             // splitContainer1.Panel1
             // 
+            resources.ApplyResources(splitContainer1.Panel1, "splitContainer1.Panel1");
             splitContainer1.Panel1.Controls.Add(scalablePictureBoxAdvanced);
             splitContainer1.Panel1.Cursor = System.Windows.Forms.Cursors.Default;
+            toolTip.SetToolTip(splitContainer1.Panel1, resources.GetString("splitContainer1.Panel1.ToolTip"));
             // 
             // splitContainer1.Panel2
             // 
+            resources.ApplyResources(splitContainer1.Panel2, "splitContainer1.Panel2");
             splitContainer1.Panel2.Controls.Add(groupBoxSpot);
+            splitContainer1.Panel2.Controls.Add(panel1);
             splitContainer1.Panel2.Controls.Add(groupBoxIndex);
-            splitContainer1.Panel2.Controls.Add(groupBoxOptics);
-            splitContainer1.Panel2.Controls.Add(checkBoxGuideCircles);
-            splitContainer1.Panel2.Controls.Add(checkBoxShowDebyeRing);
             splitContainer1.Panel2.Cursor = System.Windows.Forms.Cursors.Arrow;
+            toolTip.SetToolTip(splitContainer1.Panel2, resources.GetString("splitContainer1.Panel2.ToolTip"));
+            toolTip.SetToolTip(splitContainer1, resources.GetString("splitContainer1.ToolTip"));
             // 
             // scalablePictureBoxAdvanced
             // 
+            resources.ApplyResources(scalablePictureBoxAdvanced, "scalablePictureBoxAdvanced");
             scalablePictureBoxAdvanced.ClampIntensityRangeToNewData = true;
             scalablePictureBoxAdvanced.ColorVisible = true;
             scalablePictureBoxAdvanced.DecimalPlacesForIntensity = 0;
-            resources.ApplyResources(scalablePictureBoxAdvanced, "scalablePictureBoxAdvanced");
             scalablePictureBoxAdvanced.FixZoomAndCenter = false;
             scalablePictureBoxAdvanced.FrequencyGraphVisible = false;
             scalablePictureBoxAdvanced.GradiaentVisible = true;
@@ -217,6 +222,7 @@ namespace ReciPro
             scalablePictureBoxAdvanced.ShowGradiaent = true;
             scalablePictureBoxAdvanced.StatusVisible = false;
             scalablePictureBoxAdvanced.TitleVisible = false;
+            toolTip.SetToolTip(scalablePictureBoxAdvanced, resources.GetString("scalablePictureBoxAdvanced.ToolTip"));
             scalablePictureBoxAdvanced.TrackBarVisible = true;
             scalablePictureBoxAdvanced.UpperIntensity = 255D;
             scalablePictureBoxAdvanced.VisibleGradient = true;
@@ -232,9 +238,11 @@ namespace ReciPro
             groupBoxSpot.Controls.Add(pictureBox1);
             groupBoxSpot.Name = "groupBoxSpot";
             groupBoxSpot.TabStop = false;
+            toolTip.SetToolTip(groupBoxSpot, resources.GetString("groupBoxSpot.ToolTip"));
             // 
             // panelSpotActions
             // 
+            resources.ApplyResources(panelSpotActions, "panelSpotActions");
             panelSpotActions.Controls.Add(buttonDeleteSpot);
             panelSpotActions.Controls.Add(buttonClearSpots);
             panelSpotActions.Controls.Add(buttonCopyToClipboard);
@@ -253,8 +261,8 @@ namespace ReciPro
             panelSpotActions.Controls.Add(numericBoxDonut);
             panelSpotActions.Controls.Add(buttonDonut);
             panelSpotActions.Controls.Add(dataGridViewSpots);
-            resources.ApplyResources(panelSpotActions, "panelSpotActions");
             panelSpotActions.Name = "panelSpotActions";
+            toolTip.SetToolTip(panelSpotActions, resources.GetString("panelSpotActions.ToolTip"));
             // 
             // buttonDeleteSpot
             // 
@@ -432,6 +440,7 @@ namespace ReciPro
             numericBoxDonut.SkipEventDuringInput = false;
             numericBoxDonut.SmartIncrement = true;
             numericBoxDonut.ThonsandsSeparator = true;
+            toolTip.SetToolTip(numericBoxDonut, resources.GetString("numericBoxDonut.ToolTip"));
             numericBoxDonut.Value = 5D;
             // 
             // buttonDonut
@@ -444,10 +453,10 @@ namespace ReciPro
             // 
             // dataGridViewSpots
             // 
+            resources.ApplyResources(dataGridViewSpots, "dataGridViewSpots");
             dataGridViewSpots.AllowUserToAddRows = false;
             dataGridViewSpots.AllowUserToDeleteRows = false;
             dataGridViewSpots.AllowUserToResizeRows = false;
-            resources.ApplyResources(dataGridViewSpots, "dataGridViewSpots");
             dataGridViewSpots.AutoGenerateColumns = false;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
@@ -474,8 +483,8 @@ namespace ReciPro
             dataGridViewSpots.Name = "dataGridViewSpots";
             dataGridViewSpots.RowHeadersVisible = false;
             dataGridViewSpots.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            //dataGridViewSpots.RowTemplate.Height = 21;                                                                                              // 260413Cl DPIスケーリング対応のため削除
             dataGridViewSpots.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            toolTip.SetToolTip(dataGridViewSpots, resources.GetString("dataGridViewSpots.ToolTip"));
             dataGridViewSpots.CellContentClick += dataGridViewSpots_CellContentClick;
             dataGridViewSpots.RowHeaderMouseDoubleClick += DataGridViewSpots_RowHeaderMouseDoubleClick;
             // 
@@ -645,6 +654,113 @@ namespace ReciPro
             pictureBox1.Image = Properties.Resources.TwoDimensionalPseudoVoigt;
             pictureBox1.Name = "pictureBox1";
             pictureBox1.TabStop = false;
+            toolTip.SetToolTip(pictureBox1, resources.GetString("pictureBox1.ToolTip"));
+            // 
+            // panel1
+            // 
+            resources.ApplyResources(panel1, "panel1");
+            panel1.Controls.Add(groupBoxOptics);
+            panel1.Controls.Add(checkBoxShowDebyeRing);
+            panel1.Controls.Add(checkBoxGuideCircles);
+            panel1.Name = "panel1";
+            toolTip.SetToolTip(panel1, resources.GetString("panel1.ToolTip"));
+            // 
+            // groupBoxOptics
+            // 
+            resources.ApplyResources(groupBoxOptics, "groupBoxOptics");
+            captureExtender.SetCapture(groupBoxOptics, true);
+            groupBoxOptics.Controls.Add(radioButtonPixelSizeUnitInverse);
+            groupBoxOptics.Controls.Add(radioButtonPixelSizeUnitReal);
+            groupBoxOptics.Controls.Add(numericBoxCameraLength);
+            groupBoxOptics.Controls.Add(numericBoxPixelSize);
+            groupBoxOptics.Controls.Add(waveLengthControl1);
+            groupBoxOptics.Name = "groupBoxOptics";
+            groupBoxOptics.TabStop = false;
+            toolTip.SetToolTip(groupBoxOptics, resources.GetString("groupBoxOptics.ToolTip"));
+            // 
+            // radioButtonPixelSizeUnitInverse
+            // 
+            resources.ApplyResources(radioButtonPixelSizeUnitInverse, "radioButtonPixelSizeUnitInverse");
+            radioButtonPixelSizeUnitInverse.Name = "radioButtonPixelSizeUnitInverse";
+            toolTip.SetToolTip(radioButtonPixelSizeUnitInverse, resources.GetString("radioButtonPixelSizeUnitInverse.ToolTip"));
+            radioButtonPixelSizeUnitInverse.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonPixelSizeUnitReal
+            // 
+            resources.ApplyResources(radioButtonPixelSizeUnitReal, "radioButtonPixelSizeUnitReal");
+            radioButtonPixelSizeUnitReal.Checked = true;
+            radioButtonPixelSizeUnitReal.Name = "radioButtonPixelSizeUnitReal";
+            radioButtonPixelSizeUnitReal.TabStop = true;
+            toolTip.SetToolTip(radioButtonPixelSizeUnitReal, resources.GetString("radioButtonPixelSizeUnitReal.ToolTip"));
+            radioButtonPixelSizeUnitReal.UseVisualStyleBackColor = true;
+            radioButtonPixelSizeUnitReal.CheckedChanged += radioButtonPixelSizeUnitReal_CheckedChanged;
+            // 
+            // numericBoxCameraLength
+            // 
+            resources.ApplyResources(numericBoxCameraLength, "numericBoxCameraLength");
+            numericBoxCameraLength.BackColor = System.Drawing.SystemColors.Control;
+            numericBoxCameraLength.FooterBackColor = System.Drawing.SystemColors.Control;
+            numericBoxCameraLength.HeaderBackColor = System.Drawing.SystemColors.Control;
+            numericBoxCameraLength.Maximum = 10000D;
+            numericBoxCameraLength.Minimum = 0D;
+            numericBoxCameraLength.Name = "numericBoxCameraLength";
+            numericBoxCameraLength.RadianValue = 17.453292519943293D;
+            numericBoxCameraLength.SkipEventDuringInput = false;
+            numericBoxCameraLength.SmartIncrement = true;
+            numericBoxCameraLength.ThonsandsSeparator = true;
+            toolTip.SetToolTip(numericBoxCameraLength, resources.GetString("numericBoxCameraLength.ToolTip"));
+            numericBoxCameraLength.Value = 1000D;
+            numericBoxCameraLength.ValueChanged += NumericBoxCameraLength_ValueChanged;
+            // 
+            // numericBoxPixelSize
+            // 
+            resources.ApplyResources(numericBoxPixelSize, "numericBoxPixelSize");
+            numericBoxPixelSize.BackColor = System.Drawing.SystemColors.Control;
+            numericBoxPixelSize.FooterBackColor = System.Drawing.SystemColors.Control;
+            numericBoxPixelSize.HeaderBackColor = System.Drawing.SystemColors.Control;
+            numericBoxPixelSize.Maximum = 100D;
+            numericBoxPixelSize.Minimum = 0D;
+            numericBoxPixelSize.Name = "numericBoxPixelSize";
+            numericBoxPixelSize.RadianValue = 0.0008726646259971648D;
+            numericBoxPixelSize.SkipEventDuringInput = false;
+            numericBoxPixelSize.SmartIncrement = true;
+            numericBoxPixelSize.ThonsandsSeparator = true;
+            toolTip.SetToolTip(numericBoxPixelSize, resources.GetString("numericBoxPixelSize.ToolTip"));
+            numericBoxPixelSize.Value = 0.05D;
+            numericBoxPixelSize.ValueChanged += NumericBoxPixelSize_ValueChanged;
+            // 
+            // waveLengthControl1
+            // 
+            resources.ApplyResources(waveLengthControl1, "waveLengthControl1");
+            waveLengthControl1.Direction = System.Windows.Forms.FlowDirection.LeftToRight;
+            waveLengthControl1.Energy = 494.36741737D;
+            waveLengthControl1.Monochrome = true;
+            waveLengthControl1.Name = "waveLengthControl1";
+            waveLengthControl1.ShowWaveSource = true;
+            toolTip.SetToolTip(waveLengthControl1, resources.GetString("waveLengthControl1.ToolTip"));
+            waveLengthControl1.WaveLength = 0.0025079347455D;
+            waveLengthControl1.WaveSource = WaveSource.Xray;
+            waveLengthControl1.XrayWaveSourceElementNumber = 0;
+            waveLengthControl1.XrayWaveSourceLine = XrayLine.Ka1;
+            waveLengthControl1.WavelengthChanged += WaveLengthControl1_WavelengthChanged;
+            // 
+            // checkBoxShowDebyeRing
+            // 
+            resources.ApplyResources(checkBoxShowDebyeRing, "checkBoxShowDebyeRing");
+            checkBoxShowDebyeRing.Name = "checkBoxShowDebyeRing";
+            toolTip.SetToolTip(checkBoxShowDebyeRing, resources.GetString("checkBoxShowDebyeRing.ToolTip"));
+            checkBoxShowDebyeRing.UseVisualStyleBackColor = true;
+            checkBoxShowDebyeRing.CheckedChanged += checkBoxShowDebyeRing_CheckedChanged;
+            // 
+            // checkBoxGuideCircles
+            // 
+            resources.ApplyResources(checkBoxGuideCircles, "checkBoxGuideCircles");
+            checkBoxGuideCircles.Checked = true;
+            checkBoxGuideCircles.CheckState = System.Windows.Forms.CheckState.Checked;
+            checkBoxGuideCircles.Name = "checkBoxGuideCircles";
+            toolTip.SetToolTip(checkBoxGuideCircles, resources.GetString("checkBoxGuideCircles.ToolTip"));
+            checkBoxGuideCircles.UseVisualStyleBackColor = true;
+            checkBoxGuideCircles.CheckedChanged += checkBoxGuideCircles_CheckedChanged;
             // 
             // groupBoxIndex
             // 
@@ -667,6 +783,7 @@ namespace ReciPro
             groupBoxIndex.Controls.Add(buttonStop);
             groupBoxIndex.Name = "groupBoxIndex";
             groupBoxIndex.TabStop = false;
+            toolTip.SetToolTip(groupBoxIndex, resources.GetString("groupBoxIndex.ToolTip"));
             // 
             // buttonIdentifySpots
             // 
@@ -791,10 +908,10 @@ namespace ReciPro
             // 
             // dataGridViewGrains
             // 
+            resources.ApplyResources(dataGridViewGrains, "dataGridViewGrains");
             dataGridViewGrains.AllowUserToAddRows = false;
             dataGridViewGrains.AllowUserToDeleteRows = false;
             dataGridViewGrains.AllowUserToResizeRows = false;
-            resources.ApplyResources(dataGridViewGrains, "dataGridViewGrains");
             dataGridViewGrains.AutoGenerateColumns = false;
             dataGridViewGrains.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewGrains.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { noDataGridViewTextBoxColumn2, CrystalName, assignedSpotsDataGridViewTextBoxColumn });
@@ -802,8 +919,8 @@ namespace ReciPro
             dataGridViewGrains.Name = "dataGridViewGrains";
             dataGridViewGrains.ReadOnly = true;
             dataGridViewGrains.RowHeadersVisible = false;
-            //dataGridViewGrains.RowTemplate.Height = 21;                                                                                             // 260413Cl DPIスケーリング対応のため削除
             dataGridViewGrains.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            toolTip.SetToolTip(dataGridViewGrains, resources.GetString("dataGridViewGrains.ToolTip"));
             // 
             // noDataGridViewTextBoxColumn2
             // 
@@ -834,10 +951,10 @@ namespace ReciPro
             // 
             // dataGridViewCandidates
             // 
+            resources.ApplyResources(dataGridViewCandidates, "dataGridViewCandidates");
             dataGridViewCandidates.AllowUserToAddRows = false;
             dataGridViewCandidates.AllowUserToDeleteRows = false;
             dataGridViewCandidates.AllowUserToResizeRows = false;
-            resources.ApplyResources(dataGridViewCandidates, "dataGridViewCandidates");
             dataGridViewCandidates.AutoGenerateColumns = false;
             dataGridViewCandidates.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCandidates.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { noDataGridViewTextBoxColumn1, AssignedSpots });
@@ -846,8 +963,8 @@ namespace ReciPro
             dataGridViewCandidates.Name = "dataGridViewCandidates";
             dataGridViewCandidates.ReadOnly = true;
             dataGridViewCandidates.RowHeadersVisible = false;
-            //dataGridViewCandidates.RowTemplate.Height = 21;                                                                                         // 260413Cl DPIスケーリング対応のため削除
             dataGridViewCandidates.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            toolTip.SetToolTip(dataGridViewCandidates, resources.GetString("dataGridViewCandidates.ToolTip"));
             // 
             // noDataGridViewTextBoxColumn1
             // 
@@ -897,161 +1014,67 @@ namespace ReciPro
             buttonStop.UseVisualStyleBackColor = false;
             buttonStop.Click += buttonStop_Click;
             // 
-            // groupBoxOptics
-            // 
-            resources.ApplyResources(groupBoxOptics, "groupBoxOptics");
-            captureExtender.SetCapture(groupBoxOptics, true);
-            groupBoxOptics.Controls.Add(radioButtonPixelSizeUnitInverse);
-            groupBoxOptics.Controls.Add(radioButtonPixelSizeUnitReal);
-            groupBoxOptics.Controls.Add(numericBoxCameraLength);
-            groupBoxOptics.Controls.Add(numericBoxPixelSize);
-            groupBoxOptics.Controls.Add(waveLengthControl1);
-            groupBoxOptics.Name = "groupBoxOptics";
-            groupBoxOptics.TabStop = false;
-            // 
-            // radioButtonPixelSizeUnitInverse
-            // 
-            resources.ApplyResources(radioButtonPixelSizeUnitInverse, "radioButtonPixelSizeUnitInverse");
-            radioButtonPixelSizeUnitInverse.Name = "radioButtonPixelSizeUnitInverse";
-            toolTip.SetToolTip(radioButtonPixelSizeUnitInverse, resources.GetString("radioButtonPixelSizeUnitInverse.ToolTip"));
-            radioButtonPixelSizeUnitInverse.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonPixelSizeUnitReal
-            // 
-            resources.ApplyResources(radioButtonPixelSizeUnitReal, "radioButtonPixelSizeUnitReal");
-            radioButtonPixelSizeUnitReal.Checked = true;
-            radioButtonPixelSizeUnitReal.Name = "radioButtonPixelSizeUnitReal";
-            radioButtonPixelSizeUnitReal.TabStop = true;
-            toolTip.SetToolTip(radioButtonPixelSizeUnitReal, resources.GetString("radioButtonPixelSizeUnitReal.ToolTip"));
-            radioButtonPixelSizeUnitReal.UseVisualStyleBackColor = true;
-            radioButtonPixelSizeUnitReal.CheckedChanged += radioButtonPixelSizeUnitReal_CheckedChanged;
-            // 
-            // numericBoxCameraLength
-            // 
-            resources.ApplyResources(numericBoxCameraLength, "numericBoxCameraLength");
-            numericBoxCameraLength.BackColor = System.Drawing.SystemColors.Control;
-            numericBoxCameraLength.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxCameraLength.HeaderBackColor = System.Drawing.SystemColors.Control;
-            numericBoxCameraLength.Maximum = 10000D;
-            numericBoxCameraLength.Minimum = 0D;
-            numericBoxCameraLength.Name = "numericBoxCameraLength";
-            numericBoxCameraLength.RadianValue = 17.453292519943293D;
-            numericBoxCameraLength.SkipEventDuringInput = false;
-            numericBoxCameraLength.SmartIncrement = true;
-            numericBoxCameraLength.ThonsandsSeparator = true;
-            toolTip.SetToolTip(numericBoxCameraLength, resources.GetString("numericBoxCameraLength.ToolTip"));
-            numericBoxCameraLength.Value = 1000D;
-            numericBoxCameraLength.ValueChanged += NumericBoxCameraLength_ValueChanged;
-            // 
-            // numericBoxPixelSize
-            // 
-            resources.ApplyResources(numericBoxPixelSize, "numericBoxPixelSize");
-            numericBoxPixelSize.BackColor = System.Drawing.SystemColors.Control;
-            numericBoxPixelSize.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxPixelSize.HeaderBackColor = System.Drawing.SystemColors.Control;
-            numericBoxPixelSize.Maximum = 100D;
-            numericBoxPixelSize.Minimum = 0D;
-            numericBoxPixelSize.Name = "numericBoxPixelSize";
-            numericBoxPixelSize.RadianValue = 0.0008726646259971648D;
-            numericBoxPixelSize.SkipEventDuringInput = false;
-            numericBoxPixelSize.SmartIncrement = true;
-            numericBoxPixelSize.ThonsandsSeparator = true;
-            toolTip.SetToolTip(numericBoxPixelSize, resources.GetString("numericBoxPixelSize.ToolTip"));
-            numericBoxPixelSize.Value = 0.05D;
-            numericBoxPixelSize.ValueChanged += NumericBoxPixelSize_ValueChanged;
-            // 
-            // waveLengthControl1
-            // 
-            resources.ApplyResources(waveLengthControl1, "waveLengthControl1");
-            waveLengthControl1.Direction = System.Windows.Forms.FlowDirection.LeftToRight;
-            waveLengthControl1.Energy = 494.36741737D;
-            waveLengthControl1.Monochrome = true;
-            waveLengthControl1.Name = "waveLengthControl1";
-            waveLengthControl1.ShowWaveSource = true;
-            waveLengthControl1.WaveLength = 0.0025079347455D;
-            waveLengthControl1.WaveSource = WaveSource.Xray;
-            waveLengthControl1.XrayWaveSourceElementNumber = 0;
-            waveLengthControl1.XrayWaveSourceLine = XrayLine.Ka1;
-            waveLengthControl1.WavelengthChanged += WaveLengthControl1_WavelengthChanged;
-            // 
-            // checkBoxGuideCircles
-            // 
-            resources.ApplyResources(checkBoxGuideCircles, "checkBoxGuideCircles");
-            checkBoxGuideCircles.Checked = true;
-            checkBoxGuideCircles.CheckState = System.Windows.Forms.CheckState.Checked;
-            checkBoxGuideCircles.Name = "checkBoxGuideCircles";
-            toolTip.SetToolTip(checkBoxGuideCircles, resources.GetString("checkBoxGuideCircles.ToolTip"));
-            checkBoxGuideCircles.UseVisualStyleBackColor = true;
-            checkBoxGuideCircles.CheckedChanged += checkBoxGuideCircles_CheckedChanged;
-            // 
-            // checkBoxShowDebyeRing
-            // 
-            resources.ApplyResources(checkBoxShowDebyeRing, "checkBoxShowDebyeRing");
-            checkBoxShowDebyeRing.Name = "checkBoxShowDebyeRing";
-            toolTip.SetToolTip(checkBoxShowDebyeRing, resources.GetString("checkBoxShowDebyeRing.ToolTip"));
-            checkBoxShowDebyeRing.UseVisualStyleBackColor = true;
-            checkBoxShowDebyeRing.CheckedChanged += checkBoxShowDebyeRing_CheckedChanged;
-            // 
             // menuStrip
             // 
-            menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { fileToolStripMenuItem, shortcutHintsToolStripMenuItem });
             resources.ApplyResources(menuStrip, "menuStrip");
+            menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { fileToolStripMenuItem, shortcutHintsToolStripMenuItem });
             menuStrip.Name = "menuStrip";
+            toolTip.SetToolTip(menuStrip, resources.GetString("menuStrip.ToolTip"));
             // 
             // fileToolStripMenuItem
             // 
+            resources.ApplyResources(fileToolStripMenuItem, "fileToolStripMenuItem");
             captureExtender.SetCapture(fileToolStripMenuItem, true);
             fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { readToolStripMenuItem, saveToolStripMenuItem, copyToolStripMenuItem });
             fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            resources.ApplyResources(fileToolStripMenuItem, "fileToolStripMenuItem");
             // 
             // readToolStripMenuItem
             // 
-            readToolStripMenuItem.Name = "readToolStripMenuItem";
             resources.ApplyResources(readToolStripMenuItem, "readToolStripMenuItem");
+            readToolStripMenuItem.Name = "readToolStripMenuItem";
             readToolStripMenuItem.Click += readToolStripMenuItem_Click;
             // 
             // saveToolStripMenuItem
             // 
+            resources.ApplyResources(saveToolStripMenuItem, "saveToolStripMenuItem");
             saveToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { saveAsMetafileToolStripMenuItem, saveAsBitmapToolStripMenuItem1 });
             saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            resources.ApplyResources(saveToolStripMenuItem, "saveToolStripMenuItem");
             // 
             // saveAsMetafileToolStripMenuItem
             // 
-            saveAsMetafileToolStripMenuItem.Name = "saveAsMetafileToolStripMenuItem";
             resources.ApplyResources(saveAsMetafileToolStripMenuItem, "saveAsMetafileToolStripMenuItem");
+            saveAsMetafileToolStripMenuItem.Name = "saveAsMetafileToolStripMenuItem";
             saveAsMetafileToolStripMenuItem.Click += saveAsMetafileToolStripMenuItem_Click;
             // 
             // saveAsBitmapToolStripMenuItem1
             // 
-            saveAsBitmapToolStripMenuItem1.Name = "saveAsBitmapToolStripMenuItem1";
             resources.ApplyResources(saveAsBitmapToolStripMenuItem1, "saveAsBitmapToolStripMenuItem1");
+            saveAsBitmapToolStripMenuItem1.Name = "saveAsBitmapToolStripMenuItem1";
             saveAsBitmapToolStripMenuItem1.Click += saveAsBitmapToolStripMenuItem1_Click;
             // 
             // copyToolStripMenuItem
             // 
+            resources.ApplyResources(copyToolStripMenuItem, "copyToolStripMenuItem");
             copyToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { copyAsMetafileToolStripMenuItem, copyAsBitmapToolStripMenuItem });
             copyToolStripMenuItem.Name = "copyToolStripMenuItem";
-            resources.ApplyResources(copyToolStripMenuItem, "copyToolStripMenuItem");
             // 
             // copyAsMetafileToolStripMenuItem
             // 
-            copyAsMetafileToolStripMenuItem.Name = "copyAsMetafileToolStripMenuItem";
             resources.ApplyResources(copyAsMetafileToolStripMenuItem, "copyAsMetafileToolStripMenuItem");
+            copyAsMetafileToolStripMenuItem.Name = "copyAsMetafileToolStripMenuItem";
             copyAsMetafileToolStripMenuItem.Click += copyAsMetafileToolStripMenuItem_Click;
             // 
             // copyAsBitmapToolStripMenuItem
             // 
-            copyAsBitmapToolStripMenuItem.Name = "copyAsBitmapToolStripMenuItem";
             resources.ApplyResources(copyAsBitmapToolStripMenuItem, "copyAsBitmapToolStripMenuItem");
+            copyAsBitmapToolStripMenuItem.Name = "copyAsBitmapToolStripMenuItem";
             copyAsBitmapToolStripMenuItem.Click += copyAsBitmapToolStripMenuItem_Click;
             // 
             // shortcutHintsToolStripMenuItem
             // 
+            resources.ApplyResources(shortcutHintsToolStripMenuItem, "shortcutHintsToolStripMenuItem");
             shortcutHintsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { doubleClickAddSpotToolStripMenuItem, toolStripMenuItem7, toolStripMenuItem1, toolStripMenuItem6, toolStripMenuItem5, toolStripMenuItem4, toolStripMenuItem3 });
             shortcutHintsToolStripMenuItem.Name = "shortcutHintsToolStripMenuItem";
-            resources.ApplyResources(shortcutHintsToolStripMenuItem, "shortcutHintsToolStripMenuItem");
             // 
             // doubleClickAddSpotToolStripMenuItem
             // 
@@ -1090,35 +1113,36 @@ namespace ReciPro
             // 
             // statusStrip
             // 
-            statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { toolStripProgressBar, toolStripStatusLabelImageFilter, toolStripStatusLabelFindSpot, toolStripStatusLabelIdentifySpot, toolStripStatusLabelRefine });
             resources.ApplyResources(statusStrip, "statusStrip");
+            statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { toolStripProgressBar, toolStripStatusLabelImageFilter, toolStripStatusLabelFindSpot, toolStripStatusLabelIdentifySpot, toolStripStatusLabelRefine });
             statusStrip.Name = "statusStrip";
+            toolTip.SetToolTip(statusStrip, resources.GetString("statusStrip.ToolTip"));
             // 
             // toolStripProgressBar
             // 
+            resources.ApplyResources(toolStripProgressBar, "toolStripProgressBar");
             toolStripProgressBar.Maximum = 10000;
             toolStripProgressBar.Name = "toolStripProgressBar";
-            resources.ApplyResources(toolStripProgressBar, "toolStripProgressBar");
             // 
             // toolStripStatusLabelImageFilter
             // 
-            toolStripStatusLabelImageFilter.Name = "toolStripStatusLabelImageFilter";
             resources.ApplyResources(toolStripStatusLabelImageFilter, "toolStripStatusLabelImageFilter");
+            toolStripStatusLabelImageFilter.Name = "toolStripStatusLabelImageFilter";
             // 
             // toolStripStatusLabelFindSpot
             // 
-            toolStripStatusLabelFindSpot.Name = "toolStripStatusLabelFindSpot";
             resources.ApplyResources(toolStripStatusLabelFindSpot, "toolStripStatusLabelFindSpot");
+            toolStripStatusLabelFindSpot.Name = "toolStripStatusLabelFindSpot";
             // 
             // toolStripStatusLabelIdentifySpot
             // 
-            toolStripStatusLabelIdentifySpot.Name = "toolStripStatusLabelIdentifySpot";
             resources.ApplyResources(toolStripStatusLabelIdentifySpot, "toolStripStatusLabelIdentifySpot");
+            toolStripStatusLabelIdentifySpot.Name = "toolStripStatusLabelIdentifySpot";
             // 
             // toolStripStatusLabelRefine
             // 
-            toolStripStatusLabelRefine.Name = "toolStripStatusLabelRefine";
             resources.ApplyResources(toolStripStatusLabelRefine, "toolStripStatusLabelRefine");
+            toolStripStatusLabelRefine.Name = "toolStripStatusLabelRefine";
             // 
             // backgroundWorkerSpotID
             // 
@@ -1130,9 +1154,8 @@ namespace ReciPro
             // 
             // FormSpotIDV2
             // 
-            AllowDrop = true;
             resources.ApplyResources(this, "$this");
-            AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F); // 260329Cl 追加: 96dpi基準
+            AllowDrop = true;
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             captureExtender.SetCapture(this, true);
             Controls.Add(splitContainer1);
@@ -1141,6 +1164,7 @@ namespace ReciPro
             KeyPreview = true;
             MainMenuStrip = menuStrip;
             Name = "FormSpotIDV2";
+            toolTip.SetToolTip(this, resources.GetString("$this.ToolTip"));
             FormClosing += FormSpotID_FormClosing;
             Load += FormSpotID_Load;
             DragDrop += FormSpotID_DragDrop;
@@ -1148,7 +1172,6 @@ namespace ReciPro
             KeyDown += FormSpotIDV2_KeyDown;
             splitContainer1.Panel1.ResumeLayout(false);
             splitContainer1.Panel2.ResumeLayout(false);
-            splitContainer1.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).EndInit();
             splitContainer1.ResumeLayout(false);
             groupBoxSpot.ResumeLayout(false);
@@ -1158,14 +1181,16 @@ namespace ReciPro
             ((System.ComponentModel.ISupportInitialize)bindingSourceObsSpots).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataSet).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
+            groupBoxOptics.ResumeLayout(false);
+            groupBoxOptics.PerformLayout();
             groupBoxIndex.ResumeLayout(false);
             groupBoxIndex.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewGrains).EndInit();
             ((System.ComponentModel.ISupportInitialize)bindingSourceGrains).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataGridViewCandidates).EndInit();
             ((System.ComponentModel.ISupportInitialize)bindingSourceCandidates).EndInit();
-            groupBoxOptics.ResumeLayout(false);
-            groupBoxOptics.PerformLayout();
             menuStrip.ResumeLayout(false);
             menuStrip.PerformLayout();
             statusStrip.ResumeLayout(false);
@@ -1196,8 +1221,6 @@ namespace ReciPro
         private System.Windows.Forms.RadioButton radioButtonSingleGrain;
         private System.Windows.Forms.DataGridView dataGridViewGrains;
         private System.Windows.Forms.BindingSource bindingSourceGrains;
-        private System.Windows.Forms.DataGridViewTextBoxColumn noDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn AssignedSpots;
         private NumericBox numericBoxMaxGrainNum;
         private System.ComponentModel.BackgroundWorker backgroundWorkerSpotID;
         private System.Windows.Forms.DataGridViewTextBoxColumn noDataGridViewTextBoxColumn2;
@@ -1275,5 +1298,8 @@ namespace ReciPro
         private System.Windows.Forms.RadioButton radioButtonPixelSizeUnitInverse;
         private System.Windows.Forms.RadioButton radioButtonPixelSizeUnitReal;
         private System.Windows.Forms.CheckBox checkBoxGuideCircles;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn noDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn AssignedSpots;
     }
 }

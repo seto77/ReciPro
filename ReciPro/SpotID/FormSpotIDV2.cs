@@ -47,7 +47,7 @@ public partial class FormSpotIDV2 : CaptureFormBase
 
     public double WaveLength => waveLengthControl1.WaveLength;
 
-    public double ToleranceLength {get=> numericBoxAcceptableError.Value * 0.01; set=> numericBoxAcceptableError.Value = value * 100; }
+    public double ToleranceLength { get => numericBoxAcceptableError.Value * 0.01; set => numericBoxAcceptableError.Value = value * 100; }
     public double ToleranceAngle => Math.Asin(ToleranceLength) / 2;
 
     private readonly Lock lockObj = new();
@@ -676,7 +676,7 @@ public partial class FormSpotIDV2 : CaptureFormBase
             scalablePictureBoxAdvanced.Symbols?.RemoveAll(s => s.Tag == tagScale);
             if (checkBoxGuideCircles.Checked)
             {
-                var max = (int)(scalablePictureBoxAdvanced.PseudoBitmap.Width /2 / 50);
+                var max = (int)(scalablePictureBoxAdvanced.PseudoBitmap.Width / 2 / 50);
                 //var step = 50 / scalablePictureBoxAdvanced.ZoomAndCenter.Zoom;
                 for (int i = 1; i < max; i++)
                     scalablePictureBoxAdvanced.Symbols.Add(new ScalablePictureBox.Symbol("", direct, 50 * i, Color.Yellow) { Tag = tagScale });
@@ -1595,7 +1595,7 @@ public partial class FormSpotIDV2 : CaptureFormBase
         {
             if (e.Control && (e.KeyCode == Keys.Up || e.KeyCode == Keys.Down || e.KeyCode == Keys.Right || e.KeyCode == Keys.Left))
             {
-                var step = 1/scalablePictureBoxAdvanced.ZoomAndCenter.Zoom;
+                var step = 1 / scalablePictureBoxAdvanced.ZoomAndCenter.Zoom;
 
                 try
                 {

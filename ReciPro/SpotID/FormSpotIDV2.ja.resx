@@ -121,68 +121,21 @@
   <data name="scalablePictureBoxAdvanced.Size" type="System.Drawing.Size, System.Drawing">
     <value>500, 777</value>
   </data>
-  <data name="groupBoxSpot.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+  <data name="scalablePictureBoxAdvanced.ToolTip" xml:space="preserve">
+    <value />
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="groupBoxSpot.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>1, 3, 1, 3</value>
-  </data>
-  <data name="groupBoxSpot.Size" type="System.Drawing.Size, System.Drawing">
-    <value>769, 484</value>
-  </data>
-  <data name="groupBoxSpot.Text" xml:space="preserve">
-    <value>スポット情報</value>
-  </data>
-  <data name="groupBoxIndex.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 594</value>
-  </data>
-  <data name="groupBoxIndex.Size" type="System.Drawing.Size, System.Drawing">
-    <value>766, 185</value>
-  </data>
-  <data name="groupBoxOptics.Location" type="System.Drawing.Point, System.Drawing">
-    <value>195, 0</value>
-  </data>
-  <data name="groupBoxOptics.Size" type="System.Drawing.Size, System.Drawing">
-    <value>577, 102</value>
-  </data>
-  <data name="checkBoxGuideCircles.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
-  <data name="checkBoxGuideCircles.Size" type="System.Drawing.Size, System.Drawing">
-    <value>111, 22</value>
-  </data>
-  <data name="checkBoxGuideCircles.Text" xml:space="preserve">
-    <value>ガイド円を表示</value>
-  </data>
-  <data name="checkBoxGuideCircles.ToolTip" xml:space="preserve">
-    <value>回折パターンにガイド円を表示</value>
-  </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="checkBoxShowDebyeRing.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="checkBoxShowDebyeRing.ToolTip" xml:space="preserve">
-    <value>パターンにデバイリングを重ねて表示</value>
-  </data>
-  <data name="splitContainer1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1285, 781</value>
-  </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="splitContainer1.SplitterDistance" type="System.Int32, mscorlib">
-    <value>504</value>
-  </data>
-  <data name="panelSpotActions.Size" type="System.Drawing.Size, System.Drawing">
-    <value>763, 383</value>
+  <data name="splitContainer1.Panel1.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="buttonDeleteSpot.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="buttonDeleteSpot.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="buttonDeleteSpot.Location" type="System.Drawing.Point, System.Drawing">
-    <value>401, 334</value>
+    <value>401, 331</value>
   </data>
   <data name="buttonDeleteSpot.Size" type="System.Drawing.Size, System.Drawing">
     <value>42, 28</value>
@@ -200,7 +153,7 @@
     <value>NoControl</value>
   </data>
   <data name="buttonClearSpots.Location" type="System.Drawing.Point, System.Drawing">
-    <value>445, 334</value>
+    <value>445, 331</value>
   </data>
   <data name="buttonClearSpots.Size" type="System.Drawing.Size, System.Drawing">
     <value>54, 28</value>
@@ -218,7 +171,7 @@
     <value>NoControl</value>
   </data>
   <data name="buttonCopyToClipboard.Location" type="System.Drawing.Point, System.Drawing">
-    <value>544, 334</value>
+    <value>544, 331</value>
   </data>
   <data name="buttonCopyToClipboard.Size" type="System.Drawing.Size, System.Drawing">
     <value>54, 28</value>
@@ -236,7 +189,7 @@
     <value>NoControl</value>
   </data>
   <data name="buttonSaveToFile.Location" type="System.Drawing.Point, System.Drawing">
-    <value>502, 334</value>
+    <value>502, 331</value>
   </data>
   <data name="buttonSaveToFile.Size" type="System.Drawing.Size, System.Drawing">
     <value>42, 28</value>
@@ -248,7 +201,7 @@
     <value>上記の情報を保存</value>
   </data>
   <data name="checkBoxDetailsOfFunction.Location" type="System.Drawing.Point, System.Drawing">
-    <value>233, 357</value>
+    <value>233, 354</value>
   </data>
   <data name="checkBoxDetailsOfFunction.Size" type="System.Drawing.Size, System.Drawing">
     <value>111, 22</value>
@@ -260,7 +213,7 @@
     <value>フィッティング関数の詳細パラメータを表示</value>
   </data>
   <data name="checkBoxDetailsOfSpot.Location" type="System.Drawing.Point, System.Drawing">
-    <value>233, 337</value>
+    <value>233, 334</value>
   </data>
   <data name="checkBoxDetailsOfSpot.Size" type="System.Drawing.Size, System.Drawing">
     <value>135, 22</value>
@@ -278,7 +231,7 @@
     <value>NoControl</value>
   </data>
   <data name="checkBoxShowObsSpotSymbol.Location" type="System.Drawing.Point, System.Drawing">
-    <value>120, 337</value>
+    <value>120, 334</value>
   </data>
   <data name="checkBoxShowObsSpotSymbol.Size" type="System.Drawing.Size, System.Drawing">
     <value>111, 22</value>
@@ -296,7 +249,7 @@
     <value>NoControl</value>
   </data>
   <data name="checkBoxShowObsSpotLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>120, 356</value>
+    <value>120, 353</value>
   </data>
   <data name="checkBoxShowObsSpotLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>99, 22</value>
@@ -314,7 +267,7 @@
     <value>NoControl</value>
   </data>
   <data name="buttonCopmprehensiveFitting.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 334</value>
+    <value>3, 331</value>
   </data>
   <data name="buttonCopmprehensiveFitting.Size" type="System.Drawing.Size, System.Drawing">
     <value>114, 46</value>
@@ -425,22 +378,25 @@
     <value>NoControl</value>
   </data>
   <data name="buttonGlobalFit.Location" type="System.Drawing.Point, System.Drawing">
-    <value>638, 337</value>
+    <value>634, 334</value>
   </data>
   <data name="buttonGlobalFit.ToolTip" xml:space="preserve">
     <value>全スポット位置のグローバルフィッティング（実験的）</value>
   </data>
   <data name="numericBoxDonut.Location" type="System.Drawing.Point, System.Drawing">
-    <value>726, 360</value>
+    <value>722, 357</value>
   </data>
   <data name="numericBoxDonut.Size" type="System.Drawing.Size, System.Drawing">
     <value>34, 22</value>
+  </data>
+  <data name="numericBoxDonut.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="buttonDonut.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="buttonDonut.Location" type="System.Drawing.Point, System.Drawing">
-    <value>613, 359</value>
+    <value>609, 356</value>
   </data>
   <data name="buttonDonut.ToolTip" xml:space="preserve">
     <value>ドーナツ型バックグラウンド除去（実験的）</value>
@@ -449,16 +405,116 @@
     <value>3, 33</value>
   </data>
   <data name="dataGridViewSpots.Size" type="System.Drawing.Size, System.Drawing">
-    <value>757, 298</value>
+    <value>753, 295</value>
+  </data>
+  <data name="dataGridViewSpots.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="panelSpotActions.Size" type="System.Drawing.Size, System.Drawing">
+    <value>759, 380</value>
+  </data>
+  <data name="panelSpotActions.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="pictureBox1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="pictureBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 404</value>
+    <value>3, 401</value>
   </data>
   <data name="pictureBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>763, 77</value>
+    <value>759, 77</value>
+  </data>
+  <data name="pictureBox1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="groupBoxSpot.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="groupBoxSpot.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 109</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="groupBoxSpot.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>1, 3, 1, 3</value>
+  </data>
+  <data name="groupBoxSpot.Size" type="System.Drawing.Size, System.Drawing">
+    <value>765, 481</value>
+  </data>
+  <data name="groupBoxSpot.Text" xml:space="preserve">
+    <value>スポット情報</value>
+  </data>
+  <data name="groupBoxSpot.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="radioButtonPixelSizeUnitInverse.ToolTip" xml:space="preserve">
+    <value>ピクセルサイズの単位: 1/nm</value>
+  </data>
+  <data name="radioButtonPixelSizeUnitReal.ToolTip" xml:space="preserve">
+    <value>ピクセルサイズの単位: mm</value>
+  </data>
+  <data name="numericBoxCameraLength.HeaderFont" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="numericBoxCameraLength.HeaderText" xml:space="preserve">
+    <value>カメラ長</value>
+  </data>
+  <data name="numericBoxCameraLength.ToolTip" xml:space="preserve">
+    <value>回折パターンのカメラ長 (mm)</value>
+  </data>
+  <data name="numericBoxCameraLength.ToolTip1" xml:space="preserve">
+    <value>回折パターンのカメラ長 (mm)</value>
+  </data>
+  <data name="numericBoxPixelSize.HeaderFont" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="numericBoxPixelSize.HeaderText" xml:space="preserve">
+    <value>ピクセルサイズ</value>
+  </data>
+  <data name="numericBoxPixelSize.ToolTip" xml:space="preserve">
+    <value>検出器のピクセルサイズ</value>
+  </data>
+  <data name="numericBoxPixelSize.ToolTip1" xml:space="preserve">
+    <value>検出器のピクセルサイズ</value>
+  </data>
+  <data name="waveLengthControl1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>279, 78</value>
+  </data>
+  <data name="waveLengthControl1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="groupBoxOptics.Location" type="System.Drawing.Point, System.Drawing">
+    <value>195, 0</value>
+  </data>
+  <data name="groupBoxOptics.Size" type="System.Drawing.Size, System.Drawing">
+    <value>564, 102</value>
+  </data>
+  <data name="groupBoxOptics.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="checkBoxShowDebyeRing.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="checkBoxShowDebyeRing.ToolTip" xml:space="preserve">
+    <value>パターンにデバイリングを重ねて表示</value>
+  </data>
+  <data name="checkBoxGuideCircles.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="checkBoxGuideCircles.Size" type="System.Drawing.Size, System.Drawing">
+    <value>111, 22</value>
+  </data>
+  <data name="checkBoxGuideCircles.Text" xml:space="preserve">
+    <value>ガイド円を表示</value>
+  </data>
+  <data name="checkBoxGuideCircles.ToolTip" xml:space="preserve">
+    <value>回折パターンにガイド円を表示</value>
+  </data>
+  <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>765, 107</value>
+  </data>
+  <data name="panel1.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="buttonIdentifySpots.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -511,6 +567,18 @@
   </data>
   <data name="numericBoxMaxGrainNum.ToolTip1" xml:space="preserve">
     <value>探索する結晶粒方位の最大数</value>
+  </data>
+  <data name="checkBoxShowZoneAxis.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="checkBoxShowZoneAxis.Location" type="System.Drawing.Point, System.Drawing">
+    <value>124, 127</value>
+  </data>
+  <data name="checkBoxShowZoneAxis.Size" type="System.Drawing.Size, System.Drawing">
+    <value>99, 22</value>
+  </data>
+  <data name="checkBoxShowZoneAxis.Text" xml:space="preserve">
+    <value>晶帯軸を表示</value>
   </data>
   <data name="checkBoxShowZoneAxis.ToolTip" xml:space="preserve">
     <value>パターン上に晶帯軸方向を表示</value>
@@ -585,7 +653,13 @@
     <value>計算スポットにインデックスラベルを表示</value>
   </data>
   <data name="dataGridViewGrains.Size" type="System.Drawing.Size, System.Drawing">
-    <value>311, 111</value>
+    <value>310, 111</value>
+  </data>
+  <data name="dataGridViewGrains.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="dataGridViewCandidates.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="checkBoxIgnoreMultipleDiffraction.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -611,50 +685,36 @@
   <data name="buttonStop.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
+  <data name="buttonStop.Size" type="System.Drawing.Size, System.Drawing">
+    <value>97, 28</value>
+  </data>
   <data name="buttonStop.ToolTip" xml:space="preserve">
     <value>現在の計算を中止</value>
   </data>
-  <data name="radioButtonPixelSizeUnitInverse.ToolTip" xml:space="preserve">
-    <value>ピクセルサイズの単位: 1/nm</value>
-  </data>
-  <data name="radioButtonPixelSizeUnitReal.ToolTip" xml:space="preserve">
-    <value>ピクセルサイズの単位: mm</value>
-  </data>
-  <data name="numericBoxCameraLength.HeaderFont" type="System.Drawing.Font, System.Drawing">
+  <data name="groupBoxIndex.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
-  <data name="numericBoxCameraLength.HeaderText" xml:space="preserve">
-    <value>カメラ長</value>
+  <data name="groupBoxIndex.Size" type="System.Drawing.Size, System.Drawing">
+    <value>765, 185</value>
   </data>
-  <data name="numericBoxCameraLength.ToolTip" xml:space="preserve">
-    <value>回折パターンのカメラ長 (mm)</value>
+  <data name="groupBoxIndex.Text" xml:space="preserve">
+    <value>指数付け</value>
   </data>
-  <data name="numericBoxCameraLength.ToolTip1" xml:space="preserve">
-    <value>回折パターンのカメラ長 (mm)</value>
+  <data name="groupBoxIndex.ToolTip" xml:space="preserve">
+    <value />
   </data>
-  <data name="numericBoxPixelSize.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+  <data name="splitContainer1.Panel2.ToolTip" xml:space="preserve">
+    <value />
   </data>
-  <data name="numericBoxPixelSize.HeaderText" xml:space="preserve">
-    <value>ピクセルサイズ</value>
+  <data name="splitContainer1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1285, 781</value>
   </data>
-  <data name="numericBoxPixelSize.ToolTip" xml:space="preserve">
-    <value>検出器のピクセルサイズ</value>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="splitContainer1.SplitterDistance" type="System.Int32, mscorlib">
+    <value>504</value>
   </data>
-  <data name="numericBoxPixelSize.ToolTip1" xml:space="preserve">
-    <value>検出器のピクセルサイズ</value>
-  </data>
-  <data name="waveLengthControl1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>279, 78</value>
-  </data>
-  <data name="menuStrip.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1285, 24</value>
-  </data>
-  <data name="fileToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>53, 20</value>
-  </data>
-  <data name="fileToolStripMenuItem.Text" xml:space="preserve">
-    <value>ファイル</value>
+  <data name="splitContainer1.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="readToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>120, 22</value>
@@ -668,17 +728,14 @@
   <data name="copyToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>120, 22</value>
   </data>
-  <data name="shortcutHintsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>102, 20</value>
+  <data name="fileToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>53, 20</value>
   </data>
-  <data name="shortcutHintsToolStripMenuItem.Text" xml:space="preserve">
-    <value>ショートカットヒント</value>
+  <data name="fileToolStripMenuItem.Text" xml:space="preserve">
+    <value>ファイル</value>
   </data>
   <data name="doubleClickAddSpotToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>292, 22</value>
-  </data>
-  <data name="doubleClickAddSpotToolStripMenuItem.Text" xml:space="preserve">
-    <value>Left drag : Drag the image</value>
   </data>
   <data name="toolStripMenuItem7.Size" type="System.Drawing.Size, System.Drawing">
     <value>292, 22</value>
@@ -707,10 +764,28 @@
   <data name="toolStripMenuItem3.Text" xml:space="preserve">
     <value>Ctrl + Right click : Remove the spot </value>
   </data>
+  <data name="shortcutHintsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>102, 20</value>
+  </data>
+  <data name="shortcutHintsToolStripMenuItem.Text" xml:space="preserve">
+    <value>ショートカットヒント</value>
+  </data>
+  <data name="menuStrip.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1285, 24</value>
+  </data>
+  <data name="menuStrip.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="statusStrip.Size" type="System.Drawing.Size, System.Drawing">
     <value>1285, 22</value>
   </data>
+  <data name="statusStrip.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
     <value>1285, 827</value>
+  </data>
+  <data name="$this.ToolTip" xml:space="preserve">
+    <value />
   </data>
 </root>
