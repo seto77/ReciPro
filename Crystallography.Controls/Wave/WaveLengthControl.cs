@@ -13,27 +13,27 @@ public partial class WaveLengthControl : UserControlBase
 
     #region プロパティ
 
-    /// <summary>VisualStudioデザイナーの編集の時はTrue</summary>
-    public new bool DesignMode
-    {
-        get
-        {
-            if (LicenseManager.UsageMode == LicenseUsageMode.Designtime)
-                return true;
-            Control ctrl = this;
-            while (ctrl != null)
-            {
-                if (ctrl.Site != null && ctrl.Site.DesignMode)
-                    return true;
-                ctrl = ctrl.Parent;
-            }
-            return false;
-        }
-    }
+    // 260426Cl 削除: DesignMode は UserControlBase で同等の実装を提供しているため重複定義を撤去
+    //public new bool DesignMode
+    //{
+    //    get
+    //    {
+    //        if (LicenseManager.UsageMode == LicenseUsageMode.Designtime)
+    //            return true;
+    //        Control ctrl = this;
+    //        while (ctrl != null)
+    //        {
+    //            if (ctrl.Site != null && ctrl.Site.DesignMode)
+    //                return true;
+    //            ctrl = ctrl.Parent;
+    //        }
+    //        return false;
+    //    }
+    //}
 
     /// <summary>コントロールの配置をLeftToRightか、TopDownにするか</summary>
-    // (260322Ch) WFO1000: Microsoft ??????????????????? ???????????
-    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
+    // 260426Cl 修正: 文字化けしていたコメント (旧: WFO1000 関連の壊れたコメント) を整理
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
     public FlowDirection Direction
     {
         set
@@ -44,7 +44,6 @@ public partial class WaveLengthControl : UserControlBase
                 this.AutoSize = false;
                 flowLayoutPanelWaveSource.FlowDirection = FlowDirection.TopDown;
                 flowLayoutPanelWaveSource.Dock = DockStyle.Left;
-
             }
             else
             {
@@ -53,20 +52,24 @@ public partial class WaveLengthControl : UserControlBase
                 flowLayoutPanelWaveSource.Dock = DockStyle.Top;
             }
         }
-        get
-        {
-            if (direction == FlowDirection.LeftToRight)
-                return FlowDirection.LeftToRight;
-            else
-                return FlowDirection.TopDown;
-        }
+        // 260426Cl 整理: 旧コードは LeftToRight 以外を必ず TopDown へ縮約していたが、
+        // direction 自身は厳密に LeftToRight / TopDown のいずれかしか格納されないので素直に返す
+        //get
+        //{
+        //    if (direction == FlowDirection.LeftToRight)
+        //        return FlowDirection.LeftToRight;
+        //    else
+        //        return FlowDirection.TopDown;
+        //}
+        get => direction;
     }
-    public FlowDirection direction = FlowDirection.TopDown;
+    // 260426Cl 修正: public フィールドを private に変更 (外部参照なしを確認済み)
+    //public FlowDirection direction = FlowDirection.TopDown;
+    private FlowDirection direction = FlowDirection.TopDown;
 
-    
-    bool monochrome = true;
+    private bool monochrome = true;
     /// <summary>単色モードかどうか falseの場合は白色モード</summary>
-    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
     public bool Monochrome
     {
         set
@@ -79,7 +82,7 @@ public partial class WaveLengthControl : UserControlBase
         get => monochrome;
     }
 
-    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
     [Localizable(true)]
     public Font TextFont
     {
@@ -94,16 +97,20 @@ public partial class WaveLengthControl : UserControlBase
         get => numericBoxWaveLength.TextFont;
     }
 
-    public bool showWaveSource = true;
+    // 260426Cl 修正: public フィールドを private に変更 (外部参照なしを確認済み)
+    //public bool showWaveSource = true;
+    private bool showWaveSource = true;
     /// <summary>WaveSourceを表示するかどうか</summary>
-    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
     public bool ShowWaveSource
     {
-        set { showWaveSource = flowLayoutPanelWaveSource.Visible = value; }
-        get { return showWaveSource; }
+        set => showWaveSource = flowLayoutPanelWaveSource.Visible = value;
+        get => showWaveSource;
     }
 
-    public string waveLengthText = "0.4";
+    // 260426Cl 削除: WaveLengthText の実体は numericBoxWaveLength.Value であり、
+    // この public フィールドはどこからも参照されない死コードだったため撤去
+    //public string waveLengthText = "0.4";
 
     /// <summary>波長をÅ単位のテキスト形式で取得/設定</summary>
     [Browsable(false)]
@@ -112,20 +119,20 @@ public partial class WaveLengthControl : UserControlBase
     {
         set
         {
+            // 260426Cl 修正: 空文字や数値変換失敗で発生する例外型に絞り込み
             try
             {
                 numericBoxWaveLength.Value = Convert.ToDouble(value);
                 comboBoxXRayElement.SelectedIndex = 0;
             }
-            catch
-            {
-            }
+            catch (FormatException) { }
+            catch (OverflowException) { }
         }
         get => numericBoxWaveLength.Text;
     }
 
     /// <summary>波長をnm単位のdoubleで取得/設定</summary>
-    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
     public double WaveLength
     {
         set
@@ -145,12 +152,13 @@ public partial class WaveLengthControl : UserControlBase
 
     WaveSource waveSource = WaveSource.Xray;
     /// <summary>線源を取得/設定</summary>
-    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
     public WaveSource WaveSource
     {
         set
         {
-         waveSource = value;
+            // 260426Cl 修正: インデントずれを修正
+            waveSource = value;
             if (waveSource == WaveSource.Xray)
                 radioButtonXray.Checked = true;
             else if (waveSource == WaveSource.Electron)
@@ -164,15 +172,15 @@ public partial class WaveLengthControl : UserControlBase
                 return WaveSource.Xray;
             else if (radioButtonElectron.Checked)
                 return WaveSource.Electron;
-            else // (radioButtonNeutron.Checked)
-                return WaveSource.Neutron;
+            else
+                return WaveSource.Neutron; // radioButtonNeutron.Checked
         }
     }
 
     private int _XrayWaveSourceElementNumber = 0;
 
     /// <summary>X線の線源の元素を取得/設定</summary>
-    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
     public int XrayWaveSourceElementNumber
     {
         set
@@ -185,16 +193,16 @@ public partial class WaveLengthControl : UserControlBase
         }
         get
         {
-
+            // 260426Cl 整理: Invoke の args 引数 (null) を省略
             if (InvokeRequired)
-                return (int)Invoke(new Func<int>(() => XrayWaveSourceElementNumber), null);
+                return (int)Invoke(new Func<int>(() => XrayWaveSourceElementNumber));
             else
                 return comboBoxXRayElement.SelectedIndex;
         }
     }
 
     /// <summary>X線の線源のLineを取得/設定</summary>
-    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
     public XrayLine XrayWaveSourceLine
     {
         set => comboBoxXrayLine.SelectedItem = value;
@@ -211,7 +219,7 @@ public partial class WaveLengthControl : UserControlBase
     /// 線源のエネルギー (kV)を取得/設定
     /// X線と電子は単位はkev,中性子はmev
     /// </summary>
-    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
     public double Energy
     {
         set
@@ -231,16 +239,15 @@ public partial class WaveLengthControl : UserControlBase
     {
         set
         {
+            // 260426Cl 修正: catch を具体的な例外型へ絞り込み
             try
             {
                 numericBoxEnergy.Value = Convert.ToDouble(value);
             }
-            catch { }
+            catch (FormatException) { }
+            catch (OverflowException) { }
         }
-        get
-        {
-            return numericBoxEnergy.Value.ToString();
-        }
+        get => numericBoxEnergy.Value.ToString();
     }
 
     /// <summary></summary>
@@ -269,18 +276,14 @@ public partial class WaveLengthControl : UserControlBase
     #endregion プロパティ
 
     public WaveLengthControl()
-
     {
         InitializeComponent();
-        // if (DesignMode) return; // (260322Ch) 旧コード: design 時に子コントロール未生成のまま return していた
+        // (260322Ch) Designer ではコンポーネント生成後の runtime 初期化だけ抑止する
         if (DesignMode)
-            return; // (260322Ch) Designer ではコンポーネント生成後の runtime 初期化だけ抑止する
-
+            return;
 
         comboBoxXRayElement.SelectedIndex = 0;
     }
-
-
 
     /// <summary>X線のElementが変更されたとき</summary>
     /// <param name="sender"></param>
@@ -320,10 +323,9 @@ public partial class WaveLengthControl : UserControlBase
             {
                 comboBoxXrayLine.Enabled = true;
                 comboBoxXrayLine.SelectedIndex = 0;
-                WavelengthChanged?.Invoke(this, new EventArgs());
+                WavelengthChanged?.Invoke(this, EventArgs.Empty);
             }
         }
-
     }
 
     /// <summary>X線のラインが変更したとき</summary>
@@ -340,14 +342,14 @@ public partial class WaveLengthControl : UserControlBase
                 numericBoxWaveLength.Value = d;
                 numericBoxEnergy.Value = UniversalConstants.Convert.WavelengthToXrayEnergy(numericBoxWaveLength.Value / 10) / 1000;
                 skipEvent = false;
-                WavelengthChanged?.Invoke(this, new EventArgs());
+                WavelengthChanged?.Invoke(this, EventArgs.Empty);
             }
         }
     }
 
     /// <summary>現状の原子番号、線種で、特性X線の波長とエネルギーをリセット</summary>
-    public void SetCharacteristicXray() => comboBoxXrayLine_SelectedIndexChanged(new object(), new EventArgs());
-
+    // 260426Cl 整理: sender に空 object、引数に new EventArgs() を渡していた箇所を素直な値へ
+    public void SetCharacteristicXray() => comboBoxXrayLine_SelectedIndexChanged(this, EventArgs.Empty);
 
     /// <summary>線源が変更されたとき</summary>
     /// <param name="sender"></param>
@@ -374,7 +376,6 @@ public partial class WaveLengthControl : UserControlBase
         }
         numericBoxWaveLength_ValueChanged(sender, e);
         WaveSourceChanged?.Invoke(sender, e);
-
     }
 
     private bool skipEvent = false;
@@ -384,7 +385,6 @@ public partial class WaveLengthControl : UserControlBase
     /// <param name="e"></param>
     private void numericBoxWaveLength_ValueChanged(object sender, EventArgs e)
     {
-
         if (skipEvent) return;
 
         skipEvent = true;
@@ -395,7 +395,7 @@ public partial class WaveLengthControl : UserControlBase
         else
             numericBoxEnergy.Value = UniversalConstants.Convert.WaveLengthToNeutronEnergy(numericBoxWaveLength.Value / 10) / 1.0E6;
         skipEvent = false;
-        WavelengthChanged?.Invoke(this, new EventArgs());
+        WavelengthChanged?.Invoke(this, EventArgs.Empty);
     }
 
     /// <summary>エネルギーが直接変更されたとき</summary>
@@ -412,7 +412,7 @@ public partial class WaveLengthControl : UserControlBase
         else//中性子
             numericBoxWaveLength.Value = UniversalConstants.Convert.EnergyToNeutronWaveLength(numericBoxEnergy.Value * 1.0E6) * 10;
         skipEvent = false;
-        WavelengthChanged?.Invoke(this, new EventArgs());
+        WavelengthChanged?.Invoke(this, EventArgs.Empty);
     }
 }
 

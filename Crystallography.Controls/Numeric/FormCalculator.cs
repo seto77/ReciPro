@@ -30,9 +30,10 @@ namespace Crystallography.Controls
         {
         }
 
-        private void button14_Click(object sender, EventArgs e)
-        {
-        }
+        // 260426Cl 削除: Designer.cs から購読されていない死コードハンドラを削除
+        //private void button14_Click(object sender, EventArgs e)
+        //{
+        //}
 
         private void button_Click(object sender, EventArgs e)
         {

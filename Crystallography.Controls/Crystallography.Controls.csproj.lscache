@@ -55,10 +55,6 @@ TemporaryDependencyNodeTargetIdentifier=net10.0-windows
 
 [sourceFiles]
 CaptureExtender.cs
-CaptureFormBase.cs
-CaptureFormBase.Designer.cs
-CaptureUserControlBase.cs
-CaptureUserControlBase.Designer.cs
 CheckedListboxAlpha.cs
 CheckedListboxAlpha.Designer.cs
 CheckLocation.cs
@@ -103,6 +99,7 @@ Crystal/
  PoleFigureControl.Designer.cs
  PoleFigureControl2.cs
  PoleFigureControl2.Designer.cs
+ StereonetDrawing.cs
  SymmetryControl.cs
  SymmetryControl.Designer.cs
 CrystalDatabase/
@@ -116,6 +113,8 @@ DataSet.cs
 DataSet.Designer.cs
 DistributionGraphControl.cs
 DistributionGraphControl.Designer.cs
+FormBase.cs
+FormBase.Designer.cs
 FormCaptureGUI.cs
 FormCaptureGUI.Designer.cs
 FormCrystalSelection.cs
@@ -158,6 +157,8 @@ SaclaControl.cs
 SaclaControl.Designer.cs
 TrackBarAdvanced.cs
 TrackBarAdvanced.Designer.cs
+UserControlBase.cs
+UserControlBase.Designer.cs
 Wave/
  HorizontalAxisUserControl.cs
  HorizontalAxisUserControl.Designer.cs

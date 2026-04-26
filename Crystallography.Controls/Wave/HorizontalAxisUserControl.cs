@@ -13,26 +13,26 @@ public partial class HorizontalAxisUserControl : UserControlBase
     public bool SkipAxisPropertyChangedEvent = false;
     #region プロパティ
 
-    /// <summary>VisualStudioデザイナーの編集の時はTrue</summary>
-    public new bool DesignMode
-    {
-        get
-        {
-            if (LicenseManager.UsageMode == LicenseUsageMode.Designtime)
-                return true;
-            Control ctrl = this;
-            while (ctrl != null)
-            {
-                if (ctrl.Site != null && ctrl.Site.DesignMode)
-                    return true;
-                ctrl = ctrl.Parent;
-            }
-            return false;
-        }
-    }
+    // 260426Cl 削除: DesignMode は UserControlBase で同等の実装を提供しているため重複定義を撤去
+    //public new bool DesignMode
+    //{
+    //    get
+    //    {
+    //        if (LicenseManager.UsageMode == LicenseUsageMode.Designtime)
+    //            return true;
+    //        Control ctrl = this;
+    //        while (ctrl != null)
+    //        {
+    //            if (ctrl.Site != null && ctrl.Site.DesignMode)
+    //                return true;
+    //            ctrl = ctrl.Parent;
+    //        }
+    //        return false;
+    //    }
+    //}
 
-    [System.ComponentModel.Browsable(false)]
-    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
+    [Browsable(false)]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public HorizontalAxisProperty HorizontalAxisProperty
     {
         get => new(AxisMode, WaveSource, WaveColor, WaveLength, XrayNumber, XrayLine, ElectronAccVol, TakeoffAngle, TofAngle, TofLength,
@@ -79,9 +79,9 @@ public partial class HorizontalAxisUserControl : UserControlBase
         }
     }
 
-    //現在の軸の情報を返すプロパティ
-    // (260322Ch) WFO1000: Microsoft ??????????????????? ???????????
-    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
+    /// <summary>現在の軸の情報を返すプロパティ</summary>
+    // 260426Cl 修正: 文字化けしていたコメント (旧: WFO1000 関連の壊れたコメント) を整理
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
     public HorizontalAxis AxisMode
     {
         set
@@ -135,7 +135,7 @@ public partial class HorizontalAxisUserControl : UserControlBase
     }
 
     /// <summary>波長をÅ単位のテキストで取得/設定</summary>
-    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
     public string WaveLengthText
     {
         set
@@ -147,7 +147,7 @@ public partial class HorizontalAxisUserControl : UserControlBase
     }
 
     /// <summary>nm単位の実数で取得/設定</summary>
-    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
     public double WaveLength
     {
         set
@@ -159,7 +159,7 @@ public partial class HorizontalAxisUserControl : UserControlBase
     }
 
     /// <summary>EDXの取り出し角(テキスト) 度単位で取得/設定</summary>
-    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
     public string TakeoffAngleText
     {
         set
@@ -178,7 +178,7 @@ public partial class HorizontalAxisUserControl : UserControlBase
     }
 
     /// <summary>EDXの取り出し角 ラジアン単位で取得/設定</summary>
-    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
     public double TakeoffAngle
     {
         set
@@ -186,14 +186,16 @@ public partial class HorizontalAxisUserControl : UserControlBase
             if (value > 0 && numericBoxTwoTheta.Value != value / Math.PI * 180.0)
             {
                 numericBoxTwoTheta.Value = value / Math.PI * 180.0;
-                AxisPropertyChanged?.Invoke();
+                // 260426Cl 修正: 他の setter と同様に SkipAxisPropertyChangedEvent を尊重するように変更
+                //AxisPropertyChanged?.Invoke();
+                if (!SkipAxisPropertyChangedEvent) AxisPropertyChanged?.Invoke();
             }
         }
         get => numericBoxTwoTheta.Value / 180.0 * Math.PI;
     }
 
     /// <summary>エネルギーの単位</summary>
-    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
     public EnergyUnitEnum EnergyUnit
     {
         set
@@ -218,7 +220,7 @@ public partial class HorizontalAxisUserControl : UserControlBase
     }
 
     /// <summary>d値の単位</summary>
-    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
     public LengthUnitEnum DspacingUnit
     {
         set
@@ -240,7 +242,7 @@ public partial class HorizontalAxisUserControl : UserControlBase
     }
 
     /// <summary>波数の単位 (1/nmか1/Aかのどちらか)</summary>
-    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
     public LengthUnitEnum WaveNumberUnit
     {
         set
@@ -262,7 +264,7 @@ public partial class HorizontalAxisUserControl : UserControlBase
     }
 
 
-    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
     public AngleUnitEnum TwoThetaUnit
     {
         set
@@ -279,18 +281,19 @@ public partial class HorizontalAxisUserControl : UserControlBase
         }
         get
         {
+            // 260426Cl 修正: "else if" の空白に全角スペース (U+3000) が混在していた typo を修正
             if (radioButtonAngleUnitRadian.Checked)
                 return AngleUnitEnum.Radian;
-            else　if (radioButtonAngleUnitDegree.Checked)
+            else if (radioButtonAngleUnitDegree.Checked)
                 return AngleUnitEnum.Degree;
-            else if (radioButtonAngleUnitCentiDegree.Checked)  
+            else if (radioButtonAngleUnitCentiDegree.Checked)
                 return AngleUnitEnum.CentiDegree;
             else
                 return AngleUnitEnum.MilliRadian;
         }
     }
     /// <summary>TOF時間の単位</summary>
-    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
     public TimeUnitEnum TofTimeUnit
     {
         set
@@ -301,8 +304,11 @@ public partial class HorizontalAxisUserControl : UserControlBase
             radioButtonTofUnitNanoSec.Checked = value == TimeUnitEnum.NanoSecond;
             radioButtonTofUnitMicroSec.Checked = value == TimeUnitEnum.MicroSecond;
             if (DesignMode) return;
+            // 260426Cl 修正: 購読者が居ないと NullReferenceException になっていたため null 条件演算子に変更
+            //if (!SkipAxisPropertyChangedEvent)
+            //    AxisPropertyChanged();
             if (!SkipAxisPropertyChangedEvent)
-                AxisPropertyChanged();
+                AxisPropertyChanged?.Invoke();
         }
         get
         {
@@ -314,7 +320,7 @@ public partial class HorizontalAxisUserControl : UserControlBase
     }
 
     /// <summary>TOFの取り出し角 度単位で取得/設定</summary>
-    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
     public string TofAngleText
     {
         set
@@ -330,7 +336,7 @@ public partial class HorizontalAxisUserControl : UserControlBase
     }
 
     /// <summary>TOFの取り出し角 ラジアン単位で取得/設定</summary>
-    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
     public double TofAngle
     {
         set
@@ -345,7 +351,7 @@ public partial class HorizontalAxisUserControl : UserControlBase
     }
 
     /// <summary>TOFの検出距離 mm単位で取得/設定</summary>
-    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
     public double TofLength
     {
         set
@@ -364,7 +370,7 @@ public partial class HorizontalAxisUserControl : UserControlBase
     }
 
     /// <summary>線源を取得/設定</summary>
-    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
     public WaveSource WaveSource
     {
         set
@@ -393,7 +399,7 @@ public partial class HorizontalAxisUserControl : UserControlBase
         }
     }
 
-    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
     public WaveColor WaveColor
     {
         set
@@ -423,7 +429,7 @@ public partial class HorizontalAxisUserControl : UserControlBase
     }
 
     /// <summary>X線の線源を取得/設定</summary>
-    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
     public int XrayNumber
     {
         set
@@ -437,7 +443,7 @@ public partial class HorizontalAxisUserControl : UserControlBase
     }
 
     /// <summary>X線の線源を取得/設定</summary>
-    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
     public XrayLine XrayLine
     {
         set
@@ -451,7 +457,7 @@ public partial class HorizontalAxisUserControl : UserControlBase
     }
 
     /// <summary>電子線加速電圧(kV)を取得/設定</summary>
-    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
     public double ElectronAccVol
     {
         set
@@ -465,7 +471,7 @@ public partial class HorizontalAxisUserControl : UserControlBase
     }
 
     /// <summary>電子線加速電圧(kV)を取得/設定</summary>
-    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
     public string ElectronAccVoltageText
     {
         set
@@ -513,21 +519,14 @@ public partial class HorizontalAxisUserControl : UserControlBase
 
     private void radioButtonWaveSource_CheckedChanged(object sender, EventArgs e)
     {
+        // 260426Cl 整理: 各分岐で同一の代入をしていたため共通化 (FlatWhite は常に有効)
         if (radioButtonXray.Checked)
-        {
             waveLengthControl.WaveSource = WaveSource.Xray;
-            radioButtonFlatWhite.Enabled = true;
-        }
         else if (radioButtonElectron.Checked)
-        {
             waveLengthControl.WaveSource = WaveSource.Electron;
-            radioButtonFlatWhite.Enabled = true;
-        }
         else
-        {
             waveLengthControl.WaveSource = WaveSource.Neutron;
-            radioButtonFlatWhite.Enabled = true;
-        }
+        radioButtonFlatWhite.Enabled = true;
         radioButtonMonochro_CheckedChanged(sender, e);
     }
 

@@ -8,7 +8,9 @@ namespace Crystallography.Controls
     public partial class NumericBoxWithMenu : NumericBox
     {
 
-        bool skipEvent { get; set; } = false;
+        // 260426Cl 整理: 内部用フラグなので auto-property → 単純な private フィールドに変更
+        //bool skipEvent { get; set; } = false;
+        private bool skipEvent = false;
 
         public event MyEventHandler LimitChanged;
         public NumericBoxWithMenu()
@@ -32,7 +34,8 @@ namespace Crystallography.Controls
 
         private void toolStripComboBoxIncrement_SelectedIndexChanged(object sender, EventArgs e)
         {
-            double.TryParse(toolStripComboBoxIncrement.Text, out double inc); ;
+            // 260426Cl 修正: 余分なセミコロン (空文; 空ステートメント) を削除
+            double.TryParse(toolStripComboBoxIncrement.Text, out double inc);
             if (inc > 0)
                 UpDown_Increment = inc;
         }
@@ -86,20 +89,20 @@ namespace Crystallography.Controls
 
         #region マウスコントロールモード
 
-        // (260322Ch) WFO1000: Microsoft ??????????????????? ???????????
-        [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
+        // 260426Cl 修正: 文字化けしていたコメント (旧: WFO1000 関連の壊れたコメント) を整理
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         public bool AllowMouseControl { get; set; } = false;
 
-        [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         public VH_DirectionEnum MouseDirection
         {
-            get { return toolStripComboBoxMouseDirection.SelectedIndex == 0 ? VH_DirectionEnum.Vertical : VH_DirectionEnum.Horizontal; }
-            set { toolStripComboBoxMouseDirection.SelectedIndex = VH_DirectionEnum.Vertical == value ? 0 : 1; }
+            get => toolStripComboBoxMouseDirection.SelectedIndex == 0 ? VH_DirectionEnum.Vertical : VH_DirectionEnum.Horizontal;
+            set => toolStripComboBoxMouseDirection.SelectedIndex = VH_DirectionEnum.Vertical == value ? 0 : 1;
         }
 
         private double mouseSpeed = 1;
 
-        [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         public double MouseSpeed
         {
             set
@@ -107,15 +110,14 @@ namespace Crystallography.Controls
                 if (value > 0)
                 {
                     mouseSpeed = value;
-                    string text = mouseSpeed.ToString();
-                    //text = separateThousands(text);
-                    toolStripTextBoxMouseSpeed.Text = text;
+                    toolStripTextBoxMouseSpeed.Text = mouseSpeed.ToString();
                 }
             }
-            get { return mouseSpeed; }
+            get => mouseSpeed;
         }
 
-        private Point justBeforeMousePosition = new Point();
+        // 260426Cl 整理: new Point() → 既定値の構造体に簡略化
+        private Point justBeforeMousePosition;
         private bool mouseMoving = false;
 
         private void textBox_MouseMove(object sender, MouseEventArgs e)
@@ -139,10 +141,7 @@ namespace Crystallography.Controls
             }
         }
 
-        private void textBox_MouseUp(object sender, MouseEventArgs e)
-        {
-            mouseMoving = false;
-        }
+        private void textBox_MouseUp(object sender, MouseEventArgs e) => mouseMoving = false;
 
 
         #endregion マウスコントロールモード

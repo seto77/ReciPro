@@ -31,29 +31,30 @@ public partial class NumericBox : UserControlBase
 
     #region プロパティ
 
-    /// <summary>VisualStudioデザイナーの編集の時はTrue</summary>
-    public new bool DesignMode
-    {
-        get
-        {
-            if (LicenseManager.UsageMode == LicenseUsageMode.Designtime)
-                return true;
-            System.Windows.Forms.Control ctrl = this;
-            while (ctrl != null)
-            {
-                if (ctrl.Site != null && ctrl.Site.DesignMode)
-                    return true;
-                ctrl = ctrl.Parent;
-            }
-            return false;
-        }
-    }
+    // 260426Cl 削除: DesignMode は UserControlBase で同等の実装を提供しているため重複定義を撤去
+    //public new bool DesignMode
+    //{
+    //    get
+    //    {
+    //        if (LicenseManager.UsageMode == LicenseUsageMode.Designtime)
+    //            return true;
+    //        System.Windows.Forms.Control ctrl = this;
+    //        while (ctrl != null)
+    //        {
+    //            if (ctrl.Site != null && ctrl.Site.DesignMode)
+    //                return true;
+    //            ctrl = ctrl.Parent;
+    //        }
+    //        return false;
+    //    }
+    //}
 
-    [DefaultValue(-1)]
     /// <summary>
     /// 丸め誤差が生じているとき(例えば7.11のはずなのに 7.110000000000001とか、6.011のはずなのに6.010999999999999とか)
     /// その誤差を解消して表示する
     /// </summary>
+    // 260426Cl 修正: 属性 [DefaultValue] を doc-comment の前に置いていたため doc が外れていた。順序を入れ替え
+    [DefaultValue(-1)]
     public int RoundErrorAccuracy { get; set; } = -1;
 
 
@@ -284,8 +285,9 @@ public partial class NumericBox : UserControlBase
     {
         set
         {
+            // 260426Cl 整理: Invoke の args 引数 (null) を省略, EventArgs.Empty を使用
             if (InvokeRequired)
-                Invoke(new Action(() => Value = value), null);
+                Invoke(new Action(() => Value = value));
             else if (this.numericalValue != value)
             {
                 if (RoundErrorAccuracy > 0)
@@ -304,7 +306,7 @@ public partial class NumericBox : UserControlBase
                 skipTextChangeEvent = true;
                 textBox.Text = GetString();
                 skipTextChangeEvent = false;
-                ValueChanged?.Invoke(this, new EventArgs());
+                ValueChanged?.Invoke(this, EventArgs.Empty);
             }
         }
         get => numericalValue;
@@ -388,13 +390,13 @@ public partial class NumericBox : UserControlBase
         set
         {
             textBox.Text = value;
-            textBox_Leave(new object(), new EventArgs());
+            // 260426Cl 整理: sender に空 object、引数に new EventArgs() を渡していた箇所を素直な値へ
+            textBox_Leave(this, EventArgs.Empty);
             if (RoundErrorAccuracy > 0)
             {
                 var val = Value;
                 Value = val;
             }
-
         }
         get => numericalValue.ToString();
     }
@@ -486,6 +488,7 @@ public partial class NumericBox : UserControlBase
 
         if (skipTextChangeEvent || SkipEventDuringInput)
             return;
+        // try/catch は textBox.Lines / SelectionStart 周辺で稀に発生する境界例外への保険
         try
         {
             int count = 0, selectionLine = 0;
@@ -583,8 +586,9 @@ public partial class NumericBox : UserControlBase
     {
         var threshold = DecimalPlaces >= 0 ? Math.Pow(10, -decimalPlaces) : 0.0000000001;
 
+        // 260426Cl 整理: Invoke の args 引数 (null) を省略
         if (InvokeRequired)
-            return (string)Invoke(new Func<string>(GetString), null);
+            return (string)Invoke(new Func<string>(GetString));
 
         string text = "";
         if (double.IsNaN(numericalValue))
@@ -642,25 +646,11 @@ public partial class NumericBox : UserControlBase
         return valueString;
     }
 
-    private void textBox_FontChanged(object sender, EventArgs e)
-    {
-        /*  if (Multiline == false)
-          {
-              this.Height = textBox.Height+3;
-              this.Width = textBox.Width+1;
-          }*/
-        TextFont = textBox.Font;
-    }
+    // 260426Cl 整理: 古いMultiline自動高さ調整コード (コメントアウト済) は撤去。Designer.cs から購読されている本体だけ残す。
+    private void textBox_FontChanged(object sender, EventArgs e) => TextFont = textBox.Font;
 
-    private void numericBox_SizeChanged(object sender, EventArgs e)
-    {
-        //if (Multiline == false)
-        //{
-        //    this.Height = textBox.Height;
-        //    MinimumSize = new Size(1, textBox.Height - 2);
-        //    MaximumSize = new Size(1000, textBox.Height + 2);
-        //}
-    }
+    // 260426Cl 整理: Multiline時の旧自動サイズ計算 (コメントアウト済) は撤去。Designer.cs から購読されているため空でも残す。
+    private void numericBox_SizeChanged(object sender, EventArgs e) { }
 
     // 260413Cl 追加 SpinButton置き換えに伴い、Up/Downを分離したハンドラに書き換え
     private void spinButton_UpClick(object sender, EventArgs e) => applySpinStep(+1);

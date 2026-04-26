@@ -266,6 +266,8 @@ namespace ReciPro
             toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
+            radioButton1 = new System.Windows.Forms.RadioButton();
+            label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel1.SuspendLayout();
             splitContainer1.Panel2.SuspendLayout();
@@ -1986,6 +1988,7 @@ namespace ReciPro
             resources.ApplyResources(flowLayoutPanelImageType, "flowLayoutPanelImageType");
             flowLayoutPanelImageType.Controls.Add(radioButtonHRTEM);
             flowLayoutPanelImageType.Controls.Add(radioButtonSTEM);
+            flowLayoutPanelImageType.Controls.Add(radioButton1);
             flowLayoutPanelImageType.Controls.Add(radioButtonProjectedPotential);
             flowLayoutPanelImageType.Name = "flowLayoutPanelImageType";
             // 
@@ -2019,6 +2022,7 @@ namespace ReciPro
             // 
             captureExtender.SetCapture(groupBoxSampleProperty, true);
             groupBoxSampleProperty.Controls.Add(numericBoxThickness);
+            groupBoxSampleProperty.Controls.Add(label2);
             resources.ApplyResources(groupBoxSampleProperty, "groupBoxSampleProperty");
             groupBoxSampleProperty.Name = "groupBoxSampleProperty";
             groupBoxSampleProperty.TabStop = false;
@@ -2228,10 +2232,23 @@ namespace ReciPro
             toolStripStatusLabel3.Name = "toolStripStatusLabel3";
             resources.ApplyResources(toolStripStatusLabel3, "toolStripStatusLabel3");
             // 
+            // radioButton1
+            // 
+            resources.ApplyResources(radioButton1, "radioButton1");
+            radioButton1.Name = "radioButton1";
+            toolTip.SetToolTip(radioButton1, resources.GetString("radioButton1.ToolTip"));
+            radioButton1.UseVisualStyleBackColor = true;
+            radioButton1.CheckedChanged += RadioButtonHRTEM_CheckedChanged;
+            // 
+            // label2
+            // 
+            resources.ApplyResources(label2, "label2");
+            label2.ForeColor = System.Drawing.SystemColors.ControlText;
+            label2.Name = "label2";
+            // 
             // FormImageSimulator
             // 
             resources.ApplyResources(this, "$this");
-            AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F); // 260329Cl 追加: 96dpi基準
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             captureExtender.SetCapture(this, true);
             Controls.Add(buttonStop);
@@ -2329,6 +2346,7 @@ namespace ReciPro
             flowLayoutPanelImageType.ResumeLayout(false);
             flowLayoutPanelImageType.PerformLayout();
             groupBoxSampleProperty.ResumeLayout(false);
+            groupBoxSampleProperty.PerformLayout();
             panelSimulationActions.ResumeLayout(false);
             panelSimulationActions.PerformLayout();
             menuStrip1.ResumeLayout(false);
@@ -2551,5 +2569,7 @@ namespace ReciPro
         private NumericBox numericBoxHeight;
         private System.Windows.Forms.Panel panel8;
         private System.Windows.Forms.Panel panel9;
+        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.Label label2;
     }
 }

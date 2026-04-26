@@ -24,7 +24,9 @@ namespace Crystallography.Controls
 
         private void FormNumericUpdownControl_Load(object sender, EventArgs e)
         {
-            numericBoxDecimalPlace.Value = (int)Control.DecimalPlaces;
+            // 260426Cl 修正: buttonOK_Click と整合させ、Control が null でも NullReferenceException にならないようガード
+            if (Control == null) return;
+            numericBoxDecimalPlace.Value = Control.DecimalPlaces;
             numericBoxDecimalIncrement.Value = (double)Control.Increment;
         }
     }

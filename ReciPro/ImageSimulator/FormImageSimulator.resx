@@ -120,6 +120,7 @@
   <metadata name="captureExtender.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="splitContainer1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
@@ -193,7 +194,7 @@
     <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;pictureBoxScaleOfIntensity.Parent" xml:space="preserve">
-    <value>panel1</value>
+    <value>panelImageStatus</value>
   </data>
   <data name="&gt;&gt;pictureBoxScaleOfIntensity.ZOrder" xml:space="preserve">
     <value>0</value>
@@ -223,7 +224,7 @@
     <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;labelMousePositionValue.Parent" xml:space="preserve">
-    <value>panel1</value>
+    <value>panelImageStatus</value>
   </data>
   <data name="&gt;&gt;labelMousePositionValue.ZOrder" xml:space="preserve">
     <value>1</value>
@@ -262,7 +263,7 @@
     <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;label33.Parent" xml:space="preserve">
-    <value>panel1</value>
+    <value>panelImageStatus</value>
   </data>
   <data name="&gt;&gt;label33.ZOrder" xml:space="preserve">
     <value>2</value>
@@ -292,7 +293,7 @@
     <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;labelMousePositionY.Parent" xml:space="preserve">
-    <value>panel1</value>
+    <value>panelImageStatus</value>
   </data>
   <data name="&gt;&gt;labelMousePositionY.ZOrder" xml:space="preserve">
     <value>3</value>
@@ -322,7 +323,7 @@
     <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;labelMousePositionX.Parent" xml:space="preserve">
-    <value>panel1</value>
+    <value>panelImageStatus</value>
   </data>
   <data name="&gt;&gt;labelMousePositionX.ZOrder" xml:space="preserve">
     <value>4</value>
@@ -361,7 +362,7 @@
     <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;label31.Parent" xml:space="preserve">
-    <value>panel1</value>
+    <value>panelImageStatus</value>
   </data>
   <data name="&gt;&gt;label31.ZOrder" xml:space="preserve">
     <value>5</value>
@@ -400,7 +401,7 @@
     <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;label27.Parent" xml:space="preserve">
-    <value>panel1</value>
+    <value>panelImageStatus</value>
   </data>
   <data name="&gt;&gt;label27.ZOrder" xml:space="preserve">
     <value>6</value>
@@ -439,7 +440,7 @@
     <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;label30.Parent" xml:space="preserve">
-    <value>panel1</value>
+    <value>panelImageStatus</value>
   </data>
   <data name="&gt;&gt;label30.ZOrder" xml:space="preserve">
     <value>7</value>
@@ -478,7 +479,7 @@
     <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;label29.Parent" xml:space="preserve">
-    <value>panel1</value>
+    <value>panelImageStatus</value>
   </data>
   <data name="&gt;&gt;label29.ZOrder" xml:space="preserve">
     <value>8</value>
@@ -517,7 +518,7 @@
     <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;label26.Parent" xml:space="preserve">
-    <value>panel1</value>
+    <value>panelImageStatus</value>
   </data>
   <data name="&gt;&gt;label26.ZOrder" xml:space="preserve">
     <value>9</value>
@@ -556,7 +557,7 @@
     <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;label28.Parent" xml:space="preserve">
-    <value>panel1</value>
+    <value>panelImageStatus</value>
   </data>
   <data name="&gt;&gt;label28.ZOrder" xml:space="preserve">
     <value>10</value>
@@ -574,7 +575,7 @@
     <value>0</value>
   </data>
   <data name="&gt;&gt;panelImageStatus.Name" xml:space="preserve">
-    <value>panel1</value>
+    <value>panelImageStatus</value>
   </data>
   <data name="&gt;&gt;panelImageStatus.Type" xml:space="preserve">
     <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -637,7 +638,7 @@
     <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxGaussianBlurRadius.Parent" xml:space="preserve">
-    <value>groupBox3</value>
+    <value>groupBoxAdjust</value>
   </data>
   <data name="&gt;&gt;numericBoxGaussianBlurRadius.ZOrder" xml:space="preserve">
     <value>0</value>
@@ -682,7 +683,7 @@
     <value>Crystallography.Controls.TrackBarAdvanced, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;trackBarAdvancedMax.Parent" xml:space="preserve">
-    <value>groupBox3</value>
+    <value>groupBoxAdjust</value>
   </data>
   <data name="&gt;&gt;trackBarAdvancedMax.ZOrder" xml:space="preserve">
     <value>1</value>
@@ -727,7 +728,7 @@
     <value>Crystallography.Controls.TrackBarAdvanced, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;trackBarAdvancedMin.Parent" xml:space="preserve">
-    <value>groupBox3</value>
+    <value>groupBoxAdjust</value>
   </data>
   <data name="&gt;&gt;trackBarAdvancedMin.ZOrder" xml:space="preserve">
     <value>2</value>
@@ -763,7 +764,7 @@
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;checkBoxGaussianBlur.Parent" xml:space="preserve">
-    <value>groupBox3</value>
+    <value>groupBoxAdjust</value>
   </data>
   <data name="&gt;&gt;checkBoxGaussianBlur.ZOrder" xml:space="preserve">
     <value>3</value>
@@ -799,7 +800,7 @@
     <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;label25.Parent" xml:space="preserve">
-    <value>groupBox3</value>
+    <value>groupBoxAdjust</value>
   </data>
   <data name="&gt;&gt;label25.ZOrder" xml:space="preserve">
     <value>4</value>
@@ -832,7 +833,7 @@
     <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;comboBoxScaleColorScale.Parent" xml:space="preserve">
-    <value>groupBox3</value>
+    <value>groupBoxAdjust</value>
   </data>
   <data name="&gt;&gt;comboBoxScaleColorScale.ZOrder" xml:space="preserve">
     <value>5</value>
@@ -856,13 +857,13 @@
     <value>Adjust</value>
   </data>
   <data name="&gt;&gt;groupBoxAdjust.Name" xml:space="preserve">
-    <value>groupBox3</value>
+    <value>groupBoxAdjust</value>
   </data>
   <data name="&gt;&gt;groupBoxAdjust.Type" xml:space="preserve">
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;groupBoxAdjust.Parent" xml:space="preserve">
-    <value>panel2</value>
+    <value>panelDisplaySettings</value>
   </data>
   <data name="&gt;&gt;groupBoxAdjust.ZOrder" xml:space="preserve">
     <value>0</value>
@@ -886,7 +887,7 @@
     <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;panel7.Parent" xml:space="preserve">
-    <value>panel2</value>
+    <value>panelDisplaySettings</value>
   </data>
   <data name="&gt;&gt;panel7.ZOrder" xml:space="preserve">
     <value>1</value>
@@ -976,7 +977,7 @@
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;checkBoxIntensityMin.Parent" xml:space="preserve">
-    <value>flowLayoutPanel6</value>
+    <value>flowLayoutPanelIntensityRange</value>
   </data>
   <data name="&gt;&gt;checkBoxIntensityMin.ZOrder" xml:space="preserve">
     <value>0</value>
@@ -1035,7 +1036,7 @@
     <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxIntensityMin.Parent" xml:space="preserve">
-    <value>flowLayoutPanel6</value>
+    <value>flowLayoutPanelIntensityRange</value>
   </data>
   <data name="&gt;&gt;numericBoxIntensityMin.ZOrder" xml:space="preserve">
     <value>1</value>
@@ -1071,7 +1072,7 @@
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;checkBoxIntensityMax.Parent" xml:space="preserve">
-    <value>flowLayoutPanel6</value>
+    <value>flowLayoutPanelIntensityRange</value>
   </data>
   <data name="&gt;&gt;checkBoxIntensityMax.ZOrder" xml:space="preserve">
     <value>2</value>
@@ -1128,7 +1129,7 @@
     <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxIntensityMax.Parent" xml:space="preserve">
-    <value>flowLayoutPanel6</value>
+    <value>flowLayoutPanelIntensityRange</value>
   </data>
   <data name="&gt;&gt;numericBoxIntensityMax.ZOrder" xml:space="preserve">
     <value>3</value>
@@ -1149,7 +1150,7 @@
     <value>43</value>
   </data>
   <data name="&gt;&gt;flowLayoutPanelIntensityRange.Name" xml:space="preserve">
-    <value>flowLayoutPanel6</value>
+    <value>flowLayoutPanelIntensityRange</value>
   </data>
   <data name="&gt;&gt;flowLayoutPanelIntensityRange.Type" xml:space="preserve">
     <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -1191,7 +1192,7 @@
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;groupBoxNormalization.Parent" xml:space="preserve">
-    <value>panel2</value>
+    <value>panelDisplaySettings</value>
   </data>
   <data name="&gt;&gt;groupBoxNormalization.ZOrder" xml:space="preserve">
     <value>2</value>
@@ -1215,7 +1216,7 @@
     <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;panel9.Parent" xml:space="preserve">
-    <value>panel2</value>
+    <value>panelDisplaySettings</value>
   </data>
   <data name="&gt;&gt;panel9.ZOrder" xml:space="preserve">
     <value>3</value>
@@ -1381,7 +1382,7 @@
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;groupBoxSTEMoption3.Parent" xml:space="preserve">
-    <value>panel2</value>
+    <value>panelDisplaySettings</value>
   </data>
   <data name="&gt;&gt;groupBoxSTEMoption3.ZOrder" xml:space="preserve">
     <value>4</value>
@@ -1444,7 +1445,7 @@
     <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;colorControlScale.Parent" xml:space="preserve">
-    <value>groupBox2</value>
+    <value>groupBoxDisplay</value>
   </data>
   <data name="&gt;&gt;colorControlScale.ZOrder" xml:space="preserve">
     <value>0</value>
@@ -1504,7 +1505,7 @@
     <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxScaleLength.Parent" xml:space="preserve">
-    <value>groupBox2</value>
+    <value>groupBoxDisplay</value>
   </data>
   <data name="&gt;&gt;numericBoxScaleLength.ZOrder" xml:space="preserve">
     <value>1</value>
@@ -1549,7 +1550,7 @@
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;checkBoxShowScale.Parent" xml:space="preserve">
-    <value>groupBox2</value>
+    <value>groupBoxDisplay</value>
   </data>
   <data name="&gt;&gt;checkBoxShowScale.ZOrder" xml:space="preserve">
     <value>2</value>
@@ -1612,7 +1613,7 @@
     <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;colorControlLabel.Parent" xml:space="preserve">
-    <value>groupBox2</value>
+    <value>groupBoxDisplay</value>
   </data>
   <data name="&gt;&gt;colorControlLabel.ZOrder" xml:space="preserve">
     <value>3</value>
@@ -1669,7 +1670,7 @@
     <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxLabelFontSize.Parent" xml:space="preserve">
-    <value>groupBox2</value>
+    <value>groupBoxDisplay</value>
   </data>
   <data name="&gt;&gt;numericBoxLabelFontSize.ZOrder" xml:space="preserve">
     <value>4</value>
@@ -1714,7 +1715,7 @@
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;checkBoxShowLabel.Parent" xml:space="preserve">
-    <value>groupBox2</value>
+    <value>groupBoxDisplay</value>
   </data>
   <data name="&gt;&gt;checkBoxShowLabel.ZOrder" xml:space="preserve">
     <value>5</value>
@@ -1759,7 +1760,7 @@
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;checkBoxShowUnitcell.Parent" xml:space="preserve">
-    <value>groupBox2</value>
+    <value>groupBoxDisplay</value>
   </data>
   <data name="&gt;&gt;checkBoxShowUnitcell.ZOrder" xml:space="preserve">
     <value>6</value>
@@ -1786,13 +1787,13 @@
     <value>Display</value>
   </data>
   <data name="&gt;&gt;groupBoxDisplay.Name" xml:space="preserve">
-    <value>groupBox2</value>
+    <value>groupBoxDisplay</value>
   </data>
   <data name="&gt;&gt;groupBoxDisplay.Type" xml:space="preserve">
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;groupBoxDisplay.Parent" xml:space="preserve">
-    <value>panel2</value>
+    <value>panelDisplaySettings</value>
   </data>
   <data name="&gt;&gt;groupBoxDisplay.ZOrder" xml:space="preserve">
     <value>5</value>
@@ -1813,7 +1814,7 @@
     <value>2</value>
   </data>
   <data name="&gt;&gt;panelDisplaySettings.Name" xml:space="preserve">
-    <value>panel2</value>
+    <value>panelDisplaySettings</value>
   </data>
   <data name="&gt;&gt;panelDisplaySettings.Type" xml:space="preserve">
     <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -2342,7 +2343,7 @@
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;checkBoxSerialThickness.Parent" xml:space="preserve">
-    <value>panel5</value>
+    <value>panelSerialSettings</value>
   </data>
   <data name="&gt;&gt;checkBoxSerialThickness.ZOrder" xml:space="preserve">
     <value>0</value>
@@ -2381,7 +2382,7 @@
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;checkBoxSerialDefocus.Parent" xml:space="preserve">
-    <value>panel5</value>
+    <value>panelSerialSettings</value>
   </data>
   <data name="&gt;&gt;checkBoxSerialDefocus.ZOrder" xml:space="preserve">
     <value>1</value>
@@ -2399,7 +2400,7 @@
     <value>60</value>
   </data>
   <data name="&gt;&gt;panelSerialSettings.Name" xml:space="preserve">
-    <value>panel5</value>
+    <value>panelSerialSettings</value>
   </data>
   <data name="&gt;&gt;panelSerialSettings.Type" xml:space="preserve">
     <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -2618,7 +2619,7 @@
     <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;radioButtonSingleMode.Parent" xml:space="preserve">
-    <value>flowLayoutPanel4</value>
+    <value>flowLayoutPanelSimulationMode</value>
   </data>
   <data name="&gt;&gt;radioButtonSingleMode.ZOrder" xml:space="preserve">
     <value>0</value>
@@ -2654,7 +2655,7 @@
     <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;radioButtonSerialMode.Parent" xml:space="preserve">
-    <value>flowLayoutPanel4</value>
+    <value>flowLayoutPanelSimulationMode</value>
   </data>
   <data name="&gt;&gt;radioButtonSerialMode.ZOrder" xml:space="preserve">
     <value>1</value>
@@ -2675,7 +2676,7 @@
     <value>3</value>
   </data>
   <data name="&gt;&gt;flowLayoutPanelSimulationMode.Name" xml:space="preserve">
-    <value>flowLayoutPanel4</value>
+    <value>flowLayoutPanelSimulationMode</value>
   </data>
   <data name="&gt;&gt;flowLayoutPanelSimulationMode.Type" xml:space="preserve">
     <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -2717,7 +2718,7 @@
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;groupBoxSerialImage.Parent" xml:space="preserve">
-    <value>panel3</value>
+    <value>panelModeOptions</value>
   </data>
   <data name="&gt;&gt;groupBoxSerialImage.ZOrder" xml:space="preserve">
     <value>0</value>
@@ -2759,7 +2760,7 @@
     <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;radioButtonPotentialModeMagAndPhase.Parent" xml:space="preserve">
-    <value>flowLayoutPanel11</value>
+    <value>flowLayoutPanelPotentialMode</value>
   </data>
   <data name="&gt;&gt;radioButtonPotentialModeMagAndPhase.ZOrder" xml:space="preserve">
     <value>0</value>
@@ -2897,7 +2898,7 @@
     <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;flowLayoutPanelMagAndPhase.Parent" xml:space="preserve">
-    <value>flowLayoutPanel11</value>
+    <value>flowLayoutPanelPotentialMode</value>
   </data>
   <data name="&gt;&gt;flowLayoutPanelMagAndPhase.ZOrder" xml:space="preserve">
     <value>1</value>
@@ -3494,7 +3495,7 @@
     <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;panelPhaseScale.Parent" xml:space="preserve">
-    <value>flowLayoutPanel11</value>
+    <value>flowLayoutPanelPotentialMode</value>
   </data>
   <data name="&gt;&gt;panelPhaseScale.ZOrder" xml:space="preserve">
     <value>2</value>
@@ -3530,7 +3531,7 @@
     <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;radioButtonPotentialModeRealAndImag.Parent" xml:space="preserve">
-    <value>flowLayoutPanel11</value>
+    <value>flowLayoutPanelPotentialMode</value>
   </data>
   <data name="&gt;&gt;radioButtonPotentialModeRealAndImag.ZOrder" xml:space="preserve">
     <value>3</value>
@@ -3671,7 +3672,7 @@
     <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;flowLayoutPanelRealAndImaiginary.Parent" xml:space="preserve">
-    <value>flowLayoutPanel11</value>
+    <value>flowLayoutPanelPotentialMode</value>
   </data>
   <data name="&gt;&gt;flowLayoutPanelRealAndImaiginary.ZOrder" xml:space="preserve">
     <value>4</value>
@@ -3695,7 +3696,7 @@
     <value>False</value>
   </data>
   <data name="&gt;&gt;flowLayoutPanelPotentialMode.Name" xml:space="preserve">
-    <value>flowLayoutPanel11</value>
+    <value>flowLayoutPanelPotentialMode</value>
   </data>
   <data name="&gt;&gt;flowLayoutPanelPotentialMode.Type" xml:space="preserve">
     <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -3812,7 +3813,7 @@
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;groupBoxPotentialOption.Parent" xml:space="preserve">
-    <value>panel3</value>
+    <value>panelModeOptions</value>
   </data>
   <data name="&gt;&gt;groupBoxPotentialOption.ZOrder" xml:space="preserve">
     <value>1</value>
@@ -3991,7 +3992,7 @@ Smaller values result in slower calculation speed but higher accuracy.</value>
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;groupBoxSTEMoption2.Parent" xml:space="preserve">
-    <value>panel3</value>
+    <value>panelModeOptions</value>
   </data>
   <data name="&gt;&gt;groupBoxSTEMoption2.ZOrder" xml:space="preserve">
     <value>2</value>
@@ -4042,7 +4043,7 @@ for which the weak phase object approximation holds.
     <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;radioButtonModeQuasiCoherent.Parent" xml:space="preserve">
-    <value>flowLayoutPanel8</value>
+    <value>flowLayoutPanelStemMode</value>
   </data>
   <data name="&gt;&gt;radioButtonModeQuasiCoherent.ZOrder" xml:space="preserve">
     <value>0</value>
@@ -4084,7 +4085,7 @@ excite many strong diffracted beams.
     <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;radioButtonModeTransmissionCrossCoefficient.Parent" xml:space="preserve">
-    <value>flowLayoutPanel8</value>
+    <value>flowLayoutPanelStemMode</value>
   </data>
   <data name="&gt;&gt;radioButtonModeTransmissionCrossCoefficient.ZOrder" xml:space="preserve">
     <value>1</value>
@@ -4099,7 +4100,7 @@ excite many strong diffracted beams.
     <value>2</value>
   </data>
   <data name="&gt;&gt;flowLayoutPanelStemMode.Name" xml:space="preserve">
-    <value>flowLayoutPanel8</value>
+    <value>flowLayoutPanelStemMode</value>
   </data>
   <data name="&gt;&gt;flowLayoutPanelStemMode.Type" xml:space="preserve">
     <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -4177,7 +4178,7 @@ excite many strong diffracted beams.
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;groupBoxHREMoption2.Parent" xml:space="preserve">
-    <value>panel3</value>
+    <value>panelModeOptions</value>
   </data>
   <data name="&gt;&gt;groupBoxHREMoption2.ZOrder" xml:space="preserve">
     <value>3</value>
@@ -4237,7 +4238,7 @@ excite many strong diffracted beams.
     <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxHeight.Parent" xml:space="preserve">
-    <value>groupBox8</value>
+    <value>groupBoxImageProperty</value>
   </data>
   <data name="&gt;&gt;numericBoxHeight.ZOrder" xml:space="preserve">
     <value>0</value>
@@ -4294,7 +4295,7 @@ excite many strong diffracted beams.
     <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxWidth.Parent" xml:space="preserve">
-    <value>groupBox8</value>
+    <value>groupBoxImageProperty</value>
   </data>
   <data name="&gt;&gt;numericBoxWidth.ZOrder" xml:space="preserve">
     <value>1</value>
@@ -4351,7 +4352,7 @@ excite many strong diffracted beams.
     <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxResolution.Parent" xml:space="preserve">
-    <value>groupBox8</value>
+    <value>groupBoxImageProperty</value>
   </data>
   <data name="&gt;&gt;numericBoxResolution.ZOrder" xml:space="preserve">
     <value>2</value>
@@ -4378,13 +4379,13 @@ excite many strong diffracted beams.
     <value>Image Properties</value>
   </data>
   <data name="&gt;&gt;groupBoxImageProperty.Name" xml:space="preserve">
-    <value>groupBox8</value>
+    <value>groupBoxImageProperty</value>
   </data>
   <data name="&gt;&gt;groupBoxImageProperty.Type" xml:space="preserve">
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;groupBoxImageProperty.Parent" xml:space="preserve">
-    <value>panel6</value>
+    <value>panelImageProperties</value>
   </data>
   <data name="&gt;&gt;groupBoxImageProperty.ZOrder" xml:space="preserve">
     <value>0</value>
@@ -4408,7 +4409,7 @@ excite many strong diffracted beams.
     <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;panel8.Parent" xml:space="preserve">
-    <value>panel6</value>
+    <value>panelImageProperties</value>
   </data>
   <data name="&gt;&gt;panel8.ZOrder" xml:space="preserve">
     <value>1</value>
@@ -4461,7 +4462,7 @@ Larger values result in slower calculation speed but higher accuracy.</value>
     <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxNumOfBlochWave.Parent" xml:space="preserve">
-    <value>groupBox7</value>
+    <value>groupBoxDiffractedWaves</value>
   </data>
   <data name="&gt;&gt;numericBoxNumOfBlochWave.ZOrder" xml:space="preserve">
     <value>0</value>
@@ -4488,13 +4489,13 @@ Larger values result in slower calculation speed but higher accuracy.</value>
     <value>Diffracted Waves</value>
   </data>
   <data name="&gt;&gt;groupBoxDiffractedWaves.Name" xml:space="preserve">
-    <value>groupBox7</value>
+    <value>groupBoxDiffractedWaves</value>
   </data>
   <data name="&gt;&gt;groupBoxDiffractedWaves.Type" xml:space="preserve">
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;groupBoxDiffractedWaves.Parent" xml:space="preserve">
-    <value>panel6</value>
+    <value>panelImageProperties</value>
   </data>
   <data name="&gt;&gt;groupBoxDiffractedWaves.ZOrder" xml:space="preserve">
     <value>2</value>
@@ -4512,13 +4513,13 @@ Larger values result in slower calculation speed but higher accuracy.</value>
     <value>13</value>
   </data>
   <data name="&gt;&gt;panelImageProperties.Name" xml:space="preserve">
-    <value>panel6</value>
+    <value>panelImageProperties</value>
   </data>
   <data name="&gt;&gt;panelImageProperties.Type" xml:space="preserve">
     <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;panelImageProperties.Parent" xml:space="preserve">
-    <value>panel3</value>
+    <value>panelModeOptions</value>
   </data>
   <data name="&gt;&gt;panelImageProperties.ZOrder" xml:space="preserve">
     <value>4</value>
@@ -4533,19 +4534,19 @@ Larger values result in slower calculation speed but higher accuracy.</value>
     <value>3, 0, 0, 0</value>
   </data>
   <data name="panelModeOptions.Size" type="System.Drawing.Size, System.Drawing">
-    <value>320, 229</value>
+    <value>320, 231</value>
   </data>
   <data name="panelModeOptions.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
   </data>
   <data name="&gt;&gt;panelModeOptions.Name" xml:space="preserve">
-    <value>panel3</value>
+    <value>panelModeOptions</value>
   </data>
   <data name="&gt;&gt;panelModeOptions.Type" xml:space="preserve">
     <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;panelModeOptions.Parent" xml:space="preserve">
-    <value>groupBox1</value>
+    <value>groupBoxSimulation</value>
   </data>
   <data name="&gt;&gt;panelModeOptions.ZOrder" xml:space="preserve">
     <value>0</value>
@@ -4557,7 +4558,7 @@ Larger values result in slower calculation speed but higher accuracy.</value>
     <value>Segoe UI Symbol, 9.75pt, style=Bold</value>
   </data>
   <data name="groupBoxSimulation.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 477</value>
+    <value>4, 475</value>
   </data>
   <data name="groupBoxSimulation.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -4566,7 +4567,7 @@ Larger values result in slower calculation speed but higher accuracy.</value>
     <value>6, 0, 6, 6</value>
   </data>
   <data name="groupBoxSimulation.Size" type="System.Drawing.Size, System.Drawing">
-    <value>332, 253</value>
+    <value>332, 255</value>
   </data>
   <data name="groupBoxSimulation.TabIndex" type="System.Int32, mscorlib">
     <value>53</value>
@@ -4575,7 +4576,7 @@ Larger values result in slower calculation speed but higher accuracy.</value>
     <value>Simulation Settings</value>
   </data>
   <data name="&gt;&gt;groupBoxSimulation.Name" xml:space="preserve">
-    <value>groupBox1</value>
+    <value>groupBoxSimulation</value>
   </data>
   <data name="&gt;&gt;groupBoxSimulation.Type" xml:space="preserve">
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -4903,7 +4904,7 @@ Larger values result in slower calculation speed but higher accuracy.</value>
     <value>System.Windows.Forms.TextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;textBoxOuterRadius.Parent" xml:space="preserve">
-    <value>flowLayoutPanel15</value>
+    <value>flowLayoutPanelOuterRadius</value>
   </data>
   <data name="&gt;&gt;textBoxOuterRadius.ZOrder" xml:space="preserve">
     <value>0</value>
@@ -4936,7 +4937,7 @@ Larger values result in slower calculation speed but higher accuracy.</value>
     <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;label38.Parent" xml:space="preserve">
-    <value>flowLayoutPanel15</value>
+    <value>flowLayoutPanelOuterRadius</value>
   </data>
   <data name="&gt;&gt;label38.ZOrder" xml:space="preserve">
     <value>1</value>
@@ -4957,7 +4958,7 @@ Larger values result in slower calculation speed but higher accuracy.</value>
     <value>54</value>
   </data>
   <data name="&gt;&gt;flowLayoutPanelOuterRadius.Name" xml:space="preserve">
-    <value>flowLayoutPanel15</value>
+    <value>flowLayoutPanelOuterRadius</value>
   </data>
   <data name="&gt;&gt;flowLayoutPanelOuterRadius.Type" xml:space="preserve">
     <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -4999,7 +5000,7 @@ Larger values result in slower calculation speed but higher accuracy.</value>
     <value>System.Windows.Forms.TextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;textBoxInnerRadius.Parent" xml:space="preserve">
-    <value>flowLayoutPanel9</value>
+    <value>flowLayoutPanelInnerRadius</value>
   </data>
   <data name="&gt;&gt;textBoxInnerRadius.ZOrder" xml:space="preserve">
     <value>0</value>
@@ -5035,7 +5036,7 @@ Larger values result in slower calculation speed but higher accuracy.</value>
     <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;label37.Parent" xml:space="preserve">
-    <value>flowLayoutPanel9</value>
+    <value>flowLayoutPanelInnerRadius</value>
   </data>
   <data name="&gt;&gt;label37.ZOrder" xml:space="preserve">
     <value>1</value>
@@ -5053,7 +5054,7 @@ Larger values result in slower calculation speed but higher accuracy.</value>
     <value>54</value>
   </data>
   <data name="&gt;&gt;flowLayoutPanelInnerRadius.Name" xml:space="preserve">
-    <value>flowLayoutPanel9</value>
+    <value>flowLayoutPanelInnerRadius</value>
   </data>
   <data name="&gt;&gt;flowLayoutPanelInnerRadius.Type" xml:space="preserve">
     <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -5095,7 +5096,7 @@ Larger values result in slower calculation speed but higher accuracy.</value>
     <value>System.Windows.Forms.TextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;textBoxConvRadius.Parent" xml:space="preserve">
-    <value>flowLayoutPanel2</value>
+    <value>flowLayoutPanelConvergenceRadius</value>
   </data>
   <data name="&gt;&gt;textBoxConvRadius.ZOrder" xml:space="preserve">
     <value>0</value>
@@ -5131,7 +5132,7 @@ Larger values result in slower calculation speed but higher accuracy.</value>
     <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;label36.Parent" xml:space="preserve">
-    <value>flowLayoutPanel2</value>
+    <value>flowLayoutPanelConvergenceRadius</value>
   </data>
   <data name="&gt;&gt;label36.ZOrder" xml:space="preserve">
     <value>1</value>
@@ -5149,7 +5150,7 @@ Larger values result in slower calculation speed but higher accuracy.</value>
     <value>54</value>
   </data>
   <data name="&gt;&gt;flowLayoutPanelConvergenceRadius.Name" xml:space="preserve">
-    <value>flowLayoutPanel2</value>
+    <value>flowLayoutPanelConvergenceRadius</value>
   </data>
   <data name="&gt;&gt;flowLayoutPanelConvergenceRadius.Type" xml:space="preserve">
     <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -5233,7 +5234,7 @@ Larger values result in slower calculation speed but higher accuracy.</value>
     <value>0, 2, 0, 0</value>
   </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>107, 34</value>
+    <value>106, 34</value>
   </data>
   <data name="label1.TabIndex" type="System.Int32, mscorlib">
     <value>53</value>
@@ -5516,7 +5517,7 @@ Radius Range</value>
     <value>System.Windows.Forms.TextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;textBoxNumOfSpots.Parent" xml:space="preserve">
-    <value>flowLayoutPanel1</value>
+    <value>flowLayoutPanelSpotCount</value>
   </data>
   <data name="&gt;&gt;textBoxNumOfSpots.ZOrder" xml:space="preserve">
     <value>0</value>
@@ -5549,7 +5550,7 @@ Radius Range</value>
     <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;label9.Parent" xml:space="preserve">
-    <value>flowLayoutPanel1</value>
+    <value>flowLayoutPanelSpotCount</value>
   </data>
   <data name="&gt;&gt;label9.ZOrder" xml:space="preserve">
     <value>1</value>
@@ -5588,7 +5589,7 @@ Radius Range</value>
     <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;buttonDetailsOfSpots.Parent" xml:space="preserve">
-    <value>flowLayoutPanel1</value>
+    <value>flowLayoutPanelSpotCount</value>
   </data>
   <data name="&gt;&gt;buttonDetailsOfSpots.ZOrder" xml:space="preserve">
     <value>2</value>
@@ -5606,7 +5607,7 @@ Radius Range</value>
     <value>54</value>
   </data>
   <data name="&gt;&gt;flowLayoutPanelSpotCount.Name" xml:space="preserve">
-    <value>flowLayoutPanel1</value>
+    <value>flowLayoutPanelSpotCount</value>
   </data>
   <data name="&gt;&gt;flowLayoutPanelSpotCount.Type" xml:space="preserve">
     <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -5648,7 +5649,7 @@ Radius Range</value>
     <value>System.Windows.Forms.TextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;textBoxObjAperRadius.Parent" xml:space="preserve">
-    <value>flowLayoutPanel5</value>
+    <value>flowLayoutPanelObjectiveAperture</value>
   </data>
   <data name="&gt;&gt;textBoxObjAperRadius.ZOrder" xml:space="preserve">
     <value>0</value>
@@ -5684,7 +5685,7 @@ Radius Range</value>
     <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;label7.Parent" xml:space="preserve">
-    <value>flowLayoutPanel5</value>
+    <value>flowLayoutPanelObjectiveAperture</value>
   </data>
   <data name="&gt;&gt;label7.ZOrder" xml:space="preserve">
     <value>1</value>
@@ -5702,7 +5703,7 @@ Radius Range</value>
     <value>54</value>
   </data>
   <data name="&gt;&gt;flowLayoutPanelObjectiveAperture.Name" xml:space="preserve">
-    <value>flowLayoutPanel5</value>
+    <value>flowLayoutPanelObjectiveAperture</value>
   </data>
   <data name="&gt;&gt;flowLayoutPanelObjectiveAperture.Type" xml:space="preserve">
     <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -5726,7 +5727,7 @@ Radius Range</value>
     <value>198, 64</value>
   </data>
   <data name="label8.Size" type="System.Drawing.Size, System.Drawing">
-    <value>117, 39</value>
+    <value>137, 39</value>
   </data>
   <data name="label8.TabIndex" type="System.Int32, mscorlib">
     <value>53</value>
@@ -5879,7 +5880,7 @@ Simulator"</value>
     <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;label35.Parent" xml:space="preserve">
-    <value>groupBox4</value>
+    <value>groupBoxTEMConditions</value>
   </data>
   <data name="&gt;&gt;label35.ZOrder" xml:space="preserve">
     <value>0</value>
@@ -5912,7 +5913,7 @@ Simulator"</value>
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;checkBoxCTF.Parent" xml:space="preserve">
-    <value>groupBox4</value>
+    <value>groupBoxTEMConditions</value>
   </data>
   <data name="&gt;&gt;checkBoxCTF.ZOrder" xml:space="preserve">
     <value>1</value>
@@ -5969,7 +5970,7 @@ Simulator"</value>
     <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxCc.Parent" xml:space="preserve">
-    <value>groupBox4</value>
+    <value>groupBoxTEMConditions</value>
   </data>
   <data name="&gt;&gt;numericBoxCc.ZOrder" xml:space="preserve">
     <value>2</value>
@@ -6027,7 +6028,7 @@ Simulator"</value>
     <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxDeltaV.Parent" xml:space="preserve">
-    <value>groupBox4</value>
+    <value>groupBoxTEMConditions</value>
   </data>
   <data name="&gt;&gt;numericBoxDeltaV.ZOrder" xml:space="preserve">
     <value>3</value>
@@ -6086,7 +6087,7 @@ Simulator"</value>
     <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxHRTEM_BetaAgnle.Parent" xml:space="preserve">
-    <value>groupBox4</value>
+    <value>groupBoxTEMConditions</value>
   </data>
   <data name="&gt;&gt;numericBoxHRTEM_BetaAgnle.ZOrder" xml:space="preserve">
     <value>4</value>
@@ -6143,7 +6144,7 @@ Simulator"</value>
     <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxCs.Parent" xml:space="preserve">
-    <value>groupBox4</value>
+    <value>groupBoxTEMConditions</value>
   </data>
   <data name="&gt;&gt;numericBoxCs.ZOrder" xml:space="preserve">
     <value>5</value>
@@ -6200,7 +6201,7 @@ Simulator"</value>
     <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxDefocus.Parent" xml:space="preserve">
-    <value>groupBox4</value>
+    <value>groupBoxTEMConditions</value>
   </data>
   <data name="&gt;&gt;numericBoxDefocus.ZOrder" xml:space="preserve">
     <value>6</value>
@@ -6257,7 +6258,7 @@ Simulator"</value>
     <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxAccVol.Parent" xml:space="preserve">
-    <value>groupBox4</value>
+    <value>groupBoxTEMConditions</value>
   </data>
   <data name="&gt;&gt;numericBoxAccVol.ZOrder" xml:space="preserve">
     <value>7</value>
@@ -6300,7 +6301,7 @@ Simulator"</value>
     <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;label3.Parent" xml:space="preserve">
-    <value>flowLayoutPanel3</value>
+    <value>flowLayoutPanelScherzer</value>
   </data>
   <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
     <value>0</value>
@@ -6333,7 +6334,7 @@ Simulator"</value>
     <value>System.Windows.Forms.TextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;textBoxScherzer.Parent" xml:space="preserve">
-    <value>flowLayoutPanel3</value>
+    <value>flowLayoutPanelScherzer</value>
   </data>
   <data name="&gt;&gt;textBoxScherzer.ZOrder" xml:space="preserve">
     <value>1</value>
@@ -6369,7 +6370,7 @@ Simulator"</value>
     <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;label4.Parent" xml:space="preserve">
-    <value>flowLayoutPanel3</value>
+    <value>flowLayoutPanelScherzer</value>
   </data>
   <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
     <value>2</value>
@@ -6390,13 +6391,13 @@ Simulator"</value>
     <value>54</value>
   </data>
   <data name="&gt;&gt;flowLayoutPanelScherzer.Name" xml:space="preserve">
-    <value>flowLayoutPanel3</value>
+    <value>flowLayoutPanelScherzer</value>
   </data>
   <data name="&gt;&gt;flowLayoutPanelScherzer.Type" xml:space="preserve">
     <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;flowLayoutPanelScherzer.Parent" xml:space="preserve">
-    <value>groupBox4</value>
+    <value>groupBoxTEMConditions</value>
   </data>
   <data name="&gt;&gt;flowLayoutPanelScherzer.ZOrder" xml:space="preserve">
     <value>8</value>
@@ -6420,7 +6421,7 @@ Simulator"</value>
     <value>TEM Conditions</value>
   </data>
   <data name="&gt;&gt;groupBoxTEMConditions.Name" xml:space="preserve">
-    <value>groupBox4</value>
+    <value>groupBoxTEMConditions</value>
   </data>
   <data name="&gt;&gt;groupBoxTEMConditions.Type" xml:space="preserve">
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -6438,7 +6439,7 @@ Simulator"</value>
     <value>Segoe UI Symbol, 9.75pt, style=Bold</value>
   </data>
   <data name="groupBoxOpticalProperty.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 73</value>
+    <value>4, 71</value>
   </data>
   <data name="groupBoxOpticalProperty.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -6510,7 +6511,7 @@ Simulator"</value>
     <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;radioButtonHRTEM.Parent" xml:space="preserve">
-    <value>flowLayoutPanel16</value>
+    <value>flowLayoutPanelImageType</value>
   </data>
   <data name="&gt;&gt;radioButtonHRTEM.ZOrder" xml:space="preserve">
     <value>0</value>
@@ -6552,10 +6553,52 @@ Simulator"</value>
     <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;radioButtonSTEM.Parent" xml:space="preserve">
-    <value>flowLayoutPanel16</value>
+    <value>flowLayoutPanelImageType</value>
   </data>
   <data name="&gt;&gt;radioButtonSTEM.ZOrder" xml:space="preserve">
     <value>1</value>
+  </data>
+  <data name="radioButton1.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="radioButton1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="radioButton1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="radioButton1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 23</value>
+  </data>
+  <data name="radioButton1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="radioButton1.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>1, 1, 1, 1</value>
+  </data>
+  <data name="radioButton1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>90, 23</value>
+  </data>
+  <data name="radioButton1.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="radioButton1.Text" xml:space="preserve">
+    <value>STEM-EDX</value>
+  </data>
+  <data name="radioButton1.ToolTip" xml:space="preserve">
+    <value>Simulate STEM images.</value>
+  </data>
+  <data name="&gt;&gt;radioButton1.Name" xml:space="preserve">
+    <value>radioButton1</value>
+  </data>
+  <data name="&gt;&gt;radioButton1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;radioButton1.Parent" xml:space="preserve">
+    <value>flowLayoutPanelImageType</value>
+  </data>
+  <data name="&gt;&gt;radioButton1.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
   <data name="radioButtonProjectedPotential.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -6567,7 +6610,7 @@ Simulator"</value>
     <value>NoControl</value>
   </data>
   <data name="radioButtonProjectedPotential.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 23</value>
+    <value>90, 23</value>
   </data>
   <data name="radioButtonProjectedPotential.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -6594,10 +6637,10 @@ Simulator"</value>
     <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;radioButtonProjectedPotential.Parent" xml:space="preserve">
-    <value>flowLayoutPanel16</value>
+    <value>flowLayoutPanelImageType</value>
   </data>
   <data name="&gt;&gt;radioButtonProjectedPotential.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="flowLayoutPanelImageType.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -6606,19 +6649,19 @@ Simulator"</value>
     <value>8, 18</value>
   </data>
   <data name="flowLayoutPanelImageType.Size" type="System.Drawing.Size, System.Drawing">
-    <value>140, 46</value>
+    <value>192, 46</value>
   </data>
   <data name="flowLayoutPanelImageType.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
   </data>
   <data name="&gt;&gt;flowLayoutPanelImageType.Name" xml:space="preserve">
-    <value>flowLayoutPanel16</value>
+    <value>flowLayoutPanelImageType</value>
   </data>
   <data name="&gt;&gt;flowLayoutPanelImageType.Type" xml:space="preserve">
     <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;flowLayoutPanelImageType.Parent" xml:space="preserve">
-    <value>groupBox6</value>
+    <value>groupBoxImageMode</value>
   </data>
   <data name="&gt;&gt;flowLayoutPanelImageType.ZOrder" xml:space="preserve">
     <value>0</value>
@@ -6636,7 +6679,7 @@ Simulator"</value>
     <value>8, 0, 8, 4</value>
   </data>
   <data name="groupBoxImageMode.Size" type="System.Drawing.Size, System.Drawing">
-    <value>156, 68</value>
+    <value>208, 68</value>
   </data>
   <data name="groupBoxImageMode.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -6645,13 +6688,13 @@ Simulator"</value>
     <value>Image mode</value>
   </data>
   <data name="&gt;&gt;groupBoxImageMode.Name" xml:space="preserve">
-    <value>groupBox6</value>
+    <value>groupBoxImageMode</value>
   </data>
   <data name="&gt;&gt;groupBoxImageMode.Type" xml:space="preserve">
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;groupBoxImageMode.Parent" xml:space="preserve">
-    <value>flowLayoutPanel14</value>
+    <value>flowLayoutPanelModeSelection</value>
   </data>
   <data name="&gt;&gt;groupBoxImageMode.ZOrder" xml:space="preserve">
     <value>0</value>
@@ -6671,11 +6714,8 @@ Simulator"</value>
   <data name="numericBoxThickness.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9pt</value>
   </data>
-  <data name="numericBoxThickness.HeaderText" xml:space="preserve">
-    <value>Thickness</value>
-  </data>
   <data name="numericBoxThickness.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 29</value>
+    <value>17, 39</value>
   </data>
   <data name="numericBoxThickness.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -6687,7 +6727,7 @@ Simulator"</value>
     <value>1, 18</value>
   </data>
   <data name="numericBoxThickness.Size" type="System.Drawing.Size, System.Drawing">
-    <value>153, 23</value>
+    <value>91, 23</value>
   </data>
   <data name="numericBoxThickness.TabIndex" type="System.Int32, mscorlib">
     <value>50</value>
@@ -6715,11 +6755,53 @@ This value is ignored when "Serial image" mode is selected.</value>
   <data name="&gt;&gt;numericBoxThickness.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="label2.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label2.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="label2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>5, 19</value>
+  </data>
+  <data name="label2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 2, 0, 0</value>
+  </data>
+  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>63, 17</value>
+  </data>
+  <data name="label2.TabIndex" type="System.Int32, mscorlib">
+    <value>53</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Thickness</value>
+  </data>
+  <data name="label2.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
+  </data>
+  <data name="&gt;&gt;label2.Name" xml:space="preserve">
+    <value>label2</value>
+  </data>
+  <data name="&gt;&gt;label2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label2.Parent" xml:space="preserve">
+    <value>groupBoxSampleProperty</value>
+  </data>
+  <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="groupBoxSampleProperty.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Right</value>
+  </data>
   <data name="groupBoxSampleProperty.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt, style=Bold</value>
   </data>
   <data name="groupBoxSampleProperty.Location" type="System.Drawing.Point, System.Drawing">
-    <value>165, 0</value>
+    <value>217, 0</value>
   </data>
   <data name="groupBoxSampleProperty.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 0, 3, 3</value>
@@ -6728,13 +6810,13 @@ This value is ignored when "Serial image" mode is selected.</value>
     <value>3, 2, 3, 3</value>
   </data>
   <data name="groupBoxSampleProperty.Size" type="System.Drawing.Size, System.Drawing">
-    <value>167, 68</value>
+    <value>109, 66</value>
   </data>
   <data name="groupBoxSampleProperty.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
   <data name="groupBoxSampleProperty.Text" xml:space="preserve">
-    <value>Sample Properties</value>
+    <value>Sample</value>
   </data>
   <data name="&gt;&gt;groupBoxSampleProperty.Name" xml:space="preserve">
     <value>groupBoxSampleProperty</value>
@@ -6743,7 +6825,7 @@ This value is ignored when "Serial image" mode is selected.</value>
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;groupBoxSampleProperty.Parent" xml:space="preserve">
-    <value>flowLayoutPanel14</value>
+    <value>flowLayoutPanelModeSelection</value>
   </data>
   <data name="&gt;&gt;groupBoxSampleProperty.ZOrder" xml:space="preserve">
     <value>1</value>
@@ -6758,7 +6840,7 @@ This value is ignored when "Serial image" mode is selected.</value>
     <value>0, 0, 0, 0</value>
   </data>
   <data name="flowLayoutPanelModeSelection.Size" type="System.Drawing.Size, System.Drawing">
-    <value>332, 71</value>
+    <value>332, 69</value>
   </data>
   <data name="flowLayoutPanelModeSelection.TabIndex" type="System.Int32, mscorlib">
     <value>55</value>
@@ -6767,7 +6849,7 @@ This value is ignored when "Serial image" mode is selected.</value>
     <value>False</value>
   </data>
   <data name="&gt;&gt;flowLayoutPanelModeSelection.Name" xml:space="preserve">
-    <value>flowLayoutPanel14</value>
+    <value>flowLayoutPanelModeSelection</value>
   </data>
   <data name="&gt;&gt;flowLayoutPanelModeSelection.Type" xml:space="preserve">
     <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -6809,7 +6891,7 @@ This value is ignored when "Serial image" mode is selected.</value>
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;checkBoxPreset.Parent" xml:space="preserve">
-    <value>panel4</value>
+    <value>panelSimulationActions</value>
   </data>
   <data name="&gt;&gt;checkBoxPreset.ZOrder" xml:space="preserve">
     <value>0</value>
@@ -6827,13 +6909,13 @@ This value is ignored when "Serial image" mode is selected.</value>
     <value>NoControl</value>
   </data>
   <data name="checkBoxRealTimeSimulation.Location" type="System.Drawing.Point, System.Drawing">
-    <value>117, 0</value>
+    <value>112, 0</value>
   </data>
   <data name="checkBoxRealTimeSimulation.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>1, 6, 1, 3</value>
   </data>
   <data name="checkBoxRealTimeSimulation.Size" type="System.Drawing.Size, System.Drawing">
-    <value>144, 31</value>
+    <value>149, 31</value>
   </data>
   <data name="checkBoxRealTimeSimulation.TabIndex" type="System.Int32, mscorlib">
     <value>57</value>
@@ -6851,7 +6933,7 @@ This value is ignored when "Serial image" mode is selected.</value>
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;checkBoxRealTimeSimulation.Parent" xml:space="preserve">
-    <value>panel4</value>
+    <value>panelSimulationActions</value>
   </data>
   <data name="&gt;&gt;checkBoxRealTimeSimulation.ZOrder" xml:space="preserve">
     <value>1</value>
@@ -6896,7 +6978,7 @@ This value is ignored when "Serial image" mode is selected.</value>
     <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;buttonSimulate.Parent" xml:space="preserve">
-    <value>panel4</value>
+    <value>panelSimulationActions</value>
   </data>
   <data name="&gt;&gt;buttonSimulate.ZOrder" xml:space="preserve">
     <value>2</value>
@@ -6917,7 +6999,7 @@ This value is ignored when "Serial image" mode is selected.</value>
     <value>57</value>
   </data>
   <data name="&gt;&gt;panelSimulationActions.Name" xml:space="preserve">
-    <value>panel4</value>
+    <value>panelSimulationActions</value>
   </data>
   <data name="&gt;&gt;panelSimulationActions.Type" xml:space="preserve">
     <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
