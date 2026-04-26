@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace ReciPro;
 
-public partial class FormDiffractionSimulatorHolder : CaptureFormBase
+public partial class FormDiffractionSimulatorHolder : FormBase
 {
     #region Fields and Properties
     public FormDiffractionSimulator FormDiffractionSimulator;

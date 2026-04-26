@@ -3,7 +3,7 @@ using System.Windows.Forms;
 
 namespace Crystallography.Controls
 {
-    public partial class FormCalculator : CaptureFormBase
+    public partial class FormCalculator : FormBase
     {
         public FormCalculator()
         {

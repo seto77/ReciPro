@@ -3,7 +3,7 @@ using System.Windows.Forms;
 
 namespace Crystallography.Controls
 {
-    public partial class SaclaControl : CaptureUserControlBase
+    public partial class SaclaControl : UserControlBase
     {
         public delegate void MyEventHandler(object sender, EventArgs e);
 

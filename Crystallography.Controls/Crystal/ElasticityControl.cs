@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 namespace Crystallography.Controls;
 
-public partial class ElasticityControl : CaptureUserControlBase
+public partial class ElasticityControl : UserControlBase
 {
     public ElasticityControl() => InitializeComponent();
 

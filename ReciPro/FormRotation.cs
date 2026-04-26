@@ -10,7 +10,7 @@ using OpenTK.Mathematics;
 
 namespace ReciPro;
 
-public partial class FormRotationMatrix : CaptureFormBase
+public partial class FormRotationMatrix : FormBase
 {
 
     #region プロパティ

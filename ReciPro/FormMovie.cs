@@ -11,7 +11,7 @@ using System.Threading.Tasks; //260405Cl 追加
 using System.Windows.Forms;
 
 namespace ReciPro;
-public partial class FormMovie : CaptureFormBase
+public partial class FormMovie : FormBase
 {
     public FormMain FormMain;
     public Form Caller;//呼び出し元

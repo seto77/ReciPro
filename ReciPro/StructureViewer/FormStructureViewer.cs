@@ -19,7 +19,7 @@ using ZLinq;
 #endregion
 
 namespace ReciPro;
-public partial class FormStructureViewer : CaptureFormBase
+public partial class FormStructureViewer : FormBase
 {
     #region フィールド、プロパティ、
 

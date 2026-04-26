@@ -244,7 +244,7 @@
     <value>captureExtender</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>Crystallography.Controls.CaptureFormBase, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.FormBase, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="trackBarPointSize.Location" type="System.Drawing.Point, System.Drawing">
     <value>79, 134</value>

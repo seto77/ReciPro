@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 namespace Crystallography.Controls;
 
-public partial class FormStrain : CaptureFormBase
+public partial class FormStrain : FormBase
 {
     public CrystalControl CrystalControl;
     public Crystal crystal;

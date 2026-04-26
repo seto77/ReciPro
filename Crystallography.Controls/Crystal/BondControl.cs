@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace Crystallography.Controls;
 
-public partial class BondInputControl : CaptureUserControlBase
+public partial class BondInputControl : UserControlBase
 {
     #region プロパティ, フィールド, イベントハンドラ
     [Browsable(false)]

@@ -4,7 +4,7 @@ using System.Windows.Forms;
 
 namespace Crystallography.Controls;
 
-public partial class HorizontalAxisUserControl : CaptureUserControlBase
+public partial class HorizontalAxisUserControl : UserControlBase
 {
     public delegate void MyEventHandler();
 

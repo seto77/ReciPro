@@ -10,7 +10,7 @@ using System.Windows.Forms;
 namespace Crystallography.Controls;
 
 [Serializable]
-public partial class ScalablePictureBoxAdvanced : CaptureUserControlBase
+public partial class ScalablePictureBoxAdvanced : UserControlBase
 {
     [System.ComponentModel.Browsable(false)]
     [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Hidden)]

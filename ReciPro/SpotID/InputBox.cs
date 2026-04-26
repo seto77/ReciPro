@@ -2,7 +2,7 @@
 
 namespace ReciPro;
 
-public partial class InputBox : CaptureUserControlBase
+public partial class InputBox : UserControlBase
 {
     public InputBox() => InitializeComponent();
 

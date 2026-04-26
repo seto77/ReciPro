@@ -10,7 +10,7 @@ using System.Xml.Serialization;
 
 namespace ReciPro;
 
-public partial class FormPolycrystallineDiffractionSimulator : CaptureFormBase
+public partial class FormPolycrystallineDiffractionSimulator : FormBase
 {
     public List<Crystal> Crystals;
 

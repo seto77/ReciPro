@@ -697,7 +697,7 @@
     <value />
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>Crystallography.Controls.CaptureUserControlBase, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.UserControlBase, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="numericBoxK.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>

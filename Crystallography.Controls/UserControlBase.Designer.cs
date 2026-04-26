@@ -1,6 +1,6 @@
 namespace Crystallography.Controls;
 
-partial class CaptureFormBase
+partial class UserControlBase
 {
     private System.ComponentModel.IContainer components = null;
     protected CaptureExtender captureExtender;

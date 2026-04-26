@@ -18,7 +18,7 @@ using V4 = OpenTK.Mathematics.Vector4d;
 #endregion
 
 namespace ReciPro;
-public partial class FormTrajectory : CaptureFormBase
+public partial class FormTrajectory : FormBase
 {
     #region フィールド、プロパティ
     public FormMain FormMain;

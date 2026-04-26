@@ -22,7 +22,7 @@ using ZLinq;
 
 namespace ReciPro;
 
-public partial class FormEBSD : CaptureFormBase
+public partial class FormEBSD : FormBase
 {
     private enum MonteCarloDistributionDepthMode
     {

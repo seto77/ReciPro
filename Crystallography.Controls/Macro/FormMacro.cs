@@ -11,7 +11,7 @@ using System.Xml.Serialization;
 
 namespace Crystallography.Controls;
 
-public partial class FormMacro : CaptureFormBase
+public partial class FormMacro : FormBase
 {
     #region フィールド、プロパティ
 

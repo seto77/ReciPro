@@ -1724,7 +1724,7 @@
     <value>Segoe UI Symbol, 11pt</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>Crystallography.Controls.CaptureFormBase, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.FormBase, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="toolStripStatusLabelIdentifySpot.Size" type="System.Drawing.Size, System.Drawing">
     <value>22, 17</value>

@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 namespace ReciPro;
 
-public partial class FormSpotIDv2Details : CaptureFormBase
+public partial class FormSpotIDv2Details : FormBase
 {
     public FormSpotIDV2 FormSpotID;
     public int BoxWide => scalablePictureBoxAdvanced.PictureSize.Width;

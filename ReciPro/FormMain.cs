@@ -22,7 +22,7 @@ using Vec3 = OpenTK.Mathematics.Vector3d;
 
 namespace ReciPro;
 
-public partial class FormMain : CaptureFormBase
+public partial class FormMain : FormBase
 {
     #region LibraryImport
     [DllImport("user32")]

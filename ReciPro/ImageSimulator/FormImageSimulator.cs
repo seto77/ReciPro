@@ -15,7 +15,7 @@ using static System.Math;
 #endregion
 
 namespace ReciPro;
-public partial class FormImageSimulator : CaptureFormBase
+public partial class FormImageSimulator : FormBase
 {
     #region プロパティ
 

@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace Crystallography.Controls;
 
-public partial class SearchCrystalControl : CaptureUserControlBase
+public partial class SearchCrystalControl : UserControlBase
 {
     #region フィールド、プロパティ、イベント
 

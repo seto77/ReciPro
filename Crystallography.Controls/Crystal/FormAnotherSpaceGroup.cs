@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 namespace Crystallography.Controls;
 
-public partial class FormAnotherSpaceGroup : CaptureFormBase
+public partial class FormAnotherSpaceGroup : FormBase
 {
     private (int SeriesNum, string Notation)[] candidates;
 

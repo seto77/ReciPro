@@ -3,9 +3,9 @@ using System.Windows.Forms;
 namespace Crystallography.Controls;
 
 [System.ComponentModel.ToolboxItem(false)]
-public partial class CaptureFormBase : Form
+public partial class FormBase : Form
 {
-    protected CaptureFormBase()
+    protected FormBase()
     {
         InitializeComponent();
     }

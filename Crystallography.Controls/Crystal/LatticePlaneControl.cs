@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace Crystallography.Controls;
 
-public partial class LatticePlaneControl : CaptureUserControlBase
+public partial class LatticePlaneControl : UserControlBase
 {
     #region プロパティ, フィールド, イベントハンドラ
     [Browsable(false)]

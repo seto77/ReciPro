@@ -3,7 +3,7 @@ using System.Windows.Forms;
 
 namespace ReciPro;
 
-public partial class FormCrystalDatabase : CaptureFormBase
+public partial class FormCrystalDatabase : FormBase
 {
     public FormMain FormMain;
     public FormCrystalDatabase()

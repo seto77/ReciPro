@@ -2,7 +2,7 @@
 
 namespace ReciPro;
 
-public partial class FormAtom : CaptureFormBase
+public partial class FormAtom : FormBase
 {
     public FormStructureViewer formStructureViewer;
     public int selectedAtom;

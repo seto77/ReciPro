@@ -13,7 +13,7 @@ public enum NumericBoxOrientation { Horizontal, Vertical }
 
 [TypeConverter(typeof(DefinitionOrderTypeConverter))]
 [DefaultEvent("ValueChanged")]
-public partial class NumericBox : CaptureUserControlBase
+public partial class NumericBox : UserControlBase
 {
     #region イベント
 

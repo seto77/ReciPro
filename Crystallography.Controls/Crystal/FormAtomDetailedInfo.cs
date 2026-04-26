@@ -4,7 +4,7 @@ using System.Windows.Forms;
 
 namespace Crystallography.Controls;
 
-public partial class FormAtomDetailedInfo : CaptureFormBase
+public partial class FormAtomDetailedInfo : FormBase
 {
     private Atoms atoms = new();
 

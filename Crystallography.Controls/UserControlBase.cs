@@ -4,9 +4,9 @@ using System.Windows.Forms;
 namespace Crystallography.Controls;
 
 [ToolboxItem(false)]
-public partial class CaptureUserControlBase : UserControl
+public partial class UserControlBase : UserControl
 {
-    protected CaptureUserControlBase() => InitializeComponent();
+    protected UserControlBase() => InitializeComponent();
 
     /// <summary>
     /// 260426Cl 追加: 親方向に走査して Designer の編集中かを判定する。

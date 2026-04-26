@@ -2,7 +2,7 @@
 
 namespace Crystallography.Controls
 {
-    public partial class CheckedListboxAlpha : CaptureUserControlBase
+    public partial class CheckedListboxAlpha : UserControlBase
     {
         public CheckedListboxAlpha()
         {

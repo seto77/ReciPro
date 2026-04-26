@@ -3,7 +3,7 @@ using System.Windows.Forms;
 
 namespace Crystallography.Controls
 {
-    public partial class FormNumericUpdownControl : CaptureFormBase
+    public partial class FormNumericUpdownControl : FormBase
     {
         private NumericUpDown Control = null;
 

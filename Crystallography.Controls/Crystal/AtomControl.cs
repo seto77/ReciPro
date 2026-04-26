@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace Crystallography.Controls;
 
-public partial class AtomControl : CaptureUserControlBase
+public partial class AtomControl : UserControlBase
 {
     #region プロパティ, フィールド, イベントハンドラ
     [Browsable(false)]

@@ -2,7 +2,7 @@
 
 namespace ReciPro;
 
-public partial class FormResolution : CaptureFormBase
+public partial class FormResolution : FormBase
 {
     public FormResolution() => InitializeComponent();
 

@@ -5,7 +5,7 @@ using static System.Net.Mime.MediaTypeNames;
 
 namespace ReciPro;
 
-public partial class FormDiffractionSimulatorGeometry : CaptureFormBase
+public partial class FormDiffractionSimulatorGeometry : FormBase
 {
     #region フィールド、プロパティ
     public FormDiffractionSimulator FormDiffractionSimulator;

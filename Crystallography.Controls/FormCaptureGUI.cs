@@ -18,7 +18,7 @@ namespace Crystallography.Controls;
 /// 260323Cl 追加
 /// アプリケーションの全フォーム・コントロールのスクリーンショットを一括保存するための開発者向けフォーム。
 /// </summary>
-public partial class FormCaptureGUI : CaptureFormBase
+public partial class FormCaptureGUI : FormBase
 {
     /// <summary>キャプチャ対象の最小サイズ (px)</summary>
     private const int MinCaptureSize = 20;

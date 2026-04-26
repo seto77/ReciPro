@@ -316,7 +316,7 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>Crystallography.Controls.CaptureUserControlBase, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.UserControlBase, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="flowLayoutPanelElement.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>

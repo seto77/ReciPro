@@ -13,7 +13,7 @@ using System.Windows.Forms;
 
 namespace ReciPro;
 
-public partial class FormDiffractionSimulatorCBED : CaptureFormBase
+public partial class FormDiffractionSimulatorCBED : FormBase
 {
     #region フィールド、プロパティ
 

@@ -13,7 +13,7 @@ namespace Crystallography.Controls;
 internal enum StereonetProjectionMode { Wulff, Schmidt }
 internal enum StereonetDirection { Equrtor, Pole }
 
-public partial class PoleFigureControl : CaptureUserControlBase
+public partial class PoleFigureControl : UserControlBase
 {
     private StereonetProjectionMode stereonetProjectionMode = StereonetProjectionMode.Schmidt;
     private StereonetDirection stereonetDirecion = StereonetDirection.Equrtor;

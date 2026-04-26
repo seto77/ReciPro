@@ -10,7 +10,7 @@ using System.Xml.Serialization;
 
 namespace ReciPro;
 
-public partial class DiffractionPatternControl : CaptureUserControlBase
+public partial class DiffractionPatternControl : UserControlBase
 {
     public DiffractionPatternControl() => InitializeComponent();
 

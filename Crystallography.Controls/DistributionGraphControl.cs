@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 namespace Crystallography.Controls
 {
-    public partial class DistributionGraphControl : CaptureUserControlBase
+    public partial class DistributionGraphControl : UserControlBase
     {
         public DistributionGraphControl()
         {

@@ -7,7 +7,7 @@ using static ReciPro.FormImageSimulator;
 
 namespace ReciPro;
 
-public partial class FormPresets : CaptureFormBase
+public partial class FormPresets : FormBase
 {
     #region フィールド、プロパティ
     public FormImageSimulator FormImageSimulator;

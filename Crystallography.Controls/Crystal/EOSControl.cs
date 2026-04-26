@@ -4,7 +4,7 @@ using System.Windows.Forms;
 
 namespace Crystallography.Controls;
 
-public partial class EOSControl : CaptureUserControlBase
+public partial class EOSControl : UserControlBase
 {
     #region フィールド, プロパティ
     [Browsable(false)]

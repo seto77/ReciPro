@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace Crystallography.Controls;
 
-public partial class SymmetryControl : CaptureUserControlBase
+public partial class SymmetryControl : UserControlBase
 {
     #region プロパティ、フィールド、イベントハンドラ
     [Browsable(false)]

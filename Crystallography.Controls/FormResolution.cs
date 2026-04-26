@@ -3,7 +3,7 @@ using System.Windows.Forms;
 
 namespace Crystallography.Controls
 {
-    public partial class FormResolution : CaptureFormBase
+    public partial class FormResolution : FormBase
     {
         public FormResolution()
         {
