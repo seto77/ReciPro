@@ -31,7 +31,7 @@ namespace ReciPro
             var useMB = formTEMID?.formMain?.MillerBravaisActive ?? false;
             for (int i = 0; i < zoneaxis.Count; i++)
                 if (zoneaxis[i].plane1.IsRootIndex)
-                    dataSet.Tables[0].Rows.Add(GetTabelRows(i, photo, zoneaxis[i], useMB));            // 260425Cl Miller-Bravais 4 指数対応
+                    dataSet.Tables[0].Rows.Add(GetTableRows(i, photo, zoneaxis[i], useMB));            // 260425Cl Miller-Bravais 4 指数対応
             if (photo.IsTriangleMode)
             {
                 dataGridView1.Columns[5].Visible = true;
@@ -52,7 +52,7 @@ namespace ReciPro
             label1.Text = zoneaxes.Count.ToString() + " candidates are found.";
             this.zoneAxes = zoneaxes;
             for (int i = 0; i < zoneaxes.Count; i++)
-                dataSet.Tables[1].Rows.Add(GetTabelRows(i, obsAngle, zoneaxes[i]));
+                dataSet.Tables[1].Rows.Add(GetTableRows(i, obsAngle, zoneaxes[i]));
 
             if (zoneaxes[0].IsTwoPhoho)
             {
@@ -62,8 +62,8 @@ namespace ReciPro
             }
         }
 
-        //260425Cl Miller-Bravais 4 指数対応 (旧シグネチャ: GetTabelRows(int i, PhotoInformation photo, ZoneAxis zoneaxis))
-        public static object[] GetTabelRows(int i, PhotoInformation photo, ZoneAxis zoneaxis, bool useMB = false) => new object[] {
+        // (260426Ch) メソッド名 typo を GetTableRows に修正
+        public static object[] GetTableRows(int i, PhotoInformation photo, ZoneAxis zoneaxis, bool useMB = false) => new object[] {
                 i,
                 $"[{zoneaxis.u} {zoneaxis.v} {zoneaxis.w}]",
 
@@ -84,7 +84,7 @@ namespace ReciPro
                 zoneaxis.Phase
             };
 
-        public static object[] GetTabelRows(int i, double[] obsAngle, ZoneAxes zoneaxes) => new object[] {
+        public static object[] GetTableRows(int i, double[] obsAngle, ZoneAxes zoneaxes) => new object[] {
                 i,
                 $"[{zoneaxes.Za1.u} {zoneaxes.Za1.v} {zoneaxes.Za1.w}]",
                 $"[{zoneaxes.Za2.u} {zoneaxes.Za2.v} {zoneaxes.Za2.w}]",

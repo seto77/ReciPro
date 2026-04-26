@@ -125,7 +125,7 @@
             dataGridView.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridView.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            dataGridView.CellFormatting += dataGridView2_CellFormatting;
+            dataGridView.CellFormatting += dataGridView_CellFormatting;
             // 
             // dataGridViewTextBoxColumnH
             // 
@@ -282,7 +282,7 @@
             resources.ApplyResources(buttonCopyClipboard, "buttonCopyClipboard");
             buttonCopyClipboard.Name = "buttonCopyClipboard";
             buttonCopyClipboard.UseVisualStyleBackColor = true;
-            buttonCopyClipboard.Click += buttonCopyClipBoard_Click;
+            buttonCopyClipboard.Click += buttonCopyClipboard_Click;
             // 
             // checkBoxBragBrentano
             // 

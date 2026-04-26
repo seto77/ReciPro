@@ -280,7 +280,6 @@ Axis</value>
   <data name="numericUpDownPhoto1L1Err.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="numericUpDownPhoto1L1Err.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
     <value>Center</value>
   </data>

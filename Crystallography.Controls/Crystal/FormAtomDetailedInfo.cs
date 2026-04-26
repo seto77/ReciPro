@@ -1,46 +1,37 @@
-﻿using System;
+using System;
+using System.ComponentModel;
 using System.Windows.Forms;
 
-namespace Crystallography.Controls
+namespace Crystallography.Controls;
+
+public partial class FormAtomDetailedInfo : CaptureFormBase
 {
-    public partial class FormAtomDetailedInfo : CaptureFormBase
+    private Atoms atoms = new();
+
+    public FormAtomDetailedInfo()
     {
-        public FormAtomDetailedInfo()
+        InitializeComponent();
+        listBox1.Items.Add("No.\tx\t y\t  z\r\n");
+    }
+
+    [Browsable(false)]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+    public Atoms Atoms
+    {
+        get => atoms;
+        set { atoms = value; SetAtomDetailedInfo(); }
+    }
+
+    private void SetAtomDetailedInfo()
+    {
+        if (atoms == null) return;
+        for (int i = 0; i < atoms.Atom.Length; i++)
         {
-            InitializeComponent();
-            listBox1.Items.Add("No.\tx\t y\t  z\r\n");
-        }
-
-        private Atoms atoms = new Atoms();
-
-        // (260322Ch) WFO1000: Microsoft ??????????????????? ???????????
-        [System.ComponentModel.Browsable(false)]
-        [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public Atoms Atoms
-        {
-            set { atoms = value; setAtomDetailedInfo(); }
-            get { return atoms; }
-        }
-
-        private void setAtomDetailedInfo()
-        {
-            if (atoms == null)
-                return;
-
-            //string str = "No.\tx\t y\t  z\r\n";
-
-            for (int i = 0; i < atoms.Atom.Length; i++)
-                listBox.Items.Add($"{i + 1}\t{Atoms.GetStringFromDouble(atoms.Atom[i].X)}\t {Atoms.GetStringFromDouble(atoms.Atom[i].Y)}\t  {Atoms.GetStringFromDouble(atoms.Atom[i].Z)}");
-
-            //this.toolTip.SetToolTip(this.listBoxAtoms, str); ;
-        }
-
-        private void listBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-        }
-
-        private void FormAtomDetailedInfo_Load(object sender, EventArgs e)
-        {
+            var a = atoms.Atom[i];
+            listBox.Items.Add($"{i + 1}\t{Atoms.GetStringFromDouble(a.X)}\t {Atoms.GetStringFromDouble(a.Y)}\t  {Atoms.GetStringFromDouble(a.Z)}");
         }
     }
+
+    private void listBox_SelectedIndexChanged(object sender, EventArgs e) { }
+    private void FormAtomDetailedInfo_Load(object sender, EventArgs e) { }
 }

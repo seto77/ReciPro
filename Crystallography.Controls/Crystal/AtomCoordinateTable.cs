@@ -1,5 +1,6 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Threading;
@@ -10,90 +11,71 @@ namespace Crystallography.Controls;
 
 public partial class AtomCoordinateTable : CaptureUserControlBase
 {
-    readonly ReaderWriterLockSlim rwLock = new();
+    private readonly ReaderWriterLockSlim rwLock = new();
     private bool skipEvent { get; set; } = false;
-    public AtomCoordinateTable()
-    {
-        InitializeComponent();
-    }
+
+    public AtomCoordinateTable() => InitializeComponent();
 
     private Crystal crystal;
 
-    [System.ComponentModel.Browsable(false)]
-    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
+    [Browsable(false)]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public Crystal Crystal
     {
+        get => crystal;
         set
         {
             crystal = value;
-            if (crystal != null && crystal.Atoms != null && crystal.Atoms.Length > 0)
-            {
-                skipEvent = true;
-                comboBox.Items.Clear();
-                for (int i = 0; i < crystal.Atoms.Length; i++)
-                    comboBox.Items.Add(crystal.Atoms[i].Label);
-                skipEvent = false;
-                comboBox.SelectedIndex = 0;
-            }
+            if (crystal?.Atoms == null || crystal.Atoms.Length == 0) return;
+            skipEvent = true;
+            comboBox.Items.Clear();
+            foreach (var a in crystal.Atoms)
+                comboBox.Items.Add(a.Label);
+            skipEvent = false;
+            comboBox.SelectedIndex = 0;
         }
-        get => crystal;
     }
 
     private Atoms atom;
 
-    // (260322Ch) WFO1000: Microsoft ??????????????????? ???????????
-    [System.ComponentModel.Browsable(false)]
-    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
+    [Browsable(false)]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public Atoms Atom
     {
+        get => atom;
         set
         {
             atom = value;
-            if (atom != null)
-            {
-                for (int i = 0; i < crystal.Atoms.Length; i++)
-                    if (crystal.Atoms[i] == atom)
-                    {
-                        comboBox.SelectedIndex = i;
-                        break;
-                    }
-            }
+            if (atom == null) return;
+            for (int i = 0; i < crystal.Atoms.Length; i++)
+                if (crystal.Atoms[i] == atom)
+                {
+                    comboBox.SelectedIndex = i;
+                    break;
+                }
         }
-        get => atom;
     }
+
+    private bool HasAtomsAndValidIndex =>
+        crystal?.Atoms != null && crystal.Atoms.Length > 0 && comboBox.SelectedIndex < crystal.Atoms.Length;
 
     private void comboBox_SelectedIndexChanged(object sender, EventArgs e)
     {
-        if (skipEvent)
-            return;
-        if (crystal != null && crystal.Atoms != null && crystal.Atoms.Length > 0 && comboBox.SelectedIndex < Crystal.Atoms.Length)
-        {
-            atom = Crystal.Atoms[comboBox.SelectedIndex];
-            RefreshTable();
-        }
+        if (skipEvent) return;
+        if (!HasAtomsAndValidIndex) return;
+        atom = Crystal.Atoms[comboBox.SelectedIndex];
+        RefreshTable();
     }
-
-
-
-
 
     private void RefreshTable()
     {
-        if (crystal != null && crystal.Atoms != null && crystal.Atoms.Length > 0 && comboBox.SelectedIndex < Crystal.Atoms.Length)
-        {
-            var atom = Search(Crystal, Atom, (double)numericUpDownMaxLength.Value);
-            dataSet.Tables[0].Clear();
-            for (int i = 0; i < atom.Count; i++)
-            {
-                dataSet.Tables[0].Rows.Add(new object[] {
-                atom[i].Label,
-                atom[i].Distance
-                });
-            }
-            DrawGraph(atom);
-        }
+        if (!HasAtomsAndValidIndex) return;
+        var atoms = Search(Crystal, Atom, (double)numericUpDownMaxLength.Value);
+        dataSet.Tables[0].Clear();
+        foreach (var (label, distance) in atoms)
+            dataSet.Tables[0].Rows.Add([label, distance]);
+        DrawGraph(atoms);
     }
-
 
     public List<(string Label, double Distance)> Search(Crystal crystal, Atoms targetAtom, double maxLengthAngstrom)
     {
@@ -101,7 +83,7 @@ public partial class AtomCoordinateTable : CaptureUserControlBase
         Vector3DBase pos = mat * targetAtom.Atom[0];
         var max2 = maxLengthAngstrom * maxLengthAngstrom;
         var atoms = new List<(string Label, double Distance)>();
-        //まず、隣り合った単位格子の原子位置をすべて探索してCoordinatedAtom型のリストに全部入れる
+        // 隣接単位格子の原子位置を全探索しリストへ蓄積
         for (int max = 0; max < 8; max++)
         {
             bool flag = false;
@@ -110,34 +92,30 @@ public partial class AtomCoordinateTable : CaptureUserControlBase
                 for (int yShift = -max; yShift <= max; yShift++)
                     for (int zShift = -max; zShift <= max; zShift++)
                     {
-                        if (Math.Abs(xShift) == max || Math.Abs(yShift) == max || Math.Abs(zShift) == max)
-                        {
-                            foreach (var atm in crystal.Atoms)
-                                foreach (var v in atm.Atom)
+                        if (Math.Abs(xShift) != max && Math.Abs(yShift) != max && Math.Abs(zShift) != max)
+                            continue;
+                        foreach (var atm in crystal.Atoms)
+                            foreach (var v in atm.Atom)
+                            {
+                                var tempPos = mat * (v + new Vector3DBase(xShift, yShift, zShift));
+                                if (max2 > (tempPos - pos).Length2)
                                 {
-                                    var tempPos = mat * (v + new Vector3DBase(xShift, yShift, zShift));
-                                    if (max2 > (tempPos - pos).Length2)
+                                    rwLock.EnterWriteLock();
+                                    try
                                     {
-                                        rwLock.EnterWriteLock();
-                                        try
-                                        {
-                                            atoms.Add((atm.Label, (tempPos - pos).Length));
-                                            flag = true;//一個でも見つけられたら続行
-                                        }
-                                        finally { rwLock.ExitWriteLock(); }
+                                        atoms.Add((atm.Label, (tempPos - pos).Length));
+                                        flag = true; // 1個でも見つかれば外側ループ続行
                                     }
+                                    finally { rwLock.ExitWriteLock(); }
                                 }
-                        }
+                            }
                     }
             });
-            if (flag == false && max > 2)
-                break;
+            if (!flag && max > 2) break;
         }
         atoms.Sort((a1, a2) => a1.Distance.CompareTo(a2.Distance));
         return atoms;
     }
-
-
 
     private Bitmap bmp;
     private Graphics g;
@@ -148,47 +126,46 @@ public partial class AtomCoordinateTable : CaptureUserControlBase
 
     private void DrawGraph(List<(string Label, double Distance)> atoms)
     {
-        if (pictureBox.Width <= 0 || pictureBox.Height <= 0 || atoms.Count == 0) return; bmp = new Bitmap(pictureBox.Width, pictureBox.Height);
+        if (pictureBox.Width <= 0 || pictureBox.Height <= 0 || atoms.Count == 0) return;
+        // 前回の bmp/g を破棄してリーク防止 (pictureBox.Image にも握られているため Image を先に外す)
+        pictureBox.Image = null;
+        bmp?.Dispose();
+        g?.Dispose();
+        bmp = new Bitmap(pictureBox.Width, pictureBox.Height);
         g = Graphics.FromImage(bmp);
         g.Clear(Color.White);
         g.SmoothingMode = SmoothingMode.AntiAlias;
-        this.DoubleBuffered = true;
+        DoubleBuffered = true;
 
-        //上限、下限を決める
         double width = (double)numericUpDownWidth.Value;
         LowerX = 0;
         UpperX = atoms[^1].Distance + width * 2;
         LowerY = 0;
 
-        List<ControlPoint> controlPoint = [];
-        //すべてのCoordinatedAtomにたいする始点をPositiveに、終点をNegativeに格納する
-        for (int i = 0; i < atoms.Count; i++)
+        // 各原子の存在範囲 [d-w, d+w] を始点(true)/終点(false) として並べる
+        var controlPoints = new List<ControlPoint>(atoms.Count * 2);
+        foreach (var a in atoms)
         {
-            controlPoint.Add(new ControlPoint(atoms[i].Distance - width, true));
-            controlPoint.Add(new ControlPoint(atoms[i].Distance + width, false));
+            controlPoints.Add(new(a.Distance - width, true));
+            controlPoints.Add(new(a.Distance + width, false));
         }
-        controlPoint.Sort();
+        controlPoints.Sort();
 
         double height = 0;
         UpperY = 2;
         profile.Clear();
         profile.Pt.Add(new PointD(-width * 2, 0));
-        for (int i = 0; i < controlPoint.Count; i++)
+        foreach (var cp in controlPoints)
         {
-            profile.Pt.Add(new PointD(controlPoint[i].X, height));
-            if (controlPoint[i].Flag)
-                height++;
-            else
-                height--;
-            profile.Pt.Add(new PointD(controlPoint[i].X, height));
-
-            if (UpperY < height)
-                UpperY = height;
+            profile.Pt.Add(new PointD(cp.X, height));
+            height += cp.Flag ? 1 : -1;
+            profile.Pt.Add(new PointD(cp.X, height));
+            if (UpperY < height) UpperY = height;
         }
         profile.Pt.Add(new PointD(UpperX, 0));
         UpperY += 2;
 
-        DrawHistogram(atoms);
+        DrawHistogram();
         DrawGraduation();
         DrawLabel(atoms);
 
@@ -199,120 +176,97 @@ public partial class AtomCoordinateTable : CaptureUserControlBase
     {
         public double X = x;
         public bool Flag = flag;
-
-        public int CompareTo(object obj)
-        {
-            return X.CompareTo(((ControlPoint)obj).X);
-        }
+        public int CompareTo(object obj) => X.CompareTo(((ControlPoint)obj).X);
     }
 
-    private void DrawHistogram(List<(string Label, double Distance)> atoms)
+    private void DrawHistogram()
     {
-        var solidBrush = new SolidBrush(Color.LawnGreen);
         var zero = ConvToPicBoxCoord(0, 0).Y;
         for (int i = 0; i < profile.Pt.Count - 1; i++)
         {
             var p1 = ConvToPicBoxCoord(profile.Pt[i]);
             var p2 = ConvToPicBoxCoord(profile.Pt[i + 1]);
             if (Math.Abs(p1.X - p2.X) > 0.2)
-                g.FillRectangle(solidBrush, new RectangleF(p1.X, p1.Y, p2.X - p1.X, zero - p1.Y));
+                g.FillRectangle(Brushes.LawnGreen, new RectangleF(p1.X, p1.Y, p2.X - p1.X, zero - p1.Y));
         }
     }
 
     private void DrawLabel(List<(string Label, double Distance)> atoms)
-
     {
-        var JustBeforePt = new PointF(-10, -10);
-        var JustBeforeLabel = "";
+        var prevPt = new PointF(-10, -10);
         int times = 1;
-        int shiftY = 15;
-        Font font = new Font("Tahoma", 9);
-        Brush br = new SolidBrush(Color.Red);
+        const int shiftY = 15;
+        using var font = new Font("Tahoma", 9);
         for (int i = 0; i < atoms.Count; i++)
         {
-            while (i < atoms.Count - 1 && Math.Abs(atoms[i].Distance - atoms[i + 1].Distance) < 0.00000000001 && atoms[i].Label == atoms[i + 1].Label)//次も同じ元素が来る場合は
+            // 同じラベルかつほぼ同じ距離の原子は (n) でまとめる
+            while (i < atoms.Count - 1 && Math.Abs(atoms[i].Distance - atoms[i + 1].Distance) < 1e-11 && atoms[i].Label == atoms[i + 1].Label)
             {
                 times++;
                 i++;
             }
             PointF pt = ConvToPicBoxCoord(atoms[i].Distance, 0);
 
-            if (pt.X - JustBeforePt.X < 40 && JustBeforePt.Y - shiftY > 0)//字がかぶらないようにするための措置
-                pt.Y = JustBeforePt.Y - shiftY;
-            else
-                pt.Y -= shiftY * 2;
+            // 字がかぶらないように Y を調整
+            pt.Y = pt.X - prevPt.X < 40 && prevPt.Y - shiftY > 0 ? prevPt.Y - shiftY : pt.Y - shiftY * 2;
+            prevPt = pt;
 
-            JustBeforePt = pt;
-            JustBeforeLabel = atoms[i].Label;
-            if (times == 1)
-                g.DrawString(atoms[i].Label.TrimEnd(new char[] { ' ' }), font, br, pt);
-            else
-                g.DrawString(atoms[i].Label.TrimEnd(new char[] { ' ' }) + "(" + times.ToString() + ")", font, br, pt);
+            var label = atoms[i].Label.TrimEnd(' ');
+            var text = times == 1 ? label : $"{label}({times})";
+            g.DrawString(text, font, Brushes.Red, pt);
             times = 1;
         }
     }
+
+    private static float ChooseGradiation(double range, ReadOnlySpan<double> thresholds)
+    {
+        int log = (int)Math.Log10(range);
+        double d = range / Math.Pow(10, log);
+        double basePow = Math.Pow(10, log - 1);
+        if (d < thresholds[0]) return (float)(basePow);
+        if (d < thresholds[1]) return (float)(2 * basePow);
+        if (d < thresholds[2]) return (float)(5 * basePow);
+        return (float)(10 * basePow);
+    }
+
     private void DrawGraduation()
     {
-        g.FillRectangle(new SolidBrush(Color.White), 0, 0, OriginPos.X, pictureBox.Height);
-        g.FillRectangle(new SolidBrush(Color.White), 0, pictureBox.Height - OriginPos.Y, pictureBox.Width, pictureBox.Height);
+        g.FillRectangle(Brushes.White, 0, 0, OriginPos.X, pictureBox.Height);
+        g.FillRectangle(Brushes.White, 0, pictureBox.Height - OriginPos.Y, pictureBox.Width, pictureBox.Height);
 
-        float AngleGradiation;//ここより角度目盛りの描画
-        double d = (UpperX - LowerX) / Math.Pow(10, (int)Math.Log10(UpperX - LowerX));
-        if (d < 1.1) AngleGradiation = (float)(Math.Pow(10, (int)Math.Log10(UpperX - LowerX) - 1));
-        else if (d < 2.2) AngleGradiation = (float)(2 * Math.Pow(10, (int)Math.Log10(UpperX - LowerX) - 1));
-        else if (d < 5.0) AngleGradiation = (float)(5 * Math.Pow(10, (int)Math.Log10(UpperX - LowerX) - 1));
-        else AngleGradiation = (float)(10 * Math.Pow(10, (int)Math.Log10(UpperX - LowerX) - 1));
-        g.DrawLine(new Pen(Color.Black, 1), OriginPos.X, pictureBox.Height - OriginPos.Y, pictureBox.Width, pictureBox.Height - OriginPos.Y);
-        Font strFont = new(new FontFamily("tahoma"), 8);
-        for (int i = (int)(LowerX / AngleGradiation) + 1; i < UpperX / AngleGradiation; i++)
+        // 角度方向の目盛り
+        float angleGrad = ChooseGradiation(UpperX - LowerX, [1.1, 2.2, 5.0]);
+        g.DrawLine(Pens.Black, OriginPos.X, pictureBox.Height - OriginPos.Y, pictureBox.Width, pictureBox.Height - OriginPos.Y);
+        using var strFont = new Font(new FontFamily("tahoma"), 8);
+        for (int i = (int)(LowerX / angleGrad) + 1; i < UpperX / angleGrad; i++)
         {
-            g.DrawLine(new Pen(Color.Black, 1), ConvToPicBoxCoord(i * AngleGradiation, 0).X, pictureBox.Height - OriginPos.Y, ConvToPicBoxCoord(i * AngleGradiation, 0).X, pictureBox.Height - OriginPos.Y + 5);
-            g.DrawString(Math.Round(i * AngleGradiation, 5).ToString("#,#.###############"), strFont, new SolidBrush(Color.Black), ConvToPicBoxCoord(i * AngleGradiation, 0).X - 2, pictureBox.Height - OriginPos.Y + 5);
-            g.DrawLine(new Pen(Color.LightGray, 1), ConvToPicBoxCoord(i * AngleGradiation, 0).X, pictureBox.Height - OriginPos.Y, ConvToPicBoxCoord(i * AngleGradiation, 0).X, 0);
+            float x = ConvToPicBoxCoord(i * angleGrad, 0).X;
+            g.DrawLine(Pens.Black, x, pictureBox.Height - OriginPos.Y, x, pictureBox.Height - OriginPos.Y + 5);
+            g.DrawString(Math.Round(i * angleGrad, 5).ToString("#,#.###############"), strFont, Brushes.Black, x - 2, pictureBox.Height - OriginPos.Y + 5);
+            g.DrawLine(Pens.LightGray, x, pictureBox.Height - OriginPos.Y, x, 0);
         }
 
-        float IntensityGradiation;//ここより強度目盛りの描画
-        d = (UpperY - LowerY) / Math.Pow(10, (int)Math.Log10(UpperY - LowerY));
-        if (d < 1.6) IntensityGradiation = (float)(Math.Pow(10, (int)Math.Log10(UpperY - LowerY) - 1));
-        else if (d < 2.2) IntensityGradiation = (float)(2 * Math.Pow(10, (int)Math.Log10(UpperY - LowerY) - 1));
-        else if (d < 8.0) IntensityGradiation = (float)(5 * Math.Pow(10, (int)Math.Log10(UpperY - LowerY) - 1));
-        else IntensityGradiation = (float)(10 * Math.Pow(10, (int)Math.Log10(UpperY - LowerY) - 1));
-        g.DrawLine(new Pen(Color.Black, 1), OriginPos.X, 0, OriginPos.X, pictureBox.Height - OriginPos.Y);
-        for (int i = (int)(LowerY / IntensityGradiation) + 1; i < UpperY / IntensityGradiation; i++)
+        // 強度方向の目盛り
+        float intensityGrad = ChooseGradiation(UpperY - LowerY, [1.6, 2.2, 8.0]);
+        g.DrawLine(Pens.Black, OriginPos.X, 0, OriginPos.X, pictureBox.Height - OriginPos.Y);
+        for (int i = (int)(LowerY / intensityGrad) + 1; i < UpperY / intensityGrad; i++)
         {
-            g.DrawLine(new Pen(Color.Black, 1), OriginPos.X - 8, ConvToPicBoxCoord(0, i * IntensityGradiation).Y, OriginPos.X, ConvToPicBoxCoord(0, i * IntensityGradiation).Y);
-            g.DrawString((i * IntensityGradiation).ToString("#,#.###############"), strFont, new SolidBrush(Color.Black), 0, ConvToPicBoxCoord(0, i * IntensityGradiation).Y - 6);
-            g.DrawLine(new Pen(Color.LightGray, 1), OriginPos.X - 8, ConvToPicBoxCoord(0, i * IntensityGradiation).Y, pictureBox.Width, ConvToPicBoxCoord(0, i * IntensityGradiation).Y);
+            float y = ConvToPicBoxCoord(0, i * intensityGrad).Y;
+            g.DrawLine(Pens.Black, OriginPos.X - 8, y, OriginPos.X, y);
+            g.DrawString((i * intensityGrad).ToString("#,#.###############"), strFont, Brushes.Black, 0, y - 6);
+            g.DrawLine(Pens.LightGray, OriginPos.X - 8, y, pictureBox.Width, y);
         }
     }
 
-    #region 座標変換関係
+    #region 座標変換
+    private PointF ConvToPicBoxCoord(double x, double y) => new(
+        (float)((pictureBox.Width - OriginPos.X) / (UpperX - LowerX) * (x - LowerX)) + OriginPos.X,
+        (float)(pictureBox.Height - OriginPos.Y - BottomMargin - (pictureBox.Height - OriginPos.Y - BottomMargin) / (UpperY - LowerY) * (y - LowerY)));
 
-    private PointF ConvToPicBoxCoord(double x, double y)
-    {//プロファイル座標をピクチャーボックスの座標系に変換
-        return new PointF((float)((pictureBox.Width - OriginPos.X) / (UpperX - LowerX) * (x - LowerX)) + OriginPos.X,
-            (float)(pictureBox.Height - OriginPos.Y - BottomMargin - (pictureBox.Height - OriginPos.Y - BottomMargin) / (UpperY - LowerY) * (y - LowerY)));
-    }
-
-    private PointF ConvToPicBoxCoord(PointD p)
-    {//ピクチャーボックスの座標系に変換
-        return new PointF((float)((pictureBox.Width - OriginPos.X) / (UpperX - LowerX) * (p.X - LowerX)) + OriginPos.X,
-            (float)(pictureBox.Height - OriginPos.Y - BottomMargin - (pictureBox.Height - OriginPos.Y - BottomMargin) / (UpperY - LowerY) * (p.Y - LowerY)));
-    }
-
-    private PointD ConvToRealCoord(int x, int y)
-    {//マウス座標をオリジナルの座標系に変換
-        return new PointD(
-            (double)(x - OriginPos.X) / (pictureBox.Width - OriginPos.X) * (UpperX - LowerX) + LowerX,
-            (double)(pictureBox.Height - y - OriginPos.Y - BottomMargin) / (pictureBox.Height - OriginPos.Y - BottomMargin) * (UpperY - LowerY) + LowerY);
-    }
-
-    #endregion 座標変換関係
-
+    private PointF ConvToPicBoxCoord(PointD p) => ConvToPicBoxCoord(p.X, p.Y);
+    #endregion
 
     private void numericUpDownWidth_ValueChanged(object sender, EventArgs e) => RefreshTable();
-
     private void numericUpDownMaxLength_ValueChanged(object sender, EventArgs e) => RefreshTable();
-
     private void AtomCoordinateTable_Resize_1(object sender, EventArgs e) => RefreshTable();
 }

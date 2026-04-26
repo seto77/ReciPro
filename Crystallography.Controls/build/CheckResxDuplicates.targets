@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 260426Cl 追加: VS デザイナが古い <assembly alias="..."> エントリを残すケースの再発防止 -->
+<Project>
+
+  <UsingTask
+    TaskName="CheckResxAssemblyDuplicates"
+    TaskFactory="RoslynCodeTaskFactory"
+    AssemblyFile="$(MSBuildToolsPath)\Microsoft.Build.Tasks.Core.dll">
+    <ParameterGroup>
+      <Files ParameterType="Microsoft.Build.Framework.ITaskItem[]" Required="true" />
+    </ParameterGroup>
+    <Task>
+      <Using Namespace="System.Linq" />
+      <Using Namespace="System.Xml.Linq" />
+      <Code Type="Fragment" Language="cs"><![CDATA[
+        foreach (var item in Files)
+        {
+            var path = item.ItemSpec;
+            var doc = XDocument.Load(path);
+            var dups = doc.Root.Elements("assembly")
+                .Select(a => (string)a.Attribute("alias"))
+                .Where(s => s != null)
+                .GroupBy(s => s)
+                .Where(g => g.Count() > 1);
+            foreach (var g in dups)
+            {
+                Log.LogWarning(null, "RESX001", null, path, 0, 0, 0, 0,
+                    "Duplicate <assembly alias=\"{0}\"> entries (count={1})", g.Key, g.Count());
+            }
+        }
+      ]]></Code>
+    </Task>
+  </UsingTask>
+
+  <Target Name="CheckResxDuplicates" BeforeTargets="PrepareResources">
+    <ItemGroup>
+      <_ResxFiles Include="@(EmbeddedResource)" Condition="'%(Extension)' == '.resx'" />
+    </ItemGroup>
+    <CheckResxAssemblyDuplicates Files="@(_ResxFiles)" />
+  </Target>
+
+</Project>

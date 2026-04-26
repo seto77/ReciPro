@@ -9,115 +9,85 @@ public partial class FormSymmetryInformation : CaptureFormBase
     public Crystal Crystal => CrystalControl.Crystal;
     public CrystalControl CrystalControl;
 
-    public FormSymmetryInformation()
+    public FormSymmetryInformation() => InitializeComponent(); // (260426Ch)
+
+    private static void ConvertRichTextBox1(RichTextBox rTB)
     {
-        InitializeComponent();
+        foreach (var s in new[] { "sub1", "sub2", "sub3", "sub4", "sub5" }) // (260426Ch) 同種処理を配列ループに集約
+            ConvertRichTextBoxOffsetSub(rTB, s, 12);
+        foreach (var s in new[] { "P", "A", "B", "C", "F", "I", "a", "b", "c", "n", "d", "m", "u", "v", "w", "x", "y", "z" })
+            ConvertRichTextBoxItalic(rTB, s, 14);
     }
 
-    private void crystalControl_CrystalChanged(object sender, EventArgs e)
-    {
-        ChangeCrystal();
-    }
-
-    private static void ConvertRichTextBox1(ref RichTextBox rTB)
-    {
-        ConvertRichTextBoxOffsetSub(ref rTB, "sub1", 12); ConvertRichTextBoxOffsetSub(ref rTB, "sub2", 12); ConvertRichTextBoxOffsetSub(ref rTB, "sub3", 12);
-        ConvertRichTextBoxOffsetSub(ref rTB, "sub4", 12); ConvertRichTextBoxOffsetSub(ref rTB, "sub5", 12);
-
-        ConvertRichTextBoxItalic(ref rTB, "P", 14); ConvertRichTextBoxItalic(ref rTB, "A", 14); ConvertRichTextBoxItalic(ref rTB, "B", 14);
-        ConvertRichTextBoxItalic(ref rTB, "C", 14); ConvertRichTextBoxItalic(ref rTB, "F", 14); ConvertRichTextBoxItalic(ref rTB, "I", 14);
-        ConvertRichTextBoxItalic(ref rTB, "a", 14); ConvertRichTextBoxItalic(ref rTB, "b", 14); ConvertRichTextBoxItalic(ref rTB, "c", 14);
-        ConvertRichTextBoxItalic(ref rTB, "n", 14); ConvertRichTextBoxItalic(ref rTB, "d", 14); ConvertRichTextBoxItalic(ref rTB, "m", 14);
-        ConvertRichTextBoxItalic(ref rTB, "u", 14); ConvertRichTextBoxItalic(ref rTB, "v", 14); ConvertRichTextBoxItalic(ref rTB, "w", 14);
-        ConvertRichTextBoxItalic(ref rTB, "x", 14); ConvertRichTextBoxItalic(ref rTB, "y", 14); ConvertRichTextBoxItalic(ref rTB, "z", 14);
-    }
-
-    private static void ConvertRichTextBox2(ref RichTextBox rTB)
+    private static void ConvertRichTextBox2(RichTextBox rTB)
     {
         rTB.SelectAll();
         rTB.SelectionFont = new Font("Times New Roman", 12, FontStyle.Regular);
         rTB.SelectionCharOffset = -3;
 
-        ConvertRichTextBoxItalic(ref rTB, "C", 12); ConvertRichTextBoxItalic(ref rTB, "D", 12); ConvertRichTextBoxItalic(ref rTB, "S", 12);
-        ConvertRichTextBoxItalic(ref rTB, "T", 12); ConvertRichTextBoxItalic(ref rTB, "O", 12);
-
-        ConvertRichTextBoxItalicSub(ref rTB, "i", 12); ConvertRichTextBoxItalicSub(ref rTB, "s", 12); ConvertRichTextBoxItalicSub(ref rTB, "h", 12);
-        ConvertRichTextBoxItalicSub(ref rTB, "v", 12); ConvertRichTextBoxItalicSub(ref rTB, "d", 12);
+        foreach (var s in new[] { "C", "D", "S", "T", "O" }) // (260426Ch)
+            ConvertRichTextBoxItalic(rTB, s, 12);
+        foreach (var s in new[] { "i", "s", "h", "v", "d" })
+            ConvertRichTextBoxItalicSub(rTB, s, 12);
         for (int n = 30; n > 0; n--)
-        {
-            string s = "^" + n.ToString();
-            ConvertRichTextBoxOffsetSup(ref rTB, s, 12);
-        }
+            ConvertRichTextBoxOffsetSup(rTB, $"^{n}", 12);
     }
 
-    private static void ConvertRichTextBox3(ref RichTextBox rTB)
+    private static void ConvertRichTextBox3(RichTextBox rTB)
     {
         rTB.SelectAll();
         rTB.SelectionFont = new Font("Times New Roman", 13, FontStyle.Regular);
         if (rTB.Text == "No Condition") return;
-        ConvertRichTextBoxOffsetSub(ref rTB, "sub1", 10); ConvertRichTextBoxOffsetSub(ref rTB, "sub2", 10); ConvertRichTextBoxOffsetSub(ref rTB, "sub3", 10);
-        ConvertRichTextBoxOffsetSub(ref rTB, "sub4", 10); ConvertRichTextBoxOffsetSub(ref rTB, "sub5", 10);
 
-        ConvertRichTextBoxItalic(ref rTB, "A", 12); ConvertRichTextBoxItalic(ref rTB, "B", 12); ConvertRichTextBoxItalic(ref rTB, "C", 12);
-        ConvertRichTextBoxItalic(ref rTB, "I", 12); ConvertRichTextBoxItalic(ref rTB, "F", 12); ConvertRichTextBoxItalic(ref rTB, "R", 12);
-        ConvertRichTextBoxItalic(ref rTB, "h", 12); ConvertRichTextBoxItalic(ref rTB, "k", 12); ConvertRichTextBoxItalic(ref rTB, "l", 12);
-        ConvertRichTextBoxItalic(ref rTB, "a", 12); ConvertRichTextBoxItalic(ref rTB, "b", 12); ConvertRichTextBoxItalic(ref rTB, "c", 12);
-        ConvertRichTextBoxItalic(ref rTB, "d", 12); ConvertRichTextBoxItalic(ref rTB, " n", 12);
+        foreach (var s in new[] { "sub1", "sub2", "sub3", "sub4", "sub5" }) // (260426Ch)
+            ConvertRichTextBoxOffsetSub(rTB, s, 10);
+        foreach (var s in new[] { "A", "B", "C", "I", "F", "R", "h", "k", "l", "a", "b", "c", "d", " n" })
+            ConvertRichTextBoxItalic(rTB, s, 12);
     }
 
-    private static void ConvertRichTextBoxItalic(ref RichTextBox rTB, string s, int size)
+    private static void ConvertRichTextBoxItalic(RichTextBox rTB, string s, int size)
     {
         int n = -1;
-        while (rTB.Find(s, n + 1, RichTextBoxFinds.MatchCase) > n)
+        while ((n = rTB.Find(s, n + 1, RichTextBoxFinds.MatchCase)) >= 0) // (260426Ch) Find の二重呼び出しを削減
         {
             rTB.SelectionCharOffset = 0;
             rTB.SelectionFont = new Font("Times New Roman", size, FontStyle.Italic);
-            n = rTB.Find(s, n + 1, RichTextBoxFinds.MatchCase);
         }
     }
 
-    private static void ConvertRichTextBoxItalicSub(ref RichTextBox rTB, string s, int size)
+    private static void ConvertRichTextBoxItalicSub(RichTextBox rTB, string s, int size)
     {
         int n = -1;
-        while (rTB.Find(s, n + 1, RichTextBoxFinds.MatchCase) > n)
+        while ((n = rTB.Find(s, n + 1, RichTextBoxFinds.MatchCase)) >= 0) // (260426Ch)
         {
             rTB.SelectionCharOffset = -3;
             rTB.SelectionFont = new Font("Times New Roman", size, FontStyle.Italic);
-            n = rTB.Find(s, n + 1, RichTextBoxFinds.MatchCase);
         }
     }
 
-    private static void ConvertRichTextBoxOffsetSub(ref RichTextBox rTB, string s, int size)
+    private static void ConvertRichTextBoxOffsetSub(RichTextBox rTB, string s, int size)
     {
-        if (rTB.Find(s, 0, RichTextBoxFinds.MatchCase) > -1)
+        int n = -1;
+        while ((n = rTB.Find(s, n + 1, RichTextBoxFinds.MatchCase)) >= 0) // (260426Ch) 事前 Find を省略
         {
-            int n = -1;
-            while (rTB.Find(s, n + 1, RichTextBoxFinds.MatchCase) > n)
-            {
-                rTB.SelectionFont = new Font("Times New Roman", size, FontStyle.Regular);
-                rTB.SelectionCharOffset = -3;
-                n = rTB.Find(s, n + 1, RichTextBoxFinds.MatchCase);
-                rTB.Rtf = rTB.Rtf.Remove(rTB.Rtf.IndexOf(s), 3);
-            }
+            rTB.SelectionFont = new Font("Times New Roman", size, FontStyle.Regular);
+            rTB.SelectionCharOffset = -3;
+            rTB.Rtf = rTB.Rtf.Remove(rTB.Rtf.IndexOf(s), 3);
         }
     }
 
-    private static void ConvertRichTextBoxOffsetSup(ref RichTextBox rTB, string s, int size)
+    private static void ConvertRichTextBoxOffsetSup(RichTextBox rTB, string s, int size)
     {
-        if (rTB.Find(s, 0, RichTextBoxFinds.MatchCase) > -1)
+        int n = -1;
+        while ((n = rTB.Find(s, n + 1, RichTextBoxFinds.MatchCase)) >= 0) // (260426Ch)
         {
-            int n = -1;
-            while (rTB.Find(s, n + 1, RichTextBoxFinds.MatchCase) > n)
-            {
-                rTB.SelectionFont = new Font("Times New Roman", size, FontStyle.Regular);
-                rTB.SelectionCharOffset = +3;
-                n = rTB.Find(s, n + 1, RichTextBoxFinds.MatchCase);
-                rTB.Rtf = rTB.Rtf.Remove(rTB.Rtf.IndexOf('^'), 1);
-            }
+            rTB.SelectionFont = new Font("Times New Roman", size, FontStyle.Regular);
+            rTB.SelectionCharOffset = +3;
+            rTB.Rtf = rTB.Rtf.Remove(rTB.Rtf.IndexOf('^'), 1);
         }
     }
 
-    private static void ConvertRichTextBoxReset(ref RichTextBox rTB)
+    private static void ConvertRichTextBoxReset(RichTextBox rTB)
     {
         rTB.SelectAll();
         rTB.SelectionFont = new Font("Times New Roman", 14, FontStyle.Regular);
@@ -125,52 +95,38 @@ public partial class FormSymmetryInformation : CaptureFormBase
 
     private void FormCrystallographicInformation_Load(object sender, EventArgs e)
     {
-        CrystalControl.CrystalChanged += new EventHandler(crystalControl_CrystalChanged);
+        CrystalControl.CrystalChanged += (_, _) => ChangeCrystal(); // (260426Ch) 1 行 handler をインライン化
         ChangeCrystal();
     }
 
     //結晶を変更する
     public void ChangeCrystal()
     {
-
-        numericUpDown_ValueChanged(new object(), new EventArgs());
+        numericUpDown_ValueChanged(this, EventArgs.Empty); // (260426Ch) 不要な object/EventArgs 生成を避ける
         SetWyckoffPosition();
 
-        ConvertRichTextBoxReset(ref richTextBoxSG_HM);
-        ConvertRichTextBoxReset(ref richTextBoxSG_HM_full);
-        ConvertRichTextBoxReset(ref richTextBoxSG_SF);
-        ConvertRichTextBoxReset(ref richTextBoxSG_Hall);
-        ConvertRichTextBoxReset(ref richTextBoxPG_HM);
-        ConvertRichTextBoxReset(ref richTextBoxPG_SF);
-        ConvertRichTextBoxReset(ref richTextBoxLG);
-        ConvertRichTextBoxReset(ref richTextBoxCS);
-        ConvertRichTextBoxReset(ref richTextBoxExtinctionRule);
+        foreach (var rtb in new[] { richTextBoxSG_HM, richTextBoxSG_HM_full, richTextBoxSG_SF, richTextBoxSG_Hall, richTextBoxPG_HM, richTextBoxPG_SF, richTextBoxLG, richTextBoxCS, richTextBoxExtinctionRule }) // (260426Ch)
+            ConvertRichTextBoxReset(rtb);
 
-        richTextBoxSG_Num.Text = Crystal.Symmetry.SpaceGroupNumber.ToString() + ": " + Crystal.Symmetry.SpaceGroupSubNumber.ToString();
-        richTextBoxSG_HM.Text = Crystal.Symmetry.SpaceGroupHMStr;
-        richTextBoxSG_HM_full.Text = Crystal.Symmetry.SpaceGroupHMfullStr;
-        richTextBoxSG_SF.Text = Crystal.Symmetry.SpaceGroupSFStr;
-        richTextBoxSG_Hall.Text = Crystal.Symmetry.SpaceGroupHallStr;
-        richTextBoxPG_HM.Text = Crystal.Symmetry.PointGroupHMStr;
-        richTextBoxPG_SF.Text = Crystal.Symmetry.PointGroupSFStr;
-        richTextBoxLG.Text = Crystal.Symmetry.LaueGroupStr;
-        richTextBoxCS.Text = Crystal.Symmetry.CrystalSystemStr;
-        richTextBoxExtinctionRule.Text = "";
-        for (int n = 0; n < Crystal.Symmetry.ExtinctionRuleStr.Length; n++)
-            richTextBoxExtinctionRule.Text += Crystal.Symmetry.ExtinctionRuleStr[n] + "\r\n";
-        if (richTextBoxExtinctionRule.Text.Length == 0)
-            richTextBoxExtinctionRule.Text = "No Condition";
-        ConvertRichTextBox3(ref richTextBoxExtinctionRule);
+        var symmetry = Crystal.Symmetry;
+        richTextBoxSG_Num.Text = $"{symmetry.SpaceGroupNumber}: {symmetry.SpaceGroupSubNumber}";
+        richTextBoxSG_HM.Text = symmetry.SpaceGroupHMStr;
+        richTextBoxSG_HM_full.Text = symmetry.SpaceGroupHMfullStr;
+        richTextBoxSG_SF.Text = symmetry.SpaceGroupSFStr;
+        richTextBoxSG_Hall.Text = symmetry.SpaceGroupHallStr;
+        richTextBoxPG_HM.Text = symmetry.PointGroupHMStr;
+        richTextBoxPG_SF.Text = symmetry.PointGroupSFStr;
+        richTextBoxLG.Text = symmetry.LaueGroupStr;
+        richTextBoxCS.Text = symmetry.CrystalSystemStr;
+        richTextBoxExtinctionRule.Text = symmetry.ExtinctionRuleStr.Length == 0 ? "No Condition" : string.Join("\r\n", symmetry.ExtinctionRuleStr) + "\r\n"; // (260426Ch) 文字列連結ループを置換
+        ConvertRichTextBox3(richTextBoxExtinctionRule);
 
-        if (Crystal.Symmetry.SeriesNumber != 0)
+        if (symmetry.SeriesNumber != 0)
         {
-            ConvertRichTextBox1(ref richTextBoxSG_HM);
-            ConvertRichTextBox1(ref richTextBoxSG_HM_full);
-            ConvertRichTextBox2(ref richTextBoxSG_SF);
-            ConvertRichTextBox1(ref richTextBoxSG_Hall);
-            ConvertRichTextBox1(ref richTextBoxPG_HM);
-            ConvertRichTextBox2(ref richTextBoxPG_SF);
-            ConvertRichTextBox1(ref richTextBoxLG);
+            foreach (var rtb in new[] { richTextBoxSG_HM, richTextBoxSG_HM_full, richTextBoxSG_Hall, richTextBoxPG_HM, richTextBoxLG }) // (260426Ch)
+                ConvertRichTextBox1(rtb);
+            foreach (var rtb in new[] { richTextBoxSG_SF, richTextBoxPG_SF })
+                ConvertRichTextBox2(rtb);
 
             richTextBoxCS.SelectAll();
             richTextBoxCS.SelectionFont = new Font("Times New Roman", 15, FontStyle.Regular);
@@ -179,85 +135,66 @@ public partial class FormSymmetryInformation : CaptureFormBase
 
     private void numericUpDown_ValueChanged(object sender, EventArgs e)
     {
-        int h1 = (int)numericUpDownH1.Value;
-        int k1 = (int)numericUpDownK1.Value;
-        int l1 = (int)numericUpDownL1.Value;
-        int h2 = (int)numericUpDownH2.Value;
-        int k2 = (int)numericUpDownK2.Value;
-        int l2 = (int)numericUpDownL2.Value;
-        int u1 = (int)numericUpDownU1.Value;
-        int v1 = (int)numericUpDownV1.Value;
-        int w1 = (int)numericUpDownW1.Value;
-        int u2 = (int)numericUpDownU2.Value;
-        int v2 = (int)numericUpDownV2.Value;
-        int w2 = (int)numericUpDownW2.Value;
+        var plane1 = (h: (int)numericUpDownH1.Value, k: (int)numericUpDownK1.Value, l: (int)numericUpDownL1.Value); // (260426Ch)
+        var plane2 = (h: (int)numericUpDownH2.Value, k: (int)numericUpDownK2.Value, l: (int)numericUpDownL2.Value);
+        var axis1 = (u: (int)numericUpDownU1.Value, v: (int)numericUpDownV1.Value, w: (int)numericUpDownW1.Value);
+        var axis2 = (u: (int)numericUpDownU2.Value, v: (int)numericUpDownV2.Value, w: (int)numericUpDownW2.Value);
 
-        textBoxLengthPlane1.Text = (Crystal.GetLengthPlane(h1, k1, l1) * 10).ToString("f4");
-        textBoxLengthPlane2.Text = (Crystal.GetLengthPlane(h2, k2, l2) * 10).ToString("f4");
-        textBoxLengthAxis1.Text = (Crystal.GetLengthAxis(u1, v1, w1) * 10).ToString("f4");
-        textBoxLengthAxis2.Text = (Crystal.GetLengthAxis(u2, v2, w2) * 10).ToString("f4");
+        textBoxLengthPlane1.Text = (Crystal.GetLengthPlane(plane1.h, plane1.k, plane1.l) * 10).ToString("f4");
+        textBoxLengthPlane2.Text = (Crystal.GetLengthPlane(plane2.h, plane2.k, plane2.l) * 10).ToString("f4");
+        textBoxLengthAxis1.Text = (Crystal.GetLengthAxis(axis1.u, axis1.v, axis1.w) * 10).ToString("f4");
+        textBoxLengthAxis2.Text = (Crystal.GetLengthAxis(axis2.u, axis2.v, axis2.w) * 10).ToString("f4");
 
-        textBoxAnglePlanes.Text = (Crystal.GetAnglePlanes(h1, k1, l1, h2, k2, l2) * 180 / Math.PI).ToString("f4");
-        textBoxAngleAxes.Text = (Crystal.GetAngleAxes(u1, v1, w1, u2, v2, w2) * 180 / Math.PI).ToString("f4");
-        textBoxAnglePlaneAxis1.Text = (Crystal.GetAnglePlaneAxis(h1, k1, l1, u1, v1, w1) * 180 / Math.PI).ToString("f4");
-        textBoxAnglePlaneAxis2.Text = (Crystal.GetAnglePlaneAxis(h2, k2, l2, u2, v2, w2) * 180 / Math.PI).ToString("f4");
+        textBoxAnglePlanes.Text = (Crystal.GetAnglePlanes(plane1.h, plane1.k, plane1.l, plane2.h, plane2.k, plane2.l) * 180 / Math.PI).ToString("f4");
+        textBoxAngleAxes.Text = (Crystal.GetAngleAxes(axis1.u, axis1.v, axis1.w, axis2.u, axis2.v, axis2.w) * 180 / Math.PI).ToString("f4");
+        textBoxAnglePlaneAxis1.Text = (Crystal.GetAnglePlaneAxis(plane1.h, plane1.k, plane1.l, axis1.u, axis1.v, axis1.w) * 180 / Math.PI).ToString("f4");
+        textBoxAnglePlaneAxis2.Text = (Crystal.GetAnglePlaneAxis(plane2.h, plane2.k, plane2.l, axis2.u, axis2.v, axis2.w) * 180 / Math.PI).ToString("f4");
 
-        textBoxZoneAxis.Text = "[" + Crystal.GetZoneAxis(h1, k1, l1, h2, k2, l2) + " ]";
-        textBoxZonePlane.Text = "(" + Crystal.GetZoneAxis(u1, v1, w1, u2, v2, w2) + " )";
+        textBoxZoneAxis.Text = $"[{Crystal.GetZoneAxis(plane1.h, plane1.k, plane1.l, plane2.h, plane2.k, plane2.l)} ]";
+        textBoxZonePlane.Text = $"({Crystal.GetZoneAxis(axis1.u, axis1.v, axis1.w, axis2.u, axis2.v, axis2.w)} )";
     }
 
     private void SetWyckoffPosition()
     {
-        dataSet.Tables[0].Clear();
-        if (Crystal.Symmetry.LatticeTypeStr == "P")
-            dataSet.Tables[0].Rows.Add(new object[] { "-", "-", "-", "(0,0,0)+", "", "", "" });
-        else if (Crystal.Symmetry.LatticeTypeStr == "A")
-            dataSet.Tables[0].Rows.Add(new object[] { "-", "-", "-", "(0,0,0)+", "(0,1/2,1/2)+", "", "" });
-        else if (Crystal.Symmetry.LatticeTypeStr == "B")
-            dataSet.Tables[0].Rows.Add(new object[] { "-", "-", "-", "(0,0,0)+", "(1/2,0,1/2)+", "", "" });
-        else if (Crystal.Symmetry.LatticeTypeStr == "C")
-            dataSet.Tables[0].Rows.Add(new object[] { "-", "-", "-", "(0,0,0)+", "(1/2,1/2,0)+", "", "" });
-        else if (Crystal.Symmetry.LatticeTypeStr == "F")
-            dataSet.Tables[0].Rows.Add(new object[] { "-", "-", "-", "(0,0,0)+", "(0,1/2,1/2)+", "(1/2,0,1/2)+", "(0,1/2,1/2)+" });
-        else if (Crystal.Symmetry.LatticeTypeStr == "I")
-            dataSet.Tables[0].Rows.Add(new object[] { "-", "-", "-", "(0,0,0)+", "(1/2,1/2,1/2)+", "", "" });
-        else if (Crystal.Symmetry.LatticeTypeStr == "H")
-            dataSet.Tables[0].Rows.Add(new object[] { "-", "-", "-", "(0,0,0)+", "(1/3,2/3,2/3)+", "(2/3,1/3,1/3)+", "" });
+        var table = dataSet.Tables[0]; // (260426Ch)
+        table.Clear();
+        var centeringRow = Crystal.Symmetry.LatticeTypeStr switch
+        {
+            "P" => new object[] { "-", "-", "-", "(0,0,0)+", "", "", "" },
+            "A" => ["-", "-", "-", "(0,0,0)+", "(0,1/2,1/2)+", "", ""],
+            "B" => ["-", "-", "-", "(0,0,0)+", "(1/2,0,1/2)+", "", ""],
+            "C" => ["-", "-", "-", "(0,0,0)+", "(1/2,1/2,0)+", "", ""],
+            "F" => ["-", "-", "-", "(0,0,0)+", "(0,1/2,1/2)+", "(1/2,0,1/2)+", "(1/2,1/2,0)+"], // (260426Ch) 3 番目の F centering 座標 typo を修正
+            "I" => ["-", "-", "-", "(0,0,0)+", "(1/2,1/2,1/2)+", "", ""],
+            "H" => ["-", "-", "-", "(0,0,0)+", "(1/3,2/3,2/3)+", "(2/3,1/3,1/3)+", ""],
+            _ => null
+        };
+        if (centeringRow != null)
+            table.Rows.Add(centeringRow);
 
         Crystal.Symmetry = SymmetryStatic.Symmetries[Crystal.SymmetrySeriesNumber];
 
-        for (int i = 0; i < SymmetryStatic.WyckoffPositions[Crystal.SymmetrySeriesNumber].Length; i++)
+        foreach (var position in SymmetryStatic.WyckoffPositions[Crystal.SymmetrySeriesNumber])
         {
-            int len = SymmetryStatic.WyckoffPositions[Crystal.SymmetrySeriesNumber][i].PositionStr.Length;
+            var positions = position.PositionStr;
+            int len = positions.Length;
             for (int j = 0; j < len; j += 4)
             {
-                object[] o;
+                var row = new object[7];
                 if (j == 0)
                 {
-                    o = [
-                           SymmetryStatic.WyckoffPositions[Crystal.SymmetrySeriesNumber][i].Multiplicity,
-                           SymmetryStatic.WyckoffPositions[Crystal.SymmetrySeriesNumber][i].WyckoffLetter,
-                            SymmetryStatic.WyckoffPositions[Crystal.SymmetrySeriesNumber][i].SiteSymmetry,
-                            j<len ? SymmetryStatic.WyckoffPositions[Crystal.SymmetrySeriesNumber][i].PositionStr[j] : "",
-                            j+1<len ? SymmetryStatic.WyckoffPositions[Crystal.SymmetrySeriesNumber][i].PositionStr[j+1] : "",
-                            j+2<len ? SymmetryStatic.WyckoffPositions[Crystal.SymmetrySeriesNumber][i].PositionStr[j+2] : "",
-                            j+3<len ? SymmetryStatic.WyckoffPositions[Crystal.SymmetrySeriesNumber][i].PositionStr[j+3] : ""
-                        ];
+                    row[0] = position.Multiplicity;
+                    row[1] = position.WyckoffLetter;
+                    row[2] = position.SiteSymmetry;
                 }
                 else
                 {
-                    o = [
-                           "",
-                          "",
-                            "",
-                            j<len ? SymmetryStatic.WyckoffPositions[Crystal.SymmetrySeriesNumber][i].PositionStr[j] : "",
-                            j+1<len ? SymmetryStatic.WyckoffPositions[Crystal.SymmetrySeriesNumber][i].PositionStr[j+1] : "",
-                            j+2<len ? SymmetryStatic.WyckoffPositions[Crystal.SymmetrySeriesNumber][i].PositionStr[j+2] : "",
-                            j+3<len ? SymmetryStatic.WyckoffPositions[Crystal.SymmetrySeriesNumber][i].PositionStr[j+3] : ""
-                        ];
+                    row[0] = row[1] = row[2] = "";
                 }
+                for (int offset = 0; offset < 4; offset++)
+                    row[3 + offset] = j + offset < len ? positions[j + offset] : "";
 
-                dataSet.Tables[0].Rows.Add(o);
+                table.Rows.Add(row);
             }
         }
     }
@@ -265,7 +202,7 @@ public partial class FormSymmetryInformation : CaptureFormBase
     private void FormCrystallographicInformation_FormClosing(object sender, FormClosingEventArgs e)
     {
         e.Cancel = true;
-        this.Visible = false;
+        Visible = false; // (260426Ch)
     }
 
 }

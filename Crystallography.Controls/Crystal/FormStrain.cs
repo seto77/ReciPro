@@ -1,6 +1,7 @@
-﻿using MathNet.Numerics.LinearAlgebra;
+using MathNet.Numerics.LinearAlgebra;
 using MathNet.Numerics.LinearAlgebra.Double;
 using System;
+using System.ComponentModel;
 using System.Windows.Forms;
 
 namespace Crystallography.Controls;
@@ -10,17 +11,14 @@ public partial class FormStrain : CaptureFormBase
     public CrystalControl CrystalControl;
     public Crystal crystal;
 
-    [System.ComponentModel.Browsable(false)]
-    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
+    [Browsable(false)]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public Matrix3D StrainMatrix
     {
-        get
-        {
-            return new Matrix3D(
-                 numericBoxStrain11.Value + 1, numericBoxStrain12.Value, numericBoxStrain13.Value,
-                 numericBoxStrain12.Value, numericBoxStrain22.Value + 1, numericBoxStrain23.Value,
-                 numericBoxStrain13.Value, numericBoxStrain23.Value, numericBoxStrain33.Value + 1);
-        }
+        get => new(
+            numericBoxStrain11.Value + 1, numericBoxStrain12.Value, numericBoxStrain13.Value,
+            numericBoxStrain12.Value, numericBoxStrain22.Value + 1, numericBoxStrain23.Value,
+            numericBoxStrain13.Value, numericBoxStrain23.Value, numericBoxStrain33.Value + 1);
         set
         {
             numericBoxStrain11.Value = value.E11 - 1;
@@ -32,41 +30,38 @@ public partial class FormStrain : CaptureFormBase
         }
     }
 
-    // (260322Ch) WFO1000: Microsoft ??????????????????? ???????????
-    [System.ComponentModel.Browsable(false)]
-    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-    public Matrix<double> Compliance { set { elasticityControl1.Compliance = value; } get { return elasticityControl1.Compliance; } }
-    [System.ComponentModel.Browsable(false)]
-    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-    public Matrix<double> Stiffness { set { elasticityControl1.Stiffness = value; } get { return elasticityControl1.Stiffness; } }
-    [System.ComponentModel.Browsable(false)]
-    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-    public Elasticity.Mode ElasticityMode { set { elasticityControl1.Mode = value; } get { return elasticityControl1.Mode; } }
+    [Browsable(false)]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+    public Matrix<double> Compliance { get => elasticityControl1.Compliance; set => elasticityControl1.Compliance = value; }
 
-    public FormStrain()
-    {
-        InitializeComponent();
-    }
+    [Browsable(false)]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+    public Matrix<double> Stiffness { get => elasticityControl1.Stiffness; set => elasticityControl1.Stiffness = value; }
+
+    [Browsable(false)]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+    public Elasticity.Mode ElasticityMode { get => elasticityControl1.Mode; set => elasticityControl1.Mode = value; }
+
+    private bool skipCrystalChangedEvent = false;
+    private Crystal originalCrystal = null;
+
+    public FormStrain() => InitializeComponent();
 
     private void FormStrain_Load(object sender, EventArgs e)
-    {
-        CrystalControl.CrystalChanged += new EventHandler(crystalControl_CrystalChanged);
-    }
+        => CrystalControl.CrystalChanged += crystalControl_CrystalChanged;
 
     private void FormStrain_FormClosing(object sender, FormClosingEventArgs e)
     {
         e.Cancel = true;
-        this.Visible = false;
+        Visible = false;
     }
-
-    private bool skipCrystalChangedEvent = false;
 
     private void crystalControl_CrystalChanged(object sender, EventArgs e)
     {
-        if (skipCrystalChangedEvent || !this.Visible) return;
+        if (skipCrystalChangedEvent || !Visible) return;
 
-        //ここが呼ばれるのは、crystalControl側が操作されて結晶が変更される場合のみ。
-        //このformStrainがcrystalControlを変更する時は、その時だけこのイベントを無視する
+        // crystalControl 側の操作で結晶が変わった時のみ呼ばれる。
+        // FormStrain 自身が crystalControl を書き換える間はフラグで自分自身のイベントを無視する。
         skipCrystalChangedEvent = true;
         CrystalControl.GenerateFromInterface();
         originalCrystal = Deep.Copy(CrystalControl.Crystal);
@@ -74,13 +69,13 @@ public partial class FormStrain : CaptureFormBase
         SetStrainedCrystal();
         skipCrystalChangedEvent = false;
 
-        numericBoxStrain_ValueChanged(new object(), new EventArgs());
+        numericBoxStrain_ValueChanged(this, EventArgs.Empty);
     }
 
     private void numericBoxStrain_ValueChanged(object sender, EventArgs e)
     {
         skipCrystalChangedEvent = true;
-        var m = StrainMatrix * new Matrix3D(originalCrystal.A_Axis, originalCrystal.B_Axis, originalCrystal.C_Axis);//この歪の計算は間違っている！直さなければ。。。
+        var m = StrainMatrix * new Matrix3D(originalCrystal.A_Axis, originalCrystal.B_Axis, originalCrystal.C_Axis); // この歪の計算は間違っている！直さなければ。。。
 
         var a = new Vector3DBase(m.E11, m.E21, m.E31);
         var b = new Vector3DBase(m.E12, m.E22, m.E32);
@@ -102,16 +97,12 @@ public partial class FormStrain : CaptureFormBase
 
     private void calculateStress()
     {
-        if (!this.Visible) return;
+        if (!Visible) return;
         if (!skipCrystalChangedEvent) return;
 
-        var strain = DenseMatrix.OfArray(new double[,] {  {
-                numericBoxStrain11.Value,
-                numericBoxStrain22.Value,
-                numericBoxStrain33.Value,
-                numericBoxStrain23.Value*2,
-                numericBoxStrain13.Value*2,
-                numericBoxStrain12.Value*2 } }).Transpose();
+        var strain = DenseMatrix.OfArray(new[,] {{
+            numericBoxStrain11.Value, numericBoxStrain22.Value, numericBoxStrain33.Value,
+            numericBoxStrain23.Value * 2, numericBoxStrain13.Value * 2, numericBoxStrain12.Value * 2 }}).Transpose();
         var stress = elasticityControl1.Stiffness * strain;
 
         numericBoxStress11.Value = stress[0, 0];
@@ -122,16 +113,13 @@ public partial class FormStrain : CaptureFormBase
         numericBoxStress12.Value = stress[5, 0];
     }
 
-    private Crystal originalCrystal = null;
-
     private void FormStrain_VisibleChanged(object sender, EventArgs e)
     {
-        if (this.Visible)
+        if (Visible)
         {
             skipCrystalChangedEvent = true;
             CrystalControl.GenerateFromInterface();
             originalCrystal = Deep.Copy(CrystalControl.Crystal);
-
             SetStrainedCrystal();
             skipCrystalChangedEvent = false;
         }
@@ -154,30 +142,27 @@ public partial class FormStrain : CaptureFormBase
         skipCrystalChangedEvent = true;
 
         CrystalControl.SymmetrySeriesNumber = 1;
-        CrystalControl.Crystal.Atoms = Array.Empty<Atoms>();
-        for (int i = 0; i < originalCrystal.Atoms.Length; i++)
-            for (int j = 0; j < originalCrystal.Atoms[i].Atom.Length; j++)
+        CrystalControl.Crystal.Atoms = [];
+        foreach (var atomGroup in originalCrystal.Atoms)
+            foreach (var pos in atomGroup.Atom)
             {
-                var atom = Deep.Copy(originalCrystal.Atoms[i]);
-                atom.X = originalCrystal.Atoms[i].Atom[j].X;
-                atom.Y = originalCrystal.Atoms[i].Atom[j].Y;
-                atom.Z = originalCrystal.Atoms[i].Atom[j].Z;
+                var atom = Deep.Copy(atomGroup);
+                atom.X = pos.X;
+                atom.Y = pos.Y;
+                atom.Z = pos.Z;
                 CrystalControl.Crystal.AddAtoms(atom);
             }
         CrystalControl.SetToInterface();
-        numericBoxStrain_ValueChanged(new object(), new EventArgs());
+        numericBoxStrain_ValueChanged(this, EventArgs.Empty);
 
         skipCrystalChangedEvent = false;
     }
 
-    private void elasticityControl1_ValueChanged(object sender, EventArgs e)
-    {
-        calculateStress();
-    }
+    private void elasticityControl1_ValueChanged(object sender, EventArgs e) => calculateStress();
 
     private void buttonApply_Click(object sender, EventArgs e)
     {
         originalCrystal = CrystalControl.Crystal;
-        this.Visible = false;
+        Visible = false;
     }
 }

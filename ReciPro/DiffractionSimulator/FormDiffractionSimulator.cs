@@ -359,8 +359,6 @@ public partial class FormDiffractionSimulator : CaptureFormBase
         }
     }
 
-    public bool MillerBravaisActive => formMain.MillerBravaisActive;
-
     #endregion
 
     #region コンストラクタ、ロード、クローズ
@@ -1096,7 +1094,7 @@ public partial class FormDiffractionSimulator : CaptureFormBase
         var sb = new StringBuilder();
         if (toolStripButtonIndexLabels.Checked)
         {
-            if (MillerBravaisActive)
+            if (formMain.MillerBravaisActive) // (260426Ch) 1 行 wrapper をインライン化
                 sb.AppendLine($"{g.Index.h} {g.Index.k} {-g.Index.h - g.Index.k} {g.Index.l}");
             else
                 sb.AppendLine(g.Text);
@@ -1873,7 +1871,7 @@ public partial class FormDiffractionSimulator : CaptureFormBase
                 var useMB = formMain.MillerBravaisActive;
                 var g0 = FormMain.PlaneString(list[0].Index.h, list[0].Index.k, list[0].Index.l, useMB);                                                  // 260422Cl list[0] の指数文字列を一度だけ計算
                 var sb = new StringBuilder();
-                sb.Append($"The spot is a supoerposition of mutiple of g = {g0}\r\n");
+                sb.Append($"The spot is a superposition of multiple g vectors equivalent to g = {g0}\r\n"); // (260426Ch) typo 修正
                 sb.Append($"Coordinates of g = {g0}: ({list[0].X:f4}, {list[0].Y:f4}, {list[0].Z:f4})  in nm⁻¹\r\n");
                 for (int i = 0; i < list.Count; i++)
                     sb.Append($"  {i}   g = {FormMain.PlaneString(list[i].Index.h, list[i].Index.k, list[i].Index.l, useMB)};   F² = {list[i].F.MagnitudeSquared():f4}\r\n");
@@ -3228,7 +3226,7 @@ public partial class FormDiffractionSimulator : CaptureFormBase
 
     public void UpdatePlaneIndices()
     {
-        FormDiffractionBeamTable?.UpdatePlaneIndices(MillerBravaisActive);
+        FormDiffractionBeamTable?.UpdatePlaneIndices(formMain.MillerBravaisActive); // (260426Ch)
         Draw();
     }
 

@@ -75,7 +75,6 @@ public partial class FormStructureViewer : CaptureFormBase
     private bool ddpDeveloperModeEnabled = false;
     private bool updatingTransparencyModeItems = false;
 
-    public bool MillerBravaisActive => formMain.MillerBravaisActive;
     #endregion
 
     #region ローカルクラス
@@ -2044,7 +2043,7 @@ public partial class FormStructureViewer : CaptureFormBase
     public void UpdatePlaneIndices()
     {
         if (latticePlaneControl != null)
-            latticePlaneControl.MillerBravaisIndexActive = MillerBravaisActive;
+            latticePlaneControl.MillerBravaisIndexActive = formMain.MillerBravaisActive; // (260426Ch) 1 行 wrapper をインライン化
     }
 }
 

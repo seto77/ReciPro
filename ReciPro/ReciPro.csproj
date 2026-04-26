@@ -58,6 +58,8 @@
     <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
   </PropertyGroup>
 
+  <Import Project="..\Crystallography.Controls\build\CheckResxDuplicates.targets" />
+
   <Target Name="UnblockBuildOutput" AfterTargets="Build">
     <!-- (260320Ch) Win on ARM のアプリ制御で MOTW 付き DLL がブロックされるため、配布用出力から Zone.Identifier を除去 -->
     <Exec Condition="'$(OS)' == 'Windows_NT' and Exists('$(TargetDir)')" Command="powershell -NoProfile -NonInteractive -ExecutionPolicy Bypass -Command &quot;Get-ChildItem -LiteralPath '$(TargetDir)' -Recurse -File | Unblock-File&quot;" />

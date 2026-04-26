@@ -381,7 +381,6 @@
   <data name="tabControl.Size" type="System.Drawing.Size, System.Drawing">
     <value>470, 310</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="colorControl.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Right</value>
   </data>

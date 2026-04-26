@@ -142,7 +142,6 @@
   <data name="textBoxAtomInformation.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 18</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="textBoxAtomInformation.ScrollBars" type="System.Windows.Forms.ScrollBars, System.Windows.Forms">
     <value>Both</value>
   </data>

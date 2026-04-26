@@ -72,4 +72,6 @@
     <Using Include="SimdLinq" />
   </ItemGroup>
 
+  <Import Project="build\CheckResxDuplicates.targets" />
+
 </Project>

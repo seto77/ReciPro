@@ -227,7 +227,6 @@
   <data name="numericBoxGaussianBlurRadius.Size" type="System.Drawing.Size, System.Drawing">
     <value>80, 23</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="trackBarAdvancedMax.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left</value>
   </data>

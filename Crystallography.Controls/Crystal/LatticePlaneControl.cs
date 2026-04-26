@@ -1,6 +1,6 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
-using System.Data;
+using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
@@ -10,12 +10,12 @@ namespace Crystallography.Controls;
 public partial class LatticePlaneControl : CaptureUserControlBase
 {
     #region プロパティ, フィールド, イベントハンドラ
-    [System.ComponentModel.Browsable(false)]
-    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
+    [Browsable(false)]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public bool SkipEvent { get; set; } = false;
-    // (260322Ch) WFO1000: Microsoft ??????????????????? ???????????
-    [System.ComponentModel.Browsable(false)]
-    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
+
+    [Browsable(false)]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public Crystal Crystal
     {
         get => crystal;
@@ -35,109 +35,86 @@ public partial class LatticePlaneControl : CaptureUserControlBase
 
     private readonly DataSet.DataTableLatticePlaneDataTable table;
 
-    // 260425Cl WFO1000 対策: デザイナのシリアライゼーション対象から除外
-    [System.ComponentModel.Browsable(false)]
-    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
+    [Browsable(false)]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public bool MillerBravaisIndexActive { set => iDataGridViewTextBoxColumn.Visible = value; }
 
     #endregion
 
-    #region コンストラクタ
     public LatticePlaneControl()
     {
         InitializeComponent();
         table = dataSet.DataTableLatticePlane;
     }
-    #endregion
 
-    #region　LatticePlaneクラスを画面下部から生成/にセット
+    #region LatticePlane クラスを画面下部から生成 / にセット
 
-    public LatticePlane GetFromInterface()
-    {
-        return new LatticePlane(true, Crystal, numericBoxH.ValueInteger, numericBoxK.ValueInteger, numericBoxL.ValueInteger,
-           numericBoxDistance.Value, colorControl.Argb);
-    }
+    public LatticePlane GetFromInterface() =>
+        new(true, Crystal, numericBoxH.ValueInteger, numericBoxK.ValueInteger, numericBoxL.ValueInteger,
+            numericBoxDistance.Value, colorControl.Argb);
 
     public void SetToInterface(LatticePlane plane)
     {
         numericBoxH.Value = plane.Index.H;
         numericBoxK.Value = plane.Index.K;
         numericBoxL.Value = plane.Index.L;
-
         numericBoxDistance.Value = plane.Translation;
-
         colorControl.Color = Color.FromArgb(plane.ColorArgb);
     }
     #endregion
 
     #region データベース操作
-    /// <summary>データベースにbondsを追加する</summary>
-    /// <param name="bonds"></param>
+
+    private void NotifyChanged()
+    {
+        if (crystal == null) return;
+        crystal.LatticePlanes = GetAll();
+        ItemsChanged?.Invoke(this, EventArgs.Empty);
+    }
+
     public void Add(LatticePlane plane)
     {
-        if (plane != null && plane.Index != (0, 0, 0))
-        {
-            table.Add(plane);
-            crystal.LatticePlanes = GetAll();
-            ItemsChanged?.Invoke(this, new EventArgs());
-        }
+        if (plane == null || plane.Index == (0, 0, 0)) return;
+        table.Add(plane);
+        NotifyChanged();
     }
 
-    /// <summary>データベースに原子を追加する</summary>
-    /// <param name="bonds"></param>
     public void AddRange(IEnumerable<LatticePlane> planes)
     {
-        if (planes != null)
-        {
-            SkipEvent = true;
-            foreach (var b in planes.Where(p => p.Index != (0, 0, 0)))
-                table.Add(b);
-            SkipEvent = false;
-            crystal.LatticePlanes = GetAll();
-            ItemsChanged?.Invoke(this, new EventArgs());
-            bindingSource_PositionChanged(this, new EventArgs());
-        }
+        if (planes == null) return;
+        SkipEvent = true;
+        foreach (var p in planes.Where(p => p.Index != (0, 0, 0)))
+            table.Add(p);
+        SkipEvent = false;
+        NotifyChanged();
+        bindingSource_PositionChanged(this, EventArgs.Empty);
     }
 
-    /// <summary>データベースのi番目の原子を削除</summary>
-    /// <param name="i"></param>
     public void Delete(int i)
     {
         table.Remove(i);
-        crystal.LatticePlanes = GetAll();
-        ItemsChanged?.Invoke(this, new EventArgs());
+        NotifyChanged();
     }
 
-    /// <summary>データベースのi番目の原子を置換</summary>
-    /// <param name="bonds"></param>
-    /// <param name="i"></param>
-    public void Replace(LatticePlane bounds, int i)
+    public void Replace(LatticePlane plane, int i)
     {
-        table.Replace(bounds, i);
-        crystal.LatticePlanes = GetAll();
-        ItemsChanged?.Invoke(this, new EventArgs());
+        table.Replace(plane, i);
+        NotifyChanged();
     }
 
-    /// <summary>データベースの原子を全て削除する</summary>
     public void Clear()
     {
         table.Clear();
-        crystal.LatticePlanes = GetAll();
-        ItemsChanged?.Invoke(this, new EventArgs());
+        NotifyChanged();
     }
 
-    /// <summary>データベース中の全ての原子を取得</summary>
-    /// <returns></returns>
     public LatticePlane[] GetAll() => table.GetAll();
 
     #endregion
 
     #region 追加/削除/置換 ボタン
 
-    /// <summary>追加ボタン</summary>
-    /// <param name="sender"></param>
-    /// <param name="e"></param>
-    private void buttonAdd_Click(object sender, System.EventArgs e)
+    private void buttonAdd_Click(object sender, EventArgs e)
     {
         var plane = GetFromInterface();
         if (plane != null && plane.Index != (0, 0, 0))
@@ -147,65 +124,51 @@ public partial class LatticePlaneControl : CaptureUserControlBase
         }
     }
 
-    /// <summary>変更ボタン</summary>
-    /// <param name="sender"></param>
-    /// <param name="e"></param>
-    private void buttonChange_Click(object sender, System.EventArgs e)
+    private void buttonChange_Click(object sender, EventArgs e)
     {
         var pos = bindingSource.Position;
-        if (pos >= 0)
-        {
-            Replace(GetFromInterface(), pos);
-            bindingSource.Position = pos;
-        }
+        if (pos < 0) return;
+        Replace(GetFromInterface(), pos);
+        bindingSource.Position = pos;
     }
 
-    /// <summary>削除ボタン</summary>
-    /// <param name="sender"></param>
-    /// <param name="e"></param>
-    private void buttonDelete_Click(object sender, System.EventArgs e)
+    private void buttonDelete_Click(object sender, EventArgs e)
     {
         int pos = bindingSource.Position;
-        if (pos >= 0)
-        {
-            SkipEvent = true;//bindingSourceAtoms_PositionChangedが呼ばれるのを防ぐ
-            Delete(pos);
-            SkipEvent = false;
-            bindingSource.Position = bindingSource.Count > pos ? pos : pos - 1;//選択列を選択しなおす
-        }
+        if (pos < 0) return;
+        SkipEvent = true; // bindingSource_PositionChanged が走らないように抑止
+        Delete(pos);
+        SkipEvent = false;
+        bindingSource.Position = bindingSource.Count > pos ? pos : pos - 1;
     }
 
     #endregion
 
-    #region bindingSourceイベント
-    //選択Atomが変更されたとき
-    private void bindingSource_PositionChanged(object sender, System.EventArgs e)
+    #region bindingSource / dataGridView イベント
+    private void bindingSource_PositionChanged(object sender, EventArgs e)
     {
         if (SkipEvent) return;
-
         if (bindingSource.Position >= 0 && bindingSource.Count > 0)
             SetToInterface(dataSet.DataTableLatticePlane.Get(bindingSource.Position));
     }
-    #endregion
 
-    #region dataGridView イベント
     private void dataGridView_CurrentCellDirtyStateChanged(object sender, EventArgs e)
-    {//チェックボックスが変わると即座に反映させる
+    {
+        // チェックボックスを即時コミットして CellValueChanged を発火させる
         if (dataGridView.CurrentCellAddress.X == 0 && dataGridView.IsCurrentCellDirty)
-            dataGridView.CommitEdit(DataGridViewDataErrorContexts.Commit);//コミットする
+            dataGridView.CommitEdit(DataGridViewDataErrorContexts.Commit);
     }
+
     private void dataGridView_CellValueChanged(object sender, DataGridViewCellEventArgs e)
     {
-        if (e.ColumnIndex == 0 && e.RowIndex >= 0)
-        {
-            table.Get(bindingSource.Position).Enabled =
-                (bool)dataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value;
-            ItemsChanged?.Invoke(this, new EventArgs());
-        }
+        if (e.ColumnIndex != 0 || e.RowIndex < 0) return;
+        table.Get(bindingSource.Position).Enabled = (bool)dataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value;
+        ItemsChanged?.Invoke(this, EventArgs.Empty);
     }
     #endregion
 
-    private void numericBoxH_ValueChanged(object sender, EventArgs e) => numericBoxI.Value = -numericBoxH.Value - numericBoxK.Value;
+    private void numericBoxH_ValueChanged(object sender, EventArgs e) =>
+        numericBoxI.Value = -numericBoxH.Value - numericBoxK.Value;
 
     private void dataGridView_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
     {
@@ -213,8 +176,7 @@ public partial class LatticePlaneControl : CaptureUserControlBase
         var row = dataGridView.Rows[e.RowIndex];
         var h = Convert.ToInt32(row.Cells[hDataGridViewTextBoxColumn.Index].Value);
         var k = Convert.ToInt32(row.Cells[kDataGridViewTextBoxColumn.Index].Value);
-        e.Value = (-h - k).ToString(); // (260424Ch) TextBoxCell の表示値は string にして DataGridView の型不一致を避ける
+        e.Value = (-h - k).ToString();
         e.FormattingApplied = true;
     }
 }
-

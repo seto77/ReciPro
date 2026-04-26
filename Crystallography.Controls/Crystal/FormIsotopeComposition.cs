@@ -1,87 +1,52 @@
-﻿using System;
+using System;
+using System.ComponentModel;
 using System.Windows.Forms;
 
-namespace Crystallography.Controls
+namespace Crystallography.Controls;
+
+public partial class FormIsotopeComposition : CaptureFormBase
 {
-    public partial class FormIsotopeComposition : CaptureFormBase
+    public FormIsotopeComposition() => InitializeComponent();
+
+    [Browsable(false)]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+    public int AtomNumber { get; set; } = 0;
+
+    private double[] isotopicComposition = null;
+
+    [Browsable(false)]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+    public double[] IsotopicComposition
     {
-        public FormIsotopeComposition()
+        set
         {
-            InitializeComponent();
+            isotopicComposition = value;
+            var abundance = AtomStatic.IsotopeAbundance[AtomNumber];
+            dataGridView.Rows.Clear();
+            int n = 0;
+            bool keep = isotopicComposition != null && isotopicComposition.Length == abundance.Count;
+            foreach (int z in abundance.Keys)
+                dataGridView.Rows.Add([z.ToString(), abundance[z], keep ? isotopicComposition[n++] : abundance[z]]);
         }
-
-        private int atomNumber = 0;
-
-        // (260322Ch) WFO1000: Microsoft ??????????????????? ???????????
-        [System.ComponentModel.Browsable(false)]
-        [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public int AtomNumber
+        get
         {
-            set { atomNumber = value; }
-            get { return atomNumber; }
+            isotopicComposition = new double[AtomStatic.IsotopeAbundance[AtomNumber].Count];
+            for (int i = 0; i < dataGridView.Rows.Count; i++)
+                isotopicComposition[i] = double.TryParse(dataGridView[2, i].Value?.ToString(), out var d) ? d : 0;
+            return isotopicComposition;
         }
+    }
 
-        private double[] isotopicComposition = null;
+    private void button1_Click(object sender, EventArgs e) { }
+    private void dataGridView_CellValueChanged(object sender, DataGridViewCellEventArgs e) { }
 
-        [System.ComponentModel.Browsable(false)]
-        [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public double[] IsotopicComposition
+    private void dataGridView_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
+    {
+        if (e.RowIndex < 0 || e.ColumnIndex < 1) return;
+        if (!double.TryParse(e.FormattedValue?.ToString(), out var d) || d > 100)
         {
-            set
-            {
-                isotopicComposition = value;
-                if (isotopicComposition == null || isotopicComposition.Length != AtomStatic.IsotopeAbundance[atomNumber].Count)
-                {
-                    dataGridView.Rows.Clear();
-                    foreach (int z in AtomStatic.IsotopeAbundance[atomNumber].Keys)
-                        dataGridView.Rows.Add([z.ToString(), AtomStatic.IsotopeAbundance[atomNumber][z], AtomStatic.IsotopeAbundance[atomNumber][z]]);
-                }
-                else
-                {
-                    int n = 0;
-                    foreach (int z in AtomStatic.IsotopeAbundance[atomNumber].Keys)
-                        dataGridView.Rows.Add([z, AtomStatic.IsotopeAbundance[atomNumber][z], isotopicComposition[n++]]);
-                }
-            }
-            get
-            {
-                isotopicComposition = new double[AtomStatic.IsotopeAbundance[atomNumber].Count];
-                for (int i = 0; i < dataGridView.Rows.Count; i++)
-                {
-                    try
-                    {
-                        isotopicComposition[i] = Convert.ToDouble(dataGridView[2, i].Value);
-                    }
-                    catch
-                    {
-                        isotopicComposition[i] = 0;
-                    }
-                }
-                return isotopicComposition;
-            }
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void dataGridView_CellValueChanged(object sender, DataGridViewCellEventArgs e)
-        {
-        }
-
-        private void dataGridView_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
-        {
-            if (e.RowIndex < 0 || e.ColumnIndex < 1) return;
-            try
-            {
-                double d = Convert.ToDouble(e.FormattedValue);
-                if (d > 100) throw new ArgumentException();
-            }
-            catch
-            {
-                MessageBox.Show("Incorrect Value!");
-                e.Cancel = true;
-            }
+            MessageBox.Show("Incorrect Value!");
+            e.Cancel = true;
         }
     }
 }

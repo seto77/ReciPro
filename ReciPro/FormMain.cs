@@ -158,7 +158,7 @@ public partial class FormMain : CaptureFormBase
     }
     
     // 4 指数 (Miller-Bravais) 表記を有効にするかどうか。レジストリに保存。
-    // 実際の表示切替は IsMillerBravaisActive で「UseMillerBravais && 晶系が4指数可」を判定してから行う。
+    // 実際の表示切替は MillerBravaisActive で「UseMillerBravais && 晶系が4指数可」を判定してから行う。 // (260426Ch) 名称 typo 修正
     public bool UseMillerBravais
     {
         get => toolStripMenuItemUseMillerBravais != null && toolStripMenuItemUseMillerBravais.Checked;
