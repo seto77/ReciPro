@@ -87,26 +87,26 @@
             richTextBoxSG_Num = new System.Windows.Forms.RichTextBox();
             groupBoxGeometricsCalculation = new System.Windows.Forms.GroupBox();
             textBoxAnglePlanes = new System.Windows.Forms.TextBox();
-            numericUpDownW2 = new System.Windows.Forms.NumericUpDown();
+            numericBoxW2 = new Crystallography.Controls.NumericBox();
             label42 = new System.Windows.Forms.Label();
-            numericUpDownU2 = new System.Windows.Forms.NumericUpDown();
-            numericUpDownU1 = new System.Windows.Forms.NumericUpDown();
-            numericUpDownL2 = new System.Windows.Forms.NumericUpDown();
-            numericUpDownV2 = new System.Windows.Forms.NumericUpDown();
-            numericUpDownK2 = new System.Windows.Forms.NumericUpDown();
-            numericUpDownV1 = new System.Windows.Forms.NumericUpDown();
+            numericBoxU2 = new Crystallography.Controls.NumericBox();
+            numericBoxU1 = new Crystallography.Controls.NumericBox();
+            numericBoxL2 = new Crystallography.Controls.NumericBox();
+            numericBoxV2 = new Crystallography.Controls.NumericBox();
+            numericBoxK2 = new Crystallography.Controls.NumericBox();
+            numericBoxV1 = new Crystallography.Controls.NumericBox();
             label27 = new System.Windows.Forms.Label();
-            numericUpDownK1 = new System.Windows.Forms.NumericUpDown();
+            numericBoxK1 = new Crystallography.Controls.NumericBox();
             label48 = new System.Windows.Forms.Label();
-            numericUpDownH2 = new System.Windows.Forms.NumericUpDown();
+            numericBoxH2 = new Crystallography.Controls.NumericBox();
             label34 = new System.Windows.Forms.Label();
             label3 = new System.Windows.Forms.Label();
-            numericUpDownW1 = new System.Windows.Forms.NumericUpDown();
-            numericUpDownH1 = new System.Windows.Forms.NumericUpDown();
+            numericBoxW1 = new Crystallography.Controls.NumericBox();
+            numericBoxH1 = new Crystallography.Controls.NumericBox();
             textBoxLengthAxis1 = new System.Windows.Forms.TextBox();
             label24 = new System.Windows.Forms.Label();
             label26 = new System.Windows.Forms.Label();
-            numericUpDownL1 = new System.Windows.Forms.NumericUpDown();
+            numericBoxL1 = new Crystallography.Controls.NumericBox();
             label28 = new System.Windows.Forms.Label();
             label7 = new System.Windows.Forms.Label();
             textBoxZonePlane = new System.Windows.Forms.TextBox();
@@ -144,18 +144,6 @@
             ((System.ComponentModel.ISupportInitialize)dataTableWyckoff).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataTablePlanes).BeginInit();
             groupBoxGeometricsCalculation.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)numericUpDownW2).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDownU2).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDownU1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDownL2).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDownV2).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDownK2).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDownV1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDownK1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDownH2).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDownW1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDownH1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDownL1).BeginInit();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)bindingSourceScatteringFactor).BeginInit();
             SuspendLayout();
@@ -657,26 +645,26 @@
             // 
             groupBoxGeometricsCalculation.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
             groupBoxGeometricsCalculation.Controls.Add(textBoxAnglePlanes);
-            groupBoxGeometricsCalculation.Controls.Add(numericUpDownW2);
+            groupBoxGeometricsCalculation.Controls.Add(numericBoxW2);
             groupBoxGeometricsCalculation.Controls.Add(label42);
-            groupBoxGeometricsCalculation.Controls.Add(numericUpDownU2);
-            groupBoxGeometricsCalculation.Controls.Add(numericUpDownU1);
-            groupBoxGeometricsCalculation.Controls.Add(numericUpDownL2);
-            groupBoxGeometricsCalculation.Controls.Add(numericUpDownV2);
-            groupBoxGeometricsCalculation.Controls.Add(numericUpDownK2);
-            groupBoxGeometricsCalculation.Controls.Add(numericUpDownV1);
+            groupBoxGeometricsCalculation.Controls.Add(numericBoxU2);
+            groupBoxGeometricsCalculation.Controls.Add(numericBoxU1);
+            groupBoxGeometricsCalculation.Controls.Add(numericBoxL2);
+            groupBoxGeometricsCalculation.Controls.Add(numericBoxV2);
+            groupBoxGeometricsCalculation.Controls.Add(numericBoxK2);
+            groupBoxGeometricsCalculation.Controls.Add(numericBoxV1);
             groupBoxGeometricsCalculation.Controls.Add(label27);
-            groupBoxGeometricsCalculation.Controls.Add(numericUpDownK1);
+            groupBoxGeometricsCalculation.Controls.Add(numericBoxK1);
             groupBoxGeometricsCalculation.Controls.Add(label48);
-            groupBoxGeometricsCalculation.Controls.Add(numericUpDownH2);
+            groupBoxGeometricsCalculation.Controls.Add(numericBoxH2);
             groupBoxGeometricsCalculation.Controls.Add(label34);
             groupBoxGeometricsCalculation.Controls.Add(label3);
-            groupBoxGeometricsCalculation.Controls.Add(numericUpDownW1);
-            groupBoxGeometricsCalculation.Controls.Add(numericUpDownH1);
+            groupBoxGeometricsCalculation.Controls.Add(numericBoxW1);
+            groupBoxGeometricsCalculation.Controls.Add(numericBoxH1);
             groupBoxGeometricsCalculation.Controls.Add(textBoxLengthAxis1);
             groupBoxGeometricsCalculation.Controls.Add(label24);
             groupBoxGeometricsCalculation.Controls.Add(label26);
-            groupBoxGeometricsCalculation.Controls.Add(numericUpDownL1);
+            groupBoxGeometricsCalculation.Controls.Add(numericBoxL1);
             groupBoxGeometricsCalculation.Controls.Add(label28);
             groupBoxGeometricsCalculation.Controls.Add(label7);
             groupBoxGeometricsCalculation.Controls.Add(textBoxZonePlane);
@@ -717,17 +705,18 @@
             textBoxAnglePlanes.TabIndex = 12;
             textBoxAnglePlanes.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // numericUpDownW2
+            // numericBoxW2
             // 
-            numericUpDownW2.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            numericUpDownW2.Location = new System.Drawing.Point(501, 75);
-            numericUpDownW2.Maximum = new decimal(new int[] { 20, 0, 0, 0 });
-            numericUpDownW2.Minimum = new decimal(new int[] { 20, 0, 0, int.MinValue });
-            numericUpDownW2.Name = "numericUpDownW2";
-            numericUpDownW2.Size = new System.Drawing.Size(36, 23);
-            numericUpDownW2.TabIndex = 11;
-            numericUpDownW2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            numericUpDownW2.ValueChanged += numericUpDown_ValueChanged;
+            numericBoxW2.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            numericBoxW2.Location = new System.Drawing.Point(501, 75);
+            numericBoxW2.Maximum = 20D;
+            numericBoxW2.Minimum = -20D;
+            numericBoxW2.Name = "numericBoxW2";
+            numericBoxW2.Size = new System.Drawing.Size(36, 23);
+            numericBoxW2.TabIndex = 11;
+            numericBoxW2.DecimalPlaces = 0;
+            numericBoxW2.ShowUpDown = true;
+            numericBoxW2.ValueChanged += numericBox_ValueChanged;
             // 
             // label42
             // 
@@ -738,77 +727,83 @@
             label42.TabIndex = 6;
             label42.Text = "The plane normal to both axes";
             // 
-            // numericUpDownU2
+            // numericBoxU2
             // 
-            numericUpDownU2.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            numericUpDownU2.Location = new System.Drawing.Point(429, 75);
-            numericUpDownU2.Maximum = new decimal(new int[] { 20, 0, 0, 0 });
-            numericUpDownU2.Minimum = new decimal(new int[] { 20, 0, 0, int.MinValue });
-            numericUpDownU2.Name = "numericUpDownU2";
-            numericUpDownU2.Size = new System.Drawing.Size(36, 23);
-            numericUpDownU2.TabIndex = 9;
-            numericUpDownU2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            numericUpDownU2.ValueChanged += numericUpDown_ValueChanged;
+            numericBoxU2.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            numericBoxU2.Location = new System.Drawing.Point(429, 75);
+            numericBoxU2.Maximum = 20D;
+            numericBoxU2.Minimum = -20D;
+            numericBoxU2.Name = "numericBoxU2";
+            numericBoxU2.Size = new System.Drawing.Size(36, 23);
+            numericBoxU2.TabIndex = 9;
+            numericBoxU2.DecimalPlaces = 0;
+            numericBoxU2.ShowUpDown = true;
+            numericBoxU2.ValueChanged += numericBox_ValueChanged;
             // 
-            // numericUpDownU1
+            // numericBoxU1
             // 
-            numericUpDownU1.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            numericUpDownU1.Location = new System.Drawing.Point(429, 32);
-            numericUpDownU1.Maximum = new decimal(new int[] { 20, 0, 0, 0 });
-            numericUpDownU1.Minimum = new decimal(new int[] { 20, 0, 0, int.MinValue });
-            numericUpDownU1.Name = "numericUpDownU1";
-            numericUpDownU1.Size = new System.Drawing.Size(36, 23);
-            numericUpDownU1.TabIndex = 6;
-            numericUpDownU1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            numericUpDownU1.ValueChanged += numericUpDown_ValueChanged;
+            numericBoxU1.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            numericBoxU1.Location = new System.Drawing.Point(429, 32);
+            numericBoxU1.Maximum = 20D;
+            numericBoxU1.Minimum = -20D;
+            numericBoxU1.Name = "numericBoxU1";
+            numericBoxU1.Size = new System.Drawing.Size(36, 23);
+            numericBoxU1.TabIndex = 6;
+            numericBoxU1.DecimalPlaces = 0;
+            numericBoxU1.ShowUpDown = true;
+            numericBoxU1.ValueChanged += numericBox_ValueChanged;
             // 
-            // numericUpDownL2
+            // numericBoxL2
             // 
-            numericUpDownL2.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            numericUpDownL2.Location = new System.Drawing.Point(193, 75);
-            numericUpDownL2.Maximum = new decimal(new int[] { 20, 0, 0, 0 });
-            numericUpDownL2.Minimum = new decimal(new int[] { 20, 0, 0, int.MinValue });
-            numericUpDownL2.Name = "numericUpDownL2";
-            numericUpDownL2.Size = new System.Drawing.Size(36, 23);
-            numericUpDownL2.TabIndex = 5;
-            numericUpDownL2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            numericUpDownL2.ValueChanged += numericUpDown_ValueChanged;
+            numericBoxL2.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            numericBoxL2.Location = new System.Drawing.Point(193, 75);
+            numericBoxL2.Maximum = 20D;
+            numericBoxL2.Minimum = -20D;
+            numericBoxL2.Name = "numericBoxL2";
+            numericBoxL2.Size = new System.Drawing.Size(36, 23);
+            numericBoxL2.TabIndex = 5;
+            numericBoxL2.DecimalPlaces = 0;
+            numericBoxL2.ShowUpDown = true;
+            numericBoxL2.ValueChanged += numericBox_ValueChanged;
             // 
-            // numericUpDownV2
+            // numericBoxV2
             // 
-            numericUpDownV2.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            numericUpDownV2.Location = new System.Drawing.Point(465, 75);
-            numericUpDownV2.Maximum = new decimal(new int[] { 20, 0, 0, 0 });
-            numericUpDownV2.Minimum = new decimal(new int[] { 20, 0, 0, int.MinValue });
-            numericUpDownV2.Name = "numericUpDownV2";
-            numericUpDownV2.Size = new System.Drawing.Size(36, 23);
-            numericUpDownV2.TabIndex = 10;
-            numericUpDownV2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            numericUpDownV2.ValueChanged += numericUpDown_ValueChanged;
+            numericBoxV2.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            numericBoxV2.Location = new System.Drawing.Point(465, 75);
+            numericBoxV2.Maximum = 20D;
+            numericBoxV2.Minimum = -20D;
+            numericBoxV2.Name = "numericBoxV2";
+            numericBoxV2.Size = new System.Drawing.Size(36, 23);
+            numericBoxV2.TabIndex = 10;
+            numericBoxV2.DecimalPlaces = 0;
+            numericBoxV2.ShowUpDown = true;
+            numericBoxV2.ValueChanged += numericBox_ValueChanged;
             // 
-            // numericUpDownK2
+            // numericBoxK2
             // 
-            numericUpDownK2.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            numericUpDownK2.Location = new System.Drawing.Point(157, 75);
-            numericUpDownK2.Maximum = new decimal(new int[] { 20, 0, 0, 0 });
-            numericUpDownK2.Minimum = new decimal(new int[] { 20, 0, 0, int.MinValue });
-            numericUpDownK2.Name = "numericUpDownK2";
-            numericUpDownK2.Size = new System.Drawing.Size(36, 23);
-            numericUpDownK2.TabIndex = 4;
-            numericUpDownK2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            numericUpDownK2.ValueChanged += numericUpDown_ValueChanged;
+            numericBoxK2.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            numericBoxK2.Location = new System.Drawing.Point(157, 75);
+            numericBoxK2.Maximum = 20D;
+            numericBoxK2.Minimum = -20D;
+            numericBoxK2.Name = "numericBoxK2";
+            numericBoxK2.Size = new System.Drawing.Size(36, 23);
+            numericBoxK2.TabIndex = 4;
+            numericBoxK2.DecimalPlaces = 0;
+            numericBoxK2.ShowUpDown = true;
+            numericBoxK2.ValueChanged += numericBox_ValueChanged;
             // 
-            // numericUpDownV1
+            // numericBoxV1
             // 
-            numericUpDownV1.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            numericUpDownV1.Location = new System.Drawing.Point(465, 32);
-            numericUpDownV1.Maximum = new decimal(new int[] { 20, 0, 0, 0 });
-            numericUpDownV1.Minimum = new decimal(new int[] { 20, 0, 0, int.MinValue });
-            numericUpDownV1.Name = "numericUpDownV1";
-            numericUpDownV1.Size = new System.Drawing.Size(36, 23);
-            numericUpDownV1.TabIndex = 7;
-            numericUpDownV1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            numericUpDownV1.ValueChanged += numericUpDown_ValueChanged;
+            numericBoxV1.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            numericBoxV1.Location = new System.Drawing.Point(465, 32);
+            numericBoxV1.Maximum = 20D;
+            numericBoxV1.Minimum = -20D;
+            numericBoxV1.Name = "numericBoxV1";
+            numericBoxV1.Size = new System.Drawing.Size(36, 23);
+            numericBoxV1.TabIndex = 7;
+            numericBoxV1.DecimalPlaces = 0;
+            numericBoxV1.ShowUpDown = true;
+            numericBoxV1.ValueChanged += numericBox_ValueChanged;
             // 
             // label27
             // 
@@ -819,17 +814,18 @@
             label27.TabIndex = 6;
             label27.Text = "[";
             // 
-            // numericUpDownK1
+            // numericBoxK1
             // 
-            numericUpDownK1.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            numericUpDownK1.Location = new System.Drawing.Point(157, 29);
-            numericUpDownK1.Maximum = new decimal(new int[] { 20, 0, 0, 0 });
-            numericUpDownK1.Minimum = new decimal(new int[] { 20, 0, 0, int.MinValue });
-            numericUpDownK1.Name = "numericUpDownK1";
-            numericUpDownK1.Size = new System.Drawing.Size(36, 23);
-            numericUpDownK1.TabIndex = 1;
-            numericUpDownK1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            numericUpDownK1.ValueChanged += numericUpDown_ValueChanged;
+            numericBoxK1.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            numericBoxK1.Location = new System.Drawing.Point(157, 29);
+            numericBoxK1.Maximum = 20D;
+            numericBoxK1.Minimum = -20D;
+            numericBoxK1.Name = "numericBoxK1";
+            numericBoxK1.Size = new System.Drawing.Size(36, 23);
+            numericBoxK1.TabIndex = 1;
+            numericBoxK1.DecimalPlaces = 0;
+            numericBoxK1.ShowUpDown = true;
+            numericBoxK1.ValueChanged += numericBox_ValueChanged;
             // 
             // label48
             // 
@@ -840,17 +836,18 @@
             label48.TabIndex = 6;
             label48.Text = "]";
             // 
-            // numericUpDownH2
+            // numericBoxH2
             // 
-            numericUpDownH2.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            numericUpDownH2.Location = new System.Drawing.Point(121, 75);
-            numericUpDownH2.Maximum = new decimal(new int[] { 20, 0, 0, 0 });
-            numericUpDownH2.Minimum = new decimal(new int[] { 20, 0, 0, int.MinValue });
-            numericUpDownH2.Name = "numericUpDownH2";
-            numericUpDownH2.Size = new System.Drawing.Size(36, 23);
-            numericUpDownH2.TabIndex = 3;
-            numericUpDownH2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            numericUpDownH2.ValueChanged += numericUpDown_ValueChanged;
+            numericBoxH2.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            numericBoxH2.Location = new System.Drawing.Point(121, 75);
+            numericBoxH2.Maximum = 20D;
+            numericBoxH2.Minimum = -20D;
+            numericBoxH2.Name = "numericBoxH2";
+            numericBoxH2.Size = new System.Drawing.Size(36, 23);
+            numericBoxH2.TabIndex = 3;
+            numericBoxH2.DecimalPlaces = 0;
+            numericBoxH2.ShowUpDown = true;
+            numericBoxH2.ValueChanged += numericBox_ValueChanged;
             // 
             // label34
             // 
@@ -870,29 +867,31 @@
             label3.TabIndex = 6;
             label3.Text = ")";
             // 
-            // numericUpDownW1
+            // numericBoxW1
             // 
-            numericUpDownW1.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            numericUpDownW1.Location = new System.Drawing.Point(501, 32);
-            numericUpDownW1.Maximum = new decimal(new int[] { 20, 0, 0, 0 });
-            numericUpDownW1.Minimum = new decimal(new int[] { 20, 0, 0, int.MinValue });
-            numericUpDownW1.Name = "numericUpDownW1";
-            numericUpDownW1.Size = new System.Drawing.Size(36, 23);
-            numericUpDownW1.TabIndex = 8;
-            numericUpDownW1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            numericUpDownW1.ValueChanged += numericUpDown_ValueChanged;
+            numericBoxW1.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            numericBoxW1.Location = new System.Drawing.Point(501, 32);
+            numericBoxW1.Maximum = 20D;
+            numericBoxW1.Minimum = -20D;
+            numericBoxW1.Name = "numericBoxW1";
+            numericBoxW1.Size = new System.Drawing.Size(36, 23);
+            numericBoxW1.TabIndex = 8;
+            numericBoxW1.DecimalPlaces = 0;
+            numericBoxW1.ShowUpDown = true;
+            numericBoxW1.ValueChanged += numericBox_ValueChanged;
             // 
-            // numericUpDownH1
+            // numericBoxH1
             // 
-            numericUpDownH1.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            numericUpDownH1.Location = new System.Drawing.Point(121, 29);
-            numericUpDownH1.Maximum = new decimal(new int[] { 20, 0, 0, 0 });
-            numericUpDownH1.Minimum = new decimal(new int[] { 20, 0, 0, int.MinValue });
-            numericUpDownH1.Name = "numericUpDownH1";
-            numericUpDownH1.Size = new System.Drawing.Size(36, 23);
-            numericUpDownH1.TabIndex = 0;
-            numericUpDownH1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            numericUpDownH1.ValueChanged += numericUpDown_ValueChanged;
+            numericBoxH1.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            numericBoxH1.Location = new System.Drawing.Point(121, 29);
+            numericBoxH1.Maximum = 20D;
+            numericBoxH1.Minimum = -20D;
+            numericBoxH1.Name = "numericBoxH1";
+            numericBoxH1.Size = new System.Drawing.Size(36, 23);
+            numericBoxH1.TabIndex = 0;
+            numericBoxH1.DecimalPlaces = 0;
+            numericBoxH1.ShowUpDown = true;
+            numericBoxH1.ValueChanged += numericBox_ValueChanged;
             // 
             // textBoxLengthAxis1
             // 
@@ -922,17 +921,18 @@
             label26.TabIndex = 6;
             label26.Text = "[";
             // 
-            // numericUpDownL1
+            // numericBoxL1
             // 
-            numericUpDownL1.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            numericUpDownL1.Location = new System.Drawing.Point(193, 29);
-            numericUpDownL1.Maximum = new decimal(new int[] { 20, 0, 0, 0 });
-            numericUpDownL1.Minimum = new decimal(new int[] { 20, 0, 0, int.MinValue });
-            numericUpDownL1.Name = "numericUpDownL1";
-            numericUpDownL1.Size = new System.Drawing.Size(36, 23);
-            numericUpDownL1.TabIndex = 2;
-            numericUpDownL1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            numericUpDownL1.ValueChanged += numericUpDown_ValueChanged;
+            numericBoxL1.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            numericBoxL1.Location = new System.Drawing.Point(193, 29);
+            numericBoxL1.Maximum = 20D;
+            numericBoxL1.Minimum = -20D;
+            numericBoxL1.Name = "numericBoxL1";
+            numericBoxL1.Size = new System.Drawing.Size(36, 23);
+            numericBoxL1.TabIndex = 2;
+            numericBoxL1.DecimalPlaces = 0;
+            numericBoxL1.ShowUpDown = true;
+            numericBoxL1.ValueChanged += numericBox_ValueChanged;
             // 
             // label28
             // 
@@ -1195,18 +1195,6 @@
             ((System.ComponentModel.ISupportInitialize)dataTablePlanes).EndInit();
             groupBoxGeometricsCalculation.ResumeLayout(false);
             groupBoxGeometricsCalculation.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)numericUpDownW2).EndInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDownU2).EndInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDownU1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDownL2).EndInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDownV2).EndInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDownK2).EndInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDownV1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDownK1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDownH2).EndInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDownW1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDownH1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDownL1).EndInit();
             panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)bindingSourceScatteringFactor).EndInit();
             ResumeLayout(false);
@@ -1244,10 +1232,10 @@
         private System.Windows.Forms.RichTextBox richTextBoxSG_Num;
         private System.Windows.Forms.GroupBox groupBoxGeometricsCalculation;
         private System.Windows.Forms.TextBox textBoxAnglePlaneAxis2;
-        private System.Windows.Forms.NumericUpDown numericUpDownK1;
+        private Crystallography.Controls.NumericBox numericBoxK1;
         private System.Windows.Forms.TextBox textBoxZonePlane;
         private System.Windows.Forms.TextBox textBoxLengthPlane1;
-        private System.Windows.Forms.NumericUpDown numericUpDownH1;
+        private Crystallography.Controls.NumericBox numericBoxH1;
         private System.Windows.Forms.TextBox textBoxAnglePlaneAxis1;
         private System.Windows.Forms.TextBox textBoxLengthPlane2;
         private System.Windows.Forms.TextBox textBoxAngleAxes;
@@ -1255,23 +1243,23 @@
         private System.Windows.Forms.Label label38;
         private System.Windows.Forms.Label label40;
         private System.Windows.Forms.Label label39;
-        private System.Windows.Forms.NumericUpDown numericUpDownL2;
+        private Crystallography.Controls.NumericBox numericBoxL2;
         private System.Windows.Forms.Label label29;
         private System.Windows.Forms.Label label37;
-        private System.Windows.Forms.NumericUpDown numericUpDownK2;
-        private System.Windows.Forms.NumericUpDown numericUpDownL1;
+        private Crystallography.Controls.NumericBox numericBoxK2;
+        private Crystallography.Controls.NumericBox numericBoxL1;
         private System.Windows.Forms.TextBox textBoxAnglePlanes;
         private System.Windows.Forms.Label label42;
         private System.Windows.Forms.Label label33;
         private System.Windows.Forms.TextBox textBoxLengthAxis1;
-        private System.Windows.Forms.NumericUpDown numericUpDownH2;
+        private Crystallography.Controls.NumericBox numericBoxH2;
         private System.Windows.Forms.TextBox textBoxZoneAxis;
-        private System.Windows.Forms.NumericUpDown numericUpDownU1;
-        private System.Windows.Forms.NumericUpDown numericUpDownV1;
-        private System.Windows.Forms.NumericUpDown numericUpDownW2;
-        private System.Windows.Forms.NumericUpDown numericUpDownW1;
-        private System.Windows.Forms.NumericUpDown numericUpDownU2;
-        private System.Windows.Forms.NumericUpDown numericUpDownV2;
+        private Crystallography.Controls.NumericBox numericBoxU1;
+        private Crystallography.Controls.NumericBox numericBoxV1;
+        private Crystallography.Controls.NumericBox numericBoxW2;
+        private Crystallography.Controls.NumericBox numericBoxW1;
+        private Crystallography.Controls.NumericBox numericBoxU2;
+        private Crystallography.Controls.NumericBox numericBoxV2;
         private System.Windows.Forms.TextBox textBoxLengthAxis2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label7;

@@ -102,7 +102,7 @@ public partial class FormSymmetryInformation : FormBase
     //結晶を変更する
     public void ChangeCrystal()
     {
-        numericUpDown_ValueChanged(this, EventArgs.Empty); // (260426Ch) 不要な object/EventArgs 生成を避ける
+        numericBox_ValueChanged(this, EventArgs.Empty); // (260426Ch) 不要な object/EventArgs 生成を避ける
         SetWyckoffPosition();
 
         foreach (var rtb in new[] { richTextBoxSG_HM, richTextBoxSG_HM_full, richTextBoxSG_SF, richTextBoxSG_Hall, richTextBoxPG_HM, richTextBoxPG_SF, richTextBoxLG, richTextBoxCS, richTextBoxExtinctionRule }) // (260426Ch)
@@ -133,12 +133,12 @@ public partial class FormSymmetryInformation : FormBase
         }
     }
 
-    private void numericUpDown_ValueChanged(object sender, EventArgs e)
+    private void numericBox_ValueChanged(object sender, EventArgs e) // 260427Cl
     {
-        var plane1 = (h: (int)numericUpDownH1.Value, k: (int)numericUpDownK1.Value, l: (int)numericUpDownL1.Value); // (260426Ch)
-        var plane2 = (h: (int)numericUpDownH2.Value, k: (int)numericUpDownK2.Value, l: (int)numericUpDownL2.Value);
-        var axis1 = (u: (int)numericUpDownU1.Value, v: (int)numericUpDownV1.Value, w: (int)numericUpDownW1.Value);
-        var axis2 = (u: (int)numericUpDownU2.Value, v: (int)numericUpDownV2.Value, w: (int)numericUpDownW2.Value);
+        var plane1 = (h: numericBoxH1.ValueInteger, k: numericBoxK1.ValueInteger, l: numericBoxL1.ValueInteger);
+        var plane2 = (h: numericBoxH2.ValueInteger, k: numericBoxK2.ValueInteger, l: numericBoxL2.ValueInteger);
+        var axis1 = (u: numericBoxU1.ValueInteger, v: numericBoxV1.ValueInteger, w: numericBoxW1.ValueInteger);
+        var axis2 = (u: numericBoxU2.ValueInteger, v: numericBoxV2.ValueInteger, w: numericBoxW2.ValueInteger);
 
         textBoxLengthPlane1.Text = (Crystal.GetLengthPlane(plane1.h, plane1.k, plane1.l) * 10).ToString("f4");
         textBoxLengthPlane2.Text = (Crystal.GetLengthPlane(plane2.h, plane2.k, plane2.l) * 10).ToString("f4");
