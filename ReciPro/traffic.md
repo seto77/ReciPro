@@ -25,7 +25,7 @@ Last updated: 2026-04-27
 | Period | Total Views | Unique Visitors |
 | ---- | ---- | ---- |
 | 2026-W17 | 465 | 209 |
-| 2026-W16 | 467 | 202 |
+| 2026-W16 | 545 | 241 |
 | 2026-W15 | 476 | 213 |
 | 2026-W14 | 485 | 211 |
 | 2026-W13 | 121 | 52 |
@@ -33,13 +33,13 @@ Last updated: 2026-04-27
 ### Monthly (最大12か月保持)
 | Period | Total Views | Unique Visitors |
 | ---- | ---- | ---- |
-| 2026-04 | 1774 | 776 |
+| 2026-04 | 1852 | 815 |
 | 2026-03 | 240 | 111 |
 
 ### Yearly (無制限)
 | Period | Total Views | Unique Visitors |
 | ---- | ---- | ---- |
-| 2026 | 2014 | 887 |
+| 2026 | 2092 | 926 |
 
 ## Clones
 
@@ -64,7 +64,7 @@ Last updated: 2026-04-27
 | Period | Total Clones | Unique Cloners |
 | ---- | ---- | ---- |
 | 2026-W17 | 373 | 184 |
-| 2026-W16 | 206 | 118 |
+| 2026-W16 | 251 | 148 |
 | 2026-W15 | 70 | 47 |
 | 2026-W14 | 349 | 193 |
 | 2026-W13 | 41 | 30 |
@@ -72,17 +72,17 @@ Last updated: 2026-04-27
 ### Monthly (最大12か月保持)
 | Period | Total Clones | Unique Cloners |
 | ---- | ---- | ---- |
-| 2026-04 | 966 | 518 |
+| 2026-04 | 1011 | 548 |
 | 2026-03 | 73 | 54 |
 
 ### Yearly (無制限)
 | Period | Total Clones | Unique Cloners |
 | ---- | ---- | ---- |
-| 2026 | 1039 | 572 |
+| 2026 | 1084 | 602 |
 
 ## Referrers
 
-### Weekly (最大14週保持)
+### Weekly (最大2週保持)
 | Period | Referrer | Total Count | Unique |
 | ---- | ---- | ---- | ---- |
 | 2026-W18 | Google | 169 | 80 |
@@ -106,7 +106,7 @@ Last updated: 2026-04-27
 | 2026-W17 | Baidu | 3 | 2 |
 | 2026-W17 | Yahoo | 2 | 1 |
 
-### Monthly (最大12か月保持)
+### Monthly (最大3か月保持)
 | Period | Referrer | Total Count | Unique |
 | ---- | ---- | ---- | ---- |
 | 2026-04 | Google | 1670 | 800 |
@@ -150,7 +150,7 @@ Last updated: 2026-04-27
 
 ## Popular Paths
 
-### Weekly (最大14週保持)
+### Weekly (最大2週保持)
 | Period | Path | Title | Total Count | Unique |
 | ---- | ---- | ---- | ---- | ---- |
 | 2026-W18 | /seto77/ReciPro | Overview | 202 | 152 |
@@ -174,7 +174,7 @@ Last updated: 2026-04-27
 | 2026-W17 | /seto77/ReciPro/releases/tag/v.4.904 | /releases/tag/v.4.904 | 12 | 1 |
 | 2026-W17 | /seto77/ReciPro/tree/master/ReciPro | /tree/master/ReciPro | 11 | 9 |
 
-### Monthly (最大12か月保持)
+### Monthly (最大3か月保持)
 | Period | Path | Title | Total Count | Unique |
 | ---- | ---- | ---- | ---- | ---- |
 | 2026-04 | /seto77/ReciPro | Overview | 2585 | 1642 |
