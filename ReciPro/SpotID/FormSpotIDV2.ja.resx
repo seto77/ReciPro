@@ -121,12 +121,6 @@
   <data name="scalablePictureBoxAdvanced.Size" type="System.Drawing.Size, System.Drawing">
     <value>500, 777</value>
   </data>
-  <data name="scalablePictureBoxAdvanced.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="splitContainer1.Panel1.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="buttonDeleteSpot.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
@@ -388,9 +382,6 @@
   <data name="numericBoxDonut.Size" type="System.Drawing.Size, System.Drawing">
     <value>34, 22</value>
   </data>
-  <data name="numericBoxDonut.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="buttonDonut.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -406,14 +397,8 @@
   <data name="dataGridViewSpots.Size" type="System.Drawing.Size, System.Drawing">
     <value>753, 295</value>
   </data>
-  <data name="dataGridViewSpots.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="panelSpotActions.Size" type="System.Drawing.Size, System.Drawing">
     <value>759, 380</value>
-  </data>
-  <data name="panelSpotActions.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="pictureBox1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -423,9 +408,6 @@
   </data>
   <data name="pictureBox1.Size" type="System.Drawing.Size, System.Drawing">
     <value>759, 77</value>
-  </data>
-  <data name="pictureBox1.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="groupBoxSpot.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -442,9 +424,6 @@
   </data>
   <data name="groupBoxSpot.Text" xml:space="preserve">
     <value>スポット情報</value>
-  </data>
-  <data name="groupBoxSpot.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="radioButtonPixelSizeUnitInverse.ToolTip" xml:space="preserve">
     <value>ピクセルサイズの単位: 1/nm</value>
@@ -476,11 +455,11 @@
   <data name="numericBoxPixelSize.ToolTip1" xml:space="preserve">
     <value>検出器のピクセルサイズ</value>
   </data>
+  <data name="waveLengthControl1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
   <data name="waveLengthControl1.Size" type="System.Drawing.Size, System.Drawing">
     <value>279, 78</value>
-  </data>
-  <data name="waveLengthControl1.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="groupBoxOptics.Location" type="System.Drawing.Point, System.Drawing">
     <value>195, 0</value>
@@ -488,11 +467,17 @@
   <data name="groupBoxOptics.Size" type="System.Drawing.Size, System.Drawing">
     <value>564, 102</value>
   </data>
-  <data name="groupBoxOptics.ToolTip" xml:space="preserve">
-    <value />
+  <data name="checkBoxShowDebyeRing.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
   </data>
   <data name="checkBoxShowDebyeRing.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
+  </data>
+  <data name="checkBoxShowDebyeRing.Size" type="System.Drawing.Size, System.Drawing">
+    <value>135, 22</value>
+  </data>
+  <data name="checkBoxShowDebyeRing.Text" xml:space="preserve">
+    <value>デバイリングを表示</value>
   </data>
   <data name="checkBoxShowDebyeRing.ToolTip" xml:space="preserve">
     <value>パターンにデバイリングを重ねて表示</value>
@@ -511,9 +496,6 @@
   </data>
   <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
     <value>765, 107</value>
-  </data>
-  <data name="panel1.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="buttonIdentifySpots.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -654,12 +636,6 @@
   <data name="dataGridViewGrains.Size" type="System.Drawing.Size, System.Drawing">
     <value>310, 111</value>
   </data>
-  <data name="dataGridViewGrains.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="dataGridViewCandidates.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="checkBoxIgnoreMultipleDiffraction.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
@@ -699,21 +675,12 @@
   <data name="groupBoxIndex.Text" xml:space="preserve">
     <value>指数付け</value>
   </data>
-  <data name="groupBoxIndex.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="splitContainer1.Panel2.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="splitContainer1.Size" type="System.Drawing.Size, System.Drawing">
     <value>1285, 781</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="splitContainer1.SplitterDistance" type="System.Int32, mscorlib">
     <value>504</value>
-  </data>
-  <data name="splitContainer1.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="readToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>120, 22</value>
@@ -772,19 +739,10 @@
   <data name="menuStrip.Size" type="System.Drawing.Size, System.Drawing">
     <value>1285, 24</value>
   </data>
-  <data name="menuStrip.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="statusStrip.Size" type="System.Drawing.Size, System.Drawing">
     <value>1285, 22</value>
   </data>
-  <data name="statusStrip.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
     <value>1285, 827</value>
-  </data>
-  <data name="$this.ToolTip" xml:space="preserve">
-    <value />
   </data>
 </root>

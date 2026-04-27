@@ -131,7 +131,7 @@
     <value>Fill</value>
   </data>
   <data name="textBoxAuthor.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="textBoxAuthor.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 21</value>
@@ -204,7 +204,7 @@
     <value>Fill</value>
   </data>
   <data name="textBoxTitle.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="textBoxTitle.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 21</value>
@@ -300,16 +300,16 @@
     <value>GrowAndShrink</value>
   </data>
   <data name="numericBoxVolumeAng.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxVolumeAng.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="numericBoxVolumeAng.FooterText" xml:space="preserve">
     <value>Å³</value>
   </data>
   <data name="numericBoxVolumeAng.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="numericBoxVolumeAng.HeaderText" xml:space="preserve">
     <value>Cell Volume</value>
@@ -337,7 +337,7 @@
     <value>90</value>
   </data>
   <data name="numericBoxVolumeAng.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <metadata name="toolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>157, 17</value>
@@ -364,16 +364,16 @@
     <value>GrowAndShrink</value>
   </data>
   <data name="numericBoxCellVolumeNm.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxCellVolumeNm.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="numericBoxCellVolumeNm.FooterText" xml:space="preserve">
     <value>nm³</value>
   </data>
   <data name="numericBoxCellVolumeNm.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="numericBoxCellVolumeNm.Location" type="System.Drawing.Point, System.Drawing">
     <value>176, 4</value>
@@ -397,7 +397,7 @@
     <value>90</value>
   </data>
   <data name="numericBoxCellVolumeNm.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="numericBoxCellVolumeNm.ToolTip" xml:space="preserve">
     <value>Cell volume in nm³</value>
@@ -418,16 +418,16 @@
     <value>GrowAndShrink</value>
   </data>
   <data name="numericBoxCellMass.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxCellMass.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="numericBoxCellMass.FooterText" xml:space="preserve">
     <value>× 10⁻²⁴ g</value>
   </data>
   <data name="numericBoxCellMass.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="numericBoxCellMass.HeaderText" xml:space="preserve">
     <value>Cell Mass</value>
@@ -454,7 +454,7 @@
     <value>90</value>
   </data>
   <data name="numericBoxCellMass.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="numericBoxCellMass.ToolTip" xml:space="preserve">
     <value>Cell mass in 10⁻²⁴ g</value>
@@ -478,16 +478,16 @@
     <value>GrowAndShrink</value>
   </data>
   <data name="numericBoxMolarVolume.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxMolarVolume.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="numericBoxMolarVolume.FooterText" xml:space="preserve">
     <value>cm³/mol</value>
   </data>
   <data name="numericBoxMolarVolume.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="numericBoxMolarVolume.HeaderText" xml:space="preserve">
     <value>Molar Volume</value>
@@ -514,7 +514,7 @@
     <value>90</value>
   </data>
   <data name="numericBoxMolarVolume.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="numericBoxMolarVolume.ToolTip" xml:space="preserve">
     <value>Molar Volume in cm³/mol</value>
@@ -538,16 +538,16 @@
     <value>GrowAndShrink</value>
   </data>
   <data name="numericBoxMolarMass.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxMolarMass.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="numericBoxMolarMass.FooterText" xml:space="preserve">
     <value>g/mol</value>
   </data>
   <data name="numericBoxMolarMass.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="numericBoxMolarMass.HeaderText" xml:space="preserve">
     <value>Molar Mass</value>
@@ -574,7 +574,7 @@
     <value>90</value>
   </data>
   <data name="numericBoxMolarMass.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="numericBoxMolarMass.ToolTip" xml:space="preserve">
     <value>Molar Mass in g/mol</value>
@@ -598,16 +598,16 @@
     <value>GrowAndShrink</value>
   </data>
   <data name="numericBoxDensity.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxDensity.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="numericBoxDensity.FooterText" xml:space="preserve">
     <value>g/cm³</value>
   </data>
   <data name="numericBoxDensity.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="numericBoxDensity.HeaderText" xml:space="preserve">
     <value>Density</value>
@@ -634,7 +634,7 @@
     <value>95</value>
   </data>
   <data name="numericBoxDensity.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="numericBoxDensity.ToolTip" xml:space="preserve">
     <value>Density in g/cm³</value>
@@ -700,7 +700,7 @@
     <value>False</value>
   </data>
   <data name="buttonConvertToSubgroup.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 8pt</value>
+    <value>Segoe UI, 8pt</value>
   </data>
   <data name="buttonConvertToSubgroup.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -742,7 +742,7 @@
     <value>GrowAndShrink</value>
   </data>
   <data name="buttonChangeAxesOriginSetting.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="buttonChangeAxesOriginSetting.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -898,7 +898,7 @@
     <value>Fill</value>
   </data>
   <data name="atomControl.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="atomControl.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
@@ -940,16 +940,16 @@
     <value>397, 17</value>
   </metadata>
   <data name="contextMenuStrip2.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Arial, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="resetToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>254, 22</value>
+    <value>246, 22</value>
   </data>
   <data name="resetToolStripMenuItem.Text" xml:space="preserve">
     <value>Set Debye-Waller Factors to Zero</value>
   </data>
   <data name="contextMenuStrip2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>255, 26</value>
+    <value>247, 26</value>
   </data>
   <data name="&gt;&gt;contextMenuStrip2.Name" xml:space="preserve">
     <value>contextMenuStrip2</value>
@@ -982,7 +982,7 @@
     <value>0</value>
   </data>
   <data name="panelAtom.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="panelAtom.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
@@ -1054,7 +1054,7 @@
     <value>Fill</value>
   </data>
   <data name="bondControl.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="bondControl.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
@@ -1108,7 +1108,7 @@
     <value>Fill</value>
   </data>
   <data name="textBoxJournal.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="textBoxJournal.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 21</value>
@@ -1168,7 +1168,7 @@
     <value>Fill</value>
   </data>
   <data name="textBoxMemo.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="textBoxMemo.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 21</value>
@@ -1252,7 +1252,7 @@
     <value>Fill</value>
   </data>
   <data name="eosControl.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="eosControl.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 3</value>
@@ -1359,35 +1359,263 @@
   <data name="&gt;&gt;tabPageElasticity.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
-  <data name="buttonStressSet.Location" type="System.Drawing.Point, System.Drawing">
-    <value>282, 196</value>
+  <data name="numericBoxStress33.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
   </data>
-  <data name="buttonStressSet.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 23</value>
+  <data name="numericBoxStress33.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9.75pt</value>
   </data>
-  <data name="buttonStressSet.TabIndex" type="System.Int32, mscorlib">
-    <value>263</value>
+  <data name="numericBoxStress33.Location" type="System.Drawing.Point, System.Drawing">
+    <value>305, 125</value>
   </data>
-  <data name="buttonStressSet.Text" xml:space="preserve">
-    <value>set</value>
+  <data name="numericBoxStress33.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>1, 1, 1, 1</value>
   </data>
-  <data name="&gt;&gt;buttonStressSet.Name" xml:space="preserve">
-    <value>buttonStressSet</value>
+  <data name="numericBoxStress33.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 27</value>
   </data>
-  <data name="&gt;&gt;buttonStressSet.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="numericBoxStress33.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1, 17</value>
   </data>
-  <data name="&gt;&gt;buttonStressSet.Parent" xml:space="preserve">
+  <data name="numericBoxStress33.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 1, 0</value>
+  </data>
+  <data name="numericBoxStress33.Size" type="System.Drawing.Size, System.Drawing">
+    <value>47, 24</value>
+  </data>
+  <data name="numericBoxStress33.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="numericBoxStress33.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9.75pt</value>
+  </data>
+  <data name="&gt;&gt;numericBoxStress33.Name" xml:space="preserve">
+    <value>numericBoxStress33</value>
+  </data>
+  <data name="&gt;&gt;numericBoxStress33.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericBoxStress33.Parent" xml:space="preserve">
     <value>tabPageStrainStress</value>
   </data>
-  <data name="&gt;&gt;buttonStressSet.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;numericBoxStress33.ZOrder" xml:space="preserve">
     <value>0</value>
+  </data>
+  <data name="numericBoxStress22.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="numericBoxStress22.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9.75pt</value>
+  </data>
+  <data name="numericBoxStress22.Location" type="System.Drawing.Point, System.Drawing">
+    <value>257, 84</value>
+  </data>
+  <data name="numericBoxStress22.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>1, 1, 1, 1</value>
+  </data>
+  <data name="numericBoxStress22.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 27</value>
+  </data>
+  <data name="numericBoxStress22.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1, 17</value>
+  </data>
+  <data name="numericBoxStress22.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 1, 0</value>
+  </data>
+  <data name="numericBoxStress22.Size" type="System.Drawing.Size, System.Drawing">
+    <value>47, 24</value>
+  </data>
+  <data name="numericBoxStress22.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="numericBoxStress22.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9.75pt</value>
+  </data>
+  <data name="&gt;&gt;numericBoxStress22.Name" xml:space="preserve">
+    <value>numericBoxStress22</value>
+  </data>
+  <data name="&gt;&gt;numericBoxStress22.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericBoxStress22.Parent" xml:space="preserve">
+    <value>tabPageStrainStress</value>
+  </data>
+  <data name="&gt;&gt;numericBoxStress22.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="numericBoxStress11.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="numericBoxStress11.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9.75pt</value>
+  </data>
+  <data name="numericBoxStress11.Location" type="System.Drawing.Point, System.Drawing">
+    <value>209, 46</value>
+  </data>
+  <data name="numericBoxStress11.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>1, 1, 1, 1</value>
+  </data>
+  <data name="numericBoxStress11.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 27</value>
+  </data>
+  <data name="numericBoxStress11.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1, 17</value>
+  </data>
+  <data name="numericBoxStress11.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 1, 0</value>
+  </data>
+  <data name="numericBoxStress11.Size" type="System.Drawing.Size, System.Drawing">
+    <value>47, 24</value>
+  </data>
+  <data name="numericBoxStress11.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="numericBoxStress11.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9.75pt</value>
+  </data>
+  <data name="&gt;&gt;numericBoxStress11.Name" xml:space="preserve">
+    <value>numericBoxStress11</value>
+  </data>
+  <data name="&gt;&gt;numericBoxStress11.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericBoxStress11.Parent" xml:space="preserve">
+    <value>tabPageStrainStress</value>
+  </data>
+  <data name="&gt;&gt;numericBoxStress11.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="numericBoxStress23.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="numericBoxStress23.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9.75pt</value>
+  </data>
+  <data name="numericBoxStress23.Location" type="System.Drawing.Point, System.Drawing">
+    <value>307, 84</value>
+  </data>
+  <data name="numericBoxStress23.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>1, 1, 1, 1</value>
+  </data>
+  <data name="numericBoxStress23.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 27</value>
+  </data>
+  <data name="numericBoxStress23.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1, 17</value>
+  </data>
+  <data name="numericBoxStress23.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 1, 0</value>
+  </data>
+  <data name="numericBoxStress23.Size" type="System.Drawing.Size, System.Drawing">
+    <value>47, 24</value>
+  </data>
+  <data name="numericBoxStress23.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="numericBoxStress23.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9.75pt</value>
+  </data>
+  <data name="&gt;&gt;numericBoxStress23.Name" xml:space="preserve">
+    <value>numericBoxStress23</value>
+  </data>
+  <data name="&gt;&gt;numericBoxStress23.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericBoxStress23.Parent" xml:space="preserve">
+    <value>tabPageStrainStress</value>
+  </data>
+  <data name="&gt;&gt;numericBoxStress23.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="numericBoxStress13.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="numericBoxStress13.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9.75pt</value>
+  </data>
+  <data name="numericBoxStress13.Location" type="System.Drawing.Point, System.Drawing">
+    <value>307, 46</value>
+  </data>
+  <data name="numericBoxStress13.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>1, 1, 1, 1</value>
+  </data>
+  <data name="numericBoxStress13.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 27</value>
+  </data>
+  <data name="numericBoxStress13.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1, 17</value>
+  </data>
+  <data name="numericBoxStress13.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 1, 0</value>
+  </data>
+  <data name="numericBoxStress13.Size" type="System.Drawing.Size, System.Drawing">
+    <value>47, 24</value>
+  </data>
+  <data name="numericBoxStress13.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="numericBoxStress13.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9.75pt</value>
+  </data>
+  <data name="&gt;&gt;numericBoxStress13.Name" xml:space="preserve">
+    <value>numericBoxStress13</value>
+  </data>
+  <data name="&gt;&gt;numericBoxStress13.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericBoxStress13.Parent" xml:space="preserve">
+    <value>tabPageStrainStress</value>
+  </data>
+  <data name="&gt;&gt;numericBoxStress13.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="numericBoxStress12.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="numericBoxStress12.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9.75pt</value>
+  </data>
+  <data name="numericBoxStress12.Location" type="System.Drawing.Point, System.Drawing">
+    <value>258, 46</value>
+  </data>
+  <data name="numericBoxStress12.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>1, 1, 1, 1</value>
+  </data>
+  <data name="numericBoxStress12.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 27</value>
+  </data>
+  <data name="numericBoxStress12.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1, 17</value>
+  </data>
+  <data name="numericBoxStress12.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 1, 0</value>
+  </data>
+  <data name="numericBoxStress12.Size" type="System.Drawing.Size, System.Drawing">
+    <value>47, 24</value>
+  </data>
+  <data name="numericBoxStress12.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="numericBoxStress12.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9.75pt</value>
+  </data>
+  <data name="&gt;&gt;numericBoxStress12.Name" xml:space="preserve">
+    <value>numericBoxStress12</value>
+  </data>
+  <data name="&gt;&gt;numericBoxStress12.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericBoxStress12.Parent" xml:space="preserve">
+    <value>tabPageStrainStress</value>
+  </data>
+  <data name="&gt;&gt;numericBoxStress12.ZOrder" xml:space="preserve">
+    <value>5</value>
   </data>
   <data name="numericBoxStrain33.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
   <data name="numericBoxStrain33.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxStrain33.Location" type="System.Drawing.Point, System.Drawing">
     <value>120, 121</value>
@@ -1411,7 +1639,7 @@
     <value>5</value>
   </data>
   <data name="numericBoxStrain33.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>Arial Narrow, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="&gt;&gt;numericBoxStrain33.Name" xml:space="preserve">
     <value>numericBoxStrain33</value>
@@ -1423,13 +1651,598 @@
     <value>tabPageStrainStress</value>
   </data>
   <data name="&gt;&gt;numericBoxStrain33.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="numericBoxStrain11.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="numericBoxStrain11.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9.75pt</value>
+  </data>
+  <data name="numericBoxStrain11.Location" type="System.Drawing.Point, System.Drawing">
+    <value>22, 46</value>
+  </data>
+  <data name="numericBoxStrain11.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>1, 1, 1, 1</value>
+  </data>
+  <data name="numericBoxStrain11.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 27</value>
+  </data>
+  <data name="numericBoxStrain11.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1, 17</value>
+  </data>
+  <data name="numericBoxStrain11.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 1, 0</value>
+  </data>
+  <data name="numericBoxStrain11.Size" type="System.Drawing.Size, System.Drawing">
+    <value>47, 24</value>
+  </data>
+  <data name="numericBoxStrain11.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="numericBoxStrain11.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9.75pt</value>
+  </data>
+  <data name="&gt;&gt;numericBoxStrain11.Name" xml:space="preserve">
+    <value>numericBoxStrain11</value>
+  </data>
+  <data name="&gt;&gt;numericBoxStrain11.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericBoxStrain11.Parent" xml:space="preserve">
+    <value>tabPageStrainStress</value>
+  </data>
+  <data name="&gt;&gt;numericBoxStrain11.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="numericBoxStrain22.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="numericBoxStrain22.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9.75pt</value>
+  </data>
+  <data name="numericBoxStrain22.Location" type="System.Drawing.Point, System.Drawing">
+    <value>71, 84</value>
+  </data>
+  <data name="numericBoxStrain22.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>1, 1, 1, 1</value>
+  </data>
+  <data name="numericBoxStrain22.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 27</value>
+  </data>
+  <data name="numericBoxStrain22.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1, 17</value>
+  </data>
+  <data name="numericBoxStrain22.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 1, 0</value>
+  </data>
+  <data name="numericBoxStrain22.Size" type="System.Drawing.Size, System.Drawing">
+    <value>47, 24</value>
+  </data>
+  <data name="numericBoxStrain22.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="numericBoxStrain22.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9.75pt</value>
+  </data>
+  <data name="&gt;&gt;numericBoxStrain22.Name" xml:space="preserve">
+    <value>numericBoxStrain22</value>
+  </data>
+  <data name="&gt;&gt;numericBoxStrain22.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericBoxStrain22.Parent" xml:space="preserve">
+    <value>tabPageStrainStress</value>
+  </data>
+  <data name="&gt;&gt;numericBoxStrain22.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="numericBoxStrain12.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="numericBoxStrain12.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9.75pt</value>
+  </data>
+  <data name="numericBoxStrain12.Location" type="System.Drawing.Point, System.Drawing">
+    <value>71, 46</value>
+  </data>
+  <data name="numericBoxStrain12.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>1, 1, 1, 1</value>
+  </data>
+  <data name="numericBoxStrain12.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 27</value>
+  </data>
+  <data name="numericBoxStrain12.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1, 17</value>
+  </data>
+  <data name="numericBoxStrain12.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 1, 0</value>
+  </data>
+  <data name="numericBoxStrain12.Size" type="System.Drawing.Size, System.Drawing">
+    <value>47, 24</value>
+  </data>
+  <data name="numericBoxStrain12.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
+  </data>
+  <data name="numericBoxStrain12.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9.75pt</value>
+  </data>
+  <data name="&gt;&gt;numericBoxStrain12.Name" xml:space="preserve">
+    <value>numericBoxStrain12</value>
+  </data>
+  <data name="&gt;&gt;numericBoxStrain12.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericBoxStrain12.Parent" xml:space="preserve">
+    <value>tabPageStrainStress</value>
+  </data>
+  <data name="&gt;&gt;numericBoxStrain12.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="numericBoxStrain23.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="numericBoxStrain23.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9.75pt</value>
+  </data>
+  <data name="numericBoxStrain23.Location" type="System.Drawing.Point, System.Drawing">
+    <value>120, 84</value>
+  </data>
+  <data name="numericBoxStrain23.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>1, 1, 1, 1</value>
+  </data>
+  <data name="numericBoxStrain23.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 27</value>
+  </data>
+  <data name="numericBoxStrain23.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1, 17</value>
+  </data>
+  <data name="numericBoxStrain23.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 1, 0</value>
+  </data>
+  <data name="numericBoxStrain23.Size" type="System.Drawing.Size, System.Drawing">
+    <value>47, 24</value>
+  </data>
+  <data name="numericBoxStrain23.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="numericBoxStrain23.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9.75pt</value>
+  </data>
+  <data name="&gt;&gt;numericBoxStrain23.Name" xml:space="preserve">
+    <value>numericBoxStrain23</value>
+  </data>
+  <data name="&gt;&gt;numericBoxStrain23.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericBoxStrain23.Parent" xml:space="preserve">
+    <value>tabPageStrainStress</value>
+  </data>
+  <data name="&gt;&gt;numericBoxStrain23.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="numericBoxStrain13.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="numericBoxStrain13.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9.75pt</value>
+  </data>
+  <data name="numericBoxStrain13.Location" type="System.Drawing.Point, System.Drawing">
+    <value>120, 46</value>
+  </data>
+  <data name="numericBoxStrain13.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>1, 1, 1, 1</value>
+  </data>
+  <data name="numericBoxStrain13.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 27</value>
+  </data>
+  <data name="numericBoxStrain13.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1, 17</value>
+  </data>
+  <data name="numericBoxStrain13.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 1, 0</value>
+  </data>
+  <data name="numericBoxStrain13.Size" type="System.Drawing.Size, System.Drawing">
+    <value>47, 24</value>
+  </data>
+  <data name="numericBoxStrain13.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="numericBoxStrain13.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9.75pt</value>
+  </data>
+  <data name="&gt;&gt;numericBoxStrain13.Name" xml:space="preserve">
+    <value>numericBoxStrain13</value>
+  </data>
+  <data name="&gt;&gt;numericBoxStrain13.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericBoxStrain13.Parent" xml:space="preserve">
+    <value>tabPageStrainStress</value>
+  </data>
+  <data name="&gt;&gt;numericBoxStrain13.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="labelLaTex6.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 11pt</value>
+  </data>
+  <data name="labelLaTex6.Location" type="System.Drawing.Point, System.Drawing">
+    <value>120, 106</value>
+  </data>
+  <data name="labelLaTex6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>20, 20</value>
+  </data>
+  <data name="labelLaTex6.TabIndex" type="System.Int32, mscorlib">
+    <value>264</value>
+  </data>
+  <data name="labelLaTex6.Text" xml:space="preserve">
+    <value>\epsilon_{33}</value>
+  </data>
+  <data name="&gt;&gt;labelLaTex6.Name" xml:space="preserve">
+    <value>labelLaTex6</value>
+  </data>
+  <data name="&gt;&gt;labelLaTex6.Type" xml:space="preserve">
+    <value>Crystallography.Controls.LabelLaTeX, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;labelLaTex6.Parent" xml:space="preserve">
+    <value>tabPageStrainStress</value>
+  </data>
+  <data name="&gt;&gt;labelLaTex6.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="labelLaTex5.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 11pt</value>
+  </data>
+  <data name="labelLaTex5.Location" type="System.Drawing.Point, System.Drawing">
+    <value>120, 69</value>
+  </data>
+  <data name="labelLaTex5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>20, 20</value>
+  </data>
+  <data name="labelLaTex5.TabIndex" type="System.Int32, mscorlib">
+    <value>264</value>
+  </data>
+  <data name="labelLaTex5.Text" xml:space="preserve">
+    <value>\epsilon_{23}</value>
+  </data>
+  <data name="&gt;&gt;labelLaTex5.Name" xml:space="preserve">
+    <value>labelLaTex5</value>
+  </data>
+  <data name="&gt;&gt;labelLaTex5.Type" xml:space="preserve">
+    <value>Crystallography.Controls.LabelLaTeX, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;labelLaTex5.Parent" xml:space="preserve">
+    <value>tabPageStrainStress</value>
+  </data>
+  <data name="&gt;&gt;labelLaTex5.ZOrder" xml:space="preserve">
+    <value>13</value>
+  </data>
+  <data name="labelLaTex3.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 11pt</value>
+  </data>
+  <data name="labelLaTex3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>120, 29</value>
+  </data>
+  <data name="labelLaTex3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>20, 20</value>
+  </data>
+  <data name="labelLaTex3.TabIndex" type="System.Int32, mscorlib">
+    <value>264</value>
+  </data>
+  <data name="labelLaTex3.Text" xml:space="preserve">
+    <value>\epsilon_{13}</value>
+  </data>
+  <data name="&gt;&gt;labelLaTex3.Name" xml:space="preserve">
+    <value>labelLaTex3</value>
+  </data>
+  <data name="&gt;&gt;labelLaTex3.Type" xml:space="preserve">
+    <value>Crystallography.Controls.LabelLaTeX, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;labelLaTex3.Parent" xml:space="preserve">
+    <value>tabPageStrainStress</value>
+  </data>
+  <data name="&gt;&gt;labelLaTex3.ZOrder" xml:space="preserve">
+    <value>14</value>
+  </data>
+  <data name="labelLaTex4.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 11pt</value>
+  </data>
+  <data name="labelLaTex4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>71, 69</value>
+  </data>
+  <data name="labelLaTex4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>20, 20</value>
+  </data>
+  <data name="labelLaTex4.TabIndex" type="System.Int32, mscorlib">
+    <value>264</value>
+  </data>
+  <data name="labelLaTex4.Text" xml:space="preserve">
+    <value>\epsilon_{22}</value>
+  </data>
+  <data name="&gt;&gt;labelLaTex4.Name" xml:space="preserve">
+    <value>labelLaTex4</value>
+  </data>
+  <data name="&gt;&gt;labelLaTex4.Type" xml:space="preserve">
+    <value>Crystallography.Controls.LabelLaTeX, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;labelLaTex4.Parent" xml:space="preserve">
+    <value>tabPageStrainStress</value>
+  </data>
+  <data name="&gt;&gt;labelLaTex4.ZOrder" xml:space="preserve">
+    <value>15</value>
+  </data>
+  <data name="labelLaTex2.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 11pt</value>
+  </data>
+  <data name="labelLaTex2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>71, 29</value>
+  </data>
+  <data name="labelLaTex2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>20, 20</value>
+  </data>
+  <data name="labelLaTex2.TabIndex" type="System.Int32, mscorlib">
+    <value>264</value>
+  </data>
+  <data name="labelLaTex2.Text" xml:space="preserve">
+    <value>\epsilon_{12}</value>
+  </data>
+  <data name="&gt;&gt;labelLaTex2.Name" xml:space="preserve">
+    <value>labelLaTex2</value>
+  </data>
+  <data name="&gt;&gt;labelLaTex2.Type" xml:space="preserve">
+    <value>Crystallography.Controls.LabelLaTeX, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;labelLaTex2.Parent" xml:space="preserve">
+    <value>tabPageStrainStress</value>
+  </data>
+  <data name="&gt;&gt;labelLaTex2.ZOrder" xml:space="preserve">
+    <value>16</value>
+  </data>
+  <data name="labelLaTex13.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 11pt</value>
+  </data>
+  <data name="labelLaTex13.Location" type="System.Drawing.Point, System.Drawing">
+    <value>285, 162</value>
+  </data>
+  <data name="labelLaTex13.Size" type="System.Drawing.Size, System.Drawing">
+    <value>16, 20</value>
+  </data>
+  <data name="labelLaTex13.TabIndex" type="System.Int32, mscorlib">
+    <value>264</value>
+  </data>
+  <data name="labelLaTex13.Text" xml:space="preserve">
+    <value>\alpha</value>
+  </data>
+  <data name="&gt;&gt;labelLaTex13.Name" xml:space="preserve">
+    <value>labelLaTex13</value>
+  </data>
+  <data name="&gt;&gt;labelLaTex13.Type" xml:space="preserve">
+    <value>Crystallography.Controls.LabelLaTeX, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;labelLaTex13.Parent" xml:space="preserve">
+    <value>tabPageStrainStress</value>
+  </data>
+  <data name="&gt;&gt;labelLaTex13.ZOrder" xml:space="preserve">
+    <value>17</value>
+  </data>
+  <data name="labelLaTex12.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 11pt</value>
+  </data>
+  <data name="labelLaTex12.Location" type="System.Drawing.Point, System.Drawing">
+    <value>305, 106</value>
+  </data>
+  <data name="labelLaTex12.Size" type="System.Drawing.Size, System.Drawing">
+    <value>20, 20</value>
+  </data>
+  <data name="labelLaTex12.TabIndex" type="System.Int32, mscorlib">
+    <value>264</value>
+  </data>
+  <data name="labelLaTex12.Text" xml:space="preserve">
+    <value>\sigma_{33}</value>
+  </data>
+  <data name="&gt;&gt;labelLaTex12.Name" xml:space="preserve">
+    <value>labelLaTex12</value>
+  </data>
+  <data name="&gt;&gt;labelLaTex12.Type" xml:space="preserve">
+    <value>Crystallography.Controls.LabelLaTeX, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;labelLaTex12.Parent" xml:space="preserve">
+    <value>tabPageStrainStress</value>
+  </data>
+  <data name="&gt;&gt;labelLaTex12.ZOrder" xml:space="preserve">
+    <value>18</value>
+  </data>
+  <data name="labelLaTex11.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 11pt</value>
+  </data>
+  <data name="labelLaTex11.Location" type="System.Drawing.Point, System.Drawing">
+    <value>305, 69</value>
+  </data>
+  <data name="labelLaTex11.Size" type="System.Drawing.Size, System.Drawing">
+    <value>20, 20</value>
+  </data>
+  <data name="labelLaTex11.TabIndex" type="System.Int32, mscorlib">
+    <value>264</value>
+  </data>
+  <data name="labelLaTex11.Text" xml:space="preserve">
+    <value>\sigma_{23}</value>
+  </data>
+  <data name="&gt;&gt;labelLaTex11.Name" xml:space="preserve">
+    <value>labelLaTex11</value>
+  </data>
+  <data name="&gt;&gt;labelLaTex11.Type" xml:space="preserve">
+    <value>Crystallography.Controls.LabelLaTeX, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;labelLaTex11.Parent" xml:space="preserve">
+    <value>tabPageStrainStress</value>
+  </data>
+  <data name="&gt;&gt;labelLaTex11.ZOrder" xml:space="preserve">
+    <value>19</value>
+  </data>
+  <data name="labelLaTex10.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 11pt</value>
+  </data>
+  <data name="labelLaTex10.Location" type="System.Drawing.Point, System.Drawing">
+    <value>256, 69</value>
+  </data>
+  <data name="labelLaTex10.Size" type="System.Drawing.Size, System.Drawing">
+    <value>20, 20</value>
+  </data>
+  <data name="labelLaTex10.TabIndex" type="System.Int32, mscorlib">
+    <value>264</value>
+  </data>
+  <data name="labelLaTex10.Text" xml:space="preserve">
+    <value>\sigma_{22}</value>
+  </data>
+  <data name="&gt;&gt;labelLaTex10.Name" xml:space="preserve">
+    <value>labelLaTex10</value>
+  </data>
+  <data name="&gt;&gt;labelLaTex10.Type" xml:space="preserve">
+    <value>Crystallography.Controls.LabelLaTeX, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;labelLaTex10.Parent" xml:space="preserve">
+    <value>tabPageStrainStress</value>
+  </data>
+  <data name="&gt;&gt;labelLaTex10.ZOrder" xml:space="preserve">
+    <value>20</value>
+  </data>
+  <data name="labelLaTex9.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 11pt</value>
+  </data>
+  <data name="labelLaTex9.Location" type="System.Drawing.Point, System.Drawing">
+    <value>306, 28</value>
+  </data>
+  <data name="labelLaTex9.Size" type="System.Drawing.Size, System.Drawing">
+    <value>20, 20</value>
+  </data>
+  <data name="labelLaTex9.TabIndex" type="System.Int32, mscorlib">
+    <value>264</value>
+  </data>
+  <data name="labelLaTex9.Text" xml:space="preserve">
+    <value>\sigma_{13}</value>
+  </data>
+  <data name="&gt;&gt;labelLaTex9.Name" xml:space="preserve">
+    <value>labelLaTex9</value>
+  </data>
+  <data name="&gt;&gt;labelLaTex9.Type" xml:space="preserve">
+    <value>Crystallography.Controls.LabelLaTeX, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;labelLaTex9.Parent" xml:space="preserve">
+    <value>tabPageStrainStress</value>
+  </data>
+  <data name="&gt;&gt;labelLaTex9.ZOrder" xml:space="preserve">
+    <value>21</value>
+  </data>
+  <data name="labelLaTex8.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 11pt</value>
+  </data>
+  <data name="labelLaTex8.Location" type="System.Drawing.Point, System.Drawing">
+    <value>257, 28</value>
+  </data>
+  <data name="labelLaTex8.Size" type="System.Drawing.Size, System.Drawing">
+    <value>20, 20</value>
+  </data>
+  <data name="labelLaTex8.TabIndex" type="System.Int32, mscorlib">
+    <value>264</value>
+  </data>
+  <data name="labelLaTex8.Text" xml:space="preserve">
+    <value>\sigma_{12}</value>
+  </data>
+  <data name="&gt;&gt;labelLaTex8.Name" xml:space="preserve">
+    <value>labelLaTex8</value>
+  </data>
+  <data name="&gt;&gt;labelLaTex8.Type" xml:space="preserve">
+    <value>Crystallography.Controls.LabelLaTeX, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;labelLaTex8.Parent" xml:space="preserve">
+    <value>tabPageStrainStress</value>
+  </data>
+  <data name="&gt;&gt;labelLaTex8.ZOrder" xml:space="preserve">
+    <value>22</value>
+  </data>
+  <data name="labelLaTex7.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 11pt</value>
+  </data>
+  <data name="labelLaTex7.Location" type="System.Drawing.Point, System.Drawing">
+    <value>209, 29</value>
+  </data>
+  <data name="labelLaTex7.Size" type="System.Drawing.Size, System.Drawing">
+    <value>20, 20</value>
+  </data>
+  <data name="labelLaTex7.TabIndex" type="System.Int32, mscorlib">
+    <value>264</value>
+  </data>
+  <data name="labelLaTex7.Text" xml:space="preserve">
+    <value>\sigma_{11}</value>
+  </data>
+  <data name="&gt;&gt;labelLaTex7.Name" xml:space="preserve">
+    <value>labelLaTex7</value>
+  </data>
+  <data name="&gt;&gt;labelLaTex7.Type" xml:space="preserve">
+    <value>Crystallography.Controls.LabelLaTeX, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;labelLaTex7.Parent" xml:space="preserve">
+    <value>tabPageStrainStress</value>
+  </data>
+  <data name="&gt;&gt;labelLaTex7.ZOrder" xml:space="preserve">
+    <value>23</value>
+  </data>
+  <data name="labelLaTex1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 11pt</value>
+  </data>
+  <data name="labelLaTex1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>22, 28</value>
+  </data>
+  <data name="labelLaTex1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>20, 20</value>
+  </data>
+  <data name="labelLaTex1.TabIndex" type="System.Int32, mscorlib">
+    <value>264</value>
+  </data>
+  <data name="labelLaTex1.Text" xml:space="preserve">
+    <value>\epsilon_{11}</value>
+  </data>
+  <data name="&gt;&gt;labelLaTex1.Name" xml:space="preserve">
+    <value>labelLaTex1</value>
+  </data>
+  <data name="&gt;&gt;labelLaTex1.Type" xml:space="preserve">
+    <value>Crystallography.Controls.LabelLaTeX, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;labelLaTex1.Parent" xml:space="preserve">
+    <value>tabPageStrainStress</value>
+  </data>
+  <data name="&gt;&gt;labelLaTex1.ZOrder" xml:space="preserve">
+    <value>24</value>
+  </data>
+  <data name="buttonStressSet.Location" type="System.Drawing.Point, System.Drawing">
+    <value>282, 196</value>
+  </data>
+  <data name="buttonStressSet.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="buttonStressSet.TabIndex" type="System.Int32, mscorlib">
+    <value>263</value>
+  </data>
+  <data name="buttonStressSet.Text" xml:space="preserve">
+    <value>set</value>
+  </data>
+  <data name="&gt;&gt;buttonStressSet.Name" xml:space="preserve">
+    <value>buttonStressSet</value>
+  </data>
+  <data name="&gt;&gt;buttonStressSet.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonStressSet.Parent" xml:space="preserve">
+    <value>tabPageStrainStress</value>
+  </data>
+  <data name="&gt;&gt;buttonStressSet.ZOrder" xml:space="preserve">
+    <value>25</value>
   </data>
   <data name="numericBoxHill.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
   <data name="numericBoxHill.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxHill.Location" type="System.Drawing.Point, System.Drawing">
     <value>306, 159</value>
@@ -1453,7 +2266,7 @@
     <value>13</value>
   </data>
   <data name="numericBoxHill.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>Arial Narrow, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="&gt;&gt;numericBoxHill.Name" xml:space="preserve">
     <value>numericBoxHill</value>
@@ -1465,43 +2278,7 @@
     <value>tabPageStrainStress</value>
   </data>
   <data name="&gt;&gt;numericBoxHill.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="label116.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label116.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Times New Roman, 10pt</value>
-  </data>
-  <data name="label116.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label116.Location" type="System.Drawing.Point, System.Drawing">
-    <value>282, 162</value>
-  </data>
-  <data name="label116.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 0, 4, 0</value>
-  </data>
-  <data name="label116.Size" type="System.Drawing.Size, System.Drawing">
-    <value>14, 16</value>
-  </data>
-  <data name="label116.TabIndex" type="System.Int32, mscorlib">
-    <value>262</value>
-  </data>
-  <data name="label116.Text" xml:space="preserve">
-    <value>α</value>
-  </data>
-  <data name="&gt;&gt;label116.Name" xml:space="preserve">
-    <value>label116</value>
-  </data>
-  <data name="&gt;&gt;label116.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label116.Parent" xml:space="preserve">
-    <value>tabPageStrainStress</value>
-  </data>
-  <data name="&gt;&gt;label116.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>26</value>
   </data>
   <data name="label117.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1537,7 +2314,7 @@
     <value>tabPageStrainStress</value>
   </data>
   <data name="&gt;&gt;label117.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>27</value>
   </data>
   <data name="label109.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1574,223 +2351,7 @@
     <value>tabPageStrainStress</value>
   </data>
   <data name="&gt;&gt;label109.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="label110.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label110.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Times New Roman, 9pt</value>
-  </data>
-  <data name="label110.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label110.Location" type="System.Drawing.Point, System.Drawing">
-    <value>251, 69</value>
-  </data>
-  <data name="label110.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 0, 4, 0</value>
-  </data>
-  <data name="label110.Size" type="System.Drawing.Size, System.Drawing">
-    <value>25, 15</value>
-  </data>
-  <data name="label110.TabIndex" type="System.Int32, mscorlib">
-    <value>249</value>
-  </data>
-  <data name="label110.Text" xml:space="preserve">
-    <value>σ22</value>
-  </data>
-  <data name="&gt;&gt;label110.Name" xml:space="preserve">
-    <value>label110</value>
-  </data>
-  <data name="&gt;&gt;label110.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label110.Parent" xml:space="preserve">
-    <value>tabPageStrainStress</value>
-  </data>
-  <data name="&gt;&gt;label110.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="label111.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label111.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Times New Roman, 9pt</value>
-  </data>
-  <data name="label111.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label111.Location" type="System.Drawing.Point, System.Drawing">
-    <value>255, 29</value>
-  </data>
-  <data name="label111.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 0, 4, 0</value>
-  </data>
-  <data name="label111.Size" type="System.Drawing.Size, System.Drawing">
-    <value>25, 15</value>
-  </data>
-  <data name="label111.TabIndex" type="System.Int32, mscorlib">
-    <value>250</value>
-  </data>
-  <data name="label111.Text" xml:space="preserve">
-    <value>σ12</value>
-  </data>
-  <data name="&gt;&gt;label111.Name" xml:space="preserve">
-    <value>label111</value>
-  </data>
-  <data name="&gt;&gt;label111.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label111.Parent" xml:space="preserve">
-    <value>tabPageStrainStress</value>
-  </data>
-  <data name="&gt;&gt;label111.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="label112.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label112.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Times New Roman, 9pt</value>
-  </data>
-  <data name="label112.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label112.Location" type="System.Drawing.Point, System.Drawing">
-    <value>301, 109</value>
-  </data>
-  <data name="label112.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 0, 4, 0</value>
-  </data>
-  <data name="label112.Size" type="System.Drawing.Size, System.Drawing">
-    <value>25, 15</value>
-  </data>
-  <data name="label112.TabIndex" type="System.Int32, mscorlib">
-    <value>251</value>
-  </data>
-  <data name="label112.Text" xml:space="preserve">
-    <value>σ33</value>
-  </data>
-  <data name="&gt;&gt;label112.Name" xml:space="preserve">
-    <value>label112</value>
-  </data>
-  <data name="&gt;&gt;label112.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label112.Parent" xml:space="preserve">
-    <value>tabPageStrainStress</value>
-  </data>
-  <data name="&gt;&gt;label112.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="label113.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label113.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Times New Roman, 9pt</value>
-  </data>
-  <data name="label113.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label113.Location" type="System.Drawing.Point, System.Drawing">
-    <value>206, 28</value>
-  </data>
-  <data name="label113.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 0, 4, 0</value>
-  </data>
-  <data name="label113.Size" type="System.Drawing.Size, System.Drawing">
-    <value>25, 15</value>
-  </data>
-  <data name="label113.TabIndex" type="System.Int32, mscorlib">
-    <value>254</value>
-  </data>
-  <data name="label113.Text" xml:space="preserve">
-    <value>σ11</value>
-  </data>
-  <data name="&gt;&gt;label113.Name" xml:space="preserve">
-    <value>label113</value>
-  </data>
-  <data name="&gt;&gt;label113.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label113.Parent" xml:space="preserve">
-    <value>tabPageStrainStress</value>
-  </data>
-  <data name="&gt;&gt;label113.ZOrder" xml:space="preserve">
-    <value>9</value>
-  </data>
-  <data name="label114.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label114.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Times New Roman, 9pt</value>
-  </data>
-  <data name="label114.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label114.Location" type="System.Drawing.Point, System.Drawing">
-    <value>301, 69</value>
-  </data>
-  <data name="label114.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 0, 4, 0</value>
-  </data>
-  <data name="label114.Size" type="System.Drawing.Size, System.Drawing">
-    <value>25, 15</value>
-  </data>
-  <data name="label114.TabIndex" type="System.Int32, mscorlib">
-    <value>252</value>
-  </data>
-  <data name="label114.Text" xml:space="preserve">
-    <value>σ23</value>
-  </data>
-  <data name="&gt;&gt;label114.Name" xml:space="preserve">
-    <value>label114</value>
-  </data>
-  <data name="&gt;&gt;label114.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label114.Parent" xml:space="preserve">
-    <value>tabPageStrainStress</value>
-  </data>
-  <data name="&gt;&gt;label114.ZOrder" xml:space="preserve">
-    <value>10</value>
-  </data>
-  <data name="label115.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label115.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Times New Roman, 9pt</value>
-  </data>
-  <data name="label115.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label115.Location" type="System.Drawing.Point, System.Drawing">
-    <value>304, 29</value>
-  </data>
-  <data name="label115.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 0, 4, 0</value>
-  </data>
-  <data name="label115.Size" type="System.Drawing.Size, System.Drawing">
-    <value>25, 15</value>
-  </data>
-  <data name="label115.TabIndex" type="System.Int32, mscorlib">
-    <value>248</value>
-  </data>
-  <data name="label115.Text" xml:space="preserve">
-    <value>σ13</value>
-  </data>
-  <data name="&gt;&gt;label115.Name" xml:space="preserve">
-    <value>label115</value>
-  </data>
-  <data name="&gt;&gt;label115.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label115.Parent" xml:space="preserve">
-    <value>tabPageStrainStress</value>
-  </data>
-  <data name="&gt;&gt;label115.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>28</value>
   </data>
   <data name="label102.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1826,684 +2387,6 @@
     <value>tabPageStrainStress</value>
   </data>
   <data name="&gt;&gt;label102.ZOrder" xml:space="preserve">
-    <value>12</value>
-  </data>
-  <data name="label103.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label103.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Times New Roman, 9pt</value>
-  </data>
-  <data name="label103.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label103.Location" type="System.Drawing.Point, System.Drawing">
-    <value>64, 69</value>
-  </data>
-  <data name="label103.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 0, 4, 0</value>
-  </data>
-  <data name="label103.Size" type="System.Drawing.Size, System.Drawing">
-    <value>24, 15</value>
-  </data>
-  <data name="label103.TabIndex" type="System.Int32, mscorlib">
-    <value>235</value>
-  </data>
-  <data name="label103.Text" xml:space="preserve">
-    <value>ε22</value>
-  </data>
-  <data name="&gt;&gt;label103.Name" xml:space="preserve">
-    <value>label103</value>
-  </data>
-  <data name="&gt;&gt;label103.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label103.Parent" xml:space="preserve">
-    <value>tabPageStrainStress</value>
-  </data>
-  <data name="&gt;&gt;label103.ZOrder" xml:space="preserve">
-    <value>13</value>
-  </data>
-  <data name="label104.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label104.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Times New Roman, 9pt</value>
-  </data>
-  <data name="label104.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label104.Location" type="System.Drawing.Point, System.Drawing">
-    <value>64, 30</value>
-  </data>
-  <data name="label104.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 0, 4, 0</value>
-  </data>
-  <data name="label104.Size" type="System.Drawing.Size, System.Drawing">
-    <value>24, 15</value>
-  </data>
-  <data name="label104.TabIndex" type="System.Int32, mscorlib">
-    <value>236</value>
-  </data>
-  <data name="label104.Text" xml:space="preserve">
-    <value>ε12</value>
-  </data>
-  <data name="&gt;&gt;label104.Name" xml:space="preserve">
-    <value>label104</value>
-  </data>
-  <data name="&gt;&gt;label104.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label104.Parent" xml:space="preserve">
-    <value>tabPageStrainStress</value>
-  </data>
-  <data name="&gt;&gt;label104.ZOrder" xml:space="preserve">
-    <value>14</value>
-  </data>
-  <data name="label105.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label105.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Times New Roman, 9pt</value>
-  </data>
-  <data name="label105.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label105.Location" type="System.Drawing.Point, System.Drawing">
-    <value>114, 107</value>
-  </data>
-  <data name="label105.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 0, 4, 0</value>
-  </data>
-  <data name="label105.Size" type="System.Drawing.Size, System.Drawing">
-    <value>24, 15</value>
-  </data>
-  <data name="label105.TabIndex" type="System.Int32, mscorlib">
-    <value>237</value>
-  </data>
-  <data name="label105.Text" xml:space="preserve">
-    <value>ε33</value>
-  </data>
-  <data name="&gt;&gt;label105.Name" xml:space="preserve">
-    <value>label105</value>
-  </data>
-  <data name="&gt;&gt;label105.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label105.Parent" xml:space="preserve">
-    <value>tabPageStrainStress</value>
-  </data>
-  <data name="&gt;&gt;label105.ZOrder" xml:space="preserve">
-    <value>15</value>
-  </data>
-  <data name="label106.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label106.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Times New Roman, 9pt</value>
-  </data>
-  <data name="label106.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label106.Location" type="System.Drawing.Point, System.Drawing">
-    <value>114, 69</value>
-  </data>
-  <data name="label106.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 0, 4, 0</value>
-  </data>
-  <data name="label106.Size" type="System.Drawing.Size, System.Drawing">
-    <value>24, 15</value>
-  </data>
-  <data name="label106.TabIndex" type="System.Int32, mscorlib">
-    <value>238</value>
-  </data>
-  <data name="label106.Text" xml:space="preserve">
-    <value>ε23</value>
-  </data>
-  <data name="&gt;&gt;label106.Name" xml:space="preserve">
-    <value>label106</value>
-  </data>
-  <data name="&gt;&gt;label106.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label106.Parent" xml:space="preserve">
-    <value>tabPageStrainStress</value>
-  </data>
-  <data name="&gt;&gt;label106.ZOrder" xml:space="preserve">
-    <value>16</value>
-  </data>
-  <data name="label107.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label107.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Times New Roman, 9pt</value>
-  </data>
-  <data name="label107.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label107.Location" type="System.Drawing.Point, System.Drawing">
-    <value>18, 30</value>
-  </data>
-  <data name="label107.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 0, 4, 0</value>
-  </data>
-  <data name="label107.Size" type="System.Drawing.Size, System.Drawing">
-    <value>24, 15</value>
-  </data>
-  <data name="label107.TabIndex" type="System.Int32, mscorlib">
-    <value>241</value>
-  </data>
-  <data name="label107.Text" xml:space="preserve">
-    <value>ε11</value>
-  </data>
-  <data name="&gt;&gt;label107.Name" xml:space="preserve">
-    <value>label107</value>
-  </data>
-  <data name="&gt;&gt;label107.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label107.Parent" xml:space="preserve">
-    <value>tabPageStrainStress</value>
-  </data>
-  <data name="&gt;&gt;label107.ZOrder" xml:space="preserve">
-    <value>17</value>
-  </data>
-  <data name="label108.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label108.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Times New Roman, 9pt</value>
-  </data>
-  <data name="label108.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label108.Location" type="System.Drawing.Point, System.Drawing">
-    <value>114, 30</value>
-  </data>
-  <data name="label108.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 0, 4, 0</value>
-  </data>
-  <data name="label108.Size" type="System.Drawing.Size, System.Drawing">
-    <value>24, 15</value>
-  </data>
-  <data name="label108.TabIndex" type="System.Int32, mscorlib">
-    <value>239</value>
-  </data>
-  <data name="label108.Text" xml:space="preserve">
-    <value>ε13</value>
-  </data>
-  <data name="&gt;&gt;label108.Name" xml:space="preserve">
-    <value>label108</value>
-  </data>
-  <data name="&gt;&gt;label108.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label108.Parent" xml:space="preserve">
-    <value>tabPageStrainStress</value>
-  </data>
-  <data name="&gt;&gt;label108.ZOrder" xml:space="preserve">
-    <value>18</value>
-  </data>
-  <data name="numericBoxStress33.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="numericBoxStress33.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="numericBoxStress33.Location" type="System.Drawing.Point, System.Drawing">
-    <value>305, 125</value>
-  </data>
-  <data name="numericBoxStress33.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>1, 1, 1, 1</value>
-  </data>
-  <data name="numericBoxStress33.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 27</value>
-  </data>
-  <data name="numericBoxStress33.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 17</value>
-  </data>
-  <data name="numericBoxStress33.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 1, 0</value>
-  </data>
-  <data name="numericBoxStress33.Size" type="System.Drawing.Size, System.Drawing">
-    <value>47, 24</value>
-  </data>
-  <data name="numericBoxStress33.TabIndex" type="System.Int32, mscorlib">
-    <value>11</value>
-  </data>
-  <data name="numericBoxStress33.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>Arial Narrow, 9.75pt</value>
-  </data>
-  <data name="&gt;&gt;numericBoxStress33.Name" xml:space="preserve">
-    <value>numericBoxStress33</value>
-  </data>
-  <data name="&gt;&gt;numericBoxStress33.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;numericBoxStress33.Parent" xml:space="preserve">
-    <value>tabPageStrainStress</value>
-  </data>
-  <data name="&gt;&gt;numericBoxStress33.ZOrder" xml:space="preserve">
-    <value>19</value>
-  </data>
-  <data name="numericBoxStress22.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="numericBoxStress22.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="numericBoxStress22.Location" type="System.Drawing.Point, System.Drawing">
-    <value>257, 84</value>
-  </data>
-  <data name="numericBoxStress22.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>1, 1, 1, 1</value>
-  </data>
-  <data name="numericBoxStress22.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 27</value>
-  </data>
-  <data name="numericBoxStress22.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 17</value>
-  </data>
-  <data name="numericBoxStress22.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 1, 0</value>
-  </data>
-  <data name="numericBoxStress22.Size" type="System.Drawing.Size, System.Drawing">
-    <value>47, 24</value>
-  </data>
-  <data name="numericBoxStress22.TabIndex" type="System.Int32, mscorlib">
-    <value>9</value>
-  </data>
-  <data name="numericBoxStress22.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>Arial Narrow, 9.75pt</value>
-  </data>
-  <data name="&gt;&gt;numericBoxStress22.Name" xml:space="preserve">
-    <value>numericBoxStress22</value>
-  </data>
-  <data name="&gt;&gt;numericBoxStress22.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;numericBoxStress22.Parent" xml:space="preserve">
-    <value>tabPageStrainStress</value>
-  </data>
-  <data name="&gt;&gt;numericBoxStress22.ZOrder" xml:space="preserve">
-    <value>20</value>
-  </data>
-  <data name="numericBoxStress11.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="numericBoxStress11.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="numericBoxStress11.Location" type="System.Drawing.Point, System.Drawing">
-    <value>209, 46</value>
-  </data>
-  <data name="numericBoxStress11.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>1, 1, 1, 1</value>
-  </data>
-  <data name="numericBoxStress11.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 27</value>
-  </data>
-  <data name="numericBoxStress11.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 17</value>
-  </data>
-  <data name="numericBoxStress11.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 1, 0</value>
-  </data>
-  <data name="numericBoxStress11.Size" type="System.Drawing.Size, System.Drawing">
-    <value>47, 24</value>
-  </data>
-  <data name="numericBoxStress11.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <data name="numericBoxStress11.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>Arial Narrow, 9.75pt</value>
-  </data>
-  <data name="&gt;&gt;numericBoxStress11.Name" xml:space="preserve">
-    <value>numericBoxStress11</value>
-  </data>
-  <data name="&gt;&gt;numericBoxStress11.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;numericBoxStress11.Parent" xml:space="preserve">
-    <value>tabPageStrainStress</value>
-  </data>
-  <data name="&gt;&gt;numericBoxStress11.ZOrder" xml:space="preserve">
-    <value>21</value>
-  </data>
-  <data name="numericBoxStress23.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="numericBoxStress23.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="numericBoxStress23.Location" type="System.Drawing.Point, System.Drawing">
-    <value>307, 84</value>
-  </data>
-  <data name="numericBoxStress23.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>1, 1, 1, 1</value>
-  </data>
-  <data name="numericBoxStress23.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 27</value>
-  </data>
-  <data name="numericBoxStress23.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 17</value>
-  </data>
-  <data name="numericBoxStress23.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 1, 0</value>
-  </data>
-  <data name="numericBoxStress23.Size" type="System.Drawing.Size, System.Drawing">
-    <value>47, 24</value>
-  </data>
-  <data name="numericBoxStress23.TabIndex" type="System.Int32, mscorlib">
-    <value>10</value>
-  </data>
-  <data name="numericBoxStress23.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>Arial Narrow, 9.75pt</value>
-  </data>
-  <data name="&gt;&gt;numericBoxStress23.Name" xml:space="preserve">
-    <value>numericBoxStress23</value>
-  </data>
-  <data name="&gt;&gt;numericBoxStress23.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;numericBoxStress23.Parent" xml:space="preserve">
-    <value>tabPageStrainStress</value>
-  </data>
-  <data name="&gt;&gt;numericBoxStress23.ZOrder" xml:space="preserve">
-    <value>22</value>
-  </data>
-  <data name="numericBoxStress13.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="numericBoxStress13.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="numericBoxStress13.Location" type="System.Drawing.Point, System.Drawing">
-    <value>307, 46</value>
-  </data>
-  <data name="numericBoxStress13.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>1, 1, 1, 1</value>
-  </data>
-  <data name="numericBoxStress13.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 27</value>
-  </data>
-  <data name="numericBoxStress13.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 17</value>
-  </data>
-  <data name="numericBoxStress13.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 1, 0</value>
-  </data>
-  <data name="numericBoxStress13.Size" type="System.Drawing.Size, System.Drawing">
-    <value>47, 24</value>
-  </data>
-  <data name="numericBoxStress13.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
-  </data>
-  <data name="numericBoxStress13.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>Arial Narrow, 9.75pt</value>
-  </data>
-  <data name="&gt;&gt;numericBoxStress13.Name" xml:space="preserve">
-    <value>numericBoxStress13</value>
-  </data>
-  <data name="&gt;&gt;numericBoxStress13.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;numericBoxStress13.Parent" xml:space="preserve">
-    <value>tabPageStrainStress</value>
-  </data>
-  <data name="&gt;&gt;numericBoxStress13.ZOrder" xml:space="preserve">
-    <value>23</value>
-  </data>
-  <data name="numericBoxStress12.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="numericBoxStress12.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="numericBoxStress12.Location" type="System.Drawing.Point, System.Drawing">
-    <value>258, 46</value>
-  </data>
-  <data name="numericBoxStress12.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>1, 1, 1, 1</value>
-  </data>
-  <data name="numericBoxStress12.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 27</value>
-  </data>
-  <data name="numericBoxStress12.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 17</value>
-  </data>
-  <data name="numericBoxStress12.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 1, 0</value>
-  </data>
-  <data name="numericBoxStress12.Size" type="System.Drawing.Size, System.Drawing">
-    <value>47, 24</value>
-  </data>
-  <data name="numericBoxStress12.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
-  </data>
-  <data name="numericBoxStress12.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>Arial Narrow, 9.75pt</value>
-  </data>
-  <data name="&gt;&gt;numericBoxStress12.Name" xml:space="preserve">
-    <value>numericBoxStress12</value>
-  </data>
-  <data name="&gt;&gt;numericBoxStress12.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;numericBoxStress12.Parent" xml:space="preserve">
-    <value>tabPageStrainStress</value>
-  </data>
-  <data name="&gt;&gt;numericBoxStress12.ZOrder" xml:space="preserve">
-    <value>24</value>
-  </data>
-  <data name="numericBoxStrain11.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="numericBoxStrain11.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="numericBoxStrain11.Location" type="System.Drawing.Point, System.Drawing">
-    <value>22, 46</value>
-  </data>
-  <data name="numericBoxStrain11.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>1, 1, 1, 1</value>
-  </data>
-  <data name="numericBoxStrain11.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 27</value>
-  </data>
-  <data name="numericBoxStrain11.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 17</value>
-  </data>
-  <data name="numericBoxStrain11.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 1, 0</value>
-  </data>
-  <data name="numericBoxStrain11.Size" type="System.Drawing.Size, System.Drawing">
-    <value>47, 24</value>
-  </data>
-  <data name="numericBoxStrain11.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="numericBoxStrain11.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>Arial Narrow, 9.75pt</value>
-  </data>
-  <data name="&gt;&gt;numericBoxStrain11.Name" xml:space="preserve">
-    <value>numericBoxStrain11</value>
-  </data>
-  <data name="&gt;&gt;numericBoxStrain11.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;numericBoxStrain11.Parent" xml:space="preserve">
-    <value>tabPageStrainStress</value>
-  </data>
-  <data name="&gt;&gt;numericBoxStrain11.ZOrder" xml:space="preserve">
-    <value>25</value>
-  </data>
-  <data name="numericBoxStrain22.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="numericBoxStrain22.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="numericBoxStrain22.Location" type="System.Drawing.Point, System.Drawing">
-    <value>71, 84</value>
-  </data>
-  <data name="numericBoxStrain22.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>1, 1, 1, 1</value>
-  </data>
-  <data name="numericBoxStrain22.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 27</value>
-  </data>
-  <data name="numericBoxStrain22.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 17</value>
-  </data>
-  <data name="numericBoxStrain22.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 1, 0</value>
-  </data>
-  <data name="numericBoxStrain22.Size" type="System.Drawing.Size, System.Drawing">
-    <value>47, 24</value>
-  </data>
-  <data name="numericBoxStrain22.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="numericBoxStrain22.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>Arial Narrow, 9.75pt</value>
-  </data>
-  <data name="&gt;&gt;numericBoxStrain22.Name" xml:space="preserve">
-    <value>numericBoxStrain22</value>
-  </data>
-  <data name="&gt;&gt;numericBoxStrain22.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;numericBoxStrain22.Parent" xml:space="preserve">
-    <value>tabPageStrainStress</value>
-  </data>
-  <data name="&gt;&gt;numericBoxStrain22.ZOrder" xml:space="preserve">
-    <value>26</value>
-  </data>
-  <data name="numericBoxStrain12.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="numericBoxStrain12.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="numericBoxStrain12.Location" type="System.Drawing.Point, System.Drawing">
-    <value>71, 46</value>
-  </data>
-  <data name="numericBoxStrain12.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>1, 1, 1, 1</value>
-  </data>
-  <data name="numericBoxStrain12.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 27</value>
-  </data>
-  <data name="numericBoxStrain12.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 17</value>
-  </data>
-  <data name="numericBoxStrain12.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 1, 0</value>
-  </data>
-  <data name="numericBoxStrain12.Size" type="System.Drawing.Size, System.Drawing">
-    <value>47, 24</value>
-  </data>
-  <data name="numericBoxStrain12.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="numericBoxStrain12.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>Arial Narrow, 9.75pt</value>
-  </data>
-  <data name="&gt;&gt;numericBoxStrain12.Name" xml:space="preserve">
-    <value>numericBoxStrain12</value>
-  </data>
-  <data name="&gt;&gt;numericBoxStrain12.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;numericBoxStrain12.Parent" xml:space="preserve">
-    <value>tabPageStrainStress</value>
-  </data>
-  <data name="&gt;&gt;numericBoxStrain12.ZOrder" xml:space="preserve">
-    <value>27</value>
-  </data>
-  <data name="numericBoxStrain23.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="numericBoxStrain23.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="numericBoxStrain23.Location" type="System.Drawing.Point, System.Drawing">
-    <value>120, 84</value>
-  </data>
-  <data name="numericBoxStrain23.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>1, 1, 1, 1</value>
-  </data>
-  <data name="numericBoxStrain23.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 27</value>
-  </data>
-  <data name="numericBoxStrain23.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 17</value>
-  </data>
-  <data name="numericBoxStrain23.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 1, 0</value>
-  </data>
-  <data name="numericBoxStrain23.Size" type="System.Drawing.Size, System.Drawing">
-    <value>47, 24</value>
-  </data>
-  <data name="numericBoxStrain23.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="numericBoxStrain23.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>Arial Narrow, 9.75pt</value>
-  </data>
-  <data name="&gt;&gt;numericBoxStrain23.Name" xml:space="preserve">
-    <value>numericBoxStrain23</value>
-  </data>
-  <data name="&gt;&gt;numericBoxStrain23.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;numericBoxStrain23.Parent" xml:space="preserve">
-    <value>tabPageStrainStress</value>
-  </data>
-  <data name="&gt;&gt;numericBoxStrain23.ZOrder" xml:space="preserve">
-    <value>28</value>
-  </data>
-  <data name="numericBoxStrain13.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="numericBoxStrain13.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="numericBoxStrain13.Location" type="System.Drawing.Point, System.Drawing">
-    <value>120, 46</value>
-  </data>
-  <data name="numericBoxStrain13.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>1, 1, 1, 1</value>
-  </data>
-  <data name="numericBoxStrain13.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 27</value>
-  </data>
-  <data name="numericBoxStrain13.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 17</value>
-  </data>
-  <data name="numericBoxStrain13.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 1, 0</value>
-  </data>
-  <data name="numericBoxStrain13.Size" type="System.Drawing.Size, System.Drawing">
-    <value>47, 24</value>
-  </data>
-  <data name="numericBoxStrain13.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="numericBoxStrain13.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>Arial Narrow, 9.75pt</value>
-  </data>
-  <data name="&gt;&gt;numericBoxStrain13.Name" xml:space="preserve">
-    <value>numericBoxStrain13</value>
-  </data>
-  <data name="&gt;&gt;numericBoxStrain13.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;numericBoxStrain13.Parent" xml:space="preserve">
-    <value>tabPageStrainStress</value>
-  </data>
-  <data name="&gt;&gt;numericBoxStrain13.ZOrder" xml:space="preserve">
     <value>29</value>
   </data>
   <data name="tabPageStrainStress.Location" type="System.Drawing.Point, System.Drawing">
@@ -2585,7 +2468,7 @@
     <value>Fill</value>
   </data>
   <data name="poleFigureControl.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="poleFigureControl.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 54</value>
@@ -2621,7 +2504,7 @@
     <value>GrowAndShrink</value>
   </data>
   <data name="buttonGenerateRandomOrientations.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="buttonGenerateRandomOrientations.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -2684,7 +2567,7 @@
     <value>True</value>
   </data>
   <data name="label5.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="label5.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -2717,7 +2600,7 @@
     <value>0</value>
   </data>
   <data name="numericUpDownAngleResolution.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericUpDownAngleResolution.Location" type="System.Drawing.Point, System.Drawing">
     <value>110, 2</value>
@@ -2750,7 +2633,7 @@
     <value>True</value>
   </data>
   <data name="label29.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="label29.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -2783,7 +2666,7 @@
     <value>2</value>
   </data>
   <data name="numericUpDownAngleSubDivision.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericUpDownAngleSubDivision.Location" type="System.Drawing.Point, System.Drawing">
     <value>219, 2</value>
@@ -2816,7 +2699,7 @@
     <value>True</value>
   </data>
   <data name="label101.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="label101.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -2849,7 +2732,7 @@
     <value>4</value>
   </data>
   <data name="numericUpDownCrystallineSize.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericUpDownCrystallineSize.Location" type="System.Drawing.Point, System.Drawing">
     <value>310, 2</value>
@@ -2879,7 +2762,7 @@
     <value>True</value>
   </data>
   <data name="label99.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="label99.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -2969,7 +2852,7 @@
     <value>Fill</value>
   </data>
   <data name="boundControl.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="boundControl.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 3</value>
@@ -3026,7 +2909,7 @@
     <value>Fill</value>
   </data>
   <data name="latticePlaneControl.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="latticePlaneControl.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 3</value>
@@ -3083,7 +2966,7 @@
     <value>Fill</value>
   </data>
   <data name="tabControl.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="tabControl.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 52</value>
@@ -3122,10 +3005,10 @@
     <value>Right</value>
   </data>
   <data name="colorControl.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="colorControl.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="colorControl.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -3134,7 +3017,7 @@
     <value />
   </data>
   <data name="colorControl.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="colorControl.HeaderMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>6, 3, 0, 0</value>
@@ -3178,7 +3061,7 @@
     <value>Fill</value>
   </data>
   <data name="textBoxFormula.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="textBoxFormula.Location" type="System.Drawing.Point, System.Drawing">
     <value>55, 0</value>
@@ -3220,7 +3103,7 @@
     <value>Left</value>
   </data>
   <data name="label90.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="label90.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -3265,7 +3148,7 @@
     <value>Right</value>
   </data>
   <data name="numericBoxZnumber.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxZnumber.HeaderText" xml:space="preserve">
     <value>Z</value>
@@ -3427,7 +3310,7 @@
     <value>Fill</value>
   </data>
   <data name="textBoxName.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="textBoxName.Location" type="System.Drawing.Point, System.Drawing">
     <value>43, 0</value>
@@ -3463,7 +3346,7 @@
     <value>Left</value>
   </data>
   <data name="label22.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="label22.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -3508,7 +3391,7 @@
     <value>Right</value>
   </data>
   <data name="buttonScatteringFactor.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="buttonScatteringFactor.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>TopCenter</value>
@@ -3556,7 +3439,7 @@
     <value>Right</value>
   </data>
   <data name="buttonSymmetryInfo.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="buttonSymmetryInfo.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>TopCenter</value>

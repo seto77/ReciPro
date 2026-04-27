@@ -122,7 +122,7 @@
     <value>264, 30</value>
   </data>
   <data name="graphControlEnergyProfile.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="&gt;&gt;radioButtonStandardDeviation.Name" xml:space="preserve">
     <value>radioButtonStandardDeviation</value>
@@ -394,7 +394,7 @@ to calculate</value>
     <value>NoControl</value>
   </data>
   <data name="buttonSurfaceNormal.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="checkBoxDrawAxes.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -415,7 +415,7 @@ to calculate</value>
     <value>メイリオ, 9pt</value>
   </data>
   <data name="waveLengthControl.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="buttonCalc.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -596,7 +596,7 @@ to calculate</value>
     <value>4</value>
   </data>
   <data name="waveLengthControl.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="&gt;&gt;graphControlDistance.ZOrder" xml:space="preserve">
     <value>0</value>
@@ -731,7 +731,7 @@ to calculate</value>
     <value>NoControl</value>
   </data>
   <data name="poleFigureControl.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="radioButtonStandardDeviation.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 60</value>
@@ -849,7 +849,7 @@ axes</value>
     <value>0</value>
   </data>
   <data name="graphControlDepthProfile.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="waveLengthControl.Location" type="System.Drawing.Point, System.Drawing">
     <value>143, 8</value>
@@ -954,7 +954,7 @@ axes</value>
     <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="buttonViewFromX.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="groupBoxSurfaceDistance.Text" xml:space="preserve">
     <value>Maximum BSE Surface-Parallel Distance</value>
@@ -1044,7 +1044,7 @@ axes</value>
     <value>3, 3</value>
   </data>
   <data name="graphControlDistance.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="&gt;&gt;panelCalculationConditions.Parent" xml:space="preserve">
     <value>$this</value>
@@ -1101,7 +1101,7 @@ axes</value>
     <value>105</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="checkBoxDrawGuidCircles.Text" xml:space="preserve">
     <value>Draw guide circles</value>
@@ -1155,7 +1155,7 @@ axes</value>
     <value>0, 0, 0, 0</value>
   </data>
   <data name="buttonViewFromZ.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="groupBoxEnergyDistribution.TabIndex" type="System.Int32, mscorlib">
     <value>102</value>

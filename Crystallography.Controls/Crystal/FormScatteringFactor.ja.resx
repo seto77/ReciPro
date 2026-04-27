@@ -219,7 +219,7 @@
     <value>237, 83</value>
   </data>
   <data name="numericBoxThresholdD.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
+    <value>メイリオ, 9pt</value>
   </data>
   <data name="numericBoxThresholdD.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>

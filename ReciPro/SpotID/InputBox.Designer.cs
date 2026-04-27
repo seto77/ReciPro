@@ -35,7 +35,7 @@
             // label64
             // 
             this.label64.AutoSize = true;
-            this.label64.Font = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label64.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label64.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.label64.Location = new System.Drawing.Point(203, 5);
             this.label64.Margin = new System.Windows.Forms.Padding(0);
@@ -48,7 +48,7 @@
             // label60
             // 
             this.label60.AutoSize = true;
-            this.label60.Font = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label60.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label60.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.label60.Location = new System.Drawing.Point(132, 6);
             this.label60.Margin = new System.Windows.Forms.Padding(0);
@@ -61,7 +61,7 @@
             // label50
             // 
             this.label50.AutoSize = true;
-            this.label50.Font = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label50.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label50.Location = new System.Drawing.Point(48, 4);
             this.label50.Name = "label50";
             this.label50.Size = new System.Drawing.Size(29, 15);

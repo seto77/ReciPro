@@ -51,7 +51,7 @@
             // 
             labelHeader.AutoSize = true;
             labelHeader.BackColor = System.Drawing.SystemColors.Control;
-            labelHeader.Font = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            labelHeader.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
             labelHeader.Location = new System.Drawing.Point(0, 0);
             labelHeader.Margin = new System.Windows.Forms.Padding(0);
             labelHeader.Name = "labelHeader";
@@ -77,7 +77,7 @@
             // 
             labelFooter.AutoSize = true;
             labelFooter.BackColor = System.Drawing.SystemColors.Control;
-            labelFooter.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            labelFooter.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
             labelFooter.Location = new System.Drawing.Point(24, 0);
             labelFooter.Margin = new System.Windows.Forms.Padding(0);
             labelFooter.Name = "labelFooter";
@@ -93,7 +93,7 @@
             AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             BackColor = System.Drawing.SystemColors.Control;
             Controls.Add(flowLayoutPanel);
-            Font = new System.Drawing.Font("Segoe UI Symbol", 12.1875F);
+            Font = new System.Drawing.Font("Segoe UI", 9.75F);
             Margin = new System.Windows.Forms.Padding(0);
             Name = "ColorControl";
             Size = new System.Drawing.Size(24, 24);

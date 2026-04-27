@@ -45,7 +45,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label3.Location = new System.Drawing.Point(6, 77);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(31, 15);
@@ -67,7 +67,7 @@
             // numericBoxPixelWidth
             // 
             this.numericBoxPixelWidth.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxPixelWidth.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxPixelWidth.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxPixelWidth.FooterBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxPixelWidth.FooterText = "pixel";
             this.numericBoxPixelWidth.HeaderBackColor = System.Drawing.SystemColors.Control;
@@ -92,7 +92,7 @@
             // numericBoxPixelHeight
             // 
             this.numericBoxPixelHeight.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxPixelHeight.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxPixelHeight.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxPixelHeight.FooterBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxPixelHeight.FooterText = "pixel";
             this.numericBoxPixelHeight.HeaderBackColor = System.Drawing.SystemColors.Control;
@@ -117,7 +117,7 @@
             // numericBoxPixelSize
             // 
             this.numericBoxPixelSize.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxPixelSize.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxPixelSize.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxPixelSize.FooterBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxPixelSize.FooterText = "mm";
             this.numericBoxPixelSize.HeaderBackColor = System.Drawing.SystemColors.Control;
@@ -157,7 +157,7 @@
             // numericBoxFootY
             // 
             this.numericBoxFootY.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxFootY.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxFootY.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxFootY.FooterBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxFootY.FooterText = "pix";
             this.numericBoxFootY.HeaderBackColor = System.Drawing.SystemColors.Control;
@@ -182,7 +182,7 @@
             // numericBoxFootX
             // 
             this.numericBoxFootX.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxFootX.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxFootX.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxFootX.FooterBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxFootX.FooterText = "pix";
             this.numericBoxFootX.HeaderBackColor = System.Drawing.SystemColors.Control;
@@ -207,7 +207,7 @@
             // numericBoxPhi
             // 
             this.numericBoxPhi.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxPhi.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxPhi.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxPhi.FooterBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxPhi.FooterText = "°";
             this.numericBoxPhi.HeaderBackColor = System.Drawing.SystemColors.Control;
@@ -232,7 +232,7 @@
             // numericBoxTau
             // 
             this.numericBoxTau.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxTau.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxTau.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxTau.FooterBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxTau.FooterText = "°";
             this.numericBoxTau.HeaderBackColor = System.Drawing.SystemColors.Control;
@@ -259,7 +259,7 @@
             // numericBoxDistance
             // 
             this.numericBoxDistance.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxDistance.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxDistance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxDistance.FooterBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxDistance.FooterText = "mm";
             this.numericBoxDistance.HeaderBackColor = System.Drawing.SystemColors.Control;
@@ -289,7 +289,7 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.Controls.Add(this.groupBoxOpticalProperty);
             this.Controls.Add(this.groupBoxDetectorProperty);
-            this.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "SaclaControl";
             this.Size = new System.Drawing.Size(375, 103);

@@ -210,7 +210,7 @@ public partial class FormSpotIDv1 : FormBase
         }
 
         //最後に字を書く
-        var strFont = new Font("tahoma", 7.5f, FontStyle.Regular);
+        var strFont = new Font("Tahoma", 7.5f, FontStyle.Regular);
         var brush = new SolidBrush(Color.SlateBlue);
         g.Transform = new System.Drawing.Drawing2D.Matrix(1, 0, 0, 1, 0, 0);
         if (!photo.Paintable)

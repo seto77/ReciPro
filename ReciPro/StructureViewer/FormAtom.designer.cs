@@ -76,7 +76,7 @@
             this.groupBoxMaterial.Controls.Add(this.label35);
             this.groupBoxMaterial.Controls.Add(this.label34);
             this.groupBoxMaterial.Controls.Add(this.label12);
-            this.groupBoxMaterial.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBoxMaterial.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBoxMaterial.Location = new System.Drawing.Point(0, 0);
             this.groupBoxMaterial.Name = "groupBoxMaterial";
             this.groupBoxMaterial.Size = new System.Drawing.Size(211, 91);
@@ -124,7 +124,7 @@
             // numericUpDownAtomSpecular
             // 
             this.numericUpDownAtomSpecular.DecimalPlaces = 1;
-            this.numericUpDownAtomSpecular.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numericUpDownAtomSpecular.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.numericUpDownAtomSpecular.Increment = new decimal(new int[] {
             1,
             0,
@@ -144,7 +144,7 @@
             // numericUpDownAtomEmmision
             // 
             this.numericUpDownAtomEmmision.DecimalPlaces = 1;
-            this.numericUpDownAtomEmmision.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numericUpDownAtomEmmision.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.numericUpDownAtomEmmision.Increment = new decimal(new int[] {
             1,
             0,
@@ -164,7 +164,7 @@
             // numericUpDownAtomDiffusion
             // 
             this.numericUpDownAtomDiffusion.DecimalPlaces = 1;
-            this.numericUpDownAtomDiffusion.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numericUpDownAtomDiffusion.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.numericUpDownAtomDiffusion.Increment = new decimal(new int[] {
             1,
             0,
@@ -188,7 +188,7 @@
             // 
             // label37
             // 
-            this.label37.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label37.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label37.Location = new System.Drawing.Point(125, 67);
             this.label37.Name = "label37";
             this.label37.Size = new System.Drawing.Size(40, 19);
@@ -198,7 +198,7 @@
             // numericUpDownAtomAmbient
             // 
             this.numericUpDownAtomAmbient.DecimalPlaces = 1;
-            this.numericUpDownAtomAmbient.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numericUpDownAtomAmbient.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.numericUpDownAtomAmbient.Increment = new decimal(new int[] {
             1,
             0,
@@ -217,7 +217,7 @@
             // 
             // label36
             // 
-            this.label36.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label36.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label36.Location = new System.Drawing.Point(104, 43);
             this.label36.Name = "label36";
             this.label36.Size = new System.Drawing.Size(76, 16);
@@ -226,7 +226,7 @@
             // 
             // label38
             // 
-            this.label38.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label38.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label38.Location = new System.Drawing.Point(106, 16);
             this.label38.Name = "label38";
             this.label38.Size = new System.Drawing.Size(76, 19);
@@ -235,7 +235,7 @@
             // 
             // label35
             // 
-            this.label35.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label35.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label35.Location = new System.Drawing.Point(4, 66);
             this.label35.Name = "label35";
             this.label35.Size = new System.Drawing.Size(76, 19);
@@ -244,7 +244,7 @@
             // 
             // label34
             // 
-            this.label34.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label34.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label34.Location = new System.Drawing.Point(4, 42);
             this.label34.Name = "label34";
             this.label34.Size = new System.Drawing.Size(59, 17);
@@ -253,7 +253,7 @@
             // 
             // label12
             // 
-            this.label12.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.Location = new System.Drawing.Point(4, 17);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(59, 19);
@@ -272,7 +272,7 @@
             // 
             // label8
             // 
-            this.label8.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.Location = new System.Drawing.Point(3, 126);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(48, 19);
@@ -282,7 +282,7 @@
             // numericUpDownAtomRadius
             // 
             this.numericUpDownAtomRadius.DecimalPlaces = 3;
-            this.numericUpDownAtomRadius.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numericUpDownAtomRadius.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.numericUpDownAtomRadius.Increment = new decimal(new int[] {
             1,
             0,
@@ -301,7 +301,7 @@
             // 
             // label9
             // 
-            this.label9.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.Location = new System.Drawing.Point(3, 98);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(48, 19);
@@ -311,7 +311,7 @@
             // radioButtonApplyEquivalentAtoms
             // 
             this.radioButtonApplyEquivalentAtoms.AutoSize = true;
-            this.radioButtonApplyEquivalentAtoms.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButtonApplyEquivalentAtoms.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radioButtonApplyEquivalentAtoms.Location = new System.Drawing.Point(107, 143);
             this.radioButtonApplyEquivalentAtoms.Name = "radioButtonApplyEquivalentAtoms";
             this.radioButtonApplyEquivalentAtoms.Size = new System.Drawing.Size(151, 19);
@@ -323,7 +323,7 @@
             // radioButtonApplyThis
             // 
             this.radioButtonApplyThis.AutoSize = true;
-            this.radioButtonApplyThis.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButtonApplyThis.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radioButtonApplyThis.Location = new System.Drawing.Point(107, 159);
             this.radioButtonApplyThis.Name = "radioButtonApplyThis";
             this.radioButtonApplyThis.Size = new System.Drawing.Size(133, 19);
@@ -335,7 +335,7 @@
             // buttonCancel
             // 
             this.buttonCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.buttonCancel.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonCancel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonCancel.Location = new System.Drawing.Point(180, 184);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(72, 24);
@@ -346,7 +346,7 @@
             // buttonOK
             // 
             this.buttonOK.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.buttonOK.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonOK.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonOK.Location = new System.Drawing.Point(101, 184);
             this.buttonOK.Name = "buttonOK";
             this.buttonOK.Size = new System.Drawing.Size(72, 24);
@@ -359,7 +359,7 @@
             this.checkBoxIsDraw.AutoSize = true;
             this.checkBoxIsDraw.Checked = true;
             this.checkBoxIsDraw.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxIsDraw.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBoxIsDraw.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.checkBoxIsDraw.Location = new System.Drawing.Point(150, 95);
             this.checkBoxIsDraw.Name = "checkBoxIsDraw";
             this.checkBoxIsDraw.Size = new System.Drawing.Size(63, 19);
@@ -372,7 +372,7 @@
             // 
             this.radioButtonAllSameElement.AutoSize = true;
             this.radioButtonAllSameElement.Checked = true;
-            this.radioButtonAllSameElement.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButtonAllSameElement.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radioButtonAllSameElement.Location = new System.Drawing.Point(107, 126);
             this.radioButtonAllSameElement.Name = "radioButtonAllSameElement";
             this.radioButtonAllSameElement.Size = new System.Drawing.Size(153, 19);
@@ -401,7 +401,7 @@
             this.Controls.Add(this.label8);
             this.Controls.Add(this.numericUpDownAtomRadius);
             this.Controls.Add(this.label9);
-            this.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "FormAtom";
             this.Text = "Atom property";
             this.groupBoxMaterial.ResumeLayout(false);

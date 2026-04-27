@@ -231,7 +231,7 @@
             BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             captureExtender.SetCapture(this, true);
             Controls.Add(flowLayoutPanel1);
-            Font = new System.Drawing.Font("Arial", 9F);
+            Font = new System.Drawing.Font("Segoe UI", 9F);
             Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             Name = "CheckedListboxAlpha";
             Size = new System.Drawing.Size(222, 185);

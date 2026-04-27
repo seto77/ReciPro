@@ -457,7 +457,7 @@ public partial class FormStereonet : FormBase
         var matBase = radioButtonAxes.Checked ? crystal.RotationMatrix * crystal.MatrixReal : crystal.RotationMatrix * crystal.MatrixInverseTransposed;
 
         var drawString = trackBarStrSize.Value != 1 && checkBoxShowIndexLabels.Checked;
-        var font = new Font("Times", trackBarStrSize.Value / (float)mag / 7f);
+        var font = new Font("Times New Roman", trackBarStrSize.Value / (float)mag / 7f);
 
         Func<Vector3DBase, PointD> conv = radioButtonWulff.Checked ? Stereonet.ConvertVectorToWulff : Stereonet.ConvertVectorToSchmidt;
 

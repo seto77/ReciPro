@@ -1359,7 +1359,7 @@
             // elementDataGridViewTextBoxColumn
             // 
             elementDataGridViewTextBoxColumn.DataPropertyName = "Element";
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9F);
             elementDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle3;
             resources.ApplyResources(elementDataGridViewTextBoxColumn, "elementDataGridViewTextBoxColumn");
             elementDataGridViewTextBoxColumn.Name = "elementDataGridViewTextBoxColumn";
@@ -1370,7 +1370,7 @@
             // xDataGridViewTextBoxColumn
             // 
             xDataGridViewTextBoxColumn.DataPropertyName = "X";
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 9F);
             xDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle4;
             resources.ApplyResources(xDataGridViewTextBoxColumn, "xDataGridViewTextBoxColumn");
             xDataGridViewTextBoxColumn.Name = "xDataGridViewTextBoxColumn";
@@ -1380,7 +1380,7 @@
             // yDataGridViewTextBoxColumn
             // 
             yDataGridViewTextBoxColumn.DataPropertyName = "Y";
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 9F);
             yDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle5;
             resources.ApplyResources(yDataGridViewTextBoxColumn, "yDataGridViewTextBoxColumn");
             yDataGridViewTextBoxColumn.Name = "yDataGridViewTextBoxColumn";
@@ -1390,7 +1390,7 @@
             // zDataGridViewTextBoxColumn
             // 
             zDataGridViewTextBoxColumn.DataPropertyName = "Z";
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 9F);
             zDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle6;
             resources.ApplyResources(zDataGridViewTextBoxColumn, "zDataGridViewTextBoxColumn");
             zDataGridViewTextBoxColumn.Name = "zDataGridViewTextBoxColumn";

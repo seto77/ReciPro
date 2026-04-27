@@ -135,7 +135,7 @@
     <value>Fill</value>
   </data>
   <data name="graphicsBox.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="graphicsBox.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -297,7 +297,7 @@ Middle drag: Drag the simulated image
     <value>True</value>
   </data>
   <data name="radioButtonUpperSphere.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="radioButtonUpperSphere.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -336,7 +336,7 @@ Middle drag: Drag the simulated image
     <value>True</value>
   </data>
   <data name="radioButtonLowerSphere.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="radioButtonLowerSphere.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -396,7 +396,7 @@ Middle drag: Drag the simulated image
     <value>0</value>
   </data>
   <data name="groupBoxSphere.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="groupBoxSphere.Location" type="System.Drawing.Point, System.Drawing">
     <value>156, 87</value>
@@ -432,7 +432,7 @@ Middle drag: Drag the simulated image
     <value>True</value>
   </data>
   <data name="radioButtonWulff.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="radioButtonWulff.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -471,7 +471,7 @@ Middle drag: Drag the simulated image
     <value>True</value>
   </data>
   <data name="radioButtonSchmidt.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="radioButtonSchmidt.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -534,7 +534,7 @@ Middle drag: Drag the simulated image
     <value>0</value>
   </data>
   <data name="groupBoxProjectionScheme.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="groupBoxProjectionScheme.Location" type="System.Drawing.Point, System.Drawing">
     <value>156, 16</value>
@@ -573,7 +573,7 @@ Middle drag: Drag the simulated image
     <value>False</value>
   </data>
   <data name="checkBoxReflectStructureFactor.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 8pt</value>
+    <value>Segoe UI, 8pt</value>
   </data>
   <data name="checkBoxReflectStructureFactor.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -614,7 +614,7 @@ Kikuchi line intensity</value>
     <value>Top</value>
   </data>
   <data name="checkBoxShowIndexLabels.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="checkBoxShowIndexLabels.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 65</value>
@@ -650,7 +650,7 @@ Kikuchi line intensity</value>
     <value>True</value>
   </data>
   <data name="radioButtonAxes.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="radioButtonAxes.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -689,7 +689,7 @@ Kikuchi line intensity</value>
     <value>True</value>
   </data>
   <data name="radioButtonPlanes.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="radioButtonPlanes.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -728,7 +728,7 @@ Kikuchi line intensity</value>
     <value>True</value>
   </data>
   <data name="radioButtonKikuchiLinePairs.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="radioButtonKikuchiLinePairs.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -791,7 +791,7 @@ Kikuchi line intensity</value>
     <value>2</value>
   </data>
   <data name="groupBoxProjectionObject.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="groupBoxProjectionObject.Location" type="System.Drawing.Point, System.Drawing">
     <value>5, 16</value>
@@ -821,7 +821,7 @@ Kikuchi line intensity</value>
     <value>Left</value>
   </data>
   <data name="groupBoxMode.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt, style=Bold</value>
+    <value>Segoe UI, 9.75pt, style=Bold</value>
   </data>
   <data name="groupBoxMode.Location" type="System.Drawing.Point, System.Drawing">
     <value>5, 0</value>
@@ -848,7 +848,7 @@ Kikuchi line intensity</value>
     <value>3</value>
   </data>
   <data name="labelXpos.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="labelXpos.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -878,7 +878,7 @@ Kikuchi line intensity</value>
     <value>2</value>
   </data>
   <data name="labelYpos.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="labelYpos.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -911,7 +911,7 @@ Kikuchi line intensity</value>
     <value>True</value>
   </data>
   <data name="label6.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="label6.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -947,7 +947,7 @@ Kikuchi line intensity</value>
     <value>True</value>
   </data>
   <data name="label1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="label1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -983,7 +983,7 @@ Kikuchi line intensity</value>
     <value>True</value>
   </data>
   <data name="checkBox1DegLine.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="checkBox1DegLine.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -1022,7 +1022,7 @@ Kikuchi line intensity</value>
     <value>True</value>
   </data>
   <data name="radioButtonOutlinePole.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="radioButtonOutlinePole.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -1061,7 +1061,7 @@ Kikuchi line intensity</value>
     <value>True</value>
   </data>
   <data name="radioButtonOutlineEquator.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="radioButtonOutlineEquator.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -1097,7 +1097,7 @@ Kikuchi line intensity</value>
     <value>2</value>
   </data>
   <data name="groupBoxOutline.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="groupBoxOutline.Location" type="System.Drawing.Point, System.Drawing">
     <value>139, 0</value>
@@ -1127,7 +1127,7 @@ Kikuchi line intensity</value>
     <value>True</value>
   </data>
   <data name="radioButtonDelimiterComma.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="radioButtonDelimiterComma.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -1166,7 +1166,7 @@ Kikuchi line intensity</value>
     <value>True</value>
   </data>
   <data name="radioButtonDelimiterSpace.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="radioButtonDelimiterSpace.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -1205,7 +1205,7 @@ Kikuchi line intensity</value>
     <value>True</value>
   </data>
   <data name="radioButtonDelimiterNone.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="radioButtonDelimiterNone.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -1265,7 +1265,7 @@ Kikuchi line intensity</value>
     <value>0</value>
   </data>
   <data name="groupBoxSize.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="groupBoxSize.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 0</value>
@@ -1298,10 +1298,10 @@ Kikuchi line intensity</value>
     <value>GrowAndShrink</value>
   </data>
   <data name="colorControlString.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 12.1875pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="colorControlString.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="colorControlString.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -1310,7 +1310,7 @@ Kikuchi line intensity</value>
     <value>Zone Axis Label Color in Kikuchi Pattern</value>
   </data>
   <data name="colorControlString.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="colorControlString.HeaderMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -1346,10 +1346,10 @@ Kikuchi line intensity</value>
     <value>GrowAndShrink</value>
   </data>
   <data name="colorControlKikuchi.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 12.1875pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="colorControlKikuchi.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="colorControlKikuchi.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -1358,7 +1358,7 @@ Kikuchi line intensity</value>
     <value>Zone Axis Color in Kikuchi Pattern</value>
   </data>
   <data name="colorControlKikuchi.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="colorControlKikuchi.HeaderMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -1394,10 +1394,10 @@ Kikuchi line intensity</value>
     <value>GrowAndShrink</value>
   </data>
   <data name="colorControlBackGround.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 12.1875pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="colorControlBackGround.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="colorControlBackGround.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -1406,7 +1406,7 @@ Kikuchi line intensity</value>
     <value>Background</value>
   </data>
   <data name="colorControlBackGround.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="colorControlBackGround.HeaderMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -1442,10 +1442,10 @@ Kikuchi line intensity</value>
     <value>GrowAndShrink</value>
   </data>
   <data name="colorControl10DegLine.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 12.1875pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="colorControl10DegLine.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="colorControl10DegLine.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -1454,7 +1454,7 @@ Kikuchi line intensity</value>
     <value>10°</value>
   </data>
   <data name="colorControl10DegLine.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="colorControl10DegLine.HeaderMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -1490,10 +1490,10 @@ Kikuchi line intensity</value>
     <value>GrowAndShrink</value>
   </data>
   <data name="colorControl1DegLine.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 12.1875pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="colorControl1DegLine.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="colorControl1DegLine.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -1502,7 +1502,7 @@ Kikuchi line intensity</value>
     <value>1°</value>
   </data>
   <data name="colorControl1DegLine.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="colorControl1DegLine.HeaderMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -1538,10 +1538,10 @@ Kikuchi line intensity</value>
     <value>GrowAndShrink</value>
   </data>
   <data name="colorControl90DegLine.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 12.1875pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="colorControl90DegLine.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="colorControl90DegLine.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -1550,7 +1550,7 @@ Kikuchi line intensity</value>
     <value>90°</value>
   </data>
   <data name="colorControl90DegLine.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="colorControl90DegLine.HeaderMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -1580,7 +1580,7 @@ Kikuchi line intensity</value>
     <value>5</value>
   </data>
   <data name="groupBoxColor.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="groupBoxColor.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 64</value>
@@ -1787,7 +1787,7 @@ Kikuchi line intensity</value>
     <value>4</value>
   </data>
   <data name="numericUpDownCircleH1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericUpDownCircleH1.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 14</value>
@@ -1817,7 +1817,7 @@ Kikuchi line intensity</value>
     <value>5</value>
   </data>
   <data name="numericUpDownCircleH2.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericUpDownCircleH2.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 56</value>
@@ -1847,7 +1847,7 @@ Kikuchi line intensity</value>
     <value>6</value>
   </data>
   <data name="numericUpDownCircleL2.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericUpDownCircleL2.Location" type="System.Drawing.Point, System.Drawing">
     <value>100, 56</value>
@@ -1907,7 +1907,7 @@ Kikuchi line intensity</value>
     <value>8</value>
   </data>
   <data name="numericUpDownCircleL1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericUpDownCircleL1.Location" type="System.Drawing.Point, System.Drawing">
     <value>100, 14</value>
@@ -1937,7 +1937,7 @@ Kikuchi line intensity</value>
     <value>9</value>
   </data>
   <data name="numericUpDownCircleK1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericUpDownCircleK1.Location" type="System.Drawing.Point, System.Drawing">
     <value>56, 14</value>
@@ -1967,7 +1967,7 @@ Kikuchi line intensity</value>
     <value>10</value>
   </data>
   <data name="numericUpDownCircleK2.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericUpDownCircleK2.Location" type="System.Drawing.Point, System.Drawing">
     <value>56, 56</value>
@@ -2027,10 +2027,10 @@ Kikuchi line intensity</value>
     <value>GrowAndShrink</value>
   </data>
   <data name="colorControlGreatCircle.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 12.1875pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="colorControlGreatCircle.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="colorControlGreatCircle.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -2039,7 +2039,7 @@ Kikuchi line intensity</value>
     <value />
   </data>
   <data name="colorControlGreatCircle.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="colorControlGreatCircle.HeaderMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -2162,7 +2162,7 @@ Kikuchi line intensity</value>
     <value>2</value>
   </data>
   <data name="numericUpDownCircleU.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericUpDownCircleU.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 15</value>
@@ -2192,7 +2192,7 @@ Kikuchi line intensity</value>
     <value>3</value>
   </data>
   <data name="numericUpDownCircleV.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericUpDownCircleV.Location" type="System.Drawing.Point, System.Drawing">
     <value>56, 15</value>
@@ -2222,7 +2222,7 @@ Kikuchi line intensity</value>
     <value>4</value>
   </data>
   <data name="numericUpDownCircleW.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericUpDownCircleW.Location" type="System.Drawing.Point, System.Drawing">
     <value>100, 15</value>
@@ -2276,7 +2276,7 @@ Kikuchi line intensity</value>
     <value>True</value>
   </data>
   <data name="radioButtonCircleByPlanes.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="radioButtonCircleByPlanes.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -2310,7 +2310,7 @@ Two Planes</value>
     <value>True</value>
   </data>
   <data name="radioButtonCircleByAxis.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="radioButtonCircleByAxis.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -2346,7 +2346,7 @@ Two Planes</value>
     <value>GrowAndShrink</value>
   </data>
   <data name="buttonAddCircle.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="buttonAddCircle.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>TopCenter</value>
@@ -2391,7 +2391,7 @@ Two Planes</value>
     <value>GrowAndShrink</value>
   </data>
   <data name="buttonDeleteCircle.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="buttonDeleteCircle.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>TopCenter</value>
@@ -2427,7 +2427,7 @@ Two Planes</value>
     <value>6</value>
   </data>
   <data name="checkedListBoxCircles.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="checkedListBoxCircles.IntegralHeight" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -3288,13 +3288,13 @@ Two Planes</value>
     <value>GrowAndShrink</value>
   </data>
   <data name="numericBoxRxSpeed.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 12.1875pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxRxSpeed.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 12.1875pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxRxSpeed.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 12.1875pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxRxSpeed.Location" type="System.Drawing.Point, System.Drawing">
     <value>111, 21</value>
@@ -3318,7 +3318,7 @@ Two Planes</value>
     <value>12</value>
   </data>
   <data name="numericBoxRxSpeed.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>Arial Narrow, 12.1875pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="&gt;&gt;numericBoxRxSpeed.Name" xml:space="preserve">
     <value>numericBoxRxSpeed</value>
@@ -3336,13 +3336,13 @@ Two Planes</value>
     <value>GrowAndShrink</value>
   </data>
   <data name="numericBoxRySpeed.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 12.1875pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxRySpeed.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 12.1875pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxRySpeed.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 12.1875pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxRySpeed.Location" type="System.Drawing.Point, System.Drawing">
     <value>152, 154</value>
@@ -3366,7 +3366,7 @@ Two Planes</value>
     <value>12</value>
   </data>
   <data name="numericBoxRySpeed.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>Arial Narrow, 12.1875pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="&gt;&gt;numericBoxRySpeed.Name" xml:space="preserve">
     <value>numericBoxRySpeed</value>
@@ -3384,13 +3384,13 @@ Two Planes</value>
     <value>GrowAndShrink</value>
   </data>
   <data name="numericBoxRzSpeed.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 12.1875pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxRzSpeed.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 12.1875pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxRzSpeed.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 12.1875pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxRzSpeed.Location" type="System.Drawing.Point, System.Drawing">
     <value>151, 91</value>
@@ -3414,7 +3414,7 @@ Two Planes</value>
     <value>12</value>
   </data>
   <data name="numericBoxRzSpeed.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>Arial Narrow, 12.1875pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="&gt;&gt;numericBoxRzSpeed.Name" xml:space="preserve">
     <value>numericBoxRzSpeed</value>
@@ -3432,13 +3432,13 @@ Two Planes</value>
     <value>GrowAndShrink</value>
   </data>
   <data name="numericBoxTotalTime.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 12.1875pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxTotalTime.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 12.1875pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxTotalTime.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 12.1875pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxTotalTime.Location" type="System.Drawing.Point, System.Drawing">
     <value>163, 296</value>
@@ -3462,7 +3462,7 @@ Two Planes</value>
     <value>12</value>
   </data>
   <data name="numericBoxTotalTime.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>Arial Narrow, 12.1875pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="&gt;&gt;numericBoxTotalTime.Name" xml:space="preserve">
     <value>numericBoxTotalTime</value>
@@ -3480,13 +3480,13 @@ Two Planes</value>
     <value>GrowAndShrink</value>
   </data>
   <data name="numericBoxAngularSpeed.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 12.1875pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxAngularSpeed.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 12.1875pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxAngularSpeed.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 12.1875pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxAngularSpeed.Location" type="System.Drawing.Point, System.Drawing">
     <value>163, 274</value>
@@ -3510,7 +3510,7 @@ Two Planes</value>
     <value>12</value>
   </data>
   <data name="numericBoxAngularSpeed.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>Arial Narrow, 12.1875pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="&gt;&gt;numericBoxAngularSpeed.Name" xml:space="preserve">
     <value>numericBoxAngularSpeed</value>
@@ -3528,13 +3528,13 @@ Two Planes</value>
     <value>GrowAndShrink</value>
   </data>
   <data name="numericBoxRyStep.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 12.1875pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxRyStep.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 12.1875pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxRyStep.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 12.1875pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxRyStep.Location" type="System.Drawing.Point, System.Drawing">
     <value>152, 202</value>
@@ -3558,7 +3558,7 @@ Two Planes</value>
     <value>12</value>
   </data>
   <data name="numericBoxRyStep.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>Arial Narrow, 12.1875pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="&gt;&gt;numericBoxRyStep.Name" xml:space="preserve">
     <value>numericBoxRyStep</value>
@@ -3576,13 +3576,13 @@ Two Planes</value>
     <value>GrowAndShrink</value>
   </data>
   <data name="numericBoxRadialAngle.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 12.1875pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxRadialAngle.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 12.1875pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxRadialAngle.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 12.1875pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxRadialAngle.Location" type="System.Drawing.Point, System.Drawing">
     <value>164, 250</value>
@@ -3606,7 +3606,7 @@ Two Planes</value>
     <value>12</value>
   </data>
   <data name="numericBoxRadialAngle.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>Arial Narrow, 12.1875pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="&gt;&gt;numericBoxRadialAngle.Name" xml:space="preserve">
     <value>numericBoxRadialAngle</value>
@@ -3624,13 +3624,13 @@ Two Planes</value>
     <value>GrowAndShrink</value>
   </data>
   <data name="numericBoxRyOscillation.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 12.1875pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxRyOscillation.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 12.1875pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxRyOscillation.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 12.1875pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxRyOscillation.Location" type="System.Drawing.Point, System.Drawing">
     <value>152, 178</value>
@@ -3654,7 +3654,7 @@ Two Planes</value>
     <value>12</value>
   </data>
   <data name="numericBoxRyOscillation.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>Arial Narrow, 12.1875pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="&gt;&gt;numericBoxRyOscillation.Name" xml:space="preserve">
     <value>numericBoxRyOscillation</value>
@@ -3672,13 +3672,13 @@ Two Planes</value>
     <value>GrowAndShrink</value>
   </data>
   <data name="numericBoxRzOscillation.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 12.1875pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxRzOscillation.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 12.1875pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxRzOscillation.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 12.1875pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxRzOscillation.Location" type="System.Drawing.Point, System.Drawing">
     <value>151, 115</value>
@@ -3702,7 +3702,7 @@ Two Planes</value>
     <value>12</value>
   </data>
   <data name="numericBoxRzOscillation.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>Arial Narrow, 12.1875pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="&gt;&gt;numericBoxRzOscillation.Name" xml:space="preserve">
     <value>numericBoxRzOscillation</value>
@@ -3750,7 +3750,7 @@ Two Planes</value>
     <value>GrowAndShrink</value>
   </data>
   <data name="waveLengthControl.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="waveLengthControl.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 3</value>
@@ -3771,7 +3771,7 @@ Two Planes</value>
     <value>0</value>
   </data>
   <data name="waveLengthControl.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="&gt;&gt;waveLengthControl.Name" xml:space="preserve">
     <value>waveLengthControl</value>
@@ -3840,7 +3840,7 @@ Two Planes</value>
     <value>157, 17</value>
   </metadata>
   <data name="menuStrip1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="asImageToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>210, 22</value>
@@ -3966,7 +3966,7 @@ Two Planes</value>
     <value>True</value>
   </data>
   <data name="radioButtonRange.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="radioButtonRange.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -4005,7 +4005,7 @@ Two Planes</value>
     <value>True</value>
   </data>
   <data name="radioButtonSpecifiedIndices.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="radioButtonSpecifiedIndices.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -4044,7 +4044,7 @@ Two Planes</value>
     <value>True</value>
   </data>
   <data name="radioButtonHighStructureFactor.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="radioButtonHighStructureFactor.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -4406,7 +4406,7 @@ Two Planes</value>
     <value>Fill</value>
   </data>
   <data name="listBoxSpecifiedIndices.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="listBoxSpecifiedIndices.IntegralHeight" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -4442,7 +4442,7 @@ Two Planes</value>
     <value>GrowAndShrink</value>
   </data>
   <data name="buttonAddIndex.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="buttonAddIndex.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -4484,7 +4484,7 @@ Two Planes</value>
     <value>GrowAndShrink</value>
   </data>
   <data name="buttonRemoveIndex.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="buttonRemoveIndex.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -4526,10 +4526,10 @@ Two Planes</value>
     <value>GrowAndShrink</value>
   </data>
   <data name="colorControlIndex.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 12.1875pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="colorControlIndex.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="colorControlIndex.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -4538,7 +4538,7 @@ Two Planes</value>
     <value />
   </data>
   <data name="colorControlIndex.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="colorControlIndex.HeaderMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 2, 0, 0</value>
@@ -4577,7 +4577,7 @@ Two Planes</value>
     <value>True</value>
   </data>
   <data name="checkBoxRotateColor.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="checkBoxRotateColor.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 25</value>
@@ -4613,7 +4613,7 @@ Two Planes</value>
     <value>True</value>
   </data>
   <data name="checkBoxIncludingEquivalentPlanes.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="checkBoxIncludingEquivalentPlanes.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -4721,10 +4721,10 @@ Two Planes</value>
     <value>メイリオ, 9pt</value>
   </data>
   <data name="numericBoxHighStructureFactor.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="numericBoxHighStructureFactor.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="numericBoxHighStructureFactor.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 3, 0, 0</value>
@@ -4751,7 +4751,7 @@ Two Planes</value>
     <value>87</value>
   </data>
   <data name="numericBoxHighStructureFactor.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="numericBoxHighStructureFactor.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -4805,10 +4805,10 @@ Two Planes</value>
     <value>GrowAndShrink</value>
   </data>
   <data name="numericBox1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 12.1875pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBox1.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="numericBox1.HeaderText" xml:space="preserve">
     <value>±</value>
@@ -4883,10 +4883,10 @@ Two Planes</value>
     <value>GrowAndShrink</value>
   </data>
   <data name="numericBox2.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 12.1875pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBox2.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="numericBox2.HeaderText" xml:space="preserve">
     <value>±</value>
@@ -5003,10 +5003,10 @@ Two Planes</value>
     <value>GrowAndShrink</value>
   </data>
   <data name="numericBox4.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 12.1875pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBox4.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="numericBox4.HeaderText" xml:space="preserve">
     <value>±</value>
@@ -5084,10 +5084,10 @@ Two Planes</value>
     <value>GrowAndShrink</value>
   </data>
   <data name="numericBox3.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 12.1875pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBox3.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="numericBox3.HeaderText" xml:space="preserve">
     <value>±</value>
@@ -5219,7 +5219,7 @@ Two Planes</value>
     <value>Fill</value>
   </data>
   <data name="groupBoxIndices.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt, style=Bold</value>
+    <value>Segoe UI, 9.75pt, style=Bold</value>
   </data>
   <data name="groupBoxIndices.Location" type="System.Drawing.Point, System.Drawing">
     <value>269, 0</value>
@@ -5309,7 +5309,7 @@ Two Planes</value>
     <value>True</value>
   </data>
   <data name="checkBoxDisplay3D.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="checkBoxDisplay3D.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 3</value>
@@ -5342,7 +5342,7 @@ Two Planes</value>
     <value>True</value>
   </data>
   <data name="label29.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="label29.Location" type="System.Drawing.Point, System.Drawing">
     <value>1, 73</value>
@@ -5372,7 +5372,7 @@ Two Planes</value>
     <value>True</value>
   </data>
   <data name="checkBox3dOptionSphere.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="checkBox3dOptionSphere.Location" type="System.Drawing.Point, System.Drawing">
     <value>1, 26</value>
@@ -5402,7 +5402,7 @@ Two Planes</value>
     <value>True</value>
   </data>
   <data name="checkBox3dOptionSemisphere.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="checkBox3dOptionSemisphere.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -5462,7 +5462,7 @@ Two Planes</value>
     <value>GrowAndShrink</value>
   </data>
   <data name="button3D_reset.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="button3D_reset.Location" type="System.Drawing.Point, System.Drawing">
     <value>109, 17</value>
@@ -5492,7 +5492,7 @@ Two Planes</value>
     <value>True</value>
   </data>
   <data name="checkBox3dOptionProjectionLine.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="checkBox3dOptionProjectionLine.Location" type="System.Drawing.Point, System.Drawing">
     <value>1, 48</value>
@@ -5522,7 +5522,7 @@ Two Planes</value>
     <value>True</value>
   </data>
   <data name="checkBox3dOptionStereonet.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="checkBox3dOptionStereonet.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -5555,7 +5555,7 @@ Two Planes</value>
     <value>True</value>
   </data>
   <data name="checkBox3dOptionLabel.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="checkBox3dOptionLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -5720,7 +5720,7 @@ Two Planes</value>
     <value>883, 687</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

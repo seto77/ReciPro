@@ -89,7 +89,7 @@
     <value>元素</value>
   </data>
   <data name="buttonPeriodicTable.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
+    <value>メイリオ, 9pt</value>
   </data>
   <data name="buttonPeriodicTable.Location" type="System.Drawing.Point, System.Drawing">
     <value>10, 75</value>

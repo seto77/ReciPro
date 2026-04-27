@@ -71,7 +71,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+            label3.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             label3.Location = new System.Drawing.Point(373, 50);
             label3.Name = "label3";
             label3.Size = new System.Drawing.Size(112, 51);
@@ -113,7 +113,7 @@
             // 
             // textBoxFileName
             // 
-            textBoxFileName.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            textBoxFileName.Font = new System.Drawing.Font("Segoe UI", 9F);
             textBoxFileName.Location = new System.Drawing.Point(7, 21);
             textBoxFileName.Name = "textBoxFileName";
             textBoxFileName.ReadOnly = true;
@@ -208,7 +208,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Font = new System.Drawing.Font("Arial", 9F);
+            label2.Font = new System.Drawing.Font("Segoe UI", 9F);
             label2.Location = new System.Drawing.Point(68, 141);
             label2.Name = "label2";
             label2.Size = new System.Drawing.Size(45, 15);
@@ -218,7 +218,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new System.Drawing.Font("Arial", 9F);
+            label1.Font = new System.Drawing.Font("Segoe UI", 9F);
             label1.Location = new System.Drawing.Point(67, 160);
             label1.Name = "label1";
             label1.Size = new System.Drawing.Size(47, 15);
@@ -228,7 +228,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Font = new System.Drawing.Font("Arial", 9F);
+            label4.Font = new System.Drawing.Font("Segoe UI", 9F);
             label4.Location = new System.Drawing.Point(2, 147);
             label4.Name = "label4";
             label4.Size = new System.Drawing.Size(67, 15);
@@ -238,7 +238,7 @@
             // label10
             // 
             label10.AutoSize = true;
-            label10.Font = new System.Drawing.Font("Arial", 9F);
+            label10.Font = new System.Drawing.Font("Segoe UI", 9F);
             label10.Location = new System.Drawing.Point(4, 113);
             label10.Name = "label10";
             label10.Size = new System.Drawing.Size(47, 15);
@@ -311,7 +311,7 @@
             // numericBoxFootY
             // 
             numericBoxFootY.BackColor = System.Drawing.SystemColors.Control;
-            numericBoxFootY.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+            numericBoxFootY.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             numericBoxFootY.FooterBackColor = System.Drawing.SystemColors.Control;
             numericBoxFootY.FooterText = "pixel";
             numericBoxFootY.HeaderBackColor = System.Drawing.SystemColors.Control;
@@ -334,7 +334,7 @@
             // numericBoxPixelWidth
             // 
             numericBoxPixelWidth.BackColor = System.Drawing.SystemColors.Control;
-            numericBoxPixelWidth.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+            numericBoxPixelWidth.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             numericBoxPixelWidth.FooterBackColor = System.Drawing.SystemColors.Control;
             numericBoxPixelWidth.FooterText = "pix.";
             numericBoxPixelWidth.HeaderBackColor = System.Drawing.SystemColors.Control;
@@ -357,7 +357,7 @@
             // numericBoxFootX
             // 
             numericBoxFootX.BackColor = System.Drawing.SystemColors.Control;
-            numericBoxFootX.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+            numericBoxFootX.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             numericBoxFootX.FooterBackColor = System.Drawing.SystemColors.Control;
             numericBoxFootX.FooterText = "pixel";
             numericBoxFootX.HeaderBackColor = System.Drawing.SystemColors.Control;
@@ -380,7 +380,7 @@
             // numericBoxPixelHeight
             // 
             numericBoxPixelHeight.BackColor = System.Drawing.SystemColors.Control;
-            numericBoxPixelHeight.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+            numericBoxPixelHeight.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             numericBoxPixelHeight.FooterBackColor = System.Drawing.SystemColors.Control;
             numericBoxPixelHeight.FooterText = "pix.";
             numericBoxPixelHeight.HeaderBackColor = System.Drawing.SystemColors.Control;
@@ -403,7 +403,7 @@
             // numericBoxPixelSize
             // 
             numericBoxPixelSize.BackColor = System.Drawing.SystemColors.Control;
-            numericBoxPixelSize.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+            numericBoxPixelSize.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             numericBoxPixelSize.FooterBackColor = System.Drawing.SystemColors.Control;
             numericBoxPixelSize.FooterText = "mm";
             numericBoxPixelSize.HeaderBackColor = System.Drawing.SystemColors.Control;
@@ -426,7 +426,7 @@
             // checkBoxDetectorSizePosition
             // 
             checkBoxDetectorSizePosition.AutoSize = true;
-            checkBoxDetectorSizePosition.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+            checkBoxDetectorSizePosition.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             checkBoxDetectorSizePosition.Location = new System.Drawing.Point(5, 0);
             checkBoxDetectorSizePosition.Name = "checkBoxDetectorSizePosition";
             checkBoxDetectorSizePosition.Size = new System.Drawing.Size(256, 21);
@@ -438,7 +438,7 @@
             // numericBoxCameraLength2
             // 
             numericBoxCameraLength2.BackColor = System.Drawing.SystemColors.Control;
-            numericBoxCameraLength2.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+            numericBoxCameraLength2.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             numericBoxCameraLength2.FooterBackColor = System.Drawing.SystemColors.Control;
             numericBoxCameraLength2.FooterText = "mm";
             numericBoxCameraLength2.HeaderBackColor = System.Drawing.SystemColors.Control;
@@ -464,11 +464,11 @@
             // numericBoxTau
             // 
             numericBoxTau.BackColor = System.Drawing.SystemColors.Control;
-            numericBoxTau.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+            numericBoxTau.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             numericBoxTau.FooterBackColor = System.Drawing.SystemColors.Control;
             numericBoxTau.FooterText = "°";
             numericBoxTau.HeaderBackColor = System.Drawing.SystemColors.Control;
-            numericBoxTau.HeaderFont = new System.Drawing.Font("Segoe UI Symbol", 11F);
+            numericBoxTau.HeaderFont = new System.Drawing.Font("Segoe UI", 11F);
             numericBoxTau.HeaderText = "τ";
             numericBoxTau.Location = new System.Drawing.Point(339, 0);
             numericBoxTau.Margin = new System.Windows.Forms.Padding(0);
@@ -530,11 +530,11 @@
             // numericBoxPhi
             // 
             numericBoxPhi.BackColor = System.Drawing.SystemColors.Control;
-            numericBoxPhi.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+            numericBoxPhi.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             numericBoxPhi.FooterBackColor = System.Drawing.SystemColors.Control;
             numericBoxPhi.FooterText = "°";
             numericBoxPhi.HeaderBackColor = System.Drawing.SystemColors.Control;
-            numericBoxPhi.HeaderFont = new System.Drawing.Font("Segoe UI Symbol", 11F);
+            numericBoxPhi.HeaderFont = new System.Drawing.Font("Segoe UI", 11F);
             numericBoxPhi.HeaderText = "φ";
             numericBoxPhi.Location = new System.Drawing.Point(236, 0);
             numericBoxPhi.Margin = new System.Windows.Forms.Padding(0);
@@ -583,7 +583,7 @@
             Controls.Add(this.panelDetectorAreaAndOverlappedImage);
             Controls.Add(panelSchematicDiagram);
             Controls.Add(panelDetectorGeometry);
-            Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+            Font = new System.Drawing.Font("Segoe UI", 9.75F);
             FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             MaximizeBox = false;

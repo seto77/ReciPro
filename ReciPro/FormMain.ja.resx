@@ -122,7 +122,7 @@
     <value>100, 18</value>
   </data>
   <data name="toolStripStatusLabel.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 8pt</value>
+    <value>メイリオ, 8pt</value>
   </data>
   <data name="toolStripStatusLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>97, 24</value>
@@ -393,7 +393,7 @@
     <value>37, 43</value>
   </data>
   <data name="numericBoxAxisU.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>メイリオ, 9.75pt</value>
   </data>
   <data name="numericBoxAxisU.ToolTip" xml:space="preserve">
     <value>結晶軸を設定</value>
@@ -408,7 +408,7 @@
     <value>37, 43</value>
   </data>
   <data name="numericBoxAxisV.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>メイリオ, 9.75pt</value>
   </data>
   <data name="numericBoxAxisV.ToolTip" xml:space="preserve">
     <value>結晶軸を設定</value>
@@ -420,7 +420,7 @@
     <value>37, 43</value>
   </data>
   <data name="numericBoxAxisW.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>メイリオ, 9.75pt</value>
   </data>
   <data name="numericBoxAxisW.ToolTip" xml:space="preserve">
     <value>結晶軸を設定</value>

@@ -293,7 +293,7 @@
     <value>GrowAndShrink</value>
   </data>
   <data name="numericBoxDiskResolution.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>メイリオ, 9.75pt</value>
   </data>
   <data name="numericBoxDiskResolution.FooterText" xml:space="preserve">
     <value>mrad/pix</value>

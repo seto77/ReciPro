@@ -1153,7 +1153,7 @@
     <value>79, 27</value>
   </data>
   <data name="numericBoxClientHeight.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>メイリオ, 9.75pt</value>
   </data>
   <data name="numericBoxClientHeight.ToolTip" xml:space="preserve">
     <value>シミュレーションパターンのピクセルサイズを設定</value>
@@ -1174,7 +1174,7 @@
     <value>78, 27</value>
   </data>
   <data name="numericBoxClientWidth.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>メイリオ, 9.75pt</value>
   </data>
   <data name="numericBoxClientWidth.ToolTip" xml:space="preserve">
     <value>シミュレーションパターンのピクセルサイズを設定</value>

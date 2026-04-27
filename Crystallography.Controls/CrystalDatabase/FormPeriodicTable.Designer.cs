@@ -41,7 +41,7 @@
             // 
             buttonLa.BackColor = System.Drawing.Color.MistyRose;
             buttonLa.Enabled = false;
-            buttonLa.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            buttonLa.Font = new System.Drawing.Font("Segoe UI", 9F);
             buttonLa.ForeColor = System.Drawing.Color.MediumBlue;
             buttonLa.Location = new System.Drawing.Point(95, 124);
             buttonLa.Margin = new System.Windows.Forms.Padding(0);
@@ -55,7 +55,7 @@
             // 
             buttonAc.BackColor = System.Drawing.Color.MistyRose;
             buttonAc.Enabled = false;
-            buttonAc.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            buttonAc.Font = new System.Drawing.Font("Segoe UI", 9F);
             buttonAc.ForeColor = System.Drawing.Color.MediumBlue;
             buttonAc.Location = new System.Drawing.Point(95, 149);
             buttonAc.Margin = new System.Windows.Forms.Padding(0);
@@ -68,7 +68,7 @@
             // labelLa
             // 
             labelLa.AutoSize = true;
-            labelLa.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            labelLa.Font = new System.Drawing.Font("Segoe UI", 9F);
             labelLa.ForeColor = System.Drawing.Color.Crimson;
             labelLa.Location = new System.Drawing.Point(9, 187);
             labelLa.Margin = new System.Windows.Forms.Padding(0);
@@ -80,7 +80,7 @@
             // labelAc
             // 
             labelAc.AutoSize = true;
-            labelAc.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            labelAc.Font = new System.Drawing.Font("Segoe UI", 9F);
             labelAc.ForeColor = System.Drawing.Color.Crimson;
             labelAc.Location = new System.Drawing.Point(9, 202);
             labelAc.Margin = new System.Windows.Forms.Padding(0);
@@ -92,7 +92,7 @@
             // buttonMustInclude
             // 
             buttonMustInclude.BackColor = System.Drawing.Color.LightBlue;
-            buttonMustInclude.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            buttonMustInclude.Font = new System.Drawing.Font("Segoe UI", 9F);
             buttonMustInclude.Location = new System.Drawing.Point(243, 3);
             buttonMustInclude.Margin = new System.Windows.Forms.Padding(0);
             buttonMustInclude.Name = "buttonMustInclude";
@@ -104,7 +104,7 @@
             // buttonMustExclude
             // 
             buttonMustExclude.BackColor = System.Drawing.Color.LightCoral;
-            buttonMustExclude.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            buttonMustExclude.Font = new System.Drawing.Font("Segoe UI", 9F);
             buttonMustExclude.Location = new System.Drawing.Point(243, 31);
             buttonMustExclude.Margin = new System.Windows.Forms.Padding(0);
             buttonMustExclude.Name = "buttonMustExclude";
@@ -116,7 +116,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            label3.Font = new System.Drawing.Font("Segoe UI", 9F);
             label3.Location = new System.Drawing.Point(274, 9);
             label3.Margin = new System.Windows.Forms.Padding(0);
             label3.Name = "label3";
@@ -127,7 +127,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            label4.Font = new System.Drawing.Font("Segoe UI", 9F);
             label4.Location = new System.Drawing.Point(273, 36);
             label4.Margin = new System.Windows.Forms.Padding(0);
             label4.Name = "label4";
@@ -138,7 +138,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            label5.Font = new System.Drawing.Font("Segoe UI", 9F);
             label5.Location = new System.Drawing.Point(133, 21);
             label5.Margin = new System.Windows.Forms.Padding(0);
             label5.Name = "label5";
@@ -149,7 +149,7 @@
             // buttonMayInclude
             // 
             buttonMayInclude.BackColor = System.Drawing.Color.LightYellow;
-            buttonMayInclude.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            buttonMayInclude.Font = new System.Drawing.Font("Segoe UI", 9F);
             buttonMayInclude.Location = new System.Drawing.Point(108, 16);
             buttonMayInclude.Margin = new System.Windows.Forms.Padding(0);
             buttonMayInclude.Name = "buttonMayInclude";
@@ -161,7 +161,7 @@
             // buttonOK
             // 
             buttonOK.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
-            buttonOK.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            buttonOK.Font = new System.Drawing.Font("Segoe UI", 9F);
             buttonOK.Location = new System.Drawing.Point(476, 257);
             buttonOK.Margin = new System.Windows.Forms.Padding(0);
             buttonOK.Name = "buttonOK";
@@ -188,7 +188,7 @@
             Controls.Add(buttonAc);
             Controls.Add(labelAc);
             Controls.Add(labelLa);
-            Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            Font = new System.Drawing.Font("Segoe UI", 9F);
             FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             Margin = new System.Windows.Forms.Padding(64, 32, 64, 32);
             Name = "FormPeriodicTable";

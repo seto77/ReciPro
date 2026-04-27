@@ -233,9 +233,11 @@ namespace ReciPro
             flowLayoutPanelImageType = new System.Windows.Forms.FlowLayoutPanel();
             radioButtonHRTEM = new System.Windows.Forms.RadioButton();
             radioButtonSTEM = new System.Windows.Forms.RadioButton();
+            radioButton1 = new System.Windows.Forms.RadioButton();
             radioButtonProjectedPotential = new System.Windows.Forms.RadioButton();
             groupBoxSampleProperty = new System.Windows.Forms.GroupBox();
             numericBoxThickness = new NumericBox();
+            label2 = new System.Windows.Forms.Label();
             panelSimulationActions = new System.Windows.Forms.Panel();
             checkBoxPreset = new System.Windows.Forms.CheckBox();
             checkBoxRealTimeSimulation = new System.Windows.Forms.CheckBox();
@@ -266,8 +268,6 @@ namespace ReciPro
             toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
-            radioButton1 = new System.Windows.Forms.RadioButton();
-            label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel1.SuspendLayout();
             splitContainer1.Panel2.SuspendLayout();
@@ -2010,6 +2010,14 @@ namespace ReciPro
             radioButtonSTEM.UseVisualStyleBackColor = true;
             radioButtonSTEM.CheckedChanged += RadioButtonHRTEM_CheckedChanged;
             // 
+            // radioButton1
+            // 
+            resources.ApplyResources(radioButton1, "radioButton1");
+            radioButton1.Name = "radioButton1";
+            toolTip.SetToolTip(radioButton1, resources.GetString("radioButton1.ToolTip"));
+            radioButton1.UseVisualStyleBackColor = true;
+            radioButton1.CheckedChanged += RadioButtonHRTEM_CheckedChanged;
+            // 
             // radioButtonProjectedPotential
             // 
             resources.ApplyResources(radioButtonProjectedPotential, "radioButtonProjectedPotential");
@@ -2044,6 +2052,12 @@ namespace ReciPro
             toolTip.SetToolTip(numericBoxThickness, resources.GetString("numericBoxThickness.ToolTip"));
             numericBoxThickness.Value = 20D;
             numericBoxThickness.ValueChanged += NumericBoxThickness_ValueChanged;
+            // 
+            // label2
+            // 
+            resources.ApplyResources(label2, "label2");
+            label2.ForeColor = System.Drawing.SystemColors.ControlText;
+            label2.Name = "label2";
             // 
             // panelSimulationActions
             // 
@@ -2231,20 +2245,6 @@ namespace ReciPro
             // 
             toolStripStatusLabel3.Name = "toolStripStatusLabel3";
             resources.ApplyResources(toolStripStatusLabel3, "toolStripStatusLabel3");
-            // 
-            // radioButton1
-            // 
-            resources.ApplyResources(radioButton1, "radioButton1");
-            radioButton1.Name = "radioButton1";
-            toolTip.SetToolTip(radioButton1, resources.GetString("radioButton1.ToolTip"));
-            radioButton1.UseVisualStyleBackColor = true;
-            radioButton1.CheckedChanged += RadioButtonHRTEM_CheckedChanged;
-            // 
-            // label2
-            // 
-            resources.ApplyResources(label2, "label2");
-            label2.ForeColor = System.Drawing.SystemColors.ControlText;
-            label2.Name = "label2";
             // 
             // FormImageSimulator
             // 

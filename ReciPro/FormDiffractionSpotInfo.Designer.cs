@@ -160,7 +160,7 @@
             // buttonCopyToClipboard
             // 
             buttonCopyToClipboard.AutoSize = true;
-            buttonCopyToClipboard.Font = new System.Drawing.Font("Segoe UI Symbol", 10F);
+            buttonCopyToClipboard.Font = new System.Drawing.Font("Segoe UI", 10F);
             buttonCopyToClipboard.Location = new System.Drawing.Point(948, 267);
             buttonCopyToClipboard.Name = "buttonCopyToClipboard";
             buttonCopyToClipboard.Size = new System.Drawing.Size(139, 30);
@@ -278,7 +278,7 @@
             // label9
             // 
             label9.AutoSize = true;
-            label9.Font = new System.Drawing.Font("Times New Roman", 11.25F);
+            label9.Font = new System.Drawing.Font("Times New Roman", 9.75F);
             label9.Location = new System.Drawing.Point(468, 205);
             label9.Name = "label9";
             label9.Size = new System.Drawing.Size(445, 51);
@@ -327,7 +327,7 @@
             flowLayoutPanelVoltageWaveLength.Controls.Add(label1);
             flowLayoutPanelVoltageWaveLength.Controls.Add(textBoxWaveLength);
             flowLayoutPanelVoltageWaveLength.Controls.Add(label3);
-            flowLayoutPanelVoltageWaveLength.Font = new System.Drawing.Font("Times New Roman", 11.25F);
+            flowLayoutPanelVoltageWaveLength.Font = new System.Drawing.Font("Times New Roman", 9.75F);
             flowLayoutPanelVoltageWaveLength.Location = new System.Drawing.Point(468, 24);
             flowLayoutPanelVoltageWaveLength.Name = "flowLayoutPanelVoltageWaveLength";
             flowLayoutPanelVoltageWaveLength.Size = new System.Drawing.Size(491, 24);
@@ -341,7 +341,7 @@
             flowLayoutPanelLatticeAngles.Controls.Add(textBoxGamma);
             flowLayoutPanelLatticeAngles.Controls.Add(label4);
             flowLayoutPanelLatticeAngles.Controls.Add(textBoxBeta);
-            flowLayoutPanelLatticeAngles.Font = new System.Drawing.Font("Times New Roman", 11.25F);
+            flowLayoutPanelLatticeAngles.Font = new System.Drawing.Font("Times New Roman", 9.75F);
             flowLayoutPanelLatticeAngles.Location = new System.Drawing.Point(468, 49);
             flowLayoutPanelLatticeAngles.Name = "flowLayoutPanelLatticeAngles";
             flowLayoutPanelLatticeAngles.Size = new System.Drawing.Size(363, 24);
@@ -357,7 +357,7 @@
             flowLayoutPanelVolumeThickness.Controls.Add(label12);
             flowLayoutPanelVolumeThickness.Controls.Add(textBoxThickness);
             flowLayoutPanelVolumeThickness.Controls.Add(label13);
-            flowLayoutPanelVolumeThickness.Font = new System.Drawing.Font("Times New Roman", 11.25F);
+            flowLayoutPanelVolumeThickness.Font = new System.Drawing.Font("Times New Roman", 9.75F);
             flowLayoutPanelVolumeThickness.Location = new System.Drawing.Point(468, 74);
             flowLayoutPanelVolumeThickness.Name = "flowLayoutPanelVolumeThickness";
             flowLayoutPanelVolumeThickness.Size = new System.Drawing.Size(405, 24);
@@ -406,7 +406,7 @@
             flowLayoutPanelEnergyUnit.Controls.Add(label15);
             flowLayoutPanelEnergyUnit.Controls.Add(radioButtonUnitEV);
             flowLayoutPanelEnergyUnit.Controls.Add(radioButtonUnitNM);
-            flowLayoutPanelEnergyUnit.Font = new System.Drawing.Font("Times New Roman", 11.25F);
+            flowLayoutPanelEnergyUnit.Font = new System.Drawing.Font("Times New Roman", 9.75F);
             flowLayoutPanelEnergyUnit.Location = new System.Drawing.Point(468, 151);
             flowLayoutPanelEnergyUnit.Name = "flowLayoutPanelEnergyUnit";
             flowLayoutPanelEnergyUnit.Size = new System.Drawing.Size(285, 27);
@@ -415,7 +415,7 @@
             // label14
             // 
             label14.AutoSize = true;
-            label14.Font = new System.Drawing.Font("Times New Roman", 11.25F);
+            label14.Font = new System.Drawing.Font("Times New Roman", 9.75F);
             label14.Location = new System.Drawing.Point(481, 180);
             label14.Margin = new System.Windows.Forms.Padding(3, 5, 3, 0);
             label14.Name = "label14";
@@ -436,7 +436,7 @@
             dataGridView.DataSource = dataSetBindingSource;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI Symbol", 10F);
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 10F);
             dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle1.Format = "g4";
             dataGridViewCellStyle1.NullValue = null;
@@ -495,7 +495,7 @@
             flowLayoutPanelSemiangle.Controls.Add(label10);
             flowLayoutPanelSemiangle.Controls.Add(textBoxSemiangle);
             flowLayoutPanelSemiangle.Controls.Add(label11);
-            flowLayoutPanelSemiangle.Font = new System.Drawing.Font("Times New Roman", 11.25F);
+            flowLayoutPanelSemiangle.Font = new System.Drawing.Font("Times New Roman", 9.75F);
             flowLayoutPanelSemiangle.Location = new System.Drawing.Point(468, 99);
             flowLayoutPanelSemiangle.Name = "flowLayoutPanelSemiangle";
             flowLayoutPanelSemiangle.Size = new System.Drawing.Size(424, 24);
@@ -714,9 +714,9 @@
             // numericBoxEffectiveDigit
             // 
             numericBoxEffectiveDigit.BackColor = System.Drawing.Color.Transparent;
-            numericBoxEffectiveDigit.Font = new System.Drawing.Font("Segoe UI Symbol", 11F);
+            numericBoxEffectiveDigit.Font = new System.Drawing.Font("Segoe UI", 11F);
             numericBoxEffectiveDigit.FooterFont = new System.Drawing.Font("Times New Roman", 9.75F);
-            numericBoxEffectiveDigit.HeaderFont = new System.Drawing.Font("Segoe UI Symbol", 10F);
+            numericBoxEffectiveDigit.HeaderFont = new System.Drawing.Font("Segoe UI", 10F);
             numericBoxEffectiveDigit.HeaderText = "Effective digit";
             numericBoxEffectiveDigit.Location = new System.Drawing.Point(656, 270);
             numericBoxEffectiveDigit.Margin = new System.Windows.Forms.Padding(0);
@@ -731,7 +731,7 @@
             numericBoxEffectiveDigit.Size = new System.Drawing.Size(139, 27);
             numericBoxEffectiveDigit.SkipEventDuringInput = false;
             numericBoxEffectiveDigit.TabIndex = 3;
-            numericBoxEffectiveDigit.TextFont = new System.Drawing.Font("Times New Roman", 11.25F);
+            numericBoxEffectiveDigit.TextFont = new System.Drawing.Font("Times New Roman", 9.75F);
             numericBoxEffectiveDigit.ThonsandsSeparator = true;
             numericBoxEffectiveDigit.Value = 4D;
             numericBoxEffectiveDigit.ValueChanged += numericBoxEffectiveDigit_ValueChanged;
@@ -739,7 +739,7 @@
             // button1
             // 
             button1.AutoSize = true;
-            button1.Font = new System.Drawing.Font("Segoe UI Symbol", 10F);
+            button1.Font = new System.Drawing.Font("Segoe UI", 10F);
             button1.Location = new System.Drawing.Point(996, 197);
             button1.Name = "button1";
             button1.Size = new System.Drawing.Size(79, 30);
@@ -938,7 +938,7 @@
             Controls.Add(numericBoxEffectiveDigit);
             Controls.Add(dataGridView);
             Controls.Add(pictureBox);
-            Font = new System.Drawing.Font("Segoe UI Symbol", 10F);
+            Font = new System.Drawing.Font("Segoe UI", 10F);
             Name = "FormDiffractionSpotInfo";
             Text = "Diffraction Spot Information";
             FormClosing += FormDiffractionSimulatorTable_FormClosing;

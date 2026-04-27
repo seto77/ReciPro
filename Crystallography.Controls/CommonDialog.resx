@@ -151,7 +151,7 @@
     <value>Fill</value>
   </data>
   <data name="textBox.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="textBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 37</value>
@@ -190,7 +190,7 @@
     <value>Right</value>
   </data>
   <data name="buttonOK.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="buttonOK.Location" type="System.Drawing.Point, System.Drawing">
     <value>488, 0</value>
@@ -223,7 +223,7 @@
     <value>True</value>
   </data>
   <data name="labelSoftwareAndVersion.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="labelSoftwareAndVersion.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleLeft</value>
@@ -262,7 +262,7 @@
     <value>True</value>
   </data>
   <data name="labelCopyRight.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="labelCopyRight.Location" type="System.Drawing.Point, System.Drawing">
     <value>124, 0</value>
@@ -301,7 +301,7 @@
     <value>Left</value>
   </data>
   <data name="buttonNext.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="buttonNext.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
@@ -337,7 +337,7 @@
     <value>Right</value>
   </data>
   <data name="checkBoxCloseWindow.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="checkBoxCloseWindow.Location" type="System.Drawing.Point, System.Drawing">
     <value>264, 0</value>
@@ -376,7 +376,7 @@
     <value>True</value>
   </data>
   <data name="labelAuthor.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="labelAuthor.Location" type="System.Drawing.Point, System.Drawing">
     <value>269, 0</value>
@@ -406,7 +406,7 @@
     <value>True</value>
   </data>
   <data name="linkLabel1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="linkLabel1.Location" type="System.Drawing.Point, System.Drawing">
     <value>318, 0</value>
@@ -490,7 +490,7 @@
     <value>564, 306</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 11.25pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>

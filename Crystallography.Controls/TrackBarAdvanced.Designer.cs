@@ -51,7 +51,7 @@
             // numericBox
             // 
             numericBox.BackColor = System.Drawing.SystemColors.Control;
-            numericBox.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            numericBox.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             numericBox.FooterBackColor = System.Drawing.SystemColors.Control;
             numericBox.FooterPadding = new System.Windows.Forms.Padding(0, 2, 0, 0);
             numericBox.HeaderBackColor = System.Drawing.SystemColors.Control;

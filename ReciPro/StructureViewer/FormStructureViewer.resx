@@ -138,7 +138,7 @@
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="colorControlCellEdgeC.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 12.1875pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="copyMainToolStripMenuItem.Text" xml:space="preserve">
     <value>Main Image</value>
@@ -150,7 +150,7 @@
     <value>481, 3</value>
   </data>
   <data name="textBoxCalcInformation.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 8pt</value>
+    <value>Segoe UI, 8pt</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="tabPageInformation.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
@@ -202,7 +202,7 @@
     <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="colorControlCellPlaneB.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 12.1875pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxClientWidth.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 1, 0</value>
@@ -211,7 +211,7 @@
     <value>I like VESTA</value>
   </data>
   <data name="buttonSetRange1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="&gt;&gt;splitContainer1.Type" xml:space="preserve">
     <value>System.Windows.Forms.SplitContainer, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -346,7 +346,7 @@
     <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="colorControlCellPlaneA.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="&gt;&gt;pageSetupDialog1.Type" xml:space="preserve">
     <value>System.Windows.Forms.PageSetupDialog, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -394,7 +394,7 @@
     <value>メイリオ, 9pt</value>
   </data>
   <data name="buttonSetRange0.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="&gt;&gt;label13.Name" xml:space="preserve">
     <value>label13</value>
@@ -439,13 +439,13 @@
     <value>16, 17</value>
   </data>
   <data name="numericBoxCCenter.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 12.1875pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="radioButtonProjectionCenter2.Size" type="System.Drawing.Size, System.Drawing">
     <value>78, 21</value>
   </data>
   <data name="numericUpDownSubCellB.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="flowLayoutPanelCellEdgeColors.Location" type="System.Drawing.Point, System.Drawing">
     <value>124, 121</value>
@@ -496,7 +496,7 @@
     <value>230, 23</value>
   </data>
   <data name="numericBoxProjectionCenterZ.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 12.1875pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="checkBoxClipObjects.Text" xml:space="preserve">
     <value>Clip objects by bound planes</value>
@@ -544,7 +544,7 @@
     <value>tabPageBoundUnitcell</value>
   </data>
   <data name="colorControlCellPlaneB.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="panelClientSize.Size" type="System.Drawing.Size, System.Drawing">
     <value>636, 24</value>
@@ -586,7 +586,7 @@
     <value>622, 224</value>
   </data>
   <data name="colorControlLabelColor.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="&gt;&gt;colorControlCellEdge.Name" xml:space="preserve">
     <value>colorControlCellEdge</value>
@@ -849,7 +849,7 @@
     <value>127, 65</value>
   </data>
   <data name="toolStrip1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="&gt;&gt;numericBoxLightSize.Name" xml:space="preserve">
     <value>numericBoxLightSize</value>
@@ -882,7 +882,7 @@
     <value />
   </data>
   <data name="trackBarAdvancedDepthCueingNear.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="textBoxCalcInformation.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -909,7 +909,7 @@
     <value>numericBoxCellTranslationA</value>
   </data>
   <data name="label16.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Arial, 11.25pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="printPreviewDialog1.AutoScrollMinSize" type="System.Drawing.Size, System.Drawing">
     <value>0, 0</value>
@@ -924,7 +924,7 @@
     <value>0, 1, 0, 0</value>
   </data>
   <data name="numericBoxCRange.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 12.1875pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="&gt;&gt;helpToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -963,7 +963,7 @@
     <value>Reset Rotation</value>
   </data>
   <data name="trackBarAdvancedDepthCueingFar.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxProjectionCenterY.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 20</value>
@@ -996,7 +996,7 @@
     <value>Crystallography.Controls.AtomCoordinateTable, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="checkBoxShowSubCell.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxProjectionCenterX.Size" type="System.Drawing.Size, System.Drawing">
     <value>54, 25</value>
@@ -1201,7 +1201,7 @@ adjust it individually)</value>
     <value>Left</value>
   </data>
   <data name="colorControlLabelColor.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 12.1875pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="&gt;&gt;checkBoxClipObjects.ZOrder" xml:space="preserve">
     <value>2</value>
@@ -1210,7 +1210,7 @@ adjust it individually)</value>
     <value>622, 24</value>
   </data>
   <data name="checkBoxClipObjects.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="&gt;&gt;groupBoxAccessoryControls.Parent" xml:space="preserve">
     <value>tabPageMisc</value>
@@ -1240,7 +1240,7 @@ adjust it individually)</value>
     <value>Manual</value>
   </data>
   <data name="colorControlCellEdgeC.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="&gt;&gt;numericBoxCellTranslationB.ZOrder" xml:space="preserve">
     <value>3</value>
@@ -1330,7 +1330,7 @@ adjust it individually)</value>
     <value>NoControl</value>
   </data>
   <data name="numericBoxProjectionCenterX.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 12.1875pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxBCenter.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 1, 0</value>
@@ -1420,7 +1420,7 @@ adjust it individually)</value>
     <value>0, 0, 0, 0</value>
   </data>
   <data name="label7.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 10.3125pt</value>
+    <value>Segoe UI, 10.3125pt</value>
   </data>
   <data name="checkBoxCellShowPlane.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 4, 3, 4</value>
@@ -1429,7 +1429,7 @@ adjust it individually)</value>
     <value>label7</value>
   </data>
   <data name="label17.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Arial, 11.25pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="&gt;&gt;labelGraphicsCard.Parent" xml:space="preserve">
     <value>flowLayoutPanelGraphicsInfo</value>
@@ -1525,7 +1525,7 @@ adjust it individually)</value>
     <value>0, 3, 0, 0</value>
   </data>
   <data name="buttonCenter2.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="checkBoxShowBondedAtoms.Text" xml:space="preserve">
     <value>Show bonded atoms 
@@ -1628,7 +1628,7 @@ even if they are outside the boundaries</value>
     <value>NoControl</value>
   </data>
   <data name="labelGraphicsCard.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 8pt</value>
+    <value>Segoe UI, 8pt</value>
   </data>
   <data name="numericBoxCRange.MaximumSize" type="System.Drawing.Size, System.Drawing">
     <value>1000, 30</value>
@@ -1679,7 +1679,7 @@ even if they are outside the boundaries</value>
     <value>144, 23</value>
   </data>
   <data name="colorControlCellEdgeA.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 12.1875pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="trackBarAdvancedDepthCueingFar.Size" type="System.Drawing.Size, System.Drawing">
     <value>316, 25</value>
@@ -1694,7 +1694,7 @@ even if they are outside the boundaries</value>
     <value>flowLayoutPanelCellPlaneColors</value>
   </data>
   <data name="colorControlCellEdgeA.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="buttonSetCenter3.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
@@ -1724,7 +1724,7 @@ even if they are outside the boundaries</value>
     <value>groupBoxTransparency</value>
   </data>
   <data name="label8.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="toolStripButtonLegend.Size" type="System.Drawing.Size, System.Drawing">
     <value>55, 22</value>
@@ -1817,7 +1817,7 @@ even if they are outside the boundaries</value>
     <value>atomCoordinateTable1</value>
   </data>
   <data name="colorControlCellPlaneC.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="&gt;&gt;numericBoxProjectionCenterZ.Parent" xml:space="preserve">
     <value>flowLayoutPanelProjectionCenter</value>
@@ -1838,7 +1838,7 @@ even if they are outside the boundaries</value>
     <value>94, 26</value>
   </data>
   <data name="numericBoxProjectionCenterY.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 12.1875pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="tabPageBoundPlane.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -1889,7 +1889,7 @@ even if they are outside the boundaries</value>
     <value>268, 3</value>
   </data>
   <data name="colorControlCellEdgeB.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 12.1875pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxCellTranslationB.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 1, 0</value>
@@ -1955,7 +1955,7 @@ even if they are outside the boundaries</value>
     <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="colorControlLabelColor.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="label7.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1979,7 +1979,7 @@ even if they are outside the boundaries</value>
     <value>117, 21</value>
   </data>
   <data name="checkBoxShowBondedAtoms.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="buttonSetRange0.Text" xml:space="preserve">
     <value>(±¼ ±¼ ±¼)</value>
@@ -2015,10 +2015,10 @@ even if they are outside the boundaries</value>
     <value>35, 20</value>
   </data>
   <data name="numericBoxLabelSize.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 12.1875pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="label12.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Arial, 11.25pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="groupBoxTransparency.ToolTip" xml:space="preserve">
     <value />
@@ -2042,7 +2042,7 @@ even if they are outside the boundaries</value>
     <value>groupBoxRenderingQuality</value>
   </data>
   <data name="label4.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="&gt;&gt;labelGraphicsDriver.Name" xml:space="preserve">
     <value>labelGraphicsDriver</value>
@@ -2117,7 +2117,7 @@ even if they are outside the boundaries</value>
     <value>Show label</value>
   </data>
   <data name="numericBoxCellTranslationC.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 12.1875pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="checkBoxCellShowPlane.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2141,7 +2141,7 @@ even if they are outside the boundaries</value>
     <value>636, 27</value>
   </data>
   <data name="numericBoxCellTranslationA.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 12.1875pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="&gt;&gt;radioButtonBoundUnitCell.Parent" xml:space="preserve">
     <value>flowLayoutPanelBoundType</value>
@@ -2183,7 +2183,7 @@ even if they are outside the boundaries</value>
     <value>tabControl</value>
   </data>
   <data name="tabControl.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="&gt;&gt;comboBoxProjectionMode.Name" xml:space="preserve">
     <value>comboBoxProjectionMode</value>
@@ -2210,7 +2210,7 @@ even if they are outside the boundaries</value>
     <value>105, 1</value>
   </data>
   <data name="numericBoxBRange.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 12.1875pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="tabPageAtom.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 26</value>
@@ -2378,7 +2378,7 @@ even if they are outside the boundaries</value>
     <value>True</value>
   </data>
   <data name="colorControlCellPlaneC.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="flowLayoutPanelLatticePlaneOpacity.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
@@ -2396,7 +2396,7 @@ even if they are outside the boundaries</value>
     <value>10, 1, 0, 0</value>
   </data>
   <data name="buttonSetRange2.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="copyAxesToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>160, 22</value>
@@ -2504,7 +2504,7 @@ even if they are outside the boundaries</value>
     <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="labelGraphicsDriver.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 8pt</value>
+    <value>Segoe UI, 8pt</value>
   </data>
   <data name="splitContainer2.SplitterDistance" type="System.Int32, mscorlib">
     <value>208</value>
@@ -2594,13 +2594,13 @@ even if they are outside the boundaries</value>
     <value>3, 3, 3, 0</value>
   </data>
   <data name="label1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="&gt;&gt;tabControlBoundOption.Parent" xml:space="preserve">
     <value>tabPageBounds</value>
   </data>
   <data name="colorControlCellEdgeB.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="&gt;&gt;flowLayoutPanelLegend.Name" xml:space="preserve">
     <value>flowLayoutPanelLegend</value>
@@ -2669,7 +2669,7 @@ even if they are outside the boundaries</value>
     <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="label10.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="&gt;&gt;tabPageInformation.ZOrder" xml:space="preserve">
     <value>6</value>
@@ -2687,7 +2687,7 @@ even if they are outside the boundaries</value>
     <value>splitContainer1</value>
   </data>
   <data name="colorControlCellEdge.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="label17.Location" type="System.Drawing.Point, System.Drawing">
     <value>257, 186</value>
@@ -2696,7 +2696,7 @@ even if they are outside the boundaries</value>
     <value>flowLayoutPanelGraphicsInfo</value>
   </data>
   <data name="colorControlCellPlaneA.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 12.1875pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="label9.ToolTip" xml:space="preserve">
     <value />
@@ -2705,7 +2705,7 @@ even if they are outside the boundaries</value>
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="label11.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxCellTranslationB.Location" type="System.Drawing.Point, System.Drawing">
     <value>169, 26</value>
@@ -2723,7 +2723,7 @@ even if they are outside the boundaries</value>
     <value>6</value>
   </data>
   <data name="atomCoordinateTable1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="&gt;&gt;label7.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -2744,7 +2744,7 @@ even if they are outside the boundaries</value>
     <value>trackBarPerspective</value>
   </data>
   <data name="checkBoxShowBoundPlanes.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxLightSize.ToolTip" xml:space="preserve">
     <value>Displayed size of light ball (upper-left)</value>
@@ -3080,7 +3080,7 @@ even if they are outside the boundaries</value>
     <value>0, 0</value>
   </data>
   <data name="trackBarAdvancedDepthCueingNear.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="buttonSetCenter1.Size" type="System.Drawing.Size, System.Drawing">
     <value>86, 26</value>
@@ -3329,7 +3329,7 @@ even if they are outside the boundaries</value>
     <value>flowLayoutPanelCellEdgeColors</value>
   </data>
   <data name="menuStrip1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="&gt;&gt;buttonSetRange4.Name" xml:space="preserve">
     <value>buttonSetRange4</value>
@@ -3359,7 +3359,7 @@ even if they are outside the boundaries</value>
     <value />
   </data>
   <data name="colorControlCellEdgeC.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="checkBoxCellShowPlane.Text" xml:space="preserve">
     <value>Show cell plane</value>
@@ -3374,7 +3374,7 @@ even if they are outside the boundaries</value>
     <value />
   </data>
   <data name="label3.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxProjectionCenterZ.MaximumSize" type="System.Drawing.Size, System.Drawing">
     <value>1000, 30</value>
@@ -3467,7 +3467,7 @@ even if they are outside the boundaries</value>
     <value>Light</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="toolStrip1.TabIndex" type="System.Int32, mscorlib">
     <value>96</value>
@@ -3548,7 +3548,7 @@ even if they are outside the boundaries</value>
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="textBoxAtomInformation.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Courier New, 11.25pt</value>
+    <value>Courier New, 9.75pt</value>
   </data>
   <data name="splitContainer1.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -3560,13 +3560,13 @@ even if they are outside the boundaries</value>
     <value>splitContainer2</value>
   </data>
   <data name="numericBoxClientWidth.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxARange.Location" type="System.Drawing.Point, System.Drawing">
     <value>87, 20</value>
   </data>
   <data name="trackBarAdvancedDepthCueingFar.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 11.25pt</value>
+    <value>メイリオ, 9.75pt</value>
   </data>
   <data name="toolStripButtonLightDirection.ToolTipText" xml:space="preserve">
     <value>Show/hide the light direction control sphere</value>
@@ -3605,7 +3605,7 @@ even if they are outside the boundaries</value>
     <value>colorControlCellEdgeC</value>
   </data>
   <data name="checkBoxUnitCell.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxProjectionCenterX.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 1, 0</value>
@@ -3623,7 +3623,7 @@ even if they are outside the boundaries</value>
     <value>System.Windows.Forms.TabPage, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="checkBoxCellShowEdge.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="&gt;&gt;radioButtonLabelUseFixedColor.Parent" xml:space="preserve">
     <value>groupBoxLabel</value>
@@ -3797,7 +3797,7 @@ even if they are outside the boundaries</value>
     <value>numericBoxClientWidth</value>
   </data>
   <data name="numericBoxClientHeight.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="trackBarAdvancedDepthCueingFar.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
@@ -3812,7 +3812,7 @@ even if they are outside the boundaries</value>
     <value>label8</value>
   </data>
   <data name="colorControlCellPlaneA.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="&gt;&gt;checkBoxClipObjects.Parent" xml:space="preserve">
     <value>flowLayoutPanelLatticePlaneOptions</value>
@@ -3920,7 +3920,7 @@ even if they are outside the boundaries</value>
     <value>4, 26</value>
   </data>
   <data name="numericUpDownSubCellC.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="&gt;&gt;label11.ZOrder" xml:space="preserve">
     <value>1</value>
@@ -3938,7 +3938,7 @@ even if they are outside the boundaries</value>
     <value>colorControlCellPlane</value>
   </data>
   <data name="numericBoxCellPlaneAlpha.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 12.1875pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="&gt;&gt;numericBoxCellTranslationB.Type" xml:space="preserve">
     <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
@@ -3947,7 +3947,7 @@ even if they are outside the boundaries</value>
     <value>True</value>
   </data>
   <data name="colorControlCellPlane.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxBCenter.MaximumSize" type="System.Drawing.Size, System.Drawing">
     <value>1000, 30</value>
@@ -3956,10 +3956,10 @@ even if they are outside the boundaries</value>
     <value>b</value>
   </data>
   <data name="buttonSetRange4.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="labelOpenGLversion.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 8pt</value>
+    <value>Segoe UI, 8pt</value>
   </data>
   <data name="&gt;&gt;numericBoxClientHeight.Type" xml:space="preserve">
     <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
@@ -4019,7 +4019,7 @@ even if they are outside the boundaries</value>
     <value>100, 25</value>
   </data>
   <data name="label13.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="tabPageUnitCell.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -4046,7 +4046,7 @@ even if they are outside the boundaries</value>
     <value>121, 21</value>
   </data>
   <data name="colorControlCellPlaneC.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 12.1875pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="checkBoxShowBondedAtoms.ToolTip" xml:space="preserve">
     <value>Show bonded atoms even if they are outside the boundaries</value>
@@ -4103,7 +4103,7 @@ even if they are outside the boundaries</value>
     <value>17</value>
   </data>
   <data name="numericBoxARange.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 12.1875pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="trackBarAdvancedDepthCueingFar.Location" type="System.Drawing.Point, System.Drawing">
     <value>45, 18</value>
@@ -4253,7 +4253,7 @@ even if they are outside the boundaries</value>
     <value>Set display range to +/-1/4 of each unit cell axis</value>
   </data>
   <data name="buttonSetRange3.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="textBoxAtomInformation.Size" type="System.Drawing.Size, System.Drawing">
     <value>410, 207</value>
@@ -4353,7 +4353,7 @@ even if they are outside the boundaries</value>
     <value>True</value>
   </data>
   <data name="numericBoxLatticePlaneOpacity.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxCRange.Size" type="System.Drawing.Size, System.Drawing">
     <value>80, 25</value>
@@ -4416,7 +4416,7 @@ even if they are outside the boundaries</value>
     <value>3, 3</value>
   </data>
   <data name="label2.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="&gt;&gt;label3.Name" xml:space="preserve">
     <value>label3</value>
@@ -4470,7 +4470,7 @@ even if they are outside the boundaries</value>
     <value>Fill</value>
   </data>
   <data name="numericBoxBCenter.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 12.1875pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="comboBoxRenderingQuality.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 21</value>
@@ -4503,25 +4503,25 @@ even if they are outside the boundaries</value>
     <value />
   </data>
   <data name="colorControlCellEdgeB.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="label17.ToolTip" xml:space="preserve">
     <value />
   </data>
   <data name="numericBoxLegendSize.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 12.1875pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="checkBoxLabelWhiteEdge.Size" type="System.Drawing.Size, System.Drawing">
     <value>94, 21</value>
   </data>
   <data name="numericBoxAxesSize.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 12.1875pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="colorControlLabelColor.Location" type="System.Drawing.Point, System.Drawing">
     <value>343, 50</value>
   </data>
   <data name="colorControlCellEdgeA.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="colorControlCellEdgeC.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
@@ -4656,10 +4656,10 @@ even if they are outside the boundaries</value>
     <value>Approximate (Z depth sorting, OpenGL 4.1+)</value>
   </data>
   <data name="numericBoxACenter.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 12.1875pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="trackBarAdvancedDepthCueingFar.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="comboBoxTransparency.Items2" xml:space="preserve">
     <value>High quality (Per-Pixel Linked List, OpenGL 4.3+)</value>
@@ -4677,7 +4677,7 @@ even if they are outside the boundaries</value>
     <value>63, 21</value>
   </data>
   <data name="buttonSetCenter1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="saveAxesToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>160, 22</value>
@@ -4755,7 +4755,7 @@ even if they are outside the boundaries</value>
     <value>radioButtonProjectionCenter2</value>
   </data>
   <data name="colorControlCellPlane.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxClientHeight.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
@@ -5084,7 +5084,7 @@ even if they are outside the boundaries</value>
     <value>NoControl</value>
   </data>
   <data name="colorControlCellPlaneB.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
     <value>339, 0</value>
@@ -5138,10 +5138,10 @@ even if they are outside the boundaries</value>
     <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="labelMessage.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt, style=Bold</value>
+    <value>Segoe UI, 9.75pt, style=Bold</value>
   </data>
   <data name="saveImageToolStripMenuItem.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="&gt;&gt;checkBoxUnitCell.ZOrder" xml:space="preserve">
     <value>0</value>
@@ -5219,7 +5219,7 @@ even if they are outside the boundaries</value>
     <value>(½ ½ ½)</value>
   </data>
   <data name="colorControlCellEdge.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="&gt;&gt;saveMovieToolStripMenuItem.Name" xml:space="preserve">
     <value>saveMovieToolStripMenuItem</value>
@@ -5228,7 +5228,7 @@ even if they are outside the boundaries</value>
     <value>9</value>
   </data>
   <data name="numericUpDownSubCellA.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="toolStripButtonResetRotation.Size" type="System.Drawing.Size, System.Drawing">
     <value>97, 22</value>
@@ -5288,7 +5288,7 @@ even if they are outside the boundaries</value>
     <value>2</value>
   </data>
   <data name="colorControlCellEdge.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 12.1875pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxAxesSize.TextFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -5345,7 +5345,7 @@ even if they are outside the boundaries</value>
     <value>colorControlLabelColor</value>
   </data>
   <data name="trackBarAdvancedDepthCueingNear.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 11.25pt</value>
+    <value>メイリオ, 9.75pt</value>
   </data>
   <data name="label4.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -5393,7 +5393,7 @@ even if they are outside the boundaries</value>
     <value>FormStructureViewer</value>
   </data>
   <data name="colorControlCellPlane.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 12.1875pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="trackBarPerspective.Location" type="System.Drawing.Point, System.Drawing">
     <value>105, 21</value>
@@ -5414,7 +5414,7 @@ even if they are outside the boundaries</value>
     <value>5</value>
   </data>
   <data name="checkBoxCellShowPlane.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="label11.ToolTip" xml:space="preserve">
     <value />
@@ -5561,7 +5561,7 @@ even if they are outside the boundaries</value>
     <value>Font size of legend letters</value>
   </data>
   <data name="tabControlBoundOption.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 11.25pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="radioButtonProjectionCenterCustom.Location" type="System.Drawing.Point, System.Drawing">
     <value>22, 64</value>
@@ -5795,7 +5795,7 @@ even if they are outside the boundaries</value>
     <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="buttonSetCenter3.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="&gt;&gt;tabPageBounds.ZOrder" xml:space="preserve">
     <value>0</value>
@@ -5900,7 +5900,7 @@ even if they are outside the boundaries</value>
     <value>GrowAndShrink</value>
   </data>
   <data name="numericBoxCellTranslationB.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 12.1875pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="tabPageAtom.ToolTip" xml:space="preserve">
     <value />
@@ -5915,7 +5915,7 @@ even if they are outside the boundaries</value>
     <value>3</value>
   </data>
   <data name="numericBoxLightSize.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 12.1875pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="radioButtonProjectionCenter2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -5939,7 +5939,7 @@ even if they are outside the boundaries</value>
     <value>11</value>
   </data>
   <data name="checkBoxHideAllAtoms.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="flowLayoutPanelProjectionCenter.ToolTip" xml:space="preserve">
     <value />
@@ -5966,7 +5966,7 @@ even if they are outside the boundaries</value>
     <value>367, 98</value>
   </data>
   <data name="numericBoxBoundPlanesOpacity.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="numericBoxProjectionCenterY.MaximumSize" type="System.Drawing.Size, System.Drawing">
     <value>1000, 30</value>

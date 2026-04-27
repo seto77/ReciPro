@@ -117,7 +117,7 @@
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.dataGridView);
-            this.Font = new System.Drawing.Font("Arial Unicode MS", 9F);
+            this.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.Name = "FormIsotopeComposition";
             this.Text = "FormIsotopeComposition";
             this.ResumeLayout(false);

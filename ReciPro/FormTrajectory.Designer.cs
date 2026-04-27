@@ -178,7 +178,7 @@
             graphControlEnergyProfile.OriginPosition = new System.Drawing.Point(40, 20);
             graphControlEnergyProfile.UnitX = "";
             graphControlEnergyProfile.UnitY = "";
-            graphControlEnergyProfile.UpperPanelFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            graphControlEnergyProfile.UpperPanelFont = new System.Drawing.Font("Segoe UI", 9F);
             graphControlEnergyProfile.UpperPanelVisible = true;
             graphControlEnergyProfile.UpperX = 1D;
             graphControlEnergyProfile.UpperY = 1D;
@@ -266,7 +266,7 @@
             graphControlDepthProfile.OriginPosition = new System.Drawing.Point(40, 20);
             graphControlDepthProfile.UnitX = "µm";
             graphControlDepthProfile.UnitY = "%";
-            graphControlDepthProfile.UpperPanelFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            graphControlDepthProfile.UpperPanelFont = new System.Drawing.Font("Segoe UI", 9F);
             graphControlDepthProfile.UpperPanelVisible = true;
             graphControlDepthProfile.UpperX = 1D;
             graphControlDepthProfile.UpperY = 1D;
@@ -330,7 +330,7 @@
             graphControlDistance.OriginPosition = new System.Drawing.Point(40, 20);
             graphControlDistance.UnitX = "nm";
             graphControlDistance.UnitY = "%";
-            graphControlDistance.UpperPanelFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            graphControlDistance.UpperPanelFont = new System.Drawing.Font("Segoe UI", 9F);
             graphControlDistance.UpperPanelVisible = true;
             graphControlDistance.UpperX = 1D;
             graphControlDistance.UpperY = 1D;

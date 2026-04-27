@@ -5,8 +5,8 @@
     <TargetFramework>net10.0-windows</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
     <UseWPF>true</UseWPF><!-- (260427Ch) LabelLaTeX で WpfMath の WPF 描画を使うため有効化 -->
-    <AssemblyVersion>2026.4.27.1218</AssemblyVersion>
-    <FileVersion>2026.4.27.1218</FileVersion>
+    <AssemblyVersion>2026.4.27.2319</AssemblyVersion>
+    <FileVersion>2026.4.27.2319</FileVersion>
     <ApplicationHighDpiMode>PerMonitorV2</ApplicationHighDpiMode>
     <ApplicationUseCompatibleTextRendering>true</ApplicationUseCompatibleTextRendering>
     <ApplicationVisualStyles>true</ApplicationVisualStyles>

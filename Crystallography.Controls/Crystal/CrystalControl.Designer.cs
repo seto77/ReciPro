@@ -78,22 +78,9 @@
             buttonStressSet = new System.Windows.Forms.Button();
             numericBoxStrain33 = new NumericBox();
             numericBoxHill = new NumericBox();
-            label116 = new System.Windows.Forms.Label();
             label117 = new System.Windows.Forms.Label();
             label109 = new System.Windows.Forms.Label();
-            label110 = new System.Windows.Forms.Label();
-            label111 = new System.Windows.Forms.Label();
-            label112 = new System.Windows.Forms.Label();
-            label113 = new System.Windows.Forms.Label();
-            label114 = new System.Windows.Forms.Label();
-            label115 = new System.Windows.Forms.Label();
             label102 = new System.Windows.Forms.Label();
-            label103 = new System.Windows.Forms.Label();
-            label104 = new System.Windows.Forms.Label();
-            label105 = new System.Windows.Forms.Label();
-            label106 = new System.Windows.Forms.Label();
-            label107 = new System.Windows.Forms.Label();
-            label108 = new System.Windows.Forms.Label();
             numericBoxStress33 = new NumericBox();
             numericBoxStress22 = new NumericBox();
             numericBoxStress11 = new NumericBox();
@@ -154,6 +141,19 @@
             buttonSymmetryInfo = new System.Windows.Forms.Button();
             flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             panelNameAndActions = new System.Windows.Forms.Panel();
+            labelLaTex1 = new LabelLaTeX();
+            labelLaTex2 = new LabelLaTeX();
+            labelLaTex3 = new LabelLaTeX();
+            labelLaTex4 = new LabelLaTeX();
+            labelLaTex5 = new LabelLaTeX();
+            labelLaTex6 = new LabelLaTeX();
+            labelLaTex7 = new LabelLaTeX();
+            labelLaTex8 = new LabelLaTeX();
+            labelLaTex9 = new LabelLaTeX();
+            labelLaTex10 = new LabelLaTeX();
+            labelLaTex11 = new LabelLaTeX();
+            labelLaTex12 = new LabelLaTeX();
+            labelLaTex13 = new LabelLaTeX();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel1.SuspendLayout();
             splitContainer1.Panel2.SuspendLayout();
@@ -571,36 +571,36 @@
             // 
             tabPageStrainStress.BackColor = System.Drawing.SystemColors.Control;
             captureExtender.SetCapture(tabPageStrainStress, true);
-            tabPageStrainStress.Controls.Add(buttonStressSet);
-            tabPageStrainStress.Controls.Add(numericBoxStrain33);
-            tabPageStrainStress.Controls.Add(numericBoxHill);
-            tabPageStrainStress.Controls.Add(label116);
-            tabPageStrainStress.Controls.Add(label117);
-            tabPageStrainStress.Controls.Add(label109);
-            tabPageStrainStress.Controls.Add(label110);
-            tabPageStrainStress.Controls.Add(label111);
-            tabPageStrainStress.Controls.Add(label112);
-            tabPageStrainStress.Controls.Add(label113);
-            tabPageStrainStress.Controls.Add(label114);
-            tabPageStrainStress.Controls.Add(label115);
-            tabPageStrainStress.Controls.Add(label102);
-            tabPageStrainStress.Controls.Add(label103);
-            tabPageStrainStress.Controls.Add(label104);
-            tabPageStrainStress.Controls.Add(label105);
-            tabPageStrainStress.Controls.Add(label106);
-            tabPageStrainStress.Controls.Add(label107);
-            tabPageStrainStress.Controls.Add(label108);
             tabPageStrainStress.Controls.Add(numericBoxStress33);
             tabPageStrainStress.Controls.Add(numericBoxStress22);
             tabPageStrainStress.Controls.Add(numericBoxStress11);
             tabPageStrainStress.Controls.Add(numericBoxStress23);
             tabPageStrainStress.Controls.Add(numericBoxStress13);
             tabPageStrainStress.Controls.Add(numericBoxStress12);
+            tabPageStrainStress.Controls.Add(numericBoxStrain33);
             tabPageStrainStress.Controls.Add(numericBoxStrain11);
             tabPageStrainStress.Controls.Add(numericBoxStrain22);
             tabPageStrainStress.Controls.Add(numericBoxStrain12);
             tabPageStrainStress.Controls.Add(numericBoxStrain23);
             tabPageStrainStress.Controls.Add(numericBoxStrain13);
+            tabPageStrainStress.Controls.Add(labelLaTex6);
+            tabPageStrainStress.Controls.Add(labelLaTex5);
+            tabPageStrainStress.Controls.Add(labelLaTex3);
+            tabPageStrainStress.Controls.Add(labelLaTex4);
+            tabPageStrainStress.Controls.Add(labelLaTex2);
+            tabPageStrainStress.Controls.Add(labelLaTex13);
+            tabPageStrainStress.Controls.Add(labelLaTex12);
+            tabPageStrainStress.Controls.Add(labelLaTex11);
+            tabPageStrainStress.Controls.Add(labelLaTex10);
+            tabPageStrainStress.Controls.Add(labelLaTex9);
+            tabPageStrainStress.Controls.Add(labelLaTex8);
+            tabPageStrainStress.Controls.Add(labelLaTex7);
+            tabPageStrainStress.Controls.Add(labelLaTex1);
+            tabPageStrainStress.Controls.Add(buttonStressSet);
+            tabPageStrainStress.Controls.Add(numericBoxHill);
+            tabPageStrainStress.Controls.Add(label117);
+            tabPageStrainStress.Controls.Add(label109);
+            tabPageStrainStress.Controls.Add(label102);
             resources.ApplyResources(tabPageStrainStress, "tabPageStrainStress");
             tabPageStrainStress.Name = "tabPageStrainStress";
             // 
@@ -635,11 +635,6 @@
             numericBoxHill.SmartIncrement = true;
             numericBoxHill.Value = 1D;
             // 
-            // label116
-            // 
-            resources.ApplyResources(label116, "label116");
-            label116.Name = "label116";
-            // 
             // label117
             // 
             resources.ApplyResources(label117, "label117");
@@ -650,70 +645,10 @@
             resources.ApplyResources(label109, "label109");
             label109.Name = "label109";
             // 
-            // label110
-            // 
-            resources.ApplyResources(label110, "label110");
-            label110.Name = "label110";
-            // 
-            // label111
-            // 
-            resources.ApplyResources(label111, "label111");
-            label111.Name = "label111";
-            // 
-            // label112
-            // 
-            resources.ApplyResources(label112, "label112");
-            label112.Name = "label112";
-            // 
-            // label113
-            // 
-            resources.ApplyResources(label113, "label113");
-            label113.Name = "label113";
-            // 
-            // label114
-            // 
-            resources.ApplyResources(label114, "label114");
-            label114.Name = "label114";
-            // 
-            // label115
-            // 
-            resources.ApplyResources(label115, "label115");
-            label115.Name = "label115";
-            // 
             // label102
             // 
             resources.ApplyResources(label102, "label102");
             label102.Name = "label102";
-            // 
-            // label103
-            // 
-            resources.ApplyResources(label103, "label103");
-            label103.Name = "label103";
-            // 
-            // label104
-            // 
-            resources.ApplyResources(label104, "label104");
-            label104.Name = "label104";
-            // 
-            // label105
-            // 
-            resources.ApplyResources(label105, "label105");
-            label105.Name = "label105";
-            // 
-            // label106
-            // 
-            resources.ApplyResources(label106, "label106");
-            label106.Name = "label106";
-            // 
-            // label107
-            // 
-            resources.ApplyResources(label107, "label107");
-            label107.Name = "label107";
-            // 
-            // label108
-            // 
-            resources.ApplyResources(label108, "label108");
-            label108.Name = "label108";
             // 
             // numericBoxStress33
             // 
@@ -1173,6 +1108,84 @@
             resources.ApplyResources(panelNameAndActions, "panelNameAndActions");
             panelNameAndActions.Name = "panelNameAndActions";
             // 
+            // labelLaTex1
+            // 
+            resources.ApplyResources(labelLaTex1, "labelLaTex1");
+            labelLaTex1.Name = "labelLaTex1";
+            labelLaTex1.Thickness = 0.5D;
+            // 
+            // labelLaTex2
+            // 
+            resources.ApplyResources(labelLaTex2, "labelLaTex2");
+            labelLaTex2.Name = "labelLaTex2";
+            labelLaTex2.Thickness = 0.5D;
+            // 
+            // labelLaTex3
+            // 
+            resources.ApplyResources(labelLaTex3, "labelLaTex3");
+            labelLaTex3.Name = "labelLaTex3";
+            labelLaTex3.Thickness = 0.5D;
+            // 
+            // labelLaTex4
+            // 
+            resources.ApplyResources(labelLaTex4, "labelLaTex4");
+            labelLaTex4.Name = "labelLaTex4";
+            labelLaTex4.Thickness = 0.5D;
+            // 
+            // labelLaTex5
+            // 
+            resources.ApplyResources(labelLaTex5, "labelLaTex5");
+            labelLaTex5.Name = "labelLaTex5";
+            labelLaTex5.Thickness = 0.5D;
+            // 
+            // labelLaTex6
+            // 
+            resources.ApplyResources(labelLaTex6, "labelLaTex6");
+            labelLaTex6.Name = "labelLaTex6";
+            labelLaTex6.Thickness = 0.5D;
+            // 
+            // labelLaTex7
+            // 
+            resources.ApplyResources(labelLaTex7, "labelLaTex7");
+            labelLaTex7.Name = "labelLaTex7";
+            labelLaTex7.Thickness = 0.5D;
+            // 
+            // labelLaTex8
+            // 
+            resources.ApplyResources(labelLaTex8, "labelLaTex8");
+            labelLaTex8.Name = "labelLaTex8";
+            labelLaTex8.Thickness = 0.5D;
+            // 
+            // labelLaTex9
+            // 
+            resources.ApplyResources(labelLaTex9, "labelLaTex9");
+            labelLaTex9.Name = "labelLaTex9";
+            labelLaTex9.Thickness = 0.5D;
+            // 
+            // labelLaTex10
+            // 
+            resources.ApplyResources(labelLaTex10, "labelLaTex10");
+            labelLaTex10.Name = "labelLaTex10";
+            labelLaTex10.Thickness = 0.5D;
+            // 
+            // labelLaTex11
+            // 
+            resources.ApplyResources(labelLaTex11, "labelLaTex11");
+            labelLaTex11.Name = "labelLaTex11";
+            labelLaTex11.Thickness = 0.5D;
+            // 
+            // labelLaTex12
+            // 
+            resources.ApplyResources(labelLaTex12, "labelLaTex12");
+            labelLaTex12.Name = "labelLaTex12";
+            labelLaTex12.Thickness = 0.5D;
+            // 
+            // labelLaTex13
+            // 
+            resources.ApplyResources(labelLaTex13, "labelLaTex13");
+            labelLaTex13.Name = "labelLaTex13";
+            labelLaTex13.Thickness = 0.5D;
+            // 
             // CrystalControl
             // 
             AllowDrop = true;
@@ -1288,29 +1301,16 @@
         private NumericBox numericBoxStrain11;
         private NumericBox numericBoxStrain22;
         private NumericBox numericBoxStrain12;
-        private System.Windows.Forms.Label label103;
         private NumericBox numericBoxStrain23;
-        private System.Windows.Forms.Label label104;
         private NumericBox numericBoxStrain13;
-        private System.Windows.Forms.Label label105;
-        private System.Windows.Forms.Label label106;
-        private System.Windows.Forms.Label label107;
-        private System.Windows.Forms.Label label108;
         private NumericBox numericBoxStress33;
         private System.Windows.Forms.Label label109;
         private NumericBox numericBoxStress22;
         private NumericBox numericBoxStress11;
         private NumericBox numericBoxStress23;
         private NumericBox numericBoxStress13;
-        private System.Windows.Forms.Label label110;
-        private System.Windows.Forms.Label label111;
         private NumericBox numericBoxStress12;
-        private System.Windows.Forms.Label label112;
-        private System.Windows.Forms.Label label113;
-        private System.Windows.Forms.Label label114;
-        private System.Windows.Forms.Label label115;
         private NumericBox numericBoxHill;
-        private System.Windows.Forms.Label label116;
         private System.Windows.Forms.Label label117;
         private System.Windows.Forms.Button buttonGenerateRandomOrientations;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
@@ -1361,5 +1361,18 @@
         private System.Windows.Forms.Button buttonConvertToSubgroup;
         private System.Windows.Forms.Button buttonChangeAxesOriginSetting;
         private NumericBox numericBoxCellVolumeNm;
+        private LabelLaTeX labelLaTex6;
+        private LabelLaTeX labelLaTex5;
+        private LabelLaTeX labelLaTex3;
+        private LabelLaTeX labelLaTex4;
+        private LabelLaTeX labelLaTex2;
+        private LabelLaTeX labelLaTex11;
+        private LabelLaTeX labelLaTex10;
+        private LabelLaTeX labelLaTex9;
+        private LabelLaTeX labelLaTex8;
+        private LabelLaTeX labelLaTex7;
+        private LabelLaTeX labelLaTex1;
+        private LabelLaTeX labelLaTex13;
+        private LabelLaTeX labelLaTex12;
     }
 }

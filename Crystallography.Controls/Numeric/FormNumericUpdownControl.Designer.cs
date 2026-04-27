@@ -74,7 +74,7 @@
             // numericBoxDecimalIncrement
             // 
             this.numericBoxDecimalIncrement.BackColor = System.Drawing.Color.Transparent;
-            this.numericBoxDecimalIncrement.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxDecimalIncrement.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxDecimalIncrement.Location = new System.Drawing.Point(94, 3);
             this.numericBoxDecimalIncrement.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.numericBoxDecimalIncrement.MaximumSize = new System.Drawing.Size(1000, 25);
@@ -88,7 +88,7 @@
             // numericBoxDecimalPlace
             // 
             this.numericBoxDecimalPlace.BackColor = System.Drawing.Color.Transparent;
-            this.numericBoxDecimalPlace.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxDecimalPlace.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxDecimalPlace.Location = new System.Drawing.Point(94, 28);
             this.numericBoxDecimalPlace.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.numericBoxDecimalPlace.MaximumSize = new System.Drawing.Size(1000, 25);
@@ -113,7 +113,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.numericBoxDecimalIncrement);
             this.Controls.Add(this.numericBoxDecimalPlace);
-            this.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.MaximizeBox = false;

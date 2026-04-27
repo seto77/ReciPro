@@ -117,7 +117,7 @@ namespace ReciPro
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(19, 16);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(88, 17);
@@ -160,7 +160,7 @@ namespace ReciPro
             // 
                        this.numericBoxCompressedThetaB.BackColor = System.Drawing.SystemColors.Control;
             this.numericBoxCompressedThetaB.DecimalPlaces = -2;
-            this.numericBoxCompressedThetaB.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+            this.numericBoxCompressedThetaB.Font = new System.Drawing.Font("Segoe UI", 9.75F);
                         this.numericBoxCompressedThetaB.FooterText = "deg/ns";
                         this.numericBoxCompressedThetaB.HeaderText = "b";
             this.numericBoxCompressedThetaB.Location = new System.Drawing.Point(17, 104);
@@ -189,7 +189,7 @@ namespace ReciPro
             // 
                        this.numericBoxCompressedOmega.BackColor = System.Drawing.SystemColors.Control;
             this.numericBoxCompressedOmega.DecimalPlaces = -2;
-            this.numericBoxCompressedOmega.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+            this.numericBoxCompressedOmega.Font = new System.Drawing.Font("Segoe UI", 9.75F);
                         this.numericBoxCompressedOmega.FooterText = "deg/ns";
                         this.numericBoxCompressedOmega.HeaderText = "ω";
             this.numericBoxCompressedOmega.Location = new System.Drawing.Point(14, 21);
@@ -218,7 +218,7 @@ namespace ReciPro
             // 
                        this.numericBoxCompressedThetaA.BackColor = System.Drawing.SystemColors.Control;
             this.numericBoxCompressedThetaA.DecimalPlaces = -2;
-            this.numericBoxCompressedThetaA.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+            this.numericBoxCompressedThetaA.Font = new System.Drawing.Font("Segoe UI", 9.75F);
                         this.numericBoxCompressedThetaA.FooterText = "deg";
                         this.numericBoxCompressedThetaA.HeaderText = "a";
             this.numericBoxCompressedThetaA.Location = new System.Drawing.Point(18, 77);
@@ -246,7 +246,7 @@ namespace ReciPro
             // 
                        this.numericBoxCompressedOmegaSigma.BackColor = System.Drawing.SystemColors.Control;
             this.numericBoxCompressedOmegaSigma.DecimalPlaces = -2;
-            this.numericBoxCompressedOmegaSigma.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+            this.numericBoxCompressedOmegaSigma.Font = new System.Drawing.Font("Segoe UI", 9.75F);
                         this.numericBoxCompressedOmegaSigma.FooterText = "deg/ns";
                         this.numericBoxCompressedOmegaSigma.HeaderText = "σ_ω";
             this.numericBoxCompressedOmegaSigma.Location = new System.Drawing.Point(2, 49);
@@ -288,7 +288,7 @@ namespace ReciPro
             // 
                        this.numericBoxReleasedThetaB.BackColor = System.Drawing.SystemColors.Control;
             this.numericBoxReleasedThetaB.DecimalPlaces = -2;
-            this.numericBoxReleasedThetaB.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+            this.numericBoxReleasedThetaB.Font = new System.Drawing.Font("Segoe UI", 9.75F);
                         this.numericBoxReleasedThetaB.FooterText = "deg/ns";
                         this.numericBoxReleasedThetaB.HeaderText = "b";
             this.numericBoxReleasedThetaB.Location = new System.Drawing.Point(18, 104);
@@ -317,7 +317,7 @@ namespace ReciPro
             // 
                        this.numericBoxReleasedOmegaSigma.BackColor = System.Drawing.SystemColors.Control;
             this.numericBoxReleasedOmegaSigma.DecimalPlaces = -2;
-            this.numericBoxReleasedOmegaSigma.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+            this.numericBoxReleasedOmegaSigma.Font = new System.Drawing.Font("Segoe UI", 9.75F);
                         this.numericBoxReleasedOmegaSigma.FooterText = "deg/ns";
                         this.numericBoxReleasedOmegaSigma.HeaderText = "σ_ω";
             this.numericBoxReleasedOmegaSigma.Location = new System.Drawing.Point(4, 49);
@@ -346,7 +346,7 @@ namespace ReciPro
             // 
                        this.numericBoxReleasedOmega.BackColor = System.Drawing.SystemColors.Control;
             this.numericBoxReleasedOmega.DecimalPlaces = -2;
-            this.numericBoxReleasedOmega.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+            this.numericBoxReleasedOmega.Font = new System.Drawing.Font("Segoe UI", 9.75F);
                         this.numericBoxReleasedOmega.FooterText = "deg/ns";
                         this.numericBoxReleasedOmega.HeaderText = "ω";
             this.numericBoxReleasedOmega.Location = new System.Drawing.Point(16, 21);
@@ -375,7 +375,7 @@ namespace ReciPro
             // 
                        this.numericBoxReleasedThetaA.BackColor = System.Drawing.SystemColors.Control;
             this.numericBoxReleasedThetaA.DecimalPlaces = -2;
-            this.numericBoxReleasedThetaA.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+            this.numericBoxReleasedThetaA.Font = new System.Drawing.Font("Segoe UI", 9.75F);
                         this.numericBoxReleasedThetaA.FooterText = "deg";
                         this.numericBoxReleasedThetaA.HeaderText = "a";
             this.numericBoxReleasedThetaA.Location = new System.Drawing.Point(20, 77);
@@ -414,7 +414,7 @@ namespace ReciPro
             // 
                        this.numericBoxEOS_K0.BackColor = System.Drawing.SystemColors.Control;
             this.numericBoxEOS_K0.DecimalPlaces = -2;
-            this.numericBoxEOS_K0.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+            this.numericBoxEOS_K0.Font = new System.Drawing.Font("Segoe UI", 9.75F);
                         this.numericBoxEOS_K0.FooterText = "GPa";
                         this.numericBoxEOS_K0.HeaderText = "K0";
             this.numericBoxEOS_K0.Location = new System.Drawing.Point(14, 18);
@@ -443,7 +443,7 @@ namespace ReciPro
             // 
                        this.numericBoxEOS_Kprime.BackColor = System.Drawing.SystemColors.Control;
             this.numericBoxEOS_Kprime.DecimalPlaces = -2;
-            this.numericBoxEOS_Kprime.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+            this.numericBoxEOS_Kprime.Font = new System.Drawing.Font("Segoe UI", 9.75F);
                                                 this.numericBoxEOS_Kprime.HeaderText = "K\'0";
             this.numericBoxEOS_Kprime.Location = new System.Drawing.Point(12, 44);
             this.numericBoxEOS_Kprime.Margin = new System.Windows.Forms.Padding(0);
@@ -484,7 +484,7 @@ namespace ReciPro
             // 
                        this.numericBoxShockedPlaneH.BackColor = System.Drawing.SystemColors.Control;
             this.numericBoxShockedPlaneH.DecimalPlaces = -2;
-            this.numericBoxShockedPlaneH.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+            this.numericBoxShockedPlaneH.Font = new System.Drawing.Font("Segoe UI", 9.75F);
                                                 this.numericBoxShockedPlaneH.HeaderText = "(";
             this.numericBoxShockedPlaneH.Location = new System.Drawing.Point(3, 33);
             this.numericBoxShockedPlaneH.Margin = new System.Windows.Forms.Padding(0);
@@ -513,7 +513,7 @@ namespace ReciPro
             // 
                        this.numericBoxShockedPlaneK.BackColor = System.Drawing.SystemColors.Control;
             this.numericBoxShockedPlaneK.DecimalPlaces = -2;
-            this.numericBoxShockedPlaneK.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+            this.numericBoxShockedPlaneK.Font = new System.Drawing.Font("Segoe UI", 9.75F);
                                                 this.numericBoxShockedPlaneK.HeaderText = "";
             this.numericBoxShockedPlaneK.Location = new System.Drawing.Point(53, 33);
             this.numericBoxShockedPlaneK.Margin = new System.Windows.Forms.Padding(0);
@@ -541,7 +541,7 @@ namespace ReciPro
             // 
                        this.numericBoxShockedPlaneL.BackColor = System.Drawing.SystemColors.Control;
             this.numericBoxShockedPlaneL.DecimalPlaces = -2;
-            this.numericBoxShockedPlaneL.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+            this.numericBoxShockedPlaneL.Font = new System.Drawing.Font("Segoe UI", 9.75F);
                         this.numericBoxShockedPlaneL.FooterText = ")";
                         this.numericBoxShockedPlaneL.HeaderText = "";
             this.numericBoxShockedPlaneL.Location = new System.Drawing.Point(91, 33);
@@ -650,7 +650,7 @@ namespace ReciPro
             // 
                        this.numericBoxUp.BackColor = System.Drawing.SystemColors.Control;
             this.numericBoxUp.DecimalPlaces = -2;
-            this.numericBoxUp.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+            this.numericBoxUp.Font = new System.Drawing.Font("Segoe UI", 9.75F);
                         this.numericBoxUp.FooterText = "km/s";
                         this.numericBoxUp.HeaderText = "Us";
             this.numericBoxUp.Location = new System.Drawing.Point(7, 24);
@@ -702,7 +702,7 @@ namespace ReciPro
             // 
                        this.numericBoxUr.BackColor = System.Drawing.SystemColors.Control;
             this.numericBoxUr.DecimalPlaces = -2;
-            this.numericBoxUr.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+            this.numericBoxUr.Font = new System.Drawing.Font("Segoe UI", 9.75F);
                         this.numericBoxUr.FooterText = "km/s";
                         this.numericBoxUr.HeaderText = "Ur";
             this.numericBoxUr.Location = new System.Drawing.Point(7, 24);
@@ -756,7 +756,7 @@ namespace ReciPro
             // 
                        this.numericBoxMassAbsorption.BackColor = System.Drawing.SystemColors.Control;
             this.numericBoxMassAbsorption.DecimalPlaces = -2;
-            this.numericBoxMassAbsorption.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+            this.numericBoxMassAbsorption.Font = new System.Drawing.Font("Segoe UI", 9.75F);
                         this.numericBoxMassAbsorption.FooterText = "cm^2/g";
                         this.numericBoxMassAbsorption.HeaderText = "";
             this.numericBoxMassAbsorption.Location = new System.Drawing.Point(76, 187);
@@ -893,7 +893,7 @@ namespace ReciPro
             // 
                        this.numericBoxOmegaStep.BackColor = System.Drawing.SystemColors.Control;
             this.numericBoxOmegaStep.DecimalPlaces = 2;
-            this.numericBoxOmegaStep.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+            this.numericBoxOmegaStep.Font = new System.Drawing.Font("Segoe UI", 9.75F);
                         this.numericBoxOmegaStep.FooterText = "° step ×";
                         this.numericBoxOmegaStep.HeaderText = "";
             this.numericBoxOmegaStep.Location = new System.Drawing.Point(0, 0);
@@ -923,7 +923,7 @@ namespace ReciPro
             // 
                        this.numericBoxOmegaTimes.BackColor = System.Drawing.SystemColors.Control;
             this.numericBoxOmegaTimes.DecimalPlaces = 0;
-            this.numericBoxOmegaTimes.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+            this.numericBoxOmegaTimes.Font = new System.Drawing.Font("Segoe UI", 9.75F);
                         this.numericBoxOmegaTimes.FooterText = "times";
                         this.numericBoxOmegaTimes.HeaderText = "";
             this.numericBoxOmegaTimes.Location = new System.Drawing.Point(116, 0);
@@ -964,7 +964,7 @@ namespace ReciPro
             // 
                        this.numericBoxDivisionOfRotationAngle.BackColor = System.Drawing.SystemColors.Control;
             this.numericBoxDivisionOfRotationAngle.DecimalPlaces = -2;
-            this.numericBoxDivisionOfRotationAngle.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+            this.numericBoxDivisionOfRotationAngle.Font = new System.Drawing.Font("Segoe UI", 9.75F);
                                                 this.numericBoxDivisionOfRotationAngle.HeaderText = "rotation speed";
             this.numericBoxDivisionOfRotationAngle.Location = new System.Drawing.Point(203, 21);
             this.numericBoxDivisionOfRotationAngle.Margin = new System.Windows.Forms.Padding(0);
@@ -993,7 +993,7 @@ namespace ReciPro
             // 
                        this.numericBoxDivisionOfRotationAxis.BackColor = System.Drawing.SystemColors.Control;
             this.numericBoxDivisionOfRotationAxis.DecimalPlaces = -2;
-            this.numericBoxDivisionOfRotationAxis.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+            this.numericBoxDivisionOfRotationAxis.Font = new System.Drawing.Font("Segoe UI", 9.75F);
                                                 this.numericBoxDivisionOfRotationAxis.HeaderText = "Division of rotation axis";
             this.numericBoxDivisionOfRotationAxis.Location = new System.Drawing.Point(6, 21);
             this.numericBoxDivisionOfRotationAxis.Margin = new System.Windows.Forms.Padding(0);
@@ -1099,7 +1099,7 @@ namespace ReciPro
             this.graphControl.DivisionLineColor = System.Drawing.Color.LightGray;
             this.graphControl.FixRangeHorizontal = false;
             this.graphControl.FixRangeVertical = false;
-            this.graphControl.Font = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.graphControl.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.graphControl.GraphTitle = "";
             this.graphControl.AxisXTextVisible = true;
             this.graphControl.Interpolation = false;
@@ -1125,7 +1125,7 @@ namespace ReciPro
             this.graphControl.Size = new System.Drawing.Size(475, 186);
             this.graphControl.Smoothing = false;
             this.graphControl.TabIndex = 0;
-            this.graphControl.UpperPanelFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.graphControl.UpperPanelFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.graphControl.UnitX = " nm";
             this.graphControl.UnitY = " MBar";
             this.graphControl.UpperPanelVisible = false;
@@ -1194,7 +1194,7 @@ namespace ReciPro
             // 
                        this.numericBoxSlipPlaneH.BackColor = System.Drawing.SystemColors.Control;
             this.numericBoxSlipPlaneH.DecimalPlaces = -2;
-            this.numericBoxSlipPlaneH.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+            this.numericBoxSlipPlaneH.Font = new System.Drawing.Font("Segoe UI", 9.75F);
                                                 this.numericBoxSlipPlaneH.HeaderText = "(";
             this.numericBoxSlipPlaneH.Location = new System.Drawing.Point(3, 33);
             this.numericBoxSlipPlaneH.Margin = new System.Windows.Forms.Padding(0);
@@ -1223,7 +1223,7 @@ namespace ReciPro
             // 
                        this.numericBoxSlipPlaneK.BackColor = System.Drawing.SystemColors.Control;
             this.numericBoxSlipPlaneK.DecimalPlaces = -2;
-            this.numericBoxSlipPlaneK.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+            this.numericBoxSlipPlaneK.Font = new System.Drawing.Font("Segoe UI", 9.75F);
                                                 this.numericBoxSlipPlaneK.HeaderText = "";
             this.numericBoxSlipPlaneK.Location = new System.Drawing.Point(53, 33);
             this.numericBoxSlipPlaneK.Margin = new System.Windows.Forms.Padding(0);
@@ -1251,7 +1251,7 @@ namespace ReciPro
             // 
                        this.numericBoxSlipPlaneL.BackColor = System.Drawing.SystemColors.Control;
             this.numericBoxSlipPlaneL.DecimalPlaces = -2;
-            this.numericBoxSlipPlaneL.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+            this.numericBoxSlipPlaneL.Font = new System.Drawing.Font("Segoe UI", 9.75F);
                         this.numericBoxSlipPlaneL.FooterText = ")";
                         this.numericBoxSlipPlaneL.HeaderText = "";
             this.numericBoxSlipPlaneL.Location = new System.Drawing.Point(91, 33);
@@ -1279,7 +1279,7 @@ namespace ReciPro
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(19, 16);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(88, 17);
@@ -1305,7 +1305,7 @@ namespace ReciPro
             this.Controls.Add(this.trackBarAdvancedFront);
             this.Controls.Add(this.graphControl);
             this.DoubleBuffered = true;
-            this.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.MaximizeBox = false;

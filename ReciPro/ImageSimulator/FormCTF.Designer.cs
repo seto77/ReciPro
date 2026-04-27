@@ -76,7 +76,7 @@
             // 
             radioButtonCTF_coherent.AutoSize = true;
             radioButtonCTF_coherent.Checked = true;
-            radioButtonCTF_coherent.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+            radioButtonCTF_coherent.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             radioButtonCTF_coherent.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             radioButtonCTF_coherent.Location = new System.Drawing.Point(3, 3);
             radioButtonCTF_coherent.Name = "radioButtonCTF_coherent";
@@ -90,7 +90,7 @@
             // radioButtonCTF_Incoherent
             // 
             radioButtonCTF_Incoherent.AutoSize = true;
-            radioButtonCTF_Incoherent.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+            radioButtonCTF_Incoherent.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             radioButtonCTF_Incoherent.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             radioButtonCTF_Incoherent.Location = new System.Drawing.Point(139, 3);
             radioButtonCTF_Incoherent.Name = "radioButtonCTF_Incoherent";
@@ -104,7 +104,7 @@
             checkBoxSinW.AutoSize = true;
             checkBoxSinW.Checked = true;
             checkBoxSinW.CheckState = System.Windows.Forms.CheckState.Checked;
-            checkBoxSinW.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            checkBoxSinW.Font = new System.Drawing.Font("Segoe UI", 9F);
             checkBoxSinW.Image = (System.Drawing.Image)resources.GetObject("checkBoxSinW.Image");
             checkBoxSinW.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             checkBoxSinW.ImeMode = System.Windows.Forms.ImeMode.NoControl;
@@ -121,7 +121,7 @@
             checkBoxEs_HRTEM.AutoSize = true;
             checkBoxEs_HRTEM.Checked = true;
             checkBoxEs_HRTEM.CheckState = System.Windows.Forms.CheckState.Checked;
-            checkBoxEs_HRTEM.Font = new System.Drawing.Font("Segoe UI Symbol", 8F);
+            checkBoxEs_HRTEM.Font = new System.Drawing.Font("Segoe UI", 8F);
             checkBoxEs_HRTEM.Image = (System.Drawing.Image)resources.GetObject("checkBoxEs_HRTEM.Image");
             checkBoxEs_HRTEM.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             checkBoxEs_HRTEM.Location = new System.Drawing.Point(201, 35);
@@ -137,7 +137,7 @@
             checkBoxEc.AutoSize = true;
             checkBoxEc.Checked = true;
             checkBoxEc.CheckState = System.Windows.Forms.CheckState.Checked;
-            checkBoxEc.Font = new System.Drawing.Font("Segoe UI Symbol", 8F);
+            checkBoxEc.Font = new System.Drawing.Font("Segoe UI", 8F);
             checkBoxEc.Image = (System.Drawing.Image)resources.GetObject("checkBoxEc.Image");
             checkBoxEc.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             checkBoxEc.Location = new System.Drawing.Point(3, 69);
@@ -153,7 +153,7 @@
             checkBoxPCTF.AutoSize = true;
             checkBoxPCTF.Checked = true;
             checkBoxPCTF.CheckState = System.Windows.Forms.CheckState.Checked;
-            checkBoxPCTF.Font = new System.Drawing.Font("Segoe UI Symbol", 8F);
+            checkBoxPCTF.Font = new System.Drawing.Font("Segoe UI", 8F);
             checkBoxPCTF.Image = (System.Drawing.Image)resources.GetObject("checkBoxPCTF.Image");
             checkBoxPCTF.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             checkBoxPCTF.Location = new System.Drawing.Point(0, 1);
@@ -169,7 +169,7 @@
             // 
             buttonCopyGraph.AutoSize = true;
             buttonCopyGraph.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            buttonCopyGraph.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+            buttonCopyGraph.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             buttonCopyGraph.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             buttonCopyGraph.Location = new System.Drawing.Point(658, 0);
             buttonCopyGraph.Margin = new System.Windows.Forms.Padding(0);
@@ -185,7 +185,7 @@
             numericBoxMaxU1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             numericBoxMaxU1.BackColor = System.Drawing.SystemColors.Control;
             numericBoxMaxU1.DecimalPlaces = 1;
-            numericBoxMaxU1.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+            numericBoxMaxU1.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             numericBoxMaxU1.FooterBackColor = System.Drawing.SystemColors.Control;
             numericBoxMaxU1.FooterText = "nm⁻¹";
             numericBoxMaxU1.HeaderBackColor = System.Drawing.SystemColors.Control;
@@ -224,7 +224,7 @@
             graphControl.Dock = System.Windows.Forms.DockStyle.Fill;
             graphControl.FixRangeHorizontal = false;
             graphControl.FixRangeVertical = false;
-            graphControl.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            graphControl.Font = new System.Drawing.Font("Segoe UI", 9F);
             graphControl.GraphTitle = "";
             graphControl.IsIntegerX = false;
             graphControl.IsIntegerY = false;
@@ -251,7 +251,7 @@
             graphControl.TabIndex = 57;
             graphControl.UnitX = "nm⁻¹";
             graphControl.UnitY = "";
-            graphControl.UpperPanelFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            graphControl.UpperPanelFont = new System.Drawing.Font("Segoe UI", 9F);
             graphControl.UpperPanelVisible = true;
             graphControl.UpperX = 1D;
             graphControl.UpperY = 1D;
@@ -275,7 +275,7 @@
             // checkBoxCosW
             // 
             checkBoxCosW.AutoSize = true;
-            checkBoxCosW.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
+            checkBoxCosW.Font = new System.Drawing.Font("Segoe UI", 9F);
             checkBoxCosW.Image = (System.Drawing.Image)resources.GetObject("checkBoxCosW.Image");
             checkBoxCosW.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             checkBoxCosW.ImeMode = System.Windows.Forms.ImeMode.NoControl;
@@ -292,7 +292,7 @@
             checkBoxEs_STEM.AutoSize = true;
             checkBoxEs_STEM.Checked = true;
             checkBoxEs_STEM.CheckState = System.Windows.Forms.CheckState.Checked;
-            checkBoxEs_STEM.Font = new System.Drawing.Font("Segoe UI Symbol", 8F);
+            checkBoxEs_STEM.Font = new System.Drawing.Font("Segoe UI", 8F);
             checkBoxEs_STEM.Image = (System.Drawing.Image)resources.GetObject("checkBoxEs_STEM.Image");
             checkBoxEs_STEM.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             checkBoxEs_STEM.ImeMode = System.Windows.Forms.ImeMode.NoControl;
@@ -331,7 +331,7 @@
             // checkBoxACTF
             // 
             checkBoxACTF.AutoSize = true;
-            checkBoxACTF.Font = new System.Drawing.Font("Segoe UI Symbol", 8F);
+            checkBoxACTF.Font = new System.Drawing.Font("Segoe UI", 8F);
             checkBoxACTF.Image = (System.Drawing.Image)resources.GetObject("checkBoxACTF.Image");
             checkBoxACTF.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             checkBoxACTF.Location = new System.Drawing.Point(0, 35);
@@ -444,7 +444,7 @@
             Controls.Add(panel2);
             Controls.Add(flowLayoutPanel1);
             Controls.Add(flowLayoutPanelSTEM);
-            Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+            Font = new System.Drawing.Font("Segoe UI", 9.75F);
             Name = "FormCTF";
             Padding = new System.Windows.Forms.Padding(3);
             Text = "CTF (Contrast Transfer Function)";

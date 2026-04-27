@@ -119,7 +119,7 @@
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="textBoxCalcInformation.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 7.5pt</value>
+    <value>メイリオ, 7.5pt</value>
   </data>
   <data name="textBoxCalcInformation.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 18</value>
@@ -225,7 +225,7 @@
     <value>表示範囲を各単位胞軸の ±1/2 に設定</value>
   </data>
   <data name="numericBoxCRange.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 7.8pt</value>
+    <value>メイリオ, 9.75pt</value>
   </data>
   <data name="numericBoxCRange.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -240,7 +240,7 @@
     <value>描画範囲を設定</value>
   </data>
   <data name="numericBoxBRange.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 7.8pt</value>
+    <value>メイリオ, 9.75pt</value>
   </data>
   <data name="numericBoxBRange.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -255,7 +255,7 @@
     <value>描画範囲を設定</value>
   </data>
   <data name="numericBoxARange.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 7.8pt</value>
+    <value>メイリオ, 9.75pt</value>
   </data>
   <data name="numericBoxARange.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -270,7 +270,7 @@
     <value>描画範囲を設定</value>
   </data>
   <data name="numericBoxCCenter.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 7.8pt</value>
+    <value>メイリオ, 9.75pt</value>
   </data>
   <data name="numericBoxCCenter.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -285,7 +285,7 @@
     <value>中心位置を設定</value>
   </data>
   <data name="numericBoxBCenter.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 7.8pt</value>
+    <value>メイリオ, 9.75pt</value>
   </data>
   <data name="numericBoxBCenter.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -300,7 +300,7 @@
     <value>中心位置を設定</value>
   </data>
   <data name="numericBoxACenter.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 7.8pt</value>
+    <value>メイリオ, 9.75pt</value>
   </data>
   <data name="numericBoxACenter.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -357,7 +357,7 @@
     <value>616, 169</value>
   </data>
   <data name="tabControlBoundOption.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 7.2000003pt</value>
+    <value>メイリオ, 9.75pt</value>
   </data>
   <data name="tabControlBoundOption.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 28</value>
@@ -378,7 +378,7 @@
     <value>結晶の境界面の表示/非表示</value>
   </data>
   <data name="numericBoxBoundPlanesOpacity.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 7.2000003pt</value>
+    <value>メイリオ, 9.75pt</value>
   </data>
   <data name="numericBoxBoundPlanesOpacity.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -465,7 +465,7 @@
     <value>667, 25</value>
   </data>
   <data name="tabPageBounds.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 7.2000003pt</value>
+    <value>メイリオ, 9.75pt</value>
   </data>
   <data name="tabPageBounds.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 27</value>
@@ -477,13 +477,13 @@
     <value>描画範囲</value>
   </data>
   <data name="labelMessage.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt, style=Bold</value>
+    <value>メイリオ, 9pt, style=Bold</value>
   </data>
   <data name="labelMessage.Size" type="System.Drawing.Size, System.Drawing">
     <value>197, 30</value>
   </data>
   <data name="tabPageAtom.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 7.2000003pt</value>
+    <value>メイリオ, 9.75pt</value>
   </data>
   <data name="tabPageAtom.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 27</value>
@@ -495,7 +495,7 @@
     <value>原子情報</value>
   </data>
   <data name="tabPageBond.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 7.2000003pt</value>
+    <value>メイリオ, 9.75pt</value>
   </data>
   <data name="tabPageBond.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 27</value>
@@ -531,7 +531,7 @@
     <value>すべてのセル面の色を設定</value>
   </data>
   <data name="colorControlCellPlane.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 7.8pt</value>
+    <value>メイリオ, 9.75pt</value>
   </data>
   <data name="colorControlCellPlane.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -612,7 +612,7 @@
     <value>セル面の色を個別に設定</value>
   </data>
   <data name="numericBoxCellPlaneAlpha.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 7.8pt</value>
+    <value>メイリオ, 9.75pt</value>
   </data>
   <data name="numericBoxCellPlaneAlpha.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -648,7 +648,7 @@
     <value>すべてのセル辺の色を設定</value>
   </data>
   <data name="colorControlCellEdge.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 7.8pt</value>
+    <value>メイリオ, 9.75pt</value>
   </data>
   <data name="colorControlCellEdge.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -678,7 +678,7 @@
     <value>セル辺の色を個別に設定</value>
   </data>
   <data name="colorControlCellEdgeA.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 7.8pt</value>
+    <value>メイリオ, 9.75pt</value>
   </data>
   <data name="colorControlCellEdgeA.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -696,7 +696,7 @@
     <value>セル辺の色を個別に設定</value>
   </data>
   <data name="colorControlCellEdgeB.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 7.8pt</value>
+    <value>メイリオ, 9.75pt</value>
   </data>
   <data name="colorControlCellEdgeB.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -717,7 +717,7 @@
     <value>セル辺の色を個別に設定</value>
   </data>
   <data name="colorControlCellEdgeC.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 7.8pt</value>
+    <value>メイリオ, 9.75pt</value>
   </data>
   <data name="colorControlCellEdgeC.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -756,7 +756,7 @@
     <value>461, 26</value>
   </data>
   <data name="numericBoxCellTranslationC.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 7.8pt</value>
+    <value>メイリオ, 9.75pt</value>
   </data>
   <data name="numericBoxCellTranslationC.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -771,7 +771,7 @@
     <value>単位格子を並進 (分率座標)</value>
   </data>
   <data name="numericBoxCellTranslationB.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 7.8pt</value>
+    <value>メイリオ, 9.75pt</value>
   </data>
   <data name="numericBoxCellTranslationB.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -786,7 +786,7 @@
     <value>単位格子を並進 (分率座標)</value>
   </data>
   <data name="numericBoxCellTranslationA.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 7.8pt</value>
+    <value>メイリオ, 9.75pt</value>
   </data>
   <data name="numericBoxCellTranslationA.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -901,7 +901,7 @@
     <value>15, 18</value>
   </data>
   <data name="groupBoxShowUnitCell.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 7.2000003pt</value>
+    <value>メイリオ, 9.75pt</value>
   </data>
   <data name="groupBoxShowUnitCell.Size" type="System.Drawing.Size, System.Drawing">
     <value>667, 227</value>
@@ -910,7 +910,7 @@
     <value>単位胞の表示設定を構成</value>
   </data>
   <data name="tabPageUnitCell.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 7.2000003pt</value>
+    <value>メイリオ, 9.75pt</value>
   </data>
   <data name="tabPageUnitCell.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 27</value>
@@ -922,7 +922,7 @@
     <value>単位格子</value>
   </data>
   <data name="numericBoxLatticePlaneOpacity.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 7.8pt</value>
+    <value>メイリオ, 9.75pt</value>
   </data>
   <data name="numericBoxLatticePlaneOpacity.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -943,7 +943,7 @@
     <value>667, 27</value>
   </data>
   <data name="tabPageLatticePlane.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 7.2000003pt</value>
+    <value>メイリオ, 9.75pt</value>
   </data>
   <data name="tabPageLatticePlane.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 27</value>
@@ -961,7 +961,7 @@
     <value>673, 230</value>
   </data>
   <data name="tabPageCoordinateInformation.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 7.2000003pt</value>
+    <value>メイリオ, 9.75pt</value>
   </data>
   <data name="tabPageCoordinateInformation.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 27</value>
@@ -973,13 +973,13 @@
     <value>配位情報</value>
   </data>
   <data name="labelGraphicsCard.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 6.4pt</value>
+    <value>メイリオ, 6.4pt</value>
   </data>
   <data name="labelGraphicsCard.Size" type="System.Drawing.Size, System.Drawing">
     <value>64, 12</value>
   </data>
   <data name="labelGraphicsDriver.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 6.4pt</value>
+    <value>メイリオ, 6.4pt</value>
   </data>
   <data name="labelGraphicsDriver.Location" type="System.Drawing.Point, System.Drawing">
     <value>73, 0</value>
@@ -988,7 +988,7 @@
     <value>69, 12</value>
   </data>
   <data name="labelOpenGLversion.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 6.4pt</value>
+    <value>メイリオ, 6.4pt</value>
   </data>
   <data name="labelOpenGLversion.Location" type="System.Drawing.Point, System.Drawing">
     <value>148, 0</value>
@@ -1003,7 +1003,7 @@
     <value>667, 12</value>
   </data>
   <data name="tabPageInformation.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 7.2000003pt</value>
+    <value>メイリオ, 9.75pt</value>
   </data>
   <data name="tabPageInformation.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 27</value>
@@ -1015,13 +1015,13 @@
     <value>情報</value>
   </data>
   <data name="numericBoxProjectionCenterX.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 7.8pt</value>
+    <value>メイリオ, 9.75pt</value>
   </data>
   <data name="numericBoxProjectionCenterX.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 7.8pt</value>
+    <value>メイリオ, 9.75pt</value>
   </data>
   <data name="numericBoxProjectionCenterX.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 7.8pt</value>
+    <value>メイリオ, 9.75pt</value>
   </data>
   <data name="numericBoxProjectionCenterX.MaximumSize" type="System.Drawing.Size, System.Drawing">
     <value>1000, 27</value>
@@ -1030,7 +1030,7 @@
     <value>1, 17</value>
   </data>
   <data name="numericBoxProjectionCenterX.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 7.2000003pt</value>
+    <value>メイリオ, 9.75pt</value>
   </data>
   <data name="numericBoxProjectionCenterX.ToolTip" xml:space="preserve">
     <value>単位胞を平行移動（分率座標）</value>
@@ -1039,13 +1039,13 @@
     <value>単位胞を平行移動（分率座標）</value>
   </data>
   <data name="numericBoxProjectionCenterY.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 7.8pt</value>
+    <value>メイリオ, 9.75pt</value>
   </data>
   <data name="numericBoxProjectionCenterY.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 7.8pt</value>
+    <value>メイリオ, 9.75pt</value>
   </data>
   <data name="numericBoxProjectionCenterY.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 7.8pt</value>
+    <value>メイリオ, 9.75pt</value>
   </data>
   <data name="numericBoxProjectionCenterY.MaximumSize" type="System.Drawing.Size, System.Drawing">
     <value>1000, 27</value>
@@ -1054,7 +1054,7 @@
     <value>1, 17</value>
   </data>
   <data name="numericBoxProjectionCenterY.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 7.2000003pt</value>
+    <value>メイリオ, 9.75pt</value>
   </data>
   <data name="numericBoxProjectionCenterY.ToolTip" xml:space="preserve">
     <value>単位胞を平行移動（分率座標）</value>
@@ -1063,13 +1063,13 @@
     <value>単位胞を平行移動（分率座標）</value>
   </data>
   <data name="numericBoxProjectionCenterZ.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 7.8pt</value>
+    <value>メイリオ, 9.75pt</value>
   </data>
   <data name="numericBoxProjectionCenterZ.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 7.8pt</value>
+    <value>メイリオ, 9.75pt</value>
   </data>
   <data name="numericBoxProjectionCenterZ.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 7.8pt</value>
+    <value>メイリオ, 9.75pt</value>
   </data>
   <data name="numericBoxProjectionCenterZ.MaximumSize" type="System.Drawing.Size, System.Drawing">
     <value>1000, 27</value>
@@ -1078,7 +1078,7 @@
     <value>1, 17</value>
   </data>
   <data name="numericBoxProjectionCenterZ.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 7.2000003pt</value>
+    <value>メイリオ, 9.75pt</value>
   </data>
   <data name="numericBoxProjectionCenterZ.ToolTip" xml:space="preserve">
     <value>単位胞を平行移動（分率座標）</value>
@@ -1174,13 +1174,13 @@
     <value>描画品質</value>
   </data>
   <data name="trackBarAdvancedDepthCueingNear.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 7.2000003pt</value>
+    <value>メイリオ, 9.75pt</value>
   </data>
   <data name="trackBarAdvancedDepthCueingNear.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 7.8pt</value>
+    <value>メイリオ, 9.75pt</value>
   </data>
   <data name="trackBarAdvancedDepthCueingNear.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 7.8pt</value>
+    <value>メイリオ, 9.75pt</value>
   </data>
   <data name="trackBarAdvancedDepthCueingNear.ToolTip" xml:space="preserve">
     <value>近いオブジェクトを不透明に</value>
@@ -1198,13 +1198,13 @@
     <value>この値より遠いオブジェクトは完全に透明になります</value>
   </data>
   <data name="trackBarAdvancedDepthCueingFar.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 7.2000003pt</value>
+    <value>メイリオ, 9.75pt</value>
   </data>
   <data name="trackBarAdvancedDepthCueingFar.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 7.8pt</value>
+    <value>メイリオ, 9.75pt</value>
   </data>
   <data name="trackBarAdvancedDepthCueingFar.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 7.8pt</value>
+    <value>メイリオ, 9.75pt</value>
   </data>
   <data name="trackBarAdvancedDepthCueingFar.ToolTip" xml:space="preserve">
     <value>遠いオブジェクトを透明に</value>
@@ -1249,7 +1249,7 @@
     <value>結合原子</value>
   </data>
   <data name="colorControlLabelColor.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 7.8pt</value>
+    <value>メイリオ, 9.75pt</value>
   </data>
   <data name="checkBoxShowLabel.Location" type="System.Drawing.Point, System.Drawing">
     <value>9, 20</value>
@@ -1288,7 +1288,7 @@
     <value>固定色をラベル色に使用</value>
   </data>
   <data name="numericBoxLabelSize.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 7.8pt</value>
+    <value>メイリオ, 9.75pt</value>
   </data>
   <data name="numericBoxLabelSize.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -1352,7 +1352,7 @@
     <value>チェックすると、同じ元素が凡例でグループ化されます</value>
   </data>
   <data name="numericBoxLegendSize.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 7.8pt</value>
+    <value>メイリオ, 9.75pt</value>
   </data>
   <data name="numericBoxLegendSize.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -1370,7 +1370,7 @@
     <value>凡例の表示サイズ (右)</value>
   </data>
   <data name="numericBoxAxesSize.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 7.8pt</value>
+    <value>メイリオ, 9.75pt</value>
   </data>
   <data name="numericBoxAxesSize.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -1394,7 +1394,7 @@
     <value>結晶軸の表示サイズ (左下)</value>
   </data>
   <data name="numericBoxLightSize.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 7.8pt</value>
+    <value>メイリオ, 9.75pt</value>
   </data>
   <data name="numericBoxLightSize.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -1664,7 +1664,7 @@
     <value>681, 28</value>
   </data>
   <data name="numericBoxClientHeight.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 7.8pt</value>
+    <value>メイリオ, 9.75pt</value>
   </data>
   <data name="numericBoxClientHeight.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -1682,7 +1682,7 @@
     <value>シミュレーションパターンのピクセルサイズを設定</value>
   </data>
   <data name="numericBoxClientWidth.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 7.8pt</value>
+    <value>メイリオ, 9.75pt</value>
   </data>
   <data name="numericBoxClientWidth.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -1897,7 +1897,7 @@
     <value>681, 812</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 11pt</value>
+    <value>メイリオ, 11pt</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

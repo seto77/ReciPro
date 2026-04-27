@@ -73,7 +73,7 @@
             // label100
             // 
             this.label100.AutoSize = true;
-            this.label100.Font = new System.Drawing.Font("Arial", 9F);
+            this.label100.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.label100.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.label100.Location = new System.Drawing.Point(3, 3);
             this.label100.Margin = new System.Windows.Forms.Padding(0);
@@ -85,7 +85,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Arial", 9F);
+            this.label6.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.label6.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.label6.Location = new System.Drawing.Point(384, 3);
             this.label6.Margin = new System.Windows.Forms.Padding(0);
@@ -97,7 +97,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Arial", 9F);
+            this.label9.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.label9.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.label9.Location = new System.Drawing.Point(384, 27);
             this.label9.Margin = new System.Windows.Forms.Padding(0);
@@ -109,7 +109,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Arial", 9F);
+            this.label7.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.label7.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.label7.Location = new System.Drawing.Point(384, 51);
             this.label7.Margin = new System.Windows.Forms.Padding(0);
@@ -121,7 +121,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Arial", 9F);
+            this.label8.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.label8.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.label8.Location = new System.Drawing.Point(384, 99);
             this.label8.Margin = new System.Windows.Forms.Padding(0);
@@ -133,7 +133,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Arial", 9F);
+            this.label10.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.label10.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.label10.Location = new System.Drawing.Point(384, 75);
             this.label10.Margin = new System.Windows.Forms.Padding(0);
@@ -145,7 +145,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Arial", 9F);
+            this.label11.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.label11.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.label11.Location = new System.Drawing.Point(383, 123);
             this.label11.Margin = new System.Windows.Forms.Padding(0);
@@ -157,7 +157,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Arial", 9F);
+            this.label12.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.label12.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.label12.Location = new System.Drawing.Point(307, 3);
             this.label12.Margin = new System.Windows.Forms.Padding(0);
@@ -169,7 +169,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Arial", 9F);
+            this.label13.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.label13.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.label13.Location = new System.Drawing.Point(307, 51);
             this.label13.Margin = new System.Windows.Forms.Padding(0);
@@ -181,7 +181,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Arial", 9F);
+            this.label15.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.label15.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.label15.Location = new System.Drawing.Point(307, 27);
             this.label15.Margin = new System.Windows.Forms.Padding(0);
@@ -193,7 +193,7 @@
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Arial", 9F);
+            this.label16.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.label16.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.label16.Location = new System.Drawing.Point(307, 75);
             this.label16.Margin = new System.Windows.Forms.Padding(0);
@@ -205,7 +205,7 @@
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("Arial", 9F);
+            this.label18.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.label18.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.label18.Location = new System.Drawing.Point(230, 3);
             this.label18.Margin = new System.Windows.Forms.Padding(0);
@@ -217,7 +217,7 @@
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Font = new System.Drawing.Font("Arial", 9F);
+            this.label19.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.label19.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.label19.Location = new System.Drawing.Point(230, 51);
             this.label19.Margin = new System.Windows.Forms.Padding(0);
@@ -229,7 +229,7 @@
             // label21
             // 
             this.label21.AutoSize = true;
-            this.label21.Font = new System.Drawing.Font("Arial", 9F);
+            this.label21.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.label21.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.label21.Location = new System.Drawing.Point(230, 27);
             this.label21.Margin = new System.Windows.Forms.Padding(0);
@@ -241,7 +241,7 @@
             // label22
             // 
             this.label22.AutoSize = true;
-            this.label22.Font = new System.Drawing.Font("Arial", 9F);
+            this.label22.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.label22.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.label22.Location = new System.Drawing.Point(230, 75);
             this.label22.Margin = new System.Windows.Forms.Padding(0);
@@ -253,7 +253,7 @@
             // label24
             // 
             this.label24.AutoSize = true;
-            this.label24.Font = new System.Drawing.Font("Arial", 9F);
+            this.label24.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.label24.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.label24.Location = new System.Drawing.Point(154, 3);
             this.label24.Margin = new System.Windows.Forms.Padding(0);
@@ -265,7 +265,7 @@
             // label25
             // 
             this.label25.AutoSize = true;
-            this.label25.Font = new System.Drawing.Font("Arial", 9F);
+            this.label25.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.label25.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.label25.Location = new System.Drawing.Point(154, 51);
             this.label25.Margin = new System.Windows.Forms.Padding(0);
@@ -277,7 +277,7 @@
             // label27
             // 
             this.label27.AutoSize = true;
-            this.label27.Font = new System.Drawing.Font("Arial", 9F);
+            this.label27.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.label27.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.label27.Location = new System.Drawing.Point(154, 27);
             this.label27.Margin = new System.Windows.Forms.Padding(0);
@@ -289,7 +289,7 @@
             // label30
             // 
             this.label30.AutoSize = true;
-            this.label30.Font = new System.Drawing.Font("Arial", 9F);
+            this.label30.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.label30.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.label30.Location = new System.Drawing.Point(78, 3);
             this.label30.Margin = new System.Windows.Forms.Padding(0);
@@ -301,7 +301,7 @@
             // label33
             // 
             this.label33.AutoSize = true;
-            this.label33.Font = new System.Drawing.Font("Arial", 9F);
+            this.label33.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.label33.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.label33.Location = new System.Drawing.Point(78, 27);
             this.label33.Margin = new System.Windows.Forms.Padding(0);
@@ -313,7 +313,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Arial", 9F);
+            this.label14.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.label14.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.label14.Location = new System.Drawing.Point(307, 99);
             this.label14.Margin = new System.Windows.Forms.Padding(0);
@@ -337,7 +337,7 @@
             this.numericBox66.ShowPositiveSign = false;
             this.numericBox66.Size = new System.Drawing.Size(49, 22);
             this.numericBox66.TabIndex = 62;
-            this.numericBox66.TextFont = new System.Drawing.Font("Arial", 9.75F);
+            this.numericBox66.TextFont = new System.Drawing.Font("Segoe UI", 9.75F);
                                     this.numericBox66.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxElasticiry_ValueChanged);
             // 
             // numericBox56
@@ -355,7 +355,7 @@
             this.numericBox56.ShowPositiveSign = false;
             this.numericBox56.Size = new System.Drawing.Size(49, 22);
             this.numericBox56.TabIndex = 61;
-            this.numericBox56.TextFont = new System.Drawing.Font("Arial", 9.75F);
+            this.numericBox56.TextFont = new System.Drawing.Font("Segoe UI", 9.75F);
                                     this.numericBox56.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxElasticiry_ValueChanged);
             // 
             // numericBox46
@@ -373,7 +373,7 @@
             this.numericBox46.ShowPositiveSign = false;
             this.numericBox46.Size = new System.Drawing.Size(49, 22);
             this.numericBox46.TabIndex = 64;
-            this.numericBox46.TextFont = new System.Drawing.Font("Arial", 9.75F);
+            this.numericBox46.TextFont = new System.Drawing.Font("Segoe UI", 9.75F);
                                     this.numericBox46.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxElasticiry_ValueChanged);
             // 
             // numericBox36
@@ -391,7 +391,7 @@
             this.numericBox36.ShowPositiveSign = false;
             this.numericBox36.Size = new System.Drawing.Size(49, 22);
             this.numericBox36.TabIndex = 63;
-            this.numericBox36.TextFont = new System.Drawing.Font("Arial", 9.75F);
+            this.numericBox36.TextFont = new System.Drawing.Font("Segoe UI", 9.75F);
                                     this.numericBox36.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxElasticiry_ValueChanged);
             // 
             // numericBox26
@@ -409,7 +409,7 @@
             this.numericBox26.ShowPositiveSign = false;
             this.numericBox26.Size = new System.Drawing.Size(49, 22);
             this.numericBox26.TabIndex = 60;
-            this.numericBox26.TextFont = new System.Drawing.Font("Arial", 9.75F);
+            this.numericBox26.TextFont = new System.Drawing.Font("Segoe UI", 9.75F);
                                     this.numericBox26.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxElasticiry_ValueChanged);
             // 
             // numericBox55
@@ -427,7 +427,7 @@
             this.numericBox55.ShowPositiveSign = false;
             this.numericBox55.Size = new System.Drawing.Size(49, 22);
             this.numericBox55.TabIndex = 56;
-            this.numericBox55.TextFont = new System.Drawing.Font("Arial", 9.75F);
+            this.numericBox55.TextFont = new System.Drawing.Font("Segoe UI", 9.75F);
                                     this.numericBox55.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxElasticiry_ValueChanged);
             // 
             // numericBox45
@@ -445,7 +445,7 @@
             this.numericBox45.ShowPositiveSign = false;
             this.numericBox45.Size = new System.Drawing.Size(49, 22);
             this.numericBox45.TabIndex = 59;
-            this.numericBox45.TextFont = new System.Drawing.Font("Arial", 9.75F);
+            this.numericBox45.TextFont = new System.Drawing.Font("Segoe UI", 9.75F);
                                     this.numericBox45.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxElasticiry_ValueChanged);
             // 
             // numericBox35
@@ -463,7 +463,7 @@
             this.numericBox35.ShowPositiveSign = false;
             this.numericBox35.Size = new System.Drawing.Size(49, 22);
             this.numericBox35.TabIndex = 58;
-            this.numericBox35.TextFont = new System.Drawing.Font("Arial", 9.75F);
+            this.numericBox35.TextFont = new System.Drawing.Font("Segoe UI", 9.75F);
                                     this.numericBox35.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxElasticiry_ValueChanged);
             // 
             // numericBox16
@@ -481,7 +481,7 @@
             this.numericBox16.ShowPositiveSign = false;
             this.numericBox16.Size = new System.Drawing.Size(49, 22);
             this.numericBox16.TabIndex = 71;
-            this.numericBox16.TextFont = new System.Drawing.Font("Arial", 9.75F);
+            this.numericBox16.TextFont = new System.Drawing.Font("Segoe UI", 9.75F);
                                     this.numericBox16.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxElasticiry_ValueChanged);
             // 
             // numericBox25
@@ -499,7 +499,7 @@
             this.numericBox25.ShowPositiveSign = false;
             this.numericBox25.Size = new System.Drawing.Size(49, 22);
             this.numericBox25.TabIndex = 70;
-            this.numericBox25.TextFont = new System.Drawing.Font("Arial", 9.75F);
+            this.numericBox25.TextFont = new System.Drawing.Font("Segoe UI", 9.75F);
                                     this.numericBox25.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxElasticiry_ValueChanged);
             // 
             // numericBox44
@@ -517,7 +517,7 @@
             this.numericBox44.ShowPositiveSign = false;
             this.numericBox44.Size = new System.Drawing.Size(49, 22);
             this.numericBox44.TabIndex = 69;
-            this.numericBox44.TextFont = new System.Drawing.Font("Arial", 9.75F);
+            this.numericBox44.TextFont = new System.Drawing.Font("Segoe UI", 9.75F);
                                     this.numericBox44.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxElasticiry_ValueChanged);
             // 
             // numericBox34
@@ -535,7 +535,7 @@
             this.numericBox34.ShowPositiveSign = false;
             this.numericBox34.Size = new System.Drawing.Size(49, 22);
             this.numericBox34.TabIndex = 66;
-            this.numericBox34.TextFont = new System.Drawing.Font("Arial", 9.75F);
+            this.numericBox34.TextFont = new System.Drawing.Font("Segoe UI", 9.75F);
                                     this.numericBox34.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxElasticiry_ValueChanged);
             // 
             // numericBox15
@@ -553,7 +553,7 @@
             this.numericBox15.ShowPositiveSign = false;
             this.numericBox15.Size = new System.Drawing.Size(49, 22);
             this.numericBox15.TabIndex = 65;
-            this.numericBox15.TextFont = new System.Drawing.Font("Arial", 9.75F);
+            this.numericBox15.TextFont = new System.Drawing.Font("Segoe UI", 9.75F);
                                     this.numericBox15.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxElasticiry_ValueChanged);
             // 
             // numericBox24
@@ -571,7 +571,7 @@
             this.numericBox24.ShowPositiveSign = false;
             this.numericBox24.Size = new System.Drawing.Size(49, 22);
             this.numericBox24.TabIndex = 68;
-            this.numericBox24.TextFont = new System.Drawing.Font("Arial", 9.75F);
+            this.numericBox24.TextFont = new System.Drawing.Font("Segoe UI", 9.75F);
                                     this.numericBox24.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxElasticiry_ValueChanged);
             // 
             // numericBox33
@@ -589,7 +589,7 @@
             this.numericBox33.ShowPositiveSign = false;
             this.numericBox33.Size = new System.Drawing.Size(49, 22);
             this.numericBox33.TabIndex = 46;
-            this.numericBox33.TextFont = new System.Drawing.Font("Arial", 9.75F);
+            this.numericBox33.TextFont = new System.Drawing.Font("Segoe UI", 9.75F);
                                     this.numericBox33.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxElasticiry_ValueChanged);
             // 
             // numericBox14
@@ -607,7 +607,7 @@
             this.numericBox14.ShowPositiveSign = false;
             this.numericBox14.Size = new System.Drawing.Size(49, 22);
             this.numericBox14.TabIndex = 45;
-            this.numericBox14.TextFont = new System.Drawing.Font("Arial", 9.75F);
+            this.numericBox14.TextFont = new System.Drawing.Font("Segoe UI", 9.75F);
                                     this.numericBox14.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxElasticiry_ValueChanged);
             // 
             // numericBox23
@@ -625,7 +625,7 @@
             this.numericBox23.ShowPositiveSign = false;
             this.numericBox23.Size = new System.Drawing.Size(49, 22);
             this.numericBox23.TabIndex = 42;
-            this.numericBox23.TextFont = new System.Drawing.Font("Arial", 9.75F);
+            this.numericBox23.TextFont = new System.Drawing.Font("Segoe UI", 9.75F);
                                     this.numericBox23.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxElasticiry_ValueChanged);
             // 
             // numericBox13
@@ -643,7 +643,7 @@
             this.numericBox13.ShowPositiveSign = false;
             this.numericBox13.Size = new System.Drawing.Size(49, 22);
             this.numericBox13.TabIndex = 53;
-            this.numericBox13.TextFont = new System.Drawing.Font("Arial", 9.75F);
+            this.numericBox13.TextFont = new System.Drawing.Font("Segoe UI", 9.75F);
                                     this.numericBox13.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxElasticiry_ValueChanged);
             // 
             // numericBox22
@@ -661,7 +661,7 @@
             this.numericBox22.ShowPositiveSign = false;
             this.numericBox22.Size = new System.Drawing.Size(49, 22);
             this.numericBox22.TabIndex = 52;
-            this.numericBox22.TextFont = new System.Drawing.Font("Arial", 9.75F);
+            this.numericBox22.TextFont = new System.Drawing.Font("Segoe UI", 9.75F);
                                     this.numericBox22.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxElasticiry_ValueChanged);
             // 
             // numericBox12
@@ -679,7 +679,7 @@
             this.numericBox12.ShowPositiveSign = false;
             this.numericBox12.Size = new System.Drawing.Size(49, 22);
             this.numericBox12.TabIndex = 47;
-            this.numericBox12.TextFont = new System.Drawing.Font("Arial", 9.75F);
+            this.numericBox12.TextFont = new System.Drawing.Font("Segoe UI", 9.75F);
                                     this.numericBox12.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxElasticiry_ValueChanged);
             // 
             // numericBox11
@@ -697,13 +697,13 @@
             this.numericBox11.ShowPositiveSign = false;
             this.numericBox11.Size = new System.Drawing.Size(49, 22);
             this.numericBox11.TabIndex = 49;
-            this.numericBox11.TextFont = new System.Drawing.Font("Arial", 9.75F);
+            this.numericBox11.TextFont = new System.Drawing.Font("Segoe UI", 9.75F);
                                     this.numericBox11.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxElasticiry_ValueChanged);
             // 
             // radioButtonCompliance
             // 
             this.radioButtonCompliance.AutoSize = true;
-            this.radioButtonCompliance.Font = new System.Drawing.Font("Arial", 9F);
+            this.radioButtonCompliance.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.radioButtonCompliance.Location = new System.Drawing.Point(3, 121);
             this.radioButtonCompliance.Name = "radioButtonCompliance";
             this.radioButtonCompliance.Size = new System.Drawing.Size(179, 19);
@@ -715,7 +715,7 @@
             // 
             this.radioButtonStiffness.AutoSize = true;
             this.radioButtonStiffness.Checked = true;
-            this.radioButtonStiffness.Font = new System.Drawing.Font("Arial", 9F);
+            this.radioButtonStiffness.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.radioButtonStiffness.Location = new System.Drawing.Point(3, 98);
             this.radioButtonStiffness.Name = "radioButtonStiffness";
             this.radioButtonStiffness.Size = new System.Drawing.Size(162, 19);

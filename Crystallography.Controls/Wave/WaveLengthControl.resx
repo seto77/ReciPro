@@ -177,7 +177,7 @@
     <value>0, 0</value>
   </data>
   <data name="radioButtonElectron.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="comboBoxXRayElement.Items23" xml:space="preserve">
     <value>23:  V</value>
@@ -201,7 +201,7 @@
     <value>radioButtonNeutron</value>
   </data>
   <data name="radioButtonNeutron.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxWaveLength.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
@@ -289,7 +289,7 @@
     <value>77:  Ir</value>
   </data>
   <data name="labelFlatWhite.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="&gt;&gt;radioButtonElectron.Name" xml:space="preserve">
     <value>radioButtonElectron</value>
@@ -427,7 +427,7 @@
     <value>134, 0</value>
   </data>
   <data name="comboBoxXRayElement.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="panel1.ToolTip" xml:space="preserve">
     <value />
@@ -457,7 +457,7 @@
     <value>96, 96</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="comboBoxXRayElement.Items34" xml:space="preserve">
     <value>34:  Se</value>
@@ -523,7 +523,7 @@
     <value>80:  Hg</value>
   </data>
   <data name="comboBoxXrayLine.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxEnergy.FooterText" xml:space="preserve">
     <value>keV</value>
@@ -607,7 +607,7 @@
     <value />
   </data>
   <data name="radioButtonXray.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="comboBoxXrayLine.Size" type="System.Drawing.Size, System.Drawing">
     <value>56, 25</value>
@@ -667,7 +667,7 @@
     <value>22:  Ti</value>
   </data>
   <data name="label1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="radioButtonXray.Size" type="System.Drawing.Size, System.Drawing">
     <value>59, 21</value>
@@ -819,7 +819,7 @@ If "0:custom" is selected, you can freely enter the energy or wavelength.
     <value>39:  Y</value>
   </data>
   <data name="numericBoxEnergy.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="comboBoxXRayElement.Items53" xml:space="preserve">
     <value>53:  I</value>
@@ -831,7 +831,7 @@ If "0:custom" is selected, you can freely enter the energy or wavelength.
     <value>38:  Sr</value>
   </data>
   <data name="numericBoxWaveLength.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="&gt;&gt;radioButtonXray.Parent" xml:space="preserve">
     <value>flowLayoutPanelWaveSource</value>

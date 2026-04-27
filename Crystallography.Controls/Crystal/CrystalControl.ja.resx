@@ -171,7 +171,7 @@
     <value>195, 25</value>
   </data>
   <data name="numericBoxMolarVolume.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+    <value>メイリオ, 9pt</value>
   </data>
   <data name="numericBoxMolarVolume.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -195,7 +195,7 @@
     <value>163, 25</value>
   </data>
   <data name="numericBoxDensity.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+    <value>メイリオ, 9pt</value>
   </data>
   <data name="numericBoxDensity.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>

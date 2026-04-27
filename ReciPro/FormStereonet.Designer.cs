@@ -281,7 +281,7 @@ namespace ReciPro
             // 
             graphicsBox.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             resources.ApplyResources(graphicsBox, "graphicsBox");
-            graphicsBox.Fonts = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+            graphicsBox.Fonts = new System.Drawing.Font("Segoe UI", 9.75F);
             graphicsBox.Name = "graphicsBox";
             graphicsBox.TabStop = false;
             toolTip.SetToolTip(graphicsBox, resources.GetString("graphicsBox.ToolTip"));

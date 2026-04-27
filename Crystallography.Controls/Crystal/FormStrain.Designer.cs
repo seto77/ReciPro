@@ -77,7 +77,7 @@
             // numericBoxStrain11
             // 
             this.numericBoxStrain11.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxStrain11.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxStrain11.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxStrain11.FooterBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxStrain11.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxStrain11.HeaderText = "ε11";
@@ -93,13 +93,13 @@
             this.numericBoxStrain11.SkipEventDuringInput = false;
             this.numericBoxStrain11.SmartIncrement = true;
             this.numericBoxStrain11.TabIndex = 263;
-            this.numericBoxStrain11.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxStrain11.TextFont = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxStrain11.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxStrain_ValueChanged);
             // 
             // numericBoxStrain13
             // 
             this.numericBoxStrain13.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxStrain13.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxStrain13.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxStrain13.FooterBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxStrain13.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxStrain13.HeaderText = "ε13";
@@ -115,13 +115,13 @@
             this.numericBoxStrain13.SkipEventDuringInput = false;
             this.numericBoxStrain13.SmartIncrement = true;
             this.numericBoxStrain13.TabIndex = 265;
-            this.numericBoxStrain13.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxStrain13.TextFont = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxStrain13.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxStrain_ValueChanged);
             // 
             // numericBoxStrain22
             // 
             this.numericBoxStrain22.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxStrain22.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxStrain22.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxStrain22.FooterBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxStrain22.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxStrain22.HeaderText = "ε22";
@@ -137,13 +137,13 @@
             this.numericBoxStrain22.SkipEventDuringInput = false;
             this.numericBoxStrain22.SmartIncrement = true;
             this.numericBoxStrain22.TabIndex = 266;
-            this.numericBoxStrain22.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxStrain22.TextFont = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxStrain22.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxStrain_ValueChanged);
             // 
             // numericBoxStrain23
             // 
             this.numericBoxStrain23.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxStrain23.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxStrain23.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxStrain23.FooterBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxStrain23.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxStrain23.HeaderText = "ε23";
@@ -159,13 +159,13 @@
             this.numericBoxStrain23.SkipEventDuringInput = false;
             this.numericBoxStrain23.SmartIncrement = true;
             this.numericBoxStrain23.TabIndex = 267;
-            this.numericBoxStrain23.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxStrain23.TextFont = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxStrain23.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxStrain_ValueChanged);
             // 
             // numericBoxStrain33
             // 
             this.numericBoxStrain33.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxStrain33.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxStrain33.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxStrain33.FooterBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxStrain33.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxStrain33.HeaderText = "ε33";
@@ -181,13 +181,13 @@
             this.numericBoxStrain33.SkipEventDuringInput = false;
             this.numericBoxStrain33.SmartIncrement = true;
             this.numericBoxStrain33.TabIndex = 268;
-            this.numericBoxStrain33.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxStrain33.TextFont = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxStrain33.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxStrain_ValueChanged);
             // 
             // numericBoxStrain12
             // 
             this.numericBoxStrain12.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxStrain12.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxStrain12.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxStrain12.FooterBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxStrain12.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxStrain12.HeaderText = "ε12";
@@ -203,7 +203,7 @@
             this.numericBoxStrain12.SkipEventDuringInput = false;
             this.numericBoxStrain12.SmartIncrement = true;
             this.numericBoxStrain12.TabIndex = 264;
-            this.numericBoxStrain12.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxStrain12.TextFont = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxStrain12.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxStrain_ValueChanged);
             // 
             // groupBoxStress
@@ -225,7 +225,7 @@
             // numericBoxStress11
             // 
             this.numericBoxStress11.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxStress11.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxStress11.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxStress11.FooterBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxStress11.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxStress11.HeaderText = "σ11";
@@ -241,12 +241,12 @@
             this.numericBoxStress11.SkipEventDuringInput = false;
             this.numericBoxStress11.SmartIncrement = true;
             this.numericBoxStress11.TabIndex = 269;
-            this.numericBoxStress11.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxStress11.TextFont = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             // 
             // numericBoxStress12
             // 
             this.numericBoxStress12.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxStress12.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxStress12.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxStress12.FooterBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxStress12.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxStress12.HeaderText = "σ12";
@@ -262,12 +262,12 @@
             this.numericBoxStress12.SkipEventDuringInput = false;
             this.numericBoxStress12.SmartIncrement = true;
             this.numericBoxStress12.TabIndex = 270;
-            this.numericBoxStress12.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxStress12.TextFont = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             // 
             // numericBoxStress22
             // 
             this.numericBoxStress22.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxStress22.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxStress22.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxStress22.FooterBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxStress22.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxStress22.HeaderText = "σ22";
@@ -283,12 +283,12 @@
             this.numericBoxStress22.SkipEventDuringInput = false;
             this.numericBoxStress22.SmartIncrement = true;
             this.numericBoxStress22.TabIndex = 272;
-            this.numericBoxStress22.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxStress22.TextFont = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             // 
             // numericBoxStress13
             // 
             this.numericBoxStress13.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxStress13.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxStress13.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxStress13.FooterBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxStress13.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxStress13.HeaderText = "σ13";
@@ -304,12 +304,12 @@
             this.numericBoxStress13.SkipEventDuringInput = false;
             this.numericBoxStress13.SmartIncrement = true;
             this.numericBoxStress13.TabIndex = 271;
-            this.numericBoxStress13.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxStress13.TextFont = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             // 
             // numericBoxStress33
             // 
             this.numericBoxStress33.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxStress33.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxStress33.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxStress33.FooterBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxStress33.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxStress33.HeaderText = "σ33";
@@ -325,12 +325,12 @@
             this.numericBoxStress33.SkipEventDuringInput = false;
             this.numericBoxStress33.SmartIncrement = true;
             this.numericBoxStress33.TabIndex = 274;
-            this.numericBoxStress33.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxStress33.TextFont = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             // 
             // numericBoxStress23
             // 
             this.numericBoxStress23.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxStress23.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxStress23.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxStress23.FooterBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxStress23.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxStress23.HeaderText = "σ23";
@@ -346,7 +346,7 @@
             this.numericBoxStress23.SkipEventDuringInput = false;
             this.numericBoxStress23.SmartIncrement = true;
             this.numericBoxStress23.TabIndex = 273;
-            this.numericBoxStress23.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxStress23.TextFont = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             // 
             // groupBoxElasticConstant
             // 
@@ -389,7 +389,7 @@
             // numericBoxA
             // 
             this.numericBoxA.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxA.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxA.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxA.FooterBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxA.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxA.HeaderText = "a";
@@ -405,12 +405,12 @@
             this.numericBoxA.SkipEventDuringInput = false;
             this.numericBoxA.SmartIncrement = true;
             this.numericBoxA.TabIndex = 263;
-            this.numericBoxA.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxA.TextFont = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             // 
             // numericBoxAlpha
             // 
             this.numericBoxAlpha.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxAlpha.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxAlpha.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxAlpha.FooterBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxAlpha.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxAlpha.HeaderText = "α";
@@ -426,12 +426,12 @@
             this.numericBoxAlpha.SkipEventDuringInput = false;
             this.numericBoxAlpha.SmartIncrement = true;
             this.numericBoxAlpha.TabIndex = 265;
-            this.numericBoxAlpha.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxAlpha.TextFont = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             // 
             // numericBoxC
             // 
             this.numericBoxC.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxC.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxC.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxC.FooterBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxC.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxC.HeaderText = "c";
@@ -447,12 +447,12 @@
             this.numericBoxC.SkipEventDuringInput = false;
             this.numericBoxC.SmartIncrement = true;
             this.numericBoxC.TabIndex = 266;
-            this.numericBoxC.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxC.TextFont = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             // 
             // numericBoxBeta
             // 
             this.numericBoxBeta.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxBeta.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxBeta.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxBeta.FooterBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxBeta.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxBeta.HeaderText = "β";
@@ -468,12 +468,12 @@
             this.numericBoxBeta.SkipEventDuringInput = false;
             this.numericBoxBeta.SmartIncrement = true;
             this.numericBoxBeta.TabIndex = 267;
-            this.numericBoxBeta.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxBeta.TextFont = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             // 
             // numericBoxGamma
             // 
             this.numericBoxGamma.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxGamma.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxGamma.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxGamma.FooterBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxGamma.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxGamma.HeaderText = "γ";
@@ -489,12 +489,12 @@
             this.numericBoxGamma.SkipEventDuringInput = false;
             this.numericBoxGamma.SmartIncrement = true;
             this.numericBoxGamma.TabIndex = 268;
-            this.numericBoxGamma.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxGamma.TextFont = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             // 
             // numericBoxB
             // 
             this.numericBoxB.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxB.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxB.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxB.FooterBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxB.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxB.HeaderText = "b";
@@ -510,7 +510,7 @@
             this.numericBoxB.SkipEventDuringInput = false;
             this.numericBoxB.SmartIncrement = true;
             this.numericBoxB.TabIndex = 264;
-            this.numericBoxB.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxB.TextFont = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             // 
             // buttonApply
             // 
@@ -534,7 +534,7 @@
             this.Controls.Add(this.groupBoxElasticConstant);
             this.Controls.Add(this.groupBoxStress);
             this.Controls.Add(this.groupBoxStrain);
-            this.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Name = "FormStrain";
             this.Text = "Strain Control";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormStrain_FormClosing);

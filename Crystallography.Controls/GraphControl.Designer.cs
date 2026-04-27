@@ -202,7 +202,7 @@
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             Controls.Add(panel1);
             Controls.Add(flowLayoutPanel);
-            Font = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             Name = "GraphControl";
             Size = new System.Drawing.Size(400, 200);
             Resize += GraphControl_Resize;

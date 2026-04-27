@@ -177,16 +177,16 @@
     <value>160, 15</value>
   </data>
   <data name="labelMousePositionValue.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
+    <value>メイリオ, 9pt</value>
   </data>
   <data name="label33.Location" type="System.Drawing.Point, System.Drawing">
     <value>457, 6</value>
   </data>
   <data name="labelMousePositionY.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
+    <value>メイリオ, 9pt</value>
   </data>
   <data name="labelMousePositionX.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
+    <value>メイリオ, 9pt</value>
   </data>
   <data name="label31.Location" type="System.Drawing.Point, System.Drawing">
     <value>377, 6</value>
@@ -936,7 +936,7 @@
     <value>GrowAndShrink</value>
   </data>
   <data name="numericBoxSTEM_AngleResolution.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>メイリオ, 9.75pt</value>
   </data>
   <data name="numericBoxSTEM_AngleResolution.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -1529,7 +1529,7 @@
     <value>0, 5, 0, 0</value>
   </data>
   <data name="label4.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 7pt</value>
+    <value>メイリオ, 7pt</value>
   </data>
   <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
     <value>107, 8</value>
