@@ -260,6 +260,10 @@ public partial class NumericBox : UserControlBase
     [DefaultValue(typeof(Color), "Window")]
     public Color TextBoxBackColor { set => textBox.BackColor = value; get => textBox.BackColor; }
 
+    [Category("Appearance properties")]
+    [DefaultValue(HorizontalAlignment.Left)]
+    public HorizontalAlignment TextBoxTextAlign { set => textBox.TextAlign = value; get => textBox.TextAlign; } // (260427Ch) 表示専用 NumericBox でも TextBox と同じ中央寄せを使えるよう公開
+
     [Localizable(true)]
     [Category("Font && Color")]
     [DefaultValue(typeof(Font), "Segoe UI Symbol, 9.75pt")]

@@ -1,4 +1,4 @@
-using MathNet.Numerics.LinearAlgebra.Double;
+﻿using MathNet.Numerics.LinearAlgebra.Double;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -763,6 +763,6 @@ public partial class CrystalControl : UserControlBase
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public bool MillerBravais
     {
-        set => FormScatteringFactor.MillerBravais = value && crystal.MillerBravaisCapable;
+        set => FormSymmetryInformation.MillerBravais = FormScatteringFactor.MillerBravais = value && crystal.MillerBravaisCapable;
     }
 }

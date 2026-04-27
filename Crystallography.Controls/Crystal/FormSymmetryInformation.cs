@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -9,7 +10,18 @@ public partial class FormSymmetryInformation : FormBase
     public Crystal Crystal => CrystalControl.Crystal;
     public CrystalControl CrystalControl;
 
-    public FormSymmetryInformation() => InitializeComponent(); // (260426Ch)
+
+    // 260425Cl WFO1000 対策: デザイナのシリアライゼーション対象から除外
+    [Browsable(false)]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+    public bool MillerBravais { get => flowLayoutPanelI1.Visible; set => flowLayoutPanelI1.Visible = flowLayoutPanelI2.Visible = value; }
+
+
+    public FormSymmetryInformation()
+    {
+        InitializeComponent(); // (260426Ch)
+    }
+
 
     private static void ConvertRichTextBox1(RichTextBox rTB)
     {
@@ -45,47 +57,32 @@ public partial class FormSymmetryInformation : FormBase
             ConvertRichTextBoxItalic(rTB, s, 12);
     }
 
-    private static void ConvertRichTextBoxItalic(RichTextBox rTB, string s, int size)
+    // 260427Cl ループ本体は同一構造だったので Apply に集約。
+    // ハング修正: RichTextBox.Find は start>=textLength のとき -1 ではなく先頭から再検索した位置 (例 "Fm-3m" で s="m" → 4 の次が 1) を返すため、(n=Find())>=0 だと無限ループする。found>n で進めなくなったら終了。
+    private static void Apply(RichTextBox rTB, string s, int size, FontStyle style, int charOffset, string removeMarker = null, int removeLength = 0)
     {
-        int n = -1;
-        while ((n = rTB.Find(s, n + 1, RichTextBoxFinds.MatchCase)) >= 0) // (260426Ch) Find の二重呼び出しを削減
+        int n = -1, found;
+        while ((found = rTB.Find(s, n + 1, RichTextBoxFinds.MatchCase)) > n)
         {
-            rTB.SelectionCharOffset = 0;
-            rTB.SelectionFont = new Font("Times New Roman", size, FontStyle.Italic);
+            n = found;
+            rTB.SelectionFont = new Font("Times New Roman", size, style);
+            rTB.SelectionCharOffset = charOffset;
+            if (removeMarker != null)
+                rTB.Rtf = rTB.Rtf.Remove(rTB.Rtf.IndexOf(removeMarker), removeLength);
         }
     }
+
+    private static void ConvertRichTextBoxItalic(RichTextBox rTB, string s, int size)
+        => Apply(rTB, s, size, FontStyle.Italic, 0);
 
     private static void ConvertRichTextBoxItalicSub(RichTextBox rTB, string s, int size)
-    {
-        int n = -1;
-        while ((n = rTB.Find(s, n + 1, RichTextBoxFinds.MatchCase)) >= 0) // (260426Ch)
-        {
-            rTB.SelectionCharOffset = -3;
-            rTB.SelectionFont = new Font("Times New Roman", size, FontStyle.Italic);
-        }
-    }
+        => Apply(rTB, s, size, FontStyle.Italic, -3);
 
     private static void ConvertRichTextBoxOffsetSub(RichTextBox rTB, string s, int size)
-    {
-        int n = -1;
-        while ((n = rTB.Find(s, n + 1, RichTextBoxFinds.MatchCase)) >= 0) // (260426Ch) 事前 Find を省略
-        {
-            rTB.SelectionFont = new Font("Times New Roman", size, FontStyle.Regular);
-            rTB.SelectionCharOffset = -3;
-            rTB.Rtf = rTB.Rtf.Remove(rTB.Rtf.IndexOf(s), 3);
-        }
-    }
+        => Apply(rTB, s, size, FontStyle.Regular, -3, s, 3);
 
     private static void ConvertRichTextBoxOffsetSup(RichTextBox rTB, string s, int size)
-    {
-        int n = -1;
-        while ((n = rTB.Find(s, n + 1, RichTextBoxFinds.MatchCase)) >= 0) // (260426Ch)
-        {
-            rTB.SelectionFont = new Font("Times New Roman", size, FontStyle.Regular);
-            rTB.SelectionCharOffset = +3;
-            rTB.Rtf = rTB.Rtf.Remove(rTB.Rtf.IndexOf('^'), 1);
-        }
-    }
+        => Apply(rTB, s, size, FontStyle.Regular, +3, "^", 1);
 
     private static void ConvertRichTextBoxReset(RichTextBox rTB)
     {
@@ -140,15 +137,23 @@ public partial class FormSymmetryInformation : FormBase
         var axis1 = (u: numericBoxU1.ValueInteger, v: numericBoxV1.ValueInteger, w: numericBoxW1.ValueInteger);
         var axis2 = (u: numericBoxU2.ValueInteger, v: numericBoxV2.ValueInteger, w: numericBoxW2.ValueInteger);
 
-        textBoxLengthPlane1.Text = (Crystal.GetLengthPlane(plane1.h, plane1.k, plane1.l) * 10).ToString("f4");
-        textBoxLengthPlane2.Text = (Crystal.GetLengthPlane(plane2.h, plane2.k, plane2.l) * 10).ToString("f4");
-        textBoxLengthAxis1.Text = (Crystal.GetLengthAxis(axis1.u, axis1.v, axis1.w) * 10).ToString("f4");
-        textBoxLengthAxis2.Text = (Crystal.GetLengthAxis(axis2.u, axis2.v, axis2.w) * 10).ToString("f4");
+        // textBoxLengthPlane1.Text = (Crystal.GetLengthPlane(plane1.h, plane1.k, plane1.l) * 10).ToString("f4"); // (260427Ch) 旧 TextBox 表示
+        // textBoxLengthPlane2.Text = (Crystal.GetLengthPlane(plane2.h, plane2.k, plane2.l) * 10).ToString("f4"); // (260427Ch) 旧 TextBox 表示
+        // textBoxLengthAxis1.Text = (Crystal.GetLengthAxis(axis1.u, axis1.v, axis1.w) * 10).ToString("f4"); // (260427Ch) 旧 TextBox 表示
+        // textBoxLengthAxis2.Text = (Crystal.GetLengthAxis(axis2.u, axis2.v, axis2.w) * 10).ToString("f4"); // (260427Ch) 旧 TextBox 表示
+        numericBoxLengthPlane1.Value = Crystal.GetLengthPlane(plane1.h, plane1.k, plane1.l) * 10; // (260427Ch)
+        numericBoxLengthPlane2.Value = Crystal.GetLengthPlane(plane2.h, plane2.k, plane2.l) * 10; // (260427Ch)
+        numericBoxLengthAxis1.Value = Crystal.GetLengthAxis(axis1.u, axis1.v, axis1.w) * 10; // (260427Ch)
+        numericBoxLengthAxis2.Value = Crystal.GetLengthAxis(axis2.u, axis2.v, axis2.w) * 10; // (260427Ch)
 
-        textBoxAnglePlanes.Text = (Crystal.GetAnglePlanes(plane1.h, plane1.k, plane1.l, plane2.h, plane2.k, plane2.l) * 180 / Math.PI).ToString("f4");
-        textBoxAngleAxes.Text = (Crystal.GetAngleAxes(axis1.u, axis1.v, axis1.w, axis2.u, axis2.v, axis2.w) * 180 / Math.PI).ToString("f4");
-        textBoxAnglePlaneAxis1.Text = (Crystal.GetAnglePlaneAxis(plane1.h, plane1.k, plane1.l, axis1.u, axis1.v, axis1.w) * 180 / Math.PI).ToString("f4");
-        textBoxAnglePlaneAxis2.Text = (Crystal.GetAnglePlaneAxis(plane2.h, plane2.k, plane2.l, axis2.u, axis2.v, axis2.w) * 180 / Math.PI).ToString("f4");
+        // textBoxAnglePlanes.Text = (Crystal.GetAnglePlanes(plane1.h, plane1.k, plane1.l, plane2.h, plane2.k, plane2.l) * 180 / Math.PI).ToString("f4"); // (260427Ch) 旧 TextBox 表示
+        // textBoxAngleAxes.Text = (Crystal.GetAngleAxes(axis1.u, axis1.v, axis1.w, axis2.u, axis2.v, axis2.w) * 180 / Math.PI).ToString("f4"); // (260427Ch) 旧 TextBox 表示
+        // textBoxAnglePlaneAxis1.Text = (Crystal.GetAnglePlaneAxis(plane1.h, plane1.k, plane1.l, axis1.u, axis1.v, axis1.w) * 180 / Math.PI).ToString("f4"); // (260427Ch) 旧 TextBox 表示
+        // textBoxAnglePlaneAxis2.Text = (Crystal.GetAnglePlaneAxis(plane2.h, plane2.k, plane2.l, axis2.u, axis2.v, axis2.w) * 180 / Math.PI).ToString("f4"); // (260427Ch) 旧 TextBox 表示
+        numericBoxAnglePlanes.Value = Crystal.GetAnglePlanes(plane1.h, plane1.k, plane1.l, plane2.h, plane2.k, plane2.l) * 180 / Math.PI; // (260427Ch)
+        numericBoxAngleAxes.Value = Crystal.GetAngleAxes(axis1.u, axis1.v, axis1.w, axis2.u, axis2.v, axis2.w) * 180 / Math.PI; // (260427Ch)
+        numericBoxAnglePlaneAxis1.Value = Crystal.GetAnglePlaneAxis(plane1.h, plane1.k, plane1.l, axis1.u, axis1.v, axis1.w) * 180 / Math.PI; // (260427Ch)
+        numericBoxAnglePlaneAxis2.Value = Crystal.GetAnglePlaneAxis(plane2.h, plane2.k, plane2.l, axis2.u, axis2.v, axis2.w) * 180 / Math.PI; // (260427Ch)
 
         textBoxZoneAxis.Text = $"[{Crystal.GetZoneAxis(plane1.h, plane1.k, plane1.l, plane2.h, plane2.k, plane2.l)} ]";
         textBoxZonePlane.Text = $"({Crystal.GetZoneAxis(axis1.u, axis1.v, axis1.w, axis2.u, axis2.v, axis2.w)} )";
@@ -205,4 +210,8 @@ public partial class FormSymmetryInformation : FormBase
         Visible = false; // (260426Ch)
     }
 
+    private void label15_Click(object sender, EventArgs e)
+    {
+
+    }
 }
