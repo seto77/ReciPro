@@ -441,6 +441,7 @@ YusaGonio.cs
  System.Windows.Forms.dll
  System.Windows.Forms.Primitives.dll
 <NUGET>/
+ dynamicexpresso.core/2.19.3/lib/netstandard2.0/DynamicExpresso.Core.dll
  mathnet.numerics/6.0.0-beta2/lib/net8.0/MathNet.Numerics.dll
  memorypack.core/1.21.4/lib/net8.0/MemoryPack.Core.dll
  opentk.audio.openal/4.9.4/lib/netcoreapp3.1/OpenTK.Audio.OpenAL.dll
@@ -454,7 +455,6 @@ YusaGonio.cs
  opentk.windowing.graphicslibraryframework/4.9.4/lib/netcoreapp3.1/OpenTK.Windowing.GraphicsLibraryFramework.dll
  purehdf/2.1.2/lib/net8.0/PureHDF.dll
  simdlinq/1.3.2/lib/net7.0/SimdLinq.dll
- system.linq.dynamic.core/1.7.2/lib/net10.0/System.Linq.Dynamic.Core.dll
  zlinq/1.5.6/lib/net10.0/ZLinq.dll
 
 [analyzerReferences]

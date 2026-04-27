@@ -9,7 +9,6 @@ namespace Crystallography.Controls;
 #endregion
 public partial class FormSymmetryInformation : FormBase
 {
-
     #region プロパティ
     /// <summary>表示対象の <see cref="Crystallography.Crystal"/>。<see cref="CrystalControl"/> から委譲。</summary>
     public Crystal Crystal => CrystalControl.Crystal;
@@ -222,12 +221,8 @@ public partial class FormSymmetryInformation : FormBase
     #endregion
 
     #region ワイコフ位置の設定
-    /// <summary>
-    /// 現在の空間群の lattice centering と Wyckoff position を <see cref="dataSet"/> 内の Wyckoff テーブルへ書き込む。
-    /// </summary>
-    /// <remarks>
-    /// 1 ポジションあたり座標が 4 個を超える場合は 4 個ずつ複数行に分割して追加する。
-    /// </remarks>
+    /// <summary>現在の空間群の lattice centering と Wyckoff position を <see cref="dataSet"/> 内の Wyckoff テーブルへ書き込む。</summary>
+    /// <remarks> 1 ポジションあたり座標が 4 個を超える場合は 4 個ずつ複数行に分割して追加する。</remarks>
     private void SetWyckoffPosition()
     {
         var table = dataSet.Tables[0]; // (260426Ch)

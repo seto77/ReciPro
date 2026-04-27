@@ -8,9 +8,11 @@ using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Linq.Dynamic.Core;
-using System.Linq.Expressions;
+// using System.Linq.Dynamic.Core;       // 260427Cl DynamicExpresso へ置換
+// using System.Linq.Expressions;         // 260427Cl Expression.Parameter 不要になったため削除
+using DynamicExpresso;
 using System.Text;
+using System.Text.RegularExpressions; // 260427Cl 追加: 対称操作式の暗黙乗算変換に使用
 using System.Threading;
 using ZLinq;
 using V3 = OpenTK.Mathematics.Vector3d;
@@ -21,6 +23,9 @@ namespace Crystallography;
 public class ConvertCrystalData
 {
     private static readonly StringComparison Ord = StringComparison.Ordinal;
+
+    // 260427Cl 追加: CIF/特殊位置の "2x" のような暗黙乗算を "2*x" に変換 (DynamicExpresso は暗黙乗算非対応)
+    private static readonly Regex ImplicitMulRegex = new(@"([0-9])([xyz])", RegexOptions.Compiled);
 
     #region 文字列操作の高速化を狙った関数群
 
@@ -1213,17 +1218,30 @@ public class ConvertCrystalData
         if (operations.Count != 0 && operations.Count == tempAtom.Length)
         {
             var th = 0.0000001;
-            var prms = new[] { "x", "y", "z" }.Select(s => Expression.Parameter(typeof(double), s)).ToArray();
+            // 260427Cl DynamicExpresso へ置換。"x, y+1/2, z" のような対称操作 3 成分文字列を、カンマで分割して各成分を個別に Func<double,double,double,double> へコンパイルする。
+            // var prms = new[] { "x", "y", "z" }.Select(s => Expression.Parameter(typeof(double), s)).ToArray();
+            var interpreter = new Interpreter();
             //文字列からラムダ式を返すローカル関数
             Func<double, double, double, V3> func(string sExpr)
             {
                 try
                 {
                     sExpr = sExpr.Replace(" ", "").Replace(",+", ",").TrimStart(['+']);
-                    sExpr = "new [] {" + sExpr.Replace("/", ".0/").Replace(".0.0", ".0") + "}";//分子に小数点を加える
-
-                    var f = DynamicExpressionParser.ParseLambda(prms, typeof(double[]), sExpr).Compile() as Func<double, double, double, double[]>;
-                    return (x, y, z) => { var d = f(x, y, z); return new V3(d[0], d[1], d[2]); };
+                    sExpr = sExpr.Replace("/", ".0/").Replace(".0.0", ".0");//分子に小数点を加える
+                    // (260427Ch) DynamicExpresso は "2x" のような暗黙の掛け算を受け付けないため、CIF/特殊位置表記を明示的な掛け算に直す。
+                    // foreach (var v in new[] { 'x', 'y', 'z' })                                  // 260427Cl 旧: 30回の Replace ループ → 単一 Regex に統合
+                    //     for (var coefficient = 0; coefficient <= 9; coefficient++)
+                    //         sExpr = sExpr.Replace($"{coefficient}{v}", $"{coefficient}*{v}");
+                    sExpr = ImplicitMulRegex.Replace(sExpr, "$1*$2"); // 260427Cl
+                    // sExpr = "new [] {" + sExpr.Replace("/", ".0/").Replace(".0.0", ".0") + "}"; // 260427Cl 旧: System.Linq.Dynamic.Core 用の配列リテラル形式
+                    // var f = DynamicExpressionParser.ParseLambda(prms, typeof(double[]), sExpr).Compile() as Func<double, double, double, double[]>;
+                    // return (x, y, z) => { var d = f(x, y, z); return new V3(d[0], d[1], d[2]); };
+                    var parts = sExpr.Split(',');
+                    if (parts.Length != 3) return null;
+                    var fx = interpreter.ParseAsDelegate<Func<double, double, double, double>>(parts[0], "x", "y", "z");
+                    var fy = interpreter.ParseAsDelegate<Func<double, double, double, double>>(parts[1], "x", "y", "z");
+                    var fz = interpreter.ParseAsDelegate<Func<double, double, double, double>>(parts[2], "x", "y", "z");
+                    return (x, y, z) => new V3(fx(x, y, z), fy(x, y, z), fz(x, y, z));
                 }
                 catch (Exception e)
                 {
@@ -1248,7 +1266,8 @@ public class ConvertCrystalData
                         foreach (var sZ in shiftCandidates)
                             if (!match)
                             {
-                                var target = funcs.Select(f => f(p.X + sX, p.Y + sY, p.Z + sZ)).Select(r => norm(new V3(r.X - sX, r.Y - sY, r.Z - sY))).ToList();
+                                // var target = funcs.Select(f => f(p.X + sX, p.Y + sY, p.Z + sZ)).Select(r => norm(new V3(r.X - sX, r.Y - sY, r.Z - sY))).ToList(); // 260427Ch 旧: Z 成分から sY を引いていた
+                                var target = funcs.Select(f => f(p.X + sX, p.Y + sY, p.Z + sZ)).Select(r => norm(new V3(r.X - sX, r.Y - sY, r.Z - sZ))).ToList(); // (260427Ch)
                                 target.Sort((o1, o2) => Math.Abs(o1.X - o2.X) > th ? o1.X.CompareTo(o2.X) : (Math.Abs(o1.Y - o2.Y) > th ? o1.Y.CompareTo(o2.Y) : o1.Z.CompareTo(o2.Z)));
                                 if (source.All(o => (o.pos - target[o.i]).Length < th))
                                 {
