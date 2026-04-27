@@ -25,7 +25,7 @@ Last updated: 2026-04-27
 | Period | Total Views | Unique Visitors |
 | ---- | ---- | ---- |
 | 2026-W17 | 465 | 209 |
-| 2026-W16 | 545 | 241 |
+| 2026-W16 | 623 | 280 |
 | 2026-W15 | 476 | 213 |
 | 2026-W14 | 485 | 211 |
 | 2026-W13 | 121 | 52 |
@@ -33,13 +33,13 @@ Last updated: 2026-04-27
 ### Monthly (最大12か月保持)
 | Period | Total Views | Unique Visitors |
 | ---- | ---- | ---- |
-| 2026-04 | 1852 | 815 |
+| 2026-04 | 1930 | 854 |
 | 2026-03 | 240 | 111 |
 
 ### Yearly (無制限)
 | Period | Total Views | Unique Visitors |
 | ---- | ---- | ---- |
-| 2026 | 2092 | 926 |
+| 2026 | 2170 | 965 |
 
 ## Clones
 
@@ -64,7 +64,7 @@ Last updated: 2026-04-27
 | Period | Total Clones | Unique Cloners |
 | ---- | ---- | ---- |
 | 2026-W17 | 373 | 184 |
-| 2026-W16 | 251 | 148 |
+| 2026-W16 | 296 | 178 |
 | 2026-W15 | 70 | 47 |
 | 2026-W14 | 349 | 193 |
 | 2026-W13 | 41 | 30 |
@@ -72,13 +72,13 @@ Last updated: 2026-04-27
 ### Monthly (最大12か月保持)
 | Period | Total Clones | Unique Cloners |
 | ---- | ---- | ---- |
-| 2026-04 | 1011 | 548 |
+| 2026-04 | 1056 | 578 |
 | 2026-03 | 73 | 54 |
 
 ### Yearly (無制限)
 | Period | Total Clones | Unique Cloners |
 | ---- | ---- | ---- |
-| 2026 | 1084 | 602 |
+| 2026 | 1129 | 632 |
 
 ## Referrers
 
@@ -216,7 +216,7 @@ Last updated: 2026-04-27
 
 | Release Tag | Release Date | Asset Name | Download Count |
 | ---- | ---- | ---- | ---- |
-| v.4.926 | 2026-04-25 | ReciProSetup.msi | 41 |
+| v.4.926 | 2026-04-25 | ReciProSetup.msi | 42 |
 | v.4.925 | 2026-04-20 | ReciProSetup.msi | 149 |
 | v.4.924 | 2026-04-14 | ReciProSetup.msi | 182 |
 | v.4.923 | 2026-04-05 | ReciProSetup.msi | 241 |
@@ -247,14 +247,14 @@ Last updated: 2026-04-27
 | v.4.895 | 2024-11-14 | ReciProSetup.msi | 1006 |
 | v.4.894 | 2024-11-01 | ReciProSetup.msi | 232 |
 
-**TOTAL: 8865**
+**TOTAL: 8866**
 
 ## Stats
 
 ### Daily (最大14日保持)
 | Date | Stars | Forks | Open Issues | Watchers |
 | ---- | ---- | ---- | ---- | ---- |
-| 2026-04-27 | 165 | 13 | 35 | 7 |
+| 2026-04-27 | 165 | 13 | 36 | 7 |
 | 2026-04-21 | 164 | 13 | 35 | 7 |
 | 2026-04-19 | 164 | 13 | 34 | 7 |
 | 2026-04-18 | 164 | 13 | 34 | 7 |
@@ -264,7 +264,7 @@ Last updated: 2026-04-27
 ### Weekly (最大14週保持)
 | Period | Stars | Forks | Open Issues | Watchers |
 | ---- | ---- | ---- | ---- | ---- |
-| 2026-W18 | 165 | 13 | 35 | 7 |
+| 2026-W18 | 165 | 13 | 36 | 7 |
 | 2026-W17 | 164 | 13 | 35 | 7 |
 | 2026-W16 | 164 | 13 | 34 | 7 |
 | 2026-W15 | 161 | 13 | 34 | 7 |
@@ -272,11 +272,11 @@ Last updated: 2026-04-27
 ### Monthly (最大12か月保持)
 | Period | Stars | Forks | Open Issues | Watchers |
 | ---- | ---- | ---- | ---- | ---- |
-| 2026-04 | 165 | 13 | 35 | 7 |
+| 2026-04 | 165 | 13 | 36 | 7 |
 
 ### Yearly (無制限)
 | Period | Stars | Forks | Open Issues | Watchers |
 | ---- | ---- | ---- | ---- | ---- |
-| 2026 | 165 | 13 | 35 | 7 |
+| 2026 | 165 | 13 | 36 | 7 |
 
 <!-- meta: last_collected_paths=2026-04-27 last_collected_referrers=2026-04-27 -->
