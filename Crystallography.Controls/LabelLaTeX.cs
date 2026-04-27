@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Drawing2D;
@@ -23,7 +23,7 @@ namespace Crystallography.Controls;
 [DefaultProperty(nameof(Text))]
 [DefaultEvent(nameof(Click))]
 [ToolboxItem(true)]
-public class LabelTex : Control
+public class LabelLaTeX : Control
 {
     private Bitmap renderedBitmap;
     private bool renderAttempted;
@@ -32,7 +32,7 @@ public class LabelTex : Control
     private TexStyle texStyle = TexStyle.Display;
     private double thickness;
 
-    public LabelTex()
+    public LabelLaTeX()
     {
         SetStyle(ControlStyles.AllPaintingInWmPaint
                | ControlStyles.OptimizedDoubleBuffer

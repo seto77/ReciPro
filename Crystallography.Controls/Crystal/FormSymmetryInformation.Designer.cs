@@ -29,28 +29,31 @@
         {
             components = new System.ComponentModel.Container();
             groupBoxSymmetryInformation = new System.Windows.Forms.GroupBox();
+            tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            graphicsBoxSymmetryElements = new GraphicsBox(components);
+            graphicsBoxGeneralPositions = new GraphicsBox(components);
             tabControl = new System.Windows.Forms.TabControl();
             tabPageGroupInfo = new System.Windows.Forms.TabPage();
             groupBoxSpaceGroup = new System.Windows.Forms.GroupBox();
-            richTextBoxSG_Hall = new System.Windows.Forms.RichTextBox();
+            labelLaTexSG_Hall = new LabelLaTeX();
+            labelLaTexSG_SF = new LabelLaTeX();
+            labelLaTexHM_full = new LabelLaTeX();
+            labelLaTexSG_HM = new LabelLaTeX();
             label8 = new System.Windows.Forms.Label();
             label9 = new System.Windows.Forms.Label();
-            richTextBoxSG_HM = new System.Windows.Forms.RichTextBox();
             label5 = new System.Windows.Forms.Label();
-            richTextBoxSG_SF = new System.Windows.Forms.RichTextBox();
             label6 = new System.Windows.Forms.Label();
-            richTextBoxSG_HM_full = new System.Windows.Forms.RichTextBox();
-            richTextBoxLG = new System.Windows.Forms.RichTextBox();
             label12 = new System.Windows.Forms.Label();
+            labelLaTexLG = new LabelLaTeX();
+            labelLaTexCS = new LabelLaTeX();
             label = new System.Windows.Forms.Label();
-            richTextBoxCS = new System.Windows.Forms.RichTextBox();
             groupBoxPointGroup = new System.Windows.Forms.GroupBox();
             label10 = new System.Windows.Forms.Label();
             label11 = new System.Windows.Forms.Label();
-            richTextBoxPG_HM = new System.Windows.Forms.RichTextBox();
-            richTextBoxPG_SF = new System.Windows.Forms.RichTextBox();
+            labelLaTexPG_SF = new LabelLaTeX();
+            labelLaTexPG_HM = new LabelLaTeX();
             tabPageConditions = new System.Windows.Forms.TabPage();
-            richTextBoxExtinctionRule = new System.Windows.Forms.RichTextBox();
+            flowLayoutPanelExtinctionRule = new System.Windows.Forms.FlowLayoutPanel();
             label49 = new System.Windows.Forms.Label();
             tabPageWyckoff = new System.Windows.Forms.TabPage();
             dataGridView1 = new System.Windows.Forms.DataGridView();
@@ -84,80 +87,80 @@
             dataColumn13 = new System.Data.DataColumn();
             dataColumnIntensity = new System.Data.DataColumn();
             label4 = new System.Windows.Forms.Label();
-            richTextBoxSG_Num = new System.Windows.Forms.RichTextBox();
-            labelTex1 = new LabelTex();
+            labelLaTexSG_Num = new LabelLaTeX();
+            labelTex1 = new LabelLaTeX();
             flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             label25 = new System.Windows.Forms.Label();
             flowLayoutPanelH1 = new System.Windows.Forms.FlowLayoutPanel();
             numericBoxH1 = new NumericBox();
             flowLayoutPanelK1 = new System.Windows.Forms.FlowLayoutPanel();
-            labelTex2 = new LabelTex();
+            labelTex2 = new LabelLaTeX();
             numericBoxK1 = new NumericBox();
             flowLayoutPanelI1 = new System.Windows.Forms.FlowLayoutPanel();
-            labelTex3 = new LabelTex();
+            labelTex3 = new LabelLaTeX();
             numericBox1 = new NumericBox();
             flowLayoutPanelL1 = new System.Windows.Forms.FlowLayoutPanel();
-            labelTex4 = new LabelTex();
+            labelTex4 = new LabelLaTeX();
             numericBoxL1 = new NumericBox();
             label7 = new System.Windows.Forms.Label();
             numericBoxLengthPlane1 = new NumericBox();
             groupBoxGeometricsCalculation = new System.Windows.Forms.GroupBox();
+            numericBoxAnglePlanes = new NumericBox();
+            numericBoxAngleAxes = new NumericBox();
             flowLayoutPanel6 = new System.Windows.Forms.FlowLayoutPanel();
             label1 = new System.Windows.Forms.Label();
             flowLayoutPanelH2 = new System.Windows.Forms.FlowLayoutPanel();
-            labelTex5 = new LabelTex();
+            labelTex5 = new LabelLaTeX();
             numericBoxH2 = new NumericBox();
             flowLayoutPanelK2 = new System.Windows.Forms.FlowLayoutPanel();
-            labelTex6 = new LabelTex();
+            labelTex6 = new LabelLaTeX();
             numericBoxK2 = new NumericBox();
             flowLayoutPanelI2 = new System.Windows.Forms.FlowLayoutPanel();
-            labelTex7 = new LabelTex();
+            labelTex7 = new LabelLaTeX();
             numericBoxI2 = new NumericBox();
             flowLayoutPanelL2 = new System.Windows.Forms.FlowLayoutPanel();
-            labelTex8 = new LabelTex();
+            labelTex8 = new LabelLaTeX();
             numericBoxL2 = new NumericBox();
             label2 = new System.Windows.Forms.Label();
             numericBoxLengthPlane2 = new NumericBox();
             flowLayoutPanel14 = new System.Windows.Forms.FlowLayoutPanel();
             label3 = new System.Windows.Forms.Label();
             flowLayoutPanelU2 = new System.Windows.Forms.FlowLayoutPanel();
-            labelTex11 = new LabelTex();
+            labelTex11 = new LabelLaTeX();
             numericBoxU2 = new NumericBox();
             flowLayoutPanelV2 = new System.Windows.Forms.FlowLayoutPanel();
-            labelTex13 = new LabelTex();
+            labelTex13 = new LabelLaTeX();
             numericBoxV2 = new NumericBox();
             flowLayoutPanelW2 = new System.Windows.Forms.FlowLayoutPanel();
-            labelTex14 = new LabelTex();
+            labelTex14 = new LabelLaTeX();
             numericBoxW2 = new NumericBox();
             label18 = new System.Windows.Forms.Label();
             numericBoxLengthAxis2 = new NumericBox();
             flowLayoutPanel11 = new System.Windows.Forms.FlowLayoutPanel();
             label13 = new System.Windows.Forms.Label();
             flowLayoutPanelU1 = new System.Windows.Forms.FlowLayoutPanel();
-            labelTex9 = new LabelTex();
+            labelTex9 = new LabelLaTeX();
             numericBoxU1 = new NumericBox();
             flowLayoutPanelV1 = new System.Windows.Forms.FlowLayoutPanel();
-            labelTex10 = new LabelTex();
+            labelTex10 = new LabelLaTeX();
             numericBoxV1 = new NumericBox();
             flowLayoutPanelW1 = new System.Windows.Forms.FlowLayoutPanel();
-            labelTex12 = new LabelTex();
+            labelTex12 = new LabelLaTeX();
             numericBoxW1 = new NumericBox();
             label14 = new System.Windows.Forms.Label();
             numericBoxLengthAxis1 = new NumericBox();
-            numericBoxAnglePlanes = new NumericBox();
             label42 = new System.Windows.Forms.Label();
             textBoxZonePlane = new System.Windows.Forms.TextBox();
-            numericBoxAngleAxes = new NumericBox();
             numericBoxAnglePlaneAxis2 = new NumericBox();
             numericBoxAnglePlaneAxis1 = new NumericBox();
             label40 = new System.Windows.Forms.Label();
             textBoxZoneAxis = new System.Windows.Forms.TextBox();
             panel1 = new System.Windows.Forms.Panel();
             bindingSourceScatteringFactor = new System.Windows.Forms.BindingSource(components);
-            tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            graphicsBoxSymmetryElements = new GraphicsBox(components);
-            graphicsBoxGeneralPositions = new GraphicsBox(components);
             groupBoxSymmetryInformation.SuspendLayout();
+            tableLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)graphicsBoxSymmetryElements).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)graphicsBoxGeneralPositions).BeginInit();
             tabControl.SuspendLayout();
             tabPageGroupInfo.SuspendLayout();
             groupBoxSpaceGroup.SuspendLayout();
@@ -188,9 +191,6 @@
             flowLayoutPanelV1.SuspendLayout();
             flowLayoutPanelW1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)bindingSourceScatteringFactor).BeginInit();
-            tableLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)graphicsBoxSymmetryElements).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)graphicsBoxGeneralPositions).BeginInit();
             SuspendLayout();
             // 
             // groupBoxSymmetryInformation
@@ -198,15 +198,52 @@
             groupBoxSymmetryInformation.Controls.Add(tableLayoutPanel1);
             groupBoxSymmetryInformation.Controls.Add(tabControl);
             groupBoxSymmetryInformation.Controls.Add(label4);
-            groupBoxSymmetryInformation.Controls.Add(richTextBoxSG_Num);
+            groupBoxSymmetryInformation.Controls.Add(labelLaTexSG_Num);
             groupBoxSymmetryInformation.Dock = System.Windows.Forms.DockStyle.Fill;
             groupBoxSymmetryInformation.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
             groupBoxSymmetryInformation.Location = new System.Drawing.Point(4, 4);
             groupBoxSymmetryInformation.Name = "groupBoxSymmetryInformation";
-            groupBoxSymmetryInformation.Size = new System.Drawing.Size(696, 441);
+            groupBoxSymmetryInformation.Size = new System.Drawing.Size(662, 458);
             groupBoxSymmetryInformation.TabIndex = 32;
             groupBoxSymmetryInformation.TabStop = false;
             groupBoxSymmetryInformation.Text = "Symmetry Information";
+            // 
+            // tableLayoutPanel1
+            // 
+            tableLayoutPanel1.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            tableLayoutPanel1.ColumnCount = 2;
+            tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            tableLayoutPanel1.Controls.Add(graphicsBoxSymmetryElements, 0, 0);
+            tableLayoutPanel1.Controls.Add(graphicsBoxGeneralPositions, 1, 0);
+            tableLayoutPanel1.Location = new System.Drawing.Point(4, 190);
+            tableLayoutPanel1.Name = "tableLayoutPanel1";
+            tableLayoutPanel1.RowCount = 1;
+            tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            tableLayoutPanel1.Size = new System.Drawing.Size(648, 262);
+            tableLayoutPanel1.TabIndex = 5;
+            // 
+            // graphicsBoxSymmetryElements
+            // 
+            graphicsBoxSymmetryElements.Dock = System.Windows.Forms.DockStyle.Fill;
+            graphicsBoxSymmetryElements.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            graphicsBoxSymmetryElements.Fonts = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            graphicsBoxSymmetryElements.Location = new System.Drawing.Point(3, 3);
+            graphicsBoxSymmetryElements.Name = "graphicsBoxSymmetryElements";
+            graphicsBoxSymmetryElements.Size = new System.Drawing.Size(318, 256);
+            graphicsBoxSymmetryElements.TabIndex = 0;
+            graphicsBoxSymmetryElements.TabStop = false;
+            // 
+            // graphicsBoxGeneralPositions
+            // 
+            graphicsBoxGeneralPositions.Dock = System.Windows.Forms.DockStyle.Fill;
+            graphicsBoxGeneralPositions.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            graphicsBoxGeneralPositions.Fonts = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            graphicsBoxGeneralPositions.Location = new System.Drawing.Point(327, 3);
+            graphicsBoxGeneralPositions.Name = "graphicsBoxGeneralPositions";
+            graphicsBoxGeneralPositions.Size = new System.Drawing.Size(318, 256);
+            graphicsBoxGeneralPositions.TabIndex = 0;
+            graphicsBoxGeneralPositions.TabStop = false;
             // 
             // tabControl
             // 
@@ -218,35 +255,35 @@
             tabControl.Location = new System.Drawing.Point(90, 14);
             tabControl.Name = "tabControl";
             tabControl.SelectedIndex = 0;
-            tabControl.Size = new System.Drawing.Size(600, 170);
+            tabControl.Size = new System.Drawing.Size(566, 170);
             tabControl.TabIndex = 4;
             // 
             // tabPageGroupInfo
             // 
             captureExtender.SetCapture(tabPageGroupInfo, true);
             tabPageGroupInfo.Controls.Add(groupBoxSpaceGroup);
-            tabPageGroupInfo.Controls.Add(richTextBoxLG);
             tabPageGroupInfo.Controls.Add(label12);
+            tabPageGroupInfo.Controls.Add(labelLaTexLG);
+            tabPageGroupInfo.Controls.Add(labelLaTexCS);
             tabPageGroupInfo.Controls.Add(label);
-            tabPageGroupInfo.Controls.Add(richTextBoxCS);
             tabPageGroupInfo.Controls.Add(groupBoxPointGroup);
             tabPageGroupInfo.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
             tabPageGroupInfo.Location = new System.Drawing.Point(4, 24);
             tabPageGroupInfo.Name = "tabPageGroupInfo";
-            tabPageGroupInfo.Size = new System.Drawing.Size(592, 142);
+            tabPageGroupInfo.Size = new System.Drawing.Size(558, 142);
             tabPageGroupInfo.TabIndex = 0;
             tabPageGroupInfo.Text = "Group Info";
             // 
             // groupBoxSpaceGroup
             // 
-            groupBoxSpaceGroup.Controls.Add(richTextBoxSG_Hall);
+            groupBoxSpaceGroup.Controls.Add(labelLaTexSG_Hall);
+            groupBoxSpaceGroup.Controls.Add(labelLaTexSG_SF);
+            groupBoxSpaceGroup.Controls.Add(labelLaTexHM_full);
+            groupBoxSpaceGroup.Controls.Add(labelLaTexSG_HM);
             groupBoxSpaceGroup.Controls.Add(label8);
             groupBoxSpaceGroup.Controls.Add(label9);
-            groupBoxSpaceGroup.Controls.Add(richTextBoxSG_HM);
             groupBoxSpaceGroup.Controls.Add(label5);
-            groupBoxSpaceGroup.Controls.Add(richTextBoxSG_SF);
             groupBoxSpaceGroup.Controls.Add(label6);
-            groupBoxSpaceGroup.Controls.Add(richTextBoxSG_HM_full);
             groupBoxSpaceGroup.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
             groupBoxSpaceGroup.Location = new System.Drawing.Point(204, 4);
             groupBoxSpaceGroup.Name = "groupBoxSpaceGroup";
@@ -255,149 +292,139 @@
             groupBoxSpaceGroup.TabStop = false;
             groupBoxSpaceGroup.Text = "Space Group";
             // 
-            // richTextBoxSG_Hall
+            // labelLaTexSG_Hall
             // 
-            richTextBoxSG_Hall.BackColor = System.Drawing.SystemColors.Control;
-            richTextBoxSG_Hall.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            richTextBoxSG_Hall.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-            richTextBoxSG_Hall.Location = new System.Drawing.Point(89, 100);
-            richTextBoxSG_Hall.Name = "richTextBoxSG_Hall";
-            richTextBoxSG_Hall.ReadOnly = true;
-            richTextBoxSG_Hall.Size = new System.Drawing.Size(239, 24);
-            richTextBoxSG_Hall.TabIndex = 3;
-            richTextBoxSG_Hall.Text = "";
+            labelLaTexSG_Hall.Font = new System.Drawing.Font("Segoe UI", 13F);
+            labelLaTexSG_Hall.Location = new System.Drawing.Point(95, 100);
+            labelLaTexSG_Hall.Margin = new System.Windows.Forms.Padding(0);
+            labelLaTexSG_Hall.Name = "labelLaTexSG_Hall";
+            labelLaTexSG_Hall.Size = new System.Drawing.Size(233, 24);
+            labelLaTexSG_Hall.TabIndex = 6;
+            labelLaTexSG_Hall.Text = "test";
+            labelLaTexSG_Hall.Thickness = 0.6D;
+            // 
+            // labelLaTexSG_SF
+            // 
+            labelLaTexSG_SF.Font = new System.Drawing.Font("Segoe UI", 13F);
+            labelLaTexSG_SF.Location = new System.Drawing.Point(95, 72);
+            labelLaTexSG_SF.Margin = new System.Windows.Forms.Padding(0);
+            labelLaTexSG_SF.Name = "labelLaTexSG_SF";
+            labelLaTexSG_SF.Size = new System.Drawing.Size(233, 24);
+            labelLaTexSG_SF.TabIndex = 6;
+            labelLaTexSG_SF.Text = "test";
+            labelLaTexSG_SF.Thickness = 0.6D;
+            // 
+            // labelLaTexHM_full
+            // 
+            labelLaTexHM_full.Font = new System.Drawing.Font("Segoe UI", 13F);
+            labelLaTexHM_full.Location = new System.Drawing.Point(95, 44);
+            labelLaTexHM_full.Margin = new System.Windows.Forms.Padding(0);
+            labelLaTexHM_full.Name = "labelLaTexHM_full";
+            labelLaTexHM_full.Size = new System.Drawing.Size(233, 24);
+            labelLaTexHM_full.TabIndex = 6;
+            labelLaTexHM_full.Text = "\\alpha \\beta";
+            labelLaTexHM_full.Thickness = 0.6D;
+            // 
+            // labelLaTexSG_HM
+            // 
+            labelLaTexSG_HM.Font = new System.Drawing.Font("Segoe UI", 13F);
+            labelLaTexSG_HM.Location = new System.Drawing.Point(95, 16);
+            labelLaTexSG_HM.Margin = new System.Windows.Forms.Padding(0);
+            labelLaTexSG_HM.Name = "labelLaTexSG_HM";
+            labelLaTexSG_HM.Size = new System.Drawing.Size(233, 24);
+            labelLaTexSG_HM.TabIndex = 6;
+            labelLaTexSG_HM.Text = "F\\, m\\, \\bar{3}\\, m  {}_1";
+            labelLaTexSG_HM.Thickness = 0.6D;
             // 
             // label8
             // 
-            label8.AutoSize = true;
             label8.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
             label8.Location = new System.Drawing.Point(12, 76);
             label8.Name = "label8";
-            label8.Size = new System.Drawing.Size(64, 15);
+            label8.Size = new System.Drawing.Size(74, 15);
             label8.TabIndex = 1;
             label8.Text = "SF symbol:";
             label8.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label9
             // 
-            label9.AutoSize = true;
             label9.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
             label9.Location = new System.Drawing.Point(8, 104);
             label9.Name = "label9";
-            label9.Size = new System.Drawing.Size(73, 15);
+            label9.Size = new System.Drawing.Size(78, 15);
             label9.TabIndex = 1;
             label9.Text = "Hall symbol:";
             label9.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // richTextBoxSG_HM
-            // 
-            richTextBoxSG_HM.BackColor = System.Drawing.SystemColors.Control;
-            richTextBoxSG_HM.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            richTextBoxSG_HM.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-            richTextBoxSG_HM.Location = new System.Drawing.Point(89, 16);
-            richTextBoxSG_HM.Name = "richTextBoxSG_HM";
-            richTextBoxSG_HM.ReadOnly = true;
-            richTextBoxSG_HM.Size = new System.Drawing.Size(239, 24);
-            richTextBoxSG_HM.TabIndex = 3;
-            richTextBoxSG_HM.Text = "";
-            // 
             // label5
             // 
-            label5.AutoSize = true;
             label5.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
             label5.Location = new System.Drawing.Point(12, 20);
             label5.Name = "label5";
-            label5.Size = new System.Drawing.Size(72, 15);
+            label5.Size = new System.Drawing.Size(74, 15);
             label5.TabIndex = 1;
             label5.Text = "HM symbol:";
             label5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // richTextBoxSG_SF
-            // 
-            richTextBoxSG_SF.BackColor = System.Drawing.SystemColors.Control;
-            richTextBoxSG_SF.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            richTextBoxSG_SF.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-            richTextBoxSG_SF.Location = new System.Drawing.Point(89, 72);
-            richTextBoxSG_SF.Name = "richTextBoxSG_SF";
-            richTextBoxSG_SF.ReadOnly = true;
-            richTextBoxSG_SF.Size = new System.Drawing.Size(239, 25);
-            richTextBoxSG_SF.TabIndex = 3;
-            richTextBoxSG_SF.Text = "";
-            // 
             // label6
             // 
-            label6.AutoSize = true;
             label6.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
             label6.Location = new System.Drawing.Point(4, 48);
             label6.Name = "label6";
-            label6.Size = new System.Drawing.Size(77, 15);
+            label6.Size = new System.Drawing.Size(82, 15);
             label6.TabIndex = 1;
             label6.Text = "Full notation:";
             label6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // richTextBoxSG_HM_full
-            // 
-            richTextBoxSG_HM_full.BackColor = System.Drawing.SystemColors.Control;
-            richTextBoxSG_HM_full.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            richTextBoxSG_HM_full.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-            richTextBoxSG_HM_full.Location = new System.Drawing.Point(89, 44);
-            richTextBoxSG_HM_full.Name = "richTextBoxSG_HM_full";
-            richTextBoxSG_HM_full.ReadOnly = true;
-            richTextBoxSG_HM_full.Size = new System.Drawing.Size(239, 24);
-            richTextBoxSG_HM_full.TabIndex = 3;
-            richTextBoxSG_HM_full.Text = "";
-            // 
-            // richTextBoxLG
-            // 
-            richTextBoxLG.BackColor = System.Drawing.SystemColors.Control;
-            richTextBoxLG.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            richTextBoxLG.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-            richTextBoxLG.Location = new System.Drawing.Point(95, 36);
-            richTextBoxLG.Name = "richTextBoxLG";
-            richTextBoxLG.ReadOnly = true;
-            richTextBoxLG.Size = new System.Drawing.Size(105, 24);
-            richTextBoxLG.TabIndex = 3;
-            richTextBoxLG.Text = "";
-            // 
             // label12
             // 
             label12.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            label12.Location = new System.Drawing.Point(0, 36);
+            label12.Location = new System.Drawing.Point(5, 40);
             label12.Name = "label12";
-            label12.Size = new System.Drawing.Size(68, 16);
+            label12.Size = new System.Drawing.Size(86, 16);
             label12.TabIndex = 1;
-            label12.Text = "Laue Group";
+            label12.Text = "Laue Group:";
             label12.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // labelLaTexLG
+            // 
+            labelLaTexLG.Font = new System.Drawing.Font("Segoe UI", 13F);
+            labelLaTexLG.Location = new System.Drawing.Point(101, 36);
+            labelLaTexLG.Margin = new System.Windows.Forms.Padding(0);
+            labelLaTexLG.Name = "labelLaTexLG";
+            labelLaTexLG.Size = new System.Drawing.Size(96, 24);
+            labelLaTexLG.TabIndex = 6;
+            labelLaTexLG.Text = "test";
+            labelLaTexLG.Thickness = 0.6D;
+            // 
+            // labelLaTexCS
+            // 
+            labelLaTexCS.Font = new System.Drawing.Font("Segoe UI", 13F);
+            labelLaTexCS.Location = new System.Drawing.Point(101, 8);
+            labelLaTexCS.Margin = new System.Windows.Forms.Padding(0);
+            labelLaTexCS.Name = "labelLaTexCS";
+            labelLaTexCS.Size = new System.Drawing.Size(96, 24);
+            labelLaTexCS.TabIndex = 6;
+            labelLaTexCS.Text = "test";
+            labelLaTexCS.Thickness = 0.6D;
             // 
             // label
             // 
             label.AutoSize = true;
             label.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            label.Location = new System.Drawing.Point(4, 8);
+            label.Location = new System.Drawing.Point(4, 12);
             label.Name = "label";
-            label.Size = new System.Drawing.Size(84, 15);
+            label.Size = new System.Drawing.Size(87, 15);
             label.TabIndex = 1;
-            label.Text = "Crystal System";
+            label.Text = "Crystal System:";
             label.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // richTextBoxCS
-            // 
-            richTextBoxCS.BackColor = System.Drawing.SystemColors.Control;
-            richTextBoxCS.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            richTextBoxCS.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-            richTextBoxCS.Location = new System.Drawing.Point(91, 8);
-            richTextBoxCS.Name = "richTextBoxCS";
-            richTextBoxCS.ReadOnly = true;
-            richTextBoxCS.Size = new System.Drawing.Size(109, 24);
-            richTextBoxCS.TabIndex = 3;
-            richTextBoxCS.Text = "";
             // 
             // groupBoxPointGroup
             // 
             groupBoxPointGroup.Controls.Add(label10);
             groupBoxPointGroup.Controls.Add(label11);
-            groupBoxPointGroup.Controls.Add(richTextBoxPG_HM);
-            groupBoxPointGroup.Controls.Add(richTextBoxPG_SF);
+            groupBoxPointGroup.Controls.Add(labelLaTexPG_SF);
+            groupBoxPointGroup.Controls.Add(labelLaTexPG_HM);
             groupBoxPointGroup.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
             groupBoxPointGroup.Location = new System.Drawing.Point(4, 64);
             groupBoxPointGroup.Name = "groupBoxPointGroup";
@@ -408,82 +435,79 @@
             // 
             // label10
             // 
-            label10.AutoSize = true;
             label10.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            label10.Location = new System.Drawing.Point(4, 22);
+            label10.Location = new System.Drawing.Point(4, 24);
             label10.Name = "label10";
-            label10.Size = new System.Drawing.Size(72, 15);
+            label10.Size = new System.Drawing.Size(83, 15);
             label10.TabIndex = 1;
             label10.Text = "HM symbol:";
             label10.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label11
             // 
-            label11.AutoSize = true;
             label11.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            label11.Location = new System.Drawing.Point(4, 46);
+            label11.Location = new System.Drawing.Point(6, 52);
             label11.Name = "label11";
-            label11.Size = new System.Drawing.Size(64, 15);
+            label11.Size = new System.Drawing.Size(81, 15);
             label11.TabIndex = 1;
             label11.Text = "SF symbol:";
             label11.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // richTextBoxPG_HM
+            // labelLaTexPG_SF
             // 
-            richTextBoxPG_HM.BackColor = System.Drawing.SystemColors.Control;
-            richTextBoxPG_HM.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            richTextBoxPG_HM.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-            richTextBoxPG_HM.Location = new System.Drawing.Point(87, 16);
-            richTextBoxPG_HM.Name = "richTextBoxPG_HM";
-            richTextBoxPG_HM.ReadOnly = true;
-            richTextBoxPG_HM.Size = new System.Drawing.Size(105, 24);
-            richTextBoxPG_HM.TabIndex = 3;
-            richTextBoxPG_HM.Text = "";
+            labelLaTexPG_SF.Font = new System.Drawing.Font("Segoe UI", 13F);
+            labelLaTexPG_SF.Location = new System.Drawing.Point(97, 48);
+            labelLaTexPG_SF.Margin = new System.Windows.Forms.Padding(0);
+            labelLaTexPG_SF.Name = "labelLaTexPG_SF";
+            labelLaTexPG_SF.Size = new System.Drawing.Size(96, 24);
+            labelLaTexPG_SF.TabIndex = 6;
+            labelLaTexPG_SF.Text = "test";
+            labelLaTexPG_SF.Thickness = 0.6D;
             // 
-            // richTextBoxPG_SF
+            // labelLaTexPG_HM
             // 
-            richTextBoxPG_SF.BackColor = System.Drawing.SystemColors.Control;
-            richTextBoxPG_SF.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            richTextBoxPG_SF.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-            richTextBoxPG_SF.Location = new System.Drawing.Point(87, 44);
-            richTextBoxPG_SF.Name = "richTextBoxPG_SF";
-            richTextBoxPG_SF.ReadOnly = true;
-            richTextBoxPG_SF.Size = new System.Drawing.Size(105, 24);
-            richTextBoxPG_SF.TabIndex = 3;
-            richTextBoxPG_SF.Text = "";
+            labelLaTexPG_HM.Font = new System.Drawing.Font("Segoe UI", 13F);
+            labelLaTexPG_HM.Location = new System.Drawing.Point(97, 20);
+            labelLaTexPG_HM.Margin = new System.Windows.Forms.Padding(0);
+            labelLaTexPG_HM.Name = "labelLaTexPG_HM";
+            labelLaTexPG_HM.Size = new System.Drawing.Size(96, 24);
+            labelLaTexPG_HM.TabIndex = 6;
+            labelLaTexPG_HM.Text = "test";
+            labelLaTexPG_HM.Thickness = 0.6D;
             // 
             // tabPageConditions
             // 
             captureExtender.SetCapture(tabPageConditions, true);
-            tabPageConditions.Controls.Add(richTextBoxExtinctionRule);
+            tabPageConditions.Controls.Add(flowLayoutPanelExtinctionRule);
             tabPageConditions.Controls.Add(label49);
             tabPageConditions.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
             tabPageConditions.Location = new System.Drawing.Point(4, 24);
             tabPageConditions.Name = "tabPageConditions";
-            tabPageConditions.Size = new System.Drawing.Size(592, 142);
+            tabPageConditions.Size = new System.Drawing.Size(558, 142);
             tabPageConditions.TabIndex = 1;
             tabPageConditions.Text = "Conditions";
             // 
-            // richTextBoxExtinctionRule
+            // flowLayoutPanelExtinctionRule
             // 
-            richTextBoxExtinctionRule.BackColor = System.Drawing.SystemColors.Control;
-            richTextBoxExtinctionRule.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            richTextBoxExtinctionRule.Dock = System.Windows.Forms.DockStyle.Fill;
-            richTextBoxExtinctionRule.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-            richTextBoxExtinctionRule.Location = new System.Drawing.Point(0, 16);
-            richTextBoxExtinctionRule.Name = "richTextBoxExtinctionRule";
-            richTextBoxExtinctionRule.ReadOnly = true;
-            richTextBoxExtinctionRule.Size = new System.Drawing.Size(592, 126);
-            richTextBoxExtinctionRule.TabIndex = 6;
-            richTextBoxExtinctionRule.Text = "";
+            flowLayoutPanelExtinctionRule.AutoScroll = true;
+            flowLayoutPanelExtinctionRule.Dock = System.Windows.Forms.DockStyle.Fill;
+            flowLayoutPanelExtinctionRule.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            flowLayoutPanelExtinctionRule.Location = new System.Drawing.Point(0, 21);
+            flowLayoutPanelExtinctionRule.Margin = new System.Windows.Forms.Padding(0);
+            flowLayoutPanelExtinctionRule.Name = "flowLayoutPanelExtinctionRule";
+            flowLayoutPanelExtinctionRule.Size = new System.Drawing.Size(558, 121);
+            flowLayoutPanelExtinctionRule.TabIndex = 6;
+            flowLayoutPanelExtinctionRule.WrapContents = false;
             // 
             // label49
             // 
+            label49.AutoSize = true;
             label49.Dock = System.Windows.Forms.DockStyle.Top;
             label49.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
             label49.Location = new System.Drawing.Point(0, 0);
             label49.Name = "label49";
-            label49.Size = new System.Drawing.Size(592, 16);
+            label49.Padding = new System.Windows.Forms.Padding(0, 0, 0, 6);
+            label49.Size = new System.Drawing.Size(213, 21);
             label49.TabIndex = 7;
             label49.Text = "Conditions limiting possible reflections";
             // 
@@ -494,7 +518,7 @@
             tabPageWyckoff.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
             tabPageWyckoff.Location = new System.Drawing.Point(4, 24);
             tabPageWyckoff.Name = "tabPageWyckoff";
-            tabPageWyckoff.Size = new System.Drawing.Size(592, 142);
+            tabPageWyckoff.Size = new System.Drawing.Size(558, 142);
             tabPageWyckoff.TabIndex = 2;
             tabPageWyckoff.Text = "Wyckoff Positions";
             // 
@@ -513,7 +537,7 @@
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersVisible = false;
             dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            dataGridView1.Size = new System.Drawing.Size(592, 142);
+            dataGridView1.Size = new System.Drawing.Size(558, 142);
             dataGridView1.TabIndex = 0;
             // 
             // columnMultiplicityDataGridViewTextBoxColumn
@@ -676,17 +700,16 @@
             label4.Text = "Number";
             label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // richTextBoxSG_Num
+            // labelLaTexSG_Num
             // 
-            richTextBoxSG_Num.BackColor = System.Drawing.SystemColors.Control;
-            richTextBoxSG_Num.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            richTextBoxSG_Num.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-            richTextBoxSG_Num.Location = new System.Drawing.Point(12, 48);
-            richTextBoxSG_Num.Name = "richTextBoxSG_Num";
-            richTextBoxSG_Num.ReadOnly = true;
-            richTextBoxSG_Num.Size = new System.Drawing.Size(72, 29);
-            richTextBoxSG_Num.TabIndex = 3;
-            richTextBoxSG_Num.Text = "";
+            labelLaTexSG_Num.Font = new System.Drawing.Font("Segoe UI", 13F);
+            labelLaTexSG_Num.Location = new System.Drawing.Point(17, 51);
+            labelLaTexSG_Num.Margin = new System.Windows.Forms.Padding(0);
+            labelLaTexSG_Num.Name = "labelLaTexSG_Num";
+            labelLaTexSG_Num.Size = new System.Drawing.Size(61, 24);
+            labelLaTexSG_Num.TabIndex = 6;
+            labelLaTexSG_Num.Text = "test";
+            labelLaTexSG_Num.Thickness = 0.6D;
             // 
             // labelTex1
             // 
@@ -711,7 +734,7 @@
             flowLayoutPanel1.Controls.Add(flowLayoutPanelL1);
             flowLayoutPanel1.Controls.Add(label7);
             flowLayoutPanel1.Controls.Add(numericBoxLengthPlane1);
-            flowLayoutPanel1.Location = new System.Drawing.Point(87, 22);
+            flowLayoutPanel1.Location = new System.Drawing.Point(74, 22);
             flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
             flowLayoutPanel1.Size = new System.Drawing.Size(225, 39);
@@ -921,14 +944,14 @@
             // 
             // groupBoxGeometricsCalculation
             // 
+            groupBoxGeometricsCalculation.Controls.Add(numericBoxAnglePlanes);
+            groupBoxGeometricsCalculation.Controls.Add(numericBoxAngleAxes);
             groupBoxGeometricsCalculation.Controls.Add(flowLayoutPanel6);
             groupBoxGeometricsCalculation.Controls.Add(flowLayoutPanel14);
             groupBoxGeometricsCalculation.Controls.Add(flowLayoutPanel11);
             groupBoxGeometricsCalculation.Controls.Add(flowLayoutPanel1);
-            groupBoxGeometricsCalculation.Controls.Add(numericBoxAnglePlanes);
             groupBoxGeometricsCalculation.Controls.Add(label42);
             groupBoxGeometricsCalculation.Controls.Add(textBoxZonePlane);
-            groupBoxGeometricsCalculation.Controls.Add(numericBoxAngleAxes);
             groupBoxGeometricsCalculation.Controls.Add(numericBoxAnglePlaneAxis2);
             groupBoxGeometricsCalculation.Controls.Add(numericBoxAnglePlaneAxis1);
             groupBoxGeometricsCalculation.Controls.Add(label40);
@@ -936,12 +959,48 @@
             groupBoxGeometricsCalculation.Controls.Add(panel1);
             groupBoxGeometricsCalculation.Dock = System.Windows.Forms.DockStyle.Bottom;
             groupBoxGeometricsCalculation.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            groupBoxGeometricsCalculation.Location = new System.Drawing.Point(4, 445);
+            groupBoxGeometricsCalculation.Location = new System.Drawing.Point(4, 462);
             groupBoxGeometricsCalculation.Name = "groupBoxGeometricsCalculation";
-            groupBoxGeometricsCalculation.Size = new System.Drawing.Size(696, 133);
+            groupBoxGeometricsCalculation.Size = new System.Drawing.Size(662, 155);
             groupBoxGeometricsCalculation.TabIndex = 31;
             groupBoxGeometricsCalculation.TabStop = false;
             groupBoxGeometricsCalculation.Text = "Geometrics Calculation";
+            // 
+            // numericBoxAnglePlanes
+            // 
+            numericBoxAnglePlanes.BackColor = System.Drawing.Color.Transparent;
+            numericBoxAnglePlanes.DecimalPlaces = 4;
+            numericBoxAnglePlanes.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+            numericBoxAnglePlanes.FooterText = "°";
+            numericBoxAnglePlanes.Location = new System.Drawing.Point(4, 65);
+            numericBoxAnglePlanes.Margin = new System.Windows.Forms.Padding(0);
+            numericBoxAnglePlanes.MaximumSize = new System.Drawing.Size(1000, 100);
+            numericBoxAnglePlanes.MinimumSize = new System.Drawing.Size(10, 20);
+            numericBoxAnglePlanes.Name = "numericBoxAnglePlanes";
+            numericBoxAnglePlanes.ReadOnly = true;
+            numericBoxAnglePlanes.Size = new System.Drawing.Size(72, 25);
+            numericBoxAnglePlanes.TabIndex = 12;
+            numericBoxAnglePlanes.TextBoxBackColor = System.Drawing.SystemColors.Control;
+            numericBoxAnglePlanes.TextBoxTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            numericBoxAnglePlanes.TextFont = new System.Drawing.Font("Segoe UI", 9.75F);
+            // 
+            // numericBoxAngleAxes
+            // 
+            numericBoxAngleAxes.BackColor = System.Drawing.Color.Transparent;
+            numericBoxAngleAxes.DecimalPlaces = 4;
+            numericBoxAngleAxes.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+            numericBoxAngleAxes.FooterText = "°";
+            numericBoxAngleAxes.Location = new System.Drawing.Point(587, 65);
+            numericBoxAngleAxes.Margin = new System.Windows.Forms.Padding(0);
+            numericBoxAngleAxes.MaximumSize = new System.Drawing.Size(1000, 100);
+            numericBoxAngleAxes.MinimumSize = new System.Drawing.Size(10, 20);
+            numericBoxAngleAxes.Name = "numericBoxAngleAxes";
+            numericBoxAngleAxes.ReadOnly = true;
+            numericBoxAngleAxes.Size = new System.Drawing.Size(72, 25);
+            numericBoxAngleAxes.TabIndex = 17;
+            numericBoxAngleAxes.TextBoxBackColor = System.Drawing.SystemColors.Control;
+            numericBoxAngleAxes.TextBoxTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            numericBoxAngleAxes.TextFont = new System.Drawing.Font("Segoe UI", 9.75F);
             // 
             // flowLayoutPanel6
             // 
@@ -954,7 +1013,7 @@
             flowLayoutPanel6.Controls.Add(flowLayoutPanelL2);
             flowLayoutPanel6.Controls.Add(label2);
             flowLayoutPanel6.Controls.Add(numericBoxLengthPlane2);
-            flowLayoutPanel6.Location = new System.Drawing.Point(87, 66);
+            flowLayoutPanel6.Location = new System.Drawing.Point(74, 85);
             flowLayoutPanel6.Margin = new System.Windows.Forms.Padding(0);
             flowLayoutPanel6.Name = "flowLayoutPanel6";
             flowLayoutPanel6.Size = new System.Drawing.Size(225, 39);
@@ -1178,7 +1237,7 @@
             flowLayoutPanel14.Controls.Add(flowLayoutPanelW2);
             flowLayoutPanel14.Controls.Add(label18);
             flowLayoutPanel14.Controls.Add(numericBoxLengthAxis2);
-            flowLayoutPanel14.Location = new System.Drawing.Point(407, 66);
+            flowLayoutPanel14.Location = new System.Drawing.Point(394, 85);
             flowLayoutPanel14.Margin = new System.Windows.Forms.Padding(0);
             flowLayoutPanel14.Name = "flowLayoutPanel14";
             flowLayoutPanel14.Size = new System.Drawing.Size(203, 39);
@@ -1359,7 +1418,7 @@
             flowLayoutPanel11.Controls.Add(flowLayoutPanelW1);
             flowLayoutPanel11.Controls.Add(label14);
             flowLayoutPanel11.Controls.Add(numericBoxLengthAxis1);
-            flowLayoutPanel11.Location = new System.Drawing.Point(406, 22);
+            flowLayoutPanel11.Location = new System.Drawing.Point(393, 22);
             flowLayoutPanel11.Margin = new System.Windows.Forms.Padding(0);
             flowLayoutPanel11.Name = "flowLayoutPanel11";
             flowLayoutPanel11.Size = new System.Drawing.Size(203, 39);
@@ -1530,28 +1589,10 @@
             numericBoxLengthAxis1.TextBoxTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             numericBoxLengthAxis1.TextFont = new System.Drawing.Font("Segoe UI", 9.75F);
             // 
-            // numericBoxAnglePlanes
-            // 
-            numericBoxAnglePlanes.BackColor = System.Drawing.Color.Transparent;
-            numericBoxAnglePlanes.DecimalPlaces = 4;
-            numericBoxAnglePlanes.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            numericBoxAnglePlanes.FooterText = "°";
-            numericBoxAnglePlanes.Location = new System.Drawing.Point(6, 58);
-            numericBoxAnglePlanes.Margin = new System.Windows.Forms.Padding(0);
-            numericBoxAnglePlanes.MaximumSize = new System.Drawing.Size(1000, 100);
-            numericBoxAnglePlanes.MinimumSize = new System.Drawing.Size(10, 20);
-            numericBoxAnglePlanes.Name = "numericBoxAnglePlanes";
-            numericBoxAnglePlanes.ReadOnly = true;
-            numericBoxAnglePlanes.Size = new System.Drawing.Size(72, 25);
-            numericBoxAnglePlanes.TabIndex = 12;
-            numericBoxAnglePlanes.TextBoxBackColor = System.Drawing.SystemColors.Control;
-            numericBoxAnglePlanes.TextBoxTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            numericBoxAnglePlanes.TextFont = new System.Drawing.Font("Segoe UI", 9.75F);
-            // 
             // label42
             // 
             label42.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            label42.Location = new System.Drawing.Point(370, 116);
+            label42.Location = new System.Drawing.Point(357, 135);
             label42.Name = "label42";
             label42.Size = new System.Drawing.Size(175, 16);
             label42.TabIndex = 6;
@@ -1560,30 +1601,12 @@
             // textBoxZonePlane
             // 
             textBoxZonePlane.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-            textBoxZonePlane.Location = new System.Drawing.Point(551, 113);
+            textBoxZonePlane.Location = new System.Drawing.Point(538, 132);
             textBoxZonePlane.Name = "textBoxZonePlane";
             textBoxZonePlane.ReadOnly = true;
             textBoxZonePlane.Size = new System.Drawing.Size(72, 21);
             textBoxZonePlane.TabIndex = 19;
             textBoxZonePlane.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // numericBoxAngleAxes
-            // 
-            numericBoxAngleAxes.BackColor = System.Drawing.Color.Transparent;
-            numericBoxAngleAxes.DecimalPlaces = 4;
-            numericBoxAngleAxes.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            numericBoxAngleAxes.FooterText = "°";
-            numericBoxAngleAxes.Location = new System.Drawing.Point(620, 58);
-            numericBoxAngleAxes.Margin = new System.Windows.Forms.Padding(0);
-            numericBoxAngleAxes.MaximumSize = new System.Drawing.Size(1000, 100);
-            numericBoxAngleAxes.MinimumSize = new System.Drawing.Size(10, 20);
-            numericBoxAngleAxes.Name = "numericBoxAngleAxes";
-            numericBoxAngleAxes.ReadOnly = true;
-            numericBoxAngleAxes.Size = new System.Drawing.Size(72, 25);
-            numericBoxAngleAxes.TabIndex = 17;
-            numericBoxAngleAxes.TextBoxBackColor = System.Drawing.SystemColors.Control;
-            numericBoxAngleAxes.TextBoxTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            numericBoxAngleAxes.TextFont = new System.Drawing.Font("Segoe UI", 9.75F);
             // 
             // numericBoxAnglePlaneAxis2
             // 
@@ -1591,7 +1614,7 @@
             numericBoxAnglePlaneAxis2.DecimalPlaces = 4;
             numericBoxAnglePlaneAxis2.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
             numericBoxAnglePlaneAxis2.FooterText = "°";
-            numericBoxAnglePlaneAxis2.Location = new System.Drawing.Point(325, 79);
+            numericBoxAnglePlaneAxis2.Location = new System.Drawing.Point(312, 98);
             numericBoxAnglePlaneAxis2.Margin = new System.Windows.Forms.Padding(0);
             numericBoxAnglePlaneAxis2.MaximumSize = new System.Drawing.Size(1000, 100);
             numericBoxAnglePlaneAxis2.MinimumSize = new System.Drawing.Size(10, 20);
@@ -1609,7 +1632,7 @@
             numericBoxAnglePlaneAxis1.DecimalPlaces = 4;
             numericBoxAnglePlaneAxis1.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
             numericBoxAnglePlaneAxis1.FooterText = "°";
-            numericBoxAnglePlaneAxis1.Location = new System.Drawing.Point(325, 35);
+            numericBoxAnglePlaneAxis1.Location = new System.Drawing.Point(312, 35);
             numericBoxAnglePlaneAxis1.Margin = new System.Windows.Forms.Padding(0);
             numericBoxAnglePlaneAxis1.MaximumSize = new System.Drawing.Size(1000, 100);
             numericBoxAnglePlaneAxis1.MinimumSize = new System.Drawing.Size(10, 20);
@@ -1624,7 +1647,7 @@
             // label40
             // 
             label40.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
-            label40.Location = new System.Drawing.Point(17, 116);
+            label40.Location = new System.Drawing.Point(4, 135);
             label40.Name = "label40";
             label40.Size = new System.Drawing.Size(176, 16);
             label40.TabIndex = 6;
@@ -1633,7 +1656,7 @@
             // textBoxZoneAxis
             // 
             textBoxZoneAxis.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-            textBoxZoneAxis.Location = new System.Drawing.Point(196, 113);
+            textBoxZoneAxis.Location = new System.Drawing.Point(183, 132);
             textBoxZoneAxis.Name = "textBoxZoneAxis";
             textBoxZoneAxis.ReadOnly = true;
             textBoxZoneAxis.Size = new System.Drawing.Size(72, 21);
@@ -1643,9 +1666,9 @@
             // panel1
             // 
             panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            panel1.Location = new System.Drawing.Point(32, 48);
+            panel1.Location = new System.Drawing.Point(34, 48);
             panel1.Name = "panel1";
-            panel1.Size = new System.Drawing.Size(618, 46);
+            panel1.Size = new System.Drawing.Size(591, 65);
             panel1.TabIndex = 7;
             // 
             // bindingSourceScatteringFactor
@@ -1653,47 +1676,12 @@
             bindingSourceScatteringFactor.DataMember = "TablePlanes";
             bindingSourceScatteringFactor.DataSource = dataSet;
             // 
-            // tableLayoutPanel1
-            // 
-            tableLayoutPanel1.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
-            tableLayoutPanel1.ColumnCount = 2;
-            tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            tableLayoutPanel1.Controls.Add(graphicsBoxSymmetryElements, 0, 0);
-            tableLayoutPanel1.Controls.Add(graphicsBoxGeneralPositions, 1, 0);
-            tableLayoutPanel1.Location = new System.Drawing.Point(4, 190);
-            tableLayoutPanel1.Name = "tableLayoutPanel1";
-            tableLayoutPanel1.RowCount = 1;
-            tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            tableLayoutPanel1.Size = new System.Drawing.Size(682, 245);
-            tableLayoutPanel1.TabIndex = 5;
-            // 
-            // graphicsBoxSymmetryElements
-            // 
-            graphicsBoxSymmetryElements.Dock = System.Windows.Forms.DockStyle.Fill;
-            graphicsBoxSymmetryElements.Fonts = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-            graphicsBoxSymmetryElements.Location = new System.Drawing.Point(3, 3);
-            graphicsBoxSymmetryElements.Name = "graphicsBoxSymmetryElements";
-            graphicsBoxSymmetryElements.Size = new System.Drawing.Size(335, 239);
-            graphicsBoxSymmetryElements.TabIndex = 0;
-            graphicsBoxSymmetryElements.TabStop = false;
-            // 
-            // graphicsBoxGeneralPositions
-            // 
-            graphicsBoxGeneralPositions.Dock = System.Windows.Forms.DockStyle.Fill;
-            graphicsBoxGeneralPositions.Fonts = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-            graphicsBoxGeneralPositions.Location = new System.Drawing.Point(344, 3);
-            graphicsBoxGeneralPositions.Name = "graphicsBoxGeneralPositions";
-            graphicsBoxGeneralPositions.Size = new System.Drawing.Size(335, 239);
-            graphicsBoxGeneralPositions.TabIndex = 0;
-            graphicsBoxGeneralPositions.TabStop = false;
-            // 
             // FormSymmetryInformation
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             captureExtender.SetCapture(this, true);
-            ClientSize = new System.Drawing.Size(704, 582);
+            ClientSize = new System.Drawing.Size(670, 621);
             Controls.Add(groupBoxSymmetryInformation);
             Controls.Add(groupBoxGeometricsCalculation);
             Font = new System.Drawing.Font("Segoe UI Symbol", 10F);
@@ -1705,14 +1693,16 @@
             FormClosing += FormCrystallographicInformation_FormClosing;
             Load += FormCrystallographicInformation_Load;
             groupBoxSymmetryInformation.ResumeLayout(false);
+            tableLayoutPanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)graphicsBoxSymmetryElements).EndInit();
+            ((System.ComponentModel.ISupportInitialize)graphicsBoxGeneralPositions).EndInit();
             tabControl.ResumeLayout(false);
             tabPageGroupInfo.ResumeLayout(false);
             tabPageGroupInfo.PerformLayout();
             groupBoxSpaceGroup.ResumeLayout(false);
-            groupBoxSpaceGroup.PerformLayout();
             groupBoxPointGroup.ResumeLayout(false);
-            groupBoxPointGroup.PerformLayout();
             tabPageConditions.ResumeLayout(false);
+            tabPageConditions.PerformLayout();
             tabPageWyckoff.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataSet).EndInit();
@@ -1743,9 +1733,6 @@
             flowLayoutPanelV1.ResumeLayout(false);
             flowLayoutPanelW1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)bindingSourceScatteringFactor).EndInit();
-            tableLayoutPanel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)graphicsBoxSymmetryElements).EndInit();
-            ((System.ComponentModel.ISupportInitialize)graphicsBoxGeneralPositions).EndInit();
             ResumeLayout(false);
 
         }
@@ -1756,29 +1743,18 @@
         private System.Windows.Forms.TabControl tabControl;
         private System.Windows.Forms.TabPage tabPageGroupInfo;
         private System.Windows.Forms.GroupBox groupBoxSpaceGroup;
-        private System.Windows.Forms.RichTextBox richTextBoxSG_Hall;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.RichTextBox richTextBoxSG_HM;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.RichTextBox richTextBoxSG_SF;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.RichTextBox richTextBoxSG_HM_full;
-        private System.Windows.Forms.RichTextBox richTextBoxLG;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label;
-        private System.Windows.Forms.RichTextBox richTextBoxCS;
         private System.Windows.Forms.GroupBox groupBoxPointGroup;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.RichTextBox richTextBoxPG_HM;
-        private System.Windows.Forms.RichTextBox richTextBoxPG_SF;
         private System.Windows.Forms.TabPage tabPageConditions;
         private System.Windows.Forms.Label label49;
-        private System.Windows.Forms.RichTextBox richTextBoxExtinctionRule;
         private System.Windows.Forms.TabPage tabPageWyckoff;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.RichTextBox richTextBoxSG_Num;
         private System.Windows.Forms.GroupBox groupBoxGeometricsCalculation;
         private Crystallography.Controls.NumericBox numericBoxAnglePlaneAxis2;
         private Crystallography.Controls.NumericBox numericBoxK1;
@@ -1844,42 +1820,53 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelL1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelI1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelK1;
-        private LabelTex labelTex1;
-        private LabelTex labelTex2;
-        private LabelTex labelTex3;
-        private LabelTex labelTex4;
+        private LabelLaTeX labelTex1;
+        private LabelLaTeX labelTex2;
+        private LabelLaTeX labelTex3;
+        private LabelLaTeX labelTex4;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel14;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelU2;
-        private LabelTex labelTex11;
+        private LabelLaTeX labelTex11;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelV2;
-        private LabelTex labelTex13;
+        private LabelLaTeX labelTex13;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelW2;
-        private LabelTex labelTex14;
+        private LabelLaTeX labelTex14;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel6;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelH2;
-        private LabelTex labelTex5;
+        private LabelLaTeX labelTex5;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelK2;
-        private LabelTex labelTex6;
+        private LabelLaTeX labelTex6;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelI2;
-        private LabelTex labelTex7;
+        private LabelLaTeX labelTex7;
         private NumericBox numericBoxI2;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelL2;
-        private LabelTex labelTex8;
+        private LabelLaTeX labelTex8;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel11;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelU1;
-        private LabelTex labelTex9;
+        private LabelLaTeX labelTex9;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelV1;
-        private LabelTex labelTex10;
+        private LabelLaTeX labelTex10;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelW1;
-        private LabelTex labelTex12;
+        private LabelLaTeX labelTex12;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private GraphicsBox graphicsBoxSymmetryElements;
         private GraphicsBox graphicsBoxGeneralPositions;
+        private LabelLaTeX labelLaTexSG_HM;
+        private LabelLaTeX labelLaTexSG_Hall;
+        private LabelLaTeX labelLaTexSG_SF;
+        private LabelLaTeX labelLaTexHM_full;
+        private LabelLaTeX labelLaTexLG;
+        private LabelLaTeX labelLaTexCS;
+        private LabelLaTeX labelLaTexPG_SF;
+        private LabelLaTeX labelLaTexPG_HM;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelExtinctionRule; // 260427Cl
+        private LabelLaTeX labelLaTexSG_Num;
+        private System.Windows.Forms.Label label11;
     }
 }
