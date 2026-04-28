@@ -119,31 +119,28 @@
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="waveLengthControl.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
-  <data name="waveLengthControl.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPゴシック, 9pt</value>
   </data>
   <data name="buttonViewQuarter.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPゴシック, 9pt</value>
   </data>
   <data name="buttonViewQuarter.Text" xml:space="preserve">
     <value>鳥瞰図</value>
   </data>
   <data name="buttonViewFromSurfaceNormal.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPゴシック, 9pt</value>
   </data>
   <data name="buttonViewFromSurfaceNormal.Text" xml:space="preserve">
     <value>表面法線方向</value>
   </data>
   <data name="buttonFromX.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPゴシック, 9pt</value>
   </data>
   <data name="buttonFromX.Text" xml:space="preserve">
     <value>X軸 (試料回転軸) </value>
   </data>
   <data name="buttonViewFromZ.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPゴシック, 9pt</value>
   </data>
   <data name="buttonViewFromZ.Text" xml:space="preserve">
     <value>Z軸 (電子線入射方向) </value>
@@ -157,128 +154,138 @@
     <value>GrowAndShrink</value>
   </data>
   <data name="buttonCalcBSE.Size" type="System.Drawing.Size, System.Drawing">
-    <value>78, 28</value>
+    <value>75, 22</value>
   </data>
   <data name="buttonCalcBSE.Text" xml:space="preserve">
     <value>分布を計算</value>
   </data>
   <data name="checkBoxDrawAxesInStereonet.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPゴシック, 9pt</value>
   </data>
   <data name="checkBoxDrawAxesInStereonet.Location" type="System.Drawing.Point, System.Drawing">
     <value>222, 4</value>
   </data>
   <data name="checkBoxDrawAxesInStereonet.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 22</value>
+    <value>72, 16</value>
   </data>
   <data name="checkBoxDrawAxesInStereonet.Text" xml:space="preserve">
     <value>軸を描画</value>
   </data>
   <data name="label2.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPゴシック, 9pt</value>
   </data>
   <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
     <value>50, 89</value>
   </data>
   <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>56, 36</value>
+    <value>53, 24</value>
   </data>
   <data name="label2.Text" xml:space="preserve">
     <value>検出器の
 中心位置</value>
   </data>
   <data name="graphicsBox.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9.75pt, style=Bold</value>
+    <value>Segoe UI Variable Text, 9.75pt, style=Bold</value>
+  </data>
+  <data name="graphicsBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>5, 46</value>
   </data>
   <data name="colorControlExcessLine.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPゴシック, 9pt</value>
   </data>
   <data name="colorControlExcessLine.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPゴシック, 9pt</value>
   </data>
   <data name="colorControlExcessLine.FooterText" xml:space="preserve">
     <value>色</value>
   </data>
   <data name="colorControlExcessLine.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPゴシック, 9pt</value>
   </data>
   <data name="colorControlExcessLine.Size" type="System.Drawing.Size, System.Drawing">
-    <value>40, 20</value>
+    <value>37, 20</value>
   </data>
   <data name="label11.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPゴシック, 9pt</value>
   </data>
   <data name="label11.Size" type="System.Drawing.Size, System.Drawing">
-    <value>56, 18</value>
+    <value>53, 12</value>
   </data>
   <data name="label11.Text" xml:space="preserve">
     <value>線の太さ</value>
   </data>
   <data name="colorControlString.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPゴシック, 9pt</value>
   </data>
   <data name="colorControlString.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPゴシック, 9pt</value>
   </data>
   <data name="colorControlString.FooterText" xml:space="preserve">
     <value>色</value>
   </data>
   <data name="colorControlString.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPゴシック, 9pt</value>
   </data>
   <data name="colorControlString.Size" type="System.Drawing.Size, System.Drawing">
-    <value>40, 20</value>
+    <value>37, 20</value>
   </data>
   <data name="colorControlBackGround.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPゴシック, 9pt</value>
   </data>
   <data name="colorControlBackGround.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPゴシック, 9pt</value>
   </data>
   <data name="colorControlBackGround.FooterText" xml:space="preserve">
     <value>背景色</value>
   </data>
   <data name="colorControlBackGround.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPゴシック, 9pt</value>
   </data>
   <data name="colorControlBackGround.Size" type="System.Drawing.Size, System.Drawing">
-    <value>64, 20</value>
+    <value>61, 20</value>
   </data>
   <data name="radioButtonKikuchiThresholdOfStructureFactor.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPゴシック, 9pt</value>
   </data>
   <data name="radioButtonKikuchiThresholdOfStructureFactor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>74, 22</value>
+    <value>71, 16</value>
   </data>
   <data name="radioButtonKikuchiThresholdOfStructureFactor.Text" xml:space="preserve">
     <value>構造因子</value>
   </data>
   <data name="checkBoxKikuchiLine_Kinematical.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPゴシック, 9pt</value>
   </data>
   <data name="checkBoxKikuchiLine_Kinematical.Location" type="System.Drawing.Point, System.Drawing">
     <value>19, 58</value>
   </data>
   <data name="checkBoxKikuchiLine_Kinematical.Size" type="System.Drawing.Size, System.Drawing">
-    <value>159, 22</value>
+    <value>156, 16</value>
   </data>
   <data name="checkBoxKikuchiLine_Kinematical.Text" xml:space="preserve">
     <value>構造因子を線の色に反映</value>
   </data>
   <data name="radioButtonKikuchiThresholdOfLength.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPゴシック, 9pt</value>
   </data>
   <data name="radioButtonKikuchiThresholdOfLength.Size" type="System.Drawing.Size, System.Drawing">
-    <value>81, 22</value>
+    <value>82, 16</value>
   </data>
   <data name="radioButtonKikuchiThresholdOfLength.Text" xml:space="preserve">
     <value>1/dの閾値</value>
   </data>
   <data name="numericBoxKikuchiThreadSholdOfStructureFactor.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPゴシック, 9pt</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="numericBoxKikuchiThreadSholdOfStructureFactor.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 7, 0, 0</value>
   </data>
   <data name="numericBoxKikuchiThreadSholdOfStructureFactor.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPゴシック, 9pt</value>
+  </data>
+  <data name="numericBoxKikuchiThreadSholdOfStructureFactor.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 7, 0, 0</value>
   </data>
   <data name="numericBoxKikuchiThreadSholdOfStructureFactor.HeaderText" xml:space="preserve">
     <value>上位</value>
@@ -287,19 +294,25 @@
     <value>138, 55</value>
   </data>
   <data name="label1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPゴシック, 9pt</value>
   </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>44, 18</value>
+    <value>38, 12</value>
   </data>
   <data name="label1.Text" xml:space="preserve">
     <value>サイズ</value>
   </data>
   <data name="numericBoxThicknessStep.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPゴシック, 9pt</value>
+  </data>
+  <data name="numericBoxThicknessStep.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 7, 0, 0</value>
   </data>
   <data name="numericBoxThicknessStep.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPゴシック, 9pt</value>
+  </data>
+  <data name="numericBoxThicknessStep.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 7, 0, 0</value>
   </data>
   <data name="numericBoxThicknessStep.HeaderText" xml:space="preserve">
     <value>ステップ</value>
@@ -310,14 +323,17 @@
   <data name="numericBoxThicknessStep.Size" type="System.Drawing.Size, System.Drawing">
     <value>138, 24</value>
   </data>
-  <data name="numericBoxThicknessStep.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
   <data name="numericBoxMaxNumOfG.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPゴシック, 9pt</value>
+  </data>
+  <data name="numericBoxMaxNumOfG.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 7, 0, 0</value>
   </data>
   <data name="numericBoxMaxNumOfG.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPゴシック, 9pt</value>
+  </data>
+  <data name="numericBoxMaxNumOfG.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 7, 0, 0</value>
   </data>
   <data name="numericBoxMaxNumOfG.HeaderText" xml:space="preserve">
     <value>計算に取り入れる波の数</value>
@@ -326,34 +342,40 @@
     <value>6, 21</value>
   </data>
   <data name="checkBoxNonLocalAbsorption.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPゴシック, 9pt</value>
   </data>
   <data name="checkBoxNonLocalAbsorption.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 124</value>
   </data>
   <data name="checkBoxNonLocalAbsorption.Size" type="System.Drawing.Size, System.Drawing">
-    <value>195, 22</value>
+    <value>190, 16</value>
   </data>
   <data name="checkBoxNonLocalAbsorption.Text" xml:space="preserve">
     <value>非局所形式の吸収モデルを使う</value>
   </data>
   <data name="checkBoxTDSBackground.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPゴシック, 9pt</value>
   </data>
   <data name="checkBoxTDSBackground.Location" type="System.Drawing.Point, System.Drawing">
     <value>234, 124</value>
   </data>
   <data name="checkBoxTDSBackground.Size" type="System.Drawing.Size, System.Drawing">
-    <value>310, 22</value>
+    <value>302, 16</value>
   </data>
   <data name="checkBoxTDSBackground.Text" xml:space="preserve">
     <value>熱散漫散乱 (TDS) 由来のバックグラウンドを含める</value>
   </data>
   <data name="numericBoxThicknessStart.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPゴシック, 9pt</value>
+  </data>
+  <data name="numericBoxThicknessStart.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 7, 0, 0</value>
   </data>
   <data name="numericBoxThicknessStart.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPゴシック, 9pt</value>
+  </data>
+  <data name="numericBoxThicknessStart.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 7, 0, 0</value>
   </data>
   <data name="numericBoxThicknessStart.HeaderText" xml:space="preserve">
     <value>深さ範囲</value>
@@ -364,14 +386,17 @@
   <data name="numericBoxThicknessStart.Size" type="System.Drawing.Size, System.Drawing">
     <value>138, 24</value>
   </data>
-  <data name="numericBoxThicknessStart.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
   <data name="numericBoxThicknessEnd.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPゴシック, 9pt</value>
+  </data>
+  <data name="numericBoxThicknessEnd.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 7, 0, 0</value>
   </data>
   <data name="numericBoxThicknessEnd.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPゴシック, 9pt</value>
+  </data>
+  <data name="numericBoxThicknessEnd.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 7, 0, 0</value>
   </data>
   <data name="numericBoxThicknessEnd.HeaderText" xml:space="preserve">
     <value>～</value>
@@ -379,107 +404,98 @@
   <data name="numericBoxThicknessEnd.Location" type="System.Drawing.Point, System.Drawing">
     <value>177, 54</value>
   </data>
-  <data name="numericBoxThicknessEnd.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
   <data name="buttonStop.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPゴシック, 9pt</value>
   </data>
   <data name="buttonStop.Location" type="System.Drawing.Point, System.Drawing">
-    <value>159, 0</value>
+    <value>151, 0</value>
   </data>
   <data name="buttonStop.Size" type="System.Drawing.Size, System.Drawing">
-    <value>42, 28</value>
+    <value>39, 22</value>
   </data>
   <data name="buttonStop.Text" xml:space="preserve">
     <value>停止</value>
   </data>
-  <data name="groupBoxOutput.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt, style=Bold</value>
-  </data>
-  <data name="groupBoxOutput.Text" xml:space="preserve">
-    <value>出力パラメータ</value>
-  </data>
-  <data name="flowLayoutPanelOutputRange.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 42</value>
-  </data>
-  <data name="flowLayoutPanelOutputRange.Size" type="System.Drawing.Size, System.Drawing">
-    <value>506, 25</value>
-  </data>
   <data name="label9.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPゴシック, 9pt</value>
   </data>
   <data name="label9.Size" type="System.Drawing.Size, System.Drawing">
-    <value>68, 18</value>
+    <value>63, 12</value>
   </data>
   <data name="label9.Text" xml:space="preserve">
     <value>エネルギー</value>
   </data>
   <data name="textBoxEnergy.Location" type="System.Drawing.Point, System.Drawing">
-    <value>68, 0</value>
+    <value>63, 0</value>
   </data>
   <data name="label12.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPゴシック, 9pt</value>
   </data>
   <data name="label12.Location" type="System.Drawing.Point, System.Drawing">
-    <value>104, 3</value>
+    <value>99, 3</value>
   </data>
   <data name="label12.Size" type="System.Drawing.Size, System.Drawing">
-    <value>23, 18</value>
+    <value>22, 12</value>
   </data>
   <data name="trackBarOutputEnergy.Location" type="System.Drawing.Point, System.Drawing">
-    <value>130, 3</value>
+    <value>124, 3</value>
   </data>
   <data name="label5.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPゴシック, 9pt</value>
   </data>
   <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>273, 3</value>
+    <value>267, 3</value>
   </data>
   <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>32, 18</value>
+    <value>29, 12</value>
   </data>
   <data name="label5.Text" xml:space="preserve">
     <value>深さ</value>
   </data>
   <data name="textBoxThickness.Location" type="System.Drawing.Point, System.Drawing">
-    <value>305, 0</value>
+    <value>296, 0</value>
   </data>
   <data name="label6.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPゴシック, 9pt</value>
   </data>
   <data name="label6.Location" type="System.Drawing.Point, System.Drawing">
-    <value>341, 3</value>
+    <value>332, 3</value>
   </data>
   <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>27, 18</value>
+    <value>24, 12</value>
   </data>
   <data name="trackBarOutputThickness.Location" type="System.Drawing.Point, System.Drawing">
-    <value>371, 3</value>
+    <value>359, 3</value>
+  </data>
+  <data name="flowLayoutPanelOutputRange.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 42</value>
+  </data>
+  <data name="flowLayoutPanelOutputRange.Size" type="System.Drawing.Size, System.Drawing">
+    <value>494, 25</value>
   </data>
   <data name="label3.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPゴシック, 9pt</value>
   </data>
   <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>61, 18</value>
+    <value>57, 12</value>
   </data>
   <data name="label3.Text" xml:space="preserve">
     <value>ネガ/ポジ</value>
   </data>
   <data name="label4.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPゴシック, 9pt</value>
   </data>
   <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>44, 18</value>
+    <value>39, 12</value>
   </data>
   <data name="label4.Text" xml:space="preserve">
     <value>カラー</value>
   </data>
   <data name="checkBoxWithBSEDistribution.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPゴシック, 9pt</value>
   </data>
   <data name="checkBoxWithBSEDistribution.Size" type="System.Drawing.Size, System.Drawing">
-    <value>351, 22</value>
+    <value>338, 16</value>
   </data>
   <data name="checkBoxWithBSEDistribution.Text" xml:space="preserve">
     <value>後方散乱電子のエネルギー・方位分布を考慮して画像を合成</value>
@@ -497,64 +513,76 @@
     <value>226, 18</value>
   </data>
   <data name="label8.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPゴシック, 9pt</value>
   </data>
   <data name="label8.Location" type="System.Drawing.Point, System.Drawing">
     <value>62, 95</value>
   </data>
   <data name="label8.Size" type="System.Drawing.Size, System.Drawing">
-    <value>32, 18</value>
+    <value>29, 12</value>
   </data>
   <data name="label8.Text" xml:space="preserve">
     <value>最大</value>
   </data>
   <data name="label7.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPゴシック, 9pt</value>
   </data>
   <data name="label7.Location" type="System.Drawing.Point, System.Drawing">
     <value>62, 71</value>
   </data>
   <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>32, 18</value>
+    <value>29, 12</value>
   </data>
   <data name="label7.Text" xml:space="preserve">
     <value>最小</value>
   </data>
   <data name="label10.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPゴシック, 9pt</value>
   </data>
   <data name="label10.Size" type="System.Drawing.Size, System.Drawing">
-    <value>44, 18</value>
+    <value>41, 12</value>
   </data>
   <data name="label10.Text" xml:space="preserve">
     <value>明るさ</value>
   </data>
+  <data name="groupBoxOutput.Font" type="System.Drawing.Font, System.Drawing">
+    <value>BIZ UDPゴシック, 9pt, style=Bold</value>
+  </data>
+  <data name="groupBoxOutput.Text" xml:space="preserve">
+    <value>出力パラメータ</value>
+  </data>
   <data name="checkBoxShowOverlays.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPゴシック, 9pt</value>
   </data>
   <data name="checkBoxShowOverlays.Location" type="System.Drawing.Point, System.Drawing">
-    <value>63, 5</value>
+    <value>59, 5</value>
   </data>
   <data name="checkBoxShowOverlays.Size" type="System.Drawing.Size, System.Drawing">
-    <value>111, 22</value>
+    <value>108, 16</value>
   </data>
   <data name="checkBoxShowOverlays.Text" xml:space="preserve">
     <value>補助図形を表示</value>
   </data>
   <data name="buttonSaveImage.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPゴシック, 9pt</value>
   </data>
   <data name="buttonSaveImage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>54, 28</value>
+    <value>50, 22</value>
   </data>
   <data name="buttonSaveImage.Text" xml:space="preserve">
     <value>コピー</value>
   </data>
   <data name="numericBoxEnergyEnd.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPゴシック, 9pt</value>
+  </data>
+  <data name="numericBoxEnergyEnd.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 7, 0, 0</value>
   </data>
   <data name="numericBoxEnergyEnd.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPゴシック, 9pt</value>
+  </data>
+  <data name="numericBoxEnergyEnd.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 7, 0, 0</value>
   </data>
   <data name="numericBoxEnergyEnd.HeaderText" xml:space="preserve">
     <value>～</value>
@@ -562,14 +590,17 @@
   <data name="numericBoxEnergyEnd.Location" type="System.Drawing.Point, System.Drawing">
     <value>180, 87</value>
   </data>
-  <data name="numericBoxEnergyEnd.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
   <data name="numericBoxEnergyStart.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPゴシック, 9pt</value>
+  </data>
+  <data name="numericBoxEnergyStart.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 7, 0, 0</value>
   </data>
   <data name="numericBoxEnergyStart.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPゴシック, 9pt</value>
+  </data>
+  <data name="numericBoxEnergyStart.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 7, 0, 0</value>
   </data>
   <data name="numericBoxEnergyStart.HeaderText" xml:space="preserve">
     <value>エネルギー範囲</value>
@@ -580,14 +611,17 @@
   <data name="numericBoxEnergyStart.Size" type="System.Drawing.Size, System.Drawing">
     <value>176, 24</value>
   </data>
-  <data name="numericBoxEnergyStart.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
   <data name="numericBoxEnergyStep.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPゴシック, 9pt</value>
+  </data>
+  <data name="numericBoxEnergyStep.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 7, 0, 0</value>
   </data>
   <data name="numericBoxEnergyStep.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPゴシック, 9pt</value>
+  </data>
+  <data name="numericBoxEnergyStep.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 7, 0, 0</value>
   </data>
   <data name="numericBoxEnergyStep.HeaderText" xml:space="preserve">
     <value>ステップ</value>
@@ -598,140 +632,113 @@
   <data name="numericBoxEnergyStep.Size" type="System.Drawing.Size, System.Drawing">
     <value>134, 24</value>
   </data>
-  <data name="numericBoxEnergyStep.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
   <data name="label13.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPゴシック, 9pt</value>
   </data>
   <data name="label13.Location" type="System.Drawing.Point, System.Drawing">
     <value>231, 530</value>
   </data>
   <data name="label13.Size" type="System.Drawing.Size, System.Drawing">
-    <value>65, 18</value>
+    <value>64, 12</value>
   </data>
   <data name="label13.Text" xml:space="preserve">
     <value>深さ (nm)</value>
   </data>
   <data name="checkBoxShowDyanmicalEBSD.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPゴシック, 9pt</value>
   </data>
   <data name="checkBoxShowDyanmicalEBSD.Location" type="System.Drawing.Point, System.Drawing">
-    <value>180, 5</value>
+    <value>173, 5</value>
   </data>
   <data name="checkBoxShowDyanmicalEBSD.Size" type="System.Drawing.Size, System.Drawing">
-    <value>325, 22</value>
+    <value>321, 16</value>
   </data>
   <data name="checkBoxShowDyanmicalEBSD.Text" xml:space="preserve">
     <value>動力学EBSDパターンを表示 (要マスターパターン構築)</value>
   </data>
   <data name="checkBoxDrawDetectorOutline.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPゴシック, 9pt</value>
   </data>
   <data name="checkBoxDrawDetectorOutline.Size" type="System.Drawing.Size, System.Drawing">
-    <value>99, 22</value>
+    <value>96, 16</value>
   </data>
   <data name="checkBoxDrawDetectorOutline.Text" xml:space="preserve">
     <value>検出器の輪郭</value>
   </data>
-  <data name="tabControl1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt, style=Bold</value>
-  </data>
-  <data name="tabPage1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
-  <data name="tabPage1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 27</value>
-  </data>
-  <data name="tabPage1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>306, 660</value>
-  </data>
-  <data name="tabPage1.Text" xml:space="preserve">
-    <value>SEM-EBSD設定</value>
-  </data>
-  <data name="groupBoxEBSDGeometry.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
-  <data name="groupBoxEBSDGeometry.Text" xml:space="preserve">
-    <value>EBSDのセッティング</value>
-  </data>
   <data name="label17.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPゴシック, 9pt</value>
   </data>
   <data name="label17.Size" type="System.Drawing.Size, System.Drawing">
-    <value>80, 18</value>
+    <value>77, 12</value>
   </data>
   <data name="label17.Text" xml:space="preserve">
     <value>検出器の傾き</value>
   </data>
   <data name="label16.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPゴシック, 9pt</value>
   </data>
   <data name="label16.Location" type="System.Drawing.Point, System.Drawing">
     <value>25, 55</value>
   </data>
   <data name="label16.Size" type="System.Drawing.Size, System.Drawing">
-    <value>80, 18</value>
+    <value>77, 12</value>
   </data>
   <data name="label16.Text" xml:space="preserve">
     <value>検出器の半径</value>
   </data>
+  <data name="groupBoxEBSDGeometry.Font" type="System.Drawing.Font, System.Drawing">
+    <value>BIZ UDPゴシック, 9pt</value>
+  </data>
+  <data name="groupBoxEBSDGeometry.Text" xml:space="preserve">
+    <value>EBSDのセッティング</value>
+  </data>
   <data name="groupBoxSampleCondition.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPゴシック, 9pt</value>
   </data>
   <data name="groupBoxSampleCondition.Text" xml:space="preserve">
     <value>SEMのセッティング</value>
   </data>
-  <data name="label18.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+  <data name="tabPage1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>BIZ UDPゴシック, 9pt</value>
   </data>
-  <data name="label18.Size" type="System.Drawing.Size, System.Drawing">
-    <value>68, 18</value>
+  <data name="tabPage1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 23</value>
   </data>
-  <data name="label18.Text" xml:space="preserve">
-    <value>試料の傾き</value>
+  <data name="tabPage1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>306, 664</value>
+  </data>
+  <data name="tabPage1.Text" xml:space="preserve">
+    <value>SEM-EBSD設定</value>
   </data>
   <data name="tabPage2.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt, style=Bold</value>
+    <value>BIZ UDPゴシック, 9pt, style=Bold</value>
   </data>
   <data name="tabPage2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 27</value>
+    <value>4, 22</value>
   </data>
   <data name="tabPage2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>306, 660</value>
+    <value>306, 665</value>
   </data>
   <data name="tabPage2.Text" xml:space="preserve">
     <value>BSE分布</value>
   </data>
-  <data name="tabPage3.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
-  <data name="tabPage3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 27</value>
-  </data>
-  <data name="tabPage3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>306, 660</value>
-  </data>
-  <data name="tabPage3.Text" xml:space="preserve">
-    <value>補助図形</value>
-  </data>
   <data name="checkBoxShowMesh.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPゴシック, 9pt</value>
   </data>
   <data name="checkBoxShowMesh.Location" type="System.Drawing.Point, System.Drawing">
     <value>126, 25</value>
   </data>
   <data name="checkBoxShowMesh.Size" type="System.Drawing.Size, System.Drawing">
-    <value>111, 22</value>
+    <value>102, 16</value>
   </data>
   <data name="checkBoxShowMesh.Text" xml:space="preserve">
     <value>メッシュを表示</value>
   </data>
   <data name="checkBoxShowCircle.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPゴシック, 9pt</value>
   </data>
   <data name="checkBoxShowCircle.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 22</value>
+    <value>72, 16</value>
   </data>
   <data name="checkBoxShowCircle.Text" xml:space="preserve">
     <value>円を表示</value>
@@ -740,55 +747,61 @@
     <value>文字設定</value>
   </data>
   <data name="checkBoxShowKikuchiLines.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPゴシック, 9pt</value>
   </data>
   <data name="checkBoxShowKikuchiLines.Size" type="System.Drawing.Size, System.Drawing">
-    <value>99, 22</value>
+    <value>96, 16</value>
   </data>
   <data name="checkBoxShowKikuchiLines.Text" xml:space="preserve">
     <value>菊池線を表示</value>
   </data>
   <data name="groupBoxLatticePlanes.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPゴシック, 9pt</value>
   </data>
   <data name="groupBoxLatticePlanes.Text" xml:space="preserve">
     <value>菊池線の範囲</value>
   </data>
   <data name="checkBoxShowGIndices.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPゴシック, 9pt</value>
   </data>
   <data name="checkBoxShowGIndices.Size" type="System.Drawing.Size, System.Drawing">
-    <value>135, 22</value>
+    <value>132, 16</value>
   </data>
   <data name="checkBoxShowGIndices.Text" xml:space="preserve">
     <value>菊池線の指数を表示</value>
   </data>
   <data name="checkBoxShowZoneAxisIndices.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPゴシック, 9pt</value>
   </data>
   <data name="checkBoxShowZoneAxisIndices.Size" type="System.Drawing.Size, System.Drawing">
-    <value>135, 22</value>
+    <value>132, 16</value>
   </data>
   <data name="checkBoxShowZoneAxisIndices.Text" xml:space="preserve">
     <value>晶帯軸の指数を表示</value>
   </data>
-  <data name="groupBoxSimulationParameters.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt, style=Bold</value>
+  <data name="tabPage3.Font" type="System.Drawing.Font, System.Drawing">
+    <value>BIZ UDPゴシック, 9pt</value>
   </data>
-  <data name="groupBoxSimulationParameters.Location" type="System.Drawing.Point, System.Drawing">
-    <value>13, 464</value>
+  <data name="tabPage3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
   </data>
-  <data name="groupBoxSimulationParameters.Text" xml:space="preserve">
-    <value>動力学計算のパラメータ</value>
+  <data name="tabPage3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>306, 665</value>
+  </data>
+  <data name="tabPage3.Text" xml:space="preserve">
+    <value>補助図形</value>
+  </data>
+  <data name="tabControl1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>BIZ UDPゴシック, 10pt</value>
   </data>
   <data name="labelMasterPatternGrid.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPゴシック, 9pt</value>
   </data>
   <data name="labelMasterPatternGrid.Location" type="System.Drawing.Point, System.Drawing">
     <value>255, 25</value>
   </data>
   <data name="labelMasterPatternGrid.Size" type="System.Drawing.Size, System.Drawing">
-    <value>56, 18</value>
+    <value>47, 12</value>
   </data>
   <data name="labelMasterPatternGrid.Text" xml:space="preserve">
     <value>グリッド</value>
@@ -796,182 +809,191 @@
   <data name="comboBoxMasterPatternGrid.Location" type="System.Drawing.Point, System.Drawing">
     <value>314, 21</value>
   </data>
-  <data name="flowLayoutPanelMasterPatternSelectors.Size" type="System.Drawing.Size, System.Drawing">
-    <value>498, 27</value>
+  <data name="groupBoxSimulationParameters.Font" type="System.Drawing.Font, System.Drawing">
+    <value>BIZ UDPゴシック, 9pt, style=Bold</value>
+  </data>
+  <data name="groupBoxSimulationParameters.Location" type="System.Drawing.Point, System.Drawing">
+    <value>13, 464</value>
+  </data>
+  <data name="groupBoxSimulationParameters.Text" xml:space="preserve">
+    <value>動力学計算のパラメータ</value>
   </data>
   <data name="labelMasterPatternEnergy.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPゴシック, 9pt</value>
   </data>
   <data name="labelMasterPatternEnergy.Size" type="System.Drawing.Size, System.Drawing">
-    <value>68, 18</value>
+    <value>63, 12</value>
   </data>
   <data name="labelMasterPatternEnergy.Text" xml:space="preserve">
     <value>エネルギー</value>
   </data>
   <data name="textBoxMasterPatternEnergy.Location" type="System.Drawing.Point, System.Drawing">
-    <value>72, 2</value>
+    <value>67, 2</value>
   </data>
   <data name="labelMasterPatternEnergyUnit.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPゴシック, 9pt</value>
   </data>
   <data name="labelMasterPatternEnergyUnit.Location" type="System.Drawing.Point, System.Drawing">
-    <value>102, 3</value>
+    <value>97, 3</value>
   </data>
   <data name="labelMasterPatternEnergyUnit.Size" type="System.Drawing.Size, System.Drawing">
-    <value>23, 18</value>
+    <value>22, 12</value>
   </data>
   <data name="trackBarMasterPatternEnergy.Location" type="System.Drawing.Point, System.Drawing">
-    <value>131, 4</value>
+    <value>125, 4</value>
   </data>
   <data name="labelMasterPatternDepth.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPゴシック, 9pt</value>
   </data>
   <data name="labelMasterPatternDepth.Location" type="System.Drawing.Point, System.Drawing">
-    <value>271, 3</value>
+    <value>265, 3</value>
   </data>
   <data name="labelMasterPatternDepth.Size" type="System.Drawing.Size, System.Drawing">
-    <value>32, 18</value>
+    <value>29, 12</value>
   </data>
   <data name="labelMasterPatternDepth.Text" xml:space="preserve">
     <value>深さ</value>
   </data>
   <data name="textBoxMasterPatternDepth.Location" type="System.Drawing.Point, System.Drawing">
-    <value>303, 2</value>
+    <value>294, 2</value>
   </data>
   <data name="labelMasterPatternDepthUnit.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPゴシック, 9pt</value>
   </data>
   <data name="labelMasterPatternDepthUnit.Location" type="System.Drawing.Point, System.Drawing">
-    <value>333, 3</value>
+    <value>324, 3</value>
   </data>
   <data name="labelMasterPatternDepthUnit.Size" type="System.Drawing.Size, System.Drawing">
-    <value>27, 18</value>
+    <value>24, 12</value>
   </data>
   <data name="trackBarMasterPatternDepth.Location" type="System.Drawing.Point, System.Drawing">
-    <value>366, 4</value>
+    <value>354, 4</value>
+  </data>
+  <data name="flowLayoutPanelMasterPatternSelectors.Size" type="System.Drawing.Size, System.Drawing">
+    <value>486, 27</value>
   </data>
   <data name="labelMasterPattern2DHemisphere.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPゴシック, 9pt</value>
   </data>
   <data name="labelMasterPattern2DHemisphere.Location" type="System.Drawing.Point, System.Drawing">
-    <value>62, 6</value>
+    <value>58, 6</value>
   </data>
   <data name="labelMasterPattern2DHemisphere.Size" type="System.Drawing.Size, System.Drawing">
-    <value>32, 18</value>
+    <value>29, 12</value>
   </data>
   <data name="labelMasterPattern2DHemisphere.Text" xml:space="preserve">
     <value>半球</value>
   </data>
   <data name="comboBoxMasterPattern2DHemisphere.Location" type="System.Drawing.Point, System.Drawing">
-    <value>98, 2</value>
+    <value>91, 2</value>
   </data>
   <data name="buttonCreateMasterPattern.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPゴシック, 9pt</value>
   </data>
   <data name="buttonCreateMasterPattern.Size" type="System.Drawing.Size, System.Drawing">
-    <value>150, 28</value>
+    <value>142, 22</value>
   </data>
   <data name="buttonCreateMasterPattern.Text" xml:space="preserve">
     <value>マスターパターンを構築</value>
   </data>
-  <data name="groupBoxMasterPattern.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9.75pt, style=Bold</value>
-  </data>
-  <data name="groupBoxMasterPattern.Text" xml:space="preserve">
-    <value>マスターパターン</value>
-  </data>
-  <data name="flowLayoutPanel5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>214, 28</value>
-  </data>
   <data name="buttonMasterPattern2DCopy.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPゴシック, 9pt</value>
   </data>
   <data name="buttonMasterPattern2DCopy.Size" type="System.Drawing.Size, System.Drawing">
-    <value>54, 28</value>
+    <value>50, 22</value>
   </data>
   <data name="buttonMasterPattern2DCopy.Text" xml:space="preserve">
     <value>コピー</value>
   </data>
-  <data name="flowLayoutPanel4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>277, 28</value>
+  <data name="flowLayoutPanel5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>207, 27</value>
   </data>
   <data name="buttonMasterPattern3DCopy.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPゴシック, 9pt</value>
   </data>
   <data name="buttonMasterPattern3DCopy.Size" type="System.Drawing.Size, System.Drawing">
-    <value>54, 28</value>
+    <value>50, 22</value>
   </data>
   <data name="buttonMasterPattern3DCopy.Text" xml:space="preserve">
     <value>コピー</value>
   </data>
   <data name="checkBoxMasterPattern3DAxisLabel.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPゴシック, 9pt</value>
   </data>
   <data name="checkBoxMasterPattern3DAxisLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>66, 3</value>
+    <value>62, 3</value>
   </data>
   <data name="checkBoxMasterPattern3DAxisLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>111, 22</value>
+    <value>107, 16</value>
   </data>
   <data name="checkBoxMasterPattern3DAxisLabel.Text" xml:space="preserve">
     <value>結晶軸のラベル</value>
   </data>
   <data name="checkBoxMasterPattern3DAxisArrows.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPゴシック, 9pt</value>
   </data>
   <data name="checkBoxMasterPattern3DAxisArrows.Location" type="System.Drawing.Point, System.Drawing">
-    <value>183, 3</value>
+    <value>175, 3</value>
   </data>
   <data name="checkBoxMasterPattern3DAxisArrows.Size" type="System.Drawing.Size, System.Drawing">
-    <value>91, 22</value>
+    <value>91, 16</value>
   </data>
   <data name="checkBoxMasterPattern3DAxisArrows.Text" xml:space="preserve">
     <value>結晶軸の3D</value>
+  </data>
+  <data name="flowLayoutPanel4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>269, 22</value>
   </data>
   <data name="flowLayoutPanel3.Location" type="System.Drawing.Point, System.Drawing">
     <value>11, 637</value>
   </data>
   <data name="flowLayoutPanel3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>204, 28</value>
-  </data>
-  <data name="flowLayoutPanelMasterPattern3DViewAlong.Size" type="System.Drawing.Size, System.Drawing">
-    <value>244, 28</value>
+    <value>193, 22</value>
   </data>
   <data name="buttonMasterPattern3DViewAlong.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPゴシック, 9pt</value>
   </data>
   <data name="buttonMasterPattern3DViewAlong.Size" type="System.Drawing.Size, System.Drawing">
-    <value>102, 28</value>
+    <value>98, 22</value>
   </data>
   <data name="buttonMasterPattern3DViewAlong.Text" xml:space="preserve">
     <value>指定軸から投影</value>
   </data>
   <data name="labelMasterPattern3DViewAlongOpenBracket.Location" type="System.Drawing.Point, System.Drawing">
-    <value>102, 3</value>
+    <value>98, 3</value>
   </data>
   <data name="numericBoxMasterPattern3DViewAlongU.Location" type="System.Drawing.Point, System.Drawing">
-    <value>114, 0</value>
+    <value>110, 0</value>
   </data>
   <data name="numericBoxMasterPattern3DViewAlongV.Location" type="System.Drawing.Point, System.Drawing">
-    <value>154, 0</value>
+    <value>150, 0</value>
   </data>
   <data name="numericBoxMasterPattern3DViewAlongW.Location" type="System.Drawing.Point, System.Drawing">
-    <value>194, 0</value>
+    <value>190, 0</value>
   </data>
   <data name="labelMasterPattern3DViewAlongCloseBracket.Location" type="System.Drawing.Point, System.Drawing">
-    <value>232, 3</value>
+    <value>228, 3</value>
+  </data>
+  <data name="flowLayoutPanelMasterPattern3DViewAlong.Size" type="System.Drawing.Size, System.Drawing">
+    <value>240, 25</value>
+  </data>
+  <data name="groupBoxMasterPattern.Font" type="System.Drawing.Font, System.Drawing">
+    <value>BIZ UDPゴシック, 10pt</value>
+  </data>
+  <data name="groupBoxMasterPattern.Text" xml:space="preserve">
+    <value>マスターパターン</value>
+  </data>
+  <data name="flowLayoutPanel1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 18</value>
+  </data>
+  <data name="flowLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>514, 24</value>
   </data>
   <data name="groupBoxEBSDPattern.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 10pt, style=Bold</value>
+    <value>BIZ UDPゴシック, 10pt</value>
   </data>
   <data name="groupBoxEBSDPattern.Text" xml:space="preserve">
     <value>EBSDパターン</value>
-  </data>
-  <data name="flowLayoutPanel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 24</value>
-  </data>
-  <data name="flowLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>514, 30</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

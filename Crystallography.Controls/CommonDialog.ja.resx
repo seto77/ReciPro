@@ -131,7 +131,7 @@
     <value>723, 0</value>
   </data>
   <data name="checkBoxCloseWindow.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="checkBoxCloseWindow.Location" type="System.Drawing.Point, System.Drawing">
     <value>480, 0</value>
@@ -143,7 +143,7 @@
     <value>起動後にこのウィンドウを自動で閉じる</value>
   </data>
   <data name="labelAuthor.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9.75pt</value>
+    <value>BIZ UDPGothic, 9.75pt</value>
   </data>
   <data name="labelAuthor.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>

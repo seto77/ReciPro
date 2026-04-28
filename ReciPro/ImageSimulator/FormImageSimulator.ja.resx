@@ -131,7 +131,7 @@
     <value>576, 164</value>
   </data>
   <data name="groupBoxSimulation.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9.75pt, style=Bold</value>
+    <value>BIZ UDPGothic, 9.75pt, style=Bold</value>
   </data>
   <data name="groupBoxSimulation.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 494</value>
@@ -147,7 +147,7 @@
     <value>シミュレーション条件</value>
   </data>
   <data name="groupBoxOpticalProperty.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9.75pt, style=Bold</value>
+    <value>BIZ UDPGothic, 9.75pt, style=Bold</value>
   </data>
   <data name="groupBoxOpticalProperty.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 77</value>
@@ -177,16 +177,16 @@
     <value>160, 15</value>
   </data>
   <data name="labelMousePositionValue.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="label33.Location" type="System.Drawing.Point, System.Drawing">
     <value>457, 6</value>
   </data>
   <data name="labelMousePositionY.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="labelMousePositionX.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="label31.Location" type="System.Drawing.Point, System.Drawing">
     <value>377, 6</value>
@@ -207,7 +207,7 @@
     <value>497, 6</value>
   </data>
   <data name="groupBoxAdjust.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="groupBoxAdjust.Size" type="System.Drawing.Size, System.Drawing">
     <value>368, 111</value>
@@ -216,10 +216,10 @@
     <value>画像調整</value>
   </data>
   <data name="numericBoxGaussianBlurRadius.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="numericBoxGaussianBlurRadius.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="numericBoxGaussianBlurRadius.Location" type="System.Drawing.Point, System.Drawing">
     <value>287, 77</value>
@@ -255,7 +255,7 @@
     <value>362, 23</value>
   </data>
   <data name="checkBoxGaussianBlur.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 8pt</value>
+    <value>BIZ UDPGothic, 8pt</value>
   </data>
   <data name="checkBoxGaussianBlur.Location" type="System.Drawing.Point, System.Drawing">
     <value>131, 79</value>
@@ -282,7 +282,7 @@
     <value>6, 111</value>
   </data>
   <data name="groupBoxNormalization.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="groupBoxNormalization.Location" type="System.Drawing.Point, System.Drawing">
     <value>377, 3</value>
@@ -294,7 +294,7 @@
     <value>強度の規格化</value>
   </data>
   <data name="checkBoxNormarizeIndividually.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="checkBoxNormarizeIndividually.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>5, 0, 0, 0</value>
@@ -313,7 +313,7 @@
     <value>105, 46</value>
   </data>
   <data name="checkBoxIntensityMin.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="checkBoxIntensityMin.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 0</value>
@@ -328,7 +328,7 @@
     <value>最小</value>
   </data>
   <data name="numericBoxIntensityMin.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="numericBoxIntensityMin.Location" type="System.Drawing.Point, System.Drawing">
     <value>54, 0</value>
@@ -343,7 +343,7 @@
     <value>シミュレーション画像の最小強度</value>
   </data>
   <data name="checkBoxIntensityMax.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="checkBoxIntensityMax.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 23</value>
@@ -358,10 +358,10 @@
     <value>最大</value>
   </data>
   <data name="numericBoxIntensityMax.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="numericBoxIntensityMax.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="numericBoxIntensityMax.Location" type="System.Drawing.Point, System.Drawing">
     <value>54, 23</value>
@@ -397,7 +397,7 @@
     <value>STEM像</value>
   </data>
   <data name="radioButtonSTEM_target_TDS.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="radioButtonSTEM_target_TDS.Location" type="System.Drawing.Point, System.Drawing">
     <value>2, 84</value>
@@ -412,7 +412,7 @@
     <value>75, 23</value>
   </data>
   <data name="radioButtonSTEM_target_elas.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="radioButtonSTEM_target_elas.Location" type="System.Drawing.Point, System.Drawing">
     <value>2, 61</value>
@@ -430,7 +430,7 @@
     <value>弾性</value>
   </data>
   <data name="radioButtonSTEM_target_both.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="radioButtonSTEM_target_both.Location" type="System.Drawing.Point, System.Drawing">
     <value>2, 20</value>
@@ -452,7 +452,7 @@
     <value>GrowAndShrink</value>
   </data>
   <data name="groupBoxDisplay.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="groupBoxDisplay.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 114</value>
@@ -467,10 +467,10 @@
     <value>表示オプション</value>
   </data>
   <data name="colorControlScale.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 8pt</value>
+    <value>BIZ UDPGothic, 8pt</value>
   </data>
   <data name="colorControlScale.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="colorControlScale.HeaderText" xml:space="preserve">
     <value>カラー</value>
@@ -485,10 +485,10 @@
     <value>64, 26</value>
   </data>
   <data name="numericBoxScaleLength.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="numericBoxScaleLength.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="numericBoxScaleLength.HeaderText" xml:space="preserve">
     <value>長さ</value>
@@ -500,7 +500,7 @@
     <value>108, 26</value>
   </data>
   <data name="checkBoxShowScale.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="checkBoxShowScale.Location" type="System.Drawing.Point, System.Drawing">
     <value>303, 18</value>
@@ -518,7 +518,7 @@
     <value>スケール</value>
   </data>
   <data name="colorControlLabel.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="colorControlLabel.HeaderText" xml:space="preserve">
     <value>カラー</value>
@@ -536,10 +536,10 @@
     <value>64, 26</value>
   </data>
   <data name="numericBoxLabelFontSize.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="numericBoxLabelFontSize.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="numericBoxLabelFontSize.HeaderText" xml:space="preserve">
     <value>サイズ</value>
@@ -551,7 +551,7 @@
     <value>83, 26</value>
   </data>
   <data name="checkBoxShowLabel.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="checkBoxShowLabel.Location" type="System.Drawing.Point, System.Drawing">
     <value>83, 18</value>
@@ -569,7 +569,7 @@
     <value>ラベル</value>
   </data>
   <data name="checkBoxShowUnitcell.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="checkBoxShowUnitcell.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -593,7 +593,7 @@
     <value>316, 215</value>
   </data>
   <data name="groupBoxSerialImage.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9.75pt</value>
+    <value>BIZ UDPGothic, 9.75pt</value>
   </data>
   <data name="groupBoxSerialImage.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 441</value>
@@ -674,7 +674,7 @@
     <value>290, 25</value>
   </data>
   <data name="checkBoxSerialThickness.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="checkBoxSerialThickness.Location" type="System.Drawing.Point, System.Drawing">
     <value>8, 3</value>
@@ -686,7 +686,7 @@
     <value>試料厚み (nm)</value>
   </data>
   <data name="checkBoxSerialDefocus.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="checkBoxSerialDefocus.Size" type="System.Drawing.Size, System.Drawing">
     <value>132, 22</value>
@@ -701,7 +701,7 @@
     <value>290, 22</value>
   </data>
   <data name="label6.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
     <value>73, 18</value>
@@ -710,7 +710,7 @@
     <value>横軸の方向:</value>
   </data>
   <data name="radioButtonHorizontalDefocus.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="radioButtonHorizontalDefocus.Location" type="System.Drawing.Point, System.Drawing">
     <value>73, 0</value>
@@ -722,7 +722,7 @@
     <value>デフォーカス</value>
   </data>
   <data name="radioButtonHorizontalThickness.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="radioButtonHorizontalThickness.Location" type="System.Drawing.Point, System.Drawing">
     <value>177, 0</value>
@@ -743,7 +743,7 @@
     <value>290, 22</value>
   </data>
   <data name="radioButtonSingleMode.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="radioButtonSingleMode.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 0</value>
@@ -758,7 +758,7 @@
     <value>単一画像</value>
   </data>
   <data name="radioButtonSerialMode.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="radioButtonSerialMode.Location" type="System.Drawing.Point, System.Drawing">
     <value>83, 0</value>
@@ -773,7 +773,7 @@
     <value>シリーズ画像</value>
   </data>
   <data name="groupBoxPotentialOption.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="groupBoxPotentialOption.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 221</value>
@@ -795,7 +795,7 @@
     <value>282, 150</value>
   </data>
   <data name="radioButtonPotentialModeMagAndPhase.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="radioButtonPotentialModeMagAndPhase.Size" type="System.Drawing.Size, System.Drawing">
     <value>86, 22</value>
@@ -810,7 +810,7 @@
     <value>204, 24</value>
   </data>
   <data name="radioButtonPotentialShowMagAndPhase.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="radioButtonPotentialShowMagAndPhase.Size" type="System.Drawing.Size, System.Drawing">
     <value>50, 22</value>
@@ -819,7 +819,7 @@
     <value>両方</value>
   </data>
   <data name="radioButtonPotentialShowMag.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="radioButtonPotentialShowMag.Size" type="System.Drawing.Size, System.Drawing">
     <value>74, 22</value>
@@ -828,7 +828,7 @@
     <value>振幅のみ</value>
   </data>
   <data name="radioButtonPotentialShowPhase.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="radioButtonPotentialShowPhase.Location" type="System.Drawing.Point, System.Drawing">
     <value>129, 1</value>
@@ -843,7 +843,7 @@
     <value>10, 46</value>
   </data>
   <data name="label10.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 8pt</value>
+    <value>BIZ UDPGothic, 8pt</value>
   </data>
   <data name="label10.Size" type="System.Drawing.Size, System.Drawing">
     <value>85, 17</value>
@@ -852,7 +852,7 @@
     <value>位相のスケール</value>
   </data>
   <data name="radioButtonPotentialModeRealAndImag.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="radioButtonPotentialModeRealAndImag.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 104</value>
@@ -870,7 +870,7 @@
     <value>228, 24</value>
   </data>
   <data name="radioButtonPotentialShowRealAndImag.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="radioButtonPotentialShowRealAndImag.Size" type="System.Drawing.Size, System.Drawing">
     <value>50, 22</value>
@@ -879,7 +879,7 @@
     <value>両方</value>
   </data>
   <data name="radioButtonPotentialShowReal.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="radioButtonPotentialShowReal.Size" type="System.Drawing.Size, System.Drawing">
     <value>86, 22</value>
@@ -888,7 +888,7 @@
     <value>実数部のみ</value>
   </data>
   <data name="radioButtonPotentialShowImag.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="radioButtonPotentialShowImag.Location" type="System.Drawing.Point, System.Drawing">
     <value>141, 1</value>
@@ -900,7 +900,7 @@
     <value>虚数部のみ</value>
   </data>
   <data name="checkBoxPotentialUgPrime.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="checkBoxPotentialUgPrime.Location" type="System.Drawing.Point, System.Drawing">
     <value>10, 44</value>
@@ -912,7 +912,7 @@
     <value>U'g: 吸収ポテンシャル</value>
   </data>
   <data name="checkBoxPotentialUg.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="checkBoxPotentialUg.Size" type="System.Drawing.Size, System.Drawing">
     <value>282, 22</value>
@@ -921,7 +921,7 @@
     <value>Ug: 弾性散乱ポテンシャル</value>
   </data>
   <data name="groupBoxSTEMoption2.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="groupBoxSTEMoption2.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 141</value>
@@ -935,14 +935,11 @@
   <data name="numericBoxSTEM_AngleResolution.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
-  <data name="numericBoxSTEM_AngleResolution.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9.75pt</value>
-  </data>
   <data name="numericBoxSTEM_AngleResolution.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="numericBoxSTEM_AngleResolution.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="numericBoxSTEM_AngleResolution.HeaderText" xml:space="preserve">
     <value>入射電子の角度分解能</value>
@@ -962,14 +959,11 @@
   <data name="numericBoxSTEM_AngleResolution.Size" type="System.Drawing.Size, System.Drawing">
     <value>225, 25</value>
   </data>
-  <data name="numericBoxSTEM_AngleResolution.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
   <data name="numericBoxSTEM_SliceThicknessForInelastic.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="numericBoxSTEM_SliceThicknessForInelastic.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="numericBoxSTEM_SliceThicknessForInelastic.HeaderText" xml:space="preserve">
     <value>非弾性計算時のスライス厚み</value>
@@ -986,9 +980,6 @@
   <data name="numericBoxSTEM_SliceThicknessForInelastic.Size" type="System.Drawing.Size, System.Drawing">
     <value>242, 25</value>
   </data>
-  <data name="numericBoxSTEM_SliceThicknessForInelastic.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
   <data name="numericBoxSTEM_SliceThicknessForInelastic.ToolTip" xml:space="preserve">
     <value>TDS電子強度計算時に試料をスライスする厚さを設定します。
 値が小さいほど計算速度は遅くなりますが、精度が向上します。</value>
@@ -998,7 +989,7 @@
 値が小さいほど計算速度は遅くなりますが、精度が向上します。</value>
   </data>
   <data name="groupBoxHREMoption2.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="groupBoxHREMoption2.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 78</value>
@@ -1018,7 +1009,7 @@
 多くの強い回折波を励起する強散乱体に使用すべきモデルです。</value>
   </data>
   <data name="label32.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="label32.Size" type="System.Drawing.Size, System.Drawing">
     <value>140, 18</value>
@@ -1030,7 +1021,7 @@
     <value>296, 78</value>
   </data>
   <data name="groupBoxImageProperty.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9.75pt</value>
+    <value>BIZ UDPGothic, 9.75pt</value>
   </data>
   <data name="groupBoxImageProperty.Location" type="System.Drawing.Point, System.Drawing">
     <value>70, 0</value>
@@ -1045,10 +1036,10 @@
     <value>生成画像</value>
   </data>
   <data name="numericBoxHeight.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="numericBoxHeight.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="numericBoxHeight.Location" type="System.Drawing.Point, System.Drawing">
     <value>155, 20</value>
@@ -1057,10 +1048,10 @@
     <value>77, 23</value>
   </data>
   <data name="numericBoxWidth.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="numericBoxWidth.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="numericBoxWidth.HeaderText" xml:space="preserve">
     <value>サイズ(W×H)</value>
@@ -1075,10 +1066,10 @@
     <value>153, 23</value>
   </data>
   <data name="numericBoxResolution.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="numericBoxResolution.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="numericBoxResolution.HeaderText" xml:space="preserve">
     <value>解像度</value>
@@ -1096,7 +1087,7 @@
     <value>6, 78</value>
   </data>
   <data name="groupBoxDiffractedWaves.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9.75pt</value>
+    <value>BIZ UDPGothic, 9.75pt</value>
   </data>
   <data name="groupBoxDiffractedWaves.Size" type="System.Drawing.Size, System.Drawing">
     <value>64, 78</value>
@@ -1105,16 +1096,16 @@
     <value>回折波の数</value>
   </data>
   <data name="numericBoxNumOfBlochWave.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="numericBoxNumOfBlochWave.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="numericBoxNumOfBlochWave.Location" type="System.Drawing.Point, System.Drawing">
     <value>8, 40</value>
   </data>
   <data name="label5.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
     <value>1, 108</value>
@@ -1126,7 +1117,7 @@
     <value>実効光源サイズ (σs) (FWHM)</value>
   </data>
   <data name="label34.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="label34.Location" type="System.Drawing.Point, System.Drawing">
     <value>5, 21</value>
@@ -1141,10 +1132,10 @@
     <value />
   </data>
   <data name="numericBoxSTEM_DetectorOuterAngle.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="numericBoxSTEM_DetectorOuterAngle.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="numericBoxSTEM_DetectorOuterAngle.HeaderText" xml:space="preserve">
     <value>外径</value>
@@ -1162,19 +1153,19 @@
     <value>環状検出器の外径 (mrad)</value>
   </data>
   <data name="numericBoxEffectiveSourceSize.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="numericBoxEffectiveSourceSize.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="numericBoxEffectiveSourceSize.Location" type="System.Drawing.Point, System.Drawing">
     <value>176, 106</value>
   </data>
   <data name="numericBoxSTEM_ConvergenceAngle.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="numericBoxSTEM_ConvergenceAngle.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="numericBoxSTEM_ConvergenceAngle.Location" type="System.Drawing.Point, System.Drawing">
     <value>133, 19</value>
@@ -1201,10 +1192,10 @@
     <value>79, 25</value>
   </data>
   <data name="numericBoxSTEM_DetectorInnerAngle.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="numericBoxSTEM_DetectorInnerAngle.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="numericBoxSTEM_DetectorInnerAngle.HeaderText" xml:space="preserve">
     <value>内径</value>
@@ -1222,7 +1213,7 @@
     <value>環状検出器の内径 (mrad)</value>
   </data>
   <data name="label1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
     <value>8, 55</value>
@@ -1238,7 +1229,7 @@
     <value />
   </data>
   <data name="groupBoxSTEMoption1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9.75pt</value>
+    <value>BIZ UDPGothic, 9.75pt</value>
   </data>
   <data name="groupBoxSTEMoption1.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 276</value>
@@ -1250,43 +1241,43 @@
     <value>STEMオプション</value>
   </data>
   <data name="textBoxOuterRadius.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="textBoxOuterRadius.Size" type="System.Drawing.Size, System.Drawing">
     <value>40, 25</value>
   </data>
   <data name="label38.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="label38.Size" type="System.Drawing.Size, System.Drawing">
     <value>39, 18</value>
   </data>
   <data name="textBoxInnerRadius.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="textBoxInnerRadius.Size" type="System.Drawing.Size, System.Drawing">
     <value>40, 25</value>
   </data>
   <data name="label37.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="label37.Size" type="System.Drawing.Size, System.Drawing">
     <value>39, 18</value>
   </data>
   <data name="textBoxConvRadius.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="textBoxConvRadius.Size" type="System.Drawing.Size, System.Drawing">
     <value>40, 25</value>
   </data>
   <data name="label36.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="label36.Size" type="System.Drawing.Size, System.Drawing">
     <value>39, 18</value>
   </data>
   <data name="groupBoxHREMoption1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9.75pt</value>
+    <value>BIZ UDPGothic, 9.75pt</value>
   </data>
   <data name="groupBoxHREMoption1.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 159</value>
@@ -1298,7 +1289,7 @@
     <value>対物絞り  (HRTEM オプション)</value>
   </data>
   <data name="checkBoxOpenAperture.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="checkBoxOpenAperture.Location" type="System.Drawing.Point, System.Drawing">
     <value>147, 21</value>
@@ -1310,10 +1301,10 @@
     <value>絞り開放</value>
   </data>
   <data name="numericBoxObjAperX.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="numericBoxObjAperX.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="numericBoxObjAperX.HeaderText" xml:space="preserve">
     <value>シフト  X</value>
@@ -1325,10 +1316,10 @@
     <value>107, 23</value>
   </data>
   <data name="numericBoxObjAperRadius.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="numericBoxObjAperRadius.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="numericBoxObjAperRadius.HeaderText" xml:space="preserve">
     <value>サイズ</value>
@@ -1340,10 +1331,10 @@
     <value>137, 23</value>
   </data>
   <data name="numericBoxObjAperY.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="numericBoxObjAperY.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="numericBoxObjAperY.Location" type="System.Drawing.Point, System.Drawing">
     <value>119, 50</value>
@@ -1355,16 +1346,16 @@
     <value>197, 28</value>
   </data>
   <data name="textBoxNumOfSpots.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="label9.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="label9.Size" type="System.Drawing.Size, System.Drawing">
     <value>76, 18</value>
   </data>
   <data name="buttonDetailsOfSpots.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="buttonDetailsOfSpots.Location" type="System.Drawing.Point, System.Drawing">
     <value>107, 0</value>
@@ -1382,19 +1373,19 @@
     <value>79, 25</value>
   </data>
   <data name="textBoxObjAperRadius.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="textBoxObjAperRadius.Size" type="System.Drawing.Size, System.Drawing">
     <value>40, 25</value>
   </data>
   <data name="label7.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
     <value>39, 18</value>
   </data>
   <data name="label8.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 7pt</value>
+    <value>BIZ UDPGothic, 7pt</value>
   </data>
   <data name="label8.Location" type="System.Drawing.Point, System.Drawing">
     <value>216, 50</value>
@@ -1411,7 +1402,7 @@
     <value>170, 16</value>
   </data>
   <data name="checkBoxCTF.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="checkBoxCTF.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 110</value>
@@ -1423,46 +1414,46 @@
     <value>コントラスト伝達関数 (CTF)</value>
   </data>
   <data name="numericBoxCc.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="numericBoxCc.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="numericBoxCc.Size" type="System.Drawing.Size, System.Drawing">
     <value>102, 23</value>
   </data>
   <data name="numericBoxDeltaV.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="numericBoxDeltaV.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="numericBoxDeltaV.Location" type="System.Drawing.Point, System.Drawing">
     <value>223, 17</value>
   </data>
   <data name="numericBoxBetaAgnle.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="numericBoxBetaAgnle.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="numericBoxBetaAgnle.Size" type="System.Drawing.Size, System.Drawing">
     <value>103, 23</value>
   </data>
   <data name="numericBoxCs.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="numericBoxCs.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="numericBoxCs.Size" type="System.Drawing.Size, System.Drawing">
     <value>101, 23</value>
   </data>
   <data name="numericBoxDefocus.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="numericBoxDefocus.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="numericBoxDefocus.HeaderText" xml:space="preserve">
     <value>デフォーカス Δf</value>
@@ -1474,10 +1465,10 @@
     <value>180, 23</value>
   </data>
   <data name="numericBoxAccVol.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="numericBoxAccVol.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="numericBoxAccVol.HeaderText" xml:space="preserve">
     <value>加速電圧(V)</value>
@@ -1498,7 +1489,7 @@
     <value>127, 32</value>
   </data>
   <data name="groupBoxTEMConditions.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9.75pt</value>
+    <value>BIZ UDPGothic, 9.75pt</value>
   </data>
   <data name="groupBoxTEMConditions.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 20</value>
@@ -1513,7 +1504,7 @@
     <value>デフォーカスを0 nmに設定</value>
   </data>
   <data name="label3.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 7pt</value>
+    <value>BIZ UDPGothic, 7pt</value>
   </data>
   <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
     <value>67, 30</value>
@@ -1529,7 +1520,7 @@
     <value>0, 5, 0, 0</value>
   </data>
   <data name="label4.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 7pt</value>
+    <value>BIZ UDPGothic, 7pt</value>
   </data>
   <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
     <value>107, 8</value>
@@ -1538,7 +1529,7 @@
     <value>20, 12</value>
   </data>
   <data name="groupBoxImageMode.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9.75pt, style=Bold</value>
+    <value>BIZ UDPGothic, 9.75pt, style=Bold</value>
   </data>
   <data name="groupBoxImageMode.Size" type="System.Drawing.Size, System.Drawing">
     <value>148, 72</value>
@@ -1553,7 +1544,7 @@
     <value>132, 48</value>
   </data>
   <data name="radioButtonHRTEM.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="radioButtonHRTEM.Size" type="System.Drawing.Size, System.Drawing">
     <value>70, 24</value>
@@ -1562,7 +1553,7 @@
     <value>HRTEM像をシミュレーション</value>
   </data>
   <data name="radioButtonSTEM.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="radioButtonSTEM.Location" type="System.Drawing.Point, System.Drawing">
     <value>70, 0</value>
@@ -1571,7 +1562,7 @@
     <value>61, 24</value>
   </data>
   <data name="radioButtonProjectedPotential.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="radioButtonProjectedPotential.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 24</value>
@@ -1583,7 +1574,7 @@
     <value>ポテンシャル</value>
   </data>
   <data name="groupBoxSampleProperty.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9.75pt, style=Bold</value>
+    <value>BIZ UDPGothic, 9.75pt, style=Bold</value>
   </data>
   <data name="groupBoxSampleProperty.Location" type="System.Drawing.Point, System.Drawing">
     <value>157, 0</value>
@@ -1598,7 +1589,7 @@
     <value>試料情報</value>
   </data>
   <data name="numericBoxThickness.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="numericBoxThickness.HeaderText" xml:space="preserve">
     <value>試料厚み</value>
@@ -1618,7 +1609,7 @@
 「連続画像」モードが選択されている場合、この値は無視されます。</value>
   </data>
   <data name="checkBoxPreset.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="checkBoxPreset.Size" type="System.Drawing.Size, System.Drawing">
     <value>113, 22</value>
@@ -1627,7 +1618,7 @@
     <value>条件プリセット</value>
   </data>
   <data name="checkBoxRealTimeSimulation.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="checkBoxRealTimeSimulation.Location" type="System.Drawing.Point, System.Drawing">
     <value>115, 0</value>
@@ -1639,7 +1630,7 @@
     <value>リアルタイム計算</value>
   </data>
   <data name="buttonSimulate.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="buttonSimulate.Location" type="System.Drawing.Point, System.Drawing">
     <value>238, 0</value>
@@ -1672,7 +1663,7 @@
     <value>ヘルプ</value>
   </data>
   <data name="buttonStop.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="buttonStop.Location" type="System.Drawing.Point, System.Drawing">
     <value>847, 758</value>
@@ -1690,7 +1681,7 @@
     <value>924, 812</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9.75pt</value>
+    <value>BIZ UDPGothic, 9.75pt</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>HRTEM/STEM シミュレータ</value>

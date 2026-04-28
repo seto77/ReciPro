@@ -135,7 +135,7 @@
     <value>882, 282</value>
   </data>
   <data name="label2.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9.75pt</value>
+    <value>BIZ UDPGothic, 9.75pt</value>
   </data>
   <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
     <value>69, 20</value>
@@ -144,7 +144,7 @@
     <value>d値の下限</value>
   </data>
   <data name="checkBoxHideProhibitedPlanes.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9.75pt</value>
+    <value>BIZ UDPGothic, 9.75pt</value>
   </data>
   <data name="checkBoxHideProhibitedPlanes.Location" type="System.Drawing.Point, System.Drawing">
     <value>239, 51</value>
@@ -156,7 +156,7 @@
     <value>消滅する面は非表示</value>
   </data>
   <data name="checkBoxHideEquivalentPlane.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9.75pt</value>
+    <value>BIZ UDPGothic, 9.75pt</value>
   </data>
   <data name="checkBoxHideEquivalentPlane.Location" type="System.Drawing.Point, System.Drawing">
     <value>239, 27</value>
@@ -171,7 +171,7 @@
     <value>True</value>
   </data>
   <data name="buttonCopyClipboard.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9.75pt</value>
+    <value>BIZ UDPGothic, 9.75pt</value>
   </data>
   <data name="buttonCopyClipboard.Size" type="System.Drawing.Size, System.Drawing">
     <value>162, 30</value>
@@ -180,7 +180,7 @@
     <value>クリップボードにコピー</value>
   </data>
   <data name="checkBoxBragBrentano.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9.75pt</value>
+    <value>BIZ UDPGothic, 9.75pt</value>
   </data>
   <data name="checkBoxBragBrentano.Location" type="System.Drawing.Point, System.Drawing">
     <value>239, 0</value>
@@ -192,10 +192,10 @@
     <value>粉末回折(BB光学系)強度</value>
   </data>
   <data name="waveLengthControl1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="label8.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="label8.Size" type="System.Drawing.Size, System.Drawing">
     <value>32, 23</value>
@@ -219,10 +219,10 @@
     <value>237, 83</value>
   </data>
   <data name="numericBoxThresholdD.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="numericBoxThresholdD.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="numericBoxThresholdD.Location" type="System.Drawing.Point, System.Drawing">
     <value>449, 21</value>
@@ -236,9 +236,6 @@
   <data name="numericBoxThresholdD.Size" type="System.Drawing.Size, System.Drawing">
     <value>98, 24</value>
   </data>
-  <data name="numericBoxThresholdD.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
   <data name="panel3.Size" type="System.Drawing.Size, System.Drawing">
     <value>882, 116</value>
   </data>
@@ -246,7 +243,7 @@
     <value>882, 398</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9.75pt</value>
+    <value>BIZ UDPGothic, 9.75pt</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>散乱因子</value>

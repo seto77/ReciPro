@@ -134,7 +134,7 @@
     <value>612, 325</value>
   </data>
   <data name="buttonAddBond.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="buttonAddBond.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
@@ -146,14 +146,11 @@
   <data name="buttonAddBond.Text" xml:space="preserve">
     <value>追加</value>
   </data>
-  <data name="numericBoxMaximumDistanceFromOrigin.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
   <data name="numericBoxMaximumDistanceFromOrigin.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="numericBoxMaximumDistanceFromOrigin.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="numericBoxMaximumDistanceFromOrigin.HeaderText" xml:space="preserve">
     <value>原点からの最大距離</value>
@@ -170,9 +167,6 @@
   <data name="numericBoxMaximumDistanceFromOrigin.Size" type="System.Drawing.Size, System.Drawing">
     <value>201, 24</value>
   </data>
-  <data name="numericBoxMaximumDistanceFromOrigin.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
   <data name="numericBoxMaximumDistanceFromOrigin.ToolTip" xml:space="preserve">
     <value>結晶面によって描画範囲が閉じていない場合、範囲はこの値で制限されます</value>
   </data>
@@ -180,7 +174,7 @@
     <value>結晶面によって描画範囲が閉じていない場合、範囲はこの値で制限されます</value>
   </data>
   <data name="buttonChangeBond.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="buttonChangeBond.Location" type="System.Drawing.Point, System.Drawing">
     <value>72, 0</value>
@@ -195,7 +189,7 @@
     <value>更新</value>
   </data>
   <data name="buttonDeleteBond.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="buttonDeleteBond.Location" type="System.Drawing.Point, System.Drawing">
     <value>540, 0</value>
@@ -210,7 +204,7 @@
     <value>削除</value>
   </data>
   <data name="checkBoxImmediateUpdate.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="checkBoxImmediateUpdate.Location" type="System.Drawing.Point, System.Drawing">
     <value>370, 5</value>
@@ -231,7 +225,7 @@
     <value>612, 29</value>
   </data>
   <data name="label6.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="label6.Location" type="System.Drawing.Point, System.Drawing">
     <value>288, 3</value>
@@ -267,7 +261,7 @@
     <value>40, 22</value>
   </data>
   <data name="checkBoxEquivalency.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="checkBoxEquivalency.Location" type="System.Drawing.Point, System.Drawing">
     <value>165, 16</value>
@@ -306,7 +300,7 @@
     <value>40, 22</value>
   </data>
   <data name="colorControl.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="colorControl.HeaderText" xml:space="preserve">
     <value>色</value>
@@ -318,10 +312,10 @@
     <value>24, 42</value>
   </data>
   <data name="numericBoxDistanceD.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 4, 0, 0</value>
+    <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxDistanceD.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 4, 0, 0</value>
+    <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxDistanceD.MaximumSize" type="System.Drawing.Size, System.Drawing">
     <value>800, 22</value>
@@ -333,7 +327,7 @@
     <value>114, 22</value>
   </data>
   <data name="numericBoxDistance.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 4, 0, 0</value>
+    <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxDistance.Location" type="System.Drawing.Point, System.Drawing">
     <value>114, 0</value>
@@ -369,7 +363,7 @@
     <value>平行移動量</value>
   </data>
   <data name="label3.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
     <value>472, 3</value>

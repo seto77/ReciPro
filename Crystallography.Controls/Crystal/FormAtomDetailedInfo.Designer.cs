@@ -70,7 +70,7 @@
             this.Controls.Add(this.listBox);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.label1);
-            this.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0))); // 260428Cl 修正: ((byte)(177)) Hebrew 文字セット → ((byte)(0)) デフォルト
+            this.Font = new System.Drawing.Font("Segoe UI Variable Text", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0))); // 260428Cl 修正: ((byte)(177)) Hebrew 文字セット → ((byte)(0)) デフォルト
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "FormAtomDetailedInfo";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;

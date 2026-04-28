@@ -161,7 +161,7 @@
             // numericUpDownMaxInt
             // 
             numericUpDownMaxInt.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
-            numericUpDownMaxInt.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            numericUpDownMaxInt.Font = new System.Drawing.Font("Segoe UI Variable Text", 9.75F);
             numericUpDownMaxInt.Increment = new decimal(new int[] { 10, 0, 0, 0 });
             numericUpDownMaxInt.Location = new System.Drawing.Point(893, 555);
             numericUpDownMaxInt.Margin = new System.Windows.Forms.Padding(3, 7, 3, 7);
@@ -177,7 +177,7 @@
             // 
             label36.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
             label36.AutoSize = true;
-            label36.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            label36.Font = new System.Drawing.Font("Segoe UI Variable Text", 9.75F);
             label36.Location = new System.Drawing.Point(714, 558);
             label36.Name = "label36";
             label36.Size = new System.Drawing.Size(31, 16);
@@ -188,7 +188,7 @@
             // 
             label25.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
             label25.AutoSize = true;
-            label25.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            label25.Font = new System.Drawing.Font("Segoe UI Variable Text", 9.75F);
             label25.Location = new System.Drawing.Point(843, 557);
             label25.Name = "label25";
             label25.Size = new System.Drawing.Size(35, 16);
@@ -198,7 +198,7 @@
             // numericUpDownMinInt
             // 
             numericUpDownMinInt.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
-            numericUpDownMinInt.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            numericUpDownMinInt.Font = new System.Drawing.Font("Segoe UI Variable Text", 9.75F);
             numericUpDownMinInt.Increment = new decimal(new int[] { 10, 0, 0, 0 });
             numericUpDownMinInt.Location = new System.Drawing.Point(757, 555);
             numericUpDownMinInt.Margin = new System.Windows.Forms.Padding(3, 7, 3, 7);
@@ -279,7 +279,7 @@
             groupBoxCircleMask.Controls.Add(label21);
             groupBoxCircleMask.Controls.Add(numericUpDownCircleEnd);
             groupBoxCircleMask.Enabled = false;
-            groupBoxCircleMask.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 128);
+            groupBoxCircleMask.Font = new System.Drawing.Font("Segoe UI Variable Text", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 128);
             groupBoxCircleMask.Location = new System.Drawing.Point(3, 77);
             groupBoxCircleMask.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             groupBoxCircleMask.Name = "groupBoxCircleMask";
@@ -364,7 +364,7 @@
             groupBoxRectangle.Controls.Add(label24);
             groupBoxRectangle.Controls.Add(checkBoxRectangleIsBothSide);
             groupBoxRectangle.Enabled = false;
-            groupBoxRectangle.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 128);
+            groupBoxRectangle.Font = new System.Drawing.Font("Segoe UI Variable Text", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 128);
             groupBoxRectangle.Location = new System.Drawing.Point(3, 2);
             groupBoxRectangle.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             groupBoxRectangle.Name = "groupBoxRectangle";
@@ -525,7 +525,6 @@
             // 
             numericBoxTau.BackColor = System.Drawing.SystemColors.Control;
             numericBoxTau.DecimalPlaces = 1;
-            numericBoxTau.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
             numericBoxTau.FooterBackColor = System.Drawing.SystemColors.Control;
             numericBoxTau.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxTau.Location = new System.Drawing.Point(126, 16);
@@ -541,7 +540,6 @@
             // 
             numericBoxPhi.BackColor = System.Drawing.SystemColors.Control;
             numericBoxPhi.DecimalPlaces = 1;
-            numericBoxPhi.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
             numericBoxPhi.FooterBackColor = System.Drawing.SystemColors.Control;
             numericBoxPhi.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxPhi.Location = new System.Drawing.Point(24, 17);
@@ -628,7 +626,7 @@
             groupBoxBackground.Controls.Add(trackBarBgA);
             groupBoxBackground.Controls.Add(label8);
             groupBoxBackground.Enabled = false;
-            groupBoxBackground.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 128);
+            groupBoxBackground.Font = new System.Drawing.Font("Segoe UI Variable Text", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 128);
             groupBoxBackground.Location = new System.Drawing.Point(6, 5);
             groupBoxBackground.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             groupBoxBackground.Name = "groupBoxBackground";
@@ -721,7 +719,6 @@
             // numericBoxConvergentAngle
             // 
             numericBoxConvergentAngle.BackColor = System.Drawing.SystemColors.Control;
-            numericBoxConvergentAngle.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             numericBoxConvergentAngle.FooterBackColor = System.Drawing.SystemColors.Control;
             numericBoxConvergentAngle.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxConvergentAngle.Location = new System.Drawing.Point(129, 114);
@@ -803,7 +800,6 @@
             // numericBoxMonochromaticity
             // 
             numericBoxMonochromaticity.BackColor = System.Drawing.SystemColors.Control;
-            numericBoxMonochromaticity.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             numericBoxMonochromaticity.FooterBackColor = System.Drawing.SystemColors.Control;
             numericBoxMonochromaticity.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxMonochromaticity.Location = new System.Drawing.Point(130, 142);
@@ -874,7 +870,6 @@
             // 
             numericBoxImageResolution.BackColor = System.Drawing.SystemColors.Control;
             numericBoxImageResolution.DecimalPlaces = 5;
-            numericBoxImageResolution.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
             numericBoxImageResolution.FooterBackColor = System.Drawing.SystemColors.Control;
             numericBoxImageResolution.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxImageResolution.Location = new System.Drawing.Point(119, 124);
@@ -892,7 +887,6 @@
             // 
             numericBoxMonitorResolution.BackColor = System.Drawing.SystemColors.Control;
             numericBoxMonitorResolution.DecimalPlaces = 5;
-            numericBoxMonitorResolution.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
             numericBoxMonitorResolution.FooterBackColor = System.Drawing.SystemColors.Control;
             numericBoxMonitorResolution.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxMonitorResolution.Location = new System.Drawing.Point(119, 156);
@@ -944,7 +938,6 @@
             // 
             numericBoxCameraLength.BackColor = System.Drawing.SystemColors.Control;
             numericBoxCameraLength.DecimalPlaces = 5;
-            numericBoxCameraLength.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
             numericBoxCameraLength.FooterBackColor = System.Drawing.SystemColors.Control;
             numericBoxCameraLength.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxCameraLength.Location = new System.Drawing.Point(116, 20);
@@ -1018,7 +1011,6 @@
             // numericBoxCenterY
             // 
             numericBoxCenterY.BackColor = System.Drawing.SystemColors.Control;
-            numericBoxCenterY.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
             numericBoxCenterY.FooterBackColor = System.Drawing.SystemColors.Control;
             numericBoxCenterY.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxCenterY.Location = new System.Drawing.Point(165, 87);
@@ -1035,7 +1027,6 @@
             // numericBoxCenterX
             // 
             numericBoxCenterX.BackColor = System.Drawing.SystemColors.Control;
-            numericBoxCenterX.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
             numericBoxCenterX.FooterBackColor = System.Drawing.SystemColors.Control;
             numericBoxCenterX.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxCenterX.Location = new System.Drawing.Point(55, 87);
@@ -1119,7 +1110,6 @@
             // numericBoxFilmBlur
             // 
             numericBoxFilmBlur.BackColor = System.Drawing.SystemColors.Control;
-            numericBoxFilmBlur.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             numericBoxFilmBlur.FooterBackColor = System.Drawing.SystemColors.Control;
             numericBoxFilmBlur.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxFilmBlur.Location = new System.Drawing.Point(108, 187);
@@ -1187,7 +1177,7 @@
             groupBoxPeakIndices.Controls.Add(buttonUnmaskSelectedPeaks);
             groupBoxPeakIndices.Controls.Add(buttonUncheckAllIndices);
             groupBoxPeakIndices.Enabled = false;
-            groupBoxPeakIndices.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 128);
+            groupBoxPeakIndices.Font = new System.Drawing.Font("Segoe UI Variable Text", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 128);
             groupBoxPeakIndices.Location = new System.Drawing.Point(3, 208);
             groupBoxPeakIndices.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             groupBoxPeakIndices.Name = "groupBoxPeakIndices";
@@ -1254,7 +1244,7 @@
             groupBoxManualSpot.Controls.Add(label11);
             groupBoxManualSpot.Controls.Add(label17);
             groupBoxManualSpot.Enabled = false;
-            groupBoxManualSpot.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 128);
+            groupBoxManualSpot.Font = new System.Drawing.Font("Segoe UI Variable Text", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 128);
             groupBoxManualSpot.Location = new System.Drawing.Point(3, 130);
             groupBoxManualSpot.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             groupBoxManualSpot.Name = "groupBoxManualSpot";
@@ -1422,7 +1412,7 @@
             graphControlFrequency.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
             graphControlFrequency.AxisLineColor = System.Drawing.Color.Gray;
             graphControlFrequency.AxisTextColor = System.Drawing.Color.Black;
-            graphControlFrequency.AxisTextFont = new System.Drawing.Font("Segoe UI", 9F);
+            graphControlFrequency.AxisTextFont = new System.Drawing.Font("Segoe UI Variable Text", 9F);
             graphControlFrequency.AxisXTextVisible = true;
             graphControlFrequency.AxisYTextVisible = true;
             graphControlFrequency.BackgroundColor = System.Drawing.Color.White;
@@ -1432,7 +1422,7 @@
             graphControlFrequency.DivisionLineYVisible = true;
             graphControlFrequency.FixRangeHorizontal = false;
             graphControlFrequency.FixRangeVertical = false;
-            graphControlFrequency.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            graphControlFrequency.Font = new System.Drawing.Font("Segoe UI Variable Text", 9.75F);
             graphControlFrequency.GraphTitle = "";
             graphControlFrequency.IsIntegerX = true;
             graphControlFrequency.IsIntegerY = true;
@@ -1458,7 +1448,7 @@
             graphControlFrequency.TabIndex = 164;
             graphControlFrequency.UnitX = "";
             graphControlFrequency.UnitY = "";
-            graphControlFrequency.UpperPanelFont = new System.Drawing.Font("Segoe UI", 9.75F);
+            graphControlFrequency.UpperPanelFont = new System.Drawing.Font("Segoe UI Variable Text", 9.75F);
             graphControlFrequency.UpperPanelVisible = false;
             graphControlFrequency.UpperX = 1D;
             graphControlFrequency.UpperY = 1D;
@@ -1495,7 +1485,7 @@
             // 
             // labelLaTex1
             // 
-            labelLaTex1.Font = new System.Drawing.Font("Segoe UI", 12F);
+            labelLaTex1.Font = new System.Drawing.Font("Segoe UI Variable Text", 12F);
             labelLaTex1.Location = new System.Drawing.Point(6, 19);
             labelLaTex1.Name = "labelLaTex1";
             labelLaTex1.Size = new System.Drawing.Size(18, 23);
@@ -1505,7 +1495,7 @@
             // 
             // labelLaTex2
             // 
-            labelLaTex2.Font = new System.Drawing.Font("Segoe UI", 12F);
+            labelLaTex2.Font = new System.Drawing.Font("Segoe UI Variable Text", 12F);
             labelLaTex2.Location = new System.Drawing.Point(109, 17);
             labelLaTex2.Name = "labelLaTex2";
             labelLaTex2.Size = new System.Drawing.Size(18, 23);
@@ -1525,7 +1515,7 @@
             Controls.Add(label36);
             Controls.Add(tabControl1);
             Controls.Add(scalablePictureBox);
-            Font = new System.Drawing.Font("Segoe UI", 9F);
+            Font = new System.Drawing.Font("Segoe UI Variable Text", 9F);
             Name = "DiffractionPatternControl";
             Size = new System.Drawing.Size(979, 701);
             DragDrop += DiffractionPatternControl_DragDrop;

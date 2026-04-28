@@ -119,7 +119,7 @@
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="buttonCalc.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 10pt</value>
+    <value>BIZ UDPGothic, 10pt</value>
   </data>
   <data name="buttonCalc.Size" type="System.Drawing.Size, System.Drawing">
     <value>132, 31</value>
@@ -128,7 +128,7 @@
     <value>電子の軌跡を計算</value>
   </data>
   <data name="numericBoxSampleTilt.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="numericBoxSampleTilt.HeaderText" xml:space="preserve">
     <value>サンプルの傾き</value>
@@ -143,7 +143,7 @@
     <value>394, 134</value>
   </data>
   <data name="numericBoxDrawNum.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="numericBoxDrawNum.HeaderText" xml:space="preserve">
     <value>描画する飛程の数</value>
@@ -203,7 +203,7 @@
     <value>軸を描画</value>
   </data>
   <data name="checkBoxDrawGuidCircles.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="checkBoxDrawGuidCircles.Location" type="System.Drawing.Point, System.Drawing">
     <value>354, 32</value>
@@ -384,7 +384,7 @@
     <value>1274, 687</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>電子飛程シミュレータ (Monte Carlo Method)</value>

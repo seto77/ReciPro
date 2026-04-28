@@ -119,7 +119,7 @@
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="labelLaTex1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 11pt</value>
+    <value>BIZ UDPGothic, 11pt</value>
   </data>
   <data name="labelLaTex1.Location" type="System.Drawing.Point, System.Drawing">
     <value>182, 109</value>
@@ -144,7 +144,7 @@
     <value>150, 26</value>
   </data>
   <data name="checkBoxShowError.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="checkBoxShowError.Location" type="System.Drawing.Point, System.Drawing">
     <value>272, 106</value>
@@ -166,7 +166,7 @@
     <value>346, 82</value>
   </data>
   <data name="groupBoxCellConstants.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="groupBoxCellConstants.Size" type="System.Drawing.Size, System.Drawing">
     <value>352, 132</value>
@@ -187,7 +187,7 @@
     <value>36, 26</value>
   </data>
   <data name="label1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
     <value>68, 23</value>
@@ -355,7 +355,7 @@
     <value>155, 0</value>
   </data>
   <data name="groupBoxSymmetry.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="groupBoxSymmetry.Location" type="System.Drawing.Point, System.Drawing">
     <value>356, 0</value>
@@ -385,7 +385,7 @@
     <value>HM記法で点群を設定</value>
   </data>
   <data name="comboBoxCrystalSystem.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="comboBoxCrystalSystem.Items" xml:space="preserve">
     <value>不明</value>
@@ -421,7 +421,7 @@
     <value>結晶系を設定</value>
   </data>
   <data name="label20.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="label20.Size" type="System.Drawing.Size, System.Drawing">
     <value>44, 18</value>
@@ -433,7 +433,7 @@
     <value>HM記法で空間群を設定</value>
   </data>
   <data name="label17.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="label17.Location" type="System.Drawing.Point, System.Drawing">
     <value>9, 107</value>
@@ -448,7 +448,7 @@
     <value>空間群を検索</value>
   </data>
   <data name="label19.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="label19.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 21</value>
@@ -469,7 +469,7 @@
     <value>空間群を検索</value>
   </data>
   <data name="label21.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="label21.Size" type="System.Drawing.Size, System.Drawing">
     <value>32, 18</value>

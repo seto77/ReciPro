@@ -126,7 +126,7 @@
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="radioButtonIsotoropy.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="radioButtonIsotoropy.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -163,7 +163,7 @@
     <value>True</value>
   </data>
   <data name="radioButtonAnisotropy.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="radioButtonAnisotropy.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -204,14 +204,11 @@
   <data name="numericBoxBiso.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
-  <data name="numericBoxBiso.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
-  </data>
   <data name="numericBoxBiso.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+    <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="numericBoxBiso.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+    <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="numericBoxBiso.HeaderText" xml:space="preserve">
     <value>Biso</value>
@@ -237,8 +234,8 @@
   <data name="numericBoxBiso.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="numericBoxBiso.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+  <data name="numericBoxBiso.TextFontSize" type="System.Single, mscorlib">
+    <value>9</value>
   </data>
   <data name="&gt;&gt;numericBoxBiso.Name" xml:space="preserve">
     <value>numericBoxBiso</value>
@@ -252,14 +249,11 @@
   <data name="&gt;&gt;numericBoxBiso.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="numericBoxBisoerr.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
-  </data>
   <data name="numericBoxBisoerr.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+    <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="numericBoxBisoerr.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+    <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="numericBoxBisoerr.HeaderText" xml:space="preserve">
     <value>±</value>
@@ -282,8 +276,8 @@
   <data name="numericBoxBisoerr.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
-  <data name="numericBoxBisoerr.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+  <data name="numericBoxBisoerr.TextFontSize" type="System.Single, mscorlib">
+    <value>9</value>
   </data>
   <data name="&gt;&gt;numericBoxBisoerr.Name" xml:space="preserve">
     <value>numericBoxBisoerr</value>
@@ -358,7 +352,7 @@
     <value>True</value>
   </data>
   <data name="labelX_.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+    <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="labelX_.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -424,7 +418,7 @@
     <value>True</value>
   </data>
   <data name="label1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+    <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="label1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -466,7 +460,7 @@
     <value>Fill</value>
   </data>
   <data name="textBoxLabel.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+    <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="textBoxLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>Disable</value>
@@ -502,7 +496,7 @@
     <value>True</value>
   </data>
   <data name="label2.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+    <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="label2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -541,7 +535,7 @@
     <value>Fill</value>
   </data>
   <data name="comboBoxAtom.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+    <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="comboBoxAtom.ItemHeight" type="System.Int32, mscorlib">
     <value>15</value>
@@ -913,7 +907,7 @@
     <value>True</value>
   </data>
   <data name="label8.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+    <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="label8.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -945,9 +939,6 @@
   <data name="&gt;&gt;label8.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="numericBox1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
-  </data>
   <data name="numericBox1.Location" type="System.Drawing.Point, System.Drawing">
     <value>34, 0</value>
   </data>
@@ -965,9 +956,6 @@
   </data>
   <data name="numericBox1.TabIndex" type="System.Int32, mscorlib">
     <value>85</value>
-  </data>
-  <data name="numericBox1.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="&gt;&gt;numericBox1.Name" xml:space="preserve">
     <value>numericBox1</value>
@@ -988,7 +976,7 @@
     <value>True</value>
   </data>
   <data name="label9.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+    <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="label9.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -1020,9 +1008,6 @@
   <data name="&gt;&gt;label9.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="numericBox2.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
-  </data>
   <data name="numericBox2.Location" type="System.Drawing.Point, System.Drawing">
     <value>118, 0</value>
   </data>
@@ -1040,9 +1025,6 @@
   </data>
   <data name="numericBox2.TabIndex" type="System.Int32, mscorlib">
     <value>91</value>
-  </data>
-  <data name="numericBox2.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="&gt;&gt;numericBox2.Name" xml:space="preserve">
     <value>numericBox2</value>
@@ -1114,7 +1096,7 @@
     <value>True</value>
   </data>
   <data name="label12.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+    <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="label12.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -1146,9 +1128,6 @@
   <data name="&gt;&gt;label12.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="numericBox3.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
-  </data>
   <data name="numericBox3.Location" type="System.Drawing.Point, System.Drawing">
     <value>14, 0</value>
   </data>
@@ -1166,9 +1145,6 @@
   </data>
   <data name="numericBox3.TabIndex" type="System.Int32, mscorlib">
     <value>93</value>
-  </data>
-  <data name="numericBox3.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="&gt;&gt;numericBox3.Name" xml:space="preserve">
     <value>numericBox3</value>
@@ -1189,7 +1165,7 @@
     <value>True</value>
   </data>
   <data name="label17.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+    <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="label17.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -1221,9 +1197,6 @@
   <data name="&gt;&gt;label17.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="numericBox4.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
-  </data>
   <data name="numericBox4.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 24</value>
   </data>
@@ -1241,9 +1214,6 @@
   </data>
   <data name="numericBox4.TabIndex" type="System.Int32, mscorlib">
     <value>94</value>
-  </data>
-  <data name="numericBox4.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="&gt;&gt;numericBox4.Name" xml:space="preserve">
     <value>numericBox4</value>
@@ -1282,7 +1252,7 @@
     <value>Right</value>
   </data>
   <data name="checkBoxDetailAtomicPositionError.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+    <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="checkBoxDetailAtomicPositionError.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -1342,9 +1312,6 @@ Error</value>
   <data name="tableLayoutPanel1.ColumnCount" type="System.Int32, mscorlib">
     <value>8</value>
   </data>
-  <data name="numericBoxOccerr.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
-  </data>
   <data name="numericBoxOccerr.HeaderText" xml:space="preserve">
     <value>±</value>
   </data>
@@ -1366,9 +1333,6 @@ Error</value>
   <data name="numericBoxOccerr.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="numericBoxOccerr.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
-  </data>
   <data name="&gt;&gt;numericBoxOccerr.Name" xml:space="preserve">
     <value>numericBoxOccerr</value>
   </data>
@@ -1386,9 +1350,6 @@ Error</value>
   </data>
   <data name="numericBoxOcc.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
-  </data>
-  <data name="numericBoxOcc.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxOcc.HeaderText" xml:space="preserve">
     <value>Occ</value>
@@ -1414,9 +1375,6 @@ Error</value>
   <data name="numericBoxOcc.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
   </data>
-  <data name="numericBoxOcc.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
-  </data>
   <data name="numericBoxOcc.ToolTip" xml:space="preserve">
     <value>Site occupancy</value>
   </data>
@@ -1440,9 +1398,6 @@ Error</value>
   </data>
   <data name="numericBoxZ.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
-  </data>
-  <data name="numericBoxZ.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxZ.HeaderText" xml:space="preserve">
     <value>Z:</value>
@@ -1468,9 +1423,6 @@ Error</value>
   <data name="numericBoxZ.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
   </data>
-  <data name="numericBoxZ.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
-  </data>
   <data name="numericBoxZ.ToolTip" xml:space="preserve">
     <value>Fractional coordinates of c-axis. Fractional format (e.g. 3/4) is acceptable.</value>
   </data>
@@ -1485,9 +1437,6 @@ Error</value>
   </data>
   <data name="&gt;&gt;numericBoxZ.ZOrder" xml:space="preserve">
     <value>2</value>
-  </data>
-  <data name="numericBoxYerr.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxYerr.HeaderText" xml:space="preserve">
     <value>±</value>
@@ -1510,9 +1459,6 @@ Error</value>
   <data name="numericBoxYerr.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
   </data>
-  <data name="numericBoxYerr.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
-  </data>
   <data name="&gt;&gt;numericBoxYerr.Name" xml:space="preserve">
     <value>numericBoxYerr</value>
   </data>
@@ -1524,9 +1470,6 @@ Error</value>
   </data>
   <data name="&gt;&gt;numericBoxYerr.ZOrder" xml:space="preserve">
     <value>3</value>
-  </data>
-  <data name="numericBoxXerr.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxXerr.HeaderText" xml:space="preserve">
     <value>±</value>
@@ -1549,9 +1492,6 @@ Error</value>
   <data name="numericBoxXerr.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
   </data>
-  <data name="numericBoxXerr.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
-  </data>
   <data name="&gt;&gt;numericBoxXerr.Name" xml:space="preserve">
     <value>numericBoxXerr</value>
   </data>
@@ -1569,9 +1509,6 @@ Error</value>
   </data>
   <data name="numericBoxY.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
-  </data>
-  <data name="numericBoxY.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxY.HeaderText" xml:space="preserve">
     <value>Y:</value>
@@ -1597,9 +1534,6 @@ Error</value>
   <data name="numericBoxY.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
   </data>
-  <data name="numericBoxY.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
-  </data>
   <data name="numericBoxY.ToolTip" xml:space="preserve">
     <value>Fractional coordinates of b-axis. Fractional format (e.g. 3/4) is acceptable.</value>
   </data>
@@ -1620,9 +1554,6 @@ Error</value>
   </data>
   <data name="numericBoxX.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
-  </data>
-  <data name="numericBoxX.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxX.HeaderText" xml:space="preserve">
     <value>X:</value>
@@ -1648,9 +1579,6 @@ Error</value>
   <data name="numericBoxX.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
-  <data name="numericBoxX.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
-  </data>
   <data name="numericBoxX.ToolTip" xml:space="preserve">
     <value>Fractional coordinates of a-axis. Fractional format (e.g. 3/4) is acceptable.</value>
   </data>
@@ -1665,9 +1593,6 @@ Error</value>
   </data>
   <data name="&gt;&gt;numericBoxX.ZOrder" xml:space="preserve">
     <value>6</value>
-  </data>
-  <data name="numericBoxZerr.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxZerr.HeaderText" xml:space="preserve">
     <value>±</value>
@@ -1689,9 +1614,6 @@ Error</value>
   </data>
   <data name="numericBoxZerr.TabIndex" type="System.Int32, mscorlib">
     <value>11</value>
-  </data>
-  <data name="numericBoxZerr.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="&gt;&gt;numericBoxZerr.Name" xml:space="preserve">
     <value>numericBoxZerr</value>
@@ -2234,7 +2156,7 @@ Error</value>
     <value>True</value>
   </data>
   <data name="label7.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+    <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="label7.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -2276,7 +2198,7 @@ Error</value>
     <value>GrowAndShrink</value>
   </data>
   <data name="buttonOriginShiftCustom.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+    <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="buttonOriginShiftCustom.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>TopCenter</value>
@@ -2317,9 +2239,6 @@ Error</value>
   <data name="numericBoxOriginShiftZ.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
-  <data name="numericBoxOriginShiftZ.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
-  </data>
   <data name="numericBoxOriginShiftZ.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 9.75pt</value>
   </data>
@@ -2344,8 +2263,8 @@ Error</value>
   <data name="numericBoxOriginShiftZ.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
   </data>
-  <data name="numericBoxOriginShiftZ.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+  <data name="numericBoxOriginShiftZ.TextFontSize" type="System.Single, mscorlib">
+    <value>9</value>
   </data>
   <data name="&gt;&gt;numericBoxOriginShiftZ.Name" xml:space="preserve">
     <value>numericBoxOriginShiftZ</value>
@@ -2364,9 +2283,6 @@ Error</value>
   </data>
   <data name="numericBoxOriginShiftY.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
-  </data>
-  <data name="numericBoxOriginShiftY.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxOriginShiftY.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 9.75pt</value>
@@ -2392,8 +2308,8 @@ Error</value>
   <data name="numericBoxOriginShiftY.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
-  <data name="numericBoxOriginShiftY.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+  <data name="numericBoxOriginShiftY.TextFontSize" type="System.Single, mscorlib">
+    <value>9</value>
   </data>
   <data name="&gt;&gt;numericBoxOriginShiftY.Name" xml:space="preserve">
     <value>numericBoxOriginShiftY</value>
@@ -2412,9 +2328,6 @@ Error</value>
   </data>
   <data name="numericBoxOriginShiftX.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
-  </data>
-  <data name="numericBoxOriginShiftX.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxOriginShiftX.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 9.75pt</value>
@@ -2440,8 +2353,8 @@ Error</value>
   <data name="numericBoxOriginShiftX.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
-  <data name="numericBoxOriginShiftX.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+  <data name="numericBoxOriginShiftX.TextFontSize" type="System.Single, mscorlib">
+    <value>9</value>
   </data>
   <data name="&gt;&gt;numericBoxOriginShiftX.Name" xml:space="preserve">
     <value>numericBoxOriginShiftX</value>
@@ -2489,7 +2402,7 @@ Error</value>
     <value>True</value>
   </data>
   <data name="label14.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="label14.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -2525,7 +2438,7 @@ Error</value>
     <value>True</value>
   </data>
   <data name="labelDimension.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="labelDimension.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -2591,7 +2504,7 @@ Error</value>
     <value>True</value>
   </data>
   <data name="label3.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="label3.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -2627,7 +2540,7 @@ Error</value>
     <value>True</value>
   </data>
   <data name="radioButtonDebyeWallerTypeU.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="radioButtonDebyeWallerTypeU.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -2666,7 +2579,7 @@ Error</value>
     <value>True</value>
   </data>
   <data name="radioButtonDebyeWallerTypeB.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="radioButtonDebyeWallerTypeB.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -2733,7 +2646,7 @@ B = 8 pi^2 * U.</value>
     <value>True</value>
   </data>
   <data name="label13.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="label13.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -2793,7 +2706,7 @@ B = 8 pi^2 * U.</value>
     <value>True</value>
   </data>
   <data name="checkBoxDetailsDebyeWallerError.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+    <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="checkBoxDetailsDebyeWallerError.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -2829,14 +2742,11 @@ Error</value>
   <data name="flowLayoutPanelAniso2.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
-  <data name="numericBoxB22.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
-  </data>
   <data name="numericBoxB22.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+    <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="numericBoxB22.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+    <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="numericBoxB22.HeaderText" xml:space="preserve">
     <value>B12</value>
@@ -2859,8 +2769,8 @@ Error</value>
   <data name="numericBoxB22.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="numericBoxB22.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+  <data name="numericBoxB22.TextFontSize" type="System.Single, mscorlib">
+    <value>9</value>
   </data>
   <data name="&gt;&gt;numericBoxB22.Name" xml:space="preserve">
     <value>numericBoxB22</value>
@@ -2874,14 +2784,11 @@ Error</value>
   <data name="&gt;&gt;numericBoxB22.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="numericBoxB22err.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
-  </data>
   <data name="numericBoxB22err.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+    <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="numericBoxB22err.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+    <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="numericBoxB22err.HeaderText" xml:space="preserve">
     <value>±</value>
@@ -2904,8 +2811,8 @@ Error</value>
   <data name="numericBoxB22err.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
-  <data name="numericBoxB22err.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+  <data name="numericBoxB22err.TextFontSize" type="System.Single, mscorlib">
+    <value>9</value>
   </data>
   <data name="&gt;&gt;numericBoxB22err.Name" xml:space="preserve">
     <value>numericBoxB22err</value>
@@ -2919,14 +2826,11 @@ Error</value>
   <data name="&gt;&gt;numericBoxB22err.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="numericBoxB23.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
-  </data>
   <data name="numericBoxB23.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+    <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="numericBoxB23.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+    <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="numericBoxB23.HeaderText" xml:space="preserve">
     <value>B23</value>
@@ -2949,8 +2853,8 @@ Error</value>
   <data name="numericBoxB23.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
-  <data name="numericBoxB23.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+  <data name="numericBoxB23.TextFontSize" type="System.Single, mscorlib">
+    <value>9</value>
   </data>
   <data name="&gt;&gt;numericBoxB23.Name" xml:space="preserve">
     <value>numericBoxB23</value>
@@ -2964,14 +2868,11 @@ Error</value>
   <data name="&gt;&gt;numericBoxB23.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="numericBoxB23err.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
-  </data>
   <data name="numericBoxB23err.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+    <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="numericBoxB23err.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+    <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="numericBoxB23err.HeaderText" xml:space="preserve">
     <value>±</value>
@@ -2994,8 +2895,8 @@ Error</value>
   <data name="numericBoxB23err.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
   </data>
-  <data name="numericBoxB23err.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+  <data name="numericBoxB23err.TextFontSize" type="System.Single, mscorlib">
+    <value>9</value>
   </data>
   <data name="&gt;&gt;numericBoxB23err.Name" xml:space="preserve">
     <value>numericBoxB23err</value>
@@ -3009,14 +2910,11 @@ Error</value>
   <data name="&gt;&gt;numericBoxB23err.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="numericBoxB33.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
-  </data>
   <data name="numericBoxB33.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+    <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="numericBoxB33.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+    <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="numericBoxB33.HeaderText" xml:space="preserve">
     <value>B31</value>
@@ -3039,8 +2937,8 @@ Error</value>
   <data name="numericBoxB33.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
   </data>
-  <data name="numericBoxB33.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+  <data name="numericBoxB33.TextFontSize" type="System.Single, mscorlib">
+    <value>9</value>
   </data>
   <data name="&gt;&gt;numericBoxB33.Name" xml:space="preserve">
     <value>numericBoxB33</value>
@@ -3054,14 +2952,11 @@ Error</value>
   <data name="&gt;&gt;numericBoxB33.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
-  <data name="numericBoxB33err.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
-  </data>
   <data name="numericBoxB33err.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+    <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="numericBoxB33err.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+    <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="numericBoxB33err.HeaderText" xml:space="preserve">
     <value>±</value>
@@ -3084,8 +2979,8 @@ Error</value>
   <data name="numericBoxB33err.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
   </data>
-  <data name="numericBoxB33err.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+  <data name="numericBoxB33err.TextFontSize" type="System.Single, mscorlib">
+    <value>9</value>
   </data>
   <data name="&gt;&gt;numericBoxB33err.Name" xml:space="preserve">
     <value>numericBoxB33err</value>
@@ -3126,14 +3021,11 @@ Error</value>
   <data name="flowLayoutPanelAniso1.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
-  <data name="numericBoxB11.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
-  </data>
   <data name="numericBoxB11.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+    <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="numericBoxB11.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+    <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="numericBoxB11.HeaderText" xml:space="preserve">
     <value>B11</value>
@@ -3156,8 +3048,8 @@ Error</value>
   <data name="numericBoxB11.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="numericBoxB11.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+  <data name="numericBoxB11.TextFontSize" type="System.Single, mscorlib">
+    <value>9</value>
   </data>
   <data name="&gt;&gt;numericBoxB11.Name" xml:space="preserve">
     <value>numericBoxB11</value>
@@ -3171,14 +3063,11 @@ Error</value>
   <data name="&gt;&gt;numericBoxB11.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="numericBoxB11err.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
-  </data>
   <data name="numericBoxB11err.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+    <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="numericBoxB11err.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+    <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="numericBoxB11err.HeaderText" xml:space="preserve">
     <value>±</value>
@@ -3201,8 +3090,8 @@ Error</value>
   <data name="numericBoxB11err.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
-  <data name="numericBoxB11err.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+  <data name="numericBoxB11err.TextFontSize" type="System.Single, mscorlib">
+    <value>9</value>
   </data>
   <data name="&gt;&gt;numericBoxB11err.Name" xml:space="preserve">
     <value>numericBoxB11err</value>
@@ -3216,14 +3105,11 @@ Error</value>
   <data name="&gt;&gt;numericBoxB11err.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="numericBoxB12.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
-  </data>
   <data name="numericBoxB12.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+    <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="numericBoxB12.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+    <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="numericBoxB12.HeaderText" xml:space="preserve">
     <value>B22</value>
@@ -3246,8 +3132,8 @@ Error</value>
   <data name="numericBoxB12.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
-  <data name="numericBoxB12.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+  <data name="numericBoxB12.TextFontSize" type="System.Single, mscorlib">
+    <value>9</value>
   </data>
   <data name="&gt;&gt;numericBoxB12.Name" xml:space="preserve">
     <value>numericBoxB12</value>
@@ -3261,14 +3147,11 @@ Error</value>
   <data name="&gt;&gt;numericBoxB12.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="numericBoxB12err.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
-  </data>
   <data name="numericBoxB12err.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+    <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="numericBoxB12err.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+    <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="numericBoxB12err.HeaderText" xml:space="preserve">
     <value>±</value>
@@ -3291,8 +3174,8 @@ Error</value>
   <data name="numericBoxB12err.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
   </data>
-  <data name="numericBoxB12err.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+  <data name="numericBoxB12err.TextFontSize" type="System.Single, mscorlib">
+    <value>9</value>
   </data>
   <data name="&gt;&gt;numericBoxB12err.Name" xml:space="preserve">
     <value>numericBoxB12err</value>
@@ -3306,14 +3189,11 @@ Error</value>
   <data name="&gt;&gt;numericBoxB12err.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="numericBoxB13.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
-  </data>
   <data name="numericBoxB13.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+    <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="numericBoxB13.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+    <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="numericBoxB13.HeaderText" xml:space="preserve">
     <value>B11</value>
@@ -3336,8 +3216,8 @@ Error</value>
   <data name="numericBoxB13.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
   </data>
-  <data name="numericBoxB13.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+  <data name="numericBoxB13.TextFontSize" type="System.Single, mscorlib">
+    <value>9</value>
   </data>
   <data name="&gt;&gt;numericBoxB13.Name" xml:space="preserve">
     <value>numericBoxB13</value>
@@ -3351,14 +3231,11 @@ Error</value>
   <data name="&gt;&gt;numericBoxB13.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
-  <data name="numericBoxB13err.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
-  </data>
   <data name="numericBoxB13err.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+    <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="numericBoxB13err.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+    <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="numericBoxB13err.HeaderText" xml:space="preserve">
     <value>±</value>
@@ -3381,8 +3258,8 @@ Error</value>
   <data name="numericBoxB13err.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
   </data>
-  <data name="numericBoxB13err.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+  <data name="numericBoxB13err.TextFontSize" type="System.Single, mscorlib">
+    <value>9</value>
   </data>
   <data name="&gt;&gt;numericBoxB13err.Name" xml:space="preserve">
     <value>numericBoxB13err</value>
@@ -3538,7 +3415,7 @@ Error</value>
     <value>True</value>
   </data>
   <data name="label5.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+    <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="label5.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -3571,7 +3448,7 @@ Error</value>
     <value>3</value>
   </data>
   <data name="comboBoxScatteringFactorElectron.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+    <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="comboBoxScatteringFactorElectron.ItemHeight" type="System.Int32, mscorlib">
     <value>15</value>
@@ -3607,7 +3484,7 @@ Error</value>
     <value>4</value>
   </data>
   <data name="comboBoxNeutron.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+    <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="comboBoxNeutron.ItemHeight" type="System.Int32, mscorlib">
     <value>15</value>
@@ -3646,7 +3523,7 @@ Error</value>
     <value>5</value>
   </data>
   <data name="comboBoxScatteringFactorXray.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+    <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="comboBoxScatteringFactorXray.ItemHeight" type="System.Int32, mscorlib">
     <value>15</value>
@@ -3685,7 +3562,7 @@ Error</value>
     <value>True</value>
   </data>
   <data name="label6.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+    <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="label6.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -3721,7 +3598,7 @@ Error</value>
     <value>True</value>
   </data>
   <data name="label4.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+    <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="label4.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -3783,14 +3660,11 @@ Error</value>
   <data name="numericBoxAlpha.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
-  <data name="numericBoxAlpha.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
-  </data>
   <data name="numericBoxAlpha.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+    <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="numericBoxAlpha.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+    <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="numericBoxAlpha.Location" type="System.Drawing.Point, System.Drawing">
     <value>341, 48</value>
@@ -3813,8 +3687,8 @@ Error</value>
   <data name="numericBoxAlpha.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
   </data>
-  <data name="numericBoxAlpha.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+  <data name="numericBoxAlpha.TextFontSize" type="System.Single, mscorlib">
+    <value>9</value>
   </data>
   <data name="&gt;&gt;numericBoxAlpha.Name" xml:space="preserve">
     <value>numericBoxAlpha</value>
@@ -3831,14 +3705,11 @@ Error</value>
   <data name="numericBoxEmission.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
-  <data name="numericBoxEmission.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
-  </data>
   <data name="numericBoxEmission.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+    <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="numericBoxEmission.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+    <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="numericBoxEmission.Location" type="System.Drawing.Point, System.Drawing">
     <value>270, 48</value>
@@ -3861,8 +3732,8 @@ Error</value>
   <data name="numericBoxEmission.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
   </data>
-  <data name="numericBoxEmission.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+  <data name="numericBoxEmission.TextFontSize" type="System.Single, mscorlib">
+    <value>9</value>
   </data>
   <data name="&gt;&gt;numericBoxEmission.Name" xml:space="preserve">
     <value>numericBoxEmission</value>
@@ -3879,14 +3750,11 @@ Error</value>
   <data name="numericBoxShininess.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
-  <data name="numericBoxShininess.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
-  </data>
   <data name="numericBoxShininess.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+    <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="numericBoxShininess.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+    <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="numericBoxShininess.Location" type="System.Drawing.Point, System.Drawing">
     <value>204, 48</value>
@@ -3909,8 +3777,8 @@ Error</value>
   <data name="numericBoxShininess.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
   </data>
-  <data name="numericBoxShininess.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+  <data name="numericBoxShininess.TextFontSize" type="System.Single, mscorlib">
+    <value>9</value>
   </data>
   <data name="&gt;&gt;numericBoxShininess.Name" xml:space="preserve">
     <value>numericBoxShininess</value>
@@ -3927,14 +3795,11 @@ Error</value>
   <data name="numericBoxSpecular.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
-  <data name="numericBoxSpecular.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
-  </data>
   <data name="numericBoxSpecular.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+    <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="numericBoxSpecular.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+    <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="numericBoxSpecular.Location" type="System.Drawing.Point, System.Drawing">
     <value>140, 48</value>
@@ -3957,8 +3822,8 @@ Error</value>
   <data name="numericBoxSpecular.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
   </data>
-  <data name="numericBoxSpecular.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+  <data name="numericBoxSpecular.TextFontSize" type="System.Single, mscorlib">
+    <value>9</value>
   </data>
   <data name="&gt;&gt;numericBoxSpecular.Name" xml:space="preserve">
     <value>numericBoxSpecular</value>
@@ -3975,14 +3840,11 @@ Error</value>
   <data name="numericBoxDiffusion.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
-  <data name="numericBoxDiffusion.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
-  </data>
   <data name="numericBoxDiffusion.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+    <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="numericBoxDiffusion.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+    <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="numericBoxDiffusion.Location" type="System.Drawing.Point, System.Drawing">
     <value>77, 48</value>
@@ -4005,8 +3867,8 @@ Error</value>
   <data name="numericBoxDiffusion.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
   </data>
-  <data name="numericBoxDiffusion.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+  <data name="numericBoxDiffusion.TextFontSize" type="System.Single, mscorlib">
+    <value>9</value>
   </data>
   <data name="&gt;&gt;numericBoxDiffusion.Name" xml:space="preserve">
     <value>numericBoxDiffusion</value>
@@ -4023,14 +3885,11 @@ Error</value>
   <data name="numericBoxAmbient.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
-  <data name="numericBoxAmbient.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
-  </data>
   <data name="numericBoxAmbient.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+    <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="numericBoxAmbient.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+    <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="numericBoxAmbient.Location" type="System.Drawing.Point, System.Drawing">
     <value>9, 48</value>
@@ -4053,8 +3912,8 @@ Error</value>
   <data name="numericBoxAmbient.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
-  <data name="numericBoxAmbient.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+  <data name="numericBoxAmbient.TextFontSize" type="System.Single, mscorlib">
+    <value>9</value>
   </data>
   <data name="&gt;&gt;numericBoxAmbient.Name" xml:space="preserve">
     <value>numericBoxAmbient</value>
@@ -4102,7 +3961,7 @@ Error</value>
     <value>True</value>
   </data>
   <data name="label10.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+    <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="label10.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -4135,7 +3994,7 @@ Error</value>
     <value>True</value>
   </data>
   <data name="label37.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+    <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="label37.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -4168,7 +4027,7 @@ Error</value>
     <value>True</value>
   </data>
   <data name="label38.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+    <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="label38.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -4201,7 +4060,7 @@ Error</value>
     <value>True</value>
   </data>
   <data name="label11.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+    <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="label11.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -4234,7 +4093,7 @@ Error</value>
     <value>True</value>
   </data>
   <data name="label35.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+    <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="label35.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -4267,7 +4126,7 @@ Error</value>
     <value>True</value>
   </data>
   <data name="label36.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+    <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="label36.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -4299,17 +4158,14 @@ Error</value>
   <data name="numericBoxAtomRadius.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
-  <data name="numericBoxAtomRadius.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
-  </data>
   <data name="numericBoxAtomRadius.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+    <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="numericBoxAtomRadius.FooterText" xml:space="preserve">
     <value>Å</value>
   </data>
   <data name="numericBoxAtomRadius.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+    <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="numericBoxAtomRadius.HeaderText" xml:space="preserve">
     <value>Radius</value>
@@ -4335,8 +4191,8 @@ Error</value>
   <data name="numericBoxAtomRadius.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="numericBoxAtomRadius.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+  <data name="numericBoxAtomRadius.TextFontSize" type="System.Single, mscorlib">
+    <value>9</value>
   </data>
   <data name="numericBoxAtomRadius.ToolTip" xml:space="preserve">
     <value>Radius of the sphere to be drawn</value>
@@ -4363,10 +4219,10 @@ Error</value>
     <value>GrowAndShrink</value>
   </data>
   <data name="colorControlAtomColor.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+    <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="colorControlAtomColor.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+    <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="colorControlAtomColor.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -4375,7 +4231,7 @@ Error</value>
     <value />
   </data>
   <data name="colorControlAtomColor.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+    <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="colorControlAtomColor.HeaderMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 2, 0, 0</value>
@@ -4438,7 +4294,7 @@ Error</value>
     <value>Bottom</value>
   </data>
   <data name="tabControl.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+    <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="tabControl.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 247</value>
@@ -4474,7 +4330,7 @@ Error</value>
     <value>Left</value>
   </data>
   <data name="buttonApplyToSameElement.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+    <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="buttonApplyToSameElement.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>TopCenter</value>
@@ -4525,7 +4381,7 @@ Error</value>
     <value>Left</value>
   </data>
   <data name="buttonAddAtom.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+    <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="buttonAddAtom.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>TopCenter</value>
@@ -4573,7 +4429,7 @@ Error</value>
     <value>Left</value>
   </data>
   <data name="buttonChange.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+    <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="buttonChange.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>TopCenter</value>
@@ -4621,7 +4477,7 @@ Error</value>
     <value>Left</value>
   </data>
   <data name="buttonApplyToAllElements.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+    <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="buttonApplyToAllElements.Location" type="System.Drawing.Point, System.Drawing">
     <value>237, 0</value>
@@ -4663,7 +4519,7 @@ Error</value>
     <value>Right</value>
   </data>
   <data name="buttonAtomUp.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+    <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="buttonAtomUp.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>TopCenter</value>
@@ -4711,7 +4567,7 @@ Error</value>
     <value>Right</value>
   </data>
   <data name="buttonAtomDown.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+    <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="buttonAtomDown.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>TopCenter</value>
@@ -4759,7 +4615,7 @@ Error</value>
     <value>Right</value>
   </data>
   <data name="buttonDeleteAtom.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+    <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="buttonDeleteAtom.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>TopCenter</value>
@@ -4942,7 +4798,7 @@ Error</value>
     <value>True</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>

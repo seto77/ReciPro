@@ -1012,7 +1012,7 @@
             graphicsBox.BackColor = System.Drawing.Color.Transparent;
             graphicsBox.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             resources.ApplyResources(graphicsBox, "graphicsBox");
-            graphicsBox.Fonts = new System.Drawing.Font("Segoe UI", 11F);
+            graphicsBox.Fonts = new System.Drawing.Font("Segoe UI Variable Text", 11F);
             graphicsBox.Name = "graphicsBox";
             graphicsBox.TabStop = false;
             toolTip.SetToolTip(graphicsBox, resources.GetString("graphicsBox.ToolTip"));

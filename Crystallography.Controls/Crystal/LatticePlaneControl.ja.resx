@@ -119,7 +119,7 @@
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="buttonAddBond.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="buttonAddBond.Size" type="System.Drawing.Size, System.Drawing">
     <value>42, 28</value>
@@ -131,7 +131,7 @@
     <value />
   </data>
   <data name="buttonChangeBond.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="buttonChangeBond.Size" type="System.Drawing.Size, System.Drawing">
     <value>42, 28</value>
@@ -143,7 +143,7 @@
     <value />
   </data>
   <data name="buttonDeleteBond.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="buttonDeleteBond.Location" type="System.Drawing.Point, System.Drawing">
     <value>348, 0</value>
@@ -221,7 +221,7 @@
     <value />
   </data>
   <data name="colorControl.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="colorControl.HeaderText" xml:space="preserve">
     <value>色</value>
@@ -239,7 +239,7 @@
     <value />
   </data>
   <data name="label6.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
     <value>56, 18</value>

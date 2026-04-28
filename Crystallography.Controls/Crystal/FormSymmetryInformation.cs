@@ -133,7 +133,7 @@ public partial class FormSymmetryInformation : FormBase
 
     #region 出現則用のLabelLatex生成
     // 260427Cl: 結晶切替の度に N 個の LabelLaTeX を生成するので Font/Padding は static で共有 (Font は IDisposable だがアプリ生存期間)。
-    private static readonly Font ExtinctionRuleFont = new("Segoe UI", 13F);
+    private static readonly Font ExtinctionRuleFont = new("Segoe UI Variable Text", 13F);
     private static readonly Padding ExtinctionRuleMargin = new(0, 0, 0, 2);
 
     /// <summary>

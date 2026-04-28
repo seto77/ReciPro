@@ -429,6 +429,7 @@ public partial class FormImageSimulator : FormBase
         this.splitContainer1.Enabled = false;
 
         if (sync)
+            // 260428Cl 同期マクロ呼び出し用の UI ポンプ。Macro 自体が同期 API のため、ここでは DoEvents を残す (Macro の async 化時に削除予定)
             while (FormMain.Crystal.Bethe.IsSTEM_Busy)
             {
                 Application.DoEvents();
@@ -496,7 +497,7 @@ public partial class FormImageSimulator : FormBase
             toolStripStatusLabel1.Text = $"Ellapsed time : {sec:f1} s.  Stage 1: Calculating Tg for " + stemDirectionTotal.ToString() + " directions (" + message + ").";
             toolStripStatusLabel2.Text = $"{current / 1E4:f1} % completed,  wait for more {sec * (1E6 - current) / current:f1} s.";
         }
-        Application.DoEvents();
+        // 260428Cl Application.DoEvents() を削除 (BackgroundWorker の ProgressChanged は UI スレッドで動作するため不要)
         skipProgressChangedEvent = false;
     }
     #endregion
@@ -528,7 +529,7 @@ public partial class FormImageSimulator : FormBase
         this.buttonStop.Visible = false;
         this.splitContainer1.Enabled = true;
         sw1.Stop(); sw1.Reset(); sw2.Stop(); sw2.Reset(); sw3.Reset(); sw3.Reset();
-        Application.DoEvents();
+        // 260428Cl Application.DoEvents() を削除 (RunWorkerCompleted は UI スレッドで動作するため不要)
     }
 
     #endregion

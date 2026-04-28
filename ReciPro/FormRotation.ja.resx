@@ -59,7 +59,7 @@
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="buttonCopy.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="buttonCopy.Location" type="System.Drawing.Point, System.Drawing">
     <value>287, 16</value>
@@ -72,7 +72,7 @@
 コピー</value>
   </data>
   <data name="buttonPaste.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="buttonPaste.Size" type="System.Drawing.Size, System.Drawing">
     <value>102, 46</value>
@@ -82,19 +82,19 @@
 張り付け</value>
   </data>
   <data name="groupBoxReciProCoordinate.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9.75pt, style=Bold</value>
+    <value>BIZ UDPGothic, 9.75pt, style=Bold</value>
   </data>
   <data name="groupBoxReciProCoordinate.Text" xml:space="preserve">
     <value>ReciProの座標系 (ZXZ)</value>
   </data>
   <data name="groupBoxExperimentalCoordinate.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9.75pt, style=Bold</value>
+    <value>BIZ UDPGothic, 9.75pt, style=Bold</value>
   </data>
   <data name="groupBoxExperimentalCoordinate.Text" xml:space="preserve">
     <value>実験室座標系</value>
   </data>
   <data name="buttonResetExpEuler.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="buttonResetExpEuler.Location" type="System.Drawing.Point, System.Drawing">
     <value>351, 60</value>
@@ -107,7 +107,7 @@
 リセット</value>
   </data>
   <data name="checkBoxFix3rd.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="checkBoxFix3rd.Size" type="System.Drawing.Size, System.Drawing">
     <value>51, 22</value>
@@ -116,7 +116,7 @@
     <value>固定</value>
   </data>
   <data name="checkBoxFix2nd.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="checkBoxFix2nd.Size" type="System.Drawing.Size, System.Drawing">
     <value>51, 22</value>
@@ -125,7 +125,7 @@
     <value>固定</value>
   </data>
   <data name="checkBoxFix1st.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="checkBoxFix1st.Size" type="System.Drawing.Size, System.Drawing">
     <value>51, 22</value>

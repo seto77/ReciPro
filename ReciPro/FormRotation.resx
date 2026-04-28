@@ -132,7 +132,7 @@
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="buttonViewAlongBeam.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+    <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="buttonViewAlongBeam.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -171,7 +171,7 @@
     <value>GrowAndShrink</value>
   </data>
   <data name="buttonViewIsometric.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+    <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="buttonViewIsometric.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -207,7 +207,7 @@
     <value>True</value>
   </data>
   <data name="checkBoxLink.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt, style=Bold</value>
+    <value>Segoe UI Variable Text, 9.75pt, style=Bold</value>
   </data>
   <data name="checkBoxLink.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -246,7 +246,7 @@
     <value>GrowAndShrink</value>
   </data>
   <data name="buttonCopy.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+    <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="buttonCopy.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -289,7 +289,7 @@
     <value>GrowAndShrink</value>
   </data>
   <data name="buttonPaste.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+    <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="buttonPaste.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -328,9 +328,6 @@
   <data name="numericBoxPsi.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
-  <data name="numericBoxPsi.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
-  </data>
   <data name="numericBoxPsi.FooterText" xml:space="preserve">
     <value>°</value>
   </data>
@@ -355,8 +352,8 @@
   <data name="numericBoxPsi.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
-  <data name="numericBoxPsi.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+  <data name="numericBoxPsi.TextFontSize" type="System.Single, mscorlib">
+    <value>9</value>
   </data>
   <data name="numericBoxPsi.ToolTip" xml:space="preserve">
     <value>Euler angle Ψ</value>
@@ -378,9 +375,6 @@
   </data>
   <data name="numericBoxTheta.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
-  </data>
-  <data name="numericBoxTheta.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxTheta.FooterText" xml:space="preserve">
     <value>°</value>
@@ -406,8 +400,8 @@
   <data name="numericBoxTheta.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
-  <data name="numericBoxTheta.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+  <data name="numericBoxTheta.TextFontSize" type="System.Single, mscorlib">
+    <value>9</value>
   </data>
   <data name="numericBoxTheta.ToolTip" xml:space="preserve">
     <value>Euler angle Θ</value>
@@ -429,9 +423,6 @@
   </data>
   <data name="numericBoxPhi.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
-  </data>
-  <data name="numericBoxPhi.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxPhi.FooterText" xml:space="preserve">
     <value>°</value>
@@ -457,8 +448,8 @@
   <data name="numericBoxPhi.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="numericBoxPhi.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+  <data name="numericBoxPhi.TextFontSize" type="System.Single, mscorlib">
+    <value>9</value>
   </data>
   <data name="numericBoxPhi.ToolTip" xml:space="preserve">
     <value>Euler angle Φ</value>
@@ -480,9 +471,6 @@
   </data>
   <data name="numericBoxExp1.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
-  </data>
-  <data name="numericBoxExp1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxExp1.FooterText" xml:space="preserve">
     <value>°</value>
@@ -508,8 +496,8 @@
   <data name="numericBoxExp1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="numericBoxExp1.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+  <data name="numericBoxExp1.TextFontSize" type="System.Single, mscorlib">
+    <value>9</value>
   </data>
   <data name="numericBoxExp1.ToolTip" xml:space="preserve">
     <value>Set angle for the 1st axis</value>
@@ -531,9 +519,6 @@
   </data>
   <data name="numericBoxExp2.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
-  </data>
-  <data name="numericBoxExp2.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxExp2.FooterText" xml:space="preserve">
     <value>°</value>
@@ -559,8 +544,8 @@
   <data name="numericBoxExp2.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
-  <data name="numericBoxExp2.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+  <data name="numericBoxExp2.TextFontSize" type="System.Single, mscorlib">
+    <value>9</value>
   </data>
   <data name="numericBoxExp2.ToolTip" xml:space="preserve">
     <value>Set angle for the 2nd axis</value>
@@ -582,9 +567,6 @@
   </data>
   <data name="numericBoxExp3.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
-  </data>
-  <data name="numericBoxExp3.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxExp3.FooterText" xml:space="preserve">
     <value>°</value>
@@ -610,8 +592,8 @@
   <data name="numericBoxExp3.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
-  <data name="numericBoxExp3.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+  <data name="numericBoxExp3.TextFontSize" type="System.Single, mscorlib">
+    <value>9</value>
   </data>
   <data name="numericBoxExp3.ToolTip" xml:space="preserve">
     <value>Set the angle for the 3rd axis.</value>
@@ -635,7 +617,7 @@
     <value>True</value>
   </data>
   <data name="checkBoxEnable2nd.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+    <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="checkBoxEnable2nd.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -674,7 +656,7 @@
     <value>True</value>
   </data>
   <data name="checkBoxFix1st.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+    <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="checkBoxFix1st.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -713,7 +695,7 @@
     <value>True</value>
   </data>
   <data name="checkBoxFix2nd.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+    <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="checkBoxFix2nd.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -752,7 +734,7 @@
     <value>True</value>
   </data>
   <data name="checkBoxFix3rd.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+    <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="checkBoxFix3rd.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -791,7 +773,7 @@
     <value>True</value>
   </data>
   <data name="checkBoxEnable3rd.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+    <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="checkBoxEnable3rd.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -1190,7 +1172,7 @@
     <value>GrowAndShrink</value>
   </data>
   <data name="buttonResetExpEuler.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+    <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="buttonResetExpEuler.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -1352,9 +1334,6 @@ Angles</value>
   <data name="numericBox11.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
-  <data name="numericBox11.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
-  </data>
   <data name="numericBox11.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
@@ -1376,8 +1355,8 @@ Angles</value>
   <data name="numericBox11.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="numericBox11.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+  <data name="numericBox11.TextFontSize" type="System.Single, mscorlib">
+    <value>9</value>
   </data>
   <data name="&gt;&gt;numericBox11.Name" xml:space="preserve">
     <value>numericBox11</value>
@@ -1396,9 +1375,6 @@ Angles</value>
   </data>
   <data name="numericBox12.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
-  </data>
-  <data name="numericBox12.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBox12.Location" type="System.Drawing.Point, System.Drawing">
     <value>59, 0</value>
@@ -1421,8 +1397,8 @@ Angles</value>
   <data name="numericBox12.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="numericBox12.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+  <data name="numericBox12.TextFontSize" type="System.Single, mscorlib">
+    <value>9</value>
   </data>
   <data name="&gt;&gt;numericBox12.Name" xml:space="preserve">
     <value>numericBox12</value>
@@ -1441,9 +1417,6 @@ Angles</value>
   </data>
   <data name="numericBox13.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
-  </data>
-  <data name="numericBox13.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBox13.Location" type="System.Drawing.Point, System.Drawing">
     <value>118, 0</value>
@@ -1466,8 +1439,8 @@ Angles</value>
   <data name="numericBox13.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="numericBox13.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+  <data name="numericBox13.TextFontSize" type="System.Single, mscorlib">
+    <value>9</value>
   </data>
   <data name="&gt;&gt;numericBox13.Name" xml:space="preserve">
     <value>numericBox13</value>
@@ -1486,9 +1459,6 @@ Angles</value>
   </data>
   <data name="numericBox21.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
-  </data>
-  <data name="numericBox21.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBox21.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 24</value>
@@ -1511,8 +1481,8 @@ Angles</value>
   <data name="numericBox21.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="numericBox21.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+  <data name="numericBox21.TextFontSize" type="System.Single, mscorlib">
+    <value>9</value>
   </data>
   <data name="&gt;&gt;numericBox21.Name" xml:space="preserve">
     <value>numericBox21</value>
@@ -1531,9 +1501,6 @@ Angles</value>
   </data>
   <data name="numericBox22.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
-  </data>
-  <data name="numericBox22.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBox22.Location" type="System.Drawing.Point, System.Drawing">
     <value>59, 24</value>
@@ -1556,8 +1523,8 @@ Angles</value>
   <data name="numericBox22.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="numericBox22.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+  <data name="numericBox22.TextFontSize" type="System.Single, mscorlib">
+    <value>9</value>
   </data>
   <data name="&gt;&gt;numericBox22.Name" xml:space="preserve">
     <value>numericBox22</value>
@@ -1576,9 +1543,6 @@ Angles</value>
   </data>
   <data name="numericBox33.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
-  </data>
-  <data name="numericBox33.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBox33.Location" type="System.Drawing.Point, System.Drawing">
     <value>118, 48</value>
@@ -1601,8 +1565,8 @@ Angles</value>
   <data name="numericBox33.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="numericBox33.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+  <data name="numericBox33.TextFontSize" type="System.Single, mscorlib">
+    <value>9</value>
   </data>
   <data name="&gt;&gt;numericBox33.Name" xml:space="preserve">
     <value>numericBox33</value>
@@ -1621,9 +1585,6 @@ Angles</value>
   </data>
   <data name="numericBox23.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
-  </data>
-  <data name="numericBox23.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBox23.Location" type="System.Drawing.Point, System.Drawing">
     <value>118, 24</value>
@@ -1646,8 +1607,8 @@ Angles</value>
   <data name="numericBox23.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="numericBox23.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+  <data name="numericBox23.TextFontSize" type="System.Single, mscorlib">
+    <value>9</value>
   </data>
   <data name="&gt;&gt;numericBox23.Name" xml:space="preserve">
     <value>numericBox23</value>
@@ -1666,9 +1627,6 @@ Angles</value>
   </data>
   <data name="numericBox31.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
-  </data>
-  <data name="numericBox31.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBox31.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 48</value>
@@ -1691,8 +1649,8 @@ Angles</value>
   <data name="numericBox31.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="numericBox31.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+  <data name="numericBox31.TextFontSize" type="System.Single, mscorlib">
+    <value>9</value>
   </data>
   <data name="&gt;&gt;numericBox31.Name" xml:space="preserve">
     <value>numericBox31</value>
@@ -1711,9 +1669,6 @@ Angles</value>
   </data>
   <data name="numericBox32.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
-  </data>
-  <data name="numericBox32.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBox32.Location" type="System.Drawing.Point, System.Drawing">
     <value>59, 48</value>
@@ -1736,8 +1691,8 @@ Angles</value>
   <data name="numericBox32.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="numericBox32.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+  <data name="numericBox32.TextFontSize" type="System.Single, mscorlib">
+    <value>9</value>
   </data>
   <data name="&gt;&gt;numericBox32.Name" xml:space="preserve">
     <value>numericBox32</value>
@@ -1821,7 +1776,7 @@ Angles</value>
     <value>True</value>
   </data>
   <data name="label2.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+    <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="label2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -1857,7 +1812,7 @@ Angles</value>
     <value>Fill</value>
   </data>
   <data name="groupBoxReciProCoordinate.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt, style=Bold</value>
+    <value>Segoe UI Variable Text, 9.75pt, style=Bold</value>
   </data>
   <data name="groupBoxReciProCoordinate.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 3</value>
@@ -1890,7 +1845,7 @@ Angles</value>
     <value>GrowAndShrink</value>
   </data>
   <data name="flowLayoutPanelFirstAxis.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 8.25pt</value>
+    <value>Segoe UI Variable Text, 8.25pt</value>
   </data>
   <data name="flowLayoutPanelFirstAxis.Location" type="System.Drawing.Point, System.Drawing">
     <value>71, 20</value>
@@ -1920,7 +1875,7 @@ Angles</value>
     <value>GrowAndShrink</value>
   </data>
   <data name="flowLayoutPanelSecondAxis.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 8.25pt</value>
+    <value>Segoe UI Variable Text, 8.25pt</value>
   </data>
   <data name="flowLayoutPanelSecondAxis.Location" type="System.Drawing.Point, System.Drawing">
     <value>71, 50</value>
@@ -1953,7 +1908,7 @@ Angles</value>
     <value>GrowAndShrink</value>
   </data>
   <data name="flowLayoutPanelThirdAxis.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 8.25pt</value>
+    <value>Segoe UI Variable Text, 8.25pt</value>
   </data>
   <data name="flowLayoutPanelThirdAxis.Location" type="System.Drawing.Point, System.Drawing">
     <value>71, 80</value>
@@ -1983,7 +1938,7 @@ Angles</value>
     <value>True</value>
   </data>
   <data name="label5.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+    <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="label5.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -2019,7 +1974,7 @@ Angles</value>
     <value>Fill</value>
   </data>
   <data name="groupBoxExperimentalCoordinate.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt, style=Bold</value>
+    <value>Segoe UI Variable Text, 9.75pt, style=Bold</value>
   </data>
   <data name="groupBoxExperimentalCoordinate.Location" type="System.Drawing.Point, System.Drawing">
     <value>537, 3</value>
@@ -2088,7 +2043,7 @@ Angles</value>
     <value>948, 390</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+    <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 4, 3, 4</value>

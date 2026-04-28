@@ -300,7 +300,8 @@ public partial class FormSpotIDV2 : FormBase
 
     #region 画像からスポットを検索、クリア、フィッティング
 
-    private void buttonFindSpots_Click(object sender, EventArgs e)
+    // 260428Cl async 化: フィッティングループを Task.Run + IProgress<int> でバックグラウンドへ移行
+    private async void buttonFindSpots_Click(object sender, EventArgs e)
     {
         var p = scalablePictureBoxAdvanced.PseudoBitmap;
         if (p == null || p.SrcValuesGray == null) return;
@@ -351,14 +352,24 @@ public partial class FormSpotIDV2 : FormBase
 
         bindingSourceObsSpots.DataMember = "";
 
-        int n = 0;
-        var results = spots.Select(s =>
+        // 260428Cl UI 状態をスナップショット → Task.Run でバックグラウンド実行
+        int width = p.Width, height = p.Height;
+        var srcValues = p.SrcValuesGray;
+        var fittingRange = FittingRange;
+        var nearestNeighbor = numericBoxNearestNeighbor.Value;
+        var spotsCount = spots.Count;
+        var max = toolStripProgressBar.Maximum;
+        IProgress<int> progress = new Progress<int>(n => toolStripProgressBar.Value = n * max / spotsCount);
+
+        var results = await Task.Run(() =>
         {
-            toolStripProgressBar.Value = n++ * toolStripProgressBar.Maximum / spots.Count;
-            Application.DoEvents();
-            var val = fit(new PointD(s.X, s.Y), FittingRange);
-            return val;
-        }).ToList();
+            int counter = 0;
+            return spots.Select(s =>
+            {
+                progress.Report(counter++);
+                return fitCore(new PointD(s.X, s.Y), fittingRange, width, height, srcValues);
+            }).ToList();
+        });
 
         for (int i = 0; i < results.Count; i++)
         {
@@ -367,14 +378,14 @@ public partial class FormSpotIDV2 : FormBase
             {
                 double x1 = results[j].PrmsPv[0], y1 = results[j].PrmsPv[1];
 
-                if ((x1 - x) * (x1 - x) + (y1 - y) * (y1 - y) < numericBoxNearestNeighbor.Value * numericBoxNearestNeighbor.Value)
+                if ((x1 - x) * (x1 - x) + (y1 - y) * (y1 - y) < nearestNeighbor * nearestNeighbor)
                     results.RemoveAt(j--);
             }
         }
 
         for (int i = 0; i < results.Count; i++)
             if (!double.IsPositiveInfinity(results[i].R))
-                dataSet.DataTableSpot.Add(DirectSpot.IsNaN, FittingRange, results[i].PrmsPv, results[i].PrmsBg, results[i].R);
+                dataSet.DataTableSpot.Add(DirectSpot.IsNaN, fittingRange, results[i].PrmsPv, results[i].PrmsBg, results[i].R);
         toolStripProgressBar.Value = toolStripProgressBar.Maximum;
         bindingSourceObsSpots.DataMember = "DataTableSpot";
         toolStripStatusLabelIdentifySpot.Text += $" Fitting time ({spots.Count} spots): {sw.ElapsedMilliseconds} ms.";
@@ -394,13 +405,17 @@ public partial class FormSpotIDV2 : FormBase
         if (radius == 0)
             radius = numericBoxFittingRange.Value;
 
+        return fitCore(pt, radius, scalablePictureBoxAdvanced.PseudoBitmap.Width, scalablePictureBoxAdvanced.PseudoBitmap.Height, scalablePictureBoxAdvanced.PseudoBitmap.SrcValuesGray);
+    }
+
+    // 260428Cl 追加: UI 非依存の純粋計算版。Task.Run でバックグラウンドから呼べる。
+    private static (double[] PrmsPv, double[] PrmsBg, double R) fitCore(PointD pt, double radius, int width, int height, double[] srcValues)
+    {
         //外れすぎていないかをチェックするfunc
         var exclude = new Func<double, double, bool>((x, y) => Math.Abs(pt.X - x) > 1000 || Math.Abs(pt.Y - y) > 1000 ||
                 (pt.X - x) * (pt.X - x) + (pt.Y - y) * (pt.Y - y) > radius * radius);
 
         //検索対象のピクセルを粗く設定
-        int width = scalablePictureBoxAdvanced.PseudoBitmap.Width, height = scalablePictureBoxAdvanced.PseudoBitmap.Height;
-        var srcValues = scalablePictureBoxAdvanced.PseudoBitmap.SrcValuesGray;
         var margin = 5.0;
         var src = new List<(double[] x, double y)>();
         for (int y = (int)Math.Max(0, pt.Y - radius - margin + 0.5); y < (int)Math.Min(height, pt.Y + radius + margin + 0.5); y++)
@@ -491,21 +506,34 @@ public partial class FormSpotIDV2 : FormBase
         }
     }
 
-    private void buttonRefit_Click(object sender, EventArgs e)
+    // 260428Cl async 化: 再フィッティングループを Task.Run + IProgress<int> でバックグラウンドへ移行
+    private async void buttonRefit_Click(object sender, EventArgs e)
     {
+        var p = scalablePictureBoxAdvanced.PseudoBitmap;
+        if (p == null || p.SrcValuesGray == null) return;
+
         Enabled = false;
-        Application.DoEvents();
         sw.Restart();
         bindingSourceObsSpots.DataMember = "";
 
-        int n = 0;
-        var results = dataSet.DataTableSpot.Spots.Select((s, i) =>
+        // UI 状態をスナップショット
+        int width = p.Width, height = p.Height;
+        var srcValues = p.SrcValuesGray;
+        var spotsSnapshot = dataSet.DataTableSpot.Spots
+            .Select((s, i) => (X: s.X, Y: s.Y, Area: dataSet.DataTableSpot.GetPrms(i).Range))
+            .ToArray();
+        var max = toolStripProgressBar.Maximum;
+        IProgress<int> progress = new Progress<int>(n => toolStripProgressBar.Value = n * max / spotsSnapshot.Length);
+
+        var results = await Task.Run(() =>
         {
-            toolStripProgressBar.Value = n++ * toolStripProgressBar.Maximum / dataSet.DataTableSpot.Spots.Count;
-            Application.DoEvents();
-            var area = dataSet.DataTableSpot.GetPrms(i).Range;
-            return fit(new PointD(s.X, s.Y), area);
-        }).ToArray();
+            int counter = 0;
+            return spotsSnapshot.Select(s =>
+            {
+                progress.Report(counter++);
+                return fitCore(new PointD(s.X, s.Y), s.Area, width, height, srcValues);
+            }).ToArray();
+        });
 
         for (int i = 0; i < results.Length; i++)
             if (!double.IsPositiveInfinity(results[i].R))
@@ -521,17 +549,23 @@ public partial class FormSpotIDV2 : FormBase
     }
 
     #region experimetal
-    private void ButtonGlobalFit_Click(object sender, EventArgs e)
+    // 260428Cl async 化: 重い計算 (MQ.Solve + intensity 集計) を Task.Run でバックグラウンドへ移行
+    private async void ButtonGlobalFit_Click(object sender, EventArgs e)
     {
         if (dataSet.DataTableSpot.Spots.Count == 0) return;
+        var p = scalablePictureBoxAdvanced.PseudoBitmap;
+        if (p == null || p.SrcValuesGray == null) return;
+
         Enabled = false;
-        Application.DoEvents();
         sw.Restart();
         bindingSourceObsSpots.DataMember = "";
 
+        // UI 状態をスナップショット
+        int width = p.Width, height = p.Height;
+        var srcValues = p.SrcValuesGray;
+        var fittingRange = numericBoxFittingRange.Value;
+
         //まず、現在のスポットのパラメータを取得 && 検索対象のエリアの合計を抽出
-        int width = scalablePictureBoxAdvanced.PseudoBitmap.Width, height = scalablePictureBoxAdvanced.PseudoBitmap.Height;
-        var srcValues = scalablePictureBoxAdvanced.PseudoBitmap.SrcValuesGray;
         var prmsList = new List<(bool Direct, int No, double Range, double X0, double Y0, double H1, double H2, double Theta, double Eta, double A, double B0, double Bx, double By, double R)>();
         var functions = new List<MQ.Function>();
         var excludedArea = new List<int>();
@@ -549,56 +583,84 @@ public partial class FormSpotIDV2 : FormBase
                 var func1 = new MQ.Function(MQ.FuncType.PV2E, prms.X0, prms.Y0, width * 0.5, height * 0.51, 0.5, 0.5, 100000000);
                 var func2 = new MQ.Function(MQ.FuncType.PV2E, prms.X0, prms.Y0, width * 1.0, height * 1.1, 0.5, 0.5, 100000000);
                 var func3 = new MQ.Function(MQ.FuncType.PV2E, prms.X0, prms.Y0, width * 2.0, height * 2.1, 0.5, 0.5, 100000000);
-                func1.Constraints = func2.Constraints = func3.Constraints = p => new[] {
-                        Math.Min(Math.Max(p[0], prms.X0 - 100), prms.X0 + 100),//X0
-                        Math.Min(Math.Max(p[1], prms.Y0 - 100), prms.Y0 + 100),//Y0
-                        Math.Max(p[2], 30),//H1
-                        Math.Max(p[3], 30),//H2
-                        p[4],//Theta
-                        Math.Min(Math.Max(p[5], 0), 1.5),//Eta
-                        Math.Max(p[6], 1E-10)//A
+                func1.Constraints = func2.Constraints = func3.Constraints = pp => new[] {
+                        Math.Min(Math.Max(pp[0], prms.X0 - 100), prms.X0 + 100),//X0
+                        Math.Min(Math.Max(pp[1], prms.Y0 - 100), prms.Y0 + 100),//Y0
+                        Math.Max(pp[2], 30),//H1
+                        Math.Max(pp[3], 30),//H2
+                        pp[4],//Theta
+                        Math.Min(Math.Max(pp[5], 0), 1.5),//Eta
+                        Math.Max(pp[6], 1E-10)//A
                     };
                 functions.AddRange(new[] { func1, func2, func3 });
             }
         }
-        var includedArea = ValueEnumerable.Range(0, width * height).Except(excludedArea).ToList();
 
-        //ここまで
-        var pixelsBGList = new List<(double[] x, double y, double w)>();
-        foreach (var index in includedArea)
+        // 260428Cl Direct スポットが無いと functions が空 → MQ.Solve が null を返してクラッシュしていたバグの修正
+        if (functions.Count == 0)
         {
-            int x = index % width, y = index / width;
-            double range = numericBoxFittingRange.Value;
-            if (x > range && x < width - range && y > range && y < height - range)
-                pixelsBGList.Add((new double[] { x, y }, srcValues[index], 1));
+            MessageBox.Show("Global Fit requires a Direct (000) spot to be marked.\r\nNo Direct spot was found in the spot list.",
+                "Global Fit", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            toolStripStatusLabelIdentifySpot.Text = "";
+            Enabled = true;
+            return;
         }
 
-        //pixelsBGの数が大きすぎる場合は時間がかかるので、減らす
-        while (pixelsBGList.Count > 50000)
+        var intensities = await Task.Run(() =>
         {
-            pixelsBGList = pixelsBGList.Where((b, i) => i % 2 == 0).ToList();
+            var includedArea = ValueEnumerable.Range(0, width * height).Except(excludedArea).ToList();
 
+            var pixelsBGList = new List<(double[] x, double y, double w)>();
+            foreach (var index in includedArea)
+            {
+                int x = index % width, y = index / width;
+                if (x > fittingRange && x < width - fittingRange && y > fittingRange && y < height - fittingRange)
+                    pixelsBGList.Add((new double[] { x, y }, srcValues[index], 1));
+            }
+
+            //pixelsBGの数が大きすぎる場合は時間がかかるので、減らす
+            while (pixelsBGList.Count > 50000)
+                pixelsBGList = [.. pixelsBGList.Where((b, i) => i % 2 == 0)];
+
+            var r = MQ.Solve([.. pixelsBGList], [.. functions], MQ.Precision.Low);
+
+            // 260428Cl 解が得られなかった場合は null を返してメインスレッド側でエラー表示
+            if (r.Prms == null)
+                return null;
+
+            var result = new double[prmsList.Count];
+            for (int i = 0; i < prmsList.Count; i++)
+            {
+                var intensity = 0.0;
+                var prms = prmsList[i];
+                var h = (prms.H1 + prms.H2) / 2.0 * 8.0;
+                for (int y = Math.Max(0, (int)(prms.Y0 - h - 1)); y < Math.Min(height, (int)(prms.Y0 + h + 2)); y++)
+                    for (int x = Math.Max(0, (int)(prms.X0 - h - 1)); x < Math.Min(width, (int)(prms.X0 + h + 2)); x++)
+                        if ((x - prms.X0) * (x - prms.X0) + (y - prms.Y0) * (y - prms.Y0) < h * h)
+                        {
+                            var temp = srcValues[x + y * width];
+                            foreach (var pp in r.Prms)
+                                temp -= MQ.PseudoVoigt(new double[] { x, y }, pp[0], pp[1], pp[2], pp[3], pp[4], pp[5], pp[6]);
+                            intensity += temp;
+                        }
+                result[i] = intensity;
+            }
+            return result;
+        });
+
+        if (intensities == null)
+        {
+            MessageBox.Show("Global Fit failed to converge (the background model could not be solved).\r\nCheck that the Direct spot position and Fitting Range are reasonable.",
+                "Global Fit", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            toolStripStatusLabelIdentifySpot.Text = "";
+            Enabled = true;
+            return;
         }
-
-        var r = MQ.Solve(pixelsBGList.ToArray(), functions.ToArray(), MQ.Precision.Low);
 
         for (int i = 0; i < prmsList.Count; i++)
         {
-            var intensity = 0.0;
             var prms = prmsList[i];
-            var h = (prms.H1 + prms.H2) / 2.0 * 8.0;
-            for (int y = Math.Max(0, (int)(prms.Y0 - h - 1)); y < Math.Min(height, (int)(prms.Y0 + h + 2)); y++)
-                for (int x = Math.Max(0, (int)(prms.X0 - h - 1)); x < Math.Min(width, (int)(prms.X0 + h + 2)); x++)
-                    if ((x - prms.X0) * (x - prms.X0) + (y - prms.Y0) * (y - prms.Y0) < h * h)
-                    {
-                        var temp = srcValues[x + y * width];
-                        foreach (var p in r.Prms)
-                            temp -= MQ.PseudoVoigt(new double[] { x, y }, p[0], p[1], p[2], p[3], p[4], p[5], p[6]);
-                        intensity += temp;
-                    }
-
-            dataSet.DataTableSpot.SetPrms(i, prms.Range, new[] { prms.X0, prms.Y0, 0.0, 0.0, 0.0, 0.0, intensity }, new[] { 0.0, 0.0, 0.0 }, 0);
-
+            dataSet.DataTableSpot.SetPrms(i, prms.Range, new[] { prms.X0, prms.Y0, 0.0, 0.0, 0.0, 0.0, intensities[i] }, new[] { 0.0, 0.0, 0.0 }, 0);
         }
         bindingSourceObsSpots.DataMember = "DataTableSpot";
 
@@ -607,35 +669,51 @@ public partial class FormSpotIDV2 : FormBase
     }
 
 
-    private void buttonDonut_Click(object sender, EventArgs e)
+    // 260428Cl async 化: ピクセル積分ループを Task.Run でバックグラウンドへ移行
+    private async void buttonDonut_Click(object sender, EventArgs e)
     {
         if (dataSet.DataTableSpot.Spots.Count == 0) return;
+        var p = scalablePictureBoxAdvanced.PseudoBitmap;
+        if (p == null || p.SrcValuesGray == null) return;
+
         Enabled = false;
-        Application.DoEvents();
         sw.Restart();
         bindingSourceObsSpots.DataMember = "";
 
-        int width = scalablePictureBoxAdvanced.PseudoBitmap.Width, height = scalablePictureBoxAdvanced.PseudoBitmap.Height;
-        var srcValues = scalablePictureBoxAdvanced.PseudoBitmap.SrcValuesGray;
-        for (int i = 0; i < dataSet.DataTableSpot.Spots.Count; i++)
+        // UI 状態をスナップショット
+        int width = p.Width, height = p.Height;
+        var srcValues = p.SrcValuesGray;
+        var donutWidth = numericBoxDonut.Value;
+        var prmsAll = Enumerable.Range(0, dataSet.DataTableSpot.Spots.Count)
+            .Select(i => dataSet.DataTableSpot.GetPrms(i)).ToArray();
+
+        var intensities = await Task.Run(() =>
         {
-            //現在のスポットのパラメータを取得
-            var prms = dataSet.DataTableSpot.GetPrms(i);
+            var result = new double[prmsAll.Length];
+            for (int i = 0; i < prmsAll.Length; i++)
+            {
+                var prms = prmsAll[i];
+                List<double> core = new(), mantle = new();
+                double range1 = prms.Range, range2 = range1 + donutWidth;
+                for (int y = Math.Max(0, (int)(prms.Y0 - range2 - 2)); y < Math.Min(height, (int)(prms.Y0 + range2 + 2)); y++)
+                    for (int x = Math.Max(0, (int)(prms.X0 - range2 - 2)); x < Math.Min(width, (int)(prms.X0 + range2 + 2)); x++)
+                    {
+                        var r = (x - prms.X0) * (x - prms.X0) + (y - prms.Y0) * (y - prms.Y0);
 
-            List<double> core = new(), mantle = new();
-            double range1 = prms.Range, range2 = range1 + numericBoxDonut.Value;
-            for (int y = Math.Max(0, (int)(prms.Y0 - range2 - 2)); y < Math.Min(height, (int)(prms.Y0 + range2 + 2)); y++)
-                for (int x = Math.Max(0, (int)(prms.X0 - range2 - 2)); x < Math.Min(width, (int)(prms.X0 + range2 + 2)); x++)
-                {
-                    var r = (x - prms.X0) * (x - prms.X0) + (y - prms.Y0) * (y - prms.Y0);
+                        if (r < range1 * range1)
+                            core.Add(srcValues[x + y * width]);
+                        else if (r < range2 * range2)
+                            mantle.Add(srcValues[x + y * width]);
+                    }
+                result[i] = core.Sum() - (mantle.Sum() * core.Count / mantle.Count);
+            }
+            return result;
+        });
 
-                    if (r < range1 * range1)
-                        core.Add(srcValues[x + y * width]);
-                    else if (r < range2 * range2)
-                        mantle.Add(srcValues[x + y * width]);
-                }
-            var intensity = core.Sum() - (mantle.Sum() * core.Count / mantle.Count);
-            dataSet.DataTableSpot.SetPrms(i, prms.Range, new[] { prms.X0, prms.Y0, 0.0, 0.0, 0.0, 0.0, intensity }, new[] { 0.0, 0.0, 0.0 }, 0);
+        for (int i = 0; i < prmsAll.Length; i++)
+        {
+            var prms = prmsAll[i];
+            dataSet.DataTableSpot.SetPrms(i, prms.Range, new[] { prms.X0, prms.Y0, 0.0, 0.0, 0.0, 0.0, intensities[i] }, new[] { 0.0, 0.0, 0.0 }, 0);
         }
         bindingSourceObsSpots.DataMember = "DataTableSpot";
         toolStripStatusLabelIdentifySpot.Text = $" Fitting time ({dataSet.DataTableSpot.Rows.Count} spots): {sw.ElapsedMilliseconds} ms.";
@@ -916,7 +994,7 @@ public partial class FormSpotIDV2 : FormBase
             toolStripStatusLabelFindSpot.Text = $"Ellapsed time: {(double)sw.ElapsedMilliseconds / 1000:f2} sec.";
             //+" Wait about: " + ((1 - progress) / progress * (sw.ElapsedMilliseconds / 1000.0)).ToString("f2") + "sec.";
             toolStripProgressBar.Value = (int)(toolStripProgressBar.Maximum * progress);
-            Application.DoEvents();
+            // 260428Cl Application.DoEvents() を削除 (BackgroundWorker の ProgressChanged は UI スレッドで動作するため不要)
         }
         catch { }
         skipProgressChangedEvent = false;
@@ -1567,7 +1645,7 @@ public partial class FormSpotIDV2 : FormBase
         toolStripStatusLabelRefine.Text += sec / current > 0.9 ? $"{sec / current:f2} s.,  " : $"{sec / current * 1000:f2} ms., ";
         toolStripStatusLabelRefine.Text += $"{100.0 * current / divisionNumber:f1} % completed,  wait for {sec * (divisionNumber - current) / current:f2} s.";
 
-        Application.DoEvents();
+        // 260428Cl Application.DoEvents() を削除 (BackgroundWorker の ProgressChanged は UI スレッドで動作するため不要)
         skipProgressChangedEvent = false;
     }
 

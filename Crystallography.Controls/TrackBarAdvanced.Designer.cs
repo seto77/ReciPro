@@ -51,11 +51,10 @@
             // numericBox
             // 
             numericBox.BackColor = System.Drawing.SystemColors.Control;
-            numericBox.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             numericBox.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBox.FooterPadding = new System.Windows.Forms.Padding(0, 2, 0, 0);
+            numericBox.FooterPadding = new System.Windows.Forms.Padding(0, 0, 0, 0); // 260428Cl 変更: TextAlign=Middle 化に伴い 2→0
             numericBox.HeaderBackColor = System.Drawing.SystemColors.Control;
-            numericBox.HeaderPadding = new System.Windows.Forms.Padding(0, 2, 0, 0);
+            numericBox.HeaderPadding = new System.Windows.Forms.Padding(0, 0, 0, 0); // 260428Cl 変更
             numericBox.Location = new System.Drawing.Point(0, 1);
             numericBox.Margin = new System.Windows.Forms.Padding(0);
             numericBox.MaximumSize = new System.Drawing.Size(1000, 30);
@@ -96,7 +95,7 @@
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             Controls.Add(splitContainer);
-            Font = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            Font = new System.Drawing.Font("BIZ UDPGothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             Margin = new System.Windows.Forms.Padding(0);
             Name = "TrackBarAdvanced";
             Size = new System.Drawing.Size(256, 27);

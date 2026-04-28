@@ -166,7 +166,7 @@
     <value>True</value>
   </data>
   <data name="checkBoxDrawGuideCircles.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="checkBoxDrawGuideCircles.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -208,7 +208,7 @@
     <value>True</value>
   </data>
   <data name="label2.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="label2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -244,7 +244,7 @@
     <value>True</value>
   </data>
   <data name="labelDivisionNumber.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="labelDivisionNumber.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -304,7 +304,7 @@
     <value>True</value>
   </data>
   <data name="radioButtonLACBED.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="radioButtonLACBED.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -336,9 +336,6 @@
   <data name="&gt;&gt;radioButtonLACBED.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="numericBoxAlphaMax.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
   <data name="numericBoxAlphaMax.FooterText" xml:space="preserve">
     <value>mrad</value>
   </data>
@@ -363,8 +360,8 @@
   <data name="numericBoxAlphaMax.TabIndex" type="System.Int32, mscorlib">
     <value>30</value>
   </data>
-  <data name="numericBoxAlphaMax.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+  <data name="numericBoxAlphaMax.TextFontSize" type="System.Single, mscorlib">
+    <value>9</value>
   </data>
   <data name="numericBoxAlphaMax.ToolTip" xml:space="preserve">
     <value>Maximum semi-convergence angle (mrad)</value>
@@ -388,7 +385,7 @@
     <value>True</value>
   </data>
   <data name="radioButtonCBED.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="radioButtonCBED.Location" type="System.Drawing.Point, System.Drawing">
     <value>8, 58</value>
@@ -418,7 +415,7 @@
     <value>4</value>
   </data>
   <data name="comboBoxSolver.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 8pt</value>
+    <value>Segoe UI Variable Text, 8pt</value>
   </data>
   <data name="comboBoxSolver.Items" xml:space="preserve">
     <value>Auto</value>
@@ -466,9 +463,6 @@ All solvers produce the same results, but at different computational speeds.</va
   <data name="numericBoxThread.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="numericBoxThread.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
-  </data>
   <data name="numericBoxThread.HeaderText" xml:space="preserve">
     <value>Threads</value>
   </data>
@@ -493,8 +487,8 @@ All solvers produce the same results, but at different computational speeds.</va
   <data name="numericBoxThread.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
   </data>
-  <data name="numericBoxThread.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+  <data name="numericBoxThread.TextFontSize" type="System.Single, mscorlib">
+    <value>9</value>
   </data>
   <data name="numericBoxThread.ToolTip" xml:space="preserve">
     <value>Set a CPU-thread number for the CBED simulation</value>
@@ -516,9 +510,6 @@ All solvers produce the same results, but at different computational speeds.</va
   </data>
   <data name="numericBoxThicknessStep.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
-  </data>
-  <data name="numericBoxThicknessStep.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxThicknessStep.FooterText" xml:space="preserve">
     <value>nm</value>
@@ -547,8 +538,8 @@ All solvers produce the same results, but at different computational speeds.</va
   <data name="numericBoxThicknessStep.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
   </data>
-  <data name="numericBoxThicknessStep.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+  <data name="numericBoxThicknessStep.TextFontSize" type="System.Single, mscorlib">
+    <value>9</value>
   </data>
   <data name="numericBoxThicknessStep.ToolTip" xml:space="preserve">
     <value>Set a range and step of the sample thicknesses</value>
@@ -570,9 +561,6 @@ All solvers produce the same results, but at different computational speeds.</va
   </data>
   <data name="numericBoxMaxNumOfG.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
-  </data>
-  <data name="numericBoxMaxNumOfG.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxMaxNumOfG.HeaderText" xml:space="preserve">
     <value>Number of diffracted waves</value>
@@ -598,8 +586,8 @@ All solvers produce the same results, but at different computational speeds.</va
   <data name="numericBoxMaxNumOfG.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="numericBoxMaxNumOfG.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+  <data name="numericBoxMaxNumOfG.TextFontSize" type="System.Single, mscorlib">
+    <value>9</value>
   </data>
   <data name="numericBoxMaxNumOfG.ToolTip" xml:space="preserve">
     <value>Set the number of diffracted waves to be calculated</value>
@@ -621,9 +609,6 @@ All solvers produce the same results, but at different computational speeds.</va
   </data>
   <data name="numericBoxWholeThicknessStart.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
-  </data>
-  <data name="numericBoxWholeThicknessStart.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxWholeThicknessStart.HeaderText" xml:space="preserve">
     <value>Thickness from</value>
@@ -649,8 +634,8 @@ All solvers produce the same results, but at different computational speeds.</va
   <data name="numericBoxWholeThicknessStart.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
   </data>
-  <data name="numericBoxWholeThicknessStart.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+  <data name="numericBoxWholeThicknessStart.TextFontSize" type="System.Single, mscorlib">
+    <value>9</value>
   </data>
   <data name="numericBoxWholeThicknessStart.ToolTip" xml:space="preserve">
     <value>Set a range and step of the sample thicknesses</value>
@@ -672,9 +657,6 @@ All solvers produce the same results, but at different computational speeds.</va
   </data>
   <data name="numericBoxThicknessEnd.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
-  </data>
-  <data name="numericBoxThicknessEnd.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxThicknessEnd.HeaderText" xml:space="preserve">
     <value>to</value>
@@ -700,8 +682,8 @@ All solvers produce the same results, but at different computational speeds.</va
   <data name="numericBoxThicknessEnd.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
   </data>
-  <data name="numericBoxThicknessEnd.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+  <data name="numericBoxThicknessEnd.TextFontSize" type="System.Single, mscorlib">
+    <value>9</value>
   </data>
   <data name="numericBoxThicknessEnd.ToolTip" xml:space="preserve">
     <value>Set a range and step of the sample thicknesses</value>
@@ -754,9 +736,6 @@ All solvers produce the same results, but at different computational speeds.</va
   <data name="&gt;&gt;buttonStop.ZOrder" xml:space="preserve">
     <value>11</value>
   </data>
-  <data name="numericBoxDiskResolution.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
   <data name="numericBoxDiskResolution.FooterText" xml:space="preserve">
     <value>mrad/pix.</value>
   </data>
@@ -781,8 +760,8 @@ All solvers produce the same results, but at different computational speeds.</va
   <data name="numericBoxDiskResolution.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
-  <data name="numericBoxDiskResolution.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+  <data name="numericBoxDiskResolution.TextFontSize" type="System.Single, mscorlib">
+    <value>9</value>
   </data>
   <data name="numericBoxDiskResolution.ToolTip" xml:space="preserve">
     <value>Set the number of divisions along the diameter.
@@ -808,7 +787,7 @@ The number of two-dimensional divisions is displayed on the right</value>
     <value>True</value>
   </data>
   <data name="label13.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="label13.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -838,7 +817,7 @@ The number of two-dimensional divisions is displayed on the right</value>
     <value>14</value>
   </data>
   <data name="groupBoxInputParameters.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt, style=Bold</value>
+    <value>Segoe UI Variable Text, 9.75pt, style=Bold</value>
   </data>
   <data name="groupBoxInputParameters.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, -1</value>
@@ -868,7 +847,7 @@ The number of two-dimensional divisions is displayed on the right</value>
     <value>True</value>
   </data>
   <data name="radioButtonIndividualDisk.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="radioButtonIndividualDisk.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -904,7 +883,7 @@ The number of two-dimensional divisions is displayed on the right</value>
     <value>True</value>
   </data>
   <data name="radioButtonAllDisks.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="radioButtonAllDisks.Location" type="System.Drawing.Point, System.Drawing">
     <value>126, 53</value>
@@ -940,7 +919,7 @@ The number of two-dimensional divisions is displayed on the right</value>
     <value>False</value>
   </data>
   <data name="label3.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+    <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="label3.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -979,7 +958,7 @@ The number of two-dimensional divisions is displayed on the right</value>
     <value>False</value>
   </data>
   <data name="label11.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+    <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="label11.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -1012,7 +991,7 @@ The number of two-dimensional divisions is displayed on the right</value>
     <value>3</value>
   </data>
   <data name="comboBoxGradient.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+    <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="comboBoxGradient.Items" xml:space="preserve">
     <value>Positive</value>
@@ -1048,7 +1027,7 @@ The number of two-dimensional divisions is displayed on the right</value>
     <value>4</value>
   </data>
   <data name="comboBoxScale.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+    <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="comboBoxScale.Items" xml:space="preserve">
     <value>Gray</value>
@@ -1211,7 +1190,7 @@ The larger this value is, the brighter the outer disk appears to be.</value>
     <value>9</value>
   </data>
   <data name="textBoxThickness.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="textBoxThickness.Location" type="System.Drawing.Point, System.Drawing">
     <value>69, 21</value>
@@ -1241,7 +1220,7 @@ The larger this value is, the brighter the outer disk appears to be.</value>
     <value>True</value>
   </data>
   <data name="label6.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="label6.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -1274,7 +1253,7 @@ The larger this value is, the brighter the outer disk appears to be.</value>
     <value>True</value>
   </data>
   <data name="label4.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="label4.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -1307,7 +1286,7 @@ The larger this value is, the brighter the outer disk appears to be.</value>
     <value>True</value>
   </data>
   <data name="labelGamma.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="labelGamma.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -1340,7 +1319,7 @@ The larger this value is, the brighter the outer disk appears to be.</value>
     <value>True</value>
   </data>
   <data name="label8.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="label8.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -1373,7 +1352,7 @@ The larger this value is, the brighter the outer disk appears to be.</value>
     <value>True</value>
   </data>
   <data name="label7.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="label7.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -1406,7 +1385,7 @@ The larger this value is, the brighter the outer disk appears to be.</value>
     <value>True</value>
   </data>
   <data name="label1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="label1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -1439,7 +1418,7 @@ The larger this value is, the brighter the outer disk appears to be.</value>
     <value>True</value>
   </data>
   <data name="label5.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="label5.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -1472,7 +1451,7 @@ The larger this value is, the brighter the outer disk appears to be.</value>
     <value>False</value>
   </data>
   <data name="groupBoxOutput.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt, style=Bold</value>
+    <value>Segoe UI Variable Text, 9.75pt, style=Bold</value>
   </data>
   <data name="groupBoxOutput.Location" type="System.Drawing.Point, System.Drawing">
     <value>409, -1</value>
@@ -1505,7 +1484,7 @@ The larger this value is, the brighter the outer disk appears to be.</value>
     <value>200, 16</value>
   </data>
   <data name="toolStripStatusLabel2.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 8pt</value>
+    <value>Segoe UI Variable Text, 8pt</value>
   </data>
   <data name="toolStripStatusLabel2.Size" type="System.Drawing.Size, System.Drawing">
     <value>19, 17</value>
@@ -1559,7 +1538,7 @@ The larger this value is, the brighter the outer disk appears to be.</value>
     <value>787, 205</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 10pt</value>
+    <value>Segoe UI Variable Text, 10pt</value>
   </data>
   <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 5, 3, 5</value>

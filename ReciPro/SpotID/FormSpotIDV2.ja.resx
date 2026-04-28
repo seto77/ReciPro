@@ -122,7 +122,7 @@
     <value>500, 777</value>
   </data>
   <data name="buttonDeleteSpot.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="buttonDeleteSpot.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -140,7 +140,7 @@
     <value>すべてのスポットをクリア</value>
   </data>
   <data name="buttonClearSpots.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="buttonClearSpots.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -158,7 +158,7 @@
     <value>すべてのスポットをクリア</value>
   </data>
   <data name="buttonCopyToClipboard.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="buttonCopyToClipboard.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -176,7 +176,7 @@
     <value>上記の情報をクリップボードにコピー</value>
   </data>
   <data name="buttonSaveToFile.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="buttonSaveToFile.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -218,7 +218,7 @@
     <value>選択スポットの詳細情報を表示</value>
   </data>
   <data name="checkBoxShowObsSpotSymbol.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="checkBoxShowObsSpotSymbol.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -236,7 +236,7 @@
     <value>観測スポットにマーカーシンボルを表示</value>
   </data>
   <data name="checkBoxShowObsSpotLabel.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="checkBoxShowObsSpotLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -254,7 +254,7 @@
     <value>観測スポットに番号を表示</value>
   </data>
   <data name="buttonCopmprehensiveFitting.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="buttonCopmprehensiveFitting.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -273,7 +273,7 @@
     <value>全検出スポットの位置と強度を再フィッティング</value>
   </data>
   <data name="buttonResetRangeForAllSpots.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="buttonResetRangeForAllSpots.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -291,10 +291,10 @@
     <value>全スポットのフィッティング範囲をリセット</value>
   </data>
   <data name="numericBoxNumberOfSpots.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="numericBoxNumberOfSpots.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="numericBoxNumberOfSpots.HeaderText" xml:space="preserve">
     <value>スポット数</value>
@@ -312,7 +312,7 @@
     <value>検出するスポット数を指定</value>
   </data>
   <data name="buttonFindSpots.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="buttonFindSpots.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -329,10 +329,10 @@
 フィッティング範囲を右のボックスで指定してください。</value>
   </data>
   <data name="numericBoxNearestNeighbor.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="numericBoxNearestNeighbor.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="numericBoxNearestNeighbor.HeaderText" xml:space="preserve">
     <value>スポット間最低距離</value>
@@ -350,7 +350,7 @@
     <value>スポット間の最小距離（ピクセル単位）</value>
   </data>
   <data name="numericBoxFittingRange.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="numericBoxFittingRange.HeaderText" xml:space="preserve">
     <value>フィッティング半径</value>
@@ -410,7 +410,7 @@
     <value>759, 77</value>
   </data>
   <data name="groupBoxSpot.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="groupBoxSpot.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 109</value>
@@ -432,7 +432,7 @@
     <value>ピクセルサイズの単位: mm</value>
   </data>
   <data name="numericBoxCameraLength.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="numericBoxCameraLength.HeaderText" xml:space="preserve">
     <value>カメラ長</value>
@@ -444,7 +444,7 @@
     <value>回折パターンのカメラ長 (mm)</value>
   </data>
   <data name="numericBoxPixelSize.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="numericBoxPixelSize.HeaderText" xml:space="preserve">
     <value>ピクセルサイズ</value>
@@ -456,7 +456,7 @@
     <value>検出器のピクセルサイズ</value>
   </data>
   <data name="waveLengthControl1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="waveLengthControl1.Size" type="System.Drawing.Size, System.Drawing">
     <value>279, 78</value>
@@ -468,7 +468,7 @@
     <value>564, 102</value>
   </data>
   <data name="checkBoxShowDebyeRing.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="checkBoxShowDebyeRing.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -483,7 +483,7 @@
     <value>パターンにデバイリングを重ねて表示</value>
   </data>
   <data name="checkBoxGuideCircles.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="checkBoxGuideCircles.Size" type="System.Drawing.Size, System.Drawing">
     <value>111, 22</value>
@@ -498,7 +498,7 @@
     <value>765, 107</value>
   </data>
   <data name="buttonIdentifySpots.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="buttonIdentifySpots.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -526,7 +526,7 @@
     <value>ブロッホ波の最大数</value>
   </data>
   <data name="numericBoxAcceptableError.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="numericBoxAcceptableError.HeaderText" xml:space="preserve">
     <value>許容範囲</value>
@@ -550,7 +550,7 @@
     <value>探索する結晶粒方位の最大数</value>
   </data>
   <data name="checkBoxShowZoneAxis.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="checkBoxShowZoneAxis.Location" type="System.Drawing.Point, System.Drawing">
     <value>124, 127</value>
@@ -565,7 +565,7 @@
     <value>パターン上に晶帯軸方向を表示</value>
   </data>
   <data name="checkBoxShowCalcSpotSymbol.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="checkBoxShowCalcSpotSymbol.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -583,7 +583,7 @@
     <value>計算スポットにマーカーシンボルを表示</value>
   </data>
   <data name="radioButtonMultiGrain.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="radioButtonMultiGrain.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -601,7 +601,7 @@
     <value>複数結晶粒の方位を探索</value>
   </data>
   <data name="radioButtonSingleGrain.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="radioButtonSingleGrain.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -616,7 +616,7 @@
     <value>単一結晶粒の方位を探索</value>
   </data>
   <data name="checkBoxShowCalcSpotLabel.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="checkBoxShowCalcSpotLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -637,7 +637,7 @@
     <value>310, 111</value>
   </data>
   <data name="checkBoxIgnoreMultipleDiffraction.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="checkBoxIgnoreMultipleDiffraction.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -667,7 +667,7 @@
     <value>現在の計算を中止</value>
   </data>
   <data name="groupBoxIndex.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="groupBoxIndex.Size" type="System.Drawing.Size, System.Drawing">
     <value>765, 185</value>

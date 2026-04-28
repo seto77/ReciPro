@@ -119,7 +119,7 @@
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="listBoxMacro.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="listBoxMacro.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 28</value>
@@ -137,7 +137,7 @@
     <value>183, 28</value>
   </data>
   <data name="pyRichTextBox.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="pyRichTextBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>30, 28</value>
@@ -146,7 +146,7 @@
     <value>346, 243</value>
   </data>
   <data name="panelGutter.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="panelGutter.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 28</value>
@@ -164,13 +164,13 @@
     <value>563, 287</value>
   </data>
   <data name="buttonDeleteProfile.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="buttonDeleteProfile.Size" type="System.Drawing.Size, System.Drawing">
     <value>56, 28</value>
   </data>
   <data name="buttonAdd.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="buttonAdd.Location" type="System.Drawing.Point, System.Drawing">
     <value>56, 0</value>
@@ -179,7 +179,7 @@
     <value>60, 28</value>
   </data>
   <data name="buttonChange.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="buttonChange.Location" type="System.Drawing.Point, System.Drawing">
     <value>116, 0</value>
@@ -192,7 +192,7 @@
     <value>True</value>
   </data>
   <data name="checkBoxSamples.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="checkBoxSamples.Size" type="System.Drawing.Size, System.Drawing">
     <value>77, 22</value>
@@ -201,7 +201,7 @@
     <value>Samples</value>
   </data>
   <data name="label1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
     <value>80, 18</value>
@@ -237,7 +237,7 @@
     <value>357, 28</value>
   </data>
   <data name="buttonCancelStep.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="buttonCancelStep.Location" type="System.Drawing.Point, System.Drawing">
     <value>304, 0</value>
@@ -246,7 +246,7 @@
     <value>50, 28</value>
   </data>
   <data name="buttonRunMacro.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="buttonRunMacro.Location" type="System.Drawing.Point, System.Drawing">
     <value>217, 0</value>
@@ -255,7 +255,7 @@
     <value>81, 28</value>
   </data>
   <data name="buttonNextStep.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="buttonNextStep.Location" type="System.Drawing.Point, System.Drawing">
     <value>101, 0</value>
@@ -264,7 +264,7 @@
     <value>110, 28</value>
   </data>
   <data name="buttonStepByStep.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="buttonStepByStep.Size" type="System.Drawing.Size, System.Drawing">
     <value>92, 28</value>
@@ -273,7 +273,7 @@
     <value>784, 26</value>
   </data>
   <data name="fileToolStripMenuItem.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="fileToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>40, 22</value>
@@ -285,6 +285,6 @@
     <value>126, 22</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
 </root>

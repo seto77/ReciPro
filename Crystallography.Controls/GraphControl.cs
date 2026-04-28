@@ -359,7 +359,7 @@ public partial class GraphControl : UserControlBase
     [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     [Category(" 軸設定")]
     [Description("軸文字のフォント")]
-    public Font AxisTextFont { set; get; } = new Font("Segoe UI", 9);
+    public Font AxisTextFont { set; get; } = new Font("Segoe UI Variable Text", 9);
 
 
     [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]

@@ -45,7 +45,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label3.Font = new System.Drawing.Font("Segoe UI Variable Text", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label3.Location = new System.Drawing.Point(6, 77);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(31, 15);
@@ -67,7 +67,6 @@
             // numericBoxPixelWidth
             // 
             this.numericBoxPixelWidth.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxPixelWidth.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxPixelWidth.FooterBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxPixelWidth.FooterText = "pixel";
             this.numericBoxPixelWidth.HeaderBackColor = System.Drawing.SystemColors.Control;
@@ -84,7 +83,7 @@
             this.numericBoxPixelWidth.SkipEventDuringInput = false;
             this.numericBoxPixelWidth.SmartIncrement = true;
             this.numericBoxPixelWidth.TabIndex = 0;
-            this.numericBoxPixelWidth.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxPixelWidth.TextFont = new System.Drawing.Font("BIZ UDPGothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxPixelWidth.ThonsandsSeparator = true;
             this.numericBoxPixelWidth.Value = 1024D;
             this.numericBoxPixelWidth.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxPixelWidth_ValueChanged);
@@ -92,7 +91,6 @@
             // numericBoxPixelHeight
             // 
             this.numericBoxPixelHeight.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxPixelHeight.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxPixelHeight.FooterBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxPixelHeight.FooterText = "pixel";
             this.numericBoxPixelHeight.HeaderBackColor = System.Drawing.SystemColors.Control;
@@ -109,7 +107,7 @@
             this.numericBoxPixelHeight.SkipEventDuringInput = false;
             this.numericBoxPixelHeight.SmartIncrement = true;
             this.numericBoxPixelHeight.TabIndex = 0;
-            this.numericBoxPixelHeight.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxPixelHeight.TextFont = new System.Drawing.Font("BIZ UDPGothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxPixelHeight.ThonsandsSeparator = true;
             this.numericBoxPixelHeight.Value = 1024D;
             this.numericBoxPixelHeight.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxPixelWidth_ValueChanged);
@@ -117,7 +115,6 @@
             // numericBoxPixelSize
             // 
             this.numericBoxPixelSize.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxPixelSize.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxPixelSize.FooterBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxPixelSize.FooterText = "mm";
             this.numericBoxPixelSize.HeaderBackColor = System.Drawing.SystemColors.Control;
@@ -134,7 +131,7 @@
             this.numericBoxPixelSize.SkipEventDuringInput = false;
             this.numericBoxPixelSize.SmartIncrement = true;
             this.numericBoxPixelSize.TabIndex = 0;
-            this.numericBoxPixelSize.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxPixelSize.TextFont = new System.Drawing.Font("BIZ UDPGothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxPixelSize.ThonsandsSeparator = true;
             this.numericBoxPixelSize.Value = 0.05D;
             this.numericBoxPixelSize.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxPixelWidth_ValueChanged);
@@ -157,7 +154,6 @@
             // numericBoxFootY
             // 
             this.numericBoxFootY.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxFootY.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxFootY.FooterBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxFootY.FooterText = "pix";
             this.numericBoxFootY.HeaderBackColor = System.Drawing.SystemColors.Control;
@@ -174,7 +170,7 @@
             this.numericBoxFootY.SkipEventDuringInput = false;
             this.numericBoxFootY.SmartIncrement = true;
             this.numericBoxFootY.TabIndex = 0;
-            this.numericBoxFootY.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxFootY.TextFont = new System.Drawing.Font("BIZ UDPGothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxFootY.ThonsandsSeparator = true;
             this.numericBoxFootY.Value = 512D;
             this.numericBoxFootY.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxPixelWidth_ValueChanged);
@@ -182,7 +178,6 @@
             // numericBoxFootX
             // 
             this.numericBoxFootX.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxFootX.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxFootX.FooterBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxFootX.FooterText = "pix";
             this.numericBoxFootX.HeaderBackColor = System.Drawing.SystemColors.Control;
@@ -199,7 +194,7 @@
             this.numericBoxFootX.SkipEventDuringInput = false;
             this.numericBoxFootX.SmartIncrement = true;
             this.numericBoxFootX.TabIndex = 0;
-            this.numericBoxFootX.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxFootX.TextFont = new System.Drawing.Font("BIZ UDPGothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxFootX.ThonsandsSeparator = true;
             this.numericBoxFootX.Value = 512D;
             this.numericBoxFootX.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxPixelWidth_ValueChanged);
@@ -207,7 +202,6 @@
             // numericBoxPhi
             // 
             this.numericBoxPhi.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxPhi.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxPhi.FooterBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxPhi.FooterText = "°";
             this.numericBoxPhi.HeaderBackColor = System.Drawing.SystemColors.Control;
@@ -225,14 +219,13 @@
             this.numericBoxPhi.SkipEventDuringInput = false;
             this.numericBoxPhi.SmartIncrement = true;
             this.numericBoxPhi.TabIndex = 0;
-            this.numericBoxPhi.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxPhi.TextFont = new System.Drawing.Font("BIZ UDPGothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxPhi.ThonsandsSeparator = true;
             this.numericBoxPhi.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxPixelWidth_ValueChanged);
             // 
             // numericBoxTau
             // 
             this.numericBoxTau.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxTau.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxTau.FooterBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxTau.FooterText = "°";
             this.numericBoxTau.HeaderBackColor = System.Drawing.SystemColors.Control;
@@ -251,7 +244,7 @@
             this.numericBoxTau.SkipEventDuringInput = false;
             this.numericBoxTau.SmartIncrement = true;
             this.numericBoxTau.TabIndex = 0;
-            this.numericBoxTau.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxTau.TextFont = new System.Drawing.Font("BIZ UDPGothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxTau.ThonsandsSeparator = true;
             this.numericBoxTau.Value = 20D;
             this.numericBoxTau.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxPixelWidth_ValueChanged);
@@ -259,7 +252,6 @@
             // numericBoxDistance
             // 
             this.numericBoxDistance.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxDistance.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxDistance.FooterBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxDistance.FooterText = "mm";
             this.numericBoxDistance.HeaderBackColor = System.Drawing.SystemColors.Control;
@@ -276,7 +268,7 @@
             this.numericBoxDistance.SkipEventDuringInput = false;
             this.numericBoxDistance.SmartIncrement = true;
             this.numericBoxDistance.TabIndex = 0;
-            this.numericBoxDistance.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxDistance.TextFont = new System.Drawing.Font("BIZ UDPGothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxDistance.ThonsandsSeparator = true;
             this.numericBoxDistance.Value = 300D;
             this.numericBoxDistance.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxPixelWidth_ValueChanged);
@@ -289,7 +281,7 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.Controls.Add(this.groupBoxOpticalProperty);
             this.Controls.Add(this.groupBoxDetectorProperty);
-            this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.Font = new System.Drawing.Font("Segoe UI Variable Text", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "SaclaControl";
             this.Size = new System.Drawing.Size(375, 103);

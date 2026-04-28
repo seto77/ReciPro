@@ -148,7 +148,7 @@
     <value>63, 21</value>
   </data>
   <data name="label4.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+    <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="numericUpDown2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -178,7 +178,7 @@
     <value>pictureBox</value>
   </data>
   <data name="numericUpDownResolution.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+    <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="label3.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -214,7 +214,7 @@
     <value>40, 17</value>
   </data>
   <data name="radioButtonPlanes.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="&gt;&gt;pictureBox.ZOrder" xml:space="preserve">
     <value>4</value>
@@ -256,7 +256,7 @@
     <value>True</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+    <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="&gt;&gt;numericUpDown1.Parent" xml:space="preserve">
     <value>groupBox2</value>
@@ -280,7 +280,7 @@
     <value>Times New Roman, 9.75pt, style=Italic</value>
   </data>
   <data name="radioButtonPoleFigure.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="label2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -310,7 +310,7 @@
     <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="label3.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+    <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="tabPage1.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 26</value>
@@ -319,7 +319,7 @@
     <value>No</value>
   </data>
   <data name="tabControl1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="pictureBox.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 4, 4, 4</value>
@@ -403,7 +403,7 @@
     <value>Center</value>
   </data>
   <data name="label1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+    <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="label1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -412,7 +412,7 @@
     <value>numericUpDown1</value>
   </data>
   <data name="numericUpDownFullscale.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+    <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 120</value>
@@ -436,10 +436,10 @@
     <value>1</value>
   </data>
   <data name="numericUpDown1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+    <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="textBox1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 8.25pt</value>
+    <value>Segoe UI Variable Text, 8.25pt</value>
   </data>
   <data name="numericUpDown2.Location" type="System.Drawing.Point, System.Drawing">
     <value>60, 58</value>
@@ -583,7 +583,7 @@
     <value>Log Scale</value>
   </data>
   <data name="numericUpDown3.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+    <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="&gt;&gt;groupBoxAppearance.Type" xml:space="preserve">
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -808,7 +808,7 @@
     <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="radioButtonInversePoleFigure.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="&gt;&gt;groupBoxProjectionScheme.Name" xml:space="preserve">
     <value>groupBox1</value>
@@ -916,16 +916,16 @@
     <value>label4</value>
   </data>
   <data name="label2.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+    <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="&gt;&gt;numericUpDown3.Parent" xml:space="preserve">
     <value>groupBox2</value>
   </data>
   <data name="numericUpDown2.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+    <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="radioButtonAxes.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="radioButtonAxes.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>

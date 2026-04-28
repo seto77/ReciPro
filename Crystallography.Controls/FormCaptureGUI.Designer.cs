@@ -1,4 +1,4 @@
-namespace Crystallography.Controls;
+﻿namespace Crystallography.Controls;
 
 partial class FormCaptureGUI
 {
@@ -112,7 +112,7 @@ partial class FormCaptureGUI
         //
         // buttonCapture
         //
-        buttonCapture.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+        buttonCapture.Font = new System.Drawing.Font("Segoe UI Variable Text", 9F, System.Drawing.FontStyle.Bold);
         buttonCapture.Location = new System.Drawing.Point(6, 35);
         buttonCapture.Name = "buttonCapture";
         buttonCapture.Size = new System.Drawing.Size(120, 30);

@@ -126,7 +126,7 @@
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="label2.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
     <value>2, 6</value>
@@ -160,7 +160,7 @@
     <value>True</value>
   </data>
   <data name="label3.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
     <value>2, 30</value>
@@ -196,16 +196,16 @@
     <value>GrowAndShrink</value>
   </data>
   <data name="trackBarAdvancedMinimum.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="trackBarAdvancedMinimum.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="trackBarAdvancedMinimum.FooterText" xml:space="preserve">
     <value />
   </data>
   <data name="trackBarAdvancedMinimum.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="trackBarAdvancedMinimum.HeaderText" xml:space="preserve">
     <value />
@@ -247,16 +247,16 @@
     <value>GrowAndShrink</value>
   </data>
   <data name="trackBarAdvancedMaximum.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="trackBarAdvancedMaximum.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="trackBarAdvancedMaximum.FooterText" xml:space="preserve">
     <value />
   </data>
   <data name="trackBarAdvancedMaximum.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="trackBarAdvancedMaximum.HeaderText" xml:space="preserve">
     <value />
@@ -559,7 +559,7 @@
     <value>GrowAndShrink</value>
   </data>
   <data name="flowLayoutPanelPolarity.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="flowLayoutPanelPolarity.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 2</value>
@@ -592,7 +592,7 @@
     <value>GrowAndShrink</value>
   </data>
   <data name="flowLayoutPanelScale.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="flowLayoutPanelScale.Location" type="System.Drawing.Point, System.Drawing">
     <value>121, 2</value>
@@ -625,7 +625,7 @@
     <value>GrowAndShrink</value>
   </data>
   <data name="flowLayoutPanelColor.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="flowLayoutPanelColor.Location" type="System.Drawing.Point, System.Drawing">
     <value>237, 2</value>
@@ -697,7 +697,7 @@
     <value>True</value>
   </data>
   <data name="checkBoxDustScratches.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="checkBoxDustScratches.Location" type="System.Drawing.Point, System.Drawing">
     <value>2, 2</value>
@@ -725,9 +725,6 @@
   </data>
   <data name="&gt;&gt;checkBoxDustScratches.ZOrder" xml:space="preserve">
     <value>0</value>
-  </data>
-  <data name="numericBoxDustScratchesRadius.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
   </data>
   <data name="numericBoxDustScratchesRadius.FooterText" xml:space="preserve">
     <value>pix</value>
@@ -770,9 +767,6 @@
   </data>
   <data name="&gt;&gt;numericBoxDustScratchesRadius.ZOrder" xml:space="preserve">
     <value>1</value>
-  </data>
-  <data name="numericBoxDustScratchesThreshold.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
   </data>
   <data name="numericBoxDustScratchesThreshold.HeaderText" xml:space="preserve">
     <value>Threshold</value>
@@ -847,7 +841,7 @@
     <value>True</value>
   </data>
   <data name="checkBoxGaussianBlur.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="checkBoxGaussianBlur.Location" type="System.Drawing.Point, System.Drawing">
     <value>2, 2</value>
@@ -875,9 +869,6 @@
   </data>
   <data name="&gt;&gt;checkBoxGaussianBlur.ZOrder" xml:space="preserve">
     <value>0</value>
-  </data>
-  <data name="numericBoxGaussianFWHM.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxGaussianFWHM.FooterText" xml:space="preserve">
     <value>pix</value>
@@ -1078,7 +1069,7 @@
     <value>Bottom</value>
   </data>
   <data name="graphControl.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+    <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="graphControl.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 406</value>
@@ -1111,7 +1102,7 @@
     <value>True</value>
   </data>
   <data name="label14.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="label14.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -1150,7 +1141,7 @@
     <value>True</value>
   </data>
   <data name="labelResolution.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="labelResolution.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -1192,7 +1183,7 @@
     <value>GrowAndShrink</value>
   </data>
   <data name="buttonMag1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+    <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="buttonMag1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -1231,7 +1222,7 @@
     <value>GrowAndShrink</value>
   </data>
   <data name="buttonMag2.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+    <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="buttonMag2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -1270,7 +1261,7 @@
     <value>GrowAndShrink</value>
   </data>
   <data name="buttonMag4.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+    <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="buttonMag4.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -1309,7 +1300,7 @@
     <value>GrowAndShrink</value>
   </data>
   <data name="buttonMag_2.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+    <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="buttonMag_2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -1348,7 +1339,7 @@
     <value>GrowAndShrink</value>
   </data>
   <data name="buttonMag_4.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+    <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="buttonMag_4.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -1387,7 +1378,7 @@
     <value>GrowAndShrink</value>
   </data>
   <data name="buttonMag_8.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+    <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="buttonMag_8.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -1426,7 +1417,7 @@
     <value>GrowAndShrink</value>
   </data>
   <data name="buttonMag_16.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+    <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="buttonMag_16.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -1531,7 +1522,7 @@
     <value>96, 96</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+    <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 3, 2, 3</value>

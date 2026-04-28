@@ -156,6 +156,14 @@ public partial class FormMain : FormBase
         get => toolStripMenuItemUseMKL != null && toolStripMenuItemUseMKL.Checked;
         set => toolStripMenuItemUseMKL.Checked = value;
     }
+
+    // 260428Cl 追加: ダークモード切替。Application.SetColorMode は Application.Run より前に呼ぶ必要があるため、
+    // 永続化は Program.ReadDarkMode/WriteDarkMode (DWORD レジストリ) 側で行う。Reg.RW 経路は使わない。
+    public bool DarkMode
+    {
+        get => toolStripMenuItemDarkMode != null && toolStripMenuItemDarkMode.Checked;
+        set => toolStripMenuItemDarkMode.Checked = value;
+    }
     
     // 4 指数 (Miller-Bravais) 表記を有効にするかどうか。レジストリに保存。
     // 実際の表示切替は MillerBravaisActive で「UseMillerBravais && 晶系が4指数可」を判定してから行う。 // (260426Ch) 名称 typo 修正
@@ -311,6 +319,11 @@ public partial class FormMain : FormBase
 
         englishToolStripMenuItem.Checked = Thread.CurrentThread.CurrentUICulture.Name != "ja";
         japaneseToolStripMenuItem.Checked = Thread.CurrentThread.CurrentUICulture.Name == "ja";
+
+        // 260428Cl 追加: ダークモード設定の復元 (CheckedChanged で書込が走らないようハンドラを一旦外す)。
+        toolStripMenuItemDarkMode.CheckedChanged -= toolStripMenuItemDarkMode_CheckedChanged;
+        toolStripMenuItemDarkMode.Checked = Program.ReadDarkMode();
+        toolStripMenuItemDarkMode.CheckedChanged += toolStripMenuItemDarkMode_CheckedChanged;
 
         commonDialog = new Crystallography.Controls.CommonDialog
         {
@@ -513,8 +526,8 @@ public partial class FormMain : FormBase
                 if (filename != null)
                 {
                     this.Visible = true;
-                    Thread.Sleep(100);
-                    Application.DoEvents();
+                    // 260428Cl Thread.Sleep + Application.DoEvents の二重待機を Refresh + 短時間 Sleep に整理
+                    this.Refresh();
                     Thread.Sleep(100);
                     var reader = new StreamReader(filename, Encoding.GetEncoding("UTF-8"));
                     FormMacro.RunMacro(reader.ReadToEnd());
@@ -1186,7 +1199,7 @@ public partial class FormMain : FormBase
         listBox.Items.Remove(listBox.SelectedItem);
         listBox.Items.Insert(n - 1, o);
         listBox.SelectedIndex = n - 1;
-        Application.DoEvents();
+        // 260428Cl Application.DoEvents() を削除 (リスト更新は WinForms 標準で十分)
     }
 
     private void ButtonLower_Click(object sender, EventArgs e) => MoveDown();
@@ -1198,7 +1211,7 @@ public partial class FormMain : FormBase
         listBox.Items.Remove(listBox.SelectedItem);
         listBox.Items.Insert(n + 1, o);
         listBox.SelectedIndex = n + 1;
-        Application.DoEvents();
+        // 260428Cl Application.DoEvents() を削除
     }
 
     [DllImport("USER32.DLL", CharSet = CharSet.Unicode)]
@@ -1225,7 +1238,7 @@ public partial class FormMain : FormBase
         if (crystalControl.Crystal != null)
             listBox.Items.Add(crystalControl.Crystal);
         listBox.SelectedIndex = listBox.Items.Count - 1;
-        Application.DoEvents();
+        // 260428Cl Application.DoEvents() を削除
     }
 
     private void buttonDuplicate_Click(object sender, EventArgs e) => DuplicateCrystal();
@@ -1244,7 +1257,7 @@ public partial class FormMain : FormBase
 
         listBox.Items.Insert(listBox.SelectedIndex + 1, newCrystal);
         listBox.SelectedIndex++;
-        Application.DoEvents();
+        // 260428Cl Application.DoEvents() を削除
     }
 
 
@@ -1260,7 +1273,7 @@ public partial class FormMain : FormBase
                 listBox.SelectedIndex = n;
             else
                 listBox.SelectedIndex = n - 1;
-            Application.DoEvents();
+            // 260428Cl Application.DoEvents() を削除
         }
     }
 
@@ -1552,6 +1565,14 @@ public partial class FormMain : FormBase
             FormDiffractionSimulator.Draw();
     }
 
+    // 260428Cl 追加: ダークモード切替ハンドラ。レジストリに保存し、再起動を促す。
+    // Application.SetColorMode は Run 後にも呼べるが、既存コントロールの色は完全には更新されないため、再起動推奨。
+    private void toolStripMenuItemDarkMode_CheckedChanged(object sender, EventArgs e)
+    {
+        Program.WriteDarkMode(DarkMode);
+        Application.SetColorMode(DarkMode ? SystemColorMode.Dark : SystemColorMode.Classic);
+    }
+
     #endregion FileMenu
 
     #region キーストロークイベント
@@ -1839,8 +1860,7 @@ public partial class FormMain : FormBase
             if (showRemainTime) message += $" Remaining: {(ellapsedSec / current * (total - current)).ToString(format)} s.";
 
             toolStripStatusLabel.Text = message;
-
-            Application.DoEvents();
+            // 260428Cl Application.DoEvents() を削除 (Progress<T> 経由で UI スレッドにポストされるため不要、再入の元)
 
             if (sleep != 0) Thread.Sleep(sleep);
         }

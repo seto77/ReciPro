@@ -119,7 +119,7 @@
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="buttonSearchPhoto1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9.75pt</value>
+    <value>BIZ UDPGothic, 9.75pt</value>
   </data>
   <data name="buttonSearchPhoto1.Text" xml:space="preserve">
     <value>晶帯軸を検索</value>
@@ -130,11 +130,8 @@
   <data name="numericBoxP1Theta.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 20</value>
   </data>
-  <data name="numericBoxP1Theta.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
   <data name="radioButtonPhoto1Mode2.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9.75pt</value>
+    <value>BIZ UDPGothic, 9.75pt</value>
   </data>
   <data name="radioButtonPhoto1Mode2.Size" type="System.Drawing.Size, System.Drawing">
     <value>77, 17</value>
@@ -143,7 +140,7 @@
     <value>二辺狭角</value>
   </data>
   <data name="radioButtonPhoto1Mode1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9.75pt</value>
+    <value>BIZ UDPGothic, 9.75pt</value>
   </data>
   <data name="radioButtonPhoto1Mode1.Size" type="System.Drawing.Size, System.Drawing">
     <value>51, 17</value>
@@ -152,7 +149,7 @@
     <value>三辺</value>
   </data>
   <data name="label67.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9.75pt</value>
+    <value>BIZ UDPGothic, 9.75pt</value>
   </data>
   <data name="label67.Location" type="System.Drawing.Point, System.Drawing">
     <value>246, 22</value>
@@ -170,7 +167,7 @@
     <value>182, 44</value>
   </data>
   <data name="label15.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9.75pt</value>
+    <value>BIZ UDPGothic, 9.75pt</value>
   </data>
   <data name="label15.Location" type="System.Drawing.Point, System.Drawing">
     <value>22, 44</value>
@@ -182,7 +179,7 @@
     <value>カメラ長</value>
   </data>
   <data name="label2.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9.75pt</value>
+    <value>BIZ UDPGothic, 9.75pt</value>
   </data>
   <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
     <value>19, 20</value>
@@ -199,32 +196,26 @@
   <data name="numericBoxP1Tilt2.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 20</value>
   </data>
-  <data name="numericBoxP1Tilt2.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
   <data name="numericBoxP1Tilt1.MaximumSize" type="System.Drawing.Size, System.Drawing">
     <value>1000, 30</value>
   </data>
   <data name="numericBoxP1Tilt1.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 20</value>
   </data>
-  <data name="numericBoxP1Tilt1.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
   <data name="groupBoxPhoto1HolderCondition.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9.75pt</value>
+    <value>BIZ UDPGothic, 9.75pt</value>
   </data>
   <data name="groupBoxPhoto1HolderCondition.Text" xml:space="preserve">
     <value>ホルダー条件</value>
   </data>
   <data name="groupBoxPhoto1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9.75pt</value>
+    <value>BIZ UDPGothic, 9.75pt</value>
   </data>
   <data name="groupBoxPhoto1.Text" xml:space="preserve">
     <value>写真1</value>
   </data>
   <data name="buttonSearchPhoto2.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9.75pt</value>
+    <value>BIZ UDPGothic, 9.75pt</value>
   </data>
   <data name="buttonSearchPhoto2.Text" xml:space="preserve">
     <value>晶帯軸を検索</value>
@@ -235,11 +226,8 @@
   <data name="numericBoxP2Theta.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 20</value>
   </data>
-  <data name="numericBoxP2Theta.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
   <data name="radioButtonPhoto2Mode2.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9.75pt</value>
+    <value>BIZ UDPGothic, 9.75pt</value>
   </data>
   <data name="radioButtonPhoto2Mode2.Size" type="System.Drawing.Size, System.Drawing">
     <value>77, 17</value>
@@ -248,7 +236,7 @@
     <value>二辺狭角</value>
   </data>
   <data name="radioButtonPhoto2Mode1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9.75pt</value>
+    <value>BIZ UDPGothic, 9.75pt</value>
   </data>
   <data name="radioButtonPhoto2Mode1.Size" type="System.Drawing.Size, System.Drawing">
     <value>51, 17</value>
@@ -262,26 +250,20 @@
   <data name="numericBoxP2Tilt2.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 20</value>
   </data>
-  <data name="numericBoxP2Tilt2.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
   <data name="numericBoxP2Tilt1.MaximumSize" type="System.Drawing.Size, System.Drawing">
     <value>1000, 30</value>
   </data>
   <data name="numericBoxP2Tilt1.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 20</value>
   </data>
-  <data name="numericBoxP2Tilt1.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
   <data name="groupBoxPhoto2HolderCondition.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9.75pt</value>
+    <value>BIZ UDPGothic, 9.75pt</value>
   </data>
   <data name="groupBoxPhoto2HolderCondition.Text" xml:space="preserve">
     <value>ホルダー条件</value>
   </data>
   <data name="groupBoxPhoto2.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9.75pt</value>
+    <value>BIZ UDPGothic, 9.75pt</value>
   </data>
   <data name="groupBoxPhoto2.Text" xml:space="preserve">
     <value>写真2</value>
@@ -292,17 +274,14 @@
   <data name="numericBoxP3Theta.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 20</value>
   </data>
-  <data name="numericBoxP3Theta.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
   <data name="buttonSearchPhoto3.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9.75pt</value>
+    <value>BIZ UDPGothic, 9.75pt</value>
   </data>
   <data name="buttonSearchPhoto3.Text" xml:space="preserve">
     <value>晶帯軸を検索</value>
   </data>
   <data name="radioButtonPhoto3Mode2.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9.75pt</value>
+    <value>BIZ UDPGothic, 9.75pt</value>
   </data>
   <data name="radioButtonPhoto3Mode2.Size" type="System.Drawing.Size, System.Drawing">
     <value>77, 17</value>
@@ -311,7 +290,7 @@
     <value>二辺狭角</value>
   </data>
   <data name="radioButtonPhoto3Mode1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9.75pt</value>
+    <value>BIZ UDPGothic, 9.75pt</value>
   </data>
   <data name="radioButtonPhoto3Mode1.Size" type="System.Drawing.Size, System.Drawing">
     <value>51, 17</value>
@@ -325,32 +304,26 @@
   <data name="numericBoxP3Tilt2.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 20</value>
   </data>
-  <data name="numericBoxP3Tilt2.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
   <data name="numericBoxP3Tilt1.MaximumSize" type="System.Drawing.Size, System.Drawing">
     <value>1000, 30</value>
   </data>
   <data name="numericBoxP3Tilt1.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 20</value>
   </data>
-  <data name="numericBoxP3Tilt1.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
   <data name="groupBoxPhoto3HolderCondition.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9.75pt</value>
+    <value>BIZ UDPGothic, 9.75pt</value>
   </data>
   <data name="groupBoxPhoto3HolderCondition.Text" xml:space="preserve">
     <value>ホルダー条件</value>
   </data>
   <data name="groupBoxPhoto3.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9.75pt</value>
+    <value>BIZ UDPGothic, 9.75pt</value>
   </data>
   <data name="groupBoxPhoto3.Text" xml:space="preserve">
     <value>写真3</value>
   </data>
   <data name="checkBoxPhoto2.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9.75pt</value>
+    <value>BIZ UDPGothic, 9.75pt</value>
   </data>
   <data name="checkBoxPhoto2.Size" type="System.Drawing.Size, System.Drawing">
     <value>62, 17</value>
@@ -359,7 +332,7 @@
     <value>写真2</value>
   </data>
   <data name="checkBoxPhoto3.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9.75pt</value>
+    <value>BIZ UDPGothic, 9.75pt</value>
   </data>
   <data name="checkBoxPhoto3.Size" type="System.Drawing.Size, System.Drawing">
     <value>62, 17</value>
@@ -368,7 +341,7 @@
     <value>写真3</value>
   </data>
   <data name="buttonSearchAll.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9.75pt</value>
+    <value>BIZ UDPGothic, 9.75pt</value>
   </data>
   <data name="buttonSearchAll.Text" xml:space="preserve">
     <value>三枚の写真から晶帯軸を検索</value>

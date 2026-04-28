@@ -200,7 +200,6 @@
             // 
             this.numericBoxValence.AutoSize = true;
             this.numericBoxValence.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxValence.Font = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxValence.FooterBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxValence.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxValence.Location = new System.Drawing.Point(222, 4);
@@ -212,7 +211,7 @@
             this.numericBoxValence.ShowPositiveSign = true;
             this.numericBoxValence.Size = new System.Drawing.Size(1, 25);
             this.numericBoxValence.TabIndex = 8;
-            this.numericBoxValence.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxValence.TextFont = new System.Drawing.Font("BIZ UDPGothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxValence.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxValence_ValueChanged);
             // 
             // checkBoxCompound
@@ -309,7 +308,6 @@
             // numericBoxWeight
             // 
             this.numericBoxWeight.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxWeight.Font = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxWeight.FooterBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxWeight.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxWeight.Location = new System.Drawing.Point(51, 4);
@@ -320,7 +318,7 @@
             this.numericBoxWeight.RoundErrorAccuracy = -1;
             this.numericBoxWeight.Size = new System.Drawing.Size(73, 27);
             this.numericBoxWeight.TabIndex = 8;
-            this.numericBoxWeight.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxWeight.TextFont = new System.Drawing.Font("BIZ UDPGothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             // 
             // label9
             // 
@@ -358,7 +356,6 @@
             // numericBoxMolarRatio
             // 
             this.numericBoxMolarRatio.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxMolarRatio.Font = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxMolarRatio.FooterBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxMolarRatio.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxMolarRatio.Location = new System.Drawing.Point(77, 4);
@@ -369,7 +366,7 @@
             this.numericBoxMolarRatio.RoundErrorAccuracy = -1;
             this.numericBoxMolarRatio.Size = new System.Drawing.Size(43, 27);
             this.numericBoxMolarRatio.TabIndex = 8;
-            this.numericBoxMolarRatio.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxMolarRatio.TextFont = new System.Drawing.Font("BIZ UDPGothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             // 
             // flowLayoutPanel3
             // 
@@ -402,7 +399,7 @@
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.Controls.Add(this.flowLayoutPanel3);
-            this.Font = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.Font = new System.Drawing.Font("BIZ UDPGothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "ChemicalFormulaInputControl";
             this.Size = new System.Drawing.Size(325, 107);

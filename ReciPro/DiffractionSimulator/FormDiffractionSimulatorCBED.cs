@@ -240,7 +240,7 @@ public partial class FormDiffractionSimulatorCBED : FormBase
             toolStripStatusLabel1.Text += sec / current > 0.9 ? $"{sec / current:f2} s.,  " : $"{sec / current * 1000:f2} ms., ";
             toolStripStatusLabel1.Text += $"{100.0 * current / DivisionNumber:f1} % completed,  wait for {sec * (DivisionNumber - current) / current:f2} s.";
         }
-        Application.DoEvents();
+        // 260428Cl Application.DoEvents() を削除 (BackgroundWorker の ProgressChanged は UI スレッドで動作するため不要)
         skipProgressChangedEvent = false;
     }
 
@@ -274,7 +274,7 @@ public partial class FormDiffractionSimulatorCBED : FormBase
         }
         toolStripProgressBar.Value = toolStripProgressBar.Maximum;
         FormDiffractionSimulator.Draw();
-        Application.DoEvents();
+        // 260428Cl Application.DoEvents() を削除 (RunWorkerCompleted は UI スレッドで動作するため不要)
     }
 
     #endregion
@@ -351,7 +351,7 @@ public partial class FormDiffractionSimulatorCBED : FormBase
         );
 
         FormDiffractionSimulator.Draw();
-        Application.DoEvents();
+        // 260428Cl Application.DoEvents() を削除 (UI スレッドでの単純な再描画後の DoEvents は不要)
     }
 
     private void setDisks()

@@ -59,7 +59,7 @@
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="checkBoxShowPolyhedron.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="checkBoxShowPolyhedron.Size" type="System.Drawing.Size, System.Drawing">
     <value>99, 22</value>
@@ -68,7 +68,7 @@
     <value>多面体を表示</value>
   </data>
   <data name="label58.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="label58.Size" type="System.Drawing.Size, System.Drawing">
     <value>42, 18</value>
@@ -77,7 +77,7 @@
     <value>(頂点)</value>
   </data>
   <data name="label57.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="label57.Size" type="System.Drawing.Size, System.Drawing">
     <value>42, 18</value>
@@ -86,7 +86,7 @@
     <value>(中心)</value>
   </data>
   <data name="label39.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="label39.Size" type="System.Drawing.Size, System.Drawing">
     <value>56, 18</value>
@@ -95,13 +95,13 @@
     <value>結合原子</value>
   </data>
   <data name="numericBoxPolyhedronAlpha.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="numericBoxPolyhedronAlpha.HeaderText" xml:space="preserve">
     <value>透明度</value>
   </data>
   <data name="checkBoxShowEdges.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="checkBoxShowEdges.Location" type="System.Drawing.Point, System.Drawing">
     <value>150, 45</value>
@@ -116,13 +116,13 @@
     <value>142, 45</value>
   </data>
   <data name="numericBoxEdgeWidth.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="numericBoxEdgeWidth.HeaderText" xml:space="preserve">
     <value>線幅</value>
   </data>
   <data name="checkBoxShowInnerBonds.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="checkBoxShowInnerBonds.Size" type="System.Drawing.Size, System.Drawing">
     <value>87, 22</value>
@@ -131,7 +131,7 @@
     <value>結合を表示</value>
   </data>
   <data name="checkBoxShowVertexAtoms.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="checkBoxShowVertexAtoms.Size" type="System.Drawing.Size, System.Drawing">
     <value>87, 22</value>
@@ -140,7 +140,7 @@
     <value>頂点を表示</value>
   </data>
   <data name="checkBoxShowCenterAtom.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="checkBoxShowCenterAtom.Size" type="System.Drawing.Size, System.Drawing">
     <value>87, 22</value>
@@ -149,31 +149,28 @@
     <value>中心を表示</value>
   </data>
   <data name="numericBoxBondAlpha.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="numericBoxBondAlpha.HeaderText" xml:space="preserve">
     <value>透明度</value>
   </data>
-  <data name="numericBoxBondRadius.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
   <data name="numericBoxBondRadius.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="numericBoxBondRadius.HeaderText" xml:space="preserve">
     <value>半径</value>
   </data>
   <data name="numericBoxBondMinLength.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="numericBoxBondMinLength.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="numericBoxBondMinLength.HeaderText" xml:space="preserve">
     <value>結合長の範囲</value>
   </data>
   <data name="checkBoxShowBonds.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="checkBoxShowBonds.Size" type="System.Drawing.Size, System.Drawing">
     <value>87, 22</value>
@@ -182,19 +179,19 @@
     <value>結合を表示</value>
   </data>
   <data name="buttonAddBond.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="buttonAddBond.Text" xml:space="preserve">
     <value>追加</value>
   </data>
   <data name="buttonChangeBond.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="buttonChangeBond.Text" xml:space="preserve">
     <value>更新</value>
   </data>
   <data name="buttonDeleteBond.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="buttonDeleteBond.Text" xml:space="preserve">
     <value>削除</value>

@@ -694,7 +694,7 @@ public partial class FormPolycrystallineDiffractionSimulator : FormBase
                 CurrentProgress = "Current Step: " + step.ToString() + ".   Average speed of recent " + beforeSeconds.Count.ToString() + " steps: " +
                     ((double)(beforeSeconds[^1] - beforeSeconds[0]) / beforeSeconds.Count).ToString("f0") + " msec./step";
                 beforeRenewSecond = currentSecond;
-                Application.DoEvents();
+                // 260428Cl Application.DoEvents() を削除 (BackgroundWorker の ProgressChanged は UI スレッドで動作するため不要)
             }
             return;
         }
@@ -752,7 +752,7 @@ public partial class FormPolycrystallineDiffractionSimulator : FormBase
             }
         }
 
-        Application.DoEvents();
+        // 260428Cl Application.DoEvents() を削除 (BackgroundWorker の ProgressChanged は UI スレッドで動作するため不要)
         /*
                     Stress= polyCrystal.Stress;
 
@@ -1249,7 +1249,7 @@ return residual;
                 ProgressBarVisible = false;
                 toolStripStatusLabelProgress.Text = "";
             }
-            Application.DoEvents();
+            // 260428Cl Application.DoEvents() を削除 (Invoke 経由で UI スレッドで動作するため不要)
         }
     }
 

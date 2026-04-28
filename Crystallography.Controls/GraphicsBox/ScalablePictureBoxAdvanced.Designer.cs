@@ -348,7 +348,7 @@
             graphControl.AllowMouseOperation = true;
             graphControl.AxisLineColor = System.Drawing.Color.Gray;
             graphControl.AxisTextColor = System.Drawing.Color.Black;
-            graphControl.AxisTextFont = new System.Drawing.Font("Segoe UI", 9F);
+            graphControl.AxisTextFont = new System.Drawing.Font("Segoe UI Variable Text", 9F);
             graphControl.AxisXTextVisible = true;
             graphControl.AxisYTextVisible = true;
             graphControl.BackgroundColor = System.Drawing.Color.White;
@@ -380,7 +380,7 @@
             graphControl.OriginPosition = new System.Drawing.Point(20, 20);
             graphControl.UnitX = "";
             graphControl.UnitY = "";
-            graphControl.UpperPanelFont = new System.Drawing.Font("メイリオ", 7F);
+            graphControl.UpperPanelFont = new System.Drawing.Font("BIZ UDPGothic", 7F);
             graphControl.UpperPanelVisible = false;
             graphControl.UpperX = 1D;
             graphControl.UpperY = 1D;

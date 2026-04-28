@@ -289,6 +289,8 @@ public partial class FormDiffractionSpotInfo : FormBase
                 sb.Append($"{dataGridView[19, j].Value}\t");
 
             sb.Append("\r\n");
+            // 260428Cl FormDiffractionSimulator.Thickness setter が UI に強く結合した同期処理を起動するため、
+            // ループ全体を Task.Run へ移すには Bethe 計算の async 化が必要 (D 群以降の課題)。当面 DoEvents で UI を維持する。
             if (thickness % 10 == 0)
                 Application.DoEvents();
         }

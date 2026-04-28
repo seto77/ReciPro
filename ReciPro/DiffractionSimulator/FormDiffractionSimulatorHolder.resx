@@ -145,7 +145,7 @@
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="buttonRotate180.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+    <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="colorControlTiltX.HeaderMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -169,7 +169,7 @@
     <value>82</value>
   </data>
   <data name="groupBoxColorAndSize.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="&gt;&gt;toolTip1.Name" xml:space="preserve">
     <value>toolTip1</value>
@@ -205,13 +205,13 @@
     <value>69, 25</value>
   </data>
   <data name="groupBoxStereonetProperties.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt, style=Bold</value>
+    <value>Segoe UI Variable Text, 9.75pt, style=Bold</value>
   </data>
   <data name="&gt;&gt;checkBoxEnableArrow.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
-  <data name="numericBoxTiltY.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+  <data name="numericBoxTiltY.TextFontSize" type="System.Single, mscorlib">
+    <value>9</value>
   </data>
   <data name="numericBoxLinkTiltX.FooterText" xml:space="preserve">
     <value>°</value>
@@ -235,7 +235,7 @@
     <value>1, 20</value>
   </data>
   <data name="colorControlGeneralAxis.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="buttonRotate180.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -261,8 +261,8 @@
   <data name="&gt;&gt;label15.Name" xml:space="preserve">
     <value>label15</value>
   </data>
-  <data name="numericBoxLinkTiltX.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+  <data name="numericBoxLinkTiltX.TextFontSize" type="System.Single, mscorlib">
+    <value>9</value>
   </data>
   <data name="label15.Location" type="System.Drawing.Point, System.Drawing">
     <value>80, 17</value>
@@ -361,7 +361,7 @@
     <value>colorControl10DegLine</value>
   </data>
   <data name="colorControlUniqueAxis.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="colorControlUniqueAxis.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 40</value>
@@ -421,7 +421,7 @@
     <value>$this</value>
   </data>
   <data name="label1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="colorControlTiltX.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -430,7 +430,7 @@
     <value>numericBoxTiltY</value>
   </data>
   <data name="colorControlHolder.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+    <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="&gt;&gt;colorControlHolder.Parent" xml:space="preserve">
     <value>flowLayoutPanelStereonetColor</value>
@@ -478,7 +478,7 @@
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="colorControlTiltX.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+    <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="&gt;&gt;numericBoxTiltX.ZOrder" xml:space="preserve">
     <value>2</value>
@@ -524,8 +524,8 @@ Direction</value>
   <data name="buttonLink.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="numericBoxArrowStep.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+  <data name="numericBoxArrowStep.TextFontSize" type="System.Single, mscorlib">
+    <value>9</value>
   </data>
   <data name="colorControlTiltY.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 3, 0</value>
@@ -569,9 +569,6 @@ Direction</value>
   <data name="colorControlUniqueAxis.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
-  <data name="numericBoxTiltY.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
   <data name="&gt;&gt;buttonRotate180.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
@@ -585,7 +582,7 @@ Direction</value>
     <value>groupBoxIndexRange</value>
   </data>
   <data name="numericBoxArrowStep.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+    <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="checkBoxIncludingEquivalent.Text" xml:space="preserve">
     <value>Include equivalent indices</value>
@@ -595,9 +592,6 @@ Direction</value>
   </data>
   <data name="&gt;&gt;groupBoxIndexRange.Parent" xml:space="preserve">
     <value>groupBoxStereonetProperties</value>
-  </data>
-  <data name="numericBoxV.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="&gt;&gt;numericBoxTiltY.Type" xml:space="preserve">
     <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
@@ -609,7 +603,7 @@ Direction</value>
     <value>trackBarStrSize</value>
   </data>
   <data name="checkBoxIncludingEquivalent.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+    <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="&gt;&gt;checkBoxEnableArrow.Parent" xml:space="preserve">
     <value>groupBoxHolderAngles</value>
@@ -635,8 +629,8 @@ Direction</value>
   <data name="numericBoxU.MaximumSize" type="System.Drawing.Size, System.Drawing">
     <value>1000, 30</value>
   </data>
-  <data name="numericBoxLinkTiltY.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+  <data name="numericBoxLinkTiltY.TextFontSize" type="System.Single, mscorlib">
+    <value>9</value>
   </data>
   <data name="flowLayoutPanelStereonetColor.Location" type="System.Drawing.Point, System.Drawing">
     <value>9, 24</value>
@@ -662,11 +656,8 @@ Direction</value>
   <data name="&gt;&gt;toolTip1.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolTip, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="numericBoxLinkTiltX.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
   <data name="colorControlGeneralAxis.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+    <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="radioButtonTiltY_Plus.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -693,7 +684,7 @@ Direction</value>
     <value>69, 25</value>
   </data>
   <data name="colorControl10DegLine.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="numericBoxDrawingArea.Location" type="System.Drawing.Point, System.Drawing">
     <value>9, 25</value>
@@ -732,7 +723,7 @@ Direction</value>
     <value>86</value>
   </data>
   <data name="colorControl90DegLine.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="trackBarStrSize.AutoSize" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -790,7 +781,7 @@ Tilt Y</value>
     <value>True</value>
   </data>
   <data name="groupBoxIndexRange.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="numericBoxLinkTiltX.MaximumSize" type="System.Drawing.Size, System.Drawing">
     <value>1000, 30</value>
@@ -844,7 +835,7 @@ Tilt Y</value>
     <value>3</value>
   </data>
   <data name="colorControlUniqueAxis.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="colorControlHolder.Location" type="System.Drawing.Point, System.Drawing">
     <value>94, 0</value>
@@ -856,13 +847,13 @@ Tilt Y</value>
     <value>2</value>
   </data>
   <data name="colorControl10DegLine.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="colorControl1DegLine.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+    <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="colorControlHolder.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="colorControlUniqueAxis.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
@@ -907,13 +898,13 @@ Tilt Y</value>
     <value>12, 113</value>
   </data>
   <data name="groupBoxHolderAngles.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt, style=Bold</value>
+    <value>Segoe UI Variable Text, 9.75pt, style=Bold</value>
   </data>
   <data name="&gt;&gt;numericBoxTiltXDirection.Type" xml:space="preserve">
     <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="numericBoxTiltXDirection.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+  <data name="numericBoxTiltXDirection.TextFontSize" type="System.Single, mscorlib">
+    <value>9</value>
   </data>
   <data name="groupBoxHolderAngles.ToolTip" xml:space="preserve">
     <value />
@@ -949,7 +940,7 @@ Tilt Y</value>
     <value>Tilt Y (Secondary rotation)</value>
   </data>
   <data name="colorControl1DegLine.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="numericBoxLinkTiltX.Size" type="System.Drawing.Size, System.Drawing">
     <value>82, 25</value>
@@ -964,7 +955,7 @@ Tilt Y</value>
     <value>0, 0, 0, 0</value>
   </data>
   <data name="colorControl1DegLine.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="groupBoxColorAndSize.ToolTip" xml:space="preserve">
     <value />
@@ -1000,7 +991,7 @@ Tilt Y</value>
     <value>168, 105</value>
   </data>
   <data name="colorControlTiltY.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="label18.Size" type="System.Drawing.Size, System.Drawing">
     <value>63, 17</value>
@@ -1093,7 +1084,7 @@ Tilt Y</value>
     <value>Stereonet properties</value>
   </data>
   <data name="label19.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="numericBoxDrawingArea.Size" type="System.Drawing.Size, System.Drawing">
     <value>141, 25</value>
@@ -1120,16 +1111,13 @@ Tilt Y</value>
     <value>0, 0, 3, 0</value>
   </data>
   <data name="label4.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="&gt;&gt;label1.Name" xml:space="preserve">
     <value>label1</value>
   </data>
   <data name="&gt;&gt;checkBoxTiltDirections.Parent" xml:space="preserve">
     <value>groupBoxStereonetProperties</value>
-  </data>
-  <data name="numericBoxArrowStep.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
   </data>
   <data name="colorControl10DegLine.ToolTip" xml:space="preserve">
     <value>Color of 10-degree lines</value>
@@ -1155,8 +1143,8 @@ Tilt Y</value>
   <data name="label15.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="numericBoxU.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+  <data name="numericBoxU.TextFontSize" type="System.Single, mscorlib">
+    <value>9</value>
   </data>
   <data name="label17.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -1168,7 +1156,7 @@ Tilt Y</value>
     <value>°</value>
   </data>
   <data name="colorControlTiltY.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="trackBarStrSize.Size" type="System.Drawing.Size, System.Drawing">
     <value>80, 16</value>
@@ -1176,8 +1164,8 @@ Tilt Y</value>
   <data name="&gt;&gt;label17.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="numericBoxV.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+  <data name="numericBoxV.TextFontSize" type="System.Single, mscorlib">
+    <value>9</value>
   </data>
   <data name="&gt;&gt;groupBoxStereonetProperties.Type" xml:space="preserve">
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -1221,9 +1209,6 @@ Tilt Y</value>
   <data name="&gt;&gt;label14.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="numericBoxTiltXDirection.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
   <data name="numericBoxDrawingArea.ToolTip" xml:space="preserve">
     <value />
   </data>
@@ -1231,7 +1216,7 @@ Tilt Y</value>
     <value>GrowAndShrink</value>
   </data>
   <data name="checkBoxTiltDirections.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="&gt;&gt;numericBoxTiltY.Parent" xml:space="preserve">
     <value>groupBoxHolderAngles</value>
@@ -1251,14 +1236,11 @@ Tilt Y</value>
   <data name="&gt;&gt;colorControlGeneralAxis.Parent" xml:space="preserve">
     <value>flowLayoutPanelStereonetColor</value>
   </data>
-  <data name="numericBoxTiltX.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+  <data name="numericBoxTiltX.TextFontSize" type="System.Single, mscorlib">
+    <value>9</value>
   </data>
   <data name="colorControlTiltX.ToolTip1" xml:space="preserve">
     <value />
-  </data>
-  <data name="numericBoxTiltX.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
   </data>
   <data name="checkBox1DegLine.TabIndex" type="System.Int32, mscorlib">
     <value>85</value>
@@ -1309,7 +1291,7 @@ Tilt Y</value>
     <value>94</value>
   </data>
   <data name="colorControl10DegLine.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+    <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="&gt;&gt;colorControlTiltX.Name" xml:space="preserve">
     <value>colorControlTiltX</value>
@@ -1321,7 +1303,7 @@ Tilt Y</value>
     <value>groupBoxIndexRange</value>
   </data>
   <data name="numericBoxArrowStep.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 3, 0, 0</value>
+    <value>0, 0, 0, 0</value>
   </data>
   <data name="label1.TabIndex" type="System.Int32, mscorlib">
     <value>82</value>
@@ -1351,7 +1333,7 @@ Tilt Y</value>
     <value>18, 60</value>
   </data>
   <data name="label17.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="label1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1395,9 +1377,6 @@ Tilt Y</value>
   <data name="&gt;&gt;label18.Parent" xml:space="preserve">
     <value>groupBoxColorAndSize</value>
   </data>
-  <data name="numericBoxDrawingArea.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
   <data name="checkBoxTiltDirections.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -1418,16 +1397,16 @@ Active when "Show 1° Lines" is checked</value>
     <value>0, 0, 0, 0</value>
   </data>
   <data name="colorControlGeneralAxis.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="buttonLink.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+    <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="colorControl10DegLine.Location" type="System.Drawing.Point, System.Drawing">
     <value>47, 20</value>
   </data>
   <data name="groupBoxTEMSettings.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt, style=Bold</value>
+    <value>Segoe UI Variable Text, 9.75pt, style=Bold</value>
   </data>
   <data name="&gt;&gt;numericBoxTiltXDirection.Name" xml:space="preserve">
     <value>numericBoxTiltXDirection</value>
@@ -1442,7 +1421,7 @@ Active when "Show 1° Lines" is checked</value>
     <value>graphicsBox</value>
   </data>
   <data name="colorControl90DegLine.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+    <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="&gt;&gt;trackBarPointSize.Name" xml:space="preserve">
     <value>trackBarPointSize</value>
@@ -1485,9 +1464,6 @@ Active when "Show 1° Lines" is checked</value>
   </data>
   <data name="&gt;&gt;groupBoxColorAndSize.Name" xml:space="preserve">
     <value>groupBoxColorAndSize</value>
-  </data>
-  <data name="numericBoxU.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="label1MousePosition.ToolTip" xml:space="preserve">
     <value />
@@ -1577,7 +1553,7 @@ Active when "Show 1° Lines" is checked</value>
     <value>14, 15</value>
   </data>
   <data name="colorControlUniqueAxis.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+    <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="&gt;&gt;numericBoxArrowStep.Name" xml:space="preserve">
     <value>numericBoxArrowStep</value>
@@ -1607,7 +1583,7 @@ Active when "Show 1° Lines" is checked</value>
     <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="radioButtonTiltY_Plus.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="label1.Text" xml:space="preserve">
     <value>Direction of
@@ -1635,16 +1611,13 @@ Tilt X</value>
     <value>1, 0, 1, 0</value>
   </data>
   <data name="colorControl90DegLine.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="&gt;&gt;buttonRotate180.Parent" xml:space="preserve">
     <value>groupBoxLink</value>
   </data>
   <data name="label15.Size" type="System.Drawing.Size, System.Drawing">
     <value>13, 15</value>
-  </data>
-  <data name="numericBoxW.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="graphicsBox.ToolTip" xml:space="preserve">
     <value />
@@ -1662,7 +1635,7 @@ Tilt X</value>
     <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="label18.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="&gt;&gt;label19.ZOrder" xml:space="preserve">
     <value>1</value>
@@ -1692,10 +1665,10 @@ Tilt X</value>
     <value>94, 20</value>
   </data>
   <data name="checkBoxShowIndexLabels.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="colorControlBackGround.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+    <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="&gt;&gt;checkBox1DegLine.Type" xml:space="preserve">
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -1725,10 +1698,7 @@ Tilt X</value>
     <value />
   </data>
   <data name="checkBox1DegLine.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
-  </data>
-  <data name="numericBoxLinkTiltY.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="numericBoxU.HeaderText" xml:space="preserve">
     <value>±</value>
@@ -1752,13 +1722,13 @@ Tilt X</value>
     <value>GrowAndShrink</value>
   </data>
   <data name="label20.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="&gt;&gt;buttonRotate180.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <data name="groupBoxLink.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt, style=Bold</value>
+    <value>Segoe UI Variable Text, 9.75pt, style=Bold</value>
   </data>
   <data name="checkBoxTiltDirections.Location" type="System.Drawing.Point, System.Drawing">
     <value>13, 200</value>
@@ -1788,7 +1758,7 @@ Tilt X</value>
     <value>Times New Roman, 9.75pt, style=Italic</value>
   </data>
   <data name="colorControlBackGround.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="&gt;&gt;checkBoxTiltDirections.ZOrder" xml:space="preserve">
     <value>3</value>
@@ -1818,7 +1788,7 @@ Tilt X</value>
     <value>4</value>
   </data>
   <data name="numericBoxArrowStep.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+    <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="&gt;&gt;numericBoxV.Type" xml:space="preserve">
     <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
@@ -1863,7 +1833,7 @@ Tilt X</value>
     <value>NoControl</value>
   </data>
   <data name="checkBoxEnableArrow.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+    <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="&gt;&gt;graphicsBox.ZOrder" xml:space="preserve">
     <value>0</value>
@@ -1898,8 +1868,8 @@ Tilt X</value>
   <data name="&gt;&gt;label17.Name" xml:space="preserve">
     <value>label17</value>
   </data>
-  <data name="numericBoxW.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+  <data name="numericBoxW.TextFontSize" type="System.Single, mscorlib">
+    <value>9</value>
   </data>
   <data name="groupBoxHolderAngles.Location" type="System.Drawing.Point, System.Drawing">
     <value>2, 403</value>
@@ -1911,19 +1881,19 @@ Tilt X</value>
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="colorControlHolder.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="numericBoxArrowStep.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 3, 0, 0</value>
+    <value>0, 0, 0, 0</value>
   </data>
   <data name="label19.TabIndex" type="System.Int32, mscorlib">
     <value>82</value>
   </data>
   <data name="colorControlTiltY.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+    <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="label17.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1953,7 +1923,7 @@ Tilt X</value>
     <value>flowLayoutPanelStereonetColor</value>
   </data>
   <data name="colorControlTiltX.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
     <value>7, 17</value>
@@ -1962,7 +1932,7 @@ Tilt X</value>
     <value>groupBoxIndexRange</value>
   </data>
   <data name="colorControlTiltX.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="groupBoxStereonetProperties.Size" type="System.Drawing.Size, System.Drawing">
     <value>187, 396</value>
@@ -2010,10 +1980,10 @@ Tilt X</value>
     <value>81</value>
   </data>
   <data name="label1MousePosition.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+    <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="colorControlBackGround.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="colorControl90DegLine.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -2030,8 +2000,8 @@ Tilt X</value>
   <data name="&gt;&gt;colorControl90DegLine.Parent" xml:space="preserve">
     <value>flowLayoutPanelStereonetColor</value>
   </data>
-  <data name="numericBoxDrawingArea.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+  <data name="numericBoxDrawingArea.TextFontSize" type="System.Single, mscorlib">
+    <value>9</value>
   </data>
   <data name="&gt;&gt;flowLayoutPanelStereonetColor.Name" xml:space="preserve">
     <value>flowLayoutPanelStereonetColor</value>

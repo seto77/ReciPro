@@ -51,7 +51,7 @@
             // 
             // contextMenuStripUpDown
             // 
-            this.contextMenuStripUpDown.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.contextMenuStripUpDown.Font = new System.Drawing.Font("Segoe UI Variable Text", 9.75F);
             this.contextMenuStripUpDown.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.incrementToolStripMenuItem});
             this.contextMenuStripUpDown.Name = "contextMenuStrip1";
@@ -195,7 +195,7 @@
             // toolStripTextBoxMaximum
             // 
             this.toolStripTextBoxMaximum.BackColor = System.Drawing.SystemColors.Window;
-            this.toolStripTextBoxMaximum.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.toolStripTextBoxMaximum.Font = new System.Drawing.Font("Segoe UI Variable Text", 9F);
             this.toolStripTextBoxMaximum.Name = "toolStripTextBoxMaximum";
             this.toolStripTextBoxMaximum.Size = new System.Drawing.Size(100, 23);
             this.toolStripTextBoxMaximum.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.toolStripTextBoxMaximum_KeyPress);
@@ -212,7 +212,7 @@
             // toolStripTextBoxMimimum
             // 
             this.toolStripTextBoxMimimum.BackColor = System.Drawing.SystemColors.Window;
-            this.toolStripTextBoxMimimum.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.toolStripTextBoxMimimum.Font = new System.Drawing.Font("Segoe UI Variable Text", 9F);
             this.toolStripTextBoxMimimum.Name = "toolStripTextBoxMimimum";
             this.toolStripTextBoxMimimum.Size = new System.Drawing.Size(100, 23);
             this.toolStripTextBoxMimimum.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.toolStripTextBoxMaximum_KeyPress);
@@ -241,7 +241,7 @@
             // 
             // toolStripTextBoxMouseSpeed
             // 
-            this.toolStripTextBoxMouseSpeed.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.toolStripTextBoxMouseSpeed.Font = new System.Drawing.Font("Segoe UI Variable Text", 9F);
             this.toolStripTextBoxMouseSpeed.Name = "toolStripTextBoxMouseSpeed";
             this.toolStripTextBoxMouseSpeed.Size = new System.Drawing.Size(100, 23);
             this.toolStripTextBoxMouseSpeed.Text = "1";

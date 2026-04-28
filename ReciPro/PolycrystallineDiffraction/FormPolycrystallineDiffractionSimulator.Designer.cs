@@ -222,7 +222,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControlCrystals.Controls.Add(this.tabPage2);
             this.tabControlCrystals.Controls.Add(this.tabPage3);
-            this.tabControlCrystals.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.tabControlCrystals.Font = new System.Drawing.Font("Segoe UI Variable Text", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.tabControlCrystals.Location = new System.Drawing.Point(5, 50);
             this.tabControlCrystals.Multiline = true;
             this.tabControlCrystals.Name = "tabControlCrystals";
@@ -408,12 +408,11 @@
             // 
             this.numericBoxCrystalNumPerStep.BackColor = System.Drawing.SystemColors.Control;
             this.numericBoxCrystalNumPerStep.DecimalPlaces = 3;
-            this.numericBoxCrystalNumPerStep.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxCrystalNumPerStep.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxCrystalNumPerStep.FooterFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxCrystalNumPerStep.FooterFont = new System.Drawing.Font("Segoe UI Variable Text", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxCrystalNumPerStep.FooterText = "%";
             this.numericBoxCrystalNumPerStep.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxCrystalNumPerStep.HeaderFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxCrystalNumPerStep.HeaderFont = new System.Drawing.Font("Segoe UI Variable Text", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxCrystalNumPerStep.HeaderText = "Num per Step";
             this.numericBoxCrystalNumPerStep.Location = new System.Drawing.Point(18, 27);
             this.numericBoxCrystalNumPerStep.Margin = new System.Windows.Forms.Padding(0);
@@ -430,7 +429,7 @@
             this.numericBoxCrystalNumPerStep.SkipEventDuringInput = false;
             this.numericBoxCrystalNumPerStep.SmartIncrement = true;
             this.numericBoxCrystalNumPerStep.TabIndex = 407;
-            this.numericBoxCrystalNumPerStep.TextFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxCrystalNumPerStep.TextFont = new System.Drawing.Font("Segoe UI Variable Text", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxCrystalNumPerStep.ThonsandsSeparator = true;
             this.numericBoxCrystalNumPerStep.Value = 0.5D;
             // 
@@ -438,12 +437,11 @@
             // 
             this.numericBoxInheritabiliry.BackColor = System.Drawing.SystemColors.Control;
             this.numericBoxInheritabiliry.DecimalPlaces = 2;
-            this.numericBoxInheritabiliry.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxInheritabiliry.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxInheritabiliry.FooterFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxInheritabiliry.FooterFont = new System.Drawing.Font("Segoe UI Variable Text", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxInheritabiliry.FooterText = "%";
             this.numericBoxInheritabiliry.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxInheritabiliry.HeaderFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxInheritabiliry.HeaderFont = new System.Drawing.Font("Segoe UI Variable Text", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxInheritabiliry.HeaderText = "Inheritability";
             this.numericBoxInheritabiliry.Location = new System.Drawing.Point(18, 57);
             this.numericBoxInheritabiliry.Margin = new System.Windows.Forms.Padding(0);
@@ -460,7 +458,7 @@
             this.numericBoxInheritabiliry.SkipEventDuringInput = false;
             this.numericBoxInheritabiliry.SmartIncrement = true;
             this.numericBoxInheritabiliry.TabIndex = 407;
-            this.numericBoxInheritabiliry.TextFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxInheritabiliry.TextFont = new System.Drawing.Font("Segoe UI Variable Text", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxInheritabiliry.ThonsandsSeparator = true;
             this.numericBoxInheritabiliry.Value = 10D;
             // 
@@ -480,12 +478,11 @@
             // 
             this.numericBoxInheritabiliryThreshold.BackColor = System.Drawing.SystemColors.Control;
             this.numericBoxInheritabiliryThreshold.DecimalPlaces = 2;
-            this.numericBoxInheritabiliryThreshold.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxInheritabiliryThreshold.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxInheritabiliryThreshold.FooterFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxInheritabiliryThreshold.FooterFont = new System.Drawing.Font("Segoe UI Variable Text", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxInheritabiliryThreshold.FooterText = "%";
             this.numericBoxInheritabiliryThreshold.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxInheritabiliryThreshold.HeaderFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxInheritabiliryThreshold.HeaderFont = new System.Drawing.Font("Segoe UI Variable Text", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxInheritabiliryThreshold.Location = new System.Drawing.Point(288, 57);
             this.numericBoxInheritabiliryThreshold.Margin = new System.Windows.Forms.Padding(0);
             this.numericBoxInheritabiliryThreshold.Maximum = 100D;
@@ -501,7 +498,7 @@
             this.numericBoxInheritabiliryThreshold.SkipEventDuringInput = false;
             this.numericBoxInheritabiliryThreshold.SmartIncrement = true;
             this.numericBoxInheritabiliryThreshold.TabIndex = 407;
-            this.numericBoxInheritabiliryThreshold.TextFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxInheritabiliryThreshold.TextFont = new System.Drawing.Font("Segoe UI Variable Text", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxInheritabiliryThreshold.ThonsandsSeparator = true;
             this.numericBoxInheritabiliryThreshold.Value = 96D;
             this.numericBoxInheritabiliryThreshold.Visible = false;
@@ -524,12 +521,11 @@
             // 
             this.numericBoxDirectionalDensity.BackColor = System.Drawing.SystemColors.Control;
             this.numericBoxDirectionalDensity.DecimalPlaces = 2;
-            this.numericBoxDirectionalDensity.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxDirectionalDensity.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxDirectionalDensity.FooterFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxDirectionalDensity.FooterFont = new System.Drawing.Font("Segoe UI Variable Text", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxDirectionalDensity.FooterText = "°";
             this.numericBoxDirectionalDensity.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxDirectionalDensity.HeaderFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxDirectionalDensity.HeaderFont = new System.Drawing.Font("Segoe UI Variable Text", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxDirectionalDensity.HeaderText = "Directional density";
             this.numericBoxDirectionalDensity.Location = new System.Drawing.Point(2, 88);
             this.numericBoxDirectionalDensity.Margin = new System.Windows.Forms.Padding(0);
@@ -546,7 +542,7 @@
             this.numericBoxDirectionalDensity.SkipEventDuringInput = false;
             this.numericBoxDirectionalDensity.SmartIncrement = true;
             this.numericBoxDirectionalDensity.TabIndex = 407;
-            this.numericBoxDirectionalDensity.TextFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxDirectionalDensity.TextFont = new System.Drawing.Font("Segoe UI Variable Text", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxDirectionalDensity.ThonsandsSeparator = true;
             this.numericBoxDirectionalDensity.Value = 20D;
             // 
@@ -554,12 +550,11 @@
             // 
             this.numericBoxCrystalNumPerStepThreshold.BackColor = System.Drawing.SystemColors.Control;
             this.numericBoxCrystalNumPerStepThreshold.DecimalPlaces = 3;
-            this.numericBoxCrystalNumPerStepThreshold.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxCrystalNumPerStepThreshold.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxCrystalNumPerStepThreshold.FooterFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxCrystalNumPerStepThreshold.FooterFont = new System.Drawing.Font("Segoe UI Variable Text", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxCrystalNumPerStepThreshold.FooterText = "%";
             this.numericBoxCrystalNumPerStepThreshold.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxCrystalNumPerStepThreshold.HeaderFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxCrystalNumPerStepThreshold.HeaderFont = new System.Drawing.Font("Segoe UI Variable Text", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxCrystalNumPerStepThreshold.Location = new System.Drawing.Point(288, 28);
             this.numericBoxCrystalNumPerStepThreshold.Margin = new System.Windows.Forms.Padding(0);
             this.numericBoxCrystalNumPerStepThreshold.Maximum = 10D;
@@ -575,7 +570,7 @@
             this.numericBoxCrystalNumPerStepThreshold.SkipEventDuringInput = false;
             this.numericBoxCrystalNumPerStepThreshold.SmartIncrement = true;
             this.numericBoxCrystalNumPerStepThreshold.TabIndex = 407;
-            this.numericBoxCrystalNumPerStepThreshold.TextFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxCrystalNumPerStepThreshold.TextFont = new System.Drawing.Font("Segoe UI Variable Text", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxCrystalNumPerStepThreshold.ThonsandsSeparator = true;
             this.numericBoxCrystalNumPerStepThreshold.Value = 0.025D;
             this.numericBoxCrystalNumPerStepThreshold.Visible = false;
@@ -584,12 +579,11 @@
             // 
             this.numericBoxDirectionalDensityThreshold.BackColor = System.Drawing.SystemColors.Control;
             this.numericBoxDirectionalDensityThreshold.DecimalPlaces = 2;
-            this.numericBoxDirectionalDensityThreshold.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxDirectionalDensityThreshold.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxDirectionalDensityThreshold.FooterFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxDirectionalDensityThreshold.FooterFont = new System.Drawing.Font("Segoe UI Variable Text", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxDirectionalDensityThreshold.FooterText = "°";
             this.numericBoxDirectionalDensityThreshold.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxDirectionalDensityThreshold.HeaderFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxDirectionalDensityThreshold.HeaderFont = new System.Drawing.Font("Segoe UI Variable Text", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxDirectionalDensityThreshold.Location = new System.Drawing.Point(288, 88);
             this.numericBoxDirectionalDensityThreshold.Margin = new System.Windows.Forms.Padding(0);
             this.numericBoxDirectionalDensityThreshold.Maximum = 720D;
@@ -605,7 +599,7 @@
             this.numericBoxDirectionalDensityThreshold.SkipEventDuringInput = false;
             this.numericBoxDirectionalDensityThreshold.SmartIncrement = true;
             this.numericBoxDirectionalDensityThreshold.TabIndex = 407;
-            this.numericBoxDirectionalDensityThreshold.TextFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxDirectionalDensityThreshold.TextFont = new System.Drawing.Font("Segoe UI Variable Text", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxDirectionalDensityThreshold.ThonsandsSeparator = true;
             this.numericBoxDirectionalDensityThreshold.Value = 1D;
             // 
@@ -784,7 +778,7 @@
             this.graphControlResidual.DivisionLineColor = System.Drawing.Color.LightGray;
             this.graphControlResidual.FixRangeHorizontal = false;
             this.graphControlResidual.FixRangeVertical = false;
-            this.graphControlResidual.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.graphControlResidual.Font = new System.Drawing.Font("Segoe UI Variable Text", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.graphControlResidual.GraphTitle = "";
             this.graphControlResidual.AxisXTextVisible = true;
             this.graphControlResidual.Interpolation = false;
@@ -810,7 +804,7 @@
             this.graphControlResidual.Size = new System.Drawing.Size(322, 189);
             this.graphControlResidual.Smoothing = false;
             this.graphControlResidual.TabIndex = 163;
-            this.graphControlResidual.UpperPanelFont = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.graphControlResidual.UpperPanelFont = new System.Drawing.Font("Segoe UI Variable Text", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.graphControlResidual.UnitX = "";
             this.graphControlResidual.UnitY = "";
             this.graphControlResidual.UpperPanelVisible = false;
@@ -898,7 +892,6 @@
             // numericBoxRxSpeed
             // 
             this.numericBoxRxSpeed.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxRxSpeed.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxRxSpeed.FooterBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxRxSpeed.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxRxSpeed.Location = new System.Drawing.Point(126, 94);
@@ -913,7 +906,7 @@
             this.numericBoxRxSpeed.SkipEventDuringInput = false;
             this.numericBoxRxSpeed.SmartIncrement = true;
             this.numericBoxRxSpeed.TabIndex = 103;
-            this.numericBoxRxSpeed.TextFont = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxRxSpeed.TextFont = new System.Drawing.Font("Segoe UI Variable Text", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxRxSpeed.ThonsandsSeparator = true;
             this.numericBoxRxSpeed.Value = 18D;
             // 
@@ -943,7 +936,6 @@
             // numericBoxYusaGonioRySpeed
             // 
             this.numericBoxYusaGonioRySpeed.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxYusaGonioRySpeed.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxYusaGonioRySpeed.FooterBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxYusaGonioRySpeed.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxYusaGonioRySpeed.Location = new System.Drawing.Point(149, 276);
@@ -958,7 +950,7 @@
             this.numericBoxYusaGonioRySpeed.SkipEventDuringInput = false;
             this.numericBoxYusaGonioRySpeed.SmartIncrement = true;
             this.numericBoxYusaGonioRySpeed.TabIndex = 109;
-            this.numericBoxYusaGonioRySpeed.TextFont = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxYusaGonioRySpeed.TextFont = new System.Drawing.Font("Segoe UI Variable Text", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxYusaGonioRySpeed.ThonsandsSeparator = true;
             this.numericBoxYusaGonioRySpeed.Value = 1D;
             // 
@@ -976,7 +968,6 @@
             // numericBoxYusaGonioRzSpeed
             // 
             this.numericBoxYusaGonioRzSpeed.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxYusaGonioRzSpeed.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxYusaGonioRzSpeed.FooterBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxYusaGonioRzSpeed.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxYusaGonioRzSpeed.Location = new System.Drawing.Point(149, 196);
@@ -991,7 +982,7 @@
             this.numericBoxYusaGonioRzSpeed.SkipEventDuringInput = false;
             this.numericBoxYusaGonioRzSpeed.SmartIncrement = true;
             this.numericBoxYusaGonioRzSpeed.TabIndex = 106;
-            this.numericBoxYusaGonioRzSpeed.TextFont = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxYusaGonioRzSpeed.TextFont = new System.Drawing.Font("Segoe UI Variable Text", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxYusaGonioRzSpeed.ThonsandsSeparator = true;
             this.numericBoxYusaGonioRzSpeed.Value = 2D;
             // 
@@ -1056,7 +1047,6 @@
             // numericBoxYusaGonioRyStep
             // 
             this.numericBoxYusaGonioRyStep.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxYusaGonioRyStep.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxYusaGonioRyStep.FooterBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxYusaGonioRyStep.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxYusaGonioRyStep.Location = new System.Drawing.Point(149, 336);
@@ -1071,7 +1061,7 @@
             this.numericBoxYusaGonioRyStep.SkipEventDuringInput = false;
             this.numericBoxYusaGonioRyStep.SmartIncrement = true;
             this.numericBoxYusaGonioRyStep.TabIndex = 111;
-            this.numericBoxYusaGonioRyStep.TextFont = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxYusaGonioRyStep.TextFont = new System.Drawing.Font("Segoe UI Variable Text", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxYusaGonioRyStep.ThonsandsSeparator = true;
             this.numericBoxYusaGonioRyStep.Value = 0.2D;
             // 
@@ -1101,7 +1091,6 @@
             // numericBoxYusaGonioRyOscillation
             // 
             this.numericBoxYusaGonioRyOscillation.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxYusaGonioRyOscillation.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxYusaGonioRyOscillation.FooterBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxYusaGonioRyOscillation.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxYusaGonioRyOscillation.Location = new System.Drawing.Point(149, 306);
@@ -1116,7 +1105,7 @@
             this.numericBoxYusaGonioRyOscillation.SkipEventDuringInput = false;
             this.numericBoxYusaGonioRyOscillation.SmartIncrement = true;
             this.numericBoxYusaGonioRyOscillation.TabIndex = 110;
-            this.numericBoxYusaGonioRyOscillation.TextFont = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxYusaGonioRyOscillation.TextFont = new System.Drawing.Font("Segoe UI Variable Text", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxYusaGonioRyOscillation.ThonsandsSeparator = true;
             this.numericBoxYusaGonioRyOscillation.Value = 4D;
             // 
@@ -1156,7 +1145,6 @@
             // numericBoxYusaGonioRzOscillation
             // 
             this.numericBoxYusaGonioRzOscillation.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxYusaGonioRzOscillation.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxYusaGonioRzOscillation.FooterBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxYusaGonioRzOscillation.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxYusaGonioRzOscillation.Location = new System.Drawing.Point(149, 226);
@@ -1171,7 +1159,7 @@
             this.numericBoxYusaGonioRzOscillation.SkipEventDuringInput = false;
             this.numericBoxYusaGonioRzOscillation.SmartIncrement = true;
             this.numericBoxYusaGonioRzOscillation.TabIndex = 107;
-            this.numericBoxYusaGonioRzOscillation.TextFont = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxYusaGonioRzOscillation.TextFont = new System.Drawing.Font("Segoe UI Variable Text", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxYusaGonioRzOscillation.ThonsandsSeparator = true;
             this.numericBoxYusaGonioRzOscillation.Value = 4D;
             // 
@@ -1424,7 +1412,7 @@
             // this.diffractionPatternControlSimulation.DetectorProperty = ((Crystallography.AreaDetector)(resources.GetObject("diffractionPatternControlSimulation.DetectorProperty"))); // (260322Ch) Hidden 指定プロパティは Designer 非依存に戻す
             this.diffractionPatternControlSimulation.Dock = System.Windows.Forms.DockStyle.Fill;
             this.diffractionPatternControlSimulation.FilmBlur = 200D;
-            this.diffractionPatternControlSimulation.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.diffractionPatternControlSimulation.Font = new System.Drawing.Font("Segoe UI Variable Text", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.diffractionPatternControlSimulation.ImageHeight = 900;
             this.diffractionPatternControlSimulation.ImageWidth = 900;
             this.diffractionPatternControlSimulation.IsReferrenceImage = false;

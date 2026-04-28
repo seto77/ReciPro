@@ -126,7 +126,7 @@
 「0:custom」を選択すると、エネルギーまたは波長を自由に入力できます。</value>
   </data>
   <data name="radioButtonXray.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="radioButtonXray.Size" type="System.Drawing.Size, System.Drawing">
     <value>48, 22</value>
@@ -138,7 +138,7 @@
     <value>波源を選択</value>
   </data>
   <data name="radioButtonElectron.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="radioButtonElectron.Location" type="System.Drawing.Point, System.Drawing">
     <value>48, 0</value>
@@ -158,14 +158,11 @@
   <data name="comboBoxXrayLine.ToolTip" xml:space="preserve">
     <value>特性X線の線を選択</value>
   </data>
-  <data name="numericBoxEnergy.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
   <data name="numericBoxEnergy.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="numericBoxEnergy.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="numericBoxEnergy.HeaderText" xml:space="preserve">
     <value>エネルギー</value>
@@ -180,7 +177,7 @@
     <value>波動エネルギーを入力</value>
   </data>
   <data name="label1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
     <value>32, 18</value>
@@ -188,14 +185,11 @@
   <data name="label1.Text" xml:space="preserve">
     <value>元素</value>
   </data>
-  <data name="numericBoxWaveLength.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
   <data name="numericBoxWaveLength.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="numericBoxWaveLength.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="numericBoxWaveLength.HeaderText" xml:space="preserve">
     <value>波長</value>
@@ -210,7 +204,7 @@
     <value>波長を入力</value>
   </data>
   <data name="radioButtonNeutron.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="radioButtonNeutron.Location" type="System.Drawing.Point, System.Drawing">
     <value>112, 0</value>

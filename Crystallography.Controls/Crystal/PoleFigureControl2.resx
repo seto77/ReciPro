@@ -171,9 +171,6 @@
   <data name="&gt;&gt;pictureBox1.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="numericBoxResolution.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
-  </data>
   <data name="numericBoxResolution.FooterText" xml:space="preserve">
     <value>°</value>
   </data>
@@ -214,7 +211,7 @@
     <value>True</value>
   </data>
   <data name="label9.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="label9.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 6</value>
@@ -241,7 +238,7 @@
     <value>0</value>
   </data>
   <data name="comboBoxColor.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="comboBoxColor.Items" xml:space="preserve">
     <value>Cold-Warm scale</value>
@@ -272,9 +269,6 @@
   </data>
   <data name="&gt;&gt;comboBoxColor.ZOrder" xml:space="preserve">
     <value>1</value>
-  </data>
-  <data name="numericBoxMax.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxMax.HeaderText" xml:space="preserve">
     <value>Max</value>
@@ -308,9 +302,6 @@
   </data>
   <data name="&gt;&gt;numericBoxMax.ZOrder" xml:space="preserve">
     <value>1</value>
-  </data>
-  <data name="numericBoxMin.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxMin.HeaderText" xml:space="preserve">
     <value>Min</value>
@@ -349,7 +340,7 @@
     <value>True</value>
   </data>
   <data name="label1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 8pt</value>
+    <value>Segoe UI Variable Text, 8pt</value>
   </data>
   <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 2</value>
@@ -439,7 +430,7 @@
     <value>96, 96</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 4, 4, 4</value>

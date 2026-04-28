@@ -337,6 +337,7 @@ public partial class FormDiffractionSimulatorDynamicCompression : FormBase
                 "Time elapsed: " + (sw.ElapsedMilliseconds / 1000.0).ToString("f1") + " sec., per slice: " + (sw.ElapsedMilliseconds - beforeSec).ToString() + " msec., wait for more " +
                 (sw.ElapsedMilliseconds / 1000.0 / toolStripProgressBar.Value * (toolStripProgressBar.Maximum - toolStripProgressBar.Value)).ToString("f1") + " sec.";
             beforeSec = sw.ElapsedMilliseconds;
+            // 260428Cl 同期計算ループ内の UI ポンプ。Task.Run + IProgress<T> 化で除去予定。
             Application.DoEvents();
         }//メインループここまで
 

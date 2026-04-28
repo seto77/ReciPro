@@ -259,7 +259,7 @@
     <value>1</value>
   </data>
   <data name="buttonCopmprehensiveFitting.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="buttonFindSpots.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -271,7 +271,7 @@
     <value>hkl</value>
   </data>
   <data name="checkBoxShowObsSpotLabel.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="splitContainer1.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -380,9 +380,6 @@
   </data>
   <data name="panelSpotActions.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 21</value>
-  </data>
-  <data name="waveLengthControl1.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxCameraLength.MaximumSize" type="System.Drawing.Size, System.Drawing">
     <value>1000, 30</value>
@@ -589,7 +586,7 @@
     <value>panelSpotActions</value>
   </data>
   <data name="buttonSaveToFile.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+    <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="Bx.HeaderText" xml:space="preserve">
     <value>Bx</value>
@@ -660,9 +657,6 @@
   <data name="H1.Width" type="System.Int32, mscorlib">
     <value>36</value>
   </data>
-  <data name="numericBoxFittingRange.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
-  </data>
   <data name="numericBoxNearestNeighbor.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
@@ -727,7 +721,7 @@
     <value>groupBoxOptics</value>
   </data>
   <data name="checkBoxShowZoneAxis.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="numericBoxCameraLength.ToolTip" xml:space="preserve">
     <value>Camera length for the diffraction pattern (mm)</value>
@@ -751,7 +745,7 @@
     <value>406, 127</value>
   </data>
   <data name="buttonGlobalFit.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 7pt</value>
+    <value>Segoe UI Variable Text, 7pt</value>
   </data>
   <data name="radioButtonMultiGrain.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
@@ -767,9 +761,6 @@
   </data>
   <data name="&gt;&gt;panel1.Name" xml:space="preserve">
     <value>panel1</value>
-  </data>
-  <data name="numericBoxAcceptableError.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="B0.Width" type="System.Int32, mscorlib">
     <value>45</value>
@@ -794,26 +785,26 @@
 Specify the number of spots to search, the minimum distance between spots,
 and the fitting range in the box on the right.</value>
   </data>
-  <data name="numericBoxAcceptableError.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+  <data name="numericBoxAcceptableError.TextFontSize" type="System.Single, mscorlib">
+    <value>9</value>
   </data>
   <data name="&gt;&gt;noDataGridViewTextBoxColumn2.Name" xml:space="preserve">
     <value>noDataGridViewTextBoxColumn2</value>
   </data>
   <data name="waveLengthControl1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+    <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="buttonSaveToFile.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Left</value>
   </data>
-  <data name="numericBoxDonut.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 7pt</value>
+  <data name="numericBoxDonut.TextFontSize" type="System.Single, mscorlib">
+    <value>7</value>
   </data>
   <data name="panelSpotActions.Size" type="System.Drawing.Size, System.Drawing">
     <value>752, 368</value>
   </data>
   <data name="buttonFindSpots.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 11pt</value>
+    <value>Segoe UI Variable Text, 11pt</value>
   </data>
   <data name="numericBoxFittingRange.ToolTip1" xml:space="preserve">
     <value>Set the fitting range (radius) in pixels.</value>
@@ -897,7 +888,7 @@ and the fitting range in the box on the right.</value>
     <value>758, 185</value>
   </data>
   <data name="checkBoxGuideCircles.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="buttonResetRangeForAllSpots.Location" type="System.Drawing.Point, System.Drawing">
     <value>668, 4</value>
@@ -1080,8 +1071,8 @@ and the fitting range in the box on the right.</value>
     <value>Identify spots
 (you need to select an appropriate crystal in main window)</value>
   </data>
-  <data name="numericBoxSemiangle.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 10pt</value>
+  <data name="numericBoxSemiangle.TextFontSize" type="System.Single, mscorlib">
+    <value>10</value>
   </data>
   <data name="buttonStop.Text" xml:space="preserve">
     <value>Stop</value>
@@ -1092,8 +1083,8 @@ and the fitting range in the box on the right.</value>
   <data name="&gt;&gt;checkBoxGuideCircles.Type" xml:space="preserve">
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="numericBoxNearestNeighbor.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+  <data name="numericBoxNearestNeighbor.TextFontSize" type="System.Single, mscorlib">
+    <value>9</value>
   </data>
   <data name="checkBoxShowObsSpotSymbol.Size" type="System.Drawing.Size, System.Drawing">
     <value>110, 21</value>
@@ -1174,7 +1165,7 @@ and the fitting range in the box on the right.</value>
     <value>0, 0, 0, 0</value>
   </data>
   <data name="checkBoxShowDebyeRing.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="checkBoxShowDebyeRing.Size" type="System.Drawing.Size, System.Drawing">
     <value>132, 21</value>
@@ -1186,7 +1177,7 @@ and the fitting range in the box on the right.</value>
     <value>θ</value>
   </data>
   <data name="checkBoxShowObsSpotSymbol.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="&gt;&gt;dataGridViewGrains.Parent" xml:space="preserve">
     <value>groupBoxIndex</value>
@@ -1201,7 +1192,7 @@ and the fitting range in the box on the right.</value>
     <value />
   </data>
   <data name="buttonDonut.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 7pt</value>
+    <value>Segoe UI Variable Text, 7pt</value>
   </data>
   <data name="&gt;&gt;saveToolStripMenuItem.Name" xml:space="preserve">
     <value>saveToolStripMenuItem</value>
@@ -1228,7 +1219,7 @@ and the fitting range in the box on the right.</value>
     <value>Camera Length</value>
   </data>
   <data name="buttonResetRangeForAllSpots.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="&gt;&gt;copyAsBitmapToolStripMenuItem.Name" xml:space="preserve">
     <value>copyAsBitmapToolStripMenuItem</value>
@@ -1285,7 +1276,7 @@ and the fitting range in the box on the right.</value>
     <value>True</value>
   </data>
   <data name="scalablePictureBoxAdvanced.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="numericBoxDonut.TabIndex" type="System.Int32, mscorlib">
     <value>14</value>
@@ -1316,9 +1307,6 @@ and the fitting range in the box on the right.</value>
   </data>
   <data name="&gt;&gt;toolStripStatusLabelFindSpot.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="numericBoxDonut.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="buttonClearSpots.Location" type="System.Drawing.Point, System.Drawing">
     <value>469, 322</value>
@@ -1393,7 +1381,7 @@ and the fitting range in the box on the right.</value>
     <value>CrystalName</value>
   </data>
   <data name="numericBoxMaxNumOfG.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 10pt</value>
+    <value>Segoe UI Variable Text, 10pt</value>
   </data>
   <data name="radioButtonSingleGrain.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
@@ -1405,7 +1393,7 @@ and the fitting range in the box on the right.</value>
     <value>0, 805</value>
   </data>
   <data name="buttonCopyToClipboard.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+    <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="&gt;&gt;groupBoxOptics.Name" xml:space="preserve">
     <value>groupBoxOptics</value>
@@ -1446,9 +1434,6 @@ and the fitting range in the box on the right.</value>
   <data name="panel1.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 2</value>
   </data>
-  <data name="numericBoxSemiangle.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
-  </data>
   <data name="groupBoxIndex.Text" xml:space="preserve">
     <value>Index</value>
   </data>
@@ -1469,9 +1454,6 @@ and the fitting range in the box on the right.</value>
   </data>
   <data name="&gt;&gt;saveAsMetafileToolStripMenuItem.Name" xml:space="preserve">
     <value>saveAsMetafileToolStripMenuItem</value>
-  </data>
-  <data name="numericBoxMaxGrainNum.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxMaxNumOfG.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
@@ -1501,7 +1483,7 @@ and the fitting range in the box on the right.</value>
     <value>True</value>
   </data>
   <data name="buttonIdentifySpots.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 11pt</value>
+    <value>Segoe UI Variable Text, 11pt</value>
   </data>
   <data name="statusStrip.Size" type="System.Drawing.Size, System.Drawing">
     <value>1382, 22</value>
@@ -1538,9 +1520,6 @@ and the fitting range in the box on the right.</value>
   </data>
   <data name="toolStripMenuItem1.Text" xml:space="preserve">
     <value>Right click : Zoom out</value>
-  </data>
-  <data name="numericBoxMaxNumOfG.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="&gt;&gt;checkBoxShowDebyeRing.Name" xml:space="preserve">
     <value>checkBoxShowDebyeRing</value>
@@ -1630,7 +1609,7 @@ and the fitting range in the box on the right.</value>
     <value>Crystallography.Controls.CaptureExtender, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="numericBoxSemiangle.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 10pt</value>
+    <value>Segoe UI Variable Text, 10pt</value>
   </data>
   <data name="&gt;&gt;checkBoxShowCalcSpotLabel.Name" xml:space="preserve">
     <value>checkBoxShowCalcSpotLabel</value>
@@ -1710,8 +1689,8 @@ and the fitting range in the box on the right.</value>
   <data name="Range.Width" type="System.Int32, mscorlib">
     <value>48</value>
   </data>
-  <data name="numericBoxMaxGrainNum.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+  <data name="numericBoxMaxGrainNum.TextFontSize" type="System.Single, mscorlib">
+    <value>9</value>
   </data>
   <data name="Column2.HeaderText" xml:space="preserve">
     <value>Di- rect</value>
@@ -1773,8 +1752,8 @@ and the fitting range in the box on the right.</value>
   <data name="panelSpotActions.TabIndex" type="System.Int32, mscorlib">
     <value>17</value>
   </data>
-  <data name="numericBoxCameraLength.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+  <data name="numericBoxCameraLength.TextFontSize" type="System.Single, mscorlib">
+    <value>9</value>
   </data>
   <data name="numericBoxMaxGrainNum.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>10, 0, 0, 0</value>
@@ -1924,7 +1903,7 @@ and the fitting range in the box on the right.</value>
     <value>Copy</value>
   </data>
   <data name="checkBoxShowCalcSpotSymbol.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="radioButtonPixelSizeUnitReal.Text" xml:space="preserve">
     <value>mm</value>
@@ -1987,7 +1966,7 @@ and the fitting range in the box on the right.</value>
     <value>4, 321</value>
   </data>
   <data name="groupBoxSpot.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="numericBoxAcceptableError.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -2052,9 +2031,6 @@ and the fitting range in the box on the right.</value>
   <data name="numericBoxNearestNeighbor.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
   </data>
-  <data name="numericBoxNearestNeighbor.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
-  </data>
   <data name="numericBoxNumberOfSpots.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
@@ -2069,9 +2045,6 @@ and the fitting range in the box on the right.</value>
   </data>
   <data name="groupBoxOptics.Size" type="System.Drawing.Size, System.Drawing">
     <value>559, 110</value>
-  </data>
-  <data name="numericBoxCameraLength.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="&gt;&gt;checkBoxIgnoreMultipleDiffraction.Parent" xml:space="preserve">
     <value>groupBoxIndex</value>
@@ -2096,9 +2069,6 @@ and the fitting range in the box on the right.</value>
   </data>
   <data name="buttonCopyToClipboard.Size" type="System.Drawing.Size, System.Drawing">
     <value>45, 25</value>
-  </data>
-  <data name="numericBoxPixelSize.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="dataGridViewGrains.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -2162,9 +2132,6 @@ and the fitting range in the box on the right.</value>
   </data>
   <data name="&gt;&gt;noDataGridViewTextBoxColumn2.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="numericBoxNumberOfSpots.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
     <value>758, 119</value>
@@ -2238,8 +2205,8 @@ and the fitting range in the box on the right.</value>
   <data name="&gt;&gt;buttonClearSpots.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="numericBoxFittingRange.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+  <data name="numericBoxFittingRange.TextFontSize" type="System.Single, mscorlib">
+    <value>9</value>
   </data>
   <data name="copyAsBitmapToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>130, 22</value>
@@ -2287,7 +2254,7 @@ and the fitting range in the box on the right.</value>
     <value>30</value>
   </data>
   <data name="buttonClearSpots.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+    <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="&gt;&gt;checkBoxShowZoneAxis.Name" xml:space="preserve">
     <value>checkBoxShowZoneAxis</value>
@@ -2298,8 +2265,8 @@ and the fitting range in the box on the right.</value>
   <data name="buttonGlobalFit.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
   </data>
-  <data name="numericBoxNumberOfSpots.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+  <data name="numericBoxNumberOfSpots.TextFontSize" type="System.Single, mscorlib">
+    <value>9</value>
   </data>
   <data name="&gt;&gt;buttonIdentifySpots.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -2325,14 +2292,14 @@ and the fitting range in the box on the right.</value>
   <data name="buttonStop.Size" type="System.Drawing.Size, System.Drawing">
     <value>97, 27</value>
   </data>
-  <data name="numericBoxPixelSize.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+  <data name="numericBoxPixelSize.TextFontSize" type="System.Single, mscorlib">
+    <value>9</value>
   </data>
   <data name="buttonCopmprehensiveFitting.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Left</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="&gt;&gt;AssignedSpots.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -2518,7 +2485,7 @@ and the fitting range in the box on the right.</value>
     <value>43</value>
   </data>
   <data name="buttonRefineThicknessAndDirection.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 11pt</value>
+    <value>Segoe UI Variable Text, 11pt</value>
   </data>
   <data name="numericBoxPixelSize.HeaderText" xml:space="preserve">
     <value>Pixel Size</value>
@@ -2578,7 +2545,7 @@ and the fitting range in the box on the right.</value>
     <value>0, 0, 0, 0</value>
   </data>
   <data name="checkBoxShowCalcSpotLabel.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="scalablePictureBoxAdvanced.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
@@ -2592,8 +2559,8 @@ and the fitting range in the box on the right.</value>
   <data name="&gt;&gt;noDataGridViewTextBoxColumn1.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="numericBoxMaxNumOfG.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 10pt</value>
+  <data name="numericBoxMaxNumOfG.TextFontSize" type="System.Single, mscorlib">
+    <value>10</value>
   </data>
   <data name="noDataGridViewTextBoxColumn2.Width" type="System.Int32, mscorlib">
     <value>30</value>

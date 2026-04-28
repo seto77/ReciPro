@@ -230,7 +230,7 @@ public partial class CrystalDatabaseControl : UserControlBase
     {
         (double progress, string message) = ((double Progress, string Message))e.UserState;
         ProgressChanged?.Invoke(sender, progress, message);
-        Application.DoEvents();
+        // 260428Cl Application.DoEvents() を削除 (BackgroundWorker の ProgressChanged は UI スレッドで動作するため不要)
     }
 
     private void ReadDatabaseWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -238,7 +238,7 @@ public partial class CrystalDatabaseControl : UserControlBase
         this.Enabled = true;
         Resume();
         ProgressChanged?.Invoke(sender, 1, $"Total loading time: {sw.ElapsedMilliseconds / 1E3:f1} sec.");
-        Application.DoEvents();
+        // 260428Cl Application.DoEvents() を削除 (RunWorkerCompleted は UI スレッドで動作するため不要)
     }
 
     #endregion
@@ -359,14 +359,14 @@ public partial class CrystalDatabaseControl : UserControlBase
     {
         (double progress, string message) = ((double Progress, string Message))e.UserState;
         ProgressChanged?.Invoke(sender, progress, message);
-        Application.DoEvents();
+        // 260428Cl Application.DoEvents() を削除 (BackgroundWorker の ProgressChanged は UI スレッドで動作するため不要)
     }
 
     private void SaveDatabaseWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
     {
         this.Enabled = true;
         ProgressChanged?.Invoke(sender, 1, $"Total saving time: {sw.ElapsedMilliseconds / 1E3:f1} sec.");
-        Application.DoEvents();
+        // 260428Cl Application.DoEvents() を削除 (RunWorkerCompleted は UI スレッドで動作するため不要)
     }
 
     #endregion
@@ -575,7 +575,7 @@ public partial class CrystalDatabaseControl : UserControlBase
     {
         (double progress, string message) = ((double Progress, string Message))e.UserState;
         ProgressChanged?.Invoke(sender, progress, message);
-        Application.DoEvents();
+        // 260428Cl Application.DoEvents() を削除 (BackgroundWorker の ProgressChanged は UI スレッドで動作するため不要)
     }
 
     private void DownloadCodWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)

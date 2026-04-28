@@ -1321,7 +1321,7 @@
             dataGridView.AutoGenerateColumns = false;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("メイリオ", 8F);
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("BIZ UDPGothic", 8F);
             dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -1349,7 +1349,7 @@
             // labelDataGridViewTextBoxColumn
             // 
             labelDataGridViewTextBoxColumn.DataPropertyName = "Label";
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("メイリオ", 9F);
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("BIZ UDPGothic", 9F);
             labelDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle2;
             resources.ApplyResources(labelDataGridViewTextBoxColumn, "labelDataGridViewTextBoxColumn");
             labelDataGridViewTextBoxColumn.Name = "labelDataGridViewTextBoxColumn";
@@ -1359,7 +1359,7 @@
             // elementDataGridViewTextBoxColumn
             // 
             elementDataGridViewTextBoxColumn.DataPropertyName = "Element";
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9F);
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI Variable Text", 9F);
             elementDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle3;
             resources.ApplyResources(elementDataGridViewTextBoxColumn, "elementDataGridViewTextBoxColumn");
             elementDataGridViewTextBoxColumn.Name = "elementDataGridViewTextBoxColumn";
@@ -1370,7 +1370,7 @@
             // xDataGridViewTextBoxColumn
             // 
             xDataGridViewTextBoxColumn.DataPropertyName = "X";
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 9F);
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI Variable Text", 9F);
             xDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle4;
             resources.ApplyResources(xDataGridViewTextBoxColumn, "xDataGridViewTextBoxColumn");
             xDataGridViewTextBoxColumn.Name = "xDataGridViewTextBoxColumn";
@@ -1380,7 +1380,7 @@
             // yDataGridViewTextBoxColumn
             // 
             yDataGridViewTextBoxColumn.DataPropertyName = "Y";
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 9F);
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI Variable Text", 9F);
             yDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle5;
             resources.ApplyResources(yDataGridViewTextBoxColumn, "yDataGridViewTextBoxColumn");
             yDataGridViewTextBoxColumn.Name = "yDataGridViewTextBoxColumn";
@@ -1390,7 +1390,7 @@
             // zDataGridViewTextBoxColumn
             // 
             zDataGridViewTextBoxColumn.DataPropertyName = "Z";
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 9F);
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI Variable Text", 9F);
             zDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle6;
             resources.ApplyResources(zDataGridViewTextBoxColumn, "zDataGridViewTextBoxColumn");
             zDataGridViewTextBoxColumn.Name = "zDataGridViewTextBoxColumn";
@@ -1400,7 +1400,7 @@
             // occDataGridViewTextBoxColumn
             // 
             occDataGridViewTextBoxColumn.DataPropertyName = "Occ.";
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("メイリオ", 9F);
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("BIZ UDPGothic", 9F);
             occDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle7;
             resources.ApplyResources(occDataGridViewTextBoxColumn, "occDataGridViewTextBoxColumn");
             occDataGridViewTextBoxColumn.Name = "occDataGridViewTextBoxColumn";
@@ -1410,7 +1410,7 @@
             // multiDataGridViewTextBoxColumn
             // 
             multiDataGridViewTextBoxColumn.DataPropertyName = "Multi.";
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("メイリオ", 9F);
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("BIZ UDPGothic", 9F);
             multiDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle8;
             resources.ApplyResources(multiDataGridViewTextBoxColumn, "multiDataGridViewTextBoxColumn");
             multiDataGridViewTextBoxColumn.Name = "multiDataGridViewTextBoxColumn";
@@ -1420,7 +1420,7 @@
             // wyckLetDataGridViewTextBoxColumn
             // 
             wyckLetDataGridViewTextBoxColumn.DataPropertyName = "Wyck. Let.";
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("メイリオ", 9F);
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("BIZ UDPGothic", 9F);
             wyckLetDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle9;
             resources.ApplyResources(wyckLetDataGridViewTextBoxColumn, "wyckLetDataGridViewTextBoxColumn");
             wyckLetDataGridViewTextBoxColumn.Name = "wyckLetDataGridViewTextBoxColumn";
@@ -1430,7 +1430,7 @@
             // siteSymDataGridViewTextBoxColumn
             // 
             siteSymDataGridViewTextBoxColumn.DataPropertyName = "Site Sym.";
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("メイリオ", 9F);
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("BIZ UDPGothic", 9F);
             siteSymDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle10;
             resources.ApplyResources(siteSymDataGridViewTextBoxColumn, "siteSymDataGridViewTextBoxColumn");
             siteSymDataGridViewTextBoxColumn.Name = "siteSymDataGridViewTextBoxColumn";

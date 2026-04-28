@@ -34,7 +34,6 @@ partial class FormSuperStructure
         // numericBoxA
         // 
         numericBoxA.BackColor = System.Drawing.Color.Transparent;
-        numericBoxA.Font = new System.Drawing.Font("Segoe UI", 9.75F);
         numericBoxA.HeaderText = "a × ";
         numericBoxA.Location = new System.Drawing.Point(9, 9);
         numericBoxA.Margin = new System.Windows.Forms.Padding(0);
@@ -52,7 +51,6 @@ partial class FormSuperStructure
         // numericBoxB
         // 
         numericBoxB.BackColor = System.Drawing.Color.Transparent;
-        numericBoxB.Font = new System.Drawing.Font("Segoe UI", 9.75F);
         numericBoxB.HeaderText = "b × ";
         numericBoxB.Location = new System.Drawing.Point(96, 9);
         numericBoxB.Margin = new System.Windows.Forms.Padding(0);
@@ -70,7 +68,6 @@ partial class FormSuperStructure
         // numericBoxC
         // 
         numericBoxC.BackColor = System.Drawing.Color.Transparent;
-        numericBoxC.Font = new System.Drawing.Font("Segoe UI", 9.75F);
         numericBoxC.HeaderText = "c × ";
         numericBoxC.Location = new System.Drawing.Point(187, 9);
         numericBoxC.Margin = new System.Windows.Forms.Padding(0);
@@ -122,7 +119,7 @@ partial class FormSuperStructure
         Controls.Add(numericBoxC);
         Controls.Add(numericBoxB);
         Controls.Add(numericBoxA);
-        Font = new System.Drawing.Font("Segoe UI", 9F);
+        Font = new System.Drawing.Font("Segoe UI Variable Text", 9F);
         FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
         Name = "FormSuperStructure";
         ShowIcon = false;

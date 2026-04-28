@@ -88,7 +88,7 @@
             this.buttonLoadOrSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonLoadOrSave.BackColor = System.Drawing.Color.SteelBlue;
             this.buttonLoadOrSave.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.buttonLoadOrSave.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonLoadOrSave.Font = new System.Drawing.Font("Segoe UI Variable Text", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.buttonLoadOrSave.ForeColor = System.Drawing.Color.White;
             this.buttonLoadOrSave.Location = new System.Drawing.Point(270, 221);
             this.buttonLoadOrSave.Name = "buttonLoadOrSave";
@@ -102,7 +102,7 @@
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.button1.BackColor = System.Drawing.Color.SteelBlue;
             this.button1.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.button1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.button1.Font = new System.Drawing.Font("Segoe UI Variable Text", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.button1.ForeColor = System.Drawing.Color.White;
             this.button1.Location = new System.Drawing.Point(360, 221);
             this.button1.Name = "button1";
@@ -115,7 +115,7 @@
             // 
             this.buttonExpand.BackColor = System.Drawing.Color.Orange;
             this.buttonExpand.Dock = System.Windows.Forms.DockStyle.Right;
-            this.buttonExpand.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonExpand.Font = new System.Drawing.Font("Segoe UI Variable Text", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.buttonExpand.ForeColor = System.Drawing.Color.Moccasin;
             this.buttonExpand.Location = new System.Drawing.Point(460, 0);
             this.buttonExpand.Name = "buttonExpand";
@@ -184,7 +184,7 @@
             this.ClientSize = new System.Drawing.Size(970, 254);
             this.Controls.Add(this.crystalControl1);
             this.Controls.Add(this.panel1);
-            this.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.Font = new System.Drawing.Font("Segoe UI Variable Text", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "FormCrystalSelection";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;

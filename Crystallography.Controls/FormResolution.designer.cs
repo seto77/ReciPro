@@ -174,7 +174,7 @@
             this.checkBoxKeepAspect.AutoSize = true;
             this.checkBoxKeepAspect.Checked = true;
             this.checkBoxKeepAspect.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxKeepAspect.Font = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.checkBoxKeepAspect.Font = new System.Drawing.Font("BIZ UDPGothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.checkBoxKeepAspect.Location = new System.Drawing.Point(0, 65);
             this.checkBoxKeepAspect.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxKeepAspect.Name = "checkBoxKeepAspect";

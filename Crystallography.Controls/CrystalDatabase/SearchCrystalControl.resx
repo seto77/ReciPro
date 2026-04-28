@@ -129,7 +129,7 @@
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="checkBoxSearchName.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="checkBoxSearchName.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -163,7 +163,7 @@
     <value>0</value>
   </data>
   <data name="textBoxSearchName.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="textBoxSearchName.Location" type="System.Drawing.Point, System.Drawing">
     <value>10, 21</value>
@@ -196,7 +196,7 @@
     <value>True</value>
   </data>
   <data name="checkBoxSearchElements.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="checkBoxSearchElements.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -232,7 +232,7 @@
     <value>True</value>
   </data>
   <data name="buttonPeriodicTable.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="buttonPeriodicTable.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -271,7 +271,7 @@
     <value>True</value>
   </data>
   <data name="checkBoxSearchReference.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="checkBoxSearchReference.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -304,7 +304,7 @@
     <value>4</value>
   </data>
   <data name="textBoxSearchReference.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="textBoxSearchReference.Location" type="System.Drawing.Point, System.Drawing">
     <value>10, 130</value>
@@ -337,7 +337,7 @@
     <value>True</value>
   </data>
   <data name="checkBoxSearchCrystalSystem.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="checkBoxSearchCrystalSystem.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -370,7 +370,7 @@
     <value>6</value>
   </data>
   <data name="comboBoxSearchCrystalSystem.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="comboBoxSearchCrystalSystem.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>Disable</value>
@@ -430,7 +430,7 @@
     <value>True</value>
   </data>
   <data name="checkBoxSearchCellParameter.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="checkBoxSearchCellParameter.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -464,9 +464,6 @@
   </data>
   <data name="numericBoxCellGamma.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
-  </data>
-  <data name="numericBoxCellGamma.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxCellGamma.FooterText" xml:space="preserve">
     <value>°</value>
@@ -510,17 +507,14 @@
   <data name="numericBoxCellAngleErr.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
-  <data name="numericBoxCellAngleErr.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
-  </data>
   <data name="numericBoxCellAngleErr.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+    <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="numericBoxCellAngleErr.FooterText" xml:space="preserve">
     <value>°</value>
   </data>
   <data name="numericBoxCellAngleErr.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+    <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="numericBoxCellAngleErr.HeaderText" xml:space="preserve">
     <value>±</value>
@@ -561,17 +555,14 @@
   <data name="numericBoxCellLengthErr.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
-  <data name="numericBoxCellLengthErr.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
-  </data>
   <data name="numericBoxCellLengthErr.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+    <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="numericBoxCellLengthErr.FooterText" xml:space="preserve">
     <value>%</value>
   </data>
   <data name="numericBoxCellLengthErr.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+    <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="numericBoxCellLengthErr.HeaderText" xml:space="preserve">
     <value>±</value>
@@ -611,9 +602,6 @@
   </data>
   <data name="numericBoxCellC.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
-  </data>
-  <data name="numericBoxCellC.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxCellC.FooterText" xml:space="preserve">
     <value>Å</value>
@@ -657,9 +645,6 @@
   <data name="numericBoxCellBeta.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
-  <data name="numericBoxCellBeta.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
-  </data>
   <data name="numericBoxCellBeta.FooterText" xml:space="preserve">
     <value>°</value>
   </data>
@@ -701,9 +686,6 @@
   </data>
   <data name="numericBoxCellAlpha.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
-  </data>
-  <data name="numericBoxCellAlpha.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxCellAlpha.FooterText" xml:space="preserve">
     <value>°</value>
@@ -747,9 +729,6 @@
   <data name="numericBoxCellB.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
-  <data name="numericBoxCellB.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
-  </data>
   <data name="numericBoxCellB.FooterText" xml:space="preserve">
     <value>Å</value>
   </data>
@@ -792,9 +771,6 @@
   <data name="numericBoxCellA.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
-  <data name="numericBoxCellA.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
-  </data>
   <data name="numericBoxCellA.FooterText" xml:space="preserve">
     <value>Å</value>
   </data>
@@ -835,7 +811,7 @@
     <value>7</value>
   </data>
   <data name="groupBoxCellParameter.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+    <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="groupBoxCellParameter.Location" type="System.Drawing.Point, System.Drawing">
     <value>10, 234</value>
@@ -871,7 +847,7 @@
     <value>True</value>
   </data>
   <data name="checkBoxDspacing.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="checkBoxDspacing.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -907,7 +883,7 @@
     <value>True</value>
   </data>
   <data name="checkBoxD3.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 8.25pt</value>
+    <value>Segoe UI Variable Text, 8.25pt</value>
   </data>
   <data name="checkBoxD3.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -938,9 +914,6 @@
   </data>
   <data name="numericBoxD3Err.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
-  </data>
-  <data name="numericBoxD3Err.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxD3Err.FooterText" xml:space="preserve">
     <value>%</value>
@@ -984,9 +957,6 @@
   <data name="numericBoxD2Err.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
-  <data name="numericBoxD2Err.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
-  </data>
   <data name="numericBoxD2Err.FooterText" xml:space="preserve">
     <value>%</value>
   </data>
@@ -1028,9 +998,6 @@
   </data>
   <data name="numericBoxD1Err.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
-  </data>
-  <data name="numericBoxD1Err.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxD1Err.FooterText" xml:space="preserve">
     <value>%</value>
@@ -1075,7 +1042,7 @@
     <value>True</value>
   </data>
   <data name="checkBoxD2.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 8.25pt</value>
+    <value>Segoe UI Variable Text, 8.25pt</value>
   </data>
   <data name="checkBoxD2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -1108,7 +1075,7 @@
     <value>True</value>
   </data>
   <data name="checkBoxD1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 8.25pt</value>
+    <value>Segoe UI Variable Text, 8.25pt</value>
   </data>
   <data name="checkBoxD1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -1139,9 +1106,6 @@
   </data>
   <data name="numericBoxD3.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
-  </data>
-  <data name="numericBoxD3.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxD3.FooterText" xml:space="preserve">
     <value>Å</value>
@@ -1182,9 +1146,6 @@
   <data name="numericBoxD2.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
-  <data name="numericBoxD2.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
-  </data>
   <data name="numericBoxD2.FooterText" xml:space="preserve">
     <value>Å</value>
   </data>
@@ -1223,9 +1184,6 @@
   </data>
   <data name="numericBoxD1.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
-  </data>
-  <data name="numericBoxD1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxD1.FooterText" xml:space="preserve">
     <value>Å</value>
@@ -1267,7 +1225,7 @@
     <value>True</value>
   </data>
   <data name="checkBoxIgnoreScatteringFactor.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+    <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="checkBoxIgnoreScatteringFactor.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -1300,7 +1258,7 @@
     <value>9</value>
   </data>
   <data name="groupBoxDspacing.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+    <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="groupBoxDspacing.Location" type="System.Drawing.Point, System.Drawing">
     <value>10, 386</value>
@@ -1336,7 +1294,7 @@
     <value>True</value>
   </data>
   <data name="checkBoxDensity.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="checkBoxDensity.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -1370,9 +1328,6 @@
   </data>
   <data name="numericBoxDensity.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
-  </data>
-  <data name="numericBoxDensity.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxDensity.FooterText" xml:space="preserve">
     <value>g/cc</value>
@@ -1412,9 +1367,6 @@
   </data>
   <data name="numericBoxDensityErr.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
-  </data>
-  <data name="numericBoxDensityErr.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxDensityErr.FooterText" xml:space="preserve">
     <value>%</value>
@@ -1456,7 +1408,7 @@
     <value>1</value>
   </data>
   <data name="groupBoxDensity.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+    <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="groupBoxDensity.Location" type="System.Drawing.Point, System.Drawing">
     <value>10, 539</value>
@@ -1525,7 +1477,7 @@
     <value>Top</value>
   </data>
   <data name="buttonSearch.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="buttonSearch.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>

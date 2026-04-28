@@ -146,7 +146,7 @@
     <value>63, 0</value>
   </data>
   <data name="label7.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
     <value>56, 18</value>
@@ -155,7 +155,7 @@
     <value>スケール</value>
   </data>
   <data name="label9.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="label9.Size" type="System.Drawing.Size, System.Drawing">
     <value>20, 18</value>
@@ -164,7 +164,7 @@
     <value>色</value>
   </data>
   <data name="label5.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
     <value>61, 18</value>
@@ -203,7 +203,7 @@
     <value>315, 26</value>
   </data>
   <data name="checkBoxDustScratches.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="checkBoxDustScratches.Size" type="System.Drawing.Size, System.Drawing">
     <value>135, 22</value>
@@ -212,7 +212,7 @@
     <value>ダスト＆スクラッチ</value>
   </data>
   <data name="numericBoxDustScratchesRadius.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="numericBoxDustScratchesRadius.HeaderText" xml:space="preserve">
     <value>半径</value>
@@ -224,7 +224,7 @@
     <value>97, 25</value>
   </data>
   <data name="numericBoxDustScratchesThreshold.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="numericBoxDustScratchesThreshold.HeaderText" xml:space="preserve">
     <value>閾値</value>
@@ -242,7 +242,7 @@
     <value>242, 26</value>
   </data>
   <data name="checkBoxGaussianBlur.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="checkBoxGaussianBlur.Size" type="System.Drawing.Size, System.Drawing">
     <value>123, 22</value>

@@ -93,7 +93,6 @@ partial class FormMovie
         // numericBoxSpeed
         // 
         numericBoxSpeed.BackColor = System.Drawing.Color.Transparent;
-        numericBoxSpeed.Font = new System.Drawing.Font("メイリオ", 9F);
         numericBoxSpeed.FooterText = "°/sec";
         numericBoxSpeed.HeaderText = "Speed";
         numericBoxSpeed.Location = new System.Drawing.Point(9, 6);
@@ -109,7 +108,7 @@ partial class FormMovie
         numericBoxSpeed.SkipEventDuringInput = false;
         numericBoxSpeed.SmartIncrement = true;
         numericBoxSpeed.TabIndex = 1;
-        numericBoxSpeed.TextFont = new System.Drawing.Font("メイリオ", 9F);
+        numericBoxSpeed.TextFont = new System.Drawing.Font("BIZ UDPGothic", 9F);
         numericBoxSpeed.TrimEndZero = true;
         numericBoxSpeed.Value = 30D;
         // 
@@ -159,7 +158,7 @@ partial class FormMovie
         // 
         buttonAntiClock.BackColor = System.Drawing.SystemColors.Control;
         buttonAntiClock.Dock = System.Windows.Forms.DockStyle.Fill;
-        buttonAntiClock.Font = new System.Drawing.Font("Segoe UI", 14F);
+        buttonAntiClock.Font = new System.Drawing.Font("Segoe UI Variable Text", 14F);
         buttonAntiClock.ForeColor = System.Drawing.Color.Gray;
         buttonAntiClock.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
         buttonAntiClock.ImeMode = System.Windows.Forms.ImeMode.NoControl;
@@ -176,7 +175,7 @@ partial class FormMovie
         // 
         buttonClock.BackColor = System.Drawing.SystemColors.Control;
         buttonClock.Dock = System.Windows.Forms.DockStyle.Fill;
-        buttonClock.Font = new System.Drawing.Font("Segoe UI", 14F);
+        buttonClock.Font = new System.Drawing.Font("Segoe UI Variable Text", 14F);
         buttonClock.ForeColor = System.Drawing.Color.Gray;
         buttonClock.ImeMode = System.Windows.Forms.ImeMode.NoControl;
         buttonClock.Location = new System.Drawing.Point(0, 0);
@@ -192,7 +191,7 @@ partial class FormMovie
         // 
         buttonTopLeft.BackColor = System.Drawing.SystemColors.Control;
         buttonTopLeft.Dock = System.Windows.Forms.DockStyle.Fill;
-        buttonTopLeft.Font = new System.Drawing.Font("Segoe UI", 14F);
+        buttonTopLeft.Font = new System.Drawing.Font("Segoe UI Variable Text", 14F);
         buttonTopLeft.ForeColor = System.Drawing.Color.Gray;
         buttonTopLeft.ImeMode = System.Windows.Forms.ImeMode.NoControl;
         buttonTopLeft.Location = new System.Drawing.Point(0, 0);
@@ -208,7 +207,7 @@ partial class FormMovie
         // 
         buttonLeft.BackColor = System.Drawing.SystemColors.Control;
         buttonLeft.Dock = System.Windows.Forms.DockStyle.Fill;
-        buttonLeft.Font = new System.Drawing.Font("Segoe UI", 14F);
+        buttonLeft.Font = new System.Drawing.Font("Segoe UI Variable Text", 14F);
         buttonLeft.ForeColor = System.Drawing.Color.Gray;
         buttonLeft.ImeMode = System.Windows.Forms.ImeMode.NoControl;
         buttonLeft.Location = new System.Drawing.Point(0, 30);
@@ -224,7 +223,7 @@ partial class FormMovie
         // 
         buttonBottomLeft.BackColor = System.Drawing.SystemColors.Control;
         buttonBottomLeft.Dock = System.Windows.Forms.DockStyle.Fill;
-        buttonBottomLeft.Font = new System.Drawing.Font("Segoe UI", 14F);
+        buttonBottomLeft.Font = new System.Drawing.Font("Segoe UI Variable Text", 14F);
         buttonBottomLeft.ForeColor = System.Drawing.Color.Gray;
         buttonBottomLeft.ImeMode = System.Windows.Forms.ImeMode.NoControl;
         buttonBottomLeft.Location = new System.Drawing.Point(0, 60);
@@ -240,7 +239,7 @@ partial class FormMovie
         // 
         buttonBottom.BackColor = System.Drawing.SystemColors.Control;
         buttonBottom.Dock = System.Windows.Forms.DockStyle.Fill;
-        buttonBottom.Font = new System.Drawing.Font("Segoe UI", 14F);
+        buttonBottom.Font = new System.Drawing.Font("Segoe UI Variable Text", 14F);
         buttonBottom.ForeColor = System.Drawing.Color.Gray;
         buttonBottom.ImeMode = System.Windows.Forms.ImeMode.NoControl;
         buttonBottom.Location = new System.Drawing.Point(39, 60);
@@ -256,7 +255,7 @@ partial class FormMovie
         // 
         buttonBottomRight.BackColor = System.Drawing.SystemColors.Control;
         buttonBottomRight.Dock = System.Windows.Forms.DockStyle.Fill;
-        buttonBottomRight.Font = new System.Drawing.Font("Segoe UI", 14F);
+        buttonBottomRight.Font = new System.Drawing.Font("Segoe UI Variable Text", 14F);
         buttonBottomRight.ForeColor = System.Drawing.Color.Gray;
         buttonBottomRight.ImeMode = System.Windows.Forms.ImeMode.NoControl;
         buttonBottomRight.Location = new System.Drawing.Point(117, 60);
@@ -272,7 +271,7 @@ partial class FormMovie
         // 
         buttonTop.BackColor = System.Drawing.SystemColors.Control;
         buttonTop.Dock = System.Windows.Forms.DockStyle.Fill;
-        buttonTop.Font = new System.Drawing.Font("Segoe UI", 14F);
+        buttonTop.Font = new System.Drawing.Font("Segoe UI Variable Text", 14F);
         buttonTop.ForeColor = System.Drawing.Color.Gray;
         buttonTop.ImeMode = System.Windows.Forms.ImeMode.NoControl;
         buttonTop.Location = new System.Drawing.Point(39, 0);
@@ -288,7 +287,7 @@ partial class FormMovie
         // 
         buttonTopRight.BackColor = System.Drawing.SystemColors.Control;
         buttonTopRight.Dock = System.Windows.Forms.DockStyle.Fill;
-        buttonTopRight.Font = new System.Drawing.Font("Segoe UI", 14F);
+        buttonTopRight.Font = new System.Drawing.Font("Segoe UI Variable Text", 14F);
         buttonTopRight.ForeColor = System.Drawing.Color.Gray;
         buttonTopRight.ImeMode = System.Windows.Forms.ImeMode.NoControl;
         buttonTopRight.Location = new System.Drawing.Point(117, 0);
@@ -305,7 +304,7 @@ partial class FormMovie
         // 
         buttonRight.BackColor = System.Drawing.SystemColors.Control;
         buttonRight.Dock = System.Windows.Forms.DockStyle.Fill;
-        buttonRight.Font = new System.Drawing.Font("Segoe UI", 14F);
+        buttonRight.Font = new System.Drawing.Font("Segoe UI Variable Text", 14F);
         buttonRight.ForeColor = System.Drawing.Color.Blue;
         buttonRight.ImeMode = System.Windows.Forms.ImeMode.NoControl;
         buttonRight.Location = new System.Drawing.Point(117, 30);
@@ -320,7 +319,6 @@ partial class FormMovie
         // numericBoxDuration
         // 
         numericBoxDuration.BackColor = System.Drawing.Color.Transparent;
-        numericBoxDuration.Font = new System.Drawing.Font("メイリオ", 9F);
         numericBoxDuration.FooterText = "sec";
         numericBoxDuration.HeaderText = "Duration";
         numericBoxDuration.Location = new System.Drawing.Point(9, 34);
@@ -336,7 +334,7 @@ partial class FormMovie
         numericBoxDuration.SkipEventDuringInput = false;
         numericBoxDuration.SmartIncrement = true;
         numericBoxDuration.TabIndex = 1;
-        numericBoxDuration.TextFont = new System.Drawing.Font("メイリオ", 9F);
+        numericBoxDuration.TextFont = new System.Drawing.Font("BIZ UDPGothic", 9F);
         numericBoxDuration.TrimEndZero = true;
         numericBoxDuration.Value = 12D;
         // 
@@ -392,7 +390,6 @@ partial class FormMovie
         numericBoxAxisU.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
         numericBoxAxisU.BackColor = System.Drawing.SystemColors.Control;
         numericBoxAxisU.Dock = System.Windows.Forms.DockStyle.Fill;
-        numericBoxAxisU.Font = new System.Drawing.Font("Segoe UI", 9F);
         numericBoxAxisU.FooterBackColor = System.Drawing.SystemColors.Control;
         numericBoxAxisU.HeaderBackColor = System.Drawing.SystemColors.Control;
         numericBoxAxisU.Location = new System.Drawing.Point(12, 3);
@@ -407,7 +404,7 @@ partial class FormMovie
         numericBoxAxisU.Size = new System.Drawing.Size(44, 26);
         numericBoxAxisU.SkipEventDuringInput = false;
         numericBoxAxisU.TabIndex = 0;
-        numericBoxAxisU.TextFont = new System.Drawing.Font("Segoe UI", 9F);
+        numericBoxAxisU.TextFont = new System.Drawing.Font("Segoe UI Variable Text", 9F);
         numericBoxAxisU.ThonsandsSeparator = true;
         numericBoxAxisU.ToolTip = "Set crystal plane";
         numericBoxAxisU.ValueChanged += numericBoxAxisU_ValueChanged;
@@ -415,7 +412,7 @@ partial class FormMovie
         // label9
         // 
         label9.AutoSize = true;
-        label9.Font = new System.Drawing.Font("Segoe UI", 9F);
+        label9.Font = new System.Drawing.Font("Segoe UI Variable Text", 9F);
         label9.ImeMode = System.Windows.Forms.ImeMode.NoControl;
         label9.Location = new System.Drawing.Point(1, 0);
         label9.Margin = new System.Windows.Forms.Padding(0);
@@ -428,7 +425,7 @@ partial class FormMovie
         // label10
         // 
         label10.AutoSize = true;
-        label10.Font = new System.Drawing.Font("Segoe UI", 9F);
+        label10.Font = new System.Drawing.Font("Segoe UI Variable Text", 9F);
         label10.ImeMode = System.Windows.Forms.ImeMode.NoControl;
         label10.Location = new System.Drawing.Point(144, 0);
         label10.Margin = new System.Windows.Forms.Padding(0);
@@ -443,7 +440,6 @@ partial class FormMovie
         numericBoxAxisV.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
         numericBoxAxisV.BackColor = System.Drawing.SystemColors.Control;
         numericBoxAxisV.Dock = System.Windows.Forms.DockStyle.Fill;
-        numericBoxAxisV.Font = new System.Drawing.Font("Segoe UI", 9F);
         numericBoxAxisV.FooterBackColor = System.Drawing.SystemColors.Control;
         numericBoxAxisV.HeaderBackColor = System.Drawing.SystemColors.Control;
         numericBoxAxisV.Location = new System.Drawing.Point(56, 3);
@@ -458,7 +454,7 @@ partial class FormMovie
         numericBoxAxisV.Size = new System.Drawing.Size(44, 26);
         numericBoxAxisV.SkipEventDuringInput = false;
         numericBoxAxisV.TabIndex = 1;
-        numericBoxAxisV.TextFont = new System.Drawing.Font("Segoe UI", 9F);
+        numericBoxAxisV.TextFont = new System.Drawing.Font("Segoe UI Variable Text", 9F);
         numericBoxAxisV.ThonsandsSeparator = true;
         numericBoxAxisV.ToolTip = "Set crystal plane";
         numericBoxAxisV.ValueChanged += numericBoxAxisU_ValueChanged;
@@ -469,7 +465,6 @@ partial class FormMovie
         numericBoxAxisW.BackColor = System.Drawing.SystemColors.Control;
         numericBoxAxisW.DecimalPlaces = 0;
         numericBoxAxisW.Dock = System.Windows.Forms.DockStyle.Fill;
-        numericBoxAxisW.Font = new System.Drawing.Font("Segoe UI", 9F);
         numericBoxAxisW.FooterBackColor = System.Drawing.SystemColors.Control;
         numericBoxAxisW.HeaderBackColor = System.Drawing.SystemColors.Control;
         numericBoxAxisW.Location = new System.Drawing.Point(100, 3);
@@ -484,7 +479,7 @@ partial class FormMovie
         numericBoxAxisW.Size = new System.Drawing.Size(44, 26);
         numericBoxAxisW.SkipEventDuringInput = false;
         numericBoxAxisW.TabIndex = 2;
-        numericBoxAxisW.TextFont = new System.Drawing.Font("Segoe UI", 9F);
+        numericBoxAxisW.TextFont = new System.Drawing.Font("Segoe UI Variable Text", 9F);
         numericBoxAxisW.ThonsandsSeparator = true;
         numericBoxAxisW.ToolTip = "Set crystal plane";
         numericBoxAxisW.ValueChanged += numericBoxAxisU_ValueChanged;
@@ -505,7 +500,7 @@ partial class FormMovie
         tableLayoutPanelPlane.Controls.Add(numericBoxPlaneL, 4, 0);
         tableLayoutPanelPlane.Controls.Add(numericBoxPlaneI, 3, 0);
         tableLayoutPanelPlane.Enabled = false;
-        tableLayoutPanelPlane.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+        tableLayoutPanelPlane.Font = new System.Drawing.Font("Segoe UI Variable Text", 9.75F);
         tableLayoutPanelPlane.Location = new System.Drawing.Point(4, 214);
         tableLayoutPanelPlane.Margin = new System.Windows.Forms.Padding(0);
         tableLayoutPanelPlane.MinimumSize = new System.Drawing.Size(0, 29);
@@ -521,7 +516,6 @@ partial class FormMovie
         numericBoxPlaneL.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
         numericBoxPlaneL.BackColor = System.Drawing.SystemColors.Control;
         numericBoxPlaneL.Dock = System.Windows.Forms.DockStyle.Fill;
-        numericBoxPlaneL.Font = new System.Drawing.Font("Segoe UI", 9F);
         numericBoxPlaneL.FooterBackColor = System.Drawing.SystemColors.Control;
         numericBoxPlaneL.HeaderBackColor = System.Drawing.SystemColors.Control;
         numericBoxPlaneL.Location = new System.Drawing.Point(114, 3);
@@ -536,7 +530,7 @@ partial class FormMovie
         numericBoxPlaneL.Size = new System.Drawing.Size(34, 26);
         numericBoxPlaneL.SkipEventDuringInput = false;
         numericBoxPlaneL.TabIndex = 2;
-        numericBoxPlaneL.TextFont = new System.Drawing.Font("Segoe UI", 9F);
+        numericBoxPlaneL.TextFont = new System.Drawing.Font("Segoe UI Variable Text", 9F);
         numericBoxPlaneL.ThonsandsSeparator = true;
         numericBoxPlaneL.ValueChanged += numericBoxAxisU_ValueChanged;
         // 
@@ -545,7 +539,6 @@ partial class FormMovie
         numericBoxPlaneH.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
         numericBoxPlaneH.BackColor = System.Drawing.SystemColors.Control;
         numericBoxPlaneH.Dock = System.Windows.Forms.DockStyle.Fill;
-        numericBoxPlaneH.Font = new System.Drawing.Font("Segoe UI", 9F);
         numericBoxPlaneH.FooterBackColor = System.Drawing.SystemColors.Control;
         numericBoxPlaneH.HeaderBackColor = System.Drawing.SystemColors.Control;
         numericBoxPlaneH.Location = new System.Drawing.Point(46, 3);
@@ -560,7 +553,7 @@ partial class FormMovie
         numericBoxPlaneH.Size = new System.Drawing.Size(34, 26);
         numericBoxPlaneH.SkipEventDuringInput = false;
         numericBoxPlaneH.TabIndex = 0;
-        numericBoxPlaneH.TextFont = new System.Drawing.Font("Segoe UI", 9F);
+        numericBoxPlaneH.TextFont = new System.Drawing.Font("Segoe UI Variable Text", 9F);
         numericBoxPlaneH.ThonsandsSeparator = true;
         numericBoxPlaneH.ToolTip = "Set crystal plane";
         numericBoxPlaneH.ValueChanged += numericBoxAxisU_ValueChanged;
@@ -570,7 +563,6 @@ partial class FormMovie
         numericBoxPlaneK.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
         numericBoxPlaneK.BackColor = System.Drawing.SystemColors.Control;
         numericBoxPlaneK.Dock = System.Windows.Forms.DockStyle.Fill;
-        numericBoxPlaneK.Font = new System.Drawing.Font("Segoe UI", 9F);
         numericBoxPlaneK.FooterBackColor = System.Drawing.SystemColors.Control;
         numericBoxPlaneK.HeaderBackColor = System.Drawing.SystemColors.Control;
         numericBoxPlaneK.Location = new System.Drawing.Point(12, 3);
@@ -585,14 +577,14 @@ partial class FormMovie
         numericBoxPlaneK.Size = new System.Drawing.Size(34, 26);
         numericBoxPlaneK.SkipEventDuringInput = false;
         numericBoxPlaneK.TabIndex = 1;
-        numericBoxPlaneK.TextFont = new System.Drawing.Font("Segoe UI", 9F);
+        numericBoxPlaneK.TextFont = new System.Drawing.Font("Segoe UI Variable Text", 9F);
         numericBoxPlaneK.ThonsandsSeparator = true;
         numericBoxPlaneK.ValueChanged += numericBoxAxisU_ValueChanged;
         // 
         // label11
         // 
         label11.AutoSize = true;
-        label11.Font = new System.Drawing.Font("Segoe UI", 9F);
+        label11.Font = new System.Drawing.Font("Segoe UI Variable Text", 9F);
         label11.ImeMode = System.Windows.Forms.ImeMode.NoControl;
         label11.Location = new System.Drawing.Point(148, 0);
         label11.Margin = new System.Windows.Forms.Padding(0);
@@ -605,7 +597,7 @@ partial class FormMovie
         // label12
         // 
         label12.AutoSize = true;
-        label12.Font = new System.Drawing.Font("Segoe UI", 9F);
+        label12.Font = new System.Drawing.Font("Segoe UI Variable Text", 9F);
         label12.ImeMode = System.Windows.Forms.ImeMode.NoControl;
         label12.Location = new System.Drawing.Point(1, 0);
         label12.Margin = new System.Windows.Forms.Padding(0);
@@ -689,7 +681,6 @@ partial class FormMovie
         numericBoxPlaneI.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
         numericBoxPlaneI.BackColor = System.Drawing.SystemColors.Control;
         numericBoxPlaneI.Dock = System.Windows.Forms.DockStyle.Fill;
-        numericBoxPlaneI.Font = new System.Drawing.Font("Segoe UI", 9F);
         numericBoxPlaneI.FooterBackColor = System.Drawing.SystemColors.Control;
         numericBoxPlaneI.HeaderBackColor = System.Drawing.SystemColors.Control;
         numericBoxPlaneI.Location = new System.Drawing.Point(80, 3);
@@ -706,7 +697,7 @@ partial class FormMovie
         numericBoxPlaneI.SkipEventDuringInput = false;
         numericBoxPlaneI.TabIndex = 2;
         numericBoxPlaneI.TextBoxBackColor = System.Drawing.SystemColors.Control;
-        numericBoxPlaneI.TextFont = new System.Drawing.Font("Segoe UI", 9F);
+        numericBoxPlaneI.TextFont = new System.Drawing.Font("Segoe UI Variable Text", 9F);
         numericBoxPlaneI.ThonsandsSeparator = true;
         // 
         // FormMovie

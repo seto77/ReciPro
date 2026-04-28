@@ -89,7 +89,7 @@ public partial class FormStrain : FormBase
         numericBoxGamma.RadianValue = Vector3DBase.AngleBetVectors(a, b);
 
         CrystalControl.symmetryControl.CellConstants = (numericBoxA.Value, numericBoxB.Value, numericBoxC.Value, numericBoxAlpha.RadianValue, numericBoxBeta.RadianValue, numericBoxGamma.RadianValue);
-        Application.DoEvents();
+        // 260428Cl Application.DoEvents() を削除 (UI スレッドでのプロパティ設定後の DoEvents は不要)
         skipCrystalChangedEvent = false;
 
         calculateStress();

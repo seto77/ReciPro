@@ -122,7 +122,7 @@
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="buttonSearchPhoto1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="buttonSearchPhoto1.Location" type="System.Drawing.Point, System.Drawing">
     <value>231, 300</value>
@@ -149,9 +149,6 @@ Axis</value>
   </data>
   <data name="&gt;&gt;buttonSearchPhoto1.ZOrder" xml:space="preserve">
     <value>0</value>
-  </data>
-  <data name="numericBoxP1Theta.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxP1Theta.Location" type="System.Drawing.Point, System.Drawing">
     <value>20, 142</value>
@@ -212,7 +209,7 @@ Axis</value>
     <value>True</value>
   </data>
   <data name="radioButtonPhoto1Mode2.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="radioButtonPhoto1Mode2.Location" type="System.Drawing.Point, System.Drawing">
     <value>8, 37</value>
@@ -242,7 +239,7 @@ Axis</value>
     <value>True</value>
   </data>
   <data name="radioButtonPhoto1Mode1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="radioButtonPhoto1Mode1.Location" type="System.Drawing.Point, System.Drawing">
     <value>8, 16</value>
@@ -269,7 +266,7 @@ Axis</value>
     <value>4</value>
   </data>
   <data name="numericUpDownPhoto1L1Err.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="numericUpDownPhoto1L1Err.Location" type="System.Drawing.Point, System.Drawing">
     <value>272, 62</value>
@@ -326,7 +323,7 @@ Axis</value>
     <value>6</value>
   </data>
   <data name="numericUpDownPhoto1L2Err.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="numericUpDownPhoto1L2Err.Location" type="System.Drawing.Point, System.Drawing">
     <value>272, 88</value>
@@ -386,7 +383,7 @@ Axis</value>
     <value>False</value>
   </data>
   <data name="numericUpDownPhoto1ThetaErr.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="numericUpDownPhoto1ThetaErr.Location" type="System.Drawing.Point, System.Drawing">
     <value>272, 142</value>
@@ -443,7 +440,7 @@ Axis</value>
     <value>10</value>
   </data>
   <data name="label4.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
     <value>308, 93</value>
@@ -470,7 +467,7 @@ Axis</value>
     <value>11</value>
   </data>
   <data name="labelPhoto1Mode1_4.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="labelPhoto1Mode1_4.Location" type="System.Drawing.Point, System.Drawing">
     <value>312, 147</value>
@@ -497,7 +494,7 @@ Axis</value>
     <value>12</value>
   </data>
   <data name="label131.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="label131.Location" type="System.Drawing.Point, System.Drawing">
     <value>308, 66</value>
@@ -524,7 +521,7 @@ Axis</value>
     <value>13</value>
   </data>
   <data name="numericUpDownPhoto1L3Err.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="numericUpDownPhoto1L3Err.Location" type="System.Drawing.Point, System.Drawing">
     <value>272, 114</value>
@@ -551,7 +548,7 @@ Axis</value>
     <value>14</value>
   </data>
   <data name="labelPhoto1Mode2_6.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="labelPhoto1Mode2_6.Location" type="System.Drawing.Point, System.Drawing">
     <value>308, 120</value>
@@ -581,7 +578,7 @@ Axis</value>
     <value>True</value>
   </data>
   <data name="label20.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="label20.Location" type="System.Drawing.Point, System.Drawing">
     <value>2, 64</value>
@@ -611,7 +608,7 @@ Axis</value>
     <value>True</value>
   </data>
   <data name="labelPhoto1Mode1_1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="labelPhoto1Mode1_1.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 146</value>
@@ -641,7 +638,7 @@ Axis</value>
     <value>True</value>
   </data>
   <data name="label12.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="label12.Location" type="System.Drawing.Point, System.Drawing">
     <value>2, 91</value>
@@ -671,7 +668,7 @@ Axis</value>
     <value>True</value>
   </data>
   <data name="label75.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="label75.Location" type="System.Drawing.Point, System.Drawing">
     <value>259, 145</value>
@@ -701,7 +698,7 @@ Axis</value>
     <value>True</value>
   </data>
   <data name="label71.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="label71.Location" type="System.Drawing.Point, System.Drawing">
     <value>259, 117</value>
@@ -731,7 +728,7 @@ Axis</value>
     <value>True</value>
   </data>
   <data name="label11.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="label11.Location" type="System.Drawing.Point, System.Drawing">
     <value>2, 118</value>
@@ -761,7 +758,7 @@ Axis</value>
     <value>True</value>
   </data>
   <data name="label70.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="label70.Location" type="System.Drawing.Point, System.Drawing">
     <value>259, 91</value>
@@ -791,7 +788,7 @@ Axis</value>
     <value>True</value>
   </data>
   <data name="label69.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="label69.Location" type="System.Drawing.Point, System.Drawing">
     <value>259, 65</value>
@@ -821,7 +818,7 @@ Axis</value>
     <value>True</value>
   </data>
   <data name="labelPhoto1Mode1_3.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="labelPhoto1Mode1_3.Location" type="System.Drawing.Point, System.Drawing">
     <value>69, 146</value>
@@ -848,7 +845,7 @@ Axis</value>
     <value>24</value>
   </data>
   <data name="groupBoxPhoto1Pattern.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="groupBoxPhoto1Pattern.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 16</value>
@@ -875,7 +872,7 @@ Axis</value>
     <value>1</value>
   </data>
   <data name="textBoxWaveLength.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="textBoxWaveLength.Location" type="System.Drawing.Point, System.Drawing">
     <value>285, 15</value>
@@ -902,7 +899,7 @@ Axis</value>
     <value>True</value>
   </data>
   <data name="label67.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="label67.Location" type="System.Drawing.Point, System.Drawing">
     <value>196, 20</value>
@@ -929,7 +926,7 @@ Axis</value>
     <value>1</value>
   </data>
   <data name="numericUpDownCamaraLength.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="numericUpDownCamaraLength.Location" type="System.Drawing.Point, System.Drawing">
     <value>105, 40</value>
@@ -959,7 +956,7 @@ Axis</value>
     <value>2</value>
   </data>
   <data name="label18.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="label18.Location" type="System.Drawing.Point, System.Drawing">
     <value>190, 44</value>
@@ -989,7 +986,7 @@ Axis</value>
     <value>True</value>
   </data>
   <data name="label15.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="label15.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 42</value>
@@ -1016,7 +1013,7 @@ Axis</value>
     <value>4</value>
   </data>
   <data name="numericUpDownAccVol.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="numericUpDownAccVol.Location" type="System.Drawing.Point, System.Drawing">
     <value>91, 16</value>
@@ -1046,7 +1043,7 @@ Axis</value>
     <value>5</value>
   </data>
   <data name="label19.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="label19.Location" type="System.Drawing.Point, System.Drawing">
     <value>152, 20</value>
@@ -1073,7 +1070,7 @@ Axis</value>
     <value>6</value>
   </data>
   <data name="label2.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 20</value>
@@ -1103,7 +1100,7 @@ Axis</value>
     <value>True</value>
   </data>
   <data name="label68.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="label68.Location" type="System.Drawing.Point, System.Drawing">
     <value>361, 21</value>
@@ -1130,7 +1127,7 @@ Axis</value>
     <value>8</value>
   </data>
   <data name="groupBoxTEMCondition.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="groupBoxTEMCondition.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
@@ -1155,9 +1152,6 @@ Axis</value>
   </data>
   <data name="&gt;&gt;groupBoxTEMCondition.ZOrder" xml:space="preserve">
     <value>5</value>
-  </data>
-  <data name="numericBoxP1Tilt2.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxP1Tilt2.Location" type="System.Drawing.Point, System.Drawing">
     <value>208, 17</value>
@@ -1191,9 +1185,6 @@ Axis</value>
   </data>
   <data name="&gt;&gt;numericBoxP1Tilt2.ZOrder" xml:space="preserve">
     <value>0</value>
-  </data>
-  <data name="numericBoxP1Tilt1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxP1Tilt1.Location" type="System.Drawing.Point, System.Drawing">
     <value>44, 17</value>
@@ -1229,7 +1220,7 @@ Axis</value>
     <value>1</value>
   </data>
   <data name="label14.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="label14.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 20</value>
@@ -1256,7 +1247,7 @@ Axis</value>
     <value>2</value>
   </data>
   <data name="label1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
     <value>170, 20</value>
@@ -1283,7 +1274,7 @@ Axis</value>
     <value>3</value>
   </data>
   <data name="numericUpDownPhoto1Tilt1Err.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="numericUpDownPhoto1Tilt1Err.Location" type="System.Drawing.Point, System.Drawing">
     <value>118, 18</value>
@@ -1310,7 +1301,7 @@ Axis</value>
     <value>4</value>
   </data>
   <data name="label48.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="label48.Location" type="System.Drawing.Point, System.Drawing">
     <value>148, 20</value>
@@ -1337,7 +1328,7 @@ Axis</value>
     <value>5</value>
   </data>
   <data name="numericUpDownPhoto1Tilt2Err.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="numericUpDownPhoto1Tilt2Err.Location" type="System.Drawing.Point, System.Drawing">
     <value>280, 18</value>
@@ -1364,7 +1355,7 @@ Axis</value>
     <value>6</value>
   </data>
   <data name="label49.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="label49.Location" type="System.Drawing.Point, System.Drawing">
     <value>312, 20</value>
@@ -1391,7 +1382,7 @@ Axis</value>
     <value>7</value>
   </data>
   <data name="label53.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="label53.Location" type="System.Drawing.Point, System.Drawing">
     <value>96, 20</value>
@@ -1418,7 +1409,7 @@ Axis</value>
     <value>8</value>
   </data>
   <data name="label54.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="label54.Location" type="System.Drawing.Point, System.Drawing">
     <value>265, 20</value>
@@ -1445,7 +1436,7 @@ Axis</value>
     <value>9</value>
   </data>
   <data name="label9.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="label9.Location" type="System.Drawing.Point, System.Drawing">
     <value>82, 20</value>
@@ -1472,7 +1463,7 @@ Axis</value>
     <value>10</value>
   </data>
   <data name="label10.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="label10.Location" type="System.Drawing.Point, System.Drawing">
     <value>247, 20</value>
@@ -1499,7 +1490,7 @@ Axis</value>
     <value>11</value>
   </data>
   <data name="groupBoxPhoto1HolderCondition.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="groupBoxPhoto1HolderCondition.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 381</value>
@@ -1526,7 +1517,7 @@ Axis</value>
     <value>0</value>
   </data>
   <data name="groupBoxPhoto1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="groupBoxPhoto1.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
@@ -1559,7 +1550,7 @@ Axis</value>
     <value>True</value>
   </data>
   <data name="label59.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="label59.Location" type="System.Drawing.Point, System.Drawing">
     <value>410, 58</value>
@@ -1586,7 +1577,7 @@ Axis</value>
     <value>0</value>
   </data>
   <data name="panel4.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="panel4.Location" type="System.Drawing.Point, System.Drawing">
     <value>169, 500</value>
@@ -1613,7 +1604,7 @@ Axis</value>
     <value>6</value>
   </data>
   <data name="textBoxAngleBetween12.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="textBoxAngleBetween12.Location" type="System.Drawing.Point, System.Drawing">
     <value>9, 399</value>
@@ -1640,7 +1631,7 @@ Axis</value>
     <value>2</value>
   </data>
   <data name="textBoxAngleBetween31.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="textBoxAngleBetween31.Location" type="System.Drawing.Point, System.Drawing">
     <value>542, 558</value>
@@ -1673,7 +1664,7 @@ Axis</value>
     <value>True</value>
   </data>
   <data name="label176.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="label176.Location" type="System.Drawing.Point, System.Drawing">
     <value>41, 403</value>
@@ -1700,7 +1691,7 @@ Axis</value>
     <value>4</value>
   </data>
   <data name="textBoxAngleBetween23.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="textBoxAngleBetween23.Location" type="System.Drawing.Point, System.Drawing">
     <value>10, 400</value>
@@ -1730,7 +1721,7 @@ Axis</value>
     <value>False</value>
   </data>
   <data name="panel2.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="panel2.Location" type="System.Drawing.Point, System.Drawing">
     <value>-13, 101</value>
@@ -1757,7 +1748,7 @@ Axis</value>
     <value>False</value>
   </data>
   <data name="panel3.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="panel3.Location" type="System.Drawing.Point, System.Drawing">
     <value>-13, 80</value>
@@ -1781,7 +1772,7 @@ Axis</value>
     <value>2</value>
   </data>
   <data name="buttonSearchPhoto2.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="buttonSearchPhoto2.Location" type="System.Drawing.Point, System.Drawing">
     <value>231, 300</value>
@@ -1807,9 +1798,6 @@ Axis</value>
   </data>
   <data name="&gt;&gt;buttonSearchPhoto2.ZOrder" xml:space="preserve">
     <value>0</value>
-  </data>
-  <data name="numericBoxP2Theta.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxP2Theta.Location" type="System.Drawing.Point, System.Drawing">
     <value>20, 142</value>
@@ -1899,7 +1887,7 @@ Axis</value>
     <value>True</value>
   </data>
   <data name="radioButtonPhoto2Mode2.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="radioButtonPhoto2Mode2.Location" type="System.Drawing.Point, System.Drawing">
     <value>8, 37</value>
@@ -1959,7 +1947,7 @@ Axis</value>
     <value>True</value>
   </data>
   <data name="radioButtonPhoto2Mode1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="radioButtonPhoto2Mode1.Location" type="System.Drawing.Point, System.Drawing">
     <value>8, 16</value>
@@ -2016,7 +2004,7 @@ Axis</value>
     <value>7</value>
   </data>
   <data name="numericUpDownPhoto2L1Err.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="numericUpDownPhoto2L1Err.Location" type="System.Drawing.Point, System.Drawing">
     <value>272, 62</value>
@@ -2043,7 +2031,7 @@ Axis</value>
     <value>8</value>
   </data>
   <data name="numericUpDownPhoto2L2Err.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="numericUpDownPhoto2L2Err.Location" type="System.Drawing.Point, System.Drawing">
     <value>272, 88</value>
@@ -2073,7 +2061,7 @@ Axis</value>
     <value>False</value>
   </data>
   <data name="numericUpDownPhoto2ThetaErr.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="numericUpDownPhoto2ThetaErr.Location" type="System.Drawing.Point, System.Drawing">
     <value>272, 143</value>
@@ -2100,7 +2088,7 @@ Axis</value>
     <value>10</value>
   </data>
   <data name="label22.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="label22.Location" type="System.Drawing.Point, System.Drawing">
     <value>308, 92</value>
@@ -2127,7 +2115,7 @@ Axis</value>
     <value>11</value>
   </data>
   <data name="label23.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="label23.Location" type="System.Drawing.Point, System.Drawing">
     <value>312, 146</value>
@@ -2154,7 +2142,7 @@ Axis</value>
     <value>12</value>
   </data>
   <data name="label24.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="label24.Location" type="System.Drawing.Point, System.Drawing">
     <value>308, 65</value>
@@ -2181,7 +2169,7 @@ Axis</value>
     <value>13</value>
   </data>
   <data name="numericUpDownPhoto2L3Err.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="numericUpDownPhoto2L3Err.Location" type="System.Drawing.Point, System.Drawing">
     <value>272, 115</value>
@@ -2208,7 +2196,7 @@ Axis</value>
     <value>14</value>
   </data>
   <data name="label26.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="label26.Location" type="System.Drawing.Point, System.Drawing">
     <value>308, 119</value>
@@ -2238,7 +2226,7 @@ Axis</value>
     <value>True</value>
   </data>
   <data name="label27.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="label27.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 65</value>
@@ -2268,7 +2256,7 @@ Axis</value>
     <value>True</value>
   </data>
   <data name="label28.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="label28.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 91</value>
@@ -2298,7 +2286,7 @@ Axis</value>
     <value>True</value>
   </data>
   <data name="label29.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="label29.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 145</value>
@@ -2328,7 +2316,7 @@ Axis</value>
     <value>True</value>
   </data>
   <data name="label30.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="label30.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 117</value>
@@ -2358,7 +2346,7 @@ Axis</value>
     <value>True</value>
   </data>
   <data name="label31.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="label31.Location" type="System.Drawing.Point, System.Drawing">
     <value>69, 145</value>
@@ -2388,7 +2376,7 @@ Axis</value>
     <value>True</value>
   </data>
   <data name="label79.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="label79.Location" type="System.Drawing.Point, System.Drawing">
     <value>259, 146</value>
@@ -2418,7 +2406,7 @@ Axis</value>
     <value>True</value>
   </data>
   <data name="label76.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="label76.Location" type="System.Drawing.Point, System.Drawing">
     <value>259, 65</value>
@@ -2448,7 +2436,7 @@ Axis</value>
     <value>True</value>
   </data>
   <data name="label77.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="label77.Location" type="System.Drawing.Point, System.Drawing">
     <value>259, 91</value>
@@ -2478,7 +2466,7 @@ Axis</value>
     <value>True</value>
   </data>
   <data name="label78.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="label78.Location" type="System.Drawing.Point, System.Drawing">
     <value>259, 118</value>
@@ -2505,7 +2493,7 @@ Axis</value>
     <value>24</value>
   </data>
   <data name="groupBoxPhoto2Pattern.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="groupBoxPhoto2Pattern.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 16</value>
@@ -2530,9 +2518,6 @@ Axis</value>
   </data>
   <data name="&gt;&gt;groupBoxPhoto2Pattern.ZOrder" xml:space="preserve">
     <value>1</value>
-  </data>
-  <data name="numericBoxP2Tilt2.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxP2Tilt2.Location" type="System.Drawing.Point, System.Drawing">
     <value>208, 17</value>
@@ -2566,9 +2551,6 @@ Axis</value>
   </data>
   <data name="&gt;&gt;numericBoxP2Tilt2.ZOrder" xml:space="preserve">
     <value>0</value>
-  </data>
-  <data name="numericBoxP2Tilt1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxP2Tilt1.Location" type="System.Drawing.Point, System.Drawing">
     <value>44, 17</value>
@@ -2604,7 +2586,7 @@ Axis</value>
     <value>1</value>
   </data>
   <data name="label6.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="label6.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 20</value>
@@ -2631,7 +2613,7 @@ Axis</value>
     <value>2</value>
   </data>
   <data name="label7.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="label7.Location" type="System.Drawing.Point, System.Drawing">
     <value>170, 20</value>
@@ -2658,7 +2640,7 @@ Axis</value>
     <value>3</value>
   </data>
   <data name="numericUpDownPhoto2Tilt1Err.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="numericUpDownPhoto2Tilt1Err.Location" type="System.Drawing.Point, System.Drawing">
     <value>118, 18</value>
@@ -2685,7 +2667,7 @@ Axis</value>
     <value>4</value>
   </data>
   <data name="label8.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="label8.Location" type="System.Drawing.Point, System.Drawing">
     <value>148, 20</value>
@@ -2712,7 +2694,7 @@ Axis</value>
     <value>5</value>
   </data>
   <data name="numericUpDownPhoto2Tilt2Err.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="numericUpDownPhoto2Tilt2Err.Location" type="System.Drawing.Point, System.Drawing">
     <value>280, 18</value>
@@ -2739,7 +2721,7 @@ Axis</value>
     <value>6</value>
   </data>
   <data name="label13.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="label13.Location" type="System.Drawing.Point, System.Drawing">
     <value>312, 20</value>
@@ -2766,7 +2748,7 @@ Axis</value>
     <value>7</value>
   </data>
   <data name="label16.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="label16.Location" type="System.Drawing.Point, System.Drawing">
     <value>96, 20</value>
@@ -2793,7 +2775,7 @@ Axis</value>
     <value>8</value>
   </data>
   <data name="label17.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="label17.Location" type="System.Drawing.Point, System.Drawing">
     <value>265, 20</value>
@@ -2820,7 +2802,7 @@ Axis</value>
     <value>9</value>
   </data>
   <data name="label3.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
     <value>82, 20</value>
@@ -2847,7 +2829,7 @@ Axis</value>
     <value>10</value>
   </data>
   <data name="label5.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
     <value>247, 20</value>
@@ -2874,7 +2856,7 @@ Axis</value>
     <value>11</value>
   </data>
   <data name="groupBoxPhoto2HolderCondition.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="groupBoxPhoto2HolderCondition.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 381</value>
@@ -2904,7 +2886,7 @@ Axis</value>
     <value>False</value>
   </data>
   <data name="groupBoxPhoto2.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="groupBoxPhoto2.Location" type="System.Drawing.Point, System.Drawing">
     <value>60, 0</value>
@@ -2962,9 +2944,6 @@ Axis</value>
   </data>
   <data name="&gt;&gt;inputBoxP3L3.ZOrder" xml:space="preserve">
     <value>0</value>
-  </data>
-  <data name="numericBoxP3Theta.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxP3Theta.Location" type="System.Drawing.Point, System.Drawing">
     <value>20, 142</value>
@@ -3030,7 +3009,7 @@ Axis</value>
     <value>2</value>
   </data>
   <data name="buttonSearchPhoto3.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="buttonSearchPhoto3.Location" type="System.Drawing.Point, System.Drawing">
     <value>231, 300</value>
@@ -3112,7 +3091,7 @@ Axis</value>
     <value>True</value>
   </data>
   <data name="radioButtonPhoto3Mode2.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="radioButtonPhoto3Mode2.Location" type="System.Drawing.Point, System.Drawing">
     <value>8, 37</value>
@@ -3142,7 +3121,7 @@ Axis</value>
     <value>True</value>
   </data>
   <data name="radioButtonPhoto3Mode1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="radioButtonPhoto3Mode1.Location" type="System.Drawing.Point, System.Drawing">
     <value>8, 16</value>
@@ -3169,7 +3148,7 @@ Axis</value>
     <value>7</value>
   </data>
   <data name="numericUpDownPhoto3L1Err.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="numericUpDownPhoto3L1Err.Location" type="System.Drawing.Point, System.Drawing">
     <value>275, 62</value>
@@ -3196,7 +3175,7 @@ Axis</value>
     <value>8</value>
   </data>
   <data name="numericUpDownPhoto3L2Err.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="numericUpDownPhoto3L2Err.Location" type="System.Drawing.Point, System.Drawing">
     <value>275, 89</value>
@@ -3226,7 +3205,7 @@ Axis</value>
     <value>False</value>
   </data>
   <data name="numericUpDownPhoto3ThetaErr.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="numericUpDownPhoto3ThetaErr.Location" type="System.Drawing.Point, System.Drawing">
     <value>275, 143</value>
@@ -3253,7 +3232,7 @@ Axis</value>
     <value>10</value>
   </data>
   <data name="label42.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="label42.Location" type="System.Drawing.Point, System.Drawing">
     <value>311, 93</value>
@@ -3280,7 +3259,7 @@ Axis</value>
     <value>11</value>
   </data>
   <data name="label43.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="label43.Location" type="System.Drawing.Point, System.Drawing">
     <value>315, 147</value>
@@ -3307,7 +3286,7 @@ Axis</value>
     <value>12</value>
   </data>
   <data name="label44.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="label44.Location" type="System.Drawing.Point, System.Drawing">
     <value>311, 66</value>
@@ -3334,7 +3313,7 @@ Axis</value>
     <value>13</value>
   </data>
   <data name="numericUpDownPhoto3L3Err.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="numericUpDownPhoto3L3Err.Location" type="System.Drawing.Point, System.Drawing">
     <value>275, 116</value>
@@ -3361,7 +3340,7 @@ Axis</value>
     <value>14</value>
   </data>
   <data name="label46.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="label46.Location" type="System.Drawing.Point, System.Drawing">
     <value>311, 120</value>
@@ -3391,7 +3370,7 @@ Axis</value>
     <value>True</value>
   </data>
   <data name="label47.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="label47.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 65</value>
@@ -3421,7 +3400,7 @@ Axis</value>
     <value>True</value>
   </data>
   <data name="label52.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="label52.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 92</value>
@@ -3451,7 +3430,7 @@ Axis</value>
     <value>True</value>
   </data>
   <data name="label55.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="label55.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 145</value>
@@ -3481,7 +3460,7 @@ Axis</value>
     <value>True</value>
   </data>
   <data name="label56.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="label56.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 119</value>
@@ -3511,7 +3490,7 @@ Axis</value>
     <value>True</value>
   </data>
   <data name="label57.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="label57.Location" type="System.Drawing.Point, System.Drawing">
     <value>69, 146</value>
@@ -3541,7 +3520,7 @@ Axis</value>
     <value>True</value>
   </data>
   <data name="label101.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="label101.Location" type="System.Drawing.Point, System.Drawing">
     <value>262, 146</value>
@@ -3571,7 +3550,7 @@ Axis</value>
     <value>True</value>
   </data>
   <data name="label100.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="label100.Location" type="System.Drawing.Point, System.Drawing">
     <value>262, 65</value>
@@ -3601,7 +3580,7 @@ Axis</value>
     <value>True</value>
   </data>
   <data name="label99.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="label99.Location" type="System.Drawing.Point, System.Drawing">
     <value>262, 92</value>
@@ -3631,7 +3610,7 @@ Axis</value>
     <value>True</value>
   </data>
   <data name="label98.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="label98.Location" type="System.Drawing.Point, System.Drawing">
     <value>262, 119</value>
@@ -3658,7 +3637,7 @@ Axis</value>
     <value>24</value>
   </data>
   <data name="groupBoxPhoto3Pattern.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="groupBoxPhoto3Pattern.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 16</value>
@@ -3683,9 +3662,6 @@ Axis</value>
   </data>
   <data name="&gt;&gt;groupBoxPhoto3Pattern.ZOrder" xml:space="preserve">
     <value>1</value>
-  </data>
-  <data name="numericBoxP3Tilt2.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxP3Tilt2.Location" type="System.Drawing.Point, System.Drawing">
     <value>208, 17</value>
@@ -3721,7 +3697,7 @@ Axis</value>
     <value>0</value>
   </data>
   <data name="label34.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="label34.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 20</value>
@@ -3746,9 +3722,6 @@ Axis</value>
   </data>
   <data name="&gt;&gt;label34.ZOrder" xml:space="preserve">
     <value>1</value>
-  </data>
-  <data name="numericBoxP3Tilt1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxP3Tilt1.Location" type="System.Drawing.Point, System.Drawing">
     <value>44, 17</value>
@@ -3784,7 +3757,7 @@ Axis</value>
     <value>2</value>
   </data>
   <data name="label35.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="label35.Location" type="System.Drawing.Point, System.Drawing">
     <value>170, 20</value>
@@ -3811,7 +3784,7 @@ Axis</value>
     <value>3</value>
   </data>
   <data name="numericUpDownPhoto3Tilt1Err.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="numericUpDownPhoto3Tilt1Err.Location" type="System.Drawing.Point, System.Drawing">
     <value>118, 18</value>
@@ -3838,7 +3811,7 @@ Axis</value>
     <value>4</value>
   </data>
   <data name="label36.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="label36.Location" type="System.Drawing.Point, System.Drawing">
     <value>148, 19</value>
@@ -3865,7 +3838,7 @@ Axis</value>
     <value>5</value>
   </data>
   <data name="numericUpDownPhoto3Tilt2Err.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="numericUpDownPhoto3Tilt2Err.Location" type="System.Drawing.Point, System.Drawing">
     <value>280, 18</value>
@@ -3892,7 +3865,7 @@ Axis</value>
     <value>6</value>
   </data>
   <data name="label37.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="label37.Location" type="System.Drawing.Point, System.Drawing">
     <value>312, 20</value>
@@ -3919,7 +3892,7 @@ Axis</value>
     <value>7</value>
   </data>
   <data name="label38.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="label38.Location" type="System.Drawing.Point, System.Drawing">
     <value>104, 20</value>
@@ -3946,7 +3919,7 @@ Axis</value>
     <value>8</value>
   </data>
   <data name="label39.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="label39.Location" type="System.Drawing.Point, System.Drawing">
     <value>265, 20</value>
@@ -3973,7 +3946,7 @@ Axis</value>
     <value>9</value>
   </data>
   <data name="label32.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="label32.Location" type="System.Drawing.Point, System.Drawing">
     <value>82, 20</value>
@@ -4000,7 +3973,7 @@ Axis</value>
     <value>10</value>
   </data>
   <data name="label33.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="label33.Location" type="System.Drawing.Point, System.Drawing">
     <value>247, 20</value>
@@ -4027,7 +4000,7 @@ Axis</value>
     <value>11</value>
   </data>
   <data name="groupBoxPhoto3HolderCondition.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="groupBoxPhoto3HolderCondition.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 381</value>
@@ -4057,7 +4030,7 @@ Axis</value>
     <value>False</value>
   </data>
   <data name="groupBoxPhoto3.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="groupBoxPhoto3.Location" type="System.Drawing.Point, System.Drawing">
     <value>60, 0</value>
@@ -4090,7 +4063,7 @@ Axis</value>
     <value>True</value>
   </data>
   <data name="checkBoxPhoto2.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="checkBoxPhoto2.Location" type="System.Drawing.Point, System.Drawing">
     <value>7, 77</value>
@@ -4120,7 +4093,7 @@ Axis</value>
     <value>True</value>
   </data>
   <data name="checkBoxPhoto3.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="checkBoxPhoto3.Location" type="System.Drawing.Point, System.Drawing">
     <value>80, 77</value>
@@ -4153,7 +4126,7 @@ Axis</value>
     <value>False</value>
   </data>
   <data name="checkBoxEquivalentPhoto1L1Photo2L1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="checkBoxEquivalentPhoto1L1Photo2L1.Location" type="System.Drawing.Point, System.Drawing">
     <value>23, 73</value>
@@ -4186,7 +4159,7 @@ Axis</value>
     <value>False</value>
   </data>
   <data name="checkBoxEquivalentPhoto2L1Photo3L1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="checkBoxEquivalentPhoto2L1Photo3L1.Location" type="System.Drawing.Point, System.Drawing">
     <value>22, 73</value>
@@ -4216,7 +4189,7 @@ Axis</value>
     <value>False</value>
   </data>
   <data name="checkBoxEquivalentPhoto2L2Photo3L2.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="checkBoxEquivalentPhoto2L2Photo3L2.Location" type="System.Drawing.Point, System.Drawing">
     <value>22, 97</value>
@@ -4243,7 +4216,7 @@ Axis</value>
     <value>False</value>
   </data>
   <data name="buttonSearchAll.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="buttonSearchAll.Location" type="System.Drawing.Point, System.Drawing">
     <value>147, 74</value>
@@ -4273,7 +4246,7 @@ Axis</value>
     <value>False</value>
   </data>
   <data name="panel5.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="panel5.Location" type="System.Drawing.Point, System.Drawing">
     <value>-19, 106</value>
@@ -4303,7 +4276,7 @@ Axis</value>
     <value>False</value>
   </data>
   <data name="checkBoxEquivalentPhoto1L2Photo2L2.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="checkBoxEquivalentPhoto1L2Photo2L2.Location" type="System.Drawing.Point, System.Drawing">
     <value>23, 100</value>
@@ -4330,7 +4303,7 @@ Axis</value>
     <value>True</value>
   </data>
   <data name="label58.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="label58.Location" type="System.Drawing.Point, System.Drawing">
     <value>40, 402</value>
@@ -4372,7 +4345,7 @@ Axis</value>
     <value>False</value>
   </data>
   <data name="panel6.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="panel6.Location" type="System.Drawing.Point, System.Drawing">
     <value>-2, 79</value>
@@ -4399,7 +4372,7 @@ Axis</value>
     <value>False</value>
   </data>
   <data name="panel8.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="panel8.Location" type="System.Drawing.Point, System.Drawing">
     <value>-26, 410</value>
@@ -4459,7 +4432,7 @@ Axis</value>
     <value>False</value>
   </data>
   <data name="panel9.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="panel9.Location" type="System.Drawing.Point, System.Drawing">
     <value>-3, 410</value>

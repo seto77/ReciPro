@@ -55,7 +55,7 @@
             this.scalablePictureBoxAdvanced.Cursor = System.Windows.Forms.Cursors.Default;
             this.scalablePictureBoxAdvanced.Dock = System.Windows.Forms.DockStyle.Fill;
             this.scalablePictureBoxAdvanced.FixZoomAndCenter = false;
-            this.scalablePictureBoxAdvanced.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.scalablePictureBoxAdvanced.Font = new System.Drawing.Font("Segoe UI Variable Text", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.scalablePictureBoxAdvanced.FrequencyGraphVisible = false;
             this.scalablePictureBoxAdvanced.ImageFilter_DustAndScratches = false;
             this.scalablePictureBoxAdvanced.ImageFilter_DustAndScratchesRadius = 1D;
@@ -92,7 +92,7 @@
             this.graphControlNWtoSE.DivisionLineColor = System.Drawing.Color.LightGray;
             this.graphControlNWtoSE.FixRangeHorizontal = false;
             this.graphControlNWtoSE.FixRangeVertical = false;
-            this.graphControlNWtoSE.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.graphControlNWtoSE.Font = new System.Drawing.Font("Segoe UI Variable Text", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.graphControlNWtoSE.GraphTitle = "";
             this.graphControlNWtoSE.AxisXTextVisible = true;
             this.graphControlNWtoSE.Interpolation = false;
@@ -118,7 +118,7 @@
             this.graphControlNWtoSE.Size = new System.Drawing.Size(250, 208);
             this.graphControlNWtoSE.Smoothing = false;
             this.graphControlNWtoSE.TabIndex = 2;
-            this.graphControlNWtoSE.UpperPanelFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.graphControlNWtoSE.UpperPanelFont = new System.Drawing.Font("Segoe UI Variable Text", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.graphControlNWtoSE.UnitX = "";
             this.graphControlNWtoSE.UnitY = "";
             this.graphControlNWtoSE.UpperPanelVisible = false;
@@ -140,7 +140,7 @@
             this.graphControlWtoE.DivisionLineColor = System.Drawing.Color.LightGray;
             this.graphControlWtoE.FixRangeHorizontal = false;
             this.graphControlWtoE.FixRangeVertical = false;
-            this.graphControlWtoE.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.graphControlWtoE.Font = new System.Drawing.Font("Segoe UI Variable Text", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.graphControlWtoE.GraphTitle = "";
             this.graphControlWtoE.AxisXTextVisible = true;
             this.graphControlWtoE.Interpolation = false;
@@ -166,7 +166,7 @@
             this.graphControlWtoE.Size = new System.Drawing.Size(250, 208);
             this.graphControlWtoE.Smoothing = false;
             this.graphControlWtoE.TabIndex = 2;
-            this.graphControlWtoE.UpperPanelFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.graphControlWtoE.UpperPanelFont = new System.Drawing.Font("Segoe UI Variable Text", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.graphControlWtoE.UnitX = "";
             this.graphControlWtoE.UnitY = "";
             this.graphControlWtoE.UpperPanelVisible = false;
@@ -188,7 +188,7 @@
             this.graphControlSWtoNE.DivisionLineColor = System.Drawing.Color.LightGray;
             this.graphControlSWtoNE.FixRangeHorizontal = false;
             this.graphControlSWtoNE.FixRangeVertical = false;
-            this.graphControlSWtoNE.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.graphControlSWtoNE.Font = new System.Drawing.Font("Segoe UI Variable Text", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.graphControlSWtoNE.GraphTitle = "";
             this.graphControlSWtoNE.AxisXTextVisible = true;
             this.graphControlSWtoNE.Interpolation = false;
@@ -214,7 +214,7 @@
             this.graphControlSWtoNE.Size = new System.Drawing.Size(250, 208);
             this.graphControlSWtoNE.Smoothing = false;
             this.graphControlSWtoNE.TabIndex = 2;
-            this.graphControlSWtoNE.UpperPanelFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.graphControlSWtoNE.UpperPanelFont = new System.Drawing.Font("Segoe UI Variable Text", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.graphControlSWtoNE.UnitX = "";
             this.graphControlSWtoNE.UnitY = "";
             this.graphControlSWtoNE.UpperPanelVisible = false;
@@ -236,7 +236,7 @@
             this.graphControlNtoS.DivisionLineColor = System.Drawing.Color.LightGray;
             this.graphControlNtoS.FixRangeHorizontal = false;
             this.graphControlNtoS.FixRangeVertical = false;
-            this.graphControlNtoS.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.graphControlNtoS.Font = new System.Drawing.Font("Segoe UI Variable Text", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.graphControlNtoS.GraphTitle = "";
             this.graphControlNtoS.AxisXTextVisible = true;
             this.graphControlNtoS.Interpolation = false;
@@ -262,7 +262,7 @@
             this.graphControlNtoS.Size = new System.Drawing.Size(250, 208);
             this.graphControlNtoS.Smoothing = false;
             this.graphControlNtoS.TabIndex = 2;
-            this.graphControlNtoS.UpperPanelFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.graphControlNtoS.UpperPanelFont = new System.Drawing.Font("Segoe UI Variable Text", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.graphControlNtoS.UnitX = "";
             this.graphControlNtoS.UnitY = "";
             this.graphControlNtoS.UpperPanelVisible = false;
@@ -278,7 +278,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label1.Font = new System.Drawing.Font("Segoe UI Variable Text", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label1.ForeColor = System.Drawing.Color.Red;
             this.label1.Location = new System.Drawing.Point(3, 0);
             this.label1.Name = "label1";
@@ -289,7 +289,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label2.Font = new System.Drawing.Font("Segoe UI Variable Text", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label2.ForeColor = System.Drawing.Color.Orange;
             this.label2.Location = new System.Drawing.Point(3, 0);
             this.label2.Name = "label2";
@@ -300,7 +300,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label3.Font = new System.Drawing.Font("Segoe UI Variable Text", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label3.ForeColor = System.Drawing.Color.OrangeRed;
             this.label3.Location = new System.Drawing.Point(3, 0);
             this.label3.Name = "label3";
@@ -311,7 +311,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label4.Font = new System.Drawing.Font("Segoe UI Variable Text", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label4.ForeColor = System.Drawing.Color.Purple;
             this.label4.Location = new System.Drawing.Point(3, 0);
             this.label4.Name = "label4";
@@ -411,7 +411,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.ClientSize = new System.Drawing.Size(919, 474);
             this.Controls.Add(this.splitContainer1);
-            this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.Font = new System.Drawing.Font("Segoe UI Variable Text", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "FormSpotDetails";
             this.Text = "FormSpotDetails";

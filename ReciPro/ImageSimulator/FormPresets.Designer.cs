@@ -81,7 +81,7 @@
             buttonDelete.AutoSize = true;
             buttonDelete.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             buttonDelete.BackColor = System.Drawing.Color.IndianRed;
-            buttonDelete.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            buttonDelete.Font = new System.Drawing.Font("Segoe UI Variable Text", 9.75F);
             buttonDelete.ForeColor = System.Drawing.Color.White;
             buttonDelete.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             buttonDelete.ImeMode = System.Windows.Forms.ImeMode.NoControl;
@@ -100,7 +100,7 @@
             buttonAdd.AutoSize = true;
             buttonAdd.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             buttonAdd.BackColor = System.Drawing.Color.SteelBlue;
-            buttonAdd.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            buttonAdd.Font = new System.Drawing.Font("Segoe UI Variable Text", 9.75F);
             buttonAdd.ForeColor = System.Drawing.SystemColors.HighlightText;
             buttonAdd.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             buttonAdd.ImeMode = System.Windows.Forms.ImeMode.NoControl;
@@ -132,7 +132,7 @@
             buttonReplace.AutoSize = true;
             buttonReplace.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             buttonReplace.BackColor = System.Drawing.Color.SteelBlue;
-            buttonReplace.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            buttonReplace.Font = new System.Drawing.Font("Segoe UI Variable Text", 9.75F);
             buttonReplace.ForeColor = System.Drawing.SystemColors.HighlightText;
             buttonReplace.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             buttonReplace.ImeMode = System.Windows.Forms.ImeMode.NoControl;
@@ -151,7 +151,7 @@
             buttonRename.AutoSize = true;
             buttonRename.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             buttonRename.BackColor = System.Drawing.Color.SteelBlue;
-            buttonRename.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            buttonRename.Font = new System.Drawing.Font("Segoe UI Variable Text", 9.75F);
             buttonRename.ForeColor = System.Drawing.SystemColors.HighlightText;
             buttonRename.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             buttonRename.ImeMode = System.Windows.Forms.ImeMode.NoControl;
@@ -249,7 +249,7 @@
             Controls.Add(checkBoxManageList);
             Controls.Add(panelManageList);
             Controls.Add(flowLayoutPanelOkCancel);
-            Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            Font = new System.Drawing.Font("Segoe UI Variable Text", 9.75F);
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "FormPresets";
