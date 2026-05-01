@@ -1,12 +1,13 @@
 # Traffic Data: ReciPro
 
-Last updated: 2026-04-30
+Last updated: 2026-05-01
 
 ## Views
 
 ### Daily (最大14日保持)
 | Date | Total Views | Unique Visitors |
 | ---- | ---- | ---- |
+| 2026-04-30 | 70 | 25 |
 | 2026-04-29 | 20 | 10 |
 | 2026-04-28 | 36 | 26 |
 | 2026-04-27 | 64 | 39 |
@@ -19,12 +20,11 @@ Last updated: 2026-04-30
 | 2026-04-20 | 76 | 39 |
 | 2026-04-19 | 23 | 10 |
 | 2026-04-18 | 26 | 6 |
-| 2026-04-17 | 89 | 39 |
 
 ### Weekly (最大14週保持)
 | Period | Total Views | Unique Visitors |
 | ---- | ---- | ---- |
-| 2026-W18 | 120 | 75 |
+| 2026-W18 | 190 | 100 |
 | 2026-W17 | 465 | 209 |
 | 2026-W16 | 695 | 319 |
 | 2026-W15 | 476 | 213 |
@@ -34,19 +34,20 @@ Last updated: 2026-04-30
 ### Monthly (最大12か月保持)
 | Period | Total Views | Unique Visitors |
 | ---- | ---- | ---- |
-| 2026-04 | 2122 | 968 |
+| 2026-04 | 2192 | 993 |
 | 2026-03 | 240 | 111 |
 
 ### Yearly (無制限)
 | Period | Total Views | Unique Visitors |
 | ---- | ---- | ---- |
-| 2026 | 2362 | 1079 |
+| 2026 | 2432 | 1104 |
 
 ## Clones
 
 ### Daily (最大14日保持)
 | Date | Total Clones | Unique Cloners |
 | ---- | ---- | ---- |
+| 2026-04-30 | 24 | 8 |
 | 2026-04-29 | 39 | 19 |
 | 2026-04-28 | 17 | 13 |
 | 2026-04-27 | 77 | 36 |
@@ -59,12 +60,11 @@ Last updated: 2026-04-30
 | 2026-04-20 | 14 | 13 |
 | 2026-04-19 | 14 | 9 |
 | 2026-04-18 | 23 | 15 |
-| 2026-04-17 | 47 | 26 |
 
 ### Weekly (最大14週保持)
 | Period | Total Clones | Unique Cloners |
 | ---- | ---- | ---- |
-| 2026-W18 | 133 | 68 |
+| 2026-W18 | 157 | 76 |
 | 2026-W17 | 373 | 184 |
 | 2026-W16 | 327 | 194 |
 | 2026-W15 | 70 | 47 |
@@ -74,31 +74,31 @@ Last updated: 2026-04-30
 ### Monthly (最大12か月保持)
 | Period | Total Clones | Unique Cloners |
 | ---- | ---- | ---- |
-| 2026-04 | 1220 | 662 |
+| 2026-04 | 1244 | 670 |
 | 2026-03 | 73 | 54 |
 
 ### Yearly (無制限)
 | Period | Total Clones | Unique Cloners |
 | ---- | ---- | ---- |
-| 2026 | 1293 | 716 |
+| 2026 | 1317 | 724 |
 
 ## Referrers
 
 ### Weekly (最大2週保持)
 | Period | Referrer | Total Count | Unique |
 | ---- | ---- | ---- | ---- |
-| 2026-W18 | Google | 664 | 325 |
-| 2026-W18 | Bing | 290 | 142 |
-| 2026-W18 | github.com | 156 | 84 |
-| 2026-W18 | yseto.net | 34 | 23 |
-| 2026-W18 | link.zhihu.com | 30 | 23 |
-| 2026-W18 | journals.iucr.org | 20 | 8 |
-| 2026-W18 | doubao.com | 20 | 4 |
-| 2026-W18 | chatgpt.com | 16 | 4 |
+| 2026-W18 | Google | 808 | 400 |
+| 2026-W18 | Bing | 356 | 173 |
+| 2026-W18 | github.com | 194 | 103 |
+| 2026-W18 | yseto.net | 41 | 28 |
+| 2026-W18 | link.zhihu.com | 37 | 29 |
+| 2026-W18 | journals.iucr.org | 25 | 10 |
+| 2026-W18 | doubao.com | 25 | 5 |
+| 2026-W18 | chatgpt.com | 21 | 6 |
+| 2026-W18 | snot.cat.pdx.edu | 10 | 2 |
 | 2026-W18 | onlinelibrary.wiley.com | 6 | 6 |
 | 2026-W18 | 88fd418e28d73fcaf10d489449ae07bf.claudemcpcontent.com | 6 | 3 |
-| 2026-W18 | snot.cat.pdx.edu | 5 | 1 |
-| 2026-W18 | Baidu | 3 | 3 |
+| 2026-W18 | Baidu | 6 | 6 |
 | 2026-W17 | Google | 152 | 69 |
 | 2026-W17 | Bing | 61 | 32 |
 | 2026-W17 | github.com | 30 | 19 |
@@ -113,6 +113,16 @@ Last updated: 2026-04-30
 ### Monthly (最大3か月保持)
 | Period | Referrer | Total Count | Unique |
 | ---- | ---- | ---- | ---- |
+| 2026-05 | Google | 144 | 75 |
+| 2026-05 | Bing | 66 | 31 |
+| 2026-05 | github.com | 38 | 19 |
+| 2026-05 | link.zhihu.com | 7 | 6 |
+| 2026-05 | yseto.net | 7 | 5 |
+| 2026-05 | chatgpt.com | 5 | 2 |
+| 2026-05 | journals.iucr.org | 5 | 2 |
+| 2026-05 | doubao.com | 5 | 1 |
+| 2026-05 | snot.cat.pdx.edu | 5 | 1 |
+| 2026-05 | Baidu | 3 | 3 |
 | 2026-04 | Google | 2165 | 1045 |
 | 2026-04 | Bing | 636 | 331 |
 | 2026-04 | github.com | 534 | 271 |
@@ -135,23 +145,23 @@ Last updated: 2026-04-30
 ### Yearly (無制限)
 | Period | Referrer | Total Count | Unique |
 | ---- | ---- | ---- | ---- |
-| 2026 | Google | 2165 | 1045 |
-| 2026 | Bing | 636 | 331 |
-| 2026 | github.com | 534 | 271 |
-| 2026 | link.zhihu.com | 169 | 138 |
-| 2026 | yseto.net | 140 | 101 |
+| 2026 | Google | 2309 | 1120 |
+| 2026 | Bing | 702 | 362 |
+| 2026 | github.com | 572 | 290 |
+| 2026 | link.zhihu.com | 176 | 144 |
+| 2026 | yseto.net | 147 | 106 |
 | 2026 | seto77.github.io | 134 | 20 |
-| 2026 | chatgpt.com | 70 | 30 |
+| 2026 | chatgpt.com | 75 | 32 |
 | 2026 | yandex.ru | 45 | 27 |
 | 2026 | search.brave.com | 40 | 10 |
-| 2026 | Baidu | 28 | 11 |
+| 2026 | Baidu | 31 | 14 |
+| 2026 | journals.iucr.org | 25 | 10 |
+| 2026 | doubao.com | 25 | 5 |
 | 2026 | statics.teams.cdn.office.net | 20 | 15 |
-| 2026 | journals.iucr.org | 20 | 8 |
-| 2026 | doubao.com | 20 | 4 |
 | 2026 | perplexity.ai | 16 | 16 |
+| 2026 | snot.cat.pdx.edu | 10 | 2 |
 | 2026 | onlinelibrary.wiley.com | 6 | 6 |
 | 2026 | 88fd418e28d73fcaf10d489449ae07bf.claudemcpcontent.com | 6 | 3 |
-| 2026 | snot.cat.pdx.edu | 5 | 1 |
 | 2026 | Yahoo | 2 | 1 |
 
 ## Popular Paths
@@ -159,17 +169,17 @@ Last updated: 2026-04-30
 ### Weekly (最大2週保持)
 | Period | Path | Title | Total Count | Unique |
 | ---- | ---- | ---- | ---- | ---- |
-| 2026-W18 | /seto77/ReciPro | Overview | 824 | 610 |
-| 2026-W18 | /seto77/ReciPro/releases/tag/v.4.924 | /releases/tag/v.4.924 | 636 | 325 |
-| 2026-W18 | /seto77/ReciPro/releases/tag/v.4.925 | /releases/tag/v.4.925 | 492 | 308 |
-| 2026-W18 | /seto77/ReciPro/releases | /releases | 260 | 166 |
-| 2026-W18 | /seto77/ReciPro/releases/tag/v.4.926 | /releases/tag/v.4.926 | 133 | 106 |
-| 2026-W18 | /seto77/ReciPro/issues | /issues | 128 | 69 |
-| 2026-W18 | /seto77/ReciPro/wiki | /wiki | 123 | 119 |
+| 2026-W18 | /seto77/ReciPro | Overview | 1024 | 753 |
+| 2026-W18 | /seto77/ReciPro/releases/tag/v.4.924 | /releases/tag/v.4.924 | 720 | 375 |
+| 2026-W18 | /seto77/ReciPro/releases/tag/v.4.925 | /releases/tag/v.4.925 | 615 | 385 |
+| 2026-W18 | /seto77/ReciPro/releases | /releases | 322 | 204 |
+| 2026-W18 | /seto77/ReciPro/releases/tag/v.4.926 | /releases/tag/v.4.926 | 211 | 164 |
+| 2026-W18 | /seto77/ReciPro/issues | /issues | 156 | 84 |
+| 2026-W18 | /seto77/ReciPro/wiki | /wiki | 155 | 149 |
 | 2026-W18 | /seto77/ReciPro/releases/tag/v.4.923 | /releases/tag/v.4.923 | 107 | 80 |
-| 2026-W18 | /seto77/ReciPro/tree/master/ReciPro | /tree/master/ReciPro | 62 | 54 |
-| 2026-W18 | /seto77/ReciPro/issues/55 | /issues/55 | 59 | 39 |
-| 2026-W18 | /seto77/ReciPro/releases/tag/v.4.904 | /releases/tag/v.4.904 | 27 | 2 |
+| 2026-W18 | /seto77/ReciPro/issues/55 | /issues/55 | 74 | 49 |
+| 2026-W18 | /seto77/ReciPro/tree/master/ReciPro | /tree/master/ReciPro | 72 | 64 |
+| 2026-W18 | /seto77/ReciPro/releases/tag/v.4.904 | /releases/tag/v.4.904 | 39 | 3 |
 | 2026-W17 | /seto77/ReciPro | Overview | 198 | 145 |
 | 2026-W17 | /seto77/ReciPro/releases/tag/v.4.923 | /releases/tag/v.4.923 | 194 | 126 |
 | 2026-W17 | /seto77/ReciPro/releases/tag/v.4.924 | /releases/tag/v.4.924 | 163 | 86 |
@@ -184,6 +194,16 @@ Last updated: 2026-04-30
 ### Monthly (最大3か月保持)
 | Period | Path | Title | Total Count | Unique |
 | ---- | ---- | ---- | ---- | ---- |
+| 2026-05 | /seto77/ReciPro | Overview | 200 | 143 |
+| 2026-05 | /seto77/ReciPro/releases/tag/v.4.925 | /releases/tag/v.4.925 | 123 | 77 |
+| 2026-05 | /seto77/ReciPro/releases/tag/v.4.924 | /releases/tag/v.4.924 | 84 | 50 |
+| 2026-05 | /seto77/ReciPro/releases/tag/v.4.926 | /releases/tag/v.4.926 | 78 | 58 |
+| 2026-05 | /seto77/ReciPro/releases | /releases | 62 | 38 |
+| 2026-05 | /seto77/ReciPro/wiki | /wiki | 32 | 30 |
+| 2026-05 | /seto77/ReciPro/issues | /issues | 28 | 15 |
+| 2026-05 | /seto77/ReciPro/issues/55 | /issues/55 | 15 | 10 |
+| 2026-05 | /seto77/ReciPro/releases/tag/v.4.904 | /releases/tag/v.4.904 | 12 | 1 |
+| 2026-05 | /seto77/ReciPro/tree/master/ReciPro | /tree/master/ReciPro | 10 | 10 |
 | 2026-04 | /seto77/ReciPro | Overview | 3207 | 2100 |
 | 2026-04 | /seto77/ReciPro/releases/tag/v.4.923 | /releases/tag/v.4.923 | 1948 | 1274 |
 | 2026-04 | /seto77/ReciPro/releases/tag/v.4.924 | /releases/tag/v.4.924 | 1153 | 587 |
@@ -204,20 +224,20 @@ Last updated: 2026-04-30
 ### Yearly (無制限)
 | Period | Path | Title | Total Count | Unique |
 | ---- | ---- | ---- | ---- | ---- |
-| 2026 | /seto77/ReciPro | Overview | 3207 | 2100 |
+| 2026 | /seto77/ReciPro | Overview | 3407 | 2243 |
 | 2026 | /seto77/ReciPro/releases/tag/v.4.923 | /releases/tag/v.4.923 | 1948 | 1274 |
-| 2026 | /seto77/ReciPro/releases/tag/v.4.924 | /releases/tag/v.4.924 | 1153 | 587 |
-| 2026 | /seto77/ReciPro/releases | /releases | 831 | 472 |
+| 2026 | /seto77/ReciPro/releases/tag/v.4.924 | /releases/tag/v.4.924 | 1237 | 637 |
+| 2026 | /seto77/ReciPro/releases | /releases | 893 | 510 |
+| 2026 | /seto77/ReciPro/releases/tag/v.4.925 | /releases/tag/v.4.925 | 615 | 385 |
 | 2026 | /seto77/ReciPro/releases/tag/v.4.921 | /releases/tag/v.4.921 | 586 | 353 |
-| 2026 | /seto77/ReciPro/releases/tag/v.4.925 | /releases/tag/v.4.925 | 492 | 308 |
-| 2026 | /seto77/ReciPro/wiki | /wiki | 468 | 400 |
-| 2026 | /seto77/ReciPro/issues | /issues | 385 | 196 |
+| 2026 | /seto77/ReciPro/wiki | /wiki | 500 | 430 |
+| 2026 | /seto77/ReciPro/issues | /issues | 413 | 211 |
 | 2026 | /seto77/ReciPro/releases/tag/v.4.919 | /releases/tag/v.4.919 | 311 | 199 |
-| 2026 | /seto77/ReciPro/tree/master/ReciPro | /tree/master/ReciPro | 161 | 112 |
+| 2026 | /seto77/ReciPro/releases/tag/v.4.926 | /releases/tag/v.4.926 | 211 | 164 |
+| 2026 | /seto77/ReciPro/tree/master/ReciPro | /tree/master/ReciPro | 171 | 122 |
 | 2026 | /seto77/ReciPro/blob/master/README.md | /blob/master/README.md | 134 | 106 |
-| 2026 | /seto77/ReciPro/releases/tag/v.4.926 | /releases/tag/v.4.926 | 133 | 106 |
-| 2026 | /seto77/ReciPro/releases/tag/v.4.904 | /releases/tag/v.4.904 | 86 | 7 |
-| 2026 | /seto77/ReciPro/issues/55 | /issues/55 | 59 | 39 |
+| 2026 | /seto77/ReciPro/releases/tag/v.4.904 | /releases/tag/v.4.904 | 98 | 8 |
+| 2026 | /seto77/ReciPro/issues/55 | /issues/55 | 74 | 49 |
 | 2026 | /seto77/ReciPro/tree/master/ReciProSetup | /tree/master/ReciProSetup | 48 | 40 |
 | 2026 | /seto77/ReciPro/tree/master | /tree/master | 40 | 28 |
 
@@ -225,7 +245,7 @@ Last updated: 2026-04-30
 
 | Release Tag | Release Date | Asset Name | Download Count |
 | ---- | ---- | ---- | ---- |
-| v.4.926 | 2026-04-25 | ReciProSetup.msi | 99 |
+| v.4.926 | 2026-04-25 | ReciProSetup.msi | 122 |
 | v.4.925 | 2026-04-20 | ReciProSetup.msi | 149 |
 | v.4.924 | 2026-04-14 | ReciProSetup.msi | 182 |
 | v.4.923 | 2026-04-05 | ReciProSetup.msi | 241 |
@@ -256,13 +276,14 @@ Last updated: 2026-04-30
 | v.4.895 | 2024-11-14 | ReciProSetup.msi | 1006 |
 | v.4.894 | 2024-11-01 | ReciProSetup.msi | 232 |
 
-**TOTAL: 8924**
+**TOTAL: 8947**
 
 ## Stats
 
 ### Daily (最大14日保持)
 | Date | Stars | Forks | Open Issues | Watchers |
 | ---- | ---- | ---- | ---- | ---- |
+| 2026-05-01 | 166 | 13 | 35 | 7 |
 | 2026-04-30 | 166 | 13 | 35 | 7 |
 | 2026-04-29 | 166 | 13 | 35 | 7 |
 | 2026-04-28 | 165 | 13 | 35 | 7 |
@@ -270,7 +291,6 @@ Last updated: 2026-04-30
 | 2026-04-21 | 164 | 13 | 35 | 7 |
 | 2026-04-19 | 164 | 13 | 34 | 7 |
 | 2026-04-18 | 164 | 13 | 34 | 7 |
-| 2026-04-17 | 164 | 13 | 34 | 7 |
 
 ### Weekly (最大14週保持)
 | Period | Stars | Forks | Open Issues | Watchers |
@@ -283,6 +303,7 @@ Last updated: 2026-04-30
 ### Monthly (最大12か月保持)
 | Period | Stars | Forks | Open Issues | Watchers |
 | ---- | ---- | ---- | ---- | ---- |
+| 2026-05 | 166 | 13 | 35 | 7 |
 | 2026-04 | 166 | 13 | 35 | 7 |
 
 ### Yearly (無制限)
@@ -290,4 +311,4 @@ Last updated: 2026-04-30
 | ---- | ---- | ---- | ---- | ---- |
 | 2026 | 166 | 13 | 35 | 7 |
 
-<!-- meta: last_collected_paths=2026-04-30 last_collected_referrers=2026-04-30 -->
+<!-- meta: last_collected_paths=2026-05-01 last_collected_referrers=2026-05-01 -->
