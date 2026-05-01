@@ -301,6 +301,106 @@ public class Matrix3D : ICloneable
 
     public double Determinant() => Determinant(this);
 
+    /// <summary>(260502Cl) 3 つの列ベクトルから直接 3×3 行列式を返す。Cramer 解法等で Matrix3D 生成を avoid したいときに使う。</summary>
+    public static double Determinant(Vector3DBase c0, Vector3DBase c1, Vector3DBase c2)
+        => c0.X * (c1.Y * c2.Z - c1.Z * c2.Y)
+         - c1.X * (c0.Y * c2.Z - c0.Z * c2.Y)
+         + c2.X * (c0.Y * c1.Z - c0.Z * c1.Y);
+
+    /// <summary>(260502Cl) 単位行列を返す (毎回新しいインスタンス。Matrix3D は mutable のため共有不可)。</summary>
+    public static Matrix3D Identity => new();
+
+    /// <summary>(260502Cl) row, col とも 0-based の要素アクセス。</summary>
+    public double this[int row, int col]
+    {
+        get => (row, col) switch
+        {
+            (0, 0) => E11, (0, 1) => E12, (0, 2) => E13,
+            (1, 0) => E21, (1, 1) => E22, (1, 2) => E23,
+            (2, 0) => E31, (2, 1) => E32, (2, 2) => E33,
+            _ => throw new IndexOutOfRangeException($"Matrix3D[{row},{col}] is out of range."),
+        };
+        set
+        {
+            switch ((row, col))
+            {
+                case (0, 0): E11 = value; break;
+                case (0, 1): E12 = value; break;
+                case (0, 2): E13 = value; break;
+                case (1, 0): E21 = value; break;
+                case (1, 1): E22 = value; break;
+                case (1, 2): E23 = value; break;
+                case (2, 0): E31 = value; break;
+                case (2, 1): E32 = value; break;
+                case (2, 2): E33 = value; break;
+                default: throw new IndexOutOfRangeException($"Matrix3D[{row},{col}] is out of range.");
+            }
+        }
+    }
+
+    /// <summary>(260502Cl) col 列を Vector3DBase で取り出す (col は 0-based)。</summary>
+    public Vector3DBase Column(int col) => col switch
+    {
+        0 => new Vector3DBase(E11, E21, E31),
+        1 => new Vector3DBase(E12, E22, E32),
+        2 => new Vector3DBase(E13, E23, E33),
+        _ => throw new IndexOutOfRangeException($"Matrix3D.Column({col}) is out of range."),
+    };
+
+    /// <summary>(260502Cl) row 行を Vector3DBase で取り出す (row は 0-based)。</summary>
+    public Vector3DBase Row(int row) => row switch
+    {
+        0 => new Vector3DBase(E11, E12, E13),
+        1 => new Vector3DBase(E21, E22, E23),
+        2 => new Vector3DBase(E31, E32, E33),
+        _ => throw new IndexOutOfRangeException($"Matrix3D.Row({row}) is out of range."),
+    };
+
+    /// <summary>行列のランク (0〜3) を返す。tolerance以下の値はゼロとみなす</summary>
+    /// <param name="m"></param>
+    /// <param name="tolerance">ゼロ判定の許容誤差。負の値の場合は行列の最大絶対値に基づき自動で設定</param>
+    /// <returns></returns>
+    public static int Rank(Matrix3D m, double tolerance = -1) //260502Cl 追加
+    {
+        if (tolerance < 0)
+        {
+            // 行列の最大絶対値に対する相対許容誤差 (倍精度の丸め誤差を考慮)
+            var max = Math.Max(Math.Max(Math.Max(Math.Abs(m.E11), Math.Abs(m.E12)), Math.Max(Math.Abs(m.E13), Math.Abs(m.E21))),
+                      Math.Max(Math.Max(Math.Abs(m.E22), Math.Abs(m.E23)), Math.Max(Math.Max(Math.Abs(m.E31), Math.Abs(m.E32)), Math.Abs(m.E33))));
+            if (max == 0)
+                return 0;
+            tolerance = max * 1e-12;
+        }
+
+        if (Math.Abs(Determinant(m)) > tolerance)
+            return 3;
+
+        // 全2x2小行列式のうち1つでも非ゼロならランク2
+        if (Math.Abs(m.E11 * m.E22 - m.E12 * m.E21) > tolerance ||
+            Math.Abs(m.E11 * m.E23 - m.E13 * m.E21) > tolerance ||
+            Math.Abs(m.E12 * m.E23 - m.E13 * m.E22) > tolerance ||
+            Math.Abs(m.E11 * m.E32 - m.E12 * m.E31) > tolerance ||
+            Math.Abs(m.E11 * m.E33 - m.E13 * m.E31) > tolerance ||
+            Math.Abs(m.E12 * m.E33 - m.E13 * m.E32) > tolerance ||
+            Math.Abs(m.E21 * m.E32 - m.E22 * m.E31) > tolerance ||
+            Math.Abs(m.E21 * m.E33 - m.E23 * m.E31) > tolerance ||
+            Math.Abs(m.E22 * m.E33 - m.E23 * m.E32) > tolerance)
+            return 2;
+
+        // 1要素でも非ゼロならランク1
+        if (Math.Abs(m.E11) > tolerance || Math.Abs(m.E12) > tolerance || Math.Abs(m.E13) > tolerance ||
+            Math.Abs(m.E21) > tolerance || Math.Abs(m.E22) > tolerance || Math.Abs(m.E23) > tolerance ||
+            Math.Abs(m.E31) > tolerance || Math.Abs(m.E32) > tolerance || Math.Abs(m.E33) > tolerance)
+            return 1;
+
+        return 0;
+    }
+
+    /// <summary>行列のランク (0〜3) を返す。tolerance以下の値はゼロとみなす</summary>
+    /// <param name="tolerance">ゼロ判定の許容誤差。負の値の場合は行列の最大絶対値に基づき自動で設定</param>
+    /// <returns></returns>
+    public int Rank(double tolerance = -1) => Rank(this, tolerance); //260502Cl 追加
+
     public Matrix3D ExchangeX_Y_Z() => ExchangeX_Y_Z(this);
 
     public static Matrix3D ExchangeX_Y_Z(Matrix3D m) => new(m.E11, -m.E21, -m.E31, m.E12, -m.E22, -m.E32, m.E13, -m.E23, -m.E33);
@@ -579,6 +679,18 @@ public class Vector3DBase : ICloneable
 
     public Vector3DBase((double X, double Y, double Z) v)    {        X = v.X; Y = v.Y; Z = v.Z;    }
 
+    /// <summary>(260502Cl) 整数タプルから生成 (Miller 指数や対称操作の Direction を Vec に取り込む用途)。</summary>
+    public Vector3DBase(in (int X, int Y, int Z) v)    {        X = v.X; Y = v.Y; Z = v.Z;    }
+
+    /// <summary>(260502Cl) 整数 3 タプル → Vec の implicit 変換。`Vec v = op.Direction;` を可能にする。</summary>
+    public static implicit operator Vector3DBase(in (int X, int Y, int Z) v) => new(v.X, v.Y, v.Z);
+
+    /// <summary>(260502Cl) double 3 タプル → Vec の implicit 変換。`Vec v = op.Position;` を可能にする。</summary>
+    public static implicit operator Vector3DBase(in (double X, double Y, double Z) v) => new(v.X, v.Y, v.Z);
+
+    /// <summary>(260502Cl) `var (x, y, z) = vec;` で X, Y, Z を取り出す。</summary>
+    public void Deconstruct(out double x, out double y, out double z) { x = X; y = Y; z = Z; }
+
     public Vector3DBase(double[] v)
     {
         if (v.Length == 3)        {            X = v[0]; Y = v[1]; Z = v[2];        }
@@ -712,6 +824,24 @@ public class Vector3DBase : ICloneable
     /// <returns></returns>
     public static Vector3DBase VectorProduct(in (double X, double Y, double Z) v1, in (double X, double Y, double Z) v2)
         => new(v1.Y * v2.Z - v1.Z * v2.Y, v1.Z * v2.X - v1.X * v2.Z, v1.X * v2.Y - v1.Y * v2.X);
+
+    /// <summary>このベクトルとvの外積を返す (this × v)</summary>
+    /// <param name="v"></param>
+    /// <returns></returns>
+    public Vector3DBase Cross(Vector3DBase v) => VectorProduct(this, v); //260502Cl 追加
+
+    /// <summary>このベクトルとvの外積を返す (this × v)</summary>
+    /// <param name="v"></param>
+    /// <returns></returns>
+    public Vector3DBase Cross(in (double X, double Y, double Z) v) //260502Cl 追加
+        => new(Y * v.Z - Z * v.Y, Z * v.X - X * v.Z, X * v.Y - Y * v.X);
+
+    /// <summary>(260502Cl) XY 平面内で 90° 反時計回り回転。Z は据え置き。`(-Y, X, Z)` を返す。</summary>
+    public Vector3DBase Perp2D() => new(-Y, X, Z);
+
+    /// <summary>(260502Cl) 2 ベクトル の 2D 外積 (XY 成分のみ → スカラー、3D Cross の Z 成分相当)。
+    /// 平行四辺形の符号付き面積や 2D 直交判定に使う。</summary>
+    public static double Cross2D(Vector3DBase a, Vector3DBase b) => a.X * b.Y - a.Y * b.X;
 
     /// <summary>2つのベクトル間の角度を返す</summary>
     /// <param name="v1"></param>
@@ -986,6 +1116,11 @@ public class Vector3D : Vector3DBase, IComparable<Vector3D>, ICloneable
     /// <returns></returns>
     public static Vector3D VectorProduct(Vector3D v1, Vector3D v2)
         => new(v1.Y * v2.Z - v1.Z * v2.Y, v1.Z * v2.X - v1.X * v2.Z, v1.X * v2.Y - v1.Y * v2.X);
+
+    /// <summary>このベクトルとvの外積を返す (this × v)</summary>
+    /// <param name="v"></param>
+    /// <returns></returns>
+    public Vector3D Cross(Vector3D v) => VectorProduct(this, v); //260502Cl 追加
 
     /// <summary>座標一ずつを加減算し、0から1の範囲内に収める</summary>
     /// <param name="v"></param>

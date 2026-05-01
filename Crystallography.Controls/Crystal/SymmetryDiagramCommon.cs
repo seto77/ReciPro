@@ -1,0 +1,240 @@
+﻿// 260501Cl: 空間群の対称要素 (左図) と一般位置 (右図) を ITC Vol.A 風に GDI+ 描画する基底クラス。
+// 派生 SymmetryDiagramElements / SymmetryDiagramPositions が共通利用するヘルパーを保持する。
+using System;
+using System.Collections.Generic;
+using System.Drawing;
+using System.Drawing.Drawing2D;
+
+namespace Crystallography.Controls;
+
+/// <summary>描画時の投影軸 (depth 方向となる結晶軸)。
+/// 投影軸の切替えはユーザー側で選べるのは <b>直方晶系のみ</b>。
+/// 単斜は unique 軸 (2 回回転 / m 面の軸)、三斜・正方・三方・六方・立方は c 軸固定。</summary>
+public enum ProjectionAxis { A, B, C }
+
+/// <summary>Diagram 描画の共通関数・プロパティを保持する基底クラス。
+/// 投影、セルジオメトリ、補助線、test 点、定数、ユーティリティを提供。</summary>
+public abstract class SymmetryDiagramCommon
+{
+    #region 定数
+    protected const float CellMargin = 60f;
+    protected const double EdgeReplicate = 0.05, FracEps = 0.01;
+    // (260502Cl) CircleRadiusFraction / CircleRadius は SymmetryDiagramPositions 内でしか使われないため当該クラスへ移動。
+
+    //----------------------------------------------------------------------
+    // 単位胞 (DrawCellAndAxes) の枠線・補助線
+    //----------------------------------------------------------------------
+    /// <summary>(260502Cl) 単位胞の四辺輪郭 (実線) の色。両図 (対称要素図 / 一般位置図) で共通。</summary>
+    public static Color CellOutlineColor = Color.SkyBlue;
+    /// <summary>(260502Cl) 単位胞の四辺輪郭の線幅 (pixel)。</summary>
+    public static float CellOutlinePenWidth = 1f;
+    /// <summary>(260502Cl) セル内部の補助線 (半セル分割線、または三方/六方の対角線) の色。</summary>
+    public static Color CellGuideLineColor = Color.LightBlue;
+    /// <summary>(260502Cl) セル内部の補助線の線幅 (pixel)。破線スタイルで描画。</summary>
+    public static float CellGuideLinePenWidth = 0.7f;
+
+    //----------------------------------------------------------------------
+    // 図中フォント (260502Cl) — 全ての描画箇所で共有して使う長寿命インスタンス。
+    //----------------------------------------------------------------------
+    /// <summary>高さラベル (¼, ½ などの分数文字)。inversion 中心、紙面内軸矢印、紙面平行 mirror 等で使用。</summary>
+    protected static readonly Font HeightLabelFont = new("Times New Roman",  13f);
+    /// <summary>セル枠の 軸ラベル (a, b, c の文字)。</summary>
+    protected static readonly Font AxisLabelFont = new("Times New Roman", 13f, FontStyle.Italic);
+
+    /// <summary>一般位置図のクラスタラベル (proper/improper の添字など)。</summary>
+    protected static readonly Font ClusterLabelFont = new("Times New Roman",  13f);
+    /// <summary>空図時のエラーメッセージ表示用。</summary>
+    protected static readonly Font ErrorMessageFont = new("Segoe UI", 9f);
+
+    /// <summary>結晶系で切り替える test 点。各結晶系で対称性確認に適した代表点。</summary>
+    protected static (double X, double Y, double Z) GetTestPoint(Symmetry sym) => sym.CrystalSystemNumber switch
+    {
+        4 => (0.10, 0.20, 0.10),       // tetragonal
+        5 or 6 => (0.22, 0.06, 0.10),  // trigonal / hexagonal
+        _ => (0.05, 0.10, 0.20),
+    };
+    /// <summary>高さラベル用の典型分数 (8 分は I4_1/acd 等で必要)。
+    /// (260502Cl) 12 分系は Unicode に precomposed 一文字版が無いため、superscript + fraction slash (U+2044) + subscript の合成で擬似的に一文字化。</summary>
+    protected static readonly (double V, string S)[] FracTable =
+        [(.5, "½"), (1.0/3, "⅓"), (2.0/3, "⅔"), (.25, "¼"), (.75, "¾"),
+         (1.0/6, "⅙"), (5.0/6, "⅚"), (1.0/8, "⅛"), (3.0/8, "⅜"), (5.0/8, "⅝"), (7.0/8, "⅞"),
+         (1.0/12, "¹⁄₁₂"), (5.0/12, "⁵⁄₁₂"), (7.0/12, "⁷⁄₁₂"), (11.0/12, "¹¹⁄₁₂")];
+    #endregion
+
+    #region 投影
+    /// <summary>結晶座標 (x,y,z) → 投影面 (Sx, Sy, depth Sz)。ITC 慣用 (C 投影で Horz=b 右, Vert=a 下, depth=c)。A/B も cyclic permutation。</summary>
+    protected readonly record struct Projection(ProjectionAxis Axis, string HorzLabel, string VertLabel)
+    {
+        public (double Sx, double Sy, double Sz) ToScreen(double x, double y, double z) => Axis switch
+        {
+            ProjectionAxis.C => (y, x, z),
+            ProjectionAxis.A => (z, y, x),
+            ProjectionAxis.B => (x, z, y),
+            _ => default,
+        };
+    }
+
+    protected static Projection GetProjection(ProjectionAxis axis) => axis switch
+    {
+        ProjectionAxis.C => new(axis, "b", "a"),
+        ProjectionAxis.A => new(axis, "c", "b"),
+        ProjectionAxis.B => new(axis, "a", "c"),
+        _ => throw new ArgumentOutOfRangeException(nameof(axis)),
+    };
+
+    /// <summary>結晶系制約で投影軸を正規化。直方=ユーザー指定、単斜=unique 軸、それ以外=c。</summary>
+    protected static ProjectionAxis ResolveProjectionAxis(Symmetry sym, ProjectionAxis preferred) => sym.CrystalSystemNumber switch
+    {
+        3 => preferred,
+        2 => sym.MainAxis is { Length: > 0 } s ? s[0] switch { 'a' => ProjectionAxis.A, 'c' => ProjectionAxis.C, _ => ProjectionAxis.B }
+                                              : ProjectionAxis.B,
+        _ => ProjectionAxis.C,
+    };
+
+    /// <summary>結晶座標 (u,v,w) を投影面 (Sx, Sy) に写像 (C: Sx=v, Sy=u 等)。</summary>
+    protected static (double Sx, double Sy) ProjectVector(double u, double v, double w, ProjectionAxis axis) => axis switch
+    {
+        ProjectionAxis.C => (v, u), ProjectionAxis.A => (w, v), ProjectionAxis.B => (u, w), _ => (0, 0),
+    };
+    #endregion
+
+    #region セルのジオメトリ + 輪郭描画
+    /// <summary>セル (平行四辺形) の screen 座標。</summary>
+    protected readonly record struct CellLayout(PointF TopLeft, PointF Horz, PointF Vert)
+    {
+        public PointF ToScreen(double sx, double sy) => new(
+            TopLeft.X + (float)sx * Horz.X + (float)sy * Vert.X,
+            TopLeft.Y + (float)sx * Horz.Y + (float)sy * Vert.Y);
+    }
+
+    /// <summary>Horz–Vert 軸間角度 (度): 三斜/単斜=105°(β)、三方/六方=120°、それ以外=90°。</summary>
+    protected static double GetCellAngleDeg(Symmetry sym) => sym.CrystalSystemNumber switch
+    {
+        1 or 2 => 105.0, 5 or 6 => 120.0, _ => 90.0,
+    };
+
+    /// <summary>(Horz, Vert) の格子定数比。代表値: ortho 1:1.1:1.2、tet c=1.3、trig/hex c=1.4。</summary>
+    protected static (double HorzLen, double VertLen) GetCellLengths(Symmetry sym, ProjectionAxis projAxis)
+    {
+        double a = 1.0, b = 1.0, c = 1.0;
+        switch (sym.CrystalSystemNumber)
+        {
+            case 3: b = 1.1; c = 1.2; break;
+            case 4: c = 1.3; break;
+            case 5: case 6: c = 1.4; break;
+        }
+        return projAxis switch
+        {
+            ProjectionAxis.C => (b, a), ProjectionAxis.A => (c, b), ProjectionAxis.B => (a, c), _ => (1.0, 1.0),
+        };
+    }
+
+    protected static CellLayout ComputeCellLayout(Size canvas, Symmetry sym, ProjectionAxis projAxis)
+    {
+        double rad = GetCellAngleDeg(sym) * Math.PI / 180.0;
+        double cosA = Math.Cos(rad), sinA = Math.Sin(rad);
+        var (hLen, vLen) = GetCellLengths(sym, projAxis);
+        float availW = Math.Max(8f, canvas.Width - 2 * CellMargin);
+        float availH = Math.Max(8f, canvas.Height - 2 * CellMargin);
+        double scale = Math.Min(availW / (hLen + Math.Abs(cosA) * vLen), availH / (sinA * vLen));
+        float horzLen = (float)(hLen * scale), vertLen = (float)(vLen * scale);
+        float bboxW = (float)((hLen + Math.Abs(cosA) * vLen) * scale);
+        float bboxH = (float)(sinA * vLen * scale);
+        float ox = (canvas.Width - bboxW) / 2f + (cosA < 0 ? -(float)cosA * vertLen : 0);
+        float oy = (canvas.Height - bboxH) / 2f;
+        return new(new PointF(ox, oy), new PointF(horzLen, 0f), new PointF((float)cosA * vertLen, (float)sinA * vertLen));
+    }
+
+    /// <summary>セルの輪郭、補助線 (三方/六方は対角、それ以外は半セル分割線)、軸ラベル ("o", Horz, Vert) を描画。</summary>
+    protected static void DrawCellAndAxes(Graphics g, CellLayout c, Projection proj, Symmetry sym)
+    {
+        using (var d = new Pen(CellGuideLineColor, CellGuideLinePenWidth) { DashStyle = DashStyle.Dash }) // (260502Cl)
+        {
+            if (sym.CrystalSystemNumber is 5 or 6) g.DrawLine(d, c.TopLeft, c.ToScreen(1, 1));
+            else { g.DrawLine(d, c.ToScreen(0.5, 0), c.ToScreen(0.5, 1)); g.DrawLine(d, c.ToScreen(0, 0.5), c.ToScreen(1, 0.5)); }
+        }
+        var tr = c.ToScreen(1, 0); var bl = c.ToScreen(0, 1); var br = c.ToScreen(1, 1);
+        using (var pen = new Pen(CellOutlineColor, CellOutlinePenWidth)) g.DrawPolygon(pen, [c.TopLeft, tr, br, bl]); // (260502Cl)
+
+        // (260502Cl) フォントは Common 冒頭の AxisLabelFont / OriginLabelFont を共有使用。
+        using var brush = new SolidBrush(Color.Black);
+        const float gap = 2f;
+        var oSz = g.MeasureString("o", AxisLabelFont);
+        var hSz = g.MeasureString(proj.HorzLabel, AxisLabelFont);
+        var vSz = g.MeasureString(proj.VertLabel, AxisLabelFont);
+        g.DrawString("o", AxisLabelFont, brush, c.TopLeft.X - oSz.Width - gap, c.TopLeft.Y - oSz.Height - gap);
+        g.DrawString(proj.HorzLabel, AxisLabelFont, brush, tr.X + gap, tr.Y - hSz.Height - gap);
+        g.DrawString(proj.VertLabel, AxisLabelFont, brush, bl.X - vSz.Width - gap, bl.Y + gap);
+    }
+    #endregion
+
+    #region 共通ユーティリティ
+    protected static double Mod1(double x) => x - Math.Floor(x);
+
+    /// <summary>0 < frac < 1 の典型分数ラベル。0 近傍は null。</summary>
+    protected static string HeightLabel(double sz)
+    {
+        double m = Mod1(sz);
+        return m < FracEps || m > 1 - FracEps ? null : TZToFraction(m);
+    }
+
+    protected static string TZToFraction(double t)
+    {
+        if (t < FracEps || t > 1 - FracEps) return "";
+        foreach (var (v, s) in FracTable) if (Math.Abs(t - v) < FracEps) return s;
+        return $"{t:0.00}";
+    }
+
+    /// <summary>(sx,sy) を通り (dSx,dSy) 方向の直線をセル [0,1]² でクリップ。</summary>
+    protected static (PointF? Start, PointF? End) SpanLineThroughCell(CellLayout c, double sx, double sy, double dSx, double dSy)
+    {
+        double tMin = double.NegativeInfinity, tMax = double.PositiveInfinity;
+        UpdateInterval(sx, dSx, ref tMin, ref tMax);
+        UpdateInterval(sy, dSy, ref tMin, ref tMax);
+        if (tMin > tMax) return (null, null);
+        return (c.ToScreen(sx + tMin * dSx, sy + tMin * dSy), c.ToScreen(sx + tMax * dSx, sy + tMax * dSy));
+
+        static void UpdateInterval(double s, double d, ref double tMin, ref double tMax)
+        {
+            if (Math.Abs(d) < 1e-9) { if (s < 0 || s > 1) tMin = 1; return; }
+            double t1 = -s / d, t2 = (1 - s) / d;
+            if (t1 > t2) (t1, t2) = (t2, t1);
+            if (t1 > tMin) tMin = t1;
+            if (t2 < tMax) tMax = t2;
+        }
+    }
+
+    protected static Bitmap NewBitmap(Size size, out Graphics g)
+    {
+        var bmp = new Bitmap(Math.Max(size.Width, 16), Math.Max(size.Height, 16));
+        g = Graphics.FromImage(bmp);
+        g.SmoothingMode = SmoothingMode.AntiAlias;
+        g.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
+        g.Clear(Color.White);
+        return bmp;
+    }
+
+    /// <summary>tri/mono/ortho/tet/trig/hex (1-6) のみ対応 (cubic は未対応、trigonal Rho セッティングも後回し)。</summary>
+    protected static bool TryGetSym(int seriesNumber, out Symmetry sym, out string msg)
+    {
+        sym = default; msg = null;
+        if (seriesNumber <= 0 || seriesNumber >= SymmetryStatic.TotalSpaceGroupNumber) return false;
+        sym = SymmetryStatic.Symmetries[seriesNumber];
+        if (sym.CrystalSystemNumber is not (1 or 2 or 3 or 4 or 5 or 6) ||
+            (sym.SpaceGroupHMStr != null && sym.SpaceGroupHMStr.EndsWith("Rho")))
+        {
+            msg = $"({sym.CrystalSystemStr} not yet supported)";
+            return false;
+        }
+        return true;
+    }
+
+    protected static void DrawCenteredText(Graphics g, Size size, string text, Color color)
+    {
+        // (260502Cl) ErrorMessageFont を共有使用。
+        using var brush = new SolidBrush(color);
+        var sz = g.MeasureString(text, ErrorMessageFont);
+        g.DrawString(text, ErrorMessageFont, brush, (size.Width - sz.Width) / 2, (size.Height - sz.Height) / 2);
+    }
+    #endregion
+}

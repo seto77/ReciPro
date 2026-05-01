@@ -102,6 +102,9 @@ Crystal/
  StereonetDrawing.cs
  SymmetryControl.cs
  SymmetryControl.Designer.cs
+ SymmetryDiagramCommon.cs
+ SymmetryDiagramElements.cs
+ SymmetryDiagramPositions.cs
 CrystalDatabase/
  CrystalDatabaseControl.cs
  CrystalDatabaseControl.Designer.cs
@@ -113,6 +116,7 @@ DataSet.cs
 DataSet.Designer.cs
 DistributionGraphControl.cs
 DistributionGraphControl.Designer.cs
+FontHelper.cs
 FormBase.cs
 FormBase.Designer.cs
 FormCaptureGUI.cs

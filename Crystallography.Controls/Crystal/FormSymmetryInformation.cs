@@ -36,6 +36,9 @@ public partial class FormSymmetryInformation : FormBase
     private void FormCrystallographicInformation_Load(object sender, EventArgs e)
     {
         CrystalControl.CrystalChanged += (_, _) => ChangeCrystal(); // (260426Ch) 1 行 handler をインライン化
+        // 260429Cl 追加: GraphicsBox サイズ変更時に図を再描画
+        graphicsBoxSymmetryElements.SizeChanged += (_, _) => UpdateDiagrams();
+        graphicsBoxGeneralPositions.SizeChanged += (_, _) => UpdateDiagrams();
         ChangeCrystal();
     }
 
@@ -159,9 +162,9 @@ public partial class FormSymmetryInformation : FormBase
         numericBox_ValueChanged(this, EventArgs.Empty); // (260426Ch) 不要な object/EventArgs 生成を避ける
         SetWyckoffPosition();
 
-        
+
         var symmetry = Crystal.Symmetry;
-       labelLaTexSG_Num.Text = $"{symmetry.SpaceGroupNumber}: {symmetry.SpaceGroupSubNumber}";
+        labelLaTexNumber.Text = $"{symmetry.SpaceGroupNumber}: {symmetry.SpaceGroupSubNumber}";
 
         // 260427Cl 追加: LabelLaTeX 各種への流し込み (richTextBox 群と並走表示)。
         // 空間群・点群 HM 系 (HM, HM_full, PG_HM, LG) は対称要素軸ごとに thin space で区切る。
@@ -172,7 +175,7 @@ public partial class FormSymmetryInformation : FormBase
         labelLaTexSG_Hall.Text = ToLatex(symmetry.SpaceGroupHallStr, spaced: true);//やっぱりスペースはあった方がいい
         labelLaTexPG_HM.Text = ToLatex(symmetry.PointGroupHMStr, spaced: true);
         labelLaTexPG_SF.Text = ToLatex(symmetry.PointGroupSFStr, sfStyle: true);
-        labelLaTexLG.Text = ToLatex(symmetry.LaueGroupStr, spaced: true);
+        //labelLaTexLG.Text = ToLatex(symmetry.LaueGroupStr, spaced: true);
         labelLaTexCS.Text = ToLatex(symmetry.CrystalSystemStr, plain: true);
 
         // 260427Cl 追加: ExtinctionRule は 1 行 1 LabelLaTeX で FlowLayoutPanel に積む (AutoScroll でスクロール)。
@@ -190,6 +193,39 @@ public partial class FormSymmetryInformation : FormBase
             foreach (var rule in rules)
                 flowLayoutPanelExtinctionRule.Controls.Add(MakeExtinctionRuleLabel(ToLatex(rule, noBar: true)));
         flowLayoutPanelExtinctionRule.ResumeLayout(true);
+
+        // 260429Cl 追加: 対称要素・一般位置の図を再描画
+        UpdateDiagrams();
+    }
+
+    // 260429Cl 追加: 前回 render 時の状態を保持して、SizeChanged 多発・初期 Load 時の重複 render を抑制
+    private int _renderedSeriesNumber = -1;
+    private Size _renderedSizeElem, _renderedSizeGen;
+
+    /// <summary>260429Cl 追加: graphicsBoxSymmetryElements / graphicsBoxGeneralPositions を再描画する。
+    /// ChangeCrystal および両 GraphicsBox の Resize から呼ばれる。Crystal 変化があれば両図、
+    /// サイズだけが変わった場合はその箱だけを再描画して無駄な render を避ける。</summary>
+    private void UpdateDiagrams()
+    {
+        int sn = Crystal.SymmetrySeriesNumber;
+        bool seriesChanged = sn != _renderedSeriesNumber;
+        _renderedSeriesNumber = sn;
+
+        var elemSize = graphicsBoxSymmetryElements.ClientSize;
+        if (seriesChanged || elemSize != _renderedSizeElem)
+        {
+            graphicsBoxSymmetryElements.Image?.Dispose();
+            graphicsBoxSymmetryElements.Image = SymmetryDiagramElements.RenderSymmetryElements(sn, elemSize);
+            _renderedSizeElem = elemSize;
+        }
+
+        var genSize = graphicsBoxGeneralPositions.ClientSize;
+        if (seriesChanged || genSize != _renderedSizeGen)
+        {
+            graphicsBoxGeneralPositions.Image?.Dispose();
+            graphicsBoxGeneralPositions.Image = SymmetryDiagramPositions.RenderGeneralPositions(sn, genSize);
+            _renderedSizeGen = genSize;
+        }
     }
     #endregion
 
@@ -268,5 +304,9 @@ public partial class FormSymmetryInformation : FormBase
         }
     }
     #endregion
-   
+
+    private void groupBoxGeometricsCalculation_Enter(object sender, EventArgs e)
+    {
+
+    }
 }

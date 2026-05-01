@@ -134,6 +134,21 @@ public readonly struct SymmetryOperation
 
         return Order > 0 ? p : (-p.X, -p.Y, -p.Z);
     }
+
+    /// <summary>(260502Cl) 線形部 R を Vector3DBase に作用させる: R · v を返す。</summary>
+    public Vector3DBase ApplyMatrix(Vector3DBase v)
+    {
+        var (x, y, z) = ApplyMatrix(v.X, v.Y, v.Z);
+        return new Vector3DBase(x, y, z);
+    }
+
+    /// <summary>(260502Cl) Seitz 操作 (R, t) を作用させる: R·v + SeitzTranslation を返す。</summary>
+    public Vector3DBase ApplyAffine(Vector3DBase v)
+    {
+        var (x, y, z) = ApplyMatrix(v.X, v.Y, v.Z);
+        var t = SeitzTranslation;
+        return new Vector3DBase(x + t.U, y + t.V, z + t.W);
+    }
     #endregion
 
     #region ConvertPlaneIndex
