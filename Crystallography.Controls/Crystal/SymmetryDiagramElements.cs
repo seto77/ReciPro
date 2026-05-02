@@ -1,13 +1,12 @@
 ﻿// 260501Cl: 対称要素 (左図) を ITC Vol.A 風に GDI+ 描画。
 // 反転中心 / 紙面垂直 2(2_1) 軸 / 紙面内 2(2_1) 軸 / 紙面垂直 mirror/glide / 紙面平行 mirror をサポート。
-// 260502Cl: ロジック温存のままデッドコード除去・引数統合・ヘルパー集約でスリム化。
+// 260502Cl: 対称要素列挙は Crystallography.SymmetryElementsTable に集約。本ファイルは描画専任。
 using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Linq;
-using Vec = Crystallography.Vector3DBase;
-using Mat = Crystallography.Matrix3D;
+using static Crystallography.SymmetryElementsTable;
 
 namespace Crystallography.Controls;
 
@@ -17,7 +16,7 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
     // 線幅
     private const float DefaultPenWidth       = 1.2f;  // セル枠線・反転中心 ○
     private const float MirrorPenWidth        = 1.8f;  // 紙面垂直な mirror/glide の線幅
-    private const float OutlinePenWidth       = 1.2f;  // 多角形輪郭・screw fin
+    private const float OutlinePenWidth       = 1.2f;  // 多角形輪郭の線幅・screw fin
     private const float ScrewFinPenWidth      = 1.2f;  // 2_1 lens 上下の弧
     private const float InPlaneAxisPenWidth   = 1.4f;
     private const float CornerBracketPenWidth = 1.6f;
@@ -36,6 +35,13 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
     private const float MinusThreeCenterDotR    = 2f;
     private const float MinusFourInnerLensScale = 0.8f;
 
+    // 立方晶 [111] 系 体対角 3 回軸 (foot 黒丸 / shaft1 / triangle / 白丸 / shaft2)。
+    private const float DiagThreefoldShaft1Len = 24f;    // foot 黒丸 → 重心 (= 三角中心) までの距離
+    private const float DiagThreefoldShaft2Len = 12f;    // 重心 → 反対側 tail までの距離
+    private const float DiagThreefoldTriLeg    = 16.5f;  // 三角の脚長
+    private const float DiagThreefoldHaloWidth = 3.6f;   // shaft の白縁取り太さ (= 直径)
+    private const float DiagThreefoldFootRatio = 1.25f;  // foot 黒丸の半径 / 白丸の半径
+
     // 反転中心
     private const float InversionR = 2.5f;
 
@@ -43,35 +49,38 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
     private const float InPlaneArrowExt    = 32f;
     private const float ArrowHeadLen       = 7f;
     private const float ArrowHeadHalfWidth = 3f;
-    private const float DGlideDotR         = 1.7f; // (260502Ch) 紙面垂直 d-glide の dot 半径。
-    private const float DGlidePatternPitch = 64f;  // (260502Ch) dot-dash-dot-dash-dot-arrow 反復間隔。
-    private const float EGlideDotDashUnit  = 2.6f;  // (260502Ch) DashPattern で dot-dot-dash の間隔を作る基準。
+    private const float DGlideDotR         = 1.7f;
+    private const float DGlidePatternPitch = 64f;
+    private const float EGlideDotDashUnit  = 2.6f;
 
     // 紙面平行 mirror corner bracket
     private const float CornerBracketArmLen = 22f;
-    private const float CornerBracketGap    = 45f; // (260502Cl) bracket を単位胞頂点からより離す (旧 22f)
-    private const float CornerBracketStep   = 8f; // (260502Ch) 2 つ目以降の bracket をセル基底軸方向へずらす距離。
-    private const float GlideArrowLineShorten = 5f; // (260502Ch) 映進矢印の線を矢頭より手前で止め、先端をつぶさない。
+    private const float CornerBracketGap    = 45f;
+    private const float CornerBracketStep   = 8f;
+    private const float GlideArrowLineShorten = 5f;
     #endregion
 
     #region context
-    /// <summary>(260502Cl) DrawSymmetryElement の引数群を集約。Pen/Brush/HashSet を 1 回作って全 op で共有する。</summary>
+    /// <summary>1 描画中だけ共有する Pen / Brush / dedup state。</summary>
     private sealed class ElementsContext
     {
         public Graphics G;
         public CellLayout C;
         public Projection Proj;
-        public SymmetryOperation[] Ops;
-        public List<(double U, double V, double W)> Centerings; // (260502Cl) R-/F-/I-centering 等の格子並進ベクトル。EnumerateMirrorPlanes が glide 縮約に用いる。
         public Pen Pen, MirrorPen, InPlanePen, DepthPen, DiagPen, EPen;
         public Brush Fill, White;
-        public HashSet<(double Height, bool Glide, double GlideSx, double GlideSy)> ParallelMirrors;
         public List<PerpendicularMirrorDraft> PerpendicularMirrors;
-        public HashSet<(int, int)> Covered2, Covered3;
-        public HashSet<(int N, int Sx10000, int Sy10000)> ProperRotations; // (260502Cl) -N 抑制用 (proper N が同位置にあれば -N を描かない)
         public HashSet<(long Nx, long Ny, long D, int Style)> DrawnMirrorPlanes;
-        public Dictionary<(long Px, long Py, long Ux, long Uy, bool Screw), InPlaneAxisArrowDraft> InPlaneAxisDrafts;
     }
+
+    private readonly record struct PerpendicularMirrorDraft(double Sx, double Sy,
+                                                            (int U, int V, int W) Direction,
+                                                            (double U, double V, double W) Glide);
+
+    private readonly record struct ParallelMirrorSymbol(double Height,
+                                                        double GlideSx, double GlideSy,
+                                                        double GlideSx2, double GlideSy2,
+                                                        bool NGlide, bool DGlide, int DiamondScore);
     #endregion
 
     #region 公開 API
@@ -80,7 +89,7 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
         var bmp = NewBitmap(clientSize, out var g);
         try
         {
-            if (!TryGetSym(seriesNumber, out var sym, out var msg))
+            if (!TryGetSym(seriesNumber, out var sym, out seriesNumber, out var msg))
             {
                 if (msg != null) DrawCenteredText(g, bmp.Size, msg, Color.Gray);
                 return bmp;
@@ -90,15 +99,15 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
             var layout = ComputeCellLayout(bmp.Size, sym, actualAxis);
             DrawCellAndAxes(g, layout, proj, sym);
 
-            var ops = ExpandWithCentering(SymmetryStatic.WyckoffPositions[seriesNumber][0].PositionOperations, seriesNumber);
-            if (ops == null) return bmp;
+            var table = SymmetryElementsTable.Get(seriesNumber);
+            if (table == null) return bmp;
 
             using var pen        = new Pen(Color.Black, DefaultPenWidth);
             using var mirrorPen  = new Pen(Color.Black, MirrorPenWidth);
             using var inPlanePen = new Pen(Color.Black, MirrorPenWidth) { DashStyle = DashStyle.Custom, DashPattern = [5f, 3f] };
             using var depthPen   = new Pen(Color.Black, MirrorPenWidth) { DashStyle = DashStyle.Custom, DashPattern = [1f, 2.5f] };
             using var diagPen    = new Pen(Color.Black, MirrorPenWidth) { DashStyle = DashStyle.Custom, DashPattern = [5f, 2.5f, 1f, 2.5f] };
-            using var ePen       = new Pen(Color.Black, MirrorPenWidth) // (260502Ch) e-glide: dot-dot-dash は DashPattern で表現。
+            using var ePen       = new Pen(Color.Black, MirrorPenWidth)
             {
                 DashStyle = DashStyle.Custom,
                 DashCap = DashCap.Round,
@@ -107,541 +116,99 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
             using var fill  = new SolidBrush(Color.Black);
             using var white = new SolidBrush(Color.White);
 
-            // (260502Cl) R-/F-/I-centering 等の格子並進ベクトル。Order=1 かつ非ゼロ Position の op が centering 並進を持つ。
-            var centerings = ops
-                .Where(o => o.Order == 1 && Math.Abs(o.Position.U) + Math.Abs(o.Position.V) + Math.Abs(o.Position.W) > 1e-6)
-                .Select(o => (o.Position.U, o.Position.V, o.Position.W))
-                .Distinct()
-                .ToList();
-
             var ctx = new ElementsContext
             {
-                G = g, C = layout, Proj = proj, Ops = ops,
-                Centerings = centerings,
-                Pen = pen, MirrorPen = mirrorPen, InPlanePen = inPlanePen, DepthPen = depthPen, DiagPen = diagPen, EPen = ePen,
+                G = g, C = layout, Proj = proj,
+                Pen = pen, MirrorPen = mirrorPen, InPlanePen = inPlanePen,
+                DepthPen = depthPen, DiagPen = diagPen, EPen = ePen,
                 Fill = fill, White = white,
-                ParallelMirrors = [],
-                PerpendicularMirrors = [], // (260502Ch) e-glide 判定のため、紙面垂直 mirror/glide も一度集約する。
-                Covered2 = CollectHigherRotationPositions(ops, proj, actualAxis, 3),
-                Covered3 = CollectHigherRotationPositions(ops, proj, actualAxis, 6),
-                ProperRotations = CollectProperRotationPositions(ops, proj, actualAxis), // (260502Cl)
+                PerpendicularMirrors = [],
                 DrawnMirrorPlanes = [],
-                InPlaneAxisDrafts = [],
             };
 
-            // pass1: 線/面/紙面内軸 → 紙面平行 mirror 集約 → 紙面内 2 軸描画 → pass2: 紙面垂直点記号 → 反転中心 (260502Cl: 反転中心は最後の pass で halo 付き)
-            foreach (var op in ops) DrawSymmetryElement(ctx, op, skipPerpPointMarks: true);
-            DrawCollectedPerpendicularMirrorPlanes(ctx); // (260502Ch) 紙面垂直 e-glide を紙面平行 e-glide と同じ double-glide ロジックで確定してから描画。
-            DrawParallelMirrorStack(g, layout, ctx.ParallelMirrors, fill);
-            DrawCollectedInPlaneAxisArrows(g, fill, ctx.InPlaneAxisDrafts);
-            foreach (var op in ops) DrawSymmetryElement(ctx, op, drawOnlyPerpPointMarks: true);
-            DrawInversions(g, CollectInversions(seriesNumber, proj, layout), pen, white, fill);
+            // 紙面平行 mirror 集約 / 紙面垂直 mirror draft 集約 / 紙面内 2 軸 draft 集約
+            var parallelMirrors = new HashSet<(double Height, bool Glide, double GlideSx, double GlideSy)>();
+            var inPlaneAxisDrafts = new Dictionary<(long, long, long, long, bool), InPlaneAxisArrowDraft>();
+            foreach (var mp in table.MirrorPlanes)
+            {
+                bool perp = IsAxisPerpendicularToProjection(mp.Normal, actualAxis);
+                bool inPlane = IsAxisInPlane(mp.Normal, actualAxis);
+                if (perp)
+                {
+                    var (_, _, sz) = proj.ToScreen(mp.X, mp.Y, mp.Z);
+                    var (gSx, gSy) = ProjectVector(mp.Glide.U, mp.Glide.V, mp.Glide.W, actualAxis);
+                    bool hasGlide = Math.Abs(mp.Glide.U) + Math.Abs(mp.Glide.V) + Math.Abs(mp.Glide.W) > 1e-6;
+                    parallelMirrors.Add((Mod1(sz), hasGlide, gSx, gSy));
+                }
+                else if (inPlane)
+                {
+                    var (sx, sy, _) = proj.ToScreen(mp.X, mp.Y, mp.Z);
+                    ctx.PerpendicularMirrors.Add(new(sx, sy, mp.Normal, mp.Glide));
+                }
+            }
+            if (UseF23StandardElementSet(table))
+                CollectF23StandardInPlaneTwofoldAxisArrows(layout, actualAxis, inPlaneAxisDrafts); // (260502Ch)
+            else foreach (var ax in table.RotationAxes)
+            {
+                if (Math.Abs(ax.Order) != 2 || ax.Order < 0) continue;
+                if (!IsAxisInPlane(ax.Direction, actualAxis)) continue;
+                var (sx, sy, sz) = proj.ToScreen(ax.X, ax.Y, ax.Z);
+                CollectInPlaneAxisArrows(layout, sx, sy, Mod1(sz), ax.Direction, actualAxis, ax.Screw, inPlaneAxisDrafts);
+            }
+
+            DrawCollectedPerpendicularMirrorPlanes(ctx);
+            DrawParallelMirrorStack(g, layout, parallelMirrors, fill);
+            DrawCollectedInPlaneAxisArrows(g, fill, inPlaneAxisDrafts);
+            // 260502Cl 追加: 立方晶 [111] 系 体対角 3 回軸の描画 (P23 等)。
+            // 同位置で垂直回転軸 (lens 等) と重なる場合は垂直軸を上に出すため、こちらを先に描く。
+            DrawDiagonalRotationMarks(ctx, table, actualAxis);
+            DrawPerpendicularRotationMarks(ctx, table, actualAxis); // (260502Ch) F23 の IUCr 代表軸選択にも table 情報を使う。
+            DrawInversions(ctx, table.InversionCenters);
         }
         finally { g.Dispose(); }
         return bmp;
     }
     #endregion
 
-    #region centering 展開と axis 列挙
-    /// <summary>R-lattice 等の centering を runtime で展開し、(I-R) 線形分解で全方向の等価操作を生成する。</summary>
-    private static SymmetryOperation[] ExpandWithCentering(SymmetryOperation[] baseOps, int seriesNumber)
+    #region 紙面垂直 点記号
+    /// <summary>軸方向が投影軸に平行な軸を点記号として描画。低次は高次に隠され、-N と同位置の +N があれば -N を捨て、-N(z≠0) は +N_k に置換。</summary>
+    private static void DrawPerpendicularRotationMarks(ElementsContext ctx, Crystallography.SymmetryElementsTable table, ProjectionAxis projAxis)
     {
-        if (baseOps == null) return null;
-        // (260502Cl) series-aware 化を内側で 1 回だけ実施 (旧実装は外側で再ラップしていた)
-        var ops = baseOps.Select(op => new SymmetryOperation(op, seriesNumber)).ToArray();
-        var cents = new List<(double U, double V, double W)>();
-        foreach (var op in ops)
+        var axes = table.RotationAxes;
+        bool useF23StandardTwofoldSet = UseF23StandardElementSet(table); // (260502Ch)
+        // 同位置の高次 proper rotation 集合 (低次抑制 / -N 抑制用)。
+        var covered2 = new HashSet<(int, int)>();
+        var covered3 = new HashSet<(int, int)>();
+        var properRotations = new HashSet<(int N, int Sx, int Sy)>();
+        foreach (var ax in axes)
         {
-            if (op.Order != 1) continue;
-            var (cu, cv, cw) = op.Position;
-            if (Math.Abs(cu) + Math.Abs(cv) + Math.Abs(cw) > 1e-6) cents.Add((cu, cv, cw));
-        }
-        if (cents.Count == 0) return ops;
-
-        var result = new List<SymmetryOperation>(ops.Length * (cents.Count + 1));
-        var seen = new HashSet<(int, bool, int, int, int, long, long, long, long, long, long)>();
-
-        bool TryAdd(SymmetryOperation op)
-        {
-            var key = (op.Order, op.Sense, op.Direction.U, op.Direction.V, op.Direction.W,
-                R6(Mod1(op.Position.U)), R6(Mod1(op.Position.V)), R6(Mod1(op.Position.W)),
-                R6(CenterMod1(op.IntrinsicTranslation.U)), R6(CenterMod1(op.IntrinsicTranslation.V)),
-                R6(CenterMod1(op.IntrinsicTranslation.W)));
-            if (!seen.Add(key)) return false;
-            result.Add(op);
-            return true;
-        }
-
-        foreach (var op in ops) TryAdd(op);
-        foreach (var op in ops)
-            foreach (var c in cents)
-                if (TryCreateCenteredOperation(op, c, out var centered))
-                    TryAdd(new SymmetryOperation(centered, seriesNumber));
-        return result.ToArray();
-    }
-
-    /// <summary>(260502Cl) Math.Round(x * 1e6) を long 化する dedup キー用ヘルパー。</summary>
-    private static long R6(double x) => (long)Math.Round(x * 1e6);
-
-    /// <summary>n_k 螺旋の (FinCount, EdgeStep)。gcd(N,k)>1 (4_2/6_2/6_3/6_4) は ITC 規約に従い fin 数を減らした特例形に。</summary>
-    private static (int FinCount, int EdgeStep) PinwheelFins(int N, int k) => (N, k) switch
-    {
-        (_, 0) => (0, 0),
-        (4, 2) => (2, 1), // 4_2
-        (6, 2) => (3, 5), // 6_2
-        (6, 3) => (2, 1), // 6_3
-        (6, 4) => (3, 1), // 6_4
-        _ => (N, N - k),
-    };
-
-    /// <summary>op の intrinsic translation 軸方向成分から (FinCount, EdgeStep) を導出。</summary>
-    private static (int FinCount, int EdgeStep) ScrewParams(SymmetryOperation op, (double U, double V, double W)? intrinsicTranslation = null)
-    {
-        int N = Math.Abs(op.Order);
-        if (N < 2) return (0, 0);
-        if (!TryGetAxisFraction(op, intrinsicTranslation ?? op.IntrinsicTranslation, out double along)) return (0, 0);
-        if (along < 1e-3 || along > 1 - 1e-3) return (0, 0);
-        int k = ((int)Math.Round(along * N)) % N;
-        return PinwheelFins(N, k);
-    }
-
-    private static bool IsScrewAxis(SymmetryOperation op, (double U, double V, double W) intrinsicTranslation)
-        => TryGetAxisFraction(op, intrinsicTranslation, out double along) &&
-           Math.Abs(along) > 1e-3 && Math.Abs(Math.Abs(along) - 1) > 1e-3;
-
-    private static bool TryGetAxisFraction(SymmetryOperation op, (double U, double V, double W) translation, out double along)
-    {
-        along = 0;
-        var a = BuildIMinusR(op);
-        if (a.Rank() != 2 || !TryFindAxisCovector(a, out var n)) return false;
-        Vec d = op.Direction;
-        double nd = n * d;
-        if (Math.Abs(nd) < 1e-12) return false;
-        along = Mod1(n * (Vec)translation / nd);
-        return true;
-    }
-
-    private static bool TryCreateCenteredOperation(SymmetryOperation op, (double U, double V, double W) centering, out SymmetryOperation centered)
-    {
-        centered = default;
-        if (op.Order == 1) return false;
-        if (Math.Abs(centering.U) + Math.Abs(centering.V) + Math.Abs(centering.W) < 1e-9) return false;
-        var a = BuildIMinusR(op);
-        Vec lattice = centering;
-        Vec shift, residual;
-        bool ok;
-        if (a.Rank() == 2 && op.Order > 0)
-            ok = TryDecomposeAxisLatticeTranslation(op, lattice, out shift, out residual);
-        else if (op.Order == -2)
-            ok = TryDecomposeMirrorLatticeTranslation(op, lattice, out shift, out residual);
-        else
-        {
-            //ok = TrySolveLinear(a, lattice, out shift);
-            //residual = lattice - a * shift;
-            // (260502Ch) mirror/glide は rank 1 で面内 glide 成分が残るため、上の専用分解で処理する。
-            ok = TrySolveLinear(a, lattice, out shift);
-            residual = lattice - a * shift;
-        }
-        if (!ok) return false;
-        var p = op.Position;
-        var it = op.IntrinsicTranslation;
-        centered = new SymmetryOperation(op.Order, op.Sense ? 1 : -1, op.Direction,
-            (Mod1(p.U + shift.X), Mod1(p.V + shift.Y), Mod1(p.W + shift.Z)),
-            (CenterMod1(it.U + residual.X), CenterMod1(it.V + residual.Y), CenterMod1(it.W + residual.Z)));
-        return true;
-    }
-
-    /// <summary>(260502Ch) mirror/glide に centering を足すと、法線方向は面位置のシフト、面内成分は glide として残る。</summary>
-    private static bool TryDecomposeMirrorLatticeTranslation(SymmetryOperation op, Vec lattice, out Vec shift, out Vec residual)
-    {
-        var r = op.ApplyMatrix(lattice);
-        shift = new Vec(lattice.X * 0.5, lattice.Y * 0.5, lattice.Z * 0.5);
-        residual = new Vec((lattice.X + r.X) * 0.5, (lattice.Y + r.Y) * 0.5, (lattice.Z + r.Z) * 0.5);
-        var err = BuildIMinusR(op) * shift + residual - lattice;
-        return err * err < 1e-10;
-    }
-
-    /// <summary>I - R を Mat で返す。R は op の線形部 (回転 / 回反)。</summary>
-    private static Mat BuildIMinusR(SymmetryOperation op) => new(
-        new Vec(1, 0, 0) - op.ApplyMatrix(new Vec(1, 0, 0)),
-        new Vec(0, 1, 0) - op.ApplyMatrix(new Vec(0, 1, 0)),
-        new Vec(0, 0, 1) - op.ApplyMatrix(new Vec(0, 0, 1)));
-
-    private static bool TryFindAxisCovector(Mat a, out Vec n)
-    {
-        var (c0, c1, c2) = (a.Column(0), a.Column(1), a.Column(2));
-        n = c0.Cross(c1); double n2 = n * n;
-        var cand = c0.Cross(c2); double cn2 = cand * cand;
-        if (cn2 > n2) { n = cand; n2 = cn2; }
-        cand = c1.Cross(c2); cn2 = cand * cand;
-        if (cn2 > n2) { n = cand; n2 = cn2; }
-        return n2 > 1e-12;
-    }
-
-    private static bool TrySolveLinear(Mat a, Vec b, out Vec x)
-    {
-        x = Vec.Zero;
-        int rank = a.Rank();
-        if (rank == 0) return b * b < 1e-12;
-        if (rank == 2) return TrySolveRankTwo(a, b, out x);
-        if (rank == 1)
-        {
-            int best = -1; double bestN2 = 0;
-            for (int i = 0; i < 3; i++)
-            {
-                double n2 = a.Column(i) * a.Column(i);
-                if (n2 > bestN2) { bestN2 = n2; best = i; }
-            }
-            if (best < 0) return b * b < 1e-12;
-            double v = a.Column(best) * b / bestN2;
-            Span<double> values = stackalloc double[3]; values[best] = v;
-            x = new Vec(values[0], values[1], values[2]);
-            var r = a * x - b;
-            return r * r < 1e-10;
-        }
-        // rank == 3 → Cramer
-        var (cc0, cc1, cc2) = (a.Column(0), a.Column(1), a.Column(2));
-        double det = a.Determinant();
-        if (Math.Abs(det) < 1e-12) return false;
-        x = new Vec(Mat.Determinant(b, cc1, cc2) / det,
-                    Mat.Determinant(cc0, b, cc2) / det,
-                    Mat.Determinant(cc0, cc1, b) / det);
-        var rr = a * x - b;
-        return rr * rr < 1e-10;
-    }
-
-    private static bool TrySolveRankTwo(Mat a, Vec b, out Vec x)
-    {
-        x = Vec.Zero;
-        double bestResidual = double.PositiveInfinity;
-        Span<double> rhs = [b.X, b.Y, b.Z];
-        // (260502Cl) cand は常に 3 要素。loop 内で stackalloc するとスタック消費が膨らむため外に出して各反復で 0 クリア。
-        Span<double> cand = stackalloc double[3];
-        for (int fixedCol = 0; fixedCol < 3; fixedCol++)
-        {
-            int c0 = fixedCol == 0 ? 1 : 0;
-            int c1 = fixedCol == 2 ? 1 : 2;
-            for (int r0 = 0; r0 < 2; r0++) for (int r1 = r0 + 1; r1 < 3; r1++)
-            {
-                double det = a[r0, c0] * a[r1, c1] - a[r0, c1] * a[r1, c0];
-                if (Math.Abs(det) < 1e-12) continue;
-                double v0 = (rhs[r0] * a[r1, c1] - a[r0, c1] * rhs[r1]) / det;
-                double v1 = (a[r0, c0] * rhs[r1] - rhs[r0] * a[r1, c0]) / det;
-                cand.Clear();
-                cand[c0] = v0; cand[c1] = v1;
-                var cv = new Vec(cand[0], cand[1], cand[2]);
-                var err = a * cv - b;
-                double residual = err * err;
-                if (residual >= bestResidual) continue;
-                bestResidual = residual; x = cv;
-            }
-        }
-        return bestResidual < 1e-10;
-    }
-
-    /// <summary>op の幾何位置を格子同値性から全列挙し、screw 成分も各同値操作ごとに保持する。</summary>
-    private static IEnumerable<AxisInstance> EnumerateAxisInstances(SymmetryOperation op)
-    {
-        var seen = new HashSet<(long, long, long, long, long, long, bool)>();
-        var (px, py, pz) = op.Position;
-        var aMat = BuildIMinusR(op);
-        bool useDecomp = aMat.Rank() == 2 && op.Order > 0;
-        for (int tx = 0; tx <= 1; tx++) for (int ty = 0; ty <= 1; ty++) for (int tz = 0; tz <= 1; tz++)
-        {
-            Vec lattice = new(tx, ty, tz);
-            Vec shift; (double U, double V, double W) rawIt;
-            if (useDecomp)
-            {
-                if (!TryDecomposeAxisLatticeTranslation(op, lattice, out shift, out var axial)) continue;
-                rawIt = (op.IntrinsicTranslation.U + axial.X, op.IntrinsicTranslation.V + axial.Y, op.IntrinsicTranslation.W + axial.Z);
-            }
-            else
-            {
-                if (!TrySolveLinear(aMat, lattice, out shift)) continue;
-                rawIt = op.IntrinsicTranslation;
-            }
-            var it = (U: CenterMod1(rawIt.U), V: CenterMod1(rawIt.V), W: CenterMod1(rawIt.W));
-            var axis = new AxisInstance(Mod1(px + shift.X), Mod1(py + shift.Y), Mod1(pz + shift.Z), op.Direction, it, IsScrewAxis(op, rawIt));
-            var key = (R6(axis.X), R6(axis.Y), R6(axis.Z),
-                R6(axis.IntrinsicTranslation.U), R6(axis.IntrinsicTranslation.V), R6(axis.IntrinsicTranslation.W), axis.Screw);
-            if (seen.Add(key)) yield return axis;
-        }
-    }
-
-    /// <summary>紙面垂直 mirror/glide の代表面。T=t+L を (I−R)p + g に分解し、斜交基底でも glide 成分を保つ。</summary>
-    private readonly record struct MirrorPlane(double Px, double Py, double Pz, double GlideU, double GlideV, double GlideW,
-                                               (int U, int V, int W) Direction);
-
-    /// <summary>(260502Ch) 紙面垂直 mirror/glide の描画前集約用。</summary>
-    private readonly record struct PerpendicularMirrorDraft(double Sx, double Sy,
-                                                            (int U, int V, int W) Direction,
-                                                            (double U, double V, double W) Glide);
-
-    /// <summary>紙面内回転軸の 1 インスタンス。</summary>
-    private readonly record struct AxisInstance(double X, double Y, double Z,
-                                                (int U, int V, int W) Direction,
-                                                (double U, double V, double W) IntrinsicTranslation,
-                                                bool Screw);
-
-    /// <summary>L を (I-R) による軸位置シフトと軸方向成分へ分解する。</summary>
-    private static bool TryDecomposeAxisLatticeTranslation(SymmetryOperation op, Vec lattice, out Vec shift, out Vec axial)
-    {
-        shift = Vec.Zero; axial = Vec.Zero;
-        var a = BuildIMinusR(op);
-        if (a.Rank() != 2 || !TryFindAxisCovector(a, out var n)) return false;
-        Vec d = op.Direction;
-        double nd = n * d;
-        if (Math.Abs(nd) < 1e-12) return false;
-        double beta = (n * lattice) / nd;
-        axial = beta * d;
-        return TrySolveRankTwo(a, lattice - axial, out shift);
-    }
-
-    private static IEnumerable<MirrorPlane> EnumerateMirrorPlanes(SymmetryOperation op, IReadOnlyList<(double U, double V, double W)> centerings = null)
-    {
-        var R = new Mat(op.ApplyMatrix(new Vec(1, 0, 0)),
-                        op.ApplyMatrix(new Vec(0, 1, 0)),
-                        op.ApplyMatrix(new Vec(0, 0, 1)));
-        var t0 = op.SeitzTranslation;
-        var planes = new Dictionary<(long, long, long), MirrorPlane>();
-        // (260502Cl) (0,0,0) と centering 並進を allowed lattice として全部試す。R-centering 等の存在で
-        // 純 mirror / a-glide 等の (depth 成分なし) 表現が見つかるようにする (R3m, R-3m での誤 n-glide 表示の修正)。
-        var lattices = new List<(double U, double V, double W)> { (0, 0, 0) };
-        if (centerings != null) lattices.AddRange(centerings);
-        foreach (var lat in lattices)
-            for (int lx = -2; lx <= 2; lx++) for (int ly = -2; ly <= 2; ly++) for (int lz = -2; lz <= 2; lz++)
-            {
-                var t = new Vec(t0.U + lat.U + lx, t0.V + lat.V + ly, t0.W + lat.W + lz);
-                var rt = R * t;
-                var n = (t - rt) * 0.5;     // 平面法線方向の代表 (lattice 同値類のキー)
-                var glide = (t + rt) * 0.5;
-                var key = (R6(n.X), R6(n.Y), R6(n.Z));
-                var plane = new MirrorPlane(t.X / 2.0, t.Y / 2.0, t.Z / 2.0,
-                    CenterMod1(glide.X), CenterMod1(glide.Y), CenterMod1(glide.Z), op.Direction);
-                if (!planes.TryGetValue(key, out var current) || GlideScore(plane) < GlideScore(current))
-                    planes[key] = plane;
-            }
-        foreach (var plane in planes.Values) yield return plane;
-
-        static double GlideScore(MirrorPlane p) => Math.Abs(p.GlideU) + Math.Abs(p.GlideV) + Math.Abs(p.GlideW);
-    }
-
-    /// <summary>代表 mirror/glide 面を proper symmetry operation で写し、点群対称で等価な面を列挙する。</summary>
-    private static IEnumerable<MirrorPlane> EnumerateEquivalentMirrorPlanes(MirrorPlane seed, SymmetryOperation[] ops)
-    {
-        if (ops == null) { yield return seed; yield break; }
-        var seen = new HashSet<(long, long, long, long, long, long, int, int, int)>();
-        foreach (var op in ops)
-        {
-            if (op.Order <= 0) continue;
-            var p = op.ApplyAffine(new Vec(seed.Px, seed.Py, seed.Pz));
-            var g = op.ApplyMatrix(new Vec(seed.GlideU, seed.GlideV, seed.GlideW));
-            var d = NormalizeDirection(op.ApplyMatrix(new Vec(seed.Direction.U, seed.Direction.V, seed.Direction.W)));
-            if (d == (0, 0, 0)) continue;
-            var eq = new MirrorPlane(p.X, p.Y, p.Z, CenterMod1(g.X), CenterMod1(g.Y), CenterMod1(g.Z), d);
-            var key = (R6(eq.Px), R6(eq.Py), R6(eq.Pz), R6(eq.GlideU), R6(eq.GlideV), R6(eq.GlideW),
-                eq.Direction.U, eq.Direction.V, eq.Direction.W);
-            if (seen.Add(key)) yield return eq;
-        }
-    }
-
-    /// <summary>代表の紙面内回転軸を空間群操作で共役し、等価な軸を列挙する。</summary>
-    private static IEnumerable<AxisInstance> EnumerateEquivalentAxisInstances(AxisInstance seed, SymmetryOperation[] ops)
-    {
-        if (ops == null) { yield return seed; yield break; }
-        var seen = new HashSet<(long, long, long, long, long, long, int, int, int, bool)>();
-        foreach (var op in ops)
-        {
-            var p = op.ApplyAffine(new Vec(seed.X, seed.Y, seed.Z));
-            var g = op.ApplyMatrix(new Vec(seed.IntrinsicTranslation.U, seed.IntrinsicTranslation.V, seed.IntrinsicTranslation.W));
-            var d = NormalizeDirection(op.ApplyMatrix(new Vec(seed.Direction.U, seed.Direction.V, seed.Direction.W)));
-            if (d == (0, 0, 0)) continue;
-            var eq = new AxisInstance(Mod1(p.X), Mod1(p.Y), Mod1(p.Z), d,
-                (CenterMod1(g.X), CenterMod1(g.Y), CenterMod1(g.Z)), seed.Screw);
-            var key = (R6(eq.X), R6(eq.Y), R6(eq.Z),
-                R6(eq.IntrinsicTranslation.U), R6(eq.IntrinsicTranslation.V), R6(eq.IntrinsicTranslation.W),
-                eq.Direction.U, eq.Direction.V, eq.Direction.W, eq.Screw);
-            if (seen.Add(key)) yield return eq;
-        }
-    }
-
-    private static double CenterMod1(double x)
-    {
-        x -= Math.Round(x);
-        return Math.Abs(x) < 1e-9 ? 0 : x;
-    }
-
-    private static (int U, int V, int W) NormalizeDirection(Vec d)
-    {
-        int u = (int)Math.Round(d.X), v = (int)Math.Round(d.Y), w = (int)Math.Round(d.Z);
-        int gcd = Gcd(Gcd(Math.Abs(u), Math.Abs(v)), Math.Abs(w));
-        if (gcd > 1) { u /= gcd; v /= gcd; w /= gcd; }
-        if (u < 0 || (u == 0 && v < 0) || (u == 0 && v == 0 && w < 0)) (u, v, w) = (-u, -v, -w);
-        return (u, v, w);
-    }
-
-    private static int Gcd(int a, int b)
-    {
-        while (b != 0) (a, b) = (b, a % b);
-        return a;
-    }
-
-    /// <summary>反転中心を Wyckoff position から抽出。site sym が中心対称で全 free=false の WP が反転中心 (centering 込み)。
-    /// 同一 xy の複数 z は最小 z だけを ITC 慣用に従い表示。</summary>
-    private static List<(PointF Pt, double MinZ)> CollectInversions(int seriesNumber, Projection proj, CellLayout layout)
-    {
-        var byKey = new Dictionary<(int, int), (double sxF, double syF, double minZ)>();
-        foreach (var wp in SymmetryStatic.WyckoffPositions[seriesNumber])
-        {
-            //if (string.IsNullOrEmpty(wp.SiteSymmetry) || !wp.SiteSymmetry.Contains('-')) continue;
-            // (260502Ch) "-4" は反転中心を持たず、"2/m" や "4/m" は '-' を含まないため、中心対称な site symmetry を明示判定する。
-            if (!HasInversionCenter(wp.SiteSymmetry)) continue;
-            if (wp.Free.X || wp.Free.Y || wp.Free.Z) continue;
-            foreach (var p in wp.GeneratePositions(0, 0, 0))
-            {
-                var (sx, sy, sz) = proj.ToScreen(p.X, p.Y, p.Z);
-                bool nearEdge = Math.Min(sx, 1 - sx) < EdgeReplicate || Math.Min(sy, 1 - sy) < EdgeReplicate;
-                for (int dx = -1; dx <= 1; dx++) for (int dy = -1; dy <= 1; dy++)
-                {
-                    if ((dx != 0 || dy != 0) && !nearEdge) continue;
-                    double sxF = sx + dx, syF = sy + dy;
-                    if (sxF < -EdgeReplicate || sxF > 1 + EdgeReplicate || syF < -EdgeReplicate || syF > 1 + EdgeReplicate) continue;
-                    var key = ((int)Math.Round(sxF * 10000), (int)Math.Round(syF * 10000));
-                    double mz = Mod1(sz);
-                    if (!byKey.TryGetValue(key, out var cur) || mz < cur.minZ) byKey[key] = (sxF, syF, mz);
-                }
-            }
-        }
-        var list = new List<(PointF, double)>(byKey.Count);
-        foreach (var (_, v) in byKey) list.Add((layout.ToScreen(v.sxF, v.syF), v.minZ));
-        return list;
-    }
-
-    /// <summary>(260502Ch) 反転中心を含む結晶学的点群だけを true にする。".2/m." などの向き指定ドットは判定前に除く。</summary>
-    private static bool HasInversionCenter(string siteSymmetry)
-    {
-        if (string.IsNullOrEmpty(siteSymmetry)) return false;
-        return siteSymmetry.Replace(".", "") is "-1" or "2/m" or "mmm" or "4/m" or "4/mmm"
-            or "-3" or "-3m" or "6/m" or "6/mmm" or "m-3" or "m-3m";
-    }
-
-    /// <summary>絶対次数 ≥ minOrder の proper rotation (perp) の position 集合。低次シンボル抑制用。</summary>
-    private static HashSet<(int, int)> CollectHigherRotationPositions(SymmetryOperation[] ops, Projection proj, ProjectionAxis projAxis, int minOrder)
-    {
-        var set = new HashSet<(int, int)>();
-        foreach (var op in ops)
-        {
-            int absO = Math.Abs(op.Order);
-            if (op.Order < 0 || absO < minOrder || absO is not (3 or 4 or 6)) continue;
-            if (!IsAxisPerpendicularToProjection(op.Direction, projAxis)) continue;
-            foreach (var axis in EnumerateAxisInstances(op))
-            {
-                var (sx, sy, _) = proj.ToScreen(axis.X, axis.Y, axis.Z);
-                set.Add(((int)Math.Round(Mod1(sx) * 10000), (int)Math.Round(Mod1(sy) * 10000)));
-            }
-        }
-        return set;
-    }
-
-    /// <summary>(260502Cl) 同位置の proper N-fold (N=2,3,4,6) を記録。-N 描画時に対応する +N があれば skip するため。</summary>
-    private static HashSet<(int N, int Sx10000, int Sy10000)> CollectProperRotationPositions(SymmetryOperation[] ops, Projection proj, ProjectionAxis projAxis)
-    {
-        var set = new HashSet<(int, int, int)>();
-        foreach (var op in ops)
-        {
-            int absO = Math.Abs(op.Order);
-            if (op.Order <= 0 || absO is not (2 or 3 or 4 or 6)) continue;
-            if (!IsAxisPerpendicularToProjection(op.Direction, projAxis)) continue;
-            foreach (var axis in EnumerateAxisInstances(op))
-            {
-                if (axis.Screw) continue; // pure proper rotation のみ (screw は -N を抑制しない)
-                var (sx, sy, _) = proj.ToScreen(axis.X, axis.Y, axis.Z);
-                set.Add((absO, (int)Math.Round(Mod1(sx) * 10000), (int)Math.Round(Mod1(sy) * 10000)));
-            }
-        }
-        return set;
-    }
-    #endregion
-
-    #region dispatcher
-    private static bool IsAxisPerpendicularToProjection((int U, int V, int W) d, ProjectionAxis a) => a switch
-    {
-        ProjectionAxis.C => d is (0, 0, not 0),
-        ProjectionAxis.A => d is (not 0, 0, 0),
-        _ => d is (0, not 0, 0),
-    };
-
-    /// <summary>op を投影面上の幾何記号として描画。紙面平行 mirror は ctx.ParallelMirrors に集約。</summary>
-    private static void DrawSymmetryElement(ElementsContext ctx, SymmetryOperation op,
-                                            bool drawOnlyPerpPointMarks = false, bool skipPerpPointMarks = false)
-    {
-        int o = op.Order, absO = Math.Abs(o);
-        if (o == 1 || o == -1) return;                 // 反転は WP-based で別途処理
-        if (!op.Sense && (absO is 3 or 4 or 6)) return; // Sense=false の高次回転は同軸逆冪なので skip
-
-        bool perp = IsAxisPerpendicularToProjection(op.Direction, ctx.Proj.Axis);
-        var d = op.Direction;
-        bool inPlane = ctx.Proj.Axis switch
-        {
-            ProjectionAxis.C => d.W == 0 && (d.U != 0 || d.V != 0),
-            ProjectionAxis.A => d.U == 0 && (d.V != 0 || d.W != 0),
-            _ => d.V == 0 && (d.U != 0 || d.W != 0),
-        };
-        bool isMirror = (o == -2);
-        var it = op.IntrinsicTranslation;
-        bool glide = Math.Abs(it.U) + Math.Abs(it.V) + Math.Abs(it.W) > 1e-6;
-        bool isPointMark = !isMirror && perp && (absO is 2 or 3 or 4 or 6);
-
-        if (drawOnlyPerpPointMarks && !isPointMark) return;
-        if (skipPerpPointMarks && isPointMark) return;
-
-        // 紙面平行 mirror: 高さと投影面 glide のみ集約 (DrawParallelMirrorStack で一括描画)
-        if (isMirror && perp)
-        {
-            var (_, _, opSz) = ctx.Proj.ToScreen(op.Position.U, op.Position.V, op.Position.W);
-            var (gSx, gSy) = ProjectVector(it.U, it.V, it.W, ctx.Proj.Axis);
-            ctx.ParallelMirrors.Add((Mod1(opSz), glide, gSx, gSy));
-            return;
-        }
-
-        // 紙面内 2(2_1) 軸: lattice translation と空間群対称で等価な軸を展開して描画
-        if (absO == 2 && !isMirror && inPlane)
-        {
-            foreach (var seed in EnumerateAxisInstances(op))
-                foreach (var axis in EnumerateEquivalentAxisInstances(seed, ctx.Ops))
-                {
-                    var (sx, sy, sz) = ctx.Proj.ToScreen(axis.X, axis.Y, axis.Z);
-                    CollectInPlaneAxisArrows(ctx.C, sx, sy, Mod1(sz), axis.Direction, ctx.Proj.Axis, axis.Screw, ctx.InPlaneAxisDrafts);
-                }
-            return;
-        }
-
-        // 紙面垂直 mirror/glide: 代表面を取り出し、proper symmetry operation の orbit として等価面を描画
-        if (isMirror && inPlane)
-        {
-            foreach (var pl in EnumerateMirrorPlanes(op, ctx.Centerings)) // (260502Cl) centering 込みで lattice 並進を列挙
-                foreach (var eq in EnumerateEquivalentMirrorPlanes(pl, ctx.Ops))
-                {
-                    var (sx, sy, _) = ctx.Proj.ToScreen(eq.Px, eq.Py, eq.Pz);
-                    ctx.PerpendicularMirrors.Add(new(sx, sy, eq.Direction, (eq.GlideU, eq.GlideV, eq.GlideW))); // (260502Ch)
-                }
-            return;
-        }
-
-        if (!isPointMark) return;
-        foreach (var axis in EnumerateAxisInstances(op))
-        {
-            var (sx, sy, sz) = ctx.Proj.ToScreen(axis.X, axis.Y, axis.Z);
+            if (ax.Order <= 0 || !IsAxisPerpendicularToProjection(ax.Direction, projAxis)) continue;
+            if (useF23StandardTwofoldSet && ax.Order == 2 && !IsF23StandardPerpendicularTwofoldAxis(ctx.Proj, ax))
+                continue; // (260502Ch)
+            int absO = ax.Order;
+            var (sx, sy, _) = ctx.Proj.ToScreen(ax.X, ax.Y, ax.Z);
             var key = ((int)Math.Round(Mod1(sx) * 10000), (int)Math.Round(Mod1(sy) * 10000));
-            if (absO == 2 && ctx.Covered2.Contains(key)) continue;
-            if (absO == 3 && o > 0 && ctx.Covered3.Contains(key)) continue;
-            // (260502Cl) -N at same position as proper +N → +N を優先 (反転中心が両者を結ぶので -N は重複)
-            if (o < 0 && ctx.ProperRotations.Contains((absO, key.Item1, key.Item2))) continue;
+            if (absO is 3 or 4 or 6) covered2.Add(key);
+            if (absO == 6) covered3.Add(key);
+            if (!ax.Screw && absO is (2 or 3 or 4 or 6)) properRotations.Add((absO, key.Item1, key.Item2));
+        }
 
-            // -N (N=3,4,6) で inversion 点の z_c ≠ 0 のときは N_k 螺旋 + inversion(z=0) と等価。
-            // proper +N_k シンボルとして描画する (反転中心は z=0 で別途 CollectInversions により描画)。
+        foreach (var ax in axes)
+        {
+            int o = ax.Order, absO = Math.Abs(o);
+            if (absO is not (2 or 3 or 4 or 6)) continue;
+            if (!IsAxisPerpendicularToProjection(ax.Direction, projAxis)) continue;
+            if (useF23StandardTwofoldSet && absO == 2 && !IsF23StandardPerpendicularTwofoldAxis(ctx.Proj, ax))
+                continue; // (260502Ch)
+            var (sx, sy, sz) = ctx.Proj.ToScreen(ax.X, ax.Y, ax.Z);
+            var key = ((int)Math.Round(Mod1(sx) * 10000), (int)Math.Round(Mod1(sy) * 10000));
+            if (absO == 2 && covered2.Contains(key)) continue;
+            if (absO == 3 && o > 0 && covered3.Contains(key)) continue;
+            if (o < 0 && properRotations.Contains((absO, key.Item1, key.Item2))) continue;
+
+            // -N (N=3,4,6) で inversion 点 z_c ≠ 0 のときは N_k 螺旋 + inversion(z=0) と等価 (反転中心は別途描画)。
             int order = o;
-            (int finCount, int edgeStep) screw = (-1, -1); // sentinel: ScrewParams にフォールバック
+            int finCount = ax.FinCount, edgeStep = ax.EdgeStep;
             if (o < 0 && absO is (3 or 4 or 6))
             {
                 double zc = Mod1(sz);
@@ -651,7 +218,7 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
                     if (kk != 0)
                     {
                         order = absO;
-                        screw = PinwheelFins(absO, kk);
+                        (finCount, edgeStep) = SymmetryElementsTable.PinwheelFins(absO, kk);
                     }
                 }
             }
@@ -663,50 +230,116 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
                 double dxf = sx + dx, dyf = sy + dy;
                 if (dxf < -EdgeReplicate || dxf > 1 + EdgeReplicate || dyf < -EdgeReplicate || dyf > 1 + EdgeReplicate) continue;
                 var pt = ctx.C.ToScreen(dxf, dyf);
-                var (finCount, edgeStep) = screw.finCount >= 0 ? screw : ScrewParams(op, axis.IntrinsicTranslation);
-                if (absO == 2) DrawTwofoldPerp(ctx.G, ctx.Fill, pt, axis.Screw);
+                if (absO == 2) DrawTwofoldPerp(ctx.G, ctx.Fill, pt, ax.Screw);
                 else if (absO == 3) DrawRotationPerp(ctx.G, ctx.Fill, ctx.White, pt, order, finCount, edgeStep, 3, ThreeFoldRadius);
                 else if (absO == 4) DrawRotationPerp(ctx.G, ctx.Fill, ctx.White, pt, order, finCount, edgeStep, 4, FourFoldRadius);
                 else if (absO == 6) DrawRotationPerp(ctx.G, ctx.Fill, ctx.White, pt, order, finCount, edgeStep, 6, SixFoldRadius);
             }
         }
     }
-    #endregion
 
-    #region 個別シンボル描画
-    /// <summary>反転中心を白丸 (黒縁) で描画、z!=0 で高さラベルを併記。(260502Cl) 描画パスの最後に呼ぶので、白塗りで下層の点記号を punch out して見える化する。</summary>
-    private static void DrawInversions(Graphics g, List<(PointF Pt, double MinZ)> inversions, Pen pen, Brush white, Brush fill)
+    private static bool IsF23StandardPerpendicularTwofoldAxis(Projection proj, RotationAxis ax)
     {
-        if (inversions.Count == 0) return;
-        foreach (var (pt, z) in inversions)
-        {
-            g.FillEllipse(white, pt.X - InversionR, pt.Y - InversionR, 2 * InversionR, 2 * InversionR);
-            g.DrawEllipse(pen, pt.X - InversionR, pt.Y - InversionR, 2 * InversionR, 2 * InversionR);
-            string h = HeightLabel(z);
-            if (h == null) continue;
-            g.DrawString(h, HeightLabelFont, fill, pt.X + InversionR + 1, pt.Y - InversionR - g.MeasureString(h, HeightLabelFont).Height + 2);
-        }
+        if (ax.Screw) return false; // (260502Ch) F23 の ITA 図では centering 由来の 2_1 軸を紙面垂直記号として採用しない。
+        var (sx, sy, _) = proj.ToScreen(ax.X, ax.Y, ax.Z);
+        return IsHalfGridFraction(sx) && IsHalfGridFraction(sy); // (260502Ch) P23 と同じ 0/1/2 系の位置だけ残す。
     }
 
-    /// <summary>紙面垂直 2(2_1) 軸: vesica piscis lens を塗り潰し。screw=互い違い円弧。-4 から呼ぶ際は scale で縮小。</summary>
-    private static void DrawTwofoldPerp(Graphics g, Brush fill, PointF pt, bool screw, float scale = 1f)
+    private static bool IsHalfGridFraction(double v)
+        => IsFraction(v, 0) || IsFraction(v, 0.5);
+
+    #endregion
+
+    #region 反転中心
+    /// <summary>反転中心を白丸 (黒縁) で描画、z!=0 で高さラベルを併記。
+    /// (260502Cl) 描画パスの最後に呼ぶので、白塗りで下層の点記号を punch out して見える化する。
+    /// 同一 2D 位置に複数の反転中心が射影される場合、最小高さのみ採用 (ITC 慣用)。</summary>
+    private static void DrawInversions(ElementsContext ctx, InversionCenter[] centers)
     {
-        float halfW = TwofoldHalfW * scale, halfH = TwofoldHalfH * scale;
-        float r = (halfW * halfW + halfH * halfH) / (2 * halfW), d = r - halfW;
-        float halfAngle = (float)(Math.Atan2(halfH, d) * 180.0 / Math.PI);
-        var rightRect = new RectangleF(pt.X + d - r, pt.Y - r, 2 * r, 2 * r);
-        var leftRect  = new RectangleF(pt.X - d - r, pt.Y - r, 2 * r, 2 * r);
-        using var path = new GraphicsPath();
-        path.AddArc(rightRect, 180f + halfAngle, -2 * halfAngle);
-        path.AddArc(leftRect, halfAngle, -2 * halfAngle);
-        path.CloseFigure();
-        using (var halo = new Pen(Color.White, SymbolHaloPenWidth) { LineJoin = LineJoin.Round })
-            g.DrawPath(halo, path);
-        g.FillPath(fill, path);
-        if (!screw) return;
-        using var pen = new Pen(Color.Black, ScrewFinPenWidth);
-        g.DrawArc(pen, rightRect, 180f + halfAngle, ScrewFinSweepDeg);
-        g.DrawArc(pen, leftRect, halfAngle, ScrewFinSweepDeg);
+        if (centers.Length == 0) return;
+        var byKey = new Dictionary<(int, int), (double sxF, double syF, double minZ)>();
+        foreach (var c in centers)
+        {
+            var (sx, sy, sz) = ctx.Proj.ToScreen(c.X, c.Y, c.Z);
+            bool nearEdge = Math.Min(sx, 1 - sx) < EdgeReplicate || Math.Min(sy, 1 - sy) < EdgeReplicate;
+            for (int dx = -1; dx <= 1; dx++) for (int dy = -1; dy <= 1; dy++)
+            {
+                if ((dx != 0 || dy != 0) && !nearEdge) continue;
+                double sxF = sx + dx, syF = sy + dy;
+                if (sxF < -EdgeReplicate || sxF > 1 + EdgeReplicate || syF < -EdgeReplicate || syF > 1 + EdgeReplicate) continue;
+                var key = ((int)Math.Round(sxF * 10000), (int)Math.Round(syF * 10000));
+                double mz = Mod1(sz);
+                if (!byKey.TryGetValue(key, out var cur) || mz < cur.minZ) byKey[key] = (sxF, syF, mz);
+            }
+        }
+        foreach (var v in byKey.Values)
+        {
+            var pt = ctx.C.ToScreen(v.sxF, v.syF);
+            ctx.G.FillEllipse(ctx.White, pt.X - InversionR, pt.Y - InversionR, 2 * InversionR, 2 * InversionR);
+            ctx.G.DrawEllipse(ctx.Pen, pt.X - InversionR, pt.Y - InversionR, 2 * InversionR, 2 * InversionR);
+            string h = HeightLabel(v.minZ);
+            if (h == null) continue;
+            ctx.G.DrawString(h, HeightLabelFont, ctx.Fill,
+                pt.X + InversionR + 1, pt.Y - InversionR - ctx.G.MeasureString(h, HeightLabelFont).Height + 2);
+        }
+    }
+    #endregion
+
+    #region 軸方向の分類
+    private static bool IsAxisPerpendicularToProjection((int U, int V, int W) d, ProjectionAxis a) => a switch
+    {
+        ProjectionAxis.C => d is (0, 0, not 0),
+        ProjectionAxis.A => d is (not 0, 0, 0),
+        _ => d is (0, not 0, 0),
+    };
+
+    private static bool IsAxisInPlane((int U, int V, int W) d, ProjectionAxis a) => a switch
+    {
+        ProjectionAxis.C => d.W == 0 && (d.U != 0 || d.V != 0),
+        ProjectionAxis.A => d.U == 0 && (d.V != 0 || d.W != 0),
+        _ => d.V == 0 && (d.U != 0 || d.W != 0),
+    };
+
+    // 260502Cl 追加: 立方晶系 [111] 系の体対角 3 回軸など、紙面に対し斜め (depth と in-plane の両方に成分を持つ) な軸の判定。
+    private static bool IsAxisDiagonalToProjection((int U, int V, int W) d, ProjectionAxis a)
+        => !IsAxisPerpendicularToProjection(d, a) && !IsAxisInPlane(d, a);
+    #endregion
+
+    #region 紙面垂直 2(2_1) 軸 lens / 紙面垂直 3/4/6 多角形
+    /// <summary>紙面垂直 2 (2_1) 軸: vesica piscis lens を塗り潰し。screw=互い違い円弧。-4 から呼ぶ際は scale で縮小。</summary>
+    private static void DrawTwofoldPerp(Graphics g, Brush fill, PointF pt, bool screw, float scale = 1f, float rotationDeg = 0f)
+    {
+        var state = g.Save(); // (260502Ch) 斜め 2 回軸では lens を投影軸方向に応じて回転させる。
+        try
+        {
+            if (Math.Abs(rotationDeg) > 1e-3f)
+            {
+                g.TranslateTransform(pt.X, pt.Y);
+                g.RotateTransform(rotationDeg);
+                g.TranslateTransform(-pt.X, -pt.Y);
+            }
+
+            float halfW = TwofoldHalfW * scale, halfH = TwofoldHalfH * scale;
+            float r = (halfW * halfW + halfH * halfH) / (2 * halfW), d = r - halfW;
+            float halfAngle = (float)(Math.Atan2(halfH, d) * 180.0 / Math.PI);
+            var rightRect = new RectangleF(pt.X + d - r, pt.Y - r, 2 * r, 2 * r);
+            var leftRect  = new RectangleF(pt.X - d - r, pt.Y - r, 2 * r, 2 * r);
+            using var path = new GraphicsPath();
+            path.AddArc(rightRect, 180f + halfAngle, -2 * halfAngle);
+            path.AddArc(leftRect, halfAngle, -2 * halfAngle);
+            path.CloseFigure();
+            using (var halo = new Pen(Color.White, SymbolHaloPenWidth) { LineJoin = LineJoin.Round })
+                g.DrawPath(halo, path);
+            g.FillPath(fill, path);
+            if (!screw) return;
+            using var pen = new Pen(Color.Black, ScrewFinPenWidth);
+            g.DrawArc(pen, rightRect, 180f + halfAngle, ScrewFinSweepDeg);
+            g.DrawArc(pen, leftRect, halfAngle, ScrewFinSweepDeg);
+        }
+        finally
+        {
+            g.Restore(state);
+        }
     }
 
     /// <summary>中心 c から半径 r の正 N 角形 (頂点 0 を真上)。</summary>
@@ -763,8 +396,229 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
         g.DrawPolygon(outline, poly);
     }
 
-    /// <summary>(260502Cl) 紙面内 2(2_1) 軸の矢印 draft。後段の DrawCollectedInPlaneAxisArrows で実描画。</summary>
+    /// <summary>紙面に対し斜め (例: 立方晶 [111], [101]) の 2/3 回回転軸 (proper / screw) を全て描画。-N 等は未対応。
+    /// foot 位置は axis の depth=0 平面との交点に取る (SymmetryElementsTable 格納 position は軸線上の任意点なので)。
+    /// (260502Ch) F23 は IUCr 図の代表要素だけを採用し、F-centering コピーで辺中央に投影される 3 回軸を描かない。</summary>
+    private static void DrawDiagonalRotationMarks(ElementsContext ctx, Crystallography.SymmetryElementsTable table, ProjectionAxis projAxis)
+    {
+        var axes = table.RotationAxes;
+        var centerings = table.Centerings;
+        bool useF23StandardThreefoldSet = UseF23StandardElementSet(table); // (260502Ch)
+        var drawnAxes = new HashSet<(long Sx, long Sy, int Order, int U, int V, int W, bool Screw, int Fin, int Edge)>(); // (260502Ch)
+        foreach (var ax in axes)
+        {
+            // if (ax.Order != 3) continue;
+            if (ax.Order is not (2 or 3)) continue; // (260502Ch) P432 系の斜め 2 / 2_1 軸も 3 回軸と同じ anchor/shaft で描く。
+            if (!IsAxisDiagonalToProjection(ax.Direction, projAxis)) continue;
+
+            if (useF23StandardThreefoldSet && ax.Order == 3 && !IsF23StandardDiagonalThreefoldAxis(ax, projAxis))
+                continue; // (260502Ch)
+
+            // if (ax.Order == 3 && ax.Screw && centerings.Length > 0 &&
+            //     IsCenteringDerivedDiagonalScrew(ax.Direction, ax.X, ax.Y, ax.Z, ax.IntrinsicTranslation, centerings))
+            //     continue;
+            // (260502Ch) F23 では IUCr 図が centering 由来の 1/3・2/3 系 3 回軸を代表として使うため、この旧フィルタを適用しない。
+            if (!useF23StandardThreefoldSet && ax.Order == 3 && ax.Screw && centerings.Length > 0 &&
+                IsCenteringDerivedDiagonalScrew(ax.Direction, ax.X, ax.Y, ax.Z, ax.IntrinsicTranslation, centerings))
+                continue;
+
+            int finCount = ax.FinCount, edgeStep = ax.EdgeStep;
+            if (useF23StandardThreefoldSet && ax.Order == 3 && ax.Screw && edgeStep is 1 or 2)
+                edgeStep = 3 - edgeStep; // (260502Ch) F23 の斜め 3 回軸は P23 と反対向きの fin を描く。
+
+            // axis の (U, V, W) を depth 成分が正になるよう符号反転、紙面 (Sx, Sy) 成分を実 pixel 方向に変換して正規化。
+            var (u, v, w) = ax.Direction;
+            if (projAxis is ProjectionAxis.C ? w < 0 : projAxis is ProjectionAxis.A ? u < 0 : v < 0)
+                (u, v, w) = (-u, -v, -w);
+            var (dSx, dSy) = ProjectVector(u, v, w, projAxis);
+            float dirX = (float)(dSx * ctx.C.Horz.X + dSy * ctx.C.Vert.X);
+            float dirY = (float)(dSx * ctx.C.Horz.Y + dSy * ctx.C.Vert.Y);
+            float dlen = (float)Math.Sqrt(dirX * dirX + dirY * dirY);
+            if (dlen < 1e-3f) continue;
+            dirX /= dlen; dirY /= dlen;
+
+            // 軸 (X+t·U, Y+t·V, Z+t·W) を depth=0 にする t を求め、その時の (X, Y, Z) を投影位置とする。
+            double depthPos = projAxis switch { ProjectionAxis.C => ax.Z, ProjectionAxis.A => ax.X, _ => ax.Y };
+            double depthDir = projAxis switch { ProjectionAxis.C => ax.Direction.W, ProjectionAxis.A => ax.Direction.U, _ => ax.Direction.V };
+            if (Math.Abs(depthDir) < 1e-9) continue;
+            double t = -depthPos / depthDir;
+            double x0 = ax.X + t * ax.Direction.U;
+            double y0 = ax.Y + t * ax.Direction.V;
+            double z0 = ax.Z + t * ax.Direction.W;
+            var (sx, sy, _) = ctx.Proj.ToScreen(x0, y0, z0);
+            sx = Mod1(sx); sy = Mod1(sy);
+            if (!drawnAxes.Add((R6(sx), R6(sy), ax.Order, u, v, w, ax.Screw, finCount, edgeStep)))
+                continue; // (260502Ch) centered 展開で同じ代表軸が複数 decomposition から来る場合の重ね描きを避ける。
+
+            bool nearEdge = Math.Min(sx, 1 - sx) < EdgeReplicate || Math.Min(sy, 1 - sy) < EdgeReplicate;
+            for (int dx = -1; dx <= 1; dx++) for (int dy = -1; dy <= 1; dy++)
+            {
+                if ((dx != 0 || dy != 0) && !nearEdge) continue;
+                double dxf = sx + dx, dyf = sy + dy;
+                if (dxf < -EdgeReplicate || dxf > 1 + EdgeReplicate || dyf < -EdgeReplicate || dyf > 1 + EdgeReplicate) continue;
+                // DrawDiagonalThreefoldPerp(ctx.G, ctx.Fill, ctx.C.ToScreen(dxf, dyf), dirX, dirY, ax.FinCount, ax.EdgeStep);
+                var anchor = ctx.C.ToScreen(dxf, dyf);
+                if (ax.Order == 2) DrawDiagonalTwofoldPerp(ctx.G, ctx.Fill, anchor, dirX, dirY, ax.Screw); // (260502Ch)
+                else DrawDiagonalThreefoldPerp(ctx.G, ctx.Fill, anchor, dirX, dirY, finCount, edgeStep);
+            }
+        }
+    }
+
+    private static bool UseF23StandardElementSet(Crystallography.SymmetryElementsTable table)
+        => table.SeriesNumber > 0 && table.SeriesNumber < SymmetryStatic.TotalSpaceGroupNumber &&
+           SymmetryStatic.Symmetries[table.SeriesNumber].SpaceGroupNumber == 196; // (260502Ch)
+
+    private static bool IsF23StandardDiagonalThreefoldAxis(RotationAxis ax, ProjectionAxis projAxis)
+    {
+        if (!TryGetDiagonalAxisFootprint(ax, projAxis, out double sx, out double sy)) return false;
+        if (!ax.Screw) return IsFraction(sx, 0) && IsFraction(sy, 0); // (260502Ch) F-centering コピーの純 3 回軸は採用しない。
+        return IsOneOrTwoThirds(sx) && IsOneOrTwoThirds(sy); // (260502Ch)
+
+        static bool IsOneOrTwoThirds(double v) => IsFraction(v, 1.0 / 3.0) || IsFraction(v, 2.0 / 3.0);
+    }
+
+    private static bool TryGetDiagonalAxisFootprint(RotationAxis ax, ProjectionAxis projAxis, out double sx, out double sy)
+    {
+        sx = sy = 0;
+        double depthPos = projAxis switch { ProjectionAxis.C => ax.Z, ProjectionAxis.A => ax.X, _ => ax.Y };
+        double depthDir = projAxis switch { ProjectionAxis.C => ax.Direction.W, ProjectionAxis.A => ax.Direction.U, _ => ax.Direction.V };
+        if (Math.Abs(depthDir) < 1e-9) return false;
+        double t = -depthPos / depthDir;
+        double x0 = ax.X + t * ax.Direction.U;
+        double y0 = ax.Y + t * ax.Direction.V;
+        double z0 = ax.Z + t * ax.Direction.W;
+        var (px, py, _) = GetProjection(projAxis).ToScreen(x0, y0, z0);
+        sx = Mod1(px); sy = Mod1(py);
+        return true;
+    }
+
+    private static bool IsFraction(double actual, double expected)
+    {
+        double d = Math.Abs(Mod1(actual - expected));
+        return d < FracEps || Math.Abs(d - 1) < FracEps;
+    }
+
+    /// <summary>体対角 3 回螺旋軸の operation が「proper rotation + centering 並進」の別表現に等価かを判定。
+    /// 判定式: T = (I-R)·p + s が mod 1 で (0,0,0) または centerings のどれかに一致するなら true。
+    /// R の chirality は表側で保持していないので両方試行する (符号付き巡回置換 2 種類)。</summary>
+    private static bool IsCenteringDerivedDiagonalScrew(
+        (int U, int V, int W) d, double px, double py, double pz,
+        (double U, double V, double W) it,
+        (double U, double V, double W)[] centerings)
+    {
+        int s1 = Math.Sign(d.U), s2 = Math.Sign(d.V), s3 = Math.Sign(d.W);
+        if (s1 == 0 || s2 == 0 || s3 == 0) return false;
+        // chirality A: R(v) = (s1·s2·vy, s2·s3·vz, s3·s1·vx)
+        return TryChir(s1 * s2 * py, s2 * s3 * pz, s3 * s1 * px)
+            // chirality B: R(v) = (s1·s3·vz, s1·s2·vx, s2·s3·vy)
+            || TryChir(s1 * s3 * pz, s1 * s2 * px, s2 * s3 * py);
+
+        bool TryChir(double rx, double ry, double rz)
+            => TranslationEquivToCentering(px - rx + it.U, py - ry + it.V, pz - rz + it.W, centerings);
+    }
+
+    /// <summary>(tx, ty, tz) が integer lattice + (0 または any centering) と等しいか (mod 1 で判定)。</summary>
+    private static bool TranslationEquivToCentering(double tx, double ty, double tz, (double U, double V, double W)[] centerings)
+    {
+        if (FracEqualsZero(tx) && FracEqualsZero(ty) && FracEqualsZero(tz)) return true;
+        foreach (var c in centerings)
+            if (FracEqualsZero(tx - c.U) && FracEqualsZero(ty - c.V) && FracEqualsZero(tz - c.W)) return true;
+        return false;
+
+        static bool FracEqualsZero(double x) => Math.Abs(x - Math.Round(x)) < 1e-6;
+    }
+
+    /// <summary>立方晶 [111] 系 体対角 3 回回転軸を ITC Vol.A 風に描画。foot 黒丸 → shaft1 → 三角 (重心に白丸) → shaft2 (dir 方向, 端 round) の構造。
+    /// 三角は dir と CCW 90° 方向の 2 脚から成る直角三角形を画面 CCW 45° 回転、重心を shaft1 の端点に一致させる。
+    /// finCount/edgeStep が非零なら 3_k 螺旋として三角の各頂点に fin (DrawScrewFins と同形式) を生やす。</summary>
+    private static void DrawDiagonalThreefoldPerp(Graphics g, Brush fill, PointF anchor, float dirX, float dirY,
+                                                  int finCount = 0, int edgeStep = 0)
+    {
+        PointF lineEnd = new(anchor.X + dirX * DiagThreefoldShaft1Len, anchor.Y + dirY * DiagThreefoldShaft1Len);
+        PointF tail    = new(lineEnd.X + dirX * DiagThreefoldShaft2Len, lineEnd.Y + dirY * DiagThreefoldShaft2Len);
+
+        const float invSqrt2 = 0.7071067811865475f;
+        float l1x = (dirX + dirY) * invSqrt2, l1y = (-dirX + dirY) * invSqrt2;
+        float l2x = (dirX - dirY) * invSqrt2, l2y = ( dirX + dirY) * invSqrt2;
+
+        float triLeg = DiagThreefoldTriLeg;
+        float legSumX = (l1x + l2x) * triLeg / 3f, legSumY = (l1y + l2y) * triLeg / 3f;
+        float cornerX = lineEnd.X - legSumX, cornerY = lineEnd.Y - legSumY;
+        PointF[] tri =
+        [
+            new(cornerX, cornerY),
+            new(cornerX + l1x * triLeg, cornerY + l1y * triLeg),
+            new(cornerX + l2x * triLeg, cornerY + l2y * triLeg),
+        ];
+
+        float halo = DiagThreefoldHaloWidth;
+        float dotR = halo * 0.5f;
+        using var haloPen    = new Pen(Color.White, halo)        { LineJoin = LineJoin.Round };
+        using var triHaloPen = new Pen(Color.White, halo * 0.5f) { LineJoin = LineJoin.Round };
+        using var shaft2Pen  = new Pen(Color.Black, OutlinePenWidth) { StartCap = LineCap.Round, EndCap = LineCap.Round };
+        using var blackPen   = new Pen(Color.Black, OutlinePenWidth);
+        using var white      = new SolidBrush(Color.White);
+
+        // 三角に黒 outline を被せて fin との辺アライメントを揃える (fin pen と同太さ)。
+        g.DrawLine(haloPen, anchor, lineEnd);
+        g.DrawLine(blackPen, anchor, lineEnd);
+        g.DrawPolygon(triHaloPen, tri);
+        g.FillPolygon(fill, tri);
+        g.DrawPolygon(blackPen, tri);
+        if (finCount > 0) DrawScrewFins(g, blackPen, tri, finCount, edgeStep, ScrewFinTailLen);
+        g.FillEllipse(white, lineEnd.X - dotR, lineEnd.Y - dotR, 2 * dotR, 2 * dotR);
+        g.DrawLine(haloPen, lineEnd, tail);
+        g.DrawLine(shaft2Pen, lineEnd, tail);
+        float footR = dotR * DiagThreefoldFootRatio;
+        g.FillEllipse(fill, anchor.X - footR, anchor.Y - footR, 2 * footR, 2 * footR);
+    }
+
+    /// <summary>(260502Ch) 立方晶 [101]/[011] 系などの斜め 2/2_1 軸を ITC Vol.A 風に描画。
+    /// shaft/foot は斜め 3 回軸と同じ要領、中心記号は通常の 2 回軸 lens をそのまま使う。</summary>
+    private static void DrawDiagonalTwofoldPerp(Graphics g, Brush fill, PointF anchor, float dirX, float dirY, bool screw)
+    {
+        PointF lineEnd = new(anchor.X + dirX * DiagThreefoldShaft1Len, anchor.Y + dirY * DiagThreefoldShaft1Len);
+        PointF tail    = new(lineEnd.X + dirX * DiagThreefoldShaft2Len, lineEnd.Y + dirY * DiagThreefoldShaft2Len);
+
+        float halo = DiagThreefoldHaloWidth;
+        float dotR = halo * 0.5f;
+        using var haloPen   = new Pen(Color.White, halo) { LineJoin = LineJoin.Round };
+        using var shaft2Pen = new Pen(Color.Black, OutlinePenWidth) { StartCap = LineCap.Round, EndCap = LineCap.Round };
+        using var blackPen  = new Pen(Color.Black, OutlinePenWidth);
+        using var white     = new SolidBrush(Color.White);
+
+        g.DrawLine(haloPen, anchor, lineEnd);
+        g.DrawLine(blackPen, anchor, lineEnd);
+        float lensRotationDeg = (float)(Math.Atan2(dirY, dirX) * 180.0 / Math.PI); // (260502Ch) 水平 shaft は現状維持、垂直 shaft は 90 度回転。
+        DrawTwofoldPerp(g, fill, lineEnd, screw, rotationDeg: lensRotationDeg);
+        g.FillEllipse(white, lineEnd.X - dotR, lineEnd.Y - dotR, 2 * dotR, 2 * dotR);
+        g.DrawLine(haloPen, lineEnd, tail);
+        g.DrawLine(shaft2Pen, lineEnd, tail);
+        float footR = dotR * DiagThreefoldFootRatio;
+        g.FillEllipse(fill, anchor.X - footR, anchor.Y - footR, 2 * footR, 2 * footR);
+    }
+    #endregion
+
+    #region 紙面内 2(2_1) 軸 矢印
     private readonly record struct InPlaneAxisArrowDraft(PointF Anchor, double OutUx, double OutUy, bool Screw, double Sz);
+
+    private static void CollectF23StandardInPlaneTwofoldAxisArrows(CellLayout c, ProjectionAxis projAxis,
+        Dictionary<(long, long, long, long, bool), InPlaneAxisArrowDraft> drafts)
+    {
+        if (projAxis != ProjectionAxis.C) return; // (260502Ch) 立方晶は C 投影固定。将来の保険。
+
+        // (260502Ch) ITA の F23 図は同じ投影線上でも 2 と 2_1 を高さで使い分ける。
+        // x/y = 0: 2_1 at z=1/4, x/y = 1/2: 2_1 at z=0 + 2 at z=1/4。
+        foreach (double fixedCoord in new[] { 0.0, 0.5 })
+        {
+            double screwZ = fixedCoord == 0 ? 0.25 : 0.0;
+            CollectInPlaneAxisArrows(c, 0, fixedCoord, screwZ, (0, 1, 0), projAxis, screw: true, drafts);
+            CollectInPlaneAxisArrows(c, fixedCoord, 0, screwZ, (1, 0, 0), projAxis, screw: true, drafts);
+            if (fixedCoord != 0.5) continue;
+            CollectInPlaneAxisArrows(c, 0, fixedCoord, 0.25, (0, 1, 0), projAxis, screw: false, drafts);
+            CollectInPlaneAxisArrows(c, fixedCoord, 0, 0.25, (1, 0, 0), projAxis, screw: false, drafts);
+        }
+    }
 
     /// <summary>紙面内 2(2_1) 軸の矢印を draft に集約。同一 (位置, 方向, screw) で複数高さがあれば最小 sz を残す。</summary>
     private static void CollectInPlaneAxisArrows(CellLayout c, double sx, double sy, double sz,
@@ -845,18 +699,45 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
         if (drafts.Count == 0) return;
         using var pen = new Pen(Color.Black, InPlaneAxisPenWidth);
         using var brush = new SolidBrush(Color.Black);
-        foreach (var d in drafts.Values)
+        foreach (var group in drafts.Values
+            .GroupBy(d => ((long)Math.Round(d.Anchor.X * 1000), (long)Math.Round(d.Anchor.Y * 1000),
+                           (long)Math.Round(d.OutUx * 1000), (long)Math.Round(d.OutUy * 1000)))) // (260502Ch)
         {
-            var tip = new PointF((float)(d.Anchor.X + InPlaneArrowExt * d.OutUx), (float)(d.Anchor.Y + InPlaneArrowExt * d.OutUy));
-            g.DrawLine(pen, d.Anchor, tip);
-            DrawArrowhead(g, fill, tip, d.OutUx, d.OutUy, halfHead: d.Screw);
-            string h = HeightLabel(d.Sz);
-            if (h == null) continue;
-            var lbl = g.MeasureString(h, HeightLabelFont);
-            bool horiz = Math.Abs(d.OutUy) < 0.1;
-            float lx = horiz ? tip.X - lbl.Width / 2 : tip.X - lbl.Width - 2;
-            float ly = horiz ? tip.Y + 3 : tip.Y - lbl.Height / 2;
-            g.DrawString(h, HeightLabelFont, brush, lx, ly);
+            var list = group.OrderBy(d => d.Sz).ThenBy(d => d.Screw ? 0 : 1).ToList();
+            for (int i = 0; i < list.Count; i++)
+            {
+                var d = list[i];
+                double offset = list.Count == 1 ? 0 : (i - (list.Count - 1) / 2.0) * 7.0; // (260502Ch) 同じ投影線上の 2 / 2_1 を少し並べる。
+                float ox = (float)(-d.OutUy * offset), oy = (float)(d.OutUx * offset);
+                var anchor = new PointF(d.Anchor.X + ox, d.Anchor.Y + oy);
+                var tip = new PointF((float)(anchor.X + InPlaneArrowExt * d.OutUx), (float)(anchor.Y + InPlaneArrowExt * d.OutUy));
+                g.DrawLine(pen, anchor, tip);
+                DrawArrowhead(g, fill, tip, d.OutUx, d.OutUy, halfHead: d.Screw);
+                string h = HeightLabel(d.Sz);
+                if (h == null) continue;
+                var lbl = g.MeasureString(h, HeightLabelFont);
+                // (260502Ch) 非ゼロ高さは矢印先端にくっつけて表示する。
+                bool horiz = Math.Abs(d.OutUx) >= Math.Abs(d.OutUy);
+                float lx = horiz
+                    ? (d.OutUx >= 0 ? tip.X + 1 : tip.X - lbl.Width - 1)
+                    : tip.X - lbl.Width / 2;
+                float ly = horiz
+                    ? tip.Y - lbl.Height / 2
+                    : (d.OutUy >= 0 ? tip.Y + 1 : tip.Y - lbl.Height - 1);
+                // (260502Cl) 同じ投影線上に複数軸 (2 / 2_1 並列) があるときは、ラベルが
+                // 隣接軸領域へはみ出さないよう、自軸側に寄せる (中心線 midline で clamp)。
+                if (horiz && oy != 0f)
+                {
+                    float midY = tip.Y - oy;
+                    ly = oy > 0 ? Math.Max(ly, midY) : Math.Min(ly, midY - lbl.Height);
+                }
+                else if (!horiz && ox != 0f)
+                {
+                    float midX = tip.X - ox;
+                    lx = ox > 0 ? Math.Max(lx, midX) : Math.Min(lx, midX - lbl.Width);
+                }
+                g.DrawString(h, HeightLabelFont, brush, lx, ly);
+            }
         }
     }
 
@@ -867,7 +748,9 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
         PointF right = new((float)(bx + ArrowHeadHalfWidth * uy), (float)(by - ArrowHeadHalfWidth * ux));
         g.FillPolygon(fill, halfHead ? [tip, new PointF(bx, by), left] : [tip, left, right]);
     }
+    #endregion
 
+    #region 紙面平行 mirror corner bracket
     /// <summary>紙面平行 mirror/glide を IUCR corner bracket で描画。mirror があれば左上、glide は右下に分ける。</summary>
     private static void DrawParallelMirrorStack(Graphics g, CellLayout c, HashSet<(double Height, bool Glide, double GlideSx, double GlideSy)> markers, Brush fill)
     {
@@ -883,9 +766,8 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
         using var pen = new Pen(Color.Black, CornerBracketPenWidth);
         using var brush = new SolidBrush(Color.Black);
 
-        // (260502Ch) mirror は高さ 0 を優先し、glide は glide 方向ごとに低い高さを採用した代表記号にまとめる。
-        // (260502Cl) e-glide (Ccce 等) は同じ高さに 2 方向の glide が共存するので、その場合は 1 個の bracket で 2 本の矢印を描く。
-        var symbols = new List<(double Height, double GlideSx, double GlideSy, double GlideSx2, double GlideSy2, bool NGlide, bool DGlide, int DiamondScore)>();
+        // mirror は高さ 0 を優先、glide は方向ごとに低い高さを採用、e-glide (Ccce 等) は同高さの直交ペアを 1 個の bracket に統合。
+        var symbols = new List<ParallelMirrorSymbol>();
         var mirrorHeights = markers
             .Where(m => !HasInPlaneGlide(m))
             .Select(m => HeightKey(m.Height))
@@ -893,9 +775,8 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
             .OrderBy(h => h)
             .ToList();
         if (mirrorHeights.Count > 0)
-            symbols.Add((mirrorHeights[0], 0, 0, 0, 0, false, false, 0));
+            symbols.Add(new(mirrorHeights[0], 0, 0, 0, 0, false, false, 0));
 
-        // 1 方向ごとに代表 glide を取り、そのあと同じ高さでの直交ペアを e-glide にマージ。
         var glideReps = markers
             .Where(HasInPlaneGlide)
             .GroupBy(GlideKey)
@@ -911,32 +792,42 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
         foreach (var heightGrp in glideReps.GroupBy(g => g.Height))
         {
             var list = heightGrp.ToList();
+            // (260502Ch) Pn-3 などで同一高さに現れる ±対角 n-glide は、紙面平行 bracket としては同じ情報なので 1 つに畳む。
+            for (int i = list.Count - 1; i >= 0; i--)
+            {
+                if (!list[i].NG) continue;
+                for (int j = 0; j < i; j++)
+                    if (list[j].NG && R6(Math.Abs(list[j].Sx)) == R6(Math.Abs(list[i].Sx)) &&
+                        R6(Math.Abs(list[j].Sy)) == R6(Math.Abs(list[i].Sy)))
+                    {
+                        list.RemoveAt(i);
+                        break;
+                    }
+            }
             int merged = -1;
             for (int i = 0; i < list.Count - 1 && merged < 0; i++)
                 for (int j = i + 1; j < list.Count; j++)
-                    if (IsDoubleGlidePair(list[i].Sx, list[i].Sy, 0, list[j].Sx, list[j].Sy, 0)) // (260502Ch) 紙面垂直 e-glide と共通の判定。
+                    if (IsDoubleGlidePair(list[i].Sx, list[i].Sy, 0, list[j].Sx, list[j].Sy, 0))
                     {
-                        symbols.Add((heightGrp.Key, list[i].Sx, list[i].Sy, list[j].Sx, list[j].Sy, false, false, 0));
+                        symbols.Add(new(heightGrp.Key, list[i].Sx, list[i].Sy, list[j].Sx, list[j].Sy, false, false, 0));
                         list.RemoveAt(j); list.RemoveAt(i);
                         merged = i;
                         break;
                     }
             foreach (var rep in list)
-                symbols.Add((rep.Height, rep.Sx, rep.Sy, 0, 0, rep.NG, rep.DG, rep.DS));
+                symbols.Add(new(rep.Height, rep.Sx, rep.Sy, 0, 0, rep.NG, rep.DG, rep.DS));
         }
 
         bool hasDiamondGlide = symbols.Any(s => s.DGlide);
         var orderedSymbols = symbols
-            .Select((s, i) => (Symbol: s, Index: i))
-            .OrderBy(x => hasDiamondGlide ? x.Symbol.DiamondScore : GetRightDownScore(x.Symbol))
-            .ThenBy(x => x.Symbol.Height)
-            .ThenBy(x => Math.Atan2(x.Symbol.GlideSy, x.Symbol.GlideSx))
-            .Select(x => x.Symbol)
+            .OrderBy(s => hasDiamondGlide ? s.DiamondScore : (s.NGlide ? 2 : 0))
+            .ThenBy(s => s.Height)
+            .ThenBy(s => Math.Atan2(s.GlideSy, s.GlideSx))
             .ToList();
         for (int i = 0; i < orderedSymbols.Count; i++)
         {
             var marker = orderedSymbols[i];
-            // (260502Cl) 左上 (i=0) の bracket は記号の左下にラベルを置く。それ以外は従来通り右側 (中央)。
+            // 左上 (i=0) の bracket は記号の左下にラベルを置く。それ以外は従来通り右側 (中央)。
             DrawBracket(new PointF(apex0.X + CornerBracketStep * i * (hUx + vUx), apex0.Y + CornerBracketStep * i * (hUy + vUy)),
                 marker.Height, marker.GlideSx, marker.GlideSy, marker.GlideSx2, marker.GlideSy2, labelAtBottomLeft: i == 0);
         }
@@ -945,7 +836,7 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
         {
             var hEnd = new PointF(apex.X + armLen * hUx, apex.Y + armLen * hUy);
             var vEnd = new PointF(apex.X + armLen * vUx, apex.Y + armLen * vUy);
-            // (260502Cl) 矢印は最大 2 本まで (e-glide 用)。
+            // 矢印は最大 2 本まで (e-glide 用)。
             var arrows = new List<(PointF Tip, PointF LineEnd, double Ux, double Uy)>();
             TryAddGlide(glideSx, glideSy);
             TryAddGlide(glideSx2, glideSy2);
@@ -961,7 +852,7 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
                 var end = new PointF((float)(apex.X + ux * armLen), (float)(apex.Y + uy * armLen));
                 var lineEnd = new PointF((float)(end.X - ux * GlideArrowLineShorten), (float)(end.Y - uy * GlideArrowLineShorten));
                 arrows.Add((end, lineEnd, ux, uy));
-                // (260502Ch) 映進方向が bracket の腕と重なる場合は、腕自体も矢頭より手前で止める。
+                // 映進方向が bracket の腕と重なる場合は、腕自体も矢頭より手前で止める。
                 if (ux * hUx + uy * hUy > 0.98) hEnd = lineEnd;
                 if (ux * vUx + uy * vUy > 0.98) vEnd = lineEnd;
             }
@@ -980,7 +871,7 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
                 DrawArrowhead(g, fill, tip, ux, uy, halfHead: false);
             }
 
-            // (260502Cl) 高さラベル: 0 なら省略。labelAtBottomLeft (左上 bracket) は下向き腕の終端 vEnd の下・左脇、それ以外は右側 (中央) に置く。
+            // 高さラベル: 0 なら省略。labelAtBottomLeft (左上 bracket) は下向き腕の終端 vEnd の下・左脇、それ以外は右側 (中央) に置く。
             string lbl = HeightLabel(height);
             if (lbl == null) return;
             var ls = g.MeasureString(lbl, HeightLabelFont);
@@ -999,14 +890,11 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
         }
 
         static bool IsDGlide(double glideSx, double glideSy)
-        {
-            return IsQuarterGlideComponent(glideSx) && IsQuarterGlideComponent(glideSy);
-        }
+            => IsQuarterGlideComponent(glideSx) && IsQuarterGlideComponent(glideSy);
 
         void NormalizeDiamondGlideDirection(ref double glideSx, ref double glideSy)
         {
             if (!IsDGlide(glideSx, glideSy)) return;
-            double dx = glideSx * c.Horz.X + glideSy * c.Vert.X;
             double dy = glideSx * c.Horz.Y + glideSy * c.Vert.Y;
             if (dy < 0) { glideSx = -glideSx; glideSy = -glideSy; }
         }
@@ -1016,13 +904,10 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
             if (!IsDGlide(glideSx, glideSy)) return 0;
             double dx = glideSx * c.Horz.X + glideSy * c.Vert.X;
             double dy = glideSx * c.Horz.Y + glideSy * c.Vert.Y;
-            if (dy > 0 && dx < 0) return -1; // (260502Ch) 左下矢印は左上側へ。
-            if (dy > 0 && dx > 0) return 1;  // (260502Ch) 右下矢印は右下側へ。
+            if (dy > 0 && dx < 0) return -1;
+            if (dy > 0 && dx > 0) return 1;
             return 0;
         }
-
-        static int GetRightDownScore((double Height, double GlideSx, double GlideSy, double GlideSx2, double GlideSy2, bool NGlide, bool DGlide, int DiamondScore) symbol)
-            => symbol.NGlide ? 2 : 0;
 
         static double HeightKey(double height)
         {
@@ -1037,8 +922,10 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
             return (R6(sx), R6(sy));
         }
     }
+    #endregion
 
-    /// <summary>(260502Ch) 紙面垂直 mirror/glide を幾何線ごとに集約し、double-glide ペアを e-glide として描画する。</summary>
+    #region 紙面垂直 mirror/glide
+    /// <summary>紙面垂直 mirror/glide を幾何線ごとに集約し、d-glide 優先 → e-glide ペア → glide score 最小、の順に 1 つだけ描画。</summary>
     private static void DrawCollectedPerpendicularMirrorPlanes(ElementsContext ctx)
     {
         if (ctx.PerpendicularMirrors.Count == 0) return;
@@ -1050,29 +937,26 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
         foreach (var group in groups)
         {
             var drafts = group.Select(x => x.Draft).ToList();
-            // (260502Cl) d-glide は最優先 — 該当 draft を描いて他は捨てる。
-            for (int i = 0; i < drafts.Count; i++)
-            {
-                var (gSx, gSy, gSz) = ctx.Proj.ToScreen(drafts[i].Glide.U, drafts[i].Glide.V, drafts[i].Glide.W);
-                if (!IsPerpendicularDGlide(gSx, gSy, gSz)) continue;
-                DrawMirrorPerpToScreen(ctx, drafts[i].Sx, drafts[i].Sy, drafts[i].Direction, drafts[i].Glide);
-                goto nextGroup;
-            }
-            // double-glide ペアなら e-glide 1 個に統合。
-            if (TryFindDoubleGlideDraft(ctx.Proj, drafts, out var eDraft))
-            {
-                DrawMirrorPerpToScreen(ctx, eDraft.Sx, eDraft.Sy, eDraft.Direction, eDraft.Glide, forceEGlide: true);
-                continue;
-            }
-            // (260502Cl) 同一線位置に複数 draft が来た場合は glide score (|gSx|+|gSy|+|gSz|) が最小の 1 個のみ描く。
-            // R-3m 等で R-centering 由来の (重複) c-glide / mixed-glide 表現を捨て、純 mirror や a/b-glide を残すため。
-            var best = drafts.OrderBy(d =>
+            // d-glide 最優先 → e-glide ペア → glide score 最小、の順に 1 つだけ描く。
+            var dDraft = drafts.FirstOrDefault(d =>
             {
                 var (gSx, gSy, gSz) = ctx.Proj.ToScreen(d.Glide.U, d.Glide.V, d.Glide.W);
-                return Math.Abs(gSx) + Math.Abs(gSy) + Math.Abs(gSz);
-            }).First();
-            DrawMirrorPerpToScreen(ctx, best.Sx, best.Sy, best.Direction, best.Glide);
-            nextGroup:;
+                return IsPerpendicularDGlide(gSx, gSy, gSz);
+            });
+            if (dDraft != default)
+                DrawMirrorPerpToScreen(ctx, dDraft.Sx, dDraft.Sy, dDraft.Direction, dDraft.Glide);
+            else if (TryFindDoubleGlideDraft(ctx.Proj, drafts, out var eDraft))
+                DrawMirrorPerpToScreen(ctx, eDraft.Sx, eDraft.Sy, eDraft.Direction, eDraft.Glide, forceEGlide: true);
+            else
+            {
+                // R-3m 等の重複 glide 表現を捨て、純 mirror や a/b-glide を残すため glide score 最小を採用。
+                var best = drafts.OrderBy(d =>
+                {
+                    var (gSx, gSy, gSz) = ctx.Proj.ToScreen(d.Glide.U, d.Glide.V, d.Glide.W);
+                    return Math.Abs(gSx) + Math.Abs(gSy) + Math.Abs(gSz);
+                }).First();
+                DrawMirrorPerpToScreen(ctx, best.Sx, best.Sy, best.Direction, best.Glide);
+            }
         }
     }
 
@@ -1112,8 +996,7 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
         bool hasInPlane = Math.Abs(gSx) > 1e-3 || Math.Abs(gSy) > 1e-3;
         bool hasDepth   = Math.Abs(gSz) > 1e-3;
         bool dGlide = IsPerpendicularDGlide(gSx, gSy, gSz);
-        bool eGlide = forceEGlide; // (260502Ch) e は DrawCollectedPerpendicularMirrorPlanes で double-glide ペアから判定済み。
-        int style = dGlide ? 4 : eGlide ? 5 : (hasInPlane, hasDepth) switch { (false, false) => 0, (true, false) => 1, (false, true) => 2, _ => 3 };
+        int style = dGlide ? 4 : forceEGlide ? 5 : (hasInPlane, hasDepth) switch { (false, false) => 0, (true, false) => 1, (false, true) => 2, _ => 3 };
         Pen pen = style switch { 0 => ctx.MirrorPen, 1 => ctx.InPlanePen, 2 => ctx.DepthPen, 3 => ctx.DiagPen, 5 => ctx.EPen, _ => ctx.MirrorPen };
 
         Draw(sx, sy);
@@ -1173,7 +1056,7 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
         return nonZero == 1 && half == 1;
     }
 
-    /// <summary>(260502Ch) e-glide 判定の共通部。互いに独立な単一方向 half-glide が 2 本ある場合を double-glide とする。</summary>
+    /// <summary>e-glide 判定。互いに独立な単一方向 half-glide 2 本ある場合を double-glide とする。</summary>
     private static bool IsDoubleGlidePair(double x1, double y1, double z1, double x2, double y2, double z2)
     {
         if (!IsSimpleHalfGlideVector(x1, y1, z1) || !IsSimpleHalfGlideVector(x2, y2, z2)) return false;
@@ -1204,7 +1087,7 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
         return true;
     }
 
-    /// <summary>(260502Ch) d-glide 矢印の基準方向。(0,+1/4,+1/4) は C 投影で右向き (+Y = +b) になる。</summary>
+    /// <summary>d-glide 矢印の基準方向。(0,+1/4,+1/4) は C 投影で右向き (+Y = +b) になる。</summary>
     private static (float X, float Y) GetDGlideArrowDirection(CellLayout c, double gSx, double gSy, double gSz)
     {
         double depthSign = CenterMod1(gSz) < 0 ? -1 : 1;
@@ -1212,7 +1095,7 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
                 (float)(depthSign * (gSx * c.Horz.Y + gSy * c.Vert.Y)));
     }
 
-    /// <summary>(260502Ch) 紙面垂直 d-glide の dot-dash-dot-dash-dot-arrow 反復線。</summary>
+    /// <summary>紙面垂直 d-glide の dot-dash-dot-dash-dot-arrow 反復線。</summary>
     private static void DrawDGlidePerpLine(Graphics g, Pen pen, Brush fill, PointF start, PointF end, float arrowX, float arrowY)
     {
         double dx = end.X - start.X, dy = end.Y - start.Y;
@@ -1237,7 +1120,7 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
             Dot(baseT + 19f);
             Dash(baseT + 25f, baseT + 25f + dashLen);
             Dot(baseT + 38f);
-            Arrow(baseT + 44f, baseT + 44f + arrowLen, forward: true); // (260502Ch) 一本の d-glide 線内では矢印方向を変えない。
+            Arrow(baseT + 44f, baseT + 44f + arrowLen);
         }
 
         PointF Pt(double t) => new((float)(start.X + ux * t), (float)(start.Y + uy * t));
@@ -1256,23 +1139,13 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
             g.DrawLine(pen, Pt(t1), Pt(t2));
         }
 
-        void Arrow(float t1, float t2, bool forward)
+        void Arrow(float t1, float t2)
         {
             if (t2 > len || t2 <= t1) return;
-            if (forward)
-            {
-                var tip = Pt(t2);
-                var lineEnd = Pt(Math.Max(t1, t2 - GlideArrowLineShorten));
-                g.DrawLine(pen, Pt(t1), lineEnd);
-                DrawArrowhead(g, fill, tip, ux, uy, halfHead: false);
-            }
-            else
-            {
-                var tip = Pt(t1);
-                var lineEnd = Pt(Math.Min(t2, t1 + GlideArrowLineShorten));
-                g.DrawLine(pen, lineEnd, Pt(t2));
-                DrawArrowhead(g, fill, tip, -ux, -uy, halfHead: false);
-            }
+            var tip = Pt(t2);
+            var lineEnd = Pt(Math.Max(t1, t2 - GlideArrowLineShorten));
+            g.DrawLine(pen, Pt(t1), lineEnd);
+            DrawArrowhead(g, fill, tip, ux, uy, halfHead: false);
         }
     }
 
@@ -1286,4 +1159,5 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
         return m;
     }
     #endregion
+
 }

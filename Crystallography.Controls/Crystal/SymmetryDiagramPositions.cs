@@ -43,7 +43,7 @@ public class SymmetryDiagramPositions : SymmetryDiagramCommon
         var bmp = NewBitmap(clientSize, out var g);
         try
         {
-            if (!TryGetSym(seriesNumber, out var sym, out var msg))
+            if (!TryGetSym(seriesNumber, out var sym, out seriesNumber, out var msg))
             {
                 if (msg != null) DrawCenteredText(g, bmp.Size, msg, Color.Gray);
                 return bmp;

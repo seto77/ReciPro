@@ -209,14 +209,24 @@ public abstract class SymmetryDiagramCommon
         return bmp;
     }
 
-    /// <summary>tri/mono/ortho/tet/trig/hex (1-6) のみ対応 (cubic は未対応、trigonal Rho セッティングも後回し)。</summary>
-    protected static bool TryGetSym(int seriesNumber, out Symmetry sym, out string msg)
+    /// <summary>tri/mono/ortho/tet/trig/hex/cubic (1-7) に対応。
+    /// (260502Cl) trigonal Rho 設定は同一空間群の Hex 設定にリダイレクトして同じ図を描く。
+    /// (260502Cl 追加) 立方晶系 (7) を許可。当面は P23 など低対称な空間群から実装中。</summary>
+    protected static bool TryGetSym(int seriesNumber, out Symmetry sym, out int resolvedSeriesNumber, out string msg)
     {
-        sym = default; msg = null;
+        sym = default; msg = null; resolvedSeriesNumber = seriesNumber;
         if (seriesNumber <= 0 || seriesNumber >= SymmetryStatic.TotalSpaceGroupNumber) return false;
         sym = SymmetryStatic.Symmetries[seriesNumber];
-        if (sym.CrystalSystemNumber is not (1 or 2 or 3 or 4 or 5 or 6) ||
-            (sym.SpaceGroupHMStr != null && sym.SpaceGroupHMStr.EndsWith("Rho")))
+        if (sym.SpaceGroupHMStr != null && sym.SpaceGroupHMStr.EndsWith("Rho"))
+            for (int i = 1; i < SymmetryStatic.TotalSpaceGroupNumber; i++)
+            {
+                var alt = SymmetryStatic.Symmetries[i];
+                if (alt.SpaceGroupNumber == sym.SpaceGroupNumber && alt.SpaceGroupHMStr is { } s && s.EndsWith("Hex"))
+                {
+                    sym = alt; resolvedSeriesNumber = i; break;
+                }
+            }
+        if (sym.CrystalSystemNumber is not (1 or 2 or 3 or 4 or 5 or 6 or 7))
         {
             msg = $"({sym.CrystalSystemStr} not yet supported)";
             return false;
