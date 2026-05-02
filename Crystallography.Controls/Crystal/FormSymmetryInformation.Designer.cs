@@ -32,40 +32,6 @@
             graphicsBoxSymmetryElements = new GraphicsBox(components);
             graphicsBoxGeneralPositions = new GraphicsBox(components);
             tabControl = new System.Windows.Forms.TabControl();
-            tabPageConditions = new System.Windows.Forms.TabPage();
-            flowLayoutPanelExtinctionRule = new System.Windows.Forms.FlowLayoutPanel();
-            label49 = new System.Windows.Forms.Label();
-            tabPageWyckoff = new System.Windows.Forms.TabPage();
-            dataGridView1 = new System.Windows.Forms.DataGridView();
-            columnMultiplicityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            columnWyckoffLetterDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            columnSiteSymmetryDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            columnCoordinates1DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            columnCoordinates2DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            columnCoordinates3DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            columnCoordinates4DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            dataSet = new System.Data.DataSet();
-            dataTableWyckoff = new System.Data.DataTable();
-            dataColumn1 = new System.Data.DataColumn();
-            dataColumn2 = new System.Data.DataColumn();
-            dataColumn3 = new System.Data.DataColumn();
-            dataColumn4 = new System.Data.DataColumn();
-            dataColumn5 = new System.Data.DataColumn();
-            dataColumn6 = new System.Data.DataColumn();
-            dataColumn7 = new System.Data.DataColumn();
-            dataTablePlanes = new System.Data.DataTable();
-            dataColumnH = new System.Data.DataColumn();
-            dataColumnK = new System.Data.DataColumn();
-            dataColumnL = new System.Data.DataColumn();
-            dataColumnMulti = new System.Data.DataColumn();
-            dataColumnD = new System.Data.DataColumn();
-            dataColumnCondition = new System.Data.DataColumn();
-            dataColumnTwoTheta = new System.Data.DataColumn();
-            dataColumnFreal = new System.Data.DataColumn();
-            dataColumnFinverse = new System.Data.DataColumn();
-            dataColumnF = new System.Data.DataColumn();
-            dataColumn13 = new System.Data.DataColumn();
-            dataColumnIntensity = new System.Data.DataColumn();
             tabPage1 = new System.Windows.Forms.TabPage();
             numericBoxAnglePlanes = new NumericBox();
             textBoxZoneAxis = new System.Windows.Forms.TextBox();
@@ -134,6 +100,40 @@
             textBoxZonePlane = new System.Windows.Forms.TextBox();
             label42 = new System.Windows.Forms.Label();
             panel1 = new System.Windows.Forms.Panel();
+            tabPageWyckoff = new System.Windows.Forms.TabPage();
+            dataGridView1 = new System.Windows.Forms.DataGridView();
+            columnMultiplicityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            columnWyckoffLetterDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            columnSiteSymmetryDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            columnCoordinates1DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            columnCoordinates2DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            columnCoordinates3DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            columnCoordinates4DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            dataSet = new System.Data.DataSet();
+            dataTableWyckoff = new System.Data.DataTable();
+            dataColumn1 = new System.Data.DataColumn();
+            dataColumn2 = new System.Data.DataColumn();
+            dataColumn3 = new System.Data.DataColumn();
+            dataColumn4 = new System.Data.DataColumn();
+            dataColumn5 = new System.Data.DataColumn();
+            dataColumn6 = new System.Data.DataColumn();
+            dataColumn7 = new System.Data.DataColumn();
+            dataTablePlanes = new System.Data.DataTable();
+            dataColumnH = new System.Data.DataColumn();
+            dataColumnK = new System.Data.DataColumn();
+            dataColumnL = new System.Data.DataColumn();
+            dataColumnMulti = new System.Data.DataColumn();
+            dataColumnD = new System.Data.DataColumn();
+            dataColumnCondition = new System.Data.DataColumn();
+            dataColumnTwoTheta = new System.Data.DataColumn();
+            dataColumnFreal = new System.Data.DataColumn();
+            dataColumnFinverse = new System.Data.DataColumn();
+            dataColumnF = new System.Data.DataColumn();
+            dataColumn13 = new System.Data.DataColumn();
+            dataColumnIntensity = new System.Data.DataColumn();
+            tabPageConditions = new System.Windows.Forms.TabPage();
+            flowLayoutPanelExtinctionRule = new System.Windows.Forms.FlowLayoutPanel();
+            label49 = new System.Windows.Forms.Label();
             groupBoxSpaceGroup = new System.Windows.Forms.GroupBox();
             labelLaTexSG_Hall = new LabelLaTeX();
             labelLaTexSG_SF = new LabelLaTeX();
@@ -146,10 +146,10 @@
             labelLaTexCS = new LabelLaTeX();
             label = new System.Windows.Forms.Label();
             groupBoxPointGroup = new System.Windows.Forms.GroupBox();
+            labelLaTexPG_HM = new LabelLaTeX();
             label10 = new System.Windows.Forms.Label();
             label11 = new System.Windows.Forms.Label();
             labelLaTexPG_SF = new LabelLaTeX();
-            labelLaTexPG_HM = new LabelLaTeX();
             bindingSourceScatteringFactor = new System.Windows.Forms.BindingSource(components);
             panel2 = new System.Windows.Forms.Panel();
             label4 = new System.Windows.Forms.Label();
@@ -158,12 +158,6 @@
             ((System.ComponentModel.ISupportInitialize)graphicsBoxSymmetryElements).BeginInit();
             ((System.ComponentModel.ISupportInitialize)graphicsBoxGeneralPositions).BeginInit();
             tabControl.SuspendLayout();
-            tabPageConditions.SuspendLayout();
-            tabPageWyckoff.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dataSet).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dataTableWyckoff).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dataTablePlanes).BeginInit();
             tabPage1.SuspendLayout();
             flowLayoutPanel6.SuspendLayout();
             flowLayoutPanelH2.SuspendLayout();
@@ -183,6 +177,12 @@
             flowLayoutPanelK1.SuspendLayout();
             flowLayoutPanelI1.SuspendLayout();
             flowLayoutPanelL1.SuspendLayout();
+            tabPageWyckoff.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataSet).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataTableWyckoff).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataTablePlanes).BeginInit();
+            tabPageConditions.SuspendLayout();
             groupBoxSpaceGroup.SuspendLayout();
             groupBoxPointGroup.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)bindingSourceScatteringFactor).BeginInit();
@@ -201,7 +201,7 @@
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 1;
             tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            tableLayoutPanel1.Size = new System.Drawing.Size(1020, 517);
+            tableLayoutPanel1.Size = new System.Drawing.Size(1020, 406);
             tableLayoutPanel1.TabIndex = 5;
             // 
             // graphicsBoxSymmetryElements
@@ -211,7 +211,7 @@
             graphicsBoxSymmetryElements.Fonts = new System.Drawing.Font("Segoe UI Variable Text", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
             graphicsBoxSymmetryElements.Location = new System.Drawing.Point(3, 3);
             graphicsBoxSymmetryElements.Name = "graphicsBoxSymmetryElements";
-            graphicsBoxSymmetryElements.Size = new System.Drawing.Size(504, 511);
+            graphicsBoxSymmetryElements.Size = new System.Drawing.Size(504, 400);
             graphicsBoxSymmetryElements.TabIndex = 0;
             graphicsBoxSymmetryElements.TabStop = false;
             // 
@@ -222,7 +222,7 @@
             graphicsBoxGeneralPositions.Fonts = new System.Drawing.Font("Segoe UI Variable Text", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
             graphicsBoxGeneralPositions.Location = new System.Drawing.Point(513, 3);
             graphicsBoxGeneralPositions.Name = "graphicsBoxGeneralPositions";
-            graphicsBoxGeneralPositions.Size = new System.Drawing.Size(504, 511);
+            graphicsBoxGeneralPositions.Size = new System.Drawing.Size(504, 400);
             graphicsBoxGeneralPositions.TabIndex = 0;
             graphicsBoxGeneralPositions.TabStop = false;
             // 
@@ -237,221 +237,6 @@
             tabControl.SelectedIndex = 0;
             tabControl.Size = new System.Drawing.Size(681, 201);
             tabControl.TabIndex = 4;
-            // 
-            // tabPageConditions
-            // 
-            captureExtender.SetCapture(tabPageConditions, true);
-            tabPageConditions.Controls.Add(flowLayoutPanelExtinctionRule);
-            tabPageConditions.Controls.Add(label49);
-            tabPageConditions.Font = new System.Drawing.Font("Segoe UI Variable Text", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-            tabPageConditions.Location = new System.Drawing.Point(4, 25);
-            tabPageConditions.Name = "tabPageConditions";
-            tabPageConditions.Size = new System.Drawing.Size(673, 172);
-            tabPageConditions.TabIndex = 1;
-            tabPageConditions.Text = "Conditions";
-            // 
-            // flowLayoutPanelExtinctionRule
-            // 
-            flowLayoutPanelExtinctionRule.AutoScroll = true;
-            flowLayoutPanelExtinctionRule.Dock = System.Windows.Forms.DockStyle.Fill;
-            flowLayoutPanelExtinctionRule.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            flowLayoutPanelExtinctionRule.Location = new System.Drawing.Point(0, 22);
-            flowLayoutPanelExtinctionRule.Margin = new System.Windows.Forms.Padding(0);
-            flowLayoutPanelExtinctionRule.Name = "flowLayoutPanelExtinctionRule";
-            flowLayoutPanelExtinctionRule.Size = new System.Drawing.Size(673, 150);
-            flowLayoutPanelExtinctionRule.TabIndex = 6;
-            flowLayoutPanelExtinctionRule.WrapContents = false;
-            // 
-            // label49
-            // 
-            label49.AutoSize = true;
-            label49.Dock = System.Windows.Forms.DockStyle.Top;
-            label49.Font = new System.Drawing.Font("Segoe UI Variable Text", 9F);
-            label49.Location = new System.Drawing.Point(0, 0);
-            label49.Name = "label49";
-            label49.Padding = new System.Windows.Forms.Padding(0, 0, 0, 6);
-            label49.Size = new System.Drawing.Size(211, 22);
-            label49.TabIndex = 7;
-            label49.Text = "Conditions limiting possible reflections";
-            // 
-            // tabPageWyckoff
-            // 
-            captureExtender.SetCapture(tabPageWyckoff, true);
-            tabPageWyckoff.Controls.Add(dataGridView1);
-            tabPageWyckoff.Font = new System.Drawing.Font("Segoe UI Variable Text", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-            tabPageWyckoff.Location = new System.Drawing.Point(4, 25);
-            tabPageWyckoff.Name = "tabPageWyckoff";
-            tabPageWyckoff.Size = new System.Drawing.Size(673, 172);
-            tabPageWyckoff.TabIndex = 2;
-            tabPageWyckoff.Text = "Wyckoff Positions";
-            // 
-            // dataGridView1
-            // 
-            dataGridView1.AllowUserToAddRows = false;
-            dataGridView1.AllowUserToDeleteRows = false;
-            dataGridView1.AutoGenerateColumns = false;
-            dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { columnMultiplicityDataGridViewTextBoxColumn, columnWyckoffLetterDataGridViewTextBoxColumn, columnSiteSymmetryDataGridViewTextBoxColumn, columnCoordinates1DataGridViewTextBoxColumn, columnCoordinates2DataGridViewTextBoxColumn, columnCoordinates3DataGridViewTextBoxColumn, columnCoordinates4DataGridViewTextBoxColumn });
-            dataGridView1.DataMember = "TableWyckoff";
-            dataGridView1.DataSource = dataSet;
-            dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            dataGridView1.Location = new System.Drawing.Point(0, 0);
-            dataGridView1.MultiSelect = false;
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowHeadersVisible = false;
-            dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            dataGridView1.Size = new System.Drawing.Size(673, 172);
-            dataGridView1.TabIndex = 0;
-            // 
-            // columnMultiplicityDataGridViewTextBoxColumn
-            // 
-            columnMultiplicityDataGridViewTextBoxColumn.DataPropertyName = "ColumnMultiplicity";
-            columnMultiplicityDataGridViewTextBoxColumn.HeaderText = "Mult.";
-            columnMultiplicityDataGridViewTextBoxColumn.Name = "columnMultiplicityDataGridViewTextBoxColumn";
-            columnMultiplicityDataGridViewTextBoxColumn.ReadOnly = true;
-            columnMultiplicityDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            columnMultiplicityDataGridViewTextBoxColumn.Width = 40;
-            // 
-            // columnWyckoffLetterDataGridViewTextBoxColumn
-            // 
-            columnWyckoffLetterDataGridViewTextBoxColumn.DataPropertyName = "ColumnWyckoffLetter";
-            columnWyckoffLetterDataGridViewTextBoxColumn.HeaderText = "Wyck. Let.";
-            columnWyckoffLetterDataGridViewTextBoxColumn.Name = "columnWyckoffLetterDataGridViewTextBoxColumn";
-            columnWyckoffLetterDataGridViewTextBoxColumn.ReadOnly = true;
-            columnWyckoffLetterDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            columnWyckoffLetterDataGridViewTextBoxColumn.Width = 40;
-            // 
-            // columnSiteSymmetryDataGridViewTextBoxColumn
-            // 
-            columnSiteSymmetryDataGridViewTextBoxColumn.DataPropertyName = "ColumnSiteSymmetry";
-            columnSiteSymmetryDataGridViewTextBoxColumn.HeaderText = "Site Sym.";
-            columnSiteSymmetryDataGridViewTextBoxColumn.Name = "columnSiteSymmetryDataGridViewTextBoxColumn";
-            columnSiteSymmetryDataGridViewTextBoxColumn.ReadOnly = true;
-            columnSiteSymmetryDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            columnSiteSymmetryDataGridViewTextBoxColumn.Width = 40;
-            // 
-            // columnCoordinates1DataGridViewTextBoxColumn
-            // 
-            columnCoordinates1DataGridViewTextBoxColumn.DataPropertyName = "ColumnCoordinates1";
-            columnCoordinates1DataGridViewTextBoxColumn.HeaderText = "Coordinates";
-            columnCoordinates1DataGridViewTextBoxColumn.Name = "columnCoordinates1DataGridViewTextBoxColumn";
-            columnCoordinates1DataGridViewTextBoxColumn.ReadOnly = true;
-            columnCoordinates1DataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // columnCoordinates2DataGridViewTextBoxColumn
-            // 
-            columnCoordinates2DataGridViewTextBoxColumn.DataPropertyName = "ColumnCoordinates2";
-            columnCoordinates2DataGridViewTextBoxColumn.HeaderText = "";
-            columnCoordinates2DataGridViewTextBoxColumn.Name = "columnCoordinates2DataGridViewTextBoxColumn";
-            columnCoordinates2DataGridViewTextBoxColumn.ReadOnly = true;
-            columnCoordinates2DataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // columnCoordinates3DataGridViewTextBoxColumn
-            // 
-            columnCoordinates3DataGridViewTextBoxColumn.DataPropertyName = "ColumnCoordinates3";
-            columnCoordinates3DataGridViewTextBoxColumn.HeaderText = "";
-            columnCoordinates3DataGridViewTextBoxColumn.Name = "columnCoordinates3DataGridViewTextBoxColumn";
-            columnCoordinates3DataGridViewTextBoxColumn.ReadOnly = true;
-            columnCoordinates3DataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // columnCoordinates4DataGridViewTextBoxColumn
-            // 
-            columnCoordinates4DataGridViewTextBoxColumn.DataPropertyName = "ColumnCoordinates4";
-            columnCoordinates4DataGridViewTextBoxColumn.HeaderText = "";
-            columnCoordinates4DataGridViewTextBoxColumn.Name = "columnCoordinates4DataGridViewTextBoxColumn";
-            columnCoordinates4DataGridViewTextBoxColumn.ReadOnly = true;
-            columnCoordinates4DataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // dataSet
-            // 
-            dataSet.DataSetName = "NewDataSet";
-            dataSet.Tables.AddRange(new System.Data.DataTable[] { dataTableWyckoff, dataTablePlanes });
-            // 
-            // dataTableWyckoff
-            // 
-            dataTableWyckoff.Columns.AddRange(new System.Data.DataColumn[] { dataColumn1, dataColumn2, dataColumn3, dataColumn4, dataColumn5, dataColumn6, dataColumn7 });
-            dataTableWyckoff.TableName = "TableWyckoff";
-            // 
-            // dataColumn1
-            // 
-            dataColumn1.ColumnName = "ColumnMultiplicity";
-            // 
-            // dataColumn2
-            // 
-            dataColumn2.ColumnName = "ColumnWyckoffLetter";
-            // 
-            // dataColumn3
-            // 
-            dataColumn3.ColumnName = "ColumnSiteSymmetry";
-            // 
-            // dataColumn4
-            // 
-            dataColumn4.ColumnName = "ColumnCoordinates1";
-            // 
-            // dataColumn5
-            // 
-            dataColumn5.ColumnName = "ColumnCoordinates2";
-            // 
-            // dataColumn6
-            // 
-            dataColumn6.ColumnName = "ColumnCoordinates3";
-            // 
-            // dataColumn7
-            // 
-            dataColumn7.ColumnName = "ColumnCoordinates4";
-            // 
-            // dataTablePlanes
-            // 
-            dataTablePlanes.Columns.AddRange(new System.Data.DataColumn[] { dataColumnH, dataColumnK, dataColumnL, dataColumnMulti, dataColumnD, dataColumnCondition, dataColumnTwoTheta, dataColumnFreal, dataColumnFinverse, dataColumnF, dataColumn13, dataColumnIntensity });
-            dataTablePlanes.TableName = "TablePlanes";
-            // 
-            // dataColumnH
-            // 
-            dataColumnH.ColumnName = "ColumnH";
-            // 
-            // dataColumnK
-            // 
-            dataColumnK.ColumnName = "ColumnK";
-            // 
-            // dataColumnL
-            // 
-            dataColumnL.ColumnName = "ColumnL";
-            // 
-            // dataColumnMulti
-            // 
-            dataColumnMulti.ColumnName = "ColumnMulti";
-            // 
-            // dataColumnD
-            // 
-            dataColumnD.ColumnName = "ColumnD";
-            // 
-            // dataColumnCondition
-            // 
-            dataColumnCondition.ColumnName = "ColumnCondition";
-            // 
-            // dataColumnTwoTheta
-            // 
-            dataColumnTwoTheta.ColumnName = "ColumnTwoTheta";
-            // 
-            // dataColumnFreal
-            // 
-            dataColumnFreal.ColumnName = "ColumnFReal";
-            // 
-            // dataColumnFinverse
-            // 
-            dataColumnFinverse.ColumnName = "ColumnFInverse";
-            // 
-            // dataColumnF
-            // 
-            dataColumnF.ColumnName = "ColumnF";
-            // 
-            // dataColumn13
-            // 
-            dataColumn13.ColumnName = "ColumnF2";
-            // 
-            // dataColumnIntensity
-            // 
-            dataColumnIntensity.ColumnName = "ColumnIntensity";
             // 
             // tabPage1
             // 
@@ -1485,6 +1270,221 @@
             panel1.Size = new System.Drawing.Size(591, 79);
             panel1.TabIndex = 7;
             // 
+            // tabPageWyckoff
+            // 
+            captureExtender.SetCapture(tabPageWyckoff, true);
+            tabPageWyckoff.Controls.Add(dataGridView1);
+            tabPageWyckoff.Font = new System.Drawing.Font("Segoe UI Variable Text", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            tabPageWyckoff.Location = new System.Drawing.Point(4, 25);
+            tabPageWyckoff.Name = "tabPageWyckoff";
+            tabPageWyckoff.Size = new System.Drawing.Size(673, 172);
+            tabPageWyckoff.TabIndex = 2;
+            tabPageWyckoff.Text = "Wyckoff Positions";
+            // 
+            // dataGridView1
+            // 
+            dataGridView1.AllowUserToAddRows = false;
+            dataGridView1.AllowUserToDeleteRows = false;
+            dataGridView1.AutoGenerateColumns = false;
+            dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { columnMultiplicityDataGridViewTextBoxColumn, columnWyckoffLetterDataGridViewTextBoxColumn, columnSiteSymmetryDataGridViewTextBoxColumn, columnCoordinates1DataGridViewTextBoxColumn, columnCoordinates2DataGridViewTextBoxColumn, columnCoordinates3DataGridViewTextBoxColumn, columnCoordinates4DataGridViewTextBoxColumn });
+            dataGridView1.DataMember = "TableWyckoff";
+            dataGridView1.DataSource = dataSet;
+            dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            dataGridView1.Location = new System.Drawing.Point(0, 0);
+            dataGridView1.MultiSelect = false;
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.RowHeadersVisible = false;
+            dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            dataGridView1.Size = new System.Drawing.Size(673, 172);
+            dataGridView1.TabIndex = 0;
+            // 
+            // columnMultiplicityDataGridViewTextBoxColumn
+            // 
+            columnMultiplicityDataGridViewTextBoxColumn.DataPropertyName = "ColumnMultiplicity";
+            columnMultiplicityDataGridViewTextBoxColumn.HeaderText = "Mult.";
+            columnMultiplicityDataGridViewTextBoxColumn.Name = "columnMultiplicityDataGridViewTextBoxColumn";
+            columnMultiplicityDataGridViewTextBoxColumn.ReadOnly = true;
+            columnMultiplicityDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            columnMultiplicityDataGridViewTextBoxColumn.Width = 40;
+            // 
+            // columnWyckoffLetterDataGridViewTextBoxColumn
+            // 
+            columnWyckoffLetterDataGridViewTextBoxColumn.DataPropertyName = "ColumnWyckoffLetter";
+            columnWyckoffLetterDataGridViewTextBoxColumn.HeaderText = "Wyck. Let.";
+            columnWyckoffLetterDataGridViewTextBoxColumn.Name = "columnWyckoffLetterDataGridViewTextBoxColumn";
+            columnWyckoffLetterDataGridViewTextBoxColumn.ReadOnly = true;
+            columnWyckoffLetterDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            columnWyckoffLetterDataGridViewTextBoxColumn.Width = 40;
+            // 
+            // columnSiteSymmetryDataGridViewTextBoxColumn
+            // 
+            columnSiteSymmetryDataGridViewTextBoxColumn.DataPropertyName = "ColumnSiteSymmetry";
+            columnSiteSymmetryDataGridViewTextBoxColumn.HeaderText = "Site Sym.";
+            columnSiteSymmetryDataGridViewTextBoxColumn.Name = "columnSiteSymmetryDataGridViewTextBoxColumn";
+            columnSiteSymmetryDataGridViewTextBoxColumn.ReadOnly = true;
+            columnSiteSymmetryDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            columnSiteSymmetryDataGridViewTextBoxColumn.Width = 40;
+            // 
+            // columnCoordinates1DataGridViewTextBoxColumn
+            // 
+            columnCoordinates1DataGridViewTextBoxColumn.DataPropertyName = "ColumnCoordinates1";
+            columnCoordinates1DataGridViewTextBoxColumn.HeaderText = "Coordinates";
+            columnCoordinates1DataGridViewTextBoxColumn.Name = "columnCoordinates1DataGridViewTextBoxColumn";
+            columnCoordinates1DataGridViewTextBoxColumn.ReadOnly = true;
+            columnCoordinates1DataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // columnCoordinates2DataGridViewTextBoxColumn
+            // 
+            columnCoordinates2DataGridViewTextBoxColumn.DataPropertyName = "ColumnCoordinates2";
+            columnCoordinates2DataGridViewTextBoxColumn.HeaderText = "";
+            columnCoordinates2DataGridViewTextBoxColumn.Name = "columnCoordinates2DataGridViewTextBoxColumn";
+            columnCoordinates2DataGridViewTextBoxColumn.ReadOnly = true;
+            columnCoordinates2DataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // columnCoordinates3DataGridViewTextBoxColumn
+            // 
+            columnCoordinates3DataGridViewTextBoxColumn.DataPropertyName = "ColumnCoordinates3";
+            columnCoordinates3DataGridViewTextBoxColumn.HeaderText = "";
+            columnCoordinates3DataGridViewTextBoxColumn.Name = "columnCoordinates3DataGridViewTextBoxColumn";
+            columnCoordinates3DataGridViewTextBoxColumn.ReadOnly = true;
+            columnCoordinates3DataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // columnCoordinates4DataGridViewTextBoxColumn
+            // 
+            columnCoordinates4DataGridViewTextBoxColumn.DataPropertyName = "ColumnCoordinates4";
+            columnCoordinates4DataGridViewTextBoxColumn.HeaderText = "";
+            columnCoordinates4DataGridViewTextBoxColumn.Name = "columnCoordinates4DataGridViewTextBoxColumn";
+            columnCoordinates4DataGridViewTextBoxColumn.ReadOnly = true;
+            columnCoordinates4DataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // dataSet
+            // 
+            dataSet.DataSetName = "NewDataSet";
+            dataSet.Tables.AddRange(new System.Data.DataTable[] { dataTableWyckoff, dataTablePlanes });
+            // 
+            // dataTableWyckoff
+            // 
+            dataTableWyckoff.Columns.AddRange(new System.Data.DataColumn[] { dataColumn1, dataColumn2, dataColumn3, dataColumn4, dataColumn5, dataColumn6, dataColumn7 });
+            dataTableWyckoff.TableName = "TableWyckoff";
+            // 
+            // dataColumn1
+            // 
+            dataColumn1.ColumnName = "ColumnMultiplicity";
+            // 
+            // dataColumn2
+            // 
+            dataColumn2.ColumnName = "ColumnWyckoffLetter";
+            // 
+            // dataColumn3
+            // 
+            dataColumn3.ColumnName = "ColumnSiteSymmetry";
+            // 
+            // dataColumn4
+            // 
+            dataColumn4.ColumnName = "ColumnCoordinates1";
+            // 
+            // dataColumn5
+            // 
+            dataColumn5.ColumnName = "ColumnCoordinates2";
+            // 
+            // dataColumn6
+            // 
+            dataColumn6.ColumnName = "ColumnCoordinates3";
+            // 
+            // dataColumn7
+            // 
+            dataColumn7.ColumnName = "ColumnCoordinates4";
+            // 
+            // dataTablePlanes
+            // 
+            dataTablePlanes.Columns.AddRange(new System.Data.DataColumn[] { dataColumnH, dataColumnK, dataColumnL, dataColumnMulti, dataColumnD, dataColumnCondition, dataColumnTwoTheta, dataColumnFreal, dataColumnFinverse, dataColumnF, dataColumn13, dataColumnIntensity });
+            dataTablePlanes.TableName = "TablePlanes";
+            // 
+            // dataColumnH
+            // 
+            dataColumnH.ColumnName = "ColumnH";
+            // 
+            // dataColumnK
+            // 
+            dataColumnK.ColumnName = "ColumnK";
+            // 
+            // dataColumnL
+            // 
+            dataColumnL.ColumnName = "ColumnL";
+            // 
+            // dataColumnMulti
+            // 
+            dataColumnMulti.ColumnName = "ColumnMulti";
+            // 
+            // dataColumnD
+            // 
+            dataColumnD.ColumnName = "ColumnD";
+            // 
+            // dataColumnCondition
+            // 
+            dataColumnCondition.ColumnName = "ColumnCondition";
+            // 
+            // dataColumnTwoTheta
+            // 
+            dataColumnTwoTheta.ColumnName = "ColumnTwoTheta";
+            // 
+            // dataColumnFreal
+            // 
+            dataColumnFreal.ColumnName = "ColumnFReal";
+            // 
+            // dataColumnFinverse
+            // 
+            dataColumnFinverse.ColumnName = "ColumnFInverse";
+            // 
+            // dataColumnF
+            // 
+            dataColumnF.ColumnName = "ColumnF";
+            // 
+            // dataColumn13
+            // 
+            dataColumn13.ColumnName = "ColumnF2";
+            // 
+            // dataColumnIntensity
+            // 
+            dataColumnIntensity.ColumnName = "ColumnIntensity";
+            // 
+            // tabPageConditions
+            // 
+            captureExtender.SetCapture(tabPageConditions, true);
+            tabPageConditions.Controls.Add(flowLayoutPanelExtinctionRule);
+            tabPageConditions.Controls.Add(label49);
+            tabPageConditions.Font = new System.Drawing.Font("Segoe UI Variable Text", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            tabPageConditions.Location = new System.Drawing.Point(4, 25);
+            tabPageConditions.Name = "tabPageConditions";
+            tabPageConditions.Size = new System.Drawing.Size(673, 172);
+            tabPageConditions.TabIndex = 1;
+            tabPageConditions.Text = "Conditions";
+            // 
+            // flowLayoutPanelExtinctionRule
+            // 
+            flowLayoutPanelExtinctionRule.AutoScroll = true;
+            flowLayoutPanelExtinctionRule.Dock = System.Windows.Forms.DockStyle.Fill;
+            flowLayoutPanelExtinctionRule.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            flowLayoutPanelExtinctionRule.Location = new System.Drawing.Point(0, 22);
+            flowLayoutPanelExtinctionRule.Margin = new System.Windows.Forms.Padding(0);
+            flowLayoutPanelExtinctionRule.Name = "flowLayoutPanelExtinctionRule";
+            flowLayoutPanelExtinctionRule.Size = new System.Drawing.Size(673, 150);
+            flowLayoutPanelExtinctionRule.TabIndex = 6;
+            flowLayoutPanelExtinctionRule.WrapContents = false;
+            // 
+            // label49
+            // 
+            label49.AutoSize = true;
+            label49.Dock = System.Windows.Forms.DockStyle.Top;
+            label49.Font = new System.Drawing.Font("Segoe UI Variable Text", 9F);
+            label49.Location = new System.Drawing.Point(0, 0);
+            label49.Name = "label49";
+            label49.Padding = new System.Windows.Forms.Padding(0, 0, 0, 6);
+            label49.Size = new System.Drawing.Size(211, 22);
+            label49.TabIndex = 7;
+            label49.Text = "Conditions limiting possible reflections";
+            // 
             // groupBoxSpaceGroup
             // 
             groupBoxSpaceGroup.Controls.Add(labelLaTexSG_Hall);
@@ -1623,6 +1623,17 @@
             groupBoxPointGroup.TabStop = false;
             groupBoxPointGroup.Text = "Point Group";
             // 
+            // labelLaTexPG_HM
+            // 
+            labelLaTexPG_HM.Font = new System.Drawing.Font("Segoe UI Variable Text", 13F);
+            labelLaTexPG_HM.Location = new System.Drawing.Point(97, 20);
+            labelLaTexPG_HM.Margin = new System.Windows.Forms.Padding(0);
+            labelLaTexPG_HM.Name = "labelLaTexPG_HM";
+            labelLaTexPG_HM.Size = new System.Drawing.Size(74, 24);
+            labelLaTexPG_HM.TabIndex = 6;
+            labelLaTexPG_HM.Text = "test";
+            labelLaTexPG_HM.Thickness = 0.6D;
+            // 
             // label10
             // 
             label10.Font = new System.Drawing.Font("Segoe UI Variable Text", 9F);
@@ -1654,17 +1665,6 @@
             labelLaTexPG_SF.TabIndex = 6;
             labelLaTexPG_SF.Text = "test";
             labelLaTexPG_SF.Thickness = 0.6D;
-            // 
-            // labelLaTexPG_HM
-            // 
-            labelLaTexPG_HM.Font = new System.Drawing.Font("Segoe UI Variable Text", 13F);
-            labelLaTexPG_HM.Location = new System.Drawing.Point(97, 20);
-            labelLaTexPG_HM.Margin = new System.Windows.Forms.Padding(0);
-            labelLaTexPG_HM.Name = "labelLaTexPG_HM";
-            labelLaTexPG_HM.Size = new System.Drawing.Size(74, 24);
-            labelLaTexPG_HM.TabIndex = 6;
-            labelLaTexPG_HM.Text = "test";
-            labelLaTexPG_HM.Thickness = 0.6D;
             // 
             // bindingSourceScatteringFactor
             // 
@@ -1713,7 +1713,7 @@
             AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             captureExtender.SetCapture(this, true);
-            ClientSize = new System.Drawing.Size(1028, 732);
+            ClientSize = new System.Drawing.Size(1028, 621);
             Controls.Add(tableLayoutPanel1);
             Controls.Add(panel2);
             Font = new System.Drawing.Font("Segoe UI Variable Text", 10F);
@@ -1728,13 +1728,6 @@
             ((System.ComponentModel.ISupportInitialize)graphicsBoxSymmetryElements).EndInit();
             ((System.ComponentModel.ISupportInitialize)graphicsBoxGeneralPositions).EndInit();
             tabControl.ResumeLayout(false);
-            tabPageConditions.ResumeLayout(false);
-            tabPageConditions.PerformLayout();
-            tabPageWyckoff.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dataSet).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dataTableWyckoff).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dataTablePlanes).EndInit();
             tabPage1.ResumeLayout(false);
             tabPage1.PerformLayout();
             flowLayoutPanel6.ResumeLayout(false);
@@ -1759,6 +1752,13 @@
             flowLayoutPanelK1.ResumeLayout(false);
             flowLayoutPanelI1.ResumeLayout(false);
             flowLayoutPanelL1.ResumeLayout(false);
+            tabPageWyckoff.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataSet).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataTableWyckoff).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataTablePlanes).EndInit();
+            tabPageConditions.ResumeLayout(false);
+            tabPageConditions.PerformLayout();
             groupBoxSpaceGroup.ResumeLayout(false);
             groupBoxPointGroup.ResumeLayout(false);
             groupBoxPointGroup.PerformLayout();

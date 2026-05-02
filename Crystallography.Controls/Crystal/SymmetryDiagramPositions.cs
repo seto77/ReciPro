@@ -27,6 +27,15 @@ public class SymmetryDiagramPositions : SymmetryDiagramCommon
     private const float ClusterTolerance   = 0.6f;
     #endregion
 
+    /// <summary>(260502Cl) 結晶系で切り替える test 点。各結晶系で対称性確認に適した代表点。一般位置図でしか使わないため Common から本クラスへ移動。</summary>
+    private static (double X, double Y, double Z) GetTestPoint(Symmetry sym) => sym.CrystalSystemNumber switch
+    {
+        2 => (0.06, 0.20, 0.14),       // monoclinic
+        4 => (0.06, 0.20, 0.10),       // tetragonal
+        5 or 6 => (0.22, 0.06, 0.10),  // trigonal / hexagonal
+        _ => (0.05, 0.10, 0.20),
+    };
+
     #region 公開 API
     /// <summary>右側の一般位置図を描画。</summary>
     public static Bitmap RenderGeneralPositions(int seriesNumber, Size clientSize, ProjectionAxis axis = ProjectionAxis.C)

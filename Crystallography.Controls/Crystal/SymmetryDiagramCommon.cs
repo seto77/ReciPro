@@ -17,7 +17,8 @@ public enum ProjectionAxis { A, B, C }
 public abstract class SymmetryDiagramCommon
 {
     #region 定数
-    protected const float CellMargin = 60f;
+    /// <summary>(260502Cl) 単位胞外側の余白 (pixel)。上下左右独立。外部から書き換え可能。</summary>
+    public static float CellMarginLeft = 60f, CellMarginRight = 60f, CellMarginTop = 80f, CellMarginBottom = 50f;
     protected const double EdgeReplicate = 0.05, FracEps = 0.01;
     // (260502Cl) CircleRadiusFraction / CircleRadius は SymmetryDiagramPositions 内でしか使われないため当該クラスへ移動。
 
@@ -46,13 +47,6 @@ public abstract class SymmetryDiagramCommon
     /// <summary>空図時のエラーメッセージ表示用。</summary>
     protected static readonly Font ErrorMessageFont = new("Segoe UI", 9f);
 
-    /// <summary>結晶系で切り替える test 点。各結晶系で対称性確認に適した代表点。</summary>
-    protected static (double X, double Y, double Z) GetTestPoint(Symmetry sym) => sym.CrystalSystemNumber switch
-    {
-        4 => (0.10, 0.20, 0.10),       // tetragonal
-        5 or 6 => (0.22, 0.06, 0.10),  // trigonal / hexagonal
-        _ => (0.05, 0.10, 0.20),
-    };
     /// <summary>高さラベル用の典型分数 (8 分は I4_1/acd 等で必要)。
     /// (260502Cl) 12 分系は Unicode に precomposed 一文字版が無いため、superscript + fraction slash (U+2044) + subscript の合成で擬似的に一文字化。</summary>
     protected static readonly (double V, string S)[] FracTable =
@@ -116,12 +110,12 @@ public abstract class SymmetryDiagramCommon
     /// <summary>(Horz, Vert) の格子定数比。代表値: ortho 1:1.1:1.2、tet c=1.3、trig/hex c=1.4。</summary>
     protected static (double HorzLen, double VertLen) GetCellLengths(Symmetry sym, ProjectionAxis projAxis)
     {
-        double a = 1.0, b = 1.0, c = 1.0;
+        double a = 0.9, b = 0.9, c = 0.9;
         switch (sym.CrystalSystemNumber)
         {
-            case 3: b = 1.1; c = 1.2; break;
-            case 4: c = 1.3; break;
-            case 5: case 6: c = 1.4; break;
+            case 3: b = 1.0; c = 1.1; break;//ortho
+            case 4: c = 1.0; break;//tetra
+            case 5: case 6: c = 1.4; break;//trigonal, hexagonal
         }
         return projAxis switch
         {
@@ -134,14 +128,15 @@ public abstract class SymmetryDiagramCommon
         double rad = GetCellAngleDeg(sym) * Math.PI / 180.0;
         double cosA = Math.Cos(rad), sinA = Math.Sin(rad);
         var (hLen, vLen) = GetCellLengths(sym, projAxis);
-        float availW = Math.Max(8f, canvas.Width - 2 * CellMargin);
-        float availH = Math.Max(8f, canvas.Height - 2 * CellMargin);
+        // (260502Cl) 上下左右で余白を独立に取る。
+        float availW = Math.Max(8f, canvas.Width  - CellMarginLeft - CellMarginRight);
+        float availH = Math.Max(8f, canvas.Height - CellMarginTop  - CellMarginBottom);
         double scale = Math.Min(availW / (hLen + Math.Abs(cosA) * vLen), availH / (sinA * vLen));
         float horzLen = (float)(hLen * scale), vertLen = (float)(vLen * scale);
         float bboxW = (float)((hLen + Math.Abs(cosA) * vLen) * scale);
         float bboxH = (float)(sinA * vLen * scale);
-        float ox = (canvas.Width - bboxW) / 2f + (cosA < 0 ? -(float)cosA * vertLen : 0);
-        float oy = (canvas.Height - bboxH) / 2f;
+        float ox = CellMarginLeft + (availW - bboxW) / 2f + (cosA < 0 ? -(float)cosA * vertLen : 0);
+        float oy = CellMarginTop  + (availH - bboxH) / 2f;
         return new(new PointF(ox, oy), new PointF(horzLen, 0f), new PointF((float)cosA * vertLen, (float)sinA * vertLen));
     }
 
