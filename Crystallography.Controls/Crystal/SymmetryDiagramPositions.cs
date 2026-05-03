@@ -31,49 +31,20 @@ public class SymmetryDiagramPositions : SymmetryDiagramCommon
     /// <summary>(260502Cl) 立方晶用の高さラベルフォント (ClusterLabelFont の CubicScale 倍)。</summary>
     private static readonly Font CubicClusterLabelFont = new("Times New Roman", 13f * CubicScale);
 
-    /// <summary>(260503Cl) 立方晶系で 円縁・コンマ点・ラベル文字を結晶軸色 (a=赤, b=緑, c=青) で統一着色するための色定義と、対応する Brush / Pen。
-    /// 立方晶以外では投影軸方向 (= projVariable) のラベルが暗黙化 (<c>+</c>, <c>½+</c> 等) され、円・ラベルは黒のまま (DrawClusters の isCubic 分岐で抑制)。</summary>
-    private static readonly Color XVariableColor = Color.FromArgb(180, 0, 0);
-    private static readonly Color YVariableColor = Color.FromArgb(0, 130, 0);
-    private static readonly Color ZVariableColor = Color.FromArgb(0, 0, 180);
-    private static readonly Brush XVariableBrush = new SolidBrush(XVariableColor);
-    private static readonly Brush YVariableBrush = new SolidBrush(YVariableColor);
-    private static readonly Brush ZVariableBrush = new SolidBrush(ZVariableColor);
-    private static readonly Pen XVariablePen = new(XVariableColor, CirclePenWidth);
-    private static readonly Pen YVariablePen = new(YVariableColor, CirclePenWidth);
-    private static readonly Pen ZVariablePen = new(ZVariableColor, CirclePenWidth);
+    // (260503Cl) 結晶軸 a/b/c の色 (VESTA / CrystalMaker 慣用: a=赤, b=緑, c=青)。
+    //   index 0/1/2 が ProjectionAxis.A/B/C および 変数 x/y/z と一対一対応する点が肝で、
+    //   ラベル末尾文字や投影軸 enum はすべて同じ index でこの 3 要素配列を引ける。
+    //   立方晶以外では深さ方向の変数文字がラベル文字列に出ないため、円・ラベルは projVariable の色 (= 投影軸色) で塗られる。
+    private static readonly Color[]  AxisColors  = [Color.FromArgb(180, 0, 0), Color.FromArgb(0, 130, 0), Color.FromArgb(0, 0, 180)];
+    private static readonly Brush[]  AxisBrushes = [.. AxisColors.Select(c => (Brush)new SolidBrush(c))];
+    private static readonly Pen[]    AxisPens    = [.. AxisColors.Select(c => new Pen(c, CirclePenWidth))];
     #endregion
 
-    /// <summary>(260503Cl 追加) 変数文字 x/y/z に対応する Brush を返す。z 以外の文字でない場合は z 用 (青) を fallback。</summary>
-    private static Brush GetVariableBrush(char v) => v switch
-    {
-        'x' => XVariableBrush,
-        'y' => YVariableBrush,
-        _   => ZVariableBrush,
-    };
-
-    /// <summary>(260503Cl 追加) 変数文字 x/y/z に対応する Pen を返す。</summary>
-    private static Pen GetVariablePen(char v) => v switch
-    {
-        'x' => XVariablePen,
-        'y' => YVariablePen,
-        _   => ZVariablePen,
-    };
-
-    /// <summary>(260503Cl 追加) ラベル末尾の変数文字 (x/y/z) で着色用 Brush を選ぶ。
-    /// 変数文字を伴わない暗黙ラベル (<c>+</c>, <c>½+</c> 等) は defaultBrush を返す
-    /// (立方晶では呼出側で projVariable の色を渡し、非立方晶では黒を渡すことで色制御)。</summary>
-    private static Brush GetLabelBrush(string label, Brush defaultBrush)
-    {
-        if (label.Length == 0) return defaultBrush;
-        return label[^1] switch
-        {
-            'x' => XVariableBrush,
-            'y' => YVariableBrush,
-            'z' => ZVariableBrush,
-            _   => defaultBrush,
-        };
-    }
+    /// <summary>(260503Cl) ラベル末尾文字 (x/y/z) を軸 index (0/1/2) に変換。
+    /// 変数を伴わない暗黙ラベル (<c>+</c>, <c>½+</c> 等) や空文字列は -1。
+    /// "xyz" の文字位置と AxisColors / AxisBrushes / AxisPens の index が完全一致しているのが要点で、
+    /// 着色とクラスタ代表変数の決定が同じ 1 関数で済む。</summary>
+    private static int LabelAxisIndex(string label) => label.Length > 0 ? "xyz".IndexOf(label[^1]) : -1;
 
     /// <summary>(260502Cl) 結晶系で切り替える test 点。各結晶系で対称性確認に適した代表点。一般位置図でしか使わないため Common から本クラスへ移動。</summary>
     private static (double X, double Y, double Z) GetTestPoint(Symmetry sym) => sym.CrystalSystemNumber switch
@@ -101,25 +72,24 @@ public class SymmetryDiagramPositions : SymmetryDiagramCommon
             var proj = GetProjection(actualAxis);
             var layout = ComputeCellLayout(bmp.Size, sym, actualAxis);
             DrawCellAndAxes(g, layout, proj, sym);
+            // 立方晶系 (= 7) は等価点が密集しがちなので円・コンマ点・フォントを CubicScale 倍に縮小し、
+            // [111] 軸 orbit の三角形も追加で描く。それ以外の結晶系は scale=1 で従来通り。
+            bool isCubic = sym.CrystalSystemNumber == 7;
             double cellSize = Math.Min(
                 Math.Sqrt(layout.Horz.X * layout.Horz.X + layout.Horz.Y * layout.Horz.Y),
                 Math.Sqrt(layout.Vert.X * layout.Vert.X + layout.Vert.Y * layout.Vert.Y));
-            float scale = sym.CrystalSystemNumber == 7 ? CubicScale : 1f;
+            float scale = isCubic ? CubicScale : 1f;
             CircleRadius = (float)(CircleRadiusFraction * cellSize) * scale;
-            var labelFont = sym.CrystalSystemNumber == 7 ? CubicClusterLabelFont : ClusterLabelFont;
+            var labelFont = isCubic ? CubicClusterLabelFont : ClusterLabelFont;
             var (tx, ty, tz) = GetTestPoint(sym);
-            char projVariable = actualAxis switch
-            {
-                ProjectionAxis.A => 'x',
-                ProjectionAxis.B => 'y',
-                _                => 'z',
-            };
+            // ProjectionAxis enum の値 (A=0, B=1, C=2) と AxisBrushes/Pens の index、変数 "xyz" の文字位置はすべて一致。
+            int projAxisIdx = (int)actualAxis;
             var allPoints = SymmetryStatic.WyckoffPositions[seriesNumber][0].GeneratePositions(tx, ty, tz);
             var placements = new List<Placement>();
             foreach (var p in allPoints)
                 CollectPlacements(placements, layout, p, proj, tx, ty, tz);
-            if (sym.CrystalSystemNumber == 7) DrawCubicTriangles(g, layout, proj, allPoints, tx, ty, tz);
-            DrawClusters(g, placements, labelFont, scale, projVariable);
+            if (isCubic) DrawCubicTriangles(g, layout, proj, allPoints, tx, ty, tz);
+            DrawClusters(g, placements, labelFont, scale, projAxisIdx);
         }
         finally { g.Dispose(); }
         return bmp;
@@ -134,16 +104,11 @@ public class SymmetryDiagramPositions : SymmetryDiagramCommon
         var (sx, sy, sz) = proj.ToScreen(p.X, p.Y, p.Z);
         bool mirrored = p.Operation.Order < 0;
         string label = ComputeDepthLabel(p.Operation, sz, proj, testX, testY, testZ);
-        bool nearEdge = Math.Min(sx, 1 - sx) < EdgeReplicate || Math.Min(sy, 1 - sy) < EdgeReplicate;
-        for (int dx = -1; dx <= 1; dx++)
-            for (int dy = -1; dy <= 1; dy++)
-            {
-                if ((dx != 0 || dy != 0) && !nearEdge) continue;
-                double X = sx + dx, Y = sy + dy;
-                if (X < -EdgeReplicate || X > 1 + EdgeReplicate || Y < -EdgeReplicate || Y > 1 + EdgeReplicate) continue;
-                var pt = c.ToScreen(X, Y);
-                placements.Add(new(pt.X, pt.Y, mirrored, label));
-            }
+        foreach (var (x, y) in EdgeReplicatedPoints(sx, sy))
+        {
+            var pt = c.ToScreen(x, y);
+            placements.Add(new(pt.X, pt.Y, mirrored, label));
+        }
     }
 
     private readonly record struct Placement(float Px, float Py, bool Mirrored, string Label);
@@ -162,32 +127,36 @@ public class SymmetryDiagramPositions : SymmetryDiagramCommon
     {
         for (int i = 0; i < allPoints.Length; i++)
         {
-            var pi = allPoints[i];
-            var op = pi.Operation;
-            var st = op.SeitzTranslation;
-            var (m1x, m1y, m1z) = op.ApplyMatrix(testZ, testX, testY); // g_i · (R · test)
-            var (m2x, m2y, m2z) = op.ApplyMatrix(testY, testZ, testX); // g_i · (R² · test)
-            int j = FindCubicOrbitPartner(allPoints, m1x + st.U, m1y + st.V, m1z + st.W);
-            int k = FindCubicOrbitPartner(allPoints, m2x + st.U, m2y + st.V, m2z + st.W);
-            // 同じ三角形を 3 頂点分ヒットするため i 最小のときだけ描画 (dedupe)。
+            // g_i (= pi.Operation) を初期三角形 T = {test, R·test, R²·test} の各頂点に作用させ、
+            // 一致する allPoints の index を引く (中心化並進は op.SeitzTranslation に含まれる)。
+            var op = allPoints[i].Operation;
+            var t = op.SeitzTranslation;
+            int j = FindOrbitPartner(allPoints, op.ApplyMatrix(testZ, testX, testY), t); // g_i · (R · test) = g_i applied to (z, x, y)
+            int k = FindOrbitPartner(allPoints, op.ApplyMatrix(testY, testZ, testX), t); // g_i · (R² · test)
+            // 同じ三角形を 3 頂点分 (i, j, k のどれを起点にしても) 走査するため、i 最小のときだけ描画して重複を排除。
             if (j < 0 || k < 0 || i > j || i > k) continue;
-            var (saX, saY, _) = proj.ToScreen(pi.X, pi.Y, pi.Z);
-            var (sbX, sbY, _) = proj.ToScreen(allPoints[j].X, allPoints[j].Y, allPoints[j].Z);
-            var (scX, scY, _) = proj.ToScreen(allPoints[k].X, allPoints[k].Y, allPoints[k].Z);
-            g.DrawPolygon(CubicTrianglePen, [c.ToScreen(saX, saY), c.ToScreen(sbX, sbY), c.ToScreen(scX, scY)]);
+            g.DrawPolygon(CubicTrianglePen, [Project(allPoints[i]), Project(allPoints[j]), Project(allPoints[k])]);
+        }
+
+        PointF Project(Vector3D p)
+        {
+            var (sx, sy, _) = proj.ToScreen(p.X, p.Y, p.Z);
+            return c.ToScreen(sx, sy);
         }
     }
 
-    /// <summary>(260503Cl 追加) 一般位置リスト内で (x,y,z) と mod 1 でほぼ一致する点の index を返す (見つからなければ -1)。</summary>
-    private static int FindCubicOrbitPartner(Vector3D[] list, double x, double y, double z)
+    /// <summary>(260503Cl) 等価点リストの中で、ターゲット (matrix · test + translation) と mod 1 で一致する点の index を返す (見つからなければ -1)。
+    /// 立方晶系空間群では中心化並進が混ざるので、座標は単位胞 mod 1 で比較する必要がある。</summary>
+    private static int FindOrbitPartner(Vector3D[] list, (double X, double Y, double Z) m, (double U, double V, double W) t)
     {
         const double eps = 1e-6;
+        double tx = m.X + t.U, ty = m.Y + t.V, tz = m.Z + t.W;
         for (int i = 0; i < list.Length; i++)
         {
             var p = list[i];
-            if (Math.Abs(CenterMod1(p.X - x)) < eps
-                && Math.Abs(CenterMod1(p.Y - y)) < eps
-                && Math.Abs(CenterMod1(p.Z - z)) < eps) return i;
+            if (Math.Abs(CenterMod1(p.X - tx)) < eps
+             && Math.Abs(CenterMod1(p.Y - ty)) < eps
+             && Math.Abs(CenterMod1(p.Z - tz)) < eps) return i;
         }
         return -1;
     }
@@ -196,10 +165,23 @@ public class SymmetryDiagramPositions : SymmetryDiagramCommon
     #region クラスタ化と描画
     /// <summary>ITC 規約で proper=○、improper=コンマ ○、混在=split circle として描画。proper を左上、improper を右上に積み上げ。</summary>
     private enum Corner { UR, LR, UL, LL }
-    private readonly record struct ClusterInfo(float Cx, float Cy, List<string> Proper, List<string> Improper, bool Split, bool HasImproper);
 
-    /// <summary>(260503Cl) クラスタごとに代表変数 (x/y/z) を決め、円縁・コンマ点・ラベル文字をその変数の結晶軸色で着色して描画する。</summary>
-    private static void DrawClusters(Graphics g, List<Placement> placements, Font labelFont, float scale, char projVariable)
+    /// <summary>クラスタ = 同じ投影位置に集まる Placement 群。Proper/Improper は一意ラベル列を昇順に並べたもの。
+    /// Split (proper と improper が同位置で並ぶ) と HasImproper はラベル数から派生するので別フィールドで持たない。</summary>
+    private readonly record struct ClusterInfo(float Cx, float Cy, List<string> Proper, List<string> Improper)
+    {
+        public bool Split       => Proper.Count > 0 && Improper.Count > 0;
+        public bool HasImproper => Improper.Count > 0;
+    }
+
+    private static readonly Corner[] LabelCorners = [Corner.UR, Corner.LR, Corner.UL, Corner.LL];
+    private static readonly (Corner L, Corner R)[] SplitLabelCornerPairs =
+        [(Corner.UL, Corner.UR), (Corner.LL, Corner.LR), (Corner.UL, Corner.LR), (Corner.LL, Corner.UR)];
+
+    /// <summary>(260503Cl) クラスタごとに代表軸 (a/b/c = 0/1/2) を決め、円縁・コンマ点・ラベル文字をその軸の結晶軸色で着色して描画する。
+    /// クラスタ内の proper / improper の各ラベル末尾 (x/y/z) から軸 index を抽出し、最初に見つかったものを採用。
+    /// 全ラベルが暗黙形式 (=変数文字なし) なら投影軸 index (= projAxisIdx) を fallback に使う。</summary>
+    private static void DrawClusters(Graphics g, List<Placement> placements, Font labelFont, float scale, int projAxisIdx)
     {
         using var fill = new SolidBrush(Color.White);
         var sizes = new Dictionary<string, SizeF>();
@@ -207,45 +189,48 @@ public class SymmetryDiagramPositions : SymmetryDiagramCommon
             if (!sizes.ContainsKey(p.Label)) sizes[p.Label] = g.MeasureString(p.Label, labelFont);
         var infos = BuildClusters(placements);
         float dotR = CommaDotR * scale;
-        var vars = infos.Select(info => ClusterVariable(info, projVariable)).ToArray();
+        var axes = new int[infos.Count];
         for (int i = 0; i < infos.Count; i++)
-            DrawClusterCircle(g, infos[i], GetVariablePen(vars[i]), fill, GetVariableBrush(vars[i]), dotR);
+            axes[i] = ClusterAxisIndex(infos[i], projAxisIdx);
         for (int i = 0; i < infos.Count; i++)
-            DrawClusterLabels(g, infos, i, sizes, labelFont, GetVariableBrush(vars[i]));
+            DrawClusterCircle(g, infos[i], AxisPens[axes[i]], fill, AxisBrushes[axes[i]], dotR);
+        for (int i = 0; i < infos.Count; i++)
+            DrawClusterLabels(g, infos, i, sizes, labelFont, AxisBrushes[axes[i]]);
     }
 
-    /// <summary>(260503Cl 追加) クラスタの代表変数文字を決定する。Proper / Improper のラベル先頭から x/y/z で終わる最初のラベルの末尾文字を返す。
-    /// 全ラベルが暗黙形式 (現状の ComputeDepthLabel では発生しない) の場合は投影軸変数 (projVariable) を返す。</summary>
-    private static char ClusterVariable(ClusterInfo info, char projVariable)
+    private static int ClusterAxisIndex(ClusterInfo info, int fallback)
     {
-        foreach (var label in info.Proper)
-            if (label.Length > 0 && label[^1] is 'x' or 'y' or 'z') return label[^1];
-        foreach (var label in info.Improper)
-            if (label.Length > 0 && label[^1] is 'x' or 'y' or 'z') return label[^1];
-        return projVariable;
+        foreach (var label in info.Proper) { int idx = LabelAxisIndex(label); if (idx >= 0) return idx; }
+        foreach (var label in info.Improper) { int idx = LabelAxisIndex(label); if (idx >= 0) return idx; }
+        return fallback;
     }
 
+    /// <summary>近接する Placement (画面座標 ≤ tol) を 1 つの cluster にまとめる。
+    /// 走査順は前から後ろへ greedy で、未割当の点を seed にしてその近傍を吸収。tol = CircleRadius × ClusterTolerance。</summary>
     private static List<ClusterInfo> BuildClusters(List<Placement> placements)
     {
         float tol = CircleRadius * ClusterTolerance;
-        var rest = new List<Placement>(placements);
+        var assigned = new bool[placements.Count];
         var infos = new List<ClusterInfo>();
-        while (rest.Count > 0)
+        for (int s = 0; s < placements.Count; s++)
         {
-            var seed = rest[0];
+            if (assigned[s]) continue;
+            var seed = placements[s];
             var cluster = new List<Placement> { seed };
-            rest.RemoveAt(0);
-            for (int i = rest.Count - 1; i >= 0; i--)
-                if (Math.Abs(rest[i].Px - seed.Px) < tol && Math.Abs(rest[i].Py - seed.Py) < tol)
+            assigned[s] = true;
+            for (int i = s + 1; i < placements.Count; i++)
+                if (!assigned[i] && Math.Abs(placements[i].Px - seed.Px) < tol && Math.Abs(placements[i].Py - seed.Py) < tol)
                 {
-                    cluster.Add(rest[i]); rest.RemoveAt(i);
+                    cluster.Add(placements[i]);
+                    assigned[i] = true;
                 }
             float cx = cluster.Average(m => m.Px), cy = cluster.Average(m => m.Py);
-            var prop = cluster.Where(m => !m.Mirrored).Select(m => m.Label).Distinct().OrderBy(l => l).ToList();
-            var impr = cluster.Where(m => m.Mirrored).Select(m => m.Label).Distinct().OrderBy(l => l).ToList();
-            infos.Add(new(cx, cy, prop, impr, prop.Count > 0 && impr.Count > 0, impr.Count > 0));
+            infos.Add(new(cx, cy, LabelsBy(cluster, mirrored: false), LabelsBy(cluster, mirrored: true)));
         }
         return infos;
+
+        static List<string> LabelsBy(List<Placement> cluster, bool mirrored)
+            => cluster.Where(m => m.Mirrored == mirrored).Select(m => m.Label).Distinct().OrderBy(l => l).ToList();
     }
 
     private static void DrawClusterCircle(Graphics g, ClusterInfo info, Pen pen, Brush fill, Brush commaBrush, float dotR)
@@ -270,11 +255,12 @@ public class SymmetryDiagramPositions : SymmetryDiagramCommon
         var info = infos[selfIdx];
         if (info.Split)
         {
-            (Corner L, Corner R)[] pairs = [(Corner.UL, Corner.UR), (Corner.LL, Corner.LR), (Corner.UL, Corner.LR), (Corner.LL, Corner.UR)];
-            int best = int.MaxValue; (Corner L, Corner R) bestPair = pairs[0];
-            foreach (var pair in pairs)
+            int best = int.MaxValue;
+            (Corner L, Corner R) bestPair = SplitLabelCornerPairs[0];
+            foreach (var pair in SplitLabelCornerPairs)
             {
-                int o = CountOverlaps(infos, selfIdx, info.Proper, pair.L, sizes) + CountOverlaps(infos, selfIdx, info.Improper, pair.R, sizes);
+                int o = CountOverlaps(infos, selfIdx, info.Proper, pair.L, sizes)
+                      + CountOverlaps(infos, selfIdx, info.Improper, pair.R, sizes);
                 if (o < best) { best = o; bestPair = pair; if (o == 0) break; }
             }
             StackLabelsAt(g, font, brush, info.Proper, bestPair.L, info.Cx, info.Cy, sizes);
@@ -284,9 +270,9 @@ public class SymmetryDiagramPositions : SymmetryDiagramCommon
         {
             var labels = info.HasImproper ? info.Improper : info.Proper;
             if (labels.Count == 0) return;
-            Corner[] candidates = [Corner.UR, Corner.LR, Corner.UL, Corner.LL];
-            int best = int.MaxValue; Corner bestCorner = candidates[0];
-            foreach (var c in candidates)
+            int best = int.MaxValue;
+            Corner bestCorner = LabelCorners[0];
+            foreach (var c in LabelCorners)
             {
                 int o = CountOverlaps(infos, selfIdx, labels, c, sizes);
                 if (o < best) { best = o; bestCorner = c; if (o == 0) break; }
@@ -326,7 +312,8 @@ public class SymmetryDiagramPositions : SymmetryDiagramCommon
             var sz = sizes[labels[i]];
             float x = isLeft ? cx - sz.Width - 1 : cx + 1;
             float y = isUpper ? cy - CircleRadius - (i + 1) * sz.Height + 4 : cy + CircleRadius + i * sz.Height - 4;
-            g.DrawString(labels[i], font, GetLabelBrush(labels[i], brush), x, y);
+            int idx = LabelAxisIndex(labels[i]);
+            g.DrawString(labels[i], font, idx >= 0 ? AxisBrushes[idx] : brush, x, y);
         }
     }
     #endregion
@@ -339,22 +326,22 @@ public class SymmetryDiagramPositions : SymmetryDiagramCommon
     private static string ComputeDepthLabel(SymmetryOperation op, double displayedSz, Projection proj,
                                             double testX, double testY, double testZ)
     {
-        // R を単位ベクトル e_x/e_y/e_z に作用させ、投影軸 row (a, b, c) を取得。
-        ReadOnlySpan<(double X, double Y, double Z)> e = [(1, 0, 0), (0, 1, 0), (0, 0, 1)];
-        Span<double> coef = stackalloc double[3];
-        for (int j = 0; j < 3; j++)
-        {
-            var (rx, ry, rz) = op.ApplyMatrix(e[j].X, e[j].Y, e[j].Z);
-            coef[j] = proj.ToScreen(rx, ry, rz).Sz;
-        }
-        int idx = Math.Abs(coef[0]) > 0.5 ? 0 : Math.Abs(coef[1]) > 0.5 ? 1 : 2;
-        char variable = "xyz"[idx];
-        int sign = coef[idx] > 0 ? 1 : -1;
+        // 投影軸 row の係数 (a, b, c) は、R · e_x / R · e_y / R · e_z をそれぞれ投影 depth に流したもの。
+        // 立方晶では R が permutation 行列なので、3 値のうち 1 つだけが ±1、残りは 0 になる。
+        double a = ProbeDepth(1, 0, 0), b = ProbeDepth(0, 1, 0), c = ProbeDepth(0, 0, 1);
+        int idx = Math.Abs(a) > 0.5 ? 0 : Math.Abs(b) > 0.5 ? 1 : 2;
+        double coef = idx == 0 ? a : idx == 1 ? b : c;
 
-        // 並進 t = displayedSz - rTestSz (mod 1)。R·test の depth 成分との差が Seitz 並進に等しい。
+        // 並進 t = displayedSz − R(test) の depth 成分 (mod 1)。アフィン式から線形部分を引けば残りが Seitz 並進。
         var (rTx, rTy, rTz) = op.ApplyMatrix(testX, testY, testZ);
-        var (_, _, rTestSz) = proj.ToScreen(rTx, rTy, rTz);
-        return TZToFraction(Mod1(displayedSz - rTestSz)) + (sign > 0 ? "+" : "−") + variable;
+        double rTestSz = proj.ToScreen(rTx, rTy, rTz).Sz;
+        return TZToFraction(Mod1(displayedSz - rTestSz)) + (coef > 0 ? "+" : "−") + "xyz"[idx];
+
+        double ProbeDepth(double ex, double ey, double ez)
+        {
+            var (rx, ry, rz) = op.ApplyMatrix(ex, ey, ez);
+            return proj.ToScreen(rx, ry, rz).Sz;
+        }
     }
     #endregion
 }

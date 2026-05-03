@@ -110,7 +110,7 @@ public sealed class SymmetryElementsTable
         return new SymmetryElementsTable(
             seriesNumber,
             CollectInversions(seriesNumber),
-            CollectRotationAxes(ops),
+            CollectRotationAxes(ops, centerings),
             CollectMirrorPlanes(ops, centerings),
             [.. centerings]);
     }
@@ -143,7 +143,8 @@ public sealed class SymmetryElementsTable
     #endregion
 
     #region 回転 / 螺旋 / 回反 軸
-    private static RotationAxis[] CollectRotationAxes(SymmetryOperation[] ops)
+    private static RotationAxis[] CollectRotationAxes(SymmetryOperation[] ops,
+        IReadOnlyList<(double U, double V, double W)> centerings)
     {
         var list = new List<RotationAxis>();
         var seen = new HashSet<(int, int, int, int, long, long, long, long, long, long)>();
@@ -153,22 +154,23 @@ public sealed class SymmetryElementsTable
             if (o == -2) continue; // 鏡映は MirrorPlane で扱う
             if (absO is not (2 or 3 or 4 or 6)) continue; // skip identity (1)、反転 (-1)、その他
             if (!op.Sense && (absO is 3 or 4 or 6)) continue; // 高次回転の逆冪は同じ軸なので skip
-            foreach (var axis in EnumerateAxisInstances(op))
+            foreach (var axis in EnumerateAxisInstances(op, centerings))
             {
                 var key = (o, axis.Direction.U, axis.Direction.V, axis.Direction.W,
                     R6(axis.X), R6(axis.Y), R6(axis.Z),
                     R6(axis.IntrinsicTranslation.U), R6(axis.IntrinsicTranslation.V), R6(axis.IntrinsicTranslation.W));
                 if (!seen.Add(key)) continue;
-                var (fin, edge) = ScrewParams(op, axis.IntrinsicTranslation);
                 list.Add(new RotationAxis(axis.X, axis.Y, axis.Z, axis.Direction, o,
-                    axis.Screw, fin, edge, axis.IntrinsicTranslation));
+                    axis.Screw, axis.FinCount, axis.EdgeStep, axis.IntrinsicTranslation));
             }
         }
         return [.. list];
     }
 
-    /// <summary>op の幾何位置を格子同値性 ((lx,ly,lz) ∈ {0,1}³) から全列挙し、各並進ごとに screw 成分を保持する。</summary>
-    private static IEnumerable<AxisInstance> EnumerateAxisInstances(SymmetryOperation op)
+    /// <summary>op の幾何位置を格子同値性 ((lx,ly,lz) ∈ {0,1}³) から全列挙し、各並進ごとに screw 成分を保持する。
+    /// (260503Cl) centerings を渡すことで、ScrewParams が中心化込みの primitive_along_d を使った k 判定を行う。</summary>
+    private static IEnumerable<AxisInstance> EnumerateAxisInstances(SymmetryOperation op,
+        IReadOnlyList<(double U, double V, double W)> centerings)
     {
         var seen = new HashSet<(long, long, long, long, long, long, bool)>();
         var (px, py, pz) = op.Position;
@@ -188,9 +190,15 @@ public sealed class SymmetryElementsTable
                 if (!TrySolveLinear(aMat, lattice, out shift)) continue;
                 rawIt = op.IntrinsicTranslation;
             }
-            var it = (U: CenterMod1(rawIt.U), V: CenterMod1(rawIt.V), W: CenterMod1(rawIt.W));
+            // (260503Cl) k=0 (= 格子周期で pure rotation 同等) のときは IT を (0,0,0) に正規化し、
+            //   base 純回転と seen-key を一致させて重複排除する。
+            var (fin, edge) = ScrewParams(op, rawIt, centerings);
+            bool screw = fin > 0;
+            (double U, double V, double W) it = screw
+                ? (CenterMod1(rawIt.U), CenterMod1(rawIt.V), CenterMod1(rawIt.W))
+                : (0, 0, 0);
             var axis = new AxisInstance(Mod1(px + shift.X), Mod1(py + shift.Y), Mod1(pz + shift.Z),
-                op.Direction, it, IsScrewAxis(op, rawIt));
+                op.Direction, it, screw, fin, edge);
             var key = (R6(axis.X), R6(axis.Y), R6(axis.Z),
                 R6(axis.IntrinsicTranslation.U), R6(axis.IntrinsicTranslation.V), R6(axis.IntrinsicTranslation.W), axis.Screw);
             if (seen.Add(key)) yield return axis;
@@ -200,7 +208,7 @@ public sealed class SymmetryElementsTable
     private readonly record struct AxisInstance(double X, double Y, double Z,
                                                 (int U, int V, int W) Direction,
                                                 (double U, double V, double W) IntrinsicTranslation,
-                                                bool Screw);
+                                                bool Screw, int FinCount, int EdgeStep);
 
     /// <summary>n_k 螺旋の (FinCount, EdgeStep)。gcd(N,k) > 1 (4_2/6_2/6_3/6_4) は ITC 規約に従い fin 数を減らした特例形に。</summary>
     public static (int FinCount, int EdgeStep) PinwheelFins(int N, int k) => (N, k) switch
@@ -213,20 +221,62 @@ public sealed class SymmetryElementsTable
         _ => (N, N - k),
     };
 
-    /// <summary>op の intrinsic translation 軸方向成分から (FinCount, EdgeStep) を導出。</summary>
-    private static (int FinCount, int EdgeStep) ScrewParams(SymmetryOperation op, (double U, double V, double W) it)
+    /// <summary>(260503Cl) op の intrinsic translation 軸方向成分から (FinCount, EdgeStep) を導出する。
+    /// along は「軸方向ベクトル d 自身を 1 単位とした axial 比」。中心化格子では d 方向の最小格子並進
+    /// (= primitive_along_d) が d 自身ではなく d/2 (例: I-cubic 体対角) や 1/3 d (例: 一部の rhombohedral)
+    /// になりうるので、ITA 規約 axial = (k/N) · primitive_along_d に揃えるには、along を primitive_along_d で
+    /// 割って primitive units に変換してから k を取る必要がある。</summary>
+    private static (int FinCount, int EdgeStep) ScrewParams(SymmetryOperation op, (double U, double V, double W) it,
+        IReadOnlyList<(double U, double V, double W)> centerings)
     {
         int N = Math.Abs(op.Order);
         if (N < 2) return (0, 0);
         if (!TryGetAxisFraction(op, it, out double along)) return (0, 0);
-        if (along < 1e-3 || along > 1 - 1e-3) return (0, 0);
-        int k = ((int)Math.Round(along * N)) % N;
+        double primitive = PrimitiveAlongDirectionInDUnits(op.Direction, centerings);
+        if (primitive < 1e-9) return (0, 0);
+        // along (in d-units) を primitive_along_d で割って primitive units に変換、mod 1 で正規化。
+        double alongPrimitive = along / primitive;
+        alongPrimitive -= Math.Floor(alongPrimitive);
+        if (alongPrimitive < 1e-3 || alongPrimitive > 1 - 1e-3) return (0, 0);
+        int k = ((int)Math.Round(alongPrimitive * N)) % N;
+        if (k < 0) k += N;
         return PinwheelFins(N, k);
     }
 
-    private static bool IsScrewAxis(SymmetryOperation op, (double U, double V, double W) it)
-        => TryGetAxisFraction(op, it, out double along) &&
-           Math.Abs(along) > 1e-3 && Math.Abs(Math.Abs(along) - 1) > 1e-3;
+    /// <summary>(260503Cl) 軸方向 d に沿った最小の格子並進ベクトル (purely-along-d) を d-units で返す。
+    /// 中心化を含む格子の整数結合から「d と平行な最小ベクトル」を探索する。
+    /// P-cubic [111] では 1、I-cubic 体対角では 1/2、F-cubic 体対角では 1。</summary>
+    private static double PrimitiveAlongDirectionInDUnits((int U, int V, int W) direction,
+        IReadOnlyList<(double U, double V, double W)> centerings)
+    {
+        if (centerings.Count == 0) return 1.0; // P-lattice: 最小並進は d 自身。
+        Vec d = new(direction.U, direction.V, direction.W);
+        double dd = d * d;
+        if (dd < 1e-12) return 1.0;
+        double bestT = double.PositiveInfinity;
+        const int range = 2;
+        int M = centerings.Count;
+        var cs = new Vec[M];
+        for (int i = 0; i < M; i++) cs[i] = new Vec(centerings[i].U, centerings[i].V, centerings[i].W);
+        for (int nx = -range; nx <= range; nx++)
+        for (int ny = -range; ny <= range; ny++)
+        for (int nz = -range; nz <= range; nz++)
+        for (int mc = 0; mc < (1 << M); mc++)
+        {
+            Vec v = new(nx, ny, nz);
+            for (int b = 0; b < M; b++)
+                if ((mc & (1 << b)) != 0) v += cs[b];
+            // v が d と平行 (= 純粋に軸方向) であれば、その大きさを d-units で記録。
+            double vd = v * d;
+            Vec proj = (vd / dd) * d;
+            Vec perp = v - proj;
+            if (perp * perp > 1e-9) continue;
+            double t = Math.Abs(vd / dd);
+            if (t < 1e-6) continue;
+            if (t < bestT) bestT = t;
+        }
+        return double.IsPositiveInfinity(bestT) ? 1.0 : bestT;
+    }
 
     private static bool TryGetAxisFraction(SymmetryOperation op, (double U, double V, double W) it, out double along)
     {
@@ -334,10 +384,16 @@ public sealed class SymmetryElementsTable
     /// baseOps はその空間群の WyckoffPositions[s][0].PositionOperations。seriesNumber は SymmetryOperation の series-aware 化に使う。</summary>
     private static SymmetryOperation[] ExpandWithCentering(SymmetryOperation[] baseOps, int seriesNumber)
     {
-        var ops = baseOps.Select(op => new SymmetryOperation(op, seriesNumber)).ToArray();
+        // (260503Cl) baseOps には SymmetryOperation の centering 用 constructor で生成された "壊れた" centered op が混じっている。
+        //   その constructor は centering shift を IntrinsicTranslation にそのまま積むので、(Position, IT) の正準分解が崩れる
+        //   (本来 Position に乗るべき軸-垂直成分が IT 側に残る)。EnumerateAxisInstances は Position を軸代表点とみなすため、
+        //   この壊れた表現のまま結果に入れると、同じ操作が「正しい代表位置の screw 軸」と「誤った原点位置の余分な screw 軸」の
+        //   2 つの別物として登録されてしまう。
+        //   対策: ops 全体を Canonicalize で正準化してから seen-key で重複を弾く。下の TryCreateCenteredOperation も
+        //   既に正準分解する側なので、二重に走らせても結果は同じ key に落ちる。
+        var ops = baseOps.Select(op => Canonicalize(new SymmetryOperation(op, seriesNumber))).ToArray();
         var cents = new List<(double U, double V, double W)>();
-        // (260503Cl) 中心化ベクトルは恒等 op の IntrinsicTranslation から取得 (旧実装は Position から読んでいたが、
-        //            SymmetryOperation の centering constructor 改訂で IT に格納されるようになった)。
+        // 中心化ベクトルは恒等 op の IntrinsicTranslation に格納されている (識別: Order == 1 で IT が非ゼロ)。
         foreach (var op in ops)
         {
             if (op.Order != 1) continue;
@@ -366,6 +422,40 @@ public sealed class SymmetryElementsTable
                 if (TryCreateCenteredOperation(op, c, out var centered))
                     TryAdd(new SymmetryOperation(centered, seriesNumber));
         return [.. result];
+    }
+
+    /// <summary>(260503Cl 追加) op の (Position, IntrinsicTranslation) を正準形に書き直す。SeitzTranslation は不変。
+    /// 回転 (Order > 0): IT の軸-垂直成分を Position に吸収し、IT は軸方向 (= screw) 成分のみに。
+    /// 鏡映 (Order = -2): IT の法線方向成分を Position に吸収し、IT は面内 (= glide) 成分のみに。
+    /// 反転や -3/-4/-6: (I-R) で Position に押し込めるだけ押し込み、残差を IT に。
+    /// SymmetryOperation の centering constructor が生成する「Position 不変・IT に centering shift を積んだ」
+    /// 非正準表現を、軸位置を反映した正準表現へ戻すために使う。</summary>
+    private static SymmetryOperation Canonicalize(SymmetryOperation op)
+    {
+        if (op.Order == 1) return op;
+        var t = (Vec)op.IntrinsicTranslation;
+        if (t * t < 1e-12) return op;
+        var a = BuildIMinusR(op);
+        Vec shift, residual;
+        if (a.Rank() == 2 && op.Order > 0)
+        {
+            if (!TryDecomposeAxisLatticeTranslation(op, t, out shift, out residual)) return op;
+        }
+        else if (op.Order == -2)
+        {
+            var rt = op.ApplyMatrix(t);
+            shift = t * 0.5;
+            residual = (t + rt) * 0.5;
+        }
+        else
+        {
+            if (!TrySolveLinear(a, t, out shift)) return op;
+            residual = t - a * shift;
+        }
+        var p = op.Position;
+        return new SymmetryOperation(op.Order, op.Sense ? 1 : -1, op.Direction,
+            (Mod1(p.U + shift.X), Mod1(p.V + shift.Y), Mod1(p.W + shift.Z)),
+            (CenterMod1(residual.X), CenterMod1(residual.Y), CenterMod1(residual.Z)));
     }
 
     private static bool TryCreateCenteredOperation(SymmetryOperation op, (double U, double V, double W) centering, out SymmetryOperation centered)

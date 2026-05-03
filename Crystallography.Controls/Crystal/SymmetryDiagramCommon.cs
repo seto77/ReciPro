@@ -88,7 +88,19 @@ public abstract class SymmetryDiagramCommon
     /// <summary>結晶座標 (u,v,w) を投影面 (Sx, Sy) に写像 (C: Sx=v, Sy=u 等)。</summary>
     protected static (double Sx, double Sy) ProjectVector(double u, double v, double w, ProjectionAxis axis) => axis switch
     {
-        ProjectionAxis.C => (v, u), ProjectionAxis.A => (w, v), ProjectionAxis.B => (u, w), _ => (0, 0),
+        ProjectionAxis.C => (v, u),
+        ProjectionAxis.A => (w, v),
+        ProjectionAxis.B => (u, w),
+        _ => (0, 0),
+    };
+
+    /// <summary>(260503Ch) 投影 depth 成分だけを返す。</summary>
+    protected static double ProjectedDepth(double x, double y, double z, ProjectionAxis axis) => axis switch
+    {
+        ProjectionAxis.C => z,
+        ProjectionAxis.A => x,
+        ProjectionAxis.B => y,
+        _ => 0,
     };
     #endregion
 
@@ -165,6 +177,20 @@ public abstract class SymmetryDiagramCommon
 
     #region 共通ユーティリティ
     protected static double Mod1(double x) => x - Math.Floor(x);
+
+    /// <summary>(260503Ch) 単位胞境界上の点を、表示セルと隣接セルの両方へ複製するための代表列。
+    /// 内部点は 1 点だけ、境界近傍点は 3×3 のうち描画範囲に入るコピーだけを返す。</summary>
+    protected static IEnumerable<(double Sx, double Sy)> EdgeReplicatedPoints(double sx, double sy)
+    {
+        bool nearEdge = Math.Min(sx, 1 - sx) < EdgeReplicate || Math.Min(sy, 1 - sy) < EdgeReplicate;
+        for (int dx = -1; dx <= 1; dx++) for (int dy = -1; dy <= 1; dy++)
+        {
+            if ((dx != 0 || dy != 0) && !nearEdge) continue;
+            double x = sx + dx, y = sy + dy;
+            if (x >= -EdgeReplicate && x <= 1 + EdgeReplicate && y >= -EdgeReplicate && y <= 1 + EdgeReplicate)
+                yield return (x, y);
+        }
+    }
 
     /// <summary>0 < frac < 1 の典型分数ラベル。0 近傍は null。</summary>
     protected static string HeightLabel(double sz)
