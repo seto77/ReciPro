@@ -141,14 +141,20 @@ public abstract class SymmetryDiagramCommon
         double cosA = Math.Cos(rad), sinA = Math.Sin(rad);
         var (hLen, vLen) = GetCellLengths(sym, projAxis);
         // (260502Cl) 上下左右で余白を独立に取る。
-        float availW = Math.Max(8f, canvas.Width  - CellMarginLeft - CellMarginRight);
-        float availH = Math.Max(8f, canvas.Height - CellMarginTop  - CellMarginBottom);
+        // (260503Cl) 立方晶系では in-plane 4 回軸の平行四辺形などがセル外側に張り出すため、上下左右の余白を +20 加算。
+        float extra = sym.CrystalSystemNumber == 7 ? 20f : 0f;
+        float ml = CellMarginLeft   + extra;
+        float mr = CellMarginRight  + extra;
+        float mt = CellMarginTop    + extra;
+        float mb = CellMarginBottom + extra;
+        float availW = Math.Max(8f, canvas.Width  - ml - mr);
+        float availH = Math.Max(8f, canvas.Height - mt - mb);
         double scale = Math.Min(availW / (hLen + Math.Abs(cosA) * vLen), availH / (sinA * vLen));
         float horzLen = (float)(hLen * scale), vertLen = (float)(vLen * scale);
         float bboxW = (float)((hLen + Math.Abs(cosA) * vLen) * scale);
         float bboxH = (float)(sinA * vLen * scale);
-        float ox = CellMarginLeft + (availW - bboxW) / 2f + (cosA < 0 ? -(float)cosA * vertLen : 0);
-        float oy = CellMarginTop  + (availH - bboxH) / 2f;
+        float ox = ml + (availW - bboxW) / 2f + (cosA < 0 ? -(float)cosA * vertLen : 0);
+        float oy = mt + (availH - bboxH) / 2f;
         return new(new PointF(ox, oy), new PointF(horzLen, 0f), new PointF((float)cosA * vertLen, (float)sinA * vertLen));
     }
 
@@ -206,23 +212,37 @@ public abstract class SymmetryDiagramCommon
         return $"{t:0.00}";
     }
 
-    /// <summary>(sx,sy) を通り (dSx,dSy) 方向の直線をセル [0,1]² でクリップ。</summary>
-    protected static (PointF? Start, PointF? End) SpanLineThroughCell(CellLayout c, double sx, double sy, double dSx, double dSy)
+    /// <summary>(260504Ch) (sx,sy) を通り (dSx,dSy) 方向の直線をセル [0,1]² の媒介変数区間でクリップ。
+    /// 旧実装はセル外で辺と平行な直線を tMin=1 にするだけで、tMax が無限大のままなら有効扱いになることがあった。</summary>
+    protected static bool TryClipLineThroughUnitCell(double sx, double sy, double dSx, double dSy,
+                                                     out double tMin, out double tMax)
     {
-        double tMin = double.NegativeInfinity, tMax = double.PositiveInfinity;
-        UpdateInterval(sx, dSx, ref tMin, ref tMax);
-        UpdateInterval(sy, dSy, ref tMin, ref tMax);
-        if (tMin > tMax) return (null, null);
-        return (c.ToScreen(sx + tMin * dSx, sy + tMin * dSy), c.ToScreen(sx + tMax * dSx, sy + tMax * dSy));
+        tMin = double.NegativeInfinity;
+        tMax = double.PositiveInfinity;
+        if (Math.Abs(dSx) < 1e-12 && Math.Abs(dSy) < 1e-12) return false; // (260504Ch) 退化方向では ±Infinity*0 に落とさない。
+        return ClipCoordinate(sx, dSx, ref tMin, ref tMax)
+            && ClipCoordinate(sy, dSy, ref tMin, ref tMax)
+            && tMin <= tMax + 1e-12;
 
-        static void UpdateInterval(double s, double d, ref double tMin, ref double tMax)
+        static bool ClipCoordinate(double s, double d, ref double tMin, ref double tMax)
         {
-            if (Math.Abs(d) < 1e-9) { if (s < 0 || s > 1) tMin = 1; return; }
+            const double eps = 1e-9;
+            if (Math.Abs(d) < eps)
+                return s >= -eps && s <= 1 + eps;
             double t1 = -s / d, t2 = (1 - s) / d;
             if (t1 > t2) (t1, t2) = (t2, t1);
             if (t1 > tMin) tMin = t1;
             if (t2 < tMax) tMax = t2;
+            return true;
         }
+    }
+
+    /// <summary>(sx,sy) を通り (dSx,dSy) 方向の直線をセル [0,1]² でクリップ。</summary>
+    protected static (PointF? Start, PointF? End) SpanLineThroughCell(CellLayout c, double sx, double sy, double dSx, double dSy)
+    {
+        if (!TryClipLineThroughUnitCell(sx, sy, dSx, dSy, out double tMin, out double tMax))
+            return (null, null);
+        return (c.ToScreen(sx + tMin * dSx, sy + tMin * dSy), c.ToScreen(sx + tMax * dSx, sy + tMax * dSy));
     }
 
     protected static Bitmap NewBitmap(Size size, out Graphics g)
@@ -242,16 +262,8 @@ public abstract class SymmetryDiagramCommon
     {
         sym = default; msg = null; resolvedSeriesNumber = seriesNumber;
         if (seriesNumber <= 0 || seriesNumber >= SymmetryStatic.TotalSpaceGroupNumber) return false;
-        sym = SymmetryStatic.Symmetries[seriesNumber];
-        if (sym.SpaceGroupHMStr != null && sym.SpaceGroupHMStr.EndsWith("Rho"))
-            for (int i = 1; i < SymmetryStatic.TotalSpaceGroupNumber; i++)
-            {
-                var alt = SymmetryStatic.Symmetries[i];
-                if (alt.SpaceGroupNumber == sym.SpaceGroupNumber && alt.SpaceGroupHMStr is { } s && s.EndsWith("Hex"))
-                {
-                    sym = alt; resolvedSeriesNumber = i; break;
-                }
-            }
+        resolvedSeriesNumber = SymmetryElementsTable.ResolveRhoToHex(seriesNumber); // (260504Ch) Rho→Hex 解決を対称要素テーブルと共有。
+        sym = SymmetryStatic.Symmetries[resolvedSeriesNumber];
         if (sym.CrystalSystemNumber is not (1 or 2 or 3 or 4 or 5 or 6 or 7))
         {
             msg = $"({sym.CrystalSystemStr} not yet supported)";

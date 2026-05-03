@@ -46,13 +46,13 @@ public readonly struct SymmetryOperation
 
     #region コンストラクタ
     /// <summary>(Order, Sense, Direction, Position, IntrinsicTranslation) を直接指定するコンストラクタ。
-    /// SeriesNumber は 0 (=未指定) で初期化される。OperationList の static literals および
-    /// Phase 3 のデータ生成スクリプトが使用する。</summary>
+    /// seriesNumber は通常 0 (=未指定)。正準化系コードでは ApplyMatrix の晶系判定を保つため非 0 を渡す。</summary>
     public SymmetryOperation(int order, int sense, in (int U, int V, int W) direction,
-                             in (double U, double V, double W) position,
-                             in (double U, double V, double W) intrinsicTranslation)
+                              in (double U, double V, double W) position,
+                              in (double U, double V, double W) intrinsicTranslation,
+                              int seriesNumber = 0) // (260504Ch) overload ではなくデフォルト引数で SeriesNumber 指定に対応。
     {
-        SeriesNumber = 0;
+        SeriesNumber = (ushort)seriesNumber;
         Order = (short)order;
         Sense = sense == 1;
         Direction = direction;

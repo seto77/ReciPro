@@ -36,8 +36,8 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
     private const float MinusFourInnerLensScale = 0.8f;
 
     // 立方晶 [111] 系 体対角 3 回軸 (foot 黒丸 / shaft1 / triangle / 白丸 / shaft2)。
-    private const float DiagThreefoldShaft1Len = 24f;    // foot 黒丸 → 重心 (= 三角中心) までの距離
-    private const float DiagThreefoldShaft2Len = 12f;    // 重心 → 反対側 tail までの距離
+    private const float DiagThreefoldShaft1Len = 22f;    // foot 黒丸 → 重心 (= 三角中心) までの距離 (260503Cl)
+    private const float DiagThreefoldShaft2Len = 7.2f;   // 重心 → 反対側 tail までの距離 (260503Cl: 旧 12 × 0.6)
     private const float DiagThreefoldTriLeg    = 16.5f;  // 三角の脚長
     private const float DiagThreefoldHaloWidth = 3.6f;   // shaft の白縁取り太さ (= 直径)
     private const float DiagThreefoldFootRatio = 1.25f;  // foot 黒丸の半径 / 白丸の半径
@@ -45,10 +45,10 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
     // 反転中心
     private const float InversionR = 2.5f;
 
-    // 紙面内 2(2_1) 矢印
-    private const float InPlaneArrowExt    = 32f;
+    // 紙面内 2(2_1) 矢印 (260503Cl: 紙面平行 4 回軸と統一デザインに合わせて shaft 0.75 倍 / 三角幅 0.75 倍。さらに shaft 0.6 倍に短縮)
+    private const float InPlaneArrowExt    = 14.4f;   // = 32 × 0.75 × 0.6
     private const float ArrowHeadLen       = 7f;
-    private const float ArrowHeadHalfWidth = 3f;
+    private const float ArrowHeadHalfWidth = 2.25f;   // = 3 × 0.75
     private const float DGlideDotR         = 1.7f;
     private const float DGlidePatternPitch = 64f;
     private const float EGlideDotDashUnit  = 2.6f;
@@ -127,9 +127,10 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
                 DrawnMirrorPlanes = [],
             };
 
-            // 紙面平行 mirror 集約 / 紙面垂直 mirror draft 集約 / 紙面内 2 軸 draft 集約。
+            // 紙面平行 mirror 集約 / 紙面垂直 mirror draft 集約 / 紙面内 2/4/-4 軸 draft 集約。
             var parallelMirrors = new HashSet<(double Height, bool Glide, double GlideSx, double GlideSy)>();
-            var inPlaneAxisDrafts = new Dictionary<(long, long, long, long, bool), InPlaneAxisArrowDraft>();
+            // (260503Cl) key に order を追加して 2 / 4 / -4 を別々に集める。draw 時に高次優先で重複を抑制。
+            var inPlaneAxisDrafts = new Dictionary<(long, long, long, long, int, bool), InPlaneAxisArrowDraft>();
             foreach (var mp in table.MirrorPlanes)
             {
                 bool perp = IsAxisPerpendicularToProjection(mp.Normal, actualAxis);
@@ -149,15 +150,23 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
             }
             foreach (var ax in table.RotationAxes)
             {
-                if (Math.Abs(ax.Order) != 2 || ax.Order < 0) continue;
+                int absO = Math.Abs(ax.Order);
+                // 紙面内軸として扱うのは |order| = 2 (proper のみ; -2 は mirror) と |order| = 4 (proper / screw / -4)。
+                if (absO != 2 && absO != 4) continue;
+                if (absO == 2 && ax.Order < 0) continue;
                 if (!IsAxisInPlane(ax.Direction, actualAxis)) continue;
                 var (sx, sy, sz) = proj.ToScreen(ax.X, ax.Y, ax.Z);
-                CollectInPlaneAxisArrows(layout, sx, sy, Mod1(sz), ax.Direction, actualAxis, ax.Screw, inPlaneAxisDrafts);
+                CollectInPlaneAxisArrows(layout, sx, sy, Mod1(sz), ax.Direction, actualAxis,
+                    ax.Order, ax.Screw, ax.FinCount, ax.EdgeStep, inPlaneAxisDrafts);
             }
 
             DrawCollectedPerpendicularMirrorPlanes(ctx);
             DrawParallelMirrorStack(g, layout, parallelMirrors, fill);
-            DrawCollectedInPlaneAxisArrows(g, fill, inPlaneAxisDrafts);
+            // (260503Cl) 紙面平行軸の anchor が斜め回転軸の foot / 紙面垂直回転軸 (4_2 など) の position と重なる場合、
+            // 矢印を axis 方向にずらして点記号と重ならないようにする。
+            var diagonalFootKeys = CollectDiagonalAxisFootKeys(table, layout, actualAxis);
+            var perpendicularAxisKeys = CollectPerpendicularAxisPositionKeys(table, layout, actualAxis);
+            DrawCollectedInPlaneAxisArrows(g, fill, inPlaneAxisDrafts, diagonalFootKeys, perpendicularAxisKeys);
             // 260502Cl 追加: 立方晶 [111] 系 体対角 3 回軸の描画。
             // 同位置で垂直回転軸 (lens 等) と重なる場合は垂直軸を上に出すため、こちらを先に描く。
             DrawDiagonalRotationMarks(ctx, table, actualAxis);
@@ -263,19 +272,18 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
     #endregion
 
     #region 軸方向の分類
-    private static bool IsAxisPerpendicularToProjection((int U, int V, int W) d, ProjectionAxis a) => a switch
+    private static bool IsAxisPerpendicularToProjection((int U, int V, int W) d, ProjectionAxis a)
     {
-        ProjectionAxis.C => d is (0, 0, not 0),
-        ProjectionAxis.A => d is (not 0, 0, 0),
-        _ => d is (0, not 0, 0),
-    };
+        // (260504Ch) ProjectionAxis ごとの switch を、投影面成分 0 + depth 成分非 0 の一般判定へ整理。
+        var (sx, sy) = ProjectVector(d.U, d.V, d.W, a);
+        return sx == 0 && sy == 0 && ProjectedDepth(d.U, d.V, d.W, a) != 0;
+    }
 
-    private static bool IsAxisInPlane((int U, int V, int W) d, ProjectionAxis a) => a switch
+    private static bool IsAxisInPlane((int U, int V, int W) d, ProjectionAxis a)
     {
-        ProjectionAxis.C => d.W == 0 && (d.U != 0 || d.V != 0),
-        ProjectionAxis.A => d.U == 0 && (d.V != 0 || d.W != 0),
-        _ => d.V == 0 && (d.U != 0 || d.W != 0),
-    };
+        var (sx, sy) = ProjectVector(d.U, d.V, d.W, a);
+        return ProjectedDepth(d.U, d.V, d.W, a) == 0 && (sx != 0 || sy != 0);
+    }
 
     // 260502Cl 追加: 立方晶系 [111] 系の体対角 3 回軸など、紙面に対し斜め (depth と in-plane の両方に成分を持つ) な軸の判定。
     private static bool IsAxisDiagonalToProjection((int U, int V, int W) d, ProjectionAxis a)
@@ -448,12 +456,6 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
         return true;
     }
 
-    private static bool IsFraction(double actual, double expected)
-    {
-        double d = Math.Abs(Mod1(actual - expected));
-        return d < FracEps || Math.Abs(d - 1) < FracEps;
-    }
-
     /// <summary>立方晶 [111] 系 体対角 3 回回転軸を ITC Vol.A 風に描画。foot 黒丸 → shaft1 → 三角 (重心に白丸) → shaft2 (dir 方向, 端 round) の構造。
     /// 三角は dir と CCW 90° 方向の 2 脚から成る直角三角形を画面 CCW 45° 回転、重心を shaft1 の端点に一致させる。
     /// finCount/edgeStep が非零なら 3_k 螺旋として三角の各頂点に fin (DrawScrewFins と同形式) を生やす。</summary>
@@ -525,13 +527,16 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
     }
     #endregion
 
-    #region 紙面内 2(2_1) 軸 矢印
-    private readonly record struct InPlaneAxisArrowDraft(PointF Anchor, double OutUx, double OutUy, bool Screw, double Sz);
+    #region 紙面内 2(2_1) / 4(4_n) / -4 軸 矢印
+    /// <summary>(260503Cl 更新) Order / FinCount / EdgeStep を保持して draw 時に頭部を分岐する。</summary>
+    private readonly record struct InPlaneAxisArrowDraft(PointF Anchor, double OutUx, double OutUy,
+                                                          int Order, bool Screw, int FinCount, int EdgeStep, double Sz);
 
-    /// <summary>紙面内 2(2_1) 軸の矢印を draft に集約。同一 (位置, 方向, screw) で複数高さがあれば最小 sz を残す。</summary>
+    /// <summary>紙面内 2/4/-4 軸の矢印を draft に集約。同一 (位置, 方向, order, screw) で複数高さがあれば最小 sz を残す。</summary>
     private static void CollectInPlaneAxisArrows(CellLayout c, double sx, double sy, double sz,
-                                                  (int U, int V, int W) dir, ProjectionAxis projAxis, bool screw,
-                                                  Dictionary<(long, long, long, long, bool), InPlaneAxisArrowDraft> drafts)
+                                                  (int U, int V, int W) dir, ProjectionAxis projAxis,
+                                                  int order, bool screw, int finCount, int edgeStep,
+                                                  Dictionary<(long, long, long, long, int, bool), InPlaneAxisArrowDraft> drafts)
     {
         var (dSx, dSy) = ProjectVector(dir.U, dir.V, dir.W, projAxis);
         double axisX = dSx * c.Horz.X + dSy * c.Vert.X, axisY = dSx * c.Horz.Y + dSy * c.Vert.Y;
@@ -539,13 +544,13 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
         if (axisLen < 1e-6) return;
         double ux = axisX / axisLen, uy = axisY / axisLen;
 
-        // 角に接する隣接セル由来の 2 軸も拾うため 5×5 セル走査
+        // 角に接する隣接セル由来の軸も拾うため 5×5 セル走査
         for (int ox = -2; ox <= 2; ox++) for (int oy = -2; oy <= 2; oy++)
             ClipAxisArrows(sx + ox, sy + oy);
 
         void ClipAxisArrows(double lineSx, double lineSy)
         {
-            if (!TryClipUnitCell(lineSx, lineSy, dSx, dSy, out double tMin, out double tMax)) return;
+            if (!TryClipLineThroughUnitCell(lineSx, lineSy, dSx, dSy, out double tMin, out double tMax)) return; // (260504Ch) Common の境界平行線対応済みクリップを共有。
             if (Math.Abs(tMax - tMin) < 1e-8)
             {
                 double px = lineSx + tMin * dSx, py = lineSy + tMin * dSy;
@@ -571,26 +576,9 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
             if (!OnCellBoundary(px, py)) return;
             var p = c.ToScreen(px, py);
             var key = ((long)Math.Round(p.X * 1000), (long)Math.Round(p.Y * 1000),
-                (long)Math.Round(outUx * 1000), (long)Math.Round(outUy * 1000), screw);
+                (long)Math.Round(outUx * 1000), (long)Math.Round(outUy * 1000), order, screw);
             if (drafts.TryGetValue(key, out var existing) && existing.Sz <= sz) return;
-            drafts[key] = new InPlaneAxisArrowDraft(p, outUx, outUy, screw, sz);
-        }
-    }
-
-    private static bool TryClipUnitCell(double x, double y, double dx, double dy, out double tMin, out double tMax)
-    {
-        tMin = double.NegativeInfinity; tMax = double.PositiveInfinity;
-        Update(x, dx, ref tMin, ref tMax);
-        Update(y, dy, ref tMin, ref tMax);
-        return tMin <= tMax;
-
-        static void Update(double s, double d, ref double tMin, ref double tMax)
-        {
-            if (Math.Abs(d) < 1e-9) { if (s < -1e-9 || s > 1 + 1e-9) tMin = 1; return; }
-            double t1 = -s / d, t2 = (1 - s) / d;
-            if (t1 > t2) (t1, t2) = (t2, t1);
-            if (t1 > tMin) tMin = t1;
-            if (t2 < tMax) tMax = t2;
+            drafts[key] = new InPlaneAxisArrowDraft(p, outUx, outUy, order, screw, finCount, edgeStep, sz);
         }
     }
 
@@ -601,30 +589,118 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
     private static double NormalizeBoundary(double x) =>
         Math.Abs(x) < 1e-6 ? 0 : Math.Abs(x - 1) < 1e-6 ? 1 : x;
 
+    /// <summary>(260503Cl 追加) 斜め回転軸 (3/2 + 立方晶 [111]/[110] 系) の foot を screen 座標 key にして返す。
+    /// 紙面平行軸が同位置に来た場合、平行四辺形などが foot 黒丸を覆ってしまうため、ずらし判定に使う。</summary>
+    private static HashSet<(long X, long Y)> CollectDiagonalAxisFootKeys(Crystallography.SymmetryElementsTable table,
+                                                                          CellLayout layout, ProjectionAxis projAxis)
+    {
+        var result = new HashSet<(long, long)>();
+        foreach (var ax in table.RotationAxes)
+        {
+            if (ax.Order is not (2 or 3)) continue;
+            if (!IsAxisDiagonalToProjection(ax.Direction, projAxis)) continue;
+            if (!TryGetDiagonalAxisFootprint(ax, projAxis, out double sx, out double sy)) continue;
+            foreach (var (dxf, dyf) in EdgeReplicatedPoints(sx, sy))
+            {
+                var p = layout.ToScreen(dxf, dyf);
+                result.Add(((long)Math.Round(p.X * 1000), (long)Math.Round(p.Y * 1000)));
+            }
+        }
+        return result;
+    }
+
+    /// <summary>(260503Cl 追加) 紙面垂直回転軸 (2/3/4/6 と螺旋形・反転形) の position を screen 座標 key にして返す。
+    /// 紙面平行軸の anchor が同位置に来ると、垂直軸の点記号 (lens / 多角形) と重なるため、shift 判定に使う。</summary>
+    private static HashSet<(long X, long Y)> CollectPerpendicularAxisPositionKeys(Crystallography.SymmetryElementsTable table,
+                                                                                   CellLayout layout, ProjectionAxis projAxis)
+    {
+        var result = new HashSet<(long, long)>();
+        var proj = GetProjection(projAxis);
+        foreach (var ax in table.RotationAxes)
+        {
+            int absO = Math.Abs(ax.Order);
+            if (absO is not (2 or 3 or 4 or 6)) continue;
+            if (!IsAxisPerpendicularToProjection(ax.Direction, projAxis)) continue;
+            var (sx, sy, _) = proj.ToScreen(ax.X, ax.Y, ax.Z);
+            foreach (var (dxf, dyf) in EdgeReplicatedPoints(sx, sy))
+            {
+                var p = layout.ToScreen(dxf, dyf);
+                result.Add(((long)Math.Round(p.X * 1000), (long)Math.Round(p.Y * 1000)));
+            }
+        }
+        return result;
+    }
+
     private static void DrawCollectedInPlaneAxisArrows(Graphics g, Brush fill,
-        Dictionary<(long, long, long, long, bool), InPlaneAxisArrowDraft> drafts)
+        Dictionary<(long, long, long, long, int, bool), InPlaneAxisArrowDraft> drafts,
+        HashSet<(long X, long Y)> diagonalFootKeys,
+        HashSet<(long X, long Y)> perpendicularAxisKeys)
     {
         if (drafts.Count == 0) return;
         using var pen = new Pen(Color.Black, InPlaneAxisPenWidth);
         using var brush = new SolidBrush(Color.Black);
+        using var white = new SolidBrush(Color.White); // (260503Cl) -4 軸の白塗り平行四辺形 / 2/2_1 と並列時の labels には使わない。
+        // (260503Cl) 4 回軸は shaft を ArrowHeadLen/6 だけ伸ばし、平行四辺形の右辺と 2 回軸 sharp tip の到達距離 (= InPlaneArrowExt + 2*ArrowHeadLen/3) を一致させる。
+        const float Shaft4Extra = ArrowHeadLen / 6f;
+        // (260503Cl) anchor 重複時の axis 方向ずらし量 (px)。
+        //   斜め軸 foot は shaft1 (= 22) の先まで張り出すので 35px、垂直軸の点記号は半径数 px なので 20px。
+        //   重複が無い場合でもセル枠線への食い込みを避けるためデフォルト 4px ずらす。両方該当時は大きい方 (= 斜め) を採用。
+        const float DefaultAxisShift = 4f;
+        const float DiagonalFootShift = 35f;
+        const float PerpendicularAxisShift = 16f;
         foreach (var group in drafts.Values
             .GroupBy(d => ((long)Math.Round(d.Anchor.X * 1000), (long)Math.Round(d.Anchor.Y * 1000),
                            (long)Math.Round(d.OutUx * 1000), (long)Math.Round(d.OutUy * 1000)))) // (260502Ch)
         {
-            var list = group.OrderBy(d => d.Sz).ThenBy(d => d.Screw ? 0 : 1).ToList();
+            var allDrafts = group.ToList();
+            // (260503Cl) ITC: 同位置・同方向・同高さで proper 4 (4 / 4_n) と -4 が共存する場合、proper 4 を優先 (Pm-3m の 4 + -4、Fm-3c の 4_2 + -4 等)。
+            var properFourSzKeys = new HashSet<long>(
+                allDrafts.Where(d => d.Order == 4).Select(d => (long)Math.Round(d.Sz * 1000)));
+            allDrafts = allDrafts
+                .Where(d => !(d.Order == -4 && properFourSzKeys.Contains((long)Math.Round(d.Sz * 1000))))
+                .ToList();
+            // (260503Cl) ITC: 同位置・同方向で |order|=4 の軸が存在する場合、|order|=2 の点記号は描かない (4 が defining symbol)。
+            bool hasFourfold = allDrafts.Any(d => Math.Abs(d.Order) == 4);
+            var list = (hasFourfold ? allDrafts.Where(d => Math.Abs(d.Order) == 4) : allDrafts.AsEnumerable())
+                .OrderBy(d => d.Sz).ThenBy(d => d.Screw ? 0 : 1).ToList();
+            // (260503Cl) anchor が斜め軸 foot / 垂直軸 position と一致するか判定 (group 内で共通)。両方該当時は大きい方を採用。
+            //   重複が無い場合は DefaultAxisShift (= 4px) を使う。
+            float axisShift = DefaultAxisShift;
+            if (list.Count > 0)
+            {
+                var anchorKey = ((long)Math.Round(list[0].Anchor.X * 1000), (long)Math.Round(list[0].Anchor.Y * 1000));
+                if (diagonalFootKeys.Contains(anchorKey))
+                    axisShift = DiagonalFootShift;
+                else if (perpendicularAxisKeys.Contains(anchorKey))
+                    axisShift = PerpendicularAxisShift;
+            }
             for (int i = 0; i < list.Count; i++)
             {
                 var d = list[i];
-                double offset = list.Count == 1 ? 0 : (i - (list.Count - 1) / 2.0) * 7.0; // (260502Ch) 同じ投影線上の 2 / 2_1 を少し並べる。
-                float ox = (float)(-d.OutUy * offset), oy = (float)(d.OutUx * offset);
+                double perpOffset = list.Count == 1 ? 0 : (i - (list.Count - 1) / 2.0) * 7.0; // (260502Ch) 同じ投影線上の 2 / 2_1 / 4_n を少し perpendicular に並べる。
+                float ox = (float)(-d.OutUy * perpOffset), oy = (float)(d.OutUx * perpOffset);
+                // (260503Cl) axis 方向 (OutUx, OutUy) に axisShift だけ前進させる。
+                ox += (float)(d.OutUx * axisShift);
+                oy += (float)(d.OutUy * axisShift);
                 var anchor = new PointF(d.Anchor.X + ox, d.Anchor.Y + oy);
-                var tip = new PointF((float)(anchor.X + InPlaneArrowExt * d.OutUx), (float)(anchor.Y + InPlaneArrowExt * d.OutUy));
-                g.DrawLine(pen, anchor, tip);
-                DrawArrowhead(g, fill, tip, d.OutUx, d.OutUy, halfHead: d.Screw);
+                int absO = Math.Abs(d.Order);
+                float shaftLen = absO == 4 ? InPlaneArrowExt + Shaft4Extra : InPlaneArrowExt;
+                // (260503Cl) shaft 右端 = lineEnd。各記号 (2/2_1=三角重心、4/4_n/-4=平行四辺形中心) はここに合わせて配置。
+                var lineEnd = new PointF((float)(anchor.X + shaftLen * d.OutUx), (float)(anchor.Y + shaftLen * d.OutUy));
+                g.DrawLine(pen, anchor, lineEnd);
+                if (absO == 2)
+                    DrawInPlaneAxisArrowhead(g, fill, pen, lineEnd, d.OutUx, d.OutUy, halfHead: d.Screw);
+                else if (d.Order == 4)
+                    DrawInPlaneFourfoldHead(g, fill, pen, lineEnd, d.OutUx, d.OutUy, d.FinCount, d.EdgeStep);
+                else if (d.Order == -4)
+                    DrawInPlaneMinusFourfoldHead(g, fill, white, pen, lineEnd, d.OutUx, d.OutUy);
                 string h = HeightLabel(d.Sz);
                 if (h == null) continue; // (260503Ch) [ITA-D2] 高さ 0 は無標記、非ゼロ代表高さだけを表示する。
                 var lbl = g.MeasureString(h, HeightLabelFont);
                 // (260502Ch) 非ゼロ高さは矢印先端にくっつけて表示する。
+                // (260503Cl) 4 回軸も 2 回軸も visualTip = anchor + (InPlaneArrowExt + 2*ArrowHeadLen/3)*dir で同じ位置に到達する。
+                const double VisualTipOffset = InPlaneArrowExt + 2.0 * ArrowHeadLen / 3.0;
+                var tip = new PointF((float)(anchor.X + VisualTipOffset * d.OutUx), (float)(anchor.Y + VisualTipOffset * d.OutUy));
                 bool horiz = Math.Abs(d.OutUx) >= Math.Abs(d.OutUy);
                 float lx = horiz
                     ? (d.OutUx >= 0 ? tip.X + 1 : tip.X - lbl.Width - 1)
@@ -649,12 +725,100 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
         }
     }
 
-    private static void DrawArrowhead(Graphics g, Brush fill, PointF tip, double ux, double uy, bool halfHead)
+    // (260504Ch) glide arrow は常に full head。2_1 軸の half head は DrawInPlaneAxisArrowhead に閉じ込める。
+    private static void DrawArrowhead(Graphics g, Brush fill, PointF tip, double ux, double uy)
     {
         float bx = (float)(tip.X - ArrowHeadLen * ux), by = (float)(tip.Y - ArrowHeadLen * uy);
         PointF left  = new((float)(bx - ArrowHeadHalfWidth * uy), (float)(by + ArrowHeadHalfWidth * ux));
         PointF right = new((float)(bx + ArrowHeadHalfWidth * uy), (float)(by - ArrowHeadHalfWidth * ux));
-        g.FillPolygon(fill, halfHead ? [tip, new PointF(bx, by), left] : [tip, left, right]);
+        g.FillPolygon(fill, [tip, left, right]);
+    }
+
+    /// <summary>(260503Cl 追加) 紙面内 2/2_1 軸の三角矢じり。<paramref name="lineEnd"/> は shaft 右端 = 三角の重心。
+    /// sharp tip は (ux, uy) 方向にさらに 2*ArrowHeadLen/3 伸び、FillPolygon に加え DrawPolygon で shaft と同太さの輪郭線を引く。
+    /// <paramref name="halfHead"/> の場合は下半分のみ (2_1 螺旋用)。</summary>
+    private static void DrawInPlaneAxisArrowhead(Graphics g, Brush fill, Pen pen, PointF lineEnd, double ux, double uy, bool halfHead)
+    {
+        double headOffset = 2.0 * ArrowHeadLen / 3.0;
+        PointF tip = new((float)(lineEnd.X + headOffset * ux), (float)(lineEnd.Y + headOffset * uy));
+        float bx = (float)(tip.X - ArrowHeadLen * ux), by = (float)(tip.Y - ArrowHeadLen * uy);
+        PointF left  = new((float)(bx - ArrowHeadHalfWidth * uy), (float)(by + ArrowHeadHalfWidth * ux));
+        PointF right = new((float)(bx + ArrowHeadHalfWidth * uy), (float)(by - ArrowHeadHalfWidth * ux));
+        PointF[] poly = halfHead ? [tip, new PointF(bx, by), left] : [tip, left, right];
+        g.FillPolygon(fill, poly);
+        g.DrawPolygon(pen, poly);
+    }
+
+    // 紙面内 4 回軸の平行四辺形定数 (1x scale): 左右辺長 = 12 (= triangle 縮小前の 2*ArrowHeadHalfWidth*4)、上下辺は 8→2 (slant = ArrowHeadLen*tan(30°))。
+    private const float InPlaneFourfoldVHalf = 6f;
+    private const float InPlaneFourfoldSlant = ArrowHeadLen * 0.5773502692f;
+
+    /// <summary>(260503Cl 追加) 紙面内 4 / 4_n 軸の頭部 (塗り潰し平行四辺形 + 頂点フィン)。
+    /// 中心 = <paramref name="center"/> (= shaft 右端)。axis 方向 (ux, uy) の +x が右になる局所系で平行四辺形を組み、
+    /// finCount/edgeStep が非零なら DrawScrewFins と同形式のフィンを生やす。</summary>
+    private static void DrawInPlaneFourfoldHead(Graphics g, Brush fill, Pen pen, PointF center, double ux, double uy,
+                                                int finCount, int edgeStep)
+    {
+        var poly = BuildInPlaneFourfoldParallelogram(center, ux, uy);
+        g.FillPolygon(fill, poly);
+        g.DrawPolygon(pen, poly);
+        if (finCount > 0) DrawScrewFins(g, pen, poly, finCount, edgeStep, ScrewFinTailLen);
+    }
+
+    /// <summary>(260503Cl 追加) 紙面内 -4 軸の頭部 (白塗り平行四辺形 + 黒輪郭 + 内部の塗り潰し楕円)。
+    /// 楕円の長軸は平行四辺形の左上頂点 (tl) と右下頂点 (br) を結ぶ対角線。長径 = 対角長、短径 = 長径/4。
+    /// 楕円は FillEllipse のみで、輪郭は描かない。</summary>
+    private static void DrawInPlaneMinusFourfoldHead(Graphics g, Brush fill, Brush white, Pen pen, PointF center, double ux, double uy)
+    {
+        var poly = BuildInPlaneFourfoldParallelogram(center, ux, uy);
+        g.FillPolygon(white, poly);
+        g.DrawPolygon(pen, poly);
+        // poly インデックス 1 = tl, 3 = br。
+        PointF tl = poly[1], br = poly[3];
+        float dx = br.X - tl.X, dy = br.Y - tl.Y;
+        float diagLen = (float)Math.Sqrt(dx * dx + dy * dy);
+        float majorR = diagLen / 2f, minorR = majorR / 4f;
+        float ecx = (tl.X + br.X) / 2f, ecy = (tl.Y + br.Y) / 2f;
+        float angleDeg = (float)(Math.Atan2(dy, dx) * 180.0 / Math.PI);
+        var state = g.Save();
+        try
+        {
+            g.TranslateTransform(ecx, ecy);
+            g.RotateTransform(angleDeg);
+            g.FillEllipse(fill, -majorR, -minorR, 2f * majorR, 2f * minorR);
+        }
+        finally { g.Restore(state); }
+    }
+
+    /// <summary>(260503Cl 追加) 紙面内 4 回軸の塗り潰し平行四辺形の頂点列 [bl, tl, tr, br] を返す。
+    /// 軸方向 (ux, uy) を局所 +x、左 perpendicular (CCW 90°) を局所 +y とし、左右辺は局所 y 軸に平行 (= axis に垂直)、
+    /// 上下辺は 8→2 方向 (右へ進むと axis 垂直方向に slant ぶん移動)。</summary>
+    private static PointF[] BuildInPlaneFourfoldParallelogram(PointF center, double ux, double uy)
+    {
+        // 局所 +y = axis に垂直で「上向き」(axis を +x として CCW 90° 回転)。
+        // 平行四辺形は局所座標で左右辺 x = ±paraW/2、左辺中点 y = +slant/2、右辺中点 y = -slant/2、上下辺は y = midY ± vHalf。
+        const float paraW = ArrowHeadLen;
+        const float vHalf = InPlaneFourfoldVHalf;
+        const float slant = InPlaneFourfoldSlant;
+        // 局所 perpendicular ベクトル (axis を CCW 90° 回転 = (-uy, ux))。
+        double px = -uy, py = ux;
+        // 局所点 (lx, ly) = center + lx * (ux, uy) + ly * (px, py)。
+        PointF Local(float lx, float ly) => new(
+            (float)(center.X + lx * ux + ly * px),
+            (float)(center.Y + lx * uy + ly * py));
+        // 左辺中点 y_local = +slant/2 (= 局所「上」方向 = axis 進行方向に対し CCW 90°), 右辺中点 y_local = -slant/2。
+        // bl = 左辺下 (y_local 大)、tl = 左辺上 (y_local 小)、tr = 右辺上、br = 右辺下。
+        // ただし test 設計に合わせて画面の「上下」と局所「上下」を整合させる必要がある。
+        // test (ux=1, uy=0): perpendicular (px, py) = (0, 1) → 局所 +y は画面 +y (= 下)。
+        //   このとき bl = 左下 = (lEdgeX, lMidY + paraVHalf) = 局所 (-paraW/2, +slant/2 + vHalf)。
+        //   tl = 左上 = 局所 (-paraW/2, +slant/2 − vHalf)。整合する。
+        return
+        [
+            Local(-paraW / 2f,  slant / 2f + vHalf), // bl
+            Local(-paraW / 2f,  slant / 2f - vHalf), // tl
+            Local( paraW / 2f, -slant / 2f - vHalf), // tr
+            Local( paraW / 2f, -slant / 2f + vHalf), // br
+        ];
     }
     #endregion
 
@@ -778,7 +942,7 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
                 maxX = Math.Max(maxX, tip.X);
                 maxY = Math.Max(maxY, tip.Y);
                 g.DrawLine(pen, apex, lineEndPt);
-                DrawArrowhead(g, fill, tip, ux, uy, halfHead: false);
+                DrawArrowhead(g, fill, tip, ux, uy);
             }
 
             // 高さラベル: 0 なら省略。labelAtBottomLeft (左上 bracket) は下向き腕の終端 vEnd の下・左脇、それ以外は右側 (中央) に置く。
@@ -1056,7 +1220,7 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
             var tip = Pt(t2);
             var lineEnd = Pt(Math.Max(t1, t2 - GlideArrowLineShorten));
             g.DrawLine(pen, Pt(t1), lineEnd);
-            DrawArrowhead(g, fill, tip, ux, uy, halfHead: false);
+            DrawArrowhead(g, fill, tip, ux, uy);
         }
     }
 

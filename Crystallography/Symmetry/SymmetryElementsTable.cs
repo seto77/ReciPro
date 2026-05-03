@@ -44,9 +44,9 @@ public sealed class SymmetryElementsTable
     public InversionCenter[] InversionCenters { get; }
     public RotationAxis[] RotationAxes { get; }
     public MirrorPlane[] MirrorPlanes { get; }
-    /// <summary>(260502Cl 追加) この空間群の centering 並進ベクトル一覧 (整数並進 (0,0,0) を除く)。
+    /// <summary>(260504Ch) この空間群の centering 並進ベクトル一覧 (整数並進 (0,0,0) を除く)。
     /// 例: F-centering なら (0,1/2,1/2), (1/2,0,1/2), (1/2,1/2,0)。
-    /// 描画側で「centering 派生の螺旋軸」を冗長要素として除外する判定に使う。</summary>
+    /// 軸方向の primitive 並進長や centered cell の mirror/glide 展開に使う。</summary>
     public (double U, double V, double W)[] Centerings { get; }
 
     private SymmetryElementsTable(int seriesNumber, InversionCenter[] inv, RotationAxis[] rot, MirrorPlane[] mir,
@@ -384,13 +384,9 @@ public sealed class SymmetryElementsTable
     /// baseOps はその空間群の WyckoffPositions[s][0].PositionOperations。seriesNumber は SymmetryOperation の series-aware 化に使う。</summary>
     private static SymmetryOperation[] ExpandWithCentering(SymmetryOperation[] baseOps, int seriesNumber)
     {
-        // (260503Cl) baseOps には SymmetryOperation の centering 用 constructor で生成された "壊れた" centered op が混じっている。
-        //   その constructor は centering shift を IntrinsicTranslation にそのまま積むので、(Position, IT) の正準分解が崩れる
-        //   (本来 Position に乗るべき軸-垂直成分が IT 側に残る)。EnumerateAxisInstances は Position を軸代表点とみなすため、
-        //   この壊れた表現のまま結果に入れると、同じ操作が「正しい代表位置の screw 軸」と「誤った原点位置の余分な screw 軸」の
-        //   2 つの別物として登録されてしまう。
-        //   対策: ops 全体を Canonicalize で正準化してから seen-key で重複を弾く。下の TryCreateCenteredOperation も
-        //   既に正準分解する側なので、二重に走らせても結果は同じ key に落ちる。
+        // (260504Ch) centering 付き SymmetryOperation は Seitz 操作としては正しいが、対称要素表では
+        //   Position = 軸/面上の代表点、IntrinsicTranslation = 軸/面内成分、という正準分解が必要。
+        //   先に全 op を正準化しておくと、元データ由来コピーと runtime 展開コピーが同じ seen-key に落ちる。
         var ops = baseOps.Select(op => Canonicalize(new SymmetryOperation(op, seriesNumber))).ToArray();
         var cents = new List<(double U, double V, double W)>();
         // 中心化ベクトルは恒等 op の IntrinsicTranslation に格納されている (識別: Order == 1 で IT が非ゼロ)。
@@ -417,10 +413,11 @@ public sealed class SymmetryElementsTable
         }
 
         foreach (var op in ops) TryAdd(op);
+        // (260504Ch) TryCreateCenteredOperation 自身が SeriesNumber を保つので包み直し不要。
         foreach (var op in ops)
             foreach (var c in cents)
                 if (TryCreateCenteredOperation(op, c, out var centered))
-                    TryAdd(new SymmetryOperation(centered, seriesNumber));
+                    TryAdd(centered);
         return [.. result];
     }
 
@@ -435,27 +432,13 @@ public sealed class SymmetryElementsTable
         if (op.Order == 1) return op;
         var t = (Vec)op.IntrinsicTranslation;
         if (t * t < 1e-12) return op;
-        var a = BuildIMinusR(op);
-        Vec shift, residual;
-        if (a.Rank() == 2 && op.Order > 0)
-        {
-            if (!TryDecomposeAxisLatticeTranslation(op, t, out shift, out residual)) return op;
-        }
-        else if (op.Order == -2)
-        {
-            var rt = op.ApplyMatrix(t);
-            shift = t * 0.5;
-            residual = (t + rt) * 0.5;
-        }
-        else
-        {
-            if (!TrySolveLinear(a, t, out shift)) return op;
-            residual = t - a * shift;
-        }
+        if (!TrySplitTranslation(op, t, out var shift, out var residual)) return op;
         var p = op.Position;
+        // (260504Ch) SeriesNumber を維持。落とすと ApplyMatrix が isHex=false に転落し trigonal/hex の I-R が壊れる。
         return new SymmetryOperation(op.Order, op.Sense ? 1 : -1, op.Direction,
             (Mod1(p.U + shift.X), Mod1(p.V + shift.Y), Mod1(p.W + shift.Z)),
-            (CenterMod1(residual.X), CenterMod1(residual.Y), CenterMod1(residual.Z)));
+            (CenterMod1(residual.X), CenterMod1(residual.Y), CenterMod1(residual.Z)),
+            op.SeriesNumber);
     }
 
     private static bool TryCreateCenteredOperation(SymmetryOperation op, (double U, double V, double W) centering, out SymmetryOperation centered)
@@ -463,31 +446,36 @@ public sealed class SymmetryElementsTable
         centered = default;
         if (op.Order == 1) return false;
         if (Math.Abs(centering.U) + Math.Abs(centering.V) + Math.Abs(centering.W) < 1e-9) return false;
-        var a = BuildIMinusR(op);
-        Vec lattice = centering;
-        Vec shift, residual;
-        bool ok;
-        if (a.Rank() == 2 && op.Order > 0)
-            ok = TryDecomposeAxisLatticeTranslation(op, lattice, out shift, out residual);
-        else if (op.Order == -2)
-        {
-            // mirror/glide: 法線方向は面位置のシフト (lattice/2)、面内成分は glide として残る ((lattice + R·lattice)/2)。
-            var rl = op.ApplyMatrix(lattice);
-            shift = lattice * 0.5;
-            residual = (lattice + rl) * 0.5;
-            ok = true;
-        }
-        else
-        {
-            ok = TrySolveLinear(a, lattice, out shift);
-            residual = lattice - a * shift;
-        }
-        if (!ok) return false;
+        if (!TrySplitTranslation(op, centering, out var shift, out var residual)) return false;
         var p = op.Position;
         var it = op.IntrinsicTranslation;
+        // (260504Ch) Canonicalize と同じ理由で SeriesNumber を維持する。
         centered = new SymmetryOperation(op.Order, op.Sense ? 1 : -1, op.Direction,
             (Mod1(p.U + shift.X), Mod1(p.V + shift.Y), Mod1(p.W + shift.Z)),
-            (CenterMod1(it.U + residual.X), CenterMod1(it.V + residual.Y), CenterMod1(it.W + residual.Z)));
+            (CenterMod1(it.U + residual.X), CenterMod1(it.V + residual.Y), CenterMod1(it.W + residual.Z)),
+            op.SeriesNumber);
+        return true;
+    }
+
+    /// <summary>(260504Ch) 追加並進を、対称要素の代表位置を動かす成分 shift と、軸/面内に残る intrinsic 成分 residual へ分解する。</summary>
+    private static bool TrySplitTranslation(SymmetryOperation op, Vec translation, out Vec shift, out Vec residual)
+    {
+        shift = Vec.Zero;
+        residual = Vec.Zero;
+        if (op.Order == -2)
+        {
+            // mirror/glide: 法線方向は面位置のシフト (translation/2)、面内成分は glide として残る ((translation + R·translation)/2)。
+            var rt = op.ApplyMatrix(translation);
+            shift = translation * 0.5;
+            residual = (translation + rt) * 0.5;
+            return true;
+        }
+
+        var a = BuildIMinusR(op);
+        if (a.Rank() == 2 && op.Order > 0)
+            return TryDecomposeAxisLatticeTranslation(op, translation, out shift, out residual);
+        if (!TrySolveLinear(a, translation, out shift)) return false;
+        residual = translation - a * shift;
         return true;
     }
     #endregion

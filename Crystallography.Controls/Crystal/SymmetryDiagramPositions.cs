@@ -322,7 +322,8 @@ public class SymmetryDiagramPositions : SymmetryDiagramCommon
     /// <summary>(260503Cl) ITC 風の depth ラベル。投影軸方向の depth を <c>a·x + b·y + c·z + t</c>
     /// (a,b,c ∈ {-1,0,+1}) のアフィン式として抽出し、 <c>&lt;tFrac&gt;&lt;±&gt;&lt;variable&gt;</c> 形式に文字列化する。
     /// 例: <c>+z</c>, <c>−z</c>, <c>½+z</c>, <c>+y</c>, <c>−x</c>, <c>½−x</c>。
-    /// 立方晶系では [111] 3 回回転で投影軸変数が x/y/z 間で入れ替わるため、変数文字を常に含める。</summary>
+    /// 立方晶系では [111] 3 回回転で投影軸変数が x/y/z 間で入れ替わるため、変数文字を常に含める。
+    /// (260504Cl) 立方晶系以外では depth 変数は常に投影軸変数 (例: C 投影なら z) 固定なので末尾変数文字を省略。</summary>
     private static string ComputeDepthLabel(SymmetryOperation op, double displayedSz, Projection proj,
                                             double testX, double testY, double testZ)
     {
@@ -335,7 +336,9 @@ public class SymmetryDiagramPositions : SymmetryDiagramCommon
         // 並進 t = displayedSz − R(test) の depth 成分 (mod 1)。アフィン式から線形部分を引けば残りが Seitz 並進。
         var (rTx, rTy, rTz) = op.ApplyMatrix(testX, testY, testZ);
         double rTestSz = proj.ToScreen(rTx, rTy, rTz).Sz;
-        return TZToFraction(Mod1(displayedSz - rTestSz)) + (coef > 0 ? "+" : "−") + "xyz"[idx];
+        bool isCubic = SymmetryStatic.Symmetries[op.SeriesNumber].CrystalSystemNumber == 7;
+        string varStr = isCubic ? "xyz"[idx].ToString() : "";
+        return TZToFraction(Mod1(displayedSz - rTestSz)) + (coef > 0 ? "+" : "−") + varStr;
 
         double ProbeDepth(double ex, double ey, double ez)
         {
