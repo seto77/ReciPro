@@ -21,7 +21,10 @@ public readonly struct SymmetryOperation
     /// <summary>単位胞内での対称要素の代表点。軸上点/面上点/対称心の不動点を表す。Order==1 (恒等) では未使用。</summary>
     public (double U, double V, double W) Position { get; }
 
-    /// <summary>内在並進ベクトル。螺旋軸と映進面の並進成分を保持する。回転・鏡面・対称心では (0,0,0)。</summary>
+    /// <summary>内在並進ベクトル。螺旋軸/映進面の並進成分を保持する。回転・鏡面・対称心では (0,0,0)。
+    /// (260503Cl) ただし中心化シフト constructor (so, i, shiftU, shiftV, shiftW) で生成された op では、
+    /// 中心化並進 (I/F/A/B/C/RH) も加算されている (旧実装は Position に格納していたが、R が shift 方向を不変にすると
+    /// SeitzTranslation に寄与しないため IT 格納に変更)。SymmetryElementsTable.cs の centering 抽出は IT 読み出しに改訂済み。</summary>
     public (double U, double V, double W) IntrinsicTranslation { get; }
 
     /// <summary>対称操作 (R, t)(x,y,z) = R·(x,y,z) + t における並進 t ベクトル。
@@ -57,18 +60,22 @@ public readonly struct SymmetryOperation
         IntrinsicTranslation = intrinsicTranslation;
     }
 
-    /// <summary>中心化シフトを伴うコピー。SeitzTranslation を T だけ加算するために Position をシフトするが、
-    /// 軸/鏡面の平行成分は本来 IntrinsicTranslation に振り分ける必要があり、現状は近似実装
-    /// (`SeitzTranslation` の派生値が中心化された軸については T 倍ずれる可能性)。SymmetryStatic の
-    /// 中心化展開でのみ使用され、外部から SeitzTranslation を読む caller がない間は影響なし。</summary>
+    /// <summary>(260503Cl 改訂) 中心化シフトを伴うコピー。SeitzTranslation = (I-R)·Position + IntrinsicTranslation の関係から、
+    /// 全並進 t を一様に shift だけ加算するには IntrinsicTranslation に shift を加える必要がある (Position に加えると (I-R)·shift にしか寄与せず、
+    /// R が shift 方向を不変にする場合 (= 立方晶 [111] 3 回回転、恒等等) 並進が完全に消失するバグが生じる)。
+    /// 旧実装: Position = so.Position + shift, IntrinsicTranslation = so.IntrinsicTranslation;
+    /// 新実装: Position = so.Position, IntrinsicTranslation = so.IntrinsicTranslation + shift。
+    /// 検出側 (SymmetryElementsTable.cs の centering 抽出) も IntrinsicTranslation 読み出しに併せて改訂済み。</summary>
     public SymmetryOperation(SymmetryOperation so, int seriesNumber, double shiftU, double shiftV, double shiftW)
     {
         SeriesNumber = (ushort)seriesNumber;
         Order = so.Order;
         Sense = so.Sense;
         Direction = so.Direction;
-        Position = (so.Position.U + shiftU, so.Position.V + shiftV, so.Position.W + shiftW);
-        IntrinsicTranslation = so.IntrinsicTranslation;
+        Position = so.Position;
+        IntrinsicTranslation = (so.IntrinsicTranslation.U + shiftU,
+                                so.IntrinsicTranslation.V + shiftV,
+                                so.IntrinsicTranslation.W + shiftW);
     }
 
     public SymmetryOperation(SymmetryOperation so, int seriesNumber)

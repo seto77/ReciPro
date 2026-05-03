@@ -100,9 +100,10 @@ public sealed class SymmetryElementsTable
         var baseOps = SymmetryStatic.WyckoffPositions[seriesNumber][0].PositionOperations;
         if (baseOps == null) return null;
         var ops = ExpandWithCentering(baseOps, seriesNumber);
+        // (260503Cl) 中心化ベクトルは恒等 op の IntrinsicTranslation から取得 (constructor 改訂に追従)。
         var centerings = ops
-            .Where(o => o.Order == 1 && Math.Abs(o.Position.U) + Math.Abs(o.Position.V) + Math.Abs(o.Position.W) > 1e-6)
-            .Select(o => (o.Position.U, o.Position.V, o.Position.W))
+            .Where(o => o.Order == 1 && Math.Abs(o.IntrinsicTranslation.U) + Math.Abs(o.IntrinsicTranslation.V) + Math.Abs(o.IntrinsicTranslation.W) > 1e-6)
+            .Select(o => (o.IntrinsicTranslation.U, o.IntrinsicTranslation.V, o.IntrinsicTranslation.W))
             .Distinct()
             .ToList();
 
@@ -335,10 +336,12 @@ public sealed class SymmetryElementsTable
     {
         var ops = baseOps.Select(op => new SymmetryOperation(op, seriesNumber)).ToArray();
         var cents = new List<(double U, double V, double W)>();
+        // (260503Cl) 中心化ベクトルは恒等 op の IntrinsicTranslation から取得 (旧実装は Position から読んでいたが、
+        //            SymmetryOperation の centering constructor 改訂で IT に格納されるようになった)。
         foreach (var op in ops)
         {
             if (op.Order != 1) continue;
-            var (cu, cv, cw) = op.Position;
+            var (cu, cv, cw) = op.IntrinsicTranslation;
             if (Math.Abs(cu) + Math.Abs(cv) + Math.Abs(cw) > 1e-6) cents.Add((cu, cv, cw));
         }
         if (cents.Count == 0) return ops;

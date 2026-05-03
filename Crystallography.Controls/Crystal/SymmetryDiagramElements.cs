@@ -71,6 +71,8 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
         public Brush Fill, White;
         public List<PerpendicularMirrorDraft> PerpendicularMirrors;
         public HashSet<(long Nx, long Ny, long D, int Style)> DrawnMirrorPlanes;
+        /// <summary>(260503Ch) [ITA-D1], [ITA-D4] 同一幾何面に純 mirror と e-glide pair が共存するとき、純 mirror を代表記号として優先する。</summary>
+        public bool PreferPureMirrorForPerpendicularMirrorLines;
     }
 
     private readonly record struct PerpendicularMirrorDraft(double Sx, double Sy,
@@ -81,6 +83,44 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
                                                         double GlideSx, double GlideSy,
                                                         double GlideSx2, double GlideSy2,
                                                         bool NGlide, bool DGlide, int DiamondScore);
+
+    /// <summary>(260502Ch) ITA の symmetry-elements diagram を「完全列挙表」ではなく「代表図」として描くための選択方針。
+    /// SymmetryElementsTable は全要素を保持し、この policy が centered lattice 由来コピー・疎な代表軸・重複する glide 表現の採否を決める。
+    /// (260503Ch) ITA Vol. A (2016) Chapter 2 の一般原則を、描画コードから参照しやすい番号付き規則として明文化する。
+    /// [ITA-D0] symmetry-elements diagram は、対称操作の完全列挙ではなく、標準投影で位置・向き・一般位置との対応を読むための代表図である。
+    /// [ITA-D1] 1 つの幾何的対称要素は、その要素を識別できる defining operation / defining graphical symbol で表し、同じ情報を持つ低次・重複記号は重ねない。
+    /// [ITA-D2] 投影面に平行な面・軸・対称心の高さは h を表示すれば h+1/2 の同種要素を含意する。図では代表高さだけを描き、0 以外のみ高さラベルを付ける。
+    /// [ITA-D3] centered lattice が作る同種・同幾何のコピーは、ITA 図で採用される基準格子位置へ畳み込む。全コピーをそのまま描くと代表図より過密になる。
+    /// [ITA-D4] centered cell で複数の glide reflection が同一面に重なる場合は、e/d glide などの複合的な図記号へまとめる。
+    /// [ITA-D5] cubic の投影面に傾いた軸は、Table 2.1.2.7 系の inclined-axis 記号として扱い、投影 foot の代表集合を個別に選ぶ。
+    /// [ITA-D6] Chapter 2 は空間群ごとの完全な座標リストを与えないため、群別差分はこの policy 生成部だけに閉じ込め、描画本体は上の一般規則だけを見る。</summary>
+    private readonly record struct ItaDiagramElementPolicy(
+        bool UseCenteredLatticeRepresentativeGrid,          // [ITA-D3]
+        bool UseSparseEdgeTwofoldSet,                       // [ITA-D1], [ITA-D5]
+        bool UseSparseDiagonalThreefoldSet,                 // [ITA-D1], [ITA-D3], [ITA-D5]
+        bool UseThirdGridDiagonalScrewRepresentatives,      // [ITA-D3], [ITA-D5], [ITA-D6]
+        bool PreferPureMirrorForPerpendicularMirrorLines,   // [ITA-D1], [ITA-D4], [ITA-D6]
+        bool UseEdgeMidpointPerpendicularTwofoldScrewStyle, // [ITA-D1], [ITA-D3], [ITA-D6]
+        bool UseEdgeMidpointQuarterHeightInversion,          // [ITA-D2], [ITA-D3], [ITA-D6]
+        bool UseHalfGridInPlaneTwofoldItaHeights)           // [ITA-D2], [ITA-D3], [ITA-D6]
+    {
+        public static ItaDiagramElementPolicy Create(Crystallography.SymmetryElementsTable table)
+        {
+            bool useCenteredLatticeRepresentativeGrid = UsesCenteredCubicRepresentativeGrid(table); // (260503Ch) [ITA-D3], [ITA-D6]
+            bool useSparseCubicRepresentativeSet = IsSparseCubicRepresentativeDiagram(table); // (260503Ch) [ITA-D1], [ITA-D5], [ITA-D6]
+            bool useOriginOnlyDiagonalThreefoldSet = UsesOriginOnlyDiagonalThreefoldRepresentatives(table); // (260503Ch) [ITA-D1], [ITA-D3], [ITA-D5], [ITA-D6]
+            bool useThirdGridDiagonalScrewRepresentatives = UsesThirdGridDiagonalScrewRepresentatives(table); // (260503Ch) [ITA-D3], [ITA-D5], [ITA-D6]
+            bool useM3RepresentativeOverrides = UsesFaceCenteredCubicM3RepresentativeOverrides(table); // (260503Ch) [ITA-D6]
+            bool preferPureMirrorForPerpendicularMirrorLines = useM3RepresentativeOverrides; // (260503Ch) [ITA-D1], [ITA-D4]
+            bool useEdgeMidpointPerpendicularTwofoldScrewStyle = useM3RepresentativeOverrides; // (260503Ch) [ITA-D1], [ITA-D3]
+            bool useEdgeMidpointQuarterHeightInversion = useM3RepresentativeOverrides; // (260503Ch) [ITA-D2], [ITA-D3]
+            bool useHalfGridInPlaneTwofoldItaHeights = useM3RepresentativeOverrides; // (260503Ch) [ITA-D2], [ITA-D3]
+            return new(useCenteredLatticeRepresentativeGrid, useSparseCubicRepresentativeSet,
+                useOriginOnlyDiagonalThreefoldSet, useThirdGridDiagonalScrewRepresentatives,
+                preferPureMirrorForPerpendicularMirrorLines, useEdgeMidpointPerpendicularTwofoldScrewStyle,
+                useEdgeMidpointQuarterHeightInversion, useHalfGridInPlaneTwofoldItaHeights);
+        }
+    }
     #endregion
 
     #region 公開 API
@@ -101,6 +141,7 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
 
             var table = SymmetryElementsTable.Get(seriesNumber);
             if (table == null) return bmp;
+            var policy = ItaDiagramElementPolicy.Create(table); // (260502Ch) ITA 代表図としての描画選択を一箇所に集約。
 
             using var pen        = new Pen(Color.Black, DefaultPenWidth);
             using var mirrorPen  = new Pen(Color.Black, MirrorPenWidth);
@@ -124,11 +165,15 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
                 Fill = fill, White = white,
                 PerpendicularMirrors = [],
                 DrawnMirrorPlanes = [],
+                PreferPureMirrorForPerpendicularMirrorLines = policy.PreferPureMirrorForPerpendicularMirrorLines, // (260503Ch)
             };
 
+            // (260502Ch) [ITA-D0] IUCr/ITA の space-group diagrams は対称操作・対称要素の完全列挙ではなく、標準投影で空間群を識別する代表要素図として扱う。
+            //            SymmetryElementsTable には全列挙を保持し、描画時に ITA 図と同じく centering 由来の冗長コピーを必要な代表だけへ絞る。
             // 紙面平行 mirror 集約 / 紙面垂直 mirror draft 集約 / 紙面内 2 軸 draft 集約
             var parallelMirrors = new HashSet<(double Height, bool Glide, double GlideSx, double GlideSy)>();
             var inPlaneAxisDrafts = new Dictionary<(long, long, long, long, bool), InPlaneAxisArrowDraft>();
+            // (260502Ch) [ITA-D3] centered lattice 由来で同じ幾何要素のコピーが多数出る場合、代表図では投影格子上の基準位置だけを残す。
             foreach (var mp in table.MirrorPlanes)
             {
                 bool perp = IsAxisPerpendicularToProjection(mp.Normal, actualAxis);
@@ -142,28 +187,34 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
                 }
                 else if (inPlane)
                 {
+                    if (policy.UseCenteredLatticeRepresentativeGrid && !IsHalfGridFraction(Mod1(MirrorPositionAlongNormal(mp))))
+                        continue; // (260503Ch) [ITA-D3] 0/1/2 系でない centered-lattice 副面は、同じ幾何情報のコピーとして代表図から外す。
                     var (sx, sy, _) = proj.ToScreen(mp.X, mp.Y, mp.Z);
                     ctx.PerpendicularMirrors.Add(new(sx, sy, mp.Normal, mp.Glide));
                 }
             }
-            if (UseF23StandardElementSet(table))
-                CollectF23StandardInPlaneTwofoldAxisArrows(layout, actualAxis, inPlaneAxisDrafts); // (260502Ch)
+            // (260502Ch) [ITA-D1], [ITA-D5] 一部の cubic 代表図では、全線分を列挙せず、投影辺上の 2/2_1 軸だけを疎に構成する。
+            if (policy.UseSparseEdgeTwofoldSet)
+                CollectSparseCubicRepresentativeInPlaneTwofoldAxisArrows(layout, actualAxis, inPlaneAxisDrafts); // (260502Ch)
             else foreach (var ax in table.RotationAxes)
             {
                 if (Math.Abs(ax.Order) != 2 || ax.Order < 0) continue;
                 if (!IsAxisInPlane(ax.Direction, actualAxis)) continue;
                 var (sx, sy, sz) = proj.ToScreen(ax.X, ax.Y, ax.Z);
-                CollectInPlaneAxisArrows(layout, sx, sy, Mod1(sz), ax.Direction, actualAxis, ax.Screw, inPlaneAxisDrafts);
+                if (policy.UseCenteredLatticeRepresentativeGrid && !IsHalfGridInPlaneAxisLine(ax, actualAxis, sx, sy))
+                    continue; // (260503Ch) [ITA-D3] 0/1/2 系でない centered-lattice 副軸線は、代表図では基準軸線へ畳み込む。
+                double representativeHeight = GetRepresentativeInPlaneTwofoldHeight(ax, actualAxis, sx, sy, sz, policy); // (260503Ch) [ITA-D2], [ITA-D3]
+                CollectInPlaneAxisArrows(layout, sx, sy, representativeHeight, ax.Direction, actualAxis, ax.Screw, inPlaneAxisDrafts);
             }
 
             DrawCollectedPerpendicularMirrorPlanes(ctx);
             DrawParallelMirrorStack(g, layout, parallelMirrors, fill);
             DrawCollectedInPlaneAxisArrows(g, fill, inPlaneAxisDrafts);
-            // 260502Cl 追加: 立方晶 [111] 系 体対角 3 回軸の描画 (P23 等)。
+            // 260502Cl 追加: 立方晶 [111] 系 体対角 3 回軸の描画。
             // 同位置で垂直回転軸 (lens 等) と重なる場合は垂直軸を上に出すため、こちらを先に描く。
-            DrawDiagonalRotationMarks(ctx, table, actualAxis);
-            DrawPerpendicularRotationMarks(ctx, table, actualAxis); // (260502Ch) F23 の IUCr 代表軸選択にも table 情報を使う。
-            DrawInversions(ctx, table.InversionCenters);
+            DrawDiagonalRotationMarks(ctx, table, actualAxis, policy);
+            DrawPerpendicularRotationMarks(ctx, table, actualAxis, policy); // (260502Ch) [ITA-D1], [ITA-D3] IUCr/ITA 代表軸選択にも table 情報を使う。
+            DrawInversions(ctx, table.InversionCenters, GetRepresentativeInversionFilter(policy), policy); // (260502Ch) [ITA-D2], [ITA-D3] 高さ代表と centered lattice 由来の副中心を必要に応じて抑制。
         }
         finally { g.Dispose(); }
         return bmp;
@@ -172,10 +223,10 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
 
     #region 紙面垂直 点記号
     /// <summary>軸方向が投影軸に平行な軸を点記号として描画。低次は高次に隠され、-N と同位置の +N があれば -N を捨て、-N(z≠0) は +N_k に置換。</summary>
-    private static void DrawPerpendicularRotationMarks(ElementsContext ctx, Crystallography.SymmetryElementsTable table, ProjectionAxis projAxis)
+    private static void DrawPerpendicularRotationMarks(ElementsContext ctx, Crystallography.SymmetryElementsTable table,
+                                                       ProjectionAxis projAxis, ItaDiagramElementPolicy policy)
     {
         var axes = table.RotationAxes;
-        bool useF23StandardTwofoldSet = UseF23StandardElementSet(table); // (260502Ch)
         // 同位置の高次 proper rotation 集合 (低次抑制 / -N 抑制用)。
         var covered2 = new HashSet<(int, int)>();
         var covered3 = new HashSet<(int, int)>();
@@ -183,14 +234,14 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
         foreach (var ax in axes)
         {
             if (ax.Order <= 0 || !IsAxisPerpendicularToProjection(ax.Direction, projAxis)) continue;
-            if (useF23StandardTwofoldSet && ax.Order == 2 && !IsF23StandardPerpendicularTwofoldAxis(ctx.Proj, ax))
-                continue; // (260502Ch)
+            if (policy.UseCenteredLatticeRepresentativeGrid && ax.Order == 2 && !IsItaRepresentativePerpendicularTwofoldAxis(ctx.Proj, ax))
+                continue; // (260503Ch) [ITA-D3] 高次軸との重なり判定用集合にも、0/1/2 系の代表 2 回軸だけを登録する。
             int absO = ax.Order;
             var (sx, sy, _) = ctx.Proj.ToScreen(ax.X, ax.Y, ax.Z);
             var key = ((int)Math.Round(Mod1(sx) * 10000), (int)Math.Round(Mod1(sy) * 10000));
-            if (absO is 3 or 4 or 6) covered2.Add(key);
-            if (absO == 6) covered3.Add(key);
-            if (!ax.Screw && absO is (2 or 3 or 4 or 6)) properRotations.Add((absO, key.Item1, key.Item2));
+            if (absO is 3 or 4 or 6) covered2.Add(key); // (260503Ch) [ITA-D1] 同位置の高次記号が defining symbol になる場合、低次 2 回記号は描かない。
+            if (absO == 6) covered3.Add(key); // (260503Ch) [ITA-D1] 6 回記号が defining symbol になる場合、同位置の 3 回記号は描かない。
+            if (!ax.Screw && absO is (2 or 3 or 4 or 6)) properRotations.Add((absO, key.Item1, key.Item2)); // (260503Ch) [ITA-D1] 同位置に proper N があれば -N は別途重ねない。
         }
 
         foreach (var ax in axes)
@@ -198,13 +249,13 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
             int o = ax.Order, absO = Math.Abs(o);
             if (absO is not (2 or 3 or 4 or 6)) continue;
             if (!IsAxisPerpendicularToProjection(ax.Direction, projAxis)) continue;
-            if (useF23StandardTwofoldSet && absO == 2 && !IsF23StandardPerpendicularTwofoldAxis(ctx.Proj, ax))
-                continue; // (260502Ch)
+            if (policy.UseCenteredLatticeRepresentativeGrid && absO == 2 && !IsItaRepresentativePerpendicularTwofoldAxis(ctx.Proj, ax))
+                continue; // (260503Ch) [ITA-D3] centered-lattice 由来の紙面垂直 2_1/副 2 回軸は代表点記号から外す。
             var (sx, sy, sz) = ctx.Proj.ToScreen(ax.X, ax.Y, ax.Z);
             var key = ((int)Math.Round(Mod1(sx) * 10000), (int)Math.Round(Mod1(sy) * 10000));
-            if (absO == 2 && covered2.Contains(key)) continue;
-            if (absO == 3 && o > 0 && covered3.Contains(key)) continue;
-            if (o < 0 && properRotations.Contains((absO, key.Item1, key.Item2))) continue;
+            if (absO == 2 && covered2.Contains(key)) continue; // (260503Ch) [ITA-D1] 高次点記号が同じ位置を定義するため、2 回点記号を省く。
+            if (absO == 3 && o > 0 && covered3.Contains(key)) continue; // (260503Ch) [ITA-D1] 6 回点記号が同じ位置を定義するため、3 回点記号を省く。
+            if (o < 0 && properRotations.Contains((absO, key.Item1, key.Item2))) continue; // (260503Ch) [ITA-D1] proper N と同位置の -N は、反転中心側の記号と重複させない。
 
             // -N (N=3,4,6) で inversion 点 z_c ≠ 0 のときは N_k 螺旋 + inversion(z=0) と等価 (反転中心は別途描画)。
             int order = o;
@@ -230,7 +281,8 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
                 double dxf = sx + dx, dyf = sy + dy;
                 if (dxf < -EdgeReplicate || dxf > 1 + EdgeReplicate || dyf < -EdgeReplicate || dyf > 1 + EdgeReplicate) continue;
                 var pt = ctx.C.ToScreen(dxf, dyf);
-                if (absO == 2) DrawTwofoldPerp(ctx.G, ctx.Fill, pt, ax.Screw);
+                bool drawTwofoldAsScrew = ax.Screw || ShouldDrawPerpendicularTwofoldAsScrew(ctx.Proj, ax, policy); // (260503Ch) [ITA-D1], [ITA-D3]
+                if (absO == 2) DrawTwofoldPerp(ctx.G, ctx.Fill, pt, drawTwofoldAsScrew);
                 else if (absO == 3) DrawRotationPerp(ctx.G, ctx.Fill, ctx.White, pt, order, finCount, edgeStep, 3, ThreeFoldRadius);
                 else if (absO == 4) DrawRotationPerp(ctx.G, ctx.Fill, ctx.White, pt, order, finCount, edgeStep, 4, FourFoldRadius);
                 else if (absO == 6) DrawRotationPerp(ctx.G, ctx.Fill, ctx.White, pt, order, finCount, edgeStep, 6, SixFoldRadius);
@@ -238,11 +290,18 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
         }
     }
 
-    private static bool IsF23StandardPerpendicularTwofoldAxis(Projection proj, RotationAxis ax)
+    private static bool IsItaRepresentativePerpendicularTwofoldAxis(Projection proj, RotationAxis ax)
     {
-        if (ax.Screw) return false; // (260502Ch) F23 の ITA 図では centering 由来の 2_1 軸を紙面垂直記号として採用しない。
+        if (ax.Screw) return false; // (260502Ch) centered lattice 由来の 2_1 は紙面垂直記号の代表にしない。
         var (sx, sy, _) = proj.ToScreen(ax.X, ax.Y, ax.Z);
-        return IsHalfGridFraction(sx) && IsHalfGridFraction(sy); // (260502Ch) P23 と同じ 0/1/2 系の位置だけ残す。
+        return IsHalfGridFraction(sx) && IsHalfGridFraction(sy); // (260502Ch) 0/1/2 系の代表位置だけ残す。
+    }
+
+    private static bool ShouldDrawPerpendicularTwofoldAsScrew(Projection proj, RotationAxis ax, ItaDiagramElementPolicy policy)
+    {
+        if (!policy.UseEdgeMidpointPerpendicularTwofoldScrewStyle || ax.Order != 2) return false;
+        var (sx, sy, _) = proj.ToScreen(ax.X, ax.Y, ax.Z);
+        return IsItaEdgeMidpointForQuarterHeightSymbols(sx, sy); // (260503Ch) [ITA-D1], [ITA-D3] edge midpoint の垂直 2 は ITA 代表図では 2_1 記号で示す。
     }
 
     private static bool IsHalfGridFraction(double v)
@@ -253,14 +312,19 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
     #region 反転中心
     /// <summary>反転中心を白丸 (黒縁) で描画、z!=0 で高さラベルを併記。
     /// (260502Cl) 描画パスの最後に呼ぶので、白塗りで下層の点記号を punch out して見える化する。
-    /// 同一 2D 位置に複数の反転中心が射影される場合、最小高さのみ採用 (ITC 慣用)。</summary>
-    private static void DrawInversions(ElementsContext ctx, InversionCenter[] centers)
+    /// 同一 2D 位置に複数の反転中心が射影される場合、最小高さのみ採用 (ITC 慣用)。
+    /// (260502Ch) filter が非 null の場合、それを通った中心のみ描く (centered lattice 由来の副中心を抑制)。</summary>
+    private static void DrawInversions(ElementsContext ctx, InversionCenter[] centers, Func<InversionCenter, bool> filter = null,
+                                       ItaDiagramElementPolicy policy = default)
     {
         if (centers.Length == 0) return;
         var byKey = new Dictionary<(int, int), (double sxF, double syF, double minZ)>();
         foreach (var c in centers)
         {
+            if (filter != null && !filter(c)) continue; // (260503Ch) [ITA-D3] centered-lattice 副中心は代表図の反転中心記号から外す。
             var (sx, sy, sz) = ctx.Proj.ToScreen(c.X, c.Y, c.Z);
+            if (policy.UseEdgeMidpointQuarterHeightInversion && IsItaEdgeMidpointForQuarterHeightSymbols(sx, sy))
+                sz = 0.25; // (260503Ch) [ITA-D2], [ITA-D3] edge midpoint の反転中心は ITA 代表図に合わせ、高さ 1/4 の代表として表示する。
             bool nearEdge = Math.Min(sx, 1 - sx) < EdgeReplicate || Math.Min(sy, 1 - sy) < EdgeReplicate;
             for (int dx = -1; dx <= 1; dx++) for (int dy = -1; dy <= 1; dy++)
             {
@@ -269,7 +333,7 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
                 if (sxF < -EdgeReplicate || sxF > 1 + EdgeReplicate || syF < -EdgeReplicate || syF > 1 + EdgeReplicate) continue;
                 var key = ((int)Math.Round(sxF * 10000), (int)Math.Round(syF * 10000));
                 double mz = Mod1(sz);
-                if (!byKey.TryGetValue(key, out var cur) || mz < cur.minZ) byKey[key] = (sxF, syF, mz);
+                if (!byKey.TryGetValue(key, out var cur) || mz < cur.minZ) byKey[key] = (sxF, syF, mz); // (260503Ch) [ITA-D2] 同一投影位置では代表高さ h だけを表示する。
             }
         }
         foreach (var v in byKey.Values)
@@ -396,35 +460,26 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
         g.DrawPolygon(outline, poly);
     }
 
-    /// <summary>紙面に対し斜め (例: 立方晶 [111], [101]) の 2/3 回回転軸 (proper / screw) を全て描画。-N 等は未対応。
+    /// <summary>紙面に対し斜め (例: 立方晶 [111], [101]) の 2/3 回回転軸 (proper / screw) を ITA 代表図の policy に従って描画。-N 等は未対応。
     /// foot 位置は axis の depth=0 平面との交点に取る (SymmetryElementsTable 格納 position は軸線上の任意点なので)。
-    /// (260502Ch) F23 は IUCr 図の代表要素だけを採用し、F-centering コピーで辺中央に投影される 3 回軸を描かない。</summary>
-    private static void DrawDiagonalRotationMarks(ElementsContext ctx, Crystallography.SymmetryElementsTable table, ProjectionAxis projAxis)
+    /// (260502Ch) centered lattice 由来の斜め screw は、疎な代表軸 policy が明示的に採用する場合だけ描く。</summary>
+    private static void DrawDiagonalRotationMarks(ElementsContext ctx, Crystallography.SymmetryElementsTable table,
+                                                  ProjectionAxis projAxis, ItaDiagramElementPolicy policy)
     {
         var axes = table.RotationAxes;
         var centerings = table.Centerings;
-        bool useF23StandardThreefoldSet = UseF23StandardElementSet(table); // (260502Ch)
         var drawnAxes = new HashSet<(long Sx, long Sy, int Order, int U, int V, int W, bool Screw, int Fin, int Edge)>(); // (260502Ch)
         foreach (var ax in axes)
         {
-            // if (ax.Order != 3) continue;
             if (ax.Order is not (2 or 3)) continue; // (260502Ch) P432 系の斜め 2 / 2_1 軸も 3 回軸と同じ anchor/shaft で描く。
             if (!IsAxisDiagonalToProjection(ax.Direction, projAxis)) continue;
 
-            if (useF23StandardThreefoldSet && ax.Order == 3 && !IsF23StandardDiagonalThreefoldAxis(ax, projAxis))
-                continue; // (260502Ch)
-
-            // if (ax.Order == 3 && ax.Screw && centerings.Length > 0 &&
-            //     IsCenteringDerivedDiagonalScrew(ax.Direction, ax.X, ax.Y, ax.Z, ax.IntrinsicTranslation, centerings))
-            //     continue;
-            // (260502Ch) F23 では IUCr 図が centering 由来の 1/3・2/3 系 3 回軸を代表として使うため、この旧フィルタを適用しない。
-            if (!useF23StandardThreefoldSet && ax.Order == 3 && ax.Screw && centerings.Length > 0 &&
-                IsCenteringDerivedDiagonalScrew(ax.Direction, ax.X, ax.Y, ax.Z, ax.IntrinsicTranslation, centerings))
-                continue;
+            if (ax.Order == 3 && !ShouldDrawRepresentativeDiagonalThreefoldAxis(ax, projAxis, centerings, policy))
+                continue; // (260503Ch) [ITA-D1], [ITA-D3], [ITA-D5] cubic inclined 3 回軸は全 foot ではなく代表 foot 集合だけ描く。
 
             int finCount = ax.FinCount, edgeStep = ax.EdgeStep;
-            if (useF23StandardThreefoldSet && ax.Order == 3 && ax.Screw && edgeStep is 1 or 2)
-                edgeStep = 3 - edgeStep; // (260502Ch) F23 の斜め 3 回軸は P23 と反対向きの fin を描く。
+            if (policy.UseThirdGridDiagonalScrewRepresentatives && ax.Order == 3 && ax.Screw && edgeStep is 1 or 2)
+                edgeStep = 3 - edgeStep; // (260503Ch) [ITA-D5], [ITA-D6] third-grid diagonal screw 代表の fin 向きを ITA 図に合わせる。
 
             // axis の (U, V, W) を depth 成分が正になるよう符号反転、紙面 (Sx, Sy) 成分を実 pixel 方向に変換して正規化。
             var (u, v, w) = ax.Direction;
@@ -448,7 +503,7 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
             var (sx, sy, _) = ctx.Proj.ToScreen(x0, y0, z0);
             sx = Mod1(sx); sy = Mod1(sy);
             if (!drawnAxes.Add((R6(sx), R6(sy), ax.Order, u, v, w, ax.Screw, finCount, edgeStep)))
-                continue; // (260502Ch) centered 展開で同じ代表軸が複数 decomposition から来る場合の重ね描きを避ける。
+                continue; // (260502Ch) [ITA-D1], [ITA-D3] centered 展開で同じ代表軸が複数 decomposition から来る場合の重ね描きを避ける。
 
             bool nearEdge = Math.Min(sx, 1 - sx) < EdgeReplicate || Math.Min(sy, 1 - sy) < EdgeReplicate;
             for (int dx = -1; dx <= 1; dx++) for (int dy = -1; dy <= 1; dy++)
@@ -464,15 +519,112 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
         }
     }
 
-    private static bool UseF23StandardElementSet(Crystallography.SymmetryElementsTable table)
-        => table.SeriesNumber > 0 && table.SeriesNumber < SymmetryStatic.TotalSpaceGroupNumber &&
-           SymmetryStatic.Symmetries[table.SeriesNumber].SpaceGroupNumber == 196; // (260502Ch)
+    /// <summary>(260503Ch) [ITA-D3], [ITA-D6] F-centered cubic の代表図では、centered lattice コピーを 0/1/2 系へ畳み込む。</summary>
+    private static bool UsesCenteredCubicRepresentativeGrid(Crystallography.SymmetryElementsTable table)
+        => IsFaceCenteredCubic(table) && GetSpaceGroupNumberOrZero(table) is 196 or 202;
 
-    private static bool IsF23StandardDiagonalThreefoldAxis(RotationAxis ax, ProjectionAxis projAxis)
+    /// <summary>(260502Ch) [ITA-D1], [ITA-D5], [ITA-D6] ITA 図が cubic の全線分列挙ではなく、辺上の 2/2_1 と一部の体対角 3 軸だけを疎に示す代表図か。</summary>
+    private static bool IsSparseCubicRepresentativeDiagram(Crystallography.SymmetryElementsTable table)
+        => IsFaceCenteredCubic(table) && GetSpaceGroupNumberOrZero(table) == 196;
+
+    /// <summary>(260503Ch) [ITA-D1], [ITA-D3], [ITA-D5], [ITA-D6] centered lattice コピーで half-grid に現れる proper diagonal 3 軸を省き、原点の 3 軸だけを代表にするか。</summary>
+    private static bool UsesOriginOnlyDiagonalThreefoldRepresentatives(Crystallography.SymmetryElementsTable table)
+        => IsFaceCenteredCubic(table) && GetSpaceGroupNumberOrZero(table) is 196 or 202;
+
+    /// <summary>(260503Ch) [ITA-D3], [ITA-D5], [ITA-D6] centered lattice 由来の斜め 3_1/3_2 のうち、投影 foot が 1/3/2/3 grid に乗るものを ITA 代表として採用するか。</summary>
+    private static bool UsesThirdGridDiagonalScrewRepresentatives(Crystallography.SymmetryElementsTable table)
+        => IsFaceCenteredCubic(table) && GetSpaceGroupNumberOrZero(table) is 196 or 202;
+
+    /// <summary>(260503Ch) [ITA-D6] F-centered cubic m-3 型の ITA 代表図にだけ必要な局所的補正を 1 箇所に集約する。</summary>
+    private static bool UsesFaceCenteredCubicM3RepresentativeOverrides(Crystallography.SymmetryElementsTable table)
+        => IsFaceCenteredCubic(table) && GetSpaceGroupNumberOrZero(table) == 202;
+
+    private static bool IsFaceCenteredCubic(Crystallography.SymmetryElementsTable table)
+        => table.SeriesNumber > 0 && table.SeriesNumber < SymmetryStatic.TotalSpaceGroupNumber &&
+           SymmetryStatic.Symmetries[table.SeriesNumber].CrystalSystemNumber == 7 &&
+           table.Centerings.Any(c => IsFraction(c.U, 0.5) && IsFraction(c.V, 0.5) && IsFraction(c.W, 0)) &&
+           table.Centerings.Any(c => IsFraction(c.U, 0.5) && IsFraction(c.V, 0) && IsFraction(c.W, 0.5)) &&
+           table.Centerings.Any(c => IsFraction(c.U, 0) && IsFraction(c.V, 0.5) && IsFraction(c.W, 0.5));
+
+    /// <summary>(260502Ch) [ITA-D3] 代表図用に反転中心を 0/1/2 格子へ絞る述語を返す。
+    /// centered lattice 由来の副中心は他の代表記号で読み取れるため、小白丸としては重ねない。</summary>
+    private static Func<InversionCenter, bool> GetRepresentativeInversionFilter(ItaDiagramElementPolicy policy)
+        => policy.UseCenteredLatticeRepresentativeGrid
+            ? c => IsHalfGridFraction(c.X) && IsHalfGridFraction(c.Y) && IsHalfGridFraction(c.Z)
+            : null;
+
+    private static int GetSpaceGroupNumberOrZero(SymmetryElementsTable table)
+        => table.SeriesNumber > 0 && table.SeriesNumber < SymmetryStatic.TotalSpaceGroupNumber
+            ? SymmetryStatic.Symmetries[table.SeriesNumber].SpaceGroupNumber
+            : 0;
+
+    /// <summary>(260502Cl 追加) 鏡映面の法線方向に沿った位置 (= n.X, n.Y, n.Z 方向への投影)。
+    /// 整数指数の単純な法線 ([100], [010], [001] 等) を想定し |n|=1 仮定で内積を返す。</summary>
+    private static double MirrorPositionAlongNormal(MirrorPlane mp)
+        => mp.Normal.U * mp.X + mp.Normal.V * mp.Y + mp.Normal.W * mp.Z;
+
+    /// <summary>(260502Cl 追加) 紙面内 2/2_1 軸が描かれる "投影上の直線" の位置 (軸方向に直交する成分) が
+    /// half-grid (0 または 1/2) かどうかを判定する。centered lattice 由来の副位置を代表図から除外するために使う。</summary>
+    private static bool IsHalfGridInPlaneAxisLine(RotationAxis ax, ProjectionAxis projAxis, double sx, double sy)
+        => !TryGetInPlaneAxisLinePosition(ax, projAxis, sx, sy, out double linePos) || IsHalfGridFraction(linePos);
+
+    private static double GetRepresentativeInPlaneTwofoldHeight(RotationAxis ax, ProjectionAxis projAxis, double sx, double sy,
+                                                                double sz, ItaDiagramElementPolicy policy)
+    {
+        double h = Mod1(sz);
+        if (!policy.UseHalfGridInPlaneTwofoldItaHeights ||
+            !TryGetInPlaneAxisLinePosition(ax, projAxis, sx, sy, out double linePos) ||
+            !IsFraction(linePos, 0.5))
+            return h;
+        return ax.Screw ? 0 : 0.25; // (260503Ch) [ITA-D2], [ITA-D3] half-grid 線では 2_1 を h=0、2 を h=1/4 の代表にする。
+    }
+
+    private static bool IsItaEdgeMidpointForQuarterHeightSymbols(double sx, double sy)
+        => (IsFraction(sx, 0.5) && IsFraction(sy, 0)) || (IsFraction(sx, 0) && IsFraction(sy, 0.5)); // (260503Ch)
+
+    private static bool TryGetInPlaneAxisLinePosition(RotationAxis ax, ProjectionAxis projAxis, double sx, double sy, out double linePos)
+    {
+        linePos = 0;
+        var (axDirSx, axDirSy) = ProjectVector(ax.Direction.U, ax.Direction.V, ax.Direction.W, projAxis);
+        // 軸方向に直交する screen 直線位置: (sx, sy) を軸方向と垂直なベクトル (-axDirSy, axDirSx) に射影。
+        // 立方/直方系では axis は (1,0,0) または (0,1,0) なので linePos は単純に sy または sx。
+        if (Math.Abs(axDirSx) > 0.5 && Math.Abs(axDirSy) < 0.5)
+        {
+            linePos = Mod1(sy); // 横向き軸 → 直線位置は sy
+            return true;
+        }
+        if (Math.Abs(axDirSy) > 0.5 && Math.Abs(axDirSx) < 0.5)
+        {
+            linePos = Mod1(sx); // 縦向き軸 → 直線位置は sx
+            return true;
+        }
+        return false; // 斜め軸 (本ルーチン対象外) は filter しない
+    }
+
+    private static bool ShouldDrawRepresentativeDiagonalThreefoldAxis(RotationAxis ax, ProjectionAxis projAxis,
+        (double U, double V, double W)[] centerings, ItaDiagramElementPolicy policy)
+    {
+        if (ax.Screw)
+        {
+            if (policy.UseThirdGridDiagonalScrewRepresentatives)
+                return IsThirdGridDiagonalScrewRepresentative(ax, projAxis); // (260503Ch) [ITA-D3], [ITA-D5], [ITA-D6] F-centered cubic では 1/3・2/3 系 foot の 3_1/3_2 を代表にする。
+            return centerings.Length == 0 ||
+                !IsCenteringDerivedDiagonalScrew(ax.Direction, ax.X, ax.Y, ax.Z, ax.IntrinsicTranslation, centerings); // (260503Ch) [ITA-D3] policy 未指定時も、proper+centering に等価な screw コピーは重ねない。
+        }
+
+        return !policy.UseSparseDiagonalThreefoldSet || IsOriginDiagonalThreefoldRepresentative(ax, projAxis); // (260503Ch) [ITA-D1], [ITA-D3], [ITA-D5] proper diagonal 3 は原点 foot を defining representative にする。
+    }
+
+    private static bool IsOriginDiagonalThreefoldRepresentative(RotationAxis ax, ProjectionAxis projAxis)
     {
         if (!TryGetDiagonalAxisFootprint(ax, projAxis, out double sx, out double sy)) return false;
-        if (!ax.Screw) return IsFraction(sx, 0) && IsFraction(sy, 0); // (260502Ch) F-centering コピーの純 3 回軸は採用しない。
-        return IsOneOrTwoThirds(sx) && IsOneOrTwoThirds(sy); // (260502Ch)
+        return IsFraction(sx, 0) && IsFraction(sy, 0); // (260503Ch) 疎な代表図では centered lattice コピーの純 3 回軸を採用しない。
+    }
+
+    private static bool IsThirdGridDiagonalScrewRepresentative(RotationAxis ax, ProjectionAxis projAxis)
+    {
+        if (!TryGetDiagonalAxisFootprint(ax, projAxis, out double sx, out double sy)) return false;
+        return IsOneOrTwoThirds(sx) && IsOneOrTwoThirds(sy); // (260503Ch) (1/6,1/6) 系ではなく (1/3,1/3) 系を代表にする。
 
         static bool IsOneOrTwoThirds(double v) => IsFraction(v, 1.0 / 3.0) || IsFraction(v, 2.0 / 3.0);
     }
@@ -602,12 +754,12 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
     #region 紙面内 2(2_1) 軸 矢印
     private readonly record struct InPlaneAxisArrowDraft(PointF Anchor, double OutUx, double OutUy, bool Screw, double Sz);
 
-    private static void CollectF23StandardInPlaneTwofoldAxisArrows(CellLayout c, ProjectionAxis projAxis,
+    private static void CollectSparseCubicRepresentativeInPlaneTwofoldAxisArrows(CellLayout c, ProjectionAxis projAxis,
         Dictionary<(long, long, long, long, bool), InPlaneAxisArrowDraft> drafts)
     {
         if (projAxis != ProjectionAxis.C) return; // (260502Ch) 立方晶は C 投影固定。将来の保険。
 
-        // (260502Ch) ITA の F23 図は同じ投影線上でも 2 と 2_1 を高さで使い分ける。
+        // (260502Ch) 疎な cubic 代表図は同じ投影線上でも 2 と 2_1 を高さで使い分ける。
         // x/y = 0: 2_1 at z=1/4, x/y = 1/2: 2_1 at z=0 + 2 at z=1/4。
         foreach (double fixedCoord in new[] { 0.0, 0.5 })
         {
@@ -714,7 +866,7 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
                 g.DrawLine(pen, anchor, tip);
                 DrawArrowhead(g, fill, tip, d.OutUx, d.OutUy, halfHead: d.Screw);
                 string h = HeightLabel(d.Sz);
-                if (h == null) continue;
+                if (h == null) continue; // (260503Ch) [ITA-D2] 高さ 0 は無標記、非ゼロ代表高さだけを表示する。
                 var lbl = g.MeasureString(h, HeightLabelFont);
                 // (260502Ch) 非ゼロ高さは矢印先端にくっつけて表示する。
                 bool horiz = Math.Abs(d.OutUx) >= Math.Abs(d.OutUy);
@@ -751,7 +903,8 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
     #endregion
 
     #region 紙面平行 mirror corner bracket
-    /// <summary>紙面平行 mirror/glide を IUCR corner bracket で描画。mirror があれば左上、glide は右下に分ける。</summary>
+    /// <summary>紙面平行 mirror/glide を IUCR corner bracket で描画。mirror があれば左上、glide は右下に分ける。
+    /// (260503Ch) [ITA-D2], [ITA-D4] 高さは代表 h だけを選び、同高さの直交 glide は e-glide bracket へ統合する。</summary>
     private static void DrawParallelMirrorStack(Graphics g, CellLayout c, HashSet<(double Height, bool Glide, double GlideSx, double GlideSy)> markers, Brush fill)
     {
         if (markers.Count == 0) return;
@@ -766,7 +919,7 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
         using var pen = new Pen(Color.Black, CornerBracketPenWidth);
         using var brush = new SolidBrush(Color.Black);
 
-        // mirror は高さ 0 を優先、glide は方向ごとに低い高さを採用、e-glide (Ccce 等) は同高さの直交ペアを 1 個の bracket に統合。
+        // (260503Ch) [ITA-D2], [ITA-D4] mirror は高さ 0 を優先、glide は方向ごとに低い高さを採用、e-glide (Ccce 等) は同高さの直交ペアを 1 個の bracket に統合。
         var symbols = new List<ParallelMirrorSymbol>();
         var mirrorHeights = markers
             .Where(m => !HasInPlaneGlide(m))
@@ -792,7 +945,7 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
         foreach (var heightGrp in glideReps.GroupBy(g => g.Height))
         {
             var list = heightGrp.ToList();
-            // (260502Ch) Pn-3 などで同一高さに現れる ±対角 n-glide は、紙面平行 bracket としては同じ情報なので 1 つに畳む。
+            // (260502Ch) [ITA-D1] Pn-3 などで同一高さに現れる ±対角 n-glide は、紙面平行 bracket としては同じ情報なので 1 つに畳む。
             for (int i = list.Count - 1; i >= 0; i--)
             {
                 if (!list[i].NG) continue;
@@ -809,6 +962,7 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
                 for (int j = i + 1; j < list.Count; j++)
                     if (IsDoubleGlidePair(list[i].Sx, list[i].Sy, 0, list[j].Sx, list[j].Sy, 0))
                     {
+                        // (260503Ch) [ITA-D4] centered cell の直交 glide pair は、2 本の別 bracket ではなく double-glide 記号 1 個で示す。
                         symbols.Add(new(heightGrp.Key, list[i].Sx, list[i].Sy, list[j].Sx, list[j].Sy, false, false, 0));
                         list.RemoveAt(j); list.RemoveAt(i);
                         merged = i;
@@ -873,7 +1027,7 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
 
             // 高さラベル: 0 なら省略。labelAtBottomLeft (左上 bracket) は下向き腕の終端 vEnd の下・左脇、それ以外は右側 (中央) に置く。
             string lbl = HeightLabel(height);
-            if (lbl == null) return;
+            if (lbl == null) return; // (260503Ch) [ITA-D2] 高さ 0 は無標記、非ゼロ代表高さだけを表示する。
             var ls = g.MeasureString(lbl, HeightLabelFont);
             float labelX = labelAtBottomLeft ? vEnd.X - ls.Width - 2 : maxX + 2;
             float labelY = labelAtBottomLeft ? vEnd.Y + 2            : ((apex.Y + hEnd.Y) - ls.Height) / 2;
@@ -925,7 +1079,8 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
     #endregion
 
     #region 紙面垂直 mirror/glide
-    /// <summary>紙面垂直 mirror/glide を幾何線ごとに集約し、d-glide 優先 → e-glide ペア → glide score 最小、の順に 1 つだけ描画。</summary>
+    /// <summary>紙面垂直 mirror/glide を幾何線ごとに集約し、d-glide 優先 → e-glide ペア → glide score 最小、の順に 1 つだけ描画。
+    /// (260503Ch) [ITA-D1], [ITA-D4] 同じ幾何面に属する複数操作は、defining graphical symbol 1 個へ畳み込む。</summary>
     private static void DrawCollectedPerpendicularMirrorPlanes(ElementsContext ctx)
     {
         if (ctx.PerpendicularMirrors.Count == 0) return;
@@ -937,7 +1092,7 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
         foreach (var group in groups)
         {
             var drafts = group.Select(x => x.Draft).ToList();
-            // d-glide 最優先 → e-glide ペア → glide score 最小、の順に 1 つだけ描く。
+            // (260503Ch) [ITA-D4] d-glide 最優先 → e-glide ペア → glide score 最小、の順に 1 つだけ描く。
             var dDraft = drafts.FirstOrDefault(d =>
             {
                 var (gSx, gSy, gSz) = ctx.Proj.ToScreen(d.Glide.U, d.Glide.V, d.Glide.W);
@@ -945,11 +1100,13 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
             });
             if (dDraft != default)
                 DrawMirrorPerpToScreen(ctx, dDraft.Sx, dDraft.Sy, dDraft.Direction, dDraft.Glide);
+            else if (ctx.PreferPureMirrorForPerpendicularMirrorLines && TryFindPureMirrorDraft(ctx.Proj, drafts, out var mDraft))
+                DrawMirrorPerpToScreen(ctx, mDraft.Sx, mDraft.Sy, mDraft.Direction, mDraft.Glide); // (260503Ch) [ITA-D1], [ITA-D4] Fm-3 の 0/1/2 系は e ではなく純 m 線を代表にする。
             else if (TryFindDoubleGlideDraft(ctx.Proj, drafts, out var eDraft))
-                DrawMirrorPerpToScreen(ctx, eDraft.Sx, eDraft.Sy, eDraft.Direction, eDraft.Glide, forceEGlide: true);
+                DrawMirrorPerpToScreen(ctx, eDraft.Sx, eDraft.Sy, eDraft.Direction, eDraft.Glide, forceEGlide: true); // (260503Ch) [ITA-D4] 直交する half-glide pair は e-glide style で示す。
             else
             {
-                // R-3m 等の重複 glide 表現を捨て、純 mirror や a/b-glide を残すため glide score 最小を採用。
+                // (260503Ch) [ITA-D1] R-3m 等の重複 glide 表現を捨て、純 mirror や a/b-glide を残すため glide score 最小を採用。
                 var best = drafts.OrderBy(d =>
                 {
                     var (gSx, gSy, gSz) = ctx.Proj.ToScreen(d.Glide.U, d.Glide.V, d.Glide.W);
@@ -958,6 +1115,21 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
                 DrawMirrorPerpToScreen(ctx, best.Sx, best.Sy, best.Direction, best.Glide);
             }
         }
+    }
+
+    private static bool TryFindPureMirrorDraft(Projection proj, List<PerpendicularMirrorDraft> drafts, out PerpendicularMirrorDraft mirror)
+    {
+        foreach (var d in drafts)
+        {
+            var (gSx, gSy, gSz) = proj.ToScreen(d.Glide.U, d.Glide.V, d.Glide.W);
+            if (Math.Abs(gSx) + Math.Abs(gSy) + Math.Abs(gSz) <= 1e-3)
+            {
+                mirror = d;
+                return true;
+            }
+        }
+        mirror = default;
+        return false;
     }
 
     private static bool TryFindDoubleGlideDraft(Projection proj, List<PerpendicularMirrorDraft> drafts, out PerpendicularMirrorDraft draft)
@@ -996,7 +1168,7 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
         bool hasInPlane = Math.Abs(gSx) > 1e-3 || Math.Abs(gSy) > 1e-3;
         bool hasDepth   = Math.Abs(gSz) > 1e-3;
         bool dGlide = IsPerpendicularDGlide(gSx, gSy, gSz);
-        int style = dGlide ? 4 : forceEGlide ? 5 : (hasInPlane, hasDepth) switch { (false, false) => 0, (true, false) => 1, (false, true) => 2, _ => 3 };
+        int style = dGlide ? 4 : forceEGlide ? 5 : (hasInPlane, hasDepth) switch { (false, false) => 0, (true, false) => 1, (false, true) => 2, _ => 3 }; // (260503Ch) [ITA-D4]
         Pen pen = style switch { 0 => ctx.MirrorPen, 1 => ctx.InPlanePen, 2 => ctx.DepthPen, 3 => ctx.DiagPen, 5 => ctx.EPen, _ => ctx.MirrorPen };
 
         Draw(sx, sy);
