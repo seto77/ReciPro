@@ -236,6 +236,7 @@ Stereonet.cs
 Stl.cs
 Symmetry/
  Symmetry.cs
+ SymmetryElementsTable.cs
  SymmetryOperation.cs
  SymmetryStatic.cs
  WyckoffPosition.cs

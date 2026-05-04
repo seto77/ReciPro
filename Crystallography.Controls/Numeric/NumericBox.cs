@@ -13,6 +13,7 @@ public enum NumericBoxOrientation { Horizontal, Vertical }
 
 [TypeConverter(typeof(DefinitionOrderTypeConverter))]
 [DefaultEvent("ValueChanged")]
+[ToolboxItem(true)] // 260504Cl 追加: UserControlBase の [ToolboxItem(false)] が継承されてツールボックスに出ないため明示的に true を指定
 public partial class NumericBox : UserControlBase
 {
     #region イベント

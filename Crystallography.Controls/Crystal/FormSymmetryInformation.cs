@@ -2,6 +2,8 @@
 using System;
 using System.ComponentModel;
 using System.Drawing;
+using System.Drawing.Drawing2D; // 260504Cl
+using System.Drawing.Text; // 260504Cl
 using System.Text.RegularExpressions; // 260427Cl
 using System.Windows.Forms;
 
@@ -309,4 +311,37 @@ public partial class FormSymmetryInformation : FormBase
     {
 
     }
+
+    #region 対称要素図 / 一般位置図のクリップボードコピー (260504Cl 追加)
+
+    private void buttonCopySymmetryElements_Click(object sender, EventArgs e)
+    {
+        int sn = Crystal.SymmetrySeriesNumber;
+        var size = graphicsBoxSymmetryElements.ClientSize;
+        if (radioButtonWmf.Checked)
+            CopyAsMetafile(g => SymmetryDiagramElements.DrawSymmetryElements(g, size, sn));
+        else
+            Clipboard.SetDataObject(SymmetryDiagramElements.RenderSymmetryElements(sn, size), true);
+    }
+
+    private void buttonCopyGeneralPositions_Click(object sender, EventArgs e)
+    {
+        int sn = Crystal.SymmetrySeriesNumber;
+        var size = graphicsBoxGeneralPositions.ClientSize;
+        if (radioButtonWmf.Checked)
+            CopyAsMetafile(g => SymmetryDiagramPositions.DrawGeneralPositions(g, size, sn));
+        else
+            Clipboard.SetDataObject(SymmetryDiagramPositions.RenderGeneralPositions(sn, size), true);
+    }
+
+    /// <summary>EMF+ クリップボードコピーの共通設定 (背景白・AntiAlias) を済ませてから <paramref name="drawDiagram"/> を呼ぶ。</summary>
+    private void CopyAsMetafile(Action<Graphics> drawDiagram)
+        => ClipboardMetafileHelper.PutDrawingOnClipboardAsEnhMetafile(Handle, g =>
+        {
+            g.SmoothingMode = SmoothingMode.AntiAlias;
+            g.TextRenderingHint = TextRenderingHint.AntiAlias;
+            g.Clear(Color.White);
+            drawDiagram(g);
+        });
+    #endregion
 }

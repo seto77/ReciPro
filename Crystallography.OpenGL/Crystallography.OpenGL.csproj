@@ -5,8 +5,8 @@
     <TargetFramework>net10.0-windows</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <AssemblyVersion>2026.5.1.1938</AssemblyVersion>
-    <FileVersion>2026.5.1.1938</FileVersion>
+    <AssemblyVersion>2026.5.4.1014</AssemblyVersion>
+    <FileVersion>2026.5.4.1014</FileVersion>
     <!-- <SupportedOSPlatformVersion>7.0</SupportedOSPlatformVersion> --><!-- 260405Cl .NET 10はWindows7非対応のため削除 -->
     <Platforms>x64</Platforms>
     <!--

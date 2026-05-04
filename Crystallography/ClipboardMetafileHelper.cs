@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Drawing;
 using System.Drawing.Imaging;
+using System.IO;
 using System.Runtime.InteropServices;
 
 namespace Crystallography
@@ -42,6 +44,23 @@ namespace Crystallography
                 DeleteEnhMetaFile(hEMF);
             }
             return bResult;
+        }
+
+        // 260504Cl 追加: 任意の描画アクションを EMF+ 化してクリップボードへ書き込む。
+        // 既存 5 箇所 (ScalablePictureBox / FormStereonet / FormDiffractionSimulator / FormImageSimulator
+        // / FormSymmetryInformation) で同じ HDC→Metafile→PutEnh… の手順が複製されていたので集約。
+        // draw 引数では SmoothingMode / Clear など Graphics の初期状態を呼び出し側で設定する。
+        public static bool PutDrawingOnClipboardAsEnhMetafile(IntPtr hWnd, Action<Graphics> draw)
+        {
+            ArgumentNullException.ThrowIfNull(draw);
+            using var refG = Graphics.FromHwnd(hWnd);
+            IntPtr hdc = refG.GetHdc();
+            using var ms = new MemoryStream();
+            using var mf = new Metafile(ms, hdc, EmfType.EmfPlusDual);
+            refG.ReleaseHdc(hdc);
+            using (var g = Graphics.FromImage(mf))
+                draw(g);
+            return PutEnhMetafileOnClipboard(hWnd, mf);
         }
     }
 }

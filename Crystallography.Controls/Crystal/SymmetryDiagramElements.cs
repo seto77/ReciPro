@@ -85,96 +85,101 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
     #endregion
 
     #region 公開 API
+    /// <summary>新規 <see cref="Bitmap"/> を確保して対称要素図を描画して返す。</summary>
     public static Bitmap RenderSymmetryElements(int seriesNumber, Size clientSize, ProjectionAxis axis = ProjectionAxis.C)
     {
         var bmp = NewBitmap(clientSize, out var g);
-        try
-        {
-            if (!TryGetSym(seriesNumber, out var sym, out seriesNumber, out var msg))
-            {
-                if (msg != null) DrawCenteredText(g, bmp.Size, msg, Color.Gray);
-                return bmp;
-            }
-            var actualAxis = ResolveProjectionAxis(sym, axis);
-            var proj = GetProjection(actualAxis);
-            var layout = ComputeCellLayout(bmp.Size, sym, actualAxis);
-            DrawCellAndAxes(g, layout, proj, sym);
-
-            var table = SymmetryElementsTable.Get(seriesNumber);
-            if (table == null) return bmp;
-
-            using var pen        = new Pen(Color.Black, DefaultPenWidth);
-            using var mirrorPen  = new Pen(Color.Black, MirrorPenWidth);
-            using var inPlanePen = new Pen(Color.Black, MirrorPenWidth) { DashStyle = DashStyle.Custom, DashPattern = [5f, 3f] };
-            using var depthPen   = new Pen(Color.Black, MirrorPenWidth) { DashStyle = DashStyle.Custom, DashPattern = [1f, 2.5f] };
-            using var diagPen    = new Pen(Color.Black, MirrorPenWidth) { DashStyle = DashStyle.Custom, DashPattern = [5f, 2.5f, 1f, 2.5f] };
-            using var ePen       = new Pen(Color.Black, MirrorPenWidth)
-            {
-                DashStyle = DashStyle.Custom,
-                DashCap = DashCap.Round,
-                DashPattern = [0.1f, EGlideDotDashUnit, 0.1f, EGlideDotDashUnit, 5.0f, EGlideDotDashUnit]
-            };
-            using var fill  = new SolidBrush(Color.Black);
-            using var white = new SolidBrush(Color.White);
-
-            var ctx = new ElementsContext
-            {
-                G = g, C = layout, Proj = proj,
-                Pen = pen, MirrorPen = mirrorPen, InPlanePen = inPlanePen,
-                DepthPen = depthPen, DiagPen = diagPen, EPen = ePen,
-                Fill = fill, White = white,
-                PerpendicularMirrors = [],
-                DrawnMirrorPlanes = [],
-            };
-
-            // 紙面平行 mirror 集約 / 紙面垂直 mirror draft 集約 / 紙面内 2/4/-4 軸 draft 集約。
-            var parallelMirrors = new HashSet<(double Height, bool Glide, double GlideSx, double GlideSy)>();
-            // (260503Cl) key に order を追加して 2 / 4 / -4 を別々に集める。draw 時に高次優先で重複を抑制。
-            var inPlaneAxisDrafts = new Dictionary<(long, long, long, long, int, bool), InPlaneAxisArrowDraft>();
-            foreach (var mp in table.MirrorPlanes)
-            {
-                bool perp = IsAxisPerpendicularToProjection(mp.Normal, actualAxis);
-                bool inPlane = IsAxisInPlane(mp.Normal, actualAxis);
-                if (perp)
-                {
-                    var (_, _, sz) = proj.ToScreen(mp.X, mp.Y, mp.Z);
-                    var (gSx, gSy) = ProjectVector(mp.Glide.U, mp.Glide.V, mp.Glide.W, actualAxis);
-                    bool hasGlide = Math.Abs(mp.Glide.U) + Math.Abs(mp.Glide.V) + Math.Abs(mp.Glide.W) > 1e-6;
-                    parallelMirrors.Add((Mod1(sz), hasGlide, gSx, gSy));
-                }
-                else if (inPlane)
-                {
-                    var (sx, sy, _) = proj.ToScreen(mp.X, mp.Y, mp.Z);
-                    ctx.PerpendicularMirrors.Add(new(sx, sy, mp.Normal, mp.Glide));
-                }
-            }
-            foreach (var ax in table.RotationAxes)
-            {
-                int absO = Math.Abs(ax.Order);
-                // 紙面内軸として扱うのは |order| = 2 (proper のみ; -2 は mirror) と |order| = 4 (proper / screw / -4)。
-                if (absO != 2 && absO != 4) continue;
-                if (absO == 2 && ax.Order < 0) continue;
-                if (!IsAxisInPlane(ax.Direction, actualAxis)) continue;
-                var (sx, sy, sz) = proj.ToScreen(ax.X, ax.Y, ax.Z);
-                CollectInPlaneAxisArrows(layout, sx, sy, Mod1(sz), ax.Direction, actualAxis,
-                    ax.Order, ax.Screw, ax.FinCount, ax.EdgeStep, inPlaneAxisDrafts);
-            }
-
-            DrawCollectedPerpendicularMirrorPlanes(ctx);
-            DrawParallelMirrorStack(g, layout, parallelMirrors, fill);
-            // (260503Cl) 紙面平行軸の anchor が斜め回転軸の foot / 紙面垂直回転軸 (4_2 など) の position と重なる場合、
-            // 矢印を axis 方向にずらして点記号と重ならないようにする。
-            var diagonalFootKeys = CollectDiagonalAxisFootKeys(table, layout, actualAxis);
-            var perpendicularAxisKeys = CollectPerpendicularAxisPositionKeys(table, layout, actualAxis);
-            DrawCollectedInPlaneAxisArrows(g, fill, inPlaneAxisDrafts, diagonalFootKeys, perpendicularAxisKeys);
-            // 260502Cl 追加: 立方晶 [111] 系 体対角 3 回軸の描画。
-            // 同位置で垂直回転軸 (lens 等) と重なる場合は垂直軸を上に出すため、こちらを先に描く。
-            DrawDiagonalRotationMarks(ctx, table, actualAxis);
-            DrawPerpendicularRotationMarks(ctx, table, actualAxis);
-            DrawInversions(ctx, table.InversionCenters);
-        }
+        try { DrawSymmetryElements(g, bmp.Size, seriesNumber, axis); } // (260504Cl) NewBitmap が 16px 未満をクランプするので bmp.Size を渡す
         finally { g.Dispose(); }
         return bmp;
+    }
+
+    /// <summary>(260504Cl 追加) 与えられた <see cref="Graphics"/> 上に対称要素図を描画する。
+    /// 呼び出し側で背景クリア・<see cref="Graphics.SmoothingMode"/> 等の初期化を行うこと。</summary>
+    public static void DrawSymmetryElements(Graphics g, Size clientSize, int seriesNumber, ProjectionAxis axis = ProjectionAxis.C)
+    {
+        if (!TryGetSym(seriesNumber, out var sym, out seriesNumber, out var msg))
+        {
+            if (msg != null) DrawCenteredText(g, clientSize, msg, Color.Gray);
+            return;
+        }
+        var actualAxis = ResolveProjectionAxis(sym, axis);
+        var proj = GetProjection(actualAxis);
+        var layout = ComputeCellLayout(clientSize, sym, actualAxis);
+        DrawCellAndAxes(g, layout, proj, sym);
+
+        var table = SymmetryElementsTable.Get(seriesNumber);
+        if (table == null) return;
+
+        using var pen        = new Pen(Color.Black, DefaultPenWidth);
+        using var mirrorPen  = new Pen(Color.Black, MirrorPenWidth);
+        using var inPlanePen = new Pen(Color.Black, MirrorPenWidth) { DashStyle = DashStyle.Custom, DashPattern = [5f, 3f] };
+        using var depthPen   = new Pen(Color.Black, MirrorPenWidth) { DashStyle = DashStyle.Custom, DashPattern = [1f, 2.5f] };
+        using var diagPen    = new Pen(Color.Black, MirrorPenWidth) { DashStyle = DashStyle.Custom, DashPattern = [5f, 2.5f, 1f, 2.5f] };
+        using var ePen       = new Pen(Color.Black, MirrorPenWidth)
+        {
+            DashStyle = DashStyle.Custom,
+            DashCap = DashCap.Round,
+            DashPattern = [0.1f, EGlideDotDashUnit, 0.1f, EGlideDotDashUnit, 5.0f, EGlideDotDashUnit]
+        };
+        using var fill  = new SolidBrush(Color.Black);
+        using var white = new SolidBrush(Color.White);
+
+        var ctx = new ElementsContext
+        {
+            G = g, C = layout, Proj = proj,
+            Pen = pen, MirrorPen = mirrorPen, InPlanePen = inPlanePen,
+            DepthPen = depthPen, DiagPen = diagPen, EPen = ePen,
+            Fill = fill, White = white,
+            PerpendicularMirrors = [],
+            DrawnMirrorPlanes = [],
+        };
+
+        // 紙面平行 mirror 集約 / 紙面垂直 mirror draft 集約 / 紙面内 2/4/-4 軸 draft 集約。
+        var parallelMirrors = new HashSet<(double Height, bool Glide, double GlideSx, double GlideSy)>();
+        // (260503Cl) key に order を追加して 2 / 4 / -4 を別々に集める。draw 時に高次優先で重複を抑制。
+        var inPlaneAxisDrafts = new Dictionary<(long, long, long, long, int, bool), InPlaneAxisArrowDraft>();
+        foreach (var mp in table.MirrorPlanes)
+        {
+            bool perp = IsAxisPerpendicularToProjection(mp.Normal, actualAxis);
+            bool inPlane = IsAxisInPlane(mp.Normal, actualAxis);
+            if (perp)
+            {
+                var (_, _, sz) = proj.ToScreen(mp.X, mp.Y, mp.Z);
+                var (gSx, gSy) = ProjectVector(mp.Glide.U, mp.Glide.V, mp.Glide.W, actualAxis);
+                bool hasGlide = Math.Abs(mp.Glide.U) + Math.Abs(mp.Glide.V) + Math.Abs(mp.Glide.W) > 1e-6;
+                parallelMirrors.Add((Mod1(sz), hasGlide, gSx, gSy));
+            }
+            else if (inPlane)
+            {
+                var (sx, sy, _) = proj.ToScreen(mp.X, mp.Y, mp.Z);
+                ctx.PerpendicularMirrors.Add(new(sx, sy, mp.Normal, mp.Glide));
+            }
+        }
+        foreach (var ax in table.RotationAxes)
+        {
+            int absO = Math.Abs(ax.Order);
+            // 紙面内軸として扱うのは |order| = 2 (proper のみ; -2 は mirror) と |order| = 4 (proper / screw / -4)。
+            if (absO != 2 && absO != 4) continue;
+            if (absO == 2 && ax.Order < 0) continue;
+            if (!IsAxisInPlane(ax.Direction, actualAxis)) continue;
+            var (sx, sy, sz) = proj.ToScreen(ax.X, ax.Y, ax.Z);
+            CollectInPlaneAxisArrows(layout, sx, sy, Mod1(sz), ax.Direction, actualAxis,
+                ax.Order, ax.Screw, ax.FinCount, ax.EdgeStep, inPlaneAxisDrafts);
+        }
+
+        DrawCollectedPerpendicularMirrorPlanes(ctx);
+        DrawParallelMirrorStack(g, layout, parallelMirrors, fill);
+        // (260503Cl) 紙面平行軸の anchor が斜め回転軸の foot / 紙面垂直回転軸 (4_2 など) の position と重なる場合、
+        // 矢印を axis 方向にずらして点記号と重ならないようにする。
+        var diagonalFootKeys = CollectDiagonalAxisFootKeys(table, layout, actualAxis);
+        var perpendicularAxisKeys = CollectPerpendicularAxisPositionKeys(table, layout, actualAxis);
+        DrawCollectedInPlaneAxisArrows(g, fill, inPlaneAxisDrafts, diagonalFootKeys, perpendicularAxisKeys);
+        // 260502Cl 追加: 立方晶 [111] 系 体対角 3 回軸の描画。
+        // 同位置で垂直回転軸 (lens 等) と重なる場合は垂直軸を上に出すため、こちらを先に描く。
+        DrawDiagonalRotationMarks(ctx, table, actualAxis);
+        DrawPerpendicularRotationMarks(ctx, table, actualAxis);
+        DrawInversions(ctx, table.InversionCenters);
     }
     #endregion
 

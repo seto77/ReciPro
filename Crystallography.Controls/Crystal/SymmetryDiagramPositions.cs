@@ -57,42 +57,46 @@ public class SymmetryDiagramPositions : SymmetryDiagramCommon
     };
 
     #region 公開 API
-    /// <summary>右側の一般位置図を描画。</summary>
+    /// <summary>新規 <see cref="Bitmap"/> を確保して一般位置図を描画して返す。</summary>
     public static Bitmap RenderGeneralPositions(int seriesNumber, Size clientSize, ProjectionAxis axis = ProjectionAxis.C)
     {
         var bmp = NewBitmap(clientSize, out var g);
-        try
-        {
-            if (!TryGetSym(seriesNumber, out var sym, out seriesNumber, out var msg))
-            {
-                if (msg != null) DrawCenteredText(g, bmp.Size, msg, Color.Gray);
-                return bmp;
-            }
-            var actualAxis = ResolveProjectionAxis(sym, axis);
-            var proj = GetProjection(actualAxis);
-            var layout = ComputeCellLayout(bmp.Size, sym, actualAxis);
-            DrawCellAndAxes(g, layout, proj, sym);
-            // 立方晶系 (= 7) は等価点が密集しがちなので円・コンマ点・フォントを CubicScale 倍に縮小し、
-            // [111] 軸 orbit の三角形も追加で描く。それ以外の結晶系は scale=1 で従来通り。
-            bool isCubic = sym.CrystalSystemNumber == 7;
-            double cellSize = Math.Min(
-                Math.Sqrt(layout.Horz.X * layout.Horz.X + layout.Horz.Y * layout.Horz.Y),
-                Math.Sqrt(layout.Vert.X * layout.Vert.X + layout.Vert.Y * layout.Vert.Y));
-            float scale = isCubic ? CubicScale : 1f;
-            CircleRadius = (float)(CircleRadiusFraction * cellSize) * scale;
-            var labelFont = isCubic ? CubicClusterLabelFont : ClusterLabelFont;
-            var (tx, ty, tz) = GetTestPoint(sym);
-            // ProjectionAxis enum の値 (A=0, B=1, C=2) と AxisBrushes/Pens の index、変数 "xyz" の文字位置はすべて一致。
-            int projAxisIdx = (int)actualAxis;
-            var allPoints = SymmetryStatic.WyckoffPositions[seriesNumber][0].GeneratePositions(tx, ty, tz);
-            var placements = new List<Placement>();
-            foreach (var p in allPoints)
-                CollectPlacements(placements, layout, p, proj, tx, ty, tz);
-            if (isCubic) DrawCubicTriangles(g, layout, proj, allPoints, tx, ty, tz);
-            DrawClusters(g, placements, labelFont, scale, projAxisIdx);
-        }
+        try { DrawGeneralPositions(g, bmp.Size, seriesNumber, axis); } // (260504Cl) NewBitmap が 16px 未満をクランプするので bmp.Size を渡す
         finally { g.Dispose(); }
         return bmp;
+    }
+
+    /// <summary>(260504Cl 追加) 与えられた <see cref="Graphics"/> 上に一般位置図を描画する。
+    /// 呼び出し側で背景クリア・<see cref="Graphics.SmoothingMode"/> 等の初期化を行うこと。</summary>
+    public static void DrawGeneralPositions(Graphics g, Size clientSize, int seriesNumber, ProjectionAxis axis = ProjectionAxis.C)
+    {
+        if (!TryGetSym(seriesNumber, out var sym, out seriesNumber, out var msg))
+        {
+            if (msg != null) DrawCenteredText(g, clientSize, msg, Color.Gray);
+            return;
+        }
+        var actualAxis = ResolveProjectionAxis(sym, axis);
+        var proj = GetProjection(actualAxis);
+        var layout = ComputeCellLayout(clientSize, sym, actualAxis);
+        DrawCellAndAxes(g, layout, proj, sym);
+        // 立方晶系 (= 7) は等価点が密集しがちなので円・コンマ点・フォントを CubicScale 倍に縮小し、
+        // [111] 軸 orbit の三角形も追加で描く。それ以外の結晶系は scale=1 で従来通り。
+        bool isCubic = sym.CrystalSystemNumber == 7;
+        double cellSize = Math.Min(
+            Math.Sqrt(layout.Horz.X * layout.Horz.X + layout.Horz.Y * layout.Horz.Y),
+            Math.Sqrt(layout.Vert.X * layout.Vert.X + layout.Vert.Y * layout.Vert.Y));
+        float scale = isCubic ? CubicScale : 1f;
+        CircleRadius = (float)(CircleRadiusFraction * cellSize) * scale;
+        var labelFont = isCubic ? CubicClusterLabelFont : ClusterLabelFont;
+        var (tx, ty, tz) = GetTestPoint(sym);
+        // ProjectionAxis enum の値 (A=0, B=1, C=2) と AxisBrushes/Pens の index、変数 "xyz" の文字位置はすべて一致。
+        int projAxisIdx = (int)actualAxis;
+        var allPoints = SymmetryStatic.WyckoffPositions[seriesNumber][0].GeneratePositions(tx, ty, tz);
+        var placements = new List<Placement>();
+        foreach (var p in allPoints)
+            CollectPlacements(placements, layout, p, proj, tx, ty, tz);
+        if (isCubic) DrawCubicTriangles(g, layout, proj, allPoints, tx, ty, tz);
+        DrawClusters(g, placements, labelFont, scale, projAxisIdx);
     }
     #endregion
 
