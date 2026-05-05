@@ -2044,7 +2044,7 @@
             AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             captureExtender.SetCapture(this, true);
-            ClientSize = new System.Drawing.Size(1028, 667);
+            ClientSize = new System.Drawing.Size(1028, 767);
             Controls.Add(tableLayoutPanel1);
             Controls.Add(flowLayoutPanel4);
             Controls.Add(panel2);

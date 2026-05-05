@@ -38,6 +38,13 @@ public class SymmetryDiagramPositions : SymmetryDiagramCommon
     private static readonly Color[]  AxisColors  = [Color.FromArgb(180, 0, 0), Color.FromArgb(0, 130, 0), Color.FromArgb(0, 0, 180)];
     private static readonly Brush[]  AxisBrushes = [.. AxisColors.Select(c => (Brush)new SolidBrush(c))];
     private static readonly Pen[]    AxisPens    = [.. AxisColors.Select(c => new Pen(c, CirclePenWidth))];
+
+    /// <summary>(260503Cl) 立方晶 [111] 3 回回転 orbit 三角形の薄灰色 Pen。</summary>
+    private static readonly Pen CubicTrianglePen = new(Color.FromArgb(190, 190, 190), 0.6f);
+
+    /// <summary>(260505Cl 整理) クラスタ円縁とラベル間の隙間 (px)。水平方向は文字列の左右に LabelGapH、垂直方向は kerning 補正で LabelGapV を加減算。</summary>
+    private const float LabelGapH = 1f;
+    private const float LabelGapV = 4f;
     #endregion
 
     /// <summary>(260503Cl) ラベル末尾文字 (x/y/z) を軸 index (0/1/2) に変換。
@@ -79,6 +86,7 @@ public class SymmetryDiagramPositions : SymmetryDiagramCommon
         var proj = GetProjection(actualAxis);
         // 260505Cl: 立方晶 F 格子は upper-left 1/4 領域だけ描画。
         bool halfQuadrant = IsCubicFLattice(sym);
+        double displayMaxS = halfQuadrant ? 0.5 : 1.0; // (260505Ch) clip ではなく描画対象座標そのものを制限する。
         var layout = ComputeCellLayout(clientSize, sym, actualAxis, halfQuadrant);
         if (halfQuadrant) DrawUpperLeftQuadrantLabel(g);
         DrawCellAndAxes(g, layout, proj, sym, halfQuadrant);
@@ -97,29 +105,22 @@ public class SymmetryDiagramPositions : SymmetryDiagramCommon
         var allPoints = SymmetryStatic.WyckoffPositions[seriesNumber][0].GeneratePositions(tx, ty, tz);
         var placements = new List<Placement>();
         foreach (var p in allPoints)
-            CollectPlacements(placements, layout, p, proj, tx, ty, tz);
-        var quadrantClip = halfQuadrant ? ClipToUpperLeftQuadrant(g, layout, 64f) : null; // (260505Ch) F 格子では 1/4 領域外を抑えつつ境界記号のはみ出しは残す。
-        try
-        {
-            if (isCubic) DrawCubicTriangles(g, layout, proj, allPoints, tx, ty, tz);
-            DrawClusters(g, placements, labelFont, scale, projAxisIdx);
-        }
-        finally
-        {
-            if (quadrantClip != null) g.Restore(quadrantClip);
-        }
+            CollectPlacements(placements, layout, p, proj, tx, ty, tz, displayMaxS);
+        // 旧: quadrantClip による後段の表示範囲制限は廃止。
+        if (isCubic) DrawCubicTriangles(g, layout, proj, allPoints, tx, ty, tz, displayMaxS);
+        DrawClusters(g, placements, labelFont, scale, projAxisIdx);
     }
     #endregion
 
     #region 等価点の収集
     /// <summary>1 等価点 (および境界 EdgeReplicate 以内の隣接ユニット複製) を canvas 座標に写像して収集。</summary>
     private static void CollectPlacements(List<Placement> placements, CellLayout c, Vector3D p, Projection proj,
-                                          double testX, double testY, double testZ)
+                                          double testX, double testY, double testZ, double displayMaxS = 1.0)
     {
         var (sx, sy, sz) = proj.ToScreen(p.X, p.Y, p.Z);
         bool mirrored = p.Operation.Order < 0;
         string label = ComputeDepthLabel(p.Operation, sz, proj, testX, testY, testZ);
-        foreach (var (x, y) in EdgeReplicatedPoints(sx, sy))
+        foreach (var (x, y) in EdgeReplicatedPoints(sx, sy, displayMaxS))
         {
             var pt = c.ToScreen(x, y);
             placements.Add(new(pt.X, pt.Y, mirrored, label));
@@ -135,10 +136,8 @@ public class SymmetryDiagramPositions : SymmetryDiagramCommon
     /// [111] 軸は全立方晶空間群で原点通過・Seitz 並進 0 のため、R(P)=(P.Z,P.X,P.Y)、R²(P)=(P.Y,P.Z,P.X) と座標の純粋な巡回置換になる。
     /// g·T は g·R·g⁻¹ という共役 3 回回転に関する orbit (一般に [111] 系統 4 軸のいずれか) であり、
     /// 旧実装の「点 P_i の [111] 3 回 orbit」とは異なる集合になる点に注意。三角形数は |G|/|H| = N/3 個。</summary>
-    private static readonly Pen CubicTrianglePen = new(Color.FromArgb(190, 190, 190), 0.6f);
-
     private static void DrawCubicTriangles(Graphics g, CellLayout c, Projection proj, Vector3D[] allPoints,
-                                           double testX, double testY, double testZ)
+                                           double testX, double testY, double testZ, double displayMaxS = 1.0)
     {
         for (int i = 0; i < allPoints.Length; i++)
         {
@@ -150,13 +149,40 @@ public class SymmetryDiagramPositions : SymmetryDiagramCommon
             int k = FindOrbitPartner(allPoints, op.ApplyMatrix(testY, testZ, testX), t); // g_i · (R² · test)
             // 同じ三角形を 3 頂点分 (i, j, k のどれを起点にしても) 走査するため、i 最小のときだけ描画して重複を排除。
             if (j < 0 || k < 0 || i > j || i > k) continue;
-            g.DrawPolygon(CubicTrianglePen, [Project(allPoints[i]), Project(allPoints[j]), Project(allPoints[k])]);
+            DrawTriangle(allPoints[i], allPoints[j], allPoints[k]);
         }
 
-        PointF Project(Vector3D p)
+        void DrawTriangle(Vector3D p0, Vector3D p1, Vector3D p2)
+        {
+            var a = ProjectFraction(p0);
+            var b = ProjectFraction(p1);
+            var c0 = ProjectFraction(p2);
+            if (displayMaxS >= 1.0 - 1e-9)
+            {
+                g.DrawPolygon(CubicTrianglePen, [c.ToScreen(a.Sx, a.Sy), c.ToScreen(b.Sx, b.Sy), c.ToScreen(c0.Sx, c0.Sy)]);
+                return;
+            }
+            DrawClippedEdge(a, b);
+            DrawClippedEdge(b, c0);
+            DrawClippedEdge(c0, a);
+        }
+
+        (double Sx, double Sy) ProjectFraction(Vector3D p)
         {
             var (sx, sy, _) = proj.ToScreen(p.X, p.Y, p.Z);
-            return c.ToScreen(sx, sy);
+            return (sx, sy);
+        }
+
+        // 三角形辺は [0,1] 区間の有限線分なので、Common の無限直線クリップ結果を [0,1] と交差させる。
+        void DrawClippedEdge((double Sx, double Sy) p0, (double Sx, double Sy) p1)
+        {
+            double dx = p1.Sx - p0.Sx, dy = p1.Sy - p0.Sy;
+            if (!TryClipLineThroughUnitCell(p0.Sx, p0.Sy, dx, dy, out double tMin, out double tMax, displayMaxS)) return;
+            double t0 = Math.Max(0, tMin), t1 = Math.Min(1, tMax);
+            if (t1 < t0) return;
+            var a = c.ToScreen(p0.Sx + t0 * dx, p0.Sy + t0 * dy);
+            var b = c.ToScreen(p0.Sx + t1 * dx, p0.Sy + t1 * dy);
+            g.DrawLine(CubicTrianglePen, a, b); // (260505Ch) F 格子は三角形辺も [0,1/2]² の範囲だけを直接描く。
         }
     }
 
@@ -303,8 +329,8 @@ public class SymmetryDiagramPositions : SymmetryDiagramCommon
         var self = infos[selfIdx];
         bool isUpper = corner is Corner.UR or Corner.UL, isLeft = corner is Corner.UL or Corner.LL;
         float w = labels.Max(l => sizes[l].Width), h = labels.Sum(l => sizes[l].Height);
-        float rectL = isLeft ? self.Cx - w - 1 : self.Cx + 1;
-        float rectT = isUpper ? self.Cy - CircleRadius - h + 4 : self.Cy + CircleRadius - 4;
+        float rectL = isLeft ? self.Cx - w - LabelGapH : self.Cx + LabelGapH;
+        float rectT = isUpper ? self.Cy - CircleRadius - h + LabelGapV : self.Cy + CircleRadius - LabelGapV;
         float rectR = rectL + w, rectB = rectT + h;
         int count = 0;
         for (int j = 0; j < infos.Count; j++)
@@ -325,8 +351,8 @@ public class SymmetryDiagramPositions : SymmetryDiagramCommon
         for (int i = 0; i < labels.Count; i++)
         {
             var sz = sizes[labels[i]];
-            float x = isLeft ? cx - sz.Width - 1 : cx + 1;
-            float y = isUpper ? cy - CircleRadius - (i + 1) * sz.Height + 4 : cy + CircleRadius + i * sz.Height - 4;
+            float x = isLeft ? cx - sz.Width - LabelGapH : cx + LabelGapH;
+            float y = isUpper ? cy - CircleRadius - (i + 1) * sz.Height + LabelGapV : cy + CircleRadius + i * sz.Height - LabelGapV;
             int idx = LabelAxisIndex(labels[i]);
             g.DrawString(labels[i], font, idx >= 0 ? AxisBrushes[idx] : brush, x, y);
         }

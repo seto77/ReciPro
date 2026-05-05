@@ -52,7 +52,9 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
     // 輪郭半径 (1× 基準) は斜め 2/3 回軸の shaft 全長 (= DiagonalShaftTotalLen) と同じ値。
     // 実際の inset 半径は呼び出し側で指定し、ヘルパー内では r / DiagonalStereonetRadius を全体倍率として用いる。
     private const float DiagonalStereonetRadius = DiagonalShaftTotalLen;
-    private const float DiagonalStereonetInsetScale = 1.5f; // 260505Cl: 実 inset の半径倍率 (= 1.2 × 1.25)
+    private const float DiagonalStereonetInsetScale = 1.8f; // 260505Cl: 実 inset の半径倍率 (= 1.2 × 1.25 → 260505Cl さらに 1.2 倍 = 1.8)
+    // 260505Cl: 輪郭半径だけを 1.2 倍したいので 2/3 回軸シンボルの倍率は分離。旧 InsetScale (1.5) と同じ値を保持。
+    private const float DiagonalStereonetSymbolScale = 1.5f;
     private const float CubicStereonetInsetRadius = DiagonalStereonetRadius * DiagonalStereonetInsetScale; // (260506Cl)
 
     // (260506Cl) stereonet inset の補助大円 4 本 (cell 輪郭と同じ色・線幅)。各 inset で同じ HKL を描画するので static readonly で再利用。
@@ -62,14 +64,49 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
     private const float InPlaneArrowExt    = 14.4f;   // = 32 × 0.75 × 0.6
     private const float ArrowHeadLen       = 7f;
     private const float ArrowHeadHalfWidth = 2.25f;   // = 3 × 0.75
+    /// <summary>(260505Cl 整理) 紙面内 2/4/-4 軸の lineEnd → tip オフセット (= 三角矢じり / 平行四辺形ヘッド共通の食い込み量)。</summary>
+    private const float ArrowVisualHeadOffset = 2f * ArrowHeadLen / 3f;
+    /// <summary>(260505Cl 整理) anchor から「視覚的 tip 位置」までのオフセット。2 回軸三角先端も 4 回軸平行四辺形右端もこの位置で揃う。</summary>
+    private const float ArrowVisualTipOffset = InPlaneArrowExt + ArrowVisualHeadOffset;
+    /// <summary>(260505Cl 整理) 4 回軸 shaft の追加長 (shaft 右端で 2 回軸 tip と揃える分)。</summary>
+    private const float Shaft4Extra = ArrowHeadLen / 6f;
+    /// <summary>(260505Cl 整理) anchor 重複時の axis 方向ずらし量 (px)。
+    /// 重複が無い場合のセル枠線への食い込み回避 default、斜め軸 foot との重なり、紙面垂直軸点記号との重なりで切り替える。</summary>
+    private const float InPlaneArrowDefaultShift       = 4f;
+    private const float InPlaneArrowDiagonalFootShift  = 35f; // 斜め軸 foot は shaft1 (= 22) の先まで張り出すため大きめ。
+    private const float InPlaneArrowPerpendicularShift = 16f; // 紙面垂直軸点記号は半径数 px なので中程度。
+    /// <summary>(260505Cl 整理) 同じ anchor に複数軸 (2/2_1 並列、4_n/4/-4 並列) があるときの軸間 perpendicular pitch (px)。</summary>
+    private const float InPlaneArrowGroupPitch4    = 18f; // 4 系列が並ぶとき (平行四辺形ヘッドが大きい)
+    private const float InPlaneArrowGroupPitch2    = 7f;  // 2 系列のみ
+    /// <summary>(260505Cl 整理) m-3m / -43m 系の stereonet inset 輪郭外側に紙面内軸矢印を出すときの追加マージン (px)。</summary>
+    private const float StereonetArrowOutsideGap = 4f;
     private const float DGlideDotR         = 1.7f;
     private const float DGlidePatternPitch = 64f;
+    /// <summary>(260505Cl 整理) 紙面垂直 d-glide パターンの dash 長 / arrow 長 (1 周期 = DGlidePatternPitch 内で繰り返し)。</summary>
+    private const float DGlidePatternDashLen  = 9f;
+    private const float DGlidePatternArrowLen = 13f;
     private const float EGlideDotDashUnit  = 2.6f;
+    /// <summary>(260505Cl 整理) 2_1 螺旋 fin (円弧) 描画の overlap 角 (deg)。レンズ角 AA 境界の 1 px すき間を埋めるためレンズ側に食い込ませる。</summary>
+    private const float TwofoldFinOverlapDeg = 6f;
+    /// <summary>(260505Cl 整理) stereonet 上の d-glide 大円に置く接線アローの位置 (大円中心から見た角度、deg)。</summary>
+    private static readonly double[] StereonetDGlideArrowAnglesRad =
+        [-35.0 * Math.PI / 180.0, 0, 35.0 * Math.PI / 180.0];
+
+    // 紙面内 4 回軸の平行四辺形定数 (1x scale): 左右辺長 = 2*vHalf、上下辺は slant = ArrowHeadLen*tan(30°)。
+    private const float InPlaneFourfoldVHalf = 6f;
+    private const float InPlaneFourfoldSlant = ArrowHeadLen * 0.5773502692f;
+    // 立方晶 stereonet inset 専用の図形パラメータ。全体倍率は r (stereonet 半径) / DiagonalStereonetRadius (= 1× 基準 29.2 px) として helper 内で計算する。
+    private const float StereonetTwofoldOverallScale = 0.8f;   // 2 回軸 lens 全体の倍率 (長軸・短軸とも)
+    private const float StereonetTwofoldWidthScale   = 0.75f;  // 2 回軸 lens の幅 (短軸方向) のみ細める追加倍率
+    private const float StereonetThreefoldApexDeg    = 80f;    // 3 回軸 二等辺三角の apex 角 (80°-50°-50°)
+    private const float StereonetFinScale            = 0.8f;   // 2_1 螺旋 fin (円弧) の長さ倍率
+    private const float StereonetDGlideArrowScale    = 1.2f;   // (260505Ch) 斜め d 映進アローを紙面垂直 d-glide の 1.2 倍にする。
 
     // 紙面平行 mirror corner bracket
     private const float CornerBracketArmLen = 22f;
     private const float CornerBracketGap    = 45f;
     private const float CornerBracketStep   = 8f;
+    private const float CornerBracketCubicExtraGap = 15f; // (260505Cl) 立方晶系では紙面平行軸矢印と bracket が干渉するため、cell 角からさらに離す。
     private const float GlideArrowLineShorten = 5f;
     #endregion
 
@@ -85,6 +122,7 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
         public List<PerpendicularMirrorDraft> PerpendicularMirrors;
         public HashSet<(long Nx, long Ny, long D, int Style)> DrawnMirrorPlanes;
         public HashSet<(long X, long Y)> StereonetAnchorKeys; // (260505Cl) inset 半径は CubicStereonetInsetRadius 定数を直接使う。
+        public double DisplayMaxS; // (260505Ch) F 格子は [0, 1/2]²、それ以外は [0, 1]² を描画対象にする。
     }
 
     private readonly record struct PerpendicularMirrorDraft(double Sx, double Sy,
@@ -121,8 +159,9 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
         var proj = GetProjection(actualAxis);
         // 260505Cl: 立方晶 F 格子は upper-left 1/4 領域だけを描画する (図が混雑するため)。
         bool halfQuadrant = IsCubicFLattice(sym);
+        double displayMaxS = halfQuadrant ? 0.5 : 1.0; // (260505Ch) clip ではなく描画対象座標そのものを制限する。
         var layout = ComputeCellLayout(clientSize, sym, actualAxis, halfQuadrant);
-        DrawCellAndAxes(g, layout, proj, sym, halfQuadrant);
+        DrawCellAndAxes(g, layout, proj, sym, halfQuadrant, showAxisLabels: false); // (260505Cl) 対称要素図では軸ラベル ("o", a, b 等) を出さない。一般位置図側だけで表示。
         if (halfQuadrant) DrawUpperLeftQuadrantLabel(g);
 
         var table = SymmetryElementsTable.Get(seriesNumber);
@@ -142,6 +181,7 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
         };
         using var fill  = new SolidBrush(Color.Black);
         using var white = new SolidBrush(Color.White);
+        bool isCubic     = sym.CrystalSystemNumber == 7;
         bool isCubicHigh = IsCubicHighSym(sym); // (260506Cl) stereonet inset を持つ立方晶高対称群。
         var stereonetPositions = isCubicHigh ? GetStereonetDrawPositions(sym) : null; // (260506Cl) 1 描画中に複数箇所で使うのでキャッシュ。
 
@@ -154,11 +194,10 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
             PerpendicularMirrors = [],
             DrawnMirrorPlanes = [],
             StereonetAnchorKeys = isCubicHigh ? CollectStereonetAnchorKeys(layout, stereonetPositions) : null,
+            DisplayMaxS = displayMaxS,
         };
 
-        var quadrantClip = halfQuadrant ? ClipToUpperLeftQuadrant(g, layout, 64f) : null; // (260505Ch) F 格子では 1/4 領域外を抑えつつ境界記号のはみ出しは残す。
-        try
-        {
+        // 旧: quadrantClip による後段の表示範囲制限は廃止。
         // 紙面平行 mirror 集約 / 紙面垂直 mirror draft 集約 / 紙面内 2/4/-4 軸 draft 集約。
         var parallelMirrors = new HashSet<(double Height, bool Glide, double GlideSx, double GlideSy)>();
         // (260503Cl) key に order を追加して 2 / 4 / -4 を別々に集める。draw 時に高次優先で重複を抑制。
@@ -189,18 +228,18 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
             if (!IsAxisInPlane(ax.Direction, actualAxis)) continue;
             var (sx, sy, sz) = proj.ToScreen(ax.X, ax.Y, ax.Z);
             CollectInPlaneAxisArrows(layout, sx, sy, Mod1(sz), ax.Direction, actualAxis,
-                ax.Order, ax.Screw, ax.FinCount, ax.EdgeStep, inPlaneAxisDrafts);
+                ax.Order, ax.Screw, ax.FinCount, ax.EdgeStep, inPlaneAxisDrafts, displayMaxS);
         }
 
         DrawCollectedPerpendicularMirrorPlanes(ctx);
-        DrawParallelMirrorStack(g, layout, parallelMirrors, fill);
+        DrawParallelMirrorStack(g, layout, parallelMirrors, fill, isCubic: isCubic); // (260505Cl) cubic は紙面平行軸との干渉回避で bracket を離す。
         // (260503Cl) 紙面平行軸の anchor が斜め回転軸の foot / 紙面垂直回転軸 (4_2 など) の position と重なる場合、
         // 矢印を axis 方向にずらして点記号と重ならないようにする。
-        var diagonalFootKeys = CollectDiagonalAxisFootKeys(table, layout, actualAxis);
-        var perpendicularAxisKeys = CollectPerpendicularAxisPositionKeys(table, layout, actualAxis);
-        // 260505Cl: m-3m / -43m 系では stereonet inset の輪郭を避けるため in-plane axis を radius+4 px 前進させる。
+        var diagonalFootKeys = CollectDiagonalAxisFootKeys(table, layout, actualAxis, displayMaxS);
+        var perpendicularAxisKeys = CollectPerpendicularAxisPositionKeys(table, layout, actualAxis, displayMaxS);
+        // 260505Cl: m-3m / -43m 系では stereonet inset の輪郭を避けるため in-plane axis を radius+gap px 前進させる。
         float stereonetArrowShift = isCubicHigh
-            ? CubicStereonetInsetRadius + 4f
+            ? CubicStereonetInsetRadius + StereonetArrowOutsideGap
             : 0f;
         DrawCollectedInPlaneAxisArrows(g, fill, inPlaneAxisDrafts, diagonalFootKeys, perpendicularAxisKeys,
                                        ctx.StereonetAnchorKeys, stereonetArrowShift);
@@ -210,33 +249,35 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
         // それらの位置にある斜め 3 回軸の cell-side 描画はスキップ。
         HashSet<(long, long)> stereonetSkipKeys = isCubicHigh ? ComputeStereonetSkipKeys(stereonetPositions) : null;
         DrawDiagonalRotationMarks(ctx, table, actualAxis, skipPositionKeys: stereonetSkipKeys);
-        DrawPerpendicularRotationMarks(ctx, table, actualAxis);
+        DrawPerpendicularRotationMarks(ctx, table, actualAxis, isCubic: isCubic); // (260505Cl) cubic 限定で 4_n と -4 の重なりは -4 を優先。
         DrawInversions(ctx, table.InversionCenters);
         if (isCubicHigh) DrawCubicStereonetInsets(ctx, table, actualAxis, stereonetPositions);
-        }
-        finally
-        {
-            if (quadrantClip != null) g.Restore(quadrantClip);
-        }
     }
     #endregion
 
     #region 紙面垂直 点記号
-    /// <summary>軸方向が投影軸に平行な軸を点記号として描画。低次は高次に隠され、-N と同位置の +N があれば -N を捨て、-N(z≠0) は +N_k に置換。</summary>
+    /// <summary>軸方向が投影軸に平行な軸を点記号として描画。低次は高次に隠され、-N と同位置の +N があれば -N を捨て、-N(z≠0) は +N_k に置換。
+    /// (260505Cl) isCubic=true で cubic 限定の優先規則: 同位置に -4 と 4_n (4_1/4_2/4_3) が重なる場合、4_n を抑制し -4 を残す。
+    /// この場合 -4 は螺旋置換せずそのまま描き、反転中心の高さラベルを記号横に併記する。</summary>
     private static void DrawPerpendicularRotationMarks(ElementsContext ctx, Crystallography.SymmetryElementsTable table,
-                                                       ProjectionAxis projAxis)
+                                                       ProjectionAxis projAxis, bool isCubic = false)
     {
         var axes = table.RotationAxes;
         // 同位置の高次 proper rotation 集合 (低次抑制 / -N 抑制用)。
         var covered2 = new HashSet<(int, int)>();
         var covered3 = new HashSet<(int, int)>();
         var properRotations = new HashSet<(int N, int Sx, int Sy)>();
+        // (260505Cl) cubic で 4_n を抑制するための -4 射影位置集合。各 -4 軸の高さは 2 周目で各 axis の sz から直接読む。
+        var minusFourKeys = isCubic ? new HashSet<(int, int)>() : null;
         foreach (var ax in axes)
         {
-            if (ax.Order <= 0 || !IsAxisPerpendicularToProjection(ax.Direction, projAxis)) continue;
-            int absO = ax.Order;
+            bool isCubicMinusFour = isCubic && ax.Order == -4;
+            if (ax.Order <= 0 && !isCubicMinusFour) continue;
+            if (!IsAxisPerpendicularToProjection(ax.Direction, projAxis)) continue;
             var (sx, sy, _) = ctx.Proj.ToScreen(ax.X, ax.Y, ax.Z);
             var key = ((int)Math.Round(Mod1(sx) * 10000), (int)Math.Round(Mod1(sy) * 10000));
+            if (isCubicMinusFour) { minusFourKeys.Add(key); continue; } // (260505Cl) cubic 限定で -4 位置だけ別収集。
+            int absO = ax.Order;
             if (absO is 3 or 4 or 6) covered2.Add(key); // (260503Ch) [ITA-D1] 同位置の高次記号が defining symbol になる場合、低次 2 回記号は描かない。
             if (absO == 6) covered3.Add(key); // (260503Ch) [ITA-D1] 6 回記号が defining symbol になる場合、同位置の 3 回記号は描かない。
             if (!ax.Screw && absO is (2 or 3 or 4 or 6)) properRotations.Add((absO, key.Item1, key.Item2)); // (260503Ch) [ITA-D1] 同位置に proper N があれば -N は別途重ねない。
@@ -252,11 +293,14 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
             if (absO == 2 && covered2.Contains(key)) continue; // (260503Ch) [ITA-D1] 高次点記号が同じ位置を定義するため、2 回点記号を省く。
             if (absO == 3 && o > 0 && covered3.Contains(key)) continue; // (260503Ch) [ITA-D1] 6 回点記号が同じ位置を定義するため、3 回点記号を省く。
             if (o < 0 && properRotations.Contains((absO, key.Item1, key.Item2))) continue; // (260503Ch) [ITA-D1] proper N と同位置の -N は、反転中心側の記号と重複させない。
+            if (isCubic && o > 0 && absO == 4 && ax.Screw && minusFourKeys.Contains(key)) continue; // (260505Cl) cubic で -4 と同位置の 4_n は抑制。
 
             // -N (N=3,4,6) で inversion 点 z_c ≠ 0 のときは N_k 螺旋 + inversion(z=0) と等価 (反転中心は別途描画)。
             int order = o;
             int finCount = ax.FinCount, edgeStep = ax.EdgeStep;
-            if (o < 0 && absO is (3 or 4 or 6))
+            // (260505Cl) cubic で 4_n を抑制した位置の -4 は螺旋に置換せず -4 のまま描き、反転中心高さを併記。
+            bool keepMinusFourWithLabel = isCubic && o == -4 && minusFourKeys.Contains(key);
+            if (o < 0 && absO is 3 or 4 or 6 && !keepMinusFourWithLabel)
             {
                 double zc = Mod1(sz);
                 if (Math.Abs(zc) > 1e-3 && Math.Abs(zc - 1) > 1e-3)
@@ -269,14 +313,16 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
                     }
                 }
             }
+            string label = keepMinusFourWithLabel ? HeightLabel(Mod1(sz)) : null; // (260505Cl) -4 反転中心高さは axis 単位で 1 度だけ計算。replicate ループ内で hoist。
 
-            foreach (var (dxf, dyf) in EdgeReplicatedPoints(sx, sy))
+            foreach (var (dxf, dyf) in EdgeReplicatedPoints(sx, sy, ctx.DisplayMaxS))
             {
                 var pt = ctx.C.ToScreen(dxf, dyf);
                 if (absO == 2) DrawTwofoldPerp(ctx.G, ctx.Fill, pt, ax.Screw);
                 else if (absO == 3) DrawRotationPerp(ctx.G, ctx.Fill, ctx.White, pt, order, finCount, edgeStep, 3, ThreeFoldRadius);
                 else if (absO == 4) DrawRotationPerp(ctx.G, ctx.Fill, ctx.White, pt, order, finCount, edgeStep, 4, FourFoldRadius);
                 else if (absO == 6) DrawRotationPerp(ctx.G, ctx.Fill, ctx.White, pt, order, finCount, edgeStep, 6, SixFoldRadius);
+                if (label != null) DrawHeightLabel(ctx.G, ctx.Fill, pt, FourFoldRadius, label);
             }
         }
     }
@@ -294,7 +340,7 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
         foreach (var c in centers)
         {
             var (sx, sy, sz) = ctx.Proj.ToScreen(c.X, c.Y, c.Z);
-            foreach (var (sxF, syF) in EdgeReplicatedPoints(sx, sy))
+            foreach (var (sxF, syF) in EdgeReplicatedPoints(sx, sy, ctx.DisplayMaxS))
             {
                 var key = ((int)Math.Round(sxF * 10000), (int)Math.Round(syF * 10000));
                 double mz = Mod1(sz);
@@ -307,10 +353,15 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
             ctx.G.FillEllipse(ctx.White, pt.X - InversionR, pt.Y - InversionR, 2 * InversionR, 2 * InversionR);
             ctx.G.DrawEllipse(ctx.Pen, pt.X - InversionR, pt.Y - InversionR, 2 * InversionR, 2 * InversionR);
             string h = HeightLabel(v.minZ);
-            if (h == null) continue;
-            ctx.G.DrawString(h, HeightLabelFont, ctx.Fill,
-                pt.X + InversionR + 1, pt.Y - InversionR - ctx.G.MeasureString(h, HeightLabelFont).Height + 2);
+            if (h != null) DrawHeightLabel(ctx.G, ctx.Fill, pt, InversionR, h);
         }
+    }
+
+    /// <summary>(260505Cl) 点記号 (中心 pt、半径 symbolR) の右上に高さラベル h を描く。記号外側 + 1 px に左端、記号上 + 2 px に下端を合わせる。</summary>
+    private static void DrawHeightLabel(Graphics g, Brush fill, PointF pt, float symbolR, string h)
+    {
+        var sz = g.MeasureString(h, HeightLabelFont);
+        g.DrawString(h, HeightLabelFont, fill, pt.X + symbolR + 1, pt.Y - symbolR - sz.Height + 2);
     }
     #endregion
 
@@ -371,11 +422,10 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
             //   こうすると レンズ角での AA 境界 1px すき間 (= フィン途切れ) も解消し、
             //   フィン基部がレンズ body に確実に接続する。描画順は: lens ハロー → フィンハロー → レンズ塗り → フィン本体。
             //   レンズ塗りで overlap 部のフィンハローを上書きするので、フィンハローはレンズ外側だけに残る。
-            const float finOverlapDeg = 6f;
-            float rightFinStart = 180f + halfAngle - finOverlapDeg;
-            float leftFinStart  = halfAngle - finOverlapDeg;
+            float rightFinStart = 180f + halfAngle - TwofoldFinOverlapDeg;
+            float leftFinStart  = halfAngle - TwofoldFinOverlapDeg;
             // 260504Cl: 可視部分 (= ScrewFinSweepDeg) のみ finSweepScale でスケール、overlap は不変。
-            float finSweep      = ScrewFinSweepDeg * finSweepScale + finOverlapDeg;
+            float finSweep      = ScrewFinSweepDeg * finSweepScale + TwofoldFinOverlapDeg;
             using (var lensHalo = new Pen(Color.White, SymbolHaloPenWidth) { LineJoin = LineJoin.Round })
                 g.DrawPath(lensHalo, path); // (260505Ch) mirror/glide 線上の 2_1 lens が埋もれないよう白縁を復帰。
             using (var finHalo = new Pen(Color.White, SymbolHaloPenWidth) { LineJoin = LineJoin.Round })
@@ -479,7 +529,7 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
             if (skipPositionKeys != null && skipPositionKeys.Contains(footKey)) continue;
             if (!drawnAxes.Add((footKey.X, footKey.Y, ax.Order, u, v, w, ax.Screw, finCount, edgeStep))) continue;
 
-            foreach (var (dxf, dyf) in EdgeReplicatedPoints(sx, sy))
+            foreach (var (dxf, dyf) in EdgeReplicatedPoints(sx, sy, ctx.DisplayMaxS))
             {
                 var anchor = ctx.C.ToScreen(dxf, dyf);
                 if (ax.Order == 2) DrawDiagonalTwofoldPerp(ctx.G, ctx.Fill, anchor, dirX, dirY, ax.Screw);
@@ -583,7 +633,8 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
     private static void CollectInPlaneAxisArrows(CellLayout c, double sx, double sy, double sz,
                                                   (int U, int V, int W) dir, ProjectionAxis projAxis,
                                                   int order, bool screw, int finCount, int edgeStep,
-                                                  Dictionary<(long, long, long, long, int, bool), InPlaneAxisArrowDraft> drafts)
+                                                  Dictionary<(long, long, long, long, int, bool), InPlaneAxisArrowDraft> drafts,
+                                                  double displayMaxS = 1.0)
     {
         var (dSx, dSy) = ProjectVector(dir.U, dir.V, dir.W, projAxis);
         double axisX = dSx * c.Horz.X + dSy * c.Vert.X, axisY = dSx * c.Horz.Y + dSy * c.Vert.Y;
@@ -597,11 +648,11 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
 
         void ClipAxisArrows(double lineSx, double lineSy)
         {
-            if (!TryClipLineThroughUnitCell(lineSx, lineSy, dSx, dSy, out double tMin, out double tMax)) return; // (260504Ch) Common の境界平行線対応済みクリップを共有。
+            if (!TryClipLineThroughUnitCell(lineSx, lineSy, dSx, dSy, out double tMin, out double tMax, displayMaxS)) return; // (260505Ch) F 格子では [0,1/2]² に対して直接クリップ。
             if (Math.Abs(tMax - tMin) < 1e-8)
             {
                 double px = lineSx + tMin * dSx, py = lineSy + tMin * dSy;
-                if (!OnCellBoundary(px, py)) return;
+                if (!OnCellBoundary(px, py, displayMaxS)) return;
                 TryAddTouchArrow(px, py, 1);
                 TryAddTouchArrow(px, py, -1);
                 return;
@@ -613,14 +664,14 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
         void TryAddTouchArrow(double px, double py, int sign)
         {
             const double eps = 1e-4;
-            if (InsideCell(px + sign * dSx * eps, py + sign * dSy * eps)) return;
+            if (InsideCell(px + sign * dSx * eps, py + sign * dSy * eps, displayMaxS)) return;
             AddArrow(px, py, sign * ux, sign * uy);
         }
 
         void AddArrow(double px, double py, double outUx, double outUy)
         {
-            px = NormalizeBoundary(px); py = NormalizeBoundary(py);
-            if (!OnCellBoundary(px, py)) return;
+            px = NormalizeBoundary(px, displayMaxS); py = NormalizeBoundary(py, displayMaxS);
+            if (!OnCellBoundary(px, py, displayMaxS)) return;
             var p = c.ToScreen(px, py);
             var key = ((long)Math.Round(p.X * 1000), (long)Math.Round(p.Y * 1000),
                 (long)Math.Round(outUx * 1000), (long)Math.Round(outUy * 1000), order, screw);
@@ -629,17 +680,18 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
         }
     }
 
-    private static bool InsideCell(double x, double y) => x > 1e-6 && x < 1 - 1e-6 && y > 1e-6 && y < 1 - 1e-6;
-    private static bool OnCellBoundary(double x, double y) =>
-        x > -1e-6 && x < 1 + 1e-6 && y > -1e-6 && y < 1 + 1e-6 &&
-        (Math.Abs(x) < 1e-6 || Math.Abs(x - 1) < 1e-6 || Math.Abs(y) < 1e-6 || Math.Abs(y - 1) < 1e-6);
-    private static double NormalizeBoundary(double x) =>
-        Math.Abs(x) < 1e-6 ? 0 : Math.Abs(x - 1) < 1e-6 ? 1 : x;
+    private static bool InsideCell(double x, double y, double maxS = 1.0) => x > 1e-6 && x < maxS - 1e-6 && y > 1e-6 && y < maxS - 1e-6;
+    private static bool OnCellBoundary(double x, double y, double maxS = 1.0) =>
+        x > -1e-6 && x < maxS + 1e-6 && y > -1e-6 && y < maxS + 1e-6 &&
+        (Math.Abs(x) < 1e-6 || Math.Abs(x - maxS) < 1e-6 || Math.Abs(y) < 1e-6 || Math.Abs(y - maxS) < 1e-6);
+    private static double NormalizeBoundary(double x, double maxS = 1.0) =>
+        Math.Abs(x) < 1e-6 ? 0 : Math.Abs(x - maxS) < 1e-6 ? maxS : x;
 
     /// <summary>(260503Cl 追加) 斜め回転軸 (3/2 + 立方晶 [111]/[110] 系) の foot を screen 座標 key にして返す。
     /// 紙面平行軸が同位置に来た場合、平行四辺形などが foot 黒丸を覆ってしまうため、ずらし判定に使う。</summary>
     private static HashSet<(long X, long Y)> CollectDiagonalAxisFootKeys(Crystallography.SymmetryElementsTable table,
-                                                                          CellLayout layout, ProjectionAxis projAxis)
+                                                                          CellLayout layout, ProjectionAxis projAxis,
+                                                                          double displayMaxS = 1.0)
     {
         var result = new HashSet<(long, long)>();
         foreach (var ax in table.RotationAxes)
@@ -647,7 +699,7 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
             if (ax.Order is not (2 or 3)) continue;
             if (!IsAxisDiagonalToProjection(ax.Direction, projAxis)) continue;
             if (!TryGetDiagonalAxisFootprint(ax, projAxis, out double sx, out double sy)) continue;
-            foreach (var (dxf, dyf) in EdgeReplicatedPoints(sx, sy))
+            foreach (var (dxf, dyf) in EdgeReplicatedPoints(sx, sy, displayMaxS))
                 result.Add(ScreenPointKey(layout.ToScreen(dxf, dyf))); // (260505Cl)
         }
         return result;
@@ -666,7 +718,8 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
     /// <summary>(260503Cl 追加) 紙面垂直回転軸 (2/3/4/6 と螺旋形・反転形) の position を screen 座標 key にして返す。
     /// 紙面平行軸の anchor が同位置に来ると、垂直軸の点記号 (lens / 多角形) と重なるため、shift 判定に使う。</summary>
     private static HashSet<(long X, long Y)> CollectPerpendicularAxisPositionKeys(Crystallography.SymmetryElementsTable table,
-                                                                                   CellLayout layout, ProjectionAxis projAxis)
+                                                                                   CellLayout layout, ProjectionAxis projAxis,
+                                                                                   double displayMaxS = 1.0)
     {
         var result = new HashSet<(long, long)>();
         var proj = GetProjection(projAxis);
@@ -676,7 +729,7 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
             if (absO is not (2 or 3 or 4 or 6)) continue;
             if (!IsAxisPerpendicularToProjection(ax.Direction, projAxis)) continue;
             var (sx, sy, _) = proj.ToScreen(ax.X, ax.Y, ax.Z);
-            foreach (var (dxf, dyf) in EdgeReplicatedPoints(sx, sy))
+            foreach (var (dxf, dyf) in EdgeReplicatedPoints(sx, sy, displayMaxS))
                 result.Add(ScreenPointKey(layout.ToScreen(dxf, dyf))); // (260505Cl)
         }
         return result;
@@ -693,14 +746,6 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
         using var pen = new Pen(Color.Black, InPlaneAxisPenWidth);
         using var brush = new SolidBrush(Color.Black);
         using var white = new SolidBrush(Color.White); // (260503Cl) -4 軸の白塗り平行四辺形 / 2/2_1 と並列時の labels には使わない。
-        // (260503Cl) 4 回軸は shaft を ArrowHeadLen/6 だけ伸ばし、平行四辺形の右辺と 2 回軸 sharp tip の到達距離 (= InPlaneArrowExt + 2*ArrowHeadLen/3) を一致させる。
-        const float Shaft4Extra = ArrowHeadLen / 6f;
-        // (260503Cl) anchor 重複時の axis 方向ずらし量 (px)。
-        //   斜め軸 foot は shaft1 (= 22) の先まで張り出すので 35px、垂直軸の点記号は半径数 px なので 20px。
-        //   重複が無い場合でもセル枠線への食い込みを避けるためデフォルト 4px ずらす。両方該当時は大きい方 (= 斜め) を採用。
-        const float DefaultAxisShift = 4f;
-        const float DiagonalFootShift = 35f;
-        const float PerpendicularAxisShift = 16f;
         foreach (var group in drafts.Values
             .GroupBy(d => ((long)Math.Round(d.Anchor.X * 1000), (long)Math.Round(d.Anchor.Y * 1000),
                            (long)Math.Round(d.OutUx * 1000), (long)Math.Round(d.OutUy * 1000)))) // (260502Ch)
@@ -717,23 +762,25 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
             var list = (hasFourfold ? allDrafts.Where(d => Math.Abs(d.Order) == 4) : allDrafts.AsEnumerable())
                 .OrderBy(d => d.Sz).ThenBy(d => d.Screw ? 0 : 1).ToList();
             // (260503Cl) anchor が斜め軸 foot / 垂直軸 position と一致するか判定 (group 内で共通)。両方該当時は大きい方を採用。
-            //   重複が無い場合は DefaultAxisShift (= 4px) を使う。
-            float axisShift = DefaultAxisShift;
+            //   重複が無い場合は InPlaneArrowDefaultShift を使う。
+            float axisShift = InPlaneArrowDefaultShift;
             if (list.Count > 0)
             {
-                var anchorKey = ((long)Math.Round(list[0].Anchor.X * 1000), (long)Math.Round(list[0].Anchor.Y * 1000));
-                // 260505Cl: stereonet inset があれば優先 (shift = radius + 4 px、他より大きい)。
+                var anchorKey = ScreenPointKey(list[0].Anchor);
+                // 260505Cl: stereonet inset があれば優先 (shift = radius + StereonetArrowOutsideGap、他より大きい)。
                 if (stereonetAnchorKeys != null && stereonetAnchorKeys.Contains(anchorKey))
                     axisShift = stereonetArrowShift;
                 else if (diagonalFootKeys.Contains(anchorKey))
-                    axisShift = DiagonalFootShift;
+                    axisShift = InPlaneArrowDiagonalFootShift;
                 else if (perpendicularAxisKeys.Contains(anchorKey))
-                    axisShift = PerpendicularAxisShift;
+                    axisShift = InPlaneArrowPerpendicularShift;
             }
+            // (260505Cl) 4_n / 4 / -4 が並ぶときは平行四辺形ヘッドが大きいので perpendicular pitch を 2 倍にして重なりを回避。
+            double perpPitch = hasFourfold ? InPlaneArrowGroupPitch4 : InPlaneArrowGroupPitch2;
             for (int i = 0; i < list.Count; i++)
             {
                 var d = list[i];
-                double perpOffset = list.Count == 1 ? 0 : (i - (list.Count - 1) / 2.0) * 7.0; // (260502Ch) 同じ投影線上の 2 / 2_1 / 4_n を少し perpendicular に並べる。
+                double perpOffset = list.Count == 1 ? 0 : (i - (list.Count - 1) / 2.0) * perpPitch; // (260502Ch) 同じ投影線上の 2 / 2_1 / 4_n を少し perpendicular に並べる。
                 float ox = (float)(-d.OutUy * perpOffset), oy = (float)(d.OutUx * perpOffset);
                 // (260503Cl) axis 方向 (OutUx, OutUy) に axisShift だけ前進させる。
                 ox += (float)(d.OutUx * axisShift);
@@ -754,9 +801,8 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
                 if (h == null) continue; // (260503Ch) [ITA-D2] 高さ 0 は無標記、非ゼロ代表高さだけを表示する。
                 var lbl = g.MeasureString(h, HeightLabelFont);
                 // (260502Ch) 非ゼロ高さは矢印先端にくっつけて表示する。
-                // (260503Cl) 4 回軸も 2 回軸も visualTip = anchor + (InPlaneArrowExt + 2*ArrowHeadLen/3)*dir で同じ位置に到達する。
-                const double VisualTipOffset = InPlaneArrowExt + 2.0 * ArrowHeadLen / 3.0;
-                var tip = new PointF((float)(anchor.X + VisualTipOffset * d.OutUx), (float)(anchor.Y + VisualTipOffset * d.OutUy));
+                // (260503Cl) 4 回軸も 2 回軸も visualTip = anchor + ArrowVisualTipOffset*dir で同じ位置に到達する。
+                var tip = new PointF((float)(anchor.X + ArrowVisualTipOffset * d.OutUx), (float)(anchor.Y + ArrowVisualTipOffset * d.OutUy));
                 bool horiz = Math.Abs(d.OutUx) >= Math.Abs(d.OutUy);
                 float lx = horiz
                     ? (d.OutUx >= 0 ? tip.X + 1 : tip.X - lbl.Width - 1)
@@ -797,8 +843,7 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
     /// <paramref name="halfHead"/> の場合は下半分のみ (2_1 螺旋用)。</summary>
     private static void DrawInPlaneAxisArrowhead(Graphics g, Brush fill, Pen pen, PointF lineEnd, double ux, double uy, bool halfHead)
     {
-        double headOffset = 2.0 * ArrowHeadLen / 3.0;
-        PointF tip = new((float)(lineEnd.X + headOffset * ux), (float)(lineEnd.Y + headOffset * uy));
+        PointF tip = new((float)(lineEnd.X + ArrowVisualHeadOffset * ux), (float)(lineEnd.Y + ArrowVisualHeadOffset * uy));
         float bx = (float)(tip.X - ArrowHeadLen * ux), by = (float)(tip.Y - ArrowHeadLen * uy);
         PointF left  = new((float)(bx - ArrowHeadHalfWidth * uy), (float)(by + ArrowHeadHalfWidth * ux));
         PointF right = new((float)(bx + ArrowHeadHalfWidth * uy), (float)(by - ArrowHeadHalfWidth * ux));
@@ -806,10 +851,6 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
         g.FillPolygon(fill, poly);
         g.DrawPolygon(pen, poly);
     }
-
-    // 紙面内 4 回軸の平行四辺形定数 (1x scale): 左右辺長 = 12 (= triangle 縮小前の 2*ArrowHeadHalfWidth*4)、上下辺は 8→2 (slant = ArrowHeadLen*tan(30°))。
-    private const float InPlaneFourfoldVHalf = 6f;
-    private const float InPlaneFourfoldSlant = ArrowHeadLen * 0.5773502692f;
 
     /// <summary>(260503Cl 追加) 紙面内 4 / 4_n 軸の頭部 (塗り潰し平行四辺形 + 頂点フィン)。
     /// 中心 = <paramref name="center"/> (= shaft 右端)。axis 方向 (ux, uy) の +x が右になる局所系で平行四辺形を組み、
@@ -882,12 +923,13 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
 
     #region 紙面平行 mirror corner bracket
     /// <summary>紙面平行 mirror/glide を IUCR corner bracket で描画。mirror があれば左上、glide は右下に分ける。
-    /// (260503Ch) [ITA-D2], [ITA-D4] 高さは代表 h だけを選び、同高さの直交 glide は e-glide bracket へ統合する。</summary>
-    private static void DrawParallelMirrorStack(Graphics g, CellLayout c, HashSet<(double Height, bool Glide, double GlideSx, double GlideSy)> markers, Brush fill)
+    /// (260503Ch) [ITA-D2], [ITA-D4] 高さは代表 h だけを選び、同高さの直交 glide は e-glide bracket へ統合する。
+    /// (260505Cl) isCubic=true で立方晶用に bracket を cell 角からさらに離す (紙面平行軸矢印との干渉回避)。</summary>
+    private static void DrawParallelMirrorStack(Graphics g, CellLayout c, HashSet<(double Height, bool Glide, double GlideSx, double GlideSy)> markers, Brush fill, bool isCubic = false)
     {
         if (markers.Count == 0) return;
         const float armLen = CornerBracketArmLen;
-        const float offset = CornerBracketArmLen + CornerBracketGap;
+        float offset = CornerBracketArmLen + CornerBracketGap + (isCubic ? CornerBracketCubicExtraGap : 0f);
         double hLen = Math.Sqrt(c.Horz.X * c.Horz.X + c.Horz.Y * c.Horz.Y);
         double vLen = Math.Sqrt(c.Vert.X * c.Vert.X + c.Vert.Y * c.Vert.Y);
         if (hLen < 1e-3 || vLen < 1e-3) return;
@@ -1149,7 +1191,7 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
         {
             lineSx = NormalizeCellBoundary(lineSx);
             lineSy = NormalizeCellBoundary(lineSy);
-            var (start, end) = SpanLineThroughCell(c, lineSx, lineSy, perpSx, perpSy);
+            var (start, end) = SpanLineThroughCell(c, lineSx, lineSy, perpSx, perpSy, ctx.DisplayMaxS); // (260505Ch) F 格子は線分そのものを 1/4 領域で切る。
             if (!start.HasValue || !end.HasValue) return;
             var startPt = start.Value;
             var endPt = end.Value;
@@ -1287,18 +1329,16 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
             ux = -ux; uy = -uy;
         }
 
-        const float dashLen = 9f;
-        const float arrowLen = 13f;
         for (int i = 0; ; i++)
         {
             float baseT = 3f + i * DGlidePatternPitch;
             if (baseT >= len) break;
             Dot(baseT);
-            Dash(baseT + 6f, baseT + 6f + dashLen);
+            Dash(baseT + 6f, baseT + 6f + DGlidePatternDashLen);
             Dot(baseT + 19f);
-            Dash(baseT + 25f, baseT + 25f + dashLen);
+            Dash(baseT + 25f, baseT + 25f + DGlidePatternDashLen);
             Dot(baseT + 38f);
-            Arrow(baseT + 44f, baseT + 44f + arrowLen);
+            Arrow(baseT + 44f, baseT + 44f + DGlidePatternArrowLen);
         }
 
         PointF Pt(double t) => new((float)(start.X + ux * t), (float)(start.Y + uy * t));
@@ -1382,15 +1422,26 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
             if (IsAxisPerpendicularToProjection(mp.Normal, projAxis) || IsAxisInPlane(mp.Normal, projAxis)) continue;
             diagonalMirrors.Add(mp);
         }
-        var diagonalThreefolds = new List<RotationAxis>();
+        // 260505Cl 旧: 斜め 3 回軸のみを収集していたため Pm-3m などで face-diagonal 2 回軸 (<110>系) が
+        //              cell-side 描画でスキップされる一方 inset にも乗らず欠落していた。
+        // var diagonalThreefolds = new List<RotationAxis>();
+        // foreach (var ax in table.RotationAxes)
+        // {
+        //     if (Math.Abs(ax.Order) != 3) continue;
+        //     if (!IsAxisDiagonalToProjection(ax.Direction, projAxis)) continue;
+        //     diagonalThreefolds.Add(ax);
+        // }
+        // 260505Cl: ITA Vol.A Pm-3m 等で inset に出ている斜め 2 回軸 (face-diagonal) も拾う。
+        // proper rotation 軸 (Order 2/3) のみ。-3 等の rotoinversion は cell-side draw と同様に除外。
+        var diagonalAxes = new List<RotationAxis>();
         foreach (var ax in table.RotationAxes)
         {
-            if (Math.Abs(ax.Order) != 3) continue;
+            if (ax.Order is not (2 or 3)) continue;
             if (!IsAxisDiagonalToProjection(ax.Direction, projAxis)) continue;
-            diagonalThreefolds.Add(ax);
+            diagonalAxes.Add(ax);
         }
 
-        float radius = DiagonalStereonetRadius * DiagonalStereonetInsetScale;
+        float radius = CubicStereonetInsetRadius;
         using var outlinePen      = new Pen(CellOutlineColor, CellOutlinePenWidth);
         using var dGlidePen       = new Pen(Color.Black, MirrorPenWidth) { DashStyle = DashStyle.Custom, DashPattern = [5f, 2.5f, 1f, 2.5f] };
         using var axialDashPen    = new Pen(Color.Black, MirrorPenWidth) { DashStyle = DashStyle.Custom, DashPattern = [5f, 3f] };       // 1/2 along 紙面内軸
@@ -1431,14 +1482,16 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
             foreach (var (hkl, glides) in groupedGlides)
                 siteMirrors.Add((hkl, ResolveStereonetGroupStyle(glides, projAxis)));
 
-            var siteAxes = new List<((int U, int V, int W) Direction, int FinCount, int EdgeStep)>();
-            var seenAxis = new HashSet<(int, int, int, int, int)>();
-            foreach (var ax in diagonalThreefolds)
+            // 260505Cl: Order を含めて 2 回軸/3 回軸を同列に dedup。Screw も保持し DrawStereonetTwofold に渡す。
+            // (260505Cl 整理) 立方晶高対称群の stereonet 中心を通る 3 回軸は <111> proper のみで、3_1/3_2 螺旋は現れないため FinCount/EdgeStep は持たない。
+            var siteAxes = new List<((int U, int V, int W) Direction, int Order, bool Screw)>();
+            var seenAxis = new HashSet<(int, int, int, int)>();
+            foreach (var ax in diagonalAxes)
             {
                 if (!AxisPassesThroughSite(ax, xc, yc, zc)) continue;
-                var key = (ax.Direction.U, ax.Direction.V, ax.Direction.W, ax.FinCount, ax.EdgeStep);
+                var key = (ax.Direction.U, ax.Direction.V, ax.Direction.W, ax.Order);
                 if (!seenAxis.Add(key)) continue;
-                siteAxes.Add((ax.Direction, ax.FinCount, ax.EdgeStep));
+                siteAxes.Add((ax.Direction, ax.Order, ax.Screw));
             }
 
             var center = ctx.C.ToScreen(sxScreen, syScreen);
@@ -1456,17 +1509,23 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
                     case StereonetGlideStyle.AxialInPlane: DrawMirrorGreatCircle(ctx.G, axialDashPen,  center, radius, hkl); break;
                     case StereonetGlideStyle.AxialDepth:   DrawMirrorGreatCircle(ctx.G, axialDotPen,   center, radius, hkl); break;
                     case StereonetGlideStyle.EGlide:       DrawMirrorGreatCircle(ctx.G, ePen,          center, radius, hkl); break;
+                    case StereonetGlideStyle.NGlide:       DrawMirrorGreatCircle(ctx.G, dGlidePen,     center, radius, hkl); break; // (260505Ch) n-glide は d と同じ dash-dot 大円だが矢印は付けない。
                     case StereonetGlideStyle.Diamond:      DrawDGlideGreatCircle(ctx.G, dGlidePen, ctx.Fill, center, radius, hkl); break;
                 }
             }
-            // 4) 実 3 回軸
-            foreach (var (dir, fin, edge) in siteAxes)
-                DrawStereonetThreefold(ctx.G, ctx.Fill, center, radius, dir, fin, edge);
+            // 4) 実 2/3 回軸 (260505Cl: Pm-3m など face-diagonal 2 回軸を inset に追加)
+            foreach (var (dir, order, screw) in siteAxes)
+            {
+                if (order == 3)
+                    DrawStereonetThreefold(ctx.G, ctx.Fill, center, radius, dir);
+                else // order == 2
+                    DrawStereonetTwofold(ctx.G, ctx.Fill, center, radius, dir, screw);
+            }
         }
     }
 
     /// <summary>(260505Cl) 同一 (h,k,l) 平面に対し、site で集めた glide ベクトル群から最終 style を決める。
-    /// 純鏡映を含めば Mirror、独立な非零 glide が 2 つ以上で EGlide、1 つだけなら glide ベクトルから AxialInPlane/AxialDepth/Diamond を分類。</summary>
+    /// 純鏡映を含めば Mirror、独立な非零 glide が 2 つ以上で EGlide、1 つだけなら glide ベクトルから AxialInPlane/AxialDepth/NGlide/Diamond を分類。</summary>
     private static StereonetGlideStyle ResolveStereonetGroupStyle(List<(double U, double V, double W)> glides, ProjectionAxis projAxis)
     {
         bool hasPure = false;
@@ -1499,7 +1558,8 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
         var single = distinctNonZero[0];
         // d-glide (1/4 of face/body diagonal): 2 個以上の成分が ±1/4。
         int quarterCount = (IsQuarterGlideComponent(single.U) ? 1 : 0) + (IsQuarterGlideComponent(single.V) ? 1 : 0) + (IsQuarterGlideComponent(single.W) ? 1 : 0);
-        if (quarterCount >= 2) return StereonetGlideStyle.Diamond;
+        int halfCount = HalfGlideComponentCount((single.U, single.V, single.W)); // (260505Ch) F-43m の mixed quarter+half glide は ITA では n-glide。
+        if (quarterCount >= 2) return halfCount > 0 ? StereonetGlideStyle.NGlide : StereonetGlideStyle.Diamond;
         // (260505Ch) P-43m などの face-diagonal half-glide も、紙面平行成分ではなく depth 成分の有無で DOT/DASH を決める。
         double depthGlide = ProjectedDepth(single.U, single.V, single.W, projAxis);
         return Math.Abs(depthGlide) > 1e-6 ? StereonetGlideStyle.AxialDepth : StereonetGlideStyle.AxialInPlane;
@@ -1511,6 +1571,7 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
         Mirror,         // 純鏡映: 実線
         AxialInPlane,   // 1/2 along 紙面内軸 (例: 1/2 [010] for C-projection): 破線 (DASH)
         AxialDepth,     // 1/2 along 紙面と斜め (例: 1/2 [101], [10-1]): 点線 (DOT)
+        NGlide,         // mixed quarter+half glide: dash-dot 大円、矢印なし (例: F-43m の斜め n-glide)
         Diamond,        // d-glide (1/4 along face/body diagonal): dot-dash + アロー
         EGlide,         // 同一平面に独立な glide ベクトルが 2 つ存在する double-glide (e-glide pattern)
     }
@@ -1586,26 +1647,21 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
                           stereonetCenter.Y + r * (float)(sy / denom));
     }
 
-    // 260504Cl 追加: 立方晶 stereonet inset 専用の図形パラメータ。
-    // 全体倍率は r (stereonet 半径) / DiagonalStereonetRadius (= 1× 基準 29.2 px) として helper 内で計算する。
-    private const float StereonetTwofoldOverallScale = 0.8f;   // 2 回軸 lens 全体の倍率 (長軸・短軸とも)
-    private const float StereonetTwofoldWidthScale   = 0.75f;  // 2 回軸 lens の幅 (短軸方向) のみ細める追加倍率
-    private const float StereonetThreefoldApexDeg    = 80f;    // 3 回軸 二等辺三角の apex 角 (80°-50°-50°)
-    private const float StereonetFinScale            = 0.8f;   // 螺旋 fin (2_1 円弧 / 3_1,3_2 直線) の長さ倍率
-    private const float StereonetDGlideArrowScale    = 1.5f;   // d 映進アロー (大円接線方向アロー) の絶対 px 倍率 (= ArrowHeadLen 倍率)
-
     /// <summary>(260504Cl 追加) 結晶方向 [uvw] の 2 回軸を stereonet 上に描画する。
-    /// (260505Cl) 視認性のため <011> 系の軸位置は <021>/<201> 系へ shift (in-plane 成分を 2× して strict 投影に渡す)。
+    /// (260505Cl) 視認性のため <011> 系の軸位置は <023>/<203> 系へ shift (in-plane 成分を 3×、out-of-plane 成分を 2× して strict 投影に渡す)。
+    /// mirror 大円の (h,k,l)→(2h,2k,3l) shift と整合させる選択。
     /// screw=true で 2_1 螺旋 (互い違い円弧 fin) として描く。</summary>
     private static void DrawStereonetTwofold(Graphics g, Brush fill, PointF stereonetCenter, float r,
                                              (int U, int V, int W) dir, bool screw = false)
     {
-        var displayDir = (dir.U * 2, dir.V * 2, dir.W); // C 投影での <011>→<021> shift。in-plane 成分のみ 2 倍。
+        // var displayDir = (dir.U * 2, dir.V * 2, dir.W); // 旧: <011>→<021> shift (mirror 大円が (h,k,2l) shift だった頃)
+        var displayDir = (dir.U * 3, dir.V * 3, dir.W * 2); // C 投影での <011>→<023> shift。mirror 大円の (2h,2k,3l) shift と整合。
         var pt = StereonetPosition(stereonetCenter, r, displayDir, out double sx, out double sy);
         float rotationDeg = Math.Abs(sx) + Math.Abs(sy) < 1e-9
             ? 0f
             : (float)(Math.Atan2(sy, sx) * 180.0 / Math.PI);
-        float overallScale = r / DiagonalStereonetRadius;
+        // float overallScale = r / DiagonalStereonetRadius; // 260505Cl 旧: 輪郭半径と一緒にシンボルも拡大していた
+        float overallScale = DiagonalStereonetSymbolScale; // 260505Cl: 輪郭 1.2 倍に追従させずシンボルは旧値を保持
         DrawTwofoldPerp(g, fill, pt, screw: screw,
                         scale: overallScale * StereonetTwofoldOverallScale,
                         rotationDeg: rotationDeg,
@@ -1614,14 +1670,17 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
     }
 
     /// <summary>(260504Cl 追加) 結晶方向 [uvw] の 3 回軸を stereonet 上に描画する。
-    /// (260505Cl) 視認性のため <111> 系を <221> 系に shift (in-plane 成分を 2× して strict 投影に渡す)。
-    /// finCount > 0 のときのみ fin を生やす (純 3 回軸では fin 無し、3_1/3_2 では (3,1)/(3,2) を渡す)。</summary>
+    /// (260505Cl) 視認性のため <111> 系を <332> 系に shift (in-plane 成分を 3×、out-of-plane 成分を 2× して strict 投影に渡す)。
+    /// mirror 大円の (h,k,l)→(2h,2k,3l) shift により 3 本の {110} 系大円が [332] で交差するので、その交点に 3 回軸を載せる。
+    /// (260505Cl 整理) 立方晶高対称群の stereonet 中心を通る 3 回軸は <111> proper のみで、3_1/3_2 螺旋は現れないため fin は出さない。</summary>
     private static void DrawStereonetThreefold(Graphics g, Brush fill, PointF stereonetCenter, float r,
-                                               (int U, int V, int W) dir, int finCount = 0, int edgeStep = 0)
+                                               (int U, int V, int W) dir)
     {
-        var displayDir = (dir.U * 2, dir.V * 2, dir.W); // <111>→<221> shift。
+        // var displayDir = (dir.U * 2, dir.V * 2, dir.W); // 旧: <111>→<221> shift (mirror が (h,k,2l) shift で大円交点が [221] だった頃)
+        var displayDir = (dir.U * 3, dir.V * 3, dir.W * 2); // <111>→<332> shift。mirror 大円 3 本の交点と一致。
         var pt = StereonetPosition(stereonetCenter, r, displayDir, out _, out _);
-        float overallScale = r / DiagonalStereonetRadius;
+        // float overallScale = r / DiagonalStereonetRadius; // 260505Cl 旧: 輪郭半径と一緒に三角もスケール
+        float overallScale = DiagonalStereonetSymbolScale; // 260505Cl: 輪郭 1.2 倍に追従させずシンボルは旧値を保持
         float radius = ThreeFoldRadius * overallScale;
 
         // apex 頂点を stereonet 中心方向に向ける (atan2 は screen y-down で OK)
@@ -1646,10 +1705,6 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
         g.DrawPolygon(halo, poly);
         g.FillPolygon(fill, poly);
         g.DrawPolygon(outline, poly);
-        // 260505Cl: 螺旋軸のときだけ fin を生やす (純 3 回軸: finCount=0 → スキップ)。
-        if (finCount > 0)
-            DrawScrewFins(g, outline, poly, finCount, edgeStep,
-                          tailLen: ScrewFinTailLen * overallScale * StereonetFinScale); // (260505Ch) stereonet 内 3_1/3_2 も edgeStep を変換しない。
     }
 
     /// <summary>(260506Cl) Miller (h,k,l) を上半球側に正規化した stereonet 法線 + 大円幾何を返す。
@@ -1659,9 +1714,9 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
                                                out bool isDiameter, out double dx, out double dy,
                                                out float gcCx, out float gcCy, out float gcR)
     {
-        // 260505Cl: 視認性のため (h,k,l) → (h,k,2l) shift (depth 成分を 2 倍)。<011>→<012> 等で apex を外側へ寄せる。
+        // 260505Cl: 視認性のため (h,k,l) → (2h,2k,3l) shift。<011>→<023> 等で apex を外側へ寄せる。
         // 結晶 (h,k,l) → screen 法線 (Sx=k, Sy=h, Sz=l)。C 投影前提。
-        double nx = hkl.K, ny = hkl.H, nz = hkl.L * 2;
+        double nx = hkl.K * 2, ny = hkl.H * 2, nz = hkl.L * 3;
         double norm = Math.Sqrt(nx * nx + ny * ny + nz * nz);
         isDiameter = false; dx = dy = 0; gcCx = gcCy = gcR = 0;
         if (norm < 1e-12) return false;
@@ -1679,8 +1734,8 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
         return true;
     }
 
-    /// <summary>(260506Cl) 大円本体 (直径線 or 円弧) を equator 内側にクリップして描く。
-    /// 円弧の場合は <see cref="GraphicsState"/> による Save/Restore で clip を退避し、Region clone を避ける。</summary>
+    /// <summary>(260505Ch) 大円本体 (直径線 or 円弧) を描く。
+    /// 円弧は見えている弧そのものを DrawArc し、dash-dot の位相が隠れた楕円部分に引きずられないようにする。</summary>
     private static void DrawGreatCircleArc(Graphics g, Pen pen, PointF center, float r,
                                            bool isDiameter, double dx, double dy, float gcCx, float gcCy, float gcR)
     {
@@ -1694,10 +1749,23 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
         var state = g.Save();
         try
         {
-            using var clipPath = new GraphicsPath();
-            clipPath.AddEllipse(center.X - r, center.Y - r, 2 * r, 2 * r);
-            g.SetClip(clipPath, CombineMode.Intersect);
-            g.DrawEllipse(pen, gcCx - gcR, gcCy - gcR, 2 * gcR, 2 * gcR);
+            // 旧: 大きな楕円を stereonet 円で clip していたため、dash phase が見えている弧の始端ではなく楕円の 0° から始まっていた。
+            // using var clipPath = new GraphicsPath();
+            // clipPath.AddEllipse(center.X - r, center.Y - r, 2 * r, 2 * r);
+            // g.SetClip(clipPath, CombineMode.Intersect);
+            // g.DrawEllipse(pen, gcCx - gcR, gcCy - gcR, 2 * gcR, 2 * gcR);
+            double dcx = center.X - gcCx, dcy = center.Y - gcCy;
+            double d = Math.Sqrt(dcx * dcx + dcy * dcy);
+            if (d < 1e-6 || gcR < 1e-6)
+            {
+                g.DrawEllipse(pen, gcCx - gcR, gcCy - gcR, 2 * gcR, 2 * gcR);
+                return;
+            }
+            double apexAngle = Math.Atan2(dcy, dcx);
+            double halfSweep = Math.Acos(Math.Clamp(d / gcR, -1.0, 1.0));
+            float startDeg = (float)((apexAngle - halfSweep) * 180.0 / Math.PI);
+            float sweepDeg = (float)(2.0 * halfSweep * 180.0 / Math.PI);
+            g.DrawArc(pen, gcCx - gcR, gcCy - gcR, 2 * gcR, 2 * gcR, startDeg, sweepDeg); // (260505Ch) 見えている弧そのものを描き、dash-dot の位相を始端に揃える。
         }
         finally { g.Restore(state); }
     }
@@ -1713,7 +1781,7 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
     }
 
     /// <summary>(260504Cl 追加) 斜め d 映進面の大円を stereonet 上に描画する。
-    /// d-glide dash パターンの大円に加え、円弧 apex の前後 ±30° 位置に接線方向のアローを 3 個配置する。
+    /// d-glide dash パターンの大円に加え、矢印重心が弧の -35°, 0, +35° に来るよう接線方向のアローを 3 個配置する。
     /// アローはクリップから外して描画 (apex の dash と重なって視認しにくいのを避ける)。</summary>
     private static void DrawDGlideGreatCircle(Graphics g, Pen pen, Brush fill, PointF stereonetCenter, float r, (int H, int K, int L) hkl)
     {
@@ -1722,17 +1790,21 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
         DrawGreatCircleArc(g, pen, stereonetCenter, r, isDiameter, dx, dy, gcCx, gcCy, gcR);
         if (isDiameter) return;
 
-        // アローを clip 外で描画。apex の前後 ±30° に 3 個、接線方向 (大円中心から見た角度の +90° 方向) に。
+        // アローを clip 外で描画。接線方向 (大円中心から見た角度の +90° 方向) で置く。
         double apexAngle = Math.Atan2(stereonetCenter.Y - gcCy, stereonetCenter.X - gcCx);
-        ReadOnlySpan<double> offsetsRad = [-Math.PI / 6, 0, +Math.PI / 6];
-        foreach (double off in offsetsRad)
+        foreach (double off in StereonetDGlideArrowAnglesRad)
         {
             double a = apexAngle + off;
-            float px = gcCx + gcR * (float)Math.Cos(a);
-            float py = gcCy + gcR * (float)Math.Sin(a);
-            float dxp = px - stereonetCenter.X, dyp = py - stereonetCenter.Y;
+            float centroidX = gcCx + gcR * (float)Math.Cos(a);
+            float centroidY = gcCy + gcR * (float)Math.Sin(a);
+            float dxp = centroidX - stereonetCenter.X, dyp = centroidY - stereonetCenter.Y;
             if (dxp * dxp + dyp * dyp > r * r) continue;
-            DrawArrowhead(g, fill, new PointF(px, py), -Math.Sin(a), Math.Cos(a), StereonetDGlideArrowScale); // (260506Cl) DrawScaledArrowhead を DrawArrowhead に統合。
+            double tx = -Math.Sin(a), ty = Math.Cos(a);
+            PointF tip = new((float)(centroidX + tx * ArrowHeadLen * StereonetDGlideArrowScale * 2.0 / 3.0),
+                             (float)(centroidY + ty * ArrowHeadLen * StereonetDGlideArrowScale * 2.0 / 3.0)); // (260505Ch) DrawArrowhead は tip 指定なので、1.2 倍矢印の重心位置から逆算する。
+            // DrawArrowhead(g, fill, new PointF(px, py), -Math.Sin(a), Math.Cos(a), StereonetDGlideArrowScale); // 旧: stereonet d-glide 矢印だけ 1.5 倍。
+            // DrawArrowhead(g, fill, tip, tx, ty); // 旧: 紙面垂直 d-glide と同じ矢印サイズに揃える。
+            DrawArrowhead(g, fill, tip, tx, ty, StereonetDGlideArrowScale); // (260505Ch)
         }
     }
     #endregion
