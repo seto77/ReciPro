@@ -77,8 +77,11 @@ public class SymmetryDiagramPositions : SymmetryDiagramCommon
         }
         var actualAxis = ResolveProjectionAxis(sym, axis);
         var proj = GetProjection(actualAxis);
-        var layout = ComputeCellLayout(clientSize, sym, actualAxis);
-        DrawCellAndAxes(g, layout, proj, sym);
+        // 260505Cl: 立方晶 F 格子は upper-left 1/4 領域だけ描画。
+        bool halfQuadrant = IsCubicFLattice(sym);
+        var layout = ComputeCellLayout(clientSize, sym, actualAxis, halfQuadrant);
+        if (halfQuadrant) DrawUpperLeftQuadrantLabel(g);
+        DrawCellAndAxes(g, layout, proj, sym, halfQuadrant);
         // 立方晶系 (= 7) は等価点が密集しがちなので円・コンマ点・フォントを CubicScale 倍に縮小し、
         // [111] 軸 orbit の三角形も追加で描く。それ以外の結晶系は scale=1 で従来通り。
         bool isCubic = sym.CrystalSystemNumber == 7;
@@ -95,8 +98,16 @@ public class SymmetryDiagramPositions : SymmetryDiagramCommon
         var placements = new List<Placement>();
         foreach (var p in allPoints)
             CollectPlacements(placements, layout, p, proj, tx, ty, tz);
-        if (isCubic) DrawCubicTriangles(g, layout, proj, allPoints, tx, ty, tz);
-        DrawClusters(g, placements, labelFont, scale, projAxisIdx);
+        var quadrantClip = halfQuadrant ? ClipToUpperLeftQuadrant(g, layout, 64f) : null; // (260505Ch) F 格子では 1/4 領域外を抑えつつ境界記号のはみ出しは残す。
+        try
+        {
+            if (isCubic) DrawCubicTriangles(g, layout, proj, allPoints, tx, ty, tz);
+            DrawClusters(g, placements, labelFont, scale, projAxisIdx);
+        }
+        finally
+        {
+            if (quadrantClip != null) g.Restore(quadrantClip);
+        }
     }
     #endregion
 

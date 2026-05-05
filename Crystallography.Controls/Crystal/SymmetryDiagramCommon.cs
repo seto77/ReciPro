@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
+using System.Linq;
 
 namespace Crystallography.Controls;
 
@@ -135,7 +136,15 @@ public abstract class SymmetryDiagramCommon
         };
     }
 
-    protected static CellLayout ComputeCellLayout(Size canvas, Symmetry sym, ProjectionAxis projAxis)
+    /// <summary>(260505Cl) 立方晶 F 格子の場合の判定。F-cubic では対称要素図/一般位置図ともに upper-left 1/4 領域だけを描く。</summary>
+    protected static bool IsCubicFLattice(Symmetry sym) => sym.CrystalSystemNumber == 7 && sym.LatticeTypeStr == "F";
+
+    /// <summary>(260506Cl) m-3m / -43m の判定。stereonet inset を描く立方晶高対称群かどうか。</summary>
+    protected static bool IsCubicHighSym(Symmetry sym) => sym.PointGroupHMStr is "m-3m" or "-43m";
+
+    /// <summary>(260505Cl) <paramref name="halfQuadrant"/> = true で、(0,0)〜(1/2,1/2) の領域 (upper-left 1/4) を通常セルと同じ表示位置・大きさに描く。
+    /// scale を 2× にすることで 1/4 領域の外枠が通常セルの外枠位置に一致する。</summary>
+    protected static CellLayout ComputeCellLayout(Size canvas, Symmetry sym, ProjectionAxis projAxis, bool halfQuadrant = false)
     {
         double rad = GetCellAngleDeg(sym) * Math.PI / 180.0;
         double cosA = Math.Cos(rad), sinA = Math.Sin(rad);
@@ -150,23 +159,68 @@ public abstract class SymmetryDiagramCommon
         float availW = Math.Max(8f, canvas.Width  - ml - mr);
         float availH = Math.Max(8f, canvas.Height - mt - mb);
         double scale = Math.Min(availW / (hLen + Math.Abs(cosA) * vLen), availH / (sinA * vLen));
+        if (halfQuadrant) scale *= 2; // 260505Cl: 1/4 領域だけを canvas 一杯に出すため scale を 2× する。
         float horzLen = (float)(hLen * scale), vertLen = (float)(vLen * scale);
         float bboxW = (float)((hLen + Math.Abs(cosA) * vLen) * scale);
         float bboxH = (float)(sinA * vLen * scale);
-        float ox = ml + (availW - bboxW) / 2f + (cosA < 0 ? -(float)cosA * vertLen : 0);
-        float oy = mt + (availH - bboxH) / 2f;
+        float ox, oy;
+        if (halfQuadrant)
+        {
+            // 260505Ch: 表示される 1/4 領域 (= full-cell bbox の半分) を通常セルと同じ位置へセンタリングする。
+            ox = ml + (availW - bboxW * 0.5f) / 2f + (cosA < 0 ? -(float)cosA * vertLen * 0.5f : 0);
+            oy = mt + (availH - bboxH * 0.5f) / 2f;
+        }
+        else
+        {
+            ox = ml + (availW - bboxW) / 2f + (cosA < 0 ? -(float)cosA * vertLen : 0);
+            oy = mt + (availH - bboxH) / 2f;
+        }
         return new(new PointF(ox, oy), new PointF(horzLen, 0f), new PointF((float)cosA * vertLen, (float)sinA * vertLen));
     }
 
-    /// <summary>セルの輪郭、補助線 (三方/六方は対角、それ以外は半セル分割線)、軸ラベル ("o", Horz, Vert) を描画。</summary>
-    protected static void DrawCellAndAxes(Graphics g, CellLayout c, Projection proj, Symmetry sym)
+    /// <summary>(260505Cl) "Upper left quadrant only" のラベルを canvas 左上に小さく描く。</summary>
+    protected static void DrawUpperLeftQuadrantLabel(Graphics g)
     {
+        using var brush = new SolidBrush(Color.Gray);
+        using var font = new Font("Segoe UI", 8f);
+        g.DrawString("Upper left quadrant only", font, brush, 4, 4);
+    }
+
+    /// <summary>(260505Ch) 立方晶 F 格子の本体描画を upper-left 1/4 領域 (0≤sx≤1/2, 0≤sy≤1/2) に制限する。</summary>
+    protected static GraphicsState ClipToUpperLeftQuadrant(Graphics g, CellLayout c, float bleedPx = 0f)
+    {
+        var state = g.Save();
+        using var path = new GraphicsPath();
+        var clipPts = new[] { c.ToScreen(0, 0), c.ToScreen(0.5, 0), c.ToScreen(0.5, 0.5), c.ToScreen(0, 0.5) };
+        if (bleedPx > 0)
+        {
+            float minX = clipPts.Min(p => p.X) - bleedPx, maxX = clipPts.Max(p => p.X) + bleedPx;
+            float minY = clipPts.Min(p => p.Y) - bleedPx, maxY = clipPts.Max(p => p.Y) + bleedPx;
+            path.AddRectangle(RectangleF.FromLTRB(minX, minY, maxX, maxY)); // (260505Ch) 境界上の点記号が外側へはみ出す分は残す。
+        }
+        else
+        {
+            path.AddPolygon(clipPts);
+        }
+        g.SetClip(path, CombineMode.Intersect);
+        return state;
+    }
+
+    /// <summary>セルの輪郭、補助線 (三方/六方は対角、それ以外は半セル分割線)、軸ラベル ("o", Horz, Vert) を描画。</summary>
+    protected static void DrawCellAndAxes(Graphics g, CellLayout c, Projection proj, Symmetry sym, bool halfQuadrant = false)
+    {
+        double maxS = halfQuadrant ? 0.5 : 1.0; // (260505Ch) F 格子では upper-left 1/4 の輪郭だけを単位胞枠として表示する。
         using (var d = new Pen(CellGuideLineColor, CellGuideLinePenWidth) { DashStyle = DashStyle.Dash }) // (260502Cl)
         {
-            if (sym.CrystalSystemNumber is 5 or 6) g.DrawLine(d, c.TopLeft, c.ToScreen(1, 1));
+            if (halfQuadrant) // (260505Ch) F 格子の表示 1/4 領域内に 1/4 補助線を入れる。
+            {
+                g.DrawLine(d, c.ToScreen(0.25, 0), c.ToScreen(0.25, 0.5));
+                g.DrawLine(d, c.ToScreen(0, 0.25), c.ToScreen(0.5, 0.25));
+            }
+            else if (sym.CrystalSystemNumber is 5 or 6) g.DrawLine(d, c.TopLeft, c.ToScreen(1, 1));
             else { g.DrawLine(d, c.ToScreen(0.5, 0), c.ToScreen(0.5, 1)); g.DrawLine(d, c.ToScreen(0, 0.5), c.ToScreen(1, 0.5)); }
         }
-        var tr = c.ToScreen(1, 0); var bl = c.ToScreen(0, 1); var br = c.ToScreen(1, 1);
+        var tr = c.ToScreen(maxS, 0); var bl = c.ToScreen(0, maxS); var br = c.ToScreen(maxS, maxS);
         using (var pen = new Pen(CellOutlineColor, CellOutlinePenWidth)) g.DrawPolygon(pen, [c.TopLeft, tr, br, bl]); // (260502Cl)
 
         // (260502Cl) フォントは Common 冒頭の AxisLabelFont / OriginLabelFont を共有使用。
