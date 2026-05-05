@@ -64,8 +64,9 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
     private const float InPlaneArrowExt    = 14.4f;   // = 32 × 0.75 × 0.6
     private const float ArrowHeadLen       = 7f;
     private const float ArrowHeadHalfWidth = 2.25f;   // = 3 × 0.75
+    private const float ArrowHeadCentroidToTipFactor = 2f / 3f; // (260505Ch) 三角矢じりの重心→tip 距離 / 矢じり長。
     /// <summary>(260505Cl 整理) 紙面内 2/4/-4 軸の lineEnd → tip オフセット (= 三角矢じり / 平行四辺形ヘッド共通の食い込み量)。</summary>
-    private const float ArrowVisualHeadOffset = 2f * ArrowHeadLen / 3f;
+    private const float ArrowVisualHeadOffset = ArrowHeadLen * ArrowHeadCentroidToTipFactor; // (260505Ch)
     /// <summary>(260505Cl 整理) anchor から「視覚的 tip 位置」までのオフセット。2 回軸三角先端も 4 回軸平行四辺形右端もこの位置で揃う。</summary>
     private const float ArrowVisualTipOffset = InPlaneArrowExt + ArrowVisualHeadOffset;
     /// <summary>(260505Cl 整理) 4 回軸 shaft の追加長 (shaft 右端で 2 回軸 tip と揃える分)。</summary>
@@ -85,6 +86,13 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
     /// <summary>(260505Cl 整理) 紙面垂直 d-glide パターンの dash 長 / arrow 長 (1 周期 = DGlidePatternPitch 内で繰り返し)。</summary>
     private const float DGlidePatternDashLen  = 9f;
     private const float DGlidePatternArrowLen = 13f;
+    /// <summary>(260505Ch) d-glide 反復パターン内の dot/dash/arrow 開始位置 (px)。</summary>
+    private const float DGlidePatternDot1Offset   = 3f;
+    private const float DGlidePatternDash1Offset  = 9f;
+    private const float DGlidePatternDot2Offset   = 22f;
+    private const float DGlidePatternDash2Offset  = 28f;
+    private const float DGlidePatternDot3Offset   = 41f;
+    private const float DGlidePatternArrowOffset  = 47f;
     private const float EGlideDotDashUnit  = 2.6f;
     /// <summary>(260505Cl 整理) 2_1 螺旋 fin (円弧) 描画の overlap 角 (deg)。レンズ角 AA 境界の 1 px すき間を埋めるためレンズ側に食い込ませる。</summary>
     private const float TwofoldFinOverlapDeg = 6f;
@@ -101,6 +109,10 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
     private const float StereonetThreefoldApexDeg    = 80f;    // 3 回軸 二等辺三角の apex 角 (80°-50°-50°)
     private const float StereonetFinScale            = 0.8f;   // 2_1 螺旋 fin (円弧) の長さ倍率
     private const float StereonetDGlideArrowScale    = 1.2f;   // (260505Ch) 斜め d 映進アローを紙面垂直 d-glide の 1.2 倍にする。
+    private const int StereonetAxisInPlaneShift      = 3;      // (260505Ch) stereonet 上の 2/3 回軸を大円交点側へ寄せる in-plane 倍率。
+    private const int StereonetAxisDepthShift        = 2;
+    private const int StereonetMirrorInPlaneShift    = 2;      // (260505Ch) stereonet 補助/鏡映大円の視認性 shift 倍率。
+    private const int StereonetMirrorDepthShift      = 3;
 
     // 紙面平行 mirror corner bracket
     private const float CornerBracketArmLen = 22f;
@@ -108,6 +120,13 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
     private const float CornerBracketStep   = 8f;
     private const float CornerBracketCubicExtraGap = 15f; // (260505Cl) 立方晶系では紙面平行軸矢印と bracket が干渉するため、cell 角からさらに離す。
     private const float GlideArrowLineShorten = 5f;
+
+    // 高さラベル
+    private const float HeightLabelGapX = 1f;
+    private const float HeightLabelGapY = 2f;
+    private const float InPlaneAxisLabelGap = 1f;
+    private const float ParallelMirrorLabelGap = 2f;
+    private const float MinusFourHeightLabelRadiusScale = 0.5f; // (260505Ch) 立方晶 -4 の高さラベルを外接四角形より内側へ寄せる。
     #endregion
 
     #region context
@@ -322,7 +341,7 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
                 else if (absO == 3) DrawRotationPerp(ctx.G, ctx.Fill, ctx.White, pt, order, finCount, edgeStep, 3, ThreeFoldRadius);
                 else if (absO == 4) DrawRotationPerp(ctx.G, ctx.Fill, ctx.White, pt, order, finCount, edgeStep, 4, FourFoldRadius);
                 else if (absO == 6) DrawRotationPerp(ctx.G, ctx.Fill, ctx.White, pt, order, finCount, edgeStep, 6, SixFoldRadius);
-                if (label != null) DrawHeightLabel(ctx.G, ctx.Fill, pt, FourFoldRadius, label);
+                if (label != null) DrawHeightLabel(ctx.G, ctx.Fill, pt, FourFoldRadius, label, radiusScale: MinusFourHeightLabelRadiusScale); // (260505Ch)
             }
         }
     }
@@ -357,11 +376,13 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
         }
     }
 
-    /// <summary>(260505Cl) 点記号 (中心 pt、半径 symbolR) の右上に高さラベル h を描く。記号外側 + 1 px に左端、記号上 + 2 px に下端を合わせる。</summary>
-    private static void DrawHeightLabel(Graphics g, Brush fill, PointF pt, float symbolR, string h)
+    /// <summary>(260505Cl) 点記号 (中心 pt、半径 symbolR) の右上に高さラベル h を描く。記号外側 + 1 px に左端、記号上 + 2 px に下端を合わせる。
+    /// (260505Ch) radiusScale: ラベル位置算出に使う実効半径倍率。立方晶 -4 のように外接四角形の角が空いている記号は小さめにして記号寄りに引き寄せる。</summary>
+    private static void DrawHeightLabel(Graphics g, Brush fill, PointF pt, float symbolR, string h, float radiusScale = 1f)
     {
+        float r = symbolR * radiusScale;
         var sz = g.MeasureString(h, HeightLabelFont);
-        g.DrawString(h, HeightLabelFont, fill, pt.X + symbolR + 1, pt.Y - symbolR - sz.Height + 2);
+        g.DrawString(h, HeightLabelFont, fill, pt.X + r + HeightLabelGapX, pt.Y - r - sz.Height + HeightLabelGapY);
     }
     #endregion
 
@@ -744,7 +765,6 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
     {
         if (drafts.Count == 0) return;
         using var pen = new Pen(Color.Black, InPlaneAxisPenWidth);
-        using var brush = new SolidBrush(Color.Black);
         using var white = new SolidBrush(Color.White); // (260503Cl) -4 軸の白塗り平行四辺形 / 2/2_1 と並列時の labels には使わない。
         foreach (var group in drafts.Values
             .GroupBy(d => ((long)Math.Round(d.Anchor.X * 1000), (long)Math.Round(d.Anchor.Y * 1000),
@@ -805,11 +825,11 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
                 var tip = new PointF((float)(anchor.X + ArrowVisualTipOffset * d.OutUx), (float)(anchor.Y + ArrowVisualTipOffset * d.OutUy));
                 bool horiz = Math.Abs(d.OutUx) >= Math.Abs(d.OutUy);
                 float lx = horiz
-                    ? (d.OutUx >= 0 ? tip.X + 1 : tip.X - lbl.Width - 1)
+                    ? (d.OutUx >= 0 ? tip.X + InPlaneAxisLabelGap : tip.X - lbl.Width - InPlaneAxisLabelGap)
                     : tip.X - lbl.Width / 2;
                 float ly = horiz
                     ? tip.Y - lbl.Height / 2
-                    : (d.OutUy >= 0 ? tip.Y + 1 : tip.Y - lbl.Height - 1);
+                    : (d.OutUy >= 0 ? tip.Y + InPlaneAxisLabelGap : tip.Y - lbl.Height - InPlaneAxisLabelGap);
                 // (260502Cl) 同じ投影線上に複数軸 (2 / 2_1 並列) があるときは、ラベルが
                 // 隣接軸領域へはみ出さないよう、自軸側に寄せる (中心線 midline で clamp)。
                 if (horiz && oy != 0f)
@@ -822,7 +842,7 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
                     float midX = tip.X - ox;
                     lx = ox > 0 ? Math.Max(lx, midX) : Math.Min(lx, midX - lbl.Width);
                 }
-                g.DrawString(h, HeightLabelFont, brush, lx, ly);
+                g.DrawString(h, HeightLabelFont, fill, lx, ly); // (260505Ch) 呼び出し元の黒 brush を再利用。
             }
         }
     }
@@ -937,7 +957,6 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
         float vUx = (float)(c.Vert.X / vLen), vUy = (float)(c.Vert.Y / vLen);
         var apex0 = new PointF(c.TopLeft.X - offset * (hUx + vUx), c.TopLeft.Y - offset * (hUy + vUy));
         using var pen = new Pen(Color.Black, CornerBracketPenWidth);
-        using var brush = new SolidBrush(Color.Black);
 
         // (260503Ch) [ITA-D2], [ITA-D4] mirror は高さ 0 を優先、glide は方向ごとに低い高さを採用、e-glide (Ccce 等) は同高さの直交ペアを 1 個の bracket に統合。
         var symbols = new List<ParallelMirrorSymbol>();
@@ -1033,14 +1052,10 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
 
             g.DrawLine(pen, apex, hEnd);
             g.DrawLine(pen, apex, vEnd);
-            float minX = Math.Min(apex.X, Math.Min(hEnd.X, vEnd.X));
             float maxX = Math.Max(apex.X, Math.Max(hEnd.X, vEnd.X));
-            float maxY = Math.Max(apex.Y, Math.Max(hEnd.Y, vEnd.Y));
             foreach (var (tip, lineEndPt, ux, uy) in arrows)
             {
-                minX = Math.Min(minX, tip.X);
                 maxX = Math.Max(maxX, tip.X);
-                maxY = Math.Max(maxY, tip.Y);
                 g.DrawLine(pen, apex, lineEndPt);
                 DrawArrowhead(g, fill, tip, ux, uy);
             }
@@ -1049,9 +1064,9 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
             string lbl = HeightLabel(height);
             if (lbl == null) return; // (260503Ch) [ITA-D2] 高さ 0 は無標記、非ゼロ代表高さだけを表示する。
             var ls = g.MeasureString(lbl, HeightLabelFont);
-            float labelX = labelAtBottomLeft ? vEnd.X - ls.Width - 2 : maxX + 2;
-            float labelY = labelAtBottomLeft ? vEnd.Y + 2            : ((apex.Y + hEnd.Y) - ls.Height) / 2;
-            g.DrawString(lbl, HeightLabelFont, brush, labelX, labelY);
+            float labelX = labelAtBottomLeft ? vEnd.X - ls.Width - ParallelMirrorLabelGap : maxX + ParallelMirrorLabelGap;
+            float labelY = labelAtBottomLeft ? vEnd.Y + ParallelMirrorLabelGap            : ((apex.Y + hEnd.Y) - ls.Height) / 2;
+            g.DrawString(lbl, HeightLabelFont, fill, labelX, labelY); // (260505Ch) 呼び出し元の黒 brush を再利用。
         }
 
         static bool HasInPlaneGlide((double Height, bool Glide, double GlideSx, double GlideSy) m)
@@ -1331,14 +1346,14 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
 
         for (int i = 0; ; i++)
         {
-            float baseT = 3f + i * DGlidePatternPitch;
-            if (baseT >= len) break;
-            Dot(baseT);
-            Dash(baseT + 6f, baseT + 6f + DGlidePatternDashLen);
-            Dot(baseT + 19f);
-            Dash(baseT + 25f, baseT + 25f + DGlidePatternDashLen);
-            Dot(baseT + 38f);
-            Arrow(baseT + 44f, baseT + 44f + DGlidePatternArrowLen);
+            float baseT = i * DGlidePatternPitch; // (260505Ch) パターン内 offset は冒頭定数へ集約。
+            if (baseT + DGlidePatternDot1Offset >= len) break;
+            Dot(baseT + DGlidePatternDot1Offset);
+            Dash(baseT + DGlidePatternDash1Offset, baseT + DGlidePatternDash1Offset + DGlidePatternDashLen);
+            Dot(baseT + DGlidePatternDot2Offset);
+            Dash(baseT + DGlidePatternDash2Offset, baseT + DGlidePatternDash2Offset + DGlidePatternDashLen);
+            Dot(baseT + DGlidePatternDot3Offset);
+            Arrow(baseT + DGlidePatternArrowOffset, baseT + DGlidePatternArrowOffset + DGlidePatternArrowLen);
         }
 
         PointF Pt(double t) => new((float)(start.X + ux * t), (float)(start.Y + uy * t));
@@ -1416,12 +1431,9 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
     private static void DrawCubicStereonetInsets(ElementsContext ctx, Crystallography.SymmetryElementsTable table,
                                                  ProjectionAxis projAxis, (double Sx, double Sy)[] positions)
     {
-        var diagonalMirrors = new List<MirrorPlane>();
-        foreach (var mp in table.MirrorPlanes)
-        {
-            if (IsAxisPerpendicularToProjection(mp.Normal, projAxis) || IsAxisInPlane(mp.Normal, projAxis)) continue;
-            diagonalMirrors.Add(mp);
-        }
+        var diagonalMirrors = table.MirrorPlanes
+            .Where(mp => IsAxisDiagonalToProjection(mp.Normal, projAxis))
+            .ToList(); // (260505Ch) perpendicular/in-plane の否定形ではなく diagonal 判定へ統一。
         // 260505Cl 旧: 斜め 3 回軸のみを収集していたため Pm-3m などで face-diagonal 2 回軸 (<110>系) が
         //              cell-side 描画でスキップされる一方 inset にも乗らず欠落していた。
         // var diagonalThreefolds = new List<RotationAxis>();
@@ -1433,13 +1445,9 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
         // }
         // 260505Cl: ITA Vol.A Pm-3m 等で inset に出ている斜め 2 回軸 (face-diagonal) も拾う。
         // proper rotation 軸 (Order 2/3) のみ。-3 等の rotoinversion は cell-side draw と同様に除外。
-        var diagonalAxes = new List<RotationAxis>();
-        foreach (var ax in table.RotationAxes)
-        {
-            if (ax.Order is not (2 or 3)) continue;
-            if (!IsAxisDiagonalToProjection(ax.Direction, projAxis)) continue;
-            diagonalAxes.Add(ax);
-        }
+        var diagonalAxes = table.RotationAxes
+            .Where(ax => ax.Order is 2 or 3 && IsAxisDiagonalToProjection(ax.Direction, projAxis))
+            .ToList(); // (260505Ch) cell-side の斜め軸判定と同じ条件に揃える。
 
         float radius = CubicStereonetInsetRadius;
         using var outlinePen      = new Pen(CellOutlineColor, CellOutlinePenWidth);
@@ -1478,9 +1486,9 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
                 list.Add(CenteredGlideVector(mp.Glide.U, mp.Glide.V, mp.Glide.W)); // (260506Cl) `- Math.Round` 3 行を CenterMod1 ベースの helper に置換。
             }
             // (h,k,l) 単位で style を確定。
-            var siteMirrors = new List<((int H, int K, int L) Hkl, StereonetGlideStyle Style)>();
-            foreach (var (hkl, glides) in groupedGlides)
-                siteMirrors.Add((hkl, ResolveStereonetGroupStyle(glides, projAxis)));
+            var siteMirrors = groupedGlides
+                .Select(group => (Hkl: group.Key, Style: ResolveStereonetGroupStyle(group.Value, projAxis)))
+                .ToList(); // (260505Ch) grouped glides → site mirror style の配線を一段に整理。
 
             // 260505Cl: Order を含めて 2 回軸/3 回軸を同列に dedup。Screw も保持し DrawStereonetTwofold に渡す。
             // (260505Cl 整理) 立方晶高対称群の stereonet 中心を通る 3 回軸は <111> proper のみで、3_1/3_2 螺旋は現れないため FinCount/EdgeStep は持たない。
@@ -1536,13 +1544,8 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
             if (Math.Abs(centered.X) + Math.Abs(centered.Y) + Math.Abs(centered.Z) < 1e-6) { hasPure = true; continue; }
             bool found = false;
             foreach (var d in distinctNonZero)
-            {
-                // if ((Math.Abs(d.U - g.U) + Math.Abs(d.V - g.V) + Math.Abs(d.W - g.W) < 1e-6) ||
-                //     (Math.Abs(d.U + g.U) + Math.Abs(d.V + g.V) + Math.Abs(d.W + g.W) < 1e-6))
-                // { found = true; break; }
                 if (SameGlideVector((d.U, d.V, d.W), centered))
                 { found = true; break; }
-            }
             if (!found) distinctNonZero.Add((centered.X, centered.Y, centered.Z));
         }
         if (hasPure) return StereonetGlideStyle.Mirror;
@@ -1655,7 +1658,7 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
                                              (int U, int V, int W) dir, bool screw = false)
     {
         // var displayDir = (dir.U * 2, dir.V * 2, dir.W); // 旧: <011>→<021> shift (mirror 大円が (h,k,2l) shift だった頃)
-        var displayDir = (dir.U * 3, dir.V * 3, dir.W * 2); // C 投影での <011>→<023> shift。mirror 大円の (2h,2k,3l) shift と整合。
+        var displayDir = (dir.U * StereonetAxisInPlaneShift, dir.V * StereonetAxisInPlaneShift, dir.W * StereonetAxisDepthShift); // C 投影での <011>→<023> shift。mirror 大円の shift と整合。
         var pt = StereonetPosition(stereonetCenter, r, displayDir, out double sx, out double sy);
         float rotationDeg = Math.Abs(sx) + Math.Abs(sy) < 1e-9
             ? 0f
@@ -1677,7 +1680,7 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
                                                (int U, int V, int W) dir)
     {
         // var displayDir = (dir.U * 2, dir.V * 2, dir.W); // 旧: <111>→<221> shift (mirror が (h,k,2l) shift で大円交点が [221] だった頃)
-        var displayDir = (dir.U * 3, dir.V * 3, dir.W * 2); // <111>→<332> shift。mirror 大円 3 本の交点と一致。
+        var displayDir = (dir.U * StereonetAxisInPlaneShift, dir.V * StereonetAxisInPlaneShift, dir.W * StereonetAxisDepthShift); // <111>→<332> shift。mirror 大円 3 本の交点と一致。
         var pt = StereonetPosition(stereonetCenter, r, displayDir, out _, out _);
         // float overallScale = r / DiagonalStereonetRadius; // 260505Cl 旧: 輪郭半径と一緒に三角もスケール
         float overallScale = DiagonalStereonetSymbolScale; // 260505Cl: 輪郭 1.2 倍に追従させずシンボルは旧値を保持
@@ -1716,7 +1719,9 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
     {
         // 260505Cl: 視認性のため (h,k,l) → (2h,2k,3l) shift。<011>→<023> 等で apex を外側へ寄せる。
         // 結晶 (h,k,l) → screen 法線 (Sx=k, Sy=h, Sz=l)。C 投影前提。
-        double nx = hkl.K * 2, ny = hkl.H * 2, nz = hkl.L * 3;
+        double nx = hkl.K * StereonetMirrorInPlaneShift,
+               ny = hkl.H * StereonetMirrorInPlaneShift,
+               nz = hkl.L * StereonetMirrorDepthShift;
         double norm = Math.Sqrt(nx * nx + ny * ny + nz * nz);
         isDiameter = false; dx = dy = 0; gcCx = gcCy = gcR = 0;
         if (norm < 1e-12) return false;
@@ -1746,28 +1751,24 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
                 center.X - r * (float)dx, center.Y - r * (float)dy);
             return;
         }
-        var state = g.Save();
-        try
+        // 旧: clip を使っていた時代の GraphicsState 保存は不要。(260505Ch)
+        double dcx = center.X - gcCx, dcy = center.Y - gcCy;
+        double d = Math.Sqrt(dcx * dcx + dcy * dcy);
+        if (d < 1e-6 || gcR < 1e-6)
         {
-            // 旧: 大きな楕円を stereonet 円で clip していたため、dash phase が見えている弧の始端ではなく楕円の 0° から始まっていた。
-            // using var clipPath = new GraphicsPath();
-            // clipPath.AddEllipse(center.X - r, center.Y - r, 2 * r, 2 * r);
-            // g.SetClip(clipPath, CombineMode.Intersect);
-            // g.DrawEllipse(pen, gcCx - gcR, gcCy - gcR, 2 * gcR, 2 * gcR);
-            double dcx = center.X - gcCx, dcy = center.Y - gcCy;
-            double d = Math.Sqrt(dcx * dcx + dcy * dcy);
-            if (d < 1e-6 || gcR < 1e-6)
-            {
-                g.DrawEllipse(pen, gcCx - gcR, gcCy - gcR, 2 * gcR, 2 * gcR);
-                return;
-            }
-            double apexAngle = Math.Atan2(dcy, dcx);
-            double halfSweep = Math.Acos(Math.Clamp(d / gcR, -1.0, 1.0));
-            float startDeg = (float)((apexAngle - halfSweep) * 180.0 / Math.PI);
-            float sweepDeg = (float)(2.0 * halfSweep * 180.0 / Math.PI);
-            g.DrawArc(pen, gcCx - gcR, gcCy - gcR, 2 * gcR, 2 * gcR, startDeg, sweepDeg); // (260505Ch) 見えている弧そのものを描き、dash-dot の位相を始端に揃える。
+            g.DrawEllipse(pen, gcCx - gcR, gcCy - gcR, 2 * gcR, 2 * gcR);
+            return;
         }
-        finally { g.Restore(state); }
+        // 旧: 大きな楕円を stereonet 円で clip していたため、dash phase が見えている弧の始端ではなく楕円の 0° から始まっていた。
+        // using var clipPath = new GraphicsPath();
+        // clipPath.AddEllipse(center.X - r, center.Y - r, 2 * r, 2 * r);
+        // g.SetClip(clipPath, CombineMode.Intersect);
+        // g.DrawEllipse(pen, gcCx - gcR, gcCy - gcR, 2 * gcR, 2 * gcR);
+        double apexAngle = Math.Atan2(dcy, dcx);
+        double halfSweep = Math.Acos(Math.Clamp(d / gcR, -1.0, 1.0));
+        float startDeg = (float)((apexAngle - halfSweep) * 180.0 / Math.PI);
+        float sweepDeg = (float)(2.0 * halfSweep * 180.0 / Math.PI);
+        g.DrawArc(pen, gcCx - gcR, gcCy - gcR, 2 * gcR, 2 * gcR, startDeg, sweepDeg); // (260505Ch) 見えている弧そのものを描き、dash-dot の位相を始端に揃える。
     }
 
     /// <summary>(cx,cy) 中心・半径 r の単位 stereonet (上半球を南極から赤道面へ投影) 上に、
@@ -1800,8 +1801,8 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
             float dxp = centroidX - stereonetCenter.X, dyp = centroidY - stereonetCenter.Y;
             if (dxp * dxp + dyp * dyp > r * r) continue;
             double tx = -Math.Sin(a), ty = Math.Cos(a);
-            PointF tip = new((float)(centroidX + tx * ArrowHeadLen * StereonetDGlideArrowScale * 2.0 / 3.0),
-                             (float)(centroidY + ty * ArrowHeadLen * StereonetDGlideArrowScale * 2.0 / 3.0)); // (260505Ch) DrawArrowhead は tip 指定なので、1.2 倍矢印の重心位置から逆算する。
+            PointF tip = new((float)(centroidX + tx * ArrowHeadLen * StereonetDGlideArrowScale * ArrowHeadCentroidToTipFactor),
+                             (float)(centroidY + ty * ArrowHeadLen * StereonetDGlideArrowScale * ArrowHeadCentroidToTipFactor)); // (260505Ch) DrawArrowhead は tip 指定なので、1.2 倍矢印の重心位置から逆算する。
             // DrawArrowhead(g, fill, new PointF(px, py), -Math.Sin(a), Math.Cos(a), StereonetDGlideArrowScale); // 旧: stereonet d-glide 矢印だけ 1.5 倍。
             // DrawArrowhead(g, fill, tip, tx, ty); // 旧: 紙面垂直 d-glide と同じ矢印サイズに揃える。
             DrawArrowhead(g, fill, tip, tx, ty, StereonetDGlideArrowScale); // (260505Ch)

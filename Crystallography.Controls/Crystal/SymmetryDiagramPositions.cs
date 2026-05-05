@@ -15,8 +15,7 @@ public class SymmetryDiagramPositions : SymmetryDiagramCommon
 
     /// <summary>(260502Cl) 一般点 ○ の半径をセル寸法 (a, b の短い方) に対する比率で指定。RenderGeneralPositions で実 pixel 値 (CircleRadius) に換算される。</summary>
     private const double CircleRadiusFraction = 0.0225;
-    /// <summary>(260502Cl) 一般点 ○ の実半径 (pixel)。RenderGeneralPositions で CircleRadiusFraction × cellSize から再計算され、本クラスのクラスタ化・split 線・ラベル配置などから参照される。フィールド初期値はセル算出前のフォールバック。</summary>
-    private static float CircleRadius = 4.25f;
+    // private static float CircleRadius = 4.25f; // 旧: 描画ごとの半径を static 一時状態で共有していた。
 
     /// <summary>一般点 ○ の縁線および split 円の縦区切り線の線幅。</summary>
     private const float CirclePenWidth     = 1.2f;
@@ -97,7 +96,7 @@ public class SymmetryDiagramPositions : SymmetryDiagramCommon
             Math.Sqrt(layout.Horz.X * layout.Horz.X + layout.Horz.Y * layout.Horz.Y),
             Math.Sqrt(layout.Vert.X * layout.Vert.X + layout.Vert.Y * layout.Vert.Y));
         float scale = isCubic ? CubicScale : 1f;
-        CircleRadius = (float)(CircleRadiusFraction * cellSize) * scale;
+        float circleRadius = (float)(CircleRadiusFraction * cellSize) * scale; // (260505Ch) 描画ごとの値として渡し、static 状態を持たない。
         var labelFont = isCubic ? CubicClusterLabelFont : ClusterLabelFont;
         var (tx, ty, tz) = GetTestPoint(sym);
         // ProjectionAxis enum の値 (A=0, B=1, C=2) と AxisBrushes/Pens の index、変数 "xyz" の文字位置はすべて一致。
@@ -108,7 +107,7 @@ public class SymmetryDiagramPositions : SymmetryDiagramCommon
             CollectPlacements(placements, layout, p, proj, tx, ty, tz, displayMaxS);
         // 旧: quadrantClip による後段の表示範囲制限は廃止。
         if (isCubic) DrawCubicTriangles(g, layout, proj, allPoints, tx, ty, tz, displayMaxS);
-        DrawClusters(g, placements, labelFont, scale, projAxisIdx);
+        DrawClusters(g, placements, labelFont, scale, projAxisIdx, circleRadius);
     }
     #endregion
 
@@ -222,21 +221,22 @@ public class SymmetryDiagramPositions : SymmetryDiagramCommon
     /// <summary>(260503Cl) クラスタごとに代表軸 (a/b/c = 0/1/2) を決め、円縁・コンマ点・ラベル文字をその軸の結晶軸色で着色して描画する。
     /// クラスタ内の proper / improper の各ラベル末尾 (x/y/z) から軸 index を抽出し、最初に見つかったものを採用。
     /// 全ラベルが暗黙形式 (=変数文字なし) なら投影軸 index (= projAxisIdx) を fallback に使う。</summary>
-    private static void DrawClusters(Graphics g, List<Placement> placements, Font labelFont, float scale, int projAxisIdx)
+    private static void DrawClusters(Graphics g, List<Placement> placements, Font labelFont, float scale, int projAxisIdx,
+                                     float circleRadius)
     {
         using var fill = new SolidBrush(Color.White);
         var sizes = new Dictionary<string, SizeF>();
         foreach (var p in placements)
             if (!sizes.ContainsKey(p.Label)) sizes[p.Label] = g.MeasureString(p.Label, labelFont);
-        var infos = BuildClusters(placements);
+        var infos = BuildClusters(placements, circleRadius);
         float dotR = CommaDotR * scale;
         var axes = new int[infos.Count];
         for (int i = 0; i < infos.Count; i++)
             axes[i] = ClusterAxisIndex(infos[i], projAxisIdx);
         for (int i = 0; i < infos.Count; i++)
-            DrawClusterCircle(g, infos[i], AxisPens[axes[i]], fill, AxisBrushes[axes[i]], dotR);
+            DrawClusterCircle(g, infos[i], AxisPens[axes[i]], fill, AxisBrushes[axes[i]], dotR, circleRadius);
         for (int i = 0; i < infos.Count; i++)
-            DrawClusterLabels(g, infos, i, sizes, labelFont, AxisBrushes[axes[i]]);
+            DrawClusterLabels(g, infos, i, sizes, labelFont, AxisBrushes[axes[i]], circleRadius);
     }
 
     private static int ClusterAxisIndex(ClusterInfo info, int fallback)
@@ -248,9 +248,9 @@ public class SymmetryDiagramPositions : SymmetryDiagramCommon
 
     /// <summary>近接する Placement (画面座標 ≤ tol) を 1 つの cluster にまとめる。
     /// 走査順は前から後ろへ greedy で、未割当の点を seed にしてその近傍を吸収。tol = CircleRadius × ClusterTolerance。</summary>
-    private static List<ClusterInfo> BuildClusters(List<Placement> placements)
+    private static List<ClusterInfo> BuildClusters(List<Placement> placements, float circleRadius)
     {
-        float tol = CircleRadius * ClusterTolerance;
+        float tol = circleRadius * ClusterTolerance;
         var assigned = new bool[placements.Count];
         var infos = new List<ClusterInfo>();
         for (int s = 0; s < placements.Count; s++)
@@ -274,16 +274,17 @@ public class SymmetryDiagramPositions : SymmetryDiagramCommon
             => cluster.Where(m => m.Mirrored == mirrored).Select(m => m.Label).Distinct().OrderBy(l => l).ToList();
     }
 
-    private static void DrawClusterCircle(Graphics g, ClusterInfo info, Pen pen, Brush fill, Brush commaBrush, float dotR)
+    private static void DrawClusterCircle(Graphics g, ClusterInfo info, Pen pen, Brush fill, Brush commaBrush, float dotR,
+                                          float circleRadius)
     {
         float cx = info.Cx, cy = info.Cy;
-        g.FillEllipse(fill, cx - CircleRadius, cy - CircleRadius, 2 * CircleRadius, 2 * CircleRadius);
-        g.DrawEllipse(pen, cx - CircleRadius, cy - CircleRadius, 2 * CircleRadius, 2 * CircleRadius);
+        g.FillEllipse(fill, cx - circleRadius, cy - circleRadius, 2 * circleRadius, 2 * circleRadius);
+        g.DrawEllipse(pen, cx - circleRadius, cy - circleRadius, 2 * circleRadius, 2 * circleRadius);
 
         if (info.Split)
         {
-            g.DrawLine(pen, cx, cy - CircleRadius, cx, cy + CircleRadius);
-            g.FillEllipse(commaBrush, cx + CircleRadius * CommaSplitOffsetX - dotR, cy - dotR, 2 * dotR, 2 * dotR);
+            g.DrawLine(pen, cx, cy - circleRadius, cx, cy + circleRadius);
+            g.FillEllipse(commaBrush, cx + circleRadius * CommaSplitOffsetX - dotR, cy - dotR, 2 * dotR, 2 * dotR);
         }
         else if (info.HasImproper)
             g.FillEllipse(commaBrush, cx - dotR, cy - dotR, 2 * dotR, 2 * dotR);
@@ -291,7 +292,7 @@ public class SymmetryDiagramPositions : SymmetryDiagramCommon
 
     /// <summary>クラスタのラベルを近隣の円との重なりが最小の隅に描く。Split は左右固定で上下選択、単独は 4 隅自由。</summary>
     private static void DrawClusterLabels(Graphics g, List<ClusterInfo> infos, int selfIdx,
-                                          Dictionary<string, SizeF> sizes, Font font, Brush brush)
+                                          Dictionary<string, SizeF> sizes, Font font, Brush brush, float circleRadius)
     {
         var info = infos[selfIdx];
         if (info.Split)
@@ -300,12 +301,12 @@ public class SymmetryDiagramPositions : SymmetryDiagramCommon
             (Corner L, Corner R) bestPair = SplitLabelCornerPairs[0];
             foreach (var pair in SplitLabelCornerPairs)
             {
-                int o = CountOverlaps(infos, selfIdx, info.Proper, pair.L, sizes)
-                      + CountOverlaps(infos, selfIdx, info.Improper, pair.R, sizes);
+                int o = CountOverlaps(infos, selfIdx, info.Proper, pair.L, sizes, circleRadius)
+                      + CountOverlaps(infos, selfIdx, info.Improper, pair.R, sizes, circleRadius);
                 if (o < best) { best = o; bestPair = pair; if (o == 0) break; }
             }
-            StackLabelsAt(g, font, brush, info.Proper, bestPair.L, info.Cx, info.Cy, sizes);
-            StackLabelsAt(g, font, brush, info.Improper, bestPair.R, info.Cx, info.Cy, sizes);
+            StackLabelsAt(g, font, brush, info.Proper, bestPair.L, info.Cx, info.Cy, sizes, circleRadius);
+            StackLabelsAt(g, font, brush, info.Improper, bestPair.R, info.Cx, info.Cy, sizes, circleRadius);
         }
         else
         {
@@ -315,22 +316,23 @@ public class SymmetryDiagramPositions : SymmetryDiagramCommon
             Corner bestCorner = LabelCorners[0];
             foreach (var c in LabelCorners)
             {
-                int o = CountOverlaps(infos, selfIdx, labels, c, sizes);
+                int o = CountOverlaps(infos, selfIdx, labels, c, sizes, circleRadius);
                 if (o < best) { best = o; bestCorner = c; if (o == 0) break; }
             }
-            StackLabelsAt(g, font, brush, labels, bestCorner, info.Cx, info.Cy, sizes);
+            StackLabelsAt(g, font, brush, labels, bestCorner, info.Cx, info.Cy, sizes, circleRadius);
         }
     }
 
     /// <summary>指定 corner にラベル列を置いた矩形と他クラスタの円との重なり数を返す。</summary>
-    private static int CountOverlaps(List<ClusterInfo> infos, int selfIdx, List<string> labels, Corner corner, Dictionary<string, SizeF> sizes)
+    private static int CountOverlaps(List<ClusterInfo> infos, int selfIdx, List<string> labels, Corner corner,
+                                     Dictionary<string, SizeF> sizes, float circleRadius)
     {
         if (labels.Count == 0) return 0;
         var self = infos[selfIdx];
         bool isUpper = corner is Corner.UR or Corner.UL, isLeft = corner is Corner.UL or Corner.LL;
         float w = labels.Max(l => sizes[l].Width), h = labels.Sum(l => sizes[l].Height);
         float rectL = isLeft ? self.Cx - w - LabelGapH : self.Cx + LabelGapH;
-        float rectT = isUpper ? self.Cy - CircleRadius - h + LabelGapV : self.Cy + CircleRadius - LabelGapV;
+        float rectT = isUpper ? self.Cy - circleRadius - h + LabelGapV : self.Cy + circleRadius - LabelGapV;
         float rectR = rectL + w, rectB = rectT + h;
         int count = 0;
         for (int j = 0; j < infos.Count; j++)
@@ -338,13 +340,14 @@ public class SymmetryDiagramPositions : SymmetryDiagramCommon
             if (j == selfIdx) continue;
             float dx = Math.Max(rectL, Math.Min(infos[j].Cx, rectR)) - infos[j].Cx;
             float dy = Math.Max(rectT, Math.Min(infos[j].Cy, rectB)) - infos[j].Cy;
-            if (dx * dx + dy * dy < CircleRadius * CircleRadius) count++;
+            if (dx * dx + dy * dy < circleRadius * circleRadius) count++;
         }
         return count;
     }
 
     private static void StackLabelsAt(Graphics g, Font font, Brush brush, List<string> labels,
-                                      Corner corner, float cx, float cy, Dictionary<string, SizeF> sizes)
+                                      Corner corner, float cx, float cy, Dictionary<string, SizeF> sizes,
+                                      float circleRadius)
     {
         if (labels.Count == 0) return;
         bool isUpper = corner is Corner.UR or Corner.UL, isLeft = corner is Corner.UL or Corner.LL;
@@ -352,7 +355,7 @@ public class SymmetryDiagramPositions : SymmetryDiagramCommon
         {
             var sz = sizes[labels[i]];
             float x = isLeft ? cx - sz.Width - LabelGapH : cx + LabelGapH;
-            float y = isUpper ? cy - CircleRadius - (i + 1) * sz.Height + LabelGapV : cy + CircleRadius + i * sz.Height - LabelGapV;
+            float y = isUpper ? cy - circleRadius - (i + 1) * sz.Height + LabelGapV : cy + circleRadius + i * sz.Height - LabelGapV;
             int idx = LabelAxisIndex(labels[i]);
             g.DrawString(labels[i], font, idx >= 0 ? AxisBrushes[idx] : brush, x, y);
         }

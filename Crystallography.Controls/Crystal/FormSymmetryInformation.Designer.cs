@@ -32,7 +32,7 @@
             panel4 = new System.Windows.Forms.Panel();
             graphicsBoxSymmetryElements = new GraphicsBox(components);
             flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
-            this.buttonCopyElements = new System.Windows.Forms.Button();
+            buttonCopyElements = new System.Windows.Forms.Button();
             panel3 = new System.Windows.Forms.Panel();
             graphicsBoxGeneralPositions = new GraphicsBox(components);
             flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
@@ -44,7 +44,7 @@
             labelLaTex3 = new LabelLaTeX();
             numericBoxPositionC = new NumericBox();
             radioButtonBmp = new System.Windows.Forms.RadioButton();
-            radioButtonWmf = new System.Windows.Forms.RadioButton();
+            radioButtonEmf = new System.Windows.Forms.RadioButton();
             tabControl = new System.Windows.Forms.TabControl();
             tabPage1 = new System.Windows.Forms.TabPage();
             numericBoxAnglePlanes = new NumericBox();
@@ -228,7 +228,7 @@
             tableLayoutPanel1.RowCount = 1;
             tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            tableLayoutPanel1.Size = new System.Drawing.Size(1020, 460);
+            tableLayoutPanel1.Size = new System.Drawing.Size(1020, 560);
             tableLayoutPanel1.TabIndex = 5;
             // 
             // panel4
@@ -238,7 +238,7 @@
             panel4.Dock = System.Windows.Forms.DockStyle.Fill;
             panel4.Location = new System.Drawing.Point(3, 3);
             panel4.Name = "panel4";
-            panel4.Size = new System.Drawing.Size(504, 454);
+            panel4.Size = new System.Drawing.Size(504, 554);
             panel4.TabIndex = 9;
             // 
             // graphicsBoxSymmetryElements
@@ -248,14 +248,14 @@
             graphicsBoxSymmetryElements.Fonts = new System.Drawing.Font("Segoe UI Variable Text", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
             graphicsBoxSymmetryElements.Location = new System.Drawing.Point(0, 26);
             graphicsBoxSymmetryElements.Name = "graphicsBoxSymmetryElements";
-            graphicsBoxSymmetryElements.Size = new System.Drawing.Size(504, 428);
+            graphicsBoxSymmetryElements.Size = new System.Drawing.Size(504, 528);
             graphicsBoxSymmetryElements.TabIndex = 0;
             graphicsBoxSymmetryElements.TabStop = false;
             // 
             // flowLayoutPanel2
             // 
             flowLayoutPanel2.AutoSize = true;
-            flowLayoutPanel2.Controls.Add(this.buttonCopyElements);
+            flowLayoutPanel2.Controls.Add(buttonCopyElements);
             flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Top;
             flowLayoutPanel2.Location = new System.Drawing.Point(0, 0);
             flowLayoutPanel2.Margin = new System.Windows.Forms.Padding(0);
@@ -265,17 +265,17 @@
             // 
             // buttonCopyElements
             // 
-            this.buttonCopyElements.AutoSize = true;
-            this.buttonCopyElements.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.buttonCopyElements.Font = new System.Drawing.Font("Segoe UI Variable Text", 9F);
-            this.buttonCopyElements.Location = new System.Drawing.Point(0, 0);
-            this.buttonCopyElements.Margin = new System.Windows.Forms.Padding(0, 0, 3, 0);
-            this.buttonCopyElements.Name = "buttonCopyElements";
-            this.buttonCopyElements.Size = new System.Drawing.Size(44, 26);
-            this.buttonCopyElements.TabIndex = 0;
-            this.buttonCopyElements.Text = "Copy";
-            this.buttonCopyElements.UseVisualStyleBackColor = true;
-            this.buttonCopyElements.Click += this.buttonCopySymmetryElements_Click;
+            buttonCopyElements.AutoSize = true;
+            buttonCopyElements.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            buttonCopyElements.Font = new System.Drawing.Font("Segoe UI Variable Text", 9F);
+            buttonCopyElements.Location = new System.Drawing.Point(0, 0);
+            buttonCopyElements.Margin = new System.Windows.Forms.Padding(0, 0, 3, 0);
+            buttonCopyElements.Name = "buttonCopyElements";
+            buttonCopyElements.Size = new System.Drawing.Size(44, 26);
+            buttonCopyElements.TabIndex = 0;
+            buttonCopyElements.Text = "Copy";
+            buttonCopyElements.UseVisualStyleBackColor = true;
+            buttonCopyElements.Click += buttonCopySymmetryElements_Click;
             // 
             // panel3
             // 
@@ -284,7 +284,7 @@
             panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             panel3.Location = new System.Drawing.Point(513, 3);
             panel3.Name = "panel3";
-            panel3.Size = new System.Drawing.Size(504, 454);
+            panel3.Size = new System.Drawing.Size(504, 554);
             panel3.TabIndex = 8;
             // 
             // graphicsBoxGeneralPositions
@@ -294,7 +294,7 @@
             graphicsBoxGeneralPositions.Fonts = new System.Drawing.Font("Segoe UI Variable Text", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
             graphicsBoxGeneralPositions.Location = new System.Drawing.Point(0, 26);
             graphicsBoxGeneralPositions.Name = "graphicsBoxGeneralPositions";
-            graphicsBoxGeneralPositions.Size = new System.Drawing.Size(504, 428);
+            graphicsBoxGeneralPositions.Size = new System.Drawing.Size(504, 528);
             graphicsBoxGeneralPositions.TabIndex = 0;
             graphicsBoxGeneralPositions.TabStop = false;
             // 
@@ -438,7 +438,7 @@
             // 
             radioButtonBmp.AutoSize = true;
             radioButtonBmp.Font = new System.Drawing.Font("Segoe UI Variable Text", 9F);
-            radioButtonBmp.Location = new System.Drawing.Point(356, 0);
+            radioButtonBmp.Location = new System.Drawing.Point(353, 0);
             radioButtonBmp.Margin = new System.Windows.Forms.Padding(0);
             radioButtonBmp.Name = "radioButtonBmp";
             radioButtonBmp.Size = new System.Drawing.Size(49, 20);
@@ -447,20 +447,20 @@
             radioButtonBmp.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             radioButtonBmp.UseVisualStyleBackColor = true;
             // 
-            // radioButtonWmf
+            // radioButtonEmf
             // 
-            radioButtonWmf.AutoSize = true;
-            radioButtonWmf.Checked = true;
-            radioButtonWmf.Font = new System.Drawing.Font("Segoe UI Variable Text", 9F);
-            radioButtonWmf.Location = new System.Drawing.Point(308, 0);
-            radioButtonWmf.Margin = new System.Windows.Forms.Padding(0);
-            radioButtonWmf.Name = "radioButtonWmf";
-            radioButtonWmf.Size = new System.Drawing.Size(48, 20);
-            radioButtonWmf.TabIndex = 1;
-            radioButtonWmf.TabStop = true;
-            radioButtonWmf.Text = "wmf";
-            radioButtonWmf.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            radioButtonWmf.UseVisualStyleBackColor = true;
+            radioButtonEmf.AutoSize = true;
+            radioButtonEmf.Checked = true;
+            radioButtonEmf.Font = new System.Drawing.Font("Segoe UI Variable Text", 9F);
+            radioButtonEmf.Location = new System.Drawing.Point(308, 0);
+            radioButtonEmf.Margin = new System.Windows.Forms.Padding(0);
+            radioButtonEmf.Name = "radioButtonEmf";
+            radioButtonEmf.Size = new System.Drawing.Size(45, 20);
+            radioButtonEmf.TabIndex = 1;
+            radioButtonEmf.TabStop = true;
+            radioButtonEmf.Text = "emf";
+            radioButtonEmf.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            radioButtonEmf.UseVisualStyleBackColor = true;
             // 
             // tabControl
             // 
@@ -1958,10 +1958,10 @@
             flowLayoutPanel4.Controls.Add(radioButtonDirectionB);
             flowLayoutPanel4.Controls.Add(radioButtonDirectionC);
             flowLayoutPanel4.Controls.Add(label12);
-            flowLayoutPanel4.Controls.Add(radioButtonWmf);
+            flowLayoutPanel4.Controls.Add(radioButtonEmf);
             flowLayoutPanel4.Controls.Add(radioButtonBmp);
             flowLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Bottom;
-            flowLayoutPanel4.Location = new System.Drawing.Point(4, 643);
+            flowLayoutPanel4.Location = new System.Drawing.Point(4, 743);
             flowLayoutPanel4.Margin = new System.Windows.Forms.Padding(0);
             flowLayoutPanel4.Name = "flowLayoutPanel4";
             flowLayoutPanel4.Size = new System.Drawing.Size(1020, 20);
@@ -2238,7 +2238,7 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
         private System.Windows.Forms.Button buttonCopyElements;
         private System.Windows.Forms.RadioButton radioButtonBmp;
-        private System.Windows.Forms.RadioButton radioButtonWmf;
+        private System.Windows.Forms.RadioButton radioButtonEmf;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
         private System.Windows.Forms.Button buttonCopyPositions;
         private LabelLaTeX labelLaTex1;

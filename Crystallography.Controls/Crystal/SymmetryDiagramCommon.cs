@@ -29,6 +29,8 @@ public abstract class SymmetryDiagramCommon
     /// <summary>(260505Cl 整理) <see cref="DrawUpperLeftQuadrantLabel"/> の左上ラベルのオフセットとフォント。</summary>
     private const float QuadrantLabelOffset = 4f;
     private static readonly Font QuadrantLabelFont = new("Segoe UI", 8f);
+    /// <summary>(260505Ch) セル軸ラベル ("o", a, b, c) とセル枠の隙間 (pixel)。</summary>
+    private const float AxisLabelGap = 2f;
 
     //----------------------------------------------------------------------
     // 単位胞 (DrawCellAndAxes) の枠線・補助線
@@ -216,13 +218,12 @@ public abstract class SymmetryDiagramCommon
         // (260505Cl) showAxisLabels=false で軸ラベルをスキップ。対称要素図ではラベルを出さず、一般位置図側だけで表示する。
         if (!showAxisLabels) return;
         using var brush = new SolidBrush(Color.Black);
-        const float gap = 2f;
         var oSz = g.MeasureString("o", AxisLabelFont);
         var hSz = g.MeasureString(proj.HorzLabel, AxisLabelFont);
         var vSz = g.MeasureString(proj.VertLabel, AxisLabelFont);
-        g.DrawString("o", AxisLabelFont, brush, c.TopLeft.X - oSz.Width - gap, c.TopLeft.Y - oSz.Height - gap);
-        g.DrawString(proj.HorzLabel, AxisLabelFont, brush, tr.X + gap, tr.Y - hSz.Height - gap);
-        g.DrawString(proj.VertLabel, AxisLabelFont, brush, bl.X - vSz.Width - gap, bl.Y + gap);
+        g.DrawString("o", AxisLabelFont, brush, c.TopLeft.X - oSz.Width - AxisLabelGap, c.TopLeft.Y - oSz.Height - AxisLabelGap);
+        g.DrawString(proj.HorzLabel, AxisLabelFont, brush, tr.X + AxisLabelGap, tr.Y - hSz.Height - AxisLabelGap);
+        g.DrawString(proj.VertLabel, AxisLabelFont, brush, bl.X - vSz.Width - AxisLabelGap, bl.Y + AxisLabelGap);
     }
     #endregion
 

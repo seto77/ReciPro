@@ -318,7 +318,7 @@ public partial class FormSymmetryInformation : FormBase
     {
         int sn = Crystal.SymmetrySeriesNumber;
         var size = graphicsBoxSymmetryElements.ClientSize;
-        if (radioButtonWmf.Checked)
+        if (radioButtonEmf.Checked)
             CopyAsMetafile(g => SymmetryDiagramElements.DrawSymmetryElements(g, size, sn));
         else
             Clipboard.SetDataObject(SymmetryDiagramElements.RenderSymmetryElements(sn, size), true);
@@ -328,7 +328,7 @@ public partial class FormSymmetryInformation : FormBase
     {
         int sn = Crystal.SymmetrySeriesNumber;
         var size = graphicsBoxGeneralPositions.ClientSize;
-        if (radioButtonWmf.Checked)
+        if (radioButtonEmf.Checked)
             CopyAsMetafile(g => SymmetryDiagramPositions.DrawGeneralPositions(g, size, sn));
         else
             Clipboard.SetDataObject(SymmetryDiagramPositions.RenderGeneralPositions(sn, size), true);
