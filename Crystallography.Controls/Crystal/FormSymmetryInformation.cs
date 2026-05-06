@@ -166,6 +166,33 @@ public partial class FormSymmetryInformation : FormBase
 
 
         var symmetry = Crystal.Symmetry;
+
+        // 260506Cl 追加: 点群が変わったら、その点群の既定 test point で numericBoxPosition* をリセット。
+        // 同じ点群のままで空間群だけが切り替わった場合は、ユーザーが numericBoxPosition* に入れた値を保持する。
+        // radioButtonDirection* も同様に、非 ortho → ortho に切り替わった瞬間 (初回含む) だけ既定 C に戻す。
+        // 両者まとめて SkipEvent でガードし、ChangeCrystal 末尾の UpdateDiagrams() に再描画を一本化する。
+        SkipEvent = true;
+        try
+        {
+            if (symmetry.PointGroupNumber != _previousPointGroupNumber)
+            {
+                _previousPointGroupNumber = symmetry.PointGroupNumber;
+                var (tx, ty, tz) = SymmetryDiagramPositions.GetTestPoint(symmetry);
+                numericBoxPositionA.Value = tx;
+                numericBoxPositionB.Value = ty;
+                numericBoxPositionC.Value = tz;
+            }
+
+            bool isOrtho = symmetry.CrystalSystemNumber == 3;
+            radioButtonDirectionA.Enabled = radioButtonDirectionB.Enabled = radioButtonDirectionC.Enabled = isOrtho;
+            if (!isOrtho)
+                SetSelectedDirection(SymmetryDiagramCommon.ResolveProjectionAxis(symmetry, ProjectionAxis.C));
+            else if (!_previousIsOrtho)
+                SetSelectedDirection(ProjectionAxis.C);
+            _previousIsOrtho = isOrtho;
+        }
+        finally { SkipEvent = false; }
+
         labelLaTexNumber.Text = $"{symmetry.SpaceGroupNumber}: {symmetry.SpaceGroupSubNumber}";
 
         // 260427Cl 追加: LabelLaTeX 各種への流し込み (richTextBox 群と並走表示)。
@@ -202,32 +229,76 @@ public partial class FormSymmetryInformation : FormBase
 
     // 260429Cl 追加: 前回 render 時の状態を保持して、SizeChanged 多発・初期 Load 時の重複 render を抑制
     private int _renderedSeriesNumber = -1;
-    private Size _renderedSizeElem, _renderedSizeGen;
+    // 260506Cl 改: 各図のキャッシュキーに axis を畳み込む。Gen 側はさらに test point を含める。
+    // 初期値はデフォルト (Empty Size, A) だが、初回呼び出しは _renderedSeriesNumber=-1 で seriesChanged=true となり強制再描画されるので問題ない。
+    private (Size Size, ProjectionAxis Axis) _renderedKeyElem;
+    private (Size Size, ProjectionAxis Axis, double X, double Y, double Z) _renderedKeyGen;
+    // 260506Cl 追加: 点群追跡 (-1=未設定)、直前の ortho 状態 (false 初期値で初回 ortho 進入時に既定 C へ落とす)、および ChangeCrystal 中のイベント抑止フラグ。
+    private int _previousPointGroupNumber = -1;
+    private bool _previousIsOrtho;
+    private bool SkipEvent;
+
+    /// <summary>(260506Cl 追加) radioButtonDirection* の現在の選択を <see cref="ProjectionAxis"/> として取得。</summary>
+    private ProjectionAxis SelectedDirection =>
+        radioButtonDirectionA.Checked ? ProjectionAxis.A :
+        radioButtonDirectionB.Checked ? ProjectionAxis.B : ProjectionAxis.C;
+
+    /// <summary>(260506Cl 追加) <paramref name="axis"/> に該当する radioButtonDirection* を Checked に。
+    /// 呼び出し側で <see cref="SkipEvent"/>=true にしておくこと (CheckedChanged 連鎖で UpdateDiagrams が走らないように)。</summary>
+    private void SetSelectedDirection(ProjectionAxis axis)
+    {
+        radioButtonDirectionA.Checked = axis == ProjectionAxis.A;
+        radioButtonDirectionB.Checked = axis == ProjectionAxis.B;
+        radioButtonDirectionC.Checked = axis == ProjectionAxis.C;
+    }
 
     /// <summary>260429Cl 追加: graphicsBoxSymmetryElements / graphicsBoxGeneralPositions を再描画する。
     /// ChangeCrystal および両 GraphicsBox の Resize から呼ばれる。Crystal 変化があれば両図、
-    /// サイズだけが変わった場合はその箱だけを再描画して無駄な render を避ける。</summary>
+    /// サイズだけが変わった場合はその箱だけを再描画して無駄な render を避ける。
+    /// (260506Cl) 一般位置図は test point 変化でも再描画。対称要素図は test point に依存しないので不要。</summary>
     private void UpdateDiagrams()
     {
         int sn = Crystal.SymmetrySeriesNumber;
         bool seriesChanged = sn != _renderedSeriesNumber;
         _renderedSeriesNumber = sn;
+        var axis = SelectedDirection;
 
-        var elemSize = graphicsBoxSymmetryElements.ClientSize;
-        if (seriesChanged || elemSize != _renderedSizeElem)
+        var keyElem = (graphicsBoxSymmetryElements.ClientSize, axis);
+        if (seriesChanged || keyElem != _renderedKeyElem)
         {
             graphicsBoxSymmetryElements.Image?.Dispose();
-            graphicsBoxSymmetryElements.Image = SymmetryDiagramElements.RenderSymmetryElements(sn, elemSize);
-            _renderedSizeElem = elemSize;
+            graphicsBoxSymmetryElements.Image = SymmetryDiagramElements.RenderSymmetryElements(sn, keyElem.ClientSize, axis);
+            _renderedKeyElem = keyElem;
         }
 
-        var genSize = graphicsBoxGeneralPositions.ClientSize;
-        if (seriesChanged || genSize != _renderedSizeGen)
+        var testPoint = (numericBoxPositionA.Value, numericBoxPositionB.Value, numericBoxPositionC.Value);
+        var keyGen = (graphicsBoxGeneralPositions.ClientSize, axis, testPoint.Item1, testPoint.Item2, testPoint.Item3);
+        if (seriesChanged || keyGen != _renderedKeyGen)
         {
             graphicsBoxGeneralPositions.Image?.Dispose();
-            graphicsBoxGeneralPositions.Image = SymmetryDiagramPositions.RenderGeneralPositions(sn, genSize);
-            _renderedSizeGen = genSize;
+            graphicsBoxGeneralPositions.Image = SymmetryDiagramPositions.RenderGeneralPositions(sn, keyGen.ClientSize, axis, testPoint);
+            _renderedKeyGen = keyGen;
         }
+    }
+
+    /// <summary>260506Cl 追加: numericBoxPosition* の ValueChanged に紐付く handler。
+    /// ユーザーが test point を変更したら一般位置図のみを再描画する。
+    /// ChangeCrystal 経由の reset 中は <see cref="SkipEvent"/> で抑止して 3 連発を防ぐ。</summary>
+    private void numericBoxPosition_ValueChanged(object sender, EventArgs e)
+    {
+        if (SkipEvent) return;
+        UpdateDiagrams();
+    }
+
+    /// <summary>260506Cl 追加: radioButtonDirection* の CheckedChanged に紐付く handler。
+    /// 投影軸が切り替わったら対称要素図と一般位置図の両方を再描画する。
+    /// ユーザー操作では radio ペアの off→on と on→off で CheckedChanged が二重発火するので、
+    /// Checked 側 (= 新しく ON になった方) だけ反応させて UpdateDiagrams を 1 回に絞る。</summary>
+    private void radioButtonDirection_CheckedChanged(object sender, EventArgs e)
+    {
+        if (SkipEvent) return;
+        if (sender is RadioButton rb && !rb.Checked) return;
+        UpdateDiagrams();
     }
     #endregion
 
@@ -318,20 +389,23 @@ public partial class FormSymmetryInformation : FormBase
     {
         int sn = Crystal.SymmetrySeriesNumber;
         var size = graphicsBoxSymmetryElements.ClientSize;
+        var axis = SelectedDirection;
         if (radioButtonEmf.Checked)
-            CopyAsMetafile(g => SymmetryDiagramElements.DrawSymmetryElements(g, size, sn));
+            CopyAsMetafile(g => SymmetryDiagramElements.DrawSymmetryElements(g, size, sn, axis));
         else
-            Clipboard.SetDataObject(SymmetryDiagramElements.RenderSymmetryElements(sn, size), true);
+            Clipboard.SetDataObject(SymmetryDiagramElements.RenderSymmetryElements(sn, size, axis), true);
     }
 
     private void buttonCopyGeneralPositions_Click(object sender, EventArgs e)
     {
         int sn = Crystal.SymmetrySeriesNumber;
         var size = graphicsBoxGeneralPositions.ClientSize;
+        var axis = SelectedDirection;
+        var testPoint = (numericBoxPositionA.Value, numericBoxPositionB.Value, numericBoxPositionC.Value);
         if (radioButtonEmf.Checked)
-            CopyAsMetafile(g => SymmetryDiagramPositions.DrawGeneralPositions(g, size, sn));
+            CopyAsMetafile(g => SymmetryDiagramPositions.DrawGeneralPositions(g, size, sn, axis, testPoint));
         else
-            Clipboard.SetDataObject(SymmetryDiagramPositions.RenderGeneralPositions(sn, size), true);
+            Clipboard.SetDataObject(SymmetryDiagramPositions.RenderGeneralPositions(sn, size, axis, testPoint), true);
     }
 
     /// <summary>EMF+ クリップボードコピーの共通設定 (背景白・AntiAlias) を済ませてから <paramref name="drawDiagram"/> を呼ぶ。</summary>

@@ -362,7 +362,7 @@
             numericBoxPositionA.TabIndex = 6;
             numericBoxPositionA.TextFontSize = 9F;
             numericBoxPositionA.UpDown_Increment = 0.01D;
-            numericBoxPositionA.ValueChanged += numericBox_ValueChanged;
+            numericBoxPositionA.ValueChanged += numericBoxPosition_ValueChanged; // (260506Cl) test point 変更 → 一般位置図の再描画専用 handler
             // 
             // labelLaTex2
             // 
@@ -397,7 +397,7 @@
             numericBoxPositionB.TabIndex = 6;
             numericBoxPositionB.TextFontSize = 9F;
             numericBoxPositionB.UpDown_Increment = 0.01D;
-            numericBoxPositionB.ValueChanged += numericBox_ValueChanged;
+            numericBoxPositionB.ValueChanged += numericBoxPosition_ValueChanged; // (260506Cl) test point 変更 → 一般位置図の再描画専用 handler
             // 
             // labelLaTex3
             // 
@@ -432,7 +432,7 @@
             numericBoxPositionC.TabIndex = 6;
             numericBoxPositionC.TextFontSize = 9F;
             numericBoxPositionC.UpDown_Increment = 0.01D;
-            numericBoxPositionC.ValueChanged += numericBox_ValueChanged;
+            numericBoxPositionC.ValueChanged += numericBoxPosition_ValueChanged; // (260506Cl) test point 変更 → 一般位置図の再描画専用 handler
             // 
             // radioButtonBmp
             // 
@@ -2001,6 +2001,7 @@
             radioButtonDirectionA.Text = "a";
             radioButtonDirectionA.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             radioButtonDirectionA.UseVisualStyleBackColor = true;
+            radioButtonDirectionA.CheckedChanged += radioButtonDirection_CheckedChanged; // (260506Cl) 投影軸切替で両図を再描画
             // 
             // radioButtonDirectionB
             // 
@@ -2014,6 +2015,7 @@
             radioButtonDirectionB.Text = "b";
             radioButtonDirectionB.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             radioButtonDirectionB.UseVisualStyleBackColor = true;
+            radioButtonDirectionB.CheckedChanged += radioButtonDirection_CheckedChanged; // (260506Cl) 投影軸切替で両図を再描画
             // 
             // radioButtonDirectionC
             // 
@@ -2027,6 +2029,7 @@
             radioButtonDirectionC.Text = "c";
             radioButtonDirectionC.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             radioButtonDirectionC.UseVisualStyleBackColor = true;
+            radioButtonDirectionC.CheckedChanged += radioButtonDirection_CheckedChanged; // (260506Cl) 投影軸切替で両図を再描画
             // 
             // label12
             // 

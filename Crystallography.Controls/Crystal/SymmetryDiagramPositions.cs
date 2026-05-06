@@ -52,8 +52,9 @@ public class SymmetryDiagramPositions : SymmetryDiagramCommon
     /// 着色とクラスタ代表変数の決定が同じ 1 関数で済む。</summary>
     private static int LabelAxisIndex(string label) => label.Length > 0 ? "xyz".IndexOf(label[^1]) : -1;
 
-    /// <summary>(260502Cl) 結晶系で切り替える test 点。各結晶系で対称性確認に適した代表点。一般位置図でしか使わないため Common から本クラスへ移動。</summary>
-    private static (double X, double Y, double Z) GetTestPoint(Symmetry sym) => sym.CrystalSystemNumber switch
+    /// <summary>(260502Cl) 結晶系で切り替える test 点。各結晶系で対称性確認に適した代表点。一般位置図でしか使わないため Common から本クラスへ移動。
+    /// (260506Cl) public 化: FormSymmetryInformation の numericBoxPosition* に既定値を流し込むため。</summary>
+    public static (double X, double Y, double Z) GetTestPoint(Symmetry sym) => sym.CrystalSystemNumber switch
     {
         2 => (0.06, 0.20, 0.14),       // monoclinic
         4 => (0.06, 0.20, 0.10),       // tetragonal
@@ -63,18 +64,22 @@ public class SymmetryDiagramPositions : SymmetryDiagramCommon
     };
 
     #region 公開 API
-    /// <summary>新規 <see cref="Bitmap"/> を確保して一般位置図を描画して返す。</summary>
-    public static Bitmap RenderGeneralPositions(int seriesNumber, Size clientSize, ProjectionAxis axis = ProjectionAxis.C)
+    /// <summary>新規 <see cref="Bitmap"/> を確保して一般位置図を描画して返す。
+    /// (260506Cl) <paramref name="testPoint"/> を渡すと既定の <see cref="GetTestPoint"/> を上書きしてユーザー指定の一般位置で描画する。</summary>
+    public static Bitmap RenderGeneralPositions(int seriesNumber, Size clientSize, ProjectionAxis axis = ProjectionAxis.C,
+                                                (double X, double Y, double Z)? testPoint = null)
     {
         var bmp = NewBitmap(clientSize, out var g);
-        try { DrawGeneralPositions(g, bmp.Size, seriesNumber, axis); } // (260504Cl) NewBitmap が 16px 未満をクランプするので bmp.Size を渡す
+        try { DrawGeneralPositions(g, bmp.Size, seriesNumber, axis, testPoint); } // (260504Cl) NewBitmap が 16px 未満をクランプするので bmp.Size を渡す
         finally { g.Dispose(); }
         return bmp;
     }
 
     /// <summary>(260504Cl 追加) 与えられた <see cref="Graphics"/> 上に一般位置図を描画する。
-    /// 呼び出し側で背景クリア・<see cref="Graphics.SmoothingMode"/> 等の初期化を行うこと。</summary>
-    public static void DrawGeneralPositions(Graphics g, Size clientSize, int seriesNumber, ProjectionAxis axis = ProjectionAxis.C)
+    /// 呼び出し側で背景クリア・<see cref="Graphics.SmoothingMode"/> 等の初期化を行うこと。
+    /// (260506Cl) <paramref name="testPoint"/> を渡すと既定の <see cref="GetTestPoint"/> を上書きする。</summary>
+    public static void DrawGeneralPositions(Graphics g, Size clientSize, int seriesNumber, ProjectionAxis axis = ProjectionAxis.C,
+                                            (double X, double Y, double Z)? testPoint = null)
     {
         if (!TryGetSym(seriesNumber, out var sym, out seriesNumber, out var msg))
         {
@@ -98,7 +103,7 @@ public class SymmetryDiagramPositions : SymmetryDiagramCommon
         float scale = isCubic ? CubicScale : 1f;
         float circleRadius = (float)(CircleRadiusFraction * cellSize) * scale; // (260505Ch) 描画ごとの値として渡し、static 状態を持たない。
         var labelFont = isCubic ? CubicClusterLabelFont : ClusterLabelFont;
-        var (tx, ty, tz) = GetTestPoint(sym);
+        var (tx, ty, tz) = testPoint ?? GetTestPoint(sym); // 260506Cl: ユーザー指定があればそれを使用
         // ProjectionAxis enum の値 (A=0, B=1, C=2) と AxisBrushes/Pens の index、変数 "xyz" の文字位置はすべて一致。
         int projAxisIdx = (int)actualAxis;
         var allPoints = SymmetryStatic.WyckoffPositions[seriesNumber][0].GeneratePositions(tx, ty, tz);

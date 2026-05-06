@@ -86,8 +86,9 @@ public abstract class SymmetryDiagramCommon
         _ => throw new ArgumentOutOfRangeException(nameof(axis)),
     };
 
-    /// <summary>結晶系制約で投影軸を正規化。直方=ユーザー指定、単斜=unique 軸、それ以外=c。</summary>
-    protected static ProjectionAxis ResolveProjectionAxis(Symmetry sym, ProjectionAxis preferred) => sym.CrystalSystemNumber switch
+    /// <summary>結晶系制約で投影軸を正規化。直方=ユーザー指定、単斜=unique 軸、それ以外=c。
+    /// (260506Cl) public 化: FormSymmetryInformation の radioButtonDirection* 既定選択用。</summary>
+    public static ProjectionAxis ResolveProjectionAxis(Symmetry sym, ProjectionAxis preferred) => sym.CrystalSystemNumber switch
     {
         3 => preferred,
         2 => sym.MainAxis is { Length: > 0 } s ? s[0] switch { 'a' => ProjectionAxis.A, 'c' => ProjectionAxis.C, _ => ProjectionAxis.B }
