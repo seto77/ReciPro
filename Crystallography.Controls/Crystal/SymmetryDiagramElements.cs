@@ -139,7 +139,7 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
         public Pen Pen, MirrorPen, InPlanePen, DepthPen, DiagPen, EPen;
         public Brush Fill, White;
         public List<PerpendicularMirrorDraft> PerpendicularMirrors;
-        public HashSet<(long Nx, long Ny, long D, int Style)> DrawnMirrorPlanes;
+        public HashSet<(long Nx, long Ny, long D, int Style)> DrawnSymmetryPlanes;
         public HashSet<(long X, long Y)> StereonetAnchorKeys; // (260505Cl) inset 半径は CubicStereonetInsetRadius 定数を直接使う。
         public double DisplayMaxS; // (260505Ch) F 格子は [0, 1/2]²、それ以外は [0, 1]² を描画対象にする。
     }
@@ -211,7 +211,7 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
             DepthPen = depthPen, DiagPen = diagPen, EPen = ePen,
             Fill = fill, White = white,
             PerpendicularMirrors = [],
-            DrawnMirrorPlanes = [],
+            DrawnSymmetryPlanes = [],
             StereonetAnchorKeys = isCubicHigh ? CollectStereonetAnchorKeys(layout, stereonetPositions) : null,
             DisplayMaxS = displayMaxS,
         };
@@ -221,7 +221,7 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
         var parallelMirrors = new HashSet<(double Height, bool Glide, double GlideSx, double GlideSy)>();
         // (260503Cl) key に order を追加して 2 / 4 / -4 を別々に集める。draw 時に高次優先で重複を抑制。
         var inPlaneAxisDrafts = new Dictionary<(long, long, long, long, int, bool), InPlaneAxisArrowDraft>();
-        foreach (var mp in table.MirrorPlanes)
+        foreach (var mp in table.SymmetryPlanes)
         {
             bool perp = IsAxisPerpendicularToProjection(mp.Normal, actualAxis);
             bool inPlane = IsAxisInPlane(mp.Normal, actualAxis);
@@ -238,7 +238,7 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
                 ctx.PerpendicularMirrors.Add(new(sx, sy, mp.Normal, mp.Glide));
             }
         }
-        foreach (var ax in table.RotationAxes)
+        foreach (var ax in table.SymmetryAxes)
         {
             int absO = Math.Abs(ax.Order);
             // 紙面内軸として扱うのは |order| = 2 (proper のみ; -2 は mirror) と |order| = 4 (proper / screw / -4)。
@@ -250,7 +250,7 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
                 ax.Order, ax.Screw, ax.FinCount, ax.EdgeStep, inPlaneAxisDrafts, displayMaxS);
         }
 
-        DrawCollectedPerpendicularMirrorPlanes(ctx);
+        DrawCollectedPerpendicularSymmetryPlanes(ctx);
         DrawParallelMirrorStack(g, layout, parallelMirrors, fill, isCubic: isCubic); // (260505Cl) cubic は紙面平行軸との干渉回避で bracket を離す。
         // (260503Cl) 紙面平行軸の anchor が斜め回転軸の foot / 紙面垂直回転軸 (4_2 など) の position と重なる場合、
         // 矢印を axis 方向にずらして点記号と重ならないようにする。
@@ -281,7 +281,7 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
     private static void DrawPerpendicularRotationMarks(ElementsContext ctx, Crystallography.SymmetryElementsTable table,
                                                        ProjectionAxis projAxis, bool isCubic = false)
     {
-        var axes = table.RotationAxes;
+        var axes = table.SymmetryAxes;
         // 同位置の高次 proper rotation 集合 (低次抑制 / -N 抑制用)。
         var covered2 = new HashSet<(int, int)>();
         var covered3 = new HashSet<(int, int)>();
@@ -525,7 +525,7 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
     private static void DrawDiagonalRotationMarks(ElementsContext ctx, Crystallography.SymmetryElementsTable table,
                                                   ProjectionAxis projAxis, HashSet<(long, long)> skipPositionKeys = null)
     {
-        var axes = table.RotationAxes;
+        var axes = table.SymmetryAxes;
         var drawnAxes = new HashSet<(long Sx, long Sy, int Order, int U, int V, int W, bool Screw, int Fin, int Edge)>();
 
         foreach (var ax in axes)
@@ -559,7 +559,7 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
         }
     }
 
-    private static bool TryGetDiagonalAxisFootprint(RotationAxis ax, ProjectionAxis projAxis, out double sx, out double sy)
+    private static bool TryGetDiagonalAxisFootprint(SymmetryAxis ax, ProjectionAxis projAxis, out double sx, out double sy)
     {
         sx = sy = 0;
         double depthPos = ProjectedDepth(ax.X, ax.Y, ax.Z, projAxis);
@@ -715,7 +715,7 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
                                                                           double displayMaxS = 1.0)
     {
         var result = new HashSet<(long, long)>();
-        foreach (var ax in table.RotationAxes)
+        foreach (var ax in table.SymmetryAxes)
         {
             if (ax.Order is not (2 or 3)) continue;
             if (!IsAxisDiagonalToProjection(ax.Direction, projAxis)) continue;
@@ -744,7 +744,7 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
     {
         var result = new HashSet<(long, long)>();
         var proj = GetProjection(projAxis);
-        foreach (var ax in table.RotationAxes)
+        foreach (var ax in table.SymmetryAxes)
         {
             int absO = Math.Abs(ax.Order);
             if (absO is not (2 or 3 or 4 or 6)) continue;
@@ -1116,7 +1116,7 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
     #region 紙面垂直 mirror/glide
     /// <summary>紙面垂直 mirror/glide を幾何線ごとに集約し、d-glide 優先 → e-glide ペア → glide score 最小、の順に 1 つだけ描画。
     /// (260503Ch) [ITA-D1], [ITA-D4] 同じ幾何面に属する複数操作は、defining graphical symbol 1 個へ畳み込む。</summary>
-    private static void DrawCollectedPerpendicularMirrorPlanes(ElementsContext ctx)
+    private static void DrawCollectedPerpendicularSymmetryPlanes(ElementsContext ctx)
     {
         if (ctx.PerpendicularMirrors.Count == 0) return;
         var groups = ctx.PerpendicularMirrors
@@ -1217,7 +1217,7 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
             if (ux < -1e-9 || (Math.Abs(ux) < 1e-9 && uy < 0)) { ux = -ux; uy = -uy; }
             var pt = c.ToScreen(lineSx, lineSy);
             var key = (R6(ux), R6(uy), (long)Math.Round((ux * pt.X + uy * pt.Y) * 1000), style);
-            if (!ctx.DrawnMirrorPlanes.Add(key)) return;
+            if (!ctx.DrawnSymmetryPlanes.Add(key)) return;
             if (dGlide)
             {
                 var (arrowX, arrowY) = GetDGlideArrowDirection(c, gSx, gSy, gSz);
@@ -1382,7 +1382,7 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
         }
     }
 
-    /// <summary>s≈1 (右辺/下辺) は 0 に折り畳まず 1 のまま残す: drawnMirrorPlanes の dedup キーが左/右辺で別になり両辺それぞれに描画できる。</summary>
+    /// <summary>s≈1 (右辺/下辺) は 0 に折り畳まず 1 のまま残す: drawnSymmetryPlanes の dedup キーが左/右辺で別になり両辺それぞれに描画できる。</summary>
     private static double NormalizeCellBoundary(double s)
     {
         if (Math.Abs(s - 1) < 1e-8) return 1;
@@ -1431,13 +1431,13 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
     private static void DrawCubicStereonetInsets(ElementsContext ctx, Crystallography.SymmetryElementsTable table,
                                                  ProjectionAxis projAxis, (double Sx, double Sy)[] positions)
     {
-        var diagonalMirrors = table.MirrorPlanes
+        var diagonalMirrors = table.SymmetryPlanes
             .Where(mp => IsAxisDiagonalToProjection(mp.Normal, projAxis))
             .ToList(); // (260505Ch) perpendicular/in-plane の否定形ではなく diagonal 判定へ統一。
         // 260505Cl 旧: 斜め 3 回軸のみを収集していたため Pm-3m などで face-diagonal 2 回軸 (<110>系) が
         //              cell-side 描画でスキップされる一方 inset にも乗らず欠落していた。
-        // var diagonalThreefolds = new List<RotationAxis>();
-        // foreach (var ax in table.RotationAxes)
+        // var diagonalThreefolds = new List<SymmetryAxis>();
+        // foreach (var ax in table.SymmetryAxes)
         // {
         //     if (Math.Abs(ax.Order) != 3) continue;
         //     if (!IsAxisDiagonalToProjection(ax.Direction, projAxis)) continue;
@@ -1445,7 +1445,7 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
         // }
         // 260505Cl: ITA Vol.A Pm-3m 等で inset に出ている斜め 2 回軸 (face-diagonal) も拾う。
         // proper rotation 軸 (Order 2/3) のみ。-3 等の rotoinversion は cell-side draw と同様に除外。
-        var diagonalAxes = table.RotationAxes
+        var diagonalAxes = table.SymmetryAxes
             .Where(ax => ax.Order is 2 or 3 && IsAxisDiagonalToProjection(ax.Direction, projAxis))
             .ToList(); // (260505Ch) cell-side の斜め軸判定と同じ条件に揃える。
 
@@ -1580,7 +1580,7 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
     }
 
     /// <summary>(260505Cl) 鏡映/glide 平面 mp が site (xc, yc, zc) を通るか厳密判定 (lattice 周期を含む)。</summary>
-    private static bool PlanePassesThroughSite(MirrorPlane mp, double xc, double yc, double zc)
+    private static bool PlanePassesThroughSite(SymmetryPlane mp, double xc, double yc, double zc)
     {
         double h = mp.Normal.U, k = mp.Normal.V, l = mp.Normal.W;
         double c = h * mp.X + k * mp.Y + l * mp.Z;
@@ -1590,7 +1590,7 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
     }
 
     /// <summary>(260505Cl) 軸 ax の line {(X+tU, Y+tV, Z+tW)} が site (xc, yc, zc) を通るか厳密判定 (lattice 周期を含む)。</summary>
-    private static bool AxisPassesThroughSite(RotationAxis ax, double xc, double yc, double zc)
+    private static bool AxisPassesThroughSite(SymmetryAxis ax, double xc, double yc, double zc)
     {
         int U = ax.Direction.U, V = ax.Direction.V, W = ax.Direction.W;
         // 各座標方向の格子並進を試し、その方向で t を求めて他軸が整数オフセットに収まるか確認。

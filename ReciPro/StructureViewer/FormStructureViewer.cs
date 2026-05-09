@@ -99,6 +99,7 @@ public partial class FormStructureViewer : FormBase
     private class cellID { }
     private class latticeID { }
     private class boundsID { }
+    private class symmetryID { } // (260506Ch) 対称要素 GLObject を既存の原子・結合・格子タグと分離する
     #endregion
 
     #region コンストラクタ
@@ -112,6 +113,8 @@ public partial class FormStructureViewer : FormBase
             for (int b = -1; b < 2; b++)
                 for (int c = -1; c < 2; c++)
                     neighborKeys.Add(atomID.ComposeKey(a, b, c));
+
+        toolStripButtonSymmetryElements.CheckedChanged += toolStripButtonSymmetryElements_CheckedChanged; // (260506Ch) 対称要素の表示トグルで GLObjects を再生成する
     }
 
     private void FormStructureViewer_Load(object sender, EventArgs e)
@@ -854,6 +857,21 @@ public partial class FormStructureViewer : FormBase
     }
     #endregion
 
+    #region 対称要素 GLObjects の生成
+    private void setSymmetryElements()
+    {
+        if (!toolStripButtonSymmetryElements.Checked || Crystal == null || bounds == null) return;
+        sw.Restart();
+
+        var symmetryObjects = SymmetryDiagram.CreateObjects(Crystal, shift, bounds.Select(b => b.prm).ToArray()); // (260506Ch) 列挙済み対称要素を StructureViewer 座標へ変換する。260508Cl: axes は内部で crystal から再構築するため引数から削除
+        foreach (var obj in symmetryObjects)
+            obj.Tag = new symmetryID();
+        GLObjects.AddRange(symmetryObjects);
+
+        textBoxCalcInformation.AppendText($"Generation of symmetry elements: {sw.ElapsedMilliseconds}ms.\r\n");
+    }
+    #endregion
+
     #region ラベルの文字を描画
     private void setLabel()
     {
@@ -887,7 +905,7 @@ public partial class FormStructureViewer : FormBase
         sw.Restart();
         glControlMain.DeleteAllObjects();
         glControlMain.AddObjects(GLObjects);
-        toolStripLabelStatusInitialization.Text += $" and sent to OpenGL ({sw.ElapsedMilliseconds} ms.)  ";
+        toolStripStatusLabelInitialization.Text += $" and sent to OpenGL ({sw.ElapsedMilliseconds} ms.)  ";
         textBoxCalcInformation.AppendText($"Trasfer: {sw.ElapsedMilliseconds}ms.\r\n");
 
     }
@@ -1102,7 +1120,9 @@ public partial class FormStructureViewer : FormBase
 
         removeObjects();//余計な原子を削除
 
-        toolStripLabelStatusInitialization.Text = GLObjects.Count + " objects were created (" + sw.ElapsedMilliseconds + " ms)";
+        setSymmetryElements();// (260506Ch) removeObjects は Cylinder を結合として扱うため、対称要素はその後で追加する
+
+        toolStripStatusLabelInitialization.Text = GLObjects.Count + " objects were created (" + sw.ElapsedMilliseconds + " ms)";
 
         transferGLObjects(); //
 
@@ -1124,7 +1144,7 @@ public partial class FormStructureViewer : FormBase
         glControlMain.WorldMatrixEx = world;
         glControlAxes.WorldMatrixEx = world;
 
-        toolStripLabelStatusRendering.Text = $"Rendering time: {sw.ElapsedMilliseconds} ms.";
+        toolStripStatusLabelRendering.Text = $"Rendering time: {sw.ElapsedMilliseconds} ms.";
     }
 
 
@@ -1470,6 +1490,12 @@ public partial class FormStructureViewer : FormBase
     private void toolStripButtonLightingBall_CheckedChanged(object sender, EventArgs e) => glControlLight.Visible = toolStripButtonLightDirection.Checked;
 
     private void toolStripButtonLegend_CheckedChanged(object sender, EventArgs e) => SetLegend();
+
+    private void toolStripButtonSymmetryElements_CheckedChanged(object sender, EventArgs e)
+    {
+        if (glControlMain == null || Crystal == null) return;
+        SetGLObjects(null); // (260506Ch) 対称要素は bounds/shift と一緒に作るため、表示切替時は全 GLObjects を再生成する
+    }
 
     #endregion
 

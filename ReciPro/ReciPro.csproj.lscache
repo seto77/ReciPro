@@ -125,6 +125,7 @@ StructureViewer/
  FormResolution.designer.cs
  FormStructureViewer.cs
  FormStructureViewer.designer.cs
+ SymmetryDiagram.cs
 Version.cs
 
 [metadataReferences]

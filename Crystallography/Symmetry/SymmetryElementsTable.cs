@@ -18,7 +18,7 @@ public readonly record struct InversionCenter(double X, double Y, double Z);
 /// Order は ±2, ±3, ±4, ±6 (負号は roto-inversion。ただし Order = -1 は反転中心、 Order = -2 は鏡映で別カテゴリ)。
 /// IntrinsicTranslation は軸方向の screw 並進成分 (fractional)。
 /// FinCount / EdgeStep は ITC 規約の pinwheel 描画用 (FinCount = 0 は螺旋なし)。</summary>
-public readonly record struct RotationAxis(
+public readonly record struct SymmetryAxis(
     double X, double Y, double Z,
     (int U, int V, int W) Direction,
     int Order,
@@ -29,7 +29,7 @@ public readonly record struct RotationAxis(
 /// <summary>鏡映 / 映進 面の単位。
 /// Position は面上の代表点、Normal は面法線方向の (uvw) 整数指数。
 /// Glide は面内 glide 並進成分 (fractional)。零ベクトルなら純鏡映 m。</summary>
-public readonly record struct MirrorPlane(
+public readonly record struct SymmetryPlane(
     double X, double Y, double Z,
     (int U, int V, int W) Normal,
     (double U, double V, double W) Glide);
@@ -42,20 +42,20 @@ public sealed class SymmetryElementsTable
     /// <summary>正規化後の seriesNumber (Rho → Hex リダイレクト後の値)。</summary>
     public int SeriesNumber { get; }
     public InversionCenter[] InversionCenters { get; }
-    public RotationAxis[] RotationAxes { get; }
-    public MirrorPlane[] MirrorPlanes { get; }
+    public SymmetryAxis[] SymmetryAxes { get; }
+    public SymmetryPlane[] SymmetryPlanes { get; }
     /// <summary>(260504Ch) この空間群の centering 並進ベクトル一覧 (整数並進 (0,0,0) を除く)。
     /// 例: F-centering なら (0,1/2,1/2), (1/2,0,1/2), (1/2,1/2,0)。
     /// 軸方向の primitive 並進長や centered cell の mirror/glide 展開に使う。</summary>
     public (double U, double V, double W)[] Centerings { get; }
 
-    private SymmetryElementsTable(int seriesNumber, InversionCenter[] inv, RotationAxis[] rot, MirrorPlane[] mir,
+    private SymmetryElementsTable(int seriesNumber, InversionCenter[] inv, SymmetryAxis[] rot, SymmetryPlane[] mir,
                                   (double U, double V, double W)[] centerings)
     {
         SeriesNumber = seriesNumber;
         InversionCenters = inv;
-        RotationAxes = rot;
-        MirrorPlanes = mir;
+        SymmetryAxes = rot;
+        SymmetryPlanes = mir;
         Centerings = centerings;
     }
 
@@ -110,8 +110,8 @@ public sealed class SymmetryElementsTable
         return new SymmetryElementsTable(
             seriesNumber,
             CollectInversions(seriesNumber),
-            CollectRotationAxes(ops, centerings),
-            CollectMirrorPlanes(ops, centerings),
+            CollectSymmetryAxes(ops, centerings),
+            CollectSymmetryPlanes(ops, centerings),
             [.. centerings]);
     }
 
@@ -143,15 +143,15 @@ public sealed class SymmetryElementsTable
     #endregion
 
     #region 回転 / 螺旋 / 回反 軸
-    private static RotationAxis[] CollectRotationAxes(SymmetryOperation[] ops,
+    private static SymmetryAxis[] CollectSymmetryAxes(SymmetryOperation[] ops,
         IReadOnlyList<(double U, double V, double W)> centerings)
     {
-        var list = new List<RotationAxis>();
+        var list = new List<SymmetryAxis>();
         var seen = new HashSet<(int, int, int, int, long, long, long, long, long, long)>();
         foreach (var op in ops)
         {
             int o = op.Order, absO = Math.Abs(o);
-            if (o == -2) continue; // 鏡映は MirrorPlane で扱う
+            if (o == -2) continue; // 鏡映は SymmetryPlane で扱う
             if (absO is not (2 or 3 or 4 or 6)) continue; // skip identity (1)、反転 (-1)、その他
             if (!op.Sense && (absO is 3 or 4 or 6)) continue; // 高次回転の逆冪は同じ軸なので skip
             foreach (var axis in EnumerateAxisInstances(op, centerings))
@@ -160,7 +160,7 @@ public sealed class SymmetryElementsTable
                     R6(axis.X), R6(axis.Y), R6(axis.Z),
                     R6(axis.IntrinsicTranslation.U), R6(axis.IntrinsicTranslation.V), R6(axis.IntrinsicTranslation.W));
                 if (!seen.Add(key)) continue;
-                list.Add(new RotationAxis(axis.X, axis.Y, axis.Z, axis.Direction, o,
+                list.Add(new SymmetryAxis(axis.X, axis.Y, axis.Z, axis.Direction, o,
                     axis.Screw, axis.FinCount, axis.EdgeStep, axis.IntrinsicTranslation));
             }
         }
@@ -210,7 +210,14 @@ public sealed class SymmetryElementsTable
                                                 (double U, double V, double W) IntrinsicTranslation,
                                                 bool Screw, int FinCount, int EdgeStep);
 
-    /// <summary>n_k 螺旋の (FinCount, EdgeStep)。gcd(N,k) > 1 (4_2/6_2/6_3/6_4) は ITC 規約に従い fin 数を減らした特例形に。</summary>
+    /// <summary>n_k 螺旋の (FinCount, EdgeStep)。gcd(N,k) > 1 (4_2/6_2/6_3/6_4) は ITC 規約に従い fin 数を減らした特例形に。
+    /// EdgeStep は「k 値そのもの」ではなく「螺旋の旋回方向 (chirality) のマーカー」として機能する。260509Cl 追記:
+    ///   - 非特例 (gcd=1) では (N, N-k) なので、k &lt; N/2 (右巻) で EdgeStep &gt; N/2、k &gt; N/2 (左巻) で EdgeStep &lt; N/2 となる。
+    ///   - 特例 (gcd&gt;1, fin 数を減らした形) でも同じ旋回方向グループの代表値に揃える:
+    ///     6_2 (右巻, 6_1 と同方向) → EdgeStep=5 (= 6_1 と同じ)。{(3,2) と書きたくなるが、それだと左巻きと誤分類される}
+    ///     6_4 (左巻, 6_5 と同方向) → EdgeStep=1 (= 6_5 と同じ)
+    ///     6_3 / 4_2 (k=N/2, 中立) → EdgeStep=1 (左巻側に寄せる慣例)
+    /// SymmetryDiagram.cs の switch 式はこの (FinCount, EdgeStep) で Screw[N]_[k] テンプレートを一意に判別する。</summary>
     public static (int FinCount, int EdgeStep) PinwheelFins(int N, int k) => (N, k) switch
     {
         (_, 0) => (0, 0),
@@ -306,21 +313,21 @@ public sealed class SymmetryElementsTable
     #endregion
 
     #region 鏡映 / 映進 面
-    private static MirrorPlane[] CollectMirrorPlanes(SymmetryOperation[] ops, IReadOnlyList<(double U, double V, double W)> centerings)
+    private static SymmetryPlane[] CollectSymmetryPlanes(SymmetryOperation[] ops, IReadOnlyList<(double U, double V, double W)> centerings)
     {
-        var list = new List<MirrorPlane>();
+        var list = new List<SymmetryPlane>();
         var seen = new HashSet<(int, int, int, long, long, long, long, long, long)>();
         foreach (var op in ops)
         {
             if (op.Order != -2) continue;
-            foreach (var pl in EnumerateMirrorPlanes(op, centerings))
-                foreach (var eq in EnumerateEquivalentMirrorPlanes(pl, ops))
+            foreach (var pl in EnumerateSymmetryPlanes(op, centerings))
+                foreach (var eq in EnumerateEquivalentSymmetryPlanes(pl, ops))
                 {
                     var key = (eq.Direction.U, eq.Direction.V, eq.Direction.W,
                         R6(eq.Px), R6(eq.Py), R6(eq.Pz),
                         R6(eq.GlideU), R6(eq.GlideV), R6(eq.GlideW));
                     if (seen.Add(key))
-                        list.Add(new MirrorPlane(eq.Px, eq.Py, eq.Pz, eq.Direction,
+                        list.Add(new SymmetryPlane(eq.Px, eq.Py, eq.Pz, eq.Direction,
                             (eq.GlideU, eq.GlideV, eq.GlideW)));
                 }
         }
@@ -333,12 +340,13 @@ public sealed class SymmetryElementsTable
 
     /// <summary>op の鏡映面を、(0,0,0) と centering 並進すべての lattice 等価系から列挙し、
     /// 各々で glide score を最小化した代表面を返す (R-centering 等で純 mirror / a-glide 表現を見つけるため)。</summary>
-    private static IEnumerable<PlaneRep> EnumerateMirrorPlanes(SymmetryOperation op, IReadOnlyList<(double U, double V, double W)> centerings)
+    private static IEnumerable<PlaneRep> EnumerateSymmetryPlanes(SymmetryOperation op, IReadOnlyList<(double U, double V, double W)> centerings)
     {
         var R = new Mat(op.ApplyMatrix(new Vec(1, 0, 0)),
                         op.ApplyMatrix(new Vec(0, 1, 0)),
                         op.ApplyMatrix(new Vec(0, 0, 1)));
         var t0 = op.SeitzTranslation;
+        bool sourceIsPureMirror = ((Vec)op.IntrinsicTranslation) * ((Vec)op.IntrinsicTranslation) < 1e-12; // 260509Ch
         var planes = new Dictionary<(long, long, long), PlaneRep>();
         var lattices = new List<(double U, double V, double W)> { (0, 0, 0) };
         if (centerings != null) lattices.AddRange(centerings);
@@ -348,7 +356,9 @@ public sealed class SymmetryElementsTable
                 var t = new Vec(t0.U + lat.U + lx, t0.V + lat.V + ly, t0.W + lat.W + lz);
                 var rt = R * t;
                 var n = (t - rt) * 0.5;     // 平面法線方向の代表 (lattice 同値類のキー)
-                var glide = (t + rt) * 0.5;
+                // 旧処理: var glide = (t + rt) * 0.5;
+                // 純 mirror に格子並進を合成すると見かけの glide 成分が出るが、対称要素としては mirror のまま扱う。260509Ch
+                var glide = sourceIsPureMirror ? Vec.Zero : (t + rt) * 0.5;
                 var key = (R6(n.X), R6(n.Y), R6(n.Z));
                 var plane = new PlaneRep(t.X / 2.0, t.Y / 2.0, t.Z / 2.0,
                     CenterMod1(glide.X), CenterMod1(glide.Y), CenterMod1(glide.Z), op.Direction);
@@ -361,7 +371,7 @@ public sealed class SymmetryElementsTable
     }
 
     /// <summary>代表 mirror/glide 面を proper symmetry operation で写し、点群対称で等価な面を列挙する。</summary>
-    private static IEnumerable<PlaneRep> EnumerateEquivalentMirrorPlanes(PlaneRep seed, SymmetryOperation[] ops)
+    private static IEnumerable<PlaneRep> EnumerateEquivalentSymmetryPlanes(PlaneRep seed, SymmetryOperation[] ops)
     {
         var seen = new HashSet<(long, long, long, long, long, long, int, int, int)>();
         foreach (var op in ops)
