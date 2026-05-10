@@ -326,6 +326,7 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
             }
         }
         var cubicMinusFourWithoutInversionKeys = isCubic ? new HashSet<(int, int)>() : null; // 260510Ch
+        var cubicMinusFourHeights = isCubic ? new Dictionary<(int, int), double>() : null; // 260510Ch
         // 260510Ch: -6 は 3/m と等価なので、高さは -6 op の代表点ではなく紙面平行 mirror の高さから取る。
         double? minusSixMirrorHeight = RepresentativeParallelMirrorHeight();
         // ただし同じ投影位置に本物の 6/6_3 がある場合は 6(+対称心) / 6_3(+対称心) 側が defining symbol。
@@ -346,7 +347,13 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
                     minusSixHeights[key] = h;
             }
             if (isCubic && ax.Order == -4 && !inversionKeys.Contains(key))
+            {
                 cubicMinusFourWithoutInversionKeys.Add(key); // 260510Ch: -1 が同軸に無い -4 は ITA で -4 として残す。
+                double h4 = Mod1(sz);
+                if (h4 > FracEps && h4 < 1 - FracEps &&
+                    (!cubicMinusFourHeights.TryGetValue(key, out double curH4) || h4 < curH4))
+                    cubicMinusFourHeights[key] = h4; // 260510Ch: 同じ -4 投影位置の高さ表示は最小の非ゼロ高さ 1 個だけにする。
+            }
             // 旧: (260505Cl) cubic 限定で -4 位置だけ別収集して 4_n を抑制していた。
             // 旧: bool isCubicMinusFour = isCubic && ax.Order == -4;
             // 旧: if (ax.Order <= 0 && !isCubicMinusFour) continue;
@@ -367,6 +374,7 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
             minusSixHeights.Remove(key);
 
         var drawnMinusSixKeys = new HashSet<(int, int)>();
+        var drawnMinusFourKeys = new HashSet<(int, int)>(); // 260510Ch
         foreach (var ax in axes)
         {
             int o = ax.Order, absO = Math.Abs(o);
@@ -379,6 +387,7 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
             if (isCubic && o > 0 && absO == 4 && cubicMinusFourWithoutInversionKeys.Contains(key)) continue; // 260510Ch: -1 が無い同軸 -4 は 4_n より -4 を優先。
             if (o < 0 && absO == 6 && positiveSixKeys.Contains(key)) continue; // 260510Ch: 同じ投影位置に本物の 6/6_3 があれば -6 を重ねない。
             if (o == -6 && !drawnMinusSixKeys.Add(key)) continue; // 260510Ch: z=1/4 と 3/4、または z=0 と 1/2 の同一投影重複は 1 個に畳む。
+            if (keepMinusFourWithLabel && !drawnMinusFourKeys.Add(key)) continue; // 260510Ch: -4 高さラベルを同一投影位置で 1 個に畳む。
             if (absO == 2 && covered2.Contains(key)) continue; // (260503Ch) [ITA-D1] 高次点記号が同じ位置を定義するため、2 回点記号を省く。
             if (absO == 3 && o > 0 && covered3.Contains(key)) continue; // (260503Ch) [ITA-D1] 6 回点記号が同じ位置を定義するため、3 回点記号を省く。
             // 旧: if (o < 0 && properRotations.Contains((absO, key.Item1, key.Item2))) continue;
@@ -408,7 +417,9 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
             }
             // 旧: string label = keepMinusFourWithLabel ? HeightLabel(Mod1(sz)) : keepMinusSixWithLabel ? HeightLabel(minusSixHeights[key]) : null;
             // string label = keepMinusSixWithLabel ? HeightLabel(minusSixHeights[key]) : null; // 旧: -1 無し -4 まで screw 置換してしまい、Fd-3m(1) の -4 高さ表示が消えていた。
-            string label = keepMinusFourWithLabel ? HeightLabel(Mod1(sz)) : keepMinusSixWithLabel ? HeightLabel(minusSixHeights[key]) : null; // 260510Ch
+            string label = keepMinusFourWithLabel && cubicMinusFourHeights.TryGetValue(key, out double minH4)
+                ? HeightLabel(minH4)
+                : keepMinusSixWithLabel ? HeightLabel(minusSixHeights[key]) : null; // 260510Ch
             float labelRadius = keepMinusSixWithLabel ? SixFoldRadius : FourFoldRadius;
             if (label != null && order > 0 && finCount > 0) labelRadius += ScrewFinTailLen; // 260510Ch: screw fin が記号外へ伸びる分も高さラベル距離に含める。
             // 旧: float labelRadiusScale = keepMinusFourWithLabel ? 0.5f : keepMinusSixWithLabel ? 0.5f : 1f;
@@ -1285,6 +1296,21 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
         bool quarterOrThreeQuarter = IsFraction(offset, 1, 4) || IsFraction(offset, 3, 4);
         bool oddEighth = IsFraction(offset, 1, 8) || IsFraction(offset, 3, 8) ||
                          IsFraction(offset, 5, 8) || IsFraction(offset, 7, 8);
+        // 旧: double originAdjustedOffset = AdjustCubicOriginChoiceOffset(hm, nx, ny, offset); // 全空間群で unconditional に計算していた。
+        // 旧: bool adjustedZero = IsFraction(originAdjustedOffset, 0, 1), adjustedHalf = ..., adjustedQuarter = ...;
+        bool adjustedZero = false, adjustedHalf = false, adjustedQuarter = false;
+        if (hm is "Pn-3n(1)" or "Pn-3n(2)" or "P-43n" or "Pn-3m(1)" or "Pn-3m(2)") // 260510Ch: origin choice (2) shift を要するのは Pn-3 系のみ。それ以外では IsFraction を計算しない。
+        {
+            double adj = AdjustCubicOriginChoiceOffset(hm, nx, ny, offset);
+            adjustedZero = IsFraction(adj, 0, 1);
+            adjustedHalf = IsFraction(adj, 1, 2);
+            adjustedQuarter = IsFraction(adj, 1, 4) || IsFraction(adj, 3, 4);
+        }
+        if (diagonalLine && IsForbiddenCubicDiagonalPerpendicularPhase(hm, offset)) // 260510Ch
+        {
+            style = PerpendicularMirrorStyle.None;
+            return true;
+        }
         bool hasMirrorCandidate = drafts.Any(d =>
         {
             var (gSx, gSy, gSz) = ctx.Proj.ToScreen(d.Glide.U, d.Glide.V, d.Glide.W);
@@ -1295,14 +1321,15 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
         {
             case "Fm-3m":
                 if ((axisLine || diagonalLine) && zeroOrHalf) { style = PerpendicularMirrorStyle.Mirror; return true; }
-                if ((axisLine || diagonalLine) && quarterOrThreeQuarter) { style = PerpendicularMirrorStyle.None; return true; }
+                if (diagonalLine && quarterOrThreeQuarter) { style = PerpendicularMirrorStyle.NGlide; return true; } // 260510Ch
+                if (axisLine && quarterOrThreeQuarter) { style = PerpendicularMirrorStyle.None; return true; }
                 break;
 
             case "Fm-3c":
                 if (axisLine && zeroOrHalf) { style = PerpendicularMirrorStyle.Mirror; return true; }
                 if (axisLine && quarterOrThreeQuarter) { style = PerpendicularMirrorStyle.None; return true; }
                 if (diagonalLine && zeroOrHalf) { style = PerpendicularMirrorStyle.DepthGlide; return true; }
-                if (diagonalLine && quarterOrThreeQuarter) { style = PerpendicularMirrorStyle.None; return true; }
+                if (diagonalLine && quarterOrThreeQuarter) { style = PerpendicularMirrorStyle.InPlaneGlide; return true; } // 260510Ch
                 break;
 
             case "Fd-3m(1)":
@@ -1324,18 +1351,32 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
                 break;
 
             case "Im-3m":
+                if (axisLine && quarterOrThreeQuarter) { style = PerpendicularMirrorStyle.NGlide; return true; } // 260510Ch
                 if (diagonalLine && IsFraction(offset, 0, 1)) { style = PerpendicularMirrorStyle.Mirror; return true; }
                 if (diagonalLine && IsFraction(offset, 1, 2)) { style = PerpendicularMirrorStyle.EGlide; return true; }
                 break;
 
+            case "I-43m":
+                if (diagonalLine && IsFraction(offset, 1, 2)) { style = PerpendicularMirrorStyle.NGlide; return true; } // 260510Ch
+                break;
+
             case "Ia-3d":
-                if (axisLine && IsFraction(offset, 0, 1))
+                // 旧: if (axisLine && IsFraction(offset, 0, 1)) // a=1/2, b=1/2 が fall-through していた。
+                if (axisLine && zeroOrHalf) // 260510Ch: a=0,1/2 と b=0,1/2 を同パターンで処理。
                 {
-                    // 260510Ch: C 投影では sy=a, sx=b。a=0 は法線 (0,1)、b=0 は法線 (1,0)。
+                    // 260510Ch: C 投影では sy=a, sx=b。a=0,1/2 (法線 (0,1)) は dot、b=0,1/2 (法線 (1,0)) は dash。
                     style = nx == 0 ? PerpendicularMirrorStyle.DepthGlide : PerpendicularMirrorStyle.InPlaneGlide;
                     return true;
                 }
-                if (diagonalLine && nx == 1 && ny == 1 && quarterOrThreeQuarter)
+                // 旧: if (axisLine && quarterOrThreeQuarter) { style = DepthGlide; return true; } // 一律 dot は誤り。ITA では a=1/4,3/4 は dash, b=1/4,3/4 は dot。
+                if (axisLine && quarterOrThreeQuarter) // 260510Ch: zero/half と逆パターン。
+                {
+                    style = nx == 0 ? PerpendicularMirrorStyle.InPlaneGlide : PerpendicularMirrorStyle.DepthGlide;
+                    return true;
+                }
+                // 旧: if (diagonalLine && nx == 1 && ny == 1 && quarterOrThreeQuarter)
+                // 旧: if (diagonalLine && nx == 1 && ny == -1 && quarterOrThreeQuarter)
+                if (diagonalLine && quarterOrThreeQuarter) // 260510Ch: ITA 図に出ない diagonal quarter 系を両向きとも抑制。
                 {
                     style = PerpendicularMirrorStyle.None;
                     return true;
@@ -1347,8 +1388,29 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
                 if (diagonalLine && IsFraction(offset, 1, 2)) { style = PerpendicularMirrorStyle.DepthGlide; return true; }
                 break;
 
+            case "Pn-3n(1)":
+            case "Pn-3n(2)":
+            case "P-43n":
+                if (axisLine && adjustedQuarter) { style = PerpendicularMirrorStyle.NGlide; return true; } // 260510Ch
+                if (diagonalLine && adjustedZero) { style = PerpendicularMirrorStyle.NGlide; return true; } // 260510Ch
+                if (diagonalLine && adjustedHalf) { style = PerpendicularMirrorStyle.DepthGlide; return true; } // 260510Ch
+                if (diagonalLine && adjustedQuarter) { style = PerpendicularMirrorStyle.None; return true; } // 260510Ch
+                break;
+
+            case "Pn-3m(1)":
+            case "Pn-3m(2)":
+                if (axisLine && adjustedQuarter) { style = PerpendicularMirrorStyle.NGlide; return true; } // 260510Ch
+                if (diagonalLine && adjustedZero) { style = PerpendicularMirrorStyle.Mirror; return true; } // 260510Ch
+                if (diagonalLine && adjustedHalf) { style = PerpendicularMirrorStyle.DepthGlide; return true; } // 260510Ch
+                if (diagonalLine && adjustedQuarter) { style = PerpendicularMirrorStyle.None; return true; } // 260510Ch
+                break;
+
             case "F-43c":
                 if (diagonalLine && IsFraction(offset, 0, 1)) { style = PerpendicularMirrorStyle.DepthGlide; return true; }
+                break;
+
+            case "I-43d":
+                if (diagonalLine && quarterOrThreeQuarter) { style = PerpendicularMirrorStyle.None; return true; } // 260510Ch: ITA 図に出ない diagonal quarter lines を抑制。
                 break;
         }
         if (hasMirrorCandidate)
@@ -1356,6 +1418,20 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
             style = PerpendicularMirrorStyle.Mirror;
             return true;
         }
+        return false;
+    }
+
+    private static bool IsForbiddenCubicDiagonalPerpendicularPhase(string hm, double offset)
+    {
+        // 260510Ch: cubic の紙面垂直 {110} 系では、P/I 格子の 1/4 位相、および F 格子の 1/8 位相に
+        // 対称面は存在しない。ここで先に落とし、後段の hasMirrorCandidate fallback で m として復活させない。
+        if (string.IsNullOrEmpty(hm)) return false;
+        char lattice = char.ToUpperInvariant(hm[0]);
+        if (lattice is 'P' or 'I')
+            return IsFraction(offset, 1, 4) || IsFraction(offset, 3, 4);
+        if (lattice == 'F')
+            return IsFraction(offset, 1, 8) || IsFraction(offset, 3, 8) ||
+                   IsFraction(offset, 5, 8) || IsFraction(offset, 7, 8);
         return false;
     }
 
@@ -1787,9 +1863,9 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
         foreach (var (sxScreen, syScreen) in positions)
         {
             // site 判定は Mod1 で正規化した screen 位置 + Sz=0 を結晶座標に変換 (260506Cl: 1 行 switch にインライン化)。
-            // 旧: double sxKey = Mod1(sxScreen), syKey = Mod1(syScreen);
-            double siteScale = ctx.DisplayMaxS < 1 ? 1.0 / ctx.DisplayMaxS : 1.0; // 260510Ch: F 格子 stereonet の面記号は表示だけ 1/2 縮小しているので、site 判定では元の (a,b) 座標へ戻す。
-            double sxKey = Mod1(sxScreen * siteScale), syKey = Mod1(syScreen * siteScale); // 260510Ch
+            // 旧: double siteScale = ctx.DisplayMaxS < 1 ? 1.0 / ctx.DisplayMaxS : 1.0;
+            // 旧: double sxKey = Mod1(sxScreen * siteScale), syKey = Mod1(syScreen * siteScale);
+            double sxKey = Mod1(sxScreen), syKey = Mod1(syScreen); // 260510Ch: F 格子も内部座標は通常セルの (a,b) のまま扱い、縮小は表示だけに限定する。
             double axisSxKey = Mod1(sxScreen), axisSyKey = Mod1(syScreen); // 260510Ch: 斜め軸は実際の upper-left quadrant 位置で正しく拾えていたため、面用の 1/2 縮小補正を掛けない。
             var (xc, yc, zc) = projAxis switch
             {
@@ -1810,7 +1886,8 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
             var groupedGlides = new Dictionary<(int H, int K, int L), List<(double U, double V, double W)>>();
             foreach (var mp in diagonalMirrors)
             {
-                if (!PlanePassesThroughSite(mp, xc, yc, zc)) continue;
+                // 旧: if (!PlanePassesThroughSite(mp, xc, yc, zc)) continue;
+                if (!PlaneIntersectsProjectionColumn(mp, xc, yc, zc, projAxis)) continue; // 260510Ch: stereonet inset は投影点の depth column と交わる斜め面を拾う。
                 var hkl = NormalizeMillerIndices(mp.Normal);
                 if (!groupedGlides.TryGetValue(hkl, out var list))
                     groupedGlides[hkl] = list = [];
@@ -1893,13 +1970,11 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
         bool allowEGlide = AllowsDiagonalEGlide(spaceGroupHM); // 260510Ch
         bool allowDGlide = AllowsDiagonalDGlide(spaceGroupHM); // 260510Ch
 
-        // 旧: Fd-3c(1)/(2) を別々の位相規則で処理していた。
-        // 260510Ch: 両者は origin shift だけの差なので、h*x+k*y+l*z の原点補正 phase へ共通化する。
-        if (IsFd3c(spaceGroupHM) && TryResolveFd3cStereonetStyle(spaceGroupHM, hkl, siteX, siteY, siteZ, out var fd3cStyle))
-            return fd3cStyle;
-
-        if (IsFd3m(spaceGroupHM) && TryResolveFd3mStereonetStyle(spaceGroupHM, hkl, siteX, siteY, siteZ, out var fd3mStyle))
-            return fd3mStyle; // 260510Ch: Fd-3m(1)/(2) も origin choice だけの差として mirror/n を phase で決める。
+        // 旧: Fd-3c(1)/(2) と Fd-3m(1)/(2) を別々の helper (TryResolveFd3cStereonetStyle / TryResolveFd3mStereonetStyle) で位相規則を扱っていた。
+        // 260510Ch: 両者は origin shift だけの差なので、h*x+k*y+l*z の原点補正 phase へ共通化し、Pn/Pm 系も含めて単一リゾルバへ集約。
+        // 旧: if (IsFd3m(spaceGroupHM) && TryResolveFd3mStereonetStyle(...)) return fd3mStyle; // 新リゾルバが Fd-3m を含むため到達不能。ITA 検証 (260510Ch) で新マッピング確認済。
+        if (TryResolveCubicStereonetPhaseStyle(spaceGroupHM, hkl, siteX, siteY, siteZ, out var phaseStyle)) // 260510Ch
+            return phaseStyle;
 
         if (allowEGlide && TryResolveBodyCenteredDiagonalStereonetStyle(hkl, siteX, siteY, siteZ, out var bodyCenteredStyle))
             return bodyCenteredStyle; // 260510Ch
@@ -1933,6 +2008,84 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
         return StereonetGlideStyle.None;
     }
 
+    private static bool TryResolveCubicStereonetPhaseStyle(string spaceGroupHM,
+                                                           (int H, int K, int L) hkl,
+                                                           double siteX, double siteY, double siteZ,
+                                                           out StereonetGlideStyle style)
+    {
+        style = default;
+        hkl = NormalizeMillerIndices(hkl);
+        if (hkl.L == 0 || ((hkl.H == 0) == (hkl.K == 0))) return false;
+
+        // 旧: double phase = CubicDiagonalColumnPhase(hkl, siteX, siteY, siteZ);
+        double phase = CubicDiagonalColumnPhase(spaceGroupHM, hkl, siteX, siteY, siteZ); // 260510Ch: origin choice (2) の原点シフトを stereonet 位相へ反映する。
+        bool zero = IsFraction(phase, 0, 1), quarter = IsFraction(phase, 1, 4),
+             half = IsFraction(phase, 1, 2), threeQuarter = IsFraction(phase, 3, 4);
+        if (!zero && !quarter && !half && !threeQuarter) return false;
+
+        switch (spaceGroupHM)
+        {
+            case "Fm-3m":
+            case "F-43m":
+            case "Fd-3m(1)":
+            case "Fd-3m(2)":
+                style = (quarter || threeQuarter) ? StereonetGlideStyle.NGlide : StereonetGlideStyle.Mirror;
+                return true;
+
+            case "Fm-3c":
+            case "F-43c":
+            case "Fd-3c(1)":
+            case "Fd-3c(2)":
+                style = (quarter || threeQuarter) ? StereonetGlideStyle.AxialDepth : StereonetGlideStyle.AxialInPlane;
+                return true;
+
+            case "Pn-3m(1)":
+            case "Pn-3m(2)":
+            case "Pm-3m":
+            case "P-43m":
+                if (zero) { style = StereonetGlideStyle.Mirror; return true; }
+                if (half) { style = StereonetGlideStyle.AxialDepth; return true; }
+                break;
+
+            case "Pm-3n":
+            case "Pn-3n(1)":
+            case "Pn-3n(2)":
+            case "P-43n":
+                if (zero) { style = StereonetGlideStyle.NGlide; return true; }
+                if (half) { style = StereonetGlideStyle.AxialInPlane; return true; }
+                break;
+        }
+        return false;
+    }
+
+    private static double AdjustCubicOriginChoiceOffset(string hm, int nx, int ny, double offset)
+    {
+        // 260510Ch: Pn-3n/Pn-3m の origin choice (2) は (1/4,1/4,1/4) origin shift として、
+        // screen normal (nx,ny)=(k,h) の h+k 位相分を choice (1) 側の判定位相へ戻す。
+        if (hm is "Pn-3n(2)" or "Pn-3m(2)")
+            return Mod1(offset + 0.25 * (nx + ny));
+        return offset;
+    }
+
+    private static double CubicStereonetOriginChoiceShift(string spaceGroupHM)
+    {
+        // 260510Ch: stereonet inset は depth column と斜め面の交点を見ているため、origin choice の差は
+        // h*x+k*y+l*z の面位相に入れる。Fd の choice (2) は ITA 設定上 1/8 shift として現れる。
+        if (spaceGroupHM is "Fd-3m(2)" or "Fd-3c(2)") return 0.125;
+        if (spaceGroupHM is "Pn-3m(2)" or "Pn-3n(2)") return 0.25;
+        return 0.0;
+    }
+
+    private static double CubicDiagonalColumnPhase(string spaceGroupHM, (int H, int K, int L) hkl, double siteX, double siteY, double siteZ)
+    {
+        hkl = NormalizeMillerIndices(hkl);
+        // 旧: double phase = hkl.H != 0 ? hkl.H * siteX : hkl.K * siteY;
+        double origin = CubicStereonetOriginChoiceShift(spaceGroupHM); // 260510Ch
+        double phase = hkl.H * siteX + hkl.K * siteY + hkl.L * siteZ
+                     - (hkl.H + hkl.K + hkl.L) * origin; // 260510Ch
+        return Mod1(phase);
+    }
+
     private static bool AllowsDiagonalDGlide(string spaceGroupHM)
         => spaceGroupHM is "Ia-3d" or "I-43d"; // 260510Ch: ITA 確認事項。斜め d 映進はこの 2 群のみ。
 
@@ -1962,66 +2115,8 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
         return Math.Abs(depthGlide) > 1e-6 ? StereonetGlideStyle.AxialDepth : StereonetGlideStyle.AxialInPlane;
     }
 
-    private static bool IsFd3c(string spaceGroupHM)
-        => spaceGroupHM is "Fd-3c(1)" or "Fd-3c(2)"; // 260510Ch
-
-    private static bool IsFd3m(string spaceGroupHM)
-        => spaceGroupHM is "Fd-3m(1)" or "Fd-3m(2)"; // 260510Ch
-
-    private static double FdOriginShift(string spaceGroupHM)
-        => spaceGroupHM.EndsWith("(2)", StringComparison.Ordinal) ? 0.25 : 0.0; // 260510Ch: Fd origin choice (2) は (1/4,1/4,1/4) shift。
-
-    private static bool TryResolveFd3mStereonetStyle(string spaceGroupHM,
-                                                     (int H, int K, int L) hkl,
-                                                     double siteX, double siteY, double siteZ,
-                                                     out StereonetGlideStyle style)
-    {
-        // 260510Ch: Fd-3m の stereonet 斜め面は、原点補正後の phase が整数なら mirror、半整数なら n-glide。
-        // Fd-3m(2) は Fd-3m(1) から (1/4,1/4,1/4) だけ原点がずれる。
-        style = default;
-        hkl = NormalizeMillerIndices(hkl);
-        if (hkl.L == 0) return false;
-
-        bool cubicDiagonalFamily =
-            (hkl.H != 0 && hkl.K == 0) ||
-            (hkl.K != 0 && hkl.H == 0);
-        if (!cubicDiagonalFamily) return false;
-
-        double origin = FdOriginShift(spaceGroupHM);
-        double phase = Mod1(hkl.H * siteX + hkl.K * siteY + hkl.L * siteZ
-                          - (hkl.H + hkl.K + hkl.L) * origin);
-        if (IsFraction(phase, 0, 1)) { style = StereonetGlideStyle.Mirror; return true; }
-        if (IsFraction(phase, 1, 2)) { style = StereonetGlideStyle.NGlide; return true; }
-        return false;
-    }
-
-    private static bool TryResolveFd3cStereonetStyle(string spaceGroupHM,
-                                                     (int H, int K, int L) hkl,
-                                                     double siteX, double siteY, double siteZ,
-                                                     out StereonetGlideStyle style)
-    {
-        // 旧: Fd-3c(1) は a/b phase、Fd-3c(2) は h/k 符号付き phase として別々に書いていた。
-        // 260510Ch: origin choice (2) は choice (1) から (1/4,1/4,1/4) ずれているので、
-        // phase = h*x + k*y + l*z - (h*ox + k*oy + l*oz) で共通化できる。
-        // phase が整数なら dash、半整数なら dot。
-        style = default;
-        hkl = NormalizeMillerIndices(hkl);
-        if (hkl.L == 0) return false;
-
-        bool cubicDiagonalFamily =
-            (hkl.H != 0 && hkl.K == 0) ||
-            (hkl.K != 0 && hkl.H == 0);
-        if (!cubicDiagonalFamily) return false;
-
-        double origin = FdOriginShift(spaceGroupHM); // 260510Ch
-        double phase = Mod1(hkl.H * siteX + hkl.K * siteY + hkl.L * siteZ
-                          - (hkl.H + hkl.K + hkl.L) * origin);
-        bool isZero = IsFraction(phase, 0, 1), isHalf = IsFraction(phase, 1, 2);
-        if (!isZero && !isHalf) return false;
-
-        style = isZero ? StereonetGlideStyle.AxialInPlane : StereonetGlideStyle.AxialDepth;
-        return true;
-    }
+    // 旧: IsFd3c / IsFd3m / FdOriginShift / TryResolveFd3mStereonetStyle / TryResolveFd3cStereonetStyle を個別 helper として保持していた。
+    // 260510Ch: 全て TryResolveCubicStereonetPhaseStyle に集約 (Fd-3m phase=1/2 → m, phase=1/4 → n の ITA マッピングへ修正)。
 
     private static bool TryResolveBodyCenteredDiagonalStereonetStyle((int H, int K, int L) hkl,
                                                                      double siteX, double siteY, double siteZ,
@@ -2056,6 +2151,14 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
         double residual = h * xc + k * yc + l * zc - c;
         residual -= Math.Round(residual); // mod 1
         return Math.Abs(residual) < 1e-6;
+    }
+
+    /// <summary>stereonet inset は投影点を通る depth column の対称性を表すため、斜め面は depth を動かして交差判定する。260510Ch</summary>
+    private static bool PlaneIntersectsProjectionColumn(SymmetryPlane mp, double xc, double yc, double zc, ProjectionAxis projAxis)
+    {
+        var depthCoeff = ProjectedDepth(mp.Normal.U, mp.Normal.V, mp.Normal.W, projAxis);
+        if (Math.Abs(depthCoeff) < 1e-9) return PlanePassesThroughSite(mp, xc, yc, zc);
+        return true;
     }
 
     /// <summary>(260505Cl) 軸 ax の line {(X+tU, Y+tV, Z+tW)} が site (xc, yc, zc) を通るか厳密判定 (lattice 周期を含む)。</summary>
