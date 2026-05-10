@@ -72,8 +72,9 @@ internal static class SymmetryDiagram
 
     private readonly record struct TranslationRange(int MinA, int MaxA, int MinB, int MaxB, int MinC, int MaxC);
 
-    /// <summary>鏡映面の種別。260510Ch: 旧 AxisA/AxisB/Diagonal*/Hex* の個別分類は廃止し、W=0 を Vertical に集約。</summary>
-    private enum PlaneType { AxisC, Vertical }
+    /// <summary>鏡映面の種別。260510Ch: 旧 AxisA/AxisB/Diagonal*/Hex* の個別分類は廃止し W=0 を 1 つに集約 (旧名 Vertical)。
+    /// 260511Cl: 立方晶 {0kl}/{h0l} 系を ContainsA / ContainsB として追加。それに伴い Vertical を ContainsC に rename し、A/B/C で対称な命名に揃える。</summary>
+    private enum PlaneType { AxisC, ContainsC, ContainsA, ContainsB }
 
     #endregion
 
@@ -295,12 +296,15 @@ internal static class SymmetryDiagram
                                                    Dictionary<(long, long, long, long), int> drawn,
                                                   List<GLObject> objects)
     {
-        // 面内軸 u, v を plane type で決定。
+        // 面内軸 u, v を plane type で決定。v 方向は Miller hkl の cross product N×u_axis (右手系) で統一。
         // 260510Ch: AxisA/AxisB/Diagonal/Hex* の個別分類を廃止し、Miller 面指数 (h,k,0) から (k,-h,0) で面内方向を 1 式に統一。
+        // 260511Cl: 立方晶 {0kl}/{h0l} 用に ContainsA / ContainsB を追加。
         (V3 u, V3 v) = type switch
         {
             PlaneType.AxisC => (axes.Column0, axes.Column1),
-            PlaneType.Vertical => (axes.Column2, axes * new V3(mp.Normal.V, -mp.Normal.U, 0)),
+            PlaneType.ContainsC => (axes.Column2, axes * new V3(mp.Normal.V, -mp.Normal.U, 0)),
+            PlaneType.ContainsA => (axes.Column0, axes * new V3(0, mp.Normal.W, -mp.Normal.V)),
+            PlaneType.ContainsB => (axes.Column1, axes * new V3(-mp.Normal.W, 0, mp.Normal.U)),
             _ => (default, default),
         };
         var uHat = u.Normalized();
@@ -313,12 +317,15 @@ internal static class SymmetryDiagram
         double headLength = (armWorldU + armWorldV) * PlaneArrowheadLengthFactor;
         double headHalfWidth = headLength * PlaneArrowheadAspect;
 
-        // 映進面の種別: 面内 glide のフラクショナル成分が片方のみ → 軸映進、両方非ゼロ → 対角 (n / d)。
-        // 260510Ch: Miller 面 (h,k,0) の面内 glide 成分は (k,-h,0) 方向の射影で表せるため、AxisC と Vertical の 2 式に統一。
+        // 映進面の種別: 面内 glide のフラクショナル成分が片方のみ → 軸映進、両方非ゼロ → 対角 (n / d)。gv は対応する v_frac との内積。
+        // 260510Ch: Miller 面 (h,k,0) の面内 glide 成分は (k,-h,0) 方向の射影で表せるため、AxisC と ContainsC の 2 式に統一。
+        // 260511Cl: ContainsA / ContainsB を追加。a/b 軸を含む面の面内 glide 射影に対応。
         var (gu, gv) = type switch
         {
             PlaneType.AxisC => (mp.Glide.U, mp.Glide.V),
-            PlaneType.Vertical => (mp.Glide.W, mp.Normal.V * mp.Glide.U - mp.Normal.U * mp.Glide.V),
+            PlaneType.ContainsC => (mp.Glide.W, mp.Normal.V * mp.Glide.U - mp.Normal.U * mp.Glide.V),
+            PlaneType.ContainsA => (mp.Glide.U, mp.Normal.W * mp.Glide.V - mp.Normal.V * mp.Glide.W),
+            PlaneType.ContainsB => (mp.Glide.V, mp.Normal.U * mp.Glide.W - mp.Normal.W * mp.Glide.U),
             _ => (0, 0),
         };
         const double glideTol = 1e-6;
@@ -457,13 +464,16 @@ internal static class SymmetryDiagram
         }
     }
 
-    /// <summary>SymmetryPlane.Normal が basal 面または c 軸を含む垂直面なら分類する。260510Ch</summary>
+    /// <summary>SymmetryPlane.Normal が basal 面 / c 軸を含む面 / a 軸を含む面 / b 軸を含む面なら分類する。
+    /// 260510Ch: 旧 AxisA/AxisB/Diagonal/Hex* を W=0 集約で 1 式に統一。
+    /// 260511Cl: 立方晶 {0kl}/{h0l} 系を ContainsA / ContainsB として追加 (Miller hkl で h=0 or k=0 のとき含まれる cell 軸を u に取る)。
+    /// 優先順は W=0 → U=0 → V=0 で、(100)/(010) は ContainsC に分類される (W=0 で先に拾われるため)。</summary>
     private static PlaneType? GetPlaneType((int U, int V, int W) n)
     {
-        // 旧: AxisA/AxisB/Diagonal/Hex120/Hex210 を個別パターンで列挙していた。
-        // Miller hkl では W=0 の面内方向は常に (k,-h,0) で得られるため、3/6 回転同値面も同じ式で扱える。
         if (n.U == 0 && n.V == 0 && n.W != 0) return PlaneType.AxisC;
-        if (n.W == 0 && (n.U != 0 || n.V != 0)) return PlaneType.Vertical;
+        if (n.W == 0 && (n.U != 0 || n.V != 0)) return PlaneType.ContainsC;
+        if (n.U == 0 && (n.V != 0 || n.W != 0)) return PlaneType.ContainsA;
+        if (n.V == 0 && (n.U != 0 || n.W != 0)) return PlaneType.ContainsB;
         return null;
     }
 

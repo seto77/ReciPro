@@ -637,8 +637,7 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
             if (ProjectedDepth(u, v, w, projAxis) < 0)
                 (u, v, w) = (-u, -v, -w); // (260505Ch) shaft 方向だけ depth 正側へ統一し、3_1/3_2 の edgeStep は変換しない。
             var (dSx, dSy) = ProjectVector(u, v, w, projAxis);
-            float dirX = (float)(dSx * ctx.C.Horz.X + dSy * ctx.C.Vert.X);
-            float dirY = (float)(dSx * ctx.C.Horz.Y + dSy * ctx.C.Vert.Y);
+            float dirX = (float)(dSx * ctx.C.Horz.X + dSy * ctx.C.Vert.X), dirY = (float)(dSx * ctx.C.Horz.Y + dSy * ctx.C.Vert.Y);
             float dlen = (float)Math.Sqrt(dirX * dirX + dirY * dirY);
             if (dlen < 1e-3f) continue;
             dirX /= dlen; dirY /= dlen;
@@ -664,9 +663,7 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
         double depthDir = ProjectedDepth(ax.Direction.U, ax.Direction.V, ax.Direction.W, projAxis);
         if (Math.Abs(depthDir) < 1e-9) return false;
         double t = -depthPos / depthDir;
-        double x0 = ax.X + t * ax.Direction.U;
-        double y0 = ax.Y + t * ax.Direction.V;
-        double z0 = ax.Z + t * ax.Direction.W;
+        double x0 = ax.X + t * ax.Direction.U, y0 = ax.Y + t * ax.Direction.V, z0 = ax.Z + t * ax.Direction.W;
         var (px, py, _) = GetProjection(projAxis).ToScreen(x0, y0, z0);
         sx = Mod1(px); sy = Mod1(py);
         return true;
@@ -1067,10 +1064,7 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
         if (mirrorHeights.Count > 0)
             symbols.Add(new(mirrorHeights[0], 0, 0, 0, 0, false, false, 0));
 
-        var glideReps = markers
-            .Where(HasInPlaneGlide)
-            .GroupBy(GlideKey)
-            .Select(grp =>
+        var glideReps = markers.Where(HasInPlaneGlide) .GroupBy(GlideKey) .Select(grp =>
             {
                 var marker = grp.OrderBy(m => HeightKey(m.Height)).First();
                 double sx = marker.GlideSx, sy = marker.GlideSy;
