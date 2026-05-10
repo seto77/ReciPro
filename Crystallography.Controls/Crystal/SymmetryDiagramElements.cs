@@ -316,15 +316,12 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
         // 旧: (260505Cl) cubic で 4_n を抑制するための -4 射影位置集合。各 -4 軸の高さは 2 周目で各 axis の sz から直接読む。
         // 旧: var minusFourKeys = isCubic ? new HashSet<(int, int)>() : null;
         // 260510Cl: ITA 規約に合わせ「-1 と同位置の -4 を抑制」する向きへ反転。-1 (反転中心) の投影位置を集める。
-        var inversionKeys = isCubic ? new HashSet<(int, int)>() : null;
-        if (isCubic)
-        {
-            foreach (var c in table.InversionCenters)
-            {
-                var (cx, cy, _) = ctx.Proj.ToScreen(c.X, c.Y, c.Z);
-                inversionKeys.Add(((int)Math.Round(Mod1(cx) * 10000), (int)Math.Round(Mod1(cy) * 10000)));
-            }
-        }
+        var inversionKeys = isCubic
+            ? table.InversionCenters
+                .Select(c => ctx.Proj.ToScreen(c.X, c.Y, c.Z))
+                .Select(t => ((int)Math.Round(Mod1(t.Sx) * 10000), (int)Math.Round(Mod1(t.Sy) * 10000)))
+                .ToHashSet()
+            : null; // 260510Cl: foreach + Add を LINQ 化。
         var cubicMinusFourWithoutInversionKeys = isCubic ? new HashSet<(int, int)>() : null; // 260510Ch
         var cubicMinusFourHeights = isCubic ? new Dictionary<(int, int), double>() : null; // 260510Ch
         // 260510Ch: -6 は 3/m と等価なので、高さは -6 op の代表点ではなく紙面平行 mirror の高さから取る。
@@ -507,7 +504,8 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
         => !IsAxisPerpendicularToProjection(d, a) && !IsAxisInPlane(d, a);
     #endregion
 
-    #region 紙面垂直 2(2_1) 軸 lens / 紙面垂直 3/4/6 多角形
+    #region 軸プリミティブ (紙面垂直 lens / 正多角形 / 螺旋 fin)
+    // 260510Cl: 紙面垂直/斜め/inset stereonet で共有する図形プリミティブを 1 region に集約。
     /// <summary>紙面垂直 2 (2_1) 軸: vesica piscis lens を塗り潰し。screw=互い違い円弧。-4 から呼ぶ際は scale で縮小。
     /// (260504Cl) widthScale: 長軸はそのままで幅 (短軸方向) のみ独立に倍率を掛ける。
     /// (260504Cl) finSweepScale: 2_1 螺旋 fin (円弧) の sweep 角度の倍率。stereonet 用に短くする。</summary>
@@ -569,15 +567,11 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
 
     /// <summary>中心 c から半径 r の正 N 角形 (頂点 0 を真上)。</summary>
     private static PointF[] RegularPolygon(PointF c, int N, float r)
-    {
-        var poly = new PointF[N];
-        for (int i = 0; i < N; i++)
+        => [.. Enumerable.Range(0, N).Select(i =>
         {
             double th = -Math.PI / 2 + i * 2 * Math.PI / N;
-            poly[i] = new PointF(c.X + (float)(r * Math.Cos(th)), c.Y + (float)(r * Math.Sin(th)));
-        }
-        return poly;
-    }
+            return new PointF(c.X + (float)(r * Math.Cos(th)), c.Y + (float)(r * Math.Sin(th)));
+        })]; // 260510Cl: ループを Enumerable.Range + collection expression へ。
 
     /// <summary>n_k 螺旋の指示棒。頂点 (j*placeStep)%N から edge (i−edgeStep)→i 方向に延長。</summary>
     private static void DrawScrewFins(Graphics g, Pen pen, PointF[] poly, int finCount, int edgeStep, float tailLen)
@@ -620,7 +614,9 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
         else g.FillPolygon(fill, RegularPolygon(pt, 3, radius));
         g.DrawPolygon(outline, poly);
     }
+    #endregion
 
+    #region 紙面斜め 回転軸 (立方晶 [111]/[110] 系)
     /// <summary>紙面に対し斜め (例: 立方晶 [111], [101]) の 2/3 回回転軸 (proper / screw) を描画。-N 等は未対応。
     /// foot 位置は axis の depth=0 平面との交点に取る (SymmetryElementsTable 格納 position は軸線上の任意点なので)。
     /// (260505Cl) skipPositionKeys: 与えられた (Mod1(sx), Mod1(sy)) キーに該当する位置の cell-side 描画はスキップ。</summary>
@@ -816,6 +812,7 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
                                                                           CellLayout layout, ProjectionAxis projAxis,
                                                                           double displayMaxS = 1.0)
     {
+        // 260510Cl: out 引数を含むため LINQ 1 行化はしないが、内側ループは EdgeReplicatedPoints で陳述化。
         var result = new HashSet<(long, long)>();
         foreach (var ax in table.SymmetryAxes)
         {
@@ -823,7 +820,7 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
             if (!IsAxisDiagonalToProjection(ax.Direction, projAxis)) continue;
             if (!TryGetDiagonalAxisFootprint(ax, projAxis, out double sx, out double sy)) continue;
             foreach (var (dxf, dyf) in EdgeReplicatedPoints(sx, sy, displayMaxS))
-                result.Add(ScreenPointKey(layout.ToScreen(dxf, dyf))); // (260505Cl)
+                result.Add(ScreenPointKey(layout.ToScreen(dxf, dyf)));
         }
         return result;
     }
@@ -831,12 +828,7 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
     /// <summary>(260505Cl) m-3m / -43m 系で stereonet inset を描く位置のスクリーン pixel キー集合。
     /// in-plane axis arrow を stereonet 輪郭の外側へずらす判定に用いる。</summary>
     private static HashSet<(long X, long Y)> CollectStereonetAnchorKeys(CellLayout layout, (double Sx, double Sy)[] positions)
-    {
-        var result = new HashSet<(long, long)>();
-        foreach (var (sx, sy) in positions)
-            result.Add(ScreenPointKey(layout.ToScreen(sx, sy))); // (260505Ch) mirror/glide 線分延長と同じ screen key を使う。
-        return result;
-    }
+        => [.. positions.Select(p => ScreenPointKey(layout.ToScreen(p.Sx, p.Sy)))]; // 260510Cl: foreach + Add を collection expr へ。
 
     /// <summary>(260503Cl 追加) 紙面垂直回転軸 (2/3/4/6 と螺旋形・反転形) の position を screen 座標 key にして返す。
     /// 紙面平行軸の anchor が同位置に来ると、垂直軸の点記号 (lens / 多角形) と重なるため、shift 判定に使う。</summary>
@@ -874,11 +866,12 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
         {
             var allDrafts = group.ToList();
             // (260503Cl) ITC: 同位置・同方向・同高さで proper 4 (4 / 4_n) と -4 が共存する場合、proper 4 を優先 (Pm-3m の 4 + -4、Fm-3c の 4_2 + -4 等)。
-            var properFourSzKeys = new HashSet<long>(
-                allDrafts.Where(d => d.Order == 4).Select(d => (long)Math.Round(d.Sz * 1000)));
-            allDrafts = allDrafts
-                .Where(d => !(d.Order == -4 && properFourSzKeys.Contains((long)Math.Round(d.Sz * 1000))))
-                .ToList();
+            // 260510Cl: HashSet new + Where().ToList() 再代入を ToHashSet + List.RemoveAll に。
+            var properFourSzKeys = allDrafts
+                .Where(d => d.Order == 4)
+                .Select(d => (long)Math.Round(d.Sz * 1000))
+                .ToHashSet();
+            allDrafts.RemoveAll(d => d.Order == -4 && properFourSzKeys.Contains((long)Math.Round(d.Sz * 1000)));
             // (260503Cl) ITC: 同位置・同方向で |order|=4 の軸が存在する場合、|order|=2 の点記号は描かない (4 が defining symbol)。
             bool hasFourfold = allDrafts.Any(d => Math.Abs(d.Order) == 4);
             var list = (hasFourfold ? allDrafts.Where(d => Math.Abs(d.Order) == 4) : allDrafts.AsEnumerable())
@@ -1804,12 +1797,7 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
 
     /// <summary>(260505Cl 追加) Mod1 し dedup した stereonet 位置キー集合。cell-side の 3 回軸描画スキップ判定に使う。</summary>
     private static HashSet<(long, long)> ComputeStereonetSkipKeys((double Sx, double Sy)[] positions)
-    {
-        var set = new HashSet<(long, long)>();
-        foreach (var (sx, sy) in positions)
-            set.Add(PeriodicPositionKey(sx, sy)); // (260505Ch) (1,0)/(0,1)/(1,1) は (0,0) と同じ foot として扱う。
-        return set;
-    }
+        => [.. positions.Select(p => PeriodicPositionKey(p.Sx, p.Sy))]; // 260510Cl: foreach + Add を collection expr へ。
 
     /// <summary>(260505Ch) unit-cell 周期位置の比較キー。1.0 近傍を 0.0 に折り畳み、境界上の foot を同一視する。</summary>
     private static (long X, long Y) PeriodicPositionKey(double sx, double sy)
@@ -1847,17 +1835,13 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
             .ToList(); // (260505Ch) cell-side の斜め軸判定と同じ条件に揃える。
 
         float radius = CubicStereonetInsetRadius;
-        using var outlinePen      = new Pen(CellOutlineColor, CellOutlinePenWidth);
-        using var dGlidePen       = new Pen(Color.Black, MirrorPenWidth) { DashStyle = DashStyle.Custom, DashPattern = [5f, 2.5f, 1f, 2.5f] };
-        using var axialDashPen    = new Pen(Color.Black, MirrorPenWidth) { DashStyle = DashStyle.Custom, DashPattern = [5f, 3f] };       // 1/2 along 紙面内軸
-        using var axialDotPen     = new Pen(Color.Black, MirrorPenWidth) { DashStyle = DashStyle.Custom, DashPattern = [1f, 2.5f] };     // 1/2 along 紙面と斜め
-        using var ePen            = new Pen(Color.Black, MirrorPenWidth)                                                                  // e-glide (double glide)
-        {
-            DashStyle = DashStyle.Custom,
-            DashCap = DashCap.Round,
-            // DashPattern = [0.1f, EGlideDotDashUnit, 0.1f, EGlideDotDashUnit, 5.0f, EGlideDotDashUnit] // 旧: dot-dot-dash
-            DashPattern = [5.0f, EGlideDotDashUnit, 0.1f, EGlideDotDashUnit, 0.1f, EGlideDotDashUnit] // (260505Ch) e-glide は dash-dot-dot
-        };
+        using var outlinePen = new Pen(CellOutlineColor, CellOutlinePenWidth);
+        // 260510Cl: 旧来 dGlidePen/axialDashPen/axialDotPen/ePen を新規生成していたが、ctx.DiagPen / InPlanePen / DepthPen / EPen と
+        // dash pattern が完全一致するため context 側のペンを再利用する。
+        var dGlidePen    = ctx.DiagPen;     // dot-dash 大円 (d-glide / n-glide)
+        var axialDashPen = ctx.InPlanePen;  // 1/2 along 紙面内軸: 破線
+        var axialDotPen  = ctx.DepthPen;    // 1/2 along 紙面と斜め: 点線
+        var ePen         = ctx.EPen;        // e-glide (double glide): dash-dot-dot
 
         // 補助線として描く 4 つの大円 (cell 輪郭と同じ色・線幅)。実鏡映があれば後段の mirrorPen 描画で上塗りされる。
         foreach (var (sxScreen, syScreen) in positions)
@@ -1906,16 +1890,12 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
 
             // 260505Cl: Order を含めて 2 回軸/3 回軸を同列に dedup。Screw も保持し DrawStereonetTwofold に渡す。
             // (260505Cl 整理) 立方晶高対称群の stereonet 中心を通る 3 回軸は <111> proper のみで、3_1/3_2 螺旋は現れないため FinCount/EdgeStep は持たない。
-            var siteAxes = new List<((int U, int V, int W) Direction, int Order, bool Screw)>();
-            var seenAxis = new HashSet<(int, int, int, int)>();
-            foreach (var ax in diagonalAxes)
-            {
-                // if (!AxisPassesThroughSite(ax, xc, yc, zc)) continue; // 旧: 面用に戻した F 格子 full-cell site を軸にも使い、Fd-3c(2) の斜め軸が 3[111] へ潰れていた。
-                if (!AxisPassesThroughSite(ax, axisXc, axisYc, axisZc)) continue; // 260510Ch
-                var key = (ax.Direction.U, ax.Direction.V, ax.Direction.W, ax.Order);
-                if (!seenAxis.Add(key)) continue;
-                siteAxes.Add((ax.Direction, ax.Order, ax.Screw));
-            }
+            // 260510Cl: foreach + 手動 dedup を Where + DistinctBy へ。
+            var siteAxes = diagonalAxes
+                .Where(ax => AxisPassesThroughSite(ax, axisXc, axisYc, axisZc))
+                .DistinctBy(ax => (ax.Direction.U, ax.Direction.V, ax.Direction.W, ax.Order))
+                .Select(ax => (ax.Direction, ax.Order, ax.Screw))
+                .ToList();
 
             var center = ctx.C.ToScreen(sxScreen, syScreen);
             // 1) 輪郭 (常に)
@@ -1961,11 +1941,9 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
         {
             var centered = CenteredGlideVector(g.U, g.V, g.W); // (260505Ch) +1/2 と -1/2 を別 coset として保持するため signed のまま扱う。
             if (Math.Abs(centered.X) + Math.Abs(centered.Y) + Math.Abs(centered.Z) < 1e-6) { hasPure = true; continue; }
-            bool found = false;
-            foreach (var d in distinctNonZero)
-                if (SameGlideVector((d.U, d.V, d.W), centered))
-                { found = true; break; }
-            if (!found) distinctNonZero.Add((centered.X, centered.Y, centered.Z));
+            // 260510Cl: 内側 foreach + found フラグを Any() へ。
+            if (!distinctNonZero.Any(d => SameGlideVector((d.U, d.V, d.W), centered)))
+                distinctNonZero.Add((centered.X, centered.Y, centered.Z));
         }
         bool allowEGlide = AllowsDiagonalEGlide(spaceGroupHM); // 260510Ch
         bool allowDGlide = AllowsDiagonalDGlide(spaceGroupHM); // 260510Ch
