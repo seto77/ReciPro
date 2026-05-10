@@ -378,11 +378,6 @@ public partial class FormSymmetryInformation : FormBase
     }
     #endregion
 
-    private void groupBoxGeometricsCalculation_Enter(object sender, EventArgs e)
-    {
-
-    }
-
     #region 対称要素図 / 一般位置図のクリップボードコピー (260504Cl 追加)
 
     private void buttonCopySymmetryElements_Click(object sender, EventArgs e)

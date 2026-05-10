@@ -1,4 +1,4 @@
-using Crystallography;
+﻿using Crystallography;
 using Crystallography.OpenGL;
 using System;
 using System.Collections.Generic;
@@ -72,8 +72,8 @@ internal static class SymmetryDiagram
 
     private readonly record struct TranslationRange(int MinA, int MaxA, int MinB, int MaxB, int MinC, int MaxC);
 
-    /// <summary>軸対称鏡映面の種別。法線が cell 軸または面内対角に沿う場合に分類する。260509Cl 追加</summary>
-    private enum PlaneType { AxisA, AxisB, AxisC, Diagonal110, Diagonal1m10, Hex120, Hex210 }
+    /// <summary>鏡映面の種別。260510Ch: 旧 AxisA/AxisB/Diagonal*/Hex* の個別分類は廃止し、W=0 を Vertical に集約。</summary>
+    private enum PlaneType { AxisC, Vertical }
 
     #endregion
 
@@ -250,6 +250,7 @@ internal static class SymmetryDiagram
     {
         var objects = new List<GLObject>();
         var drawn = new Dictionary<(long, long, long, long), int>(); // 260509Ch: 平面 dedup と、その面に描画済みの glide 方向 mask。
+        var invAxes = M3d.Invert(axes); // 260510Ch: Miller 面法線 hkl は逆格子側 A^{-T} で実空間化する。
         var boundsArray = bounds.Select(b => new[] { b.X, b.Y, b.Z, b.W }).ToArray();
         var extendedBounds = bounds.Select(b => new V4(b.X, b.Y, b.Z, b.W * ExtendedBoundsFactor)).ToArray();
         var extendedBoundsArray = extendedBounds.Select(b => new[] { b.X, b.Y, b.Z, b.W }).ToArray();
@@ -265,8 +266,9 @@ internal static class SymmetryDiagram
 
         foreach (var mp in planes)
         {
-            // SymmetryOperation.Direction は直接空間の鏡面法線方向なので axes * normalFrac (六方晶 P6mm の [120] 等で必要)。260509Ch
-            if (!TryNormalize(axes * new V3(mp.Normal.U, mp.Normal.V, mp.Normal.W), out var normalWorld)) continue;
+            // 旧: if (!TryNormalize(axes * new V3(mp.Normal.U, mp.Normal.V, mp.Normal.W), out var normalWorld)) continue;
+            // 260510Ch: SymmetryPlane.Normal は Miller 面指数なので、直接格子ではなく逆格子ベクトル A^{-T}·hkl で実空間化する。
+            if (!TryNormalize(invAxes.Row0 * mp.Normal.U + invAxes.Row1 * mp.Normal.V + invAxes.Row2 * mp.Normal.W, out var normalWorld)) continue;
 
             if (GetPlaneType(mp.Normal) is { } planeType)
                 GenerateAxisAlignedPlane(mp, planeType, axes, shift, bounds, boundsArray, extendedBounds, boundsVertices, range,
@@ -293,23 +295,12 @@ internal static class SymmetryDiagram
                                                    Dictionary<(long, long, long, long), int> drawn,
                                                   List<GLObject> objects)
     {
-        // a/b basal 軸が約 120° の六方晶か。AxisA/B の hex 系では direct-space 垂直方向に補正する。
-        double lenA = axes.Column0.Length, lenB = axes.Column1.Length;
-        bool hexBasal = lenA > ToleranceSquared && lenB > ToleranceSquared &&
-                        Math.Abs(V3.Dot(axes.Column0, axes.Column1) / (lenA * lenB) + 0.5) < 1e-4;
-
-        // 面内軸 u, v を plane type で決定。260509Ch
+        // 面内軸 u, v を plane type で決定。
+        // 260510Ch: AxisA/AxisB/Diagonal/Hex* の個別分類を廃止し、Miller 面指数 (h,k,0) から (k,-h,0) で面内方向を 1 式に統一。
         (V3 u, V3 v) = type switch
         {
-            PlaneType.AxisA when hexBasal => (axes.Column2, axes.Column0 + axes.Column1 * 2),
-            PlaneType.AxisB when hexBasal => (axes.Column2, axes.Column0 * 2 + axes.Column1),
-            PlaneType.AxisA => (axes.Column1, axes.Column2),
-            PlaneType.AxisB => (axes.Column0, axes.Column2),
             PlaneType.AxisC => (axes.Column0, axes.Column1),
-            PlaneType.Diagonal110 => (axes.Column2, axes.Column0 - axes.Column1),
-            PlaneType.Diagonal1m10 => (axes.Column2, axes.Column0 + axes.Column1),
-            PlaneType.Hex120 => (axes.Column2, axes.Column0),
-            PlaneType.Hex210 => (axes.Column2, axes.Column1),
+            PlaneType.Vertical => (axes.Column2, axes * new V3(mp.Normal.V, -mp.Normal.U, 0)),
             _ => (default, default),
         };
         var uHat = u.Normalized();
@@ -322,19 +313,12 @@ internal static class SymmetryDiagram
         double headLength = (armWorldU + armWorldV) * PlaneArrowheadLengthFactor;
         double headHalfWidth = headLength * PlaneArrowheadAspect;
 
-        // 映進面の種別: 面内 glide のフラクショナル成分が片方のみ → 軸映進、両方非ゼロ → 対角 (n / d)。260509Cl 追加
-        // 260509Ch: 1 回だけ使う glide 成分ヘルパーをインライン化。
+        // 映進面の種別: 面内 glide のフラクショナル成分が片方のみ → 軸映進、両方非ゼロ → 対角 (n / d)。
+        // 260510Ch: Miller 面 (h,k,0) の面内 glide 成分は (k,-h,0) 方向の射影で表せるため、AxisC と Vertical の 2 式に統一。
         var (gu, gv) = type switch
         {
-            PlaneType.AxisA when hexBasal => (mp.Glide.W, (mp.Glide.U + 2 * mp.Glide.V) / 5.0),
-            PlaneType.AxisB when hexBasal => (mp.Glide.W, (2 * mp.Glide.U + mp.Glide.V) / 5.0),
-            PlaneType.AxisA => (mp.Glide.V, mp.Glide.W),
-            PlaneType.AxisB => (mp.Glide.U, mp.Glide.W),
             PlaneType.AxisC => (mp.Glide.U, mp.Glide.V),
-            PlaneType.Diagonal110 => (mp.Glide.W, (mp.Glide.U - mp.Glide.V) * 0.5),
-            PlaneType.Diagonal1m10 => (mp.Glide.W, (mp.Glide.U + mp.Glide.V) * 0.5),
-            PlaneType.Hex120 => (mp.Glide.W, mp.Glide.U),
-            PlaneType.Hex210 => (mp.Glide.W, mp.Glide.V),
+            PlaneType.Vertical => (mp.Glide.W, mp.Normal.V * mp.Glide.U - mp.Normal.U * mp.Glide.V),
             _ => (0, 0),
         };
         const double glideTol = 1e-6;
@@ -473,18 +457,15 @@ internal static class SymmetryDiagram
         }
     }
 
-    /// <summary>SymmetryPlane.Normal が軸対称面 (a/b/c 軸、対角、六方晶 basal mirror) なら分類する。260509Ch</summary>
-    private static PlaneType? GetPlaneType((int U, int V, int W) n) => n switch
+    /// <summary>SymmetryPlane.Normal が basal 面または c 軸を含む垂直面なら分類する。260510Ch</summary>
+    private static PlaneType? GetPlaneType((int U, int V, int W) n)
     {
-        { U: not 0, V: 0, W: 0 } => PlaneType.AxisA,
-        { U: 0, V: not 0, W: 0 } => PlaneType.AxisB,
-        { U: 0, V: 0, W: not 0 } => PlaneType.AxisC,
-        { W: 0, U: not 0 } when n.U == n.V => PlaneType.Diagonal110,   // [110]: U == V
-        { W: 0, U: not 0 } when n.U == -n.V => PlaneType.Diagonal1m10, // [1-10]: U == -V
-        { W: 0, U: not 0 } when n.V == 2 * n.U => PlaneType.Hex120,    // 六方晶 basal mirror: [120]
-        { W: 0, V: not 0 } when n.U == 2 * n.V => PlaneType.Hex210,    // [210] (= [-2-10] と同値)
-        _ => null,
-    };
+        // 旧: AxisA/AxisB/Diagonal/Hex120/Hex210 を個別パターンで列挙していた。
+        // Miller hkl では W=0 の面内方向は常に (k,-h,0) で得られるため、3/6 回転同値面も同じ式で扱える。
+        if (n.U == 0 && n.V == 0 && n.W != 0) return PlaneType.AxisC;
+        if (n.W == 0 && (n.U != 0 || n.V != 0)) return PlaneType.Vertical;
+        return null;
+    }
 
     #endregion
 
@@ -568,7 +549,7 @@ internal static class SymmetryDiagram
     {
         const int slices = 15;
         double x = Math.Sqrt(3) / 2;
-        return [.. ValueEnumerable.Range(0, slices).Select(i =>
+        return [.. ValueEnumerable.Range(0, slices+1).Select(i =>
         {
             var (sin, cos) = Math.SinCos(i * Math.PI / 12 / slices + Math.PI / 6);
             return upper ? new V3(cos - x, sin, 0) : new V3(-cos + x, -sin, 0);

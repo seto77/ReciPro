@@ -27,7 +27,7 @@ public readonly record struct SymmetryAxis(
     (double U, double V, double W) IntrinsicTranslation);
 
 /// <summary>鏡映 / 映進 面の単位。
-/// Position は面上の代表点、Normal は面法線方向の (uvw) 整数指数。
+/// Position は面上の代表点、Normal は Miller 面指数 (hkl) の整数係数。六方/三方 hex 軸では i=-(h+k) を暗黙に持つ。260510Ch
 /// Glide は面内 glide 並進成分 (fractional)。零ベクトルなら純鏡映 m。</summary>
 public readonly record struct SymmetryPlane(
     double X, double Y, double Z,
@@ -313,10 +313,20 @@ public sealed class SymmetryElementsTable
     #endregion
 
     #region 鏡映 / 映進 面
+    // 260509Cl: dedup key を「代表点 (Px,Py,Pz)」から「平面方程式 + cell 内 mod 位置」へ変更。
+    // 旧 key だと同じ物理平面でも op が選んだ Position の差で別平面として扱われ、F-cubic 系では
+    // ~100 倍 (Fm-3m: 252 → 28235) に膨張していた。
+    // 下流の SymmetryDiagramElements は NormalizeCellBoundary(Position) でセル内位置を [0,1] に折り畳んでから
+    // 線分を描画するため、cell 内 mod 位置が違えば別線分扱いになる。260510Cl: 参照先メソッド名を修正。
+    // → dedup key = (Direction, NormalizeCellBoundary(Px,Py,Pz), Glide) で
+    //   セル内同位置の重複だけ除去し、cell 内に複数 segment を持つ平面 (対角面 / hex 系) は保持する。
     private static SymmetryPlane[] CollectSymmetryPlanes(SymmetryOperation[] ops, IReadOnlyList<(double U, double V, double W)> centerings)
     {
-        var list = new List<SymmetryPlane>();
-        var seen = new HashSet<(int, int, int, long, long, long, long, long, long)>();
+        // 260509Cl: Glide を「位置 dedup key」から外し、(Direction, mod-position) ごとに glide 候補を集めてから
+        // 最終的に plane 上に取れる glide coset かつ min-score の 1 個を採用する。
+        // 260510Ch: hex/trig で rotation 経由に混ざる候補は、raw glide の h・g∈Z coset 条件で篩い分ける。
+        // これがないと renderer の double-glide-pair 検出が誤発火して e-glide 線種で描画される。
+        var seen = new Dictionary<(int, int, int, long, long, long), List<PlaneRep>>();
         foreach (var op in ops)
         {
             if (op.Order != -2) continue;
@@ -324,19 +334,94 @@ public sealed class SymmetryElementsTable
                 foreach (var eq in EnumerateEquivalentSymmetryPlanes(pl, ops))
                 {
                     var key = (eq.Direction.U, eq.Direction.V, eq.Direction.W,
-                        R6(eq.Px), R6(eq.Py), R6(eq.Pz),
-                        R6(eq.GlideU), R6(eq.GlideV), R6(eq.GlideW));
-                    if (seen.Add(key))
-                        list.Add(new SymmetryPlane(eq.Px, eq.Py, eq.Pz, eq.Direction,
-                            (eq.GlideU, eq.GlideV, eq.GlideW)));
+                        R6(NormalizeCellBoundary(eq.Px)),
+                        R6(NormalizeCellBoundary(eq.Py)),
+                        R6(NormalizeCellBoundary(eq.Pz)));
+                    if (!seen.TryGetValue(key, out var bucket))
+                    {
+                        bucket = new List<PlaneRep>();
+                        seen[key] = bucket;
+                    }
+                    bucket.Add(eq);
                 }
         }
+        var list = new List<SymmetryPlane>();
+        foreach (var kv in seen)
+        {
+            var (u, v, w, _, _, _) = kv.Key;
+            var bucket = kv.Value;
+            // 旧: var inPlane = bucket.Where(g => Math.Abs(u * g.U + v * g.V + w * g.W) < 1e-6).ToList();
+            // 260510Ch: glide は格子並進を足した coset として扱うため、Miller 面内条件は h・g=0 ではなく h・g∈Z。
+            // P3c1/P-31c などでは c 映進に格子並進由来の basal 成分が混ざり、h・g が整数になる候補を誤って捨てると
+            // 存在しない pure mirror へフォールバックしてしまう。
+            var inPlane = bucket.Where(g => Math.Abs(CenterMod1(u * g.RawGlideU + v * g.RawGlideV + w * g.RawGlideW)) < 1e-6).ToList();
+            // 同一 (M, g) と (M, -g) は lattice 等価なので canonical 符号 (最初の非零成分が正) に揃える
+            (double U, double V, double W) Canon(PlaneRep e)
+            {
+                double gu = e.GlideU, gv = e.GlideV, gw = e.GlideW;
+                if (gu < -1e-9 || (Math.Abs(gu) < 1e-9 && gv < -1e-9) || (Math.Abs(gu) < 1e-9 && Math.Abs(gv) < 1e-9 && gw < -1e-9))
+                    (gu, gv, gw) = (-gu, -gv, -gw);
+                return (gu, gv, gw);
+            }
+            PlaneRep best;
+            if (inPlane.Count > 0)
+            {
+                // 260510Ch: canonical sign で同一視 → 各グループの代表。
+                // raw glide が本当に 0 の候補だけを pure mirror とみなし、成分ごとの CenterMod1 で 0 に見えただけの
+                // 全格子並進 glide は mirror として扱わない。
+                var grouped = inPlane.GroupBy(e => { var c = Canon(e); return (R6(c.U), R6(c.V), R6(c.W), e.PureMirror); }).ToList();
+                var reps = grouped.Select(g => g.First()).ToList();
+                var pure = reps.Where(e => e.PureMirror).ToList();
+                best = pure.Count > 0
+                    ? pure.OrderBy(GlideScore).First()
+                    : reps.OrderBy(GlidePriority).ThenBy(GlideScore).First();
+            }
+            else
+            {
+                // 旧: in-plane glide なしの場合は pure m にフォールバックしていた。
+                // 260510Ch: h・g∈Z を満たす glide coset が無い候補は、その幾何平面を不変にしないので対称面として採用しない。
+                // P3c1/P-31c で存在しない m が出ていた主因。
+                continue;
+            }
+            list.Add(new SymmetryPlane(best.Px, best.Py, best.Pz,
+                (kv.Key.Item1, kv.Key.Item2, kv.Key.Item3),
+                (best.GlideU, best.GlideV, best.GlideW)));
+        }
         return [.. list];
+
+        static int GlidePriority(PlaneRep p)
+        {
+            bool basal = Math.Abs(p.GlideU) > 1e-6 || Math.Abs(p.GlideV) > 1e-6;
+            bool depth = Math.Abs(p.GlideW) > 1e-6;
+            return (basal, depth) switch
+            {
+                (true, false) => 0,
+                (true, true) => 1,
+                (false, true) => 2,
+                _ => 3
+            };
+        }
+    }
+
+    /// <summary>plane glide ベクトルの L1 ノルム。代表面選択 (CollectSymmetryPlanes / EnumerateSymmetryPlanes) の最小スコア比較に用いる。260510Cl</summary>
+    private static double GlideScore(PlaneRep p) => Math.Abs(p.GlideU) + Math.Abs(p.GlideV) + Math.Abs(p.GlideW);
+
+    /// <summary>(260509Cl 追加) SymmetryDiagramElements.NormalizeCellBoundary と同じ折り畳み: 260510Cl 参照先修正。
+    /// s≈0 → 0, s≈1 → 1, それ以外は s - floor(s) で [0,1) へ。dedup 用に [0,1] 範囲の代表値を返す。</summary>
+    private static double NormalizeCellBoundary(double s)
+    {
+        if (Math.Abs(s - 1) < 1e-8) return 1;
+        double m = s - Math.Floor(s);
+        if (m < 1e-8) return 0;
+        if (m > 1 - 1e-8) return 1;
+        return m;
     }
 
     /// <summary>紙面垂直 mirror/glide の代表面。T = t + L を (I-R)·p + g に分解し、斜交基底でも glide 成分を保つ。</summary>
     private readonly record struct PlaneRep(double Px, double Py, double Pz, double GlideU, double GlideV, double GlideW,
-                                            (int U, int V, int W) Direction);
+                                            (int U, int V, int W) Direction,
+                                            double RawGlideU, double RawGlideV, double RawGlideW,
+                                            bool PureMirror);
 
     /// <summary>op の鏡映面を、(0,0,0) と centering 並進すべての lattice 等価系から列挙し、
     /// 各々で glide score を最小化した代表面を返す (R-centering 等で純 mirror / a-glide 表現を見つけるため)。</summary>
@@ -346,7 +431,12 @@ public sealed class SymmetryElementsTable
                         op.ApplyMatrix(new Vec(0, 1, 0)),
                         op.ApplyMatrix(new Vec(0, 0, 1)));
         var t0 = op.SeitzTranslation;
-        bool sourceIsPureMirror = ((Vec)op.IntrinsicTranslation) * ((Vec)op.IntrinsicTranslation) < 1e-12; // 260509Ch
+        // 260509Cl: sourceIsPureMirror による zero 化 (260509Ch) を撤回。
+        // 純 mirror op (M, 0) に lattice 並進 L を合成すると Seitz (M, M·L) になり、
+        // L が直交基底軸上にない (= hex/trig の (1, 0, 0) 等) と (M, M·L) は in-plane 成分が非ゼロの
+        // glide 反射として作用する (例: P-3m1 で (1/2, 0)-(0, 1/2) 線は法線 (1,1,0) D=1/2 の glide vector
+        // (1/2, -1/2, 0))。これは Seitz op としては (M, 0) と lattice 等価だが、ITA 規約では「幾何対称要素」
+        // として別途列挙され、図中 dash で描画される。常に in-plane 成分を計算することで ITA と整合する。
         var planes = new Dictionary<(long, long, long), PlaneRep>();
         var lattices = new List<(double U, double V, double W)> { (0, 0, 0) };
         if (centerings != null) lattices.AddRange(centerings);
@@ -356,36 +446,57 @@ public sealed class SymmetryElementsTable
                 var t = new Vec(t0.U + lat.U + lx, t0.V + lat.V + ly, t0.W + lat.W + lz);
                 var rt = R * t;
                 var n = (t - rt) * 0.5;     // 平面法線方向の代表 (lattice 同値類のキー)
-                // 旧処理: var glide = (t + rt) * 0.5;
-                // 純 mirror に格子並進を合成すると見かけの glide 成分が出るが、対称要素としては mirror のまま扱う。260509Ch
-                var glide = sourceIsPureMirror ? Vec.Zero : (t + rt) * 0.5;
+                var rawGlide = (t + rt) * 0.5;
                 var key = (R6(n.X), R6(n.Y), R6(n.Z));
+                // 旧: var plane = new PlaneRep(t.X / 2.0, t.Y / 2.0, t.Z / 2.0,
+                //         CenterMod1(glide.X), CenterMod1(glide.Y), CenterMod1(glide.Z), op.Direction);
+                // 260510Ch: op.Direction は鏡映操作の直接空間法線。hex/trig では Miller 面指数へ計量変換して保持する。
+                var millerNormal = MirrorNormalToMiller(op.Direction, op.SeriesNumber);
                 var plane = new PlaneRep(t.X / 2.0, t.Y / 2.0, t.Z / 2.0,
-                    CenterMod1(glide.X), CenterMod1(glide.Y), CenterMod1(glide.Z), op.Direction);
+                    CenterMod1(rawGlide.X), CenterMod1(rawGlide.Y), CenterMod1(rawGlide.Z), millerNormal,
+                    rawGlide.X, rawGlide.Y, rawGlide.Z, rawGlide * rawGlide < 1e-12);
                 if (!planes.TryGetValue(key, out var current) || GlideScore(plane) < GlideScore(current))
                     planes[key] = plane;
             }
         foreach (var plane in planes.Values) yield return plane;
-
-        static double GlideScore(PlaneRep p) => Math.Abs(p.GlideU) + Math.Abs(p.GlideV) + Math.Abs(p.GlideW);
     }
 
-    /// <summary>代表 mirror/glide 面を proper symmetry operation で写し、点群対称で等価な面を列挙する。</summary>
+    /// <summary>代表 mirror/glide 面を proper symmetry operation で写し、点群対称で等価な面を列挙する。
+    /// 260509Cl: dedup key を「raw 代表点」から「cell 内 mod 位置 (NormalizeCellBoundary)」に変更。
+    /// CollectSymmetryPlanes 側と同じ正規化で、外側 dedup と整合させる。</summary>
     private static IEnumerable<PlaneRep> EnumerateEquivalentSymmetryPlanes(PlaneRep seed, SymmetryOperation[] ops)
     {
-        var seen = new HashSet<(long, long, long, long, long, long, int, int, int)>();
+        var seen = new HashSet<(int, int, int, long, long, long, long, long, long, bool)>();
         foreach (var op in ops)
         {
             if (op.Order <= 0) continue;
             var p = op.ApplyAffine(new Vec(seed.Px, seed.Py, seed.Pz));
-            var g = op.ApplyMatrix(new Vec(seed.GlideU, seed.GlideV, seed.GlideW));
-            var d = NormalizeDirection(op.ApplyMatrix(new Vec(seed.Direction.U, seed.Direction.V, seed.Direction.W)));
+            var raw = op.ApplyMatrix(new Vec(seed.RawGlideU, seed.RawGlideV, seed.RawGlideW));
+            // 旧: local cofactor helper (ApplyMatrixToPlaneNormal) で R^{-T} を個別計算していた。
+            // 260510Ch: Miller 面指数は既存の ConvertPlaneIndex に集約する。hex/trig では 4-index の (h k i l) 回転同値をここで正しく扱う。
+            var d = NormalizeDirection(op.ConvertPlaneIndex(seed.Direction));
             if (d == (0, 0, 0)) continue;
-            var eq = new PlaneRep(p.X, p.Y, p.Z, CenterMod1(g.X), CenterMod1(g.Y), CenterMod1(g.Z), d);
-            var key = (R6(eq.Px), R6(eq.Py), R6(eq.Pz), R6(eq.GlideU), R6(eq.GlideV), R6(eq.GlideW),
-                eq.Direction.U, eq.Direction.V, eq.Direction.W);
+            var eq = new PlaneRep(p.X, p.Y, p.Z, CenterMod1(raw.X), CenterMod1(raw.Y), CenterMod1(raw.Z), d,
+                raw.X, raw.Y, raw.Z, seed.PureMirror);
+            var key = (d.U, d.V, d.W,
+                R6(NormalizeCellBoundary(eq.Px)),
+                R6(NormalizeCellBoundary(eq.Py)),
+                R6(NormalizeCellBoundary(eq.Pz)),
+                R6(eq.GlideU), R6(eq.GlideV), R6(eq.GlideW), eq.PureMirror);
             if (seen.Add(key)) yield return eq;
         }
+    }
+
+    /// <summary>鏡映操作の直接空間法線 Direction を Miller 面指数へ変換する。260510Ch</summary>
+    private static (int U, int V, int W) MirrorNormalToMiller((int U, int V, int W) direction, int seriesNumber)
+    {
+        if (seriesNumber > 0 && SymmetryStatic.IsHexBySeries[seriesNumber])
+        {
+            // hex/trig hex 軸では basal metric G = [[1, -1/2], [-1/2, 1]]。
+            // 2 倍して整数化すると (h,k) = (2u-v, -u+2v)。c 軸単独の鏡映はそのまま残す。
+            return NormalizeDirection(new Vec(2 * direction.U - direction.V, -direction.U + 2 * direction.V, direction.W));
+        }
+        return NormalizeDirection(direction);
     }
     #endregion
 

@@ -19,6 +19,7 @@ using ZLinq;
 #endregion
 
 namespace ReciPro;
+
 public partial class FormStructureViewer : FormBase
 {
     #region フィールド、プロパティ、
@@ -113,8 +114,6 @@ public partial class FormStructureViewer : FormBase
             for (int b = -1; b < 2; b++)
                 for (int c = -1; c < 2; c++)
                     neighborKeys.Add(atomID.ComposeKey(a, b, c));
-
-        toolStripButtonSymmetryElements.CheckedChanged += toolStripButtonSymmetryElements_CheckedChanged; // (260506Ch) 対称要素の表示トグルで GLObjects を再生成する
     }
 
     private void FormStructureViewer_Load(object sender, EventArgs e)
@@ -332,10 +331,10 @@ public partial class FormStructureViewer : FormBase
         #endregion
 
         #region ResumuLayout()
-        
+
         glControlMainPPLL.ResumeLayout();
         glControlMainDDP.ResumeLayout();
-        
+
         glControlMainZsort.ResumeLayout();
         glControlLight.ResumeLayout();
         glControlAxes.ResumeLayout();
@@ -372,6 +371,7 @@ public partial class FormStructureViewer : FormBase
 
     #endregion コンストラクタ
 
+    #region 透明度のレンダリング関連
     private void initializeDdpDeveloperMenu()
     {
         if (enableDDPToolStripMenuItem != null)
@@ -454,6 +454,7 @@ public partial class FormStructureViewer : FormBase
 
         comboBoxTransparency.SelectedIndex = targetIndex;
     }
+    #endregion
 
     #region 結晶軸行列を設定
     private void initAxesMatrix()
@@ -537,7 +538,7 @@ public partial class FormStructureViewer : FormBase
         if (checkBoxShowBoundPlanes.Checked)
         {
             var boundsArray = bounds.Select(b => b.prm.ToArray()).ToArray();
-            for(int i=0; i< bounds.Count; i++)
+            for (int i = 0; i < bounds.Count; i++)
             //Parallel.For(0, bounds.Count, i =>
             {
                 var vertices = Geometry.GetClippedPolygon(i, boundsArray);
@@ -576,7 +577,7 @@ public partial class FormStructureViewer : FormBase
     {
         sw.Restart();
 
-        if (checkBoxHideAllAtoms.Checked) return;
+        if (!toolStripButtonAtomObjects.Checked) return;
 
         //閾値. 描画範囲がこの数値分超えたとしても、一応原子座標は計算しておいて、ボンドの有無を考慮し、必要なければ最終的に消す
         var threshold = -0.001;
@@ -850,7 +851,7 @@ public partial class FormStructureViewer : FormBase
         });
 
         GLObjects.Sort((o1, o2) => o1.Z.CompareTo(o2.Z));//並列化じゃなくても十分早いみたい。。。
-        
+
         GLObjects.RemoveRange(0, n);
 
         textBoxCalcInformation.AppendText($"Remove tentative atoms: {sw.ElapsedMilliseconds}ms.\r\n");
@@ -964,7 +965,7 @@ public partial class FormStructureViewer : FormBase
                 foreach (var edge in planesArray[i])
                 {
                     var polygonBase = new Polygon(edge.Select(e => e - t).ToArray(), new Material(colors[i], numericBoxCellPlaneAlpha.Value), DrawingMode.Surfaces)
-                        { Tag = new cellID() };
+                    { Tag = new cellID() };
                     // (260319Cl) ZSORT モードのみ Decompose で半透明描画を改善; PPLL では元の Polygon (TriangleFan) をそのまま使う
                     // var plane = new Polygon(...){ Tag = new cellID() }.Decompose(glControlMain.FragShader == GLControlAlpha.FragShaders.ZSORT ? 3 : 0);
                     Polygon[] plane = glControlMain.FragShader == GLControlAlpha.FragShaders.ZSORT
@@ -1010,7 +1011,7 @@ public partial class FormStructureViewer : FormBase
                 for (int i = 0; i < (n == 0 ? 1 : 2); i++)
                 {
                     var vertices = Geometry.GetClippedPolygon([prms.X, prms.Y, prms.Z, ((i == 0 ? n : -n) + t) * prms.D], boundArray);
-                    if(vertices!=null)
+                    if (vertices != null)
                         verticesList.Add(vertices);
                 }
                 flag = false;
@@ -1431,7 +1432,7 @@ public partial class FormStructureViewer : FormBase
         for (int i = 0; i < GLObjects.Count; i++)
             if (GLObjects[i] is Sphere sphere)
             {
-                var origin = rot* new V4(sphere.Origin, 1);
+                var origin = rot * new V4(sphere.Origin, 1);
                 double x = origin.X - a, y = origin.Y - b, z = origin.Z - c;
                 if (sphere.Radius * sphere.Radius > ((q2 + r2) * x * x + (r2 + p2) * y * y + (p2 + q2) * z * z - 2 * (pq * x * y + qr * y * z + rp * z * x)) / (p2 + q2 + r2))
                     if (!depthList.ContainsKey(origin.Z))
@@ -1449,7 +1450,12 @@ public partial class FormStructureViewer : FormBase
     {
         if (SkipEvent) return;
 
+        SkipEvent = true;
         groupBoxShowUnitCell.Enabled = checkBoxUnitCell.Checked;
+        toolStripButtonUnitCell.Checked = checkBoxUnitCell.Checked;
+        SkipEvent = false;
+
+
         setUnitCellPlanes();
         Draw();
     }
@@ -1484,19 +1490,37 @@ public partial class FormStructureViewer : FormBase
 
     #endregion イメージ保存orコピー
 
-    #region toolStripButton ライト、結晶軸、凡例、ブースト
+    #region toolStripButton ライト、結晶軸、凡例
     private void toolStripButtonCrystalAxes_CheckedChanged(object sender, EventArgs e) => glControlAxes.Visible = toolStripButtonCrystalAxes.Checked;
 
     private void toolStripButtonLightingBall_CheckedChanged(object sender, EventArgs e) => glControlLight.Visible = toolStripButtonLightDirection.Checked;
 
     private void toolStripButtonLegend_CheckedChanged(object sender, EventArgs e) => SetLegend();
+    private void toolStripButtonAtomObjects_CheckedChanged(object sender, EventArgs e)
+    {
+        SetGLObjects(null);
+        toolStripButtonAtomLabels.Enabled = toolStripButtonAtomObjects.Checked;
+    }
+
+    private void toolStripButtonUnitCell_CheckedChanged(object sender, EventArgs e)
+    {
+        if (SkipEvent) return;
+        tabControl.SelectTab(tabPageUnitCell);
+        checkBoxUnitCell.Checked = toolStripButtonUnitCell.Checked;
+    }
+
+    private void toolStripButtonAtomLabels_CheckedChanged(object sender, EventArgs e)
+    {
+        if (SkipEvent) return;
+        tabControl.SelectTab(tabPageMisc);
+        checkBoxShowLabel.Checked = toolStripButtonAtomLabels.Checked;
+    }
 
     private void toolStripButtonSymmetryElements_CheckedChanged(object sender, EventArgs e)
     {
         if (glControlMain == null || Crystal == null) return;
         SetGLObjects(null); // (260506Ch) 対称要素は bounds/shift と一緒に作るため、表示切替時は全 GLObjects を再生成する
     }
-
     #endregion
 
     #region 印刷関連
@@ -1971,6 +1995,8 @@ public partial class FormStructureViewer : FormBase
             checkBoxShowLabel.CheckState = CheckState.Unchecked;
         else
             checkBoxShowLabel.CheckState = CheckState.Indeterminate;
+
+        toolStripButtonAtomLabels.CheckState = checkBoxShowLabel.CheckState;
         SkipEvent = false;
     }
 
@@ -2064,7 +2090,6 @@ public partial class FormStructureViewer : FormBase
         SetGLObjects();
     }
     #endregion
-
 
     public void UpdatePlaneIndices()
     {

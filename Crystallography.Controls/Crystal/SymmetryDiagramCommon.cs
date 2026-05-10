@@ -1,9 +1,11 @@
 ﻿// 260501Cl: 空間群の対称要素 (左図) と一般位置 (右図) を ITC Vol.A 風に GDI+ 描画する基底クラス。
 // 派生 SymmetryDiagramElements / SymmetryDiagramPositions が共通利用するヘルパーを保持する。
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
+using System.Linq;
 
 namespace Crystallography.Controls;
 
@@ -63,6 +65,75 @@ public abstract class SymmetryDiagramCommon
         [(.5, "½"), (1.0/3, "⅓"), (2.0/3, "⅔"), (.25, "¼"), (.75, "¾"),
          (1.0/6, "⅙"), (5.0/6, "⅚"), (1.0/8, "⅛"), (3.0/8, "⅜"), (5.0/8, "⅝"), (7.0/8, "⅞"),
          (1.0/12, "¹⁄₁₂"), (5.0/12, "⁵⁄₁₂"), (7.0/12, "⁷⁄₁₂"), (11.0/12, "¹¹⁄₁₂")];
+
+    private sealed class TightTextGlyph
+    {
+        public TightTextGlyph(GraphicsPath path, RectangleF bounds)
+        {
+            Path = path;
+            Bounds = bounds;
+            Size = new SizeF(bounds.Width, bounds.Height);
+        }
+
+        public GraphicsPath Path { get; }
+        public RectangleF Bounds { get; }
+        public SizeF Size { get; }
+    }
+
+    // 260510Cl: 描画スレッドからの並列読み出しを serialize しないよう ConcurrentDictionary に変更。
+    private static readonly ConcurrentDictionary<(string Text, string Family, FontStyle Style, float EmSize), TightTextGlyph> TightTextCache = BuildInitialTightTextCache();
+    #endregion
+
+    #region tight text
+    /// <summary>GDI+ MeasureString が含む左右上下の余白を避け、glyph outline の正味 bounds を返す。260510Ch</summary>
+    protected static SizeF MeasureTightString(Graphics g, string text, Font font)
+        => GetTightTextGlyph(text, font).Size;
+
+    /// <summary>glyph outline の正味左上が (x,y) になるように描画する。260510Ch</summary>
+    protected static void DrawTightString(Graphics g, Brush fill, string text, Font font, float x, float y)
+    {
+        // 260510Cl: cached path + g.TranslateTransform で glyph clone と Matrix 確保を避ける。
+        var glyph = GetTightTextGlyph(text, font);
+        var state = g.Save();
+        try
+        {
+            g.TranslateTransform(x - glyph.Bounds.Left, y - glyph.Bounds.Top);
+            g.FillPath(fill, glyph.Path);
+        }
+        finally { g.Restore(state); }
+    }
+
+    private static ConcurrentDictionary<(string Text, string Family, FontStyle Style, float EmSize), TightTextGlyph> BuildInitialTightTextCache()
+    {
+        var dict = new ConcurrentDictionary<(string, string, FontStyle, float), TightTextGlyph>();
+        foreach (var text in FracTable.Select(f => f.S).Distinct())
+            dict[TightTextKey(text, HeightLabelFont)] = CreateTightTextGlyph(text, HeightLabelFont);
+        return dict;
+    }
+
+    private static TightTextGlyph GetTightTextGlyph(string text, Font font)
+        => TightTextCache.GetOrAdd(TightTextKey(text, font), _ => CreateTightTextGlyph(text, font));
+
+    private static (string Text, string Family, FontStyle Style, float EmSize) TightTextKey(string text, Font font)
+        => (text, font.FontFamily.Name, font.Style, FontEmSizePixels(font));
+
+    private static TightTextGlyph CreateTightTextGlyph(string text, Font font)
+    {
+        var path = new GraphicsPath();
+        path.AddString(text, font.FontFamily, (int)font.Style, FontEmSizePixels(font), PointF.Empty, StringFormat.GenericTypographic);
+        return new TightTextGlyph(path, path.GetBounds());
+    }
+
+    private static float FontEmSizePixels(Font font)
+        => font.Unit switch
+        {
+            GraphicsUnit.Pixel => font.Size,
+            GraphicsUnit.Point => font.SizeInPoints * 96f / 72f,
+            GraphicsUnit.Inch => font.Size * 96f,
+            GraphicsUnit.Millimeter => font.Size * 96f / 25.4f,
+            GraphicsUnit.Document => font.Size * 96f / 300f,
+            _ => font.SizeInPoints * 96f / 72f,
+        };
     #endregion
 
     #region 投影
@@ -219,12 +290,13 @@ public abstract class SymmetryDiagramCommon
         // (260505Cl) showAxisLabels=false で軸ラベルをスキップ。対称要素図ではラベルを出さず、一般位置図側だけで表示する。
         if (!showAxisLabels) return;
         using var brush = new SolidBrush(Color.Black);
-        var oSz = g.MeasureString("o", AxisLabelFont);
-        var hSz = g.MeasureString(proj.HorzLabel, AxisLabelFont);
-        var vSz = g.MeasureString(proj.VertLabel, AxisLabelFont);
-        g.DrawString("o", AxisLabelFont, brush, c.TopLeft.X - oSz.Width - AxisLabelGap, c.TopLeft.Y - oSz.Height - AxisLabelGap);
-        g.DrawString(proj.HorzLabel, AxisLabelFont, brush, tr.X + AxisLabelGap, tr.Y - hSz.Height - AxisLabelGap);
-        g.DrawString(proj.VertLabel, AxisLabelFont, brush, bl.X - vSz.Width - AxisLabelGap, bl.Y + AxisLabelGap);
+        // 260510Cl: 高さラベルと同じ tight glyph bounds を使い、AxisLabelGap が GDI+ の余白で食われないようにする。
+        var oSz = MeasureTightString(g, "o", AxisLabelFont);
+        var hSz = MeasureTightString(g, proj.HorzLabel, AxisLabelFont);
+        var vSz = MeasureTightString(g, proj.VertLabel, AxisLabelFont);
+        DrawTightString(g, brush, "o", AxisLabelFont, c.TopLeft.X - oSz.Width - AxisLabelGap, c.TopLeft.Y - oSz.Height - AxisLabelGap);
+        DrawTightString(g, brush, proj.HorzLabel, AxisLabelFont, tr.X + AxisLabelGap, tr.Y - hSz.Height - AxisLabelGap);
+        DrawTightString(g, brush, proj.VertLabel, AxisLabelFont, bl.X - vSz.Width - AxisLabelGap, bl.Y + AxisLabelGap);
     }
     #endregion
 

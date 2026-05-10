@@ -232,7 +232,8 @@ public class SymmetryDiagramPositions : SymmetryDiagramCommon
         using var fill = new SolidBrush(Color.White);
         var sizes = new Dictionary<string, SizeF>();
         foreach (var p in placements)
-            if (!sizes.ContainsKey(p.Label)) sizes[p.Label] = g.MeasureString(p.Label, labelFont);
+            // 旧: if (!sizes.ContainsKey(p.Label)) sizes[p.Label] = g.MeasureString(p.Label, labelFont);
+            if (!sizes.ContainsKey(p.Label)) sizes[p.Label] = MeasureTightString(g, p.Label, labelFont); // 260510Ch: Elements と同じ tight glyph bounds。
         var infos = BuildClusters(placements, circleRadius);
         float dotR = CommaDotR * scale;
         var axes = new int[infos.Count];
@@ -362,7 +363,8 @@ public class SymmetryDiagramPositions : SymmetryDiagramCommon
             float x = isLeft ? cx - sz.Width - LabelGapH : cx + LabelGapH;
             float y = isUpper ? cy - circleRadius - (i + 1) * sz.Height + LabelGapV : cy + circleRadius + i * sz.Height - LabelGapV;
             int idx = LabelAxisIndex(labels[i]);
-            g.DrawString(labels[i], font, idx >= 0 ? AxisBrushes[idx] : brush, x, y);
+            // g.DrawString(labels[i], font, idx >= 0 ? AxisBrushes[idx] : brush, x, y); // 旧: DrawString の余白を含む配置。
+            DrawTightString(g, idx >= 0 ? AxisBrushes[idx] : brush, labels[i], font, x, y); // 260510Ch
         }
     }
     #endregion

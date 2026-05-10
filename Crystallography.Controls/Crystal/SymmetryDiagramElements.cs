@@ -122,11 +122,13 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
     private const float GlideArrowLineShorten = 5f;
 
     // 高さラベル
-    private const float HeightLabelGapX = 1f;
-    private const float HeightLabelGapY = 2f;
+    // private const float HeightLabelGapX = 1f;
+    // private const float HeightLabelGapY = 2f;
+    private const float HeightLabelGapX = 1f; // 260510Ch
+    private const float HeightLabelGapY = 1f; // 260510Ch
     private const float InPlaneAxisLabelGap = 1f;
     private const float ParallelMirrorLabelGap = 2f;
-    private const float MinusFourHeightLabelRadiusScale = 0.5f; // (260505Ch) 立方晶 -4 の高さラベルを外接四角形より内側へ寄せる。
+    // private const float MinusFourHeightLabelRadiusScale = 0.5f; // (260505Ch) 立方晶 -4 の高さラベルを外接四角形より内側へ寄せる。
     #endregion
 
     #region context
@@ -139,9 +141,11 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
         public Pen Pen, MirrorPen, InPlanePen, DepthPen, DiagPen, EPen;
         public Brush Fill, White;
         public List<PerpendicularMirrorDraft> PerpendicularMirrors;
-        public HashSet<(long Nx, long Ny, long D, int Style)> DrawnSymmetryPlanes;
+        public HashSet<(long Nx, long Ny, long D, PerpendicularMirrorStyle Style)> DrawnSymmetryPlanes; // 260510Ch: 線種を enum で保持。
         public HashSet<(long X, long Y)> StereonetAnchorKeys; // (260505Cl) inset 半径は CubicStereonetInsetRadius 定数を直接使う。
         public double DisplayMaxS; // (260505Ch) F 格子は [0, 1/2]²、それ以外は [0, 1]² を描画対象にする。
+        public bool AllowEGlide; // 260510Ch: e-glide 記号は投影面の基底が直交する場合だけ許可する。
+        public string SpaceGroupHM; // 260510Ch: 立方晶の ITA defining symbol resolver 用。
     }
 
     private readonly record struct PerpendicularMirrorDraft(double Sx, double Sy,
@@ -152,6 +156,18 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
                                                         double GlideSx, double GlideSy,
                                                         double GlideSx2, double GlideSy2,
                                                         bool NGlide, bool DGlide, int DiamondScore);
+
+    private enum PerpendicularMirrorStyle
+    {
+        Mirror,
+        InPlaneGlide,
+        DepthGlide,
+        DiagonalGlide,
+        DGlide,
+        EGlide,
+        NGlide, // 260510Ch: n-glide は d-glide と同じ dash-dot 系線だが矢印を持たない。
+        None,   // 260510Ch: ITA 図に出さない幾何線。
+    }
 
     #endregion
 
@@ -203,6 +219,10 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
         bool isCubic     = sym.CrystalSystemNumber == 7;
         bool isCubicHigh = IsCubicHighSym(sym); // (260506Cl) stereonet inset を持つ立方晶高対称群。
         var stereonetPositions = isCubicHigh ? GetStereonetDrawPositions(sym) : null; // (260506Cl) 1 描画中に複数箇所で使うのでキャッシュ。
+        double basisDot = layout.Horz.X * layout.Vert.X + layout.Horz.Y * layout.Vert.Y; // 260510Ch
+        double basisLen = Math.Sqrt((layout.Horz.X * layout.Horz.X + layout.Horz.Y * layout.Horz.Y) *
+                                    (layout.Vert.X * layout.Vert.X + layout.Vert.Y * layout.Vert.Y)); // 260510Ch
+        bool allowEGlide = basisLen > 1e-9 && Math.Abs(basisDot / basisLen) < 1e-6; // 260510Ch: 結晶系番号ではなく投影 metric で判断。
 
         var ctx = new ElementsContext
         {
@@ -214,6 +234,9 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
             DrawnSymmetryPlanes = [],
             StereonetAnchorKeys = isCubicHigh ? CollectStereonetAnchorKeys(layout, stereonetPositions) : null,
             DisplayMaxS = displayMaxS,
+            // 旧: AllowEGlide = sym.CrystalSystemNumber != 5 && sym.CrystalSystemNumber != 6;
+            AllowEGlide = allowEGlide, // 260510Ch: e-glide の可否は「投影面基底が直交するか」という一般条件へ集約。
+            SpaceGroupHM = sym.SpaceGroupHMStr, // 260510Ch
         };
 
         // 旧: quadrantClip による後段の表示範囲制限は廃止。
@@ -251,7 +274,7 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
         }
 
         DrawCollectedPerpendicularSymmetryPlanes(ctx);
-        DrawParallelMirrorStack(g, layout, parallelMirrors, fill, isCubic: isCubic); // (260505Cl) cubic は紙面平行軸との干渉回避で bracket を離す。
+        DrawParallelMirrorStack(g, layout, parallelMirrors, fill, isCubic: isCubic, allowEGlide: allowEGlide); // (260505Cl) cubic は紙面平行軸との干渉回避で bracket を離す。260510Ch: e-glide 可否を共通化。
         // (260503Cl) 紙面平行軸の anchor が斜め回転軸の foot / 紙面垂直回転軸 (4_2 など) の position と重なる場合、
         // 矢印を axis 方向にずらして点記号と重ならないようにする。
         var diagonalFootKeys = CollectDiagonalAxisFootKeys(table, layout, actualAxis, displayMaxS);
@@ -268,7 +291,8 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
         // それらの位置にある斜め 3 回軸の cell-side 描画はスキップ。
         HashSet<(long, long)> stereonetSkipKeys = isCubicHigh ? ComputeStereonetSkipKeys(stereonetPositions) : null;
         DrawDiagonalRotationMarks(ctx, table, actualAxis, skipPositionKeys: stereonetSkipKeys);
-        DrawPerpendicularRotationMarks(ctx, table, actualAxis, isCubic: isCubic); // (260505Cl) cubic 限定で 4_n と -4 の重なりは -4 を優先。
+        // 旧: DrawPerpendicularRotationMarks(ctx, table, actualAxis, isCubic: isCubic); // (260505Cl) cubic 限定で 4_n と -4 の重なりは -4 を優先。
+        DrawPerpendicularRotationMarks(ctx, table, actualAxis, isCubic: isCubic); // 260510Cl: cubic 限定で -4 と -1 が同位置に重なる場合は -4 を抑制 (ITA: 4_n と -1 で表記)。Fd-3m(1) vertex のように -1 が同位置に無い -4 はそのまま描画。
         DrawInversions(ctx, table.InversionCenters);
         if (isCubicHigh) DrawCubicStereonetInsets(ctx, table, actualAxis, stereonetPositions);
     }
@@ -276,8 +300,11 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
 
     #region 紙面垂直 点記号
     /// <summary>軸方向が投影軸に平行な軸を点記号として描画。低次は高次に隠され、-N と同位置の +N があれば -N を捨て、-N(z≠0) は +N_k に置換。
-    /// (260505Cl) isCubic=true で cubic 限定の優先規則: 同位置に -4 と 4_n (4_1/4_2/4_3) が重なる場合、4_n を抑制し -4 を残す。
-    /// この場合 -4 は螺旋置換せずそのまま描き、反転中心の高さラベルを記号横に併記する。</summary>
+    /// 旧: (260505Cl) isCubic=true で cubic 限定の優先規則: 同位置に -4 と 4_n (4_1/4_2/4_3) が重なる場合、4_n を抑制し -4 を残す。
+    /// 旧: この場合 -4 は螺旋置換せずそのまま描き、反転中心の高さラベルを記号横に併記する。
+    /// 260510Cl: ITA 規約は逆向き — -4 と -1 は同一軸 (同一投影位置) に重ねず、4_n と -1 だけで表記する。
+    /// したがって isCubic=true では同投影位置に -1 (反転中心) を持つ -4 を描画スキップし、4_n はそのまま描く。
+    /// Fd-3m(1) vertex のように -1 が同位置に無い -4 (例: site 対称 -43m) はそのまま描画。</summary>
     private static void DrawPerpendicularRotationMarks(ElementsContext ctx, Crystallography.SymmetryElementsTable table,
                                                        ProjectionAxis projAxis, bool isCubic = false)
     {
@@ -286,22 +313,60 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
         var covered2 = new HashSet<(int, int)>();
         var covered3 = new HashSet<(int, int)>();
         var properRotations = new HashSet<(int N, int Sx, int Sy)>();
-        // (260505Cl) cubic で 4_n を抑制するための -4 射影位置集合。各 -4 軸の高さは 2 周目で各 axis の sz から直接読む。
-        var minusFourKeys = isCubic ? new HashSet<(int, int)>() : null;
+        // 旧: (260505Cl) cubic で 4_n を抑制するための -4 射影位置集合。各 -4 軸の高さは 2 周目で各 axis の sz から直接読む。
+        // 旧: var minusFourKeys = isCubic ? new HashSet<(int, int)>() : null;
+        // 260510Cl: ITA 規約に合わせ「-1 と同位置の -4 を抑制」する向きへ反転。-1 (反転中心) の投影位置を集める。
+        var inversionKeys = isCubic ? new HashSet<(int, int)>() : null;
+        if (isCubic)
+        {
+            foreach (var c in table.InversionCenters)
+            {
+                var (cx, cy, _) = ctx.Proj.ToScreen(c.X, c.Y, c.Z);
+                inversionKeys.Add(((int)Math.Round(Mod1(cx) * 10000), (int)Math.Round(Mod1(cy) * 10000)));
+            }
+        }
+        var cubicMinusFourWithoutInversionKeys = isCubic ? new HashSet<(int, int)>() : null; // 260510Ch
+        // 260510Ch: -6 は 3/m と等価なので、高さは -6 op の代表点ではなく紙面平行 mirror の高さから取る。
+        double? minusSixMirrorHeight = RepresentativeParallelMirrorHeight();
+        // ただし同じ投影位置に本物の 6/6_3 がある場合は 6(+対称心) / 6_3(+対称心) 側が defining symbol。
+        var positiveSixKeys = new HashSet<(int, int)>();
+        var minusSixKeys = new HashSet<(int, int)>();
+        var minusSixHeights = new Dictionary<(int, int), double>();
         foreach (var ax in axes)
         {
-            bool isCubicMinusFour = isCubic && ax.Order == -4;
-            if (ax.Order <= 0 && !isCubicMinusFour) continue;
             if (!IsAxisPerpendicularToProjection(ax.Direction, projAxis)) continue;
-            var (sx, sy, _) = ctx.Proj.ToScreen(ax.X, ax.Y, ax.Z);
+            var (sx, sy, sz) = ctx.Proj.ToScreen(ax.X, ax.Y, ax.Z);
             var key = ((int)Math.Round(Mod1(sx) * 10000), (int)Math.Round(Mod1(sy) * 10000));
-            if (isCubicMinusFour) { minusFourKeys.Add(key); continue; } // (260505Cl) cubic 限定で -4 位置だけ別収集。
+            if (ax.Order == 6) positiveSixKeys.Add(key);
+            if (ax.Order == -6)
+            {
+                minusSixKeys.Add(key);
+                // 旧: double h = Mod1(sz); if (IsQuarterHeight(h)) minusSixHeights[key] = h;
+                if (minusSixMirrorHeight is double h)
+                    minusSixHeights[key] = h;
+            }
+            if (isCubic && ax.Order == -4 && !inversionKeys.Contains(key))
+                cubicMinusFourWithoutInversionKeys.Add(key); // 260510Ch: -1 が同軸に無い -4 は ITA で -4 として残す。
+            // 旧: (260505Cl) cubic 限定で -4 位置だけ別収集して 4_n を抑制していた。
+            // 旧: bool isCubicMinusFour = isCubic && ax.Order == -4;
+            // 旧: if (ax.Order <= 0 && !isCubicMinusFour) continue;
+            // 旧: if (isCubicMinusFour) { minusFourKeys.Add(key); continue; }
+            // 260510Cl: -4 抑制判定は inversionKeys (反転中心の投影位置) と照合するので、ここでは proper rotation のみ収集すれば足りる。
+            if (ax.Order <= 0) continue;
             int absO = ax.Order;
             if (absO is 3 or 4 or 6) covered2.Add(key); // (260503Ch) [ITA-D1] 同位置の高次記号が defining symbol になる場合、低次 2 回記号は描かない。
             if (absO == 6) covered3.Add(key); // (260503Ch) [ITA-D1] 6 回記号が defining symbol になる場合、同位置の 3 回記号は描かない。
             if (!ax.Screw && absO is (2 or 3 or 4 or 6)) properRotations.Add((absO, key.Item1, key.Item2)); // (260503Ch) [ITA-D1] 同位置に proper N があれば -N は別途重ねない。
         }
+        foreach (var key in minusSixKeys)
+        {
+            covered2.Add(key);
+            covered3.Add(key);
+        }
+        foreach (var key in positiveSixKeys)
+            minusSixHeights.Remove(key);
 
+        var drawnMinusSixKeys = new HashSet<(int, int)>();
         foreach (var ax in axes)
         {
             int o = ax.Order, absO = Math.Abs(o);
@@ -309,17 +374,26 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
             if (!IsAxisPerpendicularToProjection(ax.Direction, projAxis)) continue;
             var (sx, sy, sz) = ctx.Proj.ToScreen(ax.X, ax.Y, ax.Z);
             var key = ((int)Math.Round(Mod1(sx) * 10000), (int)Math.Round(Mod1(sy) * 10000));
+            bool keepMinusSixWithLabel = o == -6 && minusSixHeights.ContainsKey(key);
+            bool keepMinusFourWithLabel = isCubic && o == -4 && !inversionKeys.Contains(key); // 260510Ch
+            if (isCubic && o > 0 && absO == 4 && cubicMinusFourWithoutInversionKeys.Contains(key)) continue; // 260510Ch: -1 が無い同軸 -4 は 4_n より -4 を優先。
+            if (o < 0 && absO == 6 && positiveSixKeys.Contains(key)) continue; // 260510Ch: 同じ投影位置に本物の 6/6_3 があれば -6 を重ねない。
+            if (o == -6 && !drawnMinusSixKeys.Add(key)) continue; // 260510Ch: z=1/4 と 3/4、または z=0 と 1/2 の同一投影重複は 1 個に畳む。
             if (absO == 2 && covered2.Contains(key)) continue; // (260503Ch) [ITA-D1] 高次点記号が同じ位置を定義するため、2 回点記号を省く。
             if (absO == 3 && o > 0 && covered3.Contains(key)) continue; // (260503Ch) [ITA-D1] 6 回点記号が同じ位置を定義するため、3 回点記号を省く。
-            if (o < 0 && properRotations.Contains((absO, key.Item1, key.Item2))) continue; // (260503Ch) [ITA-D1] proper N と同位置の -N は、反転中心側の記号と重複させない。
-            if (isCubic && o > 0 && absO == 4 && ax.Screw && minusFourKeys.Contains(key)) continue; // (260505Cl) cubic で -4 と同位置の 4_n は抑制。
+            // 旧: if (o < 0 && properRotations.Contains((absO, key.Item1, key.Item2))) continue;
+            if (o < 0 && properRotations.Contains((absO, key.Item1, key.Item2)) && !keepMinusSixWithLabel && !keepMinusFourWithLabel) continue; // (260503Ch) [ITA-D1] proper N と同位置の -N は、反転中心側の記号と重複させない。260510Ch: -4 は -1 が無い場合だけ ITA 記号として残す。
+            // 旧: if (isCubic && o > 0 && absO == 4 && ax.Screw && minusFourKeys.Contains(key)) continue; // (260505Cl) cubic で -4 と同位置の 4_n は抑制。
+            if (isCubic && o == -4 && inversionKeys.Contains(key)) continue; // 260510Cl: ITA 規約 — cubic で -4 と -1 が同投影位置に重なる場合は -4 を描かない (4_n + -1 で表記)。Fd-3m(1) のように -1 が無い -4 はそのまま描画。
 
             // -N (N=3,4,6) で inversion 点 z_c ≠ 0 のときは N_k 螺旋 + inversion(z=0) と等価 (反転中心は別途描画)。
             int order = o;
             int finCount = ax.FinCount, edgeStep = ax.EdgeStep;
-            // (260505Cl) cubic で 4_n を抑制した位置の -4 は螺旋に置換せず -4 のまま描き、反転中心高さを併記。
-            bool keepMinusFourWithLabel = isCubic && o == -4 && minusFourKeys.Contains(key);
-            if (o < 0 && absO is 3 or 4 or 6 && !keepMinusFourWithLabel)
+            // 旧: (260505Cl) cubic で 4_n を抑制した位置の -4 は螺旋に置換せず -4 のまま描き、反転中心高さを併記。
+            // 旧: bool keepMinusFourWithLabel = isCubic && o == -4 && minusFourKeys.Contains(key);
+            // 260510Ch: -1 が同軸にある場合だけ -4 を suppress し、-1 が無い -4 は高さ付き -4 として残す。
+            // 260510Ch: -1 が同軸にある -4 は suppress 済み。-1 が無い -4 は screw 置換せず高さ付き -4 として描く。
+            if (o < 0 && absO is 3 or 4 or 6 && !keepMinusSixWithLabel && !keepMinusFourWithLabel)
             {
                 double zc = Mod1(sz);
                 if (Math.Abs(zc) > 1e-3 && Math.Abs(zc - 1) > 1e-3)
@@ -332,7 +406,14 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
                     }
                 }
             }
-            string label = keepMinusFourWithLabel ? HeightLabel(Mod1(sz)) : null; // (260505Cl) -4 反転中心高さは axis 単位で 1 度だけ計算。replicate ループ内で hoist。
+            // 旧: string label = keepMinusFourWithLabel ? HeightLabel(Mod1(sz)) : keepMinusSixWithLabel ? HeightLabel(minusSixHeights[key]) : null;
+            // string label = keepMinusSixWithLabel ? HeightLabel(minusSixHeights[key]) : null; // 旧: -1 無し -4 まで screw 置換してしまい、Fd-3m(1) の -4 高さ表示が消えていた。
+            string label = keepMinusFourWithLabel ? HeightLabel(Mod1(sz)) : keepMinusSixWithLabel ? HeightLabel(minusSixHeights[key]) : null; // 260510Ch
+            float labelRadius = keepMinusSixWithLabel ? SixFoldRadius : FourFoldRadius;
+            if (label != null && order > 0 && finCount > 0) labelRadius += ScrewFinTailLen; // 260510Ch: screw fin が記号外へ伸びる分も高さラベル距離に含める。
+            // 旧: float labelRadiusScale = keepMinusFourWithLabel ? 0.5f : keepMinusSixWithLabel ? 0.5f : 1f;
+            // float labelRadiusScale = 1f; // 旧: -4 も通常半径にしたため高さラベルが離れすぎた。
+            float labelRadiusScale = keepMinusFourWithLabel ? 0.5f : 1f; // 260510Ch
 
             foreach (var (dxf, dyf) in EdgeReplicatedPoints(sx, sy, ctx.DisplayMaxS))
             {
@@ -341,9 +422,17 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
                 else if (absO == 3) DrawRotationPerp(ctx.G, ctx.Fill, ctx.White, pt, order, finCount, edgeStep, 3, ThreeFoldRadius);
                 else if (absO == 4) DrawRotationPerp(ctx.G, ctx.Fill, ctx.White, pt, order, finCount, edgeStep, 4, FourFoldRadius);
                 else if (absO == 6) DrawRotationPerp(ctx.G, ctx.Fill, ctx.White, pt, order, finCount, edgeStep, 6, SixFoldRadius);
-                if (label != null) DrawHeightLabel(ctx.G, ctx.Fill, pt, FourFoldRadius, label, radiusScale: MinusFourHeightLabelRadiusScale); // (260505Ch)
+                if (label != null) DrawHeightLabel(ctx.G, ctx.Fill, pt, labelRadius, label, radiusScale: labelRadiusScale); // (260505Ch) 260510Ch: -6 は SixFoldRadius で配置。
             }
         }
+
+        double? RepresentativeParallelMirrorHeight()
+            // 260510Cl: 最小値だけ欲しいので Distinct/OrderBy/ToList を廃し、nullable で min を直接取る。
+            => table.SymmetryPlanes
+                .Where(p => IsAxisPerpendicularToProjection(p.Normal, projAxis))
+                .Where(p => Math.Abs(p.Glide.U) + Math.Abs(p.Glide.V) + Math.Abs(p.Glide.W) < 1e-6)
+                .Select(p => (double?)Mod1(ctx.Proj.ToScreen(p.X, p.Y, p.Z).Sz))
+                .Min();
     }
 
     #endregion
@@ -381,8 +470,10 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
     private static void DrawHeightLabel(Graphics g, Brush fill, PointF pt, float symbolR, string h, float radiusScale = 1f)
     {
         float r = symbolR * radiusScale;
-        var sz = g.MeasureString(h, HeightLabelFont);
-        g.DrawString(h, HeightLabelFont, fill, pt.X + r + HeightLabelGapX, pt.Y - r - sz.Height + HeightLabelGapY);
+        // 旧: var sz = g.MeasureString(h, HeightLabelFont);
+        var sz = MeasureTightString(g, h, HeightLabelFont); // 260510Ch: glyph 正味サイズ。
+        // g.DrawString(h, HeightLabelFont, fill, pt.X + r + HeightLabelGapX, pt.Y - r - sz.Height + HeightLabelGapY); // 旧
+        DrawTightString(g, fill, h, HeightLabelFont, pt.X + r + HeightLabelGapX, pt.Y - r - sz.Height + HeightLabelGapY); // 260510Ch
     }
     #endregion
 
@@ -819,7 +910,8 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
                     DrawInPlaneMinusFourfoldHead(g, fill, white, pen, lineEnd, d.OutUx, d.OutUy);
                 string h = HeightLabel(d.Sz);
                 if (h == null) continue; // (260503Ch) [ITA-D2] 高さ 0 は無標記、非ゼロ代表高さだけを表示する。
-                var lbl = g.MeasureString(h, HeightLabelFont);
+                // 旧: var lbl = g.MeasureString(h, HeightLabelFont);
+                var lbl = MeasureTightString(g, h, HeightLabelFont); // 260510Ch: GDI+ の余白込み MeasureString ではなく glyph 正味サイズを使う。
                 // (260502Ch) 非ゼロ高さは矢印先端にくっつけて表示する。
                 // (260503Cl) 4 回軸も 2 回軸も visualTip = anchor + ArrowVisualTipOffset*dir で同じ位置に到達する。
                 var tip = new PointF((float)(anchor.X + ArrowVisualTipOffset * d.OutUx), (float)(anchor.Y + ArrowVisualTipOffset * d.OutUy));
@@ -840,9 +932,10 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
                 else if (!horiz && ox != 0f)
                 {
                     float midX = tip.X - ox;
-                    lx = ox > 0 ? Math.Max(lx, midX) : Math.Min(lx, midX - lbl.Width);
+                    lx = ox > 0 ? Math.Max(lx, midX) : Math.Min(lx, midX - lbl.Width); // 260510Ch
                 }
-                g.DrawString(h, HeightLabelFont, fill, lx, ly); // (260505Ch) 呼び出し元の黒 brush を再利用。
+                // g.DrawString(h, HeightLabelFont, fill, lx, ly); // 旧: glyph 外側の余白を含む座標で描いていた。
+                DrawTightString(g, fill, h, HeightLabelFont, lx, ly); // (260505Ch) 呼び出し元の黒 brush を再利用。260510Ch: tight bbox 基準。
             }
         }
     }
@@ -945,7 +1038,8 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
     /// <summary>紙面平行 mirror/glide を IUCR corner bracket で描画。mirror があれば左上、glide は右下に分ける。
     /// (260503Ch) [ITA-D2], [ITA-D4] 高さは代表 h だけを選び、同高さの直交 glide は e-glide bracket へ統合する。
     /// (260505Cl) isCubic=true で立方晶用に bracket を cell 角からさらに離す (紙面平行軸矢印との干渉回避)。</summary>
-    private static void DrawParallelMirrorStack(Graphics g, CellLayout c, HashSet<(double Height, bool Glide, double GlideSx, double GlideSy)> markers, Brush fill, bool isCubic = false)
+    private static void DrawParallelMirrorStack(Graphics g, CellLayout c, HashSet<(double Height, bool Glide, double GlideSx, double GlideSy)> markers,
+                                                Brush fill, bool isCubic = false, bool allowEGlide = true)
     {
         if (markers.Count == 0) return;
         const float armLen = CornerBracketArmLen;
@@ -999,7 +1093,7 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
             int merged = -1;
             for (int i = 0; i < list.Count - 1 && merged < 0; i++)
                 for (int j = i + 1; j < list.Count; j++)
-                    if (IsDoubleGlidePair(list[i].Sx, list[i].Sy, 0, list[j].Sx, list[j].Sy, 0))
+                    if (allowEGlide && IsDoubleGlidePair(list[i].Sx, list[i].Sy, 0, list[j].Sx, list[j].Sy, 0))
                     {
                         // (260503Ch) [ITA-D4] centered cell の直交 glide pair は、2 本の別 bracket ではなく double-glide 記号 1 個で示す。
                         symbols.Add(new(heightGrp.Key, list[i].Sx, list[i].Sy, list[j].Sx, list[j].Sy, false, false, 0));
@@ -1063,10 +1157,12 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
             // 高さラベル: 0 なら省略。labelAtBottomLeft (左上 bracket) は下向き腕の終端 vEnd の下・左脇、それ以外は右側 (中央) に置く。
             string lbl = HeightLabel(height);
             if (lbl == null) return; // (260503Ch) [ITA-D2] 高さ 0 は無標記、非ゼロ代表高さだけを表示する。
-            var ls = g.MeasureString(lbl, HeightLabelFont);
+            // 旧: var ls = g.MeasureString(lbl, HeightLabelFont);
+            var ls = MeasureTightString(g, lbl, HeightLabelFont); // 260510Ch: glyph 正味サイズ。
             float labelX = labelAtBottomLeft ? vEnd.X - ls.Width - ParallelMirrorLabelGap : maxX + ParallelMirrorLabelGap;
             float labelY = labelAtBottomLeft ? vEnd.Y + ParallelMirrorLabelGap            : ((apex.Y + hEnd.Y) - ls.Height) / 2;
-            g.DrawString(lbl, HeightLabelFont, fill, labelX, labelY); // (260505Ch) 呼び出し元の黒 brush を再利用。
+            // g.DrawString(lbl, HeightLabelFont, fill, labelX, labelY); // 旧: DrawString/MeasureString の余白を含んでいた。
+            DrawTightString(g, fill, lbl, HeightLabelFont, labelX, labelY); // (260505Ch) 呼び出し元の黒 brush を再利用。260510Ch: tight bbox 基準。
         }
 
         static bool HasInPlaneGlide((double Height, bool Glide, double GlideSx, double GlideSy) m)
@@ -1114,7 +1210,7 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
     #endregion
 
     #region 紙面垂直 mirror/glide
-    /// <summary>紙面垂直 mirror/glide を幾何線ごとに集約し、d-glide 優先 → e-glide ペア → glide score 最小、の順に 1 つだけ描画。
+    /// <summary>紙面垂直 mirror/glide を幾何線ごとに集約し、ITA 向け defining graphical symbol 1 つへ畳み込んで描画。
     /// (260503Ch) [ITA-D1], [ITA-D4] 同じ幾何面に属する複数操作は、defining graphical symbol 1 個へ畳み込む。</summary>
     private static void DrawCollectedPerpendicularSymmetryPlanes(ElementsContext ctx)
     {
@@ -1127,27 +1223,221 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
         foreach (var group in groups)
         {
             var drafts = group.Select(x => x.Draft).ToList();
-            // (260503Ch) [ITA-D4] d-glide 最優先 → e-glide ペア → glide score 最小、の順に 1 つだけ描く。
-            var dDraft = drafts.FirstOrDefault(d =>
+            // var best = SelectPerpendicularMirrorDraft(ctx, drafts, out bool forceEGlide); // 旧: d/e を先に拾うため Fm-3m 等の純鏡映が glide 記号へ倒れていた。
+            // DrawMirrorPerpToScreen(ctx, best.Sx, best.Sy, best.Direction, best.Glide, forceEGlide);
+            if (!TrySelectPerpendicularMirrorDraft(ctx, drafts, out var best, out var style)) continue; // 260510Ch
+            DrawMirrorPerpToScreen(ctx, best.Sx, best.Sy, best.Direction, best.Glide, styleOverride: style); // 260510Ch
+        }
+    }
+
+    private static bool TrySelectPerpendicularMirrorDraft(ElementsContext ctx, List<PerpendicularMirrorDraft> drafts,
+                                                          out PerpendicularMirrorDraft best,
+                                                          out PerpendicularMirrorStyle? styleOverride)
+    {
+        styleOverride = null;
+        best = default;
+        if (drafts.Count == 0) return false;
+
+        if (TryResolveCubicPerpendicularMirrorStyle(ctx, drafts, out var resolvedStyle)) // 260510Ch
+        {
+            if (resolvedStyle == PerpendicularMirrorStyle.None) return false;
+            best = SelectDraftForPerpendicularStyle(ctx.Proj, drafts, resolvedStyle);
+            styleOverride = resolvedStyle;
+            return true;
+        }
+
+        // 旧: d-glide 最優先 → e-glide ペア → 幾何線位置に応じた ITA 向け代表記号の順に 1 つだけ描く。
+        // 260510Ch: 個別の cubic ITA resolver に該当しない群では既存の優先順位を維持し、回帰範囲を抑える。
+        foreach (var d in drafts)
+        {
+            var (gSx, gSy, gSz) = ctx.Proj.ToScreen(d.Glide.U, d.Glide.V, d.Glide.W);
+            if (GetPerpendicularMirrorStyle(gSx, gSy, gSz) == PerpendicularMirrorStyle.DGlide)
             {
-                var (gSx, gSy, gSz) = ctx.Proj.ToScreen(d.Glide.U, d.Glide.V, d.Glide.W);
-                return IsPerpendicularDGlide(gSx, gSy, gSz);
-            });
-            if (dDraft != default)
-                DrawMirrorPerpToScreen(ctx, dDraft.Sx, dDraft.Sy, dDraft.Direction, dDraft.Glide);
-            else if (TryFindDoubleGlideDraft(ctx.Proj, drafts, out var eDraft))
-                DrawMirrorPerpToScreen(ctx, eDraft.Sx, eDraft.Sy, eDraft.Direction, eDraft.Glide, forceEGlide: true); // (260503Ch) [ITA-D4] 直交する half-glide pair は e-glide style で示す。
-            else
-            {
-                // (260503Ch) [ITA-D1] R-3m 等の重複 glide 表現を捨て、純 mirror や a/b-glide を残すため glide score 最小を採用。
-                var best = drafts.OrderBy(d =>
-                {
-                    var (gSx, gSy, gSz) = ctx.Proj.ToScreen(d.Glide.U, d.Glide.V, d.Glide.W);
-                    return Math.Abs(gSx) + Math.Abs(gSy) + Math.Abs(gSz);
-                }).First();
-                DrawMirrorPerpToScreen(ctx, best.Sx, best.Sy, best.Direction, best.Glide);
+                best = d;
+                return true;
             }
         }
+        if (ctx.AllowEGlide && TryFindDoubleGlideDraft(ctx.Proj, drafts, out var eDraft))
+        {
+            best = eDraft;
+            styleOverride = PerpendicularMirrorStyle.EGlide;
+            return true; // (260503Ch) [ITA-D4] 直交する half-glide pair は e-glide style で示す。
+        }
+
+        bool latticeNodeLine = IsIntegralPerpendicularLineOffset(ctx, drafts[0]);
+        best = drafts.OrderBy(d => PerpendicularMirrorPriority(ctx.Proj, d, latticeNodeLine)).First(); // 260510Ch
+        return true;
+    }
+
+    /// <summary>ITA 図で cubic 系の defining graphical symbol を個別に補正する。260510Ch</summary>
+    private static bool TryResolveCubicPerpendicularMirrorStyle(ElementsContext ctx, List<PerpendicularMirrorDraft> drafts,
+                                                                out PerpendicularMirrorStyle style)
+    {
+        style = default;
+        if (!TryGetProjectedMirrorLine(ctx, drafts[0], out int nx, out int ny, out double offset)) return false;
+
+        bool axisLine = (nx == 0) != (ny == 0);
+        bool diagonalLine = nx != 0 && ny != 0 && Math.Abs(nx) == Math.Abs(ny);
+        if (!axisLine && !diagonalLine) return false;
+
+        string hm = ctx.SpaceGroupHM ?? "";
+        bool zeroOrHalf = IsFraction(offset, 0, 1) || IsFraction(offset, 1, 2);
+        bool quarterOrThreeQuarter = IsFraction(offset, 1, 4) || IsFraction(offset, 3, 4);
+        bool oddEighth = IsFraction(offset, 1, 8) || IsFraction(offset, 3, 8) ||
+                         IsFraction(offset, 5, 8) || IsFraction(offset, 7, 8);
+        bool hasMirrorCandidate = drafts.Any(d =>
+        {
+            var (gSx, gSy, gSz) = ctx.Proj.ToScreen(d.Glide.U, d.Glide.V, d.Glide.W);
+            return GetPerpendicularMirrorStyle(gSx, gSy, gSz) == PerpendicularMirrorStyle.Mirror;
+        }); // 260510Ch: 同一幾何線に純鏡映候補があれば、ITA の defining symbol は原則 m。
+
+        switch (hm)
+        {
+            case "Fm-3m":
+                if ((axisLine || diagonalLine) && zeroOrHalf) { style = PerpendicularMirrorStyle.Mirror; return true; }
+                if ((axisLine || diagonalLine) && quarterOrThreeQuarter) { style = PerpendicularMirrorStyle.None; return true; }
+                break;
+
+            case "Fm-3c":
+                if (axisLine && zeroOrHalf) { style = PerpendicularMirrorStyle.Mirror; return true; }
+                if (axisLine && quarterOrThreeQuarter) { style = PerpendicularMirrorStyle.None; return true; }
+                if (diagonalLine && zeroOrHalf) { style = PerpendicularMirrorStyle.DepthGlide; return true; }
+                if (diagonalLine && quarterOrThreeQuarter) { style = PerpendicularMirrorStyle.None; return true; }
+                break;
+
+            case "Fd-3m(1)":
+                if (diagonalLine && zeroOrHalf) { style = PerpendicularMirrorStyle.Mirror; return true; }
+                break;
+
+            case "Fd-3m(2)":
+                if (diagonalLine && oddEighth) { style = PerpendicularMirrorStyle.None; return true; }
+                if (diagonalLine && zeroOrHalf) { style = PerpendicularMirrorStyle.Mirror; return true; }
+                break;
+
+            case "Fd-3c(1)":
+                if (diagonalLine && zeroOrHalf) { style = PerpendicularMirrorStyle.DepthGlide; return true; }
+                break;
+
+            case "Fd-3c(2)":
+                if (diagonalLine && oddEighth) { style = PerpendicularMirrorStyle.None; return true; }
+                if (diagonalLine) { style = PerpendicularMirrorStyle.DepthGlide; return true; }
+                break;
+
+            case "Im-3m":
+                if (diagonalLine && IsFraction(offset, 0, 1)) { style = PerpendicularMirrorStyle.Mirror; return true; }
+                if (diagonalLine && IsFraction(offset, 1, 2)) { style = PerpendicularMirrorStyle.EGlide; return true; }
+                break;
+
+            case "Ia-3d":
+                if (axisLine && IsFraction(offset, 0, 1))
+                {
+                    // 260510Ch: C 投影では sy=a, sx=b。a=0 は法線 (0,1)、b=0 は法線 (1,0)。
+                    style = nx == 0 ? PerpendicularMirrorStyle.DepthGlide : PerpendicularMirrorStyle.InPlaneGlide;
+                    return true;
+                }
+                if (diagonalLine && nx == 1 && ny == 1 && quarterOrThreeQuarter)
+                {
+                    style = PerpendicularMirrorStyle.None;
+                    return true;
+                }
+                break;
+
+            case "Pm-3n":
+                if (diagonalLine && IsFraction(offset, 0, 1)) { style = PerpendicularMirrorStyle.NGlide; return true; }
+                if (diagonalLine && IsFraction(offset, 1, 2)) { style = PerpendicularMirrorStyle.DepthGlide; return true; }
+                break;
+
+            case "F-43c":
+                if (diagonalLine && IsFraction(offset, 0, 1)) { style = PerpendicularMirrorStyle.DepthGlide; return true; }
+                break;
+        }
+        if (hasMirrorCandidate)
+        {
+            style = PerpendicularMirrorStyle.Mirror;
+            return true;
+        }
+        return false;
+    }
+
+    private static PerpendicularMirrorDraft SelectDraftForPerpendicularStyle(Projection proj, List<PerpendicularMirrorDraft> drafts,
+                                                                             PerpendicularMirrorStyle style)
+    {
+        // 260510Ch: forced style の描画では幾何情報だけが必要な場合があるため、該当 glide 候補が無ければ最小 glide 候補へ fallback。
+        return drafts
+            .OrderBy(d => DraftMatchesStyle(proj, d, style) ? 0 : 1)
+            .ThenBy(d => Math.Abs(d.Glide.U) + Math.Abs(d.Glide.V) + Math.Abs(d.Glide.W))
+            .First();
+    }
+
+    private static bool DraftMatchesStyle(Projection proj, PerpendicularMirrorDraft draft, PerpendicularMirrorStyle style)
+    {
+        var (gSx, gSy, gSz) = proj.ToScreen(draft.Glide.U, draft.Glide.V, draft.Glide.W);
+        var draftStyle = GetPerpendicularMirrorStyle(gSx, gSy, gSz);
+        return style == PerpendicularMirrorStyle.NGlide
+            ? draftStyle == PerpendicularMirrorStyle.DiagonalGlide
+            : draftStyle == style;
+    }
+
+    private static bool TryGetProjectedMirrorLine(ElementsContext ctx, PerpendicularMirrorDraft draft,
+                                                  out int nx, out int ny, out double offset)
+    {
+        var (dSx, dSy) = ProjectVector(draft.Direction.U, draft.Direction.V, draft.Direction.W, ctx.Proj.Axis);
+        nx = (int)Math.Round(dSx);
+        ny = (int)Math.Round(dSy);
+        offset = 0;
+        if (Math.Abs(dSx - nx) > 1e-6 || Math.Abs(dSy - ny) > 1e-6) return false;
+        int gcd = Gcd(Math.Abs(nx), Math.Abs(ny));
+        if (gcd == 0) return false;
+        offset = nx * NormalizeCellBoundary(draft.Sx) + ny * NormalizeCellBoundary(draft.Sy);
+        nx /= gcd;
+        ny /= gcd;
+        offset /= gcd;
+        if (nx < 0 || (nx == 0 && ny < 0))
+        {
+            nx = -nx;
+            ny = -ny;
+            offset = -offset;
+        }
+        offset = Mod1(offset);
+        if (offset > 1 - FracEps) offset = 0;
+        return true;
+
+        static int Gcd(int a, int b)
+        {
+            while (b != 0) (a, b) = (b, a % b);
+            return a;
+        }
+    }
+
+    private static bool IsFraction(double value, int numerator, int denominator)
+    {
+        double target = (double)numerator / denominator;
+        double diff = Math.Abs(Mod1(value - target));
+        return diff < 1e-6 || Math.Abs(diff - 1) < 1e-6;
+    }
+
+    private static (int Priority, double Score) PerpendicularMirrorPriority(Projection proj, PerpendicularMirrorDraft draft,
+                                                                            bool latticeNodeLine)
+    {
+        var (gSx, gSy, gSz) = proj.ToScreen(draft.Glide.U, draft.Glide.V, draft.Glide.W);
+        var style = GetPerpendicularMirrorStyle(gSx, gSy, gSz);
+        // 旧: glide score 最小。260510Ch: 紙面内 glide を優先し、格子節点線では m/c を n より優先する。
+        int priority = style switch
+        {
+            PerpendicularMirrorStyle.InPlaneGlide => 0,
+            PerpendicularMirrorStyle.Mirror => 1,
+            PerpendicularMirrorStyle.DepthGlide => latticeNodeLine ? 2 : 3,
+            PerpendicularMirrorStyle.DiagonalGlide => latticeNodeLine ? 3 : 2,
+            _ => 4
+        };
+        return (priority, Math.Abs(gSx) + Math.Abs(gSy) + Math.Abs(gSz));
+    }
+
+    private static bool IsIntegralPerpendicularLineOffset(ElementsContext ctx, PerpendicularMirrorDraft draft)
+    {
+        var (dSx, dSy) = ProjectVector(draft.Direction.U, draft.Direction.V, draft.Direction.W, ctx.Proj.Axis);
+        double offset = dSx * NormalizeCellBoundary(draft.Sx) + dSy * NormalizeCellBoundary(draft.Sy);
+        return Math.Abs(CenterMod1(offset)) < 1e-6;
     }
 
     private static bool TryFindDoubleGlideDraft(Projection proj, List<PerpendicularMirrorDraft> drafts, out PerpendicularMirrorDraft draft)
@@ -1178,16 +1468,27 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
 
     /// <summary>紙面垂直 mirror/glide を法線直交直線で描画。線種は IT 分解で選択 (純=実線、a/b=長破線、c=短点線、n=dash-dot、d=dot-dash-dot-dash-dot-arrow、e=dot-dot-dash)。
     /// 直交を CellLayout (実空間 cartesian) で計算するので非直交セルでも正しい角度になる。</summary>
-    private static void DrawMirrorPerpToScreen(ElementsContext ctx, double sx, double sy, (int U, int V, int W) dir, (double U, double V, double W) it, bool forceEGlide = false)
+    private static void DrawMirrorPerpToScreen(ElementsContext ctx, double sx, double sy, (int U, int V, int W) dir, (double U, double V, double W) it,
+                                               bool forceEGlide = false, PerpendicularMirrorStyle? styleOverride = null)
     {
         var c = ctx.C;
         if (!TryGetMirrorPerpGeometry(c, ctx.Proj.Axis, dir, out double perpSx, out double perpSy, out double nX, out double nY)) return;
         var (gSx, gSy, gSz) = ctx.Proj.ToScreen(it.U, it.V, it.W);
-        bool hasInPlane = Math.Abs(gSx) > 1e-3 || Math.Abs(gSy) > 1e-3;
-        bool hasDepth   = Math.Abs(gSz) > 1e-3;
-        bool dGlide = IsPerpendicularDGlide(gSx, gSy, gSz);
-        int style = dGlide ? 4 : forceEGlide ? 5 : (hasInPlane, hasDepth) switch { (false, false) => 0, (true, false) => 1, (false, true) => 2, _ => 3 }; // (260503Ch) [ITA-D4]
-        Pen pen = style switch { 0 => ctx.MirrorPen, 1 => ctx.InPlanePen, 2 => ctx.DepthPen, 3 => ctx.DiagPen, 5 => ctx.EPen, _ => ctx.MirrorPen };
+        // 旧: int style = dGlide ? 4 : forceEGlide ? 5 : (hasInPlane, hasDepth) switch { ... };
+        // var style = GetPerpendicularMirrorStyle(gSx, gSy, gSz, forceEGlide); // 旧: glide ベクトルのみで線種を決め、ITA の群別 defining symbol を反映できなかった。
+        var style = styleOverride ?? GetPerpendicularMirrorStyle(gSx, gSy, gSz, forceEGlide); // 260510Ch
+        if (style == PerpendicularMirrorStyle.None) return; // 260510Ch
+        bool dGlide = style == PerpendicularMirrorStyle.DGlide;
+        Pen pen = style switch
+        {
+            PerpendicularMirrorStyle.Mirror => ctx.MirrorPen,
+            PerpendicularMirrorStyle.InPlaneGlide => ctx.InPlanePen,
+            PerpendicularMirrorStyle.DepthGlide => ctx.DepthPen,
+            PerpendicularMirrorStyle.DiagonalGlide => ctx.DiagPen,
+            PerpendicularMirrorStyle.EGlide => ctx.EPen,
+            PerpendicularMirrorStyle.NGlide => ctx.DiagPen, // 260510Ch: n-glide は dash-dot 線、矢印なし。
+            _ => ctx.MirrorPen
+        };
 
         Draw(sx, sy);
         // 境界上の mirror/glide は単位胞の対辺にも同じ対称要素として表示する。
@@ -1302,20 +1603,40 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
     private static bool IsPerpendicularDGlide(double gSx, double gSy, double gSz)
         => IsQuarterGlideComponent(gSz) && (IsQuarterGlideComponent(gSx) || IsQuarterGlideComponent(gSy));
 
+    private static PerpendicularMirrorStyle GetPerpendicularMirrorStyle(double gSx, double gSy, double gSz,
+                                                                        bool forceEGlide = false)
+    {
+        if (IsPerpendicularDGlide(gSx, gSy, gSz)) return PerpendicularMirrorStyle.DGlide;
+        if (forceEGlide) return PerpendicularMirrorStyle.EGlide;
+        bool hasInPlane = Math.Abs(gSx) > 1e-3 || Math.Abs(gSy) > 1e-3;
+        bool hasDepth = Math.Abs(gSz) > 1e-3;
+        return (hasInPlane, hasDepth) switch
+        {
+            (false, false) => PerpendicularMirrorStyle.Mirror,
+            (true, false) => PerpendicularMirrorStyle.InPlaneGlide,
+            (false, true) => PerpendicularMirrorStyle.DepthGlide,
+            _ => PerpendicularMirrorStyle.DiagonalGlide
+        }; // 260510Ch: 紙面垂直 mirror/glide の線種分類を描画・代表選択で共有する。
+    }
+
     private static bool TryGetMirrorPerpGeometry(CellLayout c, ProjectionAxis axis, (int U, int V, int W) dir,
                                                  out double perpSx, out double perpSy, out double nX, out double nY)
     {
         var (dSx, dSy) = ProjectVector(dir.U, dir.V, dir.W, axis);
-        nX = dSx * c.Horz.X + dSy * c.Vert.X;
-        nY = dSx * c.Horz.Y + dSy * c.Vert.Y;
-        double pX = -nY, pY = nX;
-        double det = c.Horz.X * c.Vert.Y - c.Vert.X * c.Horz.Y;
+        // 旧: nX = dSx * c.Horz.X + dSy * c.Vert.X; nY = dSx * c.Horz.Y + dSy * c.Vert.Y; double pX = -nY, pY = nX;
+        // 260510Ch: dir は Miller 面指数なので、投影面内では dSx*Sx + dSy*Sy = const の共変係数として扱う。
+        // 直接格子ベクトルとして足すと hex/trig の (h k i l) 回転同値面で線方向が崩れる。
+        double lineSx = -dSy, lineSy = dSx;
+        double pX = lineSx * c.Horz.X + lineSy * c.Vert.X;
+        double pY = lineSx * c.Horz.Y + lineSy * c.Vert.Y;
+        nX = -pY;
+        nY = pX;
         perpSx = perpSy = 0;
-        if (Math.Abs(det) < 1e-9) return false;
-        perpSx = (c.Vert.Y * pX - c.Vert.X * pY) / det;
-        perpSy = (-c.Horz.Y * pX + c.Horz.X * pY) / det;
-        // hex/trig で cos(120°) 精度誤差により perpS* が 1e-8 オーダーになる。SpanLineThroughCell の 1e-9 閾値では非零扱いになり、
-        // 微小 d で除算して縮退線を返し、隣接辺の dedup key を先取りしてしまうため 0 へ丸める。
+        if (Math.Abs(lineSx) < 1e-12 && Math.Abs(lineSy) < 1e-12) return false;
+        perpSx = lineSx;
+        perpSy = lineSy;
+        // 260510Ch: 投影変換由来の微小成分は線分 clip 前に 0 へ丸める。
+        // これを残すと微小 d で除算して縮退線を返し、隣接辺の dedup key を先取りしてしまう。
         const double edgeLineEps = 1e-6;
         if (Math.Abs(perpSx) < edgeLineEps) perpSx = 0;
         if (Math.Abs(perpSy) < edgeLineEps) perpSy = 0;
@@ -1466,7 +1787,10 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
         foreach (var (sxScreen, syScreen) in positions)
         {
             // site 判定は Mod1 で正規化した screen 位置 + Sz=0 を結晶座標に変換 (260506Cl: 1 行 switch にインライン化)。
-            double sxKey = Mod1(sxScreen), syKey = Mod1(syScreen);
+            // 旧: double sxKey = Mod1(sxScreen), syKey = Mod1(syScreen);
+            double siteScale = ctx.DisplayMaxS < 1 ? 1.0 / ctx.DisplayMaxS : 1.0; // 260510Ch: F 格子 stereonet の面記号は表示だけ 1/2 縮小しているので、site 判定では元の (a,b) 座標へ戻す。
+            double sxKey = Mod1(sxScreen * siteScale), syKey = Mod1(syScreen * siteScale); // 260510Ch
+            double axisSxKey = Mod1(sxScreen), axisSyKey = Mod1(syScreen); // 260510Ch: 斜め軸は実際の upper-left quadrant 位置で正しく拾えていたため、面用の 1/2 縮小補正を掛けない。
             var (xc, yc, zc) = projAxis switch
             {
                 ProjectionAxis.C => (syKey, sxKey, 0.0),
@@ -1474,6 +1798,13 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
                 ProjectionAxis.B => (sxKey, 0.0, syKey),
                 _ => (0.0, 0.0, 0.0)
             };
+            var (axisXc, axisYc, axisZc) = projAxis switch
+            {
+                ProjectionAxis.C => (axisSyKey, axisSxKey, 0.0),
+                ProjectionAxis.A => (0.0, axisSyKey, axisSxKey),
+                ProjectionAxis.B => (axisSxKey, 0.0, axisSyKey),
+                _ => (0.0, 0.0, 0.0)
+            }; // 260510Ch
 
             // この site を通る (h,k,l) ごとに glide ベクトルを集約 → e-glide 検出のため。
             var groupedGlides = new Dictionary<(int H, int K, int L), List<(double U, double V, double W)>>();
@@ -1486,9 +1817,15 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
                 list.Add(CenteredGlideVector(mp.Glide.U, mp.Glide.V, mp.Glide.W)); // (260506Cl) `- Math.Round` 3 行を CenterMod1 ベースの helper に置換。
             }
             // (h,k,l) 単位で style を確定。
+            // 旧:
+            // var siteMirrors = groupedGlides
+            //     .Select(group => (Hkl: group.Key, Style: ResolveStereonetGroupStyle(group.Value, projAxis)))
+            //     .ToList();
             var siteMirrors = groupedGlides
-                .Select(group => (Hkl: group.Key, Style: ResolveStereonetGroupStyle(group.Value, projAxis)))
-                .ToList(); // (260505Ch) grouped glides → site mirror style の配線を一段に整理。
+                // .Select(group => (Hkl: group.Key, Style: ResolveStereonetGroupStyle(group.Value, projAxis))) // 旧: 斜め d/e を群に関係なく広く認定していた。
+                .Select(group => (Hkl: group.Key, Style: ResolveStereonetGroupStyle(group.Value, projAxis, ctx.SpaceGroupHM, group.Key, xc, yc, zc))) // 260510Ch
+                .Where(group => group.Style != StereonetGlideStyle.None)
+                .ToList(); // (260505Ch) grouped glides → site mirror style の配線を一段に整理。260510Ch: table で site を通る実在候補だけを描く。
 
             // 260505Cl: Order を含めて 2 回軸/3 回軸を同列に dedup。Screw も保持し DrawStereonetTwofold に渡す。
             // (260505Cl 整理) 立方晶高対称群の stereonet 中心を通る 3 回軸は <111> proper のみで、3_1/3_2 螺旋は現れないため FinCount/EdgeStep は持たない。
@@ -1496,7 +1833,8 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
             var seenAxis = new HashSet<(int, int, int, int)>();
             foreach (var ax in diagonalAxes)
             {
-                if (!AxisPassesThroughSite(ax, xc, yc, zc)) continue;
+                // if (!AxisPassesThroughSite(ax, xc, yc, zc)) continue; // 旧: 面用に戻した F 格子 full-cell site を軸にも使い、Fd-3c(2) の斜め軸が 3[111] へ潰れていた。
+                if (!AxisPassesThroughSite(ax, axisXc, axisYc, axisZc)) continue; // 260510Ch
                 var key = (ax.Direction.U, ax.Direction.V, ax.Direction.W, ax.Order);
                 if (!seenAxis.Add(key)) continue;
                 siteAxes.Add((ax.Direction, ax.Order, ax.Screw));
@@ -1519,6 +1857,7 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
                     case StereonetGlideStyle.EGlide:       DrawMirrorGreatCircle(ctx.G, ePen,          center, radius, hkl); break;
                     case StereonetGlideStyle.NGlide:       DrawMirrorGreatCircle(ctx.G, dGlidePen,     center, radius, hkl); break; // (260505Ch) n-glide は d と同じ dash-dot 大円だが矢印は付けない。
                     case StereonetGlideStyle.Diamond:      DrawDGlideGreatCircle(ctx.G, dGlidePen, ctx.Fill, center, radius, hkl); break;
+                    case StereonetGlideStyle.None: break; // 260510Ch
                 }
             }
             // 4) 実 2/3 回軸 (260505Cl: Pm-3m など face-diagonal 2 回軸を inset に追加)
@@ -1534,7 +1873,10 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
 
     /// <summary>(260505Cl) 同一 (h,k,l) 平面に対し、site で集めた glide ベクトル群から最終 style を決める。
     /// 純鏡映を含めば Mirror、独立な非零 glide が 2 つ以上で EGlide、1 つだけなら glide ベクトルから AxialInPlane/AxialDepth/NGlide/Diamond を分類。</summary>
-    private static StereonetGlideStyle ResolveStereonetGroupStyle(List<(double U, double V, double W)> glides, ProjectionAxis projAxis)
+    private static StereonetGlideStyle ResolveStereonetGroupStyle(List<(double U, double V, double W)> glides, ProjectionAxis projAxis,
+                                                                  string spaceGroupHM = null,
+                                                                  (int H, int K, int L) hkl = default,
+                                                                  double siteX = 0, double siteY = 0, double siteZ = 0)
     {
         bool hasPure = false;
         var distinctNonZero = new List<(double U, double V, double W)>();
@@ -1548,24 +1890,150 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
                 { found = true; break; }
             if (!found) distinctNonZero.Add((centered.X, centered.Y, centered.Z));
         }
+        bool allowEGlide = AllowsDiagonalEGlide(spaceGroupHM); // 260510Ch
+        bool allowDGlide = AllowsDiagonalDGlide(spaceGroupHM); // 260510Ch
+
+        // 旧: Fd-3c(1)/(2) を別々の位相規則で処理していた。
+        // 260510Ch: 両者は origin shift だけの差なので、h*x+k*y+l*z の原点補正 phase へ共通化する。
+        if (IsFd3c(spaceGroupHM) && TryResolveFd3cStereonetStyle(spaceGroupHM, hkl, siteX, siteY, siteZ, out var fd3cStyle))
+            return fd3cStyle;
+
+        if (IsFd3m(spaceGroupHM) && TryResolveFd3mStereonetStyle(spaceGroupHM, hkl, siteX, siteY, siteZ, out var fd3mStyle))
+            return fd3mStyle; // 260510Ch: Fd-3m(1)/(2) も origin choice だけの差として mirror/n を phase で決める。
+
+        if (allowEGlide && TryResolveBodyCenteredDiagonalStereonetStyle(hkl, siteX, siteY, siteZ, out var bodyCenteredStyle))
+            return bodyCenteredStyle; // 260510Ch
+
+        // 旧: e-glide を pure mirror より優先していたため、Im-3m の (0,0) stereonet まで e になっていた。
+        // 260510Ch: stereonet でも純鏡映候補があれば mirror を defining symbol とする。
         if (hasPure) return StereonetGlideStyle.Mirror;
 
         // 複数の half-glide coset が同じ幾何面に載る場合 → e-glide。
-        for (int i = 0; i < distinctNonZero.Count - 1; i++)
-            for (int j = i + 1; j < distinctNonZero.Count; j++)
-                if (IsDoubleGlidePair(distinctNonZero[i].U, distinctNonZero[i].V, distinctNonZero[i].W,
-                                      distinctNonZero[j].U, distinctNonZero[j].V, distinctNonZero[j].W))
-                    return StereonetGlideStyle.EGlide; // (260505Ch)
+        // 旧: 群を問わず e-glide としていた。
+        // 260510Ch: 斜め e-glide は Im-3m / I-43m 限定、かつ pure mirror が無い site だけ。
+        if (allowEGlide)
+            for (int i = 0; i < distinctNonZero.Count - 1; i++)
+                for (int j = i + 1; j < distinctNonZero.Count; j++)
+                    if (IsDoubleGlidePair(distinctNonZero[i].U, distinctNonZero[i].V, distinctNonZero[i].W,
+                                          distinctNonZero[j].U, distinctNonZero[j].V, distinctNonZero[j].W))
+                        return StereonetGlideStyle.EGlide;
         if (distinctNonZero.Count == 0) return StereonetGlideStyle.Mirror; // safety
 
-        var single = distinctNonZero[0];
-        // d-glide (1/4 of face/body diagonal): 2 個以上の成分が ±1/4。
-        int quarterCount = (IsQuarterGlideComponent(single.U) ? 1 : 0) + (IsQuarterGlideComponent(single.V) ? 1 : 0) + (IsQuarterGlideComponent(single.W) ? 1 : 0);
-        int halfCount = HalfGlideComponentCount((single.U, single.V, single.W)); // (260505Ch) F-43m の mixed quarter+half glide は ITA では n-glide。
-        if (quarterCount >= 2) return halfCount > 0 ? StereonetGlideStyle.NGlide : StereonetGlideStyle.Diamond;
-        // (260505Ch) P-43m などの face-diagonal half-glide も、紙面平行成分ではなく depth 成分の有無で DOT/DASH を決める。
-        double depthGlide = ProjectedDepth(single.U, single.V, single.W, projAxis);
+        // 旧: var single = distinctNonZero[0]; ... return single 由来の分類;
+        // 260510Ch: 同じ hkl/site に複数 glide coset が載る群 (Fd-3c, Pm-3n など) では、列挙順で代表を決めると
+        // e/d/n/dot/dash が不安定に入れ替わる。全候補を分類してから ITA で許可される defining symbol を選ぶ。
+        var candidateStyles = distinctNonZero
+            .Select(g => ClassifyStereonetGlideVector(g, projAxis, allowDGlide, AllowsDiagonalNGlide(spaceGroupHM)))
+            .Distinct()
+            .ToList();
+        if (candidateStyles.Contains(StereonetGlideStyle.Diamond)) return StereonetGlideStyle.Diamond;
+        if (candidateStyles.Contains(StereonetGlideStyle.NGlide)) return StereonetGlideStyle.NGlide;
+        if (candidateStyles.Contains(StereonetGlideStyle.AxialDepth)) return StereonetGlideStyle.AxialDepth;
+        if (candidateStyles.Contains(StereonetGlideStyle.AxialInPlane)) return StereonetGlideStyle.AxialInPlane;
+        return StereonetGlideStyle.None;
+    }
+
+    private static bool AllowsDiagonalDGlide(string spaceGroupHM)
+        => spaceGroupHM is "Ia-3d" or "I-43d"; // 260510Ch: ITA 確認事項。斜め d 映進はこの 2 群のみ。
+
+    private static bool AllowsDiagonalEGlide(string spaceGroupHM)
+        // => spaceGroupHM is "Im-3m" or "I-43m"; // 260510Ch 旧: 斜め e 映進を I 格子だけに限定していた。
+        // => spaceGroupHM is "Im-3m" or "I-43m" or "Fd-3m(1)" or "Fd-3m(2)"; // 260510Ch 旧: Fd-3m まで e を許可してしまい、ITA 確認事項に反していた。
+        => spaceGroupHM is "Im-3m" or "I-43m"; // 260510Ch: ITA 確認事項。斜め e 映進はこの I 格子 2 群のみ。
+
+    private static bool AllowsDiagonalNGlide(string spaceGroupHM)
+        => spaceGroupHM?.Contains('n', StringComparison.OrdinalIgnoreCase) == true; // 260510Ch: quarter 系を機械的に n にせず、n を defining symbol に持つ群だけ許可。
+
+    private static StereonetGlideStyle ClassifyStereonetGlideVector((double U, double V, double W) glide, ProjectionAxis projAxis,
+                                                                    bool allowDGlide, bool allowNGlide)
+    {
+        int quarterCount = (IsQuarterGlideComponent(glide.U) ? 1 : 0) + (IsQuarterGlideComponent(glide.V) ? 1 : 0) + (IsQuarterGlideComponent(glide.W) ? 1 : 0);
+        int halfCount = HalfGlideComponentCount(glide);
+        if (quarterCount >= 2)
+        {
+            // 旧: d を許可しない quarter 系は n として描いていた。
+            // 260510Ch: ITA 確認事項に従い、d は Ia-3d/I-43d 限定。その他の quarter 系は depth 有無で dot/dash へ落とす。
+            if (allowDGlide && halfCount == 0) return StereonetGlideStyle.Diamond;
+            if (allowNGlide && halfCount > 0) return StereonetGlideStyle.NGlide;
+        }
+        if (allowNGlide && halfCount >= 2) return StereonetGlideStyle.NGlide; // 260510Ch: Pm-3n などの diagonal half-glide pair。
+
+        double depthGlide = ProjectedDepth(glide.U, glide.V, glide.W, projAxis);
         return Math.Abs(depthGlide) > 1e-6 ? StereonetGlideStyle.AxialDepth : StereonetGlideStyle.AxialInPlane;
+    }
+
+    private static bool IsFd3c(string spaceGroupHM)
+        => spaceGroupHM is "Fd-3c(1)" or "Fd-3c(2)"; // 260510Ch
+
+    private static bool IsFd3m(string spaceGroupHM)
+        => spaceGroupHM is "Fd-3m(1)" or "Fd-3m(2)"; // 260510Ch
+
+    private static double FdOriginShift(string spaceGroupHM)
+        => spaceGroupHM.EndsWith("(2)", StringComparison.Ordinal) ? 0.25 : 0.0; // 260510Ch: Fd origin choice (2) は (1/4,1/4,1/4) shift。
+
+    private static bool TryResolveFd3mStereonetStyle(string spaceGroupHM,
+                                                     (int H, int K, int L) hkl,
+                                                     double siteX, double siteY, double siteZ,
+                                                     out StereonetGlideStyle style)
+    {
+        // 260510Ch: Fd-3m の stereonet 斜め面は、原点補正後の phase が整数なら mirror、半整数なら n-glide。
+        // Fd-3m(2) は Fd-3m(1) から (1/4,1/4,1/4) だけ原点がずれる。
+        style = default;
+        hkl = NormalizeMillerIndices(hkl);
+        if (hkl.L == 0) return false;
+
+        bool cubicDiagonalFamily =
+            (hkl.H != 0 && hkl.K == 0) ||
+            (hkl.K != 0 && hkl.H == 0);
+        if (!cubicDiagonalFamily) return false;
+
+        double origin = FdOriginShift(spaceGroupHM);
+        double phase = Mod1(hkl.H * siteX + hkl.K * siteY + hkl.L * siteZ
+                          - (hkl.H + hkl.K + hkl.L) * origin);
+        if (IsFraction(phase, 0, 1)) { style = StereonetGlideStyle.Mirror; return true; }
+        if (IsFraction(phase, 1, 2)) { style = StereonetGlideStyle.NGlide; return true; }
+        return false;
+    }
+
+    private static bool TryResolveFd3cStereonetStyle(string spaceGroupHM,
+                                                     (int H, int K, int L) hkl,
+                                                     double siteX, double siteY, double siteZ,
+                                                     out StereonetGlideStyle style)
+    {
+        // 旧: Fd-3c(1) は a/b phase、Fd-3c(2) は h/k 符号付き phase として別々に書いていた。
+        // 260510Ch: origin choice (2) は choice (1) から (1/4,1/4,1/4) ずれているので、
+        // phase = h*x + k*y + l*z - (h*ox + k*oy + l*oz) で共通化できる。
+        // phase が整数なら dash、半整数なら dot。
+        style = default;
+        hkl = NormalizeMillerIndices(hkl);
+        if (hkl.L == 0) return false;
+
+        bool cubicDiagonalFamily =
+            (hkl.H != 0 && hkl.K == 0) ||
+            (hkl.K != 0 && hkl.H == 0);
+        if (!cubicDiagonalFamily) return false;
+
+        double origin = FdOriginShift(spaceGroupHM); // 260510Ch
+        double phase = Mod1(hkl.H * siteX + hkl.K * siteY + hkl.L * siteZ
+                          - (hkl.H + hkl.K + hkl.L) * origin);
+        bool isZero = IsFraction(phase, 0, 1), isHalf = IsFraction(phase, 1, 2);
+        if (!isZero && !isHalf) return false;
+
+        style = isZero ? StereonetGlideStyle.AxialInPlane : StereonetGlideStyle.AxialDepth;
+        return true;
+    }
+
+    private static bool TryResolveBodyCenteredDiagonalStereonetStyle((int H, int K, int L) hkl,
+                                                                     double siteX, double siteY, double siteZ,
+                                                                     out StereonetGlideStyle style)
+    {
+        // 260510Ch: I 格子の m-3m/-43m 系では、斜め面の site 位相 h*x+k*y+l*z が
+        // 整数なら mirror、半整数なら e-glide になる。Im-3m の edge/center stereonet をこの一式で処理する。
+        style = default;
+        double phase = Mod1(hkl.H * siteX + hkl.K * siteY + hkl.L * siteZ);
+        if (IsFraction(phase, 0, 1)) { style = StereonetGlideStyle.Mirror; return true; }
+        if (IsFraction(phase, 1, 2)) { style = StereonetGlideStyle.EGlide; return true; }
+        return false;
     }
 
     /// <summary>(260505Cl) stereonet 上の鏡映/glide line style 分類。</summary>
@@ -1577,6 +2045,7 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
         NGlide,         // mixed quarter+half glide: dash-dot 大円、矢印なし (例: F-43m の斜め n-glide)
         Diamond,        // d-glide (1/4 along face/body diagonal): dot-dash + アロー
         EGlide,         // 同一平面に独立な glide ベクトルが 2 つ存在する double-glide (e-glide pattern)
+        None,           // 260510Ch: ITA 図に出さない補助候補。
     }
 
     /// <summary>(260505Cl) 鏡映/glide 平面 mp が site (xc, yc, zc) を通るか厳密判定 (lattice 周期を含む)。</summary>

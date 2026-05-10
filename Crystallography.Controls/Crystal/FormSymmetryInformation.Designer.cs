@@ -175,6 +175,7 @@
             radioButtonDirectionB = new System.Windows.Forms.RadioButton();
             radioButtonDirectionC = new System.Windows.Forms.RadioButton();
             label12 = new System.Windows.Forms.Label();
+            flowLayoutPanel5 = new System.Windows.Forms.FlowLayoutPanel();
             tableLayoutPanel1.SuspendLayout();
             panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)graphicsBoxSymmetryElements).BeginInit();
@@ -213,6 +214,7 @@
             ((System.ComponentModel.ISupportInitialize)bindingSourceScatteringFactor).BeginInit();
             panel2.SuspendLayout();
             flowLayoutPanel4.SuspendLayout();
+            flowLayoutPanel5.SuspendLayout();
             SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -362,7 +364,7 @@
             numericBoxPositionA.TabIndex = 6;
             numericBoxPositionA.TextFontSize = 9F;
             numericBoxPositionA.UpDown_Increment = 0.01D;
-            numericBoxPositionA.ValueChanged += numericBoxPosition_ValueChanged; // (260506Cl) test point 変更 → 一般位置図の再描画専用 handler
+            numericBoxPositionA.ValueChanged += numericBoxPosition_ValueChanged;
             // 
             // labelLaTex2
             // 
@@ -397,7 +399,7 @@
             numericBoxPositionB.TabIndex = 6;
             numericBoxPositionB.TextFontSize = 9F;
             numericBoxPositionB.UpDown_Increment = 0.01D;
-            numericBoxPositionB.ValueChanged += numericBoxPosition_ValueChanged; // (260506Cl) test point 変更 → 一般位置図の再描画専用 handler
+            numericBoxPositionB.ValueChanged += numericBoxPosition_ValueChanged;
             // 
             // labelLaTex3
             // 
@@ -432,13 +434,13 @@
             numericBoxPositionC.TabIndex = 6;
             numericBoxPositionC.TextFontSize = 9F;
             numericBoxPositionC.UpDown_Increment = 0.01D;
-            numericBoxPositionC.ValueChanged += numericBoxPosition_ValueChanged; // (260506Cl) test point 変更 → 一般位置図の再描画専用 handler
+            numericBoxPositionC.ValueChanged += numericBoxPosition_ValueChanged;
             // 
             // radioButtonBmp
             // 
             radioButtonBmp.AutoSize = true;
             radioButtonBmp.Font = new System.Drawing.Font("Segoe UI Variable Text", 9F);
-            radioButtonBmp.Location = new System.Drawing.Point(353, 0);
+            radioButtonBmp.Location = new System.Drawing.Point(45, 0);
             radioButtonBmp.Margin = new System.Windows.Forms.Padding(0);
             radioButtonBmp.Name = "radioButtonBmp";
             radioButtonBmp.Size = new System.Drawing.Size(49, 20);
@@ -452,7 +454,7 @@
             radioButtonEmf.AutoSize = true;
             radioButtonEmf.Checked = true;
             radioButtonEmf.Font = new System.Drawing.Font("Segoe UI Variable Text", 9F);
-            radioButtonEmf.Location = new System.Drawing.Point(308, 0);
+            radioButtonEmf.Location = new System.Drawing.Point(0, 0);
             radioButtonEmf.Margin = new System.Windows.Forms.Padding(0);
             radioButtonEmf.Name = "radioButtonEmf";
             radioButtonEmf.Size = new System.Drawing.Size(45, 20);
@@ -1958,8 +1960,7 @@
             flowLayoutPanel4.Controls.Add(radioButtonDirectionB);
             flowLayoutPanel4.Controls.Add(radioButtonDirectionC);
             flowLayoutPanel4.Controls.Add(label12);
-            flowLayoutPanel4.Controls.Add(radioButtonEmf);
-            flowLayoutPanel4.Controls.Add(radioButtonBmp);
+            flowLayoutPanel4.Controls.Add(flowLayoutPanel5);
             flowLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Bottom;
             flowLayoutPanel4.Location = new System.Drawing.Point(4, 743);
             flowLayoutPanel4.Margin = new System.Windows.Forms.Padding(0);
@@ -2001,7 +2002,7 @@
             radioButtonDirectionA.Text = "a";
             radioButtonDirectionA.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             radioButtonDirectionA.UseVisualStyleBackColor = true;
-            radioButtonDirectionA.CheckedChanged += radioButtonDirection_CheckedChanged; // (260506Cl) 投影軸切替で両図を再描画
+            radioButtonDirectionA.CheckedChanged += radioButtonDirection_CheckedChanged;
             // 
             // radioButtonDirectionB
             // 
@@ -2015,7 +2016,7 @@
             radioButtonDirectionB.Text = "b";
             radioButtonDirectionB.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             radioButtonDirectionB.UseVisualStyleBackColor = true;
-            radioButtonDirectionB.CheckedChanged += radioButtonDirection_CheckedChanged; // (260506Cl) 投影軸切替で両図を再描画
+            radioButtonDirectionB.CheckedChanged += radioButtonDirection_CheckedChanged;
             // 
             // radioButtonDirectionC
             // 
@@ -2029,7 +2030,7 @@
             radioButtonDirectionC.Text = "c";
             radioButtonDirectionC.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             radioButtonDirectionC.UseVisualStyleBackColor = true;
-            radioButtonDirectionC.CheckedChanged += radioButtonDirection_CheckedChanged; // (260506Cl) 投影軸切替で両図を再描画
+            radioButtonDirectionC.CheckedChanged += radioButtonDirection_CheckedChanged;
             // 
             // label12
             // 
@@ -2041,6 +2042,18 @@
             label12.Size = new System.Drawing.Size(72, 16);
             label12.TabIndex = 6;
             label12.Text = "Copy format";
+            // 
+            // flowLayoutPanel5
+            // 
+            flowLayoutPanel5.AutoSize = true;
+            flowLayoutPanel5.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            flowLayoutPanel5.Controls.Add(radioButtonEmf);
+            flowLayoutPanel5.Controls.Add(radioButtonBmp);
+            flowLayoutPanel5.Location = new System.Drawing.Point(308, 0);
+            flowLayoutPanel5.Margin = new System.Windows.Forms.Padding(0);
+            flowLayoutPanel5.Name = "flowLayoutPanel5";
+            flowLayoutPanel5.Size = new System.Drawing.Size(94, 20);
+            flowLayoutPanel5.TabIndex = 7;
             // 
             // FormSymmetryInformation
             // 
@@ -2111,6 +2124,8 @@
             panel2.PerformLayout();
             flowLayoutPanel4.ResumeLayout(false);
             flowLayoutPanel4.PerformLayout();
+            flowLayoutPanel5.ResumeLayout(false);
+            flowLayoutPanel5.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
 
@@ -2264,5 +2279,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn columnCoordinates2DataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnCoordinates3DataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnCoordinates4DataGridViewTextBoxColumn;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel5;
     }
 }
