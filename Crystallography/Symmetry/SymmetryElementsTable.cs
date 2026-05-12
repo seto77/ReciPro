@@ -43,7 +43,8 @@ public sealed class SymmetryElementsTable
     public int SeriesNumber { get; }
     public InversionCenter[] InversionCenters { get; }
     public SymmetryAxis[] SymmetryAxes { get; }
-    /// <summary>同一無限直線上で高次・回反・螺旋軸に含まれる低次軸を除いた、対称要素としての主軸一覧。260512Ch</summary>
+    /// <summary>同一無限直線上で高次・回反・螺旋軸に含まれる低次軸を除いた、対称要素としての主軸一覧。
+    /// 260512Ch: -3/-6 は独立対称要素として扱わず、3 + 反転中心 / 3 + 鏡映面側で表現する。</summary>
     public SymmetryAxis[] PrincipalSymmetryAxes { get; }
     public SymmetryPlane[] SymmetryPlanes { get; }
     /// <summary>(260504Ch) この空間群の centering 並進ベクトル一覧 (整数並進 (0,0,0) を除く)。
@@ -177,10 +178,12 @@ public sealed class SymmetryElementsTable
         var list = new List<SymmetryAxis>(axes.Length);
         for (int i = 0; i < axes.Length; i++)
         {
+            if (axes[i].Order is -3 or -6) continue; // 260512Ch: -3/-6 は principal 軸から外し、構成要素側 (3, -1, m) を描画対象にする。
             bool contained = false;
             for (int j = 0; j < axes.Length && !contained; j++)
             {
                 if (i == j) continue;
+                if (axes[j].Order is -3 or -6) continue; // 260512Ch: 非独立扱いの -3/-6 で proper 3 を従属除外しない。
                 if (!SameAxisLine(axes[j], axes[i])) continue;
                 contained = AxisContains(axes[j], axes[i]);
             }
@@ -220,7 +223,7 @@ public sealed class SymmetryElementsTable
         return p switch
         {
             (-4, 0) => c == (2, 0),
-            (-6, 0) => c == (3, 0),
+            // 旧: (-6, 0) => c == (3, 0), // 260512Ch: -6 は独立軸ではなく 3 + m 表現へ寄せるため、3 を落とさない。
             (4, 0) => c == (2, 0),
             (4, 1) => c == (2, 1),
             (4, 2) => c == (2, 0),

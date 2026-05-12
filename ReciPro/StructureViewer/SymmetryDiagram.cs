@@ -132,17 +132,13 @@ internal static class SymmetryDiagram
 
         // 同位置・同方向に複数次数の軸が列挙される (例: P4 の 4 回軸には C₄² = 2 回軸が同位置に存在) ため、
         // 高次軸を先に処理して低次軸を線分 dedup で抑制する。-4 は独立記号として proper 4 より優先する。
-        // -6/-3 は描画上 3 回軸扱いなので proper 6/3 と同線上にある場合は proper を優先 (P6/m の 6 回記号が消えないように)。260509Ch
-        // priority: -4 → 0, proper → 1, それ以外 (-3 / -6) → 2
+        // 旧: -6/-3 は描画上 3 回軸扱いにしていた。
+        // 260512Ch: PrincipalSymmetryAxes から -3/-6 を外したため、priority は -4 → proper/screw のみ。
         foreach (var ax in axesTable.OrderByDescending(a => Math.Abs(a.Order))
-                                    .ThenBy(a => a.Order == -4 ? 0 : a.Order > 0 ? 1 : 2))
+                                    .ThenBy(a => a.Order == -4 ? 0 : 1))
         {
             if (Math.Abs(ax.Order) is not (2 or 3 or 4 or 6)) continue;
             if (!TryNormalize(axes * new V3(ax.Direction.U, ax.Direction.V, ax.Direction.W), out var axisDir)) continue;
-
-            // -3 / -6 は 3 回回転と同じ扱いにする (対称心 / 鏡映は別パスで描画されるため独立シンボル不要)。
-            int effOrder = ax.Order is -3 or -6 ? 3 : ax.Order;
-            bool effScrew = ax.Order is not (-3 or -6) && ax.Screw;
 
             foreach (var cell in EnumerateCells(range))
             {
@@ -162,8 +158,8 @@ internal static class SymmetryDiagram
                 }
                 else if (lineNew && TryClipLine(origin, axisDir, symbolBounds, out var symStart, out var symEnd))
                 {
-                    objects.AddRange(GenerateAxisSymbol(symStart, axisDir, effOrder, effScrew, ax.FinCount, ax.EdgeStep, symbolRadius, black));
-                    objects.AddRange(GenerateAxisSymbol(symEnd, axisDir, effOrder, effScrew, ax.FinCount, ax.EdgeStep, symbolRadius, black));
+                    objects.AddRange(GenerateAxisSymbol(symStart, axisDir, ax.Order, ax.Screw, ax.FinCount, ax.EdgeStep, symbolRadius, black));
+                    objects.AddRange(GenerateAxisSymbol(symEnd, axisDir, ax.Order, ax.Screw, ax.FinCount, ax.EdgeStep, symbolRadius, black));
                 }
             }
         }
@@ -172,7 +168,7 @@ internal static class SymmetryDiagram
 
     /// <summary>軸種別 (2/3/4/6 回転・らせん・-4 回反) を判定して該当シンボルを生成する。
     /// proper rotation / screw は static V3[][] テンプレート (先頭=塗りつぶし多角形、続き=open Lines)。
-    /// -3 / -6 は呼び出し側で 3 回軸に置換されるためここには来ない。-4 は内側 + 外側輪郭。</summary>
+    /// -3 / -6 は PrincipalSymmetryAxes に含めない。-4 は内側 + 外側輪郭。260512Ch</summary>
     private static List<GLObject> GenerateAxisSymbol(V3 center, V3 normal, int order, bool screw, int finCount,
                                                      int edgeStep, double radius, Material black)
     {
@@ -210,9 +206,9 @@ internal static class SymmetryDiagram
             return RenderTemplate(template, center, u, v, radius, black);
         }
 
-        // 回反 -4 (内側レンズ + 外側四角輪郭)。-3 / -6 はここには来ない (3 回軸に置換済み)。
+        // 回反 -4 (内側レンズ + 外側四角輪郭)。260512Ch: -3/-6 は principal 軸から除外済み。
         if (n != 4)
-            throw new InvalidOperationException($"Unsupported rotoinversion order: {order} (-3 / -6 は 3 回軸として扱う)");
+            throw new InvalidOperationException($"Unsupported rotoinversion order: {order}");
 
         var liftedCenter = center + normal * (radius * Rotoinversion4LiftFactor);
         var outerVerts = AffineTransformXY(Rotoinversion4[1], center, u, v, radius);

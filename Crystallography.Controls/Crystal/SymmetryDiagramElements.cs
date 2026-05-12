@@ -27,12 +27,12 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
     private const float TwofoldHalfW     = 4f;
     private const float ScrewFinSweepDeg = 30f;
 
-    // 紙面垂直 3/4/6 (-3, -4, -6) — 正多角形
+    // 紙面垂直 3/4/6 と -4 — 正多角形。260512Ch: -3/-6 は principal 軸から外し、3 + -1 / 3 + m で表現。
     private const float ThreeFoldRadius         = 5.625f;
     private const float FourFoldRadius          = 7.2f;
     private const float SixFoldRadius           = 6.0f;
     private const float ScrewFinTailLen         = 5f;
-    private const float MinusThreeCenterDotR    = 2f;
+    // private const float MinusThreeCenterDotR    = 2f; // 旧: -3 点記号の中心白丸。260512Ch: -3 を独立描画しないため未使用。
     private const float MinusFourInnerLensScale = 0.8f;
 
     // 立方晶 [111] / [110] 系 斜め回転軸 (foot 黒丸 / shaft1 / 中央記号 (3回=三角, 2回=lens) / 白丸 / shaft2)。
@@ -311,7 +311,7 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
     {
         // var axes = table.SymmetryAxes; // 旧: 高次軸に含まれる低次軸もここで後段抑制していた。
         var axes = table.PrincipalSymmetryAxes; // 260512Ch
-        // 同位置の高次 proper rotation 集合 (低次抑制 / -N 抑制用)。
+        // 同位置の高次 proper rotation 集合 (低次抑制 / -4 抑制用)。260512Ch: -3/-6 は principal 軸に来ない。
         var covered2 = new HashSet<(int, int)>();
         var covered3 = new HashSet<(int, int)>();
         var properRotations = new HashSet<(int N, int Sx, int Sy)>();
@@ -326,25 +326,13 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
             : null; // 260510Cl: foreach + Add を LINQ 化。
         var cubicMinusFourWithoutInversionKeys = isCubic ? new HashSet<(int, int)>() : null; // 260510Ch
         var cubicMinusFourHeights = isCubic ? new Dictionary<(int, int), double>() : null; // 260510Ch
-        // 260510Ch: -6 は 3/m と等価なので、高さは -6 op の代表点ではなく紙面平行 mirror の高さから取る。
-        double? minusSixMirrorHeight = RepresentativeParallelMirrorHeight();
-        // ただし同じ投影位置に本物の 6/6_3 がある場合は 6(+対称心) / 6_3(+対称心) 側が defining symbol。
-        var positiveSixKeys = new HashSet<(int, int)>();
-        var minusSixKeys = new HashSet<(int, int)>();
-        var minusSixHeights = new Dictionary<(int, int), double>();
+        // 旧: -6 は 3/m と等価として minusSixKeys/minusSixHeights を集め、高さ付き -6 を描いていた。
+        // 260512Ch: -6 は独立軸から外し、3 + m の構成要素表示に寄せるため -6 専用状態は不要。
         foreach (var ax in axes)
         {
             if (!IsAxisPerpendicularToProjection(ax.Direction, projAxis)) continue;
             var (sx, sy, sz) = ctx.Proj.ToScreen(ax.X, ax.Y, ax.Z);
             var key = ((int)Math.Round(Mod1(sx) * 10000), (int)Math.Round(Mod1(sy) * 10000));
-            if (ax.Order == 6) positiveSixKeys.Add(key);
-            if (ax.Order == -6)
-            {
-                minusSixKeys.Add(key);
-                // 旧: double h = Mod1(sz); if (IsQuarterHeight(h)) minusSixHeights[key] = h;
-                if (minusSixMirrorHeight is double h)
-                    minusSixHeights[key] = h;
-            }
             if (isCubic && ax.Order == -4 && !inversionKeys.Contains(key))
             {
                 cubicMinusFourWithoutInversionKeys.Add(key); // 260510Ch: -1 が同軸に無い -4 は ITA で -4 として残す。
@@ -364,15 +352,7 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
             if (absO == 6) covered3.Add(key); // (260503Ch) [ITA-D1] 6 回記号が defining symbol になる場合、同位置の 3 回記号は描かない。
             if (!ax.Screw && absO is (2 or 3 or 4 or 6)) properRotations.Add((absO, key.Item1, key.Item2)); // (260503Ch) [ITA-D1] 同位置に proper N があれば -N は別途重ねない。
         }
-        foreach (var key in minusSixKeys)
-        {
-            covered2.Add(key);
-            covered3.Add(key);
-        }
-        foreach (var key in positiveSixKeys)
-            minusSixHeights.Remove(key);
 
-        var drawnMinusSixKeys = new HashSet<(int, int)>();
         var drawnMinusFourKeys = new HashSet<(int, int)>(); // 260510Ch
         foreach (var ax in axes)
         {
@@ -381,27 +361,24 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
             if (!IsAxisPerpendicularToProjection(ax.Direction, projAxis)) continue;
             var (sx, sy, sz) = ctx.Proj.ToScreen(ax.X, ax.Y, ax.Z);
             var key = ((int)Math.Round(Mod1(sx) * 10000), (int)Math.Round(Mod1(sy) * 10000));
-            bool keepMinusSixWithLabel = o == -6 && minusSixHeights.ContainsKey(key);
             bool keepMinusFourWithLabel = isCubic && o == -4 && !inversionKeys.Contains(key); // 260510Ch
             if (isCubic && o > 0 && absO == 4 && cubicMinusFourWithoutInversionKeys.Contains(key)) continue; // 260510Ch: -1 が無い同軸 -4 は 4_n より -4 を優先。
-            if (o < 0 && absO == 6 && positiveSixKeys.Contains(key)) continue; // 260510Ch: 同じ投影位置に本物の 6/6_3 があれば -6 を重ねない。
-            if (o == -6 && !drawnMinusSixKeys.Add(key)) continue; // 260510Ch: z=1/4 と 3/4、または z=0 と 1/2 の同一投影重複は 1 個に畳む。
             if (keepMinusFourWithLabel && !drawnMinusFourKeys.Add(key)) continue; // 260510Ch: -4 高さラベルを同一投影位置で 1 個に畳む。
             if (absO == 2 && covered2.Contains(key)) continue; // (260503Ch) [ITA-D1] 高次点記号が同じ位置を定義するため、2 回点記号を省く。
             if (absO == 3 && o > 0 && covered3.Contains(key)) continue; // (260503Ch) [ITA-D1] 6 回点記号が同じ位置を定義するため、3 回点記号を省く。
             // 旧: if (o < 0 && properRotations.Contains((absO, key.Item1, key.Item2))) continue;
-            if (o < 0 && properRotations.Contains((absO, key.Item1, key.Item2)) && !keepMinusSixWithLabel && !keepMinusFourWithLabel) continue; // (260503Ch) [ITA-D1] proper N と同位置の -N は、反転中心側の記号と重複させない。260510Ch: -4 は -1 が無い場合だけ ITA 記号として残す。
+            if (o < 0 && properRotations.Contains((absO, key.Item1, key.Item2)) && !keepMinusFourWithLabel) continue; // (260503Ch) [ITA-D1] proper N と同位置の -N は重ねない。260512Ch: principal 側の負軸は -4 のみ。
             // 旧: if (isCubic && o > 0 && absO == 4 && ax.Screw && minusFourKeys.Contains(key)) continue; // (260505Cl) cubic で -4 と同位置の 4_n は抑制。
             if (isCubic && o == -4 && inversionKeys.Contains(key)) continue; // 260510Cl: ITA 規約 — cubic で -4 と -1 が同投影位置に重なる場合は -4 を描かない (4_n + -1 で表記)。Fd-3m(1) のように -1 が無い -4 はそのまま描画。
 
-            // -N (N=3,4,6) で inversion 点 z_c ≠ 0 のときは N_k 螺旋 + inversion(z=0) と等価 (反転中心は別途描画)。
+            // -4 で inversion 点 z_c ≠ 0 のときは 4_k 螺旋 + inversion(z=0) と等価 (反転中心は別途描画)。
             int order = o;
             int finCount = ax.FinCount, edgeStep = ax.EdgeStep;
             // 旧: (260505Cl) cubic で 4_n を抑制した位置の -4 は螺旋に置換せず -4 のまま描き、反転中心高さを併記。
             // 旧: bool keepMinusFourWithLabel = isCubic && o == -4 && minusFourKeys.Contains(key);
             // 260510Ch: -1 が同軸にある場合だけ -4 を suppress し、-1 が無い -4 は高さ付き -4 として残す。
             // 260510Ch: -1 が同軸にある -4 は suppress 済み。-1 が無い -4 は screw 置換せず高さ付き -4 として描く。
-            if (o < 0 && absO is 3 or 4 or 6 && !keepMinusSixWithLabel && !keepMinusFourWithLabel)
+            if (o < 0 && absO == 4 && !keepMinusFourWithLabel)
             {
                 double zc = Mod1(sz);
                 if (Math.Abs(zc) > 1e-3 && Math.Abs(zc - 1) > 1e-3)
@@ -418,8 +395,8 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
             // string label = keepMinusSixWithLabel ? HeightLabel(minusSixHeights[key]) : null; // 旧: -1 無し -4 まで screw 置換してしまい、Fd-3m(1) の -4 高さ表示が消えていた。
             string label = keepMinusFourWithLabel && cubicMinusFourHeights.TryGetValue(key, out double minH4)
                 ? HeightLabel(minH4)
-                : keepMinusSixWithLabel ? HeightLabel(minusSixHeights[key]) : null; // 260510Ch
-            float labelRadius = keepMinusSixWithLabel ? SixFoldRadius : FourFoldRadius;
+                : null; // 260512Ch: -6 高さラベルは不要。
+            float labelRadius = FourFoldRadius;
             if (label != null && order > 0 && finCount > 0) labelRadius += ScrewFinTailLen; // 260510Ch: screw fin が記号外へ伸びる分も高さラベル距離に含める。
             // 旧: float labelRadiusScale = keepMinusFourWithLabel ? 0.5f : keepMinusSixWithLabel ? 0.5f : 1f;
             // float labelRadiusScale = 1f; // 旧: -4 も通常半径にしたため高さラベルが離れすぎた。
@@ -432,17 +409,9 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
                 else if (absO == 3) DrawRotationPerp(ctx.G, ctx.Fill, ctx.White, pt, order, finCount, edgeStep, 3, ThreeFoldRadius);
                 else if (absO == 4) DrawRotationPerp(ctx.G, ctx.Fill, ctx.White, pt, order, finCount, edgeStep, 4, FourFoldRadius);
                 else if (absO == 6) DrawRotationPerp(ctx.G, ctx.Fill, ctx.White, pt, order, finCount, edgeStep, 6, SixFoldRadius);
-                if (label != null) DrawHeightLabel(ctx.G, ctx.Fill, pt, labelRadius, label, radiusScale: labelRadiusScale); // (260505Ch) 260510Ch: -6 は SixFoldRadius で配置。
+                if (label != null) DrawHeightLabel(ctx.G, ctx.Fill, pt, labelRadius, label, radiusScale: labelRadiusScale);
             }
         }
-
-        double? RepresentativeParallelMirrorHeight()
-            // 260510Cl: 最小値だけ欲しいので Distinct/OrderBy/ToList を廃し、nullable で min を直接取る。
-            => table.SymmetryPlanes
-                .Where(p => IsAxisPerpendicularToProjection(p.Normal, projAxis))
-                .Where(p => Math.Abs(p.Glide.U) + Math.Abs(p.Glide.V) + Math.Abs(p.Glide.W) < 1e-6)
-                .Select(p => (double?)Mod1(ctx.Proj.ToScreen(p.X, p.Y, p.Z).Sz))
-                .Min();
     }
 
     #endregion
@@ -590,7 +559,7 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
         }
     }
 
-    /// <summary>紙面垂直 3/4/6 回 + 反転 (-N) 共通。-3=黒+中心白丸、-4=白+lens、-6=白+内接三角形。</summary>
+    /// <summary>紙面垂直 3/4/6 回と -4 回反を描く。260512Ch: -3/-6 は principal 軸から外れたためここでは描かない。</summary>
     private static void DrawRotationPerp(Graphics g, Brush fill, Brush white, PointF pt, int order, int finCount, int edgeStep, int N, float radius)
     {
         var poly = RegularPolygon(pt, N, radius);
@@ -604,16 +573,10 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
             DrawScrewFins(g, outline, poly, finCount, edgeStep, ScrewFinTailLen);
             return;
         }
-        if (N == 3)
-        {
-            g.FillPolygon(fill, poly);
-            g.DrawPolygon(outline, poly);
-            g.FillEllipse(white, pt.X - MinusThreeCenterDotR, pt.Y - MinusThreeCenterDotR, 2 * MinusThreeCenterDotR, 2 * MinusThreeCenterDotR);
-            return;
-        }
+        // 旧: N == 3 なら -3 (黒三角 + 中心白丸)、N == 6 なら -6 (白六角 + 内接黒三角) を描いていた。
+        if (N != 4) return; // 260512Ch: 負の 3/6 回反は独立描画しない。
         g.FillPolygon(white, poly);
-        if (N == 4) DrawTwofoldPerp(g, fill, pt, screw: false, scale: MinusFourInnerLensScale);
-        else g.FillPolygon(fill, RegularPolygon(pt, 3, radius));
+        DrawTwofoldPerp(g, fill, pt, screw: false, scale: MinusFourInnerLensScale);
         g.DrawPolygon(outline, poly);
     }
     #endregion
