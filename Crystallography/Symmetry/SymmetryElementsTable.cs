@@ -43,6 +43,8 @@ public sealed class SymmetryElementsTable
     public int SeriesNumber { get; }
     public InversionCenter[] InversionCenters { get; }
     public SymmetryAxis[] SymmetryAxes { get; }
+    /// <summary>同一無限直線上で高次・回反・螺旋軸に含まれる低次軸を除いた、対称要素としての主軸一覧。260512Ch</summary>
+    public SymmetryAxis[] PrincipalSymmetryAxes { get; }
     public SymmetryPlane[] SymmetryPlanes { get; }
     /// <summary>(260504Ch) この空間群の centering 並進ベクトル一覧 (整数並進 (0,0,0) を除く)。
     /// 例: F-centering なら (0,1/2,1/2), (1/2,0,1/2), (1/2,1/2,0)。
@@ -55,6 +57,7 @@ public sealed class SymmetryElementsTable
         SeriesNumber = seriesNumber;
         InversionCenters = inv;
         SymmetryAxes = rot;
+        PrincipalSymmetryAxes = CollectPrincipalSymmetryAxes(rot); // 260512Ch: 操作由来の全軸とは別に、対称要素としての主軸だけを保持。
         SymmetryPlanes = mir;
         Centerings = centerings;
     }
@@ -165,6 +168,102 @@ public sealed class SymmetryElementsTable
             }
         }
         return [.. list];
+    }
+
+    /// <summary>同一無限直線に乗る軸のうち、指定された冪関係で高次軸に含まれる低次軸を除いた主軸だけを返す。260512Ch</summary>
+    private static SymmetryAxis[] CollectPrincipalSymmetryAxes(SymmetryAxis[] axes)
+    {
+        if (axes.Length <= 1) return axes;
+        var list = new List<SymmetryAxis>(axes.Length);
+        for (int i = 0; i < axes.Length; i++)
+        {
+            bool contained = false;
+            for (int j = 0; j < axes.Length && !contained; j++)
+            {
+                if (i == j) continue;
+                if (!SameAxisLine(axes[j], axes[i])) continue;
+                contained = AxisContains(axes[j], axes[i]);
+            }
+            if (!contained) list.Add(axes[i]);
+        }
+        return [.. list];
+    }
+
+    /// <summary>軸上の代表点は任意なので、整数単位胞並進を許し、差分が軸方向に平行かで同一無限直線を判定する。260512Ch</summary>
+    private static bool SameAxisLine(SymmetryAxis a, SymmetryAxis b)
+    {
+        var ad = NormalizeDirection(new Vec(a.Direction.U, a.Direction.V, a.Direction.W));
+        var bd = NormalizeDirection(new Vec(b.Direction.U, b.Direction.V, b.Direction.W));
+        if (ad != bd) return false;
+        var d = new Vec(ad.U, ad.V, ad.W);
+        double d2 = d * d;
+        if (d2 < 1e-12) return false;
+        var pa = new Vec(a.X, a.Y, a.Z);
+        var pb = new Vec(b.X, b.Y, b.Z);
+        for (int ix = -2; ix <= 2; ix++)
+            for (int iy = -2; iy <= 2; iy++)
+                for (int iz = -2; iz <= 2; iz++)
+                {
+                    var delta = pb + new Vec(ix, iy, iz) - pa;
+                    var cross = delta.Cross(d);
+                    if (cross * cross < 1e-10 * d2) return true;
+                }
+        return false;
+    }
+
+    /// <summary>parent 軸が child 軸を冪として含むかを、ITA 記号の主従関係で判定する。260512Ch</summary>
+    private static bool AxisContains(SymmetryAxis parent, SymmetryAxis child)
+    {
+        var p = AxisKindOf(parent);
+        var c = AxisKindOf(child);
+        if (p == c) return false;
+        return p switch
+        {
+            (-4, 0) => c == (2, 0),
+            (-6, 0) => c == (3, 0),
+            (4, 0) => c == (2, 0),
+            (4, 1) => c == (2, 1),
+            (4, 2) => c == (2, 0),
+            (4, 3) => c == (2, 1),
+            (6, 0) => c == (3, 0) || c == (2, 0),
+            (6, 1) => c == (3, 1) || c == (2, 1),
+            (6, 2) => c == (3, 2) || c == (2, 0),
+            (6, 3) => c == (2, 0) || c == (2, 1),
+            (6, 4) => c == (3, 1) || c == (2, 0),
+            (6, 5) => c == (3, 2) || c == (2, 1),
+            _ => false
+        };
+    }
+
+    /// <summary>正の回転軸は screw 添字 k (純回転は 0)、負の回反軸は k=0 として扱う。260512Ch</summary>
+    private static (int Order, int K) AxisKindOf(SymmetryAxis axis)
+    {
+        int order = axis.Order;
+        if (order < 0 || !axis.Screw) return (order, 0);
+        int n = Math.Abs(order);
+        int k = n switch
+        {
+            2 => 1,
+            3 => axis.EdgeStep == 2 ? 1 : axis.EdgeStep == 1 ? 2 : 0,
+            4 => (axis.FinCount, axis.EdgeStep) switch
+            {
+                (4, 3) => 1,
+                (2, 1) => 2,
+                (4, 1) => 3,
+                _ => 0
+            },
+            6 => (axis.FinCount, axis.EdgeStep) switch
+            {
+                (6, 5) => 1,
+                (3, 5) => 2,
+                (2, 1) => 3,
+                (3, 1) => 4,
+                (6, 1) => 5,
+                _ => 0
+            },
+            _ => 0
+        };
+        return (order, k);
     }
 
     /// <summary>op の幾何位置を格子同値性 ((lx,ly,lz) ∈ {0,1}³) から全列挙し、各並進ごとに screw 成分を保持する。

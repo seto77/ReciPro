@@ -108,7 +108,8 @@ internal static class SymmetryDiagram
         // 260509Ch: 空リスト生成と AddRange の三段積みを、返却時の collection expression に集約。
         return
         [
-            .. GenerateSymmetryAxes(table.SymmetryAxes, axes, shift, bounds, range, scale, black, gray),
+            // .. GenerateSymmetryAxes(table.SymmetryAxes, axes, shift, bounds, range, scale, black, gray), // 旧: 従属軸を 3D 側の線分 dedup で抑制。
+            .. GenerateSymmetryAxes(table.PrincipalSymmetryAxes, axes, shift, bounds, range, scale, black, gray), // 260512Ch
             .. GenerateSymmetryPlanes(table.SymmetryPlanes, axes, shift, bounds, range, scale, black),
             .. GenerateInversionCenters(table.InversionCenters, axes, shift, bounds, range, scale, white),
         ];

@@ -261,7 +261,8 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
                 ctx.PerpendicularMirrors.Add(new(sx, sy, mp.Normal, mp.Glide));
             }
         }
-        foreach (var ax in table.SymmetryAxes)
+        // foreach (var ax in table.SymmetryAxes) // 旧: 操作由来の従属 2/3 回軸も含めて収集していた。
+        foreach (var ax in table.PrincipalSymmetryAxes) // 260512Ch: 対称要素としての主軸だけを描画対象にする。
         {
             int absO = Math.Abs(ax.Order);
             // 紙面内軸として扱うのは |order| = 2 (proper のみ; -2 は mirror) と |order| = 4 (proper / screw / -4)。
@@ -308,7 +309,8 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
     private static void DrawPerpendicularRotationMarks(ElementsContext ctx, Crystallography.SymmetryElementsTable table,
                                                        ProjectionAxis projAxis, bool isCubic = false)
     {
-        var axes = table.SymmetryAxes;
+        // var axes = table.SymmetryAxes; // 旧: 高次軸に含まれる低次軸もここで後段抑制していた。
+        var axes = table.PrincipalSymmetryAxes; // 260512Ch
         // 同位置の高次 proper rotation 集合 (低次抑制 / -N 抑制用)。
         var covered2 = new HashSet<(int, int)>();
         var covered3 = new HashSet<(int, int)>();
@@ -623,7 +625,8 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
     private static void DrawDiagonalRotationMarks(ElementsContext ctx, Crystallography.SymmetryElementsTable table,
                                                   ProjectionAxis projAxis, HashSet<(long, long)> skipPositionKeys = null)
     {
-        var axes = table.SymmetryAxes;
+        // var axes = table.SymmetryAxes; // 旧
+        var axes = table.PrincipalSymmetryAxes; // 260512Ch
         var drawnAxes = new HashSet<(long Sx, long Sy, int Order, int U, int V, int W, bool Screw, int Fin, int Edge)>();
 
         foreach (var ax in axes)
@@ -811,7 +814,8 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
     {
         // 260510Cl: out 引数を含むため LINQ 1 行化はしないが、内側ループは EdgeReplicatedPoints で陳述化。
         var result = new HashSet<(long, long)>();
-        foreach (var ax in table.SymmetryAxes)
+        // foreach (var ax in table.SymmetryAxes) // 旧
+        foreach (var ax in table.PrincipalSymmetryAxes) // 260512Ch
         {
             if (ax.Order is not (2 or 3)) continue;
             if (!IsAxisDiagonalToProjection(ax.Direction, projAxis)) continue;
@@ -835,7 +839,8 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
     {
         var result = new HashSet<(long, long)>();
         var proj = GetProjection(projAxis);
-        foreach (var ax in table.SymmetryAxes)
+        // foreach (var ax in table.SymmetryAxes) // 旧
+        foreach (var ax in table.PrincipalSymmetryAxes) // 260512Ch
         {
             int absO = Math.Abs(ax.Order);
             if (absO is not (2 or 3 or 4 or 6)) continue;
@@ -1824,7 +1829,8 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
         // }
         // 260505Cl: ITA Vol.A Pm-3m 等で inset に出ている斜め 2 回軸 (face-diagonal) も拾う。
         // proper rotation 軸 (Order 2/3) のみ。-3 等の rotoinversion は cell-side draw と同様に除外。
-        var diagonalAxes = table.SymmetryAxes
+        // var diagonalAxes = table.SymmetryAxes // 旧
+        var diagonalAxes = table.PrincipalSymmetryAxes // 260512Ch
             .Where(ax => ax.Order is 2 or 3 && IsAxisDiagonalToProjection(ax.Direction, projAxis))
             .ToList(); // (260505Ch) cell-side の斜め軸判定と同じ条件に揃える。
 
