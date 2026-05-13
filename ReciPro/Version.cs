@@ -7,6 +7,7 @@ internal static class Version
     
     public const string History =
         "History" +
+        "\r\n ver4.929(2026/05/13)  Fixed bugs in symmetry element rendering in 'Structure Viewer' and improved its performance." +
         "\r\n ver4.928(2026/05/09)  Added a function to render symmetry elements in 'Structure Viewer'." +
         "\r\n ver4.927(2026/05/04)  Substantially expanded 'Symmetry Information' to render ITC Vol.A style schematic diagrams of symmetry elements and general positions." +
         "\r\n ver4.926(2026/04/25)  Added support for Miller-Bravais index notation (hkil 4-index representation of lattice planes for trigonal/hexagonal crystal systems). (see https://github.com/seto77/ReciPro/issues/54)" +
