@@ -861,15 +861,42 @@ public partial class FormStructureViewer : FormBase
     #region 対称要素 GLObjects の生成
     private void setSymmetryElements()
     {
-        if (!toolStripButtonSymmetryElements.Checked || Crystal == null || bounds == null) return;
+        if (!checkBoxShowSymmetryElements.Checked || Crystal == null || bounds == null) return;
         sw.Restart();
 
-        var symmetryObjects = SymmetryDiagram.CreateObjects(Crystal, shift, bounds.Select(b => b.prm).ToArray()); // (260506Ch) 列挙済み対称要素を StructureViewer 座標へ変換する。260508Cl: axes は内部で crystal から再構築するため引数から削除
+        // 260513Cl: SymmetryDiagram に色・サイズ・種別 ON/OFF を渡す。numericBox*SymbolSize は % なので /100 で倍率に。
+        var symmetryObjects = SymmetryDiagram.CreateObjects(Crystal, shift, [.. bounds.Select(b => b.prm)],
+            axisSizeFactor: numericBoxAxisSymbolSize.Value / 100.0,
+            planeSizeFactor: numericBoxPlaneSymbolSize.Value / 100.0,
+            inversionSizeFactor: numericBoxInversionSymbolSize.Value / 100.0,
+            axisLineWidth: (float)numericBoxAxisLineWidth.Value,
+            planeLineWidth: (float)numericBoxPlaneLineWidth.Value,
+            axisColor: colorControlAxisColor.Color.ToC4(),
+            planeColor: colorControlPlane.Color.ToC4(),
+            inversionColor: colorControlInversion.Color.ToC4(),
+            showRotation: checkBoxSymElems_Rotation.Checked,
+            showScrew: checkBoxSymElems_Screws.Checked,
+            showRotoinversion: checkBoxSymElems_Rotinversions.Checked,
+            showMirror: checkBoxSymElems_Mirrors.Checked,
+            showGlide: checkBoxSymElems_Glides.Checked,
+            showInversion: checkBoxSymElems_Inversions.Checked); // (260506Ch) 列挙済み対称要素を StructureViewer 座標へ変換する。
         foreach (var obj in symmetryObjects)
             obj.Tag = new symmetryID();
         GLObjects.AddRange(symmetryObjects);
 
         textBoxCalcInformation.AppendText($"Generation of symmetry elements: {sw.ElapsedMilliseconds}ms.\r\n");
+    }
+
+    // 260513Cl 追加: 対称要素 UI (色・サイズ・線幅) の変更で対称要素 GLObject のみを再生成する。
+    private void symmetryElement_PropertyChanged(object sender, EventArgs e)
+    {
+        if (SkipEvent || glControlMain == null || Crystal == null || bounds == null) return;
+        if (!checkBoxShowSymmetryElements.Checked) return;
+
+        GLObjects.RemoveAll(o => o.Tag is symmetryID);
+        setSymmetryElements();
+        transferGLObjects();
+        Draw();
     }
     #endregion
 
@@ -1518,8 +1545,9 @@ public partial class FormStructureViewer : FormBase
 
     private void toolStripButtonSymmetryElements_CheckedChanged(object sender, EventArgs e)
     {
-        if (glControlMain == null || Crystal == null) return;
-        SetGLObjects(null); // (260506Ch) 対称要素は bounds/shift と一緒に作るため、表示切替時は全 GLObjects を再生成する
+        if (SkipEvent) return;
+        tabControl.SelectTab(tabPageSymElems);
+        checkBoxShowSymmetryElements.Checked = toolStripButtonSymmetryElements.Checked;
     }
     #endregion
 
@@ -2095,6 +2123,21 @@ public partial class FormStructureViewer : FormBase
     {
         if (latticePlaneControl != null)
             latticePlaneControl.MillerBravaisIndexActive = formMain.MillerBravaisActive; // (260426Ch) 1 行 wrapper をインライン化
+    }
+
+    private void checkBoxShowSymmetryElements_CheckedChanged(object sender, EventArgs e)
+    {
+        SkipEvent = true;
+        try
+        {
+            toolStripButtonSymmetryElements.Checked = checkBoxShowSymmetryElements.Checked;
+            groupBoxAxes.Enabled = groupBoxPlanes.Enabled = groupBoxInversion.Enabled = checkBoxShowSymmetryElements.Checked;
+
+            // 260513Cl: 旧コードは早期 return で SkipEvent=true のまま抜けてしまうバグがあったため try/finally で必ず戻す。
+            if (glControlMain != null && Crystal != null)
+                SetGLObjects(null); // (260506Ch) 対称要素は bounds/shift と一緒に作るため、表示切替時は全 GLObjects を再生成する
+        }
+        finally { SkipEvent = false; }
     }
 }
 

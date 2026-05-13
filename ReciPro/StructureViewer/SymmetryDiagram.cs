@@ -91,7 +91,15 @@ internal static class SymmetryDiagram
     };
 
     /// <summary>SymmetryElementsTable の fractional 座標を StructureViewer 用 GLObject に変換する。</summary>
-    internal static List<GLObject> CreateObjects(Crystal crystal, V3 shift, IReadOnlyList<V4> bounds, double symbolScale = 0)
+    // 旧: internal static List<GLObject> CreateObjects(Crystal crystal, V3 shift, IReadOnlyList<V4> bounds, double symbolScale = 0)
+    // 260513Cl: 軸/面/対称心ごとのサイズ倍率・色・線幅を UI から渡せるよう default 引数で追加。
+    // 260513Cl: 種別 ON/OFF (回転軸/らせん/回反/鏡面/映進/対称心) のフラグを default 引数で追加。
+    internal static List<GLObject> CreateObjects(Crystal crystal, V3 shift, IReadOnlyList<V4> bounds, double symbolScale = 0,
+        double axisSizeFactor = 1.0, double planeSizeFactor = 1.0, double inversionSizeFactor = 1.0,
+        float axisLineWidth = AxisLineWidth, float planeLineWidth = PlaneLineWidth,
+        C4? axisColor = null, C4? planeColor = null, C4? inversionColor = null,
+        bool showRotation = true, bool showScrew = true, bool showRotoinversion = true,
+        bool showMirror = true, bool showGlide = true, bool showInversion = true)
     {
         if (SymmetryElementsTable.Get(crystal.SymmetrySeriesNumber) is not { } table || bounds.Count == 0) return [];
 
@@ -103,17 +111,23 @@ internal static class SymmetryDiagram
                 .Where(v => v > ToleranceSquared).DefaultIfEmpty(1.0).Min());
 
         var range = GetTranslationRange(axes, shift, bounds);
-        var (black, gray, white) = (MakeMaterial(C4.Black), MakeMaterial(C4.Gray), MakeMaterial(C4.White));
+        // 旧: var (black, gray, white) = (MakeMaterial(C4.Black), MakeMaterial(C4.Gray), MakeMaterial(C4.White));
+        // 260513Cl: 軸線/軸シンボルは axisColor、面 bracket/平行四辺形は planeColor、対称心球は inversionColor を共用する。
+        var axisMat = MakeMaterial(axisColor ?? C4.Black);
+        var planeLineMat = MakeMaterial(planeColor ?? C4.Black);
+        var planeFillMat = MakeMaterial(planeColor ?? C4.Black, FillOpacity, FillSpecular, FillSpecularPower, FillEmission);
+        var inversionMat = MakeMaterial(inversionColor ?? C4.White);
 
         // 260509Ch: 空リスト生成と AddRange の三段積みを、返却時の collection expression に集約。
         // 260511Cl: planes に table.Centerings を渡す — R-3c など centering 等価な glide コセットを 1 つの bracket に集約しないため、
         // 3D 側で glide を canonical 化してから dedup する (Crystallography 側の data は無変更で 2D 表示は維持)。
+        // 260513Cl: 全種別 OFF の場合でも個別の Generate* で早期 return するので外側はそのまま。
         return
         [
             // .. GenerateSymmetryAxes(table.SymmetryAxes, axes, shift, bounds, range, scale, black, gray), // 旧: 従属軸を 3D 側の線分 dedup で抑制。
-            .. GenerateSymmetryAxes(table.PrincipalSymmetryAxes, axes, shift, bounds, range, scale, black, gray), // 260512Ch
-            .. GenerateSymmetryPlanes(table.SymmetryPlanes, table.Centerings, axes, shift, bounds, range, scale, black),
-            .. GenerateInversionCenters(table.InversionCenters, axes, shift, bounds, range, scale, white),
+            .. GenerateSymmetryAxes(table.PrincipalSymmetryAxes, axes, shift, bounds, range, scale, axisSizeFactor, axisLineWidth, axisMat, showRotation, showScrew, showRotoinversion), // 260512Ch / 260513Cl
+            .. GenerateSymmetryPlanes(table.SymmetryPlanes, table.Centerings, axes, shift, bounds, range, scale, planeSizeFactor, planeLineWidth, planeLineMat, planeFillMat, showMirror, showGlide),
+            .. (showInversion ? GenerateInversionCenters(table.InversionCenters, axes, shift, bounds, range, scale, inversionSizeFactor, inversionMat) : []),
         ];
     }
 
@@ -121,13 +135,24 @@ internal static class SymmetryDiagram
 
     #region 回転軸シンボル (Axis)
 
-    /// <summary>回転軸 (rotation / screw / -4 回反) を全 cell 分列挙し、軸線 (gray) とシンボル (black) を追加する。</summary>
+    /// <summary>回転軸 (rotation / screw / -4 回反) を全 cell 分列挙し、軸線とシンボルを追加する。
+    /// 260513Cl: 軸線色とシンボル色を共通の axisMat に統一し、サイズ倍率 / 線幅 / 種別 ON/OFF を UI から受ける。</summary>
+    // 旧: private static List<GLObject> GenerateSymmetryAxes(SymmetryAxis[] axesTable, M3d axes, V3 shift,
+    //                                     IReadOnlyList<V4> bounds, TranslationRange range, double scale, Material black, Material gray)
     private static List<GLObject> GenerateSymmetryAxes(SymmetryAxis[] axesTable, M3d axes, V3 shift,
-                                        IReadOnlyList<V4> bounds, TranslationRange range, double scale, Material black, Material gray)
+                                        IReadOnlyList<V4> bounds, TranslationRange range, double scale,
+                                        double sizeFactor, float lineWidth, Material axisMat,
+                                        bool showRotation, bool showScrew, bool showRotoinversion)
     {
+        // 260513Cl: 全種別 OFF なら早期 return。
+        if (!showRotation && !showScrew && !showRotoinversion) return [];
+
         var objects = new List<GLObject>();
         var drawn = new HashSet<(long, long, long, long, long, long)>(); // 260509Cl: 向き不問 quantized HashSet で重複判定。
-        double symbolRadius = scale * AxisSymbolRadiusFactor;
+        double symbolRadius = scale * AxisSymbolRadiusFactor * sizeFactor; // 260513Cl: UI サイズ倍率を反映。
+
+        // 260513Cl: cell 軸の正規化を 1 回だけ計算 (旧版は GenerateAxisSymbol 内で軸×セル毎に再計算していた)。
+        V3[] colsNormalized = [axes.Column0.Normalized(), axes.Column1.Normalized(), axes.Column2.Normalized()];
 
         var lineBounds = bounds.Select(b => new V4(b.X, b.Y, b.Z, b.W * ExtendedBoundsFactor)).ToArray();
         var symbolBounds = bounds.Select(b => new V4(b.X, b.Y, b.Z, b.W * AxisSymbolBoundsFactor)).ToArray();
@@ -140,7 +165,30 @@ internal static class SymmetryDiagram
                                     .ThenBy(a => a.Order == -4 ? 0 : 1))
         {
             if (Math.Abs(ax.Order) is not (2 or 3 or 4 or 6)) continue;
+            // 260513Cl: 種別判定で UI チェックボックスに従って skip。
+            //   Order < 0 → 回反軸 (-4 のみ。-3/-6 は PrincipalSymmetryAxes から除外済み)
+            //   Screw    → らせん軸
+            //   それ以外 → 純粋な回転軸
+            bool isRoto = ax.Order < 0;
+            bool isScrew = !isRoto && ax.Screw;
+            bool isRotation = !isRoto && !ax.Screw;
+            if (isRoto && !showRotoinversion) continue;
+            if (isScrew && !showScrew) continue;
+            if (isRotation && !showRotation) continue;
             if (!TryNormalize(axes * new V3(ax.Direction.U, ax.Direction.V, ax.Direction.W), out var axisDir)) continue;
+
+            // 260513Cl: 巡回ルールで (u, v) を 1 軸あたり 1 回だけ計算する。タイは Column0 > Column1 > Column2 (a > b > c) で先頭優先。
+            int idx = 0;
+            double bestDot = Math.Abs(V3.Dot(axisDir, colsNormalized[0]));
+            for (int k = 1; k < 3; k++)
+            {
+                double d = Math.Abs(V3.Dot(axisDir, colsNormalized[k]));
+                if (d > bestDot + 1e-9) { bestDot = d; idx = k; }
+            }
+            // a/b/c は線形独立なので、次の cell 軸を axisDir 垂直面へ射影した結果は非ゼロ。TryNormalize は必ず成功する。
+            var vTarget = colsNormalized[(idx + 1) % 3];
+            TryNormalize(vTarget - axisDir * V3.Dot(vTarget, axisDir), out var vBasis);
+            var uBasis = V3.Cross(vBasis, axisDir); // 右手系維持: u × v = axisDir
 
             foreach (var cell in EnumerateCells(range))
             {
@@ -150,18 +198,18 @@ internal static class SymmetryDiagram
 
                 bool lineNew = drawn.Add(SegmentKey(lineStart, lineEnd));
                 if (lineNew)
-                    AddLine(objects, lineStart, lineEnd, AxisLineWidth, gray);
+                    AddLine(objects, lineStart, lineEnd, lineWidth, axisMat); // 260513Cl: 軸線も axisMat、太さは UI 値。
 
                 if (ax.Order == -4)
                 {
                     // -4 は線分の両端ではなく、各 cell の軸上の作用点 (origin) に 1 個だけ配置する。
                     if (IsPointInsideBounds(origin, symbolBounds))
-                        objects.AddRange(GenerateAxisSymbol(origin, axisDir, ax.Order, ax.Screw, ax.FinCount, ax.EdgeStep, symbolRadius, black));
+                        objects.AddRange(GenerateAxisSymbol(origin, axisDir, ax.Order, ax.Screw, ax.FinCount, ax.EdgeStep, symbolRadius, axisMat, uBasis, vBasis));
                 }
                 else if (lineNew && TryClipLine(origin, axisDir, symbolBounds, out var symStart, out var symEnd))
                 {
-                    objects.AddRange(GenerateAxisSymbol(symStart, axisDir, ax.Order, ax.Screw, ax.FinCount, ax.EdgeStep, symbolRadius, black));
-                    objects.AddRange(GenerateAxisSymbol(symEnd, axisDir, ax.Order, ax.Screw, ax.FinCount, ax.EdgeStep, symbolRadius, black));
+                    objects.AddRange(GenerateAxisSymbol(symStart, axisDir, ax.Order, ax.Screw, ax.FinCount, ax.EdgeStep, symbolRadius, axisMat, uBasis, vBasis));
+                    objects.AddRange(GenerateAxisSymbol(symEnd, axisDir, ax.Order, ax.Screw, ax.FinCount, ax.EdgeStep, symbolRadius, axisMat, uBasis, vBasis));
                 }
             }
         }
@@ -170,14 +218,11 @@ internal static class SymmetryDiagram
 
     /// <summary>軸種別 (2/3/4/6 回転・らせん・-4 回反) を判定して該当シンボルを生成する。
     /// proper rotation / screw は static V3[][] テンプレート (先頭=塗りつぶし多角形、続き=open Lines)。
-    /// -3 / -6 は PrincipalSymmetryAxes に含めない。-4 は内側 + 外側輪郭。260512Ch</summary>
+    /// -3 / -6 は PrincipalSymmetryAxes に含めない。-4 は内側 + 外側輪郭。260512Ch
+    /// 260513Cl: (u, v) は呼び出し側で 1 軸あたり 1 回だけ計算したものを受け取る (旧版は cell 毎に再計算していた)。</summary>
     private static List<GLObject> GenerateAxisSymbol(V3 center, V3 normal, int order, bool screw, int finCount,
-                                                     int edgeStep, double radius, Material black)
+                                                     int edgeStep, double radius, Material black, V3 u, V3 v)
     {
-        // normal に直交する正規直交基底 (u, v) を作る
-        var refVec = Math.Abs(V3.Dot(normal, new V3(0, 0, 1))) < RefVecParallelThreshold ? new V3(0, 0, 1) : new V3(0, 1, 0);
-        TryNormalize(V3.Cross(refVec, normal), out var u);
-        var v = V3.Cross(normal, u);
         int n = Math.Abs(order);
 
         if (order > 0)
@@ -245,11 +290,21 @@ internal static class SymmetryDiagram
     /// <summary>鏡映面 (mirror / glide) を全 cell 分列挙し、平行四辺形 + bracket + glide arrow からなる GLObject 列を返す。
     /// 軸対称面 (法線が cell 軸 / 対角 / 六方 [120][210] に沿う) は 4 隅に bracket を配置した新スタイル、
     /// それ以外は clipped polygon centroid に corner bracket + glide arrow を描く従来描画。260509Cl 仕様変更</summary>
+    // 旧: private static List<GLObject> GenerateSymmetryPlanes(SymmetryPlane[] planes,
+    //                                     IReadOnlyList<(double U, double V, double W)> centerings,
+    //                                     M3d axes, V3 shift,
+    //                                     IReadOnlyList<V4> bounds, TranslationRange range, double scale, Material black)
+    // 260513Cl: bracket/平行四辺形を共通の planeColor で塗り分け、線幅・サイズ倍率・種別 ON/OFF を UI から受ける。
     private static List<GLObject> GenerateSymmetryPlanes(SymmetryPlane[] planes,
                                         IReadOnlyList<(double U, double V, double W)> centerings,
                                         M3d axes, V3 shift,
-                                        IReadOnlyList<V4> bounds, TranslationRange range, double scale, Material black)
+                                        IReadOnlyList<V4> bounds, TranslationRange range, double scale,
+                                        double sizeFactor, float lineWidth, Material lineMat, Material fillMat,
+                                        bool showMirror, bool showGlide)
     {
+        // 260513Cl: mirror / glide どちらも OFF なら早期 return。
+        if (!showMirror && !showGlide) return [];
+
         var objects = new List<GLObject>();
         var drawn = new Dictionary<(long, long, long, long), int>(); // 260509Ch: 平面 dedup と、その面に描画済みの glide 方向 mask。
         var invAxes = M3d.Invert(axes); // 260510Ch: Miller 面法線 hkl は逆格子側 A^{-T} で実空間化する。
@@ -264,10 +319,19 @@ internal static class SymmetryDiagram
             .SelectMany(c => c.Select(p => new V3(p[0], p[1], p[2])))
             .ToArray();
 
-        var grayFill = MakeMaterial(C4.Gray, FillOpacity, FillSpecular, FillSpecularPower, FillEmission);
+        // 旧: var grayFill = MakeMaterial(C4.Gray, FillOpacity, FillSpecular, FillSpecularPower, FillEmission);
+        // 260513Cl: fillMat は呼び出し側で planeColor + FillOpacity で構築済み。
+
+        const double planeGlideTol = 1e-6; // 260513Cl: rawMp.Glide が実質ゼロかどうかの判定閾値。
 
         foreach (var rawMp in planes)
         {
+            // 260513Cl: rawMp の Glide で mirror / glide を判別し、UI に応じて skip。
+            //   canonicalize 前の素の glide で見る (SymmetryElementsTable の表記に従う)。
+            bool isGlide = Math.Abs(rawMp.Glide.U) + Math.Abs(rawMp.Glide.V) + Math.Abs(rawMp.Glide.W) > planeGlideTol;
+            if (isGlide && !showGlide) continue;
+            if (!isGlide && !showMirror) continue;
+
             // 旧: if (!TryNormalize(axes * new V3(mp.Normal.U, mp.Normal.V, mp.Normal.W), out var normalWorld)) continue;
             // 260510Ch: SymmetryPlane.Normal は Miller 面指数なので、直接格子ではなく逆格子ベクトル A^{-T}·hkl で実空間化する。
             if (!TryNormalize(invAxes.Row0 * rawMp.Normal.U + invAxes.Row1 * rawMp.Normal.V + invAxes.Row2 * rawMp.Normal.W, out var normalWorld)) continue;
@@ -277,12 +341,12 @@ internal static class SymmetryDiagram
 
             if (GetPlaneType(mp.Normal) is { } planeType)
                 GenerateAxisAlignedPlane(mp, planeType, axes, shift, bounds, boundsArray, extendedBounds, boundsVertices, range,
-                                         normalWorld, black, grayFill, drawn, objects);
+                                         normalWorld, sizeFactor, lineWidth, lineMat, fillMat, drawn, objects);
             else
             {
                 var glide = axes * new V3(mp.Glide.U, mp.Glide.V, mp.Glide.W);
-                GenerateObliquePlane(mp, axes, shift, extendedBoundsArray, range, scale,
-                                     normalWorld, glide - normalWorld * V3.Dot(glide, normalWorld), black, drawn, objects);
+                GenerateObliquePlane(mp, axes, shift, extendedBoundsArray, range, scale, sizeFactor, lineWidth,
+                                     normalWorld, glide - normalWorld * V3.Dot(glide, normalWorld), lineMat, drawn, objects);
             }
         }
         return objects;
@@ -292,12 +356,20 @@ internal static class SymmetryDiagram
     /// 各 cell の 4 隅 (cell 中心から ±0.725·u, ±0.725·v) に bracket と平行四辺形を配置。
     /// 対角面では bracket 対角線方向 ray と 1.45 倍 bounds の交点に bracket 頂点を置く (260509Ch)。
     /// 映進面は腕の先端 (軸映進) または対角線の先端 (n / d 映進) に平面三角形 arrowhead を付ける。</summary>
+    // 旧: private static void GenerateAxisAlignedPlane(SymmetryPlane mp, PlaneType type, M3d axes, V3 shift,
+    //                                               IReadOnlyList<V4> bounds, double[][] boundsArray, IReadOnlyList<V4> extendedBounds,
+    //                                               V3[] boundsVertices,
+    //                                               TranslationRange range, V3 normalWorld,
+    //                                               Material black, Material grayFill,
+    //                                                Dictionary<(long, long, long, long), int> drawn,
+    //                                               List<GLObject> objects)
+    // 260513Cl: black / grayFill を lineMat / fillMat に置き換え、サイズ倍率と線幅も UI から受ける。
     private static void GenerateAxisAlignedPlane(SymmetryPlane mp, PlaneType type, M3d axes, V3 shift,
                                                   IReadOnlyList<V4> bounds, double[][] boundsArray, IReadOnlyList<V4> extendedBounds,
                                                   V3[] boundsVertices,
                                                   TranslationRange range, V3 normalWorld,
-                                                  Material black, Material grayFill,
-                                                   Dictionary<(long, long, long, long), int> drawn,
+                                                  double sizeFactor, float lineWidth, Material lineMat, Material fillMat,
+                                                  Dictionary<(long, long, long, long), int> drawn,
                                                   List<GLObject> objects)
     {
         // 面内軸 u, v を plane type で決定。v 方向は Miller hkl の cross product N×u_axis (右手系) で統一。
@@ -316,8 +388,9 @@ internal static class SymmetryDiagram
 
         bool rayClippedPlane = type != PlaneType.AxisC; // W=0 の垂直鏡面。260509Ch
 
-        double armWorldU = PlaneBracketArm * u.Length;
-        double armWorldV = PlaneBracketArm * v.Length;
+        // 260513Cl: bracket 腕長と arrowhead に UI サイズ倍率を反映 (平行四辺形コーナー位置 PlaneCornerOffset は固定)。
+        double armWorldU = PlaneBracketArm * u.Length * sizeFactor;
+        double armWorldV = PlaneBracketArm * v.Length * sizeFactor;
         double headLength = (armWorldU + armWorldV) * PlaneArrowheadLengthFactor;
         double headHalfWidth = headLength * PlaneArrowheadAspect;
 
@@ -393,35 +466,43 @@ internal static class SymmetryDiagram
                 var armEndV = bracketCorner + dirV * armWorldV;
                 var p11 = armEndU + dirV * armWorldV; // 平行四辺形の対角頂点
 
+                // 旧: grayFill / black / PlaneLineWidth リテラルを使用。
+                // 260513Cl: UI 設定 (planeColor + FillOpacity の fillMat, planeColor の lineMat, planeLineWidth) を反映。
                 if (drawPlane)
                 {
-                    objects.Add(new Polygon([bracketCorner, armEndU, p11, armEndV], grayFill, DrawingMode.Surfaces)
+                    objects.Add(new Polygon([bracketCorner, armEndU, p11, armEndV], fillMat, DrawingMode.Surfaces)
                     {
                         IgnoreNormalSides = true, ShowClippedSection = false,
                     });
-                    AddLine(objects, bracketCorner, armEndU, PlaneLineWidth, black);
-                    AddLine(objects, bracketCorner, armEndV, PlaneLineWidth, black);
+                    AddLine(objects, bracketCorner, armEndU, lineWidth, lineMat);
+                    AddLine(objects, bracketCorner, armEndV, lineWidth, lineMat);
                 }
 
                 if ((arrowsToDraw & 1) != 0)
-                    objects.Add(BuildArrowhead(armEndU, dirU, normalWorld, headLength, headHalfWidth, black));
+                    objects.Add(BuildArrowhead(armEndU, dirU, normalWorld, headLength, headHalfWidth, lineMat));
                 if ((arrowsToDraw & 2) != 0)
-                    objects.Add(BuildArrowhead(armEndV, dirV, normalWorld, headLength, headHalfWidth, black));
+                    objects.Add(BuildArrowhead(armEndV, dirV, normalWorld, headLength, headHalfWidth, lineMat));
                 if ((arrowsToDraw & 4) != 0)
                 {
-                    AddLine(objects, bracketCorner, p11, PlaneLineWidth, black);
+                    AddLine(objects, bracketCorner, p11, lineWidth, lineMat);
                     var diagDir = (p11 - bracketCorner).Normalized();
-                    objects.Add(BuildArrowhead(p11, diagDir, normalWorld, headLength, headHalfWidth, black));
+                    objects.Add(BuildArrowhead(p11, diagDir, normalWorld, headLength, headHalfWidth, lineMat));
                 }
             }
         }
     }
 
-    /// <summary>非軸対称鏡映面 (oblique) の従来描画: clipped polygon centroid に corner bracket + glide arrow。260509Cl 追加</summary>
+    /// <summary>非軸対称鏡映面 (oblique) の従来描画: clipped polygon centroid に corner bracket + glide arrow。260509Cl 追加
+    /// 260513Cl: black / ObliqueLineWidth を UI 設定 (lineMat / lineWidth) に差し替え、サイズ倍率を反映。</summary>
+    // 旧: private static void GenerateObliquePlane(SymmetryPlane mp, M3d axes, V3 shift,
+    //                                           double[][] boundsArray, TranslationRange range, double scale,
+    //                                           V3 normalWorld, V3 inPlaneGlide,
+    //                                           Material black, Dictionary<(long, long, long, long), int> drawn, List<GLObject> objects)
     private static void GenerateObliquePlane(SymmetryPlane mp, M3d axes, V3 shift,
                                               double[][] boundsArray, TranslationRange range, double scale,
+                                              double sizeFactor, float lineWidth,
                                               V3 normalWorld, V3 inPlaneGlide,
-                                              Material black, Dictionary<(long, long, long, long), int> drawn, List<GLObject> objects)
+                                              Material lineMat, Dictionary<(long, long, long, long), int> drawn, List<GLObject> objects)
     {
         bool hasGlide = TryNormalize(inPlaneGlide, out var glideDir);
 
@@ -453,17 +534,19 @@ internal static class SymmetryDiagram
             double extent = vertices.Max(p => (p - bracketCenter).Length);
             double half = Math.Clamp(extent * ObliqueBracketExtentRatio, scale * ObliqueBracketHalfMin, scale * ObliqueBracketHalfMax);
             if (extent > ToleranceSquared) half = Math.Min(half, extent * ObliqueBracketHalfCap);
+            half *= sizeFactor; // 260513Cl: UI サイズ倍率を bracket 半長に反映。
 
             foreach (var (s, e) in BracketLinesXY)
                 AddLine(objects, TransformXY(s, bracketCenter, bu, bv, half),
-                                 TransformXY(e, bracketCenter, bu, bv, half), ObliqueLineWidth, black);
+                                 TransformXY(e, bracketCenter, bu, bv, half), lineWidth, lineMat);
 
             if (hasGlide)
             {
                 var arrowStart = TransformXY(GlideArrowShaftXY.Start, bracketCenter, bu, bv, half);
                 var arrowEnd = TransformXY(GlideArrowShaftXY.End, bracketCenter, bu, bv, half);
-                AddLine(objects, arrowStart, arrowEnd, ObliqueLineWidth, black);
-                objects.Add(BuildArrowhead(arrowEnd, glideDir, normalWorld, scale * ObliqueArrowLengthFactor, scale * ObliqueArrowHalfWidthFactor, black));
+                AddLine(objects, arrowStart, arrowEnd, lineWidth, lineMat);
+                objects.Add(BuildArrowhead(arrowEnd, glideDir, normalWorld,
+                    scale * ObliqueArrowLengthFactor * sizeFactor, scale * ObliqueArrowHalfWidthFactor * sizeFactor, lineMat));
             }
         }
     }
@@ -485,20 +568,24 @@ internal static class SymmetryDiagram
 
     #region 対称心シンボル (Inversion Center)
 
-    /// <summary>対称心 (inversion center) を全 cell 分列挙し、白い小球の GLObject 列を返す。</summary>
+    /// <summary>対称心 (inversion center) を全 cell 分列挙し、小球の GLObject 列を返す。
+    /// 260513Cl: 既定色は白だが UI から渡された inversionMat を使う。サイズ倍率も反映。</summary>
+    // 旧: private static List<GLObject> GenerateInversionCenters(InversionCenter[] centers, M3d axes, V3 shift,
+    //                                         IReadOnlyList<V4> bounds, TranslationRange range, double scale, Material white)
     private static List<GLObject> GenerateInversionCenters(InversionCenter[] centers, M3d axes, V3 shift,
-                                            IReadOnlyList<V4> bounds, TranslationRange range, double scale, Material white)
+                                            IReadOnlyList<V4> bounds, TranslationRange range, double scale,
+                                            double sizeFactor, Material inversionMat)
     {
         var objects = new List<GLObject>();
         var drawn = new HashSet<(long, long, long)>(); // 260509Cl: List + linear scan を quantized HashSet に変更し O(N²) → O(N) に。
-        double radius = scale * InversionRadiusFactor;
+        double radius = scale * InversionRadiusFactor * sizeFactor; // 260513Cl: UI サイズ倍率を反映。
         foreach (var inv in centers)
             foreach (var cell in EnumerateCells(range))
             {
                 var point = axes * new V3(inv.X + cell.X, inv.Y + cell.Y, inv.Z + cell.Z) - shift;
                 if (!IsPointInsideBounds(point, bounds)) continue;
                 if (!drawn.Add((SymmetryElementsTable.R6(point.X), SymmetryElementsTable.R6(point.Y), SymmetryElementsTable.R6(point.Z)))) continue;
-                objects.Add(new Sphere(point, radius, white, DrawingMode.Surfaces));
+                objects.Add(new Sphere(point, radius, inversionMat, DrawingMode.Surfaces));
             }
         return objects;
     }

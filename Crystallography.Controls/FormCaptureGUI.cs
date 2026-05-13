@@ -7,10 +7,11 @@ using System.IO;
 using System.Linq;
 using System.Text.Json;
 using System.Windows.Forms;
-using SixLabors.ImageSharp;
-using SixLabors.ImageSharp.Formats.Png;
-using SixLabors.ImageSharp.Processing;
-using SixLabors.ImageSharp.Processing.Processors.Quantization;
+// 260513Cl: SixLabors.ImageSharp v4 のライセンス問題で削除。System.Drawing 標準の PNG 保存に切替
+// using SixLabors.ImageSharp;
+// using SixLabors.ImageSharp.Formats.Png;
+// using SixLabors.ImageSharp.Processing;
+// using SixLabors.ImageSharp.Processing.Processors.Quantization;
 
 namespace Crystallography.Controls;
 
@@ -792,29 +793,27 @@ public partial class FormCaptureGUI : FormBase
     }
 
     /// <summary>
-    /// 260323Cl 追加
-    /// Bitmap を 8ビットパレット PNG (最高圧縮) で保存する。
-    /// GUIスクリーンショットは色数が少ないため、パレット化で大幅にサイズ削減できる。
+    /// 260323Cl 追加 / 260513Cl 改修: SixLabors.ImageSharp v4 ライセンス問題により System.Drawing 標準保存へ変更
+    /// Bitmap を PNG で保存する。
     /// </summary>
     private static void SaveCompressedPng(Bitmap bmp, string filePath)
     {
-        // System.Drawing.Bitmap → ImageSharp Image に変換
-        using var ms = new MemoryStream();
-        bmp.Save(ms, ImageFormat.Png);
-        ms.Position = 0;
+        // 260513Cl: 8bit パレット量子化は ImageSharp 依存だったため削除。開発者ツール用なのでファイルサイズより依存削減を優先
+        bmp.Save(filePath, ImageFormat.Png);
 
-        using var image = SixLabors.ImageSharp.Image.Load(ms);
-
-        // 8ビットパレット (256色) + 最高圧縮レベル
-        var encoder = new PngEncoder
-        {
-            ColorType = PngColorType.Palette,
-            CompressionLevel = PngCompressionLevel.BestCompression,
-            BitDepth = PngBitDepth.Bit8,
-            Quantizer = new WuQuantizer(new QuantizerOptions { MaxColors = 256 })
-        };
-
-        image.SaveAsPng(filePath, encoder);
+        // 260513Cl: 旧実装 (SixLabors.ImageSharp による 8bit パレット + BestCompression)
+        // using var ms = new MemoryStream();
+        // bmp.Save(ms, ImageFormat.Png);
+        // ms.Position = 0;
+        // using var image = SixLabors.ImageSharp.Image.Load(ms);
+        // var encoder = new PngEncoder
+        // {
+        //     ColorType = PngColorType.Palette,
+        //     CompressionLevel = PngCompressionLevel.BestCompression,
+        //     BitDepth = PngBitDepth.Bit8,
+        //     Quantizer = new WuQuantizer(new QuantizerOptions { MaxColors = 256 })
+        // };
+        // image.SaveAsPng(filePath, encoder);
     }
 
     /// <summary>ファイル名に使えない文字を置換</summary>

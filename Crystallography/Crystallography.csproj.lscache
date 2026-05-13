@@ -246,7 +246,7 @@ WaveProperty.cs
 YusaGonio.cs
 
 [metadataReferences]
-<DOTNET>/packs/Microsoft.NETCore.App.Ref/10.0.5/ref/net10.0/
+<DOTNET>/packs/Microsoft.NETCore.App.Ref/10.0.8/ref/net10.0/
  Microsoft.CSharp.dll
  Microsoft.VisualBasic.Core.dll
  Microsoft.Win32.Primitives.dll
@@ -412,7 +412,7 @@ YusaGonio.cs
  System.Xml.XPath.dll
  System.Xml.XPath.XDocument.dll
  WindowsBase.dll
-<DOTNET>/packs/Microsoft.WindowsDesktop.App.Ref/10.0.5/ref/net10.0/
+<DOTNET>/packs/Microsoft.WindowsDesktop.App.Ref/10.0.8/ref/net10.0/
  Accessibility.dll
  Microsoft.VisualBasic.dll
  Microsoft.VisualBasic.Forms.dll
@@ -459,24 +459,24 @@ YusaGonio.cs
  zlinq/1.5.6/lib/net10.0/ZLinq.dll
 
 [analyzerReferences]
-<DOTNET>/packs/Microsoft.NETCore.App.Ref/10.0.5/analyzers/dotnet/cs/
+<DOTNET>/packs/Microsoft.NETCore.App.Ref/10.0.8/analyzers/dotnet/cs/
  Microsoft.Interop.ComInterfaceGenerator.dll
  Microsoft.Interop.JavaScript.JSImportGenerator.dll
  Microsoft.Interop.LibraryImportGenerator.dll
  Microsoft.Interop.SourceGeneration.dll
  System.Text.Json.SourceGeneration.dll
  System.Text.RegularExpressions.Generator.dll
-<DOTNET>/packs/Microsoft.WindowsDesktop.App.Ref/10.0.5/analyzers/dotnet/cs/
+<DOTNET>/packs/Microsoft.WindowsDesktop.App.Ref/10.0.8/analyzers/dotnet/cs/
  System.Windows.Forms.Analyzers.CodeFixes.CSharp.dll
  System.Windows.Forms.Analyzers.CSharp.dll
 <DOTNET>/
- packs/Microsoft.WindowsDesktop.App.Ref/10.0.5/analyzers/dotnet/System.Windows.Forms.Analyzers.dll
- sdk/10.0.300-preview.0.26177.108/Sdks/Microsoft.NET.Sdk/analyzers/
+ packs/Microsoft.WindowsDesktop.App.Ref/10.0.8/analyzers/dotnet/System.Windows.Forms.Analyzers.dll
+ sdk/10.0.300/Sdks/Microsoft.NET.Sdk/analyzers/
   Microsoft.CodeAnalysis.CSharp.NetAnalyzers.dll
   Microsoft.CodeAnalysis.NetAnalyzers.dll
 <NUGET>/memorypack.generator/1.21.4/analyzers/dotnet/cs/MemoryPack.Generator.dll
 
 [analyzerConfigFiles]
 ../.editorconfig
-<DOTNET>/sdk/10.0.300-preview.0.26177.108/Sdks/Microsoft.NET.Sdk/analyzers/build/config/analysislevel_10_default.globalconfig
+<DOTNET>/sdk/10.0.300/Sdks/Microsoft.NET.Sdk/analyzers/build/config/analysislevel_10_default.globalconfig
 obj/x64/Release/net10.0-windows/Crystallography.GeneratedMSBuildEditorConfig.editorconfig

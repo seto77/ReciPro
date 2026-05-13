@@ -125,7 +125,8 @@ public static class TkEx
     /// <returns></returns>
     public static V3f ToV3f(in this C4 c) => new(c.R, c.G, c.B);
 
-
+    /// <summary>260513Cl 追加: System.Drawing.Color から OpenTK.Color4 へ。</summary>
+    public static C4 ToC4(in this System.Drawing.Color c, float a = 1f) => new(c.R / 255f, c.G / 255f, c.B / 255f, a);
 
 
     #endregion C4に関する拡張メソッド

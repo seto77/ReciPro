@@ -204,6 +204,63 @@
   <data name="splitContainer1.Panel1.ToolTip" xml:space="preserve">
     <value />
   </data>
+  <data name="tabControl.Font" type="System.Drawing.Font, System.Drawing">
+    <value>BIZ UDPゴシック, 9pt</value>
+  </data>
+  <data name="tabControl.ItemSize" type="System.Drawing.Size, System.Drawing">
+    <value>54, 18</value>
+  </data>
+  <data name="tabControl.Size" type="System.Drawing.Size, System.Drawing">
+    <value>681, 253</value>
+  </data>
+  <data name="tabControl.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="splitContainer1.Panel2.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="splitContainer1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>681, 717</value>
+  </data>
+  <data name="splitContainer1.SplitterDistance" type="System.Int32, mscorlib">
+    <value>460</value>
+  </data>
+  <data name="splitContainer1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="tabPageBounds.Font" type="System.Drawing.Font, System.Drawing">
+    <value>BIZ UDPゴシック, 9.75pt</value>
+  </data>
+  <data name="tabPageBounds.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="tabPageBounds.Size" type="System.Drawing.Size, System.Drawing">
+    <value>673, 227</value>
+  </data>
+  <data name="tabPageBounds.Text" xml:space="preserve">
+    <value>描画範囲</value>
+  </data>
+  <data name="tabPageBounds.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="tabControlBoundOption.Font" type="System.Drawing.Font, System.Drawing">
+    <value>BIZ UDPゴシック, 9.75pt</value>
+  </data>
+  <data name="tabControlBoundOption.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 22</value>
+  </data>
+  <data name="tabControlBoundOption.Size" type="System.Drawing.Size, System.Drawing">
+    <value>667, 180</value>
+  </data>
+  <data name="tabControlBoundOption.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="tabPageBoundUnitcell.Size" type="System.Drawing.Size, System.Drawing">
+    <value>616, 172</value>
+  </data>
+  <data name="tabPageBoundUnitcell.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="buttonSetRange2.Font" type="System.Drawing.Font, System.Drawing">
     <value>BIZ UDPゴシック, 9pt</value>
   </data>
@@ -439,28 +496,19 @@
   <data name="label1.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="tabPageBoundUnitcell.Size" type="System.Drawing.Size, System.Drawing">
-    <value>616, 172</value>
-  </data>
-  <data name="tabPageBoundUnitcell.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="tabPageBoundPlane.Size" type="System.Drawing.Size, System.Drawing">
-    <value>616, 180</value>
+    <value>616, 172</value>
   </data>
   <data name="tabPageBoundPlane.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="tabControlBoundOption.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9.75pt</value>
+  <data name="flowLayoutPanelLatticePlaneOptions.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 202</value>
   </data>
-  <data name="tabControlBoundOption.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 22</value>
+  <data name="flowLayoutPanelLatticePlaneOptions.Size" type="System.Drawing.Size, System.Drawing">
+    <value>667, 25</value>
   </data>
-  <data name="tabControlBoundOption.Size" type="System.Drawing.Size, System.Drawing">
-    <value>667, 180</value>
-  </data>
-  <data name="tabControlBoundOption.ToolTip" xml:space="preserve">
+  <data name="flowLayoutPanelLatticePlaneOptions.ToolTip" xml:space="preserve">
     <value />
   </data>
   <data name="checkBoxShowBoundPlanes.Font" type="System.Drawing.Font, System.Drawing">
@@ -479,13 +527,13 @@
     <value>BIZ UDPゴシック, 9pt</value>
   </data>
   <data name="numericBoxBoundPlanesOpacity.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 6, 0, 0</value>
+    <value>0, 7, 0, 0</value>
   </data>
   <data name="numericBoxBoundPlanesOpacity.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>BIZ UDPゴシック, 9pt</value>
   </data>
   <data name="numericBoxBoundPlanesOpacity.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 6, 0, 0</value>
+    <value>0, 7, 0, 0</value>
   </data>
   <data name="numericBoxBoundPlanesOpacity.HeaderText" xml:space="preserve">
     <value>透明度</value>
@@ -520,13 +568,10 @@
   <data name="checkBoxClipObjects.ToolTip" xml:space="preserve">
     <value>境界面で原子と結合をクリップ</value>
   </data>
-  <data name="flowLayoutPanelLatticePlaneOptions.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 202</value>
+  <data name="flowLayoutPanelBoundType.Size" type="System.Drawing.Size, System.Drawing">
+    <value>667, 19</value>
   </data>
-  <data name="flowLayoutPanelLatticePlaneOptions.Size" type="System.Drawing.Size, System.Drawing">
-    <value>667, 25</value>
-  </data>
-  <data name="flowLayoutPanelLatticePlaneOptions.ToolTip" xml:space="preserve">
+  <data name="flowLayoutPanelBoundType.ToolTip" xml:space="preserve">
     <value />
   </data>
   <data name="radioButtonBoundUnitCell.Font" type="System.Drawing.Font, System.Drawing">
@@ -556,36 +601,6 @@
   <data name="radioButtonBoundPlane.ToolTip" xml:space="preserve">
     <value>チェックすると、描画範囲が結晶面に基づいて定義されます</value>
   </data>
-  <data name="flowLayoutPanelBoundType.Size" type="System.Drawing.Size, System.Drawing">
-    <value>667, 19</value>
-  </data>
-  <data name="flowLayoutPanelBoundType.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="tabPageBounds.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9.75pt</value>
-  </data>
-  <data name="tabPageBounds.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
-  </data>
-  <data name="tabPageBounds.Size" type="System.Drawing.Size, System.Drawing">
-    <value>673, 227</value>
-  </data>
-  <data name="tabPageBounds.Text" xml:space="preserve">
-    <value>描画範囲</value>
-  </data>
-  <data name="tabPageBounds.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="labelMessage.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt, style=Bold</value>
-  </data>
-  <data name="labelMessage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>215, 24</value>
-  </data>
-  <data name="labelMessage.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="tabPageAtom.Font" type="System.Drawing.Font, System.Drawing">
     <value>BIZ UDPゴシック, 9.75pt</value>
   </data>
@@ -601,6 +616,15 @@
   <data name="tabPageAtom.ToolTip" xml:space="preserve">
     <value />
   </data>
+  <data name="labelMessage.Font" type="System.Drawing.Font, System.Drawing">
+    <value>BIZ UDPゴシック, 9pt, style=Bold</value>
+  </data>
+  <data name="labelMessage.Size" type="System.Drawing.Size, System.Drawing">
+    <value>215, 24</value>
+  </data>
+  <data name="labelMessage.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="tabPageBond.Font" type="System.Drawing.Font, System.Drawing">
     <value>BIZ UDPゴシック, 9.75pt</value>
   </data>
@@ -611,9 +635,24 @@
     <value>673, 227</value>
   </data>
   <data name="tabPageBond.Text" xml:space="preserve">
-    <value>結合と多面体</value>
+    <value>結合/多面体</value>
   </data>
   <data name="tabPageBond.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="tabPageUnitCell.Font" type="System.Drawing.Font, System.Drawing">
+    <value>BIZ UDPゴシック, 9.75pt</value>
+  </data>
+  <data name="tabPageUnitCell.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="tabPageUnitCell.Size" type="System.Drawing.Size, System.Drawing">
+    <value>673, 227</value>
+  </data>
+  <data name="tabPageUnitCell.Text" xml:space="preserve">
+    <value>単位胞</value>
+  </data>
+  <data name="tabPageUnitCell.ToolTip" xml:space="preserve">
     <value />
   </data>
   <data name="checkBoxUnitCell.Font" type="System.Drawing.Font, System.Drawing">
@@ -627,6 +666,24 @@
   </data>
   <data name="checkBoxUnitCell.ToolTip" xml:space="preserve">
     <value>単位胞を表示</value>
+  </data>
+  <data name="groupBoxShowUnitCell.Font" type="System.Drawing.Font, System.Drawing">
+    <value>BIZ UDPゴシック, 9.75pt</value>
+  </data>
+  <data name="groupBoxShowUnitCell.Size" type="System.Drawing.Size, System.Drawing">
+    <value>667, 224</value>
+  </data>
+  <data name="groupBoxShowUnitCell.ToolTip" xml:space="preserve">
+    <value>単位胞の表示設定を構成</value>
+  </data>
+  <data name="flowLayoutPanelCellPlaneColors.Location" type="System.Drawing.Point, System.Drawing">
+    <value>88, 62</value>
+  </data>
+  <data name="flowLayoutPanelCellPlaneColors.Size" type="System.Drawing.Size, System.Drawing">
+    <value>422, 27</value>
+  </data>
+  <data name="flowLayoutPanelCellPlaneColors.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="radioButtonCellPlaneColorAll.Font" type="System.Drawing.Font, System.Drawing">
     <value>BIZ UDPゴシック, 9pt</value>
@@ -754,13 +811,13 @@
   <data name="numericBoxCellPlaneAlpha.ToolTip1" xml:space="preserve">
     <value>格子面の不透明度 (1: 不透明, 0: 透明)</value>
   </data>
-  <data name="flowLayoutPanelCellPlaneColors.Location" type="System.Drawing.Point, System.Drawing">
-    <value>88, 62</value>
+  <data name="flowLayoutPanelCellEdgeColors.Location" type="System.Drawing.Point, System.Drawing">
+    <value>86, 100</value>
   </data>
-  <data name="flowLayoutPanelCellPlaneColors.Size" type="System.Drawing.Size, System.Drawing">
-    <value>422, 27</value>
+  <data name="flowLayoutPanelCellEdgeColors.Size" type="System.Drawing.Size, System.Drawing">
+    <value>461, 26</value>
   </data>
-  <data name="flowLayoutPanelCellPlaneColors.ToolTip" xml:space="preserve">
+  <data name="flowLayoutPanelCellEdgeColors.ToolTip" xml:space="preserve">
     <value />
   </data>
   <data name="radioButtonCellEdgeColorAll.Font" type="System.Drawing.Font, System.Drawing">
@@ -888,15 +945,6 @@
   </data>
   <data name="trackBarCellEdgeWidth.ToolTip" xml:space="preserve">
     <value>セル辺の線幅を設定</value>
-  </data>
-  <data name="flowLayoutPanelCellEdgeColors.Location" type="System.Drawing.Point, System.Drawing">
-    <value>86, 100</value>
-  </data>
-  <data name="flowLayoutPanelCellEdgeColors.Size" type="System.Drawing.Size, System.Drawing">
-    <value>461, 26</value>
-  </data>
-  <data name="flowLayoutPanelCellEdgeColors.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="numericBoxCellTranslationC.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>BIZ UDPゴシック, 9pt</value>
@@ -1102,28 +1150,28 @@
   <data name="label12.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="groupBoxShowUnitCell.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="tabPageLatticePlane.Font" type="System.Drawing.Font, System.Drawing">
     <value>BIZ UDPゴシック, 9.75pt</value>
   </data>
-  <data name="groupBoxShowUnitCell.Size" type="System.Drawing.Size, System.Drawing">
-    <value>667, 224</value>
-  </data>
-  <data name="groupBoxShowUnitCell.ToolTip" xml:space="preserve">
-    <value>単位胞の表示設定を構成</value>
-  </data>
-  <data name="tabPageUnitCell.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9.75pt</value>
-  </data>
-  <data name="tabPageUnitCell.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="tabPageLatticePlane.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 22</value>
   </data>
-  <data name="tabPageUnitCell.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="tabPageLatticePlane.Size" type="System.Drawing.Size, System.Drawing">
     <value>673, 227</value>
   </data>
-  <data name="tabPageUnitCell.Text" xml:space="preserve">
-    <value>単位胞</value>
+  <data name="tabPageLatticePlane.Text" xml:space="preserve">
+    <value>格子面</value>
   </data>
-  <data name="tabPageUnitCell.ToolTip" xml:space="preserve">
+  <data name="tabPageLatticePlane.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="flowLayoutPanelLatticePlaneOpacity.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 200</value>
+  </data>
+  <data name="flowLayoutPanelLatticePlaneOpacity.Size" type="System.Drawing.Size, System.Drawing">
+    <value>667, 27</value>
+  </data>
+  <data name="flowLayoutPanelLatticePlaneOpacity.ToolTip" xml:space="preserve">
     <value />
   </data>
   <data name="numericBoxLatticePlaneOpacity.FooterFont" type="System.Drawing.Font, System.Drawing">
@@ -1136,7 +1184,7 @@
     <value>BIZ UDPゴシック, 9pt</value>
   </data>
   <data name="numericBoxLatticePlaneOpacity.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 5, 0, 0</value>
+    <value>0, 7, 0, 0</value>
   </data>
   <data name="numericBoxLatticePlaneOpacity.HeaderText" xml:space="preserve">
     <value>不透明度</value>
@@ -1146,39 +1194,6 @@
   </data>
   <data name="numericBoxLatticePlaneOpacity.ToolTip1" xml:space="preserve">
     <value>格子面の不透明度（0=透明、1=不透明）</value>
-  </data>
-  <data name="flowLayoutPanelLatticePlaneOpacity.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 200</value>
-  </data>
-  <data name="flowLayoutPanelLatticePlaneOpacity.Size" type="System.Drawing.Size, System.Drawing">
-    <value>667, 27</value>
-  </data>
-  <data name="flowLayoutPanelLatticePlaneOpacity.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="tabPageLatticePlane.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9.75pt</value>
-  </data>
-  <data name="tabPageLatticePlane.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
-  </data>
-  <data name="tabPageLatticePlane.Size" type="System.Drawing.Size, System.Drawing">
-    <value>673, 227</value>
-  </data>
-  <data name="tabPageLatticePlane.Text" xml:space="preserve">
-    <value>結晶格子面</value>
-  </data>
-  <data name="tabPageLatticePlane.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="atomCoordinateTable1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
-  </data>
-  <data name="atomCoordinateTable1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>673, 227</value>
-  </data>
-  <data name="atomCoordinateTable1.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="tabPageCoordinateInformation.Font" type="System.Drawing.Font, System.Drawing">
     <value>BIZ UDPゴシック, 9.75pt</value>
@@ -1193,6 +1208,39 @@
     <value>配位情報</value>
   </data>
   <data name="tabPageCoordinateInformation.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="atomCoordinateTable1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>BIZ UDPゴシック, 9pt</value>
+  </data>
+  <data name="atomCoordinateTable1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>673, 227</value>
+  </data>
+  <data name="atomCoordinateTable1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="tabPageInformation.Font" type="System.Drawing.Font, System.Drawing">
+    <value>BIZ UDPゴシック, 9.75pt</value>
+  </data>
+  <data name="tabPageInformation.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="tabPageInformation.Size" type="System.Drawing.Size, System.Drawing">
+    <value>673, 227</value>
+  </data>
+  <data name="tabPageInformation.Text" xml:space="preserve">
+    <value>情報</value>
+  </data>
+  <data name="tabPageInformation.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="flowLayoutPanelGraphicsInfo.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 218</value>
+  </data>
+  <data name="flowLayoutPanelGraphicsInfo.Size" type="System.Drawing.Size, System.Drawing">
+    <value>667, 9</value>
+  </data>
+  <data name="flowLayoutPanelGraphicsInfo.ToolTip" xml:space="preserve">
     <value />
   </data>
   <data name="labelGraphicsCard.Font" type="System.Drawing.Font, System.Drawing">
@@ -1228,28 +1276,31 @@
   <data name="labelOpenGLversion.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="flowLayoutPanelGraphicsInfo.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 218</value>
-  </data>
-  <data name="flowLayoutPanelGraphicsInfo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>667, 9</value>
-  </data>
-  <data name="flowLayoutPanelGraphicsInfo.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="tabPageInformation.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9.75pt</value>
-  </data>
-  <data name="tabPageInformation.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="tabPageProjection.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 22</value>
   </data>
-  <data name="tabPageInformation.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="tabPageProjection.Size" type="System.Drawing.Size, System.Drawing">
     <value>673, 227</value>
   </data>
-  <data name="tabPageInformation.Text" xml:space="preserve">
-    <value>情報</value>
+  <data name="tabPageProjection.Text" xml:space="preserve">
+    <value>投影</value>
   </data>
-  <data name="tabPageInformation.ToolTip" xml:space="preserve">
+  <data name="tabPageProjection.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="groupBoxProjectionCenter.Size" type="System.Drawing.Size, System.Drawing">
+    <value>438, 68</value>
+  </data>
+  <data name="groupBoxProjectionCenter.Text" xml:space="preserve">
+    <value>投影中心</value>
+  </data>
+  <data name="groupBoxProjectionCenter.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="flowLayoutPanelProjectionCenter.Location" type="System.Drawing.Point, System.Drawing">
+    <value>266, 35</value>
+  </data>
+  <data name="flowLayoutPanelProjectionCenter.ToolTip" xml:space="preserve">
     <value />
   </data>
   <data name="numericBoxProjectionCenterX.FooterFont" type="System.Drawing.Font, System.Drawing">
@@ -1324,12 +1375,6 @@
   <data name="numericBoxProjectionCenterZ.ToolTip1" xml:space="preserve">
     <value>単位胞を平行移動（分率座標）</value>
   </data>
-  <data name="flowLayoutPanelProjectionCenter.Location" type="System.Drawing.Point, System.Drawing">
-    <value>266, 35</value>
-  </data>
-  <data name="flowLayoutPanelProjectionCenter.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="label9.Size" type="System.Drawing.Size, System.Drawing">
     <value>185, 12</value>
   </data>
@@ -1366,13 +1411,10 @@
   <data name="radioButtonProjectionCenter2.ToolTip" xml:space="preserve">
     <value>投影中心を (1/2, 1/2, 1/2) に設定</value>
   </data>
-  <data name="groupBoxProjectionCenter.Size" type="System.Drawing.Size, System.Drawing">
-    <value>438, 68</value>
+  <data name="groupBoxProjection.Text" xml:space="preserve">
+    <value>投影方法</value>
   </data>
-  <data name="groupBoxProjectionCenter.Text" xml:space="preserve">
-    <value>投影中心</value>
-  </data>
-  <data name="groupBoxProjectionCenter.ToolTip" xml:space="preserve">
+  <data name="groupBoxProjection.ToolTip" xml:space="preserve">
     <value />
   </data>
   <data name="comboBoxProjectionMode.Size" type="System.Drawing.Size, System.Drawing">
@@ -1384,10 +1426,13 @@
   <data name="trackBarPerspective.ToolTip" xml:space="preserve">
     <value>視点から描画オブジェクトまでの距離を調整します。</value>
   </data>
-  <data name="groupBoxProjection.Text" xml:space="preserve">
-    <value>投影方法</value>
+  <data name="groupBoxTransparency.Location" type="System.Drawing.Point, System.Drawing">
+    <value>386, 61</value>
   </data>
-  <data name="groupBoxProjection.ToolTip" xml:space="preserve">
+  <data name="groupBoxTransparency.Text" xml:space="preserve">
+    <value>透明度の計算方法</value>
+  </data>
+  <data name="groupBoxTransparency.ToolTip" xml:space="preserve">
     <value />
   </data>
   <data name="comboBoxTransparency.Items" xml:space="preserve">
@@ -1405,15 +1450,6 @@
   <data name="comboBoxTransparency.ToolTip" xml:space="preserve">
     <value>透過モードを設定</value>
   </data>
-  <data name="groupBoxTransparency.Location" type="System.Drawing.Point, System.Drawing">
-    <value>386, 61</value>
-  </data>
-  <data name="groupBoxTransparency.Text" xml:space="preserve">
-    <value>透明度の計算方法</value>
-  </data>
-  <data name="groupBoxTransparency.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="checkBoxDepthFadingOut.Size" type="System.Drawing.Size, System.Drawing">
     <value>218, 16</value>
   </data>
@@ -1423,16 +1459,19 @@
   <data name="checkBoxDepthFadingOut.ToolTip" xml:space="preserve">
     <value>チェックすると、奥のオブジェクトがフェードアウトします</value>
   </data>
+  <data name="groupBoxRenderingQuality.Text" xml:space="preserve">
+    <value>描画品質</value>
+  </data>
+  <data name="groupBoxRenderingQuality.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="comboBoxRenderingQuality.Size" type="System.Drawing.Size, System.Drawing">
     <value>128, 20</value>
   </data>
   <data name="comboBoxRenderingQuality.ToolTip" xml:space="preserve">
     <value>レンダリング品質を設定</value>
   </data>
-  <data name="groupBoxRenderingQuality.Text" xml:space="preserve">
-    <value>描画品質</value>
-  </data>
-  <data name="groupBoxRenderingQuality.ToolTip" xml:space="preserve">
+  <data name="groupBoxDepthCueing.ToolTip" xml:space="preserve">
     <value />
   </data>
   <data name="trackBarAdvancedDepthCueingNear.FooterFont" type="System.Drawing.Font, System.Drawing">
@@ -1477,43 +1516,256 @@
   <data name="label5.ToolTip" xml:space="preserve">
     <value>この値より近いオブジェクトは完全に不透明になります</value>
   </data>
-  <data name="groupBoxDepthCueing.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="tabPageProjection.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="tabPageSymElems.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 22</value>
   </data>
-  <data name="tabPageProjection.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="tabPageSymElems.Size" type="System.Drawing.Size, System.Drawing">
     <value>673, 227</value>
   </data>
-  <data name="tabPageProjection.Text" xml:space="preserve">
-    <value>投影</value>
+  <data name="tabPageSymElems.Text" xml:space="preserve">
+    <value>対称要素</value>
   </data>
-  <data name="tabPageProjection.ToolTip" xml:space="preserve">
+  <data name="tabPageSymElems.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="checkBoxShowBondedAtoms.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="groupBox3.Text" xml:space="preserve">
+    <value>対称心</value>
+  </data>
+  <data name="groupBox3.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="checkBoxSymElems_Inversions.Size" type="System.Drawing.Size, System.Drawing">
+    <value>60, 16</value>
+  </data>
+  <data name="checkBoxSymElems_Inversions.Text" xml:space="preserve">
+    <value>対称心</value>
+  </data>
+  <data name="checkBoxSymElems_Inversions.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="numericBoxInversionSymbolSize.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>BIZ UDPゴシック, 9pt</value>
   </data>
-  <data name="checkBoxShowBondedAtoms.Size" type="System.Drawing.Size, System.Drawing">
-    <value>260, 16</value>
+  <data name="numericBoxInversionSymbolSize.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 7, 0, 0</value>
   </data>
-  <data name="checkBoxShowBondedAtoms.Text" xml:space="preserve">
-    <value>境界外ではあるが結合している原子を表示</value>
+  <data name="numericBoxInversionSymbolSize.HeaderFont" type="System.Drawing.Font, System.Drawing">
+    <value>BIZ UDPゴシック, 9pt</value>
   </data>
-  <data name="checkBoxShowBondedAtoms.ToolTip" xml:space="preserve">
-    <value>境界外の結合原子も表示</value>
+  <data name="numericBoxInversionSymbolSize.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 7, 0, 0</value>
   </data>
-  <data name="groupBoxBondedAtoms.Location" type="System.Drawing.Point, System.Drawing">
-    <value>294, 5</value>
+  <data name="numericBoxInversionSymbolSize.HeaderText" xml:space="preserve">
+    <value>シンボルサイズ</value>
   </data>
-  <data name="groupBoxBondedAtoms.Size" type="System.Drawing.Size, System.Drawing">
-    <value>301, 66</value>
+  <data name="numericBoxInversionSymbolSize.ToolTip1" xml:space="preserve">
+    <value />
   </data>
-  <data name="groupBoxBondedAtoms.Text" xml:space="preserve">
-    <value>結合原子</value>
+  <data name="colorControlInversion.FooterFont" type="System.Drawing.Font, System.Drawing">
+    <value>BIZ UDPゴシック, 9pt</value>
   </data>
-  <data name="groupBoxBondedAtoms.ToolTip" xml:space="preserve">
+  <data name="colorControlInversion.HeaderFont" type="System.Drawing.Font, System.Drawing">
+    <value>BIZ UDPゴシック, 9pt</value>
+  </data>
+  <data name="colorControlInversion.HeaderText" xml:space="preserve">
+    <value>色</value>
+  </data>
+  <data name="colorControlInversion.Size" type="System.Drawing.Size, System.Drawing">
+    <value>37, 20</value>
+  </data>
+  <data name="colorControlInversion.ToolTip1" xml:space="preserve">
+    <value />
+  </data>
+  <data name="groupBox2.Text" xml:space="preserve">
+    <value>対称面</value>
+  </data>
+  <data name="groupBox2.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="checkBoxSymElems_Glides.Size" type="System.Drawing.Size, System.Drawing">
+    <value>60, 16</value>
+  </data>
+  <data name="checkBoxSymElems_Glides.Text" xml:space="preserve">
+    <value>映進面</value>
+  </data>
+  <data name="checkBoxSymElems_Glides.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="numericBoxPlaneSymbolSize.FooterFont" type="System.Drawing.Font, System.Drawing">
+    <value>BIZ UDPゴシック, 9pt</value>
+  </data>
+  <data name="numericBoxPlaneSymbolSize.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 7, 0, 0</value>
+  </data>
+  <data name="numericBoxPlaneSymbolSize.HeaderFont" type="System.Drawing.Font, System.Drawing">
+    <value>BIZ UDPゴシック, 9pt</value>
+  </data>
+  <data name="numericBoxPlaneSymbolSize.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 7, 0, 0</value>
+  </data>
+  <data name="numericBoxPlaneSymbolSize.HeaderText" xml:space="preserve">
+    <value>シンボルサイズ</value>
+  </data>
+  <data name="numericBoxPlaneSymbolSize.ToolTip1" xml:space="preserve">
+    <value />
+  </data>
+  <data name="numericBoxPlaneLineWidth.FooterFont" type="System.Drawing.Font, System.Drawing">
+    <value>BIZ UDPゴシック, 9pt</value>
+  </data>
+  <data name="numericBoxPlaneLineWidth.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 7, 0, 0</value>
+  </data>
+  <data name="numericBoxPlaneLineWidth.HeaderFont" type="System.Drawing.Font, System.Drawing">
+    <value>BIZ UDPゴシック, 9pt</value>
+  </data>
+  <data name="numericBoxPlaneLineWidth.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 7, 0, 0</value>
+  </data>
+  <data name="numericBoxPlaneLineWidth.HeaderText" xml:space="preserve">
+    <value>線の太さ</value>
+  </data>
+  <data name="numericBoxPlaneLineWidth.ToolTip1" xml:space="preserve">
+    <value />
+  </data>
+  <data name="checkBoxSymElems_Mirrors.Size" type="System.Drawing.Size, System.Drawing">
+    <value>60, 16</value>
+  </data>
+  <data name="checkBoxSymElems_Mirrors.Text" xml:space="preserve">
+    <value>鏡映面</value>
+  </data>
+  <data name="checkBoxSymElems_Mirrors.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="colorControlPlane.FooterFont" type="System.Drawing.Font, System.Drawing">
+    <value>BIZ UDPゴシック, 9pt</value>
+  </data>
+  <data name="colorControlPlane.HeaderFont" type="System.Drawing.Font, System.Drawing">
+    <value>BIZ UDPゴシック, 9pt</value>
+  </data>
+  <data name="colorControlPlane.HeaderText" xml:space="preserve">
+    <value>色</value>
+  </data>
+  <data name="colorControlPlane.Size" type="System.Drawing.Size, System.Drawing">
+    <value>37, 20</value>
+  </data>
+  <data name="colorControlPlane.ToolTip1" xml:space="preserve">
+    <value />
+  </data>
+  <data name="groupBox1.Text" xml:space="preserve">
+    <value>対称軸</value>
+  </data>
+  <data name="groupBox1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="checkBoxSymElems_Rotation.Size" type="System.Drawing.Size, System.Drawing">
+    <value>60, 16</value>
+  </data>
+  <data name="checkBoxSymElems_Rotation.Text" xml:space="preserve">
+    <value>回転軸</value>
+  </data>
+  <data name="checkBoxSymElems_Rotation.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="numericBoxAxisSymbolSize.FooterFont" type="System.Drawing.Font, System.Drawing">
+    <value>BIZ UDPゴシック, 9pt</value>
+  </data>
+  <data name="numericBoxAxisSymbolSize.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 7, 0, 0</value>
+  </data>
+  <data name="numericBoxAxisSymbolSize.HeaderFont" type="System.Drawing.Font, System.Drawing">
+    <value>BIZ UDPゴシック, 9pt</value>
+  </data>
+  <data name="numericBoxAxisSymbolSize.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 7, 0, 0</value>
+  </data>
+  <data name="numericBoxAxisSymbolSize.HeaderText" xml:space="preserve">
+    <value>シンボルサイズ</value>
+  </data>
+  <data name="numericBoxAxisSymbolSize.ToolTip1" xml:space="preserve">
+    <value />
+  </data>
+  <data name="numericBoxAxisLineWidth.FooterFont" type="System.Drawing.Font, System.Drawing">
+    <value>BIZ UDPゴシック, 9pt</value>
+  </data>
+  <data name="numericBoxAxisLineWidth.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 7, 0, 0</value>
+  </data>
+  <data name="numericBoxAxisLineWidth.HeaderFont" type="System.Drawing.Font, System.Drawing">
+    <value>BIZ UDPゴシック, 9pt</value>
+  </data>
+  <data name="numericBoxAxisLineWidth.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 7, 0, 0</value>
+  </data>
+  <data name="numericBoxAxisLineWidth.HeaderText" xml:space="preserve">
+    <value>線の太さ</value>
+  </data>
+  <data name="numericBoxAxisLineWidth.ToolTip1" xml:space="preserve">
+    <value />
+  </data>
+  <data name="checkBoxSymElems_Rotinversions.Size" type="System.Drawing.Size, System.Drawing">
+    <value>60, 16</value>
+  </data>
+  <data name="checkBoxSymElems_Rotinversions.Text" xml:space="preserve">
+    <value>回反軸</value>
+  </data>
+  <data name="checkBoxSymElems_Rotinversions.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="checkBoxSymElems_Screws.Location" type="System.Drawing.Point, System.Drawing">
+    <value>83, 21</value>
+  </data>
+  <data name="checkBoxSymElems_Screws.Size" type="System.Drawing.Size, System.Drawing">
+    <value>70, 16</value>
+  </data>
+  <data name="checkBoxSymElems_Screws.Text" xml:space="preserve">
+    <value>らせん軸</value>
+  </data>
+  <data name="checkBoxSymElems_Screws.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="colorControlAxisColor.FooterFont" type="System.Drawing.Font, System.Drawing">
+    <value>BIZ UDPゴシック, 9pt</value>
+  </data>
+  <data name="colorControlAxisColor.HeaderFont" type="System.Drawing.Font, System.Drawing">
+    <value>BIZ UDPゴシック, 9pt</value>
+  </data>
+  <data name="colorControlAxisColor.HeaderText" xml:space="preserve">
+    <value>色</value>
+  </data>
+  <data name="colorControlAxisColor.Size" type="System.Drawing.Size, System.Drawing">
+    <value>37, 20</value>
+  </data>
+  <data name="colorControlAxisColor.ToolTip1" xml:space="preserve">
+    <value />
+  </data>
+  <data name="checkBoxShowSymmetryElements.Size" type="System.Drawing.Size, System.Drawing">
+    <value>108, 16</value>
+  </data>
+  <data name="checkBoxShowSymmetryElements.Text" xml:space="preserve">
+    <value>対称要素を表示</value>
+  </data>
+  <data name="checkBoxShowSymmetryElements.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="tabPageMisc.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="tabPageMisc.Size" type="System.Drawing.Size, System.Drawing">
+    <value>673, 227</value>
+  </data>
+  <data name="tabPageMisc.Text" xml:space="preserve">
+    <value>その他</value>
+  </data>
+  <data name="tabPageMisc.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="groupBoxLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 93</value>
+  </data>
+  <data name="groupBoxLabel.Text" xml:space="preserve">
+    <value>原子ラベル</value>
+  </data>
+  <data name="groupBoxLabel.ToolTip" xml:space="preserve">
     <value />
   </data>
   <data name="colorControlLabelColor.Font" type="System.Drawing.Font, System.Drawing">
@@ -1616,13 +1868,37 @@
   <data name="label7.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="groupBoxLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 93</value>
+  <data name="groupBoxBondedAtoms.Location" type="System.Drawing.Point, System.Drawing">
+    <value>294, 5</value>
   </data>
-  <data name="groupBoxLabel.Text" xml:space="preserve">
-    <value>原子ラベル</value>
+  <data name="groupBoxBondedAtoms.Size" type="System.Drawing.Size, System.Drawing">
+    <value>301, 66</value>
   </data>
-  <data name="groupBoxLabel.ToolTip" xml:space="preserve">
+  <data name="groupBoxBondedAtoms.Text" xml:space="preserve">
+    <value>結合原子</value>
+  </data>
+  <data name="groupBoxBondedAtoms.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="checkBoxShowBondedAtoms.Font" type="System.Drawing.Font, System.Drawing">
+    <value>BIZ UDPゴシック, 9pt</value>
+  </data>
+  <data name="checkBoxShowBondedAtoms.Size" type="System.Drawing.Size, System.Drawing">
+    <value>260, 16</value>
+  </data>
+  <data name="checkBoxShowBondedAtoms.Text" xml:space="preserve">
+    <value>境界外ではあるが結合している原子を表示</value>
+  </data>
+  <data name="checkBoxShowBondedAtoms.ToolTip" xml:space="preserve">
+    <value>境界外の結合原子も表示</value>
+  </data>
+  <data name="groupBoxAccessoryControls.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 5</value>
+  </data>
+  <data name="groupBoxAccessoryControls.Text" xml:space="preserve">
+    <value>光源, 結晶軸, 凡例の設定</value>
+  </data>
+  <data name="groupBoxAccessoryControls.ToolTip" xml:space="preserve">
     <value />
   </data>
   <data name="checkBoxGroupByElement.Location" type="System.Drawing.Point, System.Drawing">
@@ -1706,46 +1982,13 @@
   <data name="numericBoxLightSize.ToolTip1" xml:space="preserve">
     <value>光源球の表示サイズ (左上)</value>
   </data>
-  <data name="groupBoxAccessoryControls.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 5</value>
+  <data name="toolStrip1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 765</value>
   </data>
-  <data name="groupBoxAccessoryControls.Text" xml:space="preserve">
-    <value>光源, 結晶軸, 凡例の設定</value>
+  <data name="toolStrip1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>681, 25</value>
   </data>
-  <data name="groupBoxAccessoryControls.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="tabPageMisc.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
-  </data>
-  <data name="tabPageMisc.Size" type="System.Drawing.Size, System.Drawing">
-    <value>673, 227</value>
-  </data>
-  <data name="tabPageMisc.Text" xml:space="preserve">
-    <value>その他</value>
-  </data>
-  <data name="tabPageMisc.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="tabControl.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
-  </data>
-  <data name="tabControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>681, 253</value>
-  </data>
-  <data name="tabControl.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="splitContainer1.Panel2.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="splitContainer1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>681, 717</value>
-  </data>
-  <data name="splitContainer1.SplitterDistance" type="System.Int32, mscorlib">
-    <value>460</value>
-  </data>
-  <data name="splitContainer1.ToolTip" xml:space="preserve">
+  <data name="toolStrip1.ToolTip" xml:space="preserve">
     <value />
   </data>
   <data name="toolStripButtonCrystalAxes.Font" type="System.Drawing.Font, System.Drawing">
@@ -1954,71 +2197,14 @@
   <data name="toolStripButtonSymmetryElements.Text" xml:space="preserve">
     <value>対称要素</value>
   </data>
-  <data name="toolStrip1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 765</value>
-  </data>
-  <data name="toolStrip1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>681, 25</value>
-  </data>
-  <data name="toolStrip1.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="menuStrip1.Font" type="System.Drawing.Font, System.Drawing">
     <value>BIZ UDPゴシック, 9pt</value>
   </data>
-  <data name="saveMainToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>168, 22</value>
+  <data name="menuStrip1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>681, 24</value>
   </data>
-  <data name="saveLegendToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>168, 22</value>
-  </data>
-  <data name="saveAxesToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>168, 22</value>
-  </data>
-  <data name="saveLightToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>168, 22</value>
-  </data>
-  <data name="saveImageToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>229, 22</value>
-  </data>
-  <data name="saveImageToolStripMenuItem1.Text" xml:space="preserve">
-    <value>画像を保存</value>
-  </data>
-  <data name="copyMainToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>168, 22</value>
-  </data>
-  <data name="copyLegendToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>168, 22</value>
-  </data>
-  <data name="copyAxesToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>168, 22</value>
-  </data>
-  <data name="copyLightToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>168, 22</value>
-  </data>
-  <data name="copyToClipboardToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>229, 22</value>
-  </data>
-  <data name="copyToClipboardToolStripMenuItem.Text" xml:space="preserve">
-    <value>画像をクリップボードにコピー</value>
-  </data>
-  <data name="SaveMovieMainImageToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>106, 22</value>
-  </data>
-  <data name="SaveMovieMainImageToolStripMenuItem.Text" xml:space="preserve">
-    <value>メイン</value>
-  </data>
-  <data name="SaveMovieCrystalAxesToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>106, 22</value>
-  </data>
-  <data name="SaveMovieCrystalAxesToolStripMenuItem.Text" xml:space="preserve">
-    <value>結晶軸</value>
-  </data>
-  <data name="saveMovieToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>229, 22</value>
-  </data>
-  <data name="saveMovieToolStripMenuItem.Text" xml:space="preserve">
-    <value>動画を保存</value>
+  <data name="menuStrip1.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="saveImageToolStripMenuItem.Font" type="System.Drawing.Font, System.Drawing">
     <value>BIZ UDPゴシック, 9pt</value>
@@ -2032,14 +2218,74 @@
   <data name="saveImageToolStripMenuItem.ToolTipText" xml:space="preserve">
     <value>現在の画像をファイルに保存</value>
   </data>
-  <data name="iLikeVESTAToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>150, 22</value>
+  <data name="saveImageToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>229, 22</value>
+  </data>
+  <data name="saveImageToolStripMenuItem1.Text" xml:space="preserve">
+    <value>画像を保存</value>
+  </data>
+  <data name="saveMainToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>168, 22</value>
+  </data>
+  <data name="saveLegendToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>168, 22</value>
+  </data>
+  <data name="saveAxesToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>168, 22</value>
+  </data>
+  <data name="saveLightToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>168, 22</value>
+  </data>
+  <data name="copyToClipboardToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>229, 22</value>
+  </data>
+  <data name="copyToClipboardToolStripMenuItem.Text" xml:space="preserve">
+    <value>画像をクリップボードにコピー</value>
+  </data>
+  <data name="copyMainToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>168, 22</value>
+  </data>
+  <data name="copyLegendToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>168, 22</value>
+  </data>
+  <data name="copyAxesToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>168, 22</value>
+  </data>
+  <data name="copyLightToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>168, 22</value>
+  </data>
+  <data name="saveMovieToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>229, 22</value>
+  </data>
+  <data name="saveMovieToolStripMenuItem.Text" xml:space="preserve">
+    <value>動画を保存</value>
+  </data>
+  <data name="SaveMovieMainImageToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>106, 22</value>
+  </data>
+  <data name="SaveMovieMainImageToolStripMenuItem.Text" xml:space="preserve">
+    <value>メイン</value>
+  </data>
+  <data name="SaveMovieCrystalAxesToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>106, 22</value>
+  </data>
+  <data name="SaveMovieCrystalAxesToolStripMenuItem.Text" xml:space="preserve">
+    <value>結晶軸</value>
   </data>
   <data name="toolToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>52, 18</value>
   </data>
   <data name="toolToolStripMenuItem.Text" xml:space="preserve">
     <value>ツール</value>
+  </data>
+  <data name="iLikeVESTAToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>150, 22</value>
+  </data>
+  <data name="helpToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>120, 18</value>
+  </data>
+  <data name="helpToolStripMenuItem.Text" xml:space="preserve">
+    <value>ショートカットヒント</value>
   </data>
   <data name="cTRLSHIFTcMainImageToClipboardCTRLRightDoubleClickChangePerspectiveOrthogonalAlternatelyToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>685, 22</value>
@@ -2049,18 +2295,6 @@
   </data>
   <data name="toolStripMenuItem2.Size" type="System.Drawing.Size, System.Drawing">
     <value>685, 22</value>
-  </data>
-  <data name="helpToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>120, 18</value>
-  </data>
-  <data name="helpToolStripMenuItem.Text" xml:space="preserve">
-    <value>ショートカットヒント</value>
-  </data>
-  <data name="menuStrip1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>681, 24</value>
-  </data>
-  <data name="menuStrip1.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="numericBoxClientHeight.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>BIZ UDPゴシック, 9pt</value>
