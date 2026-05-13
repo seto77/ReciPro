@@ -185,31 +185,53 @@ public static class TkEx
     #endregion M3dに関する拡張メソッド
 
     #region その他の静的メソッド
-    public static V3f Average(IEnumerable<V3f> vectors)
+    // 旧:
+    // public static V3f Average(IEnumerable<V3f> vectors)
+    // {
+    //     float x = 0, y = 0, z = 0;
+    //     foreach (var v in vectors) { x += v.X; y += v.Y; z += v.Z; }
+    //     var count = vectors.Count();  // foreach の後で再走査していた
+    //     return new V3f(x / count, y / count, z / count);
+    // }
+    // 260514Cl: V3d 版と同じく ValueEnumerable<> overload を追加し、foreach 中で count++ する 1-pass に変更。
+    public static V3f Average(IEnumerable<V3f> vectors) => Average(vectors.AsValueEnumerable());
+
+    public static V3f Average(ValueEnumerable<ZLinq.Linq.FromEnumerable<V3f>, V3f> vectors)
     {
         float x = 0, y = 0, z = 0;
+        int count = 0;
         foreach (var v in vectors)
         {
             x += v.X;
             y += v.Y;
             z += v.Z;
+            count++;
         }
-        var count = vectors.Count();
         return new V3f(x / count, y / count, z / count);
     }
 
     public static V3d Average(IEnumerable<V3d> vectors)  => Average(vectors.AsValueEnumerable());
 
+    // 旧:
+    // public static V3d Average(ValueEnumerable<ZLinq.Linq.FromEnumerable<V3d>, V3d> vectors)
+    // {
+    //     double x = 0, y = 0, z = 0;
+    //     foreach (var v in vectors) { x += v.X; y += v.Y; z += v.Z; }
+    //     var count = vectors.Count();  // foreach の後で再走査していた
+    //     return new V3d(x / count, y / count, z / count);
+    // }
+    // 260514Cl: foreach 中で count++ する 1-pass に変更 (旧版は和算 foreach の後に Count() で 2 回走査)。
     public static V3d Average(ValueEnumerable<ZLinq.Linq.FromEnumerable<V3d>, V3d> vectors)
     {
         double x = 0, y = 0, z = 0;
+        int count = 0;
         foreach (var v in vectors)
         {
             x += v.X;
             y += v.Y;
             z += v.Z;
+            count++;
         }
-        var count = vectors.Count();
         return new V3d(x / count, y / count, z / count);
     }
     #endregion

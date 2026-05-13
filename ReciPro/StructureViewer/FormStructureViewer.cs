@@ -747,7 +747,9 @@ public partial class FormStructureViewer : FormBase
                 for (int i = cStart; i < cEnd; i++)
                 {
                     //ボンド長さの条件を満たす頂点インデックスを検索
-                    var vIndices = vertexIndices.Where(j => within((vArray[j].O - cArray[i].O).LengthSquared, max2, min2)).ToArray();
+                    // 旧: var vIndices = vertexIndices.Where(j => within((vArray[j].O - cArray[i].O).LengthSquared, max2, min2)).ToArray();
+                    // 260514Cl: Parallel.ForEach 内の per-cArray[i] hot path。ZLinq の AsValueEnumerable で Where iterator 確保を回避。
+                    var vIndices = vertexIndices.AsValueEnumerable().Where(j => within((vArray[j].O - cArray[i].O).LengthSquared, max2, min2)).ToArray();
                     int m = vIndices.Length, index = cArray[i].AtomIndex;
                     if (m > 0)
                         lock (lockObj2)
@@ -843,11 +845,10 @@ public partial class FormStructureViewer : FormBase
         int n = 0;
         GLObjectsP.ForAll(o =>
         {
-            if (o.Tag is atomID id && !id.IsInside && !vertexSerials.Contains(o.SerialNumber))
-            {
-                o.Z = double.NegativeInfinity;
-                Interlocked.Increment(ref n);
-            }
+            if (o.Tag is not atomID id || id.IsInside || vertexSerials.Contains(o.SerialNumber))
+                return;
+            o.Z = double.NegativeInfinity;
+            Interlocked.Increment(ref n);
         });
 
         GLObjects.Sort((o1, o2) => o1.Z.CompareTo(o2.Z));//並列化じゃなくても十分早いみたい。。。

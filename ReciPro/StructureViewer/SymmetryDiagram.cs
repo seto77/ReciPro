@@ -3,6 +3,7 @@ using Crystallography.OpenGL;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks; // 260514Cl: Parallel.Invoke で 3 generator を並列実行する
 using ZLinq;
 using C4 = OpenTK.Mathematics.Color4;
 using M3d = OpenTK.Mathematics.Matrix3d;
@@ -71,6 +72,8 @@ internal static class SymmetryDiagram
     private const float FillEmission = 0.30f;
 
     private readonly record struct TranslationRange(int MinA, int MaxA, int MinB, int MaxB, int MinC, int MaxC);
+    private readonly record struct PlaneDrawKey(long Nx, long Ny, long Nz, long D); // 260514Ch
+    private readonly record struct LineSegmentKey(long Ax, long Ay, long Az, long Bx, long By, long Bz); // 260514Ch
 
     /// <summary>鏡映面の種別。260510Ch: 旧 AxisA/AxisB/Diagonal*/Hex* の個別分類は廃止し W=0 を 1 つに集約 (旧名 Vertical)。
     /// 260511Cl: 立方晶 {0kl}/{h0l} 系を ContainsA / ContainsB として追加。それに伴い Vertical を ContainsC に rename し、A/B/C で対称な命名に揃える。</summary>
@@ -122,13 +125,24 @@ internal static class SymmetryDiagram
         // 260511Cl: planes に table.Centerings を渡す — R-3c など centering 等価な glide コセットを 1 つの bracket に集約しないため、
         // 3D 側で glide を canonical 化してから dedup する (Crystallography 側の data は無変更で 2D 表示は維持)。
         // 260513Cl: 全種別 OFF の場合でも個別の Generate* で早期 return するので外側はそのまま。
-        return
-        [
-            // .. GenerateSymmetryAxes(table.SymmetryAxes, axes, shift, bounds, range, scale, black, gray), // 旧: 従属軸を 3D 側の線分 dedup で抑制。
-            .. GenerateSymmetryAxes(table.PrincipalSymmetryAxes, axes, shift, bounds, range, scale, axisSizeFactor, axisLineWidth, axisMat, showRotation, showScrew, showRotoinversion), // 260512Ch / 260513Cl
-            .. GenerateSymmetryPlanes(table.SymmetryPlanes, table.Centerings, axes, shift, bounds, range, scale, planeSizeFactor, planeLineWidth, planeLineMat, planeFillMat, showMirror, showGlide),
-            .. (showInversion ? GenerateInversionCenters(table.InversionCenters, axes, shift, bounds, range, scale, inversionSizeFactor, inversionMat) : []),
-        ];
+        // 260514Cl: 軸/面/対称心の 3 generator は互いに独立した dedup 状態を持ち、出力する GLObject も共有しないため
+        // Parallel.Invoke で 3 ワーカに分割する。各 generator 内部は線分 dedup と高次軸優先の順序依存があるので逐次のまま。
+        // GLObject.SerialNumber 採番は GLObject ctor 側で lock 済みなので thread-safe。
+        // 旧:
+        // return
+        // [
+        //     .. GenerateSymmetryAxes(table.PrincipalSymmetryAxes, axes, shift, bounds, range, scale, axisSizeFactor, axisLineWidth, axisMat, showRotation, showScrew, showRotoinversion), // 260512Ch / 260513Cl
+        //     .. GenerateSymmetryPlanes(table.SymmetryPlanes, table.Centerings, axes, shift, bounds, range, scale, planeSizeFactor, planeLineWidth, planeLineMat, planeFillMat, showMirror, showGlide),
+        //     .. (showInversion ? GenerateInversionCenters(table.InversionCenters, axes, shift, bounds, range, scale, inversionSizeFactor, inversionMat) : []),
+        // ];
+        List<GLObject> axisList = null, planeList = null, inversionList = null;
+        Parallel.Invoke(
+            () => axisList = GenerateSymmetryAxes(table.PrincipalSymmetryAxes, axes, shift, bounds, range, scale, axisSizeFactor, axisLineWidth, axisMat, showRotation, showScrew, showRotoinversion),
+            () => planeList = GenerateSymmetryPlanes(table.SymmetryPlanes, table.Centerings, axes, shift, bounds, range, scale, planeSizeFactor, planeLineWidth, planeLineMat, planeFillMat, showMirror, showGlide),
+            () => inversionList = showInversion
+                ? GenerateInversionCenters(table.InversionCenters, axes, shift, bounds, range, scale, inversionSizeFactor, inversionMat)
+                : []);
+        return [.. axisList, .. planeList, .. inversionList];
     }
 
     #endregion
@@ -148,7 +162,7 @@ internal static class SymmetryDiagram
         if (!showRotation && !showScrew && !showRotoinversion) return [];
 
         var objects = new List<GLObject>();
-        var drawn = new HashSet<(long, long, long, long, long, long)>(); // 260509Cl: 向き不問 quantized HashSet で重複判定。
+        var drawn = new HashSet<LineSegmentKey>(); // 260514Ch: 向き不問 quantized HashSet で重複判定。
         double symbolRadius = scale * AxisSymbolRadiusFactor * sizeFactor; // 260513Cl: UI サイズ倍率を反映。
 
         // 260513Cl: cell 軸の正規化を 1 回だけ計算 (旧版は GenerateAxisSymbol 内で軸×セル毎に再計算していた)。
@@ -279,7 +293,9 @@ internal static class SymmetryDiagram
         [
             new Polygon(fillVerts, mat, DrawingMode.Surfaces) { IgnoreNormalSides = true, ShowClippedSection = false },
             new Polygon(fillVerts, mat, DrawingMode.Edges) { IgnoreNormalSides = true, ShowClippedSection = false, LineWidth = AxisLineWidth },
-            .. template.Skip(1).Select(line => new Lines(AffineTransformXY(line, center, u, v, scale), AxisLineWidth, mat)),
+            // 旧: .. template.Skip(1).Select(line => new Lines(AffineTransformXY(line, center, u, v, scale), AxisLineWidth, mat)),
+            // 260514Cl: ZLinq の AsValueEnumerable() で iterator 確保なしの value-struct chain にする。
+            .. template.AsValueEnumerable().Skip(1).Select(line => new Lines(AffineTransformXY(line, center, u, v, scale), AxisLineWidth, mat)),
         ];
     }
 
@@ -306,7 +322,8 @@ internal static class SymmetryDiagram
         if (!showMirror && !showGlide) return [];
 
         var objects = new List<GLObject>();
-        var drawn = new Dictionary<(long, long, long, long), int>(); // 260509Ch: 平面 dedup と、その面に描画済みの glide 方向 mask。
+        var drawn = new Dictionary<PlaneDrawKey, int>(); // 260514Ch: 平面 dedup と、その面に描画済みの glide 方向 mask。
+        var drawnLines = new HashSet<LineSegmentKey>(); // 260514Ch: 複数の映進面から同一線分が出る corner/diagonal 線を抑制。
         var invAxes = M3d.Invert(axes); // 260510Ch: Miller 面法線 hkl は逆格子側 A^{-T} で実空間化する。
         var boundsArray = bounds.Select(b => new[] { b.X, b.Y, b.Z, b.W }).ToArray();
         var extendedBounds = bounds.Select(b => new V4(b.X, b.Y, b.Z, b.W * ExtendedBoundsFactor)).ToArray();
@@ -341,12 +358,12 @@ internal static class SymmetryDiagram
 
             if (GetPlaneType(mp.Normal) is { } planeType)
                 GenerateAxisAlignedPlane(mp, planeType, axes, shift, bounds, boundsArray, extendedBounds, boundsVertices, range,
-                                         normalWorld, sizeFactor, lineWidth, lineMat, fillMat, drawn, objects);
+                                         normalWorld, sizeFactor, lineWidth, lineMat, fillMat, drawn, drawnLines, objects);
             else
             {
                 var glide = axes * new V3(mp.Glide.U, mp.Glide.V, mp.Glide.W);
                 GenerateObliquePlane(mp, axes, shift, extendedBoundsArray, range, scale, sizeFactor, lineWidth,
-                                     normalWorld, glide - normalWorld * V3.Dot(glide, normalWorld), lineMat, drawn, objects);
+                                     normalWorld, glide - normalWorld * V3.Dot(glide, normalWorld), lineMat, drawn, drawnLines, objects);
             }
         }
         return objects;
@@ -369,7 +386,8 @@ internal static class SymmetryDiagram
                                                   V3[] boundsVertices,
                                                   TranslationRange range, V3 normalWorld,
                                                   double sizeFactor, float lineWidth, Material lineMat, Material fillMat,
-                                                  Dictionary<(long, long, long, long), int> drawn,
+                                                  Dictionary<PlaneDrawKey, int> drawn,
+                                                  HashSet<LineSegmentKey> drawnLines,
                                                   List<GLObject> objects)
     {
         // 面内軸 u, v を plane type で決定。v 方向は Miller hkl の cross product N×u_axis (右手系) で統一。
@@ -417,15 +435,28 @@ internal static class SymmetryDiagram
 
         foreach (var cell in EnumerateCells(range))
         {
-            // 表示中心: AxisC は cell 中心 (0.5, 0.5)、垂直面は SymmetryPlane の代表点 (六方晶対応)。260509Ch
-            var fracCenter = rayClippedPlane
-                ? new V3(mp.X + cell.X, mp.Y + cell.Y, mp.Z + cell.Z)
-                : new V3(cell.X + 0.5, cell.Y + 0.5, mp.Z + cell.Z);
-            var center = axes * fracCenter - shift;
+            // 260514Cl: planeKey dedup を polygon clip より前に移動。
+            //   旧フロー: fracCenter/center/planePoint/d → maxPlaneProjection → GetClippedPolygon → centroid → planeKey 判定。
+            //   新フロー: planePoint/d → planeKey 早期判定 → clip 不要なら continue → 必要なら clip。
+            //   立方晶 (Fm-3m など) では (h,k,0) plane が多数の cell.Z 値で被るため、 GetClippedPolygon の redundant call が消える。
             var planePoint = axes * new V3(mp.X + cell.X, mp.Y + cell.Y, mp.Z + cell.Z) - shift;
             double d = -V3.Dot(normalWorld, planePoint);
 
-            V3 bracketRayOrigin = center;
+            // 同一平面 (n, d) は 1 セット (4 brackets) のみ描画。e 映進で別方向 glide が後から来た場合は矢印だけ追加。260509Ch
+            var planeKey = PlaneKey(normalWorld, d);
+            bool drawPlane = !drawn.TryGetValue(planeKey, out int drawnGlideMask);
+            int arrowsToDraw = glideMask & ~drawnGlideMask;
+            if (!drawPlane && arrowsToDraw == 0) continue;
+
+            // 表示中心: AxisC は cell 中心 (0.5, 0.5)、垂直面は SymmetryPlane の代表点 (六方晶対応)。260509Ch
+            // 260514Cl: rayClippedPlane=true では fracCenter ≡ planePoint frac なので、center は planePoint の使い回しで OK。
+            // 旧:
+            // var fracCenter = rayClippedPlane
+            //     ? new V3(mp.X + cell.X, mp.Y + cell.Y, mp.Z + cell.Z)
+            //     : new V3(cell.X + 0.5, cell.Y + 0.5, mp.Z + cell.Z);
+            // var center = axes * fracCenter - shift;
+            // V3 bracketRayOrigin = center;
+            V3 center, bracketRayOrigin;
             if (rayClippedPlane)
             {
                 // 旧処理: if (maxPlaneProjection.HasValue && -d >= maxPlaneProjection.Value - Tolerance) continue;
@@ -435,19 +466,24 @@ internal static class SymmetryDiagram
                 // 描画 bounds とこの面の交差有無で採否を決め、clipped polygon の重心を bracket の参照点に取る。260509Ch
                 var clipped = Geometry.GetClippedPolygon([normalWorld.X, normalWorld.Y, normalWorld.Z, d], boundsArray);
                 if (clipped == null || clipped.Length == 0) continue;
-                bracketRayOrigin = clipped.Select(p => new V3(p[0], p[1], p[2])).Aggregate((a, b) => a + b) / clipped.Length;
+                center = planePoint; // 260514Cl
+                // 260514Cl: 旧 LINQ chain (clipped.Select(...).Aggregate(...) / clipped.Length) を hot loop の allocation 削減のため
+                // 手動和算ループに置換 (Select イテレータ + 中間 V3 確保が消える)。
+                double sx = 0, sy = 0, sz = 0;
+                foreach (var p in clipped) { sx += p[0]; sy += p[1]; sz += p[2]; }
+                bracketRayOrigin = new V3(sx, sy, sz) / clipped.Length;
             }
-            else if (!IsPointInsideBounds(center, bounds))
-                continue;
+            else
+            {
+                center = axes * new V3(cell.X + 0.5, cell.Y + 0.5, mp.Z + cell.Z) - shift;
+                if (!IsPointInsideBounds(center, bounds)) continue;
+                bracketRayOrigin = center;
+            }
 
-            // 同一平面 (n, d) は 1 セット (4 brackets) のみ描画。e 映進で別方向 glide が後から来た場合は矢印だけ追加。260509Ch
-            var planeKey = PlaneKey(normalWorld, d);
-            bool drawPlane = !drawn.TryGetValue(planeKey, out int drawnGlideMask);
-            int arrowsToDraw = glideMask & ~drawnGlideMask;
-            if (!drawPlane && arrowsToDraw == 0) continue;
             drawn[planeKey] = drawnGlideMask | glideMask;
 
-            foreach (var (su, sv) in new[] { (-1, -1), (1, -1), (1, 1), (-1, 1) })
+            // 旧: foreach (var (su, sv) in new[] { (-1, -1), (1, -1), (1, 1), (-1, 1) }) // 260514Cl: static 化で per-cell allocation を回避
+            foreach (var (su, sv) in AxisAlignedPlaneCornerSigns)
             {
                 var bracketCorner = center + u * (su * PlaneCornerOffset) + v * (sv * PlaneCornerOffset);
                 if (rayClippedPlane)
@@ -474,8 +510,8 @@ internal static class SymmetryDiagram
                     {
                         IgnoreNormalSides = true, ShowClippedSection = false,
                     });
-                    AddLine(objects, bracketCorner, armEndU, lineWidth, lineMat);
-                    AddLine(objects, bracketCorner, armEndV, lineWidth, lineMat);
+                    AddLineDedup(objects, drawnLines, bracketCorner, armEndU, lineWidth, lineMat); // 260514Ch
+                    AddLineDedup(objects, drawnLines, bracketCorner, armEndV, lineWidth, lineMat); // 260514Ch
                 }
 
                 if ((arrowsToDraw & 1) != 0)
@@ -484,7 +520,7 @@ internal static class SymmetryDiagram
                     objects.Add(BuildArrowhead(armEndV, dirV, normalWorld, headLength, headHalfWidth, lineMat));
                 if ((arrowsToDraw & 4) != 0)
                 {
-                    AddLine(objects, bracketCorner, p11, lineWidth, lineMat);
+                    AddLineDedup(objects, drawnLines, bracketCorner, p11, lineWidth, lineMat); // 260514Ch
                     var diagDir = (p11 - bracketCorner).Normalized();
                     objects.Add(BuildArrowhead(p11, diagDir, normalWorld, headLength, headHalfWidth, lineMat));
                 }
@@ -502,7 +538,8 @@ internal static class SymmetryDiagram
                                               double[][] boundsArray, TranslationRange range, double scale,
                                               double sizeFactor, float lineWidth,
                                               V3 normalWorld, V3 inPlaneGlide,
-                                              Material lineMat, Dictionary<(long, long, long, long), int> drawn, List<GLObject> objects)
+                                              Material lineMat, Dictionary<PlaneDrawKey, int> drawn,
+                                              HashSet<LineSegmentKey> drawnLines, List<GLObject> objects)
     {
         bool hasGlide = TryNormalize(inPlaneGlide, out var glideDir);
 
@@ -520,7 +557,9 @@ internal static class SymmetryDiagram
             if (drawn.ContainsKey(planeKey)) continue;
             drawn[planeKey] = hasGlide ? 1 : 0;
 
-            var bracketCenter = vertices.Aggregate((a, b) => a + b) / vertices.Length;
+            // 旧: var bracketCenter = vertices.Aggregate((a, b) => a + b) / vertices.Length;
+            // 260514Cl: 既存共通ヘルパ TkEx.Average (Crystallography/OpenTK.Extensions.cs) で同等の重心計算に置換。
+            var bracketCenter = TkEx.Average(vertices);
 
             // bracket 平面の正規直交基底。glide があればその方向を u に揃える
             var bu = glideDir;
@@ -531,20 +570,28 @@ internal static class SymmetryDiagram
             }
             var bv = V3.Cross(normalWorld, bu);
 
-            double extent = vertices.Max(p => (p - bracketCenter).Length);
+            // 旧: double extent = vertices.Max(p => (p - bracketCenter).Length);
+            // 260514Cl: LINQ Max のイテレータ確保 + 全要素 sqrt を避けるため、LengthSquared で最大判定し最後に sqrt 1 回。
+            double extentSq = 0;
+            foreach (var p in vertices)
+            {
+                double lenSq = (p - bracketCenter).LengthSquared;
+                if (lenSq > extentSq) extentSq = lenSq;
+            }
+            double extent = Math.Sqrt(extentSq);
             double half = Math.Clamp(extent * ObliqueBracketExtentRatio, scale * ObliqueBracketHalfMin, scale * ObliqueBracketHalfMax);
             if (extent > ToleranceSquared) half = Math.Min(half, extent * ObliqueBracketHalfCap);
             half *= sizeFactor; // 260513Cl: UI サイズ倍率を bracket 半長に反映。
 
             foreach (var (s, e) in BracketLinesXY)
-                AddLine(objects, TransformXY(s, bracketCenter, bu, bv, half),
-                                 TransformXY(e, bracketCenter, bu, bv, half), lineWidth, lineMat);
+                AddLineDedup(objects, drawnLines, TransformXY(s, bracketCenter, bu, bv, half),
+                                                   TransformXY(e, bracketCenter, bu, bv, half), lineWidth, lineMat); // 260514Ch
 
             if (hasGlide)
             {
                 var arrowStart = TransformXY(GlideArrowShaftXY.Start, bracketCenter, bu, bv, half);
                 var arrowEnd = TransformXY(GlideArrowShaftXY.End, bracketCenter, bu, bv, half);
-                AddLine(objects, arrowStart, arrowEnd, lineWidth, lineMat);
+                AddLineDedup(objects, drawnLines, arrowStart, arrowEnd, lineWidth, lineMat); // 260514Ch
                 objects.Add(BuildArrowhead(arrowEnd, glideDir, normalWorld,
                     scale * ObliqueArrowLengthFactor * sizeFactor, scale * ObliqueArrowHalfWidthFactor * sizeFactor, lineMat));
             }
@@ -632,6 +679,9 @@ internal static class SymmetryDiagram
     private static readonly (V3 Start, V3 End) GlideArrowShaftXY =
         (new V3(-TemplateGlideArrowHalfLength, 0, 0), new V3(TemplateGlideArrowHalfLength, 0, 0));
 
+    /// <summary>軸対称鏡映面の 4 隅 (cell 中心からの ±u, ±v 符号)。260514Cl: per-cell の new[] 確保を避けるため static 化。</summary>
+    private static readonly (int Su, int Sv)[] AxisAlignedPlaneCornerSigns = [(-1, -1), (1, -1), (1, 1), (-1, 1)];
+
     /// <summary>-30°〜+30° の弧と、それを原点反転した弧の 2 本でレンズ形を作る。</summary>
     private static V3[] BuildLens()
     {
@@ -693,26 +743,51 @@ internal static class SymmetryDiagram
     private static void AddLine(List<GLObject> objects, V3 start, V3 end, float width, Material mat)
         => objects.Add(new Lines([start, end], width, mat));
 
-    // 260509Cl 追加: 点が全 half-space bounds の内側 (b·p + w ≥ -InsideTol) にあるかを判定する。
-    private static bool IsPointInsideBounds(V3 point, IReadOnlyList<V4> bounds)
-        => bounds.All(b => b.X * point.X + b.Y * point.Y + b.Z * point.Z + b.W >= -InsideTol);
-
-    // 260509Cl: 線分 dedup 用 quantized key。両端点を lex 順で正規化して向き不問にする。
-    private static (long, long, long, long, long, long) SegmentKey(V3 a, V3 b)
+    /// <summary>2 点間の直線を、描画上同一なら 1 本だけ Lines として追加。</summary>
+    private static void AddLineDedup(List<GLObject> objects, HashSet<LineSegmentKey> drawnLines,
+                                     V3 start, V3 end, float width, Material mat)
     {
-        long ax = SymmetryElementsTable.R6(a.X), ay = SymmetryElementsTable.R6(a.Y), az = SymmetryElementsTable.R6(a.Z);
-        long bx = SymmetryElementsTable.R6(b.X), by = SymmetryElementsTable.R6(b.Y), bz = SymmetryElementsTable.R6(b.Z);
-        bool aFirst = ax < bx || (ax == bx && (ay < by || (ay == by && az <= bz)));
-        return aFirst ? (ax, ay, az, bx, by, bz) : (bx, by, bz, ax, ay, az);
+        if (drawnLines.Add(SegmentKey(start, end)))
+            AddLine(objects, start, end, width, mat); // 260514Ch
     }
 
+    // 260509Cl 追加: 点が全 half-space bounds の内側 (b·p + w ≥ -InsideTol) にあるかを判定する。
+    // 旧: private static bool IsPointInsideBounds(V3 point, IReadOnlyList<V4> bounds)
+    //         => bounds.All(b => b.X * point.X + b.Y * point.Y + b.Z * point.Z + b.W >= -InsideTol);
+    // 260514Cl: per-cell の hot path から呼ばれるため、IReadOnlyList<V4> の indexed for に置換し、
+    //   LINQ.All のイテレータ確保を回避する。
+    private static bool IsPointInsideBounds(V3 point, IReadOnlyList<V4> bounds)
+    {
+        for (int i = 0; i < bounds.Count; i++)
+        {
+            var b = bounds[i];
+            if (b.X * point.X + b.Y * point.Y + b.Z * point.Z + b.W < -InsideTol) return false;
+        }
+        return true;
+    }
+
+    // 260509Cl: 線分 dedup 用 quantized key。両端点を lex 順で正規化して向き不問にする。
+    private static LineSegmentKey SegmentKey(V3 a, V3 b)
+    {
+        // 旧: long ax = SymmetryElementsTable.R6(a.X), ay = SymmetryElementsTable.R6(a.Y), az = SymmetryElementsTable.R6(a.Z);
+        // 旧: long bx = SymmetryElementsTable.R6(b.X), by = SymmetryElementsTable.R6(b.Y), bz = SymmetryElementsTable.R6(b.Z);
+        // 260514Ch: Lines は最終的に float 頂点で描画されるため、dedup key も float 化後の座標で作る。
+        long ax = R6Rendered(a.X), ay = R6Rendered(a.Y), az = R6Rendered(a.Z);
+        long bx = R6Rendered(b.X), by = R6Rendered(b.Y), bz = R6Rendered(b.Z);
+        bool aFirst = ax < bx || (ax == bx && (ay < by || (ay == by && az <= bz)));
+        return aFirst ? new LineSegmentKey(ax, ay, az, bx, by, bz) : new LineSegmentKey(bx, by, bz, ax, ay, az);
+    }
+
+    // 260514Ch: OpenGL に渡る Vertex.Position は float なので、描画上同一になる線分重複をここで吸収する。
+    private static long R6Rendered(double x) => SymmetryElementsTable.R6((float)x);
+
     // 260509Cl: 平面 dedup 用 quantized key。法線符号 ± 不問になるよう先頭非零成分が正になる側へ揃える。
-    private static (long, long, long, long) PlaneKey(V3 normal, double d)
+    private static PlaneDrawKey PlaneKey(V3 normal, double d)
     {
         long nx = SymmetryElementsTable.R6(normal.X), ny = SymmetryElementsTable.R6(normal.Y);
         long nz = SymmetryElementsTable.R6(normal.Z), dl = SymmetryElementsTable.R6(d);
         bool flip = nx < 0 || (nx == 0 && (ny < 0 || (ny == 0 && nz < 0)));
-        return flip ? (-nx, -ny, -nz, -dl) : (nx, ny, nz, dl);
+        return flip ? new PlaneDrawKey(-nx, -ny, -nz, -dl) : new PlaneDrawKey(nx, ny, nz, dl);
     }
 
     /// <summary>tip を頂点とする平面三角形 arrowhead を生成する (映進面の矢じり用)。
@@ -737,8 +812,11 @@ internal static class SymmetryDiagram
         => center + u * (p.X * scale) + v * (p.Y * scale);
 
     /// <summary>XY 平面上のテンプレート (Z=0) を、3D 平面 (center, u, v) へスケール scale で写す。</summary>
+    // 旧: private static V3[] AffineTransformXY(V3[] xyTemplate, V3 center, V3 u, V3 v, double scale) =>
+    //         [.. xyTemplate.Select(p => TransformXY(p, center, u, v, scale))];
+    // 260514Cl: ZLinq の AsValueEnumerable() で iterator 確保を避ける (per-axis-symbol で呼ばれる)。
     private static V3[] AffineTransformXY(V3[] xyTemplate, V3 center, V3 u, V3 v, double scale) =>
-        [.. xyTemplate.Select(p => TransformXY(p, center, u, v, scale))];
+        [.. xyTemplate.AsValueEnumerable().Select(p => TransformXY(p, center, u, v, scale))];
 
     /// <summary>ベクトルを正規化する。長さが ToleranceSquared 未満なら false を返し out は default。</summary>
     private static bool TryNormalize(V3 value, out V3 normalized)
