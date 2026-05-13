@@ -141,7 +141,7 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
         public Pen Pen, MirrorPen, InPlanePen, DepthPen, DiagPen, EPen;
         public Brush Fill, White;
         public List<PerpendicularMirrorDraft> PerpendicularMirrors;
-        public HashSet<(long Nx, long Ny, long D, PerpendicularMirrorStyle Style)> DrawnSymmetryPlanes; // 260510Ch: 線種を enum で保持。
+        public HashSet<(long Nx, long Ny, long D, MirrorGlideStyle Style)> DrawnSymmetryPlanes; // 260510Ch: 線種を enum で保持。(260512Ch) plane/inset 共通 style へ統合。
         public HashSet<(long X, long Y)> StereonetAnchorKeys; // (260505Cl) inset 半径は CubicStereonetInsetRadius 定数を直接使う。
         public double DisplayMaxS; // (260505Ch) F 格子は [0, 1/2]²、それ以外は [0, 1]² を描画対象にする。
         public bool AllowEGlide; // 260510Ch: e-glide 記号は投影面の基底が直交する場合だけ許可する。
@@ -157,16 +157,48 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
                                                         double GlideSx2, double GlideSy2,
                                                         bool NGlide, bool DGlide, int DiamondScore);
 
-    private enum PerpendicularMirrorStyle
+    // (260512Ch) mirror/glide の分類結果を共通 enum に集約し、描画先ごとの pen/shape 選択だけを分ける。
+    private enum MirrorGlideStyle
     {
         Mirror,
-        InPlaneGlide,
-        DepthGlide,
-        DiagonalGlide,
+        AxialInPlane,
+        AxialDepth,
+        DiagonalGlide, // 紙面垂直線でのみ使う、in-plane + depth 成分を持つ通常 glide。
         DGlide,
         EGlide,
         NGlide, // 260510Ch: n-glide は d-glide と同じ dash-dot 系線だが矢印を持たない。
         None,   // 260510Ch: ITA 図に出さない幾何線。
+    }
+
+    private const double GlideZeroEps = 1e-6; // (260512Ch) glide coset 判定用のゼロ閾値。
+    private const double GlideFractionEps = FracEps; // (260512Ch) 1/2, 1/4 成分の判定幅を既存の分数判定へ揃える。
+
+    /// <summary>(260512Ch) glide 並進を [-1/2, 1/2] の coset 代表として扱う共通ヘルパ。</summary>
+    private readonly record struct GlideCoset(double X, double Y, double Z)
+    {
+        public static GlideCoset Centered(double x, double y, double z)
+            => new(CenterMod1(x), CenterMod1(y), CenterMod1(z));
+
+        public double L1 => Math.Abs(X) + Math.Abs(Y) + Math.Abs(Z);
+        public bool IsZero => L1 < GlideZeroEps;
+        public int HalfComponentCount => (IsHalfComponent(X) ? 1 : 0) + (IsHalfComponent(Y) ? 1 : 0) + (IsHalfComponent(Z) ? 1 : 0);
+        public int QuarterComponentCount => (IsQuarterComponent(X) ? 1 : 0) + (IsQuarterComponent(Y) ? 1 : 0) + (IsQuarterComponent(Z) ? 1 : 0);
+        public bool IsHalfVector => !IsZero && IsZeroOrHalf(X) && IsZeroOrHalf(Y) && IsZeroOrHalf(Z);
+
+        public bool SameAs(GlideCoset other)
+            => Math.Abs(X - other.X) + Math.Abs(Y - other.Y) + Math.Abs(Z - other.Z) < GlideZeroEps;
+
+        public bool OppositeOf(GlideCoset other)
+            => Math.Abs(X + other.X) + Math.Abs(Y + other.Y) + Math.Abs(Z + other.Z) < GlideZeroEps;
+
+        public static bool IsQuarterComponent(double v)
+            => Math.Abs(Math.Abs(CenterMod1(v)) - 0.25) < GlideFractionEps;
+
+        private static bool IsHalfComponent(double v)
+            => Math.Abs(Math.Abs(v) - 0.5) < GlideFractionEps;
+
+        private static bool IsZeroOrHalf(double v)
+            => Math.Abs(v) < GlideZeroEps || IsHalfComponent(v);
     }
 
     #endregion
@@ -244,7 +276,7 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
         var parallelMirrors = new HashSet<(double Height, bool Glide, double GlideSx, double GlideSy)>();
         // (260503Cl) key に order を追加して 2 / 4 / -4 を別々に集める。draw 時に高次優先で重複を抑制。
         var inPlaneAxisDrafts = new Dictionary<(long, long, long, long, int, bool), InPlaneAxisArrowDraft>();
-        foreach (var mp in table.SymmetryPlanes)
+        foreach (var mp in table.PrincipalSymmetryPlanes) // 260513Ch: projection 非依存の主対称面を使い、m/e/d/n の主従整理を core 側へ寄せる。
         {
             bool perp = IsAxisPerpendicularToProjection(mp.Normal, actualAxis);
             bool inPlane = IsAxisInPlane(mp.Normal, actualAxis);
@@ -1141,7 +1173,7 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
         }
 
         static bool IsDGlide(double glideSx, double glideSy)
-            => IsQuarterGlideComponent(glideSx) && IsQuarterGlideComponent(glideSy);
+            => GlideCoset.IsQuarterComponent(glideSx) && GlideCoset.IsQuarterComponent(glideSy); // (260512Ch)
 
         void NormalizeDiamondGlideDirection(ref double glideSx, ref double glideSy)
         {
@@ -1189,8 +1221,6 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
         foreach (var group in groups)
         {
             var drafts = group.Select(x => x.Draft).ToList();
-            // var best = SelectPerpendicularMirrorDraft(ctx, drafts, out bool forceEGlide); // 旧: d/e を先に拾うため Fm-3m 等の純鏡映が glide 記号へ倒れていた。
-            // DrawMirrorPerpToScreen(ctx, best.Sx, best.Sy, best.Direction, best.Glide, forceEGlide);
             if (!TrySelectPerpendicularMirrorDraft(ctx, drafts, out var best, out var style)) continue; // 260510Ch
             DrawMirrorPerpToScreen(ctx, best.Sx, best.Sy, best.Direction, best.Glide, styleOverride: style); // 260510Ch
         }
@@ -1198,7 +1228,7 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
 
     private static bool TrySelectPerpendicularMirrorDraft(ElementsContext ctx, List<PerpendicularMirrorDraft> drafts,
                                                           out PerpendicularMirrorDraft best,
-                                                          out PerpendicularMirrorStyle? styleOverride)
+                                                          out MirrorGlideStyle? styleOverride)
     {
         styleOverride = null;
         best = default;
@@ -1206,18 +1236,17 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
 
         if (TryResolveCubicPerpendicularMirrorStyle(ctx, drafts, out var resolvedStyle)) // 260510Ch
         {
-            if (resolvedStyle == PerpendicularMirrorStyle.None) return false;
+            if (resolvedStyle == MirrorGlideStyle.None) return false;
             best = SelectDraftForPerpendicularStyle(ctx.Proj, drafts, resolvedStyle);
             styleOverride = resolvedStyle;
             return true;
         }
 
-        // 旧: d-glide 最優先 → e-glide ペア → 幾何線位置に応じた ITA 向け代表記号の順に 1 つだけ描く。
         // 260510Ch: 個別の cubic ITA resolver に該当しない群では既存の優先順位を維持し、回帰範囲を抑える。
         foreach (var d in drafts)
         {
             var (gSx, gSy, gSz) = ctx.Proj.ToScreen(d.Glide.U, d.Glide.V, d.Glide.W);
-            if (GetPerpendicularMirrorStyle(gSx, gSy, gSz) == PerpendicularMirrorStyle.DGlide)
+            if (GetMirrorGlideStyle(gSx, gSy, gSz) == MirrorGlideStyle.DGlide)
             {
                 best = d;
                 return true;
@@ -1226,7 +1255,7 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
         if (ctx.AllowEGlide && TryFindDoubleGlideDraft(ctx.Proj, drafts, out var eDraft))
         {
             best = eDraft;
-            styleOverride = PerpendicularMirrorStyle.EGlide;
+            styleOverride = MirrorGlideStyle.EGlide;
             return true; // (260503Ch) [ITA-D4] 直交する half-glide pair は e-glide style で示す。
         }
 
@@ -1235,163 +1264,203 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
         return true;
     }
 
+    /// <summary>(260513Ch) 0, 1/4, 1/2, 3/4, odd-eighth 位相判定を名前付きで保持する。</summary>
+    private readonly record struct FractionalPhase(double Value)
+    {
+        public bool Zero => IsFraction(Value, 0, 1);
+        public bool Quarter => IsFraction(Value, 1, 4);
+        public bool Half => IsFraction(Value, 1, 2);
+        public bool ThreeQuarter => IsFraction(Value, 3, 4);
+        public bool ZeroOrHalf => Zero || Half;
+        public bool QuarterOrThreeQuarter => Quarter || ThreeQuarter;
+        public bool OddEighth => IsFraction(Value, 1, 8) || IsFraction(Value, 3, 8) ||
+                                 IsFraction(Value, 5, 8) || IsFraction(Value, 7, 8);
+        public bool IsQuarterStep => Zero || Quarter || Half || ThreeQuarter;
+    }
+
+    /// <summary>(260513Ch) 投影後の mirror/glide 線を、線種判定に必要な正規化済み整数法線と位相で保持する。</summary>
+    private readonly record struct ProjectedMirrorLine(int Nx, int Ny, double Offset)
+    {
+        public bool IsAxis => (Nx == 0) != (Ny == 0);
+        public bool IsDiagonal => Nx != 0 && Ny != 0 && Math.Abs(Nx) == Math.Abs(Ny);
+    }
+
+    /// <summary>(260513Ch) cubic 紙面垂直 mirror/glide の raw 位相と、必要な群だけで使う origin-choice 補正位相。</summary>
+    private readonly record struct CubicPerpendicularPhase(FractionalPhase Raw, FractionalPhase Adjusted, bool HasAdjusted)
+    {
+        public bool Zero => Raw.Zero;
+        public bool Half => Raw.Half;
+        public bool ZeroOrHalf => Raw.ZeroOrHalf;
+        public bool QuarterOrThreeQuarter => Raw.QuarterOrThreeQuarter;
+        public bool OddEighth => Raw.OddEighth;
+        public bool AdjustedZero => HasAdjusted && Adjusted.Zero;
+        public bool AdjustedHalf => HasAdjusted && Adjusted.Half;
+        public bool AdjustedQuarter => HasAdjusted && Adjusted.QuarterOrThreeQuarter;
+
+        public static CubicPerpendicularPhase Create(string hm, ProjectedMirrorLine line)
+        {
+            var raw = new FractionalPhase(line.Offset);
+            bool hasAdjusted = RequiresPerpendicularOriginChoiceAdjustment(hm);
+            var adjusted = hasAdjusted
+                ? new FractionalPhase(AdjustCubicOriginChoiceOffset(hm, line))
+                : default;
+            return new(raw, adjusted, hasAdjusted);
+        }
+    }
+
     /// <summary>ITA 図で cubic 系の defining graphical symbol を個別に補正する。260510Ch</summary>
     private static bool TryResolveCubicPerpendicularMirrorStyle(ElementsContext ctx, List<PerpendicularMirrorDraft> drafts,
-                                                                out PerpendicularMirrorStyle style)
+                                                                out MirrorGlideStyle style)
     {
         style = default;
-        if (!TryGetProjectedMirrorLine(ctx, drafts[0], out int nx, out int ny, out double offset)) return false;
+        if (!TryGetProjectedMirrorLine(ctx, drafts[0], out var line)) return false;
 
-        bool axisLine = (nx == 0) != (ny == 0);
-        bool diagonalLine = nx != 0 && ny != 0 && Math.Abs(nx) == Math.Abs(ny);
-        if (!axisLine && !diagonalLine) return false;
+        if (!line.IsAxis && !line.IsDiagonal) return false;
 
         string hm = ctx.SpaceGroupHM ?? "";
-        bool zeroOrHalf = IsFraction(offset, 0, 1) || IsFraction(offset, 1, 2);
-        bool quarterOrThreeQuarter = IsFraction(offset, 1, 4) || IsFraction(offset, 3, 4);
-        bool oddEighth = IsFraction(offset, 1, 8) || IsFraction(offset, 3, 8) ||
-                         IsFraction(offset, 5, 8) || IsFraction(offset, 7, 8);
-        // 旧: double originAdjustedOffset = AdjustCubicOriginChoiceOffset(hm, nx, ny, offset); // 全空間群で unconditional に計算していた。
-        // 旧: bool adjustedZero = IsFraction(originAdjustedOffset, 0, 1), adjustedHalf = ..., adjustedQuarter = ...;
-        bool adjustedZero = false, adjustedHalf = false, adjustedQuarter = false;
-        if (hm is "Pn-3n(1)" or "Pn-3n(2)" or "P-43n" or "Pn-3m(1)" or "Pn-3m(2)") // 260510Ch: origin choice (2) shift を要するのは Pn-3 系のみ。それ以外では IsFraction を計算しない。
+        var phase = CubicPerpendicularPhase.Create(hm, line); // (260513Ch)
+        if (line.IsDiagonal && IsForbiddenCubicDiagonalPerpendicularPhase(hm, phase)) // 260510Ch
         {
-            double adj = AdjustCubicOriginChoiceOffset(hm, nx, ny, offset);
-            adjustedZero = IsFraction(adj, 0, 1);
-            adjustedHalf = IsFraction(adj, 1, 2);
-            adjustedQuarter = IsFraction(adj, 1, 4) || IsFraction(adj, 3, 4);
-        }
-        if (diagonalLine && IsForbiddenCubicDiagonalPerpendicularPhase(hm, offset)) // 260510Ch
-        {
-            style = PerpendicularMirrorStyle.None;
+            style = MirrorGlideStyle.None;
             return true;
         }
         bool hasMirrorCandidate = drafts.Any(d =>
         {
             var (gSx, gSy, gSz) = ctx.Proj.ToScreen(d.Glide.U, d.Glide.V, d.Glide.W);
-            return GetPerpendicularMirrorStyle(gSx, gSy, gSz) == PerpendicularMirrorStyle.Mirror;
+            return GetMirrorGlideStyle(gSx, gSy, gSz) == MirrorGlideStyle.Mirror;
         }); // 260510Ch: 同一幾何線に純鏡映候補があれば、ITA の defining symbol は原則 m。
 
         switch (hm)
         {
             case "Fm-3m":
-                if ((axisLine || diagonalLine) && zeroOrHalf) { style = PerpendicularMirrorStyle.Mirror; return true; }
-                if (diagonalLine && quarterOrThreeQuarter) { style = PerpendicularMirrorStyle.NGlide; return true; } // 260510Ch
-                if (axisLine && quarterOrThreeQuarter) { style = PerpendicularMirrorStyle.None; return true; }
+                if (phase.ZeroOrHalf) { style = MirrorGlideStyle.Mirror; return true; }
+                if (line.IsDiagonal && phase.QuarterOrThreeQuarter) { style = MirrorGlideStyle.NGlide; return true; } // 260510Ch
+                if (line.IsAxis && phase.QuarterOrThreeQuarter) { style = MirrorGlideStyle.None; return true; }
                 break;
 
             case "Fm-3c":
-                if (axisLine && zeroOrHalf) { style = PerpendicularMirrorStyle.Mirror; return true; }
-                if (axisLine && quarterOrThreeQuarter) { style = PerpendicularMirrorStyle.None; return true; }
-                if (diagonalLine && zeroOrHalf) { style = PerpendicularMirrorStyle.DepthGlide; return true; }
-                if (diagonalLine && quarterOrThreeQuarter) { style = PerpendicularMirrorStyle.InPlaneGlide; return true; } // 260510Ch
+                if (line.IsAxis && phase.ZeroOrHalf) { style = MirrorGlideStyle.Mirror; return true; }
+                if (line.IsAxis && phase.QuarterOrThreeQuarter) { style = MirrorGlideStyle.None; return true; }
+                if (line.IsDiagonal && phase.ZeroOrHalf) { style = MirrorGlideStyle.AxialDepth; return true; }
+                if (line.IsDiagonal && phase.QuarterOrThreeQuarter) { style = MirrorGlideStyle.AxialInPlane; return true; } // 260510Ch
                 break;
 
             case "Fd-3m(1)":
-                if (diagonalLine && zeroOrHalf) { style = PerpendicularMirrorStyle.Mirror; return true; }
+                if (line.IsDiagonal && phase.ZeroOrHalf) { style = MirrorGlideStyle.Mirror; return true; }
                 break;
 
             case "Fd-3m(2)":
-                if (diagonalLine && oddEighth) { style = PerpendicularMirrorStyle.None; return true; }
-                if (diagonalLine && zeroOrHalf) { style = PerpendicularMirrorStyle.Mirror; return true; }
+                if (line.IsDiagonal && phase.OddEighth) { style = MirrorGlideStyle.None; return true; }
+                if (line.IsDiagonal && phase.ZeroOrHalf) { style = MirrorGlideStyle.Mirror; return true; }
                 break;
 
             case "Fd-3c(1)":
-                if (diagonalLine && zeroOrHalf) { style = PerpendicularMirrorStyle.DepthGlide; return true; }
+                if (line.IsDiagonal && phase.ZeroOrHalf) { style = MirrorGlideStyle.AxialDepth; return true; }
                 break;
 
             case "Fd-3c(2)":
-                if (diagonalLine && oddEighth) { style = PerpendicularMirrorStyle.None; return true; }
-                if (diagonalLine) { style = PerpendicularMirrorStyle.DepthGlide; return true; }
+                if (line.IsDiagonal && phase.OddEighth) { style = MirrorGlideStyle.None; return true; }
+                if (line.IsDiagonal) { style = MirrorGlideStyle.AxialDepth; return true; }
                 break;
 
             case "Im-3m":
-                if (axisLine && quarterOrThreeQuarter) { style = PerpendicularMirrorStyle.NGlide; return true; } // 260510Ch
-                if (diagonalLine && IsFraction(offset, 0, 1)) { style = PerpendicularMirrorStyle.Mirror; return true; }
-                if (diagonalLine && IsFraction(offset, 1, 2)) { style = PerpendicularMirrorStyle.EGlide; return true; }
+                if (line.IsAxis && phase.QuarterOrThreeQuarter) { style = MirrorGlideStyle.NGlide; return true; } // 260510Ch
+                if (line.IsDiagonal && TryResolveZeroHalfPhase(phase.Raw, MirrorGlideStyle.Mirror, MirrorGlideStyle.EGlide, out style)) return true; // (260513Ch)
                 break;
 
             case "I-43m":
-                if (diagonalLine && IsFraction(offset, 1, 2)) { style = PerpendicularMirrorStyle.NGlide; return true; } // 260510Ch
+                if (line.IsDiagonal && phase.Half) { style = MirrorGlideStyle.NGlide; return true; } // 260510Ch
                 break;
 
             case "Ia-3d":
-                // 旧: if (axisLine && IsFraction(offset, 0, 1)) // a=1/2, b=1/2 が fall-through していた。
-                if (axisLine && zeroOrHalf) // 260510Ch: a=0,1/2 と b=0,1/2 を同パターンで処理。
+                if (line.IsAxis && phase.ZeroOrHalf) // 260510Ch: a=0,1/2 と b=0,1/2 を同パターンで処理。
                 {
                     // 260510Ch: C 投影では sy=a, sx=b。a=0,1/2 (法線 (0,1)) は dot、b=0,1/2 (法線 (1,0)) は dash。
-                    style = nx == 0 ? PerpendicularMirrorStyle.DepthGlide : PerpendicularMirrorStyle.InPlaneGlide;
+                    style = line.Nx == 0 ? MirrorGlideStyle.AxialDepth : MirrorGlideStyle.AxialInPlane; // (260513Ch)
                     return true;
                 }
-                // 旧: if (axisLine && quarterOrThreeQuarter) { style = DepthGlide; return true; } // 一律 dot は誤り。ITA では a=1/4,3/4 は dash, b=1/4,3/4 は dot。
-                if (axisLine && quarterOrThreeQuarter) // 260510Ch: zero/half と逆パターン。
+                if (line.IsAxis && phase.QuarterOrThreeQuarter) // 260510Ch: zero/half と逆パターン。
                 {
-                    style = nx == 0 ? PerpendicularMirrorStyle.InPlaneGlide : PerpendicularMirrorStyle.DepthGlide;
+                    style = line.Nx == 0 ? MirrorGlideStyle.AxialInPlane : MirrorGlideStyle.AxialDepth; // (260513Ch)
                     return true;
                 }
-                // 旧: if (diagonalLine && nx == 1 && ny == 1 && quarterOrThreeQuarter)
-                // 旧: if (diagonalLine && nx == 1 && ny == -1 && quarterOrThreeQuarter)
-                if (diagonalLine && quarterOrThreeQuarter) // 260510Ch: ITA 図に出ない diagonal quarter 系を両向きとも抑制。
+                if (line.IsDiagonal && phase.QuarterOrThreeQuarter) // 260510Ch: ITA 図に出ない diagonal quarter 系を両向きとも抑制。
                 {
-                    style = PerpendicularMirrorStyle.None;
+                    style = MirrorGlideStyle.None;
                     return true;
                 }
                 break;
 
             case "Pm-3n":
-                if (diagonalLine && IsFraction(offset, 0, 1)) { style = PerpendicularMirrorStyle.NGlide; return true; }
-                if (diagonalLine && IsFraction(offset, 1, 2)) { style = PerpendicularMirrorStyle.DepthGlide; return true; }
+                if (line.IsDiagonal && TryResolveZeroHalfPhase(phase.Raw, MirrorGlideStyle.NGlide, MirrorGlideStyle.AxialDepth, out style)) return true; // (260513Ch)
                 break;
 
             case "Pn-3n(1)":
             case "Pn-3n(2)":
             case "P-43n":
-                if (axisLine && adjustedQuarter) { style = PerpendicularMirrorStyle.NGlide; return true; } // 260510Ch
-                if (diagonalLine && adjustedZero) { style = PerpendicularMirrorStyle.NGlide; return true; } // 260510Ch
-                if (diagonalLine && adjustedHalf) { style = PerpendicularMirrorStyle.DepthGlide; return true; } // 260510Ch
-                if (diagonalLine && adjustedQuarter) { style = PerpendicularMirrorStyle.None; return true; } // 260510Ch
+                if (line.IsAxis && phase.AdjustedQuarter) { style = MirrorGlideStyle.NGlide; return true; } // 260510Ch
+                if (line.IsDiagonal && TryResolveAdjustedPhase(phase, MirrorGlideStyle.NGlide, MirrorGlideStyle.AxialDepth, MirrorGlideStyle.None, out style)) return true; // (260513Ch)
                 break;
 
             case "Pn-3m(1)":
             case "Pn-3m(2)":
-                if (axisLine && adjustedQuarter) { style = PerpendicularMirrorStyle.NGlide; return true; } // 260510Ch
-                if (diagonalLine && adjustedZero) { style = PerpendicularMirrorStyle.Mirror; return true; } // 260510Ch
-                if (diagonalLine && adjustedHalf) { style = PerpendicularMirrorStyle.DepthGlide; return true; } // 260510Ch
-                if (diagonalLine && adjustedQuarter) { style = PerpendicularMirrorStyle.None; return true; } // 260510Ch
+                if (line.IsAxis && phase.AdjustedQuarter) { style = MirrorGlideStyle.NGlide; return true; } // 260510Ch
+                if (line.IsDiagonal && TryResolveAdjustedPhase(phase, MirrorGlideStyle.Mirror, MirrorGlideStyle.AxialDepth, MirrorGlideStyle.None, out style)) return true; // (260513Ch)
                 break;
 
             case "F-43c":
-                if (diagonalLine && IsFraction(offset, 0, 1)) { style = PerpendicularMirrorStyle.DepthGlide; return true; }
+                if (line.IsDiagonal && phase.Zero) { style = MirrorGlideStyle.AxialDepth; return true; }
                 break;
 
             case "I-43d":
-                if (diagonalLine && quarterOrThreeQuarter) { style = PerpendicularMirrorStyle.None; return true; } // 260510Ch: ITA 図に出ない diagonal quarter lines を抑制。
+                if (line.IsDiagonal && phase.QuarterOrThreeQuarter) { style = MirrorGlideStyle.None; return true; } // 260510Ch: ITA 図に出ない diagonal quarter lines を抑制。
                 break;
         }
         if (hasMirrorCandidate)
         {
-            style = PerpendicularMirrorStyle.Mirror;
+            style = MirrorGlideStyle.Mirror;
             return true;
         }
         return false;
     }
 
-    private static bool IsForbiddenCubicDiagonalPerpendicularPhase(string hm, double offset)
+    private static bool IsForbiddenCubicDiagonalPerpendicularPhase(string hm, CubicPerpendicularPhase phase)
     {
         // 260510Ch: cubic の紙面垂直 {110} 系では、P/I 格子の 1/4 位相、および F 格子の 1/8 位相に
         // 対称面は存在しない。ここで先に落とし、後段の hasMirrorCandidate fallback で m として復活させない。
         if (string.IsNullOrEmpty(hm)) return false;
         char lattice = char.ToUpperInvariant(hm[0]);
         if (lattice is 'P' or 'I')
-            return IsFraction(offset, 1, 4) || IsFraction(offset, 3, 4);
+            return phase.QuarterOrThreeQuarter;
         if (lattice == 'F')
-            return IsFraction(offset, 1, 8) || IsFraction(offset, 3, 8) ||
-                   IsFraction(offset, 5, 8) || IsFraction(offset, 7, 8);
+            return phase.OddEighth;
+        return false;
+    }
+
+    /// <summary>(260513Ch) 0/1/2 位相を、呼び出し側が指定した mirror/glide style に変換する。</summary>
+    private static bool TryResolveZeroHalfPhase(FractionalPhase phase, MirrorGlideStyle zeroStyle,
+                                                MirrorGlideStyle halfStyle, out MirrorGlideStyle style)
+    {
+        style = default;
+        if (phase.Zero) { style = zeroStyle; return true; }
+        if (phase.Half) { style = halfStyle; return true; }
+        return false;
+    }
+
+    /// <summary>(260513Ch) origin-choice 補正後の 0/1/2/1/4 位相を、群別 style に変換する。</summary>
+    private static bool TryResolveAdjustedPhase(CubicPerpendicularPhase phase, MirrorGlideStyle zeroStyle,
+                                                MirrorGlideStyle halfStyle, MirrorGlideStyle quarterStyle,
+                                                out MirrorGlideStyle style)
+    {
+        style = default;
+        if (phase.AdjustedZero) { style = zeroStyle; return true; }
+        if (phase.AdjustedHalf) { style = halfStyle; return true; }
+        if (phase.AdjustedQuarter) { style = quarterStyle; return true; }
         return false;
     }
 
     private static PerpendicularMirrorDraft SelectDraftForPerpendicularStyle(Projection proj, List<PerpendicularMirrorDraft> drafts,
-                                                                             PerpendicularMirrorStyle style)
+                                                                             MirrorGlideStyle style)
     {
         // 260510Ch: forced style の描画では幾何情報だけが必要な場合があるため、該当 glide 候補が無ければ最小 glide 候補へ fallback。
         return drafts
@@ -1400,26 +1469,26 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
             .First();
     }
 
-    private static bool DraftMatchesStyle(Projection proj, PerpendicularMirrorDraft draft, PerpendicularMirrorStyle style)
+    private static bool DraftMatchesStyle(Projection proj, PerpendicularMirrorDraft draft, MirrorGlideStyle style)
     {
         var (gSx, gSy, gSz) = proj.ToScreen(draft.Glide.U, draft.Glide.V, draft.Glide.W);
-        var draftStyle = GetPerpendicularMirrorStyle(gSx, gSy, gSz);
-        return style == PerpendicularMirrorStyle.NGlide
-            ? draftStyle == PerpendicularMirrorStyle.DiagonalGlide
+        var draftStyle = GetMirrorGlideStyle(gSx, gSy, gSz);
+        return style == MirrorGlideStyle.NGlide
+            ? draftStyle == MirrorGlideStyle.DiagonalGlide
             : draftStyle == style;
     }
 
     private static bool TryGetProjectedMirrorLine(ElementsContext ctx, PerpendicularMirrorDraft draft,
-                                                  out int nx, out int ny, out double offset)
+                                                  out ProjectedMirrorLine line)
     {
+        line = default;
         var (dSx, dSy) = ProjectVector(draft.Direction.U, draft.Direction.V, draft.Direction.W, ctx.Proj.Axis);
-        nx = (int)Math.Round(dSx);
-        ny = (int)Math.Round(dSy);
-        offset = 0;
+        int nx = (int)Math.Round(dSx);
+        int ny = (int)Math.Round(dSy);
         if (Math.Abs(dSx - nx) > 1e-6 || Math.Abs(dSy - ny) > 1e-6) return false;
         int gcd = Gcd(Math.Abs(nx), Math.Abs(ny));
         if (gcd == 0) return false;
-        offset = nx * NormalizeCellBoundary(draft.Sx) + ny * NormalizeCellBoundary(draft.Sy);
+        double offset = nx * NormalizeCellBoundary(draft.Sx) + ny * NormalizeCellBoundary(draft.Sy);
         nx /= gcd;
         ny /= gcd;
         offset /= gcd;
@@ -1431,6 +1500,7 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
         }
         offset = Mod1(offset);
         if (offset > 1 - FracEps) offset = 0;
+        line = new(nx, ny, offset); // (260513Ch)
         return true;
 
         static int Gcd(int a, int b)
@@ -1451,14 +1521,14 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
                                                                             bool latticeNodeLine)
     {
         var (gSx, gSy, gSz) = proj.ToScreen(draft.Glide.U, draft.Glide.V, draft.Glide.W);
-        var style = GetPerpendicularMirrorStyle(gSx, gSy, gSz);
-        // 旧: glide score 最小。260510Ch: 紙面内 glide を優先し、格子節点線では m/c を n より優先する。
+        var style = GetMirrorGlideStyle(gSx, gSy, gSz);
+        // 260510Ch: 紙面内 glide を優先し、格子節点線では m/c を n より優先する。
         int priority = style switch
         {
-            PerpendicularMirrorStyle.InPlaneGlide => 0,
-            PerpendicularMirrorStyle.Mirror => 1,
-            PerpendicularMirrorStyle.DepthGlide => latticeNodeLine ? 2 : 3,
-            PerpendicularMirrorStyle.DiagonalGlide => latticeNodeLine ? 3 : 2,
+            MirrorGlideStyle.AxialInPlane => 0,
+            MirrorGlideStyle.Mirror => 1,
+            MirrorGlideStyle.AxialDepth => latticeNodeLine ? 2 : 3,
+            MirrorGlideStyle.DiagonalGlide => latticeNodeLine ? 3 : 2,
             _ => 4
         };
         return (priority, Math.Abs(gSx) + Math.Abs(gSy) + Math.Abs(gSz));
@@ -1500,24 +1570,22 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
     /// <summary>紙面垂直 mirror/glide を法線直交直線で描画。線種は IT 分解で選択 (純=実線、a/b=長破線、c=短点線、n=dash-dot、d=dot-dash-dot-dash-dot-arrow、e=dot-dot-dash)。
     /// 直交を CellLayout (実空間 cartesian) で計算するので非直交セルでも正しい角度になる。</summary>
     private static void DrawMirrorPerpToScreen(ElementsContext ctx, double sx, double sy, (int U, int V, int W) dir, (double U, double V, double W) it,
-                                               bool forceEGlide = false, PerpendicularMirrorStyle? styleOverride = null)
+                                               MirrorGlideStyle? styleOverride = null)
     {
         var c = ctx.C;
         if (!TryGetMirrorPerpGeometry(c, ctx.Proj.Axis, dir, out double perpSx, out double perpSy, out double nX, out double nY)) return;
         var (gSx, gSy, gSz) = ctx.Proj.ToScreen(it.U, it.V, it.W);
-        // 旧: int style = dGlide ? 4 : forceEGlide ? 5 : (hasInPlane, hasDepth) switch { ... };
-        // var style = GetPerpendicularMirrorStyle(gSx, gSy, gSz, forceEGlide); // 旧: glide ベクトルのみで線種を決め、ITA の群別 defining symbol を反映できなかった。
-        var style = styleOverride ?? GetPerpendicularMirrorStyle(gSx, gSy, gSz, forceEGlide); // 260510Ch
-        if (style == PerpendicularMirrorStyle.None) return; // 260510Ch
-        bool dGlide = style == PerpendicularMirrorStyle.DGlide;
+        var style = styleOverride ?? GetMirrorGlideStyle(gSx, gSy, gSz); // 260510Ch
+        if (style == MirrorGlideStyle.None) return; // 260510Ch
+        bool dGlide = style == MirrorGlideStyle.DGlide;
         Pen pen = style switch
         {
-            PerpendicularMirrorStyle.Mirror => ctx.MirrorPen,
-            PerpendicularMirrorStyle.InPlaneGlide => ctx.InPlanePen,
-            PerpendicularMirrorStyle.DepthGlide => ctx.DepthPen,
-            PerpendicularMirrorStyle.DiagonalGlide => ctx.DiagPen,
-            PerpendicularMirrorStyle.EGlide => ctx.EPen,
-            PerpendicularMirrorStyle.NGlide => ctx.DiagPen, // 260510Ch: n-glide は dash-dot 線、矢印なし。
+            MirrorGlideStyle.Mirror => ctx.MirrorPen,
+            MirrorGlideStyle.AxialInPlane => ctx.InPlanePen,
+            MirrorGlideStyle.AxialDepth => ctx.DepthPen,
+            MirrorGlideStyle.DiagonalGlide => ctx.DiagPen,
+            MirrorGlideStyle.EGlide => ctx.EPen,
+            MirrorGlideStyle.NGlide => ctx.DiagPen, // 260510Ch: n-glide は dash-dot 線、矢印なし。
             _ => ctx.MirrorPen
         };
 
@@ -1553,11 +1621,9 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
             if (dGlide)
             {
                 var (arrowX, arrowY) = GetDGlideArrowDirection(c, gSx, gSy, gSz);
-                // DrawDGlidePerpLine(ctx.G, pen, ctx.Fill, start.Value, end.Value, arrowX, arrowY); // 旧: 単位胞内だけで線分を止めていた。
                 DrawDGlidePerpLine(ctx.G, pen, ctx.Fill, startPt, endPt, arrowX, arrowY);
                 return;
             }
-            // ctx.G.DrawLine(pen, start.Value, end.Value); // 旧: stereonet inset の中心で線分が止まり、輪郭まで届かなかった。
             ctx.G.DrawLine(pen, startPt, endPt);
         }
     }
@@ -1579,74 +1645,32 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
     private static (long X, long Y) ScreenPointKey(PointF p)
         => ((long)Math.Round(p.X * 1000), (long)Math.Round(p.Y * 1000));
 
-    private static bool IsQuarterGlideComponent(double v)
-    {
-        double a = Math.Abs(CenterMod1(v));
-        return Math.Abs(a - 0.25) < FracEps;
-    }
-
     /// <summary>e-glide 判定。同一幾何面に複数の half-glide coset がある場合を double-glide とする。</summary>
     private static bool IsDoubleGlidePair(double x1, double y1, double z1, double x2, double y2, double z2)
     {
-        // 260505Cl: I-43m の (110) 等で face-diagonal half-glide pair も e-glide として扱うため、
-        // SimpleHalfGlideVector 制約を外し「両 glide 非零 + 非平行」を判定基準にする。
-        // double mag1 = Math.Abs(CenterMod1(x1)) + Math.Abs(CenterMod1(y1)) + Math.Abs(CenterMod1(z1));
-        // double mag2 = Math.Abs(CenterMod1(x2)) + Math.Abs(CenterMod1(y2)) + Math.Abs(CenterMod1(z2));
-        // if (mag1 < 1e-6 || mag2 < 1e-6) return false;
-        // double cx = y1 * z2 - z1 * y2, cy = z1 * x2 - x1 * z2, cz = x1 * y2 - y1 * x2;
-        // return cx * cx + cy * cy + cz * cz > 1e-6;
-        var g1 = CenteredGlideVector(x1, y1, z1);
-        var g2 = CenteredGlideVector(x2, y2, z2);
-        if (!IsHalfGlideVector(g1) || !IsHalfGlideVector(g2)) return false; // (260505Ch) e は half-glide coset の重なりとして判定する。
-        if (SameGlideVector(g1, g2)) return false;
-        if (OppositeGlideVector(g1, g2))
-            return HalfGlideComponentCount(g1) == 1; // (260505Ch) axial half-glide の ± pair は e、face-diagonal half-glide の ± pair は通常 glide。
+        var g1 = GlideCoset.Centered(x1, y1, z1); // (260512Ch)
+        var g2 = GlideCoset.Centered(x2, y2, z2); // (260512Ch)
+        if (!g1.IsHalfVector || !g2.IsHalfVector) return false; // (260505Ch) e は half-glide coset の重なりとして判定する。
+        if (g1.SameAs(g2)) return false;
+        if (g1.OppositeOf(g2))
+            return g1.HalfComponentCount == 1; // (260505Ch) axial half-glide の ± pair は e、face-diagonal half-glide の ± pair は通常 glide。
         return true; // (260505Ch) 非平行な half-glide coset が同一幾何面に載る場合は e。
     }
 
-    private static (double X, double Y, double Z) CenteredGlideVector(double x, double y, double z)
-        => (CenterMod1(x), CenterMod1(y), CenterMod1(z));
-
-    private static bool SameGlideVector((double X, double Y, double Z) a, (double X, double Y, double Z) b)
-        => Math.Abs(a.X - b.X) + Math.Abs(a.Y - b.Y) + Math.Abs(a.Z - b.Z) < 1e-6;
-
-    private static bool OppositeGlideVector((double X, double Y, double Z) a, (double X, double Y, double Z) b)
-        => Math.Abs(a.X + b.X) + Math.Abs(a.Y + b.Y) + Math.Abs(a.Z + b.Z) < 1e-6;
-
-    private static int HalfGlideComponentCount((double X, double Y, double Z) g)
-        => (IsHalfComponent(g.X) ? 1 : 0) + (IsHalfComponent(g.Y) ? 1 : 0) + (IsHalfComponent(g.Z) ? 1 : 0);
-
-    private static bool IsHalfGlideVector((double X, double Y, double Z) g)
-    {
-        bool nonZero = Math.Abs(g.X) + Math.Abs(g.Y) + Math.Abs(g.Z) > 1e-6;
-        return nonZero && IsZeroOrHalf(g.X) && IsZeroOrHalf(g.Y) && IsZeroOrHalf(g.Z);
-    }
-
-    private static bool IsHalfComponent(double v)
-        => Math.Abs(Math.Abs(v) - 0.5) < FracEps;
-
-    private static bool IsZeroOrHalf(double v)
-    {
-        double a = Math.Abs(v);
-        return a < 1e-6 || IsHalfComponent(v);
-    }
-
     private static bool IsPerpendicularDGlide(double gSx, double gSy, double gSz)
-        => IsQuarterGlideComponent(gSz) && (IsQuarterGlideComponent(gSx) || IsQuarterGlideComponent(gSy));
+        => GlideCoset.IsQuarterComponent(gSz) && (GlideCoset.IsQuarterComponent(gSx) || GlideCoset.IsQuarterComponent(gSy));
 
-    private static PerpendicularMirrorStyle GetPerpendicularMirrorStyle(double gSx, double gSy, double gSz,
-                                                                        bool forceEGlide = false)
+    private static MirrorGlideStyle GetMirrorGlideStyle(double gSx, double gSy, double gSz)
     {
-        if (IsPerpendicularDGlide(gSx, gSy, gSz)) return PerpendicularMirrorStyle.DGlide;
-        if (forceEGlide) return PerpendicularMirrorStyle.EGlide;
+        if (IsPerpendicularDGlide(gSx, gSy, gSz)) return MirrorGlideStyle.DGlide;
         bool hasInPlane = Math.Abs(gSx) > 1e-3 || Math.Abs(gSy) > 1e-3;
         bool hasDepth = Math.Abs(gSz) > 1e-3;
         return (hasInPlane, hasDepth) switch
         {
-            (false, false) => PerpendicularMirrorStyle.Mirror,
-            (true, false) => PerpendicularMirrorStyle.InPlaneGlide,
-            (false, true) => PerpendicularMirrorStyle.DepthGlide,
-            _ => PerpendicularMirrorStyle.DiagonalGlide
+            (false, false) => MirrorGlideStyle.Mirror,
+            (true, false) => MirrorGlideStyle.AxialInPlane,
+            (false, true) => MirrorGlideStyle.AxialDepth,
+            _ => MirrorGlideStyle.DiagonalGlide
         }; // 260510Ch: 紙面垂直 mirror/glide の線種分類を描画・代表選択で共有する。
     }
 
@@ -1654,7 +1678,6 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
                                                  out double perpSx, out double perpSy, out double nX, out double nY)
     {
         var (dSx, dSy) = ProjectVector(dir.U, dir.V, dir.W, axis);
-        // 旧: nX = dSx * c.Horz.X + dSy * c.Vert.X; nY = dSx * c.Horz.Y + dSy * c.Vert.Y; double pX = -nY, pY = nX;
         // 260510Ch: dir は Miller 面指数なので、投影面内では dSx*Sx + dSy*Sy = const の共変係数として扱う。
         // 直接格子ベクトルとして足すと hex/trig の (h k i l) 回転同値面で線方向が崩れる。
         double lineSx = -dSy, lineSy = dSx;
@@ -1781,18 +1804,7 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
         var diagonalMirrors = table.SymmetryPlanes
             .Where(mp => IsAxisDiagonalToProjection(mp.Normal, projAxis))
             .ToList(); // (260505Ch) perpendicular/in-plane の否定形ではなく diagonal 判定へ統一。
-        // 260505Cl 旧: 斜め 3 回軸のみを収集していたため Pm-3m などで face-diagonal 2 回軸 (<110>系) が
-        //              cell-side 描画でスキップされる一方 inset にも乗らず欠落していた。
-        // var diagonalThreefolds = new List<SymmetryAxis>();
-        // foreach (var ax in table.SymmetryAxes)
-        // {
-        //     if (Math.Abs(ax.Order) != 3) continue;
-        //     if (!IsAxisDiagonalToProjection(ax.Direction, projAxis)) continue;
-        //     diagonalThreefolds.Add(ax);
-        // }
-        // 260505Cl: ITA Vol.A Pm-3m 等で inset に出ている斜め 2 回軸 (face-diagonal) も拾う。
-        // proper rotation 軸 (Order 2/3) のみ。-3 等の rotoinversion は cell-side draw と同様に除外。
-        // var diagonalAxes = table.SymmetryAxes // 旧
+        // 260505Cl: ITA Vol.A Pm-3m 等で inset に出ている斜め 2 回軸も拾う。260512Ch: principal 軸だけを対象にする。
         var diagonalAxes = table.PrincipalSymmetryAxes // 260512Ch
             .Where(ax => ax.Order is 2 or 3 && IsAxisDiagonalToProjection(ax.Direction, projAxis))
             .ToList(); // (260505Ch) cell-side の斜め軸判定と同じ条件に揃える。
@@ -1810,8 +1822,6 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
         foreach (var (sxScreen, syScreen) in positions)
         {
             // site 判定は Mod1 で正規化した screen 位置 + Sz=0 を結晶座標に変換 (260506Cl: 1 行 switch にインライン化)。
-            // 旧: double siteScale = ctx.DisplayMaxS < 1 ? 1.0 / ctx.DisplayMaxS : 1.0;
-            // 旧: double sxKey = Mod1(sxScreen * siteScale), syKey = Mod1(syScreen * siteScale);
             double sxKey = Mod1(sxScreen), syKey = Mod1(syScreen); // 260510Ch: F 格子も内部座標は通常セルの (a,b) のまま扱い、縮小は表示だけに限定する。
             double axisSxKey = Mod1(sxScreen), axisSyKey = Mod1(syScreen); // 260510Ch: 斜め軸は実際の upper-left quadrant 位置で正しく拾えていたため、面用の 1/2 縮小補正を掛けない。
             var (xc, yc, zc) = projAxis switch
@@ -1830,25 +1840,19 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
             }; // 260510Ch
 
             // この site を通る (h,k,l) ごとに glide ベクトルを集約 → e-glide 検出のため。
-            var groupedGlides = new Dictionary<(int H, int K, int L), List<(double U, double V, double W)>>();
+            var groupedGlides = new Dictionary<(int H, int K, int L), List<GlideCoset>>(); // (260512Ch)
             foreach (var mp in diagonalMirrors)
             {
-                // 旧: if (!PlanePassesThroughSite(mp, xc, yc, zc)) continue;
                 if (!PlaneIntersectsProjectionColumn(mp, xc, yc, zc, projAxis)) continue; // 260510Ch: stereonet inset は投影点の depth column と交わる斜め面を拾う。
                 var hkl = NormalizeMillerIndices(mp.Normal);
                 if (!groupedGlides.TryGetValue(hkl, out var list))
                     groupedGlides[hkl] = list = [];
-                list.Add(CenteredGlideVector(mp.Glide.U, mp.Glide.V, mp.Glide.W)); // (260506Cl) `- Math.Round` 3 行を CenterMod1 ベースの helper に置換。
+                list.Add(GlideCoset.Centered(mp.Glide.U, mp.Glide.V, mp.Glide.W)); // (260512Ch) glide coset 代表として保持。
             }
             // (h,k,l) 単位で style を確定。
-            // 旧:
-            // var siteMirrors = groupedGlides
-            //     .Select(group => (Hkl: group.Key, Style: ResolveStereonetGroupStyle(group.Value, projAxis)))
-            //     .ToList();
             var siteMirrors = groupedGlides
-                // .Select(group => (Hkl: group.Key, Style: ResolveStereonetGroupStyle(group.Value, projAxis))) // 旧: 斜め d/e を群に関係なく広く認定していた。
                 .Select(group => (Hkl: group.Key, Style: ResolveStereonetGroupStyle(group.Value, projAxis, ctx.SpaceGroupHM, group.Key, xc, yc, zc))) // 260510Ch
-                .Where(group => group.Style != StereonetGlideStyle.None)
+                .Where(group => group.Style != MirrorGlideStyle.None)
                 .ToList(); // (260505Ch) grouped glides → site mirror style の配線を一段に整理。260510Ch: table で site を通る実在候補だけを描く。
 
             // 260505Cl: Order を含めて 2 回軸/3 回軸を同列に dedup。Screw も保持し DrawStereonetTwofold に渡す。
@@ -1871,13 +1875,13 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
             {
                 switch (style)
                 {
-                    case StereonetGlideStyle.Mirror:       DrawMirrorGreatCircle(ctx.G, ctx.MirrorPen, center, radius, hkl); break;
-                    case StereonetGlideStyle.AxialInPlane: DrawMirrorGreatCircle(ctx.G, axialDashPen,  center, radius, hkl); break;
-                    case StereonetGlideStyle.AxialDepth:   DrawMirrorGreatCircle(ctx.G, axialDotPen,   center, radius, hkl); break;
-                    case StereonetGlideStyle.EGlide:       DrawMirrorGreatCircle(ctx.G, ePen,          center, radius, hkl); break;
-                    case StereonetGlideStyle.NGlide:       DrawMirrorGreatCircle(ctx.G, dGlidePen,     center, radius, hkl); break; // (260505Ch) n-glide は d と同じ dash-dot 大円だが矢印は付けない。
-                    case StereonetGlideStyle.Diamond:      DrawDGlideGreatCircle(ctx.G, dGlidePen, ctx.Fill, center, radius, hkl); break;
-                    case StereonetGlideStyle.None: break; // 260510Ch
+                    case MirrorGlideStyle.Mirror:       DrawMirrorGreatCircle(ctx.G, ctx.MirrorPen, center, radius, hkl); break;
+                    case MirrorGlideStyle.AxialInPlane: DrawMirrorGreatCircle(ctx.G, axialDashPen,  center, radius, hkl); break;
+                    case MirrorGlideStyle.AxialDepth:   DrawMirrorGreatCircle(ctx.G, axialDotPen,   center, radius, hkl); break;
+                    case MirrorGlideStyle.EGlide:       DrawMirrorGreatCircle(ctx.G, ePen,          center, radius, hkl); break;
+                    case MirrorGlideStyle.NGlide:       DrawMirrorGreatCircle(ctx.G, dGlidePen,     center, radius, hkl); break; // (260505Ch) n-glide は d と同じ dash-dot 大円だが矢印は付けない。
+                    case MirrorGlideStyle.DGlide:      DrawDGlideGreatCircle(ctx.G, dGlidePen, ctx.Fill, center, radius, hkl); break;
+                    case MirrorGlideStyle.None: break; // 260510Ch
                 }
             }
             // 4) 実 2/3 回軸 (260505Cl: Pm-3m など face-diagonal 2 回軸を inset に追加)
@@ -1893,76 +1897,67 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
 
     /// <summary>(260505Cl) 同一 (h,k,l) 平面に対し、site で集めた glide ベクトル群から最終 style を決める。
     /// 純鏡映を含めば Mirror、独立な非零 glide が 2 つ以上で EGlide、1 つだけなら glide ベクトルから AxialInPlane/AxialDepth/NGlide/Diamond を分類。</summary>
-    private static StereonetGlideStyle ResolveStereonetGroupStyle(List<(double U, double V, double W)> glides, ProjectionAxis projAxis,
+    private static MirrorGlideStyle ResolveStereonetGroupStyle(List<GlideCoset> glides, ProjectionAxis projAxis,
                                                                   string spaceGroupHM = null,
                                                                   (int H, int K, int L) hkl = default,
                                                                   double siteX = 0, double siteY = 0, double siteZ = 0)
     {
         bool hasPure = false;
-        var distinctNonZero = new List<(double U, double V, double W)>();
+        var distinctNonZero = new List<GlideCoset>(); // (260512Ch)
         foreach (var g in glides)
         {
-            var centered = CenteredGlideVector(g.U, g.V, g.W); // (260505Ch) +1/2 と -1/2 を別 coset として保持するため signed のまま扱う。
-            if (Math.Abs(centered.X) + Math.Abs(centered.Y) + Math.Abs(centered.Z) < 1e-6) { hasPure = true; continue; }
+            if (g.IsZero) { hasPure = true; continue; }
             // 260510Cl: 内側 foreach + found フラグを Any() へ。
-            if (!distinctNonZero.Any(d => SameGlideVector((d.U, d.V, d.W), centered)))
-                distinctNonZero.Add((centered.X, centered.Y, centered.Z));
+            if (!distinctNonZero.Any(d => d.SameAs(g)))
+                distinctNonZero.Add(g);
         }
         bool allowEGlide = AllowsDiagonalEGlide(spaceGroupHM); // 260510Ch
         bool allowDGlide = AllowsDiagonalDGlide(spaceGroupHM); // 260510Ch
 
-        // 旧: Fd-3c(1)/(2) と Fd-3m(1)/(2) を別々の helper (TryResolveFd3cStereonetStyle / TryResolveFd3mStereonetStyle) で位相規則を扱っていた。
         // 260510Ch: 両者は origin shift だけの差なので、h*x+k*y+l*z の原点補正 phase へ共通化し、Pn/Pm 系も含めて単一リゾルバへ集約。
-        // 旧: if (IsFd3m(spaceGroupHM) && TryResolveFd3mStereonetStyle(...)) return fd3mStyle; // 新リゾルバが Fd-3m を含むため到達不能。ITA 検証 (260510Ch) で新マッピング確認済。
         if (TryResolveCubicStereonetPhaseStyle(spaceGroupHM, hkl, siteX, siteY, siteZ, out var phaseStyle)) // 260510Ch
             return phaseStyle;
 
         if (allowEGlide && TryResolveBodyCenteredDiagonalStereonetStyle(hkl, siteX, siteY, siteZ, out var bodyCenteredStyle))
             return bodyCenteredStyle; // 260510Ch
 
-        // 旧: e-glide を pure mirror より優先していたため、Im-3m の (0,0) stereonet まで e になっていた。
         // 260510Ch: stereonet でも純鏡映候補があれば mirror を defining symbol とする。
-        if (hasPure) return StereonetGlideStyle.Mirror;
+        if (hasPure) return MirrorGlideStyle.Mirror;
 
         // 複数の half-glide coset が同じ幾何面に載る場合 → e-glide。
-        // 旧: 群を問わず e-glide としていた。
         // 260510Ch: 斜め e-glide は Im-3m / I-43m 限定、かつ pure mirror が無い site だけ。
         if (allowEGlide)
             for (int i = 0; i < distinctNonZero.Count - 1; i++)
                 for (int j = i + 1; j < distinctNonZero.Count; j++)
-                    if (IsDoubleGlidePair(distinctNonZero[i].U, distinctNonZero[i].V, distinctNonZero[i].W,
-                                          distinctNonZero[j].U, distinctNonZero[j].V, distinctNonZero[j].W))
-                        return StereonetGlideStyle.EGlide;
-        if (distinctNonZero.Count == 0) return StereonetGlideStyle.Mirror; // safety
+                    if (IsDoubleGlidePair(distinctNonZero[i].X, distinctNonZero[i].Y, distinctNonZero[i].Z,
+                                          distinctNonZero[j].X, distinctNonZero[j].Y, distinctNonZero[j].Z))
+                        return MirrorGlideStyle.EGlide;
+        if (distinctNonZero.Count == 0) return MirrorGlideStyle.Mirror; // safety
 
-        // 旧: var single = distinctNonZero[0]; ... return single 由来の分類;
         // 260510Ch: 同じ hkl/site に複数 glide coset が載る群 (Fd-3c, Pm-3n など) では、列挙順で代表を決めると
         // e/d/n/dot/dash が不安定に入れ替わる。全候補を分類してから ITA で許可される defining symbol を選ぶ。
         var candidateStyles = distinctNonZero
             .Select(g => ClassifyStereonetGlideVector(g, projAxis, allowDGlide, AllowsDiagonalNGlide(spaceGroupHM)))
             .Distinct()
             .ToList();
-        if (candidateStyles.Contains(StereonetGlideStyle.Diamond)) return StereonetGlideStyle.Diamond;
-        if (candidateStyles.Contains(StereonetGlideStyle.NGlide)) return StereonetGlideStyle.NGlide;
-        if (candidateStyles.Contains(StereonetGlideStyle.AxialDepth)) return StereonetGlideStyle.AxialDepth;
-        if (candidateStyles.Contains(StereonetGlideStyle.AxialInPlane)) return StereonetGlideStyle.AxialInPlane;
-        return StereonetGlideStyle.None;
+        if (candidateStyles.Contains(MirrorGlideStyle.DGlide)) return MirrorGlideStyle.DGlide;
+        if (candidateStyles.Contains(MirrorGlideStyle.NGlide)) return MirrorGlideStyle.NGlide;
+        if (candidateStyles.Contains(MirrorGlideStyle.AxialDepth)) return MirrorGlideStyle.AxialDepth;
+        if (candidateStyles.Contains(MirrorGlideStyle.AxialInPlane)) return MirrorGlideStyle.AxialInPlane;
+        return MirrorGlideStyle.None;
     }
 
     private static bool TryResolveCubicStereonetPhaseStyle(string spaceGroupHM,
                                                            (int H, int K, int L) hkl,
                                                            double siteX, double siteY, double siteZ,
-                                                           out StereonetGlideStyle style)
+                                                           out MirrorGlideStyle style)
     {
         style = default;
         hkl = NormalizeMillerIndices(hkl);
         if (hkl.L == 0 || ((hkl.H == 0) == (hkl.K == 0))) return false;
 
-        // 旧: double phase = CubicDiagonalColumnPhase(hkl, siteX, siteY, siteZ);
-        double phase = CubicDiagonalColumnPhase(spaceGroupHM, hkl, siteX, siteY, siteZ); // 260510Ch: origin choice (2) の原点シフトを stereonet 位相へ反映する。
-        bool zero = IsFraction(phase, 0, 1), quarter = IsFraction(phase, 1, 4),
-             half = IsFraction(phase, 1, 2), threeQuarter = IsFraction(phase, 3, 4);
-        if (!zero && !quarter && !half && !threeQuarter) return false;
+        var phase = new FractionalPhase(CubicDiagonalColumnPhase(spaceGroupHM, hkl, siteX, siteY, siteZ)); // (260513Ch)
+        if (!phase.IsQuarterStep) return false;
 
         switch (spaceGroupHM)
         {
@@ -1970,43 +1965,42 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
             case "F-43m":
             case "Fd-3m(1)":
             case "Fd-3m(2)":
-                style = (quarter || threeQuarter) ? StereonetGlideStyle.NGlide : StereonetGlideStyle.Mirror;
+                style = phase.QuarterOrThreeQuarter ? MirrorGlideStyle.NGlide : MirrorGlideStyle.Mirror;
                 return true;
 
             case "Fm-3c":
             case "F-43c":
             case "Fd-3c(1)":
             case "Fd-3c(2)":
-                style = (quarter || threeQuarter) ? StereonetGlideStyle.AxialDepth : StereonetGlideStyle.AxialInPlane;
+                style = phase.QuarterOrThreeQuarter ? MirrorGlideStyle.AxialDepth : MirrorGlideStyle.AxialInPlane;
                 return true;
 
             case "Pn-3m(1)":
             case "Pn-3m(2)":
             case "Pm-3m":
             case "P-43m":
-                if (zero) { style = StereonetGlideStyle.Mirror; return true; }
-                if (half) { style = StereonetGlideStyle.AxialDepth; return true; }
-                break;
+                return TryResolveZeroHalfPhase(phase, MirrorGlideStyle.Mirror, MirrorGlideStyle.AxialDepth, out style); // (260513Ch)
 
             case "Pm-3n":
             case "Pn-3n(1)":
             case "Pn-3n(2)":
             case "P-43n":
-                if (zero) { style = StereonetGlideStyle.NGlide; return true; }
-                if (half) { style = StereonetGlideStyle.AxialInPlane; return true; }
-                break;
+                return TryResolveZeroHalfPhase(phase, MirrorGlideStyle.NGlide, MirrorGlideStyle.AxialInPlane, out style); // (260513Ch)
         }
         return false;
     }
 
-    private static double AdjustCubicOriginChoiceOffset(string hm, int nx, int ny, double offset)
+    private static double AdjustCubicOriginChoiceOffset(string hm, ProjectedMirrorLine line)
     {
         // 260510Ch: Pn-3n/Pn-3m の origin choice (2) は (1/4,1/4,1/4) origin shift として、
         // screen normal (nx,ny)=(k,h) の h+k 位相分を choice (1) 側の判定位相へ戻す。
         if (hm is "Pn-3n(2)" or "Pn-3m(2)")
-            return Mod1(offset + 0.25 * (nx + ny));
-        return offset;
+            return Mod1(line.Offset + 0.25 * (line.Nx + line.Ny)); // (260513Ch)
+        return line.Offset;
     }
+
+    private static bool RequiresPerpendicularOriginChoiceAdjustment(string hm)
+        => hm is "Pn-3n(1)" or "Pn-3n(2)" or "P-43n" or "Pn-3m(1)" or "Pn-3m(2)"; // (260513Ch)
 
     private static double CubicStereonetOriginChoiceShift(string spaceGroupHM)
     {
@@ -2020,7 +2014,6 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
     private static double CubicDiagonalColumnPhase(string spaceGroupHM, (int H, int K, int L) hkl, double siteX, double siteY, double siteZ)
     {
         hkl = NormalizeMillerIndices(hkl);
-        // 旧: double phase = hkl.H != 0 ? hkl.H * siteX : hkl.K * siteY;
         double origin = CubicStereonetOriginChoiceShift(spaceGroupHM); // 260510Ch
         double phase = hkl.H * siteX + hkl.K * siteY + hkl.L * siteZ
                      - (hkl.H + hkl.K + hkl.L) * origin; // 260510Ch
@@ -2031,57 +2024,37 @@ public class SymmetryDiagramElements : SymmetryDiagramCommon
         => spaceGroupHM is "Ia-3d" or "I-43d"; // 260510Ch: ITA 確認事項。斜め d 映進はこの 2 群のみ。
 
     private static bool AllowsDiagonalEGlide(string spaceGroupHM)
-        // => spaceGroupHM is "Im-3m" or "I-43m"; // 260510Ch 旧: 斜め e 映進を I 格子だけに限定していた。
-        // => spaceGroupHM is "Im-3m" or "I-43m" or "Fd-3m(1)" or "Fd-3m(2)"; // 260510Ch 旧: Fd-3m まで e を許可してしまい、ITA 確認事項に反していた。
         => spaceGroupHM is "Im-3m" or "I-43m"; // 260510Ch: ITA 確認事項。斜め e 映進はこの I 格子 2 群のみ。
 
     private static bool AllowsDiagonalNGlide(string spaceGroupHM)
         => spaceGroupHM?.Contains('n', StringComparison.OrdinalIgnoreCase) == true; // 260510Ch: quarter 系を機械的に n にせず、n を defining symbol に持つ群だけ許可。
 
-    private static StereonetGlideStyle ClassifyStereonetGlideVector((double U, double V, double W) glide, ProjectionAxis projAxis,
+    private static MirrorGlideStyle ClassifyStereonetGlideVector(GlideCoset glide, ProjectionAxis projAxis,
                                                                     bool allowDGlide, bool allowNGlide)
     {
-        int quarterCount = (IsQuarterGlideComponent(glide.U) ? 1 : 0) + (IsQuarterGlideComponent(glide.V) ? 1 : 0) + (IsQuarterGlideComponent(glide.W) ? 1 : 0);
-        int halfCount = HalfGlideComponentCount(glide);
+        int quarterCount = glide.QuarterComponentCount; // (260512Ch)
+        int halfCount = glide.HalfComponentCount; // (260512Ch)
         if (quarterCount >= 2)
         {
-            // 旧: d を許可しない quarter 系は n として描いていた。
             // 260510Ch: ITA 確認事項に従い、d は Ia-3d/I-43d 限定。その他の quarter 系は depth 有無で dot/dash へ落とす。
-            if (allowDGlide && halfCount == 0) return StereonetGlideStyle.Diamond;
-            if (allowNGlide && halfCount > 0) return StereonetGlideStyle.NGlide;
+            if (allowDGlide && halfCount == 0) return MirrorGlideStyle.DGlide;
+            if (allowNGlide && halfCount > 0) return MirrorGlideStyle.NGlide;
         }
-        if (allowNGlide && halfCount >= 2) return StereonetGlideStyle.NGlide; // 260510Ch: Pm-3n などの diagonal half-glide pair。
+        if (allowNGlide && halfCount >= 2) return MirrorGlideStyle.NGlide; // 260510Ch: Pm-3n などの diagonal half-glide pair。
 
-        double depthGlide = ProjectedDepth(glide.U, glide.V, glide.W, projAxis);
-        return Math.Abs(depthGlide) > 1e-6 ? StereonetGlideStyle.AxialDepth : StereonetGlideStyle.AxialInPlane;
+        double depthGlide = ProjectedDepth(glide.X, glide.Y, glide.Z, projAxis);
+        return Math.Abs(depthGlide) > 1e-6 ? MirrorGlideStyle.AxialDepth : MirrorGlideStyle.AxialInPlane;
     }
-
-    // 旧: IsFd3c / IsFd3m / FdOriginShift / TryResolveFd3mStereonetStyle / TryResolveFd3cStereonetStyle を個別 helper として保持していた。
-    // 260510Ch: 全て TryResolveCubicStereonetPhaseStyle に集約 (Fd-3m phase=1/2 → m, phase=1/4 → n の ITA マッピングへ修正)。
 
     private static bool TryResolveBodyCenteredDiagonalStereonetStyle((int H, int K, int L) hkl,
                                                                      double siteX, double siteY, double siteZ,
-                                                                     out StereonetGlideStyle style)
+                                                                     out MirrorGlideStyle style)
     {
         // 260510Ch: I 格子の m-3m/-43m 系では、斜め面の site 位相 h*x+k*y+l*z が
         // 整数なら mirror、半整数なら e-glide になる。Im-3m の edge/center stereonet をこの一式で処理する。
         style = default;
-        double phase = Mod1(hkl.H * siteX + hkl.K * siteY + hkl.L * siteZ);
-        if (IsFraction(phase, 0, 1)) { style = StereonetGlideStyle.Mirror; return true; }
-        if (IsFraction(phase, 1, 2)) { style = StereonetGlideStyle.EGlide; return true; }
-        return false;
-    }
-
-    /// <summary>(260505Cl) stereonet 上の鏡映/glide line style 分類。</summary>
-    private enum StereonetGlideStyle
-    {
-        Mirror,         // 純鏡映: 実線
-        AxialInPlane,   // 1/2 along 紙面内軸 (例: 1/2 [010] for C-projection): 破線 (DASH)
-        AxialDepth,     // 1/2 along 紙面と斜め (例: 1/2 [101], [10-1]): 点線 (DOT)
-        NGlide,         // mixed quarter+half glide: dash-dot 大円、矢印なし (例: F-43m の斜め n-glide)
-        Diamond,        // d-glide (1/4 along face/body diagonal): dot-dash + アロー
-        EGlide,         // 同一平面に独立な glide ベクトルが 2 つ存在する double-glide (e-glide pattern)
-        None,           // 260510Ch: ITA 図に出さない補助候補。
+        var phase = new FractionalPhase(Mod1(hkl.H * siteX + hkl.K * siteY + hkl.L * siteZ)); // (260513Ch)
+        return TryResolveZeroHalfPhase(phase, MirrorGlideStyle.Mirror, MirrorGlideStyle.EGlide, out style); // (260513Ch)
     }
 
     /// <summary>(260505Cl) 鏡映/glide 平面 mp が site (xc, yc, zc) を通るか厳密判定 (lattice 周期を含む)。</summary>

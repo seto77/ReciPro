@@ -47,12 +47,15 @@ public sealed class SymmetryElementsTable
     /// 260512Ch: -3/-6 は独立対称要素として扱わず、3 + 反転中心 / 3 + 鏡映面側で表現する。</summary>
     public SymmetryAxis[] PrincipalSymmetryAxes { get; }
     public SymmetryPlane[] SymmetryPlanes { get; }
+    /// <summary>同一幾何面に属する mirror/glide coset 群から、m/e/d/n などの主従関係で代表を選んだ対称面一覧。260513Ch</summary>
+    public SymmetryPlane[] PrincipalSymmetryPlanes { get; }
     /// <summary>(260504Ch) この空間群の centering 並進ベクトル一覧 (整数並進 (0,0,0) を除く)。
     /// 例: F-centering なら (0,1/2,1/2), (1/2,0,1/2), (1/2,1/2,0)。
     /// 軸方向の primitive 並進長や centered cell の mirror/glide 展開に使う。</summary>
     public (double U, double V, double W)[] Centerings { get; }
 
     private SymmetryElementsTable(int seriesNumber, InversionCenter[] inv, SymmetryAxis[] rot, SymmetryPlane[] mir,
+                                  SymmetryPlane[] principalMir, // 260513Ch
                                   (double U, double V, double W)[] centerings)
     {
         SeriesNumber = seriesNumber;
@@ -60,6 +63,7 @@ public sealed class SymmetryElementsTable
         SymmetryAxes = rot;
         PrincipalSymmetryAxes = CollectPrincipalSymmetryAxes(rot); // 260512Ch: 操作由来の全軸とは別に、対称要素としての主軸だけを保持。
         SymmetryPlanes = mir;
+        PrincipalSymmetryPlanes = principalMir; // 260513Ch
         Centerings = centerings;
     }
 
@@ -111,11 +115,17 @@ public sealed class SymmetryElementsTable
             .Distinct()
             .ToList();
 
+        var sym = SymmetryStatic.Symmetries[seriesNumber]; // 260513Ch
+        int crystalSystemNumber = sym.CrystalSystemNumber; // 260513Ch
+        bool allowDoubleGlidePlane = crystalSystemNumber != 5 && crystalSystemNumber != 6; // 260513Ch: e-glide 的な double-glide 面は trigonal/hexagonal では一般化しない。
+        bool useCenteringForPrincipalPlaneGlide = !(sym.LatticeTypeStr == "R" && sym.SpaceGroupHMStr.Contains("Hex", StringComparison.Ordinal)); // 260513Ch: R hex setting は centering で glide を消すと ITA 図の代表面が崩れる。
+        var planes = CollectSymmetryPlanes(ops, centerings, allowDoubleGlidePlane, useCenteringForPrincipalPlaneGlide, out var principalPlanes); // 260513Ch
         return new SymmetryElementsTable(
             seriesNumber,
             CollectInversions(seriesNumber),
             CollectSymmetryAxes(ops, centerings),
-            CollectSymmetryPlanes(ops, centerings),
+            planes,
+            principalPlanes,
             [.. centerings]);
     }
 
@@ -422,7 +432,10 @@ public sealed class SymmetryElementsTable
     // 線分を描画するため、cell 内 mod 位置が違えば別線分扱いになる。260510Cl: 参照先メソッド名を修正。
     // → dedup key = (Direction, NormalizeCellBoundary(Px,Py,Pz), Glide) で
     //   セル内同位置の重複だけ除去し、cell 内に複数 segment を持つ平面 (対角面 / hex 系) は保持する。
-    private static SymmetryPlane[] CollectSymmetryPlanes(SymmetryOperation[] ops, IReadOnlyList<(double U, double V, double W)> centerings)
+    private static SymmetryPlane[] CollectSymmetryPlanes(SymmetryOperation[] ops, IReadOnlyList<(double U, double V, double W)> centerings,
+                                                         bool allowDoubleGlidePlane, // 260513Ch
+                                                         bool useCenteringForPrincipalPlaneGlide, // 260513Ch
+                                                         out SymmetryPlane[] principalPlanes) // 260513Ch
     {
         // 260509Cl: Glide を「位置 dedup key」から外し、(Direction, mod-position) ごとに glide 候補を集めてから
         // 最終的に plane 上に取れる glide coset かつ min-score の 1 個を採用する。
@@ -448,6 +461,7 @@ public sealed class SymmetryElementsTable
                 }
         }
         var list = new List<SymmetryPlane>();
+        var principalList = new List<SymmetryPlane>(); // 260513Ch
         foreach (var kv in seen)
         {
             var (u, v, w, _, _, _) = kv.Key;
@@ -477,6 +491,8 @@ public sealed class SymmetryElementsTable
                 best = pure.Count > 0
                     ? pure.OrderBy(GlideScore).First()
                     : reps.OrderBy(GlidePriority).ThenBy(GlideScore).First();
+                principalList.AddRange(SelectPrincipalPlaneRepresentatives(inPlane, best, (u, v, w), centerings,
+                    allowDoubleGlidePlane, useCenteringForPrincipalPlaneGlide)); // 260513Ch
             }
             else
             {
@@ -489,6 +505,7 @@ public sealed class SymmetryElementsTable
                 (kv.Key.Item1, kv.Key.Item2, kv.Key.Item3),
                 (best.GlideU, best.GlideV, best.GlideW)));
         }
+        principalPlanes = [.. principalList]; // 260513Ch
         return [.. list];
 
         static int GlidePriority(PlaneRep p)
@@ -504,6 +521,153 @@ public sealed class SymmetryElementsTable
             };
         }
     }
+
+    /// <summary>同一幾何面上の glide coset 群から、m/e/d/n の主従関係に従って principal plane 代表を選ぶ。260513Ch</summary>
+    private static IEnumerable<SymmetryPlane> SelectPrincipalPlaneRepresentatives(List<PlaneRep> inPlane, PlaneRep displaySource,
+        (int U, int V, int W) normal, IReadOnlyList<(double U, double V, double W)> centerings,
+        bool allowDoubleGlidePlane, bool useCenteringForPrincipalPlaneGlide) // 260513Ch
+    {
+        if (!useCenteringForPrincipalPlaneGlide)
+        {
+            yield return ToSymmetryPlane(displaySource, normal, (displaySource.GlideU, displaySource.GlideV, displaySource.GlideW)); // 260513Ch: R hex setting は旧 ITA 表示代表を保持する。
+            yield break;
+        }
+
+        var reps = inPlane
+            .Select(e =>
+            {
+                var g = CanonicalizeGlideInPlane((e.GlideU, e.GlideV, e.GlideW), normal, centerings);
+                var key = CanonicalGlideSign((g.U, g.V, g.W));
+                bool mirrorEquivalent = e.PureMirror ||
+                    (g.UsedCentering && Math.Abs(g.U) + Math.Abs(g.V) + Math.Abs(g.W) < 1e-6); // 260513Ch
+                return new PlaneGlideRep(g.U, g.V, g.W, key.U, key.V, key.W, mirrorEquivalent);
+            })
+            .GroupBy(e => (R6(e.KeyU), R6(e.KeyV), R6(e.KeyW)))
+            .Select(g => g.OrderBy(PlaneGlideScore).First())
+            .ToList();
+
+        if (reps.Any(p => p.MirrorEquivalent)) // 260513Cl: Where+FirstOrDefault は破棄値で、Equals(default) も IsDiamond/IsNGlide(default)=false により冗長。
+        {
+            yield return ToSymmetryPlane(displaySource, normal, (0, 0, 0));
+            yield break;
+        }
+
+        if (allowDoubleGlidePlane) // 260513Ch: trigonal/hexagonal の c+n 候補を e 相当として潰さない。
+        {
+            var halfGlides = reps.Where(IsHalfGlideVector).OrderBy(PlaneGlideScore).ToList();
+            for (int i = 0; i < halfGlides.Count - 1; i++)
+                for (int j = i + 1; j < halfGlides.Count; j++)
+                    if (IsDoubleGlidePair(halfGlides[i], halfGlides[j]))
+                    {
+                        // 260513Ch: SymmetryPlane[] では e-glide の 2 成分を直接表せないため、legacy 描画用には代表 1 本だけ返す。
+                        yield return ToSymmetryPlane(displaySource, normal, (halfGlides[i].GlideU, halfGlides[i].GlideV, halfGlides[i].GlideW));
+                        yield break;
+                    }
+        }
+
+        if (reps.Any(IsDiamondGlide)) // 260513Cl
+        {
+            var dGlide = reps.Where(IsDiamondGlide).OrderBy(PlaneGlideScore).First();
+            yield return ToSymmetryPlane(displaySource, normal, (dGlide.GlideU, dGlide.GlideV, dGlide.GlideW));
+            yield break;
+        }
+
+        if (reps.Any(IsNGlide)) // 260513Cl
+        {
+            var nGlide = reps.Where(IsNGlide).OrderBy(PlaneGlideScore).First();
+            yield return ToSymmetryPlane(displaySource, normal, (nGlide.GlideU, nGlide.GlideV, nGlide.GlideW));
+            yield break;
+        }
+
+        var best = reps.OrderBy(PrincipalGlidePriority).ThenBy(PlaneGlideScore).First();
+        yield return ToSymmetryPlane(displaySource, normal, (best.GlideU, best.GlideV, best.GlideW));
+    }
+
+    private static SymmetryPlane ToSymmetryPlane(PlaneRep source, (int U, int V, int W) normal,
+        (double U, double V, double W) glide)
+        => new(source.Px, source.Py, source.Pz, normal, glide); // 260513Ch
+
+    private static (double U, double V, double W, bool UsedCentering) CanonicalizeGlideInPlane((double U, double V, double W) glide,
+        (int U, int V, int W) normal, IReadOnlyList<(double U, double V, double W)> centerings)
+    {
+        var best = (U: CenterMod1(glide.U), V: CenterMod1(glide.V), W: CenterMod1(glide.W), UsedCentering: false);
+        double bestScore = Math.Abs(best.U) + Math.Abs(best.V) + Math.Abs(best.W);
+        var shifts = new List<(double U, double V, double W)> { (0, 0, 0) };
+        if (centerings != null)
+            shifts.AddRange(centerings.Where(c => Math.Abs(CenterMod1(normal.U * c.U + normal.V * c.V + normal.W * c.W)) < 1e-6));
+
+        foreach (var c in shifts)
+            for (int ix = -2; ix <= 2; ix++)
+                for (int iy = -2; iy <= 2; iy++)
+                    for (int iz = -2; iz <= 2; iz++)
+                    {
+                        var cand = (U: CenterMod1(glide.U + c.U + ix),
+                                    V: CenterMod1(glide.V + c.V + iy),
+                                    W: CenterMod1(glide.W + c.W + iz),
+                                    UsedCentering: Math.Abs(c.U) + Math.Abs(c.V) + Math.Abs(c.W) > 1e-9);
+                        double score = Math.Abs(cand.U) + Math.Abs(cand.V) + Math.Abs(cand.W);
+                        if (score >= bestScore - 1e-9) continue; // 260513Ch: 同スコアの ± 表現では旧 glide 符号を保ち、描画矢印の向きを変えない。
+                        best = cand;
+                        bestScore = score;
+                    }
+        return best;
+    }
+
+    private static (double U, double V, double W) CanonicalGlideSign((double U, double V, double W) g)
+    {
+        if (g.U < -1e-9 || (Math.Abs(g.U) < 1e-9 && g.V < -1e-9) ||
+            (Math.Abs(g.U) < 1e-9 && Math.Abs(g.V) < 1e-9 && g.W < -1e-9))
+            return (-g.U, -g.V, -g.W);
+        return g;
+    }
+
+    private static int PrincipalGlidePriority(PlaneGlideRep p)
+    {
+        if (IsHalfGlideVector(p)) return 0;
+        bool basal = Math.Abs(p.GlideU) > 1e-6 || Math.Abs(p.GlideV) > 1e-6;
+        bool depth = Math.Abs(p.GlideW) > 1e-6;
+        return (basal, depth) switch
+        {
+            (true, false) => 1,
+            (true, true) => 2,
+            (false, true) => 3,
+            _ => 4
+        };
+    }
+
+    private static double PlaneGlideScore(PlaneGlideRep p)
+        => Math.Abs(p.GlideU) + Math.Abs(p.GlideV) + Math.Abs(p.GlideW);
+
+    private static bool IsZeroGlide(PlaneGlideRep p) => PlaneGlideScore(p) < 1e-6;
+
+    private static bool IsHalfGlideVector(PlaneGlideRep p)
+        => !IsZeroGlide(p) && IsZeroOrHalf(p.GlideU) && IsZeroOrHalf(p.GlideV) && IsZeroOrHalf(p.GlideW);
+
+    private static bool IsDiamondGlide(PlaneGlideRep p)
+        => QuarterComponentCount(p) >= 2 && HalfComponentCount(p) == 0; // 260513Ch: d は n 的候補より優先して 1 つに畳む。
+
+    private static bool IsNGlide(PlaneGlideRep p)
+        => IsHalfGlideVector(p) && HalfComponentCount(p) >= 2;
+
+    private static bool IsDoubleGlidePair(PlaneGlideRep a, PlaneGlideRep b)
+    {
+        if (!IsHalfGlideVector(a) || !IsHalfGlideVector(b)) return false;
+        double same = Math.Abs(a.GlideU - b.GlideU) + Math.Abs(a.GlideV - b.GlideV) + Math.Abs(a.GlideW - b.GlideW);
+        if (same < 1e-6) return false;
+        double opposite = Math.Abs(a.GlideU + b.GlideU) + Math.Abs(a.GlideV + b.GlideV) + Math.Abs(a.GlideW + b.GlideW);
+        if (opposite < 1e-6) return HalfComponentCount(a) == 1;
+        return true;
+    }
+
+    private static int HalfComponentCount(PlaneGlideRep p)
+        => (IsHalfComponent(p.GlideU) ? 1 : 0) + (IsHalfComponent(p.GlideV) ? 1 : 0) + (IsHalfComponent(p.GlideW) ? 1 : 0);
+
+    private static int QuarterComponentCount(PlaneGlideRep p)
+        => (IsQuarterComponent(p.GlideU) ? 1 : 0) + (IsQuarterComponent(p.GlideV) ? 1 : 0) + (IsQuarterComponent(p.GlideW) ? 1 : 0);
+
+    private static bool IsZeroOrHalf(double v) => Math.Abs(v) < 1e-6 || IsHalfComponent(v);
+    private static bool IsHalfComponent(double v) => Math.Abs(Math.Abs(v) - 0.5) < 1e-6;
+    private static bool IsQuarterComponent(double v) => Math.Abs(Math.Abs(v) - 0.25) < 1e-6;
 
     /// <summary>plane glide ベクトルの L1 ノルム。代表面選択 (CollectSymmetryPlanes / EnumerateSymmetryPlanes) の最小スコア比較に用いる。260510Cl</summary>
     private static double GlideScore(PlaneRep p) => Math.Abs(p.GlideU) + Math.Abs(p.GlideV) + Math.Abs(p.GlideW);
@@ -524,6 +688,10 @@ public sealed class SymmetryElementsTable
                                             (int U, int V, int W) Direction,
                                             double RawGlideU, double RawGlideV, double RawGlideW,
                                             bool PureMirror);
+
+    /// <summary>面内 lattice で canonical 化した glide coset と、その符号不問 dedup key。260513Ch</summary>
+    private readonly record struct PlaneGlideRep(double GlideU, double GlideV, double GlideW,
+                                                 double KeyU, double KeyV, double KeyW, bool MirrorEquivalent);
 
     /// <summary>op の鏡映面を、(0,0,0) と centering 並進すべての lattice 等価系から列挙し、
     /// 各々で glide score を最小化した代表面を返す (R-centering 等で純 mirror / a-glide 表現を見つけるため)。</summary>

@@ -106,11 +106,13 @@ internal static class SymmetryDiagram
         var (black, gray, white) = (MakeMaterial(C4.Black), MakeMaterial(C4.Gray), MakeMaterial(C4.White));
 
         // 260509Ch: 空リスト生成と AddRange の三段積みを、返却時の collection expression に集約。
+        // 260511Cl: planes に table.Centerings を渡す — R-3c など centering 等価な glide コセットを 1 つの bracket に集約しないため、
+        // 3D 側で glide を canonical 化してから dedup する (Crystallography 側の data は無変更で 2D 表示は維持)。
         return
         [
             // .. GenerateSymmetryAxes(table.SymmetryAxes, axes, shift, bounds, range, scale, black, gray), // 旧: 従属軸を 3D 側の線分 dedup で抑制。
             .. GenerateSymmetryAxes(table.PrincipalSymmetryAxes, axes, shift, bounds, range, scale, black, gray), // 260512Ch
-            .. GenerateSymmetryPlanes(table.SymmetryPlanes, axes, shift, bounds, range, scale, black),
+            .. GenerateSymmetryPlanes(table.SymmetryPlanes, table.Centerings, axes, shift, bounds, range, scale, black),
             .. GenerateInversionCenters(table.InversionCenters, axes, shift, bounds, range, scale, white),
         ];
     }
@@ -243,7 +245,9 @@ internal static class SymmetryDiagram
     /// <summary>鏡映面 (mirror / glide) を全 cell 分列挙し、平行四辺形 + bracket + glide arrow からなる GLObject 列を返す。
     /// 軸対称面 (法線が cell 軸 / 対角 / 六方 [120][210] に沿う) は 4 隅に bracket を配置した新スタイル、
     /// それ以外は clipped polygon centroid に corner bracket + glide arrow を描く従来描画。260509Cl 仕様変更</summary>
-    private static List<GLObject> GenerateSymmetryPlanes(SymmetryPlane[] planes, M3d axes, V3 shift,
+    private static List<GLObject> GenerateSymmetryPlanes(SymmetryPlane[] planes,
+                                        IReadOnlyList<(double U, double V, double W)> centerings,
+                                        M3d axes, V3 shift,
                                         IReadOnlyList<V4> bounds, TranslationRange range, double scale, Material black)
     {
         var objects = new List<GLObject>();
@@ -262,11 +266,14 @@ internal static class SymmetryDiagram
 
         var grayFill = MakeMaterial(C4.Gray, FillOpacity, FillSpecular, FillSpecularPower, FillEmission);
 
-        foreach (var mp in planes)
+        foreach (var rawMp in planes)
         {
             // 旧: if (!TryNormalize(axes * new V3(mp.Normal.U, mp.Normal.V, mp.Normal.W), out var normalWorld)) continue;
             // 260510Ch: SymmetryPlane.Normal は Miller 面指数なので、直接格子ではなく逆格子ベクトル A^{-T}·hkl で実空間化する。
-            if (!TryNormalize(invAxes.Row0 * mp.Normal.U + invAxes.Row1 * mp.Normal.V + invAxes.Row2 * mp.Normal.W, out var normalWorld)) continue;
+            if (!TryNormalize(invAxes.Row0 * rawMp.Normal.U + invAxes.Row1 * rawMp.Normal.V + invAxes.Row2 * rawMp.Normal.W, out var normalWorld)) continue;
+
+            // 260511Cl: 下流の planeKey dedup が centering 等価な glide を別物として残さないよう、ここで canonical 化する。
+            var mp = rawMp with { Glide = CanonicalizeGlideInPlane(rawMp.Glide, rawMp.Normal, centerings) };
 
             if (GetPlaneType(mp.Normal) is { } planeType)
                 GenerateAxisAlignedPlane(mp, planeType, axes, shift, bounds, boundsArray, extendedBounds, boundsVertices, range,
@@ -653,6 +660,40 @@ internal static class SymmetryDiagram
         if (len < ToleranceSquared) { normalized = default; return false; }
         normalized = value / len;
         return true;
+    }
+
+    /// <summary>(260511Cl 追加) glide vector を面内 lattice (整数 + centerings) 並進で L1 最小化した代表を返す。
+    /// R-3c の c-glide (0,0,1/2) と R-centering 等価な「斜め」(±1/3, ∓1/3, ∓1/6) を同一視するための canonical 化。
+    /// 面シフトは別物 (平面 offset が変わる) なので N·g_new ≈ 0 の制約で面内に留まる並進だけを許容する。
+    /// 表示の 2D 側 (SymmetryElementsTable) を据え置くため、3D 側のみで正規化する。</summary>
+    private static (double U, double V, double W) CanonicalizeGlideInPlane(
+        (double U, double V, double W) glide, (int U, int V, int W) normal,
+        IReadOnlyList<(double U, double V, double W)> centerings)
+    {
+        var best = glide;
+        double bestL1 = Math.Abs(glide.U) + Math.Abs(glide.V) + Math.Abs(glide.W);
+        // 候補: 整数 lattice × {0, 各 centering}。範囲 ±2 で在来の glide 大きさをカバー。
+        int centN = centerings?.Count ?? 0;
+        for (int ci = 0; ci <= centN; ci++)
+        {
+            (double U, double V, double W) c = ci == 0 ? default : centerings[ci - 1];
+            for (int kx = -2; kx <= 2; kx++)
+                for (int ky = -2; ky <= 2; ky++)
+                    for (int kz = -2; kz <= 2; kz++)
+                    {
+                        double nu = glide.U + c.U + kx;
+                        double nv = glide.V + c.V + ky;
+                        double nw = glide.W + c.W + kz;
+                        if (Math.Abs(normal.U * nu + normal.V * nv + normal.W * nw) > 1e-6) continue;
+                        double l1 = Math.Abs(nu) + Math.Abs(nv) + Math.Abs(nw);
+                        if (l1 < bestL1 - 1e-9) { best = (nu, nv, nw); bestL1 = l1; }
+                    }
+        }
+        // canonical 符号: 最初の非零成分を正に揃える。
+        if (best.U < -1e-9 || (Math.Abs(best.U) < 1e-9 && best.V < -1e-9) ||
+            (Math.Abs(best.U) < 1e-9 && Math.Abs(best.V) < 1e-9 && best.W < -1e-9))
+            best = (-best.U, -best.V, -best.W);
+        return best;
     }
 
     /// <summary>原点 origin 通り direction 方向の直線を、半空間 bounds で clip する (Liang–Barsky)。</summary>
