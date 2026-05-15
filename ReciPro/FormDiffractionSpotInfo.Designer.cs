@@ -31,7 +31,9 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormDiffractionSpotInfo));
             label1 = new System.Windows.Forms.Label();
             label2 = new System.Windows.Forms.Label();
@@ -60,6 +62,27 @@
             flowLayoutPanelEnergyUnit = new System.Windows.Forms.FlowLayoutPanel();
             label14 = new System.Windows.Forms.Label();
             dataGridView = new System.Windows.Forms.DataGridView();
+            rDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            hDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            kDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            iDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            lDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            dDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            gXDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            gYDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            gZDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            gDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ugReDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ugImDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ugReDataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ugImDataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            sgDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            pgDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            qgDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            φReDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            φImDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            φ2DataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            σΦ2DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             dataSetBindingSource = new System.Windows.Forms.BindingSource(components);
             dataSet = new DataSetReciPro();
             label16 = new System.Windows.Forms.Label();
@@ -92,27 +115,6 @@
             checkBoxAutoRowSize = new System.Windows.Forms.CheckBox();
             numericBoxEffectiveDigit = new NumericBox();
             button1 = new System.Windows.Forms.Button();
-            rDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            hDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            kDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            iDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            lDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            dDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            gXDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            gYDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            gZDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            gDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ugReDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ugImDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ugReDataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ugImDataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            sgDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            pgDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            qgDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            φReDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            φImDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            φ2DataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            σΦ2DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             flowLayoutPanelVoltageWaveLength.SuspendLayout();
             flowLayoutPanelLatticeAngles.SuspendLayout();
             flowLayoutPanelVolumeThickness.SuspendLayout();
@@ -143,9 +145,9 @@
             label2.Location = new System.Drawing.Point(0, 5);
             label2.Margin = new System.Windows.Forms.Padding(0, 5, 0, 0);
             label2.Name = "label2";
-            label2.Size = new System.Drawing.Size(158, 17);
+            label2.Size = new System.Drawing.Size(152, 17);
             label2.TabIndex = 2;
-            label2.Text = "m/m0 (= 1+e0×E/m0/c²): ";
+            label2.Text = "m/m₀ (= 1+e₀×E/m₀/c²): ";
             // 
             // textBoxWaveLength
             // 
@@ -172,7 +174,7 @@
             // textBoxGamma
             // 
             textBoxGamma.Font = new System.Drawing.Font("Times New Roman", 11F);
-            textBoxGamma.Location = new System.Drawing.Point(158, 0);
+            textBoxGamma.Location = new System.Drawing.Point(152, 0);
             textBoxGamma.Margin = new System.Windows.Forms.Padding(0);
             textBoxGamma.Name = "textBoxGamma";
             textBoxGamma.ReadOnly = true;
@@ -194,7 +196,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new System.Drawing.Font("Times New Roman", 11F);
-            label4.Location = new System.Drawing.Point(247, 5);
+            label4.Location = new System.Drawing.Point(241, 5);
             label4.Margin = new System.Windows.Forms.Padding(6, 5, 0, 0);
             label4.Name = "label4";
             label4.Size = new System.Drawing.Size(33, 17);
@@ -204,7 +206,7 @@
             // textBoxBeta
             // 
             textBoxBeta.Font = new System.Drawing.Font("Times New Roman", 11F);
-            textBoxBeta.Location = new System.Drawing.Point(280, 0);
+            textBoxBeta.Location = new System.Drawing.Point(274, 0);
             textBoxBeta.Margin = new System.Windows.Forms.Padding(0);
             textBoxBeta.Name = "textBoxBeta";
             textBoxBeta.ReadOnly = true;
@@ -278,10 +280,10 @@
             // label9
             // 
             label9.AutoSize = true;
-            label9.Font = new System.Drawing.Font("Times New Roman", 9.75F);
+            label9.Font = new System.Drawing.Font("Times New Roman", 10F);
             label9.Location = new System.Drawing.Point(468, 205);
             label9.Name = "label9";
-            label9.Size = new System.Drawing.Size(445, 51);
+            label9.Size = new System.Drawing.Size(430, 48);
             label9.TabIndex = 2;
             label9.Text = "Vg or Ug : Crystal potential for elastic scattering.\r\nVg' or Ug': Imaginary  (absorption) potential for thermal diffuse scattering.\r\nΦ: Amplitude of the diffracted wave on the exit surface.";
             // 
@@ -344,7 +346,7 @@
             flowLayoutPanelLatticeAngles.Font = new System.Drawing.Font("Times New Roman", 9.75F);
             flowLayoutPanelLatticeAngles.Location = new System.Drawing.Point(468, 49);
             flowLayoutPanelLatticeAngles.Name = "flowLayoutPanelLatticeAngles";
-            flowLayoutPanelLatticeAngles.Size = new System.Drawing.Size(363, 24);
+            flowLayoutPanelLatticeAngles.Size = new System.Drawing.Size(357, 24);
             flowLayoutPanelLatticeAngles.TabIndex = 7;
             // 
             // flowLayoutPanelVolumeThickness
@@ -407,7 +409,7 @@
             flowLayoutPanelEnergyUnit.Controls.Add(radioButtonUnitEV);
             flowLayoutPanelEnergyUnit.Controls.Add(radioButtonUnitNM);
             flowLayoutPanelEnergyUnit.Font = new System.Drawing.Font("Times New Roman", 9.75F);
-            flowLayoutPanelEnergyUnit.Location = new System.Drawing.Point(468, 151);
+            flowLayoutPanelEnergyUnit.Location = new System.Drawing.Point(468, 143);
             flowLayoutPanelEnergyUnit.Name = "flowLayoutPanelEnergyUnit";
             flowLayoutPanelEnergyUnit.Size = new System.Drawing.Size(285, 27);
             flowLayoutPanelEnergyUnit.TabIndex = 10;
@@ -415,11 +417,11 @@
             // label14
             // 
             label14.AutoSize = true;
-            label14.Font = new System.Drawing.Font("Times New Roman", 9.75F);
-            label14.Location = new System.Drawing.Point(481, 180);
+            label14.Font = new System.Drawing.Font("Times New Roman", 10F);
+            label14.Location = new System.Drawing.Point(481, 172);
             label14.Margin = new System.Windows.Forms.Padding(3, 5, 3, 0);
             label14.Name = "label14";
-            label14.Size = new System.Drawing.Size(357, 17);
+            label14.Size = new System.Drawing.Size(344, 16);
             label14.TabIndex = 2;
             label14.Text = "Ug [nm⁻²] = 2 × m₀[kg] / h[eV・s] / h[J・s] × Vg[eV] × 10¹⁸";
             // 
@@ -430,31 +432,215 @@
             dataGridView.AllowUserToResizeRows = false;
             dataGridView.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
             dataGridView.AutoGenerateColumns = false;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Segoe UI Variable Text", 9.75F);
+            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            dataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
             dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { rDataGridViewTextBoxColumn1, hDataGridViewTextBoxColumn, kDataGridViewTextBoxColumn, iDataGridViewTextBoxColumn, lDataGridViewTextBoxColumn, dDataGridViewTextBoxColumn1, gXDataGridViewTextBoxColumn1, gYDataGridViewTextBoxColumn1, gZDataGridViewTextBoxColumn1, gDataGridViewTextBoxColumn1, ugReDataGridViewTextBoxColumn2, ugImDataGridViewTextBoxColumn2, ugReDataGridViewTextBoxColumn3, ugImDataGridViewTextBoxColumn3, sgDataGridViewTextBoxColumn1, pgDataGridViewTextBoxColumn1, qgDataGridViewTextBoxColumn1, φReDataGridViewTextBoxColumn1, φImDataGridViewTextBoxColumn1, φ2DataGridViewTextBoxColumn1, σΦ2DataGridViewTextBoxColumn });
             dataGridView.DataMember = "DataTableBethe";
             dataGridView.DataSource = dataSetBindingSource;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI Variable Text", 10F);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.Format = "g4";
-            dataGridViewCellStyle1.NullValue = null;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            dataGridView.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Segoe UI Variable Text", 9.75F);
+            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle11.Format = "g4";
+            dataGridViewCellStyle11.NullValue = null;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            dataGridView.DefaultCellStyle = dataGridViewCellStyle11;
             dataGridView.Location = new System.Drawing.Point(1, 298);
             dataGridView.Margin = new System.Windows.Forms.Padding(0);
             dataGridView.MultiSelect = false;
             dataGridView.Name = "dataGridView";
             dataGridView.ReadOnly = true;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Segoe UI Variable Text", 9.75F);
+            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            dataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
             dataGridView.RowHeadersVisible = false;
             dataGridView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            dataGridView.Size = new System.Drawing.Size(1085, 272);
+            dataGridView.Size = new System.Drawing.Size(1143, 272);
             dataGridView.TabIndex = 0;
             dataGridView.Scroll += DataGridView_Scroll;
+            // 
+            // rDataGridViewTextBoxColumn1
+            // 
+            rDataGridViewTextBoxColumn1.DataPropertyName = "R";
+            rDataGridViewTextBoxColumn1.HeaderText = "R";
+            rDataGridViewTextBoxColumn1.Name = "rDataGridViewTextBoxColumn1";
+            rDataGridViewTextBoxColumn1.ReadOnly = true;
+            rDataGridViewTextBoxColumn1.Width = 43;
+            // 
+            // hDataGridViewTextBoxColumn
+            // 
+            hDataGridViewTextBoxColumn.DataPropertyName = "h";
+            hDataGridViewTextBoxColumn.HeaderText = "h";
+            hDataGridViewTextBoxColumn.Name = "hDataGridViewTextBoxColumn";
+            hDataGridViewTextBoxColumn.ReadOnly = true;
+            hDataGridViewTextBoxColumn.Width = 40;
+            // 
+            // kDataGridViewTextBoxColumn
+            // 
+            kDataGridViewTextBoxColumn.DataPropertyName = "k";
+            kDataGridViewTextBoxColumn.HeaderText = "k";
+            kDataGridViewTextBoxColumn.Name = "kDataGridViewTextBoxColumn";
+            kDataGridViewTextBoxColumn.ReadOnly = true;
+            kDataGridViewTextBoxColumn.Width = 40;
+            // 
+            // iDataGridViewTextBoxColumn
+            // 
+            iDataGridViewTextBoxColumn.DataPropertyName = "i";
+            iDataGridViewTextBoxColumn.HeaderText = "i";
+            iDataGridViewTextBoxColumn.Name = "iDataGridViewTextBoxColumn";
+            iDataGridViewTextBoxColumn.ReadOnly = true;
+            iDataGridViewTextBoxColumn.Width = 40;
+            // 
+            // lDataGridViewTextBoxColumn
+            // 
+            lDataGridViewTextBoxColumn.DataPropertyName = "l";
+            lDataGridViewTextBoxColumn.HeaderText = "l";
+            lDataGridViewTextBoxColumn.Name = "lDataGridViewTextBoxColumn";
+            lDataGridViewTextBoxColumn.ReadOnly = true;
+            lDataGridViewTextBoxColumn.Width = 36;
+            // 
+            // dDataGridViewTextBoxColumn1
+            // 
+            dDataGridViewTextBoxColumn1.DataPropertyName = "d";
+            dDataGridViewTextBoxColumn1.HeaderText = "d";
+            dDataGridViewTextBoxColumn1.Name = "dDataGridViewTextBoxColumn1";
+            dDataGridViewTextBoxColumn1.ReadOnly = true;
+            dDataGridViewTextBoxColumn1.Width = 40;
+            // 
+            // gXDataGridViewTextBoxColumn1
+            // 
+            gXDataGridViewTextBoxColumn1.DataPropertyName = "gX";
+            gXDataGridViewTextBoxColumn1.HeaderText = "gX";
+            gXDataGridViewTextBoxColumn1.Name = "gXDataGridViewTextBoxColumn1";
+            gXDataGridViewTextBoxColumn1.ReadOnly = true;
+            gXDataGridViewTextBoxColumn1.Width = 50;
+            // 
+            // gYDataGridViewTextBoxColumn1
+            // 
+            gYDataGridViewTextBoxColumn1.DataPropertyName = "gY";
+            gYDataGridViewTextBoxColumn1.HeaderText = "gY";
+            gYDataGridViewTextBoxColumn1.Name = "gYDataGridViewTextBoxColumn1";
+            gYDataGridViewTextBoxColumn1.ReadOnly = true;
+            gYDataGridViewTextBoxColumn1.Width = 51;
+            // 
+            // gZDataGridViewTextBoxColumn1
+            // 
+            gZDataGridViewTextBoxColumn1.DataPropertyName = "gZ";
+            gZDataGridViewTextBoxColumn1.HeaderText = "gZ";
+            gZDataGridViewTextBoxColumn1.Name = "gZDataGridViewTextBoxColumn1";
+            gZDataGridViewTextBoxColumn1.ReadOnly = true;
+            gZDataGridViewTextBoxColumn1.Width = 49;
+            // 
+            // gDataGridViewTextBoxColumn1
+            // 
+            gDataGridViewTextBoxColumn1.DataPropertyName = "|g|";
+            gDataGridViewTextBoxColumn1.HeaderText = "|g|";
+            gDataGridViewTextBoxColumn1.Name = "gDataGridViewTextBoxColumn1";
+            gDataGridViewTextBoxColumn1.ReadOnly = true;
+            gDataGridViewTextBoxColumn1.Width = 46;
+            // 
+            // ugReDataGridViewTextBoxColumn2
+            // 
+            ugReDataGridViewTextBoxColumn2.DataPropertyName = "Ug re";
+            ugReDataGridViewTextBoxColumn2.HeaderText = "Ug re";
+            ugReDataGridViewTextBoxColumn2.Name = "ugReDataGridViewTextBoxColumn2";
+            ugReDataGridViewTextBoxColumn2.ReadOnly = true;
+            ugReDataGridViewTextBoxColumn2.Width = 67;
+            // 
+            // ugImDataGridViewTextBoxColumn2
+            // 
+            ugImDataGridViewTextBoxColumn2.DataPropertyName = "Ug im";
+            ugImDataGridViewTextBoxColumn2.HeaderText = "Ug im";
+            ugImDataGridViewTextBoxColumn2.Name = "ugImDataGridViewTextBoxColumn2";
+            ugImDataGridViewTextBoxColumn2.ReadOnly = true;
+            ugImDataGridViewTextBoxColumn2.Width = 69;
+            // 
+            // ugReDataGridViewTextBoxColumn3
+            // 
+            ugReDataGridViewTextBoxColumn3.DataPropertyName = "U'g re";
+            ugReDataGridViewTextBoxColumn3.HeaderText = "U'g re";
+            ugReDataGridViewTextBoxColumn3.Name = "ugReDataGridViewTextBoxColumn3";
+            ugReDataGridViewTextBoxColumn3.ReadOnly = true;
+            ugReDataGridViewTextBoxColumn3.Width = 70;
+            // 
+            // ugImDataGridViewTextBoxColumn3
+            // 
+            ugImDataGridViewTextBoxColumn3.DataPropertyName = "U'g im";
+            ugImDataGridViewTextBoxColumn3.HeaderText = "U'g im";
+            ugImDataGridViewTextBoxColumn3.Name = "ugImDataGridViewTextBoxColumn3";
+            ugImDataGridViewTextBoxColumn3.ReadOnly = true;
+            ugImDataGridViewTextBoxColumn3.Width = 72;
+            // 
+            // sgDataGridViewTextBoxColumn1
+            // 
+            sgDataGridViewTextBoxColumn1.DataPropertyName = "Sg";
+            sgDataGridViewTextBoxColumn1.HeaderText = "Sg";
+            sgDataGridViewTextBoxColumn1.Name = "sgDataGridViewTextBoxColumn1";
+            sgDataGridViewTextBoxColumn1.ReadOnly = true;
+            sgDataGridViewTextBoxColumn1.Width = 48;
+            // 
+            // pgDataGridViewTextBoxColumn1
+            // 
+            pgDataGridViewTextBoxColumn1.DataPropertyName = "Pg";
+            pgDataGridViewTextBoxColumn1.HeaderText = "Pg";
+            pgDataGridViewTextBoxColumn1.Name = "pgDataGridViewTextBoxColumn1";
+            pgDataGridViewTextBoxColumn1.ReadOnly = true;
+            pgDataGridViewTextBoxColumn1.Width = 49;
+            // 
+            // qgDataGridViewTextBoxColumn1
+            // 
+            qgDataGridViewTextBoxColumn1.DataPropertyName = "Qg";
+            qgDataGridViewTextBoxColumn1.HeaderText = "Qg";
+            qgDataGridViewTextBoxColumn1.Name = "qgDataGridViewTextBoxColumn1";
+            qgDataGridViewTextBoxColumn1.ReadOnly = true;
+            qgDataGridViewTextBoxColumn1.Width = 51;
+            // 
+            // φReDataGridViewTextBoxColumn1
+            // 
+            φReDataGridViewTextBoxColumn1.DataPropertyName = "Φ re";
+            φReDataGridViewTextBoxColumn1.HeaderText = "Φ re";
+            φReDataGridViewTextBoxColumn1.Name = "φReDataGridViewTextBoxColumn1";
+            φReDataGridViewTextBoxColumn1.ReadOnly = true;
+            φReDataGridViewTextBoxColumn1.Width = 60;
+            // 
+            // φImDataGridViewTextBoxColumn1
+            // 
+            φImDataGridViewTextBoxColumn1.DataPropertyName = "Φ im";
+            φImDataGridViewTextBoxColumn1.HeaderText = "Φ im";
+            φImDataGridViewTextBoxColumn1.Name = "φImDataGridViewTextBoxColumn1";
+            φImDataGridViewTextBoxColumn1.ReadOnly = true;
+            φImDataGridViewTextBoxColumn1.Width = 62;
+            // 
+            // φ2DataGridViewTextBoxColumn1
+            // 
+            φ2DataGridViewTextBoxColumn1.DataPropertyName = "|Φ|^2";
+            φ2DataGridViewTextBoxColumn1.HeaderText = "|Φ|^2";
+            φ2DataGridViewTextBoxColumn1.Name = "φ2DataGridViewTextBoxColumn1";
+            φ2DataGridViewTextBoxColumn1.ReadOnly = true;
+            φ2DataGridViewTextBoxColumn1.Width = 63;
+            // 
+            // σΦ2DataGridViewTextBoxColumn
+            // 
+            σΦ2DataGridViewTextBoxColumn.DataPropertyName = "Σ|Φ|^2";
+            σΦ2DataGridViewTextBoxColumn.HeaderText = "Σ|Φ|^2";
+            σΦ2DataGridViewTextBoxColumn.Name = "σΦ2DataGridViewTextBoxColumn";
+            σΦ2DataGridViewTextBoxColumn.ReadOnly = true;
+            σΦ2DataGridViewTextBoxColumn.Width = 72;
             // 
             // dataSetBindingSource
             // 
@@ -690,7 +876,7 @@
             statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { toolStripStatusLabel1 });
             statusStrip1.Location = new System.Drawing.Point(0, 570);
             statusStrip1.Name = "statusStrip1";
-            statusStrip1.Size = new System.Drawing.Size(1087, 22);
+            statusStrip1.Size = new System.Drawing.Size(1145, 22);
             statusStrip1.TabIndex = 11;
             statusStrip1.Text = "statusStrip1";
             // 
@@ -715,7 +901,9 @@
             // 
             numericBoxEffectiveDigit.BackColor = System.Drawing.Color.Transparent;
             numericBoxEffectiveDigit.FooterFont = new System.Drawing.Font("Times New Roman", 9.75F);
+            numericBoxEffectiveDigit.FooterPadding = new System.Windows.Forms.Padding(0, 6, 0, 0);
             numericBoxEffectiveDigit.HeaderFont = new System.Drawing.Font("Segoe UI Variable Text", 10F);
+            numericBoxEffectiveDigit.HeaderPadding = new System.Windows.Forms.Padding(0, 3, 0, 0);
             numericBoxEffectiveDigit.HeaderText = "Effective digit";
             numericBoxEffectiveDigit.Location = new System.Drawing.Point(656, 270);
             numericBoxEffectiveDigit.Margin = new System.Windows.Forms.Padding(0);
@@ -730,7 +918,6 @@
             numericBoxEffectiveDigit.Size = new System.Drawing.Size(139, 27);
             numericBoxEffectiveDigit.SkipEventDuringInput = false;
             numericBoxEffectiveDigit.TabIndex = 3;
-            numericBoxEffectiveDigit.TextFont = new System.Drawing.Font("Times New Roman", 9.75F);
             numericBoxEffectiveDigit.ThonsandsSeparator = true;
             numericBoxEffectiveDigit.Value = 4D;
             numericBoxEffectiveDigit.ValueChanged += numericBoxEffectiveDigit_ValueChanged;
@@ -748,180 +935,12 @@
             button1.Visible = false;
             button1.Click += button1_Click;
             // 
-            // rDataGridViewTextBoxColumn1
-            // 
-            rDataGridViewTextBoxColumn1.DataPropertyName = "R";
-            rDataGridViewTextBoxColumn1.HeaderText = "R";
-            rDataGridViewTextBoxColumn1.Name = "rDataGridViewTextBoxColumn1";
-            rDataGridViewTextBoxColumn1.ReadOnly = true;
-            rDataGridViewTextBoxColumn1.Width = 43;
-            // 
-            // hDataGridViewTextBoxColumn
-            // 
-            hDataGridViewTextBoxColumn.DataPropertyName = "h";
-            hDataGridViewTextBoxColumn.HeaderText = "h";
-            hDataGridViewTextBoxColumn.Name = "hDataGridViewTextBoxColumn";
-            hDataGridViewTextBoxColumn.ReadOnly = true;
-            hDataGridViewTextBoxColumn.Width = 40;
-            // 
-            // kDataGridViewTextBoxColumn
-            // 
-            kDataGridViewTextBoxColumn.DataPropertyName = "k";
-            kDataGridViewTextBoxColumn.HeaderText = "k";
-            kDataGridViewTextBoxColumn.Name = "kDataGridViewTextBoxColumn";
-            kDataGridViewTextBoxColumn.ReadOnly = true;
-            kDataGridViewTextBoxColumn.Width = 40;
-            // 
-            // iDataGridViewTextBoxColumn
-            // 
-            iDataGridViewTextBoxColumn.DataPropertyName = "i";
-            iDataGridViewTextBoxColumn.HeaderText = "i";
-            iDataGridViewTextBoxColumn.Name = "iDataGridViewTextBoxColumn";
-            iDataGridViewTextBoxColumn.ReadOnly = true;
-            iDataGridViewTextBoxColumn.Width = 40;
-            // 
-            // lDataGridViewTextBoxColumn
-            // 
-            lDataGridViewTextBoxColumn.DataPropertyName = "l";
-            lDataGridViewTextBoxColumn.HeaderText = "l";
-            lDataGridViewTextBoxColumn.Name = "lDataGridViewTextBoxColumn";
-            lDataGridViewTextBoxColumn.ReadOnly = true;
-            lDataGridViewTextBoxColumn.Width = 36;
-            // 
-            // dDataGridViewTextBoxColumn1
-            // 
-            dDataGridViewTextBoxColumn1.DataPropertyName = "d";
-            dDataGridViewTextBoxColumn1.HeaderText = "d";
-            dDataGridViewTextBoxColumn1.Name = "dDataGridViewTextBoxColumn1";
-            dDataGridViewTextBoxColumn1.ReadOnly = true;
-            dDataGridViewTextBoxColumn1.Width = 40;
-            // 
-            // gXDataGridViewTextBoxColumn1
-            // 
-            gXDataGridViewTextBoxColumn1.DataPropertyName = "gX";
-            gXDataGridViewTextBoxColumn1.HeaderText = "gX";
-            gXDataGridViewTextBoxColumn1.Name = "gXDataGridViewTextBoxColumn1";
-            gXDataGridViewTextBoxColumn1.ReadOnly = true;
-            gXDataGridViewTextBoxColumn1.Width = 50;
-            // 
-            // gYDataGridViewTextBoxColumn1
-            // 
-            gYDataGridViewTextBoxColumn1.DataPropertyName = "gY";
-            gYDataGridViewTextBoxColumn1.HeaderText = "gY";
-            gYDataGridViewTextBoxColumn1.Name = "gYDataGridViewTextBoxColumn1";
-            gYDataGridViewTextBoxColumn1.ReadOnly = true;
-            gYDataGridViewTextBoxColumn1.Width = 51;
-            // 
-            // gZDataGridViewTextBoxColumn1
-            // 
-            gZDataGridViewTextBoxColumn1.DataPropertyName = "gZ";
-            gZDataGridViewTextBoxColumn1.HeaderText = "gZ";
-            gZDataGridViewTextBoxColumn1.Name = "gZDataGridViewTextBoxColumn1";
-            gZDataGridViewTextBoxColumn1.ReadOnly = true;
-            gZDataGridViewTextBoxColumn1.Width = 49;
-            // 
-            // gDataGridViewTextBoxColumn1
-            // 
-            gDataGridViewTextBoxColumn1.DataPropertyName = "|g|";
-            gDataGridViewTextBoxColumn1.HeaderText = "|g|";
-            gDataGridViewTextBoxColumn1.Name = "gDataGridViewTextBoxColumn1";
-            gDataGridViewTextBoxColumn1.ReadOnly = true;
-            gDataGridViewTextBoxColumn1.Width = 46;
-            // 
-            // ugReDataGridViewTextBoxColumn2
-            // 
-            ugReDataGridViewTextBoxColumn2.DataPropertyName = "Ug re";
-            ugReDataGridViewTextBoxColumn2.HeaderText = "Ug re";
-            ugReDataGridViewTextBoxColumn2.Name = "ugReDataGridViewTextBoxColumn2";
-            ugReDataGridViewTextBoxColumn2.ReadOnly = true;
-            ugReDataGridViewTextBoxColumn2.Width = 67;
-            // 
-            // ugImDataGridViewTextBoxColumn2
-            // 
-            ugImDataGridViewTextBoxColumn2.DataPropertyName = "Ug im";
-            ugImDataGridViewTextBoxColumn2.HeaderText = "Ug im";
-            ugImDataGridViewTextBoxColumn2.Name = "ugImDataGridViewTextBoxColumn2";
-            ugImDataGridViewTextBoxColumn2.ReadOnly = true;
-            ugImDataGridViewTextBoxColumn2.Width = 69;
-            // 
-            // ugReDataGridViewTextBoxColumn3
-            // 
-            ugReDataGridViewTextBoxColumn3.DataPropertyName = "U'g re";
-            ugReDataGridViewTextBoxColumn3.HeaderText = "U'g re";
-            ugReDataGridViewTextBoxColumn3.Name = "ugReDataGridViewTextBoxColumn3";
-            ugReDataGridViewTextBoxColumn3.ReadOnly = true;
-            ugReDataGridViewTextBoxColumn3.Width = 70;
-            // 
-            // ugImDataGridViewTextBoxColumn3
-            // 
-            ugImDataGridViewTextBoxColumn3.DataPropertyName = "U'g im";
-            ugImDataGridViewTextBoxColumn3.HeaderText = "U'g im";
-            ugImDataGridViewTextBoxColumn3.Name = "ugImDataGridViewTextBoxColumn3";
-            ugImDataGridViewTextBoxColumn3.ReadOnly = true;
-            ugImDataGridViewTextBoxColumn3.Width = 72;
-            // 
-            // sgDataGridViewTextBoxColumn1
-            // 
-            sgDataGridViewTextBoxColumn1.DataPropertyName = "Sg";
-            sgDataGridViewTextBoxColumn1.HeaderText = "Sg";
-            sgDataGridViewTextBoxColumn1.Name = "sgDataGridViewTextBoxColumn1";
-            sgDataGridViewTextBoxColumn1.ReadOnly = true;
-            sgDataGridViewTextBoxColumn1.Width = 48;
-            // 
-            // pgDataGridViewTextBoxColumn1
-            // 
-            pgDataGridViewTextBoxColumn1.DataPropertyName = "Pg";
-            pgDataGridViewTextBoxColumn1.HeaderText = "Pg";
-            pgDataGridViewTextBoxColumn1.Name = "pgDataGridViewTextBoxColumn1";
-            pgDataGridViewTextBoxColumn1.ReadOnly = true;
-            pgDataGridViewTextBoxColumn1.Width = 49;
-            // 
-            // qgDataGridViewTextBoxColumn1
-            // 
-            qgDataGridViewTextBoxColumn1.DataPropertyName = "Qg";
-            qgDataGridViewTextBoxColumn1.HeaderText = "Qg";
-            qgDataGridViewTextBoxColumn1.Name = "qgDataGridViewTextBoxColumn1";
-            qgDataGridViewTextBoxColumn1.ReadOnly = true;
-            qgDataGridViewTextBoxColumn1.Width = 51;
-            // 
-            // φReDataGridViewTextBoxColumn1
-            // 
-            φReDataGridViewTextBoxColumn1.DataPropertyName = "Φ re";
-            φReDataGridViewTextBoxColumn1.HeaderText = "Φ re";
-            φReDataGridViewTextBoxColumn1.Name = "φReDataGridViewTextBoxColumn1";
-            φReDataGridViewTextBoxColumn1.ReadOnly = true;
-            φReDataGridViewTextBoxColumn1.Width = 60;
-            // 
-            // φImDataGridViewTextBoxColumn1
-            // 
-            φImDataGridViewTextBoxColumn1.DataPropertyName = "Φ im";
-            φImDataGridViewTextBoxColumn1.HeaderText = "Φ im";
-            φImDataGridViewTextBoxColumn1.Name = "φImDataGridViewTextBoxColumn1";
-            φImDataGridViewTextBoxColumn1.ReadOnly = true;
-            φImDataGridViewTextBoxColumn1.Width = 62;
-            // 
-            // φ2DataGridViewTextBoxColumn1
-            // 
-            φ2DataGridViewTextBoxColumn1.DataPropertyName = "|Φ|^2";
-            φ2DataGridViewTextBoxColumn1.HeaderText = "|Φ|^2";
-            φ2DataGridViewTextBoxColumn1.Name = "φ2DataGridViewTextBoxColumn1";
-            φ2DataGridViewTextBoxColumn1.ReadOnly = true;
-            φ2DataGridViewTextBoxColumn1.Width = 63;
-            // 
-            // σΦ2DataGridViewTextBoxColumn
-            // 
-            σΦ2DataGridViewTextBoxColumn.DataPropertyName = "Σ|Φ|^2";
-            σΦ2DataGridViewTextBoxColumn.HeaderText = "Σ|Φ|^2";
-            σΦ2DataGridViewTextBoxColumn.Name = "σΦ2DataGridViewTextBoxColumn";
-            σΦ2DataGridViewTextBoxColumn.ReadOnly = true;
-            σΦ2DataGridViewTextBoxColumn.Width = 72;
-            // 
             // FormDiffractionSpotInfo
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             captureExtender.SetCapture(this, true);
-            ClientSize = new System.Drawing.Size(1087, 592);
+            ClientSize = new System.Drawing.Size(1145, 592);
             Controls.Add(checkBoxAutoRowSize);
             Controls.Add(statusStrip1);
             Controls.Add(label14);

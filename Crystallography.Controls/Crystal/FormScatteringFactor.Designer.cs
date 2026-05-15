@@ -27,6 +27,7 @@
             components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormScatteringFactor));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -112,6 +113,14 @@
             dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { dataGridViewTextBoxColumnH, dataGridViewTextBoxColumnK, dataGridViewTextBoxColumnI, dataGridViewTextBoxColumnL, dataGridViewTextBoxColumnMulti, dataGridViewTextBoxColumnD, dataGridViewTextBoxColumnQ, dataGridViewTextBoxColumnTwoTheta, dataGridViewTextBoxColumnFreal, dataGridViewTextBoxColumnFinv, dataGridViewTextBoxColumnFabs, dataGridViewTextBoxColumnFsq, dataGridViewTextBoxColumnIntPercent, dataGridViewTextBoxColumnIntCondition });
             dataGridView.DataSource = bindingSourceScatteringFactor;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("Segoe UI Variable Text", 9.75F);
+            dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            dataGridView.DefaultCellStyle = dataGridViewCellStyle13;
             resources.ApplyResources(dataGridView, "dataGridView");
             dataGridView.MultiSelect = false;
             dataGridView.Name = "dataGridView";
@@ -120,7 +129,7 @@
             dataGridView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             dataGridView.RowTemplate.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridView.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.SystemColors.Control;
-            dataGridView.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("BIZ UDPGothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 128);
+            dataGridView.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI Variable Text", 9.75F);
             dataGridView.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridView.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridView.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -378,6 +387,7 @@
             numericBoxL_step.RadianValue = 0.00017453292519943296D;
             numericBoxL_step.ShowUpDown = true;
             numericBoxL_step.SmartIncrement = true;
+            numericBoxL_step.TextFontSize = 9F;
             numericBoxL_step.Value = 0.01D;
             numericBoxL_step.ValueChanged += numericBoxH_min_ValueChanged;
             // 
@@ -392,6 +402,7 @@
             numericBoxK_step.RadianValue = 0.00017453292519943296D;
             numericBoxK_step.ShowUpDown = true;
             numericBoxK_step.SmartIncrement = true;
+            numericBoxK_step.TextFontSize = 9F;
             numericBoxK_step.Value = 0.01D;
             numericBoxK_step.ValueChanged += numericBoxH_min_ValueChanged;
             // 
@@ -406,6 +417,7 @@
             numericBoxH_step.RadianValue = 0.00017453292519943296D;
             numericBoxH_step.ShowUpDown = true;
             numericBoxH_step.SmartIncrement = true;
+            numericBoxH_step.TextFontSize = 9F;
             numericBoxH_step.Value = 0.01D;
             numericBoxH_step.ValueChanged += numericBoxH_min_ValueChanged;
             // 
@@ -416,6 +428,7 @@
             numericBoxL_max.Name = "numericBoxL_max";
             numericBoxL_max.RadianValue = 0.017453292519943295D;
             numericBoxL_max.ShowUpDown = true;
+            numericBoxL_max.TextFontSize = 9F;
             numericBoxL_max.Value = 1D;
             numericBoxL_max.ValueChanged += numericBoxH_min_ValueChanged;
             // 
@@ -425,6 +438,7 @@
             resources.ApplyResources(numericBoxK_max, "numericBoxK_max");
             numericBoxK_max.Name = "numericBoxK_max";
             numericBoxK_max.ShowUpDown = true;
+            numericBoxK_max.TextFontSize = 9F;
             numericBoxK_max.ValueChanged += numericBoxH_min_ValueChanged;
             // 
             // numericBoxL_min
@@ -433,6 +447,7 @@
             resources.ApplyResources(numericBoxL_min, "numericBoxL_min");
             numericBoxL_min.Name = "numericBoxL_min";
             numericBoxL_min.ShowUpDown = true;
+            numericBoxL_min.TextFontSize = 9F;
             numericBoxL_min.ValueChanged += numericBoxH_min_ValueChanged;
             // 
             // numericBoxK_min
@@ -441,6 +456,7 @@
             resources.ApplyResources(numericBoxK_min, "numericBoxK_min");
             numericBoxK_min.Name = "numericBoxK_min";
             numericBoxK_min.ShowUpDown = true;
+            numericBoxK_min.TextFontSize = 9F;
             numericBoxK_min.ValueChanged += numericBoxH_min_ValueChanged;
             // 
             // numericBoxH_max
@@ -449,6 +465,7 @@
             resources.ApplyResources(numericBoxH_max, "numericBoxH_max");
             numericBoxH_max.Name = "numericBoxH_max";
             numericBoxH_max.ShowUpDown = true;
+            numericBoxH_max.TextFontSize = 9F;
             numericBoxH_max.ValueChanged += numericBoxH_min_ValueChanged;
             // 
             // numericBoxH_min
@@ -457,6 +474,7 @@
             resources.ApplyResources(numericBoxH_min, "numericBoxH_min");
             numericBoxH_min.Name = "numericBoxH_min";
             numericBoxH_min.ShowUpDown = true;
+            numericBoxH_min.TextFontSize = 9F;
             numericBoxH_min.ValueChanged += numericBoxH_min_ValueChanged;
             // 
             // panel2

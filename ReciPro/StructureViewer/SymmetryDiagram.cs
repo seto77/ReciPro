@@ -1,9 +1,7 @@
-﻿using Crystallography;
-using Crystallography.OpenGL;
-using System;
+﻿using Crystallography.OpenGL;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks; // 260514Cl: Parallel.Invoke で 3 generator を並列実行する
+using System.Threading.Tasks;
 using ZLinq;
 using C4 = OpenTK.Mathematics.Color4;
 using M3d = OpenTK.Mathematics.Matrix3d;
@@ -276,9 +274,7 @@ internal static class SymmetryDiagram
         return
         [
             new Polygon(AffineTransformXY(Rotoinversion4[0], liftedCenter, u, v, radius), black, DrawingMode.Surfaces)
-            {
-                IgnoreNormalSides = true, ShowClippedSection = false,
-            },
+                { IgnoreNormalSides = true, ShowClippedSection = false, },
             new Lines([.. outerVerts, outerVerts[0]], AxisLineWidth, black), // 末尾に先頭頂点を追加して LineStrip を閉ループ化
         ];
     }
@@ -647,11 +643,15 @@ internal static class SymmetryDiagram
     /// <summary>軸種別シンボルの静的テンプレート (V3[][]):
     /// 先頭の V3[] は塗りつぶし多角形、続く V3[] は open Lines (フィン / 弧)。
     /// 回反 (-4) の内側多角形は Rotation2[0] を再利用する。</summary>
-    private static readonly V3[][] Rotation2 = [BuildLens()];
+    // 260514Cl: LensTemplate を 1 回だけ生成し Rotation2 / Screw2_1 / Rotoinversion4 で共有 (旧版は BuildLens() を 3 回呼び同じ配列を別に確保していた)
+    private static readonly V3[] LensTemplate = BuildLens();
+    // 旧: private static readonly V3[][] Rotation2 = [BuildLens()];
+    private static readonly V3[][] Rotation2 = [LensTemplate];
     private static readonly V3[][] Rotation3 = [BuildRegularPolygon(3, TemplatePolygonRadius)];
     private static readonly V3[][] Rotation4 = [BuildRegularPolygon(4, TemplatePolygonRadius)];
     private static readonly V3[][] Rotation6 = [BuildRegularPolygon(6, TemplatePolygonRadius)];
-    private static readonly V3[][] Screw2_1 = [BuildLens(), BuildLensFin(true), BuildLensFin(false)];
+    // 旧: private static readonly V3[][] Screw2_1 = [BuildLens(), BuildLensFin(true), BuildLensFin(false)];
+    private static readonly V3[][] Screw2_1 = [LensTemplate, BuildLensFin(true), BuildLensFin(false)];
 
     private static readonly V3[][] Screw3_1 = [Rotation3[0], .. ValueEnumerable.Range(0, 3).Select(i => BuildRegularPolygonFin(3, i, true,  TemplatePolygonRadius, TemplatePolygonFinRadius))];
     private static readonly V3[][] Screw3_2 = [Rotation3[0], .. ValueEnumerable.Range(0, 3).Select(i => BuildRegularPolygonFin(3, i, false, TemplatePolygonRadius, TemplatePolygonFinRadius))];
@@ -664,7 +664,8 @@ internal static class SymmetryDiagram
     private static readonly V3[][] Screw6_4 = [Rotation6[0], .. new[] { 0, 2, 4 }    .Select(i => BuildRegularPolygonFin(6, i, false, TemplatePolygonRadius, TemplatePolygonFinRadius))];
     private static readonly V3[][] Screw6_5 = [Rotation6[0], .. ValueEnumerable.Range(0, 6).Select(i => BuildRegularPolygonFin(6, i, false, TemplatePolygonRadius, TemplatePolygonFinRadius))];
 
-    private static readonly V3[][] Rotoinversion4 = [BuildLens(), Rotation4[0]];
+    // 旧: private static readonly V3[][] Rotoinversion4 = [BuildLens(), Rotation4[0]];
+    private static readonly V3[][] Rotoinversion4 = [LensTemplate, Rotation4[0]];
 
     /// <summary>鏡映面 bracket の 8 本の L 字線分。half = 1, arm = TemplateBracketArm 基準。</summary>
     private static readonly (V3 Start, V3 End)[] BracketLinesXY =
@@ -685,7 +686,7 @@ internal static class SymmetryDiagram
     /// <summary>-30°〜+30° の弧と、それを原点反転した弧の 2 本でレンズ形を作る。</summary>
     private static V3[] BuildLens()
     {
-        const int slices = 60;
+        const int slices = 20;
         double x = Math.Sqrt(3) / 2;
         var upper = ValueEnumerable.Range(0, slices).Select(i =>
         {
@@ -698,7 +699,7 @@ internal static class SymmetryDiagram
     /// <summary>+30°〜+45° の弧 (upper=true) または -30°〜-45° の弧 (upper=false)。</summary>
     private static V3[] BuildLensFin(bool upper)
     {
-        const int slices = 15;
+        const int slices = 5;
         double x = Math.Sqrt(3) / 2;
         return [.. ValueEnumerable.Range(0, slices+1).Select(i =>
         {
