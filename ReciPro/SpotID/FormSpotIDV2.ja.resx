@@ -391,6 +391,9 @@
   <data name="buttonDonut.ToolTip" xml:space="preserve">
     <value>ドーナツ型バックグラウンド除去（実験的）</value>
   </data>
+  <data name="dataGridViewSpots.Font" type="System.Drawing.Font, System.Drawing">
+    <value>BIZ UDPGothic, 9pt</value>
+  </data>
   <data name="dataGridViewSpots.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 33</value>
   </data>
@@ -633,8 +636,14 @@
   <data name="checkBoxShowCalcSpotLabel.ToolTip" xml:space="preserve">
     <value>計算スポットにインデックスラベルを表示</value>
   </data>
+  <data name="dataGridViewGrains.Font" type="System.Drawing.Font, System.Drawing">
+    <value>BIZ UDPGothic, 9pt</value>
+  </data>
   <data name="dataGridViewGrains.Size" type="System.Drawing.Size, System.Drawing">
     <value>310, 111</value>
+  </data>
+  <data name="dataGridViewCandidates.Font" type="System.Drawing.Font, System.Drawing">
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="checkBoxIgnoreMultipleDiffraction.Font" type="System.Drawing.Font, System.Drawing">
     <value>BIZ UDPGothic, 9pt</value>

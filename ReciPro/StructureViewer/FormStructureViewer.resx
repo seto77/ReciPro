@@ -147,9 +147,6 @@
   <data name="numericBoxARange.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 3, 0, 0</value>
   </data>
-  <data name="dataGridViewTextBoxColumn3.Width" type="System.Int32, mscorlib">
-    <value>125</value>
-  </data>
   <data name="splitContainer2.Size" type="System.Drawing.Size, System.Drawing">
     <value>546, 200</value>
   </data>
@@ -539,9 +536,6 @@
   <data name="tabPageBoundPlane.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
   </data>
-  <data name="&gt;&gt;dataGridViewTextBoxColumn3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="numericBoxCellTranslationA.Location" type="System.Drawing.Point, System.Drawing">
     <value>97, 26</value>
   </data>
@@ -927,9 +921,6 @@
   <data name="numericBoxAxesSize.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
-  <data name="&gt;&gt;dataGridViewTextBoxColumn3.Name" xml:space="preserve">
-    <value>dataGridViewTextBoxColumn3</value>
-  </data>
   <data name="colorControlPlane.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
@@ -1007,9 +998,6 @@
   </data>
   <data name="splitContainer1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewTextBoxColumn4.Name" xml:space="preserve">
-    <value>dataGridViewTextBoxColumn4</value>
   </data>
   <data name="label13.Size" type="System.Drawing.Size, System.Drawing">
     <value>257, 17</value>
@@ -1804,9 +1792,6 @@
   <data name="label11.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="dataGridViewTextBoxColumn1.HeaderText" xml:space="preserve">
-    <value>Atom</value>
-  </data>
   <data name="label1.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
@@ -2127,9 +2112,6 @@
   </data>
   <data name="&gt;&gt;colorControlCellEdgeC.Type" xml:space="preserve">
     <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="dataGridViewTextBoxColumn1.Width" type="System.Int32, mscorlib">
-    <value>125</value>
   </data>
   <data name="numericBoxAxisSymbolSize.Location" type="System.Drawing.Point, System.Drawing">
     <value>9, 65</value>
@@ -2543,9 +2525,6 @@
   <data name="groupBoxShowUnitCell.ToolTip" xml:space="preserve">
     <value>Configure unit cell display settings</value>
   </data>
-  <data name="dataGridViewTextBoxColumn4.HeaderText" xml:space="preserve">
-    <value>Atom</value>
-  </data>
   <data name="&gt;&gt;groupBoxPlanes.Type" xml:space="preserve">
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
@@ -2739,9 +2718,6 @@ adjust it individually)</value>
   </data>
   <data name="flowLayoutPanelLegend.Location" type="System.Drawing.Point, System.Drawing">
     <value>506, 0</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewTextBoxColumn2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="groupBoxPlanes.ToolTip" xml:space="preserve">
     <value />
@@ -3105,9 +3081,6 @@ adjust it individually)</value>
   </data>
   <data name="&gt;&gt;splitContainer1.Panel1.ZOrder" xml:space="preserve">
     <value>0</value>
-  </data>
-  <data name="dataGridViewTextBoxColumn4.Width" type="System.Int32, mscorlib">
-    <value>125</value>
   </data>
   <data name="tabPageCoordinateInformation.ToolTip" xml:space="preserve">
     <value />
@@ -3543,9 +3516,6 @@ the boundaries</value>
   <data name="buttonSetRange2.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
-  <data name="&gt;&gt;dataGridViewTextBoxColumn4.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="&gt;&gt;buttonSetCenter3.Parent" xml:space="preserve">
     <value>tabPageBoundUnitcell</value>
   </data>
@@ -3689,9 +3659,6 @@ the boundaries</value>
   </data>
   <data name="&gt;&gt;numericBoxBoundPlanesOpacity.ZOrder" xml:space="preserve">
     <value>1</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewTextBoxColumn2.Name" xml:space="preserve">
-    <value>dataGridViewTextBoxColumn2</value>
   </data>
   <data name="&gt;&gt;saveMainToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -4705,9 +4672,6 @@ the boundaries</value>
   <data name="colorControlLabelColor.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
-  <data name="&gt;&gt;dataGridViewTextBoxColumn1.Name" xml:space="preserve">
-    <value>dataGridViewTextBoxColumn1</value>
-  </data>
   <data name="&gt;&gt;colorControlCellPlane.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
@@ -5203,9 +5167,6 @@ the boundaries</value>
   <data name="splitContainer1.Orientation" type="System.Windows.Forms.Orientation, System.Windows.Forms">
     <value>Horizontal</value>
   </data>
-  <data name="dataGridViewTextBoxColumn3.HeaderText" xml:space="preserve">
-    <value>Atom</value>
-  </data>
   <data name="numericBoxCellPlaneAlpha.ToolTip" xml:space="preserve">
     <value>Opacity of cell planes (1: opaque, 0: transparent)</value>
   </data>
@@ -5367,9 +5328,6 @@ the boundaries</value>
   </data>
   <data name="flowLayoutPanelBoundType.ToolTip" xml:space="preserve">
     <value />
-  </data>
-  <data name="dataGridViewTextBoxColumn2.HeaderText" xml:space="preserve">
-    <value>Atom</value>
   </data>
   <data name="&gt;&gt;label4.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -5540,9 +5498,6 @@ the boundaries</value>
   <data name="toolStrip1.Size" type="System.Drawing.Size, System.Drawing">
     <value>560, 25</value>
   </data>
-  <data name="dataGridViewTextBoxColumn2.Width" type="System.Int32, mscorlib">
-    <value>125</value>
-  </data>
   <data name="tabPageInformation.Size" type="System.Drawing.Size, System.Drawing">
     <value>552, 218</value>
   </data>
@@ -5566,9 +5521,6 @@ the boundaries</value>
   </data>
   <data name="&gt;&gt;tabPageBoundUnitcell.Parent" xml:space="preserve">
     <value>tabControlBoundOption</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewTextBoxColumn1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="numericUpDownSubCellA.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>

@@ -99,12 +99,14 @@
             dataGridView.AllowUserToAddRows = false;
             dataGridView.AllowUserToDeleteRows = false;
             dataGridView.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI Variable Text", 9.75F);
-            dataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            //260516Cl resx の dataGridView.Font を継承するため AlternatingRowsDefaultCellStyle (Font のみ設定) は廃止
+            //dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI Variable Text", 9.75F);
+            //dataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             dataGridView.AutoGenerateColumns = false;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI Variable Text", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            //260516Cl resx の dataGridView.Font を継承するため Font 設定を廃止
+            //dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI Variable Text", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
             dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -115,7 +117,8 @@
             dataGridView.DataSource = bindingSourceScatteringFactor;
             dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle13.Font = new System.Drawing.Font("Segoe UI Variable Text", 9.75F);
+            //260516Cl resx の dataGridView.Font を継承するため Font 設定を廃止
+            //dataGridViewCellStyle13.Font = new System.Drawing.Font("Segoe UI Variable Text", 9.75F);
             dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -129,7 +132,8 @@
             dataGridView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             dataGridView.RowTemplate.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridView.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.SystemColors.Control;
-            dataGridView.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI Variable Text", 9.75F);
+            //260516Cl resx の dataGridView.Font を継承するため Font 設定を廃止
+            //dataGridView.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI Variable Text", 9.75F);
             dataGridView.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridView.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridView.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.SystemColors.HighlightText;

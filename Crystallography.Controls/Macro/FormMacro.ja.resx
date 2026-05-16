@@ -212,8 +212,14 @@
   <data name="textBoxMacroName.Size" type="System.Drawing.Size, System.Drawing">
     <value>286, 25</value>
   </data>
+  <data name="dataGridViewDebug.Font" type="System.Drawing.Font, System.Drawing">
+    <value>BIZ UDPGothic, 9pt</value>
+  </data>
   <data name="dataGridViewDebug.Size" type="System.Drawing.Size, System.Drawing">
     <value>214, 287</value>
+  </data>
+  <data name="dataGridView.Font" type="System.Drawing.Font, System.Drawing">
+    <value>BIZ UDPGothic, 9pt</value>
   </data>
   <data name="splitContainer2.Size" type="System.Drawing.Size, System.Drawing">
     <value>778, 287</value>

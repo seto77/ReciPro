@@ -131,6 +131,9 @@
     <value>120</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="dataGridView.Font" type="System.Drawing.Font, System.Drawing">
+    <value>BIZ UDPGothic, 9pt</value>
+  </data>
   <data name="dataGridView.Size" type="System.Drawing.Size, System.Drawing">
     <value>882, 282</value>
   </data>

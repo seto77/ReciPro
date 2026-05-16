@@ -27,15 +27,16 @@
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AtomControl));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            //260516Cl resx で dataGridView.Font を切替えるため、Font だけを設定していた cellStyle2-10 は廃止 (列のセルが dataGridView.Font を継承する)
+            //System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            //System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            //System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            //System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            //System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            //System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            //System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            //System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            //System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             radioButtonIsotoropy = new System.Windows.Forms.RadioButton();
             radioButtonAnisotropy = new System.Windows.Forms.RadioButton();
             flowLayoutPanelIso = new System.Windows.Forms.FlowLayoutPanel();
@@ -1321,7 +1322,8 @@
             dataGridView.AutoGenerateColumns = false;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("BIZ UDPGothic", 8F);
+            //260516Cl resx の dataGridView.Font を継承するため Font 設定を廃止
+            //dataGridViewCellStyle1.Font = new System.Drawing.Font("BIZ UDPGothic", 8F);
             dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -1349,8 +1351,9 @@
             // labelDataGridViewTextBoxColumn
             // 
             labelDataGridViewTextBoxColumn.DataPropertyName = "Label";
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("BIZ UDPGothic", 9F);
-            labelDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle2;
+            //260516Cl resx の dataGridView.Font を継承するため列の DefaultCellStyle は設定しない
+            //dataGridViewCellStyle2.Font = new System.Drawing.Font("BIZ UDPGothic", 9F);
+            //labelDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle2;
             resources.ApplyResources(labelDataGridViewTextBoxColumn, "labelDataGridViewTextBoxColumn");
             labelDataGridViewTextBoxColumn.Name = "labelDataGridViewTextBoxColumn";
             labelDataGridViewTextBoxColumn.ReadOnly = true;
@@ -1359,8 +1362,9 @@
             // elementDataGridViewTextBoxColumn
             // 
             elementDataGridViewTextBoxColumn.DataPropertyName = "Element";
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI Variable Text", 9F);
-            elementDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle3;
+            //260516Cl resx の dataGridView.Font を継承するため列の DefaultCellStyle は設定しない
+            //dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI Variable Text", 9F);
+            //elementDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle3;
             resources.ApplyResources(elementDataGridViewTextBoxColumn, "elementDataGridViewTextBoxColumn");
             elementDataGridViewTextBoxColumn.Name = "elementDataGridViewTextBoxColumn";
             elementDataGridViewTextBoxColumn.ReadOnly = true;
@@ -1370,8 +1374,9 @@
             // xDataGridViewTextBoxColumn
             // 
             xDataGridViewTextBoxColumn.DataPropertyName = "X";
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI Variable Text", 9F);
-            xDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle4;
+            //260516Cl resx の dataGridView.Font を継承するため列の DefaultCellStyle は設定しない
+            //dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI Variable Text", 9F);
+            //xDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle4;
             resources.ApplyResources(xDataGridViewTextBoxColumn, "xDataGridViewTextBoxColumn");
             xDataGridViewTextBoxColumn.Name = "xDataGridViewTextBoxColumn";
             xDataGridViewTextBoxColumn.ReadOnly = true;
@@ -1380,8 +1385,9 @@
             // yDataGridViewTextBoxColumn
             // 
             yDataGridViewTextBoxColumn.DataPropertyName = "Y";
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI Variable Text", 9F);
-            yDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle5;
+            //260516Cl resx の dataGridView.Font を継承するため列の DefaultCellStyle は設定しない
+            //dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI Variable Text", 9F);
+            //yDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle5;
             resources.ApplyResources(yDataGridViewTextBoxColumn, "yDataGridViewTextBoxColumn");
             yDataGridViewTextBoxColumn.Name = "yDataGridViewTextBoxColumn";
             yDataGridViewTextBoxColumn.ReadOnly = true;
@@ -1390,8 +1396,9 @@
             // zDataGridViewTextBoxColumn
             // 
             zDataGridViewTextBoxColumn.DataPropertyName = "Z";
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI Variable Text", 9F);
-            zDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle6;
+            //260516Cl resx の dataGridView.Font を継承するため列の DefaultCellStyle は設定しない
+            //dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI Variable Text", 9F);
+            //zDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle6;
             resources.ApplyResources(zDataGridViewTextBoxColumn, "zDataGridViewTextBoxColumn");
             zDataGridViewTextBoxColumn.Name = "zDataGridViewTextBoxColumn";
             zDataGridViewTextBoxColumn.ReadOnly = true;
@@ -1400,8 +1407,9 @@
             // occDataGridViewTextBoxColumn
             // 
             occDataGridViewTextBoxColumn.DataPropertyName = "Occ.";
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("BIZ UDPGothic", 9F);
-            occDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle7;
+            //260516Cl resx の dataGridView.Font を継承するため列の DefaultCellStyle は設定しない
+            //dataGridViewCellStyle7.Font = new System.Drawing.Font("BIZ UDPGothic", 9F);
+            //occDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle7;
             resources.ApplyResources(occDataGridViewTextBoxColumn, "occDataGridViewTextBoxColumn");
             occDataGridViewTextBoxColumn.Name = "occDataGridViewTextBoxColumn";
             occDataGridViewTextBoxColumn.ReadOnly = true;
@@ -1410,8 +1418,9 @@
             // multiDataGridViewTextBoxColumn
             // 
             multiDataGridViewTextBoxColumn.DataPropertyName = "Multi.";
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("BIZ UDPGothic", 9F);
-            multiDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle8;
+            //260516Cl resx の dataGridView.Font を継承するため列の DefaultCellStyle は設定しない
+            //dataGridViewCellStyle8.Font = new System.Drawing.Font("BIZ UDPGothic", 9F);
+            //multiDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle8;
             resources.ApplyResources(multiDataGridViewTextBoxColumn, "multiDataGridViewTextBoxColumn");
             multiDataGridViewTextBoxColumn.Name = "multiDataGridViewTextBoxColumn";
             multiDataGridViewTextBoxColumn.ReadOnly = true;
@@ -1420,8 +1429,9 @@
             // wyckLetDataGridViewTextBoxColumn
             // 
             wyckLetDataGridViewTextBoxColumn.DataPropertyName = "Wyck. Let.";
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("BIZ UDPGothic", 9F);
-            wyckLetDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle9;
+            //260516Cl resx の dataGridView.Font を継承するため列の DefaultCellStyle は設定しない
+            //dataGridViewCellStyle9.Font = new System.Drawing.Font("BIZ UDPGothic", 9F);
+            //wyckLetDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle9;
             resources.ApplyResources(wyckLetDataGridViewTextBoxColumn, "wyckLetDataGridViewTextBoxColumn");
             wyckLetDataGridViewTextBoxColumn.Name = "wyckLetDataGridViewTextBoxColumn";
             wyckLetDataGridViewTextBoxColumn.ReadOnly = true;
@@ -1430,8 +1440,9 @@
             // siteSymDataGridViewTextBoxColumn
             // 
             siteSymDataGridViewTextBoxColumn.DataPropertyName = "Site Sym.";
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("BIZ UDPGothic", 9F);
-            siteSymDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle10;
+            //260516Cl resx の dataGridView.Font を継承するため列の DefaultCellStyle は設定しない
+            //dataGridViewCellStyle10.Font = new System.Drawing.Font("BIZ UDPGothic", 9F);
+            //siteSymDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle10;
             resources.ApplyResources(siteSymDataGridViewTextBoxColumn, "siteSymDataGridViewTextBoxColumn");
             siteSymDataGridViewTextBoxColumn.Name = "siteSymDataGridViewTextBoxColumn";
             siteSymDataGridViewTextBoxColumn.ReadOnly = true;

@@ -423,6 +423,9 @@
   <data name="&gt;&gt;toolStripStatusLabelIdentifySpot.Name" xml:space="preserve">
     <value>toolStripStatusLabelIdentifySpot</value>
   </data>
+  <data name="dataGridViewGrains.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Variable Text, 9.75pt</value>
+  </data>
   <data name="dataGridViewGrains.Size" type="System.Drawing.Size, System.Drawing">
     <value>260, 111</value>
   </data>
@@ -518,6 +521,9 @@
   </data>
   <data name="buttonDonut.Size" type="System.Drawing.Size, System.Drawing">
     <value>111, 22</value>
+  </data>
+  <data name="dataGridViewCandidates.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="dataGridViewCandidates.Size" type="System.Drawing.Size, System.Drawing">
     <value>184, 111</value>
@@ -1265,6 +1271,9 @@ and the fitting range in the box on the right.</value>
   </data>
   <data name="&gt;&gt;buttonStop.Parent" xml:space="preserve">
     <value>groupBoxIndex</value>
+  </data>
+  <data name="dataGridViewSpots.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
   <data name="dataGridViewSpots.Size" type="System.Drawing.Size, System.Drawing">
     <value>747, 283</value>

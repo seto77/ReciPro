@@ -247,7 +247,8 @@
             dataGridViewDebug.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { ColumnName, Column4 });
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(255, 192, 192);
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("BIZ UDPGothic", 9F);
+            //260516Cl resx の dataGridViewDebug.Font を継承するため Font 設定を廃止
+            //dataGridViewCellStyle2.Font = new System.Drawing.Font("BIZ UDPGothic", 9F);
             dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(255, 192, 192);
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
@@ -343,7 +344,8 @@
             dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { Column1, Column2 });
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(255, 220, 255);
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("BIZ UDPGothic", 9F);
+            //260516Cl resx の dataGridView.Font を継承するため Font 設定を廃止
+            //dataGridViewCellStyle4.Font = new System.Drawing.Font("BIZ UDPGothic", 9F);
             dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.Purple;
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;

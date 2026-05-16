@@ -58,11 +58,12 @@
             dataGridViewImageColumn9 = new System.Windows.Forms.DataGridViewImageColumn();
             dataGridViewImageColumn10 = new System.Windows.Forms.DataGridViewImageColumn();
             toolTip = new System.Windows.Forms.ToolTip(components);
+            checkBoxEquivalency = new System.Windows.Forms.CheckBox();
+            numericBoxTranslation = new NumericBox();
             label6 = new System.Windows.Forms.Label();
             label1 = new System.Windows.Forms.Label();
             label2 = new System.Windows.Forms.Label();
             numericBoxH = new NumericBox();
-            checkBoxEquivalency = new System.Windows.Forms.CheckBox();
             numericBoxK = new NumericBox();
             numericBoxL = new NumericBox();
             colorControl = new ColorControl();
@@ -70,7 +71,6 @@
             numericBoxDistanceD = new NumericBox();
             numericBoxDistance = new NumericBox();
             panel2 = new System.Windows.Forms.Panel();
-            numericBoxTranslation = new NumericBox();
             label3 = new System.Windows.Forms.Label();
             label7 = new System.Windows.Forms.Label();
             label5 = new System.Windows.Forms.Label();
@@ -113,7 +113,6 @@
             // 
             // dataGridView
             // 
-            resources.ApplyResources(dataGridView, "dataGridView");
             dataGridView.AllowUserToAddRows = false;
             dataGridView.AllowUserToDeleteRows = false;
             dataGridView.AllowUserToResizeColumns = false;
@@ -121,12 +120,14 @@
             dataGridView.AutoGenerateColumns = false;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("BIZ UDPGothic", 9F);
+            //260516Cl resx の dataGridView.Font を継承するため Font 設定を廃止
+            //dataGridViewCellStyle1.Font = new System.Drawing.Font("BIZ UDPGothic", 9F);
             dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             dataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            resources.ApplyResources(dataGridView, "dataGridView");
             dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { enabledDataGridViewCheckBoxColumn, hDataGridViewTextBoxColumn, kDataGridViewTextBoxColumn, lDataGridViewTextBoxColumn, equivalencyDataGridViewCheckBoxColumn, MultipleOfD, distanceDataGridViewTextBoxColumn, colorDataGridViewTextBoxColumn });
             dataGridView.DataSource = bindingSource;
@@ -134,16 +135,15 @@
             dataGridView.Name = "dataGridView";
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("BIZ UDPGothic", 9F);
+            //260516Cl resx の dataGridView.Font を継承するため Font 設定を廃止
+            //dataGridViewCellStyle2.Font = new System.Drawing.Font("BIZ UDPGothic", 9F);
             dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             dataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
             dataGridView.RowHeadersVisible = false;
-            //dataGridView.RowTemplate.Height = 21;                                                                                                   // 260413Cl DPIスケーリング対応のため削除
             dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            toolTip.SetToolTip(dataGridView, resources.GetString("dataGridView.ToolTip"));
             dataGridView.CellValueChanged += dataGridView_CellValueChanged;
             dataGridView.CurrentCellDirtyStateChanged += dataGridView_CurrentCellDirtyStateChanged;
             // 
@@ -222,22 +222,20 @@
             // 
             // panel1
             // 
-            resources.ApplyResources(panel1, "panel1");
             panel1.Controls.Add(buttonAddBond);
             panel1.Controls.Add(numericBoxMaximumDistanceFromOrigin);
             panel1.Controls.Add(buttonChangeBond);
             panel1.Controls.Add(buttonDeleteBond);
             panel1.Controls.Add(checkBoxImmediateUpdate);
+            resources.ApplyResources(panel1, "panel1");
             panel1.Name = "panel1";
-            toolTip.SetToolTip(panel1, resources.GetString("panel1.ToolTip"));
             // 
             // buttonAddBond
             // 
-            resources.ApplyResources(buttonAddBond, "buttonAddBond");
             buttonAddBond.BackColor = System.Drawing.Color.SteelBlue;
+            resources.ApplyResources(buttonAddBond, "buttonAddBond");
             buttonAddBond.ForeColor = System.Drawing.Color.White;
             buttonAddBond.Name = "buttonAddBond";
-            toolTip.SetToolTip(buttonAddBond, resources.GetString("buttonAddBond.ToolTip"));
             buttonAddBond.UseVisualStyleBackColor = false;
             buttonAddBond.Click += buttonAdd_Click;
             // 
@@ -252,18 +250,17 @@
             numericBoxMaximumDistanceFromOrigin.Minimum = -100D;
             numericBoxMaximumDistanceFromOrigin.Name = "numericBoxMaximumDistanceFromOrigin";
             numericBoxMaximumDistanceFromOrigin.RadianValue = 0.26179938779914941D;
-            numericBoxMaximumDistanceFromOrigin.RoundErrorAccuracy = -1;
             numericBoxMaximumDistanceFromOrigin.ShowUpDown = true;
             numericBoxMaximumDistanceFromOrigin.SkipEventDuringInput = false;
             numericBoxMaximumDistanceFromOrigin.ThonsandsSeparator = true;
-            toolTip.SetToolTip(numericBoxMaximumDistanceFromOrigin, resources.GetString("numericBoxMaximumDistanceFromOrigin.ToolTip"));
+            toolTip.SetToolTip(numericBoxMaximumDistanceFromOrigin, resources.GetString("numericBoxMaximumDistanceFromOrigin.ToolTip1"));
             numericBoxMaximumDistanceFromOrigin.Value = 15D;
             numericBoxMaximumDistanceFromOrigin.ValueChanged += numericBoxMaximumDistanceFromOrigin_ValueChanged;
             // 
             // buttonChangeBond
             // 
-            resources.ApplyResources(buttonChangeBond, "buttonChangeBond");
             buttonChangeBond.BackColor = System.Drawing.Color.SteelBlue;
+            resources.ApplyResources(buttonChangeBond, "buttonChangeBond");
             buttonChangeBond.ForeColor = System.Drawing.Color.White;
             buttonChangeBond.Name = "buttonChangeBond";
             toolTip.SetToolTip(buttonChangeBond, resources.GetString("buttonChangeBond.ToolTip"));
@@ -344,23 +341,47 @@
             dataGridViewImageColumn10.Name = "dataGridViewImageColumn10";
             dataGridViewImageColumn10.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
+            // checkBoxEquivalency
+            // 
+            resources.ApplyResources(checkBoxEquivalency, "checkBoxEquivalency");
+            checkBoxEquivalency.Checked = true;
+            checkBoxEquivalency.CheckState = System.Windows.Forms.CheckState.Checked;
+            checkBoxEquivalency.Name = "checkBoxEquivalency";
+            toolTip.SetToolTip(checkBoxEquivalency, resources.GetString("checkBoxEquivalency.ToolTip"));
+            checkBoxEquivalency.UseVisualStyleBackColor = true;
+            checkBoxEquivalency.CheckedChanged += checkBoxEquivalency_CheckedChanged;
+            // 
+            // numericBoxTranslation
+            // 
+            resources.ApplyResources(numericBoxTranslation, "numericBoxTranslation");
+            numericBoxTranslation.BackColor = System.Drawing.SystemColors.Control;
+            numericBoxTranslation.DecimalPlaces = 3;
+            numericBoxTranslation.FooterBackColor = System.Drawing.SystemColors.Control;
+            numericBoxTranslation.HeaderBackColor = System.Drawing.SystemColors.Control;
+            numericBoxTranslation.Maximum = 100D;
+            numericBoxTranslation.Minimum = -100D;
+            numericBoxTranslation.Name = "numericBoxTranslation";
+            numericBoxTranslation.ShowUpDown = true;
+            numericBoxTranslation.SkipEventDuringInput = false;
+            numericBoxTranslation.ThonsandsSeparator = true;
+            toolTip.SetToolTip(numericBoxTranslation, resources.GetString("numericBoxTranslation.ToolTip1"));
+            numericBoxTranslation.UpDown_Increment = 0.1D;
+            numericBoxTranslation.ValueChanged += numericBoxDistanceD_ValueChanged;
+            // 
             // label6
             // 
             resources.ApplyResources(label6, "label6");
             label6.Name = "label6";
-            toolTip.SetToolTip(label6, resources.GetString("label6.ToolTip"));
             // 
             // label1
             // 
             resources.ApplyResources(label1, "label1");
             label1.Name = "label1";
-            toolTip.SetToolTip(label1, resources.GetString("label1.ToolTip"));
             // 
             // label2
             // 
             resources.ApplyResources(label2, "label2");
             label2.Name = "label2";
-            toolTip.SetToolTip(label2, resources.GetString("label2.ToolTip"));
             // 
             // numericBoxH
             // 
@@ -372,22 +393,10 @@
             numericBoxH.Maximum = 10D;
             numericBoxH.Minimum = -10D;
             numericBoxH.Name = "numericBoxH";
-            numericBoxH.RoundErrorAccuracy = -1;
             numericBoxH.ShowUpDown = true;
             numericBoxH.SkipEventDuringInput = false;
             numericBoxH.ThonsandsSeparator = true;
-            toolTip.SetToolTip(numericBoxH, resources.GetString("numericBoxH.ToolTip"));
             numericBoxH.ValueChanged += numericBoxDistanceD_ValueChanged;
-            // 
-            // checkBoxEquivalency
-            // 
-            resources.ApplyResources(checkBoxEquivalency, "checkBoxEquivalency");
-            checkBoxEquivalency.Checked = true;
-            checkBoxEquivalency.CheckState = System.Windows.Forms.CheckState.Checked;
-            checkBoxEquivalency.Name = "checkBoxEquivalency";
-            toolTip.SetToolTip(checkBoxEquivalency, resources.GetString("checkBoxEquivalency.ToolTip"));
-            checkBoxEquivalency.UseVisualStyleBackColor = true;
-            checkBoxEquivalency.CheckedChanged += checkBoxEquivalency_CheckedChanged;
             // 
             // numericBoxK
             // 
@@ -399,11 +408,9 @@
             numericBoxK.Maximum = 10D;
             numericBoxK.Minimum = -10D;
             numericBoxK.Name = "numericBoxK";
-            numericBoxK.RoundErrorAccuracy = -1;
             numericBoxK.ShowUpDown = true;
             numericBoxK.SkipEventDuringInput = false;
             numericBoxK.ThonsandsSeparator = true;
-            toolTip.SetToolTip(numericBoxK, resources.GetString("numericBoxK.ToolTip"));
             numericBoxK.ValueChanged += numericBoxDistanceD_ValueChanged;
             // 
             // numericBoxL
@@ -416,20 +423,18 @@
             numericBoxL.Maximum = 10D;
             numericBoxL.Minimum = -10D;
             numericBoxL.Name = "numericBoxL";
-            numericBoxL.RoundErrorAccuracy = -1;
             numericBoxL.ShowUpDown = true;
             numericBoxL.SkipEventDuringInput = false;
             numericBoxL.ThonsandsSeparator = true;
-            toolTip.SetToolTip(numericBoxL, resources.GetString("numericBoxL.ToolTip"));
             numericBoxL.ValueChanged += numericBoxDistanceD_ValueChanged;
             // 
             // colorControl
             // 
-            resources.ApplyResources(colorControl, "colorControl");
             colorControl.Argb = -16728064;
+            resources.ApplyResources(colorControl, "colorControl");
+            colorControl.BackColor = System.Drawing.SystemColors.Control;
             colorControl.Blue = 0;
             colorControl.BlueF = 0F;
-            colorControl.BoxSize = new System.Drawing.Size(24, 24);
             colorControl.Color = System.Drawing.Color.FromArgb(0, 192, 0);
             colorControl.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             colorControl.Green = 192;
@@ -437,7 +442,6 @@
             colorControl.Name = "colorControl";
             colorControl.Red = 0;
             colorControl.RedF = 0F;
-            toolTip.SetToolTip(colorControl, resources.GetString("colorControl.ToolTip"));
             colorControl.ColorChanged += colorControl_ColorChanged;
             // 
             // flowLayoutPanel1
@@ -446,7 +450,6 @@
             flowLayoutPanel1.Controls.Add(numericBoxDistanceD);
             flowLayoutPanel1.Controls.Add(numericBoxDistance);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
-            toolTip.SetToolTip(flowLayoutPanel1, resources.GetString("flowLayoutPanel1.ToolTip"));
             // 
             // numericBoxDistanceD
             // 
@@ -459,11 +462,9 @@
             numericBoxDistanceD.Minimum = -20D;
             numericBoxDistanceD.Name = "numericBoxDistanceD";
             numericBoxDistanceD.RadianValue = 0.017453292519943295D;
-            numericBoxDistanceD.RoundErrorAccuracy = -1;
             numericBoxDistanceD.ShowUpDown = true;
             numericBoxDistanceD.SkipEventDuringInput = false;
             numericBoxDistanceD.ThonsandsSeparator = true;
-            toolTip.SetToolTip(numericBoxDistanceD, resources.GetString("numericBoxDistanceD.ToolTip1"));
             numericBoxDistanceD.UpDown_Increment = 0.1D;
             numericBoxDistanceD.Value = 1D;
             numericBoxDistanceD.ValueChanged += numericBoxDistanceD_ValueChanged;
@@ -478,15 +479,13 @@
             numericBoxDistance.Maximum = 100D;
             numericBoxDistance.Minimum = -100D;
             numericBoxDistance.Name = "numericBoxDistance";
-            numericBoxDistance.RoundErrorAccuracy = -1;
             numericBoxDistance.SkipEventDuringInput = false;
             numericBoxDistance.ThonsandsSeparator = true;
-            toolTip.SetToolTip(numericBoxDistance, resources.GetString("numericBoxDistance.ToolTip1"));
             numericBoxDistance.ValueChanged += numericBoxDistance_ValueChanged;
             // 
             // panel2
             // 
-            resources.ApplyResources(panel2, "panel2");
+            panel2.Controls.Add(label6);
             panel2.Controls.Add(numericBoxTranslation);
             panel2.Controls.Add(flowLayoutPanel1);
             panel2.Controls.Add(colorControl);
@@ -500,62 +499,37 @@
             panel2.Controls.Add(label7);
             panel2.Controls.Add(label5);
             panel2.Controls.Add(label4);
-            panel2.Controls.Add(label6);
+            resources.ApplyResources(panel2, "panel2");
             panel2.Name = "panel2";
-            toolTip.SetToolTip(panel2, resources.GetString("panel2.ToolTip"));
-            // 
-            // numericBoxTranslation
-            // 
-            resources.ApplyResources(numericBoxTranslation, "numericBoxTranslation");
-            numericBoxTranslation.BackColor = System.Drawing.SystemColors.Control;
-            numericBoxTranslation.DecimalPlaces = 3;
-            numericBoxTranslation.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxTranslation.HeaderBackColor = System.Drawing.SystemColors.Control;
-            numericBoxTranslation.Maximum = 100D;
-            numericBoxTranslation.Minimum = -100D;
-            numericBoxTranslation.Name = "numericBoxTranslation";
-            numericBoxTranslation.RoundErrorAccuracy = -1;
-            numericBoxTranslation.ShowUpDown = true;
-            numericBoxTranslation.SkipEventDuringInput = false;
-            numericBoxTranslation.ThonsandsSeparator = true;
-            toolTip.SetToolTip(numericBoxTranslation, resources.GetString("numericBoxTranslation.ToolTip"));
-            numericBoxTranslation.UpDown_Increment = 0.1D;
-            numericBoxTranslation.ValueChanged += numericBoxDistanceD_ValueChanged;
             // 
             // label3
             // 
             resources.ApplyResources(label3, "label3");
             label3.Name = "label3";
-            toolTip.SetToolTip(label3, resources.GetString("label3.ToolTip"));
             // 
             // label7
             // 
             resources.ApplyResources(label7, "label7");
             label7.Name = "label7";
-            toolTip.SetToolTip(label7, resources.GetString("label7.ToolTip"));
             // 
             // label5
             // 
             resources.ApplyResources(label5, "label5");
             label5.Name = "label5";
-            toolTip.SetToolTip(label5, resources.GetString("label5.ToolTip"));
             // 
             // label4
             // 
             resources.ApplyResources(label4, "label4");
             label4.Name = "label4";
-            toolTip.SetToolTip(label4, resources.GetString("label4.ToolTip"));
             // 
             // BoundControl
             // 
             resources.ApplyResources(this, "$this");
-            AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             Controls.Add(dataGridView);
             Controls.Add(panel1);
             Controls.Add(panel2);
             Name = "BoundControl";
-            toolTip.SetToolTip(this, resources.GetString("$this.ToolTip"));
             ((System.ComponentModel.ISupportInitialize)dataGridView).EndInit();
             ((System.ComponentModel.ISupportInitialize)bindingSource).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataSet).EndInit();
