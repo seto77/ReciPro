@@ -1156,7 +1156,7 @@ public class Vector3D : Vector3DBase, IComparable<Vector3D>, ICloneable
         if (Z >= 1 || Z < 0) Z -= Math.Floor(Z);
     }
 
-    public override string ToString() => Text != "" ? Text : $"{X}, {Y}, {Z}";
+    public override string ToString() => string.IsNullOrEmpty(Text) ? base.ToString() : Text; // 260517Cl Text が null/"" のときは Vector3DBase.ToString() に委譲（書式の二重定義を排除）
 
     public static Vector3D RandomVector(Random rn) => RandomVector(rn.NextDouble(), rn.NextDouble());
 

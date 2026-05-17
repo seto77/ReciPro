@@ -121,26 +121,8 @@ namespace ReciPro
             radioButtonZigzagScan = new System.Windows.Forms.RadioButton();
             checkBox3 = new System.Windows.Forms.CheckBox();
             checkBox2 = new System.Windows.Forms.CheckBox();
-            label37 = new System.Windows.Forms.Label();
-            label9 = new System.Windows.Forms.Label();
-            label8 = new System.Windows.Forms.Label();
-            label32 = new System.Windows.Forms.Label();
-            label26 = new System.Windows.Forms.Label();
-            label27 = new System.Windows.Forms.Label();
-            label36 = new System.Windows.Forms.Label();
-            label30 = new System.Windows.Forms.Label();
             checkBox1 = new System.Windows.Forms.CheckBox();
-            label28 = new System.Windows.Forms.Label();
-            label2 = new System.Windows.Forms.Label();
             label25 = new System.Windows.Forms.Label();
-            label23 = new System.Windows.Forms.Label();
-            label10 = new System.Windows.Forms.Label();
-            label34 = new System.Windows.Forms.Label();
-            label33 = new System.Windows.Forms.Label();
-            label24 = new System.Windows.Forms.Label();
-            label31 = new System.Windows.Forms.Label();
-            label21 = new System.Windows.Forms.Label();
-            label20 = new System.Windows.Forms.Label();
             label22 = new System.Windows.Forms.Label();
             numericBoxRxSpeed = new NumericBox();
             numericBoxRySpeed = new NumericBox();
@@ -784,6 +766,7 @@ namespace ReciPro
             colorControlGreatCircle.BackColor = System.Drawing.SystemColors.Control;
             colorControlGreatCircle.Blue = 0;
             colorControlGreatCircle.BlueF = 0F;
+            colorControlGreatCircle.BoxSize = new System.Drawing.Size(20, 20);
             colorControlGreatCircle.Color = System.Drawing.Color.FromArgb(255, 128, 0);
             colorControlGreatCircle.Green = 128;
             colorControlGreatCircle.GreenF = 0.5019608F;
@@ -880,6 +863,7 @@ namespace ReciPro
             resources.ApplyResources(checkedListBoxCircles, "checkedListBoxCircles");
             checkedListBoxCircles.FormattingEnabled = true;
             checkedListBoxCircles.Name = "checkedListBoxCircles";
+            checkedListBoxCircles.ItemCheck += checkedListBoxCircles_ItemCheck;
             // 
             // tabPage3
             // 
@@ -889,26 +873,8 @@ namespace ReciPro
             tabPage3.Controls.Add(radioButtonZigzagScan);
             tabPage3.Controls.Add(checkBox3);
             tabPage3.Controls.Add(checkBox2);
-            tabPage3.Controls.Add(label37);
-            tabPage3.Controls.Add(label9);
-            tabPage3.Controls.Add(label8);
-            tabPage3.Controls.Add(label32);
-            tabPage3.Controls.Add(label26);
-            tabPage3.Controls.Add(label27);
-            tabPage3.Controls.Add(label36);
-            tabPage3.Controls.Add(label30);
             tabPage3.Controls.Add(checkBox1);
-            tabPage3.Controls.Add(label28);
-            tabPage3.Controls.Add(label2);
             tabPage3.Controls.Add(label25);
-            tabPage3.Controls.Add(label23);
-            tabPage3.Controls.Add(label10);
-            tabPage3.Controls.Add(label34);
-            tabPage3.Controls.Add(label33);
-            tabPage3.Controls.Add(label24);
-            tabPage3.Controls.Add(label31);
-            tabPage3.Controls.Add(label21);
-            tabPage3.Controls.Add(label20);
             tabPage3.Controls.Add(label22);
             tabPage3.Controls.Add(numericBoxRxSpeed);
             tabPage3.Controls.Add(numericBoxRySpeed);
@@ -963,106 +929,16 @@ namespace ReciPro
             checkBox2.Name = "checkBox2";
             checkBox2.UseVisualStyleBackColor = true;
             // 
-            // label37
-            // 
-            resources.ApplyResources(label37, "label37");
-            label37.Name = "label37";
-            // 
-            // label9
-            // 
-            resources.ApplyResources(label9, "label9");
-            label9.Name = "label9";
-            // 
-            // label8
-            // 
-            resources.ApplyResources(label8, "label8");
-            label8.Name = "label8";
-            // 
-            // label32
-            // 
-            resources.ApplyResources(label32, "label32");
-            label32.Name = "label32";
-            // 
-            // label26
-            // 
-            resources.ApplyResources(label26, "label26");
-            label26.Name = "label26";
-            // 
-            // label27
-            // 
-            resources.ApplyResources(label27, "label27");
-            label27.Name = "label27";
-            // 
-            // label36
-            // 
-            resources.ApplyResources(label36, "label36");
-            label36.Name = "label36";
-            // 
-            // label30
-            // 
-            resources.ApplyResources(label30, "label30");
-            label30.Name = "label30";
-            // 
             // checkBox1
             // 
             resources.ApplyResources(checkBox1, "checkBox1");
             checkBox1.Name = "checkBox1";
             checkBox1.UseVisualStyleBackColor = true;
             // 
-            // label28
-            // 
-            resources.ApplyResources(label28, "label28");
-            label28.Name = "label28";
-            // 
-            // label2
-            // 
-            resources.ApplyResources(label2, "label2");
-            label2.Name = "label2";
-            // 
             // label25
             // 
             resources.ApplyResources(label25, "label25");
             label25.Name = "label25";
-            // 
-            // label23
-            // 
-            resources.ApplyResources(label23, "label23");
-            label23.Name = "label23";
-            // 
-            // label10
-            // 
-            resources.ApplyResources(label10, "label10");
-            label10.Name = "label10";
-            // 
-            // label34
-            // 
-            resources.ApplyResources(label34, "label34");
-            label34.Name = "label34";
-            // 
-            // label33
-            // 
-            resources.ApplyResources(label33, "label33");
-            label33.Name = "label33";
-            // 
-            // label24
-            // 
-            resources.ApplyResources(label24, "label24");
-            label24.Name = "label24";
-            // 
-            // label31
-            // 
-            resources.ApplyResources(label31, "label31");
-            label31.Name = "label31";
-            // 
-            // label21
-            // 
-            resources.ApplyResources(label21, "label21");
-            label21.Name = "label21";
-            // 
-            // label20
-            // 
-            resources.ApplyResources(label20, "label20");
-            label20.Name = "label20";
             // 
             // label22
             // 
@@ -1079,6 +955,7 @@ namespace ReciPro
             numericBoxRxSpeed.RadianValue = 0.31415926535897931D;
             numericBoxRxSpeed.SkipEventDuringInput = false;
             numericBoxRxSpeed.SmartIncrement = true;
+            numericBoxRxSpeed.TextFontSize = 8F;
             numericBoxRxSpeed.ThonsandsSeparator = true;
             numericBoxRxSpeed.Value = 18D;
             // 
@@ -1092,6 +969,7 @@ namespace ReciPro
             numericBoxRySpeed.RadianValue = 0.017453292519943295D;
             numericBoxRySpeed.SkipEventDuringInput = false;
             numericBoxRySpeed.SmartIncrement = true;
+            numericBoxRySpeed.TextFontSize = 8F;
             numericBoxRySpeed.ThonsandsSeparator = true;
             numericBoxRySpeed.Value = 1D;
             // 
@@ -1105,6 +983,7 @@ namespace ReciPro
             numericBoxRzSpeed.RadianValue = 0.034906585039886591D;
             numericBoxRzSpeed.SkipEventDuringInput = false;
             numericBoxRzSpeed.SmartIncrement = true;
+            numericBoxRzSpeed.TextFontSize = 8F;
             numericBoxRzSpeed.ThonsandsSeparator = true;
             numericBoxRzSpeed.Value = 2D;
             // 
@@ -1118,6 +997,7 @@ namespace ReciPro
             numericBoxTotalTime.RadianValue = 1.7453292519943295D;
             numericBoxTotalTime.SkipEventDuringInput = false;
             numericBoxTotalTime.SmartIncrement = true;
+            numericBoxTotalTime.TextFontSize = 8F;
             numericBoxTotalTime.ThonsandsSeparator = true;
             numericBoxTotalTime.Value = 100D;
             // 
@@ -1131,6 +1011,7 @@ namespace ReciPro
             numericBoxAngularSpeed.RadianValue = 0.52359877559829882D;
             numericBoxAngularSpeed.SkipEventDuringInput = false;
             numericBoxAngularSpeed.SmartIncrement = true;
+            numericBoxAngularSpeed.TextFontSize = 8F;
             numericBoxAngularSpeed.ThonsandsSeparator = true;
             numericBoxAngularSpeed.Value = 30D;
             // 
@@ -1144,6 +1025,7 @@ namespace ReciPro
             numericBoxRyStep.RadianValue = 0.0034906585039886592D;
             numericBoxRyStep.SkipEventDuringInput = false;
             numericBoxRyStep.SmartIncrement = true;
+            numericBoxRyStep.TextFontSize = 8F;
             numericBoxRyStep.ThonsandsSeparator = true;
             numericBoxRyStep.Value = 0.2D;
             // 
@@ -1157,6 +1039,7 @@ namespace ReciPro
             numericBoxRadialAngle.RadianValue = 0.13962634015954636D;
             numericBoxRadialAngle.SkipEventDuringInput = false;
             numericBoxRadialAngle.SmartIncrement = true;
+            numericBoxRadialAngle.TextFontSize = 8F;
             numericBoxRadialAngle.ThonsandsSeparator = true;
             numericBoxRadialAngle.Value = 8D;
             // 
@@ -1170,6 +1053,7 @@ namespace ReciPro
             numericBoxRyOscillation.RadianValue = 0.13962634015954636D;
             numericBoxRyOscillation.SkipEventDuringInput = false;
             numericBoxRyOscillation.SmartIncrement = true;
+            numericBoxRyOscillation.TextFontSize = 8F;
             numericBoxRyOscillation.ThonsandsSeparator = true;
             numericBoxRyOscillation.Value = 8D;
             // 
@@ -1183,6 +1067,7 @@ namespace ReciPro
             numericBoxRzOscillation.RadianValue = 0.13962634015954636D;
             numericBoxRzOscillation.SkipEventDuringInput = false;
             numericBoxRzOscillation.SmartIncrement = true;
+            numericBoxRzOscillation.TextFontSize = 8F;
             numericBoxRzOscillation.ThonsandsSeparator = true;
             numericBoxRzOscillation.Value = 8D;
             // 
@@ -1473,6 +1358,7 @@ namespace ReciPro
             numericBoxHighStructureFactor.RadianValue = 1.7453292519943295D;
             numericBoxHighStructureFactor.ShowUpDown = true;
             numericBoxHighStructureFactor.SmartIncrement = true;
+            numericBoxHighStructureFactor.TextFontSize = 9F;
             numericBoxHighStructureFactor.Value = 100D;
             numericBoxHighStructureFactor.ValueChanged += numericBoxHighStructureFactor_ValueChanged;
             // 
@@ -1502,6 +1388,7 @@ namespace ReciPro
             numericBox1.RadianValue = 0.034906585039886591D;
             numericBox1.ShowUpDown = true;
             numericBox1.SkipEventDuringInput = false;
+            numericBox1.TextFontSize = 9F;
             numericBox1.ThonsandsSeparator = true;
             numericBox1.Value = 2D;
             numericBox1.ValueChanged += numericUpDown_ValueChanged;
@@ -1523,6 +1410,7 @@ namespace ReciPro
             numericBox2.RadianValue = 0.034906585039886591D;
             numericBox2.ShowUpDown = true;
             numericBox2.SkipEventDuringInput = false;
+            numericBox2.TextFontSize = 9F;
             numericBox2.ThonsandsSeparator = true;
             numericBox2.Value = 2D;
             numericBox2.ValueChanged += numericUpDown_ValueChanged;
@@ -1551,6 +1439,7 @@ namespace ReciPro
             numericBox4.ShowUpDown = true;
             numericBox4.SkipEventDuringInput = false;
             numericBox4.TextBoxBackColor = System.Drawing.SystemColors.Control;
+            numericBox4.TextFontSize = 9F;
             numericBox4.ThonsandsSeparator = true;
             numericBox4.Value = 2D;
             // 
@@ -1571,6 +1460,7 @@ namespace ReciPro
             numericBox3.RadianValue = 0.034906585039886591D;
             numericBox3.ShowUpDown = true;
             numericBox3.SkipEventDuringInput = false;
+            numericBox3.TextFontSize = 9F;
             numericBox3.ThonsandsSeparator = true;
             numericBox3.Value = 2D;
             numericBox3.ValueChanged += numericUpDown_ValueChanged;
@@ -1939,25 +1829,13 @@ namespace ReciPro
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.Button buttonYusaModeStop;
         private System.Windows.Forms.Button buttonYusaModeStart;
-        private System.Windows.Forms.Label label37;
-        private System.Windows.Forms.Label label32;
-        private System.Windows.Forms.Label label36;
-        private System.Windows.Forms.Label label30;
         private System.Windows.Forms.Label label25;
-        private System.Windows.Forms.Label label34;
-        private System.Windows.Forms.Label label33;
-        private System.Windows.Forms.Label label24;
-        private System.Windows.Forms.Label label31;
-        private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.Label label20;
         public NumericBox numericBoxRxSpeed;
         public NumericBox numericBoxRySpeed;
         public NumericBox numericBoxRzSpeed;
         public NumericBox numericBoxRyOscillation;
         public NumericBox numericBoxRzOscillation;
         public NumericBox numericBoxRyStep;
-        private System.Windows.Forms.Label label26;
-        private System.Windows.Forms.Label label23;
         private System.Windows.Forms.GroupBox groupBoxIndices;
         private System.Windows.Forms.Label labelKV;
         private System.Windows.Forms.RadioButton radioButtonRange;
@@ -1970,12 +1848,6 @@ namespace ReciPro
         public NumericBox numericBoxTotalTime;
         public NumericBox numericBoxAngularSpeed;
         public NumericBox numericBoxRadialAngle;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label27;
-        private System.Windows.Forms.Label label28;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label10;
         public System.Windows.Forms.RadioButton radioButtonRotationalScan;
         public System.Windows.Forms.RadioButton radioButtonZigzagScan;
         private System.Windows.Forms.Panel panel3;

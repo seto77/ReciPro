@@ -169,7 +169,7 @@ public partial class FormStereonet : FormBase
 
         g.SmoothingMode = SmoothingMode.AntiAlias;
         g.Clear(colorControlBackGround.Color);
-        
+
         DrawOutline(g);
         DrawStereoNet(g);
         DrawCircles(g);
@@ -620,13 +620,11 @@ public partial class FormStereonet : FormBase
     /// <param name="g"></param>
     private void DrawCircles(Graphics g)
     {
-        //大円描画
-        Vector3D vec;
         float width;
         var pen = new Pen(colorControlGreatCircle.Color, 0.002f);
-        for (int i = 0; i < checkedListBoxCircles.CheckedItems.Count; i++)
+        foreach (Vector3D v in checkedListBoxCircles.CheckedItems) // 260517Cl 型付き foreach にしてキャストを省略
         {
-            vec = Vector3D.Normarize(formMain.Crystal.RotationMatrix * (Vector3D)(checkedListBoxCircles.CheckedItems[i]));
+            var vec = Vector3D.Normarize(formMain.Crystal.RotationMatrix * v);
             if (Abs(vec.Z) > 0.9999)//大円が最外周とほぼ一致するときは
             {
                 if (vec.Z > 0)
@@ -815,7 +813,9 @@ public partial class FormStereonet : FormBase
             if (u == 0 && v == 0 && w == 0) return;
             var vec = new Vector3D(u * formMain.Crystal.A_Axis + v * formMain.Crystal.B_Axis + w * formMain.Crystal.C_Axis) { Text = $"[{u} {v} {w}]" };
             formMain.Crystal.VectorOfPole.Add(vec);
-            checkedListBoxCircles.Items.Add(vec, true);
+            suppressItemCheck = true; // 260517Cl 直後の Draw() が回るので ItemCheck の BeginInvoke は抑止
+            try { checkedListBoxCircles.Items.Add(vec, true); }
+            finally { suppressItemCheck = false; }
             Draw();
         }
         else if (radioButtonCircleByPlanes.Checked)
@@ -835,7 +835,9 @@ public partial class FormStereonet : FormBase
             var vec = new Vector3D(u * formMain.Crystal.A_Axis + v * formMain.Crystal.B_Axis + w * formMain.Crystal.C_Axis) { Text = $"({h1} {k1} {l1}) & ({h2} {k2} {l2})" };
 
             formMain.Crystal.VectorOfPole.Add(vec);
-            checkedListBoxCircles.Items.Add(vec, true);
+            suppressItemCheck = true; // 260517Cl 直後の Draw() が回るので ItemCheck の BeginInvoke は抑止
+            try { checkedListBoxCircles.Items.Add(vec, true); }
+            finally { suppressItemCheck = false; }
             Draw();
         }
     }
@@ -860,6 +862,16 @@ public partial class FormStereonet : FormBase
         panelAxis.Enabled = radioButtonCircleByAxis.Checked;
         panelPlanes.Enabled = radioButtonCircleByPlanes.Checked;
     }
+
+    private bool suppressItemCheck; // 260517Cl 追加 プログラム的に Items.Add(item, true) する際に ItemCheck からの冗長な Draw を抑止
+
+    private void checkedListBoxCircles_ItemCheck(object sender, ItemCheckEventArgs e)
+    {
+        if (suppressItemCheck) return; // 260517Cl SetCrystal/buttonAddCircle の populate 中はスキップ（呼び出し元が明示的に Draw する）
+        // ItemCheck はチェック変更前に呼ばれるので、BeginInvokeを経由する
+        BeginInvoke(() => Draw());
+    }
+
     #endregion
 
     #endregion
@@ -881,8 +893,15 @@ public partial class FormStereonet : FormBase
         if (formMain.Crystal.VectorOfPole == null)
             formMain.Crystal.VectorOfPole = [];
         else
-            for (int i = 0; i < formMain.Crystal.VectorOfPole.Count; i++)
-                checkedListBoxCircles.Items.Add(formMain.Crystal.VectorOfPole[i], true);
+        {
+            suppressItemCheck = true; // 260517Cl 末尾の Draw() で 1 回だけ再描画する。ItemCheck 経由の N 回の重複再描画を抑止
+            try
+            {
+                for (int i = 0; i < formMain.Crystal.VectorOfPole.Count; i++)
+                    checkedListBoxCircles.Items.Add(formMain.Crystal.VectorOfPole[i], true);
+            }
+            finally { suppressItemCheck = false; }
+        }
         Draw();
     }
     #endregion
@@ -1173,7 +1192,8 @@ public partial class FormStereonet : FormBase
     private void buttonAddIndex_Click(object sender, EventArgs e)
     {
         var (x, y, z) = (numericBox1.ValueInteger, numericBox2.ValueInteger, numericBox3.ValueInteger);
-        if (x != 0 || y != 0 || z != 0) {
+        if (x != 0 || y != 0 || z != 0)
+        {
             var argb = checkBoxRotateColor.Checked ? ColorArray[ProjectedObjects.Count % ColorArray.Length] : colorControlIndex.Argb;
             ProjectedObjects.Add(new IndexInfo([(x, y, z)], argb));
         }
@@ -1184,7 +1204,7 @@ public partial class FormStereonet : FormBase
     private void buttonRemoveIndex_Click(object sender, EventArgs e)
     {
         var selectedIndex = listBoxSpecifiedIndices.SelectedIndex;
-        if (selectedIndex > -1 && selectedIndex <ProjectedObjects.Count)
+        if (selectedIndex > -1 && selectedIndex < ProjectedObjects.Count)
             ProjectedObjects.RemoveAt(listBoxSpecifiedIndices.SelectedIndex);
         setVector();
         Draw();
@@ -1257,7 +1277,7 @@ public partial class FormStereonet : FormBase
 
                                 foreach (var index in indices)
                                     hash.Add(index);
-                                
+
                                 ProjectedObjects.Add(new IndexInfo(indices, 0));
                             }
                 #region 結晶系に従ってソート
@@ -1325,7 +1345,7 @@ public partial class FormStereonet : FormBase
                 }
                 #endregion
 
-                for(int i = 0; i < ProjectedObjects.Count; i++)
+                for (int i = 0; i < ProjectedObjects.Count; i++)
                     ProjectedObjects[i].ARGB = checkBoxRotateColor.Checked ? ColorArray[i % ColorArray.Length] : colorControlIndex.Argb;
             }
             //特定指数モードの時
@@ -1528,7 +1548,6 @@ public partial class FormStereonet : FormBase
     }
 
     private void radioButtonDelimiterNone_CheckedChanged(object sender, EventArgs e) => Draw();
-
 
 
 }

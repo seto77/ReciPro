@@ -106,6 +106,10 @@ namespace Crystallography
         {
             if (destinationType != typeof(string) || value is not Vector3DBase g) //260317Cl パターンマッチング
                 return base.ConvertTo(context, culture, value, destinationType);
+            // 260517Cl Vector3D で Text が設定されていればそれを優先（CheckedListBox 等で FormattingEnabled=true のとき ToString ではなくこちらが呼ばれるため）
+            if (value is Vector3D v && !string.IsNullOrEmpty(v.Text))
+                return v.Text;
+            // ConvertFrom が "x,y,z" を Split(',') で読むため、ここは敢えて括弧なしで返す（Vector3DBase.ToString の "(x, y, z)" とは別書式）
             return $"{g.X}, {g.Y}, {g.Z}"; //260317Cl string.Format → 文字列補間
         }
 

@@ -120,6 +120,7 @@
   <metadata name="captureExtender.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="splitContainer1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
   </data>
@@ -579,13 +580,13 @@ Middle drag: Drag the simulated image
     <value>NoControl</value>
   </data>
   <data name="checkBoxReflectStructureFactor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 87</value>
+    <value>3, 88</value>
   </data>
   <data name="checkBoxReflectStructureFactor.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
   <data name="checkBoxReflectStructureFactor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>139, 43</value>
+    <value>139, 49</value>
   </data>
   <data name="checkBoxReflectStructureFactor.TabIndex" type="System.Int32, mscorlib">
     <value>48</value>
@@ -623,7 +624,7 @@ Kikuchi line intensity</value>
     <value>0, 3, 0, 0</value>
   </data>
   <data name="checkBoxShowIndexLabels.Size" type="System.Drawing.Size, System.Drawing">
-    <value>139, 22</value>
+    <value>139, 23</value>
   </data>
   <data name="checkBoxShowIndexLabels.TabIndex" type="System.Int32, mscorlib">
     <value>54</value>
@@ -995,7 +996,7 @@ Kikuchi line intensity</value>
     <value>0, 0, 0, 0</value>
   </data>
   <data name="checkBox1DegLine.Size" type="System.Drawing.Size, System.Drawing">
-    <value>107, 21</value>
+    <value>105, 21</value>
   </data>
   <data name="checkBox1DegLine.TabIndex" type="System.Int32, mscorlib">
     <value>48</value>
@@ -1466,7 +1467,7 @@ Kikuchi line intensity</value>
     <value>0, 0, 0, 0</value>
   </data>
   <data name="colorControl10DegLine.Size" type="System.Drawing.Size, System.Drawing">
-    <value>46, 20</value>
+    <value>45, 20</value>
   </data>
   <data name="colorControl10DegLine.TabIndex" type="System.Int32, mscorlib">
     <value>50</value>
@@ -1514,7 +1515,7 @@ Kikuchi line intensity</value>
     <value>0, 0, 0, 0</value>
   </data>
   <data name="colorControl1DegLine.Size" type="System.Drawing.Size, System.Drawing">
-    <value>40, 20</value>
+    <value>39, 20</value>
   </data>
   <data name="colorControl1DegLine.TabIndex" type="System.Int32, mscorlib">
     <value>50</value>
@@ -1616,7 +1617,7 @@ Kikuchi line intensity</value>
     <value>3, 3, 3, 3</value>
   </data>
   <data name="tabPage1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>277, 249</value>
+    <value>277, 238</value>
   </data>
   <data name="tabPage1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -1652,7 +1653,7 @@ Kikuchi line intensity</value>
     <value>52</value>
   </data>
   <data name="label12.Text" xml:space="preserve">
-    <value>h1        k1        l1</value>
+    <value>h₁        k₁        l₁</value>
   </data>
   <data name="&gt;&gt;label12.Name" xml:space="preserve">
     <value>label12</value>
@@ -1787,7 +1788,7 @@ Kikuchi line intensity</value>
     <value>4</value>
   </data>
   <data name="numericUpDownCircleH1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="numericUpDownCircleH1.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 14</value>
@@ -1796,7 +1797,7 @@ Kikuchi line intensity</value>
     <value>2, 2, 2, 2</value>
   </data>
   <data name="numericUpDownCircleH1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>38, 25</value>
+    <value>38, 23</value>
   </data>
   <data name="numericUpDownCircleH1.TabIndex" type="System.Int32, mscorlib">
     <value>44</value>
@@ -1817,7 +1818,7 @@ Kikuchi line intensity</value>
     <value>5</value>
   </data>
   <data name="numericUpDownCircleH2.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="numericUpDownCircleH2.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 56</value>
@@ -1826,7 +1827,7 @@ Kikuchi line intensity</value>
     <value>2, 2, 2, 2</value>
   </data>
   <data name="numericUpDownCircleH2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>38, 25</value>
+    <value>38, 23</value>
   </data>
   <data name="numericUpDownCircleH2.TabIndex" type="System.Int32, mscorlib">
     <value>44</value>
@@ -1847,7 +1848,7 @@ Kikuchi line intensity</value>
     <value>6</value>
   </data>
   <data name="numericUpDownCircleL2.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="numericUpDownCircleL2.Location" type="System.Drawing.Point, System.Drawing">
     <value>100, 56</value>
@@ -1856,7 +1857,7 @@ Kikuchi line intensity</value>
     <value>2, 2, 2, 2</value>
   </data>
   <data name="numericUpDownCircleL2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>38, 25</value>
+    <value>38, 23</value>
   </data>
   <data name="numericUpDownCircleL2.TabIndex" type="System.Int32, mscorlib">
     <value>42</value>
@@ -1892,7 +1893,7 @@ Kikuchi line intensity</value>
     <value>52</value>
   </data>
   <data name="label15.Text" xml:space="preserve">
-    <value>h2        k2        l2</value>
+    <value>h₂        k₂        l₂</value>
   </data>
   <data name="&gt;&gt;label15.Name" xml:space="preserve">
     <value>label15</value>
@@ -1907,7 +1908,7 @@ Kikuchi line intensity</value>
     <value>8</value>
   </data>
   <data name="numericUpDownCircleL1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="numericUpDownCircleL1.Location" type="System.Drawing.Point, System.Drawing">
     <value>100, 14</value>
@@ -1916,7 +1917,7 @@ Kikuchi line intensity</value>
     <value>2, 2, 2, 2</value>
   </data>
   <data name="numericUpDownCircleL1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>38, 25</value>
+    <value>38, 23</value>
   </data>
   <data name="numericUpDownCircleL1.TabIndex" type="System.Int32, mscorlib">
     <value>42</value>
@@ -1937,7 +1938,7 @@ Kikuchi line intensity</value>
     <value>9</value>
   </data>
   <data name="numericUpDownCircleK1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="numericUpDownCircleK1.Location" type="System.Drawing.Point, System.Drawing">
     <value>56, 14</value>
@@ -1946,7 +1947,7 @@ Kikuchi line intensity</value>
     <value>2, 2, 2, 2</value>
   </data>
   <data name="numericUpDownCircleK1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>38, 25</value>
+    <value>38, 23</value>
   </data>
   <data name="numericUpDownCircleK1.TabIndex" type="System.Int32, mscorlib">
     <value>43</value>
@@ -1967,7 +1968,7 @@ Kikuchi line intensity</value>
     <value>10</value>
   </data>
   <data name="numericUpDownCircleK2.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="numericUpDownCircleK2.Location" type="System.Drawing.Point, System.Drawing">
     <value>56, 56</value>
@@ -1976,7 +1977,7 @@ Kikuchi line intensity</value>
     <value>2, 2, 2, 2</value>
   </data>
   <data name="numericUpDownCircleK2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>38, 25</value>
+    <value>38, 23</value>
   </data>
   <data name="numericUpDownCircleK2.TabIndex" type="System.Int32, mscorlib">
     <value>43</value>
@@ -2000,7 +2001,7 @@ Kikuchi line intensity</value>
     <value>False</value>
   </data>
   <data name="panelPlanes.Location" type="System.Drawing.Point, System.Drawing">
-    <value>125, 159</value>
+    <value>125, 157</value>
   </data>
   <data name="panelPlanes.Size" type="System.Drawing.Size, System.Drawing">
     <value>152, 83</value>
@@ -2027,10 +2028,10 @@ Kikuchi line intensity</value>
     <value>GrowAndShrink</value>
   </data>
   <data name="colorControlGreatCircle.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="colorControlGreatCircle.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="colorControlGreatCircle.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -2039,7 +2040,7 @@ Kikuchi line intensity</value>
     <value />
   </data>
   <data name="colorControlGreatCircle.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="colorControlGreatCircle.HeaderMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -2048,13 +2049,13 @@ Kikuchi line intensity</value>
     <value>Color</value>
   </data>
   <data name="colorControlGreatCircle.Location" type="System.Drawing.Point, System.Drawing">
-    <value>210, 81</value>
+    <value>210, 88</value>
   </data>
   <data name="colorControlGreatCircle.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
   <data name="colorControlGreatCircle.Size" type="System.Drawing.Size, System.Drawing">
-    <value>64, 24</value>
+    <value>55, 20</value>
   </data>
   <data name="colorControlGreatCircle.TabIndex" type="System.Int32, mscorlib">
     <value>52</value>
@@ -2087,7 +2088,7 @@ Kikuchi line intensity</value>
     <value>52</value>
   </data>
   <data name="label11.Text" xml:space="preserve">
-    <value>u          v           w</value>
+    <value>u         v          w</value>
   </data>
   <data name="&gt;&gt;label11.Name" xml:space="preserve">
     <value>label11</value>
@@ -2162,7 +2163,7 @@ Kikuchi line intensity</value>
     <value>2</value>
   </data>
   <data name="numericUpDownCircleU.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="numericUpDownCircleU.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 15</value>
@@ -2171,7 +2172,7 @@ Kikuchi line intensity</value>
     <value>2, 2, 2, 2</value>
   </data>
   <data name="numericUpDownCircleU.Size" type="System.Drawing.Size, System.Drawing">
-    <value>38, 25</value>
+    <value>38, 23</value>
   </data>
   <data name="numericUpDownCircleU.TabIndex" type="System.Int32, mscorlib">
     <value>44</value>
@@ -2192,7 +2193,7 @@ Kikuchi line intensity</value>
     <value>3</value>
   </data>
   <data name="numericUpDownCircleV.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="numericUpDownCircleV.Location" type="System.Drawing.Point, System.Drawing">
     <value>56, 15</value>
@@ -2201,7 +2202,7 @@ Kikuchi line intensity</value>
     <value>2, 2, 2, 2</value>
   </data>
   <data name="numericUpDownCircleV.Size" type="System.Drawing.Size, System.Drawing">
-    <value>38, 25</value>
+    <value>38, 23</value>
   </data>
   <data name="numericUpDownCircleV.TabIndex" type="System.Int32, mscorlib">
     <value>43</value>
@@ -2222,7 +2223,7 @@ Kikuchi line intensity</value>
     <value>4</value>
   </data>
   <data name="numericUpDownCircleW.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="numericUpDownCircleW.Location" type="System.Drawing.Point, System.Drawing">
     <value>100, 15</value>
@@ -2231,7 +2232,7 @@ Kikuchi line intensity</value>
     <value>2, 2, 2, 2</value>
   </data>
   <data name="numericUpDownCircleW.Size" type="System.Drawing.Size, System.Drawing">
-    <value>38, 25</value>
+    <value>38, 23</value>
   </data>
   <data name="numericUpDownCircleW.TabIndex" type="System.Int32, mscorlib">
     <value>42</value>
@@ -2252,10 +2253,10 @@ Kikuchi line intensity</value>
     <value>5</value>
   </data>
   <data name="panelAxis.Location" type="System.Drawing.Point, System.Drawing">
-    <value>125, 107</value>
+    <value>125, 112</value>
   </data>
   <data name="panelAxis.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 46</value>
+    <value>152, 42</value>
   </data>
   <data name="panelAxis.TabIndex" type="System.Int32, mscorlib">
     <value>56</value>
@@ -2276,16 +2277,16 @@ Kikuchi line intensity</value>
     <value>True</value>
   </data>
   <data name="radioButtonCircleByPlanes.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="radioButtonCircleByPlanes.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="radioButtonCircleByPlanes.Location" type="System.Drawing.Point, System.Drawing">
-    <value>2, 181</value>
+    <value>3, 180</value>
   </data>
   <data name="radioButtonCircleByPlanes.Size" type="System.Drawing.Size, System.Drawing">
-    <value>122, 38</value>
+    <value>112, 36</value>
   </data>
   <data name="radioButtonCircleByPlanes.TabIndex" type="System.Int32, mscorlib">
     <value>55</value>
@@ -2310,16 +2311,16 @@ Two Planes</value>
     <value>True</value>
   </data>
   <data name="radioButtonCircleByAxis.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="radioButtonCircleByAxis.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="radioButtonCircleByAxis.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 122</value>
+    <value>3, 127</value>
   </data>
   <data name="radioButtonCircleByAxis.Size" type="System.Drawing.Size, System.Drawing">
-    <value>117, 21</value>
+    <value>109, 20</value>
   </data>
   <data name="radioButtonCircleByAxis.TabIndex" type="System.Int32, mscorlib">
     <value>55</value>
@@ -2355,7 +2356,7 @@ Two Planes</value>
     <value>NoControl</value>
   </data>
   <data name="buttonAddCircle.Location" type="System.Drawing.Point, System.Drawing">
-    <value>5, 78</value>
+    <value>5, 85</value>
   </data>
   <data name="buttonAddCircle.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -2400,7 +2401,7 @@ Two Planes</value>
     <value>NoControl</value>
   </data>
   <data name="buttonDeleteCircle.Location" type="System.Drawing.Point, System.Drawing">
-    <value>-548, 81</value>
+    <value>47, 85</value>
   </data>
   <data name="buttonDeleteCircle.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -2433,10 +2434,10 @@ Two Planes</value>
     <value>False</value>
   </data>
   <data name="checkedListBoxCircles.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 6</value>
+    <value>3, 0</value>
   </data>
   <data name="checkedListBoxCircles.Size" type="System.Drawing.Size, System.Drawing">
-    <value>269, 72</value>
+    <value>272, 85</value>
   </data>
   <data name="checkedListBoxCircles.TabIndex" type="System.Int32, mscorlib">
     <value>45</value>
@@ -2460,7 +2461,7 @@ Two Planes</value>
     <value>3, 3, 3, 3</value>
   </data>
   <data name="tabPage2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>192, 71</value>
+    <value>277, 238</value>
   </data>
   <data name="tabPage2.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -2480,14 +2481,23 @@ Two Planes</value>
   <data name="&gt;&gt;tabPage2.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <data name="buttonYusaModeStop.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="buttonYusaModeStop.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="buttonYusaModeStop.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Variable Text, 8.25pt</value>
+  </data>
   <data name="buttonYusaModeStop.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="buttonYusaModeStop.Location" type="System.Drawing.Point, System.Drawing">
-    <value>208, 339</value>
+    <value>235, 213</value>
   </data>
   <data name="buttonYusaModeStop.Size" type="System.Drawing.Size, System.Drawing">
-    <value>80, 23</value>
+    <value>39, 25</value>
   </data>
   <data name="buttonYusaModeStop.TabIndex" type="System.Int32, mscorlib">
     <value>14</value>
@@ -2507,14 +2517,23 @@ Two Planes</value>
   <data name="&gt;&gt;buttonYusaModeStop.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="buttonYusaModeStart.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="buttonYusaModeStart.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="buttonYusaModeStart.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Variable Text, 8.25pt</value>
+  </data>
   <data name="buttonYusaModeStart.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="buttonYusaModeStart.Location" type="System.Drawing.Point, System.Drawing">
-    <value>127, 339</value>
+    <value>188, 212</value>
   </data>
   <data name="buttonYusaModeStart.Size" type="System.Drawing.Size, System.Drawing">
-    <value>80, 23</value>
+    <value>41, 25</value>
   </data>
   <data name="buttonYusaModeStart.TabIndex" type="System.Int32, mscorlib">
     <value>14</value>
@@ -2537,14 +2556,17 @@ Two Planes</value>
   <data name="radioButtonRotationalScan.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="radioButtonRotationalScan.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Variable Text, 8.25pt</value>
+  </data>
   <data name="radioButtonRotationalScan.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="radioButtonRotationalScan.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 229</value>
+    <value>6, 153</value>
   </data>
   <data name="radioButtonRotationalScan.Size" type="System.Drawing.Size, System.Drawing">
-    <value>255, 20</value>
+    <value>223, 19</value>
   </data>
   <data name="radioButtonRotationalScan.TabIndex" type="System.Int32, mscorlib">
     <value>13</value>
@@ -2567,14 +2589,17 @@ Two Planes</value>
   <data name="radioButtonZigzagScan.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="radioButtonZigzagScan.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Variable Text, 8.25pt</value>
+  </data>
   <data name="radioButtonZigzagScan.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="radioButtonZigzagScan.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 47</value>
+    <value>6, 30</value>
   </data>
   <data name="radioButtonZigzagScan.Size" type="System.Drawing.Size, System.Drawing">
-    <value>238, 20</value>
+    <value>202, 19</value>
   </data>
   <data name="radioButtonZigzagScan.TabIndex" type="System.Int32, mscorlib">
     <value>13</value>
@@ -2597,14 +2622,17 @@ Two Planes</value>
   <data name="checkBox3.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="checkBox3.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Variable Text, 8.25pt</value>
+  </data>
   <data name="checkBox3.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="checkBox3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>46, 138</value>
+    <value>12, 102</value>
   </data>
   <data name="checkBox3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>63, 20</value>
+    <value>56, 19</value>
   </data>
   <data name="checkBox3.TabIndex" type="System.Int32, mscorlib">
     <value>11</value>
@@ -2627,14 +2655,17 @@ Two Planes</value>
   <data name="checkBox2.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="checkBox2.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Variable Text, 8.25pt</value>
+  </data>
   <data name="checkBox2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="checkBox2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>46, 71</value>
+    <value>12, 51</value>
   </data>
   <data name="checkBox2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>61, 20</value>
+    <value>53, 19</value>
   </data>
   <data name="checkBox2.TabIndex" type="System.Int32, mscorlib">
     <value>11</value>
@@ -2654,248 +2685,11 @@ Two Planes</value>
   <data name="&gt;&gt;checkBox2.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
-  <data name="label37.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label37.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label37.Location" type="System.Drawing.Point, System.Drawing">
-    <value>134, 182</value>
-  </data>
-  <data name="label37.Size" type="System.Drawing.Size, System.Drawing">
-    <value>15, 16</value>
-  </data>
-  <data name="label37.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="label37.Text" xml:space="preserve">
-    <value>±</value>
-  </data>
-  <data name="&gt;&gt;label37.Name" xml:space="preserve">
-    <value>label37</value>
-  </data>
-  <data name="&gt;&gt;label37.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label37.Parent" xml:space="preserve">
-    <value>tabPage3</value>
-  </data>
-  <data name="&gt;&gt;label37.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="label9.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label9.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label9.Location" type="System.Drawing.Point, System.Drawing">
-    <value>84, 298</value>
-  </data>
-  <data name="label9.Size" type="System.Drawing.Size, System.Drawing">
-    <value>61, 16</value>
-  </data>
-  <data name="label9.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="label9.Text" xml:space="preserve">
-    <value>total time</value>
-  </data>
-  <data name="&gt;&gt;label9.Name" xml:space="preserve">
-    <value>label9</value>
-  </data>
-  <data name="&gt;&gt;label9.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label9.Parent" xml:space="preserve">
-    <value>tabPage3</value>
-  </data>
-  <data name="&gt;&gt;label9.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="label8.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label8.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label8.Location" type="System.Drawing.Point, System.Drawing">
-    <value>58, 278</value>
-  </data>
-  <data name="label8.Size" type="System.Drawing.Size, System.Drawing">
-    <value>92, 16</value>
-  </data>
-  <data name="label8.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="label8.Text" xml:space="preserve">
-    <value>angular speed </value>
-  </data>
-  <data name="&gt;&gt;label8.Name" xml:space="preserve">
-    <value>label8</value>
-  </data>
-  <data name="&gt;&gt;label8.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label8.Parent" xml:space="preserve">
-    <value>tabPage3</value>
-  </data>
-  <data name="&gt;&gt;label8.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="label32.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label32.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label32.Location" type="System.Drawing.Point, System.Drawing">
-    <value>132, 119</value>
-  </data>
-  <data name="label32.Size" type="System.Drawing.Size, System.Drawing">
-    <value>15, 16</value>
-  </data>
-  <data name="label32.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="label32.Text" xml:space="preserve">
-    <value>±</value>
-  </data>
-  <data name="&gt;&gt;label32.Name" xml:space="preserve">
-    <value>label32</value>
-  </data>
-  <data name="&gt;&gt;label32.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label32.Parent" xml:space="preserve">
-    <value>tabPage3</value>
-  </data>
-  <data name="&gt;&gt;label32.ZOrder" xml:space="preserve">
-    <value>9</value>
-  </data>
-  <data name="label26.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label26.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label26.Location" type="System.Drawing.Point, System.Drawing">
-    <value>76, 207</value>
-  </data>
-  <data name="label26.Size" type="System.Drawing.Size, System.Drawing">
-    <value>31, 16</value>
-  </data>
-  <data name="label26.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="label26.Text" xml:space="preserve">
-    <value>step</value>
-  </data>
-  <data name="&gt;&gt;label26.Name" xml:space="preserve">
-    <value>label26</value>
-  </data>
-  <data name="&gt;&gt;label26.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label26.Parent" xml:space="preserve">
-    <value>tabPage3</value>
-  </data>
-  <data name="&gt;&gt;label26.ZOrder" xml:space="preserve">
-    <value>10</value>
-  </data>
-  <data name="label27.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label27.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label27.Location" type="System.Drawing.Point, System.Drawing">
-    <value>74, 254</value>
-  </data>
-  <data name="label27.Size" type="System.Drawing.Size, System.Drawing">
-    <value>74, 16</value>
-  </data>
-  <data name="label27.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="label27.Text" xml:space="preserve">
-    <value>radial angle</value>
-  </data>
-  <data name="&gt;&gt;label27.Name" xml:space="preserve">
-    <value>label27</value>
-  </data>
-  <data name="&gt;&gt;label27.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label27.Parent" xml:space="preserve">
-    <value>tabPage3</value>
-  </data>
-  <data name="&gt;&gt;label27.ZOrder" xml:space="preserve">
-    <value>11</value>
-  </data>
-  <data name="label36.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label36.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label36.Location" type="System.Drawing.Point, System.Drawing">
-    <value>62, 182</value>
-  </data>
-  <data name="label36.Size" type="System.Drawing.Size, System.Drawing">
-    <value>63, 16</value>
-  </data>
-  <data name="label36.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="label36.Text" xml:space="preserve">
-    <value>oscillation</value>
-  </data>
-  <data name="&gt;&gt;label36.Name" xml:space="preserve">
-    <value>label36</value>
-  </data>
-  <data name="&gt;&gt;label36.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label36.Parent" xml:space="preserve">
-    <value>tabPage3</value>
-  </data>
-  <data name="&gt;&gt;label36.ZOrder" xml:space="preserve">
-    <value>12</value>
-  </data>
-  <data name="label30.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label30.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label30.Location" type="System.Drawing.Point, System.Drawing">
-    <value>61, 115</value>
-  </data>
-  <data name="label30.Size" type="System.Drawing.Size, System.Drawing">
-    <value>63, 16</value>
-  </data>
-  <data name="label30.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="label30.Text" xml:space="preserve">
-    <value>oscillation</value>
-  </data>
-  <data name="&gt;&gt;label30.Name" xml:space="preserve">
-    <value>label30</value>
-  </data>
-  <data name="&gt;&gt;label30.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label30.Parent" xml:space="preserve">
-    <value>tabPage3</value>
-  </data>
-  <data name="&gt;&gt;label30.ZOrder" xml:space="preserve">
-    <value>13</value>
-  </data>
   <data name="checkBox1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
+  </data>
+  <data name="checkBox1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Variable Text, 8.25pt</value>
   </data>
   <data name="checkBox1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -2904,7 +2698,7 @@ Two Planes</value>
     <value>6, 8</value>
   </data>
   <data name="checkBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>63, 20</value>
+    <value>55, 19</value>
   </data>
   <data name="checkBox1.TabIndex" type="System.Int32, mscorlib">
     <value>11</value>
@@ -2922,79 +2716,22 @@ Two Planes</value>
     <value>tabPage3</value>
   </data>
   <data name="&gt;&gt;checkBox1.ZOrder" xml:space="preserve">
-    <value>14</value>
-  </data>
-  <data name="label28.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label28.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label28.Location" type="System.Drawing.Point, System.Drawing">
-    <value>220, 298</value>
-  </data>
-  <data name="label28.Size" type="System.Drawing.Size, System.Drawing">
-    <value>30, 16</value>
-  </data>
-  <data name="label28.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="label28.Text" xml:space="preserve">
-    <value>sec.</value>
-  </data>
-  <data name="&gt;&gt;label28.Name" xml:space="preserve">
-    <value>label28</value>
-  </data>
-  <data name="&gt;&gt;label28.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label28.Parent" xml:space="preserve">
-    <value>tabPage3</value>
-  </data>
-  <data name="&gt;&gt;label28.ZOrder" xml:space="preserve">
-    <value>15</value>
-  </data>
-  <data name="label2.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>218, 278</value>
-  </data>
-  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>32, 16</value>
-  </data>
-  <data name="label2.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="label2.Text" xml:space="preserve">
-    <value>deg.</value>
-  </data>
-  <data name="&gt;&gt;label2.Name" xml:space="preserve">
-    <value>label2</value>
-  </data>
-  <data name="&gt;&gt;label2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label2.Parent" xml:space="preserve">
-    <value>tabPage3</value>
-  </data>
-  <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
-    <value>16</value>
+    <value>6</value>
   </data>
   <data name="label25.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
+  </data>
+  <data name="label25.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Variable Text, 8.25pt</value>
   </data>
   <data name="label25.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="label25.Location" type="System.Drawing.Point, System.Drawing">
-    <value>20, 25</value>
+    <value>67, 9</value>
   </data>
   <data name="label25.Size" type="System.Drawing.Size, System.Drawing">
-    <value>79, 16</value>
+    <value>68, 15</value>
   </data>
   <data name="label25.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -3012,259 +2749,22 @@ Two Planes</value>
     <value>tabPage3</value>
   </data>
   <data name="&gt;&gt;label25.ZOrder" xml:space="preserve">
-    <value>17</value>
-  </data>
-  <data name="label23.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label23.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label23.Location" type="System.Drawing.Point, System.Drawing">
-    <value>208, 206</value>
-  </data>
-  <data name="label23.Size" type="System.Drawing.Size, System.Drawing">
-    <value>32, 16</value>
-  </data>
-  <data name="label23.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="label23.Text" xml:space="preserve">
-    <value>deg.</value>
-  </data>
-  <data name="&gt;&gt;label23.Name" xml:space="preserve">
-    <value>label23</value>
-  </data>
-  <data name="&gt;&gt;label23.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label23.Parent" xml:space="preserve">
-    <value>tabPage3</value>
-  </data>
-  <data name="&gt;&gt;label23.ZOrder" xml:space="preserve">
-    <value>18</value>
-  </data>
-  <data name="label10.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label10.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label10.Location" type="System.Drawing.Point, System.Drawing">
-    <value>220, 253</value>
-  </data>
-  <data name="label10.Size" type="System.Drawing.Size, System.Drawing">
-    <value>32, 16</value>
-  </data>
-  <data name="label10.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="label10.Text" xml:space="preserve">
-    <value>deg.</value>
-  </data>
-  <data name="&gt;&gt;label10.Name" xml:space="preserve">
-    <value>label10</value>
-  </data>
-  <data name="&gt;&gt;label10.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label10.Parent" xml:space="preserve">
-    <value>tabPage3</value>
-  </data>
-  <data name="&gt;&gt;label10.ZOrder" xml:space="preserve">
-    <value>19</value>
-  </data>
-  <data name="label34.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label34.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label34.Location" type="System.Drawing.Point, System.Drawing">
-    <value>61, 158</value>
-  </data>
-  <data name="label34.Size" type="System.Drawing.Size, System.Drawing">
-    <value>79, 16</value>
-  </data>
-  <data name="label34.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="label34.Text" xml:space="preserve">
-    <value>motor speed</value>
-  </data>
-  <data name="&gt;&gt;label34.Name" xml:space="preserve">
-    <value>label34</value>
-  </data>
-  <data name="&gt;&gt;label34.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label34.Parent" xml:space="preserve">
-    <value>tabPage3</value>
-  </data>
-  <data name="&gt;&gt;label34.ZOrder" xml:space="preserve">
-    <value>20</value>
-  </data>
-  <data name="label33.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label33.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label33.Location" type="System.Drawing.Point, System.Drawing">
-    <value>208, 181</value>
-  </data>
-  <data name="label33.Size" type="System.Drawing.Size, System.Drawing">
-    <value>32, 16</value>
-  </data>
-  <data name="label33.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="label33.Text" xml:space="preserve">
-    <value>deg.</value>
-  </data>
-  <data name="&gt;&gt;label33.Name" xml:space="preserve">
-    <value>label33</value>
-  </data>
-  <data name="&gt;&gt;label33.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label33.Parent" xml:space="preserve">
-    <value>tabPage3</value>
-  </data>
-  <data name="&gt;&gt;label33.ZOrder" xml:space="preserve">
-    <value>21</value>
-  </data>
-  <data name="label24.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label24.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label24.Location" type="System.Drawing.Point, System.Drawing">
-    <value>60, 91</value>
-  </data>
-  <data name="label24.Size" type="System.Drawing.Size, System.Drawing">
-    <value>79, 16</value>
-  </data>
-  <data name="label24.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="label24.Text" xml:space="preserve">
-    <value>motor speed</value>
-  </data>
-  <data name="&gt;&gt;label24.Name" xml:space="preserve">
-    <value>label24</value>
-  </data>
-  <data name="&gt;&gt;label24.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label24.Parent" xml:space="preserve">
-    <value>tabPage3</value>
-  </data>
-  <data name="&gt;&gt;label24.ZOrder" xml:space="preserve">
-    <value>22</value>
-  </data>
-  <data name="label31.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label31.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label31.Location" type="System.Drawing.Point, System.Drawing">
-    <value>206, 118</value>
-  </data>
-  <data name="label31.Size" type="System.Drawing.Size, System.Drawing">
-    <value>32, 16</value>
-  </data>
-  <data name="label31.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="label31.Text" xml:space="preserve">
-    <value>deg.</value>
-  </data>
-  <data name="&gt;&gt;label31.Name" xml:space="preserve">
-    <value>label31</value>
-  </data>
-  <data name="&gt;&gt;label31.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label31.Parent" xml:space="preserve">
-    <value>tabPage3</value>
-  </data>
-  <data name="&gt;&gt;label31.ZOrder" xml:space="preserve">
-    <value>23</value>
-  </data>
-  <data name="label21.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label21.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label21.Location" type="System.Drawing.Point, System.Drawing">
-    <value>208, 158</value>
-  </data>
-  <data name="label21.Size" type="System.Drawing.Size, System.Drawing">
-    <value>68, 16</value>
-  </data>
-  <data name="label21.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="label21.Text" xml:space="preserve">
-    <value>deg. / sec.</value>
-  </data>
-  <data name="&gt;&gt;label21.Name" xml:space="preserve">
-    <value>label21</value>
-  </data>
-  <data name="&gt;&gt;label21.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label21.Parent" xml:space="preserve">
-    <value>tabPage3</value>
-  </data>
-  <data name="&gt;&gt;label21.ZOrder" xml:space="preserve">
-    <value>24</value>
-  </data>
-  <data name="label20.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label20.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label20.Location" type="System.Drawing.Point, System.Drawing">
-    <value>206, 95</value>
-  </data>
-  <data name="label20.Size" type="System.Drawing.Size, System.Drawing">
-    <value>68, 16</value>
-  </data>
-  <data name="label20.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="label20.Text" xml:space="preserve">
-    <value>deg. / sec.</value>
-  </data>
-  <data name="&gt;&gt;label20.Name" xml:space="preserve">
-    <value>label20</value>
-  </data>
-  <data name="&gt;&gt;label20.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label20.Parent" xml:space="preserve">
-    <value>tabPage3</value>
-  </data>
-  <data name="&gt;&gt;label20.ZOrder" xml:space="preserve">
-    <value>25</value>
+    <value>7</value>
   </data>
   <data name="label22.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
+  </data>
+  <data name="label22.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Variable Text, 8.25pt</value>
   </data>
   <data name="label22.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="label22.Location" type="System.Drawing.Point, System.Drawing">
-    <value>167, 25</value>
+    <value>195, 12</value>
   </data>
   <data name="label22.Size" type="System.Drawing.Size, System.Drawing">
-    <value>68, 16</value>
+    <value>55, 15</value>
   </data>
   <data name="label22.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -3282,7 +2782,7 @@ Two Planes</value>
     <value>tabPage3</value>
   </data>
   <data name="&gt;&gt;label22.ZOrder" xml:space="preserve">
-    <value>26</value>
+    <value>8</value>
   </data>
   <data name="numericBoxRxSpeed.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
@@ -3290,11 +2790,17 @@ Two Planes</value>
   <data name="numericBoxRxSpeed.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
+  <data name="numericBoxRxSpeed.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 1, 0, 0</value>
+  </data>
   <data name="numericBoxRxSpeed.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI Variable Text, 8pt</value>
+  </data>
+  <data name="numericBoxRxSpeed.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 4, 0, 0</value>
   </data>
   <data name="numericBoxRxSpeed.Location" type="System.Drawing.Point, System.Drawing">
-    <value>111, 21</value>
+    <value>139, 4</value>
   </data>
   <data name="numericBoxRxSpeed.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>1, 1, 1, 1</value>
@@ -3324,19 +2830,31 @@ Two Planes</value>
     <value>tabPage3</value>
   </data>
   <data name="&gt;&gt;numericBoxRxSpeed.ZOrder" xml:space="preserve">
-    <value>27</value>
+    <value>9</value>
   </data>
   <data name="numericBoxRySpeed.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
   <data name="numericBoxRySpeed.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI Variable Text, 8pt</value>
+  </data>
+  <data name="numericBoxRySpeed.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 5, 0, 0</value>
+  </data>
+  <data name="numericBoxRySpeed.FooterText" xml:space="preserve">
+    <value>°/sec.</value>
   </data>
   <data name="numericBoxRySpeed.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI Variable Text, 8pt</value>
+  </data>
+  <data name="numericBoxRySpeed.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 5, 0, 0</value>
+  </data>
+  <data name="numericBoxRySpeed.HeaderText" xml:space="preserve">
+    <value>motor speed</value>
   </data>
   <data name="numericBoxRySpeed.Location" type="System.Drawing.Point, System.Drawing">
-    <value>152, 154</value>
+    <value>72, 99</value>
   </data>
   <data name="numericBoxRySpeed.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>1, 1, 1, 1</value>
@@ -3351,7 +2869,7 @@ Two Planes</value>
     <value>0, 0, 1, 0</value>
   </data>
   <data name="numericBoxRySpeed.Size" type="System.Drawing.Size, System.Drawing">
-    <value>52, 24</value>
+    <value>142, 24</value>
   </data>
   <data name="numericBoxRySpeed.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
@@ -3366,19 +2884,31 @@ Two Planes</value>
     <value>tabPage3</value>
   </data>
   <data name="&gt;&gt;numericBoxRySpeed.ZOrder" xml:space="preserve">
-    <value>28</value>
+    <value>10</value>
   </data>
   <data name="numericBoxRzSpeed.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
   <data name="numericBoxRzSpeed.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI Variable Text, 8pt</value>
+  </data>
+  <data name="numericBoxRzSpeed.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 5, 0, 0</value>
+  </data>
+  <data name="numericBoxRzSpeed.FooterText" xml:space="preserve">
+    <value>°/sec.</value>
   </data>
   <data name="numericBoxRzSpeed.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI Variable Text, 8pt</value>
+  </data>
+  <data name="numericBoxRzSpeed.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 5, 0, 0</value>
+  </data>
+  <data name="numericBoxRzSpeed.HeaderText" xml:space="preserve">
+    <value>motor speed</value>
   </data>
   <data name="numericBoxRzSpeed.Location" type="System.Drawing.Point, System.Drawing">
-    <value>151, 91</value>
+    <value>72, 52</value>
   </data>
   <data name="numericBoxRzSpeed.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>1, 1, 1, 1</value>
@@ -3393,7 +2923,7 @@ Two Planes</value>
     <value>0, 0, 1, 0</value>
   </data>
   <data name="numericBoxRzSpeed.Size" type="System.Drawing.Size, System.Drawing">
-    <value>52, 24</value>
+    <value>142, 24</value>
   </data>
   <data name="numericBoxRzSpeed.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
@@ -3408,19 +2938,31 @@ Two Planes</value>
     <value>tabPage3</value>
   </data>
   <data name="&gt;&gt;numericBoxRzSpeed.ZOrder" xml:space="preserve">
-    <value>29</value>
+    <value>11</value>
   </data>
   <data name="numericBoxTotalTime.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
   <data name="numericBoxTotalTime.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI Variable Text, 8pt</value>
+  </data>
+  <data name="numericBoxTotalTime.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 5, 0, 0</value>
+  </data>
+  <data name="numericBoxTotalTime.FooterText" xml:space="preserve">
+    <value>sec.</value>
   </data>
   <data name="numericBoxTotalTime.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI Variable Text, 8pt</value>
+  </data>
+  <data name="numericBoxTotalTime.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 5, 0, 0</value>
+  </data>
+  <data name="numericBoxTotalTime.HeaderText" xml:space="preserve">
+    <value>total time</value>
   </data>
   <data name="numericBoxTotalTime.Location" type="System.Drawing.Point, System.Drawing">
-    <value>163, 296</value>
+    <value>12, 212</value>
   </data>
   <data name="numericBoxTotalTime.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>1, 1, 1, 1</value>
@@ -3435,7 +2977,7 @@ Two Planes</value>
     <value>0, 0, 1, 0</value>
   </data>
   <data name="numericBoxTotalTime.Size" type="System.Drawing.Size, System.Drawing">
-    <value>52, 24</value>
+    <value>130, 24</value>
   </data>
   <data name="numericBoxTotalTime.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
@@ -3450,19 +2992,31 @@ Two Planes</value>
     <value>tabPage3</value>
   </data>
   <data name="&gt;&gt;numericBoxTotalTime.ZOrder" xml:space="preserve">
-    <value>30</value>
+    <value>12</value>
   </data>
   <data name="numericBoxAngularSpeed.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
   <data name="numericBoxAngularSpeed.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI Variable Text, 8pt</value>
+  </data>
+  <data name="numericBoxAngularSpeed.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 5, 0, 0</value>
+  </data>
+  <data name="numericBoxAngularSpeed.FooterText" xml:space="preserve">
+    <value>°/sec</value>
   </data>
   <data name="numericBoxAngularSpeed.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI Variable Text, 8pt</value>
+  </data>
+  <data name="numericBoxAngularSpeed.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 5, 0, 0</value>
+  </data>
+  <data name="numericBoxAngularSpeed.HeaderText" xml:space="preserve">
+    <value>angular speed </value>
   </data>
   <data name="numericBoxAngularSpeed.Location" type="System.Drawing.Point, System.Drawing">
-    <value>163, 274</value>
+    <value>139, 175</value>
   </data>
   <data name="numericBoxAngularSpeed.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>1, 1, 1, 1</value>
@@ -3477,7 +3031,7 @@ Two Planes</value>
     <value>0, 0, 1, 0</value>
   </data>
   <data name="numericBoxAngularSpeed.Size" type="System.Drawing.Size, System.Drawing">
-    <value>52, 24</value>
+    <value>132, 24</value>
   </data>
   <data name="numericBoxAngularSpeed.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
@@ -3492,19 +3046,31 @@ Two Planes</value>
     <value>tabPage3</value>
   </data>
   <data name="&gt;&gt;numericBoxAngularSpeed.ZOrder" xml:space="preserve">
-    <value>31</value>
+    <value>13</value>
   </data>
   <data name="numericBoxRyStep.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
   <data name="numericBoxRyStep.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI Variable Text, 8pt</value>
+  </data>
+  <data name="numericBoxRyStep.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 5, 0, 0</value>
+  </data>
+  <data name="numericBoxRyStep.FooterText" xml:space="preserve">
+    <value>°</value>
   </data>
   <data name="numericBoxRyStep.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI Variable Text, 8pt</value>
+  </data>
+  <data name="numericBoxRyStep.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 5, 0, 0</value>
+  </data>
+  <data name="numericBoxRyStep.HeaderText" xml:space="preserve">
+    <value>step</value>
   </data>
   <data name="numericBoxRyStep.Location" type="System.Drawing.Point, System.Drawing">
-    <value>152, 202</value>
+    <value>157, 125</value>
   </data>
   <data name="numericBoxRyStep.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>1, 1, 1, 1</value>
@@ -3519,7 +3085,7 @@ Two Planes</value>
     <value>0, 0, 1, 0</value>
   </data>
   <data name="numericBoxRyStep.Size" type="System.Drawing.Size, System.Drawing">
-    <value>52, 24</value>
+    <value>65, 24</value>
   </data>
   <data name="numericBoxRyStep.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
@@ -3534,19 +3100,31 @@ Two Planes</value>
     <value>tabPage3</value>
   </data>
   <data name="&gt;&gt;numericBoxRyStep.ZOrder" xml:space="preserve">
-    <value>32</value>
+    <value>14</value>
   </data>
   <data name="numericBoxRadialAngle.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
   <data name="numericBoxRadialAngle.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI Variable Text, 8pt</value>
+  </data>
+  <data name="numericBoxRadialAngle.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 5, 0, 0</value>
+  </data>
+  <data name="numericBoxRadialAngle.FooterText" xml:space="preserve">
+    <value>°</value>
   </data>
   <data name="numericBoxRadialAngle.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI Variable Text, 8pt</value>
+  </data>
+  <data name="numericBoxRadialAngle.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 5, 0, 0</value>
+  </data>
+  <data name="numericBoxRadialAngle.HeaderText" xml:space="preserve">
+    <value>radial angle</value>
   </data>
   <data name="numericBoxRadialAngle.Location" type="System.Drawing.Point, System.Drawing">
-    <value>164, 250</value>
+    <value>15, 175</value>
   </data>
   <data name="numericBoxRadialAngle.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>1, 1, 1, 1</value>
@@ -3561,7 +3139,7 @@ Two Planes</value>
     <value>0, 0, 1, 0</value>
   </data>
   <data name="numericBoxRadialAngle.Size" type="System.Drawing.Size, System.Drawing">
-    <value>52, 24</value>
+    <value>113, 24</value>
   </data>
   <data name="numericBoxRadialAngle.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
@@ -3576,19 +3154,31 @@ Two Planes</value>
     <value>tabPage3</value>
   </data>
   <data name="&gt;&gt;numericBoxRadialAngle.ZOrder" xml:space="preserve">
-    <value>33</value>
+    <value>15</value>
   </data>
   <data name="numericBoxRyOscillation.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
   <data name="numericBoxRyOscillation.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI Variable Text, 8pt</value>
+  </data>
+  <data name="numericBoxRyOscillation.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 5, 0, 0</value>
+  </data>
+  <data name="numericBoxRyOscillation.FooterText" xml:space="preserve">
+    <value>°</value>
   </data>
   <data name="numericBoxRyOscillation.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI Variable Text, 8pt</value>
+  </data>
+  <data name="numericBoxRyOscillation.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 5, 0, 0</value>
+  </data>
+  <data name="numericBoxRyOscillation.HeaderText" xml:space="preserve">
+    <value>oscillation ±</value>
   </data>
   <data name="numericBoxRyOscillation.Location" type="System.Drawing.Point, System.Drawing">
-    <value>152, 178</value>
+    <value>22, 125</value>
   </data>
   <data name="numericBoxRyOscillation.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>1, 1, 1, 1</value>
@@ -3603,7 +3193,7 @@ Two Planes</value>
     <value>0, 0, 1, 0</value>
   </data>
   <data name="numericBoxRyOscillation.Size" type="System.Drawing.Size, System.Drawing">
-    <value>52, 24</value>
+    <value>106, 24</value>
   </data>
   <data name="numericBoxRyOscillation.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
@@ -3618,19 +3208,31 @@ Two Planes</value>
     <value>tabPage3</value>
   </data>
   <data name="&gt;&gt;numericBoxRyOscillation.ZOrder" xml:space="preserve">
-    <value>34</value>
+    <value>16</value>
   </data>
   <data name="numericBoxRzOscillation.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
   <data name="numericBoxRzOscillation.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI Variable Text, 8pt</value>
+  </data>
+  <data name="numericBoxRzOscillation.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 5, 0, 0</value>
+  </data>
+  <data name="numericBoxRzOscillation.FooterText" xml:space="preserve">
+    <value>°</value>
   </data>
   <data name="numericBoxRzOscillation.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI Variable Text, 8pt</value>
+  </data>
+  <data name="numericBoxRzOscillation.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 5, 0, 0</value>
+  </data>
+  <data name="numericBoxRzOscillation.HeaderText" xml:space="preserve">
+    <value>oscillation ±</value>
   </data>
   <data name="numericBoxRzOscillation.Location" type="System.Drawing.Point, System.Drawing">
-    <value>151, 115</value>
+    <value>72, 74</value>
   </data>
   <data name="numericBoxRzOscillation.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>1, 1, 1, 1</value>
@@ -3645,7 +3247,7 @@ Two Planes</value>
     <value>0, 0, 1, 0</value>
   </data>
   <data name="numericBoxRzOscillation.Size" type="System.Drawing.Size, System.Drawing">
-    <value>52, 24</value>
+    <value>102, 24</value>
   </data>
   <data name="numericBoxRzOscillation.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
@@ -3660,7 +3262,7 @@ Two Planes</value>
     <value>tabPage3</value>
   </data>
   <data name="&gt;&gt;numericBoxRzOscillation.ZOrder" xml:space="preserve">
-    <value>35</value>
+    <value>17</value>
   </data>
   <data name="tabPage3.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 25</value>
@@ -3716,6 +3318,9 @@ Two Planes</value>
   <data name="waveLengthControl.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
+  <data name="waveLengthControl.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Variable Text, 9.75pt</value>
+  </data>
   <data name="&gt;&gt;waveLengthControl.Name" xml:space="preserve">
     <value>waveLengthControl</value>
   </data>
@@ -3762,7 +3367,7 @@ Two Planes</value>
     <value>0, 28</value>
   </data>
   <data name="tabControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>285, 278</value>
+    <value>285, 267</value>
   </data>
   <data name="tabControl.TabIndex" type="System.Int32, mscorlib">
     <value>74</value>
@@ -4358,7 +3963,7 @@ Two Planes</value>
     <value>4, 0</value>
   </data>
   <data name="listBoxSpecifiedIndices.Size" type="System.Drawing.Size, System.Drawing">
-    <value>190, 72</value>
+    <value>190, 69</value>
   </data>
   <data name="listBoxSpecifiedIndices.TabIndex" type="System.Int32, mscorlib">
     <value>53</value>
@@ -4397,7 +4002,7 @@ Two Planes</value>
     <value>0, 0, 0, 0</value>
   </data>
   <data name="buttonAddIndex.Size" type="System.Drawing.Size, System.Drawing">
-    <value>39, 25</value>
+    <value>39, 26</value>
   </data>
   <data name="buttonAddIndex.TabIndex" type="System.Int32, mscorlib">
     <value>54</value>
@@ -4439,7 +4044,7 @@ Two Planes</value>
     <value>0, 0, 0, 0</value>
   </data>
   <data name="buttonRemoveIndex.Size" type="System.Drawing.Size, System.Drawing">
-    <value>60, 25</value>
+    <value>59, 26</value>
   </data>
   <data name="buttonRemoveIndex.TabIndex" type="System.Int32, mscorlib">
     <value>54</value>
@@ -4490,7 +4095,7 @@ Two Planes</value>
     <value>Color</value>
   </data>
   <data name="colorControlIndex.Location" type="System.Drawing.Point, System.Drawing">
-    <value>99, 0</value>
+    <value>98, 0</value>
   </data>
   <data name="colorControlIndex.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -4499,7 +4104,7 @@ Two Planes</value>
     <value>0, 4, 3, 0</value>
   </data>
   <data name="colorControlIndex.Size" type="System.Drawing.Size, System.Drawing">
-    <value>59, 20</value>
+    <value>58, 20</value>
   </data>
   <data name="colorControlIndex.TabIndex" type="System.Int32, mscorlib">
     <value>55</value>
@@ -4523,7 +4128,7 @@ Two Planes</value>
     <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="checkBoxRotateColor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 25</value>
+    <value>0, 26</value>
   </data>
   <data name="checkBoxRotateColor.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -4532,7 +4137,7 @@ Two Planes</value>
     <value>3, 3, 0, 0</value>
   </data>
   <data name="checkBoxRotateColor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>93, 22</value>
+    <value>93, 23</value>
   </data>
   <data name="checkBoxRotateColor.TabIndex" type="System.Int32, mscorlib">
     <value>55</value>
@@ -4562,7 +4167,7 @@ Two Planes</value>
     <value>NoControl</value>
   </data>
   <data name="checkBoxIncludingEquivalentPlanes.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 47</value>
+    <value>0, 49</value>
   </data>
   <data name="checkBoxIncludingEquivalentPlanes.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -4571,7 +4176,7 @@ Two Planes</value>
     <value>3, 3, 0, 0</value>
   </data>
   <data name="checkBoxIncludingEquivalentPlanes.Size" type="System.Drawing.Size, System.Drawing">
-    <value>166, 22</value>
+    <value>166, 23</value>
   </data>
   <data name="checkBoxIncludingEquivalentPlanes.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -4598,13 +4203,13 @@ Two Planes</value>
     <value>Bottom</value>
   </data>
   <data name="flowLayoutPanelAddRemove.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 72</value>
+    <value>4, 69</value>
   </data>
   <data name="flowLayoutPanelAddRemove.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
   <data name="flowLayoutPanelAddRemove.Size" type="System.Drawing.Size, System.Drawing">
-    <value>190, 69</value>
+    <value>190, 72</value>
   </data>
   <data name="flowLayoutPanelAddRemove.TabIndex" type="System.Int32, mscorlib">
     <value>55</value>
@@ -4663,11 +4268,14 @@ Two Planes</value>
   <data name="numericBoxHighStructureFactor.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Variable Text, 9pt</value>
   </data>
+  <data name="numericBoxHighStructureFactor.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 5, 0, 0</value>
+  </data>
   <data name="numericBoxHighStructureFactor.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Variable Text, 9pt</value>
   </data>
   <data name="numericBoxHighStructureFactor.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
+    <value>0, 5, 0, 0</value>
   </data>
   <data name="numericBoxHighStructureFactor.HeaderText" xml:space="preserve">
     <value>Top</value>
@@ -4689,9 +4297,6 @@ Two Planes</value>
   </data>
   <data name="numericBoxHighStructureFactor.TabIndex" type="System.Int32, mscorlib">
     <value>87</value>
-  </data>
-  <data name="numericBoxHighStructureFactor.TextFontSize" type="System.Single, mscorlib">
-    <value>9</value>
   </data>
   <data name="numericBoxHighStructureFactor.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -4744,8 +4349,17 @@ Two Planes</value>
   <data name="numericBox1.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
+  <data name="numericBox1.FooterFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Variable Text, 9.75pt</value>
+  </data>
+  <data name="numericBox1.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 3, 0, 0</value>
+  </data>
   <data name="numericBox1.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Variable Text, 9pt</value>
+  </data>
+  <data name="numericBox1.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 5, 0, 0</value>
   </data>
   <data name="numericBox1.HeaderText" xml:space="preserve">
     <value>±</value>
@@ -4770,9 +4384,6 @@ Two Planes</value>
   </data>
   <data name="numericBox1.TabIndex" type="System.Int32, mscorlib">
     <value>80</value>
-  </data>
-  <data name="numericBox1.TextFontSize" type="System.Single, mscorlib">
-    <value>9</value>
   </data>
   <data name="&gt;&gt;numericBox1.Name" xml:space="preserve">
     <value>numericBox1</value>
@@ -4819,8 +4430,17 @@ Two Planes</value>
   <data name="numericBox2.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
+  <data name="numericBox2.FooterFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Variable Text, 9.75pt</value>
+  </data>
+  <data name="numericBox2.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 3, 0, 0</value>
+  </data>
   <data name="numericBox2.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Variable Text, 9pt</value>
+  </data>
+  <data name="numericBox2.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 5, 0, 0</value>
   </data>
   <data name="numericBox2.HeaderText" xml:space="preserve">
     <value>±</value>
@@ -4845,9 +4465,6 @@ Two Planes</value>
   </data>
   <data name="numericBox2.TabIndex" type="System.Int32, mscorlib">
     <value>80</value>
-  </data>
-  <data name="numericBox2.TextFontSize" type="System.Single, mscorlib">
-    <value>9</value>
   </data>
   <data name="&gt;&gt;numericBox2.Name" xml:space="preserve">
     <value>numericBox2</value>
@@ -4936,8 +4553,17 @@ Two Planes</value>
   <data name="numericBox4.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
+  <data name="numericBox4.FooterFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Variable Text, 9.75pt</value>
+  </data>
+  <data name="numericBox4.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 3, 0, 0</value>
+  </data>
   <data name="numericBox4.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Variable Text, 9pt</value>
+  </data>
+  <data name="numericBox4.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 5, 0, 0</value>
   </data>
   <data name="numericBox4.HeaderText" xml:space="preserve">
     <value>±</value>
@@ -4962,9 +4588,6 @@ Two Planes</value>
   </data>
   <data name="numericBox4.TabIndex" type="System.Int32, mscorlib">
     <value>82</value>
-  </data>
-  <data name="numericBox4.TextFontSize" type="System.Single, mscorlib">
-    <value>9</value>
   </data>
   <data name="&gt;&gt;numericBox4.Name" xml:space="preserve">
     <value>numericBox4</value>
@@ -5014,8 +4637,17 @@ Two Planes</value>
   <data name="numericBox3.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
+  <data name="numericBox3.FooterFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Variable Text, 9.75pt</value>
+  </data>
+  <data name="numericBox3.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 3, 0, 0</value>
+  </data>
   <data name="numericBox3.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Variable Text, 9pt</value>
+  </data>
+  <data name="numericBox3.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 5, 0, 0</value>
   </data>
   <data name="numericBox3.HeaderText" xml:space="preserve">
     <value>±</value>
@@ -5040,9 +4672,6 @@ Two Planes</value>
   </data>
   <data name="numericBox3.TabIndex" type="System.Int32, mscorlib">
     <value>80</value>
-  </data>
-  <data name="numericBox3.TextFontSize" type="System.Single, mscorlib">
-    <value>9</value>
   </data>
   <data name="&gt;&gt;numericBox3.Name" xml:space="preserve">
     <value>numericBox3</value>
@@ -5276,7 +4905,7 @@ Two Planes</value>
     <value>1, 73</value>
   </data>
   <data name="label29.Size" type="System.Drawing.Size, System.Drawing">
-    <value>67, 15</value>
+    <value>67, 16</value>
   </data>
   <data name="label29.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -5306,7 +4935,7 @@ Two Planes</value>
     <value>1, 26</value>
   </data>
   <data name="checkBox3dOptionSphere.Size" type="System.Drawing.Size, System.Drawing">
-    <value>102, 19</value>
+    <value>102, 20</value>
   </data>
   <data name="checkBox3dOptionSphere.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -5339,7 +4968,7 @@ Two Planes</value>
     <value>109, 68</value>
   </data>
   <data name="checkBox3dOptionSemisphere.Size" type="System.Drawing.Size, System.Drawing">
-    <value>90, 19</value>
+    <value>89, 20</value>
   </data>
   <data name="checkBox3dOptionSemisphere.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -5396,7 +5025,7 @@ Two Planes</value>
     <value>109, 17</value>
   </data>
   <data name="button3D_reset.Size" type="System.Drawing.Size, System.Drawing">
-    <value>45, 25</value>
+    <value>45, 26</value>
   </data>
   <data name="button3D_reset.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -5426,7 +5055,7 @@ Two Planes</value>
     <value>1, 48</value>
   </data>
   <data name="checkBox3dOptionProjectionLine.Size" type="System.Drawing.Size, System.Drawing">
-    <value>110, 19</value>
+    <value>110, 20</value>
   </data>
   <data name="checkBox3dOptionProjectionLine.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -5459,7 +5088,7 @@ Two Planes</value>
     <value>109, 89</value>
   </data>
   <data name="checkBox3dOptionStereonet.Size" type="System.Drawing.Size, System.Drawing">
-    <value>76, 19</value>
+    <value>76, 20</value>
   </data>
   <data name="checkBox3dOptionStereonet.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -5492,7 +5121,7 @@ Two Planes</value>
     <value>109, 47</value>
   </data>
   <data name="checkBox3dOptionLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>54, 19</value>
+    <value>54, 20</value>
   </data>
   <data name="checkBox3dOptionLabel.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -5588,7 +5217,7 @@ Two Planes</value>
     <value>0</value>
   </data>
   <data name="scalablePictureBoxAdvanced1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPGothic, 9pt</value>
+    <value>BIZ UDPゴシック, 9pt</value>
   </data>
   <data name="scalablePictureBoxAdvanced1.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
@@ -5609,7 +5238,7 @@ Two Planes</value>
     <value>Crystallography.Controls.ScalablePictureBoxAdvanced, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="scalablePictureBoxAdvanced2.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPGothic, 9pt</value>
+    <value>BIZ UDPゴシック, 9pt</value>
   </data>
   <data name="scalablePictureBoxAdvanced2.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
