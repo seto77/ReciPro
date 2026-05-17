@@ -65,8 +65,7 @@ namespace ReciPro
             radioButtonAxes = new System.Windows.Forms.RadioButton();
             radioButtonPlanes = new System.Windows.Forms.RadioButton();
             radioButtonKikuchiLinePairs = new System.Windows.Forms.RadioButton();
-            labelXpos = new System.Windows.Forms.Label();
-            labelYpos = new System.Windows.Forms.Label();
+            labelXYpos = new System.Windows.Forms.Label();
             label6 = new System.Windows.Forms.Label();
             label1 = new System.Windows.Forms.Label();
             groupBoxOutline = new System.Windows.Forms.GroupBox();
@@ -200,6 +199,9 @@ namespace ReciPro
             scalablePictureBoxAdvanced2 = new ScalablePictureBoxAdvanced();
             pageSetupDialog1 = new System.Windows.Forms.PageSetupDialog();
             printDialog1 = new System.Windows.Forms.PrintDialog();
+            labelAxisPlane = new System.Windows.Forms.Label();
+            label2 = new System.Windows.Forms.Label();
+            label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel1.SuspendLayout();
             splitContainer1.SuspendLayout();
@@ -417,15 +419,10 @@ namespace ReciPro
             toolTip.SetToolTip(radioButtonKikuchiLinePairs, resources.GetString("radioButtonKikuchiLinePairs.ToolTip"));
             radioButtonKikuchiLinePairs.CheckedChanged += radioButtonAxes_CheckedChanged;
             // 
-            // labelXpos
+            // labelXYpos
             // 
-            resources.ApplyResources(labelXpos, "labelXpos");
-            labelXpos.Name = "labelXpos";
-            // 
-            // labelYpos
-            // 
-            resources.ApplyResources(labelYpos, "labelYpos");
-            labelYpos.Name = "labelYpos";
+            resources.ApplyResources(labelXYpos, "labelXYpos");
+            labelXYpos.Name = "labelXYpos";
             // 
             // label6
             // 
@@ -1653,15 +1650,32 @@ namespace ReciPro
             printDialog1.Document = printDocument1;
             printDialog1.UseEXDialog = true;
             // 
+            // labelAxisPlane
+            // 
+            resources.ApplyResources(labelAxisPlane, "labelAxisPlane");
+            labelAxisPlane.Name = "labelAxisPlane";
+            // 
+            // label2
+            // 
+            resources.ApplyResources(label2, "label2");
+            label2.Name = "label2";
+            // 
+            // label3
+            // 
+            resources.ApplyResources(label3, "label3");
+            label3.Name = "label3";
+            // 
             // FormStereonet
             // 
             resources.ApplyResources(this, "$this");
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             captureExtender.SetCapture(this, true);
+            Controls.Add(label3);
+            Controls.Add(labelXYpos);
+            Controls.Add(label2);
+            Controls.Add(labelAxisPlane);
             Controls.Add(panel3);
             Controls.Add(tabControl);
-            Controls.Add(labelXpos);
-            Controls.Add(labelYpos);
             Controls.Add(menuStrip1);
             Controls.Add(splitContainer1);
             KeyPreview = true;
@@ -1758,8 +1772,7 @@ namespace ReciPro
         private System.Windows.Forms.GroupBox groupBoxMode;
         private System.Windows.Forms.RadioButton radioButtonAxes;
         private System.Windows.Forms.RadioButton radioButtonPlanes;
-        private System.Windows.Forms.Label labelXpos;
-        private System.Windows.Forms.Label labelYpos;
+        private System.Windows.Forms.Label labelXYpos;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBoxOutline;
@@ -1914,5 +1927,8 @@ namespace ReciPro
         private System.Windows.Forms.CheckBox checkBoxRotateColor;
         private ColorControl colorControlIndex;
         public ColorControl colorControlKikuchi;
+        private System.Windows.Forms.Label labelAxisPlane;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
     }
 }

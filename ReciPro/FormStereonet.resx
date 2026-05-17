@@ -226,7 +226,7 @@ Middle drag: Drag the simulated image
     <value>$this</value>
   </data>
   <data name="&gt;&gt;splitContainer1.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>7</value>
   </data>
   <data name="trackBarStrSize.AutoSize" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -848,65 +848,32 @@ Kikuchi line intensity</value>
   <data name="&gt;&gt;groupBoxMode.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="labelXpos.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="labelXYpos.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
-  <data name="labelXpos.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="labelXYpos.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="labelXpos.Location" type="System.Drawing.Point, System.Drawing">
-    <value>289, 33</value>
+  <data name="labelXYpos.Location" type="System.Drawing.Point, System.Drawing">
+    <value>338, 33</value>
   </data>
-  <data name="labelXpos.Size" type="System.Drawing.Size, System.Drawing">
-    <value>86, 16</value>
+  <data name="labelXYpos.Size" type="System.Drawing.Size, System.Drawing">
+    <value>117, 16</value>
   </data>
-  <data name="labelXpos.TabIndex" type="System.Int32, mscorlib">
+  <data name="labelXYpos.TabIndex" type="System.Int32, mscorlib">
     <value>63</value>
   </data>
-  <data name="labelXpos.Text" xml:space="preserve">
-    <value>Tilt X:  </value>
+  <data name="&gt;&gt;labelXYpos.Name" xml:space="preserve">
+    <value>labelXYpos</value>
   </data>
-  <data name="&gt;&gt;labelXpos.Name" xml:space="preserve">
-    <value>labelXpos</value>
-  </data>
-  <data name="&gt;&gt;labelXpos.Type" xml:space="preserve">
+  <data name="&gt;&gt;labelXYpos.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;labelXpos.Parent" xml:space="preserve">
+  <data name="&gt;&gt;labelXYpos.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;labelXpos.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="labelYpos.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
-  </data>
-  <data name="labelYpos.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="labelYpos.Location" type="System.Drawing.Point, System.Drawing">
-    <value>385, 33</value>
-  </data>
-  <data name="labelYpos.Size" type="System.Drawing.Size, System.Drawing">
-    <value>86, 16</value>
-  </data>
-  <data name="labelYpos.TabIndex" type="System.Int32, mscorlib">
-    <value>60</value>
-  </data>
-  <data name="labelYpos.Text" xml:space="preserve">
-    <value>Tilt Y:</value>
-  </data>
-  <data name="&gt;&gt;labelYpos.Name" xml:space="preserve">
-    <value>labelYpos</value>
-  </data>
-  <data name="&gt;&gt;labelYpos.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;labelYpos.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;labelYpos.ZOrder" xml:space="preserve">
-    <value>3</value>
+  <data name="&gt;&gt;labelXYpos.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="label6.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2049,7 +2016,7 @@ Kikuchi line intensity</value>
     <value>Color</value>
   </data>
   <data name="colorControlGreatCircle.Location" type="System.Drawing.Point, System.Drawing">
-    <value>210, 88</value>
+    <value>210, 63</value>
   </data>
   <data name="colorControlGreatCircle.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -2356,7 +2323,7 @@ Two Planes</value>
     <value>NoControl</value>
   </data>
   <data name="buttonAddCircle.Location" type="System.Drawing.Point, System.Drawing">
-    <value>5, 85</value>
+    <value>208, 0</value>
   </data>
   <data name="buttonAddCircle.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -2401,7 +2368,7 @@ Two Planes</value>
     <value>NoControl</value>
   </data>
   <data name="buttonDeleteCircle.Location" type="System.Drawing.Point, System.Drawing">
-    <value>47, 85</value>
+    <value>122, 27</value>
   </data>
   <data name="buttonDeleteCircle.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -2437,7 +2404,7 @@ Two Planes</value>
     <value>3, 0</value>
   </data>
   <data name="checkedListBoxCircles.Size" type="System.Drawing.Size, System.Drawing">
-    <value>272, 85</value>
+    <value>201, 111</value>
   </data>
   <data name="checkedListBoxCircles.TabIndex" type="System.Int32, mscorlib">
     <value>45</value>
@@ -2461,7 +2428,7 @@ Two Planes</value>
     <value>3, 3, 3, 3</value>
   </data>
   <data name="tabPage2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>277, 238</value>
+    <value>192, 71</value>
   </data>
   <data name="tabPage2.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -3382,7 +3349,7 @@ Two Planes</value>
     <value>$this</value>
   </data>
   <data name="&gt;&gt;tabControl.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>5</value>
   </data>
   <metadata name="menuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>157, 17</value>
@@ -3508,7 +3475,7 @@ Two Planes</value>
     <value>$this</value>
   </data>
   <data name="&gt;&gt;menuStrip1.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>6</value>
   </data>
   <data name="radioButtonRange.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -4095,10 +4062,10 @@ Two Planes</value>
     <value>Color</value>
   </data>
   <data name="colorControlIndex.Location" type="System.Drawing.Point, System.Drawing">
-    <value>98, 0</value>
+    <value>98, 2</value>
   </data>
   <data name="colorControlIndex.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
+    <value>0, 2, 0, 0</value>
   </data>
   <data name="colorControlIndex.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 4, 3, 0</value>
@@ -5214,7 +5181,7 @@ Two Planes</value>
     <value>$this</value>
   </data>
   <data name="&gt;&gt;panel3.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>4</value>
   </data>
   <data name="scalablePictureBoxAdvanced1.Font" type="System.Drawing.Font, System.Drawing">
     <value>BIZ UDPゴシック, 9pt</value>
@@ -5264,6 +5231,96 @@ Two Planes</value>
   <metadata name="printDialog1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>512, 17</value>
   </metadata>
+  <data name="labelAxisPlane.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Variable Text, 9.75pt</value>
+  </data>
+  <data name="labelAxisPlane.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="labelAxisPlane.Location" type="System.Drawing.Point, System.Drawing">
+    <value>615, 34</value>
+  </data>
+  <data name="labelAxisPlane.Size" type="System.Drawing.Size, System.Drawing">
+    <value>137, 16</value>
+  </data>
+  <data name="labelAxisPlane.TabIndex" type="System.Int32, mscorlib">
+    <value>60</value>
+  </data>
+  <data name="&gt;&gt;labelAxisPlane.Name" xml:space="preserve">
+    <value>labelAxisPlane</value>
+  </data>
+  <data name="&gt;&gt;labelAxisPlane.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelAxisPlane.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;labelAxisPlane.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="label2.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Variable Text, 9.75pt</value>
+  </data>
+  <data name="label2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>461, 33</value>
+  </data>
+  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>155, 16</value>
+  </data>
+  <data name="label2.TabIndex" type="System.Int32, mscorlib">
+    <value>60</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Zone axis / Lattice plane: </value>
+  </data>
+  <data name="&gt;&gt;label2.Name" xml:space="preserve">
+    <value>label2</value>
+  </data>
+  <data name="&gt;&gt;label2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label2.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="label3.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label3.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Variable Text, 9.75pt</value>
+  </data>
+  <data name="label3.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>286, 33</value>
+  </data>
+  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>52, 17</value>
+  </data>
+  <data name="label3.TabIndex" type="System.Int32, mscorlib">
+    <value>63</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>Tilt X/Y:</value>
+  </data>
+  <data name="&gt;&gt;label3.Name" xml:space="preserve">
+    <value>label3</value>
+  </data>
+  <data name="&gt;&gt;label3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label3.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>

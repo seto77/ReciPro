@@ -739,11 +739,23 @@ public partial class FormStereonet : FormBase
             graphicsBox.Refresh();
         }
         // PointD pt = convertClientToSrc(e.X, e.Y); ; // (260322Ch) 旧実装: int overload helper を経由していた
-        PointD pt = convertClientToSrc(new Point(e.X, e.Y)); ; // (260322Ch) その場で Point を作って直接変換する
-        double azimuth = Math.Asin(2 * pt.Y / (1 + pt.X * pt.X + pt.Y * pt.Y));
-        double tilt = (Math.Cos(azimuth) != 0) ? Math.Asin(2 * pt.X / (1 + pt.X * pt.X + pt.Y * pt.Y) / Math.Cos(azimuth)) : 0;
-        labelYpos.Text = $"Tilt Y: {azimuth / Math.PI * 180:f3}°";
-        labelXpos.Text = $"Tilt X: {tilt / Math.PI * 180:f3}°";
+        var pt = convertClientToSrc(new Point(e.X, e.Y)); ; // (260322Ch) その場で Point を作って直接変換する
+        // 260517Cl 旧実装 (Wulff 公式固定で Schmidt 時に誤値): srcToSphere() に置換
+        // var azimuth = Math.Asin(2 * pt.Y / (1 + pt.X * pt.X + pt.Y * pt.Y));
+        // var tilt = (Math.Cos(azimuth) != 0) ? Math.Asin(2 * pt.X / (1 + pt.X * pt.X + pt.Y * pt.Y) / Math.Cos(azimuth)) : 0;
+        var vSphere = srcToSphere(pt);
+        if (vSphere != null)
+        {
+            var azimuth = Asin(vSphere.Y);
+            var tilt = Cos(azimuth) != 0 ? Asin(vSphere.X / Cos(azimuth)) : 0;
+            labelXYpos.Text = $"{tilt / PI * 180:f3}° / {azimuth / PI * 180:f3}°";
+            var (axis, plane) = FindIndex(vSphere);
+            // 260517Cl Miller-Bravais 表示時 (hex/trigonal) は面指数を 4 指数 (h k -h-k l) に
+            var planeStr = MillerBravaisActive
+                ? $"({plane.H}, {plane.K}, {-plane.H - plane.K}, {plane.L})"
+                : $"({plane.H}, {plane.K}, {plane.L})";
+            labelAxisPlane.Text = $"[{axis.U},{axis.V},{axis.W}] / {planeStr}";
+        }
 
         //真ん中ボタンが押されながらマウスが動いたとき
         if (e.Button == MouseButtons.Middle)
@@ -1549,6 +1561,46 @@ public partial class FormStereonet : FormBase
 
     private void radioButtonDelimiterNone_CheckedChanged(object sender, EventArgs e) => Draw();
 
+    /// <summary> ステレオネット上の点に対応する 3D 単位ベクトル (上半球) を返す。Schmidt 有効域外 (ρ²>2) は null。 </summary>
+    private Vector3DBase srcToSphere(PointD p) // 260517Cl 追加: 投影逆変換を MouseMove と FindIndex で共有
+    {
+        double X = p.X, Y = p.Y, rho2 = X * X + Y * Y;
+        if (radioButtonWulff.Checked) // Wulff (stereographic)
+            return new Vector3DBase(2 * X, 2 * Y, 1 - rho2) / (1 + rho2);
+        return rho2 > 2 ? null : new Vector3DBase(X * Sqrt(2 - rho2), Y * Sqrt(2 - rho2), 1 - rho2); // Schmidt (equal-area)
+    }
 
+    /// <summary> 3D 単位ベクトル vSphere (ラボ系・上半球) に最も近い晶帯軸/格子面の指数を返す。 </summary>
+    private ((int U, int V, int W) Axis, (int H, int K, int L) Plane) FindIndex(Vector3DBase vSphere) // 260517Cl 実装
+    {
+        //3つの指数の絶対値の合計が、以下の値になる範囲で、最も近い指数を探す。
+        int sumMax = 30;
+
+        if (formMain == null || formMain.Crystal == null || formMain.Crystal.A * formMain.Crystal.B * formMain.Crystal.C == 0)
+            return ((0, 0, 0), (0, 0, 0));
+
+        // 下半球モードは Z 反転 (DrawStereoNet と整合)。caller の vSphere を破壊しないよう新規生成
+        var v = radioButtonLowerSphere.Checked ? new Vector3DBase(vSphere.X, vSphere.Y, -vSphere.Z) : vSphere;
+
+        // R は直交回転行列なので R^T = R^-1。target を結晶 Cartesian 系に戻して loop 内の行列積を省く
+        var crystal = formMain.Crystal;
+        var target = crystal.RotationMatrix.Transpose() * v;
+
+        double bestScoreA = -2, bestScoreP = -2;
+        (int U, int V, int W) bestUvw = (0, 0, 0), bestHkl = (0, 0, 0);
+        for (int u = -sumMax, rem1 = sumMax - Abs(u); u <= sumMax; rem1 = sumMax - Abs(++u))
+            for (int vv = -rem1, rem2 = rem1 - Abs(vv); vv <= rem1; rem2 = rem1 - Abs(++vv))
+                for (int w = -rem2; w <= rem2; w++)
+                {
+                    if ((u | vv | w) == 0 || Algebra.Irreducible(u, vv, w) != 1) continue;
+                    var dirA = crystal.MatrixReal * (u, vv, w);
+                    double cosA = dirA * target / dirA.Length;
+                    if (cosA > bestScoreA) { bestScoreA = cosA; bestUvw = (u, vv, w); }
+                    var dirP = crystal.MatrixInverseTransposed * (u, vv, w);
+                    double cosP = dirP * target / dirP.Length;
+                    if (cosP > bestScoreP) { bestScoreP = cosP; bestHkl = (u, vv, w); }
+                }
+        return (bestUvw, bestHkl);
+    }
 }
 
