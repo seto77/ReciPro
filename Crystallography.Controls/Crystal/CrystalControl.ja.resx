@@ -124,20 +124,11 @@
   <data name="textBoxAuthor.Size" type="System.Drawing.Size, System.Drawing">
     <value>109, 144</value>
   </data>
-  <data name="textBoxAuthor.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="groupBoxAuthors.Size" type="System.Drawing.Size, System.Drawing">
     <value>115, 162</value>
   </data>
   <data name="groupBoxAuthors.Text" xml:space="preserve">
     <value>著者</value>
-  </data>
-  <data name="groupBoxAuthors.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="splitContainer1.Panel1.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="textBoxTitle.Font" type="System.Drawing.Font, System.Drawing">
     <value>BIZ UDPゴシック, 9pt</value>
@@ -148,20 +139,11 @@
   <data name="textBoxTitle.Size" type="System.Drawing.Size, System.Drawing">
     <value>331, 144</value>
   </data>
-  <data name="textBoxTitle.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="groupBoxTitle.Size" type="System.Drawing.Size, System.Drawing">
     <value>337, 162</value>
   </data>
   <data name="groupBoxTitle.Text" xml:space="preserve">
     <value>タイトル</value>
-  </data>
-  <data name="groupBoxTitle.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="splitContainer1.Panel2.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="splitContainer1.Size" type="System.Drawing.Size, System.Drawing">
     <value>456, 162</value>
@@ -170,11 +152,15 @@
   <data name="splitContainer1.SplitterDistance" type="System.Int32, mscorlib">
     <value>115</value>
   </data>
-  <data name="splitContainer1.ToolTip" xml:space="preserve">
-    <value />
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="numericBoxVolumeAng.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 4, 0, 0</value>
   </data>
   <data name="numericBoxVolumeAng.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>BIZ UDPゴシック, 9pt</value>
+  </data>
+  <data name="numericBoxVolumeAng.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 6, 0, 0</value>
   </data>
   <data name="numericBoxVolumeAng.HeaderText" xml:space="preserve">
     <value>単位胞体積</value>
@@ -185,17 +171,26 @@
   <data name="numericBoxVolumeAng.ToolTip1" xml:space="preserve">
     <value>単位胞の体積 (Å³)</value>
   </data>
+  <data name="numericBoxCellVolumeNm.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 4, 0, 0</value>
+  </data>
+  <data name="numericBoxCellVolumeNm.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 4, 0, 0</value>
+  </data>
   <data name="numericBoxCellVolumeNm.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="numericBoxCellVolumeNm.ToolTip1" xml:space="preserve">
-    <value>単位胞の体積 (nm³)</value>
+  <data name="numericBoxCellMass.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 4, 0, 0</value>
   </data>
   <data name="numericBoxCellMass.FooterText" xml:space="preserve">
     <value>×10⁻²⁴ g</value>
   </data>
   <data name="numericBoxCellMass.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>BIZ UDPゴシック, 9pt</value>
+  </data>
+  <data name="numericBoxCellMass.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 6, 0, 0</value>
   </data>
   <data name="numericBoxCellMass.HeaderText" xml:space="preserve">
     <value>単位格子質量</value>
@@ -212,8 +207,14 @@
   <data name="numericBoxMolarVolume.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>BIZ UDPゴシック, 9pt</value>
   </data>
+  <data name="numericBoxMolarVolume.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 6, 0, 0</value>
+  </data>
   <data name="numericBoxMolarVolume.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>BIZ UDPゴシック, 9pt</value>
+  </data>
+  <data name="numericBoxMolarVolume.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 6, 0, 0</value>
   </data>
   <data name="numericBoxMolarVolume.HeaderText" xml:space="preserve">
     <value>モル体積</value>
@@ -230,8 +231,14 @@
   <data name="numericBoxMolarVolume.ToolTip1" xml:space="preserve">
     <value>モル体積 (cm³/mol)</value>
   </data>
+  <data name="numericBoxMolarMass.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 4, 0, 0</value>
+  </data>
   <data name="numericBoxMolarMass.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>BIZ UDPゴシック, 9pt</value>
+  </data>
+  <data name="numericBoxMolarMass.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 6, 0, 0</value>
   </data>
   <data name="numericBoxMolarMass.HeaderText" xml:space="preserve">
     <value>モル質量</value>
@@ -248,8 +255,14 @@
   <data name="numericBoxDensity.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>BIZ UDPゴシック, 9pt</value>
   </data>
+  <data name="numericBoxDensity.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 6, 0, 0</value>
+  </data>
   <data name="numericBoxDensity.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>BIZ UDPゴシック, 9pt</value>
+  </data>
+  <data name="numericBoxDensity.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 6, 0, 0</value>
   </data>
   <data name="numericBoxDensity.HeaderText" xml:space="preserve">
     <value>密度</value>
@@ -272,20 +285,11 @@
   <data name="flowLayoutPanelCellProperties.Size" type="System.Drawing.Size, System.Drawing">
     <value>456, 112</value>
   </data>
-  <data name="flowLayoutPanelCellProperties.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="buttonConvertToSubgroup.Location" type="System.Drawing.Point, System.Drawing">
     <value>240, 0</value>
   </data>
-  <data name="buttonConvertToSubgroup.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="buttonChangeAxesOriginSetting.Location" type="System.Drawing.Point, System.Drawing">
     <value>82, 0</value>
-  </data>
-  <data name="buttonChangeAxesOriginSetting.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="flowLayoutPanelSymmetryActions.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 136</value>
@@ -293,20 +297,11 @@
   <data name="flowLayoutPanelSymmetryActions.Size" type="System.Drawing.Size, System.Drawing">
     <value>456, 26</value>
   </data>
-  <data name="flowLayoutPanelSymmetryActions.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="symmetryControl.Size" type="System.Drawing.Size, System.Drawing">
     <value>456, 136</value>
   </data>
-  <data name="symmetryControl.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="panelSymmetryInfo.Size" type="System.Drawing.Size, System.Drawing">
     <value>456, 274</value>
-  </data>
-  <data name="panelSymmetryInfo.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="tabPageBasicInfo.Size" type="System.Drawing.Size, System.Drawing">
     <value>462, 280</value>
@@ -326,9 +321,6 @@
   <data name="atomControl.Size" type="System.Drawing.Size, System.Drawing">
     <value>458, 276</value>
   </data>
-  <data name="atomControl.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="resetToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>222, 22</value>
   </data>
@@ -338,22 +330,12 @@
   <data name="contextMenuStrip2.Size" type="System.Drawing.Size, System.Drawing">
     <value>223, 26</value>
   </data>
-  <data name="contextMenuStrip2.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="panel3.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="panelAtom.Location" type="System.Drawing.Point, System.Drawing">
     <value>2, 2</value>
-  </data>
-  <data name="panelAtom.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="tabPageAtom.Font" type="System.Drawing.Font, System.Drawing">
     <value>BIZ UDPゴシック, 9pt</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="tabPageAtom.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
   </data>
@@ -375,9 +357,6 @@
   <data name="bondControl.Size" type="System.Drawing.Size, System.Drawing">
     <value>458, 276</value>
   </data>
-  <data name="bondControl.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="tabPageBondsPolyhedra.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
   </data>
@@ -387,17 +366,11 @@
   <data name="tabPageBondsPolyhedra.Text" xml:space="preserve">
     <value>多面体/結合描画設定</value>
   </data>
-  <data name="tabPageBondsPolyhedra.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="textBoxJournal.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 15</value>
   </data>
   <data name="textBoxJournal.Size" type="System.Drawing.Size, System.Drawing">
     <value>450, 37</value>
-  </data>
-  <data name="textBoxJournal.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="groupBoxJournal.Size" type="System.Drawing.Size, System.Drawing">
     <value>456, 55</value>
@@ -405,23 +378,14 @@
   <data name="groupBoxJournal.Text" xml:space="preserve">
     <value>雑誌名</value>
   </data>
-  <data name="groupBoxJournal.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="textBoxMemo.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 15</value>
   </data>
   <data name="textBoxMemo.Size" type="System.Drawing.Size, System.Drawing">
     <value>450, 39</value>
   </data>
-  <data name="textBoxMemo.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="groupBoxNote.Size" type="System.Drawing.Size, System.Drawing">
     <value>456, 57</value>
-  </data>
-  <data name="groupBoxNote.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="tabPageReference.Size" type="System.Drawing.Size, System.Drawing">
     <value>462, 280</value>
@@ -429,14 +393,8 @@
   <data name="tabPageReference.Text" xml:space="preserve">
     <value>引用文献</value>
   </data>
-  <data name="tabPageReference.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="eosControl.Size" type="System.Drawing.Size, System.Drawing">
     <value>456, 274</value>
-  </data>
-  <data name="eosControl.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="tabPageEOS.Size" type="System.Drawing.Size, System.Drawing">
     <value>462, 280</value>
@@ -444,143 +402,101 @@
   <data name="tabPageEOS.Text" xml:space="preserve">
     <value>状態方程式</value>
   </data>
-  <data name="tabPageEOS.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="elasticityControl1.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="tabPageElasticity.Size" type="System.Drawing.Size, System.Drawing">
     <value>462, 280</value>
   </data>
   <data name="tabPageElasticity.Text" xml:space="preserve">
     <value>弾性定数</value>
   </data>
-  <data name="tabPageElasticity.ToolTip" xml:space="preserve">
-    <value />
+  <data name="numericBoxStress33.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 4, 0, 0</value>
   </data>
-  <data name="numericBoxStress33.ToolTip" xml:space="preserve">
-    <value />
+  <data name="numericBoxStress33.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 4, 0, 0</value>
   </data>
-  <data name="numericBoxStress22.ToolTip" xml:space="preserve">
-    <value />
+  <data name="numericBoxStress22.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 4, 0, 0</value>
   </data>
-  <data name="numericBoxStress11.ToolTip" xml:space="preserve">
-    <value />
+  <data name="numericBoxStress22.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 4, 0, 0</value>
   </data>
-  <data name="numericBoxStress23.ToolTip" xml:space="preserve">
-    <value />
+  <data name="numericBoxStress11.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 4, 0, 0</value>
   </data>
-  <data name="numericBoxStress13.ToolTip" xml:space="preserve">
-    <value />
+  <data name="numericBoxStress11.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 4, 0, 0</value>
   </data>
-  <data name="numericBoxStress12.ToolTip" xml:space="preserve">
-    <value />
+  <data name="numericBoxStress23.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 4, 0, 0</value>
+  </data>
+  <data name="numericBoxStress23.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 4, 0, 0</value>
+  </data>
+  <data name="numericBoxStress13.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 4, 0, 0</value>
+  </data>
+  <data name="numericBoxStress13.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 4, 0, 0</value>
+  </data>
+  <data name="numericBoxStress12.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 4, 0, 0</value>
+  </data>
+  <data name="numericBoxStress12.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 4, 0, 0</value>
+  </data>
+  <data name="numericBoxStrain33.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 4, 0, 0</value>
+  </data>
+  <data name="numericBoxStrain33.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 4, 0, 0</value>
   </data>
   <data name="numericBoxStrain33.Location" type="System.Drawing.Point, System.Drawing">
     <value>120, 123</value>
   </data>
-  <data name="numericBoxStrain33.ToolTip" xml:space="preserve">
-    <value />
+  <data name="numericBoxStrain11.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 4, 0, 0</value>
   </data>
-  <data name="numericBoxStrain11.ToolTip" xml:space="preserve">
-    <value />
+  <data name="numericBoxStrain11.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 4, 0, 0</value>
   </data>
-  <data name="numericBoxStrain22.ToolTip" xml:space="preserve">
-    <value />
+  <data name="numericBoxStrain22.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 4, 0, 0</value>
   </data>
-  <data name="numericBoxStrain12.ToolTip" xml:space="preserve">
-    <value />
+  <data name="numericBoxStrain22.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 4, 0, 0</value>
   </data>
-  <data name="numericBoxStrain23.ToolTip" xml:space="preserve">
-    <value />
+  <data name="numericBoxStrain12.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 4, 0, 0</value>
   </data>
-  <data name="numericBoxStrain13.ToolTip" xml:space="preserve">
-    <value />
+  <data name="numericBoxStrain12.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 4, 0, 0</value>
   </data>
-  <data name="labelLaTex6.ToolTip" xml:space="preserve">
-    <value />
+  <data name="numericBoxStrain23.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 4, 0, 0</value>
   </data>
-  <data name="labelLaTex5.ToolTip" xml:space="preserve">
-    <value />
+  <data name="numericBoxStrain23.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 4, 0, 0</value>
   </data>
-  <data name="labelLaTex3.ToolTip" xml:space="preserve">
-    <value />
+  <data name="numericBoxStrain13.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 4, 0, 0</value>
   </data>
-  <data name="labelLaTex4.ToolTip" xml:space="preserve">
-    <value />
+  <data name="numericBoxStrain13.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 4, 0, 0</value>
   </data>
-  <data name="labelLaTex2.ToolTip" xml:space="preserve">
-    <value />
+  <data name="numericBoxHill.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 4, 0, 0</value>
   </data>
-  <data name="labelLaTex13.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="labelLaTex12.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="labelLaTex11.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="labelLaTex10.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="labelLaTex9.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="labelLaTex8.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="labelLaTex7.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="labelLaTex1.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="buttonStressSet.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="numericBoxHill.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="label117.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="label109.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="label102.ToolTip" xml:space="preserve">
-    <value />
+  <data name="numericBoxHill.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 4, 0, 0</value>
   </data>
   <data name="tabPageStrainStress.Size" type="System.Drawing.Size, System.Drawing">
     <value>462, 280</value>
   </data>
-  <data name="tabPageStrainStress.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="contextMenuStripPoleFigure.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="poleFigureControl.Size" type="System.Drawing.Size, System.Drawing">
     <value>462, 226</value>
   </data>
-  <data name="poleFigureControl.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="buttonGenerateRandomOrientations.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="flowLayoutPanelRandomOrientationActions.Size" type="System.Drawing.Size, System.Drawing">
     <value>462, 27</value>
-  </data>
-  <data name="flowLayoutPanelRandomOrientationActions.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="label5.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="numericUpDownAngleResolution.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="label29.Font" type="System.Drawing.Font, System.Drawing">
     <value>BIZ UDPゴシック, 9pt</value>
@@ -591,68 +507,35 @@
   <data name="label29.Text" xml:space="preserve">
     <value>分割</value>
   </data>
-  <data name="label29.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="numericUpDownAngleSubDivision.Location" type="System.Drawing.Point, System.Drawing">
     <value>195, 2</value>
-  </data>
-  <data name="numericUpDownAngleSubDivision.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="label101.Location" type="System.Drawing.Point, System.Drawing">
     <value>251, 4</value>
   </data>
-  <data name="label101.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="numericUpDownCrystallineSize.Location" type="System.Drawing.Point, System.Drawing">
     <value>286, 2</value>
-  </data>
-  <data name="numericUpDownCrystallineSize.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="label99.Location" type="System.Drawing.Point, System.Drawing">
     <value>334, 4</value>
   </data>
-  <data name="label99.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="flowLayoutPanelRandomOrientationSettings.Size" type="System.Drawing.Size, System.Drawing">
     <value>462, 27</value>
-  </data>
-  <data name="flowLayoutPanelRandomOrientationSettings.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="tabPagePolycrystalline.Size" type="System.Drawing.Size, System.Drawing">
     <value>462, 280</value>
   </data>
-  <data name="tabPagePolycrystalline.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="boundControl.Size" type="System.Drawing.Size, System.Drawing">
     <value>456, 274</value>
-  </data>
-  <data name="boundControl.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="tabPageBounds.Size" type="System.Drawing.Size, System.Drawing">
     <value>462, 280</value>
   </data>
-  <data name="tabPageBounds.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="latticePlaneControl.Size" type="System.Drawing.Size, System.Drawing">
     <value>456, 274</value>
   </data>
-  <data name="latticePlaneControl.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="tabPageLatticePlane.Size" type="System.Drawing.Size, System.Drawing">
     <value>462, 280</value>
-  </data>
-  <data name="tabPageLatticePlane.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="tabControl.Font" type="System.Drawing.Font, System.Drawing">
     <value>BIZ UDPゴシック, 9pt</value>
@@ -665,9 +548,6 @@
   </data>
   <data name="tabControl.Size" type="System.Drawing.Size, System.Drawing">
     <value>470, 310</value>
-  </data>
-  <data name="tabControl.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="colorControl.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>BIZ UDPゴシック, 9pt</value>
@@ -714,8 +594,14 @@
   <data name="numericBoxZnumber.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>BIZ UDPゴシック, 9pt</value>
   </data>
+  <data name="numericBoxZnumber.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 6, 0, 0</value>
+  </data>
   <data name="numericBoxZnumber.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>BIZ UDPゴシック, 9pt</value>
+  </data>
+  <data name="numericBoxZnumber.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 6, 0, 0</value>
   </data>
   <data name="numericBoxZnumber.HeaderText" xml:space="preserve">
     <value>Z数</value>
@@ -737,9 +623,6 @@
   </data>
   <data name="panelFormula.Size" type="System.Drawing.Size, System.Drawing">
     <value>470, 24</value>
-  </data>
-  <data name="panelFormula.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="scatteringFactorToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>278, 22</value>
@@ -810,9 +693,6 @@
   <data name="contextMenuStrip.Size" type="System.Drawing.Size, System.Drawing">
     <value>279, 242</value>
   </data>
-  <data name="contextMenuStrip.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="textBoxName.Location" type="System.Drawing.Point, System.Drawing">
     <value>46, 0</value>
   </data>
@@ -830,9 +710,6 @@
   </data>
   <data name="label22.Text" xml:space="preserve">
     <value>結晶名</value>
-  </data>
-  <data name="label22.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="buttonScatteringFactor.Font" type="System.Drawing.Font, System.Drawing">
     <value>BIZ UDPゴシック, 9pt</value>
@@ -867,19 +744,10 @@
   <data name="flowLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
     <value>470, 0</value>
   </data>
-  <data name="flowLayoutPanel1.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="panelNameAndActions.Size" type="System.Drawing.Size, System.Drawing">
     <value>470, 28</value>
   </data>
-  <data name="panelNameAndActions.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
     <value>470, 362</value>
-  </data>
-  <data name="$this.ToolTip" xml:space="preserve">
-    <value />
   </data>
 </root>

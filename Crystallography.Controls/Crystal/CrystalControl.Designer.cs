@@ -302,6 +302,7 @@
             numericBoxVolumeAng.SmartIncrement = true;
             numericBoxVolumeAng.TabStop = false;
             numericBoxVolumeAng.TextBoxBackColor = System.Drawing.SystemColors.Control;
+            numericBoxVolumeAng.TextFontSize = 9F;
             toolTip.SetToolTip(numericBoxVolumeAng, resources.GetString("numericBoxVolumeAng.ToolTip"));
             // 
             // numericBoxCellVolumeNm
@@ -318,6 +319,7 @@
             numericBoxCellVolumeNm.SmartIncrement = true;
             numericBoxCellVolumeNm.TabStop = false;
             numericBoxCellVolumeNm.TextBoxBackColor = System.Drawing.SystemColors.Control;
+            numericBoxCellVolumeNm.TextFontSize = 9F;
             toolTip.SetToolTip(numericBoxCellVolumeNm, resources.GetString("numericBoxCellVolumeNm.ToolTip"));
             // 
             // numericBoxCellMass
@@ -334,6 +336,7 @@
             numericBoxCellMass.SmartIncrement = true;
             numericBoxCellMass.TabStop = false;
             numericBoxCellMass.TextBoxBackColor = System.Drawing.SystemColors.Control;
+            numericBoxCellMass.TextFontSize = 9F;
             toolTip.SetToolTip(numericBoxCellMass, resources.GetString("numericBoxCellMass.ToolTip"));
             // 
             // numericBoxMolarVolume
@@ -350,6 +353,7 @@
             numericBoxMolarVolume.SmartIncrement = true;
             numericBoxMolarVolume.TabStop = false;
             numericBoxMolarVolume.TextBoxBackColor = System.Drawing.SystemColors.Control;
+            numericBoxMolarVolume.TextFontSize = 9F;
             toolTip.SetToolTip(numericBoxMolarVolume, resources.GetString("numericBoxMolarVolume.ToolTip"));
             // 
             // numericBoxMolarMass
@@ -366,6 +370,7 @@
             numericBoxMolarMass.SmartIncrement = true;
             numericBoxMolarMass.TabStop = false;
             numericBoxMolarMass.TextBoxBackColor = System.Drawing.SystemColors.Control;
+            numericBoxMolarMass.TextFontSize = 9F;
             toolTip.SetToolTip(numericBoxMolarMass, resources.GetString("numericBoxMolarMass.ToolTip"));
             // 
             // numericBoxDensity
@@ -379,6 +384,7 @@
             numericBoxDensity.SmartIncrement = true;
             numericBoxDensity.TabStop = false;
             numericBoxDensity.TextBoxBackColor = System.Drawing.SystemColors.Control;
+            numericBoxDensity.TextFontSize = 9F;
             numericBoxDensity.ThonsandsSeparator = true;
             toolTip.SetToolTip(numericBoxDensity, resources.GetString("numericBoxDensity.ToolTip"));
             // 
@@ -647,7 +653,7 @@
             numericBoxStress33.RestrictLimitValue = false;
             numericBoxStress33.SkipEventDuringInput = false;
             numericBoxStress33.SmartIncrement = true;
-            toolTip.SetToolTip(numericBoxStress33, resources.GetString("numericBoxStress33.ToolTip"));
+            toolTip.SetToolTip(numericBoxStress33, resources.GetString("numericBoxStress33.ToolTip1"));
             // 
             // numericBoxStress22
             // 
@@ -659,7 +665,7 @@
             numericBoxStress22.RestrictLimitValue = false;
             numericBoxStress22.SkipEventDuringInput = false;
             numericBoxStress22.SmartIncrement = true;
-            toolTip.SetToolTip(numericBoxStress22, resources.GetString("numericBoxStress22.ToolTip"));
+            toolTip.SetToolTip(numericBoxStress22, resources.GetString("numericBoxStress22.ToolTip1"));
             // 
             // numericBoxStress11
             // 
@@ -671,7 +677,7 @@
             numericBoxStress11.RestrictLimitValue = false;
             numericBoxStress11.SkipEventDuringInput = false;
             numericBoxStress11.SmartIncrement = true;
-            toolTip.SetToolTip(numericBoxStress11, resources.GetString("numericBoxStress11.ToolTip"));
+            toolTip.SetToolTip(numericBoxStress11, resources.GetString("numericBoxStress11.ToolTip1"));
             // 
             // numericBoxStress23
             // 
@@ -683,7 +689,7 @@
             numericBoxStress23.RestrictLimitValue = false;
             numericBoxStress23.SkipEventDuringInput = false;
             numericBoxStress23.SmartIncrement = true;
-            toolTip.SetToolTip(numericBoxStress23, resources.GetString("numericBoxStress23.ToolTip"));
+            toolTip.SetToolTip(numericBoxStress23, resources.GetString("numericBoxStress23.ToolTip1"));
             // 
             // numericBoxStress13
             // 
@@ -695,7 +701,7 @@
             numericBoxStress13.RestrictLimitValue = false;
             numericBoxStress13.SkipEventDuringInput = false;
             numericBoxStress13.SmartIncrement = true;
-            toolTip.SetToolTip(numericBoxStress13, resources.GetString("numericBoxStress13.ToolTip"));
+            toolTip.SetToolTip(numericBoxStress13, resources.GetString("numericBoxStress13.ToolTip1"));
             // 
             // numericBoxStress12
             // 
@@ -707,7 +713,7 @@
             numericBoxStress12.RestrictLimitValue = false;
             numericBoxStress12.SkipEventDuringInput = false;
             numericBoxStress12.SmartIncrement = true;
-            toolTip.SetToolTip(numericBoxStress12, resources.GetString("numericBoxStress12.ToolTip"));
+            toolTip.SetToolTip(numericBoxStress12, resources.GetString("numericBoxStress12.ToolTip1"));
             // 
             // numericBoxStrain33
             // 
@@ -719,7 +725,7 @@
             numericBoxStrain33.RestrictLimitValue = false;
             numericBoxStrain33.SkipEventDuringInput = false;
             numericBoxStrain33.SmartIncrement = true;
-            toolTip.SetToolTip(numericBoxStrain33, resources.GetString("numericBoxStrain33.ToolTip"));
+            toolTip.SetToolTip(numericBoxStrain33, resources.GetString("numericBoxStrain33.ToolTip1"));
             // 
             // numericBoxStrain11
             // 
@@ -731,7 +737,7 @@
             numericBoxStrain11.RestrictLimitValue = false;
             numericBoxStrain11.SkipEventDuringInput = false;
             numericBoxStrain11.SmartIncrement = true;
-            toolTip.SetToolTip(numericBoxStrain11, resources.GetString("numericBoxStrain11.ToolTip"));
+            toolTip.SetToolTip(numericBoxStrain11, resources.GetString("numericBoxStrain11.ToolTip1"));
             // 
             // numericBoxStrain22
             // 
@@ -743,7 +749,7 @@
             numericBoxStrain22.RestrictLimitValue = false;
             numericBoxStrain22.SkipEventDuringInput = false;
             numericBoxStrain22.SmartIncrement = true;
-            toolTip.SetToolTip(numericBoxStrain22, resources.GetString("numericBoxStrain22.ToolTip"));
+            toolTip.SetToolTip(numericBoxStrain22, resources.GetString("numericBoxStrain22.ToolTip1"));
             // 
             // numericBoxStrain12
             // 
@@ -755,7 +761,7 @@
             numericBoxStrain12.RestrictLimitValue = false;
             numericBoxStrain12.SkipEventDuringInput = false;
             numericBoxStrain12.SmartIncrement = true;
-            toolTip.SetToolTip(numericBoxStrain12, resources.GetString("numericBoxStrain12.ToolTip"));
+            toolTip.SetToolTip(numericBoxStrain12, resources.GetString("numericBoxStrain12.ToolTip1"));
             // 
             // numericBoxStrain23
             // 
@@ -767,7 +773,7 @@
             numericBoxStrain23.RestrictLimitValue = false;
             numericBoxStrain23.SkipEventDuringInput = false;
             numericBoxStrain23.SmartIncrement = true;
-            toolTip.SetToolTip(numericBoxStrain23, resources.GetString("numericBoxStrain23.ToolTip"));
+            toolTip.SetToolTip(numericBoxStrain23, resources.GetString("numericBoxStrain23.ToolTip1"));
             // 
             // numericBoxStrain13
             // 
@@ -779,7 +785,7 @@
             numericBoxStrain13.RestrictLimitValue = false;
             numericBoxStrain13.SkipEventDuringInput = false;
             numericBoxStrain13.SmartIncrement = true;
-            toolTip.SetToolTip(numericBoxStrain13, resources.GetString("numericBoxStrain13.ToolTip"));
+            toolTip.SetToolTip(numericBoxStrain13, resources.GetString("numericBoxStrain13.ToolTip1"));
             // 
             // labelLaTex6
             // 
@@ -891,7 +897,7 @@
             numericBoxHill.RestrictLimitValue = false;
             numericBoxHill.SkipEventDuringInput = false;
             numericBoxHill.SmartIncrement = true;
-            toolTip.SetToolTip(numericBoxHill, resources.GetString("numericBoxHill.ToolTip"));
+            toolTip.SetToolTip(numericBoxHill, resources.GetString("numericBoxHill.ToolTip1"));
             numericBoxHill.Value = 1D;
             // 
             // label117
@@ -1137,8 +1143,9 @@
             numericBoxZnumber.SmartIncrement = true;
             numericBoxZnumber.TabStop = false;
             numericBoxZnumber.TextBoxBackColor = System.Drawing.SystemColors.Control;
+            numericBoxZnumber.TextFontSize = 9F;
             numericBoxZnumber.ThonsandsSeparator = true;
-            toolTip.SetToolTip(numericBoxZnumber, resources.GetString("numericBoxZnumber.ToolTip"));
+            toolTip.SetToolTip(numericBoxZnumber, resources.GetString("numericBoxZnumber.ToolTip1"));
             // 
             // contextMenuStrip
             // 

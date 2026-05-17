@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
@@ -34,11 +34,24 @@ public partial class BoundControl : UserControlBase
     }
     private Crystal crystal = null;
 
-    private (int H, int K, int L) index => (numericBoxH.ValueInteger, numericBoxK.ValueInteger, numericBoxL.ValueInteger);
+    private (int H, int K, int L) index => indexControl.Values;
     private bool equivalency { get => checkBoxEquivalency.Checked; set => checkBoxEquivalency.Checked = value; }
     public double MaximumDistance => numericBoxMaximumDistanceFromOrigin.Value / 10;
 
     private readonly DataSet.DataTableBoundDataTable table;
+
+
+    [Browsable(false)]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+    public bool MillerBravaisIndex
+    {
+        set
+        {
+            iDataGridViewTextBoxColumn.Visible = value; // 260517Cl 有効化: Designer 側に iDataGridViewTextBoxColumn を追加済み
+            indexControl.MillerBravais = value;
+        }
+    }
+
     #endregion
 
     public event EventHandler ItemsChanged;
@@ -60,9 +73,7 @@ public partial class BoundControl : UserControlBase
     public void SetToInterface(Bound b)
     {
         SkipEvent = true;
-        numericBoxH.Value = b.Index.H;
-        numericBoxK.Value = b.Index.K;
-        numericBoxL.Value = b.Index.L;
+        indexControl.Values = b.Index;
         checkBoxEquivalency.Checked = b.Equivalency;
         numericBoxDistance.Value = b.Distance * 10; // Å ↔ nm
         numericBoxDistanceD.Value = numericBoxDistance.Value * 0.1 * ReciprocalLengthHKL();
@@ -152,7 +163,7 @@ public partial class BoundControl : UserControlBase
 
     private void checkBoxEquivalency_CheckedChanged(object sender, EventArgs e)
     {
-        (label1.Text, label2.Text) = checkBoxEquivalency.Checked ? ("{", "}") : ("(", ")");
+        indexControl.Bracket = checkBoxEquivalency.Checked ? IndexControl.BracketEnum.Angle : IndexControl.BracketEnum.Round;
         if (checkBoxImmediateUpdate.Checked)
             buttonChange_Click(sender, e);
     }
@@ -201,6 +212,17 @@ public partial class BoundControl : UserControlBase
         if (e.ColumnIndex != 0 || e.RowIndex < 0) return;
         table.Get(bindingSource.Position).Enabled = (bool)dataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value;
         ItemsChanged?.Invoke(this, EventArgs.Empty);
+    }
+
+    // 260517Cl 追加: i = -(h+k) を CellFormatting で表示する (LatticePlaneControl と同じパターン、DataTable には保持しない)
+    private void dataGridView_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+    {
+        if (e.RowIndex < 0 || dataGridView.Columns[e.ColumnIndex] != iDataGridViewTextBoxColumn) return;
+        var row = dataGridView.Rows[e.RowIndex];
+        var h = Convert.ToInt32(row.Cells[hDataGridViewTextBoxColumn.Index].Value);
+        var k = Convert.ToInt32(row.Cells[kDataGridViewTextBoxColumn.Index].Value);
+        e.Value = (-h - k).ToString();
+        e.FormattingApplied = true;
     }
     #endregion
 }

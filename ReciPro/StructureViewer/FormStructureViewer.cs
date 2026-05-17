@@ -348,8 +348,6 @@ public partial class FormStructureViewer : FormBase
         numericBoxClientWidth.Value = splitContainer1.Panel1.Width;
         numericBoxClientHeight.Value = splitContainer1.Panel1.Height;
         SkipEvent = false;
-
-        UpdatePlaneIndices();
     }
 
     private void FormStructureViewer_VisibleChanged(object sender, EventArgs e)
@@ -2120,11 +2118,8 @@ public partial class FormStructureViewer : FormBase
     }
     #endregion
 
-    public void UpdatePlaneIndices()
-    {
-        if (latticePlaneControl != null)
-            latticePlaneControl.MillerBravaisIndexActive = formMain.MillerBravaisActive; // (260426Ch) 1 行 wrapper をインライン化
-    }
+    // 260517Cl 削除: 中身が no-op になっていたため (crystalControl.MillerBravais setter 経由で latticePlaneControl/boundControl は同期される)。
+    // 呼び出し元 (FormMain.UpdatePlaneIndices / FormStructureViewer の初期化末尾) も同時に削除済み。
 
     private void checkBoxShowSymmetryElements_CheckedChanged(object sender, EventArgs e)
     {

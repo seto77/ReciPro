@@ -24,6 +24,7 @@ partial class FormMovie
     /// </summary>
     private void InitializeComponent()
     {
+        System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMovie));
         buttonOK = new System.Windows.Forms.Button();
         buttonCancel = new System.Windows.Forms.Button();
         numericBoxSpeed = new NumericBox();
@@ -42,36 +43,22 @@ partial class FormMovie
         numericBoxDuration = new NumericBox();
         radioButtonAxis = new System.Windows.Forms.RadioButton();
         radioButtonPlane = new System.Windows.Forms.RadioButton();
-        tableLayoutPanelAxis = new System.Windows.Forms.TableLayoutPanel();
-        numericBoxAxisU = new NumericBox();
-        label9 = new System.Windows.Forms.Label();
-        label10 = new System.Windows.Forms.Label();
-        numericBoxAxisV = new NumericBox();
-        numericBoxAxisW = new NumericBox();
-        tableLayoutPanelPlane = new System.Windows.Forms.TableLayoutPanel();
-        numericBoxPlaneL = new NumericBox();
-        numericBoxPlaneH = new NumericBox();
-        numericBoxPlaneK = new NumericBox();
-        label11 = new System.Windows.Forms.Label();
-        label12 = new System.Windows.Forms.Label();
         radioButtonCurrent = new System.Windows.Forms.RadioButton();
         groupBoxDirection = new System.Windows.Forms.GroupBox();
         radioButtonH264 = new System.Windows.Forms.RadioButton();
         radioButtonH265 = new System.Windows.Forms.RadioButton();
         comboBoxSpeed = new System.Windows.Forms.ComboBox();
         label1 = new System.Windows.Forms.Label();
-        numericBoxPlaneI = new NumericBox();
+        indexControl = new IndexControl();
         tableLayoutPanelCurrent.SuspendLayout();
         tableLayoutPanel2.SuspendLayout();
-        tableLayoutPanelAxis.SuspendLayout();
-        tableLayoutPanelPlane.SuspendLayout();
         groupBoxDirection.SuspendLayout();
         SuspendLayout();
         // 
         // buttonOK
         // 
         buttonOK.DialogResult = System.Windows.Forms.DialogResult.OK;
-        buttonOK.Location = new System.Drawing.Point(100, 377);
+        buttonOK.Location = new System.Drawing.Point(100, 351);
         buttonOK.Name = "buttonOK";
         buttonOK.Size = new System.Drawing.Size(75, 23);
         buttonOK.TabIndex = 0;
@@ -82,7 +69,7 @@ partial class FormMovie
         // buttonCancel
         // 
         buttonCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-        buttonCancel.Location = new System.Drawing.Point(100, 354);
+        buttonCancel.Location = new System.Drawing.Point(100, 328);
         buttonCancel.Name = "buttonCancel";
         buttonCancel.Size = new System.Drawing.Size(75, 23);
         buttonCancel.TabIndex = 0;
@@ -93,7 +80,11 @@ partial class FormMovie
         // numericBoxSpeed
         // 
         numericBoxSpeed.BackColor = System.Drawing.Color.Transparent;
+        numericBoxSpeed.FooterFont = new System.Drawing.Font("Segoe UI Variable Text", 9.75F);
+        numericBoxSpeed.FooterPadding = new System.Windows.Forms.Padding(0, 3, 0, 0);
         numericBoxSpeed.FooterText = "°/sec";
+        numericBoxSpeed.HeaderFont = new System.Drawing.Font("Segoe UI Variable Text", 9.75F);
+        numericBoxSpeed.HeaderPadding = new System.Windows.Forms.Padding(0, 3, 0, 0);
         numericBoxSpeed.HeaderText = "Speed";
         numericBoxSpeed.Location = new System.Drawing.Point(9, 6);
         numericBoxSpeed.Margin = new System.Windows.Forms.Padding(0);
@@ -108,7 +99,7 @@ partial class FormMovie
         numericBoxSpeed.SkipEventDuringInput = false;
         numericBoxSpeed.SmartIncrement = true;
         numericBoxSpeed.TabIndex = 1;
-        numericBoxSpeed.TextFont = new System.Drawing.Font("BIZ UDPGothic", 9F);
+        numericBoxSpeed.TextFontSize = 9F;
         numericBoxSpeed.TrimEndZero = true;
         numericBoxSpeed.Value = 30D;
         // 
@@ -158,7 +149,7 @@ partial class FormMovie
         // 
         buttonAntiClock.BackColor = System.Drawing.SystemColors.Control;
         buttonAntiClock.Dock = System.Windows.Forms.DockStyle.Fill;
-        buttonAntiClock.Font = new System.Drawing.Font("Segoe UI Variable Text", 14F);
+        buttonAntiClock.Font = new System.Drawing.Font("Segoe UI Symbol", 14.25F);
         buttonAntiClock.ForeColor = System.Drawing.Color.Gray;
         buttonAntiClock.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
         buttonAntiClock.ImeMode = System.Windows.Forms.ImeMode.NoControl;
@@ -175,7 +166,7 @@ partial class FormMovie
         // 
         buttonClock.BackColor = System.Drawing.SystemColors.Control;
         buttonClock.Dock = System.Windows.Forms.DockStyle.Fill;
-        buttonClock.Font = new System.Drawing.Font("Segoe UI Variable Text", 14F);
+        buttonClock.Font = new System.Drawing.Font("Segoe UI Symbol", 14.25F);
         buttonClock.ForeColor = System.Drawing.Color.Gray;
         buttonClock.ImeMode = System.Windows.Forms.ImeMode.NoControl;
         buttonClock.Location = new System.Drawing.Point(0, 0);
@@ -191,7 +182,7 @@ partial class FormMovie
         // 
         buttonTopLeft.BackColor = System.Drawing.SystemColors.Control;
         buttonTopLeft.Dock = System.Windows.Forms.DockStyle.Fill;
-        buttonTopLeft.Font = new System.Drawing.Font("Segoe UI Variable Text", 14F);
+        buttonTopLeft.Font = new System.Drawing.Font("Segoe UI Symbol", 14.25F);
         buttonTopLeft.ForeColor = System.Drawing.Color.Gray;
         buttonTopLeft.ImeMode = System.Windows.Forms.ImeMode.NoControl;
         buttonTopLeft.Location = new System.Drawing.Point(0, 0);
@@ -207,7 +198,7 @@ partial class FormMovie
         // 
         buttonLeft.BackColor = System.Drawing.SystemColors.Control;
         buttonLeft.Dock = System.Windows.Forms.DockStyle.Fill;
-        buttonLeft.Font = new System.Drawing.Font("Segoe UI Variable Text", 14F);
+        buttonLeft.Font = new System.Drawing.Font("Segoe UI Symbol", 14.25F);
         buttonLeft.ForeColor = System.Drawing.Color.Gray;
         buttonLeft.ImeMode = System.Windows.Forms.ImeMode.NoControl;
         buttonLeft.Location = new System.Drawing.Point(0, 30);
@@ -223,7 +214,7 @@ partial class FormMovie
         // 
         buttonBottomLeft.BackColor = System.Drawing.SystemColors.Control;
         buttonBottomLeft.Dock = System.Windows.Forms.DockStyle.Fill;
-        buttonBottomLeft.Font = new System.Drawing.Font("Segoe UI Variable Text", 14F);
+        buttonBottomLeft.Font = new System.Drawing.Font("Segoe UI Symbol", 14.25F);
         buttonBottomLeft.ForeColor = System.Drawing.Color.Gray;
         buttonBottomLeft.ImeMode = System.Windows.Forms.ImeMode.NoControl;
         buttonBottomLeft.Location = new System.Drawing.Point(0, 60);
@@ -239,7 +230,7 @@ partial class FormMovie
         // 
         buttonBottom.BackColor = System.Drawing.SystemColors.Control;
         buttonBottom.Dock = System.Windows.Forms.DockStyle.Fill;
-        buttonBottom.Font = new System.Drawing.Font("Segoe UI Variable Text", 14F);
+        buttonBottom.Font = new System.Drawing.Font("Segoe UI Symbol", 14.25F);
         buttonBottom.ForeColor = System.Drawing.Color.Gray;
         buttonBottom.ImeMode = System.Windows.Forms.ImeMode.NoControl;
         buttonBottom.Location = new System.Drawing.Point(39, 60);
@@ -255,7 +246,7 @@ partial class FormMovie
         // 
         buttonBottomRight.BackColor = System.Drawing.SystemColors.Control;
         buttonBottomRight.Dock = System.Windows.Forms.DockStyle.Fill;
-        buttonBottomRight.Font = new System.Drawing.Font("Segoe UI Variable Text", 14F);
+        buttonBottomRight.Font = new System.Drawing.Font("Segoe UI Symbol", 14.25F);
         buttonBottomRight.ForeColor = System.Drawing.Color.Gray;
         buttonBottomRight.ImeMode = System.Windows.Forms.ImeMode.NoControl;
         buttonBottomRight.Location = new System.Drawing.Point(117, 60);
@@ -271,7 +262,7 @@ partial class FormMovie
         // 
         buttonTop.BackColor = System.Drawing.SystemColors.Control;
         buttonTop.Dock = System.Windows.Forms.DockStyle.Fill;
-        buttonTop.Font = new System.Drawing.Font("Segoe UI Variable Text", 14F);
+        buttonTop.Font = new System.Drawing.Font("Segoe UI Symbol", 14.25F);
         buttonTop.ForeColor = System.Drawing.Color.Gray;
         buttonTop.ImeMode = System.Windows.Forms.ImeMode.NoControl;
         buttonTop.Location = new System.Drawing.Point(39, 0);
@@ -287,7 +278,7 @@ partial class FormMovie
         // 
         buttonTopRight.BackColor = System.Drawing.SystemColors.Control;
         buttonTopRight.Dock = System.Windows.Forms.DockStyle.Fill;
-        buttonTopRight.Font = new System.Drawing.Font("Segoe UI Variable Text", 14F);
+        buttonTopRight.Font = new System.Drawing.Font("Segoe UI Symbol", 14.25F);
         buttonTopRight.ForeColor = System.Drawing.Color.Gray;
         buttonTopRight.ImeMode = System.Windows.Forms.ImeMode.NoControl;
         buttonTopRight.Location = new System.Drawing.Point(117, 0);
@@ -304,7 +295,7 @@ partial class FormMovie
         // 
         buttonRight.BackColor = System.Drawing.SystemColors.Control;
         buttonRight.Dock = System.Windows.Forms.DockStyle.Fill;
-        buttonRight.Font = new System.Drawing.Font("Segoe UI Variable Text", 14F);
+        buttonRight.Font = new System.Drawing.Font("Segoe UI Symbol", 14.25F);
         buttonRight.ForeColor = System.Drawing.Color.Blue;
         buttonRight.ImeMode = System.Windows.Forms.ImeMode.NoControl;
         buttonRight.Location = new System.Drawing.Point(117, 30);
@@ -319,7 +310,11 @@ partial class FormMovie
         // numericBoxDuration
         // 
         numericBoxDuration.BackColor = System.Drawing.Color.Transparent;
+        numericBoxDuration.FooterFont = new System.Drawing.Font("Segoe UI Variable Text", 9.75F);
+        numericBoxDuration.FooterPadding = new System.Windows.Forms.Padding(0, 3, 0, 0);
         numericBoxDuration.FooterText = "sec";
+        numericBoxDuration.HeaderFont = new System.Drawing.Font("Segoe UI Variable Text", 9.75F);
+        numericBoxDuration.HeaderPadding = new System.Windows.Forms.Padding(0, 3, 0, 0);
         numericBoxDuration.HeaderText = "Duration";
         numericBoxDuration.Location = new System.Drawing.Point(9, 34);
         numericBoxDuration.Margin = new System.Windows.Forms.Padding(0);
@@ -334,7 +329,7 @@ partial class FormMovie
         numericBoxDuration.SkipEventDuringInput = false;
         numericBoxDuration.SmartIncrement = true;
         numericBoxDuration.TabIndex = 1;
-        numericBoxDuration.TextFont = new System.Drawing.Font("BIZ UDPGothic", 9F);
+        numericBoxDuration.TextFontSize = 9F;
         numericBoxDuration.TrimEndZero = true;
         numericBoxDuration.Value = 12D;
         // 
@@ -343,269 +338,22 @@ partial class FormMovie
         radioButtonAxis.AutoSize = true;
         radioButtonAxis.Location = new System.Drawing.Point(6, 136);
         radioButtonAxis.Name = "radioButtonAxis";
-        radioButtonAxis.Size = new System.Drawing.Size(83, 19);
+        radioButtonAxis.Size = new System.Drawing.Size(105, 19);
         radioButtonAxis.TabIndex = 86;
-        radioButtonAxis.Text = "Crystal axis";
+        radioButtonAxis.Text = "Direction index";
         radioButtonAxis.UseVisualStyleBackColor = true;
         radioButtonAxis.CheckedChanged += radioButtonCurrent_CheckedChanged;
         // 
         // radioButtonPlane
         // 
         radioButtonPlane.AutoSize = true;
-        radioButtonPlane.Location = new System.Drawing.Point(6, 192);
+        radioButtonPlane.Location = new System.Drawing.Point(6, 161);
         radioButtonPlane.Name = "radioButtonPlane";
         radioButtonPlane.Size = new System.Drawing.Size(92, 19);
         radioButtonPlane.TabIndex = 86;
-        radioButtonPlane.Text = "Crystal plane";
+        radioButtonPlane.Text = "Lattice plane";
         radioButtonPlane.UseVisualStyleBackColor = true;
         radioButtonPlane.CheckedChanged += radioButtonCurrent_CheckedChanged;
-        // 
-        // tableLayoutPanelAxis
-        // 
-        tableLayoutPanelAxis.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-        tableLayoutPanelAxis.ColumnCount = 5;
-        tableLayoutPanelAxis.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-        tableLayoutPanelAxis.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-        tableLayoutPanelAxis.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-        tableLayoutPanelAxis.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-        tableLayoutPanelAxis.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-        tableLayoutPanelAxis.Controls.Add(numericBoxAxisU, 1, 0);
-        tableLayoutPanelAxis.Controls.Add(label9, 0, 0);
-        tableLayoutPanelAxis.Controls.Add(label10, 4, 0);
-        tableLayoutPanelAxis.Controls.Add(numericBoxAxisV, 2, 0);
-        tableLayoutPanelAxis.Controls.Add(numericBoxAxisW, 3, 0);
-        tableLayoutPanelAxis.Enabled = false;
-        tableLayoutPanelAxis.Location = new System.Drawing.Point(4, 158);
-        tableLayoutPanelAxis.Margin = new System.Windows.Forms.Padding(0, 0, 0, 2);
-        tableLayoutPanelAxis.MinimumSize = new System.Drawing.Size(0, 29);
-        tableLayoutPanelAxis.Name = "tableLayoutPanelAxis";
-        tableLayoutPanelAxis.Padding = new System.Windows.Forms.Padding(1, 0, 1, 0);
-        tableLayoutPanelAxis.RowCount = 1;
-        tableLayoutPanelAxis.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-        tableLayoutPanelAxis.Size = new System.Drawing.Size(158, 29);
-        tableLayoutPanelAxis.TabIndex = 87;
-        // 
-        // numericBoxAxisU
-        // 
-        numericBoxAxisU.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-        numericBoxAxisU.BackColor = System.Drawing.SystemColors.Control;
-        numericBoxAxisU.Dock = System.Windows.Forms.DockStyle.Fill;
-        numericBoxAxisU.FooterBackColor = System.Drawing.SystemColors.Control;
-        numericBoxAxisU.HeaderBackColor = System.Drawing.SystemColors.Control;
-        numericBoxAxisU.Location = new System.Drawing.Point(12, 3);
-        numericBoxAxisU.Margin = new System.Windows.Forms.Padding(0, 3, 0, 0);
-        numericBoxAxisU.Maximum = 50D;
-        numericBoxAxisU.MaximumSize = new System.Drawing.Size(1000, 28);
-        numericBoxAxisU.Minimum = -50D;
-        numericBoxAxisU.MinimumSize = new System.Drawing.Size(1, 18);
-        numericBoxAxisU.Name = "numericBoxAxisU";
-        numericBoxAxisU.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
-        numericBoxAxisU.ShowUpDown = true;
-        numericBoxAxisU.Size = new System.Drawing.Size(44, 26);
-        numericBoxAxisU.SkipEventDuringInput = false;
-        numericBoxAxisU.TabIndex = 0;
-        numericBoxAxisU.TextFont = new System.Drawing.Font("Segoe UI Variable Text", 9F);
-        numericBoxAxisU.ThonsandsSeparator = true;
-        numericBoxAxisU.ToolTip = "Set crystal plane";
-        numericBoxAxisU.ValueChanged += numericBoxAxisU_ValueChanged;
-        // 
-        // label9
-        // 
-        label9.AutoSize = true;
-        label9.Font = new System.Drawing.Font("Segoe UI Variable Text", 9F);
-        label9.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-        label9.Location = new System.Drawing.Point(1, 0);
-        label9.Margin = new System.Windows.Forms.Padding(0);
-        label9.Name = "label9";
-        label9.Padding = new System.Windows.Forms.Padding(0, 4, 0, 0);
-        label9.Size = new System.Drawing.Size(11, 19);
-        label9.TabIndex = 3;
-        label9.Text = "[";
-        // 
-        // label10
-        // 
-        label10.AutoSize = true;
-        label10.Font = new System.Drawing.Font("Segoe UI Variable Text", 9F);
-        label10.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-        label10.Location = new System.Drawing.Point(144, 0);
-        label10.Margin = new System.Windows.Forms.Padding(0);
-        label10.Name = "label10";
-        label10.Padding = new System.Windows.Forms.Padding(0, 4, 0, 0);
-        label10.Size = new System.Drawing.Size(11, 19);
-        label10.TabIndex = 84;
-        label10.Text = "]";
-        // 
-        // numericBoxAxisV
-        // 
-        numericBoxAxisV.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-        numericBoxAxisV.BackColor = System.Drawing.SystemColors.Control;
-        numericBoxAxisV.Dock = System.Windows.Forms.DockStyle.Fill;
-        numericBoxAxisV.FooterBackColor = System.Drawing.SystemColors.Control;
-        numericBoxAxisV.HeaderBackColor = System.Drawing.SystemColors.Control;
-        numericBoxAxisV.Location = new System.Drawing.Point(56, 3);
-        numericBoxAxisV.Margin = new System.Windows.Forms.Padding(0, 3, 0, 0);
-        numericBoxAxisV.Maximum = 50D;
-        numericBoxAxisV.MaximumSize = new System.Drawing.Size(1000, 28);
-        numericBoxAxisV.Minimum = -50D;
-        numericBoxAxisV.MinimumSize = new System.Drawing.Size(1, 18);
-        numericBoxAxisV.Name = "numericBoxAxisV";
-        numericBoxAxisV.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
-        numericBoxAxisV.ShowUpDown = true;
-        numericBoxAxisV.Size = new System.Drawing.Size(44, 26);
-        numericBoxAxisV.SkipEventDuringInput = false;
-        numericBoxAxisV.TabIndex = 1;
-        numericBoxAxisV.TextFont = new System.Drawing.Font("Segoe UI Variable Text", 9F);
-        numericBoxAxisV.ThonsandsSeparator = true;
-        numericBoxAxisV.ToolTip = "Set crystal plane";
-        numericBoxAxisV.ValueChanged += numericBoxAxisU_ValueChanged;
-        // 
-        // numericBoxAxisW
-        // 
-        numericBoxAxisW.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-        numericBoxAxisW.BackColor = System.Drawing.SystemColors.Control;
-        numericBoxAxisW.DecimalPlaces = 0;
-        numericBoxAxisW.Dock = System.Windows.Forms.DockStyle.Fill;
-        numericBoxAxisW.FooterBackColor = System.Drawing.SystemColors.Control;
-        numericBoxAxisW.HeaderBackColor = System.Drawing.SystemColors.Control;
-        numericBoxAxisW.Location = new System.Drawing.Point(100, 3);
-        numericBoxAxisW.Margin = new System.Windows.Forms.Padding(0, 3, 0, 0);
-        numericBoxAxisW.Maximum = 50D;
-        numericBoxAxisW.MaximumSize = new System.Drawing.Size(1000, 28);
-        numericBoxAxisW.Minimum = -50D;
-        numericBoxAxisW.MinimumSize = new System.Drawing.Size(1, 18);
-        numericBoxAxisW.Name = "numericBoxAxisW";
-        numericBoxAxisW.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
-        numericBoxAxisW.ShowUpDown = true;
-        numericBoxAxisW.Size = new System.Drawing.Size(44, 26);
-        numericBoxAxisW.SkipEventDuringInput = false;
-        numericBoxAxisW.TabIndex = 2;
-        numericBoxAxisW.TextFont = new System.Drawing.Font("Segoe UI Variable Text", 9F);
-        numericBoxAxisW.ThonsandsSeparator = true;
-        numericBoxAxisW.ToolTip = "Set crystal plane";
-        numericBoxAxisW.ValueChanged += numericBoxAxisU_ValueChanged;
-        // 
-        // tableLayoutPanelPlane
-        // 
-        tableLayoutPanelPlane.ColumnCount = 6;
-        tableLayoutPanelPlane.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-        tableLayoutPanelPlane.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-        tableLayoutPanelPlane.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-        tableLayoutPanelPlane.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-        tableLayoutPanelPlane.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-        tableLayoutPanelPlane.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-        tableLayoutPanelPlane.Controls.Add(numericBoxPlaneH, 0, 0);
-        tableLayoutPanelPlane.Controls.Add(numericBoxPlaneK, 0, 0);
-        tableLayoutPanelPlane.Controls.Add(label12, 0, 0);
-        tableLayoutPanelPlane.Controls.Add(label11, 5, 0);
-        tableLayoutPanelPlane.Controls.Add(numericBoxPlaneL, 4, 0);
-        tableLayoutPanelPlane.Controls.Add(numericBoxPlaneI, 3, 0);
-        tableLayoutPanelPlane.Enabled = false;
-        tableLayoutPanelPlane.Font = new System.Drawing.Font("Segoe UI Variable Text", 9.75F);
-        tableLayoutPanelPlane.Location = new System.Drawing.Point(4, 214);
-        tableLayoutPanelPlane.Margin = new System.Windows.Forms.Padding(0);
-        tableLayoutPanelPlane.MinimumSize = new System.Drawing.Size(0, 29);
-        tableLayoutPanelPlane.Name = "tableLayoutPanelPlane";
-        tableLayoutPanelPlane.Padding = new System.Windows.Forms.Padding(1, 0, 1, 0);
-        tableLayoutPanelPlane.RowCount = 1;
-        tableLayoutPanelPlane.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-        tableLayoutPanelPlane.Size = new System.Drawing.Size(162, 29);
-        tableLayoutPanelPlane.TabIndex = 88;
-        // 
-        // numericBoxPlaneL
-        // 
-        numericBoxPlaneL.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-        numericBoxPlaneL.BackColor = System.Drawing.SystemColors.Control;
-        numericBoxPlaneL.Dock = System.Windows.Forms.DockStyle.Fill;
-        numericBoxPlaneL.FooterBackColor = System.Drawing.SystemColors.Control;
-        numericBoxPlaneL.HeaderBackColor = System.Drawing.SystemColors.Control;
-        numericBoxPlaneL.Location = new System.Drawing.Point(114, 3);
-        numericBoxPlaneL.Margin = new System.Windows.Forms.Padding(0, 3, 0, 0);
-        numericBoxPlaneL.Maximum = 50D;
-        numericBoxPlaneL.MaximumSize = new System.Drawing.Size(1000, 28);
-        numericBoxPlaneL.Minimum = -50D;
-        numericBoxPlaneL.MinimumSize = new System.Drawing.Size(1, 18);
-        numericBoxPlaneL.Name = "numericBoxPlaneL";
-        numericBoxPlaneL.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
-        numericBoxPlaneL.ShowUpDown = true;
-        numericBoxPlaneL.Size = new System.Drawing.Size(34, 26);
-        numericBoxPlaneL.SkipEventDuringInput = false;
-        numericBoxPlaneL.TabIndex = 2;
-        numericBoxPlaneL.TextFont = new System.Drawing.Font("Segoe UI Variable Text", 9F);
-        numericBoxPlaneL.ThonsandsSeparator = true;
-        numericBoxPlaneL.ValueChanged += numericBoxAxisU_ValueChanged;
-        // 
-        // numericBoxPlaneH
-        // 
-        numericBoxPlaneH.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-        numericBoxPlaneH.BackColor = System.Drawing.SystemColors.Control;
-        numericBoxPlaneH.Dock = System.Windows.Forms.DockStyle.Fill;
-        numericBoxPlaneH.FooterBackColor = System.Drawing.SystemColors.Control;
-        numericBoxPlaneH.HeaderBackColor = System.Drawing.SystemColors.Control;
-        numericBoxPlaneH.Location = new System.Drawing.Point(46, 3);
-        numericBoxPlaneH.Margin = new System.Windows.Forms.Padding(0, 3, 0, 0);
-        numericBoxPlaneH.Maximum = 50D;
-        numericBoxPlaneH.MaximumSize = new System.Drawing.Size(1000, 28);
-        numericBoxPlaneH.Minimum = -50D;
-        numericBoxPlaneH.MinimumSize = new System.Drawing.Size(1, 18);
-        numericBoxPlaneH.Name = "numericBoxPlaneH";
-        numericBoxPlaneH.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
-        numericBoxPlaneH.ShowUpDown = true;
-        numericBoxPlaneH.Size = new System.Drawing.Size(34, 26);
-        numericBoxPlaneH.SkipEventDuringInput = false;
-        numericBoxPlaneH.TabIndex = 0;
-        numericBoxPlaneH.TextFont = new System.Drawing.Font("Segoe UI Variable Text", 9F);
-        numericBoxPlaneH.ThonsandsSeparator = true;
-        numericBoxPlaneH.ToolTip = "Set crystal plane";
-        numericBoxPlaneH.ValueChanged += numericBoxAxisU_ValueChanged;
-        // 
-        // numericBoxPlaneK
-        // 
-        numericBoxPlaneK.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-        numericBoxPlaneK.BackColor = System.Drawing.SystemColors.Control;
-        numericBoxPlaneK.Dock = System.Windows.Forms.DockStyle.Fill;
-        numericBoxPlaneK.FooterBackColor = System.Drawing.SystemColors.Control;
-        numericBoxPlaneK.HeaderBackColor = System.Drawing.SystemColors.Control;
-        numericBoxPlaneK.Location = new System.Drawing.Point(12, 3);
-        numericBoxPlaneK.Margin = new System.Windows.Forms.Padding(0, 3, 0, 0);
-        numericBoxPlaneK.Maximum = 50D;
-        numericBoxPlaneK.MaximumSize = new System.Drawing.Size(1000, 28);
-        numericBoxPlaneK.Minimum = -50D;
-        numericBoxPlaneK.MinimumSize = new System.Drawing.Size(1, 18);
-        numericBoxPlaneK.Name = "numericBoxPlaneK";
-        numericBoxPlaneK.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
-        numericBoxPlaneK.ShowUpDown = true;
-        numericBoxPlaneK.Size = new System.Drawing.Size(34, 26);
-        numericBoxPlaneK.SkipEventDuringInput = false;
-        numericBoxPlaneK.TabIndex = 1;
-        numericBoxPlaneK.TextFont = new System.Drawing.Font("Segoe UI Variable Text", 9F);
-        numericBoxPlaneK.ThonsandsSeparator = true;
-        numericBoxPlaneK.ValueChanged += numericBoxAxisU_ValueChanged;
-        // 
-        // label11
-        // 
-        label11.AutoSize = true;
-        label11.Font = new System.Drawing.Font("Segoe UI Variable Text", 9F);
-        label11.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-        label11.Location = new System.Drawing.Point(148, 0);
-        label11.Margin = new System.Windows.Forms.Padding(0);
-        label11.Name = "label11";
-        label11.Padding = new System.Windows.Forms.Padding(0, 4, 0, 0);
-        label11.Size = new System.Drawing.Size(11, 19);
-        label11.TabIndex = 84;
-        label11.Text = ")";
-        // 
-        // label12
-        // 
-        label12.AutoSize = true;
-        label12.Font = new System.Drawing.Font("Segoe UI Variable Text", 9F);
-        label12.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-        label12.Location = new System.Drawing.Point(1, 0);
-        label12.Margin = new System.Windows.Forms.Padding(0);
-        label12.Name = "label12";
-        label12.Padding = new System.Windows.Forms.Padding(0, 4, 0, 0);
-        label12.Size = new System.Drawing.Size(11, 19);
-        label12.TabIndex = 3;
-        label12.Text = "(";
         // 
         // radioButtonCurrent
         // 
@@ -622,15 +370,14 @@ partial class FormMovie
         // 
         // groupBoxDirection
         // 
+        groupBoxDirection.Controls.Add(indexControl);
         groupBoxDirection.Controls.Add(radioButtonCurrent);
-        groupBoxDirection.Controls.Add(tableLayoutPanelPlane);
         groupBoxDirection.Controls.Add(tableLayoutPanelCurrent);
-        groupBoxDirection.Controls.Add(tableLayoutPanelAxis);
         groupBoxDirection.Controls.Add(radioButtonAxis);
         groupBoxDirection.Controls.Add(radioButtonPlane);
         groupBoxDirection.Location = new System.Drawing.Point(9, 64);
         groupBoxDirection.Name = "groupBoxDirection";
-        groupBoxDirection.Size = new System.Drawing.Size(164, 249);
+        groupBoxDirection.Size = new System.Drawing.Size(164, 231);
         groupBoxDirection.TabIndex = 89;
         groupBoxDirection.TabStop = false;
         groupBoxDirection.Text = "Direction";
@@ -638,7 +385,7 @@ partial class FormMovie
         // radioButtonH264
         // 
         radioButtonH264.AutoSize = true;
-        radioButtonH264.Location = new System.Drawing.Point(8, 318);
+        radioButtonH264.Location = new System.Drawing.Point(8, 302);
         radioButtonH264.Name = "radioButtonH264";
         radioButtonH264.Size = new System.Drawing.Size(52, 19);
         radioButtonH264.TabIndex = 90;
@@ -649,7 +396,7 @@ partial class FormMovie
         // 
         radioButtonH265.AutoSize = true;
         radioButtonH265.Checked = true;
-        radioButtonH265.Location = new System.Drawing.Point(66, 319);
+        radioButtonH265.Location = new System.Drawing.Point(66, 303);
         radioButtonH265.Name = "radioButtonH265";
         radioButtonH265.Size = new System.Drawing.Size(52, 19);
         radioButtonH265.TabIndex = 90;
@@ -662,7 +409,7 @@ partial class FormMovie
         comboBoxSpeed.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
         comboBoxSpeed.FormattingEnabled = true;
         comboBoxSpeed.Items.AddRange(new object[] { "ultrafast", "superfast", "veryfast", "faster", "fast", "medium", "slow", "slower", "veryslow" });
-        comboBoxSpeed.Location = new System.Drawing.Point(9, 366);
+        comboBoxSpeed.Location = new System.Drawing.Point(9, 350);
         comboBoxSpeed.Name = "comboBoxSpeed";
         comboBoxSpeed.Size = new System.Drawing.Size(75, 23);
         comboBoxSpeed.TabIndex = 91;
@@ -670,43 +417,36 @@ partial class FormMovie
         // label1
         // 
         label1.AutoSize = true;
-        label1.Location = new System.Drawing.Point(9, 348);
+        label1.Location = new System.Drawing.Point(9, 332);
         label1.Name = "label1";
         label1.Size = new System.Drawing.Size(80, 15);
         label1.TabIndex = 92;
         label1.Text = "Encode speed";
         // 
-        // numericBoxPlaneI
+        // indexControl1
         // 
-        numericBoxPlaneI.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-        numericBoxPlaneI.BackColor = System.Drawing.SystemColors.Control;
-        numericBoxPlaneI.Dock = System.Windows.Forms.DockStyle.Fill;
-        numericBoxPlaneI.FooterBackColor = System.Drawing.SystemColors.Control;
-        numericBoxPlaneI.HeaderBackColor = System.Drawing.SystemColors.Control;
-        numericBoxPlaneI.Location = new System.Drawing.Point(80, 3);
-        numericBoxPlaneI.Margin = new System.Windows.Forms.Padding(0, 3, 0, 0);
-        numericBoxPlaneI.Maximum = 50D;
-        numericBoxPlaneI.MaximumSize = new System.Drawing.Size(1000, 28);
-        numericBoxPlaneI.Minimum = -50D;
-        numericBoxPlaneI.MinimumSize = new System.Drawing.Size(1, 18);
-        numericBoxPlaneI.Name = "numericBoxPlaneI";
-        numericBoxPlaneI.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
-        numericBoxPlaneI.ReadOnly = true;
-        numericBoxPlaneI.ShowUpDown = true;
-        numericBoxPlaneI.Size = new System.Drawing.Size(34, 26);
-        numericBoxPlaneI.SkipEventDuringInput = false;
-        numericBoxPlaneI.TabIndex = 2;
-        numericBoxPlaneI.TextBoxBackColor = System.Drawing.SystemColors.Control;
-        numericBoxPlaneI.TextFont = new System.Drawing.Font("Segoe UI Variable Text", 9F);
-        numericBoxPlaneI.ThonsandsSeparator = true;
-        // 
+        indexControl.AutoSize = true;
+        indexControl.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+        indexControl.BoxWidth = 40;
+        indexControl.Bracket = IndexControl.BracketEnum.Round;
+        indexControl.Location = new System.Drawing.Point(7, 183);
+        indexControl.Margin = new System.Windows.Forms.Padding(0);
+        indexControl.Mode = IndexControl.ModeEnum.Plane;
+        indexControl.Name = "indexControl1";
+        indexControl.Size = new System.Drawing.Size(134, 41);
+        indexControl.SubScript = "";
+        indexControl.TabIndex = 93;
+        indexControl.UpDownWidth = 17;
+        indexControl.Values = ((int, int, int))resources.GetObject("indexControl1.Values");
+        indexControl.ValueChanged += numericBoxAxisU_ValueChanged; // 260517Cl 追加: IndexControl 化で取りこぼした購読を復元
+        //
         // FormMovie
         // 
         AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
         AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
         AutoSize = true;
         AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-        ClientSize = new System.Drawing.Size(180, 401);
+        ClientSize = new System.Drawing.Size(180, 378);
         ControlBox = false;
         Controls.Add(label1);
         Controls.Add(comboBoxSpeed);
@@ -726,10 +466,6 @@ partial class FormMovie
         Text = "Movie setting";
         tableLayoutPanelCurrent.ResumeLayout(false);
         tableLayoutPanel2.ResumeLayout(false);
-        tableLayoutPanelAxis.ResumeLayout(false);
-        tableLayoutPanelAxis.PerformLayout();
-        tableLayoutPanelPlane.ResumeLayout(false);
-        tableLayoutPanelPlane.PerformLayout();
         groupBoxDirection.ResumeLayout(false);
         groupBoxDirection.PerformLayout();
         ResumeLayout(false);
@@ -756,24 +492,11 @@ partial class FormMovie
     private NumericBox numericBoxDuration;
     private System.Windows.Forms.RadioButton radioButtonAxis;
     private System.Windows.Forms.RadioButton radioButtonPlane;
-    private System.Windows.Forms.TableLayoutPanel tableLayoutPanelAxis;
-    private NumericBox numericBoxAxisU;
-    private System.Windows.Forms.Label label9;
-    private System.Windows.Forms.Label label10;
-    private NumericBox numericBoxAxisV;
-    private NumericBox numericBoxAxisW;
-    private System.Windows.Forms.TableLayoutPanel tableLayoutPanelPlane;
-    //260422Cl HKLControl revert → フィールド宣言復活
-    private NumericBox numericBoxPlaneL;
-    private NumericBox numericBoxPlaneH;
-    private NumericBox numericBoxPlaneK;
-    private System.Windows.Forms.Label label11;
-    private System.Windows.Forms.Label label12;
     private System.Windows.Forms.RadioButton radioButtonCurrent;
     private System.Windows.Forms.GroupBox groupBoxDirection;
     private System.Windows.Forms.RadioButton radioButtonH264;
     private System.Windows.Forms.RadioButton radioButtonH265;
     private System.Windows.Forms.ComboBox comboBoxSpeed;
     private System.Windows.Forms.Label label1;
-    private NumericBox numericBoxPlaneI;
+    private IndexControl indexControl;
 }

@@ -715,17 +715,16 @@ public partial class FormEBSD : FormBase
         if (glControlMasterPattern3D == null || Crystal?.A_Axis == null || Crystal.B_Axis == null || Crystal.C_Axis == null)
             return;
 
-        // var zoneAxis = new Vector3DBase(numericBoxMasterPattern3DViewAlongU.Value, numericBoxMasterPattern3DViewAlongV.Value, numericBoxMasterPattern3DViewAlongW.Value); // (260322Ch) 旧案: [u v w] を直交座標 x,y,z と同一視していた
-        var zoneAxis = numericBoxMasterPattern3DViewAlongU.Value * Crystal.A_Axis + numericBoxMasterPattern3DViewAlongV.Value * Crystal.B_Axis + numericBoxMasterPattern3DViewAlongW.Value * Crystal.C_Axis; // (260322Ch) 結晶学的 [u v w] を実空間ベクトルへ変換する
+        var (u, v, w) = indexControl.Values;
+        var zoneAxis = u * Crystal.A_Axis + v * Crystal.B_Axis + w * Crystal.C_Axis; // (260322Ch) 結晶学的 [u v w] を実空間ベクトルへ変換する
         if (zoneAxis.Length2 < 1e-12)
         {
-            toolStripStatusLabel2.Text = "Zone axis [u v w] cannot be [0 0 0]."; // (260322Ch) 無効な軸指定はそのまま無視せず状態欄へ知らせる // 260406Cl Label1→Label2: 進捗専用に整理
+            toolStripStatusLabel2.Text = "Zone axis [u v w] cannot be [0 0 0]."; // 260517Cl 旧挙動を復元: zone axis (0,0,0) を明示的に通知
             return;
         }
 
-        // glControlMasterPattern3D.WorldMatrix = GLGeometry.CreateRotationToZ(zoneAxis.ToOpenTK()).ToMatrix4d(); // (260322Ch) 旧検討: Z軸を zone axis 側へ倒すと「axis 方向から眺める」向きと逆になる
         glControlMasterPattern3D.WorldMatrix = GLGeometry.CreateRotationFromZ(zoneAxis.ToOpenTK()).ToMatrix4d(); // (260322Ch) zone axis が viewer の +Z 方向を向くように回転する
-        toolStripStatusLabel2.Text = $"MasterPattern3D view: [{numericBoxMasterPattern3DViewAlongU.Value:g} {numericBoxMasterPattern3DViewAlongV.Value:g} {numericBoxMasterPattern3DViewAlongW.Value:g}]"; // (260322Ch) // 260406Cl Label1→Label2: 進捗専用に整理
+        toolStripStatusLabel2.Text = $"MasterPattern3D view: [{u} {v} {w}]"; // (260322Ch) // 260406Cl Label1→Label2: 進捗専用に整理
     }
 
     #endregion

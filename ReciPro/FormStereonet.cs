@@ -55,7 +55,7 @@ public partial class FormStereonet : FormBase
     private List<IndexInfo> SpecifiedIndices = [];
 
     //32 64 96 128 160 192 224 255
-    private static int[] ColorArray = [
+    private static readonly int[] ColorArray = [
             Color.Red.ToArgb(),
             Color.Teal.ToArgb(),
             Color.Maroon.ToArgb(),
@@ -256,9 +256,9 @@ public partial class FormStereonet : FormBase
                     }
                 }
                 glObjects.Add(new Lines([.. pts1], 2f, new Material(color10)));
-                glObjects.Add(new Lines(pts1.Select(v => new V3(v.X, -v.Y, v.Z)).ToArray(), 2f, new Material(color10)));
+                glObjects.Add(new Lines([.. pts1.Select(v => new V3(v.X, -v.Y, v.Z))], 2f, new Material(color10)));
                 glObjects.Add(new Lines([.. pts2], 2f, new Material(color10)));
-                glObjects.Add(new Lines(pts2.Select(v => new V3(-v.X, v.Y, v.Z)).ToArray(), 2f, new Material(color10)));
+                glObjects.Add(new Lines([.. pts2.Select(v => new V3(-v.X, v.Y, v.Z))], 2f, new Material(color10)));
             }
         }
         #endregion
@@ -660,6 +660,11 @@ public partial class FormStereonet : FormBase
         }
     }
 
+
+    #endregion
+
+    #region 座標変換
+
     //Src（単位なし）をClient(pixel)に変換
     private PointF convertSrcToClient(PointD pt)
         => new((float)(graphicsBox.ClientSize.Width / 2.0 + mag * (pt.X - centerPt.X)), (float)(graphicsBox.ClientSize.Height / 2.0 + mag * (pt.Y - centerPt.Y)));
@@ -669,7 +674,20 @@ public partial class FormStereonet : FormBase
     private PointD convertClientToSrc(Point pt)
         => new(centerPt.X + (pt.X - graphicsBox.ClientSize.Width / 2) / mag, centerPt.Y + (graphicsBox.ClientSize.Height / 2 - pt.Y) / mag);
 
-    // private PointD convertClientToSrc(int x, int y) => convertClientToSrc(new Point(x, y)); // (260322Ch) 旧実装: 1 箇所だけで使う短い overload helper
+
+    /// <summary> ステレオネット上の点に対応する 3D 単位ベクトル (上半球) を返す。Schmidt のみ有効域外 (ρ²>2) で null、Wulff は常に non-null。 </summary>
+    private Vector3DBase srcToSphere(PointD p) // 260517Cl 追加: 投影逆変換を MouseMove と FindIndex で共有
+    {
+        double X = p.X, Y = p.Y, rho2 = X * X + Y * Y;
+        if (radioButtonWulff.Checked) // Wulff (stereographic) — 260517Cl alloc を 1 回に絞るため除算をスカラで先に計算
+        {
+            double d = 1 + rho2;
+            return new Vector3DBase(2 * X / d, 2 * Y / d, (1 - rho2) / d);
+        }
+        if (rho2 > 2) return null;
+        double s = Sqrt(2 - rho2);
+        return new Vector3DBase(X * s, Y * s, 1 - rho2); // Schmidt (equal-area)
+    }
 
     #endregion
 
@@ -751,10 +769,7 @@ public partial class FormStereonet : FormBase
             labelXYpos.Text = $"{tilt / PI * 180:f3}° / {azimuth / PI * 180:f3}°";
             var (axis, plane) = FindIndex(vSphere);
             // 260517Cl Miller-Bravais 表示時 (hex/trigonal) は面指数を 4 指数 (h k -h-k l) に
-            var planeStr = MillerBravaisActive
-                ? $"({plane.H}, {plane.K}, {-plane.H - plane.K}, {plane.L})"
-                : $"({plane.H}, {plane.K}, {plane.L})";
-            labelAxisPlane.Text = $"[{axis.U},{axis.V},{axis.W}] / {planeStr}";
+            labelAxisPlane.Text = $"[{axis.U} {axis.V} {axis.W}] / ({FormMain.PlaneString(plane.H, plane.K, plane.L, MillerBravaisActive)})";
         }
 
         //真ん中ボタンが押されながらマウスが動いたとき
@@ -819,9 +834,7 @@ public partial class FormStereonet : FormBase
     {
         if (radioButtonCircleByAxis.Checked)
         {
-            var u = (int)numericUpDownCircleU.Value;
-            var v = (int)numericUpDownCircleV.Value;
-            var w = (int)numericUpDownCircleW.Value;
+            var (u, v, w) = indexControlAxis.Values;
             if (u == 0 && v == 0 && w == 0) return;
             var vec = new Vector3D(u * formMain.Crystal.A_Axis + v * formMain.Crystal.B_Axis + w * formMain.Crystal.C_Axis) { Text = $"[{u} {v} {w}]" };
             formMain.Crystal.VectorOfPole.Add(vec);
@@ -832,19 +845,16 @@ public partial class FormStereonet : FormBase
         }
         else if (radioButtonCircleByPlanes.Checked)
         {
-            var h1 = (int)numericUpDownCircleH1.Value;
-            var h2 = (int)numericUpDownCircleH2.Value;
-            var k1 = (int)numericUpDownCircleK1.Value;
-            var k2 = (int)numericUpDownCircleK2.Value;
-            var l1 = (int)numericUpDownCircleL1.Value;
-            var l2 = (int)numericUpDownCircleL2.Value;
+            var (h1, k1, l1) = indexControlCirclePlane1.Values;
+            var (h2, k2, l2) = indexControlCirclePlane2.Values;
 
             var u = k1 * l2 - k2 * l1;
             var v = l1 * h2 - l2 * h1;
             var w = h1 * k2 - h2 * k1;
             if (u == 0 && v == 0 && w == 0) return;
 
-            var vec = new Vector3D(u * formMain.Crystal.A_Axis + v * formMain.Crystal.B_Axis + w * formMain.Crystal.C_Axis) { Text = $"({h1} {k1} {l1}) & ({h2} {k2} {l2})" };
+            var vec = new Vector3D(u * formMain.Crystal.A_Axis + v * formMain.Crystal.B_Axis + w * formMain.Crystal.C_Axis)
+            { Text = $"({FormMain.PlaneString(h1, k1, l1, MillerBravaisActive)}) & ({FormMain.PlaneString(h2, k2, l2, MillerBravaisActive)})" };
 
             formMain.Crystal.VectorOfPole.Add(vec);
             suppressItemCheck = true; // 260517Cl 直後の Draw() が回るので ItemCheck の BeginInvoke は抑止
@@ -871,8 +881,8 @@ public partial class FormStereonet : FormBase
 
     private void radioButtonCircleByAxis_CheckedChanged(object sender, EventArgs e)
     {
-        panelAxis.Enabled = radioButtonCircleByAxis.Checked;
-        panelPlanes.Enabled = radioButtonCircleByPlanes.Checked;
+        flowLayoutPanelCircleAxis.Enabled = radioButtonCircleByAxis.Checked;
+        flowLayoutPanelCirclePlanes.Enabled = radioButtonCircleByPlanes.Checked;
     }
 
     private bool suppressItemCheck; // 260517Cl 追加 プログラム的に Items.Add(item, true) する際に ItemCheck からの冗長な Draw を抑止
@@ -894,8 +904,7 @@ public partial class FormStereonet : FormBase
         if (formMain.Crystal == null)
             return;
 
-        UpdatePlaneIndices();
-
+        UpdatePlaneIndices(redraw: false); // 260517Cl 末尾の Draw() で再描画するので、ここでは描画しない
 
         setVector();
         //formMain.Crystal.SetVectorOfAxis((int)numericBox1.Value, (int)numericBox2.Value, (int)numericBox3.Value);
@@ -923,11 +932,11 @@ public partial class FormStereonet : FormBase
     {
         if (!((RadioButton)sender).Checked) return;
 
-        UpdatePlaneIndices();
+        UpdatePlaneIndices(redraw: false); // 260517Cl 末尾の Draw() で再描画するので、ここでは描画しない
 
         if (radioButtonAxes.Checked)
         {
-            labelHU.Text = "u"; labelKV.Text = "v"; labelLW.Text = "w";
+            indexControlDrawing.Mode= IndexControl.ModeEnum.Axis;
             radioButtonHighStructureFactor.Visible = false;
             if (radioButtonHighStructureFactor.Checked)
                 radioButtonRange.Checked = true;
@@ -935,7 +944,7 @@ public partial class FormStereonet : FormBase
         }
         else
         {
-            labelHU.Text = "h"; labelKV.Text = "k"; labelLW.Text = "l";
+            indexControlDrawing.Mode = IndexControl.ModeEnum.Plane;
             radioButtonHighStructureFactor.Visible = true;
             checkBoxReflectStructureFactor.Enabled = true;
 
@@ -1114,30 +1123,27 @@ public partial class FormStereonet : FormBase
             if (!rb.Checked) return;//チェックされたとき以外は無視
         }
 
-        UpdatePlaneIndices();
+        UpdatePlaneIndices(redraw: false); // 260517Cl 末尾の Draw() で再描画するので、ここでは描画しない
 
-        numericBox1.HeaderText = numericBox2.HeaderText = numericBox3.HeaderText = numericBox4.HeaderText =
-            radioButtonRange.Checked ? "±" : "";
+        indexControlDrawing.PlusMinus = radioButtonRange.Checked;
 
         if (radioButtonRange.Checked)
         {
-            numericBox1.Minimum = numericBox2.Minimum = numericBox3.Minimum = 0;
-            flowLayoutPanelIndex.Visible = true;
+            indexControlDrawing.Visible = true;
             numericBoxHighStructureFactor.Visible = false;
             buttonRemoveIndex.Visible = buttonAddIndex.Visible = false;
             checkBoxIncludingEquivalentPlanes.Visible = false;
         }
         else if (radioButtonSpecifiedIndices.Checked)
         {
-            numericBox1.Minimum = numericBox2.Minimum = numericBox3.Minimum = -numericBox1.Maximum;
-            flowLayoutPanelIndex.Visible = true;
+            indexControlDrawing.Visible = true;
             numericBoxHighStructureFactor.Visible = false;
             buttonRemoveIndex.Visible = buttonAddIndex.Visible = true;
             checkBoxIncludingEquivalentPlanes.Visible = true;
         }
         else//構造因子順の場合
         {
-            flowLayoutPanelIndex.Visible = false;
+            indexControlDrawing.Visible = false;
             numericBoxHighStructureFactor.Visible = true;
             buttonRemoveIndex.Visible = buttonAddIndex.Visible = false;
             checkBoxIncludingEquivalentPlanes.Visible = false;
@@ -1149,9 +1155,6 @@ public partial class FormStereonet : FormBase
     //指数範囲が変更されたとき
     private void numericUpDown_ValueChanged(object sender, EventArgs e)
     {
-        if (flowLayoutPanelI.Visible && sender is NumericBox nb && (nb.Name == "numericBox1" || nb.Name == "numericBox2"))
-            numericBox4.Value = -numericBox1.Value - numericBox2.Value;
-
         setVector();
         Draw();
     }
@@ -1203,7 +1206,7 @@ public partial class FormStereonet : FormBase
 
     private void buttonAddIndex_Click(object sender, EventArgs e)
     {
-        var (x, y, z) = (numericBox1.ValueInteger, numericBox2.ValueInteger, numericBox3.ValueInteger);
+        var (x, y, z) = indexControlDrawing.Values;
         if (x != 0 || y != 0 || z != 0)
         {
             var argb = checkBoxRotateColor.Checked ? ColorArray[ProjectedObjects.Count % ColorArray.Length] : colorControlIndex.Argb;
@@ -1274,7 +1277,7 @@ public partial class FormStereonet : FormBase
             //範囲指定モードの時
             if (radioButtonRange.Checked)
             {
-                var (x, y, z) = (numericBox1.ValueInteger, numericBox2.ValueInteger, numericBox3.ValueInteger);
+                var (x, y, z) = indexControlDrawing.Values;
 
                 ProjectedObjects = [];
                 var hash = new HashSet<(int X, int Y, int Z)>();
@@ -1551,25 +1554,7 @@ public partial class FormStereonet : FormBase
 
     #endregion
 
-    public void UpdatePlaneIndices()
-    {
-        flowLayoutPanelI.Visible = MillerBravaisActive && radioButtonPlanes.Checked;
-        if (flowLayoutPanelI.Visible)
-            numericBox4.Value = -numericBox1.Value - numericBox2.Value;
-        Draw();
-    }
-
-    private void radioButtonDelimiterNone_CheckedChanged(object sender, EventArgs e) => Draw();
-
-    /// <summary> ステレオネット上の点に対応する 3D 単位ベクトル (上半球) を返す。Schmidt 有効域外 (ρ²>2) は null。 </summary>
-    private Vector3DBase srcToSphere(PointD p) // 260517Cl 追加: 投影逆変換を MouseMove と FindIndex で共有
-    {
-        double X = p.X, Y = p.Y, rho2 = X * X + Y * Y;
-        if (radioButtonWulff.Checked) // Wulff (stereographic)
-            return new Vector3DBase(2 * X, 2 * Y, 1 - rho2) / (1 + rho2);
-        return rho2 > 2 ? null : new Vector3DBase(X * Sqrt(2 - rho2), Y * Sqrt(2 - rho2), 1 - rho2); // Schmidt (equal-area)
-    }
-
+    #region 晶帯軸・格子面の指数探索 
     /// <summary> 3D 単位ベクトル vSphere (ラボ系・上半球) に最も近い晶帯軸/格子面の指数を返す。 </summary>
     private ((int U, int V, int W) Axis, (int H, int K, int L) Plane) FindIndex(Vector3DBase vSphere) // 260517Cl 実装
     {
@@ -1602,5 +1587,13 @@ public partial class FormStereonet : FormBase
                 }
         return (bestUvw, bestHkl);
     }
+    #endregion
+    public void UpdatePlaneIndices(bool redraw = true) // 260517Cl 末尾 Draw() の有無を呼び出し側で選べるよう既定引数化（連続 Draw 重複を抑える）
+    {
+        indexControlDrawing.MillerBravais = MillerBravaisActive && radioButtonPlanes.Checked;
+        indexControlCirclePlane1.MillerBravais = indexControlCirclePlane2.MillerBravais = MillerBravaisActive;
+        if (redraw) Draw();
+    }
+    private void radioButtonDelimiterNone_CheckedChanged(object sender, EventArgs e) => Draw();
 }
 

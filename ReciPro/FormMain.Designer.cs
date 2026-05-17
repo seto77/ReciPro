@@ -58,21 +58,12 @@
             panel1 = new System.Windows.Forms.Panel();
             groupBoxProjectAlong = new System.Windows.Forms.GroupBox();
             flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            label12 = new System.Windows.Forms.Label();
-            numericBoxPlaneH = new NumericBox();
-            numericBoxPlaneK = new NumericBox();
-            numericBoxPlaneI = new NumericBox();
-            numericBoxPlaneL = new NumericBox();
-            label11 = new System.Windows.Forms.Label();
+            indexControlPlane = new IndexControl();
             flowLayoutPanelSetPlane = new System.Windows.Forms.FlowLayoutPanel();
             buttonSetPlane = new System.Windows.Forms.Button();
             checkBoxFixePlane = new System.Windows.Forms.CheckBox();
             flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
-            label9 = new System.Windows.Forms.Label();
-            numericBoxAxisU = new NumericBox();
-            numericBoxAxisV = new NumericBox();
-            numericBoxAxisW = new NumericBox();
-            label10 = new System.Windows.Forms.Label();
+            indexControlAxis = new IndexControl();
             flowLayoutPanelSetAxis = new System.Windows.Forms.FlowLayoutPanel();
             buttonSetAxis = new System.Windows.Forms.Button();
             checkBoxFixAxis = new System.Windows.Forms.CheckBox();
@@ -460,90 +451,19 @@
             // flowLayoutPanel1
             // 
             resources.ApplyResources(flowLayoutPanel1, "flowLayoutPanel1");
-            flowLayoutPanel1.Controls.Add(label12);
-            flowLayoutPanel1.Controls.Add(numericBoxPlaneH);
-            flowLayoutPanel1.Controls.Add(numericBoxPlaneK);
-            flowLayoutPanel1.Controls.Add(numericBoxPlaneI);
-            flowLayoutPanel1.Controls.Add(numericBoxPlaneL);
-            flowLayoutPanel1.Controls.Add(label11);
+            flowLayoutPanel1.Controls.Add(indexControlPlane);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
             // 
-            // label12
+            // indexControlPlane
             // 
-            resources.ApplyResources(label12, "label12");
-            label12.Name = "label12";
-            // 
-            // numericBoxPlaneH
-            // 
-            resources.ApplyResources(numericBoxPlaneH, "numericBoxPlaneH");
-            numericBoxPlaneH.BackColor = System.Drawing.SystemColors.Control;
-            numericBoxPlaneH.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxPlaneH.HeaderBackColor = System.Drawing.SystemColors.Control;
-            numericBoxPlaneH.LabelOrientation = NumericBoxOrientation.Vertical;
-            numericBoxPlaneH.Maximum = 50D;
-            numericBoxPlaneH.Minimum = -50D;
-            numericBoxPlaneH.Name = "numericBoxPlaneH";
-            numericBoxPlaneH.ShowUpDown = true;
-            numericBoxPlaneH.SkipEventDuringInput = false;
-            numericBoxPlaneH.TextFontSize = 9F;
-            numericBoxPlaneH.ThonsandsSeparator = true;
-            toolTip.SetToolTip(numericBoxPlaneH, resources.GetString("numericBoxPlaneH.ToolTip"));
-            numericBoxPlaneH.UpDownWidth = 13;
-            numericBoxPlaneH.ValueChanged += numericBoxPlaneK_ValueChanged;
-            // 
-            // numericBoxPlaneK
-            // 
-            resources.ApplyResources(numericBoxPlaneK, "numericBoxPlaneK");
-            numericBoxPlaneK.BackColor = System.Drawing.SystemColors.Control;
-            numericBoxPlaneK.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxPlaneK.HeaderBackColor = System.Drawing.SystemColors.Control;
-            numericBoxPlaneK.LabelOrientation = NumericBoxOrientation.Vertical;
-            numericBoxPlaneK.Maximum = 50D;
-            numericBoxPlaneK.Minimum = -50D;
-            numericBoxPlaneK.Name = "numericBoxPlaneK";
-            numericBoxPlaneK.ShowUpDown = true;
-            numericBoxPlaneK.SkipEventDuringInput = false;
-            numericBoxPlaneK.TextFontSize = 9F;
-            numericBoxPlaneK.ThonsandsSeparator = true;
-            numericBoxPlaneK.UpDownWidth = 13;
-            numericBoxPlaneK.ValueChanged += numericBoxPlaneK_ValueChanged;
-            // 
-            // numericBoxPlaneI
-            // 
-            resources.ApplyResources(numericBoxPlaneI, "numericBoxPlaneI");
-            numericBoxPlaneI.BackColor = System.Drawing.SystemColors.Control;
-            numericBoxPlaneI.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxPlaneI.HeaderBackColor = System.Drawing.SystemColors.Control;
-            numericBoxPlaneI.LabelOrientation = NumericBoxOrientation.Vertical;
-            numericBoxPlaneI.Maximum = 50D;
-            numericBoxPlaneI.Minimum = -50D;
-            numericBoxPlaneI.Name = "numericBoxPlaneI";
-            numericBoxPlaneI.ReadOnly = true;
-            numericBoxPlaneI.SkipEventDuringInput = false;
-            numericBoxPlaneI.TextBoxBackColor = System.Drawing.SystemColors.Control;
-            numericBoxPlaneI.TextFontSize = 9F;
-            numericBoxPlaneI.ThonsandsSeparator = true;
-            // 
-            // numericBoxPlaneL
-            // 
-            resources.ApplyResources(numericBoxPlaneL, "numericBoxPlaneL");
-            numericBoxPlaneL.BackColor = System.Drawing.SystemColors.Control;
-            numericBoxPlaneL.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxPlaneL.HeaderBackColor = System.Drawing.SystemColors.Control;
-            numericBoxPlaneL.LabelOrientation = NumericBoxOrientation.Vertical;
-            numericBoxPlaneL.Maximum = 50D;
-            numericBoxPlaneL.Minimum = -50D;
-            numericBoxPlaneL.Name = "numericBoxPlaneL";
-            numericBoxPlaneL.ShowUpDown = true;
-            numericBoxPlaneL.SkipEventDuringInput = false;
-            numericBoxPlaneL.TextFontSize = 9F;
-            numericBoxPlaneL.ThonsandsSeparator = true;
-            numericBoxPlaneL.UpDownWidth = 13;
-            // 
-            // label11
-            // 
-            resources.ApplyResources(label11, "label11");
-            label11.Name = "label11";
+            resources.ApplyResources(indexControlPlane, "indexControlPlane");
+            indexControlPlane.BoxWidth = 38;
+            indexControlPlane.Bracket = IndexControl.BracketEnum.Round;
+            indexControlPlane.Mode = IndexControl.ModeEnum.Plane;
+            indexControlPlane.Name = "indexControlPlane";
+            indexControlPlane.SubScript = "";
+            indexControlPlane.UpDownWidth = 17;
+            indexControlPlane.Values = ((int, int, int))resources.GetObject("indexControlPlane.Values");
             // 
             // flowLayoutPanelSetPlane
             // 
@@ -571,71 +491,19 @@
             // flowLayoutPanel2
             // 
             resources.ApplyResources(flowLayoutPanel2, "flowLayoutPanel2");
-            flowLayoutPanel2.Controls.Add(label9);
-            flowLayoutPanel2.Controls.Add(numericBoxAxisU);
-            flowLayoutPanel2.Controls.Add(numericBoxAxisV);
-            flowLayoutPanel2.Controls.Add(numericBoxAxisW);
-            flowLayoutPanel2.Controls.Add(label10);
+            flowLayoutPanel2.Controls.Add(indexControlAxis);
             flowLayoutPanel2.Name = "flowLayoutPanel2";
             // 
-            // label9
+            // indexControlAxis
             // 
-            resources.ApplyResources(label9, "label9");
-            label9.Name = "label9";
-            // 
-            // numericBoxAxisU
-            // 
-            resources.ApplyResources(numericBoxAxisU, "numericBoxAxisU");
-            numericBoxAxisU.BackColor = System.Drawing.SystemColors.Control;
-            numericBoxAxisU.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxAxisU.HeaderBackColor = System.Drawing.SystemColors.Control;
-            numericBoxAxisU.LabelOrientation = NumericBoxOrientation.Vertical;
-            numericBoxAxisU.Maximum = 50D;
-            numericBoxAxisU.Minimum = -50D;
-            numericBoxAxisU.Name = "numericBoxAxisU";
-            numericBoxAxisU.ShowUpDown = true;
-            numericBoxAxisU.SkipEventDuringInput = false;
-            numericBoxAxisU.TextFontSize = 9F;
-            numericBoxAxisU.ThonsandsSeparator = true;
-            toolTip.SetToolTip(numericBoxAxisU, resources.GetString("numericBoxAxisU.ToolTip"));
-            // 
-            // numericBoxAxisV
-            // 
-            resources.ApplyResources(numericBoxAxisV, "numericBoxAxisV");
-            numericBoxAxisV.BackColor = System.Drawing.SystemColors.Control;
-            numericBoxAxisV.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxAxisV.HeaderBackColor = System.Drawing.SystemColors.Control;
-            numericBoxAxisV.LabelOrientation = NumericBoxOrientation.Vertical;
-            numericBoxAxisV.Maximum = 50D;
-            numericBoxAxisV.Minimum = -50D;
-            numericBoxAxisV.Name = "numericBoxAxisV";
-            numericBoxAxisV.ShowUpDown = true;
-            numericBoxAxisV.SkipEventDuringInput = false;
-            numericBoxAxisV.TextFontSize = 9F;
-            numericBoxAxisV.ThonsandsSeparator = true;
-            toolTip.SetToolTip(numericBoxAxisV, resources.GetString("numericBoxAxisV.ToolTip"));
-            // 
-            // numericBoxAxisW
-            // 
-            resources.ApplyResources(numericBoxAxisW, "numericBoxAxisW");
-            numericBoxAxisW.BackColor = System.Drawing.SystemColors.Control;
-            numericBoxAxisW.DecimalPlaces = 0;
-            numericBoxAxisW.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxAxisW.HeaderBackColor = System.Drawing.SystemColors.Control;
-            numericBoxAxisW.LabelOrientation = NumericBoxOrientation.Vertical;
-            numericBoxAxisW.Maximum = 50D;
-            numericBoxAxisW.Minimum = -50D;
-            numericBoxAxisW.Name = "numericBoxAxisW";
-            numericBoxAxisW.ShowUpDown = true;
-            numericBoxAxisW.SkipEventDuringInput = false;
-            numericBoxAxisW.TextFontSize = 9F;
-            numericBoxAxisW.ThonsandsSeparator = true;
-            toolTip.SetToolTip(numericBoxAxisW, resources.GetString("numericBoxAxisW.ToolTip"));
-            // 
-            // label10
-            // 
-            resources.ApplyResources(label10, "label10");
-            label10.Name = "label10";
+            resources.ApplyResources(indexControlAxis, "indexControlAxis");
+            indexControlAxis.BoxWidth = 38;
+            indexControlAxis.Bracket = IndexControl.BracketEnum.Round;
+            indexControlAxis.Mode = IndexControl.ModeEnum.Axis;
+            indexControlAxis.Name = "indexControlAxis";
+            indexControlAxis.SubScript = "";
+            indexControlAxis.UpDownWidth = 17;
+            indexControlAxis.Values = ((int, int, int))resources.GetObject("indexControlAxis.Values");
             // 
             // flowLayoutPanelSetAxis
             // 
@@ -1630,11 +1498,6 @@
         private System.Windows.Forms.ToolStripMenuItem powderDiffractionFunctionToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator21;
         private System.Windows.Forms.ToolStripMenuItem readCrystalFromCIFOrAMCFileToolStripMenuItem;
-        private NumericBox numericBoxAxisU;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label10;
-        private NumericBox numericBoxAxisV;
-        private NumericBox numericBoxAxisW;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label8;
@@ -1660,12 +1523,6 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemUseMillerBravais;                                                                 // 260421Cl 追加
         private System.Windows.Forms.ToolStripSeparator toolStripSeparatorCapture; // 260323Cl 追加
         private System.Windows.Forms.ToolStripMenuItem captureGUIToolStripMenuItem; // 260323Cl 追加
-        private NumericBox numericBoxPlaneI;
-        private NumericBox numericBoxPlaneL;
-        private NumericBox numericBoxPlaneH;
-        private NumericBox numericBoxPlaneK;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label12;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
         private LabelLaTeX labelLaTex1;
@@ -1673,5 +1530,7 @@
         private LabelLaTeX labelLaTex3;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel2;
+        private IndexControl indexControlAxis;
+        private IndexControl indexControlPlane;
     }
 }

@@ -36,6 +36,7 @@
             enabledDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             hDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             kDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            iDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn(); // 260517Cl 追加: Miller-Bravais i 列
             lDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             equivalencyDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             MultipleOfD = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -61,20 +62,13 @@
             checkBoxEquivalency = new System.Windows.Forms.CheckBox();
             numericBoxTranslation = new NumericBox();
             label6 = new System.Windows.Forms.Label();
-            label1 = new System.Windows.Forms.Label();
-            label2 = new System.Windows.Forms.Label();
-            numericBoxH = new NumericBox();
-            numericBoxK = new NumericBox();
-            numericBoxL = new NumericBox();
             colorControl = new ColorControl();
             flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             numericBoxDistanceD = new NumericBox();
             numericBoxDistance = new NumericBox();
             panel2 = new System.Windows.Forms.Panel();
             label3 = new System.Windows.Forms.Label();
-            label7 = new System.Windows.Forms.Label();
-            label5 = new System.Windows.Forms.Label();
-            label4 = new System.Windows.Forms.Label();
+            indexControl = new IndexControl();
             ((System.ComponentModel.ISupportInitialize)dataGridView).BeginInit();
             ((System.ComponentModel.ISupportInitialize)bindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataSet).BeginInit();
@@ -120,8 +114,6 @@
             dataGridView.AutoGenerateColumns = false;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            //260516Cl resx の dataGridView.Font を継承するため Font 設定を廃止
-            //dataGridViewCellStyle1.Font = new System.Drawing.Font("BIZ UDPGothic", 9F);
             dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -129,14 +121,13 @@
             dataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             resources.ApplyResources(dataGridView, "dataGridView");
             dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { enabledDataGridViewCheckBoxColumn, hDataGridViewTextBoxColumn, kDataGridViewTextBoxColumn, lDataGridViewTextBoxColumn, equivalencyDataGridViewCheckBoxColumn, MultipleOfD, distanceDataGridViewTextBoxColumn, colorDataGridViewTextBoxColumn });
+            // 260517Cl iDataGridViewTextBoxColumn を k と l の間に挿入 (LatticePlaneControl と同じ並び)
+            dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { enabledDataGridViewCheckBoxColumn, hDataGridViewTextBoxColumn, kDataGridViewTextBoxColumn, iDataGridViewTextBoxColumn, lDataGridViewTextBoxColumn, equivalencyDataGridViewCheckBoxColumn, MultipleOfD, distanceDataGridViewTextBoxColumn, colorDataGridViewTextBoxColumn });
             dataGridView.DataSource = bindingSource;
             dataGridView.MultiSelect = false;
             dataGridView.Name = "dataGridView";
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            //260516Cl resx の dataGridView.Font を継承するため Font 設定を廃止
-            //dataGridViewCellStyle2.Font = new System.Drawing.Font("BIZ UDPGothic", 9F);
             dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -144,6 +135,7 @@
             dataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
             dataGridView.RowHeadersVisible = false;
             dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            dataGridView.CellFormatting += dataGridView_CellFormatting; // 260517Cl 追加: i = -(h+k) を CellFormatting で生成
             dataGridView.CellValueChanged += dataGridView_CellValueChanged;
             dataGridView.CurrentCellDirtyStateChanged += dataGridView_CurrentCellDirtyStateChanged;
             // 
@@ -168,7 +160,14 @@
             kDataGridViewTextBoxColumn.Name = "kDataGridViewTextBoxColumn";
             kDataGridViewTextBoxColumn.ReadOnly = true;
             kDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
+            //
+            // iDataGridViewTextBoxColumn  260517Cl 追加 (Miller-Bravais 表示専用、DataPropertyName なし。値は CellFormatting で生成)
+            //
+            resources.ApplyResources(iDataGridViewTextBoxColumn, "iDataGridViewTextBoxColumn");
+            iDataGridViewTextBoxColumn.Name = "iDataGridViewTextBoxColumn";
+            iDataGridViewTextBoxColumn.ReadOnly = true;
+            iDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            //
             // lDataGridViewTextBoxColumn
             // 
             lDataGridViewTextBoxColumn.DataPropertyName = "l";
@@ -373,61 +372,6 @@
             resources.ApplyResources(label6, "label6");
             label6.Name = "label6";
             // 
-            // label1
-            // 
-            resources.ApplyResources(label1, "label1");
-            label1.Name = "label1";
-            // 
-            // label2
-            // 
-            resources.ApplyResources(label2, "label2");
-            label2.Name = "label2";
-            // 
-            // numericBoxH
-            // 
-            resources.ApplyResources(numericBoxH, "numericBoxH");
-            numericBoxH.BackColor = System.Drawing.SystemColors.Control;
-            numericBoxH.DecimalPlaces = 0;
-            numericBoxH.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxH.HeaderBackColor = System.Drawing.SystemColors.Control;
-            numericBoxH.Maximum = 10D;
-            numericBoxH.Minimum = -10D;
-            numericBoxH.Name = "numericBoxH";
-            numericBoxH.ShowUpDown = true;
-            numericBoxH.SkipEventDuringInput = false;
-            numericBoxH.ThonsandsSeparator = true;
-            numericBoxH.ValueChanged += numericBoxDistanceD_ValueChanged;
-            // 
-            // numericBoxK
-            // 
-            resources.ApplyResources(numericBoxK, "numericBoxK");
-            numericBoxK.BackColor = System.Drawing.SystemColors.Control;
-            numericBoxK.DecimalPlaces = 0;
-            numericBoxK.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxK.HeaderBackColor = System.Drawing.SystemColors.Control;
-            numericBoxK.Maximum = 10D;
-            numericBoxK.Minimum = -10D;
-            numericBoxK.Name = "numericBoxK";
-            numericBoxK.ShowUpDown = true;
-            numericBoxK.SkipEventDuringInput = false;
-            numericBoxK.ThonsandsSeparator = true;
-            numericBoxK.ValueChanged += numericBoxDistanceD_ValueChanged;
-            // 
-            // numericBoxL
-            // 
-            resources.ApplyResources(numericBoxL, "numericBoxL");
-            numericBoxL.BackColor = System.Drawing.SystemColors.Control;
-            numericBoxL.DecimalPlaces = 0;
-            numericBoxL.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxL.HeaderBackColor = System.Drawing.SystemColors.Control;
-            numericBoxL.Maximum = 10D;
-            numericBoxL.Minimum = -10D;
-            numericBoxL.Name = "numericBoxL";
-            numericBoxL.ShowUpDown = true;
-            numericBoxL.SkipEventDuringInput = false;
-            numericBoxL.ThonsandsSeparator = true;
-            numericBoxL.ValueChanged += numericBoxDistanceD_ValueChanged;
-            // 
             // colorControl
             // 
             colorControl.Argb = -16728064;
@@ -485,20 +429,13 @@
             // 
             // panel2
             // 
+            panel2.Controls.Add(indexControl);
             panel2.Controls.Add(label6);
             panel2.Controls.Add(numericBoxTranslation);
             panel2.Controls.Add(flowLayoutPanel1);
             panel2.Controls.Add(colorControl);
-            panel2.Controls.Add(numericBoxL);
-            panel2.Controls.Add(numericBoxK);
             panel2.Controls.Add(checkBoxEquivalency);
-            panel2.Controls.Add(numericBoxH);
-            panel2.Controls.Add(label2);
-            panel2.Controls.Add(label1);
             panel2.Controls.Add(label3);
-            panel2.Controls.Add(label7);
-            panel2.Controls.Add(label5);
-            panel2.Controls.Add(label4);
             resources.ApplyResources(panel2, "panel2");
             panel2.Name = "panel2";
             // 
@@ -507,20 +444,16 @@
             resources.ApplyResources(label3, "label3");
             label3.Name = "label3";
             // 
-            // label7
+            // indexControl1
             // 
-            resources.ApplyResources(label7, "label7");
-            label7.Name = "label7";
-            // 
-            // label5
-            // 
-            resources.ApplyResources(label5, "label5");
-            label5.Name = "label5";
-            // 
-            // label4
-            // 
-            resources.ApplyResources(label4, "label4");
-            label4.Name = "label4";
+            resources.ApplyResources(indexControl, "indexControl1");
+            indexControl.BoxWidth = 38;
+            indexControl.Bracket = IndexControl.BracketEnum.Round;
+            indexControl.Mode = IndexControl.ModeEnum.Plane;
+            indexControl.Name = "indexControl1";
+            indexControl.SubScript = "";
+            indexControl.UpDownWidth = 17;
+            indexControl.Values = ((int, int, int))resources.GetObject("indexControl1.Values");
             // 
             // BoundControl
             // 
@@ -565,18 +498,14 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn enabledDataGridViewCheckBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn hDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn kDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn iDataGridViewTextBoxColumn; // 260517Cl 追加
         private System.Windows.Forms.DataGridViewTextBoxColumn lDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewCheckBoxColumn equivalencyDataGridViewCheckBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn MultipleOfD;
         private System.Windows.Forms.DataGridViewTextBoxColumn distanceDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewImageColumn colorDataGridViewTextBoxColumn;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private NumericBox numericBoxH;
         private System.Windows.Forms.CheckBox checkBoxEquivalency;
-        private NumericBox numericBoxK;
-        private NumericBox numericBoxL;
         private ColorControl colorControl;
         private NumericBox numericBoxMaximumDistanceFromOrigin;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
@@ -585,9 +514,7 @@
         private System.Windows.Forms.Panel panel2;
         private NumericBox numericBoxTranslation;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.CheckBox checkBoxImmediateUpdate;
+        private IndexControl indexControl;
     }
 }

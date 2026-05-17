@@ -28,6 +28,7 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormSymmetryInformation));
             tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             panel4 = new System.Windows.Forms.Panel();
             graphicsBoxSymmetryElements = new GraphicsBox(components);
@@ -51,65 +52,18 @@
             textBoxZoneAxis = new System.Windows.Forms.TextBox();
             numericBoxAngleAxes = new NumericBox();
             flowLayoutPanel6 = new System.Windows.Forms.FlowLayoutPanel();
-            label1 = new System.Windows.Forms.Label();
-            flowLayoutPanelH2 = new System.Windows.Forms.FlowLayoutPanel();
-            labelTex5 = new LabelLaTeX();
-            numericBoxH2 = new NumericBox();
-            flowLayoutPanelK2 = new System.Windows.Forms.FlowLayoutPanel();
-            labelTex6 = new LabelLaTeX();
-            numericBoxK2 = new NumericBox();
             flowLayoutPanelI2 = new System.Windows.Forms.FlowLayoutPanel();
-            labelTex7 = new LabelLaTeX();
-            numericBoxI2 = new NumericBox();
-            flowLayoutPanelL2 = new System.Windows.Forms.FlowLayoutPanel();
-            labelTex8 = new LabelLaTeX();
-            numericBoxL2 = new NumericBox();
-            label2 = new System.Windows.Forms.Label();
             numericBoxLengthPlane2 = new NumericBox();
             label40 = new System.Windows.Forms.Label();
             flowLayoutPanel14 = new System.Windows.Forms.FlowLayoutPanel();
-            label3 = new System.Windows.Forms.Label();
-            flowLayoutPanelU2 = new System.Windows.Forms.FlowLayoutPanel();
-            labelTex11 = new LabelLaTeX();
-            numericBoxU2 = new NumericBox();
-            flowLayoutPanelV2 = new System.Windows.Forms.FlowLayoutPanel();
-            labelTex13 = new LabelLaTeX();
-            numericBoxV2 = new NumericBox();
-            flowLayoutPanelW2 = new System.Windows.Forms.FlowLayoutPanel();
-            labelTex14 = new LabelLaTeX();
-            numericBoxW2 = new NumericBox();
-            label18 = new System.Windows.Forms.Label();
             numericBoxLengthAxis2 = new NumericBox();
             numericBoxAnglePlaneAxis1 = new NumericBox();
             flowLayoutPanel11 = new System.Windows.Forms.FlowLayoutPanel();
-            label13 = new System.Windows.Forms.Label();
-            flowLayoutPanelU1 = new System.Windows.Forms.FlowLayoutPanel();
-            labelTex9 = new LabelLaTeX();
-            numericBoxU1 = new NumericBox();
-            flowLayoutPanelV1 = new System.Windows.Forms.FlowLayoutPanel();
-            labelTex10 = new LabelLaTeX();
-            numericBoxV1 = new NumericBox();
-            flowLayoutPanelW1 = new System.Windows.Forms.FlowLayoutPanel();
-            labelTex12 = new LabelLaTeX();
-            numericBoxW1 = new NumericBox();
-            label14 = new System.Windows.Forms.Label();
             numericBoxLengthAxis1 = new NumericBox();
             numericBoxAnglePlaneAxis2 = new NumericBox();
             flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            label25 = new System.Windows.Forms.Label();
             flowLayoutPanelH1 = new System.Windows.Forms.FlowLayoutPanel();
-            labelTex1 = new LabelLaTeX();
-            numericBoxH1 = new NumericBox();
             flowLayoutPanelK1 = new System.Windows.Forms.FlowLayoutPanel();
-            labelTex2 = new LabelLaTeX();
-            numericBoxK1 = new NumericBox();
-            flowLayoutPanelI1 = new System.Windows.Forms.FlowLayoutPanel();
-            labelTex3 = new LabelLaTeX();
-            numericBox1 = new NumericBox();
-            flowLayoutPanelL1 = new System.Windows.Forms.FlowLayoutPanel();
-            labelTex4 = new LabelLaTeX();
-            numericBoxL1 = new NumericBox();
-            label7 = new System.Windows.Forms.Label();
             numericBoxLengthPlane1 = new NumericBox();
             textBoxZonePlane = new System.Windows.Forms.TextBox();
             label42 = new System.Windows.Forms.Label();
@@ -176,6 +130,10 @@
             radioButtonDirectionC = new System.Windows.Forms.RadioButton();
             label12 = new System.Windows.Forms.Label();
             flowLayoutPanel5 = new System.Windows.Forms.FlowLayoutPanel();
+            indexControlPlane1 = new IndexControl();
+            indexControlPlane2 = new IndexControl();
+            indexControlAxis1 = new IndexControl();
+            indexControlAxis2 = new IndexControl();
             tableLayoutPanel1.SuspendLayout();
             panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)graphicsBoxSymmetryElements).BeginInit();
@@ -186,23 +144,9 @@
             tabControl.SuspendLayout();
             tabPage1.SuspendLayout();
             flowLayoutPanel6.SuspendLayout();
-            flowLayoutPanelH2.SuspendLayout();
-            flowLayoutPanelK2.SuspendLayout();
-            flowLayoutPanelI2.SuspendLayout();
-            flowLayoutPanelL2.SuspendLayout();
             flowLayoutPanel14.SuspendLayout();
-            flowLayoutPanelU2.SuspendLayout();
-            flowLayoutPanelV2.SuspendLayout();
-            flowLayoutPanelW2.SuspendLayout();
             flowLayoutPanel11.SuspendLayout();
-            flowLayoutPanelU1.SuspendLayout();
-            flowLayoutPanelV1.SuspendLayout();
-            flowLayoutPanelW1.SuspendLayout();
             flowLayoutPanel1.SuspendLayout();
-            flowLayoutPanelH1.SuspendLayout();
-            flowLayoutPanelK1.SuspendLayout();
-            flowLayoutPanelI1.SuspendLayout();
-            flowLayoutPanelL1.SuspendLayout();
             tabPageWyckoff.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataSet).BeginInit();
@@ -553,225 +497,25 @@
             // 
             flowLayoutPanel6.AutoSize = true;
             flowLayoutPanel6.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            flowLayoutPanel6.Controls.Add(label1);
-            flowLayoutPanel6.Controls.Add(flowLayoutPanelH2);
-            flowLayoutPanel6.Controls.Add(flowLayoutPanelK2);
             flowLayoutPanel6.Controls.Add(flowLayoutPanelI2);
-            flowLayoutPanel6.Controls.Add(flowLayoutPanelL2);
-            flowLayoutPanel6.Controls.Add(label2);
+            flowLayoutPanel6.Controls.Add(indexControlPlane2);
             flowLayoutPanel6.Controls.Add(numericBoxLengthPlane2);
             flowLayoutPanel6.Location = new System.Drawing.Point(80, 66);
             flowLayoutPanel6.Margin = new System.Windows.Forms.Padding(0);
             flowLayoutPanel6.Name = "flowLayoutPanel6";
-            flowLayoutPanel6.Size = new System.Drawing.Size(225, 39);
+            flowLayoutPanel6.Size = new System.Drawing.Size(195, 41);
             flowLayoutPanel6.TabIndex = 5;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new System.Drawing.Font("Times New Roman", 9.75F);
-            label1.Location = new System.Drawing.Point(0, 0);
-            label1.Margin = new System.Windows.Forms.Padding(0);
-            label1.Name = "label1";
-            label1.Padding = new System.Windows.Forms.Padding(0, 16, 0, 0);
-            label1.Size = new System.Drawing.Size(11, 31);
-            label1.TabIndex = 6;
-            label1.Text = "(";
-            // 
-            // flowLayoutPanelH2
-            // 
-            flowLayoutPanelH2.AutoSize = true;
-            flowLayoutPanelH2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            flowLayoutPanelH2.Controls.Add(labelTex5);
-            flowLayoutPanelH2.Controls.Add(numericBoxH2);
-            flowLayoutPanelH2.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            flowLayoutPanelH2.Location = new System.Drawing.Point(11, 0);
-            flowLayoutPanelH2.Margin = new System.Windows.Forms.Padding(0);
-            flowLayoutPanelH2.Name = "flowLayoutPanelH2";
-            flowLayoutPanelH2.Size = new System.Drawing.Size(38, 39);
-            flowLayoutPanelH2.TabIndex = 6;
-            // 
-            // labelTex5
-            // 
-            labelTex5.Font = new System.Drawing.Font("Segoe UI Variable Text", 11F);
-            labelTex5.Location = new System.Drawing.Point(0, 0);
-            labelTex5.Margin = new System.Windows.Forms.Padding(0);
-            labelTex5.Name = "labelTex5";
-            labelTex5.Size = new System.Drawing.Size(15, 14);
-            labelTex5.TabIndex = 6;
-            labelTex5.Text = "h_2";
-            labelTex5.Thickness = 0.6D;
-            // 
-            // numericBoxH2
-            // 
-            numericBoxH2.BackColor = System.Drawing.Color.Transparent;
-            numericBoxH2.DecimalPlaces = 0;
-            numericBoxH2.FooterFont = new System.Drawing.Font("Segoe UI Variable Text", 9F);
-            numericBoxH2.FooterPadding = new System.Windows.Forms.Padding(0, 6, 0, 0);
-            numericBoxH2.HeaderFont = new System.Drawing.Font("Segoe UI Variable Text", 9F);
-            numericBoxH2.HeaderPadding = new System.Windows.Forms.Padding(0, 6, 0, 0);
-            numericBoxH2.Location = new System.Drawing.Point(0, 14);
-            numericBoxH2.Margin = new System.Windows.Forms.Padding(0);
-            numericBoxH2.Maximum = 20D;
-            numericBoxH2.MaximumSize = new System.Drawing.Size(1000, 100);
-            numericBoxH2.Minimum = -20D;
-            numericBoxH2.MinimumSize = new System.Drawing.Size(10, 20);
-            numericBoxH2.Name = "numericBoxH2";
-            numericBoxH2.Padding = new System.Windows.Forms.Padding(0, 2, 0, 0);
-            numericBoxH2.ShowUpDown = true;
-            numericBoxH2.Size = new System.Drawing.Size(38, 25);
-            numericBoxH2.TabIndex = 3;
-            numericBoxH2.TextFontSize = 9F;
-            numericBoxH2.ValueChanged += numericBox_ValueChanged;
-            // 
-            // flowLayoutPanelK2
-            // 
-            flowLayoutPanelK2.AutoSize = true;
-            flowLayoutPanelK2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            flowLayoutPanelK2.Controls.Add(labelTex6);
-            flowLayoutPanelK2.Controls.Add(numericBoxK2);
-            flowLayoutPanelK2.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            flowLayoutPanelK2.Location = new System.Drawing.Point(49, 0);
-            flowLayoutPanelK2.Margin = new System.Windows.Forms.Padding(0);
-            flowLayoutPanelK2.Name = "flowLayoutPanelK2";
-            flowLayoutPanelK2.Size = new System.Drawing.Size(38, 39);
-            flowLayoutPanelK2.TabIndex = 6;
-            // 
-            // labelTex6
-            // 
-            labelTex6.Font = new System.Drawing.Font("Segoe UI Variable Text", 11F);
-            labelTex6.Location = new System.Drawing.Point(0, 0);
-            labelTex6.Margin = new System.Windows.Forms.Padding(0);
-            labelTex6.Name = "labelTex6";
-            labelTex6.Size = new System.Drawing.Size(15, 14);
-            labelTex6.TabIndex = 6;
-            labelTex6.Text = "k_2";
-            labelTex6.Thickness = 0.6D;
-            // 
-            // numericBoxK2
-            // 
-            numericBoxK2.BackColor = System.Drawing.Color.Transparent;
-            numericBoxK2.DecimalPlaces = 0;
-            numericBoxK2.FooterFont = new System.Drawing.Font("Segoe UI Variable Text", 9F);
-            numericBoxK2.FooterPadding = new System.Windows.Forms.Padding(0, 6, 0, 0);
-            numericBoxK2.HeaderFont = new System.Drawing.Font("Segoe UI Variable Text", 9F);
-            numericBoxK2.HeaderPadding = new System.Windows.Forms.Padding(0, 6, 0, 0);
-            numericBoxK2.Location = new System.Drawing.Point(0, 14);
-            numericBoxK2.Margin = new System.Windows.Forms.Padding(0);
-            numericBoxK2.Maximum = 20D;
-            numericBoxK2.MaximumSize = new System.Drawing.Size(1000, 100);
-            numericBoxK2.Minimum = -20D;
-            numericBoxK2.MinimumSize = new System.Drawing.Size(10, 20);
-            numericBoxK2.Name = "numericBoxK2";
-            numericBoxK2.Padding = new System.Windows.Forms.Padding(0, 2, 0, 0);
-            numericBoxK2.ShowUpDown = true;
-            numericBoxK2.Size = new System.Drawing.Size(38, 25);
-            numericBoxK2.TabIndex = 4;
-            numericBoxK2.TextFontSize = 9F;
-            numericBoxK2.ValueChanged += numericBox_ValueChanged;
             // 
             // flowLayoutPanelI2
             // 
             flowLayoutPanelI2.AutoSize = true;
             flowLayoutPanelI2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            flowLayoutPanelI2.Controls.Add(labelTex7);
-            flowLayoutPanelI2.Controls.Add(numericBoxI2);
             flowLayoutPanelI2.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            flowLayoutPanelI2.Location = new System.Drawing.Point(87, 0);
+            flowLayoutPanelI2.Location = new System.Drawing.Point(0, 0);
             flowLayoutPanelI2.Margin = new System.Windows.Forms.Padding(0);
             flowLayoutPanelI2.Name = "flowLayoutPanelI2";
-            flowLayoutPanelI2.Size = new System.Drawing.Size(22, 39);
+            flowLayoutPanelI2.Size = new System.Drawing.Size(0, 0);
             flowLayoutPanelI2.TabIndex = 6;
-            // 
-            // labelTex7
-            // 
-            labelTex7.Font = new System.Drawing.Font("Segoe UI Variable Text", 11F);
-            labelTex7.Location = new System.Drawing.Point(0, 0);
-            labelTex7.Margin = new System.Windows.Forms.Padding(0);
-            labelTex7.Name = "labelTex7";
-            labelTex7.Size = new System.Drawing.Size(15, 14);
-            labelTex7.TabIndex = 6;
-            labelTex7.Text = "i_2";
-            labelTex7.Thickness = 0.6D;
-            // 
-            // numericBoxI2
-            // 
-            numericBoxI2.BackColor = System.Drawing.Color.Transparent;
-            numericBoxI2.DecimalPlaces = 0;
-            numericBoxI2.FooterFont = new System.Drawing.Font("Segoe UI Variable Text", 9F);
-            numericBoxI2.HeaderFont = new System.Drawing.Font("Times New Roman", 8.25F);
-            numericBoxI2.LabelOrientation = NumericBoxOrientation.Vertical;
-            numericBoxI2.Location = new System.Drawing.Point(0, 14);
-            numericBoxI2.Margin = new System.Windows.Forms.Padding(0);
-            numericBoxI2.Maximum = 20D;
-            numericBoxI2.MaximumSize = new System.Drawing.Size(1000, 100);
-            numericBoxI2.Minimum = -20D;
-            numericBoxI2.MinimumSize = new System.Drawing.Size(10, 20);
-            numericBoxI2.Name = "numericBoxI2";
-            numericBoxI2.Padding = new System.Windows.Forms.Padding(0, 2, 0, 0);
-            numericBoxI2.ReadOnly = true;
-            numericBoxI2.Size = new System.Drawing.Size(22, 25);
-            numericBoxI2.TabIndex = 1;
-            numericBoxI2.TextBoxBackColor = System.Drawing.SystemColors.Control;
-            numericBoxI2.TextFontSize = 9F;
-            // 
-            // flowLayoutPanelL2
-            // 
-            flowLayoutPanelL2.AutoSize = true;
-            flowLayoutPanelL2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            flowLayoutPanelL2.Controls.Add(labelTex8);
-            flowLayoutPanelL2.Controls.Add(numericBoxL2);
-            flowLayoutPanelL2.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            flowLayoutPanelL2.Location = new System.Drawing.Point(109, 0);
-            flowLayoutPanelL2.Margin = new System.Windows.Forms.Padding(0);
-            flowLayoutPanelL2.Name = "flowLayoutPanelL2";
-            flowLayoutPanelL2.Size = new System.Drawing.Size(38, 39);
-            flowLayoutPanelL2.TabIndex = 6;
-            // 
-            // labelTex8
-            // 
-            labelTex8.Font = new System.Drawing.Font("Segoe UI Variable Text", 11F);
-            labelTex8.Location = new System.Drawing.Point(0, 0);
-            labelTex8.Margin = new System.Windows.Forms.Padding(0);
-            labelTex8.Name = "labelTex8";
-            labelTex8.Size = new System.Drawing.Size(15, 14);
-            labelTex8.TabIndex = 6;
-            labelTex8.Text = "l_2";
-            labelTex8.Thickness = 0.6D;
-            // 
-            // numericBoxL2
-            // 
-            numericBoxL2.BackColor = System.Drawing.Color.Transparent;
-            numericBoxL2.DecimalPlaces = 0;
-            numericBoxL2.FooterFont = new System.Drawing.Font("Segoe UI Variable Text", 9F);
-            numericBoxL2.FooterPadding = new System.Windows.Forms.Padding(0, 6, 0, 0);
-            numericBoxL2.HeaderFont = new System.Drawing.Font("Segoe UI Variable Text", 9F);
-            numericBoxL2.HeaderPadding = new System.Windows.Forms.Padding(0, 6, 0, 0);
-            numericBoxL2.Location = new System.Drawing.Point(0, 14);
-            numericBoxL2.Margin = new System.Windows.Forms.Padding(0);
-            numericBoxL2.Maximum = 20D;
-            numericBoxL2.MaximumSize = new System.Drawing.Size(1000, 100);
-            numericBoxL2.Minimum = -20D;
-            numericBoxL2.MinimumSize = new System.Drawing.Size(10, 20);
-            numericBoxL2.Name = "numericBoxL2";
-            numericBoxL2.Padding = new System.Windows.Forms.Padding(0, 2, 0, 0);
-            numericBoxL2.ShowUpDown = true;
-            numericBoxL2.Size = new System.Drawing.Size(38, 25);
-            numericBoxL2.TabIndex = 5;
-            numericBoxL2.TextFontSize = 9F;
-            numericBoxL2.ValueChanged += numericBox_ValueChanged;
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Font = new System.Drawing.Font("Times New Roman", 9.75F);
-            label2.Location = new System.Drawing.Point(147, 0);
-            label2.Margin = new System.Windows.Forms.Padding(0);
-            label2.Name = "label2";
-            label2.Padding = new System.Windows.Forms.Padding(0, 16, 0, 0);
-            label2.Size = new System.Drawing.Size(11, 31);
-            label2.TabIndex = 6;
-            label2.Text = ")";
             // 
             // numericBoxLengthPlane2
             // 
@@ -782,7 +526,7 @@
             numericBoxLengthPlane2.FooterText = "Å";
             numericBoxLengthPlane2.HeaderFont = new System.Drawing.Font("Segoe UI Variable Text", 9.75F);
             numericBoxLengthPlane2.HeaderPadding = new System.Windows.Forms.Padding(0, 4, 0, 0);
-            numericBoxLengthPlane2.Location = new System.Drawing.Point(158, 13);
+            numericBoxLengthPlane2.Location = new System.Drawing.Point(128, 13);
             numericBoxLengthPlane2.Margin = new System.Windows.Forms.Padding(0, 13, 0, 0);
             numericBoxLengthPlane2.MaximumSize = new System.Drawing.Size(1000, 100);
             numericBoxLengthPlane2.MinimumSize = new System.Drawing.Size(10, 20);
@@ -806,179 +550,13 @@
             // 
             flowLayoutPanel14.AutoSize = true;
             flowLayoutPanel14.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            flowLayoutPanel14.Controls.Add(label3);
-            flowLayoutPanel14.Controls.Add(flowLayoutPanelU2);
-            flowLayoutPanel14.Controls.Add(flowLayoutPanelV2);
-            flowLayoutPanel14.Controls.Add(flowLayoutPanelW2);
-            flowLayoutPanel14.Controls.Add(label18);
+            flowLayoutPanel14.Controls.Add(indexControlAxis2);
             flowLayoutPanel14.Controls.Add(numericBoxLengthAxis2);
             flowLayoutPanel14.Location = new System.Drawing.Point(400, 66);
             flowLayoutPanel14.Margin = new System.Windows.Forms.Padding(0);
             flowLayoutPanel14.Name = "flowLayoutPanel14";
-            flowLayoutPanel14.Size = new System.Drawing.Size(205, 39);
+            flowLayoutPanel14.Size = new System.Drawing.Size(195, 41);
             flowLayoutPanel14.TabIndex = 5;
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Font = new System.Drawing.Font("Segoe UI Variable Text", 9.75F);
-            label3.Location = new System.Drawing.Point(0, 0);
-            label3.Margin = new System.Windows.Forms.Padding(0);
-            label3.Name = "label3";
-            label3.Padding = new System.Windows.Forms.Padding(0, 16, 0, 0);
-            label3.Size = new System.Drawing.Size(12, 33);
-            label3.TabIndex = 6;
-            label3.Text = "[";
-            // 
-            // flowLayoutPanelU2
-            // 
-            flowLayoutPanelU2.AutoSize = true;
-            flowLayoutPanelU2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            flowLayoutPanelU2.Controls.Add(labelTex11);
-            flowLayoutPanelU2.Controls.Add(numericBoxU2);
-            flowLayoutPanelU2.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            flowLayoutPanelU2.Location = new System.Drawing.Point(12, 0);
-            flowLayoutPanelU2.Margin = new System.Windows.Forms.Padding(0);
-            flowLayoutPanelU2.Name = "flowLayoutPanelU2";
-            flowLayoutPanelU2.Size = new System.Drawing.Size(38, 39);
-            flowLayoutPanelU2.TabIndex = 6;
-            // 
-            // labelTex11
-            // 
-            labelTex11.Font = new System.Drawing.Font("Segoe UI Variable Text", 11F);
-            labelTex11.Location = new System.Drawing.Point(0, 0);
-            labelTex11.Margin = new System.Windows.Forms.Padding(0);
-            labelTex11.Name = "labelTex11";
-            labelTex11.Size = new System.Drawing.Size(15, 14);
-            labelTex11.TabIndex = 6;
-            labelTex11.Text = "u_2";
-            labelTex11.Thickness = 0.6D;
-            // 
-            // numericBoxU2
-            // 
-            numericBoxU2.BackColor = System.Drawing.Color.Transparent;
-            numericBoxU2.DecimalPlaces = 0;
-            numericBoxU2.FooterFont = new System.Drawing.Font("Segoe UI Variable Text", 9F);
-            numericBoxU2.FooterPadding = new System.Windows.Forms.Padding(0, 6, 0, 0);
-            numericBoxU2.HeaderFont = new System.Drawing.Font("Segoe UI Variable Text", 9F);
-            numericBoxU2.HeaderPadding = new System.Windows.Forms.Padding(0, 6, 0, 0);
-            numericBoxU2.Location = new System.Drawing.Point(0, 14);
-            numericBoxU2.Margin = new System.Windows.Forms.Padding(0);
-            numericBoxU2.Maximum = 20D;
-            numericBoxU2.MaximumSize = new System.Drawing.Size(1000, 100);
-            numericBoxU2.Minimum = -20D;
-            numericBoxU2.MinimumSize = new System.Drawing.Size(10, 20);
-            numericBoxU2.Name = "numericBoxU2";
-            numericBoxU2.Padding = new System.Windows.Forms.Padding(0, 2, 0, 0);
-            numericBoxU2.ShowUpDown = true;
-            numericBoxU2.Size = new System.Drawing.Size(38, 25);
-            numericBoxU2.TabIndex = 9;
-            numericBoxU2.TextFontSize = 9F;
-            numericBoxU2.ValueChanged += numericBox_ValueChanged;
-            // 
-            // flowLayoutPanelV2
-            // 
-            flowLayoutPanelV2.AutoSize = true;
-            flowLayoutPanelV2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            flowLayoutPanelV2.Controls.Add(labelTex13);
-            flowLayoutPanelV2.Controls.Add(numericBoxV2);
-            flowLayoutPanelV2.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            flowLayoutPanelV2.Location = new System.Drawing.Point(50, 0);
-            flowLayoutPanelV2.Margin = new System.Windows.Forms.Padding(0);
-            flowLayoutPanelV2.Name = "flowLayoutPanelV2";
-            flowLayoutPanelV2.Size = new System.Drawing.Size(38, 39);
-            flowLayoutPanelV2.TabIndex = 6;
-            // 
-            // labelTex13
-            // 
-            labelTex13.Font = new System.Drawing.Font("Segoe UI Variable Text", 11F);
-            labelTex13.Location = new System.Drawing.Point(0, 0);
-            labelTex13.Margin = new System.Windows.Forms.Padding(0);
-            labelTex13.Name = "labelTex13";
-            labelTex13.Size = new System.Drawing.Size(15, 14);
-            labelTex13.TabIndex = 6;
-            labelTex13.Text = "v_2";
-            labelTex13.Thickness = 0.6D;
-            // 
-            // numericBoxV2
-            // 
-            numericBoxV2.BackColor = System.Drawing.Color.Transparent;
-            numericBoxV2.DecimalPlaces = 0;
-            numericBoxV2.FooterFont = new System.Drawing.Font("Segoe UI Variable Text", 9F);
-            numericBoxV2.FooterPadding = new System.Windows.Forms.Padding(0, 6, 0, 0);
-            numericBoxV2.HeaderFont = new System.Drawing.Font("Segoe UI Variable Text", 9F);
-            numericBoxV2.HeaderPadding = new System.Windows.Forms.Padding(0, 6, 0, 0);
-            numericBoxV2.Location = new System.Drawing.Point(0, 14);
-            numericBoxV2.Margin = new System.Windows.Forms.Padding(0);
-            numericBoxV2.Maximum = 20D;
-            numericBoxV2.MaximumSize = new System.Drawing.Size(1000, 100);
-            numericBoxV2.Minimum = -20D;
-            numericBoxV2.MinimumSize = new System.Drawing.Size(10, 20);
-            numericBoxV2.Name = "numericBoxV2";
-            numericBoxV2.Padding = new System.Windows.Forms.Padding(0, 2, 0, 0);
-            numericBoxV2.ShowUpDown = true;
-            numericBoxV2.Size = new System.Drawing.Size(38, 25);
-            numericBoxV2.TabIndex = 10;
-            numericBoxV2.TextFontSize = 9F;
-            numericBoxV2.ValueChanged += numericBox_ValueChanged;
-            // 
-            // flowLayoutPanelW2
-            // 
-            flowLayoutPanelW2.AutoSize = true;
-            flowLayoutPanelW2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            flowLayoutPanelW2.Controls.Add(labelTex14);
-            flowLayoutPanelW2.Controls.Add(numericBoxW2);
-            flowLayoutPanelW2.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            flowLayoutPanelW2.Location = new System.Drawing.Point(88, 0);
-            flowLayoutPanelW2.Margin = new System.Windows.Forms.Padding(0);
-            flowLayoutPanelW2.Name = "flowLayoutPanelW2";
-            flowLayoutPanelW2.Size = new System.Drawing.Size(38, 39);
-            flowLayoutPanelW2.TabIndex = 6;
-            // 
-            // labelTex14
-            // 
-            labelTex14.Font = new System.Drawing.Font("Segoe UI Variable Text", 11F);
-            labelTex14.Location = new System.Drawing.Point(0, 0);
-            labelTex14.Margin = new System.Windows.Forms.Padding(0);
-            labelTex14.Name = "labelTex14";
-            labelTex14.Size = new System.Drawing.Size(17, 14);
-            labelTex14.TabIndex = 6;
-            labelTex14.Text = "w_2";
-            labelTex14.Thickness = 0.6D;
-            // 
-            // numericBoxW2
-            // 
-            numericBoxW2.BackColor = System.Drawing.Color.Transparent;
-            numericBoxW2.DecimalPlaces = 0;
-            numericBoxW2.FooterFont = new System.Drawing.Font("Segoe UI Variable Text", 9F);
-            numericBoxW2.FooterPadding = new System.Windows.Forms.Padding(0, 6, 0, 0);
-            numericBoxW2.HeaderFont = new System.Drawing.Font("Segoe UI Variable Text", 9F);
-            numericBoxW2.HeaderPadding = new System.Windows.Forms.Padding(0, 6, 0, 0);
-            numericBoxW2.Location = new System.Drawing.Point(0, 14);
-            numericBoxW2.Margin = new System.Windows.Forms.Padding(0);
-            numericBoxW2.Maximum = 20D;
-            numericBoxW2.MaximumSize = new System.Drawing.Size(1000, 100);
-            numericBoxW2.Minimum = -20D;
-            numericBoxW2.MinimumSize = new System.Drawing.Size(10, 20);
-            numericBoxW2.Name = "numericBoxW2";
-            numericBoxW2.Padding = new System.Windows.Forms.Padding(0, 2, 0, 0);
-            numericBoxW2.ShowUpDown = true;
-            numericBoxW2.Size = new System.Drawing.Size(38, 25);
-            numericBoxW2.TabIndex = 11;
-            numericBoxW2.TextFontSize = 9F;
-            numericBoxW2.ValueChanged += numericBox_ValueChanged;
-            // 
-            // label18
-            // 
-            label18.AutoSize = true;
-            label18.Font = new System.Drawing.Font("Segoe UI Variable Text", 9.75F);
-            label18.Location = new System.Drawing.Point(126, 0);
-            label18.Margin = new System.Windows.Forms.Padding(0);
-            label18.Name = "label18";
-            label18.Padding = new System.Windows.Forms.Padding(0, 16, 0, 0);
-            label18.Size = new System.Drawing.Size(12, 33);
-            label18.TabIndex = 6;
-            label18.Text = "]";
             // 
             // numericBoxLengthAxis2
             // 
@@ -989,7 +567,7 @@
             numericBoxLengthAxis2.FooterText = "Å";
             numericBoxLengthAxis2.HeaderFont = new System.Drawing.Font("Segoe UI Variable Text", 9.75F);
             numericBoxLengthAxis2.HeaderPadding = new System.Windows.Forms.Padding(0, 4, 0, 0);
-            numericBoxLengthAxis2.Location = new System.Drawing.Point(138, 13);
+            numericBoxLengthAxis2.Location = new System.Drawing.Point(128, 13);
             numericBoxLengthAxis2.Margin = new System.Windows.Forms.Padding(0, 13, 0, 0);
             numericBoxLengthAxis2.MaximumSize = new System.Drawing.Size(1000, 100);
             numericBoxLengthAxis2.MinimumSize = new System.Drawing.Size(10, 20);
@@ -1024,179 +602,13 @@
             // 
             flowLayoutPanel11.AutoSize = true;
             flowLayoutPanel11.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            flowLayoutPanel11.Controls.Add(label13);
-            flowLayoutPanel11.Controls.Add(flowLayoutPanelU1);
-            flowLayoutPanel11.Controls.Add(flowLayoutPanelV1);
-            flowLayoutPanel11.Controls.Add(flowLayoutPanelW1);
-            flowLayoutPanel11.Controls.Add(label14);
+            flowLayoutPanel11.Controls.Add(indexControlAxis1);
             flowLayoutPanel11.Controls.Add(numericBoxLengthAxis1);
             flowLayoutPanel11.Location = new System.Drawing.Point(399, 5);
             flowLayoutPanel11.Margin = new System.Windows.Forms.Padding(0);
             flowLayoutPanel11.Name = "flowLayoutPanel11";
-            flowLayoutPanel11.Size = new System.Drawing.Size(205, 39);
+            flowLayoutPanel11.Size = new System.Drawing.Size(195, 41);
             flowLayoutPanel11.TabIndex = 5;
-            // 
-            // label13
-            // 
-            label13.AutoSize = true;
-            label13.Font = new System.Drawing.Font("Segoe UI Variable Text", 9.75F);
-            label13.Location = new System.Drawing.Point(0, 0);
-            label13.Margin = new System.Windows.Forms.Padding(0);
-            label13.Name = "label13";
-            label13.Padding = new System.Windows.Forms.Padding(0, 16, 0, 0);
-            label13.Size = new System.Drawing.Size(12, 33);
-            label13.TabIndex = 6;
-            label13.Text = "[";
-            // 
-            // flowLayoutPanelU1
-            // 
-            flowLayoutPanelU1.AutoSize = true;
-            flowLayoutPanelU1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            flowLayoutPanelU1.Controls.Add(labelTex9);
-            flowLayoutPanelU1.Controls.Add(numericBoxU1);
-            flowLayoutPanelU1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            flowLayoutPanelU1.Location = new System.Drawing.Point(12, 0);
-            flowLayoutPanelU1.Margin = new System.Windows.Forms.Padding(0);
-            flowLayoutPanelU1.Name = "flowLayoutPanelU1";
-            flowLayoutPanelU1.Size = new System.Drawing.Size(38, 39);
-            flowLayoutPanelU1.TabIndex = 6;
-            // 
-            // labelTex9
-            // 
-            labelTex9.Font = new System.Drawing.Font("Segoe UI Variable Text", 11F);
-            labelTex9.Location = new System.Drawing.Point(0, 0);
-            labelTex9.Margin = new System.Windows.Forms.Padding(0);
-            labelTex9.Name = "labelTex9";
-            labelTex9.Size = new System.Drawing.Size(15, 14);
-            labelTex9.TabIndex = 6;
-            labelTex9.Text = "u_1";
-            labelTex9.Thickness = 0.6D;
-            // 
-            // numericBoxU1
-            // 
-            numericBoxU1.BackColor = System.Drawing.Color.Transparent;
-            numericBoxU1.DecimalPlaces = 0;
-            numericBoxU1.FooterFont = new System.Drawing.Font("Segoe UI Variable Text", 9F);
-            numericBoxU1.FooterPadding = new System.Windows.Forms.Padding(0, 6, 0, 0);
-            numericBoxU1.HeaderFont = new System.Drawing.Font("Segoe UI Variable Text", 9F);
-            numericBoxU1.HeaderPadding = new System.Windows.Forms.Padding(0, 6, 0, 0);
-            numericBoxU1.Location = new System.Drawing.Point(0, 14);
-            numericBoxU1.Margin = new System.Windows.Forms.Padding(0);
-            numericBoxU1.Maximum = 20D;
-            numericBoxU1.MaximumSize = new System.Drawing.Size(1000, 100);
-            numericBoxU1.Minimum = -20D;
-            numericBoxU1.MinimumSize = new System.Drawing.Size(10, 20);
-            numericBoxU1.Name = "numericBoxU1";
-            numericBoxU1.Padding = new System.Windows.Forms.Padding(0, 2, 0, 0);
-            numericBoxU1.ShowUpDown = true;
-            numericBoxU1.Size = new System.Drawing.Size(38, 25);
-            numericBoxU1.TabIndex = 6;
-            numericBoxU1.TextFontSize = 9F;
-            numericBoxU1.ValueChanged += numericBox_ValueChanged;
-            // 
-            // flowLayoutPanelV1
-            // 
-            flowLayoutPanelV1.AutoSize = true;
-            flowLayoutPanelV1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            flowLayoutPanelV1.Controls.Add(labelTex10);
-            flowLayoutPanelV1.Controls.Add(numericBoxV1);
-            flowLayoutPanelV1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            flowLayoutPanelV1.Location = new System.Drawing.Point(50, 0);
-            flowLayoutPanelV1.Margin = new System.Windows.Forms.Padding(0);
-            flowLayoutPanelV1.Name = "flowLayoutPanelV1";
-            flowLayoutPanelV1.Size = new System.Drawing.Size(38, 39);
-            flowLayoutPanelV1.TabIndex = 6;
-            // 
-            // labelTex10
-            // 
-            labelTex10.Font = new System.Drawing.Font("Segoe UI Variable Text", 11F);
-            labelTex10.Location = new System.Drawing.Point(0, 0);
-            labelTex10.Margin = new System.Windows.Forms.Padding(0);
-            labelTex10.Name = "labelTex10";
-            labelTex10.Size = new System.Drawing.Size(15, 14);
-            labelTex10.TabIndex = 6;
-            labelTex10.Text = "v_1";
-            labelTex10.Thickness = 0.6D;
-            // 
-            // numericBoxV1
-            // 
-            numericBoxV1.BackColor = System.Drawing.Color.Transparent;
-            numericBoxV1.DecimalPlaces = 0;
-            numericBoxV1.FooterFont = new System.Drawing.Font("Segoe UI Variable Text", 9F);
-            numericBoxV1.FooterPadding = new System.Windows.Forms.Padding(0, 6, 0, 0);
-            numericBoxV1.HeaderFont = new System.Drawing.Font("Segoe UI Variable Text", 9F);
-            numericBoxV1.HeaderPadding = new System.Windows.Forms.Padding(0, 6, 0, 0);
-            numericBoxV1.Location = new System.Drawing.Point(0, 14);
-            numericBoxV1.Margin = new System.Windows.Forms.Padding(0);
-            numericBoxV1.Maximum = 20D;
-            numericBoxV1.MaximumSize = new System.Drawing.Size(1000, 100);
-            numericBoxV1.Minimum = -20D;
-            numericBoxV1.MinimumSize = new System.Drawing.Size(10, 20);
-            numericBoxV1.Name = "numericBoxV1";
-            numericBoxV1.Padding = new System.Windows.Forms.Padding(0, 2, 0, 0);
-            numericBoxV1.ShowUpDown = true;
-            numericBoxV1.Size = new System.Drawing.Size(38, 25);
-            numericBoxV1.TabIndex = 7;
-            numericBoxV1.TextFontSize = 9F;
-            numericBoxV1.ValueChanged += numericBox_ValueChanged;
-            // 
-            // flowLayoutPanelW1
-            // 
-            flowLayoutPanelW1.AutoSize = true;
-            flowLayoutPanelW1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            flowLayoutPanelW1.Controls.Add(labelTex12);
-            flowLayoutPanelW1.Controls.Add(numericBoxW1);
-            flowLayoutPanelW1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            flowLayoutPanelW1.Location = new System.Drawing.Point(88, 0);
-            flowLayoutPanelW1.Margin = new System.Windows.Forms.Padding(0);
-            flowLayoutPanelW1.Name = "flowLayoutPanelW1";
-            flowLayoutPanelW1.Size = new System.Drawing.Size(38, 39);
-            flowLayoutPanelW1.TabIndex = 6;
-            // 
-            // labelTex12
-            // 
-            labelTex12.Font = new System.Drawing.Font("Segoe UI Variable Text", 11F);
-            labelTex12.Location = new System.Drawing.Point(0, 0);
-            labelTex12.Margin = new System.Windows.Forms.Padding(0);
-            labelTex12.Name = "labelTex12";
-            labelTex12.Size = new System.Drawing.Size(17, 14);
-            labelTex12.TabIndex = 6;
-            labelTex12.Text = "w_1";
-            labelTex12.Thickness = 0.6D;
-            // 
-            // numericBoxW1
-            // 
-            numericBoxW1.BackColor = System.Drawing.Color.Transparent;
-            numericBoxW1.DecimalPlaces = 0;
-            numericBoxW1.FooterFont = new System.Drawing.Font("Segoe UI Variable Text", 9F);
-            numericBoxW1.FooterPadding = new System.Windows.Forms.Padding(0, 6, 0, 0);
-            numericBoxW1.HeaderFont = new System.Drawing.Font("Segoe UI Variable Text", 9F);
-            numericBoxW1.HeaderPadding = new System.Windows.Forms.Padding(0, 6, 0, 0);
-            numericBoxW1.Location = new System.Drawing.Point(0, 14);
-            numericBoxW1.Margin = new System.Windows.Forms.Padding(0);
-            numericBoxW1.Maximum = 20D;
-            numericBoxW1.MaximumSize = new System.Drawing.Size(1000, 100);
-            numericBoxW1.Minimum = -20D;
-            numericBoxW1.MinimumSize = new System.Drawing.Size(10, 20);
-            numericBoxW1.Name = "numericBoxW1";
-            numericBoxW1.Padding = new System.Windows.Forms.Padding(0, 2, 0, 0);
-            numericBoxW1.ShowUpDown = true;
-            numericBoxW1.Size = new System.Drawing.Size(38, 25);
-            numericBoxW1.TabIndex = 8;
-            numericBoxW1.TextFontSize = 9F;
-            numericBoxW1.ValueChanged += numericBox_ValueChanged;
-            // 
-            // label14
-            // 
-            label14.AutoSize = true;
-            label14.Font = new System.Drawing.Font("Segoe UI Variable Text", 9.75F);
-            label14.Location = new System.Drawing.Point(126, 0);
-            label14.Margin = new System.Windows.Forms.Padding(0);
-            label14.Name = "label14";
-            label14.Padding = new System.Windows.Forms.Padding(0, 16, 0, 0);
-            label14.Size = new System.Drawing.Size(12, 33);
-            label14.TabIndex = 6;
-            label14.Text = "]";
             // 
             // numericBoxLengthAxis1
             // 
@@ -1207,7 +619,7 @@
             numericBoxLengthAxis1.FooterText = "Å";
             numericBoxLengthAxis1.HeaderFont = new System.Drawing.Font("Segoe UI Variable Text", 9.75F);
             numericBoxLengthAxis1.HeaderPadding = new System.Windows.Forms.Padding(0, 4, 0, 0);
-            numericBoxLengthAxis1.Location = new System.Drawing.Point(138, 13);
+            numericBoxLengthAxis1.Location = new System.Drawing.Point(128, 13);
             numericBoxLengthAxis1.Margin = new System.Windows.Forms.Padding(0, 13, 0, 0);
             numericBoxLengthAxis1.MaximumSize = new System.Drawing.Size(1000, 100);
             numericBoxLengthAxis1.MinimumSize = new System.Drawing.Size(10, 20);
@@ -1243,223 +655,37 @@
             flowLayoutPanel1.AutoSize = true;
             flowLayoutPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             flowLayoutPanel1.BackColor = System.Drawing.SystemColors.Control;
-            flowLayoutPanel1.Controls.Add(label25);
+            flowLayoutPanel1.Controls.Add(indexControlPlane1);
             flowLayoutPanel1.Controls.Add(flowLayoutPanelH1);
             flowLayoutPanel1.Controls.Add(flowLayoutPanelK1);
-            flowLayoutPanel1.Controls.Add(flowLayoutPanelI1);
-            flowLayoutPanel1.Controls.Add(flowLayoutPanelL1);
-            flowLayoutPanel1.Controls.Add(label7);
             flowLayoutPanel1.Controls.Add(numericBoxLengthPlane1);
             flowLayoutPanel1.Location = new System.Drawing.Point(80, 5);
             flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new System.Drawing.Size(225, 39);
+            flowLayoutPanel1.Size = new System.Drawing.Size(195, 41);
             flowLayoutPanel1.TabIndex = 5;
-            // 
-            // label25
-            // 
-            label25.AutoSize = true;
-            label25.Font = new System.Drawing.Font("Times New Roman", 9.75F);
-            label25.Location = new System.Drawing.Point(0, 0);
-            label25.Margin = new System.Windows.Forms.Padding(0);
-            label25.Name = "label25";
-            label25.Padding = new System.Windows.Forms.Padding(0, 16, 0, 0);
-            label25.Size = new System.Drawing.Size(11, 31);
-            label25.TabIndex = 6;
-            label25.Text = "(";
             // 
             // flowLayoutPanelH1
             // 
             flowLayoutPanelH1.AutoSize = true;
             flowLayoutPanelH1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            flowLayoutPanelH1.Controls.Add(labelTex1);
-            flowLayoutPanelH1.Controls.Add(numericBoxH1);
             flowLayoutPanelH1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            flowLayoutPanelH1.Location = new System.Drawing.Point(11, 0);
+            flowLayoutPanelH1.Location = new System.Drawing.Point(128, 0);
             flowLayoutPanelH1.Margin = new System.Windows.Forms.Padding(0);
             flowLayoutPanelH1.Name = "flowLayoutPanelH1";
-            flowLayoutPanelH1.Size = new System.Drawing.Size(38, 39);
+            flowLayoutPanelH1.Size = new System.Drawing.Size(0, 0);
             flowLayoutPanelH1.TabIndex = 6;
-            // 
-            // labelTex1
-            // 
-            labelTex1.Font = new System.Drawing.Font("Segoe UI Variable Text", 11F);
-            labelTex1.Location = new System.Drawing.Point(0, 0);
-            labelTex1.Margin = new System.Windows.Forms.Padding(0);
-            labelTex1.Name = "labelTex1";
-            labelTex1.Size = new System.Drawing.Size(15, 14);
-            labelTex1.TabIndex = 6;
-            labelTex1.Text = "h_1";
-            labelTex1.Thickness = 0.6D;
-            // 
-            // numericBoxH1
-            // 
-            numericBoxH1.BackColor = System.Drawing.Color.Transparent;
-            numericBoxH1.DecimalPlaces = 0;
-            numericBoxH1.FooterFont = new System.Drawing.Font("Segoe UI Variable Text", 9F);
-            numericBoxH1.FooterPadding = new System.Windows.Forms.Padding(0, 6, 0, 0);
-            numericBoxH1.HeaderFont = new System.Drawing.Font("Times New Roman", 8.25F);
-            numericBoxH1.HeaderPadding = new System.Windows.Forms.Padding(0, 9, 0, 0);
-            numericBoxH1.Location = new System.Drawing.Point(0, 14);
-            numericBoxH1.Margin = new System.Windows.Forms.Padding(0);
-            numericBoxH1.Maximum = 20D;
-            numericBoxH1.MaximumSize = new System.Drawing.Size(1000, 100);
-            numericBoxH1.Minimum = -20D;
-            numericBoxH1.MinimumSize = new System.Drawing.Size(10, 20);
-            numericBoxH1.Name = "numericBoxH1";
-            numericBoxH1.Padding = new System.Windows.Forms.Padding(0, 2, 0, 0);
-            numericBoxH1.ShowUpDown = true;
-            numericBoxH1.Size = new System.Drawing.Size(38, 25);
-            numericBoxH1.TabIndex = 0;
-            numericBoxH1.TextFontSize = 9F;
-            numericBoxH1.ValueChanged += numericBox_ValueChanged;
             // 
             // flowLayoutPanelK1
             // 
             flowLayoutPanelK1.AutoSize = true;
             flowLayoutPanelK1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            flowLayoutPanelK1.Controls.Add(labelTex2);
-            flowLayoutPanelK1.Controls.Add(numericBoxK1);
             flowLayoutPanelK1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            flowLayoutPanelK1.Location = new System.Drawing.Point(49, 0);
+            flowLayoutPanelK1.Location = new System.Drawing.Point(128, 0);
             flowLayoutPanelK1.Margin = new System.Windows.Forms.Padding(0);
             flowLayoutPanelK1.Name = "flowLayoutPanelK1";
-            flowLayoutPanelK1.Size = new System.Drawing.Size(38, 39);
+            flowLayoutPanelK1.Size = new System.Drawing.Size(0, 0);
             flowLayoutPanelK1.TabIndex = 6;
-            // 
-            // labelTex2
-            // 
-            labelTex2.Font = new System.Drawing.Font("Segoe UI Variable Text", 11F);
-            labelTex2.Location = new System.Drawing.Point(0, 0);
-            labelTex2.Margin = new System.Windows.Forms.Padding(0);
-            labelTex2.Name = "labelTex2";
-            labelTex2.Size = new System.Drawing.Size(15, 14);
-            labelTex2.TabIndex = 6;
-            labelTex2.Text = "k_1";
-            labelTex2.Thickness = 0.6D;
-            // 
-            // numericBoxK1
-            // 
-            numericBoxK1.BackColor = System.Drawing.Color.Transparent;
-            numericBoxK1.DecimalPlaces = 0;
-            numericBoxK1.FooterFont = new System.Drawing.Font("Segoe UI Variable Text", 9F);
-            numericBoxK1.HeaderFont = new System.Drawing.Font("Times New Roman", 8.25F);
-            numericBoxK1.LabelOrientation = NumericBoxOrientation.Vertical;
-            numericBoxK1.Location = new System.Drawing.Point(0, 14);
-            numericBoxK1.Margin = new System.Windows.Forms.Padding(0);
-            numericBoxK1.Maximum = 20D;
-            numericBoxK1.MaximumSize = new System.Drawing.Size(1000, 100);
-            numericBoxK1.Minimum = -20D;
-            numericBoxK1.MinimumSize = new System.Drawing.Size(10, 20);
-            numericBoxK1.Name = "numericBoxK1";
-            numericBoxK1.Padding = new System.Windows.Forms.Padding(0, 2, 0, 0);
-            numericBoxK1.ShowUpDown = true;
-            numericBoxK1.Size = new System.Drawing.Size(38, 25);
-            numericBoxK1.TabIndex = 1;
-            numericBoxK1.TextFontSize = 9F;
-            numericBoxK1.ValueChanged += numericBox_ValueChanged;
-            // 
-            // flowLayoutPanelI1
-            // 
-            flowLayoutPanelI1.AutoSize = true;
-            flowLayoutPanelI1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            flowLayoutPanelI1.Controls.Add(labelTex3);
-            flowLayoutPanelI1.Controls.Add(numericBox1);
-            flowLayoutPanelI1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            flowLayoutPanelI1.Location = new System.Drawing.Point(87, 0);
-            flowLayoutPanelI1.Margin = new System.Windows.Forms.Padding(0);
-            flowLayoutPanelI1.Name = "flowLayoutPanelI1";
-            flowLayoutPanelI1.Size = new System.Drawing.Size(22, 39);
-            flowLayoutPanelI1.TabIndex = 6;
-            // 
-            // labelTex3
-            // 
-            labelTex3.Font = new System.Drawing.Font("Segoe UI Variable Text", 11F);
-            labelTex3.Location = new System.Drawing.Point(0, 0);
-            labelTex3.Margin = new System.Windows.Forms.Padding(0);
-            labelTex3.Name = "labelTex3";
-            labelTex3.Size = new System.Drawing.Size(15, 14);
-            labelTex3.TabIndex = 6;
-            labelTex3.Text = "i_1";
-            labelTex3.Thickness = 0.6D;
-            // 
-            // numericBox1
-            // 
-            numericBox1.BackColor = System.Drawing.Color.Transparent;
-            numericBox1.DecimalPlaces = 0;
-            numericBox1.FooterFont = new System.Drawing.Font("Segoe UI Variable Text", 9F);
-            numericBox1.HeaderFont = new System.Drawing.Font("Times New Roman", 8.25F);
-            numericBox1.LabelOrientation = NumericBoxOrientation.Vertical;
-            numericBox1.Location = new System.Drawing.Point(0, 14);
-            numericBox1.Margin = new System.Windows.Forms.Padding(0);
-            numericBox1.Maximum = 20D;
-            numericBox1.MaximumSize = new System.Drawing.Size(1000, 100);
-            numericBox1.Minimum = -20D;
-            numericBox1.MinimumSize = new System.Drawing.Size(10, 20);
-            numericBox1.Name = "numericBox1";
-            numericBox1.Padding = new System.Windows.Forms.Padding(0, 2, 0, 0);
-            numericBox1.ReadOnly = true;
-            numericBox1.Size = new System.Drawing.Size(22, 25);
-            numericBox1.TabIndex = 1;
-            numericBox1.TextBoxBackColor = System.Drawing.SystemColors.Control;
-            numericBox1.TextFontSize = 9F;
-            // 
-            // flowLayoutPanelL1
-            // 
-            flowLayoutPanelL1.AutoSize = true;
-            flowLayoutPanelL1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            flowLayoutPanelL1.Controls.Add(labelTex4);
-            flowLayoutPanelL1.Controls.Add(numericBoxL1);
-            flowLayoutPanelL1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            flowLayoutPanelL1.Location = new System.Drawing.Point(109, 0);
-            flowLayoutPanelL1.Margin = new System.Windows.Forms.Padding(0);
-            flowLayoutPanelL1.Name = "flowLayoutPanelL1";
-            flowLayoutPanelL1.Size = new System.Drawing.Size(38, 39);
-            flowLayoutPanelL1.TabIndex = 6;
-            // 
-            // labelTex4
-            // 
-            labelTex4.Font = new System.Drawing.Font("Segoe UI Variable Text", 11F);
-            labelTex4.Location = new System.Drawing.Point(0, 0);
-            labelTex4.Margin = new System.Windows.Forms.Padding(0);
-            labelTex4.Name = "labelTex4";
-            labelTex4.Size = new System.Drawing.Size(15, 14);
-            labelTex4.TabIndex = 6;
-            labelTex4.Text = "l_1";
-            labelTex4.Thickness = 0.6D;
-            // 
-            // numericBoxL1
-            // 
-            numericBoxL1.BackColor = System.Drawing.Color.Transparent;
-            numericBoxL1.DecimalPlaces = 0;
-            numericBoxL1.FooterFont = new System.Drawing.Font("Segoe UI Variable Text", 9F);
-            numericBoxL1.HeaderFont = new System.Drawing.Font("Times New Roman", 8.25F);
-            numericBoxL1.LabelOrientation = NumericBoxOrientation.Vertical;
-            numericBoxL1.Location = new System.Drawing.Point(0, 14);
-            numericBoxL1.Margin = new System.Windows.Forms.Padding(0);
-            numericBoxL1.Maximum = 20D;
-            numericBoxL1.MaximumSize = new System.Drawing.Size(1000, 100);
-            numericBoxL1.Minimum = -20D;
-            numericBoxL1.MinimumSize = new System.Drawing.Size(10, 20);
-            numericBoxL1.Name = "numericBoxL1";
-            numericBoxL1.Padding = new System.Windows.Forms.Padding(0, 2, 0, 0);
-            numericBoxL1.ShowUpDown = true;
-            numericBoxL1.Size = new System.Drawing.Size(38, 25);
-            numericBoxL1.TabIndex = 2;
-            numericBoxL1.TextFontSize = 9F;
-            numericBoxL1.ValueChanged += numericBox_ValueChanged;
-            // 
-            // label7
-            // 
-            label7.AutoSize = true;
-            label7.Font = new System.Drawing.Font("Times New Roman", 9.75F);
-            label7.Location = new System.Drawing.Point(147, 0);
-            label7.Margin = new System.Windows.Forms.Padding(0);
-            label7.Name = "label7";
-            label7.Padding = new System.Windows.Forms.Padding(0, 16, 0, 0);
-            label7.Size = new System.Drawing.Size(11, 31);
-            label7.TabIndex = 6;
-            label7.Text = ")";
             // 
             // numericBoxLengthPlane1
             // 
@@ -1470,7 +696,7 @@
             numericBoxLengthPlane1.FooterText = "Å";
             numericBoxLengthPlane1.HeaderFont = new System.Drawing.Font("Segoe UI Variable Text", 9.75F);
             numericBoxLengthPlane1.HeaderPadding = new System.Windows.Forms.Padding(0, 4, 0, 0);
-            numericBoxLengthPlane1.Location = new System.Drawing.Point(158, 13);
+            numericBoxLengthPlane1.Location = new System.Drawing.Point(128, 13);
             numericBoxLengthPlane1.Margin = new System.Windows.Forms.Padding(0, 13, 0, 0);
             numericBoxLengthPlane1.MaximumSize = new System.Drawing.Size(1000, 100);
             numericBoxLengthPlane1.MinimumSize = new System.Drawing.Size(10, 20);
@@ -2055,6 +1281,74 @@
             flowLayoutPanel5.Size = new System.Drawing.Size(94, 20);
             flowLayoutPanel5.TabIndex = 7;
             // 
+            // indexControlPlane1
+            // 
+            indexControlPlane1.AutoSize = true;
+            indexControlPlane1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            indexControlPlane1.BoxWidth = 38;
+            indexControlPlane1.Bracket = IndexControl.BracketEnum.Round;
+            indexControlPlane1.Location = new System.Drawing.Point(0, 0);
+            indexControlPlane1.Margin = new System.Windows.Forms.Padding(0);
+            indexControlPlane1.Mode = IndexControl.ModeEnum.Plane;
+            indexControlPlane1.Name = "indexControlPlane1";
+            indexControlPlane1.Size = new System.Drawing.Size(128, 41);
+            indexControlPlane1.SubScript = "1";
+            indexControlPlane1.TabIndex = 14;
+            indexControlPlane1.UpDownWidth = 17;
+            indexControlPlane1.Values = ((int, int, int))resources.GetObject("indexControlPlane1.Values");
+            indexControlPlane1.ValueChanged += numericBox_ValueChanged; // 260517Cl 追加: IndexControl 化で取りこぼした購読を復元
+            //
+            // indexControl1
+            // 
+            indexControlPlane2.AutoSize = true;
+            indexControlPlane2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            indexControlPlane2.BoxWidth = 38;
+            indexControlPlane2.Bracket = IndexControl.BracketEnum.Round;
+            indexControlPlane2.Location = new System.Drawing.Point(0, 0);
+            indexControlPlane2.Margin = new System.Windows.Forms.Padding(0);
+            indexControlPlane2.Mode = IndexControl.ModeEnum.Plane;
+            indexControlPlane2.Name = "indexControl1";
+            indexControlPlane2.Size = new System.Drawing.Size(128, 41);
+            indexControlPlane2.SubScript = "2";
+            indexControlPlane2.TabIndex = 14;
+            indexControlPlane2.UpDownWidth = 17;
+            indexControlPlane2.Values = ((int, int, int))resources.GetObject("indexControl1.Values");
+            indexControlPlane2.ValueChanged += numericBox_ValueChanged; // 260517Cl 追加: IndexControl 化で取りこぼした購読を復元
+            //
+            // indexControlAxis1
+            // 
+            indexControlAxis1.AutoSize = true;
+            indexControlAxis1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            indexControlAxis1.BoxWidth = 38;
+            indexControlAxis1.Bracket = IndexControl.BracketEnum.Round;
+            indexControlAxis1.Location = new System.Drawing.Point(0, 0);
+            indexControlAxis1.Margin = new System.Windows.Forms.Padding(0);
+            indexControlAxis1.Mode = IndexControl.ModeEnum.Axis;
+            indexControlAxis1.Name = "indexControlAxis1";
+            indexControlAxis1.Size = new System.Drawing.Size(128, 41);
+            indexControlAxis1.SubScript = "1";
+            indexControlAxis1.TabIndex = 14;
+            indexControlAxis1.UpDownWidth = 17;
+            indexControlAxis1.Values = ((int, int, int))resources.GetObject("indexControlAxis1.Values");
+            indexControlAxis1.ValueChanged += numericBox_ValueChanged; // 260517Cl 追加: IndexControl 化で取りこぼした購読を復元
+            //
+            // indexControlAxis2
+            // 
+            indexControlAxis2.AutoSize = true;
+            indexControlAxis2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            indexControlAxis2.BoxWidth = 38;
+            indexControlAxis2.Bracket = IndexControl.BracketEnum.Round;
+            indexControlAxis2.Location = new System.Drawing.Point(0, 0);
+            indexControlAxis2.Margin = new System.Windows.Forms.Padding(0);
+            indexControlAxis2.Mode = IndexControl.ModeEnum.Axis;
+            indexControlAxis2.Name = "indexControlAxis2";
+            indexControlAxis2.Size = new System.Drawing.Size(128, 41);
+            indexControlAxis2.SubScript = "2";
+            indexControlAxis2.TabIndex = 14;
+            indexControlAxis2.UpDownWidth = 17;
+            indexControlAxis2.Values = ((int, int, int))resources.GetObject("indexControlAxis2.Values");
+            indexControlAxis2.ValueChanged += numericBox_ValueChanged; // 260517Cl 追加: IndexControl 化で取りこぼした購読を復元
+            //
             // FormSymmetryInformation
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -2088,26 +1382,12 @@
             tabPage1.PerformLayout();
             flowLayoutPanel6.ResumeLayout(false);
             flowLayoutPanel6.PerformLayout();
-            flowLayoutPanelH2.ResumeLayout(false);
-            flowLayoutPanelK2.ResumeLayout(false);
-            flowLayoutPanelI2.ResumeLayout(false);
-            flowLayoutPanelL2.ResumeLayout(false);
             flowLayoutPanel14.ResumeLayout(false);
             flowLayoutPanel14.PerformLayout();
-            flowLayoutPanelU2.ResumeLayout(false);
-            flowLayoutPanelV2.ResumeLayout(false);
-            flowLayoutPanelW2.ResumeLayout(false);
             flowLayoutPanel11.ResumeLayout(false);
             flowLayoutPanel11.PerformLayout();
-            flowLayoutPanelU1.ResumeLayout(false);
-            flowLayoutPanelV1.ResumeLayout(false);
-            flowLayoutPanelW1.ResumeLayout(false);
             flowLayoutPanel1.ResumeLayout(false);
             flowLayoutPanel1.PerformLayout();
-            flowLayoutPanelH1.ResumeLayout(false);
-            flowLayoutPanelK1.ResumeLayout(false);
-            flowLayoutPanelI1.ResumeLayout(false);
-            flowLayoutPanelL1.ResumeLayout(false);
             tabPageWyckoff.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataSet).EndInit();
@@ -2145,31 +1425,17 @@
         private System.Windows.Forms.Label label49;
         private System.Windows.Forms.TabPage tabPageWyckoff;
         private Crystallography.Controls.NumericBox numericBoxAnglePlaneAxis2;
-        private Crystallography.Controls.NumericBox numericBoxK1;
         private System.Windows.Forms.TextBox textBoxZonePlane;
         private Crystallography.Controls.NumericBox numericBoxLengthPlane1;
-        private Crystallography.Controls.NumericBox numericBoxH1;
         private Crystallography.Controls.NumericBox numericBoxAnglePlaneAxis1;
         private Crystallography.Controls.NumericBox numericBoxLengthPlane2;
         private Crystallography.Controls.NumericBox numericBoxAngleAxes;
         private System.Windows.Forms.Label label40;
-        private Crystallography.Controls.NumericBox numericBoxL2;
-        private Crystallography.Controls.NumericBox numericBoxK2;
-        private Crystallography.Controls.NumericBox numericBoxL1;
         private Crystallography.Controls.NumericBox numericBoxAnglePlanes;
         private System.Windows.Forms.Label label42;
         private Crystallography.Controls.NumericBox numericBoxLengthAxis1;
-        private Crystallography.Controls.NumericBox numericBoxH2;
         private System.Windows.Forms.TextBox textBoxZoneAxis;
-        private Crystallography.Controls.NumericBox numericBoxU1;
-        private Crystallography.Controls.NumericBox numericBoxV1;
-        private Crystallography.Controls.NumericBox numericBoxW2;
-        private Crystallography.Controls.NumericBox numericBoxW1;
-        private Crystallography.Controls.NumericBox numericBoxU2;
-        private Crystallography.Controls.NumericBox numericBoxV2;
         private Crystallography.Controls.NumericBox numericBoxLengthAxis2;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label25;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Data.DataSet dataSet;
         private System.Data.DataTable dataTableWyckoff;
@@ -2197,44 +1463,11 @@
         private System.Windows.Forms.BindingSource bindingSourceScatteringFactor;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelH1;
-        private NumericBox numericBox1;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelL1;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelI1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelK1;
-        private LabelLaTeX labelTex1;
-        private LabelLaTeX labelTex2;
-        private LabelLaTeX labelTex3;
-        private LabelLaTeX labelTex4;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel14;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelU2;
-        private LabelLaTeX labelTex11;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelV2;
-        private LabelLaTeX labelTex13;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelW2;
-        private LabelLaTeX labelTex14;
-        private System.Windows.Forms.Label label18;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel6;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelH2;
-        private LabelLaTeX labelTex5;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelK2;
-        private LabelLaTeX labelTex6;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelI2;
-        private LabelLaTeX labelTex7;
-        private NumericBox numericBoxI2;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelL2;
-        private LabelLaTeX labelTex8;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel11;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelU1;
-        private LabelLaTeX labelTex9;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelV1;
-        private LabelLaTeX labelTex10;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelW1;
-        private LabelLaTeX labelTex12;
-        private System.Windows.Forms.Label label14;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private GraphicsBox graphicsBoxSymmetryElements;
         private GraphicsBox graphicsBoxGeneralPositions;
@@ -2280,5 +1513,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn columnCoordinates3DataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn columnCoordinates4DataGridViewTextBoxColumn;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel5;
+        private IndexControl indexControlPlane1;
+        private IndexControl indexControlPlane2;
+        private IndexControl indexControlAxis2;
+        private IndexControl indexControlAxis1;
     }
 }

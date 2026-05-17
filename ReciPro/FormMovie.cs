@@ -33,6 +33,9 @@ public partial class FormMovie : FormBase
     private static bool ffmpegLoaded = false; //260405Cl 追加
     private bool encoding = false; //260405Cl 追加: エンコード中フラグ
 
+    public bool MillerBravaisIndex { set => indexControl.MillerBravais = value; }
+
+
     public FormMovie()
     {
         InitializeComponent();
@@ -63,21 +66,20 @@ public partial class FormMovie : FormBase
 
     private void radioButtonCurrent_CheckedChanged(object sender, EventArgs e)
     {
-        tableLayoutPanelAxis.Enabled = radioButtonAxis.Checked;
-        tableLayoutPanelPlane.Enabled = radioButtonPlane.Checked;
+        indexControl.Mode  = radioButtonAxis.Checked? IndexControl.ModeEnum.Axis : IndexControl.ModeEnum.Plane;
         tableLayoutPanelCurrent.Enabled = radioButtonCurrent.Checked;
         numericBoxAxisU_ValueChanged(sender, e);
     }
 
     private void numericBoxAxisU_ValueChanged(object sender, EventArgs e)
     {
+        var (x, y, z) = indexControl.Values;
         if (radioButtonAxis.Checked)
-            Direction = Rot * (numericBoxAxisU.Value * A + numericBoxAxisV.Value * B + numericBoxAxisW.Value * C);
+            Direction = Rot * (x * A + y * B + z * C);
         else if (radioButtonPlane.Checked)
         {
             var rot = new Matrix3D(A, B, C).Inverse();
-            //260422Cl HKLControl revert
-            Direction = Rot * (numericBoxPlaneH.Value * rot.Row1 + numericBoxPlaneK.Value * rot.Row2 + numericBoxPlaneL.Value * rot.Row3);
+            Direction = Rot * (x * rot.Row1 + y * rot.Row2 + z * rot.Row3);
         }
     }
 

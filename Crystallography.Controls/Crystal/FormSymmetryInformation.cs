@@ -21,7 +21,7 @@ public partial class FormSymmetryInformation : FormBase
     /// <summary>4-index (Miller-Bravais) 表記の入力欄 (i-axis) を表示するかどうか。trigonal/hexagonal で true を想定。</summary>
     [Browsable(false)]
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-    public bool MillerBravais { get => flowLayoutPanelI1.Visible; set => flowLayoutPanelI1.Visible = flowLayoutPanelI2.Visible = value; }
+    public bool MillerBravais { get => indexControlPlane1.MillerBravais; set => indexControlPlane1.MillerBravais = indexControlPlane2.MillerBravais = value; }
 
     #endregion 
 
@@ -309,10 +309,8 @@ public partial class FormSymmetryInformation : FormBase
     /// </summary>
     private void numericBox_ValueChanged(object sender, EventArgs e)
     {
-        var plane1 = (h: numericBoxH1.ValueInteger, k: numericBoxK1.ValueInteger, l: numericBoxL1.ValueInteger);
-        var plane2 = (h: numericBoxH2.ValueInteger, k: numericBoxK2.ValueInteger, l: numericBoxL2.ValueInteger);
-        var axis1 = (u: numericBoxU1.ValueInteger, v: numericBoxV1.ValueInteger, w: numericBoxW1.ValueInteger);
-        var axis2 = (u: numericBoxU2.ValueInteger, v: numericBoxV2.ValueInteger, w: numericBoxW2.ValueInteger);
+        (int h,int k,int l) plane1 = indexControlPlane1.Values, plane2 = indexControlPlane2.Values;
+        (int u, int v, int w) axis1 =indexControlAxis1.Values, axis2 = indexControlAxis2.Values;
 
         numericBoxLengthPlane1.Value = Crystal.GetLengthPlane(plane1.h, plane1.k, plane1.l) * 10; // (260427Ch)
         numericBoxLengthPlane2.Value = Crystal.GetLengthPlane(plane2.h, plane2.k, plane2.l) * 10; // (260427Ch)

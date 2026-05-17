@@ -768,9 +768,11 @@ public partial class FormMain : FormBase
                 rot = Matrix3D.Rot(axis, angle);
             else
             {
+                var (u, v, w) = indexControlAxis.Values;
+                var (h, k, l) = indexControlPlane.Values;
                 var newAxis = checkBoxFixAxis.Checked ?
-                     Crystals[i].RotationMatrix * (numericBoxAxisU.Value * Crystal.A_Axis + numericBoxAxisV.Value * Crystal.B_Axis + numericBoxAxisW.Value * Crystal.C_Axis) :
-                     Crystals[i].RotationMatrix * (numericBoxPlaneH.Value * Crystal.A_Star + numericBoxPlaneK.Value * Crystal.B_Star + numericBoxPlaneL.Value * Crystal.C_Star);                // 260422Cl HKLControl revert
+                     Crystals[i].RotationMatrix * (u * Crystal.A_Axis + v * Crystal.B_Axis + w * Crystal.C_Axis) :
+                     Crystals[i].RotationMatrix * (h * Crystal.A_Star + k * Crystal.B_Star + l * Crystal.C_Star);                // 260422Cl HKLControl revert
                 if (Vector3DBase.AngleBetVectors(newAxis, axis) < Math.PI / 2)
                     rot = Matrix3D.Rot(newAxis, angle);
                 else
@@ -911,27 +913,16 @@ public partial class FormMain : FormBase
 
     #region hklやuvwベクトルでの回転指定
 
-    public void SetPlane(int h, int k, int l)
-    {
-        // 260422Cl HKLControl revert
-        numericBoxPlaneH.Value = h;
-        numericBoxPlaneK.Value = k;
-        numericBoxPlaneL.Value = l;
-    }
-    public void SetAxis(int u, int v, int w)
-    {
-        numericBoxAxisU.Value = u;
-        numericBoxAxisV.Value = v;
-        numericBoxAxisW.Value = w;
-    }
+    public void SetPlane(int h, int k, int l) => indexControlPlane.Values = (h, k, l);
+    public void SetAxis(int u, int v, int w) => indexControlAxis.Values = (u, v, w);
     public void ProjectAlongAxis() => buttonSetVector_Click(buttonSetAxis, new EventArgs());
     public void ProjectAlongPlane() => buttonSetVector_Click(buttonSetPlane, new EventArgs());
 
     private void buttonSetVector_Click(object sender, EventArgs e)
     {
         if (Crystal == null) return;
-        double u = numericBoxAxisU.Value, v = numericBoxAxisV.Value, w = numericBoxAxisW.Value;
-        double h = numericBoxPlaneH.Value, k = numericBoxPlaneK.Value, l = numericBoxPlaneL.Value;                                                         // 260422Cl HKLControl revert
+        var (u, v, w) = indexControlAxis.Values;
+        var (h, k, l) = indexControlPlane.Values;                                                         // 260422Cl HKLControl revert
 
         Vector3DBase xVector, yVector, zVector;
         Vector3DBase aAxis = Crystal.A_Axis, bAxis = Crystal.B_Axis, cAxis = Crystal.C_Axis;
@@ -1940,16 +1931,15 @@ public partial class FormMain : FormBase
     {
         var active = MillerBravaisActive;
         FormDiffractionSimulator?.UpdatePlaneIndices();
-        FormStructureViewer?.UpdatePlaneIndices();
+        // 260517Cl 削除: FormStructureViewer.UpdatePlaneIndices() は no-op だったため。crystalControl.MillerBravais の同期で十分。
         FormStereonet?.UpdatePlaneIndices();
         FormImageSimulator?.UpdatePlaneIndices();
+        if (FormMovie != null) FormMovie.MillerBravaisIndex = active; // 260517Cl 追加: FormMovie の i 軸表示も同期させる
         crystalControl.MillerBravais = active;
 
-        numericBoxPlaneI.Visible = active;
-        var w = LogicalToDeviceUnits(active ? 33 : 38);                                                                                                   // 260424Cl 4指数表示時はI列分の幅を確保するため H/K/L を狭める
-        var udw = LogicalToDeviceUnits(active ? 13 : 17);
-        numericBoxPlaneH.Width = numericBoxPlaneK.Width = numericBoxPlaneL.Width = w;
-        numericBoxPlaneH.UpDownWidth = numericBoxPlaneK.UpDownWidth = numericBoxPlaneL.UpDownWidth = udw;
+        indexControlPlane.MillerBravais = active;
+        indexControlPlane.BoxWidth = LogicalToDeviceUnits(active ? 35 : 40);      // 260424Cl 4指数表示時はI列分の幅を確保するため H/K/L を狭める
+        indexControlPlane.UpDownWidth = LogicalToDeviceUnits(active ? 12 : 17);
     }
 
 
@@ -1958,7 +1948,7 @@ public partial class FormMain : FormBase
     #region 晶帯軸/結晶面 設定
     private void checkBoxFixAxis_CheckedChanged(object sender, EventArgs e)
     {
-        if (numericBoxAxisU.Value == 0 && numericBoxAxisV.Value == 0 && numericBoxAxisW.Value == 0)
+        if (indexControlAxis.IsZero)
         {
             checkBoxFixAxis.Checked = false;
             return;
@@ -1969,7 +1959,7 @@ public partial class FormMain : FormBase
 
     private void checkBoxFixPlane_CheckedChanged(object sender, EventArgs e)
     {
-        if (numericBoxPlaneH.Value == 0 && numericBoxPlaneK.Value == 0 && numericBoxPlaneL.Value == 0)                                                    // 260422Cl HKLControl revert
+        if (indexControlPlane.IsZero)
         {
             checkBoxFixePlane.Checked = false;
             return;
@@ -1978,8 +1968,6 @@ public partial class FormMain : FormBase
             checkBoxFixAxis.Checked = false;
     }
 
-    private void numericBoxPlaneK_ValueChanged(object sender, EventArgs e) 
-        => numericBoxPlaneI.Value = -numericBoxPlaneH.Value - numericBoxPlaneK.Value;
     #endregion
 
 

@@ -87,32 +87,19 @@ namespace ReciPro
             colorControl1DegLine = new ColorControl();
             colorControl90DegLine = new ColorControl();
             tabPage2 = new System.Windows.Forms.TabPage();
-            panelPlanes = new System.Windows.Forms.Panel();
-            label12 = new System.Windows.Forms.Label();
-            label13 = new System.Windows.Forms.Label();
-            label16 = new System.Windows.Forms.Label();
-            label14 = new System.Windows.Forms.Label();
-            label17 = new System.Windows.Forms.Label();
-            numericUpDownCircleH1 = new System.Windows.Forms.NumericUpDown();
-            numericUpDownCircleH2 = new System.Windows.Forms.NumericUpDown();
-            numericUpDownCircleL2 = new System.Windows.Forms.NumericUpDown();
-            label15 = new System.Windows.Forms.Label();
-            numericUpDownCircleL1 = new System.Windows.Forms.NumericUpDown();
-            numericUpDownCircleK1 = new System.Windows.Forms.NumericUpDown();
-            numericUpDownCircleK2 = new System.Windows.Forms.NumericUpDown();
             colorControlGreatCircle = new ColorControl();
-            panelAxis = new System.Windows.Forms.Panel();
-            label11 = new System.Windows.Forms.Label();
-            label5 = new System.Windows.Forms.Label();
-            label7 = new System.Windows.Forms.Label();
-            numericUpDownCircleU = new System.Windows.Forms.NumericUpDown();
-            numericUpDownCircleV = new System.Windows.Forms.NumericUpDown();
-            numericUpDownCircleW = new System.Windows.Forms.NumericUpDown();
             radioButtonCircleByPlanes = new System.Windows.Forms.RadioButton();
             radioButtonCircleByAxis = new System.Windows.Forms.RadioButton();
             buttonAddCircle = new System.Windows.Forms.Button();
             buttonDeleteCircle = new System.Windows.Forms.Button();
             checkedListBoxCircles = new System.Windows.Forms.CheckedListBox();
+            flowLayoutPanelCirclePlanes = new System.Windows.Forms.FlowLayoutPanel();
+            flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            indexControlCirclePlane1 = new IndexControl();
+            flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
+            indexControlCirclePlane2 = new IndexControl();
+            flowLayoutPanelCircleAxis = new System.Windows.Forms.FlowLayoutPanel();
+            indexControlAxis = new IndexControl();
             tabPage3 = new System.Windows.Forms.TabPage();
             buttonYusaModeStop = new System.Windows.Forms.Button();
             buttonYusaModeStart = new System.Windows.Forms.Button();
@@ -154,9 +141,6 @@ namespace ReciPro
             radioButtonRange = new System.Windows.Forms.RadioButton();
             radioButtonSpecifiedIndices = new System.Windows.Forms.RadioButton();
             radioButtonHighStructureFactor = new System.Windows.Forms.RadioButton();
-            labelKV = new System.Windows.Forms.Label();
-            labelHU = new System.Windows.Forms.Label();
-            labelLW = new System.Windows.Forms.Label();
             printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
             printDocument1 = new System.Drawing.Printing.PrintDocument();
             groupBoxIndices = new System.Windows.Forms.GroupBox();
@@ -171,16 +155,7 @@ namespace ReciPro
             flowLayoutPanelIndices = new System.Windows.Forms.FlowLayoutPanel();
             flowLayoutPanelIndexFilter = new System.Windows.Forms.FlowLayoutPanel();
             numericBoxHighStructureFactor = new NumericBox();
-            flowLayoutPanelIndex = new System.Windows.Forms.FlowLayoutPanel();
-            flowLayoutPanelH = new System.Windows.Forms.FlowLayoutPanel();
-            numericBox1 = new NumericBox();
-            flowLayoutPanelK = new System.Windows.Forms.FlowLayoutPanel();
-            numericBox2 = new NumericBox();
-            flowLayoutPanelI = new System.Windows.Forms.FlowLayoutPanel();
-            labelI = new System.Windows.Forms.Label();
-            numericBox4 = new NumericBox();
-            flowLayoutPanelL = new System.Windows.Forms.FlowLayoutPanel();
-            numericBox3 = new NumericBox();
+            indexControlDrawing = new IndexControl();
             panel3 = new System.Windows.Forms.Panel();
             panel4 = new System.Windows.Forms.Panel();
             panel1 = new System.Windows.Forms.Panel();
@@ -197,11 +172,11 @@ namespace ReciPro
             checkBox3dOptionLabel = new System.Windows.Forms.CheckBox();
             scalablePictureBoxAdvanced1 = new ScalablePictureBoxAdvanced();
             scalablePictureBoxAdvanced2 = new ScalablePictureBoxAdvanced();
-            pageSetupDialog1 = new System.Windows.Forms.PageSetupDialog();
-            printDialog1 = new System.Windows.Forms.PrintDialog();
             labelAxisPlane = new System.Windows.Forms.Label();
             label2 = new System.Windows.Forms.Label();
             label3 = new System.Windows.Forms.Label();
+            pageSetupDialog1 = new System.Windows.Forms.PageSetupDialog();
+            printDialog1 = new System.Windows.Forms.PrintDialog();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel1.SuspendLayout();
             splitContainer1.SuspendLayout();
@@ -222,17 +197,10 @@ namespace ReciPro
             groupBoxSize.SuspendLayout();
             groupBoxColor.SuspendLayout();
             tabPage2.SuspendLayout();
-            panelPlanes.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)numericUpDownCircleH1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDownCircleH2).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDownCircleL2).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDownCircleL1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDownCircleK1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDownCircleK2).BeginInit();
-            panelAxis.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)numericUpDownCircleU).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDownCircleV).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDownCircleW).BeginInit();
+            flowLayoutPanelCirclePlanes.SuspendLayout();
+            flowLayoutPanel1.SuspendLayout();
+            flowLayoutPanel2.SuspendLayout();
+            flowLayoutPanelCircleAxis.SuspendLayout();
             tabPage3.SuspendLayout();
             tabPage4.SuspendLayout();
             menuStrip1.SuspendLayout();
@@ -241,11 +209,6 @@ namespace ReciPro
             flowLayoutPanelAddRemove.SuspendLayout();
             flowLayoutPanelIndices.SuspendLayout();
             flowLayoutPanelIndexFilter.SuspendLayout();
-            flowLayoutPanelIndex.SuspendLayout();
-            flowLayoutPanelH.SuspendLayout();
-            flowLayoutPanelK.SuspendLayout();
-            flowLayoutPanelI.SuspendLayout();
-            flowLayoutPanelL.SuspendLayout();
             panel3.SuspendLayout();
             panel3DOptions.SuspendLayout();
             groupBox3DOptions.SuspendLayout();
@@ -650,111 +613,16 @@ namespace ReciPro
             // 
             tabPage2.BackColor = System.Drawing.SystemColors.Control;
             captureExtender.SetCapture(tabPage2, true);
-            tabPage2.Controls.Add(panelPlanes);
             tabPage2.Controls.Add(colorControlGreatCircle);
-            tabPage2.Controls.Add(panelAxis);
             tabPage2.Controls.Add(radioButtonCircleByPlanes);
             tabPage2.Controls.Add(radioButtonCircleByAxis);
             tabPage2.Controls.Add(buttonAddCircle);
             tabPage2.Controls.Add(buttonDeleteCircle);
             tabPage2.Controls.Add(checkedListBoxCircles);
+            tabPage2.Controls.Add(flowLayoutPanelCirclePlanes);
+            tabPage2.Controls.Add(flowLayoutPanelCircleAxis);
             resources.ApplyResources(tabPage2, "tabPage2");
             tabPage2.Name = "tabPage2";
-            // 
-            // panelPlanes
-            // 
-            panelPlanes.Controls.Add(label12);
-            panelPlanes.Controls.Add(label13);
-            panelPlanes.Controls.Add(label16);
-            panelPlanes.Controls.Add(label14);
-            panelPlanes.Controls.Add(label17);
-            panelPlanes.Controls.Add(numericUpDownCircleH1);
-            panelPlanes.Controls.Add(numericUpDownCircleH2);
-            panelPlanes.Controls.Add(numericUpDownCircleL2);
-            panelPlanes.Controls.Add(label15);
-            panelPlanes.Controls.Add(numericUpDownCircleL1);
-            panelPlanes.Controls.Add(numericUpDownCircleK1);
-            panelPlanes.Controls.Add(numericUpDownCircleK2);
-            resources.ApplyResources(panelPlanes, "panelPlanes");
-            panelPlanes.Name = "panelPlanes";
-            // 
-            // label12
-            // 
-            resources.ApplyResources(label12, "label12");
-            label12.Name = "label12";
-            // 
-            // label13
-            // 
-            resources.ApplyResources(label13, "label13");
-            label13.Name = "label13";
-            // 
-            // label16
-            // 
-            resources.ApplyResources(label16, "label16");
-            label16.Name = "label16";
-            // 
-            // label14
-            // 
-            resources.ApplyResources(label14, "label14");
-            label14.Name = "label14";
-            // 
-            // label17
-            // 
-            resources.ApplyResources(label17, "label17");
-            label17.Name = "label17";
-            // 
-            // numericUpDownCircleH1
-            // 
-            resources.ApplyResources(numericUpDownCircleH1, "numericUpDownCircleH1");
-            numericUpDownCircleH1.Maximum = new decimal(new int[] { 10, 0, 0, 0 });
-            numericUpDownCircleH1.Minimum = new decimal(new int[] { 10, 0, 0, int.MinValue });
-            numericUpDownCircleH1.Name = "numericUpDownCircleH1";
-            numericUpDownCircleH1.ValueChanged += numericUpDown_ValueChanged;
-            // 
-            // numericUpDownCircleH2
-            // 
-            resources.ApplyResources(numericUpDownCircleH2, "numericUpDownCircleH2");
-            numericUpDownCircleH2.Maximum = new decimal(new int[] { 10, 0, 0, 0 });
-            numericUpDownCircleH2.Minimum = new decimal(new int[] { 10, 0, 0, int.MinValue });
-            numericUpDownCircleH2.Name = "numericUpDownCircleH2";
-            numericUpDownCircleH2.ValueChanged += numericUpDown_ValueChanged;
-            // 
-            // numericUpDownCircleL2
-            // 
-            resources.ApplyResources(numericUpDownCircleL2, "numericUpDownCircleL2");
-            numericUpDownCircleL2.Maximum = new decimal(new int[] { 10, 0, 0, 0 });
-            numericUpDownCircleL2.Minimum = new decimal(new int[] { 10, 0, 0, int.MinValue });
-            numericUpDownCircleL2.Name = "numericUpDownCircleL2";
-            numericUpDownCircleL2.ValueChanged += numericUpDown_ValueChanged;
-            // 
-            // label15
-            // 
-            resources.ApplyResources(label15, "label15");
-            label15.Name = "label15";
-            // 
-            // numericUpDownCircleL1
-            // 
-            resources.ApplyResources(numericUpDownCircleL1, "numericUpDownCircleL1");
-            numericUpDownCircleL1.Maximum = new decimal(new int[] { 10, 0, 0, 0 });
-            numericUpDownCircleL1.Minimum = new decimal(new int[] { 10, 0, 0, int.MinValue });
-            numericUpDownCircleL1.Name = "numericUpDownCircleL1";
-            numericUpDownCircleL1.ValueChanged += numericUpDown_ValueChanged;
-            // 
-            // numericUpDownCircleK1
-            // 
-            resources.ApplyResources(numericUpDownCircleK1, "numericUpDownCircleK1");
-            numericUpDownCircleK1.Maximum = new decimal(new int[] { 10, 0, 0, 0 });
-            numericUpDownCircleK1.Minimum = new decimal(new int[] { 10, 0, 0, int.MinValue });
-            numericUpDownCircleK1.Name = "numericUpDownCircleK1";
-            numericUpDownCircleK1.ValueChanged += numericUpDown_ValueChanged;
-            // 
-            // numericUpDownCircleK2
-            // 
-            resources.ApplyResources(numericUpDownCircleK2, "numericUpDownCircleK2");
-            numericUpDownCircleK2.Maximum = new decimal(new int[] { 10, 0, 0, 0 });
-            numericUpDownCircleK2.Minimum = new decimal(new int[] { 10, 0, 0, int.MinValue });
-            numericUpDownCircleK2.Name = "numericUpDownCircleK2";
-            numericUpDownCircleK2.ValueChanged += numericUpDown_ValueChanged;
             // 
             // colorControlGreatCircle
             // 
@@ -771,56 +639,6 @@ namespace ReciPro
             colorControlGreatCircle.Red = 255;
             colorControlGreatCircle.RedF = 1F;
             colorControlGreatCircle.ColorChanged += colorControl_ColorChanged;
-            // 
-            // panelAxis
-            // 
-            panelAxis.Controls.Add(label11);
-            panelAxis.Controls.Add(label5);
-            panelAxis.Controls.Add(label7);
-            panelAxis.Controls.Add(numericUpDownCircleU);
-            panelAxis.Controls.Add(numericUpDownCircleV);
-            panelAxis.Controls.Add(numericUpDownCircleW);
-            resources.ApplyResources(panelAxis, "panelAxis");
-            panelAxis.Name = "panelAxis";
-            // 
-            // label11
-            // 
-            resources.ApplyResources(label11, "label11");
-            label11.Name = "label11";
-            // 
-            // label5
-            // 
-            resources.ApplyResources(label5, "label5");
-            label5.Name = "label5";
-            // 
-            // label7
-            // 
-            resources.ApplyResources(label7, "label7");
-            label7.Name = "label7";
-            // 
-            // numericUpDownCircleU
-            // 
-            resources.ApplyResources(numericUpDownCircleU, "numericUpDownCircleU");
-            numericUpDownCircleU.Maximum = new decimal(new int[] { 10, 0, 0, 0 });
-            numericUpDownCircleU.Minimum = new decimal(new int[] { 10, 0, 0, int.MinValue });
-            numericUpDownCircleU.Name = "numericUpDownCircleU";
-            numericUpDownCircleU.ValueChanged += numericUpDown_ValueChanged;
-            // 
-            // numericUpDownCircleV
-            // 
-            resources.ApplyResources(numericUpDownCircleV, "numericUpDownCircleV");
-            numericUpDownCircleV.Maximum = new decimal(new int[] { 10, 0, 0, 0 });
-            numericUpDownCircleV.Minimum = new decimal(new int[] { 10, 0, 0, int.MinValue });
-            numericUpDownCircleV.Name = "numericUpDownCircleV";
-            numericUpDownCircleV.ValueChanged += numericUpDown_ValueChanged;
-            // 
-            // numericUpDownCircleW
-            // 
-            resources.ApplyResources(numericUpDownCircleW, "numericUpDownCircleW");
-            numericUpDownCircleW.Maximum = new decimal(new int[] { 10, 0, 0, 0 });
-            numericUpDownCircleW.Minimum = new decimal(new int[] { 10, 0, 0, int.MinValue });
-            numericUpDownCircleW.Name = "numericUpDownCircleW";
-            numericUpDownCircleW.ValueChanged += numericUpDown_ValueChanged;
             // 
             // radioButtonCircleByPlanes
             // 
@@ -861,6 +679,64 @@ namespace ReciPro
             checkedListBoxCircles.FormattingEnabled = true;
             checkedListBoxCircles.Name = "checkedListBoxCircles";
             checkedListBoxCircles.ItemCheck += checkedListBoxCircles_ItemCheck;
+            // 
+            // flowLayoutPanelCirclePlanes
+            // 
+            resources.ApplyResources(flowLayoutPanelCirclePlanes, "flowLayoutPanelCirclePlanes");
+            flowLayoutPanelCirclePlanes.Controls.Add(flowLayoutPanel1);
+            flowLayoutPanelCirclePlanes.Controls.Add(flowLayoutPanel2);
+            flowLayoutPanelCirclePlanes.Name = "flowLayoutPanelCirclePlanes";
+            // 
+            // flowLayoutPanel1
+            // 
+            resources.ApplyResources(flowLayoutPanel1, "flowLayoutPanel1");
+            flowLayoutPanel1.Controls.Add(indexControlCirclePlane1);
+            flowLayoutPanel1.Name = "flowLayoutPanel1";
+            // 
+            // indexControlCirclePlane1
+            // 
+            resources.ApplyResources(indexControlCirclePlane1, "indexControlCirclePlane1");
+            indexControlCirclePlane1.BoxWidth = 42;
+            indexControlCirclePlane1.Bracket = IndexControl.BracketEnum.Round;
+            indexControlCirclePlane1.Mode = IndexControl.ModeEnum.Plane;
+            indexControlCirclePlane1.Name = "indexControlCirclePlane1";
+            indexControlCirclePlane1.SubScript = "1";
+            indexControlCirclePlane1.UpDownWidth = 17;
+            indexControlCirclePlane1.Values = ((int, int, int))resources.GetObject("indexControlCirclePlane1.Values");
+            // 
+            // flowLayoutPanel2
+            // 
+            resources.ApplyResources(flowLayoutPanel2, "flowLayoutPanel2");
+            flowLayoutPanel2.Controls.Add(indexControlCirclePlane2);
+            flowLayoutPanel2.Name = "flowLayoutPanel2";
+            // 
+            // indexControlCirclePlane2
+            // 
+            resources.ApplyResources(indexControlCirclePlane2, "indexControlCirclePlane2");
+            indexControlCirclePlane2.BoxWidth = 40;
+            indexControlCirclePlane2.Bracket = IndexControl.BracketEnum.Round;
+            indexControlCirclePlane2.Mode = IndexControl.ModeEnum.Plane;
+            indexControlCirclePlane2.Name = "indexControlCirclePlane2";
+            indexControlCirclePlane2.SubScript = "2";
+            indexControlCirclePlane2.UpDownWidth = 17;
+            indexControlCirclePlane2.Values = ((int, int, int))resources.GetObject("indexControlCirclePlane2.Values");
+            // 
+            // flowLayoutPanelCircleAxis
+            // 
+            resources.ApplyResources(flowLayoutPanelCircleAxis, "flowLayoutPanelCircleAxis");
+            flowLayoutPanelCircleAxis.Controls.Add(indexControlAxis);
+            flowLayoutPanelCircleAxis.Name = "flowLayoutPanelCircleAxis";
+            // 
+            // indexControlAxis
+            // 
+            resources.ApplyResources(indexControlAxis, "indexControlAxis");
+            indexControlAxis.BoxWidth = 40;
+            indexControlAxis.Bracket = IndexControl.BracketEnum.Round;
+            indexControlAxis.Mode = IndexControl.ModeEnum.Axis;
+            indexControlAxis.Name = "indexControlAxis";
+            indexControlAxis.SubScript = "";
+            indexControlAxis.UpDownWidth = 17;
+            indexControlAxis.Values = ((int, int, int))resources.GetObject("indexControlAxis.Values");
             // 
             // tabPage3
             // 
@@ -1217,21 +1093,6 @@ namespace ReciPro
             radioButtonHighStructureFactor.UseVisualStyleBackColor = true;
             radioButtonHighStructureFactor.CheckedChanged += radioButtonRange_CheckedChanged;
             // 
-            // labelKV
-            // 
-            resources.ApplyResources(labelKV, "labelKV");
-            labelKV.Name = "labelKV";
-            // 
-            // labelHU
-            // 
-            resources.ApplyResources(labelHU, "labelHU");
-            labelHU.Name = "labelHU";
-            // 
-            // labelLW
-            // 
-            resources.ApplyResources(labelLW, "labelLW");
-            labelLW.Name = "labelLW";
-            // 
             // printPreviewDialog1
             // 
             resources.ApplyResources(printPreviewDialog1, "printPreviewDialog1");
@@ -1333,7 +1194,7 @@ namespace ReciPro
             // 
             resources.ApplyResources(flowLayoutPanelIndices, "flowLayoutPanelIndices");
             flowLayoutPanelIndices.Controls.Add(flowLayoutPanelIndexFilter);
-            flowLayoutPanelIndices.Controls.Add(flowLayoutPanelIndex);
+            flowLayoutPanelIndices.Controls.Add(indexControlDrawing);
             flowLayoutPanelIndices.Name = "flowLayoutPanelIndices";
             // 
             // flowLayoutPanelIndexFilter
@@ -1359,108 +1220,18 @@ namespace ReciPro
             numericBoxHighStructureFactor.Value = 100D;
             numericBoxHighStructureFactor.ValueChanged += numericBoxHighStructureFactor_ValueChanged;
             // 
-            // flowLayoutPanelIndex
+            // indexControlDrawing
             // 
-            resources.ApplyResources(flowLayoutPanelIndex, "flowLayoutPanelIndex");
-            flowLayoutPanelIndex.Controls.Add(flowLayoutPanelH);
-            flowLayoutPanelIndex.Controls.Add(flowLayoutPanelK);
-            flowLayoutPanelIndex.Controls.Add(flowLayoutPanelI);
-            flowLayoutPanelIndex.Controls.Add(flowLayoutPanelL);
-            flowLayoutPanelIndex.Name = "flowLayoutPanelIndex";
-            // 
-            // flowLayoutPanelH
-            // 
-            resources.ApplyResources(flowLayoutPanelH, "flowLayoutPanelH");
-            flowLayoutPanelH.Controls.Add(labelHU);
-            flowLayoutPanelH.Controls.Add(numericBox1);
-            flowLayoutPanelH.Name = "flowLayoutPanelH";
-            // 
-            // numericBox1
-            // 
-            resources.ApplyResources(numericBox1, "numericBox1");
-            numericBox1.BackColor = System.Drawing.Color.Transparent;
-            numericBox1.Maximum = 20D;
-            numericBox1.Minimum = 0D;
-            numericBox1.Name = "numericBox1";
-            numericBox1.RadianValue = 0.034906585039886591D;
-            numericBox1.ShowUpDown = true;
-            numericBox1.SkipEventDuringInput = false;
-            numericBox1.TextFontSize = 9F;
-            numericBox1.ThonsandsSeparator = true;
-            numericBox1.Value = 2D;
-            numericBox1.ValueChanged += numericUpDown_ValueChanged;
-            // 
-            // flowLayoutPanelK
-            // 
-            resources.ApplyResources(flowLayoutPanelK, "flowLayoutPanelK");
-            flowLayoutPanelK.Controls.Add(labelKV);
-            flowLayoutPanelK.Controls.Add(numericBox2);
-            flowLayoutPanelK.Name = "flowLayoutPanelK";
-            // 
-            // numericBox2
-            // 
-            resources.ApplyResources(numericBox2, "numericBox2");
-            numericBox2.BackColor = System.Drawing.Color.Transparent;
-            numericBox2.Maximum = 20D;
-            numericBox2.Minimum = 0D;
-            numericBox2.Name = "numericBox2";
-            numericBox2.RadianValue = 0.034906585039886591D;
-            numericBox2.ShowUpDown = true;
-            numericBox2.SkipEventDuringInput = false;
-            numericBox2.TextFontSize = 9F;
-            numericBox2.ThonsandsSeparator = true;
-            numericBox2.Value = 2D;
-            numericBox2.ValueChanged += numericUpDown_ValueChanged;
-            // 
-            // flowLayoutPanelI
-            // 
-            resources.ApplyResources(flowLayoutPanelI, "flowLayoutPanelI");
-            flowLayoutPanelI.Controls.Add(labelI);
-            flowLayoutPanelI.Controls.Add(numericBox4);
-            flowLayoutPanelI.Name = "flowLayoutPanelI";
-            // 
-            // labelI
-            // 
-            resources.ApplyResources(labelI, "labelI");
-            labelI.Name = "labelI";
-            // 
-            // numericBox4
-            // 
-            resources.ApplyResources(numericBox4, "numericBox4");
-            numericBox4.BackColor = System.Drawing.Color.Transparent;
-            numericBox4.Maximum = 20D;
-            numericBox4.Minimum = -20D;
-            numericBox4.Name = "numericBox4";
-            numericBox4.RadianValue = 0.034906585039886591D;
-            numericBox4.ReadOnly = true;
-            numericBox4.ShowUpDown = true;
-            numericBox4.SkipEventDuringInput = false;
-            numericBox4.TextBoxBackColor = System.Drawing.SystemColors.Control;
-            numericBox4.TextFontSize = 9F;
-            numericBox4.ThonsandsSeparator = true;
-            numericBox4.Value = 2D;
-            // 
-            // flowLayoutPanelL
-            // 
-            resources.ApplyResources(flowLayoutPanelL, "flowLayoutPanelL");
-            flowLayoutPanelL.Controls.Add(labelLW);
-            flowLayoutPanelL.Controls.Add(numericBox3);
-            flowLayoutPanelL.Name = "flowLayoutPanelL";
-            // 
-            // numericBox3
-            // 
-            resources.ApplyResources(numericBox3, "numericBox3");
-            numericBox3.BackColor = System.Drawing.Color.Transparent;
-            numericBox3.Maximum = 20D;
-            numericBox3.Minimum = 0D;
-            numericBox3.Name = "numericBox3";
-            numericBox3.RadianValue = 0.034906585039886591D;
-            numericBox3.ShowUpDown = true;
-            numericBox3.SkipEventDuringInput = false;
-            numericBox3.TextFontSize = 9F;
-            numericBox3.ThonsandsSeparator = true;
-            numericBox3.Value = 2D;
-            numericBox3.ValueChanged += numericUpDown_ValueChanged;
+            resources.ApplyResources(indexControlDrawing, "indexControlDrawing");
+            indexControlDrawing.BoxWidth = 42;
+            indexControlDrawing.Bracket = IndexControl.BracketEnum.Round;
+            indexControlDrawing.Mode = IndexControl.ModeEnum.Axis;
+            indexControlDrawing.Name = "indexControlDrawing";
+            indexControlDrawing.PlusMinus = true;
+            indexControlDrawing.SubScript = "";
+            indexControlDrawing.UpDownWidth = 17;
+            indexControlDrawing.Values = ((int, int, int))resources.GetObject("indexControlDrawing.Values");
+            indexControlDrawing.ValueChanged += numericUpDown_ValueChanged;
             // 
             // panel3
             // 
@@ -1641,15 +1412,6 @@ namespace ReciPro
             scalablePictureBoxAdvanced2.UpperIntensity = 255D;
             scalablePictureBoxAdvanced2.VisibleGradient = true;
             // 
-            // pageSetupDialog1
-            // 
-            pageSetupDialog1.Document = printDocument1;
-            // 
-            // printDialog1
-            // 
-            printDialog1.Document = printDocument1;
-            printDialog1.UseEXDialog = true;
-            // 
             // labelAxisPlane
             // 
             resources.ApplyResources(labelAxisPlane, "labelAxisPlane");
@@ -1664,6 +1426,15 @@ namespace ReciPro
             // 
             resources.ApplyResources(label3, "label3");
             label3.Name = "label3";
+            // 
+            // pageSetupDialog1
+            // 
+            pageSetupDialog1.Document = printDocument1;
+            // 
+            // printDialog1
+            // 
+            printDialog1.Document = printDocument1;
+            printDialog1.UseEXDialog = true;
             // 
             // FormStereonet
             // 
@@ -1716,19 +1487,14 @@ namespace ReciPro
             groupBoxColor.PerformLayout();
             tabPage2.ResumeLayout(false);
             tabPage2.PerformLayout();
-            panelPlanes.ResumeLayout(false);
-            panelPlanes.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)numericUpDownCircleH1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDownCircleH2).EndInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDownCircleL2).EndInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDownCircleL1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDownCircleK1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDownCircleK2).EndInit();
-            panelAxis.ResumeLayout(false);
-            panelAxis.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)numericUpDownCircleU).EndInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDownCircleV).EndInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDownCircleW).EndInit();
+            flowLayoutPanelCirclePlanes.ResumeLayout(false);
+            flowLayoutPanelCirclePlanes.PerformLayout();
+            flowLayoutPanel1.ResumeLayout(false);
+            flowLayoutPanel1.PerformLayout();
+            flowLayoutPanel2.ResumeLayout(false);
+            flowLayoutPanel2.PerformLayout();
+            flowLayoutPanelCircleAxis.ResumeLayout(false);
+            flowLayoutPanelCircleAxis.PerformLayout();
             tabPage3.ResumeLayout(false);
             tabPage3.PerformLayout();
             tabPage4.ResumeLayout(false);
@@ -1744,16 +1510,6 @@ namespace ReciPro
             flowLayoutPanelIndices.PerformLayout();
             flowLayoutPanelIndexFilter.ResumeLayout(false);
             flowLayoutPanelIndexFilter.PerformLayout();
-            flowLayoutPanelIndex.ResumeLayout(false);
-            flowLayoutPanelIndex.PerformLayout();
-            flowLayoutPanelH.ResumeLayout(false);
-            flowLayoutPanelH.PerformLayout();
-            flowLayoutPanelK.ResumeLayout(false);
-            flowLayoutPanelK.PerformLayout();
-            flowLayoutPanelI.ResumeLayout(false);
-            flowLayoutPanelI.PerformLayout();
-            flowLayoutPanelL.ResumeLayout(false);
-            flowLayoutPanelL.PerformLayout();
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
             panel3DOptions.ResumeLayout(false);
@@ -1796,31 +1552,11 @@ namespace ReciPro
         private System.Windows.Forms.PrintDialog printDialog1;
         private System.Windows.Forms.PrintPreviewDialog printPreviewDialog1;
         private System.Windows.Forms.TabPage tabPage2;
-        public System.Windows.Forms.NumericUpDown numericUpDownCircleW;
-        public System.Windows.Forms.NumericUpDown numericUpDownCircleV;
-        public System.Windows.Forms.NumericUpDown numericUpDownCircleU;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Button buttonAddCircle;
         private System.Windows.Forms.Button buttonDeleteCircle;
         private System.Windows.Forms.RadioButton radioButtonCircleByAxis;
         private System.Windows.Forms.RadioButton radioButtonCircleByPlanes;
-        private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.Label label13;
-        public System.Windows.Forms.NumericUpDown numericUpDownCircleL2;
-        public System.Windows.Forms.NumericUpDown numericUpDownCircleL1;
-        public System.Windows.Forms.NumericUpDown numericUpDownCircleK2;
-        public System.Windows.Forms.NumericUpDown numericUpDownCircleK1;
-        private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.Label label12;
-        public System.Windows.Forms.NumericUpDown numericUpDownCircleH2;
-        public System.Windows.Forms.NumericUpDown numericUpDownCircleH1;
         private System.Windows.Forms.CheckedListBox checkedListBoxCircles;
-        private System.Windows.Forms.Panel panelPlanes;
-        private System.Windows.Forms.Panel panelAxis;
         public ColorControl colorControlString;
         public ColorControl colorControlUniqueAxis;
         public ColorControl colorControlUniquePlane;
@@ -1850,7 +1586,7 @@ namespace ReciPro
         public NumericBox numericBoxRzOscillation;
         public NumericBox numericBoxRyStep;
         private System.Windows.Forms.GroupBox groupBoxIndices;
-        private System.Windows.Forms.Label labelKV;
+        // 260517Cl 削除 (孤児フィールド): private System.Windows.Forms.Label labelKV; — Designer 内で一度も new/Add/参照されていない
         private System.Windows.Forms.RadioButton radioButtonRange;
         private System.Windows.Forms.RadioButton radioButtonSpecifiedIndices;
         private System.Windows.Forms.Panel panelSpecifiedIndices;
@@ -1874,9 +1610,6 @@ namespace ReciPro
         private System.Windows.Forms.ToolStripMenuItem asMetafileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem asImageToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem asMetafileToolStripMenuItem1;
-        private NumericBox numericBox3;
-        private NumericBox numericBox2;
-        private NumericBox numericBox1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelIndices;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.SplitContainer splitContainer1;
@@ -1896,8 +1629,8 @@ namespace ReciPro
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.Panel panel3DOptions;
         private System.Windows.Forms.GroupBox groupBox3DOptions;
-        private System.Windows.Forms.Label labelHU;
-        private System.Windows.Forms.Label labelLW;
+        // 260517Cl 削除 (孤児フィールド): private System.Windows.Forms.Label labelHU; — 未 new / 未 Add / 未参照
+        // 260517Cl 削除 (孤児フィールド): private System.Windows.Forms.Label labelLW; — 未 new / 未 Add / 未参照
         private System.Windows.Forms.RadioButton radioButtonKikuchiLinePairs;
         private System.Windows.Forms.TabPage tabPage4;
         private WaveLengthControl waveLengthControl;
@@ -1912,13 +1645,8 @@ namespace ReciPro
         private System.Windows.Forms.GroupBox groupBoxProjectionScheme;
         private System.Windows.Forms.CheckBox checkBoxShowIndexLabels;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelIndexFilter;
-        private NumericBox numericBox4;
-        private System.Windows.Forms.Label labelI;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelH;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelK;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelI;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelL;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelIndex;
+        // 260517Cl 削除 (孤児フィールド): private System.Windows.Forms.Label labelI; — 未 new / 未 Add / 未参照
+        // 260517Cl 削除 (孤児フィールド): private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelIndex; — flowLayoutPanelIndexFilter と命名混同、未 new / 未 Add / 未参照
         private System.Windows.Forms.GroupBox groupBoxDelimiter;
         private System.Windows.Forms.RadioButton radioButtonDelimiterComma;
         private System.Windows.Forms.RadioButton radioButtonDelimiterSpace;
@@ -1930,5 +1658,13 @@ namespace ReciPro
         private System.Windows.Forms.Label labelAxisPlane;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelCircleAxis;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelCirclePlanes;
+        private IndexControl indexControlCirclePlane1;
+        private IndexControl indexControlCirclePlane2;
+        private IndexControl indexControlAxis;
+        private IndexControl indexControlDrawing;
     }
 }

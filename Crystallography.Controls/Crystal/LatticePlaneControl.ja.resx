@@ -118,53 +118,47 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="panel1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 147</value>
+  </data>
+  <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>390, 22</value>
+  </data>
   <data name="buttonAddBond.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPGothic, 9pt</value>
+    <value>BIZ UDPゴシック, 9pt</value>
   </data>
   <data name="buttonAddBond.Size" type="System.Drawing.Size, System.Drawing">
-    <value>42, 28</value>
+    <value>39, 22</value>
   </data>
   <data name="buttonAddBond.Text" xml:space="preserve">
     <value>追加</value>
   </data>
-  <data name="buttonAddBond.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="buttonChangeBond.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPGothic, 9pt</value>
+    <value>BIZ UDPゴシック, 9pt</value>
   </data>
   <data name="buttonChangeBond.Size" type="System.Drawing.Size, System.Drawing">
-    <value>42, 28</value>
+    <value>39, 22</value>
   </data>
   <data name="buttonChangeBond.Text" xml:space="preserve">
     <value>更新</value>
   </data>
-  <data name="buttonChangeBond.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="buttonDeleteBond.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPGothic, 9pt</value>
+    <value>BIZ UDPゴシック, 9pt</value>
   </data>
   <data name="buttonDeleteBond.Location" type="System.Drawing.Point, System.Drawing">
-    <value>348, 0</value>
+    <value>351, 0</value>
   </data>
   <data name="buttonDeleteBond.Size" type="System.Drawing.Size, System.Drawing">
-    <value>42, 28</value>
+    <value>39, 22</value>
   </data>
   <data name="buttonDeleteBond.Text" xml:space="preserve">
     <value>削除</value>
   </data>
-  <data name="buttonDeleteBond.ToolTip" xml:space="preserve">
-    <value />
+  <data name="dataGridView.Font" type="System.Drawing.Font, System.Drawing">
+    <value>BIZ UDPゴシック, 9pt</value>
   </data>
-  <data name="panel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 141</value>
-  </data>
-  <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>390, 28</value>
-  </data>
-  <data name="panel1.ToolTip" xml:space="preserve">
-    <value />
+  <data name="dataGridView.Size" type="System.Drawing.Size, System.Drawing">
+    <value>390, 147</value>
   </data>
   <data name="Translation.HeaderText" xml:space="preserve">
     <value>平行移動量</value>
@@ -172,47 +166,34 @@
   <data name="colorDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
     <value>色</value>
   </data>
-  <data name="dataGridView.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPGothic, 9pt</value>
+  <data name="panel2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 169</value>
   </data>
-  <data name="dataGridView.Size" type="System.Drawing.Size, System.Drawing">
-    <value>390, 141</value>
-  </data>
-  <data name="dataGridView.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="label1.ToolTip" xml:space="preserve">
-    <value />
+  <data name="panel2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>390, 49</value>
   </data>
   <data name="numericBoxH.MaximumSize" type="System.Drawing.Size, System.Drawing">
     <value>100, 100</value>
   </data>
-  <data name="numericBoxH.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="numericBoxK.MaximumSize" type="System.Drawing.Size, System.Drawing">
     <value>100, 100</value>
-  </data>
-  <data name="numericBoxK.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="numericBoxI.MaximumSize" type="System.Drawing.Size, System.Drawing">
     <value>100, 100</value>
   </data>
-  <data name="numericBoxI.ToolTip" xml:space="preserve">
-    <value />
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="numericBoxI.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
   <data name="numericBoxL.MaximumSize" type="System.Drawing.Size, System.Drawing">
     <value>100, 100</value>
   </data>
-  <data name="numericBoxL.ToolTip" xml:space="preserve">
-    <value />
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="numericBoxDistance.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 5, 0, 0</value>
   </data>
-  <data name="label2.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="flowLayoutPanel1.ToolTip" xml:space="preserve">
-    <value />
+  <data name="numericBoxDistance.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 5, 0, 0</value>
   </data>
   <data name="numericBoxDistance.MaximumSize" type="System.Drawing.Size, System.Drawing">
     <value>1000, 27</value>
@@ -220,11 +201,8 @@
   <data name="numericBoxDistance.Size" type="System.Drawing.Size, System.Drawing">
     <value>81, 27</value>
   </data>
-  <data name="numericBoxDistance.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="colorControl.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPGothic, 9pt</value>
+    <value>BIZ UDPゴシック, 9pt</value>
   </data>
   <data name="colorControl.HeaderText" xml:space="preserve">
     <value>色</value>
@@ -233,39 +211,21 @@
     <value>318, 3</value>
   </data>
   <data name="colorControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>20, 38</value>
+    <value>20, 32</value>
   </data>
   <data name="colorControl.ToolTip" xml:space="preserve">
     <value>格子面の色</value>
   </data>
-  <data name="colorControl.ToolTip1" xml:space="preserve">
-    <value />
-  </data>
   <data name="label6.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPGothic, 9pt</value>
+    <value>BIZ UDPゴシック, 9pt</value>
   </data>
   <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>56, 18</value>
+    <value>53, 12</value>
   </data>
   <data name="label6.Text" xml:space="preserve">
     <value>平行移動</value>
   </data>
-  <data name="label6.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="panel2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 169</value>
-  </data>
-  <data name="panel2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>390, 49</value>
-  </data>
-  <data name="panel2.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
     <value>390, 218</value>
-  </data>
-  <data name="$this.ToolTip" xml:space="preserve">
-    <value />
   </data>
 </root>
