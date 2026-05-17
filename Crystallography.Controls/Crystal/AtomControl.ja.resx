@@ -82,9 +82,6 @@
   <data name="flowLayoutPanelIso.Location" type="System.Drawing.Point, System.Drawing">
     <value>13, 24</value>
   </data>
-  <data name="flowLayoutPanel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>-236, -25</value>
-  </data>
   <data name="label1.Font" type="System.Drawing.Font, System.Drawing">
     <value>BIZ UDPGothic, 9pt</value>
   </data>
@@ -645,9 +642,6 @@
   </data>
   <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
     <value>563, 28</value>
-  </data>
-  <data name="dataGridViewTextBoxColumn1.MinimumWidth" type="System.Int32, mscorlib">
-    <value>6</value>
   </data>
   <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>446, 108</value>

@@ -1236,12 +1236,6 @@
   <data name="checkBox3dOptionLabel.Text" xml:space="preserve">
     <value>指数ラベル</value>
   </data>
-  <data name="scalablePictureBoxAdvanced1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>410, 583</value>
-  </data>
-  <data name="scalablePictureBoxAdvanced2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>410, 583</value>
-  </data>
   <data name="label2.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>

@@ -275,12 +275,6 @@
   <data name="comboBoxScaleColorScale.Location" type="System.Drawing.Point, System.Drawing">
     <value>44, 77</value>
   </data>
-  <data name="panel7.Location" type="System.Drawing.Point, System.Drawing">
-    <value>371, 3</value>
-  </data>
-  <data name="panel7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>6, 111</value>
-  </data>
   <data name="groupBoxNormalization.Font" type="System.Drawing.Font, System.Drawing">
     <value>BIZ UDPGothic, 9pt</value>
   </data>

@@ -220,12 +220,10 @@
             numericBoxClientWidth = new NumericBox();
             printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
             printDocument1 = new System.Drawing.Printing.PrintDocument();
-            tabPageCrystal = new System.Windows.Forms.TabPage();
             panelClientSize = new System.Windows.Forms.Panel();
             statusStrip1 = new System.Windows.Forms.StatusStrip();
             toolStripStatusLabelInitialization = new System.Windows.Forms.ToolStripStatusLabel();
             toolStripStatusLabelRendering = new System.Windows.Forms.ToolStripStatusLabel();
-            timer = new System.Windows.Forms.Timer(components);
             printDialog1 = new System.Windows.Forms.PrintDialog();
             pageSetupDialog1 = new System.Windows.Forms.PageSetupDialog();
             ((System.ComponentModel.ISupportInitialize)splitContainer2).BeginInit();
@@ -2198,12 +2196,6 @@
             // 
             printDocument1.PrintPage += printDocument1_PrintPage;
             // 
-            // tabPageCrystal
-            // 
-            resources.ApplyResources(tabPageCrystal, "tabPageCrystal");
-            tabPageCrystal.Name = "tabPageCrystal";
-            toolTip.SetToolTip(tabPageCrystal, resources.GetString("tabPageCrystal.ToolTip"));
-            // 
             // panelClientSize
             // 
             resources.ApplyResources(panelClientSize, "panelClientSize");
@@ -2341,7 +2333,6 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem saveImageToolStripMenuItem;
         public System.Windows.Forms.ToolTip toolTip;
-        private System.Windows.Forms.Timer timer;
         private System.Windows.Forms.ToolStripMenuItem saveImageToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem copyToClipboardToolStripMenuItem;
         private System.Windows.Forms.PrintDialog printDialog1;
@@ -2365,7 +2356,6 @@
         private System.Windows.Forms.ToolStripMenuItem cTRLSHIFTcMainImageToClipboardCTRLRightDoubleClickChangePerspectiveOrthogonalAlternatelyToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cTRLRightDoubleClickChangePerspectiveOrthogonalAlternatelyToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
-        private System.Windows.Forms.TabPage tabPageCrystal;
         private System.Windows.Forms.ToolStripMenuItem toolToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem iLikeVESTAToolStripMenuItem;
         private System.Windows.Forms.ToolStripButton toolStripButtonResetRotation;

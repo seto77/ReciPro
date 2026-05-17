@@ -120,43 +120,7 @@
   <metadata name="captureExtender.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
-  <data name="dataGridViewTextBoxColumn1.HeaderText" xml:space="preserve">
-    <value>Bond color</value>
-  </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="dataGridViewTextBoxColumn1.MinimumWidth" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <data name="dataGridViewTextBoxColumn1.Width" type="System.Int32, mscorlib">
-    <value>80</value>
-  </data>
-  <data name="dataGridViewTextBoxColumn2.HeaderText" xml:space="preserve">
-    <value>Polyhedron color</value>
-  </data>
-  <data name="dataGridViewTextBoxColumn2.MinimumWidth" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <data name="dataGridViewTextBoxColumn2.Width" type="System.Int32, mscorlib">
-    <value>80</value>
-  </data>
-  <data name="dataGridViewImageColumn1.HeaderText" xml:space="preserve">
-    <value>Bond color</value>
-  </data>
-  <data name="dataGridViewImageColumn1.MinimumWidth" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <data name="dataGridViewImageColumn1.Width" type="System.Int32, mscorlib">
-    <value>80</value>
-  </data>
-  <data name="dataGridViewImageColumn2.HeaderText" xml:space="preserve">
-    <value>Polyhedron color</value>
-  </data>
-  <data name="dataGridViewImageColumn2.MinimumWidth" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <data name="dataGridViewImageColumn2.Width" type="System.Int32, mscorlib">
-    <value>80</value>
-  </data>
   <data name="dataGridView.ColumnHeadersHeight" type="System.Int32, mscorlib">
     <value>29</value>
   </data>
@@ -542,78 +506,6 @@ limit it by this distance from the origin.</value>
   </data>
   <data name="&gt;&gt;panel1.ZOrder" xml:space="preserve">
     <value>1</value>
-  </data>
-  <data name="dataGridViewImageColumn3.HeaderText" xml:space="preserve">
-    <value>Color</value>
-  </data>
-  <data name="dataGridViewImageColumn3.MinimumWidth" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <data name="dataGridViewImageColumn3.Width" type="System.Int32, mscorlib">
-    <value>60</value>
-  </data>
-  <data name="dataGridViewImageColumn4.HeaderText" xml:space="preserve">
-    <value>Color</value>
-  </data>
-  <data name="dataGridViewImageColumn4.MinimumWidth" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <data name="dataGridViewImageColumn4.Width" type="System.Int32, mscorlib">
-    <value>60</value>
-  </data>
-  <data name="dataGridViewImageColumn5.HeaderText" xml:space="preserve">
-    <value>Color</value>
-  </data>
-  <data name="dataGridViewImageColumn5.MinimumWidth" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <data name="dataGridViewImageColumn5.Width" type="System.Int32, mscorlib">
-    <value>60</value>
-  </data>
-  <data name="dataGridViewImageColumn6.HeaderText" xml:space="preserve">
-    <value>Color</value>
-  </data>
-  <data name="dataGridViewImageColumn6.MinimumWidth" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <data name="dataGridViewImageColumn6.Width" type="System.Int32, mscorlib">
-    <value>60</value>
-  </data>
-  <data name="dataGridViewImageColumn7.HeaderText" xml:space="preserve">
-    <value>Color</value>
-  </data>
-  <data name="dataGridViewImageColumn7.MinimumWidth" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <data name="dataGridViewImageColumn7.Width" type="System.Int32, mscorlib">
-    <value>60</value>
-  </data>
-  <data name="dataGridViewImageColumn8.HeaderText" xml:space="preserve">
-    <value>Color</value>
-  </data>
-  <data name="dataGridViewImageColumn8.MinimumWidth" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <data name="dataGridViewImageColumn8.Width" type="System.Int32, mscorlib">
-    <value>60</value>
-  </data>
-  <data name="dataGridViewImageColumn9.HeaderText" xml:space="preserve">
-    <value>Color</value>
-  </data>
-  <data name="dataGridViewImageColumn9.MinimumWidth" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <data name="dataGridViewImageColumn9.Width" type="System.Int32, mscorlib">
-    <value>60</value>
-  </data>
-  <data name="dataGridViewImageColumn10.HeaderText" xml:space="preserve">
-    <value>Color</value>
-  </data>
-  <data name="dataGridViewImageColumn10.MinimumWidth" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <data name="dataGridViewImageColumn10.Width" type="System.Int32, mscorlib">
-    <value>60</value>
   </data>
   <data name="checkBoxEquivalency.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1052,30 +944,6 @@ limit it by this distance from the origin.</value>
   <data name="&gt;&gt;captureExtender.Type" xml:space="preserve">
     <value>Crystallography.Controls.CaptureExtender, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;dataGridViewTextBoxColumn1.Name" xml:space="preserve">
-    <value>dataGridViewTextBoxColumn1</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewTextBoxColumn1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewTextBoxColumn2.Name" xml:space="preserve">
-    <value>dataGridViewTextBoxColumn2</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewTextBoxColumn2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewImageColumn1.Name" xml:space="preserve">
-    <value>dataGridViewImageColumn1</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewImageColumn1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewImageColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewImageColumn2.Name" xml:space="preserve">
-    <value>dataGridViewImageColumn2</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewImageColumn2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewImageColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="&gt;&gt;enabledDataGridViewCheckBoxColumn.Name" xml:space="preserve">
     <value>enabledDataGridViewCheckBoxColumn</value>
   </data>
@@ -1141,54 +1009,6 @@ limit it by this distance from the origin.</value>
   </data>
   <data name="&gt;&gt;dataSet.Type" xml:space="preserve">
     <value>Crystallography.Controls.DataSet, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewImageColumn3.Name" xml:space="preserve">
-    <value>dataGridViewImageColumn3</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewImageColumn3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewImageColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewImageColumn4.Name" xml:space="preserve">
-    <value>dataGridViewImageColumn4</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewImageColumn4.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewImageColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewImageColumn5.Name" xml:space="preserve">
-    <value>dataGridViewImageColumn5</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewImageColumn5.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewImageColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewImageColumn6.Name" xml:space="preserve">
-    <value>dataGridViewImageColumn6</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewImageColumn6.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewImageColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewImageColumn7.Name" xml:space="preserve">
-    <value>dataGridViewImageColumn7</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewImageColumn7.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewImageColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewImageColumn8.Name" xml:space="preserve">
-    <value>dataGridViewImageColumn8</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewImageColumn8.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewImageColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewImageColumn9.Name" xml:space="preserve">
-    <value>dataGridViewImageColumn9</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewImageColumn9.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewImageColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewImageColumn10.Name" xml:space="preserve">
-    <value>dataGridViewImageColumn10</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewImageColumn10.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewImageColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;toolTip.Name" xml:space="preserve">
     <value>toolTip</value>

@@ -264,8 +264,6 @@ public partial class FormStereonet : FormBase
         #endregion
 
         # region 面、軸ベクトル
-        //var unique = radioButtonAxes.Checked ? colorControlUniqueAxis.Color : colorControlUniquePlane.Color;
-        //var general = radioButtonAxes.Checked ? colorControlGeneralAxis.Color : colorControlGeneralPlane.Color;
         Vector3D[] vector = radioButtonAxes.Checked ? [.. formMain.Crystal.VectorOfAxis] : [.. formMain.Crystal.VectorOfPlane];
         var radius = pointSize * 0.004;
         var matBase = radioButtonAxes.Checked ? formMain.Crystal.RotationMatrix * formMain.Crystal.MatrixReal : formMain.Crystal.RotationMatrix * formMain.Crystal.MatrixInverseTransposed;

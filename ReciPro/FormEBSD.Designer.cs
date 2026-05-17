@@ -67,7 +67,6 @@
             numericBoxKikuchiThreadSholdOfStructureFactor = new NumericBox();
             numericBoxKikuchiThresholdOfLength = new NumericBox();
             label1 = new System.Windows.Forms.Label();
-            flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             numericBoxThicknessStep = new NumericBox();
             numericBoxMaxNumOfG = new NumericBox();
             checkBoxNonLocalAbsorption = new System.Windows.Forms.CheckBox();
@@ -584,11 +583,6 @@
             // 
             resources.ApplyResources(label1, "label1");
             label1.Name = "label1";
-            // 
-            // flowLayoutPanel2
-            // 
-            resources.ApplyResources(flowLayoutPanel2, "flowLayoutPanel2");
-            flowLayoutPanel2.Name = "flowLayoutPanel2";
             // 
             // numericBoxThicknessStep
             // 
@@ -1418,7 +1412,6 @@
             Controls.Add(panel1);
             Controls.Add(groupBoxMasterPattern);
             Controls.Add(tabControl1);
-            Controls.Add(flowLayoutPanel2);
             Controls.Add(panel4);
             Controls.Add(statusStrip1);
             Name = "FormEBSD";
@@ -1515,7 +1508,6 @@
         private NumericBox numericBoxKikuchiThreadSholdOfStructureFactor;
         private NumericBox numericBoxKikuchiThresholdOfLength;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
         private NumericBox numericBoxThicknessStep;
         private NumericBox numericBoxMaxNumOfG;
         private NumericBox numericBoxThicknessStart;

@@ -42,27 +42,12 @@
             flowLayoutPanelIso = new System.Windows.Forms.FlowLayoutPanel();
             numericBoxBiso = new NumericBox();
             numericBoxBisoerr = new NumericBox();
-            flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             labelX_ = new System.Windows.Forms.Label();
-            flowLayoutPanelLabel = new System.Windows.Forms.FlowLayoutPanel();
             label1 = new System.Windows.Forms.Label();
             textBoxLabel = new System.Windows.Forms.TextBox();
             label2 = new System.Windows.Forms.Label();
             comboBoxAtom = new System.Windows.Forms.ComboBox();
-            flowLayoutPanelPosition = new System.Windows.Forms.FlowLayoutPanel();
-            tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
-            flowLayoutPanel8 = new System.Windows.Forms.FlowLayoutPanel();
-            label8 = new System.Windows.Forms.Label();
-            numericBox1 = new NumericBox();
-            label9 = new System.Windows.Forms.Label();
-            numericBox2 = new NumericBox();
-            flowLayoutPanel9 = new System.Windows.Forms.FlowLayoutPanel();
-            label12 = new System.Windows.Forms.Label();
-            numericBox3 = new NumericBox();
-            label17 = new System.Windows.Forms.Label();
-            numericBox4 = new NumericBox();
             checkBoxDetailAtomicPositionError = new System.Windows.Forms.CheckBox();
-            flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             tabControl = new System.Windows.Forms.TabControl();
             tabPageElementAndPosition = new System.Windows.Forms.TabPage();
             tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -165,11 +150,7 @@
             bindingSource = new System.Windows.Forms.BindingSource(components);
             dataSet = new DataSet();
             panel1 = new System.Windows.Forms.Panel();
-            dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             flowLayoutPanelIso.SuspendLayout();
-            tableLayoutPanel4.SuspendLayout();
-            flowLayoutPanel8.SuspendLayout();
-            flowLayoutPanel9.SuspendLayout();
             tabControl.SuspendLayout();
             tabPageElementAndPosition.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
@@ -234,20 +215,10 @@
             numericBoxBisoerr.SmartIncrement = true;
             numericBoxBisoerr.ThonsandsSeparator = true;
             // 
-            // flowLayoutPanel1
-            // 
-            resources.ApplyResources(flowLayoutPanel1, "flowLayoutPanel1");
-            flowLayoutPanel1.Name = "flowLayoutPanel1";
-            // 
             // labelX_
             // 
             resources.ApplyResources(labelX_, "labelX_");
             labelX_.Name = "labelX_";
-            // 
-            // flowLayoutPanelLabel
-            // 
-            resources.ApplyResources(flowLayoutPanelLabel, "flowLayoutPanelLabel");
-            flowLayoutPanelLabel.Name = "flowLayoutPanelLabel";
             // 
             // label1
             // 
@@ -276,114 +247,12 @@
             toolTip.SetToolTip(comboBoxAtom, resources.GetString("comboBoxAtom.ToolTip"));
             comboBoxAtom.SelectedIndexChanged += comboBoxAtom_SelectedIndexChanged;
             // 
-            // flowLayoutPanelPosition
-            // 
-            resources.ApplyResources(flowLayoutPanelPosition, "flowLayoutPanelPosition");
-            flowLayoutPanelPosition.Name = "flowLayoutPanelPosition";
-            // 
-            // tableLayoutPanel4
-            // 
-            resources.ApplyResources(tableLayoutPanel4, "tableLayoutPanel4");
-            tableLayoutPanel4.Controls.Add(flowLayoutPanel8, 3, 0);
-            tableLayoutPanel4.Name = "tableLayoutPanel4";
-            // 
-            // flowLayoutPanel8
-            // 
-            resources.ApplyResources(flowLayoutPanel8, "flowLayoutPanel8");
-            flowLayoutPanel8.Controls.Add(label8);
-            flowLayoutPanel8.Controls.Add(numericBox1);
-            flowLayoutPanel8.Controls.Add(label9);
-            flowLayoutPanel8.Controls.Add(numericBox2);
-            flowLayoutPanel8.Name = "flowLayoutPanel8";
-            // 
-            // label8
-            // 
-            resources.ApplyResources(label8, "label8");
-            label8.Name = "label8";
-            // 
-            // numericBox1
-            // 
-            numericBox1.BackColor = System.Drawing.SystemColors.Control;
-            resources.ApplyResources(numericBox1, "numericBox1");
-            numericBox1.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBox1.HeaderBackColor = System.Drawing.SystemColors.Control;
-            numericBox1.Name = "numericBox1";
-            numericBox1.ShowFraction = true;
-            numericBox1.SkipEventDuringInput = false;
-            numericBox1.SmartIncrement = true;
-            numericBox1.ThonsandsSeparator = true;
-            // 
-            // label9
-            // 
-            resources.ApplyResources(label9, "label9");
-            label9.Name = "label9";
-            // 
-            // numericBox2
-            // 
-            numericBox2.BackColor = System.Drawing.SystemColors.Control;
-            resources.ApplyResources(numericBox2, "numericBox2");
-            numericBox2.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBox2.HeaderBackColor = System.Drawing.SystemColors.Control;
-            numericBox2.Name = "numericBox2";
-            numericBox2.ShowFraction = true;
-            numericBox2.SkipEventDuringInput = false;
-            numericBox2.SmartIncrement = true;
-            numericBox2.ThonsandsSeparator = true;
-            // 
-            // flowLayoutPanel9
-            // 
-            resources.ApplyResources(flowLayoutPanel9, "flowLayoutPanel9");
-            flowLayoutPanel9.Controls.Add(label12);
-            flowLayoutPanel9.Controls.Add(numericBox3);
-            flowLayoutPanel9.Controls.Add(label17);
-            flowLayoutPanel9.Controls.Add(numericBox4);
-            flowLayoutPanel9.Name = "flowLayoutPanel9";
-            // 
-            // label12
-            // 
-            resources.ApplyResources(label12, "label12");
-            label12.Name = "label12";
-            // 
-            // numericBox3
-            // 
-            numericBox3.BackColor = System.Drawing.SystemColors.Control;
-            resources.ApplyResources(numericBox3, "numericBox3");
-            numericBox3.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBox3.HeaderBackColor = System.Drawing.SystemColors.Control;
-            numericBox3.Name = "numericBox3";
-            numericBox3.ShowFraction = true;
-            numericBox3.SkipEventDuringInput = false;
-            numericBox3.SmartIncrement = true;
-            numericBox3.ThonsandsSeparator = true;
-            // 
-            // label17
-            // 
-            resources.ApplyResources(label17, "label17");
-            label17.Name = "label17";
-            // 
-            // numericBox4
-            // 
-            numericBox4.BackColor = System.Drawing.SystemColors.Control;
-            resources.ApplyResources(numericBox4, "numericBox4");
-            numericBox4.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBox4.HeaderBackColor = System.Drawing.SystemColors.Control;
-            numericBox4.Name = "numericBox4";
-            numericBox4.ShowFraction = true;
-            numericBox4.SkipEventDuringInput = false;
-            numericBox4.SmartIncrement = true;
-            numericBox4.ThonsandsSeparator = true;
-            // 
             // checkBoxDetailAtomicPositionError
             // 
             resources.ApplyResources(checkBoxDetailAtomicPositionError, "checkBoxDetailAtomicPositionError");
             checkBoxDetailAtomicPositionError.Name = "checkBoxDetailAtomicPositionError";
             checkBoxDetailAtomicPositionError.UseVisualStyleBackColor = true;
             checkBoxDetailAtomicPositionError.CheckedChanged += checkBoxAtomicPositionError_CheckedChanged;
-            // 
-            // flowLayoutPanel2
-            // 
-            resources.ApplyResources(flowLayoutPanel2, "flowLayoutPanel2");
-            flowLayoutPanel2.Name = "flowLayoutPanel2";
             // 
             // tabControl
             // 
@@ -405,8 +274,6 @@
             tabPageElementAndPosition.Controls.Add(tableLayoutPanel1);
             tabPageElementAndPosition.Controls.Add(checkBoxDetailAtomicPositionError);
             tabPageElementAndPosition.Controls.Add(labelX_);
-            tabPageElementAndPosition.Controls.Add(flowLayoutPanelLabel);
-            tabPageElementAndPosition.Controls.Add(flowLayoutPanelPosition);
             resources.ApplyResources(tabPageElementAndPosition, "tabPageElementAndPosition");
             tabPageElementAndPosition.Name = "tabPageElementAndPosition";
             // 
@@ -1473,30 +1340,15 @@
             resources.ApplyResources(panel1, "panel1");
             panel1.Name = "panel1";
             // 
-            // dataGridViewTextBoxColumn1
-            // 
-            dataGridViewTextBoxColumn1.DataPropertyName = "Atom";
-            resources.ApplyResources(dataGridViewTextBoxColumn1, "dataGridViewTextBoxColumn1");
-            dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            dataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
             // AtomControl
             // 
             resources.ApplyResources(this, "$this");
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             Controls.Add(dataGridView);
             Controls.Add(panel1);
-            Controls.Add(flowLayoutPanel2);
-            Controls.Add(flowLayoutPanel1);
             Controls.Add(tabControl);
             Name = "AtomControl";
             flowLayoutPanelIso.ResumeLayout(false);
-            tableLayoutPanel4.ResumeLayout(false);
-            tableLayoutPanel4.PerformLayout();
-            flowLayoutPanel8.ResumeLayout(false);
-            flowLayoutPanel8.PerformLayout();
-            flowLayoutPanel9.ResumeLayout(false);
-            flowLayoutPanel9.PerformLayout();
             tabControl.ResumeLayout(false);
             tabPageElementAndPosition.ResumeLayout(false);
             tabPageElementAndPosition.PerformLayout();
@@ -1540,7 +1392,6 @@
         private System.Windows.Forms.RadioButton radioButtonIsotoropy;
         private System.Windows.Forms.RadioButton radioButtonAnisotropy;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelIso;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private NumericBox numericBoxX;
         private System.Windows.Forms.Label labelX_;
         private NumericBox numericBoxXerr;
@@ -1550,23 +1401,10 @@
         private NumericBox numericBoxZerr;
         private NumericBox numericBoxOcc;
         private NumericBox numericBoxOccerr;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelLabel;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBoxLabel;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox comboBoxAtom;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelPosition;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel8;
-        private System.Windows.Forms.Label label8;
-        private NumericBox numericBox1;
-        private System.Windows.Forms.Label label9;
-        private NumericBox numericBox2;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel9;
-        private System.Windows.Forms.Label label12;
-        private NumericBox numericBox3;
-        private System.Windows.Forms.Label label17;
-        private NumericBox numericBox4;
         private NumericBox numericBoxB11;
         private NumericBox numericBoxB12;
         private NumericBox numericBoxB13;
@@ -1575,7 +1413,6 @@
         private NumericBox numericBoxB33;
         private NumericBox numericBoxBiso;
         private System.Windows.Forms.CheckBox checkBoxDetailAtomicPositionError;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
         private System.Windows.Forms.TabControl tabControl;
         private System.Windows.Forms.TabPage tabPageElementAndPosition;
         private System.Windows.Forms.TabPage tabPageDebyeWaller;
@@ -1617,7 +1454,6 @@
         private System.Windows.Forms.Button buttonDeleteAtom;
         private System.Windows.Forms.BindingSource bindingSource;
         private DataSet dataSet;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.TabPage tabPageOriginShift;
         private System.Windows.Forms.Button buttonOriginShift1;

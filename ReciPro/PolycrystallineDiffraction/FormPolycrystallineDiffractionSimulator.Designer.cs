@@ -42,7 +42,6 @@
             this.tabControlCrystals = new System.Windows.Forms.TabControl();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.crystalControl1 = new Crystallography.Controls.CrystalControl();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
             this.groupBoxOrientationFitting = new System.Windows.Forms.GroupBox();
             this.buttonLoadSetting = new System.Windows.Forms.Button();
             this.buttonSaveCurrentSetting = new System.Windows.Forms.Button();
@@ -221,7 +220,6 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControlCrystals.Controls.Add(this.tabPage2);
-            this.tabControlCrystals.Controls.Add(this.tabPage3);
             this.tabControlCrystals.Font = new System.Drawing.Font("Segoe UI Variable Text", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.tabControlCrystals.Location = new System.Drawing.Point(5, 50);
             this.tabControlCrystals.Multiline = true;
@@ -274,16 +272,6 @@
             this.crystalControl1.VisibleReferenceTab = false;
             this.crystalControl1.VisibleStressStrainTab = true;
             this.crystalControl1.VisibleChanged += new System.EventHandler(this.crystalControl1_VisibleChanged);
-            // 
-            // tabPage3
-            // 
-            this.tabPage3.Location = new System.Drawing.Point(4, 26);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(192, 70);
-            this.tabPage3.TabIndex = 1;
-            this.tabPage3.Text = "tabPage3";
-            this.tabPage3.UseVisualStyleBackColor = true;
             // 
             // groupBoxOrientationFitting
             // 
@@ -1584,7 +1572,6 @@
         private System.Windows.Forms.NumericUpDown numericUpDownChangeParameterThreshold;
         private System.Windows.Forms.TabControl tabControlCrystals;
         private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.Button button1;
         private Crystallography.Controls.NumericBox numericBoxCrystalNumPerStep;
         private Crystallography.Controls.NumericBox numericBoxInheritabiliry;

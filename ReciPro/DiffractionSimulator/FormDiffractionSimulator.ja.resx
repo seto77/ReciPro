@@ -1729,9 +1729,6 @@
   <data name="checkBoxDrawSameSize.Text" xml:space="preserve">
     <value>全てのスポットを同じ半径で描画</value>
   </data>
-  <data name="flowLayoutPanel2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 118</value>
-  </data>
   <data name="flowLayoutPanelPointSpreadIntensity.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -1794,12 +1791,6 @@
   </data>
   <data name="checkBoxLogScale.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>BottomCenter</value>
-  </data>
-  <data name="flowLayoutPanelColorScale.Location" type="System.Drawing.Point, System.Drawing">
-    <value>20, 73</value>
-  </data>
-  <data name="flowLayoutPanelColorScale.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>20, 0, 0, 0</value>
   </data>
   <data name="flowLayoutPanelGaussianOption.Location" type="System.Drawing.Point, System.Drawing">
     <value>10, 121</value>

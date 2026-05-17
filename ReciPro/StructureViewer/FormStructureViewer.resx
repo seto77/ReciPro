@@ -286,9 +286,6 @@
   <data name="checkBoxCellShowEdge.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 4, 3, 4</value>
   </data>
-  <data name="tabPageCrystal.Size" type="System.Drawing.Size, System.Drawing">
-    <value>647, 246</value>
-  </data>
   <data name="&gt;&gt;checkBoxSymElems_Rotation.Name" xml:space="preserve">
     <value>checkBoxSymElems_Rotation</value>
   </data>
@@ -544,9 +541,6 @@
   </data>
   <data name="&gt;&gt;label17.Name" xml:space="preserve">
     <value>label17</value>
-  </data>
-  <data name="tabPageCrystal.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="colorControlCellEdgeC.Size" type="System.Drawing.Size, System.Drawing">
     <value>34, 20</value>
@@ -1490,9 +1484,6 @@
   <data name="radioButtonCellEdgeColorAll.Text" xml:space="preserve">
     <value>All edges</value>
   </data>
-  <data name="&gt;&gt;timer.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Timer, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="&gt;&gt;numericBoxACenter.ZOrder" xml:space="preserve">
     <value>13</value>
   </data>
@@ -2014,9 +2005,6 @@
   <data name="numericBoxLatticePlaneOpacity.Size" type="System.Drawing.Size, System.Drawing">
     <value>115, 25</value>
   </data>
-  <data name="tabPageCrystal.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 26</value>
-  </data>
   <data name="&gt;&gt;helpToolStripMenuItem.Name" xml:space="preserve">
     <value>helpToolStripMenuItem</value>
   </data>
@@ -2151,9 +2139,6 @@
   </data>
   <data name="label4.Text" xml:space="preserve">
     <value>Set range to</value>
-  </data>
-  <data name="tabPageCrystal.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
   </data>
   <data name="checkBoxShowSubCell.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2440,9 +2425,6 @@
   </data>
   <data name="label5.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
-  </data>
-  <data name="&gt;&gt;timer.Name" xml:space="preserve">
-    <value>timer</value>
   </data>
   <data name="&gt;&gt;labelGraphicsDriver.Name" xml:space="preserve">
     <value>labelGraphicsDriver</value>
@@ -2916,9 +2898,6 @@ adjust it individually)</value>
   </data>
   <data name="colorControlAxisColor.HeaderText" xml:space="preserve">
     <value>Color</value>
-  </data>
-  <data name="tabPageCrystal.Text" xml:space="preserve">
-    <value>Atoms</value>
   </data>
   <data name="&gt;&gt;flowLayoutPanelLatticePlaneOptions.Name" xml:space="preserve">
     <value>flowLayoutPanelLatticePlaneOptions</value>
@@ -4449,9 +4428,6 @@ the boundaries</value>
   <data name="&gt;&gt;groupBoxRenderingQuality.Name" xml:space="preserve">
     <value>groupBoxRenderingQuality</value>
   </data>
-  <data name="&gt;&gt;tabPageCrystal.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="numericBoxCRange.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Variable Text, 9.75pt</value>
   </data>
@@ -4986,9 +4962,6 @@ the boundaries</value>
   </data>
   <data name="&gt;&gt;colorControlAxisColor.ZOrder" xml:space="preserve">
     <value>5</value>
-  </data>
-  <data name="&gt;&gt;tabPageCrystal.Name" xml:space="preserve">
-    <value>tabPageCrystal</value>
   </data>
   <data name="label10.ToolTip" xml:space="preserve">
     <value />
@@ -6926,9 +6899,6 @@ the boundaries</value>
   <data name="tabPageSymElems.Text" xml:space="preserve">
     <value>Sym. Elems.</value>
   </data>
-  <metadata name="timer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>362, 17</value>
-  </metadata>
   <metadata name="toolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>271, 17</value>
   </metadata>

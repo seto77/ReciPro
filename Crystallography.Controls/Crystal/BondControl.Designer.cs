@@ -66,25 +66,6 @@
             colorControlPolyhedron = new ColorControl();
             colorControlBond = new ColorControl();
             panel2 = new System.Windows.Forms.Panel();
-            dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
-            dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
-            dataGridViewImageColumn3 = new System.Windows.Forms.DataGridViewImageColumn();
-            dataGridViewImageColumn4 = new System.Windows.Forms.DataGridViewImageColumn();
-            dataGridViewImageColumn5 = new System.Windows.Forms.DataGridViewImageColumn();
-            dataGridViewImageColumn6 = new System.Windows.Forms.DataGridViewImageColumn();
-            dataGridViewImageColumn7 = new System.Windows.Forms.DataGridViewImageColumn();
-            dataGridViewImageColumn8 = new System.Windows.Forms.DataGridViewImageColumn();
-            dataGridViewImageColumn9 = new System.Windows.Forms.DataGridViewImageColumn();
-            dataGridViewImageColumn10 = new System.Windows.Forms.DataGridViewImageColumn();
-            dataGridViewImageColumn11 = new System.Windows.Forms.DataGridViewImageColumn();
-            dataGridViewImageColumn12 = new System.Windows.Forms.DataGridViewImageColumn();
-            enabledDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            centerDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            vertexDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            minLenDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            maxLenDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             Enabled = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             Center = new System.Windows.Forms.DataGridViewTextBoxColumn();
             Vertex = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -514,142 +495,6 @@
             resources.ApplyResources(panel2, "panel2");
             panel2.Name = "panel2";
             // 
-            // dataGridViewTextBoxColumn1
-            // 
-            dataGridViewTextBoxColumn1.DataPropertyName = "Bond color";
-            resources.ApplyResources(dataGridViewTextBoxColumn1, "dataGridViewTextBoxColumn1");
-            dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            dataGridViewTextBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            dataGridViewTextBoxColumn2.DataPropertyName = "Polyhedron color";
-            resources.ApplyResources(dataGridViewTextBoxColumn2, "dataGridViewTextBoxColumn2");
-            dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            dataGridViewTextBoxColumn2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // dataGridViewImageColumn1
-            // 
-            dataGridViewImageColumn1.DataPropertyName = "Bond color";
-            resources.ApplyResources(dataGridViewImageColumn1, "dataGridViewImageColumn1");
-            dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
-            dataGridViewImageColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // dataGridViewImageColumn2
-            // 
-            dataGridViewImageColumn2.DataPropertyName = "Polyhedron color";
-            resources.ApplyResources(dataGridViewImageColumn2, "dataGridViewImageColumn2");
-            dataGridViewImageColumn2.Name = "dataGridViewImageColumn2";
-            dataGridViewImageColumn2.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // dataGridViewImageColumn3
-            // 
-            dataGridViewImageColumn3.DataPropertyName = "Bond color";
-            resources.ApplyResources(dataGridViewImageColumn3, "dataGridViewImageColumn3");
-            dataGridViewImageColumn3.Name = "dataGridViewImageColumn3";
-            dataGridViewImageColumn3.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // dataGridViewImageColumn4
-            // 
-            dataGridViewImageColumn4.DataPropertyName = "Polyhedron color";
-            resources.ApplyResources(dataGridViewImageColumn4, "dataGridViewImageColumn4");
-            dataGridViewImageColumn4.Name = "dataGridViewImageColumn4";
-            dataGridViewImageColumn4.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // dataGridViewImageColumn5
-            // 
-            dataGridViewImageColumn5.DataPropertyName = "Bond color";
-            resources.ApplyResources(dataGridViewImageColumn5, "dataGridViewImageColumn5");
-            dataGridViewImageColumn5.Name = "dataGridViewImageColumn5";
-            dataGridViewImageColumn5.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // dataGridViewImageColumn6
-            // 
-            dataGridViewImageColumn6.DataPropertyName = "Polyhedron color";
-            resources.ApplyResources(dataGridViewImageColumn6, "dataGridViewImageColumn6");
-            dataGridViewImageColumn6.Name = "dataGridViewImageColumn6";
-            dataGridViewImageColumn6.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // dataGridViewImageColumn7
-            // 
-            dataGridViewImageColumn7.DataPropertyName = "Bond color";
-            resources.ApplyResources(dataGridViewImageColumn7, "dataGridViewImageColumn7");
-            dataGridViewImageColumn7.Name = "dataGridViewImageColumn7";
-            dataGridViewImageColumn7.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // dataGridViewImageColumn8
-            // 
-            dataGridViewImageColumn8.DataPropertyName = "Polyhedron color";
-            resources.ApplyResources(dataGridViewImageColumn8, "dataGridViewImageColumn8");
-            dataGridViewImageColumn8.Name = "dataGridViewImageColumn8";
-            dataGridViewImageColumn8.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // dataGridViewImageColumn9
-            // 
-            dataGridViewImageColumn9.DataPropertyName = "Bond color";
-            resources.ApplyResources(dataGridViewImageColumn9, "dataGridViewImageColumn9");
-            dataGridViewImageColumn9.Name = "dataGridViewImageColumn9";
-            dataGridViewImageColumn9.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // dataGridViewImageColumn10
-            // 
-            dataGridViewImageColumn10.DataPropertyName = "Polyhedron color";
-            resources.ApplyResources(dataGridViewImageColumn10, "dataGridViewImageColumn10");
-            dataGridViewImageColumn10.Name = "dataGridViewImageColumn10";
-            dataGridViewImageColumn10.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // dataGridViewImageColumn11
-            // 
-            dataGridViewImageColumn11.DataPropertyName = "Bond color";
-            resources.ApplyResources(dataGridViewImageColumn11, "dataGridViewImageColumn11");
-            dataGridViewImageColumn11.Name = "dataGridViewImageColumn11";
-            dataGridViewImageColumn11.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // dataGridViewImageColumn12
-            // 
-            dataGridViewImageColumn12.DataPropertyName = "Polyhedron color";
-            resources.ApplyResources(dataGridViewImageColumn12, "dataGridViewImageColumn12");
-            dataGridViewImageColumn12.Name = "dataGridViewImageColumn12";
-            dataGridViewImageColumn12.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // enabledDataGridViewCheckBoxColumn
-            // 
-            enabledDataGridViewCheckBoxColumn.DataPropertyName = "Enabled";
-            resources.ApplyResources(enabledDataGridViewCheckBoxColumn, "enabledDataGridViewCheckBoxColumn");
-            enabledDataGridViewCheckBoxColumn.Name = "enabledDataGridViewCheckBoxColumn";
-            // 
-            // centerDataGridViewTextBoxColumn
-            // 
-            centerDataGridViewTextBoxColumn.DataPropertyName = "Center";
-            resources.ApplyResources(centerDataGridViewTextBoxColumn, "centerDataGridViewTextBoxColumn");
-            centerDataGridViewTextBoxColumn.Name = "centerDataGridViewTextBoxColumn";
-            centerDataGridViewTextBoxColumn.ReadOnly = true;
-            centerDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // vertexDataGridViewTextBoxColumn
-            // 
-            vertexDataGridViewTextBoxColumn.DataPropertyName = "Vertex";
-            resources.ApplyResources(vertexDataGridViewTextBoxColumn, "vertexDataGridViewTextBoxColumn");
-            vertexDataGridViewTextBoxColumn.Name = "vertexDataGridViewTextBoxColumn";
-            vertexDataGridViewTextBoxColumn.ReadOnly = true;
-            vertexDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // minLenDataGridViewTextBoxColumn
-            // 
-            minLenDataGridViewTextBoxColumn.DataPropertyName = "Min len.";
-            resources.ApplyResources(minLenDataGridViewTextBoxColumn, "minLenDataGridViewTextBoxColumn");
-            minLenDataGridViewTextBoxColumn.Name = "minLenDataGridViewTextBoxColumn";
-            minLenDataGridViewTextBoxColumn.ReadOnly = true;
-            minLenDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // maxLenDataGridViewTextBoxColumn
-            // 
-            maxLenDataGridViewTextBoxColumn.DataPropertyName = "Max len.";
-            resources.ApplyResources(maxLenDataGridViewTextBoxColumn, "maxLenDataGridViewTextBoxColumn");
-            maxLenDataGridViewTextBoxColumn.Name = "maxLenDataGridViewTextBoxColumn";
-            maxLenDataGridViewTextBoxColumn.ReadOnly = true;
-            maxLenDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
             // Enabled
             // 
             Enabled.DataPropertyName = "Enabled";
@@ -725,28 +570,9 @@
         private DataSet dataSet;
         private System.Windows.Forms.BindingSource bindingSource;
         private System.Windows.Forms.DataGridView dataGridView;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn1;
-        private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn2;
-        private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn3;
-        private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn4;
-        private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn5;
-        private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn6;
-        private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn7;
-        private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn8;
-        private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn9;
-        private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn10;
-        private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn11;
-        private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn12;
         private System.Windows.Forms.CheckBox checkBoxShowBonds;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn enabledDataGridViewCheckBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn centerDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn vertexDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn minLenDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn maxLenDataGridViewTextBoxColumn;
         new private System.Windows.Forms.DataGridViewCheckBoxColumn Enabled;
         private System.Windows.Forms.DataGridViewTextBoxColumn Center;
         private System.Windows.Forms.DataGridViewTextBoxColumn Vertex;

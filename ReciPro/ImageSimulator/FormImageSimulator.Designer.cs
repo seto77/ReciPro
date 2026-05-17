@@ -77,7 +77,6 @@ namespace ReciPro
             checkBoxGaussianBlur = new System.Windows.Forms.CheckBox();
             label25 = new System.Windows.Forms.Label();
             comboBoxScaleColorScale = new System.Windows.Forms.ComboBox();
-            panel7 = new System.Windows.Forms.Panel();
             groupBoxNormalization = new System.Windows.Forms.GroupBox();
             checkBoxNormarizeIndividually = new System.Windows.Forms.CheckBox();
             flowLayoutPanelIntensityRange = new System.Windows.Forms.FlowLayoutPanel();
@@ -156,7 +155,6 @@ namespace ReciPro
             groupBoxSTEMoption2 = new System.Windows.Forms.GroupBox();
             numericBoxSTEM_AngleResolution = new NumericBox();
             numericBoxSTEM_SliceThicknessForInelastic = new NumericBox();
-            flowLayoutPanel10 = new System.Windows.Forms.FlowLayoutPanel();
             groupBoxHREMoption2 = new System.Windows.Forms.GroupBox();
             flowLayoutPanelStemMode = new System.Windows.Forms.FlowLayoutPanel();
             radioButtonModeQuasiCoherent = new System.Windows.Forms.RadioButton();
@@ -431,7 +429,6 @@ namespace ReciPro
             // panelDisplaySettings
             // 
             panelDisplaySettings.Controls.Add(groupBoxAdjust);
-            panelDisplaySettings.Controls.Add(panel7);
             panelDisplaySettings.Controls.Add(groupBoxNormalization);
             panelDisplaySettings.Controls.Add(panel9);
             panelDisplaySettings.Controls.Add(groupBoxSTEMoption3);
@@ -524,11 +521,6 @@ namespace ReciPro
             comboBoxScaleColorScale.Items.AddRange(new object[] { resources.GetString("comboBoxScaleColorScale.Items"), resources.GetString("comboBoxScaleColorScale.Items1") });
             comboBoxScaleColorScale.Name = "comboBoxScaleColorScale";
             comboBoxScaleColorScale.SelectedIndexChanged += ComboBoxScaleColorScale_SelectedIndexChanged;
-            // 
-            // panel7
-            // 
-            resources.ApplyResources(panel7, "panel7");
-            panel7.Name = "panel7";
             // 
             // groupBoxNormalization
             // 
@@ -1220,7 +1212,6 @@ namespace ReciPro
             captureExtender.SetCapture(groupBoxSTEMoption2, true);
             groupBoxSTEMoption2.Controls.Add(numericBoxSTEM_AngleResolution);
             groupBoxSTEMoption2.Controls.Add(numericBoxSTEM_SliceThicknessForInelastic);
-            groupBoxSTEMoption2.Controls.Add(flowLayoutPanel10);
             resources.ApplyResources(groupBoxSTEMoption2, "groupBoxSTEMoption2");
             groupBoxSTEMoption2.Name = "groupBoxSTEMoption2";
             groupBoxSTEMoption2.TabStop = false;
@@ -1258,11 +1249,6 @@ namespace ReciPro
             numericBoxSTEM_SliceThicknessForInelastic.ThonsandsSeparator = true;
             toolTip.SetToolTip(numericBoxSTEM_SliceThicknessForInelastic, resources.GetString("numericBoxSTEM_SliceThicknessForInelastic.ToolTip"));
             numericBoxSTEM_SliceThicknessForInelastic.Value = 1D;
-            // 
-            // flowLayoutPanel10
-            // 
-            resources.ApplyResources(flowLayoutPanel10, "flowLayoutPanel10");
-            flowLayoutPanel10.Name = "flowLayoutPanel10";
             // 
             // groupBoxHREMoption2
             // 
@@ -2505,7 +2491,6 @@ namespace ReciPro
         private NumericBox numericBoxSTEM_DetectorInnerAngle;
         private NumericBox numericBoxSTEM_AngleResolution;
         private System.Windows.Forms.GroupBox groupBoxSTEMoption2;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel10;
         private System.Windows.Forms.Button buttonStop;
         private System.Windows.Forms.CheckBox checkBoxCTF;
         private System.Windows.Forms.Label label4;
@@ -2552,7 +2537,6 @@ namespace ReciPro
         private System.Windows.Forms.RadioButton radioButtonSTEM_target_TDS;
         private System.Windows.Forms.RadioButton radioButtonSTEM_target_elas;
         private System.Windows.Forms.RadioButton radioButtonSTEM_target_both;
-        private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelOuterRadius;
         private System.Windows.Forms.TextBox textBoxOuterRadius;
         private System.Windows.Forms.Label label38;

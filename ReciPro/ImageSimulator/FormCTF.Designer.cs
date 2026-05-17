@@ -39,7 +39,6 @@
             checkBoxCosW = new System.Windows.Forms.CheckBox();
             checkBoxEs_STEM = new System.Windows.Forms.CheckBox();
             flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
-            flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
             checkBoxACTF = new System.Windows.Forms.CheckBox();
             pictureBoxA_STEM = new System.Windows.Forms.PictureBox();
             pictureBoxA_HRTEM = new System.Windows.Forms.PictureBox();
@@ -307,25 +306,12 @@
             // 
             flowLayoutPanel3.AutoSize = true;
             flowLayoutPanel3.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            flowLayoutPanel3.Controls.Add(flowLayoutPanel4);
             flowLayoutPanel3.Location = new System.Drawing.Point(3, 0);
             flowLayoutPanel3.Margin = new System.Windows.Forms.Padding(0);
             flowLayoutPanel3.Name = "flowLayoutPanel3";
             flowLayoutPanel3.Size = new System.Drawing.Size(0, 0);
             flowLayoutPanel3.TabIndex = 13;
             flowLayoutPanel3.WrapContents = false;
-            // 
-            // flowLayoutPanel4
-            // 
-            flowLayoutPanel4.AutoSize = true;
-            flowLayoutPanel4.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            flowLayoutPanel4.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            flowLayoutPanel4.Location = new System.Drawing.Point(0, 0);
-            flowLayoutPanel4.Margin = new System.Windows.Forms.Padding(0);
-            flowLayoutPanel4.Name = "flowLayoutPanel4";
-            flowLayoutPanel4.Size = new System.Drawing.Size(0, 0);
-            flowLayoutPanel4.TabIndex = 13;
-            flowLayoutPanel4.WrapContents = false;
             // 
             // checkBoxACTF
             // 
@@ -490,7 +476,6 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
         private System.Windows.Forms.CheckBox checkBoxCosW;
         private System.Windows.Forms.CheckBox checkBoxACTF;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel4;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel5;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel7;

@@ -28,10 +28,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BoundControl));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
-            dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
             dataGridView = new System.Windows.Forms.DataGridView();
             enabledDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             hDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -50,14 +46,6 @@
             buttonChangeBond = new System.Windows.Forms.Button();
             buttonDeleteBond = new System.Windows.Forms.Button();
             checkBoxImmediateUpdate = new System.Windows.Forms.CheckBox();
-            dataGridViewImageColumn3 = new System.Windows.Forms.DataGridViewImageColumn();
-            dataGridViewImageColumn4 = new System.Windows.Forms.DataGridViewImageColumn();
-            dataGridViewImageColumn5 = new System.Windows.Forms.DataGridViewImageColumn();
-            dataGridViewImageColumn6 = new System.Windows.Forms.DataGridViewImageColumn();
-            dataGridViewImageColumn7 = new System.Windows.Forms.DataGridViewImageColumn();
-            dataGridViewImageColumn8 = new System.Windows.Forms.DataGridViewImageColumn();
-            dataGridViewImageColumn9 = new System.Windows.Forms.DataGridViewImageColumn();
-            dataGridViewImageColumn10 = new System.Windows.Forms.DataGridViewImageColumn();
             toolTip = new System.Windows.Forms.ToolTip(components);
             checkBoxEquivalency = new System.Windows.Forms.CheckBox();
             numericBoxTranslation = new NumericBox();
@@ -76,34 +64,6 @@
             flowLayoutPanel1.SuspendLayout();
             panel2.SuspendLayout();
             SuspendLayout();
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            dataGridViewTextBoxColumn1.DataPropertyName = "Bond color";
-            resources.ApplyResources(dataGridViewTextBoxColumn1, "dataGridViewTextBoxColumn1");
-            dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            dataGridViewTextBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            dataGridViewTextBoxColumn2.DataPropertyName = "Polyhedron color";
-            resources.ApplyResources(dataGridViewTextBoxColumn2, "dataGridViewTextBoxColumn2");
-            dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            dataGridViewTextBoxColumn2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // dataGridViewImageColumn1
-            // 
-            dataGridViewImageColumn1.DataPropertyName = "Bond color";
-            resources.ApplyResources(dataGridViewImageColumn1, "dataGridViewImageColumn1");
-            dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
-            dataGridViewImageColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // dataGridViewImageColumn2
-            // 
-            dataGridViewImageColumn2.DataPropertyName = "Polyhedron color";
-            resources.ApplyResources(dataGridViewImageColumn2, "dataGridViewImageColumn2");
-            dataGridViewImageColumn2.Name = "dataGridViewImageColumn2";
-            dataGridViewImageColumn2.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
             // dataGridView
             // 
@@ -284,62 +244,6 @@
             checkBoxImmediateUpdate.UseVisualStyleBackColor = true;
             checkBoxImmediateUpdate.CheckedChanged += checkBoxEquivalency_CheckedChanged;
             // 
-            // dataGridViewImageColumn3
-            // 
-            dataGridViewImageColumn3.DataPropertyName = "Color";
-            resources.ApplyResources(dataGridViewImageColumn3, "dataGridViewImageColumn3");
-            dataGridViewImageColumn3.Name = "dataGridViewImageColumn3";
-            dataGridViewImageColumn3.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // dataGridViewImageColumn4
-            // 
-            dataGridViewImageColumn4.DataPropertyName = "Color";
-            resources.ApplyResources(dataGridViewImageColumn4, "dataGridViewImageColumn4");
-            dataGridViewImageColumn4.Name = "dataGridViewImageColumn4";
-            dataGridViewImageColumn4.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // dataGridViewImageColumn5
-            // 
-            dataGridViewImageColumn5.DataPropertyName = "Color";
-            resources.ApplyResources(dataGridViewImageColumn5, "dataGridViewImageColumn5");
-            dataGridViewImageColumn5.Name = "dataGridViewImageColumn5";
-            dataGridViewImageColumn5.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // dataGridViewImageColumn6
-            // 
-            dataGridViewImageColumn6.DataPropertyName = "Color";
-            resources.ApplyResources(dataGridViewImageColumn6, "dataGridViewImageColumn6");
-            dataGridViewImageColumn6.Name = "dataGridViewImageColumn6";
-            dataGridViewImageColumn6.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // dataGridViewImageColumn7
-            // 
-            dataGridViewImageColumn7.DataPropertyName = "Color";
-            resources.ApplyResources(dataGridViewImageColumn7, "dataGridViewImageColumn7");
-            dataGridViewImageColumn7.Name = "dataGridViewImageColumn7";
-            dataGridViewImageColumn7.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // dataGridViewImageColumn8
-            // 
-            dataGridViewImageColumn8.DataPropertyName = "Color";
-            resources.ApplyResources(dataGridViewImageColumn8, "dataGridViewImageColumn8");
-            dataGridViewImageColumn8.Name = "dataGridViewImageColumn8";
-            dataGridViewImageColumn8.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // dataGridViewImageColumn9
-            // 
-            dataGridViewImageColumn9.DataPropertyName = "Color";
-            resources.ApplyResources(dataGridViewImageColumn9, "dataGridViewImageColumn9");
-            dataGridViewImageColumn9.Name = "dataGridViewImageColumn9";
-            dataGridViewImageColumn9.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // dataGridViewImageColumn10
-            // 
-            dataGridViewImageColumn10.DataPropertyName = "Color";
-            resources.ApplyResources(dataGridViewImageColumn10, "dataGridViewImageColumn10");
-            dataGridViewImageColumn10.Name = "dataGridViewImageColumn10";
-            dataGridViewImageColumn10.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
             // checkBoxEquivalency
             // 
             resources.ApplyResources(checkBoxEquivalency, "checkBoxEquivalency");
@@ -475,10 +379,6 @@
         }
 
         #endregion
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn1;
-        private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn2;
         private System.Windows.Forms.DataGridView dataGridView;
         private System.Windows.Forms.BindingSource bindingSource;
         private DataSet dataSet;
@@ -486,14 +386,6 @@
         private System.Windows.Forms.Button buttonAddBond;
         private System.Windows.Forms.Button buttonChangeBond;
         private System.Windows.Forms.Button buttonDeleteBond;
-        private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn3;
-        private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn4;
-        private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn5;
-        private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn6;
-        private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn7;
-        private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn8;
-        private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn9;
-        private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn10;
         private System.Windows.Forms.ToolTip toolTip;
         private System.Windows.Forms.DataGridViewCheckBoxColumn enabledDataGridViewCheckBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn hDataGridViewTextBoxColumn;

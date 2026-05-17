@@ -30,7 +30,6 @@
             panelSearch = new System.Windows.Forms.Panel();
             searchCrystalControl = new SearchCrystalControl();
             crystalDatabaseControl = new CrystalDatabaseControl();
-            toolTip = new System.Windows.Forms.ToolTip(components);
             statusStrip1 = new System.Windows.Forms.StatusStrip();
             toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
             toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
@@ -126,7 +125,6 @@
         private Crystallography.Controls.SearchCrystalControl searchCrystalControl;
         private Crystallography.Controls.CrystalDatabaseControl crystalDatabaseControl;
         private System.Windows.Forms.Panel panelSearch;
-        private System.Windows.Forms.ToolTip toolTip;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripProgressBar toolStripProgressBar1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;

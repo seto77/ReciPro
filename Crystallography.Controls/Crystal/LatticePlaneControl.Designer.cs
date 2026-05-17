@@ -26,7 +26,6 @@
         {
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LatticePlaneControl));
-            dataGridViewImageColumn3 = new System.Windows.Forms.DataGridViewImageColumn();
             panel1 = new System.Windows.Forms.Panel();
             buttonAddBond = new System.Windows.Forms.Button();
             buttonChangeBond = new System.Windows.Forms.Button();
@@ -45,15 +44,6 @@
             numericBoxDistance = new NumericBox();
             colorControl = new ColorControl();
             label6 = new System.Windows.Forms.Label();
-            dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
-            dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
-            dataGridViewImageColumn4 = new System.Windows.Forms.DataGridViewImageColumn();
-            dataGridViewImageColumn5 = new System.Windows.Forms.DataGridViewImageColumn();
-            dataGridViewImageColumn6 = new System.Windows.Forms.DataGridViewImageColumn();
-            dataGridViewImageColumn7 = new System.Windows.Forms.DataGridViewImageColumn();
-            toolTip = new System.Windows.Forms.ToolTip(components);
             indexControl = new IndexControl();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView).BeginInit();
@@ -61,13 +51,6 @@
             ((System.ComponentModel.ISupportInitialize)dataSet).BeginInit();
             panel2.SuspendLayout();
             SuspendLayout();
-            // 
-            // dataGridViewImageColumn3
-            // 
-            dataGridViewImageColumn3.DataPropertyName = "Color";
-            resources.ApplyResources(dataGridViewImageColumn3, "dataGridViewImageColumn3");
-            dataGridViewImageColumn3.Name = "dataGridViewImageColumn3";
-            dataGridViewImageColumn3.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
             // panel1
             // 
@@ -234,66 +217,6 @@
             resources.ApplyResources(label6, "label6");
             label6.Name = "label6";
             // 
-            // dataGridViewTextBoxColumn1
-            // 
-            dataGridViewTextBoxColumn1.DataPropertyName = "Bond color";
-            resources.ApplyResources(dataGridViewTextBoxColumn1, "dataGridViewTextBoxColumn1");
-            dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            dataGridViewTextBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            dataGridViewTextBoxColumn2.DataPropertyName = "Polyhedron color";
-            resources.ApplyResources(dataGridViewTextBoxColumn2, "dataGridViewTextBoxColumn2");
-            dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            dataGridViewTextBoxColumn2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // dataGridViewImageColumn1
-            // 
-            dataGridViewImageColumn1.DataPropertyName = "Bond color";
-            resources.ApplyResources(dataGridViewImageColumn1, "dataGridViewImageColumn1");
-            dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
-            dataGridViewImageColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // dataGridViewImageColumn2
-            // 
-            dataGridViewImageColumn2.DataPropertyName = "Polyhedron color";
-            resources.ApplyResources(dataGridViewImageColumn2, "dataGridViewImageColumn2");
-            dataGridViewImageColumn2.Name = "dataGridViewImageColumn2";
-            dataGridViewImageColumn2.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // dataGridViewImageColumn4
-            // 
-            dataGridViewImageColumn4.DataPropertyName = "Color";
-            resources.ApplyResources(dataGridViewImageColumn4, "dataGridViewImageColumn4");
-            dataGridViewImageColumn4.Name = "dataGridViewImageColumn4";
-            dataGridViewImageColumn4.ReadOnly = true;
-            dataGridViewImageColumn4.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // dataGridViewImageColumn5
-            // 
-            dataGridViewImageColumn5.DataPropertyName = "Color";
-            resources.ApplyResources(dataGridViewImageColumn5, "dataGridViewImageColumn5");
-            dataGridViewImageColumn5.Name = "dataGridViewImageColumn5";
-            dataGridViewImageColumn5.ReadOnly = true;
-            dataGridViewImageColumn5.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // dataGridViewImageColumn6
-            // 
-            dataGridViewImageColumn6.DataPropertyName = "Color";
-            resources.ApplyResources(dataGridViewImageColumn6, "dataGridViewImageColumn6");
-            dataGridViewImageColumn6.Name = "dataGridViewImageColumn6";
-            dataGridViewImageColumn6.ReadOnly = true;
-            dataGridViewImageColumn6.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // dataGridViewImageColumn7
-            // 
-            dataGridViewImageColumn7.DataPropertyName = "Color";
-            resources.ApplyResources(dataGridViewImageColumn7, "dataGridViewImageColumn7");
-            dataGridViewImageColumn7.Name = "dataGridViewImageColumn7";
-            dataGridViewImageColumn7.ReadOnly = true;
-            dataGridViewImageColumn7.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
             // indexControl
             // 
             resources.ApplyResources(indexControl, "indexControl");
@@ -328,7 +251,6 @@
         #endregion
         private ColorControl colorControl;
         private NumericBox numericBoxDistance;
-        private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn3;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button buttonAddBond;
         private System.Windows.Forms.Button buttonChangeBond;
@@ -338,15 +260,6 @@
         private DataSet dataSet;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn1;
-        private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn2;
-        private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn4;
-        private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn5;
-        private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn6;
-        private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn7;
-        private System.Windows.Forms.ToolTip toolTip;
         private System.Windows.Forms.DataGridViewCheckBoxColumn enabledDataGridViewCheckBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn hDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn kDataGridViewTextBoxColumn;

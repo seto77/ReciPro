@@ -52,7 +52,6 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.photo1ZoneAxisDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Phase = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.zoneAxisDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.g1DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -271,12 +270,6 @@
             this.dataGridView2.TabIndex = 3;
             this.dataGridView2.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellDoubleClick);
             // 
-            // photo1ZoneAxisDataGridViewTextBoxColumn
-            // 
-            this.photo1ZoneAxisDataGridViewTextBoxColumn.DataPropertyName = "Photo 1 Zone Axis";
-            this.photo1ZoneAxisDataGridViewTextBoxColumn.HeaderText = "Photo 1 Zone Axis";
-            this.photo1ZoneAxisDataGridViewTextBoxColumn.Name = "photo1ZoneAxisDataGridViewTextBoxColumn";
-            // 
             // Phase
             // 
             this.Phase.DataPropertyName = "Phase";
@@ -445,7 +438,6 @@
         private System.Windows.Forms.DataGridView dataGridView2;
         private System.Data.DataColumn dataColumnNumber;
         private System.Data.DataColumn dataColumnID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn photo1ZoneAxisDataGridViewTextBoxColumn;
         private System.Windows.Forms.BindingSource bindingSource1;
         private System.Data.DataColumn dataColumn1;
         private System.Data.DataColumn dataColumn2;

@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PoleFigureControl));
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.radioButtonAxes = new System.Windows.Forms.RadioButton();
             this.radioButtonPlanes = new System.Windows.Forms.RadioButton();
             this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
@@ -71,11 +70,6 @@
             this.groupBoxProjectionObject.SuspendLayout();
             this.groupBoxProjectionScheme.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // flowLayoutPanel1
-            // 
-            resources.ApplyResources(this.flowLayoutPanel1, "flowLayoutPanel1");
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             // 
             // radioButtonAxes
             // 
@@ -358,7 +352,6 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.Controls.Add(this.tabControl1);
-            this.Controls.Add(this.flowLayoutPanel1);
             this.Name = "PoleFigureControl";
             this.Load += new System.EventHandler(this.PoleFigureControl_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
@@ -382,8 +375,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.RadioButton radioButtonAxes;
         private System.Windows.Forms.RadioButton radioButtonPlanes;
         public System.Windows.Forms.NumericUpDown numericUpDown2;

@@ -170,8 +170,6 @@ namespace ReciPro
             checkBox3dOptionProjectionLine = new System.Windows.Forms.CheckBox();
             checkBox3dOptionStereonet = new System.Windows.Forms.CheckBox();
             checkBox3dOptionLabel = new System.Windows.Forms.CheckBox();
-            scalablePictureBoxAdvanced1 = new ScalablePictureBoxAdvanced();
-            scalablePictureBoxAdvanced2 = new ScalablePictureBoxAdvanced();
             labelAxisPlane = new System.Windows.Forms.Label();
             label2 = new System.Windows.Forms.Label();
             label3 = new System.Windows.Forms.Label();
@@ -1346,72 +1344,6 @@ namespace ReciPro
             checkBox3dOptionLabel.UseVisualStyleBackColor = true;
             checkBox3dOptionLabel.CheckedChanged += checkBox3dOptionSphere_CheckedChanged;
             // 
-            // scalablePictureBoxAdvanced1
-            // 
-            scalablePictureBoxAdvanced1.ClampIntensityRangeToNewData = true;
-            scalablePictureBoxAdvanced1.ColorVisible = true;
-            scalablePictureBoxAdvanced1.DecimalPlacesForIntensity = 0;
-            scalablePictureBoxAdvanced1.FixZoomAndCenter = false;
-            resources.ApplyResources(scalablePictureBoxAdvanced1, "scalablePictureBoxAdvanced1");
-            scalablePictureBoxAdvanced1.FrequencyGraphVisible = true;
-            scalablePictureBoxAdvanced1.GradiaentVisible = true;
-            scalablePictureBoxAdvanced1.ImageFilter_DustAndScratches = false;
-            scalablePictureBoxAdvanced1.ImageFilter_DustAndScratchesRadius = 1D;
-            scalablePictureBoxAdvanced1.ImageFilter_DustAndScratchesThreshold = 3D;
-            scalablePictureBoxAdvanced1.ImageFilter_DustAndScratchesVisible = true;
-            scalablePictureBoxAdvanced1.ImageFilter_GaussianBlur = false;
-            scalablePictureBoxAdvanced1.ImageFilter_GaussianBlurRadius = 1D;
-            scalablePictureBoxAdvanced1.ImageFilter_GaussianBlurVisible = true;
-            scalablePictureBoxAdvanced1.ImageFilterVisible = true;
-            scalablePictureBoxAdvanced1.LogScaleBar = false;
-            scalablePictureBoxAdvanced1.LowerIntensity = 0D;
-            scalablePictureBoxAdvanced1.MagInfoVisible = true;
-            scalablePictureBoxAdvanced1.MaximumIntensity = 255D;
-            scalablePictureBoxAdvanced1.MinimumIntensity = 0D;
-            scalablePictureBoxAdvanced1.MousePositionLabelVisible = true;
-            scalablePictureBoxAdvanced1.Name = "scalablePictureBoxAdvanced1";
-            scalablePictureBoxAdvanced1.PolarityVisible = true;
-            scalablePictureBoxAdvanced1.ScaleVisible = true;
-            scalablePictureBoxAdvanced1.ShowGradiaent = true;
-            scalablePictureBoxAdvanced1.StatusVisible = true;
-            scalablePictureBoxAdvanced1.TitleVisible = false;
-            scalablePictureBoxAdvanced1.TrackBarVisible = true;
-            scalablePictureBoxAdvanced1.UpperIntensity = 255D;
-            scalablePictureBoxAdvanced1.VisibleGradient = true;
-            // 
-            // scalablePictureBoxAdvanced2
-            // 
-            scalablePictureBoxAdvanced2.ClampIntensityRangeToNewData = true;
-            scalablePictureBoxAdvanced2.ColorVisible = true;
-            scalablePictureBoxAdvanced2.DecimalPlacesForIntensity = 0;
-            scalablePictureBoxAdvanced2.FixZoomAndCenter = false;
-            resources.ApplyResources(scalablePictureBoxAdvanced2, "scalablePictureBoxAdvanced2");
-            scalablePictureBoxAdvanced2.FrequencyGraphVisible = true;
-            scalablePictureBoxAdvanced2.GradiaentVisible = true;
-            scalablePictureBoxAdvanced2.ImageFilter_DustAndScratches = false;
-            scalablePictureBoxAdvanced2.ImageFilter_DustAndScratchesRadius = 1D;
-            scalablePictureBoxAdvanced2.ImageFilter_DustAndScratchesThreshold = 3D;
-            scalablePictureBoxAdvanced2.ImageFilter_DustAndScratchesVisible = true;
-            scalablePictureBoxAdvanced2.ImageFilter_GaussianBlur = false;
-            scalablePictureBoxAdvanced2.ImageFilter_GaussianBlurRadius = 1D;
-            scalablePictureBoxAdvanced2.ImageFilter_GaussianBlurVisible = true;
-            scalablePictureBoxAdvanced2.ImageFilterVisible = true;
-            scalablePictureBoxAdvanced2.LogScaleBar = false;
-            scalablePictureBoxAdvanced2.LowerIntensity = 0D;
-            scalablePictureBoxAdvanced2.MagInfoVisible = true;
-            scalablePictureBoxAdvanced2.MaximumIntensity = 255D;
-            scalablePictureBoxAdvanced2.MinimumIntensity = 0D;
-            scalablePictureBoxAdvanced2.MousePositionLabelVisible = true;
-            scalablePictureBoxAdvanced2.Name = "scalablePictureBoxAdvanced2";
-            scalablePictureBoxAdvanced2.PolarityVisible = true;
-            scalablePictureBoxAdvanced2.ScaleVisible = true;
-            scalablePictureBoxAdvanced2.ShowGradiaent = true;
-            scalablePictureBoxAdvanced2.StatusVisible = true;
-            scalablePictureBoxAdvanced2.TitleVisible = false;
-            scalablePictureBoxAdvanced2.TrackBarVisible = true;
-            scalablePictureBoxAdvanced2.UpperIntensity = 255D;
-            scalablePictureBoxAdvanced2.VisibleGradient = true;
-            // 
             // labelAxisPlane
             // 
             resources.ApplyResources(labelAxisPlane, "labelAxisPlane");
@@ -1558,10 +1490,6 @@ namespace ReciPro
         private System.Windows.Forms.RadioButton radioButtonCircleByPlanes;
         private System.Windows.Forms.CheckedListBox checkedListBoxCircles;
         public ColorControl colorControlString;
-        public ColorControl colorControlUniqueAxis;
-        public ColorControl colorControlUniquePlane;
-        public ColorControl colorControlGeneralAxis;
-        public ColorControl colorControlGeneralPlane;
         public ColorControl colorControlBackGround;
         public ColorControl colorControl90DegLine;
         public ColorControl colorControl10DegLine;
@@ -1600,8 +1528,6 @@ namespace ReciPro
         public System.Windows.Forms.RadioButton radioButtonRotationalScan;
         public System.Windows.Forms.RadioButton radioButtonZigzagScan;
         private System.Windows.Forms.Panel panel3;
-        private ScalablePictureBoxAdvanced scalablePictureBoxAdvanced1;
-        private ScalablePictureBoxAdvanced scalablePictureBoxAdvanced2;
         // public ImagingSolution.Control.GraphicsBox graphicsBox; // (260322Ch) 旧 GraphicsBox 型
         // public Crystallography.Controls.GraphicBox2 graphicsBox; // (260322Ch) 仮名 GraphicBox2
         public Crystallography.Controls.GraphicsBox graphicsBox; // (260322Ch) 正式名 GraphicBox へ移行

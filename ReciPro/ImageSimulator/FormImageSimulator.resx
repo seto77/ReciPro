@@ -864,30 +864,6 @@
   <data name="&gt;&gt;groupBoxAdjust.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="panel7.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Right</value>
-  </data>
-  <data name="panel7.Location" type="System.Drawing.Point, System.Drawing">
-    <value>357, 3</value>
-  </data>
-  <data name="panel7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>6, 105</value>
-  </data>
-  <data name="panel7.TabIndex" type="System.Int32, mscorlib">
-    <value>78</value>
-  </data>
-  <data name="&gt;&gt;panel7.Name" xml:space="preserve">
-    <value>panel7</value>
-  </data>
-  <data name="&gt;&gt;panel7.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;panel7.Parent" xml:space="preserve">
-    <value>panelDisplaySettings</value>
-  </data>
-  <data name="&gt;&gt;panel7.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
   <data name="groupBoxNormalization.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
@@ -3890,33 +3866,6 @@ Smaller values result in slower calculation speed but higher accuracy.</value>
   </data>
   <data name="&gt;&gt;numericBoxSTEM_SliceThicknessForInelastic.ZOrder" xml:space="preserve">
     <value>1</value>
-  </data>
-  <data name="flowLayoutPanel10.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="flowLayoutPanel10.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="flowLayoutPanel10.Location" type="System.Drawing.Point, System.Drawing">
-    <value>5, 18</value>
-  </data>
-  <data name="flowLayoutPanel10.Size" type="System.Drawing.Size, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="flowLayoutPanel10.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanel10.Name" xml:space="preserve">
-    <value>flowLayoutPanel10</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanel10.Type" xml:space="preserve">
-    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanel10.Parent" xml:space="preserve">
-    <value>groupBoxSTEMoption2</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanel10.ZOrder" xml:space="preserve">
-    <value>2</value>
   </data>
   <data name="groupBoxSTEMoption2.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>

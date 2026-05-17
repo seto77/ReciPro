@@ -4372,48 +4372,6 @@ by two planes</value>
   <data name="checkBox3dOptionLabel.Text" xml:space="preserve">
     <value>Label</value>
   </data>
-  <data name="scalablePictureBoxAdvanced1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
-  </data>
-  <data name="scalablePictureBoxAdvanced1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="scalablePictureBoxAdvanced1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 3, 2, 3</value>
-  </data>
-  <data name="scalablePictureBoxAdvanced1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>410, 673</value>
-  </data>
-  <data name="scalablePictureBoxAdvanced1.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;scalablePictureBoxAdvanced1.Name" xml:space="preserve">
-    <value>scalablePictureBoxAdvanced1</value>
-  </data>
-  <data name="&gt;&gt;scalablePictureBoxAdvanced1.Type" xml:space="preserve">
-    <value>Crystallography.Controls.ScalablePictureBoxAdvanced, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="scalablePictureBoxAdvanced2.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
-  </data>
-  <data name="scalablePictureBoxAdvanced2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="scalablePictureBoxAdvanced2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 3, 2, 3</value>
-  </data>
-  <data name="scalablePictureBoxAdvanced2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>410, 673</value>
-  </data>
-  <data name="scalablePictureBoxAdvanced2.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;scalablePictureBoxAdvanced2.Name" xml:space="preserve">
-    <value>scalablePictureBoxAdvanced2</value>
-  </data>
-  <data name="&gt;&gt;scalablePictureBoxAdvanced2.Type" xml:space="preserve">
-    <value>Crystallography.Controls.ScalablePictureBoxAdvanced, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
   <data name="labelAxisPlane.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Variable Text, 9.75pt</value>
   </data>

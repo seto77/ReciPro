@@ -52,7 +52,6 @@
             textBoxZoneAxis = new System.Windows.Forms.TextBox();
             numericBoxAngleAxes = new NumericBox();
             flowLayoutPanel6 = new System.Windows.Forms.FlowLayoutPanel();
-            flowLayoutPanelI2 = new System.Windows.Forms.FlowLayoutPanel();
             numericBoxLengthPlane2 = new NumericBox();
             label40 = new System.Windows.Forms.Label();
             flowLayoutPanel14 = new System.Windows.Forms.FlowLayoutPanel();
@@ -62,8 +61,6 @@
             numericBoxLengthAxis1 = new NumericBox();
             numericBoxAnglePlaneAxis2 = new NumericBox();
             flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            flowLayoutPanelH1 = new System.Windows.Forms.FlowLayoutPanel();
-            flowLayoutPanelK1 = new System.Windows.Forms.FlowLayoutPanel();
             numericBoxLengthPlane1 = new NumericBox();
             textBoxZonePlane = new System.Windows.Forms.TextBox();
             label42 = new System.Windows.Forms.Label();
@@ -497,7 +494,6 @@
             // 
             flowLayoutPanel6.AutoSize = true;
             flowLayoutPanel6.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            flowLayoutPanel6.Controls.Add(flowLayoutPanelI2);
             flowLayoutPanel6.Controls.Add(indexControlPlane2);
             flowLayoutPanel6.Controls.Add(numericBoxLengthPlane2);
             flowLayoutPanel6.Location = new System.Drawing.Point(80, 66);
@@ -505,17 +501,6 @@
             flowLayoutPanel6.Name = "flowLayoutPanel6";
             flowLayoutPanel6.Size = new System.Drawing.Size(195, 41);
             flowLayoutPanel6.TabIndex = 5;
-            // 
-            // flowLayoutPanelI2
-            // 
-            flowLayoutPanelI2.AutoSize = true;
-            flowLayoutPanelI2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            flowLayoutPanelI2.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            flowLayoutPanelI2.Location = new System.Drawing.Point(0, 0);
-            flowLayoutPanelI2.Margin = new System.Windows.Forms.Padding(0);
-            flowLayoutPanelI2.Name = "flowLayoutPanelI2";
-            flowLayoutPanelI2.Size = new System.Drawing.Size(0, 0);
-            flowLayoutPanelI2.TabIndex = 6;
             // 
             // numericBoxLengthPlane2
             // 
@@ -656,36 +641,12 @@
             flowLayoutPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             flowLayoutPanel1.BackColor = System.Drawing.SystemColors.Control;
             flowLayoutPanel1.Controls.Add(indexControlPlane1);
-            flowLayoutPanel1.Controls.Add(flowLayoutPanelH1);
-            flowLayoutPanel1.Controls.Add(flowLayoutPanelK1);
             flowLayoutPanel1.Controls.Add(numericBoxLengthPlane1);
             flowLayoutPanel1.Location = new System.Drawing.Point(80, 5);
             flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
             flowLayoutPanel1.Size = new System.Drawing.Size(195, 41);
             flowLayoutPanel1.TabIndex = 5;
-            // 
-            // flowLayoutPanelH1
-            // 
-            flowLayoutPanelH1.AutoSize = true;
-            flowLayoutPanelH1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            flowLayoutPanelH1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            flowLayoutPanelH1.Location = new System.Drawing.Point(128, 0);
-            flowLayoutPanelH1.Margin = new System.Windows.Forms.Padding(0);
-            flowLayoutPanelH1.Name = "flowLayoutPanelH1";
-            flowLayoutPanelH1.Size = new System.Drawing.Size(0, 0);
-            flowLayoutPanelH1.TabIndex = 6;
-            // 
-            // flowLayoutPanelK1
-            // 
-            flowLayoutPanelK1.AutoSize = true;
-            flowLayoutPanelK1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            flowLayoutPanelK1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            flowLayoutPanelK1.Location = new System.Drawing.Point(128, 0);
-            flowLayoutPanelK1.Margin = new System.Windows.Forms.Padding(0);
-            flowLayoutPanelK1.Name = "flowLayoutPanelK1";
-            flowLayoutPanelK1.Size = new System.Drawing.Size(0, 0);
-            flowLayoutPanelK1.TabIndex = 6;
             // 
             // numericBoxLengthPlane1
             // 
@@ -1462,11 +1423,8 @@
         private System.Data.DataColumn dataColumnMulti;
         private System.Windows.Forms.BindingSource bindingSourceScatteringFactor;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelH1;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelK1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel14;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel6;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelI2;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel11;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private GraphicsBox graphicsBoxSymmetryElements;

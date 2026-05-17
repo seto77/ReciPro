@@ -266,7 +266,6 @@
             trackBarSpotOpacity = new System.Windows.Forms.TrackBar();
             numericBoxSpotRadius = new NumericBox();
             checkBoxDrawSameSize = new System.Windows.Forms.CheckBox();
-            flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             flowLayoutPanelGaussianOption = new System.Windows.Forms.FlowLayoutPanel();
             flowLayoutPanelPointSpreadIntensity = new System.Windows.Forms.FlowLayoutPanel();
             label10 = new System.Windows.Forms.Label();
@@ -275,7 +274,6 @@
             label25 = new System.Windows.Forms.Label();
             comboBoxScaleColorScale = new System.Windows.Forms.ComboBox();
             checkBoxLogScale = new System.Windows.Forms.CheckBox();
-            flowLayoutPanelColorScale = new System.Windows.Forms.FlowLayoutPanel();
             flowLayoutPanelSpotColor = new System.Windows.Forms.FlowLayoutPanel();
             label2 = new System.Windows.Forms.Label();
             colorControlNoCondition = new ColorControl();
@@ -2273,7 +2271,6 @@
             flowLayoutPanelAppearance.Controls.Add(flowLayoutPanelSpotOpacity);
             flowLayoutPanelAppearance.Controls.Add(numericBoxSpotRadius);
             flowLayoutPanelAppearance.Controls.Add(checkBoxDrawSameSize);
-            flowLayoutPanelAppearance.Controls.Add(flowLayoutPanel2);
             flowLayoutPanelAppearance.Controls.Add(flowLayoutPanelGaussianOption);
             flowLayoutPanelAppearance.Controls.Add(flowLayoutPanelSpotColor);
             flowLayoutPanelAppearance.Name = "flowLayoutPanelAppearance";
@@ -2364,11 +2361,6 @@
             checkBoxDrawSameSize.UseVisualStyleBackColor = true;
             checkBoxDrawSameSize.CheckedChanged += Draw;
             // 
-            // flowLayoutPanel2
-            // 
-            resources.ApplyResources(flowLayoutPanel2, "flowLayoutPanel2");
-            flowLayoutPanel2.Name = "flowLayoutPanel2";
-            // 
             // flowLayoutPanelGaussianOption
             // 
             resources.ApplyResources(flowLayoutPanelGaussianOption, "flowLayoutPanelGaussianOption");
@@ -2376,7 +2368,6 @@
             flowLayoutPanelGaussianOption.Controls.Add(flowLayoutPanelPointSpreadIntensity);
             flowLayoutPanelGaussianOption.Controls.Add(flowLayoutPanelScaleColor);
             flowLayoutPanelGaussianOption.Controls.Add(checkBoxLogScale);
-            flowLayoutPanelGaussianOption.Controls.Add(flowLayoutPanelColorScale);
             flowLayoutPanelGaussianOption.Name = "flowLayoutPanelGaussianOption";
             // 
             // flowLayoutPanelPointSpreadIntensity
@@ -2435,11 +2426,6 @@
             toolTip.SetToolTip(checkBoxLogScale, resources.GetString("checkBoxLogScale.ToolTip"));
             checkBoxLogScale.UseVisualStyleBackColor = true;
             checkBoxLogScale.CheckedChanged += Draw;
-            // 
-            // flowLayoutPanelColorScale
-            // 
-            resources.ApplyResources(flowLayoutPanelColorScale, "flowLayoutPanelColorScale");
-            flowLayoutPanelColorScale.Name = "flowLayoutPanelColorScale";
             // 
             // flowLayoutPanelSpotColor
             // 
@@ -2895,7 +2881,6 @@
         private System.Windows.Forms.Timer timerBlinkDebyeRing;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelIntensity;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelAppearance;
         private System.Windows.Forms.CheckBox checkBoxDebyeRingLabel;
         private System.Windows.Forms.Label label8;
@@ -2940,7 +2925,6 @@
         private System.Windows.Forms.Label label25;
         public System.Windows.Forms.ComboBox comboBoxScaleColorScale;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelColorScale;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem basicConceptOfBethesMethodToolStripMenuItem;
         private System.Windows.Forms.GroupBox groupBoxColor;
