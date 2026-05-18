@@ -56,8 +56,11 @@ public partial class LatticePlaneControl : UserControlBase
 
     #region LatticePlane クラスを画面下部から生成 / にセット
 
-    public LatticePlane GetFromInterface() =>
-        new(true, Crystal, indexControl.Values.X, indexControl.Values.Y, indexControl.Values.Z, numericBoxDistance.Value, colorControl.Argb);
+    public LatticePlane GetFromInterface() // 260518Cl Values getter の 3 連呼びを 1 回の分解に整理
+    {
+        var (h, k, l) = indexControl.Values;
+        return new LatticePlane(true, Crystal, h, k, l, numericBoxDistance.Value, colorControl.Argb);
+    }
 
     public void SetToInterface(LatticePlane plane)
     {

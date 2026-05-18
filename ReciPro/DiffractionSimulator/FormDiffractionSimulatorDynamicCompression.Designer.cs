@@ -117,7 +117,7 @@ namespace ReciPro
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI Variable Text", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(19, 16);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(88, 17);
@@ -1003,7 +1003,7 @@ namespace ReciPro
             this.trackBarAdvancedBack.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.trackBarAdvancedBack.ControlHeight = 26;
             this.trackBarAdvancedBack.DecimalPlaces = 2;
-            this.trackBarAdvancedBack.Font = new System.Drawing.Font("BIZ UDPGothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.trackBarAdvancedBack.Font = new System.Drawing.Font("Yu Gothic UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.trackBarAdvancedBack.FooterText = "";
             this.trackBarAdvancedBack.HeaderText = "";
             this.trackBarAdvancedBack.Location = new System.Drawing.Point(36, 586);
@@ -1027,7 +1027,7 @@ namespace ReciPro
             this.trackBarAdvancedTime.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.trackBarAdvancedTime.ControlHeight = 26;
             this.trackBarAdvancedTime.DecimalPlaces = 3;
-            this.trackBarAdvancedTime.Font = new System.Drawing.Font("BIZ UDPGothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.trackBarAdvancedTime.Font = new System.Drawing.Font("Yu Gothic UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.trackBarAdvancedTime.FooterText = "ns";
             this.trackBarAdvancedTime.HeaderText = "Time";
             this.trackBarAdvancedTime.Location = new System.Drawing.Point(0, 335);
@@ -1051,7 +1051,7 @@ namespace ReciPro
             this.trackBarAdvancedFront.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.trackBarAdvancedFront.ControlHeight = 26;
             this.trackBarAdvancedFront.DecimalPlaces = 2;
-            this.trackBarAdvancedFront.Font = new System.Drawing.Font("BIZ UDPGothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.trackBarAdvancedFront.Font = new System.Drawing.Font("Yu Gothic UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.trackBarAdvancedFront.FooterText = "";
             this.trackBarAdvancedFront.HeaderText = "";
             this.trackBarAdvancedFront.Location = new System.Drawing.Point(36, 555);
@@ -1079,7 +1079,7 @@ namespace ReciPro
             this.graphControl.DivisionLineColor = System.Drawing.Color.LightGray;
             this.graphControl.FixRangeHorizontal = false;
             this.graphControl.FixRangeVertical = false;
-            this.graphControl.Font = new System.Drawing.Font("Segoe UI Variable Text", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.graphControl.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.graphControl.GraphTitle = "";
             this.graphControl.AxisXTextVisible = true;
             this.graphControl.Interpolation = false;
@@ -1105,7 +1105,7 @@ namespace ReciPro
             this.graphControl.Size = new System.Drawing.Size(475, 186);
             this.graphControl.Smoothing = false;
             this.graphControl.TabIndex = 0;
-            this.graphControl.UpperPanelFont = new System.Drawing.Font("Segoe UI Variable Text", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.graphControl.UpperPanelFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.graphControl.UnitX = " nm";
             this.graphControl.UnitY = " MBar";
             this.graphControl.UpperPanelVisible = false;
@@ -1256,7 +1256,7 @@ namespace ReciPro
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Segoe UI Variable Text", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(19, 16);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(88, 17);
@@ -1282,7 +1282,7 @@ namespace ReciPro
             this.Controls.Add(this.trackBarAdvancedFront);
             this.Controls.Add(this.graphControl);
             this.DoubleBuffered = true;
-            this.Font = new System.Drawing.Font("Segoe UI Variable Text", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.MaximizeBox = false;

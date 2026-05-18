@@ -39,7 +39,8 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            dataGridView = new System.Windows.Forms.DataGridView();
+            // dataGridView = new System.Windows.Forms.DataGridView(); // 260518Cl 旧実装: DPI変更時に列幅が追従しない
+            dataGridView = new DpiAwareDataGridView(); // 260518Cl
             dataGridViewTextBoxColumnH = new System.Windows.Forms.DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumnK = new System.Windows.Forms.DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumnI = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -561,7 +562,8 @@
 
         private System.Windows.Forms.CheckBox checkBoxHideEquivalentPlane;
         private System.Windows.Forms.CheckBox checkBoxHideProhibitedPlanes;
-        private System.Windows.Forms.DataGridView dataGridView;
+        // private System.Windows.Forms.DataGridView dataGridView; // 260518Cl 旧実装
+        private DpiAwareDataGridView dataGridView; // 260518Cl
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button buttonCopyClipboard;
         private System.Windows.Forms.CheckBox checkBoxBragBrentano;

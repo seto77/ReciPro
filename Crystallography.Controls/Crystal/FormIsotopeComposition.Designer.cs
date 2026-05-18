@@ -26,7 +26,8 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.dataGridView = new System.Windows.Forms.DataGridView();
+            // this.dataGridView = new System.Windows.Forms.DataGridView(); // 260518Cl 旧実装: DPI変更時に列幅が追従しない
+            this.dataGridView = new DpiAwareDataGridView(); // 260518Cl
             this.ColumnAtomicWeight = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnNaturalAbundance = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnCustomAbundance = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -117,7 +118,7 @@
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.dataGridView);
-            this.Font = new System.Drawing.Font("Segoe UI Variable Text", 9F);
+            this.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.Name = "FormIsotopeComposition";
             this.Text = "FormIsotopeComposition";
             this.ResumeLayout(false);
@@ -126,7 +127,8 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView;
+        // private System.Windows.Forms.DataGridView dataGridView; // 260518Cl 旧実装
+        private DpiAwareDataGridView dataGridView; // 260518Cl
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button buttonCancel;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnAtomicWeight;

@@ -126,7 +126,7 @@
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="checkBoxShowPolyhedron.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="checkBoxShowPolyhedron.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -160,7 +160,7 @@
     <value>2</value>
   </data>
   <data name="comboBoxBondingAtom1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="comboBoxBondingAtom1.ItemHeight" type="System.Int32, mscorlib">
     <value>15</value>
@@ -199,7 +199,7 @@
     <value>0</value>
   </data>
   <data name="comboBoxBondingAtom2.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="comboBoxBondingAtom2.ItemHeight" type="System.Int32, mscorlib">
     <value>15</value>
@@ -241,7 +241,7 @@
     <value>True</value>
   </data>
   <data name="label58.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="label58.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -274,7 +274,7 @@
     <value>True</value>
   </data>
   <data name="label57.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="label57.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -307,7 +307,7 @@
     <value>True</value>
   </data>
   <data name="label39.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="label39.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleRight</value>
@@ -346,7 +346,7 @@
     <value>True</value>
   </data>
   <data name="label40.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="label40.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -379,10 +379,10 @@
     <value>GrowAndShrink</value>
   </data>
   <data name="numericBoxPolyhedronAlpha.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="numericBoxPolyhedronAlpha.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="numericBoxPolyhedronAlpha.HeaderText" xml:space="preserve">
     <value>Opacity</value>
@@ -427,7 +427,7 @@
     <value>True</value>
   </data>
   <data name="checkBoxShowEdges.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="checkBoxShowEdges.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -463,10 +463,10 @@
     <value>GrowAndShrink</value>
   </data>
   <data name="numericBoxEdgeWidth.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="numericBoxEdgeWidth.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="numericBoxEdgeWidth.HeaderText" xml:space="preserve">
     <value>Width</value>
@@ -541,7 +541,7 @@
     <value>False</value>
   </data>
   <data name="checkBoxShowInnerBonds.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="checkBoxShowInnerBonds.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -580,7 +580,7 @@
     <value>False</value>
   </data>
   <data name="checkBoxShowVertexAtoms.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="checkBoxShowVertexAtoms.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -619,7 +619,7 @@
     <value>False</value>
   </data>
   <data name="checkBoxShowCenterAtom.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="checkBoxShowCenterAtom.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -652,7 +652,7 @@
     <value>5</value>
   </data>
   <data name="groupBoxPolyhedron.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="groupBoxPolyhedron.Location" type="System.Drawing.Point, System.Drawing">
     <value>279, 0</value>
@@ -685,10 +685,10 @@
     <value>GrowAndShrink</value>
   </data>
   <data name="numericBoxBondAlpha.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="numericBoxBondAlpha.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="numericBoxBondAlpha.HeaderText" xml:space="preserve">
     <value>Opacity</value>
@@ -733,13 +733,13 @@
     <value>GrowAndShrink</value>
   </data>
   <data name="numericBoxBondRadius.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="numericBoxBondRadius.FooterText" xml:space="preserve">
     <value>Å</value>
   </data>
   <data name="numericBoxBondRadius.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="numericBoxBondRadius.HeaderText" xml:space="preserve">
     <value>Radius</value>
@@ -790,13 +790,13 @@
     <value>GrowAndShrink</value>
   </data>
   <data name="numericBoxBondMaxLength.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="numericBoxBondMaxLength.FooterText" xml:space="preserve">
     <value>Å</value>
   </data>
   <data name="numericBoxBondMaxLength.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="numericBoxBondMaxLength.HeaderText" xml:space="preserve">
     <value>-</value>
@@ -841,10 +841,10 @@
     <value>GrowAndShrink</value>
   </data>
   <data name="numericBoxBondMinLength.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="numericBoxBondMinLength.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="numericBoxBondMinLength.HeaderText" xml:space="preserve">
     <value>Length between</value>
@@ -913,7 +913,7 @@
     <value>True</value>
   </data>
   <data name="checkBoxShowBonds.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="checkBoxShowBonds.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -946,7 +946,7 @@
     <value>0</value>
   </data>
   <data name="buttonAddBond.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="buttonAddBond.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>TopCenter</value>
@@ -982,7 +982,7 @@
     <value>0</value>
   </data>
   <data name="buttonChangeBond.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="buttonChangeBond.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>TopCenter</value>
@@ -1024,7 +1024,7 @@
     <value>True</value>
   </data>
   <data name="buttonDeleteBond.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="buttonDeleteBond.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>TopCenter</value>
@@ -1111,7 +1111,7 @@
     <value>Fill</value>
   </data>
   <data name="dataGridView.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="dataGridView.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
@@ -1129,7 +1129,7 @@
     <value>dataGridView</value>
   </data>
   <data name="&gt;&gt;dataGridView.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>Crystallography.Controls.DpiAwareDataGridView, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;dataGridView.Parent" xml:space="preserve">
     <value>$this</value>
@@ -1144,10 +1144,10 @@
     <value>GrowAndShrink</value>
   </data>
   <data name="colorControlEdges.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="colorControlEdges.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="colorControlEdges.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -1156,7 +1156,7 @@
     <value />
   </data>
   <data name="colorControlEdges.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="colorControlEdges.HeaderMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 2, 0, 0</value>
@@ -1201,10 +1201,10 @@
     <value>GrowAndShrink</value>
   </data>
   <data name="colorControlPolyhedron.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="colorControlPolyhedron.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="colorControlPolyhedron.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -1213,7 +1213,7 @@
     <value />
   </data>
   <data name="colorControlPolyhedron.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="colorControlPolyhedron.HeaderMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 2, 0, 0</value>
@@ -1258,10 +1258,10 @@
     <value>GrowAndShrink</value>
   </data>
   <data name="colorControlBond.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="colorControlBond.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="colorControlBond.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -1270,7 +1270,7 @@
     <value />
   </data>
   <data name="colorControlBond.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="colorControlBond.HeaderMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 2, 0, 0</value>
@@ -1381,7 +1381,7 @@
     <value>GrowAndShrink</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 4, 3, 4</value>

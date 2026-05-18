@@ -58,40 +58,78 @@ public class SpinButton : Control
         DrawPart(e.Graphics, Part.Down, DownRect);
     }
 
+    // 260519Cl 変更: VisualStyleRenderer / ControlPaint 経路は OS テーマ・DPI・ハイコントラスト等で
+    // 見た目が変わるため、背景塗り + 三角形矢印で環境非依存に統一描画する。
+    // 旧実装は下の DrawPart_Legacy / GetElement に残してある。
+    // 260519Cl 整理: SystemBrushes 利用で per-paint allocation を排除、Pen は static にキャッシュ。
+    private static readonly Pen borderPen = new(ControlPaint.Light(SystemColors.ControlDark));
+
     private void DrawPart(Graphics g, Part part, Rectangle r)
     {
         var state = GetState(part);
-        if (VisualStyleRenderer.IsSupported)
+
+        var bgBrush = state switch
         {
-            var element = GetElement(part, state);
-            if (VisualStyleRenderer.IsElementDefined(element))
-            {
-                new VisualStyleRenderer(element).DrawBackground(g, r);
-                return;
-            }
-        }
-        // テーマが無効な環境へのフォールバック
-        var btn = state switch
-        {
-            PartState.Pressed => ButtonState.Pushed,
-            PartState.Disabled => ButtonState.Inactive,
-            _ => ButtonState.Normal,
+            PartState.Pressed => SystemBrushes.ControlDark,
+            PartState.Hot => SystemBrushes.ControlLight,
+            _ => SystemBrushes.Control,
         };
-        ControlPaint.DrawScrollButton(g, r,
-            part == Part.Up ? ScrollButton.Up : ScrollButton.Down, btn);
+        g.FillRectangle(bgBrush, r);
+        g.DrawRectangle(borderPen, r.X, r.Y, r.Width - 1, r.Height - 1);
+
+        var arrowBrush = state == PartState.Disabled ? SystemBrushes.GrayText : SystemBrushes.ControlText;
+
+        // 三角形サイズはコントロール全体の寸法から算出 (Height が奇数のとき Up/Down で
+        // 1px ずれて非対称化するのを防ぐため partH = min(UpRect.Height, DownRect.Height) を共有)。
+        int partH = Math.Min(UpRect.Height, DownRect.Height);
+        int size = Math.Max(3, Math.Min((Width - 2) / 4, (partH - 1) / 2));
+        int cx = Width / 2;
+        int cy = part == Part.Up ? partH / 2 : Height - partH / 2;
+
+        for (int k = 0; k < size; k++)
+        {
+            int w = part == Part.Up ? 2 * k + 1 : 2 * (size - 1 - k) + 1;
+            int y = cy - size / 2 + k;
+            int x = cx - w / 2;
+            g.FillRectangle(arrowBrush, x, y, w, 1);
+        }
     }
 
-    private static VisualStyleElement GetElement(Part part, PartState state) => (part, state) switch
-    {
-        (Part.Up, PartState.Normal) => VisualStyleElement.Spin.Up.Normal,
-        (Part.Up, PartState.Hot) => VisualStyleElement.Spin.Up.Hot,
-        (Part.Up, PartState.Pressed) => VisualStyleElement.Spin.Up.Pressed,
-        (Part.Up, PartState.Disabled) => VisualStyleElement.Spin.Up.Disabled,
-        (Part.Down, PartState.Normal) => VisualStyleElement.Spin.Down.Normal,
-        (Part.Down, PartState.Hot) => VisualStyleElement.Spin.Down.Hot,
-        (Part.Down, PartState.Pressed) => VisualStyleElement.Spin.Down.Pressed,
-        _ => VisualStyleElement.Spin.Down.Disabled,
-    };
+    // 260519Cl コメントアウト: 旧 VisualStyleRenderer ベース実装。環境依存性の参照用に保存。
+    //private void DrawPart_Legacy(Graphics g, Part part, Rectangle r)
+    //{
+    //    var state = GetState(part);
+    //    if (VisualStyleRenderer.IsSupported)
+    //    {
+    //        var element = GetElement(part, state);
+    //        if (VisualStyleRenderer.IsElementDefined(element))
+    //        {
+    //            new VisualStyleRenderer(element).DrawBackground(g, r);
+    //            return;
+    //        }
+    //    }
+    //    // テーマが無効な環境へのフォールバック
+    //    var btn = state switch
+    //    {
+    //        PartState.Pressed => ButtonState.Pushed,
+    //        PartState.Disabled => ButtonState.Inactive,
+    //        _ => ButtonState.Normal,
+    //    };
+    //    ControlPaint.DrawScrollButton(g, r,
+    //        part == Part.Up ? ScrollButton.Up : ScrollButton.Down, btn);
+    //}
+
+    //private static VisualStyleElement GetElement(Part part, PartState state) => (part, state) switch
+    //{
+    //    (Part.Up, PartState.Normal) => VisualStyleElement.Spin.Up.Normal,
+    //    (Part.Up, PartState.Hot) => VisualStyleElement.Spin.Up.Hot,
+    //    (Part.Up, PartState.Pressed) => VisualStyleElement.Spin.Up.Pressed,
+    //    (Part.Up, PartState.Disabled) => VisualStyleElement.Spin.Up.Disabled,
+    //    (Part.Down, PartState.Normal) => VisualStyleElement.Spin.Down.Normal,
+    //    (Part.Down, PartState.Hot) => VisualStyleElement.Spin.Down.Hot,
+    //    (Part.Down, PartState.Pressed) => VisualStyleElement.Spin.Down.Pressed,
+    //    _ => VisualStyleElement.Spin.Down.Disabled,
+    //};
 
     private PartState GetState(Part part)
     {

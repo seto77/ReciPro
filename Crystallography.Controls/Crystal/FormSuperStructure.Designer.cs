@@ -119,7 +119,7 @@ partial class FormSuperStructure
         Controls.Add(numericBoxC);
         Controls.Add(numericBoxB);
         Controls.Add(numericBoxA);
-        Font = new System.Drawing.Font("Segoe UI Variable Text", 9F);
+        Font = new System.Drawing.Font("Segoe UI", 9F);
         FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
         Name = "FormSuperStructure";
         ShowIcon = false;

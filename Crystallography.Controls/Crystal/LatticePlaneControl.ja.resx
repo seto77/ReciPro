@@ -125,7 +125,7 @@
     <value>390, 22</value>
   </data>
   <data name="buttonAddBond.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="buttonAddBond.Size" type="System.Drawing.Size, System.Drawing">
     <value>39, 22</value>
@@ -134,7 +134,7 @@
     <value>追加</value>
   </data>
   <data name="buttonChangeBond.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="buttonChangeBond.Size" type="System.Drawing.Size, System.Drawing">
     <value>39, 22</value>
@@ -143,7 +143,7 @@
     <value>更新</value>
   </data>
   <data name="buttonDeleteBond.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="buttonDeleteBond.Location" type="System.Drawing.Point, System.Drawing">
     <value>351, 0</value>
@@ -155,7 +155,7 @@
     <value>削除</value>
   </data>
   <data name="dataGridView.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="dataGridView.Size" type="System.Drawing.Size, System.Drawing">
     <value>390, 147</value>
@@ -202,7 +202,7 @@
     <value>81, 27</value>
   </data>
   <data name="colorControl.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="colorControl.HeaderText" xml:space="preserve">
     <value>色</value>
@@ -217,7 +217,7 @@
     <value>格子面の色</value>
   </data>
   <data name="label6.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
     <value>53, 12</value>

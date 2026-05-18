@@ -767,7 +767,7 @@ public partial class CrystalControl : UserControlBase
         {
             var enabled = value && crystal != null && crystal.MillerBravaisCapable; // 260517Cl 共通式の一度きり評価、crystal null 防御
             FormSymmetryInformation.MillerBravais = FormScatteringFactor.MillerBravais = enabled;
-            latticePlaneControl.MillerBravaisIndex = boundControl.MillerBravaisIndex = enabled; 
+            latticePlaneControl.MillerBravaisIndex = boundControl.MillerBravaisIndex = enabled;
         }
     }
 }

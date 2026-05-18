@@ -285,7 +285,7 @@ public partial class NumericBox : UserControlBase
     public float TextFontSize
     {
         get => textBox.Font.Size;
-        set => textBox.Font = new Font("Segoe UI Variable Text", value, textBox.Font.Style);
+        set => textBox.Font = new Font("Segoe UI", value, textBox.Font.Style);
     }
 
     // 260428Cl 追加: NumericBox 全体の Font プロパティはデザイナから非表示にする。

@@ -166,7 +166,7 @@
     <value>True</value>
   </data>
   <data name="checkBoxDrawGuideCircles.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="checkBoxDrawGuideCircles.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -208,7 +208,7 @@
     <value>True</value>
   </data>
   <data name="label2.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="label2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -244,7 +244,7 @@
     <value>True</value>
   </data>
   <data name="labelDivisionNumber.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="labelDivisionNumber.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -304,7 +304,7 @@
     <value>True</value>
   </data>
   <data name="radioButtonLACBED.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="radioButtonLACBED.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -385,7 +385,7 @@
     <value>True</value>
   </data>
   <data name="radioButtonCBED.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="radioButtonCBED.Location" type="System.Drawing.Point, System.Drawing">
     <value>8, 58</value>
@@ -415,7 +415,7 @@
     <value>4</value>
   </data>
   <data name="comboBoxSolver.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 8pt</value>
+    <value>Segoe UI, 8pt</value>
   </data>
   <data name="comboBoxSolver.Items" xml:space="preserve">
     <value>Auto</value>
@@ -787,7 +787,7 @@ The number of two-dimensional divisions is displayed on the right</value>
     <value>True</value>
   </data>
   <data name="label13.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="label13.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -817,7 +817,7 @@ The number of two-dimensional divisions is displayed on the right</value>
     <value>14</value>
   </data>
   <data name="groupBoxInputParameters.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt, style=Bold</value>
+    <value>Segoe UI, 9.75pt, style=Bold</value>
   </data>
   <data name="groupBoxInputParameters.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, -1</value>
@@ -847,7 +847,7 @@ The number of two-dimensional divisions is displayed on the right</value>
     <value>True</value>
   </data>
   <data name="radioButtonIndividualDisk.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="radioButtonIndividualDisk.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -883,7 +883,7 @@ The number of two-dimensional divisions is displayed on the right</value>
     <value>True</value>
   </data>
   <data name="radioButtonAllDisks.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="radioButtonAllDisks.Location" type="System.Drawing.Point, System.Drawing">
     <value>126, 53</value>
@@ -919,7 +919,7 @@ The number of two-dimensional divisions is displayed on the right</value>
     <value>False</value>
   </data>
   <data name="label3.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="label3.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -958,7 +958,7 @@ The number of two-dimensional divisions is displayed on the right</value>
     <value>False</value>
   </data>
   <data name="label11.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="label11.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -991,7 +991,7 @@ The number of two-dimensional divisions is displayed on the right</value>
     <value>3</value>
   </data>
   <data name="comboBoxGradient.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="comboBoxGradient.Items" xml:space="preserve">
     <value>Positive</value>
@@ -1027,7 +1027,7 @@ The number of two-dimensional divisions is displayed on the right</value>
     <value>4</value>
   </data>
   <data name="comboBoxScale.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="comboBoxScale.Items" xml:space="preserve">
     <value>Gray</value>
@@ -1190,7 +1190,7 @@ The larger this value is, the brighter the outer disk appears to be.</value>
     <value>9</value>
   </data>
   <data name="textBoxThickness.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="textBoxThickness.Location" type="System.Drawing.Point, System.Drawing">
     <value>69, 21</value>
@@ -1220,7 +1220,7 @@ The larger this value is, the brighter the outer disk appears to be.</value>
     <value>True</value>
   </data>
   <data name="label6.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="label6.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -1253,7 +1253,7 @@ The larger this value is, the brighter the outer disk appears to be.</value>
     <value>True</value>
   </data>
   <data name="label4.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="label4.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -1286,7 +1286,7 @@ The larger this value is, the brighter the outer disk appears to be.</value>
     <value>True</value>
   </data>
   <data name="labelGamma.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="labelGamma.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -1319,7 +1319,7 @@ The larger this value is, the brighter the outer disk appears to be.</value>
     <value>True</value>
   </data>
   <data name="label8.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="label8.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -1352,7 +1352,7 @@ The larger this value is, the brighter the outer disk appears to be.</value>
     <value>True</value>
   </data>
   <data name="label7.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="label7.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -1385,7 +1385,7 @@ The larger this value is, the brighter the outer disk appears to be.</value>
     <value>True</value>
   </data>
   <data name="label1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="label1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -1418,7 +1418,7 @@ The larger this value is, the brighter the outer disk appears to be.</value>
     <value>True</value>
   </data>
   <data name="label5.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="label5.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -1451,7 +1451,7 @@ The larger this value is, the brighter the outer disk appears to be.</value>
     <value>False</value>
   </data>
   <data name="groupBoxOutput.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt, style=Bold</value>
+    <value>Segoe UI, 9.75pt, style=Bold</value>
   </data>
   <data name="groupBoxOutput.Location" type="System.Drawing.Point, System.Drawing">
     <value>409, -1</value>
@@ -1484,7 +1484,7 @@ The larger this value is, the brighter the outer disk appears to be.</value>
     <value>200, 16</value>
   </data>
   <data name="toolStripStatusLabel2.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 8pt</value>
+    <value>Segoe UI, 8pt</value>
   </data>
   <data name="toolStripStatusLabel2.Size" type="System.Drawing.Size, System.Drawing">
     <value>19, 17</value>
@@ -1538,7 +1538,7 @@ The larger this value is, the brighter the outer disk appears to be.</value>
     <value>787, 205</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 10pt</value>
+    <value>Segoe UI, 10pt</value>
   </data>
   <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 5, 3, 5</value>

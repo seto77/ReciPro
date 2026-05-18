@@ -49,9 +49,9 @@
             // 
             numericBoxH.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             numericBoxH.BackColor = System.Drawing.Color.Transparent;
-            numericBoxH.FooterFont = new System.Drawing.Font("Segoe UI Variable Text", 9.75F);
+            numericBoxH.FooterFont = new System.Drawing.Font("Segoe UI", 9.75F);
             numericBoxH.FooterPadding = new System.Windows.Forms.Padding(0, 2, 0, 0);
-            numericBoxH.HeaderFont = new System.Drawing.Font("Segoe UI Variable Text", 9F);
+            numericBoxH.HeaderFont = new System.Drawing.Font("Segoe UI", 9F);
             numericBoxH.HeaderPadding = new System.Windows.Forms.Padding(0, 4, 0, 0);
             numericBoxH.Location = new System.Drawing.Point(17, 16);
             numericBoxH.Margin = new System.Windows.Forms.Padding(0);
@@ -109,9 +109,9 @@
             // 
             numericBoxL.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             numericBoxL.BackColor = System.Drawing.Color.Transparent;
-            numericBoxL.FooterFont = new System.Drawing.Font("Segoe UI Variable Text", 9.75F);
+            numericBoxL.FooterFont = new System.Drawing.Font("Segoe UI", 9.75F);
             numericBoxL.FooterPadding = new System.Windows.Forms.Padding(0, 2, 0, 0);
-            numericBoxL.HeaderFont = new System.Drawing.Font("Segoe UI Variable Text", 9F);
+            numericBoxL.HeaderFont = new System.Drawing.Font("Segoe UI", 9F);
             numericBoxL.HeaderPadding = new System.Windows.Forms.Padding(0, 4, 0, 0);
             numericBoxL.Location = new System.Drawing.Point(135, 16);
             numericBoxL.Margin = new System.Windows.Forms.Padding(0);
@@ -152,9 +152,9 @@
             // 
             numericBoxI.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             numericBoxI.BackColor = System.Drawing.Color.Transparent;
-            numericBoxI.FooterFont = new System.Drawing.Font("Segoe UI Variable Text", 9.75F);
+            numericBoxI.FooterFont = new System.Drawing.Font("Segoe UI", 9.75F);
             numericBoxI.FooterPadding = new System.Windows.Forms.Padding(0, 2, 0, 0);
-            numericBoxI.HeaderFont = new System.Drawing.Font("Segoe UI Variable Text", 9F);
+            numericBoxI.HeaderFont = new System.Drawing.Font("Segoe UI", 9F);
             numericBoxI.HeaderPadding = new System.Windows.Forms.Padding(0, 4, 0, 0);
             numericBoxI.Location = new System.Drawing.Point(103, 16);
             numericBoxI.Margin = new System.Windows.Forms.Padding(0);
@@ -196,9 +196,9 @@
             // 
             numericBoxK.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             numericBoxK.BackColor = System.Drawing.Color.Transparent;
-            numericBoxK.FooterFont = new System.Drawing.Font("Segoe UI Variable Text", 9.75F);
+            numericBoxK.FooterFont = new System.Drawing.Font("Segoe UI", 9.75F);
             numericBoxK.FooterPadding = new System.Windows.Forms.Padding(0, 2, 0, 0);
-            numericBoxK.HeaderFont = new System.Drawing.Font("Segoe UI Variable Text", 9F);
+            numericBoxK.HeaderFont = new System.Drawing.Font("Segoe UI", 9F);
             numericBoxK.HeaderPadding = new System.Windows.Forms.Padding(0, 4, 0, 0);
             numericBoxK.Location = new System.Drawing.Point(65, 16);
             numericBoxK.Margin = new System.Windows.Forms.Padding(0);

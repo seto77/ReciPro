@@ -119,7 +119,7 @@
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="textBoxCalcInformation.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 7.5pt</value>
+    <value>Yu Gothic UI, 7.5pt</value>
   </data>
   <data name="textBoxCalcInformation.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 12</value>
@@ -131,7 +131,7 @@
     <value />
   </data>
   <data name="label11.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="label11.Size" type="System.Drawing.Size, System.Drawing">
     <value>106, 12</value>
@@ -162,7 +162,7 @@
     <value />
   </data>
   <data name="label13.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="label13.Size" type="System.Drawing.Size, System.Drawing">
     <value>211, 12</value>
@@ -190,7 +190,7 @@
     <value>0, 48</value>
   </data>
   <data name="flowLayoutPanelLegend.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="flowLayoutPanelLegend.Location" type="System.Drawing.Point, System.Drawing">
     <value>516, 0</value>
@@ -205,7 +205,7 @@
     <value />
   </data>
   <data name="tabPageBounds.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9.75pt</value>
+    <value>Yu Gothic UI, 9.75pt</value>
   </data>
   <data name="tabPageBounds.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 22</value>
@@ -220,7 +220,7 @@
     <value />
   </data>
   <data name="tabPageAtom.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9.75pt</value>
+    <value>Yu Gothic UI, 9.75pt</value>
   </data>
   <data name="tabPageAtom.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 22</value>
@@ -235,7 +235,7 @@
     <value />
   </data>
   <data name="tabPageBond.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9.75pt</value>
+    <value>Yu Gothic UI, 9.75pt</value>
   </data>
   <data name="tabPageBond.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 22</value>
@@ -250,7 +250,7 @@
     <value />
   </data>
   <data name="tabPageUnitCell.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9.75pt</value>
+    <value>Yu Gothic UI, 9.75pt</value>
   </data>
   <data name="tabPageUnitCell.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 22</value>
@@ -265,7 +265,7 @@
     <value />
   </data>
   <data name="tabPageLatticePlane.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9.75pt</value>
+    <value>Yu Gothic UI, 9.75pt</value>
   </data>
   <data name="tabPageLatticePlane.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 22</value>
@@ -280,7 +280,7 @@
     <value />
   </data>
   <data name="tabPageCoordinateInformation.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9.75pt</value>
+    <value>Yu Gothic UI, 9.75pt</value>
   </data>
   <data name="tabPageCoordinateInformation.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 22</value>
@@ -295,7 +295,7 @@
     <value />
   </data>
   <data name="tabPageInformation.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9.75pt</value>
+    <value>Yu Gothic UI, 9.75pt</value>
   </data>
   <data name="tabPageInformation.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 22</value>
@@ -331,14 +331,14 @@
     <value />
   </data>
   <data name="numericBoxInversionSymbolSize.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="numericBoxInversionSymbolSize.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 7, 0, 0</value>
   </data>
   <data name="numericBoxInversionSymbolSize.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="numericBoxInversionSymbolSize.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 7, 0, 0</value>
@@ -353,10 +353,10 @@
     <value />
   </data>
   <data name="colorControlInversion.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="colorControlInversion.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="colorControlInversion.HeaderText" xml:space="preserve">
     <value>色</value>
@@ -389,13 +389,13 @@
     <value />
   </data>
   <data name="numericBoxPlaneSymbolSize.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="numericBoxPlaneSymbolSize.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 7, 0, 0</value>
   </data>
   <data name="numericBoxPlaneSymbolSize.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="numericBoxPlaneSymbolSize.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 7, 0, 0</value>
@@ -410,13 +410,13 @@
     <value />
   </data>
   <data name="numericBoxPlaneLineWidth.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="numericBoxPlaneLineWidth.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 7, 0, 0</value>
   </data>
   <data name="numericBoxPlaneLineWidth.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="numericBoxPlaneLineWidth.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 7, 0, 0</value>
@@ -437,10 +437,10 @@
     <value />
   </data>
   <data name="colorControlPlane.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="colorControlPlane.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="colorControlPlane.HeaderText" xml:space="preserve">
     <value>色</value>
@@ -473,13 +473,13 @@
     <value />
   </data>
   <data name="numericBoxAxisSymbolSize.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="numericBoxAxisSymbolSize.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 7, 0, 0</value>
   </data>
   <data name="numericBoxAxisSymbolSize.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="numericBoxAxisSymbolSize.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 7, 0, 0</value>
@@ -494,13 +494,13 @@
     <value />
   </data>
   <data name="numericBoxAxisLineWidth.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="numericBoxAxisLineWidth.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 7, 0, 0</value>
   </data>
   <data name="numericBoxAxisLineWidth.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="numericBoxAxisLineWidth.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 7, 0, 0</value>
@@ -533,10 +533,10 @@
     <value />
   </data>
   <data name="colorControlAxisColor.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="colorControlAxisColor.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="colorControlAxisColor.HeaderText" xml:space="preserve">
     <value>色</value>
@@ -587,7 +587,7 @@
     <value />
   </data>
   <data name="tabControl.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="tabControl.ItemSize" type="System.Drawing.Size, System.Drawing">
     <value>72, 18</value>
@@ -611,7 +611,7 @@
     <value />
   </data>
   <data name="tabControlBoundOption.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9.75pt</value>
+    <value>Yu Gothic UI, 9.75pt</value>
   </data>
   <data name="tabControlBoundOption.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 22</value>
@@ -629,61 +629,61 @@
     <value />
   </data>
   <data name="buttonSetRange2.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="buttonSetRange2.ToolTip" xml:space="preserve">
     <value>表示範囲を各単位胞軸の ±3/4 に設定</value>
   </data>
   <data name="buttonSetRange4.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="buttonSetRange4.ToolTip" xml:space="preserve">
     <value>表示範囲を各単位胞軸の ±1.5 に設定</value>
   </data>
   <data name="buttonSetRange3.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="buttonSetRange3.ToolTip" xml:space="preserve">
     <value>表示範囲を各単位胞軸の ±1 に設定</value>
   </data>
   <data name="buttonSetCenter1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="buttonSetCenter1.ToolTip" xml:space="preserve">
     <value>表示中心を原点 (0, 0, 0) に設定</value>
   </data>
   <data name="buttonCenter2.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="buttonCenter2.ToolTip" xml:space="preserve">
     <value>表示中心を (1/4, 1/4, 1/4) に設定</value>
   </data>
   <data name="buttonSetCenter3.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="buttonSetCenter3.ToolTip" xml:space="preserve">
     <value>表示中心を (1/2, 1/2, 1/2) に設定</value>
   </data>
   <data name="buttonSetRange0.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="buttonSetRange0.ToolTip" xml:space="preserve">
     <value>表示範囲を各単位胞軸の ±1/4 に設定</value>
   </data>
   <data name="buttonSetRange1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="buttonSetRange1.ToolTip" xml:space="preserve">
     <value>表示範囲を各単位胞軸の ±1/2 に設定</value>
   </data>
   <data name="numericBoxCRange.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="numericBoxCRange.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 7, 0, 0</value>
   </data>
   <data name="numericBoxCRange.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="numericBoxCRange.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 7, 0, 0</value>
@@ -698,13 +698,13 @@
     <value>描画範囲を設定</value>
   </data>
   <data name="numericBoxBRange.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="numericBoxBRange.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 7, 0, 0</value>
   </data>
   <data name="numericBoxBRange.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="numericBoxBRange.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 7, 0, 0</value>
@@ -719,13 +719,13 @@
     <value>描画範囲を設定</value>
   </data>
   <data name="numericBoxARange.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="numericBoxARange.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 7, 0, 0</value>
   </data>
   <data name="numericBoxARange.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="numericBoxARange.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 7, 0, 0</value>
@@ -740,13 +740,13 @@
     <value>描画範囲を設定</value>
   </data>
   <data name="numericBoxCCenter.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="numericBoxCCenter.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 7, 0, 0</value>
   </data>
   <data name="numericBoxCCenter.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="numericBoxCCenter.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 7, 0, 0</value>
@@ -761,13 +761,13 @@
     <value>中心位置を設定</value>
   </data>
   <data name="numericBoxBCenter.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="numericBoxBCenter.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 7, 0, 0</value>
   </data>
   <data name="numericBoxBCenter.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="numericBoxBCenter.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 7, 0, 0</value>
@@ -782,13 +782,13 @@
     <value>中心位置を設定</value>
   </data>
   <data name="numericBoxACenter.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="numericBoxACenter.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 7, 0, 0</value>
   </data>
   <data name="numericBoxACenter.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="numericBoxACenter.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 7, 0, 0</value>
@@ -803,7 +803,7 @@
     <value>中心位置を設定</value>
   </data>
   <data name="label2.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
     <value>105, 5</value>
@@ -818,7 +818,7 @@
     <value />
   </data>
   <data name="label4.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
     <value>357, 5</value>
@@ -833,7 +833,7 @@
     <value />
   </data>
   <data name="label3.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
     <value>188, 5</value>
@@ -848,7 +848,7 @@
     <value />
   </data>
   <data name="label1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
     <value>25, 5</value>
@@ -878,7 +878,7 @@
     <value />
   </data>
   <data name="checkBoxShowBoundPlanes.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="checkBoxShowBoundPlanes.Size" type="System.Drawing.Size, System.Drawing">
     <value>96, 16</value>
@@ -890,13 +890,13 @@
     <value>結晶の境界面の表示/非表示</value>
   </data>
   <data name="numericBoxBoundPlanesOpacity.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="numericBoxBoundPlanesOpacity.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 7, 0, 0</value>
   </data>
   <data name="numericBoxBoundPlanesOpacity.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="numericBoxBoundPlanesOpacity.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 7, 0, 0</value>
@@ -920,7 +920,7 @@
     <value>境界面の不透明度（0=透明、1=不透明）</value>
   </data>
   <data name="checkBoxClipObjects.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="checkBoxClipObjects.Location" type="System.Drawing.Point, System.Drawing">
     <value>208, 3</value>
@@ -941,7 +941,7 @@
     <value />
   </data>
   <data name="radioButtonBoundUnitCell.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="radioButtonBoundUnitCell.Size" type="System.Drawing.Size, System.Drawing">
     <value>179, 16</value>
@@ -953,7 +953,7 @@
     <value>チェックすると、描画範囲が単位格子に基づいて定義されます</value>
   </data>
   <data name="radioButtonBoundPlane.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="radioButtonBoundPlane.Location" type="System.Drawing.Point, System.Drawing">
     <value>188, 3</value>
@@ -968,7 +968,7 @@
     <value>チェックすると、描画範囲が結晶面に基づいて定義されます</value>
   </data>
   <data name="labelMessage.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt, style=Bold</value>
+    <value>Yu Gothic UI, 9pt, style=Bold</value>
   </data>
   <data name="labelMessage.Size" type="System.Drawing.Size, System.Drawing">
     <value>215, 24</value>
@@ -977,7 +977,7 @@
     <value />
   </data>
   <data name="checkBoxUnitCell.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="checkBoxUnitCell.Size" type="System.Drawing.Size, System.Drawing">
     <value>108, 16</value>
@@ -989,7 +989,7 @@
     <value>単位胞を表示</value>
   </data>
   <data name="groupBoxShowUnitCell.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9.75pt</value>
+    <value>Yu Gothic UI, 9.75pt</value>
   </data>
   <data name="groupBoxShowUnitCell.Size" type="System.Drawing.Size, System.Drawing">
     <value>556, 224</value>
@@ -1007,7 +1007,7 @@
     <value />
   </data>
   <data name="radioButtonCellPlaneColorAll.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="radioButtonCellPlaneColorAll.Size" type="System.Drawing.Size, System.Drawing">
     <value>95, 16</value>
@@ -1019,10 +1019,10 @@
     <value>すべてのセル面の色を設定</value>
   </data>
   <data name="colorControlCellPlane.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9.75pt</value>
+    <value>Yu Gothic UI, 9.75pt</value>
   </data>
   <data name="colorControlCellPlane.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="colorControlCellPlane.Location" type="System.Drawing.Point, System.Drawing">
     <value>95, 3</value>
@@ -1034,7 +1034,7 @@
     <value>すべてのセル面の色を設定</value>
   </data>
   <data name="radioButtonCellPlaneColorEach.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="radioButtonCellPlaneColorEach.Location" type="System.Drawing.Point, System.Drawing">
     <value>125, 1</value>
@@ -1049,13 +1049,13 @@
     <value>セル面の色を個別に設定</value>
   </data>
   <data name="colorControlCellPlaneA.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="colorControlCellPlaneA.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="colorControlCellPlaneA.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="colorControlCellPlaneA.Location" type="System.Drawing.Point, System.Drawing">
     <value>196, 3</value>
@@ -1070,13 +1070,13 @@
     <value>セル面の色を個別に設定</value>
   </data>
   <data name="colorControlCellPlaneB.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="colorControlCellPlaneB.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="colorControlCellPlaneB.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="colorControlCellPlaneB.Location" type="System.Drawing.Point, System.Drawing">
     <value>229, 3</value>
@@ -1091,10 +1091,10 @@
     <value>セル面の色を個別に設定</value>
   </data>
   <data name="colorControlCellPlaneC.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="colorControlCellPlaneC.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="colorControlCellPlaneC.Location" type="System.Drawing.Point, System.Drawing">
     <value>263, 3</value>
@@ -1109,13 +1109,13 @@
     <value>セル面の色を個別に設定</value>
   </data>
   <data name="numericBoxCellPlaneAlpha.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="numericBoxCellPlaneAlpha.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 7, 0, 0</value>
   </data>
   <data name="numericBoxCellPlaneAlpha.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="numericBoxCellPlaneAlpha.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 7, 0, 0</value>
@@ -1142,7 +1142,7 @@
     <value />
   </data>
   <data name="radioButtonCellEdgeColorAll.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="radioButtonCellEdgeColorAll.Size" type="System.Drawing.Size, System.Drawing">
     <value>95, 16</value>
@@ -1154,10 +1154,10 @@
     <value>すべてのセル辺の色を設定</value>
   </data>
   <data name="colorControlCellEdge.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9.75pt</value>
+    <value>Yu Gothic UI, 9.75pt</value>
   </data>
   <data name="colorControlCellEdge.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="colorControlCellEdge.Location" type="System.Drawing.Point, System.Drawing">
     <value>95, 3</value>
@@ -1169,7 +1169,7 @@
     <value>すべてのセル辺の色を設定</value>
   </data>
   <data name="radioButtonCellEdgeColorEach.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="radioButtonCellEdgeColorEach.Location" type="System.Drawing.Point, System.Drawing">
     <value>125, 1</value>
@@ -1184,13 +1184,13 @@
     <value>セル辺の色を個別に設定</value>
   </data>
   <data name="colorControlCellEdgeA.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9.75pt</value>
+    <value>Yu Gothic UI, 9.75pt</value>
   </data>
   <data name="colorControlCellEdgeA.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="colorControlCellEdgeA.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="colorControlCellEdgeA.Location" type="System.Drawing.Point, System.Drawing">
     <value>196, 3</value>
@@ -1205,13 +1205,13 @@
     <value>セル辺の色を個別に設定</value>
   </data>
   <data name="colorControlCellEdgeB.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9.75pt</value>
+    <value>Yu Gothic UI, 9.75pt</value>
   </data>
   <data name="colorControlCellEdgeB.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="colorControlCellEdgeB.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="colorControlCellEdgeB.Location" type="System.Drawing.Point, System.Drawing">
     <value>229, 3</value>
@@ -1226,13 +1226,13 @@
     <value>セル辺の色を個別に設定</value>
   </data>
   <data name="colorControlCellEdgeC.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9.75pt</value>
+    <value>Yu Gothic UI, 9.75pt</value>
   </data>
   <data name="colorControlCellEdgeC.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="colorControlCellEdgeC.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="colorControlCellEdgeC.Location" type="System.Drawing.Point, System.Drawing">
     <value>263, 3</value>
@@ -1247,7 +1247,7 @@
     <value>セル辺の色を個別に設定</value>
   </data>
   <data name="label8.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="label8.Location" type="System.Drawing.Point, System.Drawing">
     <value>311, 3</value>
@@ -1268,13 +1268,13 @@
     <value>セル辺の線幅を設定</value>
   </data>
   <data name="numericBoxCellTranslationC.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="numericBoxCellTranslationC.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 7, 0, 0</value>
   </data>
   <data name="numericBoxCellTranslationC.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="numericBoxCellTranslationC.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 7, 0, 0</value>
@@ -1289,13 +1289,13 @@
     <value>単位格子を並進 (分率座標)</value>
   </data>
   <data name="numericBoxCellTranslationB.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="numericBoxCellTranslationB.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 7, 0, 0</value>
   </data>
   <data name="numericBoxCellTranslationB.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="numericBoxCellTranslationB.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 7, 0, 0</value>
@@ -1310,13 +1310,13 @@
     <value>単位格子を並進 (分率座標)</value>
   </data>
   <data name="numericBoxCellTranslationA.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="numericBoxCellTranslationA.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 7, 0, 0</value>
   </data>
   <data name="numericBoxCellTranslationA.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="numericBoxCellTranslationA.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 7, 0, 0</value>
@@ -1331,7 +1331,7 @@
     <value>単位格子を並進 (分率座標)</value>
   </data>
   <data name="checkBoxShowSubCell.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="checkBoxShowSubCell.Location" type="System.Drawing.Point, System.Drawing">
     <value>5, 136</value>
@@ -1346,7 +1346,7 @@
     <value>単位胞内の分割を表示</value>
   </data>
   <data name="checkBoxCellShowEdge.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="checkBoxCellShowEdge.Location" type="System.Drawing.Point, System.Drawing">
     <value>5, 103</value>
@@ -1361,7 +1361,7 @@
     <value>セル辺を表示</value>
   </data>
   <data name="numericUpDownSubCellB.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="numericUpDownSubCellB.Location" type="System.Drawing.Point, System.Drawing">
     <value>200, 136</value>
@@ -1376,7 +1376,7 @@
     <value />
   </data>
   <data name="label10.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="label10.Location" type="System.Drawing.Point, System.Drawing">
     <value>22, 25</value>
@@ -1391,7 +1391,7 @@
     <value />
   </data>
   <data name="checkBoxCellShowPlane.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="checkBoxCellShowPlane.Location" type="System.Drawing.Point, System.Drawing">
     <value>5, 64</value>
@@ -1406,7 +1406,7 @@
     <value>セル面を表示</value>
   </data>
   <data name="numericUpDownSubCellC.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="numericUpDownSubCellC.Location" type="System.Drawing.Point, System.Drawing">
     <value>273, 136</value>
@@ -1421,7 +1421,7 @@
     <value />
   </data>
   <data name="numericUpDownSubCellA.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="numericUpDownSubCellA.Location" type="System.Drawing.Point, System.Drawing">
     <value>135, 136</value>
@@ -1436,7 +1436,7 @@
     <value />
   </data>
   <data name="label17.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="label17.Location" type="System.Drawing.Point, System.Drawing">
     <value>257, 138</value>
@@ -1448,7 +1448,7 @@
     <value />
   </data>
   <data name="label16.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="label16.Location" type="System.Drawing.Point, System.Drawing">
     <value>187, 138</value>
@@ -1460,7 +1460,7 @@
     <value />
   </data>
   <data name="label12.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="label12.Location" type="System.Drawing.Point, System.Drawing">
     <value>113, 138</value>
@@ -1481,13 +1481,13 @@
     <value />
   </data>
   <data name="numericBoxLatticePlaneOpacity.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="numericBoxLatticePlaneOpacity.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 7, 0, 0</value>
   </data>
   <data name="numericBoxLatticePlaneOpacity.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="numericBoxLatticePlaneOpacity.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 7, 0, 0</value>
@@ -1502,7 +1502,7 @@
     <value>格子面の不透明度（0=透明、1=不透明）</value>
   </data>
   <data name="atomCoordinateTable1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="atomCoordinateTable1.Size" type="System.Drawing.Size, System.Drawing">
     <value>562, 227</value>
@@ -1520,7 +1520,7 @@
     <value />
   </data>
   <data name="labelGraphicsCard.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 6.4pt</value>
+    <value>Yu Gothic UI, 6.4pt</value>
   </data>
   <data name="labelGraphicsCard.Size" type="System.Drawing.Size, System.Drawing">
     <value>83, 9</value>
@@ -1529,7 +1529,7 @@
     <value />
   </data>
   <data name="labelGraphicsDriver.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 6.4pt</value>
+    <value>Yu Gothic UI, 6.4pt</value>
   </data>
   <data name="labelGraphicsDriver.Location" type="System.Drawing.Point, System.Drawing">
     <value>92, 0</value>
@@ -1541,7 +1541,7 @@
     <value />
   </data>
   <data name="labelOpenGLversion.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 6.4pt</value>
+    <value>Yu Gothic UI, 6.4pt</value>
   </data>
   <data name="labelOpenGLversion.Location" type="System.Drawing.Point, System.Drawing">
     <value>187, 0</value>
@@ -1568,13 +1568,13 @@
     <value />
   </data>
   <data name="numericBoxProjectionCenterX.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9.75pt</value>
+    <value>Yu Gothic UI, 9.75pt</value>
   </data>
   <data name="numericBoxProjectionCenterX.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 5, 0, 0</value>
   </data>
   <data name="numericBoxProjectionCenterX.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9.75pt</value>
+    <value>Yu Gothic UI, 9.75pt</value>
   </data>
   <data name="numericBoxProjectionCenterX.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 5, 0, 0</value>
@@ -1592,13 +1592,13 @@
     <value>単位胞を平行移動（分率座標）</value>
   </data>
   <data name="numericBoxProjectionCenterY.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9.75pt</value>
+    <value>Yu Gothic UI, 9.75pt</value>
   </data>
   <data name="numericBoxProjectionCenterY.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 5, 0, 0</value>
   </data>
   <data name="numericBoxProjectionCenterY.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9.75pt</value>
+    <value>Yu Gothic UI, 9.75pt</value>
   </data>
   <data name="numericBoxProjectionCenterY.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 5, 0, 0</value>
@@ -1616,13 +1616,13 @@
     <value>単位胞を平行移動（分率座標）</value>
   </data>
   <data name="numericBoxProjectionCenterZ.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9.75pt</value>
+    <value>Yu Gothic UI, 9.75pt</value>
   </data>
   <data name="numericBoxProjectionCenterZ.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 5, 0, 0</value>
   </data>
   <data name="numericBoxProjectionCenterZ.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9.75pt</value>
+    <value>Yu Gothic UI, 9.75pt</value>
   </data>
   <data name="numericBoxProjectionCenterZ.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 5, 0, 0</value>
@@ -1739,10 +1739,10 @@
     <value />
   </data>
   <data name="trackBarAdvancedDepthCueingNear.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9.75pt</value>
+    <value>Yu Gothic UI, 9.75pt</value>
   </data>
   <data name="trackBarAdvancedDepthCueingNear.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9.75pt</value>
+    <value>Yu Gothic UI, 9.75pt</value>
   </data>
   <data name="trackBarAdvancedDepthCueingNear.ToolTip" xml:space="preserve">
     <value>近いオブジェクトを不透明に</value>
@@ -1760,10 +1760,10 @@
     <value>この値より遠いオブジェクトは完全に透明になります</value>
   </data>
   <data name="trackBarAdvancedDepthCueingFar.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9.75pt</value>
+    <value>Yu Gothic UI, 9.75pt</value>
   </data>
   <data name="trackBarAdvancedDepthCueingFar.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9.75pt</value>
+    <value>Yu Gothic UI, 9.75pt</value>
   </data>
   <data name="trackBarAdvancedDepthCueingFar.ToolTip" xml:space="preserve">
     <value>遠いオブジェクトを透明に</value>
@@ -1790,7 +1790,7 @@
     <value />
   </data>
   <data name="colorControlLabelColor.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9.75pt</value>
+    <value>Yu Gothic UI, 9.75pt</value>
   </data>
   <data name="colorControlLabelColor.Location" type="System.Drawing.Point, System.Drawing">
     <value>326, 46</value>
@@ -1835,13 +1835,13 @@
     <value>固定色をラベル色に使用</value>
   </data>
   <data name="numericBoxLabelSize.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="numericBoxLabelSize.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 7, 0, 0</value>
   </data>
   <data name="numericBoxLabelSize.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="numericBoxLabelSize.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 7, 0, 0</value>
@@ -1874,7 +1874,7 @@
     <value>チェックすると、凡例の文字に白い縁取りが付きます</value>
   </data>
   <data name="label7.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 8pt</value>
+    <value>Yu Gothic UI, 8pt</value>
   </data>
   <data name="label7.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 43</value>
@@ -1902,7 +1902,7 @@
     <value />
   </data>
   <data name="checkBoxShowBondedAtoms.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="checkBoxShowBondedAtoms.Size" type="System.Drawing.Size, System.Drawing">
     <value>260, 16</value>
@@ -1935,13 +1935,13 @@
     <value>チェックすると、同じ元素が凡例でグループ化されます</value>
   </data>
   <data name="numericBoxLegendSize.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="numericBoxLegendSize.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 7, 0, 0</value>
   </data>
   <data name="numericBoxLegendSize.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="numericBoxLegendSize.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 7, 0, 0</value>
@@ -1956,13 +1956,13 @@
     <value>凡例の表示サイズ (右)</value>
   </data>
   <data name="numericBoxAxesSize.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="numericBoxAxesSize.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 7, 0, 0</value>
   </data>
   <data name="numericBoxAxesSize.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="numericBoxAxesSize.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 7, 0, 0</value>
@@ -1983,13 +1983,13 @@
     <value>結晶軸の表示サイズ (左下)</value>
   </data>
   <data name="numericBoxLightSize.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="numericBoxLightSize.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 7, 0, 0</value>
   </data>
   <data name="numericBoxLightSize.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="numericBoxLightSize.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 7, 0, 0</value>
@@ -2013,7 +2013,7 @@
     <value />
   </data>
   <data name="toolStripButtonCrystalAxes.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="toolStripButtonCrystalAxes.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -2040,7 +2040,7 @@
     <value>結晶軸インジケータの表示/非表示</value>
   </data>
   <data name="toolStripButtonLightDirection.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="toolStripButtonLightDirection.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -2067,7 +2067,7 @@
     <value>光源方向制御球の表示/非表示</value>
   </data>
   <data name="toolStripButtonLegend.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="toolStripButtonLegend.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -2094,7 +2094,7 @@
     <value>凡例の表示/非表示</value>
   </data>
   <data name="toolStripButtonLikeVesta.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="toolStripButtonLikeVesta.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -2115,7 +2115,7 @@
     <value>78, 22</value>
   </data>
   <data name="toolStripButtonResetRotation.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="toolStripButtonResetRotation.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -2139,7 +2139,7 @@
     <value>角度をリセット</value>
   </data>
   <data name="toolStripButtonAtomObjects.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="toolStripButtonAtomObjects.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -2159,7 +2159,7 @@
     <value>原子</value>
   </data>
   <data name="toolStripButtonAtomLabels.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="toolStripButtonAtomLabels.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -2179,7 +2179,7 @@
     <value>ラベル</value>
   </data>
   <data name="toolStripButtonUnitCell.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="toolStripButtonUnitCell.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -2199,7 +2199,7 @@
     <value>単位胞</value>
   </data>
   <data name="toolStripButtonSymmetryElements.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="toolStripButtonSymmetryElements.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -2219,7 +2219,7 @@
     <value>対称要素</value>
   </data>
   <data name="menuStrip1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="menuStrip1.Size" type="System.Drawing.Size, System.Drawing">
     <value>570, 24</value>
@@ -2228,7 +2228,7 @@
     <value />
   </data>
   <data name="saveImageToolStripMenuItem.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="saveImageToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>59, 18</value>
@@ -2318,13 +2318,13 @@
     <value>685, 22</value>
   </data>
   <data name="numericBoxClientHeight.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="numericBoxClientHeight.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 7, 0, 0</value>
   </data>
   <data name="numericBoxClientHeight.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="numericBoxClientHeight.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 7, 0, 0</value>
@@ -2339,13 +2339,13 @@
     <value>シミュレーションパターンのピクセルサイズを設定</value>
   </data>
   <data name="numericBoxClientWidth.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="numericBoxClientWidth.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 7, 0, 0</value>
   </data>
   <data name="numericBoxClientWidth.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="numericBoxClientWidth.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 7, 0, 0</value>
@@ -2560,7 +2560,7 @@
     <value>570, 812</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 11pt</value>
+    <value>Yu Gothic UI, 11pt</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

@@ -65,7 +65,7 @@
             crystalDatabaseControl.COD_Checked = false;
             crystalDatabaseControl.DatabaseSelection = true;
             crystalDatabaseControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            crystalDatabaseControl.Font = new System.Drawing.Font("Segoe UI Variable Text", 9.75F);
+            crystalDatabaseControl.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             crystalDatabaseControl.FontSize = 9.75F;
             crystalDatabaseControl.Location = new System.Drawing.Point(0, 0);
             crystalDatabaseControl.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -78,7 +78,7 @@
             // 
             // statusStrip1
             // 
-            statusStrip1.Font = new System.Drawing.Font("Segoe UI Variable Text", 8F);
+            statusStrip1.Font = new System.Drawing.Font("Segoe UI", 8F);
             statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { toolStripProgressBar1, toolStripStatusLabel1 });
             statusStrip1.Location = new System.Drawing.Point(0, 378);
             statusStrip1.Name = "statusStrip1";
@@ -106,7 +106,7 @@
             Controls.Add(crystalDatabaseControl);
             Controls.Add(panelSearch);
             Controls.Add(statusStrip1);
-            Font = new System.Drawing.Font("Segoe UI Variable Text", 9.75F);
+            Font = new System.Drawing.Font("Segoe UI", 9.75F);
             Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             Name = "FormCrystalDatabase";
             ShowIcon = false;

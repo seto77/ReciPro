@@ -133,7 +133,7 @@
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="buttonAddBond.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="buttonAddBond.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>TopCenter</value>
@@ -176,7 +176,7 @@
     <value>GrowAndShrink</value>
   </data>
   <data name="buttonChangeBond.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="buttonChangeBond.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>TopCenter</value>
@@ -221,7 +221,7 @@
     <value>GrowAndShrink</value>
   </data>
   <data name="buttonDeleteBond.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="buttonDeleteBond.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>TopCenter</value>
@@ -341,7 +341,7 @@
     <value>Fill</value>
   </data>
   <data name="dataGridView.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="dataGridView.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
@@ -359,7 +359,7 @@
     <value>dataGridView</value>
   </data>
   <data name="&gt;&gt;dataGridView.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>Crystallography.Controls.DpiAwareDataGridView, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;dataGridView.Parent" xml:space="preserve">
     <value>$this</value>
@@ -412,7 +412,7 @@
     <value>GrowAndShrink</value>
   </data>
   <data name="numericBoxDistance.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="numericBoxDistance.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 4, 0, 0</value>
@@ -421,7 +421,7 @@
     <value>× d</value>
   </data>
   <data name="numericBoxDistance.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="numericBoxDistance.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 4, 0, 0</value>
@@ -463,10 +463,10 @@
     <value>GrowAndShrink</value>
   </data>
   <data name="colorControl.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="colorControl.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="colorControl.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -475,7 +475,7 @@
     <value />
   </data>
   <data name="colorControl.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="colorControl.HeaderMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -514,7 +514,7 @@
     <value>True</value>
   </data>
   <data name="label6.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="label6.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -580,7 +580,7 @@
     <value>96, 96</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>41, 26, 41, 26</value>

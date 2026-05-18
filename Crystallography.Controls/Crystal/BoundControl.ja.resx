@@ -131,7 +131,7 @@
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="dataGridView.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPGothic, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="dataGridView.Size" type="System.Drawing.Size, System.Drawing">
     <value>612, 325</value>
@@ -146,7 +146,7 @@
     <value />
   </data>
   <data name="buttonAddBond.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="buttonAddBond.Text" xml:space="preserve">
     <value>追加</value>
@@ -155,14 +155,14 @@
     <value />
   </data>
   <data name="numericBoxMaximumDistanceFromOrigin.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="numericBoxMaximumDistanceFromOrigin.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 7, 0, 0</value>
   </data>
   <data name="numericBoxMaximumDistanceFromOrigin.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="numericBoxMaximumDistanceFromOrigin.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 7, 0, 0</value>
@@ -189,7 +189,7 @@
     <value>結晶面によって描画範囲が閉じていない場合、範囲はこの値で制限されます</value>
   </data>
   <data name="buttonChangeBond.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="buttonChangeBond.Text" xml:space="preserve">
     <value>更新</value>
@@ -198,7 +198,7 @@
     <value>選択された境界面を置換</value>
   </data>
   <data name="buttonDeleteBond.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="buttonDeleteBond.Text" xml:space="preserve">
     <value>削除</value>
@@ -207,7 +207,7 @@
     <value>選択された境界面を削除</value>
   </data>
   <data name="checkBoxImmediateUpdate.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="checkBoxImmediateUpdate.Location" type="System.Drawing.Point, System.Drawing">
     <value>370, 5</value>
@@ -222,7 +222,7 @@
     <value>変更を即座に適用</value>
   </data>
   <data name="checkBoxEquivalency.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="checkBoxEquivalency.Location" type="System.Drawing.Point, System.Drawing">
     <value>165, 16</value>
@@ -246,7 +246,7 @@
     <value>平行移動量</value>
   </data>
   <data name="label6.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
     <value>88, 12</value>
@@ -306,7 +306,7 @@
     <value />
   </data>
   <data name="colorControl.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="colorControl.HeaderText" xml:space="preserve">
     <value>色</value>
@@ -357,7 +357,7 @@
     <value />
   </data>
   <data name="label3.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
     <value>65, 12</value>

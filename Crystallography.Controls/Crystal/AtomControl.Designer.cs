@@ -136,7 +136,8 @@
             buttonAtomUp = new System.Windows.Forms.Button();
             buttonAtomDown = new System.Windows.Forms.Button();
             buttonDeleteAtom = new System.Windows.Forms.Button();
-            dataGridView = new System.Windows.Forms.DataGridView();
+            // dataGridView = new System.Windows.Forms.DataGridView(); // 260518Cl 旧実装: DPI変更時に列幅が追従しない
+            dataGridView = new DpiAwareDataGridView(); // 260518Cl
             enabledColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             labelDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             elementDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -1483,7 +1484,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn multiDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn wyckLetDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn siteSymDataGridViewTextBoxColumn;
-        public System.Windows.Forms.DataGridView dataGridView;
+        // public System.Windows.Forms.DataGridView dataGridView; // 260518Cl 旧実装
+        public DpiAwareDataGridView dataGridView; // 260518Cl
         private System.Windows.Forms.CheckBox checkBoxShowLabel;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel5;
         private System.Windows.Forms.Label label3;

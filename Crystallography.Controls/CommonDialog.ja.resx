@@ -128,7 +128,7 @@
     <value>723, 0</value>
   </data>
   <data name="checkBoxCloseWindow.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="checkBoxCloseWindow.Location" type="System.Drawing.Point, System.Drawing">
     <value>492, 0</value>

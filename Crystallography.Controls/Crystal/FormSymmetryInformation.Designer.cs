@@ -66,7 +66,8 @@
             label42 = new System.Windows.Forms.Label();
             panel1 = new System.Windows.Forms.Panel();
             tabPageWyckoff = new System.Windows.Forms.TabPage();
-            dataGridView1 = new System.Windows.Forms.DataGridView();
+            // dataGridView1 = new System.Windows.Forms.DataGridView(); // 260518Cl 旧実装: DPI変更時に列幅が追従しない
+            dataGridView1 = new DpiAwareDataGridView(); // 260518Cl
             columnMultiplicityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             columnWyckoffLetterDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             columnSiteSymmetryDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -187,8 +188,8 @@
             // graphicsBoxSymmetryElements
             // 
             graphicsBoxSymmetryElements.Dock = System.Windows.Forms.DockStyle.Fill;
-            graphicsBoxSymmetryElements.Font = new System.Drawing.Font("Segoe UI Variable Text", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-            graphicsBoxSymmetryElements.Fonts = new System.Drawing.Font("Segoe UI Variable Text", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            graphicsBoxSymmetryElements.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            graphicsBoxSymmetryElements.Fonts = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
             graphicsBoxSymmetryElements.Location = new System.Drawing.Point(0, 26);
             graphicsBoxSymmetryElements.Name = "graphicsBoxSymmetryElements";
             graphicsBoxSymmetryElements.Size = new System.Drawing.Size(504, 528);
@@ -210,7 +211,7 @@
             // 
             buttonCopyElements.AutoSize = true;
             buttonCopyElements.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            buttonCopyElements.Font = new System.Drawing.Font("Segoe UI Variable Text", 9F);
+            buttonCopyElements.Font = new System.Drawing.Font("Segoe UI", 9F);
             buttonCopyElements.Location = new System.Drawing.Point(0, 0);
             buttonCopyElements.Margin = new System.Windows.Forms.Padding(0, 0, 3, 0);
             buttonCopyElements.Name = "buttonCopyElements";
@@ -233,8 +234,8 @@
             // graphicsBoxGeneralPositions
             // 
             graphicsBoxGeneralPositions.Dock = System.Windows.Forms.DockStyle.Fill;
-            graphicsBoxGeneralPositions.Font = new System.Drawing.Font("Segoe UI Variable Text", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-            graphicsBoxGeneralPositions.Fonts = new System.Drawing.Font("Segoe UI Variable Text", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            graphicsBoxGeneralPositions.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            graphicsBoxGeneralPositions.Fonts = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
             graphicsBoxGeneralPositions.Location = new System.Drawing.Point(0, 26);
             graphicsBoxGeneralPositions.Name = "graphicsBoxGeneralPositions";
             graphicsBoxGeneralPositions.Size = new System.Drawing.Size(504, 528);
@@ -262,7 +263,7 @@
             // 
             buttonCopyPositions.AutoSize = true;
             buttonCopyPositions.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            buttonCopyPositions.Font = new System.Drawing.Font("Segoe UI Variable Text", 9F);
+            buttonCopyPositions.Font = new System.Drawing.Font("Segoe UI", 9F);
             buttonCopyPositions.Location = new System.Drawing.Point(0, 0);
             buttonCopyPositions.Margin = new System.Windows.Forms.Padding(0, 0, 10, 0);
             buttonCopyPositions.Name = "buttonCopyPositions";
@@ -274,7 +275,7 @@
             // 
             // labelLaTex1
             // 
-            labelLaTex1.Font = new System.Drawing.Font("Segoe UI Variable Text", 11F);
+            labelLaTex1.Font = new System.Drawing.Font("Segoe UI", 11F);
             labelLaTex1.Location = new System.Drawing.Point(54, 0);
             labelLaTex1.Margin = new System.Windows.Forms.Padding(0);
             labelLaTex1.Name = "labelLaTex1";
@@ -288,9 +289,9 @@
             // 
             numericBoxPositionA.BackColor = System.Drawing.Color.Transparent;
             numericBoxPositionA.DecimalPlaces = 2;
-            numericBoxPositionA.FooterFont = new System.Drawing.Font("Segoe UI Variable Text", 9F);
+            numericBoxPositionA.FooterFont = new System.Drawing.Font("Segoe UI", 9F);
             numericBoxPositionA.FooterPadding = new System.Windows.Forms.Padding(0, 6, 0, 0);
-            numericBoxPositionA.HeaderFont = new System.Drawing.Font("Segoe UI Variable Text", 9F);
+            numericBoxPositionA.HeaderFont = new System.Drawing.Font("Segoe UI", 9F);
             numericBoxPositionA.HeaderPadding = new System.Windows.Forms.Padding(0, 6, 0, 0);
             numericBoxPositionA.Location = new System.Drawing.Point(64, 0);
             numericBoxPositionA.Margin = new System.Windows.Forms.Padding(0, 0, 4, 0);
@@ -309,7 +310,7 @@
             // 
             // labelLaTex2
             // 
-            labelLaTex2.Font = new System.Drawing.Font("Segoe UI Variable Text", 11F);
+            labelLaTex2.Font = new System.Drawing.Font("Segoe UI", 11F);
             labelLaTex2.Location = new System.Drawing.Point(118, 0);
             labelLaTex2.Margin = new System.Windows.Forms.Padding(0);
             labelLaTex2.Name = "labelLaTex2";
@@ -323,9 +324,9 @@
             // 
             numericBoxPositionB.BackColor = System.Drawing.Color.Transparent;
             numericBoxPositionB.DecimalPlaces = 2;
-            numericBoxPositionB.FooterFont = new System.Drawing.Font("Segoe UI Variable Text", 9F);
+            numericBoxPositionB.FooterFont = new System.Drawing.Font("Segoe UI", 9F);
             numericBoxPositionB.FooterPadding = new System.Windows.Forms.Padding(0, 6, 0, 0);
-            numericBoxPositionB.HeaderFont = new System.Drawing.Font("Segoe UI Variable Text", 9F);
+            numericBoxPositionB.HeaderFont = new System.Drawing.Font("Segoe UI", 9F);
             numericBoxPositionB.HeaderPadding = new System.Windows.Forms.Padding(0, 6, 0, 0);
             numericBoxPositionB.Location = new System.Drawing.Point(128, 0);
             numericBoxPositionB.Margin = new System.Windows.Forms.Padding(0, 0, 4, 0);
@@ -344,7 +345,7 @@
             // 
             // labelLaTex3
             // 
-            labelLaTex3.Font = new System.Drawing.Font("Segoe UI Variable Text", 11F);
+            labelLaTex3.Font = new System.Drawing.Font("Segoe UI", 11F);
             labelLaTex3.Location = new System.Drawing.Point(182, 0);
             labelLaTex3.Margin = new System.Windows.Forms.Padding(0);
             labelLaTex3.Name = "labelLaTex3";
@@ -358,9 +359,9 @@
             // 
             numericBoxPositionC.BackColor = System.Drawing.Color.Transparent;
             numericBoxPositionC.DecimalPlaces = 2;
-            numericBoxPositionC.FooterFont = new System.Drawing.Font("Segoe UI Variable Text", 9F);
+            numericBoxPositionC.FooterFont = new System.Drawing.Font("Segoe UI", 9F);
             numericBoxPositionC.FooterPadding = new System.Windows.Forms.Padding(0, 6, 0, 0);
-            numericBoxPositionC.HeaderFont = new System.Drawing.Font("Segoe UI Variable Text", 9F);
+            numericBoxPositionC.HeaderFont = new System.Drawing.Font("Segoe UI", 9F);
             numericBoxPositionC.HeaderPadding = new System.Windows.Forms.Padding(0, 6, 0, 0);
             numericBoxPositionC.Location = new System.Drawing.Point(192, 0);
             numericBoxPositionC.Margin = new System.Windows.Forms.Padding(0);
@@ -380,7 +381,7 @@
             // radioButtonBmp
             // 
             radioButtonBmp.AutoSize = true;
-            radioButtonBmp.Font = new System.Drawing.Font("Segoe UI Variable Text", 9F);
+            radioButtonBmp.Font = new System.Drawing.Font("Segoe UI", 9F);
             radioButtonBmp.Location = new System.Drawing.Point(45, 0);
             radioButtonBmp.Margin = new System.Windows.Forms.Padding(0);
             radioButtonBmp.Name = "radioButtonBmp";
@@ -394,7 +395,7 @@
             // 
             radioButtonEmf.AutoSize = true;
             radioButtonEmf.Checked = true;
-            radioButtonEmf.Font = new System.Drawing.Font("Segoe UI Variable Text", 9F);
+            radioButtonEmf.Font = new System.Drawing.Font("Segoe UI", 9F);
             radioButtonEmf.Location = new System.Drawing.Point(0, 0);
             radioButtonEmf.Margin = new System.Windows.Forms.Padding(0);
             radioButtonEmf.Name = "radioButtonEmf";
@@ -410,7 +411,7 @@
             tabControl.Controls.Add(tabPage1);
             tabControl.Controls.Add(tabPageWyckoff);
             tabControl.Controls.Add(tabPageConditions);
-            tabControl.Font = new System.Drawing.Font("Segoe UI Variable Text", 9F);
+            tabControl.Font = new System.Drawing.Font("Segoe UI", 9F);
             tabControl.Location = new System.Drawing.Point(337, 3);
             tabControl.Name = "tabControl";
             tabControl.SelectedIndex = 0;
@@ -444,10 +445,10 @@
             // 
             numericBoxAnglePlanes.BackColor = System.Drawing.Color.Transparent;
             numericBoxAnglePlanes.DecimalPlaces = 4;
-            numericBoxAnglePlanes.FooterFont = new System.Drawing.Font("Segoe UI Variable Text", 9.75F);
+            numericBoxAnglePlanes.FooterFont = new System.Drawing.Font("Segoe UI", 9.75F);
             numericBoxAnglePlanes.FooterPadding = new System.Windows.Forms.Padding(0, 4, 0, 0);
             numericBoxAnglePlanes.FooterText = "°";
-            numericBoxAnglePlanes.HeaderFont = new System.Drawing.Font("Segoe UI Variable Text", 9.75F);
+            numericBoxAnglePlanes.HeaderFont = new System.Drawing.Font("Segoe UI", 9.75F);
             numericBoxAnglePlanes.HeaderPadding = new System.Windows.Forms.Padding(0, 4, 0, 0);
             numericBoxAnglePlanes.Location = new System.Drawing.Point(10, 45);
             numericBoxAnglePlanes.Margin = new System.Windows.Forms.Padding(0);
@@ -462,7 +463,7 @@
             // 
             // textBoxZoneAxis
             // 
-            textBoxZoneAxis.Font = new System.Drawing.Font("Segoe UI Variable Text", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            textBoxZoneAxis.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
             textBoxZoneAxis.Location = new System.Drawing.Point(189, 111);
             textBoxZoneAxis.Name = "textBoxZoneAxis";
             textBoxZoneAxis.ReadOnly = true;
@@ -474,10 +475,10 @@
             // 
             numericBoxAngleAxes.BackColor = System.Drawing.Color.Transparent;
             numericBoxAngleAxes.DecimalPlaces = 4;
-            numericBoxAngleAxes.FooterFont = new System.Drawing.Font("Segoe UI Variable Text", 9.75F);
+            numericBoxAngleAxes.FooterFont = new System.Drawing.Font("Segoe UI", 9.75F);
             numericBoxAngleAxes.FooterPadding = new System.Windows.Forms.Padding(0, 4, 0, 0);
             numericBoxAngleAxes.FooterText = "°";
-            numericBoxAngleAxes.HeaderFont = new System.Drawing.Font("Segoe UI Variable Text", 9.75F);
+            numericBoxAngleAxes.HeaderFont = new System.Drawing.Font("Segoe UI", 9.75F);
             numericBoxAngleAxes.HeaderPadding = new System.Windows.Forms.Padding(0, 4, 0, 0);
             numericBoxAngleAxes.Location = new System.Drawing.Point(590, 45);
             numericBoxAngleAxes.Margin = new System.Windows.Forms.Padding(0);
@@ -506,10 +507,10 @@
             // 
             numericBoxLengthPlane2.BackColor = System.Drawing.Color.Transparent;
             numericBoxLengthPlane2.DecimalPlaces = 4;
-            numericBoxLengthPlane2.FooterFont = new System.Drawing.Font("Segoe UI Variable Text", 9.75F);
+            numericBoxLengthPlane2.FooterFont = new System.Drawing.Font("Segoe UI", 9.75F);
             numericBoxLengthPlane2.FooterPadding = new System.Windows.Forms.Padding(0, 4, 0, 0);
             numericBoxLengthPlane2.FooterText = "Å";
-            numericBoxLengthPlane2.HeaderFont = new System.Drawing.Font("Segoe UI Variable Text", 9.75F);
+            numericBoxLengthPlane2.HeaderFont = new System.Drawing.Font("Segoe UI", 9.75F);
             numericBoxLengthPlane2.HeaderPadding = new System.Windows.Forms.Padding(0, 4, 0, 0);
             numericBoxLengthPlane2.Location = new System.Drawing.Point(128, 13);
             numericBoxLengthPlane2.Margin = new System.Windows.Forms.Padding(0, 13, 0, 0);
@@ -524,7 +525,7 @@
             // 
             // label40
             // 
-            label40.Font = new System.Drawing.Font("Segoe UI Variable Text", 9F);
+            label40.Font = new System.Drawing.Font("Segoe UI", 9F);
             label40.Location = new System.Drawing.Point(10, 114);
             label40.Name = "label40";
             label40.Size = new System.Drawing.Size(176, 16);
@@ -547,10 +548,10 @@
             // 
             numericBoxLengthAxis2.BackColor = System.Drawing.Color.Transparent;
             numericBoxLengthAxis2.DecimalPlaces = 4;
-            numericBoxLengthAxis2.FooterFont = new System.Drawing.Font("Segoe UI Variable Text", 9.75F);
+            numericBoxLengthAxis2.FooterFont = new System.Drawing.Font("Segoe UI", 9.75F);
             numericBoxLengthAxis2.FooterPadding = new System.Windows.Forms.Padding(0, 4, 0, 0);
             numericBoxLengthAxis2.FooterText = "Å";
-            numericBoxLengthAxis2.HeaderFont = new System.Drawing.Font("Segoe UI Variable Text", 9.75F);
+            numericBoxLengthAxis2.HeaderFont = new System.Drawing.Font("Segoe UI", 9.75F);
             numericBoxLengthAxis2.HeaderPadding = new System.Windows.Forms.Padding(0, 4, 0, 0);
             numericBoxLengthAxis2.Location = new System.Drawing.Point(128, 13);
             numericBoxLengthAxis2.Margin = new System.Windows.Forms.Padding(0, 13, 0, 0);
@@ -567,10 +568,10 @@
             // 
             numericBoxAnglePlaneAxis1.BackColor = System.Drawing.Color.Transparent;
             numericBoxAnglePlaneAxis1.DecimalPlaces = 4;
-            numericBoxAnglePlaneAxis1.FooterFont = new System.Drawing.Font("Segoe UI Variable Text", 9.75F);
+            numericBoxAnglePlaneAxis1.FooterFont = new System.Drawing.Font("Segoe UI", 9.75F);
             numericBoxAnglePlaneAxis1.FooterPadding = new System.Windows.Forms.Padding(0, 4, 0, 0);
             numericBoxAnglePlaneAxis1.FooterText = "°";
-            numericBoxAnglePlaneAxis1.HeaderFont = new System.Drawing.Font("Segoe UI Variable Text", 9.75F);
+            numericBoxAnglePlaneAxis1.HeaderFont = new System.Drawing.Font("Segoe UI", 9.75F);
             numericBoxAnglePlaneAxis1.HeaderPadding = new System.Windows.Forms.Padding(0, 4, 0, 0);
             numericBoxAnglePlaneAxis1.Location = new System.Drawing.Point(318, 18);
             numericBoxAnglePlaneAxis1.Margin = new System.Windows.Forms.Padding(0);
@@ -599,10 +600,10 @@
             // 
             numericBoxLengthAxis1.BackColor = System.Drawing.Color.Transparent;
             numericBoxLengthAxis1.DecimalPlaces = 4;
-            numericBoxLengthAxis1.FooterFont = new System.Drawing.Font("Segoe UI Variable Text", 9.75F);
+            numericBoxLengthAxis1.FooterFont = new System.Drawing.Font("Segoe UI", 9.75F);
             numericBoxLengthAxis1.FooterPadding = new System.Windows.Forms.Padding(0, 4, 0, 0);
             numericBoxLengthAxis1.FooterText = "Å";
-            numericBoxLengthAxis1.HeaderFont = new System.Drawing.Font("Segoe UI Variable Text", 9.75F);
+            numericBoxLengthAxis1.HeaderFont = new System.Drawing.Font("Segoe UI", 9.75F);
             numericBoxLengthAxis1.HeaderPadding = new System.Windows.Forms.Padding(0, 4, 0, 0);
             numericBoxLengthAxis1.Location = new System.Drawing.Point(128, 13);
             numericBoxLengthAxis1.Margin = new System.Windows.Forms.Padding(0, 13, 0, 0);
@@ -619,10 +620,10 @@
             // 
             numericBoxAnglePlaneAxis2.BackColor = System.Drawing.Color.Transparent;
             numericBoxAnglePlaneAxis2.DecimalPlaces = 4;
-            numericBoxAnglePlaneAxis2.FooterFont = new System.Drawing.Font("Segoe UI Variable Text", 9.75F);
+            numericBoxAnglePlaneAxis2.FooterFont = new System.Drawing.Font("Segoe UI", 9.75F);
             numericBoxAnglePlaneAxis2.FooterPadding = new System.Windows.Forms.Padding(0, 4, 0, 0);
             numericBoxAnglePlaneAxis2.FooterText = "°";
-            numericBoxAnglePlaneAxis2.HeaderFont = new System.Drawing.Font("Segoe UI Variable Text", 9.75F);
+            numericBoxAnglePlaneAxis2.HeaderFont = new System.Drawing.Font("Segoe UI", 9.75F);
             numericBoxAnglePlaneAxis2.HeaderPadding = new System.Windows.Forms.Padding(0, 4, 0, 0);
             numericBoxAnglePlaneAxis2.Location = new System.Drawing.Point(318, 79);
             numericBoxAnglePlaneAxis2.Margin = new System.Windows.Forms.Padding(0);
@@ -652,10 +653,10 @@
             // 
             numericBoxLengthPlane1.BackColor = System.Drawing.Color.Transparent;
             numericBoxLengthPlane1.DecimalPlaces = 4;
-            numericBoxLengthPlane1.FooterFont = new System.Drawing.Font("Segoe UI Variable Text", 9.75F);
+            numericBoxLengthPlane1.FooterFont = new System.Drawing.Font("Segoe UI", 9.75F);
             numericBoxLengthPlane1.FooterPadding = new System.Windows.Forms.Padding(0, 4, 0, 0);
             numericBoxLengthPlane1.FooterText = "Å";
-            numericBoxLengthPlane1.HeaderFont = new System.Drawing.Font("Segoe UI Variable Text", 9.75F);
+            numericBoxLengthPlane1.HeaderFont = new System.Drawing.Font("Segoe UI", 9.75F);
             numericBoxLengthPlane1.HeaderPadding = new System.Windows.Forms.Padding(0, 4, 0, 0);
             numericBoxLengthPlane1.Location = new System.Drawing.Point(128, 13);
             numericBoxLengthPlane1.Margin = new System.Windows.Forms.Padding(0, 13, 0, 0);
@@ -670,7 +671,7 @@
             // 
             // textBoxZonePlane
             // 
-            textBoxZonePlane.Font = new System.Drawing.Font("Segoe UI Variable Text", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            textBoxZonePlane.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
             textBoxZonePlane.Location = new System.Drawing.Point(544, 111);
             textBoxZonePlane.Name = "textBoxZonePlane";
             textBoxZonePlane.ReadOnly = true;
@@ -680,7 +681,7 @@
             // 
             // label42
             // 
-            label42.Font = new System.Drawing.Font("Segoe UI Variable Text", 9F);
+            label42.Font = new System.Drawing.Font("Segoe UI", 9F);
             label42.Location = new System.Drawing.Point(363, 114);
             label42.Name = "label42";
             label42.Size = new System.Drawing.Size(175, 16);
@@ -699,7 +700,7 @@
             // 
             captureExtender.SetCapture(tabPageWyckoff, true);
             tabPageWyckoff.Controls.Add(dataGridView1);
-            tabPageWyckoff.Font = new System.Drawing.Font("Segoe UI Variable Text", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            tabPageWyckoff.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
             tabPageWyckoff.Location = new System.Drawing.Point(4, 25);
             tabPageWyckoff.Name = "tabPageWyckoff";
             tabPageWyckoff.Size = new System.Drawing.Size(673, 140);
@@ -879,7 +880,7 @@
             captureExtender.SetCapture(tabPageConditions, true);
             tabPageConditions.Controls.Add(flowLayoutPanelExtinctionRule);
             tabPageConditions.Controls.Add(label49);
-            tabPageConditions.Font = new System.Drawing.Font("Segoe UI Variable Text", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            tabPageConditions.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
             tabPageConditions.Location = new System.Drawing.Point(4, 25);
             tabPageConditions.Name = "tabPageConditions";
             tabPageConditions.Size = new System.Drawing.Size(673, 140);
@@ -902,7 +903,7 @@
             // 
             label49.AutoSize = true;
             label49.Dock = System.Windows.Forms.DockStyle.Top;
-            label49.Font = new System.Drawing.Font("Segoe UI Variable Text", 9F);
+            label49.Font = new System.Drawing.Font("Segoe UI", 9F);
             label49.Location = new System.Drawing.Point(0, 0);
             label49.Name = "label49";
             label49.Padding = new System.Windows.Forms.Padding(0, 0, 0, 6);
@@ -920,7 +921,7 @@
             groupBoxSpaceGroup.Controls.Add(label9);
             groupBoxSpaceGroup.Controls.Add(label5);
             groupBoxSpaceGroup.Controls.Add(label6);
-            groupBoxSpaceGroup.Font = new System.Drawing.Font("Segoe UI Variable Text", 9F);
+            groupBoxSpaceGroup.Font = new System.Drawing.Font("Segoe UI", 9F);
             groupBoxSpaceGroup.Location = new System.Drawing.Point(3, 77);
             groupBoxSpaceGroup.Name = "groupBoxSpaceGroup";
             groupBoxSpaceGroup.Size = new System.Drawing.Size(328, 95);
@@ -930,7 +931,7 @@
             // 
             // labelLaTexSG_Hall
             // 
-            labelLaTexSG_Hall.Font = new System.Drawing.Font("Segoe UI Variable Text", 12F);
+            labelLaTexSG_Hall.Font = new System.Drawing.Font("Segoe UI", 12F);
             labelLaTexSG_Hall.Location = new System.Drawing.Point(209, 69);
             labelLaTexSG_Hall.Margin = new System.Windows.Forms.Padding(0);
             labelLaTexSG_Hall.Name = "labelLaTexSG_Hall";
@@ -941,7 +942,7 @@
             // 
             // labelLaTexSG_SF
             // 
-            labelLaTexSG_SF.Font = new System.Drawing.Font("Segoe UI Variable Text", 12F);
+            labelLaTexSG_SF.Font = new System.Drawing.Font("Segoe UI", 12F);
             labelLaTexSG_SF.Location = new System.Drawing.Point(80, 69);
             labelLaTexSG_SF.Margin = new System.Windows.Forms.Padding(0);
             labelLaTexSG_SF.Name = "labelLaTexSG_SF";
@@ -952,7 +953,7 @@
             // 
             // labelLaTexHM_full
             // 
-            labelLaTexHM_full.Font = new System.Drawing.Font("Segoe UI Variable Text", 12F);
+            labelLaTexHM_full.Font = new System.Drawing.Font("Segoe UI", 12F);
             labelLaTexHM_full.Location = new System.Drawing.Point(125, 43);
             labelLaTexHM_full.Margin = new System.Windows.Forms.Padding(0);
             labelLaTexHM_full.Name = "labelLaTexHM_full";
@@ -963,7 +964,7 @@
             // 
             // labelLaTexSG_HM
             // 
-            labelLaTexSG_HM.Font = new System.Drawing.Font("Segoe UI Variable Text", 12F);
+            labelLaTexSG_HM.Font = new System.Drawing.Font("Segoe UI", 12F);
             labelLaTexSG_HM.Location = new System.Drawing.Point(125, 17);
             labelLaTexSG_HM.Margin = new System.Windows.Forms.Padding(0);
             labelLaTexSG_HM.Name = "labelLaTexSG_HM";
@@ -975,7 +976,7 @@
             // label8
             // 
             label8.AutoSize = true;
-            label8.Font = new System.Drawing.Font("Segoe UI Variable Text", 9F);
+            label8.Font = new System.Drawing.Font("Segoe UI", 9F);
             label8.Location = new System.Drawing.Point(12, 72);
             label8.Name = "label8";
             label8.Size = new System.Drawing.Size(63, 16);
@@ -986,7 +987,7 @@
             // label9
             // 
             label9.AutoSize = true;
-            label9.Font = new System.Drawing.Font("Segoe UI Variable Text", 9F);
+            label9.Font = new System.Drawing.Font("Segoe UI", 9F);
             label9.Location = new System.Drawing.Point(134, 71);
             label9.Name = "label9";
             label9.Size = new System.Drawing.Size(72, 16);
@@ -997,7 +998,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Font = new System.Drawing.Font("Segoe UI Variable Text", 9F);
+            label5.Font = new System.Drawing.Font("Segoe UI", 9F);
             label5.Location = new System.Drawing.Point(12, 20);
             label5.Name = "label5";
             label5.Size = new System.Drawing.Size(109, 16);
@@ -1008,7 +1009,7 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Font = new System.Drawing.Font("Segoe UI Variable Text", 9F);
+            label6.Font = new System.Drawing.Font("Segoe UI", 9F);
             label6.Location = new System.Drawing.Point(21, 46);
             label6.Name = "label6";
             label6.Size = new System.Drawing.Size(99, 16);
@@ -1018,7 +1019,7 @@
             // 
             // labelLaTexCS
             // 
-            labelLaTexCS.Font = new System.Drawing.Font("Segoe UI Variable Text", 11F);
+            labelLaTexCS.Font = new System.Drawing.Font("Segoe UI", 11F);
             labelLaTexCS.Location = new System.Drawing.Point(223, 3);
             labelLaTexCS.Margin = new System.Windows.Forms.Padding(0);
             labelLaTexCS.Name = "labelLaTexCS";
@@ -1030,7 +1031,7 @@
             // label
             // 
             label.AutoSize = true;
-            label.Font = new System.Drawing.Font("Segoe UI Variable Text", 9F);
+            label.Font = new System.Drawing.Font("Segoe UI", 9F);
             label.Location = new System.Drawing.Point(135, 3);
             label.Name = "label";
             label.Size = new System.Drawing.Size(85, 16);
@@ -1044,7 +1045,7 @@
             groupBoxPointGroup.Controls.Add(label10);
             groupBoxPointGroup.Controls.Add(label11);
             groupBoxPointGroup.Controls.Add(labelLaTexPG_SF);
-            groupBoxPointGroup.Font = new System.Drawing.Font("Segoe UI Variable Text", 9F);
+            groupBoxPointGroup.Font = new System.Drawing.Font("Segoe UI", 9F);
             groupBoxPointGroup.Location = new System.Drawing.Point(3, 25);
             groupBoxPointGroup.Name = "groupBoxPointGroup";
             groupBoxPointGroup.Size = new System.Drawing.Size(328, 46);
@@ -1054,7 +1055,7 @@
             // 
             // labelLaTexPG_HM
             // 
-            labelLaTexPG_HM.Font = new System.Drawing.Font("Segoe UI Variable Text", 12F);
+            labelLaTexPG_HM.Font = new System.Drawing.Font("Segoe UI", 12F);
             labelLaTexPG_HM.Location = new System.Drawing.Point(97, 22);
             labelLaTexPG_HM.Margin = new System.Windows.Forms.Padding(0);
             labelLaTexPG_HM.Name = "labelLaTexPG_HM";
@@ -1065,7 +1066,7 @@
             // 
             // label10
             // 
-            label10.Font = new System.Drawing.Font("Segoe UI Variable Text", 9F);
+            label10.Font = new System.Drawing.Font("Segoe UI", 9F);
             label10.Location = new System.Drawing.Point(4, 24);
             label10.Name = "label10";
             label10.Size = new System.Drawing.Size(83, 15);
@@ -1076,7 +1077,7 @@
             // label11
             // 
             label11.AutoSize = true;
-            label11.Font = new System.Drawing.Font("Segoe UI Variable Text", 9F);
+            label11.Font = new System.Drawing.Font("Segoe UI", 9F);
             label11.Location = new System.Drawing.Point(183, 24);
             label11.Name = "label11";
             label11.Size = new System.Drawing.Size(63, 16);
@@ -1086,7 +1087,7 @@
             // 
             // labelLaTexPG_SF
             // 
-            labelLaTexPG_SF.Font = new System.Drawing.Font("Segoe UI Variable Text", 12F);
+            labelLaTexPG_SF.Font = new System.Drawing.Font("Segoe UI", 12F);
             labelLaTexPG_SF.Location = new System.Drawing.Point(256, 22);
             labelLaTexPG_SF.Margin = new System.Windows.Forms.Padding(0);
             labelLaTexPG_SF.Name = "labelLaTexPG_SF";
@@ -1118,7 +1119,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Font = new System.Drawing.Font("Segoe UI Variable Text", 9F);
+            label4.Font = new System.Drawing.Font("Segoe UI", 9F);
             label4.Location = new System.Drawing.Point(8, 3);
             label4.Name = "label4";
             label4.Size = new System.Drawing.Size(53, 16);
@@ -1128,7 +1129,7 @@
             // 
             // labelLaTexNumber
             // 
-            labelLaTexNumber.Font = new System.Drawing.Font("Segoe UI Variable Text", 11F);
+            labelLaTexNumber.Font = new System.Drawing.Font("Segoe UI", 11F);
             labelLaTexNumber.Location = new System.Drawing.Point(64, 3);
             labelLaTexNumber.Margin = new System.Windows.Forms.Padding(0);
             labelLaTexNumber.Name = "labelLaTexNumber";
@@ -1158,7 +1159,7 @@
             // label15
             // 
             label15.AutoSize = true;
-            label15.Font = new System.Drawing.Font("Segoe UI Variable Text", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            label15.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
             label15.Location = new System.Drawing.Point(0, 2);
             label15.Margin = new System.Windows.Forms.Padding(0, 2, 0, 0);
             label15.Name = "label15";
@@ -1169,7 +1170,7 @@
             // label16
             // 
             label16.AutoSize = true;
-            label16.Font = new System.Drawing.Font("Segoe UI Variable Text", 9F);
+            label16.Font = new System.Drawing.Font("Segoe UI", 9F);
             label16.Location = new System.Drawing.Point(72, 2);
             label16.Margin = new System.Windows.Forms.Padding(15, 2, 0, 0);
             label16.Name = "label16";
@@ -1180,7 +1181,7 @@
             // radioButtonDirectionA
             // 
             radioButtonDirectionA.AutoSize = true;
-            radioButtonDirectionA.Font = new System.Drawing.Font("Segoe UI Variable Text", 9F);
+            radioButtonDirectionA.Font = new System.Drawing.Font("Segoe UI", 9F);
             radioButtonDirectionA.Location = new System.Drawing.Point(127, 0);
             radioButtonDirectionA.Margin = new System.Windows.Forms.Padding(0);
             radioButtonDirectionA.Name = "radioButtonDirectionA";
@@ -1194,7 +1195,7 @@
             // radioButtonDirectionB
             // 
             radioButtonDirectionB.AutoSize = true;
-            radioButtonDirectionB.Font = new System.Drawing.Font("Segoe UI Variable Text", 9F);
+            radioButtonDirectionB.Font = new System.Drawing.Font("Segoe UI", 9F);
             radioButtonDirectionB.Location = new System.Drawing.Point(158, 0);
             radioButtonDirectionB.Margin = new System.Windows.Forms.Padding(0);
             radioButtonDirectionB.Name = "radioButtonDirectionB";
@@ -1208,7 +1209,7 @@
             // radioButtonDirectionC
             // 
             radioButtonDirectionC.AutoSize = true;
-            radioButtonDirectionC.Font = new System.Drawing.Font("Segoe UI Variable Text", 9F);
+            radioButtonDirectionC.Font = new System.Drawing.Font("Segoe UI", 9F);
             radioButtonDirectionC.Location = new System.Drawing.Point(190, 0);
             radioButtonDirectionC.Margin = new System.Windows.Forms.Padding(0);
             radioButtonDirectionC.Name = "radioButtonDirectionC";
@@ -1222,7 +1223,7 @@
             // label12
             // 
             label12.AutoSize = true;
-            label12.Font = new System.Drawing.Font("Segoe UI Variable Text", 9F);
+            label12.Font = new System.Drawing.Font("Segoe UI", 9F);
             label12.Location = new System.Drawing.Point(236, 2);
             label12.Margin = new System.Windows.Forms.Padding(15, 2, 0, 0);
             label12.Name = "label12";
@@ -1319,7 +1320,7 @@
             Controls.Add(tableLayoutPanel1);
             Controls.Add(flowLayoutPanel4);
             Controls.Add(panel2);
-            Font = new System.Drawing.Font("Segoe UI Variable Text", 10F);
+            Font = new System.Drawing.Font("Segoe UI", 10F);
             Name = "FormSymmetryInformation";
             Padding = new System.Windows.Forms.Padding(4);
             ShowIcon = false;
@@ -1397,7 +1398,8 @@
         private Crystallography.Controls.NumericBox numericBoxLengthAxis1;
         private System.Windows.Forms.TextBox textBoxZoneAxis;
         private Crystallography.Controls.NumericBox numericBoxLengthAxis2;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        // private System.Windows.Forms.DataGridView dataGridView1; // 260518Cl 旧実装
+        private DpiAwareDataGridView dataGridView1; // 260518Cl
         private System.Data.DataSet dataSet;
         private System.Data.DataTable dataTableWyckoff;
         private System.Data.DataColumn dataColumn1;

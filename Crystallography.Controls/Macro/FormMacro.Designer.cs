@@ -47,7 +47,8 @@
             flowLayoutPanel5 = new System.Windows.Forms.FlowLayoutPanel();
             label2 = new System.Windows.Forms.Label();
             splitContainer2 = new System.Windows.Forms.SplitContainer();
-            dataGridViewDebug = new System.Windows.Forms.DataGridView();
+            // dataGridViewDebug = new System.Windows.Forms.DataGridView(); // 260518Cl 旧実装
+            dataGridViewDebug = new DpiAwareDataGridView(); // 260518Cl
             ColumnName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             splitContainer1 = new System.Windows.Forms.SplitContainer();
@@ -57,7 +58,8 @@
             buttonRunMacro = new System.Windows.Forms.Button();
             buttonNextStep = new System.Windows.Forms.Button();
             buttonStepByStep = new System.Windows.Forms.Button();
-            dataGridView = new System.Windows.Forms.DataGridView();
+            // dataGridView = new System.Windows.Forms.DataGridView(); // 260518Cl 旧実装
+            dataGridView = new DpiAwareDataGridView(); // 260518Cl
             Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             menuStrip1 = new System.Windows.Forms.MenuStrip();
@@ -467,7 +469,8 @@
         private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
         private System.Windows.Forms.Button buttonRunMacro;
         private PyRichTextBox pyRichTextBox;
-        private System.Windows.Forms.DataGridView dataGridView;
+        // private System.Windows.Forms.DataGridView dataGridView; // 260518Cl 旧実装
+        private DpiAwareDataGridView dataGridView; // 260518Cl
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
@@ -475,7 +478,8 @@
         private System.Windows.Forms.Button buttonStepByStep;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.SplitContainer splitContainer2;
-        private System.Windows.Forms.DataGridView dataGridViewDebug;
+        // private System.Windows.Forms.DataGridView dataGridViewDebug; // 260518Cl 旧実装
+        private DpiAwareDataGridView dataGridViewDebug; // 260518Cl
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnName;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.SplitContainer splitContainer3;

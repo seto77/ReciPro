@@ -157,7 +157,7 @@
     <value>ポイントサイズを設定</value>
   </data>
   <data name="groupBoxMode.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9.75pt</value>
+    <value>Yu Gothic UI, 9.75pt</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="groupBoxMode.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
@@ -170,7 +170,7 @@
     <value>モード</value>
   </data>
   <data name="groupBoxSphere.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="groupBoxSphere.Location" type="System.Drawing.Point, System.Drawing">
     <value>152, 105</value>
@@ -195,7 +195,7 @@
     <value>136, 16</value>
   </data>
   <data name="radioButtonUpperSphere.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="radioButtonUpperSphere.Size" type="System.Drawing.Size, System.Drawing">
     <value>59, 16</value>
@@ -207,7 +207,7 @@
     <value>結晶軸を描画</value>
   </data>
   <data name="radioButtonLowerSphere.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="radioButtonLowerSphere.Location" type="System.Drawing.Point, System.Drawing">
     <value>59, 0</value>
@@ -222,7 +222,7 @@
     <value>結晶面を描画</value>
   </data>
   <data name="groupBoxProjectionScheme.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="groupBoxProjectionScheme.Location" type="System.Drawing.Point, System.Drawing">
     <value>152, 16</value>
@@ -240,7 +240,7 @@
     <value>Top</value>
   </data>
   <data name="flowLayoutPanelProjectionScheme.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="flowLayoutPanelProjectionScheme.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 15</value>
@@ -252,7 +252,7 @@
     <value>False</value>
   </data>
   <data name="radioButtonWulff.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="radioButtonWulff.Size" type="System.Drawing.Size, System.Drawing">
     <value>123, 16</value>
@@ -264,7 +264,7 @@
     <value>ウルフネット（等角法）で方位を投影</value>
   </data>
   <data name="radioButtonSchmidt.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="radioButtonSchmidt.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 16</value>
@@ -279,7 +279,7 @@
     <value>シュミットネット（等面積法）で方位を投影</value>
   </data>
   <data name="groupBoxProjectionObject.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="groupBoxProjectionObject.Size" type="System.Drawing.Size, System.Drawing">
     <value>140, 143</value>
@@ -288,7 +288,7 @@
     <value>投影対象</value>
   </data>
   <data name="checkBoxReflectStructureFactor.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 8pt</value>
+    <value>Yu Gothic UI, 8pt</value>
   </data>
   <data name="checkBoxReflectStructureFactor.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 78</value>
@@ -304,7 +304,7 @@
 描画対象に反映</value>
   </data>
   <data name="checkBoxShowIndexLabels.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 8pt</value>
+    <value>Yu Gothic UI, 8pt</value>
   </data>
   <data name="checkBoxShowIndexLabels.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 57</value>
@@ -319,7 +319,7 @@
     <value>指数ラベルを表示</value>
   </data>
   <data name="flowLayoutPanelProjectionObject.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="flowLayoutPanelProjectionObject.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 15</value>
@@ -334,7 +334,7 @@
     <value>134, 42</value>
   </data>
   <data name="radioButtonAxes.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="radioButtonAxes.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 3</value>
@@ -349,7 +349,7 @@
     <value>結晶軸を描画</value>
   </data>
   <data name="radioButtonPlanes.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="radioButtonPlanes.Location" type="System.Drawing.Point, System.Drawing">
     <value>62, 3</value>
@@ -364,7 +364,7 @@
     <value>結晶面を描画</value>
   </data>
   <data name="radioButtonKikuchiLinePairs.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="radioButtonKikuchiLinePairs.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 19</value>
@@ -379,7 +379,7 @@
     <value>結晶軸を描画</value>
   </data>
   <data name="label6.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
     <value>17, 12</value>
@@ -391,7 +391,7 @@
     <value>ポイントサイズを設定</value>
   </data>
   <data name="label1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
     <value>29, 12</value>
@@ -403,7 +403,7 @@
     <value>文字サイズを設定</value>
   </data>
   <data name="groupBoxOutline.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="groupBoxOutline.Location" type="System.Drawing.Point, System.Drawing">
     <value>149, 0</value>
@@ -415,7 +415,7 @@
     <value>輪郭</value>
   </data>
   <data name="checkBox1DegLine.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="checkBox1DegLine.Location" type="System.Drawing.Point, System.Drawing">
     <value>9, 60</value>
@@ -430,7 +430,7 @@
     <value>1度刻みの線を表示</value>
   </data>
   <data name="radioButtonOutlinePole.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="radioButtonOutlinePole.Location" type="System.Drawing.Point, System.Drawing">
     <value>7, 36</value>
@@ -445,7 +445,7 @@
     <value>極方向から緯線・経線を投影します。</value>
   </data>
   <data name="radioButtonOutlineEquator.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="radioButtonOutlineEquator.Size" type="System.Drawing.Size, System.Drawing">
     <value>59, 16</value>
@@ -457,7 +457,7 @@
     <value>赤道方向から緯線・経線を投影します。</value>
   </data>
   <data name="tabControl.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="tabControl.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 29</value>
@@ -484,7 +484,7 @@
     <value>区切り文字</value>
   </data>
   <data name="radioButtonDelimiterComma.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="radioButtonDelimiterComma.Location" type="System.Drawing.Point, System.Drawing">
     <value>147, 19</value>
@@ -499,7 +499,7 @@
     <value>指数出力の区切り文字にカンマを使用</value>
   </data>
   <data name="radioButtonDelimiterSpace.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="radioButtonDelimiterSpace.Size" type="System.Drawing.Size, System.Drawing">
     <value>69, 16</value>
@@ -511,7 +511,7 @@
     <value>指数出力の区切り文字にスペースを使用</value>
   </data>
   <data name="radioButtonDelimiterNone.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="radioButtonDelimiterNone.Size" type="System.Drawing.Size, System.Drawing">
     <value>45, 16</value>
@@ -523,7 +523,7 @@
     <value>指数出力に区切り文字なし</value>
   </data>
   <data name="groupBoxSize.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="groupBoxSize.Size" type="System.Drawing.Size, System.Drawing">
     <value>141, 63</value>
@@ -532,7 +532,7 @@
     <value>サイズ</value>
   </data>
   <data name="groupBoxColor.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="groupBoxColor.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 82</value>
@@ -547,16 +547,16 @@
     <value>表示色を変更</value>
   </data>
   <data name="colorControlString.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="colorControlString.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="colorControlString.FooterText" xml:space="preserve">
     <value>晶帯軸の文字色 (菊池線モード)</value>
   </data>
   <data name="colorControlString.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="colorControlString.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 77</value>
@@ -565,19 +565,19 @@
     <value>196, 20</value>
   </data>
   <data name="colorControlKikuchi.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="colorControlKikuchi.FooterText" xml:space="preserve">
     <value>晶帯軸の表示色 (菊池線モード )</value>
   </data>
   <data name="colorControlKikuchi.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="colorControlKikuchi.Size" type="System.Drawing.Size, System.Drawing">
     <value>200, 20</value>
   </data>
   <data name="colorControlBackGround.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="colorControlBackGround.FooterText" xml:space="preserve">
     <value>背景</value>
@@ -604,7 +604,7 @@
     <value>40, 20</value>
   </data>
   <data name="radioButtonCircleByPlanes.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="radioButtonCircleByPlanes.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 189</value>
@@ -617,7 +617,7 @@
 2つの結晶面</value>
   </data>
   <data name="radioButtonCircleByAxis.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="radioButtonCircleByAxis.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 136</value>
@@ -629,7 +629,7 @@
     <value>晶帯軸の指数</value>
   </data>
   <data name="buttonAddCircle.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9.5pt</value>
+    <value>Yu Gothic UI, 9.5pt</value>
   </data>
   <data name="buttonAddCircle.Size" type="System.Drawing.Size, System.Drawing">
     <value>43, 23</value>
@@ -641,7 +641,7 @@
     <value>Top, Left</value>
   </data>
   <data name="buttonDeleteCircle.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9.5pt</value>
+    <value>Yu Gothic UI, 9.5pt</value>
   </data>
   <data name="buttonDeleteCircle.Location" type="System.Drawing.Point, System.Drawing">
     <value>208, 23</value>
@@ -692,7 +692,7 @@
     <value>線源</value>
   </data>
   <data name="menuStrip1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="menuStrip1.Size" type="System.Drawing.Size, System.Drawing">
     <value>924, 24</value>
@@ -767,7 +767,7 @@
     <value>プリント</value>
   </data>
   <data name="radioButtonRange.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="radioButtonRange.Size" type="System.Drawing.Size, System.Drawing">
     <value>83, 16</value>
@@ -779,7 +779,7 @@
     <value>以下の範囲内で表示する指数を設定</value>
   </data>
   <data name="radioButtonSpecifiedIndices.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="radioButtonSpecifiedIndices.Location" type="System.Drawing.Point, System.Drawing">
     <value>83, 0</value>
@@ -794,7 +794,7 @@
     <value>表示する指数を個別に指定</value>
   </data>
   <data name="radioButtonHighStructureFactor.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="radioButtonHighStructureFactor.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 16</value>
@@ -982,7 +982,7 @@
 </value>
   </data>
   <data name="groupBoxIndices.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9.75pt</value>
+    <value>Yu Gothic UI, 9.75pt</value>
   </data>
   <data name="groupBoxIndices.Location" type="System.Drawing.Point, System.Drawing">
     <value>310, 0</value>
@@ -1018,7 +1018,7 @@
     <value>158, 58</value>
   </data>
   <data name="buttonAddIndex.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="buttonAddIndex.Size" type="System.Drawing.Size, System.Drawing">
     <value>39, 22</value>
@@ -1027,7 +1027,7 @@
     <value>追加</value>
   </data>
   <data name="buttonRemoveIndex.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="buttonRemoveIndex.Size" type="System.Drawing.Size, System.Drawing">
     <value>39, 22</value>
@@ -1039,7 +1039,7 @@
     <value>78, 2</value>
   </data>
   <data name="checkBoxRotateColor.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 8pt</value>
+    <value>Yu Gothic UI, 8pt</value>
   </data>
   <data name="checkBoxRotateColor.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 22</value>
@@ -1051,7 +1051,7 @@
     <value>色を自動で変更する</value>
   </data>
   <data name="checkBoxIncludingEquivalentPlanes.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 8pt</value>
+    <value>Yu Gothic UI, 8pt</value>
   </data>
   <data name="checkBoxIncludingEquivalentPlanes.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 40</value>
@@ -1078,13 +1078,13 @@
     <value>190, 40</value>
   </data>
   <data name="numericBoxHighStructureFactor.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 8pt</value>
+    <value>Yu Gothic UI, 8pt</value>
   </data>
   <data name="numericBoxHighStructureFactor.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 8, 0, 0</value>
   </data>
   <data name="numericBoxHighStructureFactor.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 8pt</value>
+    <value>Yu Gothic UI, 8pt</value>
   </data>
   <data name="numericBoxHighStructureFactor.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 8, 0, 0</value>
@@ -1126,7 +1126,7 @@
     <value>225, 164</value>
   </data>
   <data name="checkBoxDisplay3D.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9.75pt</value>
+    <value>Yu Gothic UI, 9.75pt</value>
   </data>
   <data name="checkBoxDisplay3D.Location" type="System.Drawing.Point, System.Drawing">
     <value>5, 0</value>
@@ -1141,7 +1141,7 @@
     <value>216, 127</value>
   </data>
   <data name="label29.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 8pt</value>
+    <value>Yu Gothic UI, 8pt</value>
   </data>
   <data name="label29.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 71</value>
@@ -1153,7 +1153,7 @@
     <value>奥行フェードアウト</value>
   </data>
   <data name="checkBox3dOptionSphere.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 8pt</value>
+    <value>Yu Gothic UI, 8pt</value>
   </data>
   <data name="checkBox3dOptionSphere.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -1168,7 +1168,7 @@
     <value>球面の輪郭</value>
   </data>
   <data name="checkBox3dOptionSemisphere.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 8pt</value>
+    <value>Yu Gothic UI, 8pt</value>
   </data>
   <data name="checkBox3dOptionSemisphere.Location" type="System.Drawing.Point, System.Drawing">
     <value>115, 67</value>
@@ -1186,7 +1186,7 @@
     <value>105, 21</value>
   </data>
   <data name="button3D_reset.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="button3D_reset.Location" type="System.Drawing.Point, System.Drawing">
     <value>109, 15</value>
@@ -1198,7 +1198,7 @@
     <value>方位リセット</value>
   </data>
   <data name="checkBox3dOptionProjectionLine.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 8pt</value>
+    <value>Yu Gothic UI, 8pt</value>
   </data>
   <data name="checkBox3dOptionProjectionLine.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -1213,7 +1213,7 @@
     <value>投影補助線</value>
   </data>
   <data name="checkBox3dOptionStereonet.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 8pt</value>
+    <value>Yu Gothic UI, 8pt</value>
   </data>
   <data name="checkBox3dOptionStereonet.Location" type="System.Drawing.Point, System.Drawing">
     <value>115, 88</value>
@@ -1225,7 +1225,7 @@
     <value>ステレオネット</value>
   </data>
   <data name="checkBox3dOptionLabel.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 8pt</value>
+    <value>Yu Gothic UI, 8pt</value>
   </data>
   <data name="checkBox3dOptionLabel.Location" type="System.Drawing.Point, System.Drawing">
     <value>115, 46</value>

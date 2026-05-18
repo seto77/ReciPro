@@ -71,7 +71,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Font = new System.Drawing.Font("Segoe UI Variable Text", 9.75F);
+            label3.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             label3.Location = new System.Drawing.Point(373, 50);
             label3.Name = "label3";
             label3.Size = new System.Drawing.Size(112, 51);
@@ -113,7 +113,7 @@
             // 
             // textBoxFileName
             // 
-            textBoxFileName.Font = new System.Drawing.Font("Segoe UI Variable Text", 9F);
+            textBoxFileName.Font = new System.Drawing.Font("Segoe UI", 9F);
             textBoxFileName.Location = new System.Drawing.Point(7, 21);
             textBoxFileName.Name = "textBoxFileName";
             textBoxFileName.ReadOnly = true;
@@ -208,7 +208,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Font = new System.Drawing.Font("Segoe UI Variable Text", 9F);
+            label2.Font = new System.Drawing.Font("Segoe UI", 9F);
             label2.Location = new System.Drawing.Point(68, 141);
             label2.Name = "label2";
             label2.Size = new System.Drawing.Size(45, 15);
@@ -218,7 +218,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new System.Drawing.Font("Segoe UI Variable Text", 9F);
+            label1.Font = new System.Drawing.Font("Segoe UI", 9F);
             label1.Location = new System.Drawing.Point(67, 160);
             label1.Name = "label1";
             label1.Size = new System.Drawing.Size(47, 15);
@@ -228,7 +228,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Font = new System.Drawing.Font("Segoe UI Variable Text", 9F);
+            label4.Font = new System.Drawing.Font("Segoe UI", 9F);
             label4.Location = new System.Drawing.Point(2, 147);
             label4.Name = "label4";
             label4.Size = new System.Drawing.Size(67, 15);
@@ -238,7 +238,7 @@
             // label10
             // 
             label10.AutoSize = true;
-            label10.Font = new System.Drawing.Font("Segoe UI Variable Text", 9F);
+            label10.Font = new System.Drawing.Font("Segoe UI", 9F);
             label10.Location = new System.Drawing.Point(4, 113);
             label10.Name = "label10";
             label10.Size = new System.Drawing.Size(47, 15);
@@ -326,7 +326,7 @@
             numericBoxFootY.SkipEventDuringInput = false;
             numericBoxFootY.SmartIncrement = true;
             numericBoxFootY.TabIndex = 0;
-            numericBoxFootY.TextFont = new System.Drawing.Font("BIZ UDPGothic", 9F);
+            numericBoxFootY.TextFont = new System.Drawing.Font("Yu Gothic UI", 9F);
             numericBoxFootY.ThonsandsSeparator = true;
             numericBoxFootY.Value = 512D;
             // 
@@ -348,7 +348,7 @@
             numericBoxPixelWidth.SkipEventDuringInput = false;
             numericBoxPixelWidth.SmartIncrement = true;
             numericBoxPixelWidth.TabIndex = 0;
-            numericBoxPixelWidth.TextFont = new System.Drawing.Font("BIZ UDPGothic", 9F);
+            numericBoxPixelWidth.TextFont = new System.Drawing.Font("Yu Gothic UI", 9F);
             numericBoxPixelWidth.ThonsandsSeparator = true;
             numericBoxPixelWidth.Value = 1024D;
             // 
@@ -370,7 +370,7 @@
             numericBoxFootX.SkipEventDuringInput = false;
             numericBoxFootX.SmartIncrement = true;
             numericBoxFootX.TabIndex = 0;
-            numericBoxFootX.TextFont = new System.Drawing.Font("BIZ UDPGothic", 9F);
+            numericBoxFootX.TextFont = new System.Drawing.Font("Yu Gothic UI", 9F);
             numericBoxFootX.ThonsandsSeparator = true;
             numericBoxFootX.Value = 512D;
             // 
@@ -392,7 +392,7 @@
             numericBoxPixelHeight.SkipEventDuringInput = false;
             numericBoxPixelHeight.SmartIncrement = true;
             numericBoxPixelHeight.TabIndex = 0;
-            numericBoxPixelHeight.TextFont = new System.Drawing.Font("BIZ UDPGothic", 9F);
+            numericBoxPixelHeight.TextFont = new System.Drawing.Font("Yu Gothic UI", 9F);
             numericBoxPixelHeight.ThonsandsSeparator = true;
             numericBoxPixelHeight.Value = 1024D;
             // 
@@ -414,14 +414,14 @@
             numericBoxPixelSize.SkipEventDuringInput = false;
             numericBoxPixelSize.SmartIncrement = true;
             numericBoxPixelSize.TabIndex = 0;
-            numericBoxPixelSize.TextFont = new System.Drawing.Font("BIZ UDPGothic", 9F);
+            numericBoxPixelSize.TextFont = new System.Drawing.Font("Yu Gothic UI", 9F);
             numericBoxPixelSize.ThonsandsSeparator = true;
             numericBoxPixelSize.Value = 0.1D;
             // 
             // checkBoxDetectorSizePosition
             // 
             checkBoxDetectorSizePosition.AutoSize = true;
-            checkBoxDetectorSizePosition.Font = new System.Drawing.Font("Segoe UI Variable Text", 9.75F);
+            checkBoxDetectorSizePosition.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             checkBoxDetectorSizePosition.Location = new System.Drawing.Point(5, 0);
             checkBoxDetectorSizePosition.Name = "checkBoxDetectorSizePosition";
             checkBoxDetectorSizePosition.Size = new System.Drawing.Size(256, 21);
@@ -450,7 +450,7 @@
             numericBoxCameraLength2.SkipEventDuringInput = false;
             numericBoxCameraLength2.SmartIncrement = true;
             numericBoxCameraLength2.TabIndex = 2;
-            numericBoxCameraLength2.TextFont = new System.Drawing.Font("BIZ UDPGothic", 9F);
+            numericBoxCameraLength2.TextFont = new System.Drawing.Font("Yu Gothic UI", 9F);
             numericBoxCameraLength2.ThonsandsSeparator = true;
             numericBoxCameraLength2.Value = 1000D;
             numericBoxCameraLength2.ValueChanged += numericBoxCameraLength2_ValueChanged;
@@ -461,7 +461,7 @@
             numericBoxTau.FooterBackColor = System.Drawing.SystemColors.Control;
             numericBoxTau.FooterText = "°";
             numericBoxTau.HeaderBackColor = System.Drawing.SystemColors.Control;
-            numericBoxTau.HeaderFont = new System.Drawing.Font("Segoe UI Variable Text", 11F);
+            numericBoxTau.HeaderFont = new System.Drawing.Font("Segoe UI", 11F);
             numericBoxTau.HeaderText = "τ";
             numericBoxTau.Location = new System.Drawing.Point(339, 0);
             numericBoxTau.Margin = new System.Windows.Forms.Padding(0);
@@ -475,7 +475,7 @@
             numericBoxTau.SkipEventDuringInput = false;
             numericBoxTau.SmartIncrement = true;
             numericBoxTau.TabIndex = 2;
-            numericBoxTau.TextFont = new System.Drawing.Font("BIZ UDPGothic", 9F);
+            numericBoxTau.TextFont = new System.Drawing.Font("Yu Gothic UI", 9F);
             numericBoxTau.ThonsandsSeparator = true;
             numericBoxTau.ValueChanged += numericBoxTau_ValueChanged;
             // 
@@ -526,7 +526,7 @@
             numericBoxPhi.FooterBackColor = System.Drawing.SystemColors.Control;
             numericBoxPhi.FooterText = "°";
             numericBoxPhi.HeaderBackColor = System.Drawing.SystemColors.Control;
-            numericBoxPhi.HeaderFont = new System.Drawing.Font("Segoe UI Variable Text", 11F);
+            numericBoxPhi.HeaderFont = new System.Drawing.Font("Segoe UI", 11F);
             numericBoxPhi.HeaderText = "φ";
             numericBoxPhi.Location = new System.Drawing.Point(236, 0);
             numericBoxPhi.Margin = new System.Windows.Forms.Padding(0);
@@ -538,7 +538,7 @@
             numericBoxPhi.SkipEventDuringInput = false;
             numericBoxPhi.SmartIncrement = true;
             numericBoxPhi.TabIndex = 2;
-            numericBoxPhi.TextFont = new System.Drawing.Font("BIZ UDPGothic", 9F);
+            numericBoxPhi.TextFont = new System.Drawing.Font("Yu Gothic UI", 9F);
             numericBoxPhi.ThonsandsSeparator = true;
             numericBoxPhi.ValueChanged += numericBoxTau_ValueChanged;
             // 
@@ -575,7 +575,7 @@
             Controls.Add(this.panelDetectorAreaAndOverlappedImage);
             Controls.Add(panelSchematicDiagram);
             Controls.Add(panelDetectorGeometry);
-            Font = new System.Drawing.Font("Segoe UI Variable Text", 9.75F);
+            Font = new System.Drawing.Font("Segoe UI", 9.75F);
             FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             MaximizeBox = false;

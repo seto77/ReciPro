@@ -144,7 +144,7 @@
     <value>3</value>
   </data>
   <data name="numericBoxSampleTilt.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="numericBoxSampleTilt.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
@@ -154,7 +154,7 @@
     <value>°</value>
   </data>
   <data name="numericBoxSampleTilt.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxSampleTilt.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 4, 0, 0</value>
@@ -200,7 +200,7 @@
     <value>GrowAndShrink</value>
   </data>
   <data name="waveLengthControl.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="waveLengthControl.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 19</value>
@@ -221,7 +221,7 @@
     <value>1</value>
   </data>
   <data name="waveLengthControl.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="&gt;&gt;waveLengthControl.Name" xml:space="preserve">
     <value>waveLengthControl</value>
@@ -287,7 +287,7 @@
     <value>3</value>
   </data>
   <data name="flowLayoutPanelViewAlong.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="flowLayoutPanelViewAlong.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 575</value>
@@ -317,7 +317,7 @@
     <value>GrowAndShrink</value>
   </data>
   <data name="buttonViewQuarter.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="buttonViewQuarter.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -341,7 +341,7 @@
     <value>GrowAndShrink</value>
   </data>
   <data name="buttonViewFromSurfaceNormal.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="buttonViewFromSurfaceNormal.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -365,7 +365,7 @@
     <value>GrowAndShrink</value>
   </data>
   <data name="buttonFromX.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="buttonFromX.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -389,7 +389,7 @@
     <value>GrowAndShrink</value>
   </data>
   <data name="buttonViewFromZ.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="buttonViewFromZ.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -440,7 +440,7 @@
     <value>True</value>
   </data>
   <data name="buttonFitNistElasticSampler.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="buttonFitNistElasticSampler.Location" type="System.Drawing.Point, System.Drawing">
     <value>448, 645</value>
@@ -470,7 +470,7 @@
     <value>7</value>
   </data>
   <data name="graphControlDepthProfile.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="graphControlDepthProfile.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 527</value>
@@ -497,7 +497,7 @@
     <value>6</value>
   </data>
   <data name="poleFigureControl.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="poleFigureControl.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 4</value>
@@ -524,7 +524,7 @@
     <value>5</value>
   </data>
   <data name="graphControlEnergyProfile.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="graphControlEnergyProfile.Location" type="System.Drawing.Point, System.Drawing">
     <value>5, 409</value>
@@ -581,7 +581,7 @@
     <value>3</value>
   </data>
   <data name="numericBoxDetTilt.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxDetTilt.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 4, 0, 0</value>
@@ -590,7 +590,7 @@
     <value>°</value>
   </data>
   <data name="numericBoxDetTilt.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxDetTilt.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 4, 0, 0</value>
@@ -626,7 +626,7 @@
     <value>6</value>
   </data>
   <data name="numericBoxDetRadius.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxDetRadius.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 4, 0, 0</value>
@@ -635,7 +635,7 @@
     <value>mm</value>
   </data>
   <data name="numericBoxDetRadius.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxDetRadius.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 4, 0, 0</value>
@@ -671,7 +671,7 @@
     <value>4</value>
   </data>
   <data name="numericBoxZofDet.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxZofDet.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 4, 0, 0</value>
@@ -680,7 +680,7 @@
     <value>mm</value>
   </data>
   <data name="numericBoxZofDet.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxZofDet.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 4, 0, 0</value>
@@ -719,7 +719,7 @@
     <value>5</value>
   </data>
   <data name="numericBoxYofDet.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxYofDet.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 4, 0, 0</value>
@@ -728,7 +728,7 @@
     <value>mm</value>
   </data>
   <data name="numericBoxYofDet.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxYofDet.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 4, 0, 0</value>
@@ -770,7 +770,7 @@
     <value>True</value>
   </data>
   <data name="label2.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
     <value>20, 100</value>
@@ -800,7 +800,7 @@
     <value>Top, Bottom, Left, Right</value>
   </data>
   <data name="graphicsBox.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt, style=Bold</value>
+    <value>Segoe UI, 9.75pt, style=Bold</value>
   </data>
   <data name="graphicsBox.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -866,10 +866,10 @@
     <value>GrowAndShrink</value>
   </data>
   <data name="colorControlExcessLine.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="colorControlExcessLine.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="colorControlExcessLine.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -878,7 +878,7 @@
     <value>Color</value>
   </data>
   <data name="colorControlExcessLine.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="colorControlExcessLine.HeaderMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -938,7 +938,7 @@
     <value>True</value>
   </data>
   <data name="label11.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="label11.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -974,10 +974,10 @@
     <value>GrowAndShrink</value>
   </data>
   <data name="colorControlString.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="colorControlString.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="colorControlString.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -986,7 +986,7 @@
     <value>Color</value>
   </data>
   <data name="colorControlString.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="colorControlString.HeaderMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -1025,10 +1025,10 @@
     <value>GrowAndShrink</value>
   </data>
   <data name="colorControlBackGround.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="colorControlBackGround.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="colorControlBackGround.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -1037,7 +1037,7 @@
     <value>Background color</value>
   </data>
   <data name="colorControlBackGround.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="colorControlBackGround.HeaderMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -1161,13 +1161,13 @@ to Kikuchi line intensity</value>
     <value>0</value>
   </data>
   <data name="numericBoxKikuchiThreadSholdOfStructureFactor.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxKikuchiThreadSholdOfStructureFactor.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 4, 0, 0</value>
   </data>
   <data name="numericBoxKikuchiThreadSholdOfStructureFactor.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxKikuchiThreadSholdOfStructureFactor.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 4, 0, 0</value>
@@ -1206,7 +1206,7 @@ to Kikuchi line intensity</value>
     <value>2</value>
   </data>
   <data name="numericBoxKikuchiThresholdOfLength.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxKikuchiThresholdOfLength.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 4, 0, 0</value>
@@ -1215,7 +1215,7 @@ to Kikuchi line intensity</value>
     <value>nm⁻¹</value>
   </data>
   <data name="numericBoxKikuchiThresholdOfLength.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxKikuchiThresholdOfLength.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 4, 0, 0</value>
@@ -1262,7 +1262,7 @@ Kikuchi lines under this value are simulated.
     <value>True</value>
   </data>
   <data name="label1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="label1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -1295,7 +1295,7 @@ Kikuchi lines under this value are simulated.
     <value>GrowAndShrink</value>
   </data>
   <data name="numericBoxThicknessStep.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxThicknessStep.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 4, 0, 0</value>
@@ -1304,7 +1304,7 @@ Kikuchi lines under this value are simulated.
     <value>nm</value>
   </data>
   <data name="numericBoxThicknessStep.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxThicknessStep.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 4, 0, 0</value>
@@ -1352,13 +1352,13 @@ Kikuchi lines under this value are simulated.
     <value>GrowAndShrink</value>
   </data>
   <data name="numericBoxMaxNumOfG.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxMaxNumOfG.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 4, 0, 0</value>
   </data>
   <data name="numericBoxMaxNumOfG.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxMaxNumOfG.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 4, 0, 0</value>
@@ -1406,7 +1406,7 @@ Kikuchi lines under this value are simulated.
     <value>True</value>
   </data>
   <data name="checkBoxNonLocalAbsorption.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="checkBoxNonLocalAbsorption.Location" type="System.Drawing.Point, System.Drawing">
     <value>13, 130</value>
@@ -1436,7 +1436,7 @@ Kikuchi lines under this value are simulated.
     <value>True</value>
   </data>
   <data name="checkBoxTDSBackground.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="checkBoxTDSBackground.Location" type="System.Drawing.Point, System.Drawing">
     <value>241, 130</value>
@@ -1466,7 +1466,7 @@ Kikuchi lines under this value are simulated.
     <value>GrowAndShrink</value>
   </data>
   <data name="numericBoxThicknessStart.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxThicknessStart.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 4, 0, 0</value>
@@ -1475,7 +1475,7 @@ Kikuchi lines under this value are simulated.
     <value>nm</value>
   </data>
   <data name="numericBoxThicknessStart.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxThicknessStart.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 4, 0, 0</value>
@@ -1523,7 +1523,7 @@ Kikuchi lines under this value are simulated.
     <value>GrowAndShrink</value>
   </data>
   <data name="numericBoxThicknessEnd.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxThicknessEnd.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 4, 0, 0</value>
@@ -1532,7 +1532,7 @@ Kikuchi lines under this value are simulated.
     <value>nm</value>
   </data>
   <data name="numericBoxThicknessEnd.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxThicknessEnd.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 4, 0, 0</value>
@@ -1583,7 +1583,7 @@ Kikuchi lines under this value are simulated.
     <value>GrowAndShrink</value>
   </data>
   <data name="buttonStop.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="buttonStop.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -1757,7 +1757,7 @@ Kikuchi lines under this value are simulated.
     <value>False</value>
   </data>
   <data name="groupBoxOutput.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt, style=Bold</value>
+    <value>Segoe UI, 9.75pt, style=Bold</value>
   </data>
   <data name="groupBoxOutput.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 561</value>
@@ -1904,7 +1904,7 @@ Kikuchi lines under this value are simulated.
     <value>True</value>
   </data>
   <data name="label9.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="label9.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -1925,7 +1925,7 @@ Kikuchi lines under this value are simulated.
     <value>Energy</value>
   </data>
   <data name="textBoxEnergy.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="textBoxEnergy.Location" type="System.Drawing.Point, System.Drawing">
     <value>48, 0</value>
@@ -1946,7 +1946,7 @@ Kikuchi lines under this value are simulated.
     <value>True</value>
   </data>
   <data name="label12.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="label12.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -1985,7 +1985,7 @@ Kikuchi lines under this value are simulated.
     <value>True</value>
   </data>
   <data name="label5.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="label5.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -2006,7 +2006,7 @@ Kikuchi lines under this value are simulated.
     <value>Depth</value>
   </data>
   <data name="textBoxThickness.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="textBoxThickness.Location" type="System.Drawing.Point, System.Drawing">
     <value>295, 0</value>
@@ -2027,7 +2027,7 @@ Kikuchi lines under this value are simulated.
     <value>True</value>
   </data>
   <data name="label6.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="label6.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -2069,7 +2069,7 @@ Kikuchi lines under this value are simulated.
     <value>False</value>
   </data>
   <data name="label3.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="label3.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -2096,7 +2096,7 @@ Kikuchi lines under this value are simulated.
     <value>False</value>
   </data>
   <data name="label4.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="label4.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -2120,7 +2120,7 @@ Kikuchi lines under this value are simulated.
     <value>True</value>
   </data>
   <data name="checkBoxWithBSEDistribution.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="checkBoxWithBSEDistribution.Location" type="System.Drawing.Point, System.Drawing">
     <value>13, 19</value>
@@ -2135,7 +2135,7 @@ Kikuchi lines under this value are simulated.
     <value>Show image with BSE angular/energy distributions</value>
   </data>
   <data name="comboBoxGradient.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="comboBoxGradient.Items" xml:space="preserve">
     <value>Positive</value>
@@ -2156,7 +2156,7 @@ Kikuchi lines under this value are simulated.
     <value>7</value>
   </data>
   <data name="comboBoxScale.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="comboBoxScale.Items" xml:space="preserve">
     <value>Gray</value>
@@ -2216,7 +2216,7 @@ Kikuchi lines under this value are simulated.
     <value>True</value>
   </data>
   <data name="label8.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="label8.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -2237,7 +2237,7 @@ Kikuchi lines under this value are simulated.
     <value>True</value>
   </data>
   <data name="label7.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="label7.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -2258,7 +2258,7 @@ Kikuchi lines under this value are simulated.
     <value>True</value>
   </data>
   <data name="label10.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="label10.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -2279,7 +2279,7 @@ Kikuchi lines under this value are simulated.
     <value>True</value>
   </data>
   <data name="checkBoxShowOverlays.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="checkBoxShowOverlays.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -2318,7 +2318,7 @@ Kikuchi lines under this value are simulated.
     <value>GrowAndShrink</value>
   </data>
   <data name="buttonSaveImage.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="buttonSaveImage.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
@@ -2351,7 +2351,7 @@ Kikuchi lines under this value are simulated.
     <value>GrowAndShrink</value>
   </data>
   <data name="numericBoxEnergyEnd.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxEnergyEnd.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 4, 0, 0</value>
@@ -2360,7 +2360,7 @@ Kikuchi lines under this value are simulated.
     <value>kV</value>
   </data>
   <data name="numericBoxEnergyEnd.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxEnergyEnd.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 4, 0, 0</value>
@@ -2408,7 +2408,7 @@ Kikuchi lines under this value are simulated.
     <value>GrowAndShrink</value>
   </data>
   <data name="numericBoxEnergyStart.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxEnergyStart.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 4, 0, 0</value>
@@ -2417,7 +2417,7 @@ Kikuchi lines under this value are simulated.
     <value>kV</value>
   </data>
   <data name="numericBoxEnergyStart.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxEnergyStart.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 4, 0, 0</value>
@@ -2465,7 +2465,7 @@ Kikuchi lines under this value are simulated.
     <value>GrowAndShrink</value>
   </data>
   <data name="numericBoxEnergyStep.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxEnergyStep.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 4, 0, 0</value>
@@ -2474,7 +2474,7 @@ Kikuchi lines under this value are simulated.
     <value>kV</value>
   </data>
   <data name="numericBoxEnergyStep.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxEnergyStep.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 4, 0, 0</value>
@@ -2522,7 +2522,7 @@ Kikuchi lines under this value are simulated.
     <value>True</value>
   </data>
   <data name="label13.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="label13.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -2555,7 +2555,7 @@ Kikuchi lines under this value are simulated.
     <value>True</value>
   </data>
   <data name="label14.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="label14.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -2588,7 +2588,7 @@ Kikuchi lines under this value are simulated.
     <value>True</value>
   </data>
   <data name="checkBoxShowDyanmicalEBSD.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="checkBoxShowDyanmicalEBSD.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -2624,7 +2624,7 @@ Kikuchi lines under this value are simulated.
     <value>True</value>
   </data>
   <data name="checkBoxDrawDetectorOutline.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="checkBoxDrawDetectorOutline.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -2693,7 +2693,7 @@ Kikuchi lines under this value are simulated.
     <value>Left</value>
   </data>
   <data name="tabControl1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 10pt</value>
+    <value>Segoe UI, 10pt</value>
   </data>
   <data name="tabControl1.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 4</value>
@@ -2741,7 +2741,7 @@ Kikuchi lines under this value are simulated.
     <value>1</value>
   </data>
   <data name="tabPage1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="tabPage1.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 26</value>
@@ -2798,7 +2798,7 @@ Kikuchi lines under this value are simulated.
     <value>True</value>
   </data>
   <data name="label17.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="label17.Location" type="System.Drawing.Point, System.Drawing">
     <value>32, 23</value>
@@ -2816,7 +2816,7 @@ Kikuchi lines under this value are simulated.
     <value>True</value>
   </data>
   <data name="label16.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="label16.Location" type="System.Drawing.Point, System.Drawing">
     <value>22, 52</value>
@@ -2855,7 +2855,7 @@ Kikuchi lines under this value are simulated.
     <value>0</value>
   </data>
   <data name="tabPage2.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="tabPage2.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 26</value>
@@ -2876,7 +2876,7 @@ Kikuchi lines under this value are simulated.
     <value>True</value>
   </data>
   <data name="label15.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="label15.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -2978,7 +2978,7 @@ Kikuchi lines under this value are simulated.
     <value>8</value>
   </data>
   <data name="tabPage3.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="tabPage3.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 26</value>
@@ -3032,7 +3032,7 @@ Kikuchi lines under this value are simulated.
     <value>True</value>
   </data>
   <data name="checkBoxShowMesh.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="checkBoxShowMesh.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -3053,7 +3053,7 @@ Kikuchi lines under this value are simulated.
     <value>True</value>
   </data>
   <data name="checkBoxShowCircle.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="checkBoxShowCircle.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -3086,7 +3086,7 @@ Kikuchi lines under this value are simulated.
     <value>True</value>
   </data>
   <data name="checkBoxShowKikuchiLines.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="checkBoxShowKikuchiLines.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -3185,7 +3185,7 @@ Kikuchi lines under this value are simulated.
     <value>3</value>
   </data>
   <data name="groupBoxSimulationParameters.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 10pt</value>
+    <value>Segoe UI, 10pt</value>
   </data>
   <data name="groupBoxSimulationParameters.Location" type="System.Drawing.Point, System.Drawing">
     <value>13, 473</value>
@@ -3215,7 +3215,7 @@ Kikuchi lines under this value are simulated.
     <value>True</value>
   </data>
   <data name="labelMasterPatternGrid.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="labelMasterPatternGrid.Location" type="System.Drawing.Point, System.Drawing">
     <value>262, 31</value>
@@ -3233,7 +3233,7 @@ Kikuchi lines under this value are simulated.
     <value>Grid</value>
   </data>
   <data name="comboBoxMasterPatternGrid.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="comboBoxMasterPatternGrid.Items" xml:space="preserve">
     <value>64</value>
@@ -3326,7 +3326,7 @@ Kikuchi lines under this value are simulated.
     <value>   </value>
   </data>
   <data name="scalablePictureBoxAdvancedMasterPattern2D.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="scalablePictureBoxAdvancedMasterPattern2D.Location" type="System.Drawing.Point, System.Drawing">
     <value>5, 53</value>
@@ -3455,7 +3455,7 @@ Kikuchi lines under this value are simulated.
     <value>7</value>
   </data>
   <data name="flowLayoutPanelMasterPatternSelectors.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="flowLayoutPanelMasterPatternSelectors.Location" type="System.Drawing.Point, System.Drawing">
     <value>8, 419</value>
@@ -3617,7 +3617,7 @@ Kikuchi lines under this value are simulated.
     <value>True</value>
   </data>
   <data name="labelMasterPattern2DHemisphere.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="labelMasterPattern2DHemisphere.Location" type="System.Drawing.Point, System.Drawing">
     <value>56, 6</value>
@@ -3647,7 +3647,7 @@ Kikuchi lines under this value are simulated.
     <value>1</value>
   </data>
   <data name="comboBoxMasterPattern2DHemisphere.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="comboBoxMasterPattern2DHemisphere.Items" xml:space="preserve">
     <value>+Z</value>
@@ -3686,7 +3686,7 @@ Kikuchi lines under this value are simulated.
     <value>GrowAndShrink</value>
   </data>
   <data name="buttonCreateMasterPattern.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="buttonCreateMasterPattern.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 0</value>
@@ -3815,7 +3815,7 @@ Kikuchi lines under this value are simulated.
     <value>Right</value>
   </data>
   <data name="groupBoxMasterPattern.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 10pt</value>
+    <value>Segoe UI, 10pt</value>
   </data>
   <data name="groupBoxMasterPattern.Location" type="System.Drawing.Point, System.Drawing">
     <value>852, 4</value>
@@ -3875,7 +3875,7 @@ Kikuchi lines under this value are simulated.
     <value>GrowAndShrink</value>
   </data>
   <data name="buttonMasterPattern2DCopy.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="buttonMasterPattern2DCopy.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
@@ -3950,7 +3950,7 @@ Kikuchi lines under this value are simulated.
     <value>GrowAndShrink</value>
   </data>
   <data name="buttonMasterPattern3DCopy.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="buttonMasterPattern3DCopy.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
@@ -3971,7 +3971,7 @@ Kikuchi lines under this value are simulated.
     <value>True</value>
   </data>
   <data name="checkBoxMasterPattern3DAxisLabel.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="checkBoxMasterPattern3DAxisLabel.Location" type="System.Drawing.Point, System.Drawing">
     <value>60, 3</value>
@@ -3992,7 +3992,7 @@ Kikuchi lines under this value are simulated.
     <value>True</value>
   </data>
   <data name="checkBoxMasterPattern3DAxisArrows.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="checkBoxMasterPattern3DAxisArrows.Location" type="System.Drawing.Point, System.Drawing">
     <value>150, 3</value>
@@ -4067,7 +4067,7 @@ Kikuchi lines under this value are simulated.
     <value>GrowAndShrink</value>
   </data>
   <data name="buttonMasterPattern3DViewAlong.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="buttonMasterPattern3DViewAlong.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -4132,7 +4132,7 @@ Kikuchi lines under this value are simulated.
     <value>Fill</value>
   </data>
   <data name="groupBoxEBSDPattern.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 10pt</value>
+    <value>Segoe UI, 10pt</value>
   </data>
   <data name="groupBoxEBSDPattern.Location" type="System.Drawing.Point, System.Drawing">
     <value>324, 4</value>
@@ -4261,7 +4261,7 @@ Kikuchi lines under this value are simulated.
     <value>1428, 729</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

@@ -80,10 +80,10 @@ partial class FormMovie
         // numericBoxSpeed
         // 
         numericBoxSpeed.BackColor = System.Drawing.Color.Transparent;
-        numericBoxSpeed.FooterFont = new System.Drawing.Font("Segoe UI Variable Text", 9.75F);
+        numericBoxSpeed.FooterFont = new System.Drawing.Font("Segoe UI", 9.75F);
         numericBoxSpeed.FooterPadding = new System.Windows.Forms.Padding(0, 3, 0, 0);
         numericBoxSpeed.FooterText = "°/sec";
-        numericBoxSpeed.HeaderFont = new System.Drawing.Font("Segoe UI Variable Text", 9.75F);
+        numericBoxSpeed.HeaderFont = new System.Drawing.Font("Segoe UI", 9.75F);
         numericBoxSpeed.HeaderPadding = new System.Windows.Forms.Padding(0, 3, 0, 0);
         numericBoxSpeed.HeaderText = "Speed";
         numericBoxSpeed.Location = new System.Drawing.Point(9, 6);
@@ -310,10 +310,10 @@ partial class FormMovie
         // numericBoxDuration
         // 
         numericBoxDuration.BackColor = System.Drawing.Color.Transparent;
-        numericBoxDuration.FooterFont = new System.Drawing.Font("Segoe UI Variable Text", 9.75F);
+        numericBoxDuration.FooterFont = new System.Drawing.Font("Segoe UI", 9.75F);
         numericBoxDuration.FooterPadding = new System.Windows.Forms.Padding(0, 3, 0, 0);
         numericBoxDuration.FooterText = "sec";
-        numericBoxDuration.HeaderFont = new System.Drawing.Font("Segoe UI Variable Text", 9.75F);
+        numericBoxDuration.HeaderFont = new System.Drawing.Font("Segoe UI", 9.75F);
         numericBoxDuration.HeaderPadding = new System.Windows.Forms.Padding(0, 3, 0, 0);
         numericBoxDuration.HeaderText = "Duration";
         numericBoxDuration.Location = new System.Drawing.Point(9, 34);

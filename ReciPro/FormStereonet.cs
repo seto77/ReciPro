@@ -934,7 +934,7 @@ public partial class FormStereonet : FormBase
 
         if (radioButtonAxes.Checked)
         {
-            indexControlDrawing.Mode= IndexControl.ModeEnum.Axis;
+            indexControlDrawing.Mode = IndexControl.ModeEnum.Axis;
             radioButtonHighStructureFactor.Visible = false;
             if (radioButtonHighStructureFactor.Checked)
                 radioButtonRange.Checked = true;

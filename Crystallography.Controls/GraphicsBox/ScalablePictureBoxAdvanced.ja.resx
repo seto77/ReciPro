@@ -124,134 +124,129 @@
   <data name="trackBarAdvancedMaximum.Size" type="System.Drawing.Size, System.Drawing">
     <value>327, 22</value>
   </data>
-  <data name="panelTrackBar.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 352</value>
-  </data>
   <data name="panelTrackBar.Size" type="System.Drawing.Size, System.Drawing">
     <value>372, 54</value>
   </data>
+  <data name="label.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9.75pt</value>
+  </data>
+  <data name="label.Size" type="System.Drawing.Size, System.Drawing">
+    <value>0, 19</value>
+  </data>
   <data name="comboBoxScale2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>22, 0</value>
-  </data>
-  <data name="comboBoxScale1.Items" xml:space="preserve">
-    <value>Log</value>
-  </data>
-  <data name="comboBoxScale1.Items1" xml:space="preserve">
-    <value>Liner</value>
+    <value>19, 0</value>
   </data>
   <data name="comboBoxScale1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>58, 0</value>
+    <value>53, 0</value>
   </data>
   <data name="comboBoxGradient.Location" type="System.Drawing.Point, System.Drawing">
-    <value>63, 0</value>
+    <value>59, 0</value>
   </data>
   <data name="label7.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPGothic, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>56, 18</value>
+    <value>51, 12</value>
   </data>
   <data name="label7.Text" xml:space="preserve">
     <value>スケール</value>
   </data>
   <data name="label9.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPGothic, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="label9.Size" type="System.Drawing.Size, System.Drawing">
-    <value>20, 18</value>
+    <value>17, 12</value>
   </data>
   <data name="label9.Text" xml:space="preserve">
     <value>色</value>
   </data>
   <data name="label5.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPGothic, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>61, 18</value>
+    <value>57, 12</value>
   </data>
   <data name="label5.Text" xml:space="preserve">
     <value>ネガ/ポジ</value>
   </data>
-  <data name="flowLayoutPanelGradient.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 476</value>
+  <data name="flowLayoutPanelPolarity.Size" type="System.Drawing.Size, System.Drawing">
+    <value>127, 25</value>
+  </data>
+  <data name="flowLayoutPanelScale.Location" type="System.Drawing.Point, System.Drawing">
+    <value>127, 2</value>
+  </data>
+  <data name="flowLayoutPanelScale.Size" type="System.Drawing.Size, System.Drawing">
+    <value>129, 25</value>
+  </data>
+  <data name="flowLayoutPanelColor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>256, 2</value>
+  </data>
+  <data name="flowLayoutPanelColor.Size" type="System.Drawing.Size, System.Drawing">
+    <value>99, 25</value>
   </data>
   <data name="flowLayoutPanelGradient.Size" type="System.Drawing.Size, System.Drawing">
-    <value>372, 29</value>
-  </data>
-  <data name="flowLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>131, 23</value>
-  </data>
-  <data name="flowLayoutPanel2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>131, 2</value>
-  </data>
-  <data name="flowLayoutPanel2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>134, 23</value>
-  </data>
-  <data name="flowLayoutPanel3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>265, 2</value>
-  </data>
-  <data name="flowLayoutPanel3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>102, 23</value>
-  </data>
-  <data name="flowLayoutPanelImageFilter.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 505</value>
-  </data>
-  <data name="flowLayoutPanelImageFilter.Size" type="System.Drawing.Size, System.Drawing">
-    <value>372, 56</value>
-  </data>
-  <data name="flowLayoutPanelDustScratches.Size" type="System.Drawing.Size, System.Drawing">
-    <value>315, 26</value>
+    <value>372, 31</value>
   </data>
   <data name="checkBoxDustScratches.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPGothic, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="checkBoxDustScratches.Size" type="System.Drawing.Size, System.Drawing">
-    <value>135, 22</value>
+    <value>121, 16</value>
   </data>
   <data name="checkBoxDustScratches.Text" xml:space="preserve">
     <value>ダスト＆スクラッチ</value>
   </data>
   <data name="numericBoxDustScratchesRadius.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPGothic, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="numericBoxDustScratchesRadius.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 7, 0, 0</value>
   </data>
   <data name="numericBoxDustScratchesRadius.HeaderText" xml:space="preserve">
     <value>半径</value>
   </data>
   <data name="numericBoxDustScratchesRadius.Location" type="System.Drawing.Point, System.Drawing">
-    <value>139, 0</value>
+    <value>125, 0</value>
   </data>
   <data name="numericBoxDustScratchesRadius.Size" type="System.Drawing.Size, System.Drawing">
     <value>97, 25</value>
   </data>
   <data name="numericBoxDustScratchesThreshold.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPGothic, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="numericBoxDustScratchesThreshold.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 7, 0, 0</value>
   </data>
   <data name="numericBoxDustScratchesThreshold.HeaderText" xml:space="preserve">
     <value>閾値</value>
   </data>
   <data name="numericBoxDustScratchesThreshold.Location" type="System.Drawing.Point, System.Drawing">
-    <value>236, 0</value>
+    <value>222, 0</value>
   </data>
   <data name="numericBoxDustScratchesThreshold.Size" type="System.Drawing.Size, System.Drawing">
     <value>79, 25</value>
   </data>
-  <data name="flowLayoutPanelGaussianBlur2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 28</value>
-  </data>
-  <data name="flowLayoutPanelGaussianBlur2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>242, 26</value>
+  <data name="flowLayoutPanelDustScratches.Size" type="System.Drawing.Size, System.Drawing">
+    <value>301, 25</value>
   </data>
   <data name="checkBoxGaussianBlur.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPGothic, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="checkBoxGaussianBlur.Size" type="System.Drawing.Size, System.Drawing">
-    <value>123, 22</value>
+    <value>114, 16</value>
   </data>
   <data name="checkBoxGaussianBlur.Text" xml:space="preserve">
     <value>ガウシアンぼかし</value>
   </data>
   <data name="numericBoxGaussianFWHM.Location" type="System.Drawing.Point, System.Drawing">
-    <value>127, 0</value>
+    <value>118, 0</value>
+  </data>
+  <data name="flowLayoutPanelGaussianBlur2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>242, 25</value>
+  </data>
+  <data name="flowLayoutPanelImageFilter.Size" type="System.Drawing.Size, System.Drawing">
+    <value>372, 54</value>
   </data>
   <data name="panelUpper.Size" type="System.Drawing.Size, System.Drawing">
     <value>372, 30</value>
@@ -260,16 +255,16 @@
     <value>372, 22</value>
   </data>
   <data name="scalablePictureBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>372, 293</value>
-  </data>
-  <data name="graphControl.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 406</value>
+    <value>372, 294</value>
   </data>
   <data name="graphControl.Size" type="System.Drawing.Size, System.Drawing">
     <value>372, 70</value>
   </data>
+  <data name="flowLayoutPanel1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>88, 0</value>
+  </data>
   <data name="panelMagInfo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>372, 29</value>
+    <value>372, 28</value>
   </data>
   <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
     <value>372, 583</value>

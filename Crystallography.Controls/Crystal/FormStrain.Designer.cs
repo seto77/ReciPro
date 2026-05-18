@@ -92,7 +92,7 @@
             this.numericBoxStrain11.SkipEventDuringInput = false;
             this.numericBoxStrain11.SmartIncrement = true;
             this.numericBoxStrain11.TabIndex = 263;
-            this.numericBoxStrain11.TextFont = new System.Drawing.Font("Segoe UI Variable Text", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxStrain11.TextFont = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxStrain11.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxStrain_ValueChanged);
             // 
             // numericBoxStrain13
@@ -113,7 +113,7 @@
             this.numericBoxStrain13.SkipEventDuringInput = false;
             this.numericBoxStrain13.SmartIncrement = true;
             this.numericBoxStrain13.TabIndex = 265;
-            this.numericBoxStrain13.TextFont = new System.Drawing.Font("Segoe UI Variable Text", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxStrain13.TextFont = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxStrain13.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxStrain_ValueChanged);
             // 
             // numericBoxStrain22
@@ -134,7 +134,7 @@
             this.numericBoxStrain22.SkipEventDuringInput = false;
             this.numericBoxStrain22.SmartIncrement = true;
             this.numericBoxStrain22.TabIndex = 266;
-            this.numericBoxStrain22.TextFont = new System.Drawing.Font("Segoe UI Variable Text", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxStrain22.TextFont = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxStrain22.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxStrain_ValueChanged);
             // 
             // numericBoxStrain23
@@ -155,7 +155,7 @@
             this.numericBoxStrain23.SkipEventDuringInput = false;
             this.numericBoxStrain23.SmartIncrement = true;
             this.numericBoxStrain23.TabIndex = 267;
-            this.numericBoxStrain23.TextFont = new System.Drawing.Font("Segoe UI Variable Text", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxStrain23.TextFont = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxStrain23.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxStrain_ValueChanged);
             // 
             // numericBoxStrain33
@@ -176,7 +176,7 @@
             this.numericBoxStrain33.SkipEventDuringInput = false;
             this.numericBoxStrain33.SmartIncrement = true;
             this.numericBoxStrain33.TabIndex = 268;
-            this.numericBoxStrain33.TextFont = new System.Drawing.Font("Segoe UI Variable Text", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxStrain33.TextFont = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxStrain33.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxStrain_ValueChanged);
             // 
             // numericBoxStrain12
@@ -197,7 +197,7 @@
             this.numericBoxStrain12.SkipEventDuringInput = false;
             this.numericBoxStrain12.SmartIncrement = true;
             this.numericBoxStrain12.TabIndex = 264;
-            this.numericBoxStrain12.TextFont = new System.Drawing.Font("Segoe UI Variable Text", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxStrain12.TextFont = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxStrain12.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxStrain_ValueChanged);
             // 
             // groupBoxStress
@@ -234,7 +234,7 @@
             this.numericBoxStress11.SkipEventDuringInput = false;
             this.numericBoxStress11.SmartIncrement = true;
             this.numericBoxStress11.TabIndex = 269;
-            this.numericBoxStress11.TextFont = new System.Drawing.Font("Segoe UI Variable Text", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxStress11.TextFont = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             // 
             // numericBoxStress12
             // 
@@ -254,7 +254,7 @@
             this.numericBoxStress12.SkipEventDuringInput = false;
             this.numericBoxStress12.SmartIncrement = true;
             this.numericBoxStress12.TabIndex = 270;
-            this.numericBoxStress12.TextFont = new System.Drawing.Font("Segoe UI Variable Text", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxStress12.TextFont = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             // 
             // numericBoxStress22
             // 
@@ -274,7 +274,7 @@
             this.numericBoxStress22.SkipEventDuringInput = false;
             this.numericBoxStress22.SmartIncrement = true;
             this.numericBoxStress22.TabIndex = 272;
-            this.numericBoxStress22.TextFont = new System.Drawing.Font("Segoe UI Variable Text", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxStress22.TextFont = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             // 
             // numericBoxStress13
             // 
@@ -294,7 +294,7 @@
             this.numericBoxStress13.SkipEventDuringInput = false;
             this.numericBoxStress13.SmartIncrement = true;
             this.numericBoxStress13.TabIndex = 271;
-            this.numericBoxStress13.TextFont = new System.Drawing.Font("Segoe UI Variable Text", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxStress13.TextFont = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             // 
             // numericBoxStress33
             // 
@@ -314,7 +314,7 @@
             this.numericBoxStress33.SkipEventDuringInput = false;
             this.numericBoxStress33.SmartIncrement = true;
             this.numericBoxStress33.TabIndex = 274;
-            this.numericBoxStress33.TextFont = new System.Drawing.Font("Segoe UI Variable Text", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxStress33.TextFont = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             // 
             // numericBoxStress23
             // 
@@ -334,7 +334,7 @@
             this.numericBoxStress23.SkipEventDuringInput = false;
             this.numericBoxStress23.SmartIncrement = true;
             this.numericBoxStress23.TabIndex = 273;
-            this.numericBoxStress23.TextFont = new System.Drawing.Font("Segoe UI Variable Text", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxStress23.TextFont = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             // 
             // groupBoxElasticConstant
             // 
@@ -392,7 +392,7 @@
             this.numericBoxA.SkipEventDuringInput = false;
             this.numericBoxA.SmartIncrement = true;
             this.numericBoxA.TabIndex = 263;
-            this.numericBoxA.TextFont = new System.Drawing.Font("Segoe UI Variable Text", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxA.TextFont = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             // 
             // numericBoxAlpha
             // 
@@ -412,7 +412,7 @@
             this.numericBoxAlpha.SkipEventDuringInput = false;
             this.numericBoxAlpha.SmartIncrement = true;
             this.numericBoxAlpha.TabIndex = 265;
-            this.numericBoxAlpha.TextFont = new System.Drawing.Font("Segoe UI Variable Text", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxAlpha.TextFont = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             // 
             // numericBoxC
             // 
@@ -432,7 +432,7 @@
             this.numericBoxC.SkipEventDuringInput = false;
             this.numericBoxC.SmartIncrement = true;
             this.numericBoxC.TabIndex = 266;
-            this.numericBoxC.TextFont = new System.Drawing.Font("Segoe UI Variable Text", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxC.TextFont = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             // 
             // numericBoxBeta
             // 
@@ -452,7 +452,7 @@
             this.numericBoxBeta.SkipEventDuringInput = false;
             this.numericBoxBeta.SmartIncrement = true;
             this.numericBoxBeta.TabIndex = 267;
-            this.numericBoxBeta.TextFont = new System.Drawing.Font("Segoe UI Variable Text", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxBeta.TextFont = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             // 
             // numericBoxGamma
             // 
@@ -472,7 +472,7 @@
             this.numericBoxGamma.SkipEventDuringInput = false;
             this.numericBoxGamma.SmartIncrement = true;
             this.numericBoxGamma.TabIndex = 268;
-            this.numericBoxGamma.TextFont = new System.Drawing.Font("Segoe UI Variable Text", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxGamma.TextFont = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             // 
             // numericBoxB
             // 
@@ -492,7 +492,7 @@
             this.numericBoxB.SkipEventDuringInput = false;
             this.numericBoxB.SmartIncrement = true;
             this.numericBoxB.TabIndex = 264;
-            this.numericBoxB.TextFont = new System.Drawing.Font("Segoe UI Variable Text", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxB.TextFont = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             // 
             // buttonApply
             // 
@@ -516,7 +516,7 @@
             this.Controls.Add(this.groupBoxElasticConstant);
             this.Controls.Add(this.groupBoxStress);
             this.Controls.Add(this.groupBoxStrain);
-            this.Font = new System.Drawing.Font("Segoe UI Variable Text", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Name = "FormStrain";
             this.Text = "Strain Control";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormStrain_FormClosing);

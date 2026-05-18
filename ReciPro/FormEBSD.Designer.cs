@@ -285,7 +285,7 @@
             graphControlDepthProfile.AllowMouseOperation = true;
             graphControlDepthProfile.AxisLineColor = System.Drawing.Color.Gray;
             graphControlDepthProfile.AxisTextColor = System.Drawing.Color.Black;
-            graphControlDepthProfile.AxisTextFont = new System.Drawing.Font("Segoe UI Variable Text", 9F);
+            graphControlDepthProfile.AxisTextFont = new System.Drawing.Font("Segoe UI", 9F);
             graphControlDepthProfile.AxisXTextVisible = true;
             graphControlDepthProfile.AxisYTextVisible = true;
             graphControlDepthProfile.BackgroundColor = System.Drawing.Color.White;
@@ -317,7 +317,7 @@
             graphControlDepthProfile.OriginPosition = new System.Drawing.Point(40, 20);
             graphControlDepthProfile.UnitX = "";
             graphControlDepthProfile.UnitY = "";
-            graphControlDepthProfile.UpperPanelFont = new System.Drawing.Font("Segoe UI Variable Text", 9F);
+            graphControlDepthProfile.UpperPanelFont = new System.Drawing.Font("Segoe UI", 9F);
             graphControlDepthProfile.UpperPanelVisible = false;
             graphControlDepthProfile.UpperX = 1D;
             graphControlDepthProfile.UpperY = 1D;
@@ -336,7 +336,7 @@
             graphControlEnergyProfile.AllowMouseOperation = true;
             graphControlEnergyProfile.AxisLineColor = System.Drawing.Color.Gray;
             graphControlEnergyProfile.AxisTextColor = System.Drawing.Color.Black;
-            graphControlEnergyProfile.AxisTextFont = new System.Drawing.Font("Segoe UI Variable Text", 9F);
+            graphControlEnergyProfile.AxisTextFont = new System.Drawing.Font("Segoe UI", 9F);
             graphControlEnergyProfile.AxisXTextVisible = true;
             graphControlEnergyProfile.AxisYTextVisible = true;
             graphControlEnergyProfile.BackgroundColor = System.Drawing.Color.White;
@@ -368,7 +368,7 @@
             graphControlEnergyProfile.OriginPosition = new System.Drawing.Point(40, 20);
             graphControlEnergyProfile.UnitX = "";
             graphControlEnergyProfile.UnitY = "";
-            graphControlEnergyProfile.UpperPanelFont = new System.Drawing.Font("Segoe UI Variable Text", 9F);
+            graphControlEnergyProfile.UpperPanelFont = new System.Drawing.Font("Segoe UI", 9F);
             graphControlEnergyProfile.UpperPanelVisible = false;
             graphControlEnergyProfile.UpperX = 1D;
             graphControlEnergyProfile.UpperY = 1D;
@@ -446,7 +446,7 @@
             resources.ApplyResources(graphicsBox, "graphicsBox");
             graphicsBox.BackColor = System.Drawing.Color.Transparent;
             graphicsBox.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            graphicsBox.Fonts = new System.Drawing.Font("Segoe UI Variable Text", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
+            graphicsBox.Fonts = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
             graphicsBox.Name = "graphicsBox";
             graphicsBox.TabStop = false;
             graphicsBox.MouseDown += graphicsBox_MouseDown;

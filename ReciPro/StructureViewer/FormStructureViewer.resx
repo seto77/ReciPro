@@ -178,13 +178,13 @@
     <value />
   </data>
   <data name="menuStrip1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="&gt;&gt;splitContainer2.Panel2.Parent" xml:space="preserve">
     <value>splitContainer2</value>
   </data>
   <data name="numericBoxBRange.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="colorControlCellPlaneC.HeaderMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -218,7 +218,7 @@
     <value>True</value>
   </data>
   <data name="numericBoxLatticePlaneOpacity.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="checkBoxSymElems_Screws.Text" xml:space="preserve">
     <value>Screws</value>
@@ -236,7 +236,7 @@
     <value>Å</value>
   </data>
   <data name="numericBoxCellTranslationC.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxClientWidth.Size" type="System.Drawing.Size, System.Drawing">
     <value>154, 25</value>
@@ -308,7 +308,7 @@
     <value>257, 88</value>
   </data>
   <data name="numericBoxCellPlaneAlpha.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
     <value>96, 96</value>
@@ -399,7 +399,7 @@
     <value>3</value>
   </data>
   <data name="colorControlCellEdge.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="&gt;&gt;colorControlCellPlaneB.Name" xml:space="preserve">
     <value>colorControlCellPlaneB</value>
@@ -411,7 +411,7 @@
     <value>214, 20</value>
   </data>
   <data name="colorControlPlane.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="statusStrip1.ToolTip" xml:space="preserve">
     <value />
@@ -450,7 +450,7 @@
     <value>flowLayoutPanelCellEdgeColors</value>
   </data>
   <data name="colorControlCellPlaneB.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="colorControlPlane.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -474,10 +474,10 @@
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="colorControlCellEdge.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxProjectionCenterX.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="comboBoxProjectionMode.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
@@ -486,7 +486,7 @@
     <value>True</value>
   </data>
   <data name="numericBoxPlaneSymbolSize.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="flowLayoutPanelCellPlaneColors.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
@@ -507,7 +507,7 @@
     <value>0, 4, 0, 0</value>
   </data>
   <data name="tabControl.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="textBoxCalcInformation.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -528,7 +528,7 @@
     <value>Buttons</value>
   </data>
   <data name="buttonSetRange3.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="tabPageBoundPlane.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
@@ -624,7 +624,7 @@
     <value>1000, 100</value>
   </data>
   <data name="numericBoxARange.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxCellTranslationB.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -657,7 +657,7 @@
     <value>NoControl</value>
   </data>
   <data name="colorControlAxisColor.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="&gt;&gt;flowLayoutPanelLegend.Parent" xml:space="preserve">
     <value>splitContainer1.Panel1</value>
@@ -684,7 +684,7 @@
     <value>1</value>
   </data>
   <data name="buttonSetCenter1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="&gt;&gt;numericUpDownSubCellA.Name" xml:space="preserve">
     <value>numericUpDownSubCellA</value>
@@ -729,7 +729,7 @@
     <value>5</value>
   </data>
   <data name="colorControlPlane.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="checkBoxClipObjects.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 0</value>
@@ -744,7 +744,7 @@
     <value>Crystal Axes</value>
   </data>
   <data name="saveImageToolStripMenuItem.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="&gt;&gt;labelMessage.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -759,7 +759,7 @@
     <value>0, 0, 1, 0</value>
   </data>
   <data name="colorControlCellEdgeB.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="flowLayoutPanelLatticePlaneOpacity.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -802,7 +802,7 @@
     <value>14</value>
   </data>
   <data name="numericUpDownSubCellB.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="&gt;&gt;splitContainer2.Panel1.Parent" xml:space="preserve">
     <value>splitContainer2</value>
@@ -820,7 +820,7 @@
     <value>flowLayoutPanelCellPlaneColors</value>
   </data>
   <data name="colorControlCellPlaneB.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="label3.Text" xml:space="preserve">
     <value>Set center to</value>
@@ -841,7 +841,7 @@
     <value>110, 21</value>
   </data>
   <data name="colorControlCellPlane.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="tabPageAtom.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
@@ -913,10 +913,10 @@
     <value>False</value>
   </data>
   <data name="numericBoxAxesSize.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="colorControlPlane.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="flowLayoutPanelLegend.ToolTip" xml:space="preserve">
     <value />
@@ -946,7 +946,7 @@
     <value>Set the color of the cell planes individually</value>
   </data>
   <data name="colorControlCellPlaneC.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="&gt;&gt;tabPageSymElems.Type" xml:space="preserve">
     <value>System.Windows.Forms.TabPage, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -1012,7 +1012,7 @@
     <value>toolStripButtonAtomObjects</value>
   </data>
   <data name="numericBoxInversionSymbolSize.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="&gt;&gt;tabPageBond.Parent" xml:space="preserve">
     <value>tabControl</value>
@@ -1042,7 +1042,7 @@
     <value>True</value>
   </data>
   <data name="label10.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="&gt;&gt;colorControlPlane.ZOrder" xml:space="preserve">
     <value>4</value>
@@ -1078,7 +1078,7 @@
     <value>groupBoxShowUnitCell</value>
   </data>
   <data name="buttonSetRange2.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="&gt;&gt;numericBoxPlaneLineWidth.Parent" xml:space="preserve">
     <value>groupBoxPlanes</value>
@@ -1090,7 +1090,7 @@
     <value>4</value>
   </data>
   <data name="colorControlLabelColor.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="flowLayoutPanelProjectionCenter.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
@@ -1102,7 +1102,7 @@
     <value>412, 77</value>
   </data>
   <data name="colorControlAxisColor.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxInversionSymbolSize.MaximumSize" type="System.Drawing.Size, System.Drawing">
     <value>1000, 100</value>
@@ -1365,7 +1365,7 @@
     <value>GrowAndShrink</value>
   </data>
   <data name="numericBoxProjectionCenterX.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="&gt;&gt;checkBoxUnitCell.Name" xml:space="preserve">
     <value>checkBoxUnitCell</value>
@@ -1628,7 +1628,7 @@
     <value>348, 38</value>
   </data>
   <data name="numericBoxPlaneLineWidth.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="textBoxCalcInformation.Size" type="System.Drawing.Size, System.Drawing">
     <value>208, 183</value>
@@ -1703,7 +1703,7 @@
     <value>1000, 30</value>
   </data>
   <data name="label17.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="groupBoxBondedAtoms.Size" type="System.Drawing.Size, System.Drawing">
     <value>205, 82</value>
@@ -1760,7 +1760,7 @@
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="numericBoxBoundPlanesOpacity.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="trackBarAdvancedDepthCueingFar.Size" type="System.Drawing.Size, System.Drawing">
     <value>316, 25</value>
@@ -1769,7 +1769,7 @@
     <value>Labels</value>
   </data>
   <data name="colorControlCellEdgeB.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="&gt;&gt;groupBoxAccessoryControls.Name" xml:space="preserve">
     <value>groupBoxAccessoryControls</value>
@@ -1784,7 +1784,7 @@
     <value />
   </data>
   <data name="label1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="trackBarPerspective.AutoSize" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -1811,7 +1811,7 @@
     <value>0, 4, 0, 0</value>
   </data>
   <data name="colorControlCellEdgeC.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="groupBoxRenderingQuality.Location" type="System.Drawing.Point, System.Drawing">
     <value>386, 3</value>
@@ -1850,7 +1850,7 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="label13.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="label5.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1886,7 +1886,7 @@
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="toolStrip1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="tabPageBond.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
@@ -1988,7 +1988,7 @@
     <value>(½ ½ ½)</value>
   </data>
   <data name="numericBoxCellTranslationB.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="&gt;&gt;groupBoxProjectionCenter.Type" xml:space="preserve">
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -2018,7 +2018,7 @@
     <value>3</value>
   </data>
   <data name="numericBoxACenter.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="checkBoxDepthFadingOut.ToolTip" xml:space="preserve">
     <value>If checked, deep objects fade out</value>
@@ -2075,7 +2075,7 @@
     <value>groupBoxDepthCueing</value>
   </data>
   <data name="numericBoxAxesSize.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="groupBoxBondedAtoms.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -2165,7 +2165,7 @@
     <value>156, 132</value>
   </data>
   <data name="textBoxCalcInformation.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 8pt</value>
+    <value>Segoe UI, 8pt</value>
   </data>
   <data name="&gt;&gt;numericBoxCellTranslationA.Parent" xml:space="preserve">
     <value>groupBoxShowUnitCell</value>
@@ -2192,7 +2192,7 @@
     <value>1000, 30</value>
   </data>
   <data name="trackBarAdvancedDepthCueingNear.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9.75pt</value>
+    <value>Yu Gothic UI, 9.75pt</value>
   </data>
   <data name="numericBoxClientWidth.FooterText" xml:space="preserve">
     <value>×</value>
@@ -2264,7 +2264,7 @@
     <value>2</value>
   </data>
   <data name="trackBarAdvancedDepthCueingNear.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="&gt;&gt;flowLayoutPanelGraphicsInfo.Type" xml:space="preserve">
     <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -2294,7 +2294,7 @@
     <value>groupBoxDepthCueing</value>
   </data>
   <data name="numericUpDownSubCellA.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="&gt;&gt;checkBoxSymElems_Inversions.Type" xml:space="preserve">
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -2373,7 +2373,7 @@
     <value>110, 1</value>
   </data>
   <data name="colorControlCellPlaneC.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="&gt;&gt;tabPageProjection.Name" xml:space="preserve">
     <value>tabPageProjection</value>
@@ -2487,7 +2487,7 @@
     <value>13</value>
   </data>
   <data name="numericBoxAxisLineWidth.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="radioButtonBoundUnitCell.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 3</value>
@@ -2529,7 +2529,7 @@
     <value>0, 0, 1, 0</value>
   </data>
   <data name="checkBoxUnitCell.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxClientWidth.HeaderText" xml:space="preserve">
     <value>Size (W×H): </value>
@@ -2571,7 +2571,7 @@
     <value>11, 14</value>
   </data>
   <data name="numericBoxClientWidth.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="label7.Text" xml:space="preserve">
     <value>(Click a legend entry to
@@ -2648,7 +2648,7 @@ adjust it individually)</value>
     <value>toolStripButtonCrystalAxes</value>
   </data>
   <data name="numericBoxCCenter.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="&gt;&gt;flowLayoutPanelLatticePlaneOptions.Parent" xml:space="preserve">
     <value>tabPageBounds</value>
@@ -2669,7 +2669,7 @@ adjust it individually)</value>
     <value>copyLegendToolStripMenuItem1</value>
   </data>
   <data name="checkBoxClipObjects.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxCRange.Location" type="System.Drawing.Point, System.Drawing">
     <value>87, 72</value>
@@ -2687,7 +2687,7 @@ adjust it individually)</value>
     <value>tabControl</value>
   </data>
   <data name="label12.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="&gt;&gt;copyLightToolStripMenuItem.Name" xml:space="preserve">
     <value>copyLightToolStripMenuItem</value>
@@ -2708,13 +2708,13 @@ adjust it individually)</value>
     <value>91, 0</value>
   </data>
   <data name="numericBoxInversionSymbolSize.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="checkBoxSymElems_Glides.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
   <data name="colorControlCellPlaneA.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxAxesSize.ToolTip1" xml:space="preserve">
     <value>Displayed size of crystal axes (lower-left)</value>
@@ -2783,7 +2783,7 @@ adjust it individually)</value>
     <value>System.Windows.Forms.PrintDialog, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="numericBoxPlaneSymbolSize.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="flowLayoutPanelGraphicsInfo.Size" type="System.Drawing.Size, System.Drawing">
     <value>546, 15</value>
@@ -2963,7 +2963,7 @@ adjust it individually)</value>
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="label2.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="&gt;&gt;trackBarAdvancedDepthCueingFar.Parent" xml:space="preserve">
     <value>groupBoxDepthCueing</value>
@@ -3143,7 +3143,7 @@ adjust it individually)</value>
     <value>0, 3, 0, 0</value>
   </data>
   <data name="label11.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="radioButtonCellPlaneColorEach.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>10, 1, 0, 0</value>
@@ -3167,7 +3167,7 @@ adjust it individually)</value>
     <value>radioButtonBoundUnitCell</value>
   </data>
   <data name="colorControlCellPlane.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxAxisLineWidth.TabIndex" type="System.Int32, mscorlib">
     <value>16</value>
@@ -3263,7 +3263,7 @@ adjust it individually)</value>
     <value>6</value>
   </data>
   <data name="checkBoxShowBondedAtoms.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="&gt;&gt;label6.Parent" xml:space="preserve">
     <value>groupBoxDepthCueing</value>
@@ -3338,7 +3338,7 @@ adjust it individually)</value>
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxProjectionCenterY.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="colorControlCellEdgeB.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -3403,7 +3403,7 @@ the boundaries</value>
     <value>True</value>
   </data>
   <data name="label16.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="&gt;&gt;flowLayoutPanelCellEdgeColors.Type" xml:space="preserve">
     <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -3424,7 +3424,7 @@ the boundaries</value>
     <value>7</value>
   </data>
   <data name="colorControlCellPlaneA.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="&gt;&gt;toolStripButtonSymmetryElements.Name" xml:space="preserve">
     <value>toolStripButtonSymmetryElements</value>
@@ -3445,13 +3445,13 @@ the boundaries</value>
     <value>True</value>
   </data>
   <data name="buttonSetRange0.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="statusStrip1.Size" type="System.Drawing.Size, System.Drawing">
     <value>560, 22</value>
   </data>
   <data name="colorControlCellPlaneB.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxPlaneSymbolSize.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 4, 0, 0</value>
@@ -3463,7 +3463,7 @@ the boundaries</value>
     <value>True</value>
   </data>
   <data name="trackBarAdvancedDepthCueingFar.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="&gt;&gt;toolStrip1.ZOrder" xml:space="preserve">
     <value>3</value>
@@ -3544,13 +3544,13 @@ the boundaries</value>
     <value>0, 0, 1, 0</value>
   </data>
   <data name="label7.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 8pt</value>
+    <value>Segoe UI, 8pt</value>
   </data>
   <data name="checkBoxShowLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>90, 21</value>
   </data>
   <data name="numericBoxProjectionCenterY.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="helpToolStripMenuItem.Text" xml:space="preserve">
     <value>Shortcut Hints</value>
@@ -3649,7 +3649,7 @@ the boundaries</value>
     <value>(±1.5 ±1.5 ±1.5)</value>
   </data>
   <data name="numericBoxLabelSize.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxClientHeight.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
@@ -3706,7 +3706,7 @@ the boundaries</value>
     <value>9</value>
   </data>
   <data name="numericBoxLatticePlaneOpacity.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="label2.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -3781,7 +3781,7 @@ the boundaries</value>
     <value />
   </data>
   <data name="checkBoxCellShowPlane.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="splitContainer2.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -3790,7 +3790,7 @@ the boundaries</value>
     <value>0, 0, 0, 0</value>
   </data>
   <data name="colorControlCellEdge.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="&gt;&gt;radioButtonLabelUseFixedColor.Name" xml:space="preserve">
     <value>radioButtonLabelUseFixedColor</value>
@@ -3802,7 +3802,7 @@ the boundaries</value>
     <value>label16</value>
   </data>
   <data name="numericBoxCellTranslationA.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="label12.ToolTip" xml:space="preserve">
     <value />
@@ -3901,10 +3901,10 @@ the boundaries</value>
     <value />
   </data>
   <data name="numericBoxBoundPlanesOpacity.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="colorControlCellPlane.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="&gt;&gt;colorControlCellEdgeA.Name" xml:space="preserve">
     <value>colorControlCellEdgeA</value>
@@ -3913,7 +3913,7 @@ the boundaries</value>
     <value>2</value>
   </data>
   <data name="numericBoxCellTranslationA.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="groupBoxTransparency.Text" xml:space="preserve">
     <value>Transparency mode</value>
@@ -4078,7 +4078,7 @@ the boundaries</value>
     <value>45, 17</value>
   </data>
   <data name="numericUpDownSubCellC.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="&gt;&gt;numericBoxCellTranslationA.ZOrder" xml:space="preserve">
     <value>4</value>
@@ -4228,7 +4228,7 @@ the boundaries</value>
     <value>System.Windows.Forms.StatusStrip, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="trackBarAdvancedDepthCueingFar.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="&gt;&gt;label9.Name" xml:space="preserve">
     <value>label9</value>
@@ -4264,7 +4264,7 @@ the boundaries</value>
     <value>2</value>
   </data>
   <data name="buttonCenter2.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="labelGraphicsCard.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 0</value>
@@ -4348,7 +4348,7 @@ the boundaries</value>
     <value>Show/hide the bounding planes of the crystal</value>
   </data>
   <data name="buttonSetRange4.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericUpDownSubCellA.ToolTip" xml:space="preserve">
     <value />
@@ -4366,7 +4366,7 @@ the boundaries</value>
     <value>160, 22</value>
   </data>
   <data name="labelMessage.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt, style=Bold</value>
+    <value>Segoe UI, 9.75pt, style=Bold</value>
   </data>
   <data name="flowLayoutPanelLatticePlaneOpacity.ToolTip" xml:space="preserve">
     <value />
@@ -4429,7 +4429,7 @@ the boundaries</value>
     <value>groupBoxRenderingQuality</value>
   </data>
   <data name="numericBoxCRange.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="printPreviewDialog1.AutoScrollMinSize" type="System.Drawing.Size, System.Drawing">
     <value>0, 0</value>
@@ -4465,7 +4465,7 @@ the boundaries</value>
     <value>4, 26</value>
   </data>
   <data name="numericBoxACenter.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="&gt;&gt;checkBoxCellShowPlane.Parent" xml:space="preserve">
     <value>groupBoxShowUnitCell</value>
@@ -4628,7 +4628,7 @@ the boundaries</value>
     <value />
   </data>
   <data name="numericBoxCellPlaneAlpha.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="checkBoxCellShowPlane.Text" xml:space="preserve">
     <value>Show cell plane</value>
@@ -4646,7 +4646,7 @@ the boundaries</value>
     <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="colorControlLabelColor.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="&gt;&gt;colorControlCellPlane.ZOrder" xml:space="preserve">
     <value>1</value>
@@ -4694,7 +4694,7 @@ the boundaries</value>
     <value>1</value>
   </data>
   <data name="labelOpenGLversion.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 8pt</value>
+    <value>Segoe UI, 8pt</value>
   </data>
   <data name="&gt;&gt;checkBoxClipObjects.Name" xml:space="preserve">
     <value>checkBoxClipObjects</value>
@@ -4721,7 +4721,7 @@ the boundaries</value>
     <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="colorControlCellEdgeC.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="splitContainer1.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -4793,10 +4793,10 @@ the boundaries</value>
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="numericBoxCellTranslationC.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="colorControlInversion.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxCellTranslationB.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 20</value>
@@ -4811,7 +4811,7 @@ the boundaries</value>
     <value>31, 25</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="colorControlCellEdgeA.Size" type="System.Drawing.Size, System.Drawing">
     <value>35, 20</value>
@@ -4859,7 +4859,7 @@ the boundaries</value>
     <value>radioButtonProjectionCenter2</value>
   </data>
   <data name="tabControlBoundOption.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="&gt;&gt;numericBoxPlaneSymbolSize.Name" xml:space="preserve">
     <value>numericBoxPlaneSymbolSize</value>
@@ -4952,7 +4952,7 @@ the boundaries</value>
     <value>13, 76</value>
   </data>
   <data name="numericBoxAxisSymbolSize.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="checkBoxUnitCell.ToolTip" xml:space="preserve">
     <value>Show unit cell</value>
@@ -4985,7 +4985,7 @@ the boundaries</value>
     <value>True</value>
   </data>
   <data name="numericBoxLegendSize.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="label17.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -5027,10 +5027,10 @@ the boundaries</value>
     <value>1, 20</value>
   </data>
   <data name="numericBoxAxisSymbolSize.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="checkBoxShowSubCell.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="flowLayoutPanelLegend.Size" type="System.Drawing.Size, System.Drawing">
     <value>54, 430</value>
@@ -5162,7 +5162,7 @@ the boundaries</value>
     <value>groupBoxLabel</value>
   </data>
   <data name="checkBoxCellShowEdge.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="buttonSetRange3.Location" type="System.Drawing.Point, System.Drawing">
     <value>367, 98</value>
@@ -5222,7 +5222,7 @@ the boundaries</value>
     <value>Set the color for all cell planes</value>
   </data>
   <data name="colorControlCellEdgeC.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="&gt;&gt;colorControlLabelColor.Name" xml:space="preserve">
     <value>colorControlLabelColor</value>
@@ -5252,7 +5252,7 @@ the boundaries</value>
     <value>0, 0</value>
   </data>
   <data name="numericBoxBCenter.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="statusStrip1.Text" xml:space="preserve">
     <value>statusStrip1</value>
@@ -5279,7 +5279,7 @@ the boundaries</value>
     <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="colorControlInversion.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="&gt;&gt;tabPageMisc.Parent" xml:space="preserve">
     <value>tabControl</value>
@@ -5291,7 +5291,7 @@ the boundaries</value>
     <value>tabPageBoundUnitcell</value>
   </data>
   <data name="colorControlCellEdgeA.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="&gt;&gt;label10.ZOrder" xml:space="preserve">
     <value>8</value>
@@ -5363,7 +5363,7 @@ the boundaries</value>
     <value>0, 3, 0, 0</value>
   </data>
   <data name="label4.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="&gt;&gt;numericBoxPlaneSymbolSize.Parent" xml:space="preserve">
     <value>groupBoxPlanes</value>
@@ -5381,7 +5381,7 @@ the boundaries</value>
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="colorControlAxisColor.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="colorControlCellPlaneC.FooterText" xml:space="preserve">
     <value />
@@ -5460,7 +5460,7 @@ the boundaries</value>
     <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="checkBoxShowBoundPlanes.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="checkBoxCellShowEdge.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -5499,16 +5499,16 @@ the boundaries</value>
     <value>1</value>
   </data>
   <data name="numericBoxCRange.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="labelGraphicsDriver.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 8pt</value>
+    <value>Segoe UI, 8pt</value>
   </data>
   <data name="tabPageProjection.Size" type="System.Drawing.Size, System.Drawing">
     <value>552, 218</value>
   </data>
   <data name="numericBoxAxisLineWidth.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="label7.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -5595,7 +5595,7 @@ the boundaries</value>
     <value>1</value>
   </data>
   <data name="colorControlCellEdgeB.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="&gt;&gt;labelGraphicsCard.ZOrder" xml:space="preserve">
     <value>0</value>
@@ -5610,7 +5610,7 @@ the boundaries</value>
     <value>4</value>
   </data>
   <data name="colorControlCellEdgeA.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="printPreviewDialog1.ToolTip" xml:space="preserve">
     <value />
@@ -5640,7 +5640,7 @@ the boundaries</value>
     <value>367, 72</value>
   </data>
   <data name="numericBoxBCenter.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="flowLayoutPanelProjectionCenter.Location" type="System.Drawing.Point, System.Drawing">
     <value>236, 38</value>
@@ -5661,7 +5661,7 @@ the boundaries</value>
     <value>319, 48</value>
   </data>
   <data name="trackBarAdvancedDepthCueingFar.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9.75pt</value>
+    <value>Yu Gothic UI, 9.75pt</value>
   </data>
   <data name="numericBoxLegendSize.ToolTip" xml:space="preserve">
     <value>Displayed size of legends (right)</value>
@@ -5706,7 +5706,7 @@ the boundaries</value>
     <value>0, 0, 0, 0</value>
   </data>
   <data name="label8.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="&gt;&gt;numericBoxBoundPlanesOpacity.Parent" xml:space="preserve">
     <value>flowLayoutPanelLatticePlaneOptions</value>
@@ -5781,7 +5781,7 @@ the boundaries</value>
     <value>3, 83</value>
   </data>
   <data name="colorControlCellEdgeA.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="copyMainToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>160, 22</value>
@@ -5826,7 +5826,7 @@ the boundaries</value>
     <value>colorControlCellEdge</value>
   </data>
   <data name="numericBoxLabelSize.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="&gt;&gt;colorControlCellEdgeC.Parent" xml:space="preserve">
     <value>flowLayoutPanelCellEdgeColors</value>
@@ -5919,7 +5919,7 @@ the boundaries</value>
     <value>saveImageToolStripMenuItem1</value>
   </data>
   <data name="trackBarAdvancedDepthCueingNear.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="&gt;&gt;menuStrip1.Type" xml:space="preserve">
     <value>System.Windows.Forms.MenuStrip, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -5940,7 +5940,7 @@ the boundaries</value>
     <value>105, 21</value>
   </data>
   <data name="numericBoxCellTranslationB.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxLegendSize.MaximumSize" type="System.Drawing.Size, System.Drawing">
     <value>1000, 30</value>
@@ -6036,7 +6036,7 @@ the boundaries</value>
     <value />
   </data>
   <data name="colorControlLabelColor.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="toolStripButtonResetRotation.Size" type="System.Drawing.Size, System.Drawing">
     <value>97, 22</value>
@@ -6051,7 +6051,7 @@ the boundaries</value>
     <value>colorControlCellPlaneC</value>
   </data>
   <data name="colorControlCellPlaneC.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="&gt;&gt;label13.Parent" xml:space="preserve">
     <value>splitContainer2.Panel2</value>
@@ -6195,7 +6195,7 @@ the boundaries</value>
     <value>18</value>
   </data>
   <data name="atomCoordinateTable1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="&gt;&gt;radioButtonCellPlaneColorAll.Type" xml:space="preserve">
     <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -6237,7 +6237,7 @@ the boundaries</value>
     <value>True</value>
   </data>
   <data name="numericBoxPlaneLineWidth.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="buttonCenter2.ToolTip" xml:space="preserve">
     <value>Set display center to (1/4, 1/4, 1/4)</value>
@@ -6258,7 +6258,7 @@ the boundaries</value>
     <value>Accessory Controls</value>
   </data>
   <data name="numericBoxCCenter.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="menuStrip1.Size" type="System.Drawing.Size, System.Drawing">
     <value>560, 27</value>
@@ -6276,7 +6276,7 @@ the boundaries</value>
     <value>saveAxesToolStripMenuItem</value>
   </data>
   <data name="label3.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="&gt;&gt;buttonSetRange1.ZOrder" xml:space="preserve">
     <value>7</value>
@@ -6360,7 +6360,7 @@ the boundaries</value>
     <value>Set the pixel dimensions of the rendered image.</value>
   </data>
   <data name="numericBoxProjectionCenterZ.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="&gt;&gt;numericUpDownSubCellA.Parent" xml:space="preserve">
     <value>groupBoxShowUnitCell</value>
@@ -6372,7 +6372,7 @@ the boundaries</value>
     <value>flowLayoutPanelCellEdgeColors</value>
   </data>
   <data name="numericBoxLightSize.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="&gt;&gt;cTRLRightDoubleClickChangePerspectiveOrthogonalAlternatelyToolStripMenuItem.Name" xml:space="preserve">
     <value>cTRLRightDoubleClickChangePerspectiveOrthogonalAlternatelyToolStripMenuItem</value>
@@ -6393,7 +6393,7 @@ the boundaries</value>
     <value>True</value>
   </data>
   <data name="numericBoxClientWidth.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="&gt;&gt;saveMovieToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -6474,10 +6474,10 @@ the boundaries</value>
     <value>2</value>
   </data>
   <data name="numericBoxLegendSize.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="colorControlCellPlaneA.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="buttonSetCenter3.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
@@ -6555,7 +6555,7 @@ the boundaries</value>
     <value>Displayed size of legends (right)</value>
   </data>
   <data name="numericBoxClientHeight.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="colorControlCellPlaneA.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 3, 0, 0</value>
@@ -6603,13 +6603,13 @@ the boundaries</value>
     <value>GrowAndShrink</value>
   </data>
   <data name="colorControlInversion.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="flowLayoutPanelCellPlaneColors.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>1, 1, 1, 1</value>
   </data>
   <data name="numericBoxARange.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="checkBoxCellShowPlane.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -6654,7 +6654,7 @@ the boundaries</value>
     <value>0</value>
   </data>
   <data name="numericBoxProjectionCenterZ.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="toolStripStatusLabelInitialization.Text" xml:space="preserve">
     <value>  </value>
@@ -6684,7 +6684,7 @@ the boundaries</value>
     <value>Show Bounding Planes</value>
   </data>
   <data name="labelGraphicsCard.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 8pt</value>
+    <value>Segoe UI, 8pt</value>
   </data>
   <data name="trackBarAdvancedDepthCueingNear.HeaderText" xml:space="preserve">
     <value />
@@ -6696,7 +6696,7 @@ the boundaries</value>
     <value />
   </data>
   <data name="numericBoxLightSize.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="&gt;&gt;radioButtonProjectionCenterCustom.Type" xml:space="preserve">
     <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -6771,13 +6771,13 @@ the boundaries</value>
     <value>0</value>
   </data>
   <data name="numericBoxBRange.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="comboBoxRenderingQuality.Size" type="System.Drawing.Size, System.Drawing">
     <value>128, 25</value>
   </data>
   <data name="numericBoxClientHeight.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="&gt;&gt;groupBoxLabel.Type" xml:space="preserve">
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -6861,10 +6861,10 @@ the boundaries</value>
     <value>Set the color of the cell edges individually</value>
   </data>
   <data name="buttonSetCenter3.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="buttonSetRange1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="colorControlCellEdgeB.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 3, 0, 0</value>

@@ -122,7 +122,7 @@
     <value>926, 24</value>
   </data>
   <data name="groupBoxCrystalList.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9.75pt, style=Bold</value>
+    <value>Yu Gothic UI, 9.75pt, style=Bold</value>
   </data>
   <data name="groupBoxCrystalList.Location" type="System.Drawing.Point, System.Drawing">
     <value>5, 6</value>
@@ -138,7 +138,7 @@
     <value>5, 6, 5, 2</value>
   </data>
   <data name="groupBoxCrystalInformation.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9.75pt, style=Bold</value>
+    <value>Yu Gothic UI, 9.75pt, style=Bold</value>
   </data>
   <data name="groupBoxCrystalInformation.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 5, 0, 0</value>
@@ -178,7 +178,7 @@
     <value>930, 778</value>
   </data>
   <data name="menuStrip1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9.75pt</value>
+    <value>Yu Gothic UI, 9.75pt</value>
   </data>
   <data name="menuStrip1.Size" type="System.Drawing.Size, System.Drawing">
     <value>926, 24</value>
@@ -187,7 +187,7 @@
     <value>100, 18</value>
   </data>
   <data name="toolStripStatusLabel.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 8pt</value>
+    <value>Yu Gothic UI, 8pt</value>
   </data>
   <data name="toolStripStatusLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>116, 24</value>
@@ -212,7 +212,7 @@
     <value>640, 25</value>
   </data>
   <data name="buttonAllClear.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9.75pt</value>
+    <value>Yu Gothic UI, 9.75pt</value>
   </data>
   <data name="buttonAllClear.Location" type="System.Drawing.Point, System.Drawing">
     <value>582, 0</value>
@@ -227,7 +227,7 @@
     <value>リスト中のすべての結晶を削除します</value>
   </data>
   <data name="buttonDelete.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9.75pt</value>
+    <value>Yu Gothic UI, 9.75pt</value>
   </data>
   <data name="buttonDelete.Location" type="System.Drawing.Point, System.Drawing">
     <value>537, 0</value>
@@ -242,7 +242,7 @@
     <value>選択した結晶をリストから削除します</value>
   </data>
   <data name="buttonDuplicate.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9.75pt</value>
+    <value>Yu Gothic UI, 9.75pt</value>
   </data>
   <data name="buttonDuplicate.Location" type="System.Drawing.Point, System.Drawing">
     <value>492, 0</value>
@@ -257,7 +257,7 @@
     <value>選択された結晶を複製</value>
   </data>
   <data name="buttonLower.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9.75pt</value>
+    <value>Yu Gothic UI, 9.75pt</value>
   </data>
   <data name="buttonLower.Location" type="System.Drawing.Point, System.Drawing">
     <value>447, 0</value>
@@ -272,7 +272,7 @@
     <value>リスト中の選択された結晶を下に移動します</value>
   </data>
   <data name="buttonUpper.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9.75pt</value>
+    <value>Yu Gothic UI, 9.75pt</value>
   </data>
   <data name="buttonUpper.Location" type="System.Drawing.Point, System.Drawing">
     <value>402, 0</value>
@@ -293,7 +293,7 @@
     <value>636, 479</value>
   </data>
   <data name="buttonAdd.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9.75pt</value>
+    <value>Yu Gothic UI, 9.75pt</value>
   </data>
   <data name="buttonAdd.Size" type="System.Drawing.Size, System.Drawing">
     <value>125, 25</value>
@@ -305,7 +305,7 @@
     <value>結晶を新規にリストに加えます。</value>
   </data>
   <data name="buttonChange.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9.75pt</value>
+    <value>Yu Gothic UI, 9.75pt</value>
   </data>
   <data name="buttonChange.Location" type="System.Drawing.Point, System.Drawing">
     <value>125, 0</value>
@@ -324,7 +324,7 @@
     <value>GrowAndShrink</value>
   </data>
   <data name="groupBoxProjectAlong.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9.75pt</value>
+    <value>Yu Gothic UI, 9.75pt</value>
   </data>
   <data name="groupBoxProjectAlong.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 351</value>
@@ -342,7 +342,7 @@
     <value>2, 118</value>
   </data>
   <data name="label12.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 8pt</value>
+    <value>Yu Gothic UI, 8pt</value>
   </data>
   <data name="label12.Size" type="System.Drawing.Size, System.Drawing">
     <value>10, 33</value>
@@ -366,7 +366,7 @@
     <value>94, 0</value>
   </data>
   <data name="label11.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 8pt</value>
+    <value>Yu Gothic UI, 8pt</value>
   </data>
   <data name="label11.Location" type="System.Drawing.Point, System.Drawing">
     <value>126, 0</value>
@@ -381,7 +381,7 @@
     <value>0, 3, 0, 0</value>
   </data>
   <data name="buttonSetPlane.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9.75pt</value>
+    <value>Yu Gothic UI, 9.75pt</value>
   </data>
   <data name="buttonSetPlane.Size" type="System.Drawing.Size, System.Drawing">
     <value>72, 24</value>
@@ -394,7 +394,7 @@
 軸指数が指定されているときは、その面方向が画面上向きに表示されます。</value>
   </data>
   <data name="checkBoxFixePlane.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="checkBoxFixePlane.Location" type="System.Drawing.Point, System.Drawing">
     <value>75, 12</value>
@@ -412,7 +412,7 @@
     <value>2, 41</value>
   </data>
   <data name="label9.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 8pt</value>
+    <value>Yu Gothic UI, 8pt</value>
   </data>
   <data name="label9.Size" type="System.Drawing.Size, System.Drawing">
     <value>11, 33</value>
@@ -451,7 +451,7 @@
     <value>結晶軸を設定</value>
   </data>
   <data name="label10.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 8pt</value>
+    <value>Yu Gothic UI, 8pt</value>
   </data>
   <data name="label10.Location" type="System.Drawing.Point, System.Drawing">
     <value>122, 0</value>
@@ -463,7 +463,7 @@
     <value>2, 17</value>
   </data>
   <data name="buttonSetAxis.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9.75pt</value>
+    <value>Yu Gothic UI, 9.75pt</value>
   </data>
   <data name="buttonSetAxis.Size" type="System.Drawing.Size, System.Drawing">
     <value>72, 24</value>
@@ -476,7 +476,7 @@
 面指数が指定されているときは、その面方向が画面上向きに表示されます。</value>
   </data>
   <data name="checkBoxFixAxis.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="checkBoxFixAxis.Location" type="System.Drawing.Point, System.Drawing">
     <value>75, 2</value>
@@ -500,7 +500,7 @@
     <value>GrowAndShrink</value>
   </data>
   <data name="groupBoxArrows.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9.75pt</value>
+    <value>Yu Gothic UI, 9.75pt</value>
   </data>
   <data name="groupBoxArrows.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 209</value>
@@ -645,7 +645,7 @@
     <value>138, 29</value>
   </data>
   <data name="numericBoxStep.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="numericBoxStep.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 7, 0, 0</value>
@@ -669,7 +669,7 @@
     <value>False</value>
   </data>
   <data name="checkBoxAnimation.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9.75pt</value>
+    <value>Yu Gothic UI, 9.75pt</value>
   </data>
   <data name="checkBoxAnimation.Location" type="System.Drawing.Point, System.Drawing">
     <value>2, 110</value>
@@ -690,7 +690,7 @@
     <value>0, 201</value>
   </data>
   <data name="groupBoxCurrentDirection.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9.75pt</value>
+    <value>Yu Gothic UI, 9.75pt</value>
   </data>
   <data name="groupBoxCurrentDirection.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 19</value>
@@ -780,7 +780,7 @@
     <value>オイラー角</value>
   </data>
   <data name="buttonReset.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="buttonReset.Size" type="System.Drawing.Size, System.Drawing">
     <value>138, 22</value>
@@ -804,7 +804,7 @@
     <value>おおよその晶帯軸指数</value>
   </data>
   <data name="label8.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9.75pt, style=Bold</value>
+    <value>Yu Gothic UI, 9.75pt, style=Bold</value>
   </data>
   <data name="label8.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 3, 0, 3</value>
@@ -816,7 +816,7 @@
     <value>回転状態表示/制御</value>
   </data>
   <data name="toolStripLabel1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9.75pt, style=Bold</value>
+    <value>Yu Gothic UI, 9.75pt, style=Bold</value>
   </data>
   <data name="toolStripLabel1.Size" type="System.Drawing.Size, System.Drawing">
     <value>127, 13</value>
@@ -828,7 +828,7 @@
     <value>127, 6</value>
   </data>
   <data name="toolStripButtonDatabase.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="toolStripButtonDatabase.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -883,7 +883,7 @@
     <value>127, 6</value>
   </data>
   <data name="toolStripButtonSymmetryInformation.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="toolStripButtonSymmetryInformation.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -923,7 +923,7 @@
     <value>127, 6</value>
   </data>
   <data name="toolStripButtonScatteringFactor.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="toolStripButtonScatteringFactor.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -963,7 +963,7 @@
     <value>127, 6</value>
   </data>
   <data name="toolStripButtonRotation.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="toolStripButtonRotation.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -1026,7 +1026,7 @@
     <value>127, 6</value>
   </data>
   <data name="toolStripButtonStructureViewer.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="toolStripButtonStructureViewer.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -1077,7 +1077,7 @@
     <value>127, 6</value>
   </data>
   <data name="toolStripButtonStereonet.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="toolStripButtonStereonet.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -1120,7 +1120,7 @@
     <value>127, 6</value>
   </data>
   <data name="toolStripButtonDiffractionSingle.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="toolStripButtonDiffractionSingle.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -1152,7 +1152,7 @@
     <value>127, 6</value>
   </data>
   <data name="toolStripButtonTrajectorySimulator.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="toolStripButtonTrajectorySimulator.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -1196,7 +1196,7 @@
     <value>127, 6</value>
   </data>
   <data name="toolStripButtonImageSimulator.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="toolStripButtonImageSimulator.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -1268,7 +1268,7 @@
     <value>127, 6</value>
   </data>
   <data name="toolStripButtonSpotIDv1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="toolStripButtonSpotIDv1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -1306,7 +1306,7 @@ v1</value>
     <value>127, 6</value>
   </data>
   <data name="toolStripButtonSpotIDv2.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="toolStripButtonSpotIDv2.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -1369,7 +1369,7 @@ v2</value>
     <value>127, 6</value>
   </data>
   <data name="toolStripButtonEBSD.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="toolStripButtonEBSD.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -1428,7 +1428,7 @@ v2</value>
     <value>127, 6</value>
   </data>
   <data name="toolStripButtonDiffractionPoly.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="toolStripButtonDiffractionPoly.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -1699,7 +1699,7 @@ v2</value>
     <value>274, 26</value>
   </data>
   <data name="macroToolStripMenuItem.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9.75pt</value>
+    <value>Yu Gothic UI, 9.75pt</value>
   </data>
   <data name="macroToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>54, 20</value>
@@ -1720,7 +1720,7 @@ v2</value>
     <value>109, 99</value>
   </data>
   <data name="renameToolStripMenuItem.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="renameToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>108, 22</value>
@@ -1729,7 +1729,7 @@ v2</value>
     <value>名前の変更</value>
   </data>
   <data name="exportAsCIFFormatToolStripMenuItem.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="exportAsCIFFormatToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>108, 20</value>
@@ -1738,7 +1738,7 @@ v2</value>
     <value>CIFで出力</value>
   </data>
   <data name="duplicateToolStripMenuItem.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="duplicateToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>108, 22</value>
@@ -1747,7 +1747,7 @@ v2</value>
     <value>複製</value>
   </data>
   <data name="deleteToolStripMenuItem.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="deleteToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>108, 22</value>
@@ -1759,7 +1759,7 @@ v2</value>
     <value>930, 778</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9.75pt</value>
+    <value>Yu Gothic UI, 9.75pt</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

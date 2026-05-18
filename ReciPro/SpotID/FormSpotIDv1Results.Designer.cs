@@ -49,9 +49,11 @@
             this.dataColumnAngleBet31 = new System.Data.DataColumn();
             this.dataColumn2 = new System.Data.DataColumn();
             this.label1 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            // this.dataGridView1 = new System.Windows.Forms.DataGridView(); // 260518Cl 旧実装: DPI変更時に列幅が追従しない
+            this.dataGridView1 = new Crystallography.Controls.DpiAwareDataGridView(); // 260518Cl
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            // this.dataGridView2 = new System.Windows.Forms.DataGridView(); // 260518Cl 旧実装
+            this.dataGridView2 = new Crystallography.Controls.DpiAwareDataGridView(); // 260518Cl
             this.Phase = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.zoneAxisDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.g1DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -198,7 +200,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI Variable Text", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(5, 5);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(38, 15);
@@ -396,7 +398,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.dataGridView2);
-            this.Font = new System.Drawing.Font("Segoe UI Variable Text", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "FormTEMIDResults";
@@ -434,8 +436,10 @@
         private System.Data.DataColumn dataColumnAngleBet12;
         private System.Data.DataColumn dataColumnAngleBet23;
         private System.Data.DataColumn dataColumnAngleBet31;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridView dataGridView2;
+        // private System.Windows.Forms.DataGridView dataGridView1; // 260518Cl 旧実装
+        private Crystallography.Controls.DpiAwareDataGridView dataGridView1; // 260518Cl
+        // private System.Windows.Forms.DataGridView dataGridView2; // 260518Cl 旧実装
+        private Crystallography.Controls.DpiAwareDataGridView dataGridView2; // 260518Cl
         private System.Data.DataColumn dataColumnNumber;
         private System.Data.DataColumn dataColumnID;
         private System.Windows.Forms.BindingSource bindingSource1;

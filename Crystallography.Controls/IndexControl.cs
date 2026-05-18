@@ -41,20 +41,22 @@ namespace Crystallography.Controls
         // Mode / SubScript / Bracket の値から 4 つの LaTeX ラベルと括弧文字を組み立てる
         private void setLabel()
         {
+            // 260518Cl 整理: subScript の三項を 1 回だけ評価する
+            var sub = string.IsNullOrEmpty(subScript) ? "" : "_" + subScript;
             if (mode == ModeEnum.Plane)
             {
-                labelLaTexX.Text = subScript == "" ? "h" : "h_" + subScript;
-                labelLaTexY.Text = subScript == "" ? "k" : "k_" + subScript;
-                labelLaTexZ.Text = subScript == "" ? "l" : "l_" + subScript;
-                labelLaTexW.Text = subScript == "" ? "i" : "i_" + subScript;
+                labelLaTexX.Text = "h" + sub;
+                labelLaTexY.Text = "k" + sub;
+                labelLaTexZ.Text = "l" + sub;
+                labelLaTexW.Text = "i" + sub;
                 labelLaTexStart.Text = bracket == BracketEnum.Round ? "(" : "\\{";
                 labelLaTexEnd.Text = bracket == BracketEnum.Round ? ")" : "\\}";
             }
             else
             {
-                labelLaTexX.Text = subScript == "" ? "u" : "u_" + subScript;
-                labelLaTexY.Text = subScript == "" ? "v" : "v_" + subScript;
-                labelLaTexZ.Text = subScript == "" ? "w" : "w_" + subScript;
+                labelLaTexX.Text = "u" + sub;
+                labelLaTexY.Text = "v" + sub;
+                labelLaTexZ.Text = "w" + sub;
                 labelLaTexStart.Text = bracket == BracketEnum.Round ? "[" : "\\langle";
                 labelLaTexEnd.Text = bracket == BracketEnum.Round ? "]" : "\\rangle";
             }
@@ -117,9 +119,11 @@ namespace Crystallography.Controls
             {
                 plusMinus = value;
                 // 260517Cl ColumnStyle は同一インスタンスを複数列に共有できないため、列ごとに new する
-                tableLayoutPanel1.ColumnStyles[1] = value ? new ColumnStyle(SizeType.AutoSize) : new ColumnStyle(SizeType.Absolute, 0F);
-                tableLayoutPanel1.ColumnStyles[3] = value ? new ColumnStyle(SizeType.AutoSize) : new ColumnStyle(SizeType.Absolute, 0F);
-                tableLayoutPanel1.ColumnStyles[6] = value ? new ColumnStyle(SizeType.AutoSize) : new ColumnStyle(SizeType.Absolute, 0F);
+                // 260518Cl 整理: 3 列ぶんの三項式をローカル関数に集約
+                ColumnStyle style() => value ? new ColumnStyle(SizeType.AutoSize) : new ColumnStyle(SizeType.Absolute, 0F);
+                tableLayoutPanel1.ColumnStyles[1] = style();
+                tableLayoutPanel1.ColumnStyles[3] = style();
+                tableLayoutPanel1.ColumnStyles[6] = style();
                 ApplyRange();
             }
         }

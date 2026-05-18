@@ -61,7 +61,8 @@
             label15 = new System.Windows.Forms.Label();
             flowLayoutPanelEnergyUnit = new System.Windows.Forms.FlowLayoutPanel();
             label14 = new System.Windows.Forms.Label();
-            dataGridView = new System.Windows.Forms.DataGridView();
+            // dataGridView = new System.Windows.Forms.DataGridView(); // 260518Cl 旧実装: DPI変更時に列幅が追従しない
+            dataGridView = new Crystallography.Controls.DpiAwareDataGridView(); // 260518Cl
             rDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             hDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             kDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -143,7 +144,7 @@
             // buttonCopyToClipboard
             // 
             buttonCopyToClipboard.AutoSize = true;
-            buttonCopyToClipboard.Font = new System.Drawing.Font("Segoe UI Variable Text", 10F);
+            buttonCopyToClipboard.Font = new System.Drawing.Font("Segoe UI", 10F);
             buttonCopyToClipboard.Location = new System.Drawing.Point(948, 267);
             buttonCopyToClipboard.Name = "buttonCopyToClipboard";
             buttonCopyToClipboard.Size = new System.Drawing.Size(139, 30);
@@ -415,7 +416,7 @@
             dataGridView.AutoGenerateColumns = false;
             dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Segoe UI Variable Text", 9.75F);
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -427,7 +428,7 @@
             dataGridView.DataSource = dataSetBindingSource;
             dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Segoe UI Variable Text", 9.75F);
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle11.Format = "g4";
             dataGridViewCellStyle11.NullValue = null;
@@ -442,7 +443,7 @@
             dataGridView.ReadOnly = true;
             dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Segoe UI Variable Text", 9.75F);
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -731,7 +732,7 @@
             numericBoxEffectiveDigit.BackColor = System.Drawing.Color.Transparent;
             numericBoxEffectiveDigit.FooterFont = new System.Drawing.Font("Times New Roman", 9.75F);
             numericBoxEffectiveDigit.FooterPadding = new System.Windows.Forms.Padding(0, 6, 0, 0);
-            numericBoxEffectiveDigit.HeaderFont = new System.Drawing.Font("Segoe UI Variable Text", 10F);
+            numericBoxEffectiveDigit.HeaderFont = new System.Drawing.Font("Segoe UI", 10F);
             numericBoxEffectiveDigit.HeaderPadding = new System.Windows.Forms.Padding(0, 3, 0, 0);
             numericBoxEffectiveDigit.HeaderText = "Effective digit";
             numericBoxEffectiveDigit.Location = new System.Drawing.Point(656, 270);
@@ -754,7 +755,7 @@
             // button1
             // 
             button1.AutoSize = true;
-            button1.Font = new System.Drawing.Font("Segoe UI Variable Text", 10F);
+            button1.Font = new System.Drawing.Font("Segoe UI", 10F);
             button1.Location = new System.Drawing.Point(996, 197);
             button1.Name = "button1";
             button1.Size = new System.Drawing.Size(79, 30);
@@ -785,7 +786,7 @@
             Controls.Add(numericBoxEffectiveDigit);
             Controls.Add(dataGridView);
             Controls.Add(pictureBox);
-            Font = new System.Drawing.Font("Segoe UI Variable Text", 10F);
+            Font = new System.Drawing.Font("Segoe UI", 10F);
             Name = "FormDiffractionSpotInfo";
             Text = "Diffraction Spot Information";
             FormClosing += FormDiffractionSimulatorTable_FormClosing;
@@ -837,7 +838,8 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelEnergyUnit;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.DataGridView dataGridView;
+        // private System.Windows.Forms.DataGridView dataGridView; // 260518Cl 旧実装
+        private Crystallography.Controls.DpiAwareDataGridView dataGridView; // 260518Cl
         private System.Windows.Forms.BindingSource dataSetBindingSource;
         private DataSetReciPro dataSet;
         private System.Windows.Forms.Label label16;

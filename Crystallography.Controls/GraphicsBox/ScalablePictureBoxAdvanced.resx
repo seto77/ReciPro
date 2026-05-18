@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <metadata name="captureExtender.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="panelTrackBar.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -126,7 +129,7 @@
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="label2.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
     <value>2, 6</value>
@@ -160,7 +163,7 @@
     <value>True</value>
   </data>
   <data name="label3.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
     <value>2, 30</value>
@@ -189,6 +192,7 @@
   <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="trackBarAdvancedMinimum.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
   </data>
@@ -196,16 +200,16 @@
     <value>GrowAndShrink</value>
   </data>
   <data name="trackBarAdvancedMinimum.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPGothic, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="trackBarAdvancedMinimum.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="trackBarAdvancedMinimum.FooterText" xml:space="preserve">
     <value />
   </data>
   <data name="trackBarAdvancedMinimum.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="trackBarAdvancedMinimum.HeaderText" xml:space="preserve">
     <value />
@@ -247,16 +251,16 @@
     <value>GrowAndShrink</value>
   </data>
   <data name="trackBarAdvancedMaximum.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPGothic, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="trackBarAdvancedMaximum.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="trackBarAdvancedMaximum.FooterText" xml:space="preserve">
     <value />
   </data>
   <data name="trackBarAdvancedMaximum.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="trackBarAdvancedMaximum.HeaderText" xml:space="preserve">
     <value />
@@ -334,7 +338,7 @@
     <value>0, 2, 0, 0</value>
   </data>
   <data name="label.Size" type="System.Drawing.Size, System.Drawing">
-    <value>0, 17</value>
+    <value>0, 18</value>
   </data>
   <data name="label.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
@@ -559,7 +563,7 @@
     <value>GrowAndShrink</value>
   </data>
   <data name="flowLayoutPanelPolarity.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="flowLayoutPanelPolarity.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 2</value>
@@ -592,7 +596,7 @@
     <value>GrowAndShrink</value>
   </data>
   <data name="flowLayoutPanelScale.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="flowLayoutPanelScale.Location" type="System.Drawing.Point, System.Drawing">
     <value>121, 2</value>
@@ -625,7 +629,7 @@
     <value>GrowAndShrink</value>
   </data>
   <data name="flowLayoutPanelColor.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="flowLayoutPanelColor.Location" type="System.Drawing.Point, System.Drawing">
     <value>237, 2</value>
@@ -697,7 +701,7 @@
     <value>True</value>
   </data>
   <data name="checkBoxDustScratches.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="checkBoxDustScratches.Location" type="System.Drawing.Point, System.Drawing">
     <value>2, 2</value>
@@ -706,7 +710,7 @@
     <value>2, 2, 2, 2</value>
   </data>
   <data name="checkBoxDustScratches.Size" type="System.Drawing.Size, System.Drawing">
-    <value>118, 21</value>
+    <value>126, 21</value>
   </data>
   <data name="checkBoxDustScratches.TabIndex" type="System.Int32, mscorlib">
     <value>40</value>
@@ -726,14 +730,26 @@
   <data name="&gt;&gt;checkBoxDustScratches.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="numericBoxDustScratchesRadius.FooterFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9.75pt</value>
+  </data>
+  <data name="numericBoxDustScratchesRadius.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 4, 0, 0</value>
+  </data>
   <data name="numericBoxDustScratchesRadius.FooterText" xml:space="preserve">
     <value>pix</value>
+  </data>
+  <data name="numericBoxDustScratchesRadius.HeaderFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9.75pt</value>
+  </data>
+  <data name="numericBoxDustScratchesRadius.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 4, 0, 0</value>
   </data>
   <data name="numericBoxDustScratchesRadius.HeaderText" xml:space="preserve">
     <value>Radius</value>
   </data>
   <data name="numericBoxDustScratchesRadius.Location" type="System.Drawing.Point, System.Drawing">
-    <value>122, 0</value>
+    <value>130, 0</value>
   </data>
   <data name="numericBoxDustScratchesRadius.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -768,11 +784,23 @@
   <data name="&gt;&gt;numericBoxDustScratchesRadius.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <data name="numericBoxDustScratchesThreshold.FooterFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9.75pt</value>
+  </data>
+  <data name="numericBoxDustScratchesThreshold.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 4, 0, 0</value>
+  </data>
+  <data name="numericBoxDustScratchesThreshold.HeaderFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9.75pt</value>
+  </data>
+  <data name="numericBoxDustScratchesThreshold.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 4, 0, 0</value>
+  </data>
   <data name="numericBoxDustScratchesThreshold.HeaderText" xml:space="preserve">
     <value>Threshold</value>
   </data>
   <data name="numericBoxDustScratchesThreshold.Location" type="System.Drawing.Point, System.Drawing">
-    <value>241, 0</value>
+    <value>249, 0</value>
   </data>
   <data name="numericBoxDustScratchesThreshold.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -814,7 +842,7 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="flowLayoutPanelDustScratches.Size" type="System.Drawing.Size, System.Drawing">
-    <value>357, 25</value>
+    <value>365, 25</value>
   </data>
   <data name="flowLayoutPanelDustScratches.TabIndex" type="System.Int32, mscorlib">
     <value>42</value>
@@ -841,7 +869,7 @@
     <value>True</value>
   </data>
   <data name="checkBoxGaussianBlur.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="checkBoxGaussianBlur.Location" type="System.Drawing.Point, System.Drawing">
     <value>2, 2</value>
@@ -870,8 +898,20 @@
   <data name="&gt;&gt;checkBoxGaussianBlur.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="numericBoxGaussianFWHM.FooterFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9.75pt</value>
+  </data>
+  <data name="numericBoxGaussianFWHM.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 4, 0, 0</value>
+  </data>
   <data name="numericBoxGaussianFWHM.FooterText" xml:space="preserve">
     <value>pix</value>
+  </data>
+  <data name="numericBoxGaussianFWHM.HeaderFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9.75pt</value>
+  </data>
+  <data name="numericBoxGaussianFWHM.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 4, 0, 0</value>
   </data>
   <data name="numericBoxGaussianFWHM.HeaderText" xml:space="preserve">
     <value>FWHM</value>
@@ -997,7 +1037,7 @@
     <value>6</value>
   </data>
   <metadata name="statusStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
+    <value>157, 17</value>
   </metadata>
   <data name="toolStripProgressBar1.Size" type="System.Drawing.Size, System.Drawing">
     <value>100, 16</value>
@@ -1042,13 +1082,13 @@
     <value>Fill</value>
   </data>
   <data name="scalablePictureBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 59</value>
+    <value>0, 58</value>
   </data>
   <data name="scalablePictureBox.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
   <data name="scalablePictureBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>397, 293</value>
+    <value>397, 294</value>
   </data>
   <data name="scalablePictureBox.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -1069,7 +1109,7 @@
     <value>Bottom</value>
   </data>
   <data name="graphControl.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="graphControl.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 406</value>
@@ -1098,11 +1138,317 @@
   <data name="panelMagInfo.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="flowLayoutPanel1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="flowLayoutPanel1.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="flowLayoutPanel1.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="buttonMag1.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="buttonMag1.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="buttonMag1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9pt</value>
+  </data>
+  <data name="buttonMag1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="buttonMag1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="buttonMag1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="buttonMag1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>33, 26</value>
+  </data>
+  <data name="buttonMag1.TabIndex" type="System.Int32, mscorlib">
+    <value>30</value>
+  </data>
+  <data name="buttonMag1.Text" xml:space="preserve">
+    <value>× 1</value>
+  </data>
+  <data name="&gt;&gt;buttonMag1.Name" xml:space="preserve">
+    <value>buttonMag1</value>
+  </data>
+  <data name="&gt;&gt;buttonMag1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonMag1.Parent" xml:space="preserve">
+    <value>flowLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;buttonMag1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="buttonMag2.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="buttonMag2.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="buttonMag2.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9pt</value>
+  </data>
+  <data name="buttonMag2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="buttonMag2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>33, 0</value>
+  </data>
+  <data name="buttonMag2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="buttonMag2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>34, 26</value>
+  </data>
+  <data name="buttonMag2.TabIndex" type="System.Int32, mscorlib">
+    <value>31</value>
+  </data>
+  <data name="buttonMag2.Text" xml:space="preserve">
+    <value>× 2</value>
+  </data>
+  <data name="&gt;&gt;buttonMag2.Name" xml:space="preserve">
+    <value>buttonMag2</value>
+  </data>
+  <data name="&gt;&gt;buttonMag2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonMag2.Parent" xml:space="preserve">
+    <value>flowLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;buttonMag2.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="buttonMag4.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="buttonMag4.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="buttonMag4.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9pt</value>
+  </data>
+  <data name="buttonMag4.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="buttonMag4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>67, 0</value>
+  </data>
+  <data name="buttonMag4.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="buttonMag4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>34, 26</value>
+  </data>
+  <data name="buttonMag4.TabIndex" type="System.Int32, mscorlib">
+    <value>32</value>
+  </data>
+  <data name="buttonMag4.Text" xml:space="preserve">
+    <value>× 4</value>
+  </data>
+  <data name="&gt;&gt;buttonMag4.Name" xml:space="preserve">
+    <value>buttonMag4</value>
+  </data>
+  <data name="&gt;&gt;buttonMag4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonMag4.Parent" xml:space="preserve">
+    <value>flowLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;buttonMag4.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="buttonMag_2.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="buttonMag_2.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="buttonMag_2.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9pt</value>
+  </data>
+  <data name="buttonMag_2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="buttonMag_2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>101, 0</value>
+  </data>
+  <data name="buttonMag_2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="buttonMag_2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>44, 26</value>
+  </data>
+  <data name="buttonMag_2.TabIndex" type="System.Int32, mscorlib">
+    <value>33</value>
+  </data>
+  <data name="buttonMag_2.Text" xml:space="preserve">
+    <value>× 1/2</value>
+  </data>
+  <data name="&gt;&gt;buttonMag_2.Name" xml:space="preserve">
+    <value>buttonMag_2</value>
+  </data>
+  <data name="&gt;&gt;buttonMag_2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonMag_2.Parent" xml:space="preserve">
+    <value>flowLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;buttonMag_2.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="buttonMag_4.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="buttonMag_4.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="buttonMag_4.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9pt</value>
+  </data>
+  <data name="buttonMag_4.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="buttonMag_4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>145, 0</value>
+  </data>
+  <data name="buttonMag_4.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="buttonMag_4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>44, 26</value>
+  </data>
+  <data name="buttonMag_4.TabIndex" type="System.Int32, mscorlib">
+    <value>34</value>
+  </data>
+  <data name="buttonMag_4.Text" xml:space="preserve">
+    <value>× 1/4</value>
+  </data>
+  <data name="&gt;&gt;buttonMag_4.Name" xml:space="preserve">
+    <value>buttonMag_4</value>
+  </data>
+  <data name="&gt;&gt;buttonMag_4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonMag_4.Parent" xml:space="preserve">
+    <value>flowLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;buttonMag_4.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="buttonMag_8.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="buttonMag_8.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="buttonMag_8.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9pt</value>
+  </data>
+  <data name="buttonMag_8.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="buttonMag_8.Location" type="System.Drawing.Point, System.Drawing">
+    <value>189, 0</value>
+  </data>
+  <data name="buttonMag_8.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="buttonMag_8.Size" type="System.Drawing.Size, System.Drawing">
+    <value>44, 26</value>
+  </data>
+  <data name="buttonMag_8.TabIndex" type="System.Int32, mscorlib">
+    <value>35</value>
+  </data>
+  <data name="buttonMag_8.Text" xml:space="preserve">
+    <value>× 1/8</value>
+  </data>
+  <data name="&gt;&gt;buttonMag_8.Name" xml:space="preserve">
+    <value>buttonMag_8</value>
+  </data>
+  <data name="&gt;&gt;buttonMag_8.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonMag_8.Parent" xml:space="preserve">
+    <value>flowLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;buttonMag_8.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="buttonMag_16.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="buttonMag_16.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="buttonMag_16.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9pt</value>
+  </data>
+  <data name="buttonMag_16.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="buttonMag_16.Location" type="System.Drawing.Point, System.Drawing">
+    <value>233, 0</value>
+  </data>
+  <data name="buttonMag_16.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="buttonMag_16.Size" type="System.Drawing.Size, System.Drawing">
+    <value>49, 26</value>
+  </data>
+  <data name="buttonMag_16.TabIndex" type="System.Int32, mscorlib">
+    <value>36</value>
+  </data>
+  <data name="buttonMag_16.Text" xml:space="preserve">
+    <value>× 1/16</value>
+  </data>
+  <data name="&gt;&gt;buttonMag_16.Name" xml:space="preserve">
+    <value>buttonMag_16</value>
+  </data>
+  <data name="&gt;&gt;buttonMag_16.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonMag_16.Parent" xml:space="preserve">
+    <value>flowLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;buttonMag_16.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="flowLayoutPanel1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>112, 0</value>
+  </data>
+  <data name="flowLayoutPanel1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="flowLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>282, 26</value>
+  </data>
+  <data name="flowLayoutPanel1.TabIndex" type="System.Int32, mscorlib">
+    <value>39</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel1.Name" xml:space="preserve">
+    <value>flowLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel1.Parent" xml:space="preserve">
+    <value>panelMagInfo</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="label14.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="label14.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPGothic, 9pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="label14.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -1114,7 +1460,7 @@
     <value>0, 4, 0, 0</value>
   </data>
   <data name="label14.Size" type="System.Drawing.Size, System.Drawing">
-    <value>41, 18</value>
+    <value>41, 17</value>
   </data>
   <data name="label14.TabIndex" type="System.Int32, mscorlib">
     <value>37</value>
@@ -1135,13 +1481,13 @@
     <value>panelMagInfo</value>
   </data>
   <data name="&gt;&gt;label14.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="labelResolution.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="labelResolution.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPGothic, 9pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="labelResolution.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -1153,7 +1499,7 @@
     <value>0, 4, 0, 0</value>
   </data>
   <data name="labelResolution.Size" type="System.Drawing.Size, System.Drawing">
-    <value>33, 18</value>
+    <value>32, 17</value>
   </data>
   <data name="labelResolution.TabIndex" type="System.Int32, mscorlib">
     <value>38</value>
@@ -1174,280 +1520,7 @@
     <value>panelMagInfo</value>
   </data>
   <data name="&gt;&gt;labelResolution.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="buttonMag1.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="buttonMag1.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="buttonMag1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9pt</value>
-  </data>
-  <data name="buttonMag1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="buttonMag1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>95, 2</value>
-  </data>
-  <data name="buttonMag1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="buttonMag1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>34, 25</value>
-  </data>
-  <data name="buttonMag1.TabIndex" type="System.Int32, mscorlib">
-    <value>30</value>
-  </data>
-  <data name="buttonMag1.Text" xml:space="preserve">
-    <value>× 1</value>
-  </data>
-  <data name="&gt;&gt;buttonMag1.Name" xml:space="preserve">
-    <value>buttonMag1</value>
-  </data>
-  <data name="&gt;&gt;buttonMag1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;buttonMag1.Parent" xml:space="preserve">
-    <value>panelMagInfo</value>
-  </data>
-  <data name="&gt;&gt;buttonMag1.ZOrder" xml:space="preserve">
     <value>2</value>
-  </data>
-  <data name="buttonMag2.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="buttonMag2.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="buttonMag2.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9pt</value>
-  </data>
-  <data name="buttonMag2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="buttonMag2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>129, 2</value>
-  </data>
-  <data name="buttonMag2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="buttonMag2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>34, 25</value>
-  </data>
-  <data name="buttonMag2.TabIndex" type="System.Int32, mscorlib">
-    <value>31</value>
-  </data>
-  <data name="buttonMag2.Text" xml:space="preserve">
-    <value>× 2</value>
-  </data>
-  <data name="&gt;&gt;buttonMag2.Name" xml:space="preserve">
-    <value>buttonMag2</value>
-  </data>
-  <data name="&gt;&gt;buttonMag2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;buttonMag2.Parent" xml:space="preserve">
-    <value>panelMagInfo</value>
-  </data>
-  <data name="&gt;&gt;buttonMag2.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="buttonMag4.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="buttonMag4.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="buttonMag4.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9pt</value>
-  </data>
-  <data name="buttonMag4.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="buttonMag4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>163, 2</value>
-  </data>
-  <data name="buttonMag4.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="buttonMag4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>34, 25</value>
-  </data>
-  <data name="buttonMag4.TabIndex" type="System.Int32, mscorlib">
-    <value>32</value>
-  </data>
-  <data name="buttonMag4.Text" xml:space="preserve">
-    <value>× 4</value>
-  </data>
-  <data name="&gt;&gt;buttonMag4.Name" xml:space="preserve">
-    <value>buttonMag4</value>
-  </data>
-  <data name="&gt;&gt;buttonMag4.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;buttonMag4.Parent" xml:space="preserve">
-    <value>panelMagInfo</value>
-  </data>
-  <data name="&gt;&gt;buttonMag4.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="buttonMag_2.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="buttonMag_2.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="buttonMag_2.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9pt</value>
-  </data>
-  <data name="buttonMag_2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="buttonMag_2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>197, 2</value>
-  </data>
-  <data name="buttonMag_2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="buttonMag_2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>45, 25</value>
-  </data>
-  <data name="buttonMag_2.TabIndex" type="System.Int32, mscorlib">
-    <value>33</value>
-  </data>
-  <data name="buttonMag_2.Text" xml:space="preserve">
-    <value>× 1/2</value>
-  </data>
-  <data name="&gt;&gt;buttonMag_2.Name" xml:space="preserve">
-    <value>buttonMag_2</value>
-  </data>
-  <data name="&gt;&gt;buttonMag_2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;buttonMag_2.Parent" xml:space="preserve">
-    <value>panelMagInfo</value>
-  </data>
-  <data name="&gt;&gt;buttonMag_2.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="buttonMag_4.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="buttonMag_4.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="buttonMag_4.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9pt</value>
-  </data>
-  <data name="buttonMag_4.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="buttonMag_4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>242, 2</value>
-  </data>
-  <data name="buttonMag_4.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="buttonMag_4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>45, 25</value>
-  </data>
-  <data name="buttonMag_4.TabIndex" type="System.Int32, mscorlib">
-    <value>34</value>
-  </data>
-  <data name="buttonMag_4.Text" xml:space="preserve">
-    <value>× 1/4</value>
-  </data>
-  <data name="&gt;&gt;buttonMag_4.Name" xml:space="preserve">
-    <value>buttonMag_4</value>
-  </data>
-  <data name="&gt;&gt;buttonMag_4.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;buttonMag_4.Parent" xml:space="preserve">
-    <value>panelMagInfo</value>
-  </data>
-  <data name="&gt;&gt;buttonMag_4.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="buttonMag_8.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="buttonMag_8.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="buttonMag_8.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9pt</value>
-  </data>
-  <data name="buttonMag_8.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="buttonMag_8.Location" type="System.Drawing.Point, System.Drawing">
-    <value>287, 2</value>
-  </data>
-  <data name="buttonMag_8.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="buttonMag_8.Size" type="System.Drawing.Size, System.Drawing">
-    <value>45, 25</value>
-  </data>
-  <data name="buttonMag_8.TabIndex" type="System.Int32, mscorlib">
-    <value>35</value>
-  </data>
-  <data name="buttonMag_8.Text" xml:space="preserve">
-    <value>× 1/8</value>
-  </data>
-  <data name="&gt;&gt;buttonMag_8.Name" xml:space="preserve">
-    <value>buttonMag_8</value>
-  </data>
-  <data name="&gt;&gt;buttonMag_8.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;buttonMag_8.Parent" xml:space="preserve">
-    <value>panelMagInfo</value>
-  </data>
-  <data name="&gt;&gt;buttonMag_8.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="buttonMag_16.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="buttonMag_16.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="buttonMag_16.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9pt</value>
-  </data>
-  <data name="buttonMag_16.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="buttonMag_16.Location" type="System.Drawing.Point, System.Drawing">
-    <value>332, 2</value>
-  </data>
-  <data name="buttonMag_16.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="buttonMag_16.Size" type="System.Drawing.Size, System.Drawing">
-    <value>51, 25</value>
-  </data>
-  <data name="buttonMag_16.TabIndex" type="System.Int32, mscorlib">
-    <value>36</value>
-  </data>
-  <data name="buttonMag_16.Text" xml:space="preserve">
-    <value>× 1/16</value>
-  </data>
-  <data name="&gt;&gt;buttonMag_16.Name" xml:space="preserve">
-    <value>buttonMag_16</value>
-  </data>
-  <data name="&gt;&gt;buttonMag_16.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;buttonMag_16.Parent" xml:space="preserve">
-    <value>panelMagInfo</value>
-  </data>
-  <data name="&gt;&gt;buttonMag_16.ZOrder" xml:space="preserve">
-    <value>8</value>
   </data>
   <data name="label1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1468,7 +1541,7 @@
     <value>0, 2, 0, 0</value>
   </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>0, 17</value>
+    <value>0, 18</value>
   </data>
   <data name="label1.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
@@ -1483,7 +1556,7 @@
     <value>panelMagInfo</value>
   </data>
   <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>3</value>
   </data>
   <data name="panelMagInfo.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
@@ -1498,7 +1571,7 @@
     <value>0, 2, 0, 2</value>
   </data>
   <data name="panelMagInfo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>397, 29</value>
+    <value>397, 28</value>
   </data>
   <data name="panelMagInfo.TabIndex" type="System.Int32, mscorlib">
     <value>15</value>
@@ -1522,13 +1595,19 @@
     <value>96, 96</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 3, 2, 3</value>
   </data>
   <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
     <value>397, 583</value>
+  </data>
+  <data name="&gt;&gt;captureExtender.Name" xml:space="preserve">
+    <value>captureExtender</value>
+  </data>
+  <data name="&gt;&gt;captureExtender.Type" xml:space="preserve">
+    <value>Crystallography.Controls.CaptureExtender, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;toolStripProgressBar1.Name" xml:space="preserve">
     <value>toolStripProgressBar1</value>
@@ -1546,6 +1625,6 @@
     <value>ScalablePictureBoxAdvanced</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>System.Windows.Forms.UserControl, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>Crystallography.Controls.UserControlBase, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
   </data>
 </root>

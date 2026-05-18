@@ -59,7 +59,7 @@
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="radioButtonIsotoropy.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPGothic, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="radioButtonIsotoropy.Size" type="System.Drawing.Size, System.Drawing">
     <value>50, 22</value>
@@ -68,7 +68,7 @@
     <value>等方</value>
   </data>
   <data name="radioButtonAnisotropy.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPGothic, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="radioButtonAnisotropy.Location" type="System.Drawing.Point, System.Drawing">
     <value>103, 0</value>
@@ -83,7 +83,7 @@
     <value>13, 24</value>
   </data>
   <data name="label1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPGothic, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
     <value>44, 18</value>
@@ -101,7 +101,7 @@
     <value>ラベル</value>
   </data>
   <data name="label2.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPGothic, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
     <value>32, 18</value>
@@ -119,7 +119,7 @@
     <value>元素を選択</value>
   </data>
   <data name="checkBoxDetailAtomicPositionError.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPGothic, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="checkBoxDetailAtomicPositionError.Location" type="System.Drawing.Point, System.Drawing">
     <value>501, 3</value>
@@ -231,7 +231,7 @@
     <value>395, 56</value>
   </data>
   <data name="label7.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPGothic, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
     <value>188, 18</value>
@@ -261,7 +261,7 @@
     <value>原点シフト</value>
   </data>
   <data name="label14.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPGothic, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="label14.Size" type="System.Drawing.Size, System.Drawing">
     <value>41, 18</value>
@@ -270,7 +270,7 @@
     <value>次元: </value>
   </data>
   <data name="labelDimension.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPGothic, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="labelDimension.Location" type="System.Drawing.Point, System.Drawing">
     <value>41, 0</value>
@@ -285,7 +285,7 @@
     <value>79, 18</value>
   </data>
   <data name="label3.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPGothic, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
     <value>41, 18</value>
@@ -303,7 +303,7 @@
     <value>109, 21</value>
   </data>
   <data name="label13.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPGothic, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="label13.Size" type="System.Drawing.Size, System.Drawing">
     <value>53, 18</value>
@@ -315,7 +315,7 @@
     <value>165, 22</value>
   </data>
   <data name="checkBoxDetailsDebyeWallerError.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPGothic, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="checkBoxDetailsDebyeWallerError.Location" type="System.Drawing.Point, System.Drawing">
     <value>486, 24</value>
@@ -352,7 +352,7 @@
     <value>編集</value>
   </data>
   <data name="label5.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPGothic, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
     <value>28, 18</value>
@@ -361,7 +361,7 @@
     <value>X線</value>
   </data>
   <data name="label6.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPGothic, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
     <value>56, 18</value>
@@ -370,7 +370,7 @@
     <value>中性子線</value>
   </data>
   <data name="label4.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPGothic, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
     <value>44, 18</value>
@@ -397,7 +397,7 @@
     <value>ラベル表示</value>
   </data>
   <data name="label10.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPGothic, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="label10.Size" type="System.Drawing.Size, System.Drawing">
     <value>32, 18</value>
@@ -406,7 +406,7 @@
     <value>環境</value>
   </data>
   <data name="label37.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPGothic, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="label37.Size" type="System.Drawing.Size, System.Drawing">
     <value>44, 18</value>
@@ -415,7 +415,7 @@
     <value>透明度</value>
   </data>
   <data name="label38.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPGothic, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="label38.Location" type="System.Drawing.Point, System.Drawing">
     <value>137, 33</value>
@@ -427,7 +427,7 @@
     <value>反射</value>
   </data>
   <data name="label11.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPGothic, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="label11.Location" type="System.Drawing.Point, System.Drawing">
     <value>74, 33</value>
@@ -439,7 +439,7 @@
     <value>拡散</value>
   </data>
   <data name="label35.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPGothic, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="label35.Size" type="System.Drawing.Size, System.Drawing">
     <value>32, 18</value>
@@ -448,7 +448,7 @@
     <value>放射</value>
   </data>
   <data name="label36.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPGothic, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="label36.Size" type="System.Drawing.Size, System.Drawing">
     <value>56, 18</value>
@@ -457,13 +457,13 @@
     <value>表面粗さ</value>
   </data>
   <data name="numericBoxAtomRadius.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPGothic, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="numericBoxAtomRadius.HeaderText" xml:space="preserve">
     <value>半径</value>
   </data>
   <data name="colorControlAtomColor.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPGothic, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="colorControlAtomColor.HeaderText" xml:space="preserve">
     <value>原子の色</value>
@@ -481,7 +481,7 @@
     <value>表示</value>
   </data>
   <data name="tabControl.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPGothic, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="tabControl.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 218</value>
@@ -490,7 +490,7 @@
     <value>563, 103</value>
   </data>
   <data name="buttonApplyToSameElement.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPGothic, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="buttonApplyToSameElement.Location" type="System.Drawing.Point, System.Drawing">
     <value>84, 0</value>
@@ -502,7 +502,7 @@
     <value>同種の原子を更新</value>
   </data>
   <data name="buttonAddAtom.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPGothic, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="buttonAddAtom.Size" type="System.Drawing.Size, System.Drawing">
     <value>42, 28</value>
@@ -515,7 +515,7 @@
     <value>追加</value>
   </data>
   <data name="buttonChange.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPGothic, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="buttonChange.Size" type="System.Drawing.Size, System.Drawing">
     <value>42, 28</value>
@@ -527,7 +527,7 @@
     <value>更新</value>
   </data>
   <data name="buttonApplyToAllElements.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPGothic, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="buttonApplyToAllElements.Location" type="System.Drawing.Point, System.Drawing">
     <value>198, 0</value>
@@ -539,7 +539,7 @@
     <value>全ての原子を更新</value>
   </data>
   <data name="buttonAtomUp.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPGothic, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="buttonAtomUp.Location" type="System.Drawing.Point, System.Drawing">
     <value>389, 0</value>
@@ -554,7 +554,7 @@
     <value>上へ移動</value>
   </data>
   <data name="buttonAtomDown.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPGothic, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="buttonAtomDown.Location" type="System.Drawing.Point, System.Drawing">
     <value>455, 0</value>
@@ -569,7 +569,7 @@
     <value>下へ移動</value>
   </data>
   <data name="buttonDeleteAtom.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPGothic, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="buttonDeleteAtom.Location" type="System.Drawing.Point, System.Drawing">
     <value>521, 0</value>
@@ -632,7 +632,7 @@
     <value>6</value>
   </data>
   <data name="dataGridView.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPGothic, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="dataGridView.Size" type="System.Drawing.Size, System.Drawing">
     <value>563, 190</value>

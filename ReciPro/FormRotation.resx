@@ -132,7 +132,7 @@
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="buttonViewAlongBeam.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="buttonViewAlongBeam.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -171,7 +171,7 @@
     <value>GrowAndShrink</value>
   </data>
   <data name="buttonViewIsometric.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="buttonViewIsometric.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -207,7 +207,7 @@
     <value>True</value>
   </data>
   <data name="checkBoxLink.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt, style=Bold</value>
+    <value>Segoe UI, 9.75pt, style=Bold</value>
   </data>
   <data name="checkBoxLink.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -246,7 +246,7 @@
     <value>GrowAndShrink</value>
   </data>
   <data name="buttonCopy.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="buttonCopy.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -289,7 +289,7 @@
     <value>GrowAndShrink</value>
   </data>
   <data name="buttonPaste.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="buttonPaste.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -617,7 +617,7 @@
     <value>True</value>
   </data>
   <data name="checkBoxEnable2nd.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="checkBoxEnable2nd.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -656,7 +656,7 @@
     <value>True</value>
   </data>
   <data name="checkBoxFix1st.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="checkBoxFix1st.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -695,7 +695,7 @@
     <value>True</value>
   </data>
   <data name="checkBoxFix2nd.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="checkBoxFix2nd.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -734,7 +734,7 @@
     <value>True</value>
   </data>
   <data name="checkBoxFix3rd.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="checkBoxFix3rd.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -773,7 +773,7 @@
     <value>True</value>
   </data>
   <data name="checkBoxEnable3rd.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="checkBoxEnable3rd.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -1172,7 +1172,7 @@
     <value>GrowAndShrink</value>
   </data>
   <data name="buttonResetExpEuler.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="buttonResetExpEuler.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -1776,7 +1776,7 @@ Angles</value>
     <value>True</value>
   </data>
   <data name="label2.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="label2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -1812,7 +1812,7 @@ Angles</value>
     <value>Fill</value>
   </data>
   <data name="groupBoxReciProCoordinate.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt, style=Bold</value>
+    <value>Segoe UI, 9.75pt, style=Bold</value>
   </data>
   <data name="groupBoxReciProCoordinate.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 3</value>
@@ -1845,7 +1845,7 @@ Angles</value>
     <value>GrowAndShrink</value>
   </data>
   <data name="flowLayoutPanelFirstAxis.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 8.25pt</value>
+    <value>Segoe UI, 8.25pt</value>
   </data>
   <data name="flowLayoutPanelFirstAxis.Location" type="System.Drawing.Point, System.Drawing">
     <value>71, 20</value>
@@ -1875,7 +1875,7 @@ Angles</value>
     <value>GrowAndShrink</value>
   </data>
   <data name="flowLayoutPanelSecondAxis.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 8.25pt</value>
+    <value>Segoe UI, 8.25pt</value>
   </data>
   <data name="flowLayoutPanelSecondAxis.Location" type="System.Drawing.Point, System.Drawing">
     <value>71, 50</value>
@@ -1908,7 +1908,7 @@ Angles</value>
     <value>GrowAndShrink</value>
   </data>
   <data name="flowLayoutPanelThirdAxis.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 8.25pt</value>
+    <value>Segoe UI, 8.25pt</value>
   </data>
   <data name="flowLayoutPanelThirdAxis.Location" type="System.Drawing.Point, System.Drawing">
     <value>71, 80</value>
@@ -1938,7 +1938,7 @@ Angles</value>
     <value>True</value>
   </data>
   <data name="label5.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="label5.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -1974,7 +1974,7 @@ Angles</value>
     <value>Fill</value>
   </data>
   <data name="groupBoxExperimentalCoordinate.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt, style=Bold</value>
+    <value>Segoe UI, 9.75pt, style=Bold</value>
   </data>
   <data name="groupBoxExperimentalCoordinate.Location" type="System.Drawing.Point, System.Drawing">
     <value>537, 3</value>
@@ -2043,7 +2043,7 @@ Angles</value>
     <value>948, 390</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 4, 3, 4</value>

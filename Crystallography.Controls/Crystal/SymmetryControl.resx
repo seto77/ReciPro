@@ -136,7 +136,7 @@
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="radioButtonNanoMeter.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="radioButtonNanoMeter.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -176,7 +176,7 @@
     <value>Left</value>
   </data>
   <data name="radioButtonAngstrom.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="radioButtonAngstrom.Location" type="System.Drawing.Point, System.Drawing">
     <value>29, 0</value>
@@ -212,7 +212,7 @@
     <value>Left</value>
   </data>
   <data name="label1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="label1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -281,7 +281,7 @@
     <value>True</value>
   </data>
   <data name="checkBoxShowError.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="checkBoxShowError.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -317,7 +317,7 @@
     <value>8</value>
   </data>
   <data name="labelLaTex1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 11pt</value>
+    <value>Segoe UI, 11pt</value>
   </data>
   <data name="labelLaTex1.Location" type="System.Drawing.Point, System.Drawing">
     <value>170, 3</value>
@@ -347,7 +347,7 @@
     <value>True</value>
   </data>
   <data name="label48.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="label48.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -383,7 +383,7 @@
     <value>True</value>
   </data>
   <data name="label46.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="label46.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -422,10 +422,10 @@
     <value>Fill</value>
   </data>
   <data name="numericBoxBeta.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="numericBoxBeta.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="numericBoxBeta.Location" type="System.Drawing.Point, System.Drawing">
     <value>185, 27</value>
@@ -476,10 +476,10 @@
     <value>Fill</value>
   </data>
   <data name="numericBoxAlpha.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="numericBoxAlpha.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="numericBoxAlpha.Location" type="System.Drawing.Point, System.Drawing">
     <value>185, 0</value>
@@ -527,7 +527,7 @@
     <value>True</value>
   </data>
   <data name="label47.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="label47.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -566,10 +566,10 @@
     <value>Fill</value>
   </data>
   <data name="numericBoxGammaErr.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="numericBoxGammaErr.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="numericBoxGammaErr.HeaderText" xml:space="preserve">
     <value>±</value>
@@ -617,10 +617,10 @@
     <value>Fill</value>
   </data>
   <data name="numericBoxAlphaErr.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="numericBoxAlphaErr.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="numericBoxAlphaErr.HeaderText" xml:space="preserve">
     <value>±</value>
@@ -668,10 +668,10 @@
     <value>Fill</value>
   </data>
   <data name="numericBoxBetaErr.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="numericBoxBetaErr.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="numericBoxBetaErr.HeaderText" xml:space="preserve">
     <value>±</value>
@@ -719,10 +719,10 @@
     <value>Fill</value>
   </data>
   <data name="numericBoxA.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="numericBoxA.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="numericBoxA.Location" type="System.Drawing.Point, System.Drawing">
     <value>18, 0</value>
@@ -770,7 +770,7 @@
     <value>True</value>
   </data>
   <data name="labelLengthUnitC.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="labelLengthUnitC.Location" type="System.Drawing.Point, System.Drawing">
     <value>149, 55</value>
@@ -806,10 +806,10 @@
     <value>Fill</value>
   </data>
   <data name="numericBoxGamma.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="numericBoxGamma.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="numericBoxGamma.Location" type="System.Drawing.Point, System.Drawing">
     <value>185, 55</value>
@@ -857,7 +857,7 @@
     <value>True</value>
   </data>
   <data name="labelLengthUnitB.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="labelLengthUnitB.Location" type="System.Drawing.Point, System.Drawing">
     <value>149, 27</value>
@@ -893,10 +893,10 @@
     <value>Fill</value>
   </data>
   <data name="numericBoxBErr.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="numericBoxBErr.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="numericBoxBErr.HeaderText" xml:space="preserve">
     <value>±</value>
@@ -944,10 +944,10 @@
     <value>Fill</value>
   </data>
   <data name="numericBoxB.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="numericBoxB.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="numericBoxB.Location" type="System.Drawing.Point, System.Drawing">
     <value>18, 27</value>
@@ -998,10 +998,10 @@
     <value>Fill</value>
   </data>
   <data name="numericBoxC.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="numericBoxC.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="numericBoxC.Location" type="System.Drawing.Point, System.Drawing">
     <value>18, 55</value>
@@ -1052,10 +1052,10 @@
     <value>Fill</value>
   </data>
   <data name="numericBoxCErr.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="numericBoxCErr.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="numericBoxCErr.HeaderText" xml:space="preserve">
     <value>±</value>
@@ -1103,10 +1103,10 @@
     <value>Fill</value>
   </data>
   <data name="numericBoxAErr.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="numericBoxAErr.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="numericBoxAErr.HeaderText" xml:space="preserve">
     <value>±</value>
@@ -1151,7 +1151,7 @@
     <value>True</value>
   </data>
   <data name="labelLengthUnitA.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="labelLengthUnitA.Location" type="System.Drawing.Point, System.Drawing">
     <value>149, 0</value>
@@ -1181,7 +1181,7 @@
     <value>18</value>
   </data>
   <data name="labelLaTex2.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 11pt</value>
+    <value>Segoe UI, 11pt</value>
   </data>
   <data name="labelLaTex2.Location" type="System.Drawing.Point, System.Drawing">
     <value>170, 30</value>
@@ -1208,7 +1208,7 @@
     <value>19</value>
   </data>
   <data name="labelLaTex3.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 11pt</value>
+    <value>Segoe UI, 11pt</value>
   </data>
   <data name="labelLaTex3.Location" type="System.Drawing.Point, System.Drawing">
     <value>170, 58</value>
@@ -1235,7 +1235,7 @@
     <value>20</value>
   </data>
   <data name="labelLaTex4.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 11pt</value>
+    <value>Segoe UI, 11pt</value>
   </data>
   <data name="labelLaTex4.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 3</value>
@@ -1262,7 +1262,7 @@
     <value>21</value>
   </data>
   <data name="labelLaTex5.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 11pt</value>
+    <value>Segoe UI, 11pt</value>
   </data>
   <data name="labelLaTex5.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 30</value>
@@ -1289,7 +1289,7 @@
     <value>22</value>
   </data>
   <data name="labelLaTex6.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 11pt</value>
+    <value>Segoe UI, 11pt</value>
   </data>
   <data name="labelLaTex6.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 58</value>
@@ -1352,7 +1352,7 @@
     <value>Fill</value>
   </data>
   <data name="groupBoxCellConstants.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="groupBoxCellConstants.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
@@ -1517,7 +1517,7 @@
     <value>True</value>
   </data>
   <data name="label20.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="label20.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -1553,7 +1553,7 @@
     <value>True</value>
   </data>
   <data name="label17.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="label17.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -1589,7 +1589,7 @@
     <value>True</value>
   </data>
   <data name="label19.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="label19.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -1652,7 +1652,7 @@
     <value>True</value>
   </data>
   <data name="label21.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="label21.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -1724,7 +1724,7 @@
     <value>Right</value>
   </data>
   <data name="groupBoxSymmetry.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="groupBoxSymmetry.Location" type="System.Drawing.Point, System.Drawing">
     <value>336, 0</value>

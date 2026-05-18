@@ -131,7 +131,7 @@
     <value>著者</value>
   </data>
   <data name="textBoxTitle.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="textBoxTitle.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 15</value>
@@ -157,7 +157,7 @@
     <value>0, 4, 0, 0</value>
   </data>
   <data name="numericBoxVolumeAng.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="numericBoxVolumeAng.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 6, 0, 0</value>
@@ -187,7 +187,7 @@
     <value>×10⁻²⁴ g</value>
   </data>
   <data name="numericBoxCellMass.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="numericBoxCellMass.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 6, 0, 0</value>
@@ -205,13 +205,13 @@
     <value>単位胞の質量 (10⁻²⁴ g)</value>
   </data>
   <data name="numericBoxMolarVolume.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="numericBoxMolarVolume.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 6, 0, 0</value>
   </data>
   <data name="numericBoxMolarVolume.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="numericBoxMolarVolume.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 6, 0, 0</value>
@@ -235,7 +235,7 @@
     <value>0, 4, 0, 0</value>
   </data>
   <data name="numericBoxMolarMass.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="numericBoxMolarMass.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 6, 0, 0</value>
@@ -253,13 +253,13 @@
     <value>モル質量 (g/mol)</value>
   </data>
   <data name="numericBoxDensity.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="numericBoxDensity.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 6, 0, 0</value>
   </data>
   <data name="numericBoxDensity.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="numericBoxDensity.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 6, 0, 0</value>
@@ -334,7 +334,7 @@
     <value>2, 2</value>
   </data>
   <data name="tabPageAtom.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="tabPageAtom.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
@@ -499,7 +499,7 @@
     <value>462, 27</value>
   </data>
   <data name="label29.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="label29.Size" type="System.Drawing.Size, System.Drawing">
     <value>29, 12</value>
@@ -538,7 +538,7 @@
     <value>462, 280</value>
   </data>
   <data name="tabControl.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="tabControl.ItemSize" type="System.Drawing.Size, System.Drawing">
     <value>0, 22</value>
@@ -550,7 +550,7 @@
     <value>470, 310</value>
   </data>
   <data name="colorControl.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="colorControl.HeaderMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 2, 0, 0</value>
@@ -580,7 +580,7 @@
     <value>化学式</value>
   </data>
   <data name="label90.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9.75pt</value>
+    <value>Yu Gothic UI, 9.75pt</value>
   </data>
   <data name="label90.Size" type="System.Drawing.Size, System.Drawing">
     <value>59, 15</value>
@@ -592,13 +592,13 @@
     <value>化学式</value>
   </data>
   <data name="numericBoxZnumber.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="numericBoxZnumber.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 6, 0, 0</value>
   </data>
   <data name="numericBoxZnumber.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="numericBoxZnumber.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 6, 0, 0</value>
@@ -703,7 +703,7 @@
     <value>結晶の名前</value>
   </data>
   <data name="label22.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9.75pt</value>
+    <value>Yu Gothic UI, 9.75pt</value>
   </data>
   <data name="label22.Size" type="System.Drawing.Size, System.Drawing">
     <value>46, 15</value>
@@ -712,7 +712,7 @@
     <value>結晶名</value>
   </data>
   <data name="buttonScatteringFactor.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="buttonScatteringFactor.Location" type="System.Drawing.Point, System.Drawing">
     <value>407, 0</value>
@@ -727,7 +727,7 @@
     <value>構造因子を別ウィンドウで開く</value>
   </data>
   <data name="buttonSymmetryInfo.Font" type="System.Drawing.Font, System.Drawing">
-    <value>BIZ UDPゴシック, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="buttonSymmetryInfo.Location" type="System.Drawing.Point, System.Drawing">
     <value>332, 0</value>

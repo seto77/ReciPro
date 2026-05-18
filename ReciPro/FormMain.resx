@@ -129,20 +129,20 @@
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="statusStrip1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="toolStripProgressBar.AutoSize" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
   <data name="toolStripProgressBar.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="toolStripProgressBar.Size" type="System.Drawing.Size, System.Drawing">
     <value>80, 16</value>
   </data>
   <data name="toolStripStatusLabel.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="toolStripStatusLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>100, 22</value>
@@ -206,7 +206,7 @@
     <value>Fill</value>
   </data>
   <data name="listBox.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="listBox.IntegralHeight" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -258,7 +258,7 @@ To remove all crystals from the list, click 'Clear All'.</value>
     <value>GrowAndShrink</value>
   </data>
   <data name="buttonAllClear.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="buttonAllClear.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -303,7 +303,7 @@ To remove all crystals from the list, click 'Clear All'.</value>
     <value>GrowAndShrink</value>
   </data>
   <data name="buttonDelete.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="buttonDelete.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -348,7 +348,7 @@ To remove all crystals from the list, click 'Clear All'.</value>
     <value>GrowAndShrink</value>
   </data>
   <data name="buttonDuplicate.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="buttonDuplicate.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -393,7 +393,7 @@ To remove all crystals from the list, click 'Clear All'.</value>
     <value>GrowAndShrink</value>
   </data>
   <data name="buttonLower.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="buttonLower.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -438,7 +438,7 @@ To remove all crystals from the list, click 'Clear All'.</value>
     <value>GrowAndShrink</value>
   </data>
   <data name="buttonUpper.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="buttonUpper.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -507,7 +507,7 @@ To remove all crystals from the list, click 'Clear All'.</value>
     <value>Fill</value>
   </data>
   <data name="groupBoxCrystalList.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt, style=Bold</value>
+    <value>Segoe UI, 9.75pt, style=Bold</value>
   </data>
   <data name="groupBoxCrystalList.Location" type="System.Drawing.Point, System.Drawing">
     <value>5, 2</value>
@@ -588,7 +588,7 @@ To remove all crystals from the list, click 'Clear All'.</value>
     <value>Fill</value>
   </data>
   <data name="groupBoxCrystalInformation.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt, style=Bold</value>
+    <value>Segoe UI, 9.75pt, style=Bold</value>
   </data>
   <data name="groupBoxCrystalInformation.Location" type="System.Drawing.Point, System.Drawing">
     <value>5, 31</value>
@@ -630,7 +630,7 @@ To remove all crystals from the list, click 'Clear All'.</value>
     <value>GrowAndShrink</value>
   </data>
   <data name="buttonAdd.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="buttonAdd.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -675,7 +675,7 @@ To remove all crystals from the list, click 'Clear All'.</value>
     <value>GrowAndShrink</value>
   </data>
   <data name="buttonChange.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="buttonChange.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -863,7 +863,7 @@ To remove all crystals from the list, click 'Clear All'.</value>
     <value>GrowAndShrink</value>
   </data>
   <data name="buttonSetPlane.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="buttonSetPlane.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -909,7 +909,7 @@ If an axis index is also specified, that axis direction is shown upward.</value>
     <value>Right</value>
   </data>
   <data name="checkBoxFixePlane.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="checkBoxFixePlane.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -1058,7 +1058,7 @@ If an axis index is also specified, that axis direction is shown upward.</value>
     <value>GrowAndShrink</value>
   </data>
   <data name="buttonSetAxis.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="buttonSetAxis.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -1101,7 +1101,7 @@ If a plane index is also specified, that plane direction is shown upward.</value
     <value>True</value>
   </data>
   <data name="checkBoxFixAxis.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="checkBoxFixAxis.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -1167,7 +1167,7 @@ If a plane index is also specified, that plane direction is shown upward.</value
     <value>Top</value>
   </data>
   <data name="groupBoxProjectAlong.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="groupBoxProjectAlong.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 372</value>
@@ -1242,7 +1242,7 @@ If a plane index is also specified, that plane direction is shown upward.</value
     <value>System</value>
   </data>
   <data name="buttonAntiClock.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 14pt</value>
+    <value>Segoe UI, 14pt</value>
   </data>
   <data name="buttonAntiClock.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleLeft</value>
@@ -1287,7 +1287,7 @@ If a plane index is also specified, that plane direction is shown upward.</value
     <value>System</value>
   </data>
   <data name="buttonClock.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 14pt</value>
+    <value>Segoe UI, 14pt</value>
   </data>
   <data name="buttonClock.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -1362,7 +1362,7 @@ If a plane index is also specified, that plane direction is shown upward.</value
     <value>System</value>
   </data>
   <data name="buttonTopLeft.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 14pt</value>
+    <value>Segoe UI, 14pt</value>
   </data>
   <data name="buttonTopLeft.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -1404,7 +1404,7 @@ If a plane index is also specified, that plane direction is shown upward.</value
     <value>System</value>
   </data>
   <data name="buttonLeft.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 14pt</value>
+    <value>Segoe UI, 14pt</value>
   </data>
   <data name="buttonLeft.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -1447,7 +1447,7 @@ If a plane index is also specified, that plane direction is shown upward.</value
     <value>System</value>
   </data>
   <data name="buttonBottomLeft.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 14pt</value>
+    <value>Segoe UI, 14pt</value>
   </data>
   <data name="buttonBottomLeft.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -1489,7 +1489,7 @@ If a plane index is also specified, that plane direction is shown upward.</value
     <value>System</value>
   </data>
   <data name="buttonBottom.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 14pt</value>
+    <value>Segoe UI, 14pt</value>
   </data>
   <data name="buttonBottom.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -1532,7 +1532,7 @@ If a plane index is also specified, that plane direction is shown upward.</value
     <value>System</value>
   </data>
   <data name="buttonBottomRight.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 14pt</value>
+    <value>Segoe UI, 14pt</value>
   </data>
   <data name="buttonBottomRight.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -1574,7 +1574,7 @@ If a plane index is also specified, that plane direction is shown upward.</value
     <value>System</value>
   </data>
   <data name="buttonTop.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 14pt</value>
+    <value>Segoe UI, 14pt</value>
   </data>
   <data name="buttonTop.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -1617,7 +1617,7 @@ If a plane index is also specified, that plane direction is shown upward.</value
     <value>System</value>
   </data>
   <data name="buttonTopRight.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 14pt</value>
+    <value>Segoe UI, 14pt</value>
   </data>
   <data name="buttonTopRight.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -1659,7 +1659,7 @@ If a plane index is also specified, that plane direction is shown upward.</value
     <value>System</value>
   </data>
   <data name="buttonRight.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 14pt</value>
+    <value>Segoe UI, 14pt</value>
   </data>
   <data name="buttonRight.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -1738,7 +1738,7 @@ If a plane index is also specified, that plane direction is shown upward.</value
     <value>GrowAndShrink</value>
   </data>
   <data name="numericBoxStep.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxStep.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 4, 0, 0</value>
@@ -1747,7 +1747,7 @@ If a plane index is also specified, that plane direction is shown upward.</value
     <value>°</value>
   </data>
   <data name="numericBoxStep.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxStep.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 4, 0, 0</value>
@@ -1861,7 +1861,7 @@ If a plane index is also specified, that plane direction is shown upward.</value
     <value>Top</value>
   </data>
   <data name="groupBoxArrows.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="groupBoxArrows.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 224</value>
@@ -1975,7 +1975,7 @@ If a plane index is also specified, that plane direction is shown upward.</value
     <value>Fill</value>
   </data>
   <data name="numericUpDownEulerPsi.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericUpDownEulerPsi.Location" type="System.Drawing.Point, System.Drawing">
     <value>25, 56</value>
@@ -2044,7 +2044,7 @@ If a plane index is also specified, that plane direction is shown upward.</value
     <value>Fill</value>
   </data>
   <data name="numericUpDownEulerTheta.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericUpDownEulerTheta.Location" type="System.Drawing.Point, System.Drawing">
     <value>25, 28</value>
@@ -2077,7 +2077,7 @@ If a plane index is also specified, that plane direction is shown upward.</value
     <value>Fill</value>
   </data>
   <data name="numericUpDownEulerPhi.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericUpDownEulerPhi.Location" type="System.Drawing.Point, System.Drawing">
     <value>25, 0</value>
@@ -2299,7 +2299,7 @@ If a plane index is also specified, that plane direction is shown upward.</value
     <value>Top</value>
   </data>
   <data name="buttonReset.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="buttonReset.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -2341,13 +2341,13 @@ If a plane index is also specified, that plane direction is shown upward.</value
     <value>Top</value>
   </data>
   <data name="numericBoxMaxUVW.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxMaxUVW.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 4, 0, 0</value>
   </data>
   <data name="numericBoxMaxUVW.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxMaxUVW.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 4, 0, 0</value>
@@ -2425,7 +2425,7 @@ If a plane index is also specified, that plane direction is shown upward.</value
     <value>Top</value>
   </data>
   <data name="labelCurrentIndex.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 10pt</value>
+    <value>Segoe UI, 10pt</value>
   </data>
   <data name="labelCurrentIndex.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -2467,7 +2467,7 @@ If a plane index is also specified, that plane direction is shown upward.</value
     <value>Top</value>
   </data>
   <data name="groupBoxCurrentDirection.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="groupBoxCurrentDirection.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 20</value>
@@ -2509,7 +2509,7 @@ If a plane index is also specified, that plane direction is shown upward.</value
     <value>Top</value>
   </data>
   <data name="label8.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt, style=Bold</value>
+    <value>Segoe UI, 9.75pt, style=Bold</value>
   </data>
   <data name="label8.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -2620,10 +2620,10 @@ If a plane index is also specified, that plane direction is shown upward.</value
     <value>None</value>
   </data>
   <data name="toolStrip1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="toolStripLabel1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt, style=Bold</value>
+    <value>Segoe UI, 9.75pt, style=Bold</value>
   </data>
   <data name="toolStripLabel1.Size" type="System.Drawing.Size, System.Drawing">
     <value>114, 17</value>
@@ -2641,7 +2641,7 @@ If a plane index is also specified, that plane direction is shown upward.</value
     <value>114, 6</value>
   </data>
   <data name="toolStripButtonDatabase.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="toolStripButtonDatabase.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -2702,7 +2702,7 @@ If a plane index is also specified, that plane direction is shown upward.</value
     <value>114, 6</value>
   </data>
   <data name="toolStripButtonSymmetryInformation.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="toolStripButtonSymmetryInformation.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -2748,7 +2748,7 @@ If a plane index is also specified, that plane direction is shown upward.</value
     <value>114, 6</value>
   </data>
   <data name="toolStripButtonScatteringFactor.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="toolStripButtonScatteringFactor.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -2795,7 +2795,7 @@ If a plane index is also specified, that plane direction is shown upward.</value
     <value>114, 6</value>
   </data>
   <data name="toolStripButtonRotation.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="toolStripButtonRotation.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -2863,7 +2863,7 @@ If a plane index is also specified, that plane direction is shown upward.</value
     <value>114, 6</value>
   </data>
   <data name="toolStripButtonStructureViewer.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="toolStripButtonStructureViewer.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -2920,7 +2920,7 @@ If a plane index is also specified, that plane direction is shown upward.</value
     <value>114, 6</value>
   </data>
   <data name="toolStripButtonStereonet.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="toolStripButtonStereonet.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -2967,7 +2967,7 @@ If a plane index is also specified, that plane direction is shown upward.</value
     <value>114, 6</value>
   </data>
   <data name="toolStripButtonDiffractionSingle.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="toolStripButtonDiffractionSingle.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -3005,7 +3005,7 @@ If a plane index is also specified, that plane direction is shown upward.</value
     <value>114, 6</value>
   </data>
   <data name="toolStripButtonTrajectorySimulator.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="toolStripButtonTrajectorySimulator.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -3054,7 +3054,7 @@ If a plane index is also specified, that plane direction is shown upward.</value
     <value>114, 6</value>
   </data>
   <data name="toolStripButtonImageSimulator.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="toolStripButtonImageSimulator.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -3132,7 +3132,7 @@ If a plane index is also specified, that plane direction is shown upward.</value
     <value>114, 6</value>
   </data>
   <data name="toolStripButtonSpotIDv1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="toolStripButtonSpotIDv1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -3175,7 +3175,7 @@ If a plane index is also specified, that plane direction is shown upward.</value
     <value>114, 6</value>
   </data>
   <data name="toolStripButtonSpotIDv2.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="toolStripButtonSpotIDv2.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -3243,7 +3243,7 @@ If a plane index is also specified, that plane direction is shown upward.</value
     <value>114, 6</value>
   </data>
   <data name="toolStripButtonEBSD.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="toolStripButtonEBSD.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -3301,7 +3301,7 @@ If a plane index is also specified, that plane direction is shown upward.</value
     <value>114, 6</value>
   </data>
   <data name="toolStripButtonDiffractionPoly.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="toolStripButtonDiffractionPoly.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -3413,7 +3413,7 @@ If a plane index is also specified, that plane direction is shown upward.</value
     <value>None</value>
   </data>
   <data name="menuStrip1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="readCrystalDataToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>304, 22</value>
@@ -3672,7 +3672,7 @@ If a plane index is also specified, that plane direction is shown upward.</value
     <value>108, 6</value>
   </data>
   <data name="macroToolStripMenuItem.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="macroToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>58, 21</value>
@@ -3708,7 +3708,7 @@ If a plane index is also specified, that plane direction is shown upward.</value
     <value>0</value>
   </data>
   <data name="toolStripContainer1.TopToolStripPanel.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 10pt</value>
+    <value>Segoe UI, 10pt</value>
   </data>
   <data name="&gt;&gt;toolStripContainer1.TopToolStripPanel.Name" xml:space="preserve">
     <value>toolStripContainer1.TopToolStripPanel</value>
@@ -3738,7 +3738,7 @@ If a plane index is also specified, that plane direction is shown upward.</value
     <value>663, 17</value>
   </metadata>
   <data name="contextMenuStripListBox.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="renameToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>127, 22</value>
@@ -3792,7 +3792,7 @@ If a plane index is also specified, that plane direction is shown upward.</value
     <value>834, 672</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Variable Text, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

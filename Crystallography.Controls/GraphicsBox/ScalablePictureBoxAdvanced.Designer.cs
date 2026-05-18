@@ -56,8 +56,7 @@
             scalablePictureBox = new ScalablePictureBox();
             graphControl = new GraphControl();
             panelMagInfo = new System.Windows.Forms.Panel();
-            label14 = new System.Windows.Forms.Label();
-            labelResolution = new System.Windows.Forms.Label();
+            flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             buttonMag1 = new System.Windows.Forms.Button();
             buttonMag2 = new System.Windows.Forms.Button();
             buttonMag4 = new System.Windows.Forms.Button();
@@ -65,6 +64,8 @@
             buttonMag_4 = new System.Windows.Forms.Button();
             buttonMag_8 = new System.Windows.Forms.Button();
             buttonMag_16 = new System.Windows.Forms.Button();
+            label14 = new System.Windows.Forms.Label();
+            labelResolution = new System.Windows.Forms.Label();
             label1 = new System.Windows.Forms.Label();
             panelTrackBar.SuspendLayout();
             flowLayoutPanelGradient.SuspendLayout();
@@ -77,6 +78,7 @@
             panelUpper.SuspendLayout();
             statusStrip1.SuspendLayout();
             panelMagInfo.SuspendLayout();
+            flowLayoutPanel1.SuspendLayout();
             SuspendLayout();
             // 
             // panelTrackBar
@@ -234,8 +236,8 @@
             // 
             numericBoxDustScratchesRadius.BackColor = System.Drawing.SystemColors.Control;
             numericBoxDustScratchesRadius.DecimalPlaces = 1;
-            resources.ApplyResources(numericBoxDustScratchesRadius, "numericBoxDustScratchesRadius");
             numericBoxDustScratchesRadius.FooterBackColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(numericBoxDustScratchesRadius, "numericBoxDustScratchesRadius");
             numericBoxDustScratchesRadius.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxDustScratchesRadius.Maximum = 5D;
             numericBoxDustScratchesRadius.Minimum = 0D;
@@ -252,8 +254,8 @@
             // 
             numericBoxDustScratchesThreshold.BackColor = System.Drawing.SystemColors.Control;
             numericBoxDustScratchesThreshold.DecimalPlaces = 0;
-            resources.ApplyResources(numericBoxDustScratchesThreshold, "numericBoxDustScratchesThreshold");
             numericBoxDustScratchesThreshold.FooterBackColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(numericBoxDustScratchesThreshold, "numericBoxDustScratchesThreshold");
             numericBoxDustScratchesThreshold.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxDustScratchesThreshold.Maximum = 10D;
             numericBoxDustScratchesThreshold.Minimum = 0D;
@@ -284,8 +286,8 @@
             // 
             numericBoxGaussianFWHM.BackColor = System.Drawing.SystemColors.Control;
             numericBoxGaussianFWHM.DecimalPlaces = 1;
-            resources.ApplyResources(numericBoxGaussianFWHM, "numericBoxGaussianFWHM");
             numericBoxGaussianFWHM.FooterBackColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(numericBoxGaussianFWHM, "numericBoxGaussianFWHM");
             numericBoxGaussianFWHM.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxGaussianFWHM.Maximum = 100D;
             numericBoxGaussianFWHM.Minimum = 0D;
@@ -348,7 +350,7 @@
             graphControl.AllowMouseOperation = true;
             graphControl.AxisLineColor = System.Drawing.Color.Gray;
             graphControl.AxisTextColor = System.Drawing.Color.Black;
-            graphControl.AxisTextFont = new System.Drawing.Font("Segoe UI Variable Text", 9F);
+            graphControl.AxisTextFont = new System.Drawing.Font("Segoe UI", 9F);
             graphControl.AxisXTextVisible = true;
             graphControl.AxisYTextVisible = true;
             graphControl.BackgroundColor = System.Drawing.Color.White;
@@ -380,7 +382,9 @@
             graphControl.OriginPosition = new System.Drawing.Point(20, 20);
             graphControl.UnitX = "";
             graphControl.UnitY = "";
-            graphControl.UpperPanelFont = new System.Drawing.Font("BIZ UDPGothic", 7F);
+            // 260518Cl: Designer 再保存で日本語名 "BIZ UDPゴシック" に書き換わったのを英名 "BIZ UDPGothic" に戻す
+            // (英語環境ではフォント名解決に失敗し fallback になるため英名固定)。
+            graphControl.UpperPanelFont = new System.Drawing.Font("Yu Gothic UI", 7F);
             graphControl.UpperPanelVisible = false;
             graphControl.UpperX = 1D;
             graphControl.UpperY = 1D;
@@ -393,27 +397,23 @@
             // panelMagInfo
             // 
             resources.ApplyResources(panelMagInfo, "panelMagInfo");
+            panelMagInfo.Controls.Add(flowLayoutPanel1);
             panelMagInfo.Controls.Add(label14);
             panelMagInfo.Controls.Add(labelResolution);
-            panelMagInfo.Controls.Add(buttonMag1);
-            panelMagInfo.Controls.Add(buttonMag2);
-            panelMagInfo.Controls.Add(buttonMag4);
-            panelMagInfo.Controls.Add(buttonMag_2);
-            panelMagInfo.Controls.Add(buttonMag_4);
-            panelMagInfo.Controls.Add(buttonMag_8);
-            panelMagInfo.Controls.Add(buttonMag_16);
             panelMagInfo.Controls.Add(label1);
             panelMagInfo.Name = "panelMagInfo";
             // 
-            // label14
+            // flowLayoutPanel1
             // 
-            resources.ApplyResources(label14, "label14");
-            label14.Name = "label14";
-            // 
-            // labelResolution
-            // 
-            resources.ApplyResources(labelResolution, "labelResolution");
-            labelResolution.Name = "labelResolution";
+            resources.ApplyResources(flowLayoutPanel1, "flowLayoutPanel1");
+            flowLayoutPanel1.Controls.Add(buttonMag1);
+            flowLayoutPanel1.Controls.Add(buttonMag2);
+            flowLayoutPanel1.Controls.Add(buttonMag4);
+            flowLayoutPanel1.Controls.Add(buttonMag_2);
+            flowLayoutPanel1.Controls.Add(buttonMag_4);
+            flowLayoutPanel1.Controls.Add(buttonMag_8);
+            flowLayoutPanel1.Controls.Add(buttonMag_16);
+            flowLayoutPanel1.Name = "flowLayoutPanel1";
             // 
             // buttonMag1
             // 
@@ -464,6 +464,16 @@
             buttonMag_16.UseVisualStyleBackColor = true;
             buttonMag_16.Click += buttonMag_Click;
             // 
+            // label14
+            // 
+            resources.ApplyResources(label14, "label14");
+            label14.Name = "label14";
+            // 
+            // labelResolution
+            // 
+            resources.ApplyResources(labelResolution, "labelResolution");
+            labelResolution.Name = "labelResolution";
+            // 
             // label1
             // 
             resources.ApplyResources(label1, "label1");
@@ -472,7 +482,6 @@
             // ScalablePictureBoxAdvanced
             // 
             resources.ApplyResources(this, "$this");
-            AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             Controls.Add(scalablePictureBox);
             Controls.Add(panelMagInfo);
@@ -507,6 +516,8 @@
             statusStrip1.PerformLayout();
             panelMagInfo.ResumeLayout(false);
             panelMagInfo.PerformLayout();
+            flowLayoutPanel1.ResumeLayout(false);
+            flowLayoutPanel1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -554,5 +565,6 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelPolarity;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelScale;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelColor;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
     }
 }

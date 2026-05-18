@@ -66,7 +66,8 @@ public partial class FormMovie : FormBase
 
     private void radioButtonCurrent_CheckedChanged(object sender, EventArgs e)
     {
-        indexControl.Mode  = radioButtonAxis.Checked? IndexControl.ModeEnum.Axis : IndexControl.ModeEnum.Plane;
+        indexControl.Mode = radioButtonAxis.Checked ? IndexControl.ModeEnum.Axis : IndexControl.ModeEnum.Plane;
+        indexControl.Enabled = !radioButtonCurrent.Checked; // 260518Cl 旧 tableLayoutPanelAxis/Plane の Enabled 切替に対応: Current のとき入力欄を無効化
         tableLayoutPanelCurrent.Enabled = radioButtonCurrent.Checked;
         numericBoxAxisU_ValueChanged(sender, e);
     }

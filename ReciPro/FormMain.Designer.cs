@@ -459,6 +459,7 @@
             resources.ApplyResources(indexControlPlane, "indexControlPlane");
             indexControlPlane.BoxWidth = 38;
             indexControlPlane.Bracket = IndexControl.BracketEnum.Round;
+            indexControlPlane.LabelVisible = true;
             indexControlPlane.Mode = IndexControl.ModeEnum.Plane;
             indexControlPlane.Name = "indexControlPlane";
             indexControlPlane.SubScript = "";
@@ -499,6 +500,7 @@
             resources.ApplyResources(indexControlAxis, "indexControlAxis");
             indexControlAxis.BoxWidth = 38;
             indexControlAxis.Bracket = IndexControl.BracketEnum.Round;
+            indexControlAxis.LabelVisible = true;
             indexControlAxis.Mode = IndexControl.ModeEnum.Axis;
             indexControlAxis.Name = "indexControlAxis";
             indexControlAxis.SubScript = "";
