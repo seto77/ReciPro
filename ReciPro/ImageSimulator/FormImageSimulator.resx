@@ -120,6 +120,7 @@
   <metadata name="captureExtender.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="splitContainer1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
@@ -208,7 +209,7 @@
     <value>193, 3</value>
   </data>
   <data name="labelMousePositionValue.Size" type="System.Drawing.Size, System.Drawing">
-    <value>42, 15</value>
+    <value>41, 15</value>
   </data>
   <data name="labelMousePositionValue.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -595,7 +596,7 @@
     <value>Segoe UI, 9pt</value>
   </data>
   <data name="numericBoxGaussianBlurRadius.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
+    <value>0, 5, 0, 0</value>
   </data>
   <data name="numericBoxGaussianBlurRadius.FooterText" xml:space="preserve">
     <value>pm</value>
@@ -604,7 +605,7 @@
     <value>Segoe UI, 9pt</value>
   </data>
   <data name="numericBoxGaussianBlurRadius.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
+    <value>0, 5, 0, 0</value>
   </data>
   <data name="numericBoxGaussianBlurRadius.Location" type="System.Drawing.Point, System.Drawing">
     <value>270, 74</value>
@@ -623,9 +624,6 @@
   </data>
   <data name="numericBoxGaussianBlurRadius.TabIndex" type="System.Int32, mscorlib">
     <value>43</value>
-  </data>
-  <data name="numericBoxGaussianBlurRadius.TextFontSize" type="System.Single, mscorlib">
-    <value>9</value>
   </data>
   <data name="&gt;&gt;numericBoxGaussianBlurRadius.Name" xml:space="preserve">
     <value>numericBoxGaussianBlurRadius</value>
@@ -667,7 +665,7 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="trackBarAdvancedMax.Size" type="System.Drawing.Size, System.Drawing">
-    <value>345, 23</value>
+    <value>351, 23</value>
   </data>
   <data name="trackBarAdvancedMax.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -712,7 +710,7 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="trackBarAdvancedMin.Size" type="System.Drawing.Size, System.Drawing">
-    <value>345, 23</value>
+    <value>351, 23</value>
   </data>
   <data name="trackBarAdvancedMin.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -844,7 +842,7 @@
     <value>3, 3</value>
   </data>
   <data name="groupBoxAdjust.Size" type="System.Drawing.Size, System.Drawing">
-    <value>354, 105</value>
+    <value>360, 105</value>
   </data>
   <data name="groupBoxAdjust.TabIndex" type="System.Int32, mscorlib">
     <value>76</value>
@@ -961,13 +959,13 @@
     <value>Segoe UI, 9pt</value>
   </data>
   <data name="numericBoxIntensityMin.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
+    <value>0, 4, 0, 0</value>
   </data>
   <data name="numericBoxIntensityMin.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>
   </data>
   <data name="numericBoxIntensityMin.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
+    <value>0, 4, 0, 0</value>
   </data>
   <data name="numericBoxIntensityMin.Location" type="System.Drawing.Point, System.Drawing">
     <value>50, 0</value>
@@ -986,9 +984,6 @@
   </data>
   <data name="numericBoxIntensityMin.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
-  </data>
-  <data name="numericBoxIntensityMin.TextFontSize" type="System.Single, mscorlib">
-    <value>9</value>
   </data>
   <data name="numericBoxIntensityMin.ToolTip" xml:space="preserve">
     <value>Minimum intensity of the simulated image
@@ -1053,13 +1048,13 @@
     <value>Segoe UI, 9pt</value>
   </data>
   <data name="numericBoxIntensityMax.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
+    <value>0, 4, 0, 0</value>
   </data>
   <data name="numericBoxIntensityMax.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>
   </data>
   <data name="numericBoxIntensityMax.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
+    <value>0, 4, 0, 0</value>
   </data>
   <data name="numericBoxIntensityMax.Location" type="System.Drawing.Point, System.Drawing">
     <value>51, 23</value>
@@ -1078,9 +1073,6 @@
   </data>
   <data name="numericBoxIntensityMax.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
-  </data>
-  <data name="numericBoxIntensityMax.TextFontSize" type="System.Single, mscorlib">
-    <value>9</value>
   </data>
   <data name="numericBoxIntensityMax.ToolTip" xml:space="preserve">
     <value>Maximum intensity of the simulated image.</value>
@@ -1161,7 +1153,7 @@
     <value>panelDisplaySettings</value>
   </data>
   <data name="&gt;&gt;groupBoxNormalization.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>1</value>
   </data>
   <data name="panel9.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Right</value>
@@ -1185,7 +1177,7 @@
     <value>panelDisplaySettings</value>
   </data>
   <data name="&gt;&gt;panel9.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>2</value>
   </data>
   <data name="radioButtonSTEM_target_TDS.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1351,7 +1343,7 @@
     <value>panelDisplaySettings</value>
   </data>
   <data name="&gt;&gt;groupBoxSTEMoption3.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>3</value>
   </data>
   <data name="colorControlScale.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1425,11 +1417,17 @@
   <data name="numericBoxScaleLength.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>
   </data>
+  <data name="numericBoxScaleLength.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 5, 0, 0</value>
+  </data>
   <data name="numericBoxScaleLength.FooterText" xml:space="preserve">
     <value>nm</value>
   </data>
   <data name="numericBoxScaleLength.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>
+  </data>
+  <data name="numericBoxScaleLength.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 5, 0, 0</value>
   </data>
   <data name="numericBoxScaleLength.HeaderText" xml:space="preserve">
     <value>Length</value>
@@ -1451,9 +1449,6 @@
   </data>
   <data name="numericBoxScaleLength.TabIndex" type="System.Int32, mscorlib">
     <value>60</value>
-  </data>
-  <data name="numericBoxScaleLength.TextFontSize" type="System.Single, mscorlib">
-    <value>9</value>
   </data>
   <data name="numericBoxScaleLength.ToolTip" xml:space="preserve">
     <value>Length of scale bar in nm</value>
@@ -1590,8 +1585,14 @@
   <data name="numericBoxLabelFontSize.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>
   </data>
+  <data name="numericBoxLabelFontSize.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 5, 0, 0</value>
+  </data>
   <data name="numericBoxLabelFontSize.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>
+  </data>
+  <data name="numericBoxLabelFontSize.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 5, 0, 0</value>
   </data>
   <data name="numericBoxLabelFontSize.HeaderText" xml:space="preserve">
     <value>Size</value>
@@ -1613,9 +1614,6 @@
   </data>
   <data name="numericBoxLabelFontSize.TabIndex" type="System.Int32, mscorlib">
     <value>60</value>
-  </data>
-  <data name="numericBoxLabelFontSize.TextFontSize" type="System.Single, mscorlib">
-    <value>9</value>
   </data>
   <data name="numericBoxLabelFontSize.ToolTip" xml:space="preserve">
     <value>Set font size of label in point</value>
@@ -1756,7 +1754,7 @@
     <value>panelDisplaySettings</value>
   </data>
   <data name="&gt;&gt;groupBoxDisplay.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>4</value>
   </data>
   <data name="panelDisplaySettings.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Bottom</value>
@@ -1824,8 +1822,14 @@
   <data name="numericBoxDefocusNum.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>
   </data>
+  <data name="numericBoxDefocusNum.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 4, 0, 0</value>
+  </data>
   <data name="numericBoxDefocusNum.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>
+  </data>
+  <data name="numericBoxDefocusNum.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 4, 0, 0</value>
   </data>
   <data name="numericBoxDefocusNum.HeaderText" xml:space="preserve">
     <value>Num</value>
@@ -1846,9 +1850,6 @@
     <value>82, 27</value>
   </data>
   <data name="numericBoxDefocusNum.TabIndex" type="System.Int32, mscorlib">
-    <value>9</value>
-  </data>
-  <data name="numericBoxDefocusNum.TextFontSize" type="System.Single, mscorlib">
     <value>9</value>
   </data>
   <data name="&gt;&gt;numericBoxDefocusNum.Name" xml:space="preserve">
@@ -1872,8 +1873,14 @@
   <data name="numericBoxDefocusStep.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>
   </data>
+  <data name="numericBoxDefocusStep.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 4, 0, 0</value>
+  </data>
   <data name="numericBoxDefocusStep.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>
+  </data>
+  <data name="numericBoxDefocusStep.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 4, 0, 0</value>
   </data>
   <data name="numericBoxDefocusStep.HeaderText" xml:space="preserve">
     <value>Step</value>
@@ -1896,9 +1903,6 @@
   <data name="numericBoxDefocusStep.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
   </data>
-  <data name="numericBoxDefocusStep.TextFontSize" type="System.Single, mscorlib">
-    <value>9</value>
-  </data>
   <data name="&gt;&gt;numericBoxDefocusStep.Name" xml:space="preserve">
     <value>numericBoxDefocusStep</value>
   </data>
@@ -1920,8 +1924,14 @@
   <data name="numericBoxDefocusStart.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>
   </data>
+  <data name="numericBoxDefocusStart.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 4, 0, 0</value>
+  </data>
   <data name="numericBoxDefocusStart.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>
+  </data>
+  <data name="numericBoxDefocusStart.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 4, 0, 0</value>
   </data>
   <data name="numericBoxDefocusStart.HeaderText" xml:space="preserve">
     <value>Start</value>
@@ -1943,9 +1953,6 @@
   </data>
   <data name="numericBoxDefocusStart.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
-  </data>
-  <data name="numericBoxDefocusStart.TextFontSize" type="System.Single, mscorlib">
-    <value>9</value>
   </data>
   <data name="&gt;&gt;numericBoxDefocusStart.Name" xml:space="preserve">
     <value>numericBoxDefocusStart</value>
@@ -2040,8 +2047,14 @@
   <data name="numericBoxThicknessNum.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>
   </data>
+  <data name="numericBoxThicknessNum.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 5, 0, 0</value>
+  </data>
   <data name="numericBoxThicknessNum.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>
+  </data>
+  <data name="numericBoxThicknessNum.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 5, 0, 0</value>
   </data>
   <data name="numericBoxThicknessNum.HeaderText" xml:space="preserve">
     <value>Num</value>
@@ -2064,9 +2077,6 @@
   <data name="numericBoxThicknessNum.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
   </data>
-  <data name="numericBoxThicknessNum.TextFontSize" type="System.Single, mscorlib">
-    <value>9</value>
-  </data>
   <data name="&gt;&gt;numericBoxThicknessNum.Name" xml:space="preserve">
     <value>numericBoxThicknessNum</value>
   </data>
@@ -2088,8 +2098,14 @@
   <data name="numericBoxThicknessStep.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>
   </data>
+  <data name="numericBoxThicknessStep.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 5, 0, 0</value>
+  </data>
   <data name="numericBoxThicknessStep.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>
+  </data>
+  <data name="numericBoxThicknessStep.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 5, 0, 0</value>
   </data>
   <data name="numericBoxThicknessStep.HeaderText" xml:space="preserve">
     <value>Step</value>
@@ -2110,9 +2126,6 @@
     <value>83, 27</value>
   </data>
   <data name="numericBoxThicknessStep.TabIndex" type="System.Int32, mscorlib">
-    <value>9</value>
-  </data>
-  <data name="numericBoxThicknessStep.TextFontSize" type="System.Single, mscorlib">
     <value>9</value>
   </data>
   <data name="&gt;&gt;numericBoxThicknessStep.Name" xml:space="preserve">
@@ -2136,8 +2149,14 @@
   <data name="numericBoxThicknessStart.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>
   </data>
+  <data name="numericBoxThicknessStart.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 5, 0, 0</value>
+  </data>
   <data name="numericBoxThicknessStart.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>
+  </data>
+  <data name="numericBoxThicknessStart.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 5, 0, 0</value>
   </data>
   <data name="numericBoxThicknessStart.HeaderText" xml:space="preserve">
     <value>Start</value>
@@ -2159,9 +2178,6 @@
   </data>
   <data name="numericBoxThicknessStart.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
-  </data>
-  <data name="numericBoxThicknessStart.TextFontSize" type="System.Single, mscorlib">
-    <value>9</value>
   </data>
   <data name="&gt;&gt;numericBoxThicknessStart.Name" xml:space="preserve">
     <value>numericBoxThicknessStart</value>
@@ -3763,11 +3779,17 @@
   <data name="numericBoxSTEM_AngleResolution.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>
   </data>
+  <data name="numericBoxSTEM_AngleResolution.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 5, 0, 0</value>
+  </data>
   <data name="numericBoxSTEM_AngleResolution.FooterText" xml:space="preserve">
     <value>mrad</value>
   </data>
   <data name="numericBoxSTEM_AngleResolution.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>
+  </data>
+  <data name="numericBoxSTEM_AngleResolution.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 5, 0, 0</value>
   </data>
   <data name="numericBoxSTEM_AngleResolution.HeaderText" xml:space="preserve">
     <value>Angular resolution of incident electrons</value>
@@ -3789,9 +3811,6 @@
   </data>
   <data name="numericBoxSTEM_AngleResolution.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
-  </data>
-  <data name="numericBoxSTEM_AngleResolution.TextFontSize" type="System.Single, mscorlib">
-    <value>9</value>
   </data>
   <data name="numericBoxSTEM_AngleResolution.ToolTip" xml:space="preserve">
     <value>Angular resolution of incident electrons in mrad.</value>
@@ -3817,11 +3836,17 @@
   <data name="numericBoxSTEM_SliceThicknessForInelastic.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>
   </data>
+  <data name="numericBoxSTEM_SliceThicknessForInelastic.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 5, 0, 0</value>
+  </data>
   <data name="numericBoxSTEM_SliceThicknessForInelastic.FooterText" xml:space="preserve">
     <value>nm</value>
   </data>
   <data name="numericBoxSTEM_SliceThicknessForInelastic.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>
+  </data>
+  <data name="numericBoxSTEM_SliceThicknessForInelastic.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 5, 0, 0</value>
   </data>
   <data name="numericBoxSTEM_SliceThicknessForInelastic.HeaderText" xml:space="preserve">
     <value>Slice thickness for TDS calculation</value>
@@ -3843,9 +3868,6 @@
   </data>
   <data name="numericBoxSTEM_SliceThicknessForInelastic.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
-  </data>
-  <data name="numericBoxSTEM_SliceThicknessForInelastic.TextFontSize" type="System.Single, mscorlib">
-    <value>9</value>
   </data>
   <data name="numericBoxSTEM_SliceThicknessForInelastic.ToolTip" xml:space="preserve">
     <value>Sets the thickness to slice the sample when calculating the TDS electron intensity.
@@ -3973,7 +3995,7 @@ for which the weak phase object approximation holds.
     <value>0, 0, 0, 0</value>
   </data>
   <data name="radioButtonModeTransmissionCrossCoefficient.Size" type="System.Drawing.Size, System.Drawing">
-    <value>184, 19</value>
+    <value>183, 19</value>
   </data>
   <data name="radioButtonModeTransmissionCrossCoefficient.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -4003,7 +4025,7 @@ excite many strong diffracted beams.
     <value>24, 37</value>
   </data>
   <data name="flowLayoutPanelStemMode.Size" type="System.Drawing.Size, System.Drawing">
-    <value>277, 19</value>
+    <value>276, 19</value>
   </data>
   <data name="flowLayoutPanelStemMode.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -4098,56 +4120,11 @@ excite many strong diffracted beams.
   <data name="groupBoxImageProperty.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
-  <data name="numericBoxHeight.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+  <data name="flowLayoutPanel2.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="flowLayoutPanel2.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
-  </data>
-  <data name="numericBoxHeight.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
-  </data>
-  <data name="numericBoxHeight.FooterText" xml:space="preserve">
-    <value>pix</value>
-  </data>
-  <data name="numericBoxHeight.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
-  </data>
-  <data name="numericBoxHeight.Location" type="System.Drawing.Point, System.Drawing">
-    <value>132, 21</value>
-  </data>
-  <data name="numericBoxHeight.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="numericBoxHeight.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 28</value>
-  </data>
-  <data name="numericBoxHeight.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 18</value>
-  </data>
-  <data name="numericBoxHeight.Size" type="System.Drawing.Size, System.Drawing">
-    <value>71, 23</value>
-  </data>
-  <data name="numericBoxHeight.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="numericBoxHeight.TextFontSize" type="System.Single, mscorlib">
-    <value>9</value>
-  </data>
-  <data name="numericBoxHeight.ToolTip" xml:space="preserve">
-    <value>Height of the image to be simulated in pixel</value>
-  </data>
-  <data name="numericBoxHeight.ToolTip1" xml:space="preserve">
-    <value>Height of the image to be simulated in pixel</value>
-  </data>
-  <data name="&gt;&gt;numericBoxHeight.Name" xml:space="preserve">
-    <value>numericBoxHeight</value>
-  </data>
-  <data name="&gt;&gt;numericBoxHeight.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;numericBoxHeight.Parent" xml:space="preserve">
-    <value>groupBoxImageProperty</value>
-  </data>
-  <data name="&gt;&gt;numericBoxHeight.ZOrder" xml:space="preserve">
-    <value>0</value>
   </data>
   <data name="numericBoxWidth.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
@@ -4155,17 +4132,23 @@ excite many strong diffracted beams.
   <data name="numericBoxWidth.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>
   </data>
+  <data name="numericBoxWidth.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 5, 0, 0</value>
+  </data>
   <data name="numericBoxWidth.FooterText" xml:space="preserve">
     <value>×</value>
   </data>
   <data name="numericBoxWidth.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>
   </data>
+  <data name="numericBoxWidth.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 5, 0, 0</value>
+  </data>
   <data name="numericBoxWidth.HeaderText" xml:space="preserve">
     <value>Size (W×H)</value>
   </data>
   <data name="numericBoxWidth.Location" type="System.Drawing.Point, System.Drawing">
-    <value>5, 21</value>
+    <value>0, 0</value>
   </data>
   <data name="numericBoxWidth.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -4177,13 +4160,10 @@ excite many strong diffracted beams.
     <value>1, 18</value>
   </data>
   <data name="numericBoxWidth.Size" type="System.Drawing.Size, System.Drawing">
-    <value>128, 23</value>
+    <value>124, 23</value>
   </data>
   <data name="numericBoxWidth.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
-  </data>
-  <data name="numericBoxWidth.TextFontSize" type="System.Single, mscorlib">
-    <value>9</value>
   </data>
   <data name="numericBoxWidth.ToolTip" xml:space="preserve">
     <value>Width of the image to be simulated in pixel</value>
@@ -4198,10 +4178,85 @@ excite many strong diffracted beams.
     <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxWidth.Parent" xml:space="preserve">
-    <value>groupBoxImageProperty</value>
+    <value>flowLayoutPanel2</value>
   </data>
   <data name="&gt;&gt;numericBoxWidth.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="numericBoxHeight.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="numericBoxHeight.FooterFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9pt</value>
+  </data>
+  <data name="numericBoxHeight.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 5, 0, 0</value>
+  </data>
+  <data name="numericBoxHeight.FooterText" xml:space="preserve">
+    <value>pix</value>
+  </data>
+  <data name="numericBoxHeight.HeaderFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9pt</value>
+  </data>
+  <data name="numericBoxHeight.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 5, 0, 0</value>
+  </data>
+  <data name="numericBoxHeight.Location" type="System.Drawing.Point, System.Drawing">
+    <value>124, 0</value>
+  </data>
+  <data name="numericBoxHeight.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="numericBoxHeight.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 28</value>
+  </data>
+  <data name="numericBoxHeight.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1, 18</value>
+  </data>
+  <data name="numericBoxHeight.Size" type="System.Drawing.Size, System.Drawing">
+    <value>70, 23</value>
+  </data>
+  <data name="numericBoxHeight.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="numericBoxHeight.ToolTip" xml:space="preserve">
+    <value>Height of the image to be simulated in pixel</value>
+  </data>
+  <data name="numericBoxHeight.ToolTip1" xml:space="preserve">
+    <value>Height of the image to be simulated in pixel</value>
+  </data>
+  <data name="&gt;&gt;numericBoxHeight.Name" xml:space="preserve">
+    <value>numericBoxHeight</value>
+  </data>
+  <data name="&gt;&gt;numericBoxHeight.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericBoxHeight.Parent" xml:space="preserve">
+    <value>flowLayoutPanel2</value>
+  </data>
+  <data name="&gt;&gt;numericBoxHeight.ZOrder" xml:space="preserve">
     <value>1</value>
+  </data>
+  <data name="flowLayoutPanel2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 20</value>
+  </data>
+  <data name="flowLayoutPanel2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>194, 23</value>
+  </data>
+  <data name="flowLayoutPanel2.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel2.Name" xml:space="preserve">
+    <value>flowLayoutPanel2</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel2.Parent" xml:space="preserve">
+    <value>groupBoxImageProperty</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel2.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="numericBoxResolution.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
@@ -4209,11 +4264,17 @@ excite many strong diffracted beams.
   <data name="numericBoxResolution.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>
   </data>
+  <data name="numericBoxResolution.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 5, 0, 0</value>
+  </data>
   <data name="numericBoxResolution.FooterText" xml:space="preserve">
     <value>pm/pix</value>
   </data>
   <data name="numericBoxResolution.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>
+  </data>
+  <data name="numericBoxResolution.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 5, 0, 0</value>
   </data>
   <data name="numericBoxResolution.HeaderText" xml:space="preserve">
     <value>Resolution</value>
@@ -4231,13 +4292,10 @@ excite many strong diffracted beams.
     <value>1, 18</value>
   </data>
   <data name="numericBoxResolution.Size" type="System.Drawing.Size, System.Drawing">
-    <value>169, 23</value>
+    <value>163, 23</value>
   </data>
   <data name="numericBoxResolution.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
-  </data>
-  <data name="numericBoxResolution.TextFontSize" type="System.Single, mscorlib">
-    <value>9</value>
   </data>
   <data name="numericBoxResolution.ToolTip" xml:space="preserve">
     <value>Resolution of the simulated image in picometers per pixel</value>
@@ -4255,7 +4313,7 @@ excite many strong diffracted beams.
     <value>groupBoxImageProperty</value>
   </data>
   <data name="&gt;&gt;numericBoxResolution.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>1</value>
   </data>
   <data name="groupBoxImageProperty.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -4320,8 +4378,17 @@ excite many strong diffracted beams.
   <data name="numericBoxNumOfBlochWave.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
+  <data name="numericBoxNumOfBlochWave.FooterFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9.75pt</value>
+  </data>
   <data name="numericBoxNumOfBlochWave.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
+    <value>0, 2, 0, 0</value>
+  </data>
+  <data name="numericBoxNumOfBlochWave.HeaderFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9.75pt</value>
+  </data>
+  <data name="numericBoxNumOfBlochWave.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 2, 0, 0</value>
   </data>
   <data name="numericBoxNumOfBlochWave.Location" type="System.Drawing.Point, System.Drawing">
     <value>40, 45</value>
@@ -4340,9 +4407,6 @@ excite many strong diffracted beams.
   </data>
   <data name="numericBoxNumOfBlochWave.TabIndex" type="System.Int32, mscorlib">
     <value>50</value>
-  </data>
-  <data name="numericBoxNumOfBlochWave.TextFontSize" type="System.Single, mscorlib">
-    <value>9</value>
   </data>
   <data name="numericBoxNumOfBlochWave.ToolTip" xml:space="preserve">
     <value>Maximum number of Bloch waves used in the Bethe's method.
@@ -4431,7 +4495,7 @@ Larger values result in slower calculation speed but higher accuracy.</value>
     <value>3, 0, 0, 0</value>
   </data>
   <data name="panelModeOptions.Size" type="System.Drawing.Size, System.Drawing">
-    <value>320, 231</value>
+    <value>320, 232</value>
   </data>
   <data name="panelModeOptions.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
@@ -4455,7 +4519,7 @@ Larger values result in slower calculation speed but higher accuracy.</value>
     <value>Segoe UI, 9.75pt, style=Bold</value>
   </data>
   <data name="groupBoxSimulation.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 475</value>
+    <value>4, 474</value>
   </data>
   <data name="groupBoxSimulation.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -4464,7 +4528,7 @@ Larger values result in slower calculation speed but higher accuracy.</value>
     <value>6, 0, 6, 6</value>
   </data>
   <data name="groupBoxSimulation.Size" type="System.Drawing.Size, System.Drawing">
-    <value>332, 255</value>
+    <value>332, 256</value>
   </data>
   <data name="groupBoxSimulation.TabIndex" type="System.Int32, mscorlib">
     <value>53</value>
@@ -4611,11 +4675,17 @@ Larger values result in slower calculation speed but higher accuracy.</value>
   <data name="numericBoxSTEM_DetectorOuterAngle.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>
   </data>
+  <data name="numericBoxSTEM_DetectorOuterAngle.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 5, 0, 0</value>
+  </data>
   <data name="numericBoxSTEM_DetectorOuterAngle.FooterText" xml:space="preserve">
     <value>mrad</value>
   </data>
   <data name="numericBoxSTEM_DetectorOuterAngle.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>
+  </data>
+  <data name="numericBoxSTEM_DetectorOuterAngle.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 5, 0, 0</value>
   </data>
   <data name="numericBoxSTEM_DetectorOuterAngle.HeaderText" xml:space="preserve">
     <value>Outer</value>
@@ -4637,9 +4707,6 @@ Larger values result in slower calculation speed but higher accuracy.</value>
   </data>
   <data name="numericBoxSTEM_DetectorOuterAngle.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
-  </data>
-  <data name="numericBoxSTEM_DetectorOuterAngle.TextFontSize" type="System.Single, mscorlib">
-    <value>9</value>
   </data>
   <data name="numericBoxSTEM_DetectorOuterAngle.ToolTip" xml:space="preserve">
     <value>Inner and outer radius of the annular detector in mrad.</value>
@@ -4665,11 +4732,17 @@ Larger values result in slower calculation speed but higher accuracy.</value>
   <data name="numericBoxSTEM_EffectiveSourceSize.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>
   </data>
+  <data name="numericBoxSTEM_EffectiveSourceSize.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 5, 0, 0</value>
+  </data>
   <data name="numericBoxSTEM_EffectiveSourceSize.FooterText" xml:space="preserve">
     <value>pm</value>
   </data>
   <data name="numericBoxSTEM_EffectiveSourceSize.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>
+  </data>
+  <data name="numericBoxSTEM_EffectiveSourceSize.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 5, 0, 0</value>
   </data>
   <data name="numericBoxSTEM_EffectiveSourceSize.Location" type="System.Drawing.Point, System.Drawing">
     <value>211, 105</value>
@@ -4688,9 +4761,6 @@ Larger values result in slower calculation speed but higher accuracy.</value>
   </data>
   <data name="numericBoxSTEM_EffectiveSourceSize.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
-  </data>
-  <data name="numericBoxSTEM_EffectiveSourceSize.TextFontSize" type="System.Single, mscorlib">
-    <value>9</value>
   </data>
   <data name="numericBoxSTEM_EffectiveSourceSize.ToolTip" xml:space="preserve">
     <value>Size of the effective electron source.</value>
@@ -4716,11 +4786,17 @@ Larger values result in slower calculation speed but higher accuracy.</value>
   <data name="numericBoxSTEM_ConvergenceAngle.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>
   </data>
+  <data name="numericBoxSTEM_ConvergenceAngle.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 5, 0, 0</value>
+  </data>
   <data name="numericBoxSTEM_ConvergenceAngle.FooterText" xml:space="preserve">
     <value>mrad</value>
   </data>
   <data name="numericBoxSTEM_ConvergenceAngle.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>
+  </data>
+  <data name="numericBoxSTEM_ConvergenceAngle.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 5, 0, 0</value>
   </data>
   <data name="numericBoxSTEM_ConvergenceAngle.Location" type="System.Drawing.Point, System.Drawing">
     <value>156, 22</value>
@@ -4739,9 +4815,6 @@ Larger values result in slower calculation speed but higher accuracy.</value>
   </data>
   <data name="numericBoxSTEM_ConvergenceAngle.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
-  </data>
-  <data name="numericBoxSTEM_ConvergenceAngle.TextFontSize" type="System.Single, mscorlib">
-    <value>9</value>
   </data>
   <data name="numericBoxSTEM_ConvergenceAngle.ToolTip" xml:space="preserve">
     <value>Angle of convergence of incident electrons in units of mrad.</value>
@@ -5055,11 +5128,17 @@ Larger values result in slower calculation speed but higher accuracy.</value>
   <data name="numericBoxSTEM_DetectorInnerAngle.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>
   </data>
+  <data name="numericBoxSTEM_DetectorInnerAngle.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 5, 0, 0</value>
+  </data>
   <data name="numericBoxSTEM_DetectorInnerAngle.FooterText" xml:space="preserve">
     <value>mrad</value>
   </data>
   <data name="numericBoxSTEM_DetectorInnerAngle.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>
+  </data>
+  <data name="numericBoxSTEM_DetectorInnerAngle.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 5, 0, 0</value>
   </data>
   <data name="numericBoxSTEM_DetectorInnerAngle.HeaderText" xml:space="preserve">
     <value>Inner</value>
@@ -5081,9 +5160,6 @@ Larger values result in slower calculation speed but higher accuracy.</value>
   </data>
   <data name="numericBoxSTEM_DetectorInnerAngle.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
-  </data>
-  <data name="numericBoxSTEM_DetectorInnerAngle.TextFontSize" type="System.Single, mscorlib">
-    <value>9</value>
   </data>
   <data name="numericBoxSTEM_DetectorInnerAngle.ToolTip" xml:space="preserve">
     <value>Inner and outer radius of the annular detector in mrad.</value>
@@ -5150,7 +5226,7 @@ Radius Range</value>
     <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="groupBoxSTEMoption1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 263</value>
+    <value>6, 262</value>
   </data>
   <data name="groupBoxSTEMoption1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -5221,8 +5297,14 @@ Radius Range</value>
   <data name="numericBoxHRTEM_ObjAperX.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>
   </data>
+  <data name="numericBoxHRTEM_ObjAperX.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 5, 0, 0</value>
+  </data>
   <data name="numericBoxHRTEM_ObjAperX.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>
+  </data>
+  <data name="numericBoxHRTEM_ObjAperX.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 5, 0, 0</value>
   </data>
   <data name="numericBoxHRTEM_ObjAperX.HeaderText" xml:space="preserve">
     <value>Shift  X</value>
@@ -5245,9 +5327,6 @@ Radius Range</value>
   <data name="numericBoxHRTEM_ObjAperX.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
   </data>
-  <data name="numericBoxHRTEM_ObjAperX.TextFontSize" type="System.Single, mscorlib">
-    <value>9</value>
-  </data>
   <data name="&gt;&gt;numericBoxHRTEM_ObjAperX.Name" xml:space="preserve">
     <value>numericBoxHRTEM_ObjAperX</value>
   </data>
@@ -5266,11 +5345,17 @@ Radius Range</value>
   <data name="numericBoxObjAperRadius.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>
   </data>
+  <data name="numericBoxObjAperRadius.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 5, 0, 0</value>
+  </data>
   <data name="numericBoxObjAperRadius.FooterText" xml:space="preserve">
     <value>mrad</value>
   </data>
   <data name="numericBoxObjAperRadius.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>
+  </data>
+  <data name="numericBoxObjAperRadius.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 5, 0, 0</value>
   </data>
   <data name="numericBoxObjAperRadius.HeaderText" xml:space="preserve">
     <value>Size</value>
@@ -5292,9 +5377,6 @@ Radius Range</value>
   </data>
   <data name="numericBoxObjAperRadius.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
-  </data>
-  <data name="numericBoxObjAperRadius.TextFontSize" type="System.Single, mscorlib">
-    <value>9</value>
   </data>
   <data name="numericBoxObjAperRadius.ToolTip" xml:space="preserve">
     <value>Objective aperture size in mrad</value>
@@ -5320,11 +5402,17 @@ Radius Range</value>
   <data name="numericBoxHRTEM_ObjAperY.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>
   </data>
+  <data name="numericBoxHRTEM_ObjAperY.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 5, 0, 0</value>
+  </data>
   <data name="numericBoxHRTEM_ObjAperY.FooterText" xml:space="preserve">
     <value>mrad</value>
   </data>
   <data name="numericBoxHRTEM_ObjAperY.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>
+  </data>
+  <data name="numericBoxHRTEM_ObjAperY.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 5, 0, 0</value>
   </data>
   <data name="numericBoxHRTEM_ObjAperY.HeaderText" xml:space="preserve">
     <value>Y</value>
@@ -5349,9 +5437,6 @@ Radius Range</value>
   </data>
   <data name="numericBoxHRTEM_ObjAperY.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
-  </data>
-  <data name="numericBoxHRTEM_ObjAperY.TextFontSize" type="System.Single, mscorlib">
-    <value>9</value>
   </data>
   <data name="&gt;&gt;numericBoxHRTEM_ObjAperY.Name" xml:space="preserve">
     <value>numericBoxHRTEM_ObjAperY</value>
@@ -5632,7 +5717,7 @@ Simulator"</value>
     <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="groupBoxHREMoption1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 153</value>
+    <value>6, 152</value>
   </data>
   <data name="groupBoxHREMoption1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -5768,13 +5853,13 @@ Simulator"</value>
     <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="checkBoxCTF.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 109</value>
+    <value>8, 109</value>
   </data>
   <data name="checkBoxCTF.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
   <data name="checkBoxCTF.Size" type="System.Drawing.Size, System.Drawing">
-    <value>213, 21</value>
+    <value>212, 21</value>
   </data>
   <data name="checkBoxCTF.TabIndex" type="System.Int32, mscorlib">
     <value>56</value>
@@ -5800,11 +5885,17 @@ Simulator"</value>
   <data name="numericBoxCc.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>
   </data>
+  <data name="numericBoxCc.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 5, 0, 0</value>
+  </data>
   <data name="numericBoxCc.FooterText" xml:space="preserve">
     <value>mm</value>
   </data>
   <data name="numericBoxCc.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>
+  </data>
+  <data name="numericBoxCc.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 5, 0, 0</value>
   </data>
   <data name="numericBoxCc.HeaderText" xml:space="preserve">
     <value>Cc</value>
@@ -5826,9 +5917,6 @@ Simulator"</value>
   </data>
   <data name="numericBoxCc.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
-  </data>
-  <data name="numericBoxCc.TextFontSize" type="System.Single, mscorlib">
-    <value>9</value>
   </data>
   <data name="numericBoxCc.ToolTip" xml:space="preserve">
     <value>Cc: Chromatic aberration in mm</value>
@@ -5854,11 +5942,17 @@ Simulator"</value>
   <data name="numericBoxDeltaV.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>
   </data>
+  <data name="numericBoxDeltaV.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 5, 0, 0</value>
+  </data>
   <data name="numericBoxDeltaV.FooterText" xml:space="preserve">
     <value>eV</value>
   </data>
   <data name="numericBoxDeltaV.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>
+  </data>
+  <data name="numericBoxDeltaV.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 5, 0, 0</value>
   </data>
   <data name="numericBoxDeltaV.Location" type="System.Drawing.Point, System.Drawing">
     <value>222, 20</value>
@@ -5877,9 +5971,6 @@ Simulator"</value>
   </data>
   <data name="numericBoxDeltaV.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
-  </data>
-  <data name="numericBoxDeltaV.TextFontSize" type="System.Single, mscorlib">
-    <value>9</value>
   </data>
   <data name="numericBoxDeltaV.ToolTip" xml:space="preserve">
     <value>ΔV: 1/e width of electron
@@ -5909,11 +6000,17 @@ Simulator"</value>
   <data name="numericBoxHRTEM_BetaAgnle.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>
   </data>
+  <data name="numericBoxHRTEM_BetaAgnle.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 5, 0, 0</value>
+  </data>
   <data name="numericBoxHRTEM_BetaAgnle.FooterText" xml:space="preserve">
     <value>mrad</value>
   </data>
   <data name="numericBoxHRTEM_BetaAgnle.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>
+  </data>
+  <data name="numericBoxHRTEM_BetaAgnle.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 5, 0, 0</value>
   </data>
   <data name="numericBoxHRTEM_BetaAgnle.HeaderText" xml:space="preserve">
     <value>β</value>
@@ -5935,9 +6032,6 @@ Simulator"</value>
   </data>
   <data name="numericBoxHRTEM_BetaAgnle.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
-  </data>
-  <data name="numericBoxHRTEM_BetaAgnle.TextFontSize" type="System.Single, mscorlib">
-    <value>9</value>
   </data>
   <data name="numericBoxHRTEM_BetaAgnle.ToolTip" xml:space="preserve">
     <value>β: Illumination semiangle (mrad)
@@ -5965,11 +6059,17 @@ Simulator"</value>
   <data name="numericBoxCs.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>
   </data>
+  <data name="numericBoxCs.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 5, 0, 0</value>
+  </data>
   <data name="numericBoxCs.FooterText" xml:space="preserve">
     <value>mm</value>
   </data>
   <data name="numericBoxCs.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>
+  </data>
+  <data name="numericBoxCs.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 5, 0, 0</value>
   </data>
   <data name="numericBoxCs.HeaderText" xml:space="preserve">
     <value>Cs</value>
@@ -5991,9 +6091,6 @@ Simulator"</value>
   </data>
   <data name="numericBoxCs.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
-  </data>
-  <data name="numericBoxCs.TextFontSize" type="System.Single, mscorlib">
-    <value>9</value>
   </data>
   <data name="numericBoxCs.ToolTip" xml:space="preserve">
     <value>Cs: Spherical aberration in mm</value>
@@ -6019,11 +6116,17 @@ Simulator"</value>
   <data name="numericBoxDefocus.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>
   </data>
+  <data name="numericBoxDefocus.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 5, 0, 0</value>
+  </data>
   <data name="numericBoxDefocus.FooterText" xml:space="preserve">
     <value>nm</value>
   </data>
   <data name="numericBoxDefocus.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>
+  </data>
+  <data name="numericBoxDefocus.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 5, 0, 0</value>
   </data>
   <data name="numericBoxDefocus.HeaderText" xml:space="preserve">
     <value>Defocus Δf</value>
@@ -6045,9 +6148,6 @@ Simulator"</value>
   </data>
   <data name="numericBoxDefocus.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
-  </data>
-  <data name="numericBoxDefocus.TextFontSize" type="System.Single, mscorlib">
-    <value>9</value>
   </data>
   <data name="numericBoxDefocus.ToolTip" xml:space="preserve">
     <value>Defocus value in nanometer</value>
@@ -6073,11 +6173,17 @@ Simulator"</value>
   <data name="numericBoxAccVol.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>
   </data>
+  <data name="numericBoxAccVol.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 5, 0, 0</value>
+  </data>
   <data name="numericBoxAccVol.FooterText" xml:space="preserve">
     <value>kV</value>
   </data>
   <data name="numericBoxAccVol.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>
+  </data>
+  <data name="numericBoxAccVol.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 5, 0, 0</value>
   </data>
   <data name="numericBoxAccVol.HeaderText" xml:space="preserve">
     <value>Acc. Vol. (kV)</value>
@@ -6099,9 +6205,6 @@ Simulator"</value>
   </data>
   <data name="numericBoxAccVol.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
-  </data>
-  <data name="numericBoxAccVol.TextFontSize" type="System.Single, mscorlib">
-    <value>9</value>
   </data>
   <data name="numericBoxAccVol.ToolTip" xml:space="preserve">
     <value>Acc voltage of TEM (kV)</value>
@@ -6270,7 +6373,7 @@ Simulator"</value>
     <value>6, 18</value>
   </data>
   <data name="groupBoxTEMConditions.Size" type="System.Drawing.Size, System.Drawing">
-    <value>320, 135</value>
+    <value>320, 134</value>
   </data>
   <data name="groupBoxTEMConditions.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -6306,7 +6409,7 @@ Simulator"</value>
     <value>6, 0, 6, 6</value>
   </data>
   <data name="groupBoxOpticalProperty.Size" type="System.Drawing.Size, System.Drawing">
-    <value>332, 404</value>
+    <value>332, 403</value>
   </data>
   <data name="groupBoxOpticalProperty.TabIndex" type="System.Int32, mscorlib">
     <value>54</value>
@@ -6351,7 +6454,7 @@ Simulator"</value>
     <value>1, 1, 1, 1</value>
   </data>
   <data name="radioButtonHRTEM.Size" type="System.Drawing.Size, System.Drawing">
-    <value>71, 23</value>
+    <value>70, 23</value>
   </data>
   <data name="radioButtonHRTEM.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -6384,7 +6487,7 @@ Simulator"</value>
     <value>NoControl</value>
   </data>
   <data name="radioButtonSTEM.Location" type="System.Drawing.Point, System.Drawing">
-    <value>71, 0</value>
+    <value>70, 0</value>
   </data>
   <data name="radioButtonSTEM.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -6557,58 +6660,11 @@ Simulator"</value>
   <data name="&gt;&gt;groupBoxImageMode.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="numericBoxThickness.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+  <data name="flowLayoutPanel1.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="flowLayoutPanel1.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
-  </data>
-  <data name="numericBoxThickness.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
-  </data>
-  <data name="numericBoxThickness.FooterText" xml:space="preserve">
-    <value>nm</value>
-  </data>
-  <data name="numericBoxThickness.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
-  </data>
-  <data name="numericBoxThickness.Location" type="System.Drawing.Point, System.Drawing">
-    <value>17, 39</value>
-  </data>
-  <data name="numericBoxThickness.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="numericBoxThickness.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 28</value>
-  </data>
-  <data name="numericBoxThickness.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 18</value>
-  </data>
-  <data name="numericBoxThickness.Size" type="System.Drawing.Size, System.Drawing">
-    <value>91, 23</value>
-  </data>
-  <data name="numericBoxThickness.TabIndex" type="System.Int32, mscorlib">
-    <value>50</value>
-  </data>
-  <data name="numericBoxThickness.TextFontSize" type="System.Single, mscorlib">
-    <value>9</value>
-  </data>
-  <data name="numericBoxThickness.ToolTip" xml:space="preserve">
-    <value>Sample thickness.
-This value is ignored when "Serial image" mode is selected.</value>
-  </data>
-  <data name="numericBoxThickness.ToolTip1" xml:space="preserve">
-    <value>Sample thickness.
-This value is ignored when "Serial image" mode is selected.</value>
-  </data>
-  <data name="&gt;&gt;numericBoxThickness.Name" xml:space="preserve">
-    <value>numericBoxThickness</value>
-  </data>
-  <data name="&gt;&gt;numericBoxThickness.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;numericBoxThickness.Parent" xml:space="preserve">
-    <value>groupBoxSampleProperty</value>
-  </data>
-  <data name="&gt;&gt;numericBoxThickness.ZOrder" xml:space="preserve">
-    <value>0</value>
   </data>
   <data name="label2.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -6620,7 +6676,7 @@ This value is ignored when "Serial image" mode is selected.</value>
     <value>NoControl</value>
   </data>
   <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>5, 19</value>
+    <value>0, 2</value>
   </data>
   <data name="label2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 2, 0, 0</value>
@@ -6644,10 +6700,90 @@ This value is ignored when "Serial image" mode is selected.</value>
     <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;label2.Parent" xml:space="preserve">
-    <value>groupBoxSampleProperty</value>
+    <value>flowLayoutPanel1</value>
   </data>
   <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="numericBoxThickness.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="numericBoxThickness.FooterFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9pt</value>
+  </data>
+  <data name="numericBoxThickness.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 5, 0, 0</value>
+  </data>
+  <data name="numericBoxThickness.FooterText" xml:space="preserve">
+    <value>nm</value>
+  </data>
+  <data name="numericBoxThickness.HeaderFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9pt</value>
+  </data>
+  <data name="numericBoxThickness.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 5, 0, 0</value>
+  </data>
+  <data name="numericBoxThickness.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 19</value>
+  </data>
+  <data name="numericBoxThickness.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="numericBoxThickness.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 28</value>
+  </data>
+  <data name="numericBoxThickness.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1, 18</value>
+  </data>
+  <data name="numericBoxThickness.Size" type="System.Drawing.Size, System.Drawing">
+    <value>91, 23</value>
+  </data>
+  <data name="numericBoxThickness.TabIndex" type="System.Int32, mscorlib">
+    <value>50</value>
+  </data>
+  <data name="numericBoxThickness.ToolTip" xml:space="preserve">
+    <value>Sample thickness.
+This value is ignored when "Serial image" mode is selected.</value>
+  </data>
+  <data name="numericBoxThickness.ToolTip1" xml:space="preserve">
+    <value>Sample thickness.
+This value is ignored when "Serial image" mode is selected.</value>
+  </data>
+  <data name="&gt;&gt;numericBoxThickness.Name" xml:space="preserve">
+    <value>numericBoxThickness</value>
+  </data>
+  <data name="&gt;&gt;numericBoxThickness.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericBoxThickness.Parent" xml:space="preserve">
+    <value>flowLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;numericBoxThickness.ZOrder" xml:space="preserve">
     <value>1</value>
+  </data>
+  <data name="flowLayoutPanel1.FlowDirection" type="System.Windows.Forms.FlowDirection, System.Windows.Forms">
+    <value>TopDown</value>
+  </data>
+  <data name="flowLayoutPanel1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 20</value>
+  </data>
+  <data name="flowLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>91, 42</value>
+  </data>
+  <data name="flowLayoutPanel1.TabIndex" type="System.Int32, mscorlib">
+    <value>54</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel1.Name" xml:space="preserve">
+    <value>flowLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel1.Parent" xml:space="preserve">
+    <value>groupBoxSampleProperty</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel1.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="groupBoxSampleProperty.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Right</value>
@@ -6719,7 +6855,7 @@ This value is ignored when "Serial image" mode is selected.</value>
     <value>True</value>
   </data>
   <data name="checkBoxPreset.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="checkBoxPreset.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 4</value>
@@ -6731,7 +6867,7 @@ This value is ignored when "Serial image" mode is selected.</value>
     <value>2, 0, 0, 0</value>
   </data>
   <data name="checkBoxPreset.Size" type="System.Drawing.Size, System.Drawing">
-    <value>114, 21</value>
+    <value>104, 19</value>
   </data>
   <data name="checkBoxPreset.TabIndex" type="System.Int32, mscorlib">
     <value>59</value>
@@ -6758,19 +6894,19 @@ This value is ignored when "Serial image" mode is selected.</value>
     <value>Right</value>
   </data>
   <data name="checkBoxRealTimeSimulation.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="checkBoxRealTimeSimulation.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="checkBoxRealTimeSimulation.Location" type="System.Drawing.Point, System.Drawing">
-    <value>112, 0</value>
+    <value>121, 0</value>
   </data>
   <data name="checkBoxRealTimeSimulation.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>1, 6, 1, 3</value>
   </data>
   <data name="checkBoxRealTimeSimulation.Size" type="System.Drawing.Size, System.Drawing">
-    <value>149, 31</value>
+    <value>140, 31</value>
   </data>
   <data name="checkBoxRealTimeSimulation.TabIndex" type="System.Int32, mscorlib">
     <value>57</value>
@@ -7132,6 +7268,9 @@ This value is ignored when "Serial image" mode is selected.</value>
   <data name="&gt;&gt;statusStrip1.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
+  <metadata name="$this.Language" type="System.Globalization.CultureInfo, System.Private.CoreLib, Culture=neutral, PublicKeyToken=7cec85d7bea7798e">
+    <value>ja</value>
+  </metadata>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>

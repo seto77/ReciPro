@@ -115,9 +115,9 @@ namespace ReciPro
             groupBoxIndex = new System.Windows.Forms.GroupBox();
             buttonIdentifySpots = new System.Windows.Forms.Button();
             flowLayoutPanel11 = new System.Windows.Forms.FlowLayoutPanel();
-            numericBoxMaxNumOfG = new NumericBox();
-            numericBoxSemiangle = new NumericBox();
             buttonRefineThicknessAndDirection = new System.Windows.Forms.Button();
+            numericBoxDiffractedWaves = new NumericBox();
+            numericBoxSemiangle = new NumericBox();
             buttonStop = new System.Windows.Forms.Button();
             flowLayoutPanel8 = new System.Windows.Forms.FlowLayoutPanel();
             numericBoxAcceptableError = new NumericBox();
@@ -297,8 +297,7 @@ namespace ReciPro
             dataGridViewSpots.DataSource = bindingSourceObsSpots;
             dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
             dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Window;
-            // 260518Cl 削除: resx の dataGridViewSpots.Font を継承させるため Font 設定を撤去 (Designer 再保存で復活した分)
-            // dataGridViewCellStyle14.Font = new System.Drawing.Font("Segoe UI Variable Text", 9F);
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Segoe UI", 9F);
             dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle14.Format = "N2";
             dataGridViewCellStyle14.NullValue = null;
@@ -877,27 +876,37 @@ namespace ReciPro
             // flowLayoutPanel11
             // 
             resources.ApplyResources(flowLayoutPanel11, "flowLayoutPanel11");
-            flowLayoutPanel11.Controls.Add(numericBoxMaxNumOfG);
-            flowLayoutPanel11.Controls.Add(numericBoxSemiangle);
             flowLayoutPanel11.Controls.Add(buttonRefineThicknessAndDirection);
+            flowLayoutPanel11.Controls.Add(numericBoxDiffractedWaves);
+            flowLayoutPanel11.Controls.Add(numericBoxSemiangle);
             flowLayoutPanel11.Name = "flowLayoutPanel11";
             toolTip.SetToolTip(flowLayoutPanel11, resources.GetString("flowLayoutPanel11.ToolTip"));
             // 
-            // numericBoxMaxNumOfG
+            // buttonRefineThicknessAndDirection
             // 
-            resources.ApplyResources(numericBoxMaxNumOfG, "numericBoxMaxNumOfG");
-            numericBoxMaxNumOfG.BackColor = System.Drawing.SystemColors.Control;
-            numericBoxMaxNumOfG.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxMaxNumOfG.HeaderBackColor = System.Drawing.SystemColors.Control;
-            numericBoxMaxNumOfG.Maximum = 2048D;
-            numericBoxMaxNumOfG.Minimum = 1D;
-            numericBoxMaxNumOfG.Name = "numericBoxMaxNumOfG";
-            numericBoxMaxNumOfG.RadianValue = 6.9813170079773181D;
-            numericBoxMaxNumOfG.ShowUpDown = true;
-            numericBoxMaxNumOfG.SmartIncrement = true;
-            numericBoxMaxNumOfG.ThonsandsSeparator = true;
-            toolTip.SetToolTip(numericBoxMaxNumOfG, resources.GetString("numericBoxMaxNumOfG.ToolTip"));
-            numericBoxMaxNumOfG.Value = 400D;
+            resources.ApplyResources(buttonRefineThicknessAndDirection, "buttonRefineThicknessAndDirection");
+            buttonRefineThicknessAndDirection.BackColor = System.Drawing.Color.SteelBlue;
+            buttonRefineThicknessAndDirection.ForeColor = System.Drawing.Color.White;
+            buttonRefineThicknessAndDirection.Name = "buttonRefineThicknessAndDirection";
+            toolTip.SetToolTip(buttonRefineThicknessAndDirection, resources.GetString("buttonRefineThicknessAndDirection.ToolTip"));
+            buttonRefineThicknessAndDirection.UseVisualStyleBackColor = false;
+            buttonRefineThicknessAndDirection.Click += ButtonRefineThicknessAndDirection_Click;
+            // 
+            // numericBoxDiffractedWaves
+            // 
+            resources.ApplyResources(numericBoxDiffractedWaves, "numericBoxDiffractedWaves");
+            numericBoxDiffractedWaves.BackColor = System.Drawing.SystemColors.Control;
+            numericBoxDiffractedWaves.FooterBackColor = System.Drawing.SystemColors.Control;
+            numericBoxDiffractedWaves.HeaderBackColor = System.Drawing.SystemColors.Control;
+            numericBoxDiffractedWaves.Maximum = 2048D;
+            numericBoxDiffractedWaves.Minimum = 1D;
+            numericBoxDiffractedWaves.Name = "numericBoxDiffractedWaves";
+            numericBoxDiffractedWaves.RadianValue = 6.9813170079773181D;
+            numericBoxDiffractedWaves.ShowUpDown = true;
+            numericBoxDiffractedWaves.SmartIncrement = true;
+            numericBoxDiffractedWaves.ThonsandsSeparator = true;
+            toolTip.SetToolTip(numericBoxDiffractedWaves, resources.GetString("numericBoxDiffractedWaves.ToolTip"));
+            numericBoxDiffractedWaves.Value = 400D;
             // 
             // numericBoxSemiangle
             // 
@@ -915,16 +924,6 @@ namespace ReciPro
             numericBoxSemiangle.ThonsandsSeparator = true;
             toolTip.SetToolTip(numericBoxSemiangle, resources.GetString("numericBoxSemiangle.ToolTip"));
             numericBoxSemiangle.Value = 2D;
-            // 
-            // buttonRefineThicknessAndDirection
-            // 
-            resources.ApplyResources(buttonRefineThicknessAndDirection, "buttonRefineThicknessAndDirection");
-            buttonRefineThicknessAndDirection.BackColor = System.Drawing.Color.SteelBlue;
-            buttonRefineThicknessAndDirection.ForeColor = System.Drawing.Color.White;
-            buttonRefineThicknessAndDirection.Name = "buttonRefineThicknessAndDirection";
-            toolTip.SetToolTip(buttonRefineThicknessAndDirection, resources.GetString("buttonRefineThicknessAndDirection.ToolTip"));
-            buttonRefineThicknessAndDirection.UseVisualStyleBackColor = false;
-            buttonRefineThicknessAndDirection.Click += ButtonRefineThicknessAndDirection_Click;
             // 
             // buttonStop
             // 
@@ -1067,8 +1066,7 @@ namespace ReciPro
             dataGridViewGrains.DataSource = bindingSourceGrains;
             dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle17.BackColor = System.Drawing.SystemColors.Window;
-            // 260518Cl 削除: resx の dataGridViewGrains.Font を継承させるため Font 設定を撤去 (Designer 再保存で復活した分)
-            // dataGridViewCellStyle17.Font = new System.Drawing.Font("Segoe UI Variable Text", 9F);
+            dataGridViewCellStyle17.Font = new System.Drawing.Font("Segoe UI", 9F);
             dataGridViewCellStyle17.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle17.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle17.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -1133,8 +1131,7 @@ namespace ReciPro
             dataGridViewCandidates.DataSource = bindingSourceCandidates;
             dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle20.BackColor = System.Drawing.SystemColors.Window;
-            // 260518Cl 削除: resx の dataGridViewCandidates.Font を継承させるため Font 設定を撤去 (Designer 再保存で復活した分)
-            // dataGridViewCellStyle20.Font = new System.Drawing.Font("Segoe UI Variable Text", 9F);
+            dataGridViewCellStyle20.Font = new System.Drawing.Font("Segoe UI", 9F);
             dataGridViewCellStyle20.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle20.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle20.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -1429,7 +1426,7 @@ namespace ReciPro
         private System.Windows.Forms.CheckBox checkBoxShowCalcSpotSymbol;
         private System.Windows.Forms.CheckBox checkBoxShowCalcSpotLabel;
         private System.Windows.Forms.Button buttonRefineThicknessAndDirection;
-        private NumericBox numericBoxMaxNumOfG;
+        private NumericBox numericBoxDiffractedWaves;
         private NumericBox numericBoxSemiangle;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelImageFilter;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelRefine;
@@ -1472,11 +1469,6 @@ namespace ReciPro
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel4;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn noDataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CrystalName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn assignedSpotsDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn noDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn AssignedSpots;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel9;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel8;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel7;
@@ -1500,5 +1492,10 @@ namespace ReciPro
         private System.Windows.Forms.DataGridViewTextBoxColumn d;
         private System.Windows.Forms.DataGridViewTextBoxColumn hkl;
         private System.Windows.Forms.DataGridViewButtonColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn noDataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CrystalName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn assignedSpotsDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn noDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn AssignedSpots;
     }
 }

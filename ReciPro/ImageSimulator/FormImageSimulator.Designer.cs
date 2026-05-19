@@ -162,8 +162,9 @@ namespace ReciPro
             label32 = new System.Windows.Forms.Label();
             panelImageProperties = new System.Windows.Forms.Panel();
             groupBoxImageProperty = new System.Windows.Forms.GroupBox();
-            numericBoxHeight = new NumericBox();
+            flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             numericBoxWidth = new NumericBox();
+            numericBoxHeight = new NumericBox();
             numericBoxResolution = new NumericBox();
             panel8 = new System.Windows.Forms.Panel();
             groupBoxDiffractedWaves = new System.Windows.Forms.GroupBox();
@@ -234,8 +235,9 @@ namespace ReciPro
             radioButton1 = new System.Windows.Forms.RadioButton();
             radioButtonProjectedPotential = new System.Windows.Forms.RadioButton();
             groupBoxSampleProperty = new System.Windows.Forms.GroupBox();
-            numericBoxThickness = new NumericBox();
+            flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             label2 = new System.Windows.Forms.Label();
+            numericBoxThickness = new NumericBox();
             panelSimulationActions = new System.Windows.Forms.Panel();
             checkBoxPreset = new System.Windows.Forms.CheckBox();
             checkBoxRealTimeSimulation = new System.Windows.Forms.CheckBox();
@@ -298,6 +300,7 @@ namespace ReciPro
             flowLayoutPanelStemMode.SuspendLayout();
             panelImageProperties.SuspendLayout();
             groupBoxImageProperty.SuspendLayout();
+            flowLayoutPanel2.SuspendLayout();
             groupBoxDiffractedWaves.SuspendLayout();
             groupBoxOpticalProperty.SuspendLayout();
             groupBoxSTEMoption1.SuspendLayout();
@@ -315,6 +318,7 @@ namespace ReciPro
             groupBoxImageMode.SuspendLayout();
             flowLayoutPanelImageType.SuspendLayout();
             groupBoxSampleProperty.SuspendLayout();
+            flowLayoutPanel1.SuspendLayout();
             panelSimulationActions.SuspendLayout();
             menuStrip1.SuspendLayout();
             statusStrip1.SuspendLayout();
@@ -463,6 +467,7 @@ namespace ReciPro
             numericBoxGaussianBlurRadius.ShowUpDown = true;
             numericBoxGaussianBlurRadius.SkipEventDuringInput = false;
             numericBoxGaussianBlurRadius.SmartIncrement = true;
+            numericBoxGaussianBlurRadius.TextFontSize = 9F;
             numericBoxGaussianBlurRadius.ThonsandsSeparator = true;
             numericBoxGaussianBlurRadius.Value = 20D;
             numericBoxGaussianBlurRadius.ValueChanged += CheckBoxGaussianBlur_CheckedChanged;
@@ -571,6 +576,7 @@ namespace ReciPro
             numericBoxIntensityMin.Name = "numericBoxIntensityMin";
             numericBoxIntensityMin.ShowUpDown = true;
             numericBoxIntensityMin.SmartIncrement = true;
+            numericBoxIntensityMin.TextFontSize = 9F;
             numericBoxIntensityMin.ThonsandsSeparator = true;
             toolTip.SetToolTip(numericBoxIntensityMin, resources.GetString("numericBoxIntensityMin.ToolTip"));
             numericBoxIntensityMin.ValueChanged += checkBoxIntensityMin_CheckedChanged;
@@ -597,6 +603,7 @@ namespace ReciPro
             numericBoxIntensityMax.RadianValue = 0.017453292519943295D;
             numericBoxIntensityMax.ShowUpDown = true;
             numericBoxIntensityMax.SmartIncrement = true;
+            numericBoxIntensityMax.TextFontSize = 9F;
             numericBoxIntensityMax.ThonsandsSeparator = true;
             toolTip.SetToolTip(numericBoxIntensityMax, resources.GetString("numericBoxIntensityMax.ToolTip"));
             numericBoxIntensityMax.Value = 1D;
@@ -687,8 +694,9 @@ namespace ReciPro
             numericBoxScaleLength.RadianValue = 0.0087266462599716477D;
             numericBoxScaleLength.ShowUpDown = true;
             numericBoxScaleLength.SkipEventDuringInput = false;
+            numericBoxScaleLength.TextFontSize = 9F;
             numericBoxScaleLength.ThonsandsSeparator = true;
-            toolTip.SetToolTip(numericBoxScaleLength, resources.GetString("numericBoxScaleLength.ToolTip"));
+            toolTip.SetToolTip(numericBoxScaleLength, resources.GetString("numericBoxScaleLength.ToolTip1"));
             numericBoxScaleLength.UpDown_Increment = 0.2D;
             numericBoxScaleLength.Value = 0.5D;
             numericBoxScaleLength.ValueChanged += CheckBoxShowLabel_CheckedChanged;
@@ -733,8 +741,9 @@ namespace ReciPro
             numericBoxLabelFontSize.RadianValue = 0.15707963267948966D;
             numericBoxLabelFontSize.ShowUpDown = true;
             numericBoxLabelFontSize.SkipEventDuringInput = false;
+            numericBoxLabelFontSize.TextFontSize = 9F;
             numericBoxLabelFontSize.ThonsandsSeparator = true;
-            toolTip.SetToolTip(numericBoxLabelFontSize, resources.GetString("numericBoxLabelFontSize.ToolTip"));
+            toolTip.SetToolTip(numericBoxLabelFontSize, resources.GetString("numericBoxLabelFontSize.ToolTip1"));
             numericBoxLabelFontSize.Value = 9D;
             numericBoxLabelFontSize.ValueChanged += CheckBoxShowLabel_CheckedChanged;
             // 
@@ -813,6 +822,7 @@ namespace ReciPro
             numericBoxDefocusNum.Name = "numericBoxDefocusNum";
             numericBoxDefocusNum.RadianValue = 0.069813170079773182D;
             numericBoxDefocusNum.ShowUpDown = true;
+            numericBoxDefocusNum.TextFontSize = 9F;
             numericBoxDefocusNum.ThonsandsSeparator = true;
             numericBoxDefocusNum.Value = 4D;
             numericBoxDefocusNum.ValueChanged += NumericBoxDefocusSerial_ValueChanged;
@@ -829,6 +839,7 @@ namespace ReciPro
             numericBoxDefocusStep.Name = "numericBoxDefocusStep";
             numericBoxDefocusStep.RadianValue = -0.3490658503988659D;
             numericBoxDefocusStep.ShowUpDown = true;
+            numericBoxDefocusStep.TextFontSize = 9F;
             numericBoxDefocusStep.ThonsandsSeparator = true;
             numericBoxDefocusStep.UpDown_Increment = 10D;
             numericBoxDefocusStep.Value = -20D;
@@ -846,6 +857,7 @@ namespace ReciPro
             numericBoxDefocusStart.Name = "numericBoxDefocusStart";
             numericBoxDefocusStart.RadianValue = -1.2217304763960306D;
             numericBoxDefocusStart.ShowUpDown = true;
+            numericBoxDefocusStart.TextFontSize = 9F;
             numericBoxDefocusStart.ThonsandsSeparator = true;
             numericBoxDefocusStart.UpDown_Increment = 10D;
             numericBoxDefocusStart.Value = -70D;
@@ -877,6 +889,7 @@ namespace ReciPro
             numericBoxThicknessNum.Name = "numericBoxThicknessNum";
             numericBoxThicknessNum.RadianValue = 0.069813170079773182D;
             numericBoxThicknessNum.ShowUpDown = true;
+            numericBoxThicknessNum.TextFontSize = 9F;
             numericBoxThicknessNum.ThonsandsSeparator = true;
             numericBoxThicknessNum.Value = 4D;
             numericBoxThicknessNum.ValueChanged += NumericBoxThicknessSerial_ValueChanged;
@@ -893,6 +906,7 @@ namespace ReciPro
             numericBoxThicknessStep.Name = "numericBoxThicknessStep";
             numericBoxThicknessStep.RadianValue = 0.3490658503988659D;
             numericBoxThicknessStep.ShowUpDown = true;
+            numericBoxThicknessStep.TextFontSize = 9F;
             numericBoxThicknessStep.ThonsandsSeparator = true;
             numericBoxThicknessStep.UpDown_Increment = 10D;
             numericBoxThicknessStep.Value = 20D;
@@ -910,6 +924,7 @@ namespace ReciPro
             numericBoxThicknessStart.Name = "numericBoxThicknessStart";
             numericBoxThicknessStart.RadianValue = 0.3490658503988659D;
             numericBoxThicknessStart.ShowUpDown = true;
+            numericBoxThicknessStart.TextFontSize = 9F;
             numericBoxThicknessStart.ThonsandsSeparator = true;
             numericBoxThicknessStart.UpDown_Increment = 10D;
             numericBoxThicknessStart.Value = 20D;
@@ -1220,8 +1235,8 @@ namespace ReciPro
             // 
             numericBoxSTEM_AngleResolution.BackColor = System.Drawing.SystemColors.Control;
             numericBoxSTEM_AngleResolution.DecimalPlaces = 3;
-            resources.ApplyResources(numericBoxSTEM_AngleResolution, "numericBoxSTEM_AngleResolution");
             numericBoxSTEM_AngleResolution.FooterBackColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(numericBoxSTEM_AngleResolution, "numericBoxSTEM_AngleResolution");
             numericBoxSTEM_AngleResolution.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxSTEM_AngleResolution.Maximum = 1D;
             numericBoxSTEM_AngleResolution.Minimum = 0.001D;
@@ -1229,8 +1244,9 @@ namespace ReciPro
             numericBoxSTEM_AngleResolution.RadianValue = 0.0069813170079773184D;
             numericBoxSTEM_AngleResolution.ShowUpDown = true;
             numericBoxSTEM_AngleResolution.SmartIncrement = true;
+            numericBoxSTEM_AngleResolution.TextFontSize = 9F;
             numericBoxSTEM_AngleResolution.ThonsandsSeparator = true;
-            toolTip.SetToolTip(numericBoxSTEM_AngleResolution, resources.GetString("numericBoxSTEM_AngleResolution.ToolTip"));
+            toolTip.SetToolTip(numericBoxSTEM_AngleResolution, resources.GetString("numericBoxSTEM_AngleResolution.ToolTip1"));
             numericBoxSTEM_AngleResolution.Value = 0.4D;
             // 
             // numericBoxSTEM_SliceThicknessForInelastic
@@ -1246,8 +1262,9 @@ namespace ReciPro
             numericBoxSTEM_SliceThicknessForInelastic.RadianValue = 0.017453292519943295D;
             numericBoxSTEM_SliceThicknessForInelastic.ShowUpDown = true;
             numericBoxSTEM_SliceThicknessForInelastic.SmartIncrement = true;
+            numericBoxSTEM_SliceThicknessForInelastic.TextFontSize = 9F;
             numericBoxSTEM_SliceThicknessForInelastic.ThonsandsSeparator = true;
-            toolTip.SetToolTip(numericBoxSTEM_SliceThicknessForInelastic, resources.GetString("numericBoxSTEM_SliceThicknessForInelastic.ToolTip"));
+            toolTip.SetToolTip(numericBoxSTEM_SliceThicknessForInelastic, resources.GetString("numericBoxSTEM_SliceThicknessForInelastic.ToolTip1"));
             numericBoxSTEM_SliceThicknessForInelastic.Value = 1D;
             // 
             // groupBoxHREMoption2
@@ -1300,28 +1317,17 @@ namespace ReciPro
             // 
             resources.ApplyResources(groupBoxImageProperty, "groupBoxImageProperty");
             captureExtender.SetCapture(groupBoxImageProperty, true);
-            groupBoxImageProperty.Controls.Add(numericBoxHeight);
-            groupBoxImageProperty.Controls.Add(numericBoxWidth);
+            groupBoxImageProperty.Controls.Add(flowLayoutPanel2);
             groupBoxImageProperty.Controls.Add(numericBoxResolution);
             groupBoxImageProperty.Name = "groupBoxImageProperty";
             groupBoxImageProperty.TabStop = false;
             // 
-            // numericBoxHeight
+            // flowLayoutPanel2
             // 
-            resources.ApplyResources(numericBoxHeight, "numericBoxHeight");
-            numericBoxHeight.BackColor = System.Drawing.SystemColors.Control;
-            numericBoxHeight.DecimalPlaces = 0;
-            numericBoxHeight.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxHeight.HeaderBackColor = System.Drawing.SystemColors.Control;
-            numericBoxHeight.Maximum = 2048D;
-            numericBoxHeight.Minimum = 8D;
-            numericBoxHeight.Name = "numericBoxHeight";
-            numericBoxHeight.RadianValue = 8.9360857702109673D;
-            numericBoxHeight.ShowUpDown = true;
-            numericBoxHeight.SmartIncrement = true;
-            numericBoxHeight.ThonsandsSeparator = true;
-            toolTip.SetToolTip(numericBoxHeight, resources.GetString("numericBoxHeight.ToolTip"));
-            numericBoxHeight.Value = 512D;
+            resources.ApplyResources(flowLayoutPanel2, "flowLayoutPanel2");
+            flowLayoutPanel2.Controls.Add(numericBoxWidth);
+            flowLayoutPanel2.Controls.Add(numericBoxHeight);
+            flowLayoutPanel2.Name = "flowLayoutPanel2";
             // 
             // numericBoxWidth
             // 
@@ -1336,9 +1342,28 @@ namespace ReciPro
             numericBoxWidth.RadianValue = 8.9360857702109673D;
             numericBoxWidth.ShowUpDown = true;
             numericBoxWidth.SmartIncrement = true;
+            numericBoxWidth.TextFontSize = 9F;
             numericBoxWidth.ThonsandsSeparator = true;
             toolTip.SetToolTip(numericBoxWidth, resources.GetString("numericBoxWidth.ToolTip"));
             numericBoxWidth.Value = 512D;
+            // 
+            // numericBoxHeight
+            // 
+            resources.ApplyResources(numericBoxHeight, "numericBoxHeight");
+            numericBoxHeight.BackColor = System.Drawing.SystemColors.Control;
+            numericBoxHeight.DecimalPlaces = 0;
+            numericBoxHeight.FooterBackColor = System.Drawing.SystemColors.Control;
+            numericBoxHeight.HeaderBackColor = System.Drawing.SystemColors.Control;
+            numericBoxHeight.Maximum = 2048D;
+            numericBoxHeight.Minimum = 8D;
+            numericBoxHeight.Name = "numericBoxHeight";
+            numericBoxHeight.RadianValue = 8.9360857702109673D;
+            numericBoxHeight.ShowUpDown = true;
+            numericBoxHeight.SmartIncrement = true;
+            numericBoxHeight.TextFontSize = 9F;
+            numericBoxHeight.ThonsandsSeparator = true;
+            toolTip.SetToolTip(numericBoxHeight, resources.GetString("numericBoxHeight.ToolTip"));
+            numericBoxHeight.Value = 512D;
             // 
             // numericBoxResolution
             // 
@@ -1353,8 +1378,9 @@ namespace ReciPro
             numericBoxResolution.RadianValue = 0.034906585039886591D;
             numericBoxResolution.ShowUpDown = true;
             numericBoxResolution.SmartIncrement = true;
+            numericBoxResolution.TextFontSize = 9F;
             numericBoxResolution.ThonsandsSeparator = true;
-            toolTip.SetToolTip(numericBoxResolution, resources.GetString("numericBoxResolution.ToolTip"));
+            toolTip.SetToolTip(numericBoxResolution, resources.GetString("numericBoxResolution.ToolTip1"));
             numericBoxResolution.Value = 2D;
             // 
             // panel8
@@ -1382,8 +1408,9 @@ namespace ReciPro
             numericBoxNumOfBlochWave.RadianValue = 1.3962634015954636D;
             numericBoxNumOfBlochWave.ShowUpDown = true;
             numericBoxNumOfBlochWave.SmartIncrement = true;
+            numericBoxNumOfBlochWave.TextFontSize = 9F;
             numericBoxNumOfBlochWave.ThonsandsSeparator = true;
-            toolTip.SetToolTip(numericBoxNumOfBlochWave, resources.GetString("numericBoxNumOfBlochWave.ToolTip"));
+            toolTip.SetToolTip(numericBoxNumOfBlochWave, resources.GetString("numericBoxNumOfBlochWave.ToolTip1"));
             numericBoxNumOfBlochWave.Value = 80D;
             numericBoxNumOfBlochWave.ValueChanged += NumericBoxNumOfBlochWave_ValueChanged;
             // 
@@ -1469,8 +1496,9 @@ namespace ReciPro
             numericBoxSTEM_DetectorOuterAngle.RadianValue = 0.3490658503988659D;
             numericBoxSTEM_DetectorOuterAngle.ShowUpDown = true;
             numericBoxSTEM_DetectorOuterAngle.SmartIncrement = true;
+            numericBoxSTEM_DetectorOuterAngle.TextFontSize = 9F;
             numericBoxSTEM_DetectorOuterAngle.ThonsandsSeparator = true;
-            toolTip.SetToolTip(numericBoxSTEM_DetectorOuterAngle, resources.GetString("numericBoxSTEM_DetectorOuterAngle.ToolTip"));
+            toolTip.SetToolTip(numericBoxSTEM_DetectorOuterAngle, resources.GetString("numericBoxSTEM_DetectorOuterAngle.ToolTip1"));
             numericBoxSTEM_DetectorOuterAngle.UpDown_Increment = 0.5D;
             numericBoxSTEM_DetectorOuterAngle.Value = 20D;
             numericBoxSTEM_DetectorOuterAngle.ValueChanged += numericBoxSTEM_ConvergenceAngle_ValueChanged;
@@ -1489,8 +1517,9 @@ namespace ReciPro
             numericBoxSTEM_EffectiveSourceSize.RestrictLimitValue = false;
             numericBoxSTEM_EffectiveSourceSize.ShowUpDown = true;
             numericBoxSTEM_EffectiveSourceSize.SmartIncrement = true;
+            numericBoxSTEM_EffectiveSourceSize.TextFontSize = 9F;
             numericBoxSTEM_EffectiveSourceSize.ThonsandsSeparator = true;
-            toolTip.SetToolTip(numericBoxSTEM_EffectiveSourceSize, resources.GetString("numericBoxSTEM_EffectiveSourceSize.ToolTip"));
+            toolTip.SetToolTip(numericBoxSTEM_EffectiveSourceSize, resources.GetString("numericBoxSTEM_EffectiveSourceSize.ToolTip1"));
             numericBoxSTEM_EffectiveSourceSize.UpDown_Increment = 0.1D;
             numericBoxSTEM_EffectiveSourceSize.Value = 20D;
             numericBoxSTEM_EffectiveSourceSize.ValueChanged += NumericBoxTEMproperty_ValueChanged;
@@ -1508,8 +1537,9 @@ namespace ReciPro
             numericBoxSTEM_ConvergenceAngle.RadianValue = 0.43633231299858238D;
             numericBoxSTEM_ConvergenceAngle.ShowUpDown = true;
             numericBoxSTEM_ConvergenceAngle.SmartIncrement = true;
+            numericBoxSTEM_ConvergenceAngle.TextFontSize = 9F;
             numericBoxSTEM_ConvergenceAngle.ThonsandsSeparator = true;
-            toolTip.SetToolTip(numericBoxSTEM_ConvergenceAngle, resources.GetString("numericBoxSTEM_ConvergenceAngle.ToolTip"));
+            toolTip.SetToolTip(numericBoxSTEM_ConvergenceAngle, resources.GetString("numericBoxSTEM_ConvergenceAngle.ToolTip1"));
             numericBoxSTEM_ConvergenceAngle.UpDown_Increment = 0.5D;
             numericBoxSTEM_ConvergenceAngle.Value = 25D;
             numericBoxSTEM_ConvergenceAngle.ValueChanged += numericBoxSTEM_ConvergenceAngle_ValueChanged;
@@ -1589,8 +1619,9 @@ namespace ReciPro
             numericBoxSTEM_DetectorInnerAngle.Name = "numericBoxSTEM_DetectorInnerAngle";
             numericBoxSTEM_DetectorInnerAngle.ShowUpDown = true;
             numericBoxSTEM_DetectorInnerAngle.SmartIncrement = true;
+            numericBoxSTEM_DetectorInnerAngle.TextFontSize = 9F;
             numericBoxSTEM_DetectorInnerAngle.ThonsandsSeparator = true;
-            toolTip.SetToolTip(numericBoxSTEM_DetectorInnerAngle, resources.GetString("numericBoxSTEM_DetectorInnerAngle.ToolTip"));
+            toolTip.SetToolTip(numericBoxSTEM_DetectorInnerAngle, resources.GetString("numericBoxSTEM_DetectorInnerAngle.ToolTip1"));
             numericBoxSTEM_DetectorInnerAngle.UpDown_Increment = 0.5D;
             numericBoxSTEM_DetectorInnerAngle.ValueChanged += numericBoxSTEM_ConvergenceAngle_ValueChanged;
             // 
@@ -1633,6 +1664,7 @@ namespace ReciPro
             numericBoxHRTEM_ObjAperX.Name = "numericBoxHRTEM_ObjAperX";
             numericBoxHRTEM_ObjAperX.ShowUpDown = true;
             numericBoxHRTEM_ObjAperX.SmartIncrement = true;
+            numericBoxHRTEM_ObjAperX.TextFontSize = 9F;
             numericBoxHRTEM_ObjAperX.ThonsandsSeparator = true;
             numericBoxHRTEM_ObjAperX.UpDown_Increment = 0.5D;
             numericBoxHRTEM_ObjAperX.ValueChanged += NumericBoxObjAperRadius_ValueChanged;
@@ -1650,8 +1682,9 @@ namespace ReciPro
             numericBoxObjAperRadius.RadianValue = 0.20943951023931953D;
             numericBoxObjAperRadius.ShowUpDown = true;
             numericBoxObjAperRadius.SmartIncrement = true;
+            numericBoxObjAperRadius.TextFontSize = 9F;
             numericBoxObjAperRadius.ThonsandsSeparator = true;
-            toolTip.SetToolTip(numericBoxObjAperRadius, resources.GetString("numericBoxObjAperRadius.ToolTip"));
+            toolTip.SetToolTip(numericBoxObjAperRadius, resources.GetString("numericBoxObjAperRadius.ToolTip1"));
             numericBoxObjAperRadius.UpDown_Increment = 0.5D;
             numericBoxObjAperRadius.Value = 12D;
             numericBoxObjAperRadius.ValueChanged += NumericBoxObjAperRadius_ValueChanged;
@@ -1668,6 +1701,7 @@ namespace ReciPro
             numericBoxHRTEM_ObjAperY.Name = "numericBoxHRTEM_ObjAperY";
             numericBoxHRTEM_ObjAperY.ShowUpDown = true;
             numericBoxHRTEM_ObjAperY.SmartIncrement = true;
+            numericBoxHRTEM_ObjAperY.TextFontSize = 9F;
             numericBoxHRTEM_ObjAperY.ThonsandsSeparator = true;
             numericBoxHRTEM_ObjAperY.UpDown_Increment = 0.5D;
             numericBoxHRTEM_ObjAperY.ValueChanged += NumericBoxObjAperRadius_ValueChanged;
@@ -1826,8 +1860,9 @@ namespace ReciPro
             numericBoxCc.RestrictLimitValue = false;
             numericBoxCc.ShowUpDown = true;
             numericBoxCc.SmartIncrement = true;
+            numericBoxCc.TextFontSize = 9F;
             numericBoxCc.ThonsandsSeparator = true;
-            toolTip.SetToolTip(numericBoxCc, resources.GetString("numericBoxCc.ToolTip"));
+            toolTip.SetToolTip(numericBoxCc, resources.GetString("numericBoxCc.ToolTip1"));
             numericBoxCc.UpDown_Increment = 0.1D;
             numericBoxCc.Value = 1.4D;
             numericBoxCc.ValueChanged += NumericBoxTEMproperty_ValueChanged;
@@ -1846,8 +1881,9 @@ namespace ReciPro
             numericBoxDeltaV.RestrictLimitValue = false;
             numericBoxDeltaV.ShowUpDown = true;
             numericBoxDeltaV.SmartIncrement = true;
+            numericBoxDeltaV.TextFontSize = 9F;
             numericBoxDeltaV.ThonsandsSeparator = true;
-            toolTip.SetToolTip(numericBoxDeltaV, resources.GetString("numericBoxDeltaV.ToolTip"));
+            toolTip.SetToolTip(numericBoxDeltaV, resources.GetString("numericBoxDeltaV.ToolTip1"));
             numericBoxDeltaV.UpDown_Increment = 0.1D;
             numericBoxDeltaV.Value = 0.8D;
             numericBoxDeltaV.ValueChanged += NumericBoxTEMproperty_ValueChanged;
@@ -1864,8 +1900,9 @@ namespace ReciPro
             numericBoxHRTEM_BetaAgnle.Name = "numericBoxHRTEM_BetaAgnle";
             numericBoxHRTEM_BetaAgnle.ShowUpDown = true;
             numericBoxHRTEM_BetaAgnle.SmartIncrement = true;
+            numericBoxHRTEM_BetaAgnle.TextFontSize = 9F;
             numericBoxHRTEM_BetaAgnle.ThonsandsSeparator = true;
-            toolTip.SetToolTip(numericBoxHRTEM_BetaAgnle, resources.GetString("numericBoxHRTEM_BetaAgnle.ToolTip"));
+            toolTip.SetToolTip(numericBoxHRTEM_BetaAgnle, resources.GetString("numericBoxHRTEM_BetaAgnle.ToolTip1"));
             numericBoxHRTEM_BetaAgnle.UpDown_Increment = 0.05D;
             numericBoxHRTEM_BetaAgnle.ValueChanged += NumericBoxTEMproperty_ValueChanged;
             // 
@@ -1882,8 +1919,9 @@ namespace ReciPro
             numericBoxCs.RadianValue = 0.017453292519943295D;
             numericBoxCs.ShowUpDown = true;
             numericBoxCs.SmartIncrement = true;
+            numericBoxCs.TextFontSize = 9F;
             numericBoxCs.ThonsandsSeparator = true;
-            toolTip.SetToolTip(numericBoxCs, resources.GetString("numericBoxCs.ToolTip"));
+            toolTip.SetToolTip(numericBoxCs, resources.GetString("numericBoxCs.ToolTip1"));
             numericBoxCs.UpDown_Increment = 0.1D;
             numericBoxCs.Value = 1D;
             numericBoxCs.ValueChanged += NumericBoxCs_ValueChanged;
@@ -1901,8 +1939,9 @@ namespace ReciPro
             numericBoxDefocus.RadianValue = -1.0088003076527223D;
             numericBoxDefocus.ShowUpDown = true;
             numericBoxDefocus.SmartIncrement = true;
+            numericBoxDefocus.TextFontSize = 9F;
             numericBoxDefocus.ThonsandsSeparator = true;
-            toolTip.SetToolTip(numericBoxDefocus, resources.GetString("numericBoxDefocus.ToolTip"));
+            toolTip.SetToolTip(numericBoxDefocus, resources.GetString("numericBoxDefocus.ToolTip1"));
             numericBoxDefocus.Value = -57.8D;
             numericBoxDefocus.ValueChanged += NumericBoxDefocus_ValueChanged;
             // 
@@ -1918,8 +1957,9 @@ namespace ReciPro
             numericBoxAccVol.RadianValue = 3.4906585039886591D;
             numericBoxAccVol.ShowUpDown = true;
             numericBoxAccVol.SmartIncrement = true;
+            numericBoxAccVol.TextFontSize = 9F;
             numericBoxAccVol.ThonsandsSeparator = true;
-            toolTip.SetToolTip(numericBoxAccVol, resources.GetString("numericBoxAccVol.ToolTip"));
+            toolTip.SetToolTip(numericBoxAccVol, resources.GetString("numericBoxAccVol.ToolTip1"));
             numericBoxAccVol.Value = 200D;
             numericBoxAccVol.ValueChanged += NumericBoxAccVol_ValueChanged;
             // 
@@ -2015,11 +2055,23 @@ namespace ReciPro
             // groupBoxSampleProperty
             // 
             captureExtender.SetCapture(groupBoxSampleProperty, true);
-            groupBoxSampleProperty.Controls.Add(numericBoxThickness);
-            groupBoxSampleProperty.Controls.Add(label2);
+            groupBoxSampleProperty.Controls.Add(flowLayoutPanel1);
             resources.ApplyResources(groupBoxSampleProperty, "groupBoxSampleProperty");
             groupBoxSampleProperty.Name = "groupBoxSampleProperty";
             groupBoxSampleProperty.TabStop = false;
+            // 
+            // flowLayoutPanel1
+            // 
+            resources.ApplyResources(flowLayoutPanel1, "flowLayoutPanel1");
+            flowLayoutPanel1.Controls.Add(label2);
+            flowLayoutPanel1.Controls.Add(numericBoxThickness);
+            flowLayoutPanel1.Name = "flowLayoutPanel1";
+            // 
+            // label2
+            // 
+            resources.ApplyResources(label2, "label2");
+            label2.ForeColor = System.Drawing.SystemColors.ControlText;
+            label2.Name = "label2";
             // 
             // numericBoxThickness
             // 
@@ -2034,16 +2086,11 @@ namespace ReciPro
             numericBoxThickness.RadianValue = 0.3490658503988659D;
             numericBoxThickness.ShowUpDown = true;
             numericBoxThickness.SmartIncrement = true;
+            numericBoxThickness.TextFontSize = 9F;
             numericBoxThickness.ThonsandsSeparator = true;
             toolTip.SetToolTip(numericBoxThickness, resources.GetString("numericBoxThickness.ToolTip"));
             numericBoxThickness.Value = 20D;
             numericBoxThickness.ValueChanged += NumericBoxThickness_ValueChanged;
-            // 
-            // label2
-            // 
-            resources.ApplyResources(label2, "label2");
-            label2.ForeColor = System.Drawing.SystemColors.ControlText;
-            label2.Name = "label2";
             // 
             // panelSimulationActions
             // 
@@ -2297,13 +2344,14 @@ namespace ReciPro
             flowLayoutPanelRealAndImaiginary.ResumeLayout(false);
             flowLayoutPanelRealAndImaiginary.PerformLayout();
             groupBoxSTEMoption2.ResumeLayout(false);
-            groupBoxSTEMoption2.PerformLayout();
             groupBoxHREMoption2.ResumeLayout(false);
             groupBoxHREMoption2.PerformLayout();
             flowLayoutPanelStemMode.ResumeLayout(false);
             flowLayoutPanelStemMode.PerformLayout();
             panelImageProperties.ResumeLayout(false);
             groupBoxImageProperty.ResumeLayout(false);
+            groupBoxImageProperty.PerformLayout();
+            flowLayoutPanel2.ResumeLayout(false);
             groupBoxDiffractedWaves.ResumeLayout(false);
             groupBoxOpticalProperty.ResumeLayout(false);
             groupBoxSTEMoption1.ResumeLayout(false);
@@ -2333,6 +2381,8 @@ namespace ReciPro
             flowLayoutPanelImageType.PerformLayout();
             groupBoxSampleProperty.ResumeLayout(false);
             groupBoxSampleProperty.PerformLayout();
+            flowLayoutPanel1.ResumeLayout(false);
+            flowLayoutPanel1.PerformLayout();
             panelSimulationActions.ResumeLayout(false);
             panelSimulationActions.PerformLayout();
             menuStrip1.ResumeLayout(false);
@@ -2555,5 +2605,7 @@ namespace ReciPro
         private System.Windows.Forms.Panel panel9;
         private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
     }
 }
