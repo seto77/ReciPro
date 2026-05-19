@@ -57,12 +57,10 @@
             buttonChange = new System.Windows.Forms.Button();
             panel1 = new System.Windows.Forms.Panel();
             groupBoxProjectAlong = new System.Windows.Forms.GroupBox();
-            flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             indexControlPlane = new IndexControl();
             flowLayoutPanelSetPlane = new System.Windows.Forms.FlowLayoutPanel();
             buttonSetPlane = new System.Windows.Forms.Button();
             checkBoxFixePlane = new System.Windows.Forms.CheckBox();
-            flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             indexControlAxis = new IndexControl();
             flowLayoutPanelSetAxis = new System.Windows.Forms.FlowLayoutPanel();
             buttonSetAxis = new System.Windows.Forms.Button();
@@ -89,10 +87,10 @@
             panelCrystalDirection = new System.Windows.Forms.Panel();
             tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             label6 = new System.Windows.Forms.Label();
-            numericUpDownEulerPsi = new System.Windows.Forms.NumericUpDown();
+            numericBoxEulerPsi = new NumericBox();
             label2 = new System.Windows.Forms.Label();
-            numericUpDownEulerTheta = new System.Windows.Forms.NumericUpDown();
-            numericUpDownEulerPhi = new System.Windows.Forms.NumericUpDown();
+            numericBoxEulerTheta = new NumericBox();
+            numericBoxEulerPhi = new NumericBox();
             label5 = new System.Windows.Forms.Label();
             labelLaTex1 = new LabelLaTeX();
             labelLaTex2 = new LabelLaTeX();
@@ -199,9 +197,7 @@
             flowLayoutPanelCrystalEdit.SuspendLayout();
             panel1.SuspendLayout();
             groupBoxProjectAlong.SuspendLayout();
-            flowLayoutPanel1.SuspendLayout();
             flowLayoutPanelSetPlane.SuspendLayout();
-            flowLayoutPanel2.SuspendLayout();
             flowLayoutPanelSetAxis.SuspendLayout();
             groupBoxArrows.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
@@ -210,9 +206,6 @@
             groupBoxCurrentDirection.SuspendLayout();
             panelCrystalDirection.SuspendLayout();
             tableLayoutPanel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)numericUpDownEulerPsi).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDownEulerTheta).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDownEulerPhi).BeginInit();
             toolStrip1.SuspendLayout();
             menuStrip1.SuspendLayout();
             contextMenuStripListBox.SuspendLayout();
@@ -441,23 +434,18 @@
             // 
             resources.ApplyResources(groupBoxProjectAlong, "groupBoxProjectAlong");
             captureExtender.SetCapture(groupBoxProjectAlong, true);
-            groupBoxProjectAlong.Controls.Add(flowLayoutPanel1);
+            groupBoxProjectAlong.Controls.Add(indexControlPlane);
             groupBoxProjectAlong.Controls.Add(flowLayoutPanelSetPlane);
-            groupBoxProjectAlong.Controls.Add(flowLayoutPanel2);
+            groupBoxProjectAlong.Controls.Add(indexControlAxis);
             groupBoxProjectAlong.Controls.Add(flowLayoutPanelSetAxis);
             groupBoxProjectAlong.Name = "groupBoxProjectAlong";
             groupBoxProjectAlong.TabStop = false;
             // 
-            // flowLayoutPanel1
-            // 
-            resources.ApplyResources(flowLayoutPanel1, "flowLayoutPanel1");
-            flowLayoutPanel1.Controls.Add(indexControlPlane);
-            flowLayoutPanel1.Name = "flowLayoutPanel1";
-            // 
             // indexControlPlane
             // 
             resources.ApplyResources(indexControlPlane, "indexControlPlane");
-            indexControlPlane.BoxWidth = 38;
+            indexControlPlane.BoxWidth = 40;
+            indexControlPlane.BoxWidthEnabled = false;
             indexControlPlane.Bracket = IndexControl.BracketEnum.Round;
             indexControlPlane.LabelVisible = true;
             indexControlPlane.Mode = IndexControl.ModeEnum.Plane;
@@ -489,16 +477,11 @@
             checkBoxFixePlane.UseVisualStyleBackColor = true;
             checkBoxFixePlane.CheckedChanged += checkBoxFixPlane_CheckedChanged;
             // 
-            // flowLayoutPanel2
-            // 
-            resources.ApplyResources(flowLayoutPanel2, "flowLayoutPanel2");
-            flowLayoutPanel2.Controls.Add(indexControlAxis);
-            flowLayoutPanel2.Name = "flowLayoutPanel2";
-            // 
             // indexControlAxis
             // 
             resources.ApplyResources(indexControlAxis, "indexControlAxis");
-            indexControlAxis.BoxWidth = 38;
+            indexControlAxis.BoxWidth = 40;
+            indexControlAxis.BoxWidthEnabled = false;
             indexControlAxis.Bracket = IndexControl.BracketEnum.Round;
             indexControlAxis.LabelVisible = true;
             indexControlAxis.Mode = IndexControl.ModeEnum.Axis;
@@ -704,10 +687,10 @@
             // 
             resources.ApplyResources(tableLayoutPanel3, "tableLayoutPanel3");
             tableLayoutPanel3.Controls.Add(label6, 2, 2);
-            tableLayoutPanel3.Controls.Add(numericUpDownEulerPsi, 1, 2);
+            tableLayoutPanel3.Controls.Add(numericBoxEulerPsi, 1, 2);
             tableLayoutPanel3.Controls.Add(label2, 2, 0);
-            tableLayoutPanel3.Controls.Add(numericUpDownEulerTheta, 1, 1);
-            tableLayoutPanel3.Controls.Add(numericUpDownEulerPhi, 1, 0);
+            tableLayoutPanel3.Controls.Add(numericBoxEulerTheta, 1, 1);
+            tableLayoutPanel3.Controls.Add(numericBoxEulerPhi, 1, 0);
             tableLayoutPanel3.Controls.Add(label5, 2, 1);
             tableLayoutPanel3.Controls.Add(labelLaTex1, 0, 1);
             tableLayoutPanel3.Controls.Add(labelLaTex2, 0, 2);
@@ -719,40 +702,52 @@
             resources.ApplyResources(label6, "label6");
             label6.Name = "label6";
             // 
-            // numericUpDownEulerPsi
+            // numericBoxEulerPsi
             // 
-            numericUpDownEulerPsi.DecimalPlaces = 3;
-            resources.ApplyResources(numericUpDownEulerPsi, "numericUpDownEulerPsi");
-            numericUpDownEulerPsi.Maximum = new decimal(new int[] { 360, 0, 0, 0 });
-            numericUpDownEulerPsi.Minimum = new decimal(new int[] { 360, 0, 0, int.MinValue });
-            numericUpDownEulerPsi.Name = "numericUpDownEulerPsi";
-            toolTip.SetToolTip(numericUpDownEulerPsi, resources.GetString("numericUpDownEulerPsi.ToolTip"));
-            numericUpDownEulerPsi.ValueChanged += numericUpDownEulerAngle_ValueChanged;
+            numericBoxEulerPsi.BackColor = System.Drawing.SystemColors.Control;
+            numericBoxEulerPsi.DecimalPlaces = 3;
+            resources.ApplyResources(numericBoxEulerPsi, "numericBoxEulerPsi");
+            numericBoxEulerPsi.FooterBackColor = System.Drawing.SystemColors.Control;
+            numericBoxEulerPsi.HeaderBackColor = System.Drawing.SystemColors.Control;
+            numericBoxEulerPsi.Maximum = 360D;
+            numericBoxEulerPsi.Minimum = -360D;
+            numericBoxEulerPsi.Name = "numericBoxEulerPsi";
+            numericBoxEulerPsi.ShowUpDown = true;
+            toolTip.SetToolTip(numericBoxEulerPsi, resources.GetString("numericBoxEulerPsi.ToolTip1"));
+            numericBoxEulerPsi.ValueChanged += numericBoxEulerAngle_ValueChanged;
             // 
             // label2
             // 
             resources.ApplyResources(label2, "label2");
             label2.Name = "label2";
             // 
-            // numericUpDownEulerTheta
+            // numericBoxEulerTheta
             // 
-            numericUpDownEulerTheta.DecimalPlaces = 3;
-            resources.ApplyResources(numericUpDownEulerTheta, "numericUpDownEulerTheta");
-            numericUpDownEulerTheta.Maximum = new decimal(new int[] { 360, 0, 0, 0 });
-            numericUpDownEulerTheta.Minimum = new decimal(new int[] { 360, 0, 0, int.MinValue });
-            numericUpDownEulerTheta.Name = "numericUpDownEulerTheta";
-            toolTip.SetToolTip(numericUpDownEulerTheta, resources.GetString("numericUpDownEulerTheta.ToolTip"));
-            numericUpDownEulerTheta.ValueChanged += numericUpDownEulerAngle_ValueChanged;
+            numericBoxEulerTheta.BackColor = System.Drawing.SystemColors.Control;
+            numericBoxEulerTheta.DecimalPlaces = 3;
+            resources.ApplyResources(numericBoxEulerTheta, "numericBoxEulerTheta");
+            numericBoxEulerTheta.FooterBackColor = System.Drawing.SystemColors.Control;
+            numericBoxEulerTheta.HeaderBackColor = System.Drawing.SystemColors.Control;
+            numericBoxEulerTheta.Maximum = 360D;
+            numericBoxEulerTheta.Minimum = -360D;
+            numericBoxEulerTheta.Name = "numericBoxEulerTheta";
+            numericBoxEulerTheta.ShowUpDown = true;
+            toolTip.SetToolTip(numericBoxEulerTheta, resources.GetString("numericBoxEulerTheta.ToolTip1"));
+            numericBoxEulerTheta.ValueChanged += numericBoxEulerAngle_ValueChanged;
             // 
-            // numericUpDownEulerPhi
+            // numericBoxEulerPhi
             // 
-            numericUpDownEulerPhi.DecimalPlaces = 3;
-            resources.ApplyResources(numericUpDownEulerPhi, "numericUpDownEulerPhi");
-            numericUpDownEulerPhi.Maximum = new decimal(new int[] { 360, 0, 0, 0 });
-            numericUpDownEulerPhi.Minimum = new decimal(new int[] { 360, 0, 0, int.MinValue });
-            numericUpDownEulerPhi.Name = "numericUpDownEulerPhi";
-            toolTip.SetToolTip(numericUpDownEulerPhi, resources.GetString("numericUpDownEulerPhi.ToolTip"));
-            numericUpDownEulerPhi.ValueChanged += numericUpDownEulerAngle_ValueChanged;
+            numericBoxEulerPhi.BackColor = System.Drawing.SystemColors.Control;
+            numericBoxEulerPhi.DecimalPlaces = 3;
+            resources.ApplyResources(numericBoxEulerPhi, "numericBoxEulerPhi");
+            numericBoxEulerPhi.FooterBackColor = System.Drawing.SystemColors.Control;
+            numericBoxEulerPhi.HeaderBackColor = System.Drawing.SystemColors.Control;
+            numericBoxEulerPhi.Maximum = 360D;
+            numericBoxEulerPhi.Minimum = -360D;
+            numericBoxEulerPhi.Name = "numericBoxEulerPhi";
+            numericBoxEulerPhi.ShowUpDown = true;
+            toolTip.SetToolTip(numericBoxEulerPhi, resources.GetString("numericBoxEulerPhi.ToolTip1"));
+            numericBoxEulerPhi.ValueChanged += numericBoxEulerAngle_ValueChanged;
             // 
             // label5
             // 
@@ -988,6 +983,7 @@
             // menuStrip1
             // 
             resources.ApplyResources(menuStrip1, "menuStrip1");
+            menuStrip1.GripMargin = new System.Windows.Forms.Padding(3, 3, 0, 3);
             menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { fileToolStripMenuItem, optionToolStripMenuItem, helpToolStripMenuItem, languageToolStripMenuItem, macroToolStripMenuItem });
             menuStrip1.Name = "menuStrip1";
@@ -1355,12 +1351,8 @@
             panel1.PerformLayout();
             groupBoxProjectAlong.ResumeLayout(false);
             groupBoxProjectAlong.PerformLayout();
-            flowLayoutPanel1.ResumeLayout(false);
-            flowLayoutPanel1.PerformLayout();
             flowLayoutPanelSetPlane.ResumeLayout(false);
             flowLayoutPanelSetPlane.PerformLayout();
-            flowLayoutPanel2.ResumeLayout(false);
-            flowLayoutPanel2.PerformLayout();
             flowLayoutPanelSetAxis.ResumeLayout(false);
             flowLayoutPanelSetAxis.PerformLayout();
             groupBoxArrows.ResumeLayout(false);
@@ -1374,9 +1366,6 @@
             panelCrystalDirection.PerformLayout();
             tableLayoutPanel3.ResumeLayout(false);
             tableLayoutPanel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)numericUpDownEulerPsi).EndInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDownEulerTheta).EndInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDownEulerPhi).EndInit();
             toolStrip1.ResumeLayout(false);
             toolStrip1.PerformLayout();
             menuStrip1.ResumeLayout(false);
@@ -1447,10 +1436,10 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.NumericUpDown numericUpDownEulerPsi;
+        private NumericBox numericBoxEulerPsi;                                                                                                      // 260519Cl 変更: NumericUpDown → NumericBox
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.NumericUpDown numericUpDownEulerTheta;
-        private System.Windows.Forms.NumericUpDown numericUpDownEulerPhi;
+        private NumericBox numericBoxEulerTheta;                                                                                                    // 260519Cl 変更: NumericUpDown → NumericBox
+        private NumericBox numericBoxEulerPhi;                                                                                                      // 260519Cl 変更: NumericUpDown → NumericBox
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.GroupBox groupBoxCurrentDirection;
         private System.Windows.Forms.Panel panelArrowStep;
@@ -1525,8 +1514,6 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemUseMillerBravais;                                                                 // 260421Cl 追加
         private System.Windows.Forms.ToolStripSeparator toolStripSeparatorCapture; // 260323Cl 追加
         private System.Windows.Forms.ToolStripMenuItem captureGUIToolStripMenuItem; // 260323Cl 追加
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
         private LabelLaTeX labelLaTex1;
         private LabelLaTeX labelLaTex2;
         private LabelLaTeX labelLaTex3;

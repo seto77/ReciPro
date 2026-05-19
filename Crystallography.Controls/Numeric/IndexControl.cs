@@ -100,8 +100,17 @@ namespace Crystallography.Controls
             set
             {
                 millerBravais = value;
-                tableLayoutPanel1.ColumnStyles[5] =
-                    value ? new ColumnStyle(SizeType.AutoSize) : new ColumnStyle(SizeType.Absolute, 0F);
+                // 260519Cl: BoxWidthEnabled=false の場合は H/K/L/i を均等 Percent 配分し直し、i の Dock も合わせて切替える
+                if (boxWidthEnabled)
+                {
+                    tableLayoutPanel1.ColumnStyles[5] =
+                        value ? new ColumnStyle(SizeType.AutoSize) : new ColumnStyle(SizeType.Absolute, 0F);
+                }
+                else
+                {
+                    SetEqualPercentColumns();
+                    numericBoxI.Dock = value ? DockStyle.Fill : DockStyle.None;
+                }
                 if (value)
                     UpdateI();
             }
@@ -195,20 +204,140 @@ namespace Crystallography.Controls
 
         #region 寸法 (UpDownWidth / BoxWidth)
 
+        // 260519Cl: 旧実装は setter が受け取った値をそのまま numericBox.Width / UpDownWidth に渡していたため、
+        // Designer (96dpi 想定) からの "indexControl.BoxWidth = 40" 等が高 DPI でも 40px のままになり、
+        // IndexControl.Designer.cs 内で auto-scale 済みの numericBox.Width(=38*scale) を上書きして
+        // DPI 追従が壊れる不具合があった。
+        // 解決策: setter の入力を 96dpi 論理値として保持し、ApplyXxx() で DeviceDpi に基づき物理ピクセル化する。
+        // Handle 作成時 / DPI 変化時に再適用することで、setter 呼び出し時点では DeviceDpi が 96 でも、
+        // 後で正しい DPI が確定したタイミングで物理値が反映される。
+        // 260519Cl: 既定値は IndexControl.Designer.cs の numericBox.Size (38, 25) / NumericBox.upDownWidth=17 に合わせる。
+        // BoxWidth / UpDownWidth が consumer から設定されない場合は ApplyXxx を呼ばないようにし、
+        // Designer の auto-scale 済みの値をそのまま維持する (consumer 未設定時のサイズ変更を防止)。
+        private int logicalUpDownWidth = 17;
+        private bool upDownWidthExplicitlySet = false;
+        [Category("Appearance"), DefaultValue(17)]
+        [Description("UpDown ボタンの幅 (96dpi 論理値)。実行時に DeviceDpi に応じて物理ピクセルへスケールされる。")]
         public int UpDownWidth
         {
-            get => numericBoxH.UpDownWidth;
-            set => numericBoxH.UpDownWidth = numericBoxK.UpDownWidth = numericBoxL.UpDownWidth = value;
+            get => logicalUpDownWidth;
+            set { logicalUpDownWidth = value; upDownWidthExplicitlySet = true; ApplyUpDownWidth(); }
         }
 
+        private int logicalBoxWidth = 38;
+        private bool boxWidthExplicitlySet = false;
+        [Category("Appearance"), DefaultValue(38)]
+        [Description("H/K/L numericBox の幅 (96dpi 論理値)。実行時に DeviceDpi に応じて物理ピクセルへスケールされる。BoxWidthEnabled=false のときは無視される。")]
         public int BoxWidth
         {
-            get => numericBoxH.Width; // 260517Cl fix: 旧 getter が UpDownWidth を返していた typo を修正
+            get => logicalBoxWidth;
+            set { logicalBoxWidth = value; boxWidthExplicitlySet = true; ApplyBoxWidth(); }
+        }
+
+        private void ApplyUpDownWidth()
+        {
+            if (!upDownWidthExplicitlySet) return;
+            var w = LogicalToDeviceUnits(logicalUpDownWidth);
+            numericBoxH.UpDownWidth = numericBoxK.UpDownWidth = numericBoxL.UpDownWidth = w;
+        }
+
+        private void ApplyBoxWidth()
+        {
+            // 260519Cl: BoxWidthEnabled=false の均等配分モードでは BoxWidth 設定を無視する
+            if (!boxWidthEnabled) return;
+            if (!boxWidthExplicitlySet) return;
+            var w = LogicalToDeviceUnits(logicalBoxWidth);
+            numericBoxH.Width = numericBoxK.Width = numericBoxL.Width = w;
+            // 260519Cl: BoxWidth が極端に小さい場合に numericBoxI が負幅にならないよう Math.Max でガード
+            numericBoxI.Width = Math.Max(LogicalToDeviceUnits(1), w - LogicalToDeviceUnits(16));
+        }
+
+        // 260519Cl 追加: Handle 作成時に DeviceDpi が確定するため、論理値を物理ピクセルへ反映し直す。
+        protected override void OnHandleCreated(EventArgs e)
+        {
+            base.OnHandleCreated(e);
+            ApplyBoxWidth();
+            ApplyUpDownWidth();
+        }
+
+        // 260519Cl 追加: Per-Monitor DPI でモニタ移動時に DPI が変わった場合、論理値から物理値を再計算する。
+        protected override void OnDpiChangedAfterParent(EventArgs e)
+        {
+            base.OnDpiChangedAfterParent(e);
+            ApplyBoxWidth();
+            ApplyUpDownWidth();
+        }
+
+        // 260519Cl 追加: BoxWidthEnabled
+        //   true  (既定): 従来動作。BoxWidth プロパティで numericBox 幅を直接指定し、IndexControl 全体は AutoSize。
+        //   false      : BoxWidth 設定は無効化。IndexControl 全体の幅変更に追従し、H/K/L (Miller-Bravais 表示時は + i)
+        //                の numericBox 幅を TableLayoutPanel の Percent 列で均等配分。UpDownWidth は固定のまま。
+        // 切替時は AutoSize / TableLayoutPanel の Dock / ColumnStyle / numericBox の Dock を一括で再構成する。
+        private bool boxWidthEnabled = true;
+        [Category("Behavior"), DefaultValue(true)]
+        [Description("true: BoxWidth で numericBox 幅を指定 (AutoSize)。false: IndexControl 全体の幅に追従し H/K/L (+i) を均等配分。UpDownWidth は固定。")]
+        public bool BoxWidthEnabled
+        {
+            get => boxWidthEnabled;
             set
             {
-                numericBoxH.Width = numericBoxK.Width = numericBoxL.Width = value;
-                numericBoxI.Width = value - 16;
+                if (boxWidthEnabled == value) return;
+                boxWidthEnabled = value;
+                ApplyBoxWidthEnabled();
             }
+        }
+
+        private void ApplyBoxWidthEnabled()
+        {
+            if (tableLayoutPanel1 == null) return;
+            // 260519Cl: AutoSize/Dock/ColumnStyle を一括変更すると個別に layout が走るため、まとめて 1 パスにする
+            SuspendLayout();
+            tableLayoutPanel1.SuspendLayout();
+            try
+            {
+                if (boxWidthEnabled)
+                {
+                    // AutoSize モード (従来動作) へ復帰
+                    tableLayoutPanel1.Dock = DockStyle.None;
+                    tableLayoutPanel1.AutoSize = true;
+                    AutoSize = true;
+                    numericBoxH.Dock = numericBoxK.Dock = numericBoxL.Dock = numericBoxI.Dock = DockStyle.None;
+                    SetBoxColumns(SizeType.AutoSize, 0f);
+                    ApplyBoxWidth();
+                }
+                else
+                {
+                    // 均等配分モードへ
+                    AutoSize = false;
+                    tableLayoutPanel1.AutoSize = false;
+                    tableLayoutPanel1.Dock = DockStyle.Fill;
+                    SetEqualPercentColumns();
+                    numericBoxH.Dock = numericBoxK.Dock = numericBoxL.Dock = DockStyle.Fill;
+                    numericBoxI.Dock = millerBravais ? DockStyle.Fill : DockStyle.None;
+                }
+            }
+            finally
+            {
+                tableLayoutPanel1.ResumeLayout(false);
+                ResumeLayout(true);
+            }
+        }
+
+        // 260519Cl 追加: H/K/L (+ MillerBravais=true なら i) の box 列を Percent 配分する。
+        // MillerBravais=true  : H/K/L = 28% / i = 16% (合計 100%)  ← i は h+k から自動計算される表示専用なので狭めで OK
+        // MillerBravais=false : H/K/L = 33.33% / i は Absolute 0 で潰す
+        private void SetEqualPercentColumns() => SetBoxColumns(SizeType.Percent, millerBravais ? 28f : 100f / 3f, 16f);
+
+        // 260519Cl 追加: H/K/L の box 列 (2, 4, 7) を同じ SizeType / size で設定し、
+        // i 列 (5) は MillerBravais=true なら iSize で、false なら Absolute 0 で潰す。
+        private void SetBoxColumns(SizeType sizeType, float hklSize, float iSize = 0f)
+        {
+            tableLayoutPanel1.ColumnStyles[2] = new ColumnStyle(sizeType, hklSize);
+            tableLayoutPanel1.ColumnStyles[4] = new ColumnStyle(sizeType, hklSize);
+            tableLayoutPanel1.ColumnStyles[7] = new ColumnStyle(sizeType, hklSize);
+            tableLayoutPanel1.ColumnStyles[5] = millerBravais
+                ? new ColumnStyle(sizeType, iSize)
+                : new ColumnStyle(SizeType.Absolute, 0F);
         }
 
         #endregion

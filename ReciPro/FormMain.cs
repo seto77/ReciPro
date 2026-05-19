@@ -180,9 +180,13 @@ public partial class FormMain : FormBase
     public static string PlaneString(int h, int k, int l, bool useMB, string sep = " ")
         => useMB ? $"{h}{sep}{k}{sep}{-(h + k)}{sep}{l}" : $"{h}{sep}{k}{sep}{l}";
     public static Languages Language => Thread.CurrentThread.CurrentUICulture.Name == "en" ? Languages.English : Languages.Japanese;
-    public double Phi { get => (double)numericUpDownEulerPhi.Value / 180.0 * Math.PI; set => numericUpDownEulerPhi.Value = (decimal)(value / Math.PI * 180.0); }
-    public double Theta { get => (double)numericUpDownEulerTheta.Value / 180.0 * Math.PI; set => numericUpDownEulerTheta.Value = (decimal)(value / Math.PI * 180.0); }
-    public double Psi { get => (double)numericUpDownEulerPsi.Value / 180.0 * Math.PI; set => numericUpDownEulerPsi.Value = (decimal)(value / Math.PI * 180.0); }
+    // 260519Cl 変更: NumericUpDown → NumericBox に伴い RadianValue で簡略化
+    //public double Phi { get => (double)numericUpDownEulerPhi.Value / 180.0 * Math.PI; set => numericUpDownEulerPhi.Value = (decimal)(value / Math.PI * 180.0); }
+    //public double Theta { get => (double)numericUpDownEulerTheta.Value / 180.0 * Math.PI; set => numericUpDownEulerTheta.Value = (decimal)(value / Math.PI * 180.0); }
+    //public double Psi { get => (double)numericUpDownEulerPsi.Value / 180.0 * Math.PI; set => numericUpDownEulerPsi.Value = (decimal)(value / Math.PI * 180.0); }
+    public double Phi { get => numericBoxEulerPhi.RadianValue; set => numericBoxEulerPhi.RadianValue = value; }
+    public double Theta { get => numericBoxEulerTheta.RadianValue; set => numericBoxEulerTheta.RadianValue = value; }
+    public double Psi { get => numericBoxEulerPsi.RadianValue; set => numericBoxEulerPsi.RadianValue = value; }
 
     public static string UserAppDataPath => new DirectoryInfo(Application.UserAppDataPath).Parent.FullName + @"\";
 
@@ -334,7 +338,8 @@ public partial class FormMain : FormBase
             Author = Version.Author,
             History = Version.History,
             Hint = Version.Hint,
-            Width = 600,
+            // 260519Cl 変更: 高 DPI で 600px が物理ピクセル扱いとなり日本語版で特に狭く見えていたため LogicalToDeviceUnits で論理→物理変換
+            Width = LogicalToDeviceUnits(600),
             Location = new Point(this.Location.X, this.Location.Y)
         };
 
@@ -818,9 +823,13 @@ public partial class FormMain : FormBase
         {
             var euler = Euler.FromMatrix(Crystal.RotationMatrix);
             SkipEulerChange = true;
-            numericUpDownEulerPhi.Value = (decimal)(euler.Phi / Math.PI * 180);
-            numericUpDownEulerTheta.Value = (decimal)(euler.Theta / Math.PI * 180);
-            numericUpDownEulerPsi.Value = (decimal)(euler.Psi / Math.PI * 180);
+            // 260519Cl 変更: NumericUpDown → NumericBox (RadianValue setter で簡略化)
+            //numericUpDownEulerPhi.Value = (decimal)(euler.Phi / Math.PI * 180);
+            //numericUpDownEulerTheta.Value = (decimal)(euler.Theta / Math.PI * 180);
+            //numericUpDownEulerPsi.Value = (decimal)(euler.Psi / Math.PI * 180);
+            numericBoxEulerPhi.RadianValue = euler.Phi;
+            numericBoxEulerTheta.RadianValue = euler.Theta;
+            numericBoxEulerPsi.RadianValue = euler.Psi;
             SkipEulerChange = false;
 
             if (FormRotation.Visible)
@@ -987,30 +996,27 @@ public partial class FormMain : FormBase
     /// <summary>オイラー角の入力ボックスからの変更イベント</summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
-    private void numericUpDownEulerAngle_ValueChanged(object sender, EventArgs e)
+    // 260519Cl 変更: NumericUpDown → NumericBox (旧シグネチャ: numericUpDownEulerAngle_ValueChanged)
+    private void numericBoxEulerAngle_ValueChanged(object sender, EventArgs e)
     {
         if (SkipEulerChange) return;
         SkipEulerChange = true;
-        if (numericUpDownEulerPhi.Value > 180)
-            numericUpDownEulerPhi.Value -= 360;
-        if (numericUpDownEulerPhi.Value < -180)
-            numericUpDownEulerPhi.Value += 360;
+        if (numericBoxEulerPhi.Value > 180)
+            numericBoxEulerPhi.Value -= 360;
+        if (numericBoxEulerPhi.Value < -180)
+            numericBoxEulerPhi.Value += 360;
 
-        if (numericUpDownEulerTheta.Value > 180)
-            numericUpDownEulerTheta.Value -= 360;
-        if (numericUpDownEulerTheta.Value < -180)
-            numericUpDownEulerTheta.Value += 360;
+        if (numericBoxEulerTheta.Value > 180)
+            numericBoxEulerTheta.Value -= 360;
+        if (numericBoxEulerTheta.Value < -180)
+            numericBoxEulerTheta.Value += 360;
 
-        if (numericUpDownEulerPsi.Value > 180)
-            numericUpDownEulerPsi.Value -= 360;
-        if (numericUpDownEulerPsi.Value < -180)
-            numericUpDownEulerPsi.Value += 360;
+        if (numericBoxEulerPsi.Value > 180)
+            numericBoxEulerPsi.Value -= 360;
+        if (numericBoxEulerPsi.Value < -180)
+            numericBoxEulerPsi.Value += 360;
 
-        var phi = (double)numericUpDownEulerPhi.Value / 180.0 * Math.PI;
-        var theta = (double)numericUpDownEulerTheta.Value / 180.0 * Math.PI;
-        var psi = (double)numericUpDownEulerPsi.Value / 180.0 * Math.PI;
-
-        SetRotation(Matrix3D.Rot(phi, theta, psi));
+        SetRotation(Matrix3D.Rot(numericBoxEulerPhi.RadianValue, numericBoxEulerTheta.RadianValue, numericBoxEulerPsi.RadianValue));
 
         SkipEulerChange = false;
         SetNearestUVW();
@@ -1141,9 +1147,13 @@ public partial class FormMain : FormBase
         {
             var euler = Euler.FromMatrix(Crystal.RotationMatrix);
             SkipEulerChange = true;
-            numericUpDownEulerPhi.Value = (decimal)(euler.Phi / Math.PI * 180);
-            numericUpDownEulerTheta.Value = (decimal)(euler.Theta / Math.PI * 180);
-            numericUpDownEulerPsi.Value = (decimal)(euler.Psi / Math.PI * 180);
+            // 260519Cl 変更: NumericUpDown → NumericBox (RadianValue setter で簡略化)
+            //numericUpDownEulerPhi.Value = (decimal)(euler.Phi / Math.PI * 180);
+            //numericUpDownEulerTheta.Value = (decimal)(euler.Theta / Math.PI * 180);
+            //numericUpDownEulerPsi.Value = (decimal)(euler.Psi / Math.PI * 180);
+            numericBoxEulerPhi.RadianValue = euler.Phi;
+            numericBoxEulerTheta.RadianValue = euler.Theta;
+            numericBoxEulerPsi.RadianValue = euler.Psi;
             SkipEulerChange = false;
 
             numericBoxMaxUVW_ValueChanged(sender, e);
@@ -1938,8 +1948,8 @@ public partial class FormMain : FormBase
         crystalControl.MillerBravais = active;
 
         indexControlPlane.MillerBravais = active;
-        indexControlPlane.BoxWidth = LogicalToDeviceUnits(active ? 35 : 40);      // 260424Cl 4指数表示時はI列分の幅を確保するため H/K/L を狭める
-        indexControlPlane.UpDownWidth = LogicalToDeviceUnits(active ? 12 : 17);
+        indexControlPlane.BoxWidth = active ? (int)(indexControlAxis.BoxWidth * 0.8) : indexControlAxis.BoxWidth;      // 260424Cl 4指数表示時はI列分の幅を確保するため H/K/L を狭める
+        indexControlPlane.UpDownWidth = active ? (int)(indexControlAxis.UpDownWidth * 0.8) : indexControlAxis.UpDownWidth;
     }
 
 

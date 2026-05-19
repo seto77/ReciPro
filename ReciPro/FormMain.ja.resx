@@ -121,6 +121,9 @@
   <data name="statusStrip1.Size" type="System.Drawing.Size, System.Drawing">
     <value>926, 24</value>
   </data>
+  <data name="splitContainer.Location" type="System.Drawing.Point, System.Drawing">
+    <value>139, 0</value>
+  </data>
   <data name="groupBoxCrystalList.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt, style=Bold</value>
   </data>
@@ -128,7 +131,7 @@
     <value>5, 6</value>
   </data>
   <data name="groupBoxCrystalList.Size" type="System.Drawing.Size, System.Drawing">
-    <value>646, 183</value>
+    <value>664, 183</value>
   </data>
   <data name="groupBoxCrystalList.Text" xml:space="preserve">
     <value>結晶リスト</value>
@@ -140,6 +143,9 @@
   <data name="groupBoxCrystalInformation.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt, style=Bold</value>
   </data>
+  <data name="groupBoxCrystalInformation.Location" type="System.Drawing.Point, System.Drawing">
+    <value>5, 35</value>
+  </data>
   <data name="groupBoxCrystalInformation.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 5, 0, 0</value>
   </data>
@@ -147,7 +153,7 @@
     <value>5, 5, 5, 5</value>
   </data>
   <data name="groupBoxCrystalInformation.Size" type="System.Drawing.Size, System.Drawing">
-    <value>646, 502</value>
+    <value>664, 497</value>
   </data>
   <data name="groupBoxCrystalInformation.Text" xml:space="preserve">
     <value>結晶情報</value>
@@ -156,23 +162,23 @@
     <value>0, 0, 0, 4</value>
   </data>
   <data name="flowLayoutPanelCrystalEdit.Size" type="System.Drawing.Size, System.Drawing">
-    <value>646, 29</value>
+    <value>664, 33</value>
   </data>
   <data name="splitContainer.Size" type="System.Drawing.Size, System.Drawing">
-    <value>656, 730</value>
+    <value>674, 729</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="splitContainer.SplitterDistance" type="System.Int32, mscorlib">
     <value>191</value>
   </data>
   <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>142, 730</value>
+    <value>139, 729</value>
   </data>
   <data name="toolStripContainer1.ContentPanel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>798, 730</value>
+    <value>813, 729</value>
   </data>
   <data name="toolStrip1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>128, 606</value>
+    <value>113, 611</value>
   </data>
   <data name="toolStripContainer1.Size" type="System.Drawing.Size, System.Drawing">
     <value>930, 778</value>
@@ -181,7 +187,7 @@
     <value>Yu Gothic UI, 9.75pt</value>
   </data>
   <data name="menuStrip1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>926, 24</value>
+    <value>926, 25</value>
   </data>
   <data name="toolStripProgressBar.Size" type="System.Drawing.Size, System.Drawing">
     <value>100, 18</value>
@@ -190,13 +196,10 @@
     <value>Yu Gothic UI, 8pt</value>
   </data>
   <data name="toolStripStatusLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>116, 24</value>
-  </data>
-  <data name="listBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 14</value>
+    <value>94, 24</value>
   </data>
   <data name="listBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>640, 141</value>
+    <value>658, 132</value>
   </data>
   <data name="listBox.ToolTip" xml:space="preserve">
     <value>結晶リストを表示します。
@@ -206,19 +209,19 @@
 リストに載っているすべての結晶を削除するには″全削除″します。</value>
   </data>
   <data name="flowLayoutPanelCrystalOrder.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 155</value>
+    <value>3, 151</value>
   </data>
   <data name="flowLayoutPanelCrystalOrder.Size" type="System.Drawing.Size, System.Drawing">
-    <value>640, 25</value>
+    <value>658, 29</value>
   </data>
   <data name="buttonAllClear.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
   </data>
   <data name="buttonAllClear.Location" type="System.Drawing.Point, System.Drawing">
-    <value>582, 0</value>
+    <value>599, 0</value>
   </data>
   <data name="buttonAllClear.Size" type="System.Drawing.Size, System.Drawing">
-    <value>58, 25</value>
+    <value>59, 29</value>
   </data>
   <data name="buttonAllClear.Text" xml:space="preserve">
     <value>全削除</value>
@@ -230,10 +233,10 @@
     <value>Yu Gothic UI, 9.75pt</value>
   </data>
   <data name="buttonDelete.Location" type="System.Drawing.Point, System.Drawing">
-    <value>537, 0</value>
+    <value>553, 0</value>
   </data>
   <data name="buttonDelete.Size" type="System.Drawing.Size, System.Drawing">
-    <value>45, 25</value>
+    <value>46, 29</value>
   </data>
   <data name="buttonDelete.Text" xml:space="preserve">
     <value>削除</value>
@@ -245,10 +248,10 @@
     <value>Yu Gothic UI, 9.75pt</value>
   </data>
   <data name="buttonDuplicate.Location" type="System.Drawing.Point, System.Drawing">
-    <value>492, 0</value>
+    <value>507, 0</value>
   </data>
   <data name="buttonDuplicate.Size" type="System.Drawing.Size, System.Drawing">
-    <value>45, 25</value>
+    <value>46, 29</value>
   </data>
   <data name="buttonDuplicate.Text" xml:space="preserve">
     <value>複製</value>
@@ -260,10 +263,10 @@
     <value>Yu Gothic UI, 9.75pt</value>
   </data>
   <data name="buttonLower.Location" type="System.Drawing.Point, System.Drawing">
-    <value>447, 0</value>
+    <value>463, 0</value>
   </data>
   <data name="buttonLower.Size" type="System.Drawing.Size, System.Drawing">
-    <value>45, 25</value>
+    <value>44, 29</value>
   </data>
   <data name="buttonLower.Text" xml:space="preserve">
     <value>下へ</value>
@@ -275,10 +278,10 @@
     <value>Yu Gothic UI, 9.75pt</value>
   </data>
   <data name="buttonUpper.Location" type="System.Drawing.Point, System.Drawing">
-    <value>402, 0</value>
+    <value>419, 0</value>
   </data>
   <data name="buttonUpper.Size" type="System.Drawing.Size, System.Drawing">
-    <value>45, 25</value>
+    <value>44, 29</value>
   </data>
   <data name="buttonUpper.Text" xml:space="preserve">
     <value>上へ</value>
@@ -286,17 +289,20 @@
   <data name="buttonUpper.ToolTip" xml:space="preserve">
     <value>リスト中の選択された結晶を上に移動します</value>
   </data>
+  <data name="crystalControl.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
   <data name="crystalControl.Location" type="System.Drawing.Point, System.Drawing">
-    <value>5, 18</value>
+    <value>5, 23</value>
   </data>
   <data name="crystalControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>636, 479</value>
+    <value>654, 469</value>
   </data>
   <data name="buttonAdd.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
   </data>
   <data name="buttonAdd.Size" type="System.Drawing.Size, System.Drawing">
-    <value>125, 25</value>
+    <value>119, 29</value>
   </data>
   <data name="buttonAdd.Text" xml:space="preserve">
     <value>↑ リストへ追加 ↑</value>
@@ -308,10 +314,10 @@
     <value>Yu Gothic UI, 9.75pt</value>
   </data>
   <data name="buttonChange.Location" type="System.Drawing.Point, System.Drawing">
-    <value>125, 0</value>
+    <value>119, 0</value>
   </data>
   <data name="buttonChange.Size" type="System.Drawing.Size, System.Drawing">
-    <value>168, 25</value>
+    <value>163, 29</value>
   </data>
   <data name="buttonChange.Text" xml:space="preserve">
     <value>↑ 選択結晶と入れ替え ↑</value>
@@ -326,59 +332,35 @@
   <data name="groupBoxProjectAlong.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
   </data>
-  <data name="groupBoxProjectAlong.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 351</value>
-  </data>
   <data name="groupBoxProjectAlong.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 4, 2, 2</value>
   </data>
   <data name="groupBoxProjectAlong.Size" type="System.Drawing.Size, System.Drawing">
-    <value>142, 167</value>
+    <value>139, 164</value>
   </data>
   <data name="groupBoxProjectAlong.Text" xml:space="preserve">
     <value>軸/面投影</value>
   </data>
-  <data name="flowLayoutPanel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>2, 118</value>
+  <data name="indexControlPlane.AutoSize" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
-  <data name="label12.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 8pt</value>
+  <data name="indexControlPlane.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
   </data>
-  <data name="label12.Size" type="System.Drawing.Size, System.Drawing">
-    <value>10, 33</value>
+  <data name="indexControlPlane.Location" type="System.Drawing.Point, System.Drawing">
+    <value>2, 121</value>
   </data>
-  <data name="numericBoxPlaneH.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 0</value>
-  </data>
-  <data name="numericBoxPlaneH.ToolTip" xml:space="preserve">
-    <value>結晶面を設定</value>
-  </data>
-  <data name="numericBoxPlaneH.ToolTip1" xml:space="preserve">
-    <value>結晶面を設定</value>
-  </data>
-  <data name="numericBoxPlaneK.Location" type="System.Drawing.Point, System.Drawing">
-    <value>42, 0</value>
-  </data>
-  <data name="numericBoxPlaneI.Location" type="System.Drawing.Point, System.Drawing">
-    <value>74, 0</value>
-  </data>
-  <data name="numericBoxPlaneL.Location" type="System.Drawing.Point, System.Drawing">
-    <value>94, 0</value>
-  </data>
-  <data name="label11.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 8pt</value>
-  </data>
-  <data name="label11.Location" type="System.Drawing.Point, System.Drawing">
-    <value>126, 0</value>
-  </data>
-  <data name="label11.Size" type="System.Drawing.Size, System.Drawing">
-    <value>10, 33</value>
+  <data name="indexControlPlane.Size" type="System.Drawing.Size, System.Drawing">
+    <value>135, 41</value>
   </data>
   <data name="flowLayoutPanelSetPlane.Location" type="System.Drawing.Point, System.Drawing">
-    <value>2, 84</value>
+    <value>2, 87</value>
   </data>
   <data name="flowLayoutPanelSetPlane.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 3, 0, 0</value>
+  </data>
+  <data name="flowLayoutPanelSetPlane.Size" type="System.Drawing.Size, System.Drawing">
+    <value>135, 34</value>
   </data>
   <data name="buttonSetPlane.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
@@ -400,7 +382,7 @@
     <value>75, 12</value>
   </data>
   <data name="checkBoxFixePlane.Size" type="System.Drawing.Size, System.Drawing">
-    <value>48, 22</value>
+    <value>50, 22</value>
   </data>
   <data name="checkBoxFixePlane.Text" xml:space="preserve">
     <value>固定</value>
@@ -408,59 +390,23 @@
   <data name="checkBoxFixePlane.ToolTip" xml:space="preserve">
     <value>チェックすると、指定した面が空間内で固定されます。</value>
   </data>
-  <data name="flowLayoutPanel2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>2, 41</value>
+  <data name="indexControlAxis.AutoSize" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
-  <data name="label9.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 8pt</value>
+  <data name="indexControlAxis.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
   </data>
-  <data name="label9.Size" type="System.Drawing.Size, System.Drawing">
-    <value>11, 33</value>
+  <data name="indexControlAxis.Location" type="System.Drawing.Point, System.Drawing">
+    <value>2, 46</value>
   </data>
-  <data name="numericBoxAxisU.Size" type="System.Drawing.Size, System.Drawing">
-    <value>37, 43</value>
-  </data>
-  <data name="numericBoxAxisU.ToolTip" xml:space="preserve">
-    <value>結晶軸を設定</value>
-  </data>
-  <data name="numericBoxAxisU.ToolTip1" xml:space="preserve">
-    <value>結晶軸を設定</value>
-  </data>
-  <data name="numericBoxAxisV.Location" type="System.Drawing.Point, System.Drawing">
-    <value>48, 0</value>
-  </data>
-  <data name="numericBoxAxisV.Size" type="System.Drawing.Size, System.Drawing">
-    <value>37, 43</value>
-  </data>
-  <data name="numericBoxAxisV.ToolTip" xml:space="preserve">
-    <value>結晶軸を設定</value>
-  </data>
-  <data name="numericBoxAxisV.ToolTip1" xml:space="preserve">
-    <value>結晶軸を設定</value>
-  </data>
-  <data name="numericBoxAxisW.Location" type="System.Drawing.Point, System.Drawing">
-    <value>85, 0</value>
-  </data>
-  <data name="numericBoxAxisW.Size" type="System.Drawing.Size, System.Drawing">
-    <value>37, 43</value>
-  </data>
-  <data name="numericBoxAxisW.ToolTip" xml:space="preserve">
-    <value>結晶軸を設定</value>
-  </data>
-  <data name="numericBoxAxisW.ToolTip1" xml:space="preserve">
-    <value>結晶軸を設定</value>
-  </data>
-  <data name="label10.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 8pt</value>
-  </data>
-  <data name="label10.Location" type="System.Drawing.Point, System.Drawing">
-    <value>122, 0</value>
-  </data>
-  <data name="label10.Size" type="System.Drawing.Size, System.Drawing">
-    <value>11, 33</value>
+  <data name="indexControlAxis.Size" type="System.Drawing.Size, System.Drawing">
+    <value>135, 41</value>
   </data>
   <data name="flowLayoutPanelSetAxis.Location" type="System.Drawing.Point, System.Drawing">
-    <value>2, 17</value>
+    <value>2, 22</value>
+  </data>
+  <data name="flowLayoutPanelSetAxis.Size" type="System.Drawing.Size, System.Drawing">
+    <value>135, 24</value>
   </data>
   <data name="buttonSetAxis.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
@@ -482,7 +428,7 @@
     <value>75, 2</value>
   </data>
   <data name="checkBoxFixAxis.Size" type="System.Drawing.Size, System.Drawing">
-    <value>48, 16</value>
+    <value>50, 19</value>
   </data>
   <data name="checkBoxFixAxis.Text" xml:space="preserve">
     <value>固定</value>
@@ -490,8 +436,8 @@
   <data name="checkBoxFixAxis.ToolTip" xml:space="preserve">
     <value>チェックすると、指定した軸が空間内で固定されます。</value>
   </data>
-  <data name="panel3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 343</value>
+  <data name="panel3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>139, 8</value>
   </data>
   <data name="groupBoxArrows.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -503,34 +449,34 @@
     <value>Yu Gothic UI, 9.75pt</value>
   </data>
   <data name="groupBoxArrows.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 209</value>
+    <value>0, 223</value>
   </data>
   <data name="groupBoxArrows.Size" type="System.Drawing.Size, System.Drawing">
-    <value>142, 134</value>
+    <value>139, 139</value>
   </data>
   <data name="groupBoxArrows.Text" xml:space="preserve">
     <value>回転</value>
-  </data>
-  <data name="tableLayoutPanel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>2, 15</value>
   </data>
   <data name="tableLayoutPanel1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 1, 4, 4</value>
   </data>
   <data name="tableLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>138, 66</value>
+    <value>135, 66</value>
   </data>
   <data name="tableLayoutPanel2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>34, 22</value>
+    <value>33, 22</value>
   </data>
   <data name="tableLayoutPanel2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>69, 22</value>
+    <value>67, 22</value>
   </data>
   <data name="buttonAntiClock.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 12pt</value>
   </data>
+  <data name="buttonAntiClock.Location" type="System.Drawing.Point, System.Drawing">
+    <value>33, 0</value>
+  </data>
   <data name="buttonAntiClock.Size" type="System.Drawing.Size, System.Drawing">
-    <value>35, 22</value>
+    <value>34, 22</value>
   </data>
   <data name="buttonAntiClock.ToolTip" xml:space="preserve">
     <value>矢印の方向に結晶を回転します。</value>
@@ -539,7 +485,7 @@
     <value>Segoe UI Symbol, 12pt</value>
   </data>
   <data name="buttonClock.Size" type="System.Drawing.Size, System.Drawing">
-    <value>34, 22</value>
+    <value>33, 22</value>
   </data>
   <data name="buttonClock.ToolTip" xml:space="preserve">
     <value>矢印の方向に結晶を回転します。</value>
@@ -548,7 +494,7 @@
     <value>Segoe UI Symbol, 12pt</value>
   </data>
   <data name="buttonTopLeft.Size" type="System.Drawing.Size, System.Drawing">
-    <value>34, 22</value>
+    <value>33, 22</value>
   </data>
   <data name="buttonTopLeft.ToolTip" xml:space="preserve">
     <value>矢印の方向に結晶を回転します。</value>
@@ -560,7 +506,7 @@
     <value>0, 22</value>
   </data>
   <data name="buttonLeft.Size" type="System.Drawing.Size, System.Drawing">
-    <value>34, 22</value>
+    <value>33, 22</value>
   </data>
   <data name="buttonLeft.ToolTip" xml:space="preserve">
     <value>矢印の方向に結晶を回転します。</value>
@@ -572,7 +518,7 @@
     <value>0, 44</value>
   </data>
   <data name="buttonBottomLeft.Size" type="System.Drawing.Size, System.Drawing">
-    <value>34, 22</value>
+    <value>33, 22</value>
   </data>
   <data name="buttonBottomLeft.ToolTip" xml:space="preserve">
     <value>矢印の方向に結晶を回転します。</value>
@@ -581,10 +527,10 @@
     <value>Segoe UI Symbol, 12pt</value>
   </data>
   <data name="buttonBottom.Location" type="System.Drawing.Point, System.Drawing">
-    <value>34, 44</value>
+    <value>33, 44</value>
   </data>
   <data name="buttonBottom.Size" type="System.Drawing.Size, System.Drawing">
-    <value>69, 22</value>
+    <value>67, 22</value>
   </data>
   <data name="buttonBottom.ToolTip" xml:space="preserve">
     <value>矢印の方向に結晶を回転します。</value>
@@ -593,7 +539,7 @@
     <value>Segoe UI Symbol, 12pt</value>
   </data>
   <data name="buttonBottomRight.Location" type="System.Drawing.Point, System.Drawing">
-    <value>103, 44</value>
+    <value>100, 44</value>
   </data>
   <data name="buttonBottomRight.Size" type="System.Drawing.Size, System.Drawing">
     <value>35, 22</value>
@@ -604,14 +550,20 @@
   <data name="buttonTop.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 12pt</value>
   </data>
+  <data name="buttonTop.Location" type="System.Drawing.Point, System.Drawing">
+    <value>33, 0</value>
+  </data>
   <data name="buttonTop.Size" type="System.Drawing.Size, System.Drawing">
-    <value>69, 22</value>
+    <value>67, 22</value>
   </data>
   <data name="buttonTop.ToolTip" xml:space="preserve">
     <value>矢印の方向に結晶を回転します。</value>
   </data>
   <data name="buttonTopRight.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 12pt</value>
+  </data>
+  <data name="buttonTopRight.Location" type="System.Drawing.Point, System.Drawing">
+    <value>100, 0</value>
   </data>
   <data name="buttonTopRight.Size" type="System.Drawing.Size, System.Drawing">
     <value>35, 22</value>
@@ -623,7 +575,7 @@
     <value>Segoe UI Symbol, 12pt</value>
   </data>
   <data name="buttonRight.Location" type="System.Drawing.Point, System.Drawing">
-    <value>103, 22</value>
+    <value>100, 22</value>
   </data>
   <data name="buttonRight.Size" type="System.Drawing.Size, System.Drawing">
     <value>35, 22</value>
@@ -633,7 +585,7 @@
 (CTRL+SHIFT+→)</value>
   </data>
   <data name="panelArrowStep.Location" type="System.Drawing.Point, System.Drawing">
-    <value>2, 81</value>
+    <value>2, 86</value>
   </data>
   <data name="panelArrowStep.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 1, 4, 1</value>
@@ -642,13 +594,10 @@
     <value>2, 2, 2, 2</value>
   </data>
   <data name="panelArrowStep.Size" type="System.Drawing.Size, System.Drawing">
-    <value>138, 29</value>
+    <value>135, 29</value>
   </data>
   <data name="numericBoxStep.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="numericBoxStep.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 7, 0, 0</value>
   </data>
   <data name="numericBoxStep.HeaderText" xml:space="preserve">
     <value>ステップ</value>
@@ -672,13 +621,13 @@
     <value>Yu Gothic UI, 9.75pt</value>
   </data>
   <data name="checkBoxAnimation.Location" type="System.Drawing.Point, System.Drawing">
-    <value>2, 110</value>
+    <value>2, 115</value>
   </data>
   <data name="checkBoxAnimation.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 0, 0, 2</value>
   </data>
   <data name="checkBoxAnimation.Size" type="System.Drawing.Size, System.Drawing">
-    <value>138, 22</value>
+    <value>135, 22</value>
   </data>
   <data name="checkBoxAnimation.Text" xml:space="preserve">
     <value>アニメーション</value>
@@ -687,16 +636,19 @@
     <value>チェックすると、上のボタンをクリックした際に結晶が一定速度で回転します</value>
   </data>
   <data name="panel2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 201</value>
+    <value>0, 215</value>
+  </data>
+  <data name="panel2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>139, 8</value>
   </data>
   <data name="groupBoxCurrentDirection.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
   </data>
   <data name="groupBoxCurrentDirection.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 19</value>
+    <value>0, 23</value>
   </data>
   <data name="groupBoxCurrentDirection.Size" type="System.Drawing.Size, System.Drawing">
-    <value>142, 182</value>
+    <value>139, 192</value>
   </data>
   <data name="groupBoxCurrentDirection.Text" xml:space="preserve">
     <value>現在の結晶方位</value>
@@ -704,77 +656,77 @@
   <data name="groupBoxCurrentDirection.ToolTip" xml:space="preserve">
     <value>選択された結晶の現在の方位</value>
   </data>
-  <data name="panelCrystalDirection.Location" type="System.Drawing.Point, System.Drawing">
-    <value>2, 34</value>
-  </data>
   <data name="panelCrystalDirection.Size" type="System.Drawing.Size, System.Drawing">
-    <value>138, 146</value>
+    <value>135, 153</value>
   </data>
   <data name="tableLayoutPanel3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 61</value>
+    <value>0, 68</value>
   </data>
   <data name="tableLayoutPanel3.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
+  <data name="tableLayoutPanel3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>135, 85</value>
+  </data>
   <data name="label6.Location" type="System.Drawing.Point, System.Drawing">
-    <value>123, 61</value>
+    <value>119, 61</value>
   </data>
   <data name="label6.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 5, 0, 0</value>
   </data>
-  <data name="numericUpDownEulerPsi.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="numericBoxEulerPsi.Location" type="System.Drawing.Point, System.Drawing">
     <value>26, 57</value>
   </data>
-  <data name="numericUpDownEulerPsi.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="numericBoxEulerPsi.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>1, 1, 1, 0</value>
   </data>
-  <data name="numericUpDownEulerPsi.Size" type="System.Drawing.Size, System.Drawing">
-    <value>94, 25</value>
+  <data name="numericBoxEulerPsi.Size" type="System.Drawing.Size, System.Drawing">
+    <value>90, 27</value>
   </data>
-  <data name="numericUpDownEulerPsi.ToolTip" xml:space="preserve">
+  <data name="numericBoxEulerPsi.ToolTip" xml:space="preserve">
     <value>オイラー角を設定/表示します。</value>
   </data>
   <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>123, 5</value>
+    <value>119, 5</value>
   </data>
   <data name="label2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 5, 0, 0</value>
   </data>
-  <data name="numericUpDownEulerTheta.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="numericBoxEulerTheta.Location" type="System.Drawing.Point, System.Drawing">
     <value>26, 29</value>
   </data>
-  <data name="numericUpDownEulerTheta.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="numericBoxEulerTheta.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>1, 1, 1, 0</value>
   </data>
-  <data name="numericUpDownEulerTheta.Size" type="System.Drawing.Size, System.Drawing">
-    <value>94, 25</value>
+  <data name="numericBoxEulerTheta.Size" type="System.Drawing.Size, System.Drawing">
+    <value>90, 27</value>
   </data>
-  <data name="numericUpDownEulerTheta.ToolTip" xml:space="preserve">
+  <data name="numericBoxEulerTheta.ToolTip" xml:space="preserve">
     <value>オイラー角を設定/表示します。</value>
   </data>
-  <data name="numericUpDownEulerPhi.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="numericBoxEulerPhi.Location" type="System.Drawing.Point, System.Drawing">
     <value>26, 1</value>
   </data>
-  <data name="numericUpDownEulerPhi.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="numericBoxEulerPhi.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>1, 1, 1, 0</value>
   </data>
-  <data name="numericUpDownEulerPhi.Size" type="System.Drawing.Size, System.Drawing">
-    <value>94, 25</value>
+  <data name="numericBoxEulerPhi.Size" type="System.Drawing.Size, System.Drawing">
+    <value>90, 27</value>
   </data>
-  <data name="numericUpDownEulerPhi.ToolTip" xml:space="preserve">
+  <data name="numericBoxEulerPhi.ToolTip" xml:space="preserve">
     <value>オイラー角を設定/表示します。</value>
   </data>
   <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>123, 33</value>
+    <value>119, 33</value>
   </data>
   <data name="label5.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 5, 0, 0</value>
   </data>
   <data name="label7.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 46</value>
+    <value>0, 49</value>
   </data>
   <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>66, 15</value>
+    <value>57, 19</value>
   </data>
   <data name="label7.Text" xml:space="preserve">
     <value>オイラー角</value>
@@ -783,7 +735,7 @@
     <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="buttonReset.Size" type="System.Drawing.Size, System.Drawing">
-    <value>138, 22</value>
+    <value>135, 25</value>
   </data>
   <data name="buttonReset.Text" xml:space="preserve">
     <value>方向リセット</value>
@@ -791,14 +743,14 @@
   <data name="buttonReset.ToolTip" xml:space="preserve">
     <value>回転を初期状態にリセットします。</value>
   </data>
+  <data name="numericBoxMaxUVW.Size" type="System.Drawing.Size, System.Drawing">
+    <value>135, 24</value>
+  </data>
   <data name="numericBoxMaxUVW.ToolTip" xml:space="preserve">
     <value>表示する晶帯軸指数の和の最大値</value>
   </data>
   <data name="numericBoxMaxUVW.ToolTip1" xml:space="preserve">
     <value>表示する晶帯軸指数の和の最大値</value>
-  </data>
-  <data name="labelCurrentIndex.Location" type="System.Drawing.Point, System.Drawing">
-    <value>2, 15</value>
   </data>
   <data name="labelCurrentIndex.ToolTip" xml:space="preserve">
     <value>おおよその晶帯軸指数</value>
@@ -810,7 +762,7 @@
     <value>0, 3, 0, 3</value>
   </data>
   <data name="label8.Size" type="System.Drawing.Size, System.Drawing">
-    <value>118, 19</value>
+    <value>117, 23</value>
   </data>
   <data name="label8.Text" xml:space="preserve">
     <value>回転状態表示/制御</value>
@@ -819,13 +771,13 @@
     <value>Yu Gothic UI, 9.75pt, style=Bold</value>
   </data>
   <data name="toolStripLabel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>127, 13</value>
+    <value>112, 17</value>
   </data>
   <data name="toolStripLabel1.Text" xml:space="preserve">
     <value>機能</value>
   </data>
   <data name="toolStripSeparator15.Size" type="System.Drawing.Size, System.Drawing">
-    <value>127, 6</value>
+    <value>112, 6</value>
   </data>
   <data name="toolStripButtonDatabase.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
@@ -870,7 +822,7 @@
     <value>MiddleCenter</value>
   </data>
   <data name="toolStripButtonDatabase.Size" type="System.Drawing.Size, System.Drawing">
-    <value>127, 36</value>
+    <value>112, 36</value>
   </data>
   <data name="toolStripButtonDatabase.Text" xml:space="preserve">
     <value>結晶データ
@@ -880,7 +832,7 @@
     <value>「結晶データベース」機能を開く</value>
   </data>
   <data name="toolStripSeparator14.Size" type="System.Drawing.Size, System.Drawing">
-    <value>127, 6</value>
+    <value>112, 6</value>
   </data>
   <data name="toolStripButtonSymmetryInformation.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
@@ -910,7 +862,7 @@
     <value>MiddleCenter</value>
   </data>
   <data name="toolStripButtonSymmetryInformation.Size" type="System.Drawing.Size, System.Drawing">
-    <value>127, 36</value>
+    <value>112, 36</value>
   </data>
   <data name="toolStripButtonSymmetryInformation.Text" xml:space="preserve">
     <value>対称性
@@ -920,7 +872,7 @@
     <value>「対称性情報」機能を開く</value>
   </data>
   <data name="toolStripSeparator9.Size" type="System.Drawing.Size, System.Drawing">
-    <value>127, 6</value>
+    <value>112, 6</value>
   </data>
   <data name="toolStripButtonScatteringFactor.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
@@ -951,7 +903,7 @@
     <value>MiddleCenter</value>
   </data>
   <data name="toolStripButtonScatteringFactor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>127, 36</value>
+    <value>112, 36</value>
   </data>
   <data name="toolStripButtonScatteringFactor.Text" xml:space="preserve">
     <value>散乱因子</value>
@@ -960,7 +912,7 @@
     <value>「散乱因子」機能を開く</value>
   </data>
   <data name="toolStripSeparator12.Size" type="System.Drawing.Size, System.Drawing">
-    <value>127, 6</value>
+    <value>112, 6</value>
   </data>
   <data name="toolStripButtonRotation.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
@@ -1012,7 +964,7 @@
     <value>MiddleCenter</value>
   </data>
   <data name="toolStripButtonRotation.Size" type="System.Drawing.Size, System.Drawing">
-    <value>127, 37</value>
+    <value>112, 37</value>
   </data>
   <data name="toolStripButtonRotation.Text" xml:space="preserve">
     <value>ゴニオ
@@ -1023,7 +975,7 @@
 機能を開く</value>
   </data>
   <data name="toolStripSeparator8.Size" type="System.Drawing.Size, System.Drawing">
-    <value>127, 6</value>
+    <value>112, 6</value>
   </data>
   <data name="toolStripButtonStructureViewer.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
@@ -1064,7 +1016,7 @@
     <value>MiddleCenter</value>
   </data>
   <data name="toolStripButtonStructureViewer.Size" type="System.Drawing.Size, System.Drawing">
-    <value>127, 37</value>
+    <value>112, 37</value>
   </data>
   <data name="toolStripButtonStructureViewer.Text" xml:space="preserve">
     <value>結晶構造
@@ -1074,7 +1026,7 @@
     <value>Structure Viewer (V) 結晶の三次元構造を描画します。</value>
   </data>
   <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>127, 6</value>
+    <value>112, 6</value>
   </data>
   <data name="toolStripButtonStereonet.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
@@ -1106,7 +1058,7 @@
     <value>MiddleCenter</value>
   </data>
   <data name="toolStripButtonStereonet.Size" type="System.Drawing.Size, System.Drawing">
-    <value>127, 36</value>
+    <value>112, 36</value>
   </data>
   <data name="toolStripButtonStereonet.Text" xml:space="preserve">
     <value>ステレオ
@@ -1117,7 +1069,7 @@
 ステレオネットを表示します。</value>
   </data>
   <data name="toolStripSeparator7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>127, 6</value>
+    <value>112, 6</value>
   </data>
   <data name="toolStripButtonDiffractionSingle.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
@@ -1139,7 +1091,7 @@
     <value>MiddleCenter</value>
   </data>
   <data name="toolStripButtonDiffractionSingle.Size" type="System.Drawing.Size, System.Drawing">
-    <value>127, 36</value>
+    <value>112, 36</value>
   </data>
   <data name="toolStripButtonDiffractionSingle.Text" xml:space="preserve">
     <value>回折
@@ -1149,7 +1101,7 @@
     <value>「回折シミュレータ」機能を開く</value>
   </data>
   <data name="toolStripSeparator4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>127, 6</value>
+    <value>112, 6</value>
   </data>
   <data name="toolStripButtonTrajectorySimulator.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
@@ -1182,7 +1134,7 @@
     <value>MiddleCenter</value>
   </data>
   <data name="toolStripButtonTrajectorySimulator.Size" type="System.Drawing.Size, System.Drawing">
-    <value>127, 36</value>
+    <value>112, 36</value>
   </data>
   <data name="toolStripButtonTrajectorySimulator.Text" xml:space="preserve">
     <value> 電子飛程
@@ -1193,7 +1145,7 @@
 機能を開く</value>
   </data>
   <data name="toolStripSeparator10.Size" type="System.Drawing.Size, System.Drawing">
-    <value>127, 6</value>
+    <value>112, 6</value>
   </data>
   <data name="toolStripButtonImageSimulator.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
@@ -1255,7 +1207,7 @@
     <value>MiddleCenter</value>
   </data>
   <data name="toolStripButtonImageSimulator.Size" type="System.Drawing.Size, System.Drawing">
-    <value>127, 33</value>
+    <value>112, 34</value>
   </data>
   <data name="toolStripButtonImageSimulator.Text" xml:space="preserve">
     <value>HRTEM/STEM
@@ -1265,7 +1217,7 @@
     <value>「HRTEMシミュレータ」機能を開く</value>
   </data>
   <data name="toolStripSeparator13.Size" type="System.Drawing.Size, System.Drawing">
-    <value>127, 6</value>
+    <value>112, 6</value>
   </data>
   <data name="toolStripButtonSpotIDv1.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
@@ -1293,7 +1245,7 @@
     <value>MiddleCenter</value>
   </data>
   <data name="toolStripButtonSpotIDv1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>127, 37</value>
+    <value>112, 37</value>
   </data>
   <data name="toolStripButtonSpotIDv1.Text" xml:space="preserve">
     <value>スポットID
@@ -1303,7 +1255,7 @@ v1</value>
     <value>「スポットID v1」機能を開く</value>
   </data>
   <data name="toolStripSeparator2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>127, 6</value>
+    <value>112, 6</value>
   </data>
   <data name="toolStripButtonSpotIDv2.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
@@ -1356,7 +1308,7 @@ v1</value>
     <value>MiddleCenter</value>
   </data>
   <data name="toolStripButtonSpotIDv2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>127, 39</value>
+    <value>112, 39</value>
   </data>
   <data name="toolStripButtonSpotIDv2.Text" xml:space="preserve">
     <value>スポット ID
@@ -1366,7 +1318,7 @@ v2</value>
     <value>「スポットID v2」機能を開く</value>
   </data>
   <data name="toolStripSeparator24.Size" type="System.Drawing.Size, System.Drawing">
-    <value>127, 6</value>
+    <value>112, 6</value>
   </data>
   <data name="toolStripButtonEBSD.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
@@ -1415,7 +1367,7 @@ v2</value>
     <value>Magenta</value>
   </data>
   <data name="toolStripButtonEBSD.Size" type="System.Drawing.Size, System.Drawing">
-    <value>127, 36</value>
+    <value>112, 36</value>
   </data>
   <data name="toolStripButtonEBSD.Text" xml:space="preserve">
     <value> EBSD
@@ -1425,7 +1377,7 @@ v2</value>
     <value>EBSD機能を開く</value>
   </data>
   <data name="toolStripSeparator19.Size" type="System.Drawing.Size, System.Drawing">
-    <value>127, 6</value>
+    <value>112, 6</value>
   </data>
   <data name="toolStripButtonDiffractionPoly.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
@@ -1470,121 +1422,121 @@ v2</value>
     <value>MiddleCenter</value>
   </data>
   <data name="toolStripButtonDiffractionPoly.Size" type="System.Drawing.Size, System.Drawing">
-    <value>127, 36</value>
+    <value>112, 36</value>
   </data>
   <data name="toolStripButtonDiffractionPoly.ToolTipText" xml:space="preserve">
     <value>粉末回折機能を開く</value>
   </data>
   <data name="fileToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>65, 20</value>
+    <value>57, 21</value>
   </data>
   <data name="fileToolStripMenuItem.Text" xml:space="preserve">
     <value>ファイル</value>
   </data>
   <data name="readCrystalDataToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>344, 22</value>
+    <value>307, 22</value>
   </data>
   <data name="readCrystalDataToolStripMenuItem.Text" xml:space="preserve">
     <value>結晶リストを読込 (現在のリストを消去)</value>
   </data>
   <data name="readCrystalDataAndAddToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>344, 22</value>
+    <value>307, 22</value>
   </data>
   <data name="readCrystalDataAndAddToolStripMenuItem.Text" xml:space="preserve">
     <value>結晶リストを読込 (現在のリストに追加)</value>
   </data>
   <data name="toolStripMenuItemReadInitialCrystalList.Size" type="System.Drawing.Size, System.Drawing">
-    <value>344, 22</value>
+    <value>307, 22</value>
   </data>
   <data name="toolStripMenuItemReadInitialCrystalList.Text" xml:space="preserve">
     <value>結晶リストを初期状態に戻す</value>
   </data>
   <data name="toolStripSeparator21.Size" type="System.Drawing.Size, System.Drawing">
-    <value>341, 6</value>
+    <value>304, 6</value>
   </data>
   <data name="readCrystalFromCIFOrAMCFileToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>344, 22</value>
+    <value>307, 22</value>
   </data>
   <data name="readCrystalFromCIFOrAMCFileToolStripMenuItem.Text" xml:space="preserve">
     <value>CIFあるいはAMCファイルから結晶を読み込み</value>
   </data>
   <data name="toolStripSeparator6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>341, 6</value>
+    <value>304, 6</value>
   </data>
   <data name="saveCrystalDataToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>344, 22</value>
+    <value>307, 22</value>
   </data>
   <data name="saveCrystalDataToolStripMenuItem.Text" xml:space="preserve">
     <value>結晶リストを保存</value>
   </data>
   <data name="toolStripMenuItemExportCIF.Size" type="System.Drawing.Size, System.Drawing">
-    <value>344, 22</value>
+    <value>307, 22</value>
   </data>
   <data name="toolStripMenuItemExportCIF.Text" xml:space="preserve">
     <value>選択結晶をCIF形式で書き出し</value>
   </data>
   <data name="toolStripSeparator5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>341, 6</value>
+    <value>304, 6</value>
   </data>
   <data name="toolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>344, 22</value>
+    <value>307, 22</value>
   </data>
   <data name="toolStripMenuItem1.Text" xml:space="preserve">
     <value>現在のリストを消去</value>
   </data>
   <data name="toolStripSeparator3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>341, 6</value>
+    <value>304, 6</value>
   </data>
   <data name="exitToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>344, 22</value>
+    <value>307, 22</value>
   </data>
   <data name="exitToolStripMenuItem.Text" xml:space="preserve">
     <value>閉じる</value>
   </data>
   <data name="optionToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>79, 20</value>
+    <value>67, 21</value>
   </data>
   <data name="optionToolStripMenuItem.Text" xml:space="preserve">
     <value>オプション</value>
   </data>
   <data name="toolTipToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>429, 22</value>
+    <value>362, 22</value>
   </data>
   <data name="toolTipToolStripMenuItem.Text" xml:space="preserve">
     <value>ツールチップを表示</value>
   </data>
   <data name="toolStripMenuItemUseMillerBravais.Size" type="System.Drawing.Size, System.Drawing">
-    <value>429, 22</value>
+    <value>362, 22</value>
   </data>
   <data name="toolStripSeparator11.Size" type="System.Drawing.Size, System.Drawing">
-    <value>426, 6</value>
+    <value>359, 6</value>
   </data>
   <data name="resetRegistryToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>429, 22</value>
+    <value>362, 22</value>
   </data>
   <data name="resetRegistryToolStripMenuItem.Text" xml:space="preserve">
     <value>レジストリを初期化 (要再起動)</value>
   </data>
   <data name="toolStripMenuItemDisableNative.Size" type="System.Drawing.Size, System.Drawing">
-    <value>429, 22</value>
+    <value>362, 22</value>
   </data>
   <data name="toolStripMenuItemDisableNative.Text" xml:space="preserve">
     <value>Crystallography.Native.dll を無効化 (要再起動)</value>
   </data>
   <data name="disableOpneGLToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>429, 22</value>
+    <value>362, 22</value>
   </data>
   <data name="disableOpneGLToolStripMenuItem.Text" xml:space="preserve">
     <value>OpenGLによる全てのレンダリングを無効化 (要再起動)</value>
   </data>
   <data name="toolStripMenuItemDisableTextRendering.Size" type="System.Drawing.Size, System.Drawing">
-    <value>429, 22</value>
+    <value>362, 22</value>
   </data>
   <data name="toolStripMenuItemDisableTextRendering.Text" xml:space="preserve">
     <value>OpenGLによるテキストレンダリングを無効化 (要再起動)</value>
   </data>
   <data name="toolStripMenuItemUseMKL.Size" type="System.Drawing.Size, System.Drawing">
-    <value>429, 22</value>
+    <value>362, 22</value>
   </data>
   <data name="toolStripMenuItemUseMKL.Text" xml:space="preserve">
     <value>MKL ライブラリを使用</value>
@@ -1593,85 +1545,82 @@ v2</value>
     <value>Intel MKL を有効化し行列計算を高速化します。初回使用時に約55MBダウンロードします。</value>
   </data>
   <data name="toolStripMenuItemDarkMode.Size" type="System.Drawing.Size, System.Drawing">
-    <value>429, 22</value>
+    <value>362, 22</value>
   </data>
   <data name="toolStripMenuItemDarkMode.Text" xml:space="preserve">
     <value>ダークモード</value>
   </data>
   <data name="toolStripSeparator20.Size" type="System.Drawing.Size, System.Drawing">
-    <value>426, 6</value>
+    <value>359, 6</value>
   </data>
   <data name="powderDiffractionFunctionToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>429, 22</value>
+    <value>362, 22</value>
   </data>
   <data name="toolStripSeparatorCapture.Size" type="System.Drawing.Size, System.Drawing">
-    <value>426, 6</value>
+    <value>359, 6</value>
   </data>
   <data name="captureGUIToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>429, 22</value>
+    <value>362, 22</value>
   </data>
   <data name="helpToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>57, 20</value>
+    <value>52, 21</value>
   </data>
   <data name="helpToolStripMenuItem.Text" xml:space="preserve">
     <value>ヘルプ</value>
   </data>
   <data name="checkUpdatesToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>162, 22</value>
+    <value>158, 22</value>
   </data>
   <data name="checkUpdatesToolStripMenuItem.Text" xml:space="preserve">
     <value>アップデート</value>
   </data>
   <data name="toolStripSeparator16.Size" type="System.Drawing.Size, System.Drawing">
-    <value>159, 6</value>
+    <value>155, 6</value>
   </data>
   <data name="hintToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>162, 22</value>
+    <value>158, 22</value>
   </data>
   <data name="hintToolStripMenuItem.Text" xml:space="preserve">
     <value>ヒント</value>
   </data>
   <data name="versionHistoryToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>162, 22</value>
+    <value>158, 22</value>
   </data>
   <data name="versionHistoryToolStripMenuItem.Text" xml:space="preserve">
     <value>バージョン履歴</value>
   </data>
   <data name="licenseToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>162, 22</value>
+    <value>158, 22</value>
   </data>
   <data name="licenseToolStripMenuItem.Text" xml:space="preserve">
     <value>ライセンス</value>
   </data>
   <data name="toolStripSeparator18.Size" type="System.Drawing.Size, System.Drawing">
-    <value>159, 6</value>
+    <value>155, 6</value>
   </data>
   <data name="githubPageToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>162, 22</value>
+    <value>158, 22</value>
   </data>
   <data name="githubPageToolStripMenuItem.Text" xml:space="preserve">
     <value>Github ページ</value>
   </data>
   <data name="reportBugsRequestsOrCommentsToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>162, 22</value>
+    <value>158, 22</value>
   </data>
   <data name="reportBugsRequestsOrCommentsToolStripMenuItem1.Text" xml:space="preserve">
     <value>バグ、要望報告</value>
   </data>
   <data name="toolStripSeparator17.Size" type="System.Drawing.Size, System.Drawing">
-    <value>159, 6</value>
+    <value>155, 6</value>
   </data>
   <data name="helpwebToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>162, 22</value>
+    <value>158, 22</value>
   </data>
   <data name="helpwebToolStripMenuItem.Text" xml:space="preserve">
     <value>使い方 (WEB)</value>
   </data>
   <data name="githubWikiToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>162, 22</value>
-  </data>
-  <data name="languageToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>88, 20</value>
+    <value>158, 22</value>
   </data>
   <data name="englishToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -1684,9 +1633,6 @@ v2</value>
         YkKGgTAo9yADeEaHp2ISDEN3Jdib6JKkGgbC+XN3/gcA46WQ4mYS36cAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="englishToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>274, 26</value>
-  </data>
   <data name="japaneseToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABMAAAASCAYAAAC5DOVpAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAA
@@ -1695,26 +1641,23 @@ v2</value>
         8BHZAo1V0r8sVkWOAAAAAElFTkSuQmCC
 </value>
   </data>
-  <data name="japaneseToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>274, 26</value>
-  </data>
   <data name="macroToolStripMenuItem.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
   </data>
   <data name="macroToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>54, 20</value>
+    <value>49, 21</value>
   </data>
   <data name="macroToolStripMenuItem.Text" xml:space="preserve">
     <value>マクロ</value>
   </data>
   <data name="editorToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 22</value>
+    <value>102, 22</value>
   </data>
   <data name="editorToolStripMenuItem.Text" xml:space="preserve">
     <value>編集</value>
   </data>
   <data name="toolStripSeparator22.Size" type="System.Drawing.Size, System.Drawing">
-    <value>97, 6</value>
+    <value>99, 6</value>
   </data>
   <data name="contextMenuStripListBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>109, 99</value>
