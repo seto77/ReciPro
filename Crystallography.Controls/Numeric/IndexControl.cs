@@ -18,6 +18,9 @@ namespace Crystallography.Controls
         #region ラベル表示 (Mode / SubScript / Bracket)
 
         private string subScript = "";
+        // 260519Cl WFO1000 対応: DesignerSerializationVisibility を明示
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
+        [DefaultValue("")]
         public string SubScript
         {
             get => subScript;
@@ -25,6 +28,9 @@ namespace Crystallography.Controls
         }
 
         private ModeEnum mode = ModeEnum.Plane;
+        // 260519Cl WFO1000 対応
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
+        [DefaultValue(ModeEnum.Plane)]
         public ModeEnum Mode
         {
             get => mode;
@@ -32,6 +38,9 @@ namespace Crystallography.Controls
         }
 
         private BracketEnum bracket = BracketEnum.Round;
+        // 260519Cl WFO1000 対応
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
+        [DefaultValue(BracketEnum.Round)]
         public BracketEnum Bracket
         {
             get => bracket;
@@ -62,6 +71,9 @@ namespace Crystallography.Controls
             }
         }
 
+        // 260519Cl WFO1000 対応
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
+        [DefaultValue(true)]
         public bool LabelVisible { get=>labelLaTexX.Visible; set { labelLaTexX.Visible = labelLaTexY.Visible = labelLaTexZ.Visible = labelLaTexW.Visible = value; } }
 
         #endregion
