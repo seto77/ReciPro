@@ -122,8 +122,13 @@
             checkBoxShowGIndices = new System.Windows.Forms.CheckBox();
             checkBoxShowZoneAxisIndices = new System.Windows.Forms.CheckBox();
             groupBoxSimulationParameters = new System.Windows.Forms.GroupBox();
+            flowLayoutPanel9 = new System.Windows.Forms.FlowLayoutPanel();
+            flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             labelMasterPatternGrid = new System.Windows.Forms.Label();
             comboBoxMasterPatternGrid = new System.Windows.Forms.ComboBox();
+            flowLayoutPanel7 = new System.Windows.Forms.FlowLayoutPanel();
+            flowLayoutPanel6 = new System.Windows.Forms.FlowLayoutPanel();
+            flowLayoutPanel8 = new System.Windows.Forms.FlowLayoutPanel();
             statusStrip1 = new System.Windows.Forms.StatusStrip();
             toolStripProgressBar = new System.Windows.Forms.ToolStripProgressBar();
             toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
@@ -181,6 +186,11 @@
             groupBoxLatticePlanes.SuspendLayout();
             groupBoxKikuchiLines.SuspendLayout();
             groupBoxSimulationParameters.SuspendLayout();
+            flowLayoutPanel9.SuspendLayout();
+            flowLayoutPanel2.SuspendLayout();
+            flowLayoutPanel7.SuspendLayout();
+            flowLayoutPanel6.SuspendLayout();
+            flowLayoutPanel8.SuspendLayout();
             statusStrip1.SuspendLayout();
             flowLayoutPanelMasterPatternSelectors.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)trackBarMasterPatternEnergy).BeginInit();
@@ -202,8 +212,8 @@
             // 
             // numericBoxSampleTilt
             // 
-            numericBoxSampleTilt.BackColor = System.Drawing.Color.Transparent;
             resources.ApplyResources(numericBoxSampleTilt, "numericBoxSampleTilt");
+            numericBoxSampleTilt.BackColor = System.Drawing.Color.Transparent;
             numericBoxSampleTilt.Maximum = 0D;
             numericBoxSampleTilt.Minimum = -90D;
             numericBoxSampleTilt.Name = "numericBoxSampleTilt";
@@ -282,6 +292,7 @@
             // 
             // graphControlDepthProfile
             // 
+            resources.ApplyResources(graphControlDepthProfile, "graphControlDepthProfile");
             graphControlDepthProfile.AllowMouseOperation = true;
             graphControlDepthProfile.AxisLineColor = System.Drawing.Color.Gray;
             graphControlDepthProfile.AxisTextColor = System.Drawing.Color.Black;
@@ -295,7 +306,6 @@
             graphControlDepthProfile.DivisionLineYVisible = true;
             graphControlDepthProfile.FixRangeHorizontal = false;
             graphControlDepthProfile.FixRangeVertical = false;
-            resources.ApplyResources(graphControlDepthProfile, "graphControlDepthProfile");
             graphControlDepthProfile.GraphTitle = "";
             graphControlDepthProfile.IsIntegerX = false;
             graphControlDepthProfile.IsIntegerY = false;
@@ -333,6 +343,7 @@
             // 
             // graphControlEnergyProfile
             // 
+            resources.ApplyResources(graphControlEnergyProfile, "graphControlEnergyProfile");
             graphControlEnergyProfile.AllowMouseOperation = true;
             graphControlEnergyProfile.AxisLineColor = System.Drawing.Color.Gray;
             graphControlEnergyProfile.AxisTextColor = System.Drawing.Color.Black;
@@ -346,7 +357,6 @@
             graphControlEnergyProfile.DivisionLineYVisible = true;
             graphControlEnergyProfile.FixRangeHorizontal = false;
             graphControlEnergyProfile.FixRangeVertical = false;
-            resources.ApplyResources(graphControlEnergyProfile, "graphControlEnergyProfile");
             graphControlEnergyProfile.GraphTitle = "";
             graphControlEnergyProfile.IsIntegerX = false;
             graphControlEnergyProfile.IsIntegerY = false;
@@ -388,8 +398,8 @@
             // 
             // numericBoxDetTilt
             // 
-            numericBoxDetTilt.BackColor = System.Drawing.Color.Transparent;
             resources.ApplyResources(numericBoxDetTilt, "numericBoxDetTilt");
+            numericBoxDetTilt.BackColor = System.Drawing.Color.Transparent;
             numericBoxDetTilt.Maximum = 180D;
             numericBoxDetTilt.Minimum = 0D;
             numericBoxDetTilt.Name = "numericBoxDetTilt";
@@ -401,8 +411,8 @@
             // 
             // numericBoxDetRadius
             // 
-            numericBoxDetRadius.BackColor = System.Drawing.Color.Transparent;
             resources.ApplyResources(numericBoxDetRadius, "numericBoxDetRadius");
+            numericBoxDetRadius.BackColor = System.Drawing.Color.Transparent;
             numericBoxDetRadius.Maximum = 180D;
             numericBoxDetRadius.Minimum = 0D;
             numericBoxDetRadius.Name = "numericBoxDetRadius";
@@ -414,8 +424,8 @@
             // 
             // numericBoxZofDet
             // 
-            numericBoxZofDet.BackColor = System.Drawing.Color.Transparent;
             resources.ApplyResources(numericBoxZofDet, "numericBoxZofDet");
+            numericBoxZofDet.BackColor = System.Drawing.Color.Transparent;
             numericBoxZofDet.Maximum = 1000D;
             numericBoxZofDet.Minimum = -1000D;
             numericBoxZofDet.Name = "numericBoxZofDet";
@@ -425,8 +435,8 @@
             // 
             // numericBoxYofDet
             // 
-            numericBoxYofDet.BackColor = System.Drawing.Color.Transparent;
             resources.ApplyResources(numericBoxYofDet, "numericBoxYofDet");
+            numericBoxYofDet.BackColor = System.Drawing.Color.Transparent;
             numericBoxYofDet.Maximum = 1000D;
             numericBoxYofDet.Minimum = -1000D;
             numericBoxYofDet.Name = "numericBoxYofDet";
@@ -468,8 +478,8 @@
             // 
             // colorControlExcessLine
             // 
-            colorControlExcessLine.Argb = -2039584;
             resources.ApplyResources(colorControlExcessLine, "colorControlExcessLine");
+            colorControlExcessLine.Argb = -2039584;
             colorControlExcessLine.BackColor = System.Drawing.SystemColors.Control;
             colorControlExcessLine.Blue = 224;
             colorControlExcessLine.BlueF = 0.8784314F;
@@ -499,8 +509,8 @@
             // 
             // colorControlString
             // 
-            colorControlString.Argb = -1;
             resources.ApplyResources(colorControlString, "colorControlString");
+            colorControlString.Argb = -1;
             colorControlString.BackColor = System.Drawing.SystemColors.Control;
             colorControlString.Blue = 255;
             colorControlString.BlueF = 1F;
@@ -515,8 +525,8 @@
             // 
             // colorControlBackGround
             // 
-            colorControlBackGround.Argb = -14671840;
             resources.ApplyResources(colorControlBackGround, "colorControlBackGround");
+            colorControlBackGround.Argb = -14671840;
             colorControlBackGround.BackColor = System.Drawing.SystemColors.Control;
             colorControlBackGround.Blue = 32;
             colorControlBackGround.BlueF = 0.1254902F;
@@ -555,8 +565,8 @@
             // 
             // numericBoxKikuchiThreadSholdOfStructureFactor
             // 
-            numericBoxKikuchiThreadSholdOfStructureFactor.BackColor = System.Drawing.Color.Transparent;
             resources.ApplyResources(numericBoxKikuchiThreadSholdOfStructureFactor, "numericBoxKikuchiThreadSholdOfStructureFactor");
+            numericBoxKikuchiThreadSholdOfStructureFactor.BackColor = System.Drawing.Color.Transparent;
             numericBoxKikuchiThreadSholdOfStructureFactor.Maximum = 1000D;
             numericBoxKikuchiThreadSholdOfStructureFactor.Minimum = 1D;
             numericBoxKikuchiThreadSholdOfStructureFactor.Name = "numericBoxKikuchiThreadSholdOfStructureFactor";
@@ -568,8 +578,8 @@
             // 
             // numericBoxKikuchiThresholdOfLength
             // 
-            numericBoxKikuchiThresholdOfLength.BackColor = System.Drawing.Color.Transparent;
             resources.ApplyResources(numericBoxKikuchiThresholdOfLength, "numericBoxKikuchiThresholdOfLength");
+            numericBoxKikuchiThresholdOfLength.BackColor = System.Drawing.Color.Transparent;
             numericBoxKikuchiThresholdOfLength.Maximum = 100D;
             numericBoxKikuchiThresholdOfLength.Minimum = 0D;
             numericBoxKikuchiThresholdOfLength.Name = "numericBoxKikuchiThresholdOfLength";
@@ -672,6 +682,7 @@
             // 
             // groupBoxOutput
             // 
+            resources.ApplyResources(groupBoxOutput, "groupBoxOutput");
             groupBoxOutput.Controls.Add(flowLayoutPanelOutputRange);
             groupBoxOutput.Controls.Add(label3);
             groupBoxOutput.Controls.Add(label4);
@@ -683,7 +694,6 @@
             groupBoxOutput.Controls.Add(label8);
             groupBoxOutput.Controls.Add(label7);
             groupBoxOutput.Controls.Add(label10);
-            resources.ApplyResources(groupBoxOutput, "groupBoxOutput");
             groupBoxOutput.Name = "groupBoxOutput";
             groupBoxOutput.TabStop = false;
             // 
@@ -769,8 +779,8 @@
             // 
             // comboBoxGradient
             // 
-            comboBoxGradient.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             resources.ApplyResources(comboBoxGradient, "comboBoxGradient");
+            comboBoxGradient.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             comboBoxGradient.FormattingEnabled = true;
             comboBoxGradient.Items.AddRange(new object[] { resources.GetString("comboBoxGradient.Items"), resources.GetString("comboBoxGradient.Items1") });
             comboBoxGradient.Name = "comboBoxGradient";
@@ -778,8 +788,8 @@
             // 
             // comboBoxScale
             // 
-            comboBoxScale.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             resources.ApplyResources(comboBoxScale, "comboBoxScale");
+            comboBoxScale.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             comboBoxScale.FormattingEnabled = true;
             comboBoxScale.Items.AddRange(new object[] { resources.GetString("comboBoxScale.Items"), resources.GetString("comboBoxScale.Items1"), resources.GetString("comboBoxScale.Items2"), resources.GetString("comboBoxScale.Items3") });
             comboBoxScale.Name = "comboBoxScale";
@@ -922,10 +932,10 @@
             // 
             // tabControl1
             // 
+            resources.ApplyResources(tabControl1, "tabControl1");
             tabControl1.Controls.Add(tabPage1);
             tabControl1.Controls.Add(tabPage2);
             tabControl1.Controls.Add(tabPage3);
-            resources.ApplyResources(tabControl1, "tabControl1");
             tabControl1.HotTrack = true;
             tabControl1.Multiline = true;
             tabControl1.Name = "tabControl1";
@@ -933,16 +943,17 @@
             // 
             // tabPage1
             // 
+            resources.ApplyResources(tabPage1, "tabPage1");
             tabPage1.BackColor = System.Drawing.SystemColors.Control;
             tabPage1.Controls.Add(groupBoxEBSDGeometry);
             tabPage1.Controls.Add(groupBoxSampleCondition);
             tabPage1.Controls.Add(flowLayoutPanelViewAlong);
             tabPage1.Controls.Add(panelGeometry);
-            resources.ApplyResources(tabPage1, "tabPage1");
             tabPage1.Name = "tabPage1";
             // 
             // groupBoxEBSDGeometry
             // 
+            resources.ApplyResources(groupBoxEBSDGeometry, "groupBoxEBSDGeometry");
             groupBoxEBSDGeometry.Controls.Add(label2);
             groupBoxEBSDGeometry.Controls.Add(label17);
             groupBoxEBSDGeometry.Controls.Add(label16);
@@ -950,7 +961,6 @@
             groupBoxEBSDGeometry.Controls.Add(numericBoxDetRadius);
             groupBoxEBSDGeometry.Controls.Add(numericBoxZofDet);
             groupBoxEBSDGeometry.Controls.Add(numericBoxDetTilt);
-            resources.ApplyResources(groupBoxEBSDGeometry, "groupBoxEBSDGeometry");
             groupBoxEBSDGeometry.Name = "groupBoxEBSDGeometry";
             groupBoxEBSDGeometry.TabStop = false;
             // 
@@ -966,14 +976,15 @@
             // 
             // groupBoxSampleCondition
             // 
+            resources.ApplyResources(groupBoxSampleCondition, "groupBoxSampleCondition");
             groupBoxSampleCondition.Controls.Add(waveLengthControl);
             groupBoxSampleCondition.Controls.Add(numericBoxSampleTilt);
-            resources.ApplyResources(groupBoxSampleCondition, "groupBoxSampleCondition");
             groupBoxSampleCondition.Name = "groupBoxSampleCondition";
             groupBoxSampleCondition.TabStop = false;
             // 
             // tabPage2
             // 
+            resources.ApplyResources(tabPage2, "tabPage2");
             tabPage2.BackColor = System.Drawing.SystemColors.Control;
             tabPage2.Controls.Add(label15);
             tabPage2.Controls.Add(buttonCalcBSE);
@@ -983,7 +994,6 @@
             tabPage2.Controls.Add(poleFigureControl);
             tabPage2.Controls.Add(graphControlDepthProfile);
             tabPage2.Controls.Add(graphControlEnergyProfile);
-            resources.ApplyResources(tabPage2, "tabPage2");
             tabPage2.Name = "tabPage2";
             // 
             // label15
@@ -994,6 +1004,7 @@
             // 
             // tabPage3
             // 
+            resources.ApplyResources(tabPage3, "tabPage3");
             tabPage3.BackColor = System.Drawing.SystemColors.Control;
             tabPage3.Controls.Add(checkBoxDrawDetectorOutline);
             tabPage3.Controls.Add(groupBoxDetectorOutline);
@@ -1004,14 +1015,13 @@
             tabPage3.Controls.Add(checkBoxShowGIndices);
             tabPage3.Controls.Add(colorControlBackGround);
             tabPage3.Controls.Add(checkBoxShowZoneAxisIndices);
-            resources.ApplyResources(tabPage3, "tabPage3");
             tabPage3.Name = "tabPage3";
             // 
             // groupBoxDetectorOutline
             // 
+            resources.ApplyResources(groupBoxDetectorOutline, "groupBoxDetectorOutline");
             groupBoxDetectorOutline.Controls.Add(checkBoxShowMesh);
             groupBoxDetectorOutline.Controls.Add(checkBoxShowCircle);
-            resources.ApplyResources(groupBoxDetectorOutline, "groupBoxDetectorOutline");
             groupBoxDetectorOutline.Name = "groupBoxDetectorOutline";
             groupBoxDetectorOutline.TabStop = false;
             // 
@@ -1035,10 +1045,10 @@
             // 
             // groupBox2
             // 
+            resources.ApplyResources(groupBox2, "groupBox2");
             groupBox2.Controls.Add(trackBarStrSize);
             groupBox2.Controls.Add(label1);
             groupBox2.Controls.Add(colorControlString);
-            resources.ApplyResources(groupBox2, "groupBox2");
             groupBox2.Name = "groupBox2";
             groupBox2.TabStop = false;
             // 
@@ -1053,21 +1063,21 @@
             // 
             // groupBoxLatticePlanes
             // 
+            resources.ApplyResources(groupBoxLatticePlanes, "groupBoxLatticePlanes");
             groupBoxLatticePlanes.Controls.Add(radioButtonKikuchiThresholdOfLength);
             groupBoxLatticePlanes.Controls.Add(radioButtonKikuchiThresholdOfStructureFactor);
             groupBoxLatticePlanes.Controls.Add(numericBoxKikuchiThreadSholdOfStructureFactor);
             groupBoxLatticePlanes.Controls.Add(numericBoxKikuchiThresholdOfLength);
-            resources.ApplyResources(groupBoxLatticePlanes, "groupBoxLatticePlanes");
             groupBoxLatticePlanes.Name = "groupBoxLatticePlanes";
             groupBoxLatticePlanes.TabStop = false;
             // 
             // groupBoxKikuchiLines
             // 
+            resources.ApplyResources(groupBoxKikuchiLines, "groupBoxKikuchiLines");
             groupBoxKikuchiLines.Controls.Add(colorControlExcessLine);
             groupBoxKikuchiLines.Controls.Add(checkBoxKikuchiLine_Kinematical);
             groupBoxKikuchiLines.Controls.Add(trackBarLineWidth);
             groupBoxKikuchiLines.Controls.Add(label11);
-            resources.ApplyResources(groupBoxKikuchiLines, "groupBoxKikuchiLines");
             groupBoxKikuchiLines.Name = "groupBoxKikuchiLines";
             groupBoxKikuchiLines.TabStop = false;
             // 
@@ -1089,20 +1099,27 @@
             // 
             // groupBoxSimulationParameters
             // 
-            groupBoxSimulationParameters.Controls.Add(numericBoxMaxNumOfG);
-            groupBoxSimulationParameters.Controls.Add(labelMasterPatternGrid);
-            groupBoxSimulationParameters.Controls.Add(checkBoxNonLocalAbsorption);
-            groupBoxSimulationParameters.Controls.Add(comboBoxMasterPatternGrid);
-            groupBoxSimulationParameters.Controls.Add(numericBoxThicknessStep);
-            groupBoxSimulationParameters.Controls.Add(numericBoxEnergyStep);
-            groupBoxSimulationParameters.Controls.Add(numericBoxEnergyStart);
-            groupBoxSimulationParameters.Controls.Add(checkBoxTDSBackground);
-            groupBoxSimulationParameters.Controls.Add(numericBoxThicknessStart);
-            groupBoxSimulationParameters.Controls.Add(numericBoxEnergyEnd);
-            groupBoxSimulationParameters.Controls.Add(numericBoxThicknessEnd);
             resources.ApplyResources(groupBoxSimulationParameters, "groupBoxSimulationParameters");
+            groupBoxSimulationParameters.Controls.Add(flowLayoutPanel9);
             groupBoxSimulationParameters.Name = "groupBoxSimulationParameters";
             groupBoxSimulationParameters.TabStop = false;
+            // 
+            // flowLayoutPanel9
+            // 
+            resources.ApplyResources(flowLayoutPanel9, "flowLayoutPanel9");
+            flowLayoutPanel9.Controls.Add(flowLayoutPanel2);
+            flowLayoutPanel9.Controls.Add(flowLayoutPanel7);
+            flowLayoutPanel9.Controls.Add(flowLayoutPanel6);
+            flowLayoutPanel9.Controls.Add(flowLayoutPanel8);
+            flowLayoutPanel9.Name = "flowLayoutPanel9";
+            // 
+            // flowLayoutPanel2
+            // 
+            resources.ApplyResources(flowLayoutPanel2, "flowLayoutPanel2");
+            flowLayoutPanel2.Controls.Add(numericBoxMaxNumOfG);
+            flowLayoutPanel2.Controls.Add(labelMasterPatternGrid);
+            flowLayoutPanel2.Controls.Add(comboBoxMasterPatternGrid);
+            flowLayoutPanel2.Name = "flowLayoutPanel2";
             // 
             // labelMasterPatternGrid
             // 
@@ -1111,47 +1128,70 @@
             // 
             // comboBoxMasterPatternGrid
             // 
-            comboBoxMasterPatternGrid.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             resources.ApplyResources(comboBoxMasterPatternGrid, "comboBoxMasterPatternGrid");
+            comboBoxMasterPatternGrid.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             comboBoxMasterPatternGrid.FormattingEnabled = true;
             comboBoxMasterPatternGrid.Items.AddRange(new object[] { resources.GetString("comboBoxMasterPatternGrid.Items"), resources.GetString("comboBoxMasterPatternGrid.Items1"), resources.GetString("comboBoxMasterPatternGrid.Items2"), resources.GetString("comboBoxMasterPatternGrid.Items3"), resources.GetString("comboBoxMasterPatternGrid.Items4"), resources.GetString("comboBoxMasterPatternGrid.Items5"), resources.GetString("comboBoxMasterPatternGrid.Items6"), resources.GetString("comboBoxMasterPatternGrid.Items7"), resources.GetString("comboBoxMasterPatternGrid.Items8"), resources.GetString("comboBoxMasterPatternGrid.Items9") });
             comboBoxMasterPatternGrid.Name = "comboBoxMasterPatternGrid";
             comboBoxMasterPatternGrid.SelectedIndexChanged += MasterPatternSelectionChanged;
             // 
+            // flowLayoutPanel7
+            // 
+            resources.ApplyResources(flowLayoutPanel7, "flowLayoutPanel7");
+            flowLayoutPanel7.Controls.Add(numericBoxEnergyStart);
+            flowLayoutPanel7.Controls.Add(numericBoxEnergyEnd);
+            flowLayoutPanel7.Controls.Add(numericBoxEnergyStep);
+            flowLayoutPanel7.Name = "flowLayoutPanel7";
+            // 
+            // flowLayoutPanel6
+            // 
+            resources.ApplyResources(flowLayoutPanel6, "flowLayoutPanel6");
+            flowLayoutPanel6.Controls.Add(numericBoxThicknessStart);
+            flowLayoutPanel6.Controls.Add(numericBoxThicknessEnd);
+            flowLayoutPanel6.Controls.Add(numericBoxThicknessStep);
+            flowLayoutPanel6.Name = "flowLayoutPanel6";
+            // 
+            // flowLayoutPanel8
+            // 
+            resources.ApplyResources(flowLayoutPanel8, "flowLayoutPanel8");
+            flowLayoutPanel8.Controls.Add(checkBoxNonLocalAbsorption);
+            flowLayoutPanel8.Controls.Add(checkBoxTDSBackground);
+            flowLayoutPanel8.Name = "flowLayoutPanel8";
+            // 
             // statusStrip1
             // 
+            resources.ApplyResources(statusStrip1, "statusStrip1");
             statusStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
             statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { toolStripProgressBar, toolStripStatusLabel1, toolStripStatusLabel2, toolStripStatusLabel3 });
-            resources.ApplyResources(statusStrip1, "statusStrip1");
             statusStrip1.Name = "statusStrip1";
             // 
             // toolStripProgressBar
             // 
-            toolStripProgressBar.Name = "toolStripProgressBar";
             resources.ApplyResources(toolStripProgressBar, "toolStripProgressBar");
+            toolStripProgressBar.Name = "toolStripProgressBar";
             // 
             // toolStripStatusLabel1
             // 
-            toolStripStatusLabel1.Name = "toolStripStatusLabel1";
             resources.ApplyResources(toolStripStatusLabel1, "toolStripStatusLabel1");
+            toolStripStatusLabel1.Name = "toolStripStatusLabel1";
             // 
             // toolStripStatusLabel2
             // 
-            toolStripStatusLabel2.Name = "toolStripStatusLabel2";
             resources.ApplyResources(toolStripStatusLabel2, "toolStripStatusLabel2");
+            toolStripStatusLabel2.Name = "toolStripStatusLabel2";
             // 
             // toolStripStatusLabel3
             // 
-            toolStripStatusLabel3.Name = "toolStripStatusLabel3";
             resources.ApplyResources(toolStripStatusLabel3, "toolStripStatusLabel3");
+            toolStripStatusLabel3.Name = "toolStripStatusLabel3";
             // 
             // scalablePictureBoxAdvancedMasterPattern2D
             // 
+            resources.ApplyResources(scalablePictureBoxAdvancedMasterPattern2D, "scalablePictureBoxAdvancedMasterPattern2D");
             scalablePictureBoxAdvancedMasterPattern2D.ClampIntensityRangeToNewData = false;
             scalablePictureBoxAdvancedMasterPattern2D.ColorVisible = true;
             scalablePictureBoxAdvancedMasterPattern2D.DecimalPlacesForIntensity = 5;
             scalablePictureBoxAdvancedMasterPattern2D.FixZoomAndCenter = false;
-            resources.ApplyResources(scalablePictureBoxAdvancedMasterPattern2D, "scalablePictureBoxAdvancedMasterPattern2D");
             scalablePictureBoxAdvancedMasterPattern2D.FrequencyGraphVisible = false;
             scalablePictureBoxAdvancedMasterPattern2D.GradiaentVisible = true;
             scalablePictureBoxAdvancedMasterPattern2D.ImageFilter_DustAndScratches = false;
@@ -1247,8 +1287,8 @@
             // 
             // comboBoxMasterPattern2DHemisphere
             // 
-            comboBoxMasterPattern2DHemisphere.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             resources.ApplyResources(comboBoxMasterPattern2DHemisphere, "comboBoxMasterPattern2DHemisphere");
+            comboBoxMasterPattern2DHemisphere.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             comboBoxMasterPattern2DHemisphere.FormattingEnabled = true;
             comboBoxMasterPattern2DHemisphere.Items.AddRange(new object[] { resources.GetString("comboBoxMasterPattern2DHemisphere.Items"), resources.GetString("comboBoxMasterPattern2DHemisphere.Items1") });
             comboBoxMasterPattern2DHemisphere.Name = "comboBoxMasterPattern2DHemisphere";
@@ -1265,19 +1305,20 @@
             // 
             // panelMasterPattern3D
             // 
+            resources.ApplyResources(panelMasterPattern3D, "panelMasterPattern3D");
             panelMasterPattern3D.BackColor = System.Drawing.SystemColors.Control;
             panelMasterPattern3D.Controls.Add(panelMasterPattern3DAxes);
-            resources.ApplyResources(panelMasterPattern3D, "panelMasterPattern3D");
             panelMasterPattern3D.Name = "panelMasterPattern3D";
             // 
             // panelMasterPattern3DAxes
             // 
-            panelMasterPattern3DAxes.BackColor = System.Drawing.SystemColors.Control;
             resources.ApplyResources(panelMasterPattern3DAxes, "panelMasterPattern3DAxes");
+            panelMasterPattern3DAxes.BackColor = System.Drawing.SystemColors.Control;
             panelMasterPattern3DAxes.Name = "panelMasterPattern3DAxes";
             // 
             // groupBoxMasterPattern
             // 
+            resources.ApplyResources(groupBoxMasterPattern, "groupBoxMasterPattern");
             groupBoxMasterPattern.Controls.Add(flowLayoutPanel5);
             groupBoxMasterPattern.Controls.Add(flowLayoutPanel4);
             groupBoxMasterPattern.Controls.Add(flowLayoutPanel3);
@@ -1287,7 +1328,6 @@
             groupBoxMasterPattern.Controls.Add(panelMasterPattern3D);
             groupBoxMasterPattern.Controls.Add(buttonFitNistElasticSampler);
             groupBoxMasterPattern.Controls.Add(flowLayoutPanelMasterPatternSelectors);
-            resources.ApplyResources(groupBoxMasterPattern, "groupBoxMasterPattern");
             groupBoxMasterPattern.Name = "groupBoxMasterPattern";
             groupBoxMasterPattern.TabStop = false;
             // 
@@ -1361,21 +1401,19 @@
             // indexControl
             // 
             resources.ApplyResources(indexControl, "indexControl");
-            indexControl.BoxWidth = 38;
             indexControl.Bracket = IndexControl.BracketEnum.Round;
             indexControl.LabelVisible = false;
             indexControl.Mode = IndexControl.ModeEnum.Plane;
             indexControl.Name = "indexControl";
             indexControl.SubScript = "";
-            indexControl.UpDownWidth = 17;
             indexControl.Values = ((int, int, int))resources.GetObject("indexControl.Values");
             // 
             // groupBoxEBSDPattern
             // 
+            resources.ApplyResources(groupBoxEBSDPattern, "groupBoxEBSDPattern");
             groupBoxEBSDPattern.Controls.Add(graphicsBox);
             groupBoxEBSDPattern.Controls.Add(flowLayoutPanel1);
             groupBoxEBSDPattern.Controls.Add(groupBoxOutput);
-            resources.ApplyResources(groupBoxEBSDPattern, "groupBoxEBSDPattern");
             groupBoxEBSDPattern.Name = "groupBoxEBSDPattern";
             groupBoxEBSDPattern.TabStop = false;
             // 
@@ -1450,6 +1488,14 @@
             groupBoxKikuchiLines.PerformLayout();
             groupBoxSimulationParameters.ResumeLayout(false);
             groupBoxSimulationParameters.PerformLayout();
+            flowLayoutPanel9.ResumeLayout(false);
+            flowLayoutPanel9.PerformLayout();
+            flowLayoutPanel2.ResumeLayout(false);
+            flowLayoutPanel2.PerformLayout();
+            flowLayoutPanel7.ResumeLayout(false);
+            flowLayoutPanel6.ResumeLayout(false);
+            flowLayoutPanel8.ResumeLayout(false);
+            flowLayoutPanel8.PerformLayout();
             statusStrip1.ResumeLayout(false);
             statusStrip1.PerformLayout();
             flowLayoutPanelMasterPatternSelectors.ResumeLayout(false);
@@ -1606,6 +1652,11 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel5;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel4;
         private IndexControl indexControl;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel9;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel7;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel6;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel8;
     }
 }
 

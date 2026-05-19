@@ -122,72 +122,51 @@
     <value>Yu Gothic UI, 7.5pt</value>
   </data>
   <data name="textBoxCalcInformation.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 12</value>
+    <value>0, 15</value>
   </data>
   <data name="textBoxCalcInformation.Size" type="System.Drawing.Size, System.Drawing">
-    <value>210, 203</value>
-  </data>
-  <data name="textBoxCalcInformation.ToolTip" xml:space="preserve">
-    <value />
+    <value>210, 197</value>
   </data>
   <data name="label11.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="label11.Size" type="System.Drawing.Size, System.Drawing">
-    <value>106, 12</value>
+    <value>86, 15</value>
   </data>
   <data name="label11.Text" xml:space="preserve">
     <value>パフォーマンスログ</value>
-  </data>
-  <data name="label11.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="splitContainer2.Panel1.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="textBoxAtomInformation.Font" type="System.Drawing.Font, System.Drawing">
     <value>Courier New, 9pt</value>
   </data>
   <data name="textBoxAtomInformation.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 12</value>
+    <value>0, 15</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="textBoxAtomInformation.ScrollBars" type="System.Windows.Forms.ScrollBars, System.Windows.Forms">
     <value>Both</value>
   </data>
   <data name="textBoxAtomInformation.Size" type="System.Drawing.Size, System.Drawing">
-    <value>342, 203</value>
-  </data>
-  <data name="textBoxAtomInformation.ToolTip" xml:space="preserve">
-    <value />
+    <value>342, 197</value>
   </data>
   <data name="label13.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="label13.Size" type="System.Drawing.Size, System.Drawing">
-    <value>211, 12</value>
+    <value>197, 15</value>
   </data>
   <data name="label13.Text" xml:space="preserve">
     <value>選択した原子の情報 (座標の単位はÅ)</value>
   </data>
-  <data name="label13.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="splitContainer2.Panel2.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="splitContainer2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>556, 215</value>
+    <value>556, 212</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="splitContainer2.SplitterDistance" type="System.Int32, mscorlib">
     <value>210</value>
   </data>
-  <data name="splitContainer2.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="splitContainer1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 48</value>
+    <value>0, 49</value>
   </data>
   <data name="flowLayoutPanelLegend.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
@@ -196,13 +175,22 @@
     <value>516, 0</value>
   </data>
   <data name="flowLayoutPanelLegend.Size" type="System.Drawing.Size, System.Drawing">
-    <value>54, 460</value>
+    <value>54, 459</value>
   </data>
-  <data name="flowLayoutPanelLegend.ToolTip" xml:space="preserve">
-    <value />
+  <data name="tabControl.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
   </data>
-  <data name="splitContainer1.Panel1.ToolTip" xml:space="preserve">
-    <value />
+  <data name="tabControl.ItemSize" type="System.Drawing.Size, System.Drawing">
+    <value>72, 18</value>
+  </data>
+  <data name="tabControl.Size" type="System.Drawing.Size, System.Drawing">
+    <value>570, 253</value>
+  </data>
+  <data name="splitContainer1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>570, 716</value>
+  </data>
+  <data name="splitContainer1.SplitterDistance" type="System.Int32, mscorlib">
+    <value>459</value>
   </data>
   <data name="tabPageBounds.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
@@ -216,417 +204,17 @@
   <data name="tabPageBounds.Text" xml:space="preserve">
     <value>描画範囲</value>
   </data>
-  <data name="tabPageBounds.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="tabPageAtom.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="tabPageAtom.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
-  </data>
-  <data name="tabPageAtom.Size" type="System.Drawing.Size, System.Drawing">
-    <value>562, 227</value>
-  </data>
-  <data name="tabPageAtom.Text" xml:space="preserve">
-    <value>原子情報</value>
-  </data>
-  <data name="tabPageAtom.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="tabPageBond.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="tabPageBond.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
-  </data>
-  <data name="tabPageBond.Size" type="System.Drawing.Size, System.Drawing">
-    <value>562, 227</value>
-  </data>
-  <data name="tabPageBond.Text" xml:space="preserve">
-    <value>結合/多面体</value>
-  </data>
-  <data name="tabPageBond.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="tabPageUnitCell.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="tabPageUnitCell.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
-  </data>
-  <data name="tabPageUnitCell.Size" type="System.Drawing.Size, System.Drawing">
-    <value>562, 227</value>
-  </data>
-  <data name="tabPageUnitCell.Text" xml:space="preserve">
-    <value>単位胞</value>
-  </data>
-  <data name="tabPageUnitCell.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="tabPageLatticePlane.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="tabPageLatticePlane.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
-  </data>
-  <data name="tabPageLatticePlane.Size" type="System.Drawing.Size, System.Drawing">
-    <value>562, 227</value>
-  </data>
-  <data name="tabPageLatticePlane.Text" xml:space="preserve">
-    <value>格子面</value>
-  </data>
-  <data name="tabPageLatticePlane.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="tabPageCoordinateInformation.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="tabPageCoordinateInformation.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
-  </data>
-  <data name="tabPageCoordinateInformation.Size" type="System.Drawing.Size, System.Drawing">
-    <value>562, 227</value>
-  </data>
-  <data name="tabPageCoordinateInformation.Text" xml:space="preserve">
-    <value>配位情報</value>
-  </data>
-  <data name="tabPageCoordinateInformation.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="tabPageInformation.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="tabPageInformation.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
-  </data>
-  <data name="tabPageInformation.Size" type="System.Drawing.Size, System.Drawing">
-    <value>562, 227</value>
-  </data>
-  <data name="tabPageInformation.Text" xml:space="preserve">
-    <value>情報</value>
-  </data>
-  <data name="tabPageInformation.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="tabPageProjection.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
-  </data>
-  <data name="tabPageProjection.Size" type="System.Drawing.Size, System.Drawing">
-    <value>562, 227</value>
-  </data>
-  <data name="tabPageProjection.Text" xml:space="preserve">
-    <value>投影</value>
-  </data>
-  <data name="tabPageProjection.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="checkBoxSymElems_Inversions.Size" type="System.Drawing.Size, System.Drawing">
-    <value>60, 16</value>
-  </data>
-  <data name="checkBoxSymElems_Inversions.Text" xml:space="preserve">
-    <value>対称心</value>
-  </data>
-  <data name="checkBoxSymElems_Inversions.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="numericBoxInversionSymbolSize.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="numericBoxInversionSymbolSize.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 7, 0, 0</value>
-  </data>
-  <data name="numericBoxInversionSymbolSize.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="numericBoxInversionSymbolSize.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 7, 0, 0</value>
-  </data>
-  <data name="numericBoxInversionSymbolSize.HeaderText" xml:space="preserve">
-    <value>シンボルサイズ</value>
-  </data>
-  <data name="numericBoxInversionSymbolSize.Size" type="System.Drawing.Size, System.Drawing">
-    <value>147, 26</value>
-  </data>
-  <data name="numericBoxInversionSymbolSize.ToolTip1" xml:space="preserve">
-    <value />
-  </data>
-  <data name="colorControlInversion.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="colorControlInversion.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="colorControlInversion.HeaderText" xml:space="preserve">
-    <value>色</value>
-  </data>
-  <data name="colorControlInversion.Size" type="System.Drawing.Size, System.Drawing">
-    <value>37, 20</value>
-  </data>
-  <data name="colorControlInversion.ToolTip1" xml:space="preserve">
-    <value />
-  </data>
-  <data name="groupBoxInversion.Location" type="System.Drawing.Point, System.Drawing">
-    <value>369, 38</value>
-  </data>
-  <data name="groupBoxInversion.Size" type="System.Drawing.Size, System.Drawing">
-    <value>171, 102</value>
-  </data>
-  <data name="groupBoxInversion.Text" xml:space="preserve">
-    <value>対称心</value>
-  </data>
-  <data name="groupBoxInversion.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="checkBoxSymElems_Glides.Size" type="System.Drawing.Size, System.Drawing">
-    <value>60, 16</value>
-  </data>
-  <data name="checkBoxSymElems_Glides.Text" xml:space="preserve">
-    <value>映進面</value>
-  </data>
-  <data name="checkBoxSymElems_Glides.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="numericBoxPlaneSymbolSize.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="numericBoxPlaneSymbolSize.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 7, 0, 0</value>
-  </data>
-  <data name="numericBoxPlaneSymbolSize.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="numericBoxPlaneSymbolSize.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 7, 0, 0</value>
-  </data>
-  <data name="numericBoxPlaneSymbolSize.HeaderText" xml:space="preserve">
-    <value>シンボルサイズ</value>
-  </data>
-  <data name="numericBoxPlaneSymbolSize.Size" type="System.Drawing.Size, System.Drawing">
-    <value>146, 26</value>
-  </data>
-  <data name="numericBoxPlaneSymbolSize.ToolTip1" xml:space="preserve">
-    <value />
-  </data>
-  <data name="numericBoxPlaneLineWidth.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="numericBoxPlaneLineWidth.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 7, 0, 0</value>
-  </data>
-  <data name="numericBoxPlaneLineWidth.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="numericBoxPlaneLineWidth.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 7, 0, 0</value>
-  </data>
-  <data name="numericBoxPlaneLineWidth.HeaderText" xml:space="preserve">
-    <value>線の太さ</value>
-  </data>
-  <data name="numericBoxPlaneLineWidth.ToolTip1" xml:space="preserve">
-    <value />
-  </data>
-  <data name="checkBoxSymElems_Mirrors.Size" type="System.Drawing.Size, System.Drawing">
-    <value>60, 16</value>
-  </data>
-  <data name="checkBoxSymElems_Mirrors.Text" xml:space="preserve">
-    <value>鏡映面</value>
-  </data>
-  <data name="checkBoxSymElems_Mirrors.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="colorControlPlane.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="colorControlPlane.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="colorControlPlane.HeaderText" xml:space="preserve">
-    <value>色</value>
-  </data>
-  <data name="colorControlPlane.Size" type="System.Drawing.Size, System.Drawing">
-    <value>37, 20</value>
-  </data>
-  <data name="colorControlPlane.ToolTip1" xml:space="preserve">
-    <value />
-  </data>
-  <data name="groupBoxPlanes.Location" type="System.Drawing.Point, System.Drawing">
-    <value>188, 38</value>
-  </data>
-  <data name="groupBoxPlanes.Size" type="System.Drawing.Size, System.Drawing">
-    <value>168, 132</value>
-  </data>
-  <data name="groupBoxPlanes.Text" xml:space="preserve">
-    <value>対称面</value>
-  </data>
-  <data name="groupBoxPlanes.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="checkBoxSymElems_Rotation.Size" type="System.Drawing.Size, System.Drawing">
-    <value>60, 16</value>
-  </data>
-  <data name="checkBoxSymElems_Rotation.Text" xml:space="preserve">
-    <value>回転軸</value>
-  </data>
-  <data name="checkBoxSymElems_Rotation.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="numericBoxAxisSymbolSize.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="numericBoxAxisSymbolSize.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 7, 0, 0</value>
-  </data>
-  <data name="numericBoxAxisSymbolSize.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="numericBoxAxisSymbolSize.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 7, 0, 0</value>
-  </data>
-  <data name="numericBoxAxisSymbolSize.HeaderText" xml:space="preserve">
-    <value>シンボルサイズ</value>
-  </data>
-  <data name="numericBoxAxisSymbolSize.Size" type="System.Drawing.Size, System.Drawing">
-    <value>149, 26</value>
-  </data>
-  <data name="numericBoxAxisSymbolSize.ToolTip1" xml:space="preserve">
-    <value />
-  </data>
-  <data name="numericBoxAxisLineWidth.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="numericBoxAxisLineWidth.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 7, 0, 0</value>
-  </data>
-  <data name="numericBoxAxisLineWidth.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="numericBoxAxisLineWidth.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 7, 0, 0</value>
-  </data>
-  <data name="numericBoxAxisLineWidth.HeaderText" xml:space="preserve">
-    <value>線の太さ</value>
-  </data>
-  <data name="numericBoxAxisLineWidth.ToolTip1" xml:space="preserve">
-    <value />
-  </data>
-  <data name="checkBoxSymElems_Rotinversions.Size" type="System.Drawing.Size, System.Drawing">
-    <value>60, 16</value>
-  </data>
-  <data name="checkBoxSymElems_Rotinversions.Text" xml:space="preserve">
-    <value>回反軸</value>
-  </data>
-  <data name="checkBoxSymElems_Rotinversions.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="checkBoxSymElems_Screws.Location" type="System.Drawing.Point, System.Drawing">
-    <value>83, 21</value>
-  </data>
-  <data name="checkBoxSymElems_Screws.Size" type="System.Drawing.Size, System.Drawing">
-    <value>70, 16</value>
-  </data>
-  <data name="checkBoxSymElems_Screws.Text" xml:space="preserve">
-    <value>らせん軸</value>
-  </data>
-  <data name="checkBoxSymElems_Screws.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="colorControlAxisColor.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="colorControlAxisColor.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="colorControlAxisColor.HeaderText" xml:space="preserve">
-    <value>色</value>
-  </data>
-  <data name="colorControlAxisColor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>37, 20</value>
-  </data>
-  <data name="colorControlAxisColor.ToolTip1" xml:space="preserve">
-    <value />
-  </data>
-  <data name="groupBoxAxes.Text" xml:space="preserve">
-    <value>対称軸</value>
-  </data>
-  <data name="groupBoxAxes.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="checkBoxShowSymmetryElements.Size" type="System.Drawing.Size, System.Drawing">
-    <value>108, 16</value>
-  </data>
-  <data name="checkBoxShowSymmetryElements.Text" xml:space="preserve">
-    <value>対称要素を表示</value>
-  </data>
-  <data name="checkBoxShowSymmetryElements.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="tabPageSymElems.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
-  </data>
-  <data name="tabPageSymElems.Size" type="System.Drawing.Size, System.Drawing">
-    <value>562, 227</value>
-  </data>
-  <data name="tabPageSymElems.Text" xml:space="preserve">
-    <value>対称要素</value>
-  </data>
-  <data name="tabPageSymElems.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="tabPageMisc.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
-  </data>
-  <data name="tabPageMisc.Size" type="System.Drawing.Size, System.Drawing">
-    <value>562, 227</value>
-  </data>
-  <data name="tabPageMisc.Text" xml:space="preserve">
-    <value>その他</value>
-  </data>
-  <data name="tabPageMisc.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="tabControl.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="tabControl.ItemSize" type="System.Drawing.Size, System.Drawing">
-    <value>72, 18</value>
-  </data>
-  <data name="tabControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>570, 253</value>
-  </data>
-  <data name="tabControl.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="splitContainer1.Panel2.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="splitContainer1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>570, 717</value>
-  </data>
-  <data name="splitContainer1.SplitterDistance" type="System.Int32, mscorlib">
-    <value>460</value>
-  </data>
-  <data name="splitContainer1.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="tabControlBoundOption.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
   </data>
   <data name="tabControlBoundOption.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 22</value>
+    <value>3, 25</value>
   </data>
   <data name="tabControlBoundOption.Size" type="System.Drawing.Size, System.Drawing">
-    <value>556, 180</value>
-  </data>
-  <data name="tabControlBoundOption.ToolTip" xml:space="preserve">
-    <value />
+    <value>556, 177</value>
   </data>
   <data name="tabPageBoundUnitcell.Size" type="System.Drawing.Size, System.Drawing">
-    <value>505, 172</value>
-  </data>
-  <data name="tabPageBoundUnitcell.ToolTip" xml:space="preserve">
-    <value />
+    <value>505, 169</value>
   </data>
   <data name="buttonSetRange2.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
@@ -679,14 +267,15 @@
   <data name="numericBoxCRange.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
   </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="numericBoxCRange.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 7, 0, 0</value>
+    <value>0, 5, 0, 0</value>
   </data>
   <data name="numericBoxCRange.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="numericBoxCRange.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 7, 0, 0</value>
+    <value>0, 5, 0, 0</value>
   </data>
   <data name="numericBoxCRange.Location" type="System.Drawing.Point, System.Drawing">
     <value>87, 74</value>
@@ -701,13 +290,13 @@
     <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="numericBoxBRange.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 7, 0, 0</value>
+    <value>0, 5, 0, 0</value>
   </data>
   <data name="numericBoxBRange.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="numericBoxBRange.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 7, 0, 0</value>
+    <value>0, 5, 0, 0</value>
   </data>
   <data name="numericBoxBRange.Location" type="System.Drawing.Point, System.Drawing">
     <value>87, 48</value>
@@ -722,13 +311,13 @@
     <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="numericBoxARange.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 7, 0, 0</value>
+    <value>0, 5, 0, 0</value>
   </data>
   <data name="numericBoxARange.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="numericBoxARange.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 7, 0, 0</value>
+    <value>0, 5, 0, 0</value>
   </data>
   <data name="numericBoxARange.Location" type="System.Drawing.Point, System.Drawing">
     <value>87, 22</value>
@@ -743,13 +332,13 @@
     <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="numericBoxCCenter.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 7, 0, 0</value>
+    <value>0, 5, 0, 0</value>
   </data>
   <data name="numericBoxCCenter.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="numericBoxCCenter.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 7, 0, 0</value>
+    <value>0, 5, 0, 0</value>
   </data>
   <data name="numericBoxCCenter.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 74</value>
@@ -764,13 +353,13 @@
     <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="numericBoxBCenter.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 7, 0, 0</value>
+    <value>0, 5, 0, 0</value>
   </data>
   <data name="numericBoxBCenter.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="numericBoxBCenter.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 7, 0, 0</value>
+    <value>0, 5, 0, 0</value>
   </data>
   <data name="numericBoxBCenter.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 48</value>
@@ -785,13 +374,13 @@
     <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="numericBoxACenter.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 7, 0, 0</value>
+    <value>0, 5, 0, 0</value>
   </data>
   <data name="numericBoxACenter.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="numericBoxACenter.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 7, 0, 0</value>
+    <value>0, 5, 0, 0</value>
   </data>
   <data name="numericBoxACenter.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 22</value>
@@ -809,13 +398,10 @@
     <value>105, 5</value>
   </data>
   <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>29, 12</value>
+    <value>31, 15</value>
   </data>
   <data name="label2.Text" xml:space="preserve">
     <value>範囲</value>
-  </data>
-  <data name="label2.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="label4.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
@@ -824,13 +410,10 @@
     <value>357, 5</value>
   </data>
   <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>131, 12</value>
+    <value>121, 15</value>
   </data>
   <data name="label4.Text" xml:space="preserve">
     <value>範囲を以下の値にセット</value>
-  </data>
-  <data name="label4.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="label3.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
@@ -839,13 +422,10 @@
     <value>188, 5</value>
   </data>
   <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>131, 12</value>
+    <value>121, 15</value>
   </data>
   <data name="label3.Text" xml:space="preserve">
     <value>中心を以下の値にセット</value>
-  </data>
-  <data name="label3.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="label1.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
@@ -854,19 +434,13 @@
     <value>25, 5</value>
   </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>29, 12</value>
+    <value>31, 15</value>
   </data>
   <data name="label1.Text" xml:space="preserve">
     <value>中心</value>
   </data>
-  <data name="label1.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="tabPageBoundPlane.Size" type="System.Drawing.Size, System.Drawing">
-    <value>616, 172</value>
-  </data>
-  <data name="tabPageBoundPlane.ToolTip" xml:space="preserve">
-    <value />
+    <value>505, 169</value>
   </data>
   <data name="flowLayoutPanelLatticePlaneOptions.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 202</value>
@@ -874,14 +448,11 @@
   <data name="flowLayoutPanelLatticePlaneOptions.Size" type="System.Drawing.Size, System.Drawing">
     <value>556, 25</value>
   </data>
-  <data name="flowLayoutPanelLatticePlaneOptions.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="checkBoxShowBoundPlanes.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="checkBoxShowBoundPlanes.Size" type="System.Drawing.Size, System.Drawing">
-    <value>96, 16</value>
+    <value>95, 19</value>
   </data>
   <data name="checkBoxShowBoundPlanes.Text" xml:space="preserve">
     <value>境界面を表示</value>
@@ -893,19 +464,19 @@
     <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="numericBoxBoundPlanesOpacity.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 7, 0, 0</value>
+    <value>0, 5, 0, 0</value>
   </data>
   <data name="numericBoxBoundPlanesOpacity.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="numericBoxBoundPlanesOpacity.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 7, 0, 0</value>
+    <value>0, 5, 0, 0</value>
   </data>
   <data name="numericBoxBoundPlanesOpacity.HeaderText" xml:space="preserve">
     <value>透明度</value>
   </data>
   <data name="numericBoxBoundPlanesOpacity.Location" type="System.Drawing.Point, System.Drawing">
-    <value>105, 0</value>
+    <value>104, 0</value>
   </data>
   <data name="numericBoxBoundPlanesOpacity.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>5, 0, 0, 0</value>
@@ -923,10 +494,10 @@
     <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="checkBoxClipObjects.Location" type="System.Drawing.Point, System.Drawing">
-    <value>208, 3</value>
+    <value>207, 3</value>
   </data>
   <data name="checkBoxClipObjects.Size" type="System.Drawing.Size, System.Drawing">
-    <value>129, 16</value>
+    <value>121, 19</value>
   </data>
   <data name="checkBoxClipObjects.Text" xml:space="preserve">
     <value>境界面でクリップ</value>
@@ -935,16 +506,13 @@
     <value>境界面で原子と結合をクリップ</value>
   </data>
   <data name="flowLayoutPanelBoundType.Size" type="System.Drawing.Size, System.Drawing">
-    <value>556, 19</value>
-  </data>
-  <data name="flowLayoutPanelBoundType.ToolTip" xml:space="preserve">
-    <value />
+    <value>556, 22</value>
   </data>
   <data name="radioButtonBoundUnitCell.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="radioButtonBoundUnitCell.Size" type="System.Drawing.Size, System.Drawing">
-    <value>179, 16</value>
+    <value>176, 19</value>
   </data>
   <data name="radioButtonBoundUnitCell.Text" xml:space="preserve">
     <value>描画範囲を単位胞単位で指定</value>
@@ -956,10 +524,10 @@
     <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="radioButtonBoundPlane.Location" type="System.Drawing.Point, System.Drawing">
-    <value>188, 3</value>
+    <value>185, 3</value>
   </data>
   <data name="radioButtonBoundPlane.Size" type="System.Drawing.Size, System.Drawing">
-    <value>179, 16</value>
+    <value>176, 19</value>
   </data>
   <data name="radioButtonBoundPlane.Text" xml:space="preserve">
     <value>描画範囲を格子面単位で指定</value>
@@ -967,20 +535,53 @@
   <data name="radioButtonBoundPlane.ToolTip" xml:space="preserve">
     <value>チェックすると、描画範囲が結晶面に基づいて定義されます</value>
   </data>
+  <data name="tabPageAtom.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="tabPageAtom.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="tabPageAtom.Size" type="System.Drawing.Size, System.Drawing">
+    <value>562, 227</value>
+  </data>
+  <data name="tabPageAtom.Text" xml:space="preserve">
+    <value>原子情報</value>
+  </data>
   <data name="labelMessage.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt, style=Bold</value>
   </data>
   <data name="labelMessage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>215, 24</value>
+    <value>168, 30</value>
   </data>
-  <data name="labelMessage.ToolTip" xml:space="preserve">
-    <value />
+  <data name="tabPageBond.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="tabPageBond.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="tabPageBond.Size" type="System.Drawing.Size, System.Drawing">
+    <value>562, 227</value>
+  </data>
+  <data name="tabPageBond.Text" xml:space="preserve">
+    <value>結合/多面体</value>
+  </data>
+  <data name="tabPageUnitCell.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="tabPageUnitCell.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="tabPageUnitCell.Size" type="System.Drawing.Size, System.Drawing">
+    <value>562, 227</value>
+  </data>
+  <data name="tabPageUnitCell.Text" xml:space="preserve">
+    <value>単位胞</value>
   </data>
   <data name="checkBoxUnitCell.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="checkBoxUnitCell.Size" type="System.Drawing.Size, System.Drawing">
-    <value>108, 16</value>
+    <value>107, 19</value>
   </data>
   <data name="checkBoxUnitCell.Text" xml:space="preserve">
     <value>単位格子を表示</value>
@@ -1003,14 +604,11 @@
   <data name="flowLayoutPanelCellPlaneColors.Size" type="System.Drawing.Size, System.Drawing">
     <value>422, 27</value>
   </data>
-  <data name="flowLayoutPanelCellPlaneColors.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="radioButtonCellPlaneColorAll.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="radioButtonCellPlaneColorAll.Size" type="System.Drawing.Size, System.Drawing">
-    <value>95, 16</value>
+    <value>90, 19</value>
   </data>
   <data name="radioButtonCellPlaneColorAll.Text" xml:space="preserve">
     <value>全ての面の色</value>
@@ -1025,7 +623,7 @@
     <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="colorControlCellPlane.Location" type="System.Drawing.Point, System.Drawing">
-    <value>95, 3</value>
+    <value>90, 3</value>
   </data>
   <data name="colorControlCellPlane.ToolTip" xml:space="preserve">
     <value>すべてのセル面の色を設定</value>
@@ -1037,10 +635,10 @@
     <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="radioButtonCellPlaneColorEach.Location" type="System.Drawing.Point, System.Drawing">
-    <value>125, 1</value>
+    <value>120, 1</value>
   </data>
   <data name="radioButtonCellPlaneColorEach.Size" type="System.Drawing.Size, System.Drawing">
-    <value>71, 16</value>
+    <value>71, 19</value>
   </data>
   <data name="radioButtonCellPlaneColorEach.Text" xml:space="preserve">
     <value>各面の色</value>
@@ -1058,7 +656,7 @@
     <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="colorControlCellPlaneA.Location" type="System.Drawing.Point, System.Drawing">
-    <value>196, 3</value>
+    <value>191, 3</value>
   </data>
   <data name="colorControlCellPlaneA.Size" type="System.Drawing.Size, System.Drawing">
     <value>33, 20</value>
@@ -1079,7 +677,7 @@
     <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="colorControlCellPlaneB.Location" type="System.Drawing.Point, System.Drawing">
-    <value>229, 3</value>
+    <value>224, 3</value>
   </data>
   <data name="colorControlCellPlaneB.Size" type="System.Drawing.Size, System.Drawing">
     <value>34, 20</value>
@@ -1097,7 +695,7 @@
     <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="colorControlCellPlaneC.Location" type="System.Drawing.Point, System.Drawing">
-    <value>263, 3</value>
+    <value>258, 3</value>
   </data>
   <data name="colorControlCellPlaneC.Size" type="System.Drawing.Size, System.Drawing">
     <value>33, 20</value>
@@ -1112,19 +710,19 @@
     <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="numericBoxCellPlaneAlpha.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 7, 0, 0</value>
+    <value>0, 5, 0, 0</value>
   </data>
   <data name="numericBoxCellPlaneAlpha.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="numericBoxCellPlaneAlpha.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 7, 0, 0</value>
+    <value>0, 5, 0, 0</value>
   </data>
   <data name="numericBoxCellPlaneAlpha.HeaderText" xml:space="preserve">
     <value>不透明度</value>
   </data>
   <data name="numericBoxCellPlaneAlpha.Location" type="System.Drawing.Point, System.Drawing">
-    <value>311, 0</value>
+    <value>306, 0</value>
   </data>
   <data name="numericBoxCellPlaneAlpha.ToolTip" xml:space="preserve">
     <value>格子面の不透明度 (1: 不透明, 0: 透明)</value>
@@ -1138,14 +736,11 @@
   <data name="flowLayoutPanelCellEdgeColors.Size" type="System.Drawing.Size, System.Drawing">
     <value>461, 26</value>
   </data>
-  <data name="flowLayoutPanelCellEdgeColors.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="radioButtonCellEdgeColorAll.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="radioButtonCellEdgeColorAll.Size" type="System.Drawing.Size, System.Drawing">
-    <value>95, 16</value>
+    <value>90, 19</value>
   </data>
   <data name="radioButtonCellEdgeColorAll.Text" xml:space="preserve">
     <value>全ての辺の色</value>
@@ -1160,7 +755,7 @@
     <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="colorControlCellEdge.Location" type="System.Drawing.Point, System.Drawing">
-    <value>95, 3</value>
+    <value>90, 3</value>
   </data>
   <data name="colorControlCellEdge.ToolTip" xml:space="preserve">
     <value>すべてのセル辺の色を設定</value>
@@ -1172,10 +767,10 @@
     <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="radioButtonCellEdgeColorEach.Location" type="System.Drawing.Point, System.Drawing">
-    <value>125, 1</value>
+    <value>120, 1</value>
   </data>
   <data name="radioButtonCellEdgeColorEach.Size" type="System.Drawing.Size, System.Drawing">
-    <value>71, 16</value>
+    <value>71, 19</value>
   </data>
   <data name="radioButtonCellEdgeColorEach.Text" xml:space="preserve">
     <value>各辺の色</value>
@@ -1193,7 +788,7 @@
     <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="colorControlCellEdgeA.Location" type="System.Drawing.Point, System.Drawing">
-    <value>196, 3</value>
+    <value>191, 3</value>
   </data>
   <data name="colorControlCellEdgeA.Size" type="System.Drawing.Size, System.Drawing">
     <value>33, 20</value>
@@ -1214,7 +809,7 @@
     <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="colorControlCellEdgeB.Location" type="System.Drawing.Point, System.Drawing">
-    <value>229, 3</value>
+    <value>224, 3</value>
   </data>
   <data name="colorControlCellEdgeB.Size" type="System.Drawing.Size, System.Drawing">
     <value>34, 20</value>
@@ -1235,7 +830,7 @@
     <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="colorControlCellEdgeC.Location" type="System.Drawing.Point, System.Drawing">
-    <value>263, 3</value>
+    <value>258, 3</value>
   </data>
   <data name="colorControlCellEdgeC.Size" type="System.Drawing.Size, System.Drawing">
     <value>33, 20</value>
@@ -1250,19 +845,16 @@
     <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="label8.Location" type="System.Drawing.Point, System.Drawing">
-    <value>311, 3</value>
+    <value>306, 3</value>
   </data>
   <data name="label8.Size" type="System.Drawing.Size, System.Drawing">
-    <value>53, 12</value>
+    <value>49, 15</value>
   </data>
   <data name="label8.Text" xml:space="preserve">
     <value>辺の太さ</value>
   </data>
-  <data name="label8.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="trackBarCellEdgeWidth.Location" type="System.Drawing.Point, System.Drawing">
-    <value>370, 3</value>
+    <value>361, 3</value>
   </data>
   <data name="trackBarCellEdgeWidth.ToolTip" xml:space="preserve">
     <value>セル辺の線幅を設定</value>
@@ -1271,13 +863,13 @@
     <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="numericBoxCellTranslationC.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 7, 0, 0</value>
+    <value>0, 5, 0, 0</value>
   </data>
   <data name="numericBoxCellTranslationC.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="numericBoxCellTranslationC.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 7, 0, 0</value>
+    <value>0, 5, 0, 0</value>
   </data>
   <data name="numericBoxCellTranslationC.Location" type="System.Drawing.Point, System.Drawing">
     <value>239, 22</value>
@@ -1292,13 +884,13 @@
     <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="numericBoxCellTranslationB.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 7, 0, 0</value>
+    <value>0, 5, 0, 0</value>
   </data>
   <data name="numericBoxCellTranslationB.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="numericBoxCellTranslationB.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 7, 0, 0</value>
+    <value>0, 5, 0, 0</value>
   </data>
   <data name="numericBoxCellTranslationB.Location" type="System.Drawing.Point, System.Drawing">
     <value>169, 22</value>
@@ -1313,13 +905,13 @@
     <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="numericBoxCellTranslationA.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 7, 0, 0</value>
+    <value>0, 5, 0, 0</value>
   </data>
   <data name="numericBoxCellTranslationA.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="numericBoxCellTranslationA.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 7, 0, 0</value>
+    <value>0, 5, 0, 0</value>
   </data>
   <data name="numericBoxCellTranslationA.Location" type="System.Drawing.Point, System.Drawing">
     <value>97, 22</value>
@@ -1337,7 +929,7 @@
     <value>5, 136</value>
   </data>
   <data name="checkBoxShowSubCell.Size" type="System.Drawing.Size, System.Drawing">
-    <value>107, 16</value>
+    <value>97, 19</value>
   </data>
   <data name="checkBoxShowSubCell.Text" xml:space="preserve">
     <value>サブセルを表示</value>
@@ -1352,7 +944,7 @@
     <value>5, 103</value>
   </data>
   <data name="checkBoxCellShowEdge.Size" type="System.Drawing.Size, System.Drawing">
-    <value>72, 16</value>
+    <value>71, 19</value>
   </data>
   <data name="checkBoxCellShowEdge.Text" xml:space="preserve">
     <value>辺を表示</value>
@@ -1370,10 +962,7 @@
     <value>4, 5, 4, 5</value>
   </data>
   <data name="numericUpDownSubCellB.Size" type="System.Drawing.Size, System.Drawing">
-    <value>50, 19</value>
-  </data>
-  <data name="numericUpDownSubCellB.ToolTip" xml:space="preserve">
-    <value />
+    <value>50, 23</value>
   </data>
   <data name="label10.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
@@ -1382,13 +971,10 @@
     <value>22, 25</value>
   </data>
   <data name="label10.Size" type="System.Drawing.Size, System.Drawing">
-    <value>53, 12</value>
+    <value>55, 15</value>
   </data>
   <data name="label10.Text" xml:space="preserve">
     <value>平行移動</value>
-  </data>
-  <data name="label10.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="checkBoxCellShowPlane.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
@@ -1397,7 +983,7 @@
     <value>5, 64</value>
   </data>
   <data name="checkBoxCellShowPlane.Size" type="System.Drawing.Size, System.Drawing">
-    <value>72, 16</value>
+    <value>71, 19</value>
   </data>
   <data name="checkBoxCellShowPlane.Text" xml:space="preserve">
     <value>面を表示</value>
@@ -1415,10 +1001,7 @@
     <value>4, 5, 4, 5</value>
   </data>
   <data name="numericUpDownSubCellC.Size" type="System.Drawing.Size, System.Drawing">
-    <value>50, 19</value>
-  </data>
-  <data name="numericUpDownSubCellC.ToolTip" xml:space="preserve">
-    <value />
+    <value>50, 23</value>
   </data>
   <data name="numericUpDownSubCellA.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
@@ -1430,10 +1013,7 @@
     <value>4, 5, 4, 5</value>
   </data>
   <data name="numericUpDownSubCellA.Size" type="System.Drawing.Size, System.Drawing">
-    <value>50, 19</value>
-  </data>
-  <data name="numericUpDownSubCellA.ToolTip" xml:space="preserve">
-    <value />
+    <value>50, 23</value>
   </data>
   <data name="label17.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
@@ -1442,10 +1022,7 @@
     <value>257, 138</value>
   </data>
   <data name="label17.Size" type="System.Drawing.Size, System.Drawing">
-    <value>13, 12</value>
-  </data>
-  <data name="label17.ToolTip" xml:space="preserve">
-    <value />
+    <value>13, 15</value>
   </data>
   <data name="label16.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
@@ -1454,10 +1031,7 @@
     <value>187, 138</value>
   </data>
   <data name="label16.Size" type="System.Drawing.Size, System.Drawing">
-    <value>14, 12</value>
-  </data>
-  <data name="label16.ToolTip" xml:space="preserve">
-    <value />
+    <value>14, 15</value>
   </data>
   <data name="label12.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
@@ -1466,10 +1040,19 @@
     <value>113, 138</value>
   </data>
   <data name="label12.Size" type="System.Drawing.Size, System.Drawing">
-    <value>13, 12</value>
+    <value>13, 15</value>
   </data>
-  <data name="label12.ToolTip" xml:space="preserve">
-    <value />
+  <data name="tabPageLatticePlane.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="tabPageLatticePlane.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="tabPageLatticePlane.Size" type="System.Drawing.Size, System.Drawing">
+    <value>562, 227</value>
+  </data>
+  <data name="tabPageLatticePlane.Text" xml:space="preserve">
+    <value>格子面</value>
   </data>
   <data name="flowLayoutPanelLatticePlaneOpacity.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 200</value>
@@ -1477,20 +1060,17 @@
   <data name="flowLayoutPanelLatticePlaneOpacity.Size" type="System.Drawing.Size, System.Drawing">
     <value>556, 27</value>
   </data>
-  <data name="flowLayoutPanelLatticePlaneOpacity.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="numericBoxLatticePlaneOpacity.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="numericBoxLatticePlaneOpacity.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 7, 0, 0</value>
+    <value>0, 5, 0, 0</value>
   </data>
   <data name="numericBoxLatticePlaneOpacity.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="numericBoxLatticePlaneOpacity.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 7, 0, 0</value>
+    <value>0, 5, 0, 0</value>
   </data>
   <data name="numericBoxLatticePlaneOpacity.HeaderText" xml:space="preserve">
     <value>不透明度</value>
@@ -1501,56 +1081,74 @@
   <data name="numericBoxLatticePlaneOpacity.ToolTip1" xml:space="preserve">
     <value>格子面の不透明度（0=透明、1=不透明）</value>
   </data>
+  <data name="tabPageCoordinateInformation.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="tabPageCoordinateInformation.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="tabPageCoordinateInformation.Size" type="System.Drawing.Size, System.Drawing">
+    <value>562, 227</value>
+  </data>
+  <data name="tabPageCoordinateInformation.Text" xml:space="preserve">
+    <value>配位情報</value>
+  </data>
   <data name="atomCoordinateTable1.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="atomCoordinateTable1.Size" type="System.Drawing.Size, System.Drawing">
     <value>562, 227</value>
   </data>
-  <data name="atomCoordinateTable1.ToolTip" xml:space="preserve">
-    <value />
+  <data name="tabPageInformation.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="tabPageInformation.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="tabPageInformation.Size" type="System.Drawing.Size, System.Drawing">
+    <value>562, 227</value>
+  </data>
+  <data name="tabPageInformation.Text" xml:space="preserve">
+    <value>情報</value>
   </data>
   <data name="flowLayoutPanelGraphicsInfo.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 218</value>
+    <value>3, 215</value>
   </data>
   <data name="flowLayoutPanelGraphicsInfo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>556, 9</value>
-  </data>
-  <data name="flowLayoutPanelGraphicsInfo.ToolTip" xml:space="preserve">
-    <value />
+    <value>556, 12</value>
   </data>
   <data name="labelGraphicsCard.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 6.4pt</value>
   </data>
   <data name="labelGraphicsCard.Size" type="System.Drawing.Size, System.Drawing">
-    <value>83, 9</value>
-  </data>
-  <data name="labelGraphicsCard.ToolTip" xml:space="preserve">
-    <value />
+    <value>64, 12</value>
   </data>
   <data name="labelGraphicsDriver.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 6.4pt</value>
   </data>
   <data name="labelGraphicsDriver.Location" type="System.Drawing.Point, System.Drawing">
-    <value>92, 0</value>
+    <value>73, 0</value>
   </data>
   <data name="labelGraphicsDriver.Size" type="System.Drawing.Size, System.Drawing">
-    <value>89, 9</value>
-  </data>
-  <data name="labelGraphicsDriver.ToolTip" xml:space="preserve">
-    <value />
+    <value>69, 12</value>
   </data>
   <data name="labelOpenGLversion.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 6.4pt</value>
   </data>
   <data name="labelOpenGLversion.Location" type="System.Drawing.Point, System.Drawing">
-    <value>187, 0</value>
+    <value>148, 0</value>
   </data>
   <data name="labelOpenGLversion.Size" type="System.Drawing.Size, System.Drawing">
-    <value>91, 9</value>
+    <value>73, 12</value>
   </data>
-  <data name="labelOpenGLversion.ToolTip" xml:space="preserve">
-    <value />
+  <data name="tabPageProjection.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="tabPageProjection.Size" type="System.Drawing.Size, System.Drawing">
+    <value>562, 227</value>
+  </data>
+  <data name="tabPageProjection.Text" xml:space="preserve">
+    <value>投影</value>
   </data>
   <data name="groupBoxProjectionCenter.Size" type="System.Drawing.Size, System.Drawing">
     <value>438, 68</value>
@@ -1558,26 +1156,14 @@
   <data name="groupBoxProjectionCenter.Text" xml:space="preserve">
     <value>投影中心</value>
   </data>
-  <data name="groupBoxProjectionCenter.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="flowLayoutPanelProjectionCenter.Location" type="System.Drawing.Point, System.Drawing">
     <value>266, 35</value>
-  </data>
-  <data name="flowLayoutPanelProjectionCenter.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="numericBoxProjectionCenterX.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
   </data>
-  <data name="numericBoxProjectionCenterX.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 5, 0, 0</value>
-  </data>
   <data name="numericBoxProjectionCenterX.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="numericBoxProjectionCenterX.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 5, 0, 0</value>
   </data>
   <data name="numericBoxProjectionCenterX.MaximumSize" type="System.Drawing.Size, System.Drawing">
     <value>1000, 27</value>
@@ -1594,14 +1180,8 @@
   <data name="numericBoxProjectionCenterY.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
   </data>
-  <data name="numericBoxProjectionCenterY.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 5, 0, 0</value>
-  </data>
   <data name="numericBoxProjectionCenterY.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="numericBoxProjectionCenterY.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 5, 0, 0</value>
   </data>
   <data name="numericBoxProjectionCenterY.MaximumSize" type="System.Drawing.Size, System.Drawing">
     <value>1000, 27</value>
@@ -1618,14 +1198,8 @@
   <data name="numericBoxProjectionCenterZ.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
   </data>
-  <data name="numericBoxProjectionCenterZ.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 5, 0, 0</value>
-  </data>
   <data name="numericBoxProjectionCenterZ.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="numericBoxProjectionCenterZ.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 5, 0, 0</value>
   </data>
   <data name="numericBoxProjectionCenterZ.MaximumSize" type="System.Drawing.Size, System.Drawing">
     <value>1000, 27</value>
@@ -1640,19 +1214,16 @@
     <value>単位胞を平行移動（分率座標）</value>
   </data>
   <data name="label9.Size" type="System.Drawing.Size, System.Drawing">
-    <value>185, 12</value>
+    <value>179, 15</value>
   </data>
   <data name="label9.Text" xml:space="preserve">
     <value>投影中心を以下の分率座標に設定</value>
-  </data>
-  <data name="label9.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="radioButtonProjectionCenterCustom.Location" type="System.Drawing.Point, System.Drawing">
     <value>193, 38</value>
   </data>
   <data name="radioButtonProjectionCenterCustom.Size" type="System.Drawing.Size, System.Drawing">
-    <value>67, 16</value>
+    <value>61, 19</value>
   </data>
   <data name="radioButtonProjectionCenterCustom.Text" xml:space="preserve">
     <value>カスタム</value>
@@ -1661,7 +1232,7 @@
     <value>カスタム投影中心座標を使用</value>
   </data>
   <data name="radioButtonProjectionCenter1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>70, 16</value>
+    <value>57, 19</value>
   </data>
   <data name="radioButtonProjectionCenter1.ToolTip" xml:space="preserve">
     <value>投影中心を原点に設定</value>
@@ -1670,7 +1241,7 @@
     <value>104, 38</value>
   </data>
   <data name="radioButtonProjectionCenter2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>79, 16</value>
+    <value>72, 19</value>
   </data>
   <data name="radioButtonProjectionCenter2.ToolTip" xml:space="preserve">
     <value>投影中心を (1/2, 1/2, 1/2) に設定</value>
@@ -1678,11 +1249,8 @@
   <data name="groupBoxProjection.Text" xml:space="preserve">
     <value>投影方法</value>
   </data>
-  <data name="groupBoxProjection.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="comboBoxProjectionMode.Size" type="System.Drawing.Size, System.Drawing">
-    <value>99, 20</value>
+    <value>99, 23</value>
   </data>
   <data name="comboBoxProjectionMode.ToolTip" xml:space="preserve">
     <value>正射影または透視投影を選択</value>
@@ -1696,9 +1264,6 @@
   <data name="groupBoxTransparency.Text" xml:space="preserve">
     <value>透明度の計算方法</value>
   </data>
-  <data name="groupBoxTransparency.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="comboBoxTransparency.Items" xml:space="preserve">
     <value>近似 (Z depth sorting, OpenGL 4.1+)</value>
   </data>
@@ -1709,13 +1274,13 @@
     <value>高品質 (Per-Pixel Linked List, OpenGL 4.3+)</value>
   </data>
   <data name="comboBoxTransparency.Size" type="System.Drawing.Size, System.Drawing">
-    <value>128, 20</value>
+    <value>128, 23</value>
   </data>
   <data name="comboBoxTransparency.ToolTip" xml:space="preserve">
     <value>透過モードを設定</value>
   </data>
   <data name="checkBoxDepthFadingOut.Size" type="System.Drawing.Size, System.Drawing">
-    <value>218, 16</value>
+    <value>191, 19</value>
   </data>
   <data name="checkBoxDepthFadingOut.Text" xml:space="preserve">
     <value>奥行き方向によるフェードアウト効果</value>
@@ -1726,17 +1291,11 @@
   <data name="groupBoxRenderingQuality.Text" xml:space="preserve">
     <value>描画品質</value>
   </data>
-  <data name="groupBoxRenderingQuality.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="comboBoxRenderingQuality.Size" type="System.Drawing.Size, System.Drawing">
-    <value>128, 20</value>
+    <value>128, 23</value>
   </data>
   <data name="comboBoxRenderingQuality.ToolTip" xml:space="preserve">
     <value>レンダリング品質を設定</value>
-  </data>
-  <data name="groupBoxDepthCueing.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="trackBarAdvancedDepthCueingNear.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
@@ -1751,7 +1310,7 @@
     <value>9, 22</value>
   </data>
   <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>29, 12</value>
+    <value>31, 15</value>
   </data>
   <data name="label6.Text" xml:space="preserve">
     <value>最遠</value>
@@ -1772,7 +1331,7 @@
     <value>10, 49</value>
   </data>
   <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>29, 12</value>
+    <value>31, 15</value>
   </data>
   <data name="label5.Text" xml:space="preserve">
     <value>最近</value>
@@ -1780,14 +1339,218 @@
   <data name="label5.ToolTip" xml:space="preserve">
     <value>この値より近いオブジェクトは完全に不透明になります</value>
   </data>
+  <data name="tabPageSymElems.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="tabPageSymElems.Size" type="System.Drawing.Size, System.Drawing">
+    <value>562, 227</value>
+  </data>
+  <data name="tabPageSymElems.Text" xml:space="preserve">
+    <value>対称要素</value>
+  </data>
+  <data name="groupBoxInversion.Location" type="System.Drawing.Point, System.Drawing">
+    <value>369, 38</value>
+  </data>
+  <data name="groupBoxInversion.Size" type="System.Drawing.Size, System.Drawing">
+    <value>171, 102</value>
+  </data>
+  <data name="groupBoxInversion.Text" xml:space="preserve">
+    <value>対称心</value>
+  </data>
+  <data name="checkBoxSymElems_Inversions.Size" type="System.Drawing.Size, System.Drawing">
+    <value>62, 19</value>
+  </data>
+  <data name="checkBoxSymElems_Inversions.Text" xml:space="preserve">
+    <value>対称心</value>
+  </data>
+  <data name="numericBoxInversionSymbolSize.FooterFont" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="numericBoxInversionSymbolSize.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 5, 0, 0</value>
+  </data>
+  <data name="numericBoxInversionSymbolSize.HeaderFont" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="numericBoxInversionSymbolSize.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 5, 0, 0</value>
+  </data>
+  <data name="numericBoxInversionSymbolSize.HeaderText" xml:space="preserve">
+    <value>シンボルサイズ</value>
+  </data>
+  <data name="numericBoxInversionSymbolSize.Size" type="System.Drawing.Size, System.Drawing">
+    <value>147, 26</value>
+  </data>
+  <data name="colorControlInversion.FooterFont" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="colorControlInversion.HeaderFont" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="colorControlInversion.HeaderText" xml:space="preserve">
+    <value>色</value>
+  </data>
+  <data name="colorControlInversion.Size" type="System.Drawing.Size, System.Drawing">
+    <value>39, 20</value>
+  </data>
+  <data name="groupBoxPlanes.Location" type="System.Drawing.Point, System.Drawing">
+    <value>188, 38</value>
+  </data>
+  <data name="groupBoxPlanes.Size" type="System.Drawing.Size, System.Drawing">
+    <value>168, 132</value>
+  </data>
+  <data name="groupBoxPlanes.Text" xml:space="preserve">
+    <value>対称面</value>
+  </data>
+  <data name="checkBoxSymElems_Glides.Size" type="System.Drawing.Size, System.Drawing">
+    <value>62, 19</value>
+  </data>
+  <data name="checkBoxSymElems_Glides.Text" xml:space="preserve">
+    <value>映進面</value>
+  </data>
+  <data name="numericBoxPlaneSymbolSize.FooterFont" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="numericBoxPlaneSymbolSize.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 5, 0, 0</value>
+  </data>
+  <data name="numericBoxPlaneSymbolSize.HeaderFont" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="numericBoxPlaneSymbolSize.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 5, 0, 0</value>
+  </data>
+  <data name="numericBoxPlaneSymbolSize.HeaderText" xml:space="preserve">
+    <value>シンボルサイズ</value>
+  </data>
+  <data name="numericBoxPlaneSymbolSize.Size" type="System.Drawing.Size, System.Drawing">
+    <value>146, 26</value>
+  </data>
+  <data name="numericBoxPlaneLineWidth.FooterFont" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="numericBoxPlaneLineWidth.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 5, 0, 0</value>
+  </data>
+  <data name="numericBoxPlaneLineWidth.HeaderFont" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="numericBoxPlaneLineWidth.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 5, 0, 0</value>
+  </data>
+  <data name="numericBoxPlaneLineWidth.HeaderText" xml:space="preserve">
+    <value>線の太さ</value>
+  </data>
+  <data name="checkBoxSymElems_Mirrors.Size" type="System.Drawing.Size, System.Drawing">
+    <value>62, 19</value>
+  </data>
+  <data name="checkBoxSymElems_Mirrors.Text" xml:space="preserve">
+    <value>鏡映面</value>
+  </data>
+  <data name="colorControlPlane.FooterFont" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="colorControlPlane.HeaderFont" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="colorControlPlane.HeaderText" xml:space="preserve">
+    <value>色</value>
+  </data>
+  <data name="colorControlPlane.Size" type="System.Drawing.Size, System.Drawing">
+    <value>39, 20</value>
+  </data>
+  <data name="groupBoxAxes.Text" xml:space="preserve">
+    <value>対称軸</value>
+  </data>
+  <data name="checkBoxSymElems_Rotation.Size" type="System.Drawing.Size, System.Drawing">
+    <value>62, 19</value>
+  </data>
+  <data name="checkBoxSymElems_Rotation.Text" xml:space="preserve">
+    <value>回転軸</value>
+  </data>
+  <data name="numericBoxAxisSymbolSize.FooterFont" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="numericBoxAxisSymbolSize.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 5, 0, 0</value>
+  </data>
+  <data name="numericBoxAxisSymbolSize.HeaderFont" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="numericBoxAxisSymbolSize.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 5, 0, 0</value>
+  </data>
+  <data name="numericBoxAxisSymbolSize.HeaderText" xml:space="preserve">
+    <value>シンボルサイズ</value>
+  </data>
+  <data name="numericBoxAxisSymbolSize.Size" type="System.Drawing.Size, System.Drawing">
+    <value>149, 26</value>
+  </data>
+  <data name="numericBoxAxisLineWidth.FooterFont" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="numericBoxAxisLineWidth.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 5, 0, 0</value>
+  </data>
+  <data name="numericBoxAxisLineWidth.HeaderFont" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="numericBoxAxisLineWidth.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 5, 0, 0</value>
+  </data>
+  <data name="numericBoxAxisLineWidth.HeaderText" xml:space="preserve">
+    <value>線の太さ</value>
+  </data>
+  <data name="checkBoxSymElems_Rotinversions.Size" type="System.Drawing.Size, System.Drawing">
+    <value>62, 19</value>
+  </data>
+  <data name="checkBoxSymElems_Rotinversions.Text" xml:space="preserve">
+    <value>回反軸</value>
+  </data>
+  <data name="checkBoxSymElems_Screws.Location" type="System.Drawing.Point, System.Drawing">
+    <value>83, 21</value>
+  </data>
+  <data name="checkBoxSymElems_Screws.Size" type="System.Drawing.Size, System.Drawing">
+    <value>66, 19</value>
+  </data>
+  <data name="checkBoxSymElems_Screws.Text" xml:space="preserve">
+    <value>らせん軸</value>
+  </data>
+  <data name="colorControlAxisColor.FooterFont" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="colorControlAxisColor.HeaderFont" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="colorControlAxisColor.HeaderText" xml:space="preserve">
+    <value>色</value>
+  </data>
+  <data name="colorControlAxisColor.Size" type="System.Drawing.Size, System.Drawing">
+    <value>39, 20</value>
+  </data>
+  <data name="checkBoxShowSymmetryElements.Size" type="System.Drawing.Size, System.Drawing">
+    <value>107, 19</value>
+  </data>
+  <data name="checkBoxShowSymmetryElements.Text" xml:space="preserve">
+    <value>対称要素を表示</value>
+  </data>
+  <data name="tabPageMisc.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 22</value>
+  </data>
+  <data name="tabPageMisc.Size" type="System.Drawing.Size, System.Drawing">
+    <value>562, 227</value>
+  </data>
+  <data name="tabPageMisc.Text" xml:space="preserve">
+    <value>その他</value>
+  </data>
   <data name="groupBoxLabel.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 93</value>
   </data>
+  <data name="groupBoxLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>372, 82</value>
+  </data>
   <data name="groupBoxLabel.Text" xml:space="preserve">
     <value>原子ラベル</value>
-  </data>
-  <data name="groupBoxLabel.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="colorControlLabelColor.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
@@ -1795,14 +1558,11 @@
   <data name="colorControlLabelColor.Location" type="System.Drawing.Point, System.Drawing">
     <value>326, 46</value>
   </data>
-  <data name="colorControlLabelColor.ToolTip1" xml:space="preserve">
-    <value />
-  </data>
   <data name="checkBoxShowLabel.Location" type="System.Drawing.Point, System.Drawing">
     <value>9, 20</value>
   </data>
   <data name="checkBoxShowLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>119, 16</value>
+    <value>111, 19</value>
   </data>
   <data name="checkBoxShowLabel.Text" xml:space="preserve">
     <value>原子ラベルを表示</value>
@@ -1814,7 +1574,7 @@
     <value>229, 23</value>
   </data>
   <data name="radioButtonUseMaterialColor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>94, 16</value>
+    <value>90, 19</value>
   </data>
   <data name="radioButtonUseMaterialColor.Text" xml:space="preserve">
     <value>原子色を使う</value>
@@ -1826,7 +1586,7 @@
     <value>229, 48</value>
   </data>
   <data name="radioButtonLabelUseFixedColor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>94, 16</value>
+    <value>90, 19</value>
   </data>
   <data name="radioButtonLabelUseFixedColor.Text" xml:space="preserve">
     <value>固定色を使う</value>
@@ -1838,13 +1598,13 @@
     <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="numericBoxLabelSize.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 7, 0, 0</value>
+    <value>0, 5, 0, 0</value>
   </data>
   <data name="numericBoxLabelSize.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="numericBoxLabelSize.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 7, 0, 0</value>
+    <value>0, 5, 0, 0</value>
   </data>
   <data name="numericBoxLabelSize.HeaderText" xml:space="preserve">
     <value>サイズ</value>
@@ -1865,7 +1625,7 @@
     <value>134, 50</value>
   </data>
   <data name="checkBoxLabelWhiteEdge.Size" type="System.Drawing.Size, System.Drawing">
-    <value>81, 16</value>
+    <value>77, 19</value>
   </data>
   <data name="checkBoxLabelWhiteEdge.Text" xml:space="preserve">
     <value>白く縁取り</value>
@@ -1880,32 +1640,26 @@
     <value>6, 43</value>
   </data>
   <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>101, 22</value>
+    <value>87, 26</value>
   </data>
   <data name="label7.Text" xml:space="preserve">
     <value>(凡例をクリックして
 個別に設定可能)</value>
   </data>
-  <data name="label7.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="groupBoxBondedAtoms.Location" type="System.Drawing.Point, System.Drawing">
     <value>294, 5</value>
   </data>
   <data name="groupBoxBondedAtoms.Size" type="System.Drawing.Size, System.Drawing">
-    <value>301, 66</value>
+    <value>249, 66</value>
   </data>
   <data name="groupBoxBondedAtoms.Text" xml:space="preserve">
     <value>結合原子</value>
-  </data>
-  <data name="groupBoxBondedAtoms.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="checkBoxShowBondedAtoms.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="checkBoxShowBondedAtoms.Size" type="System.Drawing.Size, System.Drawing">
-    <value>260, 16</value>
+    <value>238, 19</value>
   </data>
   <data name="checkBoxShowBondedAtoms.Text" xml:space="preserve">
     <value>境界外ではあるが結合している原子を表示</value>
@@ -1919,14 +1673,11 @@
   <data name="groupBoxAccessoryControls.Text" xml:space="preserve">
     <value>光源, 結晶軸, 凡例の設定</value>
   </data>
-  <data name="groupBoxAccessoryControls.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="checkBoxGroupByElement.Location" type="System.Drawing.Point, System.Drawing">
     <value>171, 53</value>
   </data>
   <data name="checkBoxGroupByElement.Size" type="System.Drawing.Size, System.Drawing">
-    <value>106, 16</value>
+    <value>97, 19</value>
   </data>
   <data name="checkBoxGroupByElement.Text" xml:space="preserve">
     <value>元素でまとめる</value>
@@ -1938,13 +1689,13 @@
     <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="numericBoxLegendSize.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 7, 0, 0</value>
+    <value>0, 5, 0, 0</value>
   </data>
   <data name="numericBoxLegendSize.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="numericBoxLegendSize.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 7, 0, 0</value>
+    <value>0, 5, 0, 0</value>
   </data>
   <data name="numericBoxLegendSize.HeaderText" xml:space="preserve">
     <value>凡例のサイズ</value>
@@ -1959,13 +1710,13 @@
     <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="numericBoxAxesSize.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 7, 0, 0</value>
+    <value>0, 5, 0, 0</value>
   </data>
   <data name="numericBoxAxesSize.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="numericBoxAxesSize.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 7, 0, 0</value>
+    <value>0, 5, 0, 0</value>
   </data>
   <data name="numericBoxAxesSize.HeaderText" xml:space="preserve">
     <value>結晶軸のサイズ</value>
@@ -1986,13 +1737,13 @@
     <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="numericBoxLightSize.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 7, 0, 0</value>
+    <value>0, 5, 0, 0</value>
   </data>
   <data name="numericBoxLightSize.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="numericBoxLightSize.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 7, 0, 0</value>
+    <value>0, 5, 0, 0</value>
   </data>
   <data name="numericBoxLightSize.HeaderText" xml:space="preserve">
     <value>光源球のサイズ</value>
@@ -2008,9 +1759,6 @@
   </data>
   <data name="toolStrip1.Size" type="System.Drawing.Size, System.Drawing">
     <value>570, 25</value>
-  </data>
-  <data name="toolStrip1.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="toolStripButtonCrystalAxes.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
@@ -2031,7 +1779,7 @@
 </value>
   </data>
   <data name="toolStripButtonCrystalAxes.Size" type="System.Drawing.Size, System.Drawing">
-    <value>45, 22</value>
+    <value>47, 22</value>
   </data>
   <data name="toolStripButtonCrystalAxes.Text" xml:space="preserve">
     <value>結晶軸</value>
@@ -2058,7 +1806,7 @@
 </value>
   </data>
   <data name="toolStripButtonLightDirection.Size" type="System.Drawing.Size, System.Drawing">
-    <value>33, 22</value>
+    <value>35, 22</value>
   </data>
   <data name="toolStripButtonLightDirection.Text" xml:space="preserve">
     <value>光源</value>
@@ -2085,7 +1833,7 @@
 </value>
   </data>
   <data name="toolStripButtonLegend.Size" type="System.Drawing.Size, System.Drawing">
-    <value>33, 22</value>
+    <value>35, 22</value>
   </data>
   <data name="toolStripButtonLegend.Text" xml:space="preserve">
     <value>凡例</value>
@@ -2112,7 +1860,7 @@
 </value>
   </data>
   <data name="toolStripButtonLikeVesta.Size" type="System.Drawing.Size, System.Drawing">
-    <value>78, 22</value>
+    <value>62, 22</value>
   </data>
   <data name="toolStripButtonResetRotation.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
@@ -2133,7 +1881,7 @@
 </value>
   </data>
   <data name="toolStripButtonResetRotation.Size" type="System.Drawing.Size, System.Drawing">
-    <value>85, 22</value>
+    <value>78, 22</value>
   </data>
   <data name="toolStripButtonResetRotation.Text" xml:space="preserve">
     <value>角度をリセット</value>
@@ -2153,7 +1901,7 @@
 </value>
   </data>
   <data name="toolStripButtonAtomObjects.Size" type="System.Drawing.Size, System.Drawing">
-    <value>33, 22</value>
+    <value>35, 22</value>
   </data>
   <data name="toolStripButtonAtomObjects.Text" xml:space="preserve">
     <value>原子</value>
@@ -2173,7 +1921,7 @@
 </value>
   </data>
   <data name="toolStripButtonAtomLabels.Size" type="System.Drawing.Size, System.Drawing">
-    <value>44, 22</value>
+    <value>39, 22</value>
   </data>
   <data name="toolStripButtonAtomLabels.Text" xml:space="preserve">
     <value>ラベル</value>
@@ -2193,7 +1941,7 @@
 </value>
   </data>
   <data name="toolStripButtonUnitCell.Size" type="System.Drawing.Size, System.Drawing">
-    <value>45, 22</value>
+    <value>47, 22</value>
   </data>
   <data name="toolStripButtonUnitCell.Text" xml:space="preserve">
     <value>単位胞</value>
@@ -2213,7 +1961,7 @@
 </value>
   </data>
   <data name="toolStripButtonSymmetryElements.Size" type="System.Drawing.Size, System.Drawing">
-    <value>57, 22</value>
+    <value>59, 22</value>
   </data>
   <data name="toolStripButtonSymmetryElements.Text" xml:space="preserve">
     <value>対称要素</value>
@@ -2222,16 +1970,13 @@
     <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="menuStrip1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>570, 24</value>
-  </data>
-  <data name="menuStrip1.ToolTip" xml:space="preserve">
-    <value />
+    <value>570, 25</value>
   </data>
   <data name="saveImageToolStripMenuItem.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="saveImageToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>59, 18</value>
+    <value>53, 19</value>
   </data>
   <data name="saveImageToolStripMenuItem.Text" xml:space="preserve">
     <value>ファイル</value>
@@ -2240,94 +1985,94 @@
     <value>現在の画像をファイルに保存</value>
   </data>
   <data name="saveImageToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>229, 22</value>
+    <value>200, 22</value>
   </data>
   <data name="saveImageToolStripMenuItem1.Text" xml:space="preserve">
     <value>画像を保存</value>
   </data>
   <data name="saveMainToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>168, 22</value>
+    <value>152, 22</value>
   </data>
   <data name="saveLegendToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>168, 22</value>
+    <value>152, 22</value>
   </data>
   <data name="saveAxesToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>168, 22</value>
+    <value>152, 22</value>
   </data>
   <data name="saveLightToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>168, 22</value>
+    <value>152, 22</value>
   </data>
   <data name="copyToClipboardToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>229, 22</value>
+    <value>200, 22</value>
   </data>
   <data name="copyToClipboardToolStripMenuItem.Text" xml:space="preserve">
     <value>画像をクリップボードにコピー</value>
   </data>
   <data name="copyMainToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>168, 22</value>
+    <value>152, 22</value>
   </data>
   <data name="copyLegendToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>168, 22</value>
+    <value>152, 22</value>
   </data>
   <data name="copyAxesToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>168, 22</value>
+    <value>152, 22</value>
   </data>
   <data name="copyLightToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>168, 22</value>
+    <value>152, 22</value>
   </data>
   <data name="saveMovieToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>229, 22</value>
+    <value>200, 22</value>
   </data>
   <data name="saveMovieToolStripMenuItem.Text" xml:space="preserve">
     <value>動画を保存</value>
   </data>
   <data name="SaveMovieMainImageToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>106, 22</value>
+    <value>110, 22</value>
   </data>
   <data name="SaveMovieMainImageToolStripMenuItem.Text" xml:space="preserve">
     <value>メイン</value>
   </data>
   <data name="SaveMovieCrystalAxesToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>106, 22</value>
+    <value>110, 22</value>
   </data>
   <data name="SaveMovieCrystalAxesToolStripMenuItem.Text" xml:space="preserve">
     <value>結晶軸</value>
   </data>
   <data name="toolToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>52, 18</value>
+    <value>46, 19</value>
   </data>
   <data name="toolToolStripMenuItem.Text" xml:space="preserve">
     <value>ツール</value>
   </data>
   <data name="iLikeVESTAToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>150, 22</value>
+    <value>134, 22</value>
   </data>
   <data name="helpToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>120, 18</value>
+    <value>102, 19</value>
   </data>
   <data name="helpToolStripMenuItem.Text" xml:space="preserve">
     <value>ショートカットヒント</value>
   </data>
   <data name="cTRLSHIFTcMainImageToClipboardCTRLRightDoubleClickChangePerspectiveOrthogonalAlternatelyToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>685, 22</value>
+    <value>558, 22</value>
   </data>
   <data name="cTRLRightDoubleClickChangePerspectiveOrthogonalAlternatelyToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>685, 22</value>
+    <value>558, 22</value>
   </data>
   <data name="toolStripMenuItem2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>685, 22</value>
+    <value>558, 22</value>
   </data>
   <data name="numericBoxClientHeight.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="numericBoxClientHeight.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 7, 0, 0</value>
+    <value>0, 5, 0, 0</value>
   </data>
   <data name="numericBoxClientHeight.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="numericBoxClientHeight.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 7, 0, 0</value>
+    <value>0, 5, 0, 0</value>
   </data>
   <data name="numericBoxClientHeight.Location" type="System.Drawing.Point, System.Drawing">
     <value>173, 0</value>
@@ -2342,13 +2087,13 @@
     <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="numericBoxClientWidth.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 7, 0, 0</value>
+    <value>0, 5, 0, 0</value>
   </data>
   <data name="numericBoxClientWidth.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="numericBoxClientWidth.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 7, 0, 0</value>
+    <value>0, 5, 0, 0</value>
   </data>
   <data name="numericBoxClientWidth.HeaderText" xml:space="preserve">
     <value>サイズ (W×H): </value>
@@ -2535,26 +2280,17 @@
         wf+0BQAAgAUAAIAFAACAAQAAgAHB/4ABAACAAQAAgAEAALwBAAC8AQAAvAHB/4ABbP///5H/
 </value>
   </data>
-  <data name="printPreviewDialog1.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="panelClientSize.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 24</value>
+    <value>0, 25</value>
   </data>
   <data name="panelClientSize.Size" type="System.Drawing.Size, System.Drawing">
     <value>570, 24</value>
-  </data>
-  <data name="panelClientSize.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="statusStrip1.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 790</value>
   </data>
   <data name="statusStrip1.Size" type="System.Drawing.Size, System.Drawing">
     <value>570, 22</value>
-  </data>
-  <data name="statusStrip1.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
     <value>570, 812</value>
@@ -2635,8 +2371,5 @@
         AAAAAAAA/Z8AAPgfAADiHwAA8BkAAOABAADgAQAAgAEAAIAAAADCAQAAwQMAAMgHAAD8BwAA/B8AAPyf
         AAD//wAA//8AAA==
 </value>
-  </data>
-  <data name="$this.ToolTip" xml:space="preserve">
-    <value />
   </data>
 </root>

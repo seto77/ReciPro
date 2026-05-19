@@ -31,52 +31,74 @@
             buttonExecute = new System.Windows.Forms.Button();
             checkBoxDrawGuideCircles = new System.Windows.Forms.CheckBox();
             groupBoxInputParameters = new System.Windows.Forms.GroupBox();
+            flowLayoutPanel6 = new System.Windows.Forms.FlowLayoutPanel();
+            flowLayoutPanel5 = new System.Windows.Forms.FlowLayoutPanel();
+            radioButtonCBED = new System.Windows.Forms.RadioButton();
+            radioButtonLACBED = new System.Windows.Forms.RadioButton();
+            flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
+            numericBoxMaxNumOfG = new NumericBox();
+            numericBoxAlphaMax = new NumericBox();
+            flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
+            numericBoxDiskResolution = new NumericBox();
             flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             label2 = new System.Windows.Forms.Label();
             labelDivisionNumber = new System.Windows.Forms.Label();
-            radioButtonLACBED = new System.Windows.Forms.RadioButton();
-            numericBoxAlphaMax = new NumericBox();
-            radioButtonCBED = new System.Windows.Forms.RadioButton();
-            comboBoxSolver = new System.Windows.Forms.ComboBox();
-            numericBoxThread = new NumericBox();
-            numericBoxThicknessStep = new NumericBox();
-            numericBoxMaxNumOfG = new NumericBox();
+            flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             numericBoxWholeThicknessStart = new NumericBox();
             numericBoxThicknessEnd = new NumericBox();
+            numericBoxThicknessStep = new NumericBox();
+            comboBoxSolver = new System.Windows.Forms.ComboBox();
+            numericBoxThread = new NumericBox();
             buttonStop = new System.Windows.Forms.Button();
-            numericBoxDiskResolution = new NumericBox();
             label13 = new System.Windows.Forms.Label();
             groupBoxOutput = new System.Windows.Forms.GroupBox();
-            radioButtonIndividualDisk = new System.Windows.Forms.RadioButton();
-            radioButtonAllDisks = new System.Windows.Forms.RadioButton();
+            flowLayoutPanel12 = new System.Windows.Forms.FlowLayoutPanel();
             label3 = new System.Windows.Forms.Label();
-            label11 = new System.Windows.Forms.Label();
             comboBoxGradient = new System.Windows.Forms.ComboBox();
+            label11 = new System.Windows.Forms.Label();
             comboBoxScale = new System.Windows.Forms.ComboBox();
-            trackBarOutputThickness = new System.Windows.Forms.TrackBar();
+            flowLayoutPanel11 = new System.Windows.Forms.FlowLayoutPanel();
+            labelGamma = new System.Windows.Forms.Label();
             trackBarGamma = new System.Windows.Forms.TrackBar();
-            trackBarIntensityBrightnessMax = new System.Windows.Forms.TrackBar();
+            flowLayoutPanel10 = new System.Windows.Forms.FlowLayoutPanel();
+            label5 = new System.Windows.Forms.Label();
+            flowLayoutPanel9 = new System.Windows.Forms.FlowLayoutPanel();
+            label7 = new System.Windows.Forms.Label();
             trackBarIntensityBrightnessMin = new System.Windows.Forms.TrackBar();
+            label8 = new System.Windows.Forms.Label();
+            trackBarIntensityBrightnessMax = new System.Windows.Forms.TrackBar();
+            flowLayoutPanel8 = new System.Windows.Forms.FlowLayoutPanel();
+            label1 = new System.Windows.Forms.Label();
+            radioButtonAllDisks = new System.Windows.Forms.RadioButton();
+            radioButtonIndividualDisk = new System.Windows.Forms.RadioButton();
+            flowLayoutPanel7 = new System.Windows.Forms.FlowLayoutPanel();
+            label4 = new System.Windows.Forms.Label();
             textBoxThickness = new System.Windows.Forms.TextBox();
             label6 = new System.Windows.Forms.Label();
-            label4 = new System.Windows.Forms.Label();
-            labelGamma = new System.Windows.Forms.Label();
-            label8 = new System.Windows.Forms.Label();
-            label7 = new System.Windows.Forms.Label();
-            label1 = new System.Windows.Forms.Label();
-            label5 = new System.Windows.Forms.Label();
+            trackBarOutputThickness = new System.Windows.Forms.TrackBar();
             statusStrip2 = new System.Windows.Forms.StatusStrip();
             toolStripProgressBar = new System.Windows.Forms.ToolStripProgressBar();
             toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             toolTip = new System.Windows.Forms.ToolTip(components);
             groupBoxInputParameters.SuspendLayout();
+            flowLayoutPanel6.SuspendLayout();
+            flowLayoutPanel5.SuspendLayout();
+            flowLayoutPanel4.SuspendLayout();
+            flowLayoutPanel3.SuspendLayout();
             flowLayoutPanel1.SuspendLayout();
+            flowLayoutPanel2.SuspendLayout();
             groupBoxOutput.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)trackBarOutputThickness).BeginInit();
+            flowLayoutPanel12.SuspendLayout();
+            flowLayoutPanel11.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)trackBarGamma).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)trackBarIntensityBrightnessMax).BeginInit();
+            flowLayoutPanel10.SuspendLayout();
+            flowLayoutPanel9.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)trackBarIntensityBrightnessMin).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)trackBarIntensityBrightnessMax).BeginInit();
+            flowLayoutPanel8.SuspendLayout();
+            flowLayoutPanel7.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)trackBarOutputThickness).BeginInit();
             statusStrip2.SuspendLayout();
             SuspendLayout();
             // 
@@ -102,68 +124,36 @@
             // 
             // groupBoxInputParameters
             // 
+            resources.ApplyResources(groupBoxInputParameters, "groupBoxInputParameters");
             captureExtender.SetCapture(groupBoxInputParameters, true);
-            groupBoxInputParameters.Controls.Add(flowLayoutPanel1);
-            groupBoxInputParameters.Controls.Add(radioButtonLACBED);
-            groupBoxInputParameters.Controls.Add(numericBoxAlphaMax);
-            groupBoxInputParameters.Controls.Add(checkBoxDrawGuideCircles);
-            groupBoxInputParameters.Controls.Add(radioButtonCBED);
+            groupBoxInputParameters.Controls.Add(flowLayoutPanel6);
             groupBoxInputParameters.Controls.Add(comboBoxSolver);
             groupBoxInputParameters.Controls.Add(numericBoxThread);
-            groupBoxInputParameters.Controls.Add(numericBoxThicknessStep);
-            groupBoxInputParameters.Controls.Add(numericBoxMaxNumOfG);
-            groupBoxInputParameters.Controls.Add(numericBoxWholeThicknessStart);
-            groupBoxInputParameters.Controls.Add(numericBoxThicknessEnd);
             groupBoxInputParameters.Controls.Add(buttonStop);
             groupBoxInputParameters.Controls.Add(buttonExecute);
-            groupBoxInputParameters.Controls.Add(numericBoxDiskResolution);
             groupBoxInputParameters.Controls.Add(label13);
-            resources.ApplyResources(groupBoxInputParameters, "groupBoxInputParameters");
             groupBoxInputParameters.Name = "groupBoxInputParameters";
             groupBoxInputParameters.TabStop = false;
+            toolTip.SetToolTip(groupBoxInputParameters, resources.GetString("groupBoxInputParameters.ToolTip"));
             // 
-            // flowLayoutPanel1
+            // flowLayoutPanel6
             // 
-            resources.ApplyResources(flowLayoutPanel1, "flowLayoutPanel1");
-            flowLayoutPanel1.Controls.Add(label2);
-            flowLayoutPanel1.Controls.Add(labelDivisionNumber);
-            flowLayoutPanel1.Name = "flowLayoutPanel1";
+            resources.ApplyResources(flowLayoutPanel6, "flowLayoutPanel6");
+            flowLayoutPanel6.Controls.Add(flowLayoutPanel5);
+            flowLayoutPanel6.Controls.Add(flowLayoutPanel4);
+            flowLayoutPanel6.Controls.Add(flowLayoutPanel3);
+            flowLayoutPanel6.Controls.Add(flowLayoutPanel2);
+            flowLayoutPanel6.Name = "flowLayoutPanel6";
+            toolTip.SetToolTip(flowLayoutPanel6, resources.GetString("flowLayoutPanel6.ToolTip"));
             // 
-            // label2
+            // flowLayoutPanel5
             // 
-            resources.ApplyResources(label2, "label2");
-            label2.BackColor = System.Drawing.Color.Transparent;
-            label2.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            label2.Name = "label2";
-            // 
-            // labelDivisionNumber
-            // 
-            resources.ApplyResources(labelDivisionNumber, "labelDivisionNumber");
-            labelDivisionNumber.BackColor = System.Drawing.Color.Transparent;
-            labelDivisionNumber.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            labelDivisionNumber.Name = "labelDivisionNumber";
-            // 
-            // radioButtonLACBED
-            // 
-            resources.ApplyResources(radioButtonLACBED, "radioButtonLACBED");
-            radioButtonLACBED.Name = "radioButtonLACBED";
-            toolTip.SetToolTip(radioButtonLACBED, resources.GetString("radioButtonLACBED.ToolTip"));
-            radioButtonLACBED.UseVisualStyleBackColor = true;
-            // 
-            // numericBoxAlphaMax
-            // 
-            numericBoxAlphaMax.BackColor = System.Drawing.Color.Transparent;
-            numericBoxAlphaMax.DecimalPlaces = 1;
-            resources.ApplyResources(numericBoxAlphaMax, "numericBoxAlphaMax");
-            numericBoxAlphaMax.Maximum = 2000D;
-            numericBoxAlphaMax.Minimum = 0D;
-            numericBoxAlphaMax.Name = "numericBoxAlphaMax";
-            numericBoxAlphaMax.RadianValue = 0.10471975511965977D;
-            numericBoxAlphaMax.ShowUpDown = true;
-            numericBoxAlphaMax.SmartIncrement = true;
-            toolTip.SetToolTip(numericBoxAlphaMax, resources.GetString("numericBoxAlphaMax.ToolTip"));
-            numericBoxAlphaMax.Value = 6D;
-            numericBoxAlphaMax.ValueChanged += numericBoxAlphaMax_ValueChanged;
+            resources.ApplyResources(flowLayoutPanel5, "flowLayoutPanel5");
+            flowLayoutPanel5.Controls.Add(radioButtonCBED);
+            flowLayoutPanel5.Controls.Add(radioButtonLACBED);
+            flowLayoutPanel5.Controls.Add(checkBoxDrawGuideCircles);
+            flowLayoutPanel5.Name = "flowLayoutPanel5";
+            toolTip.SetToolTip(flowLayoutPanel5, resources.GetString("flowLayoutPanel5.ToolTip"));
             // 
             // radioButtonCBED
             // 
@@ -175,10 +165,173 @@
             radioButtonCBED.UseVisualStyleBackColor = true;
             radioButtonCBED.CheckedChanged += radioButtonCBED_CheckedChanged;
             // 
+            // radioButtonLACBED
+            // 
+            resources.ApplyResources(radioButtonLACBED, "radioButtonLACBED");
+            radioButtonLACBED.Name = "radioButtonLACBED";
+            toolTip.SetToolTip(radioButtonLACBED, resources.GetString("radioButtonLACBED.ToolTip"));
+            radioButtonLACBED.UseVisualStyleBackColor = true;
+            // 
+            // flowLayoutPanel4
+            // 
+            resources.ApplyResources(flowLayoutPanel4, "flowLayoutPanel4");
+            flowLayoutPanel4.Controls.Add(numericBoxMaxNumOfG);
+            flowLayoutPanel4.Controls.Add(numericBoxAlphaMax);
+            flowLayoutPanel4.Name = "flowLayoutPanel4";
+            toolTip.SetToolTip(flowLayoutPanel4, resources.GetString("flowLayoutPanel4.ToolTip"));
+            // 
+            // numericBoxMaxNumOfG
+            // 
+            resources.ApplyResources(numericBoxMaxNumOfG, "numericBoxMaxNumOfG");
+            numericBoxMaxNumOfG.BackColor = System.Drawing.SystemColors.Control;
+            numericBoxMaxNumOfG.FooterBackColor = System.Drawing.SystemColors.Control;
+            numericBoxMaxNumOfG.HeaderBackColor = System.Drawing.SystemColors.Control;
+            numericBoxMaxNumOfG.Maximum = 2048D;
+            numericBoxMaxNumOfG.Minimum = 1D;
+            numericBoxMaxNumOfG.Name = "numericBoxMaxNumOfG";
+            numericBoxMaxNumOfG.RadianValue = 1.1170107212763709D;
+            numericBoxMaxNumOfG.ShowUpDown = true;
+            numericBoxMaxNumOfG.SmartIncrement = true;
+            numericBoxMaxNumOfG.TextFontSize = 9F;
+            numericBoxMaxNumOfG.ThonsandsSeparator = true;
+            toolTip.SetToolTip(numericBoxMaxNumOfG, resources.GetString("numericBoxMaxNumOfG.ToolTip"));
+            numericBoxMaxNumOfG.Value = 64D;
+            numericBoxMaxNumOfG.ValueChanged += numericBoxMaxNumOfG_ValueChanged;
+            // 
+            // numericBoxAlphaMax
+            // 
+            resources.ApplyResources(numericBoxAlphaMax, "numericBoxAlphaMax");
+            numericBoxAlphaMax.BackColor = System.Drawing.Color.Transparent;
+            numericBoxAlphaMax.DecimalPlaces = 1;
+            numericBoxAlphaMax.Maximum = 2000D;
+            numericBoxAlphaMax.Minimum = 0D;
+            numericBoxAlphaMax.Name = "numericBoxAlphaMax";
+            numericBoxAlphaMax.RadianValue = 0.10471975511965977D;
+            numericBoxAlphaMax.ShowUpDown = true;
+            numericBoxAlphaMax.SmartIncrement = true;
+            numericBoxAlphaMax.TextFontSize = 9F;
+            toolTip.SetToolTip(numericBoxAlphaMax, resources.GetString("numericBoxAlphaMax.ToolTip"));
+            numericBoxAlphaMax.Value = 6D;
+            numericBoxAlphaMax.ValueChanged += numericBoxAlphaMax_ValueChanged;
+            // 
+            // flowLayoutPanel3
+            // 
+            resources.ApplyResources(flowLayoutPanel3, "flowLayoutPanel3");
+            flowLayoutPanel3.Controls.Add(numericBoxDiskResolution);
+            flowLayoutPanel3.Controls.Add(flowLayoutPanel1);
+            flowLayoutPanel3.Name = "flowLayoutPanel3";
+            toolTip.SetToolTip(flowLayoutPanel3, resources.GetString("flowLayoutPanel3.ToolTip"));
+            // 
+            // numericBoxDiskResolution
+            // 
+            resources.ApplyResources(numericBoxDiskResolution, "numericBoxDiskResolution");
+            numericBoxDiskResolution.BackColor = System.Drawing.SystemColors.Control;
+            numericBoxDiskResolution.DecimalPlaces = 3;
+            numericBoxDiskResolution.FooterBackColor = System.Drawing.SystemColors.Control;
+            numericBoxDiskResolution.HeaderBackColor = System.Drawing.SystemColors.Control;
+            numericBoxDiskResolution.Maximum = 100D;
+            numericBoxDiskResolution.Minimum = 0.001D;
+            numericBoxDiskResolution.Name = "numericBoxDiskResolution";
+            numericBoxDiskResolution.RadianValue = 0.0017453292519943296D;
+            numericBoxDiskResolution.ShowUpDown = true;
+            numericBoxDiskResolution.SmartIncrement = true;
+            numericBoxDiskResolution.TextFontSize = 9F;
+            numericBoxDiskResolution.ThonsandsSeparator = true;
+            toolTip.SetToolTip(numericBoxDiskResolution, resources.GetString("numericBoxDiskResolution.ToolTip"));
+            numericBoxDiskResolution.Value = 0.1D;
+            numericBoxDiskResolution.ValueChanged += NumericBoxDivision_ValueChanged;
+            // 
+            // flowLayoutPanel1
+            // 
+            resources.ApplyResources(flowLayoutPanel1, "flowLayoutPanel1");
+            flowLayoutPanel1.Controls.Add(label2);
+            flowLayoutPanel1.Controls.Add(labelDivisionNumber);
+            flowLayoutPanel1.Name = "flowLayoutPanel1";
+            toolTip.SetToolTip(flowLayoutPanel1, resources.GetString("flowLayoutPanel1.ToolTip"));
+            // 
+            // label2
+            // 
+            resources.ApplyResources(label2, "label2");
+            label2.BackColor = System.Drawing.Color.Transparent;
+            label2.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            label2.Name = "label2";
+            toolTip.SetToolTip(label2, resources.GetString("label2.ToolTip"));
+            // 
+            // labelDivisionNumber
+            // 
+            resources.ApplyResources(labelDivisionNumber, "labelDivisionNumber");
+            labelDivisionNumber.BackColor = System.Drawing.Color.Transparent;
+            labelDivisionNumber.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            labelDivisionNumber.Name = "labelDivisionNumber";
+            toolTip.SetToolTip(labelDivisionNumber, resources.GetString("labelDivisionNumber.ToolTip"));
+            // 
+            // flowLayoutPanel2
+            // 
+            resources.ApplyResources(flowLayoutPanel2, "flowLayoutPanel2");
+            flowLayoutPanel2.Controls.Add(numericBoxWholeThicknessStart);
+            flowLayoutPanel2.Controls.Add(numericBoxThicknessEnd);
+            flowLayoutPanel2.Controls.Add(numericBoxThicknessStep);
+            flowLayoutPanel2.Name = "flowLayoutPanel2";
+            toolTip.SetToolTip(flowLayoutPanel2, resources.GetString("flowLayoutPanel2.ToolTip"));
+            // 
+            // numericBoxWholeThicknessStart
+            // 
+            resources.ApplyResources(numericBoxWholeThicknessStart, "numericBoxWholeThicknessStart");
+            numericBoxWholeThicknessStart.BackColor = System.Drawing.SystemColors.Control;
+            numericBoxWholeThicknessStart.FooterBackColor = System.Drawing.SystemColors.Control;
+            numericBoxWholeThicknessStart.HeaderBackColor = System.Drawing.SystemColors.Control;
+            numericBoxWholeThicknessStart.Maximum = 1000D;
+            numericBoxWholeThicknessStart.Minimum = 1D;
+            numericBoxWholeThicknessStart.Name = "numericBoxWholeThicknessStart";
+            numericBoxWholeThicknessStart.RadianValue = 0.3490658503988659D;
+            numericBoxWholeThicknessStart.ShowUpDown = true;
+            numericBoxWholeThicknessStart.SmartIncrement = true;
+            numericBoxWholeThicknessStart.TextFontSize = 9F;
+            numericBoxWholeThicknessStart.ThonsandsSeparator = true;
+            toolTip.SetToolTip(numericBoxWholeThicknessStart, resources.GetString("numericBoxWholeThicknessStart.ToolTip"));
+            numericBoxWholeThicknessStart.Value = 20D;
+            numericBoxWholeThicknessStart.ValueChanged += NumericBoxWholeThicknessStart_ValueChanged;
+            // 
+            // numericBoxThicknessEnd
+            // 
+            resources.ApplyResources(numericBoxThicknessEnd, "numericBoxThicknessEnd");
+            numericBoxThicknessEnd.BackColor = System.Drawing.SystemColors.Control;
+            numericBoxThicknessEnd.FooterBackColor = System.Drawing.SystemColors.Control;
+            numericBoxThicknessEnd.HeaderBackColor = System.Drawing.SystemColors.Control;
+            numericBoxThicknessEnd.Maximum = 1000D;
+            numericBoxThicknessEnd.Minimum = 1D;
+            numericBoxThicknessEnd.Name = "numericBoxThicknessEnd";
+            numericBoxThicknessEnd.RadianValue = 3.4906585039886591D;
+            numericBoxThicknessEnd.ShowUpDown = true;
+            numericBoxThicknessEnd.SmartIncrement = true;
+            numericBoxThicknessEnd.TextFontSize = 9F;
+            numericBoxThicknessEnd.ThonsandsSeparator = true;
+            toolTip.SetToolTip(numericBoxThicknessEnd, resources.GetString("numericBoxThicknessEnd.ToolTip"));
+            numericBoxThicknessEnd.Value = 200D;
+            numericBoxThicknessEnd.ValueChanged += NumericBoxWholeThicknessStart_ValueChanged;
+            // 
+            // numericBoxThicknessStep
+            // 
+            resources.ApplyResources(numericBoxThicknessStep, "numericBoxThicknessStep");
+            numericBoxThicknessStep.BackColor = System.Drawing.SystemColors.Control;
+            numericBoxThicknessStep.FooterBackColor = System.Drawing.SystemColors.Control;
+            numericBoxThicknessStep.HeaderBackColor = System.Drawing.SystemColors.Control;
+            numericBoxThicknessStep.Maximum = 1000D;
+            numericBoxThicknessStep.Minimum = 1D;
+            numericBoxThicknessStep.Name = "numericBoxThicknessStep";
+            numericBoxThicknessStep.RadianValue = 0.3490658503988659D;
+            numericBoxThicknessStep.ShowUpDown = true;
+            numericBoxThicknessStep.SmartIncrement = true;
+            numericBoxThicknessStep.TextFontSize = 9F;
+            numericBoxThicknessStep.ThonsandsSeparator = true;
+            toolTip.SetToolTip(numericBoxThicknessStep, resources.GetString("numericBoxThicknessStep.ToolTip"));
+            numericBoxThicknessStep.Value = 20D;
+            numericBoxThicknessStep.ValueChanged += NumericBoxWholeThicknessStart_ValueChanged;
+            // 
             // comboBoxSolver
             // 
-            comboBoxSolver.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             resources.ApplyResources(comboBoxSolver, "comboBoxSolver");
+            comboBoxSolver.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             comboBoxSolver.FormattingEnabled = true;
             comboBoxSolver.Items.AddRange(new object[] { resources.GetString("comboBoxSolver.Items"), resources.GetString("comboBoxSolver.Items1"), resources.GetString("comboBoxSolver.Items2"), resources.GetString("comboBoxSolver.Items3"), resources.GetString("comboBoxSolver.Items4") });
             comboBoxSolver.Name = "comboBoxSolver";
@@ -198,194 +351,96 @@
             numericBoxThread.RadianValue = 0.069813170079773182D;
             numericBoxThread.ShowUpDown = true;
             numericBoxThread.SmartIncrement = true;
+            numericBoxThread.TextFontSize = 9F;
             numericBoxThread.ThonsandsSeparator = true;
-            toolTip.SetToolTip(numericBoxThread, resources.GetString("numericBoxThread.ToolTip"));
+            toolTip.SetToolTip(numericBoxThread, resources.GetString("numericBoxThread.ToolTip1"));
             numericBoxThread.Value = 4D;
             numericBoxThread.ValueChanged += NumericBoxWholeThicknessStart_ValueChanged;
             // 
-            // numericBoxThicknessStep
-            // 
-            resources.ApplyResources(numericBoxThicknessStep, "numericBoxThicknessStep");
-            numericBoxThicknessStep.BackColor = System.Drawing.SystemColors.Control;
-            numericBoxThicknessStep.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxThicknessStep.HeaderBackColor = System.Drawing.SystemColors.Control;
-            numericBoxThicknessStep.Maximum = 1000D;
-            numericBoxThicknessStep.Minimum = 1D;
-            numericBoxThicknessStep.Name = "numericBoxThicknessStep";
-            numericBoxThicknessStep.RadianValue = 0.3490658503988659D;
-            numericBoxThicknessStep.ShowUpDown = true;
-            numericBoxThicknessStep.SmartIncrement = true;
-            numericBoxThicknessStep.ThonsandsSeparator = true;
-            toolTip.SetToolTip(numericBoxThicknessStep, resources.GetString("numericBoxThicknessStep.ToolTip"));
-            numericBoxThicknessStep.Value = 20D;
-            numericBoxThicknessStep.ValueChanged += NumericBoxWholeThicknessStart_ValueChanged;
-            // 
-            // numericBoxMaxNumOfG
-            // 
-            resources.ApplyResources(numericBoxMaxNumOfG, "numericBoxMaxNumOfG");
-            numericBoxMaxNumOfG.BackColor = System.Drawing.SystemColors.Control;
-            numericBoxMaxNumOfG.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxMaxNumOfG.HeaderBackColor = System.Drawing.SystemColors.Control;
-            numericBoxMaxNumOfG.Maximum = 2048D;
-            numericBoxMaxNumOfG.Minimum = 1D;
-            numericBoxMaxNumOfG.Name = "numericBoxMaxNumOfG";
-            numericBoxMaxNumOfG.RadianValue = 1.1170107212763709D;
-            numericBoxMaxNumOfG.ShowUpDown = true;
-            numericBoxMaxNumOfG.SmartIncrement = true;
-            numericBoxMaxNumOfG.ThonsandsSeparator = true;
-            toolTip.SetToolTip(numericBoxMaxNumOfG, resources.GetString("numericBoxMaxNumOfG.ToolTip"));
-            numericBoxMaxNumOfG.Value = 64D;
-            numericBoxMaxNumOfG.ValueChanged += numericBoxMaxNumOfG_ValueChanged;
-            // 
-            // numericBoxWholeThicknessStart
-            // 
-            resources.ApplyResources(numericBoxWholeThicknessStart, "numericBoxWholeThicknessStart");
-            numericBoxWholeThicknessStart.BackColor = System.Drawing.SystemColors.Control;
-            numericBoxWholeThicknessStart.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxWholeThicknessStart.HeaderBackColor = System.Drawing.SystemColors.Control;
-            numericBoxWholeThicknessStart.Maximum = 1000D;
-            numericBoxWholeThicknessStart.Minimum = 1D;
-            numericBoxWholeThicknessStart.Name = "numericBoxWholeThicknessStart";
-            numericBoxWholeThicknessStart.RadianValue = 0.3490658503988659D;
-            numericBoxWholeThicknessStart.ShowUpDown = true;
-            numericBoxWholeThicknessStart.SmartIncrement = true;
-            numericBoxWholeThicknessStart.ThonsandsSeparator = true;
-            toolTip.SetToolTip(numericBoxWholeThicknessStart, resources.GetString("numericBoxWholeThicknessStart.ToolTip"));
-            numericBoxWholeThicknessStart.Value = 20D;
-            numericBoxWholeThicknessStart.ValueChanged += NumericBoxWholeThicknessStart_ValueChanged;
-            // 
-            // numericBoxThicknessEnd
-            // 
-            resources.ApplyResources(numericBoxThicknessEnd, "numericBoxThicknessEnd");
-            numericBoxThicknessEnd.BackColor = System.Drawing.SystemColors.Control;
-            numericBoxThicknessEnd.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxThicknessEnd.HeaderBackColor = System.Drawing.SystemColors.Control;
-            numericBoxThicknessEnd.Maximum = 1000D;
-            numericBoxThicknessEnd.Minimum = 1D;
-            numericBoxThicknessEnd.Name = "numericBoxThicknessEnd";
-            numericBoxThicknessEnd.RadianValue = 3.4906585039886591D;
-            numericBoxThicknessEnd.ShowUpDown = true;
-            numericBoxThicknessEnd.SmartIncrement = true;
-            numericBoxThicknessEnd.ThonsandsSeparator = true;
-            toolTip.SetToolTip(numericBoxThicknessEnd, resources.GetString("numericBoxThicknessEnd.ToolTip"));
-            numericBoxThicknessEnd.Value = 200D;
-            numericBoxThicknessEnd.ValueChanged += NumericBoxWholeThicknessStart_ValueChanged;
-            // 
             // buttonStop
             // 
+            resources.ApplyResources(buttonStop, "buttonStop");
             buttonStop.BackColor = System.Drawing.Color.IndianRed;
             buttonStop.ForeColor = System.Drawing.Color.White;
-            resources.ApplyResources(buttonStop, "buttonStop");
             buttonStop.Name = "buttonStop";
             toolTip.SetToolTip(buttonStop, resources.GetString("buttonStop.ToolTip"));
             buttonStop.UseVisualStyleBackColor = false;
             buttonStop.Click += buttonStop_Click;
             // 
-            // numericBoxDiskResolution
-            // 
-            numericBoxDiskResolution.BackColor = System.Drawing.SystemColors.Control;
-            numericBoxDiskResolution.DecimalPlaces = 3;
-            resources.ApplyResources(numericBoxDiskResolution, "numericBoxDiskResolution");
-            numericBoxDiskResolution.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxDiskResolution.HeaderBackColor = System.Drawing.SystemColors.Control;
-            numericBoxDiskResolution.Maximum = 100D;
-            numericBoxDiskResolution.Minimum = 0.001D;
-            numericBoxDiskResolution.Name = "numericBoxDiskResolution";
-            numericBoxDiskResolution.RadianValue = 0.0017453292519943296D;
-            numericBoxDiskResolution.ShowUpDown = true;
-            numericBoxDiskResolution.SmartIncrement = true;
-            numericBoxDiskResolution.ThonsandsSeparator = true;
-            toolTip.SetToolTip(numericBoxDiskResolution, resources.GetString("numericBoxDiskResolution.ToolTip"));
-            numericBoxDiskResolution.Value = 0.1D;
-            numericBoxDiskResolution.ValueChanged += NumericBoxDivision_ValueChanged;
-            // 
             // label13
             // 
             resources.ApplyResources(label13, "label13");
             label13.Name = "label13";
+            toolTip.SetToolTip(label13, resources.GetString("label13.ToolTip"));
             // 
             // groupBoxOutput
             // 
-            captureExtender.SetCapture(groupBoxOutput, true);
-            groupBoxOutput.Controls.Add(radioButtonIndividualDisk);
-            groupBoxOutput.Controls.Add(radioButtonAllDisks);
-            groupBoxOutput.Controls.Add(label3);
-            groupBoxOutput.Controls.Add(label11);
-            groupBoxOutput.Controls.Add(comboBoxGradient);
-            groupBoxOutput.Controls.Add(comboBoxScale);
-            groupBoxOutput.Controls.Add(trackBarOutputThickness);
-            groupBoxOutput.Controls.Add(trackBarGamma);
-            groupBoxOutput.Controls.Add(trackBarIntensityBrightnessMax);
-            groupBoxOutput.Controls.Add(trackBarIntensityBrightnessMin);
-            groupBoxOutput.Controls.Add(textBoxThickness);
-            groupBoxOutput.Controls.Add(label6);
-            groupBoxOutput.Controls.Add(label4);
-            groupBoxOutput.Controls.Add(labelGamma);
-            groupBoxOutput.Controls.Add(label8);
-            groupBoxOutput.Controls.Add(label7);
-            groupBoxOutput.Controls.Add(label1);
-            groupBoxOutput.Controls.Add(label5);
             resources.ApplyResources(groupBoxOutput, "groupBoxOutput");
+            captureExtender.SetCapture(groupBoxOutput, true);
+            groupBoxOutput.Controls.Add(flowLayoutPanel12);
+            groupBoxOutput.Controls.Add(flowLayoutPanel11);
+            groupBoxOutput.Controls.Add(flowLayoutPanel10);
+            groupBoxOutput.Controls.Add(flowLayoutPanel8);
+            groupBoxOutput.Controls.Add(flowLayoutPanel7);
             groupBoxOutput.Name = "groupBoxOutput";
             groupBoxOutput.TabStop = false;
+            toolTip.SetToolTip(groupBoxOutput, resources.GetString("groupBoxOutput.ToolTip"));
             // 
-            // radioButtonIndividualDisk
+            // flowLayoutPanel12
             // 
-            resources.ApplyResources(radioButtonIndividualDisk, "radioButtonIndividualDisk");
-            radioButtonIndividualDisk.Name = "radioButtonIndividualDisk";
-            toolTip.SetToolTip(radioButtonIndividualDisk, resources.GetString("radioButtonIndividualDisk.ToolTip"));
-            radioButtonIndividualDisk.UseVisualStyleBackColor = true;
-            radioButtonIndividualDisk.CheckedChanged += radioButtonAllDisks_CheckedChanged;
-            // 
-            // radioButtonAllDisks
-            // 
-            resources.ApplyResources(radioButtonAllDisks, "radioButtonAllDisks");
-            radioButtonAllDisks.Checked = true;
-            radioButtonAllDisks.Name = "radioButtonAllDisks";
-            radioButtonAllDisks.TabStop = true;
-            toolTip.SetToolTip(radioButtonAllDisks, resources.GetString("radioButtonAllDisks.ToolTip"));
-            radioButtonAllDisks.UseVisualStyleBackColor = true;
-            radioButtonAllDisks.CheckedChanged += radioButtonAllDisks_CheckedChanged;
+            resources.ApplyResources(flowLayoutPanel12, "flowLayoutPanel12");
+            flowLayoutPanel12.Controls.Add(label3);
+            flowLayoutPanel12.Controls.Add(comboBoxGradient);
+            flowLayoutPanel12.Controls.Add(label11);
+            flowLayoutPanel12.Controls.Add(comboBoxScale);
+            flowLayoutPanel12.Name = "flowLayoutPanel12";
+            toolTip.SetToolTip(flowLayoutPanel12, resources.GetString("flowLayoutPanel12.ToolTip"));
             // 
             // label3
             // 
             resources.ApplyResources(label3, "label3");
             label3.Name = "label3";
-            // 
-            // label11
-            // 
-            resources.ApplyResources(label11, "label11");
-            label11.Name = "label11";
+            toolTip.SetToolTip(label3, resources.GetString("label3.ToolTip"));
             // 
             // comboBoxGradient
             // 
-            comboBoxGradient.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             resources.ApplyResources(comboBoxGradient, "comboBoxGradient");
+            comboBoxGradient.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             comboBoxGradient.FormattingEnabled = true;
             comboBoxGradient.Items.AddRange(new object[] { resources.GetString("comboBoxGradient.Items"), resources.GetString("comboBoxGradient.Items1") });
             comboBoxGradient.Name = "comboBoxGradient";
             toolTip.SetToolTip(comboBoxGradient, resources.GetString("comboBoxGradient.ToolTip"));
             comboBoxGradient.SelectedIndexChanged += trackBarIntensityBrightnessMax_ValueChanged;
             // 
+            // label11
+            // 
+            resources.ApplyResources(label11, "label11");
+            label11.Name = "label11";
+            toolTip.SetToolTip(label11, resources.GetString("label11.ToolTip"));
+            // 
             // comboBoxScale
             // 
-            comboBoxScale.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             resources.ApplyResources(comboBoxScale, "comboBoxScale");
+            comboBoxScale.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             comboBoxScale.FormattingEnabled = true;
             comboBoxScale.Items.AddRange(new object[] { resources.GetString("comboBoxScale.Items"), resources.GetString("comboBoxScale.Items1"), resources.GetString("comboBoxScale.Items2"), resources.GetString("comboBoxScale.Items3") });
             comboBoxScale.Name = "comboBoxScale";
             toolTip.SetToolTip(comboBoxScale, resources.GetString("comboBoxScale.ToolTip"));
             comboBoxScale.SelectedIndexChanged += trackBarIntensityBrightnessMax_ValueChanged;
             // 
-            // trackBarOutputThickness
+            // flowLayoutPanel11
             // 
-            resources.ApplyResources(trackBarOutputThickness, "trackBarOutputThickness");
-            trackBarOutputThickness.LargeChange = 1;
-            trackBarOutputThickness.Maximum = 9;
-            trackBarOutputThickness.Name = "trackBarOutputThickness";
-            toolTip.SetToolTip(trackBarOutputThickness, resources.GetString("trackBarOutputThickness.ToolTip"));
-            trackBarOutputThickness.Scroll += TrackBarOutputThickness_Scroll;
-            trackBarOutputThickness.ValueChanged += TrackBarOutputThickness_Scroll;
+            resources.ApplyResources(flowLayoutPanel11, "flowLayoutPanel11");
+            flowLayoutPanel11.Controls.Add(labelGamma);
+            flowLayoutPanel11.Controls.Add(trackBarGamma);
+            flowLayoutPanel11.Name = "flowLayoutPanel11";
+            toolTip.SetToolTip(flowLayoutPanel11, resources.GetString("flowLayoutPanel11.ToolTip"));
+            // 
+            // labelGamma
+            // 
+            resources.ApplyResources(labelGamma, "labelGamma");
+            labelGamma.Name = "labelGamma";
+            toolTip.SetToolTip(labelGamma, resources.GetString("labelGamma.ToolTip"));
             // 
             // trackBarGamma
             // 
@@ -397,6 +452,53 @@
             trackBarGamma.TickFrequency = 50;
             toolTip.SetToolTip(trackBarGamma, resources.GetString("trackBarGamma.ToolTip"));
             trackBarGamma.ValueChanged += trackBarGamma_ValueChanged;
+            // 
+            // flowLayoutPanel10
+            // 
+            resources.ApplyResources(flowLayoutPanel10, "flowLayoutPanel10");
+            flowLayoutPanel10.Controls.Add(label5);
+            flowLayoutPanel10.Controls.Add(flowLayoutPanel9);
+            flowLayoutPanel10.Name = "flowLayoutPanel10";
+            toolTip.SetToolTip(flowLayoutPanel10, resources.GetString("flowLayoutPanel10.ToolTip"));
+            // 
+            // label5
+            // 
+            resources.ApplyResources(label5, "label5");
+            label5.Name = "label5";
+            toolTip.SetToolTip(label5, resources.GetString("label5.ToolTip"));
+            // 
+            // flowLayoutPanel9
+            // 
+            resources.ApplyResources(flowLayoutPanel9, "flowLayoutPanel9");
+            flowLayoutPanel9.Controls.Add(label7);
+            flowLayoutPanel9.Controls.Add(trackBarIntensityBrightnessMin);
+            flowLayoutPanel9.Controls.Add(label8);
+            flowLayoutPanel9.Controls.Add(trackBarIntensityBrightnessMax);
+            flowLayoutPanel9.Name = "flowLayoutPanel9";
+            toolTip.SetToolTip(flowLayoutPanel9, resources.GetString("flowLayoutPanel9.ToolTip"));
+            // 
+            // label7
+            // 
+            resources.ApplyResources(label7, "label7");
+            label7.Name = "label7";
+            toolTip.SetToolTip(label7, resources.GetString("label7.ToolTip"));
+            // 
+            // trackBarIntensityBrightnessMin
+            // 
+            resources.ApplyResources(trackBarIntensityBrightnessMin, "trackBarIntensityBrightnessMin");
+            trackBarIntensityBrightnessMin.LargeChange = 10000;
+            trackBarIntensityBrightnessMin.Maximum = 999999;
+            trackBarIntensityBrightnessMin.Name = "trackBarIntensityBrightnessMin";
+            trackBarIntensityBrightnessMin.SmallChange = 100000;
+            trackBarIntensityBrightnessMin.TickFrequency = 20000;
+            toolTip.SetToolTip(trackBarIntensityBrightnessMin, resources.GetString("trackBarIntensityBrightnessMin.ToolTip"));
+            trackBarIntensityBrightnessMin.ValueChanged += trackBarIntensityBrightnessMax_ValueChanged;
+            // 
+            // label8
+            // 
+            resources.ApplyResources(label8, "label8");
+            label8.Name = "label8";
+            toolTip.SetToolTip(label8, resources.GetString("label8.ToolTip"));
             // 
             // trackBarIntensityBrightnessMax
             // 
@@ -411,72 +513,93 @@
             trackBarIntensityBrightnessMax.Value = 1000000;
             trackBarIntensityBrightnessMax.ValueChanged += trackBarIntensityBrightnessMax_ValueChanged;
             // 
-            // trackBarIntensityBrightnessMin
+            // flowLayoutPanel8
             // 
-            resources.ApplyResources(trackBarIntensityBrightnessMin, "trackBarIntensityBrightnessMin");
-            trackBarIntensityBrightnessMin.LargeChange = 10000;
-            trackBarIntensityBrightnessMin.Maximum = 999999;
-            trackBarIntensityBrightnessMin.Name = "trackBarIntensityBrightnessMin";
-            trackBarIntensityBrightnessMin.SmallChange = 100000;
-            trackBarIntensityBrightnessMin.TickFrequency = 20000;
-            toolTip.SetToolTip(trackBarIntensityBrightnessMin, resources.GetString("trackBarIntensityBrightnessMin.ToolTip"));
-            trackBarIntensityBrightnessMin.ValueChanged += trackBarIntensityBrightnessMax_ValueChanged;
+            resources.ApplyResources(flowLayoutPanel8, "flowLayoutPanel8");
+            flowLayoutPanel8.Controls.Add(label1);
+            flowLayoutPanel8.Controls.Add(radioButtonAllDisks);
+            flowLayoutPanel8.Controls.Add(radioButtonIndividualDisk);
+            flowLayoutPanel8.Name = "flowLayoutPanel8";
+            toolTip.SetToolTip(flowLayoutPanel8, resources.GetString("flowLayoutPanel8.ToolTip"));
+            // 
+            // label1
+            // 
+            resources.ApplyResources(label1, "label1");
+            label1.Name = "label1";
+            toolTip.SetToolTip(label1, resources.GetString("label1.ToolTip"));
+            // 
+            // radioButtonAllDisks
+            // 
+            resources.ApplyResources(radioButtonAllDisks, "radioButtonAllDisks");
+            radioButtonAllDisks.Checked = true;
+            radioButtonAllDisks.Name = "radioButtonAllDisks";
+            radioButtonAllDisks.TabStop = true;
+            toolTip.SetToolTip(radioButtonAllDisks, resources.GetString("radioButtonAllDisks.ToolTip"));
+            radioButtonAllDisks.UseVisualStyleBackColor = true;
+            radioButtonAllDisks.CheckedChanged += radioButtonAllDisks_CheckedChanged;
+            // 
+            // radioButtonIndividualDisk
+            // 
+            resources.ApplyResources(radioButtonIndividualDisk, "radioButtonIndividualDisk");
+            radioButtonIndividualDisk.Name = "radioButtonIndividualDisk";
+            toolTip.SetToolTip(radioButtonIndividualDisk, resources.GetString("radioButtonIndividualDisk.ToolTip"));
+            radioButtonIndividualDisk.UseVisualStyleBackColor = true;
+            radioButtonIndividualDisk.CheckedChanged += radioButtonAllDisks_CheckedChanged;
+            // 
+            // flowLayoutPanel7
+            // 
+            resources.ApplyResources(flowLayoutPanel7, "flowLayoutPanel7");
+            flowLayoutPanel7.Controls.Add(label4);
+            flowLayoutPanel7.Controls.Add(textBoxThickness);
+            flowLayoutPanel7.Controls.Add(label6);
+            flowLayoutPanel7.Controls.Add(trackBarOutputThickness);
+            flowLayoutPanel7.Name = "flowLayoutPanel7";
+            toolTip.SetToolTip(flowLayoutPanel7, resources.GetString("flowLayoutPanel7.ToolTip"));
+            // 
+            // label4
+            // 
+            resources.ApplyResources(label4, "label4");
+            label4.Name = "label4";
+            toolTip.SetToolTip(label4, resources.GetString("label4.ToolTip"));
             // 
             // textBoxThickness
             // 
             resources.ApplyResources(textBoxThickness, "textBoxThickness");
             textBoxThickness.Name = "textBoxThickness";
             textBoxThickness.ReadOnly = true;
+            toolTip.SetToolTip(textBoxThickness, resources.GetString("textBoxThickness.ToolTip"));
             // 
             // label6
             // 
             resources.ApplyResources(label6, "label6");
             label6.Name = "label6";
+            toolTip.SetToolTip(label6, resources.GetString("label6.ToolTip"));
             // 
-            // label4
+            // trackBarOutputThickness
             // 
-            resources.ApplyResources(label4, "label4");
-            label4.Name = "label4";
-            // 
-            // labelGamma
-            // 
-            resources.ApplyResources(labelGamma, "labelGamma");
-            labelGamma.Name = "labelGamma";
-            // 
-            // label8
-            // 
-            resources.ApplyResources(label8, "label8");
-            label8.Name = "label8";
-            // 
-            // label7
-            // 
-            resources.ApplyResources(label7, "label7");
-            label7.Name = "label7";
-            // 
-            // label1
-            // 
-            resources.ApplyResources(label1, "label1");
-            label1.Name = "label1";
-            // 
-            // label5
-            // 
-            resources.ApplyResources(label5, "label5");
-            label5.Name = "label5";
+            resources.ApplyResources(trackBarOutputThickness, "trackBarOutputThickness");
+            trackBarOutputThickness.LargeChange = 1;
+            trackBarOutputThickness.Maximum = 9;
+            trackBarOutputThickness.Name = "trackBarOutputThickness";
+            toolTip.SetToolTip(trackBarOutputThickness, resources.GetString("trackBarOutputThickness.ToolTip"));
+            trackBarOutputThickness.Scroll += TrackBarOutputThickness_Scroll;
+            trackBarOutputThickness.ValueChanged += TrackBarOutputThickness_Scroll;
             // 
             // statusStrip2
             // 
+            resources.ApplyResources(statusStrip2, "statusStrip2");
             statusStrip2.ImageScalingSize = new System.Drawing.Size(20, 20);
             statusStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { toolStripProgressBar, toolStripStatusLabel2, toolStripStatusLabel1 });
             statusStrip2.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
-            resources.ApplyResources(statusStrip2, "statusStrip2");
             statusStrip2.Name = "statusStrip2";
             statusStrip2.SizingGrip = false;
+            toolTip.SetToolTip(statusStrip2, resources.GetString("statusStrip2.ToolTip"));
             // 
             // toolStripProgressBar
             // 
+            resources.ApplyResources(toolStripProgressBar, "toolStripProgressBar");
             toolStripProgressBar.Name = "toolStripProgressBar";
             toolStripProgressBar.Overflow = System.Windows.Forms.ToolStripItemOverflow.Never;
-            resources.ApplyResources(toolStripProgressBar, "toolStripProgressBar");
             toolStripProgressBar.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
             // 
             // toolStripStatusLabel2
@@ -486,13 +609,12 @@
             // 
             // toolStripStatusLabel1
             // 
-            toolStripStatusLabel1.Name = "toolStripStatusLabel1";
             resources.ApplyResources(toolStripStatusLabel1, "toolStripStatusLabel1");
+            toolStripStatusLabel1.Name = "toolStripStatusLabel1";
             // 
             // FormDiffractionSimulatorCBED
             // 
             resources.ApplyResources(this, "$this");
-            AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F); // 260329Cl 追加: Font→Dpi, 96dpi基準に統一
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             captureExtender.SetCapture(this, true);
             ControlBox = false;
@@ -503,18 +625,39 @@
             MaximizeBox = false;
             Name = "FormDiffractionSimulatorCBED";
             ShowIcon = false;
+            toolTip.SetToolTip(this, resources.GetString("$this.ToolTip"));
             FormClosing += FormDiffractionSimulatorMultislice_FormClosing;
             VisibleChanged += FormDiffractionSimulatorCBED_VisibleChanged;
             groupBoxInputParameters.ResumeLayout(false);
             groupBoxInputParameters.PerformLayout();
+            flowLayoutPanel6.ResumeLayout(false);
+            flowLayoutPanel6.PerformLayout();
+            flowLayoutPanel5.ResumeLayout(false);
+            flowLayoutPanel5.PerformLayout();
+            flowLayoutPanel4.ResumeLayout(false);
+            flowLayoutPanel3.ResumeLayout(false);
+            flowLayoutPanel3.PerformLayout();
             flowLayoutPanel1.ResumeLayout(false);
             flowLayoutPanel1.PerformLayout();
+            flowLayoutPanel2.ResumeLayout(false);
             groupBoxOutput.ResumeLayout(false);
             groupBoxOutput.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)trackBarOutputThickness).EndInit();
+            flowLayoutPanel12.ResumeLayout(false);
+            flowLayoutPanel12.PerformLayout();
+            flowLayoutPanel11.ResumeLayout(false);
+            flowLayoutPanel11.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)trackBarGamma).EndInit();
-            ((System.ComponentModel.ISupportInitialize)trackBarIntensityBrightnessMax).EndInit();
+            flowLayoutPanel10.ResumeLayout(false);
+            flowLayoutPanel10.PerformLayout();
+            flowLayoutPanel9.ResumeLayout(false);
+            flowLayoutPanel9.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)trackBarIntensityBrightnessMin).EndInit();
+            ((System.ComponentModel.ISupportInitialize)trackBarIntensityBrightnessMax).EndInit();
+            flowLayoutPanel8.ResumeLayout(false);
+            flowLayoutPanel8.PerformLayout();
+            flowLayoutPanel7.ResumeLayout(false);
+            flowLayoutPanel7.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)trackBarOutputThickness).EndInit();
             statusStrip2.ResumeLayout(false);
             statusStrip2.PerformLayout();
             ResumeLayout(false);
@@ -564,5 +707,16 @@
         private System.Windows.Forms.RadioButton radioButtonCBED;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel6;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel5;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel4;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel9;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel8;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel7;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel12;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel11;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel10;
     }
 }
