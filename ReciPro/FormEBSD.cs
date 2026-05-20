@@ -202,7 +202,7 @@ public partial class FormEBSD : FormBase
         buttonFitNistElasticSampler.Enabled = false;
         toolStripProgressBar.Value = 0;
         toolStripStatusLabel2.Text = "NIST elastic compression";
-        toolStripStatusLabel1.Text = "0% completed, elapsed 0.00 s.";
+        toolStripStatusLabel1.Text = "0% completed, elapsed 0.00 s";
         toolStripStatusLabel3.Text = "";
 
         var stopwatch = Stopwatch.StartNew();
@@ -211,7 +211,7 @@ public partial class FormEBSD : FormBase
             var progressValue = Math.Clamp((int)Math.Round(100.0 * state.OverallProgress), 0, 100);
             toolStripProgressBar.Value = progressValue;
             toolStripStatusLabel2.Text = $"NIST elastic compression: Z={state.AtomicNumber}, block {state.BlockIndex}/{state.BlockCount}, {state.Phase}";
-            toolStripStatusLabel1.Text = $"{progressValue}% completed, elapsed {stopwatch.Elapsed.TotalSeconds:f2} s.";
+            toolStripStatusLabel1.Text = $"{progressValue}% completed, elapsed {stopwatch.Elapsed.TotalSeconds:f2} s";
             toolStripStatusLabel3.Text = $"File {state.FileIndex}/{state.FileCount}: {Path.GetFileName(state.SourcePath)}";
         });
 
@@ -221,7 +221,7 @@ public partial class FormEBSD : FormBase
             stopwatch.Stop();
             toolStripProgressBar.Value = 100;
             toolStripStatusLabel2.Text = "NIST elastic compression completed";
-            toolStripStatusLabel1.Text = $"100% completed, elapsed {stopwatch.Elapsed.TotalSeconds:f2} s.";
+            toolStripStatusLabel1.Text = $"100% completed, elapsed {stopwatch.Elapsed.TotalSeconds:f2} s";
             toolStripStatusLabel3.Text = $"{compressionResult.SourceFileCount} file(s) processed, {compressionResult.OutputPaths.Count} output file(s).";
             MessageBox.Show(this,
                 $"Finished compressing {compressionResult.SourceFileCount} file(s).\r\n" +
@@ -236,7 +236,7 @@ public partial class FormEBSD : FormBase
         catch (Exception ex)
         {
             toolStripStatusLabel2.Text = "NIST elastic compression failed";
-            toolStripStatusLabel1.Text = $"Failed after {stopwatch.Elapsed.TotalSeconds:f2} s.";
+            toolStripStatusLabel1.Text = $"Failed after {stopwatch.Elapsed.TotalSeconds:f2} s";
             toolStripStatusLabel3.Text = ex.Message;
             MessageBox.Show(this, ex.ToString(), "NIST elastic sampler compression", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
@@ -291,7 +291,7 @@ public partial class FormEBSD : FormBase
         buttonBenchmarkNistElasticSampler.Enabled = false;
         toolStripProgressBar.Value = 0;
         toolStripStatusLabel2.Text = "NIST elastic MC benchmark";
-        toolStripStatusLabel1.Text = "0% completed, elapsed 0.00 s.";
+        toolStripStatusLabel1.Text = "0% completed, elapsed 0.00 s";
         toolStripStatusLabel3.Text = "";
 
         var originalSamplerTextDirectory = MonteCarlo.NistElasticSamplerTextDirectory;
@@ -304,7 +304,7 @@ public partial class FormEBSD : FormBase
             {
                 toolStripProgressBar.Value = Math.Clamp(state.Progress, 0, 100);
                 toolStripStatusLabel2.Text = $"NIST elastic MC benchmark: {state.Message}";
-                toolStripStatusLabel1.Text = $"{toolStripProgressBar.Value}% completed, elapsed {stopwatch.Elapsed.TotalSeconds:f2} s.";
+                toolStripStatusLabel1.Text = $"{toolStripProgressBar.Value}% completed, elapsed {stopwatch.Elapsed.TotalSeconds:f2} s";
                 toolStripStatusLabel3.Text = state.Detail;
             });
 
@@ -318,7 +318,7 @@ public partial class FormEBSD : FormBase
             stopwatch.Stop();
             toolStripProgressBar.Value = 100;
             toolStripStatusLabel2.Text = "NIST elastic MC benchmark completed";
-            toolStripStatusLabel1.Text = $"100% completed, elapsed {stopwatch.Elapsed.TotalSeconds:f2} s.";
+            toolStripStatusLabel1.Text = $"100% completed, elapsed {stopwatch.Elapsed.TotalSeconds:f2} s";
             toolStripStatusLabel3.Text = Path.GetFileName(summaryPath);
             MessageBox.Show(this,
                 $"Benchmark finished.\r\n" +
@@ -332,7 +332,7 @@ public partial class FormEBSD : FormBase
         catch (Exception ex)
         {
             toolStripStatusLabel2.Text = "NIST elastic MC benchmark failed";
-            toolStripStatusLabel1.Text = $"Failed after {stopwatch.Elapsed.TotalSeconds:f2} s.";
+            toolStripStatusLabel1.Text = $"Failed after {stopwatch.Elapsed.TotalSeconds:f2} s";
             toolStripStatusLabel3.Text = ex.Message;
             MessageBox.Show(this, ex.ToString(), "NIST elastic MC benchmark", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
@@ -1521,15 +1521,15 @@ public partial class FormEBSD : FormBase
                 case 1:
                     EnsureMasterPatternGlobalNormalizationFactorsModel1();
                     ApplyEbsdLookupWeightedModel1(ebsdValues, width, height);
-                    statusText = $"EBSD weighted pattern (model=1, globally normalized master, {MasterPattern.Energies.Length} energies × {MasterPattern.Depths.Length} depths), {sw1.ElapsedMilliseconds} ms."; // (260325Ch)
+                    statusText = $"EBSD weighted pattern (model=1, globally normalized master, {MasterPattern.Energies.Length} energies × {MasterPattern.Depths.Length} depths), {sw1.ElapsedMilliseconds} ms"; // (260325Ch)
                     break;
                 case 2:
                     ApplyEbsdLookupWeightedModel2(ebsdValues, width, height);
-                    statusText = $"EBSD weighted pattern (model=2, absolute MC x differential master, {MasterPattern.Energies.Length} energies × {MasterPattern.Depths.Length} depths), {sw1.ElapsedMilliseconds} ms."; // (260325Ch)
+                    statusText = $"EBSD weighted pattern (model=2, absolute MC x differential master, {MasterPattern.Energies.Length} energies × {MasterPattern.Depths.Length} depths), {sw1.ElapsedMilliseconds} ms"; // (260325Ch)
                     break;
                 default://0
                     ApplyEbsdLookupWeightedModel0(ebsdValues, width, height);
-                    statusText = $"EBSD weighted pattern (model=0, current), {MasterPattern.Energies.Length} energies × {MasterPattern.Depths.Length} depths, {sw1.ElapsedMilliseconds} ms."; // (260325Ch)
+                    statusText = $"EBSD weighted pattern (model=0, current), {MasterPattern.Energies.Length} energies × {MasterPattern.Depths.Length} depths, {sw1.ElapsedMilliseconds} ms"; // (260325Ch)
                     break;
             }
         }
@@ -1556,18 +1556,18 @@ public partial class FormEBSD : FormBase
                     var planeIndex = energyIndex * mp.Depths.Length + depthIndex; // (260325Ch) model 1 の規格化係数参照用
                     var planeScaleFactor = (uint)planeIndex < (uint)masterPatternGlobalNormalizationFactors.Length ? masterPatternGlobalNormalizationFactors[planeIndex] : 0.0; // (260325Ch)
                     ApplyEbsdLookupSingleSliceModel1(ebsdValues, totalPixels, posPlane, negPlane, planeScaleFactor);
-                    statusText = $"EBSD from MasterPattern (model=1): E={energy:g} kV, depth={depth:g} nm, {sw1.ElapsedMilliseconds} ms."; // (260325Ch)
+                    statusText = $"EBSD from MasterPattern (model=1): E={energy:g} keV, depth={depth:g} nm, {sw1.ElapsedMilliseconds} ms"; // (260325Ch)
                     break;
                 case 2:
                     var posPlanePrevious = depthIndex > 0 ? mp.GetPlane(MasterPattern.Hemisphere.PositiveZ, energyIndex, depthIndex - 1) : null; // (260325Ch)
                     var negPlanePrevious = depthIndex > 0 ? mp.GetPlane(MasterPattern.Hemisphere.NegativeZ, energyIndex, depthIndex - 1) : null; // (260325Ch)
                     ApplyEbsdLookupSingleSliceModel2(ebsdValues, totalPixels, posPlane, negPlane, posPlanePrevious, negPlanePrevious);
-                    statusText = $"EBSD from MasterPattern (model=2): E={energy:g} kV, depth slice={depth:g} nm, {sw1.ElapsedMilliseconds} ms."; // (260325Ch)
+                    statusText = $"EBSD from MasterPattern (model=2): E={energy:g} keV, depth slice={depth:g} nm, {sw1.ElapsedMilliseconds} ms"; // (260325Ch)
                     break;
                 default:
                     // ApplyEbsdLookupSingleSlice(ebsdValues, totalPixels, posPlane, negPlane); // (260325Ch) 旧実装
                     ApplyEbsdLookupSingleSliceModel0(ebsdValues, totalPixels, posPlane, negPlane);
-                    statusText = $"EBSD from MasterPattern (model=0): E={energy:g} kV, depth={depth:g} nm, {sw1.ElapsedMilliseconds} ms."; // (260325Ch)
+                    statusText = $"EBSD from MasterPattern (model=0): E={energy:g} keV, depth={depth:g} nm, {sw1.ElapsedMilliseconds} ms"; // (260325Ch)
                     break;
             }
         }
@@ -2041,7 +2041,7 @@ public partial class FormEBSD : FormBase
         buttonStop.Visible = true; // 260406Cl MC 中も Stop ボタンを表示
         toolStripProgressBar.Value = 0;
         toolStripStatusLabel2.Text = "Calc BSE: MonteCarlo";
-        toolStripStatusLabel1.Text = "0% completed, elapsed 0.00 s.";
+        toolStripStatusLabel1.Text = "0% completed, elapsed 0.00 s";
         toolStripStatusLabel3.Text = "";
         // labelMasterPatternInfo.Text = "Calculating BSE by Monte Carlo..."; // 260406Cl 廃止: Label2 "Calc BSE: MonteCarlo" で代替
 
@@ -2241,7 +2241,7 @@ public partial class FormEBSD : FormBase
             var progressValue = Math.Clamp(state.Progress, 0, 100);
             toolStripProgressBar.Value = progressValue;
             toolStripStatusLabel2.Text = $"{statusPrefix}: {state.Message}"; // (260401Ch) Calc BSE も同じ MC helper を共有する
-            toolStripStatusLabel1.Text = $"{progressValue:f0}% completed, elapsed {monteCarloStopwatch.ElapsedMilliseconds / 1000.0:f2} s.";
+            toolStripStatusLabel1.Text = $"{progressValue:f0}% completed, elapsed {monteCarloStopwatch.ElapsedMilliseconds / 1000.0:f2} s";
             // labelMasterPatternInfo.Text = $"{progressInfoText} {progressValue}%"; // (260401Ch) // 260406Cl 廃止: Label1の進捗%とLabel2のタスク名で代替
         });
 
@@ -2286,7 +2286,7 @@ public partial class FormEBSD : FormBase
                 mcDistribution = null;
                 toolStripProgressBar.Value = 0;
                 toolStripStatusLabel2.Text = $"{statusPrefix}: MonteCarlo"; // (260401Ch)
-                toolStripStatusLabel1.Text = $"0% completed, elapsed {masterPatternMonteCarloElapsedMilliseconds / 1000.0:f2} s.";
+                toolStripStatusLabel1.Text = $"0% completed, elapsed {masterPatternMonteCarloElapsedMilliseconds / 1000.0:f2} s";
                 // toolStripStatusLabel3.Text = ""; // 260406Cl 旧: 空文字→noResultInfoText に変更
                 toolStripStatusLabel3.Text = noResultInfoText; // 260406Cl labelMasterPatternInfo廃止: 結果なし理由をLabel3へ移動
                 return false;
@@ -2309,7 +2309,7 @@ public partial class FormEBSD : FormBase
             masterPatternMonteCarloElapsedMilliseconds = monteCarloStopwatch.ElapsedMilliseconds; // (260327Ch) MC 本体と fitting、統計更新まで含めた時間
             toolStripProgressBar.Value = 100;
             toolStripStatusLabel2.Text = $"{statusPrefix}: MonteCarlo finished"; // (260401Ch)
-            toolStripStatusLabel1.Text = $"100% completed, elapsed {masterPatternMonteCarloElapsedMilliseconds / 1000.0:f2} s.";
+            toolStripStatusLabel1.Text = $"100% completed, elapsed {masterPatternMonteCarloElapsedMilliseconds / 1000.0:f2} s";
             // labelMasterPatternInfo.Text = completedInfoText; // (260401Ch) // 260406Cl 廃止
             toolStripStatusLabel3.Text = completedInfoText; // 260406Cl labelMasterPatternInfo廃止: 完了メッセージをLabel3へ移動
             return true;
@@ -2319,7 +2319,7 @@ public partial class FormEBSD : FormBase
             masterPatternMonteCarloElapsedMilliseconds = monteCarloStopwatch.ElapsedMilliseconds;
             toolStripProgressBar.Value = 0;
             toolStripStatusLabel2.Text = $"{statusPrefix}: MonteCarlo cancelled";
-            toolStripStatusLabel1.Text = $"Stopped after {monteCarloStopwatch.ElapsedMilliseconds / 1000.0:f2} s.";
+            toolStripStatusLabel1.Text = $"Stopped after {monteCarloStopwatch.ElapsedMilliseconds / 1000.0:f2} s";
             toolStripStatusLabel3.Text = "";
             return false;
         }
@@ -2347,7 +2347,7 @@ public partial class FormEBSD : FormBase
         buttonStop.Visible = true; // 260406Cl MC 中も Stop ボタンを表示
         toolStripProgressBar.Value = 0;
         toolStripStatusLabel2.Text = "MasterPattern: MonteCarlo";
-        toolStripStatusLabel1.Text = "0% completed, elapsed 0.00 s.";
+        toolStripStatusLabel1.Text = "0% completed, elapsed 0.00 s";
         toolStripStatusLabel3.Text = ""; // (260327Ch) 前回の完了時間表示をクリア
         // labelMasterPatternInfo.Text = "Preparing MasterPattern by Monte Carlo..."; // 260406Cl 廃止: Label2 "MasterPattern: MonteCarlo" で代替
         sw2.Restart(); // (260327Ch) MasterPattern 全体の経過時間
@@ -2404,7 +2404,7 @@ public partial class FormEBSD : FormBase
         // labelMasterPatternInfo.Text = $"Building {GetHemisphereText(request.Hemisphere)} master grid ({request.GridSize} x {request.GridSize})..."; // (260321Ch) 旧案: 単一半球計算を前提にしていた
         // labelMasterPatternInfo.Text = $"Building full sphere master grid ({request.GridSize} x {request.GridSize})..."; // 260406Cl 廃止: Label3へ移動
         toolStripStatusLabel3.Text = $"Full sphere, grid {request.GridSize} x {request.GridSize}"; // 260406Cl labelMasterPatternInfo廃止: グリッド情報をLabel3へ
-        toolStripStatusLabel1.Text = "0% completed, elapsed 0.00 s."; // (260327Ch)
+        toolStripStatusLabel1.Text = "0% completed, elapsed 0.00 s"; // (260327Ch)
         sw1.Restart();
     }
 
@@ -2421,7 +2421,7 @@ public partial class FormEBSD : FormBase
             var progress = Math.Clamp(e.ProgressPercentage, 0, 100);
             toolStripProgressBar.Value = progress;
             toolStripStatusLabel2.Text = $"MasterPattern: {e.UserState}";
-            toolStripStatusLabel1.Text = $"{progress:f0}% completed, elapsed {sec:f2} s.";
+            toolStripStatusLabel1.Text = $"{progress:f0}% completed, elapsed {sec:f2} s";
             // labelMasterPatternInfo.Text = $"Building {GetHemisphereText(e.Request.Hemisphere)} master grid... {progress}%"; // (260321Ch) 旧案: 単一半球計算を前提にしていた
             // labelMasterPatternInfo.Text = $"Building full sphere master grid... {progress}%"; // 260406Cl 廃止: Label1の進捗%とLabel2のタスク名で代替
             // Application.DoEvents(); // (260327Ch) ProgressChanged 再入の原因になるため停止
@@ -2443,7 +2443,7 @@ public partial class FormEBSD : FormBase
         if (e.Error != null)
         {
             toolStripStatusLabel2.Text = "MasterPattern failed";
-            toolStripStatusLabel1.Text = $"Failed after {sw2.ElapsedMilliseconds / 1000.0:f2} s.";
+            toolStripStatusLabel1.Text = $"Failed after {sw2.ElapsedMilliseconds / 1000.0:f2} s";
             toolStripStatusLabel3.Text = "";
             // labelMasterPatternInfo.Text = "MasterPattern build failed."; // 260406Cl 廃止: Label2 "MasterPattern failed" で代替
             UpdateMasterPatternSelectors();
@@ -2454,7 +2454,7 @@ public partial class FormEBSD : FormBase
         if (e.Cancelled || e.MasterPattern == null)
         {
             toolStripStatusLabel2.Text = "MasterPattern cancelled";
-            toolStripStatusLabel1.Text = $"Stopped after {sw2.ElapsedMilliseconds / 1000.0:f2} s.";
+            toolStripStatusLabel1.Text = $"Stopped after {sw2.ElapsedMilliseconds / 1000.0:f2} s";
             toolStripStatusLabel3.Text = "";
             // labelMasterPatternInfo.Text = "MasterPattern build was cancelled."; // 260406Cl 廃止: Label2 "MasterPattern cancelled" で代替
             UpdateMasterPatternSelectors();
@@ -2469,9 +2469,9 @@ public partial class FormEBSD : FormBase
         toolStripStatusLabel2.Text = "MasterPattern completed";
         var totalSec = sw2.ElapsedMilliseconds / 1000.0;
         var monteCarloSec = masterPatternMonteCarloElapsedMilliseconds / 1000.0;
-        toolStripStatusLabel1.Text = $"100% completed, elapsed {totalSec:f2} s.";
-        // toolStripStatusLabel3.Text = $"Total {totalSec:f2} s. (Monte Carlo {monteCarloSec:f2} s, MasterPattern {sec:f2} s, {e.Request.GridSize} x {e.Request.GridSize}, full sphere)"; // 260406Cl 旧: energies/depths 情報を統合
-        toolStripStatusLabel3.Text = $"Total {totalSec:f2} s. (MC {monteCarloSec:f2} s, Bethe {sec:f2} s), {e.Request.GridSize} x {e.Request.GridSize}, full sphere, {MasterPattern?.Energies.Length ?? 0} energies, {MasterPattern?.Depths.Length ?? 0} depths"; // 260406Cl labelMasterPatternInfo廃止: energies/depths をLabel3へ統合
+        toolStripStatusLabel1.Text = $"100% completed, elapsed {totalSec:f2} s";
+        // toolStripStatusLabel3.Text = $"Total {totalSec:f2} s (Monte Carlo {monteCarloSec:f2} s, MasterPattern {sec:f2} s, {e.Request.GridSize} x {e.Request.GridSize}, full sphere)"; // 260406Cl 旧: energies/depths 情報を統合
+        toolStripStatusLabel3.Text = $"Total {totalSec:f2} s (MC {monteCarloSec:f2} s, Bethe {sec:f2} s), {e.Request.GridSize} x {e.Request.GridSize}, full sphere, {MasterPattern?.Energies.Length ?? 0} energies, {MasterPattern?.Depths.Length ?? 0} depths"; // 260406Cl labelMasterPatternInfo廃止: energies/depths をLabel3へ統合
         // labelMasterPatternInfo.Text = $"Ready: {GetHemisphereText(e.Request.Hemisphere)}, {MasterPattern?.Energies.Length ?? 0} energies, {MasterPattern?.Depths.Length ?? 0} depths."; // (260321Ch) 旧案
         // labelMasterPatternInfo.Text = $"Ready: full sphere, {MasterPattern?.Energies.Length ?? 0} energies, {MasterPattern?.Depths.Length ?? 0} depths."; // 260406Cl 廃止: Label3へ統合
 
@@ -2501,7 +2501,7 @@ public partial class FormEBSD : FormBase
         {
             masterPatternEbsd.CancelMasterPatternBuild();
             toolStripStatusLabel2.Text = "MasterPattern cancel requested";
-            toolStripStatusLabel1.Text = $"{toolStripProgressBar.Value:f0}% completed, elapsed {sw2.ElapsedMilliseconds / 1000.0:f2} s.";
+            toolStripStatusLabel1.Text = $"{toolStripProgressBar.Value:f0}% completed, elapsed {sw2.ElapsedMilliseconds / 1000.0:f2} s";
             return;
         }
 
@@ -2645,7 +2645,7 @@ public partial class FormEBSD : FormBase
         var depth = MasterPattern.Depths[selectedDepthIndex];
         // labelMasterPatternInfo.Text = $"Preview: {GetHemisphereText(selectedHemisphere)}, E = {energy:g} kV, depth = {depth:g} nm"; // 260406Cl 廃止: Label2+Label3へ分割
         toolStripStatusLabel2.Text = "MasterPattern preview";
-        toolStripStatusLabel3.Text = $"{GetHemisphereText(selectedHemisphere)}, E = {energy:g} kV, depth = {depth:g} nm";
+        toolStripStatusLabel3.Text = $"{GetHemisphereText(selectedHemisphere)}, E = {energy:g} keV, depth = {depth:g} nm"; // 260520Cl: kV→keV (エネルギー単位)
         masterPattern2DValues = displayValues; // 260331Cl 2D 表示キャッシュ (六方格子座標)
         masterPattern3DValuesPositive = positiveDisplayValues; // 260331Cl 3D 球面キャッシュ
         masterPattern3DValuesNegative = negativeDisplayValues; // 260331Cl 3D 球面キャッシュ

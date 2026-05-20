@@ -128,7 +128,6 @@ public partial class FormTrajectory : FormBase
         Parallel.For(0, Trajectories.Length, i => Trajectories[i] = monte.GetTrajectories());
         //Parallel.For(0, Trajectories.Length, i => Trajectories[i] = monte.GetTrajectoriesNative());
 
-        //toolStripStatusLabel1.Text = $"{sw.ElapsedMilliseconds} ms ellapsed for {numericBoxCalcNum.ValueInteger} trajectories.";
         toolStripStatusLabel1.Text = $"{sw.ElapsedMilliseconds} ms elapsed for {numericBoxCalcNum.ValueInteger} trajectories."; // 260520Cl: typo fix (ellapsed → elapsed)
     }
     #endregion

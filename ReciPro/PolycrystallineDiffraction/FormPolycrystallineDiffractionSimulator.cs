@@ -699,8 +699,8 @@ public partial class FormPolycrystallineDiffractionSimulator : FormBase
             return;
         }
 
-        textBox1.Text = "Time: " + (currentSecond / 1000.0).ToString("f0") + " sec\r\n" +
-                       "Speed: " + ((currentSecond - beforeSecond) / (step - beforeStep)).ToString("f0") + " msec/step \r\n" +
+        textBox1.Text = "Time: " + (currentSecond / 1000.0).ToString("f0") + " s\r\n" +
+                       "Speed: " + ((currentSecond - beforeSecond) / (step - beforeStep)).ToString("f0") + " ms/step \r\n" +
                        "Step: " + step.ToString() + "\r\n" +
                        "Success: " + successTime.ToString() + "\r\n" +
                        "Residual: " + (residual * 100).ToString("f2") + "%\r\n" +

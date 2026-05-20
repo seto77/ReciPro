@@ -466,8 +466,8 @@ public partial class FormImageSimulator : FormBase
             var sec = s4 / 1000.0;
             var totalsec = sec + (s1 + s2 + s3) / 1000.0;
             toolStripProgressBar.Value = (int)((current / 1E6 * 0.8 + 0.2) * toolStripProgressBar.Maximum);
-            toolStripStatusLabel1.Text = $"Elapsed time : {totalsec:f1} s.  Stage 4: Calculating I_inelastic(Q).  ";
-            toolStripStatusLabel2.Text = $"{current / 1E4:f1} % completed,  wait for more {sec * (1E6 - current) / current:f1} s.";
+            toolStripStatusLabel1.Text = $"Elapsed time : {totalsec:f1} s  Stage 4: Calculating I_inelastic(Q).  ";
+            toolStripStatusLabel2.Text = $"{current / 1E4:f1} % completed,  wait for more {sec * (1E6 - current) / current:f1} s";
         }
         else if (message.StartsWith("Calculating U", StringComparison.Ordinal))
         {
@@ -477,8 +477,8 @@ public partial class FormImageSimulator : FormBase
             var sec = s3 / 1000.0;
             var totalsec = sec + (s1 + s2) / 1000.0;
             toolStripProgressBar.Value = (int)((current / 1E6 * 0.01 + 0.19) * toolStripProgressBar.Maximum);
-            toolStripStatusLabel1.Text = $"Elapsed time : {totalsec:f1} s.  Stage 3: Calculating U' matrix.  ";
-            toolStripStatusLabel2.Text = $"{current / 1E4:f1} % completed,  wait for more {sec * (1E6 - current) / current:f1} s.";
+            toolStripStatusLabel1.Text = $"Elapsed time : {totalsec:f1} s  Stage 3: Calculating U' matrix.  ";
+            toolStripStatusLabel2.Text = $"{current / 1E4:f1} % completed,  wait for more {sec * (1E6 - current) / current:f1} s";
         }
         else if (message.StartsWith("Calculating I_elastic(Q)", StringComparison.Ordinal))
         {
@@ -487,15 +487,15 @@ public partial class FormImageSimulator : FormBase
             var sec = s2 / 1000.0;
             var totalsec = sec + s1 / 1000.0;
             toolStripProgressBar.Value = (int)((current / 1E6 * 0.01 + 0.18) * toolStripProgressBar.Maximum);
-            toolStripStatusLabel1.Text = $"Elapsed time : {totalsec:f1} s.  Stage 2: Calculating I_elastic(Q).  ";
-            toolStripStatusLabel2.Text = $"{current / 1E4:f1} % completed,  wait for more {sec * (1E6 - current) / current:f1} s.";
+            toolStripStatusLabel1.Text = $"Elapsed time : {totalsec:f1} s  Stage 2: Calculating I_elastic(Q).  ";
+            toolStripStatusLabel2.Text = $"{current / 1E4:f1} % completed,  wait for more {sec * (1E6 - current) / current:f1} s";
         }
         else
         {
             var sec = s1 / 1000.0;
             toolStripProgressBar.Value = (int)((current / 1E6 * 0.18 + 0.0) * toolStripProgressBar.Maximum);
-            toolStripStatusLabel1.Text = $"Elapsed time : {sec:f1} s.  Stage 1: Calculating Tg for " + stemDirectionTotal.ToString() + " directions (" + message + ").";
-            toolStripStatusLabel2.Text = $"{current / 1E4:f1} % completed,  wait for more {sec * (1E6 - current) / current:f1} s.";
+            toolStripStatusLabel1.Text = $"Elapsed time : {sec:f1} s  Stage 1: Calculating Tg for " + stemDirectionTotal.ToString() + " directions (" + message + ").";
+            toolStripStatusLabel2.Text = $"{current / 1E4:f1} % completed,  wait for more {sec * (1E6 - current) / current:f1} s";
         }
         // 260428Cl Application.DoEvents() を削除 (BackgroundWorker の ProgressChanged は UI スレッドで動作するため不要)
         skipProgressChangedEvent = false;
@@ -516,14 +516,12 @@ public partial class FormImageSimulator : FormBase
           
 
             toolStripProgressBar.Value = toolStripProgressBar.Maximum;
-            //toolStripStatusLabel1.Text = $"Completed! Total ellapsed time: {(s1 + s2 + s3 + s4) / 1000.0:f1} s";
             toolStripStatusLabel1.Text = $"Completed! Total elapsed time: {(s1 + s2 + s3 + s4) / 1000.0:f1} s"; // 260520Cl: typo fix (ellapsed → elapsed)
             toolStripStatusLabel1.Text += $"  Stage 1: {s1 / 1000.0:f1} s  Stage 2: {s2 / 1000.0:f1} s  Stage 3: {s3 / 1000.0:f1} s  Stage 4: {s4 / 1000.0:f1} s";
 
         }
         else
         {
-            //toolStripStatusLabel1.Text = $"Interupted! Total ellapsed time: {(s1 + s2 + s3) / 1000.0:f1} s";
             toolStripStatusLabel1.Text = $"Interrupted! Total elapsed time: {(s1 + s2 + s3) / 1000.0:f1} s"; // 260520Cl: typo fix (Interupted → Interrupted, ellapsed → elapsed)
         }
         toolStripStatusLabel2.Text = "";
@@ -572,7 +570,7 @@ public partial class FormImageSimulator : FormBase
             Native);
 
         var temp = sw1.ElapsedMilliseconds;
-        toolStripStatusLabel1.Text += $"Generation of HRTEM images: {sw1.ElapsedMilliseconds} msec,   ";
+        toolStripStatusLabel1.Text += $"Generation of HRTEM images: {sw1.ElapsedMilliseconds} ms,   ";
 
         GeneratePseudBitmap();
 
@@ -597,7 +595,7 @@ public partial class FormImageSimulator : FormBase
 
 
         var temp = sw1.ElapsedMilliseconds;
-        toolStripStatusLabel1.Text = $"Generation of Potential images: {temp} msec,   ";
+        toolStripStatusLabel1.Text = $"Generation of Potential images: {temp} ms,   ";
 
         //最大値、最小値の設定
         double max = radioButtonPotentialModeMagAndPhase.Checked ? Max(images[0].Max(), images[2].Max()) : Max(Abs(images.Max(d => d.Max())), Abs(images.Min(d => d.Min())));

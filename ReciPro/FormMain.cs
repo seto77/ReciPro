@@ -510,7 +510,7 @@ public partial class FormMain : FormBase
         if (commonDialog.AutomaticallyClose)
             commonDialog.Visible = false;
 
-        toolStripStatusLabel.Text = $"Startup time: {sw.ElapsedMilliseconds:#,0} ms.";
+        toolStripStatusLabel.Text = $"Startup time: {sw.ElapsedMilliseconds:#,0} ms";
 
         if (disableOpneGLToolStripMenuItem.Checked)
         {
@@ -1857,8 +1857,8 @@ public partial class FormMain : FormBase
             var format = $"f{digit}";
 
             if (showPercentage) message += $" Completed: {(ratio * 100).ToString(format)} %.";
-            if (showElapsedTime) message += $" Elapsed: {elapsedSec.ToString(format)} s.";
-            if (showRemainTime) message += $" Remaining: {(elapsedSec / current * (total - current)).ToString(format)} s.";
+            if (showElapsedTime) message += $" Elapsed: {elapsedSec.ToString(format)} s";
+            if (showRemainTime) message += $" Remaining: {(elapsedSec / current * (total - current)).ToString(format)} s";
 
             toolStripStatusLabel.Text = message;
             // 260428Cl Application.DoEvents() を削除 (Progress<T> 経由で UI スレッドにポストされるため不要、再入の元)
