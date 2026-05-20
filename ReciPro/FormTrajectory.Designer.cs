@@ -36,7 +36,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormTrajectory));
             waveLengthControl = new WaveLengthControl();
-            buttonCalc = new System.Windows.Forms.Button();
+            buttonSimulate = new System.Windows.Forms.Button();
             numericBoxSampleTilt = new NumericBox();
             buttonViewFromX = new System.Windows.Forms.Button();
             buttonViewFromZ = new System.Windows.Forms.Button();
@@ -103,14 +103,14 @@
             waveLengthControl.XrayWaveSourceElementNumber = 0;
             waveLengthControl.XrayWaveSourceLine = XrayLine.Ka1;
             // 
-            // buttonCalc
+            // buttonSimulate
             // 
-            resources.ApplyResources(buttonCalc, "buttonCalc");
-            buttonCalc.BackColor = System.Drawing.Color.SteelBlue;
-            buttonCalc.ForeColor = System.Drawing.Color.White;
-            buttonCalc.Name = "buttonCalc";
-            buttonCalc.UseVisualStyleBackColor = false;
-            buttonCalc.Click += buttonCaluculate_Click;
+            resources.ApplyResources(buttonSimulate, "buttonSimulate");
+            buttonSimulate.BackColor = System.Drawing.Color.SteelBlue;
+            buttonSimulate.ForeColor = System.Drawing.Color.White;
+            buttonSimulate.Name = "buttonSimulate";
+            buttonSimulate.UseVisualStyleBackColor = false;
+            buttonSimulate.Click += buttonCalculate_Click;
             // 
             // numericBoxSampleTilt
             // 
@@ -120,6 +120,7 @@
             numericBoxSampleTilt.Minimum = -90D;
             numericBoxSampleTilt.Name = "numericBoxSampleTilt";
             numericBoxSampleTilt.ShowUpDown = true;
+            numericBoxSampleTilt.TextFontSize = 9F;
             numericBoxSampleTilt.UpDown_Increment = 10D;
             // 
             // buttonViewFromX
@@ -198,6 +199,7 @@
             numericBoxCalcNum.RadianValue = 1745.3292519943295D;
             numericBoxCalcNum.ShowUpDown = true;
             numericBoxCalcNum.SmartIncrement = true;
+            numericBoxCalcNum.TextFontSize = 9F;
             numericBoxCalcNum.Value = 100000D;
             // 
             // numericBoxDrawNum
@@ -526,7 +528,7 @@
             captureExtender.SetCapture(panelCalculationConditions, true);
             panelCalculationConditions.Controls.Add(numericBoxCalcNum);
             panelCalculationConditions.Controls.Add(label1);
-            panelCalculationConditions.Controls.Add(buttonCalc);
+            panelCalculationConditions.Controls.Add(buttonSimulate);
             panelCalculationConditions.Controls.Add(waveLengthControl);
             panelCalculationConditions.Controls.Add(numericBoxSampleTilt);
             panelCalculationConditions.Name = "panelCalculationConditions";
@@ -546,7 +548,6 @@
             // FormTrajectory
             // 
             resources.ApplyResources(this, "$this");
-            AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F); // 260329Cl 追加: Font→Dpi, 96dpi基準に統一
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             captureExtender.SetCapture(this, true);
             Controls.Add(panelDrawingOptions);
@@ -582,7 +583,7 @@
         #endregion
 
         private WaveLengthControl waveLengthControl;
-        private System.Windows.Forms.Button buttonCalc;
+        private System.Windows.Forms.Button buttonSimulate;
         private NumericBox numericBoxSampleTilt;
         private System.Windows.Forms.Button buttonViewFromX;
         private System.Windows.Forms.Button buttonViewFromZ;

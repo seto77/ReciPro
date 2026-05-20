@@ -211,7 +211,9 @@
             this.buttonSimulateDebyeRing.Size = new System.Drawing.Size(177, 26);
             this.buttonSimulateDebyeRing.TabIndex = 1003;
             this.buttonSimulateDebyeRing.Text = "Simulate Debye ring pattern";
-            this.buttonSimulateDebyeRing.UseVisualStyleBackColor = true;
+            this.buttonSimulateDebyeRing.BackColor = System.Drawing.Color.SteelBlue; // 260520Cl: 主要アクション色を統一
+            this.buttonSimulateDebyeRing.ForeColor = System.Drawing.Color.White;
+            this.buttonSimulateDebyeRing.UseVisualStyleBackColor = false;
             this.buttonSimulateDebyeRing.Click += new System.EventHandler(this.buttonSimulateDebyeRing_Click);
             // 
             // tabControlCrystals
@@ -418,7 +420,7 @@
             this.numericBoxCrystalNumPerStep.SmartIncrement = true;
             this.numericBoxCrystalNumPerStep.TabIndex = 407;
             this.numericBoxCrystalNumPerStep.TextFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.numericBoxCrystalNumPerStep.ThonsandsSeparator = true;
+            this.numericBoxCrystalNumPerStep.ThousandsSeparator = true;
             this.numericBoxCrystalNumPerStep.Value = 0.5D;
             // 
             // numericBoxInheritabiliry
@@ -447,7 +449,7 @@
             this.numericBoxInheritabiliry.SmartIncrement = true;
             this.numericBoxInheritabiliry.TabIndex = 407;
             this.numericBoxInheritabiliry.TextFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.numericBoxInheritabiliry.ThonsandsSeparator = true;
+            this.numericBoxInheritabiliry.ThousandsSeparator = true;
             this.numericBoxInheritabiliry.Value = 10D;
             // 
             // checkBoxInheritabiliryThreshold
@@ -487,7 +489,7 @@
             this.numericBoxInheritabiliryThreshold.SmartIncrement = true;
             this.numericBoxInheritabiliryThreshold.TabIndex = 407;
             this.numericBoxInheritabiliryThreshold.TextFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.numericBoxInheritabiliryThreshold.ThonsandsSeparator = true;
+            this.numericBoxInheritabiliryThreshold.ThousandsSeparator = true;
             this.numericBoxInheritabiliryThreshold.Value = 96D;
             this.numericBoxInheritabiliryThreshold.Visible = false;
             // 
@@ -531,7 +533,7 @@
             this.numericBoxDirectionalDensity.SmartIncrement = true;
             this.numericBoxDirectionalDensity.TabIndex = 407;
             this.numericBoxDirectionalDensity.TextFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.numericBoxDirectionalDensity.ThonsandsSeparator = true;
+            this.numericBoxDirectionalDensity.ThousandsSeparator = true;
             this.numericBoxDirectionalDensity.Value = 20D;
             // 
             // numericBoxCrystalNumPerStepThreshold
@@ -559,7 +561,7 @@
             this.numericBoxCrystalNumPerStepThreshold.SmartIncrement = true;
             this.numericBoxCrystalNumPerStepThreshold.TabIndex = 407;
             this.numericBoxCrystalNumPerStepThreshold.TextFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.numericBoxCrystalNumPerStepThreshold.ThonsandsSeparator = true;
+            this.numericBoxCrystalNumPerStepThreshold.ThousandsSeparator = true;
             this.numericBoxCrystalNumPerStepThreshold.Value = 0.025D;
             this.numericBoxCrystalNumPerStepThreshold.Visible = false;
             // 
@@ -588,7 +590,7 @@
             this.numericBoxDirectionalDensityThreshold.SmartIncrement = true;
             this.numericBoxDirectionalDensityThreshold.TabIndex = 407;
             this.numericBoxDirectionalDensityThreshold.TextFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.numericBoxDirectionalDensityThreshold.ThonsandsSeparator = true;
+            this.numericBoxDirectionalDensityThreshold.ThousandsSeparator = true;
             this.numericBoxDirectionalDensityThreshold.Value = 1D;
             // 
             // groupBoxFittingOptions
@@ -895,7 +897,7 @@
             this.numericBoxRxSpeed.SmartIncrement = true;
             this.numericBoxRxSpeed.TabIndex = 103;
             this.numericBoxRxSpeed.TextFont = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.numericBoxRxSpeed.ThonsandsSeparator = true;
+            this.numericBoxRxSpeed.ThousandsSeparator = true;
             this.numericBoxRxSpeed.Value = 18D;
             // 
             // checkBoxYusaGonio_ValidRx
@@ -939,7 +941,7 @@
             this.numericBoxYusaGonioRySpeed.SmartIncrement = true;
             this.numericBoxYusaGonioRySpeed.TabIndex = 109;
             this.numericBoxYusaGonioRySpeed.TextFont = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.numericBoxYusaGonioRySpeed.ThonsandsSeparator = true;
+            this.numericBoxYusaGonioRySpeed.ThousandsSeparator = true;
             this.numericBoxYusaGonioRySpeed.Value = 1D;
             // 
             // label51
@@ -971,7 +973,7 @@
             this.numericBoxYusaGonioRzSpeed.SmartIncrement = true;
             this.numericBoxYusaGonioRzSpeed.TabIndex = 106;
             this.numericBoxYusaGonioRzSpeed.TextFont = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.numericBoxYusaGonioRzSpeed.ThonsandsSeparator = true;
+            this.numericBoxYusaGonioRzSpeed.ThousandsSeparator = true;
             this.numericBoxYusaGonioRzSpeed.Value = 2D;
             // 
             // label53
@@ -1050,7 +1052,7 @@
             this.numericBoxYusaGonioRyStep.SmartIncrement = true;
             this.numericBoxYusaGonioRyStep.TabIndex = 111;
             this.numericBoxYusaGonioRyStep.TextFont = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.numericBoxYusaGonioRyStep.ThonsandsSeparator = true;
+            this.numericBoxYusaGonioRyStep.ThousandsSeparator = true;
             this.numericBoxYusaGonioRyStep.Value = 0.2D;
             // 
             // label55
@@ -1094,7 +1096,7 @@
             this.numericBoxYusaGonioRyOscillation.SmartIncrement = true;
             this.numericBoxYusaGonioRyOscillation.TabIndex = 110;
             this.numericBoxYusaGonioRyOscillation.TextFont = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.numericBoxYusaGonioRyOscillation.ThonsandsSeparator = true;
+            this.numericBoxYusaGonioRyOscillation.ThousandsSeparator = true;
             this.numericBoxYusaGonioRyOscillation.Value = 4D;
             // 
             // label56
@@ -1117,7 +1119,7 @@
             this.label60.Name = "label60";
             this.label60.Size = new System.Drawing.Size(68, 16);
             this.label60.TabIndex = 1000;
-            this.label60.Text = "deg. / sec.";
+            this.label60.Text = "°/s"; // 260520Cl: unit unification (deg. / sec. → °/s)
             // 
             // label47
             // 
@@ -1148,7 +1150,7 @@
             this.numericBoxYusaGonioRzOscillation.SmartIncrement = true;
             this.numericBoxYusaGonioRzOscillation.TabIndex = 107;
             this.numericBoxYusaGonioRzOscillation.TextFont = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.numericBoxYusaGonioRzOscillation.ThonsandsSeparator = true;
+            this.numericBoxYusaGonioRzOscillation.ThousandsSeparator = true;
             this.numericBoxYusaGonioRzOscillation.Value = 4D;
             // 
             // label57
@@ -1161,7 +1163,7 @@
             this.label57.Name = "label57";
             this.label57.Size = new System.Drawing.Size(29, 13);
             this.label57.TabIndex = 1000;
-            this.label57.Text = "deg.";
+            this.label57.Text = "°"; // 260520Cl: unit unification (deg. → °)
             // 
             // label59
             // 
@@ -1173,7 +1175,7 @@
             this.label59.Name = "label59";
             this.label59.Size = new System.Drawing.Size(59, 13);
             this.label59.TabIndex = 1000;
-            this.label59.Text = "deg. / sec.";
+            this.label59.Text = "°/s"; // 260520Cl: unit unification (deg. / sec. → °/s)
             // 
             // checkBox2
             // 
@@ -1209,7 +1211,7 @@
             this.label58.Name = "label58";
             this.label58.Size = new System.Drawing.Size(59, 13);
             this.label58.TabIndex = 20;
-            this.label58.Text = "deg. / sec.";
+            this.label58.Text = "°/s"; // 260520Cl: unit unification (deg. / sec. → °/s)
             // 
             // groupBoxPatterns
             // 

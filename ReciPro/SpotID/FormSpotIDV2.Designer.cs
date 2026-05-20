@@ -141,7 +141,7 @@ namespace ReciPro
             bindingSourceCandidates = new System.Windows.Forms.BindingSource(components);
             menuStrip = new System.Windows.Forms.MenuStrip();
             fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            readToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            loadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             saveAsMetafileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             saveAsBitmapToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -556,7 +556,7 @@ namespace ReciPro
             numericBoxDonut.SkipEventDuringInput = false;
             numericBoxDonut.SmartIncrement = true;
             numericBoxDonut.TextFontSize = 8F;
-            numericBoxDonut.ThonsandsSeparator = true;
+            numericBoxDonut.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxDonut, resources.GetString("numericBoxDonut.ToolTip"));
             numericBoxDonut.Value = 5D;
             // 
@@ -678,7 +678,7 @@ namespace ReciPro
             numericBoxNumberOfSpots.ShowUpDown = true;
             numericBoxNumberOfSpots.SkipEventDuringInput = false;
             numericBoxNumberOfSpots.SmartIncrement = true;
-            numericBoxNumberOfSpots.ThonsandsSeparator = true;
+            numericBoxNumberOfSpots.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxNumberOfSpots, resources.GetString("numericBoxNumberOfSpots.ToolTip"));
             numericBoxNumberOfSpots.Value = 30D;
             // 
@@ -696,7 +696,7 @@ namespace ReciPro
             numericBoxNearestNeighbor.ShowUpDown = true;
             numericBoxNearestNeighbor.SkipEventDuringInput = false;
             numericBoxNearestNeighbor.SmartIncrement = true;
-            numericBoxNearestNeighbor.ThonsandsSeparator = true;
+            numericBoxNearestNeighbor.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxNearestNeighbor, resources.GetString("numericBoxNearestNeighbor.ToolTip"));
             numericBoxNearestNeighbor.Value = 10D;
             // 
@@ -714,7 +714,7 @@ namespace ReciPro
             numericBoxFittingRange.ShowUpDown = true;
             numericBoxFittingRange.SkipEventDuringInput = false;
             numericBoxFittingRange.SmartIncrement = true;
-            numericBoxFittingRange.ThonsandsSeparator = true;
+            numericBoxFittingRange.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxFittingRange, resources.GetString("numericBoxFittingRange.ToolTip"));
             numericBoxFittingRange.Value = 20D;
             // 
@@ -784,7 +784,7 @@ namespace ReciPro
             numericBoxCameraLength.RadianValue = 17.453292519943293D;
             numericBoxCameraLength.SkipEventDuringInput = false;
             numericBoxCameraLength.SmartIncrement = true;
-            numericBoxCameraLength.ThonsandsSeparator = true;
+            numericBoxCameraLength.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxCameraLength, resources.GetString("numericBoxCameraLength.ToolTip1"));
             numericBoxCameraLength.Value = 1000D;
             numericBoxCameraLength.ValueChanged += NumericBoxCameraLength_ValueChanged;
@@ -801,7 +801,7 @@ namespace ReciPro
             numericBoxPixelSize.RadianValue = 0.0008726646259971648D;
             numericBoxPixelSize.SkipEventDuringInput = false;
             numericBoxPixelSize.SmartIncrement = true;
-            numericBoxPixelSize.ThonsandsSeparator = true;
+            numericBoxPixelSize.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxPixelSize, resources.GetString("numericBoxPixelSize.ToolTip1"));
             numericBoxPixelSize.Value = 0.05D;
             numericBoxPixelSize.ValueChanged += NumericBoxPixelSize_ValueChanged;
@@ -904,7 +904,7 @@ namespace ReciPro
             numericBoxDiffractedWaves.RadianValue = 6.9813170079773181D;
             numericBoxDiffractedWaves.ShowUpDown = true;
             numericBoxDiffractedWaves.SmartIncrement = true;
-            numericBoxDiffractedWaves.ThonsandsSeparator = true;
+            numericBoxDiffractedWaves.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxDiffractedWaves, resources.GetString("numericBoxDiffractedWaves.ToolTip"));
             numericBoxDiffractedWaves.Value = 400D;
             // 
@@ -921,7 +921,7 @@ namespace ReciPro
             numericBoxSemiangle.RadianValue = 0.034906585039886591D;
             numericBoxSemiangle.ShowUpDown = true;
             numericBoxSemiangle.SmartIncrement = true;
-            numericBoxSemiangle.ThonsandsSeparator = true;
+            numericBoxSemiangle.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxSemiangle, resources.GetString("numericBoxSemiangle.ToolTip"));
             numericBoxSemiangle.Value = 2D;
             // 
@@ -956,7 +956,7 @@ namespace ReciPro
             numericBoxAcceptableError.ShowUpDown = true;
             numericBoxAcceptableError.SkipEventDuringInput = false;
             numericBoxAcceptableError.SmartIncrement = true;
-            numericBoxAcceptableError.ThonsandsSeparator = true;
+            numericBoxAcceptableError.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxAcceptableError, resources.GetString("numericBoxAcceptableError.ToolTip"));
             numericBoxAcceptableError.Value = 2D;
             // 
@@ -1006,7 +1006,7 @@ namespace ReciPro
             numericBoxMaxGrainNum.RadianValue = 0.034906585039886591D;
             numericBoxMaxGrainNum.ShowUpDown = true;
             numericBoxMaxGrainNum.SkipEventDuringInput = false;
-            numericBoxMaxGrainNum.ThonsandsSeparator = true;
+            numericBoxMaxGrainNum.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxMaxGrainNum, resources.GetString("numericBoxMaxGrainNum.ToolTip"));
             numericBoxMaxGrainNum.Value = 2D;
             // 
@@ -1184,14 +1184,14 @@ namespace ReciPro
             // 
             resources.ApplyResources(fileToolStripMenuItem, "fileToolStripMenuItem");
             captureExtender.SetCapture(fileToolStripMenuItem, true);
-            fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { readToolStripMenuItem, saveToolStripMenuItem, copyToolStripMenuItem });
+            fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { loadToolStripMenuItem, saveToolStripMenuItem, copyToolStripMenuItem });
             fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             // 
-            // readToolStripMenuItem
+            // loadToolStripMenuItem
             // 
-            resources.ApplyResources(readToolStripMenuItem, "readToolStripMenuItem");
-            readToolStripMenuItem.Name = "readToolStripMenuItem";
-            readToolStripMenuItem.Click += readToolStripMenuItem_Click;
+            resources.ApplyResources(loadToolStripMenuItem, "loadToolStripMenuItem");
+            loadToolStripMenuItem.Name = "loadToolStripMenuItem";
+            loadToolStripMenuItem.Click += loadToolStripMenuItem_Click;
             // 
             // saveToolStripMenuItem
             // 
@@ -1386,7 +1386,7 @@ namespace ReciPro
         #endregion
         private System.Windows.Forms.MenuStrip menuStrip;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem readToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem loadToolStripMenuItem;
         private WaveLengthControl waveLengthControl1;
         private System.Windows.Forms.GroupBox groupBoxOptics;
         private NumericBox numericBoxCameraLength;

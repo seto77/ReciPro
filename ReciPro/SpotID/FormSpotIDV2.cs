@@ -170,7 +170,7 @@ public partial class FormSpotIDV2 : FormBase
     }
 
     #region ファイルメニュー
-    private void readToolStripMenuItem_Click(object sender, EventArgs e)
+    private void loadToolStripMenuItem_Click(object sender, EventArgs e)
     {
         var dlg = new OpenFileDialog();
         if (dlg.ShowDialog() == DialogResult.OK)
@@ -973,7 +973,7 @@ public partial class FormSpotIDV2 : FormBase
             for (int i = 0; i < candidates.Count; i++)
                 dataSet.DataTableCandidate.Add(i, candidates[i]);
             toolStripProgressBar.Value = toolStripProgressBar.Maximum;
-            toolStripStatusLabelFindSpot.Text = $"Completed! Total time: {sw.ElapsedMilliseconds / 1000.0:f2}sec.";
+            toolStripStatusLabelFindSpot.Text = $"Completed! Total time: {sw.ElapsedMilliseconds / 1000.0:f2} s";
 
             MessageBox.Show(candidates.Count.ToString() + " candidates found.");
         }
@@ -991,7 +991,7 @@ public partial class FormSpotIDV2 : FormBase
         try
         {
             double progress = (double)e.ProgressPercentage / 1000000;
-            toolStripStatusLabelFindSpot.Text = $"Ellapsed time: {(double)sw.ElapsedMilliseconds / 1000:f2} sec.";
+            toolStripStatusLabelFindSpot.Text = $"Elapsed time: {(double)sw.ElapsedMilliseconds / 1000:f2} s";
             //+" Wait about: " + ((1 - progress) / progress * (sw.ElapsedMilliseconds / 1000.0)).ToString("f2") + "sec.";
             toolStripProgressBar.Value = (int)(toolStripProgressBar.Maximum * progress);
             // 260428Cl Application.DoEvents() を削除 (BackgroundWorker の ProgressChanged は UI スレッドで動作するため不要)
@@ -1641,7 +1641,7 @@ public partial class FormSpotIDV2 : FormBase
         var progress = (int)(100.0 * current / divisionNumber);
         if (progress <= 100)
             toolStripProgressBar.Value = toolStripProgressBar.Maximum * current / divisionNumber;
-        toolStripStatusLabelRefine.Text = $"Ellapsed time : {sec:f2} s.,  time/pixel: ";
+        toolStripStatusLabelRefine.Text = $"Elapsed time : {sec:f2} s.,  time/pixel: ";
         toolStripStatusLabelRefine.Text += sec / current > 0.9 ? $"{sec / current:f2} s.,  " : $"{sec / current * 1000:f2} ms., ";
         toolStripStatusLabelRefine.Text += $"{100.0 * current / divisionNumber:f1} % completed,  wait for {sec * (divisionNumber - current) / current:f2} s.";
 

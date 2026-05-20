@@ -123,7 +123,7 @@ public partial class FormDiffractionSimulatorDynamicCompression : FormBase
     /// <summary>実行ボタン</summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
-    private void buttonExecute_Click(object sender, EventArgs e)
+    private void buttonSimulate_Click(object sender, EventArgs e)
     {
         if (graphControl.Profile == null)
             return;
@@ -149,7 +149,7 @@ public partial class FormDiffractionSimulatorDynamicCompression : FormBase
         FormDiffractionSimulator.formMain.Crystal.RotationMatrix = initialRot;
 
         RevertCrystal();
-        toolStripStatusLabel1.Text = "Elapsed time: " + (sw.ElapsedMilliseconds / 1000.0).ToString("f1") + " sec., Completed!";
+        toolStripStatusLabel1.Text = "Elapsed time: " + (sw.ElapsedMilliseconds / 1000.0).ToString("f1") + " s, Completed!";
     }
 
     private void execute(string filename = "")
@@ -334,8 +334,8 @@ public partial class FormDiffractionSimulatorDynamicCompression : FormBase
 
             toolStripProgressBar.Value++;
             toolStripStatusLabel1.Text =
-                "Time elapsed: " + (sw.ElapsedMilliseconds / 1000.0).ToString("f1") + " sec., per slice: " + (sw.ElapsedMilliseconds - beforeSec).ToString() + " msec., wait for more " +
-                (sw.ElapsedMilliseconds / 1000.0 / toolStripProgressBar.Value * (toolStripProgressBar.Maximum - toolStripProgressBar.Value)).ToString("f1") + " sec.";
+                "Time elapsed: " + (sw.ElapsedMilliseconds / 1000.0).ToString("f1") + " s, per slice: " + (sw.ElapsedMilliseconds - beforeSec).ToString() + " ms, wait for more " +
+                (sw.ElapsedMilliseconds / 1000.0 / toolStripProgressBar.Value * (toolStripProgressBar.Maximum - toolStripProgressBar.Value)).ToString("f1") + " s";
             beforeSec = sw.ElapsedMilliseconds;
             // 260428Cl 同期計算ループ内の UI ポンプ。Task.Run + IProgress<T> 化で除去予定。
             Application.DoEvents();

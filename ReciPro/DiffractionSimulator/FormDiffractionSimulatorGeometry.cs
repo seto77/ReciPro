@@ -86,7 +86,7 @@ public partial class FormDiffractionSimulatorGeometry : FormBase
         //numericBoxCameraLength1.Value = cosTau > 0.0000001 ? numericBoxCameraLength2.Value / cosTau : double.PositiveInfinity;
 
         if (this.Visible || !FormDiffractionSimulator.Visible)//このフォームがvisibleの時か、親フォームがvisible出ない時(つまり、最初のロード時)
-            FormDiffractionSimulator.numericUpDownCamaraLength2.Value = (decimal)CameraLength2;
+            FormDiffractionSimulator.CameraLength2 = CameraLength2;
 
         FormDiffractionSimulator.SetVector();
 
@@ -157,7 +157,7 @@ public partial class FormDiffractionSimulatorGeometry : FormBase
 
     #endregion View関連
 
-    private void buttonReadPicture_Click(object sender, EventArgs e)
+    private void buttonLoadPicture_Click(object sender, EventArgs e)
     {
         var dlg = new OpenFileDialog { Filter = ImageIO.FilterString + "|All files(*.*)|*.*" };
         if (dlg.ShowDialog() == DialogResult.OK)

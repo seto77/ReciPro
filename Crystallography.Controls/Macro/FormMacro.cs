@@ -271,7 +271,7 @@ public partial class FormMacro : FormBase
 
     private void buttonNextStep_Click(object sender, EventArgs e) => nextStepFlag = true;
 
-    private void buttonCancelStep_Click(object sender, EventArgs e)
+    private void buttonStopMacro_Click(object sender, EventArgs e)
     {
         // 260414Cl 旧: task != null && task.Status == TaskStatus.Running を見ていた。
         // Task を撤去したので _cancelSource の有無だけで判定する。
@@ -287,7 +287,7 @@ public partial class FormMacro : FormBase
 
         buttonStepByStep.Visible = buttonRunMacro.Visible = false;
         RunMacro(pyRichTextBox.Text);
-        buttonCancelStep.Visible = false;
+        buttonStopMacro.Visible = false;
         buttonStepByStep.Visible = buttonRunMacro.Visible = true;
     }
 
@@ -295,13 +295,13 @@ public partial class FormMacro : FormBase
     {
         stepByStepMode = true;
 
-        // 260414Cl 追加 buttonCancelStep を Step 実行中のみ可視化
+        // 260414Cl 追加 buttonStopMacro を Step 実行中のみ可視化
         // 260414Cl 旧: try/catch (Exception) で囲んでいたが RunMacro 内で全例外を捕捉する
         // 構造に変えたので不到達。削除。
-        buttonCancelStep.Visible = buttonNextStep.Visible = true;
+        buttonStopMacro.Visible = buttonNextStep.Visible = true;
         buttonStepByStep.Visible = buttonRunMacro.Visible = false;
         RunMacro(pyRichTextBox.Text);
-        buttonCancelStep.Visible = buttonNextStep.Visible = false;
+        buttonStopMacro.Visible = buttonNextStep.Visible = false;
         buttonStepByStep.Visible = buttonRunMacro.Visible = true;
     }
 
@@ -418,7 +418,7 @@ public partial class FormMacro : FormBase
     private void FormMacro_DragEnter(object sender, DragEventArgs e)
         => e.Effect = e.Data.GetDataPresent(DataFormats.FileDrop) ? DragDropEffects.Copy : DragDropEffects.None;
 
-    private void readToolStripMenuItem_Click(object sender, EventArgs e)
+    private void loadToolStripMenuItem_Click(object sender, EventArgs e)
     {
         using var dlg = new OpenFileDialog { Filter = "*.mcr|*.mcr" };
         if (dlg.ShowDialog() == DialogResult.OK)

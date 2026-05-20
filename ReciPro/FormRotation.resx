@@ -1824,7 +1824,7 @@ Angles</value>
     <value>98</value>
   </data>
   <data name="groupBoxReciProCoordinate.Text" xml:space="preserve">
-    <value>ReciPro Coordinate System (ZXZ)</value>
+    <value>ReciPro coordinate system (ZXZ)</value>
   </data>
   <data name="&gt;&gt;groupBoxReciProCoordinate.Name" xml:space="preserve">
     <value>groupBoxReciProCoordinate</value>
@@ -1986,7 +1986,7 @@ Angles</value>
     <value>102</value>
   </data>
   <data name="groupBoxExperimentalCoordinate.Text" xml:space="preserve">
-    <value>Experimental Coordinate System</value>
+    <value>Experimental coordinate system</value>
   </data>
   <data name="&gt;&gt;groupBoxExperimentalCoordinate.Name" xml:space="preserve">
     <value>groupBoxExperimentalCoordinate</value>

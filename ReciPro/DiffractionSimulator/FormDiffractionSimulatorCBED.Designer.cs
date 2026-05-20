@@ -28,7 +28,7 @@
         {
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormDiffractionSimulatorCBED));
-            buttonExecute = new System.Windows.Forms.Button();
+            buttonSimulate = new System.Windows.Forms.Button();
             checkBoxDrawGuideCircles = new System.Windows.Forms.CheckBox();
             groupBoxInputParameters = new System.Windows.Forms.GroupBox();
             flowLayoutPanel6 = new System.Windows.Forms.FlowLayoutPanel();
@@ -102,15 +102,17 @@
             statusStrip2.SuspendLayout();
             SuspendLayout();
             // 
-            // buttonExecute
+            // buttonSimulate
             // 
-            resources.ApplyResources(buttonExecute, "buttonExecute");
-            buttonExecute.BackColor = System.Drawing.Color.LightSteelBlue;
-            buttonExecute.ForeColor = System.Drawing.Color.RoyalBlue;
-            buttonExecute.Name = "buttonExecute";
-            toolTip.SetToolTip(buttonExecute, resources.GetString("buttonExecute.ToolTip"));
-            buttonExecute.UseVisualStyleBackColor = false;
-            buttonExecute.Click += buttonExecute_Click;
+            resources.ApplyResources(buttonSimulate, "buttonSimulate");
+            //buttonSimulate.BackColor = System.Drawing.Color.LightSteelBlue; // 260520Cl: LightSteelBlue→SteelBlue (主要アクション色を統一)
+            //buttonSimulate.ForeColor = System.Drawing.Color.RoyalBlue;
+            buttonSimulate.BackColor = System.Drawing.Color.SteelBlue;
+            buttonSimulate.ForeColor = System.Drawing.Color.White;
+            buttonSimulate.Name = "buttonSimulate";
+            toolTip.SetToolTip(buttonSimulate, resources.GetString("buttonSimulate.ToolTip"));
+            buttonSimulate.UseVisualStyleBackColor = false;
+            buttonSimulate.Click += buttonSimulate_Click;
             // 
             // checkBoxDrawGuideCircles
             // 
@@ -130,7 +132,7 @@
             groupBoxInputParameters.Controls.Add(comboBoxSolver);
             groupBoxInputParameters.Controls.Add(numericBoxThread);
             groupBoxInputParameters.Controls.Add(buttonStop);
-            groupBoxInputParameters.Controls.Add(buttonExecute);
+            groupBoxInputParameters.Controls.Add(buttonSimulate);
             groupBoxInputParameters.Controls.Add(label13);
             groupBoxInputParameters.Name = "groupBoxInputParameters";
             groupBoxInputParameters.TabStop = false;
@@ -193,7 +195,7 @@
             numericBoxMaxNumOfG.ShowUpDown = true;
             numericBoxMaxNumOfG.SmartIncrement = true;
             numericBoxMaxNumOfG.TextFontSize = 9F;
-            numericBoxMaxNumOfG.ThonsandsSeparator = true;
+            numericBoxMaxNumOfG.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxMaxNumOfG, resources.GetString("numericBoxMaxNumOfG.ToolTip"));
             numericBoxMaxNumOfG.Value = 64D;
             numericBoxMaxNumOfG.ValueChanged += numericBoxMaxNumOfG_ValueChanged;
@@ -236,7 +238,7 @@
             numericBoxDiskResolution.ShowUpDown = true;
             numericBoxDiskResolution.SmartIncrement = true;
             numericBoxDiskResolution.TextFontSize = 9F;
-            numericBoxDiskResolution.ThonsandsSeparator = true;
+            numericBoxDiskResolution.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxDiskResolution, resources.GetString("numericBoxDiskResolution.ToolTip"));
             numericBoxDiskResolution.Value = 0.1D;
             numericBoxDiskResolution.ValueChanged += NumericBoxDivision_ValueChanged;
@@ -287,7 +289,7 @@
             numericBoxWholeThicknessStart.ShowUpDown = true;
             numericBoxWholeThicknessStart.SmartIncrement = true;
             numericBoxWholeThicknessStart.TextFontSize = 9F;
-            numericBoxWholeThicknessStart.ThonsandsSeparator = true;
+            numericBoxWholeThicknessStart.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxWholeThicknessStart, resources.GetString("numericBoxWholeThicknessStart.ToolTip"));
             numericBoxWholeThicknessStart.Value = 20D;
             numericBoxWholeThicknessStart.ValueChanged += NumericBoxWholeThicknessStart_ValueChanged;
@@ -305,7 +307,7 @@
             numericBoxThicknessEnd.ShowUpDown = true;
             numericBoxThicknessEnd.SmartIncrement = true;
             numericBoxThicknessEnd.TextFontSize = 9F;
-            numericBoxThicknessEnd.ThonsandsSeparator = true;
+            numericBoxThicknessEnd.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxThicknessEnd, resources.GetString("numericBoxThicknessEnd.ToolTip"));
             numericBoxThicknessEnd.Value = 200D;
             numericBoxThicknessEnd.ValueChanged += NumericBoxWholeThicknessStart_ValueChanged;
@@ -323,7 +325,7 @@
             numericBoxThicknessStep.ShowUpDown = true;
             numericBoxThicknessStep.SmartIncrement = true;
             numericBoxThicknessStep.TextFontSize = 9F;
-            numericBoxThicknessStep.ThonsandsSeparator = true;
+            numericBoxThicknessStep.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxThicknessStep, resources.GetString("numericBoxThicknessStep.ToolTip"));
             numericBoxThicknessStep.Value = 20D;
             numericBoxThicknessStep.ValueChanged += NumericBoxWholeThicknessStart_ValueChanged;
@@ -352,7 +354,7 @@
             numericBoxThread.ShowUpDown = true;
             numericBoxThread.SmartIncrement = true;
             numericBoxThread.TextFontSize = 9F;
-            numericBoxThread.ThonsandsSeparator = true;
+            numericBoxThread.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxThread, resources.GetString("numericBoxThread.ToolTip1"));
             numericBoxThread.Value = 4D;
             numericBoxThread.ValueChanged += NumericBoxWholeThicknessStart_ValueChanged;
@@ -665,7 +667,7 @@
         }
 
         #endregion
-        private System.Windows.Forms.Button buttonExecute;
+        private System.Windows.Forms.Button buttonSimulate;
         private Crystallography.Controls.NumericBox numericBoxWholeThicknessStart;
         private System.Windows.Forms.CheckBox checkBoxDrawGuideCircles;
         private Crystallography.Controls.NumericBox numericBoxMaxNumOfG;

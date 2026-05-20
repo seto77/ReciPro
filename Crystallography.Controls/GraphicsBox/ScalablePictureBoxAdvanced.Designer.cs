@@ -245,7 +245,7 @@
             numericBoxDustScratchesRadius.RadianValue = 0.017453292519943295D;
             numericBoxDustScratchesRadius.ShowUpDown = true;
             numericBoxDustScratchesRadius.SkipEventDuringInput = false;
-            numericBoxDustScratchesRadius.ThonsandsSeparator = true;
+            numericBoxDustScratchesRadius.ThousandsSeparator = true;
             numericBoxDustScratchesRadius.UpDown_Increment = 0.5D;
             numericBoxDustScratchesRadius.Value = 1D;
             numericBoxDustScratchesRadius.ValueChanged += imageFilterProperty_Changed;
@@ -264,7 +264,7 @@
             numericBoxDustScratchesThreshold.ShowUpDown = true;
             numericBoxDustScratchesThreshold.SkipEventDuringInput = false;
             numericBoxDustScratchesThreshold.SmartIncrement = true;
-            numericBoxDustScratchesThreshold.ThonsandsSeparator = true;
+            numericBoxDustScratchesThreshold.ThousandsSeparator = true;
             numericBoxDustScratchesThreshold.Value = 3D;
             numericBoxDustScratchesThreshold.ValueChanged += imageFilterProperty_Changed;
             // 
@@ -296,7 +296,7 @@
             numericBoxGaussianFWHM.ShowUpDown = true;
             numericBoxGaussianFWHM.SkipEventDuringInput = false;
             numericBoxGaussianFWHM.SmartIncrement = true;
-            numericBoxGaussianFWHM.ThonsandsSeparator = true;
+            numericBoxGaussianFWHM.ThousandsSeparator = true;
             numericBoxGaussianFWHM.Value = 1D;
             numericBoxGaussianFWHM.ValueChanged += imageFilterProperty_Changed;
             // 

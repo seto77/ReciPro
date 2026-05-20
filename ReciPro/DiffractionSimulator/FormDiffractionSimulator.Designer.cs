@@ -48,6 +48,7 @@
         // flowLayoutPanel5 -> flowLayoutPanelBeamMode
         // flowLayoutPanel10 -> flowLayoutPanelBeamType
         // flowLayoutPanel11 -> flowLayoutPanelWaveLength
+        // (260520Cl) typo fix: numericBoxKikuchiThreadSholdOfStructureFactor -> numericBoxKikuchiThresholdOfStructureFactor (旧 typo "ThreadShold")
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
@@ -90,7 +91,7 @@
             radioButtonKikuchiThresholdOfStructureFactor = new System.Windows.Forms.RadioButton();
             checkBoxKikuchiLine_Kinematical = new System.Windows.Forms.CheckBox();
             radioButtonKikuchiThresholdOfLength = new System.Windows.Forms.RadioButton();
-            numericBoxKikuchiThreadSholdOfStructureFactor = new NumericBox();
+            numericBoxKikuchiThresholdOfStructureFactor = new NumericBox();
             numericBoxKikuchiThresholdOfLength = new NumericBox();
             colorControlExcessLine = new ColorControl();
             trackBarLineWidth = new System.Windows.Forms.TrackBar();
@@ -176,12 +177,10 @@
             comboBoxCenter = new System.Windows.Forms.ComboBox();
             checkBoxFixCenter = new System.Windows.Forms.CheckBox();
             flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            label4 = new System.Windows.Forms.Label();
             numericBoxClientWidth = new NumericBox();
             numericBoxClientHeight = new NumericBox();
             flowLayoutPanelImageOrientation = new System.Windows.Forms.FlowLayoutPanel();
             flowLayoutPanelResolutionUnit = new System.Windows.Forms.FlowLayoutPanel();
-            label22 = new System.Windows.Forms.Label();
             numericBoxResolution = new NumericBox();
             radioButtonResoUnitMilliMeter = new System.Windows.Forms.RadioButton();
             radioButtonResoUnitNanometerInv = new System.Windows.Forms.RadioButton();
@@ -192,9 +191,7 @@
             label23 = new System.Windows.Forms.Label();
             groupBoxDetectorGeometry = new System.Windows.Forms.GroupBox();
             flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
-            label15 = new System.Windows.Forms.Label();
-            numericUpDownCamaraLength2 = new System.Windows.Forms.NumericUpDown();
-            label18 = new System.Windows.Forms.Label();
+            numericBoxCameraLength2 = new NumericBox();
             buttonDetailedGeometry = new System.Windows.Forms.Button();
             groupBoxDeveloperCode = new System.Windows.Forms.GroupBox();
             numericBoxDev = new NumericBox();
@@ -291,12 +288,11 @@
             buttonDetailsOfSpots = new System.Windows.Forms.Button();
             flowLayoutPanelBeamMode = new System.Windows.Forms.FlowLayoutPanel();
             label13 = new System.Windows.Forms.Label();
-            flowLayoutPanelBeamType = new System.Windows.Forms.FlowLayoutPanel();
             radioButtonBeamParallel = new System.Windows.Forms.RadioButton();
-            radioButtonBeamPrecessionXray = new System.Windows.Forms.RadioButton();
-            radioButtonBeamBackLaue = new System.Windows.Forms.RadioButton();
             radioButtonBeamPrecessionElectron = new System.Windows.Forms.RadioButton();
             radioButtonBeamConvergence = new System.Windows.Forms.RadioButton();
+            radioButtonBeamBackLaue = new System.Windows.Forms.RadioButton();
+            radioButtonBeamPrecessionXray = new System.Windows.Forms.RadioButton();
             flowLayoutPanelWaveLength = new System.Windows.Forms.FlowLayoutPanel();
             label3 = new System.Windows.Forms.Label();
             toolTip = new System.Windows.Forms.ToolTip(components);
@@ -355,7 +351,6 @@
             ((System.ComponentModel.ISupportInitialize)trackBarRotationSpeed).BeginInit();
             groupBoxDetectorGeometry.SuspendLayout();
             flowLayoutPanel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)numericUpDownCamaraLength2).BeginInit();
             groupBoxDeveloperCode.SuspendLayout();
             menuStrip1.SuspendLayout();
             groupBoxSpotProperty.SuspendLayout();
@@ -374,7 +369,6 @@
             flowLayoutPanelIntensity.SuspendLayout();
             flowLayoutPanelExtinctionOption.SuspendLayout();
             flowLayoutPanelBeamMode.SuspendLayout();
-            flowLayoutPanelBeamType.SuspendLayout();
             flowLayoutPanelWaveLength.SuspendLayout();
             SuspendLayout();
             // 
@@ -755,7 +749,7 @@
             tabPageKikuchi.Controls.Add(radioButtonKikuchiThresholdOfStructureFactor);
             tabPageKikuchi.Controls.Add(checkBoxKikuchiLine_Kinematical);
             tabPageKikuchi.Controls.Add(radioButtonKikuchiThresholdOfLength);
-            tabPageKikuchi.Controls.Add(numericBoxKikuchiThreadSholdOfStructureFactor);
+            tabPageKikuchi.Controls.Add(numericBoxKikuchiThresholdOfStructureFactor);
             tabPageKikuchi.Controls.Add(numericBoxKikuchiThresholdOfLength);
             tabPageKikuchi.Controls.Add(colorControlExcessLine);
             tabPageKikuchi.Controls.Add(trackBarLineWidth);
@@ -791,20 +785,20 @@
             radioButtonKikuchiThresholdOfLength.UseVisualStyleBackColor = true;
             radioButtonKikuchiThresholdOfLength.CheckedChanged += radioButtonKikuchiThresholdOfLength_CheckedChanged;
             // 
-            // numericBoxKikuchiThreadSholdOfStructureFactor
+            // numericBoxKikuchiThresholdOfStructureFactor
             // 
-            resources.ApplyResources(numericBoxKikuchiThreadSholdOfStructureFactor, "numericBoxKikuchiThreadSholdOfStructureFactor");
-            numericBoxKikuchiThreadSholdOfStructureFactor.BackColor = System.Drawing.Color.Transparent;
-            numericBoxKikuchiThreadSholdOfStructureFactor.Maximum = 1000D;
-            numericBoxKikuchiThreadSholdOfStructureFactor.Minimum = 1D;
-            numericBoxKikuchiThreadSholdOfStructureFactor.Name = "numericBoxKikuchiThreadSholdOfStructureFactor";
-            numericBoxKikuchiThreadSholdOfStructureFactor.RadianValue = 1.7453292519943295D;
-            numericBoxKikuchiThreadSholdOfStructureFactor.ShowUpDown = true;
-            numericBoxKikuchiThreadSholdOfStructureFactor.SmartIncrement = true;
-            numericBoxKikuchiThreadSholdOfStructureFactor.TextFontSize = 9F;
-            toolTip.SetToolTip(numericBoxKikuchiThreadSholdOfStructureFactor, resources.GetString("numericBoxKikuchiThreadSholdOfStructureFactor.ToolTip1"));
-            numericBoxKikuchiThreadSholdOfStructureFactor.Value = 100D;
-            numericBoxKikuchiThreadSholdOfStructureFactor.ValueChanged += numericBoxKikuchiLineThreshold_ValueChanged;
+            resources.ApplyResources(numericBoxKikuchiThresholdOfStructureFactor, "numericBoxKikuchiThresholdOfStructureFactor");
+            numericBoxKikuchiThresholdOfStructureFactor.BackColor = System.Drawing.Color.Transparent;
+            numericBoxKikuchiThresholdOfStructureFactor.Maximum = 1000D;
+            numericBoxKikuchiThresholdOfStructureFactor.Minimum = 1D;
+            numericBoxKikuchiThresholdOfStructureFactor.Name = "numericBoxKikuchiThresholdOfStructureFactor";
+            numericBoxKikuchiThresholdOfStructureFactor.RadianValue = 1.7453292519943295D;
+            numericBoxKikuchiThresholdOfStructureFactor.ShowUpDown = true;
+            numericBoxKikuchiThresholdOfStructureFactor.SmartIncrement = true;
+            numericBoxKikuchiThresholdOfStructureFactor.TextFontSize = 9F;
+            toolTip.SetToolTip(numericBoxKikuchiThresholdOfStructureFactor, resources.GetString("numericBoxKikuchiThresholdOfStructureFactor.ToolTip1"));
+            numericBoxKikuchiThresholdOfStructureFactor.Value = 100D;
+            numericBoxKikuchiThresholdOfStructureFactor.ValueChanged += numericBoxKikuchiLineThreshold_ValueChanged;
             // 
             // numericBoxKikuchiThresholdOfLength
             // 
@@ -1126,7 +1120,7 @@
             numericBox3D_SpotRadius.SkipEventDuringInput = false;
             numericBox3D_SpotRadius.SmartIncrement = true;
             numericBox3D_SpotRadius.TextFontSize = 9F;
-            numericBox3D_SpotRadius.ThonsandsSeparator = true;
+            numericBox3D_SpotRadius.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBox3D_SpotRadius, resources.GetString("numericBox3D_SpotRadius.ToolTip1"));
             numericBox3D_SpotRadius.UpDown_Increment = 0.01D;
             numericBox3D_SpotRadius.Value = 0.2D;
@@ -1214,7 +1208,7 @@
             numericBoxReciprocalThreshold.ShowUpDown = true;
             numericBoxReciprocalThreshold.SmartIncrement = true;
             numericBoxReciprocalThreshold.TextFontSize = 9F;
-            numericBoxReciprocalThreshold.ThonsandsSeparator = true;
+            numericBoxReciprocalThreshold.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxReciprocalThreshold, resources.GetString("numericBoxReciprocalThreshold.ToolTip1"));
             numericBoxReciprocalThreshold.Value = 1D;
             numericBoxReciprocalThreshold.ValueChanged += numericBoxReciprocalThreshold_ValueChanged;
@@ -1352,7 +1346,7 @@
             numericBoxStep.ShowUpDown = true;
             numericBoxStep.SmartIncrement = true;
             numericBoxStep.TextFontSize = 9F;
-            numericBoxStep.ThonsandsSeparator = true;
+            numericBoxStep.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxStep, resources.GetString("numericBoxStep.ToolTip1"));
             numericBoxStep.Value = 10D;
             // 
@@ -1708,17 +1702,10 @@
             // flowLayoutPanel1
             // 
             resources.ApplyResources(flowLayoutPanel1, "flowLayoutPanel1");
-            flowLayoutPanel1.Controls.Add(label4);
             flowLayoutPanel1.Controls.Add(numericBoxClientWidth);
             flowLayoutPanel1.Controls.Add(numericBoxClientHeight);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
             toolTip.SetToolTip(flowLayoutPanel1, resources.GetString("flowLayoutPanel1.ToolTip"));
-            // 
-            // label4
-            // 
-            resources.ApplyResources(label4, "label4");
-            label4.Name = "label4";
-            toolTip.SetToolTip(label4, resources.GetString("label4.ToolTip"));
             // 
             // numericBoxClientWidth
             // 
@@ -1733,8 +1720,7 @@
             numericBoxClientWidth.RadianValue = 17.453292519943293D;
             numericBoxClientWidth.ShowUpDown = true;
             numericBoxClientWidth.SmartIncrement = true;
-            numericBoxClientWidth.TextFontSize = 9F;
-            numericBoxClientWidth.ThonsandsSeparator = true;
+            numericBoxClientWidth.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxClientWidth, resources.GetString("numericBoxClientWidth.ToolTip"));
             numericBoxClientWidth.Value = 1000D;
             numericBoxClientWidth.ValueChanged += NumericBoxClientSize_ValueChanged;
@@ -1752,8 +1738,7 @@
             numericBoxClientHeight.RadianValue = 17.453292519943293D;
             numericBoxClientHeight.ShowUpDown = true;
             numericBoxClientHeight.SmartIncrement = true;
-            numericBoxClientHeight.TextFontSize = 9F;
-            numericBoxClientHeight.ThonsandsSeparator = true;
+            numericBoxClientHeight.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxClientHeight, resources.GetString("numericBoxClientHeight.ToolTip"));
             numericBoxClientHeight.Value = 1000D;
             numericBoxClientHeight.ValueChanged += NumericBoxClientSize_ValueChanged;
@@ -1767,18 +1752,11 @@
             // flowLayoutPanelResolutionUnit
             // 
             resources.ApplyResources(flowLayoutPanelResolutionUnit, "flowLayoutPanelResolutionUnit");
-            flowLayoutPanelResolutionUnit.Controls.Add(label22);
             flowLayoutPanelResolutionUnit.Controls.Add(numericBoxResolution);
             flowLayoutPanelResolutionUnit.Controls.Add(radioButtonResoUnitMilliMeter);
             flowLayoutPanelResolutionUnit.Controls.Add(radioButtonResoUnitNanometerInv);
             flowLayoutPanelResolutionUnit.Name = "flowLayoutPanelResolutionUnit";
             toolTip.SetToolTip(flowLayoutPanelResolutionUnit, resources.GetString("flowLayoutPanelResolutionUnit.ToolTip"));
-            // 
-            // label22
-            // 
-            resources.ApplyResources(label22, "label22");
-            label22.Name = "label22";
-            toolTip.SetToolTip(label22, resources.GetString("label22.ToolTip"));
             // 
             // numericBoxResolution
             // 
@@ -1793,8 +1771,7 @@
             numericBoxResolution.RadianValue = 0.0013962634015954637D;
             numericBoxResolution.ShowUpDown = true;
             numericBoxResolution.SmartIncrement = true;
-            numericBoxResolution.TextFontSize = 9F;
-            numericBoxResolution.ThonsandsSeparator = true;
+            numericBoxResolution.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxResolution, resources.GetString("numericBoxResolution.ToolTip"));
             numericBoxResolution.Value = 0.08D;
             numericBoxResolution.ValueChanged += numericUpDownResolution_ValueChanged;
@@ -1873,36 +1850,24 @@
             // flowLayoutPanel4
             // 
             resources.ApplyResources(flowLayoutPanel4, "flowLayoutPanel4");
-            flowLayoutPanel4.Controls.Add(label15);
-            flowLayoutPanel4.Controls.Add(numericUpDownCamaraLength2);
-            flowLayoutPanel4.Controls.Add(label18);
+            flowLayoutPanel4.Controls.Add(numericBoxCameraLength2);
             flowLayoutPanel4.Controls.Add(buttonDetailedGeometry);
             flowLayoutPanel4.Name = "flowLayoutPanel4";
             toolTip.SetToolTip(flowLayoutPanel4, resources.GetString("flowLayoutPanel4.ToolTip"));
             // 
-            // label15
+            // numericBoxCameraLength2
             // 
-            resources.ApplyResources(label15, "label15");
-            label15.Name = "label15";
-            toolTip.SetToolTip(label15, resources.GetString("label15.ToolTip"));
-            // 
-            // numericUpDownCamaraLength2
-            // 
-            resources.ApplyResources(numericUpDownCamaraLength2, "numericUpDownCamaraLength2");
-            numericUpDownCamaraLength2.DecimalPlaces = 2;
-            numericUpDownCamaraLength2.Increment = new decimal(new int[] { 10, 0, 0, 0 });
-            numericUpDownCamaraLength2.Maximum = new decimal(new int[] { 10000, 0, 0, 0 });
-            numericUpDownCamaraLength2.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
-            numericUpDownCamaraLength2.Name = "numericUpDownCamaraLength2";
-            toolTip.SetToolTip(numericUpDownCamaraLength2, resources.GetString("numericUpDownCamaraLength2.ToolTip"));
-            numericUpDownCamaraLength2.Value = new decimal(new int[] { 1000, 0, 0, 0 });
-            numericUpDownCamaraLength2.ValueChanged += numericUpDownCamaraLength2_ValueChanged;
-            // 
-            // label18
-            // 
-            resources.ApplyResources(label18, "label18");
-            label18.Name = "label18";
-            toolTip.SetToolTip(label18, resources.GetString("label18.ToolTip"));
+            resources.ApplyResources(numericBoxCameraLength2, "numericBoxCameraLength2");
+            numericBoxCameraLength2.BackColor = System.Drawing.Color.Transparent;
+            numericBoxCameraLength2.DecimalPlaces = 2;
+            numericBoxCameraLength2.Minimum = 0D;
+            numericBoxCameraLength2.Name = "numericBoxCameraLength2";
+            numericBoxCameraLength2.RadianValue = 17.453292519943293D;
+            numericBoxCameraLength2.ShowUpDown = true;
+            numericBoxCameraLength2.ThousandsSeparator = true;
+            toolTip.SetToolTip(numericBoxCameraLength2, resources.GetString("numericBoxCameraLength2.ToolTip"));
+            numericBoxCameraLength2.Value = 1000D;
+            numericBoxCameraLength2.ValueChanged += numericBoxCamaraLength2_ValueChanged;
             // 
             // buttonDetailedGeometry
             // 
@@ -1934,7 +1899,7 @@
             numericBoxDev.SkipEventDuringInput = false;
             numericBoxDev.SmartIncrement = true;
             numericBoxDev.TextFontSize = 9F;
-            numericBoxDev.ThonsandsSeparator = true;
+            numericBoxDev.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxDev, resources.GetString("numericBoxDev.ToolTip1"));
             numericBoxDev.Value = 1.37D;
             // 
@@ -1957,7 +1922,7 @@
             numericBoxAcc.SkipEventDuringInput = false;
             numericBoxAcc.SmartIncrement = true;
             numericBoxAcc.TextFontSize = 9F;
-            numericBoxAcc.ThonsandsSeparator = true;
+            numericBoxAcc.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxAcc, resources.GetString("numericBoxAcc.ToolTip1"));
             numericBoxAcc.Value = 12400D;
             // 
@@ -2330,8 +2295,7 @@
             numericBoxPED_Semiangle.RadianValue = 0.87266462599716477D;
             numericBoxPED_Semiangle.ShowUpDown = true;
             numericBoxPED_Semiangle.SmartIncrement = true;
-            numericBoxPED_Semiangle.TextFontSize = 9F;
-            numericBoxPED_Semiangle.ThonsandsSeparator = true;
+            numericBoxPED_Semiangle.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxPED_Semiangle, resources.GetString("numericBoxPED_Semiangle.ToolTip"));
             numericBoxPED_Semiangle.Value = 50D;
             numericBoxPED_Semiangle.ValueChanged += Draw;
@@ -2349,8 +2313,7 @@
             numericBoxPED_Step.RadianValue = 0.62831853071795862D;
             numericBoxPED_Step.ShowUpDown = true;
             numericBoxPED_Step.SmartIncrement = true;
-            numericBoxPED_Step.TextFontSize = 9F;
-            numericBoxPED_Step.ThonsandsSeparator = true;
+            numericBoxPED_Step.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxPED_Step, resources.GetString("numericBoxPED_Step.ToolTip"));
             numericBoxPED_Step.Value = 36D;
             numericBoxPED_Step.ValueChanged += Draw;
@@ -2384,8 +2347,7 @@
             numericBoxNumOfBlochWave.RadianValue = 4.1887902047863905D;
             numericBoxNumOfBlochWave.ShowUpDown = true;
             numericBoxNumOfBlochWave.SmartIncrement = true;
-            numericBoxNumOfBlochWave.TextFontSize = 9F;
-            numericBoxNumOfBlochWave.ThonsandsSeparator = true;
+            numericBoxNumOfBlochWave.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxNumOfBlochWave, resources.GetString("numericBoxNumOfBlochWave.ToolTip"));
             numericBoxNumOfBlochWave.Value = 240D;
             numericBoxNumOfBlochWave.ValueChanged += Draw;
@@ -2403,8 +2365,7 @@
             numericBoxThickness.RadianValue = 0.87266462599716477D;
             numericBoxThickness.ShowUpDown = true;
             numericBoxThickness.SkipEventDuringInput = false;
-            numericBoxThickness.TextFontSize = 9F;
-            numericBoxThickness.ThonsandsSeparator = true;
+            numericBoxThickness.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxThickness, resources.GetString("numericBoxThickness.ToolTip"));
             numericBoxThickness.UpDown_Increment = 10D;
             numericBoxThickness.Value = 50D;
@@ -2498,8 +2459,7 @@
             numericBoxSpotRadius.RadianValue = 0.0034906585039886592D;
             numericBoxSpotRadius.ShowUpDown = true;
             numericBoxSpotRadius.SmartIncrement = true;
-            numericBoxSpotRadius.TextFontSize = 9F;
-            numericBoxSpotRadius.ThonsandsSeparator = true;
+            numericBoxSpotRadius.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxSpotRadius, resources.GetString("numericBoxSpotRadius.ToolTip"));
             numericBoxSpotRadius.UpDown_Increment = 0.01D;
             numericBoxSpotRadius.Value = 0.2D;
@@ -2712,7 +2672,11 @@
             flowLayoutPanelBeamMode.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             captureExtender.SetCapture(flowLayoutPanelBeamMode, true);
             flowLayoutPanelBeamMode.Controls.Add(label13);
-            flowLayoutPanelBeamMode.Controls.Add(flowLayoutPanelBeamType);
+            flowLayoutPanelBeamMode.Controls.Add(radioButtonBeamParallel);
+            flowLayoutPanelBeamMode.Controls.Add(radioButtonBeamPrecessionElectron);
+            flowLayoutPanelBeamMode.Controls.Add(radioButtonBeamConvergence);
+            flowLayoutPanelBeamMode.Controls.Add(radioButtonBeamBackLaue);
+            flowLayoutPanelBeamMode.Controls.Add(radioButtonBeamPrecessionXray);
             flowLayoutPanelBeamMode.Name = "flowLayoutPanelBeamMode";
             toolTip.SetToolTip(flowLayoutPanelBeamMode, resources.GetString("flowLayoutPanelBeamMode.ToolTip"));
             // 
@@ -2721,17 +2685,6 @@
             resources.ApplyResources(label13, "label13");
             label13.Name = "label13";
             toolTip.SetToolTip(label13, resources.GetString("label13.ToolTip"));
-            // 
-            // flowLayoutPanelBeamType
-            // 
-            resources.ApplyResources(flowLayoutPanelBeamType, "flowLayoutPanelBeamType");
-            flowLayoutPanelBeamType.Controls.Add(radioButtonBeamParallel);
-            flowLayoutPanelBeamType.Controls.Add(radioButtonBeamPrecessionXray);
-            flowLayoutPanelBeamType.Controls.Add(radioButtonBeamBackLaue);
-            flowLayoutPanelBeamType.Controls.Add(radioButtonBeamPrecessionElectron);
-            flowLayoutPanelBeamType.Controls.Add(radioButtonBeamConvergence);
-            flowLayoutPanelBeamType.Name = "flowLayoutPanelBeamType";
-            toolTip.SetToolTip(flowLayoutPanelBeamType, resources.GetString("flowLayoutPanelBeamType.ToolTip"));
             // 
             // radioButtonBeamParallel
             // 
@@ -2742,22 +2695,6 @@
             toolTip.SetToolTip(radioButtonBeamParallel, resources.GetString("radioButtonBeamParallel.ToolTip"));
             radioButtonBeamParallel.UseVisualStyleBackColor = true;
             radioButtonBeamParallel.CheckedChanged += radioButtonBeamParallel_CheckedChanged;
-            // 
-            // radioButtonBeamPrecessionXray
-            // 
-            resources.ApplyResources(radioButtonBeamPrecessionXray, "radioButtonBeamPrecessionXray");
-            radioButtonBeamPrecessionXray.Name = "radioButtonBeamPrecessionXray";
-            toolTip.SetToolTip(radioButtonBeamPrecessionXray, resources.GetString("radioButtonBeamPrecessionXray.ToolTip"));
-            radioButtonBeamPrecessionXray.UseVisualStyleBackColor = true;
-            radioButtonBeamPrecessionXray.CheckedChanged += radioButtonBeamParallel_CheckedChanged;
-            // 
-            // radioButtonBeamBackLaue
-            // 
-            resources.ApplyResources(radioButtonBeamBackLaue, "radioButtonBeamBackLaue");
-            radioButtonBeamBackLaue.Name = "radioButtonBeamBackLaue";
-            toolTip.SetToolTip(radioButtonBeamBackLaue, resources.GetString("radioButtonBeamBackLaue.ToolTip"));
-            radioButtonBeamBackLaue.UseVisualStyleBackColor = true;
-            radioButtonBeamBackLaue.CheckedChanged += radioButtonBeamParallel_CheckedChanged;
             // 
             // radioButtonBeamPrecessionElectron
             // 
@@ -2774,6 +2711,22 @@
             toolTip.SetToolTip(radioButtonBeamConvergence, resources.GetString("radioButtonBeamConvergence.ToolTip"));
             radioButtonBeamConvergence.UseVisualStyleBackColor = true;
             radioButtonBeamConvergence.CheckedChanged += radioButtonBeamParallel_CheckedChanged;
+            // 
+            // radioButtonBeamBackLaue
+            // 
+            resources.ApplyResources(radioButtonBeamBackLaue, "radioButtonBeamBackLaue");
+            radioButtonBeamBackLaue.Name = "radioButtonBeamBackLaue";
+            toolTip.SetToolTip(radioButtonBeamBackLaue, resources.GetString("radioButtonBeamBackLaue.ToolTip"));
+            radioButtonBeamBackLaue.UseVisualStyleBackColor = true;
+            radioButtonBeamBackLaue.CheckedChanged += radioButtonBeamParallel_CheckedChanged;
+            // 
+            // radioButtonBeamPrecessionXray
+            // 
+            resources.ApplyResources(radioButtonBeamPrecessionXray, "radioButtonBeamPrecessionXray");
+            radioButtonBeamPrecessionXray.Name = "radioButtonBeamPrecessionXray";
+            toolTip.SetToolTip(radioButtonBeamPrecessionXray, resources.GetString("radioButtonBeamPrecessionXray.ToolTip"));
+            radioButtonBeamPrecessionXray.UseVisualStyleBackColor = true;
+            radioButtonBeamPrecessionXray.CheckedChanged += radioButtonBeamParallel_CheckedChanged;
             // 
             // flowLayoutPanelWaveLength
             // 
@@ -2933,7 +2886,6 @@
             flowLayoutPanel2.ResumeLayout(false);
             flowLayoutPanel2.PerformLayout();
             flowLayoutPanel1.ResumeLayout(false);
-            flowLayoutPanel1.PerformLayout();
             flowLayoutPanelResolutionUnit.ResumeLayout(false);
             flowLayoutPanelResolutionUnit.PerformLayout();
             panelDetectorAndMisc.ResumeLayout(false);
@@ -2944,7 +2896,6 @@
             groupBoxDetectorGeometry.PerformLayout();
             flowLayoutPanel4.ResumeLayout(false);
             flowLayoutPanel4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)numericUpDownCamaraLength2).EndInit();
             groupBoxDeveloperCode.ResumeLayout(false);
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
@@ -2977,8 +2928,6 @@
             flowLayoutPanelExtinctionOption.PerformLayout();
             flowLayoutPanelBeamMode.ResumeLayout(false);
             flowLayoutPanelBeamMode.PerformLayout();
-            flowLayoutPanelBeamType.ResumeLayout(false);
-            flowLayoutPanelBeamType.PerformLayout();
             flowLayoutPanelWaveLength.ResumeLayout(false);
             flowLayoutPanelWaveLength.PerformLayout();
             ResumeLayout(false);
@@ -2990,8 +2939,6 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TrackBar trackBarLineWidth;
         private System.Windows.Forms.TrackBar trackBarStrSize;
-        private System.Windows.Forms.Label label15;
-        public System.Windows.Forms.NumericUpDown numericUpDownCamaraLength2;
         private System.Windows.Forms.TabControl tabControl;
         private System.Windows.Forms.TabPage tabPageKikuchi;
         private System.Windows.Forms.MenuStrip menuStrip1;
@@ -3102,7 +3049,6 @@
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem basicConceptOfBethesMethodToolStripMenuItem;
         private System.Windows.Forms.GroupBox groupBoxColor;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelBeamType;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelSpotShape;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelGaussianOption;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelPointSpreadIntensity;
@@ -3168,7 +3114,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.RadioButton radioButtonBeamPrecessionXray;
         private System.Windows.Forms.ComboBox comboBoxCenter;
-        private System.Windows.Forms.Label label4;
         public System.Windows.Forms.ToolStripMenuItem saveCBEDPatternToolStripMenuItem;
         public System.Windows.Forms.ToolStripMenuItem copyCBEDPatternToolStripMenuItem;
         private System.Windows.Forms.ToolStripButton toolStripButtonDspacingInv;
@@ -3220,11 +3165,9 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator8;
         private System.Windows.Forms.RadioButton radioButtonBeamBackLaue;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelResolutionUnit;
-        private System.Windows.Forms.Label label22;
         private System.Windows.Forms.RadioButton radioButtonResoUnitMilliMeter;
         private System.Windows.Forms.RadioButton radioButtonResoUnitNanometerInv;
         private System.Windows.Forms.CheckBox checkBoxDrawSameSize;
-        private System.Windows.Forms.Label label18;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelImageOrientation;
         private System.Windows.Forms.CheckBox checkBoxFlipHorizontally;
         private System.Windows.Forms.CheckBox checkBoxFlipVertically;
@@ -3232,7 +3175,7 @@
         private System.Windows.Forms.RadioButton radioButtonKikuchiThresholdOfLength;
         private NumericBox numericBoxKikuchiThresholdOfLength;
         private System.Windows.Forms.RadioButton radioButtonKikuchiThresholdOfStructureFactor;
-        private NumericBox numericBoxKikuchiThreadSholdOfStructureFactor;
+        private NumericBox numericBoxKikuchiThresholdOfStructureFactor;
         private System.Windows.Forms.CheckBox checkBoxShowDirectPosition;
         private System.Windows.Forms.CheckBox checkBoxShowFootPosition;
         private System.Windows.Forms.Panel panelDetectorAndMisc;
@@ -3244,5 +3187,6 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel4;
+        private NumericBox numericBoxCameraLength2;
     }
 }

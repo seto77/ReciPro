@@ -495,7 +495,7 @@
     <value />
   </data>
   <data name="radioButtonPixelSizeUnitInverse.ToolTip" xml:space="preserve">
-    <value>ピクセルサイズの単位: 1/nm</value>
+    <value>ピクセルサイズの単位: nm⁻¹</value>
   </data>
   <data name="radioButtonPixelSizeUnitReal.ToolTip" xml:space="preserve">
     <value>ピクセルサイズの単位: mm</value>
@@ -886,10 +886,10 @@
   <data name="splitContainer1.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="readToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="loadToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>126, 22</value>
   </data>
-  <data name="readToolStripMenuItem.Text" xml:space="preserve">
+  <data name="loadToolStripMenuItem.Text" xml:space="preserve">
     <value>読み込み</value>
   </data>
   <data name="saveAsMetafileToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">

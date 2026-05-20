@@ -204,7 +204,7 @@
             label5.Name = "label5";
             label5.Size = new System.Drawing.Size(90, 17);
             label5.TabIndex = 2;
-            label5.Text = "Acc. voltage: ";
+            label5.Text = "Acc. Voltage: "; // 260520Cl: V を大文字に統一
             // 
             // label6
             // 
@@ -748,7 +748,7 @@
             numericBoxEffectiveDigit.Size = new System.Drawing.Size(139, 27);
             numericBoxEffectiveDigit.SkipEventDuringInput = false;
             numericBoxEffectiveDigit.TabIndex = 3;
-            numericBoxEffectiveDigit.ThonsandsSeparator = true;
+            numericBoxEffectiveDigit.ThousandsSeparator = true;
             numericBoxEffectiveDigit.Value = 4D;
             numericBoxEffectiveDigit.ValueChanged += numericBoxEffectiveDigit_ValueChanged;
             // 

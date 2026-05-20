@@ -206,7 +206,7 @@
     <value>1</value>
   </data>
   <data name="numericBoxFittingRange.FooterText" xml:space="preserve">
-    <value>pix.</value>
+    <value>px</value>
   </data>
   <data name="buttonDonut.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -236,7 +236,7 @@
     <value>0, 4, 0, 0</value>
   </data>
   <data name="buttonClearSpots.Text" xml:space="preserve">
-    <value>Clear All</value>
+    <value>Clear all spots</value>
   </data>
   <data name="pictureBox1.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 404</value>
@@ -609,7 +609,7 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="copyAsMetafileToolStripMenuItem.Text" xml:space="preserve">
-    <value>as Metafile</value>
+    <value>as Metafile (EMF)</value>
   </data>
   <data name="&gt;&gt;flowLayoutPanel3.Type" xml:space="preserve">
     <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -1041,7 +1041,7 @@
     <value>Maximum acceptable error for spot matching</value>
   </data>
   <data name="saveAsMetafileToolStripMenuItem.Text" xml:space="preserve">
-    <value>as Metafile (EMF format)</value>
+    <value>as Metafile (EMF)</value>
   </data>
   <data name="buttonDeleteSpot.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 3, 0</value>
@@ -1151,7 +1151,7 @@
   <data name="numericBoxCameraLength.HeaderText" xml:space="preserve">
     <value>Camera Length</value>
   </data>
-  <data name="readToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="loadToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>101, 22</value>
   </data>
   <data name="flowLayoutPanel1.Location" type="System.Drawing.Point, System.Drawing">
@@ -1254,7 +1254,7 @@
     <value>1</value>
   </data>
   <data name="numericBoxNearestNeighbor.FooterText" xml:space="preserve">
-    <value>pix.</value>
+    <value>px</value>
   </data>
   <data name="waveLengthControl1.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>190, 0</value>
@@ -1664,7 +1664,7 @@
   <data name="&gt;&gt;toolStripMenuItem3.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;readToolStripMenuItem.Type" xml:space="preserve">
+  <data name="&gt;&gt;loadToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="checkBoxDetailsOfFunction.AutoSize" type="System.Boolean, mscorlib">
@@ -1973,8 +1973,8 @@
   <data name="dataGridViewGrains.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
   </data>
-  <data name="&gt;&gt;readToolStripMenuItem.Name" xml:space="preserve">
-    <value>readToolStripMenuItem</value>
+  <data name="&gt;&gt;loadToolStripMenuItem.Name" xml:space="preserve">
+    <value>loadToolStripMenuItem</value>
   </data>
   <data name="panelSpotActions.ToolTip" xml:space="preserve">
     <value />
@@ -2195,8 +2195,8 @@
   <data name="&gt;&gt;splitContainer1.Panel2.Name" xml:space="preserve">
     <value>splitContainer1.Panel2</value>
   </data>
-  <data name="readToolStripMenuItem.Text" xml:space="preserve">
-    <value>Read</value>
+  <data name="loadToolStripMenuItem.Text" xml:space="preserve">
+    <value>Load</value>
   </data>
   <data name="&gt;&gt;groupBoxIndex.Type" xml:space="preserve">
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -2978,7 +2978,7 @@ and the fitting range in the box on the right.</value>
     <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="groupBoxSpot.Text" xml:space="preserve">
-    <value>Spot Information</value>
+    <value>Spot information</value>
   </data>
   <data name="flowLayoutPanel3.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
@@ -3032,7 +3032,7 @@ and the fitting range in the box on the right.</value>
     <value>flowLayoutPanel7</value>
   </data>
   <data name="radioButtonPixelSizeUnitInverse.Text" xml:space="preserve">
-    <value>1/nm</value>
+    <value>nm⁻¹</value>
   </data>
   <data name="&gt;&gt;checkBoxGuideCircles.Name" xml:space="preserve">
     <value>checkBoxGuideCircles</value>

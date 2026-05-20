@@ -147,7 +147,7 @@
   <data name="&gt;&gt;label8.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="buttonExecute.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+  <data name="buttonSimulate.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
   <data name="numericBoxWholeThicknessStart.HeaderFont" type="System.Drawing.Font, System.Drawing">
@@ -519,7 +519,7 @@ The larger this value is, the brighter the outer disk appears to be.</value>
     <value>NoControl</value>
   </data>
   <data name="numericBoxDiskResolution.FooterText" xml:space="preserve">
-    <value>mrad/pix.</value>
+    <value>mrad/px</value>
   </data>
   <data name="flowLayoutPanel11.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
@@ -911,7 +911,7 @@ The larger this value is, the brighter the outer disk appears to be.</value>
   <data name="&gt;&gt;checkBoxDrawGuideCircles.Type" xml:space="preserve">
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;buttonExecute.Parent" xml:space="preserve">
+  <data name="&gt;&gt;buttonSimulate.Parent" xml:space="preserve">
     <value>groupBoxInputParameters</value>
   </data>
   <data name="textBoxThickness.ToolTip" xml:space="preserve">
@@ -1002,11 +1002,11 @@ The number of two-dimensional divisions is displayed on the right</value>
   <data name="&gt;&gt;label5.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="buttonExecute.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="buttonSimulate.Size" type="System.Drawing.Size, System.Drawing">
     <value>70, 28</value>
   </data>
   <data name="groupBoxInputParameters.Text" xml:space="preserve">
-    <value>Input Parameters</value>
+    <value>Input parameters</value>
   </data>
   <data name="numericBoxThicknessStep.FooterText" xml:space="preserve">
     <value>nm</value>
@@ -1084,7 +1084,7 @@ All solvers produce the same results, but at different computational speeds.</va
   <data name="numericBoxThread.MaximumSize" type="System.Drawing.Size, System.Drawing">
     <value>1000, 30</value>
   </data>
-  <data name="buttonExecute.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="buttonSimulate.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 5, 3, 5</value>
   </data>
   <data name="&gt;&gt;flowLayoutPanel5.Type" xml:space="preserve">
@@ -1238,7 +1238,7 @@ The number of two-dimensional divisions is displayed on the right</value>
   <data name="&gt;&gt;comboBoxGradient.Type" xml:space="preserve">
     <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="buttonExecute.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="buttonSimulate.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="labelDivisionNumber.Location" type="System.Drawing.Point, System.Drawing">
@@ -1310,7 +1310,7 @@ The number of two-dimensional divisions is displayed on the right</value>
   <data name="radioButtonIndividualDisk.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
-  <data name="buttonExecute.TabIndex" type="System.Int32, mscorlib">
+  <data name="buttonSimulate.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
   </data>
   <data name="&gt;&gt;groupBoxInputParameters.Parent" xml:space="preserve">
@@ -1397,8 +1397,8 @@ The number of two-dimensional divisions is displayed on the right</value>
   <data name="numericBoxMaxNumOfG.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 3, 0, 0</value>
   </data>
-  <data name="buttonExecute.Text" xml:space="preserve">
-    <value>Execute</value>
+  <data name="buttonSimulate.Text" xml:space="preserve">
+    <value>Simulate</value>
   </data>
   <data name="&gt;&gt;toolStripStatusLabel1.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -1487,7 +1487,7 @@ The number of two-dimensional divisions is displayed on the right</value>
   <data name="flowLayoutPanel10.Size" type="System.Drawing.Size, System.Drawing">
     <value>367, 47</value>
   </data>
-  <data name="&gt;&gt;buttonExecute.Type" xml:space="preserve">
+  <data name="&gt;&gt;buttonSimulate.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
@@ -1523,7 +1523,7 @@ The number of two-dimensional divisions is displayed on the right</value>
   <data name="&gt;&gt;comboBoxScale.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="buttonExecute.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="buttonSimulate.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 24</value>
   </data>
   <data name="numericBoxThread.FooterFont" type="System.Drawing.Font, System.Drawing">
@@ -1676,13 +1676,13 @@ The number of two-dimensional divisions is displayed on the right</value>
   <data name="numericBoxDiskResolution.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
-  <data name="&gt;&gt;buttonExecute.Name" xml:space="preserve">
-    <value>buttonExecute</value>
+  <data name="&gt;&gt;buttonSimulate.Name" xml:space="preserve">
+    <value>buttonSimulate</value>
   </data>
   <data name="flowLayoutPanel8.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
   </data>
-  <data name="&gt;&gt;buttonExecute.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;buttonSimulate.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
   <data name="flowLayoutPanel9.Location" type="System.Drawing.Point, System.Drawing">
@@ -1742,7 +1742,7 @@ The number of two-dimensional divisions is displayed on the right</value>
   <data name="flowLayoutPanel7.Size" type="System.Drawing.Size, System.Drawing">
     <value>367, 33</value>
   </data>
-  <data name="buttonExecute.ToolTip" xml:space="preserve">
+  <data name="buttonSimulate.ToolTip" xml:space="preserve">
     <value>Execute a CBED simulation</value>
   </data>
   <data name="buttonStop.TabIndex" type="System.Int32, mscorlib">
@@ -1809,7 +1809,7 @@ The number of two-dimensional divisions is displayed on the right</value>
     <value />
   </data>
   <data name="groupBoxOutput.Text" xml:space="preserve">
-    <value>Output Parameters</value>
+    <value>Output parameters</value>
   </data>
   <data name="flowLayoutPanel8.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>

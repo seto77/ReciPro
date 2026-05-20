@@ -1364,7 +1364,7 @@
     <value>0</value>
   </data>
   <data name="groupBoxCellConstants.Text" xml:space="preserve">
-    <value>Cell Constants</value>
+    <value>Cell constants</value>
   </data>
   <data name="&gt;&gt;groupBoxCellConstants.Name" xml:space="preserve">
     <value>groupBoxCellConstants</value>

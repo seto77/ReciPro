@@ -66,7 +66,7 @@
             numericBoxH.SkipEventDuringInput = false;
             numericBoxH.TabIndex = 80;
             numericBoxH.TextFontSize = 9F;
-            numericBoxH.ThonsandsSeparator = true;
+            numericBoxH.ThousandsSeparator = true;
             // 
             // tableLayoutPanel1
             // 
@@ -126,7 +126,7 @@
             numericBoxL.SkipEventDuringInput = false;
             numericBoxL.TabIndex = 80;
             numericBoxL.TextFontSize = 9F;
-            numericBoxL.ThonsandsSeparator = true;
+            numericBoxL.ThousandsSeparator = true;
             // 
             // labelLaTexPM4
             // 
@@ -170,7 +170,7 @@
             numericBoxI.TabIndex = 80;
             numericBoxI.TextBoxBackColor = System.Drawing.SystemColors.Control;
             numericBoxI.TextFontSize = 9F;
-            numericBoxI.ThonsandsSeparator = true;
+            numericBoxI.ThousandsSeparator = true;
             // 
             // labelLaTexW
             // 
@@ -213,7 +213,7 @@
             numericBoxK.SkipEventDuringInput = false;
             numericBoxK.TabIndex = 80;
             numericBoxK.TextFontSize = 9F;
-            numericBoxK.ThonsandsSeparator = true;
+            numericBoxK.ThousandsSeparator = true;
             // 
             // labelLaTexPM2
             // 

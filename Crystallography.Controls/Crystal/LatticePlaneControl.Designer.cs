@@ -194,7 +194,7 @@
             numericBoxDistance.ShowUpDown = true;
             numericBoxDistance.SkipEventDuringInput = false;
             numericBoxDistance.TextFontSize = 9F;
-            numericBoxDistance.ThonsandsSeparator = true;
+            numericBoxDistance.ThousandsSeparator = true;
             numericBoxDistance.UpDown_Increment = 0.1D;
             // 
             // colorControl

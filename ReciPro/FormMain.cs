@@ -900,7 +900,7 @@ public partial class FormMain : FormBase
         ellapseTime = stopwatchAnimation.ElapsedMilliseconds;
         if (timerCounter++ % 5 == 0)
         {
-            toolStripStatusLabel.Text = $"Frame rate: {1000.0 / differenceTime:f1} frm/sec.";
+            toolStripStatusLabel.Text = $"Frame rate: {1000.0 / differenceTime:f1} frm/s";
             timerCounter = 1;
         }
 
@@ -1853,12 +1853,12 @@ public partial class FormMain : FormBase
             toolStripProgressBar.Maximum = int.MaxValue;
             var ratio = (double)current / total;
             toolStripProgressBar.Value = (int)(ratio * toolStripProgressBar.Maximum);
-            var ellapsedSec = elapsedMilliseconds / 1000.0;
+            var elapsedSec = elapsedMilliseconds / 1000.0; // 260520Cl: typo fix (ellapsedSec → elapsedSec)
             var format = $"f{digit}";
 
             if (showPercentage) message += $" Completed: {(ratio * 100).ToString(format)} %.";
-            if (showElapsedTime) message += $" Elapsed: {ellapsedSec.ToString(format)} s.";
-            if (showRemainTime) message += $" Remaining: {(ellapsedSec / current * (total - current)).ToString(format)} s.";
+            if (showElapsedTime) message += $" Elapsed: {elapsedSec.ToString(format)} s.";
+            if (showRemainTime) message += $" Remaining: {(elapsedSec / current * (total - current)).ToString(format)} s.";
 
             toolStripStatusLabel.Text = message;
             // 260428Cl Application.DoEvents() を削除 (Progress<T> 経由で UI スレッドにポストされるため不要、再入の元)

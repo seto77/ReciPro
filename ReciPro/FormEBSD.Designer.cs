@@ -31,6 +31,7 @@
         // groupBox6 -> groupBoxEBSDPattern
         // flowLayoutPanel1 -> flowLayoutPanelViewAlong
         // flowLayoutPanel4 -> flowLayoutPanelOutputRange
+        // (260520Cl) typo fix: numericBoxKikuchiThreadSholdOfStructureFactor -> numericBoxKikuchiThresholdOfStructureFactor (旧 typo "ThreadShold")
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
@@ -43,7 +44,7 @@
             buttonViewFromSurfaceNormal = new System.Windows.Forms.Button();
             buttonFromX = new System.Windows.Forms.Button();
             buttonViewFromZ = new System.Windows.Forms.Button();
-            buttonCalcBSE = new System.Windows.Forms.Button();
+            buttonSimulateBSE = new System.Windows.Forms.Button();
             buttonFitNistElasticSampler = new System.Windows.Forms.Button();
             graphControlDepthProfile = new GraphControl();
             poleFigureControl = new PoleFigureControl2();
@@ -64,7 +65,7 @@
             radioButtonKikuchiThresholdOfStructureFactor = new System.Windows.Forms.RadioButton();
             checkBoxKikuchiLine_Kinematical = new System.Windows.Forms.CheckBox();
             radioButtonKikuchiThresholdOfLength = new System.Windows.Forms.RadioButton();
-            numericBoxKikuchiThreadSholdOfStructureFactor = new NumericBox();
+            numericBoxKikuchiThresholdOfStructureFactor = new NumericBox();
             numericBoxKikuchiThresholdOfLength = new NumericBox();
             label1 = new System.Windows.Forms.Label();
             numericBoxThicknessStep = new NumericBox();
@@ -274,12 +275,14 @@
             buttonViewFromZ.UseVisualStyleBackColor = true;
             buttonViewFromZ.Click += buttonViewFromZ_Click;
             // 
-            // buttonCalcBSE
+            // buttonSimulateBSE
             // 
-            resources.ApplyResources(buttonCalcBSE, "buttonCalcBSE");
-            buttonCalcBSE.Name = "buttonCalcBSE";
-            buttonCalcBSE.UseVisualStyleBackColor = true;
-            buttonCalcBSE.Click += buttonBSE_Click;
+            resources.ApplyResources(buttonSimulateBSE, "buttonSimulateBSE");
+            buttonSimulateBSE.BackColor = System.Drawing.Color.SteelBlue; // 260520Cl: 主要アクション色を統一
+            buttonSimulateBSE.ForeColor = System.Drawing.Color.White;
+            buttonSimulateBSE.Name = "buttonSimulateBSE";
+            buttonSimulateBSE.UseVisualStyleBackColor = false;
+            buttonSimulateBSE.Click += buttonBSE_Click;
             // 
             // buttonFitNistElasticSampler
             // 
@@ -563,18 +566,18 @@
             radioButtonKikuchiThresholdOfLength.Name = "radioButtonKikuchiThresholdOfLength";
             radioButtonKikuchiThresholdOfLength.UseVisualStyleBackColor = true;
             // 
-            // numericBoxKikuchiThreadSholdOfStructureFactor
+            // numericBoxKikuchiThresholdOfStructureFactor
             // 
-            resources.ApplyResources(numericBoxKikuchiThreadSholdOfStructureFactor, "numericBoxKikuchiThreadSholdOfStructureFactor");
-            numericBoxKikuchiThreadSholdOfStructureFactor.BackColor = System.Drawing.Color.Transparent;
-            numericBoxKikuchiThreadSholdOfStructureFactor.Maximum = 1000D;
-            numericBoxKikuchiThreadSholdOfStructureFactor.Minimum = 1D;
-            numericBoxKikuchiThreadSholdOfStructureFactor.Name = "numericBoxKikuchiThreadSholdOfStructureFactor";
-            numericBoxKikuchiThreadSholdOfStructureFactor.RadianValue = 0.69813170079773179D;
-            numericBoxKikuchiThreadSholdOfStructureFactor.ShowUpDown = true;
-            numericBoxKikuchiThreadSholdOfStructureFactor.SmartIncrement = true;
-            numericBoxKikuchiThreadSholdOfStructureFactor.Value = 40D;
-            numericBoxKikuchiThreadSholdOfStructureFactor.ValueChanged += numericBoxKikuchiThreadSholdOfStructureFactor_ValueChanged;
+            resources.ApplyResources(numericBoxKikuchiThresholdOfStructureFactor, "numericBoxKikuchiThresholdOfStructureFactor");
+            numericBoxKikuchiThresholdOfStructureFactor.BackColor = System.Drawing.Color.Transparent;
+            numericBoxKikuchiThresholdOfStructureFactor.Maximum = 1000D;
+            numericBoxKikuchiThresholdOfStructureFactor.Minimum = 1D;
+            numericBoxKikuchiThresholdOfStructureFactor.Name = "numericBoxKikuchiThresholdOfStructureFactor";
+            numericBoxKikuchiThresholdOfStructureFactor.RadianValue = 0.69813170079773179D;
+            numericBoxKikuchiThresholdOfStructureFactor.ShowUpDown = true;
+            numericBoxKikuchiThresholdOfStructureFactor.SmartIncrement = true;
+            numericBoxKikuchiThresholdOfStructureFactor.Value = 40D;
+            numericBoxKikuchiThresholdOfStructureFactor.ValueChanged += numericBoxKikuchiThresholdOfStructureFactor_ValueChanged;
             // 
             // numericBoxKikuchiThresholdOfLength
             // 
@@ -587,7 +590,7 @@
             numericBoxKikuchiThresholdOfLength.ShowUpDown = true;
             numericBoxKikuchiThresholdOfLength.SmartIncrement = true;
             numericBoxKikuchiThresholdOfLength.Value = 10D;
-            numericBoxKikuchiThresholdOfLength.ValueChanged += numericBoxKikuchiThreadSholdOfStructureFactor_ValueChanged;
+            numericBoxKikuchiThresholdOfLength.ValueChanged += numericBoxKikuchiThresholdOfStructureFactor_ValueChanged;
             // 
             // label1
             // 
@@ -607,7 +610,7 @@
             numericBoxThicknessStep.RadianValue = 0.017453292519943295D;
             numericBoxThicknessStep.ShowUpDown = true;
             numericBoxThicknessStep.SmartIncrement = true;
-            numericBoxThicknessStep.ThonsandsSeparator = true;
+            numericBoxThicknessStep.ThousandsSeparator = true;
             numericBoxThicknessStep.Value = 1D;
             numericBoxThicknessStep.ValueChanged += NumericBoxThicknessStart_ValueChanged;
             // 
@@ -623,7 +626,7 @@
             numericBoxMaxNumOfG.RadianValue = 0.55850536063818546D;
             numericBoxMaxNumOfG.ShowUpDown = true;
             numericBoxMaxNumOfG.SmartIncrement = true;
-            numericBoxMaxNumOfG.ThonsandsSeparator = true;
+            numericBoxMaxNumOfG.ThousandsSeparator = true;
             numericBoxMaxNumOfG.Value = 32D;
             // 
             // checkBoxNonLocalAbsorption
@@ -651,7 +654,7 @@
             numericBoxThicknessStart.RadianValue = 0.017453292519943295D;
             numericBoxThicknessStart.ShowUpDown = true;
             numericBoxThicknessStart.SmartIncrement = true;
-            numericBoxThicknessStart.ThonsandsSeparator = true;
+            numericBoxThicknessStart.ThousandsSeparator = true;
             numericBoxThicknessStart.Value = 1D;
             numericBoxThicknessStart.ValueChanged += NumericBoxThicknessStart_ValueChanged;
             // 
@@ -668,7 +671,7 @@
             numericBoxThicknessEnd.RadianValue = 0.87266462599716477D;
             numericBoxThicknessEnd.ShowUpDown = true;
             numericBoxThicknessEnd.SmartIncrement = true;
-            numericBoxThicknessEnd.ThonsandsSeparator = true;
+            numericBoxThicknessEnd.ThousandsSeparator = true;
             numericBoxThicknessEnd.Value = 50D;
             numericBoxThicknessEnd.ValueChanged += NumericBoxThicknessStart_ValueChanged;
             // 
@@ -861,7 +864,7 @@
             numericBoxEnergyEnd.RadianValue = 0.26179938779914941D;
             numericBoxEnergyEnd.ShowUpDown = true;
             numericBoxEnergyEnd.SmartIncrement = true;
-            numericBoxEnergyEnd.ThonsandsSeparator = true;
+            numericBoxEnergyEnd.ThousandsSeparator = true;
             numericBoxEnergyEnd.Value = 15D;
             numericBoxEnergyEnd.ValueChanged += NumericBoxEnergyStart_ValueChanged;
             // 
@@ -879,7 +882,7 @@
             numericBoxEnergyStart.ShowUpDown = true;
             numericBoxEnergyStart.SmartIncrement = true;
             numericBoxEnergyStart.TextBoxBackColor = System.Drawing.SystemColors.Control;
-            numericBoxEnergyStart.ThonsandsSeparator = true;
+            numericBoxEnergyStart.ThousandsSeparator = true;
             numericBoxEnergyStart.Value = 20D;
             numericBoxEnergyStart.ValueChanged += NumericBoxEnergyStart_ValueChanged;
             // 
@@ -896,7 +899,7 @@
             numericBoxEnergyStep.RadianValue = 0.017453292519943295D;
             numericBoxEnergyStep.ShowUpDown = true;
             numericBoxEnergyStep.SmartIncrement = true;
-            numericBoxEnergyStep.ThonsandsSeparator = true;
+            numericBoxEnergyStep.ThousandsSeparator = true;
             numericBoxEnergyStep.Value = 1D;
             numericBoxEnergyStep.ValueChanged += NumericBoxEnergyStart_ValueChanged;
             // 
@@ -987,7 +990,7 @@
             resources.ApplyResources(tabPage2, "tabPage2");
             tabPage2.BackColor = System.Drawing.SystemColors.Control;
             tabPage2.Controls.Add(label15);
-            tabPage2.Controls.Add(buttonCalcBSE);
+            tabPage2.Controls.Add(buttonSimulateBSE);
             tabPage2.Controls.Add(label13);
             tabPage2.Controls.Add(checkBoxDrawAxesInStereonet);
             tabPage2.Controls.Add(label14);
@@ -1066,7 +1069,7 @@
             resources.ApplyResources(groupBoxLatticePlanes, "groupBoxLatticePlanes");
             groupBoxLatticePlanes.Controls.Add(radioButtonKikuchiThresholdOfLength);
             groupBoxLatticePlanes.Controls.Add(radioButtonKikuchiThresholdOfStructureFactor);
-            groupBoxLatticePlanes.Controls.Add(numericBoxKikuchiThreadSholdOfStructureFactor);
+            groupBoxLatticePlanes.Controls.Add(numericBoxKikuchiThresholdOfStructureFactor);
             groupBoxLatticePlanes.Controls.Add(numericBoxKikuchiThresholdOfLength);
             groupBoxLatticePlanes.Name = "groupBoxLatticePlanes";
             groupBoxLatticePlanes.TabStop = false;
@@ -1530,7 +1533,7 @@
         private System.Windows.Forms.Button buttonViewFromZ;
         private System.Windows.Forms.Button buttonFromX;
         private System.Windows.Forms.Button buttonViewFromSurfaceNormal;
-        private System.Windows.Forms.Button buttonCalcBSE;
+        private System.Windows.Forms.Button buttonSimulateBSE;
         private System.Windows.Forms.Button buttonFitNistElasticSampler;
         private PoleFigureControl2 poleFigureControl;
         private System.Windows.Forms.CheckBox checkBoxDrawAxesInStereonet;
@@ -1551,7 +1554,7 @@
         private System.Windows.Forms.RadioButton radioButtonKikuchiThresholdOfStructureFactor;
         private System.Windows.Forms.CheckBox checkBoxKikuchiLine_Kinematical;
         private System.Windows.Forms.RadioButton radioButtonKikuchiThresholdOfLength;
-        private NumericBox numericBoxKikuchiThreadSholdOfStructureFactor;
+        private NumericBox numericBoxKikuchiThresholdOfStructureFactor;
         private NumericBox numericBoxKikuchiThresholdOfLength;
         private System.Windows.Forms.Label label1;
         private NumericBox numericBoxThicknessStep;

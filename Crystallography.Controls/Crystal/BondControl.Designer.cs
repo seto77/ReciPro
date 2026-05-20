@@ -151,7 +151,7 @@
             numericBoxPolyhedronAlpha.ShowUpDown = true;
             numericBoxPolyhedronAlpha.SkipEventDuringInput = false;
             numericBoxPolyhedronAlpha.SmartIncrement = true;
-            numericBoxPolyhedronAlpha.ThonsandsSeparator = true;
+            numericBoxPolyhedronAlpha.ThousandsSeparator = true;
             numericBoxPolyhedronAlpha.UpDown_Increment = 0.1D;
             numericBoxPolyhedronAlpha.Value = 0.7D;
             // 
@@ -185,7 +185,7 @@
             numericBoxEdgeWidth.ShowUpDown = true;
             numericBoxEdgeWidth.SkipEventDuringInput = false;
             numericBoxEdgeWidth.SmartIncrement = true;
-            numericBoxEdgeWidth.ThonsandsSeparator = true;
+            numericBoxEdgeWidth.ThousandsSeparator = true;
             numericBoxEdgeWidth.UpDown_Increment = 0.1D;
             numericBoxEdgeWidth.Value = 0.7D;
             // 
@@ -243,7 +243,7 @@
             numericBoxBondAlpha.ShowUpDown = true;
             numericBoxBondAlpha.SkipEventDuringInput = false;
             numericBoxBondAlpha.SmartIncrement = true;
-            numericBoxBondAlpha.ThonsandsSeparator = true;
+            numericBoxBondAlpha.ThousandsSeparator = true;
             numericBoxBondAlpha.UpDown_Increment = 0.1D;
             numericBoxBondAlpha.Value = 0.7D;
             // 
@@ -261,7 +261,7 @@
             numericBoxBondRadius.ShowUpDown = true;
             numericBoxBondRadius.SkipEventDuringInput = false;
             numericBoxBondRadius.SmartIncrement = true;
-            numericBoxBondRadius.ThonsandsSeparator = true;
+            numericBoxBondRadius.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxBondRadius, resources.GetString("numericBoxBondRadius.ToolTip"));
             numericBoxBondRadius.UpDown_Increment = 0.02D;
             numericBoxBondRadius.Value = 0.1D;
@@ -280,7 +280,7 @@
             numericBoxBondMaxLength.ShowUpDown = true;
             numericBoxBondMaxLength.SkipEventDuringInput = false;
             numericBoxBondMaxLength.SmartIncrement = true;
-            numericBoxBondMaxLength.ThonsandsSeparator = true;
+            numericBoxBondMaxLength.ThousandsSeparator = true;
             numericBoxBondMaxLength.UpDown_Increment = 0.1D;
             numericBoxBondMaxLength.Value = 1.6D;
             // 
@@ -298,7 +298,7 @@
             numericBoxBondMinLength.ShowUpDown = true;
             numericBoxBondMinLength.SkipEventDuringInput = false;
             numericBoxBondMinLength.SmartIncrement = true;
-            numericBoxBondMinLength.ThonsandsSeparator = true;
+            numericBoxBondMinLength.ThousandsSeparator = true;
             numericBoxBondMinLength.UpDown_Increment = 0.1D;
             numericBoxBondMinLength.Value = 0.1D;
             // 

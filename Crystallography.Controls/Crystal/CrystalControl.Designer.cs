@@ -107,7 +107,7 @@
             label102 = new System.Windows.Forms.Label();
             tabPagePolycrystalline = new System.Windows.Forms.TabPage();
             contextMenuStripPoleFigure = new System.Windows.Forms.ContextMenuStrip(components);
-            readToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            loadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             exportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             asCTFFilecomatibleToCHANNEL5FileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -385,7 +385,7 @@
             numericBoxDensity.TabStop = false;
             numericBoxDensity.TextBoxBackColor = System.Drawing.SystemColors.Control;
             numericBoxDensity.TextFontSize = 9F;
-            numericBoxDensity.ThonsandsSeparator = true;
+            numericBoxDensity.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxDensity, resources.GetString("numericBoxDensity.ToolTip"));
             // 
             // flowLayoutPanelSymmetryActions
@@ -934,15 +934,15 @@
             // 
             resources.ApplyResources(contextMenuStripPoleFigure, "contextMenuStripPoleFigure");
             contextMenuStripPoleFigure.ImageScalingSize = new System.Drawing.Size(20, 20);
-            contextMenuStripPoleFigure.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { readToolStripMenuItem, saveToolStripMenuItem, exportToolStripMenuItem });
+            contextMenuStripPoleFigure.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { loadToolStripMenuItem, saveToolStripMenuItem, exportToolStripMenuItem });
             contextMenuStripPoleFigure.Name = "contextMenuStripPoleFigure";
             toolTip.SetToolTip(contextMenuStripPoleFigure, resources.GetString("contextMenuStripPoleFigure.ToolTip"));
             // 
-            // readToolStripMenuItem
+            // loadToolStripMenuItem
             // 
-            resources.ApplyResources(readToolStripMenuItem, "readToolStripMenuItem");
-            readToolStripMenuItem.Name = "readToolStripMenuItem";
-            readToolStripMenuItem.Click += readToolStripMenuItem_Click;
+            resources.ApplyResources(loadToolStripMenuItem, "loadToolStripMenuItem");
+            loadToolStripMenuItem.Name = "loadToolStripMenuItem";
+            loadToolStripMenuItem.Click += loadToolStripMenuItem_Click;
             // 
             // saveToolStripMenuItem
             // 
@@ -1144,7 +1144,7 @@
             numericBoxZnumber.TabStop = false;
             numericBoxZnumber.TextBoxBackColor = System.Drawing.SystemColors.Control;
             numericBoxZnumber.TextFontSize = 9F;
-            numericBoxZnumber.ThonsandsSeparator = true;
+            numericBoxZnumber.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxZnumber, resources.GetString("numericBoxZnumber.ToolTip1"));
             // 
             // contextMenuStrip
@@ -1418,7 +1418,7 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelRandomOrientationActions;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelRandomOrientationSettings;
         private System.Windows.Forms.ContextMenuStrip contextMenuStripPoleFigure;
-        private System.Windows.Forms.ToolStripMenuItem readToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem loadToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exportToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem asCTFFilecomatibleToCHANNEL5FileToolStripMenuItem;

@@ -57,7 +57,7 @@ namespace ReciPro
             this.numericBoxShockedPlaneH = new Crystallography.Controls.NumericBox();
             this.numericBoxShockedPlaneK = new Crystallography.Controls.NumericBox();
             this.numericBoxShockedPlaneL = new Crystallography.Controls.NumericBox();
-            this.buttonExecute = new System.Windows.Forms.Button();
+            this.buttonSimulate = new System.Windows.Forms.Button();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripProgressBar = new System.Windows.Forms.ToolStripProgressBar();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
@@ -179,7 +179,7 @@ namespace ReciPro
             this.numericBoxCompressedThetaB.SmartIncrement = true;
             this.numericBoxCompressedThetaB.TabIndex = 2;
                         this.numericBoxCompressedThetaB.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
-                        this.numericBoxCompressedThetaB.ThonsandsSeparator = true;
+                        this.numericBoxCompressedThetaB.ThousandsSeparator = true;
             this.numericBoxCompressedThetaB.ToolTip = "";
             this.numericBoxCompressedThetaB.UpDown_Increment = 1D;
             this.numericBoxCompressedThetaB.Value = 0.5D;
@@ -207,7 +207,7 @@ namespace ReciPro
             this.numericBoxCompressedOmega.SmartIncrement = true;
             this.numericBoxCompressedOmega.TabIndex = 2;
                         this.numericBoxCompressedOmega.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
-                        this.numericBoxCompressedOmega.ThonsandsSeparator = true;
+                        this.numericBoxCompressedOmega.ThousandsSeparator = true;
             this.numericBoxCompressedOmega.ToolTip = "";
             this.numericBoxCompressedOmega.UpDown_Increment = 1D;
             this.numericBoxCompressedOmega.Value = 0.01D;
@@ -235,7 +235,7 @@ namespace ReciPro
             this.numericBoxCompressedThetaA.SmartIncrement = true;
             this.numericBoxCompressedThetaA.TabIndex = 2;
                         this.numericBoxCompressedThetaA.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
-                        this.numericBoxCompressedThetaA.ThonsandsSeparator = true;
+                        this.numericBoxCompressedThetaA.ThousandsSeparator = true;
             this.numericBoxCompressedThetaA.ToolTip = "";
             this.numericBoxCompressedThetaA.UpDown_Increment = 1D;
                                     // 
@@ -262,7 +262,7 @@ namespace ReciPro
             this.numericBoxCompressedOmegaSigma.SmartIncrement = true;
             this.numericBoxCompressedOmegaSigma.TabIndex = 2;
                         this.numericBoxCompressedOmegaSigma.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
-                        this.numericBoxCompressedOmegaSigma.ThonsandsSeparator = true;
+                        this.numericBoxCompressedOmegaSigma.ThousandsSeparator = true;
             this.numericBoxCompressedOmegaSigma.ToolTip = "";
             this.numericBoxCompressedOmegaSigma.UpDown_Increment = 1D;
             this.numericBoxCompressedOmegaSigma.Value = 0.01D;
@@ -303,7 +303,7 @@ namespace ReciPro
             this.numericBoxReleasedThetaB.SmartIncrement = true;
             this.numericBoxReleasedThetaB.TabIndex = 2;
                         this.numericBoxReleasedThetaB.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
-                        this.numericBoxReleasedThetaB.ThonsandsSeparator = true;
+                        this.numericBoxReleasedThetaB.ThousandsSeparator = true;
             this.numericBoxReleasedThetaB.ToolTip = "";
             this.numericBoxReleasedThetaB.UpDown_Increment = 1D;
             this.numericBoxReleasedThetaB.Value = 0.5D;
@@ -331,7 +331,7 @@ namespace ReciPro
             this.numericBoxReleasedOmegaSigma.SmartIncrement = true;
             this.numericBoxReleasedOmegaSigma.TabIndex = 2;
                         this.numericBoxReleasedOmegaSigma.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
-                        this.numericBoxReleasedOmegaSigma.ThonsandsSeparator = true;
+                        this.numericBoxReleasedOmegaSigma.ThousandsSeparator = true;
             this.numericBoxReleasedOmegaSigma.ToolTip = "";
             this.numericBoxReleasedOmegaSigma.UpDown_Increment = 1D;
             this.numericBoxReleasedOmegaSigma.Value = 0.5D;
@@ -359,7 +359,7 @@ namespace ReciPro
             this.numericBoxReleasedOmega.SmartIncrement = true;
             this.numericBoxReleasedOmega.TabIndex = 2;
                         this.numericBoxReleasedOmega.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
-                        this.numericBoxReleasedOmega.ThonsandsSeparator = true;
+                        this.numericBoxReleasedOmega.ThousandsSeparator = true;
             this.numericBoxReleasedOmega.ToolTip = "";
             this.numericBoxReleasedOmega.UpDown_Increment = 1D;
             this.numericBoxReleasedOmega.Value = 0.5D;
@@ -387,7 +387,7 @@ namespace ReciPro
             this.numericBoxReleasedThetaA.SmartIncrement = true;
             this.numericBoxReleasedThetaA.TabIndex = 2;
                         this.numericBoxReleasedThetaA.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
-                        this.numericBoxReleasedThetaA.ThonsandsSeparator = true;
+                        this.numericBoxReleasedThetaA.ThousandsSeparator = true;
             this.numericBoxReleasedThetaA.ToolTip = "";
             this.numericBoxReleasedThetaA.UpDown_Increment = 1D;
                                     // 
@@ -425,7 +425,7 @@ namespace ReciPro
             this.numericBoxEOS_K0.SmartIncrement = true;
             this.numericBoxEOS_K0.TabIndex = 2;
                         this.numericBoxEOS_K0.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
-                        this.numericBoxEOS_K0.ThonsandsSeparator = true;
+                        this.numericBoxEOS_K0.ThousandsSeparator = true;
             this.numericBoxEOS_K0.ToolTip = "";
             this.numericBoxEOS_K0.UpDown_Increment = 1D;
             this.numericBoxEOS_K0.Value = 37.12D;
@@ -452,7 +452,7 @@ namespace ReciPro
             this.numericBoxEOS_Kprime.SmartIncrement = true;
             this.numericBoxEOS_Kprime.TabIndex = 2;
                         this.numericBoxEOS_Kprime.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
-                        this.numericBoxEOS_Kprime.ThonsandsSeparator = true;
+                        this.numericBoxEOS_Kprime.ThousandsSeparator = true;
             this.numericBoxEOS_Kprime.ToolTip = "";
             this.numericBoxEOS_Kprime.UpDown_Increment = 1D;
             this.numericBoxEOS_Kprime.Value = 5.99D;
@@ -493,7 +493,7 @@ namespace ReciPro
             this.numericBoxShockedPlaneH.SmartIncrement = false;
             this.numericBoxShockedPlaneH.TabIndex = 2;
                         this.numericBoxShockedPlaneH.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
-                        this.numericBoxShockedPlaneH.ThonsandsSeparator = true;
+                        this.numericBoxShockedPlaneH.ThousandsSeparator = true;
             this.numericBoxShockedPlaneH.ToolTip = "";
             this.numericBoxShockedPlaneH.UpDown_Increment = 1D;
             this.numericBoxShockedPlaneH.Value = 1D;
@@ -521,7 +521,7 @@ namespace ReciPro
             this.numericBoxShockedPlaneK.SmartIncrement = false;
             this.numericBoxShockedPlaneK.TabIndex = 2;
                         this.numericBoxShockedPlaneK.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
-                        this.numericBoxShockedPlaneK.ThonsandsSeparator = true;
+                        this.numericBoxShockedPlaneK.ThousandsSeparator = true;
             this.numericBoxShockedPlaneK.ToolTip = "";
             this.numericBoxShockedPlaneK.UpDown_Increment = 1D;
                                     // 
@@ -549,20 +549,22 @@ namespace ReciPro
             this.numericBoxShockedPlaneL.SmartIncrement = false;
             this.numericBoxShockedPlaneL.TabIndex = 2;
                         this.numericBoxShockedPlaneL.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
-                        this.numericBoxShockedPlaneL.ThonsandsSeparator = true;
+                        this.numericBoxShockedPlaneL.ThousandsSeparator = true;
             this.numericBoxShockedPlaneL.ToolTip = "";
             this.numericBoxShockedPlaneL.UpDown_Increment = 1D;
                                     // 
-            // buttonExecute
+            // buttonSimulate
             // 
-            this.buttonExecute.AutoSize = true;
-            this.buttonExecute.Location = new System.Drawing.Point(472, 740);
-            this.buttonExecute.Name = "buttonExecute";
-            this.buttonExecute.Size = new System.Drawing.Size(75, 27);
-            this.buttonExecute.TabIndex = 7;
-            this.buttonExecute.Text = "Execute";
-            this.buttonExecute.UseVisualStyleBackColor = true;
-            this.buttonExecute.Click += new System.EventHandler(this.buttonExecute_Click);
+            this.buttonSimulate.AutoSize = true;
+            this.buttonSimulate.Location = new System.Drawing.Point(472, 740);
+            this.buttonSimulate.Name = "buttonSimulate";
+            this.buttonSimulate.Size = new System.Drawing.Size(75, 27);
+            this.buttonSimulate.TabIndex = 7;
+            this.buttonSimulate.Text = "Simulate"; // 260520Cl: Execute→Simulate (用語統一)
+            this.buttonSimulate.BackColor = System.Drawing.Color.SteelBlue; // 260520Cl: 主要アクション色を統一
+            this.buttonSimulate.ForeColor = System.Drawing.Color.White;
+            this.buttonSimulate.UseVisualStyleBackColor = false;
+            this.buttonSimulate.Click += new System.EventHandler(this.buttonSimulate_Click);
             // 
             // statusStrip1
             // 
@@ -656,7 +658,7 @@ namespace ReciPro
             this.numericBoxUp.SmartIncrement = true;
             this.numericBoxUp.TabIndex = 2;
                         this.numericBoxUp.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
-                        this.numericBoxUp.ThonsandsSeparator = true;
+                        this.numericBoxUp.ThousandsSeparator = true;
             this.numericBoxUp.ToolTip = "";
             this.numericBoxUp.UpDown_Increment = 1D;
             this.numericBoxUp.Value = 5.5D;
@@ -707,7 +709,7 @@ namespace ReciPro
             this.numericBoxUr.SmartIncrement = true;
             this.numericBoxUr.TabIndex = 2;
                         this.numericBoxUr.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
-                        this.numericBoxUr.ThonsandsSeparator = true;
+                        this.numericBoxUr.ThousandsSeparator = true;
             this.numericBoxUr.ToolTip = "";
             this.numericBoxUr.UpDown_Increment = 1D;
             this.numericBoxUr.Value = 5.5D;
@@ -760,7 +762,7 @@ namespace ReciPro
             this.numericBoxMassAbsorption.SmartIncrement = true;
             this.numericBoxMassAbsorption.TabIndex = 2;
                         this.numericBoxMassAbsorption.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
-                        this.numericBoxMassAbsorption.ThonsandsSeparator = true;
+                        this.numericBoxMassAbsorption.ThousandsSeparator = true;
             this.numericBoxMassAbsorption.ToolTip = "";
             this.numericBoxMassAbsorption.UpDown_Increment = 1D;
             this.numericBoxMassAbsorption.Value = 19.02D;
@@ -897,7 +899,7 @@ namespace ReciPro
             this.numericBoxOmegaStep.SmartIncrement = true;
             this.numericBoxOmegaStep.TabIndex = 2;
                         this.numericBoxOmegaStep.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
-                        this.numericBoxOmegaStep.ThonsandsSeparator = true;
+                        this.numericBoxOmegaStep.ThousandsSeparator = true;
             this.numericBoxOmegaStep.ToolTip = "";
             this.numericBoxOmegaStep.UpDown_Increment = 0.1D;
             this.numericBoxOmegaStep.Value = 0.1D;
@@ -926,7 +928,7 @@ namespace ReciPro
             this.numericBoxOmegaTimes.SmartIncrement = true;
             this.numericBoxOmegaTimes.TabIndex = 2;
                         this.numericBoxOmegaTimes.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
-                        this.numericBoxOmegaTimes.ThonsandsSeparator = true;
+                        this.numericBoxOmegaTimes.ThousandsSeparator = true;
             this.numericBoxOmegaTimes.ToolTip = "";
             this.numericBoxOmegaTimes.UpDown_Increment = 0.1D;
             this.numericBoxOmegaTimes.Value = 10D;
@@ -965,7 +967,7 @@ namespace ReciPro
             this.numericBoxDivisionOfRotationAngle.SmartIncrement = true;
             this.numericBoxDivisionOfRotationAngle.TabIndex = 2;
                         this.numericBoxDivisionOfRotationAngle.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
-                        this.numericBoxDivisionOfRotationAngle.ThonsandsSeparator = true;
+                        this.numericBoxDivisionOfRotationAngle.ThousandsSeparator = true;
             this.numericBoxDivisionOfRotationAngle.ToolTip = "";
             this.numericBoxDivisionOfRotationAngle.UpDown_Increment = 1D;
             this.numericBoxDivisionOfRotationAngle.Value = 10D;
@@ -993,7 +995,7 @@ namespace ReciPro
             this.numericBoxDivisionOfRotationAxis.SmartIncrement = true;
             this.numericBoxDivisionOfRotationAxis.TabIndex = 2;
                         this.numericBoxDivisionOfRotationAxis.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
-                        this.numericBoxDivisionOfRotationAxis.ThonsandsSeparator = true;
+                        this.numericBoxDivisionOfRotationAxis.ThousandsSeparator = true;
             this.numericBoxDivisionOfRotationAxis.ToolTip = "";
             this.numericBoxDivisionOfRotationAxis.UpDown_Increment = 1D;
             this.numericBoxDivisionOfRotationAxis.Value = 60D;
@@ -1193,7 +1195,7 @@ namespace ReciPro
             this.numericBoxSlipPlaneH.SmartIncrement = false;
             this.numericBoxSlipPlaneH.TabIndex = 2;
                         this.numericBoxSlipPlaneH.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
-                        this.numericBoxSlipPlaneH.ThonsandsSeparator = true;
+                        this.numericBoxSlipPlaneH.ThousandsSeparator = true;
             this.numericBoxSlipPlaneH.ToolTip = "";
             this.numericBoxSlipPlaneH.UpDown_Increment = 1D;
             this.numericBoxSlipPlaneH.Value = 1D;
@@ -1221,7 +1223,7 @@ namespace ReciPro
             this.numericBoxSlipPlaneK.SmartIncrement = false;
             this.numericBoxSlipPlaneK.TabIndex = 2;
                         this.numericBoxSlipPlaneK.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
-                        this.numericBoxSlipPlaneK.ThonsandsSeparator = true;
+                        this.numericBoxSlipPlaneK.ThousandsSeparator = true;
             this.numericBoxSlipPlaneK.ToolTip = "";
             this.numericBoxSlipPlaneK.UpDown_Increment = 1D;
                                     // 
@@ -1249,7 +1251,7 @@ namespace ReciPro
             this.numericBoxSlipPlaneL.SmartIncrement = false;
             this.numericBoxSlipPlaneL.TabIndex = 2;
                         this.numericBoxSlipPlaneL.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
-                        this.numericBoxSlipPlaneL.ThonsandsSeparator = true;
+                        this.numericBoxSlipPlaneL.ThousandsSeparator = true;
             this.numericBoxSlipPlaneL.ToolTip = "";
             this.numericBoxSlipPlaneL.UpDown_Increment = 1D;
                                     // 
@@ -1273,7 +1275,7 @@ namespace ReciPro
             this.Controls.Add(this.groupBoxOutputParameters);
             this.Controls.Add(this.groupBoxSampleParameters);
             this.Controls.Add(this.statusStrip1);
-            this.Controls.Add(this.buttonExecute);
+            this.Controls.Add(this.buttonSimulate);
             this.Controls.Add(this.checkBoxSkipDrawing);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -1341,7 +1343,7 @@ namespace ReciPro
         private Crystallography.Controls.NumericBox numericBoxReleasedOmega;
         private System.Windows.Forms.GroupBox groupBoxEOS;
         private System.Windows.Forms.GroupBox groupBoxShockedPlane;
-        private System.Windows.Forms.Button buttonExecute;
+        private System.Windows.Forms.Button buttonSimulate;
         private Crystallography.Controls.NumericBox numericBoxUp;
         private Crystallography.Controls.NumericBox numericBoxUr;
         private System.Windows.Forms.StatusStrip statusStrip1;

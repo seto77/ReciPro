@@ -388,7 +388,7 @@
     <value>113, 21</value>
   </data>
   <data name="groupBoxWaveProperty.Text" xml:space="preserve">
-    <value>Wave Properties</value>
+    <value>Wave properties</value>
   </data>
   <data name="&gt;&gt;radioButtonDspacingUnitNm.Type" xml:space="preserve">
     <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -967,7 +967,7 @@
     <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="groupBoxOption.Text" xml:space="preserve">
-    <value>Unit Options</value>
+    <value>Unit options</value>
   </data>
   <data name="numericBoxTofAngle.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -1042,7 +1042,7 @@
     <value>flowLayoutPanelDspacing</value>
   </data>
   <data name="groupBoxColor.Text" xml:space="preserve">
-    <value>Color Mode</value>
+    <value>Color mode</value>
   </data>
   <data name="numericBoxTwoTheta.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
@@ -1273,7 +1273,7 @@
     <value>flowLayoutPanelTwoTheta</value>
   </data>
   <data name="groupBoxHorizontalAxis.Text" xml:space="preserve">
-    <value>Horizontal Axis</value>
+    <value>Horizontal axis</value>
   </data>
   <data name="radioButtonDspacingUnitAng.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>

@@ -31,7 +31,7 @@
             buttonClearPicture = new System.Windows.Forms.Button();
             trackBarMaxInt = new System.Windows.Forms.TrackBar();
             buttonRot90 = new System.Windows.Forms.Button();
-            buttonReadPicture = new System.Windows.Forms.Button();
+            buttonLoadPicture = new System.Windows.Forms.Button();
             trackBarMinInt = new System.Windows.Forms.TrackBar();
             trackBarPictureOpacity1 = new System.Windows.Forms.TrackBar();
             label2 = new System.Windows.Forms.Label();
@@ -84,7 +84,7 @@
             groupBoxDetectorAndOverlappedImage.Controls.Add(buttonClearPicture);
             groupBoxDetectorAndOverlappedImage.Controls.Add(trackBarMaxInt);
             groupBoxDetectorAndOverlappedImage.Controls.Add(buttonRot90);
-            groupBoxDetectorAndOverlappedImage.Controls.Add(buttonReadPicture);
+            groupBoxDetectorAndOverlappedImage.Controls.Add(buttonLoadPicture);
             groupBoxDetectorAndOverlappedImage.Controls.Add(trackBarMinInt);
             groupBoxDetectorAndOverlappedImage.Controls.Add(trackBarPictureOpacity1);
             groupBoxDetectorAndOverlappedImage.Controls.Add(label2);
@@ -163,18 +163,18 @@
             buttonRot90.UseVisualStyleBackColor = true;
             buttonRot90.Click += buttonRot90_Click;
             // 
-            // buttonReadPicture
+            // buttonLoadPicture
             // 
-            buttonReadPicture.AutoSize = true;
-            buttonReadPicture.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            buttonReadPicture.Location = new System.Drawing.Point(454, 19);
-            buttonReadPicture.Margin = new System.Windows.Forms.Padding(1, 4, 1, 4);
-            buttonReadPicture.Name = "buttonReadPicture";
-            buttonReadPicture.Size = new System.Drawing.Size(48, 27);
-            buttonReadPicture.TabIndex = 88;
-            buttonReadPicture.Text = "Read";
-            buttonReadPicture.UseVisualStyleBackColor = true;
-            buttonReadPicture.Click += buttonReadPicture_Click;
+            buttonLoadPicture.AutoSize = true;
+            buttonLoadPicture.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            buttonLoadPicture.Location = new System.Drawing.Point(454, 19);
+            buttonLoadPicture.Margin = new System.Windows.Forms.Padding(1, 4, 1, 4);
+            buttonLoadPicture.Name = "buttonLoadPicture";
+            buttonLoadPicture.Size = new System.Drawing.Size(48, 27);
+            buttonLoadPicture.TabIndex = 88;
+            buttonLoadPicture.Text = "Load"; // 260520Cl: Read→Load (用語統一)
+            buttonLoadPicture.UseVisualStyleBackColor = true;
+            buttonLoadPicture.Click += buttonLoadPicture_Click;
             // 
             // trackBarMinInt
             // 
@@ -327,7 +327,7 @@
             numericBoxFootY.SmartIncrement = true;
             numericBoxFootY.TabIndex = 0;
             numericBoxFootY.TextFont = new System.Drawing.Font("Yu Gothic UI", 9F);
-            numericBoxFootY.ThonsandsSeparator = true;
+            numericBoxFootY.ThousandsSeparator = true;
             numericBoxFootY.Value = 512D;
             // 
             // numericBoxPixelWidth
@@ -349,7 +349,7 @@
             numericBoxPixelWidth.SmartIncrement = true;
             numericBoxPixelWidth.TabIndex = 0;
             numericBoxPixelWidth.TextFont = new System.Drawing.Font("Yu Gothic UI", 9F);
-            numericBoxPixelWidth.ThonsandsSeparator = true;
+            numericBoxPixelWidth.ThousandsSeparator = true;
             numericBoxPixelWidth.Value = 1024D;
             // 
             // numericBoxFootX
@@ -371,7 +371,7 @@
             numericBoxFootX.SmartIncrement = true;
             numericBoxFootX.TabIndex = 0;
             numericBoxFootX.TextFont = new System.Drawing.Font("Yu Gothic UI", 9F);
-            numericBoxFootX.ThonsandsSeparator = true;
+            numericBoxFootX.ThousandsSeparator = true;
             numericBoxFootX.Value = 512D;
             // 
             // numericBoxPixelHeight
@@ -393,7 +393,7 @@
             numericBoxPixelHeight.SmartIncrement = true;
             numericBoxPixelHeight.TabIndex = 0;
             numericBoxPixelHeight.TextFont = new System.Drawing.Font("Yu Gothic UI", 9F);
-            numericBoxPixelHeight.ThonsandsSeparator = true;
+            numericBoxPixelHeight.ThousandsSeparator = true;
             numericBoxPixelHeight.Value = 1024D;
             // 
             // numericBoxPixelSize
@@ -415,7 +415,7 @@
             numericBoxPixelSize.SmartIncrement = true;
             numericBoxPixelSize.TabIndex = 0;
             numericBoxPixelSize.TextFont = new System.Drawing.Font("Yu Gothic UI", 9F);
-            numericBoxPixelSize.ThonsandsSeparator = true;
+            numericBoxPixelSize.ThousandsSeparator = true;
             numericBoxPixelSize.Value = 0.1D;
             // 
             // checkBoxDetectorSizePosition
@@ -451,7 +451,7 @@
             numericBoxCameraLength2.SmartIncrement = true;
             numericBoxCameraLength2.TabIndex = 2;
             numericBoxCameraLength2.TextFont = new System.Drawing.Font("Yu Gothic UI", 9F);
-            numericBoxCameraLength2.ThonsandsSeparator = true;
+            numericBoxCameraLength2.ThousandsSeparator = true;
             numericBoxCameraLength2.Value = 1000D;
             numericBoxCameraLength2.ValueChanged += numericBoxCameraLength2_ValueChanged;
             // 
@@ -476,7 +476,7 @@
             numericBoxTau.SmartIncrement = true;
             numericBoxTau.TabIndex = 2;
             numericBoxTau.TextFont = new System.Drawing.Font("Yu Gothic UI", 9F);
-            numericBoxTau.ThonsandsSeparator = true;
+            numericBoxTau.ThousandsSeparator = true;
             numericBoxTau.ValueChanged += numericBoxTau_ValueChanged;
             // 
             // checkBoxSchematicDiagram
@@ -539,7 +539,7 @@
             numericBoxPhi.SmartIncrement = true;
             numericBoxPhi.TabIndex = 2;
             numericBoxPhi.TextFont = new System.Drawing.Font("Yu Gothic UI", 9F);
-            numericBoxPhi.ThonsandsSeparator = true;
+            numericBoxPhi.ThousandsSeparator = true;
             numericBoxPhi.ValueChanged += numericBoxTau_ValueChanged;
             // 
             // panelSchematicDiagram
@@ -626,7 +626,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button buttonClearPicture;
-        private System.Windows.Forms.Button buttonReadPicture;
+        private System.Windows.Forms.Button buttonLoadPicture;
         private System.Windows.Forms.Button buttonRot90;
         private System.Windows.Forms.Label label4;
         public System.Windows.Forms.TextBox textBoxFileName;

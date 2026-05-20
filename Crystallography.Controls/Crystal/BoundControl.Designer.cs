@@ -212,7 +212,7 @@
             numericBoxMaximumDistanceFromOrigin.RadianValue = 0.26179938779914941D;
             numericBoxMaximumDistanceFromOrigin.ShowUpDown = true;
             numericBoxMaximumDistanceFromOrigin.SkipEventDuringInput = false;
-            numericBoxMaximumDistanceFromOrigin.ThonsandsSeparator = true;
+            numericBoxMaximumDistanceFromOrigin.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxMaximumDistanceFromOrigin, resources.GetString("numericBoxMaximumDistanceFromOrigin.ToolTip1"));
             numericBoxMaximumDistanceFromOrigin.Value = 15D;
             numericBoxMaximumDistanceFromOrigin.ValueChanged += numericBoxMaximumDistanceFromOrigin_ValueChanged;
@@ -267,7 +267,7 @@
             numericBoxTranslation.Name = "numericBoxTranslation";
             numericBoxTranslation.ShowUpDown = true;
             numericBoxTranslation.SkipEventDuringInput = false;
-            numericBoxTranslation.ThonsandsSeparator = true;
+            numericBoxTranslation.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxTranslation, resources.GetString("numericBoxTranslation.ToolTip1"));
             numericBoxTranslation.UpDown_Increment = 0.1D;
             numericBoxTranslation.ValueChanged += numericBoxDistanceD_ValueChanged;
@@ -313,7 +313,7 @@
             numericBoxDistanceD.RadianValue = 0.017453292519943295D;
             numericBoxDistanceD.ShowUpDown = true;
             numericBoxDistanceD.SkipEventDuringInput = false;
-            numericBoxDistanceD.ThonsandsSeparator = true;
+            numericBoxDistanceD.ThousandsSeparator = true;
             numericBoxDistanceD.UpDown_Increment = 0.1D;
             numericBoxDistanceD.Value = 1D;
             numericBoxDistanceD.ValueChanged += numericBoxDistanceD_ValueChanged;
@@ -329,7 +329,7 @@
             numericBoxDistance.Minimum = -100D;
             numericBoxDistance.Name = "numericBoxDistance";
             numericBoxDistance.SkipEventDuringInput = false;
-            numericBoxDistance.ThonsandsSeparator = true;
+            numericBoxDistance.ThousandsSeparator = true;
             numericBoxDistance.ValueChanged += numericBoxDistance_ValueChanged;
             // 
             // panel2

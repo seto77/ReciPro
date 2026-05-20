@@ -229,4 +229,53 @@
   <data name="buttonResetExpEuler.ToolTip" xml:space="preserve">
     <value>すべての角度をゼロにリセット</value>
   </data>
+  <!-- 260520Cl 追加: 未翻訳項目を日本語化 + フォントを Yu Gothic UI に override -->
+  <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>回転ジオメトリ</value>
+  </data>
+  <data name="label2.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>回転行列</value>
+  </data>
+  <data name="buttonViewAlongBeam.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="buttonViewAlongBeam.Text" xml:space="preserve">
+    <value>ビーム軸方向</value>
+  </data>
+  <data name="buttonViewIsometric.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="buttonViewIsometric.Text" xml:space="preserve">
+    <value>アイソメトリック</value>
+  </data>
+  <data name="checkBoxLink.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt, style=Bold</value>
+  </data>
+  <data name="checkBoxLink.Text" xml:space="preserve">
+    <value>リンク</value>
+  </data>
+  <data name="label5.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="label5.Text" xml:space="preserve">
+    <value>第1軸</value>
+  </data>
+  <data name="checkBoxEnable2nd.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="checkBoxEnable2nd.Text" xml:space="preserve">
+    <value>第2軸</value>
+  </data>
+  <data name="checkBoxEnable3rd.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="checkBoxEnable3rd.Text" xml:space="preserve">
+    <value>第3軸</value>
+  </data>
 </root>

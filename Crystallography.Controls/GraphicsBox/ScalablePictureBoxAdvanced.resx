@@ -737,7 +737,7 @@
     <value>0, 4, 0, 0</value>
   </data>
   <data name="numericBoxDustScratchesRadius.FooterText" xml:space="preserve">
-    <value>pix</value>
+    <value>px</value>
   </data>
   <data name="numericBoxDustScratchesRadius.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9.75pt</value>
@@ -905,7 +905,7 @@
     <value>0, 4, 0, 0</value>
   </data>
   <data name="numericBoxGaussianFWHM.FooterText" xml:space="preserve">
-    <value>pix</value>
+    <value>px</value>
   </data>
   <data name="numericBoxGaussianFWHM.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9.75pt</value>

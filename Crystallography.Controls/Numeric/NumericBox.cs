@@ -352,8 +352,8 @@ public partial class NumericBox : UserControlBase
     /// <summary>3桁区切りでカンマを表示させる</summary>
     [DefaultValue(false)]
     [Category("Appearance properties")]
-    public bool ThonsandsSeparator { set { thonsandsSeparator = value; textBox.Text = GetString(); } get => thonsandsSeparator; }
-    private bool thonsandsSeparator = false;
+    public bool ThousandsSeparator { set { thousandsSeparator = value; textBox.Text = GetString(); } get => thousandsSeparator; } // 260520Cl: typo fix (ThonsandsSeparator → ThousandsSeparator)
+    private bool thousandsSeparator = false;
 
     /// <summary>小数点以下の桁数</summary>
     [DefaultValue(-1)]

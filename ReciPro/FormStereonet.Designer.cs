@@ -730,11 +730,9 @@ namespace ReciPro
             // 
             resources.ApplyResources(indexControlAxis, "indexControlAxis");
             indexControlAxis.BoxWidth = 40;
-            indexControlAxis.Bracket = IndexControl.BracketEnum.Round;
             indexControlAxis.LabelVisible = false;
             indexControlAxis.Mode = IndexControl.ModeEnum.Axis;
             indexControlAxis.Name = "indexControlAxis";
-            indexControlAxis.SubScript = "";
             toolTip.SetToolTip(indexControlAxis, resources.GetString("indexControlAxis.ToolTip"));
             indexControlAxis.Values = ((int, int, int))resources.GetObject("indexControlAxis.Values");
             // 
@@ -764,9 +762,7 @@ namespace ReciPro
             // 
             resources.ApplyResources(indexControlCirclePlane1, "indexControlCirclePlane1");
             indexControlCirclePlane1.BoxWidth = 42;
-            indexControlCirclePlane1.Bracket = IndexControl.BracketEnum.Round;
             indexControlCirclePlane1.LabelVisible = false;
-            indexControlCirclePlane1.Mode = IndexControl.ModeEnum.Plane;
             indexControlCirclePlane1.Name = "indexControlCirclePlane1";
             indexControlCirclePlane1.SubScript = "1";
             toolTip.SetToolTip(indexControlCirclePlane1, resources.GetString("indexControlCirclePlane1.ToolTip"));
@@ -782,10 +778,8 @@ namespace ReciPro
             // indexControlCirclePlane2
             // 
             resources.ApplyResources(indexControlCirclePlane2, "indexControlCirclePlane2");
-            indexControlCirclePlane2.BoxWidth = 40;
-            indexControlCirclePlane2.Bracket = IndexControl.BracketEnum.Round;
+            indexControlCirclePlane2.BoxWidth = 42;
             indexControlCirclePlane2.LabelVisible = false;
-            indexControlCirclePlane2.Mode = IndexControl.ModeEnum.Plane;
             indexControlCirclePlane2.Name = "indexControlCirclePlane2";
             indexControlCirclePlane2.SubScript = "2";
             toolTip.SetToolTip(indexControlCirclePlane2, resources.GetString("indexControlCirclePlane2.ToolTip"));
@@ -872,9 +866,11 @@ namespace ReciPro
             // buttonYusaModeStart
             // 
             resources.ApplyResources(buttonYusaModeStart, "buttonYusaModeStart");
+            buttonYusaModeStart.BackColor = System.Drawing.Color.SteelBlue; // 260520Cl: 主要アクション色を統一
+            buttonYusaModeStart.ForeColor = System.Drawing.Color.White;
             buttonYusaModeStart.Name = "buttonYusaModeStart";
             toolTip.SetToolTip(buttonYusaModeStart, resources.GetString("buttonYusaModeStart.ToolTip"));
-            buttonYusaModeStart.UseVisualStyleBackColor = true;
+            buttonYusaModeStart.UseVisualStyleBackColor = false;
             buttonYusaModeStart.Click += buttonYusaModeStart_Click;
             // 
             // radioButtonRotationalScan
@@ -937,7 +933,7 @@ namespace ReciPro
             numericBoxRxSpeed.SkipEventDuringInput = false;
             numericBoxRxSpeed.SmartIncrement = true;
             numericBoxRxSpeed.TextFontSize = 8F;
-            numericBoxRxSpeed.ThonsandsSeparator = true;
+            numericBoxRxSpeed.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxRxSpeed, resources.GetString("numericBoxRxSpeed.ToolTip1"));
             numericBoxRxSpeed.Value = 18D;
             // 
@@ -952,7 +948,7 @@ namespace ReciPro
             numericBoxRySpeed.SkipEventDuringInput = false;
             numericBoxRySpeed.SmartIncrement = true;
             numericBoxRySpeed.TextFontSize = 8F;
-            numericBoxRySpeed.ThonsandsSeparator = true;
+            numericBoxRySpeed.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxRySpeed, resources.GetString("numericBoxRySpeed.ToolTip1"));
             numericBoxRySpeed.Value = 1D;
             // 
@@ -967,7 +963,7 @@ namespace ReciPro
             numericBoxRzSpeed.SkipEventDuringInput = false;
             numericBoxRzSpeed.SmartIncrement = true;
             numericBoxRzSpeed.TextFontSize = 8F;
-            numericBoxRzSpeed.ThonsandsSeparator = true;
+            numericBoxRzSpeed.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxRzSpeed, resources.GetString("numericBoxRzSpeed.ToolTip1"));
             numericBoxRzSpeed.Value = 2D;
             // 
@@ -982,7 +978,7 @@ namespace ReciPro
             numericBoxTotalTime.SkipEventDuringInput = false;
             numericBoxTotalTime.SmartIncrement = true;
             numericBoxTotalTime.TextFontSize = 8F;
-            numericBoxTotalTime.ThonsandsSeparator = true;
+            numericBoxTotalTime.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxTotalTime, resources.GetString("numericBoxTotalTime.ToolTip1"));
             numericBoxTotalTime.Value = 100D;
             // 
@@ -997,7 +993,7 @@ namespace ReciPro
             numericBoxAngularSpeed.SkipEventDuringInput = false;
             numericBoxAngularSpeed.SmartIncrement = true;
             numericBoxAngularSpeed.TextFontSize = 8F;
-            numericBoxAngularSpeed.ThonsandsSeparator = true;
+            numericBoxAngularSpeed.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxAngularSpeed, resources.GetString("numericBoxAngularSpeed.ToolTip1"));
             numericBoxAngularSpeed.Value = 30D;
             // 
@@ -1012,7 +1008,7 @@ namespace ReciPro
             numericBoxRyStep.SkipEventDuringInput = false;
             numericBoxRyStep.SmartIncrement = true;
             numericBoxRyStep.TextFontSize = 8F;
-            numericBoxRyStep.ThonsandsSeparator = true;
+            numericBoxRyStep.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxRyStep, resources.GetString("numericBoxRyStep.ToolTip1"));
             numericBoxRyStep.Value = 0.2D;
             // 
@@ -1027,7 +1023,7 @@ namespace ReciPro
             numericBoxRadialAngle.SkipEventDuringInput = false;
             numericBoxRadialAngle.SmartIncrement = true;
             numericBoxRadialAngle.TextFontSize = 8F;
-            numericBoxRadialAngle.ThonsandsSeparator = true;
+            numericBoxRadialAngle.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxRadialAngle, resources.GetString("numericBoxRadialAngle.ToolTip1"));
             numericBoxRadialAngle.Value = 8D;
             // 
@@ -1042,7 +1038,7 @@ namespace ReciPro
             numericBoxRyOscillation.SkipEventDuringInput = false;
             numericBoxRyOscillation.SmartIncrement = true;
             numericBoxRyOscillation.TextFontSize = 8F;
-            numericBoxRyOscillation.ThonsandsSeparator = true;
+            numericBoxRyOscillation.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxRyOscillation, resources.GetString("numericBoxRyOscillation.ToolTip1"));
             numericBoxRyOscillation.Value = 8D;
             // 
@@ -1057,7 +1053,7 @@ namespace ReciPro
             numericBoxRzOscillation.SkipEventDuringInput = false;
             numericBoxRzOscillation.SmartIncrement = true;
             numericBoxRzOscillation.TextFontSize = 8F;
-            numericBoxRzOscillation.ThonsandsSeparator = true;
+            numericBoxRzOscillation.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxRzOscillation, resources.GetString("numericBoxRzOscillation.ToolTip1"));
             numericBoxRzOscillation.Value = 8D;
             // 
@@ -1357,12 +1353,9 @@ namespace ReciPro
             // 
             resources.ApplyResources(indexControlDrawing, "indexControlDrawing");
             indexControlDrawing.BoxWidth = 42;
-            indexControlDrawing.Bracket = IndexControl.BracketEnum.Round;
-            indexControlDrawing.LabelVisible = true;
             indexControlDrawing.Mode = IndexControl.ModeEnum.Axis;
             indexControlDrawing.Name = "indexControlDrawing";
             indexControlDrawing.PlusMinus = true;
-            indexControlDrawing.SubScript = "";
             toolTip.SetToolTip(indexControlDrawing, resources.GetString("indexControlDrawing.ToolTip"));
             indexControlDrawing.Values = ((int, int, int))resources.GetObject("indexControlDrawing.Values");
             indexControlDrawing.ValueChanged += numericUpDown_ValueChanged;

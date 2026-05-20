@@ -1082,7 +1082,7 @@ Axis</value>
     <value>47</value>
   </data>
   <data name="label2.Text" xml:space="preserve">
-    <value>Acceleration Voltage</value>
+    <value>Acc. Voltage</value>
   </data>
   <data name="&gt;&gt;label2.Name" xml:space="preserve">
     <value>label2</value>
@@ -1139,7 +1139,7 @@ Axis</value>
     <value>64</value>
   </data>
   <data name="groupBoxTEMCondition.Text" xml:space="preserve">
-    <value>TEM Condition</value>
+    <value>TEM condition</value>
   </data>
   <data name="&gt;&gt;groupBoxTEMCondition.Name" xml:space="preserve">
     <value>groupBoxTEMCondition</value>
@@ -1502,7 +1502,7 @@ Axis</value>
     <value>65</value>
   </data>
   <data name="groupBoxPhoto1HolderCondition.Text" xml:space="preserve">
-    <value>Holder Conditions</value>
+    <value>Holder conditions</value>
   </data>
   <data name="&gt;&gt;groupBoxPhoto1HolderCondition.Name" xml:space="preserve">
     <value>groupBoxPhoto1HolderCondition</value>
@@ -2868,7 +2868,7 @@ Axis</value>
     <value>65</value>
   </data>
   <data name="groupBoxPhoto2HolderCondition.Text" xml:space="preserve">
-    <value>Holder Conditions</value>
+    <value>Holder conditions</value>
   </data>
   <data name="&gt;&gt;groupBoxPhoto2HolderCondition.Name" xml:space="preserve">
     <value>groupBoxPhoto2HolderCondition</value>
@@ -4012,7 +4012,7 @@ Axis</value>
     <value>65</value>
   </data>
   <data name="groupBoxPhoto3HolderCondition.Text" xml:space="preserve">
-    <value>Holder Conditions</value>
+    <value>Holder conditions</value>
   </data>
   <data name="&gt;&gt;groupBoxPhoto3HolderCondition.Name" xml:space="preserve">
     <value>groupBoxPhoto3HolderCondition</value>

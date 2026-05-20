@@ -65,7 +65,7 @@
             numericBox.Size = new System.Drawing.Size(84, 25);
             numericBox.SmartIncrement = true;
             numericBox.TabIndex = 2;
-            numericBox.ThonsandsSeparator = true;
+            numericBox.ThousandsSeparator = true;
             numericBox.ValueChanged += numericBox_ValueChanged;
             // 
             // splitContainer

@@ -478,7 +478,7 @@
             numericBoxTwoTheta.Name = "numericBoxTwoTheta";
             numericBoxTwoTheta.SkipEventDuringInput = false;
             numericBoxTwoTheta.SmartIncrement = true;
-            numericBoxTwoTheta.ThonsandsSeparator = true;
+            numericBoxTwoTheta.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxTwoTheta, resources.GetString("numericBoxTwoTheta.ToolTip"));
             numericBoxTwoTheta.ValueChanged += numericBoxTwoTheta_ValueChanged;
             // 
@@ -520,7 +520,7 @@
             numericBoxTofAngle.RadianValue = 1.5707963267948966D;
             numericBoxTofAngle.SkipEventDuringInput = false;
             numericBoxTofAngle.SmartIncrement = true;
-            numericBoxTofAngle.ThonsandsSeparator = true;
+            numericBoxTofAngle.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxTofAngle, resources.GetString("numericBoxTofAngle.ToolTip"));
             numericBoxTofAngle.Value = 90D;
             numericBoxTofAngle.ValueChanged += numericBoxTwoTheta_ValueChanged;
@@ -535,7 +535,7 @@
             numericBoxTofLength.RadianValue = 0.73303828583761843D;
             numericBoxTofLength.SkipEventDuringInput = false;
             numericBoxTofLength.SmartIncrement = true;
-            numericBoxTofLength.ThonsandsSeparator = true;
+            numericBoxTofLength.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxTofLength, resources.GetString("numericBoxTofLength.ToolTip"));
             numericBoxTofLength.Value = 42D;
             numericBoxTofLength.ValueChanged += numericBoxTwoTheta_ValueChanged;

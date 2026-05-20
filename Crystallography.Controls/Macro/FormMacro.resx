@@ -837,46 +837,46 @@
   <data name="flowLayoutPanel1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="buttonCancelStep.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+  <data name="buttonStopMacro.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
   </data>
-  <data name="buttonCancelStep.AutoSize" type="System.Boolean, mscorlib">
+  <data name="buttonStopMacro.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="buttonCancelStep.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+  <data name="buttonStopMacro.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
-  <data name="buttonCancelStep.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="buttonStopMacro.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9.75pt</value>
   </data>
-  <data name="buttonCancelStep.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="buttonStopMacro.Location" type="System.Drawing.Point, System.Drawing">
     <value>299, 0</value>
   </data>
-  <data name="buttonCancelStep.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="buttonStopMacro.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 0, 3, 0</value>
   </data>
-  <data name="buttonCancelStep.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="buttonStopMacro.Size" type="System.Drawing.Size, System.Drawing">
     <value>51, 27</value>
   </data>
-  <data name="buttonCancelStep.TabIndex" type="System.Int32, mscorlib">
+  <data name="buttonStopMacro.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
-  <data name="buttonCancelStep.Text" xml:space="preserve">
-    <value>Abort</value>
+  <data name="buttonStopMacro.Text" xml:space="preserve">
+    <value>Stop</value>
   </data>
-  <data name="buttonCancelStep.Visible" type="System.Boolean, mscorlib">
+  <data name="buttonStopMacro.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="&gt;&gt;buttonCancelStep.Name" xml:space="preserve">
-    <value>buttonCancelStep</value>
+  <data name="&gt;&gt;buttonStopMacro.Name" xml:space="preserve">
+    <value>buttonStopMacro</value>
   </data>
-  <data name="&gt;&gt;buttonCancelStep.Type" xml:space="preserve">
+  <data name="&gt;&gt;buttonStopMacro.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;buttonCancelStep.Parent" xml:space="preserve">
+  <data name="&gt;&gt;buttonStopMacro.Parent" xml:space="preserve">
     <value>flowLayoutPanel1</value>
   </data>
-  <data name="&gt;&gt;buttonCancelStep.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;buttonStopMacro.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <data name="buttonRunMacro.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
@@ -1146,11 +1146,11 @@
   <metadata name="menuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>272, 17</value>
   </metadata>
-  <data name="readToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="loadToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>127, 22</value>
   </data>
-  <data name="readToolStripMenuItem.Text" xml:space="preserve">
-    <value>Read file</value>
+  <data name="loadToolStripMenuItem.Text" xml:space="preserve">
+    <value>Load file</value>
   </data>
   <data name="saveToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>127, 22</value>
@@ -1275,10 +1275,10 @@
   <data name="&gt;&gt;fileToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;readToolStripMenuItem.Name" xml:space="preserve">
-    <value>readToolStripMenuItem</value>
+  <data name="&gt;&gt;loadToolStripMenuItem.Name" xml:space="preserve">
+    <value>loadToolStripMenuItem</value>
   </data>
-  <data name="&gt;&gt;readToolStripMenuItem.Type" xml:space="preserve">
+  <data name="&gt;&gt;loadToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;saveToolStripMenuItem.Name" xml:space="preserve">

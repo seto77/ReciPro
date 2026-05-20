@@ -172,7 +172,7 @@ partial class SearchCrystalControl
         numericBoxCellGamma.Name = "numericBoxCellGamma";
         numericBoxCellGamma.SkipEventDuringInput = false;
         numericBoxCellGamma.SmartIncrement = true;
-        numericBoxCellGamma.ThonsandsSeparator = true;
+        numericBoxCellGamma.ThousandsSeparator = true;
         numericBoxCellGamma.KeyDown += textBoxSearchName_KeyDown;
         // 
         // numericBoxCellAngleErr
@@ -186,7 +186,7 @@ partial class SearchCrystalControl
         numericBoxCellAngleErr.RadianValue = 0.052359877559829883D;
         numericBoxCellAngleErr.ShowUpDown = true;
         numericBoxCellAngleErr.SkipEventDuringInput = false;
-        numericBoxCellAngleErr.ThonsandsSeparator = true;
+        numericBoxCellAngleErr.ThousandsSeparator = true;
         numericBoxCellAngleErr.UpDown_Increment = 0.5D;
         numericBoxCellAngleErr.Value = 3D;
         numericBoxCellAngleErr.KeyDown += textBoxSearchName_KeyDown;
@@ -202,7 +202,7 @@ partial class SearchCrystalControl
         numericBoxCellLengthErr.RadianValue = 0.052359877559829883D;
         numericBoxCellLengthErr.ShowUpDown = true;
         numericBoxCellLengthErr.SkipEventDuringInput = false;
-        numericBoxCellLengthErr.ThonsandsSeparator = true;
+        numericBoxCellLengthErr.ThousandsSeparator = true;
         numericBoxCellLengthErr.UpDown_Increment = 0.5D;
         numericBoxCellLengthErr.Value = 3D;
         numericBoxCellLengthErr.KeyDown += textBoxSearchName_KeyDown;
@@ -216,7 +216,7 @@ partial class SearchCrystalControl
         numericBoxCellC.Name = "numericBoxCellC";
         numericBoxCellC.SkipEventDuringInput = false;
         numericBoxCellC.SmartIncrement = true;
-        numericBoxCellC.ThonsandsSeparator = true;
+        numericBoxCellC.ThousandsSeparator = true;
         numericBoxCellC.KeyDown += textBoxSearchName_KeyDown;
         // 
         // numericBoxCellBeta
@@ -228,7 +228,7 @@ partial class SearchCrystalControl
         numericBoxCellBeta.Name = "numericBoxCellBeta";
         numericBoxCellBeta.SkipEventDuringInput = false;
         numericBoxCellBeta.SmartIncrement = true;
-        numericBoxCellBeta.ThonsandsSeparator = true;
+        numericBoxCellBeta.ThousandsSeparator = true;
         numericBoxCellBeta.KeyDown += textBoxSearchName_KeyDown;
         // 
         // numericBoxCellAlpha
@@ -240,7 +240,7 @@ partial class SearchCrystalControl
         numericBoxCellAlpha.Name = "numericBoxCellAlpha";
         numericBoxCellAlpha.SkipEventDuringInput = false;
         numericBoxCellAlpha.SmartIncrement = true;
-        numericBoxCellAlpha.ThonsandsSeparator = true;
+        numericBoxCellAlpha.ThousandsSeparator = true;
         numericBoxCellAlpha.KeyDown += textBoxSearchName_KeyDown;
         // 
         // numericBoxCellB
@@ -252,7 +252,7 @@ partial class SearchCrystalControl
         numericBoxCellB.Name = "numericBoxCellB";
         numericBoxCellB.SkipEventDuringInput = false;
         numericBoxCellB.SmartIncrement = true;
-        numericBoxCellB.ThonsandsSeparator = true;
+        numericBoxCellB.ThousandsSeparator = true;
         numericBoxCellB.KeyDown += textBoxSearchName_KeyDown;
         // 
         // numericBoxCellA
@@ -264,7 +264,7 @@ partial class SearchCrystalControl
         numericBoxCellA.Name = "numericBoxCellA";
         numericBoxCellA.SkipEventDuringInput = false;
         numericBoxCellA.SmartIncrement = true;
-        numericBoxCellA.ThonsandsSeparator = true;
+        numericBoxCellA.ThousandsSeparator = true;
         numericBoxCellA.KeyDown += textBoxSearchName_KeyDown;
         // 
         // checkBoxDspacing
@@ -309,7 +309,7 @@ partial class SearchCrystalControl
         numericBoxD3Err.RadianValue = 0.052359877559829883D;
         numericBoxD3Err.ShowUpDown = true;
         numericBoxD3Err.SkipEventDuringInput = false;
-        numericBoxD3Err.ThonsandsSeparator = true;
+        numericBoxD3Err.ThousandsSeparator = true;
         numericBoxD3Err.UpDown_Increment = 0.5D;
         numericBoxD3Err.Value = 3D;
         numericBoxD3Err.KeyDown += textBoxSearchName_KeyDown;
@@ -325,7 +325,7 @@ partial class SearchCrystalControl
         numericBoxD2Err.RadianValue = 0.052359877559829883D;
         numericBoxD2Err.ShowUpDown = true;
         numericBoxD2Err.SkipEventDuringInput = false;
-        numericBoxD2Err.ThonsandsSeparator = true;
+        numericBoxD2Err.ThousandsSeparator = true;
         numericBoxD2Err.UpDown_Increment = 0.5D;
         numericBoxD2Err.Value = 3D;
         numericBoxD2Err.KeyDown += textBoxSearchName_KeyDown;
@@ -341,7 +341,7 @@ partial class SearchCrystalControl
         numericBoxD1Err.RadianValue = 0.052359877559829883D;
         numericBoxD1Err.ShowUpDown = true;
         numericBoxD1Err.SkipEventDuringInput = false;
-        numericBoxD1Err.ThonsandsSeparator = true;
+        numericBoxD1Err.ThousandsSeparator = true;
         numericBoxD1Err.UpDown_Increment = 0.5D;
         numericBoxD1Err.Value = 3D;
         numericBoxD1Err.KeyDown += textBoxSearchName_KeyDown;
@@ -372,7 +372,7 @@ partial class SearchCrystalControl
         numericBoxD3.Name = "numericBoxD3";
         numericBoxD3.SkipEventDuringInput = false;
         numericBoxD3.SmartIncrement = true;
-        numericBoxD3.ThonsandsSeparator = true;
+        numericBoxD3.ThousandsSeparator = true;
         numericBoxD3.KeyDown += textBoxSearchName_KeyDown;
         // 
         // numericBoxD2
@@ -385,7 +385,7 @@ partial class SearchCrystalControl
         numericBoxD2.Name = "numericBoxD2";
         numericBoxD2.SkipEventDuringInput = false;
         numericBoxD2.SmartIncrement = true;
-        numericBoxD2.ThonsandsSeparator = true;
+        numericBoxD2.ThousandsSeparator = true;
         numericBoxD2.KeyDown += textBoxSearchName_KeyDown;
         // 
         // numericBoxD1
@@ -398,7 +398,7 @@ partial class SearchCrystalControl
         numericBoxD1.Name = "numericBoxD1";
         numericBoxD1.SkipEventDuringInput = false;
         numericBoxD1.SmartIncrement = true;
-        numericBoxD1.ThonsandsSeparator = true;
+        numericBoxD1.ThousandsSeparator = true;
         numericBoxD1.KeyDown += textBoxSearchName_KeyDown;
         // 
         // checkBoxIgnoreScatteringFactor
@@ -433,7 +433,7 @@ partial class SearchCrystalControl
         numericBoxDensity.Name = "numericBoxDensity";
         numericBoxDensity.SkipEventDuringInput = false;
         numericBoxDensity.SmartIncrement = true;
-        numericBoxDensity.ThonsandsSeparator = true;
+        numericBoxDensity.ThousandsSeparator = true;
         numericBoxDensity.KeyDown += textBoxSearchName_KeyDown;
         // 
         // numericBoxDensityErr
@@ -447,7 +447,7 @@ partial class SearchCrystalControl
         numericBoxDensityErr.RadianValue = 0.052359877559829883D;
         numericBoxDensityErr.ShowUpDown = true;
         numericBoxDensityErr.SkipEventDuringInput = false;
-        numericBoxDensityErr.ThonsandsSeparator = true;
+        numericBoxDensityErr.ThousandsSeparator = true;
         numericBoxDensityErr.UpDown_Increment = 0.5D;
         numericBoxDensityErr.Value = 3D;
         numericBoxDensityErr.KeyDown += textBoxSearchName_KeyDown;
@@ -462,7 +462,8 @@ partial class SearchCrystalControl
         // buttonSearch
         // 
         resources.ApplyResources(buttonSearch, "buttonSearch");
-        buttonSearch.BackColor = System.Drawing.Color.Chocolate;
+        //buttonSearch.BackColor = System.Drawing.Color.Chocolate; // 260520Cl: orange→SteelBlue (主要アクション色を統一)
+        buttonSearch.BackColor = System.Drawing.Color.SteelBlue;
         buttonSearch.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
         buttonSearch.Name = "buttonSearch";
         buttonSearch.UseVisualStyleBackColor = false;

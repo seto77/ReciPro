@@ -346,4 +346,35 @@
   <data name="checkBoxEnableArrow.Text" xml:space="preserve">
     <value>矢印キーを有効化</value>
   </data>
+  <!-- 260520Cl 追加: 未翻訳項目を日本語化 + フォントを Yu Gothic UI に override -->
+  <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>TEMホルダーシミュレーション</value>
+  </data>
+  <data name="groupBoxHolderAngles.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt, style=Bold</value>
+  </data>
+  <data name="groupBoxHolderAngles.Text" xml:space="preserve">
+    <value>ホルダー角度</value>
+  </data>
+  <data name="groupBoxLink.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt, style=Bold</value>
+  </data>
+  <data name="groupBoxLink.Text" xml:space="preserve">
+    <value>リンク</value>
+  </data>
+  <data name="groupBoxStereonetProperties.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt, style=Bold</value>
+  </data>
+  <data name="groupBoxStereonetProperties.Text" xml:space="preserve">
+    <value>ステレオネット設定</value>
+  </data>
+  <data name="groupBoxTEMSettings.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt, style=Bold</value>
+  </data>
+  <data name="groupBoxTEMSettings.Text" xml:space="preserve">
+    <value>TEM 設定</value>
+  </data>
 </root>

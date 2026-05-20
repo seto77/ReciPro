@@ -27,16 +27,6 @@
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AtomControl));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            //260516Cl resx で dataGridView.Font を切替えるため、Font だけを設定していた cellStyle2-10 は廃止 (列のセルが dataGridView.Font を継承する)
-            //System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            //System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            //System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            //System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            //System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            //System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            //System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            //System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            //System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             radioButtonIsotoropy = new System.Windows.Forms.RadioButton();
             radioButtonAnisotropy = new System.Windows.Forms.RadioButton();
             flowLayoutPanelIso = new System.Windows.Forms.FlowLayoutPanel();
@@ -136,8 +126,7 @@
             buttonAtomUp = new System.Windows.Forms.Button();
             buttonAtomDown = new System.Windows.Forms.Button();
             buttonDeleteAtom = new System.Windows.Forms.Button();
-            // dataGridView = new System.Windows.Forms.DataGridView(); // 260518Cl 旧実装: DPI変更時に列幅が追従しない
-            dataGridView = new DpiAwareDataGridView(); // 260518Cl
+            dataGridView = new DpiAwareDataGridView();
             enabledColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             labelDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             elementDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -202,19 +191,21 @@
             numericBoxBiso.RoundErrorAccuracy = 8;
             numericBoxBiso.SkipEventDuringInput = false;
             numericBoxBiso.SmartIncrement = true;
-            numericBoxBiso.ThonsandsSeparator = true;
+            numericBoxBiso.TextFontSize = 9F;
+            numericBoxBiso.ThousandsSeparator = true;
             // 
             // numericBoxBisoerr
             // 
             numericBoxBisoerr.BackColor = System.Drawing.SystemColors.Control;
-            resources.ApplyResources(numericBoxBisoerr, "numericBoxBisoerr");
             numericBoxBisoerr.FooterBackColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(numericBoxBisoerr, "numericBoxBisoerr");
             numericBoxBisoerr.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxBisoerr.Name = "numericBoxBisoerr";
             numericBoxBisoerr.RoundErrorAccuracy = 8;
             numericBoxBisoerr.SkipEventDuringInput = false;
             numericBoxBisoerr.SmartIncrement = true;
-            numericBoxBisoerr.ThonsandsSeparator = true;
+            numericBoxBisoerr.TextFontSize = 9F;
+            numericBoxBisoerr.ThousandsSeparator = true;
             // 
             // labelX_
             // 
@@ -299,13 +290,14 @@
             // 
             numericBoxOccerr.BackColor = System.Drawing.SystemColors.Control;
             numericBoxOccerr.DecimalPlaces = 6;
-            resources.ApplyResources(numericBoxOccerr, "numericBoxOccerr");
             numericBoxOccerr.FooterBackColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(numericBoxOccerr, "numericBoxOccerr");
             numericBoxOccerr.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxOccerr.Name = "numericBoxOccerr";
             numericBoxOccerr.SkipEventDuringInput = false;
             numericBoxOccerr.SmartIncrement = true;
-            numericBoxOccerr.ThonsandsSeparator = true;
+            numericBoxOccerr.TextFontSize = 9F;
+            numericBoxOccerr.ThousandsSeparator = true;
             numericBoxOccerr.TrimEndZero = true;
             // 
             // numericBoxOcc
@@ -319,7 +311,8 @@
             numericBoxOcc.ShowFraction = true;
             numericBoxOcc.SkipEventDuringInput = false;
             numericBoxOcc.SmartIncrement = true;
-            numericBoxOcc.ThonsandsSeparator = true;
+            numericBoxOcc.TextFontSize = 9F;
+            numericBoxOcc.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxOcc, resources.GetString("numericBoxOcc.ToolTip1"));
             numericBoxOcc.TrimEndZero = true;
             // 
@@ -334,33 +327,36 @@
             numericBoxZ.ShowFraction = true;
             numericBoxZ.SkipEventDuringInput = false;
             numericBoxZ.SmartIncrement = true;
-            numericBoxZ.ThonsandsSeparator = true;
+            numericBoxZ.TextFontSize = 9F;
+            numericBoxZ.ThousandsSeparator = true;
             numericBoxZ.TrimEndZero = true;
             // 
             // numericBoxYerr
             // 
             numericBoxYerr.BackColor = System.Drawing.SystemColors.Control;
             numericBoxYerr.DecimalPlaces = 6;
-            resources.ApplyResources(numericBoxYerr, "numericBoxYerr");
             numericBoxYerr.FooterBackColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(numericBoxYerr, "numericBoxYerr");
             numericBoxYerr.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxYerr.Name = "numericBoxYerr";
             numericBoxYerr.SkipEventDuringInput = false;
             numericBoxYerr.SmartIncrement = true;
-            numericBoxYerr.ThonsandsSeparator = true;
+            numericBoxYerr.TextFontSize = 9F;
+            numericBoxYerr.ThousandsSeparator = true;
             numericBoxYerr.TrimEndZero = true;
             // 
             // numericBoxXerr
             // 
             numericBoxXerr.BackColor = System.Drawing.SystemColors.Control;
             numericBoxXerr.DecimalPlaces = 6;
-            resources.ApplyResources(numericBoxXerr, "numericBoxXerr");
             numericBoxXerr.FooterBackColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(numericBoxXerr, "numericBoxXerr");
             numericBoxXerr.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxXerr.Name = "numericBoxXerr";
             numericBoxXerr.SkipEventDuringInput = false;
             numericBoxXerr.SmartIncrement = true;
-            numericBoxXerr.ThonsandsSeparator = true;
+            numericBoxXerr.TextFontSize = 9F;
+            numericBoxXerr.ThousandsSeparator = true;
             numericBoxXerr.TrimEndZero = true;
             // 
             // numericBoxY
@@ -374,7 +370,8 @@
             numericBoxY.ShowFraction = true;
             numericBoxY.SkipEventDuringInput = false;
             numericBoxY.SmartIncrement = true;
-            numericBoxY.ThonsandsSeparator = true;
+            numericBoxY.TextFontSize = 9F;
+            numericBoxY.ThousandsSeparator = true;
             numericBoxY.TrimEndZero = true;
             // 
             // numericBoxX
@@ -388,20 +385,22 @@
             numericBoxX.ShowFraction = true;
             numericBoxX.SkipEventDuringInput = false;
             numericBoxX.SmartIncrement = true;
-            numericBoxX.ThonsandsSeparator = true;
+            numericBoxX.TextFontSize = 9F;
+            numericBoxX.ThousandsSeparator = true;
             numericBoxX.TrimEndZero = true;
             // 
             // numericBoxZerr
             // 
             numericBoxZerr.BackColor = System.Drawing.SystemColors.Control;
             numericBoxZerr.DecimalPlaces = 6;
-            resources.ApplyResources(numericBoxZerr, "numericBoxZerr");
             numericBoxZerr.FooterBackColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(numericBoxZerr, "numericBoxZerr");
             numericBoxZerr.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxZerr.Name = "numericBoxZerr";
             numericBoxZerr.SkipEventDuringInput = false;
             numericBoxZerr.SmartIncrement = true;
-            numericBoxZerr.ThonsandsSeparator = true;
+            numericBoxZerr.TextFontSize = 9F;
+            numericBoxZerr.ThousandsSeparator = true;
             numericBoxZerr.TrimEndZero = true;
             // 
             // tabPageOriginShift
@@ -563,7 +562,8 @@
             numericBoxOriginShiftZ.ShowFraction = true;
             numericBoxOriginShiftZ.SkipEventDuringInput = false;
             numericBoxOriginShiftZ.SmartIncrement = true;
-            numericBoxOriginShiftZ.ThonsandsSeparator = true;
+            numericBoxOriginShiftZ.TextFontSize = 9F;
+            numericBoxOriginShiftZ.ThousandsSeparator = true;
             // 
             // numericBoxOriginShiftY
             // 
@@ -578,7 +578,8 @@
             numericBoxOriginShiftY.ShowFraction = true;
             numericBoxOriginShiftY.SkipEventDuringInput = false;
             numericBoxOriginShiftY.SmartIncrement = true;
-            numericBoxOriginShiftY.ThonsandsSeparator = true;
+            numericBoxOriginShiftY.TextFontSize = 9F;
+            numericBoxOriginShiftY.ThousandsSeparator = true;
             // 
             // numericBoxOriginShiftX
             // 
@@ -593,7 +594,8 @@
             numericBoxOriginShiftX.ShowFraction = true;
             numericBoxOriginShiftX.SkipEventDuringInput = false;
             numericBoxOriginShiftX.SmartIncrement = true;
-            numericBoxOriginShiftX.ThonsandsSeparator = true;
+            numericBoxOriginShiftX.TextFontSize = 9F;
+            numericBoxOriginShiftX.ThousandsSeparator = true;
             // 
             // tabPageDebyeWaller
             // 
@@ -688,74 +690,80 @@
             // numericBoxB22
             // 
             numericBoxB22.BackColor = System.Drawing.SystemColors.Control;
-            resources.ApplyResources(numericBoxB22, "numericBoxB22");
             numericBoxB22.FooterBackColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(numericBoxB22, "numericBoxB22");
             numericBoxB22.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxB22.Name = "numericBoxB22";
             numericBoxB22.RoundErrorAccuracy = 8;
             numericBoxB22.SkipEventDuringInput = false;
             numericBoxB22.SmartIncrement = true;
-            numericBoxB22.ThonsandsSeparator = true;
+            numericBoxB22.TextFontSize = 9F;
+            numericBoxB22.ThousandsSeparator = true;
             // 
             // numericBoxB22err
             // 
             numericBoxB22err.BackColor = System.Drawing.SystemColors.Control;
-            resources.ApplyResources(numericBoxB22err, "numericBoxB22err");
             numericBoxB22err.FooterBackColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(numericBoxB22err, "numericBoxB22err");
             numericBoxB22err.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxB22err.Name = "numericBoxB22err";
             numericBoxB22err.RoundErrorAccuracy = 8;
             numericBoxB22err.SkipEventDuringInput = false;
             numericBoxB22err.SmartIncrement = true;
-            numericBoxB22err.ThonsandsSeparator = true;
+            numericBoxB22err.TextFontSize = 9F;
+            numericBoxB22err.ThousandsSeparator = true;
             // 
             // numericBoxB23
             // 
             numericBoxB23.BackColor = System.Drawing.SystemColors.Control;
-            resources.ApplyResources(numericBoxB23, "numericBoxB23");
             numericBoxB23.FooterBackColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(numericBoxB23, "numericBoxB23");
             numericBoxB23.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxB23.Name = "numericBoxB23";
             numericBoxB23.RoundErrorAccuracy = 8;
             numericBoxB23.SkipEventDuringInput = false;
             numericBoxB23.SmartIncrement = true;
-            numericBoxB23.ThonsandsSeparator = true;
+            numericBoxB23.TextFontSize = 9F;
+            numericBoxB23.ThousandsSeparator = true;
             // 
             // numericBoxB23err
             // 
             numericBoxB23err.BackColor = System.Drawing.SystemColors.Control;
-            resources.ApplyResources(numericBoxB23err, "numericBoxB23err");
             numericBoxB23err.FooterBackColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(numericBoxB23err, "numericBoxB23err");
             numericBoxB23err.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxB23err.Name = "numericBoxB23err";
             numericBoxB23err.RoundErrorAccuracy = 8;
             numericBoxB23err.SkipEventDuringInput = false;
             numericBoxB23err.SmartIncrement = true;
-            numericBoxB23err.ThonsandsSeparator = true;
+            numericBoxB23err.TextFontSize = 9F;
+            numericBoxB23err.ThousandsSeparator = true;
             // 
             // numericBoxB33
             // 
             numericBoxB33.BackColor = System.Drawing.SystemColors.Control;
-            resources.ApplyResources(numericBoxB33, "numericBoxB33");
             numericBoxB33.FooterBackColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(numericBoxB33, "numericBoxB33");
             numericBoxB33.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxB33.Name = "numericBoxB33";
             numericBoxB33.RoundErrorAccuracy = 8;
             numericBoxB33.SkipEventDuringInput = false;
             numericBoxB33.SmartIncrement = true;
-            numericBoxB33.ThonsandsSeparator = true;
+            numericBoxB33.TextFontSize = 9F;
+            numericBoxB33.ThousandsSeparator = true;
             // 
             // numericBoxB33err
             // 
             numericBoxB33err.BackColor = System.Drawing.SystemColors.Control;
-            resources.ApplyResources(numericBoxB33err, "numericBoxB33err");
             numericBoxB33err.FooterBackColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(numericBoxB33err, "numericBoxB33err");
             numericBoxB33err.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxB33err.Name = "numericBoxB33err";
             numericBoxB33err.RoundErrorAccuracy = 8;
             numericBoxB33err.SkipEventDuringInput = false;
             numericBoxB33err.SmartIncrement = true;
-            numericBoxB33err.ThonsandsSeparator = true;
+            numericBoxB33err.TextFontSize = 9F;
+            numericBoxB33err.ThousandsSeparator = true;
             // 
             // flowLayoutPanelAniso1
             // 
@@ -771,74 +779,80 @@
             // numericBoxB11
             // 
             numericBoxB11.BackColor = System.Drawing.SystemColors.Control;
-            resources.ApplyResources(numericBoxB11, "numericBoxB11");
             numericBoxB11.FooterBackColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(numericBoxB11, "numericBoxB11");
             numericBoxB11.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxB11.Name = "numericBoxB11";
             numericBoxB11.RoundErrorAccuracy = 8;
             numericBoxB11.SkipEventDuringInput = false;
             numericBoxB11.SmartIncrement = true;
-            numericBoxB11.ThonsandsSeparator = true;
+            numericBoxB11.TextFontSize = 9F;
+            numericBoxB11.ThousandsSeparator = true;
             // 
             // numericBoxB11err
             // 
             numericBoxB11err.BackColor = System.Drawing.SystemColors.Control;
-            resources.ApplyResources(numericBoxB11err, "numericBoxB11err");
             numericBoxB11err.FooterBackColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(numericBoxB11err, "numericBoxB11err");
             numericBoxB11err.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxB11err.Name = "numericBoxB11err";
             numericBoxB11err.RoundErrorAccuracy = 8;
             numericBoxB11err.SkipEventDuringInput = false;
             numericBoxB11err.SmartIncrement = true;
-            numericBoxB11err.ThonsandsSeparator = true;
+            numericBoxB11err.TextFontSize = 9F;
+            numericBoxB11err.ThousandsSeparator = true;
             // 
             // numericBoxB12
             // 
             numericBoxB12.BackColor = System.Drawing.SystemColors.Control;
-            resources.ApplyResources(numericBoxB12, "numericBoxB12");
             numericBoxB12.FooterBackColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(numericBoxB12, "numericBoxB12");
             numericBoxB12.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxB12.Name = "numericBoxB12";
             numericBoxB12.RoundErrorAccuracy = 8;
             numericBoxB12.SkipEventDuringInput = false;
             numericBoxB12.SmartIncrement = true;
-            numericBoxB12.ThonsandsSeparator = true;
+            numericBoxB12.TextFontSize = 9F;
+            numericBoxB12.ThousandsSeparator = true;
             // 
             // numericBoxB12err
             // 
             numericBoxB12err.BackColor = System.Drawing.SystemColors.Control;
-            resources.ApplyResources(numericBoxB12err, "numericBoxB12err");
             numericBoxB12err.FooterBackColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(numericBoxB12err, "numericBoxB12err");
             numericBoxB12err.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxB12err.Name = "numericBoxB12err";
             numericBoxB12err.RoundErrorAccuracy = 8;
             numericBoxB12err.SkipEventDuringInput = false;
             numericBoxB12err.SmartIncrement = true;
-            numericBoxB12err.ThonsandsSeparator = true;
+            numericBoxB12err.TextFontSize = 9F;
+            numericBoxB12err.ThousandsSeparator = true;
             // 
             // numericBoxB13
             // 
             numericBoxB13.BackColor = System.Drawing.SystemColors.Control;
-            resources.ApplyResources(numericBoxB13, "numericBoxB13");
             numericBoxB13.FooterBackColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(numericBoxB13, "numericBoxB13");
             numericBoxB13.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxB13.Name = "numericBoxB13";
             numericBoxB13.RoundErrorAccuracy = 8;
             numericBoxB13.SkipEventDuringInput = false;
             numericBoxB13.SmartIncrement = true;
-            numericBoxB13.ThonsandsSeparator = true;
+            numericBoxB13.TextFontSize = 9F;
+            numericBoxB13.ThousandsSeparator = true;
             // 
             // numericBoxB13err
             // 
             numericBoxB13err.BackColor = System.Drawing.SystemColors.Control;
-            resources.ApplyResources(numericBoxB13err, "numericBoxB13err");
             numericBoxB13err.FooterBackColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(numericBoxB13err, "numericBoxB13err");
             numericBoxB13err.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxB13err.Name = "numericBoxB13err";
             numericBoxB13err.RoundErrorAccuracy = 8;
             numericBoxB13err.SkipEventDuringInput = false;
             numericBoxB13err.SmartIncrement = true;
-            numericBoxB13err.ThonsandsSeparator = true;
+            numericBoxB13err.TextFontSize = 9F;
+            numericBoxB13err.ThousandsSeparator = true;
             // 
             // tabPageScatteringFactor
             // 
@@ -958,7 +972,8 @@
             numericBoxAlpha.SkipEventDuringInput = false;
             numericBoxAlpha.SmartIncrement = true;
             numericBoxAlpha.TextBoxForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            numericBoxAlpha.ThonsandsSeparator = true;
+            numericBoxAlpha.TextFontSize = 9F;
+            numericBoxAlpha.ThousandsSeparator = true;
             numericBoxAlpha.UpDown_Increment = 0.1D;
             // 
             // numericBoxEmission
@@ -975,7 +990,8 @@
             numericBoxEmission.SkipEventDuringInput = false;
             numericBoxEmission.SmartIncrement = true;
             numericBoxEmission.TextBoxForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            numericBoxEmission.ThonsandsSeparator = true;
+            numericBoxEmission.TextFontSize = 9F;
+            numericBoxEmission.ThousandsSeparator = true;
             numericBoxEmission.UpDown_Increment = 0.1D;
             // 
             // numericBoxShininess
@@ -992,7 +1008,8 @@
             numericBoxShininess.SkipEventDuringInput = false;
             numericBoxShininess.SmartIncrement = true;
             numericBoxShininess.TextBoxForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            numericBoxShininess.ThonsandsSeparator = true;
+            numericBoxShininess.TextFontSize = 9F;
+            numericBoxShininess.ThousandsSeparator = true;
             numericBoxShininess.UpDown_Increment = 0.1D;
             // 
             // numericBoxSpecular
@@ -1009,7 +1026,8 @@
             numericBoxSpecular.SkipEventDuringInput = false;
             numericBoxSpecular.SmartIncrement = true;
             numericBoxSpecular.TextBoxForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            numericBoxSpecular.ThonsandsSeparator = true;
+            numericBoxSpecular.TextFontSize = 9F;
+            numericBoxSpecular.ThousandsSeparator = true;
             numericBoxSpecular.UpDown_Increment = 0.1D;
             // 
             // numericBoxDiffusion
@@ -1026,7 +1044,8 @@
             numericBoxDiffusion.SkipEventDuringInput = false;
             numericBoxDiffusion.SmartIncrement = true;
             numericBoxDiffusion.TextBoxForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            numericBoxDiffusion.ThonsandsSeparator = true;
+            numericBoxDiffusion.TextFontSize = 9F;
+            numericBoxDiffusion.ThousandsSeparator = true;
             numericBoxDiffusion.UpDown_Increment = 0.1D;
             // 
             // numericBoxAmbient
@@ -1043,7 +1062,8 @@
             numericBoxAmbient.SkipEventDuringInput = false;
             numericBoxAmbient.SmartIncrement = true;
             numericBoxAmbient.TextBoxForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            numericBoxAmbient.ThonsandsSeparator = true;
+            numericBoxAmbient.TextFontSize = 9F;
+            numericBoxAmbient.ThousandsSeparator = true;
             numericBoxAmbient.UpDown_Increment = 0.1D;
             // 
             // checkBoxShowLabel
@@ -1094,8 +1114,9 @@
             numericBoxAtomRadius.SkipEventDuringInput = false;
             numericBoxAtomRadius.SmartIncrement = true;
             numericBoxAtomRadius.TextBoxForeColor = System.Drawing.SystemColors.ControlText;
-            numericBoxAtomRadius.ThonsandsSeparator = true;
-            toolTip.SetToolTip(numericBoxAtomRadius, resources.GetString("numericBoxAtomRadius.ToolTip"));
+            numericBoxAtomRadius.TextFontSize = 9F;
+            numericBoxAtomRadius.ThousandsSeparator = true;
+            toolTip.SetToolTip(numericBoxAtomRadius, resources.GetString("numericBoxAtomRadius.ToolTip1"));
             // 
             // colorControlAtomColor
             // 
@@ -1190,8 +1211,6 @@
             dataGridView.AutoGenerateColumns = false;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            //260516Cl resx の dataGridView.Font を継承するため Font 設定を廃止
-            //dataGridViewCellStyle1.Font = new System.Drawing.Font("BIZ UDPGothic", 8F);
             dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -1219,9 +1238,6 @@
             // labelDataGridViewTextBoxColumn
             // 
             labelDataGridViewTextBoxColumn.DataPropertyName = "Label";
-            //260516Cl resx の dataGridView.Font を継承するため列の DefaultCellStyle は設定しない
-            //dataGridViewCellStyle2.Font = new System.Drawing.Font("BIZ UDPGothic", 9F);
-            //labelDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle2;
             resources.ApplyResources(labelDataGridViewTextBoxColumn, "labelDataGridViewTextBoxColumn");
             labelDataGridViewTextBoxColumn.Name = "labelDataGridViewTextBoxColumn";
             labelDataGridViewTextBoxColumn.ReadOnly = true;
@@ -1230,9 +1246,6 @@
             // elementDataGridViewTextBoxColumn
             // 
             elementDataGridViewTextBoxColumn.DataPropertyName = "Element";
-            //260516Cl resx の dataGridView.Font を継承するため列の DefaultCellStyle は設定しない
-            //dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI Variable Text", 9F);
-            //elementDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle3;
             resources.ApplyResources(elementDataGridViewTextBoxColumn, "elementDataGridViewTextBoxColumn");
             elementDataGridViewTextBoxColumn.Name = "elementDataGridViewTextBoxColumn";
             elementDataGridViewTextBoxColumn.ReadOnly = true;
@@ -1242,9 +1255,6 @@
             // xDataGridViewTextBoxColumn
             // 
             xDataGridViewTextBoxColumn.DataPropertyName = "X";
-            //260516Cl resx の dataGridView.Font を継承するため列の DefaultCellStyle は設定しない
-            //dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI Variable Text", 9F);
-            //xDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle4;
             resources.ApplyResources(xDataGridViewTextBoxColumn, "xDataGridViewTextBoxColumn");
             xDataGridViewTextBoxColumn.Name = "xDataGridViewTextBoxColumn";
             xDataGridViewTextBoxColumn.ReadOnly = true;
@@ -1253,9 +1263,6 @@
             // yDataGridViewTextBoxColumn
             // 
             yDataGridViewTextBoxColumn.DataPropertyName = "Y";
-            //260516Cl resx の dataGridView.Font を継承するため列の DefaultCellStyle は設定しない
-            //dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI Variable Text", 9F);
-            //yDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle5;
             resources.ApplyResources(yDataGridViewTextBoxColumn, "yDataGridViewTextBoxColumn");
             yDataGridViewTextBoxColumn.Name = "yDataGridViewTextBoxColumn";
             yDataGridViewTextBoxColumn.ReadOnly = true;
@@ -1264,9 +1271,6 @@
             // zDataGridViewTextBoxColumn
             // 
             zDataGridViewTextBoxColumn.DataPropertyName = "Z";
-            //260516Cl resx の dataGridView.Font を継承するため列の DefaultCellStyle は設定しない
-            //dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI Variable Text", 9F);
-            //zDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle6;
             resources.ApplyResources(zDataGridViewTextBoxColumn, "zDataGridViewTextBoxColumn");
             zDataGridViewTextBoxColumn.Name = "zDataGridViewTextBoxColumn";
             zDataGridViewTextBoxColumn.ReadOnly = true;
@@ -1275,9 +1279,6 @@
             // occDataGridViewTextBoxColumn
             // 
             occDataGridViewTextBoxColumn.DataPropertyName = "Occ.";
-            //260516Cl resx の dataGridView.Font を継承するため列の DefaultCellStyle は設定しない
-            //dataGridViewCellStyle7.Font = new System.Drawing.Font("BIZ UDPGothic", 9F);
-            //occDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle7;
             resources.ApplyResources(occDataGridViewTextBoxColumn, "occDataGridViewTextBoxColumn");
             occDataGridViewTextBoxColumn.Name = "occDataGridViewTextBoxColumn";
             occDataGridViewTextBoxColumn.ReadOnly = true;
@@ -1286,9 +1287,6 @@
             // multiDataGridViewTextBoxColumn
             // 
             multiDataGridViewTextBoxColumn.DataPropertyName = "Multi.";
-            //260516Cl resx の dataGridView.Font を継承するため列の DefaultCellStyle は設定しない
-            //dataGridViewCellStyle8.Font = new System.Drawing.Font("BIZ UDPGothic", 9F);
-            //multiDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle8;
             resources.ApplyResources(multiDataGridViewTextBoxColumn, "multiDataGridViewTextBoxColumn");
             multiDataGridViewTextBoxColumn.Name = "multiDataGridViewTextBoxColumn";
             multiDataGridViewTextBoxColumn.ReadOnly = true;
@@ -1297,9 +1295,6 @@
             // wyckLetDataGridViewTextBoxColumn
             // 
             wyckLetDataGridViewTextBoxColumn.DataPropertyName = "Wyck. Let.";
-            //260516Cl resx の dataGridView.Font を継承するため列の DefaultCellStyle は設定しない
-            //dataGridViewCellStyle9.Font = new System.Drawing.Font("BIZ UDPGothic", 9F);
-            //wyckLetDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle9;
             resources.ApplyResources(wyckLetDataGridViewTextBoxColumn, "wyckLetDataGridViewTextBoxColumn");
             wyckLetDataGridViewTextBoxColumn.Name = "wyckLetDataGridViewTextBoxColumn";
             wyckLetDataGridViewTextBoxColumn.ReadOnly = true;
@@ -1308,9 +1303,6 @@
             // siteSymDataGridViewTextBoxColumn
             // 
             siteSymDataGridViewTextBoxColumn.DataPropertyName = "Site Sym.";
-            //260516Cl resx の dataGridView.Font を継承するため列の DefaultCellStyle は設定しない
-            //dataGridViewCellStyle10.Font = new System.Drawing.Font("BIZ UDPGothic", 9F);
-            //siteSymDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle10;
             resources.ApplyResources(siteSymDataGridViewTextBoxColumn, "siteSymDataGridViewTextBoxColumn");
             siteSymDataGridViewTextBoxColumn.Name = "siteSymDataGridViewTextBoxColumn";
             siteSymDataGridViewTextBoxColumn.ReadOnly = true;
@@ -1379,7 +1371,6 @@
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion

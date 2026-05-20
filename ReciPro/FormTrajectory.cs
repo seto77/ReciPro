@@ -68,7 +68,7 @@ public partial class FormTrajectory : FormBase
     }
     #endregion
 
-    private void buttonCaluculate_Click(object sender, EventArgs e)
+    private void buttonCalculate_Click(object sender, EventArgs e)
     {
         CalcMonteCarlo();
         DrawStatistics();
@@ -128,7 +128,8 @@ public partial class FormTrajectory : FormBase
         Parallel.For(0, Trajectories.Length, i => Trajectories[i] = monte.GetTrajectories());
         //Parallel.For(0, Trajectories.Length, i => Trajectories[i] = monte.GetTrajectoriesNative());
 
-        toolStripStatusLabel1.Text = $"{sw.ElapsedMilliseconds} msec. ellapsed for {numericBoxCalcNum.ValueInteger} trajectories.";
+        //toolStripStatusLabel1.Text = $"{sw.ElapsedMilliseconds} ms ellapsed for {numericBoxCalcNum.ValueInteger} trajectories.";
+        toolStripStatusLabel1.Text = $"{sw.ElapsedMilliseconds} ms elapsed for {numericBoxCalcNum.ValueInteger} trajectories."; // 260520Cl: typo fix (ellapsed → elapsed)
     }
     #endregion
 
@@ -264,7 +265,7 @@ public partial class FormTrajectory : FormBase
         //最大深さ分布を求めるためのテストコード
         // poleFigureControl.Vectors = BSEs.Select(e1 => new V4(rot.Mult(e1[^1].p - e1[^2].p), e1.Max(e2 => sinTilt * e2.p.Y - cosTilt * e2.p.Z))).ToArray();
 
-        toolStripStatusLabel1.Text += $"   {sw.ElapsedMilliseconds} msec. for graph drawing.";
+        toolStripStatusLabel1.Text += $"   {sw.ElapsedMilliseconds} ms for graph drawing.";
 
     }
     #endregion
@@ -362,7 +363,7 @@ public partial class FormTrajectory : FormBase
         glControlTrajectory.Refresh();
         //OpenGLここまで
 
-        toolStripStatusLabel1.Text += $"   {sw.ElapsedMilliseconds} msec. for 3D drawing.";
+        toolStripStatusLabel1.Text += $"   {sw.ElapsedMilliseconds} ms for 3D drawing.";
 
     }
     #endregion

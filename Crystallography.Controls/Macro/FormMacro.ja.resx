@@ -242,13 +242,13 @@
   <data name="flowLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
     <value>357, 28</value>
   </data>
-  <data name="buttonCancelStep.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="buttonStopMacro.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
   </data>
-  <data name="buttonCancelStep.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="buttonStopMacro.Location" type="System.Drawing.Point, System.Drawing">
     <value>304, 0</value>
   </data>
-  <data name="buttonCancelStep.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="buttonStopMacro.Size" type="System.Drawing.Size, System.Drawing">
     <value>50, 28</value>
   </data>
   <data name="buttonRunMacro.Font" type="System.Drawing.Font, System.Drawing">
@@ -284,7 +284,7 @@
   <data name="fileToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>40, 22</value>
   </data>
-  <data name="readToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="loadToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>126, 22</value>
   </data>
   <data name="saveToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">

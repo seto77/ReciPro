@@ -202,7 +202,7 @@
             numericBoxMaxU1.SmartIncrement = true;
             numericBoxMaxU1.TabIndex = 56;
             numericBoxMaxU1.TextFont = new System.Drawing.Font("Yu Gothic UI", 9F);
-            numericBoxMaxU1.ThonsandsSeparator = true;
+            numericBoxMaxU1.ThousandsSeparator = true;
             numericBoxMaxU1.Value = 6D;
             numericBoxMaxU1.ValueChanged += numericBoxMaxU1_ValueChanged;
             // 

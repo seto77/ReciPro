@@ -117,10 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="buttonExecute.Text" xml:space="preserve">
+  <data name="buttonSimulate.Text" xml:space="preserve">
     <value>開始</value>
   </data>
-  <data name="buttonExecute.ToolTip" xml:space="preserve">
+  <data name="buttonSimulate.ToolTip" xml:space="preserve">
     <value>CBEDシミュレーションを実行</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
@@ -296,7 +296,7 @@
     <value>GrowAndShrink</value>
   </data>
   <data name="numericBoxDiskResolution.FooterText" xml:space="preserve">
-    <value>mrad/pix</value>
+    <value>mrad/px</value>
   </data>
   <data name="numericBoxDiskResolution.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>

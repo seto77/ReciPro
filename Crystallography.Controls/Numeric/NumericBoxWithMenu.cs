@@ -49,7 +49,7 @@ namespace Crystallography.Controls
         }
 
         private void thousandsSeparatorToolStripMenuItem_CheckedChanged(object sender, EventArgs e)
-            => ThonsandsSeparator = thousandsSeparatorToolStripMenuItem.Checked;
+            => ThousandsSeparator = thousandsSeparatorToolStripMenuItem.Checked; // 260520Cl: typo fix (ThonsandsSeparator → ThousandsSeparator)
 
         private void toolStripMenuItemRestrictLimit_CheckedChanged(object sender, EventArgs e)
         {

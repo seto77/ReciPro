@@ -54,7 +54,7 @@
             splitContainer1 = new System.Windows.Forms.SplitContainer();
             tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            buttonCancelStep = new System.Windows.Forms.Button();
+            buttonStopMacro = new System.Windows.Forms.Button();
             buttonRunMacro = new System.Windows.Forms.Button();
             buttonNextStep = new System.Windows.Forms.Button();
             buttonStepByStep = new System.Windows.Forms.Button();
@@ -64,7 +64,7 @@
             Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             menuStrip1 = new System.Windows.Forms.MenuStrip();
             fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            readToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            loadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             statusStrip1 = new System.Windows.Forms.StatusStrip();
             statusLabelPos = new System.Windows.Forms.ToolStripStatusLabel();
@@ -298,20 +298,20 @@
             // flowLayoutPanel1
             // 
             resources.ApplyResources(flowLayoutPanel1, "flowLayoutPanel1");
-            flowLayoutPanel1.Controls.Add(buttonCancelStep);
+            flowLayoutPanel1.Controls.Add(buttonStopMacro);
             flowLayoutPanel1.Controls.Add(buttonRunMacro);
             flowLayoutPanel1.Controls.Add(buttonNextStep);
             flowLayoutPanel1.Controls.Add(buttonStepByStep);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
             // 
-            // buttonCancelStep
+            // buttonStopMacro
             // 
-            resources.ApplyResources(buttonCancelStep, "buttonCancelStep");
-            buttonCancelStep.BackColor = System.Drawing.Color.IndianRed;
-            buttonCancelStep.ForeColor = System.Drawing.Color.White;
-            buttonCancelStep.Name = "buttonCancelStep";
-            buttonCancelStep.UseVisualStyleBackColor = false;
-            buttonCancelStep.Click += buttonCancelStep_Click;
+            resources.ApplyResources(buttonStopMacro, "buttonStopMacro");
+            buttonStopMacro.BackColor = System.Drawing.Color.IndianRed;
+            buttonStopMacro.ForeColor = System.Drawing.Color.White;
+            buttonStopMacro.Name = "buttonStopMacro";
+            buttonStopMacro.UseVisualStyleBackColor = false;
+            buttonStopMacro.Click += buttonStopMacro_Click;
             // 
             // buttonRunMacro
             // 
@@ -382,15 +382,15 @@
             // 
             // fileToolStripMenuItem
             // 
-            fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { readToolStripMenuItem, saveToolStripMenuItem });
+            fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { loadToolStripMenuItem, saveToolStripMenuItem });
             resources.ApplyResources(fileToolStripMenuItem, "fileToolStripMenuItem");
             fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             // 
-            // readToolStripMenuItem
+            // loadToolStripMenuItem
             // 
-            readToolStripMenuItem.Name = "readToolStripMenuItem";
-            resources.ApplyResources(readToolStripMenuItem, "readToolStripMenuItem");
-            readToolStripMenuItem.Click += readToolStripMenuItem_Click;
+            loadToolStripMenuItem.Name = "loadToolStripMenuItem";
+            resources.ApplyResources(loadToolStripMenuItem, "loadToolStripMenuItem");
+            loadToolStripMenuItem.Click += loadToolStripMenuItem_Click;
             // 
             // saveToolStripMenuItem
             // 
@@ -465,7 +465,7 @@
 
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem readToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem loadToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
         private System.Windows.Forms.Button buttonRunMacro;
         private PyRichTextBox pyRichTextBox;
@@ -492,7 +492,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBoxMacroName;
         private System.Windows.Forms.Button buttonNextStep;
-        private System.Windows.Forms.Button buttonCancelStep;
+        private System.Windows.Forms.Button buttonStopMacro;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel4;

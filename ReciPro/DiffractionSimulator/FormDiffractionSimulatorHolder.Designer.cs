@@ -248,7 +248,7 @@
             numericBoxU.RadianValue = 0.034906585039886591D;
             numericBoxU.ShowUpDown = true;
             numericBoxU.SkipEventDuringInput = false;
-            numericBoxU.ThonsandsSeparator = true;
+            numericBoxU.ThousandsSeparator = true;
             toolTip1.SetToolTip(numericBoxU, resources.GetString("numericBoxU.ToolTip"));
             numericBoxU.Value = 2D;
             numericBoxU.ValueChanged += numericBoxU_ValueChanged;
@@ -285,7 +285,7 @@
             numericBoxV.RadianValue = 0.034906585039886591D;
             numericBoxV.ShowUpDown = true;
             numericBoxV.SkipEventDuringInput = false;
-            numericBoxV.ThonsandsSeparator = true;
+            numericBoxV.ThousandsSeparator = true;
             toolTip1.SetToolTip(numericBoxV, resources.GetString("numericBoxV.ToolTip"));
             numericBoxV.Value = 2D;
             numericBoxV.ValueChanged += numericBoxU_ValueChanged;
@@ -306,7 +306,7 @@
             numericBoxW.RadianValue = 0.034906585039886591D;
             numericBoxW.ShowUpDown = true;
             numericBoxW.SkipEventDuringInput = false;
-            numericBoxW.ThonsandsSeparator = true;
+            numericBoxW.ThousandsSeparator = true;
             toolTip1.SetToolTip(numericBoxW, resources.GetString("numericBoxW.ToolTip"));
             numericBoxW.Value = 2D;
             numericBoxW.ReadOnlyChanged += numericBoxU_ValueChanged;

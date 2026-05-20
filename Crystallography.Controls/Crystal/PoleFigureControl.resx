@@ -94,7 +94,7 @@
     <value>groupBox2</value>
   </data>
   <data name="groupBoxProjectionScheme.Text" xml:space="preserve">
-    <value>Projection Scheme</value>
+    <value>Projection scheme</value>
   </data>
   <data name="&gt;&gt;radioButtonPoleFigure.Parent" xml:space="preserve">
     <value>groupBox1</value>
@@ -190,7 +190,7 @@
     <value>81, 25</value>
   </data>
   <data name="groupBoxProjectionObject.Text" xml:space="preserve">
-    <value>Projection Object</value>
+    <value>Projection object</value>
   </data>
   <data name="&gt;&gt;groupBoxProjectionObject.Parent" xml:space="preserve">
     <value>tabPage1</value>

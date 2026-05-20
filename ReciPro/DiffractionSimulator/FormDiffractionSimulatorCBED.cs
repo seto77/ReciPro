@@ -150,7 +150,7 @@ public partial class FormDiffractionSimulatorCBED : FormBase
     #endregion
 
     #region 実行/停止ボタン
-    private void buttonExecute_Click(object sender, EventArgs e)
+    private void buttonSimulate_Click(object sender, EventArgs e)
     {
         if (Crystal.Bethe.IsCBED_Busy) return;
 
@@ -198,7 +198,7 @@ public partial class FormDiffractionSimulatorCBED : FormBase
     private void buttonStop_Click(object sender, EventArgs e)
     {
         Crystal.Bethe.CancelCBED();
-        buttonExecute.Text = "Execute";
+        buttonSimulate.Text = "Simulate"; // 260520Cl: Execute→Simulate (用語統一)
         buttonStop.Visible = false;
     }
     #endregion
@@ -226,7 +226,7 @@ public partial class FormDiffractionSimulatorCBED : FormBase
             var totalsec = sec + sw1.ElapsedMilliseconds / 1000.0;
             toolStripProgressBar.Value = current / 10;
             toolStripStatusLabel2.Text = "Compiling disks:";
-            toolStripStatusLabel1.Text = $"Ellapsed time : {totalsec:f2} s.,  ";
+            toolStripStatusLabel1.Text = $"Elapsed time : {totalsec:f2} s.,  ";
             toolStripStatusLabel1.Text += $"{current / 10.0:f1} % completed,  wait for more {sec * (1000 - current) / current:f2} s.";
         }
         else
@@ -236,7 +236,7 @@ public partial class FormDiffractionSimulatorCBED : FormBase
             if (progress <= 100)
                 toolStripProgressBar.Value = (int)(100.0 * current / DivisionNumber);
             toolStripStatusLabel2.Text = message;
-            toolStripStatusLabel1.Text = $"Ellapsed time : {sec:f2} s.,  time/pixel: ";
+            toolStripStatusLabel1.Text = $"Elapsed time : {sec:f2} s.,  time/pixel: ";
             toolStripStatusLabel1.Text += sec / current > 0.9 ? $"{sec / current:f2} s.,  " : $"{sec / current * 1000:f2} ms., ";
             toolStripStatusLabel1.Text += $"{100.0 * current / DivisionNumber:f1} % completed,  wait for {sec * (DivisionNumber - current) / current:f2} s.";
         }
@@ -260,7 +260,8 @@ public partial class FormDiffractionSimulatorCBED : FormBase
             toolStripStatusLabel1.Text = $"Total time: {sec1 + sec2:f2} s.   ";
             toolStripStatusLabel1.Text += $"Bloch problem: {sec1:f2} s. (";
             toolStripStatusLabel1.Text += sec1 / DivisionNumber > 1 ? $"{sec1 / DivisionNumber:f2} s " : $"{sec1 / DivisionNumber * 1000:f2} ms ";
-            toolStripStatusLabel1.Text += $"/pixes).   Compiling disks: {sec2:f2} s.";
+            //toolStripStatusLabel1.Text += $"/pixes).   Compiling disks: {sec2:f2} s.";
+            toolStripStatusLabel1.Text += $"/pixel).   Compiling disks: {sec2:f2} s."; // 260520Cl: typo fix (pixes → pixel)
 
             groupBoxOutput.Enabled = true;
             generateImage();
@@ -269,7 +270,8 @@ public partial class FormDiffractionSimulatorCBED : FormBase
         }
         else
         {
-            toolStripStatusLabel1.Text = $"Time ellapsed: {sec1 + sec2:f2} sec.,  Manually interupted.";
+            //toolStripStatusLabel1.Text = $"Time ellapsed: {sec1 + sec2:f2} s,  Manually interupted.";
+            toolStripStatusLabel1.Text = $"Time elapsed: {sec1 + sec2:f2} s,  Manually interrupted."; // 260520Cl: typo fix (ellapsed → elapsed, interupted → interrupted)
             groupBoxOutput.Enabled = false;
         }
         toolStripProgressBar.Value = toolStripProgressBar.Maximum;

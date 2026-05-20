@@ -271,7 +271,7 @@ public partial class FormDiffractionSimulator : FormBase
     {
         set
         {
-            numericUpDownCamaraLength2.Value = (decimal)value;
+            numericBoxCameraLength2.Value = value;
             FormDiffractionSimulatorGeometry.CameraLength2 = value;
             Draw();
         }
@@ -468,7 +468,7 @@ public partial class FormDiffractionSimulator : FormBase
 
     #region VisibleChanged
     private void FormDiffractionSimulatorGeometry_VisibleChanged(object sender, EventArgs e)
-        => numericUpDownCamaraLength2.Enabled = !FormDiffractionSimulatorGeometry.Visible;
+        => numericBoxCameraLength2.Enabled = !FormDiffractionSimulatorGeometry.Visible;
 
     //Visibleが変更されたとき
     private void FormElectronDiffraction_VisibleChanged(object sender, EventArgs e)
@@ -1467,10 +1467,10 @@ public partial class FormDiffractionSimulator : FormBase
     /// <summary>カメラ長2がこのフォームから変更されたとき</summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
-    private void numericUpDownCamaraLength2_ValueChanged(object sender, EventArgs e)
+    private void numericBoxCamaraLength2_ValueChanged(object sender, EventArgs e)
     {
         if (!FormDiffractionSimulatorGeometry.Visible)
-            FormDiffractionSimulatorGeometry.CameraLength2 = (double)numericUpDownCamaraLength2.Value;
+            FormDiffractionSimulatorGeometry.CameraLength2 = numericBoxCameraLength2.Value;
     }
 
     private void buttonDetailedGeometry_Click(object sender, EventArgs e)
@@ -1491,7 +1491,7 @@ public partial class FormDiffractionSimulator : FormBase
     private void radioButtonKikuchiThresholdOfLength_CheckedChanged(object sender, EventArgs e)
     {
         if (!(sender as RadioButton).Checked) return;
-        numericBoxKikuchiThreadSholdOfStructureFactor.ReadOnly = !radioButtonKikuchiThresholdOfStructureFactor.Checked;
+        numericBoxKikuchiThresholdOfStructureFactor.ReadOnly = !radioButtonKikuchiThresholdOfStructureFactor.Checked;
         numericBoxKikuchiThresholdOfLength.ReadOnly = !radioButtonKikuchiThresholdOfLength.Checked;
         SetVector();
         Draw();
@@ -1595,7 +1595,7 @@ public partial class FormDiffractionSimulator : FormBase
             else
             {
                 var list = formMain.Crystal.VectorOfG.OrderByDescending(g => g.RelativeIntensity).ToList();
-                var max = Math.Min(numericBoxKikuchiThreadSholdOfStructureFactor.ValueInteger, formMain.Crystal.VectorOfG.Length);
+                var max = Math.Min(numericBoxKikuchiThresholdOfStructureFactor.ValueInteger, formMain.Crystal.VectorOfG.Length);
                 while (max + 1 < formMain.Crystal.VectorOfG.Length)
                 {
                     if (SymmetryStatic.CheckEquivalentPlanes(list[max - 1].Index, list[max].Index, formMain.Crystal.Symmetry))

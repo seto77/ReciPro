@@ -138,10 +138,10 @@
     <value>147</value>
   </data>
   <data name="groupBoxMasterPattern.Text" xml:space="preserve">
-    <value>Master Pattern</value>
+    <value>Master pattern</value>
   </data>
-  <data name="&gt;&gt;buttonCalcBSE.Name" xml:space="preserve">
-    <value>buttonCalcBSE</value>
+  <data name="&gt;&gt;buttonSimulateBSE.Name" xml:space="preserve">
+    <value>buttonSimulateBSE</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="textBoxThickness.Size" type="System.Drawing.Size, System.Drawing">
@@ -212,7 +212,7 @@
     <value>8</value>
   </data>
   <data name="numericBoxEnergyEnd.FooterText" xml:space="preserve">
-    <value>kV</value>
+    <value>keV</value>
   </data>
   <data name="tabPage2.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 26</value>
@@ -233,7 +233,7 @@
     <value>48, 27</value>
   </data>
   <data name="groupBox2.Text" xml:space="preserve">
-    <value>Text Settings</value>
+    <value>Text settings</value>
   </data>
   <data name="comboBoxMasterPatternGrid.Items" xml:space="preserve">
     <value>64</value>
@@ -250,7 +250,7 @@
   <data name="comboBoxGradient.Size" type="System.Drawing.Size, System.Drawing">
     <value>93, 23</value>
   </data>
-  <data name="&gt;&gt;buttonCalcBSE.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;buttonSimulateBSE.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
   <data name="&gt;&gt;panel1.Name" xml:space="preserve">
@@ -316,7 +316,7 @@
   <data name="buttonViewFromZ.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>
   </data>
-  <data name="numericBoxKikuchiThreadSholdOfStructureFactor.MaximumSize" type="System.Drawing.Size, System.Drawing">
+  <data name="numericBoxKikuchiThresholdOfStructureFactor.MaximumSize" type="System.Drawing.Size, System.Drawing">
     <value>1000, 30</value>
   </data>
   <data name="&gt;&gt;numericBoxYofDet.Name" xml:space="preserve">
@@ -433,7 +433,7 @@
   <data name="colorControlBackGround.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
-  <data name="&gt;&gt;buttonCalcBSE.Parent" xml:space="preserve">
+  <data name="&gt;&gt;buttonSimulateBSE.Parent" xml:space="preserve">
     <value>tabPage2</value>
   </data>
   <data name="colorControlExcessLine.Size" type="System.Drawing.Size, System.Drawing">
@@ -451,7 +451,7 @@
   <data name="numericBoxEnergyEnd.Location" type="System.Drawing.Point, System.Drawing">
     <value>160, 0</value>
   </data>
-  <data name="numericBoxKikuchiThreadSholdOfStructureFactor.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="numericBoxKikuchiThresholdOfStructureFactor.Location" type="System.Drawing.Point, System.Drawing">
     <value>135, 24</value>
   </data>
   <data name="&gt;&gt;labelMasterPattern2DHemisphere.ZOrder" xml:space="preserve">
@@ -539,7 +539,7 @@
     <value>flowLayoutPanelViewAlong</value>
   </data>
   <data name="groupBoxSimulationParameters.Text" xml:space="preserve">
-    <value>Dynamical Simulation Parameters</value>
+    <value>Dynamical simulation parameters</value>
   </data>
   <data name="buttonCreateMasterPattern.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 0, 3, 0</value>
@@ -675,8 +675,8 @@ Kikuchi lines under this value are simulated.
   <data name="&gt;&gt;numericBoxZofDet.Type" xml:space="preserve">
     <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;numericBoxKikuchiThreadSholdOfStructureFactor.Name" xml:space="preserve">
-    <value>numericBoxKikuchiThreadSholdOfStructureFactor</value>
+  <data name="&gt;&gt;numericBoxKikuchiThresholdOfStructureFactor.Name" xml:space="preserve">
+    <value>numericBoxKikuchiThresholdOfStructureFactor</value>
   </data>
   <data name="flowLayoutPanelOutputRange.Size" type="System.Drawing.Size, System.Drawing">
     <value>495, 25</value>
@@ -721,7 +721,7 @@ Kikuchi lines under this value are simulated.
     <value>-Z</value>
   </data>
   <data name="groupBoxSampleCondition.Text" xml:space="preserve">
-    <value>SEM &amp; Sample Conditions</value>
+    <value>SEM &amp; sample conditions</value>
   </data>
   <data name="&gt;&gt;trackBarStrSize.ZOrder" xml:space="preserve">
     <value>0</value>
@@ -1056,7 +1056,7 @@ Kikuchi lines under this value are simulated.
   <data name="&gt;&gt;trackBarMasterPatternEnergy.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="&gt;&gt;numericBoxKikuchiThreadSholdOfStructureFactor.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;numericBoxKikuchiThresholdOfStructureFactor.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
   <data name="labelMasterPatternGrid.TabIndex" type="System.Int32, mscorlib">
@@ -1122,7 +1122,7 @@ Kikuchi lines under this value are simulated.
   <data name="comboBoxMasterPattern2DHemisphere.Location" type="System.Drawing.Point, System.Drawing">
     <value>138, 2</value>
   </data>
-  <data name="&gt;&gt;buttonCalcBSE.Type" xml:space="preserve">
+  <data name="&gt;&gt;buttonSimulateBSE.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;label8.Name" xml:space="preserve">
@@ -1452,7 +1452,7 @@ Kikuchi lines under this value are simulated.
   <data name="numericBoxSampleTilt.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 20</value>
   </data>
-  <data name="numericBoxKikuchiThreadSholdOfStructureFactor.HeaderFont" type="System.Drawing.Font, System.Drawing">
+  <data name="numericBoxKikuchiThresholdOfStructureFactor.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="checkBoxShowCircle.Font" type="System.Drawing.Font, System.Drawing">
@@ -1632,7 +1632,7 @@ Kikuchi lines under this value are simulated.
   <data name="&gt;&gt;trackBarIntensityBrightnessMin.Type" xml:space="preserve">
     <value>System.Windows.Forms.TrackBar, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="buttonCalcBSE.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="buttonSimulateBSE.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 4</value>
   </data>
   <data name="&gt;&gt;comboBoxMasterPattern2DHemisphere.ZOrder" xml:space="preserve">
@@ -1653,8 +1653,8 @@ Kikuchi lines under this value are simulated.
   <data name="labelMasterPattern2DHemisphere.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
-  <data name="buttonCalcBSE.Text" xml:space="preserve">
-    <value>Calculate</value>
+  <data name="buttonSimulateBSE.Text" xml:space="preserve">
+    <value>Simulate</value>
   </data>
   <data name="trackBarOutputThickness.AutoSize" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -2052,7 +2052,7 @@ Kikuchi lines under this value are simulated.
   <data name="&gt;&gt;textBoxThickness.Name" xml:space="preserve">
     <value>textBoxThickness</value>
   </data>
-  <data name="numericBoxKikuchiThreadSholdOfStructureFactor.TabIndex" type="System.Int32, mscorlib">
+  <data name="numericBoxKikuchiThresholdOfStructureFactor.TabIndex" type="System.Int32, mscorlib">
     <value>124</value>
   </data>
   <data name="flowLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
@@ -2068,7 +2068,7 @@ Kikuchi lines under this value are simulated.
     <value>10</value>
   </data>
   <data name="groupBoxOutput.Text" xml:space="preserve">
-    <value>Output Parameters</value>
+    <value>Output parameters</value>
   </data>
   <data name="&gt;&gt;textBoxThickness.Parent" xml:space="preserve">
     <value>flowLayoutPanelOutputRange</value>
@@ -2491,7 +2491,7 @@ Kikuchi lines under this value are simulated.
     <value>NoControl</value>
   </data>
   <data name="numericBoxEnergyStart.FooterText" xml:space="preserve">
-    <value>kV</value>
+    <value>keV</value>
   </data>
   <data name="trackBarLineWidth.TabIndex" type="System.Int32, mscorlib">
     <value>120</value>
@@ -2571,7 +2571,7 @@ Kikuchi lines under this value are simulated.
   <data name="checkBoxShowDyanmicalEBSD.Location" type="System.Drawing.Point, System.Drawing">
     <value>161, 5</value>
   </data>
-  <data name="numericBoxKikuchiThreadSholdOfStructureFactor.FooterFont" type="System.Drawing.Font, System.Drawing">
+  <data name="numericBoxKikuchiThresholdOfStructureFactor.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="&gt;&gt;graphControlEnergyProfile.Parent" xml:space="preserve">
@@ -2586,7 +2586,7 @@ Kikuchi lines under this value are simulated.
   <data name="&gt;&gt;flowLayoutPanel5.Parent" xml:space="preserve">
     <value>groupBoxMasterPattern</value>
   </data>
-  <data name="&gt;&gt;numericBoxKikuchiThreadSholdOfStructureFactor.Type" xml:space="preserve">
+  <data name="&gt;&gt;numericBoxKikuchiThresholdOfStructureFactor.Type" xml:space="preserve">
     <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;trackBarStrSize.Name" xml:space="preserve">
@@ -2729,7 +2729,7 @@ to Kikuchi line intensity</value>
     <value>142</value>
   </data>
   <data name="label14.Text" xml:space="preserve">
-    <value>ΔE (kV)</value>
+    <value>ΔE (keV)</value>
   </data>
   <data name="groupBoxDetectorOutline.TabIndex" type="System.Int32, mscorlib">
     <value>133</value>
@@ -2749,7 +2749,7 @@ to Kikuchi line intensity</value>
   <data name="flowLayoutPanel5.Size" type="System.Drawing.Size, System.Drawing">
     <value>254, 27</value>
   </data>
-  <data name="numericBoxKikuchiThreadSholdOfStructureFactor.HeaderText" xml:space="preserve">
+  <data name="numericBoxKikuchiThresholdOfStructureFactor.HeaderText" xml:space="preserve">
     <value>Top</value>
   </data>
   <data name="checkBoxShowMesh.Font" type="System.Drawing.Font, System.Drawing">
@@ -2835,7 +2835,7 @@ to Kikuchi line intensity</value>
   <data name="checkBoxShowCircle.Size" type="System.Drawing.Size, System.Drawing">
     <value>92, 21</value>
   </data>
-  <data name="buttonCalcBSE.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="buttonSimulateBSE.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 23</value>
   </data>
   <data name="flowLayoutPanelViewAlong.Font" type="System.Drawing.Font, System.Drawing">
@@ -2934,7 +2934,7 @@ to Kikuchi line intensity</value>
   <data name="&gt;&gt;trackBarOutputEnergy.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="numericBoxKikuchiThreadSholdOfStructureFactor.MinimumSize" type="System.Drawing.Size, System.Drawing">
+  <data name="numericBoxKikuchiThresholdOfStructureFactor.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 20</value>
   </data>
   <data name="&gt;&gt;panelMasterPattern3D.Parent" xml:space="preserve">
@@ -3064,7 +3064,7 @@ to Kikuchi line intensity</value>
     <value>1000, 30</value>
   </data>
   <data name="numericBoxEnergyStep.FooterText" xml:space="preserve">
-    <value>kV</value>
+    <value>keV</value>
   </data>
   <data name="numericBoxMaxNumOfG.HeaderText" xml:space="preserve">
     <value>Number of diffracted waves</value>
@@ -3198,7 +3198,7 @@ to Kikuchi line intensity</value>
   <data name="$this.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 4, 4, 0</value>
   </data>
-  <data name="numericBoxKikuchiThreadSholdOfStructureFactor.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="numericBoxKikuchiThresholdOfStructureFactor.Size" type="System.Drawing.Size, System.Drawing">
     <value>93, 25</value>
   </data>
   <data name="numericBoxEnergyStart.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
@@ -3207,7 +3207,7 @@ to Kikuchi line intensity</value>
   <data name="numericBoxThicknessStep.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 1, 0</value>
   </data>
-  <data name="numericBoxKikuchiThreadSholdOfStructureFactor.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="numericBoxKikuchiThresholdOfStructureFactor.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 4, 0, 0</value>
   </data>
   <data name="&gt;&gt;numericBoxKikuchiThresholdOfLength.Parent" xml:space="preserve">
@@ -3228,7 +3228,7 @@ to Kikuchi line intensity</value>
   <data name="&gt;&gt;flowLayoutPanel3.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="numericBoxKikuchiThreadSholdOfStructureFactor.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="numericBoxKikuchiThresholdOfStructureFactor.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxKikuchiThresholdOfLength.FooterFont" type="System.Drawing.Font, System.Drawing">
@@ -3539,7 +3539,7 @@ to Kikuchi line intensity</value>
   <data name="&gt;&gt;colorControlBackGround.ZOrder" xml:space="preserve">
     <value>7</value>
   </data>
-  <data name="numericBoxKikuchiThreadSholdOfStructureFactor.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="numericBoxKikuchiThresholdOfStructureFactor.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 4, 0, 0</value>
   </data>
   <data name="checkBoxDrawAxesInStereonet.AutoSize" type="System.Boolean, mscorlib">
@@ -3576,7 +3576,7 @@ to Kikuchi line intensity</value>
     <value>tabPage2</value>
   </data>
   <data name="labelMasterPatternEnergyUnit.Text" xml:space="preserve">
-    <value>kV</value>
+    <value>keV</value>
   </data>
   <data name="&gt;&gt;label6.Name" xml:space="preserve">
     <value>label6</value>
@@ -3594,7 +3594,7 @@ to Kikuchi line intensity</value>
     <value>4</value>
   </data>
   <data name="groupBoxEBSDGeometry.Text" xml:space="preserve">
-    <value>EBSD Geometry</value>
+    <value>EBSD geometry</value>
   </data>
   <data name="tabPage3.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 3</value>
@@ -3624,7 +3624,7 @@ to Kikuchi line intensity</value>
     <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="groupBoxLatticePlanes.Text" xml:space="preserve">
-    <value>Kikuchi Line Criteria</value>
+    <value>Kikuchi line criteria</value>
   </data>
   <data name="label7.TabIndex" type="System.Int32, mscorlib">
     <value>30</value>
@@ -3809,7 +3809,7 @@ to Kikuchi line intensity</value>
   <data name="&gt;&gt;numericBoxThicknessEnd.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="buttonCalcBSE.TabIndex" type="System.Int32, mscorlib">
+  <data name="buttonSimulateBSE.TabIndex" type="System.Int32, mscorlib">
     <value>113</value>
   </data>
   <data name="&gt;&gt;numericBoxThicknessStep.Type" xml:space="preserve">
@@ -4035,7 +4035,7 @@ to Kikuchi line intensity</value>
     <value>numericBoxThicknessStart</value>
   </data>
   <data name="label12.Text" xml:space="preserve">
-    <value>kV</value>
+    <value>keV</value>
   </data>
   <data name="&gt;&gt;flowLayoutPanel4.Name" xml:space="preserve">
     <value>flowLayoutPanel4</value>
@@ -4376,7 +4376,7 @@ to Kikuchi line intensity</value>
   <data name="label3.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9.75pt</value>
   </data>
-  <data name="&gt;&gt;numericBoxKikuchiThreadSholdOfStructureFactor.Parent" xml:space="preserve">
+  <data name="&gt;&gt;numericBoxKikuchiThresholdOfStructureFactor.Parent" xml:space="preserve">
     <value>groupBoxLatticePlanes</value>
   </data>
   <data name="&gt;&gt;buttonMasterPattern3DCopy.Parent" xml:space="preserve">

@@ -807,7 +807,7 @@ public partial class FormEBSD : FormBase
         }
     }
 
-    private void numericBoxKikuchiThreadSholdOfStructureFactor_ValueChanged(object sender, EventArgs e) => SetVector();
+    private void numericBoxKikuchiThresholdOfStructureFactor_ValueChanged(object sender, EventArgs e) => SetVector();
 
     private void colorControlExcessLine_ColorChanged(object sender, EventArgs e) => Draw();
 
@@ -1973,7 +1973,7 @@ public partial class FormEBSD : FormBase
         else
         {
             var list = Crystal.VectorOfG.OrderByDescending(g => g.RelativeIntensity).ToList();
-            var max = Math.Min(numericBoxKikuchiThreadSholdOfStructureFactor.ValueInteger, Crystal.VectorOfG.Length);
+            var max = Math.Min(numericBoxKikuchiThresholdOfStructureFactor.ValueInteger, Crystal.VectorOfG.Length);
             while (max + 1 < FormMain.Crystal.VectorOfG.Length)
             {
                 if (SymmetryStatic.CheckEquivalentPlanes(list[max - 1].Index, list[max].Index, Crystal.Symmetry))
@@ -2034,7 +2034,7 @@ public partial class FormEBSD : FormBase
             return;
         }
 
-        buttonCalcBSE.Enabled = false; // (260401Ch) Calc BSE の多重起動を防ぐ
+        buttonSimulateBSE.Enabled = false; // (260401Ch) Calc BSE の多重起動を防ぐ
         buttonCreateMasterPattern.Enabled = false; // (260401Ch) Calc BSE 実行中に MasterPattern 前段 MC を重ねて走らせない
         // buttonStop.Visible = false; // (260401Ch) Calc BSE でも MC 中はまだ停止できない // 260406Cl 旧: MC 中も Stop を表示するよう変更
         monteCarloCts = new System.Threading.CancellationTokenSource(); // 260406Cl 追加
@@ -2058,7 +2058,7 @@ public partial class FormEBSD : FormBase
         {
             DisposeMonteCarloCts(); // 260406Cl
             buttonStop.Visible = false; // 260406Cl MC 完了後は Stop を隠す
-            buttonCalcBSE.Enabled = true;
+            buttonSimulateBSE.Enabled = true;
             buttonCreateMasterPattern.Enabled = true;
         }
     }
@@ -2489,7 +2489,7 @@ public partial class FormEBSD : FormBase
     private void buttonStop_Click(object sender, EventArgs e)
     {
         // 260406Cl 追加: MC 実行中のキャンセル
-        // MC と Bethe は排他的に実行される (buttonCalcBSE/buttonCreateMasterPattern が互いの Enabled を制御するため同時には走らない)
+        // MC と Bethe は排他的に実行される (buttonSimulateBSE/buttonCreateMasterPattern が互いの Enabled を制御するため同時には走らない)
         if (monteCarloCts != null && !monteCarloCts.IsCancellationRequested)
         {
             monteCarloCts.Cancel();

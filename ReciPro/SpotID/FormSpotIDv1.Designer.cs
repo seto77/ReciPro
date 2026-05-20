@@ -274,7 +274,7 @@
             numericBoxP1Theta.Name = "numericBoxP1Theta";
             numericBoxP1Theta.SkipEventDuringInput = false;
             numericBoxP1Theta.SmartIncrement = true;
-            numericBoxP1Theta.ThonsandsSeparator = true;
+            numericBoxP1Theta.ThousandsSeparator = true;
             numericBoxP1Theta.ValueChanged += textBox_TextChanged;
             numericBoxP1Theta.Click2 += numericBoxP1Theta_Click2;
             // 
@@ -527,7 +527,7 @@
             numericBoxP1Tilt2.Name = "numericBoxP1Tilt2";
             numericBoxP1Tilt2.SkipEventDuringInput = false;
             numericBoxP1Tilt2.SmartIncrement = true;
-            numericBoxP1Tilt2.ThonsandsSeparator = true;
+            numericBoxP1Tilt2.ThousandsSeparator = true;
             numericBoxP1Tilt2.ValueChanged += textBoxTilt_TextChanged;
             // 
             // numericBoxP1Tilt1
@@ -539,7 +539,7 @@
             numericBoxP1Tilt1.Name = "numericBoxP1Tilt1";
             numericBoxP1Tilt1.SkipEventDuringInput = false;
             numericBoxP1Tilt1.SmartIncrement = true;
-            numericBoxP1Tilt1.ThonsandsSeparator = true;
+            numericBoxP1Tilt1.ThousandsSeparator = true;
             numericBoxP1Tilt1.ValueChanged += textBoxTilt_TextChanged;
             // 
             // label14
@@ -697,7 +697,7 @@
             numericBoxP2Theta.Name = "numericBoxP2Theta";
             numericBoxP2Theta.SkipEventDuringInput = false;
             numericBoxP2Theta.SmartIncrement = true;
-            numericBoxP2Theta.ThonsandsSeparator = true;
+            numericBoxP2Theta.ThousandsSeparator = true;
             numericBoxP2Theta.ValueChanged += textBox_TextChanged;
             numericBoxP2Theta.Click2 += numericBoxP2Theta_Click2;
             // 
@@ -870,7 +870,7 @@
             numericBoxP2Tilt2.Name = "numericBoxP2Tilt2";
             numericBoxP2Tilt2.SkipEventDuringInput = false;
             numericBoxP2Tilt2.SmartIncrement = true;
-            numericBoxP2Tilt2.ThonsandsSeparator = true;
+            numericBoxP2Tilt2.ThousandsSeparator = true;
             numericBoxP2Tilt2.ValueChanged += textBoxTilt_TextChanged;
             // 
             // numericBoxP2Tilt1
@@ -882,7 +882,7 @@
             numericBoxP2Tilt1.Name = "numericBoxP2Tilt1";
             numericBoxP2Tilt1.SkipEventDuringInput = false;
             numericBoxP2Tilt1.SmartIncrement = true;
-            numericBoxP2Tilt1.ThonsandsSeparator = true;
+            numericBoxP2Tilt1.ThousandsSeparator = true;
             numericBoxP2Tilt1.ValueChanged += textBoxTilt_TextChanged;
             // 
             // label6
@@ -996,7 +996,7 @@
             numericBoxP3Theta.Name = "numericBoxP3Theta";
             numericBoxP3Theta.SkipEventDuringInput = false;
             numericBoxP3Theta.SmartIncrement = true;
-            numericBoxP3Theta.ThonsandsSeparator = true;
+            numericBoxP3Theta.ThousandsSeparator = true;
             numericBoxP3Theta.ValueChanged += textBox_TextChanged;
             numericBoxP3Theta.Click2 += numericBoxP3Theta_Click2;
             // 
@@ -1167,7 +1167,7 @@
             numericBoxP3Tilt2.Name = "numericBoxP3Tilt2";
             numericBoxP3Tilt2.SkipEventDuringInput = false;
             numericBoxP3Tilt2.SmartIncrement = true;
-            numericBoxP3Tilt2.ThonsandsSeparator = true;
+            numericBoxP3Tilt2.ThousandsSeparator = true;
             numericBoxP3Tilt2.ValueChanged += textBoxTilt_TextChanged;
             // 
             // label34
@@ -1184,7 +1184,7 @@
             numericBoxP3Tilt1.Name = "numericBoxP3Tilt1";
             numericBoxP3Tilt1.SkipEventDuringInput = false;
             numericBoxP3Tilt1.SmartIncrement = true;
-            numericBoxP3Tilt1.ThonsandsSeparator = true;
+            numericBoxP3Tilt1.ThousandsSeparator = true;
             numericBoxP3Tilt1.ValueChanged += textBoxTilt_TextChanged;
             // 
             // label35

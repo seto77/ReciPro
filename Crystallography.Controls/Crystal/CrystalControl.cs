@@ -287,7 +287,7 @@ public partial class CrystalControl : UserControlBase
     #region poleFigure の右クリックメニュー
 
     // BinaryFormatter が使えなくなったので read/save は無効化 (2022/11/10)
-    private void readToolStripMenuItem_Click(object sender, EventArgs e) { }
+    private void loadToolStripMenuItem_Click(object sender, EventArgs e) { }
     private void saveToolStripMenuItem_Click(object sender, EventArgs e) { }
 
     /// <summary>ctf ファイルで出力 (Channel5 互換)</summary>

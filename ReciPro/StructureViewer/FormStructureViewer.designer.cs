@@ -484,8 +484,7 @@
             numericBoxCRange.RadianValue = 0.0087266462599716477D;
             numericBoxCRange.ShowFraction = true;
             numericBoxCRange.ShowUpDown = true;
-            numericBoxCRange.TextFontSize = 9F;
-            numericBoxCRange.ThonsandsSeparator = true;
+            numericBoxCRange.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxCRange, resources.GetString("numericBoxCRange.ToolTip1"));
             numericBoxCRange.UpDown_Increment = 0.25D;
             numericBoxCRange.Value = 0.5D;
@@ -504,8 +503,7 @@
             numericBoxBRange.RadianValue = 0.0087266462599716477D;
             numericBoxBRange.ShowFraction = true;
             numericBoxBRange.ShowUpDown = true;
-            numericBoxBRange.TextFontSize = 9F;
-            numericBoxBRange.ThonsandsSeparator = true;
+            numericBoxBRange.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxBRange, resources.GetString("numericBoxBRange.ToolTip1"));
             numericBoxBRange.UpDown_Increment = 0.25D;
             numericBoxBRange.Value = 0.5D;
@@ -524,8 +522,7 @@
             numericBoxARange.RadianValue = 0.0087266462599716477D;
             numericBoxARange.ShowFraction = true;
             numericBoxARange.ShowUpDown = true;
-            numericBoxARange.TextFontSize = 9F;
-            numericBoxARange.ThonsandsSeparator = true;
+            numericBoxARange.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxARange, resources.GetString("numericBoxARange.ToolTip1"));
             numericBoxARange.UpDown_Increment = 0.25D;
             numericBoxARange.Value = 0.5D;
@@ -543,8 +540,7 @@
             numericBoxCCenter.Name = "numericBoxCCenter";
             numericBoxCCenter.ShowFraction = true;
             numericBoxCCenter.ShowUpDown = true;
-            numericBoxCCenter.TextFontSize = 9F;
-            numericBoxCCenter.ThonsandsSeparator = true;
+            numericBoxCCenter.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxCCenter, resources.GetString("numericBoxCCenter.ToolTip1"));
             numericBoxCCenter.UpDown_Increment = 0.25D;
             numericBoxCCenter.ValueChanged += numericBoxCMax_ValueChanged;
@@ -561,8 +557,7 @@
             numericBoxBCenter.Name = "numericBoxBCenter";
             numericBoxBCenter.ShowFraction = true;
             numericBoxBCenter.ShowUpDown = true;
-            numericBoxBCenter.TextFontSize = 9F;
-            numericBoxBCenter.ThonsandsSeparator = true;
+            numericBoxBCenter.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxBCenter, resources.GetString("numericBoxBCenter.ToolTip1"));
             numericBoxBCenter.UpDown_Increment = 0.25D;
             numericBoxBCenter.ValueChanged += numericBoxCMax_ValueChanged;
@@ -579,8 +574,7 @@
             numericBoxACenter.Name = "numericBoxACenter";
             numericBoxACenter.ShowFraction = true;
             numericBoxACenter.ShowUpDown = true;
-            numericBoxACenter.TextFontSize = 9F;
-            numericBoxACenter.ThonsandsSeparator = true;
+            numericBoxACenter.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxACenter, resources.GetString("numericBoxACenter.ToolTip1"));
             numericBoxACenter.UpDown_Increment = 0.25D;
             numericBoxACenter.ValueChanged += numericBoxCMax_ValueChanged;
@@ -641,8 +635,7 @@
             numericBoxBoundPlanesOpacity.RadianValue = 0.012217304763960306D;
             numericBoxBoundPlanesOpacity.ShowUpDown = true;
             numericBoxBoundPlanesOpacity.SkipEventDuringInput = false;
-            numericBoxBoundPlanesOpacity.TextFontSize = 9F;
-            numericBoxBoundPlanesOpacity.ThonsandsSeparator = true;
+            numericBoxBoundPlanesOpacity.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxBoundPlanesOpacity, resources.GetString("numericBoxBoundPlanesOpacity.ToolTip"));
             numericBoxBoundPlanesOpacity.UpDown_Increment = 0.1D;
             numericBoxBoundPlanesOpacity.Value = 0.7D;
@@ -852,8 +845,7 @@
             numericBoxCellPlaneAlpha.RadianValue = 0.0052359877559829881D;
             numericBoxCellPlaneAlpha.ShowUpDown = true;
             numericBoxCellPlaneAlpha.SkipEventDuringInput = false;
-            numericBoxCellPlaneAlpha.TextFontSize = 9F;
-            numericBoxCellPlaneAlpha.ThonsandsSeparator = true;
+            numericBoxCellPlaneAlpha.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxCellPlaneAlpha, resources.GetString("numericBoxCellPlaneAlpha.ToolTip"));
             numericBoxCellPlaneAlpha.UpDown_Increment = 0.1D;
             numericBoxCellPlaneAlpha.Value = 0.3D;
@@ -985,8 +977,7 @@
             numericBoxCellTranslationC.Minimum = -10D;
             numericBoxCellTranslationC.Name = "numericBoxCellTranslationC";
             numericBoxCellTranslationC.ShowUpDown = true;
-            numericBoxCellTranslationC.TextFontSize = 9F;
-            numericBoxCellTranslationC.ThonsandsSeparator = true;
+            numericBoxCellTranslationC.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxCellTranslationC, resources.GetString("numericBoxCellTranslationC.ToolTip1"));
             numericBoxCellTranslationC.UpDown_Increment = 0.1D;
             numericBoxCellTranslationC.ValueChanged += unitCell_PropertyChanged;
@@ -1002,8 +993,7 @@
             numericBoxCellTranslationB.Minimum = -10D;
             numericBoxCellTranslationB.Name = "numericBoxCellTranslationB";
             numericBoxCellTranslationB.ShowUpDown = true;
-            numericBoxCellTranslationB.TextFontSize = 9F;
-            numericBoxCellTranslationB.ThonsandsSeparator = true;
+            numericBoxCellTranslationB.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxCellTranslationB, resources.GetString("numericBoxCellTranslationB.ToolTip1"));
             numericBoxCellTranslationB.UpDown_Increment = 0.1D;
             numericBoxCellTranslationB.ValueChanged += unitCell_PropertyChanged;
@@ -1019,8 +1009,7 @@
             numericBoxCellTranslationA.Minimum = -10D;
             numericBoxCellTranslationA.Name = "numericBoxCellTranslationA";
             numericBoxCellTranslationA.ShowUpDown = true;
-            numericBoxCellTranslationA.TextFontSize = 9F;
-            numericBoxCellTranslationA.ThonsandsSeparator = true;
+            numericBoxCellTranslationA.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxCellTranslationA, resources.GetString("numericBoxCellTranslationA.ToolTip1"));
             numericBoxCellTranslationA.UpDown_Increment = 0.1D;
             numericBoxCellTranslationA.ValueChanged += unitCell_PropertyChanged;
@@ -1124,7 +1113,7 @@
             numericBoxLatticePlaneOpacity.ShowUpDown = true;
             numericBoxLatticePlaneOpacity.SkipEventDuringInput = false;
             numericBoxLatticePlaneOpacity.TextFontSize = 9F;
-            numericBoxLatticePlaneOpacity.ThonsandsSeparator = true;
+            numericBoxLatticePlaneOpacity.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxLatticePlaneOpacity, resources.GetString("numericBoxLatticePlaneOpacity.ToolTip"));
             numericBoxLatticePlaneOpacity.UpDown_Increment = 0.1D;
             numericBoxLatticePlaneOpacity.Value = 0.5D;
@@ -1217,8 +1206,7 @@
             numericBoxProjectionCenterX.Name = "numericBoxProjectionCenterX";
             numericBoxProjectionCenterX.RadianValue = 0.0087266462599716477D;
             numericBoxProjectionCenterX.ShowUpDown = true;
-            numericBoxProjectionCenterX.TextFontSize = 9F;
-            numericBoxProjectionCenterX.ThonsandsSeparator = true;
+            numericBoxProjectionCenterX.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxProjectionCenterX, resources.GetString("numericBoxProjectionCenterX.ToolTip"));
             numericBoxProjectionCenterX.UpDown_Increment = 0.1D;
             numericBoxProjectionCenterX.Value = 0.5D;
@@ -1236,8 +1224,7 @@
             numericBoxProjectionCenterY.Name = "numericBoxProjectionCenterY";
             numericBoxProjectionCenterY.RadianValue = 0.0087266462599716477D;
             numericBoxProjectionCenterY.ShowUpDown = true;
-            numericBoxProjectionCenterY.TextFontSize = 9F;
-            numericBoxProjectionCenterY.ThonsandsSeparator = true;
+            numericBoxProjectionCenterY.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxProjectionCenterY, resources.GetString("numericBoxProjectionCenterY.ToolTip"));
             numericBoxProjectionCenterY.UpDown_Increment = 0.1D;
             numericBoxProjectionCenterY.Value = 0.5D;
@@ -1255,8 +1242,7 @@
             numericBoxProjectionCenterZ.Name = "numericBoxProjectionCenterZ";
             numericBoxProjectionCenterZ.RadianValue = 0.0087266462599716477D;
             numericBoxProjectionCenterZ.ShowUpDown = true;
-            numericBoxProjectionCenterZ.TextFontSize = 9F;
-            numericBoxProjectionCenterZ.ThonsandsSeparator = true;
+            numericBoxProjectionCenterZ.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxProjectionCenterZ, resources.GetString("numericBoxProjectionCenterZ.ToolTip"));
             numericBoxProjectionCenterZ.UpDown_Increment = 0.1D;
             numericBoxProjectionCenterZ.Value = 0.5D;
@@ -1719,7 +1705,7 @@
             numericBoxLabelSize.ShowUpDown = true;
             numericBoxLabelSize.SmartIncrement = true;
             numericBoxLabelSize.TextFontSize = 9F;
-            numericBoxLabelSize.ThonsandsSeparator = true;
+            numericBoxLabelSize.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxLabelSize, resources.GetString("numericBoxLabelSize.ToolTip1"));
             numericBoxLabelSize.Value = 12D;
             numericBoxLabelSize.ValueChanged += numericBoxLabelSize_ValueChanged;
@@ -1786,7 +1772,7 @@
             numericBoxLegendSize.ShowUpDown = true;
             numericBoxLegendSize.SmartIncrement = true;
             numericBoxLegendSize.TextFontSize = 9F;
-            numericBoxLegendSize.ThonsandsSeparator = true;
+            numericBoxLegendSize.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxLegendSize, resources.GetString("numericBoxLegendSize.ToolTip1"));
             numericBoxLegendSize.Value = 50D;
             numericBoxLegendSize.ValueChanged += numericBoxLegendSize_ValueChanged;
@@ -1803,7 +1789,7 @@
             numericBoxAxesSize.ShowUpDown = true;
             numericBoxAxesSize.SmartIncrement = true;
             numericBoxAxesSize.TextFontSize = 9F;
-            numericBoxAxesSize.ThonsandsSeparator = true;
+            numericBoxAxesSize.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxAxesSize, resources.GetString("numericBoxAxesSize.ToolTip1"));
             numericBoxAxesSize.Value = 80D;
             numericBoxAxesSize.ValueChanged += numericBoxAxesSize_ValueChanged;
@@ -1820,7 +1806,7 @@
             numericBoxLightSize.ShowUpDown = true;
             numericBoxLightSize.SmartIncrement = true;
             numericBoxLightSize.TextFontSize = 9F;
-            numericBoxLightSize.ThonsandsSeparator = true;
+            numericBoxLightSize.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxLightSize, resources.GetString("numericBoxLightSize.ToolTip1"));
             numericBoxLightSize.Value = 80D;
             numericBoxLightSize.ValueChanged += numericBoxLightSize_ValueChanged;
@@ -2076,8 +2062,7 @@
             numericBoxClientHeight.RadianValue = 17.453292519943293D;
             numericBoxClientHeight.ShowUpDown = true;
             numericBoxClientHeight.SmartIncrement = true;
-            numericBoxClientHeight.TextFontSize = 9F;
-            numericBoxClientHeight.ThonsandsSeparator = true;
+            numericBoxClientHeight.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxClientHeight, resources.GetString("numericBoxClientHeight.ToolTip1"));
             numericBoxClientHeight.Value = 1000D;
             numericBoxClientHeight.ValueChanged += numericBoxClientWidth_ValueChanged;
@@ -2095,8 +2080,7 @@
             numericBoxClientWidth.RadianValue = 17.453292519943293D;
             numericBoxClientWidth.ShowUpDown = true;
             numericBoxClientWidth.SmartIncrement = true;
-            numericBoxClientWidth.TextFontSize = 9F;
-            numericBoxClientWidth.ThonsandsSeparator = true;
+            numericBoxClientWidth.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxClientWidth, resources.GetString("numericBoxClientWidth.ToolTip1"));
             numericBoxClientWidth.Value = 1000D;
             numericBoxClientWidth.ValueChanged += numericBoxClientWidth_ValueChanged;

@@ -159,14 +159,14 @@ public partial class FormPolycrystallineDiffractionSimulator : FormBase
           for (int i = 0; i < crystalNumber; i++)
               crystallites[i] = new Crystallite(Matrix3D.GenerateRamdomRotationMatrix(rn.NextDouble(), rn.NextDouble(), rn.NextDouble()));
 
-          textBoxResult.Text = (sw.ElapsedMilliseconds / 1000.0).ToString("f2") + " sec.";
+          textBoxResult.Text = (sw.ElapsedMilliseconds / 1000.0).ToString("f2") + " s";
 
           PolyCrystal polyCrystal
               = new PolyCrystal(formMain.crystal, crystallites,grainSize, (double)numericUpDownCamaraLength.Value, waveLengthControl.WaveLength, waveLengthControl.WaveSource, Strain, Stress, HillCoefficient);
           sw.Reset();
           sw.Restart();
           poleFigureControl1.PolyCrystal = polyCrystal;
-          textBoxResult.Text += "\r\n" + (sw.ElapsedMilliseconds / 1000.0).ToString("f2") + " sec.";
+          textBoxResult.Text += "\r\n" + (sw.ElapsedMilliseconds / 1000.0).ToString("f2") + " s";
       }
       */
 
@@ -213,7 +213,7 @@ public partial class FormPolycrystallineDiffractionSimulator : FormBase
         else
             dpc.Simulate(true, true, true, true, gonio);
 
-        textBoxResult.Text = (sw.ElapsedMilliseconds / 1000.0).ToString("#.000") + " sec.";
+        textBoxResult.Text = (sw.ElapsedMilliseconds / 1000.0).ToString("#.000") + " s";
 
         sw.Reset(); sw.Start();
         if (tabControl1.SelectedIndex != 0)
@@ -236,7 +236,7 @@ public partial class FormPolycrystallineDiffractionSimulator : FormBase
         dpc.setSimulatedPixels();
         dpc.DiffractionInformation();
 
-        textBoxResult.Text += "\r\n" + (sw.ElapsedMilliseconds / 1000.0).ToString("#.000") + " sec.";
+        textBoxResult.Text += "\r\n" + (sw.ElapsedMilliseconds / 1000.0).ToString("#.000") + " s";
     }
      */
 
@@ -692,7 +692,7 @@ public partial class FormPolycrystallineDiffractionSimulator : FormBase
                 toolStripProgressBar.Value = (int)((step % 100 + 1.0) / 100.0 * toolStripProgressBar.Maximum);
                 CurrentStatus = "Now refining LPO....";
                 CurrentProgress = "Current Step: " + step.ToString() + ".   Average speed of recent " + beforeSeconds.Count.ToString() + " steps: " +
-                    ((double)(beforeSeconds[^1] - beforeSeconds[0]) / beforeSeconds.Count).ToString("f0") + " msec./step";
+                    ((double)(beforeSeconds[^1] - beforeSeconds[0]) / beforeSeconds.Count).ToString("f0") + " ms/step";
                 beforeRenewSecond = currentSecond;
                 // 260428Cl Application.DoEvents() を削除 (BackgroundWorker の ProgressChanged は UI スレッドで動作するため不要)
             }
@@ -1160,7 +1160,7 @@ return residual;
 
         dpc.Simulate(true, true, true, true, gonio);
 
-        toolStripStatusLabelProgress.Text = $"{sw.ElapsedMilliseconds / 1000.0:#.000} sec.";
+        toolStripStatusLabelProgress.Text = $"{sw.ElapsedMilliseconds / 1000.0:#.000} s";
 
         sw.Restart();
         if (tabControl1.SelectedIndex != 0)
@@ -1190,7 +1190,7 @@ return residual;
         dpc.numericUpDownMaxInt.Maximum = (decimal)max;
         dpc.DiffractionInformation();
 
-        toolStripStatusLabelProgress.Text += $"   {sw.ElapsedMilliseconds / 1000.0:#.000} sec.";
+        toolStripStatusLabelProgress.Text += $"   {sw.ElapsedMilliseconds / 1000.0:#.000} s";
     }
 
     private void button1_Click(object sender, EventArgs e)
