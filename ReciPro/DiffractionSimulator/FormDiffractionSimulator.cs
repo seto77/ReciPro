@@ -645,7 +645,7 @@ public partial class FormDiffractionSimulator : FormBase
 
         graphicsBox.Refresh();
 
-        toolStripStatusLabelTimeForDrawing.Text = $"Time for drawing objects: {sw.ElapsedMilliseconds} ms.  ";
+        toolStripStatusLabelTimeForDrawing.Text = $"Time for drawing objects: {StatusBarHelper.FormatElapsed(sw.Elapsed)}.  ";// 260520Cl 時間表記を統一
 
         if (FormDiffractionBeamTable.Visible)
         {
@@ -894,7 +894,7 @@ public partial class FormDiffractionSimulator : FormBase
                     gVector = [.. gPED.Select(g => g.ConvertToVector3D())];
 
                     if (eigenValues == null || eigenValues[0] != crystal.Bethe.EigenValuesPED[0])
-                        toolStripStatusLabelTimeForBethe.Text = $"Time for solving dynamic effects (PED): {sw.ElapsedMilliseconds} ms.  ";
+                        toolStripStatusLabelTimeForBethe.Text = $"Time for solving dynamic effects (PED): {StatusBarHelper.FormatElapsed(sw.Elapsed)}.  ";// 260520Cl 時間表記を統一
                 }
                 else//パラレルかCBEDの場合
                 {
@@ -904,7 +904,7 @@ public partial class FormDiffractionSimulator : FormBase
                     gVector = [.. gBethe.Select(g => g.ConvertToVector3D())];
 
                     if (eigenValues != crystal.Bethe.EigenValues)
-                        toolStripStatusLabelTimeForBethe.Text = $"Time for solving dynamic effects: {sw.ElapsedMilliseconds} ms.  ";
+                        toolStripStatusLabelTimeForBethe.Text = $"Time for solving dynamic effects: {StatusBarHelper.FormatElapsed(sw.Elapsed)}.  ";// 260520Cl 時間表記を統一
                 }
                 var max = gVector.Max(g => double.IsInfinity(g.d) ? 0 : g.RawIntensity);
                 //gVector = gVector.Select(g => { g.RelativeIntensity = g.RawIntensity / max; return g; }).ToList();
@@ -1607,7 +1607,7 @@ public partial class FormDiffractionSimulator : FormBase
                 formMain.Crystal.VectorOfG_KikuchiLine.Reverse();
             }
         }
-        toolStripStatusLabelTimeForSearchingG.Text = $"Time for searching g-vectors: {sw.ElapsedMilliseconds} ms.  ";
+        toolStripStatusLabelTimeForSearchingG.Text = $"Time for searching g-vectors: {StatusBarHelper.FormatElapsed(sw.Elapsed)}.  ";// 260520Cl 時間表記を統一
     }
     #endregion
 

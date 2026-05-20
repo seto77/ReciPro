@@ -58,9 +58,11 @@ partial class FormMovie
         // buttonOK
         // 
         buttonOK.DialogResult = System.Windows.Forms.DialogResult.OK;
-        buttonOK.Location = new System.Drawing.Point(100, 351);
+        //buttonOK.Location = new System.Drawing.Point(100, 351);// 260520Cl 変更前 (縦並び右側)
+        buttonOK.Location = new System.Drawing.Point(15, 382);// 260520Cl 変更: 横並び左OKに
         buttonOK.Name = "buttonOK";
-        buttonOK.Size = new System.Drawing.Size(75, 23);
+        //buttonOK.Size = new System.Drawing.Size(75, 23);// 260520Cl 変更前
+        buttonOK.Size = new System.Drawing.Size(75, 25);// 260520Cl 変更: 高さ統一(25)
         buttonOK.TabIndex = 0;
         buttonOK.Text = "OK";
         buttonOK.UseVisualStyleBackColor = true;
@@ -69,9 +71,11 @@ partial class FormMovie
         // buttonCancel
         // 
         buttonCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-        buttonCancel.Location = new System.Drawing.Point(100, 328);
+        //buttonCancel.Location = new System.Drawing.Point(100, 328);// 260520Cl 変更前 (縦並びOKの上)
+        buttonCancel.Location = new System.Drawing.Point(95, 382);// 260520Cl 変更: 横並び右Cancelに
         buttonCancel.Name = "buttonCancel";
-        buttonCancel.Size = new System.Drawing.Size(75, 23);
+        //buttonCancel.Size = new System.Drawing.Size(75, 23);// 260520Cl 変更前
+        buttonCancel.Size = new System.Drawing.Size(75, 25);// 260520Cl 変更: 高さ統一(25)
         buttonCancel.TabIndex = 0;
         buttonCancel.Text = "Cancel";
         buttonCancel.UseVisualStyleBackColor = true;
@@ -442,11 +446,14 @@ partial class FormMovie
         //
         // FormMovie
         // 
+        AcceptButton = buttonOK;// 260520Cl 追加: Enter で OK (従来 Enter/Esc 無効だった)
+        CancelButton = buttonCancel;// 260520Cl 追加: Esc で Cancel
         AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
         AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
         AutoSize = true;
         AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-        ClientSize = new System.Drawing.Size(180, 378);
+        //ClientSize = new System.Drawing.Size(180, 378);// 260520Cl 変更前
+        ClientSize = new System.Drawing.Size(180, 412);// 260520Cl 変更: OK/Cancel横並び行を下部に追加
         ControlBox = false;
         Controls.Add(label1);
         Controls.Add(comboBoxSpeed);

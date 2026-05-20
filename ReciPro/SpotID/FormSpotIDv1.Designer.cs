@@ -262,7 +262,9 @@
             // 
             resources.ApplyResources(buttonSearchPhoto1, "buttonSearchPhoto1");
             buttonSearchPhoto1.Name = "buttonSearchPhoto1";
-            buttonSearchPhoto1.UseVisualStyleBackColor = true;
+            buttonSearchPhoto1.BackColor = System.Drawing.Color.SteelBlue; // 260520Cl 追加: 主要アクション(検索)を水色に統一
+            buttonSearchPhoto1.ForeColor = System.Drawing.Color.White; // 260520Cl 追加
+            buttonSearchPhoto1.UseVisualStyleBackColor = false; // 260520Cl 変更: BackColor有効化のため
             buttonSearchPhoto1.Click += buttonSearch_Click;
             // 
             // numericBoxP1Theta
@@ -685,7 +687,9 @@
             // 
             resources.ApplyResources(buttonSearchPhoto2, "buttonSearchPhoto2");
             buttonSearchPhoto2.Name = "buttonSearchPhoto2";
-            buttonSearchPhoto2.UseVisualStyleBackColor = true;
+            buttonSearchPhoto2.BackColor = System.Drawing.Color.SteelBlue; // 260520Cl 追加: 主要アクション(検索)を水色に統一
+            buttonSearchPhoto2.ForeColor = System.Drawing.Color.White; // 260520Cl 追加
+            buttonSearchPhoto2.UseVisualStyleBackColor = false; // 260520Cl 変更: BackColor有効化のため
             buttonSearchPhoto2.Click += buttonSearch_Click;
             // 
             // numericBoxP2Theta
@@ -1013,7 +1017,9 @@
             // 
             resources.ApplyResources(buttonSearchPhoto3, "buttonSearchPhoto3");
             buttonSearchPhoto3.Name = "buttonSearchPhoto3";
-            buttonSearchPhoto3.UseVisualStyleBackColor = true;
+            buttonSearchPhoto3.BackColor = System.Drawing.Color.SteelBlue; // 260520Cl 追加: 主要アクション(検索)を水色に統一
+            buttonSearchPhoto3.ForeColor = System.Drawing.Color.White; // 260520Cl 追加
+            buttonSearchPhoto3.UseVisualStyleBackColor = false; // 260520Cl 変更: BackColor有効化のため
             buttonSearchPhoto3.Click += buttonSearch_Click;
             // 
             // inputBoxP3L1
@@ -1283,7 +1289,9 @@
             // 
             resources.ApplyResources(buttonSearchAll, "buttonSearchAll");
             buttonSearchAll.Name = "buttonSearchAll";
-            buttonSearchAll.UseVisualStyleBackColor = true;
+            buttonSearchAll.BackColor = System.Drawing.Color.SteelBlue; // 260520Cl 追加: 主要アクション(検索)を水色に統一
+            buttonSearchAll.ForeColor = System.Drawing.Color.White; // 260520Cl 追加
+            buttonSearchAll.UseVisualStyleBackColor = false; // 260520Cl 変更: BackColor有効化のため
             buttonSearchAll.Click += buttonSearchAll_Click;
             // 
             // panel5

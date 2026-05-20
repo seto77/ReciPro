@@ -510,7 +510,7 @@ public partial class FormMain : FormBase
         if (commonDialog.AutomaticallyClose)
             commonDialog.Visible = false;
 
-        toolStripStatusLabel.Text = $"Startup time: {sw.ElapsedMilliseconds:#,0} ms";
+        toolStripStatusLabel.Text = $"Startup time: {StatusBarHelper.FormatElapsed(sw.Elapsed)}";// 260520Cl 時間表記を StatusBarHelper.FormatElapsed で統一
 
         if (disableOpneGLToolStripMenuItem.Checked)
         {
@@ -1190,7 +1190,8 @@ public partial class FormMain : FormBase
 
     #region リストボックス関連
 
-    private void ButtonUpper_Click(object sender, EventArgs e) => MoveUp();
+    // 260520Cl 改名: 内部命名を表示テキスト/機能に一致 — buttonUpper→buttonUp, buttonLower→buttonDown, buttonChange→buttonReplace (ハンドラ ButtonUpper_Click→ButtonUp_Click / ButtonLower_Click→ButtonDown_Click も)
+    private void ButtonUp_Click(object sender, EventArgs e) => MoveUp();
 
     public void MoveUp()
     {
@@ -1203,7 +1204,7 @@ public partial class FormMain : FormBase
         // 260428Cl Application.DoEvents() を削除 (リスト更新は WinForms 標準で十分)
     }
 
-    private void ButtonLower_Click(object sender, EventArgs e) => MoveDown();
+    private void ButtonDown_Click(object sender, EventArgs e) => MoveDown();
     public void MoveDown()
     {
         int n = listBox.SelectedIndex;
@@ -1841,26 +1842,30 @@ public partial class FormMain : FormBase
     /// <param name="showPercentage"></param>
     /// <param name="showElapsedTime"></param>
     /// <param name="showRemainTime"></param>
-    /// <param name="digit"></param>
+    // 260520Cl digit 引数を廃止 (SetProgress の正準書式に移行し未使用化。呼び出し元はタプル overload のみで未指定)
+    // 旧シグネチャ: private void reportProgress(long current, long total, long elapsedMilliseconds, string message, int sleep = 0, bool showPercentage = true, bool showElapsedTime = true, bool showRemainTime = true, int digit = 1)
     private void reportProgress(long current, long total, long elapsedMilliseconds, string message,
-        int sleep = 0, bool showPercentage = true, bool showElapsedTime = true, bool showRemainTime = true, int digit = 1)
+        int sleep = 0, bool showPercentage = true, bool showElapsedTime = true, bool showRemainTime = true)
     {
         if (SkipProgressEvent || current > total)
             return;
         SkipProgressEvent = true;
         try
         {
-            toolStripProgressBar.Maximum = int.MaxValue;
-            var ratio = (double)current / total;
-            toolStripProgressBar.Value = (int)(ratio * toolStripProgressBar.Maximum);
-            var elapsedSec = elapsedMilliseconds / 1000.0; // 260520Cl: typo fix (ellapsedSec → elapsedSec)
-            var format = $"f{digit}";
-
-            if (showPercentage) message += $" Completed: {(ratio * 100).ToString(format)} %.";
-            if (showElapsedTime) message += $" Elapsed: {elapsedSec.ToString(format)} s";
-            if (showRemainTime) message += $" Remaining: {(elapsedSec / current * (total - current)).ToString(format)} s";
-
-            toolStripStatusLabel.Text = message;
+            // 260520Cl StatusBarHelper.SetProgress に集約 (旧実装は pct/elapsed/remaining を手書き連結。digit 引数→正準書式へ移行)
+            //toolStripProgressBar.Maximum = int.MaxValue;
+            //var ratio = (double)current / total;
+            //toolStripProgressBar.Value = (int)(ratio * toolStripProgressBar.Maximum);
+            //var elapsedSec = elapsedMilliseconds / 1000.0;
+            //var format = $"f{digit}";
+            //if (showPercentage) message += $" Completed: {(ratio * 100).ToString(format)} %.";
+            //if (showElapsedTime) message += $" Elapsed: {elapsedSec.ToString(format)} s";
+            //if (showRemainTime) message += $" Remaining: {(elapsedSec / current * (total - current)).ToString(format)} s";
+            //toolStripStatusLabel.Text = message;
+            var ratio = total > 0 ? (double)current / total : 0;
+            StatusBarHelper.SetProgress(toolStripProgressBar, toolStripStatusLabel, ratio, message,
+                showElapsedTime ? TimeSpan.FromMilliseconds(elapsedMilliseconds) : (TimeSpan?)null,
+                showRemaining: showRemainTime, showPercent: showPercentage);
             // 260428Cl Application.DoEvents() を削除 (Progress<T> 経由で UI スレッドにポストされるため不要、再入の元)
 
             if (sleep != 0) Thread.Sleep(sleep);

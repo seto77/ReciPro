@@ -556,7 +556,7 @@
   <data name="panelCrystalDirection.Size" type="System.Drawing.Size, System.Drawing">
     <value>138, 155</value>
   </data>
-  <data name="buttonUpper.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="buttonUp.Location" type="System.Drawing.Point, System.Drawing">
     <value>291, 0</value>
   </data>
   <data name="buttonSetAxis.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
@@ -712,7 +712,7 @@
   <data name="&gt;&gt;groupBoxProjectAlong.Type" xml:space="preserve">
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="buttonChange.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="buttonReplace.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>1, 1, 1, 1</value>
   </data>
   <data name="&gt;&gt;captureGUIToolStripMenuItem.Name" xml:space="preserve">
@@ -811,7 +811,7 @@
   <data name="buttonClearAllCrystals.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>
   </data>
-  <data name="buttonChange.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="buttonReplace.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="&gt;&gt;toolStripSeparatorCapture.Type" xml:space="preserve">
@@ -889,7 +889,7 @@
   <data name="&gt;&gt;toolStripMenuItemUseMKL.Name" xml:space="preserve">
     <value>toolStripMenuItemUseMKL</value>
   </data>
-  <data name="&gt;&gt;buttonChange.Parent" xml:space="preserve">
+  <data name="&gt;&gt;buttonReplace.Parent" xml:space="preserve">
     <value>flowLayoutPanelCrystalEdit</value>
   </data>
   <data name="&gt;&gt;buttonLeft.Type" xml:space="preserve">
@@ -992,7 +992,7 @@ To remove all crystals from the list, click 'Clear All'.</value>
   <data name="labelCurrentIndex.Size" type="System.Drawing.Size, System.Drawing">
     <value>45, 17</value>
   </data>
-  <data name="buttonUpper.ToolTip" xml:space="preserve">
+  <data name="buttonUp.ToolTip" xml:space="preserve">
     <value>Move the selected crystal upward</value>
   </data>
   <data name="&gt;&gt;buttonDelete.Name" xml:space="preserve">
@@ -1019,7 +1019,7 @@ To remove all crystals from the list, click 'Clear All'.</value>
   <data name="&gt;&gt;tableLayoutPanel2.Name" xml:space="preserve">
     <value>tableLayoutPanel2</value>
   </data>
-  <data name="&gt;&gt;buttonLower.Type" xml:space="preserve">
+  <data name="&gt;&gt;buttonDown.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="buttonAntiClock.ToolTip" xml:space="preserve">
@@ -1158,7 +1158,7 @@ If a plane index is also specified, that plane direction is shown upward.</value
   <data name="&gt;&gt;saveCrystalDataToolStripMenuItem.Name" xml:space="preserve">
     <value>saveCrystalDataToolStripMenuItem</value>
   </data>
-  <data name="buttonChange.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="buttonReplace.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>
   </data>
   <data name="&gt;&gt;toolStripMenuItemDarkMode.Type" xml:space="preserve">
@@ -1269,7 +1269,7 @@ If a plane index is also specified, that plane direction is shown upward.</value
   <data name="groupBoxCurrentDirection.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 2, 2, 2</value>
   </data>
-  <data name="buttonLower.AutoSize" type="System.Boolean, mscorlib">
+  <data name="buttonDown.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="panel2.Location" type="System.Drawing.Point, System.Drawing">
@@ -1293,7 +1293,7 @@ If a plane index is also specified, that plane direction is shown upward.</value
   <data name="toolStripButtonDiffractionPoly.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>
   </data>
-  <data name="buttonUpper.AutoSize" type="System.Boolean, mscorlib">
+  <data name="buttonUp.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="&gt;&gt;toolStripSeparator11.Name" xml:space="preserve">
@@ -1368,7 +1368,7 @@ If a plane index is also specified, that plane direction is shown upward.</value
   <data name="numericBoxEulerTheta.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9.75pt</value>
   </data>
-  <data name="buttonLower.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+  <data name="buttonDown.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
   <data name="buttonTopLeft.Font" type="System.Drawing.Font, System.Drawing">
@@ -1556,7 +1556,7 @@ If a plane index is also specified, that plane direction is shown upward.</value
   <data name="buttonDuplicate.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>1, 1, 1, 1</value>
   </data>
-  <data name="buttonLower.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="buttonDown.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
   <data name="buttonBottomRight.Text" xml:space="preserve">
@@ -1688,7 +1688,7 @@ If a plane index is also specified, that plane direction is shown upward.</value
   <data name="numericBoxEulerPhi.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9.75pt</value>
   </data>
-  <data name="&gt;&gt;buttonUpper.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;buttonUp.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
   <data name="labelLaTex1.Location" type="System.Drawing.Point, System.Drawing">
@@ -1962,7 +1962,7 @@ If a plane index is also specified, that plane direction is shown upward.</value
   <data name="&gt;&gt;tableLayoutPanel3.Parent" xml:space="preserve">
     <value>panelCrystalDirection</value>
   </data>
-  <data name="buttonLower.ToolTip" xml:space="preserve">
+  <data name="buttonDown.ToolTip" xml:space="preserve">
     <value>Move the selected crystal downward</value>
   </data>
   <data name="toolStripButtonScatteringFactor.Font" type="System.Drawing.Font, System.Drawing">
@@ -2388,7 +2388,7 @@ If a plane index is also specified, that plane direction is shown upward.</value
   <data name="labelLaTex1.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="buttonLower.Text" xml:space="preserve">
+  <data name="buttonDown.Text" xml:space="preserve">
     <value>Down</value>
   </data>
   <data name="buttonAntiClock.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
@@ -2520,7 +2520,7 @@ If a plane index is also specified, that plane direction is shown upward.</value
   <data name="&gt;&gt;exitToolStripMenuItem.Name" xml:space="preserve">
     <value>exitToolStripMenuItem</value>
   </data>
-  <data name="buttonUpper.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="buttonUp.Size" type="System.Drawing.Size, System.Drawing">
     <value>34, 27</value>
   </data>
   <data name="tableLayoutPanel1.RowCount" type="System.Int32, mscorlib">
@@ -2541,7 +2541,7 @@ If a plane index is also specified, that plane direction is shown upward.</value
   <data name="buttonClearAllCrystals.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="buttonUpper.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="buttonUp.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
   <data name="label8.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
@@ -2801,8 +2801,8 @@ If a plane index is also specified, that plane direction is shown upward.</value
   <data name="buttonTopLeft.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
-  <data name="&gt;&gt;buttonUpper.Name" xml:space="preserve">
-    <value>buttonUpper</value>
+  <data name="&gt;&gt;buttonUp.Name" xml:space="preserve">
+    <value>buttonUp</value>
   </data>
   <data name="&gt;&gt;groupBoxCrystalInformation.ZOrder" xml:space="preserve">
     <value>0</value>
@@ -3001,7 +3001,7 @@ If a plane index is also specified, that plane direction is shown upward.</value
   <data name="buttonLeft.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 11.25pt</value>
   </data>
-  <data name="buttonLower.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="buttonDown.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>
   </data>
   <data name="tableLayoutPanel3.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
@@ -3013,7 +3013,7 @@ If a plane index is also specified, that plane direction is shown upward.</value
   <data name="&gt;&gt;buttonRight.ZOrder" xml:space="preserve">
     <value>8</value>
   </data>
-  <data name="&gt;&gt;buttonChange.Type" xml:space="preserve">
+  <data name="&gt;&gt;buttonReplace.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;checkBoxFixePlane.Name" xml:space="preserve">
@@ -3174,7 +3174,7 @@ If a plane index is also specified, that plane direction is shown upward.</value
   <data name="disableOpneGLToolStripMenuItem.Text" xml:space="preserve">
     <value>Disable all OpenGL rendering (requires restart)</value>
   </data>
-  <data name="buttonChange.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+  <data name="buttonReplace.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
   <data name="buttonDelete.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
@@ -3225,13 +3225,13 @@ If a plane index is also specified, that plane direction is shown upward.</value
   <data name="toolStripButtonStructureViewer.Size" type="System.Drawing.Size, System.Drawing">
     <value>116, 37</value>
   </data>
-  <data name="buttonChange.AutoSize" type="System.Boolean, mscorlib">
+  <data name="buttonReplace.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="toolStripButtonStereonet.ToolTipText" xml:space="preserve">
     <value>Open Stereonet</value>
   </data>
-  <data name="buttonUpper.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="buttonUp.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="toolStripSeparator8.Size" type="System.Drawing.Size, System.Drawing">
@@ -3246,7 +3246,7 @@ If a plane index is also specified, that plane direction is shown upward.</value
   <data name="toolStripContainer1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
-  <data name="buttonUpper.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="buttonUp.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>1, 1, 1, 1</value>
   </data>
   <data name="buttonAdd.Font" type="System.Drawing.Font, System.Drawing">
@@ -3361,7 +3361,7 @@ If an axis index is also specified, that axis direction is shown upward.</value>
   <data name="toolStripSeparator18.Size" type="System.Drawing.Size, System.Drawing">
     <value>291, 6</value>
   </data>
-  <data name="&gt;&gt;buttonUpper.Parent" xml:space="preserve">
+  <data name="&gt;&gt;buttonUp.Parent" xml:space="preserve">
     <value>flowLayoutPanelCrystalOrder</value>
   </data>
   <data name="&gt;&gt;flowLayoutPanelCrystalOrder.Type" xml:space="preserve">
@@ -3400,7 +3400,7 @@ If an axis index is also specified, that axis direction is shown upward.</value>
   <data name="&gt;&gt;flowLayoutPanelSetAxis.Name" xml:space="preserve">
     <value>flowLayoutPanelSetAxis</value>
   </data>
-  <data name="&gt;&gt;buttonChange.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;buttonReplace.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
   <data name="numericBoxEulerTheta.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
@@ -3409,7 +3409,7 @@ If an axis index is also specified, that axis direction is shown upward.</value>
   <data name="&gt;&gt;toolStripButtonDiffractionSingle.Name" xml:space="preserve">
     <value>toolStripButtonDiffractionSingle</value>
   </data>
-  <data name="buttonChange.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="buttonReplace.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
   <data name="&gt;&gt;buttonLeft.Name" xml:space="preserve">
@@ -3511,7 +3511,7 @@ If an axis index is also specified, that axis direction is shown upward.</value>
   <data name="label7.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="buttonLower.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="buttonDown.Location" type="System.Drawing.Point, System.Drawing">
     <value>325, 0</value>
   </data>
   <data name="labelLaTex3.ToolTip" xml:space="preserve">
@@ -3529,7 +3529,7 @@ If an axis index is also specified, that axis direction is shown upward.</value>
   <data name="&gt;&gt;panel1.Parent" xml:space="preserve">
     <value>toolStripContainer1.ContentPanel</value>
   </data>
-  <data name="buttonChange.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="buttonReplace.Location" type="System.Drawing.Point, System.Drawing">
     <value>59, 0</value>
   </data>
   <data name="toolStripButtonStereonet.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
@@ -3592,7 +3592,7 @@ If an axis index is also specified, that axis direction is shown upward.</value>
   <data name="&gt;&gt;toolStripSeparator15.Name" xml:space="preserve">
     <value>toolStripSeparator15</value>
   </data>
-  <data name="buttonLower.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="buttonDown.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="&gt;&gt;buttonTopLeft.Name" xml:space="preserve">
@@ -3677,7 +3677,7 @@ If an axis index is also specified, that axis direction is shown upward.</value>
   <data name="&gt;&gt;toolStripMenuItem1.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="buttonLower.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="buttonDown.Size" type="System.Drawing.Size, System.Drawing">
     <value>50, 27</value>
   </data>
   <data name="&gt;&gt;buttonBottomRight.Name" xml:space="preserve">
@@ -3761,7 +3761,7 @@ If an axis index is also specified, that axis direction is shown upward.</value>
   <data name="&gt;&gt;groupBoxArrows.Name" xml:space="preserve">
     <value>groupBoxArrows</value>
   </data>
-  <data name="buttonChange.TabIndex" type="System.Int32, mscorlib">
+  <data name="buttonReplace.TabIndex" type="System.Int32, mscorlib">
     <value>52</value>
   </data>
   <data name="panelArrowStep.Location" type="System.Drawing.Point, System.Drawing">
@@ -3773,7 +3773,7 @@ If an axis index is also specified, that axis direction is shown upward.</value>
   <data name="&gt;&gt;menuStrip1.Name" xml:space="preserve">
     <value>menuStrip1</value>
   </data>
-  <data name="buttonChange.ToolTip" xml:space="preserve">
+  <data name="buttonReplace.ToolTip" xml:space="preserve">
     <value>Replace the selected crystal above with the new crystal below.</value>
   </data>
   <data name="&gt;&gt;deleteToolStripMenuItem.Name" xml:space="preserve">
@@ -3788,7 +3788,7 @@ If an axis index is also specified, that axis direction is shown upward.</value>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
     <value>Crystallography.Controls.FormBase, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="buttonUpper.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+  <data name="buttonUp.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
   <data name="toolStripProgressBar.Size" type="System.Drawing.Size, System.Drawing">
@@ -3830,7 +3830,7 @@ If an axis index is also specified, that axis direction is shown upward.</value>
   <data name="buttonTopRight.ToolTip" xml:space="preserve">
     <value>Rotate the crystal in the direction of the arrow.</value>
   </data>
-  <data name="buttonUpper.Text" xml:space="preserve">
+  <data name="buttonUp.Text" xml:space="preserve">
     <value>Up</value>
   </data>
   <data name="checkBoxFixePlane.Font" type="System.Drawing.Font, System.Drawing">
@@ -3857,7 +3857,7 @@ If an axis index is also specified, that axis direction is shown upward.</value>
   <data name="groupBoxProjectAlong.Text" xml:space="preserve">
     <value>View along</value>
   </data>
-  <data name="buttonChange.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="buttonReplace.Size" type="System.Drawing.Size, System.Drawing">
     <value>78, 27</value>
   </data>
   <data name="flowLayoutPanelCrystalOrder.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
@@ -3878,7 +3878,7 @@ If an axis index is also specified, that axis direction is shown upward.</value>
   <data name="tableLayoutPanel1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
-  <data name="&gt;&gt;buttonUpper.Type" xml:space="preserve">
+  <data name="&gt;&gt;buttonUp.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="toolStripContainer1.Location" type="System.Drawing.Point, System.Drawing">
@@ -3896,7 +3896,7 @@ If an axis index is also specified, that axis direction is shown upward.</value>
   <data name="numericBoxStep.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>
   </data>
-  <data name="buttonChange.Text" xml:space="preserve">
+  <data name="buttonReplace.Text" xml:space="preserve">
     <value>↑ Replace ↑</value>
   </data>
   <data name="&gt;&gt;reportBugsRequestsOrCommentsToolStripMenuItem1.Name" xml:space="preserve">
@@ -3946,8 +3946,8 @@ If an axis index is also specified, that axis direction is shown upward.</value>
   <data name="flowLayoutPanelCrystalEdit.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
   </data>
-  <data name="&gt;&gt;buttonChange.Name" xml:space="preserve">
-    <value>buttonChange</value>
+  <data name="&gt;&gt;buttonReplace.Name" xml:space="preserve">
+    <value>buttonReplace</value>
   </data>
   <data name="&gt;&gt;panel2.Name" xml:space="preserve">
     <value>panel2</value>
@@ -3988,8 +3988,8 @@ If an axis index is also specified, that axis direction is shown upward.</value>
   <data name="toolStripButtonEBSD.ToolTipText" xml:space="preserve">
     <value>Open EBSD Simulator</value>
   </data>
-  <data name="&gt;&gt;buttonLower.Name" xml:space="preserve">
-    <value>buttonLower</value>
+  <data name="&gt;&gt;buttonDown.Name" xml:space="preserve">
+    <value>buttonDown</value>
   </data>
   <data name="saveCrystalDataToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>304, 22</value>
@@ -4152,7 +4152,7 @@ If an axis index is also specified, that axis direction is shown upward.</value>
   <data name="toolStripButtonDiffractionPoly.ToolTipText" xml:space="preserve">
     <value>Open Powder Diffraction</value>
   </data>
-  <data name="buttonLower.TabIndex" type="System.Int32, mscorlib">
+  <data name="buttonDown.TabIndex" type="System.Int32, mscorlib">
     <value>54</value>
   </data>
   <data name="checkBoxFixAxis.Text" xml:space="preserve">
@@ -4173,7 +4173,7 @@ If an axis index is also specified, that axis direction is shown upward.</value>
   <data name="&gt;&gt;buttonDelete.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;buttonLower.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;buttonDown.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
   <data name="buttonBottom.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
@@ -4309,7 +4309,7 @@ If an axis index is also specified, that axis direction is shown upward.</value>
   <data name="toolStrip1.Size" type="System.Drawing.Size, System.Drawing">
     <value>117, 611</value>
   </data>
-  <data name="buttonLower.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="buttonDown.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>1, 1, 1, 1</value>
   </data>
   <data name="numericBoxEulerPsi.MinimumSize" type="System.Drawing.Size, System.Drawing">
@@ -4390,7 +4390,7 @@ If an axis index is also specified, that axis direction is shown upward.</value>
   <data name="&gt;&gt;labelLaTex2.ZOrder" xml:space="preserve">
     <value>7</value>
   </data>
-  <data name="buttonUpper.TabIndex" type="System.Int32, mscorlib">
+  <data name="buttonUp.TabIndex" type="System.Int32, mscorlib">
     <value>53</value>
   </data>
   <data name="buttonReset.AutoSize" type="System.Boolean, mscorlib">
@@ -4589,7 +4589,7 @@ If an axis index is also specified, that axis direction is shown upward.</value>
         QmCC
 </value>
   </data>
-  <data name="&gt;&gt;buttonLower.Parent" xml:space="preserve">
+  <data name="&gt;&gt;buttonDown.Parent" xml:space="preserve">
     <value>flowLayoutPanelCrystalOrder</value>
   </data>
   <data name="&gt;&gt;buttonBottomRight.Parent" xml:space="preserve">
@@ -4604,7 +4604,7 @@ If an axis index is also specified, that axis direction is shown upward.</value>
   <data name="listBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>559, 200</value>
   </data>
-  <data name="buttonUpper.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="buttonUp.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>
   </data>
   <data name="toolStripButtonRotation.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">

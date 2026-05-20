@@ -188,34 +188,34 @@
   <data name="buttonDuplicate.ToolTip" xml:space="preserve">
     <value>選択された結晶を複製</value>
   </data>
-  <data name="buttonLower.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="buttonDown.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
   </data>
-  <data name="buttonLower.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="buttonDown.Location" type="System.Drawing.Point, System.Drawing">
     <value>463, 0</value>
   </data>
-  <data name="buttonLower.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="buttonDown.Size" type="System.Drawing.Size, System.Drawing">
     <value>44, 29</value>
   </data>
-  <data name="buttonLower.Text" xml:space="preserve">
+  <data name="buttonDown.Text" xml:space="preserve">
     <value>下へ</value>
   </data>
-  <data name="buttonLower.ToolTip" xml:space="preserve">
+  <data name="buttonDown.ToolTip" xml:space="preserve">
     <value>リスト中の選択された結晶を下に移動します</value>
   </data>
-  <data name="buttonUpper.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="buttonUp.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
   </data>
-  <data name="buttonUpper.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="buttonUp.Location" type="System.Drawing.Point, System.Drawing">
     <value>419, 0</value>
   </data>
-  <data name="buttonUpper.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="buttonUp.Size" type="System.Drawing.Size, System.Drawing">
     <value>44, 29</value>
   </data>
-  <data name="buttonUpper.Text" xml:space="preserve">
+  <data name="buttonUp.Text" xml:space="preserve">
     <value>上へ</value>
   </data>
-  <data name="buttonUpper.ToolTip" xml:space="preserve">
+  <data name="buttonUp.ToolTip" xml:space="preserve">
     <value>リスト中の選択された結晶を上に移動します</value>
   </data>
   <data name="flowLayoutPanelCrystalOrder.Location" type="System.Drawing.Point, System.Drawing">
@@ -279,19 +279,19 @@
   <data name="buttonAdd.ToolTip" xml:space="preserve">
     <value>結晶を新規にリストに加えます。</value>
   </data>
-  <data name="buttonChange.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="buttonReplace.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
   </data>
-  <data name="buttonChange.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="buttonReplace.Location" type="System.Drawing.Point, System.Drawing">
     <value>119, 0</value>
   </data>
-  <data name="buttonChange.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="buttonReplace.Size" type="System.Drawing.Size, System.Drawing">
     <value>163, 29</value>
   </data>
-  <data name="buttonChange.Text" xml:space="preserve">
+  <data name="buttonReplace.Text" xml:space="preserve">
     <value>↑ 選択結晶と入れ替え ↑</value>
   </data>
-  <data name="buttonChange.ToolTip" xml:space="preserve">
+  <data name="buttonReplace.ToolTip" xml:space="preserve">
     <value>リスト中の選択されている結晶を置き換えます。</value>
   </data>
   <data name="flowLayoutPanelCrystalEdit.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">

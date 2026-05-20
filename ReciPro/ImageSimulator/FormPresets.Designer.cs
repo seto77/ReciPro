@@ -169,8 +169,8 @@
             // 
             flowLayoutPanelOkCancel.AutoSize = true;
             flowLayoutPanelOkCancel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            flowLayoutPanelOkCancel.Controls.Add(buttonCancel);// 260520Cl 変更: 追加順入替 (RightToLeftで右端Cancel/左OKにする)
             flowLayoutPanelOkCancel.Controls.Add(buttonOK);
-            flowLayoutPanelOkCancel.Controls.Add(buttonCancel);
             flowLayoutPanelOkCancel.Dock = System.Windows.Forms.DockStyle.Bottom;
             flowLayoutPanelOkCancel.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
             flowLayoutPanelOkCancel.Location = new System.Drawing.Point(4, 287);
@@ -181,12 +181,13 @@
             // 
             // buttonOK
             // 
-            buttonOK.AutoSize = true;
+            buttonOK.AutoSize = false;// 260520Cl 変更: 固定サイズに (AutoSize true→false)
             buttonOK.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             buttonOK.Location = new System.Drawing.Point(197, 0);
             buttonOK.Margin = new System.Windows.Forms.Padding(0);
             buttonOK.Name = "buttonOK";
-            buttonOK.Size = new System.Drawing.Size(36, 27);
+            //buttonOK.Size = new System.Drawing.Size(36, 27);// 260520Cl 変更前
+            buttonOK.Size = new System.Drawing.Size(75, 25);// 260520Cl 変更: 75×25に統一
             buttonOK.TabIndex = 0;
             buttonOK.Text = "OK";
             buttonOK.UseVisualStyleBackColor = true;
@@ -194,12 +195,13 @@
             // 
             // buttonCancel
             // 
-            buttonCancel.AutoSize = true;
+            buttonCancel.AutoSize = false;// 260520Cl 変更: 固定サイズに
             buttonCancel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             buttonCancel.Location = new System.Drawing.Point(141, 0);
             buttonCancel.Margin = new System.Windows.Forms.Padding(0);
             buttonCancel.Name = "buttonCancel";
-            buttonCancel.Size = new System.Drawing.Size(56, 27);
+            //buttonCancel.Size = new System.Drawing.Size(56, 27);// 260520Cl 変更前
+            buttonCancel.Size = new System.Drawing.Size(75, 25);// 260520Cl 変更: 75×25に統一
             buttonCancel.TabIndex = 0;
             buttonCancel.Text = "Cancel";
             buttonCancel.UseVisualStyleBackColor = true;
@@ -241,6 +243,8 @@
             // 
             // FormPresets
             // 
+            AcceptButton = buttonOK;// 260520Cl 追加: Enter で OK
+            CancelButton = buttonCancel;// 260520Cl 追加: Esc で Cancel
             AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F); // 260329Cl 変更: Font→Dpi, 96dpi基準に統一
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             ClientSize = new System.Drawing.Size(241, 319);

@@ -253,7 +253,7 @@ public partial class FormSpotIDV2 : FormBase
             bindingSourceObsSpots.Position = dataSet.DataTableSpot.Rows.Count - 1;
             skipEvent = false;
             bindingSourceObsSpots_ListChanged(sender, new ListChangedEventArgs(ListChangedType.ItemAdded, dataSet.DataTableSpot.Rows.Count - 1));
-            toolStripStatusLabelIdentifySpot.Text = $"  Fitting time (1 spot): {sw.ElapsedMilliseconds} ms";
+            toolStripStatusLabelIdentifySpot.Text = $"  Fitting time (1 spot): {StatusBarHelper.FormatElapsed(sw.Elapsed)}";
             return true;
         }
         else if (e.Button == MouseButtons.Left && e.Clicks == 1)//左クリック スポット選択
@@ -316,7 +316,7 @@ public partial class FormSpotIDV2 : FormBase
             spots = spots.Where(s => (new PointD(s.X, s.Y) - DirectSpot).Length > numericBoxNearestNeighbor.Value)//ダイレクトに近いものを除去
             .OrderBy(s => 1 / s.Int * (new PointD(s.X, s.Y) - DirectSpot).Length2).ToList(); //優先順に並び替える。　条件は　①なるべく逆格子原点に近い。②強度が大きい。(③鋭いピークである)
 
-        toolStripStatusLabelIdentifySpot.Text = $" Search time ({spots.Count} spots): {sw.ElapsedMilliseconds} ms   ";
+        toolStripStatusLabelIdentifySpot.Text = $" Search time ({spots.Count} spots): {StatusBarHelper.FormatElapsed(sw.Elapsed)}   ";
         sw.Restart();
         #region テストコード
         /*
@@ -388,7 +388,7 @@ public partial class FormSpotIDV2 : FormBase
                 dataSet.DataTableSpot.Add(DirectSpot.IsNaN, fittingRange, results[i].PrmsPv, results[i].PrmsBg, results[i].R);
         toolStripProgressBar.Value = toolStripProgressBar.Maximum;
         bindingSourceObsSpots.DataMember = "DataTableSpot";
-        toolStripStatusLabelIdentifySpot.Text += $" Fitting time ({spots.Count} spots): {sw.ElapsedMilliseconds} ms";
+        toolStripStatusLabelIdentifySpot.Text += $" Fitting time ({spots.Count} spots): {StatusBarHelper.FormatElapsed(sw.Elapsed)}";
         Enabled = true;
     }
 
@@ -544,7 +544,7 @@ public partial class FormSpotIDV2 : FormBase
             }
 
         bindingSourceObsSpots.DataMember = "DataTableSpot";
-        toolStripStatusLabelIdentifySpot.Text = $" Fitting time ({dataSet.DataTableSpot.Rows.Count} spots): {sw.ElapsedMilliseconds} ms";
+        toolStripStatusLabelIdentifySpot.Text = $" Fitting time ({dataSet.DataTableSpot.Rows.Count} spots): {StatusBarHelper.FormatElapsed(sw.Elapsed)}";
         Enabled = true;
     }
 
@@ -664,7 +664,7 @@ public partial class FormSpotIDV2 : FormBase
         }
         bindingSourceObsSpots.DataMember = "DataTableSpot";
 
-        toolStripStatusLabelIdentifySpot.Text = $" Fitting time ({dataSet.DataTableSpot.Rows.Count} spots): {sw.ElapsedMilliseconds} ms";
+        toolStripStatusLabelIdentifySpot.Text = $" Fitting time ({dataSet.DataTableSpot.Rows.Count} spots): {StatusBarHelper.FormatElapsed(sw.Elapsed)}";
         Enabled = true;
     }
 
@@ -716,7 +716,7 @@ public partial class FormSpotIDV2 : FormBase
             dataSet.DataTableSpot.SetPrms(i, prms.Range, new[] { prms.X0, prms.Y0, 0.0, 0.0, 0.0, 0.0, intensities[i] }, new[] { 0.0, 0.0, 0.0 }, 0);
         }
         bindingSourceObsSpots.DataMember = "DataTableSpot";
-        toolStripStatusLabelIdentifySpot.Text = $" Fitting time ({dataSet.DataTableSpot.Rows.Count} spots): {sw.ElapsedMilliseconds} ms";
+        toolStripStatusLabelIdentifySpot.Text = $" Fitting time ({dataSet.DataTableSpot.Rows.Count} spots): {StatusBarHelper.FormatElapsed(sw.Elapsed)}";
         Enabled = true;
     }
 
@@ -829,7 +829,7 @@ public partial class FormSpotIDV2 : FormBase
                     dataSet.DataTableSpot.SetPrms(currentIndex, range, r.PrmsPv, r.PrmsBg, r.R);
                     skipEvent = false;
                     bindingSourceObsSpots_ListChanged(sender, new ListChangedEventArgs(ListChangedType.ItemChanged, pos));
-                    toolStripStatusLabelIdentifySpot.Text = $"  Fitting time (1 spot): {sw.ElapsedMilliseconds} ms";
+                    toolStripStatusLabelIdentifySpot.Text = $"  Fitting time (1 spot): {StatusBarHelper.FormatElapsed(sw.Elapsed)}";
                 }
             }
         }
@@ -973,7 +973,7 @@ public partial class FormSpotIDV2 : FormBase
             for (int i = 0; i < candidates.Count; i++)
                 dataSet.DataTableCandidate.Add(i, candidates[i]);
             toolStripProgressBar.Value = toolStripProgressBar.Maximum;
-            toolStripStatusLabelFindSpot.Text = $"Completed! Total time: {sw.ElapsedMilliseconds / 1000.0:f2} s";
+            toolStripStatusLabelFindSpot.Text = $"Completed! Total time: {StatusBarHelper.FormatElapsed(sw.Elapsed)}";// 260520Cl 時間表記を統一
 
             MessageBox.Show(candidates.Count.ToString() + " candidates found.");
         }

@@ -331,7 +331,9 @@
             this.buttonSearch.Size = new System.Drawing.Size(146, 26);
             this.buttonSearch.TabIndex = 68;
             this.buttonSearch.Text = "Search Orientations";
-            this.buttonSearch.UseVisualStyleBackColor = true;
+            this.buttonSearch.BackColor = System.Drawing.Color.SteelBlue; // 260520Cl 追加: 主要アクション(検索)を水色に統一
+            this.buttonSearch.ForeColor = System.Drawing.Color.White; // 260520Cl 追加
+            this.buttonSearch.UseVisualStyleBackColor = false; // 260520Cl 変更: BackColor有効化のため
             this.buttonSearch.Click += new System.EventHandler(this.buttonSearch_Click);
             // 
             // tabControl3
@@ -828,7 +830,9 @@
             this.buttonSearchUnrelatedOrientations.Size = new System.Drawing.Size(281, 35);
             this.buttonSearchUnrelatedOrientations.TabIndex = 68;
             this.buttonSearchUnrelatedOrientations.Text = "Search unrelated orientation";
-            this.buttonSearchUnrelatedOrientations.UseVisualStyleBackColor = true;
+            this.buttonSearchUnrelatedOrientations.BackColor = System.Drawing.Color.SteelBlue; // 260520Cl 追加: 主要アクション(検索)を水色に統一
+            this.buttonSearchUnrelatedOrientations.ForeColor = System.Drawing.Color.White; // 260520Cl 追加
+            this.buttonSearchUnrelatedOrientations.UseVisualStyleBackColor = false; // 260520Cl 変更: BackColor有効化のため
             this.buttonSearchUnrelatedOrientations.Click += new System.EventHandler(this.buttonSearchUnrelatedOrientations_Click);
             // 
             // groupBoxGonioScan

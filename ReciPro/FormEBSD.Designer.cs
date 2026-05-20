@@ -96,7 +96,7 @@
             label7 = new System.Windows.Forms.Label();
             label10 = new System.Windows.Forms.Label();
             checkBoxShowOverlays = new System.Windows.Forms.CheckBox();
-            buttonSaveImage = new System.Windows.Forms.Button();
+            buttonCopyImage = new System.Windows.Forms.Button();
             numericBoxEnergyEnd = new NumericBox();
             numericBoxEnergyStart = new NumericBox();
             numericBoxEnergyStep = new NumericBox();
@@ -287,10 +287,11 @@
             // buttonFitNistElasticSampler
             // 
             resources.ApplyResources(buttonFitNistElasticSampler, "buttonFitNistElasticSampler");
-            buttonFitNistElasticSampler.BackColor = System.Drawing.Color.DarkOliveGreen;
-            buttonFitNistElasticSampler.ForeColor = System.Drawing.Color.White;
+            //buttonFitNistElasticSampler.BackColor = System.Drawing.Color.DarkOliveGreen;// 260520Cl 変更前: 規約外オリーブ(唯一例)。開発者用ツールのため灰色既定へ
+            //buttonFitNistElasticSampler.ForeColor = System.Drawing.Color.White;// 260520Cl 変更前
             buttonFitNistElasticSampler.Name = "buttonFitNistElasticSampler";
-            buttonFitNistElasticSampler.UseVisualStyleBackColor = false;
+            //buttonFitNistElasticSampler.UseVisualStyleBackColor = false;// 260520Cl 変更前
+            buttonFitNistElasticSampler.UseVisualStyleBackColor = true;// 260520Cl 変更: 既定灰色(姉妹の Benchmark ボタンと統一)
             buttonFitNistElasticSampler.Click += buttonFitNistElasticSampler_Click;
             // 
             // graphControlDepthProfile
@@ -844,12 +845,12 @@
             checkBoxShowOverlays.UseVisualStyleBackColor = true;
             checkBoxShowOverlays.CheckedChanged += colorControlExcessLine_ColorChanged;
             // 
-            // buttonSaveImage
+            // buttonCopyImage
             // 
-            resources.ApplyResources(buttonSaveImage, "buttonSaveImage");
-            buttonSaveImage.Name = "buttonSaveImage";
-            buttonSaveImage.UseVisualStyleBackColor = true;
-            buttonSaveImage.Click += buttonSaveImage_Click;
+            resources.ApplyResources(buttonCopyImage, "buttonCopyImage");
+            buttonCopyImage.Name = "buttonCopyImage";
+            buttonCopyImage.UseVisualStyleBackColor = true;
+            buttonCopyImage.Click += buttonCopyImage_Click;
             // 
             // numericBoxEnergyEnd
             // 
@@ -1423,7 +1424,7 @@
             // flowLayoutPanel1
             // 
             resources.ApplyResources(flowLayoutPanel1, "flowLayoutPanel1");
-            flowLayoutPanel1.Controls.Add(buttonSaveImage);
+            flowLayoutPanel1.Controls.Add(buttonCopyImage);
             flowLayoutPanel1.Controls.Add(checkBoxShowOverlays);
             flowLayoutPanel1.Controls.Add(checkBoxShowDyanmicalEBSD);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
@@ -1577,7 +1578,7 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.CheckBox checkBoxShowOverlays;
-        private System.Windows.Forms.Button buttonSaveImage;
+        private System.Windows.Forms.Button buttonCopyImage;
         private GraphControl graphControlEnergyProfile;
         private GraphControl graphControlDepthProfile;
         public System.Windows.Forms.TrackBar trackBarOutputEnergy;

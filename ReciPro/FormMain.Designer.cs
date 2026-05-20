@@ -48,13 +48,13 @@
             buttonClearAllCrystals = new System.Windows.Forms.Button();
             buttonDelete = new System.Windows.Forms.Button();
             buttonDuplicate = new System.Windows.Forms.Button();
-            buttonLower = new System.Windows.Forms.Button();
-            buttonUpper = new System.Windows.Forms.Button();
+            buttonDown = new System.Windows.Forms.Button();
+            buttonUp = new System.Windows.Forms.Button();
             groupBoxCrystalInformation = new System.Windows.Forms.GroupBox();
             crystalControl = new CrystalControl();
             flowLayoutPanelCrystalEdit = new System.Windows.Forms.FlowLayoutPanel();
             buttonAdd = new System.Windows.Forms.Button();
-            buttonChange = new System.Windows.Forms.Button();
+            buttonReplace = new System.Windows.Forms.Button();
             panel1 = new System.Windows.Forms.Panel();
             groupBoxProjectAlong = new System.Windows.Forms.GroupBox();
             indexControlPlane = new IndexControl();
@@ -261,6 +261,7 @@
             // 
             resources.ApplyResources(toolStripProgressBar, "toolStripProgressBar");
             toolStripProgressBar.Name = "toolStripProgressBar";
+            toolStripProgressBar.Value = 100;// 260520Cl 追加: 起動/待機時は 100% 表示 (進捗バーは DL 時のみ駆動するため、0% で止まって見えるのを回避)
             // 
             // toolStripStatusLabel
             // 
@@ -318,8 +319,8 @@
             flowLayoutPanelCrystalOrder.Controls.Add(buttonClearAllCrystals);
             flowLayoutPanelCrystalOrder.Controls.Add(buttonDelete);
             flowLayoutPanelCrystalOrder.Controls.Add(buttonDuplicate);
-            flowLayoutPanelCrystalOrder.Controls.Add(buttonLower);
-            flowLayoutPanelCrystalOrder.Controls.Add(buttonUpper);
+            flowLayoutPanelCrystalOrder.Controls.Add(buttonDown);
+            flowLayoutPanelCrystalOrder.Controls.Add(buttonUp);
             flowLayoutPanelCrystalOrder.Name = "flowLayoutPanelCrystalOrder";
             toolTip.SetToolTip(flowLayoutPanelCrystalOrder, resources.GetString("flowLayoutPanelCrystalOrder.ToolTip"));
             // 
@@ -353,21 +354,21 @@
             buttonDuplicate.UseVisualStyleBackColor = false;
             buttonDuplicate.Click += buttonDuplicate_Click;
             // 
-            // buttonLower
+            // buttonDown
             // 
-            resources.ApplyResources(buttonLower, "buttonLower");
-            buttonLower.Name = "buttonLower";
-            toolTip.SetToolTip(buttonLower, resources.GetString("buttonLower.ToolTip"));
-            buttonLower.UseVisualStyleBackColor = false;
-            buttonLower.Click += ButtonLower_Click;
+            resources.ApplyResources(buttonDown, "buttonDown");
+            buttonDown.Name = "buttonDown";
+            toolTip.SetToolTip(buttonDown, resources.GetString("buttonDown.ToolTip"));
+            buttonDown.UseVisualStyleBackColor = false;
+            buttonDown.Click += ButtonDown_Click;
             // 
-            // buttonUpper
+            // buttonUp
             // 
-            resources.ApplyResources(buttonUpper, "buttonUpper");
-            buttonUpper.Name = "buttonUpper";
-            toolTip.SetToolTip(buttonUpper, resources.GetString("buttonUpper.ToolTip"));
-            buttonUpper.UseVisualStyleBackColor = false;
-            buttonUpper.Click += ButtonUpper_Click;
+            resources.ApplyResources(buttonUp, "buttonUp");
+            buttonUp.Name = "buttonUp";
+            toolTip.SetToolTip(buttonUp, resources.GetString("buttonUp.ToolTip"));
+            buttonUp.UseVisualStyleBackColor = false;
+            buttonUp.Click += ButtonUp_Click;
             // 
             // groupBoxCrystalInformation
             // 
@@ -415,7 +416,7 @@
             resources.ApplyResources(flowLayoutPanelCrystalEdit, "flowLayoutPanelCrystalEdit");
             captureExtender.SetCapture(flowLayoutPanelCrystalEdit, true);
             flowLayoutPanelCrystalEdit.Controls.Add(buttonAdd);
-            flowLayoutPanelCrystalEdit.Controls.Add(buttonChange);
+            flowLayoutPanelCrystalEdit.Controls.Add(buttonReplace);
             flowLayoutPanelCrystalEdit.Name = "flowLayoutPanelCrystalEdit";
             toolTip.SetToolTip(flowLayoutPanelCrystalEdit, resources.GetString("flowLayoutPanelCrystalEdit.ToolTip"));
             // 
@@ -429,15 +430,15 @@
             buttonAdd.UseVisualStyleBackColor = false;
             buttonAdd.Click += ButtonAdd_Click;
             // 
-            // buttonChange
+            // buttonReplace
             // 
-            resources.ApplyResources(buttonChange, "buttonChange");
-            buttonChange.BackColor = System.Drawing.Color.SteelBlue;
-            buttonChange.ForeColor = System.Drawing.SystemColors.HighlightText;
-            buttonChange.Name = "buttonChange";
-            toolTip.SetToolTip(buttonChange, resources.GetString("buttonChange.ToolTip"));
-            buttonChange.UseVisualStyleBackColor = false;
-            buttonChange.Click += ButtonReplace_Click;
+            resources.ApplyResources(buttonReplace, "buttonReplace");
+            buttonReplace.BackColor = System.Drawing.Color.SteelBlue;
+            buttonReplace.ForeColor = System.Drawing.SystemColors.HighlightText;
+            buttonReplace.Name = "buttonReplace";
+            toolTip.SetToolTip(buttonReplace, resources.GetString("buttonReplace.ToolTip"));
+            buttonReplace.UseVisualStyleBackColor = false;
+            buttonReplace.Click += ButtonReplace_Click;
             // 
             // panel1
             // 
@@ -1442,11 +1443,11 @@
         private System.Windows.Forms.Button buttonLeft;
         private System.Windows.Forms.Button buttonRight;
         private System.Windows.Forms.GroupBox groupBoxCrystalList;
-        private System.Windows.Forms.Button buttonUpper;
-        private System.Windows.Forms.Button buttonLower;
+        private System.Windows.Forms.Button buttonUp;
+        private System.Windows.Forms.Button buttonDown;
         public System.Windows.Forms.Button buttonAdd;
         public System.Windows.Forms.Button buttonDelete;
-        public System.Windows.Forms.Button buttonChange;
+        public System.Windows.Forms.Button buttonReplace;
         private System.Windows.Forms.ToolStripMenuItem helpwebToolStripMenuItem;
         public CrystalControl crystalControl;
         private System.Windows.Forms.ToolTip toolTip;

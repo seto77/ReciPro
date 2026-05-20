@@ -128,7 +128,7 @@
   <data name="&gt;&gt;groupBoxSimulationParameters.Parent" xml:space="preserve">
     <value>groupBoxMasterPattern</value>
   </data>
-  <data name="buttonSaveImage.TabIndex" type="System.Int32, mscorlib">
+  <data name="buttonCopyImage.TabIndex" type="System.Int32, mscorlib">
     <value>113</value>
   </data>
   <data name="colorControlString.TabIndex" type="System.Int32, mscorlib">
@@ -205,7 +205,7 @@
   <data name="&gt;&gt;label14.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
-  <data name="&gt;&gt;buttonSaveImage.Type" xml:space="preserve">
+  <data name="&gt;&gt;buttonCopyImage.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;checkBoxShowZoneAxisIndices.ZOrder" xml:space="preserve">
@@ -265,7 +265,7 @@
   <data name="&gt;&gt;waveLengthControl.Type" xml:space="preserve">
     <value>Crystallography.Controls.WaveLengthControl, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="buttonSaveImage.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="buttonCopyImage.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 6, 0</value>
   </data>
   <data name="numericBoxYofDet.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
@@ -310,7 +310,7 @@
   <data name="numericBoxMaxNumOfG.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9.75pt</value>
   </data>
-  <data name="buttonSaveImage.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="buttonCopyImage.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
   <data name="buttonViewFromZ.Font" type="System.Drawing.Font, System.Drawing">
@@ -762,7 +762,7 @@ Kikuchi lines under this value are simulated.
   <data name="label11.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="buttonSaveImage.Text" xml:space="preserve">
+  <data name="buttonCopyImage.Text" xml:space="preserve">
     <value>Copy</value>
   </data>
   <data name="groupBoxOutput.Size" type="System.Drawing.Size, System.Drawing">
@@ -1281,7 +1281,7 @@ Kikuchi lines under this value are simulated.
   <data name="groupBoxEBSDPattern.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
-  <data name="buttonSaveImage.AutoSize" type="System.Boolean, mscorlib">
+  <data name="buttonCopyImage.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="buttonViewFromZ.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
@@ -1518,7 +1518,7 @@ Kikuchi lines under this value are simulated.
   <data name="buttonViewFromSurfaceNormal.TabIndex" type="System.Int32, mscorlib">
     <value>98</value>
   </data>
-  <data name="buttonSaveImage.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="buttonCopyImage.Size" type="System.Drawing.Size, System.Drawing">
     <value>45, 25</value>
   </data>
   <data name="flowLayoutPanel6.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
@@ -2364,7 +2364,7 @@ Kikuchi lines under this value are simulated.
   <data name="trackBarMasterPatternEnergy.AutoSize" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="&gt;&gt;buttonSaveImage.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;buttonCopyImage.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <data name="numericBoxEnergyEnd.HeaderText" xml:space="preserve">
@@ -2919,7 +2919,7 @@ to Kikuchi line intensity</value>
   <data name="groupBoxKikuchiLines.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 109</value>
   </data>
-  <data name="buttonSaveImage.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+  <data name="buttonCopyImage.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
   <data name="panel1.TabIndex" type="System.Int32, mscorlib">
@@ -3461,8 +3461,8 @@ to Kikuchi line intensity</value>
   <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
     <value>43, 17</value>
   </data>
-  <data name="&gt;&gt;buttonSaveImage.Name" xml:space="preserve">
-    <value>buttonSaveImage</value>
+  <data name="&gt;&gt;buttonCopyImage.Name" xml:space="preserve">
+    <value>buttonCopyImage</value>
   </data>
   <data name="&gt;&gt;checkBoxShowMesh.Parent" xml:space="preserve">
     <value>groupBoxDetectorOutline</value>
@@ -3584,7 +3584,7 @@ to Kikuchi line intensity</value>
   <data name="&gt;&gt;groupBoxKikuchiLines.Parent" xml:space="preserve">
     <value>tabPage3</value>
   </data>
-  <data name="buttonSaveImage.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="buttonCopyImage.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>
   </data>
   <data name="checkBoxMasterPattern3DAxisArrows.Size" type="System.Drawing.Size, System.Drawing">
@@ -3659,7 +3659,7 @@ to Kikuchi line intensity</value>
   <data name="waveLengthControl.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="&gt;&gt;buttonSaveImage.Parent" xml:space="preserve">
+  <data name="&gt;&gt;buttonCopyImage.Parent" xml:space="preserve">
     <value>flowLayoutPanel1</value>
   </data>
   <data name="label7.Font" type="System.Drawing.Font, System.Drawing">

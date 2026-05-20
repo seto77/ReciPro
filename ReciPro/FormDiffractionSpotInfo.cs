@@ -145,7 +145,7 @@ public partial class FormDiffractionSpotInfo : FormBase
 
             rows.Add(r);
         }
-        toolStripStatusLabel1.Text += "Time for creation of rows: " + sw.ElapsedMilliseconds + "ms.  ";
+        toolStripStatusLabel1.Text += "Time for creation of rows: " + StatusBarHelper.FormatElapsed(sw.Elapsed) + ".  ";// 260520Cl 時間表記を統一 (旧: ms前の空白欠落も修正)
         sw.Restart();
 
         //dataGridViewの内容の書き換えは非常に時間がかかるので、まず、更新すべきかどうかをチェック
@@ -183,7 +183,7 @@ public partial class FormDiffractionSpotInfo : FormBase
             if (checkBoxAutoRowSize.Checked)
                 dataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
             dataGridView.DataMember = "DataTableBethe";
-            toolStripStatusLabel1.Text += $"Time for displaying table: {sw.ElapsedMilliseconds} ms.  ";
+            toolStripStatusLabel1.Text += $"Time for displaying table: {StatusBarHelper.FormatElapsed(sw.Elapsed)}.  ";
         }
     }
 

@@ -560,13 +560,13 @@
   <data name="checkBoxShowOverlays.Text" xml:space="preserve">
     <value>補助図形を表示</value>
   </data>
-  <data name="buttonSaveImage.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="buttonCopyImage.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
   </data>
-  <data name="buttonSaveImage.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="buttonCopyImage.Size" type="System.Drawing.Size, System.Drawing">
     <value>42, 25</value>
   </data>
-  <data name="buttonSaveImage.Text" xml:space="preserve">
+  <data name="buttonCopyImage.Text" xml:space="preserve">
     <value>コピー</value>
   </data>
   <data name="numericBoxEnergyEnd.FooterFont" type="System.Drawing.Font, System.Drawing">

@@ -932,7 +932,7 @@ public partial class FormStructureViewer : FormBase
         sw.Restart();
         glControlMain.DeleteAllObjects();
         glControlMain.AddObjects(GLObjects);
-        toolStripStatusLabelInitialization.Text += $" and sent to OpenGL ({sw.ElapsedMilliseconds} ms.)  ";
+        toolStripStatusLabelInitialization.Text += $" and sent to OpenGL ({StatusBarHelper.FormatElapsed(sw.Elapsed)}.)  ";// 260520Cl 時間表記を統一
         textBoxCalcInformation.AppendText($"Trasfer: {sw.ElapsedMilliseconds}ms.\r\n");
 
     }
@@ -1149,7 +1149,7 @@ public partial class FormStructureViewer : FormBase
 
         setSymmetryElements();// (260506Ch) removeObjects は Cylinder を結合として扱うため、対称要素はその後で追加する
 
-        toolStripStatusLabelInitialization.Text = GLObjects.Count + " objects were created (" + sw.ElapsedMilliseconds + " ms)";
+        toolStripStatusLabelInitialization.Text = GLObjects.Count + " objects were created (" + StatusBarHelper.FormatElapsed(sw.Elapsed) + ")";// 260520Cl 時間表記を統一
 
         transferGLObjects(); //
 
@@ -1171,7 +1171,7 @@ public partial class FormStructureViewer : FormBase
         glControlMain.WorldMatrixEx = world;
         glControlAxes.WorldMatrixEx = world;
 
-        toolStripStatusLabelRendering.Text = $"Rendering time: {sw.ElapsedMilliseconds} ms.";
+        toolStripStatusLabelRendering.Text = $"Rendering time: {StatusBarHelper.FormatElapsed(sw.Elapsed)}.";// 260520Cl 時間表記を統一
     }
 
 
