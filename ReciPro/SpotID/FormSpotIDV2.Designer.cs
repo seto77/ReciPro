@@ -555,7 +555,7 @@ namespace ReciPro
             numericBoxDonut.ShowUpDown = true;
             numericBoxDonut.SkipEventDuringInput = false;
             numericBoxDonut.SmartIncrement = true;
-            numericBoxDonut.TextFontSize = 8F;
+            numericBoxDonut.ValueFontSize = 8F;
             numericBoxDonut.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxDonut, resources.GetString("numericBoxDonut.ToolTip"));
             numericBoxDonut.Value = 5D;

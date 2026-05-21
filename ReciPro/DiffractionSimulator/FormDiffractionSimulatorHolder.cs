@@ -237,9 +237,10 @@ public partial class FormDiffractionSimulatorHolder : FormBase
         var indices = new HashSet<(int u, int v, int w)>();
         if (crystal.A * crystal.B * crystal.C != 0)
         {
-            for (int u = -numericBoxU.ValueInteger; u <= numericBoxU.ValueInteger; u++)
-                for (int v = -numericBoxV.ValueInteger; v <= numericBoxV.ValueInteger; v++)
-                    for (int w = -numericBoxW.ValueInteger; w <= numericBoxW.ValueInteger; w++)
+            var (U, V, W) = indexControl.Values;
+            for (int u = -U; u <= U; u++)
+                for (int v = -V; v <= V; v++)
+                    for (int w = -W; w <= W; w++)
                     {
                         if (u == 0 && v == 0 && w == 0) continue;
                         if (checkBoxIncludingEquivalent.Checked)

@@ -25,7 +25,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            label3 = new System.Windows.Forms.Label();
             groupBoxDetectorAndOverlappedImage = new System.Windows.Forms.GroupBox();
             textBoxFileName = new System.Windows.Forms.TextBox();
             buttonClearPicture = new System.Windows.Forms.Button();
@@ -45,79 +44,58 @@
             label23 = new System.Windows.Forms.Label();
             label24 = new System.Windows.Forms.Label();
             numericBoxFootY = new NumericBox();
-            numericBoxPixelWidth = new NumericBox();
+            sizeControl1 = new SizeControl();
             numericBoxFootX = new NumericBox();
-            numericBoxPixelHeight = new NumericBox();
             numericBoxPixelSize = new NumericBox();
             checkBoxDetectorSizePosition = new System.Windows.Forms.CheckBox();
             numericBoxCameraLength2 = new NumericBox();
             numericBoxTau = new NumericBox();
             checkBoxSchematicDiagram = new System.Windows.Forms.CheckBox();
-            this.panelDetectorAreaAndOverlappedImage = new System.Windows.Forms.Panel();
+            panelDetectorAreaAndOverlappedImage = new System.Windows.Forms.Panel();
             panelDetectorGeometry = new System.Windows.Forms.Panel();
             numericBoxPhi = new NumericBox();
             panelSchematicDiagram = new System.Windows.Forms.Panel();
             pictureBoxSchematicDiagram = new System.Windows.Forms.PictureBox();
+            flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
+            flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
+            flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
             groupBoxDetectorAndOverlappedImage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)trackBarMaxInt).BeginInit();
             ((System.ComponentModel.ISupportInitialize)trackBarMinInt).BeginInit();
             ((System.ComponentModel.ISupportInitialize)trackBarPictureOpacity1).BeginInit();
-            this.panelDetectorAreaAndOverlappedImage.SuspendLayout();
+            panelDetectorAreaAndOverlappedImage.SuspendLayout();
             panelDetectorGeometry.SuspendLayout();
             panelSchematicDiagram.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBoxSchematicDiagram).BeginInit();
+            flowLayoutPanel1.SuspendLayout();
+            flowLayoutPanel2.SuspendLayout();
+            flowLayoutPanel3.SuspendLayout();
+            flowLayoutPanel4.SuspendLayout();
             SuspendLayout();
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            label3.Location = new System.Drawing.Point(373, 50);
-            label3.Name = "label3";
-            label3.Size = new System.Drawing.Size(112, 51);
-            label3.TabIndex = 1;
-            label3.Text = "Foot of the\r\n perpendicular\r\n from the sample ";
             // 
             // groupBoxDetectorAndOverlappedImage
             // 
-            groupBoxDetectorAndOverlappedImage.Controls.Add(textBoxFileName);
-            groupBoxDetectorAndOverlappedImage.Controls.Add(buttonClearPicture);
-            groupBoxDetectorAndOverlappedImage.Controls.Add(trackBarMaxInt);
-            groupBoxDetectorAndOverlappedImage.Controls.Add(buttonRot90);
-            groupBoxDetectorAndOverlappedImage.Controls.Add(buttonLoadPicture);
-            groupBoxDetectorAndOverlappedImage.Controls.Add(trackBarMinInt);
-            groupBoxDetectorAndOverlappedImage.Controls.Add(trackBarPictureOpacity1);
-            groupBoxDetectorAndOverlappedImage.Controls.Add(label2);
-            groupBoxDetectorAndOverlappedImage.Controls.Add(label1);
+            groupBoxDetectorAndOverlappedImage.Controls.Add(flowLayoutPanel4);
             groupBoxDetectorAndOverlappedImage.Controls.Add(label4);
-            groupBoxDetectorAndOverlappedImage.Controls.Add(label10);
-            groupBoxDetectorAndOverlappedImage.Controls.Add(comboBoxScale2);
-            groupBoxDetectorAndOverlappedImage.Controls.Add(comboBoxScale1);
-            groupBoxDetectorAndOverlappedImage.Controls.Add(comboBoxGradient);
-            groupBoxDetectorAndOverlappedImage.Controls.Add(label22);
-            groupBoxDetectorAndOverlappedImage.Controls.Add(label23);
-            groupBoxDetectorAndOverlappedImage.Controls.Add(label24);
-            groupBoxDetectorAndOverlappedImage.Controls.Add(numericBoxFootY);
-            groupBoxDetectorAndOverlappedImage.Controls.Add(numericBoxPixelWidth);
-            groupBoxDetectorAndOverlappedImage.Controls.Add(numericBoxFootX);
-            groupBoxDetectorAndOverlappedImage.Controls.Add(numericBoxPixelHeight);
-            groupBoxDetectorAndOverlappedImage.Controls.Add(label3);
-            groupBoxDetectorAndOverlappedImage.Controls.Add(numericBoxPixelSize);
+            groupBoxDetectorAndOverlappedImage.Controls.Add(flowLayoutPanel3);
+            groupBoxDetectorAndOverlappedImage.Controls.Add(flowLayoutPanel1);
+            groupBoxDetectorAndOverlappedImage.Controls.Add(flowLayoutPanel2);
             groupBoxDetectorAndOverlappedImage.Enabled = false;
             groupBoxDetectorAndOverlappedImage.Location = new System.Drawing.Point(7, 3);
             groupBoxDetectorAndOverlappedImage.Name = "groupBoxDetectorAndOverlappedImage";
             groupBoxDetectorAndOverlappedImage.Padding = new System.Windows.Forms.Padding(3, 5, 3, 5);
-            groupBoxDetectorAndOverlappedImage.Size = new System.Drawing.Size(624, 182);
+            groupBoxDetectorAndOverlappedImage.Size = new System.Drawing.Size(623, 166);
             groupBoxDetectorAndOverlappedImage.TabIndex = 5;
             groupBoxDetectorAndOverlappedImage.TabStop = false;
             // 
             // textBoxFileName
             // 
             textBoxFileName.Font = new System.Drawing.Font("Segoe UI", 9F);
-            textBoxFileName.Location = new System.Drawing.Point(7, 21);
+            textBoxFileName.Location = new System.Drawing.Point(3, 3);
             textBoxFileName.Name = "textBoxFileName";
             textBoxFileName.ReadOnly = true;
-            textBoxFileName.Size = new System.Drawing.Size(443, 23);
+            textBoxFileName.Size = new System.Drawing.Size(451, 23);
             textBoxFileName.TabIndex = 103;
             textBoxFileName.TextChanged += textBoxFileName_TextChanged;
             // 
@@ -125,10 +103,11 @@
             // 
             buttonClearPicture.AutoSize = true;
             buttonClearPicture.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            buttonClearPicture.Location = new System.Drawing.Point(502, 19);
-            buttonClearPicture.Margin = new System.Windows.Forms.Padding(1, 4, 1, 4);
+            buttonClearPicture.Font = new System.Drawing.Font("Segoe UI", 9F);
+            buttonClearPicture.Location = new System.Drawing.Point(458, 0);
+            buttonClearPicture.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             buttonClearPicture.Name = "buttonClearPicture";
-            buttonClearPicture.Size = new System.Drawing.Size(48, 27);
+            buttonClearPicture.Size = new System.Drawing.Size(44, 25);
             buttonClearPicture.TabIndex = 89;
             buttonClearPicture.Text = "Clear";
             buttonClearPicture.UseVisualStyleBackColor = true;
@@ -137,12 +116,12 @@
             // trackBarMaxInt
             // 
             trackBarMaxInt.AutoSize = false;
-            trackBarMaxInt.Location = new System.Drawing.Point(113, 160);
+            trackBarMaxInt.Location = new System.Drawing.Point(52, 31);
             trackBarMaxInt.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             trackBarMaxInt.Maximum = 100001;
             trackBarMaxInt.Minimum = 1;
             trackBarMaxInt.Name = "trackBarMaxInt";
-            trackBarMaxInt.Size = new System.Drawing.Size(505, 19);
+            trackBarMaxInt.Size = new System.Drawing.Size(490, 19);
             trackBarMaxInt.SmallChange = 10000;
             trackBarMaxInt.TabIndex = 102;
             trackBarMaxInt.TickFrequency = 10;
@@ -154,10 +133,11 @@
             // 
             buttonRot90.AutoSize = true;
             buttonRot90.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            buttonRot90.Location = new System.Drawing.Point(556, 19);
-            buttonRot90.Margin = new System.Windows.Forms.Padding(1, 4, 1, 4);
+            buttonRot90.Font = new System.Drawing.Font("Segoe UI", 9F);
+            buttonRot90.Location = new System.Drawing.Point(549, 0);
+            buttonRot90.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             buttonRot90.Name = "buttonRot90";
-            buttonRot90.Size = new System.Drawing.Size(61, 27);
+            buttonRot90.Size = new System.Drawing.Size(55, 25);
             buttonRot90.TabIndex = 88;
             buttonRot90.Text = "Rot 90°";
             buttonRot90.UseVisualStyleBackColor = true;
@@ -167,23 +147,24 @@
             // 
             buttonLoadPicture.AutoSize = true;
             buttonLoadPicture.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            buttonLoadPicture.Location = new System.Drawing.Point(454, 19);
-            buttonLoadPicture.Margin = new System.Windows.Forms.Padding(1, 4, 1, 4);
+            buttonLoadPicture.Font = new System.Drawing.Font("Segoe UI", 9F);
+            buttonLoadPicture.Location = new System.Drawing.Point(504, 0);
+            buttonLoadPicture.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             buttonLoadPicture.Name = "buttonLoadPicture";
-            buttonLoadPicture.Size = new System.Drawing.Size(48, 27);
+            buttonLoadPicture.Size = new System.Drawing.Size(43, 25);
             buttonLoadPicture.TabIndex = 88;
-            buttonLoadPicture.Text = "Load"; // 260520Cl: Read→Load (用語統一)
+            buttonLoadPicture.Text = "Load";
             buttonLoadPicture.UseVisualStyleBackColor = true;
             buttonLoadPicture.Click += buttonLoadPicture_Click;
             // 
             // trackBarMinInt
             // 
             trackBarMinInt.AutoSize = false;
-            trackBarMinInt.Location = new System.Drawing.Point(113, 142);
+            trackBarMinInt.Location = new System.Drawing.Point(51, 4);
             trackBarMinInt.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             trackBarMinInt.Maximum = 100000;
             trackBarMinInt.Name = "trackBarMinInt";
-            trackBarMinInt.Size = new System.Drawing.Size(505, 19);
+            trackBarMinInt.Size = new System.Drawing.Size(490, 19);
             trackBarMinInt.SmallChange = 10000;
             trackBarMinInt.TabIndex = 102;
             trackBarMinInt.TickFrequency = 10;
@@ -194,11 +175,11 @@
             // trackBarPictureOpacity1
             // 
             trackBarPictureOpacity1.AutoSize = false;
-            trackBarPictureOpacity1.Location = new System.Drawing.Point(57, 113);
+            trackBarPictureOpacity1.Location = new System.Drawing.Point(51, 4);
             trackBarPictureOpacity1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             trackBarPictureOpacity1.Maximum = 100;
             trackBarPictureOpacity1.Name = "trackBarPictureOpacity1";
-            trackBarPictureOpacity1.Size = new System.Drawing.Size(108, 19);
+            trackBarPictureOpacity1.Size = new System.Drawing.Size(100, 19);
             trackBarPictureOpacity1.TabIndex = 102;
             trackBarPictureOpacity1.TickFrequency = 10;
             trackBarPictureOpacity1.TickStyle = System.Windows.Forms.TickStyle.None;
@@ -209,9 +190,11 @@
             // 
             label2.AutoSize = true;
             label2.Font = new System.Drawing.Font("Segoe UI", 9F);
-            label2.Location = new System.Drawing.Point(68, 141);
+            label2.Location = new System.Drawing.Point(0, 0);
+            label2.Margin = new System.Windows.Forms.Padding(0);
             label2.Name = "label2";
-            label2.Size = new System.Drawing.Size(45, 15);
+            label2.Padding = new System.Windows.Forms.Padding(0, 3, 0, 0);
+            label2.Size = new System.Drawing.Size(48, 18);
             label2.TabIndex = 101;
             label2.Text = "Min int.";
             // 
@@ -219,19 +202,22 @@
             // 
             label1.AutoSize = true;
             label1.Font = new System.Drawing.Font("Segoe UI", 9F);
-            label1.Location = new System.Drawing.Point(67, 160);
+            label1.Location = new System.Drawing.Point(0, 27);
+            label1.Margin = new System.Windows.Forms.Padding(0);
             label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(47, 15);
+            label1.Padding = new System.Windows.Forms.Padding(0, 3, 0, 0);
+            label1.Size = new System.Drawing.Size(49, 18);
             label1.TabIndex = 101;
             label1.Text = "Max int.";
             // 
             // label4
             // 
             label4.AutoSize = true;
+            label4.Dock = System.Windows.Forms.DockStyle.Left;
             label4.Font = new System.Drawing.Font("Segoe UI", 9F);
-            label4.Location = new System.Drawing.Point(2, 147);
+            label4.Location = new System.Drawing.Point(3, 110);
             label4.Name = "label4";
-            label4.Size = new System.Drawing.Size(67, 15);
+            label4.Size = new System.Drawing.Size(62, 15);
             label4.TabIndex = 101;
             label4.Text = "Brightness";
             // 
@@ -239,9 +225,11 @@
             // 
             label10.AutoSize = true;
             label10.Font = new System.Drawing.Font("Segoe UI", 9F);
-            label10.Location = new System.Drawing.Point(4, 113);
+            label10.Location = new System.Drawing.Point(0, 0);
+            label10.Margin = new System.Windows.Forms.Padding(0);
             label10.Name = "label10";
-            label10.Size = new System.Drawing.Size(47, 15);
+            label10.Padding = new System.Windows.Forms.Padding(0, 3, 0, 0);
+            label10.Size = new System.Drawing.Size(48, 18);
             label10.TabIndex = 101;
             label10.Text = "Opacity";
             // 
@@ -250,8 +238,8 @@
             comboBoxScale2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             comboBoxScale2.FormattingEnabled = true;
             comboBoxScale2.Items.AddRange(new object[] { "Gray", "Cold-Warm", "Spectrum", "Fire" });
-            comboBoxScale2.Location = new System.Drawing.Point(522, 108);
-            comboBoxScale2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            comboBoxScale2.Location = new System.Drawing.Point(514, 0);
+            comboBoxScale2.Margin = new System.Windows.Forms.Padding(0);
             comboBoxScale2.Name = "comboBoxScale2";
             comboBoxScale2.Size = new System.Drawing.Size(93, 25);
             comboBoxScale2.TabIndex = 97;
@@ -261,9 +249,9 @@
             // 
             comboBoxScale1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             comboBoxScale1.FormattingEnabled = true;
-            comboBoxScale1.Items.AddRange(new object[] { "Log Scale", "Linear Scale" }); // 260521Cl Phase7: Liner→Linear typo
-            comboBoxScale1.Location = new System.Drawing.Point(376, 108);
-            comboBoxScale1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            comboBoxScale1.Items.AddRange(new object[] { "Log Scale", "Linear Scale" });
+            comboBoxScale1.Location = new System.Drawing.Point(363, 0);
+            comboBoxScale1.Margin = new System.Windows.Forms.Padding(0);
             comboBoxScale1.Name = "comboBoxScale1";
             comboBoxScale1.Size = new System.Drawing.Size(94, 25);
             comboBoxScale1.TabIndex = 96;
@@ -274,8 +262,8 @@
             comboBoxGradient.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             comboBoxGradient.FormattingEnabled = true;
             comboBoxGradient.Items.AddRange(new object[] { "Positive Film", "Negative Film" });
-            comboBoxGradient.Location = new System.Drawing.Point(229, 108);
-            comboBoxGradient.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            comboBoxGradient.Location = new System.Drawing.Point(212, 0);
+            comboBoxGradient.Margin = new System.Windows.Forms.Padding(0);
             comboBoxGradient.Name = "comboBoxGradient";
             comboBoxGradient.Size = new System.Drawing.Size(94, 25);
             comboBoxGradient.TabIndex = 95;
@@ -284,27 +272,33 @@
             // label22
             // 
             label22.AutoSize = true;
-            label22.Location = new System.Drawing.Point(474, 111);
+            label22.Location = new System.Drawing.Point(457, 0);
+            label22.Margin = new System.Windows.Forms.Padding(0);
             label22.Name = "label22";
-            label22.Size = new System.Drawing.Size(49, 17);
+            label22.Padding = new System.Windows.Forms.Padding(8, 3, 0, 0);
+            label22.Size = new System.Drawing.Size(57, 20);
             label22.TabIndex = 100;
             label22.Text = "Scale 2";
             // 
             // label23
             // 
             label23.AutoSize = true;
-            label23.Location = new System.Drawing.Point(329, 111);
+            label23.Location = new System.Drawing.Point(306, 0);
+            label23.Margin = new System.Windows.Forms.Padding(0);
             label23.Name = "label23";
-            label23.Size = new System.Drawing.Size(49, 17);
+            label23.Padding = new System.Windows.Forms.Padding(8, 3, 0, 0);
+            label23.Size = new System.Drawing.Size(57, 20);
             label23.TabIndex = 99;
             label23.Text = "Scale 1";
             // 
             // label24
             // 
             label24.AutoSize = true;
-            label24.Location = new System.Drawing.Point(171, 111);
+            label24.Location = new System.Drawing.Point(154, 0);
+            label24.Margin = new System.Windows.Forms.Padding(0);
             label24.Name = "label24";
-            label24.Size = new System.Drawing.Size(58, 17);
+            label24.Padding = new System.Windows.Forms.Padding(0, 3, 0, 0);
+            label24.Size = new System.Drawing.Size(58, 20);
             label24.TabIndex = 98;
             label24.Text = "Gradient";
             // 
@@ -312,111 +306,91 @@
             // 
             numericBoxFootY.BackColor = System.Drawing.SystemColors.Control;
             numericBoxFootY.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxFootY.FooterText = "pixel";
+            numericBoxFootY.FooterFont = new System.Drawing.Font("Segoe UI", 9.75F);
+            numericBoxFootY.FooterPadding = new System.Windows.Forms.Padding(0, 2, 0, 0);
+            numericBoxFootY.FooterText = "px";
             numericBoxFootY.HeaderBackColor = System.Drawing.SystemColors.Control;
+            numericBoxFootY.HeaderFont = new System.Drawing.Font("Segoe UI", 9.75F);
+            numericBoxFootY.HeaderPadding = new System.Windows.Forms.Padding(0, 2, 0, 0);
             numericBoxFootY.HeaderText = "fy";
-            numericBoxFootY.Location = new System.Drawing.Point(491, 78);
-            numericBoxFootY.Margin = new System.Windows.Forms.Padding(0);
+            numericBoxFootY.Location = new System.Drawing.Point(342, 3);
             numericBoxFootY.MaximumSize = new System.Drawing.Size(1000, 30);
             numericBoxFootY.MinimumSize = new System.Drawing.Size(1, 20);
             numericBoxFootY.Name = "numericBoxFootY";
             numericBoxFootY.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
             numericBoxFootY.RadianValue = 8.9360857702109673D;
-            numericBoxFootY.Size = new System.Drawing.Size(123, 27);
+            numericBoxFootY.Size = new System.Drawing.Size(103, 25);
             numericBoxFootY.SkipEventDuringInput = false;
             numericBoxFootY.SmartIncrement = true;
             numericBoxFootY.TabIndex = 0;
-            numericBoxFootY.TextFont = new System.Drawing.Font("Yu Gothic UI", 9F);
             numericBoxFootY.ThousandsSeparator = true;
             numericBoxFootY.Value = 512D;
+            numericBoxFootY.ValueFontSize = 9F;
             // 
-            // numericBoxPixelWidth
+            // sizeControl1
             // 
-            numericBoxPixelWidth.BackColor = System.Drawing.SystemColors.Control;
-            numericBoxPixelWidth.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxPixelWidth.FooterText = "pix.";
-            numericBoxPixelWidth.HeaderBackColor = System.Drawing.SystemColors.Control;
-            numericBoxPixelWidth.HeaderText = "Detector    width";
-            numericBoxPixelWidth.Location = new System.Drawing.Point(7, 51);
-            numericBoxPixelWidth.Margin = new System.Windows.Forms.Padding(0);
-            numericBoxPixelWidth.MaximumSize = new System.Drawing.Size(1000, 30);
-            numericBoxPixelWidth.MinimumSize = new System.Drawing.Size(1, 20);
-            numericBoxPixelWidth.Name = "numericBoxPixelWidth";
-            numericBoxPixelWidth.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
-            numericBoxPixelWidth.RadianValue = 17.872171540421935D;
-            numericBoxPixelWidth.Size = new System.Drawing.Size(174, 27);
-            numericBoxPixelWidth.SkipEventDuringInput = false;
-            numericBoxPixelWidth.SmartIncrement = true;
-            numericBoxPixelWidth.TabIndex = 0;
-            numericBoxPixelWidth.TextFont = new System.Drawing.Font("Yu Gothic UI", 9F);
-            numericBoxPixelWidth.ThousandsSeparator = true;
-            numericBoxPixelWidth.Value = 1024D;
+            sizeControl1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            sizeControl1.Font = new System.Drawing.Font("Segoe UI", 9F);
+            sizeControl1.HeaderText = "Detector";
+            sizeControl1.LabelFont = new System.Drawing.Font("Segoe UI", 9F);
+            sizeControl1.Location = new System.Drawing.Point(3, 3);
+            sizeControl1.Maximum = 100000;
+            sizeControl1.Name = "sizeControl1";
+            sizeControl1.Size = new System.Drawing.Size(193, 25);
+            sizeControl1.TabIndex = 0;
+            sizeControl1.Value = new System.Drawing.Size(1024, 1024);
+            sizeControl1.ValueFontSize = 9F;
             // 
             // numericBoxFootX
             // 
             numericBoxFootX.BackColor = System.Drawing.SystemColors.Control;
             numericBoxFootX.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxFootX.FooterText = "pixel";
+            numericBoxFootX.FooterFont = new System.Drawing.Font("Segoe UI", 9.75F);
+            numericBoxFootX.FooterPadding = new System.Windows.Forms.Padding(0, 2, 0, 0);
+            numericBoxFootX.FooterText = "px";
             numericBoxFootX.HeaderBackColor = System.Drawing.SystemColors.Control;
-            numericBoxFootX.HeaderText = "fx";
-            numericBoxFootX.Location = new System.Drawing.Point(491, 51);
-            numericBoxFootX.Margin = new System.Windows.Forms.Padding(0);
+            numericBoxFootX.HeaderFont = new System.Drawing.Font("Segoe UI", 9.75F);
+            numericBoxFootX.HeaderPadding = new System.Windows.Forms.Padding(0, 2, 0, 0);
+            numericBoxFootX.HeaderText = "Foot:  fx";
+            numericBoxFootX.Location = new System.Drawing.Point(202, 3);
             numericBoxFootX.MaximumSize = new System.Drawing.Size(1000, 30);
             numericBoxFootX.MinimumSize = new System.Drawing.Size(1, 20);
             numericBoxFootX.Name = "numericBoxFootX";
             numericBoxFootX.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
             numericBoxFootX.RadianValue = 8.9360857702109673D;
-            numericBoxFootX.Size = new System.Drawing.Size(123, 27);
+            numericBoxFootX.Size = new System.Drawing.Size(134, 25);
             numericBoxFootX.SkipEventDuringInput = false;
             numericBoxFootX.SmartIncrement = true;
             numericBoxFootX.TabIndex = 0;
-            numericBoxFootX.TextFont = new System.Drawing.Font("Yu Gothic UI", 9F);
             numericBoxFootX.ThousandsSeparator = true;
             numericBoxFootX.Value = 512D;
-            // 
-            // numericBoxPixelHeight
-            // 
-            numericBoxPixelHeight.BackColor = System.Drawing.SystemColors.Control;
-            numericBoxPixelHeight.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxPixelHeight.FooterText = "pix.";
-            numericBoxPixelHeight.HeaderBackColor = System.Drawing.SystemColors.Control;
-            numericBoxPixelHeight.HeaderText = "height";
-            numericBoxPixelHeight.Location = new System.Drawing.Point(68, 78);
-            numericBoxPixelHeight.Margin = new System.Windows.Forms.Padding(0);
-            numericBoxPixelHeight.MaximumSize = new System.Drawing.Size(1000, 30);
-            numericBoxPixelHeight.MinimumSize = new System.Drawing.Size(1, 20);
-            numericBoxPixelHeight.Name = "numericBoxPixelHeight";
-            numericBoxPixelHeight.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
-            numericBoxPixelHeight.RadianValue = 17.872171540421935D;
-            numericBoxPixelHeight.Size = new System.Drawing.Size(113, 27);
-            numericBoxPixelHeight.SkipEventDuringInput = false;
-            numericBoxPixelHeight.SmartIncrement = true;
-            numericBoxPixelHeight.TabIndex = 0;
-            numericBoxPixelHeight.TextFont = new System.Drawing.Font("Yu Gothic UI", 9F);
-            numericBoxPixelHeight.ThousandsSeparator = true;
-            numericBoxPixelHeight.Value = 1024D;
+            numericBoxFootX.ValueFontSize = 9F;
             // 
             // numericBoxPixelSize
             // 
             numericBoxPixelSize.BackColor = System.Drawing.SystemColors.Control;
             numericBoxPixelSize.FooterBackColor = System.Drawing.SystemColors.Control;
+            numericBoxPixelSize.FooterFont = new System.Drawing.Font("Segoe UI", 9.75F);
+            numericBoxPixelSize.FooterPadding = new System.Windows.Forms.Padding(0, 2, 0, 0);
             numericBoxPixelSize.FooterText = "mm";
             numericBoxPixelSize.HeaderBackColor = System.Drawing.SystemColors.Control;
+            numericBoxPixelSize.HeaderFont = new System.Drawing.Font("Segoe UI", 9.75F);
+            numericBoxPixelSize.HeaderPadding = new System.Windows.Forms.Padding(0, 2, 0, 0);
             numericBoxPixelSize.HeaderText = "pix. size";
-            numericBoxPixelSize.Location = new System.Drawing.Point(194, 51);
+            numericBoxPixelSize.Location = new System.Drawing.Point(448, 0);
             numericBoxPixelSize.Margin = new System.Windows.Forms.Padding(0);
             numericBoxPixelSize.MaximumSize = new System.Drawing.Size(1000, 30);
             numericBoxPixelSize.MinimumSize = new System.Drawing.Size(1, 20);
             numericBoxPixelSize.Name = "numericBoxPixelSize";
             numericBoxPixelSize.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
             numericBoxPixelSize.RadianValue = 0.0017453292519943296D;
-            numericBoxPixelSize.Size = new System.Drawing.Size(143, 27);
+            numericBoxPixelSize.Size = new System.Drawing.Size(119, 27);
             numericBoxPixelSize.SkipEventDuringInput = false;
             numericBoxPixelSize.SmartIncrement = true;
             numericBoxPixelSize.TabIndex = 0;
-            numericBoxPixelSize.TextFont = new System.Drawing.Font("Yu Gothic UI", 9F);
             numericBoxPixelSize.ThousandsSeparator = true;
             numericBoxPixelSize.Value = 0.1D;
+            numericBoxPixelSize.ValueFontSize = 9F;
             // 
             // checkBoxDetectorSizePosition
             // 
@@ -434,8 +408,12 @@
             // 
             numericBoxCameraLength2.BackColor = System.Drawing.SystemColors.Control;
             numericBoxCameraLength2.FooterBackColor = System.Drawing.SystemColors.Control;
+            numericBoxCameraLength2.FooterFont = new System.Drawing.Font("Segoe UI", 9.75F);
+            numericBoxCameraLength2.FooterPadding = new System.Windows.Forms.Padding(0, 3, 0, 0);
             numericBoxCameraLength2.FooterText = "mm";
             numericBoxCameraLength2.HeaderBackColor = System.Drawing.SystemColors.Control;
+            numericBoxCameraLength2.HeaderFont = new System.Drawing.Font("Segoe UI", 9.75F);
+            numericBoxCameraLength2.HeaderPadding = new System.Windows.Forms.Padding(0, 3, 0, 0);
             numericBoxCameraLength2.HeaderText = "Camera length 2";
             numericBoxCameraLength2.Location = new System.Drawing.Point(0, 0);
             numericBoxCameraLength2.Margin = new System.Windows.Forms.Padding(0);
@@ -446,11 +424,10 @@
             numericBoxCameraLength2.Name = "numericBoxCameraLength2";
             numericBoxCameraLength2.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
             numericBoxCameraLength2.RadianValue = 17.453292519943293D;
-            numericBoxCameraLength2.Size = new System.Drawing.Size(220, 27);
+            numericBoxCameraLength2.Size = new System.Drawing.Size(220, 25);
             numericBoxCameraLength2.SkipEventDuringInput = false;
             numericBoxCameraLength2.SmartIncrement = true;
             numericBoxCameraLength2.TabIndex = 2;
-            numericBoxCameraLength2.TextFont = new System.Drawing.Font("Yu Gothic UI", 9F);
             numericBoxCameraLength2.ThousandsSeparator = true;
             numericBoxCameraLength2.Value = 1000D;
             numericBoxCameraLength2.ValueChanged += numericBoxCameraLength2_ValueChanged;
@@ -459,9 +436,12 @@
             // 
             numericBoxTau.BackColor = System.Drawing.SystemColors.Control;
             numericBoxTau.FooterBackColor = System.Drawing.SystemColors.Control;
+            numericBoxTau.FooterFont = new System.Drawing.Font("Segoe UI", 9.75F);
+            numericBoxTau.FooterPadding = new System.Windows.Forms.Padding(0, 3, 0, 0);
             numericBoxTau.FooterText = "°";
             numericBoxTau.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxTau.HeaderFont = new System.Drawing.Font("Segoe UI", 11F);
+            numericBoxTau.HeaderPadding = new System.Windows.Forms.Padding(0, 1, 0, 0);
             numericBoxTau.HeaderText = "τ";
             numericBoxTau.Location = new System.Drawing.Point(339, 0);
             numericBoxTau.Margin = new System.Windows.Forms.Padding(0);
@@ -471,11 +451,10 @@
             numericBoxTau.MinimumSize = new System.Drawing.Size(1, 20);
             numericBoxTau.Name = "numericBoxTau";
             numericBoxTau.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
-            numericBoxTau.Size = new System.Drawing.Size(87, 27);
+            numericBoxTau.Size = new System.Drawing.Size(87, 25);
             numericBoxTau.SkipEventDuringInput = false;
             numericBoxTau.SmartIncrement = true;
             numericBoxTau.TabIndex = 2;
-            numericBoxTau.TextFont = new System.Drawing.Font("Yu Gothic UI", 9F);
             numericBoxTau.ThousandsSeparator = true;
             numericBoxTau.ValueChanged += numericBoxTau_ValueChanged;
             // 
@@ -492,17 +471,17 @@
             // 
             // panelDetectorAreaAndOverlappedImage
             // 
-            this.panelDetectorAreaAndOverlappedImage.AutoSize = true;
-            this.panelDetectorAreaAndOverlappedImage.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            captureExtender.SetCapture(this.panelDetectorAreaAndOverlappedImage, true);
-            this.panelDetectorAreaAndOverlappedImage.Controls.Add(checkBoxDetectorSizePosition);
-            this.panelDetectorAreaAndOverlappedImage.Controls.Add(groupBoxDetectorAndOverlappedImage);
-            this.panelDetectorAreaAndOverlappedImage.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelDetectorAreaAndOverlappedImage.Location = new System.Drawing.Point(0, 657);
-            this.panelDetectorAreaAndOverlappedImage.Margin = new System.Windows.Forms.Padding(0);
-            this.panelDetectorAreaAndOverlappedImage.Name = "panelDetectorAreaAndOverlappedImage";
-            this.panelDetectorAreaAndOverlappedImage.Size = new System.Drawing.Size(1007, 188);
-            this.panelDetectorAreaAndOverlappedImage.TabIndex = 57;
+            panelDetectorAreaAndOverlappedImage.AutoSize = true;
+            panelDetectorAreaAndOverlappedImage.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            captureExtender.SetCapture(panelDetectorAreaAndOverlappedImage, true);
+            panelDetectorAreaAndOverlappedImage.Controls.Add(checkBoxDetectorSizePosition);
+            panelDetectorAreaAndOverlappedImage.Controls.Add(groupBoxDetectorAndOverlappedImage);
+            panelDetectorAreaAndOverlappedImage.Dock = System.Windows.Forms.DockStyle.Top;
+            panelDetectorAreaAndOverlappedImage.Location = new System.Drawing.Point(0, 655);
+            panelDetectorAreaAndOverlappedImage.Margin = new System.Windows.Forms.Padding(0);
+            panelDetectorAreaAndOverlappedImage.Name = "panelDetectorAreaAndOverlappedImage";
+            panelDetectorAreaAndOverlappedImage.Size = new System.Drawing.Size(1007, 172);
+            panelDetectorAreaAndOverlappedImage.TabIndex = 57;
             // 
             // panelDetectorGeometry
             // 
@@ -517,16 +496,19 @@
             panelDetectorGeometry.Location = new System.Drawing.Point(0, 0);
             panelDetectorGeometry.Margin = new System.Windows.Forms.Padding(0);
             panelDetectorGeometry.Name = "panelDetectorGeometry";
-            panelDetectorGeometry.Size = new System.Drawing.Size(1007, 27);
+            panelDetectorGeometry.Size = new System.Drawing.Size(1007, 25);
             panelDetectorGeometry.TabIndex = 58;
             // 
             // numericBoxPhi
             // 
             numericBoxPhi.BackColor = System.Drawing.SystemColors.Control;
             numericBoxPhi.FooterBackColor = System.Drawing.SystemColors.Control;
+            numericBoxPhi.FooterFont = new System.Drawing.Font("Segoe UI", 9.75F);
+            numericBoxPhi.FooterPadding = new System.Windows.Forms.Padding(0, 3, 0, 0);
             numericBoxPhi.FooterText = "°";
             numericBoxPhi.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxPhi.HeaderFont = new System.Drawing.Font("Segoe UI", 11F);
+            numericBoxPhi.HeaderPadding = new System.Windows.Forms.Padding(0, 1, 0, 0);
             numericBoxPhi.HeaderText = "φ";
             numericBoxPhi.Location = new System.Drawing.Point(236, 0);
             numericBoxPhi.Margin = new System.Windows.Forms.Padding(0);
@@ -534,11 +516,10 @@
             numericBoxPhi.MinimumSize = new System.Drawing.Size(1, 20);
             numericBoxPhi.Name = "numericBoxPhi";
             numericBoxPhi.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
-            numericBoxPhi.Size = new System.Drawing.Size(87, 27);
+            numericBoxPhi.Size = new System.Drawing.Size(87, 25);
             numericBoxPhi.SkipEventDuringInput = false;
             numericBoxPhi.SmartIncrement = true;
             numericBoxPhi.TabIndex = 2;
-            numericBoxPhi.TextFont = new System.Drawing.Font("Yu Gothic UI", 9F);
             numericBoxPhi.ThousandsSeparator = true;
             numericBoxPhi.ValueChanged += numericBoxTau_ValueChanged;
             // 
@@ -546,7 +527,7 @@
             // 
             panelSchematicDiagram.Controls.Add(pictureBoxSchematicDiagram);
             panelSchematicDiagram.Dock = System.Windows.Forms.DockStyle.Top;
-            panelSchematicDiagram.Location = new System.Drawing.Point(0, 27);
+            panelSchematicDiagram.Location = new System.Drawing.Point(0, 25);
             panelSchematicDiagram.Margin = new System.Windows.Forms.Padding(0);
             panelSchematicDiagram.Name = "panelSchematicDiagram";
             panelSchematicDiagram.Size = new System.Drawing.Size(1007, 630);
@@ -564,6 +545,64 @@
             pictureBoxSchematicDiagram.TabIndex = 59;
             pictureBoxSchematicDiagram.TabStop = false;
             // 
+            // flowLayoutPanel1
+            // 
+            flowLayoutPanel1.AutoSize = true;
+            flowLayoutPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            flowLayoutPanel1.Controls.Add(sizeControl1);
+            flowLayoutPanel1.Controls.Add(numericBoxFootX);
+            flowLayoutPanel1.Controls.Add(numericBoxFootY);
+            flowLayoutPanel1.Controls.Add(numericBoxPixelSize);
+            flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
+            flowLayoutPanel1.Location = new System.Drawing.Point(3, 52);
+            flowLayoutPanel1.Name = "flowLayoutPanel1";
+            flowLayoutPanel1.Size = new System.Drawing.Size(617, 31);
+            flowLayoutPanel1.TabIndex = 104;
+            // 
+            // flowLayoutPanel2
+            // 
+            flowLayoutPanel2.AutoSize = true;
+            flowLayoutPanel2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            flowLayoutPanel2.Controls.Add(textBoxFileName);
+            flowLayoutPanel2.Controls.Add(buttonClearPicture);
+            flowLayoutPanel2.Controls.Add(buttonLoadPicture);
+            flowLayoutPanel2.Controls.Add(buttonRot90);
+            flowLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Top;
+            flowLayoutPanel2.Location = new System.Drawing.Point(3, 23);
+            flowLayoutPanel2.Name = "flowLayoutPanel2";
+            flowLayoutPanel2.Size = new System.Drawing.Size(617, 29);
+            flowLayoutPanel2.TabIndex = 7;
+            // 
+            // flowLayoutPanel3
+            // 
+            flowLayoutPanel3.AutoSize = true;
+            flowLayoutPanel3.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            flowLayoutPanel3.Controls.Add(label10);
+            flowLayoutPanel3.Controls.Add(trackBarPictureOpacity1);
+            flowLayoutPanel3.Controls.Add(label24);
+            flowLayoutPanel3.Controls.Add(comboBoxGradient);
+            flowLayoutPanel3.Controls.Add(label23);
+            flowLayoutPanel3.Controls.Add(comboBoxScale1);
+            flowLayoutPanel3.Controls.Add(label22);
+            flowLayoutPanel3.Controls.Add(comboBoxScale2);
+            flowLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Top;
+            flowLayoutPanel3.Location = new System.Drawing.Point(3, 83);
+            flowLayoutPanel3.Name = "flowLayoutPanel3";
+            flowLayoutPanel3.Size = new System.Drawing.Size(617, 27);
+            flowLayoutPanel3.TabIndex = 7;
+            // 
+            // flowLayoutPanel4
+            // 
+            flowLayoutPanel4.Controls.Add(label2);
+            flowLayoutPanel4.Controls.Add(trackBarMinInt);
+            flowLayoutPanel4.Controls.Add(label1);
+            flowLayoutPanel4.Controls.Add(trackBarMaxInt);
+            flowLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            flowLayoutPanel4.Location = new System.Drawing.Point(65, 110);
+            flowLayoutPanel4.Name = "flowLayoutPanel4";
+            flowLayoutPanel4.Size = new System.Drawing.Size(555, 51);
+            flowLayoutPanel4.TabIndex = 7;
+            // 
             // FormDiffractionSimulatorGeometry
             // 
             AllowDrop = true;
@@ -571,8 +610,8 @@
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             BackColor = System.Drawing.SystemColors.Control;
-            ClientSize = new System.Drawing.Size(1007, 845);
-            Controls.Add(this.panelDetectorAreaAndOverlappedImage);
+            ClientSize = new System.Drawing.Size(1007, 830);
+            Controls.Add(panelDetectorAreaAndOverlappedImage);
             Controls.Add(panelSchematicDiagram);
             Controls.Add(panelDetectorGeometry);
             Font = new System.Drawing.Font("Segoe UI", 9.75F);
@@ -591,12 +630,19 @@
             ((System.ComponentModel.ISupportInitialize)trackBarMaxInt).EndInit();
             ((System.ComponentModel.ISupportInitialize)trackBarMinInt).EndInit();
             ((System.ComponentModel.ISupportInitialize)trackBarPictureOpacity1).EndInit();
-            this.panelDetectorAreaAndOverlappedImage.ResumeLayout(false);
-            this.panelDetectorAreaAndOverlappedImage.PerformLayout();
+            panelDetectorAreaAndOverlappedImage.ResumeLayout(false);
+            panelDetectorAreaAndOverlappedImage.PerformLayout();
             panelDetectorGeometry.ResumeLayout(false);
             panelDetectorGeometry.PerformLayout();
             panelSchematicDiagram.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBoxSchematicDiagram).EndInit();
+            flowLayoutPanel1.ResumeLayout(false);
+            flowLayoutPanel2.ResumeLayout(false);
+            flowLayoutPanel2.PerformLayout();
+            flowLayoutPanel3.ResumeLayout(false);
+            flowLayoutPanel3.PerformLayout();
+            flowLayoutPanel4.ResumeLayout(false);
+            flowLayoutPanel4.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -607,10 +653,8 @@
         private Crystallography.Controls.NumericBox numericBoxCameraLength2;
         private Crystallography.Controls.NumericBox numericBoxFootY;
         private Crystallography.Controls.NumericBox numericBoxFootX;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.GroupBox groupBoxDetectorAndOverlappedImage;
-        private Crystallography.Controls.NumericBox numericBoxPixelWidth;
-        private Crystallography.Controls.NumericBox numericBoxPixelHeight;
+        private Crystallography.Controls.SizeControl sizeControl1; // 260521Cl: numericBoxPixelWidth/Height を置換
         private Crystallography.Controls.NumericBox numericBoxPixelSize;
         private System.Windows.Forms.CheckBox checkBoxDetectorSizePosition;
         public System.Windows.Forms.ComboBox comboBoxScale2;
@@ -636,5 +680,9 @@
         private System.Windows.Forms.PictureBox pictureBoxSchematicDiagram;
         private System.Windows.Forms.Panel panelSchematicDiagram;
         private Crystallography.Controls.NumericBox numericBoxPhi;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel4;
     }
 }

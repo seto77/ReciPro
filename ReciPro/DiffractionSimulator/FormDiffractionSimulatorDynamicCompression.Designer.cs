@@ -179,7 +179,7 @@ namespace ReciPro
             this.numericBoxCompressedThetaB.SkipEventDuringInput = false;
             this.numericBoxCompressedThetaB.SmartIncrement = true;
             this.numericBoxCompressedThetaB.TabIndex = 2;
-                        this.numericBoxCompressedThetaB.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
+                        this.numericBoxCompressedThetaB.ValueForeColor = System.Drawing.SystemColors.WindowText;
                         this.numericBoxCompressedThetaB.ThousandsSeparator = true;
             this.numericBoxCompressedThetaB.ToolTip = "";
             this.numericBoxCompressedThetaB.UpDown_Increment = 1D;
@@ -207,7 +207,7 @@ namespace ReciPro
             this.numericBoxCompressedOmega.SkipEventDuringInput = false;
             this.numericBoxCompressedOmega.SmartIncrement = true;
             this.numericBoxCompressedOmega.TabIndex = 2;
-                        this.numericBoxCompressedOmega.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
+                        this.numericBoxCompressedOmega.ValueForeColor = System.Drawing.SystemColors.WindowText;
                         this.numericBoxCompressedOmega.ThousandsSeparator = true;
             this.numericBoxCompressedOmega.ToolTip = "";
             this.numericBoxCompressedOmega.UpDown_Increment = 1D;
@@ -235,7 +235,7 @@ namespace ReciPro
             this.numericBoxCompressedThetaA.SkipEventDuringInput = false;
             this.numericBoxCompressedThetaA.SmartIncrement = true;
             this.numericBoxCompressedThetaA.TabIndex = 2;
-                        this.numericBoxCompressedThetaA.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
+                        this.numericBoxCompressedThetaA.ValueForeColor = System.Drawing.SystemColors.WindowText;
                         this.numericBoxCompressedThetaA.ThousandsSeparator = true;
             this.numericBoxCompressedThetaA.ToolTip = "";
             this.numericBoxCompressedThetaA.UpDown_Increment = 1D;
@@ -262,7 +262,7 @@ namespace ReciPro
             this.numericBoxCompressedOmegaSigma.SkipEventDuringInput = false;
             this.numericBoxCompressedOmegaSigma.SmartIncrement = true;
             this.numericBoxCompressedOmegaSigma.TabIndex = 2;
-                        this.numericBoxCompressedOmegaSigma.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
+                        this.numericBoxCompressedOmegaSigma.ValueForeColor = System.Drawing.SystemColors.WindowText;
                         this.numericBoxCompressedOmegaSigma.ThousandsSeparator = true;
             this.numericBoxCompressedOmegaSigma.ToolTip = "";
             this.numericBoxCompressedOmegaSigma.UpDown_Increment = 1D;
@@ -303,7 +303,7 @@ namespace ReciPro
             this.numericBoxReleasedThetaB.SkipEventDuringInput = false;
             this.numericBoxReleasedThetaB.SmartIncrement = true;
             this.numericBoxReleasedThetaB.TabIndex = 2;
-                        this.numericBoxReleasedThetaB.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
+                        this.numericBoxReleasedThetaB.ValueForeColor = System.Drawing.SystemColors.WindowText;
                         this.numericBoxReleasedThetaB.ThousandsSeparator = true;
             this.numericBoxReleasedThetaB.ToolTip = "";
             this.numericBoxReleasedThetaB.UpDown_Increment = 1D;
@@ -331,7 +331,7 @@ namespace ReciPro
             this.numericBoxReleasedOmegaSigma.SkipEventDuringInput = false;
             this.numericBoxReleasedOmegaSigma.SmartIncrement = true;
             this.numericBoxReleasedOmegaSigma.TabIndex = 2;
-                        this.numericBoxReleasedOmegaSigma.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
+                        this.numericBoxReleasedOmegaSigma.ValueForeColor = System.Drawing.SystemColors.WindowText;
                         this.numericBoxReleasedOmegaSigma.ThousandsSeparator = true;
             this.numericBoxReleasedOmegaSigma.ToolTip = "";
             this.numericBoxReleasedOmegaSigma.UpDown_Increment = 1D;
@@ -359,7 +359,7 @@ namespace ReciPro
             this.numericBoxReleasedOmega.SkipEventDuringInput = false;
             this.numericBoxReleasedOmega.SmartIncrement = true;
             this.numericBoxReleasedOmega.TabIndex = 2;
-                        this.numericBoxReleasedOmega.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
+                        this.numericBoxReleasedOmega.ValueForeColor = System.Drawing.SystemColors.WindowText;
                         this.numericBoxReleasedOmega.ThousandsSeparator = true;
             this.numericBoxReleasedOmega.ToolTip = "";
             this.numericBoxReleasedOmega.UpDown_Increment = 1D;
@@ -387,7 +387,7 @@ namespace ReciPro
             this.numericBoxReleasedThetaA.SkipEventDuringInput = false;
             this.numericBoxReleasedThetaA.SmartIncrement = true;
             this.numericBoxReleasedThetaA.TabIndex = 2;
-                        this.numericBoxReleasedThetaA.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
+                        this.numericBoxReleasedThetaA.ValueForeColor = System.Drawing.SystemColors.WindowText;
                         this.numericBoxReleasedThetaA.ThousandsSeparator = true;
             this.numericBoxReleasedThetaA.ToolTip = "";
             this.numericBoxReleasedThetaA.UpDown_Increment = 1D;
@@ -425,7 +425,7 @@ namespace ReciPro
             this.numericBoxEOS_K0.SkipEventDuringInput = false;
             this.numericBoxEOS_K0.SmartIncrement = true;
             this.numericBoxEOS_K0.TabIndex = 2;
-                        this.numericBoxEOS_K0.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
+                        this.numericBoxEOS_K0.ValueForeColor = System.Drawing.SystemColors.WindowText;
                         this.numericBoxEOS_K0.ThousandsSeparator = true;
             this.numericBoxEOS_K0.ToolTip = "";
             this.numericBoxEOS_K0.UpDown_Increment = 1D;
@@ -452,7 +452,7 @@ namespace ReciPro
             this.numericBoxEOS_Kprime.SkipEventDuringInput = false;
             this.numericBoxEOS_Kprime.SmartIncrement = true;
             this.numericBoxEOS_Kprime.TabIndex = 2;
-                        this.numericBoxEOS_Kprime.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
+                        this.numericBoxEOS_Kprime.ValueForeColor = System.Drawing.SystemColors.WindowText;
                         this.numericBoxEOS_Kprime.ThousandsSeparator = true;
             this.numericBoxEOS_Kprime.ToolTip = "";
             this.numericBoxEOS_Kprime.UpDown_Increment = 1D;
@@ -493,7 +493,7 @@ namespace ReciPro
             this.numericBoxShockedPlaneH.SkipEventDuringInput = false;
             this.numericBoxShockedPlaneH.SmartIncrement = false;
             this.numericBoxShockedPlaneH.TabIndex = 2;
-                        this.numericBoxShockedPlaneH.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
+                        this.numericBoxShockedPlaneH.ValueForeColor = System.Drawing.SystemColors.WindowText;
                         this.numericBoxShockedPlaneH.ThousandsSeparator = true;
             this.numericBoxShockedPlaneH.ToolTip = "";
             this.numericBoxShockedPlaneH.UpDown_Increment = 1D;
@@ -521,7 +521,7 @@ namespace ReciPro
             this.numericBoxShockedPlaneK.SkipEventDuringInput = false;
             this.numericBoxShockedPlaneK.SmartIncrement = false;
             this.numericBoxShockedPlaneK.TabIndex = 2;
-                        this.numericBoxShockedPlaneK.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
+                        this.numericBoxShockedPlaneK.ValueForeColor = System.Drawing.SystemColors.WindowText;
                         this.numericBoxShockedPlaneK.ThousandsSeparator = true;
             this.numericBoxShockedPlaneK.ToolTip = "";
             this.numericBoxShockedPlaneK.UpDown_Increment = 1D;
@@ -549,7 +549,7 @@ namespace ReciPro
             this.numericBoxShockedPlaneL.SkipEventDuringInput = false;
             this.numericBoxShockedPlaneL.SmartIncrement = false;
             this.numericBoxShockedPlaneL.TabIndex = 2;
-                        this.numericBoxShockedPlaneL.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
+                        this.numericBoxShockedPlaneL.ValueForeColor = System.Drawing.SystemColors.WindowText;
                         this.numericBoxShockedPlaneL.ThousandsSeparator = true;
             this.numericBoxShockedPlaneL.ToolTip = "";
             this.numericBoxShockedPlaneL.UpDown_Increment = 1D;
@@ -658,7 +658,7 @@ namespace ReciPro
             this.numericBoxUp.SkipEventDuringInput = false;
             this.numericBoxUp.SmartIncrement = true;
             this.numericBoxUp.TabIndex = 2;
-                        this.numericBoxUp.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
+                        this.numericBoxUp.ValueForeColor = System.Drawing.SystemColors.WindowText;
                         this.numericBoxUp.ThousandsSeparator = true;
             this.numericBoxUp.ToolTip = "";
             this.numericBoxUp.UpDown_Increment = 1D;
@@ -709,7 +709,7 @@ namespace ReciPro
             this.numericBoxUr.SkipEventDuringInput = false;
             this.numericBoxUr.SmartIncrement = true;
             this.numericBoxUr.TabIndex = 2;
-                        this.numericBoxUr.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
+                        this.numericBoxUr.ValueForeColor = System.Drawing.SystemColors.WindowText;
                         this.numericBoxUr.ThousandsSeparator = true;
             this.numericBoxUr.ToolTip = "";
             this.numericBoxUr.UpDown_Increment = 1D;
@@ -762,7 +762,7 @@ namespace ReciPro
             this.numericBoxMassAbsorption.SkipEventDuringInput = false;
             this.numericBoxMassAbsorption.SmartIncrement = true;
             this.numericBoxMassAbsorption.TabIndex = 2;
-                        this.numericBoxMassAbsorption.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
+                        this.numericBoxMassAbsorption.ValueForeColor = System.Drawing.SystemColors.WindowText;
                         this.numericBoxMassAbsorption.ThousandsSeparator = true;
             this.numericBoxMassAbsorption.ToolTip = "";
             this.numericBoxMassAbsorption.UpDown_Increment = 1D;
@@ -899,7 +899,7 @@ namespace ReciPro
             this.numericBoxOmegaStep.SkipEventDuringInput = false;
             this.numericBoxOmegaStep.SmartIncrement = true;
             this.numericBoxOmegaStep.TabIndex = 2;
-                        this.numericBoxOmegaStep.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
+                        this.numericBoxOmegaStep.ValueForeColor = System.Drawing.SystemColors.WindowText;
                         this.numericBoxOmegaStep.ThousandsSeparator = true;
             this.numericBoxOmegaStep.ToolTip = "";
             this.numericBoxOmegaStep.UpDown_Increment = 0.1D;
@@ -928,7 +928,7 @@ namespace ReciPro
             this.numericBoxOmegaTimes.SkipEventDuringInput = false;
             this.numericBoxOmegaTimes.SmartIncrement = true;
             this.numericBoxOmegaTimes.TabIndex = 2;
-                        this.numericBoxOmegaTimes.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
+                        this.numericBoxOmegaTimes.ValueForeColor = System.Drawing.SystemColors.WindowText;
                         this.numericBoxOmegaTimes.ThousandsSeparator = true;
             this.numericBoxOmegaTimes.ToolTip = "";
             this.numericBoxOmegaTimes.UpDown_Increment = 0.1D;
@@ -967,7 +967,7 @@ namespace ReciPro
             this.numericBoxDivisionOfRotationAngle.SkipEventDuringInput = false;
             this.numericBoxDivisionOfRotationAngle.SmartIncrement = true;
             this.numericBoxDivisionOfRotationAngle.TabIndex = 2;
-                        this.numericBoxDivisionOfRotationAngle.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
+                        this.numericBoxDivisionOfRotationAngle.ValueForeColor = System.Drawing.SystemColors.WindowText;
                         this.numericBoxDivisionOfRotationAngle.ThousandsSeparator = true;
             this.numericBoxDivisionOfRotationAngle.ToolTip = "";
             this.numericBoxDivisionOfRotationAngle.UpDown_Increment = 1D;
@@ -995,7 +995,7 @@ namespace ReciPro
             this.numericBoxDivisionOfRotationAxis.SkipEventDuringInput = false;
             this.numericBoxDivisionOfRotationAxis.SmartIncrement = true;
             this.numericBoxDivisionOfRotationAxis.TabIndex = 2;
-                        this.numericBoxDivisionOfRotationAxis.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
+                        this.numericBoxDivisionOfRotationAxis.ValueForeColor = System.Drawing.SystemColors.WindowText;
                         this.numericBoxDivisionOfRotationAxis.ThousandsSeparator = true;
             this.numericBoxDivisionOfRotationAxis.ToolTip = "";
             this.numericBoxDivisionOfRotationAxis.UpDown_Increment = 1D;
@@ -1195,7 +1195,7 @@ namespace ReciPro
             this.numericBoxSlipPlaneH.SkipEventDuringInput = false;
             this.numericBoxSlipPlaneH.SmartIncrement = false;
             this.numericBoxSlipPlaneH.TabIndex = 2;
-                        this.numericBoxSlipPlaneH.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
+                        this.numericBoxSlipPlaneH.ValueForeColor = System.Drawing.SystemColors.WindowText;
                         this.numericBoxSlipPlaneH.ThousandsSeparator = true;
             this.numericBoxSlipPlaneH.ToolTip = "";
             this.numericBoxSlipPlaneH.UpDown_Increment = 1D;
@@ -1223,7 +1223,7 @@ namespace ReciPro
             this.numericBoxSlipPlaneK.SkipEventDuringInput = false;
             this.numericBoxSlipPlaneK.SmartIncrement = false;
             this.numericBoxSlipPlaneK.TabIndex = 2;
-                        this.numericBoxSlipPlaneK.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
+                        this.numericBoxSlipPlaneK.ValueForeColor = System.Drawing.SystemColors.WindowText;
                         this.numericBoxSlipPlaneK.ThousandsSeparator = true;
             this.numericBoxSlipPlaneK.ToolTip = "";
             this.numericBoxSlipPlaneK.UpDown_Increment = 1D;
@@ -1251,7 +1251,7 @@ namespace ReciPro
             this.numericBoxSlipPlaneL.SkipEventDuringInput = false;
             this.numericBoxSlipPlaneL.SmartIncrement = false;
             this.numericBoxSlipPlaneL.TabIndex = 2;
-                        this.numericBoxSlipPlaneL.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
+                        this.numericBoxSlipPlaneL.ValueForeColor = System.Drawing.SystemColors.WindowText;
                         this.numericBoxSlipPlaneL.ThousandsSeparator = true;
             this.numericBoxSlipPlaneL.ToolTip = "";
             this.numericBoxSlipPlaneL.UpDown_Increment = 1D;

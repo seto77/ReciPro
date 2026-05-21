@@ -193,7 +193,7 @@
             numericBoxDistance.Name = "numericBoxDistance";
             numericBoxDistance.ShowUpDown = true;
             numericBoxDistance.SkipEventDuringInput = false;
-            numericBoxDistance.TextFontSize = 9F;
+            numericBoxDistance.ValueFontSize = 9F;
             numericBoxDistance.ThousandsSeparator = true;
             numericBoxDistance.UpDown_Increment = 0.1D;
             // 

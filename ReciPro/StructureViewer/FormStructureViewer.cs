@@ -345,8 +345,10 @@ public partial class FormStructureViewer : FormBase
         #endregion
 
         SkipEvent = true;
-        numericBoxClientWidth.Value = splitContainer1.Panel1.Width;
-        numericBoxClientHeight.Value = splitContainer1.Panel1.Height;
+        // 260521Cl: numericBoxClientWidth/Height → sizeControl1 へ置換
+        //numericBoxClientWidth.Value = splitContainer1.Panel1.Width;
+        //numericBoxClientHeight.Value = splitContainer1.Panel1.Height;
+        sizeControl1.Value = new Size(splitContainer1.Panel1.Width, splitContainer1.Panel1.Height);
         SkipEvent = false;
     }
 
@@ -1808,8 +1810,10 @@ public partial class FormStructureViewer : FormBase
         textBoxCalcInformation.AppendText($"Generation of legend control: {sw.ElapsedMilliseconds}ms.\r\n");
 
         SkipEvent = true;
-        numericBoxClientWidth.Value = glControlMain.ClientSize.Width;
-        numericBoxClientHeight.Value = glControlMain.ClientSize.Height;
+        // 260521Cl: numericBoxClientWidth/Height → sizeControl1 へ置換
+        //numericBoxClientWidth.Value = glControlMain.ClientSize.Width;
+        //numericBoxClientHeight.Value = glControlMain.ClientSize.Height;
+        sizeControl1.Value = glControlMain.ClientSize;
         SkipEvent = false;
     }
 
@@ -2054,8 +2058,10 @@ public partial class FormStructureViewer : FormBase
         ResumeLayout();
 
         SkipEvent = true;
-        numericBoxClientWidth.Value = glControlMain.ClientSize.Width;
-        numericBoxClientHeight.Value = glControlMain.ClientSize.Height;
+        // 260521Cl: numericBoxClientWidth/Height → sizeControl1 へ置換
+        //numericBoxClientWidth.Value = glControlMain.ClientSize.Width;
+        //numericBoxClientHeight.Value = glControlMain.ClientSize.Height;
+        sizeControl1.Value = glControlMain.ClientSize;
         SkipEvent = false;
     }
     private void splitContainer1_Panel1_ClientSizeChanged(object sender, EventArgs e)
@@ -2063,7 +2069,8 @@ public partial class FormStructureViewer : FormBase
 
     }
 
-    private void numericBoxClientWidth_ValueChanged(object sender, EventArgs e)
+    // 260521Cl: numericBoxClientWidth_ValueChanged → sizeControl1_ValueChanged へ改名 (numericBoxClientWidth/Height を sizeControl1 に置換したため)
+    private void sizeControl1_ValueChanged(object sender, EventArgs e)
     {
         if (SkipEvent) return;
         SkipEvent = true;
@@ -2071,10 +2078,12 @@ public partial class FormStructureViewer : FormBase
         var currentWidth = glControlMain.ClientSize.Width;
         var currentHeight = glControlMain.ClientSize.Height;
 
-        this.Size = new Size(this.Size.Width + numericBoxClientWidth.ValueInteger - currentWidth, this.Size.Height + numericBoxClientHeight.ValueInteger - currentHeight);
+        //this.Size = new Size(this.Size.Width + numericBoxClientWidth.ValueInteger - currentWidth, this.Size.Height + numericBoxClientHeight.ValueInteger - currentHeight);
+        this.Size = new Size(this.Size.Width + sizeControl1.ImageWidth - currentWidth, this.Size.Height + sizeControl1.ImageHeight - currentHeight);
 
-        numericBoxClientWidth.Value = glControlMain.ClientSize.Width;
-        numericBoxClientHeight.Value = glControlMain.ClientSize.Height;
+        //numericBoxClientWidth.Value = glControlMain.ClientSize.Width;
+        //numericBoxClientHeight.Value = glControlMain.ClientSize.Height;
+        sizeControl1.Value = glControlMain.ClientSize;
 
         SkipEvent = false;
 

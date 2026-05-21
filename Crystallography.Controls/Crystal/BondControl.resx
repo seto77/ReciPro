@@ -408,7 +408,7 @@
   <data name="numericBoxPolyhedronAlpha.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
   </data>
-  <data name="numericBoxPolyhedronAlpha.TextFontSize" type="System.Single, mscorlib">
+  <data name="numericBoxPolyhedronAlpha.ValueFontSize" type="System.Single, mscorlib">
     <value>9</value>
   </data>
   <data name="&gt;&gt;numericBoxPolyhedronAlpha.Name" xml:space="preserve">
@@ -492,7 +492,7 @@
   <data name="numericBoxEdgeWidth.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
-  <data name="numericBoxEdgeWidth.TextFontSize" type="System.Single, mscorlib">
+  <data name="numericBoxEdgeWidth.ValueFontSize" type="System.Single, mscorlib">
     <value>9</value>
   </data>
   <data name="&gt;&gt;numericBoxEdgeWidth.Name" xml:space="preserve">
@@ -714,7 +714,7 @@
   <data name="numericBoxBondAlpha.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
   </data>
-  <data name="numericBoxBondAlpha.TextFontSize" type="System.Single, mscorlib">
+  <data name="numericBoxBondAlpha.ValueFontSize" type="System.Single, mscorlib">
     <value>9</value>
   </data>
   <data name="&gt;&gt;numericBoxBondAlpha.Name" xml:space="preserve">
@@ -765,7 +765,7 @@
   <data name="numericBoxBondRadius.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
   </data>
-  <data name="numericBoxBondRadius.TextFontSize" type="System.Single, mscorlib">
+  <data name="numericBoxBondRadius.ValueFontSize" type="System.Single, mscorlib">
     <value>9</value>
   </data>
   <data name="numericBoxBondRadius.ToolTip" xml:space="preserve">
@@ -822,7 +822,7 @@
   <data name="numericBoxBondMaxLength.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
   </data>
-  <data name="numericBoxBondMaxLength.TextFontSize" type="System.Single, mscorlib">
+  <data name="numericBoxBondMaxLength.ValueFontSize" type="System.Single, mscorlib">
     <value>9</value>
   </data>
   <data name="&gt;&gt;numericBoxBondMaxLength.Name" xml:space="preserve">
@@ -870,7 +870,7 @@
   <data name="numericBoxBondMinLength.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
   </data>
-  <data name="numericBoxBondMinLength.TextFontSize" type="System.Single, mscorlib">
+  <data name="numericBoxBondMinLength.ValueFontSize" type="System.Single, mscorlib">
     <value>9</value>
   </data>
   <data name="&gt;&gt;numericBoxBondMinLength.Name" xml:space="preserve">

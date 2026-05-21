@@ -191,7 +191,7 @@
             numericBoxBiso.RoundErrorAccuracy = 8;
             numericBoxBiso.SkipEventDuringInput = false;
             numericBoxBiso.SmartIncrement = true;
-            numericBoxBiso.TextFontSize = 9F;
+            numericBoxBiso.ValueFontSize = 9F;
             numericBoxBiso.ThousandsSeparator = true;
             // 
             // numericBoxBisoerr
@@ -204,7 +204,7 @@
             numericBoxBisoerr.RoundErrorAccuracy = 8;
             numericBoxBisoerr.SkipEventDuringInput = false;
             numericBoxBisoerr.SmartIncrement = true;
-            numericBoxBisoerr.TextFontSize = 9F;
+            numericBoxBisoerr.ValueFontSize = 9F;
             numericBoxBisoerr.ThousandsSeparator = true;
             // 
             // labelX_
@@ -296,7 +296,7 @@
             numericBoxOccerr.Name = "numericBoxOccerr";
             numericBoxOccerr.SkipEventDuringInput = false;
             numericBoxOccerr.SmartIncrement = true;
-            numericBoxOccerr.TextFontSize = 9F;
+            numericBoxOccerr.ValueFontSize = 9F;
             numericBoxOccerr.ThousandsSeparator = true;
             numericBoxOccerr.TrimEndZero = true;
             // 
@@ -311,7 +311,7 @@
             numericBoxOcc.ShowFraction = true;
             numericBoxOcc.SkipEventDuringInput = false;
             numericBoxOcc.SmartIncrement = true;
-            numericBoxOcc.TextFontSize = 9F;
+            numericBoxOcc.ValueFontSize = 9F;
             numericBoxOcc.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxOcc, resources.GetString("numericBoxOcc.ToolTip1"));
             numericBoxOcc.TrimEndZero = true;
@@ -327,7 +327,7 @@
             numericBoxZ.ShowFraction = true;
             numericBoxZ.SkipEventDuringInput = false;
             numericBoxZ.SmartIncrement = true;
-            numericBoxZ.TextFontSize = 9F;
+            numericBoxZ.ValueFontSize = 9F;
             numericBoxZ.ThousandsSeparator = true;
             numericBoxZ.TrimEndZero = true;
             // 
@@ -341,7 +341,7 @@
             numericBoxYerr.Name = "numericBoxYerr";
             numericBoxYerr.SkipEventDuringInput = false;
             numericBoxYerr.SmartIncrement = true;
-            numericBoxYerr.TextFontSize = 9F;
+            numericBoxYerr.ValueFontSize = 9F;
             numericBoxYerr.ThousandsSeparator = true;
             numericBoxYerr.TrimEndZero = true;
             // 
@@ -355,7 +355,7 @@
             numericBoxXerr.Name = "numericBoxXerr";
             numericBoxXerr.SkipEventDuringInput = false;
             numericBoxXerr.SmartIncrement = true;
-            numericBoxXerr.TextFontSize = 9F;
+            numericBoxXerr.ValueFontSize = 9F;
             numericBoxXerr.ThousandsSeparator = true;
             numericBoxXerr.TrimEndZero = true;
             // 
@@ -370,7 +370,7 @@
             numericBoxY.ShowFraction = true;
             numericBoxY.SkipEventDuringInput = false;
             numericBoxY.SmartIncrement = true;
-            numericBoxY.TextFontSize = 9F;
+            numericBoxY.ValueFontSize = 9F;
             numericBoxY.ThousandsSeparator = true;
             numericBoxY.TrimEndZero = true;
             // 
@@ -385,7 +385,7 @@
             numericBoxX.ShowFraction = true;
             numericBoxX.SkipEventDuringInput = false;
             numericBoxX.SmartIncrement = true;
-            numericBoxX.TextFontSize = 9F;
+            numericBoxX.ValueFontSize = 9F;
             numericBoxX.ThousandsSeparator = true;
             numericBoxX.TrimEndZero = true;
             // 
@@ -399,7 +399,7 @@
             numericBoxZerr.Name = "numericBoxZerr";
             numericBoxZerr.SkipEventDuringInput = false;
             numericBoxZerr.SmartIncrement = true;
-            numericBoxZerr.TextFontSize = 9F;
+            numericBoxZerr.ValueFontSize = 9F;
             numericBoxZerr.ThousandsSeparator = true;
             numericBoxZerr.TrimEndZero = true;
             // 
@@ -562,7 +562,7 @@
             numericBoxOriginShiftZ.ShowFraction = true;
             numericBoxOriginShiftZ.SkipEventDuringInput = false;
             numericBoxOriginShiftZ.SmartIncrement = true;
-            numericBoxOriginShiftZ.TextFontSize = 9F;
+            numericBoxOriginShiftZ.ValueFontSize = 9F;
             numericBoxOriginShiftZ.ThousandsSeparator = true;
             // 
             // numericBoxOriginShiftY
@@ -578,7 +578,7 @@
             numericBoxOriginShiftY.ShowFraction = true;
             numericBoxOriginShiftY.SkipEventDuringInput = false;
             numericBoxOriginShiftY.SmartIncrement = true;
-            numericBoxOriginShiftY.TextFontSize = 9F;
+            numericBoxOriginShiftY.ValueFontSize = 9F;
             numericBoxOriginShiftY.ThousandsSeparator = true;
             // 
             // numericBoxOriginShiftX
@@ -594,7 +594,7 @@
             numericBoxOriginShiftX.ShowFraction = true;
             numericBoxOriginShiftX.SkipEventDuringInput = false;
             numericBoxOriginShiftX.SmartIncrement = true;
-            numericBoxOriginShiftX.TextFontSize = 9F;
+            numericBoxOriginShiftX.ValueFontSize = 9F;
             numericBoxOriginShiftX.ThousandsSeparator = true;
             // 
             // tabPageDebyeWaller
@@ -697,7 +697,7 @@
             numericBoxB22.RoundErrorAccuracy = 8;
             numericBoxB22.SkipEventDuringInput = false;
             numericBoxB22.SmartIncrement = true;
-            numericBoxB22.TextFontSize = 9F;
+            numericBoxB22.ValueFontSize = 9F;
             numericBoxB22.ThousandsSeparator = true;
             // 
             // numericBoxB22err
@@ -710,7 +710,7 @@
             numericBoxB22err.RoundErrorAccuracy = 8;
             numericBoxB22err.SkipEventDuringInput = false;
             numericBoxB22err.SmartIncrement = true;
-            numericBoxB22err.TextFontSize = 9F;
+            numericBoxB22err.ValueFontSize = 9F;
             numericBoxB22err.ThousandsSeparator = true;
             // 
             // numericBoxB23
@@ -723,7 +723,7 @@
             numericBoxB23.RoundErrorAccuracy = 8;
             numericBoxB23.SkipEventDuringInput = false;
             numericBoxB23.SmartIncrement = true;
-            numericBoxB23.TextFontSize = 9F;
+            numericBoxB23.ValueFontSize = 9F;
             numericBoxB23.ThousandsSeparator = true;
             // 
             // numericBoxB23err
@@ -736,7 +736,7 @@
             numericBoxB23err.RoundErrorAccuracy = 8;
             numericBoxB23err.SkipEventDuringInput = false;
             numericBoxB23err.SmartIncrement = true;
-            numericBoxB23err.TextFontSize = 9F;
+            numericBoxB23err.ValueFontSize = 9F;
             numericBoxB23err.ThousandsSeparator = true;
             // 
             // numericBoxB33
@@ -749,7 +749,7 @@
             numericBoxB33.RoundErrorAccuracy = 8;
             numericBoxB33.SkipEventDuringInput = false;
             numericBoxB33.SmartIncrement = true;
-            numericBoxB33.TextFontSize = 9F;
+            numericBoxB33.ValueFontSize = 9F;
             numericBoxB33.ThousandsSeparator = true;
             // 
             // numericBoxB33err
@@ -762,7 +762,7 @@
             numericBoxB33err.RoundErrorAccuracy = 8;
             numericBoxB33err.SkipEventDuringInput = false;
             numericBoxB33err.SmartIncrement = true;
-            numericBoxB33err.TextFontSize = 9F;
+            numericBoxB33err.ValueFontSize = 9F;
             numericBoxB33err.ThousandsSeparator = true;
             // 
             // flowLayoutPanelAniso1
@@ -786,7 +786,7 @@
             numericBoxB11.RoundErrorAccuracy = 8;
             numericBoxB11.SkipEventDuringInput = false;
             numericBoxB11.SmartIncrement = true;
-            numericBoxB11.TextFontSize = 9F;
+            numericBoxB11.ValueFontSize = 9F;
             numericBoxB11.ThousandsSeparator = true;
             // 
             // numericBoxB11err
@@ -799,7 +799,7 @@
             numericBoxB11err.RoundErrorAccuracy = 8;
             numericBoxB11err.SkipEventDuringInput = false;
             numericBoxB11err.SmartIncrement = true;
-            numericBoxB11err.TextFontSize = 9F;
+            numericBoxB11err.ValueFontSize = 9F;
             numericBoxB11err.ThousandsSeparator = true;
             // 
             // numericBoxB12
@@ -812,7 +812,7 @@
             numericBoxB12.RoundErrorAccuracy = 8;
             numericBoxB12.SkipEventDuringInput = false;
             numericBoxB12.SmartIncrement = true;
-            numericBoxB12.TextFontSize = 9F;
+            numericBoxB12.ValueFontSize = 9F;
             numericBoxB12.ThousandsSeparator = true;
             // 
             // numericBoxB12err
@@ -825,7 +825,7 @@
             numericBoxB12err.RoundErrorAccuracy = 8;
             numericBoxB12err.SkipEventDuringInput = false;
             numericBoxB12err.SmartIncrement = true;
-            numericBoxB12err.TextFontSize = 9F;
+            numericBoxB12err.ValueFontSize = 9F;
             numericBoxB12err.ThousandsSeparator = true;
             // 
             // numericBoxB13
@@ -838,7 +838,7 @@
             numericBoxB13.RoundErrorAccuracy = 8;
             numericBoxB13.SkipEventDuringInput = false;
             numericBoxB13.SmartIncrement = true;
-            numericBoxB13.TextFontSize = 9F;
+            numericBoxB13.ValueFontSize = 9F;
             numericBoxB13.ThousandsSeparator = true;
             // 
             // numericBoxB13err
@@ -851,7 +851,7 @@
             numericBoxB13err.RoundErrorAccuracy = 8;
             numericBoxB13err.SkipEventDuringInput = false;
             numericBoxB13err.SmartIncrement = true;
-            numericBoxB13err.TextFontSize = 9F;
+            numericBoxB13err.ValueFontSize = 9F;
             numericBoxB13err.ThousandsSeparator = true;
             // 
             // tabPageScatteringFactor
@@ -971,8 +971,8 @@
             numericBoxAlpha.ShowUpDown = true;
             numericBoxAlpha.SkipEventDuringInput = false;
             numericBoxAlpha.SmartIncrement = true;
-            numericBoxAlpha.TextBoxForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            numericBoxAlpha.TextFontSize = 9F;
+            numericBoxAlpha.ValueForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            numericBoxAlpha.ValueFontSize = 9F;
             numericBoxAlpha.ThousandsSeparator = true;
             numericBoxAlpha.UpDown_Increment = 0.1D;
             // 
@@ -989,8 +989,8 @@
             numericBoxEmission.ShowUpDown = true;
             numericBoxEmission.SkipEventDuringInput = false;
             numericBoxEmission.SmartIncrement = true;
-            numericBoxEmission.TextBoxForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            numericBoxEmission.TextFontSize = 9F;
+            numericBoxEmission.ValueForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            numericBoxEmission.ValueFontSize = 9F;
             numericBoxEmission.ThousandsSeparator = true;
             numericBoxEmission.UpDown_Increment = 0.1D;
             // 
@@ -1007,8 +1007,8 @@
             numericBoxShininess.ShowUpDown = true;
             numericBoxShininess.SkipEventDuringInput = false;
             numericBoxShininess.SmartIncrement = true;
-            numericBoxShininess.TextBoxForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            numericBoxShininess.TextFontSize = 9F;
+            numericBoxShininess.ValueForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            numericBoxShininess.ValueFontSize = 9F;
             numericBoxShininess.ThousandsSeparator = true;
             numericBoxShininess.UpDown_Increment = 0.1D;
             // 
@@ -1025,8 +1025,8 @@
             numericBoxSpecular.ShowUpDown = true;
             numericBoxSpecular.SkipEventDuringInput = false;
             numericBoxSpecular.SmartIncrement = true;
-            numericBoxSpecular.TextBoxForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            numericBoxSpecular.TextFontSize = 9F;
+            numericBoxSpecular.ValueForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            numericBoxSpecular.ValueFontSize = 9F;
             numericBoxSpecular.ThousandsSeparator = true;
             numericBoxSpecular.UpDown_Increment = 0.1D;
             // 
@@ -1043,8 +1043,8 @@
             numericBoxDiffusion.ShowUpDown = true;
             numericBoxDiffusion.SkipEventDuringInput = false;
             numericBoxDiffusion.SmartIncrement = true;
-            numericBoxDiffusion.TextBoxForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            numericBoxDiffusion.TextFontSize = 9F;
+            numericBoxDiffusion.ValueForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            numericBoxDiffusion.ValueFontSize = 9F;
             numericBoxDiffusion.ThousandsSeparator = true;
             numericBoxDiffusion.UpDown_Increment = 0.1D;
             // 
@@ -1061,8 +1061,8 @@
             numericBoxAmbient.ShowUpDown = true;
             numericBoxAmbient.SkipEventDuringInput = false;
             numericBoxAmbient.SmartIncrement = true;
-            numericBoxAmbient.TextBoxForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            numericBoxAmbient.TextFontSize = 9F;
+            numericBoxAmbient.ValueForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            numericBoxAmbient.ValueFontSize = 9F;
             numericBoxAmbient.ThousandsSeparator = true;
             numericBoxAmbient.UpDown_Increment = 0.1D;
             // 
@@ -1113,8 +1113,8 @@
             numericBoxAtomRadius.ShowUpDown = true;
             numericBoxAtomRadius.SkipEventDuringInput = false;
             numericBoxAtomRadius.SmartIncrement = true;
-            numericBoxAtomRadius.TextBoxForeColor = System.Drawing.SystemColors.ControlText;
-            numericBoxAtomRadius.TextFontSize = 9F;
+            numericBoxAtomRadius.ValueForeColor = System.Drawing.SystemColors.ControlText;
+            numericBoxAtomRadius.ValueFontSize = 9F;
             numericBoxAtomRadius.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxAtomRadius, resources.GetString("numericBoxAtomRadius.ToolTip1"));
             // 

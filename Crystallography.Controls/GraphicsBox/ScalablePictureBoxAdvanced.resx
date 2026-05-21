@@ -395,7 +395,7 @@
     <value>Log</value>
   </data>
   <data name="comboBoxScale1.Items1" xml:space="preserve">
-    <value>Liner</value>
+    <value>Linear</value>
   </data>
   <data name="comboBoxScale1.Location" type="System.Drawing.Point, System.Drawing">
     <value>40, 0</value>

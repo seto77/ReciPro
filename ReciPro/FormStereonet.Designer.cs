@@ -932,7 +932,7 @@ namespace ReciPro
             numericBoxRxSpeed.RadianValue = 0.31415926535897931D;
             numericBoxRxSpeed.SkipEventDuringInput = false;
             numericBoxRxSpeed.SmartIncrement = true;
-            numericBoxRxSpeed.TextFontSize = 8F;
+            numericBoxRxSpeed.ValueFontSize = 8F;
             numericBoxRxSpeed.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxRxSpeed, resources.GetString("numericBoxRxSpeed.ToolTip1"));
             numericBoxRxSpeed.Value = 18D;
@@ -947,7 +947,7 @@ namespace ReciPro
             numericBoxRySpeed.RadianValue = 0.017453292519943295D;
             numericBoxRySpeed.SkipEventDuringInput = false;
             numericBoxRySpeed.SmartIncrement = true;
-            numericBoxRySpeed.TextFontSize = 8F;
+            numericBoxRySpeed.ValueFontSize = 8F;
             numericBoxRySpeed.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxRySpeed, resources.GetString("numericBoxRySpeed.ToolTip1"));
             numericBoxRySpeed.Value = 1D;
@@ -962,7 +962,7 @@ namespace ReciPro
             numericBoxRzSpeed.RadianValue = 0.034906585039886591D;
             numericBoxRzSpeed.SkipEventDuringInput = false;
             numericBoxRzSpeed.SmartIncrement = true;
-            numericBoxRzSpeed.TextFontSize = 8F;
+            numericBoxRzSpeed.ValueFontSize = 8F;
             numericBoxRzSpeed.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxRzSpeed, resources.GetString("numericBoxRzSpeed.ToolTip1"));
             numericBoxRzSpeed.Value = 2D;
@@ -977,7 +977,7 @@ namespace ReciPro
             numericBoxTotalTime.RadianValue = 1.7453292519943295D;
             numericBoxTotalTime.SkipEventDuringInput = false;
             numericBoxTotalTime.SmartIncrement = true;
-            numericBoxTotalTime.TextFontSize = 8F;
+            numericBoxTotalTime.ValueFontSize = 8F;
             numericBoxTotalTime.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxTotalTime, resources.GetString("numericBoxTotalTime.ToolTip1"));
             numericBoxTotalTime.Value = 100D;
@@ -992,7 +992,7 @@ namespace ReciPro
             numericBoxAngularSpeed.RadianValue = 0.52359877559829882D;
             numericBoxAngularSpeed.SkipEventDuringInput = false;
             numericBoxAngularSpeed.SmartIncrement = true;
-            numericBoxAngularSpeed.TextFontSize = 8F;
+            numericBoxAngularSpeed.ValueFontSize = 8F;
             numericBoxAngularSpeed.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxAngularSpeed, resources.GetString("numericBoxAngularSpeed.ToolTip1"));
             numericBoxAngularSpeed.Value = 30D;
@@ -1007,7 +1007,7 @@ namespace ReciPro
             numericBoxRyStep.RadianValue = 0.0034906585039886592D;
             numericBoxRyStep.SkipEventDuringInput = false;
             numericBoxRyStep.SmartIncrement = true;
-            numericBoxRyStep.TextFontSize = 8F;
+            numericBoxRyStep.ValueFontSize = 8F;
             numericBoxRyStep.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxRyStep, resources.GetString("numericBoxRyStep.ToolTip1"));
             numericBoxRyStep.Value = 0.2D;
@@ -1022,7 +1022,7 @@ namespace ReciPro
             numericBoxRadialAngle.RadianValue = 0.13962634015954636D;
             numericBoxRadialAngle.SkipEventDuringInput = false;
             numericBoxRadialAngle.SmartIncrement = true;
-            numericBoxRadialAngle.TextFontSize = 8F;
+            numericBoxRadialAngle.ValueFontSize = 8F;
             numericBoxRadialAngle.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxRadialAngle, resources.GetString("numericBoxRadialAngle.ToolTip1"));
             numericBoxRadialAngle.Value = 8D;
@@ -1037,7 +1037,7 @@ namespace ReciPro
             numericBoxRyOscillation.RadianValue = 0.13962634015954636D;
             numericBoxRyOscillation.SkipEventDuringInput = false;
             numericBoxRyOscillation.SmartIncrement = true;
-            numericBoxRyOscillation.TextFontSize = 8F;
+            numericBoxRyOscillation.ValueFontSize = 8F;
             numericBoxRyOscillation.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxRyOscillation, resources.GetString("numericBoxRyOscillation.ToolTip1"));
             numericBoxRyOscillation.Value = 8D;
@@ -1052,7 +1052,7 @@ namespace ReciPro
             numericBoxRzOscillation.RadianValue = 0.13962634015954636D;
             numericBoxRzOscillation.SkipEventDuringInput = false;
             numericBoxRzOscillation.SmartIncrement = true;
-            numericBoxRzOscillation.TextFontSize = 8F;
+            numericBoxRzOscillation.ValueFontSize = 8F;
             numericBoxRzOscillation.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxRzOscillation, resources.GetString("numericBoxRzOscillation.ToolTip1"));
             numericBoxRzOscillation.Value = 8D;
@@ -1344,7 +1344,7 @@ namespace ReciPro
             numericBoxHighStructureFactor.RadianValue = 1.7453292519943295D;
             numericBoxHighStructureFactor.ShowUpDown = true;
             numericBoxHighStructureFactor.SmartIncrement = true;
-            numericBoxHighStructureFactor.TextFontSize = 9F;
+            numericBoxHighStructureFactor.ValueFontSize = 9F;
             toolTip.SetToolTip(numericBoxHighStructureFactor, resources.GetString("numericBoxHighStructureFactor.ToolTip1"));
             numericBoxHighStructureFactor.Value = 100D;
             numericBoxHighStructureFactor.ValueChanged += numericBoxHighStructureFactor_ValueChanged;

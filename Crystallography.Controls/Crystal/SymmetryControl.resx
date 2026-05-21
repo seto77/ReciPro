@@ -448,7 +448,7 @@
   <data name="numericBoxBeta.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
   </data>
-  <data name="numericBoxBeta.TextFontSize" type="System.Single, mscorlib">
+  <data name="numericBoxBeta.ValueFontSize" type="System.Single, mscorlib">
     <value>9</value>
   </data>
   <data name="numericBoxBeta.ToolTip" xml:space="preserve">
@@ -502,7 +502,7 @@
   <data name="numericBoxAlpha.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
   </data>
-  <data name="numericBoxAlpha.TextFontSize" type="System.Single, mscorlib">
+  <data name="numericBoxAlpha.ValueFontSize" type="System.Single, mscorlib">
     <value>9</value>
   </data>
   <data name="numericBoxAlpha.ToolTip" xml:space="preserve">
@@ -595,7 +595,7 @@
   <data name="numericBoxGammaErr.TabIndex" type="System.Int32, mscorlib">
     <value>11</value>
   </data>
-  <data name="numericBoxGammaErr.TextFontSize" type="System.Single, mscorlib">
+  <data name="numericBoxGammaErr.ValueFontSize" type="System.Single, mscorlib">
     <value>9</value>
   </data>
   <data name="&gt;&gt;numericBoxGammaErr.Name" xml:space="preserve">
@@ -646,7 +646,7 @@
   <data name="numericBoxAlphaErr.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
   </data>
-  <data name="numericBoxAlphaErr.TextFontSize" type="System.Single, mscorlib">
+  <data name="numericBoxAlphaErr.ValueFontSize" type="System.Single, mscorlib">
     <value>9</value>
   </data>
   <data name="&gt;&gt;numericBoxAlphaErr.Name" xml:space="preserve">
@@ -697,7 +697,7 @@
   <data name="numericBoxBetaErr.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
   </data>
-  <data name="numericBoxBetaErr.TextFontSize" type="System.Single, mscorlib">
+  <data name="numericBoxBetaErr.ValueFontSize" type="System.Single, mscorlib">
     <value>9</value>
   </data>
   <data name="&gt;&gt;numericBoxBetaErr.Name" xml:space="preserve">
@@ -745,7 +745,7 @@
   <data name="numericBoxA.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="numericBoxA.TextFontSize" type="System.Single, mscorlib">
+  <data name="numericBoxA.ValueFontSize" type="System.Single, mscorlib">
     <value>9</value>
   </data>
   <data name="numericBoxA.ToolTip" xml:space="preserve">
@@ -832,7 +832,7 @@
   <data name="numericBoxGamma.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
   </data>
-  <data name="numericBoxGamma.TextFontSize" type="System.Single, mscorlib">
+  <data name="numericBoxGamma.ValueFontSize" type="System.Single, mscorlib">
     <value>9</value>
   </data>
   <data name="numericBoxGamma.ToolTip" xml:space="preserve">
@@ -922,7 +922,7 @@
   <data name="numericBoxBErr.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
   </data>
-  <data name="numericBoxBErr.TextFontSize" type="System.Single, mscorlib">
+  <data name="numericBoxBErr.ValueFontSize" type="System.Single, mscorlib">
     <value>9</value>
   </data>
   <data name="&gt;&gt;numericBoxBErr.Name" xml:space="preserve">
@@ -970,7 +970,7 @@
   <data name="numericBoxB.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
-  <data name="numericBoxB.TextFontSize" type="System.Single, mscorlib">
+  <data name="numericBoxB.ValueFontSize" type="System.Single, mscorlib">
     <value>9</value>
   </data>
   <data name="numericBoxB.ToolTip" xml:space="preserve">
@@ -1024,7 +1024,7 @@
   <data name="numericBoxC.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
-  <data name="numericBoxC.TextFontSize" type="System.Single, mscorlib">
+  <data name="numericBoxC.ValueFontSize" type="System.Single, mscorlib">
     <value>9</value>
   </data>
   <data name="numericBoxC.ToolTip" xml:space="preserve">
@@ -1081,7 +1081,7 @@
   <data name="numericBoxCErr.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
   </data>
-  <data name="numericBoxCErr.TextFontSize" type="System.Single, mscorlib">
+  <data name="numericBoxCErr.ValueFontSize" type="System.Single, mscorlib">
     <value>9</value>
   </data>
   <data name="&gt;&gt;numericBoxCErr.Name" xml:space="preserve">
@@ -1132,7 +1132,7 @@
   <data name="numericBoxAErr.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
   </data>
-  <data name="numericBoxAErr.TextFontSize" type="System.Single, mscorlib">
+  <data name="numericBoxAErr.ValueFontSize" type="System.Single, mscorlib">
     <value>9</value>
   </data>
   <data name="&gt;&gt;numericBoxAErr.Name" xml:space="preserve">

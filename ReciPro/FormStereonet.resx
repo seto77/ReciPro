@@ -2470,7 +2470,7 @@ outline</value>
   <data name="&gt;&gt;numericBoxRxSpeed.ZOrder" xml:space="preserve">
     <value>9</value>
   </data>
-  <data name="waveLengthControl.TextFont" type="System.Drawing.Font, System.Drawing">
+  <data name="waveLengthControl.LabelFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxRzSpeed.Location" type="System.Drawing.Point, System.Drawing">

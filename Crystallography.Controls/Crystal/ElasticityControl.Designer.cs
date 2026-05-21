@@ -337,7 +337,7 @@
             this.numericBox66.ShowPositiveSign = false;
             this.numericBox66.Size = new System.Drawing.Size(49, 22);
             this.numericBox66.TabIndex = 62;
-            this.numericBox66.TextFont = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.numericBox66.ValueFont = new System.Drawing.Font("Segoe UI", 9.75F);
                                     this.numericBox66.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxElasticiry_ValueChanged);
             // 
             // numericBox56
@@ -355,7 +355,7 @@
             this.numericBox56.ShowPositiveSign = false;
             this.numericBox56.Size = new System.Drawing.Size(49, 22);
             this.numericBox56.TabIndex = 61;
-            this.numericBox56.TextFont = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.numericBox56.ValueFont = new System.Drawing.Font("Segoe UI", 9.75F);
                                     this.numericBox56.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxElasticiry_ValueChanged);
             // 
             // numericBox46
@@ -373,7 +373,7 @@
             this.numericBox46.ShowPositiveSign = false;
             this.numericBox46.Size = new System.Drawing.Size(49, 22);
             this.numericBox46.TabIndex = 64;
-            this.numericBox46.TextFont = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.numericBox46.ValueFont = new System.Drawing.Font("Segoe UI", 9.75F);
                                     this.numericBox46.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxElasticiry_ValueChanged);
             // 
             // numericBox36
@@ -391,7 +391,7 @@
             this.numericBox36.ShowPositiveSign = false;
             this.numericBox36.Size = new System.Drawing.Size(49, 22);
             this.numericBox36.TabIndex = 63;
-            this.numericBox36.TextFont = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.numericBox36.ValueFont = new System.Drawing.Font("Segoe UI", 9.75F);
                                     this.numericBox36.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxElasticiry_ValueChanged);
             // 
             // numericBox26
@@ -409,7 +409,7 @@
             this.numericBox26.ShowPositiveSign = false;
             this.numericBox26.Size = new System.Drawing.Size(49, 22);
             this.numericBox26.TabIndex = 60;
-            this.numericBox26.TextFont = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.numericBox26.ValueFont = new System.Drawing.Font("Segoe UI", 9.75F);
                                     this.numericBox26.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxElasticiry_ValueChanged);
             // 
             // numericBox55
@@ -427,7 +427,7 @@
             this.numericBox55.ShowPositiveSign = false;
             this.numericBox55.Size = new System.Drawing.Size(49, 22);
             this.numericBox55.TabIndex = 56;
-            this.numericBox55.TextFont = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.numericBox55.ValueFont = new System.Drawing.Font("Segoe UI", 9.75F);
                                     this.numericBox55.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxElasticiry_ValueChanged);
             // 
             // numericBox45
@@ -445,7 +445,7 @@
             this.numericBox45.ShowPositiveSign = false;
             this.numericBox45.Size = new System.Drawing.Size(49, 22);
             this.numericBox45.TabIndex = 59;
-            this.numericBox45.TextFont = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.numericBox45.ValueFont = new System.Drawing.Font("Segoe UI", 9.75F);
                                     this.numericBox45.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxElasticiry_ValueChanged);
             // 
             // numericBox35
@@ -463,7 +463,7 @@
             this.numericBox35.ShowPositiveSign = false;
             this.numericBox35.Size = new System.Drawing.Size(49, 22);
             this.numericBox35.TabIndex = 58;
-            this.numericBox35.TextFont = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.numericBox35.ValueFont = new System.Drawing.Font("Segoe UI", 9.75F);
                                     this.numericBox35.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxElasticiry_ValueChanged);
             // 
             // numericBox16
@@ -481,7 +481,7 @@
             this.numericBox16.ShowPositiveSign = false;
             this.numericBox16.Size = new System.Drawing.Size(49, 22);
             this.numericBox16.TabIndex = 71;
-            this.numericBox16.TextFont = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.numericBox16.ValueFont = new System.Drawing.Font("Segoe UI", 9.75F);
                                     this.numericBox16.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxElasticiry_ValueChanged);
             // 
             // numericBox25
@@ -499,7 +499,7 @@
             this.numericBox25.ShowPositiveSign = false;
             this.numericBox25.Size = new System.Drawing.Size(49, 22);
             this.numericBox25.TabIndex = 70;
-            this.numericBox25.TextFont = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.numericBox25.ValueFont = new System.Drawing.Font("Segoe UI", 9.75F);
                                     this.numericBox25.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxElasticiry_ValueChanged);
             // 
             // numericBox44
@@ -517,7 +517,7 @@
             this.numericBox44.ShowPositiveSign = false;
             this.numericBox44.Size = new System.Drawing.Size(49, 22);
             this.numericBox44.TabIndex = 69;
-            this.numericBox44.TextFont = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.numericBox44.ValueFont = new System.Drawing.Font("Segoe UI", 9.75F);
                                     this.numericBox44.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxElasticiry_ValueChanged);
             // 
             // numericBox34
@@ -535,7 +535,7 @@
             this.numericBox34.ShowPositiveSign = false;
             this.numericBox34.Size = new System.Drawing.Size(49, 22);
             this.numericBox34.TabIndex = 66;
-            this.numericBox34.TextFont = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.numericBox34.ValueFont = new System.Drawing.Font("Segoe UI", 9.75F);
                                     this.numericBox34.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxElasticiry_ValueChanged);
             // 
             // numericBox15
@@ -553,7 +553,7 @@
             this.numericBox15.ShowPositiveSign = false;
             this.numericBox15.Size = new System.Drawing.Size(49, 22);
             this.numericBox15.TabIndex = 65;
-            this.numericBox15.TextFont = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.numericBox15.ValueFont = new System.Drawing.Font("Segoe UI", 9.75F);
                                     this.numericBox15.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxElasticiry_ValueChanged);
             // 
             // numericBox24
@@ -571,7 +571,7 @@
             this.numericBox24.ShowPositiveSign = false;
             this.numericBox24.Size = new System.Drawing.Size(49, 22);
             this.numericBox24.TabIndex = 68;
-            this.numericBox24.TextFont = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.numericBox24.ValueFont = new System.Drawing.Font("Segoe UI", 9.75F);
                                     this.numericBox24.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxElasticiry_ValueChanged);
             // 
             // numericBox33
@@ -589,7 +589,7 @@
             this.numericBox33.ShowPositiveSign = false;
             this.numericBox33.Size = new System.Drawing.Size(49, 22);
             this.numericBox33.TabIndex = 46;
-            this.numericBox33.TextFont = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.numericBox33.ValueFont = new System.Drawing.Font("Segoe UI", 9.75F);
                                     this.numericBox33.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxElasticiry_ValueChanged);
             // 
             // numericBox14
@@ -607,7 +607,7 @@
             this.numericBox14.ShowPositiveSign = false;
             this.numericBox14.Size = new System.Drawing.Size(49, 22);
             this.numericBox14.TabIndex = 45;
-            this.numericBox14.TextFont = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.numericBox14.ValueFont = new System.Drawing.Font("Segoe UI", 9.75F);
                                     this.numericBox14.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxElasticiry_ValueChanged);
             // 
             // numericBox23
@@ -625,7 +625,7 @@
             this.numericBox23.ShowPositiveSign = false;
             this.numericBox23.Size = new System.Drawing.Size(49, 22);
             this.numericBox23.TabIndex = 42;
-            this.numericBox23.TextFont = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.numericBox23.ValueFont = new System.Drawing.Font("Segoe UI", 9.75F);
                                     this.numericBox23.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxElasticiry_ValueChanged);
             // 
             // numericBox13
@@ -643,7 +643,7 @@
             this.numericBox13.ShowPositiveSign = false;
             this.numericBox13.Size = new System.Drawing.Size(49, 22);
             this.numericBox13.TabIndex = 53;
-            this.numericBox13.TextFont = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.numericBox13.ValueFont = new System.Drawing.Font("Segoe UI", 9.75F);
                                     this.numericBox13.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxElasticiry_ValueChanged);
             // 
             // numericBox22
@@ -661,7 +661,7 @@
             this.numericBox22.ShowPositiveSign = false;
             this.numericBox22.Size = new System.Drawing.Size(49, 22);
             this.numericBox22.TabIndex = 52;
-            this.numericBox22.TextFont = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.numericBox22.ValueFont = new System.Drawing.Font("Segoe UI", 9.75F);
                                     this.numericBox22.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxElasticiry_ValueChanged);
             // 
             // numericBox12
@@ -679,7 +679,7 @@
             this.numericBox12.ShowPositiveSign = false;
             this.numericBox12.Size = new System.Drawing.Size(49, 22);
             this.numericBox12.TabIndex = 47;
-            this.numericBox12.TextFont = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.numericBox12.ValueFont = new System.Drawing.Font("Segoe UI", 9.75F);
                                     this.numericBox12.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxElasticiry_ValueChanged);
             // 
             // numericBox11
@@ -697,7 +697,7 @@
             this.numericBox11.ShowPositiveSign = false;
             this.numericBox11.Size = new System.Drawing.Size(49, 22);
             this.numericBox11.TabIndex = 49;
-            this.numericBox11.TextFont = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.numericBox11.ValueFont = new System.Drawing.Font("Segoe UI", 9.75F);
                                     this.numericBox11.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxElasticiry_ValueChanged);
             // 
             // radioButtonCompliance

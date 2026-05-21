@@ -107,17 +107,19 @@ public partial class DiffractionPatternControl : UserControlBase
     #region 画像のプロパティ関連
 
     /// <summary>イメージの横幅(ピクセル単位)</summary>
+    // 260521Cl: numericUpDownImageWidth → sizeControl1.ImageWidth へ置換
     public int ImageWidth
     {
-        get => (int)numericUpDownImageWidth.Value;
-        set => numericUpDownImageWidth.Value = value;
+        get => sizeControl1.ImageWidth;
+        set => sizeControl1.ImageWidth = value;
     }
 
     /// <summary>イメージの高さ(ピクセル単位)</summary>
+    // 260521Cl: numericUpDownImageHeight → sizeControl1.ImageHeight へ置換
     public int ImageHeight
     {
-        get => (int)numericUpDownImageHeight.Value;
-        set => numericUpDownImageHeight.Value = value;
+        get => sizeControl1.ImageHeight;
+        set => sizeControl1.ImageHeight = value;
     }
 
     /// <summary>イメージの全ピクセル数</summary>

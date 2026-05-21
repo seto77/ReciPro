@@ -261,7 +261,7 @@
             // 
             resources.ApplyResources(toolStripProgressBar, "toolStripProgressBar");
             toolStripProgressBar.Name = "toolStripProgressBar";
-            toolStripProgressBar.Value = 100;// 260520Cl 追加: 起動/待機時は 100% 表示 (進捗バーは DL 時のみ駆動するため、0% で止まって見えるのを回避)
+            toolStripProgressBar.Value = 100;
             // 
             // toolStripStatusLabel
             // 
@@ -814,12 +814,9 @@
             // buttonReset
             // 
             resources.ApplyResources(buttonReset, "buttonReset");
-            // 260520Cl: remove IndianRed/White (Reset Rotation is not destructive — use default Windows gray)
-            //buttonReset.BackColor = System.Drawing.Color.IndianRed;
-            //buttonReset.ForeColor = System.Drawing.Color.White;
             buttonReset.Name = "buttonReset";
             toolTip.SetToolTip(buttonReset, resources.GetString("buttonReset.ToolTip"));
-            buttonReset.UseVisualStyleBackColor = true; // 260520Cl: default Windows style
+            buttonReset.UseVisualStyleBackColor = true;
             buttonReset.Click += ButtonReset_Click;
             // 
             // numericBoxMaxUVW

@@ -34,6 +34,7 @@ public partial class WaveLengthControl : UserControlBase
     /// <summary>コントロールの配置をLeftToRightか、TopDownにするか</summary>
     // 260426Cl 修正: 文字化けしていたコメント (旧: WFO1000 関連の壊れたコメント) を整理
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
+    [Category("Appearance")]
     public FlowDirection Direction
     {
         set
@@ -70,6 +71,7 @@ public partial class WaveLengthControl : UserControlBase
     private bool monochrome = true;
     /// <summary>単色モードかどうか falseの場合は白色モード</summary>
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
+    [Category("Appearance")]
     public bool Monochrome
     {
         set
@@ -82,19 +84,34 @@ public partial class WaveLengthControl : UserControlBase
         get => monochrome;
     }
 
+    // 260521Cl: 数値入力部以外 (見出し/フッタ/コンボ/ラジオ/ラベル) のフォント。数値部のフォントは ValueFontSize で調整する。
+    [Category("Appearance"), Localizable(true)]
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
-    [Localizable(true)]
-    public Font TextFont
+    [Description("数値部以外 (見出し・フッタ・コンボ・ラジオボタン・ラベル) のフォント。数値入力部のフォントサイズは ValueFontSize で調整する。")]
+    public Font LabelFont
     {
         set
         {
-            numericBoxEnergy.HeaderFont = numericBoxEnergy.FooterFont = numericBoxEnergy.TextFont = value;
-            numericBoxWaveLength.HeaderFont = numericBoxWaveLength.FooterFont = numericBoxWaveLength.TextFont = value;
+            numericBoxEnergy.HeaderFont = numericBoxEnergy.FooterFont = value;
+            numericBoxWaveLength.HeaderFont = numericBoxWaveLength.FooterFont = value;
             comboBoxXRayElement.Font = comboBoxXrayLine.Font = value;
             radioButtonElectron.Font = radioButtonNeutron.Font = radioButtonXray.Font = value;
             label1.Font = value;
         }
-        get => numericBoxWaveLength.TextFont;
+        // 260521Cl 修正: setter は ValueFont を触らなくなった (数値部は ValueFontSize で別管理) ため、
+        // getter が numericBoxWaveLength.ValueFont を返すと set/get が一致せずデザイナが誤ったフォントを serialize する。
+        // setter が実際に設定する label1.Font を返すよう修正。
+        get => label1.Font;
+    }
+
+    // 260521Cl: 数値入力部 (Energy / WaveLength) のフォントサイズ。NumericBox.ValueFontSize へ委譲する。
+    [Category("Appearance"), Localizable(true)]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
+    [Description("数値入力部 (Energy / WaveLength) のフォントサイズ (pt)。")]
+    public float ValueFontSize
+    {
+        set => numericBoxEnergy.ValueFontSize = numericBoxWaveLength.ValueFontSize = value;
+        get => numericBoxWaveLength.ValueFontSize;
     }
 
     // 260426Cl 修正: public フィールドを private に変更 (外部参照なしを確認済み)
@@ -102,6 +119,7 @@ public partial class WaveLengthControl : UserControlBase
     private bool showWaveSource = true;
     /// <summary>WaveSourceを表示するかどうか</summary>
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
+    [Category("Appearance")]
     public bool ShowWaveSource
     {
         set => showWaveSource = flowLayoutPanelWaveSource.Visible = value;
@@ -133,6 +151,7 @@ public partial class WaveLengthControl : UserControlBase
 
     /// <summary>波長をnm単位のdoubleで取得/設定</summary>
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
+    [Category("Behavior")]
     public double WaveLength
     {
         set
@@ -181,6 +200,7 @@ public partial class WaveLengthControl : UserControlBase
 
     /// <summary>X線の線源の元素を取得/設定</summary>
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
+    [Category("Behavior")]
     public int XrayWaveSourceElementNumber
     {
         set
@@ -220,6 +240,7 @@ public partial class WaveLengthControl : UserControlBase
     /// X線と電子は単位はkev,中性子はmev
     /// </summary>
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
+    [Category("Behavior")]
     public double Energy
     {
         set

@@ -211,7 +211,7 @@
             this.numericBoxValence.ShowPositiveSign = true;
             this.numericBoxValence.Size = new System.Drawing.Size(1, 25);
             this.numericBoxValence.TabIndex = 8;
-            this.numericBoxValence.TextFont = new System.Drawing.Font("Yu Gothic UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxValence.ValueFont = new System.Drawing.Font("Yu Gothic UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxValence.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxValence_ValueChanged);
             // 
             // checkBoxCompound
@@ -318,7 +318,7 @@
             this.numericBoxWeight.RoundErrorAccuracy = -1;
             this.numericBoxWeight.Size = new System.Drawing.Size(73, 27);
             this.numericBoxWeight.TabIndex = 8;
-            this.numericBoxWeight.TextFont = new System.Drawing.Font("Yu Gothic UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxWeight.ValueFont = new System.Drawing.Font("Yu Gothic UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             // 
             // label9
             // 
@@ -366,7 +366,7 @@
             this.numericBoxMolarRatio.RoundErrorAccuracy = -1;
             this.numericBoxMolarRatio.Size = new System.Drawing.Size(43, 27);
             this.numericBoxMolarRatio.TabIndex = 8;
-            this.numericBoxMolarRatio.TextFont = new System.Drawing.Font("Yu Gothic UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxMolarRatio.ValueFont = new System.Drawing.Font("Yu Gothic UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             // 
             // flowLayoutPanel3
             // 

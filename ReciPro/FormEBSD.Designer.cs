@@ -882,7 +882,7 @@
             numericBoxEnergyStart.RadianValue = 0.3490658503988659D;
             numericBoxEnergyStart.ShowUpDown = true;
             numericBoxEnergyStart.SmartIncrement = true;
-            numericBoxEnergyStart.TextBoxBackColor = System.Drawing.SystemColors.Control;
+            numericBoxEnergyStart.ValueBackColor = System.Drawing.SystemColors.Control;
             numericBoxEnergyStart.ThousandsSeparator = true;
             numericBoxEnergyStart.Value = 20D;
             numericBoxEnergyStart.ValueChanged += NumericBoxEnergyStart_ValueChanged;

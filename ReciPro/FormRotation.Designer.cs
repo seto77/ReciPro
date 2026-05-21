@@ -144,7 +144,7 @@
             numericBoxPsi.ReadOnly = true;
             numericBoxPsi.SkipEventDuringInput = false;
             numericBoxPsi.SmartIncrement = true;
-            numericBoxPsi.TextBoxBackColor = System.Drawing.SystemColors.Control;
+            numericBoxPsi.ValueBackColor = System.Drawing.SystemColors.Control;
             numericBoxPsi.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxPsi, resources.GetString("numericBoxPsi.ToolTip"));
             // 
@@ -159,7 +159,7 @@
             numericBoxTheta.ReadOnly = true;
             numericBoxTheta.SkipEventDuringInput = false;
             numericBoxTheta.SmartIncrement = true;
-            numericBoxTheta.TextBoxBackColor = System.Drawing.SystemColors.Control;
+            numericBoxTheta.ValueBackColor = System.Drawing.SystemColors.Control;
             numericBoxTheta.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxTheta, resources.GetString("numericBoxTheta.ToolTip"));
             // 
@@ -174,7 +174,7 @@
             numericBoxPhi.ReadOnly = true;
             numericBoxPhi.SkipEventDuringInput = false;
             numericBoxPhi.SmartIncrement = true;
-            numericBoxPhi.TextBoxBackColor = System.Drawing.Color.Yellow;
+            numericBoxPhi.ValueBackColor = System.Drawing.Color.Yellow;
             numericBoxPhi.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxPhi, resources.GetString("numericBoxPhi.ToolTip"));
             // 
@@ -422,7 +422,7 @@
             numericBox11.ReadOnly = true;
             numericBox11.SkipEventDuringInput = false;
             numericBox11.SmartIncrement = true;
-            numericBox11.TextBoxBackColor = System.Drawing.SystemColors.Control;
+            numericBox11.ValueBackColor = System.Drawing.SystemColors.Control;
             numericBox11.ThousandsSeparator = true;
             numericBox11.ValueChanged += numericBox_ValueChanged;
             // 
@@ -437,7 +437,7 @@
             numericBox12.ReadOnly = true;
             numericBox12.SkipEventDuringInput = false;
             numericBox12.SmartIncrement = true;
-            numericBox12.TextBoxBackColor = System.Drawing.SystemColors.Control;
+            numericBox12.ValueBackColor = System.Drawing.SystemColors.Control;
             numericBox12.ThousandsSeparator = true;
             numericBox12.ValueChanged += numericBox_ValueChanged;
             // 
@@ -452,7 +452,7 @@
             numericBox13.ReadOnly = true;
             numericBox13.SkipEventDuringInput = false;
             numericBox13.SmartIncrement = true;
-            numericBox13.TextBoxBackColor = System.Drawing.SystemColors.Control;
+            numericBox13.ValueBackColor = System.Drawing.SystemColors.Control;
             numericBox13.ThousandsSeparator = true;
             numericBox13.ValueChanged += numericBox_ValueChanged;
             // 
@@ -467,7 +467,7 @@
             numericBox21.ReadOnly = true;
             numericBox21.SkipEventDuringInput = false;
             numericBox21.SmartIncrement = true;
-            numericBox21.TextBoxBackColor = System.Drawing.SystemColors.Control;
+            numericBox21.ValueBackColor = System.Drawing.SystemColors.Control;
             numericBox21.ThousandsSeparator = true;
             numericBox21.ValueChanged += numericBox_ValueChanged;
             // 
@@ -482,7 +482,7 @@
             numericBox22.ReadOnly = true;
             numericBox22.SkipEventDuringInput = false;
             numericBox22.SmartIncrement = true;
-            numericBox22.TextBoxBackColor = System.Drawing.SystemColors.Control;
+            numericBox22.ValueBackColor = System.Drawing.SystemColors.Control;
             numericBox22.ThousandsSeparator = true;
             numericBox22.ValueChanged += numericBox_ValueChanged;
             // 
@@ -497,7 +497,7 @@
             numericBox33.ReadOnly = true;
             numericBox33.SkipEventDuringInput = false;
             numericBox33.SmartIncrement = true;
-            numericBox33.TextBoxBackColor = System.Drawing.SystemColors.Control;
+            numericBox33.ValueBackColor = System.Drawing.SystemColors.Control;
             numericBox33.ThousandsSeparator = true;
             numericBox33.ValueChanged += numericBox_ValueChanged;
             // 
@@ -512,7 +512,7 @@
             numericBox23.ReadOnly = true;
             numericBox23.SkipEventDuringInput = false;
             numericBox23.SmartIncrement = true;
-            numericBox23.TextBoxBackColor = System.Drawing.SystemColors.Control;
+            numericBox23.ValueBackColor = System.Drawing.SystemColors.Control;
             numericBox23.ThousandsSeparator = true;
             numericBox23.ValueChanged += numericBox_ValueChanged;
             // 
@@ -527,7 +527,7 @@
             numericBox31.ReadOnly = true;
             numericBox31.SkipEventDuringInput = false;
             numericBox31.SmartIncrement = true;
-            numericBox31.TextBoxBackColor = System.Drawing.SystemColors.Control;
+            numericBox31.ValueBackColor = System.Drawing.SystemColors.Control;
             numericBox31.ThousandsSeparator = true;
             numericBox31.ValueChanged += numericBox_ValueChanged;
             // 
@@ -542,7 +542,7 @@
             numericBox32.ReadOnly = true;
             numericBox32.SkipEventDuringInput = false;
             numericBox32.SmartIncrement = true;
-            numericBox32.TextBoxBackColor = System.Drawing.SystemColors.Control;
+            numericBox32.ValueBackColor = System.Drawing.SystemColors.Control;
             numericBox32.ThousandsSeparator = true;
             numericBox32.ValueChanged += numericBox_ValueChanged;
             // 

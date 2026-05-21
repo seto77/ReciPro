@@ -1,4 +1,4 @@
-namespace Crystallography.Controls;
+﻿namespace Crystallography.Controls;
 
 partial class FormBase
 {

@@ -21,6 +21,7 @@ namespace Crystallography.Controls
         // 260519Cl WFO1000 対応: DesignerSerializationVisibility を明示
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         [DefaultValue("")]
+        [Category("Appearance")]
         public string SubScript
         {
             get => subScript;
@@ -31,6 +32,7 @@ namespace Crystallography.Controls
         // 260519Cl WFO1000 対応
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         [DefaultValue(ModeEnum.Plane)]
+        [Category("Appearance")]
         public ModeEnum Mode
         {
             get => mode;
@@ -41,6 +43,7 @@ namespace Crystallography.Controls
         // 260519Cl WFO1000 対応
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         [DefaultValue(BracketEnum.Round)]
+        [Category("Appearance")]
         public BracketEnum Bracket
         {
             get => bracket;
@@ -74,6 +77,7 @@ namespace Crystallography.Controls
         // 260519Cl WFO1000 対応
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         [DefaultValue(true)]
+        [Category("Appearance")]
         public bool LabelVisible { get=>labelLaTexX.Visible; set { labelLaTexX.Visible = labelLaTexY.Visible = labelLaTexZ.Visible = labelLaTexW.Visible = value; } }
 
         #endregion
@@ -379,7 +383,7 @@ namespace Crystallography.Controls
     // `new ValueTuple<int, int, int>(h, k, l)` として serialize される。
     internal sealed class HKLValuesConverter : TypeConverter
     {
-        private static readonly char[] _separators = { ',', ' ', ';', '\t' };
+        private static readonly char[] _separators = [',', ' ', ';', '\t'];
 
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
             => sourceType == typeof(string) || base.CanConvertFrom(context, sourceType);
@@ -412,7 +416,7 @@ namespace Crystallography.Controls
                     return $"{t.Item1}, {t.Item2}, {t.Item3}";
                 if (destinationType == typeof(InstanceDescriptor))
                 {
-                    var ctor = typeof(ValueTuple<int, int, int>).GetConstructor(new[] { typeof(int), typeof(int), typeof(int) });
+                    var ctor = typeof(ValueTuple<int, int, int>).GetConstructor([typeof(int), typeof(int), typeof(int)]);
                     return new InstanceDescriptor(ctor, new object[] { t.Item1, t.Item2, t.Item3 });
                 }
             }

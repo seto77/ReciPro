@@ -180,13 +180,13 @@ public partial class FormRotationMatrix : FormBase
         glControlReciProGonio.WorldMatrix = Matrix4d.CreateRotationZ(-Math.PI / 4) * Matrix4d.CreateRotationX(-0.4 * Math.PI);
         SetRotation();
 
-        numericBoxPhi.TextBoxBackColor = numericBoxExp1.TextBoxBackColor = Color.FromArgb(255, 180, 180, 0);
-        numericBoxTheta.TextBoxBackColor = numericBoxExp2.TextBoxBackColor = Color.FromArgb(255, 0, 180, 180);
-        numericBoxPsi.TextBoxBackColor = numericBoxExp3.TextBoxBackColor = Color.FromArgb(255, 180, 0, 180);
+        numericBoxPhi.ValueBackColor = numericBoxExp1.ValueBackColor = Color.FromArgb(255, 180, 180, 0);
+        numericBoxTheta.ValueBackColor = numericBoxExp2.ValueBackColor = Color.FromArgb(255, 0, 180, 180);
+        numericBoxPsi.ValueBackColor = numericBoxExp3.ValueBackColor = Color.FromArgb(255, 180, 0, 180);
 
-        numericBoxPhi.TextBoxForeColor = numericBoxExp1.TextBoxForeColor =
-        numericBoxTheta.TextBoxForeColor = numericBoxExp2.TextBoxForeColor =
-        numericBoxPsi.TextBoxForeColor = numericBoxExp3.TextBoxForeColor = Color.FromArgb(255, 255, 255, 255);
+        numericBoxPhi.ValueForeColor = numericBoxExp1.ValueForeColor =
+        numericBoxTheta.ValueForeColor = numericBoxExp2.ValueForeColor =
+        numericBoxPsi.ValueForeColor = numericBoxExp3.ValueForeColor = Color.FromArgb(255, 255, 255, 255);
     }
 
     private void FormRotationMatrix_FormClosing(object sender, FormClosingEventArgs e)

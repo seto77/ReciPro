@@ -216,11 +216,10 @@
             cTRLRightDoubleClickChangePerspectiveOrthogonalAlternatelyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             toolTip = new System.Windows.Forms.ToolTip(components);
-            numericBoxClientHeight = new NumericBox();
-            numericBoxClientWidth = new NumericBox();
             printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
             printDocument1 = new System.Drawing.Printing.PrintDocument();
-            panelClientSize = new System.Windows.Forms.Panel();
+            panelTop = new System.Windows.Forms.Panel();
+            sizeControl1 = new SizeControl();
             statusStrip1 = new System.Windows.Forms.StatusStrip();
             toolStripStatusLabelInitialization = new System.Windows.Forms.ToolStripStatusLabel();
             toolStripStatusLabelRendering = new System.Windows.Forms.ToolStripStatusLabel();
@@ -272,7 +271,7 @@
             groupBoxAccessoryControls.SuspendLayout();
             toolStrip1.SuspendLayout();
             menuStrip1.SuspendLayout();
-            panelClientSize.SuspendLayout();
+            panelTop.SuspendLayout();
             statusStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -1112,7 +1111,7 @@
             numericBoxLatticePlaneOpacity.RadianValue = 0.0087266462599716477D;
             numericBoxLatticePlaneOpacity.ShowUpDown = true;
             numericBoxLatticePlaneOpacity.SkipEventDuringInput = false;
-            numericBoxLatticePlaneOpacity.TextFontSize = 9F;
+            numericBoxLatticePlaneOpacity.ValueFontSize = 9F;
             numericBoxLatticePlaneOpacity.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxLatticePlaneOpacity, resources.GetString("numericBoxLatticePlaneOpacity.ToolTip"));
             numericBoxLatticePlaneOpacity.UpDown_Increment = 0.1D;
@@ -1704,7 +1703,7 @@
             numericBoxLabelSize.RadianValue = 0.20943951023931953D;
             numericBoxLabelSize.ShowUpDown = true;
             numericBoxLabelSize.SmartIncrement = true;
-            numericBoxLabelSize.TextFontSize = 9F;
+            numericBoxLabelSize.ValueFontSize = 9F;
             numericBoxLabelSize.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxLabelSize, resources.GetString("numericBoxLabelSize.ToolTip1"));
             numericBoxLabelSize.Value = 12D;
@@ -1771,7 +1770,7 @@
             numericBoxLegendSize.RadianValue = 0.87266462599716477D;
             numericBoxLegendSize.ShowUpDown = true;
             numericBoxLegendSize.SmartIncrement = true;
-            numericBoxLegendSize.TextFontSize = 9F;
+            numericBoxLegendSize.ValueFontSize = 9F;
             numericBoxLegendSize.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxLegendSize, resources.GetString("numericBoxLegendSize.ToolTip1"));
             numericBoxLegendSize.Value = 50D;
@@ -1788,7 +1787,7 @@
             numericBoxAxesSize.RadianValue = 1.3962634015954636D;
             numericBoxAxesSize.ShowUpDown = true;
             numericBoxAxesSize.SmartIncrement = true;
-            numericBoxAxesSize.TextFontSize = 9F;
+            numericBoxAxesSize.ValueFontSize = 9F;
             numericBoxAxesSize.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxAxesSize, resources.GetString("numericBoxAxesSize.ToolTip1"));
             numericBoxAxesSize.Value = 80D;
@@ -1805,7 +1804,7 @@
             numericBoxLightSize.RadianValue = 1.3962634015954636D;
             numericBoxLightSize.ShowUpDown = true;
             numericBoxLightSize.SmartIncrement = true;
-            numericBoxLightSize.TextFontSize = 9F;
+            numericBoxLightSize.ValueFontSize = 9F;
             numericBoxLightSize.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxLightSize, resources.GetString("numericBoxLightSize.ToolTip1"));
             numericBoxLightSize.Value = 80D;
@@ -1853,6 +1852,7 @@
             // 
             // toolStripSeparator3
             // 
+            toolStripSeparator3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             toolStripSeparator3.Name = "toolStripSeparator3";
             resources.ApplyResources(toolStripSeparator3, "toolStripSeparator3");
             // 
@@ -2049,42 +2049,6 @@
             toolTip.IsBalloon = true;
             toolTip.ReshowDelay = 100;
             // 
-            // numericBoxClientHeight
-            // 
-            resources.ApplyResources(numericBoxClientHeight, "numericBoxClientHeight");
-            numericBoxClientHeight.BackColor = System.Drawing.SystemColors.Control;
-            numericBoxClientHeight.DecimalPlaces = 0;
-            numericBoxClientHeight.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxClientHeight.HeaderBackColor = System.Drawing.SystemColors.Control;
-            numericBoxClientHeight.Maximum = 4000D;
-            numericBoxClientHeight.Minimum = 1D;
-            numericBoxClientHeight.Name = "numericBoxClientHeight";
-            numericBoxClientHeight.RadianValue = 17.453292519943293D;
-            numericBoxClientHeight.ShowUpDown = true;
-            numericBoxClientHeight.SmartIncrement = true;
-            numericBoxClientHeight.ThousandsSeparator = true;
-            toolTip.SetToolTip(numericBoxClientHeight, resources.GetString("numericBoxClientHeight.ToolTip1"));
-            numericBoxClientHeight.Value = 1000D;
-            numericBoxClientHeight.ValueChanged += numericBoxClientWidth_ValueChanged;
-            // 
-            // numericBoxClientWidth
-            // 
-            resources.ApplyResources(numericBoxClientWidth, "numericBoxClientWidth");
-            numericBoxClientWidth.BackColor = System.Drawing.SystemColors.Control;
-            numericBoxClientWidth.DecimalPlaces = 0;
-            numericBoxClientWidth.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxClientWidth.HeaderBackColor = System.Drawing.SystemColors.Control;
-            numericBoxClientWidth.Maximum = 4000D;
-            numericBoxClientWidth.Minimum = 1D;
-            numericBoxClientWidth.Name = "numericBoxClientWidth";
-            numericBoxClientWidth.RadianValue = 17.453292519943293D;
-            numericBoxClientWidth.ShowUpDown = true;
-            numericBoxClientWidth.SmartIncrement = true;
-            numericBoxClientWidth.ThousandsSeparator = true;
-            toolTip.SetToolTip(numericBoxClientWidth, resources.GetString("numericBoxClientWidth.ToolTip1"));
-            numericBoxClientWidth.Value = 1000D;
-            numericBoxClientWidth.ValueChanged += numericBoxClientWidth_ValueChanged;
-            // 
             // printPreviewDialog1
             // 
             resources.ApplyResources(printPreviewDialog1, "printPreviewDialog1");
@@ -2095,12 +2059,20 @@
             // 
             printDocument1.PrintPage += printDocument1_PrintPage;
             // 
-            // panelClientSize
+            // panelTop
             // 
-            panelClientSize.Controls.Add(numericBoxClientWidth);
-            panelClientSize.Controls.Add(numericBoxClientHeight);
-            resources.ApplyResources(panelClientSize, "panelClientSize");
-            panelClientSize.Name = "panelClientSize";
+            resources.ApplyResources(panelTop, "panelTop");
+            panelTop.Controls.Add(menuStrip1);
+            panelTop.Controls.Add(sizeControl1);
+            panelTop.Name = "panelTop";
+            // 
+            // sizeControl1
+            // 
+            resources.ApplyResources(sizeControl1, "sizeControl1");
+            sizeControl1.Maximum = 4000;
+            sizeControl1.Name = "sizeControl1";
+            sizeControl1.Value = new System.Drawing.Size(1, 1);
+            sizeControl1.ValueChanged += sizeControl1_ValueChanged;
             // 
             // statusStrip1
             // 
@@ -2133,10 +2105,9 @@
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             captureExtender.SetCapture(this, true);
             Controls.Add(splitContainer1);
-            Controls.Add(panelClientSize);
-            Controls.Add(menuStrip1);
             Controls.Add(toolStrip1);
             Controls.Add(statusStrip1);
+            Controls.Add(panelTop);
             KeyPreview = true;
             MainMenuStrip = menuStrip1;
             Name = "FormStructureViewer";
@@ -2218,7 +2189,8 @@
             toolStrip1.PerformLayout();
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
-            panelClientSize.ResumeLayout(false);
+            panelTop.ResumeLayout(false);
+            panelTop.PerformLayout();
             statusStrip1.ResumeLayout(false);
             statusStrip1.PerformLayout();
             ResumeLayout(false);
@@ -2334,9 +2306,8 @@
         private System.Windows.Forms.SplitContainer splitContainer2;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox textBoxCalcInformation;
-        private System.Windows.Forms.Panel panelClientSize;
-        public NumericBox numericBoxClientWidth;
-        public NumericBox numericBoxClientHeight;
+        private System.Windows.Forms.Panel panelTop;
+        // 260521Cl: numericBoxClientWidth/Height は sizeControl1 へ置換したため削除
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelGraphicsInfo;
         private System.Windows.Forms.Label labelGraphicsCard;
         private System.Windows.Forms.Label labelGraphicsDriver;
@@ -2410,5 +2381,6 @@
         private NumericBox numericBoxPlaneSymbolSize;
         private NumericBox numericBoxPlaneLineWidth;
         private ColorControl colorControlPlane;
+        private SizeControl sizeControl1;
     }
 }

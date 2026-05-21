@@ -118,6 +118,9 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="graphicsBox.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9.75pt</value>
+  </data>
   <data name="label1.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
   </data>
@@ -125,10 +128,56 @@
     <value>10, 36</value>
   </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>79, 18</value>
+    <value>67, 15</value>
   </data>
   <data name="label1.Text" xml:space="preserve">
     <value>Tilt X の向き</value>
+  </data>
+  <data name="numericBoxTiltXDirection.FooterFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9.75pt</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="numericBoxTiltXDirection.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 3, 0, 0</value>
+  </data>
+  <data name="numericBoxTiltXDirection.HeaderFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9.75pt</value>
+  </data>
+  <data name="numericBoxTiltXDirection.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 3, 0, 0</value>
+  </data>
+  <data name="numericBoxTiltXDirection.ToolTip1" xml:space="preserve">
+    <value />
+  </data>
+  <data name="numericBoxLinkTiltX.FooterFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9.75pt</value>
+  </data>
+  <data name="numericBoxLinkTiltX.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 3, 0, 0</value>
+  </data>
+  <data name="numericBoxLinkTiltX.HeaderFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9.75pt</value>
+  </data>
+  <data name="numericBoxLinkTiltX.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 3, 0, 0</value>
+  </data>
+  <data name="numericBoxLinkTiltX.ToolTip1" xml:space="preserve">
+    <value />
+  </data>
+  <data name="numericBoxLinkTiltY.FooterFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9.75pt</value>
+  </data>
+  <data name="numericBoxLinkTiltY.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 3, 0, 0</value>
+  </data>
+  <data name="numericBoxLinkTiltY.HeaderFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9.75pt</value>
+  </data>
+  <data name="numericBoxLinkTiltY.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 3, 0, 0</value>
+  </data>
+  <data name="numericBoxLinkTiltY.ToolTip1" xml:space="preserve">
+    <value />
   </data>
   <data name="label4.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
@@ -137,16 +186,31 @@
     <value>7, 77</value>
   </data>
   <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>79, 18</value>
+    <value>70, 15</value>
   </data>
   <data name="label4.Text" xml:space="preserve">
     <value>Tilt Y の極性</value>
+  </data>
+  <data name="groupBoxTEMSettings.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt, style=Bold</value>
+  </data>
+  <data name="groupBoxTEMSettings.Text" xml:space="preserve">
+    <value>TEM 設定</value>
+  </data>
+  <data name="radioButtonTiltY_Minus.Size" type="System.Drawing.Size, System.Drawing">
+    <value>31, 21</value>
+  </data>
+  <data name="groupBoxLink.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt, style=Bold</value>
+  </data>
+  <data name="groupBoxLink.Text" xml:space="preserve">
+    <value>リンク</value>
   </data>
   <data name="buttonRotate180.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 72</value>
   </data>
   <data name="buttonRotate180.Size" type="System.Drawing.Size, System.Drawing">
-    <value>81, 25</value>
+    <value>80, 25</value>
   </data>
   <data name="buttonRotate180.Text" xml:space="preserve">
     <value>⭮ 180° 回転</value>
@@ -158,30 +222,42 @@
     <value>95, 25</value>
   </data>
   <data name="buttonLink.Size" type="System.Drawing.Size, System.Drawing">
-    <value>66, 64</value>
+    <value>65, 55</value>
   </data>
   <data name="buttonLink.Text" xml:space="preserve">
     <value>現在の
 結晶方位
 にリンク</value>
   </data>
-  <data name="checkBoxIncludingEquivalent.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
+  <data name="groupBoxStereonetProperties.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt, style=Bold</value>
   </data>
-  <data name="checkBoxIncludingEquivalent.Location" type="System.Drawing.Point, System.Drawing">
-    <value>30, 60</value>
-  </data>
-  <data name="checkBoxIncludingEquivalent.Size" type="System.Drawing.Size, System.Drawing">
-    <value>138, 22</value>
-  </data>
-  <data name="checkBoxIncludingEquivalent.Text" xml:space="preserve">
-    <value>等価な指数を含める</value>
+  <data name="groupBoxStereonetProperties.Text" xml:space="preserve">
+    <value>ステレオネット設定</value>
   </data>
   <data name="groupBoxIndexRange.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="groupBoxIndexRange.Text" xml:space="preserve">
     <value>軸指数範囲</value>
+  </data>
+  <data name="checkBoxIncludingEquivalent.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="checkBoxIncludingEquivalent.Location" type="System.Drawing.Point, System.Drawing">
+    <value>30, 62</value>
+  </data>
+  <data name="checkBoxIncludingEquivalent.Size" type="System.Drawing.Size, System.Drawing">
+    <value>127, 19</value>
+  </data>
+  <data name="checkBoxIncludingEquivalent.Text" xml:space="preserve">
+    <value>等価な指数を含める</value>
+  </data>
+  <data name="groupBoxColorAndSize.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="groupBoxColorAndSize.Text" xml:space="preserve">
+    <value>色とサイズ</value>
   </data>
   <data name="colorControlBackGround.FooterText" xml:space="preserve">
     <value>背景</value>
@@ -190,7 +266,7 @@
     <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="colorControlBackGround.Size" type="System.Drawing.Size, System.Drawing">
-    <value>54, 20</value>
+    <value>56, 20</value>
   </data>
   <data name="colorControlBackGround.ToolTip" xml:space="preserve">
     <value>Background</value>
@@ -202,10 +278,10 @@
     <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="colorControlHolder.Location" type="System.Drawing.Point, System.Drawing">
-    <value>54, 0</value>
+    <value>56, 0</value>
   </data>
   <data name="colorControlHolder.Size" type="System.Drawing.Size, System.Drawing">
-    <value>69, 20</value>
+    <value>72, 20</value>
   </data>
   <data name="colorControlHolder.ToolTip" xml:space="preserve">
     <value>ホルダーの色</value>
@@ -230,13 +306,13 @@
     <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="colorControlGeneralAxis.Size" type="System.Drawing.Size, System.Drawing">
-    <value>66, 20</value>
+    <value>69, 20</value>
   </data>
   <data name="label17.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="label17.Size" type="System.Drawing.Size, System.Drawing">
-    <value>68, 18</value>
+    <value>59, 15</value>
   </data>
   <data name="label17.Text" xml:space="preserve">
     <value>文字サイズ</value>
@@ -245,19 +321,22 @@
     <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="label18.Size" type="System.Drawing.Size, System.Drawing">
-    <value>56, 18</value>
+    <value>47, 15</value>
   </data>
   <data name="label18.Text" xml:space="preserve">
     <value>点サイズ</value>
   </data>
-  <data name="groupBoxColorAndSize.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
+  <data name="numericBoxDrawingArea.FooterFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9.75pt</value>
   </data>
-  <data name="groupBoxColorAndSize.Text" xml:space="preserve">
-    <value>色とサイズ</value>
+  <data name="numericBoxDrawingArea.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 3, 0, 0</value>
   </data>
   <data name="numericBoxDrawingArea.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="numericBoxDrawingArea.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 5, 0, 0</value>
   </data>
   <data name="numericBoxDrawingArea.HeaderText" xml:space="preserve">
     <value>描画範囲</value>
@@ -265,11 +344,14 @@
   <data name="numericBoxDrawingArea.Size" type="System.Drawing.Size, System.Drawing">
     <value>112, 25</value>
   </data>
+  <data name="numericBoxDrawingArea.ToolTip1" xml:space="preserve">
+    <value />
+  </data>
   <data name="checkBoxTiltDirections.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="checkBoxTiltDirections.Size" type="System.Drawing.Size, System.Drawing">
-    <value>159, 22</value>
+    <value>139, 19</value>
   </data>
   <data name="checkBoxTiltDirections.Text" xml:space="preserve">
     <value>ホルダー軸の向きを表示</value>
@@ -278,7 +360,7 @@
     <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="checkBox1DegLine.Size" type="System.Drawing.Size, System.Drawing">
-    <value>91, 22</value>
+    <value>85, 19</value>
   </data>
   <data name="checkBox1DegLine.Text" xml:space="preserve">
     <value>1° 線を表示</value>
@@ -287,13 +369,25 @@
     <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="checkBoxShowIndexLabels.Size" type="System.Drawing.Size, System.Drawing">
-    <value>99, 22</value>
+    <value>95, 19</value>
   </data>
   <data name="checkBoxShowIndexLabels.Text" xml:space="preserve">
     <value>軸指数を表示</value>
   </data>
+  <data name="groupBoxHolderAngles.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt, style=Bold</value>
+  </data>
+  <data name="groupBoxHolderAngles.Text" xml:space="preserve">
+    <value>ホルダー角度</value>
+  </data>
+  <data name="numericBoxArrowStep.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 5, 0, 0</value>
+  </data>
   <data name="numericBoxArrowStep.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 8pt</value>
+  </data>
+  <data name="numericBoxArrowStep.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 6, 0, 0</value>
   </data>
   <data name="numericBoxArrowStep.HeaderText" xml:space="preserve">
     <value>(ステップ</value>
@@ -304,6 +398,9 @@
   <data name="numericBoxArrowStep.Size" type="System.Drawing.Size, System.Drawing">
     <value>115, 23</value>
   </data>
+  <data name="numericBoxArrowStep.ToolTip1" xml:space="preserve">
+    <value />
+  </data>
   <data name="label19.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
   </data>
@@ -311,13 +408,28 @@
     <value>6, 25</value>
   </data>
   <data name="label19.Size" type="System.Drawing.Size, System.Drawing">
-    <value>129, 18</value>
+    <value>117, 15</value>
   </data>
   <data name="label19.Text" xml:space="preserve">
     <value>Tilt X (主軸) の回転量</value>
   </data>
+  <data name="numericBoxTiltX.FooterFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9.75pt</value>
+  </data>
+  <data name="numericBoxTiltX.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 3, 0, 0</value>
+  </data>
+  <data name="numericBoxTiltX.HeaderFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9.75pt</value>
+  </data>
+  <data name="numericBoxTiltX.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 3, 0, 0</value>
+  </data>
   <data name="numericBoxTiltX.Location" type="System.Drawing.Point, System.Drawing">
     <value>140, 19</value>
+  </data>
+  <data name="numericBoxTiltX.ToolTip1" xml:space="preserve">
+    <value />
   </data>
   <data name="label20.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
@@ -326,13 +438,28 @@
     <value>6, 51</value>
   </data>
   <data name="label20.Size" type="System.Drawing.Size, System.Drawing">
-    <value>129, 18</value>
+    <value>117, 15</value>
   </data>
   <data name="label20.Text" xml:space="preserve">
     <value>Tilt Y (副軸) の回転量</value>
   </data>
+  <data name="numericBoxTiltY.FooterFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9.75pt</value>
+  </data>
+  <data name="numericBoxTiltY.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 3, 0, 0</value>
+  </data>
+  <data name="numericBoxTiltY.HeaderFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9.75pt</value>
+  </data>
+  <data name="numericBoxTiltY.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 3, 0, 0</value>
+  </data>
   <data name="numericBoxTiltY.Location" type="System.Drawing.Point, System.Drawing">
     <value>140, 47</value>
+  </data>
+  <data name="numericBoxTiltY.ToolTip1" xml:space="preserve">
+    <value />
   </data>
   <data name="checkBoxEnableArrow.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 8pt</value>
@@ -341,40 +468,49 @@
     <value>6, 77</value>
   </data>
   <data name="checkBoxEnableArrow.Size" type="System.Drawing.Size, System.Drawing">
-    <value>115, 21</value>
+    <value>104, 17</value>
   </data>
   <data name="checkBoxEnableArrow.Text" xml:space="preserve">
     <value>矢印キーを有効化</value>
   </data>
-  <!-- 260520Cl 追加: 未翻訳項目を日本語化 + フォントを Yu Gothic UI に override -->
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="indexControl.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="indexControl.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="indexControl.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 19</value>
+  </data>
+  <data name="indexControl.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="indexControl.Size" type="System.Drawing.Size, System.Drawing">
+    <value>158, 41</value>
+  </data>
+  <data name="indexControl.TabIndex" type="System.Int32, mscorlib">
+    <value>97</value>
+  </data>
+  <data name="indexControl.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="indexControl.Values" mimetype="application/x-microsoft.net.object.binary.base64">
+    <value>
+        AAEAAAD/////AQAAAAAAAAAEAQAAAKgCU3lzdGVtLlZhbHVlVHVwbGVgM1tbU3lzdGVtLkludDMyLCBt
+        c2NvcmxpYiwgVmVyc2lvbj00LjAuMC4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3
+        N2E1YzU2MTkzNGUwODldLFtTeXN0ZW0uSW50MzIsIG1zY29ybGliLCBWZXJzaW9uPTQuMC4wLjAsIEN1
+        bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49Yjc3YTVjNTYxOTM0ZTA4OV0sW1N5c3RlbS5JbnQz
+        MiwgbXNjb3JsaWIsIFZlcnNpb249NC4wLjAuMCwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tl
+        bj1iNzdhNWM1NjE5MzRlMDg5XV0DAAAABUl0ZW0xBUl0ZW0yBUl0ZW0zAAAACAgIAgAAAAIAAAACAAAA
+        Cw==
+</value>
+  </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>TEMホルダーシミュレーション</value>
-  </data>
-  <data name="groupBoxHolderAngles.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt, style=Bold</value>
-  </data>
-  <data name="groupBoxHolderAngles.Text" xml:space="preserve">
-    <value>ホルダー角度</value>
-  </data>
-  <data name="groupBoxLink.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt, style=Bold</value>
-  </data>
-  <data name="groupBoxLink.Text" xml:space="preserve">
-    <value>リンク</value>
-  </data>
-  <data name="groupBoxStereonetProperties.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt, style=Bold</value>
-  </data>
-  <data name="groupBoxStereonetProperties.Text" xml:space="preserve">
-    <value>ステレオネット設定</value>
-  </data>
-  <data name="groupBoxTEMSettings.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt, style=Bold</value>
-  </data>
-  <data name="groupBoxTEMSettings.Text" xml:space="preserve">
-    <value>TEM 設定</value>
   </data>
 </root>

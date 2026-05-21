@@ -3175,7 +3175,7 @@ and the fitting range in the box on the right.</value>
   <data name="radioButtonMultiGrain.Location" type="System.Drawing.Point, System.Drawing">
     <value>96, 0</value>
   </data>
-  <data name="waveLengthControl1.TextFont" type="System.Drawing.Font, System.Drawing">
+  <data name="waveLengthControl1.LabelFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="&gt;&gt;flowLayoutPanel2.ZOrder" xml:space="preserve">

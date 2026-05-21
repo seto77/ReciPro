@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
@@ -38,6 +38,15 @@ public class DpiAwareDataGridView : DataGridView
     [Category("Layout")]
     public bool ScaleRowHeadersWidthForDpi { get; set; } = true;
 
+    /// <summary>
+    /// 全 DpiAwareDataGridView で列ヘッダの配置 (中央寄せ) を統一するか。
+    /// 260521Cl 追加 (GUI統一 §3.9): フォームごとにヘッダの Alignment がバラバラ (中央寄せ/既定左) だった不統一を解消する。
+    /// フォント/配色はテーマ任せ (EnableHeadersVisualStyles=true、DPI 対応) で既に一貫しているため触らない。
+    /// </summary>
+    [DefaultValue(true)]
+    [Category("Appearance")]
+    public bool UnifyHeaderStyle { get; set; } = true;
+
     // 260518Cl: 初回 DPI スケーリングはフレームワーク (PerformAutoScale) が列幅まで面倒見てくれないため
     //           本クラスで OnHandleCreated 後に BeginInvoke 経由で実施する。
     //           ただし OnDataBindingComplete / OnFontChanged など実行時にのみ繰り返し発火するイベントは
@@ -47,6 +56,7 @@ public class DpiAwareDataGridView : DataGridView
         base.OnHandleCreated(e);
         UpdateDpiSourceForm();
         ScheduleDpiScaling();
+        ApplyUnifiedHeaderStyle(); // 260521Cl (§3.9)
     }
 
     protected override void OnParentChanged(EventArgs e)
@@ -59,6 +69,20 @@ public class DpiAwareDataGridView : DataGridView
     {
         base.OnDpiChangedAfterParent(e);
         ScheduleDpiScaling();
+    }
+
+    /// <summary>
+    /// 260521Cl 追加 (GUI統一 §3.9): 列ヘッダの配置を全グリッドで中央寄せに統一する (Designer 設定の有無を問わず実行時に適用)。
+    /// 当初は Bold + EnableHeadersVisualStyles=false + SystemColors 配色も設定していたが、(1) ユーザ要望で Bold 廃止、
+    /// (2) EnableHeadersVisualStyles=false + 実行時生成フォントだと高 DPI でヘッダ文字がセルより小さく見える問題が出たため、
+    /// テーマ任せ (DPI 対応) のまま「配置の統一」のみに簡素化した。フォント/配色には触れない。
+    /// </summary>
+    private void ApplyUnifiedHeaderStyle()
+    {
+        if (!UnifyHeaderStyle)
+            return;
+
+        ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
     }
 
     protected override void OnColumnAdded(DataGridViewColumnEventArgs e)

@@ -355,7 +355,7 @@
   <data name="checkBoxShowZoneAxisIndices.TabIndex" type="System.Int32, mscorlib">
     <value>126</value>
   </data>
-  <data name="waveLengthControl.TextFont" type="System.Drawing.Font, System.Drawing">
+  <data name="waveLengthControl.LabelFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="groupBoxSimulationParameters.Font" type="System.Drawing.Font, System.Drawing">

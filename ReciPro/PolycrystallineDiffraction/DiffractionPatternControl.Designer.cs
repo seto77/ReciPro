@@ -81,7 +81,7 @@
             waveLengthControl = new WaveLengthControl();
             numericBoxMonochromaticity = new NumericBox();
             groupBoxDetectorProperty = new System.Windows.Forms.GroupBox();
-            numericUpDownImageWidth = new System.Windows.Forms.NumericUpDown();
+            sizeControl1 = new Crystallography.Controls.SizeControl(); // 260521Cl: numericUpDownImageWidth/Height + label3/10/30 を sizeControl1 へ置換
             label20 = new System.Windows.Forms.Label();
             numericBoxImageResolution = new NumericBox();
             numericBoxMonitorResolution = new NumericBox();
@@ -91,13 +91,9 @@
             numericBoxCameraLength = new NumericBox();
             label31 = new System.Windows.Forms.Label();
             label13 = new System.Windows.Forms.Label();
-            label30 = new System.Windows.Forms.Label();
-            numericUpDownImageHeight = new System.Windows.Forms.NumericUpDown();
-            label10 = new System.Windows.Forms.Label();
             numericBoxCenterY = new NumericBox();
             numericBoxCenterX = new NumericBox();
             label37 = new System.Windows.Forms.Label();
-            label3 = new System.Windows.Forms.Label();
             label33 = new System.Windows.Forms.Label();
             label39 = new System.Windows.Forms.Label();
             checkBoxFilmBlur = new System.Windows.Forms.CheckBox();
@@ -149,8 +145,6 @@
             tabPage1.SuspendLayout();
             groupBoxWaveSource.SuspendLayout();
             groupBoxDetectorProperty.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)numericUpDownImageWidth).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDownImageHeight).BeginInit();
             tabPage2.SuspendLayout();
             groupBoxPeakIndices.SuspendLayout();
             groupBoxManualSpot.SuspendLayout();
@@ -534,7 +528,7 @@
             numericBoxTau.Name = "numericBoxTau";
             numericBoxTau.Size = new System.Drawing.Size(44, 23);
             numericBoxTau.TabIndex = 5;
-            numericBoxTau.TextFont = new System.Drawing.Font("Tahoma", 9.75F);
+            numericBoxTau.ValueFont = new System.Drawing.Font("Tahoma", 9.75F);
             // 
             // numericBoxPhi
             // 
@@ -549,7 +543,7 @@
             numericBoxPhi.Name = "numericBoxPhi";
             numericBoxPhi.Size = new System.Drawing.Size(44, 23);
             numericBoxPhi.TabIndex = 5;
-            numericBoxPhi.TextFont = new System.Drawing.Font("Tahoma", 9.75F);
+            numericBoxPhi.ValueFont = new System.Drawing.Font("Tahoma", 9.75F);
             // 
             // trackBarBgH
             // 
@@ -729,7 +723,7 @@
             numericBoxConvergentAngle.RadianValue = 0.00034906585039886593D;
             numericBoxConvergentAngle.Size = new System.Drawing.Size(45, 23);
             numericBoxConvergentAngle.TabIndex = 191;
-            numericBoxConvergentAngle.TextFont = new System.Drawing.Font("Tahoma", 9.75F);
+            numericBoxConvergentAngle.ValueFont = new System.Drawing.Font("Tahoma", 9.75F);
             numericBoxConvergentAngle.Value = 0.02D;
             // 
             // label46
@@ -791,7 +785,7 @@
             waveLengthControl.ShowWaveSource = false;
             waveLengthControl.Size = new System.Drawing.Size(190, 80);
             waveLengthControl.TabIndex = 72;
-            waveLengthControl.TextFont = new System.Drawing.Font("Tahoma", 9.75F);
+            waveLengthControl.LabelFont = new System.Drawing.Font("Tahoma", 9.75F);
             waveLengthControl.WaveLength = 0.041328040768899996D;
             waveLengthControl.WaveSource = WaveSource.Xray;
             waveLengthControl.XrayWaveSourceElementNumber = 0;
@@ -809,11 +803,11 @@
             numericBoxMonochromaticity.Name = "numericBoxMonochromaticity";
             numericBoxMonochromaticity.Size = new System.Drawing.Size(44, 23);
             numericBoxMonochromaticity.TabIndex = 191;
-            numericBoxMonochromaticity.TextFont = new System.Drawing.Font("Tahoma", 9.75F);
+            numericBoxMonochromaticity.ValueFont = new System.Drawing.Font("Tahoma", 9.75F);
             // 
             // groupBoxDetectorProperty
             // 
-            groupBoxDetectorProperty.Controls.Add(numericUpDownImageWidth);
+            groupBoxDetectorProperty.Controls.Add(sizeControl1);
             groupBoxDetectorProperty.Controls.Add(label20);
             groupBoxDetectorProperty.Controls.Add(numericBoxImageResolution);
             groupBoxDetectorProperty.Controls.Add(numericBoxMonitorResolution);
@@ -823,13 +817,9 @@
             groupBoxDetectorProperty.Controls.Add(numericBoxCameraLength);
             groupBoxDetectorProperty.Controls.Add(label31);
             groupBoxDetectorProperty.Controls.Add(label13);
-            groupBoxDetectorProperty.Controls.Add(label30);
-            groupBoxDetectorProperty.Controls.Add(numericUpDownImageHeight);
-            groupBoxDetectorProperty.Controls.Add(label10);
             groupBoxDetectorProperty.Controls.Add(numericBoxCenterY);
             groupBoxDetectorProperty.Controls.Add(numericBoxCenterX);
             groupBoxDetectorProperty.Controls.Add(label37);
-            groupBoxDetectorProperty.Controls.Add(label3);
             groupBoxDetectorProperty.Controls.Add(label33);
             groupBoxDetectorProperty.Controls.Add(label39);
             groupBoxDetectorProperty.Controls.Add(checkBoxFilmBlur);
@@ -840,21 +830,20 @@
             groupBoxDetectorProperty.Size = new System.Drawing.Size(280, 219);
             groupBoxDetectorProperty.TabIndex = 184;
             groupBoxDetectorProperty.TabStop = false;
-            groupBoxDetectorProperty.Text = "Detector Property";
-            // 
-            // numericUpDownImageWidth
-            // 
-            numericUpDownImageWidth.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-            numericUpDownImageWidth.Location = new System.Drawing.Point(55, 57);
-            numericUpDownImageWidth.Margin = new System.Windows.Forms.Padding(0);
-            numericUpDownImageWidth.Maximum = new decimal(new int[] { 10000, 0, 0, 0 });
-            numericUpDownImageWidth.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
-            numericUpDownImageWidth.Name = "numericUpDownImageWidth";
-            numericUpDownImageWidth.Size = new System.Drawing.Size(57, 23);
-            numericUpDownImageWidth.TabIndex = 2;
-            numericUpDownImageWidth.ThousandsSeparator = true;
-            numericUpDownImageWidth.Value = new decimal(new int[] { 800, 0, 0, 0 });
-            // 
+            groupBoxDetectorProperty.Text = "Detector property"; // 260521Cl: Title Case → sentence case (Phase 2 漏れ)
+            //
+            // sizeControl1   260521Cl: numericUpDownImageWidth/Height + label3(Width)/label10(Height)/label30(pixel) を置換
+            //
+            sizeControl1.AutoSize = true;
+            sizeControl1.HeaderText = "Size";
+            sizeControl1.Location = new System.Drawing.Point(15, 55);
+            sizeControl1.Maximum = 10000; // 旧 numericUpDownImageWidth/Height の範囲 (1〜10000) を継承
+            sizeControl1.Minimum = 1;
+            sizeControl1.Name = "sizeControl1";
+            sizeControl1.TabIndex = 2;
+            sizeControl1.UnitText = "px"; // 旧 label30 "pixel" を統一表記 "px" に
+            sizeControl1.Value = new System.Drawing.Size(800, 800); // 旧 numericUpDownImageWidth/Height の既定 800 を継承
+            //
             // label20
             // 
             label20.AutoSize = true;
@@ -880,7 +869,7 @@
             numericBoxImageResolution.RadianValue = 0.0034906585039886592D;
             numericBoxImageResolution.Size = new System.Drawing.Size(77, 23);
             numericBoxImageResolution.TabIndex = 5;
-            numericBoxImageResolution.TextFont = new System.Drawing.Font("Tahoma", 9.75F);
+            numericBoxImageResolution.ValueFont = new System.Drawing.Font("Tahoma", 9.75F);
             numericBoxImageResolution.Value = 0.2D;
             // 
             // numericBoxMonitorResolution
@@ -897,7 +886,7 @@
             numericBoxMonitorResolution.RadianValue = 0.0017453292519943296D;
             numericBoxMonitorResolution.Size = new System.Drawing.Size(77, 23);
             numericBoxMonitorResolution.TabIndex = 5;
-            numericBoxMonitorResolution.TextFont = new System.Drawing.Font("Tahoma", 9.75F);
+            numericBoxMonitorResolution.ValueFont = new System.Drawing.Font("Tahoma", 9.75F);
             numericBoxMonitorResolution.Value = 0.1D;
             numericBoxMonitorResolution.ValueChanged += numericBoxMonitorResolution_ValueChanged;
             // 
@@ -948,7 +937,7 @@
             numericBoxCameraLength.RadianValue = 5.2359877559829888D;
             numericBoxCameraLength.Size = new System.Drawing.Size(93, 23);
             numericBoxCameraLength.TabIndex = 5;
-            numericBoxCameraLength.TextFont = new System.Drawing.Font("Tahoma", 9.75F);
+            numericBoxCameraLength.ValueFont = new System.Drawing.Font("Tahoma", 9.75F);
             numericBoxCameraLength.Value = 300D;
             // 
             // label31
@@ -972,42 +961,8 @@
             label13.Size = new System.Drawing.Size(31, 14);
             label13.TabIndex = 67;
             label13.Text = "pixel";
-            // 
-            // label30
-            // 
-            label30.AutoSize = true;
-            label30.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-            label30.Location = new System.Drawing.Point(224, 60);
-            label30.Margin = new System.Windows.Forms.Padding(0, 3, 0, 0);
-            label30.Name = "label30";
-            label30.Size = new System.Drawing.Size(31, 14);
-            label30.TabIndex = 67;
-            label30.Text = "pixel";
-            // 
-            // numericUpDownImageHeight
-            // 
-            numericUpDownImageHeight.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-            numericUpDownImageHeight.Location = new System.Drawing.Point(165, 57);
-            numericUpDownImageHeight.Margin = new System.Windows.Forms.Padding(0);
-            numericUpDownImageHeight.Maximum = new decimal(new int[] { 10000, 0, 0, 0 });
-            numericUpDownImageHeight.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
-            numericUpDownImageHeight.Name = "numericUpDownImageHeight";
-            numericUpDownImageHeight.Size = new System.Drawing.Size(57, 23);
-            numericUpDownImageHeight.TabIndex = 3;
-            numericUpDownImageHeight.ThousandsSeparator = true;
-            numericUpDownImageHeight.Value = new decimal(new int[] { 800, 0, 0, 0 });
-            // 
-            // label10
-            // 
-            label10.AutoSize = true;
-            label10.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-            label10.Location = new System.Drawing.Point(116, 60);
-            label10.Margin = new System.Windows.Forms.Padding(0, 3, 0, 0);
-            label10.Name = "label10";
-            label10.Size = new System.Drawing.Size(43, 14);
-            label10.TabIndex = 67;
-            label10.Text = "Height";
-            // 
+            // 260521Cl: label30(pixel)/numericUpDownImageHeight/label10(Height) は sizeControl1 へ置換したため削除
+            //
             // numericBoxCenterY
             // 
             numericBoxCenterY.BackColor = System.Drawing.SystemColors.Control;
@@ -1021,7 +976,7 @@
             numericBoxCenterY.RadianValue = 6.9813170079773181D;
             numericBoxCenterY.Size = new System.Drawing.Size(57, 23);
             numericBoxCenterY.TabIndex = 5;
-            numericBoxCenterY.TextFont = new System.Drawing.Font("Tahoma", 9.75F);
+            numericBoxCenterY.ValueFont = new System.Drawing.Font("Tahoma", 9.75F);
             numericBoxCenterY.Value = 400D;
             // 
             // numericBoxCenterX
@@ -1037,7 +992,7 @@
             numericBoxCenterX.RadianValue = 6.9813170079773181D;
             numericBoxCenterX.Size = new System.Drawing.Size(57, 23);
             numericBoxCenterX.TabIndex = 4;
-            numericBoxCenterX.TextFont = new System.Drawing.Font("Tahoma", 9.75F);
+            numericBoxCenterX.ValueFont = new System.Drawing.Font("Tahoma", 9.75F);
             numericBoxCenterX.Value = 400D;
             // 
             // label37
@@ -1050,18 +1005,8 @@
             label37.Size = new System.Drawing.Size(56, 14);
             label37.TabIndex = 67;
             label37.Text = "Center Y";
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-            label3.Location = new System.Drawing.Point(15, 60);
-            label3.Margin = new System.Windows.Forms.Padding(0, 3, 0, 0);
-            label3.Name = "label3";
-            label3.Size = new System.Drawing.Size(40, 14);
-            label3.TabIndex = 67;
-            label3.Text = "Width";
-            // 
+            // 260521Cl: label3(Width) は sizeControl1 へ置換したため削除
+            //
             // label33
             // 
             label33.AutoSize = true;
@@ -1119,7 +1064,7 @@
             numericBoxFilmBlur.Name = "numericBoxFilmBlur";
             numericBoxFilmBlur.Size = new System.Drawing.Size(45, 23);
             numericBoxFilmBlur.TabIndex = 191;
-            numericBoxFilmBlur.TextFont = new System.Drawing.Font("Tahoma", 9.75F);
+            numericBoxFilmBlur.ValueFont = new System.Drawing.Font("Tahoma", 9.75F);
             // 
             // tabPage2
             // 
@@ -1546,8 +1491,7 @@
             groupBoxWaveSource.PerformLayout();
             groupBoxDetectorProperty.ResumeLayout(false);
             groupBoxDetectorProperty.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)numericUpDownImageWidth).EndInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDownImageHeight).EndInit();
+            // 260521Cl: numericUpDownImageWidth/Height は sizeControl1 へ置換したため EndInit 削除
             tabPage2.ResumeLayout(false);
             tabPage2.PerformLayout();
             groupBoxPeakIndices.ResumeLayout(false);
@@ -1635,11 +1579,7 @@
         private System.Windows.Forms.Label label28;
         private System.Windows.Forms.GroupBox groupBoxDetectorProperty;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.NumericUpDown numericUpDownImageWidth;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.NumericUpDown numericUpDownImageHeight;
-        private System.Windows.Forms.Label label30;
+        private Crystallography.Controls.SizeControl sizeControl1; // 260521Cl: numericUpDownImageWidth/Height + label3/10/30 を置換
         private System.Windows.Forms.Label label31;
         private System.Windows.Forms.Label label32;
         private Crystallography.Controls.NumericBox numericBoxCenterY;

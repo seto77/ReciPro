@@ -62,7 +62,7 @@ public partial class FormImageSimulator : FormBase
     /// <summary>色収差 Cc (nm) numericBoxCcで表示されているのはmm単位なので、1E6/1E-6 倍変換して get/set</summary>
     public double Cc { get => numericBoxCc.Value * 1E6; set => numericBoxCc.Value = value * 1E-6; }
 
-    /// <summary>電子の加速電圧の揺らぎ (kV) numericBoxDeltaVで表示されているのはFWHMだが、2 * Sqrt(2 * Log(2)) で割って1000倍して、eV単位の標準偏差に変換する</summary>
+    /// <summary>電子の加速電圧の揺らぎの標準偏差 (kV)。numericBoxDeltaVの表示値は eV 単位の FWHM。DeltaVolFWHMで1000で割って eV→keV(=kV) とし、2 * Sqrt(2 * Log(2))（= 2·√(2·ln2) = 2.355、FWHM→σ の換算係数）で割って標準偏差に変換する (260521Cl コメント修正: 旧コメントは「1000倍してeV単位の標準偏差」と誤記)</summary>
     public double DeltaVol { get => DeltaVolFWHM / 2 / Sqrt(2 * Log(2)); set => DeltaVolFWHM = value * 2 * Sqrt(2 * Log(2)); }
 
     /// <summary>電子の加速電圧の揺らぎ FWHM (kV)</summary>
@@ -85,7 +85,9 @@ public partial class FormImageSimulator : FormBase
     public double ImageResolution { get => numericBoxResolution.Value / 1000.0; set => numericBoxResolution.Value = value * 1000.0; }
 
     /// <summary>イメージサイズ</summary>
-    public Size ImageSize { get => new(numericBoxWidth.ValueInteger, numericBoxHeight.ValueInteger); set { numericBoxWidth.Value = value.Width; numericBoxHeight.Value = value.Height; } }
+    // 260521Cl: numericBoxWidth/Height → sizeControl1 へ置換 (Value は Size なので 1:1)
+    //public Size ImageSize { get => new(numericBoxWidth.ValueInteger, numericBoxHeight.ValueInteger); set { numericBoxWidth.Value = value.Width; numericBoxHeight.Value = value.Height; } }
+    public Size ImageSize { get => sizeControl1.Value; set => sizeControl1.Value = value; }
     #endregion
 
     # region シリアルモードのプロパティ

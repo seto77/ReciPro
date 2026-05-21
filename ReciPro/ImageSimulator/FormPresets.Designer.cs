@@ -24,7 +24,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            captureExtender.SetCapture(this, true); // 260521Cl 追加: GUI監査キャプチャ対象 (フォーム全体)
             components = new System.ComponentModel.Container();
             listBox = new System.Windows.Forms.ListBox();
             textBoxPresetName = new System.Windows.Forms.TextBox();
@@ -35,8 +34,8 @@
             buttonReplace = new System.Windows.Forms.Button();
             buttonRename = new System.Windows.Forms.Button();
             flowLayoutPanelOkCancel = new System.Windows.Forms.FlowLayoutPanel();
-            buttonOK = new System.Windows.Forms.Button();
             buttonCancel = new System.Windows.Forms.Button();
+            buttonOK = new System.Windows.Forms.Button();
             panelManageList = new System.Windows.Forms.Panel();
             panel2 = new System.Windows.Forms.Panel();
             checkBoxManageList = new System.Windows.Forms.CheckBox();
@@ -54,7 +53,7 @@
             listBox.IntegralHeight = false;
             listBox.Location = new System.Drawing.Point(4, 5);
             listBox.Name = "listBox";
-            listBox.Size = new System.Drawing.Size(233, 208);
+            listBox.Size = new System.Drawing.Size(233, 210);
             listBox.TabIndex = 1;
             listBox.SelectedIndexChanged += listBox_SelectedIndexChanged;
             // 
@@ -170,43 +169,39 @@
             // 
             flowLayoutPanelOkCancel.AutoSize = true;
             flowLayoutPanelOkCancel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            flowLayoutPanelOkCancel.Controls.Add(buttonCancel);// 260520Cl 変更: 追加順入替 (RightToLeftで右端Cancel/左OKにする)
+            flowLayoutPanelOkCancel.Controls.Add(buttonCancel);
             flowLayoutPanelOkCancel.Controls.Add(buttonOK);
             flowLayoutPanelOkCancel.Dock = System.Windows.Forms.DockStyle.Bottom;
             flowLayoutPanelOkCancel.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            flowLayoutPanelOkCancel.Location = new System.Drawing.Point(4, 287);
+            flowLayoutPanelOkCancel.Location = new System.Drawing.Point(4, 289);
             flowLayoutPanelOkCancel.Margin = new System.Windows.Forms.Padding(0);
             flowLayoutPanelOkCancel.Name = "flowLayoutPanelOkCancel";
-            flowLayoutPanelOkCancel.Size = new System.Drawing.Size(233, 27);
+            flowLayoutPanelOkCancel.Size = new System.Drawing.Size(233, 25);
             flowLayoutPanelOkCancel.TabIndex = 10;
-            // 
-            // buttonOK
-            // 
-            buttonOK.AutoSize = false;// 260520Cl 変更: 固定サイズに (AutoSize true→false)
-            buttonOK.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            buttonOK.Location = new System.Drawing.Point(197, 0);
-            buttonOK.Margin = new System.Windows.Forms.Padding(0);
-            buttonOK.Name = "buttonOK";
-            //buttonOK.Size = new System.Drawing.Size(36, 27);// 260520Cl 変更前
-            buttonOK.Size = new System.Drawing.Size(75, 25);// 260520Cl 変更: 75×25に統一
-            buttonOK.TabIndex = 0;
-            buttonOK.Text = "OK";
-            buttonOK.UseVisualStyleBackColor = true;
-            buttonOK.Click += buttonOK_Click;
             // 
             // buttonCancel
             // 
-            buttonCancel.AutoSize = false;// 260520Cl 変更: 固定サイズに
             buttonCancel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            buttonCancel.Location = new System.Drawing.Point(141, 0);
+            buttonCancel.Location = new System.Drawing.Point(158, 0);
             buttonCancel.Margin = new System.Windows.Forms.Padding(0);
             buttonCancel.Name = "buttonCancel";
-            //buttonCancel.Size = new System.Drawing.Size(56, 27);// 260520Cl 変更前
-            buttonCancel.Size = new System.Drawing.Size(75, 25);// 260520Cl 変更: 75×25に統一
+            buttonCancel.Size = new System.Drawing.Size(75, 25);
             buttonCancel.TabIndex = 0;
             buttonCancel.Text = "Cancel";
             buttonCancel.UseVisualStyleBackColor = true;
             buttonCancel.Click += buttonCancel_Click;
+            // 
+            // buttonOK
+            // 
+            buttonOK.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            buttonOK.Location = new System.Drawing.Point(83, 0);
+            buttonOK.Margin = new System.Windows.Forms.Padding(0);
+            buttonOK.Name = "buttonOK";
+            buttonOK.Size = new System.Drawing.Size(75, 25);
+            buttonOK.TabIndex = 0;
+            buttonOK.Text = "OK";
+            buttonOK.UseVisualStyleBackColor = true;
+            buttonOK.Click += buttonOK_Click;
             // 
             // panelManageList
             // 
@@ -214,7 +209,7 @@
             panelManageList.Controls.Add(panel2);
             panelManageList.Controls.Add(flowLayoutPanel1);
             panelManageList.Dock = System.Windows.Forms.DockStyle.Bottom;
-            panelManageList.Location = new System.Drawing.Point(4, 234);
+            panelManageList.Location = new System.Drawing.Point(4, 236);
             panelManageList.Name = "panelManageList";
             panelManageList.Size = new System.Drawing.Size(233, 53);
             panelManageList.TabIndex = 11;
@@ -234,7 +229,7 @@
             // 
             checkBoxManageList.AutoSize = true;
             checkBoxManageList.Dock = System.Windows.Forms.DockStyle.Bottom;
-            checkBoxManageList.Location = new System.Drawing.Point(4, 213);
+            checkBoxManageList.Location = new System.Drawing.Point(4, 215);
             checkBoxManageList.Name = "checkBoxManageList";
             checkBoxManageList.Size = new System.Drawing.Size(233, 21);
             checkBoxManageList.TabIndex = 10;
@@ -244,10 +239,11 @@
             // 
             // FormPresets
             // 
-            AcceptButton = buttonOK;// 260520Cl 追加: Enter で OK
-            CancelButton = buttonCancel;// 260520Cl 追加: Esc で Cancel
-            AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F); // 260329Cl 変更: Font→Dpi, 96dpi基準に統一
+            AcceptButton = buttonOK;
+            AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            CancelButton = buttonCancel;
+            captureExtender.SetCapture(this, true);
             ClientSize = new System.Drawing.Size(241, 319);
             ControlBox = false;
             Controls.Add(listBox);
@@ -266,7 +262,6 @@
             flowLayoutPanel1.ResumeLayout(false);
             flowLayoutPanel1.PerformLayout();
             flowLayoutPanelOkCancel.ResumeLayout(false);
-            flowLayoutPanelOkCancel.PerformLayout();
             panelManageList.ResumeLayout(false);
             panelManageList.PerformLayout();
             panel2.ResumeLayout(false);

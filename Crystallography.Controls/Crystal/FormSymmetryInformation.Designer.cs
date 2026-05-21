@@ -304,7 +304,7 @@
             numericBoxPositionA.ShowUpDown = true;
             numericBoxPositionA.Size = new System.Drawing.Size(50, 25);
             numericBoxPositionA.TabIndex = 6;
-            numericBoxPositionA.TextFontSize = 9F;
+            numericBoxPositionA.ValueFontSize = 9F;
             numericBoxPositionA.UpDown_Increment = 0.01D;
             numericBoxPositionA.ValueChanged += numericBoxPosition_ValueChanged;
             // 
@@ -339,7 +339,7 @@
             numericBoxPositionB.ShowUpDown = true;
             numericBoxPositionB.Size = new System.Drawing.Size(50, 25);
             numericBoxPositionB.TabIndex = 6;
-            numericBoxPositionB.TextFontSize = 9F;
+            numericBoxPositionB.ValueFontSize = 9F;
             numericBoxPositionB.UpDown_Increment = 0.01D;
             numericBoxPositionB.ValueChanged += numericBoxPosition_ValueChanged;
             // 
@@ -374,7 +374,7 @@
             numericBoxPositionC.ShowUpDown = true;
             numericBoxPositionC.Size = new System.Drawing.Size(50, 25);
             numericBoxPositionC.TabIndex = 6;
-            numericBoxPositionC.TextFontSize = 9F;
+            numericBoxPositionC.ValueFontSize = 9F;
             numericBoxPositionC.UpDown_Increment = 0.01D;
             numericBoxPositionC.ValueChanged += numericBoxPosition_ValueChanged;
             // 
@@ -458,8 +458,8 @@
             numericBoxAnglePlanes.ReadOnly = true;
             numericBoxAnglePlanes.Size = new System.Drawing.Size(72, 25);
             numericBoxAnglePlanes.TabIndex = 12;
-            numericBoxAnglePlanes.TextBoxBackColor = System.Drawing.SystemColors.Control;
-            numericBoxAnglePlanes.TextBoxTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            numericBoxAnglePlanes.ValueBackColor = System.Drawing.SystemColors.Control;
+            numericBoxAnglePlanes.ValueTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBoxZoneAxis
             // 
@@ -488,8 +488,8 @@
             numericBoxAngleAxes.ReadOnly = true;
             numericBoxAngleAxes.Size = new System.Drawing.Size(72, 25);
             numericBoxAngleAxes.TabIndex = 17;
-            numericBoxAngleAxes.TextBoxBackColor = System.Drawing.SystemColors.Control;
-            numericBoxAngleAxes.TextBoxTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            numericBoxAngleAxes.ValueBackColor = System.Drawing.SystemColors.Control;
+            numericBoxAngleAxes.ValueTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // flowLayoutPanel6
             // 
@@ -520,8 +520,8 @@
             numericBoxLengthPlane2.ReadOnly = true;
             numericBoxLengthPlane2.Size = new System.Drawing.Size(67, 25);
             numericBoxLengthPlane2.TabIndex = 14;
-            numericBoxLengthPlane2.TextBoxBackColor = System.Drawing.SystemColors.Control;
-            numericBoxLengthPlane2.TextBoxTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            numericBoxLengthPlane2.ValueBackColor = System.Drawing.SystemColors.Control;
+            numericBoxLengthPlane2.ValueTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label40
             // 
@@ -561,8 +561,8 @@
             numericBoxLengthAxis2.ReadOnly = true;
             numericBoxLengthAxis2.Size = new System.Drawing.Size(67, 25);
             numericBoxLengthAxis2.TabIndex = 4;
-            numericBoxLengthAxis2.TextBoxBackColor = System.Drawing.SystemColors.Control;
-            numericBoxLengthAxis2.TextBoxTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            numericBoxLengthAxis2.ValueBackColor = System.Drawing.SystemColors.Control;
+            numericBoxLengthAxis2.ValueTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // numericBoxAnglePlaneAxis1
             // 
@@ -581,8 +581,8 @@
             numericBoxAnglePlaneAxis1.ReadOnly = true;
             numericBoxAnglePlaneAxis1.Size = new System.Drawing.Size(72, 25);
             numericBoxAnglePlaneAxis1.TabIndex = 15;
-            numericBoxAnglePlaneAxis1.TextBoxBackColor = System.Drawing.SystemColors.Control;
-            numericBoxAnglePlaneAxis1.TextBoxTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            numericBoxAnglePlaneAxis1.ValueBackColor = System.Drawing.SystemColors.Control;
+            numericBoxAnglePlaneAxis1.ValueTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // flowLayoutPanel11
             // 
@@ -613,8 +613,8 @@
             numericBoxLengthAxis1.ReadOnly = true;
             numericBoxLengthAxis1.Size = new System.Drawing.Size(67, 25);
             numericBoxLengthAxis1.TabIndex = 4;
-            numericBoxLengthAxis1.TextBoxBackColor = System.Drawing.SystemColors.Control;
-            numericBoxLengthAxis1.TextBoxTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            numericBoxLengthAxis1.ValueBackColor = System.Drawing.SystemColors.Control;
+            numericBoxLengthAxis1.ValueTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // numericBoxAnglePlaneAxis2
             // 
@@ -633,8 +633,8 @@
             numericBoxAnglePlaneAxis2.ReadOnly = true;
             numericBoxAnglePlaneAxis2.Size = new System.Drawing.Size(72, 25);
             numericBoxAnglePlaneAxis2.TabIndex = 16;
-            numericBoxAnglePlaneAxis2.TextBoxBackColor = System.Drawing.SystemColors.Control;
-            numericBoxAnglePlaneAxis2.TextBoxTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            numericBoxAnglePlaneAxis2.ValueBackColor = System.Drawing.SystemColors.Control;
+            numericBoxAnglePlaneAxis2.ValueTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // flowLayoutPanel1
             // 
@@ -666,8 +666,8 @@
             numericBoxLengthPlane1.ReadOnly = true;
             numericBoxLengthPlane1.Size = new System.Drawing.Size(67, 25);
             numericBoxLengthPlane1.TabIndex = 13;
-            numericBoxLengthPlane1.TextBoxBackColor = System.Drawing.SystemColors.Control;
-            numericBoxLengthPlane1.TextBoxTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            numericBoxLengthPlane1.ValueBackColor = System.Drawing.SystemColors.Control;
+            numericBoxLengthPlane1.ValueTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBoxZonePlane
             // 

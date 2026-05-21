@@ -359,7 +359,7 @@
             this.numericBoxEOS_Gamma0.SkipEventDuringInput = false;
             this.numericBoxEOS_Gamma0.SmartIncrement = true;
             this.numericBoxEOS_Gamma0.TabIndex = 2;
-            this.numericBoxEOS_Gamma0.TextFont = new System.Drawing.Font("Segoe UI", 9F);
+            this.numericBoxEOS_Gamma0.ValueFont = new System.Drawing.Font("Segoe UI", 9F);
             this.numericBoxEOS_Gamma0.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.parameters_Changed);
             // 
             // numericBoxEOS_Theta0
@@ -383,7 +383,7 @@
             this.numericBoxEOS_Theta0.SkipEventDuringInput = false;
             this.numericBoxEOS_Theta0.SmartIncrement = true;
             this.numericBoxEOS_Theta0.TabIndex = 3;
-            this.numericBoxEOS_Theta0.TextFont = new System.Drawing.Font("Segoe UI", 9F);
+            this.numericBoxEOS_Theta0.ValueFont = new System.Drawing.Font("Segoe UI", 9F);
             this.numericBoxEOS_Theta0.Value = 300D;
             this.numericBoxEOS_Theta0.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.parameters_Changed);
             // 
@@ -406,7 +406,7 @@
             this.numericBoxEOS_Q.SkipEventDuringInput = false;
             this.numericBoxEOS_Q.SmartIncrement = true;
             this.numericBoxEOS_Q.TabIndex = 4;
-            this.numericBoxEOS_Q.TextFont = new System.Drawing.Font("Segoe UI", 9F);
+            this.numericBoxEOS_Q.ValueFont = new System.Drawing.Font("Segoe UI", 9F);
             this.numericBoxEOS_Q.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.parameters_Changed);
             // 
             // numericBoxEOS_C
@@ -429,7 +429,7 @@
             this.numericBoxEOS_C.SkipEventDuringInput = false;
             this.numericBoxEOS_C.SmartIncrement = true;
             this.numericBoxEOS_C.TabIndex = 9;
-            this.numericBoxEOS_C.TextFont = new System.Drawing.Font("Segoe UI", 9F);
+            this.numericBoxEOS_C.ValueFont = new System.Drawing.Font("Segoe UI", 9F);
             this.numericBoxEOS_C.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.parameters_Changed);
             // 
             // numericBoxEOS_B
@@ -452,7 +452,7 @@
             this.numericBoxEOS_B.SkipEventDuringInput = false;
             this.numericBoxEOS_B.SmartIncrement = true;
             this.numericBoxEOS_B.TabIndex = 8;
-            this.numericBoxEOS_B.TextFont = new System.Drawing.Font("Segoe UI", 9F);
+            this.numericBoxEOS_B.ValueFont = new System.Drawing.Font("Segoe UI", 9F);
             this.numericBoxEOS_B.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.parameters_Changed);
             // 
             // numericBoxEOS_KperT
@@ -475,7 +475,7 @@
             this.numericBoxEOS_KperT.SkipEventDuringInput = false;
             this.numericBoxEOS_KperT.SmartIncrement = true;
             this.numericBoxEOS_KperT.TabIndex = 6;
-            this.numericBoxEOS_KperT.TextFont = new System.Drawing.Font("Segoe UI", 9F);
+            this.numericBoxEOS_KperT.ValueFont = new System.Drawing.Font("Segoe UI", 9F);
             this.numericBoxEOS_KperT.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.parameters_Changed);
             // 
             // numericBoxEOS_A
@@ -498,7 +498,7 @@
             this.numericBoxEOS_A.SkipEventDuringInput = false;
             this.numericBoxEOS_A.SmartIncrement = true;
             this.numericBoxEOS_A.TabIndex = 7;
-            this.numericBoxEOS_A.TextFont = new System.Drawing.Font("Segoe UI", 9F);
+            this.numericBoxEOS_A.ValueFont = new System.Drawing.Font("Segoe UI", 9F);
             this.numericBoxEOS_A.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.parameters_Changed);
             // 
             // numericBoxEOS_V0perCell
@@ -522,7 +522,7 @@
             this.numericBoxEOS_V0perCell.SkipEventDuringInput = false;
             this.numericBoxEOS_V0perCell.SmartIncrement = true;
             this.numericBoxEOS_V0perCell.TabIndex = 0;
-            this.numericBoxEOS_V0perCell.TextFont = new System.Drawing.Font("Segoe UI", 9F);
+            this.numericBoxEOS_V0perCell.ValueFont = new System.Drawing.Font("Segoe UI", 9F);
             this.numericBoxEOS_V0perCell.Value = 300D;
             this.numericBoxEOS_V0perCell.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.parameters_Changed);
             this.numericBoxEOS_V0perCell.Click2 += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxEOS_V0perCell_Click2);
@@ -549,8 +549,8 @@
             this.numericBoxEOS_V0perMol.SkipEventDuringInput = false;
             this.numericBoxEOS_V0perMol.SmartIncrement = true;
             this.numericBoxEOS_V0perMol.TabIndex = 1;
-            this.numericBoxEOS_V0perMol.TextBoxBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxEOS_V0perMol.TextFont = new System.Drawing.Font("Segoe UI", 9F);
+            this.numericBoxEOS_V0perMol.ValueBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxEOS_V0perMol.ValueFont = new System.Drawing.Font("Segoe UI", 9F);
             this.numericBoxEOS_V0perMol.Value = 300D;
             this.numericBoxEOS_V0perMol.Click2 += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxEOS_V0perMol_Click2);
             // 
@@ -574,7 +574,7 @@
             this.numericBoxEOS_K0.SkipEventDuringInput = false;
             this.numericBoxEOS_K0.SmartIncrement = true;
             this.numericBoxEOS_K0.TabIndex = 2;
-            this.numericBoxEOS_K0.TextFont = new System.Drawing.Font("Segoe UI", 9F);
+            this.numericBoxEOS_K0.ValueFont = new System.Drawing.Font("Segoe UI", 9F);
             this.numericBoxEOS_K0.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.parameters_Changed);
             // 
             // numericBoxEOS_Kp0
@@ -597,7 +597,7 @@
             this.numericBoxEOS_Kp0.SkipEventDuringInput = false;
             this.numericBoxEOS_Kp0.SmartIncrement = true;
             this.numericBoxEOS_Kp0.TabIndex = 3;
-            this.numericBoxEOS_Kp0.TextFont = new System.Drawing.Font("Segoe UI", 9F);
+            this.numericBoxEOS_Kp0.ValueFont = new System.Drawing.Font("Segoe UI", 9F);
             this.numericBoxEOS_Kp0.Value = 4D;
             this.numericBoxEOS_Kp0.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.parameters_Changed);
             // 
@@ -621,7 +621,7 @@
             this.numericBoxEOS_Kpp0.SkipEventDuringInput = false;
             this.numericBoxEOS_Kpp0.SmartIncrement = true;
             this.numericBoxEOS_Kpp0.TabIndex = 3;
-            this.numericBoxEOS_Kpp0.TextFont = new System.Drawing.Font("Segoe UI", 9F);
+            this.numericBoxEOS_Kpp0.ValueFont = new System.Drawing.Font("Segoe UI", 9F);
             this.numericBoxEOS_Kpp0.Value = 4D;
             this.numericBoxEOS_Kpp0.Visible = false;
             this.numericBoxEOS_Kpp0.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.parameters_Changed);
@@ -646,7 +646,7 @@
             this.numericBoxEOS_KpInfinity.SkipEventDuringInput = false;
             this.numericBoxEOS_KpInfinity.SmartIncrement = true;
             this.numericBoxEOS_KpInfinity.TabIndex = 3;
-            this.numericBoxEOS_KpInfinity.TextFont = new System.Drawing.Font("Segoe UI", 9F);
+            this.numericBoxEOS_KpInfinity.ValueFont = new System.Drawing.Font("Segoe UI", 9F);
             this.numericBoxEOS_KpInfinity.Value = 4D;
             this.numericBoxEOS_KpInfinity.Visible = false;
             this.numericBoxEOS_KpInfinity.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.parameters_Changed);
@@ -670,7 +670,7 @@
             this.numericBox3rdVinetIta.SkipEventDuringInput = false;
             this.numericBox3rdVinetIta.SmartIncrement = true;
             this.numericBox3rdVinetIta.TabIndex = 3;
-            this.numericBox3rdVinetIta.TextFont = new System.Drawing.Font("Segoe UI", 9F);
+            this.numericBox3rdVinetIta.ValueFont = new System.Drawing.Font("Segoe UI", 9F);
             this.numericBox3rdVinetIta.Visible = false;
             this.numericBox3rdVinetIta.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.parameters_Changed);
             // 
@@ -693,7 +693,7 @@
             this.numericBox3rdVinetBeta.SkipEventDuringInput = false;
             this.numericBox3rdVinetBeta.SmartIncrement = true;
             this.numericBox3rdVinetBeta.TabIndex = 3;
-            this.numericBox3rdVinetBeta.TextFont = new System.Drawing.Font("Segoe UI", 9F);
+            this.numericBox3rdVinetBeta.ValueFont = new System.Drawing.Font("Segoe UI", 9F);
             this.numericBox3rdVinetBeta.Visible = false;
             this.numericBox3rdVinetBeta.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.parameters_Changed);
             // 
@@ -716,7 +716,7 @@
             this.numericBox3rdVinetPsi.SkipEventDuringInput = false;
             this.numericBox3rdVinetPsi.SmartIncrement = true;
             this.numericBox3rdVinetPsi.TabIndex = 3;
-            this.numericBox3rdVinetPsi.TextFont = new System.Drawing.Font("Segoe UI", 9F);
+            this.numericBox3rdVinetPsi.ValueFont = new System.Drawing.Font("Segoe UI", 9F);
             this.numericBox3rdVinetPsi.Visible = false;
             this.numericBox3rdVinetPsi.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.parameters_Changed);
             // 
@@ -784,7 +784,7 @@
             this.numericBoxPressure.SkipEventDuringInput = false;
             this.numericBoxPressure.SmartIncrement = true;
             this.numericBoxPressure.TabIndex = 61;
-            this.numericBoxPressure.TextBoxBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxPressure.ValueBackColor = System.Drawing.SystemColors.Control;
             // 
             // EOSControl
             // 

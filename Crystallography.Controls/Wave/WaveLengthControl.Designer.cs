@@ -92,9 +92,10 @@
             numericBoxEnergy.BackColor = System.Drawing.SystemColors.Control;
             numericBoxEnergy.FooterBackColor = System.Drawing.SystemColors.Control;
             numericBoxEnergy.HeaderBackColor = System.Drawing.SystemColors.Control;
+            numericBoxEnergy.Minimum = 0D;
             numericBoxEnergy.Name = "numericBoxEnergy";
             numericBoxEnergy.RoundErrorAccuracy = 8;
-            toolTip.SetToolTip(numericBoxEnergy, resources.GetString("numericBoxEnergy.ToolTip"));
+            toolTip.SetToolTip(numericBoxEnergy, resources.GetString("numericBoxEnergy.ToolTip1"));
             numericBoxEnergy.ValueChanged += numericBoxEnergy_ValueChanged;
             // 
             // label1
@@ -109,9 +110,10 @@
             numericBoxWaveLength.BackColor = System.Drawing.SystemColors.Control;
             numericBoxWaveLength.FooterBackColor = System.Drawing.SystemColors.Control;
             numericBoxWaveLength.HeaderBackColor = System.Drawing.SystemColors.Control;
+            numericBoxWaveLength.Minimum = 0D;
             numericBoxWaveLength.Name = "numericBoxWaveLength";
-            numericBoxWaveLength.RoundErrorAccuracy = 12;
-            toolTip.SetToolTip(numericBoxWaveLength, resources.GetString("numericBoxWaveLength.ToolTip"));
+            numericBoxWaveLength.RoundErrorAccuracy = 9;
+            toolTip.SetToolTip(numericBoxWaveLength, resources.GetString("numericBoxWaveLength.ToolTip1"));
             numericBoxWaveLength.ValueChanged += numericBoxWaveLength_ValueChanged;
             // 
             // radioButtonNeutron
@@ -165,7 +167,6 @@
             // WaveLengthControl
             // 
             resources.ApplyResources(this, "$this");
-            AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             Controls.Add(panel1);
             Controls.Add(flowLayoutPanel2);

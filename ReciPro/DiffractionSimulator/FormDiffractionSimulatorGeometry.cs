@@ -39,8 +39,9 @@ public partial class FormDiffractionSimulatorGeometry : FormBase
     //public double CameraLength1 { set { numericBoxCameraLength1.Value = value; } get { return numericBoxCameraLength1.Value; } }
     public double CameraLength2 { set => numericBoxCameraLength2.Value = value; get => numericBoxCameraLength2.Value; }
 
-    public int DetectorWidth { set => numericBoxPixelWidth.Value = value; get => (int)numericBoxPixelWidth.Value; }
-    public int DetectorHeight { set => numericBoxPixelHeight.Value = value; get => (int)numericBoxPixelHeight.Value; }
+    // 260521Cl: numericBoxPixelWidth/Height → sizeControl1 へ置換
+    public int DetectorWidth { set => sizeControl1.ImageWidth = value; get => sizeControl1.ImageWidth; }
+    public int DetectorHeight { set => sizeControl1.ImageHeight = value; get => sizeControl1.ImageHeight; }
     public double DetectorPixelSize { set => numericBoxPixelSize.Value = value; get => numericBoxPixelSize.Value; }
 
     public double FootX { set => numericBoxFootX.Value = value; get => numericBoxFootX.Value; }
@@ -249,7 +250,8 @@ public partial class FormDiffractionSimulatorGeometry : FormBase
         FormDiffractionSimulator.Draw();
     }
 
-    private void textBoxFileName_TextChanged(object sender, EventArgs e) => numericBoxPixelHeight.Enabled = numericBoxPixelWidth.Enabled = textBoxFileName.Text.Length == 0;
+    // 260521Cl: numericBoxPixelHeight/Width.Enabled → sizeControl1.Enabled
+    private void textBoxFileName_TextChanged(object sender, EventArgs e) => sizeControl1.Enabled = textBoxFileName.Text.Length == 0;
 
     private void trackBarPictureOpacity1_ValueChanged(object sender, EventArgs e) => FormDiffractionSimulator.Draw();
 
@@ -267,17 +269,18 @@ public partial class FormDiffractionSimulatorGeometry : FormBase
                     d[n++] = pseudBitmap.SrcValuesGray[x + y * width];
                 }
             pseudBitmap.SrcValuesGray = d;
-            numericBoxPixelWidth.Value = pseudBitmap.Width = height;
-            numericBoxPixelHeight.Value = pseudBitmap.Height = width;
+            // 260521Cl: numericBoxPixelWidth/Height → sizeControl1。Detector W/H を入れ替え
+            pseudBitmap.Width = height;
+            pseudBitmap.Height = width;
+            sizeControl1.Value = new Size(height, width);
             OverlappedImage = pseudBitmap.GetImage();
             FormDiffractionSimulator.SkipDrawing = false;
         }
         else
         {
             FormDiffractionSimulator.SkipDrawing = true;
-            int temp = (int)numericBoxPixelWidth.Value;
-            numericBoxPixelWidth.Value = numericBoxPixelHeight.Value;
-            numericBoxPixelHeight.Value = temp;
+            // 260521Cl: numericBoxPixelWidth/Height → sizeControl1。Detector W/H を入れ替え
+            sizeControl1.Value = new Size(sizeControl1.ImageHeight, sizeControl1.ImageWidth);
             FormDiffractionSimulator.SkipDrawing = false;
         }
     }

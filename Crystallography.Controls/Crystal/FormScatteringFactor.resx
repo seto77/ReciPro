@@ -446,7 +446,7 @@
   <data name="waveLengthControl1.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
   </data>
-  <data name="waveLengthControl1.TextFont" type="System.Drawing.Font, System.Drawing">
+  <data name="waveLengthControl1.LabelFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="&gt;&gt;waveLengthControl1.Name" xml:space="preserve">

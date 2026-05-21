@@ -428,7 +428,7 @@
   <data name="tabPageReference.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 26</value>
   </data>
-  <data name="numericBoxMolarVolume.TextFontSize" type="System.Single, mscorlib">
+  <data name="numericBoxMolarVolume.ValueFontSize" type="System.Single, mscorlib">
     <value>9</value>
   </data>
   <data name="numericBoxMolarVolume.Location" type="System.Drawing.Point, System.Drawing">
@@ -497,7 +497,7 @@
   <data name="&gt;&gt;labelLaTex8.Type" xml:space="preserve">
     <value>Crystallography.Controls.LabelLaTeX, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="numericBoxZnumber.TextFontSize" type="System.Single, mscorlib">
+  <data name="numericBoxZnumber.ValueFontSize" type="System.Single, mscorlib">
     <value>9</value>
   </data>
   <data name="flowLayoutPanel1.TabIndex" type="System.Int32, mscorlib">
@@ -1118,7 +1118,7 @@
   <data name="flowLayoutPanelCellProperties.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
-  <data name="numericBoxDensity.TextFontSize" type="System.Single, mscorlib">
+  <data name="numericBoxDensity.ValueFontSize" type="System.Single, mscorlib">
     <value>9</value>
   </data>
   <data name="labelLaTex5.Font" type="System.Drawing.Font, System.Drawing">
@@ -1820,7 +1820,7 @@
   <data name="&gt;&gt;symmetryInformationToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="numericBoxVolumeAng.TextFontSize" type="System.Single, mscorlib">
+  <data name="numericBoxVolumeAng.ValueFontSize" type="System.Single, mscorlib">
     <value>9</value>
   </data>
   <data name="flowLayoutPanelRandomOrientationSettings.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
@@ -3018,7 +3018,7 @@
   <data name="labelLaTex8.Location" type="System.Drawing.Point, System.Drawing">
     <value>257, 28</value>
   </data>
-  <data name="numericBoxMolarMass.TextFontSize" type="System.Single, mscorlib">
+  <data name="numericBoxMolarMass.ValueFontSize" type="System.Single, mscorlib">
     <value>9</value>
   </data>
   <data name="buttonConvertToSubgroup.Location" type="System.Drawing.Point, System.Drawing">
@@ -3222,7 +3222,7 @@
   <data name="label109.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="numericBoxCellMass.TextFontSize" type="System.Single, mscorlib">
+  <data name="numericBoxCellMass.ValueFontSize" type="System.Single, mscorlib">
     <value>9</value>
   </data>
   <data name="&gt;&gt;label99.Parent" xml:space="preserve">
@@ -3234,7 +3234,7 @@
   <data name="labelLaTex3.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="numericBoxCellVolumeNm.TextFontSize" type="System.Single, mscorlib">
+  <data name="numericBoxCellVolumeNm.ValueFontSize" type="System.Single, mscorlib">
     <value>9</value>
   </data>
   <data name="tabPageEOS.Text" xml:space="preserve">

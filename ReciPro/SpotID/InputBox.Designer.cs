@@ -83,7 +83,7 @@
             this.numericBoxLength.RoundErrorAccuracy = -1;
             this.numericBoxLength.Size = new System.Drawing.Size(50, 27);
             this.numericBoxLength.TabIndex = 75;
-            this.numericBoxLength.TextFont = new System.Drawing.Font("Yu Gothic UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxLength.ValueFont = new System.Drawing.Font("Yu Gothic UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxLength.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxLength_ValueChanged);
             this.numericBoxLength.Click2 += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxlength_Click);
             // 
@@ -101,7 +101,7 @@
             this.numericBoxGlength.RoundErrorAccuracy = -1;
             this.numericBoxGlength.Size = new System.Drawing.Size(50, 27);
             this.numericBoxGlength.TabIndex = 75;
-            this.numericBoxGlength.TextFont = new System.Drawing.Font("Yu Gothic UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxGlength.ValueFont = new System.Drawing.Font("Yu Gothic UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxGlength.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxGlength_ValueChanged);
             this.numericBoxGlength.Click2 += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxGlength_Click);
             // 
@@ -119,7 +119,7 @@
             this.numericBoxDvalue.RoundErrorAccuracy = -1;
             this.numericBoxDvalue.Size = new System.Drawing.Size(50, 27);
             this.numericBoxDvalue.TabIndex = 75;
-            this.numericBoxDvalue.TextFont = new System.Drawing.Font("Yu Gothic UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxDvalue.ValueFont = new System.Drawing.Font("Yu Gothic UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxDvalue.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxDvalue_ValueChanged);
             this.numericBoxDvalue.Click2 += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxDvalue_Click);
             // 

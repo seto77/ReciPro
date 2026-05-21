@@ -392,7 +392,7 @@
             numericBoxL_step.RadianValue = 0.00017453292519943296D;
             numericBoxL_step.ShowUpDown = true;
             numericBoxL_step.SmartIncrement = true;
-            numericBoxL_step.TextFontSize = 9F;
+            numericBoxL_step.ValueFontSize = 9F;
             numericBoxL_step.Value = 0.01D;
             numericBoxL_step.ValueChanged += numericBoxH_min_ValueChanged;
             // 
@@ -407,7 +407,7 @@
             numericBoxK_step.RadianValue = 0.00017453292519943296D;
             numericBoxK_step.ShowUpDown = true;
             numericBoxK_step.SmartIncrement = true;
-            numericBoxK_step.TextFontSize = 9F;
+            numericBoxK_step.ValueFontSize = 9F;
             numericBoxK_step.Value = 0.01D;
             numericBoxK_step.ValueChanged += numericBoxH_min_ValueChanged;
             // 
@@ -422,7 +422,7 @@
             numericBoxH_step.RadianValue = 0.00017453292519943296D;
             numericBoxH_step.ShowUpDown = true;
             numericBoxH_step.SmartIncrement = true;
-            numericBoxH_step.TextFontSize = 9F;
+            numericBoxH_step.ValueFontSize = 9F;
             numericBoxH_step.Value = 0.01D;
             numericBoxH_step.ValueChanged += numericBoxH_min_ValueChanged;
             // 
@@ -433,7 +433,7 @@
             numericBoxL_max.Name = "numericBoxL_max";
             numericBoxL_max.RadianValue = 0.017453292519943295D;
             numericBoxL_max.ShowUpDown = true;
-            numericBoxL_max.TextFontSize = 9F;
+            numericBoxL_max.ValueFontSize = 9F;
             numericBoxL_max.Value = 1D;
             numericBoxL_max.ValueChanged += numericBoxH_min_ValueChanged;
             // 
@@ -443,7 +443,7 @@
             resources.ApplyResources(numericBoxK_max, "numericBoxK_max");
             numericBoxK_max.Name = "numericBoxK_max";
             numericBoxK_max.ShowUpDown = true;
-            numericBoxK_max.TextFontSize = 9F;
+            numericBoxK_max.ValueFontSize = 9F;
             numericBoxK_max.ValueChanged += numericBoxH_min_ValueChanged;
             // 
             // numericBoxL_min
@@ -452,7 +452,7 @@
             resources.ApplyResources(numericBoxL_min, "numericBoxL_min");
             numericBoxL_min.Name = "numericBoxL_min";
             numericBoxL_min.ShowUpDown = true;
-            numericBoxL_min.TextFontSize = 9F;
+            numericBoxL_min.ValueFontSize = 9F;
             numericBoxL_min.ValueChanged += numericBoxH_min_ValueChanged;
             // 
             // numericBoxK_min
@@ -461,7 +461,7 @@
             resources.ApplyResources(numericBoxK_min, "numericBoxK_min");
             numericBoxK_min.Name = "numericBoxK_min";
             numericBoxK_min.ShowUpDown = true;
-            numericBoxK_min.TextFontSize = 9F;
+            numericBoxK_min.ValueFontSize = 9F;
             numericBoxK_min.ValueChanged += numericBoxH_min_ValueChanged;
             // 
             // numericBoxH_max
@@ -470,7 +470,7 @@
             resources.ApplyResources(numericBoxH_max, "numericBoxH_max");
             numericBoxH_max.Name = "numericBoxH_max";
             numericBoxH_max.ShowUpDown = true;
-            numericBoxH_max.TextFontSize = 9F;
+            numericBoxH_max.ValueFontSize = 9F;
             numericBoxH_max.ValueChanged += numericBoxH_min_ValueChanged;
             // 
             // numericBoxH_min
@@ -479,7 +479,7 @@
             resources.ApplyResources(numericBoxH_min, "numericBoxH_min");
             numericBoxH_min.Name = "numericBoxH_min";
             numericBoxH_min.ShowUpDown = true;
-            numericBoxH_min.TextFontSize = 9F;
+            numericBoxH_min.ValueFontSize = 9F;
             numericBoxH_min.ValueChanged += numericBoxH_min_ValueChanged;
             // 
             // panel2

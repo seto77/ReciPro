@@ -42,8 +42,11 @@ public partial class FormDiffractionSimulator : FormBase
     #endregion
 
     #region フォームのプロパティ
-    public int ClientWidth { get => numericBoxClientWidth.ValueInteger; set => numericBoxClientWidth.Value = value; }
-    public int ClientHeight { get => numericBoxClientHeight.ValueInteger; set => numericBoxClientHeight.Value = value; }
+    // 260521Cl: numericBoxClientWidth/Height → sizeControl1 へ置換 (プロパティ名は Macro.cs が参照するため維持)
+    //public int ClientWidth { get => numericBoxClientWidth.ValueInteger; set => numericBoxClientWidth.Value = value; }
+    //public int ClientHeight { get => numericBoxClientHeight.ValueInteger; set => numericBoxClientHeight.Value = value; }
+    public int ClientWidth { get => sizeControl1.ImageWidth; set => sizeControl1.ImageWidth = value; }
+    public int ClientHeight { get => sizeControl1.ImageHeight; set => sizeControl1.ImageHeight = value; }
     private Size lastPanelSize { get; set; } = new Size(0, 0);
     #endregion
 
@@ -488,8 +491,10 @@ public partial class FormDiffractionSimulator : FormBase
             formMain.toolStripButtonDiffractionSingle.Checked = true;
 
             SkipEvent = true;
-            numericBoxClientWidth.Value = graphicsBox.ClientSize.Width;
-            numericBoxClientHeight.Value = graphicsBox.ClientSize.Height;
+            // 260521Cl: numericBoxClientWidth/Height → sizeControl1 へ置換
+            //numericBoxClientWidth.Value = graphicsBox.ClientSize.Width;
+            //numericBoxClientHeight.Value = graphicsBox.ClientSize.Height;
+            sizeControl1.Value = graphicsBox.ClientSize;
             SkipEvent = false;
         }
         else
@@ -1420,8 +1425,10 @@ public partial class FormDiffractionSimulator : FormBase
         Draw();
 
         SkipEvent = true;
-        numericBoxClientWidth.Value = graphicsBox.ClientSize.Width;
-        numericBoxClientHeight.Value = graphicsBox.ClientSize.Height;
+        // 260521Cl: numericBoxClientWidth/Height → sizeControl1 へ置換
+        //numericBoxClientWidth.Value = graphicsBox.ClientSize.Width;
+        //numericBoxClientHeight.Value = graphicsBox.ClientSize.Height;
+        sizeControl1.Value = graphicsBox.ClientSize;
         SkipEvent = false;
 
         lastPanelSize = graphicsBox.ClientSize;
@@ -1431,8 +1438,10 @@ public partial class FormDiffractionSimulator : FormBase
     private void graphicsBox_ClientSizeChanged(object sender, EventArgs e)
     {
         SkipEvent = true;
-        numericBoxClientWidth.Value = graphicsBox.ClientSize.Width;
-        numericBoxClientHeight.Value = graphicsBox.ClientSize.Height;
+        // 260521Cl: numericBoxClientWidth/Height → sizeControl1 へ置換
+        //numericBoxClientWidth.Value = graphicsBox.ClientSize.Width;
+        //numericBoxClientHeight.Value = graphicsBox.ClientSize.Height;
+        sizeControl1.Value = graphicsBox.ClientSize;
         SkipEvent = false;
     }
     #endregion
@@ -1454,12 +1463,15 @@ public partial class FormDiffractionSimulator : FormBase
     /// <summary>画像サイズのnumericBoxが変更されたとき</summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
-    private void NumericBoxClientSize_ValueChanged(object sender, EventArgs e)
+    // 260521Cl: NumericBoxClientSize_ValueChanged → sizeControl1_ValueChanged へ改名 (numericBoxClientWidth/Height を sizeControl1 に置換)
+    private void sizeControl1_ValueChanged(object sender, EventArgs e)
     {
         if (SkipEvent) return;
 
-        var dW = numericBoxClientWidth.ValueInteger - graphicsBox.ClientSize.Width;
-        var dH = numericBoxClientHeight.ValueInteger - graphicsBox.ClientSize.Height;
+        //var dW = numericBoxClientWidth.ValueInteger - graphicsBox.ClientSize.Width;
+        //var dH = numericBoxClientHeight.ValueInteger - graphicsBox.ClientSize.Height;
+        var dW = sizeControl1.ImageWidth - graphicsBox.ClientSize.Width;
+        var dH = sizeControl1.ImageHeight - graphicsBox.ClientSize.Height;
         this.Size = new Size(this.Size.Width + dW, this.Size.Height + dH);
 
     }

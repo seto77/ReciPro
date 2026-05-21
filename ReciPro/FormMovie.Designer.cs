@@ -104,7 +104,7 @@ partial class FormMovie
         numericBoxSpeed.SkipEventDuringInput = false;
         numericBoxSpeed.SmartIncrement = true;
         numericBoxSpeed.TabIndex = 1;
-        numericBoxSpeed.TextFontSize = 9F;
+        numericBoxSpeed.ValueFontSize = 9F;
         numericBoxSpeed.TrimEndZero = true;
         numericBoxSpeed.Value = 30D;
         // 
@@ -334,7 +334,7 @@ partial class FormMovie
         numericBoxDuration.SkipEventDuringInput = false;
         numericBoxDuration.SmartIncrement = true;
         numericBoxDuration.TabIndex = 1;
-        numericBoxDuration.TextFontSize = 9F;
+        numericBoxDuration.ValueFontSize = 9F;
         numericBoxDuration.TrimEndZero = true;
         numericBoxDuration.Value = 12D;
         // 

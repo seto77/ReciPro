@@ -2308,37 +2308,7 @@
   <data name="helpToolStripMenuItem.Text" xml:space="preserve">
     <value>ショートカットヒント</value>
   </data>
-  <data name="numericBoxClientHeight.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="numericBoxClientHeight.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="numericBoxClientHeight.Location" type="System.Drawing.Point, System.Drawing">
-    <value>173, 0</value>
-  </data>
-  <data name="numericBoxClientHeight.ToolTip" xml:space="preserve">
-    <value>シミュレーションパターンのピクセルサイズを設定</value>
-  </data>
-  <data name="numericBoxClientHeight.ToolTip1" xml:space="preserve">
-    <value>シミュレーションパターンのピクセルサイズを設定</value>
-  </data>
-  <data name="numericBoxClientWidth.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="numericBoxClientWidth.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="numericBoxClientWidth.HeaderText" xml:space="preserve">
-    <value>サイズ (W×H): </value>
-  </data>
-  <data name="numericBoxClientWidth.Size" type="System.Drawing.Size, System.Drawing">
-    <value>175, 25</value>
-  </data>
-  <data name="numericBoxClientWidth.ToolTip" xml:space="preserve">
-    <value>シミュレーションパターンのピクセルサイズを設定</value>
-  </data>
-  <data name="numericBoxClientWidth.ToolTip1" xml:space="preserve">
+  <data name="sizeControl1.ToolTip" xml:space="preserve">
     <value>シミュレーションパターンのピクセルサイズを設定</value>
   </data>
   <data name="printPreviewDialog1.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">

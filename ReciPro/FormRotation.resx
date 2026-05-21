@@ -352,7 +352,7 @@
   <data name="numericBoxPsi.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
-  <data name="numericBoxPsi.TextFontSize" type="System.Single, mscorlib">
+  <data name="numericBoxPsi.ValueFontSize" type="System.Single, mscorlib">
     <value>9</value>
   </data>
   <data name="numericBoxPsi.ToolTip" xml:space="preserve">
@@ -400,7 +400,7 @@
   <data name="numericBoxTheta.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
-  <data name="numericBoxTheta.TextFontSize" type="System.Single, mscorlib">
+  <data name="numericBoxTheta.ValueFontSize" type="System.Single, mscorlib">
     <value>9</value>
   </data>
   <data name="numericBoxTheta.ToolTip" xml:space="preserve">
@@ -448,7 +448,7 @@
   <data name="numericBoxPhi.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="numericBoxPhi.TextFontSize" type="System.Single, mscorlib">
+  <data name="numericBoxPhi.ValueFontSize" type="System.Single, mscorlib">
     <value>9</value>
   </data>
   <data name="numericBoxPhi.ToolTip" xml:space="preserve">
@@ -496,7 +496,7 @@
   <data name="numericBoxExp1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="numericBoxExp1.TextFontSize" type="System.Single, mscorlib">
+  <data name="numericBoxExp1.ValueFontSize" type="System.Single, mscorlib">
     <value>9</value>
   </data>
   <data name="numericBoxExp1.ToolTip" xml:space="preserve">
@@ -544,7 +544,7 @@
   <data name="numericBoxExp2.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
-  <data name="numericBoxExp2.TextFontSize" type="System.Single, mscorlib">
+  <data name="numericBoxExp2.ValueFontSize" type="System.Single, mscorlib">
     <value>9</value>
   </data>
   <data name="numericBoxExp2.ToolTip" xml:space="preserve">
@@ -592,7 +592,7 @@
   <data name="numericBoxExp3.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
-  <data name="numericBoxExp3.TextFontSize" type="System.Single, mscorlib">
+  <data name="numericBoxExp3.ValueFontSize" type="System.Single, mscorlib">
     <value>9</value>
   </data>
   <data name="numericBoxExp3.ToolTip" xml:space="preserve">
@@ -1355,7 +1355,7 @@ Angles</value>
   <data name="numericBox11.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="numericBox11.TextFontSize" type="System.Single, mscorlib">
+  <data name="numericBox11.ValueFontSize" type="System.Single, mscorlib">
     <value>9</value>
   </data>
   <data name="&gt;&gt;numericBox11.Name" xml:space="preserve">
@@ -1397,7 +1397,7 @@ Angles</value>
   <data name="numericBox12.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="numericBox12.TextFontSize" type="System.Single, mscorlib">
+  <data name="numericBox12.ValueFontSize" type="System.Single, mscorlib">
     <value>9</value>
   </data>
   <data name="&gt;&gt;numericBox12.Name" xml:space="preserve">
@@ -1439,7 +1439,7 @@ Angles</value>
   <data name="numericBox13.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="numericBox13.TextFontSize" type="System.Single, mscorlib">
+  <data name="numericBox13.ValueFontSize" type="System.Single, mscorlib">
     <value>9</value>
   </data>
   <data name="&gt;&gt;numericBox13.Name" xml:space="preserve">
@@ -1481,7 +1481,7 @@ Angles</value>
   <data name="numericBox21.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="numericBox21.TextFontSize" type="System.Single, mscorlib">
+  <data name="numericBox21.ValueFontSize" type="System.Single, mscorlib">
     <value>9</value>
   </data>
   <data name="&gt;&gt;numericBox21.Name" xml:space="preserve">
@@ -1523,7 +1523,7 @@ Angles</value>
   <data name="numericBox22.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="numericBox22.TextFontSize" type="System.Single, mscorlib">
+  <data name="numericBox22.ValueFontSize" type="System.Single, mscorlib">
     <value>9</value>
   </data>
   <data name="&gt;&gt;numericBox22.Name" xml:space="preserve">
@@ -1565,7 +1565,7 @@ Angles</value>
   <data name="numericBox33.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="numericBox33.TextFontSize" type="System.Single, mscorlib">
+  <data name="numericBox33.ValueFontSize" type="System.Single, mscorlib">
     <value>9</value>
   </data>
   <data name="&gt;&gt;numericBox33.Name" xml:space="preserve">
@@ -1607,7 +1607,7 @@ Angles</value>
   <data name="numericBox23.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="numericBox23.TextFontSize" type="System.Single, mscorlib">
+  <data name="numericBox23.ValueFontSize" type="System.Single, mscorlib">
     <value>9</value>
   </data>
   <data name="&gt;&gt;numericBox23.Name" xml:space="preserve">
@@ -1649,7 +1649,7 @@ Angles</value>
   <data name="numericBox31.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="numericBox31.TextFontSize" type="System.Single, mscorlib">
+  <data name="numericBox31.ValueFontSize" type="System.Single, mscorlib">
     <value>9</value>
   </data>
   <data name="&gt;&gt;numericBox31.Name" xml:space="preserve">
@@ -1691,7 +1691,7 @@ Angles</value>
   <data name="numericBox32.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="numericBox32.TextFontSize" type="System.Single, mscorlib">
+  <data name="numericBox32.ValueFontSize" type="System.Single, mscorlib">
     <value>9</value>
   </data>
   <data name="&gt;&gt;numericBox32.Name" xml:space="preserve">

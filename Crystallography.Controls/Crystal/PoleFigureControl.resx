@@ -655,7 +655,7 @@
     <value>165, 84</value>
   </data>
   <data name="comboBoxScale.Items" xml:space="preserve">
-    <value>Liner Scale</value>
+    <value>Linear Scale</value>
   </data>
   <data name="radioButtonInversePoleFigure.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>

@@ -56,12 +56,14 @@ public partial class NumericBox : UserControlBase
     /// </summary>
     // 260426Cl 修正: 属性 [DefaultValue] を doc-comment の前に置いていたため doc が外れていた。順序を入れ替え
     [DefaultValue(-1)]
+    [Category("Value format")] // 260521Cl 追加: デザイナカテゴリ
+    [Description("表示時に丸め誤差を補正する有効桁数 (例: 7.110000001 → 7.11)。-1 で無効。")] // 260521Cl 追加
     public int RoundErrorAccuracy { get; set; } = -1;
 
 
     /// <summary>UpDownボタンを有効にするかどうか</summary>
     [DefaultValue(false)]
-    [Category("Appearance properties")]
+    [Category("Spin button")]
     public bool ShowUpDown
     {
         get => showUpDown;
@@ -79,7 +81,7 @@ public partial class NumericBox : UserControlBase
 
     /// <summary>UpDownボタンの横幅(ピクセル)。Dock=Rightのspinボタン用Panelの幅を設定する。</summary>
     [DefaultValue(17)]                                                                                                                                // 260423Cl 追加
-    [Category("Appearance properties")]
+    [Category("Spin button")]
     public int UpDownWidth
     {
         get => upDownWidth;
@@ -96,18 +98,18 @@ public partial class NumericBox : UserControlBase
 
     /// <summary>UpDownボタンが有効な場合、Incrementを取得/設定</summary>
     [DefaultValue(1.0)]
-    [Category("Value properties")]
+    [Category("Spin button")]
     public double UpDown_Increment { set; get; } = 1.0;
 
 
     /// <summary>UpDownボタンが有効な場合、Incrementを自動で調整するかどうか</summary>
     [DefaultValue(false)]
-    [Category("Value properties")]
+    [Category("Spin button")]
     public bool SmartIncrement { set; get; } = false;
 
     /// <summary>最大値</summary>
     [DefaultValue(double.PositiveInfinity)]
-    [Category("Value properties")]
+    [Category("Value")]
     public double Maximum
     {
         set
@@ -126,7 +128,7 @@ public partial class NumericBox : UserControlBase
 
     /// <summary>最小値</summary>
     [DefaultValue(double.NegativeInfinity)]
-    [Category("Value properties")]
+    [Category("Value")]
     public double Minimum
     {
         set
@@ -145,12 +147,13 @@ public partial class NumericBox : UserControlBase
 
     /// <summary>Maximum, Minimumの範囲に入力値を制限する。範囲外の場合は、自動的にどちらかの場合に変更される</summary>
     [DefaultValue(true)]
-    [Category("Value properties")]
+    [Category("Value")]
     public bool RestrictLimitValue { set; get; } = true;
 
 
     [DefaultValue("")]
     [Localizable(true)]
+    [Category("Behavior")]
     public string ToolTip
     {
         get => toolTip.GetToolTip(textBox);
@@ -164,14 +167,14 @@ public partial class NumericBox : UserControlBase
         }
     }
 
-    [Category("Value properties")]
+    [Category("Value")]
     public double MinimalStep => DecimalPlaces >= 0 ? Math.Pow(10, -DecimalPlaces) : 1;
 
     #region ヘッダー＆フッター の文字、フォント、色
 
     /// <summary>ヘッダ/フッタラベルの配置方向 (Horizontal: Header=Left, Footer=Right / Vertical: Header=Top, Footer=Bottom)</summary>
     [DefaultValue(NumericBoxOrientation.Horizontal)]                                                                                                  // 260424Cl 追加
-    [Category("Appearance properties")]
+    [Category("Header && Footer")]
     public NumericBoxOrientation LabelOrientation
     {
         get => labelOrientation;
@@ -187,7 +190,7 @@ public partial class NumericBox : UserControlBase
     /// <summary>数値の前に表示するテキスト</summary>
     [DefaultValue("")]
     [Localizable(true)]
-    [Category("Font && Color")]
+    [Category("Header && Footer")]
     //public string HeaderText { set => labelHeader.Text = value; get => labelHeader.Text; }                                                           // 260424Cl 変更
     public string HeaderText                                                                                                                          // 260424Cl 変更 空文字の場合はVerticalモード時にラベルを非表示化
     {
@@ -200,7 +203,7 @@ public partial class NumericBox : UserControlBase
         get => labelHeader.Text;
     }
 
-    [Category("Font && Color")]
+    [Category("Header && Footer")]
     [Localizable(true)]
     //[DefaultValue(typeof(Padding), "0,2,0,0")] // 260428Cl 変更: TextAlign=Middle 化に伴い既定 Padding を 0 に
     [DefaultValue(typeof(Padding), "0,0,0,0")]
@@ -208,20 +211,20 @@ public partial class NumericBox : UserControlBase
 
     [Localizable(true)]
     [DefaultValue(typeof(Font), "Segoe UI Symbol, 9.75pt")]
-    [Category("Font && Color")]
+    [Category("Header && Footer")]
     public Font HeaderFont { set => labelHeader.Font = value; get => labelHeader.Font; }
 
     [DefaultValue(typeof(Color), "ControlText")]
-    [Category("Font && Color")]
+    [Category("Header && Footer")]
     public Color HeaderForeColor { set => labelHeader.ForeColor = value; get => labelHeader.ForeColor; }
 
     [DefaultValue(typeof(Color), "Transparent")]
-    [Category("Font && Color")]
+    [Category("Header && Footer")]
     public Color HeaderBackColor { set => labelHeader.BackColor = value; get => labelHeader.BackColor; }
 
     /// <summary>数値の後に表示するテキスト</summary>
     [DefaultValue("")]
-    [Category("Font && Color")]
+    [Category("Header && Footer")]
     [Localizable(true)]
     //public string FooterText { set => labelFooter.Text = value; get => labelFooter.Text; }                                                           // 260424Cl 変更
     public string FooterText                                                                                                                          // 260424Cl 変更 空文字の場合はVerticalモード時にラベルを非表示化
@@ -235,61 +238,61 @@ public partial class NumericBox : UserControlBase
         get => labelFooter.Text;
     }
 
-    [Category("Font && Color")]
+    [Category("Header && Footer")]
     //[DefaultValue(typeof(Padding), "0,2,0,0")] // 260428Cl 変更: TextAlign=Middle 化に伴い既定 Padding を 0 に
     [DefaultValue(typeof(Padding), "0,0,0,0")]
     [Localizable(true)]
     public Padding FooterPadding { set => labelFooter.Padding = value; get => labelFooter.Padding; }
 
-    [Category("Font && Color")]
+    [Category("Header && Footer")]
     [DefaultValue(typeof(Font), "Segoe UI Symbol, 9.75pt")]
     [Localizable(true)]
     public Font FooterFont { set => labelFooter.Font = value; get => labelFooter.Font; }
 
     [DefaultValue(typeof(Color), "ControlText")]
-    [Category("Font && Color")]
+    [Category("Header && Footer")]
     public Color FooterForeColor { set => labelFooter.ForeColor = value; get => labelFooter.ForeColor; }
 
     [DefaultValue(typeof(Color), "Transparent")]
-    [Category("Font && Color")]
+    [Category("Header && Footer")]
     public Color FooterBackColor { set => labelFooter.BackColor = value; get => labelFooter.BackColor; }
     #endregion
 
 
     [DefaultValue(typeof(Color), "WindowText")]
-    [Category("Font && Color")]
-    public Color TextBoxForeColor { set => textBox.ForeColor = value; get => textBox.ForeColor; }
+    [Category("Value box")]
+    public Color ValueForeColor { set => textBox.ForeColor = value; get => textBox.ForeColor; }
 
-    [Category("Font && Color")]
+    [Category("Value box")]
     [DefaultValue(typeof(Color), "Window")]
-    public Color TextBoxBackColor { set => textBox.BackColor = value; get => textBox.BackColor; }
+    public Color ValueBackColor { set => textBox.BackColor = value; get => textBox.BackColor; }
 
-    [Category("Appearance properties")]
+    [Category("Value box")]
     [DefaultValue(HorizontalAlignment.Left)]
-    public HorizontalAlignment TextBoxTextAlign { set => textBox.TextAlign = value; get => textBox.TextAlign; } // (260427Ch) 表示専用 NumericBox でも TextBox と同じ中央寄せを使えるよう公開
+    public HorizontalAlignment ValueTextAlign { set => textBox.TextAlign = value; get => textBox.TextAlign; } // (260427Ch) 表示専用 NumericBox でも TextBox と同じ中央寄せを使えるよう公開
 
-    // 260428Cl 変更: TextFont は Segoe UI Variable Text 固定とし、デザイナから非表示にする (フォント差で数値の見た目が崩れるのを防ぐ)。
-    // サイズだけはインスタンスごとに変えたいので TextFontSize を別途公開する。
+    // 260428Cl 変更: ValueFont は Segoe UI 固定とし、デザイナから非表示にする (フォント差で数値の見た目が崩れるのを防ぐ)。 260521Cl コメント修正: 実装は new Font("Segoe UI", ...) なので "Variable Text" 表記を実態に合わせた
+    // サイズだけはインスタンスごとに変えたいので ValueFontSize を別途公開する。
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-    public Font TextFont
+    public Font ValueFont
     {
         set => textBox.Font = value;                                                                                                                  // 260424Cl 変更 MinimumSize/MaximumSizeの自動クランプを撤廃
         get => textBox.Font;
     }
 
-    // 260428Cl 追加: テキスト部のフォントサイズだけ公開する。フォントファミリは Segoe UI Variable Text 固定。
-    [Category("Font && Color")]
+    // 260428Cl 追加: テキスト部のフォントサイズだけ公開する。フォントファミリは Segoe UI 固定 (setter の new Font("Segoe UI", ...) 参照)。
+    [Category("Value box")]
     [DefaultValue(9.75f)]
-    public float TextFontSize
+    public float ValueFontSize
     {
         get => textBox.Font.Size;
         set => textBox.Font = new Font("Segoe UI", value, textBox.Font.Style);
     }
 
     // 260428Cl 追加: NumericBox 全体の Font プロパティはデザイナから非表示にする。
-    // ヘッダ/フッタは HeaderFont/FooterFont、テキスト部は TextFontSize で個別管理する設計のため、
+    // ヘッダ/フッタは HeaderFont/FooterFont、テキスト部は ValueFontSize で個別管理する設計のため、
     // $this.Font を経由した一括設定はデザイナから封じる。
     [Browsable(false)]
     [EditorBrowsable(EditorBrowsableState.Never)]
@@ -299,14 +302,14 @@ public partial class NumericBox : UserControlBase
 
     /// <summary>＋を表示するかどうか</summary>
     [DefaultValue(false)]
-    [Category("Appearance properties")]
+    [Category("Value format")]
     public bool ShowPositiveSign { set; get; } = false;
 
 
 
     /// <summary>コントロールが保持している値</summary>
     [DefaultValue(0.0)]
-    [Category("Value properties")]
+    [Category("Value")]
     public double Value
     {
         set
@@ -340,24 +343,24 @@ public partial class NumericBox : UserControlBase
     private double numericalValue = 0;
 
     /// <summary>コントロールが保持している値の整数値 (getのみ)</summary>
-    [Category("Value properties")]
+    [Category("Value")]
     [DefaultValue(0)]
     public int ValueInteger { get => (int)numericalValue; }
 
     /// <summary>Radianとして値を入力/取得</summary>
     [DefaultValue(0.0)]
-    [Category("Value properties")]
+    [Category("Value")]
     public double RadianValue { set => Value = value * 180.0 / Math.PI; get => Value / 180.0 * Math.PI; }
 
     /// <summary>3桁区切りでカンマを表示させる</summary>
     [DefaultValue(false)]
-    [Category("Appearance properties")]
+    [Category("Value format")]
     public bool ThousandsSeparator { set { thousandsSeparator = value; textBox.Text = GetString(); } get => thousandsSeparator; } // 260520Cl: typo fix (ThonsandsSeparator → ThousandsSeparator)
     private bool thousandsSeparator = false;
 
     /// <summary>小数点以下の桁数</summary>
     [DefaultValue(-1)]
-    [Category("Appearance properties")]
+    [Category("Value format")]
     public int DecimalPlaces
     {
         set
@@ -374,12 +377,12 @@ public partial class NumericBox : UserControlBase
 
     /// <summary>小数点以下のゼロの記号を削除するかどうか</summary>
     [DefaultValue(false)]
-    [Category("Appearance properties")]
+    [Category("Value format")]
     public bool TrimEndZero { get; set; } = false;
 
     /// <summary>読み取り専用かどうか</summary>
     [DefaultValue(false)]
-    [Category("Appearance properties")]
+    [Category("Behavior")]
     public bool ReadOnly                                                                                                                              // 260413Cl null安全化
     {
         set
@@ -392,7 +395,7 @@ public partial class NumericBox : UserControlBase
 
     /// <summary>複数行表示をするかどうか</summary>
     [DefaultValue(false)]
-    [Category("Appearance properties")]
+    [Category("Value box")]
     public bool Multiline                                                                                                                             // 260424Cl 変更 MinimumSize/MaximumSizeの自動クランプを撤廃
     {
         set => textBox.Multiline = value;
@@ -400,17 +403,18 @@ public partial class NumericBox : UserControlBase
     }
 
     /// <summary>値が分数に出来る場合、分数表示をするか</summary>
-    [Category("Appearance properties")]
+    [Category("Value format")]
     [DefaultValue(false)]
     public bool ShowFraction { set; get; } = false;
 
 
     /// <summary>値が三角関数に出来る場合、三角関数で表示するか</summary>
     [DefaultValue(false)]
-    [Category("Appearance properties")]
+    [Category("Value format")]
     public bool ShowTrigonomeric { set; get; } = false;
 
     [DefaultValue("0")]
+    [Category("Value box")]
     public new string Text
     {
         set
@@ -427,11 +431,12 @@ public partial class NumericBox : UserControlBase
         get => numericalValue.ToString();
     }
 
-    [Category("Appearance properties")]
+    [Category("Value box")]
     [DefaultValue(true)]
     public bool WordWrap { set => textBox.WordWrap = value; get => textBox.WordWrap; }
 
     [DefaultValue(true)]
+    [Category("Behavior")]
     public bool SkipEventDuringInput { set; get; } = true;
 
     #endregion プロパティ
@@ -713,7 +718,7 @@ public partial class NumericBox : UserControlBase
     }
 
     // 260426Cl 整理: 古いMultiline自動高さ調整コード (コメントアウト済) は撤去。Designer.cs から購読されている本体だけ残す。
-    private void textBox_FontChanged(object sender, EventArgs e) => TextFont = textBox.Font;
+    private void textBox_FontChanged(object sender, EventArgs e) => ValueFont = textBox.Font;
 
     // 260428Cl 追加: textBox のテキストベースラインに合わせて labelHeader/labelFooter の Padding.Top を動的調整する。
     // フォントの ascent/lineSpacing 比率から各々の rendered baseline 位置を計算し、Padding.Top で揃える。

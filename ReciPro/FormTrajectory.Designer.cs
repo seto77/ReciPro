@@ -120,7 +120,7 @@
             numericBoxSampleTilt.Minimum = -90D;
             numericBoxSampleTilt.Name = "numericBoxSampleTilt";
             numericBoxSampleTilt.ShowUpDown = true;
-            numericBoxSampleTilt.TextFontSize = 9F;
+            numericBoxSampleTilt.ValueFontSize = 9F;
             numericBoxSampleTilt.UpDown_Increment = 10D;
             // 
             // buttonViewFromX
@@ -199,7 +199,7 @@
             numericBoxCalcNum.RadianValue = 1745.3292519943295D;
             numericBoxCalcNum.ShowUpDown = true;
             numericBoxCalcNum.SmartIncrement = true;
-            numericBoxCalcNum.TextFontSize = 9F;
+            numericBoxCalcNum.ValueFontSize = 9F;
             numericBoxCalcNum.Value = 100000D;
             // 
             // numericBoxDrawNum
