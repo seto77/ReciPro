@@ -1370,7 +1370,7 @@
             tabPage4.Padding = new System.Windows.Forms.Padding(3);
             tabPage4.Size = new System.Drawing.Size(192, 32);
             tabPage4.TabIndex = 3;
-            tabPage4.Text = "Diffraction Information";
+            tabPage4.Text = "Diffraction information"; // 260521Cl Phase7: Title→sentence case
             tabPage4.UseVisualStyleBackColor = true;
             // 
             // textBoxDiffractionInformation

@@ -379,15 +379,15 @@ public partial class FormDiffractionSimulator : FormBase
         {
             lastPanelSize = graphicsBox.ClientSize;
 
-            FormDiffractionSimulatorGeometry = new FormDiffractionSimulatorGeometry { FormDiffractionSimulator = this };
+            FormDiffractionSimulatorGeometry = new FormDiffractionSimulatorGeometry { FormDiffractionSimulator = this, Owner = this }; // 260521Cl Phase6: Owner統一(§2.7、兄弟 CBED/Holder に合わせる)
             FormDiffractionSimulatorGeometry.comboBoxGradient.SelectedIndex = 0;
             FormDiffractionSimulatorGeometry.comboBoxScale1.SelectedIndex = 1;
             FormDiffractionSimulatorGeometry.comboBoxScale2.SelectedIndex = 0;
             FormDiffractionSimulatorGeometry.VisibleChanged += FormDiffractionSimulatorGeometry_VisibleChanged;
 
-            FormDiffractionBeamTable = new FormDiffractionSpotInfo { FormDiffractionSimulator = this };
+            FormDiffractionBeamTable = new FormDiffractionSpotInfo { FormDiffractionSimulator = this, Owner = this }; // 260521Cl Phase6: Owner統一(§2.7)
 
-            FormDiffractionSimulatorDynamicCompression = new FormDiffractionSimulatorDynamicCompression { FormDiffractionSimulator = this };
+            FormDiffractionSimulatorDynamicCompression = new FormDiffractionSimulatorDynamicCompression { FormDiffractionSimulator = this, Owner = this }; // 260521Cl Phase6: Owner統一(§2.7)
         }
 
         FormDiffractionSimulatorCBED ??= new FormDiffractionSimulatorCBED

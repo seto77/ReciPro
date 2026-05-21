@@ -14,8 +14,9 @@ internal static class Program
     private const string DarkModeRegName = "DarkMode";
 
     /// <summary>アプリケーションのメイン エントリ ポイントです。</summary>
+    // private static void Main() // 260521Cl 旧シグネチャ (--capture 引数対応のため string[] args を追加)
     [STAThread]
-    private static void Main()
+    private static void Main(string[] args)
     {
         Application.EnableVisualStyles();
         //Application.SetHighDpiMode(HighDpiMode.DpiUnawareGdiScaled); // 260329Cl 変更: csproj の PerMonitorV2 と統一
@@ -27,6 +28,15 @@ internal static class Program
         // 260428Cl 追加: 言語別 UI フォント (Designer 未指定コントロール用のデフォルト)。
         // Designer/resx で明示指定されたコントロールには適用されない (それらは文字列置換で対応済み)。
         Application.SetDefaultFont(Crystallography.Controls.FontHelper.GetUIFont());
+
+        // 260521Cl 追加: GUI 監査用スクショ一括取得モード。通常起動 (引数なし) には一切影響しない。
+        //   ReciPro.exe --capture [出力ディレクトリ]
+        if (args.Length >= 1 && args[0] == "--capture")
+        {
+            GuiCapture.Run(args.Length >= 2 ? args[1] : null);
+            return;
+        }
+
         Application.Run(new FormMain());
     }
 

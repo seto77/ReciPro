@@ -24,6 +24,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            captureExtender.SetCapture(this, true); // 260521Cl 追加: GUI監査キャプチャ対象 (フォーム全体)
             components = new System.ComponentModel.Container();
             listBox = new System.Windows.Forms.ListBox();
             textBoxPresetName = new System.Windows.Forms.TextBox();

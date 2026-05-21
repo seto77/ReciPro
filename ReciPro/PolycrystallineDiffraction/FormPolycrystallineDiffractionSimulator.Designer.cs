@@ -32,6 +32,7 @@
         // groupBox8 -> groupBoxFittingOptions
         private void InitializeComponent()
         {
+            captureExtender.SetCapture(this, true); // 260521Cl 追加: GUI監査キャプチャ対象 (フォーム全体)
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormPolycrystallineDiffractionSimulator));
             this.backgroundWorkerMain = new System.ComponentModel.BackgroundWorker();
@@ -382,7 +383,7 @@
             this.groupBoxPreferredOrientation.Size = new System.Drawing.Size(371, 121);
             this.groupBoxPreferredOrientation.TabIndex = 409;
             this.groupBoxPreferredOrientation.TabStop = false;
-            this.groupBoxPreferredOrientation.Text = "Fitting parameters for preferred orientatin";
+            this.groupBoxPreferredOrientation.Text = "Fitting parameters for preferred orientation"; // 260521Cl Phase7: orientatin→orientation typo
             // 
             // checkBoxCrystalNumPerStepThreshold
             // 
@@ -609,7 +610,7 @@
             this.groupBoxFittingOptions.Size = new System.Drawing.Size(127, 198);
             this.groupBoxFittingOptions.TabIndex = 166;
             this.groupBoxFittingOptions.TabStop = false;
-            this.groupBoxFittingOptions.Text = "Fitting Option";
+            this.groupBoxFittingOptions.Text = "Fitting option"; // 260521Cl Phase7: Title→sentence case
             // 
             // checkBoxRefineConvergence
             // 
@@ -744,7 +745,7 @@
             this.tabPage6.Padding = new System.Windows.Forms.Padding(4);
             this.tabPage6.Size = new System.Drawing.Size(514, 210);
             this.tabPage6.TabIndex = 1;
-            this.tabPage6.Text = "Refinment results";
+            this.tabPage6.Text = "Refinement results"; // 260521Cl Phase7: Refinment→Refinement typo
             this.tabPage6.UseVisualStyleBackColor = true;
             // 
             // textBox1
@@ -1312,7 +1313,7 @@
             this.comboBoxScale1.FormattingEnabled = true;
             this.comboBoxScale1.Items.AddRange(new object[] {
             "Log Scale",
-            "Liner Scale"});
+            "Linear Scale"}); // 260521Cl Phase7: Liner→Linear typo
             this.comboBoxScale1.Location = new System.Drawing.Point(289, 22);
             this.comboBoxScale1.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.comboBoxScale1.Name = "comboBoxScale1";

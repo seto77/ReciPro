@@ -20,6 +20,8 @@ partial class FormCaptureGUI
         buttonSelectAll = new System.Windows.Forms.Button();
         buttonDeselectAll = new System.Windows.Forms.Button();
         buttonRefresh = new System.Windows.Forms.Button();
+        comboBoxTargetForm = new System.Windows.Forms.ComboBox(); // 260521Cl 追加
+        labelTargetForm = new System.Windows.Forms.Label(); // 260521Cl 追加
         progressBar = new System.Windows.Forms.ProgressBar();
         labelStatus = new System.Windows.Forms.Label();
         textBoxOutputDir = new System.Windows.Forms.TextBox();
@@ -32,18 +34,38 @@ partial class FormCaptureGUI
         //
         // panelTop
         //
+        panelTop.Controls.Add(comboBoxTargetForm); // 260521Cl 追加
+        panelTop.Controls.Add(labelTargetForm); // 260521Cl 追加
         panelTop.Controls.Add(buttonRefresh);
         panelTop.Controls.Add(buttonDeselectAll);
         panelTop.Controls.Add(buttonSelectAll);
         panelTop.Dock = System.Windows.Forms.DockStyle.Top;
         panelTop.Location = new System.Drawing.Point(0, 0);
         panelTop.Name = "panelTop";
-        panelTop.Size = new System.Drawing.Size(500, 36);
+        // panelTop.Size = new System.Drawing.Size(500, 36); // 260521Cl 旧: 対象フォーム選択行を追加し 36→70
+        panelTop.Size = new System.Drawing.Size(500, 70); // 260521Cl
         panelTop.TabIndex = 0;
+        //
+        // labelTargetForm (260521Cl 追加)
+        //
+        labelTargetForm.AutoSize = true;
+        labelTargetForm.Location = new System.Drawing.Point(6, 11);
+        labelTargetForm.Name = "labelTargetForm";
+        labelTargetForm.Text = "Target form:";
+        //
+        // comboBoxTargetForm (260521Cl 追加: ActiveForm 制約を解消し、開いている全フォームから対象を選択する)
+        //
+        comboBoxTargetForm.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+        comboBoxTargetForm.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+        comboBoxTargetForm.Location = new System.Drawing.Point(82, 8);
+        comboBoxTargetForm.Name = "comboBoxTargetForm";
+        comboBoxTargetForm.Size = new System.Drawing.Size(412, 23);
+        comboBoxTargetForm.TabIndex = 0;
+        comboBoxTargetForm.SelectedIndexChanged += comboBoxTargetForm_SelectedIndexChanged;
         //
         // buttonSelectAll
         //
-        buttonSelectAll.Location = new System.Drawing.Point(6, 6);
+        buttonSelectAll.Location = new System.Drawing.Point(6, 39);
         buttonSelectAll.Name = "buttonSelectAll";
         buttonSelectAll.Size = new System.Drawing.Size(80, 26);
         buttonSelectAll.TabIndex = 0;
@@ -52,7 +74,7 @@ partial class FormCaptureGUI
         //
         // buttonDeselectAll
         //
-        buttonDeselectAll.Location = new System.Drawing.Point(92, 6);
+        buttonDeselectAll.Location = new System.Drawing.Point(92, 39);
         buttonDeselectAll.Name = "buttonDeselectAll";
         buttonDeselectAll.Size = new System.Drawing.Size(85, 26);
         buttonDeselectAll.TabIndex = 1;
@@ -61,7 +83,7 @@ partial class FormCaptureGUI
         //
         // buttonRefresh
         //
-        buttonRefresh.Location = new System.Drawing.Point(183, 6);
+        buttonRefresh.Location = new System.Drawing.Point(183, 39);
         buttonRefresh.Name = "buttonRefresh";
         buttonRefresh.Size = new System.Drawing.Size(75, 26);
         buttonRefresh.TabIndex = 2;
@@ -160,6 +182,8 @@ partial class FormCaptureGUI
     private System.Windows.Forms.Button buttonSelectAll;
     private System.Windows.Forms.Button buttonDeselectAll;
     private System.Windows.Forms.Button buttonRefresh;
+    private System.Windows.Forms.ComboBox comboBoxTargetForm; // 260521Cl 追加
+    private System.Windows.Forms.Label labelTargetForm; // 260521Cl 追加
     private System.Windows.Forms.ProgressBar progressBar;
     private System.Windows.Forms.Label labelStatus;
     private System.Windows.Forms.TextBox textBoxOutputDir;

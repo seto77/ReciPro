@@ -24,6 +24,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            captureExtender.SetCapture(this, true); // 260521Cl 追加: GUI監査キャプチャ対象 (フォーム全体)
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormSpotIDv1Results));
             this.bindingSource2 = new System.Windows.Forms.BindingSource(this.components);

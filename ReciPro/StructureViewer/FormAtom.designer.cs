@@ -26,6 +26,7 @@
         // groupBox1 -> groupBoxMaterial
         private void InitializeComponent()
         {
+            captureExtender.SetCapture(this, true); // 260521Cl 追加: GUI監査キャプチャ対象 (フォーム全体)
             this.components = new System.ComponentModel.Container();
             this.groupBoxMaterial = new System.Windows.Forms.GroupBox();
             this.numericUpDownAtomTransparency = new System.Windows.Forms.NumericUpDown();

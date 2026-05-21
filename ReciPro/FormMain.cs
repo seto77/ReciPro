@@ -1037,7 +1037,7 @@ public partial class FormMain : FormBase
     // 260323Cl 追加
     private void captureGUIToolStripMenuItem_Click(object sender, EventArgs e)
     {
-        new Crystallography.Controls.FormCaptureGUI().Show();
+        new Crystallography.Controls.FormCaptureGUI { Owner = this }.Show(); // 260521Cl Phase6: Owner統一(§2.7)
     }
     private void FormTEMID_VisibleChanged(object sender, EventArgs e)
     {

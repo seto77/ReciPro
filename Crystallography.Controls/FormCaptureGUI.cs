@@ -81,6 +81,7 @@ public partial class FormCaptureGUI : FormBase
 
     // 260323Cl: キャプチャ対象フォーム (ショートカット押下時のアクティブフォーム)
     private Form targetForm;
+    private bool populatingForms; // 260521Cl 追加: 対象フォーム ComboBox 構築中の SelectedIndexChanged 抑止
     private bool useCaptureExtenderMode = false; // (260323Ch) CaptureExtender が1つでも設定されているフォームでは flag 指定を最優先する
 
     public FormCaptureGUI()
@@ -93,6 +94,48 @@ public partial class FormCaptureGUI : FormBase
     {
         base.OnShown(e);
         textBoxOutputDir.Text = GetDefaultOutputDir(); // 260323Cl
+        // BuildTree(); // 260521Cl 旧: 直接 BuildTree。対象フォーム候補を列挙してから選択経由で構築する
+        PopulateTargetForms(); // 260521Cl
+    }
+
+    /// <summary>
+    /// 260521Cl 追加: 開いている全フォームを対象候補として ComboBox に列挙する。
+    /// 従来は Form.ActiveForm 固定で、TopMost の子フォーム (FormCTF 等) や非アクティブなフォームを選べなかった制約を解消する。
+    /// </summary>
+    private void PopulateTargetForms()
+    {
+        populatingForms = true;
+        try
+        {
+            comboBoxTargetForm.Items.Clear();
+            FormChoice selected = null;
+            foreach (Form form in Application.OpenForms)
+            {
+                if (form is FormCaptureGUI || form.IsDisposed)
+                    continue;
+                var choice = new FormChoice(form);
+                comboBoxTargetForm.Items.Add(choice);
+                if (ReferenceEquals(form, targetForm))
+                    selected = choice;
+            }
+            // ショートカット押下時のアクティブフォームが候補に無ければ先頭を採用
+            selected ??= comboBoxTargetForm.Items.Count > 0 ? (FormChoice)comboBoxTargetForm.Items[0] : null;
+            comboBoxTargetForm.SelectedItem = selected;
+            targetForm = selected?.Form;
+        }
+        finally
+        {
+            populatingForms = false;
+        }
+        BuildTree();
+    }
+
+    /// <summary>260521Cl 追加: 対象フォーム選択の変更でツリーを再構築する。</summary>
+    private void comboBoxTargetForm_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        if (populatingForms)
+            return;
+        targetForm = (comboBoxTargetForm.SelectedItem as FormChoice)?.Form;
         BuildTree();
     }
 
@@ -399,7 +442,8 @@ public partial class FormCaptureGUI : FormBase
     /// <summary>Refresh ボタン</summary>
     private void buttonRefresh_Click(object sender, EventArgs e)
     {
-        BuildTree();
+        // BuildTree(); // 260521Cl 旧: ツリーのみ再構築
+        PopulateTargetForms(); // 260521Cl: 開いているフォーム一覧も再取得 (capture 操作中に開いた FormCTF 等を拾う)
     }
 
     /// <summary>デフォルトの保存先を取得 (言語に応じて doc/cap-en または doc/cap-ja)</summary>
@@ -823,6 +867,16 @@ public partial class FormCaptureGUI : FormBase
         foreach (var c in invalid)
             name = name.Replace(c, '_');
         return name;
+    }
+
+    /// <summary>260521Cl 追加: 対象フォーム ComboBox の表示用ラッパ</summary>
+    private sealed record FormChoice(Form Form)
+    {
+        public override string ToString()
+        {
+            var typeName = Form.GetType().Name;
+            return string.IsNullOrEmpty(Form.Text) ? typeName : $"{typeName} — {Form.Text}";
+        }
     }
 
     /// <summary>ツリーノードに紐づけるキャプチャ対象情報</summary>

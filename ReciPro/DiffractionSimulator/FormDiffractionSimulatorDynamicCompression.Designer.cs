@@ -37,6 +37,7 @@ namespace ReciPro
         // groupBox9 -> groupBoxCompressionModel
         private void InitializeComponent()
         {
+            captureExtender.SetCapture(this, true); // 260521Cl 追加: GUI監査キャプチャ対象 (フォーム全体)
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -160,7 +161,7 @@ namespace ReciPro
             // 
                        this.numericBoxCompressedThetaB.BackColor = System.Drawing.SystemColors.Control;
             this.numericBoxCompressedThetaB.DecimalPlaces = -2;
-                        this.numericBoxCompressedThetaB.FooterText = "deg/ns";
+                        this.numericBoxCompressedThetaB.FooterText = "°/ns";
                         this.numericBoxCompressedThetaB.HeaderText = "b";
             this.numericBoxCompressedThetaB.Location = new System.Drawing.Point(17, 104);
             this.numericBoxCompressedThetaB.Margin = new System.Windows.Forms.Padding(14, 0, 0, 0);
@@ -188,7 +189,7 @@ namespace ReciPro
             // 
                        this.numericBoxCompressedOmega.BackColor = System.Drawing.SystemColors.Control;
             this.numericBoxCompressedOmega.DecimalPlaces = -2;
-                        this.numericBoxCompressedOmega.FooterText = "deg/ns";
+                        this.numericBoxCompressedOmega.FooterText = "°/ns";
                         this.numericBoxCompressedOmega.HeaderText = "ω";
             this.numericBoxCompressedOmega.Location = new System.Drawing.Point(14, 21);
             this.numericBoxCompressedOmega.Margin = new System.Windows.Forms.Padding(12, 0, 0, 3);
@@ -216,7 +217,7 @@ namespace ReciPro
             // 
                        this.numericBoxCompressedThetaA.BackColor = System.Drawing.SystemColors.Control;
             this.numericBoxCompressedThetaA.DecimalPlaces = -2;
-                        this.numericBoxCompressedThetaA.FooterText = "deg";
+                        this.numericBoxCompressedThetaA.FooterText = "°";
                         this.numericBoxCompressedThetaA.HeaderText = "a";
             this.numericBoxCompressedThetaA.Location = new System.Drawing.Point(18, 77);
             this.numericBoxCompressedThetaA.Margin = new System.Windows.Forms.Padding(15, 0, 0, 0);
@@ -243,7 +244,7 @@ namespace ReciPro
             // 
                        this.numericBoxCompressedOmegaSigma.BackColor = System.Drawing.SystemColors.Control;
             this.numericBoxCompressedOmegaSigma.DecimalPlaces = -2;
-                        this.numericBoxCompressedOmegaSigma.FooterText = "deg/ns";
+                        this.numericBoxCompressedOmegaSigma.FooterText = "°/ns";
                         this.numericBoxCompressedOmegaSigma.HeaderText = "σ_ω";
             this.numericBoxCompressedOmegaSigma.Location = new System.Drawing.Point(2, 49);
             this.numericBoxCompressedOmegaSigma.Margin = new System.Windows.Forms.Padding(0, 0, 0, 3);
@@ -284,7 +285,7 @@ namespace ReciPro
             // 
                        this.numericBoxReleasedThetaB.BackColor = System.Drawing.SystemColors.Control;
             this.numericBoxReleasedThetaB.DecimalPlaces = -2;
-                        this.numericBoxReleasedThetaB.FooterText = "deg/ns";
+                        this.numericBoxReleasedThetaB.FooterText = "°/ns";
                         this.numericBoxReleasedThetaB.HeaderText = "b";
             this.numericBoxReleasedThetaB.Location = new System.Drawing.Point(18, 104);
             this.numericBoxReleasedThetaB.Margin = new System.Windows.Forms.Padding(14, 0, 0, 0);
@@ -312,7 +313,7 @@ namespace ReciPro
             // 
                        this.numericBoxReleasedOmegaSigma.BackColor = System.Drawing.SystemColors.Control;
             this.numericBoxReleasedOmegaSigma.DecimalPlaces = -2;
-                        this.numericBoxReleasedOmegaSigma.FooterText = "deg/ns";
+                        this.numericBoxReleasedOmegaSigma.FooterText = "°/ns";
                         this.numericBoxReleasedOmegaSigma.HeaderText = "σ_ω";
             this.numericBoxReleasedOmegaSigma.Location = new System.Drawing.Point(4, 49);
             this.numericBoxReleasedOmegaSigma.Margin = new System.Windows.Forms.Padding(0);
@@ -340,7 +341,7 @@ namespace ReciPro
             // 
                        this.numericBoxReleasedOmega.BackColor = System.Drawing.SystemColors.Control;
             this.numericBoxReleasedOmega.DecimalPlaces = -2;
-                        this.numericBoxReleasedOmega.FooterText = "deg/ns";
+                        this.numericBoxReleasedOmega.FooterText = "°/ns";
                         this.numericBoxReleasedOmega.HeaderText = "ω";
             this.numericBoxReleasedOmega.Location = new System.Drawing.Point(16, 21);
             this.numericBoxReleasedOmega.Margin = new System.Windows.Forms.Padding(0);
@@ -368,7 +369,7 @@ namespace ReciPro
             // 
                        this.numericBoxReleasedThetaA.BackColor = System.Drawing.SystemColors.Control;
             this.numericBoxReleasedThetaA.DecimalPlaces = -2;
-                        this.numericBoxReleasedThetaA.FooterText = "deg";
+                        this.numericBoxReleasedThetaA.FooterText = "°";
                         this.numericBoxReleasedThetaA.HeaderText = "a";
             this.numericBoxReleasedThetaA.Location = new System.Drawing.Point(20, 77);
             this.numericBoxReleasedThetaA.Margin = new System.Windows.Forms.Padding(15, 0, 0, 0);

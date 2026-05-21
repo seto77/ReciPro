@@ -721,7 +721,7 @@ Kikuchi lines under this value are simulated.
     <value>-Z</value>
   </data>
   <data name="groupBoxSampleCondition.Text" xml:space="preserve">
-    <value>SEM &amp; sample conditions</value>
+    <value>SEM &amp;&amp; sample conditions</value>
   </data>
   <data name="&gt;&gt;trackBarStrSize.ZOrder" xml:space="preserve">
     <value>0</value>

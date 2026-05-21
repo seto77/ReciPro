@@ -24,6 +24,7 @@ partial class FormMovie
     /// </summary>
     private void InitializeComponent()
     {
+        captureExtender.SetCapture(this, true); // 260521Cl 追加: GUI監査キャプチャ対象 (フォーム全体)
         System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMovie));
         buttonOK = new System.Windows.Forms.Button();
         buttonCancel = new System.Windows.Forms.Button();
@@ -86,7 +87,7 @@ partial class FormMovie
         numericBoxSpeed.BackColor = System.Drawing.Color.Transparent;
         numericBoxSpeed.FooterFont = new System.Drawing.Font("Segoe UI", 9.75F);
         numericBoxSpeed.FooterPadding = new System.Windows.Forms.Padding(0, 3, 0, 0);
-        numericBoxSpeed.FooterText = "°/sec";
+        numericBoxSpeed.FooterText = "°/s"; // 260521Cl Phase7: 単位統一 °/sec→°/s
         numericBoxSpeed.HeaderFont = new System.Drawing.Font("Segoe UI", 9.75F);
         numericBoxSpeed.HeaderPadding = new System.Windows.Forms.Padding(0, 3, 0, 0);
         numericBoxSpeed.HeaderText = "Speed";
@@ -316,7 +317,7 @@ partial class FormMovie
         numericBoxDuration.BackColor = System.Drawing.Color.Transparent;
         numericBoxDuration.FooterFont = new System.Drawing.Font("Segoe UI", 9.75F);
         numericBoxDuration.FooterPadding = new System.Windows.Forms.Padding(0, 3, 0, 0);
-        numericBoxDuration.FooterText = "sec";
+        numericBoxDuration.FooterText = "s"; // 260521Cl Phase7: 単位統一 sec→s
         numericBoxDuration.HeaderFont = new System.Drawing.Font("Segoe UI", 9.75F);
         numericBoxDuration.HeaderPadding = new System.Windows.Forms.Padding(0, 3, 0, 0);
         numericBoxDuration.HeaderText = "Duration";

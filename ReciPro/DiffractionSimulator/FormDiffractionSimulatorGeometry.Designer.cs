@@ -261,7 +261,7 @@
             // 
             comboBoxScale1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             comboBoxScale1.FormattingEnabled = true;
-            comboBoxScale1.Items.AddRange(new object[] { "Log Scale", "Liner Scale" });
+            comboBoxScale1.Items.AddRange(new object[] { "Log Scale", "Linear Scale" }); // 260521Cl Phase7: Liner→Linear typo
             comboBoxScale1.Location = new System.Drawing.Point(376, 108);
             comboBoxScale1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             comboBoxScale1.Name = "comboBoxScale1";
