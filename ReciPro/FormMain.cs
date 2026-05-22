@@ -264,6 +264,10 @@ public partial class FormMain : FormBase
         if (!DesignMode)
             Registry(Reg.Mode.Read);
 
+        //260522Cl 追加: --capture で言語を強制指定された場合はレジストリ値より優先する (スクショ一括取得用)
+        if (GuiCapture.ForcedUICulture != null)
+            Thread.CurrentThread.CurrentUICulture = GuiCapture.ForcedUICulture;
+
         InitializeComponent();
 
         //260413Cl DPI スケーリング補正 (ListBox.ColumnWidth は自動スケール対象外)

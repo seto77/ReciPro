@@ -15,6 +15,12 @@ namespace ReciPro;
 /// </summary>
 internal static class GuiCapture
 {
+    /// <summary>
+    /// 260522Cl 追加: --capture で言語を強制指定 (en/ja) した場合のカルチャ。
+    /// FormMain ctor がレジストリ値で CurrentUICulture を上書きするため、各フォーム構築前に再設定する。
+    /// </summary>
+    public static System.Globalization.CultureInfo ForcedUICulture;
+
     public static void Run(string outDir)
     {
         outDir ??= Path.Combine(Path.GetTempPath(), "recipro-capture-" + DateTime.Now.ToString("yyyyMMdd-HHmmss"));
@@ -50,6 +56,9 @@ internal static class GuiCapture
             Form form = null;
             try
             {
+                // 260522Cl: 直前のフォーム (特に FormMain) がレジストリ値でカルチャを書き換えても、強制指定があれば戻す。
+                if (ForcedUICulture != null)
+                    System.Threading.Thread.CurrentThread.CurrentUICulture = ForcedUICulture;
                 form = (Form)Activator.CreateInstance(type);
                 CaptureForm(form, type.Name, outDir, Trace);
                 ok++;

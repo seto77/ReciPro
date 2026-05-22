@@ -18,6 +18,17 @@ internal static class Program
     [STAThread]
     private static void Main(string[] args)
     {
+        // 260522Cl 追加: --capture の言語指定 (args[2]) を SetDefaultFont より前に反映する。
+        //   ReciPro.exe --capture [出力ディレクトリ] [カルチャ(en/ja)]
+        // GetUIFont() / 各フォームの resx ローカライズが CurrentUICulture を参照するため、ここで先に確定させる。
+        if (args.Length >= 3 && args[0] == "--capture")
+        {
+            var ci = new System.Globalization.CultureInfo(args[2]);
+            System.Threading.Thread.CurrentThread.CurrentUICulture = ci;
+            System.Globalization.CultureInfo.DefaultThreadCurrentUICulture = ci;
+            GuiCapture.ForcedUICulture = ci;
+        }
+
         Application.EnableVisualStyles();
         //Application.SetHighDpiMode(HighDpiMode.DpiUnawareGdiScaled); // 260329Cl 変更: csproj の PerMonitorV2 と統一
         Application.SetHighDpiMode(HighDpiMode.PerMonitorV2);
