@@ -1,50 +1,14 @@
 [
   {
-    "path": "FormSymmetryInformation",
-    "type": "FormSymmetryInformation",
-    "text": "Symmetry Information",
-    "image": "FormSymmetryInformation.png",
+    "path": "FormEBSD",
+    "type": "FormEBSD",
+    "text": "EBSD Simulator",
+    "image": "FormEBSD.png",
     "bounds": {
-      "x": 294,
-      "y": 298,
-      "w": 734,
-      "h": 367
-    }
-  },
-  {
-    "path": "FormSymmetryInformation.groupBoxSymmetryInformation.tabControl.tabPageGroupInfo",
-    "type": "TabPage",
-    "text": "Group Info",
-    "image": "FormSymmetryInformation.groupBoxSymmetryInformation.tabControl.tabPageGroupInfo.png",
-    "bounds": {
-      "x": 90,
-      "y": 14,
-      "w": 620,
-      "h": 168
-    }
-  },
-  {
-    "path": "FormSymmetryInformation.groupBoxSymmetryInformation.tabControl.tabPageConditions",
-    "type": "TabPage",
-    "text": "Conditions",
-    "image": "FormSymmetryInformation.groupBoxSymmetryInformation.tabControl.tabPageConditions.png",
-    "bounds": {
-      "x": 90,
-      "y": 14,
-      "w": 620,
-      "h": 168
-    }
-  },
-  {
-    "path": "FormSymmetryInformation.groupBoxSymmetryInformation.tabControl.tabPageWyckoff",
-    "type": "TabPage",
-    "text": "Wyckoff Positions",
-    "image": "FormSymmetryInformation.groupBoxSymmetryInformation.tabControl.tabPageWyckoff.png",
-    "bounds": {
-      "x": 90,
-      "y": 14,
-      "w": 620,
-      "h": 168
+      "x": 130,
+      "y": 130,
+      "w": 1444,
+      "h": 768
     }
   }
 ]
