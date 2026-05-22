@@ -95,7 +95,7 @@
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             Controls.Add(splitContainer);
-            Font = new System.Drawing.Font("Yu Gothic UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point); // 260522Cl 変更: Yu Gothic UI → Segoe UI (英語GUI)
             Margin = new System.Windows.Forms.Padding(0);
             Name = "TrackBarAdvanced";
             Size = new System.Drawing.Size(256, 27);

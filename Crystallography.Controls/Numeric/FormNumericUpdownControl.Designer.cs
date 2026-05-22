@@ -82,8 +82,8 @@
             this.numericBoxDecimalIncrement.RoundErrorAccuracy = -1;
             this.numericBoxDecimalIncrement.Size = new System.Drawing.Size(61, 25);
             this.numericBoxDecimalIncrement.TabIndex = 0;
-            this.numericBoxDecimalIncrement.ValueFont = new System.Drawing.Font("Yu Gothic UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            // 
+            // 260522Cl: numericBox の ValueFont(Yu Gothic UI) ハードコードを撤去
+            //
             // numericBoxDecimalPlace
             // 
             this.numericBoxDecimalPlace.BackColor = System.Drawing.Color.Transparent;
@@ -95,8 +95,7 @@
             this.numericBoxDecimalPlace.RoundErrorAccuracy = -1;
             this.numericBoxDecimalPlace.Size = new System.Drawing.Size(61, 25);
             this.numericBoxDecimalPlace.TabIndex = 0;
-            this.numericBoxDecimalPlace.ValueFont = new System.Drawing.Font("Yu Gothic UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            // 
+            //
             // FormNumericUpdownControl
             // 
             this.AcceptButton = this.buttonOK;

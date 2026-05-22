@@ -35,6 +35,7 @@ public partial class WaveLengthControl : UserControlBase
     // 260426Cl 修正: 文字化けしていたコメント (旧: WFO1000 関連の壊れたコメント) を整理
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
     [Category("Appearance")]
+    [Description("コントロール内要素の配置方向 (LeftToRight: 横並び / TopDown: 縦並び)。")]                                                              // 260522Cl 追加
     public FlowDirection Direction
     {
         set
@@ -72,6 +73,7 @@ public partial class WaveLengthControl : UserControlBase
     /// <summary>単色モードかどうか falseの場合は白色モード</summary>
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
     [Category("Appearance")]
+    [Description("単色モードかどうか。false の場合は白色光 (連続スペクトル) モード。")]                                                                // 260522Cl 追加
     public bool Monochrome
     {
         set
@@ -120,6 +122,7 @@ public partial class WaveLengthControl : UserControlBase
     /// <summary>WaveSourceを表示するかどうか</summary>
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
     [Category("Appearance")]
+    [Description("線源選択 (X-ray / Electron / Neutron) のラジオボタンを表示するかどうか。")]                                                          // 260522Cl 追加
     public bool ShowWaveSource
     {
         set => showWaveSource = flowLayoutPanelWaveSource.Visible = value;
@@ -152,6 +155,7 @@ public partial class WaveLengthControl : UserControlBase
     /// <summary>波長をnm単位のdoubleで取得/設定</summary>
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
     [Category("Behavior")]
+    [Description("波長 (nm 単位)。")]                                                                                                                  // 260522Cl 追加
     public double WaveLength
     {
         set
@@ -172,6 +176,8 @@ public partial class WaveLengthControl : UserControlBase
     WaveSource waveSource = WaveSource.Xray;
     /// <summary>線源を取得/設定</summary>
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
+    [Category("Behavior")]                                                                                                                            // 260522Cl 追加: カテゴリ欠落を補完
+    [Description("線源の種類 (X-ray / Electron / Neutron)。")]                                                                                         // 260522Cl 追加
     public WaveSource WaveSource
     {
         set
@@ -201,6 +207,7 @@ public partial class WaveLengthControl : UserControlBase
     /// <summary>X線の線源の元素を取得/設定</summary>
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
     [Category("Behavior")]
+    [Description("X線線源の元素 (元素コンボボックスのインデックス。0 は Custom = 任意波長)。")]                                                        // 260522Cl 追加
     public int XrayWaveSourceElementNumber
     {
         set
@@ -223,6 +230,8 @@ public partial class WaveLengthControl : UserControlBase
 
     /// <summary>X線の線源のLineを取得/設定</summary>
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
+    [Category("Behavior")]                                                                                                                            // 260522Cl 追加: カテゴリ欠落を補完
+    [Description("X線線源の特性X線ライン (Kα1 など)。")]                                                                                              // 260522Cl 追加
     public XrayLine XrayWaveSourceLine
     {
         set => comboBoxXrayLine.SelectedItem = value;
@@ -241,6 +250,7 @@ public partial class WaveLengthControl : UserControlBase
     /// </summary>
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
     [Category("Behavior")]
+    [Description("線源のエネルギー (X線・電子線は keV/kV、中性子は meV)。")]                                                                           // 260522Cl 追加
     public double Energy
     {
         set

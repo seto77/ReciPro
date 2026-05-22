@@ -90,9 +90,15 @@ namespace Crystallography.Controls
         #region マウスコントロールモード
 
         // 260426Cl 修正: 文字化けしていたコメント (旧: WFO1000 関連の壊れたコメント) を整理
+        // 260522Cl 追加: Designer カテゴリ/説明 (NumericBox の体裁に合わせて横展開)
+        [Category("Mouse control")]
+        [Description("中ボタンドラッグで値を増減するマウス操作を有効にするかどうか。")]
+        [DefaultValue(false)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         public bool AllowMouseControl { get; set; } = false;
 
+        [Category("Mouse control")]
+        [Description("マウスドラッグで値を増減する方向 (Vertical: 上下, Horizontal: 左右)。")]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         public VH_DirectionEnum MouseDirection
         {
@@ -102,6 +108,9 @@ namespace Crystallography.Controls
 
         private double mouseSpeed = 1;
 
+        [Category("Mouse control")]
+        [Description("マウスドラッグ 1px あたりの値の変化量。")]
+        [DefaultValue(1.0)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         public double MouseSpeed
         {

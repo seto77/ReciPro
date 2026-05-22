@@ -77,6 +77,7 @@ namespace ReciPro
             checkBoxGaussianBlur = new System.Windows.Forms.CheckBox();
             label25 = new System.Windows.Forms.Label();
             comboBoxScaleColorScale = new System.Windows.Forms.ComboBox();
+            panel1 = new System.Windows.Forms.Panel();
             groupBoxNormalization = new System.Windows.Forms.GroupBox();
             checkBoxNormarizeIndividually = new System.Windows.Forms.CheckBox();
             flowLayoutPanelIntensityRange = new System.Windows.Forms.FlowLayoutPanel();
@@ -266,7 +267,6 @@ namespace ReciPro
             toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
-            panel1 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel1.SuspendLayout();
             splitContainer1.Panel2.SuspendLayout();
@@ -525,6 +525,11 @@ namespace ReciPro
             comboBoxScaleColorScale.Items.AddRange(new object[] { resources.GetString("comboBoxScaleColorScale.Items"), resources.GetString("comboBoxScaleColorScale.Items1") });
             comboBoxScaleColorScale.Name = "comboBoxScaleColorScale";
             comboBoxScaleColorScale.SelectedIndexChanged += ComboBoxScaleColorScale_SelectedIndexChanged;
+            // 
+            // panel1
+            // 
+            resources.ApplyResources(panel1, "panel1");
+            panel1.Name = "panel1";
             // 
             // groupBoxNormalization
             // 
@@ -2092,16 +2097,16 @@ namespace ReciPro
             // 
             // menuStrip1
             // 
-            menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { fileToolStripMenuItem, helpToolStripMenuItem });
             resources.ApplyResources(menuStrip1, "menuStrip1");
+            menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { fileToolStripMenuItem, helpToolStripMenuItem });
             menuStrip1.Name = "menuStrip1";
             // 
             // fileToolStripMenuItem
             // 
             captureExtender.SetCapture(fileToolStripMenuItem, true);
             fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { toolStripMenuItemSave, copyImageToolStripMenuItem, toolStripMenuItemOverprintSymbols, toolStripSeparator1, loadTEMParameterToolStripMenuItem, saveTEMParametersToolStripMenuItem });
-            fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             resources.ApplyResources(fileToolStripMenuItem, "fileToolStripMenuItem");
+            fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             // 
             // toolStripMenuItemSave
             // 
@@ -2180,8 +2185,8 @@ namespace ReciPro
             // 
             captureExtender.SetCapture(helpToolStripMenuItem, true);
             helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { detailsOfHRTEMSimulationToolStripMenuItem, toolStripSeparator2, calculationLibraryToolStripMenuItem, toolStripComboBoxCaclulationLibrary });
-            helpToolStripMenuItem.Name = "helpToolStripMenuItem";
             resources.ApplyResources(helpToolStripMenuItem, "helpToolStripMenuItem");
+            helpToolStripMenuItem.Name = "helpToolStripMenuItem";
             // 
             // detailsOfHRTEMSimulationToolStripMenuItem
             // 
@@ -2243,11 +2248,6 @@ namespace ReciPro
             // 
             toolStripStatusLabel3.Name = "toolStripStatusLabel3";
             resources.ApplyResources(toolStripStatusLabel3, "toolStripStatusLabel3");
-            // 
-            // panel1
-            // 
-            resources.ApplyResources(panel1, "panel1");
-            panel1.Name = "panel1";
             // 
             // FormImageSimulator
             // 
@@ -2320,6 +2320,7 @@ namespace ReciPro
             flowLayoutPanelStemMode.PerformLayout();
             panelImageProperties.ResumeLayout(false);
             groupBoxImageProperty.ResumeLayout(false);
+            groupBoxImageProperty.PerformLayout();
             groupBoxDiffractedWaves.ResumeLayout(false);
             groupBoxOpticalProperty.ResumeLayout(false);
             groupBoxSTEMoption1.ResumeLayout(false);

@@ -29,10 +29,10 @@
         // groupBox5 -> groupBoxWaveSource
         private void InitializeComponent()
         {
-            numericUpDownMaxInt = new System.Windows.Forms.NumericUpDown();
+            numericBoxMaxInt = new Crystallography.Controls.NumericBox();
             label36 = new System.Windows.Forms.Label();
             label25 = new System.Windows.Forms.Label();
-            numericUpDownMinInt = new System.Windows.Forms.NumericUpDown();
+            numericBoxMinInt = new Crystallography.Controls.NumericBox();
             checkBoxSimulation = new System.Windows.Forms.CheckBox();
             checkBoxResidual = new System.Windows.Forms.CheckBox();
             trackBarOpacity = new System.Windows.Forms.TrackBar();
@@ -40,17 +40,17 @@
             checkBoxMaskRectangle = new System.Windows.Forms.CheckBox();
             groupBoxCircleMask = new System.Windows.Forms.GroupBox();
             label1 = new System.Windows.Forms.Label();
-            numericUpDownCircleStart = new System.Windows.Forms.NumericUpDown();
+            numericBoxCircleStart = new Crystallography.Controls.NumericBox();
             label9 = new System.Windows.Forms.Label();
             label21 = new System.Windows.Forms.Label();
-            numericUpDownCircleEnd = new System.Windows.Forms.NumericUpDown();
+            numericBoxCircleEnd = new Crystallography.Controls.NumericBox();
             buttonUnmaskAll = new System.Windows.Forms.Button();
             groupBoxRectangle = new System.Windows.Forms.GroupBox();
-            numericUpDownRectangleAngle = new System.Windows.Forms.NumericUpDown();
+            numericBoxRectangleAngle = new Crystallography.Controls.NumericBox();
             comboBoxRectangleDirection = new System.Windows.Forms.ComboBox();
             label22 = new System.Windows.Forms.Label();
             label23 = new System.Windows.Forms.Label();
-            numericUpDownRectangleBand = new System.Windows.Forms.NumericUpDown();
+            numericBoxRectangleBand = new Crystallography.Controls.NumericBox();
             label24 = new System.Windows.Forms.Label();
             checkBoxRectangleIsBothSide = new System.Windows.Forms.CheckBox();
             buttonSaveMask = new System.Windows.Forms.Button();
@@ -81,7 +81,7 @@
             waveLengthControl = new WaveLengthControl();
             numericBoxMonochromaticity = new NumericBox();
             groupBoxDetectorProperty = new System.Windows.Forms.GroupBox();
-            sizeControl1 = new Crystallography.Controls.SizeControl(); // 260521Cl: numericUpDownImageWidth/Height + label3/10/30 を sizeControl1 へ置換
+            sizeControl1 = new Crystallography.Controls.SizeControl(); // 260521Cl: numericBoxImageWidth/Height + label3/10/30 を sizeControl1 へ置換
             label20 = new System.Windows.Forms.Label();
             numericBoxImageResolution = new NumericBox();
             numericBoxMonitorResolution = new NumericBox();
@@ -126,15 +126,9 @@
             scalablePictureBox = new ScalablePictureBox();
             labelLaTex1 = new LabelLaTeX();
             labelLaTex2 = new LabelLaTeX();
-            ((System.ComponentModel.ISupportInitialize)numericUpDownMaxInt).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDownMinInt).BeginInit();
             ((System.ComponentModel.ISupportInitialize)trackBarOpacity).BeginInit();
             groupBoxCircleMask.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)numericUpDownCircleStart).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDownCircleEnd).BeginInit();
             groupBoxRectangle.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)numericUpDownRectangleAngle).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDownRectangleBand).BeginInit();
             groupBoxGeometry.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)trackBarBgH).BeginInit();
             ((System.ComponentModel.ISupportInitialize)trackBarBgR).BeginInit();
@@ -152,20 +146,21 @@
             tabPage4.SuspendLayout();
             SuspendLayout();
             // 
-            // numericUpDownMaxInt
+            // numericBoxMaxInt
             // 
-            numericUpDownMaxInt.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
-            numericUpDownMaxInt.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            numericUpDownMaxInt.Increment = new decimal(new int[] { 10, 0, 0, 0 });
-            numericUpDownMaxInt.Location = new System.Drawing.Point(893, 555);
-            numericUpDownMaxInt.Margin = new System.Windows.Forms.Padding(3, 7, 3, 7);
-            numericUpDownMaxInt.Maximum = new decimal(new int[] { 65535, 0, 0, 0 });
-            numericUpDownMaxInt.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
-            numericUpDownMaxInt.Name = "numericUpDownMaxInt";
-            numericUpDownMaxInt.Size = new System.Drawing.Size(73, 22);
-            numericUpDownMaxInt.TabIndex = 167;
-            numericUpDownMaxInt.Value = new decimal(new int[] { 65535, 0, 0, 0 });
-            numericUpDownMaxInt.ValueChanged += numericUpDownMaxInt_ValueChanged;
+            numericBoxMaxInt.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
+            numericBoxMaxInt.UpDown_Increment = 10D;
+            numericBoxMaxInt.Location = new System.Drawing.Point(893, 555);
+            numericBoxMaxInt.Margin = new System.Windows.Forms.Padding(3, 7, 3, 7);
+            numericBoxMaxInt.Maximum = 65535D;
+            numericBoxMaxInt.Minimum = 1D;
+            numericBoxMaxInt.Name = "numericBoxMaxInt";
+            numericBoxMaxInt.DecimalPlaces = 0;                                                                                                        // 260522Cl 追加: 整数表示を維持
+            numericBoxMaxInt.ShowUpDown = true;
+            numericBoxMaxInt.Size = new System.Drawing.Size(73, 22);
+            numericBoxMaxInt.TabIndex = 167;
+            numericBoxMaxInt.Value = 65535D;
+            numericBoxMaxInt.ValueChanged += numericBoxMaxInt_ValueChanged;
             // 
             // label36
             // 
@@ -189,18 +184,20 @@
             label25.TabIndex = 165;
             label25.Text = "Max.";
             // 
-            // numericUpDownMinInt
+            // numericBoxMinInt
             // 
-            numericUpDownMinInt.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
-            numericUpDownMinInt.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            numericUpDownMinInt.Increment = new decimal(new int[] { 10, 0, 0, 0 });
-            numericUpDownMinInt.Location = new System.Drawing.Point(757, 555);
-            numericUpDownMinInt.Margin = new System.Windows.Forms.Padding(3, 7, 3, 7);
-            numericUpDownMinInt.Maximum = new decimal(new int[] { 65534, 0, 0, 0 });
-            numericUpDownMinInt.Name = "numericUpDownMinInt";
-            numericUpDownMinInt.Size = new System.Drawing.Size(73, 22);
-            numericUpDownMinInt.TabIndex = 168;
-            numericUpDownMinInt.ValueChanged += numericUpDownMinInt_ValueChanged;
+            numericBoxMinInt.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
+            numericBoxMinInt.UpDown_Increment = 10D;
+            numericBoxMinInt.Location = new System.Drawing.Point(757, 555);
+            numericBoxMinInt.Margin = new System.Windows.Forms.Padding(3, 7, 3, 7);
+            numericBoxMinInt.Maximum = 65534D;
+            numericBoxMinInt.Name = "numericBoxMinInt";
+            numericBoxMinInt.DecimalPlaces = 0;                                                                                                        // 260522Cl 追加: 整数表示を維持
+            numericBoxMinInt.Minimum = 0D;                                                                                                             // 260522Cl 追加: NumericUpDown 既定 Minimum=0 を維持
+            numericBoxMinInt.ShowUpDown = true;
+            numericBoxMinInt.Size = new System.Drawing.Size(73, 22);
+            numericBoxMinInt.TabIndex = 168;
+            numericBoxMinInt.ValueChanged += numericBoxMinInt_ValueChanged;
             // 
             // checkBoxSimulation
             // 
@@ -268,10 +265,10 @@
             // groupBoxCircleMask
             // 
             groupBoxCircleMask.Controls.Add(label1);
-            groupBoxCircleMask.Controls.Add(numericUpDownCircleStart);
+            groupBoxCircleMask.Controls.Add(numericBoxCircleStart);
             groupBoxCircleMask.Controls.Add(label9);
             groupBoxCircleMask.Controls.Add(label21);
-            groupBoxCircleMask.Controls.Add(numericUpDownCircleEnd);
+            groupBoxCircleMask.Controls.Add(numericBoxCircleEnd);
             groupBoxCircleMask.Enabled = false;
             groupBoxCircleMask.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 128);
             groupBoxCircleMask.Location = new System.Drawing.Point(3, 77);
@@ -292,17 +289,18 @@
             label1.TabIndex = 15;
             label1.Text = "End";
             // 
-            // numericUpDownCircleStart
+            // numericBoxCircleStart
             // 
-            numericUpDownCircleStart.DecimalPlaces = 1;
-            numericUpDownCircleStart.Font = new System.Drawing.Font("Tahoma", 9F);
-            numericUpDownCircleStart.Location = new System.Drawing.Point(43, 19);
-            numericUpDownCircleStart.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
-            numericUpDownCircleStart.Maximum = new decimal(new int[] { 10000, 0, 0, 0 });
-            numericUpDownCircleStart.Name = "numericUpDownCircleStart";
-            numericUpDownCircleStart.Size = new System.Drawing.Size(49, 22);
-            numericUpDownCircleStart.TabIndex = 16;
-            numericUpDownCircleStart.ValueChanged += numericUpDownCircleStart_ValueChanged;
+            numericBoxCircleStart.DecimalPlaces = 1;
+            numericBoxCircleStart.Location = new System.Drawing.Point(43, 19);
+            numericBoxCircleStart.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            numericBoxCircleStart.Maximum = 10000D;
+            numericBoxCircleStart.Name = "numericBoxCircleStart";
+            numericBoxCircleStart.Minimum = 0D;
+            numericBoxCircleStart.ShowUpDown = true;
+            numericBoxCircleStart.Size = new System.Drawing.Size(49, 22);
+            numericBoxCircleStart.TabIndex = 16;
+            numericBoxCircleStart.ValueChanged += numericBoxCircleStart_ValueChanged;
             // 
             // label9
             // 
@@ -324,17 +322,18 @@
             label21.TabIndex = 15;
             label21.Text = "Start";
             // 
-            // numericUpDownCircleEnd
+            // numericBoxCircleEnd
             // 
-            numericUpDownCircleEnd.DecimalPlaces = 1;
-            numericUpDownCircleEnd.Font = new System.Drawing.Font("Tahoma", 9F);
-            numericUpDownCircleEnd.Location = new System.Drawing.Point(134, 20);
-            numericUpDownCircleEnd.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
-            numericUpDownCircleEnd.Maximum = new decimal(new int[] { 100000, 0, 0, 0 });
-            numericUpDownCircleEnd.Name = "numericUpDownCircleEnd";
-            numericUpDownCircleEnd.Size = new System.Drawing.Size(49, 22);
-            numericUpDownCircleEnd.TabIndex = 16;
-            numericUpDownCircleEnd.ValueChanged += numericUpDownCircleStart_ValueChanged;
+            numericBoxCircleEnd.DecimalPlaces = 1;
+            numericBoxCircleEnd.Location = new System.Drawing.Point(134, 20);
+            numericBoxCircleEnd.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            numericBoxCircleEnd.Maximum = 100000D;
+            numericBoxCircleEnd.Name = "numericBoxCircleEnd";
+            numericBoxCircleEnd.Minimum = 0D;
+            numericBoxCircleEnd.ShowUpDown = true;
+            numericBoxCircleEnd.Size = new System.Drawing.Size(49, 22);
+            numericBoxCircleEnd.TabIndex = 16;
+            numericBoxCircleEnd.ValueChanged += numericBoxCircleStart_ValueChanged;
             // 
             // buttonUnmaskAll
             // 
@@ -350,11 +349,11 @@
             // 
             // groupBoxRectangle
             // 
-            groupBoxRectangle.Controls.Add(numericUpDownRectangleAngle);
+            groupBoxRectangle.Controls.Add(numericBoxRectangleAngle);
             groupBoxRectangle.Controls.Add(comboBoxRectangleDirection);
             groupBoxRectangle.Controls.Add(label22);
             groupBoxRectangle.Controls.Add(label23);
-            groupBoxRectangle.Controls.Add(numericUpDownRectangleBand);
+            groupBoxRectangle.Controls.Add(numericBoxRectangleBand);
             groupBoxRectangle.Controls.Add(label24);
             groupBoxRectangle.Controls.Add(checkBoxRectangleIsBothSide);
             groupBoxRectangle.Enabled = false;
@@ -367,18 +366,19 @@
             groupBoxRectangle.TabIndex = 159;
             groupBoxRectangle.TabStop = false;
             // 
-            // numericUpDownRectangleAngle
+            // numericBoxRectangleAngle
             // 
-            numericUpDownRectangleAngle.DecimalPlaces = 1;
-            numericUpDownRectangleAngle.Font = new System.Drawing.Font("Tahoma", 9F);
-            numericUpDownRectangleAngle.Location = new System.Drawing.Point(165, 43);
-            numericUpDownRectangleAngle.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
-            numericUpDownRectangleAngle.Maximum = new decimal(new int[] { 360, 0, 0, 0 });
-            numericUpDownRectangleAngle.Name = "numericUpDownRectangleAngle";
-            numericUpDownRectangleAngle.Size = new System.Drawing.Size(54, 22);
-            numericUpDownRectangleAngle.TabIndex = 16;
-            numericUpDownRectangleAngle.Value = new decimal(new int[] { 270, 0, 0, 0 });
-            numericUpDownRectangleAngle.ValueChanged += numericUpDownRectangleAngle_ValueChanged;
+            numericBoxRectangleAngle.DecimalPlaces = 1;
+            numericBoxRectangleAngle.Location = new System.Drawing.Point(165, 43);
+            numericBoxRectangleAngle.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            numericBoxRectangleAngle.Maximum = 360D;
+            numericBoxRectangleAngle.Name = "numericBoxRectangleAngle";
+            numericBoxRectangleAngle.Minimum = 0D;
+            numericBoxRectangleAngle.ShowUpDown = true;
+            numericBoxRectangleAngle.Size = new System.Drawing.Size(54, 22);
+            numericBoxRectangleAngle.TabIndex = 16;
+            numericBoxRectangleAngle.Value = 270D;
+            numericBoxRectangleAngle.ValueChanged += numericBoxRectangleAngle_ValueChanged;
             // 
             // comboBoxRectangleDirection
             // 
@@ -414,17 +414,19 @@
             label23.TabIndex = 15;
             label23.Text = "Band Width";
             // 
-            // numericUpDownRectangleBand
+            // numericBoxRectangleBand
             // 
-            numericUpDownRectangleBand.Font = new System.Drawing.Font("Tahoma", 9F);
-            numericUpDownRectangleBand.Location = new System.Drawing.Point(74, 43);
-            numericUpDownRectangleBand.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
-            numericUpDownRectangleBand.Maximum = new decimal(new int[] { 10000, 0, 0, 0 });
-            numericUpDownRectangleBand.Name = "numericUpDownRectangleBand";
-            numericUpDownRectangleBand.Size = new System.Drawing.Size(47, 22);
-            numericUpDownRectangleBand.TabIndex = 16;
-            numericUpDownRectangleBand.Value = new decimal(new int[] { 10, 0, 0, 0 });
-            numericUpDownRectangleBand.ValueChanged += numericUpDownRectangleBand_ValueChanged;
+            numericBoxRectangleBand.Location = new System.Drawing.Point(74, 43);
+            numericBoxRectangleBand.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            numericBoxRectangleBand.Maximum = 10000D;
+            numericBoxRectangleBand.Name = "numericBoxRectangleBand";
+            numericBoxRectangleBand.DecimalPlaces = 0;                                                                                                 // 260522Cl 追加: 整数表示を維持
+            numericBoxRectangleBand.Minimum = 0D;
+            numericBoxRectangleBand.ShowUpDown = true;
+            numericBoxRectangleBand.Size = new System.Drawing.Size(47, 22);
+            numericBoxRectangleBand.TabIndex = 16;
+            numericBoxRectangleBand.Value = 10D;
+            numericBoxRectangleBand.ValueChanged += numericBoxRectangleBand_ValueChanged;
             // 
             // label24
             // 
@@ -832,17 +834,17 @@
             groupBoxDetectorProperty.TabStop = false;
             groupBoxDetectorProperty.Text = "Detector property"; // 260521Cl: Title Case → sentence case (Phase 2 漏れ)
             //
-            // sizeControl1   260521Cl: numericUpDownImageWidth/Height + label3(Width)/label10(Height)/label30(pixel) を置換
+            // sizeControl1   260521Cl: numericBoxImageWidth/Height + label3(Width)/label10(Height)/label30(pixel) を置換
             //
             sizeControl1.AutoSize = true;
             sizeControl1.HeaderText = "Size";
             sizeControl1.Location = new System.Drawing.Point(15, 55);
-            sizeControl1.Maximum = 10000; // 旧 numericUpDownImageWidth/Height の範囲 (1〜10000) を継承
+            sizeControl1.Maximum = 10000; // 旧 numericBoxImageWidth/Height の範囲 (1〜10000) を継承
             sizeControl1.Minimum = 1;
             sizeControl1.Name = "sizeControl1";
             sizeControl1.TabIndex = 2;
             sizeControl1.UnitText = "px"; // 旧 label30 "pixel" を統一表記 "px" に
-            sizeControl1.Value = new System.Drawing.Size(800, 800); // 旧 numericUpDownImageWidth/Height の既定 800 を継承
+            sizeControl1.Value = new System.Drawing.Size(800, 800); // 旧 numericBoxImageWidth/Height の既定 800 を継承
             //
             // label20
             // 
@@ -961,7 +963,7 @@
             label13.Size = new System.Drawing.Size(31, 14);
             label13.TabIndex = 67;
             label13.Text = "pixel";
-            // 260521Cl: label30(pixel)/numericUpDownImageHeight/label10(Height) は sizeControl1 へ置換したため削除
+            // 260521Cl: label30(pixel)/numericBoxImageHeight/label10(Height) は sizeControl1 へ置換したため削除
             //
             // numericBoxCenterY
             // 
@@ -1451,8 +1453,8 @@
             // DiffractionPatternControl
             // 
             Controls.Add(buttonSaveImage);
-            Controls.Add(numericUpDownMaxInt);
-            Controls.Add(numericUpDownMinInt);
+            Controls.Add(numericBoxMaxInt);
+            Controls.Add(numericBoxMinInt);
             Controls.Add(checkBoxShowMaskedArea);
             Controls.Add(graphControlFrequency);
             Controls.Add(panelSimulationCheck);
@@ -1465,17 +1467,11 @@
             Size = new System.Drawing.Size(979, 701);
             DragDrop += DiffractionPatternControl_DragDrop;
             DragEnter += DiffractionPatternControl_DragEnter;
-            ((System.ComponentModel.ISupportInitialize)numericUpDownMaxInt).EndInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDownMinInt).EndInit();
             ((System.ComponentModel.ISupportInitialize)trackBarOpacity).EndInit();
             groupBoxCircleMask.ResumeLayout(false);
             groupBoxCircleMask.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)numericUpDownCircleStart).EndInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDownCircleEnd).EndInit();
             groupBoxRectangle.ResumeLayout(false);
             groupBoxRectangle.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)numericUpDownRectangleAngle).EndInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDownRectangleBand).EndInit();
             groupBoxGeometry.ResumeLayout(false);
             groupBoxGeometry.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)trackBarBgH).EndInit();
@@ -1491,7 +1487,7 @@
             groupBoxWaveSource.PerformLayout();
             groupBoxDetectorProperty.ResumeLayout(false);
             groupBoxDetectorProperty.PerformLayout();
-            // 260521Cl: numericUpDownImageWidth/Height は sizeControl1 へ置換したため EndInit 削除
+            // 260521Cl: numericBoxImageWidth/Height は sizeControl1 へ置換したため EndInit 削除
             tabPage2.ResumeLayout(false);
             tabPage2.PerformLayout();
             groupBoxPeakIndices.ResumeLayout(false);
@@ -1516,8 +1512,8 @@
         public System.Windows.Forms.GroupBox groupBoxCircleMask;
         public System.Windows.Forms.Label label1;
         public System.Windows.Forms.Label label21;
-        public System.Windows.Forms.NumericUpDown numericUpDownCircleStart;
-        public System.Windows.Forms.NumericUpDown numericUpDownCircleEnd;
+        public Crystallography.Controls.NumericBox numericBoxCircleStart;
+        public Crystallography.Controls.NumericBox numericBoxCircleEnd;
         private System.Windows.Forms.Button buttonUnmaskAll;
         private System.Windows.Forms.Button buttonApplyMask;
         public System.Windows.Forms.GroupBox groupBoxRectangle;
@@ -1525,8 +1521,8 @@
         public System.Windows.Forms.ComboBox comboBoxRectangleDirection;
         public System.Windows.Forms.Label label22;
         public System.Windows.Forms.Label label23;
-        public System.Windows.Forms.NumericUpDown numericUpDownRectangleBand;
-        public System.Windows.Forms.NumericUpDown numericUpDownRectangleAngle;
+        public Crystallography.Controls.NumericBox numericBoxRectangleBand;
+        public Crystallography.Controls.NumericBox numericBoxRectangleAngle;
         public System.Windows.Forms.Label label24;
         public System.Windows.Forms.GroupBox groupBoxGeometry;
         private System.Windows.Forms.TrackBar trackBarBgH;
@@ -1542,8 +1538,8 @@
         private Crystallography.Controls.NumericBox numericBoxFilmBlur;
         private System.Windows.Forms.Button buttonSaveMask;
         private System.Windows.Forms.Button buttonSaveBackGround;
-        public System.Windows.Forms.NumericUpDown numericUpDownMaxInt;
-        public System.Windows.Forms.NumericUpDown numericUpDownMinInt;
+        public Crystallography.Controls.NumericBox numericBoxMaxInt;
+        public Crystallography.Controls.NumericBox numericBoxMinInt;
         public Crystallography.Controls.ScalablePictureBox scalablePictureBox;
         public System.Windows.Forms.CheckBox checkBoxSimulation;
         public System.Windows.Forms.CheckBox checkBoxResidual;
@@ -1579,7 +1575,7 @@
         private System.Windows.Forms.Label label28;
         private System.Windows.Forms.GroupBox groupBoxDetectorProperty;
         private System.Windows.Forms.Label label2;
-        private Crystallography.Controls.SizeControl sizeControl1; // 260521Cl: numericUpDownImageWidth/Height + label3/10/30 を置換
+        private Crystallography.Controls.SizeControl sizeControl1; // 260521Cl: numericBoxImageWidth/Height + label3/10/30 を置換
         private System.Windows.Forms.Label label31;
         private System.Windows.Forms.Label label32;
         private Crystallography.Controls.NumericBox numericBoxCenterY;

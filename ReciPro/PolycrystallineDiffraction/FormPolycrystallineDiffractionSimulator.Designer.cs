@@ -67,7 +67,7 @@
             this.checkBoxRefineFilmBlur = new System.Windows.Forms.CheckBox();
             this.checkBox6 = new System.Windows.Forms.CheckBox();
             this.checkBoxAutomaticallyChangeParameter = new System.Windows.Forms.CheckBox();
-            this.numericUpDownChangeParameterThreshold = new System.Windows.Forms.NumericUpDown();
+            this.numericBoxChangeParameterThreshold = new Crystallography.Controls.NumericBox();                                                       // 260522Cl 変更: NumericUpDown → NumericBox
             this.tabPage6 = new System.Windows.Forms.TabPage();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.graphControlResidual = new Crystallography.Controls.GraphControl();
@@ -129,7 +129,6 @@
             this.tabPage4.SuspendLayout();
             this.groupBoxPreferredOrientation.SuspendLayout();
             this.groupBoxFittingOptions.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownChangeParameterThreshold)).BeginInit();
             this.tabPage6.SuspendLayout();
             this.tabPage8.SuspendLayout();
             this.groupBoxGonioScan.SuspendLayout();
@@ -357,7 +356,7 @@
             this.tabPage4.Controls.Add(this.groupBoxFittingOptions);
             this.tabPage4.Controls.Add(this.checkBox6);
             this.tabPage4.Controls.Add(this.checkBoxAutomaticallyChangeParameter);
-            this.tabPage4.Controls.Add(this.numericUpDownChangeParameterThreshold);
+            this.tabPage4.Controls.Add(this.numericBoxChangeParameterThreshold);
             this.tabPage4.Location = new System.Drawing.Point(4, 25);
             this.tabPage4.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage4.Name = "tabPage4";
@@ -708,32 +707,21 @@
             this.checkBoxAutomaticallyChangeParameter.TabIndex = 405;
             this.checkBoxAutomaticallyChangeParameter.Text = "Automatically change parameter";
             this.checkBoxAutomaticallyChangeParameter.UseVisualStyleBackColor = true;
-            // 
-            // numericUpDownChangeParameterThreshold
-            // 
-            this.numericUpDownChangeParameterThreshold.DecimalPlaces = 2;
-            this.numericUpDownChangeParameterThreshold.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.numericUpDownChangeParameterThreshold.Increment = new decimal(new int[] {
-            5,
-            0,
-            0,
-            131072});
-            this.numericUpDownChangeParameterThreshold.Location = new System.Drawing.Point(363, 146);
-            this.numericUpDownChangeParameterThreshold.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
-            this.numericUpDownChangeParameterThreshold.Maximum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.numericUpDownChangeParameterThreshold.Name = "numericUpDownChangeParameterThreshold";
-            this.numericUpDownChangeParameterThreshold.Size = new System.Drawing.Size(52, 22);
-            this.numericUpDownChangeParameterThreshold.TabIndex = 404;
-            this.numericUpDownChangeParameterThreshold.ThousandsSeparator = true;
-            this.numericUpDownChangeParameterThreshold.Value = new decimal(new int[] {
-            6,
-            0,
-            0,
-            65536});
+            //
+            // numericBoxChangeParameterThreshold
+            //
+            // 260522Cl 変更: NumericUpDown → NumericBox (Increment→UpDown_Increment, decimal→double, Font(Tahoma)はテーマ任せに撤去, ShowUpDown=true で UpDown 表示を維持)
+            this.numericBoxChangeParameterThreshold.DecimalPlaces = 2;
+            this.numericBoxChangeParameterThreshold.Location = new System.Drawing.Point(363, 146);
+            this.numericBoxChangeParameterThreshold.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
+            this.numericBoxChangeParameterThreshold.Maximum = 1D;
+            this.numericBoxChangeParameterThreshold.Name = "numericBoxChangeParameterThreshold";
+            this.numericBoxChangeParameterThreshold.ShowUpDown = true;
+            this.numericBoxChangeParameterThreshold.Size = new System.Drawing.Size(52, 22);
+            this.numericBoxChangeParameterThreshold.TabIndex = 404;
+            this.numericBoxChangeParameterThreshold.ThousandsSeparator = true;
+            this.numericBoxChangeParameterThreshold.UpDown_Increment = 0.05D;
+            this.numericBoxChangeParameterThreshold.Value = 0.6D;
             // 
             // tabPage6
             // 
@@ -1489,7 +1477,6 @@
             this.groupBoxPreferredOrientation.PerformLayout();
             this.groupBoxFittingOptions.ResumeLayout(false);
             this.groupBoxFittingOptions.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownChangeParameterThreshold)).EndInit();
             this.tabPage6.ResumeLayout(false);
             this.tabPage6.PerformLayout();
             this.tabPage8.ResumeLayout(false);
@@ -1576,7 +1563,7 @@
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelProgress;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel;
-        private System.Windows.Forms.NumericUpDown numericUpDownChangeParameterThreshold;
+        private Crystallography.Controls.NumericBox numericBoxChangeParameterThreshold;                                                                // 260522Cl 変更: NumericUpDown → NumericBox
         private System.Windows.Forms.TabControl tabControlCrystals;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.Button button1;

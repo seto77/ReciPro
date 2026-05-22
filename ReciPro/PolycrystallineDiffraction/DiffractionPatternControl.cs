@@ -107,7 +107,7 @@ public partial class DiffractionPatternControl : UserControlBase
     #region 画像のプロパティ関連
 
     /// <summary>イメージの横幅(ピクセル単位)</summary>
-    // 260521Cl: numericUpDownImageWidth → sizeControl1.ImageWidth へ置換
+    // 260521Cl: numericBoxImageWidth → sizeControl1.ImageWidth へ置換
     public int ImageWidth
     {
         get => sizeControl1.ImageWidth;
@@ -115,7 +115,7 @@ public partial class DiffractionPatternControl : UserControlBase
     }
 
     /// <summary>イメージの高さ(ピクセル単位)</summary>
-    // 260521Cl: numericUpDownImageHeight → sizeControl1.ImageHeight へ置換
+    // 260521Cl: numericBoxImageHeight → sizeControl1.ImageHeight へ置換
     public int ImageHeight
     {
         get => sizeControl1.ImageHeight;
@@ -302,15 +302,15 @@ public partial class DiffractionPatternControl : UserControlBase
 
         Profile p = setFrequencyProfile(srcPixels);
 
-        numericUpDownMaxInt.Maximum = Math.Max((decimal)p.Pt[^1].X, 2);
-        numericUpDownMinInt.Maximum = Math.Max((decimal)p.Pt[^1].X - 1, 1);
-        numericUpDownMaxInt.Minimum = 1;
-        numericUpDownMinInt.Minimum = 0;
-        scalablePictureBox.PseudoBitmap.MaxValue = (uint)((double)numericUpDownMaxInt.Maximum);
-        scalablePictureBox.PseudoBitmap.MinValue = (uint)((double)numericUpDownMinInt.Minimum);
+        numericBoxMaxInt.Maximum = Math.Max(p.Pt[^1].X, 2);                                                                                           // 260522Cl 変更: NumericBox 化に伴い (decimal) → double
+        numericBoxMinInt.Maximum = Math.Max(p.Pt[^1].X - 1, 1);
+        numericBoxMaxInt.Minimum = 1;
+        numericBoxMinInt.Minimum = 0;
+        scalablePictureBox.PseudoBitmap.MaxValue = (uint)((double)numericBoxMaxInt.Maximum);
+        scalablePictureBox.PseudoBitmap.MinValue = (uint)((double)numericBoxMinInt.Minimum);
 
         graphControlFrequency.Profile = p;
-        PointD[] pt = new PointD[] { new PointD((double)numericUpDownMinInt.Minimum, double.NaN), new PointD((double)numericUpDownMaxInt.Maximum, double.NaN) };
+        PointD[] pt = new PointD[] { new PointD((double)numericBoxMinInt.Minimum, double.NaN), new PointD((double)numericBoxMaxInt.Maximum, double.NaN) };
         graphControlFrequency.VerticalLines = pt;
 
         graphControlFrequency.Draw();
@@ -337,21 +337,21 @@ public partial class DiffractionPatternControl : UserControlBase
         {
             if (graphControlFrequency.VerticalLines[1].X == graphControlFrequency.VerticalLines[0].X) return;
 
-            decimal max = (int)Math.Max(graphControlFrequency.VerticalLines[0].X, graphControlFrequency.VerticalLines[1].X);
-            if (numericUpDownMaxInt.Maximum < max)
-                numericUpDownMaxInt.Value = numericUpDownMaxInt.Maximum;
-            else if (numericUpDownMinInt.Minimum > max)
-                numericUpDownMaxInt.Value = numericUpDownMaxInt.Minimum;
+            double max = (int)Math.Max(graphControlFrequency.VerticalLines[0].X, graphControlFrequency.VerticalLines[1].X);    // 260522Cl 変更: decimal → double (NumericBox.Value/Maximum は double)
+            if (numericBoxMaxInt.Maximum < max)
+                numericBoxMaxInt.Value = numericBoxMaxInt.Maximum;
+            else if (numericBoxMinInt.Minimum > max)
+                numericBoxMaxInt.Value = numericBoxMaxInt.Minimum;
             else
-                numericUpDownMaxInt.Value = max;
+                numericBoxMaxInt.Value = max;
 
-            decimal min = (int)Math.Min(graphControlFrequency.VerticalLines[0].X, graphControlFrequency.VerticalLines[1].X);
-            if (numericUpDownMinInt.Maximum < min)
-                numericUpDownMinInt.Value = numericUpDownMinInt.Maximum;
-            else if (numericUpDownMinInt.Minimum > min)
-                numericUpDownMinInt.Value = numericUpDownMinInt.Minimum;
+            double min = (int)Math.Min(graphControlFrequency.VerticalLines[0].X, graphControlFrequency.VerticalLines[1].X);    // 260522Cl 変更: decimal → double
+            if (numericBoxMinInt.Maximum < min)
+                numericBoxMinInt.Value = numericBoxMinInt.Maximum;
+            else if (numericBoxMinInt.Minimum > min)
+                numericBoxMinInt.Value = numericBoxMinInt.Minimum;
             else
-                numericUpDownMinInt.Value = min;
+                numericBoxMinInt.Value = min;
         }
     }
 
@@ -414,33 +414,33 @@ public partial class DiffractionPatternControl : UserControlBase
         return p;
     }
 
-    private void numericUpDownMinInt_ValueChanged(object sender, EventArgs e)
+    private void numericBoxMinInt_ValueChanged(object sender, EventArgs e)
     {
         if (scalablePictureBox.PseudoBitmap != null)
         {
-            scalablePictureBox.PseudoBitmap.MinValue = (uint)((double)numericUpDownMinInt.Value);
+            scalablePictureBox.PseudoBitmap.MinValue = (uint)((double)numericBoxMinInt.Value);
             if (scalablePictureBox.PseudoBitmap.MaxValue <= scalablePictureBox.PseudoBitmap.MinValue)
-                numericUpDownMaxInt.Value = numericUpDownMinInt.Value + 1;
+                numericBoxMaxInt.Value = numericBoxMinInt.Value + 1;
             if (graphControlFrequency.VerticalLines != null && graphControlFrequency.VerticalLines.Length == 2)
             {
-                graphControlFrequency.VerticalLines[graphControlFrequency.VerticalLines[0].X < graphControlFrequency.VerticalLines[1].X ? 0 : 1].X = (double)numericUpDownMinInt.Value;
+                graphControlFrequency.VerticalLines[graphControlFrequency.VerticalLines[0].X < graphControlFrequency.VerticalLines[1].X ? 0 : 1].X = (double)numericBoxMinInt.Value;
                 graphControlFrequency.Draw();
             }
             scalablePictureBox.drawPictureBox();
         }
     }
 
-    private void numericUpDownMaxInt_ValueChanged(object sender, EventArgs e)
+    private void numericBoxMaxInt_ValueChanged(object sender, EventArgs e)
     {
         if (scalablePictureBox.PseudoBitmap != null)
         {
-            scalablePictureBox.PseudoBitmap.MaxValue = (uint)((double)numericUpDownMaxInt.Value);
+            scalablePictureBox.PseudoBitmap.MaxValue = (uint)((double)numericBoxMaxInt.Value);
             if (scalablePictureBox.PseudoBitmap.MaxValue <= scalablePictureBox.PseudoBitmap.MinValue)
-                if (numericUpDownMinInt.Minimum <= numericUpDownMaxInt.Value - 1)
-                    numericUpDownMinInt.Value = numericUpDownMaxInt.Value - 1;
+                if (numericBoxMinInt.Minimum <= numericBoxMaxInt.Value - 1)
+                    numericBoxMinInt.Value = numericBoxMaxInt.Value - 1;
             if (graphControlFrequency.VerticalLines != null && graphControlFrequency.VerticalLines.Length == 2)
             {
-                graphControlFrequency.VerticalLines[graphControlFrequency.VerticalLines[0].X < graphControlFrequency.VerticalLines[1].X ? 1 : 0].X = (double)numericUpDownMaxInt.Value;
+                graphControlFrequency.VerticalLines[graphControlFrequency.VerticalLines[0].X < graphControlFrequency.VerticalLines[1].X ? 1 : 0].X = (double)numericBoxMaxInt.Value;
                 graphControlFrequency.Draw();
             }
             scalablePictureBox.drawPictureBox();
@@ -503,58 +503,58 @@ public partial class DiffractionPatternControl : UserControlBase
         switch ((string)comboBoxRectangleDirection.SelectedItem)
         {
             case "Top":
-                numericUpDownRectangleAngle.Enabled = false;
-                numericUpDownRectangleBand.Enabled = true;
+                numericBoxRectangleAngle.Enabled = false;
+                numericBoxRectangleBand.Enabled = true;
                 checkBoxRectangleIsBothSide.Enabled = false;
                 checkBoxRectangleIsBothSide.Checked = false;
-                numericUpDownRectangleAngle.Value = 270;
+                numericBoxRectangleAngle.Value = 270;
                 break;
 
             case "Bottom":
-                numericUpDownRectangleAngle.Enabled = false;
-                numericUpDownRectangleBand.Enabled = true;
+                numericBoxRectangleAngle.Enabled = false;
+                numericBoxRectangleBand.Enabled = true;
                 checkBoxRectangleIsBothSide.Enabled = false;
                 checkBoxRectangleIsBothSide.Checked = false;
-                numericUpDownRectangleAngle.Value = 90;
+                numericBoxRectangleAngle.Value = 90;
                 break;
 
             case "Right":
-                numericUpDownRectangleAngle.Enabled = false;
-                numericUpDownRectangleBand.Enabled = true;
+                numericBoxRectangleAngle.Enabled = false;
+                numericBoxRectangleBand.Enabled = true;
                 checkBoxRectangleIsBothSide.Enabled = false;
                 checkBoxRectangleIsBothSide.Checked = false;
-                numericUpDownRectangleAngle.Value = 0;
+                numericBoxRectangleAngle.Value = 0;
                 break;
 
             case "Left":
-                numericUpDownRectangleAngle.Enabled = false;
-                numericUpDownRectangleBand.Enabled = true;
+                numericBoxRectangleAngle.Enabled = false;
+                numericBoxRectangleBand.Enabled = true;
                 checkBoxRectangleIsBothSide.Enabled = false;
                 checkBoxRectangleIsBothSide.Checked = false;
-                numericUpDownRectangleAngle.Value = 180;
+                numericBoxRectangleAngle.Value = 180;
                 break;
 
             case "Vertical":
-                numericUpDownRectangleAngle.Enabled = false;
-                numericUpDownRectangleBand.Enabled = true;
+                numericBoxRectangleAngle.Enabled = false;
+                numericBoxRectangleBand.Enabled = true;
                 checkBoxRectangleIsBothSide.Enabled = false;
                 checkBoxRectangleIsBothSide.Checked = true;
-                numericUpDownRectangleAngle.Value = 90;
+                numericBoxRectangleAngle.Value = 90;
                 break;
 
             case "Horizontal":
-                numericUpDownRectangleAngle.Enabled = false;
-                numericUpDownRectangleBand.Enabled = true;
+                numericBoxRectangleAngle.Enabled = false;
+                numericBoxRectangleBand.Enabled = true;
                 checkBoxRectangleIsBothSide.Enabled = false;
                 checkBoxRectangleIsBothSide.Checked = true;
-                numericUpDownRectangleAngle.Value = 0;
+                numericBoxRectangleAngle.Value = 0;
                 break;
 
             case "Free":
-                numericUpDownRectangleAngle.Enabled = true;
-                numericUpDownRectangleBand.Enabled = true;
+                numericBoxRectangleAngle.Enabled = true;
+                numericBoxRectangleBand.Enabled = true;
                 checkBoxRectangleIsBothSide.Enabled = true;
-                numericUpDownRectangleAngle.Value = 0;
+                numericBoxRectangleAngle.Value = 0;
                 break;
         }
         setRectangleMask();
@@ -562,9 +562,9 @@ public partial class DiffractionPatternControl : UserControlBase
 
     private void checkBoxRectangleIsBothSide_CheckedChanged(object sender, EventArgs e) => setRectangleMask();
 
-    private void numericUpDownRectangleBand_ValueChanged(object sender, EventArgs e) => setRectangleMask();
+    private void numericBoxRectangleBand_ValueChanged(object sender, EventArgs e) => setRectangleMask();
 
-    private void numericUpDownRectangleAngle_ValueChanged(object sender, EventArgs e) => setRectangleMask();
+    private void numericBoxRectangleAngle_ValueChanged(object sender, EventArgs e) => setRectangleMask();
 
     #region 矩形マスク
 
@@ -572,8 +572,8 @@ public partial class DiffractionPatternControl : UserControlBase
     {
         double CenterX = Center.X;
         double CenterY = Center.Y;
-        double angle = (double)numericUpDownRectangleAngle.Value / 180.0 * Math.PI;
-        double bandWidth = (double)numericUpDownRectangleBand.Value;
+        double angle = (double)numericBoxRectangleAngle.Value / 180.0 * Math.PI;
+        double bandWidth = (double)numericBoxRectangleBand.Value;
         bool isBothSide = checkBoxRectangleIsBothSide.Checked;
         int Width = ImageWidth;
         int Height = ImageHeight;
@@ -724,7 +724,7 @@ public partial class DiffractionPatternControl : UserControlBase
 
     #endregion 矩形マスク
 
-    private void numericUpDownCircleStart_ValueChanged(object sender, EventArgs e) => setCircleMask();
+    private void numericBoxCircleStart_ValueChanged(object sender, EventArgs e) => setCircleMask();
 
     private void setCircleMask()
     {
@@ -733,8 +733,8 @@ public partial class DiffractionPatternControl : UserControlBase
         double CenterX = Center.X;
         double CenterY = Center.Y;
         scalablePictureBox.PseudoBitmap.Filter3 = new List<bool>(new bool[SrcPixels.Length]);
-        double start = (double)numericUpDownCircleStart.Value;
-        double end = (double)numericUpDownCircleEnd.Value;
+        double start = (double)numericBoxCircleStart.Value;
+        double end = (double)numericBoxCircleEnd.Value;
 
         for (int h = 0; h < ImageHeight; h++)
             for (int w = 0; w < ImageWidth; w++)
@@ -1022,9 +1022,9 @@ public partial class DiffractionPatternControl : UserControlBase
 
             if (graphControlFrequency.VerticalLines.Length == 0)
             {
-                PointD[] pt = new PointD[] { new PointD((double)numericUpDownMinInt.Minimum, double.NaN), new PointD((double)numericUpDownMaxInt.Maximum, double.NaN) };
+                PointD[] pt = new PointD[] { new PointD((double)numericBoxMinInt.Minimum, double.NaN), new PointD((double)numericBoxMaxInt.Maximum, double.NaN) };
                 graphControlFrequency.VerticalLines = pt;
-                numericUpDownMaxInt_ValueChanged(new object(), new EventArgs());
+                numericBoxMaxInt_ValueChanged(new object(), new EventArgs());
             }
 
             graphControlFrequency.Draw();
@@ -1047,8 +1047,8 @@ public partial class DiffractionPatternControl : UserControlBase
             else if (checkBoxResidual.Checked)
             {
                 double baseIntensity = 5000;
-                if (numericUpDownMaxInt.Maximum < 10000)
-                    baseIntensity = (double)numericUpDownMaxInt.Maximum / 2.0;
+                if (numericBoxMaxInt.Maximum < 10000)
+                    baseIntensity = (double)numericBoxMaxInt.Maximum / 2.0;
 
                 for (int i = 0; i < SrcPixels.Length; i++)
                     if (!Filter[i])

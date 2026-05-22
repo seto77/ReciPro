@@ -29,13 +29,13 @@
             captureExtender.SetCapture(this, true); // 260521Cl 追加: GUI監査キャプチャ対象 (フォーム全体)
             this.components = new System.ComponentModel.Container();
             this.groupBoxMaterial = new System.Windows.Forms.GroupBox();
-            this.numericUpDownAtomTransparency = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDownAtomShininess = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDownAtomSpecular = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDownAtomEmmision = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDownAtomDiffusion = new System.Windows.Forms.NumericUpDown();
+            this.numericBoxAtomTransparency = new Crystallography.Controls.NumericBox();
+            this.numericBoxAtomShininess = new Crystallography.Controls.NumericBox();
+            this.numericBoxAtomSpecular = new Crystallography.Controls.NumericBox();
+            this.numericBoxAtomEmmision = new Crystallography.Controls.NumericBox();
+            this.numericBoxAtomDiffusion = new Crystallography.Controls.NumericBox();
             this.label37 = new System.Windows.Forms.Label();
-            this.numericUpDownAtomAmbient = new System.Windows.Forms.NumericUpDown();
+            this.numericBoxAtomAmbient = new Crystallography.Controls.NumericBox();
             this.label36 = new System.Windows.Forms.Label();
             this.label38 = new System.Windows.Forms.Label();
             this.label35 = new System.Windows.Forms.Label();
@@ -43,7 +43,7 @@
             this.label12 = new System.Windows.Forms.Label();
             this.pictureBoxAtomColor = new System.Windows.Forms.PictureBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.numericUpDownAtomRadius = new System.Windows.Forms.NumericUpDown();
+            this.numericBoxAtomRadius = new Crystallography.Controls.NumericBox();
             this.label9 = new System.Windows.Forms.Label();
             this.radioButtonApplyEquivalentAtoms = new System.Windows.Forms.RadioButton();
             this.radioButtonApplyThis = new System.Windows.Forms.RadioButton();
@@ -53,25 +53,18 @@
             this.radioButtonAllSameElement = new System.Windows.Forms.RadioButton();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.groupBoxMaterial.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAtomTransparency)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAtomShininess)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAtomSpecular)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAtomEmmision)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAtomDiffusion)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAtomAmbient)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAtomColor)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAtomRadius)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAtomColor)).BeginInit();                                                          // 260522Cl: numericBoxAtom* は NumericBox 化に伴い ISupportInitialize 不要
             this.SuspendLayout();
             // 
             // groupBoxMaterial
             // 
-            this.groupBoxMaterial.Controls.Add(this.numericUpDownAtomTransparency);
-            this.groupBoxMaterial.Controls.Add(this.numericUpDownAtomShininess);
-            this.groupBoxMaterial.Controls.Add(this.numericUpDownAtomSpecular);
-            this.groupBoxMaterial.Controls.Add(this.numericUpDownAtomEmmision);
-            this.groupBoxMaterial.Controls.Add(this.numericUpDownAtomDiffusion);
+            this.groupBoxMaterial.Controls.Add(this.numericBoxAtomTransparency);
+            this.groupBoxMaterial.Controls.Add(this.numericBoxAtomShininess);
+            this.groupBoxMaterial.Controls.Add(this.numericBoxAtomSpecular);
+            this.groupBoxMaterial.Controls.Add(this.numericBoxAtomEmmision);
+            this.groupBoxMaterial.Controls.Add(this.numericBoxAtomDiffusion);
             this.groupBoxMaterial.Controls.Add(this.label37);
-            this.groupBoxMaterial.Controls.Add(this.numericUpDownAtomAmbient);
+            this.groupBoxMaterial.Controls.Add(this.numericBoxAtomAmbient);
             this.groupBoxMaterial.Controls.Add(this.label36);
             this.groupBoxMaterial.Controls.Add(this.label38);
             this.groupBoxMaterial.Controls.Add(this.label35);
@@ -85,107 +78,71 @@
             this.groupBoxMaterial.TabStop = false;
             this.groupBoxMaterial.Text = "Material";
             // 
-            // numericUpDownAtomTransparency
+            // numericBoxAtomTransparency
             // 
-            this.numericUpDownAtomTransparency.DecimalPlaces = 1;
-            this.numericUpDownAtomTransparency.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            65536});
-            this.numericUpDownAtomTransparency.Location = new System.Drawing.Point(165, 63);
-            this.numericUpDownAtomTransparency.Maximum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.numericUpDownAtomTransparency.Name = "numericUpDownAtomTransparency";
-            this.numericUpDownAtomTransparency.Size = new System.Drawing.Size(41, 21);
-            this.numericUpDownAtomTransparency.TabIndex = 89;
-            this.toolTip1.SetToolTip(this.numericUpDownAtomTransparency, "透明度");
-            this.numericUpDownAtomTransparency.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
+            this.numericBoxAtomTransparency.DecimalPlaces = 1;
+            this.numericBoxAtomTransparency.UpDown_Increment = 0.1D;
+            this.numericBoxAtomTransparency.Location = new System.Drawing.Point(165, 63);
+            this.numericBoxAtomTransparency.Maximum = 1D;
+            this.numericBoxAtomTransparency.Name = "numericBoxAtomTransparency";
+            this.numericBoxAtomTransparency.Minimum = 0D;                                                                                              // 260522Cl 追加: NumericUpDown 既定 Minimum=0 を維持
+            this.numericBoxAtomTransparency.ShowUpDown = true;
+            this.numericBoxAtomTransparency.Size = new System.Drawing.Size(41, 21);
+            this.numericBoxAtomTransparency.TabIndex = 89;
+            this.toolTip1.SetToolTip(this.numericBoxAtomTransparency, "透明度");
+            this.numericBoxAtomTransparency.Value = 1D;
             // 
-            // numericUpDownAtomShininess
+            // numericBoxAtomShininess
             // 
-            this.numericUpDownAtomShininess.Location = new System.Drawing.Point(165, 39);
-            this.numericUpDownAtomShininess.Maximum = new decimal(new int[] {
-            50,
-            0,
-            0,
-            0});
-            this.numericUpDownAtomShininess.Name = "numericUpDownAtomShininess";
-            this.numericUpDownAtomShininess.Size = new System.Drawing.Size(41, 21);
-            this.numericUpDownAtomShininess.TabIndex = 89;
-            this.toolTip1.SetToolTip(this.numericUpDownAtomShininess, "反射光の強度");
+            this.numericBoxAtomShininess.Location = new System.Drawing.Point(165, 39);
+            this.numericBoxAtomShininess.Maximum = 50D;
+            this.numericBoxAtomShininess.Name = "numericBoxAtomShininess";
+            this.numericBoxAtomShininess.DecimalPlaces = 0;                                                                                            // 260522Cl 追加: NumericUpDown 既定 DecimalPlaces=0 (整数表示) を維持
+            this.numericBoxAtomShininess.Minimum = 0D;
+            this.numericBoxAtomShininess.ShowUpDown = true;
+            this.numericBoxAtomShininess.Size = new System.Drawing.Size(41, 21);
+            this.numericBoxAtomShininess.TabIndex = 89;
+            this.toolTip1.SetToolTip(this.numericBoxAtomShininess, "反射光の強度");
             // 
-            // numericUpDownAtomSpecular
+            // numericBoxAtomSpecular
             // 
-            this.numericUpDownAtomSpecular.DecimalPlaces = 1;
-            this.numericUpDownAtomSpecular.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericUpDownAtomSpecular.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            65536});
-            this.numericUpDownAtomSpecular.Location = new System.Drawing.Point(165, 14);
-            this.numericUpDownAtomSpecular.Maximum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.numericUpDownAtomSpecular.Name = "numericUpDownAtomSpecular";
-            this.numericUpDownAtomSpecular.Size = new System.Drawing.Size(41, 21);
-            this.numericUpDownAtomSpecular.TabIndex = 89;
-            this.toolTip1.SetToolTip(this.numericUpDownAtomSpecular, "反射光");
+            this.numericBoxAtomSpecular.DecimalPlaces = 1;
+            this.numericBoxAtomSpecular.UpDown_Increment = 0.1D;
+            this.numericBoxAtomSpecular.Location = new System.Drawing.Point(165, 14);
+            this.numericBoxAtomSpecular.Maximum = 1D;
+            this.numericBoxAtomSpecular.Name = "numericBoxAtomSpecular";
+            this.numericBoxAtomSpecular.Minimum = 0D;
+            this.numericBoxAtomSpecular.ShowUpDown = true;
+            this.numericBoxAtomSpecular.Size = new System.Drawing.Size(41, 21);
+            this.numericBoxAtomSpecular.TabIndex = 89;
+            this.toolTip1.SetToolTip(this.numericBoxAtomSpecular, "反射光");
             // 
-            // numericUpDownAtomEmmision
+            // numericBoxAtomEmmision
             // 
-            this.numericUpDownAtomEmmision.DecimalPlaces = 1;
-            this.numericUpDownAtomEmmision.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericUpDownAtomEmmision.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            65536});
-            this.numericUpDownAtomEmmision.Location = new System.Drawing.Point(69, 64);
-            this.numericUpDownAtomEmmision.Maximum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.numericUpDownAtomEmmision.Name = "numericUpDownAtomEmmision";
-            this.numericUpDownAtomEmmision.Size = new System.Drawing.Size(41, 21);
-            this.numericUpDownAtomEmmision.TabIndex = 89;
-            this.toolTip1.SetToolTip(this.numericUpDownAtomEmmision, "放射光");
+            this.numericBoxAtomEmmision.DecimalPlaces = 1;
+            this.numericBoxAtomEmmision.UpDown_Increment = 0.1D;
+            this.numericBoxAtomEmmision.Location = new System.Drawing.Point(69, 64);
+            this.numericBoxAtomEmmision.Maximum = 1D;
+            this.numericBoxAtomEmmision.Name = "numericBoxAtomEmmision";
+            this.numericBoxAtomEmmision.Minimum = 0D;
+            this.numericBoxAtomEmmision.ShowUpDown = true;
+            this.numericBoxAtomEmmision.Size = new System.Drawing.Size(41, 21);
+            this.numericBoxAtomEmmision.TabIndex = 89;
+            this.toolTip1.SetToolTip(this.numericBoxAtomEmmision, "放射光");
             // 
-            // numericUpDownAtomDiffusion
+            // numericBoxAtomDiffusion
             // 
-            this.numericUpDownAtomDiffusion.DecimalPlaces = 1;
-            this.numericUpDownAtomDiffusion.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericUpDownAtomDiffusion.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            65536});
-            this.numericUpDownAtomDiffusion.Location = new System.Drawing.Point(60, 38);
-            this.numericUpDownAtomDiffusion.Maximum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.numericUpDownAtomDiffusion.Name = "numericUpDownAtomDiffusion";
-            this.numericUpDownAtomDiffusion.Size = new System.Drawing.Size(41, 21);
-            this.numericUpDownAtomDiffusion.TabIndex = 89;
-            this.toolTip1.SetToolTip(this.numericUpDownAtomDiffusion, "拡散光");
-            this.numericUpDownAtomDiffusion.Value = new decimal(new int[] {
-            7,
-            0,
-            0,
-            65536});
+            this.numericBoxAtomDiffusion.DecimalPlaces = 1;
+            this.numericBoxAtomDiffusion.UpDown_Increment = 0.1D;
+            this.numericBoxAtomDiffusion.Location = new System.Drawing.Point(60, 38);
+            this.numericBoxAtomDiffusion.Maximum = 1D;
+            this.numericBoxAtomDiffusion.Name = "numericBoxAtomDiffusion";
+            this.numericBoxAtomDiffusion.Minimum = 0D;
+            this.numericBoxAtomDiffusion.ShowUpDown = true;
+            this.numericBoxAtomDiffusion.Size = new System.Drawing.Size(41, 21);
+            this.numericBoxAtomDiffusion.TabIndex = 89;
+            this.toolTip1.SetToolTip(this.numericBoxAtomDiffusion, "拡散光");
+            this.numericBoxAtomDiffusion.Value = 0.7D;
             // 
             // label37
             // 
@@ -196,25 +153,18 @@
             this.label37.TabIndex = 88;
             this.label37.Text = "Alpha";
             // 
-            // numericUpDownAtomAmbient
+            // numericBoxAtomAmbient
             // 
-            this.numericUpDownAtomAmbient.DecimalPlaces = 1;
-            this.numericUpDownAtomAmbient.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericUpDownAtomAmbient.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            65536});
-            this.numericUpDownAtomAmbient.Location = new System.Drawing.Point(60, 14);
-            this.numericUpDownAtomAmbient.Maximum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.numericUpDownAtomAmbient.Name = "numericUpDownAtomAmbient";
-            this.numericUpDownAtomAmbient.Size = new System.Drawing.Size(41, 21);
-            this.numericUpDownAtomAmbient.TabIndex = 89;
-            this.toolTip1.SetToolTip(this.numericUpDownAtomAmbient, "環境光");
+            this.numericBoxAtomAmbient.DecimalPlaces = 1;
+            this.numericBoxAtomAmbient.UpDown_Increment = 0.1D;
+            this.numericBoxAtomAmbient.Location = new System.Drawing.Point(60, 14);
+            this.numericBoxAtomAmbient.Maximum = 1D;
+            this.numericBoxAtomAmbient.Name = "numericBoxAtomAmbient";
+            this.numericBoxAtomAmbient.Minimum = 0D;
+            this.numericBoxAtomAmbient.ShowUpDown = true;
+            this.numericBoxAtomAmbient.Size = new System.Drawing.Size(41, 21);
+            this.numericBoxAtomAmbient.TabIndex = 89;
+            this.toolTip1.SetToolTip(this.numericBoxAtomAmbient, "環境光");
             // 
             // label36
             // 
@@ -280,25 +230,18 @@
             this.label8.TabIndex = 92;
             this.label8.Text = "Color";
             // 
-            // numericUpDownAtomRadius
+            // numericBoxAtomRadius
             // 
-            this.numericUpDownAtomRadius.DecimalPlaces = 3;
-            this.numericUpDownAtomRadius.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericUpDownAtomRadius.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            65536});
-            this.numericUpDownAtomRadius.Location = new System.Drawing.Point(47, 94);
-            this.numericUpDownAtomRadius.Maximum = new decimal(new int[] {
-            99,
-            0,
-            0,
-            65536});
-            this.numericUpDownAtomRadius.Name = "numericUpDownAtomRadius";
-            this.numericUpDownAtomRadius.Size = new System.Drawing.Size(60, 21);
-            this.numericUpDownAtomRadius.TabIndex = 94;
-            this.toolTip1.SetToolTip(this.numericUpDownAtomRadius, "原子の半径を設定します。");
+            this.numericBoxAtomRadius.DecimalPlaces = 3;
+            this.numericBoxAtomRadius.UpDown_Increment = 0.1D;
+            this.numericBoxAtomRadius.Location = new System.Drawing.Point(47, 94);
+            this.numericBoxAtomRadius.Maximum = 9.9D;
+            this.numericBoxAtomRadius.Name = "numericBoxAtomRadius";
+            this.numericBoxAtomRadius.Minimum = 0D;
+            this.numericBoxAtomRadius.ShowUpDown = true;
+            this.numericBoxAtomRadius.Size = new System.Drawing.Size(60, 21);
+            this.numericBoxAtomRadius.TabIndex = 94;
+            this.toolTip1.SetToolTip(this.numericBoxAtomRadius, "原子の半径を設定します。");
             // 
             // label9
             // 
@@ -400,20 +343,13 @@
             this.Controls.Add(this.groupBoxMaterial);
             this.Controls.Add(this.pictureBoxAtomColor);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.numericUpDownAtomRadius);
+            this.Controls.Add(this.numericBoxAtomRadius);
             this.Controls.Add(this.label9);
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "FormAtom";
             this.Text = "Atom property";
             this.groupBoxMaterial.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAtomTransparency)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAtomShininess)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAtomSpecular)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAtomEmmision)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAtomDiffusion)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAtomAmbient)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAtomColor)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAtomRadius)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -434,14 +370,14 @@
         private System.Windows.Forms.RadioButton radioButtonApplyThis;
         private System.Windows.Forms.Button buttonCancel;
         private System.Windows.Forms.Button buttonOK;
-        public System.Windows.Forms.NumericUpDown numericUpDownAtomTransparency;
-        public System.Windows.Forms.NumericUpDown numericUpDownAtomShininess;
-        public System.Windows.Forms.NumericUpDown numericUpDownAtomSpecular;
-        public System.Windows.Forms.NumericUpDown numericUpDownAtomEmmision;
-        public System.Windows.Forms.NumericUpDown numericUpDownAtomDiffusion;
-        public System.Windows.Forms.NumericUpDown numericUpDownAtomAmbient;
+        public Crystallography.Controls.NumericBox numericBoxAtomTransparency;
+        public Crystallography.Controls.NumericBox numericBoxAtomShininess;
+        public Crystallography.Controls.NumericBox numericBoxAtomSpecular;
+        public Crystallography.Controls.NumericBox numericBoxAtomEmmision;
+        public Crystallography.Controls.NumericBox numericBoxAtomDiffusion;
+        public Crystallography.Controls.NumericBox numericBoxAtomAmbient;
         public System.Windows.Forms.PictureBox pictureBoxAtomColor;
-        public System.Windows.Forms.NumericUpDown numericUpDownAtomRadius;
+        public Crystallography.Controls.NumericBox numericBoxAtomRadius;
         private System.Windows.Forms.RadioButton radioButtonAllSameElement;
         public System.Windows.Forms.CheckBox checkBoxIsDraw;
         private System.Windows.Forms.ToolTip toolTip1;

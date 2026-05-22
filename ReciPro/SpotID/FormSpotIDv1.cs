@@ -43,8 +43,8 @@ public partial class FormSpotIDv1 : FormBase
         //if (IsTextChangedEventSkiped) return;
         //IsTextChangedEventSkiped = true;
 
-        double waveLength = 1.2264262862108010441350327657997 / Math.Sqrt((double)numericUpDownAccVol.Value * 1000 * (1 + (double)numericUpDownAccVol.Value * 0.9784753725226711491437618236159 / 1000));
-        double cameraLength = (double)numericUpDownCamaraLength.Value;
+        double waveLength = UniversalConstants.Convert.EnergyToElectronWaveLength(numericBoxAccVol.Value);                                             // 260522Cl 整理: インライン式 → 既存ヘルパに置換 (重複排除)
+        double cameraLength = (double)numericBoxCamaraLength.Value;
 
         inputBoxP1L1.CameraLength = inputBoxP1L2.CameraLength = inputBoxP1L3.CameraLength =
         inputBoxP2L1.CameraLength = inputBoxP2L2.CameraLength = inputBoxP2L3.CameraLength =
@@ -57,8 +57,8 @@ public partial class FormSpotIDv1 : FormBase
         checkBoxEquivalentPhoto1L1Photo2L1_CheckedChanged(new object(), new EventArgs());
 
         photo1 = new PhotoInformation(inputBoxP1L1.Length, inputBoxP1L2.Length, inputBoxP1L3.Length, numericBoxP1Theta.RadianValue,
-            (double)numericUpDownPhoto1L1Err.Value / 100, (double)numericUpDownPhoto1L2Err.Value / 100, (double)numericUpDownPhoto1L3Err.Value / 100, (double)numericUpDownPhoto1ThetaErr.Value / 180 * Math.PI,
-            numericBoxP1Tilt1.RadianValue, numericBoxP1Tilt2.RadianValue, (double)numericUpDownPhoto1Tilt1Err.Value / 180 * Math.PI, (double)numericUpDownPhoto1Tilt2Err.Value / 180 * Math.PI,
+            (double)numericBoxPhoto1L1Err.Value / 100, (double)numericBoxPhoto1L2Err.Value / 100, (double)numericBoxPhoto1L3Err.Value / 100, (double)numericBoxPhoto1ThetaErr.Value / 180 * Math.PI,
+            numericBoxP1Tilt1.RadianValue, numericBoxP1Tilt2.RadianValue, (double)numericBoxPhoto1Tilt1Err.Value / 180 * Math.PI, (double)numericBoxPhoto1Tilt2Err.Value / 180 * Math.PI,
             radioButtonPhoto1Mode1.Checked, waveLength, cameraLength);
 
         if (photo1.IsTriangleMode)
@@ -67,8 +67,8 @@ public partial class FormSpotIDv1 : FormBase
             inputBoxP1L3.Length = photo1.Paintable ? photo1.L3 : 0;
 
         photo2 = new PhotoInformation(inputBoxP2L1.Length, inputBoxP2L2.Length, inputBoxP2L3.Length, numericBoxP2Theta.RadianValue,
-            (double)numericUpDownPhoto2L1Err.Value / 100, (double)numericUpDownPhoto2L2Err.Value / 100, (double)numericUpDownPhoto2L3Err.Value / 100, (double)numericUpDownPhoto2ThetaErr.Value / 180 * Math.PI,
-            numericBoxP2Tilt1.RadianValue, numericBoxP2Tilt2.RadianValue, (double)(numericUpDownPhoto2Tilt1Err.Value) / 180 * Math.PI, (double)(numericUpDownPhoto2Tilt2Err.Value) / 180 * Math.PI,
+            (double)numericBoxPhoto2L1Err.Value / 100, (double)numericBoxPhoto2L2Err.Value / 100, (double)numericBoxPhoto2L3Err.Value / 100, (double)numericBoxPhoto2ThetaErr.Value / 180 * Math.PI,
+            numericBoxP2Tilt1.RadianValue, numericBoxP2Tilt2.RadianValue, (double)(numericBoxPhoto2Tilt1Err.Value) / 180 * Math.PI, (double)(numericBoxPhoto2Tilt2Err.Value) / 180 * Math.PI,
             radioButtonPhoto2Mode1.Checked, waveLength, cameraLength);
 
         if (photo2.IsTriangleMode)
@@ -77,8 +77,8 @@ public partial class FormSpotIDv1 : FormBase
             inputBoxP2L3.Length = photo2.Paintable ? photo2.L3 : 0;
 
         photo3 = new PhotoInformation(inputBoxP3L1.Length, inputBoxP3L2.Length, inputBoxP2L3.Length, numericBoxP3Theta.RadianValue,
-            (double)numericUpDownPhoto3L1Err.Value / 100, (double)numericUpDownPhoto3L2Err.Value / 100, (double)numericUpDownPhoto3L3Err.Value / 100, (double)numericUpDownPhoto3ThetaErr.Value / 180 * Math.PI,
-            numericBoxP3Tilt1.RadianValue, numericBoxP3Tilt2.RadianValue, (double)(numericUpDownPhoto3Tilt1Err.Value) / 180 * Math.PI, (double)(numericUpDownPhoto3Tilt2Err.Value) / 180 * Math.PI,
+            (double)numericBoxPhoto3L1Err.Value / 100, (double)numericBoxPhoto3L2Err.Value / 100, (double)numericBoxPhoto3L3Err.Value / 100, (double)numericBoxPhoto3ThetaErr.Value / 180 * Math.PI,
+            numericBoxP3Tilt1.RadianValue, numericBoxP3Tilt2.RadianValue, (double)(numericBoxPhoto3Tilt1Err.Value) / 180 * Math.PI, (double)(numericBoxPhoto3Tilt2Err.Value) / 180 * Math.PI,
             radioButtonPhoto3Mode1.Checked, waveLength, cameraLength);
 
         if (photo3.IsTriangleMode)
@@ -261,22 +261,22 @@ public partial class FormSpotIDv1 : FormBase
 
     private void radioButtonPhoto1Mode1_CheckedChanged(object sender, EventArgs e)
     {
-        inputBoxP1L3.Enabled = numericUpDownPhoto1L3Err.Enabled = numericBoxP1Theta.ReadOnly = !radioButtonPhoto1Mode2.Checked;
+        inputBoxP1L3.Enabled = numericBoxPhoto1L3Err.Enabled = numericBoxP1Theta.ReadOnly = !radioButtonPhoto1Mode2.Checked;
 
-        numericUpDownPhoto1ThetaErr.Enabled = radioButtonPhoto1Mode2.Checked;
+        numericBoxPhoto1ThetaErr.Enabled = radioButtonPhoto1Mode2.Checked;
 
-        inputBoxP2L3.Enabled = numericUpDownPhoto2L3Err.Enabled = numericBoxP2Theta.ReadOnly = !radioButtonPhoto2Mode2.Checked;
-        numericUpDownPhoto2ThetaErr.Enabled = radioButtonPhoto2Mode2.Checked;
+        inputBoxP2L3.Enabled = numericBoxPhoto2L3Err.Enabled = numericBoxP2Theta.ReadOnly = !radioButtonPhoto2Mode2.Checked;
+        numericBoxPhoto2ThetaErr.Enabled = radioButtonPhoto2Mode2.Checked;
 
-        inputBoxP3L3.Enabled = numericUpDownPhoto3L3Err.Enabled = numericBoxP3Theta.ReadOnly = !radioButtonPhoto3Mode2.Checked;
-        numericUpDownPhoto3ThetaErr.Enabled = radioButtonPhoto3Mode2.Checked;
+        inputBoxP3L3.Enabled = numericBoxPhoto3L3Err.Enabled = numericBoxP3Theta.ReadOnly = !radioButtonPhoto3Mode2.Checked;
+        numericBoxPhoto3ThetaErr.Enabled = radioButtonPhoto3Mode2.Checked;
         textBox_TextChanged(new object(), new EventArgs());
     }
 
     private void FormTEMID_Load(object sender, EventArgs e)
     {
         textBox_TextChanged(new object(), new EventArgs());
-        numericUpDownAccVol_ValueChanged(new object(), new EventArgs());
+        numericBoxAccVol_ValueChanged(new object(), new EventArgs());
     }
 
     private void buttonSearch_Click(object sender, EventArgs e)
@@ -309,12 +309,12 @@ public partial class FormSpotIDv1 : FormBase
         }
     }
 
-    private void numericUpDownAccVol_ValueChanged(object sender, EventArgs e)
+    private void numericBoxAccVol_ValueChanged(object sender, EventArgs e)
     {
         //m0 = 9.1093897*10^-31   //e0 = 1.60217733*10^-19  //h = 6.6260755*10^-34
         //c = 2.99792458*10^+8     //U =voltage
         //WaveLength = h / Math.Sqrt ( 2 * m0 * e0 * U * ( 1 + e0 * U / 2 / m0 / c^2 ) )
-        double WaveLength = 1.2264262862108010441350327657997 / Math.Sqrt((double)numericUpDownAccVol.Value * 1000 * (1 + (double)numericUpDownAccVol.Value * 0.9784753725226711491437618236159 / 1000));
+        double WaveLength = UniversalConstants.Convert.EnergyToElectronWaveLength(numericBoxAccVol.Value);                                             // 260522Cl 整理: インライン式 → 既存ヘルパに置換 (重複排除)
         textBoxWaveLength.Text = WaveLength.ToString();
     }
 

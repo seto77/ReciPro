@@ -733,7 +733,7 @@ public partial class FormPolycrystallineDiffractionSimulator : FormBase
             double slope1 = (pt[pt.Length - 1].Y - pt[pt.Length / 2].Y) / (pt[^1].X - pt[pt.Length / 2].X);//後半の傾き
             double slope2 = (pt[pt.Length / 2].Y - pt[0].Y) / (pt[pt.Length / 2].X - pt[0].X);//前半の傾き
             textBox1.Text += "\r\n 傾き変化 (後半/前半): " + (slope1 / slope2).ToString("f2");
-            if (slope1 / slope2 < (double)numericUpDownChangeParameterThreshold.Value)
+            if (slope1 / slope2 < numericBoxChangeParameterThreshold.Value)                                                                            // 260522Cl 変更: NumericUpDown → NumericBox (Value は double のため (double) キャスト撤去)
             {
                 numericBoxCrystalNumPerStep.Value *= 0.8;
                 numericBoxDirectionalDensity.Value *= 0.8;
@@ -1178,16 +1178,17 @@ return residual;
 
         if (max < 2) max = 2;
 
-        dpc.numericUpDownMaxInt.Maximum = (decimal)max;
-        dpc.numericUpDownMaxInt.Value = (decimal)max;
-        dpc.numericUpDownMinInt.Maximum = (decimal)max - 1;
-        dpc.numericUpDownMinInt.Value = 1;
+        // 260522Cl 変更: DiffractionPatternControl の numericUpDownMaxInt/MinInt → numericBoxMaxInt/MinInt (NumericBox 化, .Value/.Maximum は double)
+        dpc.numericBoxMaxInt.Maximum = max;
+        dpc.numericBoxMaxInt.Value = max;
+        dpc.numericBoxMinInt.Maximum = max - 1;
+        dpc.numericBoxMinInt.Value = 1;
 
         dpc.checkBoxSimulation.Checked = true;
         setScale();
         dpc.setSimulatedPixels();
 
-        dpc.numericUpDownMaxInt.Maximum = (decimal)max;
+        dpc.numericBoxMaxInt.Maximum = max;
         dpc.DiffractionInformation();
 
         toolStripStatusLabelProgress.Text += $"   {sw.ElapsedMilliseconds / 1000.0:#.000} s";

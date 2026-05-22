@@ -160,7 +160,7 @@
   <data name="label67.Text" xml:space="preserve">
     <value>波長</value>
   </data>
-  <data name="numericUpDownCamaraLength.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="numericBoxCamaraLength.Location" type="System.Drawing.Point, System.Drawing">
     <value>91, 39</value>
   </data>
   <data name="label18.Location" type="System.Drawing.Point, System.Drawing">

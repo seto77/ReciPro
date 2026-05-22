@@ -780,7 +780,7 @@
     <value>H2</value>
   </data>
   <data name="scalablePictureBoxAdvanced.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 6pt</value>
+    <value>Segoe UI, 6pt</value>
   </data>
   <data name="numericBoxDiffractedWaves.HeaderText" xml:space="preserve">
     <value>Diffracted waves</value>

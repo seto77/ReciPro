@@ -1030,19 +1030,19 @@
   <data name="checkBoxCellShowEdge.ToolTip" xml:space="preserve">
     <value>セル辺を表示</value>
   </data>
-  <data name="numericUpDownSubCellB.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="numericBoxSubCellB.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
   </data>
-  <data name="numericUpDownSubCellB.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="numericBoxSubCellB.Location" type="System.Drawing.Point, System.Drawing">
     <value>200, 136</value>
   </data>
-  <data name="numericUpDownSubCellB.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="numericBoxSubCellB.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 5, 4, 5</value>
   </data>
-  <data name="numericUpDownSubCellB.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="numericBoxSubCellB.Size" type="System.Drawing.Size, System.Drawing">
     <value>50, 23</value>
   </data>
-  <data name="numericUpDownSubCellB.ToolTip" xml:space="preserve">
+  <data name="numericBoxSubCellB.ToolTip" xml:space="preserve">
     <value />
   </data>
   <data name="label10.Font" type="System.Drawing.Font, System.Drawing">
@@ -1075,34 +1075,34 @@
   <data name="checkBoxCellShowPlane.ToolTip" xml:space="preserve">
     <value>セル面を表示</value>
   </data>
-  <data name="numericUpDownSubCellC.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="numericBoxSubCellC.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
   </data>
-  <data name="numericUpDownSubCellC.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="numericBoxSubCellC.Location" type="System.Drawing.Point, System.Drawing">
     <value>273, 136</value>
   </data>
-  <data name="numericUpDownSubCellC.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="numericBoxSubCellC.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 5, 4, 5</value>
   </data>
-  <data name="numericUpDownSubCellC.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="numericBoxSubCellC.Size" type="System.Drawing.Size, System.Drawing">
     <value>50, 23</value>
   </data>
-  <data name="numericUpDownSubCellC.ToolTip" xml:space="preserve">
+  <data name="numericBoxSubCellC.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="numericUpDownSubCellA.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="numericBoxSubCellA.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
   </data>
-  <data name="numericUpDownSubCellA.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="numericBoxSubCellA.Location" type="System.Drawing.Point, System.Drawing">
     <value>135, 136</value>
   </data>
-  <data name="numericUpDownSubCellA.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="numericBoxSubCellA.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 5, 4, 5</value>
   </data>
-  <data name="numericUpDownSubCellA.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="numericBoxSubCellA.Size" type="System.Drawing.Size, System.Drawing">
     <value>50, 23</value>
   </data>
-  <data name="numericUpDownSubCellA.ToolTip" xml:space="preserve">
+  <data name="numericBoxSubCellA.ToolTip" xml:space="preserve">
     <value />
   </data>
   <data name="label17.Font" type="System.Drawing.Font, System.Drawing">

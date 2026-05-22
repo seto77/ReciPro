@@ -41,16 +41,16 @@
             pictureBoxPhoto1 = new System.Windows.Forms.PictureBox();
             radioButtonPhoto1Mode2 = new System.Windows.Forms.RadioButton();
             radioButtonPhoto1Mode1 = new System.Windows.Forms.RadioButton();
-            numericUpDownPhoto1L1Err = new System.Windows.Forms.NumericUpDown();
+            numericBoxPhoto1L1Err = new Crystallography.Controls.NumericBox();
             inputBoxP1L3 = new InputBox();
-            numericUpDownPhoto1L2Err = new System.Windows.Forms.NumericUpDown();
+            numericBoxPhoto1L2Err = new Crystallography.Controls.NumericBox();
             inputBoxP1L2 = new InputBox();
-            numericUpDownPhoto1ThetaErr = new System.Windows.Forms.NumericUpDown();
+            numericBoxPhoto1ThetaErr = new Crystallography.Controls.NumericBox();
             inputBoxP1L1 = new InputBox();
             label4 = new System.Windows.Forms.Label();
             labelPhoto1Mode1_4 = new System.Windows.Forms.Label();
             label131 = new System.Windows.Forms.Label();
-            numericUpDownPhoto1L3Err = new System.Windows.Forms.NumericUpDown();
+            numericBoxPhoto1L3Err = new Crystallography.Controls.NumericBox();
             labelPhoto1Mode2_6 = new System.Windows.Forms.Label();
             label20 = new System.Windows.Forms.Label();
             labelPhoto1Mode1_1 = new System.Windows.Forms.Label();
@@ -64,10 +64,10 @@
             groupBoxTEMCondition = new System.Windows.Forms.GroupBox();
             textBoxWaveLength = new System.Windows.Forms.TextBox();
             label67 = new System.Windows.Forms.Label();
-            numericUpDownCamaraLength = new System.Windows.Forms.NumericUpDown();
+            numericBoxCamaraLength = new Crystallography.Controls.NumericBox();
             label18 = new System.Windows.Forms.Label();
             label15 = new System.Windows.Forms.Label();
-            numericUpDownAccVol = new System.Windows.Forms.NumericUpDown();
+            numericBoxAccVol = new Crystallography.Controls.NumericBox();
             label19 = new System.Windows.Forms.Label();
             label2 = new System.Windows.Forms.Label();
             label68 = new System.Windows.Forms.Label();
@@ -77,9 +77,9 @@
             numericBoxP1Tilt1 = new NumericBox();
             label14 = new System.Windows.Forms.Label();
             label1 = new System.Windows.Forms.Label();
-            numericUpDownPhoto1Tilt1Err = new System.Windows.Forms.NumericUpDown();
+            numericBoxPhoto1Tilt1Err = new Crystallography.Controls.NumericBox();
             label48 = new System.Windows.Forms.Label();
-            numericUpDownPhoto1Tilt2Err = new System.Windows.Forms.NumericUpDown();
+            numericBoxPhoto1Tilt2Err = new Crystallography.Controls.NumericBox();
             label49 = new System.Windows.Forms.Label();
             label53 = new System.Windows.Forms.Label();
             label54 = new System.Windows.Forms.Label();
@@ -102,13 +102,13 @@
             inputBoxP2L2 = new InputBox();
             radioButtonPhoto2Mode1 = new System.Windows.Forms.RadioButton();
             inputBoxP2L1 = new InputBox();
-            numericUpDownPhoto2L1Err = new System.Windows.Forms.NumericUpDown();
-            numericUpDownPhoto2L2Err = new System.Windows.Forms.NumericUpDown();
-            numericUpDownPhoto2ThetaErr = new System.Windows.Forms.NumericUpDown();
+            numericBoxPhoto2L1Err = new Crystallography.Controls.NumericBox();
+            numericBoxPhoto2L2Err = new Crystallography.Controls.NumericBox();
+            numericBoxPhoto2ThetaErr = new Crystallography.Controls.NumericBox();
             label22 = new System.Windows.Forms.Label();
             label23 = new System.Windows.Forms.Label();
             label24 = new System.Windows.Forms.Label();
-            numericUpDownPhoto2L3Err = new System.Windows.Forms.NumericUpDown();
+            numericBoxPhoto2L3Err = new Crystallography.Controls.NumericBox();
             label26 = new System.Windows.Forms.Label();
             label27 = new System.Windows.Forms.Label();
             label28 = new System.Windows.Forms.Label();
@@ -124,9 +124,9 @@
             numericBoxP2Tilt1 = new NumericBox();
             label6 = new System.Windows.Forms.Label();
             label7 = new System.Windows.Forms.Label();
-            numericUpDownPhoto2Tilt1Err = new System.Windows.Forms.NumericUpDown();
+            numericBoxPhoto2Tilt1Err = new Crystallography.Controls.NumericBox();
             label8 = new System.Windows.Forms.Label();
-            numericUpDownPhoto2Tilt2Err = new System.Windows.Forms.NumericUpDown();
+            numericBoxPhoto2Tilt2Err = new Crystallography.Controls.NumericBox();
             label13 = new System.Windows.Forms.Label();
             label16 = new System.Windows.Forms.Label();
             label17 = new System.Windows.Forms.Label();
@@ -142,13 +142,13 @@
             pictureBoxPhoto3 = new System.Windows.Forms.PictureBox();
             radioButtonPhoto3Mode2 = new System.Windows.Forms.RadioButton();
             radioButtonPhoto3Mode1 = new System.Windows.Forms.RadioButton();
-            numericUpDownPhoto3L1Err = new System.Windows.Forms.NumericUpDown();
-            numericUpDownPhoto3L2Err = new System.Windows.Forms.NumericUpDown();
-            numericUpDownPhoto3ThetaErr = new System.Windows.Forms.NumericUpDown();
+            numericBoxPhoto3L1Err = new Crystallography.Controls.NumericBox();
+            numericBoxPhoto3L2Err = new Crystallography.Controls.NumericBox();
+            numericBoxPhoto3ThetaErr = new Crystallography.Controls.NumericBox();
             label42 = new System.Windows.Forms.Label();
             label43 = new System.Windows.Forms.Label();
             label44 = new System.Windows.Forms.Label();
-            numericUpDownPhoto3L3Err = new System.Windows.Forms.NumericUpDown();
+            numericBoxPhoto3L3Err = new Crystallography.Controls.NumericBox();
             label46 = new System.Windows.Forms.Label();
             label47 = new System.Windows.Forms.Label();
             label52 = new System.Windows.Forms.Label();
@@ -164,9 +164,9 @@
             label34 = new System.Windows.Forms.Label();
             numericBoxP3Tilt1 = new NumericBox();
             label35 = new System.Windows.Forms.Label();
-            numericUpDownPhoto3Tilt1Err = new System.Windows.Forms.NumericUpDown();
+            numericBoxPhoto3Tilt1Err = new Crystallography.Controls.NumericBox();
             label36 = new System.Windows.Forms.Label();
-            numericUpDownPhoto3Tilt2Err = new System.Windows.Forms.NumericUpDown();
+            numericBoxPhoto3Tilt2Err = new Crystallography.Controls.NumericBox();
             label37 = new System.Windows.Forms.Label();
             label38 = new System.Windows.Forms.Label();
             label39 = new System.Windows.Forms.Label();
@@ -190,37 +190,17 @@
             panel9 = new System.Windows.Forms.Panel();
             groupBoxPhoto1Pattern.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBoxPhoto1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDownPhoto1L1Err).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDownPhoto1L2Err).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDownPhoto1ThetaErr).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDownPhoto1L3Err).BeginInit();
             groupBoxTEMCondition.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)numericUpDownCamaraLength).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDownAccVol).BeginInit();
             groupBoxPhoto1.SuspendLayout();
             groupBoxPhoto1HolderCondition.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)numericUpDownPhoto1Tilt1Err).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDownPhoto1Tilt2Err).BeginInit();
             panel4.SuspendLayout();
             groupBoxPhoto2Pattern.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBoxPhoto2).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDownPhoto2L1Err).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDownPhoto2L2Err).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDownPhoto2ThetaErr).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDownPhoto2L3Err).BeginInit();
             groupBoxPhoto2HolderCondition.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)numericUpDownPhoto2Tilt1Err).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDownPhoto2Tilt2Err).BeginInit();
             groupBoxPhoto2.SuspendLayout();
             groupBoxPhoto3Pattern.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBoxPhoto3).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDownPhoto3L1Err).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDownPhoto3L2Err).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDownPhoto3ThetaErr).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDownPhoto3L3Err).BeginInit();
             groupBoxPhoto3HolderCondition.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)numericUpDownPhoto3Tilt1Err).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDownPhoto3Tilt2Err).BeginInit();
             groupBoxPhoto3.SuspendLayout();
             flowLayoutPanelPhotos.SuspendLayout();
             panelPhoto2.SuspendLayout();
@@ -234,16 +214,16 @@
             groupBoxPhoto1Pattern.Controls.Add(pictureBoxPhoto1);
             groupBoxPhoto1Pattern.Controls.Add(radioButtonPhoto1Mode2);
             groupBoxPhoto1Pattern.Controls.Add(radioButtonPhoto1Mode1);
-            groupBoxPhoto1Pattern.Controls.Add(numericUpDownPhoto1L1Err);
+            groupBoxPhoto1Pattern.Controls.Add(numericBoxPhoto1L1Err);
             groupBoxPhoto1Pattern.Controls.Add(inputBoxP1L3);
-            groupBoxPhoto1Pattern.Controls.Add(numericUpDownPhoto1L2Err);
+            groupBoxPhoto1Pattern.Controls.Add(numericBoxPhoto1L2Err);
             groupBoxPhoto1Pattern.Controls.Add(inputBoxP1L2);
-            groupBoxPhoto1Pattern.Controls.Add(numericUpDownPhoto1ThetaErr);
+            groupBoxPhoto1Pattern.Controls.Add(numericBoxPhoto1ThetaErr);
             groupBoxPhoto1Pattern.Controls.Add(inputBoxP1L1);
             groupBoxPhoto1Pattern.Controls.Add(label4);
             groupBoxPhoto1Pattern.Controls.Add(labelPhoto1Mode1_4);
             groupBoxPhoto1Pattern.Controls.Add(label131);
-            groupBoxPhoto1Pattern.Controls.Add(numericUpDownPhoto1L3Err);
+            groupBoxPhoto1Pattern.Controls.Add(numericBoxPhoto1L3Err);
             groupBoxPhoto1Pattern.Controls.Add(labelPhoto1Mode2_6);
             groupBoxPhoto1Pattern.Controls.Add(label20);
             groupBoxPhoto1Pattern.Controls.Add(labelPhoto1Mode1_1);
@@ -301,12 +281,16 @@
             radioButtonPhoto1Mode1.Name = "radioButtonPhoto1Mode1";
             radioButtonPhoto1Mode1.TabStop = true;
             // 
-            // numericUpDownPhoto1L1Err
+            // numericBoxPhoto1L1Err
             // 
-            resources.ApplyResources(numericUpDownPhoto1L1Err, "numericUpDownPhoto1L1Err");
-            numericUpDownPhoto1L1Err.Maximum = new decimal(new int[] { 50, 0, 0, 0 });
-            numericUpDownPhoto1L1Err.Name = "numericUpDownPhoto1L1Err";
-            numericUpDownPhoto1L1Err.Value = new decimal(new int[] { 5, 0, 0, 0 });
+            resources.ApplyResources(numericBoxPhoto1L1Err, "numericBoxPhoto1L1Err");
+            numericBoxPhoto1L1Err.Maximum = 50D;
+            numericBoxPhoto1L1Err.Name = "numericBoxPhoto1L1Err";
+            numericBoxPhoto1L1Err.ValueTextAlign = System.Windows.Forms.HorizontalAlignment.Center; // 260522Cl 追加: 旧 NumericUpDown.TextAlign=Center を ValueTextAlign で再現
+            numericBoxPhoto1L1Err.Minimum = 0D; // 260522Cl 追加: NumericUpDownの既定(Minimum=0,DecimalPlaces=0,スピンボタン表示)を保持
+            numericBoxPhoto1L1Err.DecimalPlaces = 0;
+            numericBoxPhoto1L1Err.ShowUpDown = true;
+            numericBoxPhoto1L1Err.Value = 5D;
             // 
             // inputBoxP1L3
             // 
@@ -318,12 +302,16 @@
             inputBoxP1L3.ValueChanged += textBox_TextChanged;
             inputBoxP1L3.Click2 += inputBoxP1L3_Click;
             // 
-            // numericUpDownPhoto1L2Err
+            // numericBoxPhoto1L2Err
             // 
-            resources.ApplyResources(numericUpDownPhoto1L2Err, "numericUpDownPhoto1L2Err");
-            numericUpDownPhoto1L2Err.Maximum = new decimal(new int[] { 50, 0, 0, 0 });
-            numericUpDownPhoto1L2Err.Name = "numericUpDownPhoto1L2Err";
-            numericUpDownPhoto1L2Err.Value = new decimal(new int[] { 5, 0, 0, 0 });
+            resources.ApplyResources(numericBoxPhoto1L2Err, "numericBoxPhoto1L2Err");
+            numericBoxPhoto1L2Err.Maximum = 50D;
+            numericBoxPhoto1L2Err.Name = "numericBoxPhoto1L2Err";
+            numericBoxPhoto1L2Err.ValueTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            numericBoxPhoto1L2Err.Minimum = 0D; // 260522Cl 追加: NumericUpDownの既定を保持
+            numericBoxPhoto1L2Err.DecimalPlaces = 0;
+            numericBoxPhoto1L2Err.ShowUpDown = true;
+            numericBoxPhoto1L2Err.Value = 5D;
             // 
             // inputBoxP1L2
             // 
@@ -334,12 +322,16 @@
             inputBoxP1L2.WaveLength = 0D;
             inputBoxP1L2.ValueChanged += textBox_TextChanged;
             // 
-            // numericUpDownPhoto1ThetaErr
+            // numericBoxPhoto1ThetaErr
             // 
-            resources.ApplyResources(numericUpDownPhoto1ThetaErr, "numericUpDownPhoto1ThetaErr");
-            numericUpDownPhoto1ThetaErr.Maximum = new decimal(new int[] { 30, 0, 0, 0 });
-            numericUpDownPhoto1ThetaErr.Name = "numericUpDownPhoto1ThetaErr";
-            numericUpDownPhoto1ThetaErr.Value = new decimal(new int[] { 3, 0, 0, 0 });
+            resources.ApplyResources(numericBoxPhoto1ThetaErr, "numericBoxPhoto1ThetaErr");
+            numericBoxPhoto1ThetaErr.Maximum = 30D;
+            numericBoxPhoto1ThetaErr.Name = "numericBoxPhoto1ThetaErr";
+            numericBoxPhoto1ThetaErr.ValueTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            numericBoxPhoto1ThetaErr.Minimum = 0D; // 260522Cl 追加: NumericUpDownの既定を保持
+            numericBoxPhoto1ThetaErr.DecimalPlaces = 0;
+            numericBoxPhoto1ThetaErr.ShowUpDown = true;
+            numericBoxPhoto1ThetaErr.Value = 3D;
             // 
             // inputBoxP1L1
             // 
@@ -365,12 +357,16 @@
             resources.ApplyResources(label131, "label131");
             label131.Name = "label131";
             // 
-            // numericUpDownPhoto1L3Err
+            // numericBoxPhoto1L3Err
             // 
-            resources.ApplyResources(numericUpDownPhoto1L3Err, "numericUpDownPhoto1L3Err");
-            numericUpDownPhoto1L3Err.Maximum = new decimal(new int[] { 50, 0, 0, 0 });
-            numericUpDownPhoto1L3Err.Name = "numericUpDownPhoto1L3Err";
-            numericUpDownPhoto1L3Err.Value = new decimal(new int[] { 5, 0, 0, 0 });
+            resources.ApplyResources(numericBoxPhoto1L3Err, "numericBoxPhoto1L3Err");
+            numericBoxPhoto1L3Err.Maximum = 50D;
+            numericBoxPhoto1L3Err.Name = "numericBoxPhoto1L3Err";
+            numericBoxPhoto1L3Err.ValueTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            numericBoxPhoto1L3Err.Minimum = 0D; // 260522Cl 追加: NumericUpDownの既定を保持
+            numericBoxPhoto1L3Err.DecimalPlaces = 0;
+            numericBoxPhoto1L3Err.ShowUpDown = true;
+            numericBoxPhoto1L3Err.Value = 5D;
             // 
             // labelPhoto1Mode2_6
             // 
@@ -426,10 +422,10 @@
             // 
             groupBoxTEMCondition.Controls.Add(textBoxWaveLength);
             groupBoxTEMCondition.Controls.Add(label67);
-            groupBoxTEMCondition.Controls.Add(numericUpDownCamaraLength);
+            groupBoxTEMCondition.Controls.Add(numericBoxCamaraLength);
             groupBoxTEMCondition.Controls.Add(label18);
             groupBoxTEMCondition.Controls.Add(label15);
-            groupBoxTEMCondition.Controls.Add(numericUpDownAccVol);
+            groupBoxTEMCondition.Controls.Add(numericBoxAccVol);
             groupBoxTEMCondition.Controls.Add(label19);
             groupBoxTEMCondition.Controls.Add(label2);
             groupBoxTEMCondition.Controls.Add(label68);
@@ -448,16 +444,18 @@
             resources.ApplyResources(label67, "label67");
             label67.Name = "label67";
             // 
-            // numericUpDownCamaraLength
+            // numericBoxCamaraLength
             // 
-            numericUpDownCamaraLength.DecimalPlaces = 2;
-            resources.ApplyResources(numericUpDownCamaraLength, "numericUpDownCamaraLength");
-            numericUpDownCamaraLength.Increment = new decimal(new int[] { 10, 0, 0, 0 });
-            numericUpDownCamaraLength.Maximum = new decimal(new int[] { 10000, 0, 0, 0 });
-            numericUpDownCamaraLength.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
-            numericUpDownCamaraLength.Name = "numericUpDownCamaraLength";
-            numericUpDownCamaraLength.Value = new decimal(new int[] { 1000, 0, 0, 0 });
-            numericUpDownCamaraLength.ValueChanged += textBox_TextChanged;
+            numericBoxCamaraLength.DecimalPlaces = 2;
+            resources.ApplyResources(numericBoxCamaraLength, "numericBoxCamaraLength");
+            numericBoxCamaraLength.UpDown_Increment = 10D;
+            numericBoxCamaraLength.Maximum = 10000D;
+            numericBoxCamaraLength.Minimum = 1D;
+            numericBoxCamaraLength.Name = "numericBoxCamaraLength";
+            numericBoxCamaraLength.ValueTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            numericBoxCamaraLength.ShowUpDown = true; // 260522Cl 変更: NumericUpDown → NumericBox (スピンボタン表示を保持)
+            numericBoxCamaraLength.Value = 1000D;
+            numericBoxCamaraLength.ValueChanged += textBox_TextChanged;
             // 
             // label18
             // 
@@ -469,15 +467,17 @@
             resources.ApplyResources(label15, "label15");
             label15.Name = "label15";
             // 
-            // numericUpDownAccVol
+            // numericBoxAccVol
             // 
-            numericUpDownAccVol.DecimalPlaces = 2;
-            resources.ApplyResources(numericUpDownAccVol, "numericUpDownAccVol");
-            numericUpDownAccVol.Maximum = new decimal(new int[] { 10000, 0, 0, 0 });
-            numericUpDownAccVol.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
-            numericUpDownAccVol.Name = "numericUpDownAccVol";
-            numericUpDownAccVol.Value = new decimal(new int[] { 200, 0, 0, 0 });
-            numericUpDownAccVol.ValueChanged += numericUpDownAccVol_ValueChanged;
+            numericBoxAccVol.DecimalPlaces = 2;
+            resources.ApplyResources(numericBoxAccVol, "numericBoxAccVol");
+            numericBoxAccVol.Maximum = 10000D;
+            numericBoxAccVol.Minimum = 1D;
+            numericBoxAccVol.Name = "numericBoxAccVol";
+            numericBoxAccVol.ValueTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            numericBoxAccVol.ShowUpDown = true; // 260522Cl 追加: スピンボタン表示を保持
+            numericBoxAccVol.Value = 200D;
+            numericBoxAccVol.ValueChanged += numericBoxAccVol_ValueChanged;
             // 
             // label19
             // 
@@ -508,9 +508,9 @@
             groupBoxPhoto1HolderCondition.Controls.Add(numericBoxP1Tilt1);
             groupBoxPhoto1HolderCondition.Controls.Add(label14);
             groupBoxPhoto1HolderCondition.Controls.Add(label1);
-            groupBoxPhoto1HolderCondition.Controls.Add(numericUpDownPhoto1Tilt1Err);
+            groupBoxPhoto1HolderCondition.Controls.Add(numericBoxPhoto1Tilt1Err);
             groupBoxPhoto1HolderCondition.Controls.Add(label48);
-            groupBoxPhoto1HolderCondition.Controls.Add(numericUpDownPhoto1Tilt2Err);
+            groupBoxPhoto1HolderCondition.Controls.Add(numericBoxPhoto1Tilt2Err);
             groupBoxPhoto1HolderCondition.Controls.Add(label49);
             groupBoxPhoto1HolderCondition.Controls.Add(label53);
             groupBoxPhoto1HolderCondition.Controls.Add(label54);
@@ -554,24 +554,32 @@
             resources.ApplyResources(label1, "label1");
             label1.Name = "label1";
             // 
-            // numericUpDownPhoto1Tilt1Err
+            // numericBoxPhoto1Tilt1Err
             // 
-            resources.ApplyResources(numericUpDownPhoto1Tilt1Err, "numericUpDownPhoto1Tilt1Err");
-            numericUpDownPhoto1Tilt1Err.Maximum = new decimal(new int[] { 10, 0, 0, 0 });
-            numericUpDownPhoto1Tilt1Err.Name = "numericUpDownPhoto1Tilt1Err";
-            numericUpDownPhoto1Tilt1Err.Value = new decimal(new int[] { 3, 0, 0, 0 });
+            resources.ApplyResources(numericBoxPhoto1Tilt1Err, "numericBoxPhoto1Tilt1Err");
+            numericBoxPhoto1Tilt1Err.Maximum = 10D;
+            numericBoxPhoto1Tilt1Err.Name = "numericBoxPhoto1Tilt1Err";
+            numericBoxPhoto1Tilt1Err.ValueTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            numericBoxPhoto1Tilt1Err.Minimum = 0D; // 260522Cl 追加: NumericUpDownの既定を保持
+            numericBoxPhoto1Tilt1Err.DecimalPlaces = 0;
+            numericBoxPhoto1Tilt1Err.ShowUpDown = true;
+            numericBoxPhoto1Tilt1Err.Value = 3D;
             // 
             // label48
             // 
             resources.ApplyResources(label48, "label48");
             label48.Name = "label48";
             // 
-            // numericUpDownPhoto1Tilt2Err
+            // numericBoxPhoto1Tilt2Err
             // 
-            resources.ApplyResources(numericUpDownPhoto1Tilt2Err, "numericUpDownPhoto1Tilt2Err");
-            numericUpDownPhoto1Tilt2Err.Maximum = new decimal(new int[] { 10, 0, 0, 0 });
-            numericUpDownPhoto1Tilt2Err.Name = "numericUpDownPhoto1Tilt2Err";
-            numericUpDownPhoto1Tilt2Err.Value = new decimal(new int[] { 3, 0, 0, 0 });
+            resources.ApplyResources(numericBoxPhoto1Tilt2Err, "numericBoxPhoto1Tilt2Err");
+            numericBoxPhoto1Tilt2Err.Maximum = 10D;
+            numericBoxPhoto1Tilt2Err.Name = "numericBoxPhoto1Tilt2Err";
+            numericBoxPhoto1Tilt2Err.ValueTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            numericBoxPhoto1Tilt2Err.Minimum = 0D; // 260522Cl 追加: NumericUpDownの既定を保持
+            numericBoxPhoto1Tilt2Err.DecimalPlaces = 0;
+            numericBoxPhoto1Tilt2Err.ShowUpDown = true;
+            numericBoxPhoto1Tilt2Err.Value = 3D;
             // 
             // label49
             // 
@@ -662,13 +670,13 @@
             groupBoxPhoto2Pattern.Controls.Add(inputBoxP2L2);
             groupBoxPhoto2Pattern.Controls.Add(radioButtonPhoto2Mode1);
             groupBoxPhoto2Pattern.Controls.Add(inputBoxP2L1);
-            groupBoxPhoto2Pattern.Controls.Add(numericUpDownPhoto2L1Err);
-            groupBoxPhoto2Pattern.Controls.Add(numericUpDownPhoto2L2Err);
-            groupBoxPhoto2Pattern.Controls.Add(numericUpDownPhoto2ThetaErr);
+            groupBoxPhoto2Pattern.Controls.Add(numericBoxPhoto2L1Err);
+            groupBoxPhoto2Pattern.Controls.Add(numericBoxPhoto2L2Err);
+            groupBoxPhoto2Pattern.Controls.Add(numericBoxPhoto2ThetaErr);
             groupBoxPhoto2Pattern.Controls.Add(label22);
             groupBoxPhoto2Pattern.Controls.Add(label23);
             groupBoxPhoto2Pattern.Controls.Add(label24);
-            groupBoxPhoto2Pattern.Controls.Add(numericUpDownPhoto2L3Err);
+            groupBoxPhoto2Pattern.Controls.Add(numericBoxPhoto2L3Err);
             groupBoxPhoto2Pattern.Controls.Add(label26);
             groupBoxPhoto2Pattern.Controls.Add(label27);
             groupBoxPhoto2Pattern.Controls.Add(label28);
@@ -754,26 +762,38 @@
             inputBoxP2L1.WaveLength = 0D;
             inputBoxP2L1.ValueChanged += textBox_TextChanged;
             // 
-            // numericUpDownPhoto2L1Err
+            // numericBoxPhoto2L1Err
             // 
-            resources.ApplyResources(numericUpDownPhoto2L1Err, "numericUpDownPhoto2L1Err");
-            numericUpDownPhoto2L1Err.Maximum = new decimal(new int[] { 50, 0, 0, 0 });
-            numericUpDownPhoto2L1Err.Name = "numericUpDownPhoto2L1Err";
-            numericUpDownPhoto2L1Err.Value = new decimal(new int[] { 5, 0, 0, 0 });
+            resources.ApplyResources(numericBoxPhoto2L1Err, "numericBoxPhoto2L1Err");
+            numericBoxPhoto2L1Err.Maximum = 50D;
+            numericBoxPhoto2L1Err.Name = "numericBoxPhoto2L1Err";
+            numericBoxPhoto2L1Err.ValueTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            numericBoxPhoto2L1Err.Minimum = 0D; // 260522Cl 追加: NumericUpDownの既定を保持
+            numericBoxPhoto2L1Err.DecimalPlaces = 0;
+            numericBoxPhoto2L1Err.ShowUpDown = true;
+            numericBoxPhoto2L1Err.Value = 5D;
             // 
-            // numericUpDownPhoto2L2Err
+            // numericBoxPhoto2L2Err
             // 
-            resources.ApplyResources(numericUpDownPhoto2L2Err, "numericUpDownPhoto2L2Err");
-            numericUpDownPhoto2L2Err.Maximum = new decimal(new int[] { 50, 0, 0, 0 });
-            numericUpDownPhoto2L2Err.Name = "numericUpDownPhoto2L2Err";
-            numericUpDownPhoto2L2Err.Value = new decimal(new int[] { 5, 0, 0, 0 });
+            resources.ApplyResources(numericBoxPhoto2L2Err, "numericBoxPhoto2L2Err");
+            numericBoxPhoto2L2Err.Maximum = 50D;
+            numericBoxPhoto2L2Err.Name = "numericBoxPhoto2L2Err";
+            numericBoxPhoto2L2Err.ValueTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            numericBoxPhoto2L2Err.Minimum = 0D; // 260522Cl 追加: NumericUpDownの既定を保持
+            numericBoxPhoto2L2Err.DecimalPlaces = 0;
+            numericBoxPhoto2L2Err.ShowUpDown = true;
+            numericBoxPhoto2L2Err.Value = 5D;
             // 
-            // numericUpDownPhoto2ThetaErr
+            // numericBoxPhoto2ThetaErr
             // 
-            resources.ApplyResources(numericUpDownPhoto2ThetaErr, "numericUpDownPhoto2ThetaErr");
-            numericUpDownPhoto2ThetaErr.Maximum = new decimal(new int[] { 30, 0, 0, 0 });
-            numericUpDownPhoto2ThetaErr.Name = "numericUpDownPhoto2ThetaErr";
-            numericUpDownPhoto2ThetaErr.Value = new decimal(new int[] { 3, 0, 0, 0 });
+            resources.ApplyResources(numericBoxPhoto2ThetaErr, "numericBoxPhoto2ThetaErr");
+            numericBoxPhoto2ThetaErr.Maximum = 30D;
+            numericBoxPhoto2ThetaErr.Name = "numericBoxPhoto2ThetaErr";
+            numericBoxPhoto2ThetaErr.ValueTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            numericBoxPhoto2ThetaErr.Minimum = 0D; // 260522Cl 追加: NumericUpDownの既定を保持
+            numericBoxPhoto2ThetaErr.DecimalPlaces = 0;
+            numericBoxPhoto2ThetaErr.ShowUpDown = true;
+            numericBoxPhoto2ThetaErr.Value = 3D;
             // 
             // label22
             // 
@@ -790,12 +810,16 @@
             resources.ApplyResources(label24, "label24");
             label24.Name = "label24";
             // 
-            // numericUpDownPhoto2L3Err
+            // numericBoxPhoto2L3Err
             // 
-            resources.ApplyResources(numericUpDownPhoto2L3Err, "numericUpDownPhoto2L3Err");
-            numericUpDownPhoto2L3Err.Maximum = new decimal(new int[] { 50, 0, 0, 0 });
-            numericUpDownPhoto2L3Err.Name = "numericUpDownPhoto2L3Err";
-            numericUpDownPhoto2L3Err.Value = new decimal(new int[] { 5, 0, 0, 0 });
+            resources.ApplyResources(numericBoxPhoto2L3Err, "numericBoxPhoto2L3Err");
+            numericBoxPhoto2L3Err.Maximum = 50D;
+            numericBoxPhoto2L3Err.Name = "numericBoxPhoto2L3Err";
+            numericBoxPhoto2L3Err.ValueTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            numericBoxPhoto2L3Err.Minimum = 0D; // 260522Cl 追加: NumericUpDownの既定を保持
+            numericBoxPhoto2L3Err.DecimalPlaces = 0;
+            numericBoxPhoto2L3Err.ShowUpDown = true;
+            numericBoxPhoto2L3Err.Value = 5D;
             // 
             // label26
             // 
@@ -853,9 +877,9 @@
             groupBoxPhoto2HolderCondition.Controls.Add(numericBoxP2Tilt1);
             groupBoxPhoto2HolderCondition.Controls.Add(label6);
             groupBoxPhoto2HolderCondition.Controls.Add(label7);
-            groupBoxPhoto2HolderCondition.Controls.Add(numericUpDownPhoto2Tilt1Err);
+            groupBoxPhoto2HolderCondition.Controls.Add(numericBoxPhoto2Tilt1Err);
             groupBoxPhoto2HolderCondition.Controls.Add(label8);
-            groupBoxPhoto2HolderCondition.Controls.Add(numericUpDownPhoto2Tilt2Err);
+            groupBoxPhoto2HolderCondition.Controls.Add(numericBoxPhoto2Tilt2Err);
             groupBoxPhoto2HolderCondition.Controls.Add(label13);
             groupBoxPhoto2HolderCondition.Controls.Add(label16);
             groupBoxPhoto2HolderCondition.Controls.Add(label17);
@@ -899,24 +923,32 @@
             resources.ApplyResources(label7, "label7");
             label7.Name = "label7";
             // 
-            // numericUpDownPhoto2Tilt1Err
+            // numericBoxPhoto2Tilt1Err
             // 
-            resources.ApplyResources(numericUpDownPhoto2Tilt1Err, "numericUpDownPhoto2Tilt1Err");
-            numericUpDownPhoto2Tilt1Err.Maximum = new decimal(new int[] { 10, 0, 0, 0 });
-            numericUpDownPhoto2Tilt1Err.Name = "numericUpDownPhoto2Tilt1Err";
-            numericUpDownPhoto2Tilt1Err.Value = new decimal(new int[] { 3, 0, 0, 0 });
+            resources.ApplyResources(numericBoxPhoto2Tilt1Err, "numericBoxPhoto2Tilt1Err");
+            numericBoxPhoto2Tilt1Err.Maximum = 10D;
+            numericBoxPhoto2Tilt1Err.Name = "numericBoxPhoto2Tilt1Err";
+            numericBoxPhoto2Tilt1Err.ValueTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            numericBoxPhoto2Tilt1Err.Minimum = 0D; // 260522Cl 追加: NumericUpDownの既定を保持
+            numericBoxPhoto2Tilt1Err.DecimalPlaces = 0;
+            numericBoxPhoto2Tilt1Err.ShowUpDown = true;
+            numericBoxPhoto2Tilt1Err.Value = 3D;
             // 
             // label8
             // 
             resources.ApplyResources(label8, "label8");
             label8.Name = "label8";
             // 
-            // numericUpDownPhoto2Tilt2Err
+            // numericBoxPhoto2Tilt2Err
             // 
-            resources.ApplyResources(numericUpDownPhoto2Tilt2Err, "numericUpDownPhoto2Tilt2Err");
-            numericUpDownPhoto2Tilt2Err.Maximum = new decimal(new int[] { 10, 0, 0, 0 });
-            numericUpDownPhoto2Tilt2Err.Name = "numericUpDownPhoto2Tilt2Err";
-            numericUpDownPhoto2Tilt2Err.Value = new decimal(new int[] { 3, 0, 0, 0 });
+            resources.ApplyResources(numericBoxPhoto2Tilt2Err, "numericBoxPhoto2Tilt2Err");
+            numericBoxPhoto2Tilt2Err.Maximum = 10D;
+            numericBoxPhoto2Tilt2Err.Name = "numericBoxPhoto2Tilt2Err";
+            numericBoxPhoto2Tilt2Err.ValueTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            numericBoxPhoto2Tilt2Err.Minimum = 0D; // 260522Cl 追加: NumericUpDownの既定を保持
+            numericBoxPhoto2Tilt2Err.DecimalPlaces = 0;
+            numericBoxPhoto2Tilt2Err.ShowUpDown = true;
+            numericBoxPhoto2Tilt2Err.Value = 3D;
             // 
             // label13
             // 
@@ -961,13 +993,13 @@
             groupBoxPhoto3Pattern.Controls.Add(pictureBoxPhoto3);
             groupBoxPhoto3Pattern.Controls.Add(radioButtonPhoto3Mode2);
             groupBoxPhoto3Pattern.Controls.Add(radioButtonPhoto3Mode1);
-            groupBoxPhoto3Pattern.Controls.Add(numericUpDownPhoto3L1Err);
-            groupBoxPhoto3Pattern.Controls.Add(numericUpDownPhoto3L2Err);
-            groupBoxPhoto3Pattern.Controls.Add(numericUpDownPhoto3ThetaErr);
+            groupBoxPhoto3Pattern.Controls.Add(numericBoxPhoto3L1Err);
+            groupBoxPhoto3Pattern.Controls.Add(numericBoxPhoto3L2Err);
+            groupBoxPhoto3Pattern.Controls.Add(numericBoxPhoto3ThetaErr);
             groupBoxPhoto3Pattern.Controls.Add(label42);
             groupBoxPhoto3Pattern.Controls.Add(label43);
             groupBoxPhoto3Pattern.Controls.Add(label44);
-            groupBoxPhoto3Pattern.Controls.Add(numericUpDownPhoto3L3Err);
+            groupBoxPhoto3Pattern.Controls.Add(numericBoxPhoto3L3Err);
             groupBoxPhoto3Pattern.Controls.Add(label46);
             groupBoxPhoto3Pattern.Controls.Add(label47);
             groupBoxPhoto3Pattern.Controls.Add(label52);
@@ -1053,26 +1085,38 @@
             radioButtonPhoto3Mode1.Name = "radioButtonPhoto3Mode1";
             radioButtonPhoto3Mode1.TabStop = true;
             // 
-            // numericUpDownPhoto3L1Err
+            // numericBoxPhoto3L1Err
             // 
-            resources.ApplyResources(numericUpDownPhoto3L1Err, "numericUpDownPhoto3L1Err");
-            numericUpDownPhoto3L1Err.Maximum = new decimal(new int[] { 50, 0, 0, 0 });
-            numericUpDownPhoto3L1Err.Name = "numericUpDownPhoto3L1Err";
-            numericUpDownPhoto3L1Err.Value = new decimal(new int[] { 5, 0, 0, 0 });
+            resources.ApplyResources(numericBoxPhoto3L1Err, "numericBoxPhoto3L1Err");
+            numericBoxPhoto3L1Err.Maximum = 50D;
+            numericBoxPhoto3L1Err.Name = "numericBoxPhoto3L1Err";
+            numericBoxPhoto3L1Err.ValueTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            numericBoxPhoto3L1Err.Minimum = 0D; // 260522Cl 追加: NumericUpDownの既定を保持
+            numericBoxPhoto3L1Err.DecimalPlaces = 0;
+            numericBoxPhoto3L1Err.ShowUpDown = true;
+            numericBoxPhoto3L1Err.Value = 5D;
             // 
-            // numericUpDownPhoto3L2Err
+            // numericBoxPhoto3L2Err
             // 
-            resources.ApplyResources(numericUpDownPhoto3L2Err, "numericUpDownPhoto3L2Err");
-            numericUpDownPhoto3L2Err.Maximum = new decimal(new int[] { 50, 0, 0, 0 });
-            numericUpDownPhoto3L2Err.Name = "numericUpDownPhoto3L2Err";
-            numericUpDownPhoto3L2Err.Value = new decimal(new int[] { 5, 0, 0, 0 });
+            resources.ApplyResources(numericBoxPhoto3L2Err, "numericBoxPhoto3L2Err");
+            numericBoxPhoto3L2Err.Maximum = 50D;
+            numericBoxPhoto3L2Err.Name = "numericBoxPhoto3L2Err";
+            numericBoxPhoto3L2Err.ValueTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            numericBoxPhoto3L2Err.Minimum = 0D; // 260522Cl 追加: NumericUpDownの既定を保持
+            numericBoxPhoto3L2Err.DecimalPlaces = 0;
+            numericBoxPhoto3L2Err.ShowUpDown = true;
+            numericBoxPhoto3L2Err.Value = 5D;
             // 
-            // numericUpDownPhoto3ThetaErr
+            // numericBoxPhoto3ThetaErr
             // 
-            resources.ApplyResources(numericUpDownPhoto3ThetaErr, "numericUpDownPhoto3ThetaErr");
-            numericUpDownPhoto3ThetaErr.Maximum = new decimal(new int[] { 30, 0, 0, 0 });
-            numericUpDownPhoto3ThetaErr.Name = "numericUpDownPhoto3ThetaErr";
-            numericUpDownPhoto3ThetaErr.Value = new decimal(new int[] { 3, 0, 0, 0 });
+            resources.ApplyResources(numericBoxPhoto3ThetaErr, "numericBoxPhoto3ThetaErr");
+            numericBoxPhoto3ThetaErr.Maximum = 30D;
+            numericBoxPhoto3ThetaErr.Name = "numericBoxPhoto3ThetaErr";
+            numericBoxPhoto3ThetaErr.ValueTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            numericBoxPhoto3ThetaErr.Minimum = 0D; // 260522Cl 追加: NumericUpDownの既定を保持
+            numericBoxPhoto3ThetaErr.DecimalPlaces = 0;
+            numericBoxPhoto3ThetaErr.ShowUpDown = true;
+            numericBoxPhoto3ThetaErr.Value = 3D;
             // 
             // label42
             // 
@@ -1089,12 +1133,16 @@
             resources.ApplyResources(label44, "label44");
             label44.Name = "label44";
             // 
-            // numericUpDownPhoto3L3Err
+            // numericBoxPhoto3L3Err
             // 
-            resources.ApplyResources(numericUpDownPhoto3L3Err, "numericUpDownPhoto3L3Err");
-            numericUpDownPhoto3L3Err.Maximum = new decimal(new int[] { 50, 0, 0, 0 });
-            numericUpDownPhoto3L3Err.Name = "numericUpDownPhoto3L3Err";
-            numericUpDownPhoto3L3Err.Value = new decimal(new int[] { 5, 0, 0, 0 });
+            resources.ApplyResources(numericBoxPhoto3L3Err, "numericBoxPhoto3L3Err");
+            numericBoxPhoto3L3Err.Maximum = 50D;
+            numericBoxPhoto3L3Err.Name = "numericBoxPhoto3L3Err";
+            numericBoxPhoto3L3Err.ValueTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            numericBoxPhoto3L3Err.Minimum = 0D; // 260522Cl 追加: NumericUpDownの既定を保持
+            numericBoxPhoto3L3Err.DecimalPlaces = 0;
+            numericBoxPhoto3L3Err.ShowUpDown = true;
+            numericBoxPhoto3L3Err.Value = 5D;
             // 
             // label46
             // 
@@ -1152,9 +1200,9 @@
             groupBoxPhoto3HolderCondition.Controls.Add(label34);
             groupBoxPhoto3HolderCondition.Controls.Add(numericBoxP3Tilt1);
             groupBoxPhoto3HolderCondition.Controls.Add(label35);
-            groupBoxPhoto3HolderCondition.Controls.Add(numericUpDownPhoto3Tilt1Err);
+            groupBoxPhoto3HolderCondition.Controls.Add(numericBoxPhoto3Tilt1Err);
             groupBoxPhoto3HolderCondition.Controls.Add(label36);
-            groupBoxPhoto3HolderCondition.Controls.Add(numericUpDownPhoto3Tilt2Err);
+            groupBoxPhoto3HolderCondition.Controls.Add(numericBoxPhoto3Tilt2Err);
             groupBoxPhoto3HolderCondition.Controls.Add(label37);
             groupBoxPhoto3HolderCondition.Controls.Add(label38);
             groupBoxPhoto3HolderCondition.Controls.Add(label39);
@@ -1198,24 +1246,32 @@
             resources.ApplyResources(label35, "label35");
             label35.Name = "label35";
             // 
-            // numericUpDownPhoto3Tilt1Err
+            // numericBoxPhoto3Tilt1Err
             // 
-            resources.ApplyResources(numericUpDownPhoto3Tilt1Err, "numericUpDownPhoto3Tilt1Err");
-            numericUpDownPhoto3Tilt1Err.Maximum = new decimal(new int[] { 10, 0, 0, 0 });
-            numericUpDownPhoto3Tilt1Err.Name = "numericUpDownPhoto3Tilt1Err";
-            numericUpDownPhoto3Tilt1Err.Value = new decimal(new int[] { 3, 0, 0, 0 });
+            resources.ApplyResources(numericBoxPhoto3Tilt1Err, "numericBoxPhoto3Tilt1Err");
+            numericBoxPhoto3Tilt1Err.Maximum = 10D;
+            numericBoxPhoto3Tilt1Err.Name = "numericBoxPhoto3Tilt1Err";
+            numericBoxPhoto3Tilt1Err.ValueTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            numericBoxPhoto3Tilt1Err.Minimum = 0D; // 260522Cl 追加: NumericUpDownの既定を保持
+            numericBoxPhoto3Tilt1Err.DecimalPlaces = 0;
+            numericBoxPhoto3Tilt1Err.ShowUpDown = true;
+            numericBoxPhoto3Tilt1Err.Value = 3D;
             // 
             // label36
             // 
             resources.ApplyResources(label36, "label36");
             label36.Name = "label36";
             // 
-            // numericUpDownPhoto3Tilt2Err
+            // numericBoxPhoto3Tilt2Err
             // 
-            resources.ApplyResources(numericUpDownPhoto3Tilt2Err, "numericUpDownPhoto3Tilt2Err");
-            numericUpDownPhoto3Tilt2Err.Maximum = new decimal(new int[] { 10, 0, 0, 0 });
-            numericUpDownPhoto3Tilt2Err.Name = "numericUpDownPhoto3Tilt2Err";
-            numericUpDownPhoto3Tilt2Err.Value = new decimal(new int[] { 3, 0, 0, 0 });
+            resources.ApplyResources(numericBoxPhoto3Tilt2Err, "numericBoxPhoto3Tilt2Err");
+            numericBoxPhoto3Tilt2Err.Maximum = 10D;
+            numericBoxPhoto3Tilt2Err.Name = "numericBoxPhoto3Tilt2Err";
+            numericBoxPhoto3Tilt2Err.ValueTextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            numericBoxPhoto3Tilt2Err.Minimum = 0D; // 260522Cl 追加: NumericUpDownの既定を保持
+            numericBoxPhoto3Tilt2Err.DecimalPlaces = 0;
+            numericBoxPhoto3Tilt2Err.ShowUpDown = true;
+            numericBoxPhoto3Tilt2Err.Value = 3D;
             // 
             // label37
             // 
@@ -1392,41 +1448,21 @@
             groupBoxPhoto1Pattern.ResumeLayout(false);
             groupBoxPhoto1Pattern.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBoxPhoto1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDownPhoto1L1Err).EndInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDownPhoto1L2Err).EndInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDownPhoto1ThetaErr).EndInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDownPhoto1L3Err).EndInit();
             groupBoxTEMCondition.ResumeLayout(false);
             groupBoxTEMCondition.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)numericUpDownCamaraLength).EndInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDownAccVol).EndInit();
             groupBoxPhoto1.ResumeLayout(false);
             groupBoxPhoto1HolderCondition.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)numericUpDownPhoto1Tilt1Err).EndInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDownPhoto1Tilt2Err).EndInit();
             panel4.ResumeLayout(false);
             panel4.PerformLayout();
             groupBoxPhoto2Pattern.ResumeLayout(false);
             groupBoxPhoto2Pattern.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBoxPhoto2).EndInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDownPhoto2L1Err).EndInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDownPhoto2L2Err).EndInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDownPhoto2ThetaErr).EndInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDownPhoto2L3Err).EndInit();
             groupBoxPhoto2HolderCondition.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)numericUpDownPhoto2Tilt1Err).EndInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDownPhoto2Tilt2Err).EndInit();
             groupBoxPhoto2.ResumeLayout(false);
             groupBoxPhoto3Pattern.ResumeLayout(false);
             groupBoxPhoto3Pattern.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBoxPhoto3).EndInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDownPhoto3L1Err).EndInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDownPhoto3L2Err).EndInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDownPhoto3ThetaErr).EndInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDownPhoto3L3Err).EndInit();
             groupBoxPhoto3HolderCondition.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)numericUpDownPhoto3Tilt1Err).EndInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDownPhoto3Tilt2Err).EndInit();
             groupBoxPhoto3.ResumeLayout(false);
             flowLayoutPanelPhotos.ResumeLayout(false);
             flowLayoutPanelPhotos.PerformLayout();
@@ -1443,22 +1479,22 @@
 
         private System.Windows.Forms.GroupBox groupBoxPhoto1Pattern;
         private System.Windows.Forms.RadioButton radioButtonPhoto1Mode2;
-        private System.Windows.Forms.NumericUpDown numericUpDownPhoto1L1Err;
-        private System.Windows.Forms.NumericUpDown numericUpDownPhoto1L2Err;
-        private System.Windows.Forms.NumericUpDown numericUpDownPhoto1ThetaErr;
+        private Crystallography.Controls.NumericBox numericBoxPhoto1L1Err;
+        private Crystallography.Controls.NumericBox numericBoxPhoto1L2Err;
+        private Crystallography.Controls.NumericBox numericBoxPhoto1ThetaErr;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label labelPhoto1Mode1_4;
         private System.Windows.Forms.Label label131;
-        private System.Windows.Forms.NumericUpDown numericUpDownPhoto1L3Err;
+        private Crystallography.Controls.NumericBox numericBoxPhoto1L3Err;
         private System.Windows.Forms.RadioButton radioButtonPhoto1Mode1;
         private System.Windows.Forms.Label labelPhoto1Mode2_6;
         private System.Windows.Forms.Label labelPhoto1Mode1_1;
         private System.Windows.Forms.Label labelPhoto1Mode1_3;
         private System.Windows.Forms.GroupBox groupBoxTEMCondition;
-        public System.Windows.Forms.NumericUpDown numericUpDownCamaraLength;
+        public Crystallography.Controls.NumericBox numericBoxCamaraLength;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label15;
-        public System.Windows.Forms.NumericUpDown numericUpDownAccVol;
+        public Crystallography.Controls.NumericBox numericBoxAccVol;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.PictureBox pictureBoxPhoto1;
@@ -1468,9 +1504,9 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.NumericUpDown numericUpDownPhoto1Tilt1Err;
+        private Crystallography.Controls.NumericBox numericBoxPhoto1Tilt1Err;
         private System.Windows.Forms.Label label48;
-        private System.Windows.Forms.NumericUpDown numericUpDownPhoto1Tilt2Err;
+        private Crystallography.Controls.NumericBox numericBoxPhoto1Tilt2Err;
         private System.Windows.Forms.Label label49;
         private System.Windows.Forms.Label label53;
         private System.Windows.Forms.Label label54;
@@ -1486,13 +1522,13 @@
         private System.Windows.Forms.Button buttonSearchPhoto2;
         private System.Windows.Forms.RadioButton radioButtonPhoto2Mode2;
         private System.Windows.Forms.RadioButton radioButtonPhoto2Mode1;
-        private System.Windows.Forms.NumericUpDown numericUpDownPhoto2L1Err;
-        private System.Windows.Forms.NumericUpDown numericUpDownPhoto2L2Err;
-        private System.Windows.Forms.NumericUpDown numericUpDownPhoto2ThetaErr;
+        private Crystallography.Controls.NumericBox numericBoxPhoto2L1Err;
+        private Crystallography.Controls.NumericBox numericBoxPhoto2L2Err;
+        private Crystallography.Controls.NumericBox numericBoxPhoto2ThetaErr;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Label label24;
-        private System.Windows.Forms.NumericUpDown numericUpDownPhoto2L3Err;
+        private Crystallography.Controls.NumericBox numericBoxPhoto2L3Err;
         private System.Windows.Forms.Label label26;
         private System.Windows.Forms.Label label27;
         private System.Windows.Forms.Label label28;
@@ -1505,9 +1541,9 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.NumericUpDown numericUpDownPhoto2Tilt1Err;
+        private Crystallography.Controls.NumericBox numericBoxPhoto2Tilt1Err;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.NumericUpDown numericUpDownPhoto2Tilt2Err;
+        private Crystallography.Controls.NumericBox numericBoxPhoto2Tilt2Err;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label17;
@@ -1516,13 +1552,13 @@
         private System.Windows.Forms.Button buttonSearchPhoto3;
         private System.Windows.Forms.RadioButton radioButtonPhoto3Mode2;
         private System.Windows.Forms.RadioButton radioButtonPhoto3Mode1;
-        private System.Windows.Forms.NumericUpDown numericUpDownPhoto3L1Err;
-        private System.Windows.Forms.NumericUpDown numericUpDownPhoto3L2Err;
-        private System.Windows.Forms.NumericUpDown numericUpDownPhoto3ThetaErr;
+        private Crystallography.Controls.NumericBox numericBoxPhoto3L1Err;
+        private Crystallography.Controls.NumericBox numericBoxPhoto3L2Err;
+        private Crystallography.Controls.NumericBox numericBoxPhoto3ThetaErr;
         private System.Windows.Forms.Label label42;
         private System.Windows.Forms.Label label43;
         private System.Windows.Forms.Label label44;
-        private System.Windows.Forms.NumericUpDown numericUpDownPhoto3L3Err;
+        private Crystallography.Controls.NumericBox numericBoxPhoto3L3Err;
         private System.Windows.Forms.Label label46;
         private System.Windows.Forms.Label label47;
         private System.Windows.Forms.Label label52;
@@ -1535,9 +1571,9 @@
         private System.Windows.Forms.Label label33;
         private System.Windows.Forms.Label label34;
         private System.Windows.Forms.Label label35;
-        private System.Windows.Forms.NumericUpDown numericUpDownPhoto3Tilt1Err;
+        private Crystallography.Controls.NumericBox numericBoxPhoto3Tilt1Err;
         private System.Windows.Forms.Label label36;
-        private System.Windows.Forms.NumericUpDown numericUpDownPhoto3Tilt2Err;
+        private Crystallography.Controls.NumericBox numericBoxPhoto3Tilt2Err;
         private System.Windows.Forms.Label label37;
         private System.Windows.Forms.Label label38;
         private System.Windows.Forms.Label label39;

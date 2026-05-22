@@ -179,7 +179,7 @@ public static class UniversalConstants
         /// <returns></returns>
         public static double NeutronVelocityToNeutronEnergy(in double velocity) => n0 * velocity * velocity / 2.0 / eV_joule;
 
-        /// <summary>電子の波長(nm)をエネルギー(kV)に変換</summary>
+        /// <summary>電子の波長(nm)をエネルギー(keV)に変換</summary>
         /// <param name="kiloVoltage"></param>
         /// <returns></returns>
         public static double WaveLengthToElectronEnergy(in double waveLength)
@@ -211,7 +211,7 @@ public static class UniversalConstants
             => 6.62606896 / 1.60217733 * 2.99792458 / energy * 100.0;
 
         /// <summary>
-        /// 電子線のエネルギー(kV)を波長(nm)に変換
+        /// 電子線のエネルギー(keV)を波長(nm)に変換
         /// WaveLength = h / Math.Sqrt ( 2 * m0 * e0 * V * ( 1 + e0 * V / 2 / m0 / c^2 ) )
         /// </summary>
         /// <param name="kiloVoltage"></param>
@@ -220,7 +220,7 @@ public static class UniversalConstants
             => 1.2264262862108010441350327657997 / Math.Sqrt(kiloVoltage * 1000.0 * (1 + kiloVoltage * 0.9784753725226711491437618236159 / 1000));
 
         /// <summary>
-        /// 電子線のエネルギー(kV)を波数(nm^-1)に変換 (2πで割った数値では無い)
+        /// 電子線のエネルギー(keV)を波数(nm^-1)に変換 (2πで割った数値では無い)
         /// WaveLength = h / Math.Sqrt ( 2 * m0 * e0 * V * ( 1 + e0 * V / 2 / m0 / c^2 ) 
         /// </summary>
         /// <param name="kiloVoltage"></param>
@@ -228,13 +228,13 @@ public static class UniversalConstants
         public static double EnergyToElectronWaveNumber(in double kiloVoltage)
             => Math.Sqrt(kiloVoltage * 1000.0 * (1 + kiloVoltage * 0.9784753725226711491437618236159 / 1000)) / 1.2264262862108010441350327657997;
 
-        /// <summary>電子線の波数(nm^-1)をエネルギー(kV)に変換</summary>
+        /// <summary>電子線の波数(nm^-1)をエネルギー(keV)に変換</summary>
         /// <param name="kiloVoltage"></param>
         /// <returns></returns>
         public static double ElectronWaveNumberToEnergy(in double wavenumber) => WaveLengthToElectronEnergy(1 / wavenumber);
 
 
-        /// <summary>中性子のエネルギー(kV)を波長(nm)に変換</summary>
+        /// <summary>中性子のエネルギー(keV)を波長(nm)に変換</summary>
         /// <param name="energy"></param>
         /// <returns></returns>
         public static double EnergyToNeutronWaveLength(in double energy) => 6.62606896 * Math.Sqrt(1 / 1.674927351 / energy / 2.0 / 1.602176565 * 1.0E5);

@@ -384,7 +384,7 @@
             graphControl.UnitY = "";
             // 260518Cl: Designer 再保存で日本語名 "BIZ UDPゴシック" に書き換わったのを英名 "BIZ UDPGothic" に戻す
             // (英語環境ではフォント名解決に失敗し fallback になるため英名固定)。
-            graphControl.UpperPanelFont = new System.Drawing.Font("Yu Gothic UI", 7F);
+            graphControl.UpperPanelFont = new System.Drawing.Font("Segoe UI", 7F); // 260522Cl 変更: Yu Gothic UI → Segoe UI (英語GUI)
             graphControl.UpperPanelVisible = false;
             graphControl.UpperX = 1D;
             graphControl.UpperY = 1D;

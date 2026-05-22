@@ -764,8 +764,8 @@
             numericBoxKikuchiThresholdOfStructureFactor.RadianValue = 1.7453292519943295D;
             numericBoxKikuchiThresholdOfStructureFactor.ShowUpDown = true;
             numericBoxKikuchiThresholdOfStructureFactor.SmartIncrement = true;
-            numericBoxKikuchiThresholdOfStructureFactor.ValueFontSize = 9F;
             numericBoxKikuchiThresholdOfStructureFactor.Value = 100D;
+            numericBoxKikuchiThresholdOfStructureFactor.ValueFontSize = 9F;
             numericBoxKikuchiThresholdOfStructureFactor.ValueChanged += numericBoxKikuchiLineThreshold_ValueChanged;
             // 
             // numericBoxKikuchiThresholdOfLength
@@ -778,9 +778,9 @@
             numericBoxKikuchiThresholdOfLength.RadianValue = 0.17453292519943295D;
             numericBoxKikuchiThresholdOfLength.ShowUpDown = true;
             numericBoxKikuchiThresholdOfLength.SmartIncrement = true;
-            numericBoxKikuchiThresholdOfLength.ValueFontSize = 9F;
             toolTip.SetToolTip(numericBoxKikuchiThresholdOfLength, resources.GetString("numericBoxKikuchiThresholdOfLength.ToolTip1"));
             numericBoxKikuchiThresholdOfLength.Value = 10D;
+            numericBoxKikuchiThresholdOfLength.ValueFontSize = 9F;
             numericBoxKikuchiThresholdOfLength.ValueChanged += numericBoxKikuchiLineThreshold_ValueChanged;
             // 
             // colorControlExcessLine
@@ -1076,11 +1076,11 @@
             numericBox3D_SpotRadius.ShowUpDown = true;
             numericBox3D_SpotRadius.SkipEventDuringInput = false;
             numericBox3D_SpotRadius.SmartIncrement = true;
-            numericBox3D_SpotRadius.ValueFontSize = 9F;
             numericBox3D_SpotRadius.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBox3D_SpotRadius, resources.GetString("numericBox3D_SpotRadius.ToolTip1"));
             numericBox3D_SpotRadius.UpDown_Increment = 0.01D;
             numericBox3D_SpotRadius.Value = 0.2D;
+            numericBox3D_SpotRadius.ValueFontSize = 9F;
             numericBox3D_SpotRadius.ValueChanged += numericBox3D_SpotRadius_ValueChanged;
             // 
             // trackBar3D_Transparency
@@ -1161,10 +1161,10 @@
             numericBoxReciprocalThreshold.RadianValue = 0.017453292519943295D;
             numericBoxReciprocalThreshold.ShowUpDown = true;
             numericBoxReciprocalThreshold.SmartIncrement = true;
-            numericBoxReciprocalThreshold.ValueFontSize = 9F;
             numericBoxReciprocalThreshold.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxReciprocalThreshold, resources.GetString("numericBoxReciprocalThreshold.ToolTip1"));
             numericBoxReciprocalThreshold.Value = 1D;
+            numericBoxReciprocalThreshold.ValueFontSize = 9F;
             numericBoxReciprocalThreshold.ValueChanged += numericBoxReciprocalThreshold_ValueChanged;
             // 
             // groupBoxViewDirection
@@ -1295,10 +1295,10 @@
             numericBoxStep.RadianValue = 0.17453292519943295D;
             numericBoxStep.ShowUpDown = true;
             numericBoxStep.SmartIncrement = true;
-            numericBoxStep.ValueFontSize = 9F;
             numericBoxStep.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxStep, resources.GetString("numericBoxStep.ToolTip1"));
             numericBoxStep.Value = 10D;
+            numericBoxStep.ValueFontSize = 9F;
             // 
             // buttonResetAngle
             // 
@@ -1770,9 +1770,9 @@
             numericBoxDev.RadianValue = 0.023911010752322315D;
             numericBoxDev.SkipEventDuringInput = false;
             numericBoxDev.SmartIncrement = true;
-            numericBoxDev.ValueFontSize = 9F;
             numericBoxDev.ThousandsSeparator = true;
             numericBoxDev.Value = 1.37D;
+            numericBoxDev.ValueFontSize = 9F;
             // 
             // button1
             // 
@@ -1791,9 +1791,9 @@
             numericBoxAcc.RadianValue = 216.42082724729684D;
             numericBoxAcc.SkipEventDuringInput = false;
             numericBoxAcc.SmartIncrement = true;
-            numericBoxAcc.ValueFontSize = 9F;
             numericBoxAcc.ThousandsSeparator = true;
             numericBoxAcc.Value = 12400D;
+            numericBoxAcc.ValueFontSize = 9F;
             // 
             // button2
             // 
@@ -2070,11 +2070,11 @@
             // 
             resources.ApplyResources(waveLengthControl, "waveLengthControl");
             waveLengthControl.Direction = System.Windows.Forms.FlowDirection.TopDown;
-            waveLengthControl.Energy = 200D;
+            waveLengthControl.Energy = 200.00000624D;
             waveLengthControl.Monochrome = true;
             waveLengthControl.Name = "waveLengthControl";
             waveLengthControl.ShowWaveSource = true;
-            waveLengthControl.WaveLength = 0.0025079347455D;
+            waveLengthControl.WaveLength = 0.0025079346999999997D;
             waveLengthControl.WaveSource = WaveSource.Electron;
             waveLengthControl.XrayWaveSourceElementNumber = 0;
             waveLengthControl.XrayWaveSourceLine = XrayLine.Ka1;

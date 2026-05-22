@@ -201,7 +201,7 @@
             numericBoxMaxU1.Size = new System.Drawing.Size(136, 27);
             numericBoxMaxU1.SmartIncrement = true;
             numericBoxMaxU1.TabIndex = 56;
-            numericBoxMaxU1.ValueFont = new System.Drawing.Font("Yu Gothic UI", 9F);
+            // 260522Cl: numericBox の ValueFont(Yu Gothic UI) ハードコードを撤去
             numericBoxMaxU1.ThousandsSeparator = true;
             numericBoxMaxU1.Value = 6D;
             numericBoxMaxU1.ValueChanged += numericBoxMaxU1_ValueChanged;

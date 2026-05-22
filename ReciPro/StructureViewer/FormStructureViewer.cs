@@ -1380,13 +1380,14 @@ public partial class FormStructureViewer : FormBase
                 formAtom.Location = new Point(this.Location.X + splitContainer1.Location.X + e.X + 20, this.Location.Y + splitContainer1.Location.Y + e.Y + 50);
                 formAtom.StartPosition = FormStartPosition.Manual;
                 formAtom.pictureBoxAtomColor.BackColor = Color.FromArgb(atoms[selectedAtom].colorSource);
-                formAtom.numericUpDownAtomTransparency.Value = (decimal)atoms[selectedAtom].matSource[0];
-                formAtom.numericUpDownAtomAmbient.Value = (decimal)atoms[selectedAtom].matSource[1];
-                formAtom.numericUpDownAtomDiffusion.Value = (decimal)atoms[selectedAtom].matSource[2];
-                formAtom.numericUpDownAtomSpecular.Value = (decimal)atoms[selectedAtom].matSource[3];
-                formAtom.numericUpDownAtomEmmision.Value = (decimal)atoms[selectedAtom].matSource[4];
-                formAtom.numericUpDownAtomShininess.Value = (decimal)atoms[selectedAtom].matSource[5];
-                formAtom.numericUpDownAtomRadius.Value = (decimal)atoms[selectedAtom].radius;
+                // 260522Cl 変更: NumericUpDown → NumericBox (Value は double のため (decimal) キャスト撤去)
+                formAtom.numericBoxAtomTransparency.Value = atoms[selectedAtom].matSource[0];
+                formAtom.numericBoxAtomAmbient.Value = atoms[selectedAtom].matSource[1];
+                formAtom.numericBoxAtomDiffusion.Value = atoms[selectedAtom].matSource[2];
+                formAtom.numericBoxAtomSpecular.Value = atoms[selectedAtom].matSource[3];
+                formAtom.numericBoxAtomEmmision.Value = atoms[selectedAtom].matSource[4];
+                formAtom.numericBoxAtomShininess.Value = atoms[selectedAtom].matSource[5];
+                formAtom.numericBoxAtomRadius.Value = atoms[selectedAtom].radius;
                 formAtom.selectedAtom = selectedAtom;
 
                 formAtom.checkBoxIsDraw.Checked = atoms[selectedAtom].IsDraw;

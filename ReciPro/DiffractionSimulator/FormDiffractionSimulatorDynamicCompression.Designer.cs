@@ -1006,7 +1006,7 @@ namespace ReciPro
             this.trackBarAdvancedBack.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.trackBarAdvancedBack.ControlHeight = 26;
             this.trackBarAdvancedBack.DecimalPlaces = 2;
-            this.trackBarAdvancedBack.Font = new System.Drawing.Font("Yu Gothic UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.trackBarAdvancedBack.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128))); // 260522Cl 変更: Yu Gothic UI → Segoe UI (英語GUI)
             this.trackBarAdvancedBack.FooterText = "";
             this.trackBarAdvancedBack.HeaderText = "";
             this.trackBarAdvancedBack.Location = new System.Drawing.Point(36, 586);
@@ -1030,7 +1030,7 @@ namespace ReciPro
             this.trackBarAdvancedTime.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.trackBarAdvancedTime.ControlHeight = 26;
             this.trackBarAdvancedTime.DecimalPlaces = 3;
-            this.trackBarAdvancedTime.Font = new System.Drawing.Font("Yu Gothic UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.trackBarAdvancedTime.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128))); // 260522Cl 変更: Yu Gothic UI → Segoe UI (英語GUI)
             this.trackBarAdvancedTime.FooterText = "ns";
             this.trackBarAdvancedTime.HeaderText = "Time";
             this.trackBarAdvancedTime.Location = new System.Drawing.Point(0, 335);
@@ -1054,7 +1054,7 @@ namespace ReciPro
             this.trackBarAdvancedFront.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.trackBarAdvancedFront.ControlHeight = 26;
             this.trackBarAdvancedFront.DecimalPlaces = 2;
-            this.trackBarAdvancedFront.Font = new System.Drawing.Font("Yu Gothic UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.trackBarAdvancedFront.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128))); // 260522Cl 変更: Yu Gothic UI → Segoe UI (英語GUI)
             this.trackBarAdvancedFront.FooterText = "";
             this.trackBarAdvancedFront.HeaderText = "";
             this.trackBarAdvancedFront.Location = new System.Drawing.Point(36, 555);

@@ -107,11 +107,11 @@
             numericBoxCellTranslationA = new NumericBox();
             checkBoxShowSubCell = new System.Windows.Forms.CheckBox();
             checkBoxCellShowEdge = new System.Windows.Forms.CheckBox();
-            numericUpDownSubCellB = new System.Windows.Forms.NumericUpDown();
+            numericBoxSubCellB = new Crystallography.Controls.NumericBox();
             label10 = new System.Windows.Forms.Label();
             checkBoxCellShowPlane = new System.Windows.Forms.CheckBox();
-            numericUpDownSubCellC = new System.Windows.Forms.NumericUpDown();
-            numericUpDownSubCellA = new System.Windows.Forms.NumericUpDown();
+            numericBoxSubCellC = new Crystallography.Controls.NumericBox();
+            numericBoxSubCellA = new Crystallography.Controls.NumericBox();
             label17 = new System.Windows.Forms.Label();
             label16 = new System.Windows.Forms.Label();
             label12 = new System.Windows.Forms.Label();
@@ -245,9 +245,6 @@
             flowLayoutPanelCellPlaneColors.SuspendLayout();
             flowLayoutPanelCellEdgeColors.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)trackBarCellEdgeWidth).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDownSubCellB).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDownSubCellC).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDownSubCellA).BeginInit();
             tabPageLatticePlane.SuspendLayout();
             flowLayoutPanelLatticePlaneOpacity.SuspendLayout();
             tabPageCoordinateInformation.SuspendLayout();
@@ -722,11 +719,11 @@
             groupBoxShowUnitCell.Controls.Add(numericBoxCellTranslationA);
             groupBoxShowUnitCell.Controls.Add(checkBoxShowSubCell);
             groupBoxShowUnitCell.Controls.Add(checkBoxCellShowEdge);
-            groupBoxShowUnitCell.Controls.Add(numericUpDownSubCellB);
+            groupBoxShowUnitCell.Controls.Add(numericBoxSubCellB);
             groupBoxShowUnitCell.Controls.Add(label10);
             groupBoxShowUnitCell.Controls.Add(checkBoxCellShowPlane);
-            groupBoxShowUnitCell.Controls.Add(numericUpDownSubCellC);
-            groupBoxShowUnitCell.Controls.Add(numericUpDownSubCellA);
+            groupBoxShowUnitCell.Controls.Add(numericBoxSubCellC);
+            groupBoxShowUnitCell.Controls.Add(numericBoxSubCellA);
             groupBoxShowUnitCell.Controls.Add(label17);
             groupBoxShowUnitCell.Controls.Add(label16);
             groupBoxShowUnitCell.Controls.Add(label12);
@@ -1032,14 +1029,16 @@
             checkBoxCellShowEdge.UseVisualStyleBackColor = true;
             checkBoxCellShowEdge.CheckedChanged += unitCell_PropertyChanged;
             // 
-            // numericUpDownSubCellB
+            // numericBoxSubCellB
             // 
-            resources.ApplyResources(numericUpDownSubCellB, "numericUpDownSubCellB");
-            numericUpDownSubCellB.Maximum = new decimal(new int[] { 10, 0, 0, 0 });
-            numericUpDownSubCellB.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
-            numericUpDownSubCellB.Name = "numericUpDownSubCellB";
-            numericUpDownSubCellB.Value = new decimal(new int[] { 1, 0, 0, 0 });
-            numericUpDownSubCellB.ValueChanged += unitCell_PropertyChanged;
+            resources.ApplyResources(numericBoxSubCellB, "numericBoxSubCellB");
+            numericBoxSubCellB.Maximum = 10D;
+            numericBoxSubCellB.Minimum = 1D;
+            numericBoxSubCellB.Name = "numericBoxSubCellB";
+            numericBoxSubCellB.DecimalPlaces = 0;                                                                                                      // 260522Cl 追加: 整数表示を維持
+            numericBoxSubCellB.ShowUpDown = true;
+            numericBoxSubCellB.Value = 1D;
+            numericBoxSubCellB.ValueChanged += unitCell_PropertyChanged;
             // 
             // label10
             // 
@@ -1054,23 +1053,27 @@
             checkBoxCellShowPlane.UseVisualStyleBackColor = true;
             checkBoxCellShowPlane.CheckedChanged += unitCell_PropertyChanged;
             // 
-            // numericUpDownSubCellC
+            // numericBoxSubCellC
             // 
-            resources.ApplyResources(numericUpDownSubCellC, "numericUpDownSubCellC");
-            numericUpDownSubCellC.Maximum = new decimal(new int[] { 10, 0, 0, 0 });
-            numericUpDownSubCellC.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
-            numericUpDownSubCellC.Name = "numericUpDownSubCellC";
-            numericUpDownSubCellC.Value = new decimal(new int[] { 1, 0, 0, 0 });
-            numericUpDownSubCellC.ValueChanged += unitCell_PropertyChanged;
+            resources.ApplyResources(numericBoxSubCellC, "numericBoxSubCellC");
+            numericBoxSubCellC.Maximum = 10D;
+            numericBoxSubCellC.Minimum = 1D;
+            numericBoxSubCellC.Name = "numericBoxSubCellC";
+            numericBoxSubCellC.DecimalPlaces = 0;                                                                                                      // 260522Cl 追加: 整数表示を維持
+            numericBoxSubCellC.ShowUpDown = true;
+            numericBoxSubCellC.Value = 1D;
+            numericBoxSubCellC.ValueChanged += unitCell_PropertyChanged;
             // 
-            // numericUpDownSubCellA
+            // numericBoxSubCellA
             // 
-            resources.ApplyResources(numericUpDownSubCellA, "numericUpDownSubCellA");
-            numericUpDownSubCellA.Maximum = new decimal(new int[] { 10, 0, 0, 0 });
-            numericUpDownSubCellA.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
-            numericUpDownSubCellA.Name = "numericUpDownSubCellA";
-            numericUpDownSubCellA.Value = new decimal(new int[] { 1, 0, 0, 0 });
-            numericUpDownSubCellA.ValueChanged += unitCell_PropertyChanged;
+            resources.ApplyResources(numericBoxSubCellA, "numericBoxSubCellA");
+            numericBoxSubCellA.Maximum = 10D;
+            numericBoxSubCellA.Minimum = 1D;
+            numericBoxSubCellA.Name = "numericBoxSubCellA";
+            numericBoxSubCellA.DecimalPlaces = 0;                                                                                                      // 260522Cl 追加: 整数表示を維持
+            numericBoxSubCellA.ShowUpDown = true;
+            numericBoxSubCellA.Value = 1D;
+            numericBoxSubCellA.ValueChanged += unitCell_PropertyChanged;
             // 
             // label17
             // 
@@ -1111,11 +1114,11 @@
             numericBoxLatticePlaneOpacity.RadianValue = 0.0087266462599716477D;
             numericBoxLatticePlaneOpacity.ShowUpDown = true;
             numericBoxLatticePlaneOpacity.SkipEventDuringInput = false;
-            numericBoxLatticePlaneOpacity.ValueFontSize = 9F;
             numericBoxLatticePlaneOpacity.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxLatticePlaneOpacity, resources.GetString("numericBoxLatticePlaneOpacity.ToolTip"));
             numericBoxLatticePlaneOpacity.UpDown_Increment = 0.1D;
             numericBoxLatticePlaneOpacity.Value = 0.5D;
+            numericBoxLatticePlaneOpacity.ValueFontSize = 9F;
             numericBoxLatticePlaneOpacity.ValueChanged += numericBoxLatticePlaneOpacity_ValueChanged;
             // 
             // tabPageCoordinateInformation
@@ -1703,10 +1706,10 @@
             numericBoxLabelSize.RadianValue = 0.20943951023931953D;
             numericBoxLabelSize.ShowUpDown = true;
             numericBoxLabelSize.SmartIncrement = true;
-            numericBoxLabelSize.ValueFontSize = 9F;
             numericBoxLabelSize.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxLabelSize, resources.GetString("numericBoxLabelSize.ToolTip1"));
             numericBoxLabelSize.Value = 12D;
+            numericBoxLabelSize.ValueFontSize = 9F;
             numericBoxLabelSize.ValueChanged += numericBoxLabelSize_ValueChanged;
             // 
             // checkBoxLabelWhiteEdge
@@ -1770,10 +1773,10 @@
             numericBoxLegendSize.RadianValue = 0.87266462599716477D;
             numericBoxLegendSize.ShowUpDown = true;
             numericBoxLegendSize.SmartIncrement = true;
-            numericBoxLegendSize.ValueFontSize = 9F;
             numericBoxLegendSize.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxLegendSize, resources.GetString("numericBoxLegendSize.ToolTip1"));
             numericBoxLegendSize.Value = 50D;
+            numericBoxLegendSize.ValueFontSize = 9F;
             numericBoxLegendSize.ValueChanged += numericBoxLegendSize_ValueChanged;
             // 
             // numericBoxAxesSize
@@ -1787,10 +1790,10 @@
             numericBoxAxesSize.RadianValue = 1.3962634015954636D;
             numericBoxAxesSize.ShowUpDown = true;
             numericBoxAxesSize.SmartIncrement = true;
-            numericBoxAxesSize.ValueFontSize = 9F;
             numericBoxAxesSize.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxAxesSize, resources.GetString("numericBoxAxesSize.ToolTip1"));
             numericBoxAxesSize.Value = 80D;
+            numericBoxAxesSize.ValueFontSize = 9F;
             numericBoxAxesSize.ValueChanged += numericBoxAxesSize_ValueChanged;
             // 
             // numericBoxLightSize
@@ -1804,10 +1807,10 @@
             numericBoxLightSize.RadianValue = 1.3962634015954636D;
             numericBoxLightSize.ShowUpDown = true;
             numericBoxLightSize.SmartIncrement = true;
-            numericBoxLightSize.ValueFontSize = 9F;
             numericBoxLightSize.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxLightSize, resources.GetString("numericBoxLightSize.ToolTip1"));
             numericBoxLightSize.Value = 80D;
+            numericBoxLightSize.ValueFontSize = 9F;
             numericBoxLightSize.ValueChanged += numericBoxLightSize_ValueChanged;
             // 
             // toolStrip1
@@ -1825,6 +1828,7 @@
             toolStripButtonCrystalAxes.CheckOnClick = true;
             toolStripButtonCrystalAxes.CheckState = System.Windows.Forms.CheckState.Checked;
             toolStripButtonCrystalAxes.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            toolStripButtonCrystalAxes.ForeColor = System.Drawing.SystemColors.MenuHighlight;
             resources.ApplyResources(toolStripButtonCrystalAxes, "toolStripButtonCrystalAxes");
             toolStripButtonCrystalAxes.Name = "toolStripButtonCrystalAxes";
             toolStripButtonCrystalAxes.CheckedChanged += toolStripButtonCrystalAxes_CheckedChanged;
@@ -1836,6 +1840,7 @@
             toolStripButtonLightDirection.CheckOnClick = true;
             toolStripButtonLightDirection.CheckState = System.Windows.Forms.CheckState.Checked;
             toolStripButtonLightDirection.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            toolStripButtonLightDirection.ForeColor = System.Drawing.SystemColors.MenuHighlight;
             resources.ApplyResources(toolStripButtonLightDirection, "toolStripButtonLightDirection");
             toolStripButtonLightDirection.Name = "toolStripButtonLightDirection";
             toolStripButtonLightDirection.CheckedChanged += toolStripButtonLightingBall_CheckedChanged;
@@ -1846,6 +1851,7 @@
             toolStripButtonLegend.CheckOnClick = true;
             toolStripButtonLegend.CheckState = System.Windows.Forms.CheckState.Checked;
             toolStripButtonLegend.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            toolStripButtonLegend.ForeColor = System.Drawing.SystemColors.MenuHighlight;
             resources.ApplyResources(toolStripButtonLegend, "toolStripButtonLegend");
             toolStripButtonLegend.Name = "toolStripButtonLegend";
             toolStripButtonLegend.CheckedChanged += toolStripButtonLegend_CheckedChanged;
@@ -1883,6 +1889,7 @@
             toolStripButtonAtomObjects.CheckOnClick = true;
             toolStripButtonAtomObjects.CheckState = System.Windows.Forms.CheckState.Checked;
             toolStripButtonAtomObjects.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            toolStripButtonAtomObjects.ForeColor = System.Drawing.Color.Salmon;
             resources.ApplyResources(toolStripButtonAtomObjects, "toolStripButtonAtomObjects");
             toolStripButtonAtomObjects.Name = "toolStripButtonAtomObjects";
             toolStripButtonAtomObjects.CheckedChanged += toolStripButtonAtomObjects_CheckedChanged;
@@ -1891,6 +1898,7 @@
             // 
             toolStripButtonAtomLabels.CheckOnClick = true;
             toolStripButtonAtomLabels.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            toolStripButtonAtomLabels.ForeColor = System.Drawing.Color.Salmon;
             resources.ApplyResources(toolStripButtonAtomLabels, "toolStripButtonAtomLabels");
             toolStripButtonAtomLabels.Name = "toolStripButtonAtomLabels";
             toolStripButtonAtomLabels.CheckedChanged += toolStripButtonAtomLabels_CheckedChanged;
@@ -1901,6 +1909,7 @@
             toolStripButtonUnitCell.CheckOnClick = true;
             toolStripButtonUnitCell.CheckState = System.Windows.Forms.CheckState.Checked;
             toolStripButtonUnitCell.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            toolStripButtonUnitCell.ForeColor = System.Drawing.Color.Salmon;
             resources.ApplyResources(toolStripButtonUnitCell, "toolStripButtonUnitCell");
             toolStripButtonUnitCell.Name = "toolStripButtonUnitCell";
             toolStripButtonUnitCell.CheckedChanged += toolStripButtonUnitCell_CheckedChanged;
@@ -1909,6 +1918,7 @@
             // 
             toolStripButtonSymmetryElements.CheckOnClick = true;
             toolStripButtonSymmetryElements.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            toolStripButtonSymmetryElements.ForeColor = System.Drawing.Color.Salmon;
             resources.ApplyResources(toolStripButtonSymmetryElements, "toolStripButtonSymmetryElements");
             toolStripButtonSymmetryElements.Name = "toolStripButtonSymmetryElements";
             toolStripButtonSymmetryElements.CheckedChanged += toolStripButtonSymmetryElements_CheckedChanged;
@@ -2148,9 +2158,6 @@
             flowLayoutPanelCellEdgeColors.ResumeLayout(false);
             flowLayoutPanelCellEdgeColors.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)trackBarCellEdgeWidth).EndInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDownSubCellB).EndInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDownSubCellC).EndInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDownSubCellA).EndInit();
             tabPageLatticePlane.ResumeLayout(false);
             tabPageLatticePlane.PerformLayout();
             flowLayoutPanelLatticePlaneOpacity.ResumeLayout(false);
@@ -2289,11 +2296,11 @@
         private NumericBox numericBoxCellTranslationA;
         private System.Windows.Forms.CheckBox checkBoxShowSubCell;
         private System.Windows.Forms.CheckBox checkBoxCellShowEdge;
-        private System.Windows.Forms.NumericUpDown numericUpDownSubCellB;
+        private Crystallography.Controls.NumericBox numericBoxSubCellB;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.CheckBox checkBoxCellShowPlane;
-        private System.Windows.Forms.NumericUpDown numericUpDownSubCellC;
-        private System.Windows.Forms.NumericUpDown numericUpDownSubCellA;
+        private Crystallography.Controls.NumericBox numericBoxSubCellC;
+        private Crystallography.Controls.NumericBox numericBoxSubCellA;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label12;

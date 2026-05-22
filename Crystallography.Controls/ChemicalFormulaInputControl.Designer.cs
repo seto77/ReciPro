@@ -211,7 +211,7 @@
             this.numericBoxValence.ShowPositiveSign = true;
             this.numericBoxValence.Size = new System.Drawing.Size(1, 25);
             this.numericBoxValence.TabIndex = 8;
-            this.numericBoxValence.ValueFont = new System.Drawing.Font("Yu Gothic UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            // 260522Cl: numericBox の ValueFont(Yu Gothic UI) ハードコードを撤去
             this.numericBoxValence.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxValence_ValueChanged);
             // 
             // checkBoxCompound
@@ -318,8 +318,7 @@
             this.numericBoxWeight.RoundErrorAccuracy = -1;
             this.numericBoxWeight.Size = new System.Drawing.Size(73, 27);
             this.numericBoxWeight.TabIndex = 8;
-            this.numericBoxWeight.ValueFont = new System.Drawing.Font("Yu Gothic UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            // 
+            //
             // label9
             // 
             this.label9.AutoSize = true;
@@ -366,8 +365,7 @@
             this.numericBoxMolarRatio.RoundErrorAccuracy = -1;
             this.numericBoxMolarRatio.Size = new System.Drawing.Size(43, 27);
             this.numericBoxMolarRatio.TabIndex = 8;
-            this.numericBoxMolarRatio.ValueFont = new System.Drawing.Font("Yu Gothic UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            // 
+            //
             // flowLayoutPanel3
             // 
             this.flowLayoutPanel3.AutoSize = true;
@@ -399,7 +397,7 @@
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.Controls.Add(this.flowLayoutPanel3);
-            this.Font = new System.Drawing.Font("Yu Gothic UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point); // 260522Cl 変更: Yu Gothic UI → Segoe UI (英語GUI)
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "ChemicalFormulaInputControl";
             this.Size = new System.Drawing.Size(325, 107);
