@@ -555,10 +555,10 @@ namespace ReciPro
             numericBoxDonut.ShowUpDown = true;
             numericBoxDonut.SkipEventDuringInput = false;
             numericBoxDonut.SmartIncrement = true;
-            numericBoxDonut.ValueFontSize = 8F;
             numericBoxDonut.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxDonut, resources.GetString("numericBoxDonut.ToolTip"));
             numericBoxDonut.Value = 5D;
+            numericBoxDonut.ValueFontSize = 8F;
             // 
             // flowLayoutPanel3
             // 
@@ -810,12 +810,12 @@ namespace ReciPro
             // 
             resources.ApplyResources(waveLengthControl1, "waveLengthControl1");
             waveLengthControl1.Direction = System.Windows.Forms.FlowDirection.LeftToRight;
-            waveLengthControl1.Energy = 494.36741737D;
+            waveLengthControl1.Energy = 494.36741727D;
             waveLengthControl1.Monochrome = true;
             waveLengthControl1.Name = "waveLengthControl1";
             waveLengthControl1.ShowWaveSource = true;
             toolTip.SetToolTip(waveLengthControl1, resources.GetString("waveLengthControl1.ToolTip"));
-            waveLengthControl1.WaveLength = 0.0025079347455D;
+            waveLengthControl1.WaveLength = 0.0025079347460000003D;
             waveLengthControl1.WaveSource = WaveSource.Xray;
             waveLengthControl1.XrayWaveSourceElementNumber = 0;
             waveLengthControl1.XrayWaveSourceLine = XrayLine.Ka1;
@@ -1054,7 +1054,7 @@ namespace ReciPro
             dataGridViewGrains.AllowUserToDeleteRows = false;
             dataGridViewGrains.AllowUserToResizeRows = false;
             dataGridViewGrains.AutoGenerateColumns = false;
-            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle16.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle16.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle16.SelectionBackColor = System.Drawing.SystemColors.Highlight;
@@ -1119,7 +1119,7 @@ namespace ReciPro
             dataGridViewCandidates.AllowUserToDeleteRows = false;
             dataGridViewCandidates.AllowUserToResizeRows = false;
             dataGridViewCandidates.AutoGenerateColumns = false;
-            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle19.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle19.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle19.SelectionBackColor = System.Drawing.SystemColors.Highlight;

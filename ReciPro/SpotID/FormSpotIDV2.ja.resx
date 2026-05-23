@@ -127,20 +127,11 @@
   <data name="scalablePictureBoxAdvanced.Size" type="System.Drawing.Size, System.Drawing">
     <value>500, 770</value>
   </data>
-  <data name="scalablePictureBoxAdvanced.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="splitContainer1.Panel1.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="dataGridViewSpots.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="dataGridViewSpots.Size" type="System.Drawing.Size, System.Drawing">
     <value>759, 292</value>
-  </data>
-  <data name="dataGridViewSpots.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="checkBoxDetailsOfSpot.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
@@ -172,9 +163,6 @@
   <data name="flowLayoutPanel10.Size" type="System.Drawing.Size, System.Drawing">
     <value>129, 53</value>
   </data>
-  <data name="flowLayoutPanel10.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="buttonGlobalFit.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -204,17 +192,11 @@
   <data name="numericBoxDonut.Size" type="System.Drawing.Size, System.Drawing">
     <value>34, 22</value>
   </data>
-  <data name="numericBoxDonut.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="flowLayoutPanel2.Location" type="System.Drawing.Point, System.Drawing">
     <value>495, 27</value>
   </data>
   <data name="flowLayoutPanel2.Size" type="System.Drawing.Size, System.Drawing">
     <value>267, 22</value>
-  </data>
-  <data name="flowLayoutPanel2.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="buttonDeleteSpot.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
@@ -309,9 +291,6 @@
   <data name="flowLayoutPanel3.Size" type="System.Drawing.Size, System.Drawing">
     <value>361, 27</value>
   </data>
-  <data name="flowLayoutPanel3.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="checkBoxShowObsSpotSymbol.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
   </data>
@@ -345,17 +324,11 @@
   <data name="flowLayoutPanel9.Size" type="System.Drawing.Size, System.Drawing">
     <value>105, 53</value>
   </data>
-  <data name="flowLayoutPanel9.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="panel3.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 322</value>
   </data>
   <data name="panel3.Size" type="System.Drawing.Size, System.Drawing">
     <value>759, 53</value>
-  </data>
-  <data name="panel3.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="buttonFindSpots.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
@@ -452,17 +425,11 @@
   <data name="flowLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
     <value>759, 30</value>
   </data>
-  <data name="flowLayoutPanel1.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="panelSpotActions.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 19</value>
   </data>
   <data name="panelSpotActions.Size" type="System.Drawing.Size, System.Drawing">
     <value>759, 375</value>
-  </data>
-  <data name="panelSpotActions.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="pictureBox1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -472,9 +439,6 @@
   </data>
   <data name="pictureBox1.Size" type="System.Drawing.Size, System.Drawing">
     <value>759, 77</value>
-  </data>
-  <data name="pictureBox1.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="groupBoxSpot.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
@@ -491,8 +455,8 @@
   <data name="groupBoxSpot.Text" xml:space="preserve">
     <value>スポット情報</value>
   </data>
-  <data name="groupBoxSpot.ToolTip" xml:space="preserve">
-    <value />
+  <data name="radioButtonPixelSizeUnitInverse.Size" type="System.Drawing.Size, System.Drawing">
+    <value>54, 21</value>
   </data>
   <data name="radioButtonPixelSizeUnitInverse.ToolTip" xml:space="preserve">
     <value>ピクセルサイズの単位: nm⁻¹</value>
@@ -533,17 +497,15 @@
   <data name="waveLengthControl1.Size" type="System.Drawing.Size, System.Drawing">
     <value>279, 78</value>
   </data>
-  <data name="waveLengthControl1.ToolTip" xml:space="preserve">
-    <value />
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="waveLengthControl1.ValueFontSize" type="System.Single, mscorlib">
+    <value>9.75</value>
   </data>
   <data name="groupBoxOptics.Location" type="System.Drawing.Point, System.Drawing">
     <value>121, 0</value>
   </data>
   <data name="groupBoxOptics.Size" type="System.Drawing.Size, System.Drawing">
     <value>644, 107</value>
-  </data>
-  <data name="groupBoxOptics.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="checkBoxShowDebyeRing.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
@@ -575,14 +537,8 @@
   <data name="flowLayoutPanel5.Size" type="System.Drawing.Size, System.Drawing">
     <value>121, 107</value>
   </data>
-  <data name="flowLayoutPanel5.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
     <value>765, 107</value>
-  </data>
-  <data name="panel1.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="buttonIdentifySpots.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
@@ -669,9 +625,6 @@
   <data name="flowLayoutPanel11.Size" type="System.Drawing.Size, System.Drawing">
     <value>241, 81</value>
   </data>
-  <data name="flowLayoutPanel11.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="buttonStop.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -722,9 +675,6 @@
   </data>
   <data name="flowLayoutPanel8.Size" type="System.Drawing.Size, System.Drawing">
     <value>272, 27</value>
-  </data>
-  <data name="flowLayoutPanel8.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="radioButtonSingleGrain.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
@@ -789,9 +739,6 @@
   <data name="flowLayoutPanel7.Size" type="System.Drawing.Size, System.Drawing">
     <value>332, 25</value>
   </data>
-  <data name="flowLayoutPanel7.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="checkBoxShowZoneAxis.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
   </data>
@@ -837,9 +784,6 @@
   <data name="flowLayoutPanel4.Size" type="System.Drawing.Size, System.Drawing">
     <value>105, 63</value>
   </data>
-  <data name="flowLayoutPanel4.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="dataGridViewGrains.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left</value>
   </data>
@@ -849,14 +793,8 @@
   <data name="dataGridViewGrains.Size" type="System.Drawing.Size, System.Drawing">
     <value>166, 166</value>
   </data>
-  <data name="dataGridViewGrains.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="dataGridViewCandidates.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="dataGridViewCandidates.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="groupBoxIndex.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
@@ -870,45 +808,53 @@
   <data name="groupBoxIndex.Text" xml:space="preserve">
     <value>指数付け</value>
   </data>
-  <data name="groupBoxIndex.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="splitContainer1.Panel2.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="splitContainer1.Size" type="System.Drawing.Size, System.Drawing">
     <value>1285, 774</value>
   </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="splitContainer1.SplitterDistance" type="System.Int32, mscorlib">
     <value>504</value>
   </data>
-  <data name="splitContainer1.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="loadToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>126, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="loadToolStripMenuItem.Text" xml:space="preserve">
-    <value>読み込み</value>
+    <value>開く</value>
   </data>
   <data name="saveAsMetafileToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>220, 22</value>
+    <value>217, 22</value>
+  </data>
+  <data name="saveAsMetafileToolStripMenuItem.Text" xml:space="preserve">
+    <value>メタファイル (emf) として</value>
   </data>
   <data name="saveAsBitmapToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>220, 22</value>
+    <value>217, 22</value>
+  </data>
+  <data name="saveAsBitmapToolStripMenuItem1.Text" xml:space="preserve">
+    <value>イメージファイル (png) として</value>
   </data>
   <data name="saveToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>126, 22</value>
+    <value>180, 22</value>
+  </data>
+  <data name="saveToolStripMenuItem.Text" xml:space="preserve">
+    <value>保存</value>
   </data>
   <data name="copyAsMetafileToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>140, 22</value>
+    <value>217, 22</value>
+  </data>
+  <data name="copyAsMetafileToolStripMenuItem.Text" xml:space="preserve">
+    <value>メタファイル (emf) として</value>
   </data>
   <data name="copyAsBitmapToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>140, 22</value>
+    <value>217, 22</value>
+  </data>
+  <data name="copyAsBitmapToolStripMenuItem.Text" xml:space="preserve">
+    <value>イメージファイル (png) として</value>
   </data>
   <data name="copyToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>126, 22</value>
+    <value>180, 22</value>
+  </data>
+  <data name="copyToolStripMenuItem.Text" xml:space="preserve">
+    <value>コピー</value>
   </data>
   <data name="fileToolStripMenuItem.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
@@ -961,9 +907,6 @@
   <data name="menuStrip.Size" type="System.Drawing.Size, System.Drawing">
     <value>1285, 27</value>
   </data>
-  <data name="menuStrip.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="statusStrip.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 8pt</value>
   </data>
@@ -973,13 +916,7 @@
   <data name="statusStrip.Size" type="System.Drawing.Size, System.Drawing">
     <value>1285, 26</value>
   </data>
-  <data name="statusStrip.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
     <value>1285, 827</value>
-  </data>
-  <data name="$this.ToolTip" xml:space="preserve">
-    <value />
   </data>
 </root>

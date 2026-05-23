@@ -29,6 +29,7 @@
         {
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormSymmetryInformation));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             panel4 = new System.Windows.Forms.Panel();
             graphicsBoxSymmetryElements = new GraphicsBox(components);
@@ -52,22 +53,25 @@
             textBoxZoneAxis = new System.Windows.Forms.TextBox();
             numericBoxAngleAxes = new NumericBox();
             flowLayoutPanel6 = new System.Windows.Forms.FlowLayoutPanel();
+            indexControlPlane2 = new IndexControl();
             numericBoxLengthPlane2 = new NumericBox();
             label40 = new System.Windows.Forms.Label();
             flowLayoutPanel14 = new System.Windows.Forms.FlowLayoutPanel();
+            indexControlAxis2 = new IndexControl();
             numericBoxLengthAxis2 = new NumericBox();
             numericBoxAnglePlaneAxis1 = new NumericBox();
             flowLayoutPanel11 = new System.Windows.Forms.FlowLayoutPanel();
+            indexControlAxis1 = new IndexControl();
             numericBoxLengthAxis1 = new NumericBox();
             numericBoxAnglePlaneAxis2 = new NumericBox();
             flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            indexControlPlane1 = new IndexControl();
             numericBoxLengthPlane1 = new NumericBox();
             textBoxZonePlane = new System.Windows.Forms.TextBox();
             label42 = new System.Windows.Forms.Label();
             panel1 = new System.Windows.Forms.Panel();
             tabPageWyckoff = new System.Windows.Forms.TabPage();
-            // dataGridView1 = new System.Windows.Forms.DataGridView(); // 260518Cl 旧実装: DPI変更時に列幅が追従しない
-            dataGridView1 = new DpiAwareDataGridView(); // 260518Cl
+            dataGridView1 = new DpiAwareDataGridView();
             columnMultiplicityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             columnWyckoffLetterDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             columnSiteSymmetryDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -128,10 +132,6 @@
             radioButtonDirectionC = new System.Windows.Forms.RadioButton();
             label12 = new System.Windows.Forms.Label();
             flowLayoutPanel5 = new System.Windows.Forms.FlowLayoutPanel();
-            indexControlPlane1 = new IndexControl();
-            indexControlPlane2 = new IndexControl();
-            indexControlAxis1 = new IndexControl();
-            indexControlAxis2 = new IndexControl();
             tableLayoutPanel1.SuspendLayout();
             panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)graphicsBoxSymmetryElements).BeginInit();
@@ -172,7 +172,7 @@
             tableLayoutPanel1.RowCount = 1;
             tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            tableLayoutPanel1.Size = new System.Drawing.Size(1020, 560);
+            tableLayoutPanel1.Size = new System.Drawing.Size(1020, 561);
             tableLayoutPanel1.TabIndex = 5;
             // 
             // panel4
@@ -182,7 +182,7 @@
             panel4.Dock = System.Windows.Forms.DockStyle.Fill;
             panel4.Location = new System.Drawing.Point(3, 3);
             panel4.Name = "panel4";
-            panel4.Size = new System.Drawing.Size(504, 554);
+            panel4.Size = new System.Drawing.Size(504, 555);
             panel4.TabIndex = 9;
             // 
             // graphicsBoxSymmetryElements
@@ -190,9 +190,9 @@
             graphicsBoxSymmetryElements.Dock = System.Windows.Forms.DockStyle.Fill;
             graphicsBoxSymmetryElements.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
             graphicsBoxSymmetryElements.Fonts = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-            graphicsBoxSymmetryElements.Location = new System.Drawing.Point(0, 26);
+            graphicsBoxSymmetryElements.Location = new System.Drawing.Point(0, 25);
             graphicsBoxSymmetryElements.Name = "graphicsBoxSymmetryElements";
-            graphicsBoxSymmetryElements.Size = new System.Drawing.Size(504, 528);
+            graphicsBoxSymmetryElements.Size = new System.Drawing.Size(504, 530);
             graphicsBoxSymmetryElements.TabIndex = 0;
             graphicsBoxSymmetryElements.TabStop = false;
             // 
@@ -204,7 +204,7 @@
             flowLayoutPanel2.Location = new System.Drawing.Point(0, 0);
             flowLayoutPanel2.Margin = new System.Windows.Forms.Padding(0);
             flowLayoutPanel2.Name = "flowLayoutPanel2";
-            flowLayoutPanel2.Size = new System.Drawing.Size(504, 26);
+            flowLayoutPanel2.Size = new System.Drawing.Size(504, 25);
             flowLayoutPanel2.TabIndex = 2;
             // 
             // buttonCopyElements
@@ -215,7 +215,7 @@
             buttonCopyElements.Location = new System.Drawing.Point(0, 0);
             buttonCopyElements.Margin = new System.Windows.Forms.Padding(0, 0, 3, 0);
             buttonCopyElements.Name = "buttonCopyElements";
-            buttonCopyElements.Size = new System.Drawing.Size(44, 26);
+            buttonCopyElements.Size = new System.Drawing.Size(45, 25);
             buttonCopyElements.TabIndex = 0;
             buttonCopyElements.Text = "Copy";
             buttonCopyElements.UseVisualStyleBackColor = true;
@@ -228,7 +228,7 @@
             panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             panel3.Location = new System.Drawing.Point(513, 3);
             panel3.Name = "panel3";
-            panel3.Size = new System.Drawing.Size(504, 554);
+            panel3.Size = new System.Drawing.Size(504, 555);
             panel3.TabIndex = 8;
             // 
             // graphicsBoxGeneralPositions
@@ -236,9 +236,9 @@
             graphicsBoxGeneralPositions.Dock = System.Windows.Forms.DockStyle.Fill;
             graphicsBoxGeneralPositions.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
             graphicsBoxGeneralPositions.Fonts = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-            graphicsBoxGeneralPositions.Location = new System.Drawing.Point(0, 26);
+            graphicsBoxGeneralPositions.Location = new System.Drawing.Point(0, 25);
             graphicsBoxGeneralPositions.Name = "graphicsBoxGeneralPositions";
-            graphicsBoxGeneralPositions.Size = new System.Drawing.Size(504, 528);
+            graphicsBoxGeneralPositions.Size = new System.Drawing.Size(504, 530);
             graphicsBoxGeneralPositions.TabIndex = 0;
             graphicsBoxGeneralPositions.TabStop = false;
             // 
@@ -256,7 +256,7 @@
             flowLayoutPanel3.Location = new System.Drawing.Point(0, 0);
             flowLayoutPanel3.Margin = new System.Windows.Forms.Padding(0);
             flowLayoutPanel3.Name = "flowLayoutPanel3";
-            flowLayoutPanel3.Size = new System.Drawing.Size(504, 26);
+            flowLayoutPanel3.Size = new System.Drawing.Size(504, 25);
             flowLayoutPanel3.TabIndex = 3;
             // 
             // buttonCopyPositions
@@ -267,7 +267,7 @@
             buttonCopyPositions.Location = new System.Drawing.Point(0, 0);
             buttonCopyPositions.Margin = new System.Windows.Forms.Padding(0, 0, 10, 0);
             buttonCopyPositions.Name = "buttonCopyPositions";
-            buttonCopyPositions.Size = new System.Drawing.Size(44, 26);
+            buttonCopyPositions.Size = new System.Drawing.Size(45, 25);
             buttonCopyPositions.TabIndex = 0;
             buttonCopyPositions.Text = "Copy";
             buttonCopyPositions.UseVisualStyleBackColor = true;
@@ -276,7 +276,7 @@
             // labelLaTex1
             // 
             labelLaTex1.Font = new System.Drawing.Font("Segoe UI", 11F);
-            labelLaTex1.Location = new System.Drawing.Point(54, 0);
+            labelLaTex1.Location = new System.Drawing.Point(55, 0);
             labelLaTex1.Margin = new System.Windows.Forms.Padding(0);
             labelLaTex1.Name = "labelLaTex1";
             labelLaTex1.Padding = new System.Windows.Forms.Padding(0, 4, 0, 0);
@@ -293,7 +293,7 @@
             numericBoxPositionA.FooterPadding = new System.Windows.Forms.Padding(0, 6, 0, 0);
             numericBoxPositionA.HeaderFont = new System.Drawing.Font("Segoe UI", 9F);
             numericBoxPositionA.HeaderPadding = new System.Windows.Forms.Padding(0, 6, 0, 0);
-            numericBoxPositionA.Location = new System.Drawing.Point(64, 0);
+            numericBoxPositionA.Location = new System.Drawing.Point(65, 0);
             numericBoxPositionA.Margin = new System.Windows.Forms.Padding(0, 0, 4, 0);
             numericBoxPositionA.Maximum = 1D;
             numericBoxPositionA.MaximumSize = new System.Drawing.Size(1000, 100);
@@ -304,14 +304,14 @@
             numericBoxPositionA.ShowUpDown = true;
             numericBoxPositionA.Size = new System.Drawing.Size(50, 25);
             numericBoxPositionA.TabIndex = 6;
-            numericBoxPositionA.ValueFontSize = 9F;
             numericBoxPositionA.UpDown_Increment = 0.01D;
+            numericBoxPositionA.ValueFontSize = 9F;
             numericBoxPositionA.ValueChanged += numericBoxPosition_ValueChanged;
             // 
             // labelLaTex2
             // 
             labelLaTex2.Font = new System.Drawing.Font("Segoe UI", 11F);
-            labelLaTex2.Location = new System.Drawing.Point(118, 0);
+            labelLaTex2.Location = new System.Drawing.Point(119, 0);
             labelLaTex2.Margin = new System.Windows.Forms.Padding(0);
             labelLaTex2.Name = "labelLaTex2";
             labelLaTex2.Padding = new System.Windows.Forms.Padding(0, 4, 0, 0);
@@ -328,7 +328,7 @@
             numericBoxPositionB.FooterPadding = new System.Windows.Forms.Padding(0, 6, 0, 0);
             numericBoxPositionB.HeaderFont = new System.Drawing.Font("Segoe UI", 9F);
             numericBoxPositionB.HeaderPadding = new System.Windows.Forms.Padding(0, 6, 0, 0);
-            numericBoxPositionB.Location = new System.Drawing.Point(128, 0);
+            numericBoxPositionB.Location = new System.Drawing.Point(129, 0);
             numericBoxPositionB.Margin = new System.Windows.Forms.Padding(0, 0, 4, 0);
             numericBoxPositionB.Maximum = 1D;
             numericBoxPositionB.MaximumSize = new System.Drawing.Size(1000, 100);
@@ -339,14 +339,14 @@
             numericBoxPositionB.ShowUpDown = true;
             numericBoxPositionB.Size = new System.Drawing.Size(50, 25);
             numericBoxPositionB.TabIndex = 6;
-            numericBoxPositionB.ValueFontSize = 9F;
             numericBoxPositionB.UpDown_Increment = 0.01D;
+            numericBoxPositionB.ValueFontSize = 9F;
             numericBoxPositionB.ValueChanged += numericBoxPosition_ValueChanged;
             // 
             // labelLaTex3
             // 
             labelLaTex3.Font = new System.Drawing.Font("Segoe UI", 11F);
-            labelLaTex3.Location = new System.Drawing.Point(182, 0);
+            labelLaTex3.Location = new System.Drawing.Point(183, 0);
             labelLaTex3.Margin = new System.Windows.Forms.Padding(0);
             labelLaTex3.Name = "labelLaTex3";
             labelLaTex3.Padding = new System.Windows.Forms.Padding(0, 4, 0, 0);
@@ -363,7 +363,7 @@
             numericBoxPositionC.FooterPadding = new System.Windows.Forms.Padding(0, 6, 0, 0);
             numericBoxPositionC.HeaderFont = new System.Drawing.Font("Segoe UI", 9F);
             numericBoxPositionC.HeaderPadding = new System.Windows.Forms.Padding(0, 6, 0, 0);
-            numericBoxPositionC.Location = new System.Drawing.Point(192, 0);
+            numericBoxPositionC.Location = new System.Drawing.Point(193, 0);
             numericBoxPositionC.Margin = new System.Windows.Forms.Padding(0);
             numericBoxPositionC.Maximum = 1D;
             numericBoxPositionC.MaximumSize = new System.Drawing.Size(1000, 100);
@@ -374,18 +374,18 @@
             numericBoxPositionC.ShowUpDown = true;
             numericBoxPositionC.Size = new System.Drawing.Size(50, 25);
             numericBoxPositionC.TabIndex = 6;
-            numericBoxPositionC.ValueFontSize = 9F;
             numericBoxPositionC.UpDown_Increment = 0.01D;
+            numericBoxPositionC.ValueFontSize = 9F;
             numericBoxPositionC.ValueChanged += numericBoxPosition_ValueChanged;
             // 
             // radioButtonBmp
             // 
             radioButtonBmp.AutoSize = true;
             radioButtonBmp.Font = new System.Drawing.Font("Segoe UI", 9F);
-            radioButtonBmp.Location = new System.Drawing.Point(45, 0);
+            radioButtonBmp.Location = new System.Drawing.Point(46, 0);
             radioButtonBmp.Margin = new System.Windows.Forms.Padding(0);
             radioButtonBmp.Name = "radioButtonBmp";
-            radioButtonBmp.Size = new System.Drawing.Size(49, 20);
+            radioButtonBmp.Size = new System.Drawing.Size(50, 19);
             radioButtonBmp.TabIndex = 1;
             radioButtonBmp.Text = "bmp";
             radioButtonBmp.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -399,7 +399,7 @@
             radioButtonEmf.Location = new System.Drawing.Point(0, 0);
             radioButtonEmf.Margin = new System.Windows.Forms.Padding(0);
             radioButtonEmf.Name = "radioButtonEmf";
-            radioButtonEmf.Size = new System.Drawing.Size(45, 20);
+            radioButtonEmf.Size = new System.Drawing.Size(46, 19);
             radioButtonEmf.TabIndex = 1;
             radioButtonEmf.TabStop = true;
             radioButtonEmf.Text = "emf";
@@ -434,10 +434,10 @@
             tabPage1.Controls.Add(textBoxZonePlane);
             tabPage1.Controls.Add(label42);
             tabPage1.Controls.Add(panel1);
-            tabPage1.Location = new System.Drawing.Point(4, 25);
+            tabPage1.Location = new System.Drawing.Point(4, 24);
             tabPage1.Name = "tabPage1";
             tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            tabPage1.Size = new System.Drawing.Size(673, 140);
+            tabPage1.Size = new System.Drawing.Size(673, 141);
             tabPage1.TabIndex = 3;
             tabPage1.Text = "Geometrics Calculation";
             // 
@@ -503,6 +503,19 @@
             flowLayoutPanel6.Size = new System.Drawing.Size(195, 41);
             flowLayoutPanel6.TabIndex = 5;
             // 
+            // indexControlPlane2
+            // 
+            indexControlPlane2.AutoSize = true;
+            indexControlPlane2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            indexControlPlane2.Location = new System.Drawing.Point(0, 0);
+            indexControlPlane2.Margin = new System.Windows.Forms.Padding(0);
+            indexControlPlane2.Name = "indexControlPlane2";
+            indexControlPlane2.Size = new System.Drawing.Size(128, 41);
+            indexControlPlane2.SubScript = "2";
+            indexControlPlane2.TabIndex = 14;
+            indexControlPlane2.Values = ((int, int, int))resources.GetObject("indexControlPlane2.Values");
+            indexControlPlane2.ValueChanged += numericBox_ValueChanged;
+            // 
             // numericBoxLengthPlane2
             // 
             numericBoxLengthPlane2.BackColor = System.Drawing.Color.Transparent;
@@ -543,6 +556,20 @@
             flowLayoutPanel14.Name = "flowLayoutPanel14";
             flowLayoutPanel14.Size = new System.Drawing.Size(195, 41);
             flowLayoutPanel14.TabIndex = 5;
+            // 
+            // indexControlAxis2
+            // 
+            indexControlAxis2.AutoSize = true;
+            indexControlAxis2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            indexControlAxis2.Location = new System.Drawing.Point(0, 0);
+            indexControlAxis2.Margin = new System.Windows.Forms.Padding(0);
+            indexControlAxis2.Mode = IndexControl.ModeEnum.Axis;
+            indexControlAxis2.Name = "indexControlAxis2";
+            indexControlAxis2.Size = new System.Drawing.Size(128, 41);
+            indexControlAxis2.SubScript = "2";
+            indexControlAxis2.TabIndex = 14;
+            indexControlAxis2.Values = ((int, int, int))resources.GetObject("indexControlAxis2.Values");
+            indexControlAxis2.ValueChanged += numericBox_ValueChanged;
             // 
             // numericBoxLengthAxis2
             // 
@@ -595,6 +622,20 @@
             flowLayoutPanel11.Name = "flowLayoutPanel11";
             flowLayoutPanel11.Size = new System.Drawing.Size(195, 41);
             flowLayoutPanel11.TabIndex = 5;
+            // 
+            // indexControlAxis1
+            // 
+            indexControlAxis1.AutoSize = true;
+            indexControlAxis1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            indexControlAxis1.Location = new System.Drawing.Point(0, 0);
+            indexControlAxis1.Margin = new System.Windows.Forms.Padding(0);
+            indexControlAxis1.Mode = IndexControl.ModeEnum.Axis;
+            indexControlAxis1.Name = "indexControlAxis1";
+            indexControlAxis1.Size = new System.Drawing.Size(128, 41);
+            indexControlAxis1.SubScript = "1";
+            indexControlAxis1.TabIndex = 14;
+            indexControlAxis1.Values = ((int, int, int))resources.GetObject("indexControlAxis1.Values");
+            indexControlAxis1.ValueChanged += numericBox_ValueChanged;
             // 
             // numericBoxLengthAxis1
             // 
@@ -649,6 +690,19 @@
             flowLayoutPanel1.Size = new System.Drawing.Size(195, 41);
             flowLayoutPanel1.TabIndex = 5;
             // 
+            // indexControlPlane1
+            // 
+            indexControlPlane1.AutoSize = true;
+            indexControlPlane1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            indexControlPlane1.Location = new System.Drawing.Point(0, 0);
+            indexControlPlane1.Margin = new System.Windows.Forms.Padding(0);
+            indexControlPlane1.Name = "indexControlPlane1";
+            indexControlPlane1.Size = new System.Drawing.Size(128, 41);
+            indexControlPlane1.SubScript = "1";
+            indexControlPlane1.TabIndex = 14;
+            indexControlPlane1.Values = ((int, int, int))resources.GetObject("indexControlPlane1.Values");
+            indexControlPlane1.ValueChanged += numericBox_ValueChanged;
+            // 
             // numericBoxLengthPlane1
             // 
             numericBoxLengthPlane1.BackColor = System.Drawing.Color.Transparent;
@@ -701,9 +755,9 @@
             captureExtender.SetCapture(tabPageWyckoff, true);
             tabPageWyckoff.Controls.Add(dataGridView1);
             tabPageWyckoff.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-            tabPageWyckoff.Location = new System.Drawing.Point(4, 25);
+            tabPageWyckoff.Location = new System.Drawing.Point(4, 24);
             tabPageWyckoff.Name = "tabPageWyckoff";
-            tabPageWyckoff.Size = new System.Drawing.Size(673, 140);
+            tabPageWyckoff.Size = new System.Drawing.Size(673, 141);
             tabPageWyckoff.TabIndex = 2;
             tabPageWyckoff.Text = "Wyckoff Positions";
             // 
@@ -712,6 +766,14 @@
             dataGridView1.AllowUserToAddRows = false;
             dataGridView1.AllowUserToDeleteRows = false;
             dataGridView1.AutoGenerateColumns = false;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { columnMultiplicityDataGridViewTextBoxColumn, columnWyckoffLetterDataGridViewTextBoxColumn, columnSiteSymmetryDataGridViewTextBoxColumn, columnCoordinates1DataGridViewTextBoxColumn, columnCoordinates2DataGridViewTextBoxColumn, columnCoordinates3DataGridViewTextBoxColumn, columnCoordinates4DataGridViewTextBoxColumn });
             dataGridView1.DataMember = "TableWyckoff";
@@ -722,7 +784,7 @@
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersVisible = false;
             dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            dataGridView1.Size = new System.Drawing.Size(673, 140);
+            dataGridView1.Size = new System.Drawing.Size(673, 141);
             dataGridView1.TabIndex = 0;
             // 
             // columnMultiplicityDataGridViewTextBoxColumn
@@ -881,9 +943,9 @@
             tabPageConditions.Controls.Add(flowLayoutPanelExtinctionRule);
             tabPageConditions.Controls.Add(label49);
             tabPageConditions.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-            tabPageConditions.Location = new System.Drawing.Point(4, 25);
+            tabPageConditions.Location = new System.Drawing.Point(4, 24);
             tabPageConditions.Name = "tabPageConditions";
-            tabPageConditions.Size = new System.Drawing.Size(673, 140);
+            tabPageConditions.Size = new System.Drawing.Size(673, 141);
             tabPageConditions.TabIndex = 1;
             tabPageConditions.Text = "Conditions";
             // 
@@ -892,10 +954,10 @@
             flowLayoutPanelExtinctionRule.AutoScroll = true;
             flowLayoutPanelExtinctionRule.Dock = System.Windows.Forms.DockStyle.Fill;
             flowLayoutPanelExtinctionRule.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            flowLayoutPanelExtinctionRule.Location = new System.Drawing.Point(0, 22);
+            flowLayoutPanelExtinctionRule.Location = new System.Drawing.Point(0, 21);
             flowLayoutPanelExtinctionRule.Margin = new System.Windows.Forms.Padding(0);
             flowLayoutPanelExtinctionRule.Name = "flowLayoutPanelExtinctionRule";
-            flowLayoutPanelExtinctionRule.Size = new System.Drawing.Size(673, 118);
+            flowLayoutPanelExtinctionRule.Size = new System.Drawing.Size(673, 120);
             flowLayoutPanelExtinctionRule.TabIndex = 6;
             flowLayoutPanelExtinctionRule.WrapContents = false;
             // 
@@ -907,7 +969,7 @@
             label49.Location = new System.Drawing.Point(0, 0);
             label49.Name = "label49";
             label49.Padding = new System.Windows.Forms.Padding(0, 0, 0, 6);
-            label49.Size = new System.Drawing.Size(211, 22);
+            label49.Size = new System.Drawing.Size(213, 21);
             label49.TabIndex = 7;
             label49.Text = "Conditions limiting possible reflections";
             // 
@@ -979,7 +1041,7 @@
             label8.Font = new System.Drawing.Font("Segoe UI", 9F);
             label8.Location = new System.Drawing.Point(12, 72);
             label8.Name = "label8";
-            label8.Size = new System.Drawing.Size(63, 16);
+            label8.Size = new System.Drawing.Size(64, 15);
             label8.TabIndex = 1;
             label8.Text = "SF symbol:";
             label8.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -990,7 +1052,7 @@
             label9.Font = new System.Drawing.Font("Segoe UI", 9F);
             label9.Location = new System.Drawing.Point(134, 71);
             label9.Name = "label9";
-            label9.Size = new System.Drawing.Size(72, 16);
+            label9.Size = new System.Drawing.Size(73, 15);
             label9.TabIndex = 1;
             label9.Text = "Hall symbol:";
             label9.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -1001,7 +1063,7 @@
             label5.Font = new System.Drawing.Font("Segoe UI", 9F);
             label5.Location = new System.Drawing.Point(12, 20);
             label5.Name = "label5";
-            label5.Size = new System.Drawing.Size(109, 16);
+            label5.Size = new System.Drawing.Size(110, 15);
             label5.TabIndex = 1;
             label5.Text = "HM symbol (short):";
             label5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -1012,7 +1074,7 @@
             label6.Font = new System.Drawing.Font("Segoe UI", 9F);
             label6.Location = new System.Drawing.Point(21, 46);
             label6.Name = "label6";
-            label6.Size = new System.Drawing.Size(99, 16);
+            label6.Size = new System.Drawing.Size(100, 15);
             label6.TabIndex = 1;
             label6.Text = "HM symbol (full):";
             label6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -1034,7 +1096,7 @@
             label.Font = new System.Drawing.Font("Segoe UI", 9F);
             label.Location = new System.Drawing.Point(135, 3);
             label.Name = "label";
-            label.Size = new System.Drawing.Size(85, 16);
+            label.Size = new System.Drawing.Size(87, 15);
             label.TabIndex = 1;
             label.Text = "Crystal System:";
             label.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -1080,7 +1142,7 @@
             label11.Font = new System.Drawing.Font("Segoe UI", 9F);
             label11.Location = new System.Drawing.Point(183, 24);
             label11.Name = "label11";
-            label11.Size = new System.Drawing.Size(63, 16);
+            label11.Size = new System.Drawing.Size(64, 15);
             label11.TabIndex = 1;
             label11.Text = "SF symbol:";
             label11.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -1122,7 +1184,7 @@
             label4.Font = new System.Drawing.Font("Segoe UI", 9F);
             label4.Location = new System.Drawing.Point(8, 3);
             label4.Name = "label4";
-            label4.Size = new System.Drawing.Size(53, 16);
+            label4.Size = new System.Drawing.Size(54, 15);
             label4.TabIndex = 1;
             label4.Text = "Number:";
             label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -1150,10 +1212,10 @@
             flowLayoutPanel4.Controls.Add(label12);
             flowLayoutPanel4.Controls.Add(flowLayoutPanel5);
             flowLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Bottom;
-            flowLayoutPanel4.Location = new System.Drawing.Point(4, 743);
+            flowLayoutPanel4.Location = new System.Drawing.Point(4, 744);
             flowLayoutPanel4.Margin = new System.Windows.Forms.Padding(0);
             flowLayoutPanel4.Name = "flowLayoutPanel4";
-            flowLayoutPanel4.Size = new System.Drawing.Size(1020, 20);
+            flowLayoutPanel4.Size = new System.Drawing.Size(1020, 19);
             flowLayoutPanel4.TabIndex = 8;
             // 
             // label15
@@ -1174,7 +1236,7 @@
             label16.Location = new System.Drawing.Point(72, 2);
             label16.Margin = new System.Windows.Forms.Padding(15, 2, 0, 0);
             label16.Name = "label16";
-            label16.Size = new System.Drawing.Size(55, 16);
+            label16.Size = new System.Drawing.Size(55, 15);
             label16.TabIndex = 6;
             label16.Text = "Direction";
             // 
@@ -1185,7 +1247,7 @@
             radioButtonDirectionA.Location = new System.Drawing.Point(127, 0);
             radioButtonDirectionA.Margin = new System.Windows.Forms.Padding(0);
             radioButtonDirectionA.Name = "radioButtonDirectionA";
-            radioButtonDirectionA.Size = new System.Drawing.Size(31, 20);
+            radioButtonDirectionA.Size = new System.Drawing.Size(31, 19);
             radioButtonDirectionA.TabIndex = 1;
             radioButtonDirectionA.Text = "a";
             radioButtonDirectionA.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -1199,7 +1261,7 @@
             radioButtonDirectionB.Location = new System.Drawing.Point(158, 0);
             radioButtonDirectionB.Margin = new System.Windows.Forms.Padding(0);
             radioButtonDirectionB.Name = "radioButtonDirectionB";
-            radioButtonDirectionB.Size = new System.Drawing.Size(32, 20);
+            radioButtonDirectionB.Size = new System.Drawing.Size(32, 19);
             radioButtonDirectionB.TabIndex = 1;
             radioButtonDirectionB.Text = "b";
             radioButtonDirectionB.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -1213,7 +1275,7 @@
             radioButtonDirectionC.Location = new System.Drawing.Point(190, 0);
             radioButtonDirectionC.Margin = new System.Windows.Forms.Padding(0);
             radioButtonDirectionC.Name = "radioButtonDirectionC";
-            radioButtonDirectionC.Size = new System.Drawing.Size(31, 20);
+            radioButtonDirectionC.Size = new System.Drawing.Size(31, 19);
             radioButtonDirectionC.TabIndex = 1;
             radioButtonDirectionC.Text = "c";
             radioButtonDirectionC.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -1227,7 +1289,7 @@
             label12.Location = new System.Drawing.Point(236, 2);
             label12.Margin = new System.Windows.Forms.Padding(15, 2, 0, 0);
             label12.Name = "label12";
-            label12.Size = new System.Drawing.Size(72, 16);
+            label12.Size = new System.Drawing.Size(74, 15);
             label12.TabIndex = 6;
             label12.Text = "Copy format";
             // 
@@ -1237,80 +1299,12 @@
             flowLayoutPanel5.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             flowLayoutPanel5.Controls.Add(radioButtonEmf);
             flowLayoutPanel5.Controls.Add(radioButtonBmp);
-            flowLayoutPanel5.Location = new System.Drawing.Point(308, 0);
+            flowLayoutPanel5.Location = new System.Drawing.Point(310, 0);
             flowLayoutPanel5.Margin = new System.Windows.Forms.Padding(0);
             flowLayoutPanel5.Name = "flowLayoutPanel5";
-            flowLayoutPanel5.Size = new System.Drawing.Size(94, 20);
+            flowLayoutPanel5.Size = new System.Drawing.Size(96, 19);
             flowLayoutPanel5.TabIndex = 7;
             // 
-            // indexControlPlane1
-            // 
-            indexControlPlane1.AutoSize = true;
-            indexControlPlane1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            indexControlPlane1.BoxWidth = 38;
-            indexControlPlane1.Bracket = IndexControl.BracketEnum.Round;
-            indexControlPlane1.Location = new System.Drawing.Point(0, 0);
-            indexControlPlane1.Margin = new System.Windows.Forms.Padding(0);
-            indexControlPlane1.Mode = IndexControl.ModeEnum.Plane;
-            indexControlPlane1.Name = "indexControlPlane1";
-            indexControlPlane1.Size = new System.Drawing.Size(128, 41);
-            indexControlPlane1.SubScript = "1";
-            indexControlPlane1.TabIndex = 14;
-            indexControlPlane1.UpDownWidth = 17;
-            indexControlPlane1.Values = ((int, int, int))resources.GetObject("indexControlPlane1.Values");
-            indexControlPlane1.ValueChanged += numericBox_ValueChanged; // 260517Cl 追加: IndexControl 化で取りこぼした購読を復元
-            //
-            // indexControl1
-            // 
-            indexControlPlane2.AutoSize = true;
-            indexControlPlane2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            indexControlPlane2.BoxWidth = 38;
-            indexControlPlane2.Bracket = IndexControl.BracketEnum.Round;
-            indexControlPlane2.Location = new System.Drawing.Point(0, 0);
-            indexControlPlane2.Margin = new System.Windows.Forms.Padding(0);
-            indexControlPlane2.Mode = IndexControl.ModeEnum.Plane;
-            indexControlPlane2.Name = "indexControl1";
-            indexControlPlane2.Size = new System.Drawing.Size(128, 41);
-            indexControlPlane2.SubScript = "2";
-            indexControlPlane2.TabIndex = 14;
-            indexControlPlane2.UpDownWidth = 17;
-            indexControlPlane2.Values = ((int, int, int))resources.GetObject("indexControl1.Values");
-            indexControlPlane2.ValueChanged += numericBox_ValueChanged; // 260517Cl 追加: IndexControl 化で取りこぼした購読を復元
-            //
-            // indexControlAxis1
-            // 
-            indexControlAxis1.AutoSize = true;
-            indexControlAxis1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            indexControlAxis1.BoxWidth = 38;
-            indexControlAxis1.Bracket = IndexControl.BracketEnum.Round;
-            indexControlAxis1.Location = new System.Drawing.Point(0, 0);
-            indexControlAxis1.Margin = new System.Windows.Forms.Padding(0);
-            indexControlAxis1.Mode = IndexControl.ModeEnum.Axis;
-            indexControlAxis1.Name = "indexControlAxis1";
-            indexControlAxis1.Size = new System.Drawing.Size(128, 41);
-            indexControlAxis1.SubScript = "1";
-            indexControlAxis1.TabIndex = 14;
-            indexControlAxis1.UpDownWidth = 17;
-            indexControlAxis1.Values = ((int, int, int))resources.GetObject("indexControlAxis1.Values");
-            indexControlAxis1.ValueChanged += numericBox_ValueChanged; // 260517Cl 追加: IndexControl 化で取りこぼした購読を復元
-            //
-            // indexControlAxis2
-            // 
-            indexControlAxis2.AutoSize = true;
-            indexControlAxis2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            indexControlAxis2.BoxWidth = 38;
-            indexControlAxis2.Bracket = IndexControl.BracketEnum.Round;
-            indexControlAxis2.Location = new System.Drawing.Point(0, 0);
-            indexControlAxis2.Margin = new System.Windows.Forms.Padding(0);
-            indexControlAxis2.Mode = IndexControl.ModeEnum.Axis;
-            indexControlAxis2.Name = "indexControlAxis2";
-            indexControlAxis2.Size = new System.Drawing.Size(128, 41);
-            indexControlAxis2.SubScript = "2";
-            indexControlAxis2.TabIndex = 14;
-            indexControlAxis2.UpDownWidth = 17;
-            indexControlAxis2.Values = ((int, int, int))resources.GetObject("indexControlAxis2.Values");
-            indexControlAxis2.ValueChanged += numericBox_ValueChanged; // 260517Cl 追加: IndexControl 化で取りこぼした購読を復元
-            //
             // FormSymmetryInformation
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);

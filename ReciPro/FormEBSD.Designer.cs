@@ -232,7 +232,7 @@
             waveLengthControl.Monochrome = true;
             waveLengthControl.Name = "waveLengthControl";
             waveLengthControl.ShowWaveSource = false;
-            waveLengthControl.WaveLength = 0.0085885141045000009D;
+            waveLengthControl.WaveLength = 0.008588514105D;
             waveLengthControl.WaveSource = WaveSource.Electron;
             waveLengthControl.XrayWaveSourceElementNumber = 0;
             waveLengthControl.XrayWaveSourceLine = XrayLine.Ka1;
@@ -278,7 +278,7 @@
             // buttonSimulateBSE
             // 
             resources.ApplyResources(buttonSimulateBSE, "buttonSimulateBSE");
-            buttonSimulateBSE.BackColor = System.Drawing.Color.SteelBlue; // 260520Cl: 主要アクション色を統一
+            buttonSimulateBSE.BackColor = System.Drawing.Color.SteelBlue;
             buttonSimulateBSE.ForeColor = System.Drawing.Color.White;
             buttonSimulateBSE.Name = "buttonSimulateBSE";
             buttonSimulateBSE.UseVisualStyleBackColor = false;
@@ -287,11 +287,8 @@
             // buttonFitNistElasticSampler
             // 
             resources.ApplyResources(buttonFitNistElasticSampler, "buttonFitNistElasticSampler");
-            //buttonFitNistElasticSampler.BackColor = System.Drawing.Color.DarkOliveGreen;// 260520Cl 変更前: 規約外オリーブ(唯一例)。開発者用ツールのため灰色既定へ
-            //buttonFitNistElasticSampler.ForeColor = System.Drawing.Color.White;// 260520Cl 変更前
             buttonFitNistElasticSampler.Name = "buttonFitNistElasticSampler";
-            //buttonFitNistElasticSampler.UseVisualStyleBackColor = false;// 260520Cl 変更前
-            buttonFitNistElasticSampler.UseVisualStyleBackColor = true;// 260520Cl 変更: 既定灰色(姉妹の Benchmark ボタンと統一)
+            buttonFitNistElasticSampler.UseVisualStyleBackColor = true;
             buttonFitNistElasticSampler.Click += buttonFitNistElasticSampler_Click;
             // 
             // graphControlDepthProfile
@@ -882,9 +879,9 @@
             numericBoxEnergyStart.RadianValue = 0.3490658503988659D;
             numericBoxEnergyStart.ShowUpDown = true;
             numericBoxEnergyStart.SmartIncrement = true;
-            numericBoxEnergyStart.ValueBackColor = System.Drawing.SystemColors.Control;
             numericBoxEnergyStart.ThousandsSeparator = true;
             numericBoxEnergyStart.Value = 20D;
+            numericBoxEnergyStart.ValueBackColor = System.Drawing.SystemColors.Control;
             numericBoxEnergyStart.ValueChanged += NumericBoxEnergyStart_ValueChanged;
             // 
             // numericBoxEnergyStep
@@ -1405,11 +1402,8 @@
             // indexControl
             // 
             resources.ApplyResources(indexControl, "indexControl");
-            indexControl.Bracket = IndexControl.BracketEnum.Round;
             indexControl.LabelVisible = false;
-            indexControl.Mode = IndexControl.ModeEnum.Plane;
             indexControl.Name = "indexControl";
-            indexControl.SubScript = "";
             indexControl.Values = ((int, int, int))resources.GetObject("indexControl.Values");
             // 
             // groupBoxEBSDPattern

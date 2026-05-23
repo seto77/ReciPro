@@ -121,6 +121,13 @@
   <data name="waveLengthControl.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
   </data>
+  <data name="waveLengthControl.LabelFont" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="waveLengthControl.ValueFontSize" type="System.Single, mscorlib">
+    <value>9.75</value>
+  </data>
   <data name="buttonViewQuarter.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
   </data>
@@ -145,7 +152,6 @@
   <data name="buttonViewFromZ.Text" xml:space="preserve">
     <value>Z軸 (電子線入射方向) </value>
   </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="buttonSimulateBSE.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -423,7 +429,7 @@
     <value>6, 42</value>
   </data>
   <data name="flowLayoutPanelOutputRange.Size" type="System.Drawing.Size, System.Drawing">
-    <value>481, 25</value>
+    <value>487, 25</value>
   </data>
   <data name="label9.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
@@ -444,16 +450,16 @@
     <value>90, 3</value>
   </data>
   <data name="label12.Size" type="System.Drawing.Size, System.Drawing">
-    <value>20, 15</value>
+    <value>26, 15</value>
   </data>
   <data name="trackBarOutputEnergy.Location" type="System.Drawing.Point, System.Drawing">
-    <value>113, 3</value>
+    <value>119, 3</value>
   </data>
   <data name="label5.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>256, 3</value>
+    <value>262, 3</value>
   </data>
   <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
     <value>27, 15</value>
@@ -462,19 +468,19 @@
     <value>深さ</value>
   </data>
   <data name="textBoxThickness.Location" type="System.Drawing.Point, System.Drawing">
-    <value>283, 0</value>
+    <value>289, 0</value>
   </data>
   <data name="label6.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="label6.Location" type="System.Drawing.Point, System.Drawing">
-    <value>319, 3</value>
+    <value>325, 3</value>
   </data>
   <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
     <value>24, 15</value>
   </data>
   <data name="trackBarOutputThickness.Location" type="System.Drawing.Point, System.Drawing">
-    <value>346, 3</value>
+    <value>352, 3</value>
   </data>
   <data name="label3.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
@@ -638,6 +644,9 @@
   <data name="label13.Text" xml:space="preserve">
     <value>深さ (nm)</value>
   </data>
+  <data name="label14.Size" type="System.Drawing.Size, System.Drawing">
+    <value>56, 17</value>
+  </data>
   <data name="checkBoxShowDyanmicalEBSD.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
   </data>
@@ -659,17 +668,80 @@
   <data name="checkBoxDrawDetectorOutline.Text" xml:space="preserve">
     <value>検出器の輪郭</value>
   </data>
+  <data name="tabControl1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 10pt</value>
+  </data>
   <data name="tabPage1.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="tabPage1.Text" xml:space="preserve">
     <value>SEM-EBSD設定</value>
   </data>
+  <data name="groupBoxEBSDGeometry.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="groupBoxEBSDGeometry.Text" xml:space="preserve">
+    <value>EBSDのセッティング</value>
+  </data>
+  <data name="label17.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="label17.Size" type="System.Drawing.Size, System.Drawing">
+    <value>74, 15</value>
+  </data>
+  <data name="label17.Text" xml:space="preserve">
+    <value>検出器の傾き</value>
+  </data>
+  <data name="label16.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="label16.Location" type="System.Drawing.Point, System.Drawing">
+    <value>25, 55</value>
+  </data>
+  <data name="label16.Size" type="System.Drawing.Size, System.Drawing">
+    <value>77, 15</value>
+  </data>
+  <data name="label16.Text" xml:space="preserve">
+    <value>検出器の半径</value>
+  </data>
+  <data name="groupBoxSampleCondition.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="groupBoxSampleCondition.Text" xml:space="preserve">
+    <value>SEMのセッティング</value>
+  </data>
   <data name="tabPage2.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt, style=Bold</value>
   </data>
   <data name="tabPage2.Text" xml:space="preserve">
     <value>BSE分布</value>
+  </data>
+  <data name="tabPage3.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="tabPage3.Text" xml:space="preserve">
+    <value>補助図形</value>
+  </data>
+  <data name="checkBoxShowMesh.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="checkBoxShowMesh.Location" type="System.Drawing.Point, System.Drawing">
+    <value>126, 25</value>
+  </data>
+  <data name="checkBoxShowMesh.Size" type="System.Drawing.Size, System.Drawing">
+    <value>93, 19</value>
+  </data>
+  <data name="checkBoxShowMesh.Text" xml:space="preserve">
+    <value>メッシュを表示</value>
+  </data>
+  <data name="checkBoxShowCircle.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="checkBoxShowCircle.Size" type="System.Drawing.Size, System.Drawing">
+    <value>71, 19</value>
+  </data>
+  <data name="checkBoxShowCircle.Text" xml:space="preserve">
+    <value>円を表示</value>
   </data>
   <data name="groupBox2.Text" xml:space="preserve">
     <value>文字設定</value>
@@ -706,69 +778,6 @@
   </data>
   <data name="checkBoxShowZoneAxisIndices.Text" xml:space="preserve">
     <value>晶帯軸の指数を表示</value>
-  </data>
-  <data name="tabPage3.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="tabPage3.Text" xml:space="preserve">
-    <value>補助図形</value>
-  </data>
-  <data name="tabControl1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 10pt</value>
-  </data>
-  <data name="groupBoxEBSDGeometry.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="groupBoxEBSDGeometry.Text" xml:space="preserve">
-    <value>EBSDのセッティング</value>
-  </data>
-  <data name="label17.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="label17.Size" type="System.Drawing.Size, System.Drawing">
-    <value>74, 15</value>
-  </data>
-  <data name="label17.Text" xml:space="preserve">
-    <value>検出器の傾き</value>
-  </data>
-  <data name="label16.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="label16.Location" type="System.Drawing.Point, System.Drawing">
-    <value>25, 55</value>
-  </data>
-  <data name="label16.Size" type="System.Drawing.Size, System.Drawing">
-    <value>77, 15</value>
-  </data>
-  <data name="label16.Text" xml:space="preserve">
-    <value>検出器の半径</value>
-  </data>
-  <data name="groupBoxSampleCondition.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="groupBoxSampleCondition.Text" xml:space="preserve">
-    <value>SEMのセッティング</value>
-  </data>
-  <data name="checkBoxShowMesh.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="checkBoxShowMesh.Location" type="System.Drawing.Point, System.Drawing">
-    <value>126, 25</value>
-  </data>
-  <data name="checkBoxShowMesh.Size" type="System.Drawing.Size, System.Drawing">
-    <value>93, 19</value>
-  </data>
-  <data name="checkBoxShowMesh.Text" xml:space="preserve">
-    <value>メッシュを表示</value>
-  </data>
-  <data name="checkBoxShowCircle.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="checkBoxShowCircle.Size" type="System.Drawing.Size, System.Drawing">
-    <value>71, 19</value>
-  </data>
-  <data name="checkBoxShowCircle.Text" xml:space="preserve">
-    <value>円を表示</value>
   </data>
   <data name="groupBoxSimulationParameters.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt, style=Bold</value>
@@ -822,7 +831,7 @@
     <value>453, 25</value>
   </data>
   <data name="flowLayoutPanelMasterPatternSelectors.Size" type="System.Drawing.Size, System.Drawing">
-    <value>473, 27</value>
+    <value>479, 27</value>
   </data>
   <data name="labelMasterPatternEnergy.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
@@ -846,16 +855,16 @@
     <value>88, 3</value>
   </data>
   <data name="labelMasterPatternEnergyUnit.Size" type="System.Drawing.Size, System.Drawing">
-    <value>20, 15</value>
+    <value>26, 15</value>
   </data>
   <data name="trackBarMasterPatternEnergy.Location" type="System.Drawing.Point, System.Drawing">
-    <value>114, 4</value>
+    <value>120, 4</value>
   </data>
   <data name="labelMasterPatternDepth.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="labelMasterPatternDepth.Location" type="System.Drawing.Point, System.Drawing">
-    <value>254, 3</value>
+    <value>260, 3</value>
   </data>
   <data name="labelMasterPatternDepth.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 3, 0, 0</value>
@@ -867,19 +876,19 @@
     <value>深さ</value>
   </data>
   <data name="textBoxMasterPatternDepth.Location" type="System.Drawing.Point, System.Drawing">
-    <value>281, 2</value>
+    <value>287, 2</value>
   </data>
   <data name="labelMasterPatternDepthUnit.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="labelMasterPatternDepthUnit.Location" type="System.Drawing.Point, System.Drawing">
-    <value>311, 3</value>
+    <value>317, 3</value>
   </data>
   <data name="labelMasterPatternDepthUnit.Size" type="System.Drawing.Size, System.Drawing">
     <value>24, 15</value>
   </data>
   <data name="trackBarMasterPatternDepth.Location" type="System.Drawing.Point, System.Drawing">
-    <value>341, 4</value>
+    <value>347, 4</value>
   </data>
   <data name="labelMasterPattern2DHemisphere.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
