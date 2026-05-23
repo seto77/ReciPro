@@ -136,6 +136,19 @@ public partial class FormStereonet : FormBase
         }
     }
 
+    /// <summary>
+    /// 260524Cl 追加: --capture 用。formMain.Crystal の軸/極をステレオネットへプロットする。
+    /// VisibleChanged でも setVector()+Draw() するが、撮影直前に明示的に呼んで確実に軸プロットを出す。
+    /// 通常操作には影響させず、呼び出し元は GuiCapture に限定する。
+    /// </summary>
+    internal void PrepareCaptureForGuiAudit()
+    {
+        if (formMain?.Crystal == null)
+            return;
+        setVector();
+        Draw();
+    }
+
     #endregion
 
     #region 描画関連

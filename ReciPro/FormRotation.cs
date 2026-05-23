@@ -201,6 +201,18 @@ public partial class FormRotationMatrix : FormBase
         FormMain.toolStripButtonRotation.Checked = true;
     }
 
+    /// <summary>
+    /// 260524Cl 追加: --capture 用。Show しただけでは OpenGL のトーラス/軸/球が描かれない (VisibleChanged は描画しない) ため、
+    /// SetRotation() を呼んで現在の Euler 角に対応する GL オブジェクトを生成・描画する。
+    /// 通常操作には影響させず、呼び出し元は GuiCapture に限定する。
+    /// </summary>
+    internal void PrepareCaptureForGuiAudit()
+    {
+        if (FormMain == null)
+            return;
+        SetRotation();
+    }
+
     #endregion
 
     #region Excelのコピーペースト

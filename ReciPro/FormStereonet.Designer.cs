@@ -1058,7 +1058,7 @@ namespace ReciPro
             numericBoxRzOscillation.Value = 8D;
             // 
             // tabPage4
-            // 
+            //
             resources.ApplyResources(tabPage4, "tabPage4");
             tabPage4.BackColor = System.Drawing.SystemColors.Control;
             tabPage4.Controls.Add(waveLengthControl);
@@ -1068,8 +1068,9 @@ namespace ReciPro
             // waveLengthControl
             // 
             resources.ApplyResources(waveLengthControl, "waveLengthControl");
-            // 260524Cl: SetCapture(waveLengthControl, true) は付けない。Stereonet は GL フォームで、自動クロップすると
-            // ステレオネット投影が滲み込み破綻するため (GL フォームの波長/エネルギー選択は手動キャプチャに委ねる)。
+            // 260524Cl: waveLengthControl / tabPage4 に SetCapture は付けない。CopyFromScreen でも、ステレオネット (graphicsBox)
+            // がタブの領域に重なって写り込み、Wave タブのクロップが破綻するため (波長/エネルギー選択は手動キャプチャに委ねる)。
+            // 検証: tabPage4 を Capture=true にすると Wave タブのクロップに waveLengthControl が出ず網が写り込んだ。
             waveLengthControl.Direction = System.Windows.Forms.FlowDirection.TopDown;
             waveLengthControl.Energy = 20D;
             waveLengthControl.Monochrome = true;

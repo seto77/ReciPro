@@ -305,8 +305,9 @@
             checkBoxBragBrentano.CheckedChanged += checkBoxBragBrentano_CheckedChanged;
             // 
             // waveLengthControl1
-            // 
+            //
             resources.ApplyResources(waveLengthControl1, "waveLengthControl1");
+            captureExtender.SetCapture(waveLengthControl1, true); // 260524Cl: 波長/エネルギー選択を auto キャプチャ対象にする (旧: 手動キャプチャのみ)
             waveLengthControl1.Direction = System.Windows.Forms.FlowDirection.TopDown;
             waveLengthControl1.Energy = 8.04114721D;
             waveLengthControl1.Monochrome = true;

@@ -100,6 +100,10 @@ internal static class GuiCapture
                     ebsd.FormMain = captureFormMain; // 260524Cl: Build MasterPattern が FormMain.Crystal を参照するため注入 (Show 時の NRE も解消)
                 else if (form is FormImageSimulator imageSimulator)
                     imageSimulator.FormMain = captureFormMain; // 260524Cl: Simulate が FormMain.Crystal を参照するため注入 (Show 時の NRE も解消)
+                else if (form is FormStereonet stereonet)
+                    stereonet.formMain = captureFormMain; // 260524Cl: 軸/極のプロットは formMain.Crystal が必要 (未注入だと網だけで軸が描かれない。Show 時の NRE も解消)
+                else if (form is FormRotationMatrix rotation)
+                    rotation.FormMain = captureFormMain; // 260524Cl: GL のトーラス/軸/球の描画 (SetRotation) は FormMain の Euler 角を参照するため注入
 
                 CaptureForm(form, type.Name, outDir, Trace, closeAfterCapture: !ReferenceEquals(form, captureFormMain));
                 ok++;
@@ -523,6 +527,16 @@ internal static class GuiCapture
                     imageSimulator.PrepareCaptureForGuiAudit(); // 260524Cl: Simulate を起動
                     trace($"{form.GetType().Name}\tINFO\ttriggered image simulation");
                     WaitUntilScreenStable(form, trace);
+                    break;
+                case FormStereonet stereonet:
+                    stereonet.PrepareCaptureForGuiAudit(); // 260524Cl: 軸/極をプロット (同期・短時間)。VisibleChanged でも描くが念のため明示
+                    Application.DoEvents();
+                    trace($"{form.GetType().Name}\tINFO\tprepared stereonet plot");
+                    break;
+                case FormRotationMatrix rotation:
+                    rotation.PrepareCaptureForGuiAudit(); // 260524Cl: SetRotation で GL のトーラス/軸/球を描く (同期・短時間)
+                    Application.DoEvents();
+                    trace($"{form.GetType().Name}\tINFO\tprepared rotation geometry");
                     break;
             }
         }
