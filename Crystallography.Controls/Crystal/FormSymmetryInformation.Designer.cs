@@ -25,6 +25,7 @@
         // (260323Ch) renamed numeric container controls:
         // groupBox1 -> groupBoxPointGroup
         // groupBox2 -> groupBoxSpaceGroup
+        // (260524Cl) tabPage1 -> tabPageGeometrics (Wiki クロップ名を Wyckoff/Conditions と揃えるため。Capture=true も付与)
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
@@ -48,7 +49,7 @@
             radioButtonBmp = new System.Windows.Forms.RadioButton();
             radioButtonEmf = new System.Windows.Forms.RadioButton();
             tabControl = new System.Windows.Forms.TabControl();
-            tabPage1 = new System.Windows.Forms.TabPage();
+            tabPageGeometrics = new System.Windows.Forms.TabPage();
             numericBoxAnglePlanes = new NumericBox();
             textBoxZoneAxis = new System.Windows.Forms.TextBox();
             numericBoxAngleAxes = new NumericBox();
@@ -140,7 +141,7 @@
             ((System.ComponentModel.ISupportInitialize)graphicsBoxGeneralPositions).BeginInit();
             flowLayoutPanel3.SuspendLayout();
             tabControl.SuspendLayout();
-            tabPage1.SuspendLayout();
+            tabPageGeometrics.SuspendLayout();
             flowLayoutPanel6.SuspendLayout();
             flowLayoutPanel14.SuspendLayout();
             flowLayoutPanel11.SuspendLayout();
@@ -408,7 +409,7 @@
             // 
             // tabControl
             // 
-            tabControl.Controls.Add(tabPage1);
+            tabControl.Controls.Add(tabPageGeometrics);
             tabControl.Controls.Add(tabPageWyckoff);
             tabControl.Controls.Add(tabPageConditions);
             tabControl.Font = new System.Drawing.Font("Segoe UI", 9F);
@@ -418,28 +419,29 @@
             tabControl.Size = new System.Drawing.Size(681, 169);
             tabControl.TabIndex = 4;
             // 
-            // tabPage1
-            // 
-            tabPage1.BackColor = System.Drawing.SystemColors.Control;
-            tabPage1.Controls.Add(numericBoxAnglePlanes);
-            tabPage1.Controls.Add(textBoxZoneAxis);
-            tabPage1.Controls.Add(numericBoxAngleAxes);
-            tabPage1.Controls.Add(flowLayoutPanel6);
-            tabPage1.Controls.Add(label40);
-            tabPage1.Controls.Add(flowLayoutPanel14);
-            tabPage1.Controls.Add(numericBoxAnglePlaneAxis1);
-            tabPage1.Controls.Add(flowLayoutPanel11);
-            tabPage1.Controls.Add(numericBoxAnglePlaneAxis2);
-            tabPage1.Controls.Add(flowLayoutPanel1);
-            tabPage1.Controls.Add(textBoxZonePlane);
-            tabPage1.Controls.Add(label42);
-            tabPage1.Controls.Add(panel1);
-            tabPage1.Location = new System.Drawing.Point(4, 24);
-            tabPage1.Name = "tabPage1";
-            tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            tabPage1.Size = new System.Drawing.Size(673, 141);
-            tabPage1.TabIndex = 3;
-            tabPage1.Text = "Geometrics Calculation";
+            // tabPageGeometrics
+            //
+            captureExtender.SetCapture(tabPageGeometrics, true); // 260524Cl 追加: Wiki 用に Geometrics Calculation タブ単体のクロップを生成する
+            tabPageGeometrics.BackColor = System.Drawing.SystemColors.Control;
+            tabPageGeometrics.Controls.Add(numericBoxAnglePlanes);
+            tabPageGeometrics.Controls.Add(textBoxZoneAxis);
+            tabPageGeometrics.Controls.Add(numericBoxAngleAxes);
+            tabPageGeometrics.Controls.Add(flowLayoutPanel6);
+            tabPageGeometrics.Controls.Add(label40);
+            tabPageGeometrics.Controls.Add(flowLayoutPanel14);
+            tabPageGeometrics.Controls.Add(numericBoxAnglePlaneAxis1);
+            tabPageGeometrics.Controls.Add(flowLayoutPanel11);
+            tabPageGeometrics.Controls.Add(numericBoxAnglePlaneAxis2);
+            tabPageGeometrics.Controls.Add(flowLayoutPanel1);
+            tabPageGeometrics.Controls.Add(textBoxZonePlane);
+            tabPageGeometrics.Controls.Add(label42);
+            tabPageGeometrics.Controls.Add(panel1);
+            tabPageGeometrics.Location = new System.Drawing.Point(4, 24);
+            tabPageGeometrics.Name = "tabPageGeometrics";
+            tabPageGeometrics.Padding = new System.Windows.Forms.Padding(3);
+            tabPageGeometrics.Size = new System.Drawing.Size(673, 141);
+            tabPageGeometrics.TabIndex = 3;
+            tabPageGeometrics.Text = "Geometrics Calculation";
             // 
             // numericBoxAnglePlanes
             // 
@@ -1334,8 +1336,8 @@
             flowLayoutPanel3.ResumeLayout(false);
             flowLayoutPanel3.PerformLayout();
             tabControl.ResumeLayout(false);
-            tabPage1.ResumeLayout(false);
-            tabPage1.PerformLayout();
+            tabPageGeometrics.ResumeLayout(false);
+            tabPageGeometrics.PerformLayout();
             flowLayoutPanel6.ResumeLayout(false);
             flowLayoutPanel6.PerformLayout();
             flowLayoutPanel14.ResumeLayout(false);
@@ -1434,7 +1436,7 @@
         private LabelLaTeX labelLaTexPG_HM;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelExtinctionRule; // 260427Cl
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage tabPageGeometrics;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label4;
         private LabelLaTeX labelLaTexNumber;
