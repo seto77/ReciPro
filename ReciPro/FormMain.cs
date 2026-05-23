@@ -288,7 +288,7 @@ public partial class FormMain : FormBase
         //MainWindowの場所を読み込むため (InitializeComponentの後に読み込む)
         //260405Cl 起動時はUseMKLのCheckedChangedを抑制 (ip未初期化、ダウンロードダイアログ抑制のため)
         toolStripMenuItemUseMKL.CheckedChanged -= toolStripMenuItemUseMKL_CheckedChanged;
-        Registry(Reg.Mode.Read);
+        Registry(Reg.Mode.Read); //260524Cl: 強制カルチャ (--capture) の再適用は Registry() 内に集約済み (全 Read 呼び出しを一括カバー)
         toolStripMenuItemUseMKL.CheckedChanged += toolStripMenuItemUseMKL_CheckedChanged;
 
         //260405Cl 起動時: UseMKLがチェックされていてDLLが存在する場合のみMKLを有効化
@@ -593,6 +593,13 @@ public partial class FormMain : FormBase
 
             //260415Cl Reg.RW<string>(key, mode, Thread.CurrentThread.CurrentUICulture, "Name");
             rw(() => Thread.CurrentThread.CurrentUICulture.Name);
+
+            //260524Cl 追加: --capture の強制カルチャは Registry(Read) のたびにレジストリ値で上書きされてしまう
+            //(直上の rw が CultureInfo.Name を読むため)。Read の直後に必ず強制カルチャへ戻すことで、
+            //ctor だけでなく FormMain_Load 内の Registry(Read) (行360) 後に生成される子フォーム
+            //(FormStructureViewer など) も強制カルチャで構築させる。これをしないと英語ページに日本語 GUI 等が出る。
+            if (mode == Reg.Mode.Read && GuiCapture.ForcedUICulture != null)
+                Thread.CurrentThread.CurrentUICulture = GuiCapture.ForcedUICulture;
 
             //260415Cl owner 一次受け廃止 + rw() ラムダ式呼び出しに書き換え
             rw(() => Bounds);

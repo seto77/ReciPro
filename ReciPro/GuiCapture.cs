@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using Crystallography.OpenGL;
 using System.Drawing;
 using System.Drawing.Imaging;
@@ -9,10 +9,13 @@ using System.Windows.Forms;
 namespace ReciPro;
 
 /// <summary>
-/// 260521Cl 追加: GUI 統一性監査用に ReciPro の全フォームを構築して PNG 一括保存する開発者向けツール。
-/// 起動: <c>ReciPro.exe --capture [出力ディレクトリ]</c>
-/// 対話的な FormCaptureGUI とは別経路で、各フォームを画面外で Show → DrawToBitmap して保存する
-/// (以前一時ハーネスで行っていた DrawToBitmap 方式の再現)。通常起動 (引数なし) では一切実行されない。
+/// 260521Cl 追加 / 260524Cl 全面改修: GUI 統一性監査用に ReciPro の全フォームを構築して PNG 一括保存する開発者向けツール。
+/// 起動: <c>ReciPro.exe --capture [出力ディレクトリ] [カルチャ(en/ja)]</c>
+/// 各フォームを画面内 (0,0) に最前面表示し、<see cref="Graphics.CopyFromScreen(Point, Point, Size)"/> で実描画をそのまま撮る。
+/// 以前は画面外 (-32000,-32000) + <see cref="Control.DrawToBitmap(Bitmap, Rectangle)"/> 方式だったが、
+/// DrawToBitmap (WM_PRINT) ではタブヘッダー・GraphicsBox の GDI 描画・GPU(OpenGL) 描画が正しく取れず、
+/// 重なり合うコントロールの z-order も反転していた (FormCaptureGUI.cs:575 のコメント参照)。
+/// そこで対話ツール FormCaptureGUI と同じ CopyFromScreen 方式へ統一した。通常起動 (引数なし) では一切実行されない。
 /// </summary>
 internal static class GuiCapture
 {
@@ -21,6 +24,12 @@ internal static class GuiCapture
     /// FormMain ctor がレジストリ値で CurrentUICulture を上書きするため、各フォーム構築前に再設定する。
     /// </summary>
     public static System.Globalization.CultureInfo ForcedUICulture;
+
+    // 260524Cl 追加: CopyFromScreen 方式の待機時間。--capture は Application.Run を回さず DoEvents で描画を進めるため、
+    // Show / タブ切替 / 結晶選択の後に「描画が画面へ反映される」まで明示的に待ってから撮る必要がある。
+    private const int FirstPaintSettleMs = 350; // 初回表示後、フォーム全体が描画されるまでの待ち
+    private const int PrepareSettleMs = 450;    // 結晶選択 (spinel) や Trajectory.Simulate 後の再計算・再描画待ち
+    private const int TabSwitchSettleMs = 180;  // クロップ時にタブを切り替えた後の再描画待ち
 
     /// <summary>
     /// --capture の本体。ReciPro 内の parameterless ctor を持つ Form を順に構築し、フォーム単位の PNG を保存する。
@@ -46,6 +55,23 @@ internal static class GuiCapture
         Application.ThreadException += (_, e) => Trace($"\tThreadException\t{e.Exception.GetType().Name}: {e.Exception.Message}");
 
         Trace($"capture start -> {outDir}");
+
+        // 260524Cl 追加: CopyFromScreen は物理画面を読むため、RDP セッションが非表示・最小化・フォーカス喪失だと
+        // "ハンドルが無効です" で失敗する。毎回最初に必ず注意喚起を出す (ユーザー要望)。
+        Trace("==================================================================================");
+        Trace("[CAUTION] Capture uses CopyFromScreen. Keep the screen VISIBLE and FOCUSED until done.");
+        Trace("          Over Remote Desktop (RDP): keep the RDP window in the foreground, and do NOT");
+        Trace("          minimize or disconnect. A hidden/minimized session yields blank/failed shots.");
+        Trace("[注意] 画面キャプチャ中はウィンドウを前面・表示のまま保ってください。RDP の場合は RDP ウィンドウを");
+        Trace("       前面に出したまま最小化・切断しないでください (非表示だと撮影が失敗/真っ黒になります)。");
+        Trace("==================================================================================");
+
+        // 起動時に画面が取得可能か 8x8 で試し、不可ならその場で警告する (全フォーム失敗の前に気付けるように)。
+        using (var probe = CaptureScreen(new Rectangle(0, 0, 8, 8), null, Trace, "screen-probe"))
+        {
+            if (probe == null)
+                Trace("[CAUTION] Screen capture is currently UNAVAILABLE. Bring the (RDP) session to the foreground now.");
+        }
 
         // ReciPro アセンブリ内の、パラメータレスコンストラクタを持つ Form 派生型を対象にする。
         // FormMain を先頭に構築する (他フォームが静的に FormMain を参照する場合に備える)。
@@ -89,7 +115,7 @@ internal static class GuiCapture
         }
 
         // 260523Cl 追加: 親結晶が必要で reflection 列挙では撮れない子フォーム (FormSymmetryInformation /
-        // FormScatteringFactor) を、spinel 選択済みの FormMain が持つ配線済みインスタンス経由で撮る。
+        // FormScatteringFactor / FormStructureViewer) を、spinel 選択済みの FormMain が持つ配線済みインスタンス経由で撮る。
         if (captureFormMain != null)
         {
             foreach (var child in captureFormMain.EnumerateCaptureCrystalDependentForms())
@@ -114,144 +140,256 @@ internal static class GuiCapture
     }
 
     /// <summary>
-    /// 1 つの Form を画面外に表示して撮影する。
-    /// まず WinForms 全体を DrawToBitmap で取得し、その後 DrawToBitmap では空白になりやすい GLControlAlpha 領域を
-    /// GL.ReadPixels 由来の画像で上書きする。closeAfterCapture=false は、後続フォームの準備に FormMain を使うための例外。
+    /// 1 つの Form を画面内に最前面表示して撮影する (260524Cl: DrawToBitmap から CopyFromScreen 方式へ変更)。
+    /// Show → 最前面化 → 描画待ち → 代表状態準備 → 再描画待ち の後、ウィンドウ全体を CopyFromScreen で撮り、
+    /// 続けて Capture=true のコントロール単位クロップを撮る。closeAfterCapture=false は後続フォームの準備に FormMain を使うための例外。
     /// </summary>
     private static void CaptureForm(Form form, string name, string outDir, Action<string> trace, bool closeAfterCapture = true)
     {
         form.StartPosition = FormStartPosition.Manual;
         form.ShowInTaskbar = false;
-        form.Location = new Point(-32000, -32000); // 画面外に表示してちらつきを避ける
-        // Show() で Visible=true にしないと子コントロールが描画されない (CreateControl だけだと空白になる)。
+        form.Location = new Point(0, 0); // CopyFromScreen で実描画を撮るため画面内に表示する
+        // Show() で Visible=true にしないと子コントロールが描画されない。
         // Load 等の例外は ThreadException ハンドラへ流れるためモーダル化せず、ハングしない。
         // ただし Show() の呼び出しスタック上で同期的に投げられる例外もあるため、try で囲んで
-        // 例外が出てもハンドル/レイアウト生成済みなら DrawToBitmap を試みる (部分的にでも撮る)。
+        // 例外が出てもハンドル/レイアウト生成済みなら撮影を試みる (部分的にでも撮る)。
         try { form.Show(); }
         catch (Exception ex) { trace($"{name}\tWARN\tShow: {ex.GetType().Name}: {ex.Message}"); }
-        Application.DoEvents();
-        PrepareSpecialCaptureState(form, trace); // (260523Ch) FormTrajectory など生成直後では代表画像が空になるフォームだけ個別準備
 
-        // 260524Cl: 自動キャプチャは GL/PictureBox を含むフォームの全体像も含め最善努力で撮る (overlay で GL を補完)。
-        // 質の悪い画像はユーザーが手動キャプチャ (cap-*-manual) で上書きする運用 (md は manual 優先・無ければ auto)。
-        int w = Math.Max(form.Width, 1), h = Math.Max(form.Height, 1);
-        using var bmp = new Bitmap(w, h);
-        form.DrawToBitmap(bmp, new Rectangle(0, 0, w, h));
-        var openGlOverlayCount = OverlayOpenGlControls(form, bmp, trace); // (260523Ch) DrawToBitmap で空になる OpenGL 領域を GL.ReadPixels 画像で補完する
-        bmp.Save(Path.Combine(outDir, name + ".png"), ImageFormat.Png);
-        var cropCount = CaptureControlCrops(form, name, outDir, trace); // 260523Cl 追加: Capture=true のコントロール単位クロップを非対話で生成
-        trace($"{name}\tOK\t{w}x{h}\tOpenGL={openGlOverlayCount}\tCrops={cropCount}"); // (260523Cl)
+        BringToFront(form);
+        Settle(form, FirstPaintSettleMs, trace);
+        PrepareSpecialCaptureState(form, trace); // (260523Ch) FormMain は spinel 選択、FormTrajectory は Simulate 相当を実行
+        Settle(form, PrepareSettleMs, trace);
 
-        // form.Close(); // 旧実装: キャプチャ直後に全フォームを閉じていた
+        var bounds = GetWindowVisualBounds(form); // タイトルバー等の非クライアント領域も含むウィンドウ全体 (影は除く)
+        var bmp = CaptureScreen(bounds, form, trace, name, retryIfSolid: true);
+        var captured = bmp != null;
+        if (captured)
+            using (bmp) bmp.Save(Path.Combine(outDir, name + ".png"), ImageFormat.Png);
+        else
+            trace($"{name}\tWARN\tfull-form capture failed (RDP screen hidden/minimized?)"); // 撮れなくても次のフォームへ進む
+        var cropCount = CaptureControlCrops(form, name, outDir, trace); // 260523Cl: Capture=true のコントロール単位クロップ
+        trace($"{name}\t{(captured ? "OK" : "PARTIAL")}\t{bounds.Width}x{bounds.Height}\tCrops={cropCount}");
+
         if (closeAfterCapture)
-            form.Close(); // (260523Ch) FormMain は FormTrajectory 特例の親として最後まで保持する
+        {
+            form.TopMost = false; // (260524Cl) 後続フォームの最前面化を妨げないよう閉じる前に解除
+            form.Close();
+        }
+    }
+
+    /// <summary>260524Cl 追加: CopyFromScreen の前に対象フォームを通常表示・最前面・アクティブ化する。</summary>
+    private static void BringToFront(Form form)
+    {
+        try
+        {
+            if (form.WindowState != FormWindowState.Normal)
+                form.WindowState = FormWindowState.Normal;
+            form.TopMost = true; // 無人実行中に他ウィンドウが被って映り込むのを防ぐ
+            form.BringToFront();
+            form.Activate();
+            if (form.IsHandleCreated)
+                SetForegroundWindow(form.Handle); // RDP でフォーカスが他へ移っても撮影対象を前面へ取り戻す
+        }
+        catch { /* 表示状態変更時の例外は無視 (撮影は後段で最善努力) */ }
     }
 
     /// <summary>
-    /// 260523Cl 追加: Designer で <c>Capture=true</c> を付けたコントロール単位のクロップを、対話 UI を出さずに生成する。
-    /// 対話ツール FormCaptureGUI は CopyFromScreen 方式で対象を前面表示する必要があり画面外キャプチャと両立しないため、
-    /// キャプチャの責務はこの GuiCapture 側に置き、「フォーム全体を DrawToBitmap + OpenGL overlay した合成画像」から
-    /// 各対象の矩形を切り出す。Crystallography.Controls 側へは <see cref="Crystallography.Controls.CaptureExtender.IsCaptureEnabled"/>
+    /// 260524Cl 追加: 指定ミリ秒のあいだ DoEvents を回して描画を画面へ反映させる。
+    /// --capture は Application.Run を回さないため、CopyFromScreen の前にこの明示的な描画待ちが要る。
+    /// OpenGL 領域は通常の Invalidate では更新されないことがあるので、毎回 Render() で可視バッファへ最新シーンを出す。
+    /// </summary>
+    private static void Settle(Form form, int ms, Action<string> trace)
+    {
+        try { form.Refresh(); } catch { /* Refresh 時例外は無視 */ }
+        RenderOpenGlControls(form, trace);
+        var until = Environment.TickCount + Math.Max(ms, 0);
+        do
+        {
+            Application.DoEvents();
+            System.Threading.Thread.Sleep(15);
+        } while (Environment.TickCount < until);
+    }
+
+    /// <summary>
+    /// 260524Cl 追加: フォーム内の GLControlAlpha を通常描画 (SwapBuffers あり) して、可視バッファへ最新シーンを出す。
+    /// CopyFromScreen は画面の front buffer を読むため、撮影前に GL シーンを画面へ反映しておく必要がある。
+    /// </summary>
+    private static void RenderOpenGlControls(Form form, Action<string> trace)
+    {
+        foreach (var glControl in EnumerateControls(form).OfType<GLControlAlpha>())
+        {
+            if (glControl.IsDisposed || !glControl.Visible || glControl.Width <= 0 || glControl.Height <= 0)
+                continue;
+            try { glControl.Render(); } // Render() は renderingForBitmapCapture=false なので SwapBuffers して画面へ表示する
+            catch (Exception ex) { trace($"{form.Name}\tWARN\tGL render {glControl.Name}: {ex.GetType().Name}: {ex.Message}"); }
+        }
+    }
+
+    private const int CaptureMaxAttempts = 5; // 260524Cl: CopyFromScreen 失敗時の最大試行回数
+
+    /// <summary>
+    /// 260524Cl 追加 / 堅牢化: 画面上の指定矩形を CopyFromScreen で撮ってビットマップ化する。
+    /// RDP セッションが非表示・最小化・フォーカス喪失だと CopyFromScreen は <see cref="System.ComponentModel.Win32Exception"/>
+    /// ("ハンドルが無効です") を投げたり全面単色を返したりする。そこで失敗時は foregroundForm を取り直して待ち、
+    /// 数回まで再試行する。最終的に撮れなければ null を返し、呼び出し側は画像を保存せず次へ進む (1 枚の失敗で全体を止めない)。
+    /// retryIfSolid=true (フォーム全体) では全面単色も「実描画が読めていない」とみなして再試行・null 化する
+    /// (黒画像で既存 Wiki 画像を上書きしないため)。クロップ (retryIfSolid=false) の単色は呼び出し側 IsSolidColor が正規にスキップする。
+    /// </summary>
+    private static Bitmap CaptureScreen(Rectangle screenRect, Form foregroundForm = null, Action<string> trace = null, string label = null, bool retryIfSolid = false)
+    {
+        int w = Math.Max(screenRect.Width, 1), h = Math.Max(screenRect.Height, 1);
+        for (int attempt = 1; attempt <= CaptureMaxAttempts; attempt++)
+        {
+            Bitmap bmp = null;
+            try
+            {
+                bmp = new Bitmap(w, h);
+                using (var g = Graphics.FromImage(bmp))
+                    g.CopyFromScreen(screenRect.Location, Point.Empty, new Size(w, h));
+
+                if (!retryIfSolid || !IsSolidColor(bmp))
+                    return bmp; // 成功
+
+                bmp.Dispose(); // 全面単色 = RDP で実描画が読めていない可能性。破棄して再試行。
+                trace?.Invoke($"{label}\tWARN\tCopyFromScreen blank attempt {attempt}/{CaptureMaxAttempts}");
+            }
+            catch (Exception ex)
+            {
+                bmp?.Dispose();
+                trace?.Invoke($"{label}\tWARN\tCopyFromScreen attempt {attempt}/{CaptureMaxAttempts}: {ex.GetType().Name}: {ex.Message}");
+            }
+
+            if (attempt == CaptureMaxAttempts)
+                break;
+            if (foregroundForm != null)
+                BringToFront(foregroundForm); // RDP の一時的なフォーカス喪失対策にフォアグラウンドを取り直す
+            System.Threading.Thread.Sleep(400 * attempt); // 線形バックオフ
+            Application.DoEvents();
+        }
+        return null;
+    }
+
+    [System.Runtime.InteropServices.StructLayout(System.Runtime.InteropServices.LayoutKind.Sequential)]
+    private struct RECT { public int Left, Top, Right, Bottom; }
+
+    [System.Runtime.InteropServices.DllImport("dwmapi.dll")]
+    private static extern int DwmGetWindowAttribute(IntPtr hwnd, int attr, out RECT rect, int size);
+
+    [System.Runtime.InteropServices.DllImport("user32.dll")]
+    private static extern bool SetForegroundWindow(IntPtr hWnd); // 260524Cl: CopyFromScreen 前に対象ウィンドウを確実に前面へ
+
+    private const int DWMWA_EXTENDED_FRAME_BOUNDS = 9;
+
+    /// <summary>
+    /// 260524Cl 追加: CopyFromScreen で撮るウィンドウ全体の矩形を求める。
+    /// WinForms の <see cref="Control.Bounds"/> (GetWindowRect 由来) は Win10/11 の不可視リサイズ枠を含むため
+    /// 実際の描画ウィンドウより一回り大きく、そのまま CopyFromScreen すると下端などに背後のデスクトップが写り込む。
+    /// DWM の実視覚矩形 (DWMWA_EXTENDED_FRAME_BOUNDS、影は除く) が取れればそれを使い、失敗時のみ Bounds に戻す。
+    /// </summary>
+    private static Rectangle GetWindowVisualBounds(Form form)
+    {
+        try
+        {
+            if (form.IsHandleCreated
+                && DwmGetWindowAttribute(form.Handle, DWMWA_EXTENDED_FRAME_BOUNDS, out var r, System.Runtime.InteropServices.Marshal.SizeOf<RECT>()) == 0
+                && r.Right > r.Left && r.Bottom > r.Top)
+                return new Rectangle(r.Left, r.Top, r.Right - r.Left, r.Bottom - r.Top);
+        }
+        catch { /* P/Invoke 失敗時は Bounds にフォールバック */ }
+        return form.Bounds;
+    }
+
+    /// <summary>260524Cl 追加: コントロールの実際の左上スクリーン座標を求める (FormCaptureGUI と同一規則)。</summary>
+    private static Point GetScreenLocation(Control control)
+        => control is Form ? control.Bounds.Location
+         : control.Parent != null ? control.Parent.PointToScreen(control.Location)
+         : control.PointToScreen(Point.Empty);
+
+    /// <summary>
+    /// 260523Cl 追加 / 260524Cl 改修: Designer で <c>Capture=true</c> を付けたコントロール単位のクロップを、対話 UI を出さずに生成する。
+    /// 各対象を CopyFromScreen で個別に撮る (FormCaptureGUI と同方式)。命名は手動キャプチャと同じ規則
+    /// (form.Name 起点、SplitterPanel/ToolStripPanel/無名は除外) で、既存の Wiki 画像 raw URL を壊さない。
+    /// Crystallography.Controls 側へは <see cref="Crystallography.Controls.CaptureExtender.IsCaptureEnabled"/>
     /// (Capture=true 判定) だけを依存し、対象列挙・パス命名・空白判定はすべてここで行う。
-    /// 命名は FormCaptureGUI の手動キャプチャと同じ規則 (form.Name 起点、SplitterPanel/ToolStripPanel/無名は除外) で、
-    /// 既存の Wiki 画像 raw URL を壊さない。同じタブ選択状態の対象は合成画像を使い回し、タブ切替時だけ撮り直す。
     /// </summary>
     /// <returns>保存できたクロップ数。</returns>
     private static int CaptureControlCrops(Form form, string name, string outDir, Action<string> trace)
     {
         var count = 0;
-        Bitmap formBmp = null;
-        string lastTabSignature = null;
-        try
+        // Capture=true のコントロールを列挙する。ToolStripItem (メニュードロップダウン展開等) は
+        // 別ウィンドウのため非対話では撮らない (= EnumerateControls には現れないので自然に除外される)。
+        foreach (var control in EnumerateControls(form))
         {
-            // Capture=true のコントロールを列挙する。ToolStripItem (メニュードロップダウン展開等) は
-            // 別ウィンドウのため非対話では撮らない (= EnumerateControls には現れないので自然に除外される)。
-            foreach (var control in EnumerateControls(form))
+            if (control is Form || string.IsNullOrEmpty(control.Name) || control.IsDisposed || control.Width <= 0 || control.Height <= 0)
+                continue;
+            if (!Crystallography.Controls.CaptureExtender.IsCaptureEnabled(control))
+                continue;
+
+            try
             {
-                if (control is Form || string.IsNullOrEmpty(control.Name) || control.IsDisposed || control.Width <= 0 || control.Height <= 0)
-                    continue;
-                if (!Crystallography.Controls.CaptureExtender.IsCaptureEnabled(control))
-                    continue;
+                // タブを選択し直したときだけ再描画を待つ (毎回の長い待機を避ける)。
+                if (EnsureAncestorTabsSelected(control))
+                    Settle(form, TabSwitchSettleMs, trace);
 
-                try
+                Bitmap crop;
+                if (!IsEffectivelyVisible(form, control))
                 {
-                    EnsureAncestorTabsSelected(control);
-                    Application.DoEvents();
-
-                    Bitmap crop;
-                    if (!IsEffectivelyVisible(form, control))
-                    {
-                        // 260524Cl 追加: 既定で Visible=false の Capture=true コントロール (例: 歳差モードでのみ
-                        // 表示される flowLayoutPanelPED) は合成画像に現れないため、一時的に可視化して単体で撮る。
-                        crop = RenderHiddenControl(control);
-                        if (crop == null)
-                            continue;
-                    }
-                    else
-                    {
-                        // タブ選択が変わったときだけフォーム全体を撮り直し、同一タブ上の複数クロップで合成画像を共有する。
-                        var signature = GetTabSelectionSignature(form);
-                        if (formBmp == null || signature != lastTabSignature)
-                        {
-                            formBmp?.Dispose();
-                            formBmp = new Bitmap(Math.Max(form.Width, 1), Math.Max(form.Height, 1));
-                            form.DrawToBitmap(formBmp, new Rectangle(0, 0, formBmp.Width, formBmp.Height));
-                            OverlayOpenGlControls(form, formBmp, trace);
-                            lastTabSignature = signature;
-                        }
-
-                        // TabPage は親 TabControl 全体 (タブ見出し込み) を撮る (FormCaptureGUI と同じ見た目)。
-                        var region = control is TabPage tabPage && tabPage.Parent is TabControl tabControl ? (Control)tabControl : control;
-                        var rect = GetControlBoundsInFormBitmap(form, region, region.Size);
-                        var clipped = Rectangle.Intersect(new Rectangle(Point.Empty, formBmp.Size), rect);
-                        if (clipped.Width <= 0 || clipped.Height <= 0)
-                            continue;
-
-                        crop = new Bitmap(clipped.Width, clipped.Height);
-                        using var g = Graphics.FromImage(crop);
-                        g.DrawImage(formBmp, new Rectangle(Point.Empty, clipped.Size), clipped, GraphicsUnit.Pixel);
-                    }
-
-                    using (crop)
-                    {
-                        if (IsSolidColor(crop))
-                            continue; // Visible=false のパネル等で単色になったクロップは保存しない
-
-                        var fileName = SanitizeFileName(BuildCapturePath(form, control)) + ".png";
-                        crop.Save(Path.Combine(outDir, fileName), ImageFormat.Png);
-                        count++;
-                    }
+                    // 260524Cl: 既定で Visible=false の Capture=true コントロール (例: 歳差モードでのみ表示される
+                    // flowLayoutPanelPED) は通常表示に現れないため、一時的に可視化・最前面化して単体で撮る。
+                    crop = RenderHiddenControl(form, control, trace);
+                    if (crop == null)
+                        continue;
                 }
-                catch (Exception ex)
+                else
                 {
-                    // 1 コントロールの失敗で残りのクロップを諦めない (GuiCapture 全体の「可能な限り次へ進む」方針)。
-                    trace($"{name}\tWARN\tcrop {control.Name}: {ex.GetType().Name}: {ex.Message}");
+                    // TabPage は親 TabControl 全体 (タブ見出し込み) を撮る (FormCaptureGUI と同じ見た目)。
+                    var region = control is TabPage tabPage && tabPage.Parent is TabControl tabControl ? (Control)tabControl : control;
+                    region.Refresh();
+                    RenderOpenGlControls(form, trace); // 領域内に GL があれば最新シーンを画面へ反映
+                    Application.DoEvents();
+                    crop = CaptureScreen(new Rectangle(GetScreenLocation(region), region.Size), form, trace, $"{name}.{control.Name}");
+                    if (crop == null)
+                        continue; // RDP 画面が一時的に取得不能なら、このクロップは諦めて次へ
+                }
+
+                using (crop)
+                {
+                    if (IsSolidColor(crop))
+                        continue; // Visible=false のパネル等で単色になったクロップは保存しない
+
+                    var fileName = SanitizeFileName(BuildCapturePath(form, control)) + ".png";
+                    crop.Save(Path.Combine(outDir, fileName), ImageFormat.Png);
+                    count++;
                 }
             }
-        }
-        finally
-        {
-            formBmp?.Dispose();
+            catch (Exception ex)
+            {
+                // 1 コントロールの失敗で残りのクロップを諦めない (GuiCapture 全体の「可能な限り次へ進む」方針)。
+                trace($"{name}\tWARN\tcrop {control.Name}: {ex.GetType().Name}: {ex.Message}");
+            }
         }
         return count;
     }
 
-    /// <summary>260523Cl 追加: コントロールの祖先 TabPage を順に選択し、クロップ時に可視化する。</summary>
-    private static void EnsureAncestorTabsSelected(Control control)
+    /// <summary>
+    /// 260523Cl 追加 / 260524Cl 改修: コントロールの祖先 TabPage を順に選択し、クロップ時に可視化する。
+    /// いずれかのタブ選択を実際に変更したら true (呼び出し側が再描画待ちを入れるため)。
+    /// </summary>
+    private static bool EnsureAncestorTabsSelected(Control control)
     {
+        var changed = false;
         for (var c = control; c != null; c = c.Parent)
         {
             if (c is TabPage tabPage && tabPage.Parent is TabControl tabControl && tabControl.SelectedTab != tabPage)
             {
                 tabControl.SelectedTab = tabPage;
                 tabControl.Refresh();
+                changed = true;
             }
         }
+        return changed;
     }
-
-    /// <summary>260523Cl 追加: フォーム内全 TabControl の選択タブ状態の署名。変化したときだけ合成画像を撮り直す。</summary>
-    private static string GetTabSelectionSignature(Form form)
-        => string.Join(",", EnumerateControls(form).OfType<TabControl>().Select(t => $"{t.Name}:{t.SelectedIndex}"));
 
     /// <summary>260524Cl 追加: control から form まで全て Visible なら true。途中に Visible=false があれば false。</summary>
     private static bool IsEffectivelyVisible(Form form, Control control)
@@ -263,11 +401,11 @@ internal static class GuiCapture
     }
 
     /// <summary>
-    /// 260524Cl 追加: 既定で非表示の Capture=true コントロールを撮るため、自身と非表示の祖先を一時的に
-    /// Visible=true にして単体 DrawToBitmap し、撮影後に必ず元の可視状態へ戻す (後続クロップ・共有合成画像に影響させない)。
-    /// 例: 歳差モードでのみ表示される FormDiffractionSimulator の flowLayoutPanelPED。GL を含む領域は対象外。
+    /// 260524Cl 改修: 既定で非表示の Capture=true コントロールを撮るため、自身と非表示の祖先を一時的に
+    /// Visible=true・最前面にして CopyFromScreen し、撮影後に必ず元の可視状態へ戻す (後続クロップに影響させない)。
+    /// 例: 歳差モードでのみ表示される FormDiffractionSimulator の flowLayoutPanelPED。
     /// </summary>
-    private static Bitmap RenderHiddenControl(Control control)
+    private static Bitmap RenderHiddenControl(Form form, Control control, Action<string> trace)
     {
         var toggled = new List<Control>();
         for (var c = control; c != null && c is not Form; c = c.Parent)
@@ -276,11 +414,8 @@ internal static class GuiCapture
         {
             control.BringToFront();
             control.PerformLayout();
-            Application.DoEvents();
-            int w = Math.Max(control.Width, 1), h = Math.Max(control.Height, 1);
-            var bmp = new Bitmap(w, h);
-            control.DrawToBitmap(bmp, new Rectangle(0, 0, w, h));
-            return bmp;
+            Settle(form, TabSwitchSettleMs, trace);
+            return CaptureScreen(new Rectangle(GetScreenLocation(control), control.Size), form, trace, control.Name);
         }
         finally
         {
@@ -377,66 +512,6 @@ internal static class GuiCapture
         {
             trace($"{form.GetType().Name}\tWARN\tPrepareCapture: {ex.GetType().Name}: {ex.Message}");
         }
-    }
-
-    /// <summary>
-    /// (260523Ch) DrawToBitmap 後のフォーム画像に、GLControlAlpha の実描画結果を合成する。
-    /// WinForms の DrawToBitmap は OpenGL back/front buffer の内容を拾えず白紙になりやすいため、
-    /// GLControlAlpha.GenerateBitmap(renderBeforeRead: true) で各 GL 領域だけ再描画・ReadPixels し、フォーム画像へ貼り戻す。
-    /// </summary>
-    /// <returns>合成できた GLControlAlpha の数。</returns>
-    private static int OverlayOpenGlControls(Form form, Bitmap formBitmap, Action<string> trace)
-    {
-        var count = 0;
-        using var graphics = Graphics.FromImage(formBitmap);
-        foreach (var glControl in EnumerateControls(form).OfType<GLControlAlpha>())
-        {
-            if (glControl.IsDisposed || !glControl.Visible || glControl.Width <= 0 || glControl.Height <= 0)
-                continue;
-
-            try
-            {
-                glControl.Refresh(); // (260523Ch) off-screen Show 後の未描画バッファをできるだけ避ける
-                Application.DoEvents();
-
-                using var glBitmap = glControl.GenerateBitmap(renderBeforeRead: true); // (260523Ch) キャプチャ時は swap なし再描画後の back buffer を読む
-                if (glBitmap == null || glBitmap.Width <= 0 || glBitmap.Height <= 0)
-                    continue;
-
-                var target = GetControlBoundsInFormBitmap(form, glControl, glBitmap.Size);
-                var clippedTarget = Rectangle.Intersect(new Rectangle(Point.Empty, formBitmap.Size), target);
-                if (clippedTarget.Width <= 0 || clippedTarget.Height <= 0)
-                    continue;
-
-                var source = new Rectangle(
-                    clippedTarget.X - target.X,
-                    clippedTarget.Y - target.Y,
-                    clippedTarget.Width,
-                    clippedTarget.Height);
-                graphics.DrawImage(glBitmap, clippedTarget, source, GraphicsUnit.Pixel);
-                count++;
-            }
-            catch (Exception ex)
-            {
-                trace($"{form.GetType().Name}\tWARN\tOpenGL overlay {glControl.Name}: {ex.GetType().Name}: {ex.Message}");
-            }
-        }
-        return count;
-    }
-
-    /// <summary>
-    /// (260523Ch) GL 画像をフォーム全体 PNG のどこへ貼るかを求める。
-    /// DrawToBitmap のフォーム画像はタイトルバー等の非クライアント領域も含むため、
-    /// 親子 Control の Location だけではずれる。PointToScreen と form.Bounds の差分で合成位置を決める。
-    /// </summary>
-    private static Rectangle GetControlBoundsInFormBitmap(Form form, Control control, Size bitmapSize)
-    {
-        var controlScreenLocation = control.PointToScreen(Point.Empty);
-        return new Rectangle(
-            controlScreenLocation.X - form.Bounds.X,
-            controlScreenLocation.Y - form.Bounds.Y,
-            bitmapSize.Width,
-            bitmapSize.Height); // (260523Ch) Form 全体画像は非クライアント領域も含むため screen 座標差分で合成位置を求める
     }
 
     /// <summary>
