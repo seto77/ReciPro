@@ -93,9 +93,13 @@ internal static class GuiCapture
                     System.Threading.Thread.CurrentThread.CurrentUICulture = ForcedUICulture;
                 form = (Form)Activator.CreateInstance(type);
                 if (form is FormMain mainForm)
-                    captureFormMain = mainForm; // (260523Ch) reflection 順の先頭で作った FormMain を後続 FormTrajectory の親情報として再利用する
+                    captureFormMain = mainForm; // (260523Ch) reflection 順の先頭で作った FormMain を後続フォームの親情報として再利用する
                 else if (form is FormTrajectory trajectory)
                     trajectory.FormMain = captureFormMain; // (260523Ch) FormTrajectory は単独生成だと Simulate 時に FormMain.Crystal を参照できない
+                else if (form is FormEBSD ebsd)
+                    ebsd.FormMain = captureFormMain; // 260524Cl: Build MasterPattern が FormMain.Crystal を参照するため注入 (Show 時の NRE も解消)
+                else if (form is FormImageSimulator imageSimulator)
+                    imageSimulator.FormMain = captureFormMain; // 260524Cl: Simulate が FormMain.Crystal を参照するため注入 (Show 時の NRE も解消)
 
                 CaptureForm(form, type.Name, outDir, Trace, closeAfterCapture: !ReferenceEquals(form, captureFormMain));
                 ok++;
@@ -489,6 +493,8 @@ internal static class GuiCapture
     /// (260523Ch) フォームを Show しただけではマニュアル用の代表状態にならない画面を、撮影直前に整える。
     /// ここは通常 UI 初期化ではなくキャプチャ用の薄い分岐置き場なので、対象フォームは必要最小限に留める。
     /// FormMain は代表結晶を Spinel にし、FormTrajectory は Simulate 相当を実行して GL 軌跡を生成する。
+    /// 260524Cl: 重い計算フォーム (FormEBSD の MasterPattern build / FormImageSimulator の Simulate) は、起動だけして
+    /// 完了判定は <see cref="WaitUntilScreenStable"/> (5秒ごとに撮って変化が無くなったら完了) に委ねる。
     /// </summary>
     private static void PrepareSpecialCaptureState(Form form, Action<string> trace)
     {
@@ -499,18 +505,98 @@ internal static class GuiCapture
             return;
         }
 
-        if (form is not FormTrajectory trajectory)
-            return;
-
         try
         {
-            trajectory.PrepareCaptureForGuiAudit(); // (260523Ch) FormTrajectory は Simulate 後でないと GL 軌跡が存在しない
-            Application.DoEvents();
-            trace($"{form.GetType().Name}\tINFO\tprepared trajectory simulation");
+            switch (form)
+            {
+                case FormTrajectory trajectory:
+                    trajectory.PrepareCaptureForGuiAudit(); // (260523Ch) FormTrajectory は Simulate 後でないと GL 軌跡が存在しない (同期・短時間)
+                    Application.DoEvents();
+                    trace($"{form.GetType().Name}\tINFO\tprepared trajectory simulation");
+                    break;
+                case FormEBSD ebsd:
+                    ebsd.PrepareCaptureForGuiAudit(); // 260524Cl: Build MasterPattern を起動
+                    trace($"{form.GetType().Name}\tINFO\ttriggered EBSD master pattern build");
+                    WaitUntilScreenStable(form, trace); // 重く非同期なので「画面が変化しなくなったら完了」で待つ
+                    break;
+                case FormImageSimulator imageSimulator:
+                    imageSimulator.PrepareCaptureForGuiAudit(); // 260524Cl: Simulate を起動
+                    trace($"{form.GetType().Name}\tINFO\ttriggered image simulation");
+                    WaitUntilScreenStable(form, trace);
+                    break;
+            }
         }
         catch (Exception ex)
         {
             trace($"{form.GetType().Name}\tWARN\tPrepareCapture: {ex.GetType().Name}: {ex.Message}");
+        }
+    }
+
+    private const int StabilizePollMs = 5000;  // 260524Cl: 重い計算フォームを撮る前に、この間隔で画面を撮り比べる
+    private const int StabilizeMaxPolls = 72;  // 上限 (5秒 × 72 = 6分)。計算が終わらなくてもこの時点で撮る
+
+    /// <summary>
+    /// 260524Cl 追加: 重い計算フォーム用の単純な完了判定。<see cref="StabilizePollMs"/> ごとにウィンドウ全体を撮り、
+    /// 直前の撮影と画素が完全一致したら「計算が終わって画面が止まった」とみなして戻る (凝った完了判定はしない)。
+    /// 進捗バーや経過時間ラベルが動いている間は一致しないので、それらが止まる = 計算完了で抜ける。
+    /// キャレット点滅で一致しないのを避けるため、待機前にアクティブコントロールを外す。上限に達したらそのまま戻る。
+    /// </summary>
+    private static void WaitUntilScreenStable(Form form, Action<string> trace)
+    {
+        try { form.ActiveControl = null; } catch { /* キャレット点滅で画面が一致しなくなるのを避ける */ }
+
+        Bitmap previous = null;
+        try
+        {
+            for (var poll = 1; poll <= StabilizeMaxPolls; poll++)
+            {
+                var until = Environment.TickCount + StabilizePollMs; // StabilizePollMs ぶん描画を進める
+                do { Application.DoEvents(); System.Threading.Thread.Sleep(30); } while (Environment.TickCount < until);
+                RenderOpenGlControls(form, trace); // GL 結果 (EBSD MasterPattern3D 等) を可視バッファへ反映
+
+                var current = CaptureScreen(GetWindowVisualBounds(form));
+                if (current == null)
+                    continue; // 一時的に撮れなければ次のポーリングへ
+
+                if (previous != null && BitmapsEqual(previous, current))
+                {
+                    current.Dispose();
+                    trace($"{form.Name}\tINFO\tscreen stable after ~{poll * StabilizePollMs / 1000}s");
+                    return;
+                }
+                previous?.Dispose();
+                previous = current;
+            }
+            trace($"{form.Name}\tINFO\tscreen not stable within {StabilizeMaxPolls * StabilizePollMs / 1000}s; capturing as-is");
+        }
+        finally
+        {
+            previous?.Dispose();
+        }
+    }
+
+    /// <summary>260524Cl 追加: 同サイズの 2 枚のビットマップが画素単位で完全一致するか。WaitUntilScreenStable の変化判定用。</summary>
+    private static bool BitmapsEqual(Bitmap a, Bitmap b)
+    {
+        if (a.Width != b.Width || a.Height != b.Height)
+            return false;
+
+        var rect = new Rectangle(0, 0, a.Width, a.Height);
+        var da = a.LockBits(rect, ImageLockMode.ReadOnly, PixelFormat.Format32bppArgb);
+        var db = b.LockBits(rect, ImageLockMode.ReadOnly, PixelFormat.Format32bppArgb);
+        try
+        {
+            var bytes = Math.Abs(da.Stride) * a.Height;
+            var bufferA = new byte[bytes];
+            var bufferB = new byte[bytes];
+            System.Runtime.InteropServices.Marshal.Copy(da.Scan0, bufferA, 0, bytes);
+            System.Runtime.InteropServices.Marshal.Copy(db.Scan0, bufferB, 0, bytes);
+            return bufferA.AsSpan().SequenceEqual(bufferB);
+        }
+        finally
+        {
+            a.UnlockBits(da);
+            b.UnlockBits(db);
         }
     }
 

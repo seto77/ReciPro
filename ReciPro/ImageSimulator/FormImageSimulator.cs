@@ -372,6 +372,18 @@ public partial class FormImageSimulator : FormBase
             simulateSTEM(sync);
     }
 
+    /// <summary>
+    /// 260524Cl 追加: --capture 用。Show しただけでは画像が無いため、現在のモードの Simulate を起動するだけ。
+    /// 計算完了の判定は凝ったことをせず、GuiCapture 側が「画面が変化しなくなったら完了」と見なす (5秒ごとの画面比較)。
+    /// 通常操作には影響させず、呼び出し元は GuiCapture に限定する。
+    /// </summary>
+    internal void PrepareCaptureForGuiAudit()
+    {
+        if (FormMain?.Crystal == null)
+            return;
+        Simulate(); // Simulate ボタン相当を起動 (STEM は非同期、HRTEM/POTENTIAL は同期)。完了判定は GuiCapture の画面安定待ちに委ねる。
+    }
+
     #endregion
 
     #region STEMシミュレーション
