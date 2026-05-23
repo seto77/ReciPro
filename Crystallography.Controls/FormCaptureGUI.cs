@@ -446,24 +446,26 @@ public partial class FormCaptureGUI : FormBase
         PopulateTargetForms(); // 260521Cl: 開いているフォーム一覧も再取得 (capture 操作中に開いた FormCTF 等を拾う)
     }
 
-    /// <summary>デフォルトの保存先を取得 (言語に応じて doc/cap-en または doc/cap-ja)</summary>
+    /// <summary>デフォルトの保存先を取得 (手動キャプチャは Wiki リポの cap-{en|ja}-manual)</summary>
     private static string GetDefaultOutputDir()
     {
-        // 260323Cl: ReciPro/doc/capture/ をデフォルトにする
-        // 260323Cl: 言語に応じて cap-en / cap-ja を切り替え
-        var langDir = System.Threading.Thread.CurrentThread.CurrentUICulture.Name == "ja" ? "cap-ja" : "cap-en";
-        // 実行ファイルが bin/Debug/ 等にあるので、プロジェクトルートを探す
+        // 260524Cl: 保存先を Wiki リポ (ReciPro.wiki) の cap-{en|ja}-manual に変更。
+        //   旧: ReciPro/doc/cap-{en|ja} (= projectRoot/doc/cap-*)。doc/cap-* は廃止し、画像は Wiki リポに集約する。
+        // var langDir = System.Threading.Thread.CurrentThread.CurrentUICulture.Name == "ja" ? "cap-ja" : "cap-en"; // 260524Cl 旧
+        var langDir = System.Threading.Thread.CurrentThread.CurrentUICulture.Name == "ja" ? "cap-ja-manual" : "cap-en-manual";
+        // 実行ファイル (bin/Debug/...) からプロジェクトルート (...\ReciPro\ReciPro) → repos ルート (...\source\repos) を辿る
         var exeDir = AppDomain.CurrentDomain.BaseDirectory;
         var dir = new DirectoryInfo(exeDir);
-        // bin フォルダの2階層上がプロジェクトルート (bin/Debug/net10.0-windows... → ReciPro/)
         while (dir != null && dir.Name != "bin")
             dir = dir.Parent;
-        var projectRoot = dir?.Parent;
-        if (projectRoot != null)
-            return Path.Combine(projectRoot.FullName, "doc", langDir);
+        var projectRoot = dir?.Parent;                 // ...\source\repos\ReciPro\ReciPro
+        var reposRoot = projectRoot?.Parent?.Parent;   // ...\source\repos
+        // if (projectRoot != null) return Path.Combine(projectRoot.FullName, "doc", langDir); // 260524Cl 旧: main リポ doc/cap-*
+        if (reposRoot != null)
+            return Path.Combine(reposRoot.FullName, "ReciPro.wiki", langDir);
 
         // フォールバック: 実行フォルダ直下
-        return Path.Combine(exeDir, "doc", langDir);
+        return Path.Combine(exeDir, langDir);
     }
 
     /// <summary>Capture ボタン</summary>

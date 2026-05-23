@@ -1068,6 +1068,8 @@ namespace ReciPro
             // waveLengthControl
             // 
             resources.ApplyResources(waveLengthControl, "waveLengthControl");
+            // 260524Cl: SetCapture(waveLengthControl, true) は付けない。Stereonet は GL フォームで、自動クロップすると
+            // ステレオネット投影が滲み込み破綻するため (GL フォームの波長/エネルギー選択は手動キャプチャに委ねる)。
             waveLengthControl.Direction = System.Windows.Forms.FlowDirection.TopDown;
             waveLengthControl.Energy = 20D;
             waveLengthControl.Monochrome = true;

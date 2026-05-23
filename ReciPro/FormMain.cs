@@ -1353,6 +1353,11 @@ public partial class FormMain : FormBase
             yield return crystalControl.FormSymmetryInformation;
         if (crystalControl.FormScatteringFactor != null)
             yield return crystalControl.FormScatteringFactor;
+        // 260524Cl 追加: FormStructureViewer は reflection 単独生成だと formMain=null で結晶が無く、原子タブ等が空で
+        // クロップされない。FormMain が保持する配線済みインスタンスを渡すと、Show 時の VisibleChanged で
+        // 現在結晶 (spinel) が SetGLObjects され、原子タブ含め代表状態で撮れる (reflection 版を上書き)。
+        if (FormStructureViewer != null)
+            yield return FormStructureViewer;
     }
 
     private void listBox_MouseDown(object sender, MouseEventArgs e)

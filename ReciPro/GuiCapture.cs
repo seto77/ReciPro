@@ -132,14 +132,14 @@ internal static class GuiCapture
         Application.DoEvents();
         PrepareSpecialCaptureState(form, trace); // (260523Ch) FormTrajectory など生成直後では代表画像が空になるフォームだけ個別準備
 
+        // 260524Cl: 自動キャプチャは GL/PictureBox を含むフォームの全体像も含め最善努力で撮る (overlay で GL を補完)。
+        // 質の悪い画像はユーザーが手動キャプチャ (cap-*-manual) で上書きする運用 (md は manual 優先・無ければ auto)。
         int w = Math.Max(form.Width, 1), h = Math.Max(form.Height, 1);
         using var bmp = new Bitmap(w, h);
         form.DrawToBitmap(bmp, new Rectangle(0, 0, w, h));
         var openGlOverlayCount = OverlayOpenGlControls(form, bmp, trace); // (260523Ch) DrawToBitmap で空になる OpenGL 領域を GL.ReadPixels 画像で補完する
         bmp.Save(Path.Combine(outDir, name + ".png"), ImageFormat.Png);
         var cropCount = CaptureControlCrops(form, name, outDir, trace); // 260523Cl 追加: Capture=true のコントロール単位クロップを非対話で生成
-        // trace($"{name}\tOK\t{w}x{h}"); // 旧実装: DrawToBitmap の結果だけを保存していた
-        // trace($"{name}\tOK\t{w}x{h}\tOpenGL={openGlOverlayCount}"); // 260523Cl 旧: クロップ件数を含まないログ
         trace($"{name}\tOK\t{w}x{h}\tOpenGL={openGlOverlayCount}\tCrops={cropCount}"); // (260523Cl)
 
         // form.Close(); // 旧実装: キャプチャ直後に全フォームを閉じていた
@@ -178,34 +178,49 @@ internal static class GuiCapture
                     EnsureAncestorTabsSelected(control);
                     Application.DoEvents();
 
-                    // タブ選択が変わったときだけフォーム全体を撮り直し、同一タブ上の複数クロップで合成画像を共有する。
-                    var signature = GetTabSelectionSignature(form);
-                    if (formBmp == null || signature != lastTabSignature)
+                    Bitmap crop;
+                    if (!IsEffectivelyVisible(form, control))
                     {
-                        formBmp?.Dispose();
-                        formBmp = new Bitmap(Math.Max(form.Width, 1), Math.Max(form.Height, 1));
-                        form.DrawToBitmap(formBmp, new Rectangle(0, 0, formBmp.Width, formBmp.Height));
-                        OverlayOpenGlControls(form, formBmp, trace);
-                        lastTabSignature = signature;
+                        // 260524Cl 追加: 既定で Visible=false の Capture=true コントロール (例: 歳差モードでのみ
+                        // 表示される flowLayoutPanelPED) は合成画像に現れないため、一時的に可視化して単体で撮る。
+                        crop = RenderHiddenControl(control);
+                        if (crop == null)
+                            continue;
+                    }
+                    else
+                    {
+                        // タブ選択が変わったときだけフォーム全体を撮り直し、同一タブ上の複数クロップで合成画像を共有する。
+                        var signature = GetTabSelectionSignature(form);
+                        if (formBmp == null || signature != lastTabSignature)
+                        {
+                            formBmp?.Dispose();
+                            formBmp = new Bitmap(Math.Max(form.Width, 1), Math.Max(form.Height, 1));
+                            form.DrawToBitmap(formBmp, new Rectangle(0, 0, formBmp.Width, formBmp.Height));
+                            OverlayOpenGlControls(form, formBmp, trace);
+                            lastTabSignature = signature;
+                        }
+
+                        // TabPage は親 TabControl 全体 (タブ見出し込み) を撮る (FormCaptureGUI と同じ見た目)。
+                        var region = control is TabPage tabPage && tabPage.Parent is TabControl tabControl ? (Control)tabControl : control;
+                        var rect = GetControlBoundsInFormBitmap(form, region, region.Size);
+                        var clipped = Rectangle.Intersect(new Rectangle(Point.Empty, formBmp.Size), rect);
+                        if (clipped.Width <= 0 || clipped.Height <= 0)
+                            continue;
+
+                        crop = new Bitmap(clipped.Width, clipped.Height);
+                        using var g = Graphics.FromImage(crop);
+                        g.DrawImage(formBmp, new Rectangle(Point.Empty, clipped.Size), clipped, GraphicsUnit.Pixel);
                     }
 
-                    // TabPage は親 TabControl 全体 (タブ見出し込み) を撮る (FormCaptureGUI と同じ見た目)。
-                    var region = control is TabPage tabPage && tabPage.Parent is TabControl tabControl ? (Control)tabControl : control;
-                    var rect = GetControlBoundsInFormBitmap(form, region, region.Size);
-                    var clipped = Rectangle.Intersect(new Rectangle(Point.Empty, formBmp.Size), rect);
-                    if (clipped.Width <= 0 || clipped.Height <= 0)
-                        continue;
+                    using (crop)
+                    {
+                        if (IsSolidColor(crop))
+                            continue; // Visible=false のパネル等で単色になったクロップは保存しない
 
-                    using var crop = new Bitmap(clipped.Width, clipped.Height);
-                    using (var g = Graphics.FromImage(crop))
-                        g.DrawImage(formBmp, new Rectangle(Point.Empty, clipped.Size), clipped, GraphicsUnit.Pixel);
-
-                    if (IsSolidColor(crop))
-                        continue; // Visible=false のパネル等で単色になったクロップは保存しない
-
-                    var fileName = SanitizeFileName(BuildCapturePath(form, control)) + ".png";
-                    crop.Save(Path.Combine(outDir, fileName), ImageFormat.Png);
-                    count++;
+                        var fileName = SanitizeFileName(BuildCapturePath(form, control)) + ".png";
+                        crop.Save(Path.Combine(outDir, fileName), ImageFormat.Png);
+                        count++;
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -237,6 +252,43 @@ internal static class GuiCapture
     /// <summary>260523Cl 追加: フォーム内全 TabControl の選択タブ状態の署名。変化したときだけ合成画像を撮り直す。</summary>
     private static string GetTabSelectionSignature(Form form)
         => string.Join(",", EnumerateControls(form).OfType<TabControl>().Select(t => $"{t.Name}:{t.SelectedIndex}"));
+
+    /// <summary>260524Cl 追加: control から form まで全て Visible なら true。途中に Visible=false があれば false。</summary>
+    private static bool IsEffectivelyVisible(Form form, Control control)
+    {
+        for (var c = control; c != null && !ReferenceEquals(c, form); c = c.Parent)
+            if (!c.Visible)
+                return false;
+        return true;
+    }
+
+    /// <summary>
+    /// 260524Cl 追加: 既定で非表示の Capture=true コントロールを撮るため、自身と非表示の祖先を一時的に
+    /// Visible=true にして単体 DrawToBitmap し、撮影後に必ず元の可視状態へ戻す (後続クロップ・共有合成画像に影響させない)。
+    /// 例: 歳差モードでのみ表示される FormDiffractionSimulator の flowLayoutPanelPED。GL を含む領域は対象外。
+    /// </summary>
+    private static Bitmap RenderHiddenControl(Control control)
+    {
+        var toggled = new List<Control>();
+        for (var c = control; c != null && c is not Form; c = c.Parent)
+            if (!c.Visible) { c.Visible = true; toggled.Add(c); }
+        try
+        {
+            control.BringToFront();
+            control.PerformLayout();
+            Application.DoEvents();
+            int w = Math.Max(control.Width, 1), h = Math.Max(control.Height, 1);
+            var bmp = new Bitmap(w, h);
+            control.DrawToBitmap(bmp, new Rectangle(0, 0, w, h));
+            return bmp;
+        }
+        finally
+        {
+            for (var i = toggled.Count - 1; i >= 0; i--) // 逆順 (子→親) で元の非表示へ戻す
+                toggled[i].Visible = false;
+            Application.DoEvents();
+        }
+    }
 
     /// <summary>
     /// 260523Cl 追加: コントロールのキャプチャ用パス (= クロップのファイル名 stem) を組み立てる。
