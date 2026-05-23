@@ -75,6 +75,22 @@ public partial class FormTrajectory : FormBase
         Draw3D();
     }
 
+    /// <summary>
+    /// (260523Ch) --capture 専用の事前描画処理。
+    /// FormTrajectory はフォームを Show しただけでは GLControl に軌跡が存在せず、
+    /// ユーザーが Simulate ボタンを押した後に CalcMonteCarlo / DrawStatistics / Draw3D が走って初めて代表画像になる。
+    /// 一括キャプチャでは人間がボタンを押せないため、この関数で Simulate 相当の処理だけを明示的に実行する。
+    /// 通常操作の初期状態やボタン挙動を変えないため、呼び出し元は GuiCapture に限定する。
+    /// </summary>
+    internal void PrepareCaptureForGuiAudit()
+    {
+        if (FormMain == null)
+            return;
+
+        // buttonCalculate_Click(buttonSimulate, EventArgs.Empty); // 旧実装相当: ユーザーが Simulate ボタンを押すまで GL 描画されない
+        buttonCalculate_Click(buttonSimulate, EventArgs.Empty); // (260523Ch) --capture では FormTrajectory だけ代表軌跡を事前描画する
+    }
+
     #region 3D描画をどの方向から眺めるかのボタン
     private void buttonViewFromX_Click(object sender, EventArgs e)
         => glControlTrajectory.WorldMatrix = Matrix4d.CreateRotationY(-Math.PI / 2) * Matrix4d.CreateRotationZ(-Math.PI / 2);

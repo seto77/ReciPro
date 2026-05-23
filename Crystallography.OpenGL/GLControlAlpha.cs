@@ -100,6 +100,7 @@ public unsafe partial class GLControlAlpha : UserControl
     private readonly List<GLObject> glObjects = [];
     private readonly GLObject quad = null;
     private readonly Action renderAction;
+    private bool renderingForBitmapCapture = false; // (260523Ch) GenerateBitmap 用の再描画では SwapBuffers せず back buffer を直接読む
     private readonly Dictionary<int, ProgramLocations> programLocations = []; // (260319Ch) ZSORT は mesh/text の 2 program を持てるようにする
     private int passPpll1Index = 0;
     private int passPpll2Index = 0;
@@ -1246,7 +1247,9 @@ public unsafe partial class GLControlAlpha : UserControl
         {
             GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
             GL.ClearColor(BackgroundColor);
-            glControl.SwapBuffers();//swap
+            // glControl.SwapBuffers();//swap // 旧実装: Bitmap 生成用の再描画でも常に front/back を入れ替えていた
+            if (!renderingForBitmapCapture)
+                glControl.SwapBuffers();//swap // (260523Ch) キャプチャ用描画は back buffer を保持して ReadPixels する
             return;
         }
 
@@ -1439,11 +1442,15 @@ public unsafe partial class GLControlAlpha : UserControl
         // glControl.SwapBuffers(); // (260319Ch) 旧案: final image をそのまま back buffer から表示する
         if (shouldApplyPostAntiAliasing())
             resolvePostAntiAliasing(); // (260319Ch) PPLL/DDP は最終画像へ 1 回だけ FXAA を掛けてジャギーを和らげる
-        glControl.SwapBuffers();
+        // glControl.SwapBuffers(); // 旧実装: Bitmap 生成用の再描画でも常に front/back を入れ替えていた
+        if (!renderingForBitmapCapture)
+            glControl.SwapBuffers(); // (260523Ch) GenerateBitmap(renderBeforeRead: true) では back buffer の最終画像を直接読む
         // GL.Finish();
         // (260319Ch) 毎フレームの強制 GPU 完了待ちは CPU/GPU を直列化してしまうので通常描画では行わない
         
-        Paint?.Invoke(this, new PaintEventArgs(glControlGraphics, glControl.ClientRectangle));
+        // Paint?.Invoke(this, new PaintEventArgs(glControlGraphics, glControl.ClientRectangle)); // 旧実装: Render 完了時は常に外部 Paint を通知していた
+        if (!renderingForBitmapCapture)
+            Paint?.Invoke(this, new PaintEventArgs(glControlGraphics, glControl.ClientRectangle)); // (260523Ch) キャプチャ専用再描画では副作用を抑える
     }
 
     private bool hasRenderableObject()
@@ -1641,12 +1648,46 @@ public unsafe partial class GLControlAlpha : UserControl
 
     #region ビットマップ画像の作成
 
-    public Bitmap GenerateBitmap()
+    /// <summary>
+    /// 現在の OpenGL バッファを Bitmap として取得する。
+    /// (260523Ch) renderBeforeRead=true は ReciPro の --capture 用経路で、画面外表示後に最新シーンを
+    /// SwapBuffers なしで back buffer へ描画し、その直後に ReadPixels する。通常表示の front/back 入れ替えとは
+    /// 独立させることで、DrawToBitmap で空白になる OpenGL 領域をフォーム PNG に合成できる。
+    /// </summary>
+    /// <param name="renderBeforeRead">true の場合、ReadPixels 前に capture 用再描画を行う。</param>
+    /// <returns>GL 内容の Bitmap。OpenGL 無効時やサイズ 0 の場合は null。</returns>
+    public Bitmap GenerateBitmap(bool renderBeforeRead = false)
     {
         if (Program < 1 || glControl == null) return null; // 260420Cl 追加 DisablingOpenGL 時は null を返す (呼び出し側は null チェックするか操作失敗として扱う)
+        if (InvokeRequired)
+            return (Bitmap)Invoke(new Func<Bitmap>(() => GenerateBitmap(renderBeforeRead))); // (260523Ch) GL context 操作を UI thread に寄せる
         glControl.MakeCurrent();
-        var bmp = new Bitmap(glControl.ClientSize.Width, glControl.Height);
+
+        if (renderBeforeRead)
+        {
+            var previousRenderingForBitmapCapture = renderingForBitmapCapture;
+            renderingForBitmapCapture = true;
+            try
+            {
+                Render(); // (260523Ch) SwapBuffers なしで back buffer に最新シーンを描いてから読む
+                glControl.MakeCurrent();
+                GL.Finish(); // (260523Ch) 非対話 --capture で GPU 完了前に ReadPixels する揺らぎを避ける
+            }
+            finally
+            {
+                renderingForBitmapCapture = previousRenderingForBitmapCapture;
+            }
+        }
+
+        var width = glControl.ClientSize.Width;
+        var height = glControl.ClientSize.Height;
+        if (width <= 0 || height <= 0)
+            return null;
+
+        // var bmp = new Bitmap(glControl.ClientSize.Width, glControl.Height); // 旧実装: 現在のバッファをそのまま読む
+        var bmp = new Bitmap(width, height); // (260523Ch) capture 用再描画後の back buffer サイズと合わせる
         var data = bmp.LockBits(Rectangle.FromLTRB(0, 0, bmp.Width, bmp.Height), System.Drawing.Imaging.ImageLockMode.WriteOnly, System.Drawing.Imaging.PixelFormat.Format24bppRgb);
+        GL.ReadBuffer(ReadBufferMode.Back); // (260523Ch) Render(swapなし) の出力先である back buffer を明示して読む
         GL.ReadPixels(0, 0, bmp.Width, bmp.Height, PixelFormat.Bgr, PixelType.UnsignedByte, data.Scan0);
         bmp.UnlockBits(data);
         bmp.RotateFlip(RotateFlipType.RotateNoneFlipY);

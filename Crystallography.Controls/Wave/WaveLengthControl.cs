@@ -401,7 +401,7 @@ public partial class WaveLengthControl : UserControlBase
             numericBoxWaveLength.Enabled = true;
 
             if (radioButtonElectron.Checked)
-                numericBoxEnergy.FooterText = "kV";
+                numericBoxEnergy.FooterText = "keV";
             else if (radioButtonNeutron.Checked)
                 numericBoxEnergy.FooterText = "meV";
         }

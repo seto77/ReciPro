@@ -1307,6 +1307,54 @@ public partial class FormMain : FormBase
         DrawAxes();
     }
 
+    /// <summary>
+    /// (260523Ch) --capture 専用の代表結晶選択。
+    /// 通常起動時の初期選択は従来どおり変更しないが、マニュアル/GUI監査用スクリーンショットでは
+    /// 初期値の Au だと「重元素かつ単純構造」の絵になり、典型例として偏りやすい。
+    /// そのため一括キャプチャ時だけ、結晶リストから Spinel など指定名を含む結晶を探して選択する。
+    /// FormTrajectory など FormMain.Crystal を参照して計算するフォームも、この選択結果を代表状態として使う。
+    /// </summary>
+    /// <param name="preferredName">結晶名に含まれていてほしい文字列。既定は "spinel"。</param>
+    /// <returns>指定名を含む結晶を見つけて選択できた場合は true。</returns>
+    internal bool PrepareCaptureCrystalSelection(string preferredName = "spinel")
+    {
+        if (string.IsNullOrWhiteSpace(preferredName))
+            return false;
+
+        for (var i = 0; i < listBox.Items.Count; i++)
+        {
+            if (listBox.Items[i] is not Crystal crystal || string.IsNullOrEmpty(crystal.Name))
+                continue;
+
+            if (crystal.Name.Contains(preferredName, StringComparison.OrdinalIgnoreCase))
+            {
+                // SelectedCrystalIndex = 0; // 旧実装相当: --capture では初期選択 Au のまま撮影・計算していた
+                SelectedCrystalIndex = i; // (260523Ch) --capture の代表結晶は Spinel にして構造/計算結果を典型例に近づける
+                Application.DoEvents();
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    /// <summary>
+    /// 260523Cl 追加: --capture 用。crystalControl が保持する結晶依存の子フォーム
+    /// (FormSymmetryInformation / FormScatteringFactor) を返す。
+    /// これらは Crystallography.Controls アセンブリにあり、かつ親から CrystalControl を注入されて
+    /// 初めて動く (単独 reflection 生成では Load で NullReferenceException)。そのため --capture の
+    /// reflection 列挙では撮れず、spinel 選択済みの FormMain が持つ配線済みインスタンスを GuiCapture へ渡す。
+    /// </summary>
+    internal IEnumerable<Form> EnumerateCaptureCrystalDependentForms()
+    {
+        if (crystalControl == null)
+            yield break;
+        if (crystalControl.FormSymmetryInformation != null)
+            yield return crystalControl.FormSymmetryInformation;
+        if (crystalControl.FormScatteringFactor != null)
+            yield return crystalControl.FormScatteringFactor;
+    }
+
     private void listBox_MouseDown(object sender, MouseEventArgs e)
     {
         if (renameTextBox != null && groupBoxCrystalList.Controls.Contains(renameTextBox))

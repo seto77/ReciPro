@@ -45,6 +45,8 @@ internal static class Program
         if (args.Length >= 1 && args[0] == "--capture")
         {
             GuiCapture.Run(args.Length >= 2 ? args[1] : null);
+            // return; // 旧実装: Main の return だけでは OpenTK/WinForms 周辺スレッドが残り DLL を掴むことがあった
+            Environment.Exit(0); // (260523Ch) --capture 完了後は開発者ツールとしてプロセスを確実に終了させる
             return;
         }
 
