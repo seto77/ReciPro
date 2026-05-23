@@ -383,17 +383,24 @@ internal static class GuiCapture
     /// <summary>
     /// 260523Cl 追加 / 260524Cl 改修: コントロールの祖先 TabPage を順に選択し、クロップ時に可視化する。
     /// いずれかのタブ選択を実際に変更したら true (呼び出し側が再描画待ちを入れるため)。
+    /// 260524Cl: TabControl を BringToFront して、重なる兄弟コントロール (例: FormStereonet/FormDiffractionSimulator の
+    /// stereonet graphicsBox。これらのフォームはタブクリック時に同様の前後入れ替えを行う) より前面に出し、
+    /// タブ内容がその背後描画で隠れて撮れない問題を防ぐ。全体像は crop より前に撮るので影響しない。
     /// </summary>
     private static bool EnsureAncestorTabsSelected(Control control)
     {
         var changed = false;
         for (var c = control; c != null; c = c.Parent)
         {
-            if (c is TabPage tabPage && tabPage.Parent is TabControl tabControl && tabControl.SelectedTab != tabPage)
+            if (c is TabPage tabPage && tabPage.Parent is TabControl tabControl)
             {
-                tabControl.SelectedTab = tabPage;
+                if (tabControl.SelectedTab != tabPage)
+                {
+                    tabControl.SelectedTab = tabPage;
+                    changed = true;
+                }
+                tabControl.BringToFront(); // 重なる graphicsBox 等より前面へ (フォーム側のタブ前後入れ替えロジックと同じ z-order 効果)
                 tabControl.Refresh();
-                changed = true;
             }
         }
         return changed;

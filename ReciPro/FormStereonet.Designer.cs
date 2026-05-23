@@ -1060,6 +1060,7 @@ namespace ReciPro
             // tabPage4
             //
             resources.ApplyResources(tabPage4, "tabPage4");
+            captureExtender.SetCapture(tabPage4, true); // 260524Cl: Wave タブ (波長/エネルギー選択) を auto キャプチャ。GuiCapture が crop 時に TabControl を前面化するので stereonet は写り込まない
             tabPage4.BackColor = System.Drawing.SystemColors.Control;
             tabPage4.Controls.Add(waveLengthControl);
             tabPage4.Name = "tabPage4";
@@ -1068,9 +1069,9 @@ namespace ReciPro
             // waveLengthControl
             // 
             resources.ApplyResources(waveLengthControl, "waveLengthControl");
-            // 260524Cl: waveLengthControl / tabPage4 に SetCapture は付けない。CopyFromScreen でも、ステレオネット (graphicsBox)
-            // がタブの領域に重なって写り込み、Wave タブのクロップが破綻するため (波長/エネルギー選択は手動キャプチャに委ねる)。
-            // 検証: tabPage4 を Capture=true にすると Wave タブのクロップに waveLengthControl が出ず網が写り込んだ。
+            // 260524Cl: Capture は内側の waveLengthControl ではなく親の tabPage4 (上で SetCapture 済) に付ける。
+            // 以前は stereonet (graphicsBox) がタブ領域に重なって写り込んだが、GuiCapture が crop 時に TabControl を
+            // BringToFront する (フォームのタブ前後入れ替えと同じ z-order) ようにしたので、Wave タブを正しく撮れる。
             waveLengthControl.Direction = System.Windows.Forms.FlowDirection.TopDown;
             waveLengthControl.Energy = 20D;
             waveLengthControl.Monochrome = true;
