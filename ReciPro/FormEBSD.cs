@@ -2159,12 +2159,12 @@ public partial class FormEBSD : FormBase
 
     private void TrackBarOutputThickness_Scroll(object sender, EventArgs e)
     {
-        textBoxThickness.Text = ThicknessArray[trackBarOutputThickness.Value].ToString();
+        numericBoxDepth.Value = ThicknessArray[trackBarOutputThickness.Value];
         Draw();
     }
     private void trackBarOutputEnergy_ValueChanged(object sender, EventArgs e)
     {
-        textBoxEnergy.Text = EnergyArray[trackBarOutputEnergy.Value].ToString();
+        numericBoxEnergy.Value = EnergyArray[trackBarOutputEnergy.Value];
         Draw();
     }
     private void trackBarIntensityBrightnessMax_ValueChanged(object sender, EventArgs e) => Draw();
@@ -2493,8 +2493,8 @@ public partial class FormEBSD : FormBase
         trackBarOutputEnergy.Maximum = Math.Max(0, MasterPattern.Energies.Length - 1);
         trackBarOutputThickness.Maximum = Math.Max(0, MasterPattern.Depths.Length - 1);
         trackBarOutputEnergy.Value = trackBarOutputThickness.Value = 0;
-        textBoxEnergy.Text = MasterPattern.Energies.Length > 0 ? MasterPattern.Energies[0].ToString() : "";
-        textBoxThickness.Text = MasterPattern.Depths.Length > 0 ? MasterPattern.Depths[0].ToString() : "";
+        numericBoxEnergy.Value = MasterPattern.Energies.Length > 0 ? MasterPattern.Energies[0] : 0;
+        numericBoxDepth.Value = MasterPattern.Depths.Length > 0 ? MasterPattern.Depths[0] : 0;
 
     }
 
@@ -2537,7 +2537,7 @@ public partial class FormEBSD : FormBase
         if (MasterPattern == null)
         {
             trackBarMasterPatternEnergy.Enabled = trackBarMasterPatternDepth.Enabled = false;
-            textBoxMasterPatternEnergy.Text = textBoxMasterPatternDepth.Text = "";
+            numericBoxMasterPatternEnergy.Value = numericBoxMasterPatternDepth.Value = 0;
             return;
         }
 
@@ -2575,17 +2575,14 @@ public partial class FormEBSD : FormBase
     {
         if (MasterPattern == null)
         {
-            textBoxMasterPatternEnergy.Text = "";
-            textBoxMasterPatternDepth.Text = "";
+            numericBoxMasterPatternEnergy.Value = numericBoxMasterPatternDepth.Value = 0;
             return;
         }
 
-        textBoxMasterPatternEnergy.Text = trackBarMasterPatternEnergy.Enabled && trackBarMasterPatternEnergy.Value < MasterPattern.Energies.Length
-            ? MasterPattern.Energies[trackBarMasterPatternEnergy.Value].ToString("g")
-            : "";
-        textBoxMasterPatternDepth.Text = trackBarMasterPatternDepth.Enabled && trackBarMasterPatternDepth.Value < MasterPattern.Depths.Length
-            ? MasterPattern.Depths[trackBarMasterPatternDepth.Value].ToString("g")
-            : ""; // (260321Ch)
+        numericBoxMasterPatternEnergy.Value = trackBarMasterPatternEnergy.Enabled && trackBarMasterPatternEnergy.Value < MasterPattern.Energies.Length
+            ? MasterPattern.Energies[trackBarMasterPatternEnergy.Value] : 0;
+        numericBoxMasterPatternDepth.Value = trackBarMasterPatternDepth.Enabled && trackBarMasterPatternDepth.Value < MasterPattern.Depths.Length
+            ? MasterPattern.Depths[trackBarMasterPatternDepth.Value] : 0; // (260321Ch)
     }
 
     /// <summary>hemisphere enum を UI 表示用の文字列へ変換する。</summary>

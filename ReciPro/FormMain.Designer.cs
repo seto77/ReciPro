@@ -944,7 +944,6 @@
             // 
             resources.ApplyResources(toolStripButtonDiffractionSingle, "toolStripButtonDiffractionSingle");
             toolStripButtonDiffractionSingle.Name = "toolStripButtonDiffractionSingle";
-            toolStripButtonDiffractionSingle.CheckedChanged += toolStripButtonElectronDiffraction_CheckedChanged;
             toolStripButtonDiffractionSingle.MouseDown += toolStripButtons_MouseDown;
             // 
             // toolStripSeparator4

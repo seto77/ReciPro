@@ -124,10 +124,6 @@
   <data name="waveLengthControl.LabelFont" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
   </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="waveLengthControl.ValueFontSize" type="System.Single, mscorlib">
-    <value>9.75</value>
-  </data>
   <data name="buttonViewQuarter.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
   </data>
@@ -152,6 +148,7 @@
   <data name="buttonViewFromZ.Text" xml:space="preserve">
     <value>Z軸 (電子線入射方向) </value>
   </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="buttonSimulateBSE.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -643,9 +640,6 @@
   </data>
   <data name="label13.Text" xml:space="preserve">
     <value>深さ (nm)</value>
-  </data>
-  <data name="label14.Size" type="System.Drawing.Size, System.Drawing">
-    <value>56, 17</value>
   </data>
   <data name="checkBoxShowDyanmicalEBSD.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
