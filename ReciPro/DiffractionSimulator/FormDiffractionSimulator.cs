@@ -516,6 +516,36 @@ public partial class FormDiffractionSimulator : FormBase
         SetVector();
         Draw();
     }
+
+    /// <summary>
+    /// 260524Cl 追加: --capture 用。回折スポット情報 (FormDiffractionBeamTable) の表は動力学計算をしないと空のまま。
+    /// 「動力学効果」を選び、Bethe の回折波を計算 (UI の Draw 相当の計算部分) して配線済みの表を populate し、その表を返す。
+    /// フォーム自体を表示しなくても表は埋まる (graphicsBox 描画は不要)。呼び出し元は GuiCapture (FormMain 経由) に限定する。
+    /// </summary>
+    internal FormDiffractionSpotInfo PrepareCaptureSpotInfoForGuiAudit()
+    {
+        var crystal = formMain?.Crystal;
+        if (crystal == null || FormDiffractionBeamTable == null)
+            return null;
+        try
+        {
+            radioButtonIntensityDynamical.Checked = true; // 「動力学効果」を選択 (これが無いと表は空のまま)
+            FormDiffractionBeamTable.Visible = true;        // Draw がこの表を populate する条件 (Draw 内 if (FormDiffractionBeamTable.Visible))
+            // Draw は g-vector 探索 → 動力学(Bethe)計算 → SetTable を行うが、SetProjection に graphicsBox のサイズが要る。
+            // FormMain 配下のこのインスタンスは未表示なので、画面外で一時的に表示してレイアウトさせてから Draw する。
+            StartPosition = FormStartPosition.Manual;
+            ShowInTaskbar = false;
+            Location = new System.Drawing.Point(-32000, -32000);
+            if (!Visible)
+                Show();
+            Application.DoEvents();
+            SetVector();
+            Draw(); // g-vector 探索 → 動力学(Bethe)計算 → FormDiffractionBeamTable.SetTable で表を populate
+            Application.DoEvents();
+        }
+        catch { /* 計算失敗時は空表のまま撮らせる (キャプチャ全体は止めない) */ }
+        return FormDiffractionBeamTable;
+    }
     #endregion
 
     #region プロジェクション行列の設定

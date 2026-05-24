@@ -1128,14 +1128,6 @@ public partial class FormMain : FormBase
         button.Checked = form.Visible;
     }
 
-    async private void toolStripButtonElectronDiffraction_CheckedChanged(object sender, EventArgs e)
-    {
-        //Electron diffractionを表示した直後、なぜかグラフィックボックスがグレーになってしまうので、その対処.
-        await Task.Delay(200);
-        if (FormDiffractionSimulator.Visible)
-            FormDiffractionSimulator.Draw();
-    }
-
     private void toolStripButtonPolycrystallineDiffraction_CheckedChanged(object sender, EventArgs e)
     {
         FormPolycrystallineDiffractionSimulator.Visible = toolStripButtonDiffractionPoly.Checked;
@@ -1365,6 +1357,10 @@ public partial class FormMain : FormBase
         // 現在結晶 (spinel) が SetGLObjects され、原子タブ含め代表状態で撮れる (reflection 版を上書き)。
         if (FormStructureViewer != null)
             yield return FormStructureViewer;
+        // 260524Cl 追加: 回折スポット情報 (FormDiffractionBeamTable) の表は「動力学効果」で計算しないと空になる。
+        // FormDiffractionSimulator 側で動力学計算を走らせて配線済みの表を populate し、それを撮る (reflection 単独生成の空表版を上書き)。
+        if (FormDiffractionSimulator?.PrepareCaptureSpotInfoForGuiAudit() is { } diffractionSpotInfo)
+            yield return diffractionSpotInfo;
     }
 
     private void listBox_MouseDown(object sender, MouseEventArgs e)
