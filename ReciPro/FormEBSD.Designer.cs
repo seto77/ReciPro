@@ -201,6 +201,7 @@
             // panelGeometry
             // 
             resources.ApplyResources(panelGeometry, "panelGeometry");
+            captureExtender.SetCapture(panelGeometry, true); // 260524Cl 追加: Wiki 用クロップ (SEM/検出器の 3D ジオメトリ図)
             panelGeometry.Name = "panelGeometry";
             // 
             // numericBoxSampleTilt
@@ -934,6 +935,7 @@
             groupBoxEBSDGeometry.Controls.Add(numericBoxZofDet);
             groupBoxEBSDGeometry.Controls.Add(numericBoxDetTilt);
             resources.ApplyResources(groupBoxEBSDGeometry, "groupBoxEBSDGeometry");
+            captureExtender.SetCapture(groupBoxEBSDGeometry, true); // 260524Cl 追加: Wiki 用クロップ (検出器ジオメトリ)
             groupBoxEBSDGeometry.Name = "groupBoxEBSDGeometry";
             groupBoxEBSDGeometry.TabStop = false;
             // 
@@ -952,6 +954,7 @@
             groupBoxSampleCondition.Controls.Add(waveLengthControl);
             groupBoxSampleCondition.Controls.Add(numericBoxSampleTilt);
             resources.ApplyResources(groupBoxSampleCondition, "groupBoxSampleCondition");
+            captureExtender.SetCapture(groupBoxSampleCondition, true); // 260524Cl 追加: Wiki 用クロップ (SEM・試料条件)
             groupBoxSampleCondition.Name = "groupBoxSampleCondition";
             groupBoxSampleCondition.TabStop = false;
             // 
@@ -967,6 +970,7 @@
             tabPage2.Controls.Add(graphControlDepthProfile);
             tabPage2.Controls.Add(graphControlEnergyProfile);
             resources.ApplyResources(tabPage2, "tabPage2");
+            captureExtender.SetCapture(tabPage2, true); // 260524Cl 追加: Wiki 用クロップ (BSE 分布タブ)
             tabPage2.Name = "tabPage2";
             // 
             // label15
@@ -988,6 +992,7 @@
             tabPage3.Controls.Add(colorControlBackGround);
             tabPage3.Controls.Add(checkBoxShowZoneAxisIndices);
             resources.ApplyResources(tabPage3, "tabPage3");
+            captureExtender.SetCapture(tabPage3, true); // 260524Cl 追加: Wiki 用クロップ (オーバーレイ タブ)
             tabPage3.Name = "tabPage3";
             // 
             // groupBoxDetectorOutline
@@ -1073,6 +1078,7 @@
             // groupBoxSimulationParameters
             // 
             resources.ApplyResources(groupBoxSimulationParameters, "groupBoxSimulationParameters");
+            captureExtender.SetCapture(groupBoxSimulationParameters, true); // 260524Cl 追加: Wiki 用クロップ (動力学計算パラメータ)
             groupBoxSimulationParameters.Controls.Add(flowLayoutPanel9);
             groupBoxSimulationParameters.Name = "groupBoxSimulationParameters";
             groupBoxSimulationParameters.TabStop = false;
@@ -1281,6 +1287,7 @@
             groupBoxMasterPattern.Controls.Add(buttonFitNistElasticSampler);
             groupBoxMasterPattern.Controls.Add(flowLayoutPanelMasterPatternSelectors);
             resources.ApplyResources(groupBoxMasterPattern, "groupBoxMasterPattern");
+            captureExtender.SetCapture(groupBoxMasterPattern, true); // 260524Cl 追加: Wiki 用クロップ (マスターパターン 2D/3D 表示)
             groupBoxMasterPattern.Name = "groupBoxMasterPattern";
             groupBoxMasterPattern.TabStop = false;
             // 
@@ -1364,6 +1371,7 @@
             groupBoxEBSDPattern.Controls.Add(flowLayoutPanel1);
             groupBoxEBSDPattern.Controls.Add(groupBoxOutput);
             resources.ApplyResources(groupBoxEBSDPattern, "groupBoxEBSDPattern");
+            captureExtender.SetCapture(groupBoxEBSDPattern, true); // 260524Cl 追加: Wiki 用クロップ (EBSD パターン・出力パラメータ)
             groupBoxEBSDPattern.Name = "groupBoxEBSDPattern";
             groupBoxEBSDPattern.TabStop = false;
             // 
