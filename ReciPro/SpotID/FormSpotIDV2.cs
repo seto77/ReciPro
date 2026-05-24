@@ -301,6 +301,19 @@ public partial class FormSpotIDV2 : FormBase
     #region 画像からスポットを検索、クリア、フィッティング
 
     // 260428Cl async 化: フィッティングループを Task.Run + IProgress<int> でバックグラウンドへ移行
+    /// <summary>
+    /// 260524Cl 追加: --capture 用。指定画像 (SrTiO3 SAD の dm3) を読み込み、スポット検出を起動した状態で撮らせる。
+    /// スポット検出は非同期かつ画像処理を伴うため、完了判定は GuiCapture 側の画面安定待ち (5秒ごとの画面比較) に委ねる。
+    /// 通常操作には影響させず、呼び出し元は GuiCapture に限定する。
+    /// </summary>
+    internal void PrepareCaptureForGuiAudit(string imagePath)
+    {
+        if (string.IsNullOrEmpty(imagePath) || !System.IO.File.Exists(imagePath))
+            return;
+        readImage(imagePath);                                    // 画像読み込み (dm3、同期)
+        buttonFindSpots_Click(buttonFindSpots, EventArgs.Empty); // スポット検出を起動 (async、完了は画面安定待ちで判定)
+    }
+
     private async void buttonFindSpots_Click(object sender, EventArgs e)
     {
         var p = scalablePictureBoxAdvanced.PseudoBitmap;

@@ -108,6 +108,8 @@ internal static class GuiCapture
                     diffractionSimulator.formMain = captureFormMain; // 260524Cl: 回折スポットの描画 (Draw) は formMain.Crystal が必要 (未注入だと描画ボックスが灰色のまま)
                 else if (form is FormDiffractionSimulatorHolder holder)
                     holder.FormDiffractionSimulator = captureFormMain?.FormDiffractionSimulator; // 260524Cl: ステレオネット描画は親 FormDiffractionSimulator.formMain.Crystal を参照するため配線
+                else if (form is FormSpotIDV2 spotID)
+                    spotID.FormMain = captureFormMain; // 260524Cl: スポット同定機能等が FormMain を参照するため注入 (Show 時の NRE 回避)
 
                 CaptureForm(form, type.Name, outDir, Trace, closeAfterCapture: !ReferenceEquals(form, captureFormMain));
                 ok++;
@@ -564,12 +566,38 @@ internal static class GuiCapture
                     Application.DoEvents();
                     trace($"{form.GetType().Name}\tINFO\tprepared holder stereonet");
                     break;
+                case FormSpotIDV2 spotID:
+                    // 260524Cl: SrTiO3 SAD の dm3 を読み込み、スポット検出を起動した代表状態で撮る。検出は非同期かつ重いので画面安定待ち。
+                    var sadImage = FindReferenceFile(Path.Combine("DigitalMicroGraph", "SrTiO3", "SADiff100cm_001.dm3"));
+                    spotID.PrepareCaptureForGuiAudit(sadImage);
+                    trace($"{form.GetType().Name}\tINFO\ttriggered spot-ID find spots ({(sadImage != null ? "image loaded" : "sample image not found")})");
+                    WaitUntilScreenStable(form, trace);
+                    break;
             }
         }
         catch (Exception ex)
         {
             trace($"{form.GetType().Name}\tWARN\tPrepareCapture: {ex.GetType().Name}: {ex.Message}");
         }
+    }
+
+    /// <summary>
+    /// 260524Cl 追加: --capture 用のサンプルデータ (リポジトリの references フォルダ内) を探す。
+    /// exe (bin/Debug) から見た相対パスと開発機の絶対パスを順に試し、最初に存在したフルパスを返す。無ければ null。
+    /// </summary>
+    private static string FindReferenceFile(string relativePath)
+    {
+        var candidates = new[]
+        {
+            Path.Combine(AppContext.BaseDirectory, "..", "..", "..", "references", relativePath),
+            Path.Combine(@"C:\Users\seto\source\repos\ReciPro\references", relativePath),
+        };
+        foreach (var candidate in candidates)
+        {
+            try { if (File.Exists(candidate)) return Path.GetFullPath(candidate); }
+            catch { /* 不正パスは無視 */ }
+        }
+        return null;
     }
 
     private const int StabilizePollMs = 5000;  // 260524Cl: 重い計算フォームを撮る前に、この間隔で画面を撮り比べる
