@@ -113,6 +113,17 @@ internal static class GuiCapture
 
                 CaptureForm(form, type.Name, outDir, Trace, closeAfterCapture: !ReferenceEquals(form, captureFormMain));
                 ok++;
+
+                // 260524Cl 追加: マクロエディタ (FormMacro) は FormMain 直後 (= 反射列挙の最初) に撮る。
+                // 引数付き ctor で reflection 単独生成できず、FormMain が Load で配線済みインスタンスを保持しているので
+                // ここで撮る。末尾の結晶依存ループまで待つと、GL 多用フォームの NativeWindow finalize で稀にプロセスが
+                // 落ちて撮り損ねるため、GL ウィンドウが溜まる前のこの時点で先に保存しておく。spinel 選択は FormMain の
+                // CaptureForm 内 (PrepareSpecialCaptureState) で済んでいる。
+                if (ReferenceEquals(form, captureFormMain) && captureFormMain.FormMacro != null)
+                {
+                    try { CaptureForm(captureFormMain.FormMacro, "FormMacro", outDir, Trace, closeAfterCapture: true); ok++; }
+                    catch (Exception ex) { fail++; Trace($"FormMacro\tFAIL\t{ex.GetType().Name}: {ex.Message}"); }
+                }
             }
             catch (Exception ex)
             {
@@ -573,11 +584,39 @@ internal static class GuiCapture
                     trace($"{form.GetType().Name}\tINFO\ttriggered spot-ID find spots ({(sadImage != null ? "image loaded" : "sample image not found")})");
                     WaitUntilScreenStable(form, trace);
                     break;
+                case Crystallography.Controls.FormMacro macroForm:
+                    // 260524Cl: マクロエディタはサンプルマクロを表示した代表状態で撮る。capture 責務を GuiCapture に集約する方針
+                    // (別リポ Crystallography.Controls は無改変) のため、private な checkBoxSamples を reflection でトグルする。
+                    TryShowMacroSamples(macroForm, trace);
+                    Application.DoEvents();
+                    trace($"{form.GetType().Name}\tINFO\tprepared macro editor (samples)");
+                    break;
             }
         }
         catch (Exception ex)
         {
             trace($"{form.GetType().Name}\tWARN\tPrepareCapture: {ex.GetType().Name}: {ex.Message}");
+        }
+    }
+
+    /// <summary>
+    /// 260524Cl 追加: マクロエディタ (Crystallography.Controls.FormMacro) を「サンプルマクロ表示」状態にする。
+    /// capture 責務を GuiCapture に集約する方針 (別リポ Crystallography.Controls は無改変) のため、private な
+    /// checkBoxSamples を reflection で取得して Checked=true にする。CheckedChanged ハンドラがサンプルマクロを
+    /// エディタへ流し込む (fresh load なので未保存確認ダイアログは出ない)。失敗時はユーザー保存マクロのまま撮る (最善努力)。
+    /// </summary>
+    private static void TryShowMacroSamples(Form macroForm, Action<string> trace)
+    {
+        try
+        {
+            var field = macroForm.GetType().GetField("checkBoxSamples",
+                System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Public);
+            if (field?.GetValue(macroForm) is CheckBox cb && cb.Visible && !cb.Checked)
+                cb.Checked = true; // CheckedChanged が走り、サンプルマクロがエディタに表示される
+        }
+        catch (Exception ex)
+        {
+            trace($"{macroForm.Name}\tWARN\tmacro samples toggle: {ex.GetType().Name}: {ex.Message}");
         }
     }
 
