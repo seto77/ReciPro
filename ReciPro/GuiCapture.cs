@@ -106,6 +106,8 @@ internal static class GuiCapture
                     rotation.FormMain = captureFormMain; // 260524Cl: GL のトーラス/軸/球の描画 (SetRotation) は FormMain の Euler 角を参照するため注入
                 else if (form is FormDiffractionSimulator diffractionSimulator)
                     diffractionSimulator.formMain = captureFormMain; // 260524Cl: 回折スポットの描画 (Draw) は formMain.Crystal が必要 (未注入だと描画ボックスが灰色のまま)
+                else if (form is FormDiffractionSimulatorHolder holder)
+                    holder.FormDiffractionSimulator = captureFormMain?.FormDiffractionSimulator; // 260524Cl: ステレオネット描画は親 FormDiffractionSimulator.formMain.Crystal を参照するため配線
 
                 CaptureForm(form, type.Name, outDir, Trace, closeAfterCapture: !ReferenceEquals(form, captureFormMain));
                 ok++;
@@ -556,6 +558,11 @@ internal static class GuiCapture
                     diffractionSimulator.PrepareCaptureForGuiAudit(); // 260524Cl: 回折スポットを描画 (同期・短時間、既定はキネマティカル)
                     Application.DoEvents();
                     trace($"{form.GetType().Name}\tINFO\tprepared diffraction pattern");
+                    break;
+                case FormDiffractionSimulatorHolder holder:
+                    holder.PrepareCaptureForGuiAudit(); // 260524Cl: ホルダーのステレオネット (傾斜方向) を描画 (同期・短時間)
+                    Application.DoEvents();
+                    trace($"{form.GetType().Name}\tINFO\tprepared holder stereonet");
                     break;
             }
         }

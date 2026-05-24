@@ -90,6 +90,17 @@ public partial class FormDiffractionSimulatorHolder : FormBase
         graphicsBox.Refresh();
     }
 
+    /// <summary>
+    /// 260524Cl 追加: --capture 用。Show しただけでは左のステレオネットが空 (白) になるため、傾斜方向ステレオネットを描画する。
+    /// 親 FormDiffractionSimulator (formMain.Crystal) が配線済みである必要がある。呼び出し元は GuiCapture に限定する。
+    /// </summary>
+    internal void PrepareCaptureForGuiAudit()
+    {
+        if (FormDiffractionSimulator?.formMain?.Crystal == null)
+            return;
+        Draw();
+    }
+
     /// <summary>ステレオネットの輪郭を描く</summary>
     /// <param name="g"></param>
     private void DrawOutline(Graphics g)
