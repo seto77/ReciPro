@@ -104,6 +104,8 @@ internal static class GuiCapture
                     stereonet.formMain = captureFormMain; // 260524Cl: 軸/極のプロットは formMain.Crystal が必要 (未注入だと網だけで軸が描かれない。Show 時の NRE も解消)
                 else if (form is FormRotationMatrix rotation)
                     rotation.FormMain = captureFormMain; // 260524Cl: GL のトーラス/軸/球の描画 (SetRotation) は FormMain の Euler 角を参照するため注入
+                else if (form is FormDiffractionSimulator diffractionSimulator)
+                    diffractionSimulator.formMain = captureFormMain; // 260524Cl: 回折スポットの描画 (Draw) は formMain.Crystal が必要 (未注入だと描画ボックスが灰色のまま)
 
                 CaptureForm(form, type.Name, outDir, Trace, closeAfterCapture: !ReferenceEquals(form, captureFormMain));
                 ok++;
@@ -168,6 +170,11 @@ internal static class GuiCapture
         Settle(form, FirstPaintSettleMs, trace);
         PrepareSpecialCaptureState(form, trace); // (260523Ch) FormMain は spinel 選択、FormTrajectory は Simulate 相当を実行
         Settle(form, PrepareSettleMs, trace);
+
+        // 260524Cl: prepare 中に子フォーム生成や DoEvents で他アプリ (IDE 等) が前面を奪い、CopyFromScreen が別ウィンドウを
+        // 撮ってしまうことがある (例: FormDiffractionSimulator.Draw 後に VS Code が前面化)。撮影直前に再度最前面化する。
+        BringToFront(form);
+        Settle(form, TabSwitchSettleMs, trace);
 
         var bounds = GetWindowVisualBounds(form); // タイトルバー等の非クライアント領域も含むウィンドウ全体 (影は除く)
         var bmp = CaptureScreen(bounds, form, trace, name, retryIfSolid: true);
@@ -544,6 +551,11 @@ internal static class GuiCapture
                     rotation.PrepareCaptureForGuiAudit(); // 260524Cl: SetRotation で GL のトーラス/軸/球を描く (同期・短時間)
                     Application.DoEvents();
                     trace($"{form.GetType().Name}\tINFO\tprepared rotation geometry");
+                    break;
+                case FormDiffractionSimulator diffractionSimulator:
+                    diffractionSimulator.PrepareCaptureForGuiAudit(); // 260524Cl: 回折スポットを描画 (同期・短時間、既定はキネマティカル)
+                    Application.DoEvents();
+                    trace($"{form.GetType().Name}\tINFO\tprepared diffraction pattern");
                     break;
             }
         }

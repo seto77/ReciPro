@@ -347,7 +347,7 @@ public partial class FormDiffractionSimulator : FormBase
     public bool CancelSetVector { get; set; } = false;
     #endregion
 
-    private Font font => new("Tahoma", (float)(trackBarStrSize.Value / 8.0/* * Resolution */));
+    private Font font => new("Segoe UI", (float)(trackBarStrSize.Value / 8.0/* * Resolution */));
     public bool DynamicCompressionMode { get; set; } = false;
     public List<double[]> DynamicCompression_SpotInformation = [];
 
@@ -503,6 +503,18 @@ public partial class FormDiffractionSimulator : FormBase
             FormDiffractionSimulatorGeometry.Visible = false;
             FormDiffractionSimulatorCBED.Visible = false;
         }
+    }
+
+    /// <summary>
+    /// 260524Cl 追加: --capture 用。Show しただけでは描画ボックスが空 (灰色) になるため、現在結晶で回折スポットを描画する
+    /// (VisibleChanged と同じ SetVector()+Draw())。通常操作には影響させず、呼び出し元は GuiCapture に限定する。
+    /// </summary>
+    internal void PrepareCaptureForGuiAudit()
+    {
+        if (formMain?.Crystal == null)
+            return;
+        SetVector();
+        Draw();
     }
     #endregion
 
