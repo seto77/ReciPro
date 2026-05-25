@@ -1,0 +1,4 @@
+# 260525Ch: Documentation build dependencies for GitHub Pages.
+mkdocs>=1.6,<2
+mkdocs-material>=9.5,<10
+pymdown-extensions>=10.8,<11

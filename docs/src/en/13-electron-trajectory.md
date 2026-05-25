@@ -1,0 +1,59 @@
+<!-- nav -->
+
+🌐 **English**  |  [日本語](../ja/13-electron-trajectory.md)
+
+[← 7.4 CBED simulation](7-4-cbed-simulation.md)  |  [🏠 Home](../index.md)  |  [9. HRTEM/STEM simulator →](8-hrtem-stem-simulator.md)
+
+# Electron Trajectory
+
+**Trajectory Simulator** computes electron trajectories inside a sample by the **Monte-Carlo method**: incident electrons undergo elastic and inelastic scattering, and the resulting distributions of backscattered electrons (direction, energy, penetration depth) are accumulated. These distributions also feed the angular/energy/depth weighting used by the [14. EBSD simulation](14-ebsd-simulation.md).
+
+![Electron Trajectory](../assets/cap-en-auto/FormTrajectory.png)
+
+---
+
+## Calculation Conditions
+
+![Calculation Conditions](../assets/cap-en-auto/FormTrajectory.panelCalculationConditions.png)
+
+Beam energy, number of incident electrons, sample/material, and other Monte-Carlo parameters.
+
+---
+
+## Stereonet Options
+
+![Stereonet Options](../assets/cap-en-auto/FormTrajectory.panelDrawingOptions.png)
+
+Display options for the angular distribution drawn on the stereographic projection.
+
+---
+
+## Statistics
+
+![Statistics](../assets/cap-en-auto/FormTrajectory.groupBoxStatistics.png)
+
+Summary of the run (backscatter yield, mean free path, penetration depth, etc.).
+
+---
+
+## Direction Distribution
+
+![Direction Distribution](../assets/cap-en-auto/FormTrajectory.groupBoxDirectionDistribution.png)
+
+Angular distribution of the backscattered electrons.
+
+---
+
+## Profiles
+
+![Profiles](../assets/cap-en-auto/FormTrajectory.flowLayoutPanelProfiles.png)
+
+Depth and energy profiles of the simulated electrons.
+
+### Energy Distribution
+
+![Energy Distribution](../assets/cap-en-auto/FormTrajectory.flowLayoutPanelProfiles.groupBoxEnergyDistribution.png)
+
+---
+
+[← 7.4 CBED simulation](7-4-cbed-simulation.md)  |  [🏠 Home](../index.md)  |  [9. HRTEM/STEM simulator →](8-hrtem-stem-simulator.md)

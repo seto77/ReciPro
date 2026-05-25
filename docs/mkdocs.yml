@@ -1,0 +1,144 @@
+# 260525Ch: MkDocs Material configuration for the GitHub Pages manual.
+site_name: ReciPro Manual
+site_description: ReciPro user manual
+site_url: https://seto77.github.io/ReciPro/
+repo_url: https://github.com/seto77/ReciPro
+repo_name: seto77/ReciPro
+edit_uri: edit/master/docs/src/
+
+docs_dir: src
+site_dir: site
+use_directory_urls: true
+
+theme:
+  name: material
+  language: en
+  features:
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.sections
+    - navigation.top
+    - search.highlight
+    - search.share
+    - content.code.copy
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: blue grey
+      accent: teal
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: blue grey
+      accent: teal
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+
+plugins:
+  - search:
+      lang:
+        - en
+        - ja
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.arithmatex:
+      generic: true
+
+extra_css:
+  - assets/stylesheets/extra.css
+
+extra_javascript:
+  - assets/javascripts/mathjax.js
+  - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
+
+extra:
+  alternate:
+    - name: English
+      link: /ReciPro/
+      lang: en
+    - name: 日本語
+      link: /ReciPro/ja/
+      lang: ja
+
+nav:
+  - English:
+      - Home: index.md
+      - 0. Main window:
+          - en/0-main-window.md
+          - 0.1. Crystal orientation control: en/0-1-crystal-orientation-control.md
+      - 1. Crystal database: en/1-crystal-database.md
+      - 2. Symmetry information: en/11-symmetry-information.md
+      - 3. Scattering factor: en/12-scattering-factor.md
+      - 4. Rotation Geometry: en/3-rotation-geometry.md
+      - 5. Structure viewer: en/5-structure-viewer.md
+      - 6. Stereonet: en/6-stereonet.md
+      - 7. Diffraction simulator:
+          - en/7-diffraction-simulator.md
+          - 7.1. SAED simulation: en/7-1-saed-simulation.md
+          - 7.2. X ray diffraction: en/7-2-x-ray-diffraction.md
+          - 7.3. PED Simulation: en/7-3-ped-simulation.md
+          - 7.4 CBED simulation: en/7-4-cbed-simulation.md
+      - 8. Electron trajectory: en/13-electron-trajectory.md
+      - 9. HRTEM/STEM simulator:
+          - en/8-hrtem-stem-simulator.md
+          - 9.1. HRTEM simulation: en/8-1-hrtem-simulation.md
+          - 9.2. STEM simulation: en/8-2-stem-simulation.md
+          - 9.3. Potential simulation: en/8-3-potential-simulation.md
+      - 10. Spot ID v1: en/10-spot-id.md
+      - 11. Spot ID v2: en/10-1-spot-id-v2.md
+      - 12. EBSD simulation: en/14-ebsd-simulation.md
+      - 20. Macro:
+          - en/20-macro.md
+          - 20.1. Built-in functions: en/20-1-built-in-functions.md
+          - 20.2. Examples: en/20-2-examples.md
+      - Appendix:
+          - How to use (videos): en/appendix-a0-how-to-use.md
+          - Appendix A1. Coordinate System: en/appendix-a1-coordinate-system.md
+          - Appendix A2. Detector Coordinate System: en/appendix-a2-detector-coordinate-system.md
+      - Troubleshooting: en/troubleshooting.md
+  - 日本語:
+      - ホーム: ja/index.md
+      - 0. メインウィンドウ: ja/0-main-window.md
+      - 1. 結晶データベース: ja/1-crystal-database.md
+      - 2. 対称性情報: ja/11-symmetry-information.md
+      - 3. 散乱因子: ja/12-scattering-factor.md
+      - 4. 回転ジオメトリ: ja/3-rotation-geometry.md
+      - 5. Structure Viewer: ja/5-structure-viewer.md
+      - 6. ステレオネット: ja/6-stereonet.md
+      - 7. 回折シミュレータ:
+          - ja/7-diffraction-simulator.md
+          - 7.1. SAEDシミュレーション: ja/7-1-saed-simulation.md
+          - 7.2. X線回折シミュレーション: ja/7-2-x-ray-diffraction.md
+          - 7.3. PEDシミュレーション: ja/7-3-ped-simulation.md
+          - 7.4 CBEDシミュレーション: ja/7-4-cbed-simulation.md
+      - 8. 電子飛程: ja/13-electron-trajectory.md
+      - 9. HRTEM/STEMシミュレータ:
+          - ja/8-hrtem-stem-simulator.md
+          - 9.1. HRTEMシミュレーション: ja/8-1-hrtem-simulation.md
+          - 9.2. STEMシミュレーション: ja/8-2-stem-simulation.md
+          - 9.3. ポテンシャルシミュレーション: ja/8-3-potential-simulation.md
+      - 10. Spot ID v1: ja/10-spot-id.md
+      - 11. Spot ID v2: ja/10-1-spot-id-v2.md
+      - 12. EBSDシミュレーション: ja/14-ebsd-simulation.md
+      - 20. マクロ:
+          - ja/20-macro.md
+          - 20.1. 組み込み関数一覧: ja/20-1-built-in-functions.md
+          - 20.2. マクロの使用例: ja/20-2-examples.md
+      - 付録:
+          - How to use（動画）: ja/appendix-a0-how-to-use.md
+          - Appendix A1. 座標系の定義: ja/appendix-a1-coordinate-system.md
+          - Appendix A2. 検出器座標系: ja/appendix-a2-detector-coordinate-system.md
+      - トラブルシューティング: ja/troubleshooting.md

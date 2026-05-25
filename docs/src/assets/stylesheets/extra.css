@@ -1,0 +1,10 @@
+/* 260525Ch: Keep migrated screenshots readable in the MkDocs layout. */
+.md-typeset img {
+  max-width: 100%;
+  height: auto;
+}
+
+.md-typeset table {
+  font-size: 0.75rem;
+}
+
