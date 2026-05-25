@@ -1,7 +1,5 @@
 <!-- nav -->
 
-🌐 [English](../en/3-rotation-geometry.md)  |  **日本語**
-
 [← 3. 散乱因子](12-scattering-factor.md)  |  [🏠 ホーム](index.md)  |  [5. Structure Viewer →](5-structure-viewer.md)
 
 # 回転ジオメトリ (Rotation Geometry)

@@ -1,7 +1,5 @@
 <!-- nav -->
 
-🌐 **English**  |  [日本語](../ja/8-3-potential-simulation.md)
-
 [← 9.2. STEM simulation](8-2-stem-simulation.md)  |  [🏠 Home](../index.md)  |  [10. Spot ID v1 →](10-spot-id.md)
 
 # Potential Simulation

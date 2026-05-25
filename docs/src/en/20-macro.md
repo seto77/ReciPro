@@ -1,7 +1,5 @@
 <!-- nav -->
 
-🌐 **English**  |  [日本語](../ja/20-macro.md)
-
 [← 12. EBSD simulation](14-ebsd-simulation.md)  |  [🏠 Home](../index.md)  |  [20.1. Built-in functions →](20-1-built-in-functions.md)
 
 # Macro

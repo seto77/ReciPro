@@ -1,7 +1,5 @@
 <!-- nav -->
 
-🌐 **English**  |  [日本語](../ja/10-1-spot-id-v2.md)
-
 [← 10. Spot ID v1](10-spot-id.md)  |  [🏠 Home](../index.md)  |  [12. EBSD simulation →](14-ebsd-simulation.md)
 
 # Spot ID v2

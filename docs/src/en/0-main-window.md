@@ -1,7 +1,5 @@
 <!-- nav -->
 
-🌐 **English**  |  [日本語](../ja/0-main-window.md)
-
 [← Home](../index.md)  |  [🏠 Home](../index.md)  |  [0.1. Crystal orientation control →](0-1-crystal-orientation-control.md)
 
 # Main Window

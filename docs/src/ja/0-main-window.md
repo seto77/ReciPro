@@ -1,7 +1,5 @@
 <!-- nav -->
 
-🌐 [English](../en/0-main-window.md)  |  **日本語**
-
 [← ホーム](index.md)  |  [🏠 ホーム](index.md)  |  [1. 結晶データベース →](1-crystal-database.md)
 
 # メインウィンドウ

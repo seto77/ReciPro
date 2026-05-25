@@ -1,7 +1,5 @@
 <!-- nav -->
 
-🌐 **English**  |  [日本語](../ja/appendix-a0-how-to-use.md)
-
 [← 20.2. Examples](20-2-examples.md)  |  [🏠 Home](../index.md)  |  [Appendix A1. Coordinate System →](appendix-a1-coordinate-system.md)
 
 # How to use — video tutorials

@@ -1,7 +1,5 @@
 <!-- nav -->
 
-🌐 [English](../en/troubleshooting.md)  |  **日本語**
-
 [← Appendix A2. 検出器座標系](appendix-a2-detector-coordinate-system.md)  |  [🏠 ホーム](index.md)
 
 # トラブルシューティング

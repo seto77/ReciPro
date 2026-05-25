@@ -1,7 +1,5 @@
 <!-- nav -->
 
-🌐 **English**  |  [日本語](../ja/10-spot-id.md)
-
 [← 9.3. Potential simulation](8-3-potential-simulation.md)  |  [🏠 Home](../index.md)  |  [11. Spot ID v2 →](10-1-spot-id-v2.md)
 
 # Spot ID v1

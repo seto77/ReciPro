@@ -1,7 +1,5 @@
 <!-- nav -->
 
-🌐 **English**  |  [日本語](../ja/12-scattering-factor.md)
-
 [← 2. Symmetry information](11-symmetry-information.md)  |  [🏠 Home](../index.md)  |  [4. Rotation Geometry →](3-rotation-geometry.md)
 
 # Scattering Factor

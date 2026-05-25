@@ -1,7 +1,5 @@
 <!-- nav -->
 
-🌐 **English**  |  [日本語](../ja/1-crystal-database.md)
-
 [← 0.1. Crystal orientation control](0-1-crystal-orientation-control.md)  |  [🏠 Home](../index.md)  |  [2. Symmetry information →](11-symmetry-information.md)
 
 # Crystal Database

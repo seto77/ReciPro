@@ -1,7 +1,5 @@
 <!-- nav -->
 
-🌐 **English**  |  [日本語](../ja/5-structure-viewer.md)
-
 [← 4. Rotation Geometry](3-rotation-geometry.md)  |  [🏠 Home](../index.md)  |  [6. Stereonet →](6-stereonet.md)
 
 # Structure Viewer

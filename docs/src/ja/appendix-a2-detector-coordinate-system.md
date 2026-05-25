@@ -1,7 +1,5 @@
 <!-- nav -->
 
-🌐 [English](../en/appendix-a2-detector-coordinate-system.md)  |  **日本語**
-
 [← Appendix A1. 座標系の定義](appendix-a1-coordinate-system.md)  |  [🏠 ホーム](index.md)  |  [トラブルシューティング →](troubleshooting.md)
 
 # 付録 A2. 検出器座標系の定義

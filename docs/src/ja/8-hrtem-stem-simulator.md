@@ -1,7 +1,5 @@
 <!-- nav -->
 
-🌐 [English](../en/8-hrtem-stem-simulator.md)  |  **日本語**
-
 [← 8. 電子飛程](13-electron-trajectory.md)  |  [🏠 ホーム](index.md)  |  [9.1. HRTEMシミュレーション →](8-1-hrtem-simulation.md)
 
 # HRTEM / STEMシミュレータ

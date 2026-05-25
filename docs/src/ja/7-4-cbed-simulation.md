@@ -1,7 +1,5 @@
 <!-- nav -->
 
-🌐 [English](../en/7-4-cbed-simulation.md)  |  **日本語**
-
 [← 7.3. PEDシミュレーション](7-3-ped-simulation.md)  |  [🏠 ホーム](index.md)  |  [8. 電子飛程 →](13-electron-trajectory.md)
 
 # CBEDシミュレーション

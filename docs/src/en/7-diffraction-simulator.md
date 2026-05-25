@@ -1,7 +1,5 @@
 <!-- nav -->
 
-🌐 **English**  |  [日本語](../ja/7-diffraction-simulator.md)
-
 [← 6. Stereonet](6-stereonet.md)  |  [🏠 Home](../index.md)  |  [7.1. SAED simulation →](7-1-saed-simulation.md)
 
 # Crystal Diffraction (Diffraction Simulator)

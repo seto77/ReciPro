@@ -1,7 +1,5 @@
 <!-- nav -->
 
-🌐 **English**  |  [日本語](../ja/7-2-x-ray-diffraction.md)
-
 [← 7.1. SAED simulation](7-1-saed-simulation.md)  |  [🏠 Home](../index.md)  |  [7.3. PED Simulation →](7-3-ped-simulation.md)
 
 # X-ray Diffraction Simulation

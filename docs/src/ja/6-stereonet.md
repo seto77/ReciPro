@@ -1,7 +1,5 @@
 <!-- nav -->
 
-🌐 [English](../en/6-stereonet.md)  |  **日本語**
-
 [← 5. Structure Viewer](5-structure-viewer.md)  |  [🏠 ホーム](index.md)  |  [7. 回折シミュレータ →](7-diffraction-simulator.md)
 
 # ステレオネット (Stereonet)

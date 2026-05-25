@@ -1,7 +1,5 @@
 <!-- nav -->
 
-🌐 **English**  |  [日本語](../ja/20-1-built-in-functions.md)
-
 [← 20. Macro](20-macro.md)  |  [🏠 Home](../index.md)  |  [20.2. Examples →](20-2-examples.md)
 
 # Built-in Functions

@@ -1,7 +1,5 @@
 <!-- nav -->
 
-🌐 **English**  |  [日本語](../ja/7-3-ped-simulation.md)
-
 [← 7.2. X ray diffraction](7-2-x-ray-diffraction.md)  |  [🏠 Home](../index.md)  |  [7.4 CBED simulation →](7-4-cbed-simulation.md)
 
 # Precession Electron Diffraction (PED) Simulation

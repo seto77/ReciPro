@@ -1,7 +1,5 @@
 <!-- nav -->
 
-🌐 **English**  |  [日本語](../ja/13-electron-trajectory.md)
-
 [← 7.4 CBED simulation](7-4-cbed-simulation.md)  |  [🏠 Home](../index.md)  |  [9. HRTEM/STEM simulator →](8-hrtem-stem-simulator.md)
 
 # Electron Trajectory

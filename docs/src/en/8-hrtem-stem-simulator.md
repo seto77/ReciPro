@@ -1,7 +1,5 @@
 <!-- nav -->
 
-🌐 **English**  |  [日本語](../ja/8-hrtem-stem-simulator.md)
-
 [← 8. Electron trajectory](13-electron-trajectory.md)  |  [🏠 Home](../index.md)  |  [9.1. HRTEM simulation →](8-1-hrtem-simulation.md)
 
 # HRTEM / STEM Simulator

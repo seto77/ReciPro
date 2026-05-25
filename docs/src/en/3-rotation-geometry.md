@@ -1,7 +1,5 @@
 <!-- nav -->
 
-🌐 **English**  |  [日本語](../ja/3-rotation-geometry.md)
-
 [← 3. Scattering factor](12-scattering-factor.md)  |  [🏠 Home](../index.md)  |  [5. Structure viewer →](5-structure-viewer.md)
 
 # Rotation Geometry

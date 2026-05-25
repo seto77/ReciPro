@@ -1,7 +1,5 @@
 <!-- nav -->
 
-🌐 **English**  |  [日本語](../ja/7-1-saed-simulation.md)
-
 [← 7. Diffraction simulator](7-diffraction-simulator.md)  |  [🏠 Home](../index.md)  |  [7.2. X ray diffraction →](7-2-x-ray-diffraction.md)
 
 # SAED Simulation

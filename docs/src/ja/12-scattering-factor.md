@@ -1,7 +1,5 @@
 <!-- nav -->
 
-🌐 [English](../en/12-scattering-factor.md)  |  **日本語**
-
 [← 2. 対称性情報](11-symmetry-information.md)  |  [🏠 ホーム](index.md)  |  [4. 回転ジオメトリ →](3-rotation-geometry.md)
 
 # 散乱因子 (Scattering Factor)

@@ -1,7 +1,5 @@
 <!-- nav -->
 
-🌐 **English**  |  [日本語](../ja/6-stereonet.md)
-
 [← 5. Structure viewer](5-structure-viewer.md)  |  [🏠 Home](../index.md)  |  [7. Diffraction simulator →](7-diffraction-simulator.md)
 
 # Stereonet

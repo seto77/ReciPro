@@ -1,7 +1,5 @@
 <!-- nav -->
 
-🌐 [English](../en/1-crystal-database.md)  |  **日本語**
-
 [← 0. メインウィンドウ](0-main-window.md)  |  [🏠 ホーム](index.md)  |  [2. 対称性情報 →](11-symmetry-information.md)
 
 # 結晶データベース

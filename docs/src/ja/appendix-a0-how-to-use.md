@@ -1,7 +1,5 @@
 <!-- nav -->
 
-🌐 [English](../en/appendix-a0-how-to-use.md)  |  **日本語**
-
 [← 20.2. マクロの使用例](20-2-examples.md)  |  [🏠 ホーム](index.md)  |  [Appendix A1. 座標系の定義 →](appendix-a1-coordinate-system.md)
 
 # How to use（動画チュートリアル）

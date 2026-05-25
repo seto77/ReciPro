@@ -8,3 +8,30 @@
   font-size: 0.75rem;
 }
 
+/* 260525Ch: Keep the primary navigation visible on desktop-sized documentation views. */
+@media screen and (min-width: 60em) and (max-width: 76.234375em) {
+  .md-header__button[for="__drawer"] {
+    display: none;
+  }
+
+  .md-main__inner {
+    display: flex;
+  }
+
+  .md-sidebar--primary {
+    display: block;
+    flex: 0 0 12.1rem;
+    height: calc(100vh - 2.4rem);
+    opacity: 1;
+    order: 0;
+    position: sticky;
+    top: 2.4rem;
+    transform: none;
+    visibility: visible;
+  }
+
+  .md-content {
+    min-width: 0;
+  }
+}
+

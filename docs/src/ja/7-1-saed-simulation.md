@@ -1,7 +1,5 @@
 <!-- nav -->
 
-🌐 [English](../en/7-1-saed-simulation.md)  |  **日本語**
-
 [← 7. 回折シミュレータ](7-diffraction-simulator.md)  |  [🏠 ホーム](index.md)  |  [7.2. X線回折シミュレーション →](7-2-x-ray-diffraction.md)
 
 # 制限視野電子回折 (SAED) シミュレーション

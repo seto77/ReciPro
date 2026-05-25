@@ -1,7 +1,5 @@
 <!-- nav -->
 
-🌐 [English](../en/5-structure-viewer.md)  |  **日本語**
-
 [← 4. 回転ジオメトリ](3-rotation-geometry.md)  |  [🏠 ホーム](index.md)  |  [6. ステレオネット →](6-stereonet.md)
 
 # Structure Viewer（結晶構造ビューア）

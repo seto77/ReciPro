@@ -1,7 +1,5 @@
 <!-- nav -->
 
-🌐 [English](../en/7-3-ped-simulation.md)  |  **日本語**
-
 [← 7.2. X線回折シミュレーション](7-2-x-ray-diffraction.md)  |  [🏠 ホーム](index.md)  |  [7.4 CBEDシミュレーション →](7-4-cbed-simulation.md)
 
 # 歳差電子回折 (PED) シミュレーション

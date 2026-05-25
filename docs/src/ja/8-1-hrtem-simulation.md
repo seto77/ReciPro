@@ -1,7 +1,5 @@
 <!-- nav -->
 
-🌐 [English](../en/8-1-hrtem-simulation.md)  |  **日本語**
-
 [← 9. HRTEM/STEMシミュレータ](8-hrtem-stem-simulator.md)  |  [🏠 ホーム](index.md)  |  [9.2. STEMシミュレーション →](8-2-stem-simulation.md)
 
 # HRTEM シミュレーション

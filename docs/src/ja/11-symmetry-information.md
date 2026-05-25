@@ -1,7 +1,5 @@
 <!-- nav -->
 
-🌐 [English](../en/11-symmetry-information.md)  |  **日本語**
-
 [← 1. 結晶データベース](1-crystal-database.md)  |  [🏠 ホーム](index.md)  |  [3. 散乱因子 →](12-scattering-factor.md)
 
 # 対称性情報 (Symmetry Information)

@@ -1,7 +1,5 @@
 <!-- nav -->
 
-🌐 **English**  |  [日本語](../ja/troubleshooting.md)
-
 [← Appendix A2. Detector Coordinate System](appendix-a2-detector-coordinate-system.md)  |  [🏠 Home](../index.md)
 
 # Troubleshooting

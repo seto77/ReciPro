@@ -17,6 +17,7 @@ theme:
     - navigation.tabs
     - navigation.tabs.sticky
     - navigation.sections
+    - navigation.expand
     - navigation.top
     - search.highlight
     - search.share
@@ -42,6 +43,10 @@ plugins:
       lang:
         - en
         - ja
+
+# 260525Ch: Generate page-level language links from one shared hook instead of per-page Markdown.
+hooks:
+  - hooks/language_switch.py
 
 markdown_extensions:
   - admonition

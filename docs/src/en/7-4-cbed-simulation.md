@@ -1,7 +1,5 @@
 <!-- nav -->
 
-🌐 **English**  |  [日本語](../ja/7-4-cbed-simulation.md)
-
 [← 7.3. PED Simulation](7-3-ped-simulation.md)  |  [🏠 Home](../index.md)  |  [8. Electron trajectory →](13-electron-trajectory.md)
 
 # CBED Simulation

@@ -1,7 +1,5 @@
 <!-- nav -->
 
-🌐 **English**  |  [日本語](../ja/20-2-examples.md)
-
 [← 20.1. Built-in functions](20-1-built-in-functions.md)  |  [🏠 Home](../index.md)  |  [How to use (videos) →](appendix-a0-how-to-use.md)
 
 # Macro Examples

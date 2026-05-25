@@ -17,6 +17,7 @@ WIKI_ROOT = REPO_ROOT.parent / "ReciPro.wiki"
 DOCS_SRC = REPO_ROOT / "docs" / "src"
 
 WIKI_LINK_RE = re.compile(r"\[\[([^\[\]]+?)\]\]")
+LANGUAGE_SWITCH_RE = re.compile(r"(?m)^🌐 .*(?:English|日本語).*\n(?:\n)?")
 ASSET_LINK_RE = re.compile(
     r"(?P<prefix>\(|src=[\"'])(?P<path>(?:cap-(?:en|ja)-(?:auto|manual)|references)/[^)\"']+)(?P<suffix>\)|[\"'])"
 )
@@ -172,6 +173,8 @@ def migrate() -> int:
         text = convert_wiki_links(text, target_rel, page_map, unresolved)
         text = convert_asset_links(text, target_rel)
         text = normalize_known_anchors(text)
+        # 260525Ch: Page language links are injected by docs/hooks/language_switch.py.
+        text = LANGUAGE_SWITCH_RE.sub("", text, count=1)
         target_abs.write_text(text, encoding="utf-8", newline="\n")
 
     if unresolved:

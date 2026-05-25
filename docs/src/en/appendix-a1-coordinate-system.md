@@ -1,7 +1,5 @@
 <!-- nav -->
 
-🌐 **English**  |  [日本語](../ja/appendix-a1-coordinate-system.md)
-
 [← How to use (videos)](appendix-a0-how-to-use.md)  |  [🏠 Home](../index.md)  |  [Appendix A2. Detector Coordinate System →](appendix-a2-detector-coordinate-system.md)
 
 # Appendix A1. Coordinate System

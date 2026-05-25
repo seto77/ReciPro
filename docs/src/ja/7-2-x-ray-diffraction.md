@@ -1,7 +1,5 @@
 <!-- nav -->
 
-🌐 [English](../en/7-2-x-ray-diffraction.md)  |  **日本語**
-
 [← 7.1. SAEDシミュレーション](7-1-saed-simulation.md)  |  [🏠 ホーム](index.md)  |  [7.3. PEDシミュレーション →](7-3-ped-simulation.md)
 
 # X線回折シミュレーション

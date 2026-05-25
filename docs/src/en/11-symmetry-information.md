@@ -1,7 +1,5 @@
 <!-- nav -->
 
-🌐 **English**  |  [日本語](../ja/11-symmetry-information.md)
-
 [← 1. Crystal database](1-crystal-database.md)  |  [🏠 Home](../index.md)  |  [3. Scattering factor →](12-scattering-factor.md)
 
 # Symmetry Information

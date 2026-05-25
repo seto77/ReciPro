@@ -1,7 +1,5 @@
 <!-- nav -->
 
-🌐 [English](../en/20-1-built-in-functions.md)  |  **日本語**
-
 [← 20. マクロ](20-macro.md)  |  [🏠 ホーム](index.md)  |  [20.2. マクロの使用例 →](20-2-examples.md)
 
 # 組み込み関数一覧

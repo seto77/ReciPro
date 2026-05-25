@@ -1,7 +1,5 @@
 <!-- nav -->
 
-🌐 [English](../index.md)  |  **日本語**
-
 [0. メインウィンドウ →](0-main-window.md)
 
 ## 概要

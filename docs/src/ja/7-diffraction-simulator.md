@@ -1,7 +1,5 @@
 <!-- nav -->
 
-🌐 [English](../en/7-diffraction-simulator.md)  |  **日本語**
-
 [← 6. ステレオネット](6-stereonet.md)  |  [🏠 ホーム](index.md)  |  [7.1. SAEDシミュレーション →](7-1-saed-simulation.md)
 
 # 回折シミュレータ (Crystal Diffraction)
