@@ -27,6 +27,69 @@
   font-size: 0.75rem;
 }
 
+/* ============================================================================
+   260525Cl: ヘッダー/フッターのコンパクト化と言語切替の一本化
+   ---------------------------------------------------------------------------
+   要望:
+     (1) ヘッダー・フッターをもう少し低くする
+     (2) フッターを常時表示にする
+     (3) 言語切替パーツが 2 か所 (右上の翻訳アイコン=extra.alternate と
+         左下のタブバー=English/日本語) あり機能が重複。左下のタブを削除する
+   ============================================================================ */
+
+/* (3) 左下の言語タブバー (.md-tabs) を非表示にする。
+   nav の最上位は EN/JA の 2 言語だけなので、このバーは言語切替専用。
+   右上の言語セレクタ (翻訳アイコン) と機能が重複するため消す。
+   navigation.tabs 機能自体は残すので、左サイドバーは引き続きアクティブ言語の
+   ページツリーを表示する (言語切替は右上セレクタが担当)。 */
+.md-tabs {
+  display: none;
+}
+
+/* タブバーを消した分、ワイド表示でサイドバーが header 直下に詰まるよう sticky 位置を補正する。
+   Material 既定は header(2.4rem)+tabs(2.4rem)=4.8rem を前提に top:4.8rem を当てるため、
+   タブを消すと 2.4rem の隙間ができる。header 高さ 2.0rem に合わせて 2.0rem へ。 */
+@media screen and (min-width: 76.25em) {
+  .md-sidebar {
+    top: 2.0rem;
+  }
+}
+
+/* (1) ヘッダーを少し低くする (既定 2.4rem → 2.0rem)。
+   高さは .md-header__title が支配するので、これとアイコンボタン/検索窓を一緒に詰める。 */
+.md-header__title {
+  height: 2.0rem;
+  line-height: 2.0rem;
+}
+.md-header__button {
+  margin-top: 0.1rem;
+  margin-bottom: 0.1rem;
+  padding: 0.3rem;
+}
+.md-search__input {
+  height: 1.8rem;
+}
+
+/* (1)(2) フッターを低くし、常に画面下部に表示する。
+   .md-footer は body 直下・最後の要素なので、bottom:0 の sticky で常時可視になる
+   (in-flow のまま固定されるので本文末尾との重なりも起きない)。 */
+.md-footer {
+  position: sticky;
+  bottom: 0;
+  z-index: 3;
+}
+/* 前/次ページナビ (.md-footer__inner) と著作権バー (.md-footer-meta__inner) の余白を詰める */
+.md-footer__inner {
+  padding: 0.1rem 0.2rem;
+}
+.md-footer__link {
+  padding-top: 0.4rem;
+  padding-bottom: 0.4rem;
+}
+.md-footer-meta__inner {
+  padding: 0.1rem 0.2rem;
+}
+
 /* 260525Ch: Keep the primary navigation visible on desktop-sized documentation views. */
 @media screen and (min-width: 60em) and (max-width: 76.234375em) {
   .md-header__button[for="__drawer"] {
@@ -40,11 +103,12 @@
   .md-sidebar--primary {
     display: block;
     flex: 0 0 12.1rem;
-    height: calc(100vh - 2.4rem);
+    /* 260525Cl: header 高さを 2.0rem に詰めたので sticky オフセットも 2.4rem → 2.0rem に合わせる */
+    height: calc(100vh - 2.0rem);
     opacity: 1;
     order: 0;
     position: sticky;
-    top: 2.4rem;
+    top: 2.0rem;
     transform: none;
     visibility: visible;
   }
