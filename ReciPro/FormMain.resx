@@ -1600,7 +1600,7 @@ If an axis index is also specified, that axis direction is shown upward.</value>
     <value>Crystallography.Controls.FormBase, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="githubWikiToolStripMenuItem.Text" xml:space="preserve">
-    <value>Help (Wiki)</value>
+    <value>Help (Manual)</value>
   </data>
   <data name="labelLaTex3.Text" xml:space="preserve">
     <value>\Phi</value>

@@ -1614,8 +1614,14 @@ public partial class FormMain : FormBase
     private void reportBugsRequestsOrCommentsToolStripMenuItem1_Click(object sender, EventArgs e)
         => Process.Start(new ProcessStartInfo("https://github.com/seto77/ReciPro/issues") { UseShellExecute = true });
 
+    // 260525Cl: GitHub Wiki は凍結しマニュアルを GitHub Pages へ移行。UI 言語に合わせて en/ja のページを開く。
+    // private void githubWikiToolStripMenuItem_Click(object sender, EventArgs e)
+    //     => Process.Start(new ProcessStartInfo("https://github.com/seto77/ReciPro/wiki") { UseShellExecute = true }); // 260525Cl 旧: Wiki
     private void githubWikiToolStripMenuItem_Click(object sender, EventArgs e)
-        => Process.Start(new ProcessStartInfo("https://github.com/seto77/ReciPro/wiki") { UseShellExecute = true });
+        => Process.Start(new ProcessStartInfo(
+            Thread.CurrentThread.CurrentUICulture.Name == "ja"
+                ? "https://seto77.github.io/ReciPro/ja/"
+                : "https://seto77.github.io/ReciPro/") { UseShellExecute = true });
 
 
     //260421Cl 追加: メニューチェック変更ハンドラ (Designer からバインド)

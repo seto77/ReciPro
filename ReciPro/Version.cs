@@ -34,11 +34,11 @@ internal static class Version
         "\r\n ver4.904(2025/08/04)  Fixed a minor bug." +
         "\r\n ver4.903(2025/05/29)  Improved the 'Crystal Database' function. COD has been available." +
         "\r\n ver4.902(2025/05/13)  Fixed a minor bug." +
-        "\r\n ver4.901(2025/04/10)  Added several 'Macro' functions (ReciPro.Crystal.*). See https://github.com/seto77/ReciPro/wiki/20.-Macro." +
+        "\r\n ver4.901(2025/04/10)  Added several 'Macro' functions (ReciPro.Crystal.*). See https://seto77.github.io/ReciPro/en/20-macro/." +
         "\r\n ver4.900(2025/04/08)  Fixed a minor bug." +
         "\r\n ver4.899(2025/04/01)  Added some built-in functions for macro (see https://github.com/seto77/ReciPro/issues/45)." +
         "\r\n ver4.898(2025/03/04)  Added right-click menus for the selected crystal. Fixed a bug related to https://github.com/seto77/ReciPro/issues/44." +
-        "\r\n ver4.897(2025/01/30)  Improved: The macro function has been enhanced. See https://github.com/seto77/ReciPro/wiki/20.-Macro." +
+        "\r\n ver4.897(2025/01/30)  Improved: The macro function has been enhanced. See https://seto77.github.io/ReciPro/en/20-macro/." +
         "\r\n ver4.896(2025/01/17)  Fixed some bugs on OpenGL renderings." +
         "\r\n ver4.895(2024/11/14)  Updated: .Net Desktop Runtime 8.0 to 9.0. Updated the bundled crystal database." +
         "\r\n ver4.894(2024/11/01)  Fixed bugs on the 'Diffraction Simulator' and 'HRTEM/STEM simulator' (thanks to lukmuk-san and Nakamura-san!)." +

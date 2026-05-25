@@ -4,7 +4,7 @@
 
 *ReciPro* has been continuously developed since 2002 and has been available on GitHub since March 2020. It has been downloaded more than 25,000 times from GitHub, and is used by hundreds of users in more than a dozen laboratories at universities and companies.
 
-***[See also Wiki to learn how to use!](https://github.com/seto77/ReciPro/wiki)***
+***[See the manual to learn how to use!](https://seto77.github.io/ReciPro/)***
 
 [Various simulations being performed in real time (sample: SrTiO3)](https://user-images.githubusercontent.com/44538886/123412384-7e20a980-d5ec-11eb-86fd-921c37ce460c.mp4)
 
@@ -171,7 +171,7 @@ Get-FileHash .\ReciProSetup.msi -Algorithm SHA256
 * Python-syntax macro scripting for task automation.
   * Example: Rotate a crystal in 1° steps and save diffraction patterns or STEM images at each step.
   * ReciPro-specific functions are available in the "ReciPro" namespace.
-  * Usage examples are available on the [GitHub Wiki](https://github.com/seto77/ReciPro/wiki).
+  * Usage examples are available in the [manual](https://seto77.github.io/ReciPro/en/20-2-examples/).
 
 ### Other Features
 
