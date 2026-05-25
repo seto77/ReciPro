@@ -88,12 +88,17 @@
 .md-footer__link {
   margin-top: 0.1rem;
   margin-bottom: 0.1rem;
+  /* 既定 flex-grow:0.01 だと前/次リンクが伸びず、ページ名が早々に省略される。
+     1 にして使える幅いっぱい (前/次が揃うときは各≒50%) に広げ、表示文字数を増やす。 */
+  flex-grow: 1;
 }
 .md-footer__title {
   font-size: 0.7rem;      /* 既定 0.9rem */
   margin-bottom: 0;       /* 既定 0.7rem */
   padding: 0 0.5rem;      /* 既定 0 1rem */
   line-height: 1.3;
+  /* 矢印を 0.9rem に縮めたので、矢印用の予約幅も 2.4rem → 1.4rem に減らしてタイトルを広く取る */
+  max-width: calc(100% - 1.4rem);
 }
 .md-footer__direction {
   display: none;          /* "Previous"/"Next" ラベルは不要 (矢印とページ名は残す) */
