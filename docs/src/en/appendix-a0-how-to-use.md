@@ -1,7 +1,3 @@
-<!-- nav -->
-
-[← 20.2. Examples](20-2-examples.md)  |  [🏠 Home](../index.md)  |  [Appendix A1. Coordinate System →](appendix-a1-coordinate-system.md)
-
 # How to use — video tutorials
 
 Short screen-capture tutorials demonstrating the main features of ReciPro. Click a link to play the video.
@@ -14,9 +10,5 @@ Short screen-capture tutorials demonstrating the main features of ReciPro. Click
 | Structure viewer — [Structure viewer](5-structure-viewer.md) | [▶ Play](https://user-images.githubusercontent.com/44538886/225242717-879da50c-0e84-487f-aace-eb6ed835dcc4.mp4) |
 | Stereonet — [Stereonet](6-stereonet.md) | [▶ Play](https://user-images.githubusercontent.com/44538886/225527569-53d4af64-e7e4-49b3-904a-e49a7ef63170.mp4) |
 | Diffraction simulator — [Diffraction simulator](7-diffraction-simulator/index.md) | [▶ Play](https://user-images.githubusercontent.com/44538886/225580329-849f129b-a4c1-485f-9ae3-b64509b5b415.mp4) |
-| HRTEM simulation — [HRTEM/STEM simulator](8-hrtem-stem-simulator/index.md) | [▶ Play](https://user-images.githubusercontent.com/44538886/224967658-41df6d2c-1247-4c45-84e8-210b8e5bb263.mp4) |
-| HRTEM / STEM simulation — [HRTEM/STEM simulator](8-hrtem-stem-simulator/index.md) | [▶ Play](https://user-images.githubusercontent.com/44538886/225196071-ff81d19f-ef3b-4238-a7aa-0804203b0f13.mp4) |
-
----
-
-[← 20.2. Examples](20-2-examples.md)  |  [🏠 Home](../index.md)  |  [Appendix A1. Coordinate System →](appendix-a1-coordinate-system.md)
+| HRTEM simulation — [HRTEM/STEM simulator](9-hrtem-stem-simulator/index.md) | [▶ Play](https://user-images.githubusercontent.com/44538886/224967658-41df6d2c-1247-4c45-84e8-210b8e5bb263.mp4) |
+| HRTEM / STEM simulation — [HRTEM/STEM simulator](9-hrtem-stem-simulator/index.md) | [▶ Play](https://user-images.githubusercontent.com/44538886/225196071-ff81d19f-ef3b-4238-a7aa-0804203b0f13.mp4) |

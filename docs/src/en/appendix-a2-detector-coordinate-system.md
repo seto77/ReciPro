@@ -1,7 +1,3 @@
-<!-- nav -->
-
-[← Appendix A1. Coordinate System](appendix-a1-coordinate-system.md)  |  [🏠 Home](../index.md)  |  [Troubleshooting →](troubleshooting.md)
-
 # Appendix A2. Detector Coordinate System
 
 **Crystal Diffraction** simulates a diffraction pattern on a detector. The detector is a finite-sized plane of pixels placed at a fixed distance from the sample, possibly tilted with respect to the incident beam. Accurate simulation requires knowledge of the geometric relationship between detector and sample.
@@ -51,7 +47,3 @@ After rotation:
 - The origin of Detector coordinates remains at the **foot**.
 - The origin of Pixel coordinates remains at the **upper-left corner**.
 - When tilted, X/Y directions do not coincide with X'/Y' directions.
-
----
-
-[← Appendix A1. Coordinate System](appendix-a1-coordinate-system.md)  |  [🏠 Home](../index.md)  |  [Troubleshooting →](troubleshooting.md)

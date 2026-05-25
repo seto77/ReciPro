@@ -1,7 +1,3 @@
-<!-- nav -->
-
-[← 20.2. マクロの使用例](20-2-examples.md)  |  [🏠 ホーム](index.md)  |  [Appendix A1. 座標系の定義 →](appendix-a1-coordinate-system.md)
-
 # How to use（動画チュートリアル）
 
 ReciPro の主な機能を紹介する画面キャプチャ動画です。リンクをクリックすると再生します。
@@ -14,9 +10,5 @@ ReciPro の主な機能を紹介する画面キャプチャ動画です。リン
 | 結晶構造ビューア — [結晶構造ビューア](5-structure-viewer.md) | [▶ 再生](https://user-images.githubusercontent.com/44538886/225242717-879da50c-0e84-487f-aace-eb6ed835dcc4.mp4) |
 | ステレオネット — [ステレオネット](6-stereonet.md) | [▶ 再生](https://user-images.githubusercontent.com/44538886/225527569-53d4af64-e7e4-49b3-904a-e49a7ef63170.mp4) |
 | 回折シミュレータ — [回折シミュレータ](7-diffraction-simulator/index.md) | [▶ 再生](https://user-images.githubusercontent.com/44538886/225580329-849f129b-a4c1-485f-9ae3-b64509b5b415.mp4) |
-| HRTEM シミュレーション — [HRTEM/STEMシミュレータ](8-hrtem-stem-simulator/index.md) | [▶ 再生](https://user-images.githubusercontent.com/44538886/224967658-41df6d2c-1247-4c45-84e8-210b8e5bb263.mp4) |
-| HRTEM / STEM シミュレーション — [HRTEM/STEMシミュレータ](8-hrtem-stem-simulator/index.md) | [▶ 再生](https://user-images.githubusercontent.com/44538886/225196071-ff81d19f-ef3b-4238-a7aa-0804203b0f13.mp4) |
-
----
-
-[← 20.2. マクロの使用例](20-2-examples.md)  |  [🏠 ホーム](index.md)  |  [Appendix A1. 座標系の定義 →](appendix-a1-coordinate-system.md)
+| HRTEM シミュレーション — [HRTEM/STEMシミュレータ](9-hrtem-stem-simulator/index.md) | [▶ 再生](https://user-images.githubusercontent.com/44538886/224967658-41df6d2c-1247-4c45-84e8-210b8e5bb263.mp4) |
+| HRTEM / STEM シミュレーション — [HRTEM/STEMシミュレータ](9-hrtem-stem-simulator/index.md) | [▶ 再生](https://user-images.githubusercontent.com/44538886/225196071-ff81d19f-ef3b-4238-a7aa-0804203b0f13.mp4) |

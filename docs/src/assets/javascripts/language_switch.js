@@ -7,7 +7,7 @@
 
   // 相手言語に 1:1 の対応ページが無いケースの上書き (EN のみ存在するページ → JA 側の代替ページ slug)
   var EN_TO_JA_OVERRIDE = {
-    "0-1-crystal-orientation-control/": "0-main-window/"
+    "0-main-window/1-crystal-orientation-control/": "0-main-window/"
   };
 
   function retarget() {

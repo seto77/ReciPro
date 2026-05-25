@@ -1,7 +1,3 @@
-<!-- nav -->
-
-[← 9.3. Potential simulation](8-3-potential-simulation.md)  |  [🏠 Home](../index.md)  |  [11. Spot ID v2 →](10-1-spot-id-v2.md)
-
 # Spot ID v1
 
 **Spot ID v1** detects, fits, and indexes diffraction spots from experimental electron diffraction images. It also supports manual zone-axis search from a numerically entered spot geometry (the former **TEM ID**).
@@ -103,7 +99,3 @@ Enter the geometry of the diffraction spots.
 **Three sides mode** — Enter the lengths of the three sides of a triangle with the direct spot as one vertex.
 
 **Two sides and an angle mode** — Enter the lengths of two sides (including the direct spot) and the angle between them.
-
----
-
-[← 9.3. Potential simulation](8-3-potential-simulation.md)  |  [🏠 Home](../index.md)  |  [11. Spot ID v2 →](10-1-spot-id-v2.md)

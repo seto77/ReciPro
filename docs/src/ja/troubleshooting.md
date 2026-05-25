@@ -1,7 +1,3 @@
-<!-- nav -->
-
-[← Appendix A2. 検出器座標系](appendix-a2-detector-coordinate-system.md)  |  [🏠 ホーム](index.md)
-
 # トラブルシューティング
 
 ReciProでよくある問題と解決方法です。
@@ -86,7 +82,3 @@ ReciProでよくある問題と解決方法です。
 - ReciProのバージョン番号
 - 問題を再現する手順
 - エラーメッセージやスクリーンショット
-
----
-
-[← Appendix A2. 検出器座標系](appendix-a2-detector-coordinate-system.md)  |  [🏠 ホーム](index.md)

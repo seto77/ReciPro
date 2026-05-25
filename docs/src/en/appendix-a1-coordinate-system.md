@@ -1,7 +1,3 @@
-<!-- nav -->
-
-[← How to use (videos)](appendix-a0-how-to-use.md)  |  [🏠 Home](../index.md)  |  [Appendix A2. Detector Coordinate System →](appendix-a2-detector-coordinate-system.md)
-
 # Appendix A1. Coordinate System
 
 ## Definition of orientation
@@ -46,7 +42,3 @@ When all angles are zero, the rotation axes correspond to:
 - **Ψ** → Z-axis (3rd, lowest rotation)
 
 The three angles have a **hierarchy**: Φ is the highest rotation, followed by θ, then Ψ. The direction of a lower axis depends on the state of the upper rotations. When Φ = θ = Ψ = 15°, for example, the Φ axis still coincides with Z, but the θ and Ψ axes generally do not align with any of X, Y, or Z.
-
----
-
-[← How to use (videos)](appendix-a0-how-to-use.md)  |  [🏠 Home](../index.md)  |  [Appendix A2. Detector Coordinate System →](appendix-a2-detector-coordinate-system.md)

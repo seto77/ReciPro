@@ -1,7 +1,3 @@
-<!-- nav -->
-
-[← 5. Structure Viewer](5-structure-viewer.md)  |  [🏠 ホーム](index.md)  |  [7. 回折シミュレータ →](7-diffraction-simulator/index.md)
-
 # ステレオネット (Stereonet)
 
 **ステレオネット** は、結晶面や晶帯軸の方向をステレオネット投影で表示します。
@@ -100,7 +96,3 @@
 ![線源タブ](../assets/cap-ja-auto/FormStereonet.tabControl.tabPage4.png)
 
 投影に用いる線源 (X線 / 電子線 / 中性子線) と波長 (またはエネルギー) を設定します。
-
----
-
-[← 5. Structure Viewer](5-structure-viewer.md)  |  [🏠 ホーム](index.md)  |  [7. 回折シミュレータ →](7-diffraction-simulator/index.md)

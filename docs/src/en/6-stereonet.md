@@ -1,7 +1,3 @@
-<!-- nav -->
-
-[← 5. Structure viewer](5-structure-viewer.md)  |  [🏠 Home](../index.md)  |  [7. Diffraction simulator →](7-diffraction-simulator/index.md)
-
 # Stereonet
 
 **Stereonet** displays crystal plane and axis directions using stereographic projection.
@@ -63,7 +59,3 @@ Specify by zone axis or crystal plane indices.
 ![Wave Length tab](../assets/cap-en-auto/FormStereonet.tabControl.tabPage4.png)
 
 Set the wave source (X-ray / electron / neutron) and the wavelength or energy used for the projection.
-
----
-
-[← 5. Structure viewer](5-structure-viewer.md)  |  [🏠 Home](../index.md)  |  [7. Diffraction simulator →](7-diffraction-simulator/index.md)

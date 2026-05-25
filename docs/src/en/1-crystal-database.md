@@ -1,7 +1,3 @@
-<!-- nav -->
-
-[← 0.1. Crystal orientation control](0-1-crystal-orientation-control.md)  |  [🏠 Home](../index.md)  |  [2. Symmetry information →](11-symmetry-information.md)
-
 # Crystal Database
 
 The **Crystal Database** provides functions to search and import crystal structures from two sources, selectable with the **AMCSD** and **COD** check boxes:
@@ -42,7 +38,3 @@ Displays crystals matching search criteria. Select a crystal to transfer to Main
 ### Cell parameter search
 
 ![Cell parameter search](../assets/cap-en-auto/FormCrystalDatabase.panelSearch.searchCrystalControl.flowLayoutPanel1.groupBoxCellParameter.png)
-
----
-
-[← 0.1. Crystal orientation control](0-1-crystal-orientation-control.md)  |  [🏠 Home](../index.md)  |  [2. Symmetry information →](11-symmetry-information.md)

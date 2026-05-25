@@ -2,10 +2,6 @@
 title: Diffraction Simulator
 ---
 
-<!-- nav -->
-
-[← 6. Stereonet](../6-stereonet.md)  |  [🏠 Home](../../index.md)  |  [7.1. SAED simulation →](../7-1-saed-simulation.md)
-
 # Crystal Diffraction (Diffraction Simulator)
 
 **Crystal Diffraction** simulates single-crystal X-ray and electron diffraction patterns.
@@ -187,7 +183,3 @@ The schematic (top left) shows the vectors on the Ewald sphere and defines the q
 - Above the table, the accelerating voltage, wavelength (= 1/k_vac), relativistic mass ratio *m/m₀*, speed ratio *v/c*, lattice volume, sample thickness, and (in CBED mode) the maximum semi-angle of the electron beam are shown.
 - **Note 1:** the unit of length is **nm**, not Å. **Note 2:** the unit of wavenumber is **1/nm**, not 2π/nm.
 - **Effective digit** — number of significant digits shown. **Auto resize row width** — auto-fit column widths. **Copy to clipboard** — exports the table as text that can be pasted into a spreadsheet.
-
----
-
-[← 6. Stereonet](../6-stereonet.md)  |  [🏠 Home](../../index.md)  |  [7.1. SAED simulation →](../7-1-saed-simulation.md)

@@ -1,3 +1,22 @@
+/* 260525Cl: ヘッダー/タブの背景をページ本体の背景色に合わせる (既定の blue grey をやめる)。
+   CSS 変数を使うのでライト/ダーク両方で本体背景に追従する。境界は薄い線で示す。 */
+.md-header,
+.md-tabs {
+  background-color: var(--md-default-bg-color);
+  color: var(--md-default-fg-color);
+}
+.md-header {
+  border-bottom: 0.05rem solid var(--md-default-fg-color--lightest);
+}
+/* 検索ボックスは本体背景と区別がつくよう薄いグレーにする */
+.md-search__input {
+  background-color: var(--md-default-fg-color--lightest);
+}
+.md-search__input::placeholder,
+.md-search__icon {
+  color: var(--md-default-fg-color--light);
+}
+
 /* 260525Ch: Keep migrated screenshots readable in the MkDocs layout. */
 .md-typeset img {
   max-width: 100%;

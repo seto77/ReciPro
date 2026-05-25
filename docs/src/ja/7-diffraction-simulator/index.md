@@ -2,10 +2,6 @@
 title: 回折シミュレータ
 ---
 
-<!-- nav -->
-
-[← 6. ステレオネット](../6-stereonet.md)  |  [🏠 ホーム](../index.md)  |  [7.1. SAEDシミュレーション →](../7-1-saed-simulation.md)
-
 # 回折シミュレータ (Crystal Diffraction)
 
 **Crystal Diffraction** は、単結晶X線回折および電子線回折パターンをシミュレーションします。
@@ -220,7 +216,3 @@ title: 回折シミュレータ
 - 表上部に、加速電圧・波長（= 1/k_vac）・相対論的質量比 *m/m₀*・速度比 *v/c*・格子体積・試料厚さ・（CBEDモードの）電子線の最大半角が表示されます。
 - **Note 1:** 長さの単位は Å ではなく **nm**。**Note 2:** 波数の単位は 2π/nm ではなく **1/nm**。
 - **Effective digit** — 表に表示する有効桁数。**Auto resize row width** — 列幅の自動調整。**Copy to clipboard** — 表を表計算ソフトへ貼り付け可能なテキストとして出力します（このフォームは日本語UIでも英語表示です）。
-
----
-
-[← 6. ステレオネット](../6-stereonet.md)  |  [🏠 ホーム](../index.md)  |  [7.1. SAEDシミュレーション →](../7-1-saed-simulation.md)

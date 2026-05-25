@@ -1,7 +1,3 @@
-<!-- nav -->
-
-[← Appendix A1. 座標系の定義](appendix-a1-coordinate-system.md)  |  [🏠 ホーム](index.md)  |  [トラブルシューティング →](troubleshooting.md)
-
 # 付録 A2. 検出器座標系の定義
 
 **Crystal Diffraction** は検出器上の回折パターンをシミュレーションします。検出器はピクセルの集合で構成された有限サイズの平面で、試料から一定距離に配置され、入射ビームに対して傾いている場合もあります。
@@ -51,7 +47,3 @@ mm単位の3次元直交座標。**試料**を原点とする。
 - 検出器座標の原点は常に**foot**
 - ピクセル座標の原点は常に**左上隅**
 - 傾いた場合、X/Y方向はX'/Y'方向と一致しない
-
----
-
-[← Appendix A1. 座標系の定義](appendix-a1-coordinate-system.md)  |  [🏠 ホーム](index.md)  |  [トラブルシューティング →](troubleshooting.md)

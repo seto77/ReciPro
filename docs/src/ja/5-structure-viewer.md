@@ -1,7 +1,3 @@
-<!-- nav -->
-
-[← 4. 回転ジオメトリ](3-rotation-geometry.md)  |  [🏠 ホーム](index.md)  |  [6. ステレオネット →](6-stereonet.md)
-
 # Structure Viewer（結晶構造ビューア）
 
 **Structure Viewer** は、選択した結晶をOpenGLを使って3次元的に描画します。
@@ -154,7 +150,3 @@
 | 対称要素 | 対称要素オーバーレイの表示切替（上記参照） |
 
 > ウィンドウ右上の **Size (W×H)** ボックスで、画像の保存・コピー時のピクセルサイズを指定します。
-
----
-
-[← 4. 回転ジオメトリ](3-rotation-geometry.md)  |  [🏠 ホーム](index.md)  |  [6. ステレオネット →](6-stereonet.md)

@@ -1,7 +1,3 @@
-<!-- nav -->
-
-[← Appendix A2. Detector Coordinate System](appendix-a2-detector-coordinate-system.md)  |  [🏠 Home](../index.md)
-
 # Troubleshooting
 
 Common issues and solutions for ReciPro.
@@ -86,7 +82,3 @@ Please include:
 - ReciPro version number
 - Steps to reproduce the problem
 - Any error messages or screenshots
-
----
-
-[← Appendix A2. Detector Coordinate System](appendix-a2-detector-coordinate-system.md)  |  [🏠 Home](../index.md)

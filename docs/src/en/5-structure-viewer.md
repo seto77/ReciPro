@@ -1,7 +1,3 @@
-<!-- nav -->
-
-[← 4. Rotation Geometry](3-rotation-geometry.md)  |  [🏠 Home](../index.md)  |  [6. Stereonet →](6-stereonet.md)
-
 # Structure Viewer
 
 **Structure Viewer** draws the selected crystal as a three-dimensional image using OpenGL.
@@ -126,7 +122,3 @@ For each class you can adjust the symbol size, line width, and colour.
 | Atom / Label | Toggle atom objects / atom labels |
 | Unit cell | Toggle unit-cell edges |
 | Symmetry Elements | Toggle the symmetry-element overlay (see above) |
-
----
-
-[← 4. Rotation Geometry](3-rotation-geometry.md)  |  [🏠 Home](../index.md)  |  [6. Stereonet →](6-stereonet.md)
