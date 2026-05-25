@@ -446,23 +446,26 @@ public partial class FormCaptureGUI : FormBase
         PopulateTargetForms(); // 260521Cl: 開いているフォーム一覧も再取得 (capture 操作中に開いた FormCTF 等を拾う)
     }
 
-    /// <summary>デフォルトの保存先を取得 (手動キャプチャは Wiki リポの cap-{en|ja}-manual)</summary>
+    /// <summary>デフォルトの保存先を取得 (手動キャプチャは docs/src/assets/cap-{en|ja}-manual)</summary>
     private static string GetDefaultOutputDir()
     {
+        // 260525Cl: Pages 正本化に伴い保存先を docs/src/assets/cap-{en|ja}-manual に変更 (画像も docs/src 側へ集約)。
         // 260524Cl: 保存先を Wiki リポ (ReciPro.wiki) の cap-{en|ja}-manual に変更。
         //   旧: ReciPro/doc/cap-{en|ja} (= projectRoot/doc/cap-*)。doc/cap-* は廃止し、画像は Wiki リポに集約する。
         // var langDir = System.Threading.Thread.CurrentThread.CurrentUICulture.Name == "ja" ? "cap-ja" : "cap-en"; // 260524Cl 旧
         var langDir = System.Threading.Thread.CurrentThread.CurrentUICulture.Name == "ja" ? "cap-ja-manual" : "cap-en-manual";
-        // 実行ファイル (bin/Debug/...) からプロジェクトルート (...\ReciPro\ReciPro) → repos ルート (...\source\repos) を辿る
+        // 実行ファイル (bin/Debug/...) からプロジェクトルート (...\ReciPro\ReciPro) → リポルート (...\ReciPro) を辿る
         var exeDir = AppDomain.CurrentDomain.BaseDirectory;
         var dir = new DirectoryInfo(exeDir);
         while (dir != null && dir.Name != "bin")
             dir = dir.Parent;
         var projectRoot = dir?.Parent;                 // ...\source\repos\ReciPro\ReciPro
-        var reposRoot = projectRoot?.Parent?.Parent;   // ...\source\repos
+        var repoRoot = projectRoot?.Parent;            // 260525Cl ...\source\repos\ReciPro (docs/ を持つリポルート)
+        // var reposRoot = projectRoot?.Parent?.Parent;   // ...\source\repos // 260525Cl 旧 (Wiki リポ用)
         // if (projectRoot != null) return Path.Combine(projectRoot.FullName, "doc", langDir); // 260524Cl 旧: main リポ doc/cap-*
-        if (reposRoot != null)
-            return Path.Combine(reposRoot.FullName, "ReciPro.wiki", langDir);
+        // if (reposRoot != null) return Path.Combine(reposRoot.FullName, "ReciPro.wiki", langDir); // 260525Cl 旧: Wiki リポ cap-*-manual
+        if (repoRoot != null)
+            return Path.Combine(repoRoot.FullName, "docs", "src", "assets", langDir);
 
         // フォールバック: 実行フォルダ直下
         return Path.Combine(exeDir, langDir);

@@ -21,12 +21,21 @@ internal static class Program
     [STAThread]
     private static void Main(string[] args)
     {
-        // 260522Cl 追加: --capture の言語指定 (args[2]) を SetDefaultFont より前に反映する。
-        //   ReciPro.exe --capture [出力ディレクトリ] [カルチャ(en/ja)]
+        // 260522Cl 追加 / 260525Cl 改修: --capture の言語指定を SetDefaultFont より前に反映する。
+        //   ReciPro.exe --capture [出力ディレクトリ] [カルチャ(en/ja)]   (出力先を明示)
+        //   ReciPro.exe --capture [カルチャ(en/ja)]                      (出力先省略=既定の docs/src/assets/cap-*-auto)
         // GetUIFont() / 各フォームの resx ローカライズが CurrentUICulture を参照するため、ここで先に確定させる。
-        if (args.Length >= 3 && args[0] == CaptureArg)
+        string captureDir = null, captureCulture = null;  // 260525Cl 追加
+        if (args.Length >= 2 && args[0] == CaptureArg)
         {
-            var ci = new System.Globalization.CultureInfo(args[2]);
+            // args[1] が en/ja なら「カルチャのみ指定 (出力先は既定)」、それ以外なら出力先ディレクトリとみなす。
+            if (args[1] is "en" or "ja") captureCulture = args[1];
+            else { captureDir = args[1]; captureCulture = args.Length >= 3 ? args[2] : null; }
+        }
+        // if (args.Length >= 3 && args[0] == CaptureArg) { var ci = new System.Globalization.CultureInfo(args[2]); ... } // 260525Cl 旧: dir 必須だった
+        if (captureCulture != null)
+        {
+            var ci = new System.Globalization.CultureInfo(captureCulture);
             System.Threading.Thread.CurrentThread.CurrentUICulture = ci;
             System.Globalization.CultureInfo.DefaultThreadCurrentUICulture = ci;
             GuiCapture.ForcedUICulture = ci;
@@ -44,10 +53,11 @@ internal static class Program
         Application.SetDefaultFont(Crystallography.Controls.FontHelper.GetUIFont());
 
         // 260521Cl 追加: GUI 監査用スクショ一括取得モード。通常起動 (引数なし) には一切影響しない。
-        //   ReciPro.exe --capture [出力ディレクトリ]
+        //   ReciPro.exe --capture [出力ディレクトリ] [カルチャ(en/ja)]
         if (args.Length >= 1 && args[0] == CaptureArg)
         {
-            GuiCapture.Run(args.Length >= 2 ? args[1] : null);
+            GuiCapture.Run(captureDir);  // 260525Cl: captureDir が null なら docs/src/assets/cap-{en|ja}-auto が既定
+            // GuiCapture.Run(args.Length >= 2 ? args[1] : null); // 260525Cl 旧
             // return; // 旧実装: Main の return だけでは OpenTK/WinForms 周辺スレッドが残り DLL を掴むことがあった
             Environment.Exit(0); // (260523Ch) --capture 完了後は開発者ツールとしてプロセスを確実に終了させる (この後に到達しないため旧 return; は削除)
         }

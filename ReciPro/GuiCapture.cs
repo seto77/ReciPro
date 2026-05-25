@@ -31,13 +31,31 @@ internal static class GuiCapture
     private const int PrepareSettleMs = 450;    // 結晶選択 (spinel) や Trajectory.Simulate 後の再計算・再描画待ち
     private const int TabSwitchSettleMs = 180;  // クロップ時にタブを切り替えた後の再描画待ち
 
+    /// <summary>260525Cl 追加: --capture の出力先を省略したときの既定ディレクトリ (docs/src/assets/cap-{en|ja}-auto)。
+    /// Pages 正本化に伴い、自動キャプチャも ReciPro.wiki ではなく docs/src 側へ保存する。
+    /// 実行ファイル (bin/...) からリポルート (...\ReciPro) を辿れなければ temp にフォールバックする。</summary>
+    private static string DefaultAutoCaptureDir()
+    {
+        var culture = ForcedUICulture ?? System.Threading.Thread.CurrentThread.CurrentUICulture;
+        var langDir = culture.Name == "ja" ? "cap-ja-auto" : "cap-en-auto";
+        var dir = new DirectoryInfo(AppDomain.CurrentDomain.BaseDirectory);
+        while (dir != null && dir.Name != "bin")
+            dir = dir.Parent;
+        var repoRoot = dir?.Parent?.Parent;  // bin → ...\ReciPro\ReciPro → ...\ReciPro (docs/ を持つリポルート)
+        return repoRoot != null
+            ? Path.Combine(repoRoot.FullName, "docs", "src", "assets", langDir)
+            : Path.Combine(Path.GetTempPath(), "recipro-capture-" + DateTime.Now.ToString("yyyyMMdd-HHmmss") + "-" + langDir);
+    }
+
     /// <summary>
     /// --capture の本体。ReciPro 内の parameterless ctor を持つ Form を順に構築し、フォーム単位の PNG を保存する。
     /// FormMain は他フォームの代表状態を作るため最後まで保持する。通常起動からは呼ばない開発者向け経路。
     /// </summary>
     public static void Run(string outDir)
     {
-        outDir ??= Path.Combine(Path.GetTempPath(), "recipro-capture-" + DateTime.Now.ToString("yyyyMMdd-HHmmss"));
+        // 260525Cl: 引数省略時の既定保存先を docs/src/assets/cap-{en|ja}-auto に変更 (Pages 正本化に伴い画像も docs/src 側へ集約)。
+        // outDir ??= Path.Combine(Path.GetTempPath(), "recipro-capture-" + DateTime.Now.ToString("yyyyMMdd-HHmmss")); // 260525Cl 旧: temp フォールバック
+        outDir ??= DefaultAutoCaptureDir();
         Directory.CreateDirectory(outDir);
 
         var log = new List<string>();
