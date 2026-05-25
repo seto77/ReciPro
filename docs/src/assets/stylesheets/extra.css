@@ -86,21 +86,27 @@
   padding: 0.1rem 0.2rem;
 }
 .md-footer__link {
-  margin-top: 0.2rem;
-  margin-bottom: 0.2rem;
+  margin-top: 0.1rem;
+  margin-bottom: 0.1rem;
 }
 .md-footer__title {
   font-size: 0.7rem;      /* 既定 0.9rem */
-  margin-bottom: 0.1rem;  /* 既定 0.7rem */
-  padding: 0 0.6rem;      /* 既定 0 1rem */
+  margin-bottom: 0;       /* 既定 0.7rem */
+  padding: 0 0.5rem;      /* 既定 0 1rem */
   line-height: 1.3;
 }
 .md-footer__direction {
   display: none;          /* "Previous"/"Next" ラベルは不要 (矢印とページ名は残す) */
 }
-.md-footer__button {       /* 前/次の矢印アイコンも小さくして行高を抑える */
-  margin: 0.1rem;
-  padding: 0.2rem;
+/* 行の最大高は前/次の矢印アイコン (.md-icon svg 既定 1.2rem) なので、これを縮めるのが効く。
+   ボタン枠の余白も削って高さを抑える。 */
+.md-footer__button {
+  margin: 0;
+  padding: 0.1rem;
+}
+.md-footer__button svg {
+  height: 0.9rem;         /* 既定 1.2rem */
+  width: 0.9rem;
 }
 .md-footer-meta__inner {
   padding: 0.1rem 0.2rem;
