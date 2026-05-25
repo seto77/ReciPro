@@ -17,13 +17,13 @@ To open this window, select **Convergence (CBED)** in the incident beam mode of 
 - **LACBED** (Large-Angle CBED): Large-angle convergent beam pattern where disks from different reflections overlap. Useful for observing higher-order Laue zone (HOLZ) lines and symmetry.
 
 ### Convergence semi-angle (mrad)
-The half-angle of the convergent beam cone. This determines the size of each diffraction disk. Typical values: 5-30 mrad. The disk diameter in reciprocal space equals 2 * alpha.
+The half-angle of the convergent beam cone. This determines the size of each diffraction disk. Typical values: 5-30 mrad. The disk diameter in reciprocal space equals $2\alpha$.
 
 ### Disk resolution (mrad/pixel)
-The angular resolution within each disk. Smaller values give higher resolution but increase computation time quadratically (total pixels = (2*alpha/resolution)^2). The total number of beam directions (pixels) is shown in the status display.
+The angular resolution within each disk. Smaller values give higher resolution but increase computation time quadratically (total pixels $= (2\alpha/\text{resolution})^2$). The total number of beam directions (pixels) is shown in the status display.
 
 ### Max Bloch waves
-The maximum number of beams included in the Bloch wave calculation at each incident beam direction. More beams give more accurate results but increase the computation time (O(N^3) eigenvalue problem per pixel). Typical values: 100-500.
+The maximum number of beams included in the Bloch wave calculation at each incident beam direction. More beams give more accurate results but increase the computation time ($O(N^3)$ eigenvalue problem per pixel). Typical values: 100-500.
 
 ### Thickness range
 Set the start, end, and step values for sample thickness (nm). CBED patterns depend strongly on thickness, and computing multiple thicknesses simultaneously is efficient because the eigenvalue problem is solved only once per beam direction.
@@ -86,6 +86,10 @@ In CBED, the incident beam is a cone of plane waves with different directions. F
 4. The eigenvalues give the Bloch wave wavevectors; the eigenvectors give the Bloch wave amplitudes.
 5. Boundary conditions at the entrance and exit surfaces determine the diffracted beam intensities.
 
-The intensity at each pixel in a CBED disk is I_g(k) = |sum_j C_g^j * C_0^j * exp(2*pi*i*gamma_j*t)|^2, where j runs over Bloch waves, C are eigenvector components, gamma are eigenvalues, and t is thickness.
+The intensity at each pixel in a CBED disk is
+
+$$I_{\mathbf{g}}(\mathbf{k}) = \left| \sum_j C_{\mathbf{g}}^{(j)} C_{0}^{(j)} \exp(2\pi i\,\gamma_j t) \right|^2$$
+
+where $j$ runs over Bloch waves, $C$ are the eigenvector components, $\gamma$ are the eigenvalues, and $t$ is the thickness.
 
 HOLZ (Higher-Order Laue Zone) lines appear as fine dark/bright lines within the CBED disks, arising from reflections in upper Laue zones. They are sensitive to the c-axis lattice parameter and are useful for 3D structure analysis.

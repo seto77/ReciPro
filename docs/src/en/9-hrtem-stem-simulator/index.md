@@ -113,7 +113,7 @@ Computation depends on: convergence angle, Bloch wave count, angular resolution.
 | BF, ABF | Elastic |
 | LAADF, HAADF | Inelastic (TDS) |
 
-> Set temperature factors non-zero for TDS (B = 0.5 A^2 if unsure). HAADF intensity ~ Z^2.
+> Set temperature factors non-zero for TDS (B = 0.5 Å² if unsure). HAADF intensity $\propto Z^2$.
 
 ![STEM simulation comparison: Dr. Probe vs ReciPro](../../assets/references/STEM_DrProbe_comparison.png)
 

@@ -28,7 +28,7 @@ A convergent electron beam is scanned across the specimen. Transmitted and scatt
 | **BF** | 0 – convergence angle | Elastic | Phase contrast |
 | **ABF** | Inner part of convergence angle | Elastic | Light-element sensitive |
 | **LAADF** | Just outside convergence angle | Elastic + TDS | Strain sensitive |
-| **HAADF** | Well outside convergence angle | TDS (inelastic) | Z-contrast (~Z²) |
+| **HAADF** | Well outside convergence angle | TDS (inelastic) | Z-contrast ($\propto Z^2$) |
 
 ---
 

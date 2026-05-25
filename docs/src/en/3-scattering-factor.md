@@ -47,8 +47,8 @@ Each row corresponds to one reflection (or a group of symmetry-equivalent planes
 | **2θ (°)** | diffraction angle for the selected wavelength |
 | **F_real** | real part of the structure factor |
 | **F_inv** | imaginary part of the structure factor |
-| **\|F\|** | structure-factor amplitude (= √(F_real² + F_inv²)) |
-| **F^2** | structure-factor intensity (\|F\|²) |
+| **\|F\|** | structure-factor amplitude ($= \sqrt{F_\text{real}^2 + F_\text{inv}^2}$) |
+| **F^2** | structure-factor intensity ($\lvert F\rvert^2$) |
 | **Rel. Int. (%)** | relative intensity, with the strongest reflection set to 100 |
 
 ---

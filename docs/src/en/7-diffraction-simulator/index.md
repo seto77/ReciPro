@@ -152,34 +152,34 @@ Lists the per-reflection details computed by the Bethe dynamical theory (Bloch-w
 
 ### Schematic and definitions
 
-The schematic (top left) shows the vectors on the Ewald sphere and defines the quantities used in the table (**n̂** is the unit vector normal to the sample surface, **k** is the incident wavevector, **g** is the reciprocal-lattice vector).
+The schematic (top left) shows the vectors on the Ewald sphere and defines the quantities used in the table ($\hat{\mathbf{n}}$ is the unit vector normal to the sample surface, $\mathbf{k}$ is the incident wavevector, $\mathbf{g}$ is the reciprocal-lattice vector).
 
-- **P_g = 2 n̂·(k + g)**
-- **Q_g = |k|² − |k + g|² = −g·(2k + g)**
-- **Excitation error S_g = ( √(P_g² + 4Q_g) − P_g ) / 2**
-- **Evaluation function R = |g|·Q_g²** — ranks reflections by how strongly they are excited (smaller = closer to the Ewald sphere = more strongly excited; the transmitted beam g=0 has R=0 and comes first). The table is sorted by ascending R.
+- $P_g = 2\,\hat{\mathbf{n}} \cdot (\mathbf{k} + \mathbf{g})$
+- $Q_g = |\mathbf{k}|^2 - |\mathbf{k} + \mathbf{g}|^2 = -\mathbf{g} \cdot (2\mathbf{k} + \mathbf{g})$
+- **Excitation error:** $S_g = \dfrac{\sqrt{P_g^2 + 4 Q_g} - P_g}{2}$
+- **Evaluation function:** $R = |\mathbf{g}|\, Q_g^2$ — ranks reflections by how strongly they are excited (smaller = closer to the Ewald sphere = more strongly excited; the transmitted beam $g=0$ has $R=0$ and comes first). The table is sorted by ascending $R$.
 
 ### Table columns
 
 | Column | Meaning |
 |------|------|
-| **R** | evaluation function R = \|g\|·Q_g² (above; used for selecting/ordering reflections) |
+| **R** | evaluation function $R = \lvert\mathbf{g}\rvert\, Q_g^2$ (above; used for selecting/ordering reflections) |
 | **h, k, (i,) l** | Miller indices (*i* is the redundant hexagonal index, shown only for hexagonal crystals) |
 | **d** | interplanar spacing (nm) |
 | **gX, gY, gZ** | components of the reciprocal-lattice vector *g* (1/nm) |
 | **\|g\|** | magnitude of *g* (1/nm) |
-| **Vg re / Vg im** | Fourier coefficient of the crystal potential for elastic scattering, *V_g* (real / imaginary) |
-| **V'g re / V'g im** | imaginary (absorption) potential for thermal diffuse scattering, *V'_g* (real / imaginary) |
-| **Sg** | excitation error S_g (above; 1/nm) |
-| **Pg** | auxiliary quantity P_g = 2 n̂·(k+g) (above) |
-| **Qg** | auxiliary quantity Q_g = −g·(2k+g) (above) |
-| **Φ re / Φ im** | complex amplitude Φ of the dynamical diffracted wave on the exit surface (real / imaginary) |
-| **\|Φ\|^2** | diffracted intensity \|Φ\|² of that reflection |
-| **Σ\|Φ\|^2** | cumulative sum of \|Φ\|² (total over reflections; useful as an intensity-conservation check) |
+| **Vg re / Vg im** | Fourier coefficient of the crystal potential for elastic scattering, $V_g$ (real / imaginary) |
+| **V'g re / V'g im** | imaginary (absorption) potential for thermal diffuse scattering, $V'_g$ (real / imaginary) |
+| **Sg** | excitation error $S_g$ (above; 1/nm) |
+| **Pg** | auxiliary quantity $P_g = 2\,\hat{\mathbf{n}}\cdot(\mathbf{k}+\mathbf{g})$ (above) |
+| **Qg** | auxiliary quantity $Q_g = -\mathbf{g}\cdot(2\mathbf{k}+\mathbf{g})$ (above) |
+| **Φ re / Φ im** | complex amplitude $\Phi$ of the dynamical diffracted wave on the exit surface (real / imaginary) |
+| **\|Φ\|^2** | diffracted intensity $\lvert\Phi\rvert^2$ of that reflection |
+| **Σ\|Φ\|^2** | cumulative sum of $\lvert\Phi\rvert^2$ (total over reflections; useful as an intensity-conservation check) |
 
 ### Potential units and other controls
 
-- **Unit of potential** — switches the displayed potential between **Vg [eV]** (electrostatic potential, eV) and **Ug [nm⁻²]** (the scaled quantity *U_g* = 2m₀/h² · *V_g* that enters the Bloch-wave equations). The column headers change accordingly between *Vg / V'g* and *Ug / U'g*.
-- Above the table, the accelerating voltage, wavelength (= 1/k_vac), relativistic mass ratio *m/m₀*, speed ratio *v/c*, lattice volume, sample thickness, and (in CBED mode) the maximum semi-angle of the electron beam are shown.
+- **Unit of potential** — switches the displayed potential between **Vg [eV]** (electrostatic potential, eV) and **Ug [nm⁻²]** (the scaled quantity $U_g = (2 m_0/h^2)\, V_g$ that enters the Bloch-wave equations). The column headers change accordingly between *Vg / V'g* and *Ug / U'g*.
+- Above the table, the accelerating voltage, wavelength ($\lambda = 1/k_\text{vac}$), relativistic mass ratio $m/m_0$, speed ratio $v/c$, lattice volume, sample thickness, and (in CBED mode) the maximum semi-angle of the electron beam are shown.
 - **Note 1:** the unit of length is **nm**, not Å. **Note 2:** the unit of wavenumber is **1/nm**, not 2π/nm.
 - **Effective digit** — number of significant digits shown. **Auto resize row width** — auto-fit column widths. **Copy to clipboard** — exports the table as text that can be pasted into a spreadsheet.

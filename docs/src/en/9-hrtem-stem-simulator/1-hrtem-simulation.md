@@ -7,9 +7,9 @@ Simulates high-resolution TEM lattice-fringe images. The primary mode of the [8.
 ## Calculation flow
 
 1. **Bloch-wave method**: compute electron wave propagation through the crystal potential; obtain exit-wave amplitude and phase
-2. **Lens function**: apply objective-lens aberrations (Cs, defocus Δf)
+2. **Lens function**: apply objective-lens aberrations (spherical aberration $C_s$, defocus $\Delta f$)
 3. **Partial coherence**: account for finite source size (spatial coherence) and energy spread (temporal coherence)
-4. **Image formation**: compute intensity |ψ(r)|²
+4. **Image formation**: compute intensity $|\psi(\mathbf{r})|^2$
 
 ---
 
@@ -45,11 +45,11 @@ Simulates high-resolution TEM lattice-fringe images. The primary mode of the [8.
 
 Displayed in the lens-function tab:
 
-- **Sin[χ(u)]**: phase contrast transfer function
-- **Es(u)**: spatial coherence envelope
-- **Ec(u)**: temporal coherence envelope
+- $\sin\chi(u)$: phase contrast transfer function ($\chi(u)$ is the lens aberration function)
+- $E_\text{s}(u)$: spatial coherence envelope
+- $E_\text{c}(u)$: temporal coherence envelope
 
-Scherzer defocus: Δf = −1.2 (Cs λ)^(1/2), the condition giving a broad negative PCTF band (dark contrast = atom positions).
+Scherzer defocus: $\Delta f = -1.2\,\sqrt{C_s \lambda}$, the condition giving a broad negative PCTF band (dark contrast = atom positions).
 
 ---
 
