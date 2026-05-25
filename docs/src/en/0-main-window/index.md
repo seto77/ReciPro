@@ -76,9 +76,9 @@ Check for updates, hints, version history, license, GitHub repository, bug/featu
 
 ![Rotation control panel](../../assets/cap-en-auto/FormMain.toolStripContainer1.panel1.png)
 
-### Current direction
+### Current orientation
 
-![Current direction](../../assets/cap-en-auto/FormMain.toolStripContainer1.panel1.groupBoxCurrentDirection.png)
+![Current orientation](../../assets/cap-en-auto/FormMain.toolStripContainer1.panel1.groupBoxCurrentDirection.png)
 
 Shows crystal orientation. Drag to rotate. Axes: red = *a*, green = *b*, blue = *c*.
 
@@ -92,15 +92,15 @@ Displays closest zone axis to screen normal (e.g., *u*+*v*+*w* < 30).
 - **Psi**: Z-axis rotation, **Theta**: X-axis rotation, **Phi**: Z-axis rotation
 - See [3. Rotation Geometry](../4-rotation-geometry.md) and [Appendix A1. Coordinate System](../appendix/a1-coordinate-system.md).
 
-### Arrow buttons / Animation
+### Arrows
 
-![Arrow buttons](../../assets/cap-en-auto/FormMain.toolStripContainer1.panel1.groupBoxArrows.png)
+![Arrows](../../assets/cap-en-auto/FormMain.toolStripContainer1.panel1.groupBoxArrows.png)
 
 Rotate by angle Step. Check Animation for continuous rotation.
 
-### Project along...
+### View along
 
-![Project along](../../assets/cap-en-auto/FormMain.toolStripContainer1.panel1.groupBoxProjectAlong.png)
+![View along](../../assets/cap-en-auto/FormMain.toolStripContainer1.panel1.groupBoxProjectAlong.png)
 
 Align a zone axis [*uvw*] or crystal plane (*hkl*) perpendicular to the screen.
 

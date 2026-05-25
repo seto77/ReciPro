@@ -54,7 +54,7 @@ Drawing range by unit cell or crystal planes. Bound planes, clipping, hide atoms
 
 Coordinates, element, occupancy, radius, colour, material. **Apply to same elements**.
 
-### Bonds (& Polyhedra)
+### Bonds & Polyhedra
 
 ![Bonds tab](../assets/cap-en-auto/FormStructureViewer.splitContainer1.tabControl.tabPageBond.png)
 
@@ -66,13 +66,13 @@ Bond length thresholds, polyhedron display, edges.
 
 Translation, cell planes, edges.
 
-### Lattice Plane
+### Lattice Planes
 
 ![Lattice Plane tab](../assets/cap-en-auto/FormStructureViewer.splitContainer1.tabControl.tabPageLatticePlane.png)
 
 Miller index specification with crystallographic equivalents.
 
-### Coordinates
+### Coordination
 
 ![Coordinates tab](../assets/cap-en-auto/FormStructureViewer.splitContainer1.tabControl.tabPageCoordinateInformation.png)
 

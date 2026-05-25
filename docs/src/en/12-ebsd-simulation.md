@@ -35,9 +35,9 @@ The energy and depth ranges are set automatically in steps 1–2, but can be adj
 
 ---
 
-## Detector geometry
+## EBSD geometry
 
-![Detector geometry](../assets/cap-en-auto/FormEBSD.tabControl1.tabPage1.groupBoxEBSDGeometry.png)
+![EBSD geometry](../assets/cap-en-auto/FormEBSD.tabControl1.tabPage1.groupBoxEBSDGeometry.png)
 
 - **Detector tilt** — tilt of the detector (phosphor screen).
 - **Detector radius** — radius of the detector (mm); sets the angular field of view of the drawn pattern.
@@ -51,9 +51,9 @@ The grey plate is the sample, the green cylinder/cone is the detector, and the p
 
 ---
 
-## Backscattered-electron (BSE) distribution
+## BSE Distribution
 
-![BSE distribution](../assets/cap-en-auto/FormEBSD.tabControl1.tabPage2.png)
+![BSE Distribution](../assets/cap-en-auto/FormEBSD.tabControl1.tabPage2.png)
 
 The **BSE Distribution** tab shows the Monte-Carlo backscattered-electron distributions. Use **Simulate** to recompute them.
 

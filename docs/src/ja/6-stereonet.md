@@ -50,9 +50,9 @@
 
 ---
 
-## 指数 (Indices)
+## 描画する指数 (Indices)
 
-![指数](../assets/cap-ja-auto/FormStereonet.panel3.groupBoxIndices.png)
+![描画する指数](../assets/cap-ja-auto/FormStereonet.panel3.groupBoxIndices.png)
 
 描画する結晶面/晶帯軸を設定します。
 

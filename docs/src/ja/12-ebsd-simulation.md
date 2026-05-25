@@ -35,9 +35,9 @@
 
 ---
 
-## EBSDのセッティング（検出器ジオメトリ）
+## EBSDのセッティング
 
-![検出器ジオメトリ](../assets/cap-ja-auto/FormEBSD.tabControl1.tabPage1.groupBoxEBSDGeometry.png)
+![EBSDのセッティング](../assets/cap-ja-auto/FormEBSD.tabControl1.tabPage1.groupBoxEBSDGeometry.png)
 
 - **検出器の傾き** — 検出器（蛍光板）の傾き。
 - **検出器の半径** — 検出器の半径（mm）。描画されるパターンの視野角を決めます。
@@ -51,7 +51,7 @@
 
 ---
 
-## 後方散乱電子（BSE）分布
+## BSE分布
 
 ![BSE分布](../assets/cap-ja-auto/FormEBSD.tabControl1.tabPage2.png)
 

@@ -11,9 +11,9 @@
 
 ---
 
-## Spot detection and manipulation
+## Spot information
 
-![Spot controls](../assets/cap-en-auto/FormSpotIDV2.splitContainer1.groupBoxSpot.png)
+![Spot information](../assets/cap-en-auto/FormSpotIDV2.splitContainer1.groupBoxSpot.png)
 
 - **Find spots**: Automatic spot detection with advanced peak-finding using local maxima and background subtraction.
 - **Donut filter**: Applies a donut-shaped (annular) filter to enhance ring-shaped diffraction features and suppress the central beam.
@@ -23,9 +23,9 @@
 
 ---
 
-## Indexing panel
+## Index
 
-![Indexing](../assets/cap-en-auto/FormSpotIDV2.splitContainer1.groupBoxIndex.png)
+![Index](../assets/cap-en-auto/FormSpotIDV2.splitContainer1.groupBoxIndex.png)
 
 - **Crystal selection**: Choose which crystals from the crystal list to use as candidates for indexing.
 - **Search**: Run the indexing algorithm to find the best-matching crystal and zone axis.
@@ -34,7 +34,7 @@
 
 ---
 
-## Optics panel
+## Optics
 
 ![Optics](../assets/cap-en-auto/FormSpotIDV2.splitContainer1.panel1.groupBoxOptics.png)
 

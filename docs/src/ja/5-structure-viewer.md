@@ -65,7 +65,7 @@
 - 結晶面で描画領域を定義
 - 面が閉じた領域を形成しない場合は自動的に1単位格子に設定
 
-### 原子 (Atoms)
+### 原子情報 (Atoms)
 
 ![Atoms タブ](../assets/cap-ja-auto/FormStructureViewer.splitContainer1.tabControl.tabPageAtom.png)
 
@@ -79,13 +79,13 @@
 
 > **重要**: 変更を永続保存するには、メインウィンドウの**リストへ追加**または**選択結晶と入れ替え**を押してください。
 
-### 結合と多面体 (Bonds & Polyhedra)
+### 結合/多面体 (Bonds & Polyhedra)
 
 ![Bonds タブ](../assets/cap-ja-auto/FormStructureViewer.splitContainer1.tabControl.tabPageBond.png)
 
 結合と配位多面体を定義します。
 
-### 単位格子 (Unit cell)
+### 単位胞 (Unit cell)
 
 ![Unit Cell タブ](../assets/cap-ja-auto/FormStructureViewer.splitContainer1.tabControl.tabPageUnitCell.png)
 
@@ -109,7 +109,7 @@
 
 ![情報 タブ](../assets/cap-ja-auto/FormStructureViewer.splitContainer1.tabControl.tabPageInformation.png)
 
-### 投影法 (Projection)
+### 投影 (Projection)
 
 ![Projection タブ](../assets/cap-ja-auto/FormStructureViewer.splitContainer1.tabControl.tabPageProjection.png)
 

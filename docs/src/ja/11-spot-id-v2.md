@@ -11,9 +11,9 @@
 
 ---
 
-## スポット検出と操作
+## スポット情報
 
-![スポットコントロール](../assets/cap-ja-auto/FormSpotIDV2.splitContainer1.groupBoxSpot.png)
+![スポット情報](../assets/cap-ja-auto/FormSpotIDV2.splitContainer1.groupBoxSpot.png)
 
 - **スポット検出**: 局所最大値とバックグラウンド除去を用いた自動スポット検出。
 - **Donut (experimental)**: ドーナツ型フィルタを適用してリング状の回折特徴を強調。
@@ -23,7 +23,7 @@
 
 ---
 
-## 指数付けパネル
+## 指数付け
 
 ![指数付け](../assets/cap-ja-auto/FormSpotIDV2.splitContainer1.groupBoxIndex.png)
 
@@ -34,9 +34,9 @@
 
 ---
 
-## 光学系パネル
+## Optics
 
-![光学系](../assets/cap-ja-auto/FormSpotIDV2.splitContainer1.panel1.groupBoxOptics.png)
+![Optics](../assets/cap-ja-auto/FormSpotIDV2.splitContainer1.panel1.groupBoxOptics.png)
 
 ---
 

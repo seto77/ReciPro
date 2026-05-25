@@ -48,14 +48,14 @@ Save or copy in raster or vector format. Vector format allows editing font/line 
 
 String size, point size, colour, outline.
 
-### Great and Small Circle
+### Great Circle
 
-![Great and Small Circle tab](../assets/cap-en-auto/FormStereonet.tabControl.tabPage2.png)
+![Great Circle tab](../assets/cap-en-auto/FormStereonet.tabControl.tabPage2.png)
 
 Specify by zone axis or crystal plane indices.
 
-### Wave Length
+### Wave
 
-![Wave Length tab](../assets/cap-en-auto/FormStereonet.tabControl.tabPage4.png)
+![Wave tab](../assets/cap-en-auto/FormStereonet.tabControl.tabPage4.png)
 
 Set the wave source (X-ray / electron / neutron) and the wavelength or energy used for the projection.

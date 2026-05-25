@@ -30,11 +30,11 @@ Summary of the run (backscatter yield, mean free path, penetration depth, etc.).
 
 ---
 
-## Direction Distribution
+## BSE direction distribution
 
-![Direction Distribution](../assets/cap-en-auto/FormTrajectory.groupBoxDirectionDistribution.png)
+![BSE direction distribution](../assets/cap-en-auto/FormTrajectory.groupBoxDirectionDistribution.png)
 
-Angular distribution of the backscattered electrons.
+Angular distribution of the backscattered electrons (the stereonet center corresponds to the surface normal direction).
 
 ---
 
@@ -44,6 +44,6 @@ Angular distribution of the backscattered electrons.
 
 Depth and energy profiles of the simulated electrons.
 
-### Energy Distribution
+### BSE energy distribution at escape
 
-![Energy Distribution](../assets/cap-en-auto/FormTrajectory.flowLayoutPanelProfiles.groupBoxEnergyDistribution.png)
+![BSE energy distribution at escape](../assets/cap-en-auto/FormTrajectory.flowLayoutPanelProfiles.groupBoxEnergyDistribution.png)

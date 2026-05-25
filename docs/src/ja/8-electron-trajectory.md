@@ -22,19 +22,19 @@
 
 ---
 
-## 統計
+## 統計情報
 
-![統計](../assets/cap-ja-auto/FormTrajectory.groupBoxStatistics.png)
+![統計情報](../assets/cap-ja-auto/FormTrajectory.groupBoxStatistics.png)
 
 後方散乱率・平均自由行程・侵入深さなど、計算結果の要約。
 
 ---
 
-## 方向分布
+## 後方散乱電子の方位分布
 
-![方向分布](../assets/cap-ja-auto/FormTrajectory.groupBoxDirectionDistribution.png)
+![後方散乱電子の方位分布](../assets/cap-ja-auto/FormTrajectory.groupBoxDirectionDistribution.png)
 
-後方散乱電子の角度分布。
+後方散乱電子の角度分布（ステレオネット中心は表面法線方向）。
 
 ---
 
@@ -44,6 +44,6 @@
 
 電子の深さ・エネルギープロファイル。
 
-### エネルギー分布
+### 後方散乱電子の試料脱出時のエネルギー
 
-![エネルギー分布](../assets/cap-ja-auto/FormTrajectory.flowLayoutPanelProfiles.groupBoxEnergyDistribution.png)
+![後方散乱電子の試料脱出時のエネルギー](../assets/cap-ja-auto/FormTrajectory.flowLayoutPanelProfiles.groupBoxEnergyDistribution.png)

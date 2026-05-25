@@ -49,9 +49,9 @@ Click **Simulate** to start the CBED simulation. A progress bar shows the percen
 
 ---
 
-## Output controls
+## Output parameters
 
-![Output controls](../../assets/cap-en-auto/FormDiffractionSimulatorCBED.groupBoxOutput.png)
+![Output parameters](../../assets/cap-en-auto/FormDiffractionSimulatorCBED.groupBoxOutput.png)
 
 After the calculation completes, the output panel becomes available:
 

@@ -48,9 +48,9 @@
 
 ---
 
-## 出力コントロール
+## 出力パラメータ
 
-![出力コントロール](../../assets/cap-ja-auto/FormDiffractionSimulatorCBED.groupBoxOutput.png)
+![出力パラメータ](../../assets/cap-ja-auto/FormDiffractionSimulatorCBED.groupBoxOutput.png)
 
 ### 表示モード
 - **全ディスク共通**: すべてのディスクを含む完全なCBEDパターンを表示。

@@ -55,11 +55,11 @@ title: 回折シミュレータ
 
 ---
 
-## モニター / 検出器ジオメトリ
+## 画面 / 検出器情報
 
-### モニター
+### 画面
 
-![モニター](../../assets/cap-ja-auto/FormDiffractionSimulator.toolStripContainer1.flowLayoutPanel6.groupBoxMonitor.png)
+![画面](../../assets/cap-ja-auto/FormDiffractionSimulator.toolStripContainer1.flowLayoutPanel6.groupBoxMonitor.png)
 
 - **解像度**: 1ピクセルのサイズ (mm)。表示スケールのパラメータであり、マウスズームで変化。
 - **Size (W×H)**: 描画領域のピクセル数 (幅×高さ)。
@@ -80,9 +80,9 @@ title: 回折シミュレータ
 
 ![TEMホルダーシミュレーション](../../assets/cap-ja-auto/FormDiffractionSimulatorHolder.png)
 
-### 検出器ジオメトリ
+### 検出器情報
 
-![検出器ジオメトリ](../../assets/cap-ja-auto/FormDiffractionSimulator.toolStripContainer1.flowLayoutPanel6.panelDetectorAndMisc.groupBoxDetectorGeometry.png)
+![検出器情報](../../assets/cap-ja-auto/FormDiffractionSimulator.toolStripContainer1.flowLayoutPanel6.panelDetectorAndMisc.groupBoxDetectorGeometry.png)
 
 - **カメラ長2**: 試料から検出器までの距離 (mm)。
 - **詳細**: 光学系設定ウィンドウを開く。
@@ -91,9 +91,9 @@ title: 回折シミュレータ
 
 ## タブメニュー
 
-### 一般設定 (General)
+### 一般 (General)
 
-![一般設定タブ](../../assets/cap-ja-auto/FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageGeneral.png)
+![一般タブ](../../assets/cap-ja-auto/FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageGeneral.png)
 
 スポット、ラベル、菊池線等の色を設定。
 
@@ -109,9 +109,9 @@ title: 回折シミュレータ
 
 デバイリングが有効の場合にアクティブ。
 
-### スケール (Scale)
+### 目盛り線 (Scale)
 
-![スケールタブ](../../assets/cap-ja-auto/FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageScale.png)
+![目盛り線タブ](../../assets/cap-ja-auto/FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageScale.png)
 
 ---
 

@@ -38,11 +38,11 @@ Spots, Kikuchi Lines, Debye rings, Scale, label options (Index / d / Distance / 
 
 ---
 
-## Monitor / Detector geometry
+## Display settings / Detector geometry
 
-### Monitor
+### Display settings
 
-![Monitor](../../assets/cap-en-auto/FormDiffractionSimulator.toolStripContainer1.flowLayoutPanel6.groupBoxMonitor.png)
+![Display settings](../../assets/cap-en-auto/FormDiffractionSimulator.toolStripContainer1.flowLayoutPanel6.groupBoxMonitor.png)
 
 **Resolution**, image **Size (W×H)**, **Set the center to** / **Fix**, and **Horizontal flip / Vertical flip / Negative image** of the pattern. Tick **Reciprocal space** to draw the Ewald sphere and reciprocal-lattice vectors.
 
@@ -60,9 +60,9 @@ Opens a window that links the diffraction pattern to a double-tilt (or rotation)
 
 The stereonet (left) plots crystal axes/zone axes with the holder's tilt directions (Tilt-X, Tilt-Y arrows). Set the primary/secondary tilt angles under **Holder angles**; **Link to Current Direction** couples the holder to the current crystal orientation, and the TEM-specific settings define each tilt axis direction and polarity for your instrument.
 
-### Detector geometry
+### Detector geometry & overlay image
 
-![Detector geometry](../../assets/cap-en-auto/FormDiffractionSimulator.toolStripContainer1.flowLayoutPanel6.panelDetectorAndMisc.groupBoxDetectorGeometry.png)
+![Detector geometry & overlay image](../../assets/cap-en-auto/FormDiffractionSimulator.toolStripContainer1.flowLayoutPanel6.panelDetectorAndMisc.groupBoxDetectorGeometry.png)
 
 ---
 
