@@ -1,10 +1,10 @@
 <!-- nav -->
 
-[← 7. 回折シミュレータ](7-diffraction-simulator.md)  |  [🏠 ホーム](index.md)  |  [7.2. X線回折シミュレーション →](7-2-x-ray-diffraction.md)
+[← 7. 回折シミュレータ](7-diffraction-simulator/index.md)  |  [🏠 ホーム](index.md)  |  [7.2. X線回折シミュレーション →](7-2-x-ray-diffraction.md)
 
 # 制限視野電子回折 (SAED) シミュレーション
 
-**SAED (Selected Area Electron Diffraction)** シミュレーションは、平行ビームによる電子回折パターンを計算します。[回折シミュレータ](7-diffraction-simulator.md) の基本モードです。
+**SAED (Selected Area Electron Diffraction)** シミュレーションは、平行ビームによる電子回折パターンを計算します。[回折シミュレータ](7-diffraction-simulator/index.md) の基本モードです。
 
 ---
 
@@ -85,11 +85,11 @@
 
 ## 関連項目
 
-- [回折シミュレータ](7-diffraction-simulator.md)
+- [回折シミュレータ](7-diffraction-simulator/index.md)
 - [X線回折シミュレーション](7-2-x-ray-diffraction.md)
 - [歳差電子回折 (PED) シミュレーション](7-3-ped-simulation.md)
 - [座標系の定義](appendix-a1-coordinate-system.md)
 
 ---
 
-[← 7. 回折シミュレータ](7-diffraction-simulator.md)  |  [🏠 ホーム](index.md)  |  [7.2. X線回折シミュレーション →](7-2-x-ray-diffraction.md)
+[← 7. 回折シミュレータ](7-diffraction-simulator/index.md)  |  [🏠 ホーム](index.md)  |  [7.2. X線回折シミュレーション →](7-2-x-ray-diffraction.md)

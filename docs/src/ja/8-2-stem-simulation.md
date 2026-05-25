@@ -89,7 +89,7 @@ ReciProのSTEMシミュレーション結果は、広く使われている Dr. P
 
 ## 関連項目
 
-- [HRTEM/STEMシミュレータ](8-hrtem-stem-simulator.md)
+- [HRTEM/STEMシミュレータ](8-hrtem-stem-simulator/index.md)
 - [HRTEMシミュレーション](8-1-hrtem-simulation.md)
 - [ポテンシャルシミュレーション](8-3-potential-simulation.md)
 

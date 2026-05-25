@@ -1,6 +1,6 @@
 <!-- nav -->
 
-[← 7.4 CBED simulation](7-4-cbed-simulation.md)  |  [🏠 Home](../index.md)  |  [9. HRTEM/STEM simulator →](8-hrtem-stem-simulator.md)
+[← 7.4 CBED simulation](7-4-cbed-simulation.md)  |  [🏠 Home](../index.md)  |  [9. HRTEM/STEM simulator →](8-hrtem-stem-simulator/index.md)
 
 # Electron Trajectory
 
@@ -54,4 +54,4 @@ Depth and energy profiles of the simulated electrons.
 
 ---
 
-[← 7.4 CBED simulation](7-4-cbed-simulation.md)  |  [🏠 Home](../index.md)  |  [9. HRTEM/STEM simulator →](8-hrtem-stem-simulator.md)
+[← 7.4 CBED simulation](7-4-cbed-simulation.md)  |  [🏠 Home](../index.md)  |  [9. HRTEM/STEM simulator →](8-hrtem-stem-simulator/index.md)

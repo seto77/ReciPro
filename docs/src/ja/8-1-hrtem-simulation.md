@@ -1,10 +1,10 @@
 <!-- nav -->
 
-[← 9. HRTEM/STEMシミュレータ](8-hrtem-stem-simulator.md)  |  [🏠 ホーム](index.md)  |  [9.2. STEMシミュレーション →](8-2-stem-simulation.md)
+[← 9. HRTEM/STEMシミュレータ](8-hrtem-stem-simulator/index.md)  |  [🏠 ホーム](index.md)  |  [9.2. STEMシミュレーション →](8-2-stem-simulation.md)
 
 # HRTEM シミュレーション
 
-**HRTEM (High-Resolution Transmission Electron Microscopy)** シミュレーションは、高分解能TEM格子縞像を計算します。[HRTEM/STEMシミュレータ](8-hrtem-stem-simulator.md) のメインモードです。
+**HRTEM (High-Resolution Transmission Electron Microscopy)** シミュレーションは、高分解能TEM格子縞像を計算します。[HRTEM/STEMシミュレータ](8-hrtem-stem-simulator/index.md) のメインモードです。
 
 ---
 
@@ -119,10 +119,10 @@ HRTEM像は、試料を透過した電子波が対物レンズの収差の影響
 
 ## 関連項目
 
-- [HRTEM/STEMシミュレータ](8-hrtem-stem-simulator.md)
+- [HRTEM/STEMシミュレータ](8-hrtem-stem-simulator/index.md)
 - [STEMシミュレーション](8-2-stem-simulation.md)
 - [ポテンシャルシミュレーション](8-3-potential-simulation.md)
 
 ---
 
-[← 9. HRTEM/STEMシミュレータ](8-hrtem-stem-simulator.md)  |  [🏠 ホーム](index.md)  |  [9.2. STEMシミュレーション →](8-2-stem-simulation.md)
+[← 9. HRTEM/STEMシミュレータ](8-hrtem-stem-simulator/index.md)  |  [🏠 ホーム](index.md)  |  [9.2. STEMシミュレーション →](8-2-stem-simulation.md)

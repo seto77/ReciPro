@@ -160,7 +160,7 @@ ReciPro.File.SaveText(info, "spot_info.csv")
 
 ## See also
 
-- [20. Macro](20-macro.md)
+- [20. Macro](20-macro/index.md)
 - [20.1. Built-in functions](20-1-built-in-functions.md)
 
 ---

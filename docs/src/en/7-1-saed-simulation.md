@@ -1,10 +1,10 @@
 <!-- nav -->
 
-[← 7. Diffraction simulator](7-diffraction-simulator.md)  |  [🏠 Home](../index.md)  |  [7.2. X ray diffraction →](7-2-x-ray-diffraction.md)
+[← 7. Diffraction simulator](7-diffraction-simulator/index.md)  |  [🏠 Home](../index.md)  |  [7.2. X ray diffraction →](7-2-x-ray-diffraction.md)
 
 # SAED Simulation
 
-**SAED (Selected Area Electron Diffraction)** simulation calculates electron diffraction patterns with a parallel beam. This is the default mode of the [diffraction simulator](7-diffraction-simulator.md).
+**SAED (Selected Area Electron Diffraction)** simulation calculates electron diffraction patterns with a parallel beam. This is the default mode of the [diffraction simulator](7-diffraction-simulator/index.md).
 
 ---
 
@@ -80,10 +80,10 @@ Select from the toolbar:
 
 ## See also
 
-- [7. Diffraction simulator](7-diffraction-simulator.md)
+- [7. Diffraction simulator](7-diffraction-simulator/index.md)
 - [7.2. X ray diffraction](7-2-x-ray-diffraction.md)
 - [7.3. PED Simulation](7-3-ped-simulation.md)
 
 ---
 
-[← 7. Diffraction simulator](7-diffraction-simulator.md)  |  [🏠 Home](../index.md)  |  [7.2. X ray diffraction →](7-2-x-ray-diffraction.md)
+[← 7. Diffraction simulator](7-diffraction-simulator/index.md)  |  [🏠 Home](../index.md)  |  [7.2. X ray diffraction →](7-2-x-ray-diffraction.md)

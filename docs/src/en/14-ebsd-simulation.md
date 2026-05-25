@@ -1,6 +1,6 @@
 <!-- nav -->
 
-[← 11. Spot ID v2](10-1-spot-id-v2.md)  |  [🏠 Home](../index.md)  |  [20. Macro →](20-macro.md)
+[← 11. Spot ID v2](10-1-spot-id-v2.md)  |  [🏠 Home](../index.md)  |  [20. Macro →](20-macro/index.md)
 
 # EBSD Simulation
 
@@ -129,9 +129,9 @@ The **Overlays** tab configures the annotations drawn on the pattern.
 ## See also
 
 - [Electron trajectory](13-electron-trajectory.md) — Monte-Carlo electron-trajectory / BSE simulation used for the angular/energy/depth weighting.
-- [Diffraction simulator](7-diffraction-simulator.md) — dynamical (Bloch-wave) electron diffraction.
+- [Diffraction simulator](7-diffraction-simulator/index.md) — dynamical (Bloch-wave) electron diffraction.
 - [Appendix A2. Detector Coordinate System](appendix-a2-detector-coordinate-system.md) — definitions of the sample/detector coordinate systems.
 
 ---
 
-[← 11. Spot ID v2](10-1-spot-id-v2.md)  |  [🏠 Home](../index.md)  |  [20. Macro →](20-macro.md)
+[← 11. Spot ID v2](10-1-spot-id-v2.md)  |  [🏠 Home](../index.md)  |  [20. Macro →](20-macro/index.md)

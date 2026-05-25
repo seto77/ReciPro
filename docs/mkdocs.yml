@@ -18,13 +18,12 @@ theme:
     - navigation.tabs.sticky
     # 260525Cl: navigation.sections / navigation.expand を外し、左ナビを「折り畳み可能＋インデント」表示にする。
     #   旧構成 (sections + expand) は入れ子グループを常時展開のセクション見出しにし、全項目が同一階層で羅列されて見にくかった。
-    #   注: navigation.indexes (セクション見出し自体をリンク化) は MkDocs では index.md という名前のファイルにしか
-    #       効かない (Page.is_index は file.name=='index' のみ真)。本構成は番号付きスラグ名なので使えないため採用しない。
-    #       代わりに各セクション先頭の概要ページには nav 側で明示タイトル ("Overview"/"概要") を付ける。
-    #       (無題のままだと MkDocs が H1 を拾えず "0 main window" 等のファイル名スラグが題になる。
-    #        本文先頭が <!-- nav --> + 言語切替行で、H1 がページ先頭要素にならないため。)
+    # 260525Cl: navigation.indexes でセクション見出し自体を概要ページへのリンクにする (独立した「概要」項目を無くす)。
+    #   MkDocs は file.name=='index' のページしか section index と認識しない (Page.is_index) ため、
+    #   概要ページは docs/src/<lang>/<slug>/index.md の形に置いている (frontmatter で title を付与)。
     # - navigation.sections   # 260525Cl 除去
     # - navigation.expand     # 260525Cl 除去
+    - navigation.indexes
     - navigation.top
     - search.highlight
     - search.share
@@ -92,7 +91,7 @@ nav:
   - English:
       - Home: index.md
       - 0. Main window:
-          - Overview: en/0-main-window.md
+          - en/0-main-window/index.md
           - 0.1. Crystal orientation control: en/0-1-crystal-orientation-control.md
       - 1. Crystal database: en/1-crystal-database.md
       - 2. Symmetry information: en/11-symmetry-information.md
@@ -101,14 +100,14 @@ nav:
       - 5. Structure viewer: en/5-structure-viewer.md
       - 6. Stereonet: en/6-stereonet.md
       - 7. Diffraction simulator:
-          - Overview: en/7-diffraction-simulator.md
+          - en/7-diffraction-simulator/index.md
           - 7.1. SAED simulation: en/7-1-saed-simulation.md
           - 7.2. X ray diffraction: en/7-2-x-ray-diffraction.md
           - 7.3. PED Simulation: en/7-3-ped-simulation.md
           - 7.4 CBED simulation: en/7-4-cbed-simulation.md
       - 8. Electron trajectory: en/13-electron-trajectory.md
       - 9. HRTEM/STEM simulator:
-          - Overview: en/8-hrtem-stem-simulator.md
+          - en/8-hrtem-stem-simulator/index.md
           - 9.1. HRTEM simulation: en/8-1-hrtem-simulation.md
           - 9.2. STEM simulation: en/8-2-stem-simulation.md
           - 9.3. Potential simulation: en/8-3-potential-simulation.md
@@ -116,7 +115,7 @@ nav:
       - 11. Spot ID v2: en/10-1-spot-id-v2.md
       - 12. EBSD simulation: en/14-ebsd-simulation.md
       - 20. Macro:
-          - Overview: en/20-macro.md
+          - en/20-macro/index.md
           - 20.1. Built-in functions: en/20-1-built-in-functions.md
           - 20.2. Examples: en/20-2-examples.md
       - Appendix:
@@ -134,14 +133,14 @@ nav:
       - 5. Structure Viewer: ja/5-structure-viewer.md
       - 6. ステレオネット: ja/6-stereonet.md
       - 7. 回折シミュレータ:
-          - 概要: ja/7-diffraction-simulator.md
+          - ja/7-diffraction-simulator/index.md
           - 7.1. SAEDシミュレーション: ja/7-1-saed-simulation.md
           - 7.2. X線回折シミュレーション: ja/7-2-x-ray-diffraction.md
           - 7.3. PEDシミュレーション: ja/7-3-ped-simulation.md
           - 7.4 CBEDシミュレーション: ja/7-4-cbed-simulation.md
       - 8. 電子飛程: ja/13-electron-trajectory.md
       - 9. HRTEM/STEMシミュレータ:
-          - 概要: ja/8-hrtem-stem-simulator.md
+          - ja/8-hrtem-stem-simulator/index.md
           - 9.1. HRTEMシミュレーション: ja/8-1-hrtem-simulation.md
           - 9.2. STEMシミュレーション: ja/8-2-stem-simulation.md
           - 9.3. ポテンシャルシミュレーション: ja/8-3-potential-simulation.md
@@ -149,7 +148,7 @@ nav:
       - 11. Spot ID v2: ja/10-1-spot-id-v2.md
       - 12. EBSDシミュレーション: ja/14-ebsd-simulation.md
       - 20. マクロ:
-          - 概要: ja/20-macro.md
+          - ja/20-macro/index.md
           - 20.1. 組み込み関数一覧: ja/20-1-built-in-functions.md
           - 20.2. マクロの使用例: ja/20-2-examples.md
       - 付録:

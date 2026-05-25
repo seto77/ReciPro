@@ -1,6 +1,6 @@
 <!-- nav -->
 
-[← 5. Structure viewer](5-structure-viewer.md)  |  [🏠 Home](../index.md)  |  [7. Diffraction simulator →](7-diffraction-simulator.md)
+[← 5. Structure viewer](5-structure-viewer.md)  |  [🏠 Home](../index.md)  |  [7. Diffraction simulator →](7-diffraction-simulator/index.md)
 
 # Stereonet
 
@@ -66,4 +66,4 @@ Set the wave source (X-ray / electron / neutron) and the wavelength or energy us
 
 ---
 
-[← 5. Structure viewer](5-structure-viewer.md)  |  [🏠 Home](../index.md)  |  [7. Diffraction simulator →](7-diffraction-simulator.md)
+[← 5. Structure viewer](5-structure-viewer.md)  |  [🏠 Home](../index.md)  |  [7. Diffraction simulator →](7-diffraction-simulator/index.md)

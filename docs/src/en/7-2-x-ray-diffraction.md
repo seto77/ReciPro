@@ -4,7 +4,7 @@
 
 # X-ray Diffraction Simulation
 
-Simulates single-crystal X-ray diffraction patterns. Activated by selecting X-ray in the Wave tab of the [diffraction simulator](7-diffraction-simulator.md).
+Simulates single-crystal X-ray diffraction patterns. Activated by selecting X-ray in the Wave tab of the [diffraction simulator](7-diffraction-simulator/index.md).
 
 ---
 
@@ -66,7 +66,7 @@ Enable **Debye rings** on the toolbar for polycrystalline patterns.
 
 ## See also
 
-- [7. Diffraction simulator](7-diffraction-simulator.md)
+- [7. Diffraction simulator](7-diffraction-simulator/index.md)
 - [7.1. SAED simulation](7-1-saed-simulation.md)
 - [7.3. PED Simulation](7-3-ped-simulation.md)
 

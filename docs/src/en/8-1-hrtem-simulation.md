@@ -1,10 +1,10 @@
 <!-- nav -->
 
-[← 9. HRTEM/STEM simulator](8-hrtem-stem-simulator.md)  |  [🏠 Home](../index.md)  |  [9.2. STEM simulation →](8-2-stem-simulation.md)
+[← 9. HRTEM/STEM simulator](8-hrtem-stem-simulator/index.md)  |  [🏠 Home](../index.md)  |  [9.2. STEM simulation →](8-2-stem-simulation.md)
 
 # HRTEM Simulation
 
-Simulates high-resolution TEM lattice-fringe images. The primary mode of the [8. HRTEM/STEM simulator](8-hrtem-stem-simulator.md).
+Simulates high-resolution TEM lattice-fringe images. The primary mode of the [8. HRTEM/STEM simulator](8-hrtem-stem-simulator/index.md).
 
 ---
 
@@ -83,10 +83,10 @@ Set aperture size (mrad) and position. **Open aperture** removes it. The number 
 
 ## See also
 
-- [8. HRTEM/STEM simulator](8-hrtem-stem-simulator.md)
+- [8. HRTEM/STEM simulator](8-hrtem-stem-simulator/index.md)
 - [8.2. STEM simulation](8-2-stem-simulation.md)
 - [8.3. Potential simulation](8-3-potential-simulation.md)
 
 ---
 
-[← 9. HRTEM/STEM simulator](8-hrtem-stem-simulator.md)  |  [🏠 Home](../index.md)  |  [9.2. STEM simulation →](8-2-stem-simulation.md)
+[← 9. HRTEM/STEM simulator](8-hrtem-stem-simulator/index.md)  |  [🏠 Home](../index.md)  |  [9.2. STEM simulation →](8-2-stem-simulation.md)

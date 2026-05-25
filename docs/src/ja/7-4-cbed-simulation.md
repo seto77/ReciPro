@@ -6,7 +6,7 @@
 
 **CBED（収束電子回折）**シミュレーションは、ブロッホ波（Bethe）法を使用して収束ビームパターンを計算・表示します。CBEDパターンはスポットの代わりに回折ディスクを示し、結晶の対称性、厚さ、構造に関する豊富な情報を含みます。
 
-このウィンドウを開くには、[回折シミュレータ](7-diffraction-simulator.md)の入射ビームモードで **収束 (CBED, 電子線のみ)** を選択します。
+このウィンドウを開くには、[回折シミュレータ](7-diffraction-simulator/index.md)の入射ビームモードで **収束 (CBED, 電子線のみ)** を選択します。
 
 ![CBEDシミュレーション](../assets/cap-ja-auto/FormDiffractionSimulatorCBED.png)
 

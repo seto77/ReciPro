@@ -1,6 +1,6 @@
 <!-- nav -->
 
-[← 7.4 CBEDシミュレーション](7-4-cbed-simulation.md)  |  [🏠 ホーム](index.md)  |  [9. HRTEM/STEMシミュレータ →](8-hrtem-stem-simulator.md)
+[← 7.4 CBEDシミュレーション](7-4-cbed-simulation.md)  |  [🏠 ホーム](index.md)  |  [9. HRTEM/STEMシミュレータ →](8-hrtem-stem-simulator/index.md)
 
 # 電子軌道 (Electron Trajectory)
 
@@ -54,4 +54,4 @@
 
 ---
 
-[← 7.4 CBEDシミュレーション](7-4-cbed-simulation.md)  |  [🏠 ホーム](index.md)  |  [9. HRTEM/STEMシミュレータ →](8-hrtem-stem-simulator.md)
+[← 7.4 CBEDシミュレーション](7-4-cbed-simulation.md)  |  [🏠 ホーム](index.md)  |  [9. HRTEM/STEMシミュレータ →](8-hrtem-stem-simulator/index.md)

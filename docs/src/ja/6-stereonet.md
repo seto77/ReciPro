@@ -1,6 +1,6 @@
 <!-- nav -->
 
-[← 5. Structure Viewer](5-structure-viewer.md)  |  [🏠 ホーム](index.md)  |  [7. 回折シミュレータ →](7-diffraction-simulator.md)
+[← 5. Structure Viewer](5-structure-viewer.md)  |  [🏠 ホーム](index.md)  |  [7. 回折シミュレータ →](7-diffraction-simulator/index.md)
 
 # ステレオネット (Stereonet)
 
@@ -103,4 +103,4 @@
 
 ---
 
-[← 5. Structure Viewer](5-structure-viewer.md)  |  [🏠 ホーム](index.md)  |  [7. 回折シミュレータ →](7-diffraction-simulator.md)
+[← 5. Structure Viewer](5-structure-viewer.md)  |  [🏠 ホーム](index.md)  |  [7. 回折シミュレータ →](7-diffraction-simulator/index.md)

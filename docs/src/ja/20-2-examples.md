@@ -166,7 +166,7 @@ ReciPro.File.SaveText(info, "spot_info.csv")
 
 ## 関連項目
 
-- [マクロ](20-macro.md)
+- [マクロ](20-macro/index.md)
 - [組み込み関数一覧](20-1-built-in-functions.md)
 
 ---

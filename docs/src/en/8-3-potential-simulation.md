@@ -38,7 +38,7 @@ Calculates and displays the 2D distribution of the crystal potential.
 
 ## See also
 
-- [8. HRTEM/STEM simulator](8-hrtem-stem-simulator.md)
+- [8. HRTEM/STEM simulator](8-hrtem-stem-simulator/index.md)
 - [8.1. HRTEM simulation](8-1-hrtem-simulation.md)
 - [8.2. STEM simulation](8-2-stem-simulation.md)
 

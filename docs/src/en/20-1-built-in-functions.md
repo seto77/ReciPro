@@ -1,6 +1,6 @@
 <!-- nav -->
 
-[← 20. Macro](20-macro.md)  |  [🏠 Home](../index.md)  |  [20.2. Examples →](20-2-examples.md)
+[← 20. Macro](20-macro/index.md)  |  [🏠 Home](../index.md)  |  [20.2. Examples →](20-2-examples.md)
 
 # Built-in Functions
 
@@ -213,9 +213,9 @@ These three image-simulation classes share many members. To avoid repetition, th
 
 ## See also
 
-- [20. Macro](20-macro.md)
+- [20. Macro](20-macro/index.md)
 - [20.2. Examples](20-2-examples.md)
 
 ---
 
-[← 20. Macro](20-macro.md)  |  [🏠 Home](../index.md)  |  [20.2. Examples →](20-2-examples.md)
+[← 20. Macro](20-macro/index.md)  |  [🏠 Home](../index.md)  |  [20.2. Examples →](20-2-examples.md)

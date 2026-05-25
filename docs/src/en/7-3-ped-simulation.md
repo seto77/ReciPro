@@ -55,7 +55,7 @@ Computation time scales linearly with **Step**.
 
 ## See also
 
-- [7. Diffraction simulator](7-diffraction-simulator.md)
+- [7. Diffraction simulator](7-diffraction-simulator/index.md)
 - [7.1. SAED simulation](7-1-saed-simulation.md)
 - [7.2. X ray diffraction](7-2-x-ray-diffraction.md)
 

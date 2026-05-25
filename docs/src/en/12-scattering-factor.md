@@ -66,7 +66,7 @@ Each row corresponds to one reflection (or a group of symmetry-equivalent planes
 ## See also
 
 - [Crystal database](1-crystal-database.md) — defining the crystal whose structure factors are calculated.
-- [Diffraction simulator](7-diffraction-simulator.md) — simulating diffraction patterns using the structure factors.
+- [Diffraction simulator](7-diffraction-simulator/index.md) — simulating diffraction patterns using the structure factors.
 
 ---
 

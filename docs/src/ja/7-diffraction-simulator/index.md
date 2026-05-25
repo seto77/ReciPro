@@ -1,12 +1,16 @@
+---
+title: 回折シミュレータ
+---
+
 <!-- nav -->
 
-[← 6. ステレオネット](6-stereonet.md)  |  [🏠 ホーム](index.md)  |  [7.1. SAEDシミュレーション →](7-1-saed-simulation.md)
+[← 6. ステレオネット](../6-stereonet.md)  |  [🏠 ホーム](../index.md)  |  [7.1. SAEDシミュレーション →](../7-1-saed-simulation.md)
 
 # 回折シミュレータ (Crystal Diffraction)
 
 **Crystal Diffraction** は、単結晶X線回折および電子線回折パターンをシミュレーションします。
 
-![回折シミュレータ](../assets/cap-ja-auto/FormDiffractionSimulator.png)
+![回折シミュレータ](../../assets/cap-ja-auto/FormDiffractionSimulator.png)
 
 ---
 
@@ -43,7 +47,7 @@
 
 ## ツールバー
 
-![ツールバー](../assets/cap-ja-auto/FormDiffractionSimulator.toolStripContainer1.toolStrip3.png)
+![ツールバー](../../assets/cap-ja-auto/FormDiffractionSimulator.toolStripContainer1.toolStrip3.png)
 
 | ボタン | 説明 |
 |--------|------|
@@ -59,7 +63,7 @@
 
 ### モニター
 
-![モニター](../assets/cap-ja-auto/FormDiffractionSimulator.toolStripContainer1.flowLayoutPanel6.groupBoxMonitor.png)
+![モニター](../../assets/cap-ja-auto/FormDiffractionSimulator.toolStripContainer1.flowLayoutPanel6.groupBoxMonitor.png)
 
 - **解像度**: 1ピクセルのサイズ (mm)。表示スケールのパラメータであり、マウスズームで変化。
 - **Size (W×H)**: 描画領域のピクセル数 (幅×高さ)。
@@ -69,7 +73,7 @@
 
 ### その他
 
-![その他](../assets/cap-ja-auto/FormDiffractionSimulator.toolStripContainer1.flowLayoutPanel6.panelDetectorAndMisc.groupBoxMisc.png)
+![その他](../../assets/cap-ja-auto/FormDiffractionSimulator.toolStripContainer1.flowLayoutPanel6.panelDetectorAndMisc.groupBoxMisc.png)
 
 - **回転の感度**: マウスドラッグ時の回転量。
 - **TEM ホルダーシミュレーション**: ホルダー連動シミュレーションウィンドウを開く（下記参照）。
@@ -78,11 +82,11 @@
 
 回折図形をダブルティルト（または回転）の **TEMホルダー** と連動させるウィンドウを開きます。ホルダーの傾斜角を設定するとパターンと結晶方位が更新され、到達可能な方位をステレオネット上に表示できます（ver4.914 で追加）。
 
-![TEMホルダーシミュレーション](../assets/cap-ja-auto/FormDiffractionSimulatorHolder.png)
+![TEMホルダーシミュレーション](../../assets/cap-ja-auto/FormDiffractionSimulatorHolder.png)
 
 ### 検出器ジオメトリ
 
-![検出器ジオメトリ](../assets/cap-ja-auto/FormDiffractionSimulator.toolStripContainer1.flowLayoutPanel6.panelDetectorAndMisc.groupBoxDetectorGeometry.png)
+![検出器ジオメトリ](../../assets/cap-ja-auto/FormDiffractionSimulator.toolStripContainer1.flowLayoutPanel6.panelDetectorAndMisc.groupBoxDetectorGeometry.png)
 
 - **カメラ長2**: 試料から検出器までの距離 (mm)。
 - **詳細**: 光学系設定ウィンドウを開く。
@@ -93,25 +97,25 @@
 
 ### 一般設定 (General)
 
-![一般設定タブ](../assets/cap-ja-auto/FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageGeneral.png)
+![一般設定タブ](../../assets/cap-ja-auto/FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageGeneral.png)
 
 スポット、ラベル、菊池線等の色を設定。
 
 ### 菊池線 (Kikuchi lines)
 
-![菊池線タブ](../assets/cap-ja-auto/FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageKikuchi.png)
+![菊池線タブ](../../assets/cap-ja-auto/FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageKikuchi.png)
 
 ツールバーで菊池線が有効の場合にアクティブ。描画する菊池線の選定基準を **結晶構造因子**（**トップ** N 本）または **1/d の閾値**（< X nm⁻¹）で指定します。**線の太さ**・**菊池線の色**、**運動学的な回折強度に従って描画する** も設定できます。
 
 ### デバイリング (Debye rings)
 
-![デバイリングタブ](../assets/cap-ja-auto/FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageDebye.png)
+![デバイリングタブ](../../assets/cap-ja-auto/FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageDebye.png)
 
 デバイリングが有効の場合にアクティブ。
 
 ### スケール (Scale)
 
-![スケールタブ](../assets/cap-ja-auto/FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageScale.png)
+![スケールタブ](../../assets/cap-ja-auto/FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageScale.png)
 
 ---
 
@@ -121,11 +125,11 @@
 
 ### 波長
 
-![波長](../assets/cap-ja-auto/FormDiffractionSimulator.groupBoxSpotProperty.panelSimulationOptions.flowLayoutPanelWaveLength.png)
+![波長](../../assets/cap-ja-auto/FormDiffractionSimulator.groupBoxSpotProperty.panelSimulationOptions.flowLayoutPanelWaveLength.png)
 
 ### 入射ビーム
 
-![入射ビームモード](../assets/cap-ja-auto/FormDiffractionSimulator.groupBoxSpotProperty.panelSimulationOptions.flowLayoutPanelBeamMode.png)
+![入射ビームモード](../../assets/cap-ja-auto/FormDiffractionSimulator.groupBoxSpotProperty.panelSimulationOptions.flowLayoutPanelBeamMode.png)
 
 | モード | 説明 |
 |--------|------|
@@ -135,7 +139,7 @@
 
 ### 強度計算
 
-![強度計算](../assets/cap-ja-auto/FormDiffractionSimulator.groupBoxSpotProperty.panelSimulationOptions.flowLayoutPanelIntensity.png)
+![強度計算](../../assets/cap-ja-auto/FormDiffractionSimulator.groupBoxSpotProperty.panelSimulationOptions.flowLayoutPanelIntensity.png)
 
 | 方法 | 説明 |
 |------|------|
@@ -145,18 +149,18 @@
 
 ### 外観
 
-![外観](../assets/cap-ja-auto/FormDiffractionSimulator.groupBoxSpotProperty.panelSimulationOptions.flowLayoutPanelAppearance.png)
+![外観](../../assets/cap-ja-auto/FormDiffractionSimulator.groupBoxSpotProperty.panelSimulationOptions.flowLayoutPanelAppearance.png)
 
 ### ブロッホ波パラメータ（動力学理論）
 
-![ブロッホ波パラメータ](../assets/cap-ja-auto/FormDiffractionSimulator.groupBoxSpotProperty.panelSimulationOptions.flowLayoutPanelBethe.png)
+![ブロッホ波パラメータ](../../assets/cap-ja-auto/FormDiffractionSimulator.groupBoxSpotProperty.panelSimulationOptions.flowLayoutPanelBethe.png)
 
 - **回折波の数**: 動力学計算に含めるブロッホ波の数
 - **試料厚み**: 試料の厚さ
 
 ### 歳差パラメータ
 
-![歳差パラメータ](../assets/cap-ja-auto/FormDiffractionSimulator.groupBoxSpotProperty.panelSimulationOptions.flowLayoutPanelPED.png)
+![歳差パラメータ](../../assets/cap-ja-auto/FormDiffractionSimulator.groupBoxSpotProperty.panelSimulationOptions.flowLayoutPanelPED.png)
 
 - **半頂角**: 歳差の半角
 - **ステップ**: サンプリングするビーム方向数
@@ -167,13 +171,13 @@
 
 ### 検出器ジオメトリ設定
 
-![検出器ジオメトリ設定](../assets/cap-ja-auto/FormDiffractionSimulatorGeometry.panelDetectorGeometry.png)
+![検出器ジオメトリ設定](../../assets/cap-ja-auto/FormDiffractionSimulatorGeometry.panelDetectorGeometry.png)
 
 ### 検出器領域と重畳画像
 
-![検出器領域と重畳画像](../assets/cap-ja-auto/FormDiffractionSimulatorGeometry.panelDetectorAreaAndOverlappedImage.png)
+![検出器領域と重畳画像](../../assets/cap-ja-auto/FormDiffractionSimulatorGeometry.panelDetectorAreaAndOverlappedImage.png)
 
-[検出器座標系](appendix-a2-detector-coordinate-system.md) も参照。
+[検出器座標系](../appendix-a2-detector-coordinate-system.md) も参照。
 
 ---
 
@@ -181,7 +185,7 @@
 
 ベーテの動力学理論（ブロッホ波法）で計算された各反射の詳細を一覧表示します。**スポットの詳細情報**ボタン（強度計算パネル）または**詳細**チェックボックスで開きます。
 
-![回折スポット情報](../assets/cap-ja-auto/FormDiffractionSpotInfo.png)
+![回折スポット情報](../../assets/cap-ja-auto/FormDiffractionSpotInfo.png)
 
 ### 模式図と定義
 
@@ -219,4 +223,4 @@
 
 ---
 
-[← 6. ステレオネット](6-stereonet.md)  |  [🏠 ホーム](index.md)  |  [7.1. SAEDシミュレーション →](7-1-saed-simulation.md)
+[← 6. ステレオネット](../6-stereonet.md)  |  [🏠 ホーム](../index.md)  |  [7.1. SAEDシミュレーション →](../7-1-saed-simulation.md)

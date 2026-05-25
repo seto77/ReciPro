@@ -1,6 +1,6 @@
 <!-- nav -->
 
-[0. Main window →](en/0-main-window.md)
+[0. Main window →](en/0-main-window/index.md)
 
 ## Brief introduction
 * ReciPro is MIT-licensed free software that provides a variety of crystallographic calculations and electron microscopy simulations.
@@ -16,7 +16,7 @@
 * **HRTEM / STEM simulation** — High-resolution TEM image simulation with partial-coherence models; STEM with thermal diffuse scattering.
 * **EBSD & electron trajectory** — EBSD pattern simulation and Monte-Carlo electron-trajectory simulation (see [13. Electron trajectory](en/13-electron-trajectory.md)).
 * **Spot indexing** — Automatic detection, fitting, and indexing of diffraction spots from experimental images (Spot ID v1/v2).
-* **Macro** — Python-syntax macro for automating operations (see [20. Macro](en/20-macro.md)).
+* **Macro** — Python-syntax macro for automating operations (see [20. Macro](en/20-macro/index.md)).
 * **Light / dark theme** — The interface follows a selectable light or dark colour mode.
 
 ## System requirements
@@ -45,4 +45,4 @@ ReciPro is distributed under the [MIT License](https://github.com/seto77/ReciPro
 
 ---
 
-[0. Main window →](en/0-main-window.md)
+[0. Main window →](en/0-main-window/index.md)

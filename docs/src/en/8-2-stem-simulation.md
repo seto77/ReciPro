@@ -72,7 +72,7 @@ A more detailed report is available as a PDF: [Comparison of STEM simulations by
 
 ## See also
 
-- [8. HRTEM/STEM simulator](8-hrtem-stem-simulator.md)
+- [8. HRTEM/STEM simulator](8-hrtem-stem-simulator/index.md)
 - [8.1. HRTEM simulation](8-1-hrtem-simulation.md)
 - [8.3. Potential simulation](8-3-potential-simulation.md)
 

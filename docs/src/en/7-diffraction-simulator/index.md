@@ -1,12 +1,16 @@
+---
+title: Diffraction Simulator
+---
+
 <!-- nav -->
 
-[← 6. Stereonet](6-stereonet.md)  |  [🏠 Home](../index.md)  |  [7.1. SAED simulation →](7-1-saed-simulation.md)
+[← 6. Stereonet](../6-stereonet.md)  |  [🏠 Home](../../index.md)  |  [7.1. SAED simulation →](../7-1-saed-simulation.md)
 
 # Crystal Diffraction (Diffraction Simulator)
 
 **Crystal Diffraction** simulates single-crystal X-ray and electron diffraction patterns.
 
-![Diffraction Simulator](../assets/cap-en-auto/FormDiffractionSimulator.png)
+![Diffraction Simulator](../../assets/cap-en-auto/FormDiffractionSimulator.png)
 
 ---
 
@@ -32,7 +36,7 @@
 
 ## Toolbar
 
-![Toolbar](../assets/cap-en-auto/FormDiffractionSimulator.toolStripContainer1.toolStrip3.png)
+![Toolbar](../../assets/cap-en-auto/FormDiffractionSimulator.toolStripContainer1.toolStrip3.png)
 
 Spots, Kikuchi Lines, Debye rings, Scale, label options (Index / d / Distance / Excit. Err. / |Fg|).
 
@@ -42,13 +46,13 @@ Spots, Kikuchi Lines, Debye rings, Scale, label options (Index / d / Distance / 
 
 ### Monitor
 
-![Monitor](../assets/cap-en-auto/FormDiffractionSimulator.toolStripContainer1.flowLayoutPanel6.groupBoxMonitor.png)
+![Monitor](../../assets/cap-en-auto/FormDiffractionSimulator.toolStripContainer1.flowLayoutPanel6.groupBoxMonitor.png)
 
 **Resolution**, image **Size (W×H)**, **Set the center to** / **Fix**, and **Horizontal flip / Vertical flip / Negative image** of the pattern. Tick **Reciprocal space** to draw the Ewald sphere and reciprocal-lattice vectors.
 
 ### Misc
 
-![Misc](../assets/cap-en-auto/FormDiffractionSimulator.toolStripContainer1.flowLayoutPanel6.panelDetectorAndMisc.groupBoxMisc.png)
+![Misc](../../assets/cap-en-auto/FormDiffractionSimulator.toolStripContainer1.flowLayoutPanel6.panelDetectorAndMisc.groupBoxMisc.png)
 
 Includes the rotation-sensitivity slider and the **TEM holder simulation** button (see below).
 
@@ -56,13 +60,13 @@ Includes the rotation-sensitivity slider and the **TEM holder simulation** butto
 
 Opens a window that links the diffraction pattern to a double-tilt (or rotation) **TEM holder**: set the holder tilt angles and the pattern/orientation updates accordingly, and the reachable orientations can be shown on a stereonet. Added in v4.914.
 
-![TEM holder simulation](../assets/cap-en-auto/FormDiffractionSimulatorHolder.png)
+![TEM holder simulation](../../assets/cap-en-auto/FormDiffractionSimulatorHolder.png)
 
 The stereonet (left) plots crystal axes/zone axes with the holder's tilt directions (Tilt-X, Tilt-Y arrows). Set the primary/secondary tilt angles under **Holder angles**; **Link to Current Direction** couples the holder to the current crystal orientation, and the TEM-specific settings define each tilt axis direction and polarity for your instrument.
 
 ### Detector geometry
 
-![Detector geometry](../assets/cap-en-auto/FormDiffractionSimulator.toolStripContainer1.flowLayoutPanel6.panelDetectorAndMisc.groupBoxDetectorGeometry.png)
+![Detector geometry](../../assets/cap-en-auto/FormDiffractionSimulator.toolStripContainer1.flowLayoutPanel6.panelDetectorAndMisc.groupBoxDetectorGeometry.png)
 
 ---
 
@@ -70,21 +74,21 @@ The stereonet (left) plots crystal axes/zone axes with the holder's tilt directi
 
 ### General
 
-![General tab](../assets/cap-en-auto/FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageGeneral.png)
+![General tab](../../assets/cap-en-auto/FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageGeneral.png)
 
 ### Kikuchi lines
 
-![Kikuchi tab](../assets/cap-en-auto/FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageKikuchi.png)
+![Kikuchi tab](../../assets/cap-en-auto/FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageKikuchi.png)
 
 Toggle from the toolbar; choose the reflections by **Structure factor** (Top N) or **1/d Cutoff**, and set the line width and colour.
 
 ### Debye rings
 
-![Debye tab](../assets/cap-en-auto/FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageDebye.png)
+![Debye tab](../../assets/cap-en-auto/FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageDebye.png)
 
 ### Scale
 
-![Scale tab](../assets/cap-en-auto/FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageScale.png)
+![Scale tab](../../assets/cap-en-auto/FormDiffractionSimulator.toolStripContainer1.panelMain.tabControl.tabPageScale.png)
 
 ---
 
@@ -92,19 +96,19 @@ Toggle from the toolbar; choose the reflections by **Structure factor** (Top N) 
 
 ### Wave Length
 
-![Wave Length](../assets/cap-en-auto/FormDiffractionSimulator.groupBoxSpotProperty.panelSimulationOptions.flowLayoutPanelWaveLength.png)
+![Wave Length](../../assets/cap-en-auto/FormDiffractionSimulator.groupBoxSpotProperty.panelSimulationOptions.flowLayoutPanelWaveLength.png)
 
 X-ray (characteristic/synchrotron), Electron, Neutron. Set energy or wavelength.
 
 ### Incident beam mode
 
-![Beam mode](../assets/cap-en-auto/FormDiffractionSimulator.groupBoxSpotProperty.panelSimulationOptions.flowLayoutPanelBeamMode.png)
+![Beam mode](../../assets/cap-en-auto/FormDiffractionSimulator.groupBoxSpotProperty.panelSimulationOptions.flowLayoutPanelBeamMode.png)
 
 **Parallel beam**, **Precession (electron)** (PED), **Convergence (electron)** (CBED)
 
 ### Intensity calculation
 
-![Intensity](../assets/cap-en-auto/FormDiffractionSimulator.groupBoxSpotProperty.panelSimulationOptions.flowLayoutPanelIntensity.png)
+![Intensity](../../assets/cap-en-auto/FormDiffractionSimulator.groupBoxSpotProperty.panelSimulationOptions.flowLayoutPanelIntensity.png)
 
 - Only excitation error
 - Kinematical & excitation error
@@ -112,19 +116,19 @@ X-ray (characteristic/synchrotron), Electron, Neutron. Set energy or wavelength.
 
 ### Appearance
 
-![Appearance](../assets/cap-en-auto/FormDiffractionSimulator.groupBoxSpotProperty.panelSimulationOptions.flowLayoutPanelAppearance.png)
+![Appearance](../../assets/cap-en-auto/FormDiffractionSimulator.groupBoxSpotProperty.panelSimulationOptions.flowLayoutPanelAppearance.png)
 
 Solid sphere or Gaussian. Opacity, radius, brightness, colour scale.
 
 ### Bloch wave parameters
 
-![Bethe parameters](../assets/cap-en-auto/FormDiffractionSimulator.groupBoxSpotProperty.panelSimulationOptions.flowLayoutPanelBethe.png)
+![Bethe parameters](../../assets/cap-en-auto/FormDiffractionSimulator.groupBoxSpotProperty.panelSimulationOptions.flowLayoutPanelBethe.png)
 
 **Number of Diffracted Waves** and **Thickness**.
 
 ### PED parameters
 
-![PED parameters](../assets/cap-en-auto/FormDiffractionSimulator.groupBoxSpotProperty.panelSimulationOptions.flowLayoutPanelPED.png)
+![PED parameters](../../assets/cap-en-auto/FormDiffractionSimulator.groupBoxSpotProperty.panelSimulationOptions.flowLayoutPanelPED.png)
 
 Semi-angle and step.
 
@@ -134,13 +138,13 @@ Semi-angle and step.
 
 ### Detector geometry settings
 
-![Detector geometry settings](../assets/cap-en-auto/FormDiffractionSimulatorGeometry.panelDetectorGeometry.png)
+![Detector geometry settings](../../assets/cap-en-auto/FormDiffractionSimulatorGeometry.panelDetectorGeometry.png)
 
 ### Detector area and overlapped image
 
-![Detector area](../assets/cap-en-auto/FormDiffractionSimulatorGeometry.panelDetectorAreaAndOverlappedImage.png)
+![Detector area](../../assets/cap-en-auto/FormDiffractionSimulatorGeometry.panelDetectorAreaAndOverlappedImage.png)
 
-See [Appendix A2. Detector Coordinate System](appendix-a2-detector-coordinate-system.md).
+See [Appendix A2. Detector Coordinate System](../appendix-a2-detector-coordinate-system.md).
 
 ---
 
@@ -148,7 +152,7 @@ See [Appendix A2. Detector Coordinate System](appendix-a2-detector-coordinate-sy
 
 Lists the per-reflection details computed by the Bethe dynamical theory (Bloch-wave method). Open it with the **Spot Details** button (intensity-calculation panel) or the **Details** check box.
 
-![Diffraction spot information](../assets/cap-en-auto/FormDiffractionSpotInfo.png)
+![Diffraction spot information](../../assets/cap-en-auto/FormDiffractionSpotInfo.png)
 
 ### Schematic and definitions
 
@@ -186,4 +190,4 @@ The schematic (top left) shows the vectors on the Ewald sphere and defines the q
 
 ---
 
-[← 6. Stereonet](6-stereonet.md)  |  [🏠 Home](../index.md)  |  [7.1. SAED simulation →](7-1-saed-simulation.md)
+[← 6. Stereonet](../6-stereonet.md)  |  [🏠 Home](../../index.md)  |  [7.1. SAED simulation →](../7-1-saed-simulation.md)

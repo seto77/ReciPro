@@ -6,7 +6,7 @@
 
 **CBED (Convergent-Beam Electron Diffraction)** simulation computes and displays convergent-beam patterns using the Bloch wave (Bethe) method. CBED patterns show diffraction disks instead of spots, and contain rich information about crystal symmetry, thickness, and structure.
 
-To open this window, select **Convergence (CBED)** in the incident beam mode of the [Diffraction Simulator](7-diffraction-simulator.md), then click **Simulate**.
+To open this window, select **Convergence (CBED)** in the incident beam mode of the [Diffraction Simulator](7-diffraction-simulator/index.md), then click **Simulate**.
 
 ![CBED Simulation](../assets/cap-en-auto/FormDiffractionSimulatorCBED.png)
 

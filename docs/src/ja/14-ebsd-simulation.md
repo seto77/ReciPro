@@ -1,6 +1,6 @@
 <!-- nav -->
 
-[← 11. Spot ID v2](10-1-spot-id-v2.md)  |  [🏠 ホーム](index.md)  |  [20. マクロ →](20-macro.md)
+[← 11. Spot ID v2](10-1-spot-id-v2.md)  |  [🏠 ホーム](index.md)  |  [20. マクロ →](20-macro/index.md)
 
 # EBSDシミュレーション (EBSD Simulation)
 
@@ -129,9 +129,9 @@
 ## 関連項目
 
 - [電子飛程](13-electron-trajectory.md) — 方位・エネルギー・深さの重み付けに用いるモンテカルロ電子飛程（BSE）シミュレーション。
-- [回折シミュレータ](7-diffraction-simulator.md) — 動力学（ブロッホ波法）電子回折。
+- [回折シミュレータ](7-diffraction-simulator/index.md) — 動力学（ブロッホ波法）電子回折。
 - [Appendix A2. 検出器座標系](appendix-a2-detector-coordinate-system.md) — 試料・検出器の座標系の定義。
 
 ---
 
-[← 11. Spot ID v2](10-1-spot-id-v2.md)  |  [🏠 ホーム](index.md)  |  [20. マクロ →](20-macro.md)
+[← 11. Spot ID v2](10-1-spot-id-v2.md)  |  [🏠 ホーム](index.md)  |  [20. マクロ →](20-macro/index.md)

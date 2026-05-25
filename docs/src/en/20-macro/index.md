@@ -1,12 +1,16 @@
+---
+title: Macro
+---
+
 <!-- nav -->
 
-[← 12. EBSD simulation](14-ebsd-simulation.md)  |  [🏠 Home](../index.md)  |  [20.1. Built-in functions →](20-1-built-in-functions.md)
+[← 12. EBSD simulation](../14-ebsd-simulation.md)  |  [🏠 Home](../../index.md)  |  [20.1. Built-in functions →](../20-1-built-in-functions.md)
 
 # Macro
 
 ReciPro includes an **IronPython**-based macro system for automating crystal operations, diffraction simulations, and image simulations through scripting.
 
-![Macro editor](../assets/cap-en-auto/FormMacro.png)
+![Macro editor](../../assets/cap-en-auto/FormMacro.png)
 
 The screenshot above has **Show samples** turned on, displaying the built-in sample macros. The macro list is on the left, the code editor on the right, and a built-in-function help table at the bottom.
 
@@ -121,7 +125,7 @@ ReciPro.Sleep(ms)      # Pause execution (milliseconds)
 
 The autocomplete popup always shows the full `ReciPro.Class.Member` form and inserts it verbatim, so you rarely need to type the prefix by hand.
 
-See [20.1. Built-in functions](20-1-built-in-functions.md) for the complete API reference.
+See [20.1. Built-in functions](../20-1-built-in-functions.md) for the complete API reference.
 
 ---
 
@@ -141,9 +145,9 @@ The editor automatically selects the line reported in the traceback (the innermo
 
 ## See also
 
-- [20.1. Built-in functions](20-1-built-in-functions.md)
-- [20.2. Examples](20-2-examples.md)
+- [20.1. Built-in functions](../20-1-built-in-functions.md)
+- [20.2. Examples](../20-2-examples.md)
 
 ---
 
-[← 12. EBSD simulation](14-ebsd-simulation.md)  |  [🏠 Home](../index.md)  |  [20.1. Built-in functions →](20-1-built-in-functions.md)
+[← 12. EBSD simulation](../14-ebsd-simulation.md)  |  [🏠 Home](../../index.md)  |  [20.1. Built-in functions →](../20-1-built-in-functions.md)

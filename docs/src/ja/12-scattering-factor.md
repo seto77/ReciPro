@@ -66,7 +66,7 @@
 ## 関連項目
 
 - [結晶データベース](1-crystal-database.md) — 構造因子の計算対象となる結晶の定義。
-- [回折シミュレータ](7-diffraction-simulator.md) — 構造因子を用いた回折図形のシミュレーション。
+- [回折シミュレータ](7-diffraction-simulator/index.md) — 構造因子を用いた回折図形のシミュレーション。
 
 ---
 

@@ -1,12 +1,16 @@
+---
+title: マクロ
+---
+
 <!-- nav -->
 
-[← 12. EBSDシミュレーション](14-ebsd-simulation.md)  |  [🏠 ホーム](index.md)  |  [20.1. 組み込み関数一覧 →](20-1-built-in-functions.md)
+[← 12. EBSDシミュレーション](../14-ebsd-simulation.md)  |  [🏠 ホーム](../index.md)  |  [20.1. 組み込み関数一覧 →](../20-1-built-in-functions.md)
 
 # マクロ
 
 ReciPro は **IronPython** ベースのマクロ機能を搭載しており、結晶操作・回折シミュレーション・画像シミュレーションなどの操作をスクリプトで自動化できます。
 
-![マクロエディタ](../assets/cap-ja-auto/FormMacro.png)
+![マクロエディタ](../../assets/cap-ja-auto/FormMacro.png)
 
 上図は **Samples** をオンにして組み込みのサンプルマクロを表示した状態です。左にマクロ一覧、右にコードエディタ、下に組み込み関数のヘルプ表が並びます。
 
@@ -120,7 +124,7 @@ ReciPro.Sleep(ms)      # 実行を一時停止 (ミリ秒)
 
 入力候補ポップアップは常に `ReciPro.Class.Member` の完全形で候補を出し、選択時も完全形を挿入するので、通常は `ReciPro.` を手で打つ必要はありません。
 
-詳細は [組み込み関数一覧](20-1-built-in-functions.md) を参照してください。
+詳細は [組み込み関数一覧](../20-1-built-in-functions.md) を参照してください。
 
 ---
 
@@ -140,9 +144,9 @@ NameError: name 'abc' is not defined
 
 ## 関連項目
 
-- [組み込み関数一覧](20-1-built-in-functions.md)
-- [マクロの使用例](20-2-examples.md)
+- [組み込み関数一覧](../20-1-built-in-functions.md)
+- [マクロの使用例](../20-2-examples.md)
 
 ---
 
-[← 12. EBSDシミュレーション](14-ebsd-simulation.md)  |  [🏠 ホーム](index.md)  |  [20.1. 組み込み関数一覧 →](20-1-built-in-functions.md)
+[← 12. EBSDシミュレーション](../14-ebsd-simulation.md)  |  [🏠 ホーム](../index.md)  |  [20.1. 組み込み関数一覧 →](../20-1-built-in-functions.md)
