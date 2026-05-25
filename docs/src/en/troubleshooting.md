@@ -25,9 +25,9 @@ Common issues and solutions for ReciPro.
 
 ### Symptom: Application won't start
 
-**Cause**: .NET Desktop Runtime 9.0 is not installed.
+**Cause**: .NET Desktop Runtime 10.0 is not installed.
 
-**Solution**: Download and install from https://dotnet.microsoft.com/download/dotnet/9.0
+**Solution**: Download and install from https://dotnet.microsoft.com/download/dotnet/10.0
 
 ---
 

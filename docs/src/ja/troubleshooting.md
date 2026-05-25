@@ -25,9 +25,9 @@ ReciProでよくある問題と解決方法です。
 
 ### 症状: アプリケーションが起動しない
 
-**原因**: .NET Desktop Runtime 9.0 がインストールされていません。
+**原因**: .NET Desktop Runtime 10.0 がインストールされていません。
 
-**解決方法**: https://dotnet.microsoft.com/download/dotnet/9.0 からダウンロード・インストールしてください。
+**解決方法**: https://dotnet.microsoft.com/download/dotnet/10.0 からダウンロード・インストールしてください。
 
 ---
 
