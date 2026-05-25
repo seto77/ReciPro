@@ -173,7 +173,7 @@ title: 回折シミュレータ
 
 ![検出器領域と重畳画像](../../assets/cap-ja-auto/FormDiffractionSimulatorGeometry.panelDetectorAreaAndOverlappedImage.png)
 
-[検出器座標系](../appendix-a2-detector-coordinate-system.md) も参照。
+[検出器座標系](../appendix/a2-detector-coordinate-system.md) も参照。
 
 ---
 

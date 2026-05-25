@@ -29,6 +29,8 @@ theme:
     - search.highlight
     - search.share
     - content.code.copy
+    - content.code.annotate   # 260525Cl 追加: コード内に丸数字の注釈マーカーを置ける (マクロ例の解説用)
+    - content.action.edit     # 260525Cl 追加: 各ページに GitHub 編集リンクを表示 (edit_uri 設定済み・認証は GitHub 側が処理)
   palette:
     - media: "(prefers-color-scheme: light)"
       scheme: default
@@ -50,6 +52,51 @@ plugins:
       lang:
         - en
         - ja
+  # 260525Cl 追加: スクリーンショットをクリックで拡大表示 (ライトボックス)。mkdocs-glightbox が必要。
+  - glightbox
+  # 260525Cl 追加: manual 再編 (260525) より前のフラットなページ URL を新パスへ 301 相当でリダイレクトし、
+  #   過去に公開済みの旧 URL の 404 を防ぐ。mkdocs-redirects が必要。キー=旧パス / 値=新パス (いずれも src 相対)。
+  - redirects:
+      redirect_maps:
+        'en/0-1-crystal-orientation-control.md': 'en/0-main-window/1-crystal-orientation-control.md'
+        'en/11-symmetry-information.md': 'en/2-symmetry-information.md'
+        'en/12-scattering-factor.md': 'en/3-scattering-factor.md'
+        'en/3-rotation-geometry.md': 'en/4-rotation-geometry.md'
+        'en/7-1-saed-simulation.md': 'en/7-diffraction-simulator/1-saed-simulation.md'
+        'en/7-2-x-ray-diffraction.md': 'en/7-diffraction-simulator/2-x-ray-diffraction.md'
+        'en/7-3-ped-simulation.md': 'en/7-diffraction-simulator/3-ped-simulation.md'
+        'en/7-4-cbed-simulation.md': 'en/7-diffraction-simulator/4-cbed-simulation.md'
+        'en/8-1-hrtem-simulation.md': 'en/9-hrtem-stem-simulator/1-hrtem-simulation.md'
+        'en/8-2-stem-simulation.md': 'en/9-hrtem-stem-simulator/2-stem-simulation.md'
+        'en/8-3-potential-simulation.md': 'en/9-hrtem-stem-simulator/3-potential-simulation.md'
+        'en/8-hrtem-stem-simulator/index.md': 'en/9-hrtem-stem-simulator/index.md'
+        'en/13-electron-trajectory.md': 'en/8-electron-trajectory.md'
+        'en/10-1-spot-id-v2.md': 'en/11-spot-id-v2.md'
+        'en/14-ebsd-simulation.md': 'en/12-ebsd-simulation.md'
+        'en/20-1-built-in-functions.md': 'en/20-macro/1-built-in-functions.md'
+        'en/20-2-examples.md': 'en/20-macro/2-examples.md'
+        'ja/11-symmetry-information.md': 'ja/2-symmetry-information.md'
+        'ja/12-scattering-factor.md': 'ja/3-scattering-factor.md'
+        'ja/3-rotation-geometry.md': 'ja/4-rotation-geometry.md'
+        'ja/7-1-saed-simulation.md': 'ja/7-diffraction-simulator/1-saed-simulation.md'
+        'ja/7-2-x-ray-diffraction.md': 'ja/7-diffraction-simulator/2-x-ray-diffraction.md'
+        'ja/7-3-ped-simulation.md': 'ja/7-diffraction-simulator/3-ped-simulation.md'
+        'ja/7-4-cbed-simulation.md': 'ja/7-diffraction-simulator/4-cbed-simulation.md'
+        'ja/8-1-hrtem-simulation.md': 'ja/9-hrtem-stem-simulator/1-hrtem-simulation.md'
+        'ja/8-2-stem-simulation.md': 'ja/9-hrtem-stem-simulator/2-stem-simulation.md'
+        'ja/8-3-potential-simulation.md': 'ja/9-hrtem-stem-simulator/3-potential-simulation.md'
+        'ja/8-hrtem-stem-simulator/index.md': 'ja/9-hrtem-stem-simulator/index.md'
+        'ja/13-electron-trajectory.md': 'ja/8-electron-trajectory.md'
+        'ja/10-1-spot-id-v2.md': 'ja/11-spot-id-v2.md'
+        'ja/14-ebsd-simulation.md': 'ja/12-ebsd-simulation.md'
+        'ja/20-1-built-in-functions.md': 'ja/20-macro/1-built-in-functions.md'
+        'ja/20-2-examples.md': 'ja/20-macro/2-examples.md'
+        'en/appendix-a0-how-to-use.md': 'en/appendix/a0-how-to-use.md'
+        'en/appendix-a1-coordinate-system.md': 'en/appendix/a1-coordinate-system.md'
+        'en/appendix-a2-detector-coordinate-system.md': 'en/appendix/a2-detector-coordinate-system.md'
+        'ja/appendix-a0-how-to-use.md': 'ja/appendix/a0-how-to-use.md'
+        'ja/appendix-a1-coordinate-system.md': 'ja/appendix/a1-coordinate-system.md'
+        'ja/appendix-a2-detector-coordinate-system.md': 'ja/appendix/a2-detector-coordinate-system.md'
 
 # 260525Cl: ページ先頭の言語切替リンク (🌐 English | 日本語) は廃止。ヘッダーの言語セレクタ (extra.alternate) と
 #   機能が重複するため。これに伴い docs/hooks/language_switch.py とその参照を削除した。
@@ -69,6 +116,18 @@ markdown_extensions:
       alternate_style: true
   - pymdownx.arithmatex:
       generic: true
+  # 260525Cl 追加: 略語のツールチップ。定義は includes/abbreviations.md に集約し全 md 末尾へ自動付加する。
+  - abbr
+  - pymdownx.snippets:
+      base_path:
+        - docs   # CI は repo ルートから `mkdocs build -f docs/mkdocs.yml` を実行
+        - .       # docs/ 内から実行した場合のフォールバック
+      auto_append:
+        - includes/abbreviations.md
+  - pymdownx.keys    # 260525Cl 追加: ++ctrl+alt+shift+c++ をキーキャップ風に表示
+  - pymdownx.caret   # 260525Cl 追加: ^上付き^ と ^^下線/挿入^^
+  - pymdownx.tilde   # 260525Cl 追加: ~下付き~ と ~~取り消し線~~
+  - pymdownx.mark    # 260525Cl 追加: ==蛍光ペン強調==
 
 extra_css:
   - assets/stylesheets/extra.css
@@ -120,9 +179,9 @@ nav:
           - 20.1. Built-in functions: en/20-macro/1-built-in-functions.md
           - 20.2. Examples: en/20-macro/2-examples.md
       - Appendix:
-          - How to use (videos): en/appendix-a0-how-to-use.md
-          - Appendix A1. Coordinate System: en/appendix-a1-coordinate-system.md
-          - Appendix A2. Detector Coordinate System: en/appendix-a2-detector-coordinate-system.md
+          - How to use (videos): en/appendix/a0-how-to-use.md
+          - Appendix A1. Coordinate System: en/appendix/a1-coordinate-system.md
+          - Appendix A2. Detector Coordinate System: en/appendix/a2-detector-coordinate-system.md
       - Troubleshooting: en/troubleshooting.md
   - 日本語:
       - ホーム: ja/index.md
@@ -153,7 +212,7 @@ nav:
           - 20.1. 組み込み関数一覧: ja/20-macro/1-built-in-functions.md
           - 20.2. マクロの使用例: ja/20-macro/2-examples.md
       - 付録:
-          - How to use（動画）: ja/appendix-a0-how-to-use.md
-          - Appendix A1. 座標系の定義: ja/appendix-a1-coordinate-system.md
-          - Appendix A2. 検出器座標系: ja/appendix-a2-detector-coordinate-system.md
+          - How to use（動画）: ja/appendix/a0-how-to-use.md
+          - Appendix A1. 座標系の定義: ja/appendix/a1-coordinate-system.md
+          - Appendix A2. 検出器座標系: ja/appendix/a2-detector-coordinate-system.md
       - トラブルシューティング: ja/troubleshooting.md

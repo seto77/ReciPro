@@ -90,7 +90,7 @@ Displays closest zone axis to screen normal (e.g., *u*+*v*+*w* < 30).
 
 ### Euler angles (Z-X-Z)
 - **Psi**: Z-axis rotation, **Theta**: X-axis rotation, **Phi**: Z-axis rotation
-- See [3. Rotation Geometry](../4-rotation-geometry.md) and [Appendix A1. Coordinate System](../appendix-a1-coordinate-system.md).
+- See [3. Rotation Geometry](../4-rotation-geometry.md) and [Appendix A1. Coordinate System](../appendix/a1-coordinate-system.md).
 
 ### Arrow buttons / Animation
 

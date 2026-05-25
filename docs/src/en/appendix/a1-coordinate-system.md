@@ -12,7 +12,7 @@ ReciPro uses a **right-handed coordinate system** with axes defined as:
 
 The **beam direction** corresponds to the viewing direction (looking at the monitor), which is the **−Z** axis.
 
-Most operations in ReciPro involve only directions (3×3 rotation matrices) and do not require explicit origin positions. However, the **Crystal Diffraction** function requires explicit origin — see [Appendix A2. Detector Coordinate System](appendix-a2-detector-coordinate-system.md).
+Most operations in ReciPro involve only directions (3×3 rotation matrices) and do not require explicit origin positions. However, the **Crystal Diffraction** function requires explicit origin — see [Appendix A2. Detector Coordinate System](a2-detector-coordinate-system.md).
 
 ---
 

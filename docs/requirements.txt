@@ -2,3 +2,7 @@
 mkdocs>=1.6,<2
 mkdocs-material>=9.5,<10
 pymdown-extensions>=10.8,<11
+# 260525Cl 追加: スクリーンショットのライトボックス拡大
+mkdocs-glightbox>=0.4,<1
+# 260525Cl 追加: 旧 URL から新パスへのリダイレクト生成
+mkdocs-redirects>=1.2,<2
