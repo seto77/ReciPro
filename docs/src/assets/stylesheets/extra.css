@@ -96,7 +96,7 @@
   line-height: 1.3;
 }
 .md-footer__direction {
-  font-size: 0.55rem;     /* 既定 0.64rem */
+  display: none;          /* "Previous"/"Next" ラベルは不要 (矢印とページ名は残す) */
 }
 .md-footer__button {       /* 前/次の矢印アイコンも小さくして行高を抑える */
   margin: 0.1rem;
