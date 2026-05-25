@@ -16,8 +16,15 @@ theme:
   features:
     - navigation.tabs
     - navigation.tabs.sticky
-    - navigation.sections
-    - navigation.expand
+    # 260525Cl: navigation.sections / navigation.expand を外し、左ナビを「折り畳み可能＋インデント」表示にする。
+    #   旧構成 (sections + expand) は入れ子グループを常時展開のセクション見出しにし、全項目が同一階層で羅列されて見にくかった。
+    #   注: navigation.indexes (セクション見出し自体をリンク化) は MkDocs では index.md という名前のファイルにしか
+    #       効かない (Page.is_index は file.name=='index' のみ真)。本構成は番号付きスラグ名なので使えないため採用しない。
+    #       代わりに各セクション先頭の概要ページには nav 側で明示タイトル ("Overview"/"概要") を付ける。
+    #       (無題のままだと MkDocs が H1 を拾えず "0 main window" 等のファイル名スラグが題になる。
+    #        本文先頭が <!-- nav --> + 言語切替行で、H1 がページ先頭要素にならないため。)
+    # - navigation.sections   # 260525Cl 除去
+    # - navigation.expand     # 260525Cl 除去
     - navigation.top
     - search.highlight
     - search.share
@@ -44,9 +51,10 @@ plugins:
         - en
         - ja
 
-# 260525Ch: Generate page-level language links from one shared hook instead of per-page Markdown.
-hooks:
-  - hooks/language_switch.py
+# 260525Cl: ページ先頭の言語切替リンク (🌐 English | 日本語) は廃止。ヘッダーの言語セレクタ (extra.alternate) と
+#   機能が重複するため。これに伴い docs/hooks/language_switch.py とその参照を削除した。
+# hooks:
+#   - hooks/language_switch.py
 
 markdown_extensions:
   - admonition
@@ -68,6 +76,8 @@ extra_css:
 extra_javascript:
   - assets/javascripts/mathjax.js
   - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
+  # 260525Cl: ヘッダーの言語セレクタを現在ページの相手言語版へ向け直す (既定だと各言語トップへ戻るため)。
+  - assets/javascripts/language_switch.js
 
 extra:
   alternate:
@@ -82,7 +92,7 @@ nav:
   - English:
       - Home: index.md
       - 0. Main window:
-          - en/0-main-window.md
+          - Overview: en/0-main-window.md
           - 0.1. Crystal orientation control: en/0-1-crystal-orientation-control.md
       - 1. Crystal database: en/1-crystal-database.md
       - 2. Symmetry information: en/11-symmetry-information.md
@@ -91,14 +101,14 @@ nav:
       - 5. Structure viewer: en/5-structure-viewer.md
       - 6. Stereonet: en/6-stereonet.md
       - 7. Diffraction simulator:
-          - en/7-diffraction-simulator.md
+          - Overview: en/7-diffraction-simulator.md
           - 7.1. SAED simulation: en/7-1-saed-simulation.md
           - 7.2. X ray diffraction: en/7-2-x-ray-diffraction.md
           - 7.3. PED Simulation: en/7-3-ped-simulation.md
           - 7.4 CBED simulation: en/7-4-cbed-simulation.md
       - 8. Electron trajectory: en/13-electron-trajectory.md
       - 9. HRTEM/STEM simulator:
-          - en/8-hrtem-stem-simulator.md
+          - Overview: en/8-hrtem-stem-simulator.md
           - 9.1. HRTEM simulation: en/8-1-hrtem-simulation.md
           - 9.2. STEM simulation: en/8-2-stem-simulation.md
           - 9.3. Potential simulation: en/8-3-potential-simulation.md
@@ -106,7 +116,7 @@ nav:
       - 11. Spot ID v2: en/10-1-spot-id-v2.md
       - 12. EBSD simulation: en/14-ebsd-simulation.md
       - 20. Macro:
-          - en/20-macro.md
+          - Overview: en/20-macro.md
           - 20.1. Built-in functions: en/20-1-built-in-functions.md
           - 20.2. Examples: en/20-2-examples.md
       - Appendix:
@@ -124,14 +134,14 @@ nav:
       - 5. Structure Viewer: ja/5-structure-viewer.md
       - 6. ステレオネット: ja/6-stereonet.md
       - 7. 回折シミュレータ:
-          - ja/7-diffraction-simulator.md
+          - 概要: ja/7-diffraction-simulator.md
           - 7.1. SAEDシミュレーション: ja/7-1-saed-simulation.md
           - 7.2. X線回折シミュレーション: ja/7-2-x-ray-diffraction.md
           - 7.3. PEDシミュレーション: ja/7-3-ped-simulation.md
           - 7.4 CBEDシミュレーション: ja/7-4-cbed-simulation.md
       - 8. 電子飛程: ja/13-electron-trajectory.md
       - 9. HRTEM/STEMシミュレータ:
-          - ja/8-hrtem-stem-simulator.md
+          - 概要: ja/8-hrtem-stem-simulator.md
           - 9.1. HRTEMシミュレーション: ja/8-1-hrtem-simulation.md
           - 9.2. STEMシミュレーション: ja/8-2-stem-simulation.md
           - 9.3. ポテンシャルシミュレーション: ja/8-3-potential-simulation.md
@@ -139,7 +149,7 @@ nav:
       - 11. Spot ID v2: ja/10-1-spot-id-v2.md
       - 12. EBSDシミュレーション: ja/14-ebsd-simulation.md
       - 20. マクロ:
-          - ja/20-macro.md
+          - 概要: ja/20-macro.md
           - 20.1. 組み込み関数一覧: ja/20-1-built-in-functions.md
           - 20.2. マクロの使用例: ja/20-2-examples.md
       - 付録:
