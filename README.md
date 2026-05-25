@@ -171,7 +171,7 @@ Get-FileHash .\ReciProSetup.msi -Algorithm SHA256
 * Python-syntax macro scripting for task automation.
   * Example: Rotate a crystal in 1° steps and save diffraction patterns or STEM images at each step.
   * ReciPro-specific functions are available in the "ReciPro" namespace.
-  * Usage examples are available in the [manual](https://seto77.github.io/ReciPro/en/20-2-examples/).
+  * Usage examples are available in the [manual](https://seto77.github.io/ReciPro/en/20-macro/2-examples/).
 
 ### Other Features
 
