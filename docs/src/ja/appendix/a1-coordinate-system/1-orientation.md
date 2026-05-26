@@ -1,5 +1,6 @@
-<!-- 260526Cl: 図(Coordinates1-3)に合わせ座標記号を数式(MathJax)化・用語色を図に一致 (.rp-*: docs/src/assets/stylesheets/extra.css)。 -->
 # 付録 A1.1. 基本座標系と結晶方位の定義
+
+<!-- 260526Cl: 図(Coordinates1-3)に合わせ座標記号を数式(MathJax)化・用語色を図に一致 (.rp-*: docs/src/assets/stylesheets/extra.css)。 -->
 
 このページでは、結晶の回転を扱うすべての場面（メインウィンドウ、Structure Viewer、ステレオネット、Rotation Geometry、回折シミュレーション）で使われる ReciPro の **基本（方位）座標系** と、結晶の初期方位・オイラー角による回転の表し方を定義します。**Crystal Diffraction** で検出器を配置する際に使う別の座標系は [A1.2. 回折シミュレーションにおける座標系の定義](2-diffraction.md) を参照してください。
 

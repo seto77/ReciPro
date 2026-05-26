@@ -1,5 +1,6 @@
-<!-- 260526Cl: 図(Coordinates4-5)に合わせ座標記号を数式(MathJax)化・用語色を図に一致 (.rp-*: docs/src/assets/stylesheets/extra.css)。 -->
 # Appendix A1.2. Coordinate system for diffraction simulation
+
+<!-- 260526Cl: 図(Coordinates4-5)に合わせ座標記号を数式(MathJax)化・用語色を図に一致 (.rp-*: docs/src/assets/stylesheets/extra.css)。 -->
 
 The **Crystal Diffraction** function simulates the diffraction pattern recorded on a detector. The detector is a finite plane of pixels placed at a fixed distance from the sample, and it may be tilted with respect to the incident beam. Reproducing this accurately requires the geometric relationship between the detector and the sample, together with the detector's pixel size and pixel count. For the basic (orientation) coordinate system, see [A1.1. Basic coordinate system and crystal orientation](1-orientation.md).
 

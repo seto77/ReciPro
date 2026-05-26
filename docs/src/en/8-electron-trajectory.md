@@ -1,6 +1,6 @@
 # Electron Trajectory
 
-**Trajectory Simulator** computes electron trajectories inside a sample by the **Monte-Carlo method**: incident electrons undergo elastic and inelastic scattering, and the resulting distributions of backscattered electrons (direction, energy, penetration depth) are accumulated. These distributions also feed the angular/energy/depth weighting used by the [14. EBSD simulation](12-ebsd-simulation.md).
+**Trajectory Simulator** computes electron trajectories inside a sample by the **Monte-Carlo method**: incident electrons undergo elastic and inelastic scattering, and the resulting distributions of backscattered electrons (direction, energy, penetration depth) are accumulated. These distributions also feed the angular/energy/depth weighting used by the [12. EBSD simulation](12-ebsd-simulation.md).
 
 ![Electron Trajectory](../assets/cap-en-auto/FormTrajectory.png)
 

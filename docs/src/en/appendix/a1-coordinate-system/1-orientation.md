@@ -1,5 +1,6 @@
-<!-- 260526Cl: 図(Coordinates1-3)に合わせ座標記号を数式(MathJax)化・用語色を図に一致 (.rp-*: docs/src/assets/stylesheets/extra.css)。 -->
 # Appendix A1.1. Basic coordinate system and crystal orientation
+
+<!-- 260526Cl: 図(Coordinates1-3)に合わせ座標記号を数式(MathJax)化・用語色を図に一致 (.rp-*: docs/src/assets/stylesheets/extra.css)。 -->
 
 This page defines ReciPro's **basic (orientation) coordinate system**, used everywhere crystal rotation is involved (Main window, Structure Viewer, Stereonet, Rotation Geometry, and diffraction simulation), together with how a crystal's initial orientation and Euler-angle rotation are expressed. The separate system used to place the detector in **Crystal Diffraction** is described in [A1.2. Coordinate system for diffraction simulation](2-diffraction.md).
 

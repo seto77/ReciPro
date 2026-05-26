@@ -10,6 +10,19 @@ title: 回折シミュレータ
 
 ---
 
+## 目的別クイックルート
+
+| 目的 | 操作の入口 | 参照ページ |
+|------|------------|------------|
+| 平行ビームの電子回折（SAED）を出す | **入射ビーム**を **平行**、**波長**を **電子線**にする | [SAEDシミュレーション](1-saed-simulation.md)、[平行ビーム SAED の計算](../appendix/a2-bloch-wave/calculation.md#parallel-beam-saed) |
+| X線単結晶回折を出す | **波長**を X-ray / Synchrotron へ切り替える | [X線回折シミュレーション](2-x-ray-diffraction.md) |
+| 歳差電子回折（PED）を出す | **入射ビーム**を **歳差 (電子)** にし、半頂角とステップを設定する | [PEDシミュレーション](3-ped-simulation.md) |
+| 収束電子線回折（CBED）を出す | **入射ビーム**を **収束 (CBED, 電子線のみ)** にし、CBED設定ウィンドウで条件を決める | [CBEDシミュレーション](4-cbed-simulation.md)、[CBED の計算](../appendix/a2-bloch-wave/cbed.md) |
+| 動力学計算の反射一覧を確認する | **動力学的効果**を選び、**スポットの詳細情報**または **詳細**を開く | [動力学計算（共通コア）](../appendix/a2-bloch-wave/calculation.md) |
+| 実験像と重ねて検出器幾何を合わせる | **詳細**から検出器ジオメトリ設定を開き、重畳画像を使う | [検出器座標系](../appendix/a1-coordinate-system/2-diffraction.md) |
+
+---
+
 ## メインエリア
 
 画面中央に回折パターンがシミュレーションされます。

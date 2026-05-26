@@ -10,6 +10,28 @@ The **HRTEM/STEM Simulator** simulates TEM lattice-fringe (HRTEM) images, STEM i
 
 ---
 
+## Quick Routes by Goal
+
+| Goal | Start from | Reference |
+|------|------------|-----------|
+| Calculate one HRTEM image | Set **Image mode** to **HRTEM**, then set accelerating voltage and defocus in **TEM conditions** | [HRTEM simulation](1-hrtem-simulation.md), [HRTEM image formation](../appendix/a2-bloch-wave/hrtem.md) |
+| Calculate a STEM image | Set **Image mode** to **STEM**, then set convergence angle and detector in **STEM options** | [STEM simulation](2-stem-simulation.md), [STEM calculation](../appendix/a2-bloch-wave/stem.md) |
+| View projected potential | Set **Image mode** to **Potential** | [Potential simulation](3-potential-simulation.md) |
+| Generate a thickness / defocus series | Configure **Single / Serial** and the image conditions in **HRTEM options** | [HRTEM simulation](1-hrtem-simulation.md) |
+| Use HAADF-STEM with TDS | Set non-zero atomic temperature factors and use an LAADF / HAADF detector | [STEM calculation](../appendix/a2-bloch-wave/stem.md) |
+
+---
+
+## Basic Workflow
+
+1. Select the crystal and orientation in the main window, then open this simulator.
+2. Choose HRTEM, STEM, or Potential in **Image mode**.
+3. Set accelerating voltage, defocus, aberrations, apertures, and STEM convergence settings in **Optical property**.
+4. Set thickness, image size, resolution, Bloch-wave count, and partial-coherence model in **Simulation property**.
+5. Click **Simulate**, then adjust brightness, normalisation, scale bar, and labels in **Display settings**.
+
+---
+
 ## File menu
 
 

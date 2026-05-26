@@ -1,6 +1,20 @@
+# ReciPro マニュアル
+
 ## 概要
 * ReciProは、MITライセンスで配布されている無料のソフトウェアです。様々な結晶学的計算や電子顕微鏡シミュレーション機能を提供します。
 * 2020年3月のGitHub公開以来、累計27,000回以上ダウンロードされ、多くの結晶学者・電子顕微鏡研究者に利用されています。
+
+## 目的別に探す
+
+| 目的 | 最初に読むページ | 次に使う主な機能 |
+|------|------------------|------------------|
+| 結晶を読み込んで方位を合わせたい | [メインウィンドウ](0-main-window.md) | [回転ジオメトリ](4-rotation-geometry.md)、[Appendix A1. 座標系](appendix/a1-coordinate-system/1-orientation.md) |
+| 結晶構造を3Dで確認したい | [Structure Viewer](5-structure-viewer.md) | [対称性情報](2-symmetry-information.md) |
+| SAED / XRD / PED / CBED を計算したい | [回折シミュレータ](7-diffraction-simulator/index.md) | [SAED](7-diffraction-simulator/1-saed-simulation.md)、[X線回折](7-diffraction-simulator/2-x-ray-diffraction.md)、[PED](7-diffraction-simulator/3-ped-simulation.md)、[CBED](7-diffraction-simulator/4-cbed-simulation.md) |
+| HRTEM / STEM 像を計算したい | [HRTEM/STEMシミュレータ](9-hrtem-stem-simulator/index.md) | [HRTEM](9-hrtem-stem-simulator/1-hrtem-simulation.md)、[STEM](9-hrtem-stem-simulator/2-stem-simulation.md) |
+| EBSDパターンを計算したい | [EBSDシミュレーション](12-ebsd-simulation.md) | [電子飛程](8-electron-trajectory.md)、[Appendix A2. EBSD の計算](appendix/a2-bloch-wave/ebsd.md) |
+| 実験回折像を指数付けしたい | [Spot ID v1](10-spot-id.md)、[Spot ID v2](11-spot-id-v2.md) | [回折シミュレータ](7-diffraction-simulator/index.md) |
+| 動力学計算の式を確認したい | [Appendix A2. Bloch波法](appendix/a2-bloch-wave/index.md) | [動力学計算](appendix/a2-bloch-wave/calculation.md)、[CBED](appendix/a2-bloch-wave/cbed.md)、[STEM](appendix/a2-bloch-wave/stem.md)、[EBSD](appendix/a2-bloch-wave/ebsd.md) |
 
 ## 主な機能
 * **Full GUI** — すべての操作はグラフィカルインターフェースで行います。ファイルの入出力はドラッグ＆ドロップに対応。
@@ -23,9 +37,12 @@
 | メモリ | — | 16 GB以上 |
 | CPU | — | 8コア以上（動力学計算時） |
 
-## マニュアル
-* **英語版 (PDF):** https://raw.githubusercontent.com/seto77/ReciPro/master/ReciPro/doc/ReciProManual(en).pdf
-* **日本語版 (PDF):** https://raw.githubusercontent.com/seto77/ReciPro/master/ReciPro/doc/ReciProManual(ja).pdf
+## マニュアルの読み方
+
+この GitHub Pages 版が現在の正本です。画面左のナビゲーションから章を選ぶか、右上の検索で機能名やUIラベルを検索してください。旧PDF版は過去版の参照用です。
+
+* **旧PDF（英語）:** https://raw.githubusercontent.com/seto77/ReciPro/master/ReciPro/doc/ReciProManual(en).pdf
+* **旧PDF（日本語）:** https://raw.githubusercontent.com/seto77/ReciPro/master/ReciPro/doc/ReciProManual(ja).pdf
 
 ## クイックスタート
 1. [Releases](https://github.com/seto77/ReciPro/releases/latest) からダウンロード・インストール。

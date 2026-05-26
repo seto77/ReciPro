@@ -18,6 +18,17 @@ When ReciPro launches, the main window appears. From this window you select the 
 
 ---
 
+## Basic Workflow
+
+If you are new to ReciPro, use this order:
+
+1. Select the target crystal in **Crystal List**. To use a CIF/AMC file, drag and drop it into **Crystal Information**.
+2. If you edit lattice parameters or atom positions, press **Add** or **Replace** so the changes are written back to the crystal list.
+3. Set the crystal orientation in **Rotation control** using a zone axis, crystal plane, Euler angles, or mouse dragging.
+4. Open the desired tool from **Functions**. Diffraction, HRTEM/STEM, EBSD, and other calculation windows use the currently selected crystal and orientation.
+
+---
+
 ## Functions panel
 
 The vertical button strip on the right launches the analysis and simulation windows (see the [Functions](#functions) table below).
@@ -62,12 +73,15 @@ The vertical button strip on the right launches the analysis and simulation wind
 ### Help
 
 
-Check for updates, hints, version history, license, GitHub repository, bug/feature reports, and online help — **Help (Web)** and **Help (Wiki)**. Language is switched from the separate **Language** menu (English/Japanese, requires restart).
+Check for updates, hints, version history, license, GitHub repository, bug/feature reports, and online help — **Help (Web)** / **Help (Wiki)**. The current manual source of truth is the GitHub Pages version. Language is switched from the separate **Language** menu (English/Japanese, requires restart).
 
 ### Language
 
+Switch the UI language between English and Japanese. The change takes effect after restarting ReciPro.
 
 ### Macro
+
+Open the [Macro](../20-macro/index.md) window to automate ReciPro operations with Python-style scripts. For repeated workflows, see the [built-in functions](../20-macro/1-built-in-functions.md) and [macro examples](../20-macro/2-examples.md).
 
 
 ---
@@ -160,17 +174,17 @@ Edit lattice parameters, symmetry, and atoms. Drag & drop CIF/AMC files.
 | Button | Description | Details |
 |--------|-------------|---------|
 | Crystal Database | Search and import crystals from the bundled / online databases | [1. Crystal database](../1-crystal-database.md) |
-| Symmetry Information | Space-group info and ITC Vol. A symmetry diagrams | [11. Symmetry information](../2-symmetry-information.md) |
-| Scattering Factor | Crystal planes & structure factors | [12. Scattering factor](../3-scattering-factor.md) |
-| Rotation Geometry | 3D rotation matrix / goniometer angles | [3. Rotation Geometry](../4-rotation-geometry.md) |
+| Symmetry Information | Space-group info and ITC Vol. A symmetry diagrams | [2. Symmetry information](../2-symmetry-information.md) |
+| Scattering Factor | Crystal planes & structure factors | [3. Scattering factor](../3-scattering-factor.md) |
+| Rotation Geometry | 3D rotation matrix / goniometer angles | [4. Rotation Geometry](../4-rotation-geometry.md) |
 | Structure Viewer | 3D crystal structure | [5. Structure viewer](../5-structure-viewer.md) |
 | Stereonet | Stereographic projection | [6. Stereonet](../6-stereonet.md) |
 | Diffraction Simulator | Single-crystal X-ray / electron diffraction | [7. Diffraction simulator](../7-diffraction-simulator/index.md) |
-| Trajectory Simulator | Monte-Carlo electron-trajectory simulation | [13. Electron trajectory](../8-electron-trajectory.md) |
-| HRTEM/STEM Simulator | HRTEM / STEM image simulation | [8. HRTEM/STEM simulator](../9-hrtem-stem-simulator/index.md) |
+| Trajectory Simulator | Monte-Carlo electron-trajectory simulation | [8. Electron trajectory](../8-electron-trajectory.md) |
+| HRTEM/STEM Simulator | HRTEM / STEM image simulation | [9. HRTEM/STEM simulator](../9-hrtem-stem-simulator/index.md) |
 | Spot ID v1 | SAED pattern indexing (formerly "TEM ID") | [10. Spot ID v1](../10-spot-id.md) |
-| Spot ID v2 | Spot detection & indexing | [10.1 Spot ID v2](../11-spot-id-v2.md) |
-| EBSD Simulator | EBSD pattern simulation | [14. EBSD simulation](../12-ebsd-simulation.md) |
+| Spot ID v2 | Spot detection & indexing | [11. Spot ID v2](../11-spot-id-v2.md) |
+| EBSD Simulator | EBSD pattern simulation | [12. EBSD simulation](../12-ebsd-simulation.md) |
 | Powder Diffraction | Polycrystalline (powder) diffraction — enable via **Option ▸ Powder diffraction function** | - |
 
 > **Right-click a crystal** in the Crystal List for a context menu: *Rename*, *Export as CIF*, *Duplicate*, *Delete*.
