@@ -83,6 +83,6 @@
 
 - [回折シミュレータ](index.md)
 - [平行ビーム SAED の計算](../appendix/a2-bloch-wave/calculation.md#parallel-beam-saed)
-- [X線回折シミュレーション](2-x-ray-diffraction.md)
+- [X線回折シミュレーション](1-x-ray-diffraction.md)
 - [歳差電子回折 (PED) シミュレーション](3-ped-simulation.md)
 - [座標系の定義](../appendix/a1-coordinate-system/1-orientation.md)

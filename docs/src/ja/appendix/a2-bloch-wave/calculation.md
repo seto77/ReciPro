@@ -171,6 +171,6 @@ $$\Delta I_N=\frac{|I_N-I_{N-\Delta N}|}{I_N}$$
 ## 関連項目
 
 - [付録 A2. Bloch波法による動力学計算の概要](index.md)
-- [7.1 SAEDシミュレーション](../../7-diffraction-simulator/1-saed-simulation.md)
+- [7.2 SAEDシミュレーション](../../7-diffraction-simulator/2-saed-simulation.md)
 - [7.4 CBEDシミュレーション](../../7-diffraction-simulator/4-cbed-simulation.md)
 - [7. 回折シミュレータ](../../7-diffraction-simulator/index.md)

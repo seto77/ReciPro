@@ -14,8 +14,8 @@ title: Diffraction Simulator
 
 | Goal | Start from | Reference |
 |------|------------|-----------|
-| Simulate parallel-beam electron diffraction (SAED) | Set **Incident beam mode** to **Parallel beam** and **Wave Length** to electron | [SAED simulation](1-saed-simulation.md), [parallel-beam SAED calculation](../appendix/a2-bloch-wave/calculation.md#parallel-beam-saed) |
-| Simulate single-crystal X-ray diffraction | Switch **Wave Length** to X-ray / Synchrotron | [X-ray diffraction](2-x-ray-diffraction.md) |
+| Simulate parallel-beam electron diffraction (SAED) | Set **Incident beam mode** to **Parallel beam** and **Wave Length** to electron | [SAED simulation](2-saed-simulation.md), [parallel-beam SAED calculation](../appendix/a2-bloch-wave/calculation.md#parallel-beam-saed) |
+| Simulate single-crystal X-ray diffraction | Switch **Wave Length** to X-ray / Synchrotron | [X-ray diffraction](1-x-ray-diffraction.md) |
 | Simulate precession electron diffraction (PED) | Set **Incident beam mode** to **Precession (electron)**, then set semi-angle and step | [PED simulation](3-ped-simulation.md) |
 | Simulate convergent-beam electron diffraction (CBED) | Set **Incident beam mode** to **Convergence (electron)** and configure the CBED window | [CBED simulation](4-cbed-simulation.md), [CBED calculation](../appendix/a2-bloch-wave/cbed.md) |
 | Inspect the reflection list from the dynamical calculation | Select **Dynamical theory**, then open **Spot Details** or tick **Details** | [Dynamical calculation](../appendix/a2-bloch-wave/calculation.md) |
