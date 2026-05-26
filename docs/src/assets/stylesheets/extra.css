@@ -59,9 +59,9 @@
 @media screen and (min-width: 76.25em) {
   .md-sidebar {
     top: 2.0rem;
-    /* 260526Cl: 左ナビと右目次(TOC)を現行幅の約80%に縮める (Material 既定 12.1rem → 9.7rem)。
+    /* 260526Cl: 左ナビと右目次(TOC)を狭めて本体を広げる (Material 既定 12.1rem → 9.5rem)。
        サイドバーは float なので、空いた幅は .md-grid 内で本文 (.md-content) が自動的に吸収し本体が広がる。 */
-    width: 9.7rem;
+    width: 9.5rem;
   }
 }
 
@@ -188,8 +188,8 @@
 
   .md-sidebar--primary {
     display: block;
-    /* 260526Cl: 中間幅 (60–76.25em) でも左ナビを約80%幅へ。flex レイアウトなので本文が残りを埋める。 */
-    flex: 0 0 9.7rem;
+    /* 260526Cl: 中間幅 (60–76.25em) でも左ナビを狭める。flex レイアウトなので本文が残りを埋める。 */
+    flex: 0 0 9.5rem;
     /* 260525Cl: header 高さを 2.0rem に詰めたので sticky オフセットも 2.4rem → 2.0rem に合わせる */
     height: calc(100vh - 2.0rem);
     opacity: 1;
