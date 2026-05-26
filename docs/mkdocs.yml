@@ -184,6 +184,8 @@ nav:
       - Appendix:
           - How to use (videos): en/appendix/a0-how-to-use.md
           - Appendix A1. Coordinate Systems: en/appendix/a1-coordinate-system.md
+          - Appendix A2. Bloch-Wave Method: en/appendix/a2-bloch-wave-method.md
+          - Appendix A3. Bloch-Wave Calculation: en/appendix/a3-bloch-wave-calculation.md
       - Troubleshooting: en/troubleshooting.md
   - 日本語:
       - ホーム: ja/index.md
@@ -216,4 +218,6 @@ nav:
       - 付録:
           - How to use（動画）: ja/appendix/a0-how-to-use.md
           - Appendix A1. 座標系の定義: ja/appendix/a1-coordinate-system.md
+          - Appendix A2. Bloch波法（概要）: ja/appendix/a2-bloch-wave-method.md
+          - Appendix A3. Bloch波法（計算内容）: ja/appendix/a3-bloch-wave-calculation.md
       - トラブルシューティング: ja/troubleshooting.md
