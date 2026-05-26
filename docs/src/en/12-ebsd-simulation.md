@@ -47,7 +47,7 @@ The geometry can be inspected in the 3D view on the **Geometry** tab.
 
 ![3D geometry](../assets/cap-en-auto/FormEBSD.tabControl1.tabPage1.panelGeometry.png)
 
-The grey plate is the sample, the green cylinder/cone is the detector, and the purple **+Z (=beam)** is the incident beam. The crystal **a / b / c** axes (fixed to the sample) are also shown. The buttons **Bird's-Eye View**, **Surface Normal**, **X Axis (Rotation Axis)** and **Z Axis (Beam Direction)** snap the view to standard directions. See [Appendix A2. Detector Coordinate System](appendix/a2-detector-coordinate-system.md) for the coordinate-system definitions.
+The grey plate is the sample, the green cylinder/cone is the detector, and the purple **+Z (=beam)** is the incident beam. The crystal **a / b / c** axes (fixed to the sample) are also shown. The buttons **Bird's-Eye View**, **Surface Normal**, **X Axis (Rotation Axis)** and **Z Axis (Beam Direction)** snap the view to standard directions. See [Appendix A1. Coordinate Systems](appendix/a1-coordinate-system.md#detector) for the coordinate-system definitions.
 
 ---
 
@@ -126,4 +126,4 @@ The **Overlays** tab configures the annotations drawn on the pattern.
 
 - [Electron trajectory](8-electron-trajectory.md) — Monte-Carlo electron-trajectory / BSE simulation used for the angular/energy/depth weighting.
 - [Diffraction simulator](7-diffraction-simulator/index.md) — dynamical (Bloch-wave) electron diffraction.
-- [Appendix A2. Detector Coordinate System](appendix/a2-detector-coordinate-system.md) — definitions of the sample/detector coordinate systems.
+- [Appendix A1. Coordinate Systems](appendix/a1-coordinate-system.md#detector) — definitions of the sample/detector coordinate systems.

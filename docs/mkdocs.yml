@@ -93,10 +93,13 @@ plugins:
         'ja/20-2-examples.md': 'ja/20-macro/2-examples.md'
         'en/appendix-a0-how-to-use.md': 'en/appendix/a0-how-to-use.md'
         'en/appendix-a1-coordinate-system.md': 'en/appendix/a1-coordinate-system.md'
-        'en/appendix-a2-detector-coordinate-system.md': 'en/appendix/a2-detector-coordinate-system.md'
+        # 260526Cl: A1/A2 を統合したため、旧 A2 (フラット URL・正規 URL とも) を統合先 a1 へリダイレクト
+        'en/appendix-a2-detector-coordinate-system.md': 'en/appendix/a1-coordinate-system.md'
+        'en/appendix/a2-detector-coordinate-system.md': 'en/appendix/a1-coordinate-system.md'
         'ja/appendix-a0-how-to-use.md': 'ja/appendix/a0-how-to-use.md'
         'ja/appendix-a1-coordinate-system.md': 'ja/appendix/a1-coordinate-system.md'
-        'ja/appendix-a2-detector-coordinate-system.md': 'ja/appendix/a2-detector-coordinate-system.md'
+        'ja/appendix-a2-detector-coordinate-system.md': 'ja/appendix/a1-coordinate-system.md'
+        'ja/appendix/a2-detector-coordinate-system.md': 'ja/appendix/a1-coordinate-system.md'
 
 # 260525Cl: ページ先頭の言語切替リンク (🌐 English | 日本語) は廃止。ヘッダーの言語セレクタ (extra.alternate) と
 #   機能が重複するため。これに伴い docs/hooks/language_switch.py とその参照を削除した。
@@ -180,8 +183,7 @@ nav:
           - 20.2. Examples: en/20-macro/2-examples.md
       - Appendix:
           - How to use (videos): en/appendix/a0-how-to-use.md
-          - Appendix A1. Coordinate System: en/appendix/a1-coordinate-system.md
-          - Appendix A2. Detector Coordinate System: en/appendix/a2-detector-coordinate-system.md
+          - Appendix A1. Coordinate Systems: en/appendix/a1-coordinate-system.md
       - Troubleshooting: en/troubleshooting.md
   - 日本語:
       - ホーム: ja/index.md
@@ -214,5 +216,4 @@ nav:
       - 付録:
           - How to use（動画）: ja/appendix/a0-how-to-use.md
           - Appendix A1. 座標系の定義: ja/appendix/a1-coordinate-system.md
-          - Appendix A2. 検出器座標系: ja/appendix/a2-detector-coordinate-system.md
       - トラブルシューティング: ja/troubleshooting.md
