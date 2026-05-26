@@ -92,14 +92,21 @@ plugins:
         'ja/20-1-built-in-functions.md': 'ja/20-macro/1-built-in-functions.md'
         'ja/20-2-examples.md': 'ja/20-macro/2-examples.md'
         'en/appendix-a0-how-to-use.md': 'en/appendix/a0-how-to-use.md'
-        'en/appendix-a1-coordinate-system.md': 'en/appendix/a1-coordinate-system.md'
-        # 260526Cl: A1/A2 を統合したため、旧 A2 (フラット URL・正規 URL とも) を統合先 a1 へリダイレクト
-        'en/appendix-a2-detector-coordinate-system.md': 'en/appendix/a1-coordinate-system.md'
-        'en/appendix/a2-detector-coordinate-system.md': 'en/appendix/a1-coordinate-system.md'
+        # 260526Cl: A1 を A1.1(基本座標系)/A1.2(回折) に分割。旧URL(統合A1・旧A2検出器)を新ページへ
+        'en/appendix-a1-coordinate-system.md': 'en/appendix/a1-coordinate-system/1-orientation.md'
+        'en/appendix/a1-coordinate-system.md': 'en/appendix/a1-coordinate-system/1-orientation.md'
+        'en/appendix-a2-detector-coordinate-system.md': 'en/appendix/a1-coordinate-system/2-diffraction.md'
+        'en/appendix/a2-detector-coordinate-system.md': 'en/appendix/a1-coordinate-system/2-diffraction.md'
         'ja/appendix-a0-how-to-use.md': 'ja/appendix/a0-how-to-use.md'
-        'ja/appendix-a1-coordinate-system.md': 'ja/appendix/a1-coordinate-system.md'
-        'ja/appendix-a2-detector-coordinate-system.md': 'ja/appendix/a1-coordinate-system.md'
-        'ja/appendix/a2-detector-coordinate-system.md': 'ja/appendix/a1-coordinate-system.md'
+        'ja/appendix-a1-coordinate-system.md': 'ja/appendix/a1-coordinate-system/1-orientation.md'
+        'ja/appendix/a1-coordinate-system.md': 'ja/appendix/a1-coordinate-system/1-orientation.md'
+        'ja/appendix-a2-detector-coordinate-system.md': 'ja/appendix/a1-coordinate-system/2-diffraction.md'
+        'ja/appendix/a2-detector-coordinate-system.md': 'ja/appendix/a1-coordinate-system/2-diffraction.md'
+        # 260526Cl: A2(概要)とA3(計算)を1つの a2-bloch-wave セクションへ統合。旧URLを新ページへ
+        'en/appendix/a2-bloch-wave-method.md': 'en/appendix/a2-bloch-wave/index.md'
+        'ja/appendix/a2-bloch-wave-method.md': 'ja/appendix/a2-bloch-wave/index.md'
+        'en/appendix/a3-bloch-wave-calculation.md': 'en/appendix/a2-bloch-wave/calculation.md'
+        'ja/appendix/a3-bloch-wave-calculation.md': 'ja/appendix/a2-bloch-wave/calculation.md'
 
 # 260525Cl: ページ先頭の言語切替リンク (🌐 English | 日本語) は廃止。ヘッダーの言語セレクタ (extra.alternate) と
 #   機能が重複するため。これに伴い docs/hooks/language_switch.py とその参照を削除した。
@@ -183,9 +190,16 @@ nav:
           - 20.2. Examples: en/20-macro/2-examples.md
       - Appendix:
           - How to use (videos): en/appendix/a0-how-to-use.md
-          - Appendix A1. Coordinate Systems: en/appendix/a1-coordinate-system.md
-          - Appendix A2. Bloch-Wave Method: en/appendix/a2-bloch-wave-method.md
-          - Appendix A3. Bloch-Wave Calculation: en/appendix/a3-bloch-wave-calculation.md
+          - Appendix A1. Coordinate systems:
+              - A1.1. Basic coordinate system and crystal orientation: en/appendix/a1-coordinate-system/1-orientation.md
+              - A1.2. Coordinate system for diffraction simulation: en/appendix/a1-coordinate-system/2-diffraction.md
+          - Appendix A2. Dynamical diffraction (Bloch-wave method):
+              - en/appendix/a2-bloch-wave/index.md
+              - A2.1. Dynamical calculation: en/appendix/a2-bloch-wave/calculation.md
+              - A2.2. HRTEM image formation: en/appendix/a2-bloch-wave/hrtem.md
+              - A2.3. CBED: en/appendix/a2-bloch-wave/cbed.md
+              - A2.4. STEM: en/appendix/a2-bloch-wave/stem.md
+              - A2.5. EBSD: en/appendix/a2-bloch-wave/ebsd.md
       - Troubleshooting: en/troubleshooting.md
   - 日本語:
       - ホーム: ja/index.md
@@ -217,7 +231,14 @@ nav:
           - 20.2. マクロの使用例: ja/20-macro/2-examples.md
       - 付録:
           - How to use（動画）: ja/appendix/a0-how-to-use.md
-          - Appendix A1. 座標系の定義: ja/appendix/a1-coordinate-system.md
-          - Appendix A2. Bloch波法（概要）: ja/appendix/a2-bloch-wave-method.md
-          - Appendix A3. Bloch波法（計算内容）: ja/appendix/a3-bloch-wave-calculation.md
+          - Appendix A1. 座標系の定義:
+              - A1.1. 基本座標系と結晶方位の定義: ja/appendix/a1-coordinate-system/1-orientation.md
+              - A1.2. 回折シミュレーションにおける座標系の定義: ja/appendix/a1-coordinate-system/2-diffraction.md
+          - Appendix A2. 動力学回折（Bloch波法）:
+              - ja/appendix/a2-bloch-wave/index.md
+              - A2.1. 動力学計算: ja/appendix/a2-bloch-wave/calculation.md
+              - A2.2. HRTEM 像形成: ja/appendix/a2-bloch-wave/hrtem.md
+              - A2.3. CBED: ja/appendix/a2-bloch-wave/cbed.md
+              - A2.4. STEM: ja/appendix/a2-bloch-wave/stem.md
+              - A2.5. EBSD: ja/appendix/a2-bloch-wave/ebsd.md
       - トラブルシューティング: ja/troubleshooting.md

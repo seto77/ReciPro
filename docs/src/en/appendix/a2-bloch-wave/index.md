@@ -1,6 +1,6 @@
 # Appendix A2. Dynamical Diffraction by the Bloch-Wave Method
 
-This appendix gives an overview of the dynamical electron-diffraction theory used by ReciPro's **Crystal Diffraction**, **CBED**, and **HRTEM/STEM** simulators. ReciPro follows the **Bethe / Bloch-wave** formulation. The step-by-step calculation (optical potential, transmission coefficients, intensities) is described in [Appendix A3. Bloch-Wave Calculation Details](a3-bloch-wave-calculation.md).
+This appendix gives an overview of the dynamical electron-diffraction theory used by ReciPro's **Crystal Diffraction**, **CBED**, and **HRTEM/STEM** simulators. ReciPro follows the **Bethe / Bloch-wave** formulation. The step-by-step calculation (optical potential, transmission coefficients, intensities) is described in [Dynamical calculation (common core)](calculation.md).
 
 ---
 
@@ -34,7 +34,7 @@ Substituting the Bloch-wave expansion into the wave equation yields **Bethe's dy
 $$\left[\,k^2 - \left(\mathbf{k}^{(j)} + \mathbf{g}\right)^2 + i\,U'_{g,g}\right]C_{\mathbf g}^{(j)} + \sum_{h \neq g}\left(U^C_{g-h} + i\,U'_{g,h}\right)C_{\mathbf h}^{(j)} = 0$$
 
 - $U^C_{\mathbf g}$ — crystal potential for **elastic** scattering.
-- $U'_{\mathbf g}$ — imaginary (**absorption**) potential, which accounts for **thermal diffuse scattering** (TDS). How it and the Debye–Waller factor enter is detailed in [Appendix A3](a3-bloch-wave-calculation.md).
+- $U'_{\mathbf g}$ — imaginary (**absorption**) potential, which accounts for **thermal diffuse scattering** (TDS). How it and the Debye–Waller factor enter is detailed in [the calculation core](calculation.md).
 
 ---
 
@@ -42,7 +42,7 @@ $$\left[\,k^2 - \left(\mathbf{k}^{(j)} + \mathbf{g}\right)^2 + i\,U'_{g,g}\right
 
 The vectors and scalars appearing above are defined on the Ewald sphere:
 
-![Definitions of the vectors and scalars used in the Bloch-wave calculation](../../assets/references/Bloch.png)
+![Definitions of the vectors and scalars used in the Bloch-wave calculation](../../../assets/references/Bloch.png)
 
 - $\hat{\mathbf n}$ — unit vector normal to the crystal surface.
 - $\mathbf k$ — incident wavevector (its tip lies on the Ewald sphere); $\mathbf k_{vac}$ is the vacuum wavevector.
@@ -71,7 +71,39 @@ A_{gg} = \frac{Q_g + i\,U'_{g,g}}{P_g}$$
 - The columns of $\mathbf{C}$ are the eigenvectors $C^{(j)}_*$ (the Bloch-wave amplitudes).
 - $\boldsymbol{\Lambda}=\mathrm{diag}\!\left(\lambda^{(1)}, \lambda^{(2)}, \dots\right)$ holds the eigenvalues $\lambda^{(j)} = \gamma^{(j)}$.
 
-Diagonalising $\mathbf{A}$ yields **all** Bloch wavevectors and amplitudes at once. The diffracted-beam amplitudes — and hence the intensities — then follow from the boundary conditions at the entrance and exit surfaces and from the specimen thickness. Those steps, the optical (complex) potential, the Debye–Waller factor, and the transmission coefficients $T_{\mathbf g}$ are described in [Appendix A3. Bloch-Wave Calculation Details](a3-bloch-wave-calculation.md).
+Written out explicitly — ordering the beams as the transmitted beam $0$, then $g$, $h$, $\dots$ — this is
+
+$$
+\begin{aligned}
+&\begin{pmatrix}
+(Q_0 + i\,U'_{0,0})/P_0 & (U^C_{-g} + i\,U'_{0,g})/P_0 & (U^C_{-h} + i\,U'_{0,h})/P_0 & \cdots \\
+(U^C_{g} + i\,U'_{g,0})/P_g & (Q_g + i\,U'_{g,g})/P_g & (U^C_{g-h} + i\,U'_{g,h})/P_g & \cdots \\
+(U^C_{h} + i\,U'_{h,0})/P_h & (U^C_{h-g} + i\,U'_{h,g})/P_h & (Q_h + i\,U'_{h,h})/P_h & \cdots \\
+\vdots & \vdots & \vdots & \ddots
+\end{pmatrix}
+\begin{pmatrix}
+C^{(1)}_0 & C^{(2)}_0 & C^{(3)}_0 & \cdots \\
+C^{(1)}_g & C^{(2)}_g & C^{(3)}_g & \cdots \\
+C^{(1)}_h & C^{(2)}_h & C^{(3)}_h & \cdots \\
+\vdots & \vdots & \vdots & \ddots
+\end{pmatrix} \\[1.2ex]
+&\qquad=
+\begin{pmatrix}
+C^{(1)}_0 & C^{(2)}_0 & C^{(3)}_0 & \cdots \\
+C^{(1)}_g & C^{(2)}_g & C^{(3)}_g & \cdots \\
+C^{(1)}_h & C^{(2)}_h & C^{(3)}_h & \cdots \\
+\vdots & \vdots & \vdots & \ddots
+\end{pmatrix}
+\begin{pmatrix}
+\lambda^{(1)} & 0 & 0 & \cdots \\
+0 & \lambda^{(2)} & 0 & \cdots \\
+0 & 0 & \lambda^{(3)} & \cdots \\
+\vdots & \vdots & \vdots & \ddots
+\end{pmatrix}
+\end{aligned}
+$$
+
+Diagonalising $\mathbf{A}$ yields **all** Bloch wavevectors and amplitudes at once. The diffracted-beam amplitudes — and hence the intensities — then follow from the boundary conditions at the entrance and exit surfaces and from the specimen thickness. Those steps, the optical (complex) potential, the Debye–Waller factor, and the transmission coefficients $T_{\mathbf g}$ are described in [Dynamical calculation (common core)](calculation.md).
 
 > **Note:** The $V_{\mathbf g}$ values shown in the **Details** table of the diffraction simulator are the raw values *before* the relativistic correction factor is applied.
 
@@ -79,7 +111,7 @@ Diagonalising $\mathbf{A}$ yields **all** Bloch wavevectors and amplitudes at on
 
 ## See also
 
-- [7. Diffraction simulator](../7-diffraction-simulator/index.md) — dynamical diffraction patterns
-- [9. HRTEM/STEM simulator](../9-hrtem-stem-simulator/index.md)
-- [Appendix A1. Coordinate Systems](a1-coordinate-system.md)
-- [Appendix A3. Bloch-Wave Calculation Details](a3-bloch-wave-calculation.md)
+- [7. Diffraction simulator](../../7-diffraction-simulator/index.md) — dynamical diffraction patterns
+- [9. HRTEM/STEM simulator](../../9-hrtem-stem-simulator/index.md)
+- [Appendix A1. Coordinate Systems](../a1-coordinate-system/1-orientation.md)
+- [Dynamical calculation (common core)](calculation.md)

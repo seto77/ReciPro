@@ -124,6 +124,55 @@
   padding: 0.1rem 0.2rem;
 }
 
+/* ============================================================================
+   260526Cl: Appendix A1「座標系の定義」用ラベル配色クラス (.rp-*)
+   ---------------------------------------------------------------------------
+   要望: 図 (Coordinates1-5.png) 中の文字色と本文の用語色を一致させる。
+   ライト値は図の配色そのもの、ダーク (slate) 値は暗背景でも読めるよう明度を上げる。
+   数式 (MathJax/arithmatex) も同じ span で囲むだけで currentColor を継承して着色される
+   (MathJax CHTML はグリフを現在の文字色で描画するため)。
+   配色の割り当て:
+     red   = X 軸 / Direct spot / Camera length 1
+     green = Y・b 軸 (方位系)
+     blue  = Z・c 軸 (方位系) / −Z ビーム
+     steel = 実座標 X,Y,Z・Sample・View direction (検出器系の基準色)
+     olive = Φ,  cyan = θ・ピクセル座標 X″,Y″,  magenta = Ψ
+     brown = 検出器座標 X′,Y′・Foot・Camera length 2
+     grass = 回転軸 / φ / τ
+   ============================================================================ */
+:root,
+[data-md-color-scheme="default"] {
+  --rp-red:     #e00000;
+  --rp-green:   #1f7a00;
+  --rp-blue:    #1020e0;
+  --rp-steel:   #3a5cc0;
+  --rp-olive:   #8a8a00;
+  --rp-cyan:    #008a8a;
+  --rp-magenta: #a800a8;
+  --rp-brown:   #c04800;
+  --rp-grass:   #4e7d2a;
+}
+[data-md-color-scheme="slate"] {
+  --rp-red:     #ff6e6e;
+  --rp-green:   #62c462;
+  --rp-blue:    #7d9bff;
+  --rp-steel:   #93aaf0;
+  --rp-olive:   #cccc33;
+  --rp-cyan:    #33c8c8;
+  --rp-magenta: #e673e6;
+  --rp-brown:   #ff8c42;
+  --rp-grass:   #9cc266;
+}
+.md-typeset .rp-red     { color: var(--rp-red); }
+.md-typeset .rp-green   { color: var(--rp-green); }
+.md-typeset .rp-blue    { color: var(--rp-blue); }
+.md-typeset .rp-steel   { color: var(--rp-steel); }
+.md-typeset .rp-olive   { color: var(--rp-olive); }
+.md-typeset .rp-cyan    { color: var(--rp-cyan); }
+.md-typeset .rp-magenta { color: var(--rp-magenta); }
+.md-typeset .rp-brown   { color: var(--rp-brown); }
+.md-typeset .rp-grass   { color: var(--rp-grass); }
+
 /* 260525Ch: Keep the primary navigation visible on desktop-sized documentation views. */
 @media screen and (min-width: 60em) and (max-width: 76.234375em) {
   .md-header__button[for="__drawer"] {

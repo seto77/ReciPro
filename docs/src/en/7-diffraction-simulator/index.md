@@ -140,7 +140,7 @@ Semi-angle and step.
 
 ![Detector area](../../assets/cap-en-auto/FormDiffractionSimulatorGeometry.panelDetectorAreaAndOverlappedImage.png)
 
-See [Appendix A1. Coordinate Systems](../appendix/a1-coordinate-system.md#detector).
+See [Appendix A1. Coordinate Systems](../appendix/a1-coordinate-system/2-diffraction.md).
 
 ---
 

@@ -47,7 +47,7 @@
 
 ![3Dジオメトリ](../assets/cap-ja-auto/FormEBSD.tabControl1.tabPage1.panelGeometry.png)
 
-灰色の板が試料、緑の円筒/円錐が検出器、紫の **+Z (=beam)** が入射電子線です。試料に固定された結晶の **a / b / c** 軸も表示されます。**鳥瞰図**・**表面法線方向**・**X軸 (試料回転軸)**・**Z軸 (電子線入射方向)** のボタンで標準的な視点に切り替えられます。座標系の定義は [Appendix A1. 座標系の定義](appendix/a1-coordinate-system.md#detector) を参照してください。
+灰色の板が試料、緑の円筒/円錐が検出器、紫の **+Z (=beam)** が入射電子線です。試料に固定された結晶の **a / b / c** 軸も表示されます。**鳥瞰図**・**表面法線方向**・**X軸 (試料回転軸)**・**Z軸 (電子線入射方向)** のボタンで標準的な視点に切り替えられます。座標系の定義は [Appendix A1. 座標系の定義](appendix/a1-coordinate-system/2-diffraction.md) を参照してください。
 
 ---
 
@@ -126,4 +126,4 @@
 
 - [電子飛程](8-electron-trajectory.md) — 方位・エネルギー・深さの重み付けに用いるモンテカルロ電子飛程（BSE）シミュレーション。
 - [回折シミュレータ](7-diffraction-simulator/index.md) — 動力学（ブロッホ波法）電子回折。
-- [Appendix A1. 座標系の定義](appendix/a1-coordinate-system.md#detector) — 試料・検出器の座標系の定義。
+- [Appendix A1. 座標系の定義](appendix/a1-coordinate-system/2-diffraction.md) — 試料・検出器の座標系の定義。
