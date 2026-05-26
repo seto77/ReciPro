@@ -59,8 +59,9 @@ plugins:
   - redirects:
       redirect_maps:
         'en/0-1-crystal-orientation-control.md': 'en/0-main-window/1-crystal-orientation-control.md'
-        # 260526Cl: JA メインウィンドウをフラット 1 ページから EN と同じフォルダ構成へ移行。旧フラット URL を概要(index)へ
-        'ja/0-main-window.md': 'ja/0-main-window/index.md'
+        # 260526Cl: JA メインウィンドウをフラット→フォルダ化したが、use_directory_urls では
+        #   旧 'ja/0-main-window.md' も新 'ja/0-main-window/index.md' も同一 URL /ja/0-main-window/ に出力される。
+        #   ここに redirect を張ると index.html が自分自身への meta-refresh スタブで上書きされ無限リロードになるため、張らない。
         'en/11-symmetry-information.md': 'en/2-symmetry-information.md'
         'en/12-scattering-factor.md': 'en/3-scattering-factor.md'
         'en/3-rotation-geometry.md': 'en/4-rotation-geometry.md'
