@@ -21,6 +21,8 @@ ReciPro uses a **right-handed coordinate system** fixed to the monitor:
 | **Y** | Upward on the monitor |
 | **Z** | Vertically out of the monitor, toward the viewer |
 
+![ReciPro coordinate axes shown on the monitor](../../assets/references/Coordinates1.png)
+
 The **beam direction** corresponds to the viewing direction (looking into the monitor), i.e. the **−Z** axis.
 
 Most operations in ReciPro involve only *directions* (expressed as 3×3 rotation matrices) and do not require an explicit origin. The one exception is the **Crystal Diffraction** function, which needs an explicit origin — see [Detector coordinate system](#detector) below.
@@ -32,6 +34,8 @@ The initial orientation (at first launch, or after **Reset rotation**) is define
 1. The **c-axis** is aligned with the **Z-axis**.
 2. The **b-axis** lies in the **YZ plane**, close to the Y-axis.
 3. The **a-axis** is then fixed by the b- and c-axes (right-hand rule).
+
+![Initial orientation: the crystal a / b / c axes relative to X / Y / Z, with the incident beam along −Z](../../assets/references/Coordinates2.png)
 
 Equivalently:
 
@@ -50,6 +54,8 @@ Crystal orientation is expressed with three Euler angles **Φ**, **θ**, **Ψ**,
 | **θ** | X | 2nd (middle) |
 | **Ψ** | Z | 3rd (lowest) |
 
+![Euler-angle rotation axes — Φ (yellow), θ (cyan), Ψ (magenta) — shown at 0° (top) and at 15° (bottom)](../../assets/references/Coordinates3.png)
+
 The three angles form a **hierarchy**: Φ is the highest rotation, followed by θ, then Ψ. The direction of a lower axis depends on the state of the higher rotations. For example, when Φ = θ = Ψ = 15°, the Φ axis still coincides with Z, but the θ and Ψ axes generally align with none of X, Y, or Z.
 
 > The **Rotation Geometry** window can re-express this orientation in an arbitrary, experiment-specific Euler-angle convention (e.g. to match a laboratory goniometer). See [4. Rotation Geometry](../4-rotation-geometry.md).
@@ -65,7 +71,7 @@ The **Crystal Diffraction** function simulates the diffraction pattern recorded 
 
 ### Before rotation (detector normal to the beam)
 
-![Detector coordinate system with the detector normal to the beam](../../assets/references/Coordinates1.png)
+![Detector coordinate system with the detector normal to the beam](../../assets/references/Coordinates4.png)
 
 Three coordinate systems are defined:
 
@@ -77,7 +83,7 @@ When the detector is perpendicular to the beam, the **foot** and the **direct sp
 
 ### After rotation (tilted detector)
 
-![Detector coordinate system with a tilted detector](../../assets/references/Coordinates2.png)
+![Detector coordinate system with a tilted detector](../../assets/references/Coordinates5.png)
 
 The detector tilt is described by two parameters:
 
