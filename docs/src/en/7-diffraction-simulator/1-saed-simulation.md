@@ -77,5 +77,6 @@ Select from the toolbar:
 ## See also
 
 - [7. Diffraction simulator](index.md)
+- [Parallel-beam SAED calculation](../appendix/a2-bloch-wave/calculation.md#parallel-beam-saed)
 - [7.2. X ray diffraction](2-x-ray-diffraction.md)
 - [7.3. PED Simulation](3-ped-simulation.md)

@@ -2,6 +2,7 @@
 
 ReciPro's diffraction and imaging simulators share a common **Bloch-wave (Bethe) dynamical-scattering core**, described on this page (crystal potential, Debye–Waller and absorption terms, the eigenvalue problem, transmission coefficients, and intensities). The method-specific protocols build on this core:
 
+- [Parallel-beam SAED](#parallel-beam-saed)
 - [HRTEM image formation](hrtem.md)
 - [CBED](cbed.md)
 - [STEM](stem.md)
@@ -90,6 +91,32 @@ $$I_{\mathbf g} = \left|T_{\mathbf g}\right|^2$$
 
 ---
 
+## Parallel-Beam SAED Calculation { #parallel-beam-saed }
+
+Ordinary SAED (selected-area electron diffraction) is treated as **parallel-beam diffraction** with a single incident direction. Unlike CBED, it does not scan many $\mathbf K$ points inside a convergent aperture. The current crystal orientation and accelerating voltage define one incident wavevector $\mathbf k_0$, and ReciPro evaluates the position and intensity of each reflection $\mathbf g$ for that condition.
+
+The calculation can be organised as follows.
+
+1. Use the crystal orientation, accelerating voltage, wavelength, camera length, and detector geometry to define the vacuum incident wavevector $\mathbf k_{vac}$ and the detector plane.
+2. Apply the refraction correction from the mean inner potential $U_0$ and obtain the crystal reference wavevector $\mathbf k_0$.
+3. Enumerate candidate reciprocal-lattice vectors $\mathbf g$ and evaluate their distance from the Ewald sphere through quantities such as $Q_g=|\mathbf k_0|^2-|\mathbf k_0+\mathbf g|^2$ and the excitation error $S_g$.
+4. Calculate the intensity of each reflection using the selected intensity mode.
+5. Project the direction of $\mathbf k_0+\mathbf g$ onto the detector plane and draw it as a diffraction spot.
+
+ReciPro's SAED mode mainly offers the following intensity models.
+
+| Mode | Calculation | Typical use |
+|------|-------------|-------------|
+| Only excitation error | Estimates intensity only from how close the reflection is to the Ewald sphere. Structure factors are not used. | Fast checks of spot positions and zone-axis geometry. |
+| Kinematical + excitation error | Uses $\lvert F_{\mathbf g}\rvert^2$ together with excitation-error damping. Multiple scattering is not included. | Thin specimens, weak diffraction, and extinction-rule checks. |
+| Dynamical theory | Uses the Bloch-wave core on this page to obtain $T_{\mathbf g}(t)$ and sets $I_{\mathbf g}=\lvert T_{\mathbf g}\rvert^2$. | Thickness dependence, multiple scattering, and strong electron-diffraction reflections. |
+
+The reciprocal-lattice-point display modes, such as solid-sphere cross sections and Gaussian spots, mainly control the drawing profile. In dynamical-theory mode, the physical reflection intensity is determined by the Bloch-wave value $|T_{\mathbf g}|^2$, and that intensity is then assigned to the chosen display profile.
+
+PED can be viewed as integrating this parallel-beam SAED calculation over precession directions, while CBED can be viewed as arranging many incident directions inside diffraction disks.
+
+---
+
 ## Mean inner potential and refraction
 
 When the electron enters the crystal from vacuum, the mean inner potential $U_0$ slightly changes the reference wavevector inside the crystal. The component parallel to the surface is fixed by the boundary condition, so the vacuum wavevector $\mathbf k_{vac}$ and the crystal reference wavevector $\mathbf k_0$ can be written as
@@ -142,5 +169,6 @@ For STEM, check this together with the detector-angle setting. For CBED, inspect
 ## See also
 
 - [Appendix A2. Dynamical Diffraction by the Bloch-Wave Method](index.md)
+- [7.1. SAED simulation](../../7-diffraction-simulator/1-saed-simulation.md)
 - [7.4. CBED simulation](../../7-diffraction-simulator/4-cbed-simulation.md)
 - [7. Diffraction simulator](../../7-diffraction-simulator/index.md)
