@@ -13,7 +13,7 @@
   "use strict";
 
   // 相手言語に 1:1 の対応ページが無いケースの上書き (EN のみ存在するページ → JA 側の代替ページ slug)
-  // 260526Cl: JA も 0-main-window/1-crystal-orientation-control/ を持つようになり 1:1 対応に。現状は上書き無し。
+  // 260526Cl: メインウィンドウは EN/JA とも単一ページ 0-main-window/ に統合され 1:1 対応。現状は上書き無し。
   var EN_TO_JA_OVERRIDE = {};
 
   var enRoot = "", jaRoot = "", rootsReady = false;

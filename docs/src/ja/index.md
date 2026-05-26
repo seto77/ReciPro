@@ -8,7 +8,7 @@
 
 | 目的 | 最初に読むページ | 次に使う主な機能 |
 |------|------------------|------------------|
-| 結晶を読み込んで方位を合わせたい | [メインウィンドウ](0-main-window/index.md) | [回転ジオメトリ](4-rotation-geometry.md)、[Appendix A1. 座標系](appendix/a1-coordinate-system/1-orientation.md) |
+| 結晶を読み込んで方位を合わせたい | [メインウィンドウ](0-main-window.md) | [回転ジオメトリ](4-rotation-geometry.md)、[Appendix A1. 座標系](appendix/a1-coordinate-system/1-orientation.md) |
 | 結晶構造を3Dで確認したい | [Structure Viewer](5-structure-viewer.md) | [対称性情報](2-symmetry-information.md) |
 | SAED / XRD / PED / CBED を計算したい | [回折シミュレータ](7-diffraction-simulator/index.md) | [SAED](7-diffraction-simulator/2-saed-simulation.md)、[X線回折](7-diffraction-simulator/1-x-ray-diffraction.md)、[PED](7-diffraction-simulator/3-ped-simulation.md)、[CBED](7-diffraction-simulator/4-cbed-simulation.md) |
 | HRTEM / STEM 像を計算したい | [HRTEM/STEMシミュレータ](9-hrtem-stem-simulator/index.md) | [HRTEM](9-hrtem-stem-simulator/1-hrtem-simulation.md)、[STEM](9-hrtem-stem-simulator/2-stem-simulation.md) |

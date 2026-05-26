@@ -58,10 +58,13 @@ plugins:
   #   過去に公開済みの旧 URL の 404 を防ぐ。mkdocs-redirects が必要。キー=旧パス / 値=新パス (いずれも src 相対)。
   - redirects:
       redirect_maps:
-        'en/0-1-crystal-orientation-control.md': 'en/0-main-window/1-crystal-orientation-control.md'
-        # 260526Cl: JA メインウィンドウをフラット→フォルダ化したが、use_directory_urls では
-        #   旧 'ja/0-main-window.md' も新 'ja/0-main-window/index.md' も同一 URL /ja/0-main-window/ に出力される。
-        #   ここに redirect を張ると index.html が自分自身への meta-refresh スタブで上書きされ無限リロードになるため、張らない。
+        # 260526Cl: メインウィンドウは EN/JA とも単一フラットページ (0-main-window.md) に統合。
+        #   crystal-orientation-control の旧サブページ URL (本日公開) はフラットページへリダイレクトする。
+        #   ※ '…/0-main-window/index.md' → '…/0-main-window.md' は張らない: use_directory_urls では
+        #     両者が同一 URL /0-main-window/ になり自己参照 meta-refresh = 無限リロードになるため (方針 §5)。
+        'en/0-1-crystal-orientation-control.md': 'en/0-main-window.md'
+        'en/0-main-window/1-crystal-orientation-control.md': 'en/0-main-window.md'
+        'ja/0-main-window/1-crystal-orientation-control.md': 'ja/0-main-window.md'
         'en/11-symmetry-information.md': 'en/2-symmetry-information.md'
         'en/12-scattering-factor.md': 'en/3-scattering-factor.md'
         'en/3-rotation-geometry.md': 'en/4-rotation-geometry.md'
@@ -168,9 +171,7 @@ extra:
 nav:
   - English:
       - Home: index.md
-      - 0. Main window:
-          - en/0-main-window/index.md
-          - 0.1. Crystal orientation control: en/0-main-window/1-crystal-orientation-control.md
+      - 0. Main window: en/0-main-window.md
       - 1. Crystal database: en/1-crystal-database.md
       - 2. Symmetry information: en/2-symmetry-information.md
       - 3. Scattering factor: en/3-scattering-factor.md
@@ -211,9 +212,7 @@ nav:
       - Troubleshooting: en/troubleshooting.md
   - 日本語:
       - ホーム: ja/index.md
-      - 0. メインウィンドウ:
-          - ja/0-main-window/index.md
-          - 0.1. 結晶方位の設定: ja/0-main-window/1-crystal-orientation-control.md
+      - 0. メインウィンドウ: ja/0-main-window.md
       - 1. 結晶データベース: ja/1-crystal-database.md
       - 2. 対称性情報: ja/2-symmetry-information.md
       - 3. 散乱因子: ja/3-scattering-factor.md

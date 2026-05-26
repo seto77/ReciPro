@@ -1,12 +1,8 @@
----
-title: Main Window
----
-
 # Main Window
 
 When ReciPro launches, the main window appears. From this window you select the crystal, control its rotation, and invoke various functions.
 
-![Main Window](../../assets/cap-en-auto/FormMain.png)
+![Main Window](../assets/cap-en-auto/FormMain.png)
 
 | Area | Location | Description |
 |------|----------|-------------|
@@ -33,7 +29,7 @@ If you are new to ReciPro, use this order:
 
 The vertical button strip on the right launches the analysis and simulation windows (see the [Functions](#functions) table below).
 
-![Functions panel](../../assets/cap-en-auto/FormMain.toolStripContainer1.toolStrip1.png)
+![Functions panel](../assets/cap-en-auto/FormMain.toolStripContainer1.toolStrip1.png)
 
 ---
 
@@ -81,18 +77,38 @@ Switch the UI language between English and Japanese. The change takes effect aft
 
 ### Macro
 
-Open the [Macro](../20-macro/index.md) window to automate ReciPro operations with Python-style scripts. For repeated workflows, see the [built-in functions](../20-macro/1-built-in-functions.md) and [macro examples](../20-macro/2-examples.md).
+Open the [Macro](20-macro/index.md) window to automate ReciPro operations with Python-style scripts. For repeated workflows, see the [built-in functions](20-macro/1-built-in-functions.md) and [macro examples](20-macro/2-examples.md).
 
+
+---
+
+## Crystal orientation control
+
+The crystal orientation set here is shared by the diffraction simulator, Structure Viewer, Stereonet, HRTEM/STEM simulator, EBSD simulator, and other windows. It is not just a view setting — it defines the incident beam direction and the crystal coordinate relationship used by the simulations.
+
+> A short video tutorial is available on the [How to use](appendix/a0-how-to-use.md) page.
+
+### Basic ways to set the orientation
+
+| Method | Use when | Where |
+|--------|----------|-------|
+| Mouse drag | You want to rotate freely while watching the crystal axes. | **Current orientation** panel |
+| Arrow buttons | You want small, repeatable rotations. | **Arrows** panel |
+| Zone axis | You know the viewing direction, such as \([001]\) or \([110]\). | **View along** / zone-axis input |
+| Plane normal | You want a crystal plane \((hkl)\) normal to the screen. | **View along** / plane input |
+| Euler angles | You need a reproducible numeric orientation. | **Euler angles (Z-X-Z)** |
+
+See [Rotation Geometry](4-rotation-geometry.md) and [Appendix A1. Coordinate systems](appendix/a1-coordinate-system/1-orientation.md) for the rotation matrices and coordinate conventions.
 
 ---
 
 ## Rotation control
 
-![Rotation control panel](../../assets/cap-en-auto/FormMain.toolStripContainer1.panel1.png)
+![Rotation control panel](../assets/cap-en-auto/FormMain.toolStripContainer1.panel1.png)
 
 ### Current orientation
 
-![Current orientation](../../assets/cap-en-auto/FormMain.toolStripContainer1.panel1.groupBoxCurrentDirection.png)
+![Current orientation](../assets/cap-en-auto/FormMain.toolStripContainer1.panel1.groupBoxCurrentDirection.png)
 
 Shows crystal orientation. Drag to rotate. Axes: red = *a*, green = *b*, blue = *c*.
 
@@ -104,17 +120,17 @@ Displays closest zone axis to screen normal (e.g., *u*+*v*+*w* < 30).
 
 ### Euler angles (Z-X-Z)
 - **Psi**: Z-axis rotation, **Theta**: X-axis rotation, **Phi**: Z-axis rotation
-- See [3. Rotation Geometry](../4-rotation-geometry.md) and [Appendix A1. Coordinate System](../appendix/a1-coordinate-system/1-orientation.md).
+- See [3. Rotation Geometry](4-rotation-geometry.md) and [Appendix A1. Coordinate System](appendix/a1-coordinate-system/1-orientation.md).
 
 ### Arrows
 
-![Arrows](../../assets/cap-en-auto/FormMain.toolStripContainer1.panel1.groupBoxArrows.png)
+![Arrows](../assets/cap-en-auto/FormMain.toolStripContainer1.panel1.groupBoxArrows.png)
 
 Rotate by angle Step. Check Animation for continuous rotation.
 
 ### View along
 
-![View along](../../assets/cap-en-auto/FormMain.toolStripContainer1.panel1.groupBoxProjectAlong.png)
+![View along](../assets/cap-en-auto/FormMain.toolStripContainer1.panel1.groupBoxProjectAlong.png)
 
 Align a zone axis [*uvw*] or crystal plane (*hkl*) perpendicular to the screen.
 
@@ -122,11 +138,11 @@ Align a zone axis [*uvw*] or crystal plane (*hkl*) perpendicular to the screen.
 
 ## Crystal List
 
-![Crystal List](../../assets/cap-en-auto/FormMain.toolStripContainer1.splitContainer.groupBoxCrystalList.png)
+![Crystal List](../assets/cap-en-auto/FormMain.toolStripContainer1.splitContainer.groupBoxCrystalList.png)
 
 ~80 crystals in default installation. Select to view details and set for calculations.
 
-![Crystal edit buttons](../../assets/cap-en-auto/FormMain.toolStripContainer1.splitContainer.flowLayoutPanelCrystalEdit.png)
+![Crystal edit buttons](../assets/cap-en-auto/FormMain.toolStripContainer1.splitContainer.flowLayoutPanelCrystalEdit.png)
 
 | Button | Action |
 |--------|--------|
@@ -139,33 +155,33 @@ Align a zone axis [*uvw*] or crystal plane (*hkl*) perpendicular to the screen.
 
 ## Crystal Information
 
-![Crystal Information](../../assets/cap-en-auto/FormMain.toolStripContainer1.splitContainer.groupBoxCrystalInformation.png)
+![Crystal Information](../assets/cap-en-auto/FormMain.toolStripContainer1.splitContainer.groupBoxCrystalInformation.png)
 
 Edit lattice parameters, symmetry, and atoms. Drag & drop CIF/AMC files.
 
 > **Important**: Press **Add** or **Replace** to save changes.
 
-![Crystal Control](../../assets/cap-en-auto/FormMain.toolStripContainer1.splitContainer.groupBoxCrystalInformation.crystalControl.png)
+![Crystal Control](../assets/cap-en-auto/FormMain.toolStripContainer1.splitContainer.groupBoxCrystalInformation.crystalControl.png)
 
 ### Basic Info tab
 
-![Basic Info](../../assets/cap-en-auto/FormMain.toolStripContainer1.splitContainer.groupBoxCrystalInformation.crystalControl.tabControl.tabPageBasicInfo.png)
+![Basic Info](../assets/cap-en-auto/FormMain.toolStripContainer1.splitContainer.groupBoxCrystalInformation.crystalControl.tabControl.tabPageBasicInfo.png)
 
 ### Atom tab
 
-![Atom](../../assets/cap-en-auto/FormMain.toolStripContainer1.splitContainer.groupBoxCrystalInformation.crystalControl.tabControl.tabPageAtom.png)
+![Atom](../assets/cap-en-auto/FormMain.toolStripContainer1.splitContainer.groupBoxCrystalInformation.crystalControl.tabControl.tabPageAtom.png)
 
 ### Reference tab
 
-![Reference](../../assets/cap-en-auto/FormMain.toolStripContainer1.splitContainer.groupBoxCrystalInformation.crystalControl.tabControl.tabPageReference.png)
+![Reference](../assets/cap-en-auto/FormMain.toolStripContainer1.splitContainer.groupBoxCrystalInformation.crystalControl.tabControl.tabPageReference.png)
 
 ### EOS tab
 
-![EOS](../../assets/cap-en-auto/FormMain.toolStripContainer1.splitContainer.groupBoxCrystalInformation.crystalControl.tabControl.tabPageEOS.png)
+![EOS](../assets/cap-en-auto/FormMain.toolStripContainer1.splitContainer.groupBoxCrystalInformation.crystalControl.tabControl.tabPageEOS.png)
 
 ### Elasticity tab
 
-![Elasticity](../../assets/cap-en-auto/FormMain.toolStripContainer1.splitContainer.groupBoxCrystalInformation.crystalControl.tabControl.tabPageElasticity.png)
+![Elasticity](../assets/cap-en-auto/FormMain.toolStripContainer1.splitContainer.groupBoxCrystalInformation.crystalControl.tabControl.tabPageElasticity.png)
 
 ---
 
@@ -173,18 +189,18 @@ Edit lattice parameters, symmetry, and atoms. Drag & drop CIF/AMC files.
 
 | Button | Description | Details |
 |--------|-------------|---------|
-| Crystal Database | Search and import crystals from the bundled / online databases | [1. Crystal database](../1-crystal-database.md) |
-| Symmetry Information | Space-group info and ITC Vol. A symmetry diagrams | [2. Symmetry information](../2-symmetry-information.md) |
-| Scattering Factor | Crystal planes & structure factors | [3. Scattering factor](../3-scattering-factor.md) |
-| Rotation Geometry | 3D rotation matrix / goniometer angles | [4. Rotation Geometry](../4-rotation-geometry.md) |
-| Structure Viewer | 3D crystal structure | [5. Structure viewer](../5-structure-viewer.md) |
-| Stereonet | Stereographic projection | [6. Stereonet](../6-stereonet.md) |
-| Diffraction Simulator | Single-crystal X-ray / electron diffraction | [7. Diffraction simulator](../7-diffraction-simulator/index.md) |
-| Trajectory Simulator | Monte-Carlo electron-trajectory simulation | [8. Electron trajectory](../8-electron-trajectory.md) |
-| HRTEM/STEM Simulator | HRTEM / STEM image simulation | [9. HRTEM/STEM simulator](../9-hrtem-stem-simulator/index.md) |
-| Spot ID v1 | SAED pattern indexing (formerly "TEM ID") | [10. Spot ID v1](../10-spot-id.md) |
-| Spot ID v2 | Spot detection & indexing | [11. Spot ID v2](../11-spot-id-v2.md) |
-| EBSD Simulator | EBSD pattern simulation | [12. EBSD simulation](../12-ebsd-simulation.md) |
+| Crystal Database | Search and import crystals from the bundled / online databases | [1. Crystal database](1-crystal-database.md) |
+| Symmetry Information | Space-group info and ITC Vol. A symmetry diagrams | [2. Symmetry information](2-symmetry-information.md) |
+| Scattering Factor | Crystal planes & structure factors | [3. Scattering factor](3-scattering-factor.md) |
+| Rotation Geometry | 3D rotation matrix / goniometer angles | [4. Rotation Geometry](4-rotation-geometry.md) |
+| Structure Viewer | 3D crystal structure | [5. Structure viewer](5-structure-viewer.md) |
+| Stereonet | Stereographic projection | [6. Stereonet](6-stereonet.md) |
+| Diffraction Simulator | Single-crystal X-ray / electron diffraction | [7. Diffraction simulator](7-diffraction-simulator/index.md) |
+| Trajectory Simulator | Monte-Carlo electron-trajectory simulation | [8. Electron trajectory](8-electron-trajectory.md) |
+| HRTEM/STEM Simulator | HRTEM / STEM image simulation | [9. HRTEM/STEM simulator](9-hrtem-stem-simulator/index.md) |
+| Spot ID v1 | SAED pattern indexing (formerly "TEM ID") | [10. Spot ID v1](10-spot-id.md) |
+| Spot ID v2 | Spot detection & indexing | [11. Spot ID v2](11-spot-id-v2.md) |
+| EBSD Simulator | EBSD pattern simulation | [12. EBSD simulation](12-ebsd-simulation.md) |
 | Powder Diffraction | Polycrystalline (powder) diffraction — enable via **Option ▸ Powder diffraction function** | - |
 
 > **Right-click a crystal** in the Crystal List for a context menu: *Rename*, *Export as CIF*, *Duplicate*, *Delete*.
