@@ -2,8 +2,8 @@
 
 The **Crystal Database** provides functions to search and import crystal structures from two sources, selectable with the **AMCSD** and **COD** check boxes:
 
-- **AMCSD** — the bundled [American Mineralogist Crystal Structure Database](http://rruff.geo.arizona.edu/AMS/amcsd.php) (more than 20,000 structures).
-- **COD** — the [Crystallography Open Database](https://www.crystallography.net/cod/); the database file is downloaded automatically on first use and can be updated.
+- **AMCSD** : the bundled [American Mineralogist Crystal Structure Database](http://rruff.geo.arizona.edu/AMS/amcsd.php) (more than 20,000 structures).
+- **COD** : the [Crystallography Open Database](https://www.crystallography.net/cod/); the database file is downloaded automatically on first use and can be updated.
 
 Please cite, when using AMCSD:
 

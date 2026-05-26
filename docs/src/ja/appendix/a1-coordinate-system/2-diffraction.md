@@ -13,9 +13,9 @@
 
 3つの座標系を定義します。
 
-- <span class="rp-steel">**実座標** ($X$, $Y$, $Z$)</span> — mm単位の3次元直交座標。<span class="rp-steel">**試料**</span>を原点とする。<span class="rp-steel">$Z$</span>軸はビーム方向に平行で、<span class="rp-steel">$Z$</span>軸方向を正面に見て <span class="rp-steel">$X$</span> は右、<span class="rp-steel">$Y$</span> は下を向く。検出器がビームに垂直のとき、<span class="rp-steel">$X$ / $Y$</span> は <span class="rp-brown">$X'$ / $Y'$</span> に平行。
-- <span class="rp-brown">**検出器座標** ($X'$, $Y'$)</span> — 検出器平面上のmm単位の2次元座標。<span class="rp-brown">**foot**</span> を原点とする。<span class="rp-brown">$X'$ / $Y'$</span> は検出器平面上で右 / 下を向き、<span class="rp-cyan">$X''$ / $Y''$</span> に平行。
-- <span class="rp-cyan">**ピクセル座標** ($X''$, $Y''$)</span> — ピクセル単位の2次元座標。検出器の<span class="rp-cyan">**左上隅**</span>を原点とし、検出器のピクセル配列に沿う。
+- <span class="rp-steel">**実座標** ($X$, $Y$, $Z$)</span> : mm単位の3次元直交座標。<span class="rp-steel">**試料**</span>を原点とする。<span class="rp-steel">$Z$</span>軸はビーム方向に平行で、<span class="rp-steel">$Z$</span>軸方向を正面に見て <span class="rp-steel">$X$</span> は右、<span class="rp-steel">$Y$</span> は下を向く。検出器がビームに垂直のとき、<span class="rp-steel">$X$ / $Y$</span> は <span class="rp-brown">$X'$ / $Y'$</span> に平行。
+- <span class="rp-brown">**検出器座標** ($X'$, $Y'$)</span> : 検出器平面上のmm単位の2次元座標。<span class="rp-brown">**foot**</span> を原点とする。<span class="rp-brown">$X'$ / $Y'$</span> は検出器平面上で右 / 下を向き、<span class="rp-cyan">$X''$ / $Y''$</span> に平行。
+- <span class="rp-cyan">**ピクセル座標** ($X''$, $Y''$)</span> : ピクセル単位の2次元座標。検出器の<span class="rp-cyan">**左上隅**</span>を原点とし、検出器のピクセル配列に沿う。
 
 検出器がビームに垂直なとき、<span class="rp-brown">**foot**</span> と<span class="rp-red">**透過スポット**</span>は一致し、<span class="rp-red">**Camera length 1**</span> と <span class="rp-brown">**Camera length 2**</span> は等しくなります。
 

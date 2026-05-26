@@ -10,7 +10,7 @@ The calculation conditions are at the top of the window and the reflection list 
 
 ## Radiation type
 
-- **X-ray / Electron / Neutron** — the atomic scattering factors differ by radiation type, so they are switched here.
+- **X-ray / Electron / Neutron** : the atomic scattering factors differ by radiation type, so they are switched here.
 - For **X-ray**, choosing the **Element** (anode material) and characteristic line (Kα, etc.) sets the wavelength of that characteristic X-ray automatically.
 
 ---
@@ -26,11 +26,11 @@ The calculation conditions are at the top of the window and the reflection list 
 
 ## Display & calculation options
 
-- **Powder Diffraction Intensities (Bragg-Brentano Optics)** — computes the relative intensity as a powder-diffraction (Bragg–Brentano) intensity, including multiplicity and the Lorentz–polarization factor. When off, the intensity is the structure-factor intensity.
-- **Hide equivalent planes** — collapses symmetry-equivalent planes into a single entry.
-- **Hide prohibited planes** — excludes planes whose intensity is zero by the extinction rules.
-- **Unit (Å / nm)** — length unit for d-spacing, etc.
-- **d-Spacing Cutoff** — excludes planes with a d-spacing smaller than this value, dropping the higher-order reflections.
+- **Powder Diffraction Intensities (Bragg-Brentano Optics)** : computes the relative intensity as a powder-diffraction (Bragg–Brentano) intensity, including multiplicity and the Lorentz–polarization factor. When off, the intensity is the structure-factor intensity.
+- **Hide equivalent planes** : collapses symmetry-equivalent planes into a single entry.
+- **Hide prohibited planes** : excludes planes whose intensity is zero by the extinction rules.
+- **Unit (Å / nm)** : length unit for d-spacing, etc.
+- **d-Spacing Cutoff** : excludes planes with a d-spacing smaller than this value, dropping the higher-order reflections.
 
 ---
 

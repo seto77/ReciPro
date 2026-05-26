@@ -13,9 +13,9 @@ The **Crystal Diffraction** function simulates the diffraction pattern recorded 
 
 Three coordinate systems are defined:
 
-- <span class="rp-steel">**Real coordinates** ($X$, $Y$, $Z$)</span> — 3D Cartesian coordinates in mm, with the <span class="rp-steel">**sample**</span> as origin. <span class="rp-steel">$Z$</span> is parallel to the beam; viewed along <span class="rp-steel">$Z$</span>, <span class="rp-steel">$X$</span> points right and <span class="rp-steel">$Y$</span> points down. When the detector is normal to the beam, <span class="rp-steel">$X$ / $Y$</span> are parallel to <span class="rp-brown">$X'$ / $Y'$</span>.
-- <span class="rp-brown">**Detector coordinates** ($X'$, $Y'$)</span> — 2D coordinates in mm on the detector plane, with the <span class="rp-brown">**foot**</span> as origin. <span class="rp-brown">$X'$ / $Y'$</span> point right / down on the detector and are parallel to <span class="rp-cyan">$X''$ / $Y''$</span>.
-- <span class="rp-cyan">**Pixel coordinates** ($X''$, $Y''$)</span> — 2D coordinates in pixel units, with the <span class="rp-cyan">**upper-left corner**</span> of the detector as origin, following the detector's pixel rows and columns.
+- <span class="rp-steel">**Real coordinates** ($X$, $Y$, $Z$)</span> : 3D Cartesian coordinates in mm, with the <span class="rp-steel">**sample**</span> as origin. <span class="rp-steel">$Z$</span> is parallel to the beam; viewed along <span class="rp-steel">$Z$</span>, <span class="rp-steel">$X$</span> points right and <span class="rp-steel">$Y$</span> points down. When the detector is normal to the beam, <span class="rp-steel">$X$ / $Y$</span> are parallel to <span class="rp-brown">$X'$ / $Y'$</span>.
+- <span class="rp-brown">**Detector coordinates** ($X'$, $Y'$)</span> : 2D coordinates in mm on the detector plane, with the <span class="rp-brown">**foot**</span> as origin. <span class="rp-brown">$X'$ / $Y'$</span> point right / down on the detector and are parallel to <span class="rp-cyan">$X''$ / $Y''$</span>.
+- <span class="rp-cyan">**Pixel coordinates** ($X''$, $Y''$)</span> : 2D coordinates in pixel units, with the <span class="rp-cyan">**upper-left corner**</span> of the detector as origin, following the detector's pixel rows and columns.
 
 When the detector is perpendicular to the beam, the <span class="rp-brown">**foot**</span> and the <span class="rp-red">**direct spot**</span> coincide, and <span class="rp-red">**Camera length 1**</span> equals <span class="rp-brown">**Camera length 2**</span>.
 

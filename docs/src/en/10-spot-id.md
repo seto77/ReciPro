@@ -96,6 +96,6 @@ Enter the geometry of the diffraction spots.
 - To enter spot-to-spot distance on the detector, use the **mm** box.
 - If you know the *d*-value, enter it in **Å** or **nm⁻¹** units.
 
-**Three sides mode** — Enter the lengths of the three sides of a triangle with the direct spot as one vertex.
+**Three sides mode** : Enter the lengths of the three sides of a triangle with the direct spot as one vertex.
 
-**Two sides and an angle mode** — Enter the lengths of two sides (including the direct spot) and the angle between them.
+**Two sides and an angle mode** : Enter the lengths of two sides (including the direct spot) and the angle between them.

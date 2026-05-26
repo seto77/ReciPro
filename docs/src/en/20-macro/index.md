@@ -96,9 +96,9 @@ These basics are pre-registered in the autocomplete popup, so you can discover t
 
 ### NOT usable
 
-- **`print()`** — there is no console window; output goes nowhere. Use **Step by step** and look at the debug panel to inspect values.
-- **`input()`** — no stdin.
-- **File I/O** (`open`, `with open`) — not intended for macros. Use `ReciPro.File.*` helpers instead.
+- **`print()`** : there is no console window; output goes nowhere. Use **Step by step** and look at the debug panel to inspect values.
+- **`input()`** : no stdin.
+- **File I/O** (`open`, `with open`) : not intended for macros. Use `ReciPro.File.*` helpers instead.
 - **C-extension packages**: `numpy`, `scipy`, `pandas`, `matplotlib` — not compatible with IronPython.
 
 ---

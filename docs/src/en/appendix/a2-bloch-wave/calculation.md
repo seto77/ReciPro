@@ -16,9 +16,9 @@ For the underlying theory (Schrödinger equation, Bloch's theorem, Bethe's dynam
 
 $$\gamma = \frac{m}{m_0} = 1 + \frac{e_0 E}{m_0 c^2}, \qquad \beta = \frac{v}{c} = \sqrt{1 - \left(\frac{m_0}{m}\right)^2} = \sqrt{1 - \gamma^{-2}}$$
 
-- $\gamma$ — relativistic correction factor; $E$ — accelerating voltage; $m_0$, $m$ — rest and relativistic electron mass.
-- $\Omega$ — unit-cell volume.
-- $k_{vac}$ — wavenumber of the electron in vacuum.
+- $\gamma$ : relativistic correction factor; $E$ : accelerating voltage; $m_0$, $m$ : rest and relativistic electron mass.
+- $\Omega$ : unit-cell volume.
+- $k_{vac}$ : wavenumber of the electron in vacuum.
 
 ---
 
@@ -82,8 +82,8 @@ or, component by component,
 
 $$T_{\mathbf g} = e^{-2\pi i(\mathbf k_{vac}\cdot\mathbf n)\,t}\; e^{\pi i P_g t}\sum_j C_{\mathbf g}^{(j)}\,e^{2\pi i\lambda^{(j)} t}\,\alpha^{(j)}$$
 
-- $\alpha^{(j)}$ — the weighting (excitation) coefficients of each Bloch wave, fixed by the boundary condition at the entrance surface.
-- $t$ — specimen thickness.
+- $\alpha^{(j)}$ : the weighting (excitation) coefficients of each Bloch wave, fixed by the boundary condition at the entrance surface.
+- $t$ : specimen thickness.
 
 The diffracted intensity of beam $\mathbf g$ is then
 

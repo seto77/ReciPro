@@ -14,8 +14,8 @@ The top-left panel lists, for the current space group:
 
 - **Number** (1–230) and the setting index
 - **Crystal System**
-- **Point Group** — Hermann–Mauguin (HM) and Schoenflies (SF) symbols
-- **Space Group** — HM short symbol, HM full symbol, SF symbol, and **Hall symbol**
+- **Point Group** : Hermann–Mauguin (HM) and Schoenflies (SF) symbols
+- **Space Group** : HM short symbol, HM full symbol, SF symbol, and **Hall symbol**
 
 ---
 
@@ -58,7 +58,7 @@ The two panels at the bottom reproduce the schematic diagrams used in *Internati
 
 Controls below the diagrams:
 
-- **Direction** (`a` / `b` / `c`) — choose the projection axis.
+- **Direction** (`a` / `b` / `c`) : choose the projection axis.
 - The displayed range can be limited (e.g. *Upper left quadrant only*), and the *a*, *b*, *c* scale factors of the general-position plot can be adjusted.
 - **Copy** each diagram to the clipboard as a vector image (**EMF**) or raster image (**BMP**); EMF can be ungrouped and edited in PowerPoint.
 

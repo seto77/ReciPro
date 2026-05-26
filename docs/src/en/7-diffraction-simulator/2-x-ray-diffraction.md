@@ -27,8 +27,8 @@ Set Element to **0** and enter energy or wavelength directly.
 
 In addition to a flat detector, the detector-geometry settings provide dedicated X-ray camera modes:
 
-- **Precession camera** — simulates a precession photograph (single reciprocal-lattice layer).
-- **Back-Laue camera** — simulates a back-reflection Laue pattern (detector on the source side of the sample).
+- **Precession camera** : simulates a precession photograph (single reciprocal-lattice layer).
+- **Back-Laue camera** : simulates a back-reflection Laue pattern (detector on the source side of the sample).
 
 ---
 

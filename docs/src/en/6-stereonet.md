@@ -21,9 +21,9 @@ Save or copy in raster or vector format. Vector format allows editing font/line 
 
 ![Mode](../assets/cap-en-auto/FormStereonet.panel3.groupBoxMode.png)
 
-- **Projection target** — **Axis**, **Plane**, or **Kikuchi line** pairs
-- **Projection method** — **Wulff** (equal-angle) or **Schmidt** (equal-area)
-- **Hemisphere** — upper or lower
+- **Projection target** : **Axis**, **Plane**, or **Kikuchi line** pairs
+- **Projection method** : **Wulff** (equal-angle) or **Schmidt** (equal-area)
+- **Hemisphere** : upper or lower
 - Show index labels; optionally weight the plot by structure factor
 
 > For trigonal/hexagonal crystals, Miller–Bravais (4-index) notation can be enabled from **Option ▸ Use Miller-Bravais (hkil) index** in the main window.
@@ -34,7 +34,7 @@ Save or copy in raster or vector format. Vector format allows editing font/line 
 
 - **Range**: specify [uvw] or {hkl} range
 - **Specified**: add individual indices, with optional crystallographic equivalents
-- **Colour** — set the plot colour, or tick *change colour automatically* to colour-code each set of equivalent axes/planes differently
+- **Colour** : set the plot colour, or tick *change colour automatically* to colour-code each set of equivalent axes/planes differently
 
 ## 3D Options
 

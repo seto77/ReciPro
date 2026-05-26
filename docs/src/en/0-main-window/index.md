@@ -68,7 +68,7 @@ The vertical button strip on the right launches the analysis and simulation wind
 | Powder diffraction function (under development) | Enable the polycrystalline (powder) diffraction window |
 | Capture GUI Components… | Developer tool for saving GUI screenshots |
 
-> **Miller–Bravais index** — enabling **Option ▸ Use Miller-Bravais (hkil) index** switches plane indices to 4-index *hkil* notation for trigonal/hexagonal crystals throughout the program.
+> **Miller–Bravais index** : enabling **Option ▸ Use Miller-Bravais (hkil) index** switches plane indices to 4-index *hkil* notation for trigonal/hexagonal crystals throughout the program.
 
 ### Help
 

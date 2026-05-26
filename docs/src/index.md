@@ -17,17 +17,17 @@
 | Understand the dynamical-diffraction equations | [Appendix A2. Bloch-wave method](en/appendix/a2-bloch-wave/index.md) | [Dynamical calculation](en/appendix/a2-bloch-wave/calculation.md), [CBED](en/appendix/a2-bloch-wave/cbed.md), [STEM](en/appendix/a2-bloch-wave/stem.md), [EBSD](en/appendix/a2-bloch-wave/ebsd.md) |
 
 ## Features
-* **Full GUI** — All operations are performed through a graphical interface. Most file I/O supports drag & drop.
-* **Crystal list** — Handle multiple crystals at once; no need to open separate windows for each crystal.
-* **Space group database** — Built-in database covering 230 space groups from International Tables Volume A, plus 530 Hall symbols, with symmetry elements, Wyckoff positions, and extinction rules. Symmetry elements and general positions can be drawn as *International Tables* Vol. A-style schematic diagrams (see [2. Symmetry information](en/2-symmetry-information.md)).
-* **Atomic information** — Scattering factors (X-ray, electron, neutron), characteristic X-ray energies, isotope ratios, etc. for elements H (1) - Cf (98).
-* **Flexible crystal rotation** — Set orientation by zone-axis/crystal-plane indices or by mouse drag. Miller–Bravais (4-index *hkil*) notation is supported for trigonal/hexagonal systems. Rotation state is synchronised across all simulation windows.
-* **Diffraction simulation** — Kinematical and dynamical (Bloch wave) electron diffraction, X-ray diffraction (including precession and back-Laue cameras), precession electron diffraction (PED), and convergent-beam electron diffraction (CBED). A TEM-holder simulation links the diffraction pattern to holder tilt angles.
-* **HRTEM / STEM simulation** — High-resolution TEM image simulation with partial-coherence models; STEM with thermal diffuse scattering.
-* **EBSD & electron trajectory** — EBSD pattern simulation and Monte-Carlo electron-trajectory simulation (see [8. Electron trajectory](en/8-electron-trajectory.md)).
-* **Spot indexing** — Automatic detection, fitting, and indexing of diffraction spots from experimental images (Spot ID v1/v2).
-* **Macro** — Python-syntax macro for automating operations (see [20. Macro](en/20-macro/index.md)).
-* **Light / dark theme** — The interface follows a selectable light or dark colour mode.
+* **Full GUI** : All operations are performed through a graphical interface. Most file I/O supports drag & drop.
+* **Crystal list** : Handle multiple crystals at once; no need to open separate windows for each crystal.
+* **Space group database** : Built-in database covering 230 space groups from International Tables Volume A, plus 530 Hall symbols, with symmetry elements, Wyckoff positions, and extinction rules. Symmetry elements and general positions can be drawn as *International Tables* Vol. A-style schematic diagrams (see [2. Symmetry information](en/2-symmetry-information.md)).
+* **Atomic information** : Scattering factors (X-ray, electron, neutron), characteristic X-ray energies, isotope ratios, etc. for elements H (1) - Cf (98).
+* **Flexible crystal rotation** : Set orientation by zone-axis/crystal-plane indices or by mouse drag. Miller–Bravais (4-index *hkil*) notation is supported for trigonal/hexagonal systems. Rotation state is synchronised across all simulation windows.
+* **Diffraction simulation** : Kinematical and dynamical (Bloch wave) electron diffraction, X-ray diffraction (including precession and back-Laue cameras), precession electron diffraction (PED), and convergent-beam electron diffraction (CBED). A TEM-holder simulation links the diffraction pattern to holder tilt angles.
+* **HRTEM / STEM simulation** : High-resolution TEM image simulation with partial-coherence models; STEM with thermal diffuse scattering.
+* **EBSD & electron trajectory** : EBSD pattern simulation and Monte-Carlo electron-trajectory simulation (see [8. Electron trajectory](en/8-electron-trajectory.md)).
+* **Spot indexing** : Automatic detection, fitting, and indexing of diffraction spots from experimental images (Spot ID v1/v2).
+* **Macro** : Python-syntax macro for automating operations (see [20. Macro](en/20-macro/index.md)).
+* **Light / dark theme** : The interface follows a selectable light or dark colour mode.
 
 ## System requirements
 | Item | Minimum | Recommended |

@@ -10,8 +10,8 @@ A fast electron travelling through the periodic electrostatic potential of a cry
 
 $$\nabla^2 \Psi(\mathbf{r}) + 4\pi^2\left\{\, k_{vac}^2 + \sum_{\mathbf g} U_{\mathbf g}\, e^{2\pi i\,\mathbf g\cdot\mathbf r} \right\}\Psi(\mathbf{r}) = 0$$
 
-- $k_{vac}$ — wavenumber of the electron in vacuum.
-- $U_{\mathbf g}$ — Fourier component of the crystal potential for the reciprocal-lattice vector $\mathbf g$. Because the potential is lattice-periodic, it is written as a Fourier series over the reciprocal lattice.
+- $k_{vac}$ : wavenumber of the electron in vacuum.
+- $U_{\mathbf g}$ : Fourier component of the crystal potential for the reciprocal-lattice vector $\mathbf g$. Because the potential is lattice-periodic, it is written as a Fourier series over the reciprocal lattice.
 
 ---
 
@@ -21,9 +21,9 @@ Since the potential has the periodicity of the crystal lattice, the solutions ar
 
 $$\Psi(\mathbf{r}) = b\!\left(\mathbf{k}^{(j)}, \mathbf{r}\right) = u(\mathbf{r})\exp\!\left(2\pi i\,\mathbf{k}^{(j)}\cdot\mathbf{r}\right)$$
 
-- $u(\mathbf r)$ — a function with the same periodicity as the crystal lattice, so it can itself be expanded over the reciprocal lattice, $u(\mathbf r)=\sum_{\mathbf g} C_{\mathbf g}^{(j)}\exp(2\pi i\,\mathbf g\cdot\mathbf r)$.
-- $\mathbf{k}^{(j)}$ — the $j$-th Bloch wavevector.
-- $C_{\mathbf g}^{(j)}$ — the amplitude (eigenvector component) of beam $\mathbf g$ in the $j$-th Bloch wave.
+- $u(\mathbf r)$ : a function with the same periodicity as the crystal lattice, so it can itself be expanded over the reciprocal lattice, $u(\mathbf r)=\sum_{\mathbf g} C_{\mathbf g}^{(j)}\exp(2\pi i\,\mathbf g\cdot\mathbf r)$.
+- $\mathbf{k}^{(j)}$ : the $j$-th Bloch wavevector.
+- $C_{\mathbf g}^{(j)}$ : the amplitude (eigenvector component) of beam $\mathbf g$ in the $j$-th Bloch wave.
 
 ---
 
@@ -33,8 +33,8 @@ Substituting the Bloch-wave expansion into the wave equation yields **Bethe's dy
 
 $$\left[\,k^2 - \left(\mathbf{k}^{(j)} + \mathbf{g}\right)^2 + i\,U'_{g,g}\right]C_{\mathbf g}^{(j)} + \sum_{h \neq g}\left(U^C_{g-h} + i\,U'_{g,h}\right)C_{\mathbf h}^{(j)} = 0$$
 
-- $U^C_{\mathbf g}$ — crystal potential for **elastic** scattering.
-- $U'_{\mathbf g}$ — imaginary (**absorption**) potential, which accounts for **thermal diffuse scattering** (TDS). How it and the Debye–Waller factor enter is detailed in [the calculation core](calculation.md).
+- $U^C_{\mathbf g}$ : crystal potential for **elastic** scattering.
+- $U'_{\mathbf g}$ : imaginary (**absorption**) potential, which accounts for **thermal diffuse scattering** (TDS). How it and the Debye–Waller factor enter is detailed in [the calculation core](calculation.md).
 
 ---
 
@@ -44,11 +44,11 @@ The vectors and scalars appearing above are defined on the Ewald sphere:
 
 ![Definitions of the vectors and scalars used in the Bloch-wave calculation](../../../assets/references/Bloch.png)
 
-- $\hat{\mathbf n}$ — unit vector normal to the crystal surface.
-- $\mathbf k$ — incident wavevector (its tip lies on the Ewald sphere); $\mathbf k_{vac}$ is the vacuum wavevector.
-- $\mathbf g$ — reciprocal-lattice vector; $\mathbf k + \mathbf g$ points to the reciprocal-lattice point.
-- $\mathbf k^{(j)}$ — the $j$-th Bloch wavevector. All Bloch wavevectors share the same tangential component (continuity across the surface) and differ only along $\hat{\mathbf n}$: $\mathbf k^{(j)} = \mathbf k + \gamma^{(j)}\hat{\mathbf n}$.
-- $\gamma^{(j)}$ — the $j$-th eigenvalue (the component of $\mathbf k^{(j)}$ along $\hat{\mathbf n}$, measured from $\mathbf k$).
+- $\hat{\mathbf n}$ : unit vector normal to the crystal surface.
+- $\mathbf k$ : incident wavevector (its tip lies on the Ewald sphere); $\mathbf k_{vac}$ is the vacuum wavevector.
+- $\mathbf g$ : reciprocal-lattice vector; $\mathbf k + \mathbf g$ points to the reciprocal-lattice point.
+- $\mathbf k^{(j)}$ : the $j$-th Bloch wavevector. All Bloch wavevectors share the same tangential component (continuity across the surface) and differ only along $\hat{\mathbf n}$: $\mathbf k^{(j)} = \mathbf k + \gamma^{(j)}\hat{\mathbf n}$.
+- $\gamma^{(j)}$ : the $j$-th eigenvalue (the component of $\mathbf k^{(j)}$ along $\hat{\mathbf n}$, measured from $\mathbf k$).
 
 From the geometry,
 

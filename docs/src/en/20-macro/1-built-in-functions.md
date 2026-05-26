@@ -119,8 +119,8 @@ Complete reference of classes and functions available in ReciPro macros.
 
 These three image-simulation classes share many members. To avoid repetition, the tables below use placeholders:
 
-- **`#`** — common to **HRTEM**, **STEM** and **Potential**. Replace `#` with `HRTEM`, `STEM`, or `Potential` (e.g. `STEM.Simulate()`, `Potential.AccVol`).
-- **`$`** — common to **HRTEM** and **STEM** only. Replace `$` with `HRTEM` or `STEM`.
+- **`#`** : common to **HRTEM**, **STEM** and **Potential**. Replace `#` with `HRTEM`, `STEM`, or `Potential` (e.g. `STEM.Simulate()`, `Potential.AccVol`).
+- **`$`** : common to **HRTEM** and **STEM** only. Replace `$` with `HRTEM` or `STEM`.
 - Members written with an explicit class name (`STEM.…` / `HRTEM.…`) belong to that class only. The **Potential** class adds no members of its own; it uses only the `#` members.
 
 ### Window control
