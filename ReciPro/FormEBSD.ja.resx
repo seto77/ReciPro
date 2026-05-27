@@ -437,9 +437,6 @@
   <data name="label9.Text" xml:space="preserve">
     <value>エネルギー</value>
   </data>
-  <data name="textBoxEnergy.Location" type="System.Drawing.Point, System.Drawing">
-    <value>54, 0</value>
-  </data>
   <data name="label12.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
   </data>
@@ -463,9 +460,6 @@
   </data>
   <data name="label5.Text" xml:space="preserve">
     <value>深さ</value>
-  </data>
-  <data name="textBoxThickness.Location" type="System.Drawing.Point, System.Drawing">
-    <value>289, 0</value>
   </data>
   <data name="label6.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
@@ -839,9 +833,6 @@
   <data name="labelMasterPatternEnergy.Text" xml:space="preserve">
     <value>エネルギー</value>
   </data>
-  <data name="textBoxMasterPatternEnergy.Location" type="System.Drawing.Point, System.Drawing">
-    <value>58, 2</value>
-  </data>
   <data name="labelMasterPatternEnergyUnit.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
   </data>
@@ -868,9 +859,6 @@
   </data>
   <data name="labelMasterPatternDepth.Text" xml:space="preserve">
     <value>深さ</value>
-  </data>
-  <data name="textBoxMasterPatternDepth.Location" type="System.Drawing.Point, System.Drawing">
-    <value>287, 2</value>
   </data>
   <data name="labelMasterPatternDepthUnit.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>

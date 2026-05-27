@@ -2327,10 +2327,6 @@ public partial class FormEBSD : FormBase
     }
 
     /// <summary>
-    /// UI 上の設定値を読み取り、MasterPattern の作成を開始する。
-    /// 実際の計算本体は Crystallography.EBSD に委譲し、このメソッドでは UI の状態遷移だけを扱う。
-    /// </summary>
-    /// <summary>
     /// 260524Cl 追加: --capture 用。Show しただけでは MasterPattern が無いため、Build MasterPattern を起動するだけ。
     /// build は非同期かつ重い (MonteCarlo + Bethe) が、完了判定は凝ったことをせず、GuiCapture 側が
     /// 「画面が変化しなくなったら完了」と見なす (5秒ごとの画面比較)。通常操作には影響させず、呼び出し元は GuiCapture に限定する。
@@ -2342,6 +2338,11 @@ public partial class FormEBSD : FormBase
         buttonCreateMasterPattern_Click(buttonCreateMasterPattern, EventArgs.Empty); // Build MasterPattern ボタン相当を起動 (async)。完了判定は GuiCapture の画面安定待ちに委ねる。
     }
 
+    /// <summary>
+    /// UI 上の設定値を読み取り、MasterPattern の作成を開始する。
+    /// 実際の計算本体は Crystallography.EBSD に委譲し、このメソッドでは UI の状態遷移だけを扱う。
+    /// 260527Cl: 直上に PrepareCaptureForGuiAudit を挿入した際に当メソッドの doc が剥がれていたので戻した。
+    /// </summary>
     private async void buttonCreateMasterPattern_Click(object sender, EventArgs e)
     {
         #region お蔵入り // (260327Ch) 旧 bwEBSD 実行中チェックは ebsdNew 本命化に伴い退避
