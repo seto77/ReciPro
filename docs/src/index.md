@@ -33,7 +33,7 @@
 | Item | Minimum | Recommended |
 |------|---------|-------------|
 | OS | Windows with [.NET Desktop Runtime 10.0](https://dotnet.microsoft.com/download/dotnet/10.0) (Windows on ARM64 supported) | Windows 11 |
-| GPU | OpenGL 1.3 | External GPU with OpenGL 1.5 |
+| GPU | OpenGL 1.3 | External GPU with OpenGL 4.3 |
 | Memory | - | 16 GB or more |
 | CPU | - | 8+ cores (for dynamical calculations) |
 

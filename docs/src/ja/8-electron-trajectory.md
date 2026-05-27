@@ -43,7 +43,3 @@
 ![プロファイル](../assets/cap-ja-auto/FormTrajectory.flowLayoutPanelProfiles.png)
 
 電子の深さ・エネルギープロファイル。
-
-### 後方散乱電子の試料脱出時のエネルギー
-
-![後方散乱電子の試料脱出時のエネルギー](../assets/cap-ja-auto/FormTrajectory.flowLayoutPanelProfiles.groupBoxEnergyDistribution.png)

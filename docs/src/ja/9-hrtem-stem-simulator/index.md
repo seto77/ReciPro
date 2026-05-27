@@ -42,15 +42,14 @@ title: HRTEM/STEMシミュレータ
 
 ## イメージモード / 試料情報
 
-![イメージモード](../../assets/cap-ja-auto/FormImageSimulator.splitContainer1.flowLayoutPanelModeSelection.groupBoxImageMode.png)
+![イメージモード](../../assets/cap-ja-auto/FormImageSimulator.splitContainer1.flowLayoutPanelModeSelection.groupBoxImageMode.png){align=left}
 
-**HRTEM**、**ポテンシャル**、**STEM** モードから選択。
+**HRTEM**、**ポテンシャル**、**STEM** モードから選択。<div style="clear: both;"></div>
 
-![試料情報](../../assets/cap-ja-auto/FormImageSimulator.splitContainer1.flowLayoutPanelModeSelection.groupBoxSampleProperty.png)
+![試料情報](../../assets/cap-ja-auto/FormImageSimulator.splitContainer1.flowLayoutPanelModeSelection.groupBoxSampleProperty.png){ align=left style="clear: both" }
+試料の厚みを設定します。<div style="clear: both;"></div>
 
----
-
-## 光学特性 (Optical property)
+## 光学特性 (Optical property) { style="clear: both" }
 
 ### TEMの条件
 

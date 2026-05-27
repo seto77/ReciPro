@@ -79,12 +79,6 @@ If none of these help, the cause may be the OS environment itself; please [open 
 
 ## Installation
 
-### Symptom: Windows Defender (or antivirus) flags the installer
-
-**Cause**: A **false positive**. The software has been checked with multiple virus scanners and is clean. Windows Defender behaved incorrectly with the compressed `.msi` installer. (Issue [#32](https://github.com/seto77/ReciPro/issues/32))
-
-**Solution**: Since v4.881 the installer is distributed **uncompressed** to avoid this (which is why the file is larger). Use the latest installer; if your antivirus still complains, it is safe to allow it.
-
 ### Symptom: Installing or uninstalling without administrator rights
 
 **Note**: Admin rights are not required. Shortcuts and per-user files are placed in your own user folders (e.g. `%AppData%\Microsoft\Windows\Start Menu\Programs\Crystallography Software\` and the Desktop). (Issue [#38](https://github.com/seto77/ReciPro/issues/38))
@@ -180,7 +174,7 @@ No. ReciPro depends on the **.NET Desktop Runtime**, which currently runs on Win
 
 ### Does ReciPro run on Windows on ARM (ARM64)?
 
-Yes. Recent versions run on ARM64 Windows with the .NET Desktop Runtime installed (confirmed working from around v4.913 with .NET 10). (Issue [#47](https://github.com/seto77/ReciPro/issues/47))
+Yes. Recent versions run on ARM64 Windows with the .NET Desktop Runtime (x64) installed (confirmed working from around v4.913 with .NET 10). (Issue [#47](https://github.com/seto77/ReciPro/issues/47))
 
 ### How should I cite ReciPro?
 

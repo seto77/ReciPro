@@ -25,7 +25,9 @@ The energy and depth ranges are set automatically in steps 1–2, but can be adj
 
 ---
 
-## SEM & sample conditions
+## SEM-EBSD settings
+
+### SEM & sample conditions
 
 ![SEM & sample conditions](../assets/cap-en-auto/FormEBSD.tabControl1.tabPage1.groupBoxSampleCondition.png)
 
@@ -35,7 +37,7 @@ The energy and depth ranges are set automatically in steps 1–2, but can be adj
 
 ---
 
-## EBSD geometry
+### EBSD geometry
 
 ![EBSD geometry](../assets/cap-en-auto/FormEBSD.tabControl1.tabPage1.groupBoxEBSDGeometry.png)
 
@@ -62,6 +64,22 @@ The **BSE Distribution** tab shows the Monte-Carlo backscattered-electron distri
 - **Depth (nm)** : distribution of the final exit depth of the backscattered electrons.
 
 These distributions are computed by the same Monte-Carlo engine as [Electron trajectory](8-electron-trajectory.md) and are used to weight the master pattern.
+
+---
+
+## Overlays
+
+![Overlays](../assets/cap-en-auto/FormEBSD.tabControl1.tabPage3.png)
+
+The **Overlays** tab configures the annotations drawn on the pattern.
+
+- **Background color** : background colour.
+- **Detector outline** : the detector outline. **Show circle** (perimeter) / **Show mesh** (grid).
+- **Show Kikuchi lines** : draw Kikuchi lines. **Line Width** / **Color**, and **Apply structure factors to Kikuchi line intensity**.
+- **Show Kikuchi line indices** : show indices of the Kikuchi lines (bands).
+- **Show zone axis indices** : show zone-axis indices.
+- **Kikuchi line criteria** : which Kikuchi lines to draw: **Structure factor** (the top *N* by structure factor) or **1/d Cutoff** (those with 1/d below a threshold).
+- **Text settings** : **Text Size** / **Color** of the index labels.
 
 ---
 
@@ -103,22 +121,6 @@ The centre panel shows the EBSD (Kikuchi-band) pattern for the current crystal o
   - **Energy / Depth** : when the above is off, select the energy/depth slice to display.
   - **Brightness (Min/Max), Polarity, Color** : brightness range, polarity, and colour scale.
 - **Copy** : copies the pattern to the clipboard.
-
----
-
-## Overlays
-
-![Overlays](../assets/cap-en-auto/FormEBSD.tabControl1.tabPage3.png)
-
-The **Overlays** tab configures the annotations drawn on the pattern.
-
-- **Background color** : background colour.
-- **Detector outline** : the detector outline. **Show circle** (perimeter) / **Show mesh** (grid).
-- **Show Kikuchi lines** : draw Kikuchi lines. **Line Width** / **Color**, and **Apply structure factors to Kikuchi line intensity**.
-- **Show Kikuchi line indices** : show indices of the Kikuchi lines (bands).
-- **Show zone axis indices** : show zone-axis indices.
-- **Kikuchi line criteria** : which Kikuchi lines to draw: **Structure factor** (the top *N* by structure factor) or **1/d Cutoff** (those with 1/d below a threshold).
-- **Text settings** : **Text Size** / **Color** of the index labels.
 
 ---
 

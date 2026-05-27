@@ -8,7 +8,7 @@ Practical examples for ReciPro macros. The first few are beginner-friendly intro
 
 ## Beginner examples
 
-### A. Basic loop (no side effects)
+### A. Basic loop
 
 The easiest way to learn the editor. Run this with **Step by step** and watch `i` and `sq` change in the debug panel — this is the ReciPro way of "printing" values (`print()` does not work).
 

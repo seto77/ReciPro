@@ -42,15 +42,14 @@ The **HRTEM/STEM Simulator** simulates TEM lattice-fringe (HRTEM) images, STEM i
 
 ## Image mode / Sample
 
-![Image mode](../../assets/cap-en-auto/FormImageSimulator.splitContainer1.flowLayoutPanelModeSelection.groupBoxImageMode.png)
+![Image mode](../../assets/cap-en-auto/FormImageSimulator.splitContainer1.flowLayoutPanelModeSelection.groupBoxImageMode.png){align=left}
 
-HRTEM, Potential, or STEM.
+HRTEM, Potential, or STEM.<div style="clear: both;"></div>
 
-![Sample](../../assets/cap-en-auto/FormImageSimulator.splitContainer1.flowLayoutPanelModeSelection.groupBoxSampleProperty.png)
+![Sample](../../assets/cap-en-auto/FormImageSimulator.splitContainer1.flowLayoutPanelModeSelection.groupBoxSampleProperty.png){ align=left style="clear: both" }
+Sets the sample thickness.<div style="clear: both;"></div>
 
----
-
-## Optical property
+## Optical property { style="clear: both" }
 
 ### TEM conditions
 

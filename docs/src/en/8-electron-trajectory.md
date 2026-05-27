@@ -43,7 +43,3 @@ Angular distribution of the backscattered electrons (the stereonet center corres
 ![Profiles](../assets/cap-en-auto/FormTrajectory.flowLayoutPanelProfiles.png)
 
 Depth and energy profiles of the simulated electrons.
-
-### BSE energy distribution at escape
-
-![BSE energy distribution at escape](../assets/cap-en-auto/FormTrajectory.flowLayoutPanelProfiles.groupBoxEnergyDistribution.png)

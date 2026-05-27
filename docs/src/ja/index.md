@@ -33,7 +33,7 @@
 | 項目 | 最低要件 | 推奨環境 |
 |------|---------|---------|
 | OS | [.NET Desktop Runtime 10.0](https://dotnet.microsoft.com/download/dotnet/10.0) が動作するWindows（ARM64版Windowsにも対応） | Windows 11 |
-| GPU | OpenGL 1.3対応 | OpenGL 1.5対応の外付けGPU |
+| GPU | OpenGL 1.3対応 | OpenGL 4.3対応の外付けGPU |
 | メモリ | — | 16 GB以上 |
 | CPU | — | 8コア以上（動力学計算時） |
 

@@ -1,6 +1,6 @@
-# Structure Viewer（結晶構造ビューア）
+# 結晶構造ビューア
 
-**Structure Viewer** は、選択した結晶をOpenGLを使って3次元的に描画します。
+**結晶構造ビューア (Structure Viewer)** は、選択した結晶をOpenGLを使って3次元的に描画します。
 
 ![結晶構造ビューア](../assets/cap-ja-auto/FormStructureViewer.png)
 
@@ -49,23 +49,24 @@
 
 ## タブメニュー
 
-### 描画範囲 (Bounds)
+### 描画範囲
 
 ![Bounds タブ](../assets/cap-ja-auto/FormStructureViewer.splitContainer1.tabControl.tabPageBounds.png)
 
 結晶の描画範囲を指定します。2つのモードがあります。
 
 **描画範囲を単位胞単位で指定**
+
 - a, b, c軸の単位格子を単位とした描画範囲
 - **中心**: 中心の分率座標
 - **範囲**: 各軸の上限/下限
-- よく使う値のプリセットボタンあり
+- よく使う値のプリセットボタン
 
 **描画範囲を格子面単位で指定**
 - 結晶面で描画領域を定義
 - 面が閉じた領域を形成しない場合は自動的に1単位格子に設定
 
-### 原子情報 (Atoms)
+### 原子情報
 
 ![Atoms タブ](../assets/cap-ja-auto/FormStructureViewer.splitContainer1.tabControl.tabPageAtom.png)
 
@@ -73,19 +74,19 @@
 
 - **原子リスト**: 追加・置換・削除。チェックボックスで一時的に非表示
 - **元素と位置**: ラベル、元素、分率座標 (X, Y, Z)、占有率
-- **Origin shift**: プリセットまたはカスタム値で原子位置をシフト
+- **原点シフト**: プリセットまたはカスタム値で原子位置をシフト
 - **外観**: 半径、色、マテリアル（テクスチャ）の設定
 - **同じ元素に適用**: 同じ元素のすべての原子に外観設定を適用
 
 > **重要**: 変更を永続保存するには、メインウィンドウの**リストへ追加**または**選択結晶と入れ替え**を押してください。
 
-### 結合/多面体 (Bonds & Polyhedra)
+### 結合/多面体
 
 ![Bonds タブ](../assets/cap-ja-auto/FormStructureViewer.splitContainer1.tabControl.tabPageBond.png)
 
 結合と配位多面体を定義します。
 
-### 単位胞 (Unit cell)
+### 単位胞
 
 ![Unit Cell タブ](../assets/cap-ja-auto/FormStructureViewer.splitContainer1.tabControl.tabPageUnitCell.png)
 
@@ -93,13 +94,13 @@
 - **面を表示**: 6つの格子面の描画
 - **辺を表示**: 格子の辺を描画
 
-### 格子面 (Lattice plane)
+### 格子面
 
 ![Lattice Plane タブ](../assets/cap-ja-auto/FormStructureViewer.splitContainer1.tabControl.tabPageLatticePlane.png)
 
 ミラー指数で指定した格子面を描画します。
 
-### 配位情報 (Coordinate information)
+### 配位情報
 
 ![Coordinate Information タブ](../assets/cap-ja-auto/FormStructureViewer.splitContainer1.tabControl.tabPageCoordinateInformation.png)
 
@@ -109,20 +110,13 @@
 
 ![情報 タブ](../assets/cap-ja-auto/FormStructureViewer.splitContainer1.tabControl.tabPageInformation.png)
 
-### 投影 (Projection)
+### 投影
 
 ![Projection タブ](../assets/cap-ja-auto/FormStructureViewer.splitContainer1.tabControl.tabPageProjection.png)
 
 正射投影または透視投影。奥行きフェードアウト、描画品質、透明度モードの設定。
 
-### その他 (Misc.)
-
-![Misc タブ](../assets/cap-ja-auto/FormStructureViewer.splitContainer1.tabControl.tabPageMisc.png)
-
-- **光源・結晶軸・凡例の設定**: サイズ設定。「元素でまとめる」で凡例表示を切替
-- **原子ラベル**: 原子ラベルのフォントサイズと色
-
-### 対称要素 (Symmetry Elements)
+### 対称要素
 
 **対称要素**タブは、空間群の対称操作を3Dモデル上に直接描画します（ツールバーの **対称要素** ボタンで表示/非表示を切替）。要素の種類ごとに個別に表示できます。
 
@@ -131,6 +125,13 @@
 - **対称心** と **回反軸**
 
 各種類について、記号サイズ・線幅・色を調整できます。
+
+### その他
+
+![Misc タブ](../assets/cap-ja-auto/FormStructureViewer.splitContainer1.tabControl.tabPageMisc.png)
+
+- **光源・結晶軸・凡例の設定**: サイズ設定。「元素でまとめる」で凡例表示を切替
+- **原子ラベル**: 原子ラベルのフォントサイズと色
 
 ---
 

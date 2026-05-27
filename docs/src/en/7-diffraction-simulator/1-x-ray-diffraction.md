@@ -19,11 +19,11 @@ Select an element and transition line:
 
 ### Synchrotron radiation
 
-Set Element to **0** and enter energy or wavelength directly.
+Set Element to **0: Custome** and enter energy or wavelength directly.
 
 ---
 
-## Camera geometries
+## Camera
 
 In addition to a flat detector, the detector-geometry settings provide dedicated X-ray camera modes:
 

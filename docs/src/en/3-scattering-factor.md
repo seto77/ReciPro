@@ -8,9 +8,9 @@ The calculation conditions are at the top of the window and the reflection list 
 
 ---
 
-## Radiation type
+## Incident beam type
 
-- **X-ray / Electron / Neutron** : the atomic scattering factors differ by radiation type, so they are switched here.
+- **X-ray / Electron / Neutron** : the atomic scattering factors differ by the type of incident beam, so they are switched here.
 - For **X-ray**, choosing the **Element** (anode material) and characteristic line (Kα, etc.) sets the wavelength of that characteristic X-ray automatically.
 
 ---
@@ -20,17 +20,17 @@ The calculation conditions are at the top of the window and the reflection list 
 ![Wave Length Control](../assets/cap-en-auto/FormScatteringFactor.panel3.waveLengthControl1.png)
 
 - **Energy (keV)** and **Wavelength (Å)** are linked to each other.
-- This wavelength is used to compute 2θ (the diffraction angle). For X-ray it can also be set via the element/characteristic-line selection.
+- This energy or wavelength is used to compute 2θ (the diffraction angle). For X-ray it can also be set via the element and line-type selection.
 
 ---
 
 ## Display & calculation options
 
-- **Powder Diffraction Intensities (Bragg-Brentano Optics)** : computes the relative intensity as a powder-diffraction (Bragg–Brentano) intensity, including multiplicity and the Lorentz–polarization factor. When off, the intensity is the structure-factor intensity.
-- **Hide equivalent planes** : collapses symmetry-equivalent planes into a single entry.
+- **Powder Diffraction Intensities (Bragg-Brentano Optics)** : computes the relative intensity as a powder-diffraction (Bragg–Brentano) intensity, including multiplicity and the Lorentz–polarization factor. When off, it displays the structure-factor intensity.
+- **Hide equivalent planes** : collapses crystallographically equivalent planes into a single entry.
 - **Hide prohibited planes** : excludes planes whose intensity is zero by the extinction rules.
-- **Unit (Å / nm)** : length unit for d-spacing, etc.
-- **d-Spacing Cutoff** : excludes planes with a d-spacing smaller than this value, dropping the higher-order reflections.
+- **Unit (Å / nm)** : switches the length unit for d-spacing, etc.
+- **d-Spacing Cutoff** : excludes reflections with a d-spacing smaller than this value.
 
 ---
 
@@ -55,7 +55,7 @@ Each row corresponds to one reflection (or a group of symmetry-equivalent planes
 
 ## Copy to Clipboard
 
-**Copy to Clipboard** copies the list as text that can be pasted into a spreadsheet.
+**Copy to Clipboard** copies the list to the clipboard as text that can be pasted into a spreadsheet such as Excel.
 
 ---
 

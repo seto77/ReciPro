@@ -90,12 +90,6 @@ Performance log and atom information.
 
 Projection mode (orthographic/perspective), depth fading, rendering quality, transparency mode.
 
-### Misc.
-
-![Misc tab](../assets/cap-en-auto/FormStructureViewer.splitContainer1.tabControl.tabPageMisc.png)
-
-Accessory panel size, label settings, bonded atoms outside boundaries.
-
 ### Symmetry Elements
 
 The **Symmetry Elements** tab draws the space-group symmetry operators directly onto the 3D model (toggle with the **Symmetry Elements** toolbar button). Each class of element can be shown/hidden independently:
@@ -105,6 +99,12 @@ The **Symmetry Elements** tab draws the space-group symmetry operators directly 
 - **Inversion centres** and **rotoinversion axes**
 
 For each class you can adjust the symbol size, line width, and colour.
+
+### Misc.
+
+![Misc tab](../assets/cap-en-auto/FormStructureViewer.splitContainer1.tabControl.tabPageMisc.png)
+
+Accessory panel size, label settings, bonded atoms outside boundaries.
 
 ---
 

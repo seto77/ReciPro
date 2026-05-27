@@ -129,13 +129,13 @@ X-ray (characteristic/synchrotron), Electron, Neutron. Set energy or wavelength.
 
 Solid sphere or Gaussian. Opacity, radius, brightness, colour scale.
 
-### Bloch wave parameters
+### Bloch wave settings
 
 ![Bethe parameters](../../assets/cap-en-auto/FormDiffractionSimulator.groupBoxSpotProperty.panelSimulationOptions.flowLayoutPanelBethe.png)
 
 **Number of Diffracted Waves** and **Thickness**.
 
-### PED parameters
+### PED settings (electron only)
 
 ![PED parameters](../../assets/cap-en-auto/FormDiffractionSimulator.groupBoxSpotProperty.panelSimulationOptions.flowLayoutPanelPED.png)
 
@@ -159,7 +159,7 @@ See [Appendix A1. Coordinate Systems](../appendix/a1-coordinate-system/2-diffrac
 
 ## Diffraction spot information
 
-Lists the per-reflection details computed by the Bethe dynamical theory (Bloch-wave method). Open it with the **Spot Details** button (intensity-calculation panel) or the **Details** check box.
+Lists the per-reflection details computed by the Bloch-wave method. Open it with the **Spot Details** button (intensity-calculation panel) or the **Details** check box.
 
 ![Diffraction spot information](../../assets/cap-en-auto/FormDiffractionSpotInfo.png)
 

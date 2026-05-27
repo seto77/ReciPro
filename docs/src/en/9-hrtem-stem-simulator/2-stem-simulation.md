@@ -52,7 +52,7 @@ A convergent electron beam is scanned across the specimen. Transmitted and scatt
 
 ## Temperature factor
 
-> **Important**: For HAADF-STEM, atoms must have a non-zero isotropic temperature factor (Debye-Waller factor). If unknown, set B = 0.5 Å². Zero B gives zero TDS intensity.
+For HAADF-STEM, atoms must have a non-zero isotropic temperature factor (Debye-Waller factor). If unknown, set B to about 0.5 Å². Zero B gives zero TDS intensity.
 
 ---
 

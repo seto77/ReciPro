@@ -16,20 +16,12 @@ When ReciPro launches, the main window appears. From this window you select the 
 
 ## Basic Workflow
 
-If you are new to ReciPro, use this order:
+If you are new to ReciPro, refer to the following steps:
 
 1. Select the target crystal in **Crystal List**. To use a CIF/AMC file, drag and drop it into **Crystal Information**.
 2. If you edit lattice parameters or atom positions, press **Add** or **Replace** so the changes are written back to the crystal list.
 3. Set the crystal orientation in **Rotation control** using a zone axis, crystal plane, Euler angles, or mouse dragging.
 4. Open the desired tool from **Functions**. Diffraction, HRTEM/STEM, EBSD, and other calculation windows use the currently selected crystal and orientation.
-
----
-
-## Functions panel
-
-The vertical button strip on the right launches the analysis and simulation windows (see the [Functions](#functions) table below).
-
-![Functions panel](../assets/cap-en-auto/FormMain.toolStripContainer1.toolStrip1.png)
 
 ---
 
@@ -64,8 +56,6 @@ The vertical button strip on the right launches the analysis and simulation wind
 | Powder diffraction function (under development) | Enable the polycrystalline (powder) diffraction window |
 | Capture GUI Components… | Developer tool for saving GUI screenshots |
 
-> **Miller–Bravais index** : enabling **Option ▸ Use Miller-Bravais (hkil) index** switches plane indices to 4-index *hkil* notation for trigonal/hexagonal crystals throughout the program.
-
 ### Help
 
 
@@ -84,27 +74,7 @@ Open the [Macro](20-macro/index.md) window to automate ReciPro operations with P
 
 ## Crystal orientation control
 
-The crystal orientation set here is shared by the diffraction simulator, Structure Viewer, Stereonet, HRTEM/STEM simulator, EBSD simulator, and other windows. It is not just a view setting — it defines the incident beam direction and the crystal coordinate relationship used by the simulations.
-
-> A short video tutorial is available on the [How to use](appendix/a0-how-to-use.md) page.
-
-### Basic ways to set the orientation
-
-| Method | Use when | Where |
-|--------|----------|-------|
-| Mouse drag | You want to rotate freely while watching the crystal axes. | **Current orientation** panel |
-| Arrow buttons | You want small, repeatable rotations. | **Arrows** panel |
-| Zone axis | You know the viewing direction, such as \([001]\) or \([110]\). | **View along** / zone-axis input |
-| Plane normal | You want a crystal plane \((hkl)\) normal to the screen. | **View along** / plane input |
-| Euler angles | You need a reproducible numeric orientation. | **Euler angles (Z-X-Z)** |
-
-See [Rotation Geometry](4-rotation-geometry.md) and [Appendix A1. Coordinate systems](appendix/a1-coordinate-system/1-orientation.md) for the rotation matrices and coordinate conventions.
-
----
-
-## Rotation control
-
-![Rotation control panel](../assets/cap-en-auto/FormMain.toolStripContainer1.panel1.png)
+The crystal's rotation state is shared by the diffraction simulator, Structure Viewer, Stereonet, HRTEM/STEM simulator, EBSD simulator, and other windows. It is not just a view setting — it defines the incident beam direction and the crystal coordinate relationship used by the simulations. A short video tutorial is available on the [How to use](appendix/a0-how-to-use.md) page.
 
 ### Current orientation
 
@@ -134,13 +104,25 @@ Rotate by angle Step. Check Animation for continuous rotation.
 
 Align a zone axis [*uvw*] or crystal plane (*hkl*) perpendicular to the screen.
 
+### Basic ways to set the orientation
+
+| Method | Use when | Where |
+|--------|----------|-------|
+| Mouse drag | You want to rotate freely while watching the crystal axes. | **Current orientation** panel |
+| Arrow buttons | You want small, repeatable rotations. | **Arrows** panel |
+| Zone axis | You know the viewing direction, such as \([001]\) or \([110]\). | **View along** / zone-axis input |
+| Plane normal | You want a crystal plane \((hkl)\) normal to the screen. | **View along** / plane input |
+| Euler angles | You need a reproducible numeric orientation. | **Euler angles (Z-X-Z)** |
+
+See [Rotation Geometry](4-rotation-geometry.md) and [Appendix A1. Coordinate systems](appendix/a1-coordinate-system/1-orientation.md) for the rotation matrices and coordinate conventions.
+
 ---
 
 ## Crystal List
 
 ![Crystal List](../assets/cap-en-auto/FormMain.toolStripContainer1.splitContainer.groupBoxCrystalList.png)
 
-~80 crystals in default installation. Select to view details and set for calculations.
+~80 crystals in default installation. Select to view details and set for calculations. **Right-click a crystal** in the Crystal List for a context menu: *Rename*, *Export as CIF*, *Duplicate*, *Delete*.
 
 ![Crystal edit buttons](../assets/cap-en-auto/FormMain.toolStripContainer1.splitContainer.flowLayoutPanelCrystalEdit.png)
 
@@ -185,7 +167,11 @@ Edit lattice parameters, symmetry, and atoms. Drag & drop CIF/AMC files.
 
 ---
 
-## Functions
+## Functions panel {#functions}
+
+The vertical button strip on the right launches the analysis and simulation windows (see the [Functions](#functions) table below).
+
+![Functions panel](../assets/cap-en-auto/FormMain.toolStripContainer1.toolStrip1.png)
 
 | Button | Description | Details |
 |--------|-------------|---------|
@@ -202,5 +188,3 @@ Edit lattice parameters, symmetry, and atoms. Drag & drop CIF/AMC files.
 | Spot ID v2 | Spot detection & indexing | [11. Spot ID v2](11-spot-id-v2.md) |
 | EBSD Simulator | EBSD pattern simulation | [12. EBSD simulation](12-ebsd-simulation.md) |
 | Powder Diffraction | Polycrystalline (powder) diffraction — enable via **Option ▸ Powder diffraction function** | - |
-
-> **Right-click a crystal** in the Crystal List for a context menu: *Rename*, *Export as CIF*, *Duplicate*, *Delete*.

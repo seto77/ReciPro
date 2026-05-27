@@ -58,4 +58,4 @@ Specify by zone axis or crystal plane indices.
 
 ![Wave tab](../assets/cap-en-auto/FormStereonet.tabControl.tabPage4.png)
 
-Set the wave source (X-ray / electron / neutron) and the wavelength or energy used for the projection.
+Available only when **Plane** is selected as the projection target. Sets the wave source (X-ray / electron / neutron) and the wavelength or energy required to compute the crystal structure factors.

@@ -10,7 +10,7 @@ title: 回折シミュレータ
 
 ---
 
-## 目的別クイックルート
+## 目的別最速手順
 
 | 目的 | 操作の入口 | 参照ページ |
 |------|------------|------------|
@@ -154,20 +154,20 @@ title: 回折シミュレータ
 |------|------|
 | **励起誤差のみ考慮** | エワルド球と逆格子点の幾何学的距離に基づく強度 |
 | **運動学的効果** | 励起誤差に加え結晶構造因子を反映 |
-| **動力学的効果** | ブロッホ波法（電子線のみ） |
+| **動力学的効果** | ブロッホ波法による動力学的効果を強度に反映（電子線のみ） |
 
 ### 外観
 
 ![外観](../../assets/cap-ja-auto/FormDiffractionSimulator.groupBoxSpotProperty.panelSimulationOptions.flowLayoutPanelAppearance.png)
 
-### ブロッホ波パラメータ（動力学理論）
+### ブロッホ波設定（動力学理論）
 
 ![ブロッホ波パラメータ](../../assets/cap-ja-auto/FormDiffractionSimulator.groupBoxSpotProperty.panelSimulationOptions.flowLayoutPanelBethe.png)
 
 - **回折波の数**: 動力学計算に含めるブロッホ波の数
 - **試料厚み**: 試料の厚さ
 
-### 歳差パラメータ
+### プリセッション設定 (電子線のみ)
 
 ![歳差パラメータ](../../assets/cap-ja-auto/FormDiffractionSimulator.groupBoxSpotProperty.panelSimulationOptions.flowLayoutPanelPED.png)
 
@@ -192,7 +192,7 @@ title: 回折シミュレータ
 
 ## 回折スポット情報
 
-ベーテの動力学理論（ブロッホ波法）で計算された各反射の詳細を一覧表示します。**スポットの詳細情報**ボタン（強度計算パネル）または**詳細**チェックボックスで開きます。
+ブロッホ波法で計算された各反射の詳細を一覧表示します。**スポットの詳細情報**ボタン（強度計算パネル）または**詳細**チェックボックスで開きます。
 
 ![回折スポット情報](../../assets/cap-ja-auto/FormDiffractionSpotInfo.png)
 
