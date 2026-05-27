@@ -162,6 +162,7 @@
             // 
             // tableLayoutPanel1
             // 
+            captureExtender.SetCapture(tableLayoutPanel1, true);
             tableLayoutPanel1.ColumnCount = 2;
             tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -420,9 +421,9 @@
             tabControl.TabIndex = 4;
             // 
             // tabPageGeometrics
-            //
-            captureExtender.SetCapture(tabPageGeometrics, true); // 260524Cl 追加: Wiki 用に Geometrics Calculation タブ単体のクロップを生成する
+            // 
             tabPageGeometrics.BackColor = System.Drawing.SystemColors.Control;
+            captureExtender.SetCapture(tabPageGeometrics, true);
             tabPageGeometrics.Controls.Add(numericBoxAnglePlanes);
             tabPageGeometrics.Controls.Add(textBoxZoneAxis);
             tabPageGeometrics.Controls.Add(numericBoxAngleAxes);

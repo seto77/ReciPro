@@ -217,7 +217,8 @@ internal static class GuiCapture
         else
             trace($"{name}\tWARN\tfull-form capture failed (RDP screen hidden/minimized?)"); // 撮れなくても次のフォームへ進む
         var cropCount = CaptureControlCrops(form, name, outDir, trace); // 260523Cl: Capture=true のコントロール単位クロップ
-        trace($"{name}\t{(captured ? "OK" : "PARTIAL")}\t{bounds.Width}x{bounds.Height}\tCrops={cropCount}");
+        var menuCount = CaptureToolStripItemCrops(form, name, outDir, trace); // 260527Cl: Capture=true の ToolStripItem (メニュー展開) クロップ
+        trace($"{name}\t{(captured ? "OK" : "PARTIAL")}\t{bounds.Width}x{bounds.Height}\tCrops={cropCount}\tMenus={menuCount}");
 
         if (closeAfterCapture)
         {
@@ -394,11 +395,14 @@ internal static class GuiCapture
                     // TabPage は親 TabControl 全体 (タブ見出し込み) を撮る (FormCaptureGUI と同じ見た目)。
                     var region = control is TabPage tabPage && tabPage.Parent is TabControl tabControl ? (Control)tabControl : control;
                     region.Refresh();
-                    RenderOpenGlControls(form, trace); // 領域内に GL があれば最新シーンを画面へ反映
-                    Application.DoEvents();
-                    crop = CaptureScreen(new Rectangle(GetScreenLocation(region), region.Size), form, trace, $"{name}.{control.Name}");
+                    // 260527Cl: 大きい二重バッファ領域 (例 FormSymmetryInformation.tableLayoutPanel1 内の対称要素/一般位置の図) は
+                    // region.Refresh() 直後の 1 回 DoEvents では描画が画面 (front buffer) へ反映されず単色で撮れることがある
+                    // (全体像は撮れているのにクロップだけ空白になる)。全体像と同じく Settle で描画を反映させ、
+                    // さらに retryIfSolid=true で単色フレームを掴んだら数回撮り直す (本当に単色の領域は最終的に null=スキップ)。
+                    Settle(form, TabSwitchSettleMs, trace); // Refresh + RenderOpenGlControls + DoEvents ループ
+                    crop = CaptureScreen(new Rectangle(GetScreenLocation(region), region.Size), form, trace, $"{name}.{control.Name}", retryIfSolid: true);
                     if (crop == null)
-                        continue; // RDP 画面が一時的に取得不能なら、このクロップは諦めて次へ
+                        continue; // RDP 画面が一時的に取得不能 or 何度撮っても単色なら、このクロップは諦めて次へ
                 }
 
                 using (crop)
@@ -418,6 +422,160 @@ internal static class GuiCapture
             }
         }
         return count;
+    }
+
+    /// <summary>
+    /// 260527Cl 追加: Designer で <c>Capture=true</c> を付けた ToolStripItem (メニュー項目等) のドロップダウンを
+    /// 非対話で撮る。対話ツール FormCaptureGUI.CaptureToolStripItem と同じ方式 (祖先含めて ShowDropDown し、
+    /// 開いた DropDown / ContextMenuStrip / Owner ToolStrip を CopyFromScreen) ・同じ命名規則 (form.Name 起点で
+    /// owner ToolStrip の Control パス + 項目の OwnerItem 連鎖の名前を "." 連結) で生成する。撮影後は開いた
+    /// ドロップダウンを閉じ、後続フォーム/クロップの撮影を妨げないようにする。CaptureControlCrops は Control しか
+    /// 列挙しない (メニュードロップダウンは別ウィンドウ) ため、ここで補完する。
+    /// </summary>
+    /// <returns>保存できたメニュークロップ数。</returns>
+    private static int CaptureToolStripItemCrops(Form form, string name, string outDir, Action<string> trace)
+    {
+        var count = 0;
+        foreach (var item in EnumerateToolStripItems(form))
+        {
+            if (string.IsNullOrEmpty(item.Name) || !Crystallography.Controls.CaptureExtender.IsCaptureEnabled(item))
+                continue;
+
+            try
+            {
+                var host = EnsureToolStripCaptureHostVisible(item);
+                if (host == null || host.IsDisposed || host.Width <= 0 || host.Height <= 0)
+                    continue;
+
+                host.Refresh();
+                Application.DoEvents();
+                System.Threading.Thread.Sleep(150); // ドロップダウンが画面へ出るまで待つ
+
+                var crop = CaptureScreen(new Rectangle(host.PointToScreen(Point.Empty), host.Size), form, trace, $"{name}.{item.Name}");
+                if (crop != null)
+                    using (crop)
+                    {
+                        if (!IsSolidColor(crop))
+                        {
+                            var fileName = SanitizeFileName(BuildToolStripItemCapturePath(form, item)) + ".png";
+                            crop.Save(Path.Combine(outDir, fileName), ImageFormat.Png);
+                            count++;
+                        }
+                    }
+            }
+            catch (Exception ex)
+            {
+                trace($"{name}\tWARN\tmenu-crop {item.Name}: {ex.GetType().Name}: {ex.Message}");
+            }
+            finally
+            {
+                try { CloseToolStripDropDowns(item); } catch { /* ドロップダウンのクローズ失敗は無視 */ }
+            }
+        }
+        return count;
+    }
+
+    /// <summary>260527Cl 追加: フォーム内の全 ToolStripItem を列挙する (Controls 配下の ToolStrip + designer field の ContextMenuStrip 等。ドロップダウン項目も再帰)。</summary>
+    private static IEnumerable<ToolStripItem> EnumerateToolStripItems(Form form)
+    {
+        var toolStrips = new HashSet<ToolStrip>();
+        foreach (var toolStrip in EnumerateControls(form).OfType<ToolStrip>())
+            toolStrips.Add(toolStrip);
+        // Controls 配下にない ToolStrip (ContextMenuStrip 等) を designer field から拾う (FormCaptureGUI.GetOwnedToolStrips と同趣旨)
+        for (var type = form.GetType(); type != null; type = type.BaseType)
+            foreach (var field in type.GetFields(System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.DeclaredOnly))
+                if (typeof(ToolStrip).IsAssignableFrom(field.FieldType) && field.GetValue(form) is ToolStrip ownedToolStrip)
+                    toolStrips.Add(ownedToolStrip);
+
+        var visited = new HashSet<ToolStripItem>();
+        foreach (var toolStrip in toolStrips)
+            foreach (var item in EnumerateToolStripItems(toolStrip.Items, visited))
+                yield return item;
+    }
+
+    private static IEnumerable<ToolStripItem> EnumerateToolStripItems(ToolStripItemCollection items, HashSet<ToolStripItem> visited)
+    {
+        foreach (ToolStripItem item in items)
+        {
+            if (!visited.Add(item)) continue;
+            yield return item;
+            if (item is ToolStripDropDownItem dropDownItem && dropDownItem.HasDropDownItems)
+                foreach (var child in EnumerateToolStripItems(dropDownItem.DropDownItems, visited))
+                    yield return child;
+        }
+    }
+
+    /// <summary>260527Cl 追加: 対象項目を撮るためのホスト (開いた DropDown / ContextMenuStrip / Owner ToolStrip) を可視化して返す (FormCaptureGUI と同方式)。</summary>
+    private static ToolStrip EnsureToolStripCaptureHostVisible(ToolStripItem item)
+    {
+        EnsureAncestorDropDownsVisible(item);
+
+        if (item is ToolStripDropDownItem dropDownItem && dropDownItem.HasDropDownItems)
+        {
+            if (!dropDownItem.DropDown.Visible)
+            {
+                dropDownItem.ShowDropDown(); // File のような親メニュー項目はドロップダウン全体を開いてから撮る
+                dropDownItem.DropDown.Refresh();
+                Application.DoEvents();
+                System.Threading.Thread.Sleep(200);
+            }
+            return dropDownItem.DropDown;
+        }
+
+        if (item.Owner is ContextMenuStrip contextMenuStrip)
+        {
+            if (!contextMenuStrip.Visible && contextMenuStrip.SourceControl != null)
+            {
+                contextMenuStrip.Show(contextMenuStrip.SourceControl, new Point(0, contextMenuStrip.SourceControl.Height));
+                Application.DoEvents();
+                System.Threading.Thread.Sleep(200);
+            }
+            return contextMenuStrip;
+        }
+
+        return item.Owner is ToolStripDropDown toolStripDropDown ? toolStripDropDown : item.Owner;
+    }
+
+    /// <summary>260527Cl 追加: 対象項目の祖先ドロップダウンを順に開く (ネストしたサブメニュー対応)。</summary>
+    private static void EnsureAncestorDropDownsVisible(ToolStripItem item)
+    {
+        if (item.OwnerItem is not ToolStripDropDownItem ownerItem) return;
+        EnsureAncestorDropDownsVisible(ownerItem);
+        if (!ownerItem.DropDown.Visible)
+        {
+            ownerItem.ShowDropDown();
+            ownerItem.DropDown.Refresh();
+            Application.DoEvents();
+            System.Threading.Thread.Sleep(200);
+        }
+    }
+
+    /// <summary>260527Cl 追加: 撮影のために開いたドロップダウンを子→親の順に閉じる (後続の撮影を妨げないため)。</summary>
+    private static void CloseToolStripDropDowns(ToolStripItem item)
+    {
+        for (var current = item; current != null; current = current.OwnerItem)
+            if (current is ToolStripDropDownItem dropDownItem && dropDownItem.HasDropDownItems && dropDownItem.DropDown.Visible)
+                dropDownItem.HideDropDown();
+        Application.DoEvents();
+    }
+
+    /// <summary>
+    /// 260527Cl 追加: ToolStripItem のキャプチャ用パス (= クロップのファイル名 stem)。owner ToolStrip までの Control パス
+    /// (BuildCapturePath。ToolStripPanel 等は除外) に、項目の OwnerItem 連鎖の名前を "." 連結する。
+    /// FormCaptureGUI の対話キャプチャと同じ stem になるようにし、本文の `[ここに画像 fileToolStripMenuItem]` 等の指定で解決できるようにする。
+    /// </summary>
+    private static string BuildToolStripItemCapturePath(Form form, ToolStripItem item)
+    {
+        var segments = new List<string>();
+        for (var current = item; current != null; current = current.OwnerItem)
+            segments.Add(string.IsNullOrEmpty(current.Name) ? current.GetType().Name : current.Name);
+        segments.Reverse();
+
+        var top = item;
+        while (top.OwnerItem != null)
+            top = top.OwnerItem;
+        var prefix = top.Owner != null ? BuildCapturePath(form, top.Owner) : form.Name;
+        return prefix + "." + string.Join(".", segments);
     }
 
     /// <summary>

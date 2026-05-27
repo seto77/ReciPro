@@ -774,6 +774,7 @@ namespace ReciPro
             // groupBoxSimulation
             // 
             resources.ApplyResources(groupBoxSimulation, "groupBoxSimulation");
+            captureExtender.SetCapture(groupBoxSimulation, true);
             groupBoxSimulation.Controls.Add(panelModeOptions);
             groupBoxSimulation.Name = "groupBoxSimulation";
             groupBoxSimulation.TabStop = false;
@@ -787,9 +788,10 @@ namespace ReciPro
             panelModeOptions.Controls.Add(groupBoxHREMoption2);
             panelModeOptions.Controls.Add(panelImageProperties);
             panelModeOptions.Name = "panelModeOptions";
-            // 
+            //
             // groupBoxSerialImage
-            // 
+            //
+            captureExtender.SetCapture(groupBoxSerialImage, true);
             resources.ApplyResources(groupBoxSerialImage, "groupBoxSerialImage");
             groupBoxSerialImage.Controls.Add(panelSerial);
             groupBoxSerialImage.Controls.Add(flowLayoutPanelSimulationMode);
