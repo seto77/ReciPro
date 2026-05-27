@@ -9,7 +9,7 @@
 
 ## 回転前（検出器がビームに垂直）
 
-![検出器がビームに垂直な場合の座標系](../../../assets/references/Coordinates4.png)
+![検出器がビームに垂直な場合の座標系](../../../assets/references/Coordinates4.png){width=500px}
 
 3つの座標系を定義します。
 
@@ -21,7 +21,7 @@
 
 ## 回転後（検出器が傾いた場合）
 
-![検出器が傾いた場合の座標系](../../../assets/references/Coordinates5.png)
+![検出器が傾いた場合の座標系](../../../assets/references/Coordinates5.png){width=500px}
 
 検出器の傾きは2つのパラメータで表現します。
 

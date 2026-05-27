@@ -42,7 +42,7 @@ $$\left[\,k^2 - \left(\mathbf{k}^{(j)} + \mathbf{g}\right)^2 + i\,U'_{g,g}\right
 
 上式に現れるベクトル・スカラーは、エワルド球上で次のように定義されます。
 
-![Bloch波法の計算で用いるベクトルとスカラーの定義](../../../assets/references/Bloch.png)
+![Bloch波法の計算で用いるベクトルとスカラーの定義](../../../assets/references/Bloch.png){width=500px}
 
 - $\hat{\mathbf n}$ : 結晶表面の法線方向の単位ベクトル。
 - $\mathbf k$ : 入射波数ベクトル（先端はエワルド球上）。$\mathbf k_{vac}$ は真空中の波数ベクトル。

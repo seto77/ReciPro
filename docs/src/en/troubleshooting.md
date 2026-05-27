@@ -73,7 +73,7 @@ If none of these help, the cause may be the OS environment itself; please [open 
 
 ### Symptom: Cannot reach the Microsoft download page
 
-**Solution**: You can download the runtime installer directly. Pick the **Windows Desktop Runtime** for your architecture from the [.NET 10.0 download page](https://dotnet.microsoft.com/download/dotnet/10.0). (Issue [#49](https://github.com/seto77/ReciPro/issues/49))
+**Solution**: You can download the runtime installer directly. Pick the **Windows Desktop Runtime X64** for your architecture from the [.NET 10.0 download page](https://dotnet.microsoft.com/download/dotnet/10.0). (Issue [#49](https://github.com/seto77/ReciPro/issues/49))
 
 ---
 

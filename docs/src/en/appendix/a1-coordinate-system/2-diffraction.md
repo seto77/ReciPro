@@ -9,7 +9,7 @@ The **Crystal Diffraction** function simulates the diffraction pattern recorded 
 
 ## Before rotation (detector normal to the beam)
 
-![Detector coordinate system with the detector normal to the beam](../../../assets/references/Coordinates4.png)
+![Detector coordinate system with the detector normal to the beam](../../../assets/references/Coordinates4.png){width=500px}
 
 Three coordinate systems are defined:
 
@@ -21,7 +21,7 @@ When the detector is perpendicular to the beam, the <span class="rp-brown">**foo
 
 ## After rotation (tilted detector)
 
-![Detector coordinate system with a tilted detector](../../../assets/references/Coordinates5.png)
+![Detector coordinate system with a tilted detector](../../../assets/references/Coordinates5.png){width=500px}
 
 The detector tilt is described by two parameters:
 

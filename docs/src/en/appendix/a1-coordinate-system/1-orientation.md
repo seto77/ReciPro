@@ -16,7 +16,7 @@ ReciPro uses a **right-handed coordinate system** fixed to the monitor:
 | <span class="rp-green">$Y$</span> | Upward on the monitor |
 | <span class="rp-blue">$Z$</span> | Vertically out of the monitor, toward the viewer |
 
-![ReciPro coordinate axes shown on the monitor](../../../assets/references/Coordinates1.png)
+![ReciPro coordinate axes shown on the monitor](../../../assets/references/Coordinates1.png){width=400px}
 
 The **beam direction** corresponds to the viewing direction (looking into the monitor), i.e. the <span class="rp-blue">$-Z$</span> axis.
 
@@ -30,7 +30,7 @@ The initial orientation (at first launch, or after **Reset rotation**) is define
 2. The <span class="rp-green">$b$</span>-axis lies in the <span class="rp-green">$Y$</span><span class="rp-blue">$Z$</span> plane, close to the <span class="rp-green">$Y$</span>-axis.
 3. The <span class="rp-red">$a$</span>-axis is then fixed by the <span class="rp-green">$b$</span>- and <span class="rp-blue">$c$</span>-axes (right-hand rule).
 
-![Initial orientation: the crystal a / b / c axes relative to X / Y / Z, with the incident beam along −Z](../../../assets/references/Coordinates2.png)
+![Initial orientation: the crystal a / b / c axes relative to X / Y / Z, with the incident beam along −Z](../../../assets/references/Coordinates2.png){width=300px}
 
 Equivalently:
 
@@ -49,7 +49,7 @@ Crystal orientation is expressed with three Euler angles <span class="rp-olive">
 | <span class="rp-cyan">$\theta$</span> | <span class="rp-red">$X$</span> | 2nd (middle) |
 | <span class="rp-magenta">$\Psi$</span> | <span class="rp-blue">$Z$</span> | 3rd (lowest) |
 
-![Euler-angle rotation axes — Φ (yellow), θ (cyan), Ψ (magenta) — shown at 0° (top) and at 15° (bottom)](../../../assets/references/Coordinates3.png)
+![Euler-angle rotation axes — Φ (yellow), θ (cyan), Ψ (magenta) — shown at 0° (top) and at 15° (bottom)](../../../assets/references/Coordinates3.png){width=400px}
 
 The three angles form a **hierarchy**: <span class="rp-olive">$\Phi$</span> is the highest rotation, followed by <span class="rp-cyan">$\theta$</span>, then <span class="rp-magenta">$\Psi$</span>. The direction of a lower axis depends on the state of the higher rotations. For example, when <span class="rp-olive">$\Phi$</span> = <span class="rp-cyan">$\theta$</span> = <span class="rp-magenta">$\Psi$</span> = 15°, the <span class="rp-olive">$\Phi$</span> axis still coincides with <span class="rp-blue">$Z$</span>, but the <span class="rp-cyan">$\theta$</span> and <span class="rp-magenta">$\Psi$</span> axes generally align with none of <span class="rp-red">$X$</span>, <span class="rp-green">$Y$</span>, or <span class="rp-blue">$Z$</span>.
 

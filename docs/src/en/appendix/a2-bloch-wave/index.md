@@ -42,7 +42,7 @@ $$\left[\,k^2 - \left(\mathbf{k}^{(j)} + \mathbf{g}\right)^2 + i\,U'_{g,g}\right
 
 The vectors and scalars appearing above are defined on the Ewald sphere:
 
-![Definitions of the vectors and scalars used in the Bloch-wave calculation](../../../assets/references/Bloch.png)
+![Definitions of the vectors and scalars used in the Bloch-wave calculation](../../../assets/references/Bloch.png){width=500px}
 
 - $\hat{\mathbf n}$ : unit vector normal to the crystal surface.
 - $\mathbf k$ : incident wavevector (its tip lies on the Ewald sphere); $\mathbf k_{vac}$ is the vacuum wavevector.
