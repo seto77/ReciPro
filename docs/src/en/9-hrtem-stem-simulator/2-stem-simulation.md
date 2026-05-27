@@ -34,6 +34,8 @@ A convergent electron beam is scanned across the specimen. Transmitted and scatt
 
 ## STEM-specific parameters
 
+![STEM-specific parameters](../../assets/cap-en-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.groupBoxSTEMoption2.png)
+
 | Parameter | Description | Typical |
 |-----------|-------------|---------|
 | **Convergence angle** | Beam semiangle (mrad) | 15–25 |
@@ -45,6 +47,8 @@ A convergent electron beam is scanned across the specimen. Transmitted and scatt
 ---
 
 ## Display modes
+
+![Display modes](../../assets/cap-en-auto/FormImageSimulator.splitContainer1.panelDisplaySettings.groupBoxSTEMoption3.png)
 
 **Elastic only** / **TDS only** / **Both**
 

@@ -6,6 +6,8 @@ Calculates and displays the 2D distribution of the crystal potential.
 
 ## Potential types
 
+![Potential types](../../assets/cap-en-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.groupBoxPotentialOption.png)
+
 | Type | Description |
 |------|-------------|
 | **Ug** | Fourier potential (corresponds to structure factor). Represents scattering strength |
@@ -14,6 +16,8 @@ Calculates and displays the 2D distribution of the crystal potential.
 ---
 
 ## Display modes
+
+![Display modes](../../assets/cap-en-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.groupBoxPotentialOption.png)
 
 | Mode | Description |
 |------|-------------|

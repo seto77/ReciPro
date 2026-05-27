@@ -11,6 +11,12 @@
 
 ---
 
+## Optics
+
+![Optics](../assets/cap-ja-auto/FormSpotIDV2.splitContainer1.panel1.groupBoxOptics.png)
+
+---
+
 ## スポット情報
 
 ![スポット情報](../assets/cap-ja-auto/FormSpotIDV2.splitContainer1.groupBoxSpot.png)
@@ -31,12 +37,6 @@
 - **スポット同定**: 指数付けアルゴリズムを実行して最適な結晶と晶帯軸を検索。
 - **許容範囲**: 面間隔と角度の許容偏差を設定。
 - **結果**: 最良の一致が結晶名、晶帯軸 [uvw]、各スポットの指数 (hkl) と共に表示。
-
----
-
-## Optics
-
-![Optics](../assets/cap-ja-auto/FormSpotIDV2.splitContainer1.panel1.groupBoxOptics.png)
 
 ---
 

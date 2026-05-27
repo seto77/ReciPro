@@ -12,6 +12,8 @@
 
 ## ポテンシャルの種類
 
+![ポテンシャルの種類](../../assets/cap-ja-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.groupBoxPotentialOption.png)
+
 | 種類 | 説明 |
 |------|------|
 | **Ug** | フーリエポテンシャル（構造因子に対応）。散乱の強さを表す |
@@ -20,6 +22,8 @@
 ---
 
 ## 表示モード
+
+![表示モード](../../assets/cap-ja-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.groupBoxPotentialOption.png)
 
 | モード | 説明 |
 |--------|------|

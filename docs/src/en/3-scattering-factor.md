@@ -8,14 +8,10 @@ The calculation conditions are at the top of the window and the reflection list 
 
 ---
 
-## Incident beam type
+## Wave Length Control
 
 - **X-ray / Electron / Neutron** : the atomic scattering factors differ by the type of incident beam, so they are switched here.
 - For **X-ray**, choosing the **Element** (anode material) and characteristic line (Kα, etc.) sets the wavelength of that characteristic X-ray automatically.
-
----
-
-## Wave Length Control
 
 ![Wave Length Control](../assets/cap-en-auto/FormScatteringFactor.panel3.waveLengthControl1.png)
 

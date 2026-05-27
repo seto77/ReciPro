@@ -11,6 +11,12 @@
 
 ---
 
+## Optics
+
+![Optics](../assets/cap-en-auto/FormSpotIDV2.splitContainer1.panel1.groupBoxOptics.png)
+
+---
+
 ## Spot information
 
 ![Spot information](../assets/cap-en-auto/FormSpotIDV2.splitContainer1.groupBoxSpot.png)
@@ -31,12 +37,6 @@
 - **Search**: Run the indexing algorithm to find the best-matching crystal and zone axis.
 - **Tolerance**: Set the acceptable deviation in d-spacing and angle for a match.
 - **Results**: The best matches are displayed with crystal name, zone axis [uvw], and individual spot indices (hkl).
-
----
-
-## Optics
-
-![Optics](../assets/cap-en-auto/FormSpotIDV2.splitContainer1.panel1.groupBoxOptics.png)
 
 ---
 
