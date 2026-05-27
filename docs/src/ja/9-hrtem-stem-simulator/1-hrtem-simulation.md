@@ -21,6 +21,8 @@ HRTEM像は、試料を透過した電子波が対物レンズの収差の影響
 
 ## 試料パラメータ
 
+![試料パラメータ](../../assets/cap-ja-auto/FormImageSimulator.splitContainer1.flowLayoutPanelModeSelection.groupBoxSampleProperty.png)
+
 | パラメータ | 説明 |
 |-----------|------|
 | **厚み** | 試料厚さ (nm)。HRTEM像は厚さに強く依存 |
@@ -31,12 +33,12 @@ HRTEM像は、試料を透過した電子波が対物レンズの収差の影響
 
 ### TEM条件
 
+![TEM条件](../../assets/cap-ja-auto/FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxTEMConditions.png)
+
 | パラメータ | 説明 |
 |-----------|------|
 | **加速電圧 (kV)** | 加速電圧。相対論補正された波長が右に表示される |
 | **デフォーカス Δf** | デフォーカス値 (nm)。シェルツァーデフォーカス値が下に参考値として表示 |
-
-### 固有パラメータ
 
 | パラメータ | 説明 | 典型値 |
 |-----------|------|--------|
@@ -48,6 +50,8 @@ HRTEM像は、試料を透過した電子波が対物レンズの収差の影響
 ---
 
 ## 位相コントラスト伝達関数 (PCTF)
+
+![位相コントラスト伝達関数 (PCTF)](../../assets/cap-ja-auto/FormCTF.png)
 
 レンズ関数タブに以下が表示されます：
 
@@ -61,6 +65,8 @@ HRTEM像は、試料を透過した電子波が対物レンズの収差の影響
 
 ## 対物絞り
 
+![対物絞り](../../assets/cap-ja-auto/FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxHREMoption1.png)
+
 対物絞りのサイズ (mrad) と位置を設定できます。
 
 - 絞りを小さくすると高次回折波がカットされ、像のコントラストが向上するが分解能は低下
@@ -70,6 +76,8 @@ HRTEM像は、試料を透過した電子波が対物レンズの収差の影響
 ---
 
 ## 部分コヒーレンスモデル
+
+![部分コヒーレンスモデル](../../assets/cap-ja-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.groupBoxHREMoption2.png)
 
 ### 準コヒーレントモデル（線形像モデル）
 
@@ -82,6 +90,8 @@ HRTEM像は、試料を透過した電子波が対物レンズの収差の影響
 ---
 
 ## シミュレーションモード
+
+![シミュレーションモード](../../assets/cap-ja-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.groupBoxSerialImage.png)
 
 ### 単一画像
 
@@ -102,6 +112,8 @@ HRTEM像は、試料を透過した電子波が対物レンズの収差の影響
 ---
 
 ## 像の調整
+
+![像の調整](../../assets/cap-ja-auto/FormImageSimulator.splitContainer1.panelDisplaySettings.groupBoxAdjust.png)
 
 | 設定 | 説明 |
 |------|------|

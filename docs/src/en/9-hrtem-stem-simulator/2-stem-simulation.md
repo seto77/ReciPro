@@ -34,7 +34,7 @@ A convergent electron beam is scanned across the specimen. Transmitted and scatt
 
 ## STEM-specific parameters
 
-![STEM-specific parameters](../../assets/cap-en-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.groupBoxSTEMoption2.png)
+![STEM-specific parameters](../../assets/cap-en-auto/FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxSTEMoption1.png)
 
 | Parameter | Description | Typical |
 |-----------|-------------|---------|
@@ -43,6 +43,12 @@ A convergent electron beam is scanned across the specimen. Transmitted and scatt
 | **Effective source size** | FWHM (pm) | 50–100 |
 | **Slice thickness** | For TDS calculation (nm) | — |
 | **Angular resolution** | Angular step (mrad) | 1–3 |
+
+---
+
+## STEM calculation options
+
+![STEM calculation options](../../assets/cap-en-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.groupBoxSTEMoption2.png)
 
 ---
 

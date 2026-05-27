@@ -4,9 +4,11 @@ Calculates and displays the 2D distribution of the crystal potential.
 
 ---
 
-## Potential types
+## Display settings
 
-![Potential types](../../assets/cap-en-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.groupBoxPotentialOption.png)
+![Display settings](../../assets/cap-en-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.png)
+
+### Potential types
 
 | Type | Description |
 |------|-------------|
@@ -15,9 +17,7 @@ Calculates and displays the 2D distribution of the crystal potential.
 
 ---
 
-## Display modes
-
-![Display modes](../../assets/cap-en-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.groupBoxPotentialOption.png)
+### Display modes
 
 | Mode | Description |
 |------|-------------|

@@ -51,6 +51,8 @@ Reflection (extinction) conditions arising from the lattice centring and from th
 
 ## Symmetry-element & general-position diagrams
 
+![Symmetry-element & general-position diagrams](../assets/cap-en-auto/FormSymmetryInformation.tableLayoutPanel1.png)
+
 The two panels at the bottom reproduce the schematic diagrams used in *International Tables for Crystallography* Vol. A.
 
 - **Left — symmetry elements**: rotation/screw axes, mirror/glide planes, inversion centres and rotoinversion points are drawn with the conventional graphical symbols.

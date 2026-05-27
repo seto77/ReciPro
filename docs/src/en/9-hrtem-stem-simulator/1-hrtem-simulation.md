@@ -15,6 +15,8 @@ Simulates high-resolution TEM lattice-fringe images. The primary mode of the [8.
 
 ## Specimen parameters
 
+![Specimen parameters](../../assets/cap-en-auto/FormImageSimulator.splitContainer1.flowLayoutPanelModeSelection.groupBoxSampleProperty.png)
+
 | Parameter | Description |
 |-----------|-------------|
 | **Thickness** | Specimen thickness (nm). HRTEM images are strongly thickness-dependent |
@@ -25,12 +27,16 @@ Simulates high-resolution TEM lattice-fringe images. The primary mode of the [8.
 
 ### TEM conditions
 
+![TEM conditions](../../assets/cap-en-auto/FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxTEMConditions.png)
+
 | Parameter | Description |
 |-----------|-------------|
 | **Acc. Vol.** | Accelerating voltage (kV). Relativistically corrected wavelength shown alongside |
 | **Defocus** | Defocus value (nm). Scherzer defocus displayed as reference |
 
 ### Intrinsic parameters
+
+![Intrinsic parameters](../../assets/cap-en-auto/FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxHREMoption1.png)
 
 | Parameter | Description | Typical |
 |-----------|-------------|---------|
@@ -42,6 +48,8 @@ Simulates high-resolution TEM lattice-fringe images. The primary mode of the [8.
 ---
 
 ## Phase Contrast Transfer Function (PCTF)
+
+![Phase Contrast Transfer Function (PCTF)](../../assets/cap-en-auto/FormCTF.png)
 
 Displayed in the lens-function tab:
 
@@ -55,11 +63,15 @@ Scherzer defocus: $\Delta f = -1.2\,\sqrt{C_s \lambda}$, the condition giving a 
 
 ## Objective aperture
 
+![Objective aperture](../../assets/cap-en-auto/FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxHREMoption1.png)
+
 Set aperture size (mrad) and position. **Open aperture** removes it. The number of Bloch waves considered depends on aperture conditions.
 
 ---
 
 ## Partial coherence models
+
+![Partial coherence models](../../assets/cap-en-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.groupBoxHREMoption2.png)
 
 | Model | Description |
 |-------|-------------|
@@ -70,10 +82,26 @@ Set aperture size (mrad) and position. **Open aperture** removes it. The number 
 
 ## Simulation modes
 
+![Simulation modes](../../assets/cap-en-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.groupBoxSerialImage.png)
+
 | Mode | Description |
 |------|-------------|
 | **Single image** | One image at current thickness and defocus |
 | **Serial image** | Matrix of images over thickness × defocus ranges (Start / Step / Num) |
+
+---
+
+## Image adjustment
+
+![Image adjustment](../../assets/cap-en-auto/FormImageSimulator.splitContainer1.panelDisplaySettings.groupBoxAdjust.png)
+
+| Setting | Description |
+|---------|-------------|
+| **Min / Max** | Display range (image-adjustment trackbars) |
+| **Colour** | Greyscale or Cold-Warm |
+| **Gaussian blur (FWHM)** | Apply a Gaussian filter |
+| **Unit cell** | Overlay unit-cell grid |
+| **Scale** | Show scale bar |
 
 ---
 

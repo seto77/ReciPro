@@ -53,6 +53,8 @@
 
 ## 対称要素・一般位置の模式図
 
+![対称要素・一般位置の模式図](../assets/cap-ja-auto/FormSymmetryInformation.tableLayoutPanel1.png)
+
 下部の2つのパネルは、*International Tables for Crystallography* Vol. A で使われる模式図を再現します。
 
 - **左 — 対称要素**: 回転軸・らせん軸、鏡面・映進面、反転中心・回反点を、慣用の図記号で描画します。

@@ -10,9 +10,11 @@
 
 ---
 
-## ポテンシャルの種類
+## 表示設定
 
-![ポテンシャルの種類](../../assets/cap-ja-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.groupBoxPotentialOption.png)
+![表示設定](../../assets/cap-ja-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.png)
+
+### ポテンシャルの種類
 
 | 種類 | 説明 |
 |------|------|
@@ -21,9 +23,7 @@
 
 ---
 
-## 表示モード
-
-![表示モード](../../assets/cap-ja-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.groupBoxPotentialOption.png)
+### 表示モード
 
 | モード | 説明 |
 |--------|------|
