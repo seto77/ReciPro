@@ -25,6 +25,8 @@ Displays crystals matching search criteria. Select a crystal to transfer to Main
 
 ![Search options](../assets/cap-en-auto/FormCrystalDatabase.panelSearch.searchCrystalControl.png)
 
+Enter the search criteria below and press the **Search** button or the **Enter** key.
+
 | Criterion | Description |
 |-----------|-------------|
 | **Name** | Crystal name |
@@ -35,6 +37,38 @@ Displays crystals matching search criteria. Select a crystal to transfer to Main
 | **d-spacing** | Strongest reflection d-values and error |
 | **Density** | Density and error |
 
+### Name
+
+Free-text match against the crystal name. Partial matches are allowed.
+
+### Element
+
+Press the **Periodic Table** button to open the element selector. Each element button cycles between three states:
+
+- **May or may not include** (default — grey)
+- **Must include** (green)
+- **Must exclude** (red)
+
+The three buttons at the top of the window reset every element to one of the three states in one click.
+
+### Reference
+
+Free-text match against the publication metadata: paper title, journal name, and author list.
+
+### Crystal system
+
+Restrict the search to a specific crystal system (Cubic, Tetragonal, Orthorhombic, Hexagonal, Trigonal, Monoclinic, Triclinic).
+
 ### Cell parameter search
 
 ![Cell parameter search](../assets/cap-en-auto/FormCrystalDatabase.panelSearch.searchCrystalControl.flowLayoutPanel1.groupBoxCellParameter.png)
+
+Enter target lattice constants *a*, *b*, *c*, *α*, *β*, *γ* and acceptable errors. Empty fields are treated as wildcards.
+
+### d-spacing
+
+Enter the *d*-spacing of the strongest reflection (or several strong reflections) and an acceptable error. Useful when only the diffraction peak positions are known from an experiment.
+
+### Density
+
+Filter by mass density (g/cm³) within an acceptable error band.

@@ -8,12 +8,21 @@
 
 ## File menu
 
+Open / save a diffraction image. The same drag-and-drop loading as [Spot ID v1](10-spot-id.md) is supported, and Gatan DM3/DM4 metadata (camera length, wavelength, pixel size) is honoured automatically.
 
 ---
 
 ## Optics
 
 ![Optics](../assets/cap-en-auto/FormSpotIDV2.splitContainer1.panel1.groupBoxOptics.png)
+
+### Incident source
+
+Select the radiation type (X-ray / electron / neutron) and set the energy or wavelength.
+
+### Camera length / Pixel size
+
+The camera length (mm) and detector pixel size (μm). When a Gatan DM file is loaded, these values are populated from the file header.
 
 ---
 

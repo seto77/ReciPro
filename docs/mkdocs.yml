@@ -217,7 +217,7 @@ nav:
       - 2. 対称性情報: ja/2-symmetry-information.md
       - 3. 散乱因子: ja/3-scattering-factor.md
       - 4. 回転ジオメトリ: ja/4-rotation-geometry.md
-      - 5. Structure Viewer: ja/5-structure-viewer.md
+      - 5. 結晶構造ビューア: ja/5-structure-viewer.md
       - 6. ステレオネット: ja/6-stereonet.md
       - 7. 回折シミュレータ:
           - ja/7-diffraction-simulator/index.md

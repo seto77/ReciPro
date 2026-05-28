@@ -57,15 +57,64 @@ Sets the sample thickness.<div style="clear: both;"></div>
 
 Acc. voltage, defocus (Scherzer shown).
 
+#### Acc. voltage
+
+Accelerating voltage of the electron microscope. Changing this updates the relativistically-corrected wavelength (displayed beside the field) and, together with **Cs**, the suggested **Scherzer defocus** value shown below.
+
+#### Defocus
+
+Defocus value of the objective lens. The Scherzer defocus (the value that maximises the phase-contrast transfer in the weak-phase-object approximation) is shown below as a reference.
+
+### Inherent property (HRTEM optical aberrations)
+
+Microscope-specific aberration parameters used by the lens-function calculation.
+
+- **Cs** — spherical aberration coefficient.
+- **Cc** — chromatic aberration coefficient.
+- **β** — illumination semi-angle (finite-source effect).
+- **ΔE** — 1/e width of the electron-energy fluctuation.
+
+### Lens function
+
+Plots of the lens function. Adjusting the upper limit of *u* changes the drawing range.
+
+- **sin[χ(u)]** — phase-contrast transfer function (PCTF).
+- **E_s(u)** — spatial-coherence envelope function.
+- **E_c(u)** — temporal-coherence envelope function.
+
 ### Objective aperture (HRTEM option)
 
 ![Objective aperture (HRTEM option)](../../assets/cap-en-auto/FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxHREMoption1.png)
 
 Cs, Cc, beta, delta-E, PCTF, spatial/temporal coherence envelopes, objective aperture.
 
+#### Size
+
+Objective aperture size in mrad. Tick **Open aperture** to remove the aperture. The number of diffraction spots taken into the Bloch-wave calculation depends on the aperture; the maximum is bounded by the **Max Bloch waves** value in **Simulation property**.
+
+#### Shift
+
+Horizontal displacement of the aperture in mrad — used to mimic an offset objective aperture in HRTEM.
+
+#### Spot info
+
+Opens the detailed spot list (intensity, complex amplitude, etc.) for the reflections passing through the aperture. Convenient when the Diffraction Simulator is also open for comparison.
+
 ### STEM options (optical)
 
 ![STEM options (optical)](../../assets/cap-en-auto/FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxSTEMoption1.png)
+
+#### Convergence semi-angle
+
+Half-angle of the convergent probe (mrad). Controls the size of the STEM probe and the spatial resolution of the simulated image.
+
+#### Detector geometry
+
+Inner / outer collection angles of the annular detector (mrad). Choose between BF (small inner angle), ABF, LAADF, HAADF (large inner angle).
+
+#### Scan area / step
+
+Scan field of view and pixel size for the STEM image.
 
 ---
 
@@ -77,13 +126,44 @@ Cs, Cc, beta, delta-E, PCTF, spatial/temporal coherence envelopes, objective ape
 
 Max Bloch waves, image pixels/resolution, partial coherence (quasi-coherent / TCC), Single/Serial mode.
 
+#### Max Bloch waves
+
+Maximum number of Bloch waves used in the dynamical calculation. Increasing this improves accuracy at the cost of *O*(*N*³) eigenvalue solving time.
+
+#### Image property (pixels & resolution)
+
+Pixel dimensions and sampling resolution of the simulated image. Higher resolution gives a finer fringe pattern but proportionally longer FFT time per slice.
+
+#### Partial-coherent model
+
+How wave interference is treated when combining the contributions from all incident-beam directions.
+
+- **Quasi-coherent** — fast, approximate model that multiplies the phase-contrast transfer function by spatial- and temporal-coherence envelopes.
+- **Transmission cross coefficient (TCC)** — more accurate model that integrates over the full transmission cross coefficient. Slower but exact in the linear-imaging regime.
+
+See [Appendix A2.2 — HRTEM image formation](../appendix/a2-bloch-wave/hrtem.md).
+
+#### Single / Serial mode
+
+- **Single image** — simulates a single image at the thickness set in **Sample property** and the defocus set in **Optical property**.
+- **Serial image** — generates a thickness × defocus matrix according to **Start / Step / Num** for each. Useful for finding the best matching condition against an experimental image.
+
 ### STEM options (simulation)
 
 ![STEM options (simulation)](../../assets/cap-en-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.groupBoxSTEMoption2.png)
 
+- **Bloch wave count** — same role as for HRTEM, applied per probe position.
+- **Angular resolution** — number of sample points in the probe-direction integration.
+- **TDS treatment** — whether to include thermal-diffuse scattering via temperature factors *B*. Required for LAADF/HAADF.
+
 ### Potential options
 
 ![Potential option](../../assets/cap-en-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.groupBoxPotentialOption.png)
+
+Displayed when **Image mode = Potential**.
+
+- **Target potential** — choose **U_g** (elastic) or **U′_g** (absorption / TDS).
+- **Display method** — **Magnitude and phase**, or **Real and imaginary part**.
 
 ### Image properties
 

@@ -15,6 +15,20 @@ The upper half of the window shows the rotation state in the "ReciPro coordinate
 - **Φ, θ, Ψ** values are synchronised with the Euler angles set in the Main window.
 - **Rotation matrix** displays the 3×3 matrix corresponding to the current rotation state.
 
+### Φ, θ, Ψ (Z–X–Z Euler angles)
+
+The crystal orientation is parametrised by three rotations applied in this order:
+
+1. **Φ** — first rotation about the **Z** axis.
+2. **θ** — rotation about the **X** axis of the once-rotated frame.
+3. **Ψ** — second rotation about the **Z** axis of the twice-rotated frame.
+
+Every numeric box is editable; changing a value here updates the Main window and every linked simulator.
+
+### Rotation matrix
+
+The 3 × 3 matrix produced from the current (Φ, θ, Ψ). Use **Copy to Excel** / **Paste from Excel** to round-trip the matrix through a spreadsheet.
+
 ### OpenGL windows
 
 The 3D view shows the current rotation using three coloured toruses (doughnuts):

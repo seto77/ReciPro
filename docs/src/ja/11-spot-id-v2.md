@@ -8,12 +8,21 @@
 
 ## ファイルメニュー
 
+回折画像の読み込み・保存。[Spot ID v1](10-spot-id.md) と同じドラッグ&ドロップ読み込みに対応。Gatan DM3/DM4 のメタデータ (カメラ長・波長・ピクセルサイズ) は自動的に反映されます。
 
 ---
 
 ## Optics
 
 ![Optics](../assets/cap-ja-auto/FormSpotIDV2.splitContainer1.panel1.groupBoxOptics.png)
+
+### 入射源
+
+線種 (X線 / 電子線 / 中性子線) と、エネルギー (または波長) を設定します。
+
+### カメラ長 / ピクセルサイズ
+
+カメラ長 (mm) と検出器ピクセルサイズ (μm)。Gatan DM ファイルを読み込んだ場合はヘッダから自動入力されます。
 
 ---
 

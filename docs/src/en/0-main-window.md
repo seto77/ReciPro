@@ -58,8 +58,17 @@ If you are new to ReciPro, refer to the following steps:
 
 ### Help
 
+| Menu item | Description |
+|-----------|-------------|
+| Program updates | Check whether a new version of ReciPro is available and install it |
+| Hint | Display usage hints (deprecated) |
+| Version history | Open the version-history dialog |
+| License | Display the MIT licence |
+| GitHub page | Open the ReciPro repository in a browser |
+| Report bugs, requests, or comments | Open the GitHub Issues page |
+| Help (Web) / Help (Wiki) | Open the online manual. The current source of truth is the GitHub Pages version. |
 
-Check for updates, hints, version history, license, GitHub repository, bug/feature reports, and online help — **Help (Web)** / **Help (Wiki)**. The current manual source of truth is the GitHub Pages version. Language is switched from the separate **Language** menu (English/Japanese, requires restart).
+Language is switched from the separate **Language** menu (English/Japanese, requires restart).
 
 ### Language
 
@@ -103,6 +112,10 @@ Rotate by angle Step. Check Animation for continuous rotation.
 ![View along](../assets/cap-en-auto/FormMain.toolStripContainer1.panel1.groupBoxProjectAlong.png)
 
 Align a zone axis [*uvw*] or crystal plane (*hkl*) perpendicular to the screen.
+
+- **Fix**: when checked, the specified zone axis or plane is held spatially fixed during subsequent rotation operations.
+- **Axis ([uvw])**: the entered zone axis is placed perpendicular to the screen (pointing into the screen). If the plane field is also set and the plane is perpendicular to the axis, the plane direction is pointed upward on the screen.
+- **Plane ((hkl))**: the normal of the entered crystal plane is placed perpendicular to the screen. If **Axis** is set to 0, the zone axis is pointed upward on the screen.
 
 ### Basic ways to set the orientation
 
