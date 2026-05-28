@@ -47,7 +47,30 @@ namespace ReciPro
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormStereonet));
             splitContainer1 = new System.Windows.Forms.SplitContainer();
             graphicsBox = new GraphicsBox(components);
+            groupBox1 = new System.Windows.Forms.GroupBox();
+            flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
+            label7 = new System.Windows.Forms.Label();
+            radioButtonDelimiterNone = new System.Windows.Forms.RadioButton();
+            radioButtonDelimiterSpace = new System.Windows.Forms.RadioButton();
+            radioButtonDelimiterComma = new System.Windows.Forms.RadioButton();
+            flowLayoutPanel12 = new System.Windows.Forms.FlowLayoutPanel();
+            label1 = new System.Windows.Forms.Label();
             trackBarStrSize = new System.Windows.Forms.TrackBar();
+            checkBoxSpecifyLabelColor = new System.Windows.Forms.CheckBox();
+            colorControlIndexLabel = new ColorControl();
+            groupBoxOutline = new System.Windows.Forms.GroupBox();
+            flowLayoutPanel11 = new System.Windows.Forms.FlowLayoutPanel();
+            label4 = new System.Windows.Forms.Label();
+            trackBarOutlineLineWidth = new System.Windows.Forms.TrackBar();
+            flowLayoutPanel5 = new System.Windows.Forms.FlowLayoutPanel();
+            colorControlBackGround = new ColorControl();
+            colorControl90DegLine = new ColorControl();
+            colorControl10DegLine = new ColorControl();
+            colorControl1DegLine = new ColorControl();
+            flowLayoutPanel13 = new System.Windows.Forms.FlowLayoutPanel();
+            radioButtonOutlineEquator = new System.Windows.Forms.RadioButton();
+            radioButtonOutlinePole = new System.Windows.Forms.RadioButton();
+            checkBox1DegLine = new System.Windows.Forms.CheckBox();
             trackBarPointSize = new System.Windows.Forms.TrackBar();
             groupBoxMode = new System.Windows.Forms.GroupBox();
             groupBoxSphere = new System.Windows.Forms.GroupBox();
@@ -68,30 +91,22 @@ namespace ReciPro
             radioButtonKikuchiLinePairs = new System.Windows.Forms.RadioButton();
             labelXYpos = new System.Windows.Forms.Label();
             label6 = new System.Windows.Forms.Label();
-            label1 = new System.Windows.Forms.Label();
-            groupBoxOutline = new System.Windows.Forms.GroupBox();
-            flowLayoutPanel5 = new System.Windows.Forms.FlowLayoutPanel();
-            radioButtonOutlineEquator = new System.Windows.Forms.RadioButton();
-            radioButtonOutlinePole = new System.Windows.Forms.RadioButton();
-            checkBox1DegLine = new System.Windows.Forms.CheckBox();
             tabControl = new System.Windows.Forms.TabControl();
             tabPage1 = new System.Windows.Forms.TabPage();
-            groupBoxDelimiter = new System.Windows.Forms.GroupBox();
-            flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
-            radioButtonDelimiterNone = new System.Windows.Forms.RadioButton();
-            radioButtonDelimiterSpace = new System.Windows.Forms.RadioButton();
-            radioButtonDelimiterComma = new System.Windows.Forms.RadioButton();
-            groupBoxSize = new System.Windows.Forms.GroupBox();
-            flowLayoutPanel6 = new System.Windows.Forms.FlowLayoutPanel();
             groupBoxColor = new System.Windows.Forms.GroupBox();
             flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
-            colorControlBackGround = new ColorControl();
-            colorControl90DegLine = new ColorControl();
-            colorControl10DegLine = new ColorControl();
-            colorControl1DegLine = new ColorControl();
-            colorControlKikuchi = new ColorControl();
-            colorControlString = new ColorControl();
+            label8 = new System.Windows.Forms.Label();
+            trackBarKikuchiPointSize = new System.Windows.Forms.TrackBar();
+            colorControlKikuchiPoints = new ColorControl();
+            colorControlKikuchiLabel = new ColorControl();
             tabPage2 = new System.Windows.Forms.TabPage();
+            checkedListBoxCircles = new System.Windows.Forms.CheckedListBox();
+            flowLayoutPanel10 = new System.Windows.Forms.FlowLayoutPanel();
+            buttonAddCircle = new System.Windows.Forms.Button();
+            buttonDeleteCircle = new System.Windows.Forms.Button();
+            colorControlGreatCircle = new ColorControl();
+            label5 = new System.Windows.Forms.Label();
+            trackBarGreatCircleLineWidth = new System.Windows.Forms.TrackBar();
             flowLayoutPanel7 = new System.Windows.Forms.FlowLayoutPanel();
             radioButtonCircleByAxis = new System.Windows.Forms.RadioButton();
             flowLayoutPanelCircleAxis = new System.Windows.Forms.FlowLayoutPanel();
@@ -102,10 +117,6 @@ namespace ReciPro
             indexControlCirclePlane1 = new IndexControl();
             flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             indexControlCirclePlane2 = new IndexControl();
-            colorControlGreatCircle = new ColorControl();
-            buttonAddCircle = new System.Windows.Forms.Button();
-            buttonDeleteCircle = new System.Windows.Forms.Button();
-            checkedListBoxCircles = new System.Windows.Forms.CheckedListBox();
             tabPage3 = new System.Windows.Forms.TabPage();
             buttonYusaModeStop = new System.Windows.Forms.Button();
             buttonYusaModeStart = new System.Windows.Forms.Button();
@@ -156,12 +167,13 @@ namespace ReciPro
             buttonAddIndex = new System.Windows.Forms.Button();
             buttonRemoveIndex = new System.Windows.Forms.Button();
             colorControlIndex = new ColorControl();
+            flowLayoutPanel6 = new System.Windows.Forms.FlowLayoutPanel();
             checkBoxRotateColor = new System.Windows.Forms.CheckBox();
-            checkBoxIncludingEquivalentPlanes = new System.Windows.Forms.CheckBox();
             flowLayoutPanelIndices = new System.Windows.Forms.FlowLayoutPanel();
             flowLayoutPanelIndexFilter = new System.Windows.Forms.FlowLayoutPanel();
             numericBoxHighStructureFactor = new NumericBox();
             indexControlDrawing = new IndexControl();
+            checkBoxIncludingEquivalentPlanes = new System.Windows.Forms.CheckBox();
             panel3 = new System.Windows.Forms.Panel();
             panel4 = new System.Windows.Forms.Panel();
             panel1 = new System.Windows.Forms.Panel();
@@ -183,12 +195,19 @@ namespace ReciPro
             label3 = new System.Windows.Forms.Label();
             pageSetupDialog1 = new System.Windows.Forms.PageSetupDialog();
             printDialog1 = new System.Windows.Forms.PrintDialog();
-            flowLayoutPanel10 = new System.Windows.Forms.FlowLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel1.SuspendLayout();
             splitContainer1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)graphicsBox).BeginInit();
+            groupBox1.SuspendLayout();
+            flowLayoutPanel4.SuspendLayout();
+            flowLayoutPanel12.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)trackBarStrSize).BeginInit();
+            groupBoxOutline.SuspendLayout();
+            flowLayoutPanel11.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)trackBarOutlineLineWidth).BeginInit();
+            flowLayoutPanel5.SuspendLayout();
+            flowLayoutPanel13.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)trackBarPointSize).BeginInit();
             groupBoxMode.SuspendLayout();
             groupBoxSphere.SuspendLayout();
@@ -197,17 +216,14 @@ namespace ReciPro
             flowLayoutPanelProjectionScheme.SuspendLayout();
             groupBoxProjectionObject.SuspendLayout();
             flowLayoutPanelProjectionObject.SuspendLayout();
-            groupBoxOutline.SuspendLayout();
-            flowLayoutPanel5.SuspendLayout();
             tabControl.SuspendLayout();
             tabPage1.SuspendLayout();
-            groupBoxDelimiter.SuspendLayout();
-            flowLayoutPanel4.SuspendLayout();
-            groupBoxSize.SuspendLayout();
-            flowLayoutPanel6.SuspendLayout();
             groupBoxColor.SuspendLayout();
             flowLayoutPanel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)trackBarKikuchiPointSize).BeginInit();
             tabPage2.SuspendLayout();
+            flowLayoutPanel10.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)trackBarGreatCircleLineWidth).BeginInit();
             flowLayoutPanel7.SuspendLayout();
             flowLayoutPanelCircleAxis.SuspendLayout();
             flowLayoutPanelCirclePlanes.SuspendLayout();
@@ -219,6 +235,7 @@ namespace ReciPro
             groupBoxIndices.SuspendLayout();
             panelSpecifiedIndices.SuspendLayout();
             flowLayoutPanelAddRemove.SuspendLayout();
+            flowLayoutPanel6.SuspendLayout();
             flowLayoutPanelIndices.SuspendLayout();
             flowLayoutPanelIndexFilter.SuspendLayout();
             panel3.SuspendLayout();
@@ -227,7 +244,6 @@ namespace ReciPro
             flowLayoutPanel9.SuspendLayout();
             flowLayoutPanel8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)trackBarDepthFadingOut).BeginInit();
-            flowLayoutPanel10.SuspendLayout();
             SuspendLayout();
             // 
             // splitContainer1
@@ -252,6 +268,67 @@ namespace ReciPro
             graphicsBox.MouseUp += graphicsBox_MouseUp;
             graphicsBox.Resize += formStereonet_Resize;
             // 
+            // groupBox1
+            // 
+            resources.ApplyResources(groupBox1, "groupBox1");
+            groupBox1.Controls.Add(flowLayoutPanel4);
+            groupBox1.Controls.Add(flowLayoutPanel12);
+            groupBox1.Name = "groupBox1";
+            groupBox1.TabStop = false;
+            // 
+            // flowLayoutPanel4
+            // 
+            resources.ApplyResources(flowLayoutPanel4, "flowLayoutPanel4");
+            flowLayoutPanel4.Controls.Add(label7);
+            flowLayoutPanel4.Controls.Add(radioButtonDelimiterNone);
+            flowLayoutPanel4.Controls.Add(radioButtonDelimiterSpace);
+            flowLayoutPanel4.Controls.Add(radioButtonDelimiterComma);
+            flowLayoutPanel4.Name = "flowLayoutPanel4";
+            // 
+            // label7
+            // 
+            resources.ApplyResources(label7, "label7");
+            label7.Name = "label7";
+            toolTip.SetToolTip(label7, resources.GetString("label7.ToolTip"));
+            // 
+            // radioButtonDelimiterNone
+            // 
+            resources.ApplyResources(radioButtonDelimiterNone, "radioButtonDelimiterNone");
+            radioButtonDelimiterNone.Checked = true;
+            radioButtonDelimiterNone.Name = "radioButtonDelimiterNone";
+            radioButtonDelimiterNone.TabStop = true;
+            toolTip.SetToolTip(radioButtonDelimiterNone, resources.GetString("radioButtonDelimiterNone.ToolTip"));
+            radioButtonDelimiterNone.CheckedChanged += radioButtonDelimiterNone_CheckedChanged;
+            // 
+            // radioButtonDelimiterSpace
+            // 
+            resources.ApplyResources(radioButtonDelimiterSpace, "radioButtonDelimiterSpace");
+            radioButtonDelimiterSpace.Name = "radioButtonDelimiterSpace";
+            toolTip.SetToolTip(radioButtonDelimiterSpace, resources.GetString("radioButtonDelimiterSpace.ToolTip"));
+            radioButtonDelimiterSpace.CheckedChanged += radioButtonDelimiterNone_CheckedChanged;
+            // 
+            // radioButtonDelimiterComma
+            // 
+            resources.ApplyResources(radioButtonDelimiterComma, "radioButtonDelimiterComma");
+            radioButtonDelimiterComma.Name = "radioButtonDelimiterComma";
+            toolTip.SetToolTip(radioButtonDelimiterComma, resources.GetString("radioButtonDelimiterComma.ToolTip"));
+            radioButtonDelimiterComma.CheckedChanged += radioButtonDelimiterNone_CheckedChanged;
+            // 
+            // flowLayoutPanel12
+            // 
+            resources.ApplyResources(flowLayoutPanel12, "flowLayoutPanel12");
+            flowLayoutPanel12.Controls.Add(label1);
+            flowLayoutPanel12.Controls.Add(trackBarStrSize);
+            flowLayoutPanel12.Controls.Add(checkBoxSpecifyLabelColor);
+            flowLayoutPanel12.Controls.Add(colorControlIndexLabel);
+            flowLayoutPanel12.Name = "flowLayoutPanel12";
+            // 
+            // label1
+            // 
+            resources.ApplyResources(label1, "label1");
+            label1.Name = "label1";
+            toolTip.SetToolTip(label1, resources.GetString("label1.ToolTip"));
+            // 
             // trackBarStrSize
             // 
             resources.ApplyResources(trackBarStrSize, "trackBarStrSize");
@@ -262,6 +339,170 @@ namespace ReciPro
             toolTip.SetToolTip(trackBarStrSize, resources.GetString("trackBarStrSize.ToolTip"));
             trackBarStrSize.Value = 80;
             trackBarStrSize.Scroll += trackBarStrSize_Scroll;
+            // 
+            // checkBoxSpecifyLabelColor
+            // 
+            resources.ApplyResources(checkBoxSpecifyLabelColor, "checkBoxSpecifyLabelColor");
+            checkBoxSpecifyLabelColor.Name = "checkBoxSpecifyLabelColor";
+            toolTip.SetToolTip(checkBoxSpecifyLabelColor, resources.GetString("checkBoxSpecifyLabelColor.ToolTip"));
+            checkBoxSpecifyLabelColor.CheckedChanged += checkBox1DegLine_CheckedChanged;
+            // 
+            // colorControlIndexLabel
+            // 
+            colorControlIndexLabel.Argb = -16777088;
+            resources.ApplyResources(colorControlIndexLabel, "colorControlIndexLabel");
+            colorControlIndexLabel.BackColor = System.Drawing.Color.White;
+            colorControlIndexLabel.Blue = 128;
+            colorControlIndexLabel.BlueF = 0.5019608F;
+            colorControlIndexLabel.BoxSize = new System.Drawing.Size(20, 20);
+            colorControlIndexLabel.Color = System.Drawing.Color.FromArgb(0, 0, 128);
+            colorControlIndexLabel.Green = 0;
+            colorControlIndexLabel.GreenF = 0F;
+            colorControlIndexLabel.Name = "colorControlIndexLabel";
+            colorControlIndexLabel.Red = 0;
+            colorControlIndexLabel.RedF = 0F;
+            colorControlIndexLabel.TabStop = false;
+            colorControlIndexLabel.ColorChanged += colorControl_ColorChanged;
+            // 
+            // groupBoxOutline
+            // 
+            resources.ApplyResources(groupBoxOutline, "groupBoxOutline");
+            groupBoxOutline.Controls.Add(flowLayoutPanel11);
+            groupBoxOutline.Controls.Add(flowLayoutPanel5);
+            groupBoxOutline.Controls.Add(flowLayoutPanel13);
+            groupBoxOutline.Name = "groupBoxOutline";
+            groupBoxOutline.TabStop = false;
+            // 
+            // flowLayoutPanel11
+            // 
+            resources.ApplyResources(flowLayoutPanel11, "flowLayoutPanel11");
+            flowLayoutPanel11.Controls.Add(label4);
+            flowLayoutPanel11.Controls.Add(trackBarOutlineLineWidth);
+            flowLayoutPanel11.Name = "flowLayoutPanel11";
+            // 
+            // label4
+            // 
+            resources.ApplyResources(label4, "label4");
+            label4.Name = "label4";
+            toolTip.SetToolTip(label4, resources.GetString("label4.ToolTip"));
+            // 
+            // trackBarOutlineLineWidth
+            // 
+            resources.ApplyResources(trackBarOutlineLineWidth, "trackBarOutlineLineWidth");
+            trackBarOutlineLineWidth.Maximum = 20;
+            trackBarOutlineLineWidth.Minimum = 1;
+            trackBarOutlineLineWidth.Name = "trackBarOutlineLineWidth";
+            trackBarOutlineLineWidth.TickStyle = System.Windows.Forms.TickStyle.None;
+            toolTip.SetToolTip(trackBarOutlineLineWidth, resources.GetString("trackBarOutlineLineWidth.ToolTip"));
+            trackBarOutlineLineWidth.Value = 5;
+            trackBarOutlineLineWidth.ValueChanged += colorControl_ColorChanged;
+            // 
+            // flowLayoutPanel5
+            // 
+            resources.ApplyResources(flowLayoutPanel5, "flowLayoutPanel5");
+            flowLayoutPanel5.Controls.Add(colorControlBackGround);
+            flowLayoutPanel5.Controls.Add(colorControl90DegLine);
+            flowLayoutPanel5.Controls.Add(colorControl10DegLine);
+            flowLayoutPanel5.Controls.Add(colorControl1DegLine);
+            flowLayoutPanel5.Name = "flowLayoutPanel5";
+            // 
+            // colorControlBackGround
+            // 
+            colorControlBackGround.Argb = -1;
+            resources.ApplyResources(colorControlBackGround, "colorControlBackGround");
+            colorControlBackGround.BackColor = System.Drawing.Color.White;
+            colorControlBackGround.Blue = 255;
+            colorControlBackGround.BlueF = 1F;
+            colorControlBackGround.BoxSize = new System.Drawing.Size(20, 20);
+            colorControlBackGround.Color = System.Drawing.Color.FromArgb(255, 255, 255);
+            colorControlBackGround.Green = 255;
+            colorControlBackGround.GreenF = 1F;
+            colorControlBackGround.Name = "colorControlBackGround";
+            colorControlBackGround.Red = 255;
+            colorControlBackGround.RedF = 1F;
+            colorControlBackGround.TabStop = false;
+            colorControlBackGround.ColorChanged += colorControl_ColorChanged;
+            // 
+            // colorControl90DegLine
+            // 
+            colorControl90DegLine.Argb = -12829441;
+            resources.ApplyResources(colorControl90DegLine, "colorControl90DegLine");
+            colorControl90DegLine.BackColor = System.Drawing.Color.Blue;
+            colorControl90DegLine.Blue = 255;
+            colorControl90DegLine.BlueF = 1F;
+            colorControl90DegLine.BoxSize = new System.Drawing.Size(20, 20);
+            colorControl90DegLine.Color = System.Drawing.Color.FromArgb(60, 60, 255);
+            colorControl90DegLine.Green = 60;
+            colorControl90DegLine.GreenF = 0.235294119F;
+            colorControl90DegLine.Name = "colorControl90DegLine";
+            colorControl90DegLine.Red = 60;
+            colorControl90DegLine.RedF = 0.235294119F;
+            colorControl90DegLine.TabStop = false;
+            colorControl90DegLine.ColorChanged += colorControl_ColorChanged;
+            // 
+            // colorControl10DegLine
+            // 
+            colorControl10DegLine.Argb = -7697665;
+            resources.ApplyResources(colorControl10DegLine, "colorControl10DegLine");
+            colorControl10DegLine.BackColor = System.Drawing.Color.FromArgb(128, 128, 255);
+            colorControl10DegLine.Blue = 255;
+            colorControl10DegLine.BlueF = 1F;
+            colorControl10DegLine.BoxSize = new System.Drawing.Size(20, 20);
+            colorControl10DegLine.Color = System.Drawing.Color.FromArgb(138, 138, 255);
+            colorControl10DegLine.Green = 138;
+            colorControl10DegLine.GreenF = 0.5411765F;
+            colorControl10DegLine.Name = "colorControl10DegLine";
+            colorControl10DegLine.Red = 138;
+            colorControl10DegLine.RedF = 0.5411765F;
+            colorControl10DegLine.TabStop = false;
+            colorControl10DegLine.ColorChanged += colorControl_ColorChanged;
+            // 
+            // colorControl1DegLine
+            // 
+            colorControl1DegLine.Argb = -4144897;
+            resources.ApplyResources(colorControl1DegLine, "colorControl1DegLine");
+            colorControl1DegLine.BackColor = System.Drawing.Color.FromArgb(192, 192, 255);
+            colorControl1DegLine.Blue = 255;
+            colorControl1DegLine.BlueF = 1F;
+            colorControl1DegLine.BoxSize = new System.Drawing.Size(20, 20);
+            colorControl1DegLine.Color = System.Drawing.Color.FromArgb(192, 192, 255);
+            colorControl1DegLine.Green = 192;
+            colorControl1DegLine.GreenF = 0.7529412F;
+            colorControl1DegLine.Name = "colorControl1DegLine";
+            colorControl1DegLine.Red = 192;
+            colorControl1DegLine.RedF = 0.7529412F;
+            colorControl1DegLine.TabStop = false;
+            colorControl1DegLine.ColorChanged += colorControl_ColorChanged;
+            // 
+            // flowLayoutPanel13
+            // 
+            resources.ApplyResources(flowLayoutPanel13, "flowLayoutPanel13");
+            flowLayoutPanel13.Controls.Add(radioButtonOutlineEquator);
+            flowLayoutPanel13.Controls.Add(radioButtonOutlinePole);
+            flowLayoutPanel13.Controls.Add(checkBox1DegLine);
+            flowLayoutPanel13.Name = "flowLayoutPanel13";
+            // 
+            // radioButtonOutlineEquator
+            // 
+            resources.ApplyResources(radioButtonOutlineEquator, "radioButtonOutlineEquator");
+            radioButtonOutlineEquator.Checked = true;
+            radioButtonOutlineEquator.Name = "radioButtonOutlineEquator";
+            radioButtonOutlineEquator.TabStop = true;
+            toolTip.SetToolTip(radioButtonOutlineEquator, resources.GetString("radioButtonOutlineEquator.ToolTip"));
+            radioButtonOutlineEquator.CheckedChanged += radioButtonOutlineEquator_CheckedChanged;
+            // 
+            // radioButtonOutlinePole
+            // 
+            resources.ApplyResources(radioButtonOutlinePole, "radioButtonOutlinePole");
+            radioButtonOutlinePole.Name = "radioButtonOutlinePole";
+            toolTip.SetToolTip(radioButtonOutlinePole, resources.GetString("radioButtonOutlinePole.ToolTip"));
+            // 
+            // checkBox1DegLine
+            // 
+            resources.ApplyResources(checkBox1DegLine, "checkBox1DegLine");
+            checkBox1DegLine.Name = "checkBox1DegLine";
+            toolTip.SetToolTip(checkBox1DegLine, resources.GetString("checkBox1DegLine.ToolTip"));
+            checkBox1DegLine.CheckedChanged += checkBox1DegLine_CheckedChanged;
             // 
             // trackBarPointSize
             // 
@@ -414,49 +655,6 @@ namespace ReciPro
             label6.Name = "label6";
             toolTip.SetToolTip(label6, resources.GetString("label6.ToolTip"));
             // 
-            // label1
-            // 
-            resources.ApplyResources(label1, "label1");
-            label1.Name = "label1";
-            toolTip.SetToolTip(label1, resources.GetString("label1.ToolTip"));
-            // 
-            // groupBoxOutline
-            // 
-            groupBoxOutline.Controls.Add(flowLayoutPanel5);
-            resources.ApplyResources(groupBoxOutline, "groupBoxOutline");
-            groupBoxOutline.Name = "groupBoxOutline";
-            groupBoxOutline.TabStop = false;
-            // 
-            // flowLayoutPanel5
-            // 
-            flowLayoutPanel5.Controls.Add(radioButtonOutlineEquator);
-            flowLayoutPanel5.Controls.Add(radioButtonOutlinePole);
-            flowLayoutPanel5.Controls.Add(checkBox1DegLine);
-            resources.ApplyResources(flowLayoutPanel5, "flowLayoutPanel5");
-            flowLayoutPanel5.Name = "flowLayoutPanel5";
-            // 
-            // radioButtonOutlineEquator
-            // 
-            resources.ApplyResources(radioButtonOutlineEquator, "radioButtonOutlineEquator");
-            radioButtonOutlineEquator.Checked = true;
-            radioButtonOutlineEquator.Name = "radioButtonOutlineEquator";
-            radioButtonOutlineEquator.TabStop = true;
-            toolTip.SetToolTip(radioButtonOutlineEquator, resources.GetString("radioButtonOutlineEquator.ToolTip"));
-            radioButtonOutlineEquator.CheckedChanged += radioButtonOutlineEquator_CheckedChanged;
-            // 
-            // radioButtonOutlinePole
-            // 
-            resources.ApplyResources(radioButtonOutlinePole, "radioButtonOutlinePole");
-            radioButtonOutlinePole.Name = "radioButtonOutlinePole";
-            toolTip.SetToolTip(radioButtonOutlinePole, resources.GetString("radioButtonOutlinePole.ToolTip"));
-            // 
-            // checkBox1DegLine
-            // 
-            resources.ApplyResources(checkBox1DegLine, "checkBox1DegLine");
-            checkBox1DegLine.Name = "checkBox1DegLine";
-            toolTip.SetToolTip(checkBox1DegLine, resources.GetString("checkBox1DegLine.ToolTip"));
-            checkBox1DegLine.CheckedChanged += checkBox1DegLine_CheckedChanged;
-            // 
             // tabControl
             // 
             tabControl.Controls.Add(tabPage1);
@@ -472,187 +670,79 @@ namespace ReciPro
             // 
             tabPage1.BackColor = System.Drawing.SystemColors.Control;
             captureExtender.SetCapture(tabPage1, true);
-            tabPage1.Controls.Add(groupBoxDelimiter);
-            tabPage1.Controls.Add(groupBoxSize);
-            tabPage1.Controls.Add(groupBoxOutline);
             tabPage1.Controls.Add(groupBoxColor);
+            tabPage1.Controls.Add(groupBox1);
+            tabPage1.Controls.Add(groupBoxOutline);
             resources.ApplyResources(tabPage1, "tabPage1");
             tabPage1.Name = "tabPage1";
             // 
-            // groupBoxDelimiter
-            // 
-            groupBoxDelimiter.Controls.Add(flowLayoutPanel4);
-            resources.ApplyResources(groupBoxDelimiter, "groupBoxDelimiter");
-            groupBoxDelimiter.Name = "groupBoxDelimiter";
-            groupBoxDelimiter.TabStop = false;
-            // 
-            // flowLayoutPanel4
-            // 
-            resources.ApplyResources(flowLayoutPanel4, "flowLayoutPanel4");
-            flowLayoutPanel4.Controls.Add(radioButtonDelimiterNone);
-            flowLayoutPanel4.Controls.Add(radioButtonDelimiterSpace);
-            flowLayoutPanel4.Controls.Add(radioButtonDelimiterComma);
-            flowLayoutPanel4.Name = "flowLayoutPanel4";
-            // 
-            // radioButtonDelimiterNone
-            // 
-            resources.ApplyResources(radioButtonDelimiterNone, "radioButtonDelimiterNone");
-            radioButtonDelimiterNone.Checked = true;
-            radioButtonDelimiterNone.Name = "radioButtonDelimiterNone";
-            radioButtonDelimiterNone.TabStop = true;
-            toolTip.SetToolTip(radioButtonDelimiterNone, resources.GetString("radioButtonDelimiterNone.ToolTip"));
-            radioButtonDelimiterNone.CheckedChanged += radioButtonDelimiterNone_CheckedChanged;
-            // 
-            // radioButtonDelimiterSpace
-            // 
-            resources.ApplyResources(radioButtonDelimiterSpace, "radioButtonDelimiterSpace");
-            radioButtonDelimiterSpace.Name = "radioButtonDelimiterSpace";
-            toolTip.SetToolTip(radioButtonDelimiterSpace, resources.GetString("radioButtonDelimiterSpace.ToolTip"));
-            radioButtonDelimiterSpace.CheckedChanged += radioButtonDelimiterNone_CheckedChanged;
-            // 
-            // radioButtonDelimiterComma
-            // 
-            resources.ApplyResources(radioButtonDelimiterComma, "radioButtonDelimiterComma");
-            radioButtonDelimiterComma.Name = "radioButtonDelimiterComma";
-            toolTip.SetToolTip(radioButtonDelimiterComma, resources.GetString("radioButtonDelimiterComma.ToolTip"));
-            radioButtonDelimiterComma.CheckedChanged += radioButtonDelimiterNone_CheckedChanged;
-            // 
-            // groupBoxSize
-            // 
-            groupBoxSize.Controls.Add(flowLayoutPanel6);
-            resources.ApplyResources(groupBoxSize, "groupBoxSize");
-            groupBoxSize.Name = "groupBoxSize";
-            groupBoxSize.TabStop = false;
-            // 
-            // flowLayoutPanel6
-            // 
-            flowLayoutPanel6.Controls.Add(label1);
-            flowLayoutPanel6.Controls.Add(trackBarStrSize);
-            flowLayoutPanel6.Controls.Add(label6);
-            flowLayoutPanel6.Controls.Add(trackBarPointSize);
-            resources.ApplyResources(flowLayoutPanel6, "flowLayoutPanel6");
-            flowLayoutPanel6.Name = "flowLayoutPanel6";
-            // 
             // groupBoxColor
             // 
-            groupBoxColor.Controls.Add(flowLayoutPanel3);
             resources.ApplyResources(groupBoxColor, "groupBoxColor");
+            groupBoxColor.Controls.Add(flowLayoutPanel3);
             groupBoxColor.Name = "groupBoxColor";
             groupBoxColor.TabStop = false;
             toolTip.SetToolTip(groupBoxColor, resources.GetString("groupBoxColor.ToolTip"));
             // 
             // flowLayoutPanel3
             // 
-            flowLayoutPanel3.Controls.Add(colorControlBackGround);
-            flowLayoutPanel3.Controls.Add(colorControl90DegLine);
-            flowLayoutPanel3.Controls.Add(colorControl10DegLine);
-            flowLayoutPanel3.Controls.Add(colorControl1DegLine);
-            flowLayoutPanel3.Controls.Add(colorControlKikuchi);
-            flowLayoutPanel3.Controls.Add(colorControlString);
             resources.ApplyResources(flowLayoutPanel3, "flowLayoutPanel3");
+            flowLayoutPanel3.Controls.Add(label8);
+            flowLayoutPanel3.Controls.Add(trackBarKikuchiPointSize);
+            flowLayoutPanel3.Controls.Add(colorControlKikuchiPoints);
+            flowLayoutPanel3.Controls.Add(colorControlKikuchiLabel);
             flowLayoutPanel3.Name = "flowLayoutPanel3";
             // 
-            // colorControlBackGround
+            // label8
             // 
-            colorControlBackGround.Argb = -1;
-            resources.ApplyResources(colorControlBackGround, "colorControlBackGround");
-            colorControlBackGround.BackColor = System.Drawing.Color.White;
-            colorControlBackGround.Blue = 255;
-            colorControlBackGround.BlueF = 1F;
-            colorControlBackGround.BoxSize = new System.Drawing.Size(20, 20);
-            colorControlBackGround.Color = System.Drawing.Color.FromArgb(255, 255, 255);
-            colorControlBackGround.Green = 255;
-            colorControlBackGround.GreenF = 1F;
-            colorControlBackGround.Name = "colorControlBackGround";
-            colorControlBackGround.Red = 255;
-            colorControlBackGround.RedF = 1F;
-            colorControlBackGround.TabStop = false;
-            colorControlBackGround.ColorChanged += colorControl_ColorChanged;
+            resources.ApplyResources(label8, "label8");
+            label8.Name = "label8";
+            toolTip.SetToolTip(label8, resources.GetString("label8.ToolTip"));
             // 
-            // colorControl90DegLine
+            // trackBarKikuchiPointSize
             // 
-            colorControl90DegLine.Argb = -12829441;
-            resources.ApplyResources(colorControl90DegLine, "colorControl90DegLine");
-            colorControl90DegLine.BackColor = System.Drawing.Color.Blue;
-            colorControl90DegLine.Blue = 255;
-            colorControl90DegLine.BlueF = 1F;
-            colorControl90DegLine.BoxSize = new System.Drawing.Size(20, 20);
-            colorControl90DegLine.Color = System.Drawing.Color.FromArgb(60, 60, 255);
-            colorControl90DegLine.Green = 60;
-            colorControl90DegLine.GreenF = 0.235294119F;
-            colorControl90DegLine.Name = "colorControl90DegLine";
-            colorControl90DegLine.Red = 60;
-            colorControl90DegLine.RedF = 0.235294119F;
-            colorControl90DegLine.TabStop = false;
-            colorControl90DegLine.ColorChanged += colorControl_ColorChanged;
+            resources.ApplyResources(trackBarKikuchiPointSize, "trackBarKikuchiPointSize");
+            trackBarKikuchiPointSize.Maximum = 20;
+            trackBarKikuchiPointSize.Minimum = 1;
+            trackBarKikuchiPointSize.Name = "trackBarKikuchiPointSize";
+            trackBarKikuchiPointSize.TickStyle = System.Windows.Forms.TickStyle.None;
+            toolTip.SetToolTip(trackBarKikuchiPointSize, resources.GetString("trackBarKikuchiPointSize.ToolTip"));
+            trackBarKikuchiPointSize.Value = 5;
+            trackBarKikuchiPointSize.ValueChanged += colorControl_ColorChanged;
             // 
-            // colorControl10DegLine
+            // colorControlKikuchiPoints
             // 
-            colorControl10DegLine.Argb = -7697665;
-            resources.ApplyResources(colorControl10DegLine, "colorControl10DegLine");
-            colorControl10DegLine.BackColor = System.Drawing.Color.FromArgb(128, 128, 255);
-            colorControl10DegLine.Blue = 255;
-            colorControl10DegLine.BlueF = 1F;
-            colorControl10DegLine.BoxSize = new System.Drawing.Size(20, 20);
-            colorControl10DegLine.Color = System.Drawing.Color.FromArgb(138, 138, 255);
-            colorControl10DegLine.Green = 138;
-            colorControl10DegLine.GreenF = 0.5411765F;
-            colorControl10DegLine.Name = "colorControl10DegLine";
-            colorControl10DegLine.Red = 138;
-            colorControl10DegLine.RedF = 0.5411765F;
-            colorControl10DegLine.TabStop = false;
-            colorControl10DegLine.ColorChanged += colorControl_ColorChanged;
+            colorControlKikuchiPoints.Argb = -16777088;
+            resources.ApplyResources(colorControlKikuchiPoints, "colorControlKikuchiPoints");
+            colorControlKikuchiPoints.BackColor = System.Drawing.Color.White;
+            colorControlKikuchiPoints.Blue = 128;
+            colorControlKikuchiPoints.BlueF = 0.5019608F;
+            colorControlKikuchiPoints.BoxSize = new System.Drawing.Size(20, 20);
+            colorControlKikuchiPoints.Color = System.Drawing.Color.FromArgb(0, 0, 128);
+            colorControlKikuchiPoints.Green = 0;
+            colorControlKikuchiPoints.GreenF = 0F;
+            colorControlKikuchiPoints.Name = "colorControlKikuchiPoints";
+            colorControlKikuchiPoints.Red = 0;
+            colorControlKikuchiPoints.RedF = 0F;
+            colorControlKikuchiPoints.TabStop = false;
+            colorControlKikuchiPoints.ColorChanged += colorControl_ColorChanged;
             // 
-            // colorControl1DegLine
+            // colorControlKikuchiLabel
             // 
-            colorControl1DegLine.Argb = -4144897;
-            resources.ApplyResources(colorControl1DegLine, "colorControl1DegLine");
-            colorControl1DegLine.BackColor = System.Drawing.Color.FromArgb(192, 192, 255);
-            colorControl1DegLine.Blue = 255;
-            colorControl1DegLine.BlueF = 1F;
-            colorControl1DegLine.BoxSize = new System.Drawing.Size(20, 20);
-            colorControl1DegLine.Color = System.Drawing.Color.FromArgb(192, 192, 255);
-            colorControl1DegLine.Green = 192;
-            colorControl1DegLine.GreenF = 0.7529412F;
-            colorControl1DegLine.Name = "colorControl1DegLine";
-            colorControl1DegLine.Red = 192;
-            colorControl1DegLine.RedF = 0.7529412F;
-            colorControl1DegLine.TabStop = false;
-            colorControl1DegLine.ColorChanged += colorControl_ColorChanged;
-            // 
-            // colorControlKikuchi
-            // 
-            colorControlKikuchi.Argb = -16777088;
-            resources.ApplyResources(colorControlKikuchi, "colorControlKikuchi");
-            colorControlKikuchi.BackColor = System.Drawing.Color.White;
-            colorControlKikuchi.Blue = 128;
-            colorControlKikuchi.BlueF = 0.5019608F;
-            colorControlKikuchi.BoxSize = new System.Drawing.Size(20, 20);
-            colorControlKikuchi.Color = System.Drawing.Color.FromArgb(0, 0, 128);
-            colorControlKikuchi.Green = 0;
-            colorControlKikuchi.GreenF = 0F;
-            colorControlKikuchi.Name = "colorControlKikuchi";
-            colorControlKikuchi.Red = 0;
-            colorControlKikuchi.RedF = 0F;
-            colorControlKikuchi.TabStop = false;
-            colorControlKikuchi.ColorChanged += colorControl_ColorChanged;
-            // 
-            // colorControlString
-            // 
-            colorControlString.Argb = -16777088;
-            resources.ApplyResources(colorControlString, "colorControlString");
-            colorControlString.BackColor = System.Drawing.Color.Black;
-            colorControlString.Blue = 128;
-            colorControlString.BlueF = 0.5019608F;
-            colorControlString.BoxSize = new System.Drawing.Size(20, 20);
-            colorControlString.Color = System.Drawing.Color.FromArgb(0, 0, 128);
-            colorControlString.Green = 0;
-            colorControlString.GreenF = 0F;
-            colorControlString.Name = "colorControlString";
-            colorControlString.Red = 0;
-            colorControlString.RedF = 0F;
-            colorControlString.TabStop = false;
-            colorControlString.ColorChanged += colorControl_ColorChanged;
+            colorControlKikuchiLabel.Argb = -16777088;
+            resources.ApplyResources(colorControlKikuchiLabel, "colorControlKikuchiLabel");
+            colorControlKikuchiLabel.BackColor = System.Drawing.Color.White;
+            colorControlKikuchiLabel.Blue = 128;
+            colorControlKikuchiLabel.BlueF = 0.5019608F;
+            colorControlKikuchiLabel.BoxSize = new System.Drawing.Size(20, 20);
+            colorControlKikuchiLabel.Color = System.Drawing.Color.FromArgb(0, 0, 128);
+            colorControlKikuchiLabel.Green = 0;
+            colorControlKikuchiLabel.GreenF = 0F;
+            colorControlKikuchiLabel.Name = "colorControlKikuchiLabel";
+            colorControlKikuchiLabel.Red = 0;
+            colorControlKikuchiLabel.RedF = 0F;
+            colorControlKikuchiLabel.TabStop = false;
+            colorControlKikuchiLabel.ColorChanged += colorControl_ColorChanged;
             // 
             // tabPage2
             // 
@@ -663,6 +753,74 @@ namespace ReciPro
             tabPage2.Controls.Add(flowLayoutPanel7);
             resources.ApplyResources(tabPage2, "tabPage2");
             tabPage2.Name = "tabPage2";
+            // 
+            // checkedListBoxCircles
+            // 
+            resources.ApplyResources(checkedListBoxCircles, "checkedListBoxCircles");
+            checkedListBoxCircles.FormattingEnabled = true;
+            checkedListBoxCircles.Name = "checkedListBoxCircles";
+            checkedListBoxCircles.ItemCheck += checkedListBoxCircles_ItemCheck;
+            // 
+            // flowLayoutPanel10
+            // 
+            resources.ApplyResources(flowLayoutPanel10, "flowLayoutPanel10");
+            flowLayoutPanel10.Controls.Add(buttonAddCircle);
+            flowLayoutPanel10.Controls.Add(buttonDeleteCircle);
+            flowLayoutPanel10.Controls.Add(colorControlGreatCircle);
+            flowLayoutPanel10.Controls.Add(label5);
+            flowLayoutPanel10.Controls.Add(trackBarGreatCircleLineWidth);
+            flowLayoutPanel10.Name = "flowLayoutPanel10";
+            // 
+            // buttonAddCircle
+            // 
+            resources.ApplyResources(buttonAddCircle, "buttonAddCircle");
+            buttonAddCircle.BackColor = System.Drawing.Color.SteelBlue;
+            buttonAddCircle.ForeColor = System.Drawing.SystemColors.HighlightText;
+            buttonAddCircle.Name = "buttonAddCircle";
+            buttonAddCircle.UseVisualStyleBackColor = false;
+            buttonAddCircle.Click += buttonAddCircle_Click;
+            // 
+            // buttonDeleteCircle
+            // 
+            resources.ApplyResources(buttonDeleteCircle, "buttonDeleteCircle");
+            buttonDeleteCircle.BackColor = System.Drawing.Color.IndianRed;
+            buttonDeleteCircle.ForeColor = System.Drawing.Color.White;
+            buttonDeleteCircle.Name = "buttonDeleteCircle";
+            buttonDeleteCircle.UseVisualStyleBackColor = false;
+            buttonDeleteCircle.Click += buttonDeleteCircle_Click;
+            // 
+            // colorControlGreatCircle
+            // 
+            colorControlGreatCircle.Argb = -32768;
+            resources.ApplyResources(colorControlGreatCircle, "colorControlGreatCircle");
+            colorControlGreatCircle.BackColor = System.Drawing.SystemColors.Control;
+            colorControlGreatCircle.Blue = 0;
+            colorControlGreatCircle.BlueF = 0F;
+            colorControlGreatCircle.BoxSize = new System.Drawing.Size(20, 20);
+            colorControlGreatCircle.Color = System.Drawing.Color.FromArgb(255, 128, 0);
+            colorControlGreatCircle.Green = 128;
+            colorControlGreatCircle.GreenF = 0.5019608F;
+            colorControlGreatCircle.Name = "colorControlGreatCircle";
+            colorControlGreatCircle.Red = 255;
+            colorControlGreatCircle.RedF = 1F;
+            colorControlGreatCircle.ColorChanged += colorControl_ColorChanged;
+            // 
+            // label5
+            // 
+            resources.ApplyResources(label5, "label5");
+            label5.Name = "label5";
+            toolTip.SetToolTip(label5, resources.GetString("label5.ToolTip"));
+            // 
+            // trackBarGreatCircleLineWidth
+            // 
+            resources.ApplyResources(trackBarGreatCircleLineWidth, "trackBarGreatCircleLineWidth");
+            trackBarGreatCircleLineWidth.Maximum = 20;
+            trackBarGreatCircleLineWidth.Minimum = 1;
+            trackBarGreatCircleLineWidth.Name = "trackBarGreatCircleLineWidth";
+            trackBarGreatCircleLineWidth.TickStyle = System.Windows.Forms.TickStyle.None;
+            toolTip.SetToolTip(trackBarGreatCircleLineWidth, resources.GetString("trackBarGreatCircleLineWidth.ToolTip"));
+            trackBarGreatCircleLineWidth.Value = 5;
+            trackBarGreatCircleLineWidth.ValueChanged += colorControl_ColorChanged;
             // 
             // flowLayoutPanel7
             // 
@@ -739,47 +897,6 @@ namespace ReciPro
             indexControlCirclePlane2.Name = "indexControlCirclePlane2";
             indexControlCirclePlane2.SubScript = "2";
             indexControlCirclePlane2.Values = ((int, int, int))resources.GetObject("indexControlCirclePlane2.Values");
-            // 
-            // colorControlGreatCircle
-            // 
-            colorControlGreatCircle.Argb = -32768;
-            resources.ApplyResources(colorControlGreatCircle, "colorControlGreatCircle");
-            colorControlGreatCircle.BackColor = System.Drawing.SystemColors.Control;
-            colorControlGreatCircle.Blue = 0;
-            colorControlGreatCircle.BlueF = 0F;
-            colorControlGreatCircle.BoxSize = new System.Drawing.Size(20, 20);
-            colorControlGreatCircle.Color = System.Drawing.Color.FromArgb(255, 128, 0);
-            colorControlGreatCircle.Green = 128;
-            colorControlGreatCircle.GreenF = 0.5019608F;
-            colorControlGreatCircle.Name = "colorControlGreatCircle";
-            colorControlGreatCircle.Red = 255;
-            colorControlGreatCircle.RedF = 1F;
-            colorControlGreatCircle.ColorChanged += colorControl_ColorChanged;
-            // 
-            // buttonAddCircle
-            // 
-            resources.ApplyResources(buttonAddCircle, "buttonAddCircle");
-            buttonAddCircle.BackColor = System.Drawing.Color.SteelBlue;
-            buttonAddCircle.ForeColor = System.Drawing.SystemColors.HighlightText;
-            buttonAddCircle.Name = "buttonAddCircle";
-            buttonAddCircle.UseVisualStyleBackColor = false;
-            buttonAddCircle.Click += buttonAddCircle_Click;
-            // 
-            // buttonDeleteCircle
-            // 
-            resources.ApplyResources(buttonDeleteCircle, "buttonDeleteCircle");
-            buttonDeleteCircle.BackColor = System.Drawing.Color.IndianRed;
-            buttonDeleteCircle.ForeColor = System.Drawing.Color.White;
-            buttonDeleteCircle.Name = "buttonDeleteCircle";
-            buttonDeleteCircle.UseVisualStyleBackColor = false;
-            buttonDeleteCircle.Click += buttonDeleteCircle_Click;
-            // 
-            // checkedListBoxCircles
-            // 
-            resources.ApplyResources(checkedListBoxCircles, "checkedListBoxCircles");
-            checkedListBoxCircles.FormattingEnabled = true;
-            checkedListBoxCircles.Name = "checkedListBoxCircles";
-            checkedListBoxCircles.ItemCheck += checkedListBoxCircles_ItemCheck;
             // 
             // tabPage3
             // 
@@ -1182,8 +1299,8 @@ namespace ReciPro
             flowLayoutPanelAddRemove.Controls.Add(buttonAddIndex);
             flowLayoutPanelAddRemove.Controls.Add(buttonRemoveIndex);
             flowLayoutPanelAddRemove.Controls.Add(colorControlIndex);
+            flowLayoutPanelAddRemove.Controls.Add(flowLayoutPanel6);
             flowLayoutPanelAddRemove.Controls.Add(checkBoxRotateColor);
-            flowLayoutPanelAddRemove.Controls.Add(checkBoxIncludingEquivalentPlanes);
             flowLayoutPanelAddRemove.Name = "flowLayoutPanelAddRemove";
             // 
             // buttonAddIndex
@@ -1220,6 +1337,13 @@ namespace ReciPro
             colorControlIndex.RedF = 1F;
             colorControlIndex.ColorChanged += colorControlIndex_ColorChanged;
             // 
+            // flowLayoutPanel6
+            // 
+            resources.ApplyResources(flowLayoutPanel6, "flowLayoutPanel6");
+            flowLayoutPanel6.Controls.Add(label6);
+            flowLayoutPanel6.Controls.Add(trackBarPointSize);
+            flowLayoutPanel6.Name = "flowLayoutPanel6";
+            // 
             // checkBoxRotateColor
             // 
             resources.ApplyResources(checkBoxRotateColor, "checkBoxRotateColor");
@@ -1227,20 +1351,12 @@ namespace ReciPro
             checkBoxRotateColor.UseVisualStyleBackColor = true;
             checkBoxRotateColor.CheckedChanged += checkBoxRotateColor_CheckedChanged;
             // 
-            // checkBoxIncludingEquivalentPlanes
-            // 
-            resources.ApplyResources(checkBoxIncludingEquivalentPlanes, "checkBoxIncludingEquivalentPlanes");
-            checkBoxIncludingEquivalentPlanes.Checked = true;
-            checkBoxIncludingEquivalentPlanes.CheckState = System.Windows.Forms.CheckState.Checked;
-            checkBoxIncludingEquivalentPlanes.Name = "checkBoxIncludingEquivalentPlanes";
-            checkBoxIncludingEquivalentPlanes.UseVisualStyleBackColor = true;
-            checkBoxIncludingEquivalentPlanes.CheckedChanged += checkBoxIncludingEquivalentPlanes_CheckedChanged;
-            // 
             // flowLayoutPanelIndices
             // 
             resources.ApplyResources(flowLayoutPanelIndices, "flowLayoutPanelIndices");
             flowLayoutPanelIndices.Controls.Add(flowLayoutPanelIndexFilter);
             flowLayoutPanelIndices.Controls.Add(indexControlDrawing);
+            flowLayoutPanelIndices.Controls.Add(checkBoxIncludingEquivalentPlanes);
             flowLayoutPanelIndices.Name = "flowLayoutPanelIndices";
             // 
             // flowLayoutPanelIndexFilter
@@ -1275,6 +1391,15 @@ namespace ReciPro
             indexControlDrawing.PlusMinus = true;
             indexControlDrawing.Values = ((int, int, int))resources.GetObject("indexControlDrawing.Values");
             indexControlDrawing.ValueChanged += numericUpDown_ValueChanged;
+            // 
+            // checkBoxIncludingEquivalentPlanes
+            // 
+            resources.ApplyResources(checkBoxIncludingEquivalentPlanes, "checkBoxIncludingEquivalentPlanes");
+            checkBoxIncludingEquivalentPlanes.Checked = true;
+            checkBoxIncludingEquivalentPlanes.CheckState = System.Windows.Forms.CheckState.Checked;
+            checkBoxIncludingEquivalentPlanes.Name = "checkBoxIncludingEquivalentPlanes";
+            checkBoxIncludingEquivalentPlanes.UseVisualStyleBackColor = true;
+            checkBoxIncludingEquivalentPlanes.CheckedChanged += checkBoxIncludingEquivalentPlanes_CheckedChanged;
             // 
             // panel3
             // 
@@ -1425,14 +1550,6 @@ namespace ReciPro
             printDialog1.Document = printDocument1;
             printDialog1.UseEXDialog = true;
             // 
-            // flowLayoutPanel10
-            // 
-            resources.ApplyResources(flowLayoutPanel10, "flowLayoutPanel10");
-            flowLayoutPanel10.Controls.Add(buttonAddCircle);
-            flowLayoutPanel10.Controls.Add(buttonDeleteCircle);
-            flowLayoutPanel10.Controls.Add(colorControlGreatCircle);
-            flowLayoutPanel10.Name = "flowLayoutPanel10";
-            // 
             // FormStereonet
             // 
             resources.ApplyResources(this, "$this");
@@ -1457,7 +1574,22 @@ namespace ReciPro
             ((System.ComponentModel.ISupportInitialize)splitContainer1).EndInit();
             splitContainer1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)graphicsBox).EndInit();
+            groupBox1.ResumeLayout(false);
+            groupBox1.PerformLayout();
+            flowLayoutPanel4.ResumeLayout(false);
+            flowLayoutPanel4.PerformLayout();
+            flowLayoutPanel12.ResumeLayout(false);
+            flowLayoutPanel12.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)trackBarStrSize).EndInit();
+            groupBoxOutline.ResumeLayout(false);
+            groupBoxOutline.PerformLayout();
+            flowLayoutPanel11.ResumeLayout(false);
+            flowLayoutPanel11.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)trackBarOutlineLineWidth).EndInit();
+            flowLayoutPanel5.ResumeLayout(false);
+            flowLayoutPanel5.PerformLayout();
+            flowLayoutPanel13.ResumeLayout(false);
+            flowLayoutPanel13.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)trackBarPointSize).EndInit();
             groupBoxMode.ResumeLayout(false);
             groupBoxSphere.ResumeLayout(false);
@@ -1472,23 +1604,19 @@ namespace ReciPro
             groupBoxProjectionObject.PerformLayout();
             flowLayoutPanelProjectionObject.ResumeLayout(false);
             flowLayoutPanelProjectionObject.PerformLayout();
-            groupBoxOutline.ResumeLayout(false);
-            flowLayoutPanel5.ResumeLayout(false);
-            flowLayoutPanel5.PerformLayout();
             tabControl.ResumeLayout(false);
             tabPage1.ResumeLayout(false);
-            groupBoxDelimiter.ResumeLayout(false);
-            groupBoxDelimiter.PerformLayout();
-            flowLayoutPanel4.ResumeLayout(false);
-            flowLayoutPanel4.PerformLayout();
-            groupBoxSize.ResumeLayout(false);
-            flowLayoutPanel6.ResumeLayout(false);
-            flowLayoutPanel6.PerformLayout();
+            tabPage1.PerformLayout();
             groupBoxColor.ResumeLayout(false);
+            groupBoxColor.PerformLayout();
             flowLayoutPanel3.ResumeLayout(false);
             flowLayoutPanel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)trackBarKikuchiPointSize).EndInit();
             tabPage2.ResumeLayout(false);
             tabPage2.PerformLayout();
+            flowLayoutPanel10.ResumeLayout(false);
+            flowLayoutPanel10.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)trackBarGreatCircleLineWidth).EndInit();
             flowLayoutPanel7.ResumeLayout(false);
             flowLayoutPanel7.PerformLayout();
             flowLayoutPanelCircleAxis.ResumeLayout(false);
@@ -1510,6 +1638,8 @@ namespace ReciPro
             panelSpecifiedIndices.PerformLayout();
             flowLayoutPanelAddRemove.ResumeLayout(false);
             flowLayoutPanelAddRemove.PerformLayout();
+            flowLayoutPanel6.ResumeLayout(false);
+            flowLayoutPanel6.PerformLayout();
             flowLayoutPanelIndices.ResumeLayout(false);
             flowLayoutPanelIndices.PerformLayout();
             flowLayoutPanelIndexFilter.ResumeLayout(false);
@@ -1524,8 +1654,6 @@ namespace ReciPro
             flowLayoutPanel8.ResumeLayout(false);
             flowLayoutPanel8.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)trackBarDepthFadingOut).EndInit();
-            flowLayoutPanel10.ResumeLayout(false);
-            flowLayoutPanel10.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -1547,7 +1675,6 @@ namespace ReciPro
         private System.Windows.Forms.TabControl tabControl;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.GroupBox groupBoxColor;
-        private System.Windows.Forms.GroupBox groupBoxSize;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveImageToolStripMenuItem;
@@ -1566,7 +1693,6 @@ namespace ReciPro
         private System.Windows.Forms.RadioButton radioButtonCircleByAxis;
         private System.Windows.Forms.RadioButton radioButtonCircleByPlanes;
         private System.Windows.Forms.CheckedListBox checkedListBoxCircles;
-        public ColorControl colorControlString;
         public ColorControl colorControlBackGround;
         public ColorControl colorControl90DegLine;
         public ColorControl colorControl10DegLine;
@@ -1648,16 +1774,13 @@ namespace ReciPro
         private System.Windows.Forms.GroupBox groupBoxProjectionScheme;
         private System.Windows.Forms.CheckBox checkBoxShowIndexLabels;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelIndexFilter;
-        // 260517Cl 削除 (孤児フィールド): private System.Windows.Forms.Label labelI; — 未 new / 未 Add / 未参照
-        // 260517Cl 削除 (孤児フィールド): private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelIndex; — flowLayoutPanelIndexFilter と命名混同、未 new / 未 Add / 未参照
-        private System.Windows.Forms.GroupBox groupBoxDelimiter;
         private System.Windows.Forms.RadioButton radioButtonDelimiterComma;
         private System.Windows.Forms.RadioButton radioButtonDelimiterSpace;
         private System.Windows.Forms.RadioButton radioButtonDelimiterNone;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelAddRemove;
         private System.Windows.Forms.CheckBox checkBoxRotateColor;
         private ColorControl colorControlIndex;
-        public ColorControl colorControlKikuchi;
+        public ColorControl colorControlKikuchiPoints;
         private System.Windows.Forms.Label labelAxisPlane;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
@@ -1671,12 +1794,26 @@ namespace ReciPro
         private IndexControl indexControlDrawing;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel6;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel5;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel4;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel7;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel8;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel9;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel10;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TrackBar trackBarOutlineLineWidth;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TrackBar trackBarGreatCircleLineWidth;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label label7;
+        public ColorControl colorControlKikuchiLabel;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TrackBar trackBarKikuchiPointSize;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel11;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel6;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel12;
+        private System.Windows.Forms.CheckBox checkBoxSpecifyLabelColor;
+        public ColorControl colorControlIndexLabel;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel13;
     }
 }

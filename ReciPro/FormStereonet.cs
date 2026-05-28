@@ -191,7 +191,8 @@ public partial class FormStereonet : FormBase
 
         if (MouseRangingMode)
         {
-            var pen = new Pen(Brushes.Gray, 1f / (float)mag) { DashStyle = DashStyle.Dash };
+            using var pen = new Pen(Brushes.Gray, 1f / (float)mag);
+            pen.DashStyle = DashStyle.Dash;
             var start = convertClientToSrc(MouseRangeStart);
             var end = convertClientToSrc(MouseRangeEnd);
             g.DrawRectangle(pen, (float)Math.Min(start.X, end.X), (float)Math.Min(-start.Y, -end.Y),
@@ -343,14 +344,17 @@ public partial class FormStereonet : FormBase
         if (sin.Count == 0)
             for (int n = 0; n < 360; n++)
             {
-                sin.Add(Math.Sin(n * Math.PI / 180.0));
-                cos.Add(Math.Cos(n * Math.PI / 180.0));
-                tan.Add(Math.Tan(n * Math.PI / 180.0));
+                sin.Add(Sin(n * PI / 180.0));
+                cos.Add(Cos(n * PI / 180.0));
+                tan.Add(Tan(n * PI / 180.0));
             }
 
-        var pen1 = new Pen(new SolidBrush(colorControl1DegLine.Color), (float)(1 / mag));
-        var pen10 = new Pen(new SolidBrush(colorControl10DegLine.Color), (float)(2 / mag));
-        var pen90 = new Pen(new SolidBrush(colorControl90DegLine.Color), (float)(3 / mag));
+        // 260528Cl 変更: trackBarOutlineLineWidth で太さ可変化 + Pen を using 化 (旧: 固定 1/2/3, Pen(new SolidBrush(...), ...) の SolidBrush leak)
+        var lineWidth = trackBarOutlineLineWidth.Value / 5.0;
+
+        using var pen1 = new Pen(colorControl1DegLine.Color, (float)(lineWidth / mag));
+        using var pen10 = new Pen(colorControl10DegLine.Color, (float)(lineWidth * 2 / mag));
+        using var pen90 = new Pen(colorControl90DegLine.Color, (float)(lineWidth * 3 / mag));
 
         if (this.radioButtonOutlineEquator.Checked)//赤道モードのとき
         {
@@ -468,14 +472,17 @@ public partial class FormStereonet : FormBase
         var matBase = radioButtonAxes.Checked ? crystal.RotationMatrix * crystal.MatrixReal : crystal.RotationMatrix * crystal.MatrixInverseTransposed;
 
         var drawString = trackBarStrSize.Value != 1 && checkBoxShowIndexLabels.Checked;
-        var font = new Font("Times New Roman", trackBarStrSize.Value / (float)mag / 7f);
+        using var font = new Font("Times New Roman", trackBarStrSize.Value / (float)mag / 7f);
 
         Func<Vector3DBase, PointD> conv = radioButtonWulff.Checked ? Stereonet.ConvertVectorToWulff : Stereonet.ConvertVectorToSchmidt;
 
         foreach (var obj in ProjectedObjects)
         {
-            var brush = new SolidBrush(Color.FromArgb(obj.ARGB));
-            var pen = new Pen(Color.FromArgb(obj.ARGB), 2f / (float)mag);
+            // 260528Cl 変更: ラベル色指定モード (checkBoxSpecifyLabelColor) を追加 + GDI+ を using 化
+            // textBrush は false 時に brush をエイリアスし二重 using となるが SolidBrush.Dispose は冪等のため安全
+            using var brush = new SolidBrush(Color.FromArgb(obj.ARGB));
+            using var textBrush = checkBoxSpecifyLabelColor.Checked ? new SolidBrush(colorControlIndexLabel.Color) : brush;
+            using var pen = new Pen(Color.FromArgb(obj.ARGB), 2f / (float)mag);
             var radius = pointSize / mag;
             if (radioButtonPlanes.Checked && checkBoxReflectStructureFactor.Checked)
                 radius *= Sqrt(obj.Intensity);
@@ -507,7 +514,7 @@ public partial class FormStereonet : FormBase
                                 else
                                     str = radioButtonAxes.Checked ? $"[{index.X}{delimiter}{index.Y}{delimiter}{index.Z}]" : $"({index.X}{delimiter}{index.Y}{delimiter}{index.Z})";
 
-                                g.DrawString(str, font, brush, (float)(srcPt.X + radius), (float)(-srcPt.Y + radius));
+                                g.DrawString(str, font, textBrush, (float)(srcPt.X + radius), (float)(-srcPt.Y + radius));
                             }
                         }
                     }
@@ -533,9 +540,13 @@ public partial class FormStereonet : FormBase
                     var mat = GLGeometry.CreateRotationToZ(new V3(v.X, v.Y, v.Z)).ToMatrix3D();
                     double sinθ = waveLengthControl.WaveLength * v.Length / 2, cosθ = Math.Sqrt(1 - sinθ * sinθ);
 
-                    var pts = Enumerable.Range(0, sin.Count)
-                        .Select(i => conv(mat * new Vector3D(cosθ * sin[i], cosθ * cos[i], sinθ)))
-                        .Select(p => new PointF(-(float)p.X, (float)p.Y)).ToArray();
+                    // 260528Cl 変更: LINQ チェーンを素朴 for ループ化 (foreach×index 毎の enumerator alloc を削減)
+                    var pts = new PointF[sin.Count];
+                    for (int i = 0; i < sin.Count; i++)
+                    {
+                        var p = conv(mat * new Vector3D(cosθ * sin[i], cosθ * cos[i], sinθ));
+                        pts[i] = new PointF(-(float)p.X, (float)p.Y);
+                    }
 
                     //有効な点を抽出
                     int validStart1 = -1, validStart2 = -1, validEnd1 = -1, validEnd2 = -1;
@@ -554,7 +565,7 @@ public partial class FormStereonet : FormBase
                         }
 
                     var col = checkBoxReflectStructureFactor.Checked ? Color.FromArgb((int)(obj.Intensity * 255), obj.Color) : obj.Color;
-                    var penKikuchi = new Pen(col, 2f / (float)mag);
+                    using var penKikuchi = new Pen(col, 2f / (float)mag);
                     if (validEnd1 - validStart1 != 0)
                     {
                         pts = validStart1 != -1 && validStart2 == -1 ? pts[validStart1..(validEnd1 + 1)] : [.. pts[validStart2..(validEnd2 + 1)], .. pts[validStart1..(validEnd1 + 1)]];
@@ -596,10 +607,10 @@ public partial class FormStereonet : FormBase
             while (max + 1 < list.Length && list[max - 1].Value == list[max].Value)
                 max++;
 
-            var radius = 2f / (float)mag;
-            var brushLabel = new SolidBrush(colorControlString.Color);
-            var brushPt = new SolidBrush(colorControlKikuchi.Color);
-            var penPt = new Pen(colorControlKikuchi.Color, 2f / (float)mag);
+            var radius = (float)(trackBarKikuchiPointSize.Value / mag / 2.0);
+            using var brushLabel = new SolidBrush(colorControlKikuchiLabel.Color);
+            using var brushPt = new SolidBrush(colorControlKikuchiPoints.Color);
+            using var penPt = new Pen(colorControlKikuchiPoints.Color, 2f / (float)mag);
             var matReal = crystal.RotationMatrix * crystal.MatrixReal;
             for (int i = 0; i < max; i++)
             {
@@ -632,7 +643,10 @@ public partial class FormStereonet : FormBase
     private void DrawCircles(Graphics g)
     {
         float width;
-        var pen = new Pen(colorControlGreatCircle.Color, 0.002f);
+        // 260528Cl 変更: trackBarGreatCircleLineWidth で太さ可変化 (旧: 固定 0.002f, mag 非依存)
+        var penWidth = trackBarGreatCircleLineWidth.Value / mag / 2.0;
+        using var pen = new Pen(colorControlGreatCircle.Color, (float)penWidth);
+
         foreach (Vector3D v in checkedListBoxCircles.CheckedItems) // 260517Cl 型付き foreach にしてキャストを省略
         {
             var vec = Vector3D.Normarize(formMain.Crystal.RotationMatrix * v);
@@ -1255,9 +1269,10 @@ public partial class FormStereonet : FormBase
         {
             var row = (IndexInfo)((ListBox)sender).Items[e.Index];
             //スポットの色を表示
-            e.Graphics.FillRectangle(new SolidBrush(Color.FromArgb(row.ARGB)), new Rectangle(e.Bounds.X + margin, e.Bounds.Y + margin, ih - margin, ih - margin));
+            using var spotBrush = new SolidBrush(Color.FromArgb(row.ARGB));
+            e.Graphics.FillRectangle(spotBrush, new Rectangle(e.Bounds.X + margin, e.Bounds.Y + margin, ih - margin, ih - margin));
             //文字を描画する色の選択
-            Brush b = new SolidBrush(e.ForeColor);
+            using var b = new SolidBrush(e.ForeColor);
 
             //文字列の描画
             if (MillerBravaisActive && !radioButtonAxes.Checked)  //ミラー・ブレヴェ指数で表示
@@ -1267,9 +1282,6 @@ public partial class FormStereonet : FormBase
             }
             else //通常の表示
                 e.Graphics.DrawString(row.ToString(), e.Font, b, new Rectangle(e.Bounds.X + ih, e.Bounds.Y, e.Bounds.Width - ih, e.Bounds.Height));
-
-            //後始末
-            b.Dispose();
         }
 
         //フォーカスを示す四角形を描画
