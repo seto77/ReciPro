@@ -7,8 +7,9 @@ internal static class Version
     
     public const string History =
         "History" +
+        "\r\n ver4.932(2026/05/28)  Improved the manual and enhanced stereographic projection features. (see https://github.com/seto77/ReciPro/issues/58)" +
         "\r\n ver4.931(2026/05/19)  Fixed GUI layout issues that occurred under high-DPI display settings. (see https://github.com/seto77/ReciPro/issues/59)" +
-        "\r\n ver4.930(2026/05/17)  Fixed great circle rendering and added a cursor-position plane/axis index readout in the stereographic projection." +
+        "\r\n ver4.930(2026/05/17)  Fixed great circle rendering and added a cursor-position plane/axis index readout in the stereographic projection. (see https://github.com/seto77/ReciPro/issues/58)" +
         "\r\n ver4.929(2026/05/13)  Fixed bugs in symmetry element rendering in 'Structure Viewer' and improved its performance." +
         "\r\n ver4.928(2026/05/09)  Added a function to render symmetry elements in 'Structure Viewer'." +
         "\r\n ver4.927(2026/05/04)  Substantially expanded 'Symmetry Information' to render ITC Vol.A style schematic diagrams of symmetry elements and general positions." +
