@@ -73,6 +73,7 @@ public partial class FormStereonet : FormBase
     public FormStereonet()
     {
         InitializeComponent();
+        HelpPage = "6-stereonet"; //260529Cl 追加
         this.SetStyle(ControlStyles.DoubleBuffer, true);
         this.SetStyle(ControlStyles.UserPaint, true);
         this.SetStyle(ControlStyles.AllPaintingInWmPaint, true);

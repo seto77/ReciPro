@@ -9,6 +9,7 @@ public partial class FormCrystalDatabase : FormBase
     public FormCrystalDatabase()
     {
         InitializeComponent();
+        HelpPage = "1-crystal-database"; //260529Cl 追加
         searchCrystalControl.CrystalDatabaseControl = crystalDatabaseControl;
     }
 

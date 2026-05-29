@@ -280,6 +280,7 @@ public partial class FormImageSimulator : FormBase
     public FormImageSimulator()
     {
         InitializeComponent();
+        HelpPage = "9-hrtem-stem-simulator"; //260529Cl 追加
 
         FormDiffractionSpotInfo = new FormDiffractionSpotInfo { Visible = false, FormImageSimulator = this };
 

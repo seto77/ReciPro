@@ -269,6 +269,22 @@ public partial class FormMain : FormBase
             Thread.CurrentThread.CurrentUICulture = GuiCapture.ForcedUICulture;
 
         InitializeComponent();
+        HelpPage = "0-main-window"; //260529Cl 追加
+
+        //260529Cl 追加: F1 オンラインヘルプの URL 解決ロジックを登録 (起動時に 1 回)。
+        //Controls 側フォームは ReciPro 固有の URL を知らないため、ここで一括して組み立てる。
+        FormBase.HelpUrlResolver = f =>
+        {
+            var lang = Thread.CurrentThread.CurrentUICulture.Name == "ja" ? "ja" : "en";
+            return string.IsNullOrEmpty(f.HelpPage)
+                ? (lang == "ja" ? "https://seto77.github.io/ReciPro/ja/" : "https://seto77.github.io/ReciPro/")
+                : $"https://seto77.github.io/ReciPro/{lang}/{f.HelpPage}/";
+        };
+
+        //260529Cl 追加: Crystallography.Controls 側 (CrystalControl 内) で生成される子フォームの
+        //HelpPage は ReciPro からインスタンスに触れるここで設定する。
+        crystalControl.FormSymmetryInformation.HelpPage = "2-symmetry-information";
+        crystalControl.FormScatteringFactor.HelpPage = "3-scattering-factor";
 
         //260413Cl DPI スケーリング補正 (ListBox.ColumnWidth は自動スケール対象外)
         listBox.ColumnWidth = (int)(listBox.ColumnWidth * DeviceDpi / 96.0);

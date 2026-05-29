@@ -64,6 +64,7 @@ public partial class FormSpotIDV2 : FormBase
     public FormSpotIDV2()
     {
         InitializeComponent();
+        HelpPage = "11-spot-id-v2"; //260529Cl 追加
 
         scalablePictureBoxAdvanced.Symbols = new List<ScalablePictureBox.Symbol>();
         typeof(DataGridView).GetProperty("DoubleBuffered", BindingFlags.Instance | BindingFlags.NonPublic).SetValue(dataGridViewSpots, true, null);

@@ -129,6 +129,7 @@ public partial class FormDiffractionSimulatorCBED : FormBase
     public FormDiffractionSimulatorCBED()
     {
         InitializeComponent();
+        HelpPage = "7-diffraction-simulator/4-cbed-simulation"; //260529Cl 追加
         NumericBoxDivision_ValueChanged(new object(), new EventArgs());
 
         if (!BetheMethod.EigenEnabled)

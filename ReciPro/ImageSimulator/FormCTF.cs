@@ -33,6 +33,7 @@ public partial class FormCTF : FormBase
     public FormCTF()
     {
         InitializeComponent();
+        HelpPage = "9-hrtem-stem-simulator"; //260529Cl 追加
     }
 
     #region コントラスト伝達描画関連

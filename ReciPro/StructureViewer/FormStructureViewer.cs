@@ -108,6 +108,7 @@ public partial class FormStructureViewer : FormBase
     public FormStructureViewer()
     {
         InitializeComponent();
+        HelpPage = "5-structure-viewer"; //260529Cl 追加
         GLObjectsP = GLObjects.AsParallel();
 
         for (int a = -1; a < 2; a++)

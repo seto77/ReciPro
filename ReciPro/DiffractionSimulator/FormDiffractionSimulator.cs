@@ -369,6 +369,7 @@ public partial class FormDiffractionSimulator : FormBase
     public FormDiffractionSimulator()
     {
         InitializeComponent();
+        HelpPage = "7-diffraction-simulator"; //260529Cl 追加
         this.SetStyle(ControlStyles.DoubleBuffer, true);
         this.SetStyle(ControlStyles.UserPaint, true);
         this.SetStyle(ControlStyles.AllPaintingInWmPaint, true);

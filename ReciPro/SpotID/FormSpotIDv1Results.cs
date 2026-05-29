@@ -11,11 +11,12 @@ namespace ReciPro
         public List<ZoneAxes> zoneAxes;
         public List<ZoneAxis> zoneAxis;
 
-        public FormSpotIDv1Results() => InitializeComponent();
+        public FormSpotIDv1Results() { InitializeComponent(); HelpPage = "10-spot-id"; } //260529Cl HelpPage 追加
 
         public FormSpotIDv1Results(FormSpotIDv1 formTEMID)
         {
             InitializeComponent();
+            HelpPage = "10-spot-id"; //260529Cl 追加
             this.formTEMID = formTEMID;
             typeof(DataGridView).GetProperty("DoubleBuffered", BindingFlags.Instance | BindingFlags.NonPublic).SetValue(dataGridView1, true, null);
 

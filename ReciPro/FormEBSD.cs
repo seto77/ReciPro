@@ -166,6 +166,7 @@ public partial class FormEBSD : FormBase
     public FormEBSD()
     {
         InitializeComponent();
+        HelpPage = "12-ebsd-simulation"; //260529Cl 追加
 
         buttonStop.Click += buttonStop_Click; // (260327Ch) 既存の Stop ボタンは MasterPattern build 停止に使う
         UpdateEbsdTiltCoeffs(); // 260325Cl: tilt 係数を初期値で計算

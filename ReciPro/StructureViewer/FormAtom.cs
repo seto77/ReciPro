@@ -14,7 +14,7 @@ public partial class FormAtom : FormBase
 
     public bool SkipChange = true;
 
-    public FormAtom() => InitializeComponent();
+    public FormAtom() { InitializeComponent(); HelpPage = "5-structure-viewer"; } //260529Cl HelpPage 追加
 
     /*
     internal void SetAtom(atom atom)

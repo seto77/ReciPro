@@ -13,6 +13,7 @@ public partial class FormSpotIDv1 : FormBase
     public FormSpotIDv1()
     {
         InitializeComponent();
+        HelpPage = "10-spot-id"; //260529Cl 追加
         photo1 = new PhotoInformation(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, true, 0, 0);
         photo2 = new PhotoInformation(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, true, 0, 0);
         photo3 = new PhotoInformation(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, true, 0, 0);

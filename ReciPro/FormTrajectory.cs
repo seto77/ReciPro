@@ -36,6 +36,7 @@ public partial class FormTrajectory : FormBase
     public FormTrajectory()
     {
         InitializeComponent();
+        HelpPage = "8-electron-trajectory"; //260529Cl 追加
     }
 
     private void FormEBSD_Load(object sender, EventArgs e)

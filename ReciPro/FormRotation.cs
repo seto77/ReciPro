@@ -35,7 +35,7 @@ public partial class FormRotationMatrix : FormBase
         }
     }
 
-    public FormRotationMatrix() => InitializeComponent();
+    public FormRotationMatrix() { InitializeComponent(); HelpPage = "4-rotation-geometry"; } //260529Cl HelpPage 追加
 
     public bool Linked => Visible && checkBoxLink.Checked;
 

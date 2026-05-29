@@ -12,7 +12,7 @@ public partial class FormSpotIDv2Details : FormBase
     public int BoxWide => scalablePictureBoxAdvanced.PictureSize.Width;
     public int BoxHeight => scalablePictureBoxAdvanced.PictureSize.Height;
 
-    public FormSpotIDv2Details() => InitializeComponent();
+    public FormSpotIDv2Details() { InitializeComponent(); HelpPage = "11-spot-id-v2"; } //260529Cl HelpPage 追加
 
     public void SetData(bool renewImage = true)
     {
