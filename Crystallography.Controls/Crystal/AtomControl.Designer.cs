@@ -413,6 +413,7 @@
             tabPageOriginShift.Controls.Add(numericBoxOriginShiftX);
             resources.ApplyResources(tabPageOriginShift, "tabPageOriginShift");
             tabPageOriginShift.Name = "tabPageOriginShift";
+            captureExtender.SetCapture(tabPageOriginShift, true); //260529Cl: マニュアル用にタブ単位クロップを撮る
             // 
             // flowLayoutPanel3
             // 
@@ -957,6 +958,7 @@
             tabPageAppearance.Controls.Add(colorControlAtomColor);
             resources.ApplyResources(tabPageAppearance, "tabPageAppearance");
             tabPageAppearance.Name = "tabPageAppearance";
+            captureExtender.SetCapture(tabPageAppearance, true); //260529Cl: マニュアル用にタブ単位クロップを撮る
             // 
             // numericBoxAlpha
             // 
@@ -1370,9 +1372,6 @@
             ((System.ComponentModel.ISupportInitialize)dataSet).EndInit();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
-            //260529Cl 追加: マニュアル用にタブ単位クロップを撮れるよう Capture=true を付与 (UserControlBase の captureExtender を使用)
-            captureExtender.SetCapture(tabPageOriginShift, true);
-            captureExtender.SetCapture(tabPageAppearance, true);
             ResumeLayout(false);
         }
 
