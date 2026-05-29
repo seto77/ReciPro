@@ -88,6 +88,37 @@ namespace OpenTK.GLControl
         [DllImport("user32.dll", SetLastError = true)]
         public static extern IntPtr SetParent(IntPtr hWndChild, IntPtr hWndNewParent);
 
+        // 260529Cl 追加: Windows on ARM (x64 エミュ) + PerMonitorV2 で GLFW の glfwSetWindowSize が
+        // 親 WinForms クライアント領域と DPI ベースでズレる問題に対処するため、HWND を物理ピクセル単位で直接リサイズする用途。
+        [DllImport("user32.dll", SetLastError = true)]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        public static extern bool MoveWindow(IntPtr hWnd, int X, int Y, int nWidth, int nHeight, [MarshalAs(UnmanagedType.Bool)] bool bRepaint);
+
+        // 260529Cl 追加: 診断ログ用。HWND のクライアント領域 (物理ピクセル) を取得。
+        [DllImport("user32.dll", SetLastError = true)]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        public static extern bool GetClientRect(IntPtr hWnd, out RECT lpRect);
+
+        // 260529Cl 追加: 診断ログ用。HWND の絶対 (スクリーン) 座標を取得。
+        [DllImport("user32.dll", SetLastError = true)]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        public static extern bool GetWindowRect(IntPtr hWnd, out RECT lpRect);
+
+        // 260529Cl 追加: 診断ログ用。HWND の親 HWND を取得。
+        [DllImport("user32.dll", SetLastError = true)]
+        public static extern IntPtr GetParent(IntPtr hWnd);
+
+        [StructLayout(LayoutKind.Sequential)]
+        public struct RECT
+        {
+            public int Left;
+            public int Top;
+            public int Right;
+            public int Bottom;
+            public int Width => Right - Left;
+            public int Height => Bottom - Top;
+        }
+
         #endregion
 
         #region Miscellaneous Kernel32 stuff

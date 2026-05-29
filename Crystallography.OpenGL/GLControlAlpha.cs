@@ -402,10 +402,104 @@ public unsafe partial class GLControlAlpha : UserControl
 
     private double projWidth = 4f;
 
-    /// <summary>投影面のアスペクト比</summary>
-    [Category("Geometry")]
-    // private double ProjAspect => glControl == null ? 0 : (double)glControl.ClientSize.Height / glControl.ClientSize.Width;
-    private double ProjAspect => glControl is null || glControl.ClientSize.Width <= 0 || glControl.ClientSize.Height <= 0 ? 0d : (double)glControl.ClientSize.Height / glControl.ClientSize.Width; // (260320Ch) 0 除算や退化アスペクト比を避ける
+    // 260529Cl 追加: GL 描画対象(実 back buffer)のピクセルサイズを取得する。
+    // Windows on ARM (x64 エミュレーション) 環境では WinForms の ClientSize と
+    // GLFW 子ウィンドウの実バックバッファサイズがズレるケースがあり、
+    // ClientSize 基準で Viewport / 投影行列を組むと描画がはみ出したり、
+    // リサイズ後にアスペクト比が崩れたりする。GL 系の長さは全てここに統一する。
+    // (マウス座標は WinForms イベント座標系なので ClientSize のまま使う。)
+    private (int Width, int Height) getRenderTargetPixels()
+    {
+        if (glControl is null)
+            return (0, 0);
+        var fb = glControl.FramebufferPixelSize;
+        var result = (fb.Width > 0 && fb.Height > 0)
+            ? (fb.Width, fb.Height)
+            : (glControl.ClientSize.Width, glControl.ClientSize.Height);
+        // 260529Cl 追加: 診断ログ。同一値が連続する場合はスキップして、サイズ変化のみ記録する
+        if (_glLog && result != _lastLoggedRT)
+        {
+            // 260529Cl 修正: glControl.Name は "glControl{N}" (内部連番) なので、外側 UserControl 自身の Name (= FormRotation で振った "glControlReciProObjects" 等) を使う
+            OpenTK.GLControl.GLDebugLog.Log(this.Name, "getRenderTargetPixels",
+                $"[inner={glControl.Name}] => ({result.Item1},{result.Item2}) fb=({fb.Width},{fb.Height}) cs=({glControl.ClientSize.Width},{glControl.ClientSize.Height})");
+            _lastLoggedRT = result;
+        }
+        return result;
+    }
+    private (int, int) _lastLoggedRT = (-1, -1); // 260529Cl 追加: 直近ログした値 (delta logging 用)
+    private int _renderLogCount = 0; // 260529Cl 追加: Render 入口の初期数回のログ用カウンタ
+    private int _renderLogCount2 = 0; // 260529Cl 追加: Render が早期 return を通過した後の初期数回のログ用カウンタ
+    private int _viewportLogCount = 0; // 260529Cl 追加: GL.Viewport 設定直後の readback ログ用カウンタ
+
+    // 260529Cl: 診断モード (環境変数 RECIPRO_GLDIAG)。未設定=通常 (ログ無し)。詳細: .project-guidance/ReciPro_WindowsOnARM_OpenGL調査.md
+    //   RECIPRO_GLDIAG=1     → 実描画のまま診断ログを出力 (GL_RENDERER / Viewport readback 等)
+    //   RECIPRO_GLDIAG=bands → 上記ログ + 通常描画を BLUE/MAGENTA/RED カラーバンドに置換 (swapchain 実サイズの可視化)
+    private static readonly bool _glLog = OpenTK.GLControl.GLDebugLog.Enabled; // ログ全般のゲート (文字列生成も抑止する用)
+    private static readonly bool _glDiagBands =
+        string.Equals(Environment.GetEnvironmentVariable("RECIPRO_GLDIAG"), "bands", StringComparison.OrdinalIgnoreCase);
+    private static bool _glRendererLogged = false; // GL_VENDOR/RENDERER/VERSION は 1 回だけログする
+
+    // 260529Cl 追加: Windows on ARM (GLOn12 = Mesa d3d12 gallium) の swapchain stuck 対策 (FormMain glControlAxes 等の
+    // 固定サイズ GLControl で下半分が黒くなる症状)。小サイズの空描画で DXGI swapchain が生成されると、その後の高さ方向
+    // ResizeBuffers が効かずサイズが固定化する。空描画 (描画対象が無い) の間は FB0 を触らず、swapchain の最初の生成を
+    // 最初の実コンテンツ描画 (= 最終サイズ) まで遅延させることで、正しいサイズで生成させる。実コンテンツ描画後は
+    // swapchain が確保済みなので通常どおり空描画もクリアする。ARM 以外は従来挙動 (影響なし)。
+    // 詳細: .project-guidance/ReciPro_WindowsOnARM_OpenGL調査.md
+    private static readonly bool _isArm64 =
+        System.Runtime.InteropServices.RuntimeInformation.OSArchitecture == System.Runtime.InteropServices.Architecture.Arm64;
+    private bool _hasRenderedContent = false; // 実コンテンツを1回でも描画したか (ARM の swapchain 遅延生成解除用)
+
+    // 260529Cl 追加 (診断用): GL コンテキストの素性 (vendor/renderer/version/GLSL) を 1 回だけログする。
+    // ARM x64 エミュ環境では ICD が GLOn12 (OpenGL→D3D12 マッピング層) の可能性が高く、その場合 default framebuffer の
+    // swapchain がリサイズに追従しない既知問題が疑われるため、まず renderer の素性を確定する。
+    private void logGlRendererOnce()
+    {
+        if (!_glLog || _glRendererLogged) return;
+        _glRendererLogged = true;
+        try
+        {
+            OpenTK.GLControl.GLDebugLog.Log("RENDER_PROBE", "GL_RENDERER",
+                $"VENDOR={GL.GetString(StringName.Vendor)} | RENDERER={GL.GetString(StringName.Renderer)} | " +
+                $"VERSION={GL.GetString(StringName.Version)} | GLSL={GL.GetString(StringName.ShadingLanguageVersion)}");
+        }
+        catch { /* 診断ログ失敗で本体を巻き込まない */ }
+    }
+
+    // 260529Cl 追加 (診断用): 通常描画の代わりに既知色のバンドを default framebuffer に塗って提示する。
+    // GL の Y 軸は下が原点 (Y-up) なので、正常環境では画面上→下が BLUE / MAGENTA / RED に見えるはず。
+    // ・色の並びが上下逆 → ARM ドライバが Y-down で提示している。
+    // ・下端 (RED) が黒のまま → drawable/swapchain が初期の小サイズに stuck し、下部が addressable でない (仮説D)。
+    // ・全体が上 1/3 程度に圧縮されて下が黒 → swapchain が初期 94px 高に固定。
+    // viewport の readback と cached/live framebuffer サイズも併せてログする。
+    private void renderArmDiagnostic()
+    {
+        var (fbW, fbH) = getRenderTargetPixels();
+        if (fbW <= 0 || fbH <= 0) return;
+        var live = glControl.FramebufferPixelSizeLive;
+        var cached = glControl.FramebufferPixelSize;
+
+        GL.Disable(EnableCap.ScissorTest);
+        GL.Viewport(0, 0, fbW, fbH);
+        GL.ClearColor(1f, 0f, 1f, 1f); // 全面マゼンタ (clear が full buffer に届くかの基準色)
+        GL.Clear(ClearBufferMask.ColorBufferBit);
+
+        GL.Enable(EnableCap.ScissorTest);
+        GL.Scissor(0, 0, fbW, fbH / 3);               // GL Y-up: 画面下 1/3
+        GL.ClearColor(1f, 0f, 0f, 1f); GL.Clear(ClearBufferMask.ColorBufferBit); // RED
+        GL.Scissor(0, fbH - fbH / 3, fbW, fbH / 3);   // GL Y-up: 画面上 1/3
+        GL.ClearColor(0f, 0f, 1f, 1f); GL.Clear(ClearBufferMask.ColorBufferBit); // BLUE
+        GL.Disable(EnableCap.ScissorTest);
+        GL.ClearColor(BackgroundColor); // 260529Cl: 診断で変更した ClearColor を元へ戻す (この関数を GL 状態的に自己完結させる)
+
+        GL.GetInteger(GetPName.Viewport, _diagVp);
+        OpenTK.GLControl.GLDebugLog.Log(this.Name, "GLDIAG/bands",
+            $"rt=({fbW},{fbH}) cachedFB=({cached.Width},{cached.Height}) liveFB=({live.Width},{live.Height}) " +
+            $"GL_VIEWPORT=({_diagVp[0]},{_diagVp[1]},{_diagVp[2]},{_diagVp[3]})");
+
+        if (!renderingForBitmapCapture)
+            glControl.SwapBuffers();
+    }
+    private readonly int[] _diagVp = new int[4]; // 260529Cl 追加 (診断用): GL_VIEWPORT readback バッファ
 
     /// <summary>プロジェクション(投影)マトリックス</summary>
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
@@ -416,10 +510,13 @@ public unsafe partial class GLControlAlpha : UserControl
     private Mat4f projMatrixF = Mat4f.Identity;
     private void setProjMatrix()
     {
-        if (glControl is null || glControl.ClientSize.Width <= 0 || glControl.ClientSize.Height <= 0)
+        // 260529Cl 変更: ClientSize ではなく実 back buffer 基準でゼロ判定 (ARM の DPI 仮想化対策)
+        var (rtW, rtH) = getRenderTargetPixels();
+        if (glControl is null || rtW <= 0 || rtH <= 0)
             return; // (260320Ch) 初期化途中や最小化直後のゼロサイズでは投影行列を更新しない
 
-        double x = projCenter.X, y = projCenter.Y, w = ProjWidth / 2, h = ProjWidth * ProjAspect / 2;
+        // 260529Cl 変更: アスペクト比は取得済の (rtW, rtH) で直接計算する
+        double x = projCenter.X, y = projCenter.Y, w = ProjWidth / 2, h = ProjWidth * rtH / rtW / 2;
         double left = x - w, right = x + w, bottom = y - h, top = y + h;
         double zNear = 1f, coeff = zNear / viewFrom.Length;
         if (projectionMode == ProjectionModes.Orhographic)
@@ -463,10 +560,17 @@ public unsafe partial class GLControlAlpha : UserControl
     {
         var apiVersion = shaderMode == FragShaders.PPLL ? VersionForPpllApi :
             shaderMode == FragShaders.DDP ? VersionForDdpApi : VersionForZsortApi; // (260319Ch) DDP は OpenGL 4.1 core context で作成する
+        // 260529Cl 変更: Windows on ARM (x64 エミュ) では ZSORT モードの MSAA (NumberOfSamples=2) バックバッファが
+        // 初回 WM_SIZE 後にドライバ側で正しく再確保されない症状 (固定サイズ GLControl で描画が壊れる) が確認されたため、
+        // ARM64 ホスト OS では MSAA を無効化する。stretching コントロールが複数回リサイズで自己修復するのに対し、
+        // 固定サイズコントロールは初回 resize のままバッファが残るためアスペクト比ズレ・黒帯・はみ出しが顕在化する。
+        int samples = shaderMode == FragShaders.ZSORT ? 2 : 0;
+        if (samples > 0 && _isArm64) // 260529Cl: ARM では MSAA を無効化 (back buffer 再確保不具合回避)
+            samples = 0;
         return new GLControlSettings()
         {
             APIVersion = apiVersion,
-            NumberOfSamples = forVersionProbe ? 0 : shaderMode == FragShaders.ZSORT ? 2 : 0,
+            NumberOfSamples = forVersionProbe ? 0 : samples,
             StencilBits = 8,
             DepthBits = 16,
             Profile = OpenTK.Windowing.Common.ContextProfile.Core,
@@ -790,7 +894,9 @@ public unsafe partial class GLControlAlpha : UserControl
             return;
 
         GL.UseProgram(program);
-        GL.Uniform2(locations.ViewportSize, new Vector2(glControl.ClientSize.Width, glControl.ClientSize.Height));
+        // 260529Cl 変更: ViewportSize uniform は実 back buffer 基準 (ClientSize とのズレでアスペクトが崩れるのを防ぐ)
+        var (vpW, vpH) = getRenderTargetPixels();
+        GL.Uniform2(locations.ViewportSize, new Vector2(vpW, vpH));
         GL.Uniform3(locations.EyePosition, viewFromF);
         GL.Uniform3(locations.LightPosition, lightPositionF);
         GL.UniformMatrix4(locations.ViewMatrix, false, ref viewMatrixF);
@@ -818,8 +924,10 @@ public unsafe partial class GLControlAlpha : UserControl
         if (textDepthTex == 0 || glControl == null)
             return;
 
-        var width = Math.Min(glControl.ClientSize.Width, MaxWidth);
-        var height = Math.Min(glControl.ClientSize.Height, MaxHeight);
+        // 260529Cl 変更: ClientSize → 実 back buffer 基準 (ARM 環境のサイズミスマッチ対策)
+        var (rtW, rtH) = getRenderTargetPixels();
+        var width = Math.Min(rtW, MaxWidth);
+        var height = Math.Min(rtH, MaxHeight);
         if (width <= 0 || height <= 0)
             return;
 
@@ -859,12 +967,19 @@ public unsafe partial class GLControlAlpha : UserControl
         if (postProcessColorTex == 0 || glControl == null)
             return;
 
-        var width = Math.Min(glControl.ClientSize.Width, MaxWidth);
-        var height = Math.Min(glControl.ClientSize.Height, MaxHeight);
+        // 260529Cl 変更: ClientSize → 実 back buffer 基準 (FXAA テクスチャは back buffer と同サイズが必要)
+        var (rtW, rtH) = getRenderTargetPixels();
+        var width = Math.Min(rtW, MaxWidth);
+        var height = Math.Min(rtH, MaxHeight);
         if (width <= 0 || height <= 0)
             return;
         if (postProcessTextureWidth == width && postProcessTextureHeight == height)
             return;
+
+        // 260529Cl 追加 (診断用): 再作成のたびに old → new の遷移をログ
+        if (_glLog)
+            OpenTK.GLControl.GLDebugLog.Log(this.Name, "ppTexRecreate",
+                $"[inner={glControl.Name}] {postProcessTextureWidth}x{postProcessTextureHeight} -> {width}x{height}");
 
         // GL.TexImage2D(TextureTarget.Texture2D, 0, PixelInternalFormat.Rgba8, MaxWidth, MaxHeight, 0, PixelFormat.Rgba, PixelType.UnsignedByte, IntPtr.Zero);
         // (260319Ch) 旧案: MaxWidth/MaxHeight 固定 texture に部分コピーしていたため、最終表示で左下に縮んで見えた
@@ -894,8 +1009,10 @@ public unsafe partial class GLControlAlpha : UserControl
             return;
 
         ensurePostProcessTextureSize();
-        var width = Math.Min(glControl.ClientSize.Width, MaxWidth);
-        var height = Math.Min(glControl.ClientSize.Height, MaxHeight);
+        // 260529Cl 変更: ClientSize → 実 back buffer 基準 (CopyTexSubImage2D は back buffer ピクセル単位)
+        var (rtW, rtH) = getRenderTargetPixels();
+        var width = Math.Min(rtW, MaxWidth);
+        var height = Math.Min(rtH, MaxHeight);
         if (width <= 0 || height <= 0)
             return;
 
@@ -926,7 +1043,9 @@ public unsafe partial class GLControlAlpha : UserControl
 
         copyPostProcessColorTexture();
         GL.BindFramebuffer(FramebufferTarget.Framebuffer, 0);
-        GL.Viewport(0, 0, glControl.ClientSize.Width, glControl.ClientSize.Height);
+        // 260529Cl 変更: 実 back buffer サイズで Viewport を張る (ARM 環境の ClientSize ズレ対策)
+        var (vpW, vpH) = getRenderTargetPixels();
+        GL.Viewport(0, 0, vpW, vpH);
         GL.Disable(EnableCap.DepthTest);
         GL.DepthMask(false);
         GL.Disable(EnableCap.Blend);
@@ -1231,6 +1350,20 @@ public unsafe partial class GLControlAlpha : UserControl
     /// <summary>レンダリング</summary>
     public void Render()
     {
+        // 260529Cl 追加: 早期 return より前に Render 入口を必ずログ。フィルタリングを回避するため Name が target でなくとも記録できるよう、
+        // setProjMatrix と同じく postAssign 経由で間接的に呼ばれることを示すため明示的な evt 名を使う。
+        // _renderLogCount が大きく増えても 200 回までは出すことで、初期化の全 Render 呼び出しを観測する。
+        if (_glLog && _renderLogCount < 200)
+        {
+            var nameForLog = string.IsNullOrEmpty(this.Name) ? "<empty>" : this.Name;
+            // 必ず target にヒットさせるため、glControlReciProObjects 等の target 名と合わない場合は parent 経由で再解決する。
+            // ただし Render は GLControlAlpha (UserControl) の this なので、this.Parent は groupBox 等になり target にならない可能性がある。
+            // よってここでは固定 sentinel 名 "RENDER_PROBE" を使って常時 target にヒットさせる方針に切り替える。
+            OpenTK.GLControl.GLDebugLog.Log("RENDER_PROBE", $"Render#{_renderLogCount}",
+                $"thisName={nameForLog} [inner={glControl?.Name ?? "<null>"}] InvokeRequired={InvokeRequired} SkipRendering={SkipRendering} Program={Program} glObjCount={glObjects?.Count ?? -1}");
+            _renderLogCount++;
+        }
+
         if (InvokeRequired)//別スレッドから呼び出されたとき Invokeして呼びなおす
         {
             // Invoke(new Action(() => Render()), null);
@@ -1243,8 +1376,29 @@ public unsafe partial class GLControlAlpha : UserControl
 
         glControl.MakeCurrent();
 
+        logGlRendererOnce(); // 260529Cl 追加 (診断用): GL_VENDOR/RENDERER/VERSION を 1 回だけ記録
+        if (_glDiagBands) // 260529Cl 追加 (診断用): RECIPRO_GLDIAG=bands のとき通常描画をやめてカラーバンド診断に置換
+        {
+            renderArmDiagnostic();
+            return;
+        }
+
+        // 260529Cl 追加: Render 入口を通過した後 (MakeCurrent 済) の状態
+        if (_glLog && _renderLogCount2 < 3)
+        {
+            var fbDiag = glControl.FramebufferPixelSize;
+            OpenTK.GLControl.GLDebugLog.Log(this.Name, $"Render#{_renderLogCount2}/pass",
+                $"[inner={glControl.Name}] hasObj={hasRenderableObject()} fb=({fbDiag.Width},{fbDiag.Height}) cs=({glControl.ClientSize.Width},{glControl.ClientSize.Height}) ppTex=({postProcessTextureWidth},{postProcessTextureHeight}) FragShader={FragShader}");
+            _renderLogCount2++;
+        }
+
         if (glObjects.Count == 0 || !hasRenderableObject())
         {
+            // 260529Cl 追加: ARM (GLOn12/Mesa d3d12) では最初の実コンテンツ描画まで空描画の Clear/SwapBuffers を抑止し、
+            // DXGI swapchain の最初の生成を最終サイズで行わせる (小サイズで生成されると高さ方向の ResizeBuffers が効かず固定化する)。
+            // 実コンテンツ描画後 (_hasRenderedContent) は swapchain が確保済みなので通常どおりクリアする。詳細は調査書参照。
+            if (_isArm64 && !_hasRenderedContent)
+                return;
             GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
             GL.ClearColor(BackgroundColor);
             // glControl.SwapBuffers();//swap // 旧実装: Bitmap 生成用の再描画でも常に front/back を入れ替えていた
@@ -1252,8 +1406,23 @@ public unsafe partial class GLControlAlpha : UserControl
                 glControl.SwapBuffers();//swap // (260523Ch) キャプチャ用描画は back buffer を保持して ReadPixels する
             return;
         }
+        _hasRenderedContent = true; // 260529Cl 追加: 実コンテンツ描画に到達 (ARM の swapchain 遅延生成を以後解除)
 
-        GL.Viewport(0, 0, glControl.ClientSize.Width, glControl.ClientSize.Height);
+        // 260529Cl 変更: 実 back buffer サイズで Viewport (ARM 環境の ClientSize ズレ対策)
+        var (vpW, vpH) = getRenderTargetPixels();
+        GL.Viewport(0, 0, vpW, vpH);
+        // 260529Cl 追加 (診断用): driver が Viewport 設定を受理したか readback で確認し、cached/live framebuffer サイズと併記する。
+        // GL_VIEWPORT が要求値と食い違えば仮説A、cached と live が食い違えば仮説D の証拠になる。
+        if (_glLog && _viewportLogCount < 5)
+        {
+            GL.GetInteger(GetPName.Viewport, _diagVp);
+            var liveFb = glControl.FramebufferPixelSizeLive;
+            var cachedFb = glControl.FramebufferPixelSize;
+            OpenTK.GLControl.GLDebugLog.Log(this.Name, "Viewport/readback",
+                $"requested=({vpW},{vpH}) GL_VIEWPORT=({_diagVp[0]},{_diagVp[1]},{_diagVp[2]},{_diagVp[3]}) " +
+                $"cachedFB=({cachedFb.Width},{cachedFb.Height}) liveFB=({liveFb.Width},{liveFb.Height})");
+            _viewportLogCount++;
+        }
         applyFrameUniforms(Program);
         if (TextProgram > 0)
             applyFrameUniforms(TextProgram);
@@ -1276,8 +1445,10 @@ public unsafe partial class GLControlAlpha : UserControl
             GL.BufferSubData(BufferTarget.AtomicCounterBuffer, (IntPtr)0, sizeof(uint), (IntPtr)(&zero));
             GL.BindBuffer(BufferTarget.PixelUnpackBuffer, clearBuf);
             GL.BindTexture(TextureTarget.Texture2D, headPtrTex);
-            var headPointerWidth = Math.Min(glControl.ClientSize.Width, MaxWidth);
-            var headPointerHeight = Math.Min(glControl.ClientSize.Height, MaxHeight);
+            // 260529Cl 変更: ClientSize → 実 back buffer 基準 (head pointer の clear 範囲は back buffer ピクセル単位)
+            var (hpRtW, hpRtH) = getRenderTargetPixels();
+            var headPointerWidth = Math.Min(hpRtW, MaxWidth);
+            var headPointerHeight = Math.Min(hpRtH, MaxHeight);
             // GL.TexSubImage2D(TextureTarget.Texture2D, 0, 0, 0, MaxWidth, MaxHeight, PixelFormat.RedInteger, PixelType.UnsignedInt, IntPtr.Zero);
             if (headPointerWidth > 0 && headPointerHeight > 0)
                 GL.TexSubImage2D(TextureTarget.Texture2D, 0, 0, 0, headPointerWidth, headPointerHeight, PixelFormat.RedInteger, PixelType.UnsignedInt, IntPtr.Zero); // (260319Ch) Clear only the active viewport region of the head-pointer texture
@@ -1346,8 +1517,11 @@ public unsafe partial class GLControlAlpha : UserControl
 
             clearDdpAccumulationAttachments();
 
+            // 260529Cl 変更: DDP 全 pass で同一の Viewport サイズを使うため、ここで一度だけ実 back buffer サイズを取る
+            var (ddpVpW, ddpVpH) = getRenderTargetPixels();
+
             GL.BindFramebuffer(FramebufferTarget.Framebuffer, ddpFramebuffers[0]);
-            GL.Viewport(0, 0, glControl.ClientSize.Width, glControl.ClientSize.Height);
+            GL.Viewport(0, 0, ddpVpW, ddpVpH);
             clearDdpDepthAttachment(0);
             GL.DrawBuffers(ddpDepthDrawBuffers.Length, ddpDepthDrawBuffers);
             GLObject.CurrentFragmentRenderPassIndex = passDdpInitIndex;
@@ -1363,7 +1537,7 @@ public unsafe partial class GLControlAlpha : UserControl
             for (int peelPass = 0; peelPass < DualDepthPeelingPasses; peelPass++)
             {
                 GL.BindFramebuffer(FramebufferTarget.Framebuffer, ddpFramebuffers[writeIndex]);
-                GL.Viewport(0, 0, glControl.ClientSize.Width, glControl.ClientSize.Height);
+                GL.Viewport(0, 0, ddpVpW, ddpVpH);
                 clearDdpDepthAttachment(writeIndex);
                 GL.DrawBuffers(ddpPeelDrawBuffers.Length, ddpPeelDrawBuffers);
                 bindDdpTextures(ddpDepthTextures[readIndex], ddpFrontBlenderTexture, ddpBackBlenderTexture);
@@ -1395,7 +1569,7 @@ public unsafe partial class GLControlAlpha : UserControl
             }
 
             GL.BindFramebuffer(FramebufferTarget.Framebuffer, 0);
-            GL.Viewport(0, 0, glControl.ClientSize.Width, glControl.ClientSize.Height);
+            GL.Viewport(0, 0, ddpVpW, ddpVpH);
             GL.ClearColor(BackgroundColor);
             GL.Clear(ClearBufferMask.ColorBufferBit);
             bindDdpTextures(0, ddpFrontBlenderTexture, ddpBackBlenderTexture);
@@ -1679,8 +1853,8 @@ public unsafe partial class GLControlAlpha : UserControl
             }
         }
 
-        var width = glControl.ClientSize.Width;
-        var height = glControl.ClientSize.Height;
+        // 260529Cl 変更: ReadPixels は back buffer 単位なので ClientSize ではなく実 back buffer サイズで読む
+        var (width, height) = getRenderTargetPixels();
         if (width <= 0 || height <= 0)
             return null;
 

@@ -27,6 +27,11 @@ namespace OpenTK.GLControl
         /// </summary>
         private NativeWindow? _nativeWindow = null;
 
+        // 260529Cl 追加: GLFW 子ウィンドウの Win32 HWND をキャッシュする。
+        // Windows on ARM (x64 エミュ) では GLFW 経由のリサイズが親と
+        // 一致しないことがあるため、Win32 API で直接サイズ強制するのに使う。
+        private IntPtr _nativeHwnd = IntPtr.Zero;
+
         // Indicates that OnResize was called before OnHandleCreated.
         // To avoid issues with missing OpenGL contexts, we suppress
         // the premature Resize event and raise it as soon as the handle
@@ -262,15 +267,19 @@ namespace OpenTK.GLControl
         {
             // We don't convert the GLControlSettings to NativeWindowSettings here as that would call GLFW.
             // And this function will be created in design mode.
+            GLDebugLog.Log(LogName, "OnHandleCreated/enter", SnapshotSize());
             CreateNativeWindow(_glControlSettings);
+            GLDebugLog.Log(LogName, "OnHandleCreated/afterCreate", SnapshotSize());
 
             base.OnHandleCreated(e);
 
             if (_resizeEventSuppressed)
             {
+                GLDebugLog.Log(LogName, "OnHandleCreated/suppressedResize", SnapshotSize());
                 OnResize(EventArgs.Empty);
                 _resizeEventSuppressed = false;
             }
+            GLDebugLog.Log(LogName, "OnHandleCreated/exit", SnapshotSize());
 
             if (IsDesignMode)
             {
@@ -324,17 +333,92 @@ namespace OpenTK.GLControl
             }
 
             NativeWindowSettings nativeWindowSettings = glControlSettings.ToNativeWindowSettings();
+            GLDebugLog.Log(LogName, "CreateNW/settings", $"settings.ClientSize=({nativeWindowSettings.ClientSize.X},{nativeWindowSettings.ClientSize.Y}) StartVisible={nativeWindowSettings.StartVisible}");
 
             _nativeWindow = new NativeWindow(nativeWindowSettings);
             _nativeWindow.FocusedChanged += OnNativeWindowFocused;
+            _nativeWindow.FramebufferResize += OnNativeFramebufferResize;
+            GLDebugLog.Log(LogName, "CreateNW/nwCreated", SnapshotSize());
 
             NonportableReparent(_nativeWindow);
+            GLDebugLog.Log(LogName, "CreateNW/reparented", SnapshotSize());
 
             // Force the newly child-ified GLFW window to be resized to fit this control.
             ResizeNativeWindow();
+            GLDebugLog.Log(LogName, "CreateNW/afterResize", SnapshotSize());
 
             // And now show the child window, since it hasn't been made visible yet.
             _nativeWindow.IsVisible = true;
+            GLDebugLog.Log(LogName, "CreateNW/afterShow", SnapshotSize());
+
+            // 260529Cl 追加: 一部環境 (Windows on ARM x64 エミュ等) で、hidden 状態の MoveWindow が
+            // OpenGL の back buffer 再確保まで波及せず、GL 既定の初期サイズ (NativeWindowSettings 既定 = 800×600 等) で
+            // back buffer が固定されてしまう現象が確認されている。Anchor=Top|Right などサイズ追随しない GLControl だと
+            // 初回ハンドル作成時の ResizeNativeWindow 以降一切 WM_SIZE が来ないため、この初期不整合がそのまま固定化し、
+            // アスペクト比のズレや黒帯やはみ出しとして可視化する。ここで明示的に "違うサイズ → 目標サイズ" を 2 段送って
+            // WM_SIZE を確実に発火させ、表示済み window の back buffer を実寸に同期させる。
+            // (同サイズ MoveWindow は Windows が WM_SIZE を抑制するため、必ず一旦別サイズを経由する)
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows) && _nativeHwnd != IntPtr.Zero)
+            {
+                int w = Math.Max(1, Width);
+                int h = Math.Max(1, Height);
+                Win32.MoveWindow(_nativeHwnd, 0, 0, Math.Max(1, w - 1), Math.Max(1, h - 1), false);
+                GLDebugLog.Log(LogName, "CreateNW/forced1", SnapshotSize());
+                Win32.MoveWindow(_nativeHwnd, 0, 0, w, h, false);
+                GLDebugLog.Log(LogName, "CreateNW/forced2", SnapshotSize());
+            }
+        }
+
+        // 260529Cl 追加: GLFW の framebuffer_size_callback が発火した時のログ。
+        // この値が現在の WinForms Width/Height と一致しているかを追跡することで、ARM 環境での同期不整合を可視化する。
+        private void OnNativeFramebufferResize(OpenTK.Windowing.Common.FramebufferResizeEventArgs e)
+        {
+            GLDebugLog.Log(LogName, "FramebufferResize", $"event=({e.Width},{e.Height}) | {SnapshotSize()}");
+        }
+
+        // 260529Cl 追加: ログ用の識別名。GLControlAlpha (UserControl) が親で Name に "glControlReciProObjects" 等を持つので、
+        // Parent.Name を優先することで FormRotation から振った名前を捕まえる。Parent がいなければ自身の Name にフォールバック。
+        // 内部 glControl 自身の Name (= "glControl{N}") も message 側で残せるよう、こちらでは Parent.Name のみ返す。
+        private string LogName => Parent?.Name ?? Name;
+
+        // 260529Cl 追加: 各時点の WinForms / GLFW / HWND のサイズを 1 行で記録する診断ヘルパー。
+        private string SnapshotSize()
+        {
+            if (!GLDebugLog.Enabled) return ""; // 260529Cl: 診断無効時は Win32 呼び出しを省く (通常起動のホットパス保護)
+            string fb = "FB=null", ncSize = "", ncClient = "";
+            if (_nativeWindow != null)
+            {
+                var fbs = _nativeWindow.FramebufferSize;
+                fb = $"FB=({fbs.X},{fbs.Y})";
+                var ns = _nativeWindow.Size;
+                ncSize = $" NW.Size=({ns.X},{ns.Y})";
+                var cs = _nativeWindow.ClientSize;
+                ncClient = $" NW.CSize=({cs.X},{cs.Y})";
+            }
+            string rect = "rect=N/A";
+            string pos = "pos=N/A";
+            if (_nativeHwnd != IntPtr.Zero)
+            {
+                if (Win32.GetClientRect(_nativeHwnd, out var rc))
+                    rect = $"rect=({rc.Width},{rc.Height})";
+                // 260529Cl 追加: GLFW HWND の screen 上の絶対位置と、親 HWND との相対位置を記録
+                if (Win32.GetWindowRect(_nativeHwnd, out var wr))
+                {
+                    var parentHwnd = Win32.GetParent(_nativeHwnd);
+                    if (parentHwnd != IntPtr.Zero && Win32.GetWindowRect(parentHwnd, out var pr))
+                    {
+                        // 親 HWND の WindowRect は外枠なので、親の ClientRect 内オフセットを正確にはこれだけでは出せないが、
+                        // child の Left/Top と parent の Left/Top の差が child の screen 内 vs parent screen 内位置差。
+                        // child は SetParent で WS_CHILD になっているので、その screen 位置 = 親の screen 位置 + child の親内位置 (おおむね)
+                        pos = $"absPos=({wr.Left},{wr.Top}) deltaFromParent=({wr.Left - pr.Left},{wr.Top - pr.Top})";
+                    }
+                    else
+                    {
+                        pos = $"absPos=({wr.Left},{wr.Top})";
+                    }
+                }
+            }
+            return $"[inner={Name}] WinForms=({Width},{Height}) {fb}{ncSize}{ncClient} HWND-{rect} {pos} DPI={DeviceDpi}";
         }
 
         /// <summary>
@@ -426,6 +510,7 @@ namespace OpenTK.GLControl
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
                 IntPtr hWnd = GLFW.GetWin32Window(nativeWindow.WindowPtr);
+                _nativeHwnd = hWnd; // 260529Cl 追加: 後段 Win32 リサイズで使うため HWND を保持
 
                 // Reparent the real HWND under this control.
                 Win32.SetParent(hWnd, Handle);
@@ -548,6 +633,7 @@ namespace OpenTK.GLControl
                 _nativeWindow.Dispose();
                 _nativeWindow = null!;
             }
+            _nativeHwnd = IntPtr.Zero; // 260529Cl 追加: HWND キャッシュも破棄
         }
 
         /// <summary>
@@ -612,8 +698,11 @@ namespace OpenTK.GLControl
             if (!IsHandleCreated)
             {
                 _resizeEventSuppressed = true;
+                GLDebugLog.Log(LogName, "OnResize/suppressed", $"WinForms=({Width},{Height})");
                 return;
             }
+
+            GLDebugLog.Log(LogName, "OnResize/enter", SnapshotSize());
 
             if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
             {
@@ -624,6 +713,7 @@ namespace OpenTK.GLControl
                 ResizeNativeWindow();
             }
 
+            GLDebugLog.Log(LogName, "OnResize/exit", SnapshotSize());
             base.OnResize(e);
         }
 
@@ -635,7 +725,68 @@ namespace OpenTK.GLControl
 
             if (_nativeWindow != null)
             {
-                _nativeWindow.ClientRectangle = new Box2i(0, 0, Width, Height);
+                // 260529Cl 修正: Windows では GLFW の glfwSetWindowSize 経由 (_nativeWindow.ClientRectangle) を使うと、
+                // PerMonitorV2 DPI 認識アプリ + Windows on ARM (x64 エミュ) の組合せで DPI 計算が食い違い、
+                // HWND と back buffer が親 WinForms と異なる物理ピクセルサイズになる。
+                // Win32.MoveWindow で物理ピクセル単位の指定にすると、WM_SIZE が GLFW の wndproc に同期で届き
+                // _nativeWindow.FramebufferSize も同じ値に更新される。
+                if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows) && _nativeHwnd != IntPtr.Zero)
+                {
+                    // 260529Cl 追加: Windows on ARM (x64 エミュ) では「片方の寸法だけ」が変化する WM_SIZE では
+                    // OpenGL の back buffer が正しく再確保されない症状が確認された (例: FormMain の glControlAxes は
+                    // Dock=Top で width のみ→height のみの 2 段 resize になり、片次元のみの WM_SIZE で driver が back buffer を
+                    // 旧サイズのまま残し、Viewport だけ新サイズで描画されて「上にはみ出す」描画になる)。
+                    // 必ず両次元が変化する中間サイズを経由する dual-MoveWindow にすることで、driver に確実に
+                    // 両次元の再確保を要求する。同サイズ MoveWindow は Windows が WM_SIZE を抑制するため、わざと
+                    // (w-1, h-1) を経由する。
+                    int w = Math.Max(1, Width);
+                    int h = Math.Max(1, Height);
+                    Win32.MoveWindow(_nativeHwnd, 0, 0, Math.Max(1, w - 1), Math.Max(1, h - 1), false);
+                    Win32.MoveWindow(_nativeHwnd, 0, 0, w, h, false);
+                }
+                else
+                {
+                    _nativeWindow.ClientRectangle = new Box2i(0, 0, Width, Height);
+                }
+            }
+        }
+
+        // 260529Cl 追加: GLFW が管理している実 framebuffer (OpenGL back buffer) のピクセルサイズ。
+        // GLFW は wndproc で WM_SIZE を受信した時に framebuffer_size_callback を同期発火し、
+        // この値を更新する。Win32.GetClientRect を直接呼ぶより、GLFW が認識している back buffer
+        // サイズと完全一致するため、GL.Viewport のサイズ源として用いる方が安全。
+        /// <summary>
+        /// Pixel size of the actual GL back buffer as known to GLFW.
+        /// Returns <see cref="System.Drawing.Size.Empty"/> when the native window has not been created.
+        /// </summary>
+        [Browsable(false)]
+        public System.Drawing.Size FramebufferPixelSize
+        {
+            get
+            {
+                if (_nativeWindow == null)
+                    return System.Drawing.Size.Empty;
+                var sz = _nativeWindow.FramebufferSize;
+                return new System.Drawing.Size(sz.X, sz.Y);
+            }
+        }
+
+        // 260529Cl 追加 (診断用): GLFW に毎回 glfwGetFramebufferSize を問い合わせて取得する live 値。
+        // FramebufferPixelSize は wndproc 同期で更新される cached 値 (_nativeWindow.FramebufferSize) を返すが、
+        // Windows on ARM (x64 エミュ) で「cached 値は正しいが driver 内部の drawable/swapchain は旧サイズ」という
+        // 不一致が疑われるため、cached と live の差を切り分けるための観測専用プロパティ。
+        // ARM の GL 不具合再発時の診断用に温存 (RECIPRO_GLDIAG 診断ツールの一部)。詳細: ReciPro_WindowsOnARM_OpenGL調査.md
+        /// <summary>GL back buffer size queried live from GLFW (glfwGetFramebufferSize); diagnostic counterpart of <see cref="FramebufferPixelSize"/>.</summary>
+        [Browsable(false)]
+        public System.Drawing.Size FramebufferPixelSizeLive
+        {
+            get
+            {
+                if (_nativeWindow == null)
+                    return System.Drawing.Size.Empty;
+                int w, h;
+                unsafe { GLFW.GetFramebufferSize(_nativeWindow.WindowPtr, out w, out h); }
+                return new System.Drawing.Size(w, h);
             }
         }
 

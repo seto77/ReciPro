@@ -377,8 +377,8 @@ public partial class FormMain : FormBase
                     RotationMode = GLControlAlpha.RotationModes.Object,
                     LightPosition = new Vec3(100, 100, 100),
                 };
-                glControlAxes.MouseDown += new MouseEventHandler(panelAxes_MouseDown);
-                glControlAxes.MouseMove += new MouseEventHandler(panelAxes_MouseMove);
+                glControlAxes.MouseDown += panelAxes_MouseDown;
+                glControlAxes.MouseMove += panelAxes_MouseMove;
                 groupBoxCurrentDirection.Controls.Add(glControlAxes);
                 //glControlAxes.BringToFront();
             }

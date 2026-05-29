@@ -267,8 +267,9 @@
             // 
             // IndexControl
             // 
-            AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            // AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F); // 260529Cl 旧: Font モード時の値。Dpi では 96/7 倍に拡大されてしまう
+            AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F); // 260529Cl
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi; // 260529Cl: DPI 追従
             AutoSize = true;
             AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             Controls.Add(tableLayoutPanel1);

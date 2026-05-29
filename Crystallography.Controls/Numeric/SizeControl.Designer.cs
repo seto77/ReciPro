@@ -107,7 +107,7 @@
             // SizeControl
             //
             resources.ApplyResources(this, "$this");
-            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi; // 260529Cl: DPI 追従 (resx の $this.AutoScaleDimensions は 96,96)
             Controls.Add(tableLayoutPanel1);
             Name = "SizeControl";
             tableLayoutPanel1.ResumeLayout(false);
