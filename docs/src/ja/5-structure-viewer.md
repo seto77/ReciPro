@@ -51,9 +51,11 @@
 ## タブメニュー
 
 ### 描画範囲
+
 結晶の描画範囲を指定します。2つのモードがあります。上部のラジオボタンで切替えます。
 
 #### 描画範囲を単位胞単位で指定
+
 ![Bounds タブ](../assets/cap-ja-auto/FormStructureViewer.splitContainer1.tabControl.tabPageBounds.png)
 
 単位格子の *a*, *b*, *c* 軸を単位として描画範囲を指定します。

@@ -253,12 +253,12 @@ Accessory panel size, label settings, bonded atoms outside boundaries.
 
 | Button | Description |
 |--------|-------------|
-| Crystal Axes | Show axis orientation (size = lattice constant) |
-| Light direction | Set light direction |
+| Axes | Show axis orientation (size = lattice constant) |
+| Light | Set light direction |
 | Legend | Atom legend |
-| Atom | Toggle atom objects |
-| Label | Toggle atom labels |
-| Unit cell | Toggle unit-cell edges |
-| Symmetry Elements | Toggle the symmetry-element overlay (see above) |
-| Reset rotation | Return to the initial orientation |
+| Atoms | Toggle atom objects |
+| Labels | Toggle atom labels |
+| Unit Cell | Toggle unit-cell edges |
+| Sym. Elems. | Toggle the symmetry-element overlay (see above) |
+| Reset Rotation | Return to the initial orientation |
 | Like Vesta | Vesta-style appearance |
