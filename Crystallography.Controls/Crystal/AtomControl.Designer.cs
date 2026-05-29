@@ -1370,6 +1370,9 @@
             ((System.ComponentModel.ISupportInitialize)dataSet).EndInit();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
+            //260529Cl 追加: マニュアル用にタブ単位クロップを撮れるよう Capture=true を付与 (UserControlBase の captureExtender を使用)
+            captureExtender.SetCapture(tabPageOriginShift, true);
+            captureExtender.SetCapture(tabPageAppearance, true);
             ResumeLayout(false);
         }
 
