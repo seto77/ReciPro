@@ -81,20 +81,20 @@ Controls the 3D net (sphere) overlay — opacity of the sphere, axis indicators,
 
 ![Appearance tab](../assets/cap-en-auto/FormStereonet.tabControl.tabPage1.png)
 
-#### Size
-
-- **String size** — size of the index labels.
-- **Point size** — size of the projected points.
-
-#### Color
-
-Colour of points, index labels, and the stereonet outline.
-
-- **Specify label color** — overrides the per-point colour with a single dedicated label colour, useful when the points are colour-coded but you want all labels in one colour for readability.
-
 #### Outline
 
-How the stereonet outline is drawn — the bounding circle and (optionally) the great-circle latitude/longitude grid. The outline **line width** is set with the dedicated track bar (added 2026-05).
+How the stereonet outline is drawn — the bounding circle and the optional great-circle latitude/longitude grid. Pick **Equator** or **Pole**, toggle **1° Lines** and the **Background** fill, set the **90° / 10° / 1°** grid colours, and adjust the **Line width** with the track bar.
+
+#### Index labels
+
+- **Size** — size of the index labels.
+- **Specify color** — use a single fixed colour for all index labels instead of the per-spot colour, useful when the points are colour-coded but you want all labels in one colour for readability.
+- **Delimiter** — character placed between Miller indices in each label: **None** (e.g. 100), **Space** (1 0 0), or **Comma** (1,0,0).
+
+#### Kikuchi line mode
+
+- **Point size** — size of the plotted points.
+- **Point** / **Label** — colours of the points and their labels.
 
 ### Great and Small Circle
 

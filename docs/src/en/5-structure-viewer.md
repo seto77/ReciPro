@@ -9,6 +9,7 @@
 ## Main area
 
 3D crystal structure with light source, crystal axes, and atom legend.
+> The **Size (W×H)** box at the top right of the window sets the pixel size used when saving or copying the rendered image.
 
 | Operation | Action |
 |-----------|--------|
@@ -23,8 +24,6 @@
 ## Menu bar
 
 ![Menu bar](../assets/cap-en-auto/FormStructureViewer.panelTop.menuStrip1.png)
-
-The **Size (W×H)** box at the top right of the window sets the pixel size used when saving or copying the rendered image.
 
 ### File menu
 
@@ -44,11 +43,11 @@ Save image, copy to clipboard (Ctrl+Shift+C), save movie (MP4).
 
 ### Bounds
 
-![Bounds tab](../assets/cap-en-auto/FormStructureViewer.splitContainer1.tabControl.tabPageBounds.png)
-
 Drawing range by unit cell or crystal planes. Bound planes, clipping, hide atoms. Switch between the two modes with the radio buttons at the top.
 
 #### Bounds defined by cell
+
+![Bounds tab](../assets/cap-en-auto/FormStructureViewer.splitContainer1.tabControl.tabPageBounds.png)
 
 In this mode the *a*, *b*, *c* axes of the unit cell are the unit of the drawing range.
 
@@ -57,6 +56,8 @@ In this mode the *a*, *b*, *c* axes of the unit cell are the unit of the drawing
 - **Preset buttons** on the right give frequently used values (e.g. 1×1×1 cell, 2×2×2 cell).
 
 #### Bounds defined by crystal planes
+
+![Bounds by crystal planes](../assets/cap-en-auto/FormStructureViewer.splitContainer1.tabControl.tabPageBounds.tabControlBoundOption.tabPageBoundPlane.png)
 
 In this mode the drawing area is bounded by a set of crystal planes. If the planes do not define a spatially closed region, ReciPro automatically falls back to a one-unit-cell bound.
 
@@ -107,9 +108,13 @@ The list of atoms in the crystal. Use **Add / Replace / Delete** to manipulate t
 
 #### Origin shift
 
+![Origin shift](../assets/cap-en-auto/FormStructureViewer.splitContainer1.tabControl.tabPageAtom.atomControl.tabControl.tabPageOriginShift.png)
+
 Shifts every atom by the same fractional offset. Press a preset button (for example, to swap origin choice 1 / 2 for the same space group), or enter a custom (Δx, Δy, Δz) and press **Apply custom shift**.
 
 #### Appearance
+
+![Appearance](../assets/cap-en-auto/FormStructureViewer.splitContainer1.tabControl.tabPageAtom.atomControl.tabControl.tabPageAppearance.png)
 
 Per-atom radius, colour, and material.
 
@@ -251,8 +256,9 @@ Accessory panel size, label settings, bonded atoms outside boundaries.
 | Crystal Axes | Show axis orientation (size = lattice constant) |
 | Light direction | Set light direction |
 | Legend | Atom legend |
-| Like Vesta | Vesta-style appearance |
-| Reset rotation | Return to the initial orientation |
-| Atom / Label | Toggle atom objects / atom labels |
+| Atom | Toggle atom objects |
+| Label | Toggle atom labels |
 | Unit cell | Toggle unit-cell edges |
 | Symmetry Elements | Toggle the symmetry-element overlay (see above) |
+| Reset rotation | Return to the initial orientation |
+| Like Vesta | Vesta-style appearance |

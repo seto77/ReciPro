@@ -9,6 +9,7 @@
 ## メインエリア
 
 画面上部に結晶構造が描画されます。左上に光源の方向、左下に結晶軸の方向、右側に原子の凡例が表示されます。
+> ウィンドウ右上の **Size (W×H)** ボックスで、画像の保存・コピー時のピクセルサイズを指定します。
 
 ### マウス操作
 
@@ -50,12 +51,10 @@
 ## タブメニュー
 
 ### 描画範囲
-
-![Bounds タブ](../assets/cap-ja-auto/FormStructureViewer.splitContainer1.tabControl.tabPageBounds.png)
-
 結晶の描画範囲を指定します。2つのモードがあります。上部のラジオボタンで切替えます。
 
 #### 描画範囲を単位胞単位で指定
+![Bounds タブ](../assets/cap-ja-auto/FormStructureViewer.splitContainer1.tabControl.tabPageBounds.png)
 
 単位格子の *a*, *b*, *c* 軸を単位として描画範囲を指定します。
 
@@ -64,6 +63,8 @@
 - 右側の**プリセットボタン**で頻用値 (1×1×1, 2×2×2 など) を選択可能
 
 #### 描画範囲を結晶面で指定
+
+![結晶面で範囲指定](../assets/cap-ja-auto/FormStructureViewer.splitContainer1.tabControl.tabPageBounds.tabControlBoundOption.tabPageBoundPlane.png)
 
 結晶面の集合で描画領域を定義します。指定した面が空間的に閉じた領域を作らない場合、ReciPro は自動的に 1 単位格子の境界にフォールバックします。
 
@@ -114,9 +115,13 @@
 
 #### 原点シフト
 
+![原点シフト](../assets/cap-ja-auto/FormStructureViewer.splitContainer1.tabControl.tabPageAtom.atomControl.tabControl.tabPageOriginShift.png)
+
 全原子を同じ分率オフセットだけシフトします。プリセットボタン (例: 同一空間群の原点 1/原点 2 切替) を押すか、(Δx, Δy, Δz) を入力して**カスタムシフトを適用**を押します。
 
-#### 外観
+#### 表示
+
+![表示](../assets/cap-ja-auto/FormStructureViewer.splitContainer1.tabControl.tabPageAtom.atomControl.tabControl.tabPageAppearance.png)
 
 原子ごとの半径・色・マテリアル設定。
 
@@ -259,10 +264,9 @@
 | 結晶軸 | 結晶軸の方向を表示（サイズは格子定数を反映） |
 | 光源 | ドラッグで光源方向を変更 |
 | 凡例 | 原子の凡例を表示（ラベルまたは元素名） |
-| Like Vesta | Vestaソフトウェア風の原子色・サイズ・結合設定に変更 |
-| 角度をリセット | 初期方位に戻す |
-| 原子 / ラベル | 原子オブジェクト／原子ラベルの表示切替 |
+| 原子 | 原子オブジェクト表示切替 |
+| ラベル | 原子ラベルの表示切替 |
 | 単位胞 | 単位格子の辺の表示切替 |
 | 対称要素 | 対称要素オーバーレイの表示切替（上記参照） |
-
-> ウィンドウ右上の **Size (W×H)** ボックスで、画像の保存・コピー時のピクセルサイズを指定します。
+| 角度をリセット | 初期方位に戻す |
+| Like Vesta | Vestaソフトウェア風の原子色・サイズ・結合設定に変更 |

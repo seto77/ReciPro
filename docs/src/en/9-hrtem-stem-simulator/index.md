@@ -32,6 +32,12 @@ The **HRTEM/STEM Simulator** simulates TEM lattice-fringe (HRTEM) images, STEM i
 
 ---
 
+## Image area
+
+The left half of the window shows the simulated image. The status bar across the top reports the cursor position (**X:**, **Y:**) and the image **Value:** (intensity) under the cursor, next to a **Low → High** intensity scale that reflects the current colour map and brightness range.
+
+---
+
 ## File menu
 
 
