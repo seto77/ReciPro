@@ -14,7 +14,7 @@
 
 ## Authors
 
-*ReciPro* is developed by [Seto Y.](https://yseto.net/) (Osaka Metropolitan University, Japan) and [Ohtsuka M.](https://profs.provost.nagoya-u.ac.jp/html/100006527_en.html) (Nagoya University, Japan). The functions and algorithms are presented in [the paper](https://github.com/seto77/ReciPro/blob/master/ReciProSetoOhtsuka2022.pdf).
+*ReciPro* is developed by [Seto Y.](https://yseto.net/) (Osaka Metropolitan University, Japan) and [Ohtsuka M.](https://profs.provost.nagoya-u.ac.jp/html/100006527_en.html) (Nagoya University, Japan). The functions and algorithms are presented in [the paper](https://github.com/seto77/ReciPro/blob/master/docs/ReciProSetoOhtsuka2022.pdf).
 
 ## Citation
 
