@@ -1,0 +1,80 @@
+# Code signing policy
+
+This document describes the code-signing policy for ReciPro release artifacts.
+
+## Current status
+
+ReciPro is preparing code signing for Windows installer releases.
+
+Unless a GitHub Release explicitly states that `ReciProSetup.msi` is digitally signed, users should not assume that the installer is signed.
+
+## Official downloads
+
+Official release artifacts are published only from the ReciPro GitHub Releases page:
+
+- https://github.com/seto77/ReciPro/releases/latest
+
+Users should avoid downloading ReciPro installers from unofficial mirrors or third-party redistribution sites.
+
+## Intended signing model
+
+The intended signing route for Windows installer packages is an open-source code-signing service such as SignPath Foundation / SignPath.io.
+
+If this is approved and enabled, release artifacts are expected to be signed using Windows Authenticode signing and then published from GitHub Releases. For SignPath Foundation signing, the signer shown by Windows may be `SignPath Foundation` rather than the personal name of the ReciPro maintainer.
+
+## Scope of signing
+
+The intended signing scope is:
+
+- `ReciProSetup.msi`
+- ReciPro executable files built from this repository
+- ReciPro libraries built from this repository
+
+Third-party binaries should not be re-signed as if they were maintained by ReciPro unless their provenance and redistribution terms explicitly permit that use. See `THIRD-PARTY-NOTICES.md` for bundled or referenced third-party components and data.
+
+## Lightweight repository protection policy
+
+ReciPro is primarily a personal research-software project. The repository policy is intentionally lightweight: routine development should remain possible without mandatory pull requests, external approvals, required signed commits, or required status checks.
+
+For release integrity, the intended minimum protection is limited to release-critical history:
+
+- the default branch, `master`, should not be force-pushed or deleted;
+- release tags matching `v*` should not be deleted or moved after creation;
+- release builds should be produced from the public GitHub repository and published as GitHub Releases.
+
+This keeps day-to-day development simple while preserving the correspondence between a released installer, the release tag, and the public source tree.
+
+## Maintainer role
+
+ReciPro is maintained by Seto Y. The maintainer is responsible for preparing releases, reviewing signing requests, and publishing release artifacts.
+
+## Verifying an installer
+
+### Hash check
+
+Users can compute the SHA256 hash of a downloaded installer in PowerShell:
+
+```powershell
+Get-FileHash .\ReciProSetup.msi -Algorithm SHA256
+```
+
+The hash can then be compared with the value published in the corresponding GitHub Release, if provided.
+
+### Digital-signature check after signing is enabled
+
+After code signing is enabled for a release, users can inspect the installer from Windows Explorer:
+
+1. Right-click `ReciProSetup.msi`.
+2. Open **Properties**.
+3. Open the **Digital Signatures** tab.
+4. Confirm that the signature is valid and that the signer matches the signer documented for that release.
+
+Advanced users can also verify the installer with the Windows SDK `signtool` utility:
+
+```powershell
+signtool verify /pa /all ReciProSetup.msi
+```
+
+## Reporting suspicious artifacts
+
+If you find a suspicious ReciPro installer or a download link that does not match the official GitHub Releases page, please report it through the GitHub issue tracker or contact the maintainer through the project website.
