@@ -21,6 +21,10 @@ public partial class FormBase : Form
     /// このフォームに対応するマニュアルのページ識別子。HelpUrlResolver が URL を組み立てる際に使う。
     /// 値の意味 (スラッグ/番号など) はホストアプリの解決ロジックに依存する。
     /// </summary>
+    //260530Cl 追加: コードからのみ設定するプロパティなのでデザイナのシリアライズ対象外にする (WFO1000 回避)。
+    //         Crystallography.Controls は WFO1000 をプロジェクト単位で抑止しない方針(260322Ch)のため、CommonDialog.cs と同じく個別属性で対応する。
+    [System.ComponentModel.Browsable(false)]
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
     public string HelpPage { get; set; } = ""; //260529Cl 追加
 
     protected FormBase()
