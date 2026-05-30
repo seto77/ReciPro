@@ -224,7 +224,7 @@
     <value>209, 707</value>
   </data>
   <data name="label12.ToolTip" xml:space="preserve">
-    <value />
+    <value>Set the density of scale divisions (fine / medium / coarse).</value>
   </data>
   <data name="panelViewStep.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Bottom</value>
@@ -335,7 +335,7 @@
     <value>Options</value>
   </data>
   <data name="comboBoxScaleColorScale.ToolTip" xml:space="preserve">
-    <value>Set the color scale</value>
+    <value>Choose the color scale used to map diffraction-spot intensity to color. A non-default scale colors spots by intensity instead of the assigned crystal color.</value>
   </data>
   <data name="tabPageScale.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 26</value>
@@ -359,7 +359,7 @@
     <value>GrowAndShrink</value>
   </data>
   <data name="labelDinv.ToolTip" xml:space="preserve">
-    <value />
+    <value>Reciprocal spacing d⁻¹ (nm⁻¹) corresponding to the mouse pointer position.</value>
   </data>
   <data name="label25.Size" type="System.Drawing.Size, System.Drawing">
     <value>73, 17</value>
@@ -716,7 +716,7 @@
     <value>panelDetectorAndMisc</value>
   </data>
   <data name="checkBoxReciprocalSpace.ToolTip" xml:space="preserve">
-    <value />
+    <value>When checked, the 3D reciprocal-space view (reciprocal lattice and Ewald sphere) is shown.</value>
   </data>
   <data name="&gt;&gt;groupBoxDetectorGeometry.ZOrder" xml:space="preserve">
     <value>1</value>
@@ -809,12 +809,10 @@
     <value>flowLayoutPanelSpotColor</value>
   </data>
   <data name="numericBoxKikuchiThresholdOfLength.ToolTip" xml:space="preserve">
-    <value>Set the d-spacing threshold for Kikuchi lines.
-Kikuchi lines below this value are simulated.
-</value>
+    <value>Draw Kikuchi lines only for reflections whose 1/d (reciprocal length) is below this value (nm⁻¹); i.e. only spacings coarser than 1/value.</value>
   </data>
   <data name="buttonResetAngle.ToolTip" xml:space="preserve">
-    <value />
+    <value>Reset the 3D view orientation to the default direction.</value>
   </data>
   <data name="radioButtonScaleDivisionMedium.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -1017,7 +1015,7 @@ Relative Intensity</value>
     <value />
   </data>
   <data name="label1.ToolTip" xml:space="preserve">
-    <value />
+    <value>Settings for the Bloch-wave (dynamical) diffraction calculation</value>
   </data>
   <data name="&gt;&gt;numericBoxPED_Semiangle.ZOrder" xml:space="preserve">
     <value>1</value>
@@ -1221,7 +1219,7 @@ Relative Intensity</value>
     <value>True</value>
   </data>
   <data name="numericBoxNumOfBlochWave.ToolTip" xml:space="preserve">
-    <value>Set the number of diffracted waves to be calculated</value>
+    <value>Number of diffracted beams (Bloch waves) included in the dynamical, multiple-scattering calculation. More waves improve accuracy but slow the computation.</value>
   </data>
   <data name="&gt;&gt;colorControl3D_rightDirection.Parent" xml:space="preserve">
     <value>groupBoxOptions</value>
@@ -1410,7 +1408,7 @@ Relative Intensity</value>
     <value>8</value>
   </data>
   <data name="label9.ToolTip" xml:space="preserve">
-    <value />
+    <value>Detector-plane coordinates of the mouse pointer in mm (origin: pattern foot).</value>
   </data>
   <data name="&gt;&gt;toolStripSeparator6.Name" xml:space="preserve">
     <value>toolStripSeparator6</value>
@@ -1422,7 +1420,7 @@ Relative Intensity</value>
     <value />
   </data>
   <data name="radioButtonKikuchiThresholdOfLength.ToolTip" xml:space="preserve">
-    <value />
+    <value>Select reflections for Kikuchi lines by a 1/d (d-spacing) cutoff.</value>
   </data>
   <data name="&gt;&gt;flowLayoutPanelWaveLength.Name" xml:space="preserve">
     <value>flowLayoutPanelWaveLength</value>
@@ -1491,7 +1489,7 @@ Relative Intensity</value>
     <value>0, 0, 0, 0</value>
   </data>
   <data name="checkBoxNegativeImage.ToolTip" xml:space="preserve">
-    <value />
+    <value>When checked, the image is shown in inverted (negative) brightness.</value>
   </data>
   <data name="&gt;&gt;label20.Parent" xml:space="preserve">
     <value>tableLayoutPanelMousePotionDetailed</value>
@@ -1515,7 +1513,7 @@ Relative Intensity</value>
     <value>5</value>
   </data>
   <data name="label7.ToolTip" xml:space="preserve">
-    <value />
+    <value>Select how diffraction-spot intensities are computed (dynamical Bloch-wave, kinematical, or excitation-error only).</value>
   </data>
   <data name="dynamicCompressionToolStripMenuItem.Text" xml:space="preserve">
     <value>Dynamic Compression</value>
@@ -1554,7 +1552,7 @@ Relative Intensity</value>
     <value>NoControl</value>
   </data>
   <data name="numericBox3D_SpotRadius.ToolTip" xml:space="preserve">
-    <value>Set a radius of the diffraction spots in the reciprocal space</value>
+    <value>Set the rendered radius of diffraction-spot spheres in the 3D reciprocal-space view (nm⁻¹); spots within this distance of the Ewald sphere are colored as near and can be labeled.</value>
   </data>
   <data name="numericBoxStep.ToolTip1" xml:space="preserve">
     <value>Set the angle step for the buttons above, or the rotation speed.</value>
@@ -1914,7 +1912,7 @@ Relative Intensity</value>
     <value>Set a line width of scale lines</value>
   </data>
   <data name="checkBoxFlipHorizontally.ToolTip" xml:space="preserve">
-    <value />
+    <value>When checked, the simulation image is flipped horizontally (left-right).</value>
   </data>
   <data name="buttonBottom.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -1998,7 +1996,7 @@ Relative Intensity</value>
     <value>2, 20</value>
   </data>
   <data name="numericBoxPED_Semiangle.ToolTip1" xml:space="preserve">
-    <value>Set a semi-angle for the PED simulation</value>
+    <value>Precession semi-angle (mrad) for the PED (Precession Electron Diffraction) simulation; the cone half-angle used to tilt and integrate the incident beam.</value>
   </data>
   <data name="toolStripMenuItemSaveMovieDiffractionPattern.Size" type="System.Drawing.Size, System.Drawing">
     <value>182, 22</value>
@@ -2178,7 +2176,7 @@ Relative Intensity</value>
     <value>206, 22</value>
   </data>
   <data name="comboBoxCenter.ToolTip" xml:space="preserve">
-    <value />
+    <value>Select the reference point used as the monitor center (direct spot, perpendicular foot, or detector center).</value>
   </data>
   <data name="&gt;&gt;labelMousePositionDetector.Parent" xml:space="preserve">
     <value>tableLayoutPanelMousePotionDetailed</value>
@@ -2549,7 +2547,7 @@ Only valid for an electron source.</value>
     <value>direct spot</value>
   </data>
   <data name="numericBoxReciprocalThreshold.ToolTip" xml:space="preserve">
-    <value>Set pixel sizes of the simulated pattern</value>
+    <value>Set the relative-intensity threshold (%) below which reciprocal-lattice spots are hidden.</value>
   </data>
   <data name="buttonBottom.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -2681,7 +2679,7 @@ Only valid for an electron source.</value>
     <value>0</value>
   </data>
   <data name="label14.ToolTip" xml:space="preserve">
-    <value>Set the color of the foot of a perpendicular from the sample</value>
+    <value>Set the color of the foot of a perpendicular from the sample.</value>
   </data>
   <data name="flowLayoutPanelImageOrientation.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2714,7 +2712,7 @@ Only valid for an electron source.</value>
     <value>True</value>
   </data>
   <data name="labelMousePositionDetector.ToolTip" xml:space="preserve">
-    <value />
+    <value>Detector-plane coordinates of the mouse pointer in mm (origin: pattern foot).</value>
   </data>
   <data name="label10.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -2795,7 +2793,7 @@ Only valid for an electron source.</value>
     <value>0, 0, 0, 0</value>
   </data>
   <data name="labelTwoThetaRad.ToolTip" xml:space="preserve">
-    <value />
+    <value>Scattering angle 2θ in radians (mrad below 0.1 rad) corresponding to the mouse pointer position.</value>
   </data>
   <data name="electron300KVToolStripMenuItem.Text" xml:space="preserve">
     <value>Electron 300 kV</value>
@@ -2828,7 +2826,7 @@ Only valid for an electron source.</value>
     <value>2, 0, 2, 0</value>
   </data>
   <data name="checkBox3D_DirectionGuide.ToolTip" xml:space="preserve">
-    <value />
+    <value>When checked, shows Beam/Top/Right direction-guide arrows in the 3D reciprocal-lattice view.</value>
   </data>
   <data name="&gt;&gt;flowLayoutPanel4.ZOrder" xml:space="preserve">
     <value>0</value>
@@ -2840,7 +2838,7 @@ Only valid for an electron source.</value>
     <value>True</value>
   </data>
   <data name="label20.ToolTip" xml:space="preserve">
-    <value />
+    <value>Reciprocal-space coordinates of the mouse pointer in nm⁻¹.</value>
   </data>
   <data name="colorControlForbiddenLattice.ToolTip" xml:space="preserve">
     <value>Set the color of extinct spots (lattice centring)</value>
@@ -2867,7 +2865,7 @@ Only valid for an electron source.</value>
     <value>0, 0</value>
   </data>
   <data name="checkBox3D_EwaldSphere.ToolTip" xml:space="preserve">
-    <value />
+    <value>When checked, draws the Ewald sphere in the 3D reciprocal-lattice view.</value>
   </data>
   <data name="&gt;&gt;groupBoxStringSize.Type" xml:space="preserve">
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -2996,7 +2994,7 @@ Only valid for an electron source.</value>
     <value>System.Windows.Forms.PrintPreviewDialog, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="radioButtonResoUnitNanometerInv.ToolTip" xml:space="preserve">
-    <value />
+    <value>Express the resolution as a reciprocal-space length per pixel (nm⁻¹/px).</value>
   </data>
   <data name="xray30KeVToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>220, 22</value>
@@ -3158,7 +3156,7 @@ Only valid for an electron source.</value>
     <value>1, 20</value>
   </data>
   <data name="label16.ToolTip" xml:space="preserve">
-    <value>Line width of Kikuchi lines</value>
+    <value>Set a line width of scale lines</value>
   </data>
   <data name="&gt;&gt;checkBoxShowDirectPosition.Parent" xml:space="preserve">
     <value>groupBoxColor</value>
@@ -3185,13 +3183,13 @@ Only valid for an electron source.</value>
     <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="label11.ToolTip" xml:space="preserve">
-    <value>Line width of Kikuchi lines</value>
+    <value>Set a line width of Kikuchi lines</value>
   </data>
   <data name="toolStrip3.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Left</value>
   </data>
   <data name="label21.ToolTip" xml:space="preserve">
-    <value />
+    <value>Set the relative-intensity threshold (%) below which reciprocal-lattice spots are hidden.</value>
   </data>
   <data name="&gt;&gt;label9.Name" xml:space="preserve">
     <value>label9</value>
@@ -3326,7 +3324,7 @@ Only valid for an electron source.</value>
     <value>1000, 30</value>
   </data>
   <data name="toolStripButtonKikuchiLines.ToolTipText" xml:space="preserve">
-    <value>When checked, Kikuchi lines are simulated.</value>
+    <value>When checked, Kikuchi lines (bands produced by inelastically scattered electrons that are then Bragg-diffracted) are simulated.</value>
   </data>
   <data name="buttonDetailsOfSpots.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9.25pt</value>
@@ -3611,7 +3609,7 @@ Only valid for an electron source.</value>
     <value>System</value>
   </data>
   <data name="radioButtonKikuchiThresholdOfStructureFactor.ToolTip" xml:space="preserve">
-    <value />
+    <value>Select reflections for Kikuchi lines by structure factor (strongest reflections first).</value>
   </data>
   <data name="toolStripMenuItem1.Text" xml:space="preserve">
     <value>Save Movie</value>
@@ -3680,7 +3678,7 @@ Only valid for an electron source.</value>
     <value>67, 21</value>
   </data>
   <data name="label19.ToolTip" xml:space="preserve">
-    <value>Set the size of index strings</value>
+    <value>Settings for the appearance of diffraction spots</value>
   </data>
   <data name="&gt;&gt;label8.Name" xml:space="preserve">
     <value>label8</value>
@@ -3899,8 +3897,7 @@ Only valid for an electron source.</value>
     <value>True</value>
   </data>
   <data name="numericBoxPED_Step.ToolTip1" xml:space="preserve">
-    <value>Set the number of divisions for the PED simulation.
-Incident beams along the cone are simulated using this number of divisions.</value>
+    <value>Number of azimuthal divisions of the precession cone for the PED (Precession Electron Diffraction) simulation. More divisions sample the cone more smoothly but take longer.</value>
   </data>
   <data name="buttonClock.Size" type="System.Drawing.Size, System.Drawing">
     <value>25, 20</value>
@@ -4005,7 +4002,7 @@ Incident beams along the cone are simulated using this number of divisions.</val
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="label3.ToolTip" xml:space="preserve">
-    <value />
+    <value>Set the wave source and the accelerating voltage (wavelength).</value>
   </data>
   <data name="flowLayoutPanel6.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -4121,7 +4118,7 @@ Incident beams along the cone are simulated using this number of divisions.</val
     <value>29</value>
   </data>
   <data name="radioButtonBeamPrecessionXray.ToolTip" xml:space="preserve">
-    <value>Precession beam mode (i.e. PED mode)</value>
+    <value>X-ray precession mode (ZOLZ, Zero-Order Laue Zone): shows the zero-layer reciprocal-lattice plane as a polar projection, distinct from the electron PED mode.</value>
   </data>
   <data name="label9.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleRight</value>
@@ -4247,7 +4244,7 @@ Incident beams along the cone are simulated using this number of divisions.</val
     <value>NoControl</value>
   </data>
   <data name="label23.ToolTip" xml:space="preserve">
-    <value>Set/get camera length</value>
+    <value>Set rotation speed by mouse operation</value>
   </data>
   <data name="labelMousePositionReciprocal.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -4349,7 +4346,7 @@ Incident beams along the cone are simulated using this number of divisions.</val
     <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="labelTwoThetaDeg.ToolTip" xml:space="preserve">
-    <value />
+    <value>Scattering angle 2θ in degrees corresponding to the mouse pointer position.</value>
   </data>
   <data name="buttonResetCenter.Text" xml:space="preserve">
     <value>Set the center to</value>
@@ -4361,7 +4358,7 @@ Incident beams along the cone are simulated using this number of divisions.</val
     <value>True</value>
   </data>
   <data name="labelMousePositionReal.ToolTip" xml:space="preserve">
-    <value />
+    <value>Real-space coordinates of the mouse pointer in mm (origin: crystal).</value>
   </data>
   <data name="flowLayoutPanelScaleColor.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -4412,7 +4409,7 @@ Incident beams along the cone are simulated using this number of divisions.</val
     <value>NoControl</value>
   </data>
   <data name="colorControl3D_lText.ToolTip" xml:space="preserve">
-    <value>Set a background color</value>
+    <value>Set the color of the index/label text in the 3D view.</value>
   </data>
   <data name="numericBoxCameraLength2.Size" type="System.Drawing.Size, System.Drawing">
     <value>211, 25</value>
@@ -4466,7 +4463,7 @@ Incident beams along the cone are simulated using this number of divisions.</val
     <value>1</value>
   </data>
   <data name="labelD.ToolTip" xml:space="preserve">
-    <value />
+    <value>d-spacing (nm) corresponding to the mouse pointer position.</value>
   </data>
   <data name="&gt;&gt;panelReciprocalSpace.Type" xml:space="preserve">
     <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -4703,10 +4700,10 @@ Incident beams along the cone are simulated using this number of divisions.</val
     <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="radioButtonResoUnitMilliMeter.ToolTip" xml:space="preserve">
-    <value />
+    <value>Express the resolution as a detector-plane length per pixel (mm/px).</value>
   </data>
   <data name="checkBoxKikuchiLine_Kinematical.ToolTip" xml:space="preserve">
-    <value />
+    <value>When checked, Kikuchi line intensities are weighted by the kinematical relative intensity of each reflection.</value>
   </data>
   <data name="buttonTopLeft.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -5122,7 +5119,7 @@ Incident beams along the cone are simulated using this number of divisions.</val
     <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="label10.ToolTip" xml:space="preserve">
-    <value>Set the size of index strings</value>
+    <value>Set a brightness of the diffraction spots</value>
   </data>
   <data name="checkBoxScaleLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>129, 21</value>
@@ -5263,7 +5260,7 @@ Incident beams along the cone are simulated using this number of divisions.</val
     <value>colorControl3D_rightDirection</value>
   </data>
   <data name="label17.ToolTip" xml:space="preserve">
-    <value />
+    <value>Real-space coordinates of the mouse pointer in mm (origin: crystal).</value>
   </data>
   <data name="label3.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -5383,7 +5380,7 @@ Incident beams along the cone are simulated using this number of divisions.</val
     <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="label6.ToolTip" xml:space="preserve">
-    <value>Set the size of index strings</value>
+    <value>Set a line width of Debye rings</value>
   </data>
   <data name="&gt;&gt;checkBoxNegativeImage.ZOrder" xml:space="preserve">
     <value>2</value>
@@ -5539,7 +5536,7 @@ Incident beams along the cone are simulated using this number of divisions.</val
     <value>Segoe UI, 9pt</value>
   </data>
   <data name="toolStripButtonDebyeRing.ToolTipText" xml:space="preserve">
-    <value>When checked, Debye rings are simulated.</value>
+    <value>When checked, Debye rings (powder-diffraction rings from randomly oriented crystallites) are simulated.</value>
   </data>
   <data name="&gt;&gt;flowLayoutPanelSpotColor.Type" xml:space="preserve">
     <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -5615,7 +5612,7 @@ Incident beams along the cone are simulated using this number of divisions.</val
 </value>
   </data>
   <data name="radioButtonBeamBackLaue.ToolTip" xml:space="preserve">
-    <value>Precession beam mode (X-ray ZOLZ)</value>
+    <value>Back-reflection Laue mode (polychromatic X-ray).</value>
   </data>
   <data name="&gt;&gt;toolStripButtonDebyeRing.Name" xml:space="preserve">
     <value>toolStripButtonDebyeRing</value>
@@ -5684,7 +5681,7 @@ Incident beams along the cone are simulated using this number of divisions.</val
     <value>⭠</value>
   </data>
   <data name="label24.ToolTip" xml:space="preserve">
-    <value />
+    <value>Real-space coordinates of the mouse pointer in mm (origin: crystal).</value>
   </data>
   <data name="colorControl3D_beamDirection.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>
@@ -5711,7 +5708,7 @@ Incident beams along the cone are simulated using this number of divisions.</val
     <value>1</value>
   </data>
   <data name="labelMousePositionReciprocal.ToolTip" xml:space="preserve">
-    <value />
+    <value>Reciprocal-space coordinates of the mouse pointer in nm⁻¹.</value>
   </data>
   <data name="groupBoxColor.ToolTip" xml:space="preserve">
     <value />
@@ -6164,7 +6161,7 @@ Incident beams along the cone are simulated using this number of divisions.</val
     <value>1, 20</value>
   </data>
   <data name="waveLengthControl.ToolTip" xml:space="preserve">
-    <value />
+    <value>Set the wave source and the accelerating voltage (wavelength).</value>
   </data>
   <data name="trackBarRotationSpeed.Size" type="System.Drawing.Size, System.Drawing">
     <value>110, 18</value>
@@ -6396,7 +6393,7 @@ Incident beams along the cone are simulated using this number of divisions.</val
     <value>3, 3</value>
   </data>
   <data name="label13.ToolTip" xml:space="preserve">
-    <value />
+    <value>Select the illumination optics (parallel/SAED, convergent/CBED, precession/PED, back-Laue).</value>
   </data>
   <data name="statusStrip1.Size" type="System.Drawing.Size, System.Drawing">
     <value>619, 22</value>
@@ -6547,7 +6544,7 @@ Incident beams along the cone are simulated using this number of divisions.</val
     <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="label25.ToolTip" xml:space="preserve">
-    <value />
+    <value>Set the color scale</value>
   </data>
   <data name="&gt;&gt;toolStripButtonKikuchiLines.Name" xml:space="preserve">
     <value>toolStripButtonKikuchiLines</value>
@@ -6556,7 +6553,7 @@ Incident beams along the cone are simulated using this number of divisions.</val
     <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="checkBox3D_ShowIndices.ToolTip" xml:space="preserve">
-    <value />
+    <value>When checked, labels the reciprocal-lattice spots near the Ewald sphere with their hkl indices.</value>
   </data>
   <data name="panel1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Right</value>
@@ -6631,7 +6628,7 @@ Incident beams along the cone are simulated using this number of divisions.</val
     <value>GrowAndShrink</value>
   </data>
   <data name="label2.ToolTip" xml:space="preserve">
-    <value />
+    <value>Set the drawing colors of diffraction spots for general and systematically-extinct (centring / screw / glide) reflections.</value>
   </data>
   <data name="&gt;&gt;flowLayoutPanel3.Type" xml:space="preserve">
     <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -6889,7 +6886,7 @@ Incident beams along the cone are simulated using this number of divisions.</val
     <value>0, 0, 0, 0</value>
   </data>
   <data name="label5.ToolTip" xml:space="preserve">
-    <value />
+    <value>Settings for the precession electron diffraction (PED) simulation</value>
   </data>
   <data name="&gt;&gt;label16.Parent" xml:space="preserve">
     <value>tabPageScale</value>
@@ -6940,7 +6937,7 @@ Incident beams along the cone are simulated using this number of divisions.</val
     <value>True</value>
   </data>
   <data name="numericBoxPED_Semiangle.ToolTip" xml:space="preserve">
-    <value>Set a semi-angle for the PED simulation</value>
+    <value>Precession semi-angle (mrad) for the PED (Precession Electron Diffraction) simulation; the cone half-angle used to tilt and integrate the incident beam.</value>
   </data>
   <data name="numericBoxSpotRadius.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9.75pt</value>
@@ -6985,7 +6982,7 @@ Incident beams along the cone are simulated using this number of divisions.</val
     <value>4</value>
   </data>
   <data name="checkBox3D_MakeSpotsTransparent.ToolTip" xml:space="preserve">
-    <value />
+    <value>When checked, makes reciprocal-lattice spots farther from the Ewald sphere more transparent.</value>
   </data>
   <data name="&gt;&gt;label16.Name" xml:space="preserve">
     <value>label16</value>
@@ -7256,7 +7253,7 @@ Ewald sphere transparent</value>
     <value>buttonTop</value>
   </data>
   <data name="toolStripButtonFg.ToolTipText" xml:space="preserve">
-    <value>When checked, magnitudes of structure factors are displayed</value>
+    <value>When checked, the structure-factor magnitude |Fg| is displayed for each spot; larger |Fg| generally means a stronger reflection.</value>
   </data>
   <data name="fileToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>39, 21</value>
@@ -7283,7 +7280,7 @@ Ewald sphere transparent</value>
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="numericBoxSpotRadius.ToolTip" xml:space="preserve">
-    <value>Set a radius of the diffraction spots in the reciprocal space</value>
+    <value>Set the diffraction-spot radius or Gaussian sigma in reciprocal-space units (nm⁻¹ where shown); larger values draw broader spots and include a wider excitation-error tolerance.</value>
   </data>
   <data name="$this.ToolTip" xml:space="preserve">
     <value />
@@ -7490,7 +7487,7 @@ Ewald sphere transparent</value>
     <value>1</value>
   </data>
   <data name="checkBoxFlipVertically.ToolTip" xml:space="preserve">
-    <value />
+    <value>When checked, the simulation image is flipped vertically (top-bottom).</value>
   </data>
   <data name="&gt;&gt;numericBoxStep.Type" xml:space="preserve">
     <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
@@ -7577,7 +7574,7 @@ Ewald sphere transparent</value>
     <value>flowLayoutPanelIntensity</value>
   </data>
   <data name="colorControl3D_SpotsNear.ToolTip" xml:space="preserve">
-    <value>Set a background color</value>
+    <value>Set the color of reciprocal-lattice spots near the Ewald sphere.</value>
   </data>
   <data name="toolStripButtonDspacingInv.Text" xml:space="preserve">
     <value>1/d</value>
@@ -7595,7 +7592,7 @@ Ewald sphere transparent</value>
     <value>Camera Length 2</value>
   </data>
   <data name="numericBox3D_SpotRadius.ToolTip1" xml:space="preserve">
-    <value>Set a radius of the diffraction spots in the reciprocal space</value>
+    <value>Set the rendered radius of diffraction-spot spheres in the 3D reciprocal-space view (nm⁻¹); spots within this distance of the Ewald sphere are colored as near and can be labeled.</value>
   </data>
   <data name="&gt;&gt;checkBoxMousePositionDetailes.ZOrder" xml:space="preserve">
     <value>2</value>
@@ -7664,7 +7661,7 @@ Ewald sphere transparent</value>
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="numericBoxNumOfBlochWave.ToolTip1" xml:space="preserve">
-    <value>Set the number of diffracted waves to be calculated</value>
+    <value>Number of diffracted beams (Bloch waves) included in the dynamical, multiple-scattering calculation. More waves improve accuracy but slow the computation.</value>
   </data>
   <data name="labelMousePositionReal.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -7834,7 +7831,7 @@ Double left click: Display the information of the g-vector</value>
     <value>electron120KeVToolStripMenuItem</value>
   </data>
   <data name="label8.ToolTip" xml:space="preserve">
-    <value>Set the size of index strings</value>
+    <value>Set opacity of the diffraction spots</value>
   </data>
   <data name="numericBox3D_SpotRadius.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>
@@ -8135,7 +8132,7 @@ from the Sample</value>
     <value>65, 22</value>
   </data>
   <data name="toolStripButtonExcitationError.ToolTipText" xml:space="preserve">
-    <value>When checked, excitation errors (s_g) are displayed</value>
+    <value>When checked, the excitation error s_g is displayed for each spot, showing how far the reciprocal-lattice point is from the exact Bragg/Ewald-sphere condition.</value>
   </data>
   <data name="&gt;&gt;tableLayoutPanel1.Type" xml:space="preserve">
     <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -8177,7 +8174,7 @@ from the Sample</value>
     <value>Number of Diffracted Waves</value>
   </data>
   <data name="numericBoxSpotRadius.ToolTip1" xml:space="preserve">
-    <value>Set a radius of the diffraction spots in the reciprocal space</value>
+    <value>Set the diffraction-spot radius or Gaussian sigma in reciprocal-space units (nm⁻¹ where shown); larger values draw broader spots and include a wider excitation-error tolerance.</value>
   </data>
   <data name="trackBarIntensityForPointSpread.Location" type="System.Drawing.Point, System.Drawing">
     <value>68, 0</value>
@@ -8435,13 +8432,10 @@ from the Sample</value>
     <value>groupBoxMonitor</value>
   </data>
   <data name="numericBoxKikuchiThresholdOfLength.ToolTip1" xml:space="preserve">
-    <value>Set the d-spacing threshold for Kikuchi lines.
-Kikuchi lines below this value are simulated.
-</value>
+    <value>Draw Kikuchi lines only for reflections whose 1/d (reciprocal length) is below this value (nm⁻¹); i.e. only spacings coarser than 1/value.</value>
   </data>
   <data name="numericBoxPED_Step.ToolTip" xml:space="preserve">
-    <value>Set the number of divisions for the PED simulation.
-Incident beams along the cone are simulated using this number of divisions.</value>
+    <value>Number of azimuthal divisions of the precession cone for the PED (Precession Electron Diffraction) simulation. More divisions sample the cone more smoothly but take longer.</value>
   </data>
   <data name="colorControlNoCondition.ToolTip" xml:space="preserve">
     <value>Set the color of general spots</value>
@@ -8906,4 +8900,31 @@ radius</value>
   <metadata name="pageSetupDialog1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>362, 17</value>
   </metadata>
+  <data name="colorControl3D_EwaldSphere.ToolTip" xml:space="preserve">
+    <value>Set the color of the Ewald sphere surface.</value>
+  </data>
+  <data name="colorControl3D_Origin.ToolTip" xml:space="preserve">
+    <value>Set the color of the origin (000) spot.</value>
+  </data>
+  <data name="colorControl3D_SpotsFar.ToolTip" xml:space="preserve">
+    <value>Set the color of reciprocal-lattice spots far from the Ewald sphere.</value>
+  </data>
+  <data name="colorControl3D_beamDirection.ToolTip" xml:space="preserve">
+    <value>Set the color of the beam-direction guide arrow.</value>
+  </data>
+  <data name="colorControl3D_rightDirection.ToolTip" xml:space="preserve">
+    <value>Set the color of the right-direction guide arrow.</value>
+  </data>
+  <data name="colorControl3D_topDirection.ToolTip" xml:space="preserve">
+    <value>Set the color of the top-direction guide arrow.</value>
+  </data>
+  <data name="colorControlExcessLine.ToolTip" xml:space="preserve">
+    <value>Set the color of Kikuchi lines.</value>
+  </data>
+  <data name="numericBoxKikuchiThresholdOfStructureFactor.ToolTip" xml:space="preserve">
+    <value>Set the number of strongest reflections (by structure factor) used to draw Kikuchi lines.</value>
+  </data>
+  <data name="colorControlFoot.ToolTip" xml:space="preserve">
+    <value>Set the color of the foot of a perpendicular from the sample.</value>
+  </data>
 </root>

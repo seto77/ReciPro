@@ -6,17 +6,26 @@
 
 ---
 
-## Mouse operations
+## Keyboard & mouse shortcuts
 
-| Operation | Action |
-|-----------|--------|
-| Left drag | Rotate the crystal |
-| Right click | Zoom out |
-| Right drag / wheel | Zoom in / zoom in–out |
-| Double-click | Switch between **Axis** / **Plane** modes |
-| Middle drag | Translate |
+The stereonet itself is a 2-D projection; an optional 3-D sphere can be shown with **3D display**.
 
-The plane/axis indices at the current **cursor position** are displayed as you move the mouse over the projection — useful for reading off the indices of a measured spot.
+| Shortcut | Action |
+|----------|--------|
+| <kbd>F1</kbd> | Open this page of the online manual |
+| Left-drag near the centre | Tilt the crystal |
+| Left-drag the outer area | Spin the crystal about the view axis |
+| Left double-click | Switch between **Plane** and **Axis** projection |
+| Right-click | Zoom out |
+| Right-drag a box | Zoom in to the selected region |
+| Middle-drag | Pan |
+| Move the mouse (no button) | Read off the (hkl)/[uvw] under the cursor — useful for indexing a measured spot |
+
+Dragging on the net rotates the **crystal** (it drives the shared orientation). The optional 3-D sphere uses ReciPro's standard [OpenGL view navigation](21-shortcuts.md) — left-drag rotate, right-drag / wheel zoom, <kbd>CTRL</kbd> + right double-click toggles projection — and rotates only the 3-D view, not the crystal.
+
+The application-wide <kbd>CTRL</kbd>+<kbd>SHIFT</kbd> shortcuts from the [main window](0-main-window.md#keyboard-mouse-shortcuts) also work while this window is focused.
+
+→ See **[21. Keyboard & mouse shortcuts](21-shortcuts.md)** for every window at a glance.
 
 ## File menu
 Save or copy in raster or vector format. Vector format allows editing font/line thickness in PowerPoint or other vector editors.

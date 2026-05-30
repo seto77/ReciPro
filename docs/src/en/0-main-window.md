@@ -14,6 +14,33 @@ When ReciPro launches, the main window appears. From this window you select the 
 
 ---
 
+## Keyboard & mouse shortcuts
+
+The main window installs several **application-wide** shortcuts. They keep working while the Structure Viewer, Stereonet, Diffraction Simulator, Spot ID, and Calculator windows are focused.
+
+| Shortcut | Action |
+|----------|--------|
+| <kbd>F1</kbd> | Open this page of the online manual |
+| <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>D</kbd> | Open / close the **Diffraction Simulator** |
+| <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>V</kbd> | Open / close the **Structure Viewer** |
+| <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>S</kbd> | Open / close the **Stereonet** |
+| <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>T</kbd> | Open / close **Spot ID** |
+| <kbd>CTRL</kbd>+<kbd>SHIFT</kbd> + arrow keys | Rotate the crystal one step in that direction (hold two arrows for a diagonal) |
+| Double-tap <kbd>CTRL</kbd> | Open / close the **Calculator** |
+| <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>R</kbd> | Toggle the **Reserved** flag of the selected crystal |
+| Hold <kbd>CTRL</kbd> while ReciPro starts | Start with OpenGL disabled (recovery for graphics problems) |
+| Left-drag the orientation widget (bottom-left, under *Current Direction*) | Rotate the crystal |
+| Right double-click the orientation widget | Copy the widget image to the clipboard |
+| Single-click a function button | Open / close that window |
+| Double-click a function button | Force the window visible and bring it to the front |
+| Right-click a crystal in the list | Context menu (Rename / Duplicate / Delete / Export CIF…) |
+| Double-click the **Current Index** label | Show / hide the max-UVW box |
+| Drop a file on the window | Load a crystal list (`.xml`, `.cdb2`) or a crystal (`.cif`, `.amc`) |
+
+→ See **[21. Keyboard & mouse shortcuts](21-shortcuts.md)** for every window at a glance.
+
+---
+
 ## Basic Workflow
 
 If you are new to ReciPro, refer to the following steps:

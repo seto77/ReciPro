@@ -10,6 +10,38 @@ title: Diffraction Simulator
 
 ---
 
+## Keyboard & mouse shortcuts
+
+This applies to the diffraction-pattern window shared by the X-ray, SAED, and PED simulations. Dragging on the pattern rotates the **crystal**; note there is **no mouse-wheel zoom** here — zoom with right-click / right-drag.
+
+| Shortcut | Action |
+|----------|--------|
+| <kbd>F1</kbd> | Open this page of the online manual |
+| Left-drag near the centre | Tilt the crystal |
+| Left-drag the outer area | Spin the crystal about the beam axis |
+| Left double-click a spot | Show reflection details (index, *d*, structure factor, excitation error) |
+| Middle-drag | Pan the pattern |
+| <kbd>CTRL</kbd> + Middle-drag | Move the detector centre (when the detector area is shown) |
+| Right-click | Zoom out |
+| Right-drag a box | Zoom in to the selected region |
+| Right double-click the status bar | Copy a text summary of the current settings |
+| Right double-click a lit layer button (Spots / Kikuchi / Debye / Scale) | Blink that layer on and off |
+
+The auxiliary windows opened from here add a few more:
+
+| Shortcut | Action |
+|----------|--------|
+| Left double-click the stereonet — **TEM holder** window | Set the holder tilt to that point |
+| Arrow keys — **TEM holder** window | Step the holder tilt (tick **Arrow keys** first) |
+| Drop a `.prm` file or an image — **Detector geometry** window | Load detector geometry / overlay image |
+| Drop a `.txt` profile — **Dynamic compression** window | Load a pressure/time profile (drag the red line in the graph to scrub) |
+
+The application-wide <kbd>CTRL</kbd>+<kbd>SHIFT</kbd> shortcuts from the [main window](../0-main-window.md#keyboard-mouse-shortcuts) also work while this window is focused.
+
+→ See **[21. Keyboard & mouse shortcuts](../21-shortcuts.md)** for every window at a glance.
+
+---
+
 ## Quick Routes by Goal
 
 | Goal | Start from | Reference |
@@ -29,13 +61,7 @@ A diffraction pattern is simulated in the area displayed in the centre of the sc
 
 ### Mouse operation
 
-| Operation | Action |
-|-----------|--------|
-| Left drag | Rotate |
-| Centre drag | Translate |
-| Right drag | Zoom in |
-| Right click | Zoom out |
-| Left double-click | Spot details |
+See [Keyboard & mouse shortcuts](#keyboard-mouse-shortcuts) at the top of this page.
 
 ### Mouse position
 

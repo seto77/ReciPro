@@ -8,6 +8,14 @@ The window is divided into a space-group identity area (top left), a calculation
 
 ---
 
+## Keyboard & mouse shortcuts
+
+This window has no special key or mouse combinations. <kbd>F1</kbd> opens this manual page, and the two **Copy** buttons place the symmetry-element diagram and the general-position diagram on the clipboard (as a bitmap, or as a vector EMF when **EMF** is ticked).
+
+→ See **[21. Keyboard & mouse shortcuts](21-shortcuts.md)** for every window at a glance.
+
+---
+
 ## Space-group identity
 
 The top-left panel lists, for the current space group:

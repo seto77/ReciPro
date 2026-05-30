@@ -6,18 +6,33 @@
 
 ---
 
+## Keyboard & mouse shortcuts
+
+The window has a main 3-D view plus two small gizmos — the **crystal-axes** box (bottom-left) and the **light-direction** box (top-left) — and each responds to a left-drag differently. The main view uses ReciPro's standard [OpenGL view navigation](21-shortcuts.md).
+
+| Shortcut | Action |
+|----------|--------|
+| <kbd>F1</kbd> | Open this page of the online manual |
+| <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>C</kbd> | Copy the rendered image to the clipboard |
+| Left-drag the main view | Rotate the model |
+| Left double-click an atom | Show its coordinates, nearest-neighbour distances, and bond angles |
+| Right-drag up/down, or Mouse wheel | Zoom |
+| Middle-drag | Pan |
+| <kbd>CTRL</kbd> + Right-drag up/down | Change the camera distance (perspective mode only) |
+| <kbd>CTRL</kbd> + Right double-click | Toggle orthographic / perspective projection |
+| Left-drag the **crystal-axes** gizmo | Rotate the model (no in-plane spin) |
+| Left-drag the **light** gizmo | Change the lighting direction |
+
+The application-wide <kbd>CTRL</kbd>+<kbd>SHIFT</kbd> shortcuts from the [main window](0-main-window.md#keyboard-mouse-shortcuts) also work while this window is focused.
+
+→ See **[21. Keyboard & mouse shortcuts](21-shortcuts.md)** for every window at a glance.
+
+---
+
 ## Main area
 
 3D crystal structure with light source, crystal axes, and atom legend.
 > The **Size (W×H)** box at the top right of the window sets the pixel size used when saving or copying the rendered image.
-
-| Operation | Action |
-|-----------|--------|
-| Left drag | Rotate |
-| Centre drag | Translate |
-| Right drag/wheel | Zoom |
-| Left double-click | Select/deselect atom |
-| Ctrl+Right double-click | Toggle perspective/orthogonal |
 
 ---
 

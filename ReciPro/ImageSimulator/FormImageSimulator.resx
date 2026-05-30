@@ -1243,7 +1243,7 @@
     <value>TDS</value>
   </data>
   <data name="radioButtonSTEM_target_TDS.ToolTip" xml:space="preserve">
-    <value>Display TDS (inelastic) electrons only</value>
+    <value>Display only TDS (thermal diffuse scattering, inelastic) electrons in the STEM image.</value>
   </data>
   <data name="&gt;&gt;radioButtonSTEM_target_TDS.Name" xml:space="preserve">
     <value>radioButtonSTEM_target_TDS</value>
@@ -1288,7 +1288,7 @@
     <value>Elastic</value>
   </data>
   <data name="radioButtonSTEM_target_elas.ToolTip" xml:space="preserve">
-    <value>Display elastic electrons only</value>
+    <value>Display only elastically scattered electrons in the STEM image.</value>
   </data>
   <data name="&gt;&gt;radioButtonSTEM_target_elas.Name" xml:space="preserve">
     <value>radioButtonSTEM_target_elas</value>
@@ -1334,7 +1334,7 @@
 &amp;&amp;TDS</value>
   </data>
   <data name="radioButtonSTEM_target_both.ToolTip" xml:space="preserve">
-    <value>Display both elastic and inelastic electrons.</value>
+    <value>Display both elastic electrons and TDS (thermal diffuse scattering, inelastic) electrons in the STEM image.</value>
   </data>
   <data name="&gt;&gt;radioButtonSTEM_target_both.Name" xml:space="preserve">
     <value>radioButtonSTEM_target_both</value>
@@ -1532,7 +1532,7 @@
     <value>Scale bar</value>
   </data>
   <data name="checkBoxShowScale.ToolTip" xml:space="preserve">
-    <value>Show/hide scale bar</value>
+    <value>Show or hide the scale bar over the simulated image; length and color are set by the adjacent scale controls.</value>
   </data>
   <data name="&gt;&gt;checkBoxShowScale.Name" xml:space="preserve">
     <value>checkBoxShowScale</value>
@@ -1697,7 +1697,7 @@
     <value>Label</value>
   </data>
   <data name="checkBoxShowLabel.ToolTip" xml:space="preserve">
-    <value>Show/hide label</value>
+    <value>Show or hide text labels such as image conditions and indices over the simulated image; label color and font size are set nearby.</value>
   </data>
   <data name="&gt;&gt;checkBoxShowLabel.Name" xml:space="preserve">
     <value>checkBoxShowLabel</value>
@@ -1742,7 +1742,7 @@
     <value>Unit cell</value>
   </data>
   <data name="checkBoxShowUnitcell.ToolTip" xml:space="preserve">
-    <value>Show/hide unit cell outline</value>
+    <value>Show or hide the projected unit-cell outline on the simulated image to relate image contrast to the crystal lattice.</value>
   </data>
   <data name="&gt;&gt;checkBoxShowUnitcell.Name" xml:space="preserve">
     <value>checkBoxShowUnitcell</value>
@@ -3846,10 +3846,10 @@
     <value>3</value>
   </data>
   <data name="numericBoxSTEM_AngleResolution.ToolTip" xml:space="preserve">
-    <value>Angular resolution of incident electrons in mrad.</value>
+    <value>Angular sampling resolution of incident probe directions (mrad). Smaller values sample the STEM probe more finely but slow the calculation.</value>
   </data>
   <data name="numericBoxSTEM_AngleResolution.ToolTip1" xml:space="preserve">
-    <value>Angular resolution of incident electrons in mrad.</value>
+    <value>Angular sampling resolution of incident probe directions (mrad). Smaller values sample the STEM probe more finely but slow the calculation.</value>
   </data>
   <data name="&gt;&gt;numericBoxSTEM_AngleResolution.Name" xml:space="preserve">
     <value>numericBoxSTEM_AngleResolution</value>
@@ -3903,12 +3903,10 @@
     <value>3</value>
   </data>
   <data name="numericBoxSTEM_SliceThicknessForInelastic.ToolTip" xml:space="preserve">
-    <value>Sets the thickness to slice the sample when calculating the TDS electron intensity.
-Smaller values result in slower calculation speed but higher accuracy.</value>
+    <value>Slice thickness (nm) used when calculating TDS (thermal diffuse scattering, inelastic) electron intensity. Smaller values improve accuracy but slow the calculation.</value>
   </data>
   <data name="numericBoxSTEM_SliceThicknessForInelastic.ToolTip1" xml:space="preserve">
-    <value>Sets the thickness to slice the sample when calculating the TDS electron intensity.
-Smaller values result in slower calculation speed but higher accuracy.</value>
+    <value>Slice thickness (nm) used when calculating TDS (thermal diffuse scattering, inelastic) electron intensity. Smaller values improve accuracy but slow the calculation.</value>
   </data>
   <data name="&gt;&gt;numericBoxSTEM_SliceThicknessForInelastic.Name" xml:space="preserve">
     <value>numericBoxSTEM_SliceThicknessForInelastic</value>
@@ -4643,10 +4641,10 @@ Larger values result in slower calculation speed but higher accuracy.</value>
     <value>3</value>
   </data>
   <data name="numericBoxSTEM_DetectorOuterAngle.ToolTip" xml:space="preserve">
-    <value>Inner and outer radius of the annular detector in mrad.</value>
+    <value>Outer collection semi-angle of the annular STEM detector (mrad); signals above this angle are excluded.</value>
   </data>
   <data name="numericBoxSTEM_DetectorOuterAngle.ToolTip1" xml:space="preserve">
-    <value>Inner and outer radius of the annular detector in mrad.</value>
+    <value>Outer collection semi-angle of the annular STEM detector (mrad); signals above this angle are excluded.</value>
   </data>
   <data name="&gt;&gt;numericBoxSTEM_DetectorOuterAngle.Name" xml:space="preserve">
     <value>numericBoxSTEM_DetectorOuterAngle</value>
@@ -4697,10 +4695,10 @@ Larger values result in slower calculation speed but higher accuracy.</value>
     <value>4</value>
   </data>
   <data name="numericBoxSTEM_EffectiveSourceSize.ToolTip" xml:space="preserve">
-    <value>Size of the effective electron source.</value>
+    <value>Effective electron source size (nm). Larger values blur the STEM probe and reduce fine image detail.</value>
   </data>
   <data name="numericBoxSTEM_EffectiveSourceSize.ToolTip1" xml:space="preserve">
-    <value>Size of the effective electron source.</value>
+    <value>Effective electron source size (nm). Larger values blur the STEM probe and reduce fine image detail.</value>
   </data>
   <data name="&gt;&gt;numericBoxSTEM_EffectiveSourceSize.Name" xml:space="preserve">
     <value>numericBoxSTEM_EffectiveSourceSize</value>
@@ -4751,10 +4749,10 @@ Larger values result in slower calculation speed but higher accuracy.</value>
     <value>1</value>
   </data>
   <data name="numericBoxSTEM_ConvergenceAngle.ToolTip" xml:space="preserve">
-    <value>Angle of convergence of incident electrons in units of mrad.</value>
+    <value>Convergence semi-angle of the STEM incident probe (mrad); larger values make a tighter probe and change diffraction contrast.</value>
   </data>
   <data name="numericBoxSTEM_ConvergenceAngle.ToolTip1" xml:space="preserve">
-    <value>Angle of convergence of incident electrons in units of mrad.</value>
+    <value>Convergence semi-angle of the STEM incident probe (mrad); larger values make a tighter probe and change diffraction contrast.</value>
   </data>
   <data name="&gt;&gt;numericBoxSTEM_ConvergenceAngle.Name" xml:space="preserve">
     <value>numericBoxSTEM_ConvergenceAngle</value>
@@ -5096,10 +5094,10 @@ Larger values result in slower calculation speed but higher accuracy.</value>
     <value>2</value>
   </data>
   <data name="numericBoxSTEM_DetectorInnerAngle.ToolTip" xml:space="preserve">
-    <value>Inner and outer radius of the annular detector in mrad.</value>
+    <value>Inner collection semi-angle of the annular STEM detector (mrad); signals below this angle are excluded.</value>
   </data>
   <data name="numericBoxSTEM_DetectorInnerAngle.ToolTip1" xml:space="preserve">
-    <value>Inner and outer radius of the annular detector in mrad.</value>
+    <value>Inner collection semi-angle of the annular STEM detector (mrad); signals below this angle are excluded.</value>
   </data>
   <data name="&gt;&gt;numericBoxSTEM_DetectorInnerAngle.Name" xml:space="preserve">
     <value>numericBoxSTEM_DetectorInnerAngle</value>
@@ -5313,10 +5311,10 @@ Radius Range</value>
     <value>1</value>
   </data>
   <data name="numericBoxObjAperRadius.ToolTip" xml:space="preserve">
-    <value>Objective aperture size in mrad</value>
+    <value>Objective-aperture semi-angle (mrad). A smaller aperture cuts high-angle diffracted beams and smooths high-resolution image detail.</value>
   </data>
   <data name="numericBoxObjAperRadius.ToolTip1" xml:space="preserve">
-    <value>Objective aperture size in mrad</value>
+    <value>Objective-aperture semi-angle (mrad). A smaller aperture cuts high-angle diffracted beams and smooths high-resolution image detail.</value>
   </data>
   <data name="&gt;&gt;numericBoxObjAperRadius.Name" xml:space="preserve">
     <value>numericBoxObjAperRadius</value>
@@ -5853,10 +5851,10 @@ Simulator"</value>
     <value>5</value>
   </data>
   <data name="numericBoxCc.ToolTip" xml:space="preserve">
-    <value>Cc: Chromatic aberration in mm</value>
+    <value>Chromatic aberration coefficient Cc of the objective lens (mm); larger values increase blur from beam energy spread.</value>
   </data>
   <data name="numericBoxCc.ToolTip1" xml:space="preserve">
-    <value>Cc: Chromatic aberration in mm</value>
+    <value>Chromatic aberration coefficient Cc of the objective lens (mm); larger values increase blur from beam energy spread.</value>
   </data>
   <data name="&gt;&gt;numericBoxCc.Name" xml:space="preserve">
     <value>numericBoxCc</value>
@@ -6027,10 +6025,10 @@ Simulator"</value>
     <value>3</value>
   </data>
   <data name="numericBoxCs.ToolTip" xml:space="preserve">
-    <value>Cs: Spherical aberration in mm</value>
+    <value>Spherical aberration coefficient Cs of the objective lens (mm); it shapes the CTF (contrast transfer function) and Scherzer defocus.</value>
   </data>
   <data name="numericBoxCs.ToolTip1" xml:space="preserve">
-    <value>Cs: Spherical aberration in mm</value>
+    <value>Spherical aberration coefficient Cs of the objective lens (mm); it shapes the CTF (contrast transfer function) and Scherzer defocus.</value>
   </data>
   <data name="&gt;&gt;numericBoxCs.Name" xml:space="preserve">
     <value>numericBoxCs</value>
@@ -6084,10 +6082,10 @@ Simulator"</value>
     <value>2</value>
   </data>
   <data name="numericBoxDefocus.ToolTip" xml:space="preserve">
-    <value>Defocus value in nanometer</value>
+    <value>Objective-lens defocus (nm). Changing defocus shifts the CTF (contrast transfer function) and image contrast.</value>
   </data>
   <data name="numericBoxDefocus.ToolTip1" xml:space="preserve">
-    <value>Defocus value in nanometer</value>
+    <value>Objective-lens defocus (nm). Changing defocus shifts the CTF (contrast transfer function) and image contrast.</value>
   </data>
   <data name="&gt;&gt;numericBoxDefocus.Name" xml:space="preserve">
     <value>numericBoxDefocus</value>
@@ -6141,10 +6139,10 @@ Simulator"</value>
     <value>1</value>
   </data>
   <data name="numericBoxAccVol.ToolTip" xml:space="preserve">
-    <value>Acc voltage of TEM (kV)</value>
+    <value>Accelerating voltage of the TEM (transmission electron microscope), in kV; this changes electron wavelength and image contrast.</value>
   </data>
   <data name="numericBoxAccVol.ToolTip1" xml:space="preserve">
-    <value>Acc voltage of TEM (kV)</value>
+    <value>Accelerating voltage of the TEM (transmission electron microscope), in kV; this changes electron wavelength and image contrast.</value>
   </data>
   <data name="&gt;&gt;numericBoxAccVol.Name" xml:space="preserve">
     <value>numericBoxAccVol</value>
@@ -6187,7 +6185,7 @@ Simulator"</value>
  defocus</value>
   </data>
   <data name="label3.ToolTip" xml:space="preserve">
-    <value>Scherzer defocus value in nm</value>
+    <value>Scherzer defocus (nm), the defocus near the optimum phase-contrast condition calculated from the current wavelength and spherical aberration Cs.</value>
   </data>
   <data name="&gt;&gt;label3.Name" xml:space="preserve">
     <value>label3</value>
@@ -6397,7 +6395,7 @@ Simulator"</value>
     <value>HRTEM</value>
   </data>
   <data name="radioButtonHRTEM.ToolTip" xml:space="preserve">
-    <value>Simulate HRTEM images.</value>
+    <value>HRTEM (high-resolution transmission electron microscopy): simulate a phase-contrast TEM image for the selected crystal, thickness, and defocus.</value>
   </data>
   <data name="&gt;&gt;radioButtonHRTEM.Name" xml:space="preserve">
     <value>radioButtonHRTEM</value>
@@ -6439,7 +6437,7 @@ Simulator"</value>
     <value>STEM</value>
   </data>
   <data name="radioButtonSTEM.ToolTip" xml:space="preserve">
-    <value>Simulate STEM images.</value>
+    <value>STEM (scanning transmission electron microscopy): simulate a scanned-probe image using the convergence angle and annular detector settings.</value>
   </data>
   <data name="&gt;&gt;radioButtonSTEM.Name" xml:space="preserve">
     <value>radioButtonSTEM</value>
@@ -6481,7 +6479,7 @@ Simulator"</value>
     <value>STEM-EDX</value>
   </data>
   <data name="radioButton1.ToolTip" xml:space="preserve">
-    <value>Simulate STEM images.</value>
+    <value>STEM-EDX (scanning transmission electron microscopy with energy-dispersive X-ray spectroscopy): simulate STEM-EDX output using the STEM calculation controls.</value>
   </data>
   <data name="&gt;&gt;radioButton1.Name" xml:space="preserve">
     <value>radioButton1</value>
@@ -6523,7 +6521,7 @@ Simulator"</value>
     <value>Potential</value>
   </data>
   <data name="radioButtonProjectedPotential.ToolTip" xml:space="preserve">
-    <value>Simulate Potential images.</value>
+    <value>Potential mode: calculate the projected crystal potential instead of applying TEM/STEM image-transfer effects.</value>
   </data>
   <data name="&gt;&gt;radioButtonProjectedPotential.Name" xml:space="preserve">
     <value>radioButtonProjectedPotential</value>
@@ -6894,7 +6892,7 @@ This value is ignored when "Serial image" mode is selected.</value>
     <value>Simulate</value>
   </data>
   <data name="buttonSimulate.ToolTip" xml:space="preserve">
-    <value>Simulate the image using the settings above.</value>
+    <value>Run the image simulation with the current crystal, microscope, thickness, defocus, and display settings.</value>
   </data>
   <data name="&gt;&gt;buttonSimulate.Name" xml:space="preserve">
     <value>buttonSimulate</value>

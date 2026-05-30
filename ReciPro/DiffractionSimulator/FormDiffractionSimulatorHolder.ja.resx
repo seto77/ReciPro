@@ -269,7 +269,7 @@
     <value>56, 20</value>
   </data>
   <data name="colorControlBackGround.ToolTip" xml:space="preserve">
-    <value>Background</value>
+    <value>ステレオネット描画領域の背景色を設定します。</value>
   </data>
   <data name="colorControlHolder.FooterText" xml:space="preserve">
     <value>ホルダー</value>
@@ -284,13 +284,13 @@
     <value>72, 20</value>
   </data>
   <data name="colorControlHolder.ToolTip" xml:space="preserve">
-    <value>ホルダーの色</value>
+    <value>ステレオネット上に描く試料ホルダー枠の色を設定します。</value>
   </data>
   <data name="colorControl90DegLine.ToolTip" xml:space="preserve">
-    <value>90度線の色</value>
+    <value>ステレオネットの 90° 主グリッド線および外周円の色を設定します。</value>
   </data>
   <data name="colorControl10DegLine.ToolTip" xml:space="preserve">
-    <value>10度線の色</value>
+    <value>ステレオネット上に描く 10° 間隔の中間グリッド線の色を設定します。</value>
   </data>
   <data name="colorControl1DegLine.ToolTip" xml:space="preserve">
     <value>1度線の色
@@ -512,5 +512,89 @@
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>TEMホルダーシミュレーション</value>
+  </data>
+  <data name="colorControlGeneralAxis.ToolTip" xml:space="preserve">
+    <value>一般の晶帯軸([100], [010], [001] 以外)の点とラベルの色</value>
+  </data>
+  <data name="colorControlTiltX.ToolTip" xml:space="preserve">
+    <value>Tilt-X(主軸)の傾斜方向矢印の色（「ホルダー軸の向きを表示」が有効なとき表示）</value>
+  </data>
+  <data name="colorControlTiltY.ToolTip" xml:space="preserve">
+    <value>Tilt-Y(副軸)の傾斜方向矢印の色（「ホルダー軸の向きを表示」が有効なとき表示）</value>
+  </data>
+  <data name="checkBoxEnableArrow.ToolTip" xml:space="preserve">
+    <value>チェックすると矢印キーでホルダーを傾斜します。左右で Tilt X、上下で Tilt Y を矢印ステップ分だけ変化させます。</value>
+  </data>
+  <data name="numericBoxArrowStep.ToolTip" xml:space="preserve">
+    <value>矢印キー1回あたりに変化させる傾斜角の増分（度）を設定します。</value>
+  </data>
+  <data name="numericBoxTiltX.ToolTip" xml:space="preserve">
+    <value>ホルダーの主軸（Tilt X）まわりの傾斜角（度）を設定します。</value>
+  </data>
+  <data name="numericBoxTiltY.ToolTip" xml:space="preserve">
+    <value>ホルダーの副軸（Tilt Y）まわりの傾斜角（度）を設定します。</value>
+  </data>
+  <data name="label19.ToolTip" xml:space="preserve">
+    <value>ホルダーの主軸（Tilt X）まわりの傾斜角（度）を設定します。</value>
+  </data>
+  <data name="label20.ToolTip" xml:space="preserve">
+    <value>ホルダーの副軸（Tilt Y）まわりの傾斜角（度）を設定します。</value>
+  </data>
+  <data name="numericBoxTiltXDirection.ToolTip" xml:space="preserve">
+    <value>ステレオネット上での Tilt X（主軸）の方位（度）を設定します。</value>
+  </data>
+  <data name="radioButtonTiltY_Minus.ToolTip" xml:space="preserve">
+    <value>Tilt Y（副軸）の極性を負（−）に設定します。</value>
+  </data>
+  <data name="radioButtonTiltY_Plus.ToolTip" xml:space="preserve">
+    <value>Tilt Y（副軸）の極性を正（＋）に設定します。</value>
+  </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value>ステレオネット上での Tilt X（主軸）の方位（度）を設定します。</value>
+  </data>
+  <data name="label4.ToolTip" xml:space="preserve">
+    <value>Tilt Y（副軸）の極性（符号）を設定します。使用する TEM の傾斜符号に合わせてください。</value>
+  </data>
+  <data name="trackBarPointSize.ToolTip" xml:space="preserve">
+    <value>ステレオネット上に描く晶帯軸の点（円）の大きさを設定します。</value>
+  </data>
+  <data name="trackBarStrSize.ToolTip" xml:space="preserve">
+    <value>晶帯軸の指数ラベルの文字サイズを設定します。</value>
+  </data>
+  <data name="label17.ToolTip" xml:space="preserve">
+    <value>晶帯軸の指数ラベルの文字サイズを設定します。</value>
+  </data>
+  <data name="label18.ToolTip" xml:space="preserve">
+    <value>ステレオネット上に描く晶帯軸の点（円）の大きさを設定します。</value>
+  </data>
+  <data name="buttonLink.ToolTip" xml:space="preserve">
+    <value>Link の Tilt X / Tilt Y の値を現在のホルダー傾斜に適用し、その姿勢を中立方向として設定します。</value>
+  </data>
+  <data name="buttonRotate180.ToolTip" xml:space="preserve">
+    <value>結晶を電子線（[001]）軸まわりに 180° 回転します。</value>
+  </data>
+  <data name="numericBoxLinkTiltX.ToolTip" xml:space="preserve">
+    <value>Link ボタンを押したときに Tilt X へ適用する目標傾斜角（度）を設定します。</value>
+  </data>
+  <data name="numericBoxLinkTiltY.ToolTip" xml:space="preserve">
+    <value>Link ボタンを押したときに Tilt Y へ適用する目標傾斜角（度）を設定します。</value>
+  </data>
+  <data name="checkBox1DegLine.ToolTip" xml:space="preserve">
+    <value>チェックするとステレオネットに 1° 間隔の線を表示します（色は 1° の色設定に従います）。</value>
+  </data>
+  <data name="checkBoxShowIndexLabels.ToolTip" xml:space="preserve">
+    <value>チェックすると各晶帯軸の点に [u v w] 指数ラベルを表示します。</value>
+  </data>
+  <data name="checkBoxTiltDirections.ToolTip" xml:space="preserve">
+    <value>チェックするとステレオネット上に Tilt-X・Tilt-Y の傾斜方向を示す矢印を表示します。</value>
+  </data>
+  <data name="numericBoxDrawingArea.ToolTip" xml:space="preserve">
+    <value>ステレオネットに表示する半角（度）を設定します。小さくするほど拡大表示になります。</value>
+  </data>
+  <data name="graphicsBox.ToolTip" xml:space="preserve">
+    <value>傾斜方向ステレオネットです。点をダブルクリックするとその方向へホルダーを傾斜します。</value>
+  </data>
+  <data name="checkBoxIncludingEquivalent.ToolTip" xml:space="preserve">
+    <value>チェックすると各指数について結晶対称で等価な晶帯軸も生成・表示します。</value>
   </data>
 </root>

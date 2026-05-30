@@ -197,6 +197,7 @@ nav:
           - en/20-macro/index.md
           - 20.1. Built-in functions: en/20-macro/1-built-in-functions.md
           - 20.2. Examples: en/20-macro/2-examples.md
+      - 21. Keyboard & mouse shortcuts: en/21-shortcuts.md
       - Appendix:
           - How to use (videos): en/appendix/a0-how-to-use.md
           - Appendix A1. Coordinate systems:
@@ -238,6 +239,7 @@ nav:
           - ja/20-macro/index.md
           - 20.1. 組み込み関数一覧: ja/20-macro/1-built-in-functions.md
           - 20.2. マクロの使用例: ja/20-macro/2-examples.md
+      - 21. キーボード・マウスショートカット: ja/21-shortcuts.md
       - 付録:
           - How to use（動画）: ja/appendix/a0-how-to-use.md
           - Appendix A1. 座標系の定義:

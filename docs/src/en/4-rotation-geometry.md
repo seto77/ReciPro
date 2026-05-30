@@ -8,6 +8,23 @@ ReciPro uses three Euler angles — **Ψ**, **θ**, and **Φ** — applied in **
 
 ---
 
+## Keyboard & mouse shortcuts
+
+All six 3-D views (the ReciPro and experimental goniometer / axes / objects panels) are **linked** — rotating any one rotates all six together. They share ReciPro's standard [OpenGL view navigation](21-shortcuts.md).
+
+| Shortcut | Action |
+|----------|--------|
+| <kbd>F1</kbd> | Open this page of the online manual |
+| Left-drag a view | Rotate the model (all six views rotate together) |
+| Mouse wheel, or Right-drag up/down | Zoom (the large goniometer views) |
+| Middle-drag | Pan (the large goniometer views) |
+| <kbd>CTRL</kbd> + Right-drag up/down | Change the camera distance (perspective mode only) |
+| <kbd>CTRL</kbd> + Right double-click | Toggle orthographic / perspective projection |
+
+The small *Axes* and *Objects* views have zoom and pan disabled. There are no keyboard shortcuts other than <kbd>F1</kbd>.
+
+---
+
 ## ReciPro coordinate system (ZXZ)
 
 The upper half of the window shows the rotation state in the "ReciPro coordinate system".

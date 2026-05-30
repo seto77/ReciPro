@@ -6,6 +6,30 @@
 
 ---
 
+## Keyboard & mouse shortcuts
+
+You build the spot list directly on the loaded image. The image pane uses ReciPro's standard [image-view navigation](21-shortcuts.md) for pan/zoom; spot editing adds the combinations below.
+
+| Shortcut | Action |
+|----------|--------|
+| <kbd>F1</kbd> | Open this page of the online manual |
+| Left double-click the image | Add a spot at that point (peak-fitted) |
+| <kbd>CTRL</kbd> + Left double-click | Add a spot and mark it as the direct (000) beam |
+| Left-click a spot | Select the nearest spot |
+| <kbd>CTRL</kbd> + Right-click a spot | Delete the nearest spot |
+| <kbd>CTRL</kbd> + arrow keys | Nudge the selected spot by one pixel |
+| Left-drag / Middle-drag (empty area) | Pan the image |
+| Mouse wheel | Zoom in / out at the cursor |
+| Right-drag a box | Zoom in to the selected region |
+| Right double-click | Zoom out |
+| Double-click a spot's row header (table) | Zoom to that spot (×2) |
+
+The main-window <kbd>CTRL</kbd>+<kbd>SHIFT</kbd>+<kbd>T</kbd> opens/closes this window.
+
+→ See **[21. Keyboard & mouse shortcuts](21-shortcuts.md)** for every window at a glance.
+
+---
+
 ## File menu
 
 Open / save a diffraction image. The same drag-and-drop loading as [Spot ID v1](10-spot-id.md) is supported, and Gatan DM3/DM4 metadata (camera length, wavelength, pixel size) is honoured automatically.

@@ -698,7 +698,8 @@
             colorControlFoot.Name = "colorControlFoot";
             colorControlFoot.Red = 0;
             colorControlFoot.RedF = 0F;
-            toolTip.SetToolTip(colorControlFoot, resources.GetString("colorControlFoot.ToolTip1"));
+            // toolTip.SetToolTip(colorControlFoot, resources.GetString("colorControlFoot.ToolTip1")); // (260531Cl) 旧キー(空)
+            toolTip.SetToolTip(colorControlFoot, resources.GetString("colorControlFoot.ToolTip")); // (260531Cl)
             colorControlFoot.ColorChanged += Draw;
             // 
             // checkBoxShowFootPosition
@@ -792,7 +793,8 @@
             numericBoxKikuchiThresholdOfStructureFactor.RadianValue = 1.7453292519943295D;
             numericBoxKikuchiThresholdOfStructureFactor.ShowUpDown = true;
             numericBoxKikuchiThresholdOfStructureFactor.SmartIncrement = true;
-            toolTip.SetToolTip(numericBoxKikuchiThresholdOfStructureFactor, resources.GetString("numericBoxKikuchiThresholdOfStructureFactor.ToolTip1"));
+            // toolTip.SetToolTip(numericBoxKikuchiThresholdOfStructureFactor, resources.GetString("numericBoxKikuchiThresholdOfStructureFactor.ToolTip1")); // (260531Cl) 旧キー(空)
+            toolTip.SetToolTip(numericBoxKikuchiThresholdOfStructureFactor, resources.GetString("numericBoxKikuchiThresholdOfStructureFactor.ToolTip")); // (260531Cl)
             numericBoxKikuchiThresholdOfStructureFactor.Value = 100D;
             numericBoxKikuchiThresholdOfStructureFactor.ValueFontSize = 9F;
             numericBoxKikuchiThresholdOfStructureFactor.ValueChanged += numericBoxKikuchiLineThreshold_ValueChanged;
@@ -807,7 +809,8 @@
             numericBoxKikuchiThresholdOfLength.RadianValue = 0.17453292519943295D;
             numericBoxKikuchiThresholdOfLength.ShowUpDown = true;
             numericBoxKikuchiThresholdOfLength.SmartIncrement = true;
-            toolTip.SetToolTip(numericBoxKikuchiThresholdOfLength, resources.GetString("numericBoxKikuchiThresholdOfLength.ToolTip1"));
+            // toolTip.SetToolTip(numericBoxKikuchiThresholdOfLength, resources.GetString("numericBoxKikuchiThresholdOfLength.ToolTip1")); // (260531Ch) 旧キー
+            toolTip.SetToolTip(numericBoxKikuchiThresholdOfLength, resources.GetString("numericBoxKikuchiThresholdOfLength.ToolTip")); // (260531Ch)
             numericBoxKikuchiThresholdOfLength.Value = 10D;
             numericBoxKikuchiThresholdOfLength.ValueFontSize = 9F;
             numericBoxKikuchiThresholdOfLength.ValueChanged += numericBoxKikuchiLineThreshold_ValueChanged;
@@ -826,7 +829,8 @@
             colorControlExcessLine.Name = "colorControlExcessLine";
             colorControlExcessLine.Red = 224;
             colorControlExcessLine.RedF = 0.8784314F;
-            toolTip.SetToolTip(colorControlExcessLine, resources.GetString("colorControlExcessLine.ToolTip1"));
+            // toolTip.SetToolTip(colorControlExcessLine, resources.GetString("colorControlExcessLine.ToolTip1")); // (260531Cl) 旧キー(空)
+            toolTip.SetToolTip(colorControlExcessLine, resources.GetString("colorControlExcessLine.ToolTip")); // (260531Cl)
             colorControlExcessLine.ColorChanged += Draw;
             // 
             // trackBarLineWidth
@@ -1117,7 +1121,8 @@
             numericBox3D_SpotRadius.SkipEventDuringInput = false;
             numericBox3D_SpotRadius.SmartIncrement = true;
             numericBox3D_SpotRadius.ThousandsSeparator = true;
-            toolTip.SetToolTip(numericBox3D_SpotRadius, resources.GetString("numericBox3D_SpotRadius.ToolTip1"));
+            // toolTip.SetToolTip(numericBox3D_SpotRadius, resources.GetString("numericBox3D_SpotRadius.ToolTip1")); // (260531Ch) 旧キー
+            toolTip.SetToolTip(numericBox3D_SpotRadius, resources.GetString("numericBox3D_SpotRadius.ToolTip")); // (260531Ch)
             numericBox3D_SpotRadius.UpDown_Increment = 0.01D;
             numericBox3D_SpotRadius.Value = 0.2D;
             numericBox3D_SpotRadius.ValueFontSize = 9F;
@@ -1161,7 +1166,8 @@
             colorControl3D_SpotsFar.Name = "colorControl3D_SpotsFar";
             colorControl3D_SpotsFar.Red = 192;
             colorControl3D_SpotsFar.RedF = 0.7529412F;
-            toolTip.SetToolTip(colorControl3D_SpotsFar, resources.GetString("colorControl3D_SpotsFar.ToolTip1"));
+            // toolTip.SetToolTip(colorControl3D_SpotsFar, resources.GetString("colorControl3D_SpotsFar.ToolTip1")); // (260531Cl) 旧キー(空)
+            toolTip.SetToolTip(colorControl3D_SpotsFar, resources.GetString("colorControl3D_SpotsFar.ToolTip")); // (260531Cl)
             colorControl3D_SpotsFar.ColorChanged += colorControlReciprocalBackground_ColorChanged;
             // 
             // checkBox3D_MakeSpotsTransparent
@@ -1375,7 +1381,8 @@
             colorControl3D_EwaldSphere.Name = "colorControl3D_EwaldSphere";
             colorControl3D_EwaldSphere.Red = 128;
             colorControl3D_EwaldSphere.RedF = 0.5019608F;
-            toolTip.SetToolTip(colorControl3D_EwaldSphere, resources.GetString("colorControl3D_EwaldSphere.ToolTip1"));
+            // toolTip.SetToolTip(colorControl3D_EwaldSphere, resources.GetString("colorControl3D_EwaldSphere.ToolTip1")); // (260531Cl) 旧キー(空)
+            toolTip.SetToolTip(colorControl3D_EwaldSphere, resources.GetString("colorControl3D_EwaldSphere.ToolTip")); // (260531Cl)
             colorControl3D_EwaldSphere.ColorChanged += colorControlReciprocalBackground_ColorChanged;
             // 
             // colorControl3D_Origin
@@ -1392,7 +1399,8 @@
             colorControl3D_Origin.Name = "colorControl3D_Origin";
             colorControl3D_Origin.Red = 255;
             colorControl3D_Origin.RedF = 1F;
-            toolTip.SetToolTip(colorControl3D_Origin, resources.GetString("colorControl3D_Origin.ToolTip1"));
+            // toolTip.SetToolTip(colorControl3D_Origin, resources.GetString("colorControl3D_Origin.ToolTip1")); // (260531Cl) 旧キー(空)
+            toolTip.SetToolTip(colorControl3D_Origin, resources.GetString("colorControl3D_Origin.ToolTip")); // (260531Cl)
             colorControl3D_Origin.ColorChanged += colorControlReciprocalBackground_ColorChanged;
             // 
             // colorControl3D_rightDirection
@@ -1409,7 +1417,8 @@
             colorControl3D_rightDirection.Name = "colorControl3D_rightDirection";
             colorControl3D_rightDirection.Red = 128;
             colorControl3D_rightDirection.RedF = 0.5019608F;
-            toolTip.SetToolTip(colorControl3D_rightDirection, resources.GetString("colorControl3D_rightDirection.ToolTip1"));
+            // toolTip.SetToolTip(colorControl3D_rightDirection, resources.GetString("colorControl3D_rightDirection.ToolTip1")); // (260531Cl) 旧キー(空)
+            toolTip.SetToolTip(colorControl3D_rightDirection, resources.GetString("colorControl3D_rightDirection.ToolTip")); // (260531Cl)
             colorControl3D_rightDirection.ColorChanged += colorControlReciprocalBackground_ColorChanged;
             // 
             // colorControl3D_topDirection
@@ -1426,7 +1435,8 @@
             colorControl3D_topDirection.Name = "colorControl3D_topDirection";
             colorControl3D_topDirection.Red = 255;
             colorControl3D_topDirection.RedF = 1F;
-            toolTip.SetToolTip(colorControl3D_topDirection, resources.GetString("colorControl3D_topDirection.ToolTip1"));
+            // toolTip.SetToolTip(colorControl3D_topDirection, resources.GetString("colorControl3D_topDirection.ToolTip1")); // (260531Cl) 旧キー(空)
+            toolTip.SetToolTip(colorControl3D_topDirection, resources.GetString("colorControl3D_topDirection.ToolTip")); // (260531Cl)
             colorControl3D_topDirection.ColorChanged += colorControlReciprocalBackground_ColorChanged;
             // 
             // colorControl3D_beamDirection
@@ -1443,7 +1453,8 @@
             colorControl3D_beamDirection.Name = "colorControl3D_beamDirection";
             colorControl3D_beamDirection.Red = 255;
             colorControl3D_beamDirection.RedF = 1F;
-            toolTip.SetToolTip(colorControl3D_beamDirection, resources.GetString("colorControl3D_beamDirection.ToolTip1"));
+            // toolTip.SetToolTip(colorControl3D_beamDirection, resources.GetString("colorControl3D_beamDirection.ToolTip1")); // (260531Cl) 旧キー(空)
+            toolTip.SetToolTip(colorControl3D_beamDirection, resources.GetString("colorControl3D_beamDirection.ToolTip")); // (260531Cl)
             colorControl3D_beamDirection.ColorChanged += colorControlReciprocalBackground_ColorChanged;
             // 
             // colorControl3D_lText

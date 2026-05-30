@@ -10,6 +10,26 @@ The **HRTEM/STEM Simulator** simulates TEM lattice-fringe (HRTEM) images, STEM i
 
 ---
 
+## Keyboard & mouse shortcuts
+
+Results are shown as one or more image panes. They use ReciPro's standard [image-view navigation](../21-shortcuts.md), and all panes pan and zoom together.
+
+| Shortcut | Action |
+|----------|--------|
+| <kbd>F1</kbd> | Open this page of the online manual |
+| <kbd>CTRL</kbd>+<kbd>C</kbd> (image grid focused) | Copy the image(s) to the clipboard as a metafile |
+| Left-drag / Middle-drag | Pan the image (all panes move together) |
+| Mouse wheel up / down | Zoom in (×2) / out (×0.5) at the cursor |
+| Right-drag a box | Zoom in to the selected region |
+| Right-click / Right double-click | Zoom out (×0.5) |
+| <kbd>CTRL</kbd> + Right-drag a box | Select a rectangular area |
+| Left double-click a pane | Maximise that pane / restore the grid (multi-pane layouts) |
+| Move the mouse (no button) | Read the position (pm) and pixel value at the cursor |
+
+→ See **[21. Keyboard & mouse shortcuts](../21-shortcuts.md)** for every window at a glance.
+
+---
+
 ## Quick Routes by Goal
 
 | Goal | Start from | Reference |

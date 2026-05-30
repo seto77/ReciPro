@@ -6,6 +6,21 @@
 
 ---
 
+## Keyboard & mouse shortcuts
+
+The trajectories are shown in a 3-D OpenGL view. It uses ReciPro's standard [view navigation](21-shortcuts.md), but **panning is disabled** — use the view-preset buttons to jump to the standard orientations.
+
+| Shortcut | Action |
+|----------|--------|
+| <kbd>F1</kbd> | Open this page of the online manual |
+| Left-drag | Rotate the model |
+| Right-drag up/down, or Mouse wheel | Zoom |
+| <kbd>CTRL</kbd> + Right double-click | Toggle orthographic / perspective projection |
+
+→ See **[21. Keyboard & mouse shortcuts](21-shortcuts.md)** for every window at a glance.
+
+---
+
 ## Calculation Conditions
 
 ![Calculation Conditions](../assets/cap-en-auto/FormTrajectory.panelCalculationConditions.png)

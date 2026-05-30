@@ -8,6 +8,14 @@ The calculation conditions are at the top of the window and the reflection list 
 
 ---
 
+## Keyboard & mouse shortcuts
+
+This window has no special key or mouse combinations. <kbd>F1</kbd> opens this manual page, and **Copy to clipboard** exports the whole reflection table as spreadsheet-pasteable text.
+
+→ See **[21. Keyboard & mouse shortcuts](21-shortcuts.md)** for every window at a glance.
+
+---
+
 ## Wave Length Control
 
 - **X-ray / Electron / Neutron** : the atomic scattering factors differ by the type of incident beam, so they are switched here.

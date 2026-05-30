@@ -37,6 +37,8 @@ namespace ReciPro
         // groupBox9 -> groupBoxCompressionModel
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             captureExtender.SetCapture(this, true); // 260521Cl 追加: GUI監査キャプチャ対象 (フォーム全体)
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -1318,6 +1320,46 @@ namespace ReciPro
             this.groupBoxCompressionModel.PerformLayout();
             this.groupBoxSlipPlane.ResumeLayout(false);
             this.groupBoxSlipPlane.PerformLayout();
+            // 260530Cl 追加: ツールチップ (SetToolTip方式)
+            this.toolTip.SetToolTip(this.buttonSimulate, "Run the dynamic-compression diffraction simulation and accumulate the pattern.");
+            this.toolTip.SetToolTip(this.checkBoxSkipDrawing, "When checked, skips on-screen drawing during the calculation to speed it up.");
+            this.toolTip.SetToolTip(this.label2, "Depth of the front boundary separating the uncompressed and compressed regions.");
+            this.toolTip.SetToolTip(this.label3, "Depth of the back boundary separating the compressed and released regions.");
+            this.toolTip.SetToolTip(this.buttonSetFolder, "Choose the output folder where simulated TIFF patterns are saved.");
+            this.toolTip.SetToolTip(this.textBoxFileName, "Base file name for the saved TIFF pattern; '.tif' is appended automatically.");
+            this.toolTip.SetToolTip(this.label8, "Base file name for the saved TIFF pattern; '.tif' is appended automatically.");
+            this.toolTip.SetToolTip(this.numericBoxCompressedOmega, "Mean crystal rotation rate ω in the compressed region (°/ns).");
+            this.toolTip.SetToolTip(this.numericBoxCompressedOmegaSigma, "Standard deviation σ_ω of the rotation rate in the compressed region (°/ns).");
+            this.toolTip.SetToolTip(this.numericBoxCompressedThetaA, "Constant term a (°) of the rotation-axis spread σ_θ for the compressed region (2019 model).");
+            this.toolTip.SetToolTip(this.numericBoxCompressedThetaB, "Time coefficient b (°/ns) of the rotation-axis spread σ_θ for the compressed region (2019 model).");
+            this.toolTip.SetToolTip(this.checkBoxOmegaStep, "When checked, repeats the simulation while incrementing the overall Ω angle by a fixed step.");
+            this.toolTip.SetToolTip(this.checkBoxSaveSimulatedPattern, "When checked, saves each simulated pattern as a TIFF file to the chosen folder.");
+            this.toolTip.SetToolTip(this.numericBoxDivisionOfRotationAngle, "Number of sampling divisions for integrating over the rotation-rate (speed) distribution.");
+            this.toolTip.SetToolTip(this.numericBoxDivisionOfRotationAxis, "Number of azimuthal sampling divisions for the rotation axis.");
+            this.toolTip.SetToolTip(this.numericBoxReleasedOmega, "Mean crystal rotation rate ω in the released region (°/ns).");
+            this.toolTip.SetToolTip(this.numericBoxReleasedOmegaSigma, "Standard deviation σ_ω of the rotation rate in the released region (°/ns).");
+            this.toolTip.SetToolTip(this.numericBoxReleasedThetaA, "Constant term a (°) of the rotation-axis spread σ_θ for the released region (2019 model).");
+            this.toolTip.SetToolTip(this.numericBoxReleasedThetaB, "Time coefficient b (°/ns) of the rotation-axis spread σ_θ for the released region (2019 model).");
+            this.toolTip.SetToolTip(this.numericBoxShockedPlaneH, "Miller index h of the shocked (compression) plane normal.");
+            this.toolTip.SetToolTip(this.numericBoxShockedPlaneK, "Miller index k of the shocked (compression) plane normal.");
+            this.toolTip.SetToolTip(this.numericBoxShockedPlaneL, "Miller index l of the shocked (compression) plane normal.");
+            this.toolTip.SetToolTip(this.numericBoxSlipPlaneH, "Miller index h of the slip-plane normal (used to define the rotation axis in the 2019 model).");
+            this.toolTip.SetToolTip(this.numericBoxSlipPlaneK, "Miller index k of the slip-plane normal (used to define the rotation axis in the 2019 model).");
+            this.toolTip.SetToolTip(this.numericBoxSlipPlaneL, "Miller index l of the slip-plane normal (used to define the rotation axis in the 2019 model).");
+            this.toolTip.SetToolTip(this.numericBoxUp, "Shock (compression) wave speed Us (km/s) used to convert depth into elapsed time in the compressed region.");
+            this.toolTip.SetToolTip(this.radioButtonCompressedIsotropic, "Apply isotropic (hydrostatic) compression of the lattice in the compressed region.");
+            this.toolTip.SetToolTip(this.radioButtonCompressedUniaxial, "Apply uniaxial compression of the lattice along the shocked-plane normal in the compressed region.");
+            this.toolTip.SetToolTip(this.numericBoxUr, "Release wave speed Ur (km/s) used to convert depth into elapsed time in the released region.");
+            this.toolTip.SetToolTip(this.radioButtonReleasedIsotropic, "Apply isotropic (hydrostatic) compression of the lattice in the released region.");
+            this.toolTip.SetToolTip(this.radioButtonReleasedUniaxial, "Apply uniaxial compression of the lattice along the shocked-plane normal in the released region.");
+            this.toolTip.SetToolTip(this.numericBoxOmegaStep, "Ω angle increment (°) applied per repeat when 'Increment Ω' is enabled.");
+            this.toolTip.SetToolTip(this.numericBoxOmegaTimes, "Number of repeats when 'Increment Ω' is enabled.");
+            this.toolTip.SetToolTip(this.radioButton2018Model, "Use the 2018 rotation model (rotation axes perpendicular to the compression axis).");
+            this.toolTip.SetToolTip(this.radioButton2019Model, "Use the 2019 rotation model (rotation axis from the slip-plane / compression-plane cross product, with θ,φ spread).");
+            this.toolTip.SetToolTip(this.numericBoxEOS_K0, "Bulk modulus K0 (GPa) for the third-order Birch–Murnaghan equation of state.");
+            this.toolTip.SetToolTip(this.numericBoxEOS_Kprime, "Pressure derivative of the bulk modulus K'0 for the third-order Birch–Murnaghan equation of state.");
+            this.toolTip.SetToolTip(this.numericBoxMassAbsorption, "Mass absorption coefficient (cm²/g) of the sample used to attenuate intensities through the layers.");
+            this.toolTip.SetToolTip(this.label4, "Mass absorption coefficient (cm²/g) of the sample used to attenuate intensities through the layers.");
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1331,6 +1373,7 @@ namespace ReciPro
         private Crystallography.Controls.NumericBox numericBoxShockedPlaneH;
         private Crystallography.Controls.NumericBox numericBoxShockedPlaneK;
         private Crystallography.Controls.NumericBox numericBoxShockedPlaneL;
+        private System.Windows.Forms.ToolTip toolTip;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;

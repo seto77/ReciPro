@@ -419,7 +419,7 @@
     <value>75, 20</value>
   </data>
   <data name="radioButtonSTEM_target_TDS.ToolTip" xml:space="preserve">
-    <value>TDS（非弾性）電子のみ表示</value>
+    <value>STEM 像で TDS（thermal diffuse scattering, 熱散漫散乱による非弾性）電子のみを表示します。</value>
   </data>
   <data name="radioButtonSTEM_target_elas.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
@@ -440,7 +440,7 @@
     <value>弾性</value>
   </data>
   <data name="radioButtonSTEM_target_elas.ToolTip" xml:space="preserve">
-    <value>弾性電子のみ表示</value>
+    <value>STEM 像で弾性散乱電子のみを表示します。</value>
   </data>
   <data name="radioButtonSTEM_target_both.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
@@ -462,7 +462,7 @@
 &amp;&amp;TDS</value>
   </data>
   <data name="radioButtonSTEM_target_both.ToolTip" xml:space="preserve">
-    <value>弾性・非弾性電子の両方を表示。</value>
+    <value>STEM 像で弾性散乱電子と TDS（熱散漫散乱による非弾性）電子の両方を表示します。</value>
   </data>
   <data name="groupBoxDisplay.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
@@ -546,7 +546,7 @@
     <value>スケール</value>
   </data>
   <data name="checkBoxShowScale.ToolTip" xml:space="preserve">
-    <value>スケールバーの表示/非表示</value>
+    <value>シミュレーション画像上のスケールバーを表示/非表示にします。長さと色は隣のスケール設定で指定します。</value>
   </data>
   <data name="colorControlLabel.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
@@ -612,7 +612,7 @@
     <value>ラベル</value>
   </data>
   <data name="checkBoxShowLabel.ToolTip" xml:space="preserve">
-    <value>ラベルの表示/非表示</value>
+    <value>画像条件や指数などのラベルをシミュレーション画像上に表示/非表示にします。色と文字サイズは近くの設定で指定します。</value>
   </data>
   <data name="checkBoxShowUnitcell.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
@@ -633,7 +633,7 @@
     <value>単位格子</value>
   </data>
   <data name="checkBoxShowUnitcell.ToolTip" xml:space="preserve">
-    <value>単位格子の輪郭を表示/非表示</value>
+    <value>投影された単位格子の輪郭をシミュレーション画像上に表示/非表示にし、像コントラストと結晶格子の対応を確認します。</value>
   </data>
   <data name="panelModeOptions.Size" type="System.Drawing.Size, System.Drawing">
     <value>316, 220</value>
@@ -1003,10 +1003,10 @@
     <value>225, 25</value>
   </data>
   <data name="numericBoxSTEM_AngleResolution.ToolTip" xml:space="preserve">
-    <value>入射電子の角度分解能 (mrad)。</value>
+    <value>入射プローブ方向の角度サンプリング分解能 (mrad) を設定します。小さいほど STEM プローブを細かくサンプリングしますが計算は遅くなります。</value>
   </data>
   <data name="numericBoxSTEM_AngleResolution.ToolTip1" xml:space="preserve">
-    <value>入射電子の角度分解能 (mrad)。</value>
+    <value>入射プローブ方向の角度サンプリング分解能 (mrad) を設定します。小さいほど STEM プローブを細かくサンプリングしますが計算は遅くなります。</value>
   </data>
   <data name="numericBoxSTEM_SliceThicknessForInelastic.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
@@ -1030,12 +1030,10 @@
     <value>242, 25</value>
   </data>
   <data name="numericBoxSTEM_SliceThicknessForInelastic.ToolTip" xml:space="preserve">
-    <value>TDS電子強度計算時に試料をスライスする厚さを設定します。
-値が小さいほど計算速度は遅くなりますが、精度が向上します。</value>
+    <value>TDS（thermal diffuse scattering, 熱散漫散乱による非弾性）電子強度を計算する際の試料スライス厚さ (nm) を設定します。小さいほど精度は上がりますが計算は遅くなります。</value>
   </data>
   <data name="numericBoxSTEM_SliceThicknessForInelastic.ToolTip1" xml:space="preserve">
-    <value>TDS電子強度計算時に試料をスライスする厚さを設定します。
-値が小さいほど計算速度は遅くなりますが、精度が向上します。</value>
+    <value>TDS（thermal diffuse scattering, 熱散漫散乱による非弾性）電子強度を計算する際の試料スライス厚さ (nm) を設定します。小さいほど精度は上がりますが計算は遅くなります。</value>
   </data>
   <data name="groupBoxHREMoption2.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
@@ -1183,16 +1181,16 @@
     <value>128, 23</value>
   </data>
   <data name="numericBoxSTEM_DetectorOuterAngle.ToolTip" xml:space="preserve">
-    <value>環状検出器の外径 (mrad)</value>
+    <value>環状 STEM 検出器の外側取り込み半角 (mrad) を設定します。この角度より外側の信号は除外されます。</value>
   </data>
   <data name="numericBoxSTEM_DetectorOuterAngle.ToolTip1" xml:space="preserve">
-    <value>環状検出器の外径 (mrad)</value>
+    <value>環状 STEM 検出器の外側取り込み半角 (mrad) を設定します。この角度より外側の信号は除外されます。</value>
   </data>
   <data name="numericBoxSTEM_EffectiveSourceSize.ToolTip" xml:space="preserve">
-    <value>有効電子源のサイズ。</value>
+    <value>有効電子源サイズ (nm) を設定します。大きいほど STEM プローブがぼけ、細部のコントラストが低下します。</value>
   </data>
   <data name="numericBoxSTEM_EffectiveSourceSize.ToolTip1" xml:space="preserve">
-    <value>有効電子源のサイズ。</value>
+    <value>有効電子源サイズ (nm) を設定します。大きいほど STEM プローブがぼけ、細部のコントラストが低下します。</value>
   </data>
   <data name="numericBoxSTEM_ConvergenceAngle.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
@@ -1207,10 +1205,10 @@
     <value>101, 23</value>
   </data>
   <data name="numericBoxSTEM_ConvergenceAngle.ToolTip" xml:space="preserve">
-    <value>入射電子の収束角 (mrad単位)。</value>
+    <value>STEM 入射プローブの収束半角 (mrad) を設定します。大きいほどプローブは細くなり、回折コントラストも変わります。</value>
   </data>
   <data name="numericBoxSTEM_ConvergenceAngle.ToolTip1" xml:space="preserve">
-    <value>入射電子の収束角 (mrad単位)。</value>
+    <value>STEM 入射プローブの収束半角 (mrad) を設定します。大きいほどプローブは細くなり、回折コントラストも変わります。</value>
   </data>
   <data name="flowLayoutPanelOuterRadius.Location" type="System.Drawing.Point, System.Drawing">
     <value>233, 74</value>
@@ -1246,10 +1244,10 @@
     <value>128, 23</value>
   </data>
   <data name="numericBoxSTEM_DetectorInnerAngle.ToolTip" xml:space="preserve">
-    <value>環状検出器の内径 (mrad)</value>
+    <value>環状 STEM 検出器の内側取り込み半角 (mrad) を設定します。この角度より内側の信号は除外されます。</value>
   </data>
   <data name="numericBoxSTEM_DetectorInnerAngle.ToolTip1" xml:space="preserve">
-    <value>環状検出器の内径 (mrad)</value>
+    <value>環状 STEM 検出器の内側取り込み半角 (mrad) を設定します。この角度より内側の信号は除外されます。</value>
   </data>
   <data name="label1.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
@@ -1343,10 +1341,10 @@
     <value>137, 23</value>
   </data>
   <data name="numericBoxObjAperRadius.ToolTip" xml:space="preserve">
-    <value>対物絞りのサイズ (mrad)</value>
+    <value>対物絞りの半角 (mrad) を設定します。小さいほど高角度の回折波を切り、高分解能の細部がなだらかになります。</value>
   </data>
   <data name="numericBoxObjAperRadius.ToolTip1" xml:space="preserve">
-    <value>対物絞りのサイズ (mrad)</value>
+    <value>対物絞りの半角 (mrad) を設定します。小さいほど高角度の回折波を切り、高分解能の細部がなだらかになります。</value>
   </data>
   <data name="flowLayoutPanelSpotCount.Location" type="System.Drawing.Point, System.Drawing">
     <value>15, 81</value>
@@ -1411,7 +1409,7 @@
     <value>170, 16</value>
   </data>
   <data name="label35.ToolTip" xml:space="preserve">
-    <value>シェルツァーデフォーカス値 (nm)</value>
+    <value>Scherzer デフォーカス (nm) です。現在の電子波長と球面収差 Cs から計算される、位相コントラストの目安となるデフォーカス条件です。</value>
   </data>
   <data name="checkBoxCTF.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
@@ -1435,10 +1433,10 @@
     <value>102, 23</value>
   </data>
   <data name="numericBoxCc.ToolTip" xml:space="preserve">
-    <value>Cc: 色収差 (mm)</value>
+    <value>対物レンズの色収差係数 Cc (mm) を設定します。大きいほどエネルギー幅による像のぼけが増えます。</value>
   </data>
   <data name="numericBoxCc.ToolTip1" xml:space="preserve">
-    <value>Cc: 色収差 (mm)</value>
+    <value>対物レンズの色収差係数 Cc (mm) を設定します。大きいほどエネルギー幅による像のぼけが増えます。</value>
   </data>
   <data name="numericBoxDeltaV.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
@@ -1480,10 +1478,10 @@
     <value>101, 23</value>
   </data>
   <data name="numericBoxCs.ToolTip" xml:space="preserve">
-    <value>Cs: 球面収差 (mm)</value>
+    <value>対物レンズの球面収差係数 Cs (mm) を設定します。CTF（contrast transfer function, コントラスト伝達関数）と Scherzer デフォーカスに影響します。</value>
   </data>
   <data name="numericBoxCs.ToolTip1" xml:space="preserve">
-    <value>Cs: 球面収差 (mm)</value>
+    <value>対物レンズの球面収差係数 Cs (mm) を設定します。CTF（contrast transfer function, コントラスト伝達関数）と Scherzer デフォーカスに影響します。</value>
   </data>
   <data name="numericBoxDefocus.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
@@ -1501,10 +1499,10 @@
     <value>180, 23</value>
   </data>
   <data name="numericBoxDefocus.ToolTip" xml:space="preserve">
-    <value>デフォーカス値 (nm)</value>
+    <value>対物レンズのデフォーカス量 (nm) を設定します。値を変えると CTF（コントラスト伝達関数）と像コントラストが変化します。</value>
   </data>
   <data name="numericBoxDefocus.ToolTip1" xml:space="preserve">
-    <value>デフォーカス値 (nm)</value>
+    <value>対物レンズのデフォーカス量 (nm) を設定します。値を変えると CTF（コントラスト伝達関数）と像コントラストが変化します。</value>
   </data>
   <data name="numericBoxAccVol.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
@@ -1525,10 +1523,10 @@
     <value>155, 23</value>
   </data>
   <data name="numericBoxAccVol.ToolTip" xml:space="preserve">
-    <value>TEMの加速電圧 (kV)</value>
+    <value>TEM（transmission electron microscope, 透過電子顕微鏡）の加速電圧 (kV) を設定します。電子波長と像コントラストが変わります。</value>
   </data>
   <data name="numericBoxAccVol.ToolTip1" xml:space="preserve">
-    <value>TEMの加速電圧 (kV)</value>
+    <value>TEM（transmission electron microscope, 透過電子顕微鏡）の加速電圧 (kV) を設定します。電子波長と像コントラストが変わります。</value>
   </data>
   <data name="flowLayoutPanelScherzer.Location" type="System.Drawing.Point, System.Drawing">
     <value>191, 47</value>
@@ -1601,7 +1599,7 @@
     <value>66, 21</value>
   </data>
   <data name="radioButtonHRTEM.ToolTip" xml:space="preserve">
-    <value>HRTEM像をシミュレーション</value>
+    <value>HRTEM（high-resolution transmission electron microscopy, 高分解能透過電子顕微鏡）像を、選択した結晶・厚さ・デフォーカス条件でシミュレートします。</value>
   </data>
   <data name="radioButtonSTEM.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
@@ -1613,10 +1611,13 @@
     <value>56, 21</value>
   </data>
   <data name="radioButtonSTEM.ToolTip" xml:space="preserve">
-    <value>STEM像をシミュレートします。</value>
+    <value>STEM（scanning transmission electron microscopy, 走査透過電子顕微鏡）像を、収束角と環状検出器の設定でシミュレートします。</value>
   </data>
   <data name="radioButton1.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 21</value>
+  </data>
+  <data name="radioButton1.ToolTip" xml:space="preserve">
+    <value>STEM-EDX（走査透過電子顕微鏡 + energy-dispersive X-ray spectroscopy, エネルギー分散型 X 線分光）出力を、STEM 計算条件でシミュレートします。</value>
   </data>
   <data name="radioButtonProjectedPotential.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
@@ -1631,7 +1632,7 @@
     <value>ポテンシャル</value>
   </data>
   <data name="radioButtonProjectedPotential.ToolTip" xml:space="preserve">
-    <value>ポテンシャル像をシミュレートします。</value>
+    <value>ポテンシャルモード：TEM/STEM の像伝達効果をかけず、投影結晶ポテンシャルを計算します。</value>
   </data>
   <data name="groupBoxSampleProperty.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt, style=Bold</value>
@@ -1714,7 +1715,7 @@
     <value>シミュレート</value>
   </data>
   <data name="buttonSimulate.ToolTip" xml:space="preserve">
-    <value>上記の設定で画像をシミュレート</value>
+    <value>現在の結晶、顕微鏡条件、厚さ、デフォーカス、表示設定で画像シミュレーションを実行します。</value>
   </data>
   <data name="menuStrip1.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>

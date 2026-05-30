@@ -12,6 +12,27 @@ The window has three columns.
 
 ---
 
+## Keyboard & mouse shortcuts
+
+The centre EBSD (Kikuchi) pattern and the right-hand master-pattern views respond to different mouse actions.
+
+| Shortcut | Action |
+|----------|--------|
+| <kbd>F1</kbd> | Open this page of the online manual |
+| Left-drag the pattern near the centre | Tilt the crystal |
+| Left-drag the pattern's outer area | Spin the crystal |
+| Double-click the pattern | Pick the detector sub-cell under the cursor and show its statistics |
+| Left-drag a 3-D view (geometry / master sphere) | Rotate it |
+| Right-drag, or Mouse wheel, on a 3-D view | Zoom |
+| <kbd>CTRL</kbd> + Right double-click a 3-D view | Toggle orthographic / perspective |
+| Drag / wheel on the 2-D master pattern | Pan / zoom the image |
+
+The 3-D views use ReciPro's standard [view navigation](21-shortcuts.md) (panning disabled).
+
+→ See **[21. Keyboard & mouse shortcuts](21-shortcuts.md)** for every window at a glance.
+
+---
+
 ## Workflow
 
 Pressing **Build Master Pattern** runs the following steps in order.

@@ -25,6 +25,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
+            toolTip = new System.Windows.Forms.ToolTip(components);
             groupBoxDetectorAndOverlappedImage = new System.Windows.Forms.GroupBox();
             textBoxFileName = new System.Windows.Forms.TextBox();
             buttonClearPicture = new System.Windows.Forms.Button();
@@ -643,6 +645,33 @@
             flowLayoutPanel3.PerformLayout();
             flowLayoutPanel4.ResumeLayout(false);
             flowLayoutPanel4.PerformLayout();
+            // 260530Cl 追加: ツールチップ (SetToolTip方式)
+            toolTip.SetToolTip(comboBoxGradient, "Selects positive or negative film gradient (negative inverts the displayed intensity scale of the overlapped image).");
+            toolTip.SetToolTip(comboBoxScale1, "Switches the intensity mapping of the overlapped image between logarithmic and linear scale.");
+            toolTip.SetToolTip(comboBoxScale2, "Selects the color scale (Gray, Cold-Warm, Spectrum, or Fire) used to render the overlapped image.");
+            toolTip.SetToolTip(trackBarPictureOpacity1, "Adjusts the opacity (0-100%) of the overlapped image on the diffraction pattern.");
+            toolTip.SetToolTip(label10, "Adjusts the opacity (0-100%) of the overlapped image on the diffraction pattern.");
+            toolTip.SetToolTip(label24, "Selects positive or negative film gradient (negative inverts the displayed intensity scale of the overlapped image).");
+            toolTip.SetToolTip(label23, "Switches the intensity mapping of the overlapped image between logarithmic and linear scale.");
+            toolTip.SetToolTip(label22, "Selects the color scale (Gray, Cold-Warm, Spectrum, or Fire) used to render the overlapped image.");
+            toolTip.SetToolTip(numericBoxFootX, "Sets the X pixel coordinate of the foot point (direct-beam center) on the detector.");
+            toolTip.SetToolTip(numericBoxFootY, "Sets the Y pixel coordinate of the foot point (direct-beam center) on the detector.");
+            toolTip.SetToolTip(numericBoxPixelSize, "Sets the physical size of one detector pixel in millimeters.");
+            toolTip.SetToolTip(sizeControl1, "Sets the detector size (width x height) in pixels.");
+            toolTip.SetToolTip(buttonClearPicture, "Clears the loaded overlapped image.");
+            toolTip.SetToolTip(buttonLoadPicture, "Loads an image file to overlap on the diffraction pattern.");
+            toolTip.SetToolTip(buttonRot90, "Rotates the overlapped image and detector dimensions by 90 degrees.");
+            toolTip.SetToolTip(textBoxFileName, "Shows the file path of the loaded overlapped image (read-only).");
+            toolTip.SetToolTip(trackBarMaxInt, "Sets the upper intensity limit for displaying the overlapped image.");
+            toolTip.SetToolTip(trackBarMinInt, "Sets the lower intensity limit for displaying the overlapped image.");
+            toolTip.SetToolTip(label1, "Sets the upper intensity limit for displaying the overlapped image.");
+            toolTip.SetToolTip(label2, "Sets the lower intensity limit for displaying the overlapped image.");
+            toolTip.SetToolTip(checkBoxSchematicDiagram, "When checked, shows the schematic diagram of the detector geometry.");
+            toolTip.SetToolTip(numericBoxCameraLength2, "Sets the camera length to the detector plane in millimeters.");
+            toolTip.SetToolTip(numericBoxPhi, "Sets the azimuthal angle phi of the detector tilt axis in degrees.");
+            toolTip.SetToolTip(numericBoxTau, "Sets the detector tilt angle tau about the tilt axis in degrees.");
+            toolTip.SetToolTip(label4, "Sets the upper intensity limit for displaying the overlapped image.");
+            toolTip.SetToolTip(checkBoxDetectorSizePosition, "When checked, draws the detector area on the diffraction pattern and enables the overlapped-image settings.");
             ResumeLayout(false);
             PerformLayout();
         }
@@ -680,6 +709,7 @@
         private System.Windows.Forms.PictureBox pictureBoxSchematicDiagram;
         private System.Windows.Forms.Panel panelSchematicDiagram;
         private Crystallography.Controls.NumericBox numericBoxPhi;
+        private System.Windows.Forms.ToolTip toolTip;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;

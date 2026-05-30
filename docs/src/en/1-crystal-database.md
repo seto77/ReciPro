@@ -21,6 +21,21 @@ When using **COD**:
 
 ---
 
+## Keyboard & mouse shortcuts
+
+This window has no modifier-key combinations; it is driven by ordinary clicks. The only non-obvious inputs are:
+
+| Shortcut | Action |
+|----------|--------|
+| <kbd>F1</kbd> | Open this page of the online manual |
+| <kbd>ENTER</kbd> in any search field | Run the database search (same as the **Search** button) |
+| Click a row in the result table | Load that crystal into the main window |
+| Click an element in the **Periodic table** popup | Cycle its filter: *ignore* → *must include* → *must exclude* |
+
+→ See **[21. Keyboard & mouse shortcuts](21-shortcuts.md)** for every window at a glance.
+
+---
+
 ## Table
 
 ![Crystal Database Table](../assets/cap-en-auto/FormCrystalDatabase.crystalDatabaseControl.png)

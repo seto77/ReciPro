@@ -249,6 +249,7 @@
             label2.BackColor = System.Drawing.Color.Transparent;
             label2.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             label2.Name = "label2";
+            toolTip.SetToolTip(label2, resources.GetString("label2.ToolTip")); // (260531Ch)
             // 
             // labelDivisionNumber
             // 
@@ -256,6 +257,7 @@
             labelDivisionNumber.BackColor = System.Drawing.Color.Transparent;
             labelDivisionNumber.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             labelDivisionNumber.Name = "labelDivisionNumber";
+            toolTip.SetToolTip(labelDivisionNumber, resources.GetString("labelDivisionNumber.ToolTip")); // (260531Ch)
             // 
             // flowLayoutPanel2
             // 
@@ -343,7 +345,8 @@
             numericBoxThread.ShowUpDown = true;
             numericBoxThread.SmartIncrement = true;
             numericBoxThread.ThousandsSeparator = true;
-            toolTip.SetToolTip(numericBoxThread, resources.GetString("numericBoxThread.ToolTip1"));
+            // toolTip.SetToolTip(numericBoxThread, resources.GetString("numericBoxThread.ToolTip1")); // (260531Ch) 旧キー
+            toolTip.SetToolTip(numericBoxThread, resources.GetString("numericBoxThread.ToolTip")); // (260531Ch)
             numericBoxThread.Value = 4D;
             numericBoxThread.ValueChanged += NumericBoxWholeThicknessStart_ValueChanged;
             // 
@@ -361,6 +364,7 @@
             // 
             resources.ApplyResources(label13, "label13");
             label13.Name = "label13";
+            toolTip.SetToolTip(label13, resources.GetString("label13.ToolTip")); // (260531Ch)
             // 
             // groupBoxOutput
             // 
@@ -387,6 +391,7 @@
             // 
             resources.ApplyResources(label3, "label3");
             label3.Name = "label3";
+            toolTip.SetToolTip(label3, resources.GetString("label3.ToolTip")); // (260531Ch)
             // 
             // comboBoxGradient
             // 
@@ -402,6 +407,7 @@
             // 
             resources.ApplyResources(label11, "label11");
             label11.Name = "label11";
+            toolTip.SetToolTip(label11, resources.GetString("label11.ToolTip")); // (260531Ch)
             // 
             // comboBoxScale
             // 
@@ -424,6 +430,7 @@
             // 
             resources.ApplyResources(labelGamma, "labelGamma");
             labelGamma.Name = "labelGamma";
+            toolTip.SetToolTip(labelGamma, resources.GetString("labelGamma.ToolTip")); // (260531Ch)
             // 
             // trackBarGamma
             // 
@@ -447,6 +454,7 @@
             // 
             resources.ApplyResources(label5, "label5");
             label5.Name = "label5";
+            toolTip.SetToolTip(label5, resources.GetString("label5.ToolTip")); // (260531Ch)
             // 
             // flowLayoutPanel9
             // 
@@ -461,6 +469,7 @@
             // 
             resources.ApplyResources(label7, "label7");
             label7.Name = "label7";
+            toolTip.SetToolTip(label7, resources.GetString("label7.ToolTip")); // (260531Ch)
             // 
             // trackBarIntensityBrightnessMin
             // 
@@ -477,6 +486,7 @@
             // 
             resources.ApplyResources(label8, "label8");
             label8.Name = "label8";
+            toolTip.SetToolTip(label8, resources.GetString("label8.ToolTip")); // (260531Ch)
             // 
             // trackBarIntensityBrightnessMax
             // 
@@ -503,6 +513,7 @@
             // 
             resources.ApplyResources(label1, "label1");
             label1.Name = "label1";
+            toolTip.SetToolTip(label1, resources.GetString("label1.ToolTip")); // (260531Ch)
             // 
             // radioButtonAllDisks
             // 
@@ -535,17 +546,20 @@
             // 
             resources.ApplyResources(label4, "label4");
             label4.Name = "label4";
+            toolTip.SetToolTip(label4, resources.GetString("label4.ToolTip")); // (260531Ch)
             // 
             // textBoxThickness
             // 
             resources.ApplyResources(textBoxThickness, "textBoxThickness");
             textBoxThickness.Name = "textBoxThickness";
             textBoxThickness.ReadOnly = true;
+            toolTip.SetToolTip(textBoxThickness, resources.GetString("textBoxThickness.ToolTip")); // (260531Ch)
             // 
             // label6
             // 
             resources.ApplyResources(label6, "label6");
             label6.Name = "label6";
+            toolTip.SetToolTip(label6, resources.GetString("label6.ToolTip")); // (260531Ch)
             // 
             // trackBarOutputThickness
             // 

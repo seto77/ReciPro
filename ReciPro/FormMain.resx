@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="numericBoxMaxUVW.ToolTip1" xml:space="preserve">
-    <value>Maximum sum of zone axis indices for display</value>
+    <value>Maximum |u|+|v|+|w| limit for zone-axis indices displayed in the current-direction list; higher values show more candidate axes.</value>
   </data>
   <data name="&gt;&gt;resetRegistryToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -188,7 +188,7 @@
     <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxEulerPhi.ToolTip1" xml:space="preserve">
-    <value>Set Euler angle Φ</value>
+    <value>Set Euler angle Φ (phi) in degrees for the current crystal orientation.</value>
   </data>
   <data name="&gt;&gt;exportAsCIFFormatToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -355,7 +355,7 @@
     <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="toolStripButtonImageSimulator.ToolTipText" xml:space="preserve">
-    <value>Open HRTEM/STEM Simulator</value>
+    <value>Open the HRTEM/STEM image simulator. HRTEM is high-resolution transmission electron microscopy; STEM is scanning transmission electron microscopy.</value>
   </data>
   <data name="groupBoxCurrentDirection.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -693,7 +693,7 @@ If an axis index is also specified, that axis direction is shown upward.</value>
     <value>14</value>
   </data>
   <data name="numericBoxEulerPsi.ToolTip1" xml:space="preserve">
-    <value>Set Euler angle ψ</value>
+    <value>Set Euler angle ψ (psi) in degrees for the current crystal orientation.</value>
   </data>
   <data name="&gt;&gt;toolStripSeparator5.Name" xml:space="preserve">
     <value>toolStripSeparator5</value>
@@ -1890,7 +1890,7 @@ If an axis index is also specified, that axis direction is shown upward.</value>
     <value>toolStripContainer1.BottomToolStripPanel</value>
   </data>
   <data name="numericBoxStep.ToolTip" xml:space="preserve">
-    <value>Set angle step for above buttons, or rotation speed</value>
+    <value>Set the angle step in degrees for the rotation buttons; when animation is enabled, the same value is used as rotation speed in degrees per second.</value>
   </data>
   <data name="toolStripButtonStructureViewer.ToolTipText" xml:space="preserve">
     <value>Open Structure Viewer</value>
@@ -3350,7 +3350,7 @@ If a plane index is also specified, that plane direction is shown upward.</value
     <value>captureGUIToolStripMenuItem</value>
   </data>
   <data name="toolStripButtonRotation.ToolTipText" xml:space="preserve">
-    <value>Open Rotation Geometry</value>
+    <value>Open Rotation Geometry to set crystal orientation with Euler angles, zone axes, and rotation buttons.</value>
   </data>
   <data name="tableLayoutPanel2.Location" type="System.Drawing.Point, System.Drawing">
     <value>34, 24</value>
@@ -3422,7 +3422,7 @@ If a plane index is also specified, that plane direction is shown upward.</value
     <value>Fill</value>
   </data>
   <data name="numericBoxStep.ToolTip1" xml:space="preserve">
-    <value>Set angle step for above buttons, or rotation speed</value>
+    <value>Set the angle step in degrees for the rotation buttons; when animation is enabled, the same value is used as rotation speed in degrees per second.</value>
   </data>
   <data name="&gt;&gt;buttonAntiClock.Name" xml:space="preserve">
     <value>buttonAntiClock</value>
@@ -4458,7 +4458,7 @@ To remove all crystals from the list, click 'Clear All'.</value>
     <value>⭩</value>
   </data>
   <data name="toolStripButtonEBSD.ToolTipText" xml:space="preserve">
-    <value>Open EBSD Simulator</value>
+    <value>Open the EBSD (Electron Backscatter Diffraction) simulator for backscattered-electron diffraction patterns from crystal orientation.</value>
   </data>
   <data name="tableLayoutPanel2.RowCount" type="System.Int32, mscorlib">
     <value>1</value>
@@ -4506,7 +4506,7 @@ To remove all crystals from the list, click 'Clear All'.</value>
     <value>301, 6</value>
   </data>
   <data name="numericBoxEulerTheta.ToolTip1" xml:space="preserve">
-    <value>Set Euler angle θ</value>
+    <value>Set Euler angle θ (theta) in degrees for the current crystal orientation.</value>
   </data>
   <data name="numericBoxMaxUVW.ToolTip" xml:space="preserve">
     <value>Maximum sum of zone axis indices for display</value>
@@ -4581,7 +4581,7 @@ To remove all crystals from the list, click 'Clear All'.</value>
     <value>panel1</value>
   </data>
   <data name="toolStripButtonStereonet.ToolTipText" xml:space="preserve">
-    <value>Open Stereonet</value>
+    <value>Open Stereonet to plot crystal directions, crystal planes, and Kikuchi-line pairs on a spherical projection.</value>
   </data>
   <data name="toolStripButtonSpotIDv2.ToolTipText" xml:space="preserve">
     <value>Open Spot ID v2</value>

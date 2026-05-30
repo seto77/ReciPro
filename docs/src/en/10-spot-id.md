@@ -6,18 +6,22 @@
 
 ---
 
+## Keyboard & mouse shortcuts
+
+Spot ID v1 takes spot geometry as **numeric input** (the former *TEM ID* workflow), and spot detection/fitting is button-driven; the diffraction image is shown for reference and is not click-interactive (mouse zoom and manual spot picking belong to [Spot ID v2](11-spot-id-v2.md)). The one shortcut is in the results window:
+
+| Shortcut | Action |
+|----------|--------|
+| <kbd>F1</kbd> | Open this page of the online manual |
+| Double-click a row in the results list | Select that crystal and rotate it to the matching zone axis |
+
+→ See **[21. Keyboard & mouse shortcuts](21-shortcuts.md)** for every window at a glance.
+
+---
+
 ## Main area
 
-Displays the diffraction image. Load images by drag & drop or from the **File** menu. Right-click or right-drag to zoom.
-
-### Mouse operations
-
-| Operation | Action |
-|-----------|--------|
-| Single left click | Select a spot |
-| Double left click | Add a spot |
-| Ctrl + left double-click | Add direct spot |
-| Ctrl + right single click | Remove spot |
+Displays the diffraction image for reference. Load images by drag & drop or from the **File** menu.
 
 ### Image adjustments
 
