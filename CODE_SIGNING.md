@@ -18,9 +18,13 @@ Users should avoid downloading ReciPro installers from unofficial mirrors or thi
 
 ## Intended signing model
 
-The intended signing route for Windows installer packages is an open-source code-signing service such as SignPath Foundation / SignPath.io.
+The intended signing route for Windows installer packages is the **SignPath Foundation** open-source code-signing program (SignPath.io). ReciPro is currently adopting this program (application in progress).
 
-If this is approved and enabled, release artifacts are expected to be signed using Windows Authenticode signing and then published from GitHub Releases. For SignPath Foundation signing, the signer shown by Windows may be `SignPath Foundation` rather than the personal name of the ReciPro maintainer.
+Once signing is enabled, ReciPro will carry the following attribution:
+
+> Free code signing provided by [SignPath.io](https://about.signpath.io), certificate by [SignPath Foundation](https://signpath.org).
+
+Release artifacts will be signed using Windows Authenticode signing and then published from GitHub Releases. For SignPath Foundation signing, the signer shown by Windows may be `SignPath Foundation` rather than the personal name of the ReciPro maintainer.
 
 ## Scope of signing
 
@@ -44,9 +48,18 @@ For release integrity, the intended minimum protection is limited to release-cri
 
 This keeps day-to-day development simple while preserving the correspondence between a released installer, the release tag, and the public source tree.
 
-## Maintainer role
+## Maintainer and signing roles
 
-ReciPro is maintained by Seto Y. The maintainer is responsible for preparing releases, reviewing signing requests, and publishing release artifacts.
+ReciPro is maintained by a single maintainer, Yusuke Seto (Osaka Metropolitan University), who is the sole committer and owner of the source repository. For code signing, the same person holds all roles:
+
+- **Author** — Yusuke Seto: develops and maintains the source code.
+- **Approver** — Yusuke Seto: reviews and approves each signing request before a release is signed.
+
+Because there are no external committers, every change is authored by the maintainer, and each release is manually approved before signing.
+
+## Privacy
+
+ReciPro is a local desktop application and does not collect or transmit any personal or usage data. See the Privacy section of the project README: https://github.com/seto77/ReciPro#privacy
 
 ## Verifying an installer
 
