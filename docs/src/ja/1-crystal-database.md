@@ -5,9 +5,17 @@
 - **AMCSD** : 内蔵の [American Mineralogist Crystal Structure Database](http://rruff.geo.arizona.edu/AMS/amcsd.php)（約21,000件）。
 - **COD** : [Crystallography Open Database](https://www.crystallography.net/cod/)。初回利用時にデータベースファイルが自動でダウンロードされ、更新もできます。
 
-AMCSD を使用する際は、以下の文献を必ず引用してください：
+これらのデータベースを使用する際は、以下の文献を引用してください。
+
+**AMCSD** を使用する場合：
 
 > Downs, R.T. and Hall-Wallace, M. (2003) The American Mineralogist Crystal Structure Database. *American Mineralogist* **88**, 247–250.
+
+**COD** を使用する場合：
+
+> Gražulis, S. et al. (2009) Crystallography Open Database – an open-access collection of crystal structures. *Journal of Applied Crystallography* **42**, 726–729.
+>
+> Gražulis, S. et al. (2012) Crystallography Open Database (COD): an open-access collection of crystal structures and platform for world-wide collaboration. *Nucleic Acids Research* **40**, D420–D427.
 
 ![結晶データベース](../assets/cap-ja-auto/FormCrystalDatabase.png)
 

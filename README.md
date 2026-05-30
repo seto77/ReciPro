@@ -65,6 +65,7 @@ Get-FileHash .\ReciProSetup.msi -Algorithm SHA256
   * Reference: [Downs & Hall-Wallace, 2003, *American Mineralogist* **88**, 247-250](https://www.geo.arizona.edu/xtal/group/pdf/am88_247.pdf)
 * **COD** (Crystallography Open Database): ~525,000 crystal structures including organic crystals are also available.
   * Downloaded automatically on first use (~880 MB), then available offline.
+  * References: [Gražulis et al., 2009, *J. Appl. Cryst.* **42**, 726-729](https://doi.org/10.1107/S0021889809016690); [Gražulis et al., 2012, *Nucleic Acids Res.* **40**, D420-D427](https://doi.org/10.1093/nar/gkr900)
 * Import/export CIF and AMC format files.
 
 ### Crystallographic Calculations
