@@ -102,10 +102,7 @@
     <Content Include="doc\ReciProManual(ja).pdf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <!-- 260405Cl ffmpeg.exe → FFMediaToolkit + 最小DLLに変更 -->
-    <Content Include="ffmpeg\*.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    <!-- 260530Cl GPL の ffmpeg DLL 同梱を廃止し Media Foundation へ移行。旧: <Content Include="ffmpeg\*.dll"> -->
     <Content Include="initial.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -126,7 +123,7 @@
 
   <ItemGroup>
     <PackageReference Include="BitMiracle.LibTiff.NET" Version="2.4.660" />
-    <PackageReference Include="FFMediaToolkit" Version="4.8.1" />
+    <!-- 260530Cl FFMediaToolkit 廃止 (Media Foundation へ移行) -->
     <PackageReference Include="IronPython" Version="3.4.2" />
     <PackageReference Include="MathNet.Numerics" Version="6.0.0-beta2" />
     <!--260405Cl MathNet.Numerics.MKL.Win-x64 を削除 (オプション化。ネイティブDLLは実行時にダウンロード)-->

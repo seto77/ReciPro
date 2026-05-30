@@ -7,6 +7,7 @@ internal static class Version
     
     public const string History =
         "History" +
+        "\r\n ver4.934(2026/05/30)  Improved the video encoding engine and reduced the distribution size." +
         "\r\n ver4.933(2026/05/29)  Fixed OpenGL rendering corruption on Windows on ARM (x64 emulation)." +
         "\r\n ver4.932(2026/05/28)  Improved the manual and enhanced stereographic projection features. (see https://github.com/seto77/ReciPro/issues/58)" +
         "\r\n ver4.931(2026/05/19)  Fixed GUI layout issues that occurred under high-DPI display settings. (see https://github.com/seto77/ReciPro/issues/59)" +

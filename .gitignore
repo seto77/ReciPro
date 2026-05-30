@@ -6,3 +6,6 @@ docs/hooks/__pycache__/
 
 # 260526Cl: Ignore the local Python venv used to run MkDocs.
 docs/.venv-docs/
+
+# 260530Cl: Ignore per-run GUI capture logs (byproduct of --capture; PNGs are tracked, logs are not).
+docs/src/assets/**/_capture-log.tsv

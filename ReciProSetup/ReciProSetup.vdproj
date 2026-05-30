@@ -321,17 +321,6 @@
             "Property" = "8:TARGETDIR"
                 "Folders"
                 {
-                    "{9EF0B969-E518-4E46-987F-47570745A589}:_04F528AE82B5498B92252950B7CB58B8"
-                    {
-                    "Name" = "8:ffmpeg"
-                    "AlwaysCreate" = "11:FALSE"
-                    "Condition" = "8:"
-                    "Transitive" = "11:FALSE"
-                    "Property" = "8:_DF200DA1AF044A5292A45E70E806299E"
-                        "Folders"
-                        {
-                        }
-                    }
                 }
             }
         }

@@ -1,12 +1,11 @@
 ﻿using Crystallography.OpenGL;
-using FFMediaToolkit; //260405Cl 追加
-using FFMediaToolkit.Encoding; //260405Cl 追加
-using FFMediaToolkit.Graphics; //260405Cl 追加
+//260530Cl Media Foundation へ移行: FFMediaToolkit は不使用 (旧 using をコメントアウト)。MediaFoundationVideoEncoder は Crystallography.Controls (Program.cs の global using 経由)
+//using FFMediaToolkit; //260405Cl 追加
+//using FFMediaToolkit.Encoding; //260405Cl 追加
+//using FFMediaToolkit.Graphics; //260405Cl 追加
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.Collections.Generic; //260405Cl 追加
-using System.IO;
-using System.Reflection;
 using System.Threading.Tasks; //260405Cl 追加
 using System.Windows.Forms;
 
@@ -30,7 +29,7 @@ public partial class FormMovie : FormBase
 
     public Matrix3D Rot => FormMain.Crystal.RotationMatrix;
 
-    private static bool ffmpegLoaded = false; //260405Cl 追加
+    //260530Cl Media Foundation 移行で不要: private static bool ffmpegLoaded = false;
     private bool encoding = false; //260405Cl 追加: エンコード中フラグ
 
     public bool MillerBravaisIndex { set => indexControl.MillerBravais = value; }
@@ -40,6 +39,12 @@ public partial class FormMovie : FormBase
     {
         InitializeComponent();
         comboBoxSpeed.SelectedIndex = 7;
+        // 260530Cl このマシンで H.265(HEVC) エンコーダが使えない場合は H.265 を選べないようにする
+        if (!MediaFoundationVideoEncoder.IsHevcEncoderAvailable())
+        {
+            radioButtonH265.Enabled = false;
+            radioButtonH264.Checked = true;
+        }
     }
 
     private void buttonDirection_Click(object sender, EventArgs e)
@@ -102,20 +107,18 @@ public partial class FormMovie : FormBase
         {
             FormMain.Enabled = Caller.Enabled = false;
 
-            //FFmpegライブラリの初期化 (初回のみ) 260405Cl
-            if (!ffmpegLoaded)
-            {
-                var ffmpegDir = Path.Combine(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location), "ffmpeg");
-                foreach (var name in new[] { "libwinpthread-1", "libgcc_s_seh-1", "libstdc++-6", "zlib1",
-                    "libx264-165", "libx265", "avutil-59", "swresample-5", "avcodec-61",
-                    "avformat-61", "swscale-8" })
-                    System.Runtime.InteropServices.NativeLibrary.Load(Path.Combine(ffmpegDir, name + ".dll"));
-                FFmpegLoader.FFmpegPath = ffmpegDir;
-                ffmpegLoaded = true;
-            }
+            // 260530Cl ffmpeg(GPL) の動的ロードを廃止。Media Foundation は OS 内蔵のため初期化不要。
+            //          旧コード:
+            //          if (!ffmpegLoaded) {
+            //              var ffmpegDir = Path.Combine(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location), "ffmpeg");
+            //              foreach (var name in new[] { "libwinpthread-1", "libgcc_s_seh-1", "libstdc++-6", "zlib1",
+            //                  "libx264-165", "libx265", "avutil-59", "swresample-5", "avcodec-61", "avformat-61", "swscale-8" })
+            //                  NativeLibrary.Load(Path.Combine(ffmpegDir, name + ".dll"));
+            //              FFmpegLoader.FFmpegPath = ffmpegDir; ffmpegLoaded = true;
+            //          }
 
             var framerate = 30;
-            var codec = radioButtonH264.Checked ? VideoCodec.H264 : VideoCodec.H265; //260405Cl 変更
+            var hevc = radioButtonH265.Checked; // 260530Cl VideoCodec→bool に変更 (H.265=true, H.264=false)
             var speed = (string)comboBoxSpeed.SelectedItem;
 
             //UIスレッドで全フレームのビットマップデータを収集 260405Cl
@@ -126,34 +129,29 @@ public partial class FormMovie : FormBase
                 FormMain.Rotate(Direction, Speed * Math.PI / framerate / 180.0);
                 var bmp = Target is GLControlAlpha c ? c.GenerateBitmap() : Func();
                 if (bmp.Width % 2 != 0 || bmp.Height % 2 != 0)
-                    bmp = bmp.Clone(new Rectangle(0, 0, bmp.Width - bmp.Width % 2, bmp.Height - bmp.Height % 2), bmp.PixelFormat);
+                {
+                    var cropped = bmp.Clone(new Rectangle(0, 0, bmp.Width - bmp.Width % 2, bmp.Height - bmp.Height % 2), bmp.PixelFormat);
+                    bmp.Dispose(); // 260530Cl Clone 元のビットマップを解放 (リーク防止)
+                    bmp = cropped;
+                }
                 width = bmp.Width;
                 height = bmp.Height;
-                //Bitmapのピクセルデータをbyte[]にコピー
+                //260530Cl Bitmapを上から下・隙間なしの BGRA(32bpp) として byte[] に収集 (Media Foundation 入力用)
+                //         旧: Format24bppRgb で stride 付きデータを収集していた
                 var rect = new Rectangle(0, 0, bmp.Width, bmp.Height);
-                var bits = bmp.LockBits(rect, ImageLockMode.ReadOnly, PixelFormat.Format24bppRgb);
-                var stride = bits.Stride;
-                var data = new byte[stride * bmp.Height];
+                var bits = bmp.LockBits(rect, ImageLockMode.ReadOnly, PixelFormat.Format32bppRgb);
+                var data = new byte[bmp.Width * 4 * bmp.Height]; // 32bpp は stride==width*4 でパディングなし
                 System.Runtime.InteropServices.Marshal.Copy(bits.Scan0, data, 0, data.Length);
                 bmp.UnlockBits(bits);
+                bmp.Dispose(); // 260530Cl 収集後にビットマップを解放 (毎フレームのリーク防止)
                 frames.Add(data);
             }
 
             //バックグラウンドスレッドでエンコード 260405Cl
             var fileName = dlg.FileName;
-            var preset = speed switch
-            {
-                "ultrafast" => EncoderPreset.UltraFast,
-                "superfast" => EncoderPreset.SuperFast,
-                "veryfast" => EncoderPreset.VeryFast,
-                "faster" => EncoderPreset.Faster,
-                "fast" => EncoderPreset.Fast,
-                "medium" => EncoderPreset.Medium,
-                "slow" => EncoderPreset.Slow,
-                "slower" => EncoderPreset.Slower,
-                "veryslow" => EncoderPreset.VerySlow,
-                _ => EncoderPreset.Medium,
-            };
+            // 260530Cl x264 由来の preset(ultrafast..veryslow) は Media Foundation では未使用
+            //          (レート制御は MediaFoundationVideoEncoder 側で Quality モード固定)。combo は進捗表示ラベル用に残す。
+            //          旧: var preset = speed switch { "ultrafast" => EncoderPreset.UltraFast, ... _ => EncoderPreset.Medium };
 
             encoding = true; //260405Cl
 
@@ -167,37 +165,44 @@ public partial class FormMovie : FormBase
                 StartPosition = FormStartPosition.CenterParent,
                 MinimizeBox = false, MaximizeBox = false, ControlBox = false,
             };
-            var codecName = codec == VideoCodec.H264 ? "H.264" : "H.265"; //260405Cl
+            var codecName = hevc ? "H.265" : "H.264"; //260530Cl
             var progressBar = new ProgressBar { Dock = DockStyle.Fill, Maximum = frames.Count, Style = ProgressBarStyle.Continuous };
             progressForm.Text = $"{codecName} / {speed} - 0.0% - 00:00:00 / --:--:--";
             progressForm.Controls.Add(progressBar);
-            progressForm.Show(this);
 
-            var sw = System.Diagnostics.Stopwatch.StartNew(); //260405Cl
-            var progress = new Progress<int>(v =>
+            try // 260530Cl 例外時もフォーム再有効化・progressForm 破棄・encoding 解除を保証する
             {
-                progressBar.Value = v;
-                var percent = 100.0 * v / frames.Count;
-                var elapsed = sw.Elapsed;
-                var remaining = v > 0 ? TimeSpan.FromTicks(elapsed.Ticks * (frames.Count - v) / v) : TimeSpan.Zero;
-                progressForm.Text = $"{codecName} / {speed} - {percent:0.0}% - {elapsed:hh\\:mm\\:ss} / {remaining:hh\\:mm\\:ss}";
-            });
-            await Task.Run(() =>
-            {
-                var settings = new VideoEncoderSettings(width, height, framerate, codec)                {                    EncoderPreset = preset                };
-                using var file = MediaBuilder.CreateContainer(fileName).WithVideo(settings).Create();
-                var size = new System.Drawing.Size(width, height);
-                for (int i = 0; i < frames.Count; i++)
+                progressForm.Show(this);
+
+                var sw = System.Diagnostics.Stopwatch.StartNew(); //260405Cl
+                var progress = new Progress<int>(v =>
                 {
-                    file.Video.AddFrame(ImageData.FromArray(frames[i], ImagePixelFormat.Bgr24, size));
-                    ((IProgress<int>)progress).Report(i + 1);
-                }
-            });
-
-            progressForm.Close();
-            encoding = false; //260405Cl
-
-            FormMain.Enabled = Caller.Enabled = true;
+                    if (progressForm.IsDisposed) return; // 260530Cl Dispose 後の遅延 Report を無視 (ObjectDisposedException 防止)
+                    progressBar.Value = v;
+                    var percent = 100.0 * v / frames.Count;
+                    var elapsed = sw.Elapsed;
+                    var remaining = v > 0 ? TimeSpan.FromTicks(elapsed.Ticks * (frames.Count - v) / v) : TimeSpan.Zero;
+                    progressForm.Text = $"{codecName} / {speed} - {percent:0.0}% - {elapsed:hh\\:mm\\:ss} / {remaining:hh\\:mm\\:ss}";
+                });
+                await Task.Run(() =>
+                {
+                    //260530Cl Media Foundation(OS 内蔵)で H.264/H.265 → MP4 を出力 (旧: FFMediaToolkit/ffmpeg)
+                    using var encoder = new MediaFoundationVideoEncoder(fileName, width, height, framerate, hevc);
+                    for (int i = 0; i < frames.Count; i++)
+                    {
+                        encoder.AddFrameBgra32(frames[i]);
+                        frames[i] = null; // 260530Cl エンコード済みフレームを解放しピークメモリを抑える
+                        ((IProgress<int>)progress).Report(i + 1);
+                    }
+                    encoder.Finish();
+                });
+            }
+            finally
+            {
+                progressForm.Dispose(); // 260530Cl 非モーダル Form は Close では破棄されないため Dispose
+                encoding = false; //260405Cl
+                FormMain.Enabled = Caller.Enabled = true;
+            }
         }
     }
 

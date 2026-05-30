@@ -12,7 +12,7 @@ ReciPro itself is distributed under the MIT License. See `LICENSE.md`.
 
 Last reviewed: 2026-05-30. This is a detailed inventory derived from the actual `.csproj` references, the installer (`ReciProSetup.vdproj`) bundle, the native build (`Crystallography.Native.vcxproj`), and the bundled/downloaded data. Items still requiring external verification are marked **`TODO: confirm`**.
 
-The most important open item is **ffmpeg**: the bundled build is **GPL** (it links libx264 and libx265), which imposes source-availability obligations on the combined distribution. See the [ffmpeg](#ffmpeg--gpl-build-important-source-availability-obligation) section before the next signed release. (The COD citation has since been added to the README and both manuals, and AMCSD bulk redistribution is permitted — permission obtained from one of the AMCSD maintainers.)
+Video export was migrated from a bundled GPL ffmpeg to the OS-provided **Windows Media Foundation** encoder (2026-05-30). As a result, **no ffmpeg / libx264 / libx265 / GPL binaries are bundled or distributed**, and the former GPL source-availability obligation no longer applies (see the [video encoding](#video-encoding-via-media-foundation) section). The COD citation has been added to the README and both manuals, and AMCSD bulk redistribution is permitted (permission obtained from one of the AMCSD maintainers). The remaining items are the minor **`TODO: confirm`** notes below (exact license texts, and the neutron / NIST SRD-64 / ITA citations).
 
 ## NuGet / managed libraries
 
@@ -21,7 +21,6 @@ These ship as managed assemblies inside the MSI (packaged through the ReciPro pu
 | Name | Version | Purpose | Bundled or downloaded | Upstream URL | License | Signed by ReciPro? | Notes |
 |------|---------|---------|-----------------------|--------------|---------|--------------------|-------|
 | BitMiracle.LibTiff.NET | 2.4.660 | Managed TIFF read/write | Bundled (DLL) | https://github.com/BitMiracle/libtiff.net | BSD-3-Clause (New BSD) — `TODO: confirm` exact text | No (third-party) | Used by ReciPro only. Not MIT. |
-| FFMediaToolkit | 4.8.1 | Managed .NET wrapper over FFmpeg (rotation-animation video encoding) | Bundled (DLL) | https://github.com/radek-k/FFMediaToolkit | MIT | No (third-party) | Wrapper only. The native FFmpeg DLLs it loads are **GPL** — see the ffmpeg section. Ships with `FFmpeg.AutoGen.dll`. |
 | IronPython | 3.4.2 | Python implementation for .NET (macro engine) | Bundled (DLL) | https://github.com/IronLanguages/ironpython3 | Apache-2.0 | No (third-party) | Used by ReciPro and Crystallography.Controls. 3.x is Apache-2.0 (older 2.x was MS-PL); include the `NOTICE` + Apache-2.0 text. |
 | MathNet.Numerics | 6.0.0-beta2 | Numerical / scientific computing | Bundled (DLL) | https://numerics.mathdotnet.com/ | MIT | No (third-party) | Pre-release (beta) version. Used across all four shipping projects. |
 | MathNet.Numerics.Providers.MKL | 6.0.0-beta2 | Math.NET MKL provider glue/shim | Bundled (managed shim DLL) | https://numerics.mathdotnet.com/ | MIT (glue only) | No (third-party) | Glue is MIT. The Intel MKL native package (`MathNet.Numerics.MKL.Win-x64`) was removed from the build (260405Cl); no native `mkl_rt.dll` is vendored or present in the build output. `TODO: confirm` whether an Intel Simplified Software License (ISSL) notice is required for any runtime-downloaded MKL native binaries. |
@@ -51,35 +50,18 @@ The in-house native library `Crystallography.Native.dll` (and its `*.avx2.dll` /
 | Eigen | 3.5.0.1 (post-3.4 dev/master snapshot) | Linear algebra (compiled into `Crystallography.Native.dll`) | Bundled as vendored header-only source; compiled in, not shipped as a separate library | https://eigen.tuxfamily.org/ | MPL-2.0 | N/A (compiled into the ReciPro-built native DLL, which **is** signed by ReciPro) | Version from `Eigen/Version` (WORLD 3, MAJOR 5, MINOR 0, PATCH 1). Preserve the MPL-2.0 notice. Optional LAPACKE/MKL Eigen backends in the header tree are inert (`EIGEN_USE_MKL` / `EIGEN_USE_BLAS` / `EIGEN_USE_LAPACKE` are never defined in the project sources). |
 | Intel MKL | — | (not used) | Not bundled | — | — | — | **Not used and not redistributed.** `Crystallography.Native.vcxproj` sets `UseIntelMKL=No` (both configs), `UseInteloneMKL=No`, `UseIntelIPP/DAAL/TBB=false`; no MKL `.lib` linker inputs; no `mkl_rt.dll` in the build output. The managed `MathNet.Numerics.Providers.MKL.dll` shim is present but no native MKL runtime is loaded or shipped. No MKL obligation. |
 
-Other native runtime DLLs that ship (detailed in the ffmpeg section, listed here for completeness): `zlib1.dll` (zlib license), `libgcc_s_seh-1.dll` and `libstdc++-6.dll` (GCC runtime, GPLv3 + GCC Runtime Library Exception), `libwinpthread-1.dll` (mingw-w64 winpthreads, permissive MIT/BSD/zlib-style), and `glfw3.dll` (zlib/libpng, via OpenTK).
+Other native runtime DLL that ships: `glfw3.dll` (zlib/libpng license), a runtime asset of OpenTK. (The previously-bundled ffmpeg / x264 / x265 / zlib / MinGW-runtime DLLs were removed on 2026-05-30 — see the [video encoding](#video-encoding-via-media-foundation) section.)
 
-## ffmpeg — GPL build (IMPORTANT: source-availability obligation)
+## Video encoding via Media Foundation
 
-> **GPL ALERT.** The bundled ffmpeg is a **GPL** build. It links **libx264** and **libx265**, both GPL-2.0-or-later, which forces ffmpeg to be configured `--enable-gpl`. Distributing these DLLs makes the **combined ReciPro distribution** subject to the GPL for the ffmpeg components. ReciPro's own code remains MIT, but bundling a GPL ffmpeg imposes GPL obligations on the aggregate distribution.
->
-> **Required actions before the next signed release:**
-> 1. **Include the GPL/COPYING license texts and copyright notices** for ffmpeg, x264, and x265 with the distribution (currently **absent** next to the DLLs and not mentioned in `LICENSE.md`).
-> 2. **Convey or offer the complete corresponding source** for the ffmpeg/x264/x265 components (upstream source plus the exact build/configure scripts), e.g. include the source or a valid written offer under GPL terms.
-> 3. **Do NOT re-sign, rename, or relicense the ffmpeg binaries** as ReciPro's own MIT code. They must remain identifiable, unmodified GPL ffmpeg. ReciPro's Authenticode signing must not treat them as ReciPro-authored.
-> 4. **State in the docs/installer** that the bundled ffmpeg is GPL.
->
-> **Lower-friction alternative:** switch to an **LGPL** ffmpeg build that drops libx264/libx265 (omit those encoders or use an LGPL-compatible H.264/H.265 path). That removes the GPL source-offer obligation while keeping ReciPro's distribution clean. `TODO: decide` between GPL-compliance vs. switching to an LGPL build.
+ReciPro previously bundled a **GPL** ffmpeg build (linking libx264 / libx265) for rotation-animation video export, loaded through the FFMediaToolkit wrapper. **This was removed on 2026-05-30.** Video export now uses the operating system's built-in **Windows Media Foundation** H.264 / H.265 encoder (`MediaFoundationVideoEncoder` in `Crystallography.Controls`, via direct `mfplat.dll` / `mfreadwrite.dll` P/Invoke — no third-party library).
 
-The native FFmpeg DLLs are bundled via `ReciPro.csproj` (`<Content Include="ffmpeg\*.dll" CopyToOutputDirectory=PreserveNewest>`), copied to `bin\Release\ffmpeg\`, and packaged into the MSI's `ffmpeg\` folder through the ReciPro publish output group (not enumerated individually in the vdproj). They are loaded in-process via `NativeLibrary.Load` / `FFmpegLoader.FFmpegPath` from `FormMovie.cs` through the FFMediaToolkit wrapper (no `ffmpeg.exe` is shipped). Build origin: a MinGW/GCC ("gyan.dev / BtbN"-style) full GPL-enabled Windows shared build, ~FFmpeg 7.x. No COPYING/LICENSE/README currently accompanies the DLLs.
+Consequences:
 
-| File | Version (SONAME) | Component | License | Signed by ReciPro? | Notes |
-|------|------------------|-----------|---------|--------------------|-------|
-| avcodec-61.dll | libavcodec 61 (FFmpeg ~7.x) | FFmpeg codec library | GPL-2.0-or-later (this build) | No (upstream GPL binary) | `TODO: confirm` exact FFmpeg version + build provenance/configure flags. |
-| avformat-61.dll | libavformat 61 | FFmpeg muxing/demuxing | GPL-2.0-or-later | No | `TODO: confirm` exact version. |
-| avutil-59.dll | libavutil 59 | FFmpeg utility library | GPL-2.0-or-later | No | `TODO: confirm` exact version. |
-| swresample-5.dll | libswresample 5 | FFmpeg audio resampling | GPL-2.0-or-later | No | `TODO: confirm` exact version. |
-| swscale-8.dll | libswscale 8 | FFmpeg image scaling/conversion | GPL-2.0-or-later | No | `TODO: confirm` exact version. |
-| libx264-165.dll | x264 build 165 | H.264 encoder (**GPL trigger**) | GPL-2.0-or-later | No | Explicitly loaded by name in `FormMovie.cs`. Forces `--enable-gpl`. |
-| libx265.dll | x265 | H.265/HEVC encoder (**GPL trigger**) | GPL-2.0-or-later | No | Explicitly loaded by name in `FormMovie.cs`. Forces `--enable-gpl`. `TODO: confirm` exact x265 version. |
-| zlib1.dll | — | Compression (used by ffmpeg) | zlib license | No | `TODO: confirm` version. |
-| libgcc_s_seh-1.dll | — | GCC runtime (MinGW-w64) | GPLv3 + GCC Runtime Library Exception | No | Permissive in practice under the Runtime Library Exception. |
-| libstdc++-6.dll | — | GCC C++ standard library (MinGW-w64) | GPLv3 + GCC Runtime Library Exception | No | MinGW toolchain runtime. |
-| libwinpthread-1.dll | — | mingw-w64 winpthreads | Permissive (MIT/BSD/zlib-style) | No | `TODO: confirm` exact license text. |
+- **No ffmpeg, libx264, libx265, zlib, or MinGW-runtime DLLs are bundled or distributed.** The `ReciPro\ffmpeg\` folder (11 DLLs) and the `FFMediaToolkit` NuGet reference were deleted from the project.
+- **No GPL obligation.** The former source-availability requirement (from the GPL x264/x265 build) no longer applies.
+- **H.264/H.265 codec patent licensing** is carried by the operating system (the OS-provided Media Foundation encoder is invoked, rather than a codec binary that ReciPro distributes).
+- The Media Foundation interop code is ReciPro-authored (MIT) and built from this repository, so it is in the normal ReciPro signing scope — there is no longer any foreign codec binary to keep unsigned.
 
 ## Bundled and downloaded crystallographic data
 
@@ -140,7 +122,6 @@ The intended code-signing scope is limited to ReciPro release artifacts and bina
 
 Third-party binaries must **not** be re-signed as if they were maintained by ReciPro. In particular:
 
-- The **ffmpeg / x264 / x265 / zlib / MinGW-runtime DLLs** (`ffmpeg\*.dll`) are upstream third-party binaries — and the ffmpeg/x264/x265 ones are **GPL**. They must keep their own provenance, must not be relicensed or represented as ReciPro's MIT code, and the GPL source-availability obligation above must be satisfied. (Authenticode will treat them as foreign/unsigned unless re-signed; do not re-sign them as ReciPro-authored.)
-- The redistributed **NuGet runtime DLLs** (OpenTK, MathNet.Numerics, IronPython, BitMiracle.LibTiff.NET, FFMediaToolkit, SimdLinq, ZLinq, MemoryPack, PureHDF, DynamicExpresso.Core, WpfMath, System.Management, etc.) keep their own upstream provenance and licenses as listed above.
+- The redistributed **NuGet runtime DLLs** (OpenTK and its `glfw3.dll`, MathNet.Numerics, IronPython, BitMiracle.LibTiff.NET, SimdLinq, ZLinq, MemoryPack, PureHDF, DynamicExpresso.Core, WpfMath, System.Management, etc.) keep their own upstream provenance and licenses as listed above and must not be re-signed or relicensed as ReciPro's MIT code.
 
 The MSI itself is not signed by Visual Studio (`SignOutput=FALSE` in the vdproj); the RID is pinned to `win-x64`, so no non-Windows/x86 runtime assets are emitted. See `CODE_SIGNING.md` for the release-artifact signing policy. This notice is not a substitute for the upstream license texts — refer to each upstream project or data provider for authoritative terms.
