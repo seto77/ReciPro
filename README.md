@@ -34,6 +34,8 @@ You may also cite the software repository itself when appropriate:
 * Access https://github.com/seto77/ReciPro/releases/latest, download *ReciProSetup.msi*, and execute it.
 * *ReciPro* runs on Windows OS with ***.Net Desktop Runtime 10.0*** (NOT ***.Net Runtime 10.0***), which can be installed from [here](https://dotnet.microsoft.com/download/dotnet/10.0).
 * *ReciPro* is distributed under the **MIT license** (free for anyone to use, modify, and redistribute).
+* For code-signing status and installer verification, see [Code signing policy](CODE_SIGNING.md).
+* For bundled or referenced third-party components and data, see [Third-party notices](THIRD-PARTY-NOTICES.md).
 
 ### Note on Windows Security Warnings
 
@@ -209,5 +211,3 @@ https://scholar.google.jp/scholar?cites=12625594477623342627
 <img src="https://seto77.github.io/ReciPro/assets/cap-en-auto/FormSpotIDV2.png" height="320px" alt="Spot ID v2">
 <img src="https://seto77.github.io/ReciPro/assets/cap-en-auto/FormMacro.png" height="320px" alt="Macro">
 <img src="https://seto77.github.io/ReciPro/assets/cap-en-auto/FormTrajectory.png" height="320px" alt="Electron Range Simulator">
-
-***
