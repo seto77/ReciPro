@@ -1,0 +1,19 @@
+<Project>
+
+  <!-- 260530Cl 追加: WFO1000 (DesignerSerializationVisibility 等が未設定のプロパティ) を
+       ReciPro 配下の全プロジェクトで抑止する。
+
+       背景: 各プロジェクト直下の .editorconfig が `dotnet_diagnostic.WFO1000.severity = silent`
+       を持つが、それらは別リポ (ジャンクション元: Crystallography.Controls / Crystallography.OpenGL 等)
+       の実体ファイルで、ReciPro リポジトリには未追跡 (このクローンでは .git/info/exclude が .editorconfig を除外)。
+       そのため GitHub Actions の checkout には .editorconfig が存在せず、WFO1000 が既定の error 重大度に戻り、
+       属性の付いていない公開プロパティ 1 つ (FormBase.HelpPage) でリリースビルドが失敗した。
+       追跡されるこのファイルで抑止し、CI とローカルの挙動を一致させる。
+
+       なお個別プロパティへの [DesignerSerializationVisibility(Hidden)] / [DefaultValue] 付与方針 (260322Ch)
+       は引き続き推奨。これは「属性の付け忘れで CI が壊れる」を防ぐ安全網であって、属性付与の代替ではない。 -->
+  <PropertyGroup>
+    <NoWarn>$(NoWarn);WFO1000</NoWarn>
+  </PropertyGroup>
+
+</Project>
