@@ -12,7 +12,7 @@ ReciPro itself is distributed under the MIT License. See `LICENSE.md`.
 
 Last reviewed: 2026-05-30. This is a detailed inventory derived from the actual `.csproj` references, the installer (`ReciProSetup.vdproj`) bundle, the native build (`Crystallography.Native.vcxproj`), and the bundled/downloaded data. Items still requiring external verification are marked **`TODO: confirm`**.
 
-The most important open item is **ffmpeg**: the bundled build is **GPL** (it links libx264 and libx265), which imposes source-availability obligations on the combined distribution. See the [ffmpeg](#ffmpeg--gpl-build-important-source-availability-obligation) section before the next signed release. The other priority confirmations are the AMCSD bulk-redistribution permission and adding a COD citation.
+The most important open item is **ffmpeg**: the bundled build is **GPL** (it links libx264 and libx265), which imposes source-availability obligations on the combined distribution. See the [ffmpeg](#ffmpeg--gpl-build-important-source-availability-obligation) section before the next signed release. (The COD citation has since been added to the README and both manuals, and AMCSD bulk redistribution is permitted — permission obtained from the maintainer.)
 
 ## NuGet / managed libraries
 
@@ -93,7 +93,7 @@ The native FFmpeg DLLs are bundled via `ReciPro.csproj` (`<Content Include="ffmp
 | Upstream URL | http://rruff.geo.arizona.edu/AMS/amcsd.php |
 | Required citation | Downs, R. T. & Hall-Wallace, M. (2003). The American Mineralogist Crystal Structure Database. *American Mineralogist*, **88**, 247-250. (Already cited in README, both manuals, and this file.) |
 | Signed by ReciPro? | N/A (data file, not code) — ships inside the ReciPro-signed installer. |
-| Redistribution status | **`TODO: confirm`** with AMCSD/RRUFF (Downs group, U. Arizona) that bulk redistribution of ~21,000 structures inside an installer is permitted, and the exact required attribution wording (AMCSD has no single formal posted redistribution license). `TODO: confirm` whether underlying journal CIFs carry separate copyright or database rights. The `.cdb3` carries no embedded attribution; attribution is satisfied only via README/manuals/this file. An in-app AMCSD citation (e.g. on the Crystal Database window) would strengthen compliance — `TODO: confirm` whether desired. |
+| Redistribution status | **Permitted.** Redistribution permission was obtained from the AMCSD maintainer. The underlying crystal-structure data are scientific facts published in peer-reviewed journals and are openly distributed by AMCSD/RRUFF (e.g. https://www.rruff.net/). Attribution is provided via the Downs & Hall-Wallace (2003) citation. The `.cdb3` carries no embedded attribution; attribution is satisfied via README/manuals/this file (an in-app citation on the Crystal Database window would further strengthen it). |
 
 ### COD (downloaded on first use)
 
