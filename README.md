@@ -62,9 +62,8 @@ The only network connections *ReciPro* makes are optional, user-initiated downlo
 The bundled AMCSD database and all core features work entirely offline.
 
 ## Manual
-  * English (PDF) : https://raw.githubusercontent.com/seto77/ReciPro/master/ReciPro/doc/ReciProManual(en).pdf
+  * Online manual (English / Japanese) : https://seto77.github.io/ReciPro/
   * Japanese version : https://yseto.net/soft/recipro
-  * Japanese (PDF) : https://raw.githubusercontent.com/seto77/ReciPro/master/ReciPro/doc/ReciProManual(ja).pdf
 ***
 
 ## Main Features
