@@ -49,6 +49,18 @@ Get-FileHash .\ReciProSetup.msi -Algorithm SHA256
 
 * For an additional check, you may also scan the installer with a multi-engine service such as VirusTotal.
 
+## Privacy
+
+*ReciPro* is a local desktop application. It does **not** collect, store, or transmit any personal or usage data, and it contains no telemetry or analytics. After installation it runs fully offline.
+
+The only network connections *ReciPro* makes are optional, user-initiated downloads, and none of them upload your data:
+
+* **Check for updates** (menu command): compares your installed version with the latest GitHub release and, if you choose, downloads the new installer from the official [GitHub Releases](https://github.com/seto77/ReciPro/releases/latest) page.
+* **COD database** (Crystallography Open Database): downloaded on first use (~880 MB) from the author's GitHub mirror, then used offline.
+* **Intel MKL library** (optional acceleration): downloaded (~55 MB) from [nuget.org](https://www.nuget.org/) only if you enable the *Use MKL* option, to speed up dynamical-diffraction calculations.
+
+The bundled AMCSD database and all core features work entirely offline.
+
 ## Manual
   * English (PDF) : https://raw.githubusercontent.com/seto77/ReciPro/master/ReciPro/doc/ReciProManual(en).pdf
   * Japanese version : https://yseto.net/soft/recipro
@@ -93,7 +105,7 @@ Get-FileHash .\ReciProSetup.msi -Algorithm SHA256
   * Rotation, movement, and zoom are freely controlled with mouse operations.
   * Clicking an atom shows distances and bond angles to neighboring atoms.
   * The rotation state is immediately reflected in other functional windows (stereonet, diffraction simulator, etc.).
-  * Built-in video encoder (ffmpeg) can generate rotation animation videos for presentations.
+  * Built-in video encoder (Windows Media Foundation) can generate rotation animation videos (H.264/H.265 MP4) for presentations.
 
 ### Stereonet
 
