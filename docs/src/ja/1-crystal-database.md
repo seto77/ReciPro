@@ -3,7 +3,7 @@
 **結晶データベース** は、2つのデータソースから結晶構造を検索・インポートできます。**AMCSD** と **COD** のチェックボックスで切り替えます。
 
 - **AMCSD** : 内蔵の [American Mineralogist Crystal Structure Database](https://www.rruff.net/)（約21,000件）。
-- **COD** : [Crystallography Open Database](https://www.crystallography.net/cod/)。初回利用時にデータベースファイルが自動でダウンロードされ、更新もできます。
+- **COD** : [Crystallography Open Database](https://www.crystallography.net/cod/)。大きいファイルなのでインストーラーにはバンドルしておらず、初回利用時にデータベースファイルが自動でダウンロードされます。サーバーでファイルが更新された場合は、再ダウンロードを促されます。
 
 これらのデータベースを使用する際は、以下の文献を引用してください。
 
