@@ -547,4 +547,11 @@
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <data name="buttonNext.ToolTip" xml:space="preserve">
+    <value>Show the next hint.</value>
+  </data>
+  <data name="checkBoxCloseWindow.ToolTip" xml:space="preserve">
+    <value>Automatically close this startup window
+once initialization has finished.</value>
+  </data>
 </root>

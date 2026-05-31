@@ -228,4 +228,29 @@
   <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
     <value>390, 218</value>
   </data>
+  <data name="buttonAddBond.ToolTip" xml:space="preserve">
+    <value>上で指定した格子面 (指数・移動量・色) を一覧に追加します。</value>
+  </data>
+  <data name="buttonChangeBond.ToolTip" xml:space="preserve">
+    <value>一覧で選択中の格子面を、上で入力した内容に置き換えます。</value>
+  </data>
+  <data name="buttonDeleteBond.ToolTip" xml:space="preserve">
+    <value>一覧で選択中の格子面を削除します。</value>
+  </data>
+  <data name="dataGridView.ToolTip" xml:space="preserve">
+    <value>登録済みの格子面の一覧です。各行のチェック
+でその面の表示/非表示を切り替えます。</value>
+  </data>
+  <data name="indexControl.ToolTip" xml:space="preserve">
+    <value>格子面のミラー指数 (h k l) を入力します
+(六方晶ではミラー・ブラベー指数 h k i l)。</value>
+  </data>
+  <data name="numericBoxDistance.ToolTip" xml:space="preserve">
+    <value>格子面を法線方向に平行移動させる量を、
+面間隔に対する割合 (-0.5〜0.5) で指定します。</value>
+  </data>
+  <data name="label6.ToolTip" xml:space="preserve">
+    <value>格子面を法線方向に平行移動させる量を、
+面間隔に対する割合 (-0.5〜0.5) で指定します。</value>
+  </data>
 </root>

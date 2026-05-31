@@ -34,6 +34,8 @@
         {
             captureExtender.SetCapture(this, true); // 260521Cl 追加: GUI監査キャプチャ対象 (フォーム全体)
             this.components = new System.ComponentModel.Container();
+            this.toolTip = new System.Windows.Forms.ToolTip(this.components); // 260531Cl
+            this.toolTip.IsBalloon = true; // 260531Cl 追加: バルーン表示に統一
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormPolycrystallineDiffractionSimulator));
             this.backgroundWorkerMain = new System.ComponentModel.BackgroundWorker();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
@@ -194,6 +196,7 @@
             this.button1.Location = new System.Drawing.Point(468, 15);
             this.button1.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.button1.Name = "button1";
+            this.toolTip.SetToolTip(this.button1, resources.GetString("button1.ToolTip")); // 260531Cl
             this.button1.Size = new System.Drawing.Size(38, 26);
             this.button1.TabIndex = 1003;
             this.button1.Text = "test";
@@ -208,6 +211,7 @@
             this.buttonSimulateDebyeRing.Location = new System.Drawing.Point(155, 15);
             this.buttonSimulateDebyeRing.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.buttonSimulateDebyeRing.Name = "buttonSimulateDebyeRing";
+            this.toolTip.SetToolTip(this.buttonSimulateDebyeRing, resources.GetString("buttonSimulateDebyeRing.ToolTip")); // 260531Cl
             this.buttonSimulateDebyeRing.Size = new System.Drawing.Size(177, 26);
             this.buttonSimulateDebyeRing.TabIndex = 1003;
             this.buttonSimulateDebyeRing.Text = "Simulate Debye ring pattern";
@@ -300,6 +304,7 @@
             this.buttonLoadSetting.Location = new System.Drawing.Point(291, 21);
             this.buttonLoadSetting.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.buttonLoadSetting.Name = "buttonLoadSetting";
+            this.toolTip.SetToolTip(this.buttonLoadSetting, resources.GetString("buttonLoadSetting.ToolTip")); // 260531Cl
             this.buttonLoadSetting.Size = new System.Drawing.Size(86, 26);
             this.buttonLoadSetting.TabIndex = 68;
             this.buttonLoadSetting.Text = "Load setting";
@@ -314,6 +319,7 @@
             this.buttonSaveCurrentSetting.Location = new System.Drawing.Point(388, 21);
             this.buttonSaveCurrentSetting.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.buttonSaveCurrentSetting.Name = "buttonSaveCurrentSetting";
+            this.toolTip.SetToolTip(this.buttonSaveCurrentSetting, resources.GetString("buttonSaveCurrentSetting.ToolTip")); // 260531Cl
             this.buttonSaveCurrentSetting.Size = new System.Drawing.Size(132, 26);
             this.buttonSaveCurrentSetting.TabIndex = 68;
             this.buttonSaveCurrentSetting.Text = "Save current setting";
@@ -328,6 +334,7 @@
             this.buttonSearch.Location = new System.Drawing.Point(14, 21);
             this.buttonSearch.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.buttonSearch.Name = "buttonSearch";
+            this.toolTip.SetToolTip(this.buttonSearch, resources.GetString("buttonSearch.ToolTip")); // 260531Cl
             this.buttonSearch.Size = new System.Drawing.Size(146, 26);
             this.buttonSearch.TabIndex = 68;
             this.buttonSearch.Text = "Search Orientations";
@@ -390,6 +397,7 @@
             this.checkBoxCrystalNumPerStepThreshold.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.checkBoxCrystalNumPerStepThreshold.Location = new System.Drawing.Point(201, 28);
             this.checkBoxCrystalNumPerStepThreshold.Name = "checkBoxCrystalNumPerStepThreshold";
+            this.toolTip.SetToolTip(this.checkBoxCrystalNumPerStepThreshold, resources.GetString("checkBoxCrystalNumPerStepThreshold.ToolTip")); // 260531Cl
             this.checkBoxCrystalNumPerStepThreshold.Size = new System.Drawing.Size(83, 20);
             this.checkBoxCrystalNumPerStepThreshold.TabIndex = 408;
             this.checkBoxCrystalNumPerStepThreshold.Text = "Threshold";
@@ -413,6 +421,7 @@
             this.numericBoxCrystalNumPerStep.Minimum = 1E-06D;
             this.numericBoxCrystalNumPerStep.MinimumSize = new System.Drawing.Size(1, 23);
             this.numericBoxCrystalNumPerStep.Name = "numericBoxCrystalNumPerStep";
+            this.toolTip.SetToolTip(this.numericBoxCrystalNumPerStep, resources.GetString("numericBoxCrystalNumPerStep.ToolTip")); // 260531Cl
             this.numericBoxCrystalNumPerStep.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
             this.numericBoxCrystalNumPerStep.RadianValue = 0.0087266462599716477D;
             this.numericBoxCrystalNumPerStep.RoundErrorAccuracy = -1;
@@ -442,6 +451,7 @@
             this.numericBoxInheritabiliry.Minimum = 0D;
             this.numericBoxInheritabiliry.MinimumSize = new System.Drawing.Size(1, 23);
             this.numericBoxInheritabiliry.Name = "numericBoxInheritabiliry";
+            this.toolTip.SetToolTip(this.numericBoxInheritabiliry, resources.GetString("numericBoxInheritabiliry.ToolTip")); // 260531Cl
             this.numericBoxInheritabiliry.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
             this.numericBoxInheritabiliry.RadianValue = 0.17453292519943295D;
             this.numericBoxInheritabiliry.RoundErrorAccuracy = -1;
@@ -460,6 +470,7 @@
             this.checkBoxInheritabiliryThreshold.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.checkBoxInheritabiliryThreshold.Location = new System.Drawing.Point(201, 58);
             this.checkBoxInheritabiliryThreshold.Name = "checkBoxInheritabiliryThreshold";
+            this.toolTip.SetToolTip(this.checkBoxInheritabiliryThreshold, resources.GetString("checkBoxInheritabiliryThreshold.ToolTip")); // 260531Cl
             this.checkBoxInheritabiliryThreshold.Size = new System.Drawing.Size(83, 20);
             this.checkBoxInheritabiliryThreshold.TabIndex = 408;
             this.checkBoxInheritabiliryThreshold.Text = "Threshold";
@@ -482,6 +493,7 @@
             this.numericBoxInheritabiliryThreshold.Minimum = 0D;
             this.numericBoxInheritabiliryThreshold.MinimumSize = new System.Drawing.Size(1, 23);
             this.numericBoxInheritabiliryThreshold.Name = "numericBoxInheritabiliryThreshold";
+            this.toolTip.SetToolTip(this.numericBoxInheritabiliryThreshold, resources.GetString("numericBoxInheritabiliryThreshold.ToolTip")); // 260531Cl
             this.numericBoxInheritabiliryThreshold.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
             this.numericBoxInheritabiliryThreshold.RadianValue = 1.6755160819145563D;
             this.numericBoxInheritabiliryThreshold.RoundErrorAccuracy = -1;
@@ -503,6 +515,7 @@
             this.checkBoxDirectionalDensityThreshold.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.checkBoxDirectionalDensityThreshold.Location = new System.Drawing.Point(201, 88);
             this.checkBoxDirectionalDensityThreshold.Name = "checkBoxDirectionalDensityThreshold";
+            this.toolTip.SetToolTip(this.checkBoxDirectionalDensityThreshold, resources.GetString("checkBoxDirectionalDensityThreshold.ToolTip")); // 260531Cl
             this.checkBoxDirectionalDensityThreshold.Size = new System.Drawing.Size(83, 20);
             this.checkBoxDirectionalDensityThreshold.TabIndex = 408;
             this.checkBoxDirectionalDensityThreshold.Text = "Threshold";
@@ -526,6 +539,7 @@
             this.numericBoxDirectionalDensity.Minimum = 0.1D;
             this.numericBoxDirectionalDensity.MinimumSize = new System.Drawing.Size(1, 23);
             this.numericBoxDirectionalDensity.Name = "numericBoxDirectionalDensity";
+            this.toolTip.SetToolTip(this.numericBoxDirectionalDensity, resources.GetString("numericBoxDirectionalDensity.ToolTip")); // 260531Cl
             this.numericBoxDirectionalDensity.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
             this.numericBoxDirectionalDensity.RadianValue = 0.3490658503988659D;
             this.numericBoxDirectionalDensity.RoundErrorAccuracy = -1;
@@ -554,6 +568,7 @@
             this.numericBoxCrystalNumPerStepThreshold.Minimum = 1E-06D;
             this.numericBoxCrystalNumPerStepThreshold.MinimumSize = new System.Drawing.Size(1, 23);
             this.numericBoxCrystalNumPerStepThreshold.Name = "numericBoxCrystalNumPerStepThreshold";
+            this.toolTip.SetToolTip(this.numericBoxCrystalNumPerStepThreshold, resources.GetString("numericBoxCrystalNumPerStepThreshold.ToolTip")); // 260531Cl
             this.numericBoxCrystalNumPerStepThreshold.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
             this.numericBoxCrystalNumPerStepThreshold.RadianValue = 0.0004363323129985824D;
             this.numericBoxCrystalNumPerStepThreshold.RoundErrorAccuracy = -1;
@@ -583,6 +598,7 @@
             this.numericBoxDirectionalDensityThreshold.Minimum = 0.1D;
             this.numericBoxDirectionalDensityThreshold.MinimumSize = new System.Drawing.Size(1, 23);
             this.numericBoxDirectionalDensityThreshold.Name = "numericBoxDirectionalDensityThreshold";
+            this.toolTip.SetToolTip(this.numericBoxDirectionalDensityThreshold, resources.GetString("numericBoxDirectionalDensityThreshold.ToolTip")); // 260531Cl
             this.numericBoxDirectionalDensityThreshold.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
             this.numericBoxDirectionalDensityThreshold.RadianValue = 0.017453292519943295D;
             this.numericBoxDirectionalDensityThreshold.RoundErrorAccuracy = -1;
@@ -618,6 +634,7 @@
             this.checkBoxRefineConvergence.Location = new System.Drawing.Point(8, 62);
             this.checkBoxRefineConvergence.Margin = new System.Windows.Forms.Padding(4);
             this.checkBoxRefineConvergence.Name = "checkBoxRefineConvergence";
+            this.toolTip.SetToolTip(this.checkBoxRefineConvergence, resources.GetString("checkBoxRefineConvergence.ToolTip")); // 260531Cl
             this.checkBoxRefineConvergence.Size = new System.Drawing.Size(102, 36);
             this.checkBoxRefineConvergence.TabIndex = 409;
             this.checkBoxRefineConvergence.Text = "Beam\r\n convergence";
@@ -630,6 +647,7 @@
             this.checkBoxRefineStress.Location = new System.Drawing.Point(8, 161);
             this.checkBoxRefineStress.Margin = new System.Windows.Forms.Padding(4);
             this.checkBoxRefineStress.Name = "checkBoxRefineStress";
+            this.toolTip.SetToolTip(this.checkBoxRefineStress, resources.GetString("checkBoxRefineStress.ToolTip")); // 260531Cl
             this.checkBoxRefineStress.Size = new System.Drawing.Size(62, 20);
             this.checkBoxRefineStress.TabIndex = 412;
             this.checkBoxRefineStress.Text = "Stress";
@@ -644,6 +662,7 @@
             this.checkBoxRefineCenterOffset.Location = new System.Drawing.Point(8, 133);
             this.checkBoxRefineCenterOffset.Margin = new System.Windows.Forms.Padding(4);
             this.checkBoxRefineCenterOffset.Name = "checkBoxRefineCenterOffset";
+            this.toolTip.SetToolTip(this.checkBoxRefineCenterOffset, resources.GetString("checkBoxRefineCenterOffset.ToolTip")); // 260531Cl
             this.checkBoxRefineCenterOffset.Size = new System.Drawing.Size(100, 20);
             this.checkBoxRefineCenterOffset.TabIndex = 411;
             this.checkBoxRefineCenterOffset.Text = "Center offset";
@@ -659,6 +678,7 @@
             this.checkBoxRefinePreferredOrientation.Location = new System.Drawing.Point(8, 22);
             this.checkBoxRefinePreferredOrientation.Margin = new System.Windows.Forms.Padding(4);
             this.checkBoxRefinePreferredOrientation.Name = "checkBoxRefinePreferredOrientation";
+            this.toolTip.SetToolTip(this.checkBoxRefinePreferredOrientation, resources.GetString("checkBoxRefinePreferredOrientation.ToolTip")); // 260531Cl
             this.checkBoxRefinePreferredOrientation.Size = new System.Drawing.Size(91, 36);
             this.checkBoxRefinePreferredOrientation.TabIndex = 408;
             this.checkBoxRefinePreferredOrientation.Text = "Preferred \r\n orientation";
@@ -673,6 +693,7 @@
             this.checkBoxRefineFilmBlur.Location = new System.Drawing.Point(8, 105);
             this.checkBoxRefineFilmBlur.Margin = new System.Windows.Forms.Padding(4);
             this.checkBoxRefineFilmBlur.Name = "checkBoxRefineFilmBlur";
+            this.toolTip.SetToolTip(this.checkBoxRefineFilmBlur, resources.GetString("checkBoxRefineFilmBlur.ToolTip")); // 260531Cl
             this.checkBoxRefineFilmBlur.Size = new System.Drawing.Size(76, 20);
             this.checkBoxRefineFilmBlur.TabIndex = 410;
             this.checkBoxRefineFilmBlur.Text = "Film blur";
@@ -688,6 +709,7 @@
             this.checkBox6.Location = new System.Drawing.Point(145, 180);
             this.checkBox6.Margin = new System.Windows.Forms.Padding(4);
             this.checkBox6.Name = "checkBox6";
+            this.toolTip.SetToolTip(this.checkBox6, resources.GetString("checkBox6.ToolTip")); // 260531Cl
             this.checkBox6.Size = new System.Drawing.Size(174, 20);
             this.checkBox6.TabIndex = 406;
             this.checkBox6.Text = "Automatically save setting";
@@ -703,6 +725,7 @@
             this.checkBoxAutomaticallyChangeParameter.Location = new System.Drawing.Point(146, 146);
             this.checkBoxAutomaticallyChangeParameter.Margin = new System.Windows.Forms.Padding(4);
             this.checkBoxAutomaticallyChangeParameter.Name = "checkBoxAutomaticallyChangeParameter";
+            this.toolTip.SetToolTip(this.checkBoxAutomaticallyChangeParameter, resources.GetString("checkBoxAutomaticallyChangeParameter.ToolTip")); // 260531Cl
             this.checkBoxAutomaticallyChangeParameter.Size = new System.Drawing.Size(211, 20);
             this.checkBoxAutomaticallyChangeParameter.TabIndex = 405;
             this.checkBoxAutomaticallyChangeParameter.Text = "Automatically change parameter";
@@ -716,6 +739,7 @@
             this.numericBoxChangeParameterThreshold.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
             this.numericBoxChangeParameterThreshold.Maximum = 1D;
             this.numericBoxChangeParameterThreshold.Name = "numericBoxChangeParameterThreshold";
+            this.toolTip.SetToolTip(this.numericBoxChangeParameterThreshold, resources.GetString("numericBoxChangeParameterThreshold.ToolTip")); // 260531Cl
             this.numericBoxChangeParameterThreshold.ShowUpDown = true;
             this.numericBoxChangeParameterThreshold.Size = new System.Drawing.Size(52, 22);
             this.numericBoxChangeParameterThreshold.TabIndex = 404;
@@ -743,6 +767,7 @@
             this.textBox1.Location = new System.Drawing.Point(3, 4);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
+            this.toolTip.SetToolTip(this.textBox1, resources.GetString("textBox1.ToolTip")); // 260531Cl
             this.textBox1.ReadOnly = true;
             this.textBox1.Size = new System.Drawing.Size(174, 190);
             this.textBox1.TabIndex = 164;
@@ -816,6 +841,7 @@
             this.buttonSearchUnrelatedOrientations.Location = new System.Drawing.Point(5, 32);
             this.buttonSearchUnrelatedOrientations.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.buttonSearchUnrelatedOrientations.Name = "buttonSearchUnrelatedOrientations";
+            this.toolTip.SetToolTip(this.buttonSearchUnrelatedOrientations, resources.GetString("buttonSearchUnrelatedOrientations.ToolTip")); // 260531Cl
             this.buttonSearchUnrelatedOrientations.Size = new System.Drawing.Size(281, 35);
             this.buttonSearchUnrelatedOrientations.TabIndex = 68;
             this.buttonSearchUnrelatedOrientations.Text = "Search unrelated orientation";
@@ -867,6 +893,7 @@
             this.checkBoxYusaGonioScan.Location = new System.Drawing.Point(8, 25);
             this.checkBoxYusaGonioScan.Margin = new System.Windows.Forms.Padding(4);
             this.checkBoxYusaGonioScan.Name = "checkBoxYusaGonioScan";
+            this.toolTip.SetToolTip(this.checkBoxYusaGonioScan, resources.GetString("checkBoxYusaGonioScan.ToolTip")); // 260531Cl
             this.checkBoxYusaGonioScan.Size = new System.Drawing.Size(142, 20);
             this.checkBoxYusaGonioScan.TabIndex = 101;
             this.checkBoxYusaGonioScan.Text = "Use YusaGonio Scan";
@@ -882,6 +909,7 @@
             this.numericBoxRxSpeed.MaximumSize = new System.Drawing.Size(1000, 24);
             this.numericBoxRxSpeed.MinimumSize = new System.Drawing.Size(1, 22);
             this.numericBoxRxSpeed.Name = "numericBoxRxSpeed";
+            this.toolTip.SetToolTip(this.numericBoxRxSpeed, resources.GetString("numericBoxRxSpeed.ToolTip")); // 260531Cl
             this.numericBoxRxSpeed.Padding = new System.Windows.Forms.Padding(1);
             this.numericBoxRxSpeed.RadianValue = 0.31415926535897931D;
             this.numericBoxRxSpeed.RoundErrorAccuracy = -1;
@@ -900,6 +928,7 @@
             this.checkBoxYusaGonio_ValidRx.Location = new System.Drawing.Point(28, 70);
             this.checkBoxYusaGonio_ValidRx.Margin = new System.Windows.Forms.Padding(4);
             this.checkBoxYusaGonio_ValidRx.Name = "checkBoxYusaGonio_ValidRx";
+            this.toolTip.SetToolTip(this.checkBoxYusaGonio_ValidRx, resources.GetString("checkBoxYusaGonio_ValidRx.ToolTip")); // 260531Cl
             this.checkBoxYusaGonio_ValidRx.Size = new System.Drawing.Size(63, 20);
             this.checkBoxYusaGonio_ValidRx.TabIndex = 102;
             this.checkBoxYusaGonio_ValidRx.Text = "Rx (φ)";
@@ -912,6 +941,7 @@
             this.label52.Location = new System.Drawing.Point(20, 99);
             this.label52.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label52.Name = "label52";
+            this.toolTip.SetToolTip(this.label52, resources.GetString("label52.ToolTip")); // 260531Cl
             this.label52.Size = new System.Drawing.Size(79, 16);
             this.label52.TabIndex = 14;
             this.label52.Text = "motor speed";
@@ -926,6 +956,7 @@
             this.numericBoxYusaGonioRySpeed.MaximumSize = new System.Drawing.Size(1000, 24);
             this.numericBoxYusaGonioRySpeed.MinimumSize = new System.Drawing.Size(1, 22);
             this.numericBoxYusaGonioRySpeed.Name = "numericBoxYusaGonioRySpeed";
+            this.toolTip.SetToolTip(this.numericBoxYusaGonioRySpeed, resources.GetString("numericBoxYusaGonioRySpeed.ToolTip")); // 260531Cl
             this.numericBoxYusaGonioRySpeed.Padding = new System.Windows.Forms.Padding(1);
             this.numericBoxYusaGonioRySpeed.RadianValue = 0.017453292519943295D;
             this.numericBoxYusaGonioRySpeed.RoundErrorAccuracy = -1;
@@ -944,6 +975,7 @@
             this.label51.Location = new System.Drawing.Point(44, 226);
             this.label51.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label51.Name = "label51";
+            this.toolTip.SetToolTip(this.label51, resources.GetString("label51.ToolTip")); // 260531Cl
             this.label51.Size = new System.Drawing.Size(63, 16);
             this.label51.TabIndex = 16;
             this.label51.Text = "oscillation";
@@ -958,6 +990,7 @@
             this.numericBoxYusaGonioRzSpeed.MaximumSize = new System.Drawing.Size(1000, 24);
             this.numericBoxYusaGonioRzSpeed.MinimumSize = new System.Drawing.Size(1, 22);
             this.numericBoxYusaGonioRzSpeed.Name = "numericBoxYusaGonioRzSpeed";
+            this.toolTip.SetToolTip(this.numericBoxYusaGonioRzSpeed, resources.GetString("numericBoxYusaGonioRzSpeed.ToolTip")); // 260531Cl
             this.numericBoxYusaGonioRzSpeed.Padding = new System.Windows.Forms.Padding(1);
             this.numericBoxYusaGonioRzSpeed.RadianValue = 0.034906585039886591D;
             this.numericBoxYusaGonioRzSpeed.RoundErrorAccuracy = -1;
@@ -977,6 +1010,7 @@
             this.label53.Location = new System.Drawing.Point(214, 341);
             this.label53.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label53.Name = "label53";
+            this.toolTip.SetToolTip(this.label53, resources.GetString("label53.ToolTip")); // 260531Cl
             this.label53.Size = new System.Drawing.Size(29, 13);
             this.label53.TabIndex = 15;
             this.label53.Text = "deg.";
@@ -988,6 +1022,7 @@
             this.label50.Location = new System.Drawing.Point(44, 311);
             this.label50.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label50.Name = "label50";
+            this.toolTip.SetToolTip(this.label50, resources.GetString("label50.ToolTip")); // 260531Cl
             this.label50.Size = new System.Drawing.Size(63, 16);
             this.label50.TabIndex = 18;
             this.label50.Text = "oscillation";
@@ -999,6 +1034,7 @@
             this.radioButtonZigzagScan.Location = new System.Drawing.Point(28, 122);
             this.radioButtonZigzagScan.Margin = new System.Windows.Forms.Padding(4);
             this.radioButtonZigzagScan.Name = "radioButtonZigzagScan";
+            this.toolTip.SetToolTip(this.radioButtonZigzagScan, resources.GetString("radioButtonZigzagScan.ToolTip")); // 260531Cl
             this.radioButtonZigzagScan.Size = new System.Drawing.Size(205, 52);
             this.radioButtonZigzagScan.TabIndex = 104;
             this.radioButtonZigzagScan.TabStop = true;
@@ -1012,6 +1048,7 @@
             this.label54.Location = new System.Drawing.Point(42, 281);
             this.label54.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label54.Name = "label54";
+            this.toolTip.SetToolTip(this.label54, resources.GetString("label54.ToolTip")); // 260531Cl
             this.label54.Size = new System.Drawing.Size(79, 16);
             this.label54.TabIndex = 19;
             this.label54.Text = "motor speed";
@@ -1023,6 +1060,7 @@
             this.label49.Location = new System.Drawing.Point(60, 342);
             this.label49.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label49.Name = "label49";
+            this.toolTip.SetToolTip(this.label49, resources.GetString("label49.ToolTip")); // 260531Cl
             this.label49.Size = new System.Drawing.Size(31, 16);
             this.label49.TabIndex = 25;
             this.label49.Text = "step";
@@ -1037,6 +1075,7 @@
             this.numericBoxYusaGonioRyStep.MaximumSize = new System.Drawing.Size(1000, 24);
             this.numericBoxYusaGonioRyStep.MinimumSize = new System.Drawing.Size(1, 22);
             this.numericBoxYusaGonioRyStep.Name = "numericBoxYusaGonioRyStep";
+            this.toolTip.SetToolTip(this.numericBoxYusaGonioRyStep, resources.GetString("numericBoxYusaGonioRyStep.ToolTip")); // 260531Cl
             this.numericBoxYusaGonioRyStep.Padding = new System.Windows.Forms.Padding(1);
             this.numericBoxYusaGonioRyStep.RadianValue = 0.0034906585039886592D;
             this.numericBoxYusaGonioRyStep.RoundErrorAccuracy = -1;
@@ -1056,6 +1095,7 @@
             this.label55.Location = new System.Drawing.Point(214, 310);
             this.label55.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label55.Name = "label55";
+            this.toolTip.SetToolTip(this.label55, resources.GetString("label55.ToolTip")); // 260531Cl
             this.label55.Size = new System.Drawing.Size(29, 13);
             this.label55.TabIndex = 23;
             this.label55.Text = "deg.";
@@ -1067,6 +1107,7 @@
             this.label48.Location = new System.Drawing.Point(128, 231);
             this.label48.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label48.Name = "label48";
+            this.toolTip.SetToolTip(this.label48, resources.GetString("label48.ToolTip")); // 260531Cl
             this.label48.Size = new System.Drawing.Size(15, 16);
             this.label48.TabIndex = 27;
             this.label48.Text = "±";
@@ -1081,6 +1122,7 @@
             this.numericBoxYusaGonioRyOscillation.MaximumSize = new System.Drawing.Size(1000, 24);
             this.numericBoxYusaGonioRyOscillation.MinimumSize = new System.Drawing.Size(1, 22);
             this.numericBoxYusaGonioRyOscillation.Name = "numericBoxYusaGonioRyOscillation";
+            this.toolTip.SetToolTip(this.numericBoxYusaGonioRyOscillation, resources.GetString("numericBoxYusaGonioRyOscillation.ToolTip")); // 260531Cl
             this.numericBoxYusaGonioRyOscillation.Padding = new System.Windows.Forms.Padding(1);
             this.numericBoxYusaGonioRyOscillation.RadianValue = 0.069813170079773182D;
             this.numericBoxYusaGonioRyOscillation.RoundErrorAccuracy = -1;
@@ -1099,6 +1141,7 @@
             this.label56.Location = new System.Drawing.Point(42, 196);
             this.label56.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label56.Name = "label56";
+            this.toolTip.SetToolTip(this.label56, resources.GetString("label56.ToolTip")); // 260531Cl
             this.label56.Size = new System.Drawing.Size(79, 16);
             this.label56.TabIndex = 24;
             this.label56.Text = "motor speed";
@@ -1110,6 +1153,7 @@
             this.label60.Location = new System.Drawing.Point(192, 99);
             this.label60.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label60.Name = "label60";
+            this.toolTip.SetToolTip(this.label60, resources.GetString("label60.ToolTip")); // 260531Cl
             this.label60.Size = new System.Drawing.Size(68, 16);
             this.label60.TabIndex = 1000;
             this.label60.Text = "°/s"; // 260520Cl: unit unification (deg. / sec. → °/s)
@@ -1121,6 +1165,7 @@
             this.label47.Location = new System.Drawing.Point(128, 311);
             this.label47.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label47.Name = "label47";
+            this.toolTip.SetToolTip(this.label47, resources.GetString("label47.ToolTip")); // 260531Cl
             this.label47.Size = new System.Drawing.Size(15, 16);
             this.label47.TabIndex = 26;
             this.label47.Text = "±";
@@ -1135,6 +1180,7 @@
             this.numericBoxYusaGonioRzOscillation.MaximumSize = new System.Drawing.Size(1000, 24);
             this.numericBoxYusaGonioRzOscillation.MinimumSize = new System.Drawing.Size(1, 22);
             this.numericBoxYusaGonioRzOscillation.Name = "numericBoxYusaGonioRzOscillation";
+            this.toolTip.SetToolTip(this.numericBoxYusaGonioRzOscillation, resources.GetString("numericBoxYusaGonioRzOscillation.ToolTip")); // 260531Cl
             this.numericBoxYusaGonioRzOscillation.Padding = new System.Windows.Forms.Padding(1);
             this.numericBoxYusaGonioRzOscillation.RadianValue = 0.069813170079773182D;
             this.numericBoxYusaGonioRzOscillation.RoundErrorAccuracy = -1;
@@ -1154,6 +1200,7 @@
             this.label57.Location = new System.Drawing.Point(214, 230);
             this.label57.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label57.Name = "label57";
+            this.toolTip.SetToolTip(this.label57, resources.GetString("label57.ToolTip")); // 260531Cl
             this.label57.Size = new System.Drawing.Size(29, 13);
             this.label57.TabIndex = 1000;
             this.label57.Text = "°"; // 260520Cl: unit unification (deg. → °)
@@ -1166,6 +1213,7 @@
             this.label59.Location = new System.Drawing.Point(214, 201);
             this.label59.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label59.Name = "label59";
+            this.toolTip.SetToolTip(this.label59, resources.GetString("label59.ToolTip")); // 260531Cl
             this.label59.Size = new System.Drawing.Size(59, 13);
             this.label59.TabIndex = 1000;
             this.label59.Text = "°/s"; // 260520Cl: unit unification (deg. / sec. → °/s)
@@ -1177,6 +1225,7 @@
             this.checkBox2.Location = new System.Drawing.Point(44, 171);
             this.checkBox2.Margin = new System.Windows.Forms.Padding(4);
             this.checkBox2.Name = "checkBox2";
+            this.toolTip.SetToolTip(this.checkBox2, resources.GetString("checkBox2.ToolTip")); // 260531Cl
             this.checkBox2.Size = new System.Drawing.Size(61, 20);
             this.checkBox2.TabIndex = 105;
             this.checkBox2.Text = "Rz (θ)";
@@ -1189,6 +1238,7 @@
             this.checkBox3.Location = new System.Drawing.Point(44, 255);
             this.checkBox3.Margin = new System.Windows.Forms.Padding(4);
             this.checkBox3.Name = "checkBox3";
+            this.toolTip.SetToolTip(this.checkBox3, resources.GetString("checkBox3.ToolTip")); // 260531Cl
             this.checkBox3.Size = new System.Drawing.Size(63, 20);
             this.checkBox3.TabIndex = 108;
             this.checkBox3.Text = "Ry (ω)";
@@ -1202,6 +1252,7 @@
             this.label58.Location = new System.Drawing.Point(214, 281);
             this.label58.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label58.Name = "label58";
+            this.toolTip.SetToolTip(this.label58, resources.GetString("label58.ToolTip")); // 260531Cl
             this.label58.Size = new System.Drawing.Size(59, 13);
             this.label58.TabIndex = 20;
             this.label58.Text = "°/s"; // 260520Cl: unit unification (deg. / sec. → °/s)
@@ -1253,6 +1304,7 @@
             this.comboBoxScale2.Location = new System.Drawing.Point(498, 22);
             this.comboBoxScale2.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.comboBoxScale2.Name = "comboBoxScale2";
+            this.toolTip.SetToolTip(this.comboBoxScale2, resources.GetString("comboBoxScale2.ToolTip")); // 260531Cl
             this.comboBoxScale2.Size = new System.Drawing.Size(134, 22);
             this.comboBoxScale2.TabIndex = 303;
             this.comboBoxScale2.SelectedIndexChanged += new System.EventHandler(this.comboBoxScale_SelectedIndexChanged);
@@ -1264,6 +1316,7 @@
             this.label26.Location = new System.Drawing.Point(432, 26);
             this.label26.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label26.Name = "label26";
+            this.toolTip.SetToolTip(this.label26, resources.GetString("label26.ToolTip")); // 260531Cl
             this.label26.Size = new System.Drawing.Size(46, 14);
             this.label26.TabIndex = 152;
             this.label26.Text = "Scale 2";
@@ -1279,6 +1332,7 @@
             this.comboBoxGradient.Location = new System.Drawing.Point(80, 22);
             this.comboBoxGradient.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.comboBoxGradient.Name = "comboBoxGradient";
+            this.toolTip.SetToolTip(this.comboBoxGradient, resources.GetString("comboBoxGradient.ToolTip")); // 260531Cl
             this.comboBoxGradient.Size = new System.Drawing.Size(135, 22);
             this.comboBoxGradient.TabIndex = 301;
             this.comboBoxGradient.SelectedIndexChanged += new System.EventHandler(this.comboBoxScale_SelectedIndexChanged);
@@ -1290,6 +1344,7 @@
             this.label30.Location = new System.Drawing.Point(8, 26);
             this.label30.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label30.Name = "label30";
+            this.toolTip.SetToolTip(this.label30, resources.GetString("label30.ToolTip")); // 260531Cl
             this.label30.Size = new System.Drawing.Size(53, 14);
             this.label30.TabIndex = 149;
             this.label30.Text = "Gradient";
@@ -1305,6 +1360,7 @@
             this.comboBoxScale1.Location = new System.Drawing.Point(289, 22);
             this.comboBoxScale1.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.comboBoxScale1.Name = "comboBoxScale1";
+            this.toolTip.SetToolTip(this.comboBoxScale1, resources.GetString("comboBoxScale1.ToolTip")); // 260531Cl
             this.comboBoxScale1.Size = new System.Drawing.Size(135, 22);
             this.comboBoxScale1.TabIndex = 302;
             this.comboBoxScale1.SelectedIndexChanged += new System.EventHandler(this.comboBoxScale_SelectedIndexChanged);
@@ -1316,6 +1372,7 @@
             this.label28.Location = new System.Drawing.Point(224, 26);
             this.label28.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label28.Name = "label28";
+            this.toolTip.SetToolTip(this.label28, resources.GetString("label28.ToolTip")); // 260531Cl
             this.label28.Size = new System.Drawing.Size(46, 14);
             this.label28.TabIndex = 151;
             this.label28.Text = "Scale 1";
@@ -1328,6 +1385,7 @@
             this.listBoxReferrence.Location = new System.Drawing.Point(10, 29);
             this.listBoxReferrence.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.listBoxReferrence.Name = "listBoxReferrence";
+            this.toolTip.SetToolTip(this.listBoxReferrence, resources.GetString("listBoxReferrence.ToolTip")); // 260531Cl
             this.listBoxReferrence.Size = new System.Drawing.Size(190, 36);
             this.listBoxReferrence.TabIndex = 162;
             this.listBoxReferrence.SelectedIndexChanged += new System.EventHandler(this.listBoxReferrence_SelectedIndexChanged);
@@ -1338,6 +1396,7 @@
             this.buttonAddRefferencePattern.Location = new System.Drawing.Point(204, 28);
             this.buttonAddRefferencePattern.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.buttonAddRefferencePattern.Name = "buttonAddRefferencePattern";
+            this.toolTip.SetToolTip(this.buttonAddRefferencePattern, resources.GetString("buttonAddRefferencePattern.ToolTip")); // 260531Cl
             this.buttonAddRefferencePattern.Size = new System.Drawing.Size(94, 34);
             this.buttonAddRefferencePattern.TabIndex = 142;
             this.buttonAddRefferencePattern.Text = "Add";
@@ -1350,6 +1409,7 @@
             this.buttonRemoveReferrencePattern.Location = new System.Drawing.Point(204, 61);
             this.buttonRemoveReferrencePattern.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.buttonRemoveReferrencePattern.Name = "buttonRemoveReferrencePattern";
+            this.toolTip.SetToolTip(this.buttonRemoveReferrencePattern, resources.GetString("buttonRemoveReferrencePattern.ToolTip")); // 260531Cl
             this.buttonRemoveReferrencePattern.Size = new System.Drawing.Size(94, 34);
             this.buttonRemoveReferrencePattern.TabIndex = 142;
             this.buttonRemoveReferrencePattern.Text = "Remove";
@@ -1495,6 +1555,7 @@
         }
 
         #endregion
+        private System.Windows.Forms.ToolTip toolTip; // 260531Cl
         private System.Windows.Forms.Button buttonSearch;
         public System.Windows.Forms.ComboBox comboBoxScale2;
         public System.Windows.Forms.ComboBox comboBoxScale1;

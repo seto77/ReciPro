@@ -35,6 +35,8 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormDiffractionSpotInfo));
+            toolTip = new System.Windows.Forms.ToolTip(components); // (260531Ch)
+            toolTip.IsBalloon = true; // 260531Cl 追加: バルーン表示に統一
             label1 = new System.Windows.Forms.Label();
             label2 = new System.Windows.Forms.Label();
             textBoxWaveLength = new System.Windows.Forms.TextBox();
@@ -116,6 +118,7 @@
             label1.Location = new System.Drawing.Point(207, 5);
             label1.Margin = new System.Windows.Forms.Padding(8, 5, 0, 0);
             label1.Name = "label1";
+            toolTip.SetToolTip(label1, resources.GetString("label1.ToolTip")); // 260531Cl
             label1.Size = new System.Drawing.Size(157, 17);
             label1.TabIndex = 2;
             label1.Text = "Wavelength (= 1/k_vac): ";
@@ -127,6 +130,7 @@
             label2.Location = new System.Drawing.Point(0, 5);
             label2.Margin = new System.Windows.Forms.Padding(0, 5, 0, 0);
             label2.Name = "label2";
+            toolTip.SetToolTip(label2, resources.GetString("label2.ToolTip")); // 260531Cl
             label2.Size = new System.Drawing.Size(152, 17);
             label2.TabIndex = 2;
             label2.Text = "m/m₀ (= 1+e₀×E/m₀/c²): ";
@@ -137,6 +141,7 @@
             textBoxWaveLength.Location = new System.Drawing.Point(364, 0);
             textBoxWaveLength.Margin = new System.Windows.Forms.Padding(0);
             textBoxWaveLength.Name = "textBoxWaveLength";
+            toolTip.SetToolTip(textBoxWaveLength, resources.GetString("textBoxWaveLength.ToolTip")); // 260531Cl
             textBoxWaveLength.ReadOnly = true;
             textBoxWaveLength.Size = new System.Drawing.Size(101, 24);
             textBoxWaveLength.TabIndex = 4;
@@ -147,6 +152,7 @@
             buttonCopyToClipboard.Font = new System.Drawing.Font("Segoe UI", 10F);
             buttonCopyToClipboard.Location = new System.Drawing.Point(948, 267);
             buttonCopyToClipboard.Name = "buttonCopyToClipboard";
+            toolTip.SetToolTip(buttonCopyToClipboard, resources.GetString("buttonCopyToClipboard.ToolTip")); // 260531Cl
             buttonCopyToClipboard.Size = new System.Drawing.Size(139, 30);
             buttonCopyToClipboard.TabIndex = 5;
             buttonCopyToClipboard.Text = "Copy to clipboard";
@@ -159,6 +165,7 @@
             textBoxGamma.Location = new System.Drawing.Point(152, 0);
             textBoxGamma.Margin = new System.Windows.Forms.Padding(0);
             textBoxGamma.Name = "textBoxGamma";
+            toolTip.SetToolTip(textBoxGamma, resources.GetString("textBoxGamma.ToolTip")); // 260531Cl
             textBoxGamma.ReadOnly = true;
             textBoxGamma.Size = new System.Drawing.Size(83, 24);
             textBoxGamma.TabIndex = 4;
@@ -170,6 +177,7 @@
             label3.Location = new System.Drawing.Point(465, 5);
             label3.Margin = new System.Windows.Forms.Padding(0, 5, 0, 0);
             label3.Name = "label3";
+            toolTip.SetToolTip(label3, resources.GetString("label3.ToolTip")); // 260531Cl
             label3.Size = new System.Drawing.Size(26, 17);
             label3.TabIndex = 2;
             label3.Text = "nm";
@@ -181,6 +189,7 @@
             label4.Location = new System.Drawing.Point(241, 5);
             label4.Margin = new System.Windows.Forms.Padding(6, 5, 0, 0);
             label4.Name = "label4";
+            toolTip.SetToolTip(label4, resources.GetString("label4.ToolTip")); // 260531Cl
             label4.Size = new System.Drawing.Size(33, 17);
             label4.TabIndex = 2;
             label4.Text = "v/c: ";
@@ -191,6 +200,7 @@
             textBoxBeta.Location = new System.Drawing.Point(274, 0);
             textBoxBeta.Margin = new System.Windows.Forms.Padding(0);
             textBoxBeta.Name = "textBoxBeta";
+            toolTip.SetToolTip(textBoxBeta, resources.GetString("textBoxBeta.ToolTip")); // 260531Cl
             textBoxBeta.ReadOnly = true;
             textBoxBeta.Size = new System.Drawing.Size(83, 24);
             textBoxBeta.TabIndex = 4;
@@ -202,6 +212,7 @@
             label5.Location = new System.Drawing.Point(0, 5);
             label5.Margin = new System.Windows.Forms.Padding(0, 5, 0, 0);
             label5.Name = "label5";
+            toolTip.SetToolTip(label5, resources.GetString("label5.ToolTip")); // 260531Cl
             label5.Size = new System.Drawing.Size(90, 17);
             label5.TabIndex = 2;
             label5.Text = "Acc. Voltage: "; // 260520Cl: V を大文字に統一
@@ -213,6 +224,7 @@
             label6.Location = new System.Drawing.Point(173, 5);
             label6.Margin = new System.Windows.Forms.Padding(0, 5, 0, 0);
             label6.Name = "label6";
+            toolTip.SetToolTip(label6, resources.GetString("label6.ToolTip")); // 260531Cl
             label6.Size = new System.Drawing.Size(26, 17);
             label6.TabIndex = 2;
             label6.Text = "kV";
@@ -223,6 +235,7 @@
             textBoxAccVoltage.Location = new System.Drawing.Point(90, 0);
             textBoxAccVoltage.Margin = new System.Windows.Forms.Padding(0);
             textBoxAccVoltage.Name = "textBoxAccVoltage";
+            toolTip.SetToolTip(textBoxAccVoltage, resources.GetString("textBoxAccVoltage.ToolTip")); // 260531Cl
             textBoxAccVoltage.ReadOnly = true;
             textBoxAccVoltage.Size = new System.Drawing.Size(83, 24);
             textBoxAccVoltage.TabIndex = 4;
@@ -234,6 +247,7 @@
             label7.Location = new System.Drawing.Point(0, 5);
             label7.Margin = new System.Windows.Forms.Padding(0, 5, 0, 0);
             label7.Name = "label7";
+            toolTip.SetToolTip(label7, resources.GetString("label7.ToolTip")); // 260531Cl
             label7.Size = new System.Drawing.Size(102, 17);
             label7.TabIndex = 2;
             label7.Text = "Lattice volume: ";
@@ -244,6 +258,7 @@
             textBoxLatticeVolume.Location = new System.Drawing.Point(102, 0);
             textBoxLatticeVolume.Margin = new System.Windows.Forms.Padding(0);
             textBoxLatticeVolume.Name = "textBoxLatticeVolume";
+            toolTip.SetToolTip(textBoxLatticeVolume, resources.GetString("textBoxLatticeVolume.ToolTip")); // 260531Cl
             textBoxLatticeVolume.ReadOnly = true;
             textBoxLatticeVolume.Size = new System.Drawing.Size(83, 24);
             textBoxLatticeVolume.TabIndex = 4;
@@ -255,6 +270,7 @@
             label8.Location = new System.Drawing.Point(185, 5);
             label8.Margin = new System.Windows.Forms.Padding(0, 5, 0, 0);
             label8.Name = "label8";
+            toolTip.SetToolTip(label8, resources.GetString("label8.ToolTip")); // 260531Cl
             label8.Size = new System.Drawing.Size(31, 17);
             label8.TabIndex = 2;
             label8.Text = "nm³";
@@ -265,6 +281,7 @@
             label9.Font = new System.Drawing.Font("Times New Roman", 10F);
             label9.Location = new System.Drawing.Point(468, 205);
             label9.Name = "label9";
+            toolTip.SetToolTip(label9, resources.GetString("label9.ToolTip")); // 260531Cl
             label9.Size = new System.Drawing.Size(430, 48);
             label9.TabIndex = 2;
             label9.Text = "Vg or Ug : Crystal potential for elastic scattering.\r\nVg' or Ug': Imaginary  (absorption) potential for thermal diffuse scattering.\r\nΦ: Amplitude of the diffracted wave on the exit surface.";
@@ -276,6 +293,7 @@
             label12.Location = new System.Drawing.Point(222, 5);
             label12.Margin = new System.Windows.Forms.Padding(6, 5, 0, 0);
             label12.Name = "label12";
+            toolTip.SetToolTip(label12, resources.GetString("label12.ToolTip")); // 260531Cl
             label12.Size = new System.Drawing.Size(74, 17);
             label12.TabIndex = 2;
             label12.Text = "Thickness: ";
@@ -287,6 +305,7 @@
             label13.Location = new System.Drawing.Point(379, 5);
             label13.Margin = new System.Windows.Forms.Padding(0, 5, 0, 0);
             label13.Name = "label13";
+            toolTip.SetToolTip(label13, resources.GetString("label13.ToolTip")); // 260531Cl
             label13.Size = new System.Drawing.Size(26, 17);
             label13.TabIndex = 2;
             label13.Text = "nm";
@@ -297,6 +316,7 @@
             textBoxThickness.Location = new System.Drawing.Point(296, 0);
             textBoxThickness.Margin = new System.Windows.Forms.Padding(0);
             textBoxThickness.Name = "textBoxThickness";
+            toolTip.SetToolTip(textBoxThickness, resources.GetString("textBoxThickness.ToolTip")); // 260531Cl
             textBoxThickness.ReadOnly = true;
             textBoxThickness.Size = new System.Drawing.Size(83, 24);
             textBoxThickness.TabIndex = 4;
@@ -354,6 +374,7 @@
             radioButtonUnitEV.Font = new System.Drawing.Font("Times New Roman", 11F);
             radioButtonUnitEV.Location = new System.Drawing.Point(114, 3);
             radioButtonUnitEV.Name = "radioButtonUnitEV";
+            toolTip.SetToolTip(radioButtonUnitEV, resources.GetString("radioButtonUnitEV.ToolTip")); // 260531Cl
             radioButtonUnitEV.Size = new System.Drawing.Size(76, 21);
             radioButtonUnitEV.TabIndex = 9;
             radioButtonUnitEV.TabStop = true;
@@ -367,6 +388,7 @@
             radioButtonUnitNM.Font = new System.Drawing.Font("Times New Roman", 11F);
             radioButtonUnitNM.Location = new System.Drawing.Point(196, 3);
             radioButtonUnitNM.Name = "radioButtonUnitNM";
+            toolTip.SetToolTip(radioButtonUnitNM, resources.GetString("radioButtonUnitNM.ToolTip")); // 260531Cl
             radioButtonUnitNM.Size = new System.Drawing.Size(86, 21);
             radioButtonUnitNM.TabIndex = 9;
             radioButtonUnitNM.Text = "Ug [nm⁻²]";
@@ -379,6 +401,7 @@
             label15.Location = new System.Drawing.Point(3, 5);
             label15.Margin = new System.Windows.Forms.Padding(3, 5, 3, 0);
             label15.Name = "label15";
+            toolTip.SetToolTip(label15, resources.GetString("label15.ToolTip")); // 260531Cl
             label15.Size = new System.Drawing.Size(105, 17);
             label15.TabIndex = 2;
             label15.Text = "Unit of potential:";
@@ -403,6 +426,7 @@
             label14.Location = new System.Drawing.Point(481, 172);
             label14.Margin = new System.Windows.Forms.Padding(3, 5, 3, 0);
             label14.Name = "label14";
+            toolTip.SetToolTip(label14, resources.GetString("label14.ToolTip")); // 260531Cl
             label14.Size = new System.Drawing.Size(344, 16);
             label14.TabIndex = 2;
             label14.Text = "Ug [nm⁻²] = 2 × m₀[kg] / h[eV・s] / h[J・s] × Vg[eV] × 10¹⁸";
@@ -440,6 +464,7 @@
             dataGridView.Margin = new System.Windows.Forms.Padding(0);
             dataGridView.MultiSelect = false;
             dataGridView.Name = "dataGridView";
+            toolTip.SetToolTip(dataGridView, resources.GetString("dataGridView.ToolTip")); // 260531Cl
             dataGridView.ReadOnly = true;
             dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Control;
@@ -642,6 +667,7 @@
             label16.ForeColor = System.Drawing.Color.Red;
             label16.Location = new System.Drawing.Point(414, 2);
             label16.Name = "label16";
+            toolTip.SetToolTip(label16, resources.GetString("label16.ToolTip")); // 260531Cl
             label16.Size = new System.Drawing.Size(569, 19);
             label16.TabIndex = 2;
             label16.Text = "Note 1: Unit of length is \"nm\", not \"Å\".   Note 2: Unit of wavenumber  is \"1/nm\", not \"2π/nm\".";
@@ -676,6 +702,7 @@
             label10.Location = new System.Drawing.Point(6, 5);
             label10.Margin = new System.Windows.Forms.Padding(6, 5, 0, 0);
             label10.Name = "label10";
+            toolTip.SetToolTip(label10, resources.GetString("label10.ToolTip")); // 260531Cl
             label10.Size = new System.Drawing.Size(297, 17);
             label10.TabIndex = 2;
             label10.Text = "Max semiangle of electron beam (CBED mode): ";
@@ -686,6 +713,7 @@
             textBoxSemiangle.Location = new System.Drawing.Point(303, 0);
             textBoxSemiangle.Margin = new System.Windows.Forms.Padding(0);
             textBoxSemiangle.Name = "textBoxSemiangle";
+            toolTip.SetToolTip(textBoxSemiangle, resources.GetString("textBoxSemiangle.ToolTip")); // 260531Cl
             textBoxSemiangle.ReadOnly = true;
             textBoxSemiangle.Size = new System.Drawing.Size(83, 24);
             textBoxSemiangle.TabIndex = 4;
@@ -697,6 +725,7 @@
             label11.Location = new System.Drawing.Point(386, 5);
             label11.Margin = new System.Windows.Forms.Padding(0, 5, 0, 0);
             label11.Name = "label11";
+            toolTip.SetToolTip(label11, resources.GetString("label11.ToolTip")); // 260531Cl
             label11.Size = new System.Drawing.Size(38, 17);
             label11.TabIndex = 2;
             label11.Text = "mrad";
@@ -721,6 +750,7 @@
             checkBoxAutoRowSize.AutoSize = true;
             checkBoxAutoRowSize.Location = new System.Drawing.Point(454, 272);
             checkBoxAutoRowSize.Name = "checkBoxAutoRowSize";
+            toolTip.SetToolTip(checkBoxAutoRowSize, resources.GetString("checkBoxAutoRowSize.ToolTip")); // 260531Cl
             checkBoxAutoRowSize.Size = new System.Drawing.Size(161, 23);
             checkBoxAutoRowSize.TabIndex = 12;
             checkBoxAutoRowSize.Text = "Auto resize row width";
@@ -742,6 +772,7 @@
             numericBoxEffectiveDigit.Minimum = 1D;
             numericBoxEffectiveDigit.MinimumSize = new System.Drawing.Size(1, 20);
             numericBoxEffectiveDigit.Name = "numericBoxEffectiveDigit";
+            toolTip.SetToolTip(numericBoxEffectiveDigit, resources.GetString("numericBoxEffectiveDigit.ToolTip")); // 260531Cl
             numericBoxEffectiveDigit.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
             numericBoxEffectiveDigit.RadianValue = 0.069813170079773182D;
             numericBoxEffectiveDigit.ShowUpDown = true;
@@ -811,6 +842,8 @@
         }
 
         #endregion
+
+        private System.Windows.Forms.ToolTip toolTip; // (260531Ch)
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private Crystallography.Controls.NumericBox numericBoxEffectiveDigit;

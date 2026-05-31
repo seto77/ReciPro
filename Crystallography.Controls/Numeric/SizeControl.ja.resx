@@ -160,4 +160,25 @@
   <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
     <value>243, 25</value>
   </data>
+  <data name="checkBoxKeepAspect.ToolTip" xml:space="preserve">
+    <value>幅と高さのアスペクト比を固定します。一方を変更す
+ると比を保つように他方が自動で追従します。</value>
+  </data>
+  <data name="numericBoxHeight.ToolTip" xml:space="preserve">
+    <value>画像の高さ（ピクセル, px）。アスペクト
+比固定時は幅が自動的に追従します。</value>
+  </data>
+  <data name="numericBoxWidth.ToolTip" xml:space="preserve">
+    <value>画像の幅（ピクセル, px）。アスペクト
+比固定時は高さが自動的に追従します。</value>
+  </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value>画像サイズ（幅 × 高さ, ピクセル単位）。</value>
+  </data>
+  <data name="label2.ToolTip" xml:space="preserve">
+    <value>画像サイズ（幅 × 高さ, ピクセル単位）。</value>
+  </data>
+  <data name="labelHeader.ToolTip" xml:space="preserve">
+    <value>画像サイズ（幅 × 高さ, ピクセル単位）。</value>
+  </data>
 </root>

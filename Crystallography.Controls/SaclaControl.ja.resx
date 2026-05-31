@@ -1,0 +1,92 @@
+﻿<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="numericBoxDistance.ToolTip" xml:space="preserve">
+    <value>第2カメラ長 (試料-検出器間距離) を mm 単位で設定します。</value>
+  </data>
+  <data name="numericBoxFootX.ToolTip" xml:space="preserve">
+    <value>直接ビームが検出器面に当たる足点 (ビーム
+中心) の x 座標をピクセル単位で設定します。</value>
+  </data>
+  <data name="numericBoxFootY.ToolTip" xml:space="preserve">
+    <value>直接ビームが検出器面に当たる足点 (ビーム
+中心) の y 座標をピクセル単位で設定します。</value>
+  </data>
+  <data name="numericBoxPhi.ToolTip" xml:space="preserve">
+    <value>検出器の方位回転角 φ (光軸まわりの面内回転)
+を度単位 (-360〜360) で設定します。</value>
+  </data>
+  <data name="numericBoxPixelHeight.ToolTip" xml:space="preserve">
+    <value>検出器の高さ (縦方向のピクセル数) を設定します。</value>
+  </data>
+  <data name="numericBoxPixelSize.ToolTip" xml:space="preserve">
+    <value>検出器1ピクセルの物理サイズを mm 単位で設定します。</value>
+  </data>
+  <data name="numericBoxPixelWidth.ToolTip" xml:space="preserve">
+    <value>検出器の幅 (横方向のピクセル数) を設定します。</value>
+  </data>
+  <data name="numericBoxTau.ToolTip" xml:space="preserve">
+    <value>検出器面の傾斜角 τ (光軸に対する傾き)
+を度単位 (-90〜90) で設定します。</value>
+  </data>
+  <data name="label3.ToolTip" xml:space="preserve">
+    <value>足点 (ビーム中心): 直接ビームが検出器面に
+当たる位置を x, y ピクセルで指定します。</value>
+  </data>
+</root>

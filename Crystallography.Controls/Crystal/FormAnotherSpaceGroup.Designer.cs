@@ -24,6 +24,10 @@ partial class FormAnotherSpaceGroup
     /// </summary>
     private void InitializeComponent()
     {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormAnotherSpaceGroup)); // 260531Cl
+            components = new System.ComponentModel.Container(); // (260531Ch)
+            toolTip = new System.Windows.Forms.ToolTip(components); // (260531Ch)
+            toolTip.IsBalloon = true; // 260531Cl 追加: バルーン表示に統一
             this.listBox = new System.Windows.Forms.ListBox();
             this.buttonCancel = new System.Windows.Forms.Button();
             this.buttonOK = new System.Windows.Forms.Button();
@@ -41,6 +45,7 @@ partial class FormAnotherSpaceGroup
             this.listBox.ItemHeight = 18;
             this.listBox.Location = new System.Drawing.Point(0, 0);
             this.listBox.Name = "listBox";
+            this.toolTip.SetToolTip(this.listBox, resources.GetString("listBox.ToolTip")); // 260531Cl
             this.listBox.ScrollAlwaysVisible = true;
             this.listBox.Size = new System.Drawing.Size(226, 128);
             this.listBox.TabIndex = 0;
@@ -52,6 +57,7 @@ partial class FormAnotherSpaceGroup
             this.buttonCancel.Location = new System.Drawing.Point(163, 0);
             this.buttonCancel.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
             this.buttonCancel.Name = "buttonCancel";
+            this.toolTip.SetToolTip(this.buttonCancel, resources.GetString("buttonCancel.ToolTip")); // 260531Cl
             this.buttonCancel.Size = new System.Drawing.Size(60, 25);
             this.buttonCancel.TabIndex = 2;
             this.buttonCancel.Text = "Cancel";
@@ -64,6 +70,7 @@ partial class FormAnotherSpaceGroup
             this.buttonOK.Location = new System.Drawing.Point(97, 0);
             this.buttonOK.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
             this.buttonOK.Name = "buttonOK";
+            this.toolTip.SetToolTip(this.buttonOK, resources.GetString("buttonOK.ToolTip")); // 260531Cl
             this.buttonOK.Size = new System.Drawing.Size(60, 25);
             this.buttonOK.TabIndex = 3;
             this.buttonOK.Text = "OK";
@@ -106,6 +113,8 @@ partial class FormAnotherSpaceGroup
     }
 
     #endregion
+
+        private System.Windows.Forms.ToolTip toolTip; // (260531Ch)
 
     private System.Windows.Forms.ListBox listBox;
     private System.Windows.Forms.Button buttonCancel;

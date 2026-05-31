@@ -30,6 +30,8 @@
         {
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormSymmetryInformation));
+            toolTip = new System.Windows.Forms.ToolTip(components); // (260531Ch)
+            toolTip.IsBalloon = true; // 260531Cl 追加: バルーン表示に統一
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             panel4 = new System.Windows.Forms.Panel();
@@ -217,6 +219,7 @@
             buttonCopyElements.Location = new System.Drawing.Point(0, 0);
             buttonCopyElements.Margin = new System.Windows.Forms.Padding(0, 0, 3, 0);
             buttonCopyElements.Name = "buttonCopyElements";
+            toolTip.SetToolTip(buttonCopyElements, resources.GetString("buttonCopyElements.ToolTip")); // 260531Cl
             buttonCopyElements.Size = new System.Drawing.Size(45, 25);
             buttonCopyElements.TabIndex = 0;
             buttonCopyElements.Text = "Copy";
@@ -269,6 +272,7 @@
             buttonCopyPositions.Location = new System.Drawing.Point(0, 0);
             buttonCopyPositions.Margin = new System.Windows.Forms.Padding(0, 0, 10, 0);
             buttonCopyPositions.Name = "buttonCopyPositions";
+            toolTip.SetToolTip(buttonCopyPositions, resources.GetString("buttonCopyPositions.ToolTip")); // 260531Cl
             buttonCopyPositions.Size = new System.Drawing.Size(45, 25);
             buttonCopyPositions.TabIndex = 0;
             buttonCopyPositions.Text = "Copy";
@@ -302,6 +306,7 @@
             numericBoxPositionA.Minimum = -1D;
             numericBoxPositionA.MinimumSize = new System.Drawing.Size(10, 20);
             numericBoxPositionA.Name = "numericBoxPositionA";
+            toolTip.SetToolTip(numericBoxPositionA, resources.GetString("numericBoxPositionA.ToolTip")); // 260531Cl
             numericBoxPositionA.Padding = new System.Windows.Forms.Padding(0, 2, 0, 0);
             numericBoxPositionA.ShowUpDown = true;
             numericBoxPositionA.Size = new System.Drawing.Size(50, 25);
@@ -337,6 +342,7 @@
             numericBoxPositionB.Minimum = -1D;
             numericBoxPositionB.MinimumSize = new System.Drawing.Size(10, 20);
             numericBoxPositionB.Name = "numericBoxPositionB";
+            toolTip.SetToolTip(numericBoxPositionB, resources.GetString("numericBoxPositionB.ToolTip")); // 260531Cl
             numericBoxPositionB.Padding = new System.Windows.Forms.Padding(0, 2, 0, 0);
             numericBoxPositionB.ShowUpDown = true;
             numericBoxPositionB.Size = new System.Drawing.Size(50, 25);
@@ -372,6 +378,7 @@
             numericBoxPositionC.Minimum = -1D;
             numericBoxPositionC.MinimumSize = new System.Drawing.Size(10, 20);
             numericBoxPositionC.Name = "numericBoxPositionC";
+            toolTip.SetToolTip(numericBoxPositionC, resources.GetString("numericBoxPositionC.ToolTip")); // 260531Cl
             numericBoxPositionC.Padding = new System.Windows.Forms.Padding(0, 2, 0, 0);
             numericBoxPositionC.ShowUpDown = true;
             numericBoxPositionC.Size = new System.Drawing.Size(50, 25);
@@ -387,6 +394,7 @@
             radioButtonBmp.Location = new System.Drawing.Point(46, 0);
             radioButtonBmp.Margin = new System.Windows.Forms.Padding(0);
             radioButtonBmp.Name = "radioButtonBmp";
+            toolTip.SetToolTip(radioButtonBmp, resources.GetString("radioButtonBmp.ToolTip")); // 260531Cl
             radioButtonBmp.Size = new System.Drawing.Size(50, 19);
             radioButtonBmp.TabIndex = 1;
             radioButtonBmp.Text = "bmp";
@@ -401,6 +409,7 @@
             radioButtonEmf.Location = new System.Drawing.Point(0, 0);
             radioButtonEmf.Margin = new System.Windows.Forms.Padding(0);
             radioButtonEmf.Name = "radioButtonEmf";
+            toolTip.SetToolTip(radioButtonEmf, resources.GetString("radioButtonEmf.ToolTip")); // 260531Cl
             radioButtonEmf.Size = new System.Drawing.Size(46, 19);
             radioButtonEmf.TabIndex = 1;
             radioButtonEmf.TabStop = true;
@@ -458,6 +467,7 @@
             numericBoxAnglePlanes.MaximumSize = new System.Drawing.Size(1000, 100);
             numericBoxAnglePlanes.MinimumSize = new System.Drawing.Size(10, 20);
             numericBoxAnglePlanes.Name = "numericBoxAnglePlanes";
+            toolTip.SetToolTip(numericBoxAnglePlanes, resources.GetString("numericBoxAnglePlanes.ToolTip")); // 260531Cl
             numericBoxAnglePlanes.ReadOnly = true;
             numericBoxAnglePlanes.Size = new System.Drawing.Size(72, 25);
             numericBoxAnglePlanes.TabIndex = 12;
@@ -469,6 +479,7 @@
             textBoxZoneAxis.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
             textBoxZoneAxis.Location = new System.Drawing.Point(189, 111);
             textBoxZoneAxis.Name = "textBoxZoneAxis";
+            toolTip.SetToolTip(textBoxZoneAxis, resources.GetString("textBoxZoneAxis.ToolTip")); // 260531Cl
             textBoxZoneAxis.ReadOnly = true;
             textBoxZoneAxis.Size = new System.Drawing.Size(72, 23);
             textBoxZoneAxis.TabIndex = 18;
@@ -488,6 +499,7 @@
             numericBoxAngleAxes.MaximumSize = new System.Drawing.Size(1000, 100);
             numericBoxAngleAxes.MinimumSize = new System.Drawing.Size(10, 20);
             numericBoxAngleAxes.Name = "numericBoxAngleAxes";
+            toolTip.SetToolTip(numericBoxAngleAxes, resources.GetString("numericBoxAngleAxes.ToolTip")); // 260531Cl
             numericBoxAngleAxes.ReadOnly = true;
             numericBoxAngleAxes.Size = new System.Drawing.Size(72, 25);
             numericBoxAngleAxes.TabIndex = 17;
@@ -513,6 +525,7 @@
             indexControlPlane2.Location = new System.Drawing.Point(0, 0);
             indexControlPlane2.Margin = new System.Windows.Forms.Padding(0);
             indexControlPlane2.Name = "indexControlPlane2";
+            toolTip.SetToolTip(indexControlPlane2, resources.GetString("indexControlPlane2.ToolTip")); // 260531Cl
             indexControlPlane2.Size = new System.Drawing.Size(128, 41);
             indexControlPlane2.SubScript = "2";
             indexControlPlane2.TabIndex = 14;
@@ -533,6 +546,7 @@
             numericBoxLengthPlane2.MaximumSize = new System.Drawing.Size(1000, 100);
             numericBoxLengthPlane2.MinimumSize = new System.Drawing.Size(10, 20);
             numericBoxLengthPlane2.Name = "numericBoxLengthPlane2";
+            toolTip.SetToolTip(numericBoxLengthPlane2, resources.GetString("numericBoxLengthPlane2.ToolTip")); // 260531Cl
             numericBoxLengthPlane2.ReadOnly = true;
             numericBoxLengthPlane2.Size = new System.Drawing.Size(67, 25);
             numericBoxLengthPlane2.TabIndex = 14;
@@ -544,6 +558,7 @@
             label40.Font = new System.Drawing.Font("Segoe UI", 9F);
             label40.Location = new System.Drawing.Point(10, 114);
             label40.Name = "label40";
+            toolTip.SetToolTip(label40, resources.GetString("label40.ToolTip")); // 260531Cl
             label40.Size = new System.Drawing.Size(176, 16);
             label40.TabIndex = 6;
             label40.Text = "The axis normal to both planes";
@@ -568,6 +583,7 @@
             indexControlAxis2.Margin = new System.Windows.Forms.Padding(0);
             indexControlAxis2.Mode = IndexControl.ModeEnum.Axis;
             indexControlAxis2.Name = "indexControlAxis2";
+            toolTip.SetToolTip(indexControlAxis2, resources.GetString("indexControlAxis2.ToolTip")); // 260531Cl
             indexControlAxis2.Size = new System.Drawing.Size(128, 41);
             indexControlAxis2.SubScript = "2";
             indexControlAxis2.TabIndex = 14;
@@ -588,6 +604,7 @@
             numericBoxLengthAxis2.MaximumSize = new System.Drawing.Size(1000, 100);
             numericBoxLengthAxis2.MinimumSize = new System.Drawing.Size(10, 20);
             numericBoxLengthAxis2.Name = "numericBoxLengthAxis2";
+            toolTip.SetToolTip(numericBoxLengthAxis2, resources.GetString("numericBoxLengthAxis2.ToolTip")); // 260531Cl
             numericBoxLengthAxis2.ReadOnly = true;
             numericBoxLengthAxis2.Size = new System.Drawing.Size(67, 25);
             numericBoxLengthAxis2.TabIndex = 4;
@@ -608,6 +625,7 @@
             numericBoxAnglePlaneAxis1.MaximumSize = new System.Drawing.Size(1000, 100);
             numericBoxAnglePlaneAxis1.MinimumSize = new System.Drawing.Size(10, 20);
             numericBoxAnglePlaneAxis1.Name = "numericBoxAnglePlaneAxis1";
+            toolTip.SetToolTip(numericBoxAnglePlaneAxis1, resources.GetString("numericBoxAnglePlaneAxis1.ToolTip")); // 260531Cl
             numericBoxAnglePlaneAxis1.ReadOnly = true;
             numericBoxAnglePlaneAxis1.Size = new System.Drawing.Size(72, 25);
             numericBoxAnglePlaneAxis1.TabIndex = 15;
@@ -634,6 +652,7 @@
             indexControlAxis1.Margin = new System.Windows.Forms.Padding(0);
             indexControlAxis1.Mode = IndexControl.ModeEnum.Axis;
             indexControlAxis1.Name = "indexControlAxis1";
+            toolTip.SetToolTip(indexControlAxis1, resources.GetString("indexControlAxis1.ToolTip")); // 260531Cl
             indexControlAxis1.Size = new System.Drawing.Size(128, 41);
             indexControlAxis1.SubScript = "1";
             indexControlAxis1.TabIndex = 14;
@@ -654,6 +673,7 @@
             numericBoxLengthAxis1.MaximumSize = new System.Drawing.Size(1000, 100);
             numericBoxLengthAxis1.MinimumSize = new System.Drawing.Size(10, 20);
             numericBoxLengthAxis1.Name = "numericBoxLengthAxis1";
+            toolTip.SetToolTip(numericBoxLengthAxis1, resources.GetString("numericBoxLengthAxis1.ToolTip")); // 260531Cl
             numericBoxLengthAxis1.ReadOnly = true;
             numericBoxLengthAxis1.Size = new System.Drawing.Size(67, 25);
             numericBoxLengthAxis1.TabIndex = 4;
@@ -674,6 +694,7 @@
             numericBoxAnglePlaneAxis2.MaximumSize = new System.Drawing.Size(1000, 100);
             numericBoxAnglePlaneAxis2.MinimumSize = new System.Drawing.Size(10, 20);
             numericBoxAnglePlaneAxis2.Name = "numericBoxAnglePlaneAxis2";
+            toolTip.SetToolTip(numericBoxAnglePlaneAxis2, resources.GetString("numericBoxAnglePlaneAxis2.ToolTip")); // 260531Cl
             numericBoxAnglePlaneAxis2.ReadOnly = true;
             numericBoxAnglePlaneAxis2.Size = new System.Drawing.Size(72, 25);
             numericBoxAnglePlaneAxis2.TabIndex = 16;
@@ -700,6 +721,7 @@
             indexControlPlane1.Location = new System.Drawing.Point(0, 0);
             indexControlPlane1.Margin = new System.Windows.Forms.Padding(0);
             indexControlPlane1.Name = "indexControlPlane1";
+            toolTip.SetToolTip(indexControlPlane1, resources.GetString("indexControlPlane1.ToolTip")); // 260531Cl
             indexControlPlane1.Size = new System.Drawing.Size(128, 41);
             indexControlPlane1.SubScript = "1";
             indexControlPlane1.TabIndex = 14;
@@ -720,6 +742,7 @@
             numericBoxLengthPlane1.MaximumSize = new System.Drawing.Size(1000, 100);
             numericBoxLengthPlane1.MinimumSize = new System.Drawing.Size(10, 20);
             numericBoxLengthPlane1.Name = "numericBoxLengthPlane1";
+            toolTip.SetToolTip(numericBoxLengthPlane1, resources.GetString("numericBoxLengthPlane1.ToolTip")); // 260531Cl
             numericBoxLengthPlane1.ReadOnly = true;
             numericBoxLengthPlane1.Size = new System.Drawing.Size(67, 25);
             numericBoxLengthPlane1.TabIndex = 13;
@@ -731,6 +754,7 @@
             textBoxZonePlane.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
             textBoxZonePlane.Location = new System.Drawing.Point(544, 111);
             textBoxZonePlane.Name = "textBoxZonePlane";
+            toolTip.SetToolTip(textBoxZonePlane, resources.GetString("textBoxZonePlane.ToolTip")); // 260531Cl
             textBoxZonePlane.ReadOnly = true;
             textBoxZonePlane.Size = new System.Drawing.Size(72, 23);
             textBoxZonePlane.TabIndex = 19;
@@ -741,6 +765,7 @@
             label42.Font = new System.Drawing.Font("Segoe UI", 9F);
             label42.Location = new System.Drawing.Point(363, 114);
             label42.Name = "label42";
+            toolTip.SetToolTip(label42, resources.GetString("label42.ToolTip")); // 260531Cl
             label42.Size = new System.Drawing.Size(175, 16);
             label42.TabIndex = 6;
             label42.Text = "The plane normal to both axes";
@@ -785,6 +810,7 @@
             dataGridView1.Location = new System.Drawing.Point(0, 0);
             dataGridView1.MultiSelect = false;
             dataGridView1.Name = "dataGridView1";
+            toolTip.SetToolTip(dataGridView1, resources.GetString("dataGridView1.ToolTip")); // 260531Cl
             dataGridView1.RowHeadersVisible = false;
             dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             dataGridView1.Size = new System.Drawing.Size(673, 141);
@@ -971,6 +997,7 @@
             label49.Font = new System.Drawing.Font("Segoe UI", 9F);
             label49.Location = new System.Drawing.Point(0, 0);
             label49.Name = "label49";
+            toolTip.SetToolTip(label49, resources.GetString("label49.ToolTip")); // 260531Cl
             label49.Padding = new System.Windows.Forms.Padding(0, 0, 0, 6);
             label49.Size = new System.Drawing.Size(213, 21);
             label49.TabIndex = 7;
@@ -1044,6 +1071,7 @@
             label8.Font = new System.Drawing.Font("Segoe UI", 9F);
             label8.Location = new System.Drawing.Point(12, 72);
             label8.Name = "label8";
+            toolTip.SetToolTip(label8, resources.GetString("label8.ToolTip")); // 260531Cl
             label8.Size = new System.Drawing.Size(64, 15);
             label8.TabIndex = 1;
             label8.Text = "SF symbol:";
@@ -1055,6 +1083,7 @@
             label9.Font = new System.Drawing.Font("Segoe UI", 9F);
             label9.Location = new System.Drawing.Point(134, 71);
             label9.Name = "label9";
+            toolTip.SetToolTip(label9, resources.GetString("label9.ToolTip")); // 260531Cl
             label9.Size = new System.Drawing.Size(73, 15);
             label9.TabIndex = 1;
             label9.Text = "Hall symbol:";
@@ -1066,6 +1095,7 @@
             label5.Font = new System.Drawing.Font("Segoe UI", 9F);
             label5.Location = new System.Drawing.Point(12, 20);
             label5.Name = "label5";
+            toolTip.SetToolTip(label5, resources.GetString("label5.ToolTip")); // 260531Cl
             label5.Size = new System.Drawing.Size(110, 15);
             label5.TabIndex = 1;
             label5.Text = "HM symbol (short):";
@@ -1077,6 +1107,7 @@
             label6.Font = new System.Drawing.Font("Segoe UI", 9F);
             label6.Location = new System.Drawing.Point(21, 46);
             label6.Name = "label6";
+            toolTip.SetToolTip(label6, resources.GetString("label6.ToolTip")); // 260531Cl
             label6.Size = new System.Drawing.Size(100, 15);
             label6.TabIndex = 1;
             label6.Text = "HM symbol (full):";
@@ -1099,6 +1130,7 @@
             label.Font = new System.Drawing.Font("Segoe UI", 9F);
             label.Location = new System.Drawing.Point(135, 3);
             label.Name = "label";
+            toolTip.SetToolTip(label, resources.GetString("label.ToolTip")); // 260531Cl
             label.Size = new System.Drawing.Size(87, 15);
             label.TabIndex = 1;
             label.Text = "Crystal System:";
@@ -1134,6 +1166,7 @@
             label10.Font = new System.Drawing.Font("Segoe UI", 9F);
             label10.Location = new System.Drawing.Point(4, 24);
             label10.Name = "label10";
+            toolTip.SetToolTip(label10, resources.GetString("label10.ToolTip")); // 260531Cl
             label10.Size = new System.Drawing.Size(83, 15);
             label10.TabIndex = 1;
             label10.Text = "HM symbol:";
@@ -1145,6 +1178,7 @@
             label11.Font = new System.Drawing.Font("Segoe UI", 9F);
             label11.Location = new System.Drawing.Point(183, 24);
             label11.Name = "label11";
+            toolTip.SetToolTip(label11, resources.GetString("label11.ToolTip")); // 260531Cl
             label11.Size = new System.Drawing.Size(64, 15);
             label11.TabIndex = 1;
             label11.Text = "SF symbol:";
@@ -1187,6 +1221,7 @@
             label4.Font = new System.Drawing.Font("Segoe UI", 9F);
             label4.Location = new System.Drawing.Point(8, 3);
             label4.Name = "label4";
+            toolTip.SetToolTip(label4, resources.GetString("label4.ToolTip")); // 260531Cl
             label4.Size = new System.Drawing.Size(54, 15);
             label4.TabIndex = 1;
             label4.Text = "Number:";
@@ -1239,6 +1274,7 @@
             label16.Location = new System.Drawing.Point(72, 2);
             label16.Margin = new System.Windows.Forms.Padding(15, 2, 0, 0);
             label16.Name = "label16";
+            toolTip.SetToolTip(label16, resources.GetString("label16.ToolTip")); // 260531Cl
             label16.Size = new System.Drawing.Size(55, 15);
             label16.TabIndex = 6;
             label16.Text = "Direction";
@@ -1250,6 +1286,7 @@
             radioButtonDirectionA.Location = new System.Drawing.Point(127, 0);
             radioButtonDirectionA.Margin = new System.Windows.Forms.Padding(0);
             radioButtonDirectionA.Name = "radioButtonDirectionA";
+            toolTip.SetToolTip(radioButtonDirectionA, resources.GetString("radioButtonDirectionA.ToolTip")); // 260531Cl
             radioButtonDirectionA.Size = new System.Drawing.Size(31, 19);
             radioButtonDirectionA.TabIndex = 1;
             radioButtonDirectionA.Text = "a";
@@ -1264,6 +1301,7 @@
             radioButtonDirectionB.Location = new System.Drawing.Point(158, 0);
             radioButtonDirectionB.Margin = new System.Windows.Forms.Padding(0);
             radioButtonDirectionB.Name = "radioButtonDirectionB";
+            toolTip.SetToolTip(radioButtonDirectionB, resources.GetString("radioButtonDirectionB.ToolTip")); // 260531Cl
             radioButtonDirectionB.Size = new System.Drawing.Size(32, 19);
             radioButtonDirectionB.TabIndex = 1;
             radioButtonDirectionB.Text = "b";
@@ -1278,6 +1316,7 @@
             radioButtonDirectionC.Location = new System.Drawing.Point(190, 0);
             radioButtonDirectionC.Margin = new System.Windows.Forms.Padding(0);
             radioButtonDirectionC.Name = "radioButtonDirectionC";
+            toolTip.SetToolTip(radioButtonDirectionC, resources.GetString("radioButtonDirectionC.ToolTip")); // 260531Cl
             radioButtonDirectionC.Size = new System.Drawing.Size(31, 19);
             radioButtonDirectionC.TabIndex = 1;
             radioButtonDirectionC.Text = "c";
@@ -1292,6 +1331,7 @@
             label12.Location = new System.Drawing.Point(236, 2);
             label12.Margin = new System.Windows.Forms.Padding(15, 2, 0, 0);
             label12.Name = "label12";
+            toolTip.SetToolTip(label12, resources.GetString("label12.ToolTip")); // 260531Cl
             label12.Size = new System.Drawing.Size(74, 15);
             label12.TabIndex = 6;
             label12.Text = "Copy format";
@@ -1371,6 +1411,8 @@
         }
 
         #endregion
+
+        private System.Windows.Forms.ToolTip toolTip; // (260531Ch)
         private System.Windows.Forms.TabControl tabControl;
         private System.Windows.Forms.GroupBox groupBoxSpaceGroup;
         private System.Windows.Forms.Label label8;

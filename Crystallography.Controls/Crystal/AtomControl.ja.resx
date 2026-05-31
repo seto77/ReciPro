@@ -98,7 +98,8 @@
     <value>84, 21</value>
   </data>
   <data name="textBoxLabel.ToolTip" xml:space="preserve">
-    <value>ラベル</value>
+    <value>この原子サイトの識別名（例: O1, Fe2）。
+原子一覧や 3D 表示のラベルとして使われます。</value>
   </data>
   <data name="label2.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
@@ -650,16 +651,19 @@
     <value>563, 321</value>
   </data>
   <data name="label1.ToolTip" xml:space="preserve">
-    <value>ラベル</value>
+    <value>この原子サイトの識別名（例: O1, Fe2）。
+原子一覧や3D表示のラベルとして使われます。</value>
   </data>
   <data name="label2.ToolTip" xml:space="preserve">
-    <value>元素</value>
+    <value>この原子サイトの化学元素を選択します。</value>
   </data>
   <data name="numericBoxOcc.ToolTip" xml:space="preserve">
-    <value>サイト占有率</value>
+    <value>サイト占有率。このサイトを当該原子が占め
+る割合（0=空、1=完全占有）を設定します。</value>
   </data>
   <data name="numericBoxOcc.ToolTip1" xml:space="preserve">
-    <value>サイト占有率</value>
+    <value>サイト占有率。このサイトを当該原子が占め
+る割合（0=空、1=完全占有）を設定します。</value>
   </data>
   <data name="numericBoxZ.ToolTip" xml:space="preserve">
     <value>c軸の分率座標。分数形式（例: 3/4）も入力可能です。</value>
@@ -671,20 +675,25 @@
     <value>a軸の分率座標。分数形式（例: 3/4）も入力可能です。</value>
   </data>
   <data name="radioButtonDebyeWallerTypeU.ToolTip" xml:space="preserve">
-    <value>U: 平均原子変位パラメータ</value>
+    <value>原子変位（温度）パラメータを U 表記で扱い
+ます。U は熱振動による平均二乗原子変位
+（Å²）で、B = 8π²×U の関係があります。</value>
   </data>
   <data name="radioButtonDebyeWallerTypeB.ToolTip" xml:space="preserve">
-    <value>B, 変位パラメータの別形式。
-B = 8 π² × U。</value>
+    <value>原子変位（温度）パラメータを B 表記で扱います。B =
+8π²×U で、値が大きいほど熱振動が大きいことを表します。</value>
   </data>
   <data name="tabPageDebyeWaller.ToolTip" xml:space="preserve">
     <value>デバイ・ワラー因子の設定タブ</value>
   </data>
   <data name="comboBoxScatteringFactorElectron.ToolTip" xml:space="preserve">
-    <value>価数を選択</value>
+    <value>この原子の電子線回折・像シミュレーションに
+用いる電子散乱因子（イオンの荷電状態と
+パラメータ化、例「Fe2+: HF」）を選択します。</value>
   </data>
   <data name="comboBoxScatteringFactorXray.ToolTip" xml:space="preserve">
-    <value>価数を選択</value>
+    <value>この原子のX線回折計算に用いるX線散乱因子（イオンの
+荷電状態とパラメータ化、例「Fe2+」）を選択します。</value>
   </data>
   <data name="numericBoxAtomRadius.ToolTip" xml:space="preserve">
     <value>描画する球の半径</value>
@@ -693,7 +702,9 @@ B = 8 π² × U。</value>
     <value>描画する球の半径</value>
   </data>
   <data name="buttonApplyToSameElement.ToolTip" xml:space="preserve">
-    <value>同じ元素の原子に外観プロパティを適用</value>
+    <value>現在の設定（Appearance タブでは外観、
+Debye–Waller タブでは原子変位パラメータ）
+を、同じ元素のすべての原子にコピーします。</value>
   </data>
   <data name="buttonAddAtom.ToolTip" xml:space="preserve">
     <value>下の原子を上のリストに追加</value>
@@ -702,7 +713,9 @@ B = 8 π² × U。</value>
     <value>選択された原子を下の原子で置換</value>
   </data>
   <data name="buttonApplyToAllElements.ToolTip" xml:space="preserve">
-    <value>すべての元素に適用</value>
+    <value>現在のデバイ・ワーラー（原子変位）
+パラメータを、リスト中のすべての原子に
+適用します（Debye–Waller タブで使用）。</value>
   </data>
   <data name="buttonAtomUp.ToolTip" xml:space="preserve">
     <value>選択された原子を上に移動</value>
@@ -712,5 +725,256 @@ B = 8 π² × U。</value>
   </data>
   <data name="buttonDeleteAtom.ToolTip" xml:space="preserve">
     <value>選択された原子を削除</value>
+  </data>
+  <data name="buttonOriginShift1.ToolTip" xml:space="preserve">
+    <value>全原子の分率座標に (⅛, ⅛, ⅛) を加えて原点を
+シフトします（符号は +/- ボタンで指定）。
+原点の取り方が異なる設定間の変換に使います。</value>
+  </data>
+  <data name="buttonOriginShift2.ToolTip" xml:space="preserve">
+    <value>全原子の分率座標に (¼, ¼, ¼) を加えて原点を
+シフトします（符号は +/- ボタンで指定）。</value>
+  </data>
+  <data name="buttonOriginShift3.ToolTip" xml:space="preserve">
+    <value>全原子の分率座標に (0, ¼, ⅛) を加えて原点を
+シフトします（符号は +/- ボタンで指定）。</value>
+  </data>
+  <data name="buttonOriginShift4.ToolTip" xml:space="preserve">
+    <value>全原子の分率座標に (¼, 0, ¼) を加えて原点を
+シフトします（符号は +/- ボタンで指定）。</value>
+  </data>
+  <data name="buttonOriginShift5.ToolTip" xml:space="preserve">
+    <value>全原子の分率座標に (0, ¼, ¼) を加えて原点を
+シフトします（符号は +/- ボタンで指定）。</value>
+  </data>
+  <data name="buttonOriginShift6.ToolTip" xml:space="preserve">
+    <value>全原子の分率座標に (¼, ¼, 0) を加えて原点を
+シフトします（符号は +/- ボタンで指定）。</value>
+  </data>
+  <data name="buttonOriginShift7.ToolTip" xml:space="preserve">
+    <value>全原子の分率座標に (¼, -¼, 0) を加えて原点を
+シフトします（符号は +/- ボタンで指定）。</value>
+  </data>
+  <data name="buttonOriginShift8.ToolTip" xml:space="preserve">
+    <value>全原子の分率座標に (¼, -¼, ¼) を加えて原点を
+シフトします（符号は +/- ボタンで指定）。</value>
+  </data>
+  <data name="buttonOriginShift9.ToolTip" xml:space="preserve">
+    <value>全原子の分率座標に (0, ¼, -⅛) を加えて原点を
+シフトします（符号は +/- ボタンで指定）。</value>
+  </data>
+  <data name="checkBoxShowLabel.ToolTip" xml:space="preserve">
+    <value>3D構造表示で、この原子の球の横にラベル
+文字列を表示するかどうかを切り替えます。</value>
+  </data>
+  <data name="colorControlAtomColor.ToolTip" xml:space="preserve">
+    <value>クリックして、3D構造表示でのこの原子球の表示色を選択します。</value>
+  </data>
+  <data name="dataGridView.ToolTip" xml:space="preserve">
+    <value>結晶中の全原子サイトの一覧。行を選ぶと
+下の編集欄に読み込まれ、チェックボックス
+で3D表示の表示/非表示を切り替えます。</value>
+  </data>
+  <data name="numericBoxAlpha.ToolTip" xml:space="preserve">
+    <value>原子球の不透明度（アルファ値）。0（完全に
+透明）〜1（不透明）で指定します。</value>
+  </data>
+  <data name="numericBoxAmbient.ToolTip" xml:space="preserve">
+    <value>原子球の環境光反射係数（0〜1）。光源の向きに
+依らず一様に当たる下地照明の強さを設定します。</value>
+  </data>
+  <data name="numericBoxDiffusion.ToolTip" xml:space="preserve">
+    <value>原子球の拡散反射係数（0〜1）。光源の向きに応じて散乱す
+るマットな反射（明るい面の明るさ）を設定します。</value>
+  </data>
+  <data name="numericBoxEmission.ToolTip" xml:space="preserve">
+    <value>原子球の自己発光係数（0〜1）。光源に依らず
+球自体が発光して見える強さを設定します。</value>
+  </data>
+  <data name="numericBoxOccerr.ToolTip" xml:space="preserve">
+    <value>サイト占有率の標準不確かさ（±誤差）を設定します。</value>
+  </data>
+  <data name="numericBoxShininess.ToolTip" xml:space="preserve">
+    <value>原子球の鏡面ハイライトの鋭さ（指数、0〜20）。
+値が大きいほどハイライトが小さく鋭くなります。</value>
+  </data>
+  <data name="numericBoxSpecular.ToolTip" xml:space="preserve">
+    <value>原子球の鏡面反射係数（0〜1）。表面の光沢ハイライト
+の強さを設定します（Shininess と併用）。</value>
+  </data>
+  <data name="numericBoxXerr.ToolTip" xml:space="preserve">
+    <value>a軸分率座標の標準不確かさ（±誤差）を設定します。</value>
+  </data>
+  <data name="numericBoxYerr.ToolTip" xml:space="preserve">
+    <value>b軸分率座標の標準不確かさ（±誤差）を設定します。</value>
+  </data>
+  <data name="numericBoxZerr.ToolTip" xml:space="preserve">
+    <value>c軸分率座標の標準不確かさ（±誤差）を設定します。</value>
+  </data>
+  <data name="radioButtonOriginShiftMinus.ToolTip" xml:space="preserve">
+    <value>原点シフトボタン押下時に、選んだシフトベクトル
+を引きます（負方向の原点シフト）。</value>
+  </data>
+  <data name="radioButtonOriginShiftPlus.ToolTip" xml:space="preserve">
+    <value>原点シフトボタン押下時に、選んだシフトベクトル
+を加えます（正方向の原点シフト）。</value>
+  </data>
+  <data name="radioButtonAnisotropy.ToolTip" xml:space="preserve">
+    <value>異方性変位モデルを使用します（方向依存の
+熱振動を 6 成分テンソル B11…B23 で記述）。</value>
+  </data>
+  <data name="radioButtonIsotoropy.ToolTip" xml:space="preserve">
+    <value>等方性変位モデルを使用します（1 つの
+値で全方向に等しい熱振動を表現）。</value>
+  </data>
+  <data name="labelDimension.ToolTip" xml:space="preserve">
+    <value>現在の変位パラメータの単位を示します：U（および
+等方性 B）は Å²、異方性 B は無次元（None）です。</value>
+  </data>
+  <data name="numericBoxB11.ToolTip" xml:space="preserve">
+    <value>異方性原子変位パラメータの 11 成分（Å²）。原子の
+方向依存の熱振動の大きさを表します。表記設定によ
+り B11 または U11 として表示されます。</value>
+  </data>
+  <data name="numericBoxB11err.ToolTip" xml:space="preserve">
+    <value>異方性変位パラメータ 11 成分の標準偏差（誤差, Å²）です。</value>
+  </data>
+  <data name="numericBoxB12.ToolTip" xml:space="preserve">
+    <value>異方性原子変位パラメータの 12 成分（Å²）。
+方向依存の熱振動を表します。表記設定によ
+り B12 または U12 として表示されます。</value>
+  </data>
+  <data name="numericBoxB12err.ToolTip" xml:space="preserve">
+    <value>異方性変位パラメータ 12 成分の標準偏差（誤差, Å²）です。</value>
+  </data>
+  <data name="numericBoxB13.ToolTip" xml:space="preserve">
+    <value>異方性原子変位パラメータの 13 成分（Å²）。
+方向依存の熱振動を表します。表記設定によ
+り B13 または U13 として表示されます。</value>
+  </data>
+  <data name="numericBoxB13err.ToolTip" xml:space="preserve">
+    <value>異方性変位パラメータ 13 成分の標準偏差（誤差, Å²）です。</value>
+  </data>
+  <data name="numericBoxB22.ToolTip" xml:space="preserve">
+    <value>異方性原子変位パラメータの 22 成分（Å²）。
+方向依存の熱振動を表します。表記設定によ
+り B22 または U22 として表示されます。</value>
+  </data>
+  <data name="numericBoxB22err.ToolTip" xml:space="preserve">
+    <value>異方性変位パラメータ 22 成分の標準偏差（誤差, Å²）です。</value>
+  </data>
+  <data name="numericBoxB23.ToolTip" xml:space="preserve">
+    <value>異方性原子変位パラメータの 23 成分（Å²）。
+方向依存の熱振動を表します。表記設定によ
+り B23 または U23 として表示されます。</value>
+  </data>
+  <data name="numericBoxB23err.ToolTip" xml:space="preserve">
+    <value>異方性変位パラメータ 23 成分の標準偏差（誤差, Å²）です。</value>
+  </data>
+  <data name="numericBoxB33.ToolTip" xml:space="preserve">
+    <value>異方性原子変位パラメータの 33 成分（Å²）。
+方向依存の熱振動を表します。表記設定によ
+り B33 または U33 として表示されます。</value>
+  </data>
+  <data name="numericBoxB33err.ToolTip" xml:space="preserve">
+    <value>異方性変位パラメータ 33 成分の標準偏差（誤差, Å²）です。</value>
+  </data>
+  <data name="numericBoxBiso.ToolTip" xml:space="preserve">
+    <value>等方性原子変位パラメータ Biso/Uiso（Å²）。全方向に
+等しい熱振動の大きさを表します。表記設定により
+Biso または Uiso として表示されます。</value>
+  </data>
+  <data name="numericBoxBisoerr.ToolTip" xml:space="preserve">
+    <value>等方性変位パラメータ Biso/Uiso の標準偏差（誤差, Å²）です。</value>
+  </data>
+  <data name="checkBoxDetailAtomicPositionError.ToolTip" xml:space="preserve">
+    <value>原子座標と占有率の誤差（標準偏差）入
+力欄の表示／非表示を切り替えます。</value>
+  </data>
+  <data name="buttonOriginShiftCustom.ToolTip" xml:space="preserve">
+    <value>下に入力した任意の (x, y, z) 分数座標だけ全原子の
+座標を平行移動し、対称等価位置を再生成します。</value>
+  </data>
+  <data name="numericBoxOriginShiftX.ToolTip" xml:space="preserve">
+    <value>原点シフトの a 軸方向 (x) 成分（分数座標、範囲
+-1〜1）。「Apply custom shift」で全原子に適用されます。</value>
+  </data>
+  <data name="numericBoxOriginShiftY.ToolTip" xml:space="preserve">
+    <value>原点シフトの b 軸方向 (y) 成分（分数座標、範囲
+-1〜1）。「Apply custom shift」で全原子に適用されます。</value>
+  </data>
+  <data name="numericBoxOriginShiftZ.ToolTip" xml:space="preserve">
+    <value>原点シフトの c 軸方向 (z) 成分（分数座標、範囲
+-1〜1）。「Apply custom shift」で全原子に適用されます。</value>
+  </data>
+  <data name="buttonEditIsotopeAbundance.ToolTip" xml:space="preserve">
+    <value>中性子散乱長の計算に用いる同位体存在度を
+編集するダイアログを開きます（カスタム
+組成を選んだ場合のみ有効）。</value>
+  </data>
+  <data name="checkBoxDetailsDebyeWallerError.ToolTip" xml:space="preserve">
+    <value>Debye–Waller 温度因子(熱振動による回折強度の
+減衰を表す変位パラメータ Biso/Uiso・異方性
+Bij/Uij)の誤差(標準偏差)入力欄を表示します。</value>
+  </data>
+  <data name="comboBoxNeutron.ToolTip" xml:space="preserve">
+    <value>中性子の干渉性散乱長を、天然同位体存在比で求め
+るか任意の同位体組成で求めるかを選択します。
+『Custom isotope abundance』を選ぶと編集ボタン
+が有効になり、各同位体の割合を指定でき、
+中性子の構造因子計算に反映されます。</value>
+  </data>
+  <data name="label10.ToolTip" xml:space="preserve">
+    <value>原子球の環境光反射係数（0〜1）。光源の向きに
+依らず一様に当たる下地照明の強さを設定します。</value>
+  </data>
+  <data name="label11.ToolTip" xml:space="preserve">
+    <value>原子球の拡散反射係数（0〜1）。光源の向きに応じて散乱す
+るマットな反射（明るい面の明るさ）を設定します。</value>
+  </data>
+  <data name="label35.ToolTip" xml:space="preserve">
+    <value>原子球の自己発光係数（0〜1）。光源に依らず
+球自体が発光して見える強さを設定します。</value>
+  </data>
+  <data name="label36.ToolTip" xml:space="preserve">
+    <value>原子球の鏡面ハイライトの鋭さ（指数、0〜20）。
+値が大きいほどハイライトが小さく鋭くなります。</value>
+  </data>
+  <data name="label37.ToolTip" xml:space="preserve">
+    <value>原子球の不透明度（アルファ値）。0（完全に
+透明）〜1（不透明）で指定します。</value>
+  </data>
+  <data name="label38.ToolTip" xml:space="preserve">
+    <value>原子球の鏡面反射係数（0〜1）。表面の光沢ハイライト
+の強さを設定します（Shininess と併用）。</value>
+  </data>
+  <data name="label13.ToolTip" xml:space="preserve">
+    <value>原子変位モデルを選びます：等方性（1 つの値）か
+異方性（方向依存の熱振動を表す 6 成分テンソル）か。</value>
+  </data>
+  <data name="label3.ToolTip" xml:space="preserve">
+    <value>原子変位（温度）パラメータの表記を選び
+ます：B か U（B = 8π²×U の関係）。</value>
+  </data>
+  <data name="label14.ToolTip" xml:space="preserve">
+    <value>現在の表記における変位パラメータの次元（単位）。
+U（および等方性 B）は Å²、異方性 B は無次元です。</value>
+  </data>
+  <data name="label7.ToolTip" xml:space="preserve">
+    <value>全原子に適用する分数座標の
+平行移動量 (x, y, z) を入力します。</value>
+  </data>
+  <data name="label4.ToolTip" xml:space="preserve">
+    <value>この原子の電子線回折・像シミュレーションに
+用いる電子散乱因子（イオンの荷電状態と
+パラメータ化、例「Fe2+: HF」）を選択します。</value>
+  </data>
+  <data name="label5.ToolTip" xml:space="preserve">
+    <value>この原子のX線回折計算に用いるX線散乱因子（イオンの
+荷電状態とパラメータ化、例「Fe2+」）を選択します。</value>
+  </data>
+  <data name="label6.ToolTip" xml:space="preserve">
+    <value>中性子散乱長に天然（標準）の同位体存在度を使う
+か、カスタムの同位体組成を使うかを選びます。</value>
   </data>
 </root>

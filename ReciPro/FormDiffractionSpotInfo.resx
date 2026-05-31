@@ -1609,4 +1609,148 @@
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>136</value>
   </metadata>
+  <data name="buttonCopyToClipboard.ToolTip" xml:space="preserve">
+    <value>Copy the entire reflection table (visible
+columns, tab-separated) to the clipboard
+for pasting into Excel or a text editor.</value>
+  </data>
+  <data name="checkBoxAutoRowSize.ToolTip" xml:space="preserve">
+    <value>When checked, automatically fit each
+column's width to its displayed contents.
+Disable for faster scrolling on large tables.</value>
+  </data>
+  <data name="dataGridView.ToolTip" xml:space="preserve">
+    <value>Per-reflection results of the dynamical
+(Bethe-method) diffraction calculation:
+indices hkl, d-spacing, reciprocal vector g,
+crystal potential Ug/Vg, excitation error Sg
+(distance of the reciprocal point from the
+Ewald sphere), and diffracted-wave amplitude Φ.</value>
+  </data>
+  <data name="label14.ToolTip" xml:space="preserve">
+    <value>Conversion between the two potential
+units: Ug [nm⁻²] = 2·m₀/h² · Vg [eV] ×
+10¹⁸. Selected by the radio buttons above.</value>
+  </data>
+  <data name="label16.ToolTip" xml:space="preserve">
+    <value>Unit conventions for this table: lengths
+are in nanometres (nm), not Ångströms;
+wavenumbers are 1/nm, not 2π/nm.</value>
+  </data>
+  <data name="label9.ToolTip" xml:space="preserve">
+    <value>Legend for the table columns: Vg/Ug = crystal
+potential for elastic scattering; V'g/U'g = imaginary
+(absorption) potential for thermal diffuse scattering;
+Φ = diffracted-wave amplitude at the exit surface.</value>
+  </data>
+  <data name="numericBoxEffectiveDigit.ToolTip" xml:space="preserve">
+    <value>Number of significant digits (1-16) used to
+display the table cells. Affects display only;
+the underlying computed values are unchanged.</value>
+  </data>
+  <data name="radioButtonUnitEV.ToolTip" xml:space="preserve">
+    <value>Show the crystal-potential columns as Vg,
+the Fourier potential in energy units (eV).
+Switches the Ug/U'g headers to Vg/V'g.</value>
+  </data>
+  <data name="radioButtonUnitNM.ToolTip" xml:space="preserve">
+    <value>Show the crystal-potential columns as Ug, the Fourier
+potential coefficient in reciprocal-length-squared
+units (nm⁻²) used in dynamical calculations. Switches
+the Vg/V'g headers to Ug/U'g.</value>
+  </data>
+  <data name="textBoxAccVoltage.ToolTip" xml:space="preserve">
+    <value>Accelerating voltage of the electron beam, in
+kilovolts (kV). Read-only; set in the parent simulator.</value>
+  </data>
+  <data name="textBoxBeta.ToolTip" xml:space="preserve">
+    <value>Relativistic velocity ratio β = v/c of
+the electrons (dimensionless), derived
+from the accelerating voltage. Read-only.</value>
+  </data>
+  <data name="textBoxGamma.ToolTip" xml:space="preserve">
+    <value>Relativistic mass factor γ = m/m₀ = 1 +
+e₀E/m₀c² (dimensionless), derived from
+the accelerating voltage. Read-only.</value>
+  </data>
+  <data name="textBoxLatticeVolume.ToolTip" xml:space="preserve">
+    <value>Volume of the crystal unit cell, in
+cubic nanometres (nm³). Read-only.</value>
+  </data>
+  <data name="textBoxSemiangle.ToolTip" xml:space="preserve">
+    <value>Maximum convergence semi-angle of the electron beam
+in CBED (Convergent-Beam Electron Diffraction)
+mode, in milliradians (mrad). Read-only.</value>
+  </data>
+  <data name="textBoxThickness.ToolTip" xml:space="preserve">
+    <value>Specimen thickness used in the dynamical
+calculation, in nanometres (nm). The diffracted
+amplitude Φ depends on this thickness. Read-only.</value>
+  </data>
+  <data name="textBoxWaveLength.ToolTip" xml:space="preserve">
+    <value>Relativistic electron wavelength (=
+1/k_vac), in nanometres (nm), computed
+from the accelerating voltage. Read-only.</value>
+  </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value>Relativistic electron wavelength (=
+1/k_vac), in nanometres (nm), computed
+from the accelerating voltage. Read-only.</value>
+  </data>
+  <data name="label10.ToolTip" xml:space="preserve">
+    <value>Maximum convergence semi-angle of the electron beam
+in CBED (Convergent-Beam Electron Diffraction)
+mode, in milliradians (mrad). Read-only.</value>
+  </data>
+  <data name="label11.ToolTip" xml:space="preserve">
+    <value>Maximum convergence semi-angle of the electron beam
+in CBED (Convergent-Beam Electron Diffraction)
+mode, in milliradians (mrad). Read-only.</value>
+  </data>
+  <data name="label12.ToolTip" xml:space="preserve">
+    <value>Specimen thickness used in the dynamical
+calculation, in nanometres (nm). The diffracted
+amplitude Φ depends on this thickness. Read-only.</value>
+  </data>
+  <data name="label13.ToolTip" xml:space="preserve">
+    <value>Specimen thickness used in the dynamical
+calculation, in nanometres (nm). The diffracted
+amplitude Φ depends on this thickness. Read-only.</value>
+  </data>
+  <data name="label15.ToolTip" xml:space="preserve">
+    <value>Choose the unit used to display the
+crystal-potential columns: Vg in energy units
+(eV) or Ug in reciprocal-length-squared (nm⁻²).</value>
+  </data>
+  <data name="label2.ToolTip" xml:space="preserve">
+    <value>Relativistic mass factor γ = m/m₀ = 1 +
+e₀E/m₀c² (dimensionless), derived from
+the accelerating voltage. Read-only.</value>
+  </data>
+  <data name="label3.ToolTip" xml:space="preserve">
+    <value>Relativistic electron wavelength (=
+1/k_vac), in nanometres (nm), computed
+from the accelerating voltage. Read-only.</value>
+  </data>
+  <data name="label4.ToolTip" xml:space="preserve">
+    <value>Relativistic velocity ratio β = v/c of
+the electrons (dimensionless), derived
+from the accelerating voltage. Read-only.</value>
+  </data>
+  <data name="label5.ToolTip" xml:space="preserve">
+    <value>Accelerating voltage of the electron beam, in
+kilovolts (kV). Read-only; set in the parent simulator.</value>
+  </data>
+  <data name="label6.ToolTip" xml:space="preserve">
+    <value>Accelerating voltage of the electron beam, in
+kilovolts (kV). Read-only; set in the parent simulator.</value>
+  </data>
+  <data name="label7.ToolTip" xml:space="preserve">
+    <value>Volume of the crystal unit cell, in
+cubic nanometres (nm³). Read-only.</value>
+  </data>
+  <data name="label8.ToolTip" xml:space="preserve">
+    <value>Volume of the crystal unit cell, in
+cubic nanometres (nm³). Read-only.</value>
+  </data>
 </root>

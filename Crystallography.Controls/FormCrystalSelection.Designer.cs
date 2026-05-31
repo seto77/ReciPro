@@ -25,6 +25,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            this.toolTip = new System.Windows.Forms.ToolTip(this.components); // (260531Ch)
+            this.toolTip.IsBalloon = true; // 260531Cl 追加: バルーン表示に統一
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormCrystalSelection)); // 260531Cl
             this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
             this.buttonCheckAll = new System.Windows.Forms.Button();
             this.buttonUnchekAll = new System.Windows.Forms.Button();
@@ -49,6 +52,7 @@
             this.checkedListBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.checkedListBox1.MultiColumn = true;
             this.checkedListBox1.Name = "checkedListBox1";
+            this.toolTip.SetToolTip(this.checkedListBox1, resources.GetString("checkedListBox1.ToolTip")); // 260531Cl
             this.checkedListBox1.Size = new System.Drawing.Size(458, 193);
             this.checkedListBox1.TabIndex = 0;
             this.checkedListBox1.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.checkedListBox1_ItemCheck);
@@ -58,6 +62,7 @@
             // 
             this.buttonCheckAll.Location = new System.Drawing.Point(0, 0);
             this.buttonCheckAll.Name = "buttonCheckAll";
+            this.toolTip.SetToolTip(this.buttonCheckAll, resources.GetString("buttonCheckAll.ToolTip")); // 260531Cl
             this.buttonCheckAll.Size = new System.Drawing.Size(120, 23);
             this.buttonCheckAll.TabIndex = 2;
             this.buttonCheckAll.Text = "Check All Items";
@@ -68,6 +73,7 @@
             // 
             this.buttonUnchekAll.Location = new System.Drawing.Point(126, 0);
             this.buttonUnchekAll.Name = "buttonUnchekAll";
+            this.toolTip.SetToolTip(this.buttonUnchekAll, resources.GetString("buttonUnchekAll.ToolTip")); // 260531Cl
             this.buttonUnchekAll.Size = new System.Drawing.Size(120, 23);
             this.buttonUnchekAll.TabIndex = 2;
             this.buttonUnchekAll.Text = "Uncheck All Items";
@@ -79,6 +85,7 @@
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label1.Location = new System.Drawing.Point(6, 218);
             this.label1.Name = "label1";
+            this.toolTip.SetToolTip(this.label1, resources.GetString("label1.ToolTip")); // 260531Cl
             this.label1.Size = new System.Drawing.Size(143, 31);
             this.label1.TabIndex = 3;
             this.label1.Text = "The checked items are being loaded / saved.";
@@ -92,6 +99,7 @@
             this.buttonLoadOrSave.ForeColor = System.Drawing.Color.White;
             this.buttonLoadOrSave.Location = new System.Drawing.Point(270, 221);
             this.buttonLoadOrSave.Name = "buttonLoadOrSave";
+            this.toolTip.SetToolTip(this.buttonLoadOrSave, resources.GetString("buttonLoadOrSave.ToolTip")); // 260531Cl
             this.buttonLoadOrSave.Size = new System.Drawing.Size(90, 28);
             this.buttonLoadOrSave.TabIndex = 2;
             this.buttonLoadOrSave.Text = "Load";
@@ -106,6 +114,7 @@
             this.button1.ForeColor = System.Drawing.Color.White;
             this.button1.Location = new System.Drawing.Point(360, 221);
             this.button1.Name = "button1";
+            this.toolTip.SetToolTip(this.button1, resources.GetString("button1.ToolTip")); // 260531Cl
             this.button1.Size = new System.Drawing.Size(90, 28);
             this.button1.TabIndex = 2;
             this.button1.Text = "Cancel";
@@ -119,6 +128,7 @@
             this.buttonExpand.ForeColor = System.Drawing.Color.Moccasin;
             this.buttonExpand.Location = new System.Drawing.Point(460, 0);
             this.buttonExpand.Name = "buttonExpand";
+            this.toolTip.SetToolTip(this.buttonExpand, resources.GetString("buttonExpand.ToolTip")); // 260531Cl
             this.buttonExpand.Size = new System.Drawing.Size(22, 252);
             this.buttonExpand.TabIndex = 4;
             this.buttonExpand.Text = ">>>>>>>>>>>>>>";
@@ -195,6 +205,8 @@
         }
 
         #endregion
+
+        private System.Windows.Forms.ToolTip toolTip; // (260531Ch)
 
         private CrystalControl crystalControl1;
         private System.Windows.Forms.Button buttonCheckAll;

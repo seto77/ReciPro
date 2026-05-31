@@ -24,6 +24,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container(); // (260531Ch)
+            toolTip = new System.Windows.Forms.ToolTip(components); // (260531Ch)
+            toolTip.IsBalloon = true; // 260531Cl 追加: バルーン表示に統一
             captureExtender.SetCapture(this, true); // 260521Cl 追加: GUI監査キャプチャ対象 (フォーム全体)
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormResolution));
             this.buttonOK = new System.Windows.Forms.Button();
@@ -77,6 +80,7 @@
             0,
             0});
             this.numericUpDownWidth.Name = "numericUpDownWidth";
+            this.toolTip.SetToolTip(this.numericUpDownWidth, resources.GetString("numericUpDownWidth.ToolTip")); // 260531Cl
             this.numericUpDownWidth.Size = new System.Drawing.Size(47, 21);
             this.numericUpDownWidth.TabIndex = 1;
             this.numericUpDownWidth.Value = new decimal(new int[] {
@@ -101,6 +105,7 @@
             0,
             0});
             this.numericUpDownHeight.Name = "numericUpDownHeight";
+            this.toolTip.SetToolTip(this.numericUpDownHeight, resources.GetString("numericUpDownHeight.ToolTip")); // 260531Cl
             this.numericUpDownHeight.Size = new System.Drawing.Size(47, 21);
             this.numericUpDownHeight.TabIndex = 1;
             this.numericUpDownHeight.Value = new decimal(new int[] {
@@ -116,6 +121,7 @@
             this.label1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(8, 24);
             this.label1.Name = "label1";
+            this.toolTip.SetToolTip(this.label1, resources.GetString("label1.ToolTip")); // 260531Cl
             this.label1.Size = new System.Drawing.Size(38, 15);
             this.label1.TabIndex = 2;
             this.label1.Text = "Width";
@@ -126,6 +132,7 @@
             this.label2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(134, 24);
             this.label2.Name = "label2";
+            this.toolTip.SetToolTip(this.label2, resources.GetString("label2.ToolTip")); // 260531Cl
             this.label2.Size = new System.Drawing.Size(43, 15);
             this.label2.TabIndex = 2;
             this.label2.Text = "Height";
@@ -136,6 +143,7 @@
             this.label4.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(226, 24);
             this.label4.Name = "label4";
+            this.toolTip.SetToolTip(this.label4, resources.GetString("label4.ToolTip")); // 260531Cl
             this.label4.Size = new System.Drawing.Size(32, 15);
             this.label4.TabIndex = 2;
             this.label4.Text = "pixel";
@@ -146,6 +154,7 @@
             this.label3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(96, 24);
             this.label3.Name = "label3";
+            this.toolTip.SetToolTip(this.label3, resources.GetString("label3.ToolTip")); // 260531Cl
             this.label3.Size = new System.Drawing.Size(32, 15);
             this.label3.TabIndex = 2;
             this.label3.Text = "pixel";
@@ -168,6 +177,7 @@
             this.checkBoxKeepAspect.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.checkBoxKeepAspect.Location = new System.Drawing.Point(0, 52);
             this.checkBoxKeepAspect.Name = "checkBoxKeepAspect";
+            this.toolTip.SetToolTip(this.checkBoxKeepAspect, resources.GetString("checkBoxKeepAspect.ToolTip")); // 260531Cl
             this.checkBoxKeepAspect.Size = new System.Drawing.Size(126, 19);
             this.checkBoxKeepAspect.TabIndex = 3;
             this.checkBoxKeepAspect.Text = "Keep Aspect Ratio";
@@ -204,6 +214,8 @@
         }
 
         #endregion
+
+        private System.Windows.Forms.ToolTip toolTip; // (260531Ch)
 
         private System.Windows.Forms.Button buttonOK;
         private System.Windows.Forms.Button buttonCancel;

@@ -1,0 +1,203 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!--
+    Microsoft ResX Schema
+
+    Version 2.0
+
+    The primary goals of this format is to allow a simple XML format
+    that is mostly human readable. The generation and parsing of the
+    various data types are done through the TypeConverter classes
+    associated with the data types.
+
+    Example:
+
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+
+    There are any number of "resheader" rows that contain simple
+    name/value pairs.
+
+    Each data row contains a name, and value. The row also contains a
+    type or mimetype. Type corresponds to a .NET class that support
+    text/value conversion through the TypeConverter architecture.
+    Classes that don't support this are serialized and stored with the
+    mimetype set.
+
+    The mimetype is used for serialized objects, and tells the
+    ResXResourceReader how to depersist the object. This is currently not
+    extensible. For a given mimetype the value must be set accordingly:
+
+    Note - application/x-microsoft.net.object.binary.base64 is the format
+    that the ResXResourceWriter will generate, however the reader can
+    read any of the formats listed below.
+
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="buttonAntiClock.ToolTip" xml:space="preserve">
+    <value>動画で視線軸 (画面に垂直な軸) のま
+わりに反時計回りで回転させます。</value>
+  </data>
+  <data name="buttonBottom.ToolTip" xml:space="preserve">
+    <value>動画で水平な画面軸のまわりに下向きへ傾けながら回転させます。</value>
+  </data>
+  <data name="buttonBottomLeft.ToolTip" xml:space="preserve">
+    <value>動画で対応する面内軸のまわりに
+左下向きへ傾けながら回転させます。</value>
+  </data>
+  <data name="buttonBottomRight.ToolTip" xml:space="preserve">
+    <value>動画で対応する面内軸のまわりに
+右下向きへ傾けながら回転させます。</value>
+  </data>
+  <data name="buttonCancel.ToolTip" xml:space="preserve">
+    <value>動画を作成せずにこのダイアログを閉じます。</value>
+  </data>
+  <data name="buttonClock.ToolTip" xml:space="preserve">
+    <value>動画で視線軸 (画面に垂直な軸) の
+まわりに時計回りで回転させます。</value>
+  </data>
+  <data name="buttonLeft.ToolTip" xml:space="preserve">
+    <value>動画で垂直な画面軸のまわりに左向きへ傾けながら回転させます。</value>
+  </data>
+  <data name="buttonOK.ToolTip" xml:space="preserve">
+    <value>設定した方向・速度・長さで回転動画を
+生成し、MP4 ファイルに保存します。</value>
+  </data>
+  <data name="buttonRight.ToolTip" xml:space="preserve">
+    <value>動画で垂直な画面軸のまわりに右向き
+へ傾けながら回転させます (既定)。</value>
+  </data>
+  <data name="buttonTop.ToolTip" xml:space="preserve">
+    <value>動画で水平な画面軸のまわりに上向きへ傾けながら回転させます。</value>
+  </data>
+  <data name="buttonTopLeft.ToolTip" xml:space="preserve">
+    <value>動画で対応する面内軸のまわりに
+左上向きへ傾けながら回転させます。</value>
+  </data>
+  <data name="buttonTopRight.ToolTip" xml:space="preserve">
+    <value>動画で対応する面内軸のまわりに
+右上向きへ傾けながら回転させます。</value>
+  </data>
+  <data name="comboBoxSpeed.ToolTip" xml:space="preserve">
+    <value>エンコード速度プリセット (ultrafast…veryslow)。注:
+現行の Media Foundation エンコーダでは進捗表示に
+使われるのみで、実際のエンコードには影響しません。</value>
+  </data>
+  <data name="indexControl.ToolTip" xml:space="preserve">
+    <value>回転軸を定める指数を入力します。方向指数モード
+では方向 [uvw]、格子面モードでは格子面 (hkl)
+(その法線まわりに回転) として解釈されます。</value>
+  </data>
+  <data name="numericBoxDuration.ToolTip" xml:space="preserve">
+    <value>生成する動画の長さ (秒) を設定し
+ます (フレームレートは 30 fps)。</value>
+  </data>
+  <data name="numericBoxSpeed.ToolTip" xml:space="preserve">
+    <value>視点の回転速度を度毎秒 (°/s) で設定します。</value>
+  </data>
+  <data name="radioButtonAxis.ToolTip" xml:space="preserve">
+    <value>回転軸を結晶の方向指数 [uvw] で指定します。</value>
+  </data>
+  <data name="radioButtonCurrent.ToolTip" xml:space="preserve">
+    <value>現在表示中の投影方位を基準に回転しま
+す。傾ける向きは矢印ボタンで選びます。</value>
+  </data>
+  <data name="radioButtonH264.ToolTip" xml:space="preserve">
+    <value>動画を H.264 (AVC) コーデックでエンコードします。</value>
+  </data>
+  <data name="radioButtonH265.ToolTip" xml:space="preserve">
+    <value>動画を H.265 (HEVC) コーデックでエンコード
+します (高圧縮。対応するエンコーダが必要)。</value>
+  </data>
+  <data name="radioButtonPlane.ToolTip" xml:space="preserve">
+    <value>回転軸を格子面 (hkl) の法線で指定します。</value>
+  </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value>エンコード速度プリセット (ultrafast…veryslow)。注:
+現行の Media Foundation エンコーダでは進捗表示に
+使われるのみで、実際のエンコードには影響しません。</value>
+  </data>
+</root>

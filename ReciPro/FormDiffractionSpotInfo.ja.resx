@@ -1,0 +1,240 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!--
+    Microsoft ResX Schema
+
+    Version 2.0
+
+    The primary goals of this format is to allow a simple XML format
+    that is mostly human readable. The generation and parsing of the
+    various data types are done through the TypeConverter classes
+    associated with the data types.
+
+    Example:
+
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+
+    There are any number of "resheader" rows that contain simple
+    name/value pairs.
+
+    Each data row contains a name, and value. The row also contains a
+    type or mimetype. Type corresponds to a .NET class that support
+    text/value conversion through the TypeConverter architecture.
+    Classes that don't support this are serialized and stored with the
+    mimetype set.
+
+    The mimetype is used for serialized objects, and tells the
+    ResXResourceReader how to depersist the object. This is currently not
+    extensible. For a given mimetype the value must be set accordingly:
+
+    Note - application/x-microsoft.net.object.binary.base64 is the format
+    that the ResXResourceWriter will generate, however the reader can
+    read any of the formats listed below.
+
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="buttonCopyToClipboard.ToolTip" xml:space="preserve">
+    <value>反射表全体(表示中の列、タブ区切り)を
+クリップボードにコピーします。Excel や
+テキストエディタに貼り付けられます。</value>
+  </data>
+  <data name="checkBoxAutoRowSize.ToolTip" xml:space="preserve">
+    <value>チェックすると各列の幅を表示中の内容に合わせ
+て自動調整します。大きな表ではスクロールが
+重くなるため、オフにすると高速になります。</value>
+  </data>
+  <data name="dataGridView.ToolTip" xml:space="preserve">
+    <value>動力学的回折(Bethe法)計算による各反射の結果一覧です。
+指数 hkl、面間隔 d、逆格子ベクトル g、結晶ポテンシャル
+Ug/Vg、励起誤差 Sg(逆格子点が Ewald 球からどれだけ外れ
+ているか)、回折波振幅 Φ などを表示します。</value>
+  </data>
+  <data name="label14.ToolTip" xml:space="preserve">
+    <value>2つのポテンシャル単位の換算式です。Ug [nm⁻²] = 2·m₀/h²
+· Vg [eV] × 10¹⁸。上のラジオボタンで切り替えます。</value>
+  </data>
+  <data name="label16.ToolTip" xml:space="preserve">
+    <value>この表の単位規約です。長さは Å ではなく
+nm、波数は 2π/nm ではなく 1/nm で表します。</value>
+  </data>
+  <data name="label9.ToolTip" xml:space="preserve">
+    <value>表の列記号の凡例です。Vg/Ug=弾性散乱の
+結晶ポテンシャル、V'g/U'g=熱散漫散乱の
+虚(吸収)ポテンシャル、Φ=出射面での回折波振幅。</value>
+  </data>
+  <data name="numericBoxEffectiveDigit.ToolTip" xml:space="preserve">
+    <value>表セルの表示に使う有効数字の桁数(1〜16)を設定します。
+表示だけに影響し、計算された値そのものは変わりません。</value>
+  </data>
+  <data name="radioButtonUnitEV.ToolTip" xml:space="preserve">
+    <value>結晶ポテンシャルの列をエネルギー単位の Vg [eV] で表示し
+ます。列見出しが Ug/U'g から Vg/V'g に切り替わります。</value>
+  </data>
+  <data name="radioButtonUnitNM.ToolTip" xml:space="preserve">
+    <value>結晶ポテンシャルの列を動力学計算で用い
+る Ug [nm⁻²] で表示します。列見出しが
+Vg/V'g から Ug/U'g に切り替わります。</value>
+  </data>
+  <data name="textBoxAccVoltage.ToolTip" xml:space="preserve">
+    <value>電子線の加速電圧(kV)を表示します。読み取り
+専用で、値は親シミュレータ側で設定します。</value>
+  </data>
+  <data name="textBoxBeta.ToolTip" xml:space="preserve">
+    <value>電子の相対論的速度比 β = v/c(無次元)を表示しま
+す。加速電圧から算出され、読み取り専用です。</value>
+  </data>
+  <data name="textBoxGamma.ToolTip" xml:space="preserve">
+    <value>相対論的質量係数 γ = m/m₀ = 1+e₀E/m₀c²(無次元)を
+表示します。加速電圧から算出され、読み取り専用です。</value>
+  </data>
+  <data name="textBoxLatticeVolume.ToolTip" xml:space="preserve">
+    <value>結晶単位胞の体積(nm³)を表示します。読み取り専用です。</value>
+  </data>
+  <data name="textBoxSemiangle.ToolTip" xml:space="preserve">
+    <value>CBED(収束電子線回折)モードでの電子線の
+最大収束半角(mrad)を表示します。読み取り専用です。</value>
+  </data>
+  <data name="textBoxThickness.ToolTip" xml:space="preserve">
+    <value>動力学計算に用いる試料の厚さ(nm)を表示します。
+回折波振幅 Φ はこの厚さに依存します。読み取り専用です。</value>
+  </data>
+  <data name="textBoxWaveLength.ToolTip" xml:space="preserve">
+    <value>加速電圧から求めた電子線の相対論的波長(=
+1/k_vac、単位 nm)を表示します。読み取り専用です。</value>
+  </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value>加速電圧から求めた電子線の相対論的波長(=
+1/k_vac、単位 nm)を表示します。読み取り専用です。</value>
+  </data>
+  <data name="label10.ToolTip" xml:space="preserve">
+    <value>CBED(収束電子線回折)モードでの電子線の
+最大収束半角(mrad)を表示します。読み取り専用です。</value>
+  </data>
+  <data name="label11.ToolTip" xml:space="preserve">
+    <value>CBED(収束電子線回折)モードでの電子線の
+最大収束半角(mrad)を表示します。読み取り専用です。</value>
+  </data>
+  <data name="label12.ToolTip" xml:space="preserve">
+    <value>動力学計算に用いる試料の厚さ(nm)を表示します。
+回折波振幅 Φ はこの厚さに依存します。読み取り専用です。</value>
+  </data>
+  <data name="label13.ToolTip" xml:space="preserve">
+    <value>動力学計算に用いる試料の厚さ(nm)を表示します。
+回折波振幅 Φ はこの厚さに依存します。読み取り専用です。</value>
+  </data>
+  <data name="label15.ToolTip" xml:space="preserve">
+    <value>結晶ポテンシャル列の表示単位を選択しま
+す。エネルギー単位の Vg [eV] か、逆長さ
+二乗の Ug [nm⁻²] のいずれかです。</value>
+  </data>
+  <data name="label2.ToolTip" xml:space="preserve">
+    <value>相対論的質量係数 γ = m/m₀ = 1+e₀E/m₀c²(無次元)を
+表示します。加速電圧から算出され、読み取り専用です。</value>
+  </data>
+  <data name="label3.ToolTip" xml:space="preserve">
+    <value>加速電圧から求めた電子線の相対論的波長(=
+1/k_vac、単位 nm)を表示します。読み取り専用です。</value>
+  </data>
+  <data name="label4.ToolTip" xml:space="preserve">
+    <value>電子の相対論的速度比 β = v/c(無次元)を表示しま
+す。加速電圧から算出され、読み取り専用です。</value>
+  </data>
+  <data name="label5.ToolTip" xml:space="preserve">
+    <value>電子線の加速電圧(kV)を表示します。読み取り
+専用で、値は親シミュレータ側で設定します。</value>
+  </data>
+  <data name="label6.ToolTip" xml:space="preserve">
+    <value>電子線の加速電圧(kV)を表示します。読み取り
+専用で、値は親シミュレータ側で設定します。</value>
+  </data>
+  <data name="label7.ToolTip" xml:space="preserve">
+    <value>結晶単位胞の体積(nm³)を表示します。読み取り専用です。</value>
+  </data>
+  <data name="label8.ToolTip" xml:space="preserve">
+    <value>結晶単位胞の体積(nm³)を表示します。読み取り専用です。</value>
+  </data>
+</root>

@@ -36,6 +36,8 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CrystalDatabaseControl));
+            toolTip = new System.Windows.Forms.ToolTip(components); // (260531Ch)
+            toolTip.IsBalloon = true; // 260531Cl 追加: バルーン表示に統一
             ReadDatabaseWorker = new System.ComponentModel.BackgroundWorker();
             // dataGridView = new System.Windows.Forms.DataGridView(); // 260518Cl 旧実装: DPI変更時に列幅が追従しない
             dataGridView = new DpiAwareDataGridView(); // 260518Cl
@@ -120,6 +122,7 @@
             dataGridView.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             dataGridView.MultiSelect = false;
             dataGridView.Name = "dataGridView";
+            toolTip.SetToolTip(dataGridView, resources.GetString("dataGridView.ToolTip")); // 260531Cl
             dataGridView.ReadOnly = true;
             dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
             dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Control;
@@ -392,6 +395,7 @@
             checkBoxAMCSD.Location = new System.Drawing.Point(3, 0);
             checkBoxAMCSD.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
             checkBoxAMCSD.Name = "checkBoxAMCSD";
+            toolTip.SetToolTip(checkBoxAMCSD, resources.GetString("checkBoxAMCSD.ToolTip")); // 260531Cl
             checkBoxAMCSD.Size = new System.Drawing.Size(71, 21);
             checkBoxAMCSD.TabIndex = 0;
             checkBoxAMCSD.Text = "AMCSD";
@@ -405,6 +409,7 @@
             checkBoxCOD.Location = new System.Drawing.Point(3, 21);
             checkBoxCOD.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
             checkBoxCOD.Name = "checkBoxCOD";
+            toolTip.SetToolTip(checkBoxCOD, resources.GetString("checkBoxCOD.ToolTip")); // 260531Cl
             checkBoxCOD.Size = new System.Drawing.Size(54, 21);
             checkBoxCOD.TabIndex = 0;
             checkBoxCOD.Text = "COD";
@@ -476,6 +481,8 @@
         }
 
         #endregion
+
+        public System.Windows.Forms.ToolTip toolTip; // (260531Ch) 260531Cl private->public: FormMainのToolTip表示トグルから一括制御するため
 
         private System.Windows.Forms.BindingSource bindingSource;
         // private System.Windows.Forms.DataGridView dataGridView; // 260518Cl 旧実装

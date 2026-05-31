@@ -272,7 +272,10 @@
     <value>3</value>
   </data>
   <data name="comboBoxSolver.ToolTip" xml:space="preserve">
-    <value>Choose how the Bloch-wave equations are solved (eigenproblem or matrix exponential; Eigen or MKL library). Results should match, but speed differs; use Auto unless benchmarking.</value>
+    <value>Choose how the Bloch-wave equations are solved
+(eigenproblem or matrix exponential; Eigen or
+MKL library). Results should match, but speed
+differs; use Auto unless benchmarking.</value>
   </data>
   <data name="&gt;&gt;comboBoxSolver.Name" xml:space="preserve">
     <value>comboBoxSolver</value>
@@ -329,10 +332,14 @@
     <value>4</value>
   </data>
   <data name="numericBoxThread.ToolTip" xml:space="preserve">
-    <value>Number of CPU threads used for the CBED (Convergent-Beam Electron Diffraction) Bloch-wave calculation, 1-128. Disabled when Solver is Auto.</value>
+    <value>Number of CPU threads used for the CBED
+(Convergent-Beam Electron Diffraction) Bloch-wave
+calculation, 1-128. Disabled when Solver is Auto.</value>
   </data>
   <data name="numericBoxThread.ToolTip1" xml:space="preserve">
-    <value>Number of CPU threads used for the CBED (Convergent-Beam Electron Diffraction) Bloch-wave calculation, 1-128. Disabled when Solver is Auto.</value>
+    <value>Number of CPU threads used for the CBED
+(Convergent-Beam Electron Diffraction) Bloch-wave
+calculation, 1-128. Disabled when Solver is Auto.</value>
   </data>
   <data name="&gt;&gt;numericBoxThread.Name" xml:space="preserve">
     <value>numericBoxThread</value>
@@ -398,7 +405,9 @@
     <value>CBED</value>
   </data>
   <data name="radioButtonCBED.ToolTip" xml:space="preserve">
-    <value>CBED (Convergent-Beam Electron Diffraction) mode: each Bragg reflection becomes a disk whose internal intensity changes with incident-beam tilt.</value>
+    <value>CBED (Convergent-Beam Electron Diffraction) mode:
+each Bragg reflection becomes a disk whose
+internal intensity changes with incident-beam tilt.</value>
   </data>
   <data name="&gt;&gt;radioButtonCBED.Name" xml:space="preserve">
     <value>radioButtonCBED</value>
@@ -434,7 +443,9 @@
     <value>LACBED</value>
   </data>
   <data name="radioButtonLACBED.ToolTip" xml:space="preserve">
-    <value>LACBED (Large-Angle Convergent-Beam Electron Diffraction) mode: uses a wider convergence angle so a reflection is recorded over a larger angular range.</value>
+    <value>LACBED (Large-Angle Convergent-Beam Electron
+Diffraction) mode: uses a wider convergence angle so
+a reflection is recorded over a larger angular range.</value>
   </data>
   <data name="&gt;&gt;radioButtonLACBED.Name" xml:space="preserve">
     <value>radioButtonLACBED</value>
@@ -518,7 +529,10 @@
     <value>0</value>
   </data>
   <data name="numericBoxMaxNumOfG.ToolTip" xml:space="preserve">
-    <value>Number of diffracted beams (Bloch waves) included in the dynamical, multiple-scattering calculation, 1-2048. More waves improve accuracy but slow the computation.</value>
+    <value>Number of diffracted beams (Bloch waves)
+included in the dynamical, multiple-scattering
+calculation, 1-2048. More waves improve
+accuracy but slow the computation.</value>
   </data>
   <data name="numericBoxMaxNumOfG.ToolTip1" xml:space="preserve">
     <value>Set the number of diffracted waves to be calculated</value>
@@ -656,7 +670,10 @@
     <value>2</value>
   </data>
   <data name="numericBoxDiskResolution.ToolTip" xml:space="preserve">
-    <value>Angular sampling step per pixel across each disk (mrad/pixel). Smaller values give more diameter divisions, shown at right, for finer disks but longer calculation.</value>
+    <value>Angular sampling step per pixel across each
+disk (mrad/pixel). Smaller values give more
+diameter divisions, shown at right, for
+finer disks but longer calculation.</value>
   </data>
   <data name="numericBoxDiskResolution.ToolTip1" xml:space="preserve">
     <value>Set the number of divisions along the diameter.
@@ -1158,7 +1175,9 @@ The number of two-dimensional divisions is displayed on the right</value>
     <value>7</value>
   </data>
   <data name="comboBoxGradient.ToolTip" xml:space="preserve">
-    <value>Select the intensity gradient direction: Positive means bright is strong; Negative inverts the scale so dark is strong.</value>
+    <value>Select the intensity gradient direction:
+Positive means bright is strong; Negative
+inverts the scale so dark is strong.</value>
   </data>
   <data name="&gt;&gt;comboBoxGradient.Name" xml:space="preserve">
     <value>comboBoxGradient</value>
@@ -1239,7 +1258,8 @@ The number of two-dimensional divisions is displayed on the right</value>
     <value>8</value>
   </data>
   <data name="comboBoxScale.ToolTip" xml:space="preserve">
-    <value>Select the color scale used to map disk intensity to display color (Gray, Cold-Warm, Spectrum, or Fire).</value>
+    <value>Select the color scale used to map disk intensity to
+display color (Gray, Cold-Warm, Spectrum, or Fire).</value>
   </data>
   <data name="&gt;&gt;comboBoxScale.Name" xml:space="preserve">
     <value>comboBoxScale</value>
@@ -1477,7 +1497,8 @@ The larger this value is, the brighter the outer disk appears to be.</value>
     <value>3</value>
   </data>
   <data name="trackBarIntensityBrightnessMin.ToolTip" xml:space="preserve">
-    <value>Set an intensity at which the brightness is displayed as zero.</value>
+    <value>Set an intensity at which the
+brightness is displayed as zero.</value>
   </data>
   <data name="&gt;&gt;trackBarIntensityBrightnessMin.Name" xml:space="preserve">
     <value>trackBarIntensityBrightnessMin</value>
@@ -1540,7 +1561,8 @@ The larger this value is, the brighter the outer disk appears to be.</value>
     <value>4</value>
   </data>
   <data name="trackBarIntensityBrightnessMax.ToolTip" xml:space="preserve">
-    <value>Set an intensity at which the brightness is displayed as the maximum value.</value>
+    <value>Set an intensity at which the brightness
+is displayed as the maximum value.</value>
   </data>
   <data name="&gt;&gt;trackBarIntensityBrightnessMax.Name" xml:space="preserve">
     <value>trackBarIntensityBrightnessMax</value>
@@ -1711,7 +1733,8 @@ The larger this value is, the brighter the outer disk appears to be.</value>
     <value>for individual disks</value>
   </data>
   <data name="radioButtonIndividualDisk.ToolTip" xml:space="preserve">
-    <value>Separate brightness ranges are applied to each individual disk.</value>
+    <value>Separate brightness ranges are
+applied to each individual disk.</value>
   </data>
   <data name="&gt;&gt;radioButtonIndividualDisk.Name" xml:space="preserve">
     <value>radioButtonIndividualDisk</value>
@@ -2065,42 +2088,59 @@ The larger this value is, the brighter the outer disk appears to be.</value>
     <value>Crystallography.Controls.FormBase, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="textBoxThickness.ToolTip" xml:space="preserve">
-    <value>Sample thickness (nm) of the disk pattern currently displayed.</value>
+    <value>Sample thickness (nm) of the
+disk pattern currently displayed.</value>
   </data>
   <data name="label4.ToolTip" xml:space="preserve">
-    <value>Sample thickness (nm) of the disk pattern currently displayed.</value>
+    <value>Sample thickness (nm) of the
+disk pattern currently displayed.</value>
   </data>
   <data name="label6.ToolTip" xml:space="preserve">
-    <value>Sample thickness (nm) of the disk pattern currently displayed.</value>
+    <value>Sample thickness (nm) of the
+disk pattern currently displayed.</value>
   </data>
   <data name="label7.ToolTip" xml:space="preserve">
-    <value>Set an intensity at which the brightness is displayed as the maximum value.</value>
+    <value>Set an intensity at which the brightness
+is displayed as the maximum value.</value>
   </data>
   <data name="label8.ToolTip" xml:space="preserve">
-    <value>Set an intensity at which the brightness is displayed as zero.</value>
+    <value>Set an intensity at which the
+brightness is displayed as zero.</value>
   </data>
   <data name="label1.ToolTip" xml:space="preserve">
     <value>The same brightness range (Min/Max) is applied to all disks.</value>
   </data>
   <data name="label2.ToolTip" xml:space="preserve">
-    <value>Angular sampling step per pixel across each disk (mrad/pixel). Smaller values give more diameter divisions, shown at right, for finer disks but longer calculation.</value>
+    <value>Angular sampling step per pixel across each
+disk (mrad/pixel). Smaller values give more
+diameter divisions, shown at right, for
+finer disks but longer calculation.</value>
   </data>
   <data name="labelDivisionNumber.ToolTip" xml:space="preserve">
-    <value>Angular sampling step per pixel across each disk (mrad/pixel). Smaller values give more diameter divisions, shown here, for finer disks but longer calculation.</value>
+    <value>Angular sampling step per pixel across
+each disk (mrad/pixel). Smaller values
+give more diameter divisions, shown here,
+for finer disks but longer calculation.</value>
   </data>
   <data name="labelGamma.ToolTip" xml:space="preserve">
-    <value>Set a gamma value. The larger this value is, the brighter the outer disk appears to be.</value>
+    <value>Set a gamma value. The larger this value is,
+the brighter the outer disk appears to be.</value>
   </data>
   <data name="label11.ToolTip" xml:space="preserve">
     <value>Select a color scale (Gray / Cold-Warm / Spectrum / Fire).</value>
   </data>
   <data name="label3.ToolTip" xml:space="preserve">
-    <value>Select the gradient direction (Positive or Negative / inverted).</value>
+    <value>Select the gradient direction
+(Positive or Negative / inverted).</value>
   </data>
   <data name="label13.ToolTip" xml:space="preserve">
-    <value>Choose how the Bloch-wave equations are solved (eigenproblem or matrix exponential; Eigen or MKL library). Results should match, but speed differs; use Auto unless benchmarking.</value>
+    <value>Choose how the Bloch-wave equations are solved
+(eigenproblem or matrix exponential; Eigen or
+MKL library). Results should match, but speed
+differs; use Auto unless benchmarking.</value>
   </data>
   <data name="label5.ToolTip" xml:space="preserve">
-    <value>Set an intensity at which the brightness is displayed as the maximum value.</value>
+    <value>Set an intensity at which the brightness
+is displayed as the maximum value.</value>
   </data>
 </root>

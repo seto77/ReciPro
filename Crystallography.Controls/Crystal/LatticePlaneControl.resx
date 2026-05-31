@@ -654,4 +654,31 @@
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
     <value>Crystallography.Controls.UserControlBase, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
   </data>
+  <data name="buttonAddBond.ToolTip" xml:space="preserve">
+    <value>Add the lattice plane defined above
+(indices, translation, color) to the list.</value>
+  </data>
+  <data name="buttonChangeBond.ToolTip" xml:space="preserve">
+    <value>Replace the currently selected lattice plane
+in the list with the values entered above.</value>
+  </data>
+  <data name="buttonDeleteBond.ToolTip" xml:space="preserve">
+    <value>Delete the currently selected lattice plane from the list.</value>
+  </data>
+  <data name="dataGridView.ToolTip" xml:space="preserve">
+    <value>List of defined lattice planes; tick a row's
+checkbox to toggle whether that plane is shown.</value>
+  </data>
+  <data name="indexControl.ToolTip" xml:space="preserve">
+    <value>Enter the Miller indices (h k l) of the lattice plane
+(Miller-Bravais h k i l for hexagonal crystals).</value>
+  </data>
+  <data name="numericBoxDistance.ToolTip" xml:space="preserve">
+    <value>Shift the lattice plane along its normal, as a
+fraction of the interplanar spacing (-0.5 to 0.5).</value>
+  </data>
+  <data name="label6.ToolTip" xml:space="preserve">
+    <value>Shift the lattice plane along its normal, as a
+fraction of the interplanar spacing (-0.5 to 0.5).</value>
+  </data>
 </root>

@@ -126,4 +126,43 @@
   <metadata name="contextMenuStripBody.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>303, 17</value>
   </metadata>
+  <data name="smartIncrementToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>Automatically scale the spin-button step to
+the current value's order of magnitude (1/2/5
+sequence) instead of using a fixed increment.</value>
+  </data>
+  <data name="toolStripComboBoxDecimalPlaces.ToolTipText" xml:space="preserve">
+    <value>Number of decimal places shown and rounded
+to; choose 'No control' to display the
+value without fixing the decimal count.</value>
+  </data>
+  <data name="toolStripComboBoxIncrement.ToolTipText" xml:space="preserve">
+    <value>Set the fixed step added or subtracted per spin-button
+(up/down) click; used when Smart increment is off.</value>
+  </data>
+  <data name="toolStripComboBoxMouseDirection.ToolTipText" xml:space="preserve">
+    <value>Choose which drag axis changes the
+value: Vertical (up/down) or Horizontal
+(left/right) middle-button drag.</value>
+  </data>
+  <data name="toolStripMenuItemRestrictLimit.ToolTipText" xml:space="preserve">
+    <value>Clamp the entered value to the
+Maximum/Minimum range; values outside the
+range are snapped to the nearest limit.</value>
+  </data>
+  <data name="toolStripTextBoxMaximum.ToolTipText" xml:space="preserve">
+    <value>Upper limit allowed for this value;
+effective only when Restrict limit is
+on, and must be greater than the minimum.</value>
+  </data>
+  <data name="toolStripTextBoxMimimum.ToolTipText" xml:space="preserve">
+    <value>Lower limit allowed for this value;
+effective only when Restrict limit is
+on, and must be smaller than the maximum.</value>
+  </data>
+  <data name="toolStripTextBoxMouseSpeed.ToolTipText" xml:space="preserve">
+    <value>Mouse-drag sensitivity: the amount the value
+changes per pixel of middle-button drag
+(effective when mouse control is enabled).</value>
+  </data>
 </root>

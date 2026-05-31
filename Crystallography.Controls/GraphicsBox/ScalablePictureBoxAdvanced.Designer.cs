@@ -24,6 +24,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container(); // (260531Ch)
+            toolTip = new System.Windows.Forms.ToolTip(components); // (260531Ch)
+            toolTip.IsBalloon = true; // 260531Cl 追加: バルーン表示に統一
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ScalablePictureBoxAdvanced));
             panelTrackBar = new System.Windows.Forms.Panel();
             label2 = new System.Windows.Forms.Label();
@@ -93,16 +96,19 @@
             // label2
             // 
             resources.ApplyResources(label2, "label2");
+            toolTip.SetToolTip(label2, resources.GetString("label2.ToolTip")); // 260531Cl
             label2.Name = "label2";
             // 
             // label3
             // 
             resources.ApplyResources(label3, "label3");
+            toolTip.SetToolTip(label3, resources.GetString("label3.ToolTip")); // 260531Cl
             label3.Name = "label3";
             // 
             // trackBarAdvancedMinimum
             // 
             resources.ApplyResources(trackBarAdvancedMinimum, "trackBarAdvancedMinimum");
+            toolTip.SetToolTip(trackBarAdvancedMinimum, resources.GetString("trackBarAdvancedMinimum.ToolTip")); // 260531Cl
             trackBarAdvancedMinimum.ControlHeight = 22;
             trackBarAdvancedMinimum.DecimalPlaces = 0;
             trackBarAdvancedMinimum.LogScrollBar = false;
@@ -120,6 +126,7 @@
             // trackBarAdvancedMaximum
             // 
             resources.ApplyResources(trackBarAdvancedMaximum, "trackBarAdvancedMaximum");
+            toolTip.SetToolTip(trackBarAdvancedMaximum, resources.GetString("trackBarAdvancedMaximum.ToolTip")); // 260531Cl
             trackBarAdvancedMaximum.ControlHeight = 22;
             trackBarAdvancedMaximum.DecimalPlaces = 0;
             trackBarAdvancedMaximum.LogScrollBar = false;
@@ -137,6 +144,7 @@
             // label
             // 
             resources.ApplyResources(label, "label");
+            toolTip.SetToolTip(label, resources.GetString("label.ToolTip")); // 260531Cl
             label.Name = "label";
             // 
             // comboBoxScale2
@@ -145,6 +153,7 @@
             comboBoxScale2.FormattingEnabled = true;
             comboBoxScale2.Items.AddRange(new object[] { resources.GetString("comboBoxScale2.Items"), resources.GetString("comboBoxScale2.Items1"), resources.GetString("comboBoxScale2.Items2"), resources.GetString("comboBoxScale2.Items3") });
             resources.ApplyResources(comboBoxScale2, "comboBoxScale2");
+            toolTip.SetToolTip(comboBoxScale2, resources.GetString("comboBoxScale2.ToolTip")); // 260531Cl
             comboBoxScale2.Name = "comboBoxScale2";
             comboBoxScale2.SelectedIndexChanged += comboBoxScale_SelectedIndexChanged;
             // 
@@ -154,6 +163,7 @@
             comboBoxScale1.FormattingEnabled = true;
             comboBoxScale1.Items.AddRange(new object[] { resources.GetString("comboBoxScale1.Items"), resources.GetString("comboBoxScale1.Items1") });
             resources.ApplyResources(comboBoxScale1, "comboBoxScale1");
+            toolTip.SetToolTip(comboBoxScale1, resources.GetString("comboBoxScale1.ToolTip")); // 260531Cl
             comboBoxScale1.Name = "comboBoxScale1";
             comboBoxScale1.SelectedIndexChanged += comboBoxScale_SelectedIndexChanged;
             // 
@@ -163,22 +173,26 @@
             comboBoxGradient.FormattingEnabled = true;
             comboBoxGradient.Items.AddRange(new object[] { resources.GetString("comboBoxGradient.Items"), resources.GetString("comboBoxGradient.Items1") });
             resources.ApplyResources(comboBoxGradient, "comboBoxGradient");
+            toolTip.SetToolTip(comboBoxGradient, resources.GetString("comboBoxGradient.ToolTip")); // 260531Cl
             comboBoxGradient.Name = "comboBoxGradient";
             comboBoxGradient.SelectedIndexChanged += comboBoxScale_SelectedIndexChanged;
             // 
             // label7
             // 
             resources.ApplyResources(label7, "label7");
+            toolTip.SetToolTip(label7, resources.GetString("label7.ToolTip")); // 260531Cl
             label7.Name = "label7";
             // 
             // label9
             // 
             resources.ApplyResources(label9, "label9");
+            toolTip.SetToolTip(label9, resources.GetString("label9.ToolTip")); // 260531Cl
             label9.Name = "label9";
             // 
             // label5
             // 
             resources.ApplyResources(label5, "label5");
+            toolTip.SetToolTip(label5, resources.GetString("label5.ToolTip")); // 260531Cl
             label5.Name = "label5";
             // 
             // flowLayoutPanelGradient
@@ -228,6 +242,7 @@
             // checkBoxDustScratches
             // 
             resources.ApplyResources(checkBoxDustScratches, "checkBoxDustScratches");
+            toolTip.SetToolTip(checkBoxDustScratches, resources.GetString("checkBoxDustScratches.ToolTip")); // 260531Cl
             checkBoxDustScratches.Name = "checkBoxDustScratches";
             checkBoxDustScratches.UseVisualStyleBackColor = true;
             checkBoxDustScratches.CheckedChanged += imageFilterProperty_Changed;
@@ -238,6 +253,7 @@
             numericBoxDustScratchesRadius.DecimalPlaces = 1;
             numericBoxDustScratchesRadius.FooterBackColor = System.Drawing.SystemColors.Control;
             resources.ApplyResources(numericBoxDustScratchesRadius, "numericBoxDustScratchesRadius");
+            toolTip.SetToolTip(numericBoxDustScratchesRadius, resources.GetString("numericBoxDustScratchesRadius.ToolTip")); // 260531Cl
             numericBoxDustScratchesRadius.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxDustScratchesRadius.Maximum = 5D;
             numericBoxDustScratchesRadius.Minimum = 0D;
@@ -256,6 +272,7 @@
             numericBoxDustScratchesThreshold.DecimalPlaces = 0;
             numericBoxDustScratchesThreshold.FooterBackColor = System.Drawing.SystemColors.Control;
             resources.ApplyResources(numericBoxDustScratchesThreshold, "numericBoxDustScratchesThreshold");
+            toolTip.SetToolTip(numericBoxDustScratchesThreshold, resources.GetString("numericBoxDustScratchesThreshold.ToolTip")); // 260531Cl
             numericBoxDustScratchesThreshold.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxDustScratchesThreshold.Maximum = 10D;
             numericBoxDustScratchesThreshold.Minimum = 0D;
@@ -278,6 +295,7 @@
             // checkBoxGaussianBlur
             // 
             resources.ApplyResources(checkBoxGaussianBlur, "checkBoxGaussianBlur");
+            toolTip.SetToolTip(checkBoxGaussianBlur, resources.GetString("checkBoxGaussianBlur.ToolTip")); // 260531Cl
             checkBoxGaussianBlur.Name = "checkBoxGaussianBlur";
             checkBoxGaussianBlur.UseVisualStyleBackColor = true;
             checkBoxGaussianBlur.CheckedChanged += imageFilterProperty_Changed;
@@ -288,6 +306,7 @@
             numericBoxGaussianFWHM.DecimalPlaces = 1;
             numericBoxGaussianFWHM.FooterBackColor = System.Drawing.SystemColors.Control;
             resources.ApplyResources(numericBoxGaussianFWHM, "numericBoxGaussianFWHM");
+            toolTip.SetToolTip(numericBoxGaussianFWHM, resources.GetString("numericBoxGaussianFWHM.ToolTip")); // 260531Cl
             numericBoxGaussianFWHM.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxGaussianFWHM.Maximum = 100D;
             numericBoxGaussianFWHM.Minimum = 0D;
@@ -418,6 +437,7 @@
             // buttonMag1
             // 
             resources.ApplyResources(buttonMag1, "buttonMag1");
+            toolTip.SetToolTip(buttonMag1, resources.GetString("buttonMag1.ToolTip")); // 260531Cl
             buttonMag1.Name = "buttonMag1";
             buttonMag1.UseVisualStyleBackColor = true;
             buttonMag1.Click += buttonMag_Click;
@@ -425,6 +445,7 @@
             // buttonMag2
             // 
             resources.ApplyResources(buttonMag2, "buttonMag2");
+            toolTip.SetToolTip(buttonMag2, resources.GetString("buttonMag2.ToolTip")); // 260531Cl
             buttonMag2.Name = "buttonMag2";
             buttonMag2.UseVisualStyleBackColor = true;
             buttonMag2.Click += buttonMag_Click;
@@ -432,6 +453,7 @@
             // buttonMag4
             // 
             resources.ApplyResources(buttonMag4, "buttonMag4");
+            toolTip.SetToolTip(buttonMag4, resources.GetString("buttonMag4.ToolTip")); // 260531Cl
             buttonMag4.Name = "buttonMag4";
             buttonMag4.UseVisualStyleBackColor = true;
             buttonMag4.Click += buttonMag_Click;
@@ -439,6 +461,7 @@
             // buttonMag_2
             // 
             resources.ApplyResources(buttonMag_2, "buttonMag_2");
+            toolTip.SetToolTip(buttonMag_2, resources.GetString("buttonMag_2.ToolTip")); // 260531Cl
             buttonMag_2.Name = "buttonMag_2";
             buttonMag_2.UseVisualStyleBackColor = true;
             buttonMag_2.Click += buttonMag_Click;
@@ -446,6 +469,7 @@
             // buttonMag_4
             // 
             resources.ApplyResources(buttonMag_4, "buttonMag_4");
+            toolTip.SetToolTip(buttonMag_4, resources.GetString("buttonMag_4.ToolTip")); // 260531Cl
             buttonMag_4.Name = "buttonMag_4";
             buttonMag_4.UseVisualStyleBackColor = true;
             buttonMag_4.Click += buttonMag_Click;
@@ -453,6 +477,7 @@
             // buttonMag_8
             // 
             resources.ApplyResources(buttonMag_8, "buttonMag_8");
+            toolTip.SetToolTip(buttonMag_8, resources.GetString("buttonMag_8.ToolTip")); // 260531Cl
             buttonMag_8.Name = "buttonMag_8";
             buttonMag_8.UseVisualStyleBackColor = true;
             buttonMag_8.Click += buttonMag_Click;
@@ -460,6 +485,7 @@
             // buttonMag_16
             // 
             resources.ApplyResources(buttonMag_16, "buttonMag_16");
+            toolTip.SetToolTip(buttonMag_16, resources.GetString("buttonMag_16.ToolTip")); // 260531Cl
             buttonMag_16.Name = "buttonMag_16";
             buttonMag_16.UseVisualStyleBackColor = true;
             buttonMag_16.Click += buttonMag_Click;
@@ -467,16 +493,19 @@
             // label14
             // 
             resources.ApplyResources(label14, "label14");
+            toolTip.SetToolTip(label14, resources.GetString("label14.ToolTip")); // 260531Cl
             label14.Name = "label14";
             // 
             // labelResolution
             // 
             resources.ApplyResources(labelResolution, "labelResolution");
+            toolTip.SetToolTip(labelResolution, resources.GetString("labelResolution.ToolTip")); // 260531Cl
             labelResolution.Name = "labelResolution";
             // 
             // label1
             // 
             resources.ApplyResources(label1, "label1");
+            toolTip.SetToolTip(label1, resources.GetString("label1.ToolTip")); // 260531Cl
             label1.Name = "label1";
             // 
             // ScalablePictureBoxAdvanced
@@ -523,6 +552,8 @@
         }
 
         #endregion
+
+        private System.Windows.Forms.ToolTip toolTip; // (260531Ch)
 
         private ScalablePictureBox scalablePictureBox;
         private GraphControl graphControl;

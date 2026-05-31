@@ -120,4 +120,23 @@
   <metadata name="captureExtender.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
+  <data name="buttonCancel.ToolTip" xml:space="preserve">
+    <value>Close the dialog without creating a supercell.</value>
+  </data>
+  <data name="buttonOK.ToolTip" xml:space="preserve">
+    <value>Confirm the supercell multipliers
+(a×, b×, c×) and close the dialog.</value>
+  </data>
+  <data name="numericBoxA.ToolTip" xml:space="preserve">
+    <value>Number of unit cells stacked along the a
+axis to build the supercell (integer, 1–100).</value>
+  </data>
+  <data name="numericBoxB.ToolTip" xml:space="preserve">
+    <value>Number of unit cells stacked along the b
+axis to build the supercell (integer, 1–100).</value>
+  </data>
+  <data name="numericBoxC.ToolTip" xml:space="preserve">
+    <value>Number of unit cells stacked along the c
+axis to build the supercell (integer, 1–100).</value>
+  </data>
 </root>

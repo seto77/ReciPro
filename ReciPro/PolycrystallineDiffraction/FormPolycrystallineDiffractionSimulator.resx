@@ -109,4 +109,270 @@
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>47</value>
   </metadata>
+  <data name="checkBox2.ToolTip" xml:space="preserve">
+    <value>Enable the Rz (θ) axis: side-to-side 'swing'
+oscillation of the sample, set by its motor
+speed (°/s) and oscillation range (±°) below.</value>
+  </data>
+  <data name="checkBox3.ToolTip" xml:space="preserve">
+    <value>Enable the Ry (ω) axis: 'nodding' oscillation
+of the sample, set by its motor speed (°/s),
+oscillation range (±°) and step (°) below.</value>
+  </data>
+  <data name="checkBoxCrystalNumPerStepThreshold.ToolTip" xml:space="preserve">
+    <value>Stop the fit automatically once the
+annealed 'Num per Step' falls below the
+threshold value (%) set on the right.</value>
+  </data>
+  <data name="checkBoxDirectionalDensityThreshold.ToolTip" xml:space="preserve">
+    <value>Stop the fit automatically once the
+annealed 'Directional density' falls below
+the threshold value (°) set on the right.</value>
+  </data>
+  <data name="checkBoxInheritabiliryThreshold.ToolTip" xml:space="preserve">
+    <value>Stop the fit automatically once 'Inheritability'
+rises above the threshold value (%) set on the right.</value>
+  </data>
+  <data name="checkBoxRefineCenterOffset.ToolTip" xml:space="preserve">
+    <value>Include the beam-centre offset as a free
+parameter in the fit, refining the pattern's
+centre position to best match the reference.</value>
+  </data>
+  <data name="checkBoxRefineConvergence.ToolTip" xml:space="preserve">
+    <value>Include the beam convergence angle as
+a free parameter in the fit (refines
+how much the incident beam converges).</value>
+  </data>
+  <data name="checkBoxRefineFilmBlur.ToolTip" xml:space="preserve">
+    <value>Include the film/detector blur
+(point-spread broadening of each
+spot) as a free parameter in the fit.</value>
+  </data>
+  <data name="checkBoxRefinePreferredOrientation.ToolTip" xml:space="preserve">
+    <value>Refine the preferred-orientation (texture/LPO)
+density distribution. This is the core of the
+fit and is always enabled (cannot be turned off).</value>
+  </data>
+  <data name="checkBoxRefineStress.ToolTip" xml:space="preserve">
+    <value>Include residual stress (lattice
+strain that shifts/broadens the
+rings) as a free parameter in the fit.</value>
+  </data>
+  <data name="checkBoxYusaGonioScan.ToolTip" xml:space="preserve">
+    <value>Simulate an oscillating ('Yusa-type') goniometer:
+integrate the pattern over the Rx(Φ rotation),
+Rz(θ swing) and Ry(ω nod) motions set below,
+mimicking a real powder/texture measurement.</value>
+  </data>
+  <data name="checkBoxYusaGonio_ValidRx.ToolTip" xml:space="preserve">
+    <value>Enable the Rx (Φ) axis: continuous spin
+of the sample about its surface normal at
+the motor speed set on the right (°/s).</value>
+  </data>
+  <data name="comboBoxGradient.ToolTip" xml:space="preserve">
+    <value>Gradient direction of the intensity display:
+Positive shows high intensity bright,
+Negative inverts it (high intensity dark).</value>
+  </data>
+  <data name="comboBoxScale1.ToolTip" xml:space="preserve">
+    <value>Intensity mapping for the displayed
+pattern: logarithmic scale (emphasises
+weak reflections) or linear scale.</value>
+  </data>
+  <data name="comboBoxScale2.ToolTip" xml:space="preserve">
+    <value>Colour map for the displayed pattern:
+grey scale or a cold-to-warm colour scale.</value>
+  </data>
+  <data name="numericBoxCrystalNumPerStep.ToolTip" xml:space="preserve">
+    <value>Fraction of crystallites (%) whose orientation is
+perturbed at each refinement step of the
+preferred-orientation (LPO, Lattice Preferred
+Orientation) fit. Larger = bigger steps; the value
+is annealed down (×0.8) as the fit converges.</value>
+  </data>
+  <data name="numericBoxCrystalNumPerStepThreshold.ToolTip" xml:space="preserve">
+    <value>Threshold value (%) for 'Num per Step': the fit stops
+when the parameter is annealed below this level.</value>
+  </data>
+  <data name="numericBoxDirectionalDensity.ToolTip" xml:space="preserve">
+    <value>Angular spread (°) of the orientation bias applied
+at each refinement step: the half-width over which
+a chosen orientation's density is reinforced.
+Annealed smaller (×0.8) as the fit sharpens.</value>
+  </data>
+  <data name="numericBoxDirectionalDensityThreshold.ToolTip" xml:space="preserve">
+    <value>Threshold value (°) for 'Directional density': the fit
+stops when the parameter is annealed below this level.</value>
+  </data>
+  <data name="numericBoxInheritabiliry.ToolTip" xml:space="preserve">
+    <value>Probability (%) that a refinement step reuses
+('inherits') an already high-density orientation
+rather than picking one at random; higher values
+drive the fit toward a sharper texture.</value>
+  </data>
+  <data name="numericBoxInheritabiliryThreshold.ToolTip" xml:space="preserve">
+    <value>Threshold value (%) for 'Inheritability': the fit
+stops once the parameter rises above this level.</value>
+  </data>
+  <data name="numericBoxRxSpeed.ToolTip" xml:space="preserve">
+    <value>Motor speed of the Rx (Φ) rotation axis, in
+degrees per second (°/s). Faster rotation
+averages over more in-plane orientations.</value>
+  </data>
+  <data name="numericBoxYusaGonioRyOscillation.ToolTip" xml:space="preserve">
+    <value>Oscillation (nodding) range of the Ry
+(ω) axis, in ± degrees about the centre.</value>
+  </data>
+  <data name="numericBoxYusaGonioRySpeed.ToolTip" xml:space="preserve">
+    <value>Motor speed of the Ry (ω) nodding
+axis, in degrees per second (°/s).</value>
+  </data>
+  <data name="numericBoxYusaGonioRyStep.ToolTip" xml:space="preserve">
+    <value>Angular step (°) of the Ry (ω) oscillation: the
+increment per ω advance during the scan; smaller gives
+finer orientation sampling but slower simulation.</value>
+  </data>
+  <data name="numericBoxYusaGonioRzOscillation.ToolTip" xml:space="preserve">
+    <value>Oscillation (swing) range of the Rz (θ)
+axis, in ± degrees about the centre; the
+sample rocks between −value and +value.</value>
+  </data>
+  <data name="numericBoxYusaGonioRzSpeed.ToolTip" xml:space="preserve">
+    <value>Motor speed of the Rz (θ) swing
+axis, in degrees per second (°/s).</value>
+  </data>
+  <data name="radioButtonZigzagScan.ToolTip" xml:space="preserve">
+    <value>Zigzag scan order: sweep θ (Rz) forward and back
+while ω (Ry) advances each turn, so the goniometer
+traces a zigzag path through orientation space.</value>
+  </data>
+  <data name="button1.ToolTip" xml:space="preserve">
+    <value>Debug test: generate the diffraction pattern of a
+single random orientation for the selected crystals.</value>
+  </data>
+  <data name="buttonSimulateDebyeRing.ToolTip" xml:space="preserve">
+    <value>Simulate the polycrystalline Debye-ring
+(powder) diffraction pattern for the selected
+crystals and show it in the current tab.</value>
+  </data>
+  <data name="buttonLoadSetting.ToolTip" xml:space="preserve">
+    <value>Load a previously saved orientation-fitting
+setting (.setting file).</value>
+  </data>
+  <data name="buttonSaveCurrentSetting.ToolTip" xml:space="preserve">
+    <value>Save the current orientation-fitting
+setting (crystals, parameters and
+residual history) to a .setting file.</value>
+  </data>
+  <data name="buttonSearch.ToolTip" xml:space="preserve">
+    <value>Start or stop fitting the crystal orientation
+distribution (LPO, Lattice-Preferred Orientation)
+so the simulated pattern best matches the
+reference patterns. Click again to stop.</value>
+  </data>
+  <data name="buttonAddRefferencePattern.ToolTip" xml:space="preserve">
+    <value>Add a measured reference diffraction pattern (.ipa
+image) as a fitting target. It opens in a new tab.</value>
+  </data>
+  <data name="buttonRemoveReferrencePattern.ToolTip" xml:space="preserve">
+    <value>Remove the reference diffraction pattern
+selected in the list (and its tab).</value>
+  </data>
+  <data name="listBoxReferrence.ToolTip" xml:space="preserve">
+    <value>List of loaded reference diffraction
+patterns. Select one to switch to its tab.</value>
+  </data>
+  <data name="checkBox6.ToolTip" xml:space="preserve">
+    <value>Automatically save the setting periodically
+during fitting. (Currently disabled.)</value>
+  </data>
+  <data name="checkBoxAutomaticallyChangeParameter.ToolTip" xml:space="preserve">
+    <value>Automatically shrink the fitting parameters
+when the residual stops improving fast
+enough. (Currently fixed on.)</value>
+  </data>
+  <data name="numericBoxChangeParameterThreshold.ToolTip" xml:space="preserve">
+    <value>Threshold (0-1) for auto-shrinking the fitting
+parameters. When the ratio of the recent to
+the earlier residual (Rwp) slope falls below
+this value, the parameters are reduced to 0.8x.</value>
+  </data>
+  <data name="textBox1.ToolTip" xml:space="preserve">
+    <value>Read-only fitting log: elapsed time, speed
+(ms/step), step count, number of successful
+updates, residual (%) and S value.</value>
+  </data>
+  <data name="buttonSearchUnrelatedOrientations.ToolTip" xml:space="preserve">
+    <value>Iteratively find and remove crystallite orientations
+that do not contribute to the diffraction pattern,
+keeping only the contributing ones.</value>
+  </data>
+  <data name="label26.ToolTip" xml:space="preserve">
+    <value>Colour map for the displayed pattern:
+grey scale or a cold-to-warm colour scale.</value>
+  </data>
+  <data name="label28.ToolTip" xml:space="preserve">
+    <value>Intensity mapping for the displayed
+pattern: logarithmic scale (emphasises
+weak reflections) or linear scale.</value>
+  </data>
+  <data name="label30.ToolTip" xml:space="preserve">
+    <value>Gradient direction of the intensity display: Positive
+shows high intensity bright, Negative inverts it.</value>
+  </data>
+  <data name="label47.ToolTip" xml:space="preserve">
+    <value>Oscillation (nodding) range of the Ry
+(ω) axis, in ± degrees about the centre.</value>
+  </data>
+  <data name="label48.ToolTip" xml:space="preserve">
+    <value>Oscillation (swing) range of the Rz (θ)
+axis, in ± degrees about the centre.</value>
+  </data>
+  <data name="label49.ToolTip" xml:space="preserve">
+    <value>Angular step (°) of the Ry (ω) oscillation; smaller
+gives finer orientation sampling but slower simulation.</value>
+  </data>
+  <data name="label50.ToolTip" xml:space="preserve">
+    <value>Oscillation (nodding) range of the Ry
+(ω) axis, in ± degrees about the centre.</value>
+  </data>
+  <data name="label51.ToolTip" xml:space="preserve">
+    <value>Oscillation (swing) range of the Rz (θ)
+axis, in ± degrees about the centre.</value>
+  </data>
+  <data name="label52.ToolTip" xml:space="preserve">
+    <value>Motor speed of the Rx (Φ) rotation
+axis, in degrees per second (°/s).</value>
+  </data>
+  <data name="label53.ToolTip" xml:space="preserve">
+    <value>Angular step (°) of the Ry (ω) oscillation.</value>
+  </data>
+  <data name="label54.ToolTip" xml:space="preserve">
+    <value>Motor speed of the Ry (ω) nodding
+axis, in degrees per second (°/s).</value>
+  </data>
+  <data name="label55.ToolTip" xml:space="preserve">
+    <value>Oscillation (nodding) range of the Ry
+(ω) axis, in ± degrees about the centre.</value>
+  </data>
+  <data name="label56.ToolTip" xml:space="preserve">
+    <value>Motor speed of the Rz (θ) swing
+axis, in degrees per second (°/s).</value>
+  </data>
+  <data name="label57.ToolTip" xml:space="preserve">
+    <value>Oscillation (swing) range of the Rz (θ)
+axis, in ± degrees about the centre.</value>
+  </data>
+  <data name="label58.ToolTip" xml:space="preserve">
+    <value>Motor speed of the Ry (ω) nodding
+axis, in degrees per second (°/s).</value>
+  </data>
+  <data name="label59.ToolTip" xml:space="preserve">
+    <value>Motor speed of the Rz (θ) swing
+axis, in degrees per second (°/s).</value>
+  </data>
+  <data name="label60.ToolTip" xml:space="preserve">
+    <value>Motor speed of the Rx (Φ) rotation
+axis, in degrees per second (°/s).</value>
+  </data>
 </root>

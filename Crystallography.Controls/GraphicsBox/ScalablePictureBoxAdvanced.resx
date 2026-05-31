@@ -1627,4 +1627,125 @@
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
     <value>Crystallography.Controls.UserControlBase, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
   </data>
+  <data name="buttonMag1.ToolTip" xml:space="preserve">
+    <value>Set the display zoom to 1:1 (×1,
+one screen pixel per image pixel).</value>
+  </data>
+  <data name="buttonMag2.ToolTip" xml:space="preserve">
+    <value>Set the display zoom to ×2 (2× enlargement).</value>
+  </data>
+  <data name="buttonMag4.ToolTip" xml:space="preserve">
+    <value>Set the display zoom to ×4 (4× enlargement).</value>
+  </data>
+  <data name="buttonMag_16.ToolTip" xml:space="preserve">
+    <value>Set the display zoom to ×1/16 (reduce to 1/16 size).</value>
+  </data>
+  <data name="buttonMag_2.ToolTip" xml:space="preserve">
+    <value>Set the display zoom to ×1/2 (reduce to half size).</value>
+  </data>
+  <data name="buttonMag_4.ToolTip" xml:space="preserve">
+    <value>Set the display zoom to ×1/4 (reduce to 1/4 size).</value>
+  </data>
+  <data name="buttonMag_8.ToolTip" xml:space="preserve">
+    <value>Set the display zoom to ×1/8 (reduce to 1/8 size).</value>
+  </data>
+  <data name="checkBoxDustScratches.ToolTip" xml:space="preserve">
+    <value>Apply a Dust &amp; Scratches filter that removes
+small spots and scratch-like artifacts by
+replacing pixels that deviate from their
+neighbors (set Radius and Threshold).</value>
+  </data>
+  <data name="checkBoxGaussianBlur.ToolTip" xml:space="preserve">
+    <value>Apply a Gaussian blur that smooths the image with a
+Gaussian kernel to suppress noise (set the FWHM width).</value>
+  </data>
+  <data name="comboBoxGradient.ToolTip" xml:space="preserve">
+    <value>Switch the display polarity: Positive shows
+intensities normally, Negative inverts the
+gray scale (bright and dark swapped).</value>
+  </data>
+  <data name="comboBoxScale1.ToolTip" xml:space="preserve">
+    <value>Choose how intensity maps to brightness: Linear
+(proportional) or Log (logarithmic, which
+reveals faint features alongside strong ones).</value>
+  </data>
+  <data name="comboBoxScale2.ToolTip" xml:space="preserve">
+    <value>Select the color map used to display intensity:
+Gray, Cold-Warm, Spectrum, or Fire (a false-color
+scheme can make intensity differences easier to see).</value>
+  </data>
+  <data name="label.ToolTip" xml:space="preserve">
+    <value>Shows the cursor position (X, Y in image
+pixels) and, for gray-scale images, the
+raw pixel value under the cursor.</value>
+  </data>
+  <data name="labelResolution.ToolTip" xml:space="preserve">
+    <value>Current display magnification (zoom factor)
+of the image; updates as you zoom or pan.</value>
+  </data>
+  <data name="numericBoxDustScratchesRadius.ToolTip" xml:space="preserve">
+    <value>Set the Dust &amp; Scratches filter radius in
+pixels (0-5). A larger radius removes larger
+spots/scratches but blurs more detail.</value>
+  </data>
+  <data name="numericBoxDustScratchesThreshold.ToolTip" xml:space="preserve">
+    <value>Set the Dust &amp; Scratches threshold (0-10).
+Only pixels differing from their neighbors
+by more than this are treated as defects
+and replaced; a lower value removes more.</value>
+  </data>
+  <data name="numericBoxGaussianFWHM.ToolTip" xml:space="preserve">
+    <value>Set the Gaussian blur width as FWHM (Full
+Width at Half Maximum) in pixels (0-100).
+A larger value blurs more strongly.</value>
+  </data>
+  <data name="toolStripStatusLabel1.ToolTipText" xml:space="preserve">
+    <value>Status bar showing processing messages,
+such as the elapsed time of the Dust &amp;
+Scratches and Gaussian Blur filters.</value>
+  </data>
+  <data name="trackBarAdvancedMaximum.ToolTip" xml:space="preserve">
+    <value>Set the upper intensity limit: pixel values
+above this are clipped to white (full
+brightness). Together with the Min. slider this
+sets the displayed brightness/contrast window.</value>
+  </data>
+  <data name="trackBarAdvancedMinimum.ToolTip" xml:space="preserve">
+    <value>Set the lower intensity limit: pixel values below this
+are clipped to black. Together with the Max. slider
+this sets the displayed brightness/contrast window.</value>
+  </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value>Current display magnification (zoom factor) of the image.</value>
+  </data>
+  <data name="label14.ToolTip" xml:space="preserve">
+    <value>Current display magnification
+(Magnification, zoom factor) of the image.</value>
+  </data>
+  <data name="label2.ToolTip" xml:space="preserve">
+    <value>Set the lower intensity limit: pixel values below this
+are clipped to black. Together with the Max. slider
+this sets the displayed brightness/contrast window.</value>
+  </data>
+  <data name="label3.ToolTip" xml:space="preserve">
+    <value>Set the upper intensity limit: pixel values
+above this are clipped to white (full
+brightness). Together with the Min. slider this
+sets the displayed brightness/contrast window.</value>
+  </data>
+  <data name="label5.ToolTip" xml:space="preserve">
+    <value>Switch the display polarity: Positive shows
+intensities normally, Negative inverts the
+gray scale (bright and dark swapped).</value>
+  </data>
+  <data name="label7.ToolTip" xml:space="preserve">
+    <value>Choose how intensity maps to brightness: Linear
+(proportional) or Log (logarithmic, which
+reveals faint features alongside strong ones).</value>
+  </data>
+  <data name="label9.ToolTip" xml:space="preserve">
+    <value>Select the color map used to display intensity:
+Gray, Cold-Warm, Spectrum, or Fire (a false-color
+scheme can make intensity differences easier to see).</value>
+  </data>
 </root>

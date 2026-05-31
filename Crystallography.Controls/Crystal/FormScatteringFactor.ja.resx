@@ -207,7 +207,8 @@
     <value>単位</value>
   </data>
   <data name="label8.ToolTip" xml:space="preserve">
-    <value>空間群を検索</value>
+    <value>d 値表示と d-spacing カットオフ入力に使う
+長さの単位 (Å または nm) を選択します。</value>
   </data>
   <data name="checkBoxTest.Size" type="System.Drawing.Size, System.Drawing">
     <value>52, 24</value>
@@ -250,5 +251,100 @@
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>散乱因子</value>
+  </data>
+  <data name="buttonCopyClipboard.ToolTip" xml:space="preserve">
+    <value>表示中の反射リスト(可視列、タブ
+区切り)をクリップボードにコピーします。</value>
+  </data>
+  <data name="checkBoxBragBrentano.ToolTip" xml:space="preserve">
+    <value>粉末回折強度を Bragg-Brentano 集中光学系
+(ローレンツ・偏光因子込み)で計算して表示します。
+等価面と禁制反射の非表示も自動で有効になります。</value>
+  </data>
+  <data name="checkBoxHideEquivalentPlane.ToolTip" xml:space="preserve">
+    <value>対称操作で等価な反射面をまとめて非表示に
+し、各組の代表面のみを表示します。</value>
+  </data>
+  <data name="checkBoxHideProhibitedPlanes.ToolTip" xml:space="preserve">
+    <value>消滅則(空間群の反射条件)で系統的に
+消滅する禁制反射を非表示にします。</value>
+  </data>
+  <data name="checkBoxTest.ToolTip" xml:space="preserve">
+    <value>テストモードを有効にし、任意の h/k/l 指数範囲(小数も
+可)を走査して構造因子を計算するパネルを表示します。</value>
+  </data>
+  <data name="dataGridView.ToolTip" xml:space="preserve">
+    <value>各反射の情報を表示する一覧表です。ミラー
+指数、面間隔 d、q、2θ、構造因子(実部/虚部
+/|F|/F^2)、相対強度、消滅条件を含みます。</value>
+  </data>
+  <data name="numericBoxCutoffD.ToolTip" xml:space="preserve">
+    <value>反射リストに含める最小の面間隔 d を設定します。
+これより小さい d の反射は除外されます。単位は
+長さ単位の選択 (Å または nm) に従います。</value>
+  </data>
+  <data name="numericBoxH_max.ToolTip" xml:space="preserve">
+    <value>テストモードで走査する反射指数 h の上限値です。</value>
+  </data>
+  <data name="numericBoxH_min.ToolTip" xml:space="preserve">
+    <value>テストモードで走査する反射指数 h の下限値。h min か
+ら h max まで h step 刻みで構造因子を計算します。</value>
+  </data>
+  <data name="numericBoxH_step.ToolTip" xml:space="preserve">
+    <value>テストモードで反射指数 h を走査する刻み幅です (0.001〜1)。</value>
+  </data>
+  <data name="numericBoxK_max.ToolTip" xml:space="preserve">
+    <value>テストモードで走査する反射指数 k の上限値です。</value>
+  </data>
+  <data name="numericBoxK_min.ToolTip" xml:space="preserve">
+    <value>テストモードで走査する反射指数 k の下限値。k
+min から k max まで k step 刻みで計算します。</value>
+  </data>
+  <data name="numericBoxK_step.ToolTip" xml:space="preserve">
+    <value>テストモードで反射指数 k を走査する刻み幅です (0.001〜1)。</value>
+  </data>
+  <data name="numericBoxL_max.ToolTip" xml:space="preserve">
+    <value>テストモードで走査する反射指数 l の上限値です。</value>
+  </data>
+  <data name="numericBoxL_min.ToolTip" xml:space="preserve">
+    <value>テストモードで走査する反射指数 l の下限値。l
+min から l max まで l step 刻みで計算します。</value>
+  </data>
+  <data name="numericBoxL_step.ToolTip" xml:space="preserve">
+    <value>テストモードで反射指数 l を走査する刻み幅です (0.001〜1)。</value>
+  </data>
+  <data name="radioButtonAngstrom.ToolTip" xml:space="preserve">
+    <value>長さの単位をオングストローム (1 Å = 0.1 nm) にします。
+d 値と d-spacing カットオフの表示・入力に反映されます。</value>
+  </data>
+  <data name="radioButtonNanoMeter.ToolTip" xml:space="preserve">
+    <value>長さの単位をナノメートル (1 nm = 10 Å) にします。d
+値と d-spacing カットオフの表示・入力に反映されます。</value>
+  </data>
+  <data name="waveLengthControl1.ToolTip" xml:space="preserve">
+    <value>放射線源(X線・電子線など)と波長・エネルギーを
+設定します。2θ や回折強度の計算に使われます。</value>
+  </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value>テストモードで走査する反射指数 h, k, l の下限値です。</value>
+  </data>
+  <data name="label3.ToolTip" xml:space="preserve">
+    <value>テストモードで走査する反射指数 h, k, l の上限値です。</value>
+  </data>
+  <data name="label4.ToolTip" xml:space="preserve">
+    <value>テストモードで反射指数 h, k, l を
+走査する刻み幅です (0.001〜1)。</value>
+  </data>
+  <data name="label5.ToolTip" xml:space="preserve">
+    <value>テストモードで走査する反射指数
+h の範囲 (最小/最大/刻み) です。</value>
+  </data>
+  <data name="label6.ToolTip" xml:space="preserve">
+    <value>テストモードで走査する反射指数
+k の範囲 (最小/最大/刻み) です。</value>
+  </data>
+  <data name="label7.ToolTip" xml:space="preserve">
+    <value>テストモードで走査する反射指数
+l の範囲 (最小/最大/刻み) です。</value>
   </data>
 </root>

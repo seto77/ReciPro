@@ -165,7 +165,9 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="radioButtonCBED.ToolTip" xml:space="preserve">
-    <value>CBED（収束電子回折）モード：各 Bragg 反射をディスクとして描き、入射ビーム傾斜に応じたディスク内強度分布を計算します。</value>
+    <value>CBED（収束電子回折）モード：各 Bragg
+反射をディスクとして描き、入射ビーム傾斜に
+応じたディスク内強度分布を計算します。</value>
   </data>
   <data name="radioButtonLACBED.Location" type="System.Drawing.Point, System.Drawing">
     <value>57, 2</value>
@@ -174,7 +176,8 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="radioButtonLACBED.ToolTip" xml:space="preserve">
-    <value>LACBED（大角度収束電子回折）モード：より広い収束角を使い、1つの反射を広い角度範囲にわたって記録します。</value>
+    <value>LACBED（大角度収束電子回折）モード：より広い収束角を
+使い、1つの反射を広い角度範囲にわたって記録します。</value>
   </data>
   <data name="flowLayoutPanel4.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 27</value>
@@ -198,7 +201,9 @@
     <value>159, 22</value>
   </data>
   <data name="numericBoxMaxNumOfG.ToolTip" xml:space="preserve">
-    <value>動力学的な多重散乱計算に含める回折波（Bloch 波）の本数 (1〜2048) を設定します。多いほど精度は上がりますが計算は遅くなります。</value>
+    <value>動力学的な多重散乱計算に含める回折波（Bloch
+波）の本数 (1〜2048) を設定します。多いほど
+精度は上がりますが計算は遅くなります。</value>
   </data>
   <data name="numericBoxMaxNumOfG.ToolTip1" xml:space="preserve">
     <value>計算する回折波の数を設定</value>
@@ -250,7 +255,9 @@
     <value>227, 22</value>
   </data>
   <data name="numericBoxDiskResolution.ToolTip" xml:space="preserve">
-    <value>各ディスクを横切る 1 画素あたりの角度刻み (mrad/pixel) を設定します。小さいほど右に表示される直径方向の分割数が増え、精細になりますが計算は遅くなります。</value>
+    <value>各ディスクを横切る 1 画素あたりの角度刻み (mrad/pixel)
+を設定します。小さいほど右に表示される直径方向の
+分割数が増え、精細になりますが計算は遅くなります。</value>
   </data>
   <data name="numericBoxDiskResolution.ToolTip1" xml:space="preserve">
     <value>直径に沿った分割数を設定します。
@@ -392,7 +399,9 @@
     <value>153, 21</value>
   </data>
   <data name="comboBoxSolver.ToolTip" xml:space="preserve">
-    <value>Bloch 波方程式の解き方（固有値問題/行列指数、Eigen/MKL ライブラリ）を選択します。結果は同じになる想定ですが速度が異なります。通常は Auto を使います。</value>
+    <value>Bloch 波方程式の解き方（固有値問題/行列指数、
+Eigen/MKL ライブラリ）を選択します。結果は同じになる
+想定ですが速度が異なります。通常は Auto を使います。</value>
   </data>
   <data name="numericBoxThread.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 2, 0, 0</value>
@@ -413,10 +422,14 @@
     <value>87, 22</value>
   </data>
   <data name="numericBoxThread.ToolTip" xml:space="preserve">
-    <value>CBED（収束電子回折）の Bloch 波計算に使う CPU スレッド数 (1〜128) を設定します。Solver が Auto のときは無効です。</value>
+    <value>CBED（収束電子回折）の Bloch 波計算に
+使う CPU スレッド数 (1〜128) を設定しま
+す。Solver が Auto のときは無効です。</value>
   </data>
   <data name="numericBoxThread.ToolTip1" xml:space="preserve">
-    <value>CBED（収束電子回折）の Bloch 波計算に使う CPU スレッド数 (1〜128) を設定します。Solver が Auto のときは無効です。</value>
+    <value>CBED（収束電子回折）の Bloch 波計算に
+使う CPU スレッド数 (1〜128) を設定しま
+す。Solver が Auto のときは無効です。</value>
   </data>
   <data name="buttonStop.Text" xml:space="preserve">
     <value>中止</value>
@@ -455,7 +468,8 @@
     <value>47, 2</value>
   </data>
   <data name="comboBoxGradient.ToolTip" xml:space="preserve">
-    <value>強度階調の向きを選択します。Positive は明るいほど強く、Negative は反転して暗いほど強く表示します。</value>
+    <value>強度階調の向きを選択します。Positive は明るいほど
+強く、Negative は反転して暗いほど強く表示します。</value>
   </data>
   <data name="label11.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
@@ -473,7 +487,8 @@
     <value>166, 2</value>
   </data>
   <data name="comboBoxScale.ToolTip" xml:space="preserve">
-    <value>ディスク強度を表示色に対応づけるカラースケール（Gray / Cold-Warm / Spectrum / Fire）を選択します。</value>
+    <value>ディスク強度を表示色に対応づけるカラースケール
+（Gray / Cold-Warm / Spectrum / Fire）を選択します。</value>
   </data>
   <data name="labelGamma.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
@@ -558,7 +573,8 @@
     <value>全ディスク共通</value>
   </data>
   <data name="radioButtonAllDisks.ToolTip" xml:space="preserve">
-    <value>すべてのディスクに同じ明るさレベル（最小/最大）を適用します。</value>
+    <value>すべてのディスクに同じ明るさ
+レベル（最小/最大）を適用します。</value>
   </data>
   <data name="radioButtonIndividualDisk.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
@@ -615,25 +631,34 @@
     <value>明るさがゼロとして表示される強度を設定します。</value>
   </data>
   <data name="label1.ToolTip" xml:space="preserve">
-    <value>すべてのディスクに同じ明るさレベル（最小/最大）を適用します。</value>
+    <value>すべてのディスクに同じ明るさ
+レベル（最小/最大）を適用します。</value>
   </data>
   <data name="label2.ToolTip" xml:space="preserve">
-    <value>各ディスクを横切る 1 画素あたりの角度刻み (mrad/pixel) です。小さいほど右に表示される直径方向の分割数が増え、精細になりますが計算は遅くなります。</value>
+    <value>各ディスクを横切る 1 画素あたりの角度刻み
+(mrad/pixel) です。小さいほど右に表示される直径方向の
+分割数が増え、精細になりますが計算は遅くなります。</value>
   </data>
   <data name="labelDivisionNumber.ToolTip" xml:space="preserve">
-    <value>設定された角度刻みから計算された、ディスク直径方向の分割数です。大きいほどディスクは精細ですが計算量が増えます。</value>
+    <value>設定された角度刻みから計算された、
+ディスク直径方向の分割数です。大きいほど
+ディスクは精細ですが計算量が増えます。</value>
   </data>
   <data name="labelGamma.ToolTip" xml:space="preserve">
-    <value>ガンマ値を設定します。この値が大きいほど、外側のディスクが明るく見えます。</value>
+    <value>ガンマ値を設定します。この値が大きいほ
+ど、外側のディスクが明るく見えます。</value>
   </data>
   <data name="label11.ToolTip" xml:space="preserve">
-    <value>カラースケール (Gray / Cold-Warm / Spectrum / Fire) を選択します。</value>
+    <value>カラースケール (Gray / Cold-Warm
+/ Spectrum / Fire) を選択します。</value>
   </data>
   <data name="label3.ToolTip" xml:space="preserve">
     <value>階調の向き (Positive / Negative＝反転) を選択します。</value>
   </data>
   <data name="label13.ToolTip" xml:space="preserve">
-    <value>Bloch 波方程式の解き方（固有値問題/行列指数、Eigen/MKL ライブラリ）を選択します。結果は同じになる想定ですが速度が異なります。通常は Auto を使います。</value>
+    <value>Bloch 波方程式の解き方（固有値問題/行列指数、
+Eigen/MKL ライブラリ）を選択します。結果は同じになる
+想定ですが速度が異なります。通常は Auto を使います。</value>
   </data>
   <data name="numericBoxAlphaMax.ToolTip" xml:space="preserve">
     <value>収束電子ビームの半頂角（半収束角）の最大値 (mrad)</value>

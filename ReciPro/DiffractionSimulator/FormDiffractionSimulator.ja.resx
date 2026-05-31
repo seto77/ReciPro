@@ -167,7 +167,8 @@
     <value>菊池線</value>
   </data>
   <data name="toolStripButtonKikuchiLines.ToolTipText" xml:space="preserve">
-    <value>チェックすると、菊池線（非弾性散乱後に Bragg 回折した電子が作る帯）をシミュレートします。</value>
+    <value>チェックすると、菊池線（非弾性散乱後に Bragg
+回折した電子が作る帯）をシミュレートします。</value>
   </data>
   <data name="toolStripButtonDebyeRing.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -191,7 +192,8 @@
     <value>デバイリング</value>
   </data>
   <data name="toolStripButtonDebyeRing.ToolTipText" xml:space="preserve">
-    <value>チェックすると、デバイリング（ランダム配向した結晶子による粉末回折リング）をシミュレートします。</value>
+    <value>チェックすると、デバイリング（ランダム配向した
+結晶子による粉末回折リング）をシミュレートします。</value>
   </data>
   <data name="toolStripButtonScale.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -290,7 +292,8 @@
     <value>29, 22</value>
   </data>
   <data name="toolStripButtonDspacingInv.ToolTipText" xml:space="preserve">
-    <value>チェックすると、面間隔の逆数（すなわちgベクトルの長さ）が表示されます</value>
+    <value>チェックすると、面間隔の逆数（すな
+わちgベクトルの長さ）が表示されます</value>
   </data>
   <data name="toolStripButtonDistance.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -314,7 +317,8 @@
     <value>距離</value>
   </data>
   <data name="toolStripButtonDistance.ToolTipText" xml:space="preserve">
-    <value>チェックすると、各スポットから透過スポットまでの距離(mm)が表示されます</value>
+    <value>チェックすると、各スポットから
+透過スポットまでの距離(mm)が表示されます</value>
   </data>
   <data name="toolStripButtonExcitationError.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -338,7 +342,9 @@
     <value>励起誤差</value>
   </data>
   <data name="toolStripButtonExcitationError.ToolTipText" xml:space="preserve">
-    <value>チェックすると、各スポットの励起誤差 s_g を表示します。逆格子点が厳密な Bragg 条件/Ewald 球からどれだけ外れているかを表します。</value>
+    <value>チェックすると、各スポットの励起誤差 s_g を
+表示します。逆格子点が厳密な Bragg 条件/Ewald
+球からどれだけ外れているかを表します。</value>
   </data>
   <data name="toolStripButtonFg.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -362,7 +368,9 @@
     <value>構造因子</value>
   </data>
   <data name="toolStripButtonFg.ToolTipText" xml:space="preserve">
-    <value>チェックすると、各スポットの構造因子の大きさ |Fg| を表示します。|Fg| が大きいほど、一般に強い反射を示します。</value>
+    <value>チェックすると、各スポットの構造因子の
+大きさ |Fg| を表示します。|Fg| が大き
+いほど、一般に強い反射を示します。</value>
   </data>
   <data name="toolStrip1.Location" type="System.Drawing.Point, System.Drawing">
     <value>273, 0</value>
@@ -556,10 +564,12 @@
     <value>301, 31</value>
   </data>
   <data name="numericBoxKikuchiThresholdOfLength.ToolTip" xml:space="preserve">
-    <value>1/d（逆格子長, nm⁻¹）がこの値未満の反射のみ菊池線を描画します（= d 値が 1/値 より大きい反射）。</value>
+    <value>1/d（逆格子長, nm⁻¹）がこの値未満の反射のみ菊池線を
+描画します（= d 値が 1/値 より大きい反射）。</value>
   </data>
   <data name="numericBoxKikuchiThresholdOfLength.ToolTip1" xml:space="preserve">
-    <value>1/d（逆格子長, nm⁻¹）がこの値未満の反射のみ菊池線を描画します（= d 値が 1/値 より大きい反射）。</value>
+    <value>1/d（逆格子長, nm⁻¹）がこの値未満の反射のみ菊池線を
+描画します（= d 値が 1/値 より大きい反射）。</value>
   </data>
   <data name="colorControlExcessLine.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
@@ -868,10 +878,14 @@
     <value>スポット半径</value>
   </data>
   <data name="numericBox3D_SpotRadius.ToolTip" xml:space="preserve">
-    <value>3D 逆空間ビューで描画する回折スポット球の半径 (nm⁻¹) を設定します。この距離内に Ewald 球がある点は近傍点として着色・ラベル表示できます。</value>
+    <value>3D 逆空間ビューで描画する回折スポット球の半径
+(nm⁻¹) を設定します。この距離内に Ewald 球があ
+る点は近傍点として着色・ラベル表示できます。</value>
   </data>
   <data name="numericBox3D_SpotRadius.ToolTip1" xml:space="preserve">
-    <value>3D 逆空間ビューで描画する回折スポット球の半径 (nm⁻¹) を設定します。この距離内に Ewald 球がある点は近傍点として着色・ラベル表示できます。</value>
+    <value>3D 逆空間ビューで描画する回折スポット球の半径
+(nm⁻¹) を設定します。この距離内に Ewald 球があ
+る点は近傍点として着色・ラベル表示できます。</value>
   </data>
   <data name="trackBar3D_Transparency.ToolTip" xml:space="preserve">
     <value>3Dスポットの透明度を設定</value>
@@ -917,7 +931,8 @@
     <value>背景色を設定</value>
   </data>
   <data name="numericBoxReciprocalThreshold.ToolTip" xml:space="preserve">
-    <value>逆格子点を表示する相対強度のしきい値(%)を設定します。これより弱いスポットは非表示になります。</value>
+    <value>逆格子点を表示する相対強度のしきい値(%)を設定し
+ます。これより弱いスポットは非表示になります。</value>
   </data>
   <data name="numericBoxReciprocalThreshold.ToolTip1" xml:space="preserve">
     <value>シミュレーションパターンのピクセルサイズを設定</value>
@@ -1750,10 +1765,14 @@
     <value>126, 27</value>
   </data>
   <data name="numericBoxPED_Semiangle.ToolTip" xml:space="preserve">
-    <value>PED（プリセッション電子回折）シミュレーションのプリセッション半角 (mrad) を設定します。入射ビームを傾けて積分する円錐の半頂角です。</value>
+    <value>PED（プリセッション電子回折）シミュレーション
+のプリセッション半角 (mrad) を設定します。
+入射ビームを傾けて積分する円錐の半頂角です。</value>
   </data>
   <data name="numericBoxPED_Semiangle.ToolTip1" xml:space="preserve">
-    <value>PED（プリセッション電子回折）シミュレーションのプリセッション半角 (mrad) を設定します。入射ビームを傾けて積分する円錐の半頂角です。</value>
+    <value>PED（プリセッション電子回折）シミュレーション
+のプリセッション半角 (mrad) を設定します。
+入射ビームを傾けて積分する円錐の半頂角です。</value>
   </data>
   <data name="numericBoxPED_Step.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
@@ -1771,10 +1790,14 @@
     <value>100, 27</value>
   </data>
   <data name="numericBoxPED_Step.ToolTip" xml:space="preserve">
-    <value>PED（プリセッション電子回折）シミュレーションで、プリセッション円錐を方位方向に分割する数を設定します。多いほど滑らかですが計算は遅くなります。</value>
+    <value>PED（プリセッション電子回折）シミュレーションで、
+プリセッション円錐を方位方向に分割する数を設定し
+ます。多いほど滑らかですが計算は遅くなります。</value>
   </data>
   <data name="numericBoxPED_Step.ToolTip1" xml:space="preserve">
-    <value>PED（プリセッション電子回折）シミュレーションで、プリセッション円錐を方位方向に分割する数を設定します。多いほど滑らかですが計算は遅くなります。</value>
+    <value>PED（プリセッション電子回折）シミュレーションで、
+プリセッション円錐を方位方向に分割する数を設定し
+ます。多いほど滑らかですが計算は遅くなります。</value>
   </data>
   <data name="flowLayoutPanelPED.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 752</value>
@@ -1807,10 +1830,14 @@
     <value>132, 25</value>
   </data>
   <data name="numericBoxNumOfBlochWave.ToolTip" xml:space="preserve">
-    <value>動力学的な多重散乱計算に含める回折波（Bloch 波）の本数を設定します。多いほど精度は上がりますが計算は遅くなります。</value>
+    <value>動力学的な多重散乱計算に含める
+回折波（Bloch 波）の本数を設定します。多い
+ほど精度は上がりますが計算は遅くなります。</value>
   </data>
   <data name="numericBoxNumOfBlochWave.ToolTip1" xml:space="preserve">
-    <value>動力学的な多重散乱計算に含める回折波（Bloch 波）の本数を設定します。多いほど精度は上がりますが計算は遅くなります。</value>
+    <value>動力学的な多重散乱計算に含める
+回折波（Bloch 波）の本数を設定します。多い
+ほど精度は上がりますが計算は遅くなります。</value>
   </data>
   <data name="numericBoxThickness.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
@@ -1921,10 +1948,14 @@
     <value>10, 65</value>
   </data>
   <data name="numericBoxSpotRadius.ToolTip" xml:space="preserve">
-    <value>回折スポットの半径または Gaussian の sigma を逆空間単位（表示時は nm⁻¹）で設定します。大きいほどスポットが太くなり、励起誤差の許容幅も広がります。</value>
+    <value>回折スポットの半径または Gaussian の sigma を
+逆空間単位（表示時は nm⁻¹）で設定します。大きいほど
+スポットが太くなり、励起誤差の許容幅も広がります。</value>
   </data>
   <data name="numericBoxSpotRadius.ToolTip1" xml:space="preserve">
-    <value>回折スポットの半径または Gaussian の sigma を逆空間単位（表示時は nm⁻¹）で設定します。大きいほどスポットが太くなり、励起誤差の許容幅も広がります。</value>
+    <value>回折スポットの半径または Gaussian の sigma を
+逆空間単位（表示時は nm⁻¹）で設定します。大きいほど
+スポットが太くなり、励起誤差の許容幅も広がります。</value>
   </data>
   <data name="checkBoxDrawSameSize.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
@@ -1939,7 +1970,8 @@
     <value>全てのスポットを同じ半径で描画</value>
   </data>
   <data name="checkBoxDrawSameSize.ToolTip" xml:space="preserve">
-    <value>チェックすると、すべての回折スポットが同じサイズで描画されます。</value>
+    <value>チェックすると、すべての回折スポット
+が同じサイズで描画されます。</value>
   </data>
   <data name="flowLayoutPanelPointSpreadIntensity.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1987,7 +2019,9 @@
     <value>112, 23</value>
   </data>
   <data name="comboBoxScaleColorScale.ToolTip" xml:space="preserve">
-    <value>回折スポットの強度を色に対応づけるカラースケールを選択します。既定以外では結晶ごとの割当色ではなく、強度に応じて着色します。</value>
+    <value>回折スポットの強度を色に対応づける
+カラースケールを選択します。既定以外では結晶ご
+との割当色ではなく、強度に応じて着色します。</value>
   </data>
   <data name="flowLayoutPanelScaleColor.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 23</value>
@@ -2234,7 +2268,9 @@
     <value>歳差 (X線, ZOLZ)</value>
   </data>
   <data name="radioButtonBeamPrecessionXray.ToolTip" xml:space="preserve">
-    <value>X線歳差モード（ZOLZ, 零次ラウエ帯）：零層の逆格子面を極投影で表示します。電子の PED（プリセッション電子回折）モードとは別です。</value>
+    <value>X線歳差モード（ZOLZ, 零次ラウエ帯）：零層の
+逆格子面を極投影で表示します。電子の
+PED（プリセッション電子回折）モードとは別です。</value>
   </data>
   <data name="flowLayoutPanelBeamMode.Size" type="System.Drawing.Size, System.Drawing">
     <value>207, 126</value>
@@ -2535,7 +2571,8 @@
     <value>マウス位置の実空間座標(mm 単位、原点は結晶)を表示します。</value>
   </data>
   <data name="label9.ToolTip" xml:space="preserve">
-    <value>マウス位置の検出器座標(mm 単位、原点は直接ビーム位置)を表示します。</value>
+    <value>マウス位置の検出器座標(mm 単位、
+原点は直接ビーム位置)を表示します。</value>
   </data>
   <data name="labelD.ToolTip" xml:space="preserve">
     <value>マウス位置に対応する面間隔 d (nm) を表示します。</value>
@@ -2544,7 +2581,8 @@
     <value>マウス位置に対応する逆格子間隔 d⁻¹ (nm⁻¹) を表示します。</value>
   </data>
   <data name="labelMousePositionDetector.ToolTip" xml:space="preserve">
-    <value>マウス位置の検出器座標(mm 単位、原点は直接ビーム位置)を表示します。</value>
+    <value>マウス位置の検出器座標(mm 単位、
+原点は直接ビーム位置)を表示します。</value>
   </data>
   <data name="labelMousePositionReal.ToolTip" xml:space="preserve">
     <value>マウス位置の実空間座標(mm 単位、原点は結晶)を表示します。</value>
@@ -2556,19 +2594,23 @@
     <value>マウス位置に対応する散乱角 2θ を度(°)で表示します。</value>
   </data>
   <data name="labelTwoThetaRad.ToolTip" xml:space="preserve">
-    <value>マウス位置に対応する散乱角 2θ をラジアン(0.1 rad 未満は mrad)で表示します。</value>
+    <value>マウス位置に対応する散乱角 2θ をラジアン
+(0.1 rad 未満は mrad)で表示します。</value>
   </data>
   <data name="checkBox3D_DirectionGuide.ToolTip" xml:space="preserve">
-    <value>チェックすると、3D 逆格子ビューに Beam/Top/Right の方向ガイド矢印を表示します。</value>
+    <value>チェックすると、3D 逆格子ビューに
+Beam/Top/Right の方向ガイド矢印を表示します。</value>
   </data>
   <data name="checkBox3D_EwaldSphere.ToolTip" xml:space="preserve">
     <value>チェックすると、3D 逆格子ビューにエワルド球を描画します。</value>
   </data>
   <data name="checkBox3D_MakeSpotsTransparent.ToolTip" xml:space="preserve">
-    <value>チェックすると、エワルド球から離れた逆格子点ほど透明にします。</value>
+    <value>チェックすると、エワルド球から
+離れた逆格子点ほど透明にします。</value>
   </data>
   <data name="checkBox3D_ShowIndices.ToolTip" xml:space="preserve">
-    <value>チェックすると、エワルド球近傍の逆格子点に hkl 指数のラベルを表示します。</value>
+    <value>チェックすると、エワルド球近傍の
+逆格子点に hkl 指数のラベルを表示します。</value>
   </data>
   <data name="colorControl3D_EwaldSphere.ToolTip" xml:space="preserve">
     <value>エワルド球面の表示色を設定します。</value>
@@ -2589,43 +2631,52 @@
     <value>Top(上)方向ガイド矢印の色を設定します。</value>
   </data>
   <data name="label21.ToolTip" xml:space="preserve">
-    <value>逆格子点を表示する相対強度のしきい値(%)を設定します。これより弱いスポットは非表示になります。</value>
+    <value>逆格子点を表示する相対強度のしきい値(%)を設定し
+ます。これより弱いスポットは非表示になります。</value>
   </data>
   <data name="checkBoxKikuchiLine_Kinematical.ToolTip" xml:space="preserve">
-    <value>チェックすると、各反射の運動学的相対強度に応じて菊池線の濃さを変化させます。</value>
+    <value>チェックすると、各反射の運動学的相対強
+度に応じて菊池線の濃さを変化させます。</value>
   </data>
   <data name="colorControlExcessLine.ToolTip" xml:space="preserve">
     <value>菊池線の色を設定します。</value>
   </data>
   <data name="numericBoxKikuchiThresholdOfStructureFactor.ToolTip" xml:space="preserve">
-    <value>構造因子（相対強度）の大きい順に菊池線を描画する本数を設定します。</value>
+    <value>構造因子（相対強度）の大きい順に
+菊池線を描画する本数を設定します。</value>
   </data>
   <data name="radioButtonKikuchiThresholdOfLength.ToolTip" xml:space="preserve">
     <value>菊池線に用いる反射を 1/d（d値）の閾値で選択します。</value>
   </data>
   <data name="radioButtonKikuchiThresholdOfStructureFactor.ToolTip" xml:space="preserve">
-    <value>菊池線に用いる反射を構造因子（相対強度）の大きい順に選択します。</value>
+    <value>菊池線に用いる反射を構造因子（相対
+強度）の大きい順に選択します。</value>
   </data>
   <data name="colorControlFoot.ToolTip" xml:space="preserve">
     <value>試料からの垂線の足の色を設定します。</value>
   </data>
   <data name="label13.ToolTip" xml:space="preserve">
-    <value>照射光学系（平行/SAED・収束/CBED・歳差/PED・バックラウエ）を選択します。</value>
+    <value>照射光学系（平行/SAED・収束/CBED・
+歳差/PED・バックラウエ）を選択します。</value>
   </data>
   <data name="label12.ToolTip" xml:space="preserve">
     <value>スケールの分割（目盛り）の細かさを設定します（細・中・粗）。</value>
   </data>
   <data name="label7.ToolTip" xml:space="preserve">
-    <value>回折スポット強度の計算方法（動力学ブロッホ波法／運動学的／励起誤差のみ）を選択します。</value>
+    <value>回折スポット強度の計算方法（動力学ブロッホ
+波法／運動学的／励起誤差のみ）を選択します。</value>
   </data>
   <data name="label2.ToolTip" xml:space="preserve">
-    <value>一般スポットおよび消滅則（格子心・らせん・映進）スポットの描画色を設定します。</value>
+    <value>一般スポットおよび消滅則（格子心・らせん
+・映進）スポットの描画色を設定します。</value>
   </data>
   <data name="checkBoxFlipHorizontally.ToolTip" xml:space="preserve">
-    <value>チェックすると、シミュレーション画像を水平（左右）反転します。</value>
+    <value>チェックすると、シミュレーション
+画像を水平（左右）反転します。</value>
   </data>
   <data name="checkBoxFlipVertically.ToolTip" xml:space="preserve">
-    <value>チェックすると、シミュレーション画像を垂直（上下）反転します。</value>
+    <value>チェックすると、シミュレーション
+画像を垂直（上下）反転します。</value>
   </data>
   <data name="checkBoxNegativeImage.ToolTip" xml:space="preserve">
     <value>チェックすると、画像の明暗を反転（ネガティブ表示）します。</value>
@@ -2652,7 +2703,8 @@
     <value>波源と加速電圧(波長)を設定します。</value>
   </data>
   <data name="comboBoxCenter.ToolTip" xml:space="preserve">
-    <value>モニター中心の基準点(直接スポット／垂線の足／検出器中心)を選択します。</value>
+    <value>モニター中心の基準点(直接スポット
+／垂線の足／検出器中心)を選択します。</value>
   </data>
   <data name="label25.ToolTip" xml:space="preserve">
     <value>カラースケールを設定</value>
@@ -2661,6 +2713,7 @@
     <value>3Dビューの視線方向を初期状態に戻します</value>
   </data>
   <data name="checkBoxReciprocalSpace.ToolTip" xml:space="preserve">
-    <value>チェックすると、3D逆空間ビュー(逆格子とエワルド球)を表示します</value>
+    <value>チェックすると、3D逆空間ビュー
+(逆格子とエワルド球)を表示します</value>
   </data>
 </root>

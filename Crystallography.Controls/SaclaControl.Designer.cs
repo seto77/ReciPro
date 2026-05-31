@@ -27,6 +27,10 @@
         // groupBox2 -> groupBoxOpticalProperty
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SaclaControl)); // 260531Cl
+            components = new System.ComponentModel.Container(); // (260531Ch)
+            toolTip = new System.Windows.Forms.ToolTip(components); // (260531Ch)
+            toolTip.IsBalloon = true; // 260531Cl 追加: バルーン表示に統一
             this.label3 = new System.Windows.Forms.Label();
             this.groupBoxDetectorProperty = new System.Windows.Forms.GroupBox();
             this.numericBoxPixelWidth = new Crystallography.Controls.NumericBox();
@@ -48,6 +52,7 @@
             this.label3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label3.Location = new System.Drawing.Point(6, 77);
             this.label3.Name = "label3";
+            this.toolTip.SetToolTip(this.label3, resources.GetString("label3.ToolTip")); // 260531Cl
             this.label3.Size = new System.Drawing.Size(31, 15);
             this.label3.TabIndex = 1;
             this.label3.Text = "Foot";
@@ -76,6 +81,7 @@
             this.numericBoxPixelWidth.MaximumSize = new System.Drawing.Size(1000, 25);
             this.numericBoxPixelWidth.MinimumSize = new System.Drawing.Size(1, 25);
             this.numericBoxPixelWidth.Name = "numericBoxPixelWidth";
+            this.toolTip.SetToolTip(this.numericBoxPixelWidth, resources.GetString("numericBoxPixelWidth.ToolTip")); // 260531Cl
             this.numericBoxPixelWidth.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
             this.numericBoxPixelWidth.RadianValue = 17.872171540421935D;
             this.numericBoxPixelWidth.RoundErrorAccuracy = -1;
@@ -100,6 +106,7 @@
             this.numericBoxPixelHeight.MaximumSize = new System.Drawing.Size(1000, 25);
             this.numericBoxPixelHeight.MinimumSize = new System.Drawing.Size(1, 25);
             this.numericBoxPixelHeight.Name = "numericBoxPixelHeight";
+            this.toolTip.SetToolTip(this.numericBoxPixelHeight, resources.GetString("numericBoxPixelHeight.ToolTip")); // 260531Cl
             this.numericBoxPixelHeight.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
             this.numericBoxPixelHeight.RadianValue = 17.872171540421935D;
             this.numericBoxPixelHeight.RoundErrorAccuracy = -1;
@@ -123,6 +130,7 @@
             this.numericBoxPixelSize.MaximumSize = new System.Drawing.Size(1000, 25);
             this.numericBoxPixelSize.MinimumSize = new System.Drawing.Size(1, 25);
             this.numericBoxPixelSize.Name = "numericBoxPixelSize";
+            this.toolTip.SetToolTip(this.numericBoxPixelSize, resources.GetString("numericBoxPixelSize.ToolTip")); // 260531Cl
             this.numericBoxPixelSize.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
             this.numericBoxPixelSize.RadianValue = 0.0008726646259971648D;
             this.numericBoxPixelSize.RoundErrorAccuracy = -1;
@@ -161,6 +169,7 @@
             this.numericBoxFootY.MaximumSize = new System.Drawing.Size(1000, 25);
             this.numericBoxFootY.MinimumSize = new System.Drawing.Size(1, 25);
             this.numericBoxFootY.Name = "numericBoxFootY";
+            this.toolTip.SetToolTip(this.numericBoxFootY, resources.GetString("numericBoxFootY.ToolTip")); // 260531Cl
             this.numericBoxFootY.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
             this.numericBoxFootY.RadianValue = 8.9360857702109673D;
             this.numericBoxFootY.RoundErrorAccuracy = 10;
@@ -184,6 +193,7 @@
             this.numericBoxFootX.MaximumSize = new System.Drawing.Size(1000, 25);
             this.numericBoxFootX.MinimumSize = new System.Drawing.Size(1, 25);
             this.numericBoxFootX.Name = "numericBoxFootX";
+            this.toolTip.SetToolTip(this.numericBoxFootX, resources.GetString("numericBoxFootX.ToolTip")); // 260531Cl
             this.numericBoxFootX.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
             this.numericBoxFootX.RadianValue = 8.9360857702109673D;
             this.numericBoxFootX.RoundErrorAccuracy = 10;
@@ -209,6 +219,7 @@
             this.numericBoxPhi.Minimum = -360D;
             this.numericBoxPhi.MinimumSize = new System.Drawing.Size(1, 25);
             this.numericBoxPhi.Name = "numericBoxPhi";
+            this.toolTip.SetToolTip(this.numericBoxPhi, resources.GetString("numericBoxPhi.ToolTip")); // 260531Cl
             this.numericBoxPhi.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
             this.numericBoxPhi.RoundErrorAccuracy = 10;
             this.numericBoxPhi.Size = new System.Drawing.Size(83, 25);
@@ -232,6 +243,7 @@
             this.numericBoxTau.Minimum = -90D;
             this.numericBoxTau.MinimumSize = new System.Drawing.Size(1, 25);
             this.numericBoxTau.Name = "numericBoxTau";
+            this.toolTip.SetToolTip(this.numericBoxTau, resources.GetString("numericBoxTau.ToolTip")); // 260531Cl
             this.numericBoxTau.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
             this.numericBoxTau.RadianValue = 0.3490658503988659D;
             this.numericBoxTau.RoundErrorAccuracy = 10;
@@ -255,6 +267,7 @@
             this.numericBoxDistance.MaximumSize = new System.Drawing.Size(1000, 25);
             this.numericBoxDistance.MinimumSize = new System.Drawing.Size(1, 25);
             this.numericBoxDistance.Name = "numericBoxDistance";
+            this.toolTip.SetToolTip(this.numericBoxDistance, resources.GetString("numericBoxDistance.ToolTip")); // 260531Cl
             this.numericBoxDistance.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
             this.numericBoxDistance.RadianValue = 5.2359877559829888D;
             this.numericBoxDistance.RoundErrorAccuracy = 10;
@@ -286,6 +299,8 @@
         }
 
         #endregion
+
+        private System.Windows.Forms.ToolTip toolTip; // (260531Ch)
 
         private NumericBox numericBoxPixelWidth;
         private NumericBox numericBoxPixelHeight;

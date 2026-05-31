@@ -586,10 +586,12 @@ limit it by this distance from the origin.</value>
     <value>1</value>
   </data>
   <data name="numericBoxTranslation.ToolTip" xml:space="preserve">
-    <value>Translation amount</value>
+    <value>Shift the bounding plane along its normal by this
+distance (Å); positive moves it away from the origin.</value>
   </data>
   <data name="numericBoxTranslation.ToolTip1" xml:space="preserve">
-    <value>平行移動量</value>
+    <value>Shift the bounding plane along its normal by this
+distance (Å); positive moves it away from the origin.</value>
   </data>
   <data name="&gt;&gt;numericBoxTranslation.Name" xml:space="preserve">
     <value>numericBoxTranslation</value>
@@ -1021,5 +1023,42 @@ limit it by this distance from the origin.</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
     <value>Crystallography.Controls.UserControlBase, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="buttonAddBond.ToolTip" xml:space="preserve">
+    <value>Add a new bounding plane to the list from the
+current index, distance, and color settings.</value>
+  </data>
+  <data name="colorControl.ToolTip" xml:space="preserve">
+    <value>Color used to render this bounding
+(clipping) plane in the crystal display.</value>
+  </data>
+  <data name="dataGridView.ToolTip" xml:space="preserve">
+    <value>List of defined bounding planes; tick the
+checkbox to enable/disable a plane, or select
+a row to load it into the editor above.</value>
+  </data>
+  <data name="numericBoxDistance.ToolTip" xml:space="preserve">
+    <value>Distance from the origin to the bounding plane,
+entered directly in angstroms (Å); kept in sync
+with the d-spacing multiple on the left.</value>
+  </data>
+  <data name="numericBoxDistanceD.ToolTip" xml:space="preserve">
+    <value>Distance from the origin to the bounding plane as a
+multiple of the (hkl) interplanar spacing d; kept
+in sync with the absolute Å value on the right.</value>
+  </data>
+  <data name="label3.ToolTip" xml:space="preserve">
+    <value>Shift the bounding plane along its normal by this
+distance (Å); positive moves it away from the origin.</value>
+  </data>
+  <data name="label6.ToolTip" xml:space="preserve">
+    <value>Distance from the crystal origin to the
+bounding plane, set as a multiple of the
+d-spacing (left) or directly in Å (right).</value>
+  </data>
+  <data name="indexControl1.ToolTip" xml:space="preserve">
+    <value>Miller indices (h k l) of the bounding
+plane's normal; defines the orientation
+of the plane that clips the crystal.</value>
   </data>
 </root>

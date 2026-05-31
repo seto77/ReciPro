@@ -24,6 +24,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormIsotopeComposition)); // 260531Cl
+            components = new System.ComponentModel.Container(); // (260531Ch)
+            toolTip = new System.Windows.Forms.ToolTip(components); // (260531Ch)
+            toolTip.IsBalloon = true; // 260531Cl 追加: バルーン表示に統一
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             // this.dataGridView = new System.Windows.Forms.DataGridView(); // 260518Cl 旧実装: DPI変更時に列幅が追従しない
@@ -51,6 +55,7 @@
             this.ColumnCustomAbundance});
             this.dataGridView.Location = new System.Drawing.Point(2, 1);
             this.dataGridView.Name = "dataGridView";
+            this.toolTip.SetToolTip(this.dataGridView, resources.GetString("dataGridView.ToolTip")); // 260531Cl
             this.dataGridView.RowHeadersVisible = false;
             //this.dataGridView.RowTemplate.Height = 21;                                                                                              // 260413Cl DPIスケーリング対応のため削除
             this.dataGridView.Size = new System.Drawing.Size(343, 231);
@@ -93,6 +98,7 @@
             this.button1.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.button1.Location = new System.Drawing.Point(189, 238);
             this.button1.Name = "button1";
+            this.toolTip.SetToolTip(this.button1, resources.GetString("button1.ToolTip")); // 260531Cl
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 1;
             this.button1.Text = "OK";
@@ -105,6 +111,7 @@
             this.buttonCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.buttonCancel.Location = new System.Drawing.Point(270, 238);
             this.buttonCancel.Name = "buttonCancel";
+            this.toolTip.SetToolTip(this.buttonCancel, resources.GetString("buttonCancel.ToolTip")); // 260531Cl
             this.buttonCancel.Size = new System.Drawing.Size(75, 23);
             this.buttonCancel.TabIndex = 1;
             this.buttonCancel.Text = "Cancel";
@@ -126,6 +133,8 @@
         }
 
         #endregion
+
+        private System.Windows.Forms.ToolTip toolTip; // (260531Ch)
 
         // private System.Windows.Forms.DataGridView dataGridView; // 260518Cl 旧実装
         private DpiAwareDataGridView dataGridView; // 260518Cl

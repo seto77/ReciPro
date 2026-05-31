@@ -184,7 +184,8 @@
     <value>381, 17</value>
   </metadata>
   <data name="comboBoxBondingAtom1.ToolTip" xml:space="preserve">
-    <value>Select an atom corresponding to the center</value>
+    <value>Select the element at the bond / polyhedron
+center (the coordinating central atom).</value>
   </data>
   <data name="&gt;&gt;comboBoxBondingAtom1.Name" xml:space="preserve">
     <value>comboBoxBondingAtom1</value>
@@ -223,7 +224,8 @@
     <value>2</value>
   </data>
   <data name="comboBoxBondingAtom2.ToolTip" xml:space="preserve">
-    <value>Select an atom corresponding to the vertices</value>
+    <value>Select the element at the bond / polyhedron
+vertices (the coordinated ligand atoms).</value>
   </data>
   <data name="&gt;&gt;comboBoxBondingAtom2.Name" xml:space="preserve">
     <value>comboBoxBondingAtom2</value>
@@ -769,10 +771,10 @@
     <value>9</value>
   </data>
   <data name="numericBoxBondRadius.ToolTip" xml:space="preserve">
-    <value>Radius of the bonds (cylinders)</value>
+    <value>Radius of the bond cylinders, in Å.</value>
   </data>
   <data name="numericBoxBondRadius.ToolTip1" xml:space="preserve">
-    <value>Radius of the bonds (cylinders)</value>
+    <value>Radius of the bond cylinders, in Å.</value>
   </data>
   <data name="&gt;&gt;numericBoxBondRadius.Name" xml:space="preserve">
     <value>numericBoxBondRadius</value>
@@ -1003,7 +1005,8 @@
     <value>Replace</value>
   </data>
   <data name="buttonChangeBond.ToolTip" xml:space="preserve">
-    <value>Replace the selected bond/polyhedron with the settings below.</value>
+    <value>Replace the selected bond/polyhedron
+with the settings below.</value>
   </data>
   <data name="&gt;&gt;buttonChangeBond.Name" xml:space="preserve">
     <value>buttonChangeBond</value>
@@ -1177,7 +1180,8 @@
     <value>0</value>
   </data>
   <data name="colorControlEdges.ToolTip" xml:space="preserve">
-    <value>Edge color of polyhedron</value>
+    <value>Color of the polyhedron edges (the
+coordination-polyhedron wireframe).</value>
   </data>
   <data name="colorControlEdges.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -1234,7 +1238,7 @@
     <value>3</value>
   </data>
   <data name="colorControlPolyhedron.ToolTip" xml:space="preserve">
-    <value>Face color of polyhedron</value>
+    <value>Color of the polyhedron faces (the coordination polyhedron).</value>
   </data>
   <data name="colorControlPolyhedron.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -1291,7 +1295,7 @@
     <value>7</value>
   </data>
   <data name="colorControlBond.ToolTip" xml:space="preserve">
-    <value>Bond color</value>
+    <value>Color of the bond cylinders.</value>
   </data>
   <data name="colorControlBond.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -1478,5 +1482,67 @@
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
     <value>Crystallography.Controls.UserControlBase, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="checkBoxShowBonds.ToolTip" xml:space="preserve">
+    <value>Show the bonds as cylinders, and enable the bond settings.</value>
+  </data>
+  <data name="checkBoxShowEdges.ToolTip" xml:space="preserve">
+    <value>Show the edges (wireframe) of the coordination
+polyhedron, and enable the edge-width setting.</value>
+  </data>
+  <data name="checkBoxShowInnerBonds.ToolTip" xml:space="preserve">
+    <value>Show the inner bonds (center-to-vertex
+bonds) inside the coordination polyhedron.</value>
+  </data>
+  <data name="checkBoxShowPolyhedron.ToolTip" xml:space="preserve">
+    <value>Show the coordination polyhedron,
+and enable the polyhedron settings.</value>
+  </data>
+  <data name="checkBoxShowVertexAtoms.ToolTip" xml:space="preserve">
+    <value>Show the vertex atoms (coordinated ligand
+atoms) of the coordination polyhedron.</value>
+  </data>
+  <data name="dataGridView.ToolTip" xml:space="preserve">
+    <value>List of defined bonds/polyhedra; select
+a row to edit it below, or toggle its
+Enabled / Show columns directly.</value>
+  </data>
+  <data name="numericBoxBondAlpha.ToolTip" xml:space="preserve">
+    <value>Opacity of the bond cylinders (0
+= fully transparent, 1 = opaque).</value>
+  </data>
+  <data name="numericBoxBondMaxLength.ToolTip" xml:space="preserve">
+    <value>Maximum interatomic distance (in Å)
+for two atoms to be treated as bonded.</value>
+  </data>
+  <data name="numericBoxBondMinLength.ToolTip" xml:space="preserve">
+    <value>Minimum interatomic distance (in Å)
+for two atoms to be treated as bonded.</value>
+  </data>
+  <data name="numericBoxEdgeWidth.ToolTip" xml:space="preserve">
+    <value>Line width of the polyhedron edges.</value>
+  </data>
+  <data name="numericBoxPolyhedronAlpha.ToolTip" xml:space="preserve">
+    <value>Opacity of the polyhedron faces (0
+= fully transparent, 1 = opaque).</value>
+  </data>
+  <data name="label39.ToolTip" xml:space="preserve">
+    <value>Select the pair of elements (center and
+vertex) that form the bond/polyhedron.</value>
+  </data>
+  <data name="label40.ToolTip" xml:space="preserve">
+    <value>Select the pair of elements (center and
+vertex) that form the bond/polyhedron.</value>
+  </data>
+  <data name="label57.ToolTip" xml:space="preserve">
+    <value>Select the element at the bond/polyhedron
+center (the coordinating central atom).</value>
+  </data>
+  <data name="label58.ToolTip" xml:space="preserve">
+    <value>Select the element at the bond/polyhedron
+vertices (the coordinated ligand atoms).</value>
+  </data>
+  <data name="checkBoxShowCenterAtom.ToolTip" xml:space="preserve">
+    <value>Show the central atom of the coordination polyhedron.</value>
   </data>
 </root>

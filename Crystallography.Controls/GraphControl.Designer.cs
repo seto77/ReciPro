@@ -26,7 +26,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GraphControl)); // 260531Cl
             components = new System.ComponentModel.Container();
+            toolTip = new System.Windows.Forms.ToolTip(components); // (260531Ch)
+            toolTip.IsBalloon = true; // 260531Cl 追加: バルーン表示に統一
             labelBlank = new System.Windows.Forms.Label();
             labelY = new System.Windows.Forms.Label();
             labelYValue = new System.Windows.Forms.Label();
@@ -152,6 +155,7 @@
             // toolStripMenuItemLogScaleX
             // 
             toolStripMenuItemLogScaleX.Name = "toolStripMenuItemLogScaleX";
+            toolStripMenuItemLogScaleX.ToolTipText = resources.GetString("toolStripMenuItemLogScaleX.ToolTipText"); // 260531Cl
             toolStripMenuItemLogScaleX.Size = new System.Drawing.Size(126, 22);
             toolStripMenuItemLogScaleX.Text = "Log Scale";
             toolStripMenuItemLogScaleX.Click += toolStripMenuItemLogScaleX_Click;
@@ -159,6 +163,7 @@
             // toolStripMenuItemLogScaleY
             // 
             toolStripMenuItemLogScaleY.Name = "toolStripMenuItemLogScaleY";
+            toolStripMenuItemLogScaleY.ToolTipText = resources.GetString("toolStripMenuItemLogScaleY.ToolTipText"); // 260531Cl
             toolStripMenuItemLogScaleY.Size = new System.Drawing.Size(126, 22);
             toolStripMenuItemLogScaleY.Text = "Log Scale";
             toolStripMenuItemLogScaleY.Click += toolStripMenuItemLogScaleY_Click;
@@ -173,6 +178,7 @@
             toolStripMenuItemScaleLineX.Checked = true;
             toolStripMenuItemScaleLineX.CheckState = System.Windows.Forms.CheckState.Checked;
             toolStripMenuItemScaleLineX.Name = "toolStripMenuItemScaleLineX";
+            toolStripMenuItemScaleLineX.ToolTipText = resources.GetString("toolStripMenuItemScaleLineX.ToolTipText"); // 260531Cl
             toolStripMenuItemScaleLineX.Size = new System.Drawing.Size(126, 22);
             toolStripMenuItemScaleLineX.Text = "Scale Line";
             toolStripMenuItemScaleLineX.Click += toolStripMenuItemScaleLineX_Click;
@@ -182,6 +188,7 @@
             toolStripMenuItemScaleLineY.Checked = true;
             toolStripMenuItemScaleLineY.CheckState = System.Windows.Forms.CheckState.Checked;
             toolStripMenuItemScaleLineY.Name = "toolStripMenuItemScaleLineY";
+            toolStripMenuItemScaleLineY.ToolTipText = resources.GetString("toolStripMenuItemScaleLineY.ToolTipText"); // 260531Cl
             toolStripMenuItemScaleLineY.Size = new System.Drawing.Size(126, 22);
             toolStripMenuItemScaleLineY.Text = "Scale Line";
             toolStripMenuItemScaleLineY.Click += toolStripMenuItemScaleLineY_Click;
@@ -218,6 +225,8 @@
         }
 
         #endregion
+
+        private System.Windows.Forms.ToolTip toolTip; // (260531Ch)
 
         private System.Windows.Forms.Label labelGraphTitle;
         private System.Windows.Forms.Label labelX;

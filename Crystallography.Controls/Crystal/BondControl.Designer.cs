@@ -71,6 +71,7 @@
             Center = new System.Windows.Forms.DataGridViewTextBoxColumn();
             Vertex = new System.Windows.Forms.DataGridViewTextBoxColumn();
             toolTip = new System.Windows.Forms.ToolTip(components);
+            toolTip.IsBalloon = true; // 260531Cl 追加: バルーン表示に統一
             groupBoxPolyhedron.SuspendLayout();
             groupBoxEdge.SuspendLayout();
             groupBoxBonds.SuspendLayout();
@@ -84,6 +85,7 @@
             // checkBoxShowPolyhedron
             // 
             resources.ApplyResources(checkBoxShowPolyhedron, "checkBoxShowPolyhedron");
+            toolTip.SetToolTip(checkBoxShowPolyhedron, resources.GetString("checkBoxShowPolyhedron.ToolTip")); // 260531Cl
             checkBoxShowPolyhedron.Checked = true;
             checkBoxShowPolyhedron.CheckState = System.Windows.Forms.CheckState.Checked;
             checkBoxShowPolyhedron.Name = "checkBoxShowPolyhedron";
@@ -108,21 +110,25 @@
             // label58
             // 
             resources.ApplyResources(label58, "label58");
+            toolTip.SetToolTip(label58, resources.GetString("label58.ToolTip")); // 260531Cl
             label58.Name = "label58";
             // 
             // label57
             // 
             resources.ApplyResources(label57, "label57");
+            toolTip.SetToolTip(label57, resources.GetString("label57.ToolTip")); // 260531Cl
             label57.Name = "label57";
             // 
             // label39
             // 
             resources.ApplyResources(label39, "label39");
+            toolTip.SetToolTip(label39, resources.GetString("label39.ToolTip")); // 260531Cl
             label39.Name = "label39";
             // 
             // label40
             // 
             resources.ApplyResources(label40, "label40");
+            toolTip.SetToolTip(label40, resources.GetString("label40.ToolTip")); // 260531Cl
             label40.Name = "label40";
             // 
             // groupBoxPolyhedron
@@ -140,6 +146,7 @@
             // numericBoxPolyhedronAlpha
             // 
             resources.ApplyResources(numericBoxPolyhedronAlpha, "numericBoxPolyhedronAlpha");
+            toolTip.SetToolTip(numericBoxPolyhedronAlpha, resources.GetString("numericBoxPolyhedronAlpha.ToolTip")); // 260531Cl
             numericBoxPolyhedronAlpha.BackColor = System.Drawing.SystemColors.Control;
             numericBoxPolyhedronAlpha.DecimalPlaces = 1;
             numericBoxPolyhedronAlpha.FooterBackColor = System.Drawing.SystemColors.Control;
@@ -158,6 +165,7 @@
             // checkBoxShowEdges
             // 
             resources.ApplyResources(checkBoxShowEdges, "checkBoxShowEdges");
+            toolTip.SetToolTip(checkBoxShowEdges, resources.GetString("checkBoxShowEdges.ToolTip")); // 260531Cl
             checkBoxShowEdges.Checked = true;
             checkBoxShowEdges.CheckState = System.Windows.Forms.CheckState.Checked;
             checkBoxShowEdges.Name = "checkBoxShowEdges";
@@ -174,6 +182,7 @@
             // numericBoxEdgeWidth
             // 
             resources.ApplyResources(numericBoxEdgeWidth, "numericBoxEdgeWidth");
+            toolTip.SetToolTip(numericBoxEdgeWidth, resources.GetString("numericBoxEdgeWidth.ToolTip")); // 260531Cl
             numericBoxEdgeWidth.BackColor = System.Drawing.SystemColors.Control;
             numericBoxEdgeWidth.DecimalPlaces = 1;
             numericBoxEdgeWidth.FooterBackColor = System.Drawing.SystemColors.Control;
@@ -192,6 +201,7 @@
             // checkBoxShowInnerBonds
             // 
             resources.ApplyResources(checkBoxShowInnerBonds, "checkBoxShowInnerBonds");
+            toolTip.SetToolTip(checkBoxShowInnerBonds, resources.GetString("checkBoxShowInnerBonds.ToolTip")); // 260531Cl
             checkBoxShowInnerBonds.Checked = true;
             checkBoxShowInnerBonds.CheckState = System.Windows.Forms.CheckState.Checked;
             checkBoxShowInnerBonds.Name = "checkBoxShowInnerBonds";
@@ -200,6 +210,7 @@
             // checkBoxShowVertexAtoms
             // 
             resources.ApplyResources(checkBoxShowVertexAtoms, "checkBoxShowVertexAtoms");
+            toolTip.SetToolTip(checkBoxShowVertexAtoms, resources.GetString("checkBoxShowVertexAtoms.ToolTip")); // 260531Cl
             checkBoxShowVertexAtoms.Checked = true;
             checkBoxShowVertexAtoms.CheckState = System.Windows.Forms.CheckState.Checked;
             checkBoxShowVertexAtoms.Name = "checkBoxShowVertexAtoms";
@@ -208,6 +219,7 @@
             // checkBoxShowCenterAtom
             // 
             resources.ApplyResources(checkBoxShowCenterAtom, "checkBoxShowCenterAtom");
+            toolTip.SetToolTip(checkBoxShowCenterAtom, resources.GetString("checkBoxShowCenterAtom.ToolTip")); // 260531Cl
             checkBoxShowCenterAtom.Checked = true;
             checkBoxShowCenterAtom.CheckState = System.Windows.Forms.CheckState.Checked;
             checkBoxShowCenterAtom.Name = "checkBoxShowCenterAtom";
@@ -232,6 +244,7 @@
             // numericBoxBondAlpha
             // 
             resources.ApplyResources(numericBoxBondAlpha, "numericBoxBondAlpha");
+            toolTip.SetToolTip(numericBoxBondAlpha, resources.GetString("numericBoxBondAlpha.ToolTip")); // 260531Cl
             numericBoxBondAlpha.BackColor = System.Drawing.SystemColors.Control;
             numericBoxBondAlpha.DecimalPlaces = 1;
             numericBoxBondAlpha.FooterBackColor = System.Drawing.SystemColors.Control;
@@ -269,6 +282,7 @@
             // numericBoxBondMaxLength
             // 
             resources.ApplyResources(numericBoxBondMaxLength, "numericBoxBondMaxLength");
+            toolTip.SetToolTip(numericBoxBondMaxLength, resources.GetString("numericBoxBondMaxLength.ToolTip")); // 260531Cl
             numericBoxBondMaxLength.BackColor = System.Drawing.SystemColors.Control;
             numericBoxBondMaxLength.DecimalPlaces = 3;
             numericBoxBondMaxLength.FooterBackColor = System.Drawing.SystemColors.Control;
@@ -287,6 +301,7 @@
             // numericBoxBondMinLength
             // 
             resources.ApplyResources(numericBoxBondMinLength, "numericBoxBondMinLength");
+            toolTip.SetToolTip(numericBoxBondMinLength, resources.GetString("numericBoxBondMinLength.ToolTip")); // 260531Cl
             numericBoxBondMinLength.BackColor = System.Drawing.SystemColors.Control;
             numericBoxBondMinLength.DecimalPlaces = 3;
             numericBoxBondMinLength.FooterBackColor = System.Drawing.SystemColors.Control;
@@ -305,6 +320,7 @@
             // checkBoxShowBonds
             // 
             resources.ApplyResources(checkBoxShowBonds, "checkBoxShowBonds");
+            toolTip.SetToolTip(checkBoxShowBonds, resources.GetString("checkBoxShowBonds.ToolTip")); // 260531Cl
             checkBoxShowBonds.Checked = true;
             checkBoxShowBonds.CheckState = System.Windows.Forms.CheckState.Checked;
             checkBoxShowBonds.Name = "checkBoxShowBonds";
@@ -361,6 +377,7 @@
             dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { enabledDataGridViewCheckBoxColumn1, centerDataGridViewTextBoxColumn1, vertexDataGridViewTextBoxColumn1, minLenDataGridViewTextBoxColumn1, maxLenDataGridViewTextBoxColumn1, showBondsDataGridViewCheckBoxColumn, showPolyhedronDataGridViewCheckBoxColumn });
             dataGridView.DataSource = bindingSource;
             resources.ApplyResources(dataGridView, "dataGridView");
+            toolTip.SetToolTip(dataGridView, resources.GetString("dataGridView.ToolTip")); // 260531Cl
             dataGridView.MultiSelect = false;
             dataGridView.Name = "dataGridView";
             dataGridView.RowHeadersVisible = false;

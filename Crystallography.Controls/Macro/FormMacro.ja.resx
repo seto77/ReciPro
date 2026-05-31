@@ -293,4 +293,78 @@
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
   </data>
+  <data name="buttonAdd.ToolTip" xml:space="preserve">
+    <value>現在エディタにあるマクロ(名前と本文)を
+新しい項目として一覧に追加します。</value>
+  </data>
+  <data name="buttonChange.ToolTip" xml:space="preserve">
+    <value>一覧で選択中のマクロを、現在の
+エディタの内容で上書き(置換)します。</value>
+  </data>
+  <data name="buttonDeleteProfile.ToolTip" xml:space="preserve">
+    <value>選択中のマクロを一覧から削除します。</value>
+  </data>
+  <data name="buttonLower.ToolTip" xml:space="preserve">
+    <value>選択中のマクロを一覧内で1つ下へ移動します。</value>
+  </data>
+  <data name="buttonNextStep.ToolTip" xml:space="preserve">
+    <value>ステップ実行中に次の1行へ進みます (ショートカット: F10)。</value>
+  </data>
+  <data name="buttonRunMacro.ToolTip" xml:space="preserve">
+    <value>エディタ内のマクロ (Python スクリプト)
+を最初から最後まで実行します。</value>
+  </data>
+  <data name="buttonStepByStep.ToolTip" xml:space="preserve">
+    <value>マクロを1行ずつ停止しながら実行します
+(デバッグモード)。各行で変数の値を確認できます。</value>
+  </data>
+  <data name="buttonStopMacro.ToolTip" xml:space="preserve">
+    <value>実行中のマクロを中断します (ステップ実行中に有効)。</value>
+  </data>
+  <data name="buttonUpper.ToolTip" xml:space="preserve">
+    <value>選択中のマクロを一覧内で1つ上へ移動します。</value>
+  </data>
+  <data name="checkBoxSamples.ToolTip" xml:space="preserve">
+    <value>組み込みのサンプルマクロ(読み取り専用)の
+表示を切り替えます。自作マクロは退避さ
+れ、チェックを外すと元に戻ります。</value>
+  </data>
+  <data name="dataGridView.ToolTip" xml:space="preserve">
+    <value>ReciPro が提供する組み込みマクロ関数とその
+説明の一覧です。関数をダブルクリックする
+と、エディタのカーソル位置に挿入されます。</value>
+  </data>
+  <data name="dataGridViewDebug.ToolTip" xml:space="preserve">
+    <value>デバッグ用のウォッチ表です。ステップ実行で停止中の行に
+おける、ローカル変数の名前と現在の値を表示します。</value>
+  </data>
+  <data name="label2.ToolTip" xml:space="preserve">
+    <value>マクロは基本的な Python 構文と、ReciPro が
+提供する組み込み関数を使って記述します。</value>
+  </data>
+  <data name="listBoxMacro.ToolTip" xml:space="preserve">
+    <value>保存済みマクロの一覧です。項目を選択すると、
+その名前と本文がエディタに読み込まれます。</value>
+  </data>
+  <data name="loadToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>マクロファイル (*.mcr) を開いてエディタに読み込みます。</value>
+  </data>
+  <data name="pyRichTextBox.ToolTip" xml:space="preserve">
+    <value>マクロ本体を編集するコードエディタです。こ
+こに Python (IronPython) スクリプトを記述し
+ます。オートコンプリート・行番号・エラー
+行のハイライトに対応しています。</value>
+  </data>
+  <data name="saveToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>現在のエディタの内容をマクロファイル
+(*.mcr) として保存します。</value>
+  </data>
+  <data name="textBoxMacroName.ToolTip" xml:space="preserve">
+    <value>マクロの名前を入力します。Add / Replace 時に一覧へ
+の登録名、およびメニューの項目名として使われます。</value>
+  </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value>マクロの名前を入力します。Add / Replace 時に一覧へ
+の登録名、およびメニューの項目名として使われます。</value>
+  </data>
 </root>

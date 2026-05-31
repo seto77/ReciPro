@@ -24,6 +24,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container(); // (260531Ch)
+            toolTip = new System.Windows.Forms.ToolTip(components); // (260531Ch)
+            toolTip.IsBalloon = true; // 260531Cl 追加: バルーン表示に統一
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PoleFigureControl2));
             pictureBox = new System.Windows.Forms.PictureBox();
             pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -58,6 +61,7 @@
             // 
             numericBoxResolution.BackColor = System.Drawing.Color.Transparent;
             resources.ApplyResources(numericBoxResolution, "numericBoxResolution");
+            toolTip.SetToolTip(numericBoxResolution, resources.GetString("numericBoxResolution.ToolTip")); // 260531Cl
             numericBoxResolution.Maximum = 30D;
             numericBoxResolution.Minimum = 1D;
             numericBoxResolution.Name = "numericBoxResolution";
@@ -70,12 +74,14 @@
             // label9
             // 
             resources.ApplyResources(label9, "label9");
+            toolTip.SetToolTip(label9, resources.GetString("label9.ToolTip")); // 260531Cl
             label9.Name = "label9";
             // 
             // comboBoxColor
             // 
             comboBoxColor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             resources.ApplyResources(comboBoxColor, "comboBoxColor");
+            toolTip.SetToolTip(comboBoxColor, resources.GetString("comboBoxColor.ToolTip")); // 260531Cl
             comboBoxColor.FormattingEnabled = true;
             comboBoxColor.Items.AddRange(new object[] { resources.GetString("comboBoxColor.Items"), resources.GetString("comboBoxColor.Items1") });
             comboBoxColor.Name = "comboBoxColor";
@@ -85,6 +91,7 @@
             // 
             numericBoxMax.BackColor = System.Drawing.Color.Transparent;
             resources.ApplyResources(numericBoxMax, "numericBoxMax");
+            toolTip.SetToolTip(numericBoxMax, resources.GetString("numericBoxMax.ToolTip")); // 260531Cl
             numericBoxMax.Maximum = 100000000D;
             numericBoxMax.Minimum = 0D;
             numericBoxMax.Name = "numericBoxMax";
@@ -99,6 +106,7 @@
             // 
             numericBoxMin.BackColor = System.Drawing.Color.Transparent;
             resources.ApplyResources(numericBoxMin, "numericBoxMin");
+            toolTip.SetToolTip(numericBoxMin, resources.GetString("numericBoxMin.ToolTip")); // 260531Cl
             numericBoxMin.Maximum = 10000D;
             numericBoxMin.Minimum = 0D;
             numericBoxMin.Name = "numericBoxMin";
@@ -110,6 +118,7 @@
             // label1
             // 
             resources.ApplyResources(label1, "label1");
+            toolTip.SetToolTip(label1, resources.GetString("label1.ToolTip")); // 260531Cl
             label1.BackColor = System.Drawing.Color.White;
             label1.Name = "label1";
             // 
@@ -151,6 +160,8 @@
         }
 
         #endregion
+
+        private System.Windows.Forms.ToolTip toolTip; // (260531Ch)
         private System.Windows.Forms.PictureBox pictureBox;
         private System.Windows.Forms.PictureBox pictureBox1;
         //private System.Windows.Forms.Label label7; //260317Cl 未使用フィールド削除

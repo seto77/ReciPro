@@ -24,6 +24,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TrackBarAdvanced)); // 260531Cl
+            components = new System.ComponentModel.Container(); // (260531Ch)
+            toolTip = new System.Windows.Forms.ToolTip(components); // (260531Ch)
+            toolTip.IsBalloon = true; // 260531Cl 追加: バルーン表示に統一
             trackBar = new System.Windows.Forms.TrackBar();
             numericBox = new NumericBox();
             splitContainer = new System.Windows.Forms.SplitContainer();
@@ -42,6 +46,7 @@
             trackBar.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             trackBar.Maximum = 1000000;
             trackBar.Name = "trackBar";
+            toolTip.SetToolTip(trackBar, resources.GetString("trackBar.ToolTip")); // 260531Cl
             trackBar.Size = new System.Drawing.Size(166, 26);
             trackBar.SmallChange = 2000;
             trackBar.TabIndex = 1;
@@ -60,6 +65,7 @@
             numericBox.MaximumSize = new System.Drawing.Size(1000, 30);
             numericBox.MinimumSize = new System.Drawing.Size(1, 20);
             numericBox.Name = "numericBox";
+            toolTip.SetToolTip(numericBox, resources.GetString("numericBox.ToolTip")); // 260531Cl
             numericBox.RoundErrorAccuracy = -1;
             numericBox.ShowUpDown = true;
             numericBox.Size = new System.Drawing.Size(84, 25);
@@ -109,6 +115,8 @@
         }
 
         #endregion
+
+        private System.Windows.Forms.ToolTip toolTip; // (260531Ch)
 
         private System.Windows.Forms.TrackBar trackBar;
         private NumericBox numericBox;

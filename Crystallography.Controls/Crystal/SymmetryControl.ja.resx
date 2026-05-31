@@ -156,7 +156,8 @@
     <value>誤差表示</value>
   </data>
   <data name="checkBoxShowError.ToolTip" xml:space="preserve">
-    <value>誤差を表示</value>
+    <value>格子定数の ± 誤差（推定標準偏差,
+esd）欄の表示／非表示を切り替えます。</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="tableLayoutPanel1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
@@ -196,7 +197,7 @@
     <value>長さの単位</value>
   </data>
   <data name="label1.ToolTip" xml:space="preserve">
-    <value>空間群の検索</value>
+    <value>格子定数 a, b, c の長さ単位（Å または nm）を選択します。</value>
   </data>
   <data name="label48.Location" type="System.Drawing.Point, System.Drawing">
     <value>331, 54</value>
@@ -259,10 +260,12 @@
     <value>69, 27</value>
   </data>
   <data name="numericBoxA.ToolTip" xml:space="preserve">
-    <value>格子定数 a</value>
+    <value>単位胞の格子定数 a（単位は Å / nm 切替）。
+結晶系の制約に従って入力されます。</value>
   </data>
   <data name="numericBoxA.ToolTip1" xml:space="preserve">
-    <value>格子定数 a</value>
+    <value>単位胞の格子定数 a（単位は Å / nm 切替）。
+結晶系の制約に従って入力されます。</value>
   </data>
   <data name="label26.Location" type="System.Drawing.Point, System.Drawing">
     <value>179, 0</value>
@@ -301,10 +304,12 @@
     <value>69, 27</value>
   </data>
   <data name="numericBoxB.ToolTip" xml:space="preserve">
-    <value>格子定数 b</value>
+    <value>単位胞の格子定数 b（単位は Å / nm 切替）。
+対称性により a に固定される場合があります。</value>
   </data>
   <data name="numericBoxB.ToolTip1" xml:space="preserve">
-    <value>格子定数 b</value>
+    <value>単位胞の格子定数 b（単位は Å / nm 切替）。
+対称性により a に固定される場合があります。</value>
   </data>
   <data name="label24.Size" type="System.Drawing.Size, System.Drawing">
     <value>14, 15</value>
@@ -334,10 +339,12 @@
     <value>69, 28</value>
   </data>
   <data name="numericBoxC.ToolTip" xml:space="preserve">
-    <value>格子定数 c</value>
+    <value>単位胞の格子定数 c（単位は Å / nm 切替）。
+対称性により a に固定される場合があります。</value>
   </data>
   <data name="numericBoxC.ToolTip1" xml:space="preserve">
-    <value>格子定数 c</value>
+    <value>単位胞の格子定数 c（単位は Å / nm 切替）。
+対称性により a に固定される場合があります。</value>
   </data>
   <data name="numericBoxCErr.Location" type="System.Drawing.Point, System.Drawing">
     <value>83, 54</value>
@@ -373,7 +380,8 @@
     <value>179, 23</value>
   </data>
   <data name="comboBoxSpaceGroup.ToolTip" xml:space="preserve">
-    <value>HM記法で空間群を設定</value>
+    <value>空間群を（番号 : Hermann–Mauguin (HM) 記号で）選択し
+ます。編集可能な格子定数が対称性で制限されます。</value>
   </data>
   <data name="comboBoxPointGroup.Location" type="System.Drawing.Point, System.Drawing">
     <value>53, 45</value>
@@ -382,7 +390,8 @@
     <value>179, 23</value>
   </data>
   <data name="comboBoxPointGroup.ToolTip" xml:space="preserve">
-    <value>HM記法で点群を設定</value>
+    <value>点群を Hermann–Mauguin (HM) 記号で選択しま
+す。選択に応じて空間群の候補が絞られます。</value>
   </data>
   <data name="comboBoxCrystalSystem.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
@@ -418,7 +427,8 @@
     <value>179, 26</value>
   </data>
   <data name="comboBoxCrystalSystem.ToolTip" xml:space="preserve">
-    <value>結晶系を設定</value>
+    <value>結晶系（三斜晶系〜立方晶系）を選択しま
+す。どの格子定数が独立かが決まります。</value>
   </data>
   <data name="label20.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
@@ -430,7 +440,8 @@
     <value>空間群</value>
   </data>
   <data name="label20.ToolTip" xml:space="preserve">
-    <value>HM記法で空間群を設定</value>
+    <value>空間群を（番号 : Hermann–Mauguin (HM) 記号で）選択し
+ます。編集可能な格子定数が対称性で制限されます。</value>
   </data>
   <data name="label17.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
@@ -445,7 +456,8 @@
     <value>検索</value>
   </data>
   <data name="label17.ToolTip" xml:space="preserve">
-    <value>空間群を検索</value>
+    <value>Hermann–Mauguin (HM) 記号の文字で空間群を検索します。
+結果は一覧に表示されます（下付きは "sub" と入力）。</value>
   </data>
   <data name="label19.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
@@ -460,13 +472,15 @@
     <value>結晶系</value>
   </data>
   <data name="label19.ToolTip" xml:space="preserve">
-    <value>結晶系を設定</value>
+    <value>結晶系（三斜晶系〜立方晶系）を選択しま
+す。どの格子定数が独立かが決まります。</value>
   </data>
   <data name="textBoxSearch.Location" type="System.Drawing.Point, System.Drawing">
     <value>54, 105</value>
   </data>
   <data name="textBoxSearch.ToolTip" xml:space="preserve">
-    <value>空間群を検索</value>
+    <value>Hermann–Mauguin (HM) 記号の文字で空間群を検索します。
+結果は一覧に表示されます（下付きは "sub" と入力）。</value>
   </data>
   <data name="label21.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
@@ -478,7 +492,8 @@
     <value>点群</value>
   </data>
   <data name="label21.ToolTip" xml:space="preserve">
-    <value>HM記法で点群を設定</value>
+    <value>点群を Hermann–Mauguin (HM) 記号で選択しま
+す。選択に応じて空間群の候補が絞られます。</value>
   </data>
   <data name="comboBoxSearchResult.Size" type="System.Drawing.Size, System.Drawing">
     <value>112, 23</value>
@@ -491,5 +506,45 @@
   </data>
   <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
     <value>596, 132</value>
+  </data>
+  <data name="comboBoxSearchResult.ToolTip" xml:space="preserve">
+    <value>検索に一致した空間群（番号 :
+Hermann–Mauguin 記号）の一覧。選択すると
+上の結晶系・点群・空間群に反映されます。</value>
+  </data>
+  <data name="numericBoxAErr.ToolTip" xml:space="preserve">
+    <value>格子定数 a の推定標準偏差（± 誤差）。単位は a と同じ。</value>
+  </data>
+  <data name="numericBoxAlphaErr.ToolTip" xml:space="preserve">
+    <value>格子定数 α の推定標準偏差（± 誤差、度）。</value>
+  </data>
+  <data name="numericBoxBErr.ToolTip" xml:space="preserve">
+    <value>格子定数 b の推定標準偏差（± 誤差）。単位は b と同じ。</value>
+  </data>
+  <data name="numericBoxBetaErr.ToolTip" xml:space="preserve">
+    <value>格子定数 β の推定標準偏差（± 誤差、度）。</value>
+  </data>
+  <data name="numericBoxCErr.ToolTip" xml:space="preserve">
+    <value>格子定数 c の推定標準偏差（± 誤差）。単位は c と同じ。</value>
+  </data>
+  <data name="numericBoxGammaErr.ToolTip" xml:space="preserve">
+    <value>格子定数 γ の推定標準偏差（± 誤差、度）。</value>
+  </data>
+  <data name="radioButtonAngstrom.ToolTip" xml:space="preserve">
+    <value>格子定数 a, b, c の長さ単位をオングストローム
+(Å) にします。入力済みの値は自動換算されます。</value>
+  </data>
+  <data name="radioButtonNanoMeter.ToolTip" xml:space="preserve">
+    <value>格子定数 a, b, c の長さ単位をナノメートル (nm)
+にします。入力済みの値は自動換算されます。</value>
+  </data>
+  <data name="labelLengthUnitA.ToolTip" xml:space="preserve">
+    <value>格子定数 a の長さ単位（Å または nm。単位セレクタで切替）。</value>
+  </data>
+  <data name="labelLengthUnitB.ToolTip" xml:space="preserve">
+    <value>格子定数 b の長さ単位（Å または nm。単位セレクタで切替）。</value>
+  </data>
+  <data name="labelLengthUnitC.ToolTip" xml:space="preserve">
+    <value>格子定数 c の長さ単位（Å または nm。単位セレクタで切替）。</value>
   </data>
 </root>

@@ -206,7 +206,9 @@
     <value>47, 24</value>
   </data>
   <data name="numericBoxStress13.ToolTip1" xml:space="preserve">
-    <value />
+    <value>Shear stress component σ13 of the applied
+stress tensor used in the Reuss model, in
+the same unit as the elastic constants (GPa).</value>
   </data>
   <data name="poleFigureControl.TabIndex" type="System.Int32, mscorlib">
     <value>133</value>
@@ -266,10 +268,14 @@
     <value>275, 4</value>
   </data>
   <data name="numericBoxStress23.ToolTip1" xml:space="preserve">
-    <value />
+    <value>Shear stress component σ23 of the applied
+stress tensor used in the Reuss model, in
+the same unit as the elastic constants (GPa).</value>
   </data>
   <data name="numericBoxStress12.ToolTip" xml:space="preserve">
-    <value />
+    <value>Shear stress component σ12 of the applied
+stress tensor used in the Reuss model, in
+the same unit as the elastic constants (GPa).</value>
   </data>
   <data name="&gt;&gt;sendThisCrystalToOtherSoftwareToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -302,8 +308,8 @@
     <value>1000, 27</value>
   </data>
   <data name="colorControl.ToolTip1" xml:space="preserve">
-    <value>Profile color
-</value>
+    <value>Display color of this crystal, used both in the 3D
+structure view and in the diffraction-profile curves.</value>
   </data>
   <data name="&gt;&gt;toolStripSeparator3.Name" xml:space="preserve">
     <value>toolStripSeparator3</value>
@@ -366,7 +372,9 @@
     <value>Density in g/cm³</value>
   </data>
   <data name="numericBoxStrain12.ToolTip1" xml:space="preserve">
-    <value />
+    <value>Shear strain component ε12 of the
+imposed lattice-strain tensor used
+in the Voigt model (dimensionless).</value>
   </data>
   <data name="textBoxFormula.TabIndex" type="System.Int32, mscorlib">
     <value>76</value>
@@ -384,7 +392,9 @@
     <value>Strain Control</value>
   </data>
   <data name="numericBoxStress22.ToolTip1" xml:space="preserve">
-    <value />
+    <value>Normal stress component σ22 (along b) of the
+applied stress tensor used in the Reuss model,
+in the same unit as the elastic constants (GPa).</value>
   </data>
   <data name="&gt;&gt;resetToolStripMenuItem.Name" xml:space="preserve">
     <value>resetToolStripMenuItem</value>
@@ -450,7 +460,10 @@
     <value />
   </data>
   <data name="numericBoxHill.ToolTip" xml:space="preserve">
-    <value />
+    <value>Hill averaging coefficient that blends the Voigt
+(uniform-strain) and Reuss (uniform-stress) models:
+0 uses the imposed strain only, 1 uses the strain
+derived from the applied stress (dimensionless).</value>
   </data>
   <data name="sendThisCrystalToOtherSoftwareToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>252, 22</value>
@@ -585,7 +598,7 @@
     <value>numericBoxStrain22</value>
   </data>
   <data name="label22.ToolTip" xml:space="preserve">
-    <value />
+    <value>Name of the crystal</value>
   </data>
   <data name="textBoxFormula.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9.75pt</value>
@@ -702,10 +715,15 @@
     <value>textBoxJournal</value>
   </data>
   <data name="label5.ToolTip" xml:space="preserve">
-    <value />
+    <value>Angular grid resolution (0.5-45 deg) for the
+polycrystalline orientation distribution and
+pole figure; a smaller value gives finer
+sampling but slower computation.</value>
   </data>
   <data name="numericUpDownCrystallineSize.ToolTip" xml:space="preserve">
-    <value />
+    <value>Crystallite (grain) size in nm (1-1000); it sets
+the reciprocal-lattice point size (peak
+broadening) and the diffraction volume weighting.</value>
   </data>
   <data name="&gt;&gt;latticePlaneControl.ZOrder" xml:space="preserve">
     <value>0</value>
@@ -792,7 +810,9 @@
     <value>asCTFFilecomatibleToCHANNEL5FileToolStripMenuItem</value>
   </data>
   <data name="numericBoxStrain13.ToolTip" xml:space="preserve">
-    <value />
+    <value>Shear strain component ε13 of the
+imposed lattice-strain tensor used
+in the Voigt model (dimensionless).</value>
   </data>
   <data name="&gt;&gt;bondControl.Type" xml:space="preserve">
     <value>Crystallography.Controls.BondInputControl, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
@@ -864,7 +884,10 @@
     <value>numericBoxStress11</value>
   </data>
   <data name="buttonChangeAxesOriginSetting.ToolTip" xml:space="preserve">
-    <value />
+    <value>Convert the cell to a different axis/origin
+setting of the same space group (e.g. an
+alternative origin choice or cell choice
+for the same Hermann–Mauguin number).</value>
   </data>
   <data name="contextMenuStrip2.ToolTip" xml:space="preserve">
     <value />
@@ -900,7 +923,9 @@
     <value>136</value>
   </data>
   <data name="numericBoxStrain11.ToolTip1" xml:space="preserve">
-    <value />
+    <value>Normal strain component ε11 (along a)
+of the imposed lattice-strain tensor
+used in the Voigt model (dimensionless).</value>
   </data>
   <data name="boundControl.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -933,7 +958,8 @@
     <value>Fill</value>
   </data>
   <data name="buttonGenerateRandomOrientations.ToolTip" xml:space="preserve">
-    <value />
+    <value>Generate a set of randomly oriented crystallites
+and display them in the pole figure.</value>
   </data>
   <data name="numericBoxZnumber.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9.75pt</value>
@@ -1050,7 +1076,9 @@
     <value>Segoe UI, 11pt</value>
   </data>
   <data name="numericBoxStress12.ToolTip1" xml:space="preserve">
-    <value />
+    <value>Shear stress component σ12 of the applied
+stress tensor used in the Reuss model, in
+the same unit as the elastic constants (GPa).</value>
   </data>
   <data name="label29.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -1242,7 +1270,9 @@
     <value>258, 46</value>
   </data>
   <data name="numericBoxStrain11.ToolTip" xml:space="preserve">
-    <value />
+    <value>Normal strain component ε11 (along a)
+of the imposed lattice-strain tensor
+used in the Voigt model (dimensionless).</value>
   </data>
   <data name="&gt;&gt;numericBoxStrain13.Type" xml:space="preserve">
     <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
@@ -1266,7 +1296,10 @@
     <value>Symmetry Information</value>
   </data>
   <data name="numericUpDownAngleResolution.ToolTip" xml:space="preserve">
-    <value />
+    <value>Angular grid resolution (0.5-45 deg) for the
+polycrystalline orientation distribution and
+pole figure; a smaller value gives finer
+sampling but slower computation.</value>
   </data>
   <data name="numericBoxStress13.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9.75pt</value>
@@ -1284,7 +1317,9 @@
     <value>Fill</value>
   </data>
   <data name="numericBoxStrain13.ToolTip1" xml:space="preserve">
-    <value />
+    <value>Shear strain component ε13 of the
+imposed lattice-strain tensor used
+in the Voigt model (dimensionless).</value>
   </data>
   <data name="atomControl.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
@@ -1329,7 +1364,8 @@
     <value>GrowAndShrink</value>
   </data>
   <data name="label109.ToolTip" xml:space="preserve">
-    <value />
+    <value>Applied stress tensor for the Reuss (uniform-stress)
+model; enter the six independent components (GPa).</value>
   </data>
   <data name="&gt;&gt;tabControl.Parent" xml:space="preserve">
     <value>$this</value>
@@ -1353,7 +1389,9 @@
     <value>12</value>
   </data>
   <data name="numericBoxStrain22.ToolTip" xml:space="preserve">
-    <value />
+    <value>Normal strain component ε22 (along b)
+of the imposed lattice-strain tensor
+used in the Voigt model (dimensionless).</value>
   </data>
   <data name="tabPageLatticePlane.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 3</value>
@@ -1449,7 +1487,10 @@
     <value>252, 22</value>
   </data>
   <data name="numericUpDownAngleSubDivision.ToolTip" xml:space="preserve">
-    <value />
+    <value>Number of sub-divisions per angular cell
+(1-45) used to sub-sample each orientation
+cell more finely; larger values smooth the
+distribution at higher computational cost.</value>
   </data>
   <data name="numericBoxVolumeAng.MaximumSize" type="System.Drawing.Size, System.Drawing">
     <value>1000, 28</value>
@@ -1518,7 +1559,8 @@
     <value>tabPageStrainStress</value>
   </data>
   <data name="textBoxTitle.ToolTip" xml:space="preserve">
-    <value />
+    <value>Title of the publication this
+crystal structure is taken from.</value>
   </data>
   <data name="numericBoxStrain33.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -2067,7 +2109,9 @@
     <value>asTXTFileallEulerAngleAndDensitySortedToolStripMenuItem</value>
   </data>
   <data name="numericBoxStrain33.ToolTip" xml:space="preserve">
-    <value />
+    <value>Normal strain component ε33 (along c)
+of the imposed lattice-strain tensor
+used in the Voigt model (dimensionless).</value>
   </data>
   <data name="groupBoxJournal.ToolTip" xml:space="preserve">
     <value />
@@ -2332,7 +2376,10 @@
     <value>tabPagePolycrystalline</value>
   </data>
   <data name="numericBoxHill.ToolTip1" xml:space="preserve">
-    <value />
+    <value>Hill averaging coefficient that blends the Voigt
+(uniform-strain) and Reuss (uniform-stress) models:
+0 uses the imposed strain only, 1 uses the strain
+derived from the applied stress (dimensionless).</value>
   </data>
   <data name="buttonStressSet.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 23</value>
@@ -2353,7 +2400,9 @@
     <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxStress11.ToolTip1" xml:space="preserve">
-    <value />
+    <value>Normal stress component σ11 (along a) of the
+applied stress tensor used in the Reuss model,
+in the same unit as the elastic constants (GPa).</value>
   </data>
   <data name="numericBoxDensity.MaximumSize" type="System.Drawing.Size, System.Drawing">
     <value>1000, 28</value>
@@ -2398,7 +2447,9 @@
     <value>2</value>
   </data>
   <data name="numericBoxStress22.ToolTip" xml:space="preserve">
-    <value />
+    <value>Normal stress component σ22 (along b) of the
+applied stress tensor used in the Reuss model,
+in the same unit as the elastic constants (GPa).</value>
   </data>
   <data name="labelLaTex11.Size" type="System.Drawing.Size, System.Drawing">
     <value>20, 20</value>
@@ -2557,7 +2608,9 @@
     <value>0</value>
   </data>
   <data name="numericBoxStress33.ToolTip1" xml:space="preserve">
-    <value />
+    <value>Normal stress component σ33 (along c) of the
+applied stress tensor used in the Reuss model,
+in the same unit as the elastic constants (GPa).</value>
   </data>
   <data name="&gt;&gt;numericBoxStress22.ZOrder" xml:space="preserve">
     <value>1</value>
@@ -2602,7 +2655,9 @@
     <value>47, 24</value>
   </data>
   <data name="numericBoxStress23.ToolTip" xml:space="preserve">
-    <value />
+    <value>Shear stress component σ23 of the applied
+stress tensor used in the Reuss model, in
+the same unit as the elastic constants (GPa).</value>
   </data>
   <data name="panelAtom.TabIndex" type="System.Int32, mscorlib">
     <value>65</value>
@@ -2632,7 +2687,9 @@
     <value>285, 162</value>
   </data>
   <data name="label102.ToolTip" xml:space="preserve">
-    <value />
+    <value>Imposed lattice-strain tensor for the
+Voigt (uniform-strain) model; enter the
+six independent components (dimensionless).</value>
   </data>
   <data name="flowLayoutPanelCellProperties.Size" type="System.Drawing.Size, System.Drawing">
     <value>453, 132</value>
@@ -2743,7 +2800,8 @@
     <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="textBoxJournal.ToolTip" xml:space="preserve">
-    <value />
+    <value>Journal in which the publication
+of this crystal structure appeared.</value>
   </data>
   <data name="&gt;&gt;numericUpDownCrystallineSize.Name" xml:space="preserve">
     <value>numericUpDownCrystallineSize</value>
@@ -2809,7 +2867,9 @@
     <value>panelSymmetryInfo</value>
   </data>
   <data name="numericBoxStress11.ToolTip" xml:space="preserve">
-    <value />
+    <value>Normal stress component σ11 (along a) of the
+applied stress tensor used in the Reuss model,
+in the same unit as the elastic constants (GPa).</value>
   </data>
   <data name="numericBoxCellMass.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>
@@ -2869,7 +2929,9 @@
     <value>122, 14</value>
   </data>
   <data name="numericBoxStrain23.ToolTip1" xml:space="preserve">
-    <value />
+    <value>Shear strain component ε23 of the
+imposed lattice-strain tensor used
+in the Voigt model (dimensionless).</value>
   </data>
   <data name="label117.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -2905,7 +2967,7 @@
     <value>NoControl</value>
   </data>
   <data name="textBoxMemo.ToolTip" xml:space="preserve">
-    <value />
+    <value>Free-form note or memo about this crystal.</value>
   </data>
   <data name="tabPageBounds.Size" type="System.Drawing.Size, System.Drawing">
     <value>459, 298</value>
@@ -2932,7 +2994,9 @@
     <value>labelLaTex1</value>
   </data>
   <data name="numericBoxStrain33.ToolTip1" xml:space="preserve">
-    <value />
+    <value>Normal strain component ε33 (along c)
+of the imposed lattice-strain tensor
+used in the Voigt model (dimensionless).</value>
   </data>
   <data name="&gt;&gt;numericBoxMolarVolume.Name" xml:space="preserve">
     <value>numericBoxMolarVolume</value>
@@ -2983,7 +3047,9 @@
     <value>109, 70</value>
   </data>
   <data name="label99.ToolTip" xml:space="preserve">
-    <value />
+    <value>Crystallite (grain) size in nm (1-1000); it sets
+the reciprocal-lattice point size (peak
+broadening) and the diffraction volume weighting.</value>
   </data>
   <data name="labelLaTex4.Location" type="System.Drawing.Point, System.Drawing">
     <value>71, 69</value>
@@ -3124,7 +3190,8 @@
     <value>Symmetry info.</value>
   </data>
   <data name="textBoxAuthor.ToolTip" xml:space="preserve">
-    <value />
+    <value>Author name(s) of the publication
+this crystal structure is taken from.</value>
   </data>
   <data name="numericUpDownAngleSubDivision.Location" type="System.Drawing.Point, System.Drawing">
     <value>219, 2</value>
@@ -3211,7 +3278,9 @@
     <value>87</value>
   </data>
   <data name="label101.ToolTip" xml:space="preserve">
-    <value />
+    <value>Crystallite (grain) size in nm (1-1000); it sets
+the reciprocal-lattice point size (peak
+broadening) and the diffraction volume weighting.</value>
   </data>
   <data name="&gt;&gt;labelLaTex13.Name" xml:space="preserve">
     <value>labelLaTex13</value>
@@ -3316,7 +3385,9 @@
     <value>GrowAndShrink</value>
   </data>
   <data name="numericBoxStress13.ToolTip" xml:space="preserve">
-    <value />
+    <value>Shear stress component σ13 of the applied
+stress tensor used in the Reuss model, in
+the same unit as the elastic constants (GPa).</value>
   </data>
   <data name="splitContainer1.Panel1.ToolTip" xml:space="preserve">
     <value />
@@ -3346,11 +3417,14 @@
     <value>groupBoxJournal</value>
   </data>
   <data name="colorControl.ToolTip" xml:space="preserve">
-    <value>Profile color
-</value>
+    <value>Display color of this crystal, used both in the 3D
+structure view and in the diffraction-profile curves.</value>
   </data>
   <data name="label29.ToolTip" xml:space="preserve">
-    <value />
+    <value>Number of sub-divisions per angular cell
+(1-45) used to sub-sample each orientation
+cell more finely; larger values smooth the
+distribution at higher computational cost.</value>
   </data>
   <data name="resetToolStripMenuItem.Text" xml:space="preserve">
     <value>Set Debye-Waller Factors to Zero</value>
@@ -3440,7 +3514,10 @@
     <value>1000, 27</value>
   </data>
   <data name="label117.ToolTip" xml:space="preserve">
-    <value />
+    <value>Hill averaging coefficient that blends the Voigt
+(uniform-strain) and Reuss (uniform-stress) models:
+0 uses the imposed strain only, 1 uses the strain
+derived from the applied stress (dimensionless).</value>
   </data>
   <data name="flowLayoutPanelRandomOrientationActions.Size" type="System.Drawing.Size, System.Drawing">
     <value>459, 27</value>
@@ -3467,7 +3544,9 @@
     <value>0, 0, 1, 0</value>
   </data>
   <data name="numericBoxStrain22.ToolTip1" xml:space="preserve">
-    <value />
+    <value>Normal strain component ε22 (along b)
+of the imposed lattice-strain tensor
+used in the Voigt model (dimensionless).</value>
   </data>
   <data name="numericBoxMolarMass.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
@@ -3530,7 +3609,9 @@
     <value>4, 26</value>
   </data>
   <data name="numericBoxStrain23.ToolTip" xml:space="preserve">
-    <value />
+    <value>Shear strain component ε23 of the
+imposed lattice-strain tensor used
+in the Voigt model (dimensionless).</value>
   </data>
   <data name="&gt;&gt;contextMenuStrip2.Name" xml:space="preserve">
     <value>contextMenuStrip2</value>
@@ -3596,7 +3677,8 @@
     <value>\epsilon_{12}</value>
   </data>
   <data name="buttonStressSet.ToolTip" xml:space="preserve">
-    <value />
+    <value>Apply the entered strain, stress
+and Hill coefficient to the crystal.</value>
   </data>
   <data name="tabPageElasticity.Text" xml:space="preserve">
     <value>Elasticity</value>
@@ -3758,7 +3840,9 @@
     <value>Z</value>
   </data>
   <data name="numericBoxStrain12.ToolTip" xml:space="preserve">
-    <value />
+    <value>Shear strain component ε12 of the
+imposed lattice-strain tensor used
+in the Voigt model (dimensionless).</value>
   </data>
   <data name="&gt;&gt;labelLaTex11.ZOrder" xml:space="preserve">
     <value>19</value>
@@ -3815,7 +3899,9 @@
     <value>labelLaTex10</value>
   </data>
   <data name="buttonConvertToSubgroup.ToolTip" xml:space="preserve">
-    <value />
+    <value>Convert the crystal to a subgroup (a
+space group of lower symmetry) — not
+yet implemented (under construction).</value>
   </data>
   <data name="buttonChangeAxesOriginSetting.Text" xml:space="preserve">
     <value>Change axes/origin setting</value>
@@ -3893,7 +3979,9 @@
     <value>textBoxTitle</value>
   </data>
   <data name="numericBoxStress33.ToolTip" xml:space="preserve">
-    <value />
+    <value>Normal stress component σ33 (along c) of the
+applied stress tensor used in the Reuss model,
+in the same unit as the elastic constants (GPa).</value>
   </data>
   <data name="&gt;&gt;importCrystalFromCIFAMCToolStripMenuItem.Name" xml:space="preserve">
     <value>importCrystalFromCIFAMCToolStripMenuItem</value>
@@ -3964,4 +4052,8 @@
   <metadata name="captureExtender.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
+  <data name="resetToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>Set every atom's Debye–Waller factor
+(thermal-vibration intensity damping) to zero.</value>
+  </data>
 </root>

@@ -125,7 +125,9 @@
     <value>100</value>
   </data>
   <data name="labelFlatWhite.ToolTip" xml:space="preserve">
-    <value />
+    <value>Indicates flat-white (continuous-spectrum)
+mode: a uniform broadband beam is used
+instead of a single wavelength.</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="comboBoxXrayLine.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
@@ -135,7 +137,8 @@
     <value>captureExtender</value>
   </data>
   <data name="numericBoxWaveLength.ToolTip" xml:space="preserve">
-    <value>Enter the wavelength.</value>
+    <value>Enter the wavelength in angstroms (Å); the
+beam energy is recalculated automatically.</value>
   </data>
   <data name="labelFlatWhite.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>6, 0, 0, 0</value>
@@ -185,7 +188,7 @@
     <value>0, 0</value>
   </data>
   <data name="radioButtonElectron.ToolTip" xml:space="preserve">
-    <value>Select the wave source.</value>
+    <value>Use an electron beam as the wave source (energy in keV).</value>
   </data>
   <data name="flowLayoutPanel2.WrapContents" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -206,7 +209,8 @@
     <value>21:  Sc</value>
   </data>
   <data name="numericBoxEnergy.ToolTip1" xml:space="preserve">
-    <value>Enter the beam energy.</value>
+    <value>Enter the beam energy (keV for X-ray/electron, meV for
+neutron); the wavelength is recalculated automatically.</value>
   </data>
   <data name="&gt;&gt;comboBoxXrayLine.Type" xml:space="preserve">
     <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -245,7 +249,8 @@
     <value>flowLayoutPanel2</value>
   </data>
   <data name="radioButtonXray.ToolTip" xml:space="preserve">
-    <value>Select the wave source.</value>
+    <value>Use an X-ray as the wave source (energy in keV);
+enables the element and characteristic-line selectors.</value>
   </data>
   <data name="comboBoxXrayLine.Location" type="System.Drawing.Point, System.Drawing">
     <value>126, 0</value>
@@ -374,7 +379,8 @@
     <value>6, 0, 0, 0</value>
   </data>
   <data name="comboBoxXrayLine.ToolTip" xml:space="preserve">
-    <value>Select a line for the characteristic X-ray</value>
+    <value>Select the characteristic X-ray emission line (e.g.
+Kα1, Kα2, Kβ1); this fixes the wavelength and energy.</value>
   </data>
   <data name="&gt;&gt;radioButtonNeutron.ZOrder" xml:space="preserve">
     <value>2</value>
@@ -398,7 +404,8 @@
     <value>83:  Bi</value>
   </data>
   <data name="numericBoxEnergy.ToolTip" xml:space="preserve">
-    <value>Enter the beam energy.</value>
+    <value>Enter the beam energy (keV for X-ray/electron, meV for
+neutron); the wavelength is recalculated automatically.</value>
   </data>
   <data name="radioButtonElectron.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -425,7 +432,8 @@
     <value>70, 25</value>
   </data>
   <data name="numericBoxWaveLength.ToolTip1" xml:space="preserve">
-    <value>Enter the wavelength.</value>
+    <value>Enter the wavelength in angstroms (Å); the
+beam energy is recalculated automatically.</value>
   </data>
   <data name="comboBoxXrayLine.Items7" xml:space="preserve">
     <value>Lα2</value>
@@ -629,7 +637,7 @@
     <value>67:  Ho</value>
   </data>
   <data name="radioButtonNeutron.ToolTip" xml:space="preserve">
-    <value>Select the wave source.</value>
+    <value>Use a neutron beam as the wave source (energy in meV).</value>
   </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
     <value>54, 17</value>
@@ -694,7 +702,9 @@ If "0:custom" is selected, you can freely enter the energy or wavelength.
     <value>158, 27</value>
   </data>
   <data name="label1.ToolTip" xml:space="preserve">
-    <value />
+    <value>Select an element (1:H to 98:Cf) that emits
+characteristic X-rays. Choose "0:custom" to
+enter the energy or wavelength freely.</value>
   </data>
   <data name="&gt;&gt;numericBoxWaveLength.ZOrder" xml:space="preserve">
     <value>2</value>

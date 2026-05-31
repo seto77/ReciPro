@@ -57,4 +57,40 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="numericBoxDistance.ToolTip" xml:space="preserve">
+    <value>Set the second camera length
+(sample-to-detector distance) in mm.</value>
+  </data>
+  <data name="numericBoxFootX.ToolTip" xml:space="preserve">
+    <value>Set the x-coordinate (in pixels) of the foot
+point where the direct beam hits the detector.</value>
+  </data>
+  <data name="numericBoxFootY.ToolTip" xml:space="preserve">
+    <value>Set the y-coordinate (in pixels) of the foot
+point where the direct beam hits the detector.</value>
+  </data>
+  <data name="numericBoxPhi.ToolTip" xml:space="preserve">
+    <value>Set the detector azimuthal rotation angle φ (rotation
+about the optical axis), in degrees (-360 to 360).</value>
+  </data>
+  <data name="numericBoxPixelHeight.ToolTip" xml:space="preserve">
+    <value>Set the detector height in number
+of pixels (vertical resolution).</value>
+  </data>
+  <data name="numericBoxPixelSize.ToolTip" xml:space="preserve">
+    <value>Set the physical size of one detector pixel, in mm.</value>
+  </data>
+  <data name="numericBoxPixelWidth.ToolTip" xml:space="preserve">
+    <value>Set the detector width in number
+of pixels (horizontal resolution).</value>
+  </data>
+  <data name="numericBoxTau.ToolTip" xml:space="preserve">
+    <value>Set the detector tilt angle τ (inclination
+of the detector plane relative to the
+optical axis), in degrees (-90 to 90).</value>
+  </data>
+  <data name="label3.ToolTip" xml:space="preserve">
+    <value>Foot point (beam center): where the direct
+beam hits the detector, in pixels (x, y).</value>
+  </data>
 </root>

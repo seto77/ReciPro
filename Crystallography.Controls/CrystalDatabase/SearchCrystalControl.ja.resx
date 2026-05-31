@@ -283,4 +283,130 @@
   <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
     <value>200, 641</value>
   </data>
+  <data name="buttonPeriodicTable.ToolTip" xml:space="preserve">
+    <value>周期表を開き、検索結果に含める
+元素・除外する元素を選択します。</value>
+  </data>
+  <data name="buttonSearch.ToolTip" xml:space="preserve">
+    <value>有効にした全条件 (名前・文献・元素・結晶系・
+格子定数・d 値・密度) でデータベースを
+検索し、一致する結晶のみを表示します。</value>
+  </data>
+  <data name="checkBoxD1.ToolTip" xml:space="preserve">
+    <value>1番目の d 値(面間隔)による絞り込みを有効にします。
+チェックすると d 値と許容誤差の入力欄が使えます。</value>
+  </data>
+  <data name="checkBoxD2.ToolTip" xml:space="preserve">
+    <value>2番目の d 値(面間隔)による絞り込みを有効にします。
+チェックすると d 値と許容誤差の入力欄が使えます。</value>
+  </data>
+  <data name="checkBoxD3.ToolTip" xml:space="preserve">
+    <value>3番目の d 値(面間隔)による絞り込みを有効にします。
+チェックすると d 値と許容誤差の入力欄が使えます。</value>
+  </data>
+  <data name="checkBoxDensity.ToolTip" xml:space="preserve">
+    <value>密度 (g/cm³) で結晶を絞り込みます。
+チェックすると密度入力欄が表示されます。</value>
+  </data>
+  <data name="checkBoxDspacing.ToolTip" xml:space="preserve">
+    <value>d 値(面間隔, Å。回折ピーク位置を決める量)で結晶を
+絞り込みます。チェックすると入力欄が表示されます。</value>
+  </data>
+  <data name="checkBoxIgnoreScatteringFactor.ToolTip" xml:space="preserve">
+    <value>d 値検索で散乱因子(反射強度)を無視します。チェック
+すると格子定数のみから幾何学的に全 d 値を計算し、
+消滅則で強度ゼロになる反射も候補に含めます。</value>
+  </data>
+  <data name="checkBoxSearchCellParameter.ToolTip" xml:space="preserve">
+    <value>格子定数 (a, b, c [Å] と α, β, γ [°]) で結晶を絞り
+込みます。チェックすると入力欄が表示されます。</value>
+  </data>
+  <data name="checkBoxSearchCrystalSystem.ToolTip" xml:space="preserve">
+    <value>結晶系 (triclinic〜cubic) で結晶を絞り込みます。
+チェックすると結晶系の選択欄が表示されます。</value>
+  </data>
+  <data name="checkBoxSearchElements.ToolTip" xml:space="preserve">
+    <value>構成元素で結晶を絞り込みます。チェックすると
+周期表ボタンが表示され、含有・除外元素を指定できます。</value>
+  </data>
+  <data name="checkBoxSearchName.ToolTip" xml:space="preserve">
+    <value>鉱物名・物質名で結晶を絞り込みます。チェックする
+と名前入力欄が表示されます (部分一致・大小無視)。</value>
+  </data>
+  <data name="checkBoxSearchReference.ToolTip" xml:space="preserve">
+    <value>文献情報 (雑誌名・著者・セクション) で結晶を絞り
+込みます。チェックすると文献入力欄が表示されます。</value>
+  </data>
+  <data name="comboBoxSearchCrystalSystem.ToolTip" xml:space="preserve">
+    <value>絞り込む結晶系 (triclinic, monoclinic, orthorhombic,
+tetragonal, trigonal, hexagonal, cubic) を選択します。</value>
+  </data>
+  <data name="numericBoxCellA.ToolTip" xml:space="preserve">
+    <value>検索する格子定数 a(軸長)を Å 単位で
+入力します (0 でこの条件を無視)。</value>
+  </data>
+  <data name="numericBoxCellAlpha.ToolTip" xml:space="preserve">
+    <value>検索する格子角 α(b 軸と c 軸のなす角)を
+度単位で入力します (0 でこの条件を無視)。</value>
+  </data>
+  <data name="numericBoxCellAngleErr.ToolTip" xml:space="preserve">
+    <value>格子角 (α, β, γ) 検索の許容誤差を ±° で入力しま
+す (軸長の誤差は % ですが、こちらは度単位です)。</value>
+  </data>
+  <data name="numericBoxCellB.ToolTip" xml:space="preserve">
+    <value>検索する格子定数 b(軸長)を Å 単位で
+入力します (0 でこの条件を無視)。</value>
+  </data>
+  <data name="numericBoxCellBeta.ToolTip" xml:space="preserve">
+    <value>検索する格子角 β(a 軸と c 軸のなす角)を
+度単位で入力します (0 でこの条件を無視)。</value>
+  </data>
+  <data name="numericBoxCellC.ToolTip" xml:space="preserve">
+    <value>検索する格子定数 c(軸長)を Å 単位で
+入力します (0 でこの条件を無視)。</value>
+  </data>
+  <data name="numericBoxCellGamma.ToolTip" xml:space="preserve">
+    <value>検索する格子角 γ(a 軸と b 軸のなす角)を
+度単位で入力します (0 でこの条件を無視)。</value>
+  </data>
+  <data name="numericBoxCellLengthErr.ToolTip" xml:space="preserve">
+    <value>軸長 (a, b, c) 検索の許容誤差を ±% で入力します。
+この相対範囲内の軸長を持つ結晶が抽出されます。</value>
+  </data>
+  <data name="numericBoxD1.ToolTip" xml:space="preserve">
+    <value>検索する1番目の d 値(面間隔)を Å 単位で入力します。</value>
+  </data>
+  <data name="numericBoxD1Err.ToolTip" xml:space="preserve">
+    <value>1番目の d 値検索の許容誤差を ±% で入力します。
+この範囲内の d 値を持つ結晶が抽出されます。</value>
+  </data>
+  <data name="numericBoxD2.ToolTip" xml:space="preserve">
+    <value>検索する2番目の d 値(面間隔)を Å 単位で入力します。</value>
+  </data>
+  <data name="numericBoxD2Err.ToolTip" xml:space="preserve">
+    <value>2番目の d 値検索の許容誤差を ±% で入力します。
+この範囲内の d 値を持つ結晶が抽出されます。</value>
+  </data>
+  <data name="numericBoxD3.ToolTip" xml:space="preserve">
+    <value>検索する3番目の d 値(面間隔)を Å 単位で入力します。</value>
+  </data>
+  <data name="numericBoxD3Err.ToolTip" xml:space="preserve">
+    <value>3番目の d 値検索の許容誤差を ±% で入力します。
+この範囲内の d 値を持つ結晶が抽出されます。</value>
+  </data>
+  <data name="numericBoxDensity.ToolTip" xml:space="preserve">
+    <value>検索する密度を g/cm³ 単位で入力します。</value>
+  </data>
+  <data name="numericBoxDensityErr.ToolTip" xml:space="preserve">
+    <value>密度検索の許容誤差を ±% で入力します。この
+相対範囲内の密度を持つ結晶が抽出されます。</value>
+  </data>
+  <data name="textBoxSearchName.ToolTip" xml:space="preserve">
+    <value>検索する鉱物名・物質名を入力します (部分一致・
+大小無視)。Enter キーで検索を実行します。</value>
+  </data>
+  <data name="textBoxSearchReference.ToolTip" xml:space="preserve">
+    <value>検索する文献情報 (雑誌名・著者・セクション)
+を入力します。Enter キーで検索を実行します。</value>
+  </data>
 </root>

@@ -26,6 +26,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DistributionGraphControl)); // 260531Cl
+            components = new System.ComponentModel.Container(); // (260531Ch)
+            toolTip = new System.Windows.Forms.ToolTip(components); // (260531Ch)
+            toolTip.IsBalloon = true; // 260531Cl 追加: バルーン表示に統一
             this.pictureBox = new System.Windows.Forms.PictureBox();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.labelY = new System.Windows.Forms.Label();
@@ -69,6 +73,7 @@
             this.labelY.AutoSize = true;
             this.labelY.Location = new System.Drawing.Point(3, 0);
             this.labelY.Name = "labelY";
+            this.toolTip.SetToolTip(this.labelY, resources.GetString("labelY.ToolTip")); // 260531Cl
             this.labelY.Size = new System.Drawing.Size(16, 15);
             this.labelY.TabIndex = 1;
             this.labelY.Text = "Y:";
@@ -78,6 +83,7 @@
             this.labelYLabel.AutoSize = true;
             this.labelYLabel.Location = new System.Drawing.Point(25, 0);
             this.labelYLabel.Name = "labelYLabel";
+            this.toolTip.SetToolTip(this.labelYLabel, resources.GetString("labelYLabel.ToolTip")); // 260531Cl
             this.labelYLabel.Size = new System.Drawing.Size(25, 15);
             this.labelYLabel.TabIndex = 1;
             this.labelYLabel.Text = "000";
@@ -98,6 +104,7 @@
             this.labelX.AutoSize = true;
             this.labelX.Location = new System.Drawing.Point(3, 0);
             this.labelX.Name = "labelX";
+            this.toolTip.SetToolTip(this.labelX, resources.GetString("labelX.ToolTip")); // 260531Cl
             this.labelX.Size = new System.Drawing.Size(17, 15);
             this.labelX.TabIndex = 1;
             this.labelX.Text = "X:";
@@ -107,6 +114,7 @@
             this.labelXValue.AutoSize = true;
             this.labelXValue.Location = new System.Drawing.Point(26, 0);
             this.labelXValue.Name = "labelXValue";
+            this.toolTip.SetToolTip(this.labelXValue, resources.GetString("labelXValue.ToolTip")); // 260531Cl
             this.labelXValue.Size = new System.Drawing.Size(25, 15);
             this.labelXValue.TabIndex = 1;
             this.labelXValue.Text = "000";
@@ -132,6 +140,8 @@
         }
 
         #endregion
+
+        private System.Windows.Forms.ToolTip toolTip; // (260531Ch)
 
         private System.Windows.Forms.PictureBox pictureBox;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;

@@ -131,4 +131,100 @@
         Cw==
 </value>
   </data>
+  <data name="buttonAntiClock.ToolTip" xml:space="preserve">
+    <value>Rotate the view counter-clockwise about the
+viewing axis (screen normal) for the movie.</value>
+  </data>
+  <data name="buttonBottom.ToolTip" xml:space="preserve">
+    <value>Tilt the view downward about the
+horizontal screen axis for the movie.</value>
+  </data>
+  <data name="buttonBottomLeft.ToolTip" xml:space="preserve">
+    <value>Tilt the view toward the lower-left about the
+corresponding in-plane axis for the movie.</value>
+  </data>
+  <data name="buttonBottomRight.ToolTip" xml:space="preserve">
+    <value>Tilt the view toward the lower-right about
+the corresponding in-plane axis for the movie.</value>
+  </data>
+  <data name="buttonCancel.ToolTip" xml:space="preserve">
+    <value>Close this dialog without creating a movie.</value>
+  </data>
+  <data name="buttonClock.ToolTip" xml:space="preserve">
+    <value>Rotate the view clockwise about the
+viewing axis (screen normal) for the movie.</value>
+  </data>
+  <data name="buttonLeft.ToolTip" xml:space="preserve">
+    <value>Tilt the view to the left about the
+vertical screen axis for the movie.</value>
+  </data>
+  <data name="buttonOK.ToolTip" xml:space="preserve">
+    <value>Generate the rotation movie with the chosen direction,
+speed and duration, and save it as an MP4 file.</value>
+  </data>
+  <data name="buttonRight.ToolTip" xml:space="preserve">
+    <value>Tilt the view to the right about the
+vertical screen axis for the movie (default).</value>
+  </data>
+  <data name="buttonTop.ToolTip" xml:space="preserve">
+    <value>Tilt the view upward about the
+horizontal screen axis for the movie.</value>
+  </data>
+  <data name="buttonTopLeft.ToolTip" xml:space="preserve">
+    <value>Tilt the view toward the upper-left about the
+corresponding in-plane axis for the movie.</value>
+  </data>
+  <data name="buttonTopRight.ToolTip" xml:space="preserve">
+    <value>Tilt the view toward the upper-right about
+the corresponding in-plane axis for the movie.</value>
+  </data>
+  <data name="comboBoxSpeed.ToolTip" xml:space="preserve">
+    <value>Encode-speed preset label (ultrafast…veryslow).
+Note: with the current Media Foundation encoder
+this only appears in the progress dialog and no
+longer affects the actual encoding.</value>
+  </data>
+  <data name="numericBoxDuration.ToolTip" xml:space="preserve">
+    <value>Length of the movie in seconds (frame rate is 30 fps).</value>
+  </data>
+  <data name="numericBoxSpeed.ToolTip" xml:space="preserve">
+    <value>Rotation speed of the view in degrees per second (°/s).</value>
+  </data>
+  <data name="radioButtonAxis.ToolTip" xml:space="preserve">
+    <value>Set the rotation axis using a crystal direction index [uvw].</value>
+  </data>
+  <data name="radioButtonCurrent.ToolTip" xml:space="preserve">
+    <value>Rotate about the currently displayed
+projection (orientation), choosing the
+tilt direction with the arrow buttons.</value>
+  </data>
+  <data name="radioButtonH264.ToolTip" xml:space="preserve">
+    <value>Encode the movie with the H.264 (AVC) video codec.</value>
+  </data>
+  <data name="radioButtonH265.ToolTip" xml:space="preserve">
+    <value>Encode the movie with the H.265 (HEVC) video codec
+(better compression; requires a HEVC encoder).</value>
+  </data>
+  <data name="radioButtonPlane.ToolTip" xml:space="preserve">
+    <value>Set the rotation axis to the
+normal of a lattice plane (hkl).</value>
+  </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value>Encode-speed preset label (ultrafast…veryslow).
+Note: with the current Media Foundation encoder
+this only appears in the progress dialog and no
+longer affects the actual encoding.</value>
+  </data>
+  <data name="indexControl1.ToolTip" xml:space="preserve">
+    <value>Enter the indices that define the rotation
+axis: a direction [uvw] in Direction-index
+mode, or a lattice plane (hkl) (rotation
+about its normal) in Lattice-plane mode.</value>
+  </data>
+  <data name="indexControl.ToolTip" xml:space="preserve">
+    <value>Enter the indices that define the rotation
+axis: a direction [uvw] in Direction-index
+mode, or a lattice plane (hkl) (rotation
+about its normal) in Lattice-plane mode.</value>
+  </data>
 </root>

@@ -29,6 +29,10 @@
         // groupBox4 -> groupBoxCellConstants
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormStrain)); // 260531Cl
+            components = new System.ComponentModel.Container(); // (260531Ch)
+            toolTip = new System.Windows.Forms.ToolTip(components); // (260531Ch)
+            toolTip.IsBalloon = true; // 260531Cl 追加: バルーン表示に統一
             this.groupBoxStrain = new System.Windows.Forms.GroupBox();
             this.numericBoxStrain11 = new Crystallography.Controls.NumericBox();
             this.numericBoxStrain13 = new Crystallography.Controls.NumericBox();
@@ -85,6 +89,7 @@
             this.numericBoxStrain11.MaximumSize = new System.Drawing.Size(1000, 24);
             this.numericBoxStrain11.MinimumSize = new System.Drawing.Size(1, 22);
             this.numericBoxStrain11.Name = "numericBoxStrain11";
+            this.toolTip.SetToolTip(this.numericBoxStrain11, resources.GetString("numericBoxStrain11.ToolTip")); // 260531Cl
             this.numericBoxStrain11.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
             this.numericBoxStrain11.RestrictLimitValue = false;
             this.numericBoxStrain11.RoundErrorAccuracy = -1;
@@ -106,6 +111,7 @@
             this.numericBoxStrain13.MaximumSize = new System.Drawing.Size(1000, 24);
             this.numericBoxStrain13.MinimumSize = new System.Drawing.Size(1, 22);
             this.numericBoxStrain13.Name = "numericBoxStrain13";
+            this.toolTip.SetToolTip(this.numericBoxStrain13, resources.GetString("numericBoxStrain13.ToolTip")); // 260531Cl
             this.numericBoxStrain13.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
             this.numericBoxStrain13.RestrictLimitValue = false;
             this.numericBoxStrain13.RoundErrorAccuracy = -1;
@@ -127,6 +133,7 @@
             this.numericBoxStrain22.MaximumSize = new System.Drawing.Size(1000, 24);
             this.numericBoxStrain22.MinimumSize = new System.Drawing.Size(1, 22);
             this.numericBoxStrain22.Name = "numericBoxStrain22";
+            this.toolTip.SetToolTip(this.numericBoxStrain22, resources.GetString("numericBoxStrain22.ToolTip")); // 260531Cl
             this.numericBoxStrain22.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
             this.numericBoxStrain22.RestrictLimitValue = false;
             this.numericBoxStrain22.RoundErrorAccuracy = -1;
@@ -148,6 +155,7 @@
             this.numericBoxStrain23.MaximumSize = new System.Drawing.Size(1000, 24);
             this.numericBoxStrain23.MinimumSize = new System.Drawing.Size(1, 22);
             this.numericBoxStrain23.Name = "numericBoxStrain23";
+            this.toolTip.SetToolTip(this.numericBoxStrain23, resources.GetString("numericBoxStrain23.ToolTip")); // 260531Cl
             this.numericBoxStrain23.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
             this.numericBoxStrain23.RestrictLimitValue = false;
             this.numericBoxStrain23.RoundErrorAccuracy = -1;
@@ -169,6 +177,7 @@
             this.numericBoxStrain33.MaximumSize = new System.Drawing.Size(1000, 24);
             this.numericBoxStrain33.MinimumSize = new System.Drawing.Size(1, 22);
             this.numericBoxStrain33.Name = "numericBoxStrain33";
+            this.toolTip.SetToolTip(this.numericBoxStrain33, resources.GetString("numericBoxStrain33.ToolTip")); // 260531Cl
             this.numericBoxStrain33.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
             this.numericBoxStrain33.RestrictLimitValue = false;
             this.numericBoxStrain33.RoundErrorAccuracy = -1;
@@ -190,6 +199,7 @@
             this.numericBoxStrain12.MaximumSize = new System.Drawing.Size(1000, 24);
             this.numericBoxStrain12.MinimumSize = new System.Drawing.Size(1, 22);
             this.numericBoxStrain12.Name = "numericBoxStrain12";
+            this.toolTip.SetToolTip(this.numericBoxStrain12, resources.GetString("numericBoxStrain12.ToolTip")); // 260531Cl
             this.numericBoxStrain12.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
             this.numericBoxStrain12.RestrictLimitValue = false;
             this.numericBoxStrain12.RoundErrorAccuracy = -1;
@@ -227,6 +237,7 @@
             this.numericBoxStress11.MaximumSize = new System.Drawing.Size(1000, 24);
             this.numericBoxStress11.MinimumSize = new System.Drawing.Size(1, 22);
             this.numericBoxStress11.Name = "numericBoxStress11";
+            this.toolTip.SetToolTip(this.numericBoxStress11, resources.GetString("numericBoxStress11.ToolTip")); // 260531Cl
             this.numericBoxStress11.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
             this.numericBoxStress11.RestrictLimitValue = false;
             this.numericBoxStress11.RoundErrorAccuracy = -1;
@@ -247,6 +258,7 @@
             this.numericBoxStress12.MaximumSize = new System.Drawing.Size(1000, 24);
             this.numericBoxStress12.MinimumSize = new System.Drawing.Size(1, 22);
             this.numericBoxStress12.Name = "numericBoxStress12";
+            this.toolTip.SetToolTip(this.numericBoxStress12, resources.GetString("numericBoxStress12.ToolTip")); // 260531Cl
             this.numericBoxStress12.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
             this.numericBoxStress12.RestrictLimitValue = false;
             this.numericBoxStress12.RoundErrorAccuracy = -1;
@@ -267,6 +279,7 @@
             this.numericBoxStress22.MaximumSize = new System.Drawing.Size(1000, 24);
             this.numericBoxStress22.MinimumSize = new System.Drawing.Size(1, 22);
             this.numericBoxStress22.Name = "numericBoxStress22";
+            this.toolTip.SetToolTip(this.numericBoxStress22, resources.GetString("numericBoxStress22.ToolTip")); // 260531Cl
             this.numericBoxStress22.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
             this.numericBoxStress22.RestrictLimitValue = false;
             this.numericBoxStress22.RoundErrorAccuracy = -1;
@@ -287,6 +300,7 @@
             this.numericBoxStress13.MaximumSize = new System.Drawing.Size(1000, 24);
             this.numericBoxStress13.MinimumSize = new System.Drawing.Size(1, 22);
             this.numericBoxStress13.Name = "numericBoxStress13";
+            this.toolTip.SetToolTip(this.numericBoxStress13, resources.GetString("numericBoxStress13.ToolTip")); // 260531Cl
             this.numericBoxStress13.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
             this.numericBoxStress13.RestrictLimitValue = false;
             this.numericBoxStress13.RoundErrorAccuracy = -1;
@@ -307,6 +321,7 @@
             this.numericBoxStress33.MaximumSize = new System.Drawing.Size(1000, 24);
             this.numericBoxStress33.MinimumSize = new System.Drawing.Size(1, 22);
             this.numericBoxStress33.Name = "numericBoxStress33";
+            this.toolTip.SetToolTip(this.numericBoxStress33, resources.GetString("numericBoxStress33.ToolTip")); // 260531Cl
             this.numericBoxStress33.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
             this.numericBoxStress33.RestrictLimitValue = false;
             this.numericBoxStress33.RoundErrorAccuracy = -1;
@@ -327,6 +342,7 @@
             this.numericBoxStress23.MaximumSize = new System.Drawing.Size(1000, 24);
             this.numericBoxStress23.MinimumSize = new System.Drawing.Size(1, 22);
             this.numericBoxStress23.Name = "numericBoxStress23";
+            this.toolTip.SetToolTip(this.numericBoxStress23, resources.GetString("numericBoxStress23.ToolTip")); // 260531Cl
             this.numericBoxStress23.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
             this.numericBoxStress23.RestrictLimitValue = false;
             this.numericBoxStress23.RoundErrorAccuracy = -1;
@@ -385,6 +401,7 @@
             this.numericBoxA.MaximumSize = new System.Drawing.Size(1000, 24);
             this.numericBoxA.MinimumSize = new System.Drawing.Size(1, 22);
             this.numericBoxA.Name = "numericBoxA";
+            this.toolTip.SetToolTip(this.numericBoxA, resources.GetString("numericBoxA.ToolTip")); // 260531Cl
             this.numericBoxA.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
             this.numericBoxA.RestrictLimitValue = false;
             this.numericBoxA.RoundErrorAccuracy = -1;
@@ -405,6 +422,7 @@
             this.numericBoxAlpha.MaximumSize = new System.Drawing.Size(1000, 24);
             this.numericBoxAlpha.MinimumSize = new System.Drawing.Size(1, 22);
             this.numericBoxAlpha.Name = "numericBoxAlpha";
+            this.toolTip.SetToolTip(this.numericBoxAlpha, resources.GetString("numericBoxAlpha.ToolTip")); // 260531Cl
             this.numericBoxAlpha.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
             this.numericBoxAlpha.RestrictLimitValue = false;
             this.numericBoxAlpha.RoundErrorAccuracy = -1;
@@ -425,6 +443,7 @@
             this.numericBoxC.MaximumSize = new System.Drawing.Size(1000, 24);
             this.numericBoxC.MinimumSize = new System.Drawing.Size(1, 22);
             this.numericBoxC.Name = "numericBoxC";
+            this.toolTip.SetToolTip(this.numericBoxC, resources.GetString("numericBoxC.ToolTip")); // 260531Cl
             this.numericBoxC.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
             this.numericBoxC.RestrictLimitValue = false;
             this.numericBoxC.RoundErrorAccuracy = -1;
@@ -445,6 +464,7 @@
             this.numericBoxBeta.MaximumSize = new System.Drawing.Size(1000, 24);
             this.numericBoxBeta.MinimumSize = new System.Drawing.Size(1, 22);
             this.numericBoxBeta.Name = "numericBoxBeta";
+            this.toolTip.SetToolTip(this.numericBoxBeta, resources.GetString("numericBoxBeta.ToolTip")); // 260531Cl
             this.numericBoxBeta.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
             this.numericBoxBeta.RestrictLimitValue = false;
             this.numericBoxBeta.RoundErrorAccuracy = -1;
@@ -465,6 +485,7 @@
             this.numericBoxGamma.MaximumSize = new System.Drawing.Size(1000, 24);
             this.numericBoxGamma.MinimumSize = new System.Drawing.Size(1, 22);
             this.numericBoxGamma.Name = "numericBoxGamma";
+            this.toolTip.SetToolTip(this.numericBoxGamma, resources.GetString("numericBoxGamma.ToolTip")); // 260531Cl
             this.numericBoxGamma.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
             this.numericBoxGamma.RestrictLimitValue = false;
             this.numericBoxGamma.RoundErrorAccuracy = -1;
@@ -485,6 +506,7 @@
             this.numericBoxB.MaximumSize = new System.Drawing.Size(1000, 24);
             this.numericBoxB.MinimumSize = new System.Drawing.Size(1, 22);
             this.numericBoxB.Name = "numericBoxB";
+            this.toolTip.SetToolTip(this.numericBoxB, resources.GetString("numericBoxB.ToolTip")); // 260531Cl
             this.numericBoxB.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
             this.numericBoxB.RestrictLimitValue = false;
             this.numericBoxB.RoundErrorAccuracy = -1;
@@ -500,6 +522,7 @@
             this.buttonApply.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.buttonApply.Location = new System.Drawing.Point(586, 115);
             this.buttonApply.Name = "buttonApply";
+            this.toolTip.SetToolTip(this.buttonApply, resources.GetString("buttonApply.ToolTip")); // 260531Cl
             this.buttonApply.Size = new System.Drawing.Size(51, 27);
             this.buttonApply.TabIndex = 298;
             this.buttonApply.Text = "Apply";
@@ -533,6 +556,8 @@
         }
 
         #endregion
+
+        private System.Windows.Forms.ToolTip toolTip; // (260531Ch)
         private NumericBox numericBoxStress33;
         private NumericBox numericBoxStress22;
         private NumericBox numericBoxStress11;

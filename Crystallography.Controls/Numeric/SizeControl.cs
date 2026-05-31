@@ -7,7 +7,10 @@ namespace Crystallography.Controls
 {
     // 260521Cl: ReciPro 各フォームに散在する「画像サイズ W×H」UI を一本化するためのコントロール。
     // IndexControl と同じ作法 (NumericBox 複数 + 統合 ValueChanged + Designer 公開プロパティ) で実装する。
-    public partial class SizeControl : UserControl
+    // 260531Cl 変更: UserControlBase 継承に統一(ToolTip 反映機構・親走査 DesignMode を基底と共有し、手書きの relay 配線を撤去)。
+    // 基底の [ToolboxItem(false)] が継承されツールボックスから消えるため明示的に true を指定 (NumericBox と同作法)。
+    [ToolboxItem(true)]
+    public partial class SizeControl : UserControlBase
     {
         public SizeControl()
         {
@@ -45,6 +48,8 @@ namespace Crystallography.Controls
 
         // 260521Cl 追加: ToolTip パススルー。子コントロール全体に同じツールチップを表示する (NumericBox.ToolTip と同じ作法)。
         [Category("Appearance"), Localizable(true), DefaultValue("")]
+        [Browsable(false)] // 260531Cl 追加: デザイナのプロパティグリッドから隠す(標準 ToolTip 拡張子と二重表示の混乱を解消)。Localizable は残すので既存 resx 値は従来通り子コントロールへ適用され hover も維持
+        [EditorBrowsable(EditorBrowsableState.Never)] // 260531Cl 追加: IntelliSense からも隠す(廃止予定プロパティ。NumericBox.ValueFont 等と同作法)
         [Description("コントロール全体に表示するツールチップ。")]
         public string ToolTip
         {
@@ -60,6 +65,10 @@ namespace Crystallography.Controls
                 toolTip.SetToolTip(checkBoxKeepAspect, value);
             }
         }
+
+        // 260531Cl 追加: UserControlBase の ToolTip 反映機構へ内部子・内部 ToolTip を公開 (NumericBox/ColorControl と同形)。
+        protected override Control[] GetToolTipTargets() => new Control[] { numericBoxWidth, numericBoxHeight, labelHeader, label1, label2, checkBoxKeepAspect };
+        protected internal override ToolTip InternalToolTip => toolTip;
 
         #endregion
 
@@ -232,6 +241,7 @@ namespace Crystallography.Controls
             numericBoxWidth.UpDownWidth = numericBoxHeight.UpDownWidth = w;
         }
 
+        // 260531Cl: ToolTip 反映は基底 UserControlBase.OnHandleCreated が GetToolTipTargets()/InternalToolTip を使って実施する
         protected override void OnHandleCreated(EventArgs e) { base.OnHandleCreated(e); applyUpDownWidth(); }
         protected override void OnDpiChangedAfterParent(EventArgs e) { base.OnDpiChangedAfterParent(e); applyUpDownWidth(); }
 

@@ -34,6 +34,7 @@
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormRotationMatrix));
             toolTip = new System.Windows.Forms.ToolTip(components);
+            toolTip.IsBalloon = true; // 260531Cl 追加: バルーン表示に統一
             buttonViewAlongBeam = new System.Windows.Forms.Button();
             buttonViewIsometric = new System.Windows.Forms.Button();
             checkBoxLink = new System.Windows.Forms.CheckBox();
@@ -390,11 +391,13 @@
             // label1
             // 
             resources.ApplyResources(label1, "label1");
+            toolTip.SetToolTip(label1, resources.GetString("label1.ToolTip")); // 260531Cl
             label1.Name = "label1";
             // 
             // label4
             // 
             resources.ApplyResources(label4, "label4");
+            toolTip.SetToolTip(label4, resources.GetString("label4.ToolTip")); // 260531Cl
             label4.Name = "label4";
             // 
             // tableLayoutPanel1
@@ -414,6 +417,7 @@
             // numericBox11
             // 
             resources.ApplyResources(numericBox11, "numericBox11");
+            toolTip.SetToolTip(numericBox11, resources.GetString("numericBox11.ToolTip")); // 260531Cl
             numericBox11.BackColor = System.Drawing.SystemColors.Control;
             numericBox11.DecimalPlaces = 5;
             numericBox11.FooterBackColor = System.Drawing.SystemColors.Control;
@@ -429,6 +433,7 @@
             // numericBox12
             // 
             resources.ApplyResources(numericBox12, "numericBox12");
+            toolTip.SetToolTip(numericBox12, resources.GetString("numericBox12.ToolTip")); // 260531Cl
             numericBox12.BackColor = System.Drawing.SystemColors.Control;
             numericBox12.DecimalPlaces = 5;
             numericBox12.FooterBackColor = System.Drawing.SystemColors.Control;
@@ -444,6 +449,7 @@
             // numericBox13
             // 
             resources.ApplyResources(numericBox13, "numericBox13");
+            toolTip.SetToolTip(numericBox13, resources.GetString("numericBox13.ToolTip")); // 260531Cl
             numericBox13.BackColor = System.Drawing.SystemColors.Control;
             numericBox13.DecimalPlaces = 5;
             numericBox13.FooterBackColor = System.Drawing.SystemColors.Control;
@@ -459,6 +465,7 @@
             // numericBox21
             // 
             resources.ApplyResources(numericBox21, "numericBox21");
+            toolTip.SetToolTip(numericBox21, resources.GetString("numericBox21.ToolTip")); // 260531Cl
             numericBox21.BackColor = System.Drawing.SystemColors.Control;
             numericBox21.DecimalPlaces = 5;
             numericBox21.FooterBackColor = System.Drawing.SystemColors.Control;
@@ -474,6 +481,7 @@
             // numericBox22
             // 
             resources.ApplyResources(numericBox22, "numericBox22");
+            toolTip.SetToolTip(numericBox22, resources.GetString("numericBox22.ToolTip")); // 260531Cl
             numericBox22.BackColor = System.Drawing.SystemColors.Control;
             numericBox22.DecimalPlaces = 5;
             numericBox22.FooterBackColor = System.Drawing.SystemColors.Control;
@@ -489,6 +497,7 @@
             // numericBox33
             // 
             resources.ApplyResources(numericBox33, "numericBox33");
+            toolTip.SetToolTip(numericBox33, resources.GetString("numericBox33.ToolTip")); // 260531Cl
             numericBox33.BackColor = System.Drawing.SystemColors.Control;
             numericBox33.DecimalPlaces = 5;
             numericBox33.FooterBackColor = System.Drawing.SystemColors.Control;
@@ -504,6 +513,7 @@
             // numericBox23
             // 
             resources.ApplyResources(numericBox23, "numericBox23");
+            toolTip.SetToolTip(numericBox23, resources.GetString("numericBox23.ToolTip")); // 260531Cl
             numericBox23.BackColor = System.Drawing.SystemColors.Control;
             numericBox23.DecimalPlaces = 5;
             numericBox23.FooterBackColor = System.Drawing.SystemColors.Control;
@@ -519,6 +529,7 @@
             // numericBox31
             // 
             resources.ApplyResources(numericBox31, "numericBox31");
+            toolTip.SetToolTip(numericBox31, resources.GetString("numericBox31.ToolTip")); // 260531Cl
             numericBox31.BackColor = System.Drawing.SystemColors.Control;
             numericBox31.DecimalPlaces = 5;
             numericBox31.FooterBackColor = System.Drawing.SystemColors.Control;
@@ -534,6 +545,7 @@
             // numericBox32
             // 
             resources.ApplyResources(numericBox32, "numericBox32");
+            toolTip.SetToolTip(numericBox32, resources.GetString("numericBox32.ToolTip")); // 260531Cl
             numericBox32.BackColor = System.Drawing.SystemColors.Control;
             numericBox32.DecimalPlaces = 5;
             numericBox32.FooterBackColor = System.Drawing.SystemColors.Control;
@@ -549,11 +561,13 @@
             // label3
             // 
             resources.ApplyResources(label3, "label3");
+            toolTip.SetToolTip(label3, resources.GetString("label3.ToolTip")); // 260531Cl
             label3.Name = "label3";
             // 
             // label2
             // 
             resources.ApplyResources(label2, "label2");
+            toolTip.SetToolTip(label2, resources.GetString("label2.ToolTip")); // 260531Cl
             label2.Name = "label2";
             // 
             // groupBoxExperimentalCoordinate
@@ -602,6 +616,7 @@
             // label5
             // 
             resources.ApplyResources(label5, "label5");
+            toolTip.SetToolTip(label5, resources.GetString("label5.ToolTip")); // 260531Cl
             label5.Name = "label5";
             // 
             // tableLayoutPanel2

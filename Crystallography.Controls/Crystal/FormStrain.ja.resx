@@ -1,0 +1,139 @@
+﻿<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="buttonApply.ToolTip" xml:space="preserve">
+    <value>歪みを適用した結晶を新しい構造として
+確定し、このウィンドウを閉じます。</value>
+  </data>
+  <data name="numericBoxA.ToolTip" xml:space="preserve">
+    <value>歪み適用後の格子定数 a（Å単位）。歪み
+テンソルから計算される読み取り専用の値です。</value>
+  </data>
+  <data name="numericBoxAlpha.ToolTip" xml:space="preserve">
+    <value>歪み適用後の格子角 α（b軸とc軸のなす角、度単位）。
+歪みテンソルから計算される読み取り専用の値です。</value>
+  </data>
+  <data name="numericBoxB.ToolTip" xml:space="preserve">
+    <value>歪み適用後の格子定数 b（Å単位）。歪み
+テンソルから計算される読み取り専用の値です。</value>
+  </data>
+  <data name="numericBoxBeta.ToolTip" xml:space="preserve">
+    <value>歪み適用後の格子角 β（c軸とa軸のなす角、度単位）。
+歪みテンソルから計算される読み取り専用の値です。</value>
+  </data>
+  <data name="numericBoxC.ToolTip" xml:space="preserve">
+    <value>歪み適用後の格子定数 c（Å単位）。歪み
+テンソルから計算される読み取り専用の値です。</value>
+  </data>
+  <data name="numericBoxGamma.ToolTip" xml:space="preserve">
+    <value>歪み適用後の格子角 γ（a軸とb軸のなす角、度単位）。
+歪みテンソルから計算される読み取り専用の値です。</value>
+  </data>
+  <data name="numericBoxStrain11.ToolTip" xml:space="preserve">
+    <value>歪みテンソルの垂直歪み成分 ε11（a(x)方向の伸び、
+無次元）。変更すると格子定数と応力が再計算されます。</value>
+  </data>
+  <data name="numericBoxStrain12.ToolTip" xml:space="preserve">
+    <value>歪みテンソルのせん断歪み成分 ε12（a-b(x-y)面
+内、無次元。ε12=ε21 として対称に扱われます）。
+変更すると格子定数と応力が再計算されます。</value>
+  </data>
+  <data name="numericBoxStrain13.ToolTip" xml:space="preserve">
+    <value>歪みテンソルのせん断歪み成分 ε13（a-c(x-z)面
+内、無次元。ε13=ε31 として対称に扱われます）。
+変更すると格子定数と応力が再計算されます。</value>
+  </data>
+  <data name="numericBoxStrain22.ToolTip" xml:space="preserve">
+    <value>歪みテンソルの垂直歪み成分 ε22（b(y)方向の伸び、
+無次元）。変更すると格子定数と応力が再計算されます。</value>
+  </data>
+  <data name="numericBoxStrain23.ToolTip" xml:space="preserve">
+    <value>歪みテンソルのせん断歪み成分 ε23（b-c(y-z)面
+内、無次元。ε23=ε32 として対称に扱われます）。
+変更すると格子定数と応力が再計算されます。</value>
+  </data>
+  <data name="numericBoxStrain33.ToolTip" xml:space="preserve">
+    <value>歪みテンソルの垂直歪み成分 ε33（c(z)方向の伸び、
+無次元）。変更すると格子定数と応力が再計算されます。</value>
+  </data>
+  <data name="numericBoxStress11.ToolTip" xml:space="preserve">
+    <value>応力テンソルの垂直応力成分 σ11（GPa単位）。剛性行列と
+歪みの積から計算される読み取り専用の値です。</value>
+  </data>
+  <data name="numericBoxStress12.ToolTip" xml:space="preserve">
+    <value>応力テンソルのせん断応力成分 σ12（GPa単位）。
+剛性行列と歪みの積から計算される読み取り専用の値です。</value>
+  </data>
+  <data name="numericBoxStress13.ToolTip" xml:space="preserve">
+    <value>応力テンソルのせん断応力成分 σ13（GPa単位）。
+剛性行列と歪みの積から計算される読み取り専用の値です。</value>
+  </data>
+  <data name="numericBoxStress22.ToolTip" xml:space="preserve">
+    <value>応力テンソルの垂直応力成分 σ22（GPa単位）。剛性行列と
+歪みの積から計算される読み取り専用の値です。</value>
+  </data>
+  <data name="numericBoxStress23.ToolTip" xml:space="preserve">
+    <value>応力テンソルのせん断応力成分 σ23（GPa単位）。
+剛性行列と歪みの積から計算される読み取り専用の値です。</value>
+  </data>
+  <data name="numericBoxStress33.ToolTip" xml:space="preserve">
+    <value>応力テンソルの垂直応力成分 σ33（GPa単位）。剛性行列と
+歪みの積から計算される読み取り専用の値です。</value>
+  </data>
+</root>

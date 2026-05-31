@@ -79,4 +79,100 @@
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
     <value>96, 96</value>
   </data>
+  <data name="comboBoxColor.ToolTip" xml:space="preserve">
+    <value>極密度を表示するカラーマップを選択します。Cold-Warm
+(青〜赤) または Gray scale (グレースケール)。</value>
+  </data>
+  <data name="comboBoxScale.ToolTip" xml:space="preserve">
+    <value>密度カラーマップの強度スケールを選択しま
+す。Linear は密度に比例、Log は高密度を
+圧縮して弱い集合組織を見やすくします。</value>
+  </data>
+  <data name="numericUpDown1.ToolTip" xml:space="preserve">
+    <value>極を投影する結晶方位または面指数の第1成分 (軸モードで
+は u、面モードでは h) を設定します (範囲 -20〜20)。</value>
+  </data>
+  <data name="numericUpDown2.ToolTip" xml:space="preserve">
+    <value>極を投影する結晶方位または面指数の第2成分 (軸モードで
+は v、面モードでは k) を設定します (範囲 -20〜20)。</value>
+  </data>
+  <data name="numericUpDown3.ToolTip" xml:space="preserve">
+    <value>極を投影する結晶方位または面指数の第3成分 (軸モードで
+は w、面モードでは l) を設定します (範囲 -20〜20)。</value>
+  </data>
+  <data name="numericUpDownFullscale.ToolTip" xml:space="preserve">
+    <value>カラースケールの飽和(フルスケール)密度を、
+平均密度の 10^E 倍として指数 E を設定します (範囲
+-9〜9)。値を上げるほど表示レンジが広がります。</value>
+  </data>
+  <data name="numericUpDownResolution.ToolTip" xml:space="preserve">
+    <value>密度マップの角度分解能(ビン幅)を
+度単位で設定します (範囲 1〜60°)。小さ
+いほど高精細ですが計算が重くなります。</value>
+  </data>
+  <data name="radioButtonAxes.ToolTip" xml:space="preserve">
+    <value>投影対象を結晶方位 [u v w] (格子軸の
+方向) に切り替えます。指数欄は u, v, w
+となり、対称等価な軸も含めて描画します。</value>
+  </data>
+  <data name="radioButtonInversePoleFigure.ToolTip" xml:space="preserve">
+    <value>逆極点図 (Inverse Pole Figure) を表示します。
+試料に固定した方向 (x, y, z) が結晶座標系のど
+の方位に分布するかを描画します。</value>
+  </data>
+  <data name="radioButtonPlanes.ToolTip" xml:space="preserve">
+    <value>投影対象を結晶面 (h k l) の法線に
+切り替えます。指数欄は h, k, l とな
+り、対称等価な面も含めて描画します。</value>
+  </data>
+  <data name="radioButtonPoleFigure.ToolTip" xml:space="preserve">
+    <value>極点図 (Pole Figure) を表示します。選択した
+結晶方位または面 (Axes/Planes で指定) の極が
+試料座標系のどこに分布するかを描画します。</value>
+  </data>
+  <data name="textBox1.ToolTip" xml:space="preserve">
+    <value>現在のマップにおける極密度の最大値・最小値を表示します
+(平均密度を 1 として規格化された相対値・読み取り専用)。</value>
+  </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value>密度マップの角度分解能(ビン幅)を
+度単位で設定します (範囲 1〜60°)。小さ
+いほど高精細ですが計算が重くなります。</value>
+  </data>
+  <data name="label2.ToolTip" xml:space="preserve">
+    <value>密度マップの角度分解能(ビン幅)を
+度単位で設定します (範囲 1〜60°)。小さ
+いほど高精細ですが計算が重くなります。</value>
+  </data>
+  <data name="label3.ToolTip" xml:space="preserve">
+    <value>カラースケールの飽和(フルスケール)密度を、
+平均密度の 10^E 倍として指数 E を設定します (範囲
+-9〜9)。値を上げるほど表示レンジが広がります。</value>
+  </data>
+  <data name="label4.ToolTip" xml:space="preserve">
+    <value>カラースケールの飽和(フルスケール)密度を、
+平均密度の 10^E 倍として指数 E を設定します (範囲
+-9〜9)。値を上げるほど表示レンジが広がります。</value>
+  </data>
+  <data name="label7.ToolTip" xml:space="preserve">
+    <value>密度カラーマップの強度スケールを選択しま
+す。Linear は密度に比例、Log は高密度を
+圧縮して弱い集合組織を見やすくします。</value>
+  </data>
+  <data name="label9.ToolTip" xml:space="preserve">
+    <value>極密度を表示するカラーマップを選択します。Cold-Warm
+(青〜赤) または Gray scale (グレースケール)。</value>
+  </data>
+  <data name="labelU.ToolTip" xml:space="preserve">
+    <value>極を投影する結晶方位または面指数の第1成分 (軸モードで
+は u、面モードでは h) を設定します (範囲 -20〜20)。</value>
+  </data>
+  <data name="labelV.ToolTip" xml:space="preserve">
+    <value>極を投影する結晶方位または面指数の第2成分 (軸モードで
+は v、面モードでは k) を設定します (範囲 -20〜20)。</value>
+  </data>
+  <data name="labelW.ToolTip" xml:space="preserve">
+    <value>極を投影する結晶方位または面指数の第3成分 (軸モードで
+は w、面モードでは l) を設定します (範囲 -20〜20)。</value>
+  </data>
 </root>

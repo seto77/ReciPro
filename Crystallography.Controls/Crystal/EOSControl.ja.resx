@@ -1,0 +1,243 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="checkBoxUseEOS.ToolTip" xml:space="preserve">
+    <value>状態方程式(EOS)を有効にします。下記パラメータ
+と現在の単位胞体積から圧力を計算します。</value>
+  </data>
+  <data name="numericBox3rdVinetBeta.ToolTip" xml:space="preserve">
+    <value>3次 Vinet 状態方程式(EOS)の経験的パラメータ
+β。「3rd Vinet」選択時のみ使用します。</value>
+  </data>
+  <data name="numericBox3rdVinetIta.ToolTip" xml:space="preserve">
+    <value>3次 Vinet 状態方程式(EOS)の経験的パラメータ
+η。「3rd Vinet」選択時のみ使用します。</value>
+  </data>
+  <data name="numericBox3rdVinetPsi.ToolTip" xml:space="preserve">
+    <value>3次 Vinet 状態方程式(EOS)の経験的パラメータ
+ψ。「3rd Vinet」選択時のみ使用します。</value>
+  </data>
+  <data name="numericBoxEOS_A.ToolTip" xml:space="preserve">
+    <value>熱膨張係数 a(単位 10⁻⁵/K)。α(T)=a+bT+c/T² の
+項で、温度による基準体積の膨張を表します。</value>
+  </data>
+  <data name="numericBoxEOS_B.ToolTip" xml:space="preserve">
+    <value>熱膨張係数 b(単位 10⁻⁹/K²)。α(T)=a+bT+c/T² の温度1次項です。</value>
+  </data>
+  <data name="numericBoxEOS_C.ToolTip" xml:space="preserve">
+    <value>熱膨張係数 c(単位 K)。α(T)=a+bT+c/T²
+の c/T² 項(低温補正)です。</value>
+  </data>
+  <data name="numericBoxEOS_Gamma0.ToolTip" xml:space="preserve">
+    <value>基準体積でのグリュナイゼン定数 γ₀(無次元)。
+熱振動エネルギーが圧力に寄与する強さを
+表し、Mie–Grüneisen モデルで使用します。</value>
+  </data>
+  <data name="numericBoxEOS_K0.ToolTip" xml:space="preserve">
+    <value>基準温度 T₀ における等温体積弾性率 K₀(単位 GPa)。
+物質の圧縮しにくさ(大きいほど硬い)を表します。</value>
+  </data>
+  <data name="numericBoxEOS_Kp0.ToolTip" xml:space="preserve">
+    <value>体積弾性率の圧力1次微分 K'₀ = (∂K/∂P)|P=0(無次元、
+標準値 約4)。圧力で物質がどれだけ硬くなるかを表します。</value>
+  </data>
+  <data name="numericBoxEOS_KpInfinity.ToolTip" xml:space="preserve">
+    <value>無限圧での体積弾性率の圧力微分 K'∞(無次元)。
+Keane 状態方程式(EOS)で使用します。</value>
+  </data>
+  <data name="numericBoxEOS_KperT.ToolTip" xml:space="preserve">
+    <value>体積弾性率の温度微分 ∂K/∂T(P=0、単位 GPa/K)。温度1
+K あたりの硬さ K の変化量(通常は負)を表します。</value>
+  </data>
+  <data name="numericBoxEOS_Kpp0.ToolTip" xml:space="preserve">
+    <value>体積弾性率の圧力2次微分 K''₀ =
+(∂²K/∂P²)|P=0(単位 1/GPa)。4次
+Birch–Murnaghan 状態方程式(EOS)で使用します。</value>
+  </data>
+  <data name="numericBoxEOS_Q.ToolTip" xml:space="preserve">
+    <value>グリュナイゼン定数の体積依存指数
+q(無次元)。γ = γ₀·(V/V₀)^q の指数です。</value>
+  </data>
+  <data name="numericBoxEOS_T0.ToolTip" xml:space="preserve">
+    <value>基準温度 T₀(単位 K)。等温パラメータ V₀・K₀・
+K'₀ が定義される温度です(標準は 300 K)。</value>
+  </data>
+  <data name="numericBoxEOS_Theta0.ToolTip" xml:space="preserve">
+    <value>基準体積でのデバイ温度 θ₀(単位 K)。格子振動を特徴づけ
+る温度で、熱圧力(Mie–Grüneisen)の計算に使用します。</value>
+  </data>
+  <data name="numericBoxEOS_V0perCell.ToolTip" xml:space="preserve">
+    <value>基準状態(T₀, P=0)での単位胞体積 V₀(単位
+Å³/cell)。クリックするとこの欄が編集対象に
+なり、cm³/mol 欄は自動換算されます。</value>
+  </data>
+  <data name="numericBoxEOS_V0perMol.ToolTip" xml:space="preserve">
+    <value>基準状態(T₀, P=0)でのモル体積 V₀(単位
+cm³/mol)。クリックするとこの欄が編集対象に
+なり、Å³/cell 欄は自動換算されます。</value>
+  </data>
+  <data name="numericBoxPressure.ToolTip" xml:space="preserve">
+    <value>状態方程式(EOS)が現在の単位胞体積と温度から計算し
+た圧力 P(単位 GPa)。出力専用(読み取り専用)です。</value>
+  </data>
+  <data name="numericBoxTemperature.ToolTip" xml:space="preserve">
+    <value>圧力を評価する対象温度 T(単位 K)。基準温度
+T₀ との差 T − T₀ に応じた熱圧力が加わります。</value>
+  </data>
+  <data name="radioButtonEOS_AP2.ToolTip" xml:space="preserve">
+    <value>等温の圧力–体積関係に AP2(Holzapfel の2次
+adapted polynomial)状態方程式(EOS)を使用します。</value>
+  </data>
+  <data name="radioButtonEOS_FourthBirchMunaghan.ToolTip" xml:space="preserve">
+    <value>等温の圧力–体積関係に4次 Birch–Murnaghan(BM)状態
+方程式(EOS)を使用します(K''₀ 項が追加されます)。</value>
+  </data>
+  <data name="radioButtonEOS_Keane.ToolTip" xml:space="preserve">
+    <value>等温の圧力–体積関係に Keane 状態方程式(EOS)
+を使用します(高圧極限 K'∞ を用います)。</value>
+  </data>
+  <data name="radioButtonEOS_ThirdBirchMurnaghan.ToolTip" xml:space="preserve">
+    <value>等温の圧力–体積関係に3次 Birch–Murnaghan(BM)状態方程
+式(EOS)を使用します(最も標準的。V₀・K₀・K'₀ を使用)。</value>
+  </data>
+  <data name="radioButtonEOS_Vinet.ToolTip" xml:space="preserve">
+    <value>等温の圧力–体積関係に Vinet 状態方程式(EOS)を使用し
+ます(強い圧縮域で良好とされる。V₀・K₀・K'₀ を使用)。</value>
+  </data>
+  <data name="radioButtonEOS_Vinet3rd.ToolTip" xml:space="preserve">
+    <value>等温の圧力–体積関係に拡張3次 Vinet 状態方程式(EOS)
+を使用します(追加パラメータ η・β・ψ を用います)。</value>
+  </data>
+  <data name="radioButtonMieGruneisen.ToolTip" xml:space="preserve">
+    <value>格子振動による熱圧力を Mie–Grüneisen モデルで計算し
+ます(パラメータ γ₀・デバイ温度 θ₀・q を使用)。</value>
+  </data>
+  <data name="radioButtonTdependenceK0andV0.ToolTip" xml:space="preserve">
+    <value>基準体積 V₀ と体積弾性率 K₀ を温度依存にして温度効果を
+取り込みます(熱膨張 a,b,c と ∂K/∂T を使用)。</value>
+  </data>
+  <data name="textBoxEOS_Note.ToolTip" xml:space="preserve">
+    <value>この状態方程式(EOS)パラメータ一式に対す
+る自由記述メモ(文献出典・コメントなど)。</value>
+  </data>
+  <data name="label83.ToolTip" xml:space="preserve">
+    <value>この状態方程式(EOS)パラメータ一式に対す
+る自由記述メモ(文献出典・コメントなど)。</value>
+  </data>
+</root>

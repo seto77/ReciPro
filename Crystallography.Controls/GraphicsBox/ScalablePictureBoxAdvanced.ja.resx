@@ -269,4 +269,117 @@
   <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
     <value>372, 583</value>
   </data>
+  <data name="buttonMag1.ToolTip" xml:space="preserve">
+    <value>表示倍率を等倍 (×1、画像1ピクセル
+＝画面1ピクセル) に設定します。</value>
+  </data>
+  <data name="buttonMag2.ToolTip" xml:space="preserve">
+    <value>表示倍率を ×2 (2倍拡大) に設定します。</value>
+  </data>
+  <data name="buttonMag4.ToolTip" xml:space="preserve">
+    <value>表示倍率を ×4 (4倍拡大) に設定します。</value>
+  </data>
+  <data name="buttonMag_16.ToolTip" xml:space="preserve">
+    <value>表示倍率を ×1/16 (1/16に縮小) に設定します。</value>
+  </data>
+  <data name="buttonMag_2.ToolTip" xml:space="preserve">
+    <value>表示倍率を ×1/2 (1/2に縮小) に設定します。</value>
+  </data>
+  <data name="buttonMag_4.ToolTip" xml:space="preserve">
+    <value>表示倍率を ×1/4 (1/4に縮小) に設定します。</value>
+  </data>
+  <data name="buttonMag_8.ToolTip" xml:space="preserve">
+    <value>表示倍率を ×1/8 (1/8に縮小) に設定します。</value>
+  </data>
+  <data name="checkBoxDustScratches.ToolTip" xml:space="preserve">
+    <value>Dust &amp; Scratches (除塵・傷除去) フィルタを適用します。
+近傍と大きく異なる小さな輝点や傷状ノイズを近傍値で置き
+換えて除去します (Radius と Threshold で調整)。</value>
+  </data>
+  <data name="checkBoxGaussianBlur.ToolTip" xml:space="preserve">
+    <value>Gaussian Blur (ガウシアンぼかし) を
+適用します。ガウス関数で画像を平滑化し
+ノイズを抑えます (FWHM で幅を指定)。</value>
+  </data>
+  <data name="comboBoxGradient.ToolTip" xml:space="preserve">
+    <value>表示の極性を切り替えます。Positive は通常表示、
+Negative は階調を反転します (明暗が逆転)。</value>
+  </data>
+  <data name="comboBoxScale1.ToolTip" xml:space="preserve">
+    <value>強度から明るさへの変換を選びます。Linear
+は比例、Log は対数表示で、強いシグナルと
+弱いシグナルを同時に見やすくします。</value>
+  </data>
+  <data name="comboBoxScale2.ToolTip" xml:space="preserve">
+    <value>強度表示に使うカラーマップ (Gray /
+Cold-Warm / Spectrum / Fire) を選択します。
+擬似カラーにすると強度差が見やすくなります。</value>
+  </data>
+  <data name="label.ToolTip" xml:space="preserve">
+    <value>カーソル位置 (画像座標 X, Y) と、グレースケール
+画像ではカーソル下の生の画素値を表示します。</value>
+  </data>
+  <data name="labelResolution.ToolTip" xml:space="preserve">
+    <value>現在の画像の表示倍率 (ズーム倍率) を表示し
+ます。拡大・縮小に応じて更新されます。</value>
+  </data>
+  <data name="numericBoxDustScratchesRadius.ToolTip" xml:space="preserve">
+    <value>Dust &amp; Scratches フィルタの処理半径をピクセル
+単位 (0〜5 px) で設定します。大きいほど大きな
+欠陥まで除去できますが細部もぼけます。</value>
+  </data>
+  <data name="numericBoxDustScratchesThreshold.ToolTip" xml:space="preserve">
+    <value>Dust &amp; Scratches のしきい値 (0〜10) を設定します。
+近傍との差がこの値を超える画素だけを欠陥として置換し
+ます。小さいほど多くの画素が除去対象になります。</value>
+  </data>
+  <data name="numericBoxGaussianFWHM.ToolTip" xml:space="preserve">
+    <value>ガウシアンぼかしの幅を FWHM (Full Width at Half
+Maximum = 半値全幅) でピクセル単位 (0〜100 px)
+に設定します。大きいほど強くぼけます。</value>
+  </data>
+  <data name="toolStripStatusLabel1.ToolTipText" xml:space="preserve">
+    <value>ステータス表示です。Dust &amp; Scratches や Gaussian Blur
+フィルタの処理経過時間などのメッセージを表示します。</value>
+  </data>
+  <data name="trackBarAdvancedMaximum.ToolTip" xml:space="preserve">
+    <value>強度の上限を設定します。これを超える画素値は白
+(最大輝度) に飽和します。Min. スライダと合わせ
+て表示の明るさ・コントラスト範囲を決めます。</value>
+  </data>
+  <data name="trackBarAdvancedMinimum.ToolTip" xml:space="preserve">
+    <value>強度の下限を設定します。これを下回る画素値は
+黒につぶれます。Max. スライダと合わせて
+表示の明るさ・コントラスト範囲を決めます。</value>
+  </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value>現在の画像の表示倍率 (ズーム倍率) を表示します。</value>
+  </data>
+  <data name="label14.ToolTip" xml:space="preserve">
+    <value>現在の画像の表示倍率 (Magnification = 倍率) を表示します。</value>
+  </data>
+  <data name="label2.ToolTip" xml:space="preserve">
+    <value>強度の下限を設定します。これを下回る画素値は
+黒につぶれます。Max. スライダと合わせて
+表示の明るさ・コントラスト範囲を決めます。</value>
+  </data>
+  <data name="label3.ToolTip" xml:space="preserve">
+    <value>強度の上限を設定します。これを超える画素値は白
+(最大輝度) に飽和します。Min. スライダと合わせ
+て表示の明るさ・コントラスト範囲を決めます。</value>
+  </data>
+  <data name="label5.ToolTip" xml:space="preserve">
+    <value>表示の極性を切り替えます。Positive は通常表示、
+Negative は階調を反転します (明暗が逆転)。</value>
+  </data>
+  <data name="label7.ToolTip" xml:space="preserve">
+    <value>強度から明るさへの変換を選びます。Linear
+は比例、Log は対数表示で、強いシグナルと
+弱いシグナルを同時に見やすくします。</value>
+  </data>
+  <data name="label9.ToolTip" xml:space="preserve">
+    <value>強度表示に使うカラーマップ (Gray /
+Cold-Warm / Spectrum / Fire) を選択します。
+擬似カラーにすると強度差が見やすくなります。</value>
+  </data>
 </root>

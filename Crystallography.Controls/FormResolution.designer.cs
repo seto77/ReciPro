@@ -24,6 +24,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container(); // (260531Ch)
+            toolTip = new System.Windows.Forms.ToolTip(components); // (260531Ch)
+            toolTip.IsBalloon = true; // 260531Cl 追加: バルーン表示に統一
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormResolution));
             this.buttonOK = new System.Windows.Forms.Button();
             this.buttonCancel = new System.Windows.Forms.Button();
@@ -80,6 +83,7 @@
             0,
             0});
             this.numericUpDownWidth.Name = "numericUpDownWidth";
+            this.toolTip.SetToolTip(this.numericUpDownWidth, resources.GetString("numericUpDownWidth.ToolTip")); // 260531Cl
             this.numericUpDownWidth.Size = new System.Drawing.Size(63, 26);
             this.numericUpDownWidth.TabIndex = 1;
             this.numericUpDownWidth.Value = new decimal(new int[] {
@@ -105,6 +109,7 @@
             0,
             0});
             this.numericUpDownHeight.Name = "numericUpDownHeight";
+            this.toolTip.SetToolTip(this.numericUpDownHeight, resources.GetString("numericUpDownHeight.ToolTip")); // 260531Cl
             this.numericUpDownHeight.Size = new System.Drawing.Size(63, 26);
             this.numericUpDownHeight.TabIndex = 2;
             this.numericUpDownHeight.Value = new decimal(new int[] {
@@ -121,6 +126,7 @@
             this.label1.Location = new System.Drawing.Point(7, 34);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
+            this.toolTip.SetToolTip(this.label1, resources.GetString("label1.ToolTip")); // 260531Cl
             this.label1.Size = new System.Drawing.Size(45, 18);
             this.label1.TabIndex = 2;
             this.label1.Text = "Width";
@@ -132,6 +138,7 @@
             this.label2.Location = new System.Drawing.Point(177, 34);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
+            this.toolTip.SetToolTip(this.label2, resources.GetString("label2.ToolTip")); // 260531Cl
             this.label2.Size = new System.Drawing.Size(49, 18);
             this.label2.TabIndex = 2;
             this.label2.Text = "Height";
@@ -143,6 +150,7 @@
             this.label4.Location = new System.Drawing.Point(304, 34);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
+            this.toolTip.SetToolTip(this.label4, resources.GetString("label4.ToolTip")); // 260531Cl
             this.label4.Size = new System.Drawing.Size(36, 18);
             this.label4.TabIndex = 2;
             this.label4.Text = "pixel";
@@ -154,6 +162,7 @@
             this.label3.Location = new System.Drawing.Point(128, 34);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
+            this.toolTip.SetToolTip(this.label3, resources.GetString("label3.ToolTip")); // 260531Cl
             this.label3.Size = new System.Drawing.Size(36, 18);
             this.label3.TabIndex = 2;
             this.label3.Text = "pixel";
@@ -178,6 +187,7 @@
             this.checkBoxKeepAspect.Location = new System.Drawing.Point(0, 65);
             this.checkBoxKeepAspect.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.checkBoxKeepAspect.Name = "checkBoxKeepAspect";
+            this.toolTip.SetToolTip(this.checkBoxKeepAspect, resources.GetString("checkBoxKeepAspect.ToolTip")); // 260531Cl
             this.checkBoxKeepAspect.Size = new System.Drawing.Size(166, 27);
             this.checkBoxKeepAspect.TabIndex = 3;
             this.checkBoxKeepAspect.Text = "Keep Aspect Ratio";
@@ -215,6 +225,8 @@
         }
 
         #endregion
+
+        private System.Windows.Forms.ToolTip toolTip; // (260531Ch)
 
         private System.Windows.Forms.Button buttonOK;
         private System.Windows.Forms.Button buttonCancel;

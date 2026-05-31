@@ -1007,7 +1007,8 @@
     <value>122</value>
   </data>
   <data name="colorControlString.ToolTip" xml:space="preserve">
-    <value>Set the color of strings</value>
+    <value>Set the color of overlay text, including
+Kikuchi-line and zone-axis index labels.</value>
   </data>
   <data name="&gt;&gt;colorControlString.Name" xml:space="preserve">
     <value>colorControlString</value>
@@ -1245,9 +1246,9 @@ to Kikuchi line intensity</value>
     <value>125</value>
   </data>
   <data name="numericBoxKikuchiThresholdOfLength.ToolTip" xml:space="preserve">
-    <value>Set a threshold of d-spacings of Kikuchi lines.
-Kikuchi lines under this value are simulated. 
-</value>
+    <value>Cutoff on reciprocal spacing 1/d (nm^-1). Only Kikuchi
+lines whose 1/d is below this value are drawn, so
+lower values keep only larger-d-spacing reflections.</value>
   </data>
   <data name="&gt;&gt;numericBoxKikuchiThresholdOfLength.Name" xml:space="preserve">
     <value>numericBoxKikuchiThresholdOfLength</value>
@@ -1337,7 +1338,9 @@ Kikuchi lines under this value are simulated.
     <value>135</value>
   </data>
   <data name="numericBoxThicknessStep.ToolTip" xml:space="preserve">
-    <value>Set the range and step size for the sample thickness.</value>
+    <value>Step size of the sample-thickness
+scan, in nm; the range from Start to
+End is calculated at this increment.</value>
   </data>
   <data name="&gt;&gt;numericBoxThicknessStep.Name" xml:space="preserve">
     <value>numericBoxThicknessStep</value>
@@ -1391,7 +1394,9 @@ Kikuchi lines under this value are simulated.
     <value>131</value>
   </data>
   <data name="numericBoxMaxNumOfG.ToolTip" xml:space="preserve">
-    <value>Set the number of diffracted waves to be calculated</value>
+    <value>Number of diffracted beams (g-vectors) included
+in the Bloch-wave dynamical calculation (1-2048);
+more beams improve accuracy but slow calculation.</value>
   </data>
   <data name="&gt;&gt;numericBoxMaxNumOfG.Name" xml:space="preserve">
     <value>numericBoxMaxNumOfG</value>
@@ -1508,7 +1513,9 @@ Kikuchi lines under this value are simulated.
     <value>133</value>
   </data>
   <data name="numericBoxThicknessStart.ToolTip" xml:space="preserve">
-    <value>Set the range and step size for the sample thickness.</value>
+    <value>Start of the sample-thickness scan
+range, in nm; Start, End, and Step
+define the thickness slices to calculate.</value>
   </data>
   <data name="&gt;&gt;numericBoxThicknessStart.Name" xml:space="preserve">
     <value>numericBoxThicknessStart</value>
@@ -1565,7 +1572,8 @@ Kikuchi lines under this value are simulated.
     <value>134</value>
   </data>
   <data name="numericBoxThicknessEnd.ToolTip" xml:space="preserve">
-    <value>Set the range and step size for the sample thickness.</value>
+    <value>End of the sample-thickness scan range, in nm; Start,
+End, and Step define the thickness slices to calculate.</value>
   </data>
   <data name="&gt;&gt;numericBoxThicknessEnd.Name" xml:space="preserve">
     <value>numericBoxThicknessEnd</value>
@@ -2285,7 +2293,9 @@ Kikuchi lines under this value are simulated.
     <value>134</value>
   </data>
   <data name="numericBoxEnergyEnd.ToolTip" xml:space="preserve">
-    <value>Set the energy range and step size.</value>
+    <value>End (lower) energy of the backscattered
+electrons used in the EBSD (Electron
+Backscatter Diffraction) scan, in keV.</value>
   </data>
   <data name="&gt;&gt;numericBoxEnergyEnd.Name" xml:space="preserve">
     <value>numericBoxEnergyEnd</value>
@@ -2342,7 +2352,9 @@ Kikuchi lines under this value are simulated.
     <value>133</value>
   </data>
   <data name="numericBoxEnergyStart.ToolTip" xml:space="preserve">
-    <value>Set the energy range and step size.</value>
+    <value>Start (upper) energy of the backscattered
+electrons used in the EBSD (Electron
+Backscatter Diffraction) scan, in keV.</value>
   </data>
   <data name="&gt;&gt;numericBoxEnergyStart.Name" xml:space="preserve">
     <value>numericBoxEnergyStart</value>
@@ -2399,7 +2411,9 @@ Kikuchi lines under this value are simulated.
     <value>135</value>
   </data>
   <data name="numericBoxEnergyStep.ToolTip" xml:space="preserve">
-    <value>Set the energy range and step size.</value>
+    <value>Step size of the backscattered-electron
+energy scan, in keV; energies are calculated
+from Start down to End by this increment.</value>
   </data>
   <data name="&gt;&gt;numericBoxEnergyStep.Name" xml:space="preserve">
     <value>numericBoxEnergyStep</value>
@@ -4354,5 +4368,305 @@ Kikuchi lines under this value are simulated.
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
     <value>Crystallography.Controls.FormBase, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="buttonCopyImage.ToolTip" xml:space="preserve">
+    <value>Copy the simulated EBSD pattern image to the clipboard.</value>
+  </data>
+  <data name="buttonCreateMasterPattern.ToolTip" xml:space="preserve">
+    <value>Build the EBSD master pattern (the full-sphere
+dynamical backscatter intensity map) via Monte-Carlo
+then Bloch-wave (Bethe) dynamical diffraction.</value>
+  </data>
+  <data name="buttonFitNistElasticSampler.ToolTip" xml:space="preserve">
+    <value>Developer tool: compress the NIST
+elastic-scattering cross-section tables (E_*.TXT)
+with PCHIP interpolation and emit generated source.</value>
+  </data>
+  <data name="buttonFromX.ToolTip" xml:space="preserve">
+    <value>Set the 3D geometry view to look along
+the X axis (the sample rotation axis).</value>
+  </data>
+  <data name="buttonMasterPattern2DCopy.ToolTip" xml:space="preserve">
+    <value>Copy the 2D (Lambert-projection)
+master-pattern image to the clipboard.</value>
+  </data>
+  <data name="buttonMasterPattern3DCopy.ToolTip" xml:space="preserve">
+    <value>Copy the 3D (spherical) master-pattern
+preview to the clipboard.</value>
+  </data>
+  <data name="buttonMasterPattern3DViewAlong.ToolTip" xml:space="preserve">
+    <value>Rotate the 3D master pattern so the zone axis
+[u v w] entered at right faces the viewer.</value>
+  </data>
+  <data name="buttonSimulateBSE.ToolTip" xml:space="preserve">
+    <value>Run a Monte Carlo simulation of BSE (BackScattered
+Electron) trajectories to compute the exit-energy and
+depth distributions used to weight the EBSD pattern.</value>
+  </data>
+  <data name="buttonStop.ToolTip" xml:space="preserve">
+    <value>Stop the running master-pattern
+(Monte-Carlo / Bloch-wave) calculation.</value>
+  </data>
+  <data name="buttonViewFromSurfaceNormal.ToolTip" xml:space="preserve">
+    <value>Set the 3D geometry view to look
+along the sample surface normal.</value>
+  </data>
+  <data name="buttonViewFromZ.ToolTip" xml:space="preserve">
+    <value>Set the 3D geometry view to look along
+the Z axis (the electron-beam direction).</value>
+  </data>
+  <data name="buttonViewQuarter.ToolTip" xml:space="preserve">
+    <value>Set the 3D geometry view to an oblique bird's-eye viewpoint.</value>
+  </data>
+  <data name="checkBoxDrawAxesInStereonet.ToolTip" xml:space="preserve">
+    <value>Overlay the crystal/reference axes on the stereonet
+(stereographic projection of the BSE distribution).</value>
+  </data>
+  <data name="checkBoxDrawDetectorOutline.ToolTip" xml:space="preserve">
+    <value>Overlay the outline of the detector
+(phosphor screen) on the pattern. Enables
+the detector-outline options group.</value>
+  </data>
+  <data name="checkBoxKikuchiLine_Kinematical.ToolTip" xml:space="preserve">
+    <value>Weight each Kikuchi line by its structure
+factor (kinematical diffraction intensity =
+amplitude scattered by one unit cell),
+blending the line color toward the background
+so stronger reflections appear darker.</value>
+  </data>
+  <data name="checkBoxMasterPattern3DAxisArrows.ToolTip" xml:space="preserve">
+    <value>Show the crystal-axis (a, b, c) arrow
+inset on the 3D master-pattern view.</value>
+  </data>
+  <data name="checkBoxMasterPattern3DAxisLabel.ToolTip" xml:space="preserve">
+    <value>Show the a, b, c axis-label text
+on the 3D master-pattern view.</value>
+  </data>
+  <data name="checkBoxNonLocalAbsorption.ToolTip" xml:space="preserve">
+    <value>Use the non-local absorption model (complex
+optical potential accounting for thermal-diffuse
+scattering) when building the master pattern.</value>
+  </data>
+  <data name="checkBoxShowCircle.ToolTip" xml:space="preserve">
+    <value>Draw the circle marking the detector outline on the pattern.</value>
+  </data>
+  <data name="checkBoxShowDyanmicalEBSD.ToolTip" xml:space="preserve">
+    <value>Show the dynamical EBSD (Electron BackScatter
+Diffraction) pattern projected from the master
+pattern; unchecked leaves a plain background.</value>
+  </data>
+  <data name="checkBoxShowGIndices.ToolTip" xml:space="preserve">
+    <value>Show the (h k l) reflection indices
+labeling each Kikuchi line (band).</value>
+  </data>
+  <data name="checkBoxShowKikuchiLines.ToolTip" xml:space="preserve">
+    <value>Show the Kikuchi lines (the band-like diffraction
+features formed by inelastically scattered
+electrons). Enables the Kikuchi-line options group.</value>
+  </data>
+  <data name="checkBoxShowMesh.ToolTip" xml:space="preserve">
+    <value>Draw the detector division grid (mesh lines) on the pattern.</value>
+  </data>
+  <data name="checkBoxShowOverlays.ToolTip" xml:space="preserve">
+    <value>Overlay Kikuchi lines, indices, zone axes and
+the detector outline on top of the pattern.</value>
+  </data>
+  <data name="checkBoxShowZoneAxisIndices.ToolTip" xml:space="preserve">
+    <value>Label the zone axes [u v w] at the
+intersections of the Kikuchi bands.</value>
+  </data>
+  <data name="checkBoxTDSBackground.ToolTip" xml:space="preserve">
+    <value>Include TDS (Thermal Diffuse Scattering)
+background intensity in the master pattern.</value>
+  </data>
+  <data name="checkBoxWithBSEDistribution.ToolTip" xml:space="preserve">
+    <value>Render the EBSD pattern weighted by the simulated
+BSE (BackScattered Electron) energy and depth
+distribution, integrating over all slices instead
+of showing a single energy/depth slice. Run
+Simulate first to obtain the distribution.</value>
+  </data>
+  <data name="colorControlExcessLine.ToolTip" xml:space="preserve">
+    <value>Set the color used to draw the Kikuchi lines.</value>
+  </data>
+  <data name="comboBoxGradient.ToolTip" xml:space="preserve">
+    <value>Choose Positive or Negative (inverted)
+grayscale for the pattern intensity.</value>
+  </data>
+  <data name="comboBoxMasterPattern2DHemisphere.ToolTip" xml:space="preserve">
+    <value>Choose which hemisphere (+Z or -Z) of the
+master pattern is shown in the 2D view.</value>
+  </data>
+  <data name="comboBoxMasterPatternGrid.ToolTip" xml:space="preserve">
+    <value>Resolution (pixels per side) of the
+square Lambert master-pattern grid
+(64–2048); larger is finer but slower.</value>
+  </data>
+  <data name="comboBoxScale.ToolTip" xml:space="preserve">
+    <value>Choose the color scale mapping intensity to
+color (Gray, Cold-Warm, Spectrum, or Fire).</value>
+  </data>
+  <data name="indexControl.ToolTip" xml:space="preserve">
+    <value>Enter the zone-axis indices [u v w] used by the
+'View Along' button to orient the 3D master pattern.</value>
+  </data>
+  <data name="numericBoxDepth.ToolTip" xml:space="preserve">
+    <value>Shows the depth (nm) of the EBSD pattern
+slice currently rendered (single-slice mode).</value>
+  </data>
+  <data name="numericBoxDetRadius.ToolTip" xml:space="preserve">
+    <value>Set the radius of the EBSD detector (phosphor screen)
+in mm. This sets the captured solid angle and the
+screen resolution (mm/pixel) of the simulated pattern.</value>
+  </data>
+  <data name="numericBoxDetTilt.ToolTip" xml:space="preserve">
+    <value>Set the tilt angle of the detector plane in degrees
+relative to the beam (Z) axis. This affects the camera
+length and the projected shape of the Kikuchi bands.</value>
+  </data>
+  <data name="numericBoxEnergy.ToolTip" xml:space="preserve">
+    <value>Shows the electron energy (keV) of the EBSD pattern
+slice currently rendered (single-slice mode).</value>
+  </data>
+  <data name="numericBoxKikuchiThresholdOfStructureFactor.ToolTip" xml:space="preserve">
+    <value>Number of strongest reflections (Top N,
+ranked by structure factor = amplitude
+scattered by one unit cell) to draw as
+Kikuchi lines. Larger values show more lines.</value>
+  </data>
+  <data name="numericBoxMasterPatternDepth.ToolTip" xml:space="preserve">
+    <value>Shows the depth (nm) of the master-pattern slice
+currently selected by the depth slider for preview.</value>
+  </data>
+  <data name="numericBoxMasterPatternEnergy.ToolTip" xml:space="preserve">
+    <value>Shows the electron energy (keV) of the
+master-pattern slice currently selected
+by the energy slider for preview.</value>
+  </data>
+  <data name="numericBoxSampleTilt.ToolTip" xml:space="preserve">
+    <value>Sample tilt angle in the SEM, in degrees
+(-90 to 0; typically -70 for EBSD); sets
+the backscatter projection geometry.</value>
+  </data>
+  <data name="numericBoxYofDet.ToolTip" xml:space="preserve">
+    <value>Set the Y coordinate (lateral position from
+the sample) of the detector center, in mm.</value>
+  </data>
+  <data name="numericBoxZofDet.ToolTip" xml:space="preserve">
+    <value>Set the Z coordinate (along the beam direction)
+of the detector center, in mm. Together with Y
+it determines the camera length.</value>
+  </data>
+  <data name="radioButtonKikuchiThresholdOfLength.ToolTip" xml:space="preserve">
+    <value>Select reflections for Kikuchi lines
+by a reciprocal-spacing (1/d) cutoff.</value>
+  </data>
+  <data name="radioButtonKikuchiThresholdOfStructureFactor.ToolTip" xml:space="preserve">
+    <value>Select reflections for Kikuchi lines by taking
+the strongest ones ranked by structure factor.</value>
+  </data>
+  <data name="trackBarIntensityBrightnessMax.ToolTip" xml:space="preserve">
+    <value>Set the upper brightness (white-clip) level of the
+displayed EBSD image as a fraction of the intensity
+range; pixels at or above this map to white.</value>
+  </data>
+  <data name="trackBarIntensityBrightnessMin.ToolTip" xml:space="preserve">
+    <value>Set the lower brightness (black-clip) level of the
+displayed EBSD image as a fraction of the intensity
+range; pixels at or below this map to black.</value>
+  </data>
+  <data name="trackBarLineWidth.ToolTip" xml:space="preserve">
+    <value>Set the line width (pen thickness)
+used to draw the Kikuchi lines.</value>
+  </data>
+  <data name="trackBarMasterPatternDepth.ToolTip" xml:space="preserve">
+    <value>Select which depth slice (nm) of the master pattern
+to preview; the value is shown in the Depth box.</value>
+  </data>
+  <data name="trackBarMasterPatternEnergy.ToolTip" xml:space="preserve">
+    <value>Select which energy slice (keV) of the master pattern
+to preview; the value is shown in the Energy box.</value>
+  </data>
+  <data name="trackBarOutputEnergy.ToolTip" xml:space="preserve">
+    <value>Select which energy slice (keV) of the
+EBSD pattern to render in single-slice
+mode; the value is shown in the Energy box.</value>
+  </data>
+  <data name="trackBarOutputThickness.ToolTip" xml:space="preserve">
+    <value>Select which depth slice (nm) of the EBSD
+pattern to render in single-slice mode;
+the value is shown in the Depth box.</value>
+  </data>
+  <data name="trackBarStrSize.ToolTip" xml:space="preserve">
+    <value>Adjust the font size of the overlay index text.</value>
+  </data>
+  <data name="waveLengthControl.ToolTip" xml:space="preserve">
+    <value>Set the accelerating voltage / electron
+wavelength of the incident beam (the
+primary-electron energy for the EBSD simulation).</value>
+  </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value>Adjust the font size of the overlay index text.</value>
+  </data>
+  <data name="label10.ToolTip" xml:space="preserve">
+    <value>Adjust the brightness (black/white
+clip) range of the displayed EBSD image.</value>
+  </data>
+  <data name="label11.ToolTip" xml:space="preserve">
+    <value>Set the line width (pen thickness)
+used to draw the Kikuchi lines.</value>
+  </data>
+  <data name="label13.ToolTip" xml:space="preserve">
+    <value>Distribution of the maximum penetration depth
+(nm) of the simulated backscattered electrons.</value>
+  </data>
+  <data name="label14.ToolTip" xml:space="preserve">
+    <value>Distribution of the energy loss ΔE (keV)
+of the simulated backscattered electrons.</value>
+  </data>
+  <data name="label15.ToolTip" xml:space="preserve">
+    <value>In this stereonet, the center
+corresponds to the sample surface normal.</value>
+  </data>
+  <data name="label16.ToolTip" xml:space="preserve">
+    <value>Set the radius of the EBSD detector (phosphor screen)
+in mm. This sets the captured solid angle and the
+screen resolution (mm/pixel) of the simulated pattern.</value>
+  </data>
+  <data name="label17.ToolTip" xml:space="preserve">
+    <value>Set the tilt angle of the detector plane in degrees
+relative to the beam (Z) axis. This affects the camera
+length and the projected shape of the Kikuchi bands.</value>
+  </data>
+  <data name="label2.ToolTip" xml:space="preserve">
+    <value>Position of the detector center
+relative to the sample, given as Y
+(lateral) and Z (along the beam) in mm.</value>
+  </data>
+  <data name="label3.ToolTip" xml:space="preserve">
+    <value>Select normal or inverted (negative)
+gray-level polarity for the displayed image.</value>
+  </data>
+  <data name="label4.ToolTip" xml:space="preserve">
+    <value>Select the color scale (Gray, Cold-Warm,
+Spectrum, Fire) used to map intensity to color.</value>
+  </data>
+  <data name="label7.ToolTip" xml:space="preserve">
+    <value>Set the lower brightness (black-clip) level of the
+displayed EBSD image as a fraction of the intensity
+range; pixels at or below this map to black.</value>
+  </data>
+  <data name="label8.ToolTip" xml:space="preserve">
+    <value>Set the upper brightness (white-clip) level of the
+displayed EBSD image as a fraction of the intensity
+range; pixels at or above this map to white.</value>
+  </data>
+  <data name="labelMasterPattern2DHemisphere.ToolTip" xml:space="preserve">
+    <value>Choose which hemisphere (+Z or -Z) of the
+master pattern is shown in the 2D view.</value>
+  </data>
+  <data name="labelMasterPatternGrid.ToolTip" xml:space="preserve">
+    <value>Resolution (pixels per side) of the square
+Lambert master-pattern grid (64–2048).</value>
   </data>
 </root>

@@ -389,7 +389,8 @@
     <value>157, 17</value>
   </metadata>
   <data name="label1.ToolTip" xml:space="preserve">
-    <value>Label</value>
+    <value>Name identifying this atom site (e.g. O1, Fe2),
+shown in the atom list and as the 3D label.</value>
   </data>
   <data name="&gt;&gt;label1.Name" xml:space="preserve">
     <value>label1</value>
@@ -425,7 +426,8 @@
     <value>0</value>
   </data>
   <data name="textBoxLabel.ToolTip" xml:space="preserve">
-    <value>Label</value>
+    <value>Name identifying this atom site (e.g. O1, Fe2),
+shown in the atom list and as the 3D label.</value>
   </data>
   <data name="&gt;&gt;textBoxLabel.Name" xml:space="preserve">
     <value>textBoxLabel</value>
@@ -467,7 +469,7 @@
     <value> Element: </value>
   </data>
   <data name="label2.ToolTip" xml:space="preserve">
-    <value>Element</value>
+    <value>Chemical element of this atom site.</value>
   </data>
   <data name="&gt;&gt;label2.Name" xml:space="preserve">
     <value>label2</value>
@@ -942,10 +944,12 @@ Error</value>
     <value>8</value>
   </data>
   <data name="numericBoxOcc.ToolTip" xml:space="preserve">
-    <value>Site occupancy</value>
+    <value>Site occupancy: fraction of this site occupied
+by the atom (0 = empty, 1 = fully occupied).</value>
   </data>
   <data name="numericBoxOcc.ToolTip1" xml:space="preserve">
-    <value>Site occupancy</value>
+    <value>Site occupancy: fraction of this site occupied
+by the atom (0 = empty, 1 = fully occupied).</value>
   </data>
   <data name="&gt;&gt;numericBoxOcc.Name" xml:space="preserve">
     <value>numericBoxOcc</value>
@@ -1002,7 +1006,8 @@ Error</value>
     <value>4</value>
   </data>
   <data name="numericBoxZ.ToolTip" xml:space="preserve">
-    <value>Fractional coordinates of c-axis. Fractional format (e.g. 3/4) is acceptable.</value>
+    <value>Fractional coordinates of c-axis.
+Fractional format (e.g. 3/4) is acceptable.</value>
   </data>
   <data name="&gt;&gt;numericBoxZ.Name" xml:space="preserve">
     <value>numericBoxZ</value>
@@ -1149,7 +1154,8 @@ Error</value>
     <value>3</value>
   </data>
   <data name="numericBoxY.ToolTip" xml:space="preserve">
-    <value>Fractional coordinates of b-axis. Fractional format (e.g. 3/4) is acceptable.</value>
+    <value>Fractional coordinates of b-axis.
+Fractional format (e.g. 3/4) is acceptable.</value>
   </data>
   <data name="&gt;&gt;numericBoxY.Name" xml:space="preserve">
     <value>numericBoxY</value>
@@ -1206,7 +1212,8 @@ Error</value>
     <value>2</value>
   </data>
   <data name="numericBoxX.ToolTip" xml:space="preserve">
-    <value>Fractional coordinates of a-axis. Fractional format (e.g. 3/4) is acceptable.</value>
+    <value>Fractional coordinates of a-axis.
+Fractional format (e.g. 3/4) is acceptable.</value>
   </data>
   <data name="&gt;&gt;numericBoxX.Name" xml:space="preserve">
     <value>numericBoxX</value>
@@ -2217,7 +2224,9 @@ Error</value>
     <value>U</value>
   </data>
   <data name="radioButtonDebyeWallerTypeU.ToolTip" xml:space="preserve">
-    <value>U, the average atomic displacement parameter</value>
+    <value>Use U notation for the atomic displacement
+(temperature) parameter — the mean-square atomic
+displacement (Å²) from thermal vibration; B = 8π²·U.</value>
   </data>
   <data name="&gt;&gt;radioButtonDebyeWallerTypeU.Name" xml:space="preserve">
     <value>radioButtonDebyeWallerTypeU</value>
@@ -2256,8 +2265,9 @@ Error</value>
     <value>B</value>
   </data>
   <data name="radioButtonDebyeWallerTypeB.ToolTip" xml:space="preserve">
-    <value>B, another form of the displacement parameter.
-B = 8 pi^2 * U.</value>
+    <value>Use B notation for the atomic displacement
+(temperature) parameter; B = 8π²·U, where
+larger values mean stronger thermal vibration.</value>
   </data>
   <data name="&gt;&gt;radioButtonDebyeWallerTypeB.Name" xml:space="preserve">
     <value>radioButtonDebyeWallerTypeB</value>
@@ -3161,7 +3171,10 @@ Error</value>
     <value>1</value>
   </data>
   <data name="comboBoxScatteringFactorElectron.ToolTip" xml:space="preserve">
-    <value>Select the number of valences</value>
+    <value>Select the electron scattering-factor entry
+(ionic charge state and parametrization,
+e.g. "Fe2+: HF") used for the electron
+diffraction / image simulation of this atom.</value>
   </data>
   <data name="&gt;&gt;comboBoxScatteringFactorElectron.Name" xml:space="preserve">
     <value>comboBoxScatteringFactorElectron</value>
@@ -3236,7 +3249,9 @@ Error</value>
     <value>0</value>
   </data>
   <data name="comboBoxScatteringFactorXray.ToolTip" xml:space="preserve">
-    <value>Select the number of valences</value>
+    <value>Select the X-ray scattering-factor entry (ionic
+charge state and parametrization, e.g. "Fe2+") used
+for the X-ray diffraction calculation of this atom.</value>
   </data>
   <data name="&gt;&gt;comboBoxScatteringFactorXray.Name" xml:space="preserve">
     <value>comboBoxScatteringFactorXray</value>
@@ -4067,7 +4082,10 @@ Error</value>
     <value>Apply to Same Element</value>
   </data>
   <data name="buttonApplyToSameElement.ToolTip" xml:space="preserve">
-    <value>Apply the appearance properties to atoms of the same element</value>
+    <value>Copy the current settings (appearance on
+the Appearance tab, or Debye–Waller /
+displacement parameters on the Debye–Waller
+tab) to all atoms of the same element.</value>
   </data>
   <data name="buttonApplyToSameElement.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -4205,7 +4223,9 @@ Error</value>
     <value>Apply to all elements</value>
   </data>
   <data name="buttonApplyToAllElements.ToolTip" xml:space="preserve">
-    <value>Apply the current appearance settings to all atoms.</value>
+    <value>Apply the current Debye–Waller (atomic
+displacement) parameters to every atom in
+the list (available on the Debye–Waller tab).</value>
   </data>
   <data name="buttonApplyToAllElements.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -4608,5 +4628,302 @@ Error</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
     <value>Crystallography.Controls.UserControlBase, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="buttonOriginShift1.ToolTip" xml:space="preserve">
+    <value>Shift the origin by adding (1/8, 1/8, 1/8)
+to every atom's fractional coordinates (sign
+set by the +/- buttons). Useful for
+switching between alternative origin choices.</value>
+  </data>
+  <data name="buttonOriginShift2.ToolTip" xml:space="preserve">
+    <value>Shift the origin by adding (1/4, 1/4,
+1/4) to every atom's fractional
+coordinates (sign set by the +/- buttons).</value>
+  </data>
+  <data name="buttonOriginShift3.ToolTip" xml:space="preserve">
+    <value>Shift the origin by adding (0, 1/4, 1/8)
+to every atom's fractional coordinates
+(sign set by the +/- buttons).</value>
+  </data>
+  <data name="buttonOriginShift4.ToolTip" xml:space="preserve">
+    <value>Shift the origin by adding (1/4, 0, 1/4)
+to every atom's fractional coordinates
+(sign set by the +/- buttons).</value>
+  </data>
+  <data name="buttonOriginShift5.ToolTip" xml:space="preserve">
+    <value>Shift the origin by adding (0, 1/4, 1/4)
+to every atom's fractional coordinates
+(sign set by the +/- buttons).</value>
+  </data>
+  <data name="buttonOriginShift6.ToolTip" xml:space="preserve">
+    <value>Shift the origin by adding (1/4, 1/4, 0)
+to every atom's fractional coordinates
+(sign set by the +/- buttons).</value>
+  </data>
+  <data name="buttonOriginShift7.ToolTip" xml:space="preserve">
+    <value>Shift the origin by adding (1/4, -1/4, 0)
+to every atom's fractional coordinates
+(sign set by the +/- buttons).</value>
+  </data>
+  <data name="buttonOriginShift8.ToolTip" xml:space="preserve">
+    <value>Shift the origin by adding (1/4, -1/4,
+1/4) to every atom's fractional
+coordinates (sign set by the +/- buttons).</value>
+  </data>
+  <data name="buttonOriginShift9.ToolTip" xml:space="preserve">
+    <value>Shift the origin by adding (0, 1/4, -1/8)
+to every atom's fractional coordinates
+(sign set by the +/- buttons).</value>
+  </data>
+  <data name="checkBoxShowLabel.ToolTip" xml:space="preserve">
+    <value>Toggle drawing of this atom's label text
+beside its sphere in the 3D structure view.</value>
+  </data>
+  <data name="colorControlAtomColor.ToolTip" xml:space="preserve">
+    <value>Click to choose the display color of this
+atom's sphere in the 3D structure view.</value>
+  </data>
+  <data name="dataGridView.ToolTip" xml:space="preserve">
+    <value>List of all atom sites in the crystal. Select a
+row to load it into the editor below; the check
+box toggles the atom's visibility in the 3D view.</value>
+  </data>
+  <data name="numericBoxAlpha.ToolTip" xml:space="preserve">
+    <value>Opacity (alpha) of the atom sphere,
+0 (fully transparent) to 1 (opaque).</value>
+  </data>
+  <data name="numericBoxAmbient.ToolTip" xml:space="preserve">
+    <value>Ambient reflection coefficient (0–1): strength
+of uniform background lighting on the atom
+sphere, independent of light direction.</value>
+  </data>
+  <data name="numericBoxDiffusion.ToolTip" xml:space="preserve">
+    <value>Diffuse reflection coefficient (0–1): matte
+reflection that varies with light direction
+(brightness of the lit side of the sphere).</value>
+  </data>
+  <data name="numericBoxEmission.ToolTip" xml:space="preserve">
+    <value>Emission coefficient (0–1): self-illumination
+that makes the atom sphere appear to glow
+independently of any light source.</value>
+  </data>
+  <data name="numericBoxOccerr.ToolTip" xml:space="preserve">
+    <value>Standard uncertainty (± error) of the site occupancy.</value>
+  </data>
+  <data name="numericBoxShininess.ToolTip" xml:space="preserve">
+    <value>Shininess exponent (0–20): sharpness of
+the specular highlight; larger values
+give a smaller, tighter highlight.</value>
+  </data>
+  <data name="numericBoxSpecular.ToolTip" xml:space="preserve">
+    <value>Specular reflection coefficient (0–1):
+strength of the glossy highlight on the
+atom sphere (works together with Shininess).</value>
+  </data>
+  <data name="numericBoxXerr.ToolTip" xml:space="preserve">
+    <value>Standard uncertainty (± error) of
+the fractional a-axis coordinate.</value>
+  </data>
+  <data name="numericBoxYerr.ToolTip" xml:space="preserve">
+    <value>Standard uncertainty (± error) of
+the fractional b-axis coordinate.</value>
+  </data>
+  <data name="numericBoxZerr.ToolTip" xml:space="preserve">
+    <value>Standard uncertainty (± error) of
+the fractional c-axis coordinate.</value>
+  </data>
+  <data name="radioButtonOriginShiftMinus.ToolTip" xml:space="preserve">
+    <value>Subtract the chosen shift vector (negative origin
+shift) when an origin-shift button is pressed.</value>
+  </data>
+  <data name="radioButtonOriginShiftPlus.ToolTip" xml:space="preserve">
+    <value>Add the chosen shift vector (positive origin
+shift) when an origin-shift button is pressed.</value>
+  </data>
+  <data name="radioButtonAnisotropy.ToolTip" xml:space="preserve">
+    <value>Use the anisotropic displacement model
+(direction-dependent thermal vibration
+described by a 6-component tensor B11…B23).</value>
+  </data>
+  <data name="radioButtonIsotoropy.ToolTip" xml:space="preserve">
+    <value>Use the isotropic displacement model (a single value
+describing equal thermal vibration in all directions).</value>
+  </data>
+  <data name="labelDimension.ToolTip" xml:space="preserve">
+    <value>Current unit of the displacement
+parameter: Å² for U (and isotropic B);
+"None" (dimensionless) for anisotropic B.</value>
+  </data>
+  <data name="numericBoxB11.ToolTip" xml:space="preserve">
+    <value>Anisotropic atomic displacement parameter,
+component 11 (Å²) — describes the
+direction-dependent thermal vibration of this
+atom; shown as B11 or U11 per the chosen notation.</value>
+  </data>
+  <data name="numericBoxB11err.ToolTip" xml:space="preserve">
+    <value>Standard deviation (error) of the 11 component
+of the anisotropic displacement parameter (Å²).</value>
+  </data>
+  <data name="numericBoxB12.ToolTip" xml:space="preserve">
+    <value>Anisotropic atomic displacement parameter, component
+12 (Å²) — direction-dependent thermal vibration;
+shown as B12 or U12 per the chosen notation.</value>
+  </data>
+  <data name="numericBoxB12err.ToolTip" xml:space="preserve">
+    <value>Standard deviation (error) of the 12 component
+of the anisotropic displacement parameter (Å²).</value>
+  </data>
+  <data name="numericBoxB13.ToolTip" xml:space="preserve">
+    <value>Anisotropic atomic displacement parameter, component
+13 (Å²) — direction-dependent thermal vibration;
+shown as B13 or U13 per the chosen notation.</value>
+  </data>
+  <data name="numericBoxB13err.ToolTip" xml:space="preserve">
+    <value>Standard deviation (error) of the 13 component
+of the anisotropic displacement parameter (Å²).</value>
+  </data>
+  <data name="numericBoxB22.ToolTip" xml:space="preserve">
+    <value>Anisotropic atomic displacement parameter, component
+22 (Å²) — direction-dependent thermal vibration;
+shown as B22 or U22 per the chosen notation.</value>
+  </data>
+  <data name="numericBoxB22err.ToolTip" xml:space="preserve">
+    <value>Standard deviation (error) of the 22 component
+of the anisotropic displacement parameter (Å²).</value>
+  </data>
+  <data name="numericBoxB23.ToolTip" xml:space="preserve">
+    <value>Anisotropic atomic displacement parameter, component
+23 (Å²) — direction-dependent thermal vibration;
+shown as B23 or U23 per the chosen notation.</value>
+  </data>
+  <data name="numericBoxB23err.ToolTip" xml:space="preserve">
+    <value>Standard deviation (error) of the 23 component
+of the anisotropic displacement parameter (Å²).</value>
+  </data>
+  <data name="numericBoxB33.ToolTip" xml:space="preserve">
+    <value>Anisotropic atomic displacement parameter, component
+33 (Å²) — direction-dependent thermal vibration;
+shown as B33 or U33 per the chosen notation.</value>
+  </data>
+  <data name="numericBoxB33err.ToolTip" xml:space="preserve">
+    <value>Standard deviation (error) of the 33 component
+of the anisotropic displacement parameter (Å²).</value>
+  </data>
+  <data name="numericBoxBiso.ToolTip" xml:space="preserve">
+    <value>Isotropic atomic displacement parameter
+Biso/Uiso (Å²) — the magnitude of thermal
+vibration, equal in all directions; shown
+as Biso or Uiso per the chosen notation.</value>
+  </data>
+  <data name="numericBoxBisoerr.ToolTip" xml:space="preserve">
+    <value>Standard deviation (error) of the isotropic
+displacement parameter Biso/Uiso (Å²).</value>
+  </data>
+  <data name="checkBoxDetailAtomicPositionError.ToolTip" xml:space="preserve">
+    <value>Show or hide the error (standard-deviation)
+fields for the atomic coordinates and occupancy.</value>
+  </data>
+  <data name="buttonOriginShiftCustom.ToolTip" xml:space="preserve">
+    <value>Shift the fractional coordinates of all atoms
+by the custom (x, y, z) values entered below,
+then regenerate symmetry-equivalent positions.</value>
+  </data>
+  <data name="numericBoxOriginShiftX.ToolTip" xml:space="preserve">
+    <value>Origin shift along a (x), in fractional
+coordinates (range -1 to 1); applied to
+all atoms with "Apply custom shift".</value>
+  </data>
+  <data name="numericBoxOriginShiftY.ToolTip" xml:space="preserve">
+    <value>Origin shift along b (y), in fractional
+coordinates (range -1 to 1); applied to
+all atoms with "Apply custom shift".</value>
+  </data>
+  <data name="numericBoxOriginShiftZ.ToolTip" xml:space="preserve">
+    <value>Origin shift along c (z), in fractional
+coordinates (range -1 to 1); applied to
+all atoms with "Apply custom shift".</value>
+  </data>
+  <data name="buttonEditIsotopeAbundance.ToolTip" xml:space="preserve">
+    <value>Open a dialog to edit the isotope abundances used
+for the neutron scattering length (enabled only
+when custom isotope composition is selected).</value>
+  </data>
+  <data name="checkBoxDetailsDebyeWallerError.ToolTip" xml:space="preserve">
+    <value>Show the uncertainty (standard-deviation) input
+fields for the Debye–Waller temperature factors
+(thermal displacement parameters Biso/Uiso and
+anisotropic Bij/Uij), which damp diffraction
+intensity from thermal atomic vibration.</value>
+  </data>
+  <data name="comboBoxNeutron.ToolTip" xml:space="preserve">
+    <value>Choose whether the neutron coherent scattering
+length uses the natural isotope abundance or a
+custom isotope composition; selecting 'Custom
+isotope abundance' enables the Edit button so
+you can enter per-isotope fractions used in
+neutron structure-factor calculations.</value>
+  </data>
+  <data name="label10.ToolTip" xml:space="preserve">
+    <value>Ambient reflection coefficient (0–1): strength
+of uniform background lighting on the atom
+sphere, independent of light direction.</value>
+  </data>
+  <data name="label11.ToolTip" xml:space="preserve">
+    <value>Diffuse reflection coefficient (0–1): matte
+reflection that varies with light direction
+(brightness of the lit side of the sphere).</value>
+  </data>
+  <data name="label35.ToolTip" xml:space="preserve">
+    <value>Emission coefficient (0–1): self-illumination
+that makes the atom sphere appear to glow
+independently of any light source.</value>
+  </data>
+  <data name="label36.ToolTip" xml:space="preserve">
+    <value>Shininess exponent (0–20): sharpness of
+the specular highlight; larger values
+give a smaller, tighter highlight.</value>
+  </data>
+  <data name="label37.ToolTip" xml:space="preserve">
+    <value>Opacity (alpha) of the atom sphere,
+0 (fully transparent) to 1 (opaque).</value>
+  </data>
+  <data name="label38.ToolTip" xml:space="preserve">
+    <value>Specular reflection coefficient (0–1):
+strength of the glossy highlight on the
+atom sphere (works together with Shininess).</value>
+  </data>
+  <data name="label13.ToolTip" xml:space="preserve">
+    <value>Choose the atomic displacement model: isotropic
+(one value) or anisotropic (6-component tensor
+for direction-dependent thermal vibration).</value>
+  </data>
+  <data name="label3.ToolTip" xml:space="preserve">
+    <value>Choose the notation for the atomic displacement
+(temperature) parameter: B or U, related by B = 8π²·U.</value>
+  </data>
+  <data name="label14.ToolTip" xml:space="preserve">
+    <value>Physical dimension (unit) of the displacement
+parameter for the current notation: Å² for U (and
+isotropic B), dimensionless for anisotropic B.</value>
+  </data>
+  <data name="label7.ToolTip" xml:space="preserve">
+    <value>Enter a fractional-coordinate shift
+(x, y, z) to be applied to all atoms.</value>
+  </data>
+  <data name="label4.ToolTip" xml:space="preserve">
+    <value>Select the electron scattering-factor entry
+(ionic charge state and parametrization,
+e.g. "Fe2+: HF") used for the electron
+diffraction / image simulation of this atom.</value>
+  </data>
+  <data name="label5.ToolTip" xml:space="preserve">
+    <value>Select the X-ray scattering-factor entry (ionic
+charge state and parametrization, e.g. "Fe2+") used
+for the X-ray diffraction calculation of this atom.</value>
+  </data>
+  <data name="label6.ToolTip" xml:space="preserve">
+    <value>Choose whether the neutron scattering
+length uses the natural (standard) isotope
+abundance or a custom isotope composition.</value>
   </data>
 </root>

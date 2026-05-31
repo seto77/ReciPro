@@ -164,6 +164,7 @@ namespace ReciPro
             toolStripStatusLabelRefine = new System.Windows.Forms.ToolStripStatusLabel();
             backgroundWorkerSpotID = new System.ComponentModel.BackgroundWorker();
             toolTip = new System.Windows.Forms.ToolTip(components);
+            toolTip.IsBalloon = true; // 260531Cl 追加: バルーン表示に統一
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel1.SuspendLayout();
             splitContainer1.Panel2.SuspendLayout();

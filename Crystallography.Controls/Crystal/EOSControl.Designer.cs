@@ -27,6 +27,10 @@
         // groupBox3 -> groupBoxThermalPressure
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EOSControl)); // 260531Cl
+            components = new System.ComponentModel.Container(); // (260531Ch)
+            toolTip = new System.Windows.Forms.ToolTip(components); // (260531Ch)
+            toolTip.IsBalloon = true; // 260531Cl 追加: バルーン表示に統一
             this.label83 = new System.Windows.Forms.Label();
             this.textBoxEOS_Note = new System.Windows.Forms.TextBox();
             this.checkBoxUseEOS = new System.Windows.Forms.CheckBox();
@@ -79,6 +83,7 @@
             this.label83.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.label83.Location = new System.Drawing.Point(196, 206);
             this.label83.Name = "label83";
+            this.toolTip.SetToolTip(this.label83, resources.GetString("label83.ToolTip")); // 260531Cl
             this.label83.Size = new System.Drawing.Size(33, 15);
             this.label83.TabIndex = 67;
             this.label83.Text = "Note";
@@ -88,6 +93,7 @@
             this.textBoxEOS_Note.Location = new System.Drawing.Point(232, 202);
             this.textBoxEOS_Note.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textBoxEOS_Note.Name = "textBoxEOS_Note";
+            this.toolTip.SetToolTip(this.textBoxEOS_Note, resources.GetString("textBoxEOS_Note.ToolTip")); // 260531Cl
             this.textBoxEOS_Note.Size = new System.Drawing.Size(238, 23);
             this.textBoxEOS_Note.TabIndex = 66;
             this.textBoxEOS_Note.TextChanged += new System.EventHandler(this.parameters_Changed);
@@ -100,6 +106,7 @@
             this.checkBoxUseEOS.Location = new System.Drawing.Point(10, 4);
             this.checkBoxUseEOS.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.checkBoxUseEOS.Name = "checkBoxUseEOS";
+            this.toolTip.SetToolTip(this.checkBoxUseEOS, resources.GetString("checkBoxUseEOS.ToolTip")); // 260531Cl
             this.checkBoxUseEOS.Size = new System.Drawing.Size(69, 19);
             this.checkBoxUseEOS.TabIndex = 62;
             this.checkBoxUseEOS.Text = "Use EOS";
@@ -180,6 +187,7 @@
             this.radioButtonMieGruneisen.Location = new System.Drawing.Point(4, 21);
             this.radioButtonMieGruneisen.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.radioButtonMieGruneisen.Name = "radioButtonMieGruneisen";
+            this.toolTip.SetToolTip(this.radioButtonMieGruneisen, resources.GetString("radioButtonMieGruneisen.ToolTip")); // 260531Cl
             this.radioButtonMieGruneisen.Size = new System.Drawing.Size(103, 19);
             this.radioButtonMieGruneisen.TabIndex = 0;
             this.radioButtonMieGruneisen.TabStop = true;
@@ -195,6 +203,7 @@
             this.radioButtonTdependenceK0andV0.Location = new System.Drawing.Point(4, 47);
             this.radioButtonTdependenceK0andV0.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.radioButtonTdependenceK0andV0.Name = "radioButtonTdependenceK0andV0";
+            this.toolTip.SetToolTip(this.radioButtonTdependenceK0andV0, resources.GetString("radioButtonTdependenceK0andV0.ToolTip")); // 260531Cl
             this.radioButtonTdependenceK0andV0.Size = new System.Drawing.Size(143, 19);
             this.radioButtonTdependenceK0andV0.TabIndex = 1;
             this.radioButtonTdependenceK0andV0.Text = "T-dependence K₀ && V₀";
@@ -263,6 +272,7 @@
             this.radioButtonEOS_ThirdBirchMurnaghan.Location = new System.Drawing.Point(0, 1);
             this.radioButtonEOS_ThirdBirchMurnaghan.Margin = new System.Windows.Forms.Padding(0, 1, 0, 0);
             this.radioButtonEOS_ThirdBirchMurnaghan.Name = "radioButtonEOS_ThirdBirchMurnaghan";
+            this.toolTip.SetToolTip(this.radioButtonEOS_ThirdBirchMurnaghan, resources.GetString("radioButtonEOS_ThirdBirchMurnaghan.ToolTip")); // 260531Cl
             this.radioButtonEOS_ThirdBirchMurnaghan.Size = new System.Drawing.Size(63, 19);
             this.radioButtonEOS_ThirdBirchMurnaghan.TabIndex = 5;
             this.radioButtonEOS_ThirdBirchMurnaghan.TabStop = true;
@@ -278,6 +288,7 @@
             this.radioButtonEOS_FourthBirchMunaghan.Location = new System.Drawing.Point(63, 1);
             this.radioButtonEOS_FourthBirchMunaghan.Margin = new System.Windows.Forms.Padding(0, 1, 0, 0);
             this.radioButtonEOS_FourthBirchMunaghan.Name = "radioButtonEOS_FourthBirchMunaghan";
+            this.toolTip.SetToolTip(this.radioButtonEOS_FourthBirchMunaghan, resources.GetString("radioButtonEOS_FourthBirchMunaghan.ToolTip")); // 260531Cl
             this.radioButtonEOS_FourthBirchMunaghan.Size = new System.Drawing.Size(63, 19);
             this.radioButtonEOS_FourthBirchMunaghan.TabIndex = 6;
             this.radioButtonEOS_FourthBirchMunaghan.Text = "4th BM";
@@ -292,6 +303,7 @@
             this.radioButtonEOS_Vinet.Location = new System.Drawing.Point(126, 1);
             this.radioButtonEOS_Vinet.Margin = new System.Windows.Forms.Padding(0, 1, 0, 0);
             this.radioButtonEOS_Vinet.Name = "radioButtonEOS_Vinet";
+            this.toolTip.SetToolTip(this.radioButtonEOS_Vinet, resources.GetString("radioButtonEOS_Vinet.ToolTip")); // 260531Cl
             this.radioButtonEOS_Vinet.Size = new System.Drawing.Size(52, 19);
             this.radioButtonEOS_Vinet.TabIndex = 6;
             this.radioButtonEOS_Vinet.Text = "Vinet";
@@ -306,6 +318,7 @@
             this.radioButtonEOS_AP2.Location = new System.Drawing.Point(72, 21);
             this.radioButtonEOS_AP2.Margin = new System.Windows.Forms.Padding(0, 1, 0, 0);
             this.radioButtonEOS_AP2.Name = "radioButtonEOS_AP2";
+            this.toolTip.SetToolTip(this.radioButtonEOS_AP2, resources.GetString("radioButtonEOS_AP2.ToolTip")); // 260531Cl
             this.radioButtonEOS_AP2.Size = new System.Drawing.Size(46, 19);
             this.radioButtonEOS_AP2.TabIndex = 6;
             this.radioButtonEOS_AP2.Text = "AP2";
@@ -320,6 +333,7 @@
             this.radioButtonEOS_Keane.Location = new System.Drawing.Point(118, 21);
             this.radioButtonEOS_Keane.Margin = new System.Windows.Forms.Padding(0, 1, 0, 0);
             this.radioButtonEOS_Keane.Name = "radioButtonEOS_Keane";
+            this.toolTip.SetToolTip(this.radioButtonEOS_Keane, resources.GetString("radioButtonEOS_Keane.ToolTip")); // 260531Cl
             this.radioButtonEOS_Keane.Size = new System.Drawing.Size(57, 19);
             this.radioButtonEOS_Keane.TabIndex = 6;
             this.radioButtonEOS_Keane.Text = "Keane";
@@ -334,6 +348,7 @@
             this.radioButtonEOS_Vinet3rd.Location = new System.Drawing.Point(0, 21);
             this.radioButtonEOS_Vinet3rd.Margin = new System.Windows.Forms.Padding(0, 1, 0, 0);
             this.radioButtonEOS_Vinet3rd.Name = "radioButtonEOS_Vinet3rd";
+            this.toolTip.SetToolTip(this.radioButtonEOS_Vinet3rd, resources.GetString("radioButtonEOS_Vinet3rd.ToolTip")); // 260531Cl
             this.radioButtonEOS_Vinet3rd.Size = new System.Drawing.Size(72, 19);
             this.radioButtonEOS_Vinet3rd.TabIndex = 6;
             this.radioButtonEOS_Vinet3rd.Text = "3rd Vinet";
@@ -354,6 +369,7 @@
             this.numericBoxEOS_Gamma0.MaximumSize = new System.Drawing.Size(1000, 25);
             this.numericBoxEOS_Gamma0.MinimumSize = new System.Drawing.Size(1, 23);
             this.numericBoxEOS_Gamma0.Name = "numericBoxEOS_Gamma0";
+            this.toolTip.SetToolTip(this.numericBoxEOS_Gamma0, resources.GetString("numericBoxEOS_Gamma0.ToolTip")); // 260531Cl
             this.numericBoxEOS_Gamma0.RestrictLimitValue = false;
             this.numericBoxEOS_Gamma0.Size = new System.Drawing.Size(52, 25);
             this.numericBoxEOS_Gamma0.SkipEventDuringInput = false;
@@ -377,6 +393,7 @@
             this.numericBoxEOS_Theta0.MaximumSize = new System.Drawing.Size(1000, 25);
             this.numericBoxEOS_Theta0.MinimumSize = new System.Drawing.Size(1, 23);
             this.numericBoxEOS_Theta0.Name = "numericBoxEOS_Theta0";
+            this.toolTip.SetToolTip(this.numericBoxEOS_Theta0, resources.GetString("numericBoxEOS_Theta0.ToolTip")); // 260531Cl
             this.numericBoxEOS_Theta0.RadianValue = 5.2359877559829888D;
             this.numericBoxEOS_Theta0.RestrictLimitValue = false;
             this.numericBoxEOS_Theta0.Size = new System.Drawing.Size(72, 25);
@@ -401,6 +418,7 @@
             this.numericBoxEOS_Q.MaximumSize = new System.Drawing.Size(1000, 25);
             this.numericBoxEOS_Q.MinimumSize = new System.Drawing.Size(1, 23);
             this.numericBoxEOS_Q.Name = "numericBoxEOS_Q";
+            this.toolTip.SetToolTip(this.numericBoxEOS_Q, resources.GetString("numericBoxEOS_Q.ToolTip")); // 260531Cl
             this.numericBoxEOS_Q.RestrictLimitValue = false;
             this.numericBoxEOS_Q.Size = new System.Drawing.Size(47, 25);
             this.numericBoxEOS_Q.SkipEventDuringInput = false;
@@ -424,6 +442,7 @@
             this.numericBoxEOS_C.MaximumSize = new System.Drawing.Size(1000, 25);
             this.numericBoxEOS_C.MinimumSize = new System.Drawing.Size(1, 23);
             this.numericBoxEOS_C.Name = "numericBoxEOS_C";
+            this.toolTip.SetToolTip(this.numericBoxEOS_C, resources.GetString("numericBoxEOS_C.ToolTip")); // 260531Cl
             this.numericBoxEOS_C.RestrictLimitValue = false;
             this.numericBoxEOS_C.Size = new System.Drawing.Size(72, 25);
             this.numericBoxEOS_C.SkipEventDuringInput = false;
@@ -447,6 +466,7 @@
             this.numericBoxEOS_B.MaximumSize = new System.Drawing.Size(1000, 25);
             this.numericBoxEOS_B.MinimumSize = new System.Drawing.Size(1, 23);
             this.numericBoxEOS_B.Name = "numericBoxEOS_B";
+            this.toolTip.SetToolTip(this.numericBoxEOS_B, resources.GetString("numericBoxEOS_B.ToolTip")); // 260531Cl
             this.numericBoxEOS_B.RestrictLimitValue = false;
             this.numericBoxEOS_B.Size = new System.Drawing.Size(98, 25);
             this.numericBoxEOS_B.SkipEventDuringInput = false;
@@ -470,6 +490,7 @@
             this.numericBoxEOS_KperT.MaximumSize = new System.Drawing.Size(1000, 25);
             this.numericBoxEOS_KperT.MinimumSize = new System.Drawing.Size(1, 23);
             this.numericBoxEOS_KperT.Name = "numericBoxEOS_KperT";
+            this.toolTip.SetToolTip(this.numericBoxEOS_KperT, resources.GetString("numericBoxEOS_KperT.ToolTip")); // 260531Cl
             this.numericBoxEOS_KperT.RestrictLimitValue = false;
             this.numericBoxEOS_KperT.Size = new System.Drawing.Size(177, 25);
             this.numericBoxEOS_KperT.SkipEventDuringInput = false;
@@ -493,6 +514,7 @@
             this.numericBoxEOS_A.MaximumSize = new System.Drawing.Size(1000, 25);
             this.numericBoxEOS_A.MinimumSize = new System.Drawing.Size(1, 23);
             this.numericBoxEOS_A.Name = "numericBoxEOS_A";
+            this.toolTip.SetToolTip(this.numericBoxEOS_A, resources.GetString("numericBoxEOS_A.ToolTip")); // 260531Cl
             this.numericBoxEOS_A.RestrictLimitValue = false;
             this.numericBoxEOS_A.Size = new System.Drawing.Size(94, 25);
             this.numericBoxEOS_A.SkipEventDuringInput = false;
@@ -516,6 +538,7 @@
             this.numericBoxEOS_V0perCell.MaximumSize = new System.Drawing.Size(1000, 25);
             this.numericBoxEOS_V0perCell.MinimumSize = new System.Drawing.Size(1, 23);
             this.numericBoxEOS_V0perCell.Name = "numericBoxEOS_V0perCell";
+            this.toolTip.SetToolTip(this.numericBoxEOS_V0perCell, resources.GetString("numericBoxEOS_V0perCell.ToolTip")); // 260531Cl
             this.numericBoxEOS_V0perCell.RadianValue = 5.2359877559829888D;
             this.numericBoxEOS_V0perCell.RestrictLimitValue = false;
             this.numericBoxEOS_V0perCell.Size = new System.Drawing.Size(125, 25);
@@ -542,6 +565,7 @@
             this.numericBoxEOS_V0perMol.MaximumSize = new System.Drawing.Size(1000, 25);
             this.numericBoxEOS_V0perMol.MinimumSize = new System.Drawing.Size(1, 23);
             this.numericBoxEOS_V0perMol.Name = "numericBoxEOS_V0perMol";
+            this.toolTip.SetToolTip(this.numericBoxEOS_V0perMol, resources.GetString("numericBoxEOS_V0perMol.ToolTip")); // 260531Cl
             this.numericBoxEOS_V0perMol.RadianValue = 5.2359877559829888D;
             this.numericBoxEOS_V0perMol.ReadOnly = true;
             this.numericBoxEOS_V0perMol.RestrictLimitValue = false;
@@ -569,6 +593,7 @@
             this.numericBoxEOS_K0.MaximumSize = new System.Drawing.Size(1000, 25);
             this.numericBoxEOS_K0.MinimumSize = new System.Drawing.Size(1, 23);
             this.numericBoxEOS_K0.Name = "numericBoxEOS_K0";
+            this.toolTip.SetToolTip(this.numericBoxEOS_K0, resources.GetString("numericBoxEOS_K0.ToolTip")); // 260531Cl
             this.numericBoxEOS_K0.RestrictLimitValue = false;
             this.numericBoxEOS_K0.Size = new System.Drawing.Size(98, 25);
             this.numericBoxEOS_K0.SkipEventDuringInput = false;
@@ -591,6 +616,7 @@
             this.numericBoxEOS_Kp0.MaximumSize = new System.Drawing.Size(1000, 25);
             this.numericBoxEOS_Kp0.MinimumSize = new System.Drawing.Size(1, 23);
             this.numericBoxEOS_Kp0.Name = "numericBoxEOS_Kp0";
+            this.toolTip.SetToolTip(this.numericBoxEOS_Kp0, resources.GetString("numericBoxEOS_Kp0.ToolTip")); // 260531Cl
             this.numericBoxEOS_Kp0.RadianValue = 0.069813170079773182D;
             this.numericBoxEOS_Kp0.RestrictLimitValue = false;
             this.numericBoxEOS_Kp0.Size = new System.Drawing.Size(70, 25);
@@ -615,6 +641,7 @@
             this.numericBoxEOS_Kpp0.MaximumSize = new System.Drawing.Size(1000, 25);
             this.numericBoxEOS_Kpp0.MinimumSize = new System.Drawing.Size(1, 23);
             this.numericBoxEOS_Kpp0.Name = "numericBoxEOS_Kpp0";
+            this.toolTip.SetToolTip(this.numericBoxEOS_Kpp0, resources.GetString("numericBoxEOS_Kpp0.ToolTip")); // 260531Cl
             this.numericBoxEOS_Kpp0.RadianValue = 0.069813170079773182D;
             this.numericBoxEOS_Kpp0.RestrictLimitValue = false;
             this.numericBoxEOS_Kpp0.Size = new System.Drawing.Size(70, 25);
@@ -640,6 +667,7 @@
             this.numericBoxEOS_KpInfinity.MaximumSize = new System.Drawing.Size(1000, 25);
             this.numericBoxEOS_KpInfinity.MinimumSize = new System.Drawing.Size(1, 23);
             this.numericBoxEOS_KpInfinity.Name = "numericBoxEOS_KpInfinity";
+            this.toolTip.SetToolTip(this.numericBoxEOS_KpInfinity, resources.GetString("numericBoxEOS_KpInfinity.ToolTip")); // 260531Cl
             this.numericBoxEOS_KpInfinity.RadianValue = 0.069813170079773182D;
             this.numericBoxEOS_KpInfinity.RestrictLimitValue = false;
             this.numericBoxEOS_KpInfinity.Size = new System.Drawing.Size(70, 25);
@@ -665,6 +693,7 @@
             this.numericBox3rdVinetIta.MaximumSize = new System.Drawing.Size(1000, 25);
             this.numericBox3rdVinetIta.MinimumSize = new System.Drawing.Size(1, 23);
             this.numericBox3rdVinetIta.Name = "numericBox3rdVinetIta";
+            this.toolTip.SetToolTip(this.numericBox3rdVinetIta, resources.GetString("numericBox3rdVinetIta.ToolTip")); // 260531Cl
             this.numericBox3rdVinetIta.RestrictLimitValue = false;
             this.numericBox3rdVinetIta.Size = new System.Drawing.Size(70, 25);
             this.numericBox3rdVinetIta.SkipEventDuringInput = false;
@@ -688,6 +717,7 @@
             this.numericBox3rdVinetBeta.MaximumSize = new System.Drawing.Size(1000, 25);
             this.numericBox3rdVinetBeta.MinimumSize = new System.Drawing.Size(1, 23);
             this.numericBox3rdVinetBeta.Name = "numericBox3rdVinetBeta";
+            this.toolTip.SetToolTip(this.numericBox3rdVinetBeta, resources.GetString("numericBox3rdVinetBeta.ToolTip")); // 260531Cl
             this.numericBox3rdVinetBeta.RestrictLimitValue = false;
             this.numericBox3rdVinetBeta.Size = new System.Drawing.Size(68, 25);
             this.numericBox3rdVinetBeta.SkipEventDuringInput = false;
@@ -711,6 +741,7 @@
             this.numericBox3rdVinetPsi.MaximumSize = new System.Drawing.Size(1000, 25);
             this.numericBox3rdVinetPsi.MinimumSize = new System.Drawing.Size(1, 23);
             this.numericBox3rdVinetPsi.Name = "numericBox3rdVinetPsi";
+            this.toolTip.SetToolTip(this.numericBox3rdVinetPsi, resources.GetString("numericBox3rdVinetPsi.ToolTip")); // 260531Cl
             this.numericBox3rdVinetPsi.RestrictLimitValue = false;
             this.numericBox3rdVinetPsi.Size = new System.Drawing.Size(70, 25);
             this.numericBox3rdVinetPsi.SkipEventDuringInput = false;
@@ -733,6 +764,7 @@
             this.numericBoxEOS_T0.MaximumSize = new System.Drawing.Size(1000, 25);
             this.numericBoxEOS_T0.MinimumSize = new System.Drawing.Size(1, 25);
             this.numericBoxEOS_T0.Name = "numericBoxEOS_T0";
+            this.toolTip.SetToolTip(this.numericBoxEOS_T0, resources.GetString("numericBoxEOS_T0.ToolTip")); // 260531Cl
             this.numericBoxEOS_T0.RadianValue = 5.2359877559829888D;
             this.numericBoxEOS_T0.RestrictLimitValue = false;
             this.numericBoxEOS_T0.Size = new System.Drawing.Size(82, 25);
@@ -755,6 +787,7 @@
             this.numericBoxTemperature.MaximumSize = new System.Drawing.Size(1000, 25);
             this.numericBoxTemperature.MinimumSize = new System.Drawing.Size(1, 25);
             this.numericBoxTemperature.Name = "numericBoxTemperature";
+            this.toolTip.SetToolTip(this.numericBoxTemperature, resources.GetString("numericBoxTemperature.ToolTip")); // 260531Cl
             this.numericBoxTemperature.RadianValue = 5.2359877559829888D;
             this.numericBoxTemperature.RestrictLimitValue = false;
             this.numericBoxTemperature.Size = new System.Drawing.Size(87, 25);
@@ -778,6 +811,7 @@
             this.numericBoxPressure.MaximumSize = new System.Drawing.Size(1000, 25);
             this.numericBoxPressure.MinimumSize = new System.Drawing.Size(1, 25);
             this.numericBoxPressure.Name = "numericBoxPressure";
+            this.toolTip.SetToolTip(this.numericBoxPressure, resources.GetString("numericBoxPressure.ToolTip")); // 260531Cl
             this.numericBoxPressure.ReadOnly = true;
             this.numericBoxPressure.RestrictLimitValue = false;
             this.numericBoxPressure.Size = new System.Drawing.Size(132, 25);
@@ -816,6 +850,8 @@
         }
 
         #endregion
+
+        private System.Windows.Forms.ToolTip toolTip; // (260531Ch)
 
         private System.Windows.Forms.Label label83;
         private System.Windows.Forms.TextBox textBoxEOS_Note;

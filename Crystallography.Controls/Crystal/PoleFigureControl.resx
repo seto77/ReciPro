@@ -945,4 +945,111 @@
   <metadata name="$this.Language" type="System.Globalization.CultureInfo, System.Private.CoreLib, Culture=neutral, PublicKeyToken=7cec85d7bea7798e">
     <value>ja</value>
   </metadata>
+  <data name="comboBoxColor.ToolTip" xml:space="preserve">
+    <value>Color map for the pole density:
+Cold-Warm (blue-to-red) or Gray scale.</value>
+  </data>
+  <data name="comboBoxScale.ToolTip" xml:space="preserve">
+    <value>Intensity scaling of the density color map:
+Linear maps density proportionally, Log
+compresses high values to reveal weak texture.</value>
+  </data>
+  <data name="numericUpDown1.ToolTip" xml:space="preserve">
+    <value>First index component (u for an axis, h for
+a plane) of the crystal direction or plane
+whose poles are projected (range -20 to 20).</value>
+  </data>
+  <data name="numericUpDown2.ToolTip" xml:space="preserve">
+    <value>Second index component (v for an axis, k for
+a plane) of the crystal direction or plane
+whose poles are projected (range -20 to 20).</value>
+  </data>
+  <data name="numericUpDown3.ToolTip" xml:space="preserve">
+    <value>Third index component (w for an axis, l for
+a plane) of the crystal direction or plane
+whose poles are projected (range -20 to 20).</value>
+  </data>
+  <data name="numericUpDownFullscale.ToolTip" xml:space="preserve">
+    <value>Full-scale (saturation) density as a power
+of 10 times the average: the color map
+saturates at average × 10^E (range -9 to
+9). Higher values widen the displayed range.</value>
+  </data>
+  <data name="numericUpDownResolution.ToolTip" xml:space="preserve">
+    <value>Angular resolution (bin size) of the density
+map, in degrees (range 1–60°). Smaller values
+give a finer pole figure but slower computation.</value>
+  </data>
+  <data name="radioButtonAxes.ToolTip" xml:space="preserve">
+    <value>Project crystal directions [u v w] (lattice
+axes). The index boxes are labeled u, v, w
+and symmetry-equivalent axes are included.</value>
+  </data>
+  <data name="radioButtonInversePoleFigure.ToolTip" xml:space="preserve">
+    <value>Inverse Pole Figure (IPF): plot, in the crystal
+reference frame, the distribution of a fixed
+sample direction (x, y, z), showing which
+crystal directions align with that sample axis.</value>
+  </data>
+  <data name="radioButtonPlanes.ToolTip" xml:space="preserve">
+    <value>Project crystal planes (h k l) by their
+normals. The index boxes are labeled h, k, l
+and symmetry-equivalent planes are included.</value>
+  </data>
+  <data name="radioButtonPoleFigure.ToolTip" xml:space="preserve">
+    <value>Pole Figure: plot, in the sample reference frame,
+the distribution of the poles of the chosen crystal
+direction or plane (set by the Axes/Planes option).</value>
+  </data>
+  <data name="textBox1.ToolTip" xml:space="preserve">
+    <value>Read-only readout of the maximum and minimum
+pole density in the current map, normalized
+so that the average density equals 1.</value>
+  </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value>Angular resolution (bin size) of the density
+map, in degrees (range 1–60°). Smaller values
+give a finer pole figure but slower computation.</value>
+  </data>
+  <data name="label2.ToolTip" xml:space="preserve">
+    <value>Angular resolution (bin size) of the density
+map, in degrees (range 1–60°). Smaller values
+give a finer pole figure but slower computation.</value>
+  </data>
+  <data name="label3.ToolTip" xml:space="preserve">
+    <value>Full-scale (saturation) density as a power
+of 10 times the average: the color map
+saturates at average × 10^E (range -9 to
+9). Higher values widen the displayed range.</value>
+  </data>
+  <data name="label4.ToolTip" xml:space="preserve">
+    <value>Full-scale (saturation) density as a power
+of 10 times the average: the color map
+saturates at average × 10^E (range -9 to
+9). Higher values widen the displayed range.</value>
+  </data>
+  <data name="label7.ToolTip" xml:space="preserve">
+    <value>Intensity scaling of the density color map:
+Linear maps density proportionally, Log
+compresses high values to reveal weak texture.</value>
+  </data>
+  <data name="label9.ToolTip" xml:space="preserve">
+    <value>Color map for the pole density:
+Cold-Warm (blue-to-red) or Gray scale.</value>
+  </data>
+  <data name="labelU.ToolTip" xml:space="preserve">
+    <value>First index component (u for an axis, h for
+a plane) of the crystal direction or plane
+whose poles are projected (range -20 to 20).</value>
+  </data>
+  <data name="labelV.ToolTip" xml:space="preserve">
+    <value>Second index component (v for an axis, k for
+a plane) of the crystal direction or plane
+whose poles are projected (range -20 to 20).</value>
+  </data>
+  <data name="labelW.ToolTip" xml:space="preserve">
+    <value>Third index component (w for an axis, l for
+a plane) of the crystal direction or plane
+whose poles are projected (range -20 to 20).</value>
+  </data>
 </root>

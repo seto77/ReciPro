@@ -214,7 +214,8 @@
     <value>削除</value>
   </data>
   <data name="buttonDeleteSpot.ToolTip" xml:space="preserve">
-    <value>すべてのスポットをクリア</value>
+    <value>現在選択しているスポットを 1 つだけリスト
+から削除します（全削除は Clear ボタン）。</value>
   </data>
   <data name="buttonClearSpots.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
@@ -381,10 +382,12 @@
     <value>186, 27</value>
   </data>
   <data name="numericBoxNearestNeighbor.ToolTip" xml:space="preserve">
-    <value>スポット間の最小距離（ピクセル単位）</value>
+    <value>検出スポット間に許す最小間隔 (px)。これより近接した
+ピークは統合され、同一スポットの二重検出を防ぎます。</value>
   </data>
   <data name="numericBoxNearestNeighbor.ToolTip1" xml:space="preserve">
-    <value>スポット間の最小距離（ピクセル単位）</value>
+    <value>検出スポット間に許す最小間隔 (px)。これより近接した
+ピークは統合され、同一スポットの二重検出を防ぎます。</value>
   </data>
   <data name="numericBoxFittingRange.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
@@ -399,10 +402,14 @@
     <value>196, 27</value>
   </data>
   <data name="numericBoxFittingRange.ToolTip" xml:space="preserve">
-    <value>フィッティング範囲（半径）をピクセル単位で設定</value>
+    <value>各スポットのピーク当てはめに用いる円領域の
+半径（ピクセル、0〜100）。この円内のピクセル
+を擬 Voigt 関数でフィッティングします。</value>
   </data>
   <data name="numericBoxFittingRange.ToolTip1" xml:space="preserve">
-    <value>フィッティング範囲（半径）をピクセル単位で設定</value>
+    <value>各スポットのピーク当てはめに用いる円領域の
+半径（ピクセル、0〜100）。この円内のピクセル
+を擬 Voigt 関数でフィッティングします。</value>
   </data>
   <data name="buttonResetRangeForAllSpots.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
@@ -420,7 +427,8 @@
     <value>全スポットに適用</value>
   </data>
   <data name="buttonResetRangeForAllSpots.ToolTip" xml:space="preserve">
-    <value>全スポットのフィッティング範囲をリセット</value>
+    <value>すべてのスポットのフィッティング半径を、現在の
+「フィッティング範囲」の値 (px) に揃えます。</value>
   </data>
   <data name="flowLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
     <value>759, 30</value>
@@ -486,10 +494,14 @@
     <value>ピクセルサイズ</value>
   </data>
   <data name="numericBoxPixelSize.ToolTip" xml:space="preserve">
-    <value>検出器のピクセルサイズ</value>
+    <value>検出器1ピクセルの大きさ。単位（mm または
+nm⁻¹）は右のラジオボタンに従います。d 値計算と
+指数付けに使う逆空間スケールを決めます。</value>
   </data>
   <data name="numericBoxPixelSize.ToolTip1" xml:space="preserve">
-    <value>検出器のピクセルサイズ</value>
+    <value>検出器1ピクセルの大きさ。単位（mm または
+nm⁻¹）は右のラジオボタンに従います。d 値計算と
+指数付けに使う逆空間スケールを決めます。</value>
   </data>
   <data name="waveLengthControl1.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
@@ -572,7 +584,9 @@
     <value>試料厚みと方位の最適化 (電子回折のみ)</value>
   </data>
   <data name="buttonRefineThicknessAndDirection.ToolTip" xml:space="preserve">
-    <value>試料厚さとビーム方向を精密化</value>
+    <value>選択した結晶粒について、観測スポット強度を
+動力学（ブロッホ波）CBED 計算と照合し、試料厚さ
+(nm) とビーム方向を精密化します（電子回折のみ）。</value>
   </data>
   <data name="numericBoxDiffractedWaves.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
@@ -614,7 +628,8 @@
     <value>183, 27</value>
   </data>
   <data name="numericBoxSemiangle.ToolTip" xml:space="preserve">
-    <value>スポット同定用の半収束角 (mrad)</value>
+    <value>厚さ・方位の精密化で入射ビーム方向を
+探索する角度半径（半収束角、mrad）。</value>
   </data>
   <data name="numericBoxSemiangle.ToolTip1" xml:space="preserve">
     <value>スポット同定用の半収束角 (mrad)</value>
@@ -650,10 +665,12 @@
     <value>130, 27</value>
   </data>
   <data name="numericBoxAcceptableError.ToolTip" xml:space="preserve">
-    <value>スポットマッチングの許容誤差</value>
+    <value>観測スポットを候補反射と照合する際に許容する長さ
+（d 値）の相対誤差（%、0.1〜10）を設定します。</value>
   </data>
   <data name="numericBoxAcceptableError.ToolTip1" xml:space="preserve">
-    <value>スポットマッチングの許容誤差</value>
+    <value>観測スポットを候補反射と照合する際に許容する長さ
+（d 値）の相対誤差（%、0.1〜10）を設定します。</value>
   </data>
   <data name="checkBoxIgnoreMultipleDiffraction.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
@@ -671,7 +688,8 @@
     <value>禁制反射を無視する</value>
   </data>
   <data name="checkBoxIgnoreMultipleDiffraction.ToolTip" xml:space="preserve">
-    <value>多重回折による系統消滅を無視</value>
+    <value>運動学的には禁制だが多重（動力学）回折で出現し
+うる反射を、計算パターンから除外します。</value>
   </data>
   <data name="flowLayoutPanel8.Size" type="System.Drawing.Size, System.Drawing">
     <value>272, 27</value>
@@ -918,5 +936,33 @@
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
     <value>1285, 827</value>
+  </data>
+  <data name="dataGridViewCandidates.ToolTip" xml:space="preserve">
+    <value>見つかった指数付け候補の一覧。行を選ぶと、
+その候補の結晶粒方位が下に表示されます。</value>
+  </data>
+  <data name="dataGridViewGrains.ToolTip" xml:space="preserve">
+    <value>選択した候補に含まれる結晶粒方位の
+一覧。行を選ぶと計算スポットを重畳し、
+観測スポットに hkl 指数を割り当てます。</value>
+  </data>
+  <data name="dataGridViewSpots.ToolTip" xml:space="preserve">
+    <value>観測スポットの一覧表です。'Direct'で直接ビーム
+を指定、行の'Fit'でピークをフィット、行選択で
+パターン上の該当スポットを強調します</value>
+  </data>
+  <data name="numericBoxDiffractedWaves.ToolTip" xml:space="preserve">
+    <value>動力学的な厚さ・方向精密化に含める
+回折波（ブロッホ波）の最大本数。多いほど
+高精度ですが計算は遅くなります（1〜2048）。</value>
+  </data>
+  <data name="numericBoxDonut.ToolTip" xml:space="preserve">
+    <value>ドーナツ型バックグラウンド除去で、各スポットの
+外側に設ける環状領域の幅 (px)。この環の平均を
+局所バックグラウンドとして差し引きます（1〜100）。</value>
+  </data>
+  <data name="waveLengthControl1.ToolTip" xml:space="preserve">
+    <value>指数付けに用いる波長を決める線源とエネルギー
+／加速電圧（既定: 電子線・200 kV）。</value>
   </data>
 </root>

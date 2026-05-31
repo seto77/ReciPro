@@ -492,7 +492,8 @@
     <value>Unit</value>
   </data>
   <data name="label8.ToolTip" xml:space="preserve">
-    <value>Select the unit.</value>
+    <value>Select the length unit (angstrom or nanometer)
+for the d-spacing display and the cutoff input.</value>
   </data>
   <data name="&gt;&gt;label8.Name" xml:space="preserve">
     <value>label8</value>
@@ -1435,5 +1436,111 @@
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
     <value>Crystallography.Controls.FormBase, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="buttonCopyClipboard.ToolTip" xml:space="preserve">
+    <value>Copy the reflection table (visible
+columns, tab-separated) to the clipboard.</value>
+  </data>
+  <data name="checkBoxBragBrentano.ToolTip" xml:space="preserve">
+    <value>Show powder diffraction intensities computed
+for Bragg-Brentano focusing optics (includes
+the Lorentz-polarization factor); also forces
+hiding of equivalent and forbidden reflections.</value>
+  </data>
+  <data name="checkBoxHideEquivalentPlane.ToolTip" xml:space="preserve">
+    <value>Hide symmetry-equivalent reflections
+(planes related by symmetry), showing
+only one representative of each set.</value>
+  </data>
+  <data name="checkBoxHideProhibitedPlanes.ToolTip" xml:space="preserve">
+    <value>Hide systematically absent (forbidden)
+reflections - those extinguished by
+the space-group reflection conditions.</value>
+  </data>
+  <data name="checkBoxTest.ToolTip" xml:space="preserve">
+    <value>Enable test mode: show the panel for scanning an
+arbitrary h/k/l index range (including fractional
+indices) and compute structure factors.</value>
+  </data>
+  <data name="dataGridView.ToolTip" xml:space="preserve">
+    <value>Reflection table: Miller indices, d-spacing,
+q, 2-theta, structure factor
+(real/imaginary/|F|/F^2), relative intensity,
+and extinction condition for each reflection.</value>
+  </data>
+  <data name="numericBoxCutoffD.ToolTip" xml:space="preserve">
+    <value>Minimum d-spacing (lattice plane interval) to
+include; reflections with smaller d are omitted. Unit
+follows the length-unit selection (angstrom or nm).</value>
+  </data>
+  <data name="numericBoxH_max.ToolTip" xml:space="preserve">
+    <value>Upper bound of the reflection index h scanned in test mode.</value>
+  </data>
+  <data name="numericBoxH_min.ToolTip" xml:space="preserve">
+    <value>Lower bound of the reflection index h scanned in
+test mode (from h min to h max in steps of h step).</value>
+  </data>
+  <data name="numericBoxH_step.ToolTip" xml:space="preserve">
+    <value>Step size for scanning the reflection
+index h in test mode (0.001-1).</value>
+  </data>
+  <data name="numericBoxK_max.ToolTip" xml:space="preserve">
+    <value>Upper bound of the reflection index k scanned in test mode.</value>
+  </data>
+  <data name="numericBoxK_min.ToolTip" xml:space="preserve">
+    <value>Lower bound of the reflection index k scanned in
+test mode (from k min to k max in steps of k step).</value>
+  </data>
+  <data name="numericBoxK_step.ToolTip" xml:space="preserve">
+    <value>Step size for scanning the reflection
+index k in test mode (0.001-1).</value>
+  </data>
+  <data name="numericBoxL_max.ToolTip" xml:space="preserve">
+    <value>Upper bound of the reflection index l scanned in test mode.</value>
+  </data>
+  <data name="numericBoxL_min.ToolTip" xml:space="preserve">
+    <value>Lower bound of the reflection index l scanned in
+test mode (from l min to l max in steps of l step).</value>
+  </data>
+  <data name="numericBoxL_step.ToolTip" xml:space="preserve">
+    <value>Step size for scanning the reflection
+index l in test mode (0.001-1).</value>
+  </data>
+  <data name="radioButtonAngstrom.ToolTip" xml:space="preserve">
+    <value>Use angstrom (1 angstrom = 0.1 nm) as the length
+unit for d-spacing display and the cutoff input.</value>
+  </data>
+  <data name="radioButtonNanoMeter.ToolTip" xml:space="preserve">
+    <value>Use nanometer (1 nm = 10 angstrom) as the length
+unit for d-spacing display and the cutoff input.</value>
+  </data>
+  <data name="waveLengthControl1.ToolTip" xml:space="preserve">
+    <value>Select the radiation source (X-ray, electron,
+etc.) and its wavelength/energy used to
+compute 2-theta and diffraction intensities.</value>
+  </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value>Lower bound of the reflection
+indices h, k, l scanned in test mode.</value>
+  </data>
+  <data name="label3.ToolTip" xml:space="preserve">
+    <value>Upper bound of the reflection
+indices h, k, l scanned in test mode.</value>
+  </data>
+  <data name="label4.ToolTip" xml:space="preserve">
+    <value>Step size for scanning the reflection
+indices h, k, l in test mode (0.001-1).</value>
+  </data>
+  <data name="label5.ToolTip" xml:space="preserve">
+    <value>Range (min/max/step) of the reflection
+index h scanned in test mode.</value>
+  </data>
+  <data name="label6.ToolTip" xml:space="preserve">
+    <value>Range (min/max/step) of the reflection
+index k scanned in test mode.</value>
+  </data>
+  <data name="label7.ToolTip" xml:space="preserve">
+    <value>Range (min/max/step) of the reflection
+index l scanned in test mode.</value>
   </data>
 </root>

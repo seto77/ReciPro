@@ -57,4 +57,16 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="labelXValue.ToolTip" xml:space="preserve">
+    <value>X-axis value at the current mouse position on the graph.</value>
+  </data>
+  <data name="labelYLabel.ToolTip" xml:space="preserve">
+    <value>Y-axis value at the current mouse position on the graph.</value>
+  </data>
+  <data name="labelX.ToolTip" xml:space="preserve">
+    <value>X-axis value at the current mouse position on the graph.</value>
+  </data>
+  <data name="labelY.ToolTip" xml:space="preserve">
+    <value>Y-axis value at the current mouse position on the graph.</value>
+  </data>
 </root>

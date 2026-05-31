@@ -29,6 +29,10 @@
         // groupBox5 -> groupBoxWaveSource
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DiffractionPatternControl)); // 260531Cl
+            components = new System.ComponentModel.Container(); // 260531Cl
+            toolTip = new System.Windows.Forms.ToolTip(components); // 260531Cl
+            toolTip.IsBalloon = true; // 260531Cl 追加: バルーン表示に統一
             numericBoxMaxInt = new Crystallography.Controls.NumericBox();
             label36 = new System.Windows.Forms.Label();
             label25 = new System.Windows.Forms.Label();
@@ -155,6 +159,7 @@
             numericBoxMaxInt.Maximum = 65535D;
             numericBoxMaxInt.Minimum = 1D;
             numericBoxMaxInt.Name = "numericBoxMaxInt";
+            toolTip.SetToolTip(numericBoxMaxInt, resources.GetString("numericBoxMaxInt.ToolTip")); // 260531Cl
             numericBoxMaxInt.DecimalPlaces = 0;                                                                                                        // 260522Cl 追加: 整数表示を維持
             numericBoxMaxInt.ShowUpDown = true;
             numericBoxMaxInt.Size = new System.Drawing.Size(73, 22);
@@ -169,6 +174,7 @@
             label36.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             label36.Location = new System.Drawing.Point(714, 558);
             label36.Name = "label36";
+            toolTip.SetToolTip(label36, resources.GetString("label36.ToolTip")); // 260531Cl
             label36.Size = new System.Drawing.Size(31, 16);
             label36.TabIndex = 166;
             label36.Text = "Min.";
@@ -180,6 +186,7 @@
             label25.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             label25.Location = new System.Drawing.Point(843, 557);
             label25.Name = "label25";
+            toolTip.SetToolTip(label25, resources.GetString("label25.ToolTip")); // 260531Cl
             label25.Size = new System.Drawing.Size(35, 16);
             label25.TabIndex = 165;
             label25.Text = "Max.";
@@ -192,6 +199,7 @@
             numericBoxMinInt.Margin = new System.Windows.Forms.Padding(3, 7, 3, 7);
             numericBoxMinInt.Maximum = 65534D;
             numericBoxMinInt.Name = "numericBoxMinInt";
+            toolTip.SetToolTip(numericBoxMinInt, resources.GetString("numericBoxMinInt.ToolTip")); // 260531Cl
             numericBoxMinInt.DecimalPlaces = 0;                                                                                                        // 260522Cl 追加: 整数表示を維持
             numericBoxMinInt.Minimum = 0D;                                                                                                             // 260522Cl 追加: NumericUpDown 既定 Minimum=0 を維持
             numericBoxMinInt.ShowUpDown = true;
@@ -204,6 +212,7 @@
             checkBoxSimulation.AutoSize = true;
             checkBoxSimulation.Location = new System.Drawing.Point(0, 3);
             checkBoxSimulation.Name = "checkBoxSimulation";
+            toolTip.SetToolTip(checkBoxSimulation, resources.GetString("checkBoxSimulation.ToolTip")); // 260531Cl
             checkBoxSimulation.Size = new System.Drawing.Size(85, 19);
             checkBoxSimulation.TabIndex = 179;
             checkBoxSimulation.Text = "Simulation";
@@ -216,6 +225,7 @@
             checkBoxResidual.AutoSize = true;
             checkBoxResidual.Location = new System.Drawing.Point(202, 3);
             checkBoxResidual.Name = "checkBoxResidual";
+            toolTip.SetToolTip(checkBoxResidual, resources.GetString("checkBoxResidual.ToolTip")); // 260531Cl
             checkBoxResidual.Size = new System.Drawing.Size(75, 19);
             checkBoxResidual.TabIndex = 182;
             checkBoxResidual.Text = "Residual";
@@ -229,6 +239,7 @@
             trackBarOpacity.Location = new System.Drawing.Point(83, 3);
             trackBarOpacity.Maximum = 100;
             trackBarOpacity.Name = "trackBarOpacity";
+            toolTip.SetToolTip(trackBarOpacity, resources.GetString("trackBarOpacity.ToolTip")); // 260531Cl
             trackBarOpacity.Size = new System.Drawing.Size(112, 20);
             trackBarOpacity.TabIndex = 181;
             trackBarOpacity.TickFrequency = 10;
@@ -243,6 +254,7 @@
             checkBoxMaskDonut.Location = new System.Drawing.Point(8, 77);
             checkBoxMaskDonut.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             checkBoxMaskDonut.Name = "checkBoxMaskDonut";
+            toolTip.SetToolTip(checkBoxMaskDonut, resources.GetString("checkBoxMaskDonut.ToolTip")); // 260531Cl
             checkBoxMaskDonut.Size = new System.Drawing.Size(90, 18);
             checkBoxMaskDonut.TabIndex = 160;
             checkBoxMaskDonut.Text = "Donut Mask";
@@ -256,6 +268,7 @@
             checkBoxMaskRectangle.Location = new System.Drawing.Point(8, 2);
             checkBoxMaskRectangle.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             checkBoxMaskRectangle.Name = "checkBoxMaskRectangle";
+            toolTip.SetToolTip(checkBoxMaskRectangle, resources.GetString("checkBoxMaskRectangle.ToolTip")); // 260531Cl
             checkBoxMaskRectangle.Size = new System.Drawing.Size(110, 18);
             checkBoxMaskRectangle.TabIndex = 161;
             checkBoxMaskRectangle.Text = "Rectangle Mask";
@@ -285,6 +298,7 @@
             label1.Font = new System.Drawing.Font("Tahoma", 9F);
             label1.Location = new System.Drawing.Point(103, 22);
             label1.Name = "label1";
+            toolTip.SetToolTip(label1, resources.GetString("label1.ToolTip")); // 260531Cl
             label1.Size = new System.Drawing.Size(28, 14);
             label1.TabIndex = 15;
             label1.Text = "End";
@@ -296,6 +310,7 @@
             numericBoxCircleStart.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             numericBoxCircleStart.Maximum = 10000D;
             numericBoxCircleStart.Name = "numericBoxCircleStart";
+            toolTip.SetToolTip(numericBoxCircleStart, resources.GetString("numericBoxCircleStart.ToolTip")); // 260531Cl
             numericBoxCircleStart.Minimum = 0D;
             numericBoxCircleStart.ShowUpDown = true;
             numericBoxCircleStart.Size = new System.Drawing.Size(49, 22);
@@ -308,6 +323,7 @@
             label9.Font = new System.Drawing.Font("Tahoma", 9F);
             label9.Location = new System.Drawing.Point(3, 22);
             label9.Name = "label9";
+            toolTip.SetToolTip(label9, resources.GetString("label9.ToolTip")); // 260531Cl
             label9.Size = new System.Drawing.Size(34, 14);
             label9.TabIndex = 15;
             label9.Text = "Start";
@@ -318,6 +334,7 @@
             label21.Font = new System.Drawing.Font("Tahoma", 9F);
             label21.Location = new System.Drawing.Point(8, 22);
             label21.Name = "label21";
+            toolTip.SetToolTip(label21, resources.GetString("label21.ToolTip")); // 260531Cl
             label21.Size = new System.Drawing.Size(34, 14);
             label21.TabIndex = 15;
             label21.Text = "Start";
@@ -329,6 +346,7 @@
             numericBoxCircleEnd.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             numericBoxCircleEnd.Maximum = 100000D;
             numericBoxCircleEnd.Name = "numericBoxCircleEnd";
+            toolTip.SetToolTip(numericBoxCircleEnd, resources.GetString("numericBoxCircleEnd.ToolTip")); // 260531Cl
             numericBoxCircleEnd.Minimum = 0D;
             numericBoxCircleEnd.ShowUpDown = true;
             numericBoxCircleEnd.Size = new System.Drawing.Size(49, 22);
@@ -341,6 +359,7 @@
             buttonUnmaskAll.Location = new System.Drawing.Point(79, 423);
             buttonUnmaskAll.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             buttonUnmaskAll.Name = "buttonUnmaskAll";
+            toolTip.SetToolTip(buttonUnmaskAll, resources.GetString("buttonUnmaskAll.ToolTip")); // 260531Cl
             buttonUnmaskAll.Size = new System.Drawing.Size(74, 24);
             buttonUnmaskAll.TabIndex = 145;
             buttonUnmaskAll.Text = "Unmask All";
@@ -373,6 +392,7 @@
             numericBoxRectangleAngle.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             numericBoxRectangleAngle.Maximum = 360D;
             numericBoxRectangleAngle.Name = "numericBoxRectangleAngle";
+            toolTip.SetToolTip(numericBoxRectangleAngle, resources.GetString("numericBoxRectangleAngle.ToolTip")); // 260531Cl
             numericBoxRectangleAngle.Minimum = 0D;
             numericBoxRectangleAngle.ShowUpDown = true;
             numericBoxRectangleAngle.Size = new System.Drawing.Size(54, 22);
@@ -389,6 +409,7 @@
             comboBoxRectangleDirection.Location = new System.Drawing.Point(65, 19);
             comboBoxRectangleDirection.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             comboBoxRectangleDirection.Name = "comboBoxRectangleDirection";
+            toolTip.SetToolTip(comboBoxRectangleDirection, resources.GetString("comboBoxRectangleDirection.ToolTip")); // 260531Cl
             comboBoxRectangleDirection.Size = new System.Drawing.Size(68, 22);
             comboBoxRectangleDirection.TabIndex = 15;
             comboBoxRectangleDirection.Text = "Top";
@@ -400,6 +421,7 @@
             label22.Font = new System.Drawing.Font("Tahoma", 9F);
             label22.Location = new System.Drawing.Point(129, 46);
             label22.Name = "label22";
+            toolTip.SetToolTip(label22, resources.GetString("label22.ToolTip")); // 260531Cl
             label22.Size = new System.Drawing.Size(38, 14);
             label22.TabIndex = 15;
             label22.Text = "Angle";
@@ -410,6 +432,7 @@
             label23.Font = new System.Drawing.Font("Tahoma", 9F);
             label23.Location = new System.Drawing.Point(4, 46);
             label23.Name = "label23";
+            toolTip.SetToolTip(label23, resources.GetString("label23.ToolTip")); // 260531Cl
             label23.Size = new System.Drawing.Size(71, 14);
             label23.TabIndex = 15;
             label23.Text = "Band Width";
@@ -420,6 +443,7 @@
             numericBoxRectangleBand.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             numericBoxRectangleBand.Maximum = 10000D;
             numericBoxRectangleBand.Name = "numericBoxRectangleBand";
+            toolTip.SetToolTip(numericBoxRectangleBand, resources.GetString("numericBoxRectangleBand.ToolTip")); // 260531Cl
             numericBoxRectangleBand.DecimalPlaces = 0;                                                                                                 // 260522Cl 追加: 整数表示を維持
             numericBoxRectangleBand.Minimum = 0D;
             numericBoxRectangleBand.ShowUpDown = true;
@@ -433,6 +457,7 @@
             label24.Font = new System.Drawing.Font("Tahoma", 9F);
             label24.Location = new System.Drawing.Point(4, 22);
             label24.Name = "label24";
+            toolTip.SetToolTip(label24, resources.GetString("label24.ToolTip")); // 260531Cl
             label24.Size = new System.Drawing.Size(65, 21);
             label24.TabIndex = 15;
             label24.Text = "Direction";
@@ -444,6 +469,7 @@
             checkBoxRectangleIsBothSide.Location = new System.Drawing.Point(138, 21);
             checkBoxRectangleIsBothSide.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             checkBoxRectangleIsBothSide.Name = "checkBoxRectangleIsBothSide";
+            toolTip.SetToolTip(checkBoxRectangleIsBothSide, resources.GetString("checkBoxRectangleIsBothSide.ToolTip")); // 260531Cl
             checkBoxRectangleIsBothSide.Size = new System.Drawing.Size(79, 18);
             checkBoxRectangleIsBothSide.TabIndex = 13;
             checkBoxRectangleIsBothSide.Text = "Both Side";
@@ -458,6 +484,7 @@
             buttonSaveMask.Location = new System.Drawing.Point(154, 423);
             buttonSaveMask.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             buttonSaveMask.Name = "buttonSaveMask";
+            toolTip.SetToolTip(buttonSaveMask, resources.GetString("buttonSaveMask.ToolTip")); // 260531Cl
             buttonSaveMask.Size = new System.Drawing.Size(74, 24);
             buttonSaveMask.TabIndex = 144;
             buttonSaveMask.Text = "Save mask";
@@ -470,6 +497,7 @@
             buttonApplyMask.Location = new System.Drawing.Point(0, 395);
             buttonApplyMask.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             buttonApplyMask.Name = "buttonApplyMask";
+            toolTip.SetToolTip(buttonApplyMask, resources.GetString("buttonApplyMask.ToolTip")); // 260531Cl
             buttonApplyMask.Size = new System.Drawing.Size(106, 24);
             buttonApplyMask.TabIndex = 144;
             buttonApplyMask.Text = "Mask";
@@ -502,6 +530,7 @@
             label29.Location = new System.Drawing.Point(79, 19);
             label29.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             label29.Name = "label29";
+            toolTip.SetToolTip(label29, resources.GetString("label29.ToolTip")); // 260531Cl
             label29.Size = new System.Drawing.Size(13, 16);
             label29.TabIndex = 189;
             label29.Text = "°";
@@ -513,6 +542,7 @@
             label28.Location = new System.Drawing.Point(175, 21);
             label28.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             label28.Name = "label28";
+            toolTip.SetToolTip(label28, resources.GetString("label28.ToolTip")); // 260531Cl
             label28.Size = new System.Drawing.Size(13, 16);
             label28.TabIndex = 189;
             label28.Text = "°";
@@ -528,6 +558,7 @@
             numericBoxTau.MaximumSize = new System.Drawing.Size(1000, 23);
             numericBoxTau.MinimumSize = new System.Drawing.Size(1, 23);
             numericBoxTau.Name = "numericBoxTau";
+            toolTip.SetToolTip(numericBoxTau, resources.GetString("numericBoxTau.ToolTip")); // 260531Cl
             numericBoxTau.Size = new System.Drawing.Size(44, 23);
             numericBoxTau.TabIndex = 5;
             numericBoxTau.ValueFont = new System.Drawing.Font("Tahoma", 9.75F);
@@ -543,6 +574,7 @@
             numericBoxPhi.MaximumSize = new System.Drawing.Size(1000, 23);
             numericBoxPhi.MinimumSize = new System.Drawing.Size(1, 23);
             numericBoxPhi.Name = "numericBoxPhi";
+            toolTip.SetToolTip(numericBoxPhi, resources.GetString("numericBoxPhi.ToolTip")); // 260531Cl
             numericBoxPhi.Size = new System.Drawing.Size(44, 23);
             numericBoxPhi.TabIndex = 5;
             numericBoxPhi.ValueFont = new System.Drawing.Font("Tahoma", 9.75F);
@@ -553,6 +585,7 @@
             trackBarBgH.Location = new System.Drawing.Point(21, 42);
             trackBarBgH.Maximum = 255;
             trackBarBgH.Name = "trackBarBgH";
+            toolTip.SetToolTip(trackBarBgH, resources.GetString("trackBarBgH.ToolTip")); // 260531Cl
             trackBarBgH.Size = new System.Drawing.Size(195, 16);
             trackBarBgH.TabIndex = 181;
             trackBarBgH.TickFrequency = 10;
@@ -565,6 +598,7 @@
             label6.AutoSize = true;
             label6.Location = new System.Drawing.Point(6, 41);
             label6.Name = "label6";
+            toolTip.SetToolTip(label6, resources.GetString("label6.ToolTip")); // 260531Cl
             label6.Size = new System.Drawing.Size(16, 15);
             label6.TabIndex = 185;
             label6.Text = "H";
@@ -574,6 +608,7 @@
             label7.AutoSize = true;
             label7.Location = new System.Drawing.Point(6, 61);
             label7.Name = "label7";
+            toolTip.SetToolTip(label7, resources.GetString("label7.ToolTip")); // 260531Cl
             label7.Size = new System.Drawing.Size(16, 15);
             label7.TabIndex = 185;
             label7.Text = "R";
@@ -584,6 +619,7 @@
             trackBarBgR.Location = new System.Drawing.Point(21, 60);
             trackBarBgR.Maximum = 255;
             trackBarBgR.Name = "trackBarBgR";
+            toolTip.SetToolTip(trackBarBgR, resources.GetString("trackBarBgR.ToolTip")); // 260531Cl
             trackBarBgR.Size = new System.Drawing.Size(195, 16);
             trackBarBgR.TabIndex = 181;
             trackBarBgR.TickFrequency = 10;
@@ -596,6 +632,7 @@
             label8.AutoSize = true;
             label8.Location = new System.Drawing.Point(6, 20);
             label8.Name = "label8";
+            toolTip.SetToolTip(label8, resources.GetString("label8.ToolTip")); // 260531Cl
             label8.Size = new System.Drawing.Size(14, 15);
             label8.TabIndex = 185;
             label8.Text = "A";
@@ -606,6 +643,7 @@
             trackBarBgA.Location = new System.Drawing.Point(21, 22);
             trackBarBgA.Maximum = 1000;
             trackBarBgA.Name = "trackBarBgA";
+            toolTip.SetToolTip(trackBarBgA, resources.GetString("trackBarBgA.ToolTip")); // 260531Cl
             trackBarBgA.Size = new System.Drawing.Size(195, 16);
             trackBarBgA.TabIndex = 181;
             trackBarBgA.TickFrequency = 10;
@@ -638,6 +676,7 @@
             checkBoxInitialBackground.Location = new System.Drawing.Point(17, 4);
             checkBoxInitialBackground.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             checkBoxInitialBackground.Name = "checkBoxInitialBackground";
+            toolTip.SetToolTip(checkBoxInitialBackground, resources.GetString("checkBoxInitialBackground.ToolTip")); // 260531Cl
             checkBoxInitialBackground.Size = new System.Drawing.Size(143, 18);
             checkBoxInitialBackground.TabIndex = 160;
             checkBoxInitialBackground.Text = "Set initial background";
@@ -652,6 +691,7 @@
             buttonSaveBackGround.Location = new System.Drawing.Point(181, 118);
             buttonSaveBackGround.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             buttonSaveBackGround.Name = "buttonSaveBackGround";
+            toolTip.SetToolTip(buttonSaveBackGround, resources.GetString("buttonSaveBackGround.ToolTip")); // 260531Cl
             buttonSaveBackGround.Size = new System.Drawing.Size(50, 28);
             buttonSaveBackGround.TabIndex = 144;
             buttonSaveBackGround.Text = "Save";
@@ -722,6 +762,7 @@
             numericBoxConvergentAngle.MaximumSize = new System.Drawing.Size(1000, 23);
             numericBoxConvergentAngle.MinimumSize = new System.Drawing.Size(1, 23);
             numericBoxConvergentAngle.Name = "numericBoxConvergentAngle";
+            toolTip.SetToolTip(numericBoxConvergentAngle, resources.GetString("numericBoxConvergentAngle.ToolTip")); // 260531Cl
             numericBoxConvergentAngle.RadianValue = 0.00034906585039886593D;
             numericBoxConvergentAngle.Size = new System.Drawing.Size(45, 23);
             numericBoxConvergentAngle.TabIndex = 191;
@@ -735,6 +776,7 @@
             label46.Location = new System.Drawing.Point(1, 143);
             label46.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             label46.Name = "label46";
+            toolTip.SetToolTip(label46, resources.GetString("label46.ToolTip")); // 260531Cl
             label46.Size = new System.Drawing.Size(103, 14);
             label46.TabIndex = 65;
             label46.Text = "Monochromaticity";
@@ -746,6 +788,7 @@
             label45.Location = new System.Drawing.Point(1, 117);
             label45.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             label45.Name = "label45";
+            toolTip.SetToolTip(label45, resources.GetString("label45.ToolTip")); // 260531Cl
             label45.Size = new System.Drawing.Size(79, 14);
             label45.TabIndex = 65;
             label45.Text = "Convergence";
@@ -757,6 +800,7 @@
             label44.Location = new System.Drawing.Point(176, 145);
             label44.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             label44.Name = "label44";
+            toolTip.SetToolTip(label44, resources.GetString("label44.ToolTip")); // 260531Cl
             label44.Size = new System.Drawing.Size(19, 16);
             label44.TabIndex = 67;
             label44.Text = "%";
@@ -767,6 +811,7 @@
             label12.Location = new System.Drawing.Point(159, 99);
             label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             label12.Name = "label12";
+            toolTip.SetToolTip(label12, resources.GetString("label12.ToolTip")); // 260531Cl
             label12.Size = new System.Drawing.Size(10, 14);
             label12.TabIndex = 67;
             label12.Text = "°";
@@ -784,6 +829,7 @@
             waveLengthControl.MinimumSize = new System.Drawing.Size(190, 0);
             waveLengthControl.Monochrome = true;
             waveLengthControl.Name = "waveLengthControl";
+            toolTip.SetToolTip(waveLengthControl, resources.GetString("waveLengthControl.ToolTip")); // 260531Cl
             waveLengthControl.ShowWaveSource = false;
             waveLengthControl.Size = new System.Drawing.Size(190, 80);
             waveLengthControl.TabIndex = 72;
@@ -803,6 +849,7 @@
             numericBoxMonochromaticity.MaximumSize = new System.Drawing.Size(1000, 23);
             numericBoxMonochromaticity.MinimumSize = new System.Drawing.Size(1, 23);
             numericBoxMonochromaticity.Name = "numericBoxMonochromaticity";
+            toolTip.SetToolTip(numericBoxMonochromaticity, resources.GetString("numericBoxMonochromaticity.ToolTip")); // 260531Cl
             numericBoxMonochromaticity.Size = new System.Drawing.Size(44, 23);
             numericBoxMonochromaticity.TabIndex = 191;
             numericBoxMonochromaticity.ValueFont = new System.Drawing.Font("Tahoma", 9.75F);
@@ -842,6 +889,7 @@
             sizeControl1.Maximum = 10000; // 旧 numericBoxImageWidth/Height の範囲 (1〜10000) を継承
             sizeControl1.Minimum = 1;
             sizeControl1.Name = "sizeControl1";
+            toolTip.SetToolTip(sizeControl1, resources.GetString("sizeControl1.ToolTip")); // 260531Cl
             sizeControl1.TabIndex = 2;
             sizeControl1.UnitText = "px"; // 旧 label30 "pixel" を統一表記 "px" に
             sizeControl1.Value = new System.Drawing.Size(800, 800); // 旧 numericBoxImageWidth/Height の既定 800 を継承
@@ -853,6 +901,7 @@
             label20.Location = new System.Drawing.Point(199, 159);
             label20.Margin = new System.Windows.Forms.Padding(0, 3, 0, 0);
             label20.Name = "label20";
+            toolTip.SetToolTip(label20, resources.GetString("label20.ToolTip")); // 260531Cl
             label20.Size = new System.Drawing.Size(56, 14);
             label20.TabIndex = 67;
             label20.Text = "mm/pixel";
@@ -868,6 +917,7 @@
             numericBoxImageResolution.MaximumSize = new System.Drawing.Size(1000, 23);
             numericBoxImageResolution.MinimumSize = new System.Drawing.Size(1, 23);
             numericBoxImageResolution.Name = "numericBoxImageResolution";
+            toolTip.SetToolTip(numericBoxImageResolution, resources.GetString("numericBoxImageResolution.ToolTip")); // 260531Cl
             numericBoxImageResolution.RadianValue = 0.0034906585039886592D;
             numericBoxImageResolution.Size = new System.Drawing.Size(77, 23);
             numericBoxImageResolution.TabIndex = 5;
@@ -885,6 +935,7 @@
             numericBoxMonitorResolution.MaximumSize = new System.Drawing.Size(1000, 23);
             numericBoxMonitorResolution.MinimumSize = new System.Drawing.Size(1, 23);
             numericBoxMonitorResolution.Name = "numericBoxMonitorResolution";
+            toolTip.SetToolTip(numericBoxMonitorResolution, resources.GetString("numericBoxMonitorResolution.ToolTip")); // 260531Cl
             numericBoxMonitorResolution.RadianValue = 0.0017453292519943296D;
             numericBoxMonitorResolution.Size = new System.Drawing.Size(77, 23);
             numericBoxMonitorResolution.TabIndex = 5;
@@ -899,6 +950,7 @@
             label32.Location = new System.Drawing.Point(199, 128);
             label32.Margin = new System.Windows.Forms.Padding(0, 3, 0, 0);
             label32.Name = "label32";
+            toolTip.SetToolTip(label32, resources.GetString("label32.ToolTip")); // 260531Cl
             label32.Size = new System.Drawing.Size(56, 14);
             label32.TabIndex = 67;
             label32.Text = "mm/pixel";
@@ -910,6 +962,7 @@
             label19.Location = new System.Drawing.Point(7, 159);
             label19.Margin = new System.Windows.Forms.Padding(0, 3, 0, 0);
             label19.Name = "label19";
+            toolTip.SetToolTip(label19, resources.GetString("label19.ToolTip")); // 260531Cl
             label19.Size = new System.Drawing.Size(108, 14);
             label19.TabIndex = 67;
             label19.Text = "Monitor Resolution";
@@ -921,6 +974,7 @@
             label2.Location = new System.Drawing.Point(7, 22);
             label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             label2.Name = "label2";
+            toolTip.SetToolTip(label2, resources.GetString("label2.ToolTip")); // 260531Cl
             label2.Size = new System.Drawing.Size(90, 14);
             label2.TabIndex = 47;
             label2.Text = "Camera Length";
@@ -936,6 +990,7 @@
             numericBoxCameraLength.MaximumSize = new System.Drawing.Size(1000, 23);
             numericBoxCameraLength.MinimumSize = new System.Drawing.Size(1, 23);
             numericBoxCameraLength.Name = "numericBoxCameraLength";
+            toolTip.SetToolTip(numericBoxCameraLength, resources.GetString("numericBoxCameraLength.ToolTip")); // 260531Cl
             numericBoxCameraLength.RadianValue = 5.2359877559829888D;
             numericBoxCameraLength.Size = new System.Drawing.Size(93, 23);
             numericBoxCameraLength.TabIndex = 5;
@@ -949,6 +1004,7 @@
             label31.Location = new System.Drawing.Point(7, 128);
             label31.Margin = new System.Windows.Forms.Padding(0, 3, 0, 0);
             label31.Name = "label31";
+            toolTip.SetToolTip(label31, resources.GetString("label31.ToolTip")); // 260531Cl
             label31.Size = new System.Drawing.Size(101, 14);
             label31.TabIndex = 67;
             label31.Text = "Image Resolution";
@@ -960,6 +1016,7 @@
             label13.Location = new System.Drawing.Point(224, 91);
             label13.Margin = new System.Windows.Forms.Padding(0, 3, 0, 0);
             label13.Name = "label13";
+            toolTip.SetToolTip(label13, resources.GetString("label13.ToolTip")); // 260531Cl
             label13.Size = new System.Drawing.Size(31, 14);
             label13.TabIndex = 67;
             label13.Text = "pixel";
@@ -975,6 +1032,7 @@
             numericBoxCenterY.MaximumSize = new System.Drawing.Size(1000, 23);
             numericBoxCenterY.MinimumSize = new System.Drawing.Size(1, 23);
             numericBoxCenterY.Name = "numericBoxCenterY";
+            toolTip.SetToolTip(numericBoxCenterY, resources.GetString("numericBoxCenterY.ToolTip")); // 260531Cl
             numericBoxCenterY.RadianValue = 6.9813170079773181D;
             numericBoxCenterY.Size = new System.Drawing.Size(57, 23);
             numericBoxCenterY.TabIndex = 5;
@@ -991,6 +1049,7 @@
             numericBoxCenterX.MaximumSize = new System.Drawing.Size(1000, 23);
             numericBoxCenterX.MinimumSize = new System.Drawing.Size(1, 23);
             numericBoxCenterX.Name = "numericBoxCenterX";
+            toolTip.SetToolTip(numericBoxCenterX, resources.GetString("numericBoxCenterX.ToolTip")); // 260531Cl
             numericBoxCenterX.RadianValue = 6.9813170079773181D;
             numericBoxCenterX.Size = new System.Drawing.Size(57, 23);
             numericBoxCenterX.TabIndex = 4;
@@ -1004,6 +1063,7 @@
             label37.Location = new System.Drawing.Point(113, 91);
             label37.Margin = new System.Windows.Forms.Padding(0, 3, 0, 0);
             label37.Name = "label37";
+            toolTip.SetToolTip(label37, resources.GetString("label37.ToolTip")); // 260531Cl
             label37.Size = new System.Drawing.Size(56, 14);
             label37.TabIndex = 67;
             label37.Text = "Center Y";
@@ -1016,6 +1076,7 @@
             label33.Location = new System.Drawing.Point(3, 91);
             label33.Margin = new System.Windows.Forms.Padding(0, 3, 0, 0);
             label33.Name = "label33";
+            toolTip.SetToolTip(label33, resources.GetString("label33.ToolTip")); // 260531Cl
             label33.Size = new System.Drawing.Size(55, 14);
             label33.TabIndex = 67;
             label33.Text = "Center X";
@@ -1027,6 +1088,7 @@
             label39.Location = new System.Drawing.Point(224, 23);
             label39.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             label39.Name = "label39";
+            toolTip.SetToolTip(label39, resources.GetString("label39.ToolTip")); // 260531Cl
             label39.Size = new System.Drawing.Size(23, 13);
             label39.TabIndex = 1;
             label39.Text = "mm";
@@ -1038,6 +1100,7 @@
             checkBoxFilmBlur.Location = new System.Drawing.Point(17, 190);
             checkBoxFilmBlur.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             checkBoxFilmBlur.Name = "checkBoxFilmBlur";
+            toolTip.SetToolTip(checkBoxFilmBlur, resources.GetString("checkBoxFilmBlur.ToolTip")); // 260531Cl
             checkBoxFilmBlur.Size = new System.Drawing.Size(70, 18);
             checkBoxFilmBlur.TabIndex = 7;
             checkBoxFilmBlur.Text = "Film Blur";
@@ -1050,6 +1113,7 @@
             label40.Location = new System.Drawing.Point(163, 193);
             label40.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             label40.Name = "label40";
+            toolTip.SetToolTip(label40, resources.GetString("label40.ToolTip")); // 260531Cl
             label40.Size = new System.Drawing.Size(21, 13);
             label40.TabIndex = 67;
             label40.Text = "μm";
@@ -1064,6 +1128,7 @@
             numericBoxFilmBlur.MaximumSize = new System.Drawing.Size(1000, 23);
             numericBoxFilmBlur.MinimumSize = new System.Drawing.Size(1, 23);
             numericBoxFilmBlur.Name = "numericBoxFilmBlur";
+            toolTip.SetToolTip(numericBoxFilmBlur, resources.GetString("numericBoxFilmBlur.ToolTip")); // 260531Cl
             numericBoxFilmBlur.Size = new System.Drawing.Size(45, 23);
             numericBoxFilmBlur.TabIndex = 191;
             numericBoxFilmBlur.ValueFont = new System.Drawing.Font("Tahoma", 9.75F);
@@ -1098,6 +1163,7 @@
             checkBoxMaskDiffractionPeaks.Location = new System.Drawing.Point(9, 208);
             checkBoxMaskDiffractionPeaks.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             checkBoxMaskDiffractionPeaks.Name = "checkBoxMaskDiffractionPeaks";
+            toolTip.SetToolTip(checkBoxMaskDiffractionPeaks, resources.GetString("checkBoxMaskDiffractionPeaks.ToolTip")); // 260531Cl
             checkBoxMaskDiffractionPeaks.Size = new System.Drawing.Size(111, 18);
             checkBoxMaskDiffractionPeaks.TabIndex = 160;
             checkBoxMaskDiffractionPeaks.Text = "Diffraction peak";
@@ -1111,6 +1177,7 @@
             checkBoxMaskManual.Location = new System.Drawing.Point(8, 130);
             checkBoxMaskManual.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             checkBoxMaskManual.Name = "checkBoxMaskManual";
+            toolTip.SetToolTip(checkBoxMaskManual, resources.GetString("checkBoxMaskManual.ToolTip")); // 260531Cl
             checkBoxMaskManual.Size = new System.Drawing.Size(93, 18);
             checkBoxMaskManual.TabIndex = 160;
             checkBoxMaskManual.Text = "Manual Mask";
@@ -1142,6 +1209,7 @@
             checkedListBoxPlaneList.Location = new System.Drawing.Point(9, 47);
             checkedListBoxPlaneList.MultiColumn = true;
             checkedListBoxPlaneList.Name = "checkedListBoxPlaneList";
+            toolTip.SetToolTip(checkedListBoxPlaneList, resources.GetString("checkedListBoxPlaneList.ToolTip")); // 260531Cl
             checkedListBoxPlaneList.Size = new System.Drawing.Size(210, 68);
             checkedListBoxPlaneList.TabIndex = 162;
             // 
@@ -1151,6 +1219,7 @@
             buttonCheckAllIndices.Location = new System.Drawing.Point(63, 23);
             buttonCheckAllIndices.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             buttonCheckAllIndices.Name = "buttonCheckAllIndices";
+            toolTip.SetToolTip(buttonCheckAllIndices, resources.GetString("buttonCheckAllIndices.ToolTip")); // 260531Cl
             buttonCheckAllIndices.Size = new System.Drawing.Size(78, 24);
             buttonCheckAllIndices.TabIndex = 144;
             buttonCheckAllIndices.Text = "Check All";
@@ -1163,6 +1232,7 @@
             buttonUnmaskSelectedPeaks.Location = new System.Drawing.Point(11, 154);
             buttonUnmaskSelectedPeaks.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             buttonUnmaskSelectedPeaks.Name = "buttonUnmaskSelectedPeaks";
+            toolTip.SetToolTip(buttonUnmaskSelectedPeaks, resources.GetString("buttonUnmaskSelectedPeaks.ToolTip")); // 260531Cl
             buttonUnmaskSelectedPeaks.Size = new System.Drawing.Size(188, 23);
             buttonUnmaskSelectedPeaks.TabIndex = 144;
             buttonUnmaskSelectedPeaks.Text = "Select area around the peaks";
@@ -1175,6 +1245,7 @@
             buttonUncheckAllIndices.Location = new System.Drawing.Point(141, 23);
             buttonUncheckAllIndices.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             buttonUncheckAllIndices.Name = "buttonUncheckAllIndices";
+            toolTip.SetToolTip(buttonUncheckAllIndices, resources.GetString("buttonUncheckAllIndices.ToolTip")); // 260531Cl
             buttonUncheckAllIndices.Size = new System.Drawing.Size(80, 24);
             buttonUncheckAllIndices.TabIndex = 144;
             buttonUncheckAllIndices.Text = "Uncheck All";
@@ -1205,6 +1276,7 @@
             radioButtonManualDonut.AutoSize = true;
             radioButtonManualDonut.Location = new System.Drawing.Point(158, 22);
             radioButtonManualDonut.Name = "radioButtonManualDonut";
+            toolTip.SetToolTip(radioButtonManualDonut, resources.GetString("radioButtonManualDonut.ToolTip")); // 260531Cl
             radioButtonManualDonut.Size = new System.Drawing.Size(58, 19);
             radioButtonManualDonut.TabIndex = 18;
             radioButtonManualDonut.Text = "Donut";
@@ -1215,6 +1287,7 @@
             radioButtonManualCircle.AutoSize = true;
             radioButtonManualCircle.Location = new System.Drawing.Point(11, 22);
             radioButtonManualCircle.Name = "radioButtonManualCircle";
+            toolTip.SetToolTip(radioButtonManualCircle, resources.GetString("radioButtonManualCircle.ToolTip")); // 260531Cl
             radioButtonManualCircle.Size = new System.Drawing.Size(56, 19);
             radioButtonManualCircle.TabIndex = 18;
             radioButtonManualCircle.Text = "Circle";
@@ -1225,6 +1298,7 @@
             radioButtonManualRectangle.AutoSize = true;
             radioButtonManualRectangle.Location = new System.Drawing.Point(75, 22);
             radioButtonManualRectangle.Name = "radioButtonManualRectangle";
+            toolTip.SetToolTip(radioButtonManualRectangle, resources.GetString("radioButtonManualRectangle.ToolTip")); // 260531Cl
             radioButtonManualRectangle.Size = new System.Drawing.Size(81, 19);
             radioButtonManualRectangle.TabIndex = 18;
             radioButtonManualRectangle.Text = "Rectangle";
@@ -1236,6 +1310,7 @@
             radioButtonManualSpot.Checked = true;
             radioButtonManualSpot.Location = new System.Drawing.Point(12, 45);
             radioButtonManualSpot.Name = "radioButtonManualSpot";
+            toolTip.SetToolTip(radioButtonManualSpot, resources.GetString("radioButtonManualSpot.ToolTip")); // 260531Cl
             radioButtonManualSpot.Size = new System.Drawing.Size(50, 19);
             radioButtonManualSpot.TabIndex = 18;
             radioButtonManualSpot.TabStop = true;
@@ -1248,6 +1323,7 @@
             comboBoxSpotSize.Items.AddRange(new object[] { "1", "2", "4", "8", "16", "32", "64", "128" });
             comboBoxSpotSize.Location = new System.Drawing.Point(144, 44);
             comboBoxSpotSize.Name = "comboBoxSpotSize";
+            toolTip.SetToolTip(comboBoxSpotSize, resources.GetString("comboBoxSpotSize.ToolTip")); // 260531Cl
             comboBoxSpotSize.Size = new System.Drawing.Size(45, 23);
             comboBoxSpotSize.TabIndex = 17;
             comboBoxSpotSize.Text = "8";
@@ -1258,6 +1334,7 @@
             label11.Font = new System.Drawing.Font("Tahoma", 9F);
             label11.Location = new System.Drawing.Point(192, 48);
             label11.Name = "label11";
+            toolTip.SetToolTip(label11, resources.GetString("label11.ToolTip")); // 260531Cl
             label11.Size = new System.Drawing.Size(31, 14);
             label11.TabIndex = 15;
             label11.Text = "pixel";
@@ -1268,6 +1345,7 @@
             label17.Font = new System.Drawing.Font("Tahoma", 9F);
             label17.Location = new System.Drawing.Point(71, 48);
             label17.Name = "label17";
+            toolTip.SetToolTip(label17, resources.GetString("label17.ToolTip")); // 260531Cl
             label17.Size = new System.Drawing.Size(73, 14);
             label17.TabIndex = 15;
             label17.Text = "Size (radius)";
@@ -1278,6 +1356,7 @@
             buttonUnmask.Location = new System.Drawing.Point(109, 395);
             buttonUnmask.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             buttonUnmask.Name = "buttonUnmask";
+            toolTip.SetToolTip(buttonUnmask, resources.GetString("buttonUnmask.ToolTip")); // 260531Cl
             buttonUnmask.Size = new System.Drawing.Size(106, 24);
             buttonUnmask.TabIndex = 144;
             buttonUnmask.Text = "Unmask";
@@ -1290,6 +1369,7 @@
             buttonMaskAll.Location = new System.Drawing.Point(2, 423);
             buttonMaskAll.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             buttonMaskAll.Name = "buttonMaskAll";
+            toolTip.SetToolTip(buttonMaskAll, resources.GetString("buttonMaskAll.ToolTip")); // 260531Cl
             buttonMaskAll.Size = new System.Drawing.Size(77, 24);
             buttonMaskAll.TabIndex = 145;
             buttonMaskAll.Text = "Mask All";
@@ -1325,6 +1405,7 @@
             textBoxDiffractionInformation.Location = new System.Drawing.Point(0, 0);
             textBoxDiffractionInformation.Multiline = true;
             textBoxDiffractionInformation.Name = "textBoxDiffractionInformation";
+            toolTip.SetToolTip(textBoxDiffractionInformation, resources.GetString("textBoxDiffractionInformation.ToolTip")); // 260531Cl
             textBoxDiffractionInformation.Size = new System.Drawing.Size(270, 450);
             textBoxDiffractionInformation.TabIndex = 0;
             // 
@@ -1334,6 +1415,7 @@
             checkBoxShowMaskedArea.AutoSize = true;
             checkBoxShowMaskedArea.Location = new System.Drawing.Point(722, 526);
             checkBoxShowMaskedArea.Name = "checkBoxShowMaskedArea";
+            toolTip.SetToolTip(checkBoxShowMaskedArea, resources.GetString("checkBoxShowMaskedArea.ToolTip")); // 260531Cl
             checkBoxShowMaskedArea.Size = new System.Drawing.Size(132, 19);
             checkBoxShowMaskedArea.TabIndex = 179;
             checkBoxShowMaskedArea.Text = "Show masked area";
@@ -1347,6 +1429,7 @@
             buttonSaveImage.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             buttonSaveImage.Location = new System.Drawing.Point(890, 521);
             buttonSaveImage.Name = "buttonSaveImage";
+            toolTip.SetToolTip(buttonSaveImage, resources.GetString("buttonSaveImage.ToolTip")); // 260531Cl
             buttonSaveImage.Size = new System.Drawing.Size(82, 25);
             buttonSaveImage.TabIndex = 187;
             buttonSaveImage.Text = "Save Image";
@@ -1504,6 +1587,7 @@
 
         #endregion
 
+        private System.Windows.Forms.ToolTip toolTip; // 260531Cl
         private System.Windows.Forms.Label label36;
         private System.Windows.Forms.Label label25;
         private Crystallography.Controls.GraphControl graphControlFrequency;

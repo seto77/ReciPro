@@ -578,21 +578,25 @@
             // label2
             // 
             resources.ApplyResources(label2, "label2");
+            toolTip.SetToolTip(label2, resources.GetString("label2.ToolTip")); // 260531Cl
             label2.Name = "label2";
             // 
             // label4
             // 
             resources.ApplyResources(label4, "label4");
+            toolTip.SetToolTip(label4, resources.GetString("label4.ToolTip")); // 260531Cl
             label4.Name = "label4";
             // 
             // label3
             // 
             resources.ApplyResources(label3, "label3");
+            toolTip.SetToolTip(label3, resources.GetString("label3.ToolTip")); // 260531Cl
             label3.Name = "label3";
             // 
             // label1
             // 
             resources.ApplyResources(label1, "label1");
+            toolTip.SetToolTip(label1, resources.GetString("label1.ToolTip")); // 260531Cl
             label1.Name = "label1";
             // 
             // tabPageBoundPlane
@@ -949,6 +953,7 @@
             // label8
             // 
             resources.ApplyResources(label8, "label8");
+            toolTip.SetToolTip(label8, resources.GetString("label8.ToolTip")); // 260531Cl
             label8.Name = "label8";
             // 
             // trackBarCellEdgeWidth
@@ -1032,6 +1037,7 @@
             // numericBoxSubCellB
             // 
             resources.ApplyResources(numericBoxSubCellB, "numericBoxSubCellB");
+            toolTip.SetToolTip(numericBoxSubCellB, resources.GetString("numericBoxSubCellB.ToolTip")); // 260531Cl
             numericBoxSubCellB.Maximum = 10D;
             numericBoxSubCellB.Minimum = 1D;
             numericBoxSubCellB.Name = "numericBoxSubCellB";
@@ -1043,6 +1049,7 @@
             // label10
             // 
             resources.ApplyResources(label10, "label10");
+            toolTip.SetToolTip(label10, resources.GetString("label10.ToolTip")); // 260531Cl
             label10.Name = "label10";
             // 
             // checkBoxCellShowPlane
@@ -1056,6 +1063,7 @@
             // numericBoxSubCellC
             // 
             resources.ApplyResources(numericBoxSubCellC, "numericBoxSubCellC");
+            toolTip.SetToolTip(numericBoxSubCellC, resources.GetString("numericBoxSubCellC.ToolTip")); // 260531Cl
             numericBoxSubCellC.Maximum = 10D;
             numericBoxSubCellC.Minimum = 1D;
             numericBoxSubCellC.Name = "numericBoxSubCellC";
@@ -1067,6 +1075,7 @@
             // numericBoxSubCellA
             // 
             resources.ApplyResources(numericBoxSubCellA, "numericBoxSubCellA");
+            toolTip.SetToolTip(numericBoxSubCellA, resources.GetString("numericBoxSubCellA.ToolTip")); // 260531Cl
             numericBoxSubCellA.Maximum = 10D;
             numericBoxSubCellA.Minimum = 1D;
             numericBoxSubCellA.Name = "numericBoxSubCellA";
@@ -1078,16 +1087,19 @@
             // label17
             // 
             resources.ApplyResources(label17, "label17");
+            toolTip.SetToolTip(label17, resources.GetString("label17.ToolTip")); // 260531Cl
             label17.Name = "label17";
             // 
             // label16
             // 
             resources.ApplyResources(label16, "label16");
+            toolTip.SetToolTip(label16, resources.GetString("label16.ToolTip")); // 260531Cl
             label16.Name = "label16";
             // 
             // label12
             // 
             resources.ApplyResources(label12, "label12");
+            toolTip.SetToolTip(label12, resources.GetString("label12.ToolTip")); // 260531Cl
             label12.Name = "label12";
             // 
             // tabPageLatticePlane
@@ -1253,6 +1265,7 @@
             // label9
             // 
             resources.ApplyResources(label9, "label9");
+            toolTip.SetToolTip(label9, resources.GetString("label9.ToolTip")); // 260531Cl
             label9.Name = "label9";
             // 
             // radioButtonProjectionCenterCustom
@@ -1436,6 +1449,7 @@
             // checkBoxSymElems_Inversions
             // 
             resources.ApplyResources(checkBoxSymElems_Inversions, "checkBoxSymElems_Inversions");
+            toolTip.SetToolTip(checkBoxSymElems_Inversions, resources.GetString("checkBoxSymElems_Inversions.ToolTip")); // 260531Cl
             checkBoxSymElems_Inversions.Checked = true;
             checkBoxSymElems_Inversions.CheckState = System.Windows.Forms.CheckState.Checked;
             checkBoxSymElems_Inversions.Name = "checkBoxSymElems_Inversions";
@@ -1446,6 +1460,7 @@
             // 
             numericBoxInversionSymbolSize.BackColor = System.Drawing.Color.Transparent;
             resources.ApplyResources(numericBoxInversionSymbolSize, "numericBoxInversionSymbolSize");
+            toolTip.SetToolTip(numericBoxInversionSymbolSize, resources.GetString("numericBoxInversionSymbolSize.ToolTip")); // 260531Cl
             numericBoxInversionSymbolSize.Maximum = 500D;
             numericBoxInversionSymbolSize.Minimum = 20D;
             numericBoxInversionSymbolSize.Name = "numericBoxInversionSymbolSize";
@@ -1485,6 +1500,7 @@
             // checkBoxSymElems_Glides
             // 
             resources.ApplyResources(checkBoxSymElems_Glides, "checkBoxSymElems_Glides");
+            toolTip.SetToolTip(checkBoxSymElems_Glides, resources.GetString("checkBoxSymElems_Glides.ToolTip")); // 260531Cl
             checkBoxSymElems_Glides.Checked = true;
             checkBoxSymElems_Glides.CheckState = System.Windows.Forms.CheckState.Checked;
             checkBoxSymElems_Glides.Name = "checkBoxSymElems_Glides";
@@ -1495,6 +1511,7 @@
             // 
             numericBoxPlaneSymbolSize.BackColor = System.Drawing.Color.Transparent;
             resources.ApplyResources(numericBoxPlaneSymbolSize, "numericBoxPlaneSymbolSize");
+            toolTip.SetToolTip(numericBoxPlaneSymbolSize, resources.GetString("numericBoxPlaneSymbolSize.ToolTip")); // 260531Cl
             numericBoxPlaneSymbolSize.Maximum = 500D;
             numericBoxPlaneSymbolSize.Minimum = 20D;
             numericBoxPlaneSymbolSize.Name = "numericBoxPlaneSymbolSize";
@@ -1509,6 +1526,7 @@
             numericBoxPlaneLineWidth.BackColor = System.Drawing.Color.Transparent;
             numericBoxPlaneLineWidth.DecimalPlaces = 1;
             resources.ApplyResources(numericBoxPlaneLineWidth, "numericBoxPlaneLineWidth");
+            toolTip.SetToolTip(numericBoxPlaneLineWidth, resources.GetString("numericBoxPlaneLineWidth.ToolTip")); // 260531Cl
             numericBoxPlaneLineWidth.Maximum = 10D;
             numericBoxPlaneLineWidth.Minimum = 0.5D;
             numericBoxPlaneLineWidth.Name = "numericBoxPlaneLineWidth";
@@ -1521,6 +1539,7 @@
             // checkBoxSymElems_Mirrors
             // 
             resources.ApplyResources(checkBoxSymElems_Mirrors, "checkBoxSymElems_Mirrors");
+            toolTip.SetToolTip(checkBoxSymElems_Mirrors, resources.GetString("checkBoxSymElems_Mirrors.ToolTip")); // 260531Cl
             checkBoxSymElems_Mirrors.Checked = true;
             checkBoxSymElems_Mirrors.CheckState = System.Windows.Forms.CheckState.Checked;
             checkBoxSymElems_Mirrors.Name = "checkBoxSymElems_Mirrors";
@@ -1558,6 +1577,7 @@
             // checkBoxSymElems_Rotation
             // 
             resources.ApplyResources(checkBoxSymElems_Rotation, "checkBoxSymElems_Rotation");
+            toolTip.SetToolTip(checkBoxSymElems_Rotation, resources.GetString("checkBoxSymElems_Rotation.ToolTip")); // 260531Cl
             checkBoxSymElems_Rotation.Checked = true;
             checkBoxSymElems_Rotation.CheckState = System.Windows.Forms.CheckState.Checked;
             checkBoxSymElems_Rotation.Name = "checkBoxSymElems_Rotation";
@@ -1568,6 +1588,7 @@
             // 
             numericBoxAxisSymbolSize.BackColor = System.Drawing.Color.Transparent;
             resources.ApplyResources(numericBoxAxisSymbolSize, "numericBoxAxisSymbolSize");
+            toolTip.SetToolTip(numericBoxAxisSymbolSize, resources.GetString("numericBoxAxisSymbolSize.ToolTip")); // 260531Cl
             numericBoxAxisSymbolSize.Maximum = 500D;
             numericBoxAxisSymbolSize.Minimum = 20D;
             numericBoxAxisSymbolSize.Name = "numericBoxAxisSymbolSize";
@@ -1582,6 +1603,7 @@
             numericBoxAxisLineWidth.BackColor = System.Drawing.Color.Transparent;
             numericBoxAxisLineWidth.DecimalPlaces = 1;
             resources.ApplyResources(numericBoxAxisLineWidth, "numericBoxAxisLineWidth");
+            toolTip.SetToolTip(numericBoxAxisLineWidth, resources.GetString("numericBoxAxisLineWidth.ToolTip")); // 260531Cl
             numericBoxAxisLineWidth.Maximum = 10D;
             numericBoxAxisLineWidth.Minimum = 0.5D;
             numericBoxAxisLineWidth.Name = "numericBoxAxisLineWidth";
@@ -1594,6 +1616,7 @@
             // checkBoxSymElems_Rotinversions
             // 
             resources.ApplyResources(checkBoxSymElems_Rotinversions, "checkBoxSymElems_Rotinversions");
+            toolTip.SetToolTip(checkBoxSymElems_Rotinversions, resources.GetString("checkBoxSymElems_Rotinversions.ToolTip")); // 260531Cl
             checkBoxSymElems_Rotinversions.Checked = true;
             checkBoxSymElems_Rotinversions.CheckState = System.Windows.Forms.CheckState.Checked;
             checkBoxSymElems_Rotinversions.Name = "checkBoxSymElems_Rotinversions";
@@ -1603,6 +1626,7 @@
             // checkBoxSymElems_Screws
             // 
             resources.ApplyResources(checkBoxSymElems_Screws, "checkBoxSymElems_Screws");
+            toolTip.SetToolTip(checkBoxSymElems_Screws, resources.GetString("checkBoxSymElems_Screws.ToolTip")); // 260531Cl
             checkBoxSymElems_Screws.Checked = true;
             checkBoxSymElems_Screws.CheckState = System.Windows.Forms.CheckState.Checked;
             checkBoxSymElems_Screws.Name = "checkBoxSymElems_Screws";
@@ -1628,6 +1652,7 @@
             // checkBoxShowSymmetryElements
             // 
             resources.ApplyResources(checkBoxShowSymmetryElements, "checkBoxShowSymmetryElements");
+            toolTip.SetToolTip(checkBoxShowSymmetryElements, resources.GetString("checkBoxShowSymmetryElements.ToolTip")); // 260531Cl
             checkBoxShowSymmetryElements.Name = "checkBoxShowSymmetryElements";
             checkBoxShowSymmetryElements.UseVisualStyleBackColor = true;
             checkBoxShowSymmetryElements.CheckedChanged += checkBoxShowSymmetryElements_CheckedChanged;
@@ -1658,6 +1683,7 @@
             // 
             colorControlLabelColor.Argb = -16777216;
             resources.ApplyResources(colorControlLabelColor, "colorControlLabelColor");
+            toolTip.SetToolTip(colorControlLabelColor, resources.GetString("colorControlLabelColor.ToolTip")); // 260531Cl
             colorControlLabelColor.BackColor = System.Drawing.SystemColors.Control;
             colorControlLabelColor.Blue = 0;
             colorControlLabelColor.BlueF = 0F;
@@ -2079,6 +2105,7 @@
             // sizeControl1
             // 
             resources.ApplyResources(sizeControl1, "sizeControl1");
+            toolTip.SetToolTip(sizeControl1, resources.GetString("sizeControl1.ToolTip")); // 260531Cl
             sizeControl1.Maximum = 4000;
             sizeControl1.Name = "sizeControl1";
             sizeControl1.Value = new System.Drawing.Size(1, 1);

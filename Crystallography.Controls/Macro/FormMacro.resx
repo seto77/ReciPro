@@ -1299,4 +1299,79 @@
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
     <value>Crystallography.Controls.FormBase, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
   </data>
+  <data name="buttonAdd.ToolTip" xml:space="preserve">
+    <value>Add the macro currently in the editor
+(name and body) as a new entry in the list.</value>
+  </data>
+  <data name="buttonChange.ToolTip" xml:space="preserve">
+    <value>Replace the selected macro in the
+list with the current editor contents.</value>
+  </data>
+  <data name="buttonDeleteProfile.ToolTip" xml:space="preserve">
+    <value>Delete the selected macro from the list.</value>
+  </data>
+  <data name="buttonLower.ToolTip" xml:space="preserve">
+    <value>Move the selected macro one position down in the list.</value>
+  </data>
+  <data name="buttonNextStep.ToolTip" xml:space="preserve">
+    <value>Advance to the next line during
+step-by-step execution (shortcut: F10).</value>
+  </data>
+  <data name="buttonRunMacro.ToolTip" xml:space="preserve">
+    <value>Run the macro (Python script) in
+the editor from start to finish.</value>
+  </data>
+  <data name="buttonStepByStep.ToolTip" xml:space="preserve">
+    <value>Run the macro one line at a time (debug mode), pausing
+at each line so you can inspect variable values.</value>
+  </data>
+  <data name="buttonStopMacro.ToolTip" xml:space="preserve">
+    <value>Stop the running macro (effective
+during step-by-step execution).</value>
+  </data>
+  <data name="buttonUpper.ToolTip" xml:space="preserve">
+    <value>Move the selected macro one position up in the list.</value>
+  </data>
+  <data name="checkBoxSamples.ToolTip" xml:space="preserve">
+    <value>Toggle display of the built-in sample
+macros (read-only). Your own macros are
+kept aside and restored when unchecked.</value>
+  </data>
+  <data name="dataGridView.ToolTip" xml:space="preserve">
+    <value>Reference list of ReciPro's built-in macro
+functions and their descriptions. Double-click a
+function to insert it at the cursor in the editor.</value>
+  </data>
+  <data name="dataGridViewDebug.ToolTip" xml:space="preserve">
+    <value>Debug watch: during step-by-step execution,
+shows the local variable names and their
+current values at the paused line.</value>
+  </data>
+  <data name="label2.ToolTip" xml:space="preserve">
+    <value>Macros use basic Python syntax together with
+the built-in functions provided by ReciPro.</value>
+  </data>
+  <data name="listBoxMacro.ToolTip" xml:space="preserve">
+    <value>List of saved macros. Select one to
+load its name and body into the editor.</value>
+  </data>
+  <data name="loadToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>Load a macro file (*.mcr) into the editor.</value>
+  </data>
+  <data name="pyRichTextBox.ToolTip" xml:space="preserve">
+    <value>Code editor for the macro body. Write the Python
+(IronPython) script here; auto-complete, line
+numbers, and error highlighting are provided.</value>
+  </data>
+  <data name="saveToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>Save the current editor contents to a macro file (*.mcr).</value>
+  </data>
+  <data name="textBoxMacroName.ToolTip" xml:space="preserve">
+    <value>Name of the macro. Used as its entry in the list
+and as its menu item name when added or replaced.</value>
+  </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value>Name of the macro. Used as its entry in the list
+and as its menu item name when added or replaced.</value>
+  </data>
 </root>

@@ -1,0 +1,270 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!--
+    Microsoft ResX Schema
+
+    Version 2.0
+
+    The primary goals of this format is to allow a simple XML format
+    that is mostly human readable. The generation and parsing of the
+    various data types are done through the TypeConverter classes
+    associated with the data types.
+
+    Example:
+
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+
+    There are any number of "resheader" rows that contain simple
+    name/value pairs.
+
+    Each data row contains a name, and value. The row also contains a
+    type or mimetype. Type corresponds to a .NET class that support
+    text/value conversion through the TypeConverter architecture.
+    Classes that don't support this are serialized and stored with the
+    mimetype set.
+
+    The mimetype is used for serialized objects, and tells the
+    ResXResourceReader how to depersist the object. This is currently not
+    extensible. For a given mimetype the value must be set accordingly:
+
+    Note - application/x-microsoft.net.object.binary.base64 is the format
+    that the ResXResourceWriter will generate, however the reader can
+    read any of the formats listed below.
+
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="buttonCopyElements.ToolTip" xml:space="preserve">
+    <value>対称要素図を、選択中の形式 (ベクター emf /
+ビットマップ bmp) でクリップボードにコピーします。</value>
+  </data>
+  <data name="buttonCopyPositions.ToolTip" xml:space="preserve">
+    <value>一般位置図を、選択中の形式 (ベクター emf /
+ビットマップ bmp) でクリップボードにコピーします。</value>
+  </data>
+  <data name="dataGridView1.ToolTip" xml:space="preserve">
+    <value>この空間群のワイコフ位置 (対称等価な原子サイト
+の集合) の一覧です。各行に多重度 (Mult.)、
+ワイコフ記号 (Wyck. Let.)、サイト対称性 (Site
+Sym.)、分率座標を表示します (読み取り専用)。</value>
+  </data>
+  <data name="indexControlAxis1.ToolTip" xml:space="preserve">
+    <value>軸1の方向指数 (u₁ v₁ w₁) を入力します。
+軸長・軸間角・共通面が再計算されます。</value>
+  </data>
+  <data name="indexControlAxis2.ToolTip" xml:space="preserve">
+    <value>軸2の方向指数 (u₂ v₂ w₂) を入力します。
+軸長・軸間角・共通面が再計算されます。</value>
+  </data>
+  <data name="indexControlPlane1.ToolTip" xml:space="preserve">
+    <value>面1のミラー指数 (h₁ k₁ l₁) を入力します。
+面間隔・面間角・晶帯軸が再計算されます。</value>
+  </data>
+  <data name="indexControlPlane2.ToolTip" xml:space="preserve">
+    <value>面2のミラー指数 (h₂ k₂ l₂) を入力します。
+面間隔・面間角・晶帯軸が再計算されます。</value>
+  </data>
+  <data name="label12.ToolTip" xml:space="preserve">
+    <value>図をクリップボードへコピーする際の画像形式
+(ベクター emf / ビットマップ bmp) を選びます。</value>
+  </data>
+  <data name="label49.ToolTip" xml:space="preserve">
+    <value>この空間群の反射条件 (消滅則)。格子の
+心 (centering) と対称性により、どの
+hkl 反射が許容/消滅するかを示します。</value>
+  </data>
+  <data name="numericBoxAngleAxes.ToolTip" xml:space="preserve">
+    <value>軸1 (u₁v₁w₁) と軸2 (u₂v₂w₂) のなす角度
+(単位: °)。自動計算の読み取り専用です。</value>
+  </data>
+  <data name="numericBoxAnglePlaneAxis1.ToolTip" xml:space="preserve">
+    <value>面1 (h₁k₁l₁) と軸1 (u₁v₁w₁) のなす角度
+(単位: °)。自動計算の読み取り専用です。</value>
+  </data>
+  <data name="numericBoxAnglePlaneAxis2.ToolTip" xml:space="preserve">
+    <value>面2 (h₂k₂l₂) と軸2 (u₂v₂w₂) のなす角度
+(単位: °)。自動計算の読み取り専用です。</value>
+  </data>
+  <data name="numericBoxAnglePlanes.ToolTip" xml:space="preserve">
+    <value>面1 (h₁k₁l₁) と面2 (h₂k₂l₂) のなす角度
+(単位: °)。自動計算の読み取り専用です。</value>
+  </data>
+  <data name="numericBoxLengthAxis1.ToolTip" xml:space="preserve">
+    <value>軸1 (u₁v₁w₁) の格子方向ベクトルの長さを表示し
+ます (単位: Å)。自動計算の読み取り専用です。</value>
+  </data>
+  <data name="numericBoxLengthAxis2.ToolTip" xml:space="preserve">
+    <value>軸2 (u₂v₂w₂) の格子方向ベクトルの長さを表示し
+ます (単位: Å)。自動計算の読み取り専用です。</value>
+  </data>
+  <data name="numericBoxLengthPlane1.ToolTip" xml:space="preserve">
+    <value>面1 (h₁k₁l₁) の面間隔 d を表示します
+(単位: Å)。自動計算の読み取り専用です。</value>
+  </data>
+  <data name="numericBoxLengthPlane2.ToolTip" xml:space="preserve">
+    <value>面2 (h₂k₂l₂) の面間隔 d を表示します
+(単位: Å)。自動計算の読み取り専用です。</value>
+  </data>
+  <data name="numericBoxPositionA.ToolTip" xml:space="preserve">
+    <value>一般位置図に描く試行点の分率座標 x を設定しま
+す (範囲 -1〜1)。変更すると図が再描画されます。</value>
+  </data>
+  <data name="numericBoxPositionB.ToolTip" xml:space="preserve">
+    <value>一般位置図に描く試行点の分率座標 y を設定しま
+す (範囲 -1〜1)。変更すると図が再描画されます。</value>
+  </data>
+  <data name="numericBoxPositionC.ToolTip" xml:space="preserve">
+    <value>一般位置図に描く試行点の分率座標 z を設定しま
+す (範囲 -1〜1)。変更すると図が再描画されます。</value>
+  </data>
+  <data name="radioButtonBmp.ToolTip" xml:space="preserve">
+    <value>図をビットマップ (bmp) のラスター画像
+(固定解像度) としてコピーします。</value>
+  </data>
+  <data name="radioButtonDirectionA.ToolTip" xml:space="preserve">
+    <value>対称要素図・一般位置図を a 軸方向から
+投影します (直方晶系のときのみ選択可)。</value>
+  </data>
+  <data name="radioButtonDirectionB.ToolTip" xml:space="preserve">
+    <value>対称要素図・一般位置図を b 軸方向から
+投影します (直方晶系のときのみ選択可)。</value>
+  </data>
+  <data name="radioButtonDirectionC.ToolTip" xml:space="preserve">
+    <value>対称要素図・一般位置図を c 軸方向から投影し
+ます (既定。直方晶系では a/b/c を選択可)。</value>
+  </data>
+  <data name="radioButtonEmf.ToolTip" xml:space="preserve">
+    <value>図を拡張メタファイル (emf) のベクター画像 (拡大し
+ても劣化しない) としてコピーします (既定)。</value>
+  </data>
+  <data name="textBoxZoneAxis.ToolTip" xml:space="preserve">
+    <value>晶帯軸 [uvw]。面1と面2の両方に共通する (= 両面に
+平行な) 格子方向を表示する読み取り専用欄です。</value>
+  </data>
+  <data name="textBoxZonePlane.ToolTip" xml:space="preserve">
+    <value>軸1と軸2の両方を含む格子面 (hkl)
+を表示する読み取り専用欄です。</value>
+  </data>
+  <data name="label.ToolTip" xml:space="preserve">
+    <value>結晶系 (例: 立方晶系、六方晶系、直方晶系) を表示します。</value>
+  </data>
+  <data name="label10.ToolTip" xml:space="preserve">
+    <value>点群の Hermann–Mauguin (HM) 記号 (例: m-3m) です。</value>
+  </data>
+  <data name="label11.ToolTip" xml:space="preserve">
+    <value>点群の Schoenflies (SF) 記号 (例: O_h) です。</value>
+  </data>
+  <data name="label16.ToolTip" xml:space="preserve">
+    <value>対称要素図・一般位置図の投影方向です
+(直方晶系のときのみ a/b/c を選択可)。</value>
+  </data>
+  <data name="label4.ToolTip" xml:space="preserve">
+    <value>国際表 (International Tables) の空間群番号
+(1〜230) と設定の枝番を表示します。</value>
+  </data>
+  <data name="label40.ToolTip" xml:space="preserve">
+    <value>晶帯軸 [uvw]。面1と面2の両方に共通する (= 両面に
+平行な) 格子方向を表示する読み取り専用欄です。</value>
+  </data>
+  <data name="label42.ToolTip" xml:space="preserve">
+    <value>軸1と軸2の両方を含む格子面 (hkl)
+を表示する読み取り専用欄です。</value>
+  </data>
+  <data name="label5.ToolTip" xml:space="preserve">
+    <value>空間群の短縮 Hermann–Mauguin (HM) 記号 (国際標準表記) です。</value>
+  </data>
+  <data name="label6.ToolTip" xml:space="preserve">
+    <value>空間群の完全形 Hermann–Mauguin (HM) 記号
+(各軸の対称要素を明示した表記) です。</value>
+  </data>
+  <data name="label8.ToolTip" xml:space="preserve">
+    <value>空間群の Schoenflies (SF) 記号 (例: O_h^7) です。</value>
+  </data>
+  <data name="label9.ToolTip" xml:space="preserve">
+    <value>空間群の Hall 記号 (生成対称操作一
+式を簡潔に符号化した表記) です。</value>
+  </data>
+</root>

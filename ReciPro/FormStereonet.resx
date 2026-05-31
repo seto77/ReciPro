@@ -259,7 +259,8 @@ Middle drag: Drag the simulated image
     <value>Delimiter</value>
   </data>
   <data name="label7.ToolTip" xml:space="preserve">
-    <value>Choose the delimiter character placed between Miller indices.</value>
+    <value>Choose the delimiter character
+placed between Miller indices.</value>
   </data>
   <data name="&gt;&gt;label7.Name" xml:space="preserve">
     <value>label7</value>
@@ -442,7 +443,9 @@ Middle drag: Drag the simulated image
     <value>Size</value>
   </data>
   <data name="label1.ToolTip" xml:space="preserve">
-    <value>Set a string size</value>
+    <value>Set the font size of the projected index
+labels ([u v w] for axes, (h k l) for
+planes); the minimum value hides the labels.</value>
   </data>
   <data name="&gt;&gt;label1.Name" xml:space="preserve">
     <value>label1</value>
@@ -472,7 +475,9 @@ Middle drag: Drag the simulated image
     <value>66</value>
   </data>
   <data name="trackBarStrSize.ToolTip" xml:space="preserve">
-    <value>Set a string size</value>
+    <value>Set the font size of the projected index
+labels ([u v w] for axes, (h k l) for
+planes); the minimum value hides the labels.</value>
   </data>
   <data name="&gt;&gt;trackBarStrSize.Name" xml:space="preserve">
     <value>trackBarStrSize</value>
@@ -499,7 +504,8 @@ Middle drag: Drag the simulated image
     <value>Specify color</value>
   </data>
   <data name="checkBoxSpecifyLabelColor.ToolTip" xml:space="preserve">
-    <value>Use a fixed color for index labels instead of the spot color.</value>
+    <value>Use a fixed color for index
+labels instead of the spot color.</value>
   </data>
   <data name="&gt;&gt;checkBoxSpecifyLabelColor.Name" xml:space="preserve">
     <value>checkBoxSpecifyLabelColor</value>
@@ -649,7 +655,7 @@ Middle drag: Drag the simulated image
     <value>Line width</value>
   </data>
   <data name="label4.ToolTip" xml:space="preserve">
-    <value>Set the outline line width.</value>
+    <value>Set the width of the stereonet outline (grid) lines (1–20).</value>
   </data>
   <data name="&gt;&gt;label4.Name" xml:space="preserve">
     <value>label4</value>
@@ -676,7 +682,7 @@ Middle drag: Drag the simulated image
     <value>65</value>
   </data>
   <data name="trackBarOutlineLineWidth.ToolTip" xml:space="preserve">
-    <value>Set the outline line width.</value>
+    <value>Set the width of the stereonet outline (grid) lines (1–20).</value>
   </data>
   <data name="&gt;&gt;trackBarOutlineLineWidth.Name" xml:space="preserve">
     <value>trackBarOutlineLineWidth</value>
@@ -967,7 +973,8 @@ Middle drag: Drag the simulated image
     <value>Equator</value>
   </data>
   <data name="radioButtonOutlineEquator.ToolTip" xml:space="preserve">
-    <value>Project the latitude and longitude lines from the equatorial direction.</value>
+    <value>Project the latitude and longitude
+lines from the equatorial direction.</value>
   </data>
   <data name="&gt;&gt;radioButtonOutlineEquator.Name" xml:space="preserve">
     <value>radioButtonOutlineEquator</value>
@@ -1006,7 +1013,8 @@ Middle drag: Drag the simulated image
     <value>Pole</value>
   </data>
   <data name="radioButtonOutlinePole.ToolTip" xml:space="preserve">
-    <value>Project the latitude and longitude lines from the polar direction.</value>
+    <value>Project the latitude and longitude
+lines from the polar direction.</value>
   </data>
   <data name="&gt;&gt;radioButtonOutlinePole.Name" xml:space="preserve">
     <value>radioButtonOutlinePole</value>
@@ -1045,7 +1053,9 @@ Middle drag: Drag the simulated image
     <value>1° Lines</value>
   </data>
   <data name="checkBox1DegLine.ToolTip" xml:space="preserve">
-    <value>Display lines at 1° intervals.</value>
+    <value>When checked, adds fine 1° grid lines
+to the stereonet; when cleared, only
+the coarser grid is shown.</value>
   </data>
   <data name="&gt;&gt;checkBox1DegLine.Name" xml:space="preserve">
     <value>checkBox1DegLine</value>
@@ -1129,7 +1139,8 @@ Middle drag: Drag the simulated image
     <value>65</value>
   </data>
   <data name="trackBarPointSize.ToolTip" xml:space="preserve">
-    <value>Set a point size</value>
+    <value>Set the radius of the projected direction
+or plane-normal points on the stereonet.</value>
   </data>
   <data name="&gt;&gt;trackBarPointSize.Name" xml:space="preserve">
     <value>trackBarPointSize</value>
@@ -1174,7 +1185,8 @@ Middle drag: Drag the simulated image
     <value>Upper</value>
   </data>
   <data name="radioButtonUpperSphere.ToolTip" xml:space="preserve">
-    <value>Draw the upper hemisphere.</value>
+    <value>Show projected directions or plane normals
+on the upper hemisphere of the stereonet.</value>
   </data>
   <data name="&gt;&gt;radioButtonUpperSphere.Name" xml:space="preserve">
     <value>radioButtonUpperSphere</value>
@@ -1213,7 +1225,8 @@ Middle drag: Drag the simulated image
     <value>Lower</value>
   </data>
   <data name="radioButtonLowerSphere.ToolTip" xml:space="preserve">
-    <value>Draw the lower hemisphere.</value>
+    <value>Show projected directions or plane normals
+on the lower hemisphere of the stereonet.</value>
   </data>
   <data name="&gt;&gt;radioButtonLowerSphere.Name" xml:space="preserve">
     <value>radioButtonLowerSphere</value>
@@ -1481,6 +1494,11 @@ Middle drag: Drag the simulated image
 to spot size or
 Kikuchi line intensity</value>
   </data>
+  <data name="checkBoxReflectStructureFactor.ToolTip" xml:space="preserve">
+    <value>Scale each spot's size by its structure
+factor (the amplitude scattered by one unit
+cell), so stronger reflections appear larger.</value>
+  </data>
   <data name="&gt;&gt;checkBoxReflectStructureFactor.Name" xml:space="preserve">
     <value>checkBoxReflectStructureFactor</value>
   </data>
@@ -1557,7 +1575,8 @@ Kikuchi line intensity</value>
     <value>Axes</value>
   </data>
   <data name="radioButtonAxes.ToolTip" xml:space="preserve">
-    <value>Draw crystal axes</value>
+    <value>Project crystal axes (zone directions) onto
+the stereonet and label them as [u v w].</value>
   </data>
   <data name="&gt;&gt;radioButtonAxes.Name" xml:space="preserve">
     <value>radioButtonAxes</value>
@@ -1596,7 +1615,8 @@ Kikuchi line intensity</value>
     <value>Planes</value>
   </data>
   <data name="radioButtonPlanes.ToolTip" xml:space="preserve">
-    <value>Draw crystal planes</value>
+    <value>Project crystal-plane normals onto the stereonet
+and label them as Miller indices (h k l).</value>
   </data>
   <data name="&gt;&gt;radioButtonPlanes.Name" xml:space="preserve">
     <value>radioButtonPlanes</value>
@@ -1635,7 +1655,9 @@ Kikuchi line intensity</value>
     <value>Kikuchi line pairs</value>
   </data>
   <data name="radioButtonKikuchiLinePairs.ToolTip" xml:space="preserve">
-    <value>Draw Kikuchi line pairs.</value>
+    <value>Draw Kikuchi-line pairs, the paired bands
+produced when a crystal plane diffracts
+inelastically scattered electrons.</value>
   </data>
   <data name="&gt;&gt;radioButtonKikuchiLinePairs.Name" xml:space="preserve">
     <value>radioButtonKikuchiLinePairs</value>
@@ -1788,7 +1810,7 @@ Kikuchi line intensity</value>
     <value>Size</value>
   </data>
   <data name="label6.ToolTip" xml:space="preserve">
-    <value>Set a point size</value>
+    <value>Set the radius of projected index points on the stereonet.</value>
   </data>
   <data name="&gt;&gt;label6.Name" xml:space="preserve">
     <value>label6</value>
@@ -1833,7 +1855,8 @@ Kikuchi line intensity</value>
     <value>Point size</value>
   </data>
   <data name="label8.ToolTip" xml:space="preserve">
-    <value>Set a point size</value>
+    <value>Set the radius of zone-axis points
+drawn for Kikuchi-line pairs.</value>
   </data>
   <data name="&gt;&gt;label8.Name" xml:space="preserve">
     <value>label8</value>
@@ -1860,7 +1883,8 @@ Kikuchi line intensity</value>
     <value>65</value>
   </data>
   <data name="trackBarKikuchiPointSize.ToolTip" xml:space="preserve">
-    <value>Set a point size</value>
+    <value>Set the radius of zone-axis points
+drawn for Kikuchi-line pairs.</value>
   </data>
   <data name="&gt;&gt;trackBarKikuchiPointSize.Name" xml:space="preserve">
     <value>trackBarKikuchiPointSize</value>
@@ -2075,6 +2099,10 @@ Kikuchi line intensity</value>
   <data name="checkedListBoxCircles.TabIndex" type="System.Int32, mscorlib">
     <value>45</value>
   </data>
+  <data name="checkedListBoxCircles.ToolTip" xml:space="preserve">
+    <value>List of added great circles (zone circles); tick to
+show or hide each circle, or select one to delete it</value>
+  </data>
   <data name="&gt;&gt;checkedListBoxCircles.Name" xml:space="preserve">
     <value>checkedListBoxCircles</value>
   </data>
@@ -2123,6 +2151,10 @@ Kikuchi line intensity</value>
   <data name="buttonAddCircle.Text" xml:space="preserve">
     <value>Add</value>
   </data>
+  <data name="buttonAddCircle.ToolTip" xml:space="preserve">
+    <value>Add a great circle (from a zone axis or from two
+lattice planes) to the stereographic projection.</value>
+  </data>
   <data name="&gt;&gt;buttonAddCircle.Name" xml:space="preserve">
     <value>buttonAddCircle</value>
   </data>
@@ -2165,6 +2197,10 @@ Kikuchi line intensity</value>
   <data name="buttonDeleteCircle.Text" xml:space="preserve">
     <value>Remove</value>
   </data>
+  <data name="buttonDeleteCircle.ToolTip" xml:space="preserve">
+    <value>Remove the selected great circle
+from the stereographic projection.</value>
+  </data>
   <data name="&gt;&gt;buttonDeleteCircle.Name" xml:space="preserve">
     <value>buttonDeleteCircle</value>
   </data>
@@ -2194,6 +2230,9 @@ Kikuchi line intensity</value>
   </data>
   <data name="colorControlGreatCircle.FooterText" xml:space="preserve">
     <value>Color</value>
+  </data>
+  <data name="colorControlGreatCircle.ToolTip" xml:space="preserve">
+    <value>Set the drawing color of the great circles.</value>
   </data>
   <data name="colorControlGreatCircle.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>
@@ -2348,6 +2387,11 @@ Kikuchi line intensity</value>
   <data name="radioButtonCircleByAxis.Text" xml:space="preserve">
     <value>Zone axis index</value>
   </data>
+  <data name="radioButtonCircleByAxis.ToolTip" xml:space="preserve">
+    <value>Define a great circle (zone) by entering
+its zone-axis index [uvw]; the circle
+contains all planes sharing that axis.</value>
+  </data>
   <data name="&gt;&gt;radioButtonCircleByAxis.Name" xml:space="preserve">
     <value>radioButtonCircleByAxis</value>
   </data>
@@ -2397,6 +2441,11 @@ Kikuchi line intensity</value>
   </data>
   <data name="&gt;&gt;indexControlAxis.Name" xml:space="preserve">
     <value>indexControlAxis</value>
+  </data>
+  <data name="indexControlAxis.ToolTip" xml:space="preserve">
+    <value>Zone-axis direction [uvw]; the great
+circle perpendicular to this axis (its
+zone circle) is added to the stereonet</value>
   </data>
   <data name="&gt;&gt;indexControlAxis.Type" xml:space="preserve">
     <value>Crystallography.Controls.IndexControl, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
@@ -2449,6 +2498,10 @@ Kikuchi line intensity</value>
   <data name="radioButtonCircleByPlanes.Text" xml:space="preserve">
     <value>Zone defined 
 by two planes</value>
+  </data>
+  <data name="radioButtonCircleByPlanes.ToolTip" xml:space="preserve">
+    <value>Define a great circle (zone) from two plane indices;
+their common zone axis (cross product) sets the circle.</value>
   </data>
   <data name="&gt;&gt;radioButtonCircleByPlanes.Name" xml:space="preserve">
     <value>radioButtonCircleByPlanes</value>
@@ -2505,6 +2558,11 @@ by two planes</value>
   </data>
   <data name="&gt;&gt;indexControlCirclePlane1.Name" xml:space="preserve">
     <value>indexControlCirclePlane1</value>
+  </data>
+  <data name="indexControlCirclePlane1.ToolTip" xml:space="preserve">
+    <value>First crystal plane index (hkl) of the pair; the
+line common to plane 1 and plane 2 defines the
+zone-axis great circle drawn on the stereonet</value>
   </data>
   <data name="&gt;&gt;indexControlCirclePlane1.Type" xml:space="preserve">
     <value>Crystallography.Controls.IndexControl, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
@@ -2576,6 +2634,11 @@ by two planes</value>
   </data>
   <data name="&gt;&gt;indexControlCirclePlane2.Name" xml:space="preserve">
     <value>indexControlCirclePlane2</value>
+  </data>
+  <data name="indexControlCirclePlane2.ToolTip" xml:space="preserve">
+    <value>Second crystal plane index (hkl) of the pair;
+together with plane 1 its cross product defines
+the zone-axis great circle on the stereonet</value>
   </data>
   <data name="&gt;&gt;indexControlCirclePlane2.Type" xml:space="preserve">
     <value>Crystallography.Controls.IndexControl, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
@@ -3748,7 +3811,9 @@ by two planes</value>
     <value>Range</value>
   </data>
   <data name="radioButtonRange.ToolTip" xml:space="preserve">
-    <value>Set indices to be displayed within the below range</value>
+    <value>Display all indices within the range entered
+below; for axes this means [u v w], and for
+planes this means Miller indices (h k l).</value>
   </data>
   <data name="&gt;&gt;radioButtonRange.Name" xml:space="preserve">
     <value>radioButtonRange</value>
@@ -3787,7 +3852,8 @@ by two planes</value>
     <value>Specified</value>
   </data>
   <data name="radioButtonSpecifiedIndices.ToolTip" xml:space="preserve">
-    <value>Specify indices to be displayed individually</value>
+    <value>Display only the individual index entered
+below, instead of scanning a full index range.</value>
   </data>
   <data name="&gt;&gt;radioButtonSpecifiedIndices.Name" xml:space="preserve">
     <value>radioButtonSpecifiedIndices</value>
@@ -3826,7 +3892,9 @@ by two planes</value>
     <value>Structure factor</value>
   </data>
   <data name="radioButtonHighStructureFactor.ToolTip" xml:space="preserve">
-    <value>Select indices by structure-factor ranking.</value>
+    <value>Display the highest-ranked plane indices by
+structure-factor intensity; stronger structure
+factors correspond to stronger reflections.</value>
   </data>
   <data name="radioButtonHighStructureFactor.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -4381,6 +4449,10 @@ by two planes</value>
   </data>
   <data name="numericBoxHighStructureFactor.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
+  </data>
+  <data name="numericBoxHighStructureFactor.ToolTip" xml:space="preserve">
+    <value>Number of reflections to display, taken from the
+top of the structure-factor ranking (1–1000).</value>
   </data>
   <data name="&gt;&gt;numericBoxHighStructureFactor.Name" xml:space="preserve">
     <value>numericBoxHighStructureFactor</value>
@@ -5356,5 +5428,192 @@ lines</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
     <value>Crystallography.Controls.FormBase, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="button3D_reset.ToolTip" xml:space="preserve">
+    <value>Reset the 3-D view to its default orientation and zoom.</value>
+  </data>
+  <data name="buttonAddIndex.ToolTip" xml:space="preserve">
+    <value>Add the index entered above to the list
+of specified indices to be plotted.</value>
+  </data>
+  <data name="buttonRemoveIndex.ToolTip" xml:space="preserve">
+    <value>Remove the selected index from
+the list of specified indices.</value>
+  </data>
+  <data name="buttonYusaModeStart.ToolTip" xml:space="preserve">
+    <value>Start the goniometer tilt-scan simulation:
+animates the selected poles and records
+their stereographic trajectories.</value>
+  </data>
+  <data name="buttonYusaModeStop.ToolTip" xml:space="preserve">
+    <value>Stop the tilt-scan simulation and copy the recorded
+pole trajectory coordinates to the clipboard.</value>
+  </data>
+  <data name="checkBox1.ToolTip" xml:space="preserve">
+    <value>Enable rotation about the Rx axis
+(tilt angle φ) during the scan.</value>
+  </data>
+  <data name="checkBox2.ToolTip" xml:space="preserve">
+    <value>Enable rotation about the Rz axis (angle θ) during the scan.</value>
+  </data>
+  <data name="checkBox3.ToolTip" xml:space="preserve">
+    <value>Enable rotation about the Ry axis (angle ω) during the scan.</value>
+  </data>
+  <data name="checkBox3dOptionLabel.ToolTip" xml:space="preserve">
+    <value>In the 3-D view, draw the index labels
+([uvw] or (hkl)) next to each plotted pole.</value>
+  </data>
+  <data name="checkBox3dOptionProjectionLine.ToolTip" xml:space="preserve">
+    <value>In the 3-D view, draw the projection rays
+connecting each pole on the sphere to its
+plotted point on the stereonet disk.</value>
+  </data>
+  <data name="checkBox3dOptionSemisphere.ToolTip" xml:space="preserve">
+    <value>In the 3-D view, plot only the points on the upper
+hemisphere (Z&gt;0) instead of the whole sphere.</value>
+  </data>
+  <data name="checkBox3dOptionSphere.ToolTip" xml:space="preserve">
+    <value>In the 3-D view, draw the outline (latitude/longitude
+wireframe) of the reference sphere.</value>
+  </data>
+  <data name="checkBox3dOptionStereonet.ToolTip" xml:space="preserve">
+    <value>In the 3-D view, also draw the flat stereonet disk
+(the projection plane) with the projected points on it.</value>
+  </data>
+  <data name="checkBoxIncludingEquivalentPlanes.ToolTip" xml:space="preserve">
+    <value>Also plot all symmetry-equivalent indices (the full
+{hkl} or &lt;uvw&gt; family), not just the one entered.</value>
+  </data>
+  <data name="checkBoxRotateColor.ToolTip" xml:space="preserve">
+    <value>Assign a rotating palette color to each
+index automatically; when off, all use
+the single color chosen at right.</value>
+  </data>
+  <data name="checkBoxShowIndexLabels.ToolTip" xml:space="preserve">
+    <value>Draw the index label ([uvw] or
+(hkl)) beside each plotted point.</value>
+  </data>
+  <data name="colorControl10DegLine.ToolTip" xml:space="preserve">
+    <value>Set the color of the 10° grid lines
+(latitude/longitude every 10°) of the stereonet.</value>
+  </data>
+  <data name="colorControl1DegLine.ToolTip" xml:space="preserve">
+    <value>Set the color of the 1° grid lines (fine
+lines, shown only when '1° Lines' is enabled).</value>
+  </data>
+  <data name="colorControl90DegLine.ToolTip" xml:space="preserve">
+    <value>Set the color of the 90° lines (outer primitive
+circle and principal axes, the thickest lines).</value>
+  </data>
+  <data name="colorControlBackGround.ToolTip" xml:space="preserve">
+    <value>Set the background color of the stereonet drawing area.</value>
+  </data>
+  <data name="colorControlIndex.ToolTip" xml:space="preserve">
+    <value>Set the plot color for the index being added or
+currently selected (used when 'Rotate color' is off).</value>
+  </data>
+  <data name="colorControlIndexLabel.ToolTip" xml:space="preserve">
+    <value>Set the fixed color used for index
+labels when 'Specify color' is enabled.</value>
+  </data>
+  <data name="colorControlKikuchiLabel.ToolTip" xml:space="preserve">
+    <value>Set the color of the zone-axis labels in
+Kikuchi-line mode (Kikuchi lines: diffraction
+bands from inelastically scattered electrons).</value>
+  </data>
+  <data name="colorControlKikuchiPoints.ToolTip" xml:space="preserve">
+    <value>Set the color of the poles and
+lines drawn in Kikuchi-line mode.</value>
+  </data>
+  <data name="indexControlDrawing.ToolTip" xml:space="preserve">
+    <value>Enter the index to plot — a single [uvw]/(hkl) in
+'Specified' mode, or the maximum h,k,l in 'Range' mode.</value>
+  </data>
+  <data name="label2.ToolTip" xml:space="preserve">
+    <value>Zone axis [uvw] and lattice plane (hkl)
+nearest the cursor position on the stereonet.</value>
+  </data>
+  <data name="label3.ToolTip" xml:space="preserve">
+    <value>Tilt and azimuth angles (in degrees) at
+the cursor position on the stereonet.</value>
+  </data>
+  <data name="labelAxisPlane.ToolTip" xml:space="preserve">
+    <value>Zone axis [uvw] and lattice plane (hkl)
+nearest the cursor position on the stereonet.</value>
+  </data>
+  <data name="labelXYpos.ToolTip" xml:space="preserve">
+    <value>Tilt and azimuth angles (in degrees) at
+the cursor position on the stereonet.</value>
+  </data>
+  <data name="numericBoxAngularSpeed.ToolTip" xml:space="preserve">
+    <value>Angular speed of the rotational
+scan, in degrees per second (°/s).</value>
+  </data>
+  <data name="numericBoxRadialAngle.ToolTip" xml:space="preserve">
+    <value>Radial tilt angle (cone half-angle from the
+center) of the rotational scan, in degrees.</value>
+  </data>
+  <data name="numericBoxRxSpeed.ToolTip" xml:space="preserve">
+    <value>Rotation speed of the Rx (φ)
+motor, in degrees per second (°/s).</value>
+  </data>
+  <data name="numericBoxRyOscillation.ToolTip" xml:space="preserve">
+    <value>Oscillation amplitude (±) of the Ry (ω) axis, in degrees.</value>
+  </data>
+  <data name="numericBoxRySpeed.ToolTip" xml:space="preserve">
+    <value>Rotation speed of the Ry (ω)
+motor, in degrees per second (°/s).</value>
+  </data>
+  <data name="numericBoxRyStep.ToolTip" xml:space="preserve">
+    <value>Angular step of the Ry (ω) scan per increment, in degrees.</value>
+  </data>
+  <data name="numericBoxRzOscillation.ToolTip" xml:space="preserve">
+    <value>Oscillation amplitude (±) of the Rz (θ) axis, in degrees.</value>
+  </data>
+  <data name="numericBoxRzSpeed.ToolTip" xml:space="preserve">
+    <value>Rotation speed of the Rz (θ)
+motor, in degrees per second (°/s).</value>
+  </data>
+  <data name="numericBoxTotalTime.ToolTip" xml:space="preserve">
+    <value>Total duration of the scan, in seconds.</value>
+  </data>
+  <data name="radioButtonRotationalScan.ToolTip" xml:space="preserve">
+    <value>Rotational scan mode: sweeps the tilt
+at a fixed radius (θ²+ω²=constant),
+tracing a circle on the stereonet.</value>
+  </data>
+  <data name="radioButtonZigzagScan.ToolTip" xml:space="preserve">
+    <value>Zigzag (raster) scan mode: steps θ back and
+forth while advancing ω (+θ → +ω → -θ → +ω …).</value>
+  </data>
+  <data name="trackBarDepthFadingOut.ToolTip" xml:space="preserve">
+    <value>Adjust depth cueing: how strongly objects
+fade with distance (depth) in the 3-D view.</value>
+  </data>
+  <data name="checkBoxDisplay3D.ToolTip" xml:space="preserve">
+    <value>Show the 3D (OpenGL) view of the crystal
+alongside the stereographic projection;
+unchecked shows the 2D stereonet only</value>
+  </data>
+  <data name="listBoxSpecifiedIndices.ToolTip" xml:space="preserve">
+    <value>List of user-specified indices projected on the
+stereonet; select rows to recolor or remove them</value>
+  </data>
+  <data name="waveLengthControl.ToolTip" xml:space="preserve">
+    <value>Set the radiation source and wavelength used to
+compute structure-factor intensities and the
+Ewald-sphere reflection list shown on the stereonet</value>
+  </data>
+  <data name="label22.ToolTip" xml:space="preserve">
+    <value>Rotation speed of the Rx (φ)
+motor, in degrees per second (°/s).</value>
+  </data>
+  <data name="label25.ToolTip" xml:space="preserve">
+    <value>Rotation speed of the Rx (φ)
+motor, in degrees per second (°/s).</value>
+  </data>
+  <data name="label29.ToolTip" xml:space="preserve">
+    <value>Adjust depth cueing: how strongly objects
+fade with distance (depth) in the 3-D view.</value>
   </data>
 </root>

@@ -57,4 +57,33 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="buttonCapture.ToolTip" xml:space="preserve">
+    <value>Save a PNG screenshot of every
+checked control to the output folder.</value>
+  </data>
+  <data name="buttonDeselectAll.ToolTip" xml:space="preserve">
+    <value>Uncheck every control in the tree so none will be captured.</value>
+  </data>
+  <data name="buttonRefresh.ToolTip" xml:space="preserve">
+    <value>Re-scan open forms and rebuild the control tree.</value>
+  </data>
+  <data name="buttonSelectAll.ToolTip" xml:space="preserve">
+    <value>Check every control in the tree so all will be captured.</value>
+  </data>
+  <data name="buttonSelectDir.ToolTip" xml:space="preserve">
+    <value>Browse for the output folder
+where captured images are saved.</value>
+  </data>
+  <data name="comboBoxTargetForm.ToolTip" xml:space="preserve">
+    <value>Choose which open form's control
+tree to display and capture.</value>
+  </data>
+  <data name="textBoxOutputDir.ToolTip" xml:space="preserve">
+    <value>Output folder where captured PNG images
+are saved (set with the Select... button).</value>
+  </data>
+  <data name="labelTargetForm.ToolTip" xml:space="preserve">
+    <value>Choose which open form's control
+tree to display and capture.</value>
+  </data>
 </root>

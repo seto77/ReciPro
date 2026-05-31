@@ -26,6 +26,7 @@
         // groupBox1 -> groupBoxMaterial
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormAtom)); // 260531Cl ToolTipを resx 化
             captureExtender.SetCapture(this, true); // 260521Cl 追加: GUI監査キャプチャ対象 (フォーム全体)
             this.components = new System.ComponentModel.Container();
             this.groupBoxMaterial = new System.Windows.Forms.GroupBox();
@@ -52,6 +53,7 @@
             this.checkBoxIsDraw = new System.Windows.Forms.CheckBox();
             this.radioButtonAllSameElement = new System.Windows.Forms.RadioButton();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTip1.IsBalloon = true; // 260531Cl 追加: バルーン表示に統一
             this.groupBoxMaterial.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAtomColor)).BeginInit();                                                          // 260522Cl: numericBoxAtom* は NumericBox 化に伴い ISupportInitialize 不要
             this.SuspendLayout();
@@ -89,7 +91,7 @@
             this.numericBoxAtomTransparency.ShowUpDown = true;
             this.numericBoxAtomTransparency.Size = new System.Drawing.Size(41, 21);
             this.numericBoxAtomTransparency.TabIndex = 89;
-            this.toolTip1.SetToolTip(this.numericBoxAtomTransparency, "透明度");
+            this.toolTip1.SetToolTip(this.numericBoxAtomTransparency, resources.GetString("numericBoxAtomTransparency.ToolTip"));
             this.numericBoxAtomTransparency.Value = 1D;
             // 
             // numericBoxAtomShininess
@@ -102,7 +104,7 @@
             this.numericBoxAtomShininess.ShowUpDown = true;
             this.numericBoxAtomShininess.Size = new System.Drawing.Size(41, 21);
             this.numericBoxAtomShininess.TabIndex = 89;
-            this.toolTip1.SetToolTip(this.numericBoxAtomShininess, "反射光の強度");
+            this.toolTip1.SetToolTip(this.numericBoxAtomShininess, resources.GetString("numericBoxAtomShininess.ToolTip"));
             // 
             // numericBoxAtomSpecular
             // 
@@ -115,7 +117,7 @@
             this.numericBoxAtomSpecular.ShowUpDown = true;
             this.numericBoxAtomSpecular.Size = new System.Drawing.Size(41, 21);
             this.numericBoxAtomSpecular.TabIndex = 89;
-            this.toolTip1.SetToolTip(this.numericBoxAtomSpecular, "反射光");
+            this.toolTip1.SetToolTip(this.numericBoxAtomSpecular, resources.GetString("numericBoxAtomSpecular.ToolTip"));
             // 
             // numericBoxAtomEmmision
             // 
@@ -128,7 +130,7 @@
             this.numericBoxAtomEmmision.ShowUpDown = true;
             this.numericBoxAtomEmmision.Size = new System.Drawing.Size(41, 21);
             this.numericBoxAtomEmmision.TabIndex = 89;
-            this.toolTip1.SetToolTip(this.numericBoxAtomEmmision, "放射光");
+            this.toolTip1.SetToolTip(this.numericBoxAtomEmmision, resources.GetString("numericBoxAtomEmmision.ToolTip"));
             // 
             // numericBoxAtomDiffusion
             // 
@@ -141,7 +143,7 @@
             this.numericBoxAtomDiffusion.ShowUpDown = true;
             this.numericBoxAtomDiffusion.Size = new System.Drawing.Size(41, 21);
             this.numericBoxAtomDiffusion.TabIndex = 89;
-            this.toolTip1.SetToolTip(this.numericBoxAtomDiffusion, "拡散光");
+            this.toolTip1.SetToolTip(this.numericBoxAtomDiffusion, resources.GetString("numericBoxAtomDiffusion.ToolTip"));
             this.numericBoxAtomDiffusion.Value = 0.7D;
             // 
             // label37
@@ -164,7 +166,7 @@
             this.numericBoxAtomAmbient.ShowUpDown = true;
             this.numericBoxAtomAmbient.Size = new System.Drawing.Size(41, 21);
             this.numericBoxAtomAmbient.TabIndex = 89;
-            this.toolTip1.SetToolTip(this.numericBoxAtomAmbient, "環境光");
+            this.toolTip1.SetToolTip(this.numericBoxAtomAmbient, resources.GetString("numericBoxAtomAmbient.ToolTip"));
             // 
             // label36
             // 
@@ -219,7 +221,7 @@
             this.pictureBoxAtomColor.Size = new System.Drawing.Size(20, 21);
             this.pictureBoxAtomColor.TabIndex = 95;
             this.pictureBoxAtomColor.TabStop = false;
-            this.toolTip1.SetToolTip(this.pictureBoxAtomColor, "原子の色を設定します");
+            this.toolTip1.SetToolTip(this.pictureBoxAtomColor, resources.GetString("pictureBoxAtomColor.ToolTip"));
             // 
             // label8
             // 
@@ -241,7 +243,7 @@
             this.numericBoxAtomRadius.ShowUpDown = true;
             this.numericBoxAtomRadius.Size = new System.Drawing.Size(60, 21);
             this.numericBoxAtomRadius.TabIndex = 94;
-            this.toolTip1.SetToolTip(this.numericBoxAtomRadius, "原子の半径を設定します。");
+            this.toolTip1.SetToolTip(this.numericBoxAtomRadius, resources.GetString("numericBoxAtomRadius.ToolTip"));
             // 
             // label9
             // 
@@ -261,7 +263,7 @@
             this.radioButtonApplyEquivalentAtoms.Size = new System.Drawing.Size(151, 19);
             this.radioButtonApplyEquivalentAtoms.TabIndex = 97;
             this.radioButtonApplyEquivalentAtoms.Text = "Apply equivalent atoms";
-            this.toolTip1.SetToolTip(this.radioButtonApplyEquivalentAtoms, "等価な位置にある原子に設定内容を反映させます。");
+            this.toolTip1.SetToolTip(this.radioButtonApplyEquivalentAtoms, resources.GetString("radioButtonApplyEquivalentAtoms.ToolTip"));
             this.radioButtonApplyEquivalentAtoms.UseVisualStyleBackColor = true;
             // 
             // radioButtonApplyThis
@@ -273,7 +275,7 @@
             this.radioButtonApplyThis.Size = new System.Drawing.Size(133, 19);
             this.radioButtonApplyThis.TabIndex = 97;
             this.radioButtonApplyThis.Text = "Apply only this atom";
-            this.toolTip1.SetToolTip(this.radioButtonApplyThis, "選択された原子にのみ設定内容を反映させます。");
+            this.toolTip1.SetToolTip(this.radioButtonApplyThis, resources.GetString("radioButtonApplyThis.ToolTip"));
             this.radioButtonApplyThis.UseVisualStyleBackColor = true;
             // 
             // buttonCancel
@@ -309,7 +311,7 @@
             this.checkBoxIsDraw.Size = new System.Drawing.Size(63, 19);
             this.checkBoxIsDraw.TabIndex = 101;
             this.checkBoxIsDraw.Text = "Visible";
-            this.toolTip1.SetToolTip(this.checkBoxIsDraw, "一時的に原子の描画を停止します。\r\n元の結晶構造には影響しません。");
+            this.toolTip1.SetToolTip(this.checkBoxIsDraw, resources.GetString("checkBoxIsDraw.ToolTip"));
             this.checkBoxIsDraw.UseVisualStyleBackColor = true;
             // 
             // radioButtonAllSameElement
@@ -323,7 +325,7 @@
             this.radioButtonAllSameElement.TabIndex = 97;
             this.radioButtonAllSameElement.TabStop = true;
             this.radioButtonAllSameElement.Text = "Apply all same element";
-            this.toolTip1.SetToolTip(this.radioButtonAllSameElement, "同種の元素の全てに設定内容を反映させます。");
+            this.toolTip1.SetToolTip(this.radioButtonAllSameElement, resources.GetString("radioButtonAllSameElement.ToolTip"));
             this.radioButtonAllSameElement.UseVisualStyleBackColor = true;
             // 
             // FormAtom

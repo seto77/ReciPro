@@ -27,6 +27,8 @@
             captureExtender.SetCapture(this, true); // 260521Cl 追加: GUI監査キャプチャ対象 (フォーム全体)
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormSpotIDv1Results));
+            toolTip = new System.Windows.Forms.ToolTip(components); // (260531Ch)
+            toolTip.IsBalloon = true; // 260531Cl 追加: バルーン表示に統一
             this.bindingSource2 = new System.Windows.Forms.BindingSource(this.components);
             this.dataSet = new System.Data.DataSet();
             this.dataTable1 = new System.Data.DataTable();
@@ -204,6 +206,7 @@
             this.label1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(5, 5);
             this.label1.Name = "label1";
+            this.toolTip.SetToolTip(this.label1, resources.GetString("label1.ToolTip")); // 260531Cl
             this.label1.Size = new System.Drawing.Size(38, 15);
             this.label1.TabIndex = 1;
             this.label1.Text = "label1";
@@ -232,6 +235,7 @@
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
+            this.toolTip.SetToolTip(this.dataGridView1, resources.GetString("dataGridView1.ToolTip")); // 260531Cl
             this.dataGridView1.ReadOnly = true;
             //this.dataGridView1.RowTemplate.Height = 21;                                                                                             // 260413Cl DPIスケーリング対応のため削除
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -266,6 +270,7 @@
             this.dataGridView2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dataGridView2.MultiSelect = false;
             this.dataGridView2.Name = "dataGridView2";
+            this.toolTip.SetToolTip(this.dataGridView2, resources.GetString("dataGridView2.ToolTip")); // 260531Cl
             this.dataGridView2.ReadOnly = true;
             //this.dataGridView2.RowTemplate.Height = 21;                                                                                             // 260413Cl DPIスケーリング対応のため削除
             this.dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -417,6 +422,8 @@
         }
 
         #endregion
+
+        private System.Windows.Forms.ToolTip toolTip; // (260531Ch)
 
         private System.Data.DataSet dataSet;
         private System.Data.DataTable dataTable1;

@@ -155,4 +155,20 @@
         AADwDwAA4AcAAMADAACAAwAAgAEAAIABAACAAQAAgAEAAIADAADAAwAA4AcAAPAPAAD4HwAA//8AAA==
 </value>
   </data>
+  <data name="dataGridView1.ToolTip" xml:space="preserve">
+    <value>Candidate indexing solutions for a single pattern
+(zone axis, reflection indices, d-spacings with %
+error, inter-plane angle). Double-click a row to
+rotate the crystal to that orientation.</value>
+  </data>
+  <data name="dataGridView2.ToolTip" xml:space="preserve">
+    <value>Candidate solutions combining multiple patterns
+(zone axis per pattern and inter-pattern angles
+with error). Double-click a row to rotate the
+crystal to that orientation.</value>
+  </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value>Number of candidate solutions found
+for the entered diffraction pattern.</value>
+  </data>
 </root>

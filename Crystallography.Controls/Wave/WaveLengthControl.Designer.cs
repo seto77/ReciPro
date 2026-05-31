@@ -36,6 +36,7 @@
             radioButtonNeutron = new System.Windows.Forms.RadioButton();
             labelFlatWhite = new System.Windows.Forms.Label();
             toolTip = new System.Windows.Forms.ToolTip(components);
+            toolTip.IsBalloon = true; // 260531Cl 追加: バルーン表示に統一
             flowLayoutPanelWaveSource = new System.Windows.Forms.FlowLayoutPanel();
             flowLayoutPanelElement = new System.Windows.Forms.FlowLayoutPanel();
             flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();

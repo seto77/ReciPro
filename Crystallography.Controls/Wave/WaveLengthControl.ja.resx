@@ -135,7 +135,8 @@
     <value>X線</value>
   </data>
   <data name="radioButtonXray.ToolTip" xml:space="preserve">
-    <value>波源を選択</value>
+    <value>線源をX線にします（エネルギー単位 keV）。
+特性X線の元素・線種の選択欄が表示されます。</value>
   </data>
   <data name="radioButtonElectron.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
@@ -150,13 +151,14 @@
     <value>電子線</value>
   </data>
   <data name="radioButtonElectron.ToolTip" xml:space="preserve">
-    <value>波源を選択</value>
+    <value>線源を電子線にします（エネルギー単位 keV）。</value>
   </data>
   <data name="comboBoxXrayLine.Location" type="System.Drawing.Point, System.Drawing">
     <value>106, 0</value>
   </data>
   <data name="comboBoxXrayLine.ToolTip" xml:space="preserve">
-    <value>特性X線の線を選択</value>
+    <value>特性X線の輝線 (Kα1・Kα2・Kβ1 など) を選択しま
+す。波長とエネルギーがその値に固定されます。</value>
   </data>
   <data name="numericBoxEnergy.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
@@ -171,10 +173,12 @@
     <value>183, 27</value>
   </data>
   <data name="numericBoxEnergy.ToolTip" xml:space="preserve">
-    <value>波動エネルギーを入力</value>
+    <value>線源のエネルギー（X線・電子線は keV、中性子は
+meV）を入力します。波長が自動的に再計算されます。</value>
   </data>
   <data name="numericBoxEnergy.ToolTip1" xml:space="preserve">
-    <value>波動エネルギーを入力</value>
+    <value>線源のエネルギー（X線・電子線は keV、中性子は
+meV）を入力します。波長が自動的に再計算されます。</value>
   </data>
   <data name="label1.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
@@ -186,7 +190,8 @@
     <value>元素</value>
   </data>
   <data name="label1.ToolTip" xml:space="preserve">
-    <value />
+    <value>特性X線を発する元素 (1:H〜98:Cf) を選択します。「0:
+custom」で任意のエネルギー・波長を入力できます。</value>
   </data>
   <data name="numericBoxWaveLength.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
@@ -201,10 +206,12 @@
     <value>151, 27</value>
   </data>
   <data name="numericBoxWaveLength.ToolTip" xml:space="preserve">
-    <value>波長を入力</value>
+    <value>波長をオングストローム (Å) 単位で入力しま
+す。エネルギーが自動的に再計算されます。</value>
   </data>
   <data name="numericBoxWaveLength.ToolTip1" xml:space="preserve">
-    <value>波長を入力</value>
+    <value>波長をオングストローム (Å) 単位で入力しま
+す。エネルギーが自動的に再計算されます。</value>
   </data>
   <data name="radioButtonNeutron.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
@@ -219,10 +226,11 @@
     <value>中性子線</value>
   </data>
   <data name="radioButtonNeutron.ToolTip" xml:space="preserve">
-    <value>波源を選択</value>
+    <value>線源を中性子線にします（エネルギー単位 meV）。</value>
   </data>
   <data name="labelFlatWhite.ToolTip" xml:space="preserve">
-    <value />
+    <value>白色光 (連続スペクトル) モードを示します。
+単一波長でなく平坦な広帯域ビームを用います。</value>
   </data>
   <data name="flowLayoutPanelWaveSource.ToolTip" xml:space="preserve">
     <value />

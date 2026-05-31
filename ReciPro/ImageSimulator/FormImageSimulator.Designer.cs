@@ -261,6 +261,7 @@ namespace ReciPro
             calculationLibraryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             toolStripComboBoxCaclulationLibrary = new System.Windows.Forms.ToolStripComboBox();
             toolTip = new System.Windows.Forms.ToolTip(components);
+            toolTip.IsBalloon = true; // 260531Cl 追加: バルーン表示に統一
             buttonStop = new System.Windows.Forms.Button();
             statusStrip1 = new System.Windows.Forms.StatusStrip();
             toolStripProgressBar = new System.Windows.Forms.ToolStripProgressBar();
@@ -455,6 +456,7 @@ namespace ReciPro
             // numericBoxGaussianBlurRadius
             // 
             resources.ApplyResources(numericBoxGaussianBlurRadius, "numericBoxGaussianBlurRadius");
+            toolTip.SetToolTip(numericBoxGaussianBlurRadius, resources.GetString("numericBoxGaussianBlurRadius.ToolTip")); // 260531Cl
             numericBoxGaussianBlurRadius.BackColor = System.Drawing.SystemColors.Control;
             numericBoxGaussianBlurRadius.DecimalPlaces = 1;
             numericBoxGaussianBlurRadius.FooterBackColor = System.Drawing.SystemColors.Control;
@@ -474,6 +476,7 @@ namespace ReciPro
             // trackBarAdvancedMax
             // 
             resources.ApplyResources(trackBarAdvancedMax, "trackBarAdvancedMax");
+            toolTip.SetToolTip(trackBarAdvancedMax, resources.GetString("trackBarAdvancedMax.ToolTip")); // 260531Cl
             trackBarAdvancedMax.ControlHeight = 25;
             trackBarAdvancedMax.DecimalPlaces = -1;
             trackBarAdvancedMax.LogScrollBar = false;
@@ -491,6 +494,7 @@ namespace ReciPro
             // trackBarAdvancedMin
             // 
             resources.ApplyResources(trackBarAdvancedMin, "trackBarAdvancedMin");
+            toolTip.SetToolTip(trackBarAdvancedMin, resources.GetString("trackBarAdvancedMin.ToolTip")); // 260531Cl
             trackBarAdvancedMin.ControlHeight = 25;
             trackBarAdvancedMin.DecimalPlaces = -1;
             trackBarAdvancedMin.LogScrollBar = false;
@@ -508,6 +512,7 @@ namespace ReciPro
             // checkBoxGaussianBlur
             // 
             resources.ApplyResources(checkBoxGaussianBlur, "checkBoxGaussianBlur");
+            toolTip.SetToolTip(checkBoxGaussianBlur, resources.GetString("checkBoxGaussianBlur.ToolTip")); // 260531Cl
             checkBoxGaussianBlur.Name = "checkBoxGaussianBlur";
             checkBoxGaussianBlur.UseVisualStyleBackColor = true;
             checkBoxGaussianBlur.CheckedChanged += CheckBoxGaussianBlur_CheckedChanged;
@@ -515,12 +520,14 @@ namespace ReciPro
             // label25
             // 
             resources.ApplyResources(label25, "label25");
+            toolTip.SetToolTip(label25, resources.GetString("label25.ToolTip")); // 260531Cl
             label25.Name = "label25";
             // 
             // comboBoxScaleColorScale
             // 
             comboBoxScaleColorScale.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             resources.ApplyResources(comboBoxScaleColorScale, "comboBoxScaleColorScale");
+            toolTip.SetToolTip(comboBoxScaleColorScale, resources.GetString("comboBoxScaleColorScale.ToolTip")); // 260531Cl
             comboBoxScaleColorScale.FormattingEnabled = true;
             comboBoxScaleColorScale.Items.AddRange(new object[] { resources.GetString("comboBoxScaleColorScale.Items"), resources.GetString("comboBoxScaleColorScale.Items1") });
             comboBoxScaleColorScale.Name = "comboBoxScaleColorScale";
@@ -562,6 +569,7 @@ namespace ReciPro
             // checkBoxIntensityMin
             // 
             resources.ApplyResources(checkBoxIntensityMin, "checkBoxIntensityMin");
+            toolTip.SetToolTip(checkBoxIntensityMin, resources.GetString("checkBoxIntensityMin.ToolTip")); // 260531Cl
             checkBoxIntensityMin.Checked = true;
             checkBoxIntensityMin.CheckState = System.Windows.Forms.CheckState.Checked;
             checkBoxIntensityMin.Name = "checkBoxIntensityMin";
@@ -588,6 +596,7 @@ namespace ReciPro
             // checkBoxIntensityMax
             // 
             resources.ApplyResources(checkBoxIntensityMax, "checkBoxIntensityMax");
+            toolTip.SetToolTip(checkBoxIntensityMax, resources.GetString("checkBoxIntensityMax.ToolTip")); // 260531Cl
             checkBoxIntensityMax.Checked = true;
             checkBoxIntensityMax.CheckState = System.Windows.Forms.CheckState.Checked;
             checkBoxIntensityMax.Name = "checkBoxIntensityMax";
@@ -819,6 +828,7 @@ namespace ReciPro
             // numericBoxDefocusNum
             // 
             resources.ApplyResources(numericBoxDefocusNum, "numericBoxDefocusNum");
+            toolTip.SetToolTip(numericBoxDefocusNum, resources.GetString("numericBoxDefocusNum.ToolTip")); // 260531Cl
             numericBoxDefocusNum.BackColor = System.Drawing.SystemColors.Control;
             numericBoxDefocusNum.DecimalPlaces = 0;
             numericBoxDefocusNum.FooterBackColor = System.Drawing.SystemColors.Control;
@@ -836,6 +846,7 @@ namespace ReciPro
             // numericBoxDefocusStep
             // 
             resources.ApplyResources(numericBoxDefocusStep, "numericBoxDefocusStep");
+            toolTip.SetToolTip(numericBoxDefocusStep, resources.GetString("numericBoxDefocusStep.ToolTip")); // 260531Cl
             numericBoxDefocusStep.BackColor = System.Drawing.SystemColors.Control;
             numericBoxDefocusStep.DecimalPlaces = 1;
             numericBoxDefocusStep.FooterBackColor = System.Drawing.SystemColors.Control;
@@ -854,6 +865,7 @@ namespace ReciPro
             // numericBoxDefocusStart
             // 
             resources.ApplyResources(numericBoxDefocusStart, "numericBoxDefocusStart");
+            toolTip.SetToolTip(numericBoxDefocusStart, resources.GetString("numericBoxDefocusStart.ToolTip")); // 260531Cl
             numericBoxDefocusStart.BackColor = System.Drawing.SystemColors.Control;
             numericBoxDefocusStart.DecimalPlaces = 1;
             numericBoxDefocusStart.FooterBackColor = System.Drawing.SystemColors.Control;
@@ -872,6 +884,7 @@ namespace ReciPro
             // textBoxDefocusList
             // 
             resources.ApplyResources(textBoxDefocusList, "textBoxDefocusList");
+            toolTip.SetToolTip(textBoxDefocusList, resources.GetString("textBoxDefocusList.ToolTip")); // 260531Cl
             textBoxDefocusList.Name = "textBoxDefocusList";
             // 
             // panelSerialThickness
@@ -886,6 +899,7 @@ namespace ReciPro
             // numericBoxThicknessNum
             // 
             resources.ApplyResources(numericBoxThicknessNum, "numericBoxThicknessNum");
+            toolTip.SetToolTip(numericBoxThicknessNum, resources.GetString("numericBoxThicknessNum.ToolTip")); // 260531Cl
             numericBoxThicknessNum.BackColor = System.Drawing.SystemColors.Control;
             numericBoxThicknessNum.DecimalPlaces = 0;
             numericBoxThicknessNum.FooterBackColor = System.Drawing.SystemColors.Control;
@@ -903,6 +917,7 @@ namespace ReciPro
             // numericBoxThicknessStep
             // 
             resources.ApplyResources(numericBoxThicknessStep, "numericBoxThicknessStep");
+            toolTip.SetToolTip(numericBoxThicknessStep, resources.GetString("numericBoxThicknessStep.ToolTip")); // 260531Cl
             numericBoxThicknessStep.BackColor = System.Drawing.SystemColors.Control;
             numericBoxThicknessStep.DecimalPlaces = 1;
             numericBoxThicknessStep.FooterBackColor = System.Drawing.SystemColors.Control;
@@ -921,6 +936,7 @@ namespace ReciPro
             // numericBoxThicknessStart
             // 
             resources.ApplyResources(numericBoxThicknessStart, "numericBoxThicknessStart");
+            toolTip.SetToolTip(numericBoxThicknessStart, resources.GetString("numericBoxThicknessStart.ToolTip")); // 260531Cl
             numericBoxThicknessStart.BackColor = System.Drawing.SystemColors.Control;
             numericBoxThicknessStart.DecimalPlaces = 1;
             numericBoxThicknessStart.FooterBackColor = System.Drawing.SystemColors.Control;
@@ -939,6 +955,7 @@ namespace ReciPro
             // textBoxThicknessList
             // 
             resources.ApplyResources(textBoxThicknessList, "textBoxThicknessList");
+            toolTip.SetToolTip(textBoxThicknessList, resources.GetString("textBoxThicknessList.ToolTip")); // 260531Cl
             textBoxThicknessList.Name = "textBoxThicknessList";
             // 
             // panelSerialSettings
@@ -979,12 +996,14 @@ namespace ReciPro
             // label6
             // 
             resources.ApplyResources(label6, "label6");
+            toolTip.SetToolTip(label6, resources.GetString("label6.ToolTip")); // 260531Cl
             label6.ForeColor = System.Drawing.Color.Black;
             label6.Name = "label6";
             // 
             // radioButtonHorizontalDefocus
             // 
             resources.ApplyResources(radioButtonHorizontalDefocus, "radioButtonHorizontalDefocus");
+            toolTip.SetToolTip(radioButtonHorizontalDefocus, resources.GetString("radioButtonHorizontalDefocus.ToolTip")); // 260531Cl
             radioButtonHorizontalDefocus.Checked = true;
             radioButtonHorizontalDefocus.Name = "radioButtonHorizontalDefocus";
             radioButtonHorizontalDefocus.TabStop = true;
@@ -993,6 +1012,7 @@ namespace ReciPro
             // radioButtonHorizontalThickness
             // 
             resources.ApplyResources(radioButtonHorizontalThickness, "radioButtonHorizontalThickness");
+            toolTip.SetToolTip(radioButtonHorizontalThickness, resources.GetString("radioButtonHorizontalThickness.ToolTip")); // 260531Cl
             radioButtonHorizontalThickness.Name = "radioButtonHorizontalThickness";
             radioButtonHorizontalThickness.UseVisualStyleBackColor = true;
             // 
@@ -1006,6 +1026,7 @@ namespace ReciPro
             // radioButtonSingleMode
             // 
             resources.ApplyResources(radioButtonSingleMode, "radioButtonSingleMode");
+            toolTip.SetToolTip(radioButtonSingleMode, resources.GetString("radioButtonSingleMode.ToolTip")); // 260531Cl
             radioButtonSingleMode.Checked = true;
             radioButtonSingleMode.Name = "radioButtonSingleMode";
             radioButtonSingleMode.TabStop = true;
@@ -1015,6 +1036,7 @@ namespace ReciPro
             // radioButtonSerialMode
             // 
             resources.ApplyResources(radioButtonSerialMode, "radioButtonSerialMode");
+            toolTip.SetToolTip(radioButtonSerialMode, resources.GetString("radioButtonSerialMode.ToolTip")); // 260531Cl
             radioButtonSerialMode.Name = "radioButtonSerialMode";
             radioButtonSerialMode.UseVisualStyleBackColor = true;
             // 
@@ -1041,6 +1063,7 @@ namespace ReciPro
             // radioButtonPotentialModeMagAndPhase
             // 
             resources.ApplyResources(radioButtonPotentialModeMagAndPhase, "radioButtonPotentialModeMagAndPhase");
+            toolTip.SetToolTip(radioButtonPotentialModeMagAndPhase, resources.GetString("radioButtonPotentialModeMagAndPhase.ToolTip")); // 260531Cl
             radioButtonPotentialModeMagAndPhase.Checked = true;
             radioButtonPotentialModeMagAndPhase.Name = "radioButtonPotentialModeMagAndPhase";
             radioButtonPotentialModeMagAndPhase.TabStop = true;
@@ -1058,6 +1081,7 @@ namespace ReciPro
             // radioButtonPotentialShowMagAndPhase
             // 
             resources.ApplyResources(radioButtonPotentialShowMagAndPhase, "radioButtonPotentialShowMagAndPhase");
+            toolTip.SetToolTip(radioButtonPotentialShowMagAndPhase, resources.GetString("radioButtonPotentialShowMagAndPhase.ToolTip")); // 260531Cl
             radioButtonPotentialShowMagAndPhase.Checked = true;
             radioButtonPotentialShowMagAndPhase.Name = "radioButtonPotentialShowMagAndPhase";
             radioButtonPotentialShowMagAndPhase.TabStop = true;
@@ -1066,12 +1090,14 @@ namespace ReciPro
             // radioButtonPotentialShowMag
             // 
             resources.ApplyResources(radioButtonPotentialShowMag, "radioButtonPotentialShowMag");
+            toolTip.SetToolTip(radioButtonPotentialShowMag, resources.GetString("radioButtonPotentialShowMag.ToolTip")); // 260531Cl
             radioButtonPotentialShowMag.Name = "radioButtonPotentialShowMag";
             radioButtonPotentialShowMag.UseVisualStyleBackColor = true;
             // 
             // radioButtonPotentialShowPhase
             // 
             resources.ApplyResources(radioButtonPotentialShowPhase, "radioButtonPotentialShowPhase");
+            toolTip.SetToolTip(radioButtonPotentialShowPhase, resources.GetString("radioButtonPotentialShowPhase.ToolTip")); // 260531Cl
             radioButtonPotentialShowPhase.ForeColor = System.Drawing.SystemColors.ControlText;
             radioButtonPotentialShowPhase.Name = "radioButtonPotentialShowPhase";
             radioButtonPotentialShowPhase.UseVisualStyleBackColor = true;
@@ -1181,6 +1207,7 @@ namespace ReciPro
             // radioButtonPotentialModeRealAndImag
             // 
             resources.ApplyResources(radioButtonPotentialModeRealAndImag, "radioButtonPotentialModeRealAndImag");
+            toolTip.SetToolTip(radioButtonPotentialModeRealAndImag, resources.GetString("radioButtonPotentialModeRealAndImag.ToolTip")); // 260531Cl
             radioButtonPotentialModeRealAndImag.Name = "radioButtonPotentialModeRealAndImag";
             radioButtonPotentialModeRealAndImag.UseVisualStyleBackColor = true;
             // 
@@ -1195,6 +1222,7 @@ namespace ReciPro
             // radioButtonPotentialShowRealAndImag
             // 
             resources.ApplyResources(radioButtonPotentialShowRealAndImag, "radioButtonPotentialShowRealAndImag");
+            toolTip.SetToolTip(radioButtonPotentialShowRealAndImag, resources.GetString("radioButtonPotentialShowRealAndImag.ToolTip")); // 260531Cl
             radioButtonPotentialShowRealAndImag.Checked = true;
             radioButtonPotentialShowRealAndImag.Name = "radioButtonPotentialShowRealAndImag";
             radioButtonPotentialShowRealAndImag.TabStop = true;
@@ -1203,18 +1231,21 @@ namespace ReciPro
             // radioButtonPotentialShowReal
             // 
             resources.ApplyResources(radioButtonPotentialShowReal, "radioButtonPotentialShowReal");
+            toolTip.SetToolTip(radioButtonPotentialShowReal, resources.GetString("radioButtonPotentialShowReal.ToolTip")); // 260531Cl
             radioButtonPotentialShowReal.Name = "radioButtonPotentialShowReal";
             radioButtonPotentialShowReal.UseVisualStyleBackColor = true;
             // 
             // radioButtonPotentialShowImag
             // 
             resources.ApplyResources(radioButtonPotentialShowImag, "radioButtonPotentialShowImag");
+            toolTip.SetToolTip(radioButtonPotentialShowImag, resources.GetString("radioButtonPotentialShowImag.ToolTip")); // 260531Cl
             radioButtonPotentialShowImag.Name = "radioButtonPotentialShowImag";
             radioButtonPotentialShowImag.UseVisualStyleBackColor = true;
             // 
             // checkBoxPotentialUgPrime
             // 
             resources.ApplyResources(checkBoxPotentialUgPrime, "checkBoxPotentialUgPrime");
+            toolTip.SetToolTip(checkBoxPotentialUgPrime, resources.GetString("checkBoxPotentialUgPrime.ToolTip")); // 260531Cl
             checkBoxPotentialUgPrime.Checked = true;
             checkBoxPotentialUgPrime.CheckState = System.Windows.Forms.CheckState.Checked;
             checkBoxPotentialUgPrime.Name = "checkBoxPotentialUgPrime";
@@ -1223,6 +1254,7 @@ namespace ReciPro
             // checkBoxPotentialUg
             // 
             resources.ApplyResources(checkBoxPotentialUg, "checkBoxPotentialUg");
+            toolTip.SetToolTip(checkBoxPotentialUg, resources.GetString("checkBoxPotentialUg.ToolTip")); // 260531Cl
             checkBoxPotentialUg.Checked = true;
             checkBoxPotentialUg.CheckState = System.Windows.Forms.CheckState.Checked;
             checkBoxPotentialUg.Name = "checkBoxPotentialUg";
@@ -1446,12 +1478,14 @@ namespace ReciPro
             // label5
             // 
             resources.ApplyResources(label5, "label5");
+            toolTip.SetToolTip(label5, resources.GetString("label5.ToolTip")); // 260531Cl
             label5.ForeColor = System.Drawing.SystemColors.ControlText;
             label5.Name = "label5";
             // 
             // label34
             // 
             resources.ApplyResources(label34, "label34");
+            toolTip.SetToolTip(label34, resources.GetString("label34.ToolTip")); // 260531Cl
             label34.ForeColor = System.Drawing.SystemColors.ControlText;
             label34.Name = "label34";
             // 
@@ -1527,6 +1561,7 @@ namespace ReciPro
             // 
             textBoxOuterRadius.BackColor = System.Drawing.SystemColors.InactiveCaption;
             resources.ApplyResources(textBoxOuterRadius, "textBoxOuterRadius");
+            toolTip.SetToolTip(textBoxOuterRadius, resources.GetString("textBoxOuterRadius.ToolTip")); // 260531Cl
             textBoxOuterRadius.ForeColor = System.Drawing.Color.DimGray;
             textBoxOuterRadius.Name = "textBoxOuterRadius";
             textBoxOuterRadius.ReadOnly = true;
@@ -1534,6 +1569,7 @@ namespace ReciPro
             // label38
             // 
             resources.ApplyResources(label38, "label38");
+            toolTip.SetToolTip(label38, resources.GetString("label38.ToolTip")); // 260531Cl
             label38.ForeColor = System.Drawing.Color.Black;
             label38.Name = "label38";
             // 
@@ -1548,6 +1584,7 @@ namespace ReciPro
             // 
             textBoxInnerRadius.BackColor = System.Drawing.SystemColors.InactiveCaption;
             resources.ApplyResources(textBoxInnerRadius, "textBoxInnerRadius");
+            toolTip.SetToolTip(textBoxInnerRadius, resources.GetString("textBoxInnerRadius.ToolTip")); // 260531Cl
             textBoxInnerRadius.ForeColor = System.Drawing.Color.DimGray;
             textBoxInnerRadius.Name = "textBoxInnerRadius";
             textBoxInnerRadius.ReadOnly = true;
@@ -1555,6 +1592,7 @@ namespace ReciPro
             // label37
             // 
             resources.ApplyResources(label37, "label37");
+            toolTip.SetToolTip(label37, resources.GetString("label37.ToolTip")); // 260531Cl
             label37.ForeColor = System.Drawing.Color.Black;
             label37.Name = "label37";
             // 
@@ -1569,6 +1607,7 @@ namespace ReciPro
             // 
             textBoxConvRadius.BackColor = System.Drawing.SystemColors.InactiveCaption;
             resources.ApplyResources(textBoxConvRadius, "textBoxConvRadius");
+            toolTip.SetToolTip(textBoxConvRadius, resources.GetString("textBoxConvRadius.ToolTip")); // 260531Cl
             textBoxConvRadius.ForeColor = System.Drawing.Color.DimGray;
             textBoxConvRadius.Name = "textBoxConvRadius";
             textBoxConvRadius.ReadOnly = true;
@@ -1576,6 +1615,7 @@ namespace ReciPro
             // label36
             // 
             resources.ApplyResources(label36, "label36");
+            toolTip.SetToolTip(label36, resources.GetString("label36.ToolTip")); // 260531Cl
             label36.ForeColor = System.Drawing.Color.Black;
             label36.Name = "label36";
             // 
@@ -1600,6 +1640,7 @@ namespace ReciPro
             // label1
             // 
             resources.ApplyResources(label1, "label1");
+            toolTip.SetToolTip(label1, resources.GetString("label1.ToolTip")); // 260531Cl
             label1.ForeColor = System.Drawing.SystemColors.ControlText;
             label1.Name = "label1";
             // 
@@ -1620,6 +1661,7 @@ namespace ReciPro
             // checkBoxOpenAperture
             // 
             resources.ApplyResources(checkBoxOpenAperture, "checkBoxOpenAperture");
+            toolTip.SetToolTip(checkBoxOpenAperture, resources.GetString("checkBoxOpenAperture.ToolTip")); // 260531Cl
             checkBoxOpenAperture.Name = "checkBoxOpenAperture";
             checkBoxOpenAperture.UseVisualStyleBackColor = true;
             checkBoxOpenAperture.CheckedChanged += NumericBoxObjAperRadius_ValueChanged;
@@ -1627,6 +1669,7 @@ namespace ReciPro
             // numericBoxHRTEM_ObjAperX
             // 
             resources.ApplyResources(numericBoxHRTEM_ObjAperX, "numericBoxHRTEM_ObjAperX");
+            toolTip.SetToolTip(numericBoxHRTEM_ObjAperX, resources.GetString("numericBoxHRTEM_ObjAperX.ToolTip")); // 260531Cl
             numericBoxHRTEM_ObjAperX.BackColor = System.Drawing.SystemColors.Control;
             numericBoxHRTEM_ObjAperX.DecimalPlaces = 1;
             numericBoxHRTEM_ObjAperX.FooterBackColor = System.Drawing.SystemColors.Control;
@@ -1664,6 +1707,7 @@ namespace ReciPro
             // numericBoxHRTEM_ObjAperY
             // 
             resources.ApplyResources(numericBoxHRTEM_ObjAperY, "numericBoxHRTEM_ObjAperY");
+            toolTip.SetToolTip(numericBoxHRTEM_ObjAperY, resources.GetString("numericBoxHRTEM_ObjAperY.ToolTip")); // 260531Cl
             numericBoxHRTEM_ObjAperY.BackColor = System.Drawing.SystemColors.Control;
             numericBoxHRTEM_ObjAperY.DecimalPlaces = 1;
             numericBoxHRTEM_ObjAperY.FooterBackColor = System.Drawing.SystemColors.Control;
@@ -1691,18 +1735,21 @@ namespace ReciPro
             textBoxNumOfSpots.BackColor = System.Drawing.SystemColors.InactiveCaption;
             textBoxNumOfSpots.ForeColor = System.Drawing.Color.DimGray;
             resources.ApplyResources(textBoxNumOfSpots, "textBoxNumOfSpots");
+            toolTip.SetToolTip(textBoxNumOfSpots, resources.GetString("textBoxNumOfSpots.ToolTip")); // 260531Cl
             textBoxNumOfSpots.Name = "textBoxNumOfSpots";
             textBoxNumOfSpots.ReadOnly = true;
             // 
             // label9
             // 
             resources.ApplyResources(label9, "label9");
+            toolTip.SetToolTip(label9, resources.GetString("label9.ToolTip")); // 260531Cl
             label9.ForeColor = System.Drawing.Color.Black;
             label9.Name = "label9";
             // 
             // buttonDetailsOfSpots
             // 
             resources.ApplyResources(buttonDetailsOfSpots, "buttonDetailsOfSpots");
+            toolTip.SetToolTip(buttonDetailsOfSpots, resources.GetString("buttonDetailsOfSpots.ToolTip")); // 260531Cl
             buttonDetailsOfSpots.Name = "buttonDetailsOfSpots";
             buttonDetailsOfSpots.UseVisualStyleBackColor = true;
             buttonDetailsOfSpots.Click += ButtonDetailsOfSpots_Click;
@@ -1718,6 +1765,7 @@ namespace ReciPro
             // 
             textBoxObjAperRadius.BackColor = System.Drawing.SystemColors.InactiveCaption;
             resources.ApplyResources(textBoxObjAperRadius, "textBoxObjAperRadius");
+            toolTip.SetToolTip(textBoxObjAperRadius, resources.GetString("textBoxObjAperRadius.ToolTip")); // 260531Cl
             textBoxObjAperRadius.ForeColor = System.Drawing.Color.DimGray;
             textBoxObjAperRadius.Name = "textBoxObjAperRadius";
             textBoxObjAperRadius.ReadOnly = true;
@@ -1725,6 +1773,7 @@ namespace ReciPro
             // label7
             // 
             resources.ApplyResources(label7, "label7");
+            toolTip.SetToolTip(label7, resources.GetString("label7.ToolTip")); // 260531Cl
             label7.ForeColor = System.Drawing.Color.Black;
             label7.Name = "label7";
             // 
@@ -1814,6 +1863,7 @@ namespace ReciPro
             // checkBoxCTF
             // 
             resources.ApplyResources(checkBoxCTF, "checkBoxCTF");
+            toolTip.SetToolTip(checkBoxCTF, resources.GetString("checkBoxCTF.ToolTip")); // 260531Cl
             checkBoxCTF.Name = "checkBoxCTF";
             checkBoxCTF.UseVisualStyleBackColor = true;
             checkBoxCTF.CheckedChanged += checkBoxShowLensFunctionGraph_CheckedChanged;
@@ -2042,6 +2092,7 @@ namespace ReciPro
             // label2
             // 
             resources.ApplyResources(label2, "label2");
+            toolTip.SetToolTip(label2, resources.GetString("label2.ToolTip")); // 260531Cl
             label2.ForeColor = System.Drawing.SystemColors.ControlText;
             label2.Name = "label2";
             // 
@@ -2076,6 +2127,7 @@ namespace ReciPro
             // checkBoxPreset
             // 
             resources.ApplyResources(checkBoxPreset, "checkBoxPreset");
+            toolTip.SetToolTip(checkBoxPreset, resources.GetString("checkBoxPreset.ToolTip")); // 260531Cl
             checkBoxPreset.Name = "checkBoxPreset";
             checkBoxPreset.UseVisualStyleBackColor = true;
             checkBoxPreset.CheckedChanged += checkBoxPreset_CheckedChanged;

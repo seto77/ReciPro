@@ -1,4 +1,4 @@
-﻿﻿namespace ReciPro
+﻿namespace ReciPro
 {
     partial class FormMain
     {
@@ -180,6 +180,7 @@
             duplicateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             toolTip = new System.Windows.Forms.ToolTip(components);
+            toolTip.IsBalloon = true; // 260531Cl 追加: バルーン表示に統一
             timer = new System.Windows.Forms.Timer(components);
             toolStripContainer1.BottomToolStripPanel.SuspendLayout();
             toolStripContainer1.ContentPanel.SuspendLayout();

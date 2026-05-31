@@ -149,43 +149,56 @@
     <value>クリップボードからExcel形式の回転行列の値を貼り付け</value>
   </data>
   <data name="numericBoxPsi.ToolTip" xml:space="preserve">
-    <value>オイラー角 Ψ</value>
+    <value>ReciPro 座標系（ZXZ 規約）の第3オイラー角 Ψ（度、
+最後の Z 軸まわりの回転）。結晶方位を決めます。</value>
   </data>
   <data name="numericBoxPsi.ToolTip1" xml:space="preserve">
-    <value>オイラー角 Ψ</value>
+    <value>ReciPro 座標系（ZXZ 規約）の第3オイラー角 Ψ（度、
+最後の Z 軸まわりの回転）。結晶方位を決めます。</value>
   </data>
   <data name="numericBoxTheta.ToolTip" xml:space="preserve">
-    <value>オイラー角 Θ</value>
+    <value>ReciPro 座標系（ZXZ 規約）の第2オイラー角 Θ（度、
+中間の X 軸まわりの回転）。結晶方位を決めます。</value>
   </data>
   <data name="numericBoxTheta.ToolTip1" xml:space="preserve">
-    <value>オイラー角 Θ</value>
+    <value>ReciPro 座標系（ZXZ 規約）の第2オイラー角 Θ（度、
+中間の X 軸まわりの回転）。結晶方位を決めます。</value>
   </data>
   <data name="numericBoxPhi.ToolTip" xml:space="preserve">
-    <value>オイラー角 Φ</value>
+    <value>ReciPro 座標系（ZXZ 規約）の第1オイラー角 Φ（度）。
+Θ・Ψ とともに結晶方位（回転行列）を決めます。</value>
   </data>
   <data name="numericBoxPhi.ToolTip1" xml:space="preserve">
-    <value>オイラー角 Φ</value>
+    <value>ReciPro 座標系（ZXZ 規約）の第1オイラー角 Φ（度）。
+Θ・Ψ とともに結晶方位（回転行列）を決めます。</value>
   </data>
   <data name="numericBoxExp1.ToolTip" xml:space="preserve">
-    <value>第1軸の角度を設定</value>
+    <value>実験座標系の第1ゴニオメータ軸まわりの回転角（度、
+−180〜180）。選択した X/Y/Z 軸まわりに結晶を傾けます。</value>
   </data>
   <data name="numericBoxExp1.ToolTip1" xml:space="preserve">
-    <value>第1軸の角度を設定</value>
+    <value>実験座標系の第1ゴニオメータ軸まわりの回転角（度、
+−180〜180）。選択した X/Y/Z 軸まわりに結晶を傾けます。</value>
   </data>
   <data name="numericBoxExp2.ToolTip" xml:space="preserve">
-    <value>第2軸の角度を設定</value>
+    <value>実験座標系の第2ゴニオメータ軸まわりの回転角（度、
+−180〜180）。選択した X/Y/Z 軸まわりに結晶を傾けます。</value>
   </data>
   <data name="numericBoxExp2.ToolTip1" xml:space="preserve">
-    <value>第2軸の角度を設定</value>
+    <value>実験座標系の第2ゴニオメータ軸まわりの回転角（度、
+−180〜180）。選択した X/Y/Z 軸まわりに結晶を傾けます。</value>
   </data>
   <data name="numericBoxExp3.ToolTip" xml:space="preserve">
-    <value>第2軸の角度を設定</value>
+    <value>実験座標系の第3ゴニオメータ軸まわりの回転角（度、
+-180〜180）。選択したX/Y/Z軸まわりに結晶を傾けます。</value>
   </data>
   <data name="numericBoxExp3.ToolTip1" xml:space="preserve">
-    <value>第2軸の角度を設定</value>
+    <value>実験座標系の第3ゴニオメータ軸まわりの回転角（度、
+-180〜180）。選択したX/Y/Z軸まわりに結晶を傾けます。</value>
   </data>
   <data name="checkBoxEnable2nd.ToolTip" xml:space="preserve">
-    <value>チェックすると、第2軸が有効になります</value>
+    <value>実験座標系（ゴニオメータ）の第2回転軸を有効にしま
+す（選択した X/Y/Z 軸まわりの2段目の傾斜を追加）。</value>
   </data>
   <data name="checkBoxFix1st.ToolTip" xml:space="preserve">
     <value>第1角を現在の値で固定</value>
@@ -197,34 +210,50 @@
     <value>第3角を現在の値で固定</value>
   </data>
   <data name="checkBoxEnable3rd.ToolTip" xml:space="preserve">
-    <value>チェックすると、第3軸が有効になります</value>
+    <value>実験座標系（ゴニオメータ）の第3回転軸を有効にしま
+す（選択した X/Y/Z 軸まわりの3段目の傾斜を追加）。</value>
   </data>
   <data name="radioButton3rdZ.ToolTip" xml:space="preserve">
-    <value>第3軸を選択</value>
+    <value>実験座標系の第3ゴニオメータ回転軸を直交座標の Z 軸に
+設定します（第3回転がこの軸まわりに適用されます）。</value>
   </data>
   <data name="radioButton3rdY.ToolTip" xml:space="preserve">
-    <value>第3軸を選択</value>
+    <value>実験座標系の第3ゴニオメータ回転軸を直交座標の Y 軸に
+設定します（第3回転がこの軸まわりに適用されます）。</value>
   </data>
   <data name="radioButton3rdX.ToolTip" xml:space="preserve">
-    <value>第3軸を選択</value>
+    <value>実験座標系の第3ゴニオメータ回転軸を直交座標の X 軸に
+設定します（第3回転がこの軸まわりに適用されます）。</value>
   </data>
   <data name="radioButton2ndZ.ToolTip" xml:space="preserve">
-    <value>第2軸を選択</value>
+    <value>実験座標系の第2ゴニオメータ回転軸を
+直交座標の Z 軸に設定します（第2回転
+Exp2 がこの軸まわりに適用されます）。</value>
   </data>
   <data name="radioButton2ndY.ToolTip" xml:space="preserve">
-    <value>第2軸を選択</value>
+    <value>実験座標系の第2ゴニオメータ回転軸を
+直交座標の Y 軸に設定します（第2回転
+Exp2 がこの軸まわりに適用されます）。</value>
   </data>
   <data name="radioButton2ndX.ToolTip" xml:space="preserve">
-    <value>第2軸を選択</value>
+    <value>実験座標系の第2ゴニオメータ回転軸を
+直交座標の X 軸に設定します（第2回転
+Exp2 がこの軸まわりに適用されます）。</value>
   </data>
   <data name="radioButton1stZ.ToolTip" xml:space="preserve">
-    <value>第1軸を選択</value>
+    <value>実験座標系の第1ゴニオメータ回転軸を
+直交座標の Z 軸に設定します（第1回転
+Exp1 がこの軸まわりに適用されます）。</value>
   </data>
   <data name="radioButton1stY.ToolTip" xml:space="preserve">
-    <value>第1軸を選択</value>
+    <value>実験座標系の第1ゴニオメータ回転軸を
+直交座標の Y 軸に設定します（第1回転
+Exp1 がこの軸まわりに適用されます）。</value>
   </data>
   <data name="radioButton1stX.ToolTip" xml:space="preserve">
-    <value>第1軸を選択</value>
+    <value>実験座標系の第1ゴニオメータ回転軸を
+直交座標の X 軸に設定します（第1回転
+Exp1 がこの軸まわりに適用されます）。</value>
   </data>
   <data name="buttonResetExpEuler.ToolTip" xml:space="preserve">
     <value>すべての角度をゼロにリセット</value>
@@ -277,5 +306,61 @@
   </data>
   <data name="checkBoxEnable3rd.Text" xml:space="preserve">
     <value>第3軸</value>
+  </data>
+  <data name="label2.ToolTip" xml:space="preserve">
+    <value>ReciPro座標系の3×3回転（方位）行列。ZXZオイラー
+角から算出される読取専用の表示です。</value>
+  </data>
+  <data name="numericBox11.ToolTip" xml:space="preserve">
+    <value>ReciPro座標系の回転（方位）行列の(1,1)成分（読取専用
+・無次元）。ZXZオイラー角Φ・Θ・Ψから算出されます。</value>
+  </data>
+  <data name="numericBox12.ToolTip" xml:space="preserve">
+    <value>ReciPro座標系の回転（方位）行列の(1,2)成分（読取専
+用・無次元）。ZXZオイラー角から算出されます。</value>
+  </data>
+  <data name="numericBox13.ToolTip" xml:space="preserve">
+    <value>ReciPro座標系の回転（方位）行列の(1,3)成分（読取専
+用・無次元）。ZXZオイラー角から算出されます。</value>
+  </data>
+  <data name="numericBox21.ToolTip" xml:space="preserve">
+    <value>ReciPro座標系の回転（方位）行列の(2,1)成分（読取専
+用・無次元）。ZXZオイラー角から算出されます。</value>
+  </data>
+  <data name="numericBox22.ToolTip" xml:space="preserve">
+    <value>ReciPro座標系の回転（方位）行列の(2,2)成分（読取専
+用・無次元）。ZXZオイラー角から算出されます。</value>
+  </data>
+  <data name="numericBox23.ToolTip" xml:space="preserve">
+    <value>ReciPro座標系の回転（方位）行列の(2,3)成分（読取専
+用・無次元）。ZXZオイラー角から算出されます。</value>
+  </data>
+  <data name="numericBox31.ToolTip" xml:space="preserve">
+    <value>ReciPro座標系の回転（方位）行列の(3,1)成分（読取専
+用・無次元）。ZXZオイラー角から算出されます。</value>
+  </data>
+  <data name="numericBox32.ToolTip" xml:space="preserve">
+    <value>ReciPro座標系の回転（方位）行列の(3,2)成分（読取専
+用・無次元）。ZXZオイラー角から算出されます。</value>
+  </data>
+  <data name="numericBox33.ToolTip" xml:space="preserve">
+    <value>ReciPro座標系の回転（方位）行列の(3,3)成分（読取専
+用・無次元）。ZXZオイラー角から算出されます。</value>
+  </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value>ReciPro座標系（ZXZ規約）の第2オイラー角Θ（度、
+X軸まわりの回転）。結晶方位を決めます。</value>
+  </data>
+  <data name="label3.ToolTip" xml:space="preserve">
+    <value>ReciPro座標系（ZXZ規約）の第3オイラー角Ψ（度、
+最後のZ軸まわりの回転）。結晶方位を決めます。</value>
+  </data>
+  <data name="label4.ToolTip" xml:space="preserve">
+    <value>ReciPro座標系（ZXZ規約）の第1オイラー
+角Φ（度）。結晶方位と回転行列を決めます。</value>
+  </data>
+  <data name="label5.ToolTip" xml:space="preserve">
+    <value>実験座標系の第1ゴニオメータ軸まわりの回転角（度、
+-180〜180）。選択したX/Y/Z軸まわりに結晶を傾けます。</value>
   </data>
 </root>

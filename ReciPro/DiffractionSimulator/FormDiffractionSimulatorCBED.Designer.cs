@@ -81,6 +81,7 @@
             toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             toolTip = new System.Windows.Forms.ToolTip(components);
+            toolTip.IsBalloon = true; // 260531Cl 追加: バルーン表示に統一
             flowLayoutPanel13 = new System.Windows.Forms.FlowLayoutPanel();
             groupBoxInputParameters.SuspendLayout();
             flowLayoutPanel6.SuspendLayout();

@@ -57,4 +57,27 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="buttonCancel.ToolTip" xml:space="preserve">
+    <value>Close the dialog without changing the numeric control.</value>
+  </data>
+  <data name="buttonOK.ToolTip" xml:space="preserve">
+    <value>Apply the decimal places and increment to
+the numeric control and close the dialog.</value>
+  </data>
+  <data name="numericBoxDecimalIncrement.ToolTip" xml:space="preserve">
+    <value>Set the increment (step size) applied
+each time the spin buttons are clicked.</value>
+  </data>
+  <data name="numericBoxDecimalPlace.ToolTip" xml:space="preserve">
+    <value>Set the number of decimal places
+displayed by the numeric control.</value>
+  </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value>Set the increment (step size) applied
+each time the spin buttons are clicked.</value>
+  </data>
+  <data name="label2.ToolTip" xml:space="preserve">
+    <value>Set the number of decimal places
+displayed by the numeric control.</value>
+  </data>
 </root>

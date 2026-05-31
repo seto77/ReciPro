@@ -126,4 +126,16 @@
   <metadata name="ColumnCustomAbundance.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <data name="button1.ToolTip" xml:space="preserve">
+    <value>Apply the edited custom isotope
+abundances and close the dialog.</value>
+  </data>
+  <data name="buttonCancel.ToolTip" xml:space="preserve">
+    <value>Close the dialog without changing the isotope abundances.</value>
+  </data>
+  <data name="dataGridView.ToolTip" xml:space="preserve">
+    <value>Per-isotope table (atomic weight, natural abundance
+%, custom abundance %); edit the Custom Abundance
+column to set user-defined isotope fractions (0–100%).</value>
+  </data>
 </root>

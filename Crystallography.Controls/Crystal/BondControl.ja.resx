@@ -225,16 +225,16 @@
     <value>231, 6</value>
   </data>
   <data name="comboBoxBondingAtom1.ToolTip" xml:space="preserve">
-    <value>中心に対応する原子を選択</value>
+    <value>結合・配位多面体の中心となる元素を選択します。</value>
   </data>
   <data name="comboBoxBondingAtom2.ToolTip" xml:space="preserve">
-    <value>頂点に対応する原子を選択</value>
+    <value>結合・配位多面体の頂点となる元素（配位子）を選択します。</value>
   </data>
   <data name="numericBoxBondRadius.ToolTip" xml:space="preserve">
-    <value>結合（円柱）の半径</value>
+    <value>結合を表す円柱の半径を Å 単位で設定します。</value>
   </data>
   <data name="numericBoxBondRadius.ToolTip1" xml:space="preserve">
-    <value>結合（円柱）の半径</value>
+    <value>結合を表す円柱の半径を Å 単位で設定します。</value>
   </data>
   <data name="buttonAddBond.ToolTip" xml:space="preserve">
     <value>下の結合 &amp; 多面体を追加</value>
@@ -246,12 +246,66 @@
     <value>選択された結合 &amp; 多面体を削除</value>
   </data>
   <data name="colorControlEdges.ToolTip" xml:space="preserve">
-    <value>多面体の辺の色</value>
+    <value>配位多面体の稜線（エッジ）の表示色を設定します。</value>
   </data>
   <data name="colorControlPolyhedron.ToolTip" xml:space="preserve">
-    <value>多面体の面の色</value>
+    <value>配位多面体の面の表示色を設定します。</value>
   </data>
   <data name="colorControlBond.ToolTip" xml:space="preserve">
-    <value>結合の色</value>
+    <value>結合（円柱）の表示色を設定します。</value>
+  </data>
+  <data name="checkBoxShowBonds.ToolTip" xml:space="preserve">
+    <value>結合（円柱）を表示し、結合設定欄を有効にします。</value>
+  </data>
+  <data name="checkBoxShowEdges.ToolTip" xml:space="preserve">
+    <value>配位多面体の稜線（エッジ）を表示し、
+エッジ幅設定を有効にします。</value>
+  </data>
+  <data name="checkBoxShowInnerBonds.ToolTip" xml:space="preserve">
+    <value>配位多面体の内部結合（中心原子と
+頂点原子を結ぶ結合）を表示します。</value>
+  </data>
+  <data name="checkBoxShowPolyhedron.ToolTip" xml:space="preserve">
+    <value>配位多面体を表示し、多面体設定欄を有効にします。</value>
+  </data>
+  <data name="checkBoxShowVertexAtoms.ToolTip" xml:space="preserve">
+    <value>配位多面体の頂点原子（配位する原子）を表示します。</value>
+  </data>
+  <data name="dataGridView.ToolTip" xml:space="preserve">
+    <value>登録済みの結合・配位多面体の一覧です。行を
+選択すると下部で編集でき、各チェック列で
+個別に有効化・表示を切り替えられます。</value>
+  </data>
+  <data name="numericBoxBondAlpha.ToolTip" xml:space="preserve">
+    <value>結合（円柱）の不透明度を設定します（0=透明〜1=不透明）。</value>
+  </data>
+  <data name="numericBoxBondMaxLength.ToolTip" xml:space="preserve">
+    <value>結合とみなす原子間距離の上限を Å 単位で設定します。</value>
+  </data>
+  <data name="numericBoxBondMinLength.ToolTip" xml:space="preserve">
+    <value>結合とみなす原子間距離の下限を Å 単位で設定します。</value>
+  </data>
+  <data name="numericBoxEdgeWidth.ToolTip" xml:space="preserve">
+    <value>配位多面体の稜線（エッジ）の線幅を設定します。</value>
+  </data>
+  <data name="numericBoxPolyhedronAlpha.ToolTip" xml:space="preserve">
+    <value>配位多面体の面の不透明度を設定します（0=透明〜1=不透明）。</value>
+  </data>
+  <data name="label39.ToolTip" xml:space="preserve">
+    <value>結合・配位多面体を構成する元素ペア
+（中心と頂点）を選択します。</value>
+  </data>
+  <data name="label40.ToolTip" xml:space="preserve">
+    <value>結合・配位多面体を構成する元素ペア
+（中心と頂点）を選択します。</value>
+  </data>
+  <data name="label57.ToolTip" xml:space="preserve">
+    <value>結合・配位多面体の中心となる元素を選択します。</value>
+  </data>
+  <data name="label58.ToolTip" xml:space="preserve">
+    <value>結合・配位多面体の頂点となる元素を選択します。</value>
+  </data>
+  <data name="checkBoxShowCenterAtom.ToolTip" xml:space="preserve">
+    <value>配位多面体の中心原子を表示します。</value>
   </data>
 </root>

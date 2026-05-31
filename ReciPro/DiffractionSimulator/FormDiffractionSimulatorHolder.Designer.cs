@@ -78,6 +78,7 @@
             numericBoxTiltY = new NumericBox();
             checkBoxEnableArrow = new System.Windows.Forms.CheckBox();
             toolTip1 = new System.Windows.Forms.ToolTip(components);
+            toolTip1.IsBalloon = true; // 260531Cl 追加: バルーン表示に統一
             ((System.ComponentModel.ISupportInitialize)graphicsBox).BeginInit();
             groupBoxTEMSettings.SuspendLayout();
             groupBoxLink.SuspendLayout();

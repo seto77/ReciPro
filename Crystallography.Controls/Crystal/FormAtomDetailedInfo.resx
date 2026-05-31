@@ -117,4 +117,12 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="listBox.ToolTip" xml:space="preserve">
+    <value>List of fractional atomic coordinates
+(x, y, z) for each atom in the unit cell.</value>
+  </data>
+  <data name="listBox1.ToolTip" xml:space="preserve">
+    <value>Column header (No., x, y, z) for
+the atomic coordinate list below.</value>
+  </data>
 </root>

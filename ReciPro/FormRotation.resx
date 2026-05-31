@@ -225,7 +225,8 @@
     <value>Link</value>
   </data>
   <data name="checkBoxLink.ToolTip" xml:space="preserve">
-    <value>When checked, the ReciPro and experimental coordinate systems are linked.</value>
+    <value>When checked, the ReciPro and experimental
+coordinate systems are linked.</value>
   </data>
   <data name="&gt;&gt;checkBoxLink.Name" xml:space="preserve">
     <value>checkBoxLink</value>
@@ -268,7 +269,8 @@
     <value>Copy to Excel</value>
   </data>
   <data name="buttonCopy.ToolTip" xml:space="preserve">
-    <value>Copy the rotation matrix values to the clipboard in Excel format.</value>
+    <value>Copy the rotation matrix values
+to the clipboard in Excel format.</value>
   </data>
   <data name="&gt;&gt;buttonCopy.Name" xml:space="preserve">
     <value>buttonCopy</value>
@@ -311,7 +313,8 @@
  Excel</value>
   </data>
   <data name="buttonPaste.ToolTip" xml:space="preserve">
-    <value>Paste rotation matrix values from the clipboard in Excel format.</value>
+    <value>Paste rotation matrix values from
+the clipboard in Excel format.</value>
   </data>
   <data name="&gt;&gt;buttonPaste.Name" xml:space="preserve">
     <value>buttonPaste</value>
@@ -356,10 +359,14 @@
     <value>9</value>
   </data>
   <data name="numericBoxPsi.ToolTip" xml:space="preserve">
-    <value>Euler angle Ψ</value>
+    <value>Third Euler angle Ψ (degrees) of the ReciPro
+coordinate system in the ZXZ convention (the final
+rotation about Z); sets the crystal orientation.</value>
   </data>
   <data name="numericBoxPsi.ToolTip1" xml:space="preserve">
-    <value>Euler angle Ψ</value>
+    <value>Third Euler angle Ψ (degrees) of the ReciPro
+coordinate system in the ZXZ convention (the final
+rotation about Z); sets the crystal orientation.</value>
   </data>
   <data name="&gt;&gt;numericBoxPsi.Name" xml:space="preserve">
     <value>numericBoxPsi</value>
@@ -404,10 +411,16 @@
     <value>9</value>
   </data>
   <data name="numericBoxTheta.ToolTip" xml:space="preserve">
-    <value>Euler angle Θ</value>
+    <value>Second Euler angle Θ (degrees) of the
+ReciPro coordinate system in the ZXZ
+convention (the intermediate rotation
+about X); sets the crystal orientation.</value>
   </data>
   <data name="numericBoxTheta.ToolTip1" xml:space="preserve">
-    <value>Euler angle Θ</value>
+    <value>Second Euler angle Θ (degrees) of the
+ReciPro coordinate system in the ZXZ
+convention (the intermediate rotation
+about X); sets the crystal orientation.</value>
   </data>
   <data name="&gt;&gt;numericBoxTheta.Name" xml:space="preserve">
     <value>numericBoxTheta</value>
@@ -452,10 +465,16 @@
     <value>9</value>
   </data>
   <data name="numericBoxPhi.ToolTip" xml:space="preserve">
-    <value>Euler angle Φ</value>
+    <value>First Euler angle Φ (degrees) of the
+ReciPro coordinate system in the ZXZ
+convention; together with Θ and Ψ it sets
+the crystal orientation (rotation matrix).</value>
   </data>
   <data name="numericBoxPhi.ToolTip1" xml:space="preserve">
-    <value>Euler angle Φ</value>
+    <value>First Euler angle Φ (degrees) of the
+ReciPro coordinate system in the ZXZ
+convention; together with Θ and Ψ it sets
+the crystal orientation (rotation matrix).</value>
   </data>
   <data name="&gt;&gt;numericBoxPhi.Name" xml:space="preserve">
     <value>numericBoxPhi</value>
@@ -500,10 +519,14 @@
     <value>9</value>
   </data>
   <data name="numericBoxExp1.ToolTip" xml:space="preserve">
-    <value>Set angle for the 1st axis</value>
+    <value>Rotation angle (degrees, −180 to 180) about the 1st
+goniometer axis of the experimental coordinate system,
+tilting the crystal about the chosen X/Y/Z axis.</value>
   </data>
   <data name="numericBoxExp1.ToolTip1" xml:space="preserve">
-    <value>Set angle for the 1st axis</value>
+    <value>Rotation angle (degrees, −180 to 180) about the 1st
+goniometer axis of the experimental coordinate system,
+tilting the crystal about the chosen X/Y/Z axis.</value>
   </data>
   <data name="&gt;&gt;numericBoxExp1.Name" xml:space="preserve">
     <value>numericBoxExp1</value>
@@ -548,10 +571,14 @@
     <value>9</value>
   </data>
   <data name="numericBoxExp2.ToolTip" xml:space="preserve">
-    <value>Set angle for the 2nd axis</value>
+    <value>Rotation angle (degrees, −180 to 180) about the 2nd
+goniometer axis of the experimental coordinate system,
+tilting the crystal about the chosen X/Y/Z axis.</value>
   </data>
   <data name="numericBoxExp2.ToolTip1" xml:space="preserve">
-    <value>Set angle for the 2nd axis</value>
+    <value>Rotation angle (degrees, −180 to 180) about the 2nd
+goniometer axis of the experimental coordinate system,
+tilting the crystal about the chosen X/Y/Z axis.</value>
   </data>
   <data name="&gt;&gt;numericBoxExp2.Name" xml:space="preserve">
     <value>numericBoxExp2</value>
@@ -596,10 +623,14 @@
     <value>9</value>
   </data>
   <data name="numericBoxExp3.ToolTip" xml:space="preserve">
-    <value>Set the angle for the 3rd axis.</value>
+    <value>Rotation angle (deg, -180..180) about the 3rd
+goniometer axis of the experimental coordinate system,
+tilting the crystal about the chosen X/Y/Z axis.</value>
   </data>
   <data name="numericBoxExp3.ToolTip1" xml:space="preserve">
-    <value>Set the angle for the 3rd axis.</value>
+    <value>Rotation angle (deg, -180..180) about the 3rd
+goniometer axis of the experimental coordinate system,
+tilting the crystal about the chosen X/Y/Z axis.</value>
   </data>
   <data name="&gt;&gt;numericBoxExp3.Name" xml:space="preserve">
     <value>numericBoxExp3</value>
@@ -638,7 +669,9 @@
     <value>2nd axis</value>
   </data>
   <data name="checkBoxEnable2nd.ToolTip" xml:space="preserve">
-    <value>When checked, the 2nd axis is enabled</value>
+    <value>Enable the 2nd goniometer rotation axis of
+the experimental coordinate system (adds a
+second tilt about a chosen X/Y/Z axis).</value>
   </data>
   <data name="&gt;&gt;checkBoxEnable2nd.Name" xml:space="preserve">
     <value>checkBoxEnable2nd</value>
@@ -794,7 +827,9 @@
     <value>3rd axis</value>
   </data>
   <data name="checkBoxEnable3rd.ToolTip" xml:space="preserve">
-    <value>When checked, the 3rd axis is enabled</value>
+    <value>Enable the 3rd goniometer rotation axis of
+the experimental coordinate system (adds a
+third tilt about a chosen X/Y/Z axis).</value>
   </data>
   <data name="&gt;&gt;checkBoxEnable3rd.Name" xml:space="preserve">
     <value>checkBoxEnable3rd</value>
@@ -836,7 +871,9 @@
     <value>Z</value>
   </data>
   <data name="radioButton3rdZ.ToolTip" xml:space="preserve">
-    <value>Select the 3rd axis.</value>
+    <value>Set the 3rd goniometer rotation axis to
+the Cartesian Z axis (the 3rd experimental
+rotation is applied about it).</value>
   </data>
   <data name="&gt;&gt;radioButton3rdZ.Name" xml:space="preserve">
     <value>radioButton3rdZ</value>
@@ -875,7 +912,9 @@
     <value>Y</value>
   </data>
   <data name="radioButton3rdY.ToolTip" xml:space="preserve">
-    <value>Select the 3rd axis.</value>
+    <value>Set the 3rd goniometer rotation axis to
+the Cartesian Y axis (the 3rd experimental
+rotation is applied about it).</value>
   </data>
   <data name="&gt;&gt;radioButton3rdY.Name" xml:space="preserve">
     <value>radioButton3rdY</value>
@@ -914,7 +953,9 @@
     <value>X</value>
   </data>
   <data name="radioButton3rdX.ToolTip" xml:space="preserve">
-    <value>Select the 3rd axis.</value>
+    <value>Set the 3rd goniometer rotation axis to
+the Cartesian X axis (the 3rd experimental
+rotation is applied about it).</value>
   </data>
   <data name="&gt;&gt;radioButton3rdX.Name" xml:space="preserve">
     <value>radioButton3rdX</value>
@@ -953,7 +994,9 @@
     <value>Z</value>
   </data>
   <data name="radioButton2ndZ.ToolTip" xml:space="preserve">
-    <value>Select the 2nd axis</value>
+    <value>Set the 2nd goniometer rotation axis to the
+Cartesian Z axis (the 2nd experimental
+rotation, numericBoxExp2, is applied about it).</value>
   </data>
   <data name="&gt;&gt;radioButton2ndZ.Name" xml:space="preserve">
     <value>radioButton2ndZ</value>
@@ -992,7 +1035,9 @@
     <value>Y</value>
   </data>
   <data name="radioButton2ndY.ToolTip" xml:space="preserve">
-    <value>Select the 2nd axis</value>
+    <value>Set the 2nd goniometer rotation axis to the
+Cartesian Y axis (the 2nd experimental
+rotation, numericBoxExp2, is applied about it).</value>
   </data>
   <data name="&gt;&gt;radioButton2ndY.Name" xml:space="preserve">
     <value>radioButton2ndY</value>
@@ -1034,7 +1079,9 @@
     <value>X</value>
   </data>
   <data name="radioButton2ndX.ToolTip" xml:space="preserve">
-    <value>Select the 2nd axis</value>
+    <value>Set the 2nd goniometer rotation axis to the
+Cartesian X axis (the 2nd experimental
+rotation, numericBoxExp2, is applied about it).</value>
   </data>
   <data name="&gt;&gt;radioButton2ndX.Name" xml:space="preserve">
     <value>radioButton2ndX</value>
@@ -1073,7 +1120,9 @@
     <value>Z</value>
   </data>
   <data name="radioButton1stZ.ToolTip" xml:space="preserve">
-    <value>Select the 1st axis</value>
+    <value>Set the 1st goniometer rotation axis to the
+Cartesian Z axis (the 1st experimental
+rotation, numericBoxExp1, is applied about it).</value>
   </data>
   <data name="&gt;&gt;radioButton1stZ.Name" xml:space="preserve">
     <value>radioButton1stZ</value>
@@ -1112,7 +1161,9 @@
     <value>Y</value>
   </data>
   <data name="radioButton1stY.ToolTip" xml:space="preserve">
-    <value>Select the 1st axis</value>
+    <value>Set the 1st goniometer rotation axis to the
+Cartesian Y axis (the 1st experimental
+rotation, numericBoxExp1, is applied about it).</value>
   </data>
   <data name="&gt;&gt;radioButton1stY.Name" xml:space="preserve">
     <value>radioButton1stY</value>
@@ -1151,7 +1202,9 @@
     <value>X</value>
   </data>
   <data name="radioButton1stX.ToolTip" xml:space="preserve">
-    <value>Select the 1st axis</value>
+    <value>Set the 1st goniometer rotation axis to the
+Cartesian X axis (the 1st experimental
+rotation, numericBoxExp1, is applied about it).</value>
   </data>
   <data name="&gt;&gt;radioButton1stX.Name" xml:space="preserve">
     <value>radioButton1stX</value>
@@ -2068,5 +2121,75 @@ Angles</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
     <value>Crystallography.Controls.FormBase, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="label2.ToolTip" xml:space="preserve">
+    <value>3x3 orientation (rotation) matrix of
+the ReciPro coordinate system, computed
+from the ZXZ Euler angles (read-only).</value>
+  </data>
+  <data name="numericBox11.ToolTip" xml:space="preserve">
+    <value>Element (row 1, col 1) of the ReciPro orientation
+matrix (read-only, dimensionless), computed from
+the ZXZ Euler angles Phi, Theta, Psi.</value>
+  </data>
+  <data name="numericBox12.ToolTip" xml:space="preserve">
+    <value>Element (row 1, col 2) of the ReciPro
+orientation matrix (read-only, dimensionless),
+computed from the ZXZ Euler angles.</value>
+  </data>
+  <data name="numericBox13.ToolTip" xml:space="preserve">
+    <value>Element (row 1, col 3) of the ReciPro
+orientation matrix (read-only, dimensionless),
+computed from the ZXZ Euler angles.</value>
+  </data>
+  <data name="numericBox21.ToolTip" xml:space="preserve">
+    <value>Element (row 2, col 1) of the ReciPro
+orientation matrix (read-only, dimensionless),
+computed from the ZXZ Euler angles.</value>
+  </data>
+  <data name="numericBox22.ToolTip" xml:space="preserve">
+    <value>Element (row 2, col 2) of the ReciPro
+orientation matrix (read-only, dimensionless),
+computed from the ZXZ Euler angles.</value>
+  </data>
+  <data name="numericBox23.ToolTip" xml:space="preserve">
+    <value>Element (row 2, col 3) of the ReciPro
+orientation matrix (read-only, dimensionless),
+computed from the ZXZ Euler angles.</value>
+  </data>
+  <data name="numericBox31.ToolTip" xml:space="preserve">
+    <value>Element (row 3, col 1) of the ReciPro
+orientation matrix (read-only, dimensionless),
+computed from the ZXZ Euler angles.</value>
+  </data>
+  <data name="numericBox32.ToolTip" xml:space="preserve">
+    <value>Element (row 3, col 2) of the ReciPro
+orientation matrix (read-only, dimensionless),
+computed from the ZXZ Euler angles.</value>
+  </data>
+  <data name="numericBox33.ToolTip" xml:space="preserve">
+    <value>Element (row 3, col 3) of the ReciPro
+orientation matrix (read-only, dimensionless),
+computed from the ZXZ Euler angles.</value>
+  </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value>Second Euler angle Theta (deg) of the ReciPro
+coordinate system in the ZXZ convention
+(rotation about X); sets the crystal orientation.</value>
+  </data>
+  <data name="label3.ToolTip" xml:space="preserve">
+    <value>Third Euler angle Psi (deg) of the ReciPro
+coordinate system in the ZXZ convention (final
+rotation about Z); sets the crystal orientation.</value>
+  </data>
+  <data name="label4.ToolTip" xml:space="preserve">
+    <value>First Euler angle Phi (deg) of the ReciPro
+coordinate system in the ZXZ convention; sets
+the crystal orientation and the rotation matrix.</value>
+  </data>
+  <data name="label5.ToolTip" xml:space="preserve">
+    <value>Rotation angle (deg, -180..180) about the 1st
+goniometer axis of the experimental coordinate system,
+tilting the crystal about the chosen X/Y/Z axis.</value>
   </data>
 </root>

@@ -1431,4 +1431,141 @@ to calculate</value>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <data name="buttonSimulate.ToolTip" xml:space="preserve">
+    <value>Run the Monte-Carlo simulation: trace the
+set number of incident electrons through
+the sample, then update the statistics,
+distribution graphs and 3-D trajectory view.</value>
+  </data>
+  <data name="buttonSurfaceNormal.ToolTip" xml:space="preserve">
+    <value>Set the 3-D view to look along the sample
+surface normal (accounting for the current tilt).</value>
+  </data>
+  <data name="buttonViewFromX.ToolTip" xml:space="preserve">
+    <value>Set the 3-D view to look along the X-axis,
+which is the sample rotation (tilt) axis.</value>
+  </data>
+  <data name="buttonViewFromZ.ToolTip" xml:space="preserve">
+    <value>Set the 3-D view to look along the Z-axis,
+i.e. down the incident beam direction.</value>
+  </data>
+  <data name="checkBoxDrawAbsorved.ToolTip" xml:space="preserve">
+    <value>Also draw the trajectories of electrons absorbed
+in the sample (those that did not backscatter),
+not just the backscattered ones, in the 3-D view.</value>
+  </data>
+  <data name="checkBoxDrawAxes.ToolTip" xml:space="preserve">
+    <value>Show the X (red), Y (green) and Z = beam direction
+(purple) coordinate axes in the 3-D trajectory view.</value>
+  </data>
+  <data name="checkBoxDrawAxesInStereonet.ToolTip" xml:space="preserve">
+    <value>Overlay the ±X / ±Y / ±Z axis positions on
+the stereographic projection (pole figure) of
+the backscattered-electron exit directions.</value>
+  </data>
+  <data name="checkBoxDrawGuidCircles.ToolTip" xml:space="preserve">
+    <value>Draw concentric scale circles on the sample
+surface in the 3-D view as a distance reference
+(spacing auto-scaled, labelled in nm/µm).</value>
+  </data>
+  <data name="checkBoxDrawPathAfterEscape.ToolTip" xml:space="preserve">
+    <value>Extend each backscattered electron's path
+beyond the surface to show its escape direction
+in the 3-D view (coloured by exit energy).</value>
+  </data>
+  <data name="labelBSEenergy.ToolTip" xml:space="preserve">
+    <value>Average exit energy of the backscattered electrons
+(BSE) leaving the sample surface, in keV.</value>
+  </data>
+  <data name="labelBSEratio.ToolTip" xml:space="preserve">
+    <value>Backscatter coefficient η: fraction of incident
+electrons re-emitted from the surface as backscattered
+electrons (BSE), from the Monte-Carlo simulation.</value>
+  </data>
+  <data name="labelCrossSection.ToolTip" xml:space="preserve">
+    <value>Scattering cross-section σ_E: effective target area
+for elastic scattering at the incident energy;
+larger values mean more frequent scattering (nm²).</value>
+  </data>
+  <data name="labelMeanFreePath.ToolTip" xml:space="preserve">
+    <value>Elastic mean free path λ: average distance the
+electron travels between elastic scattering
+events, at the incident energy (nm).</value>
+  </data>
+  <data name="labelStoppingPower.ToolTip" xml:space="preserve">
+    <value>Stopping power dE/ds: energy the electron
+loses per unit path length to inelastic
+collisions, at the incident energy (eV/nm).</value>
+  </data>
+  <data name="numericBoxCalcNum.ToolTip" xml:space="preserve">
+    <value>Number of electron trajectories to simulate
+(100 to 1,000,000). More trajectories give
+smoother statistics but take longer to compute.</value>
+  </data>
+  <data name="numericBoxDrawNum.ToolTip" xml:space="preserve">
+    <value>Maximum number of trajectories to render in the 3-D
+view (1 to 100,000). This only limits drawing, not the
+simulation; lower values keep the 3-D view responsive.</value>
+  </data>
+  <data name="numericBoxSampleTilt.ToolTip" xml:space="preserve">
+    <value>Sample surface tilt relative to the incident beam
+(0 to -90 deg). 0 deg = surface normal along the
+beam; tilting changes the backscattered-electron
+yield and direction distribution.</value>
+  </data>
+  <data name="radioButtonAverageEnergy.ToolTip" xml:space="preserve">
+    <value>Colour the stereographic projection by
+the average exit energy (keV) of the
+backscattered electrons in each direction.</value>
+  </data>
+  <data name="radioButtonFrequency.ToolTip" xml:space="preserve">
+    <value>Colour the stereographic projection by
+frequency: the number of backscattered
+electrons exiting in each direction.</value>
+  </data>
+  <data name="radioButtonStandardDeviation.ToolTip" xml:space="preserve">
+    <value>Colour the stereographic projection by the
+standard deviation of the backscattered
+electrons' exit energy in each direction.</value>
+  </data>
+  <data name="toolStripStatusLabel1.ToolTipText" xml:space="preserve">
+    <value>Status bar: shows the elapsed time for
+the trajectory calculation, graph drawing
+and 3-D rendering of the last simulation.</value>
+  </data>
+  <data name="waveLengthControl.ToolTip" xml:space="preserve">
+    <value>Incident electron energy (accelerating voltage) in
+keV. It sets the beam energy used for the trajectory,
+cross-section, mean-free-path and stopping-power
+calculation; higher energy gives deeper penetration.</value>
+  </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value>Number of electron trajectories to simulate
+(100 to 1,000,000). More trajectories give
+smoother statistics but take longer to compute.</value>
+  </data>
+  <data name="label2.ToolTip" xml:space="preserve">
+    <value>Backscatter coefficient η: fraction of incident
+electrons re-emitted from the surface as backscattered
+electrons (BSE), from the Monte-Carlo simulation.</value>
+  </data>
+  <data name="label3.ToolTip" xml:space="preserve">
+    <value>Average exit energy of the backscattered electrons
+(BSE) leaving the sample surface, in keV.</value>
+  </data>
+  <data name="label4.ToolTip" xml:space="preserve">
+    <value>Elastic mean free path λ: average distance the
+electron travels between elastic scattering
+events, at the incident energy (nm).</value>
+  </data>
+  <data name="label5.ToolTip" xml:space="preserve">
+    <value>Stopping power dE/ds: energy the electron
+loses per unit path length to inelastic
+collisions, at the incident energy (eV/nm).</value>
+  </data>
+  <data name="label6.ToolTip" xml:space="preserve">
+    <value>Scattering cross-section σ_E: effective target area
+for elastic scattering at the incident energy;
+larger values mean more frequent scattering (nm²).</value>
+  </data>
 </root>

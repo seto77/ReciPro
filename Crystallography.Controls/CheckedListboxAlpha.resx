@@ -120,4 +120,43 @@
   <metadata name="captureExtender.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
+  <data name="checkBox1.ToolTip" xml:space="preserve">
+    <value>Toggle this color category on or off (placeholder swatch).</value>
+  </data>
+  <data name="checkBox10.ToolTip" xml:space="preserve">
+    <value>Toggle this color category on or off (placeholder swatch).</value>
+  </data>
+  <data name="checkBox11.ToolTip" xml:space="preserve">
+    <value>Toggle this color category on or off (placeholder swatch).</value>
+  </data>
+  <data name="checkBox12.ToolTip" xml:space="preserve">
+    <value>Toggle this color category on or off (placeholder swatch).</value>
+  </data>
+  <data name="checkBox13.ToolTip" xml:space="preserve">
+    <value>Toggle this color category on or off (placeholder swatch).</value>
+  </data>
+  <data name="checkBox2.ToolTip" xml:space="preserve">
+    <value>Toggle this color category on or off (placeholder swatch).</value>
+  </data>
+  <data name="checkBox3.ToolTip" xml:space="preserve">
+    <value>Toggle this color category on or off (placeholder swatch).</value>
+  </data>
+  <data name="checkBox4.ToolTip" xml:space="preserve">
+    <value>Toggle this color category on or off (placeholder swatch).</value>
+  </data>
+  <data name="checkBox5.ToolTip" xml:space="preserve">
+    <value>Toggle this color category on or off (placeholder swatch).</value>
+  </data>
+  <data name="checkBox6.ToolTip" xml:space="preserve">
+    <value>Toggle this color category on or off (placeholder swatch).</value>
+  </data>
+  <data name="checkBox7.ToolTip" xml:space="preserve">
+    <value>Toggle this color category on or off (placeholder swatch).</value>
+  </data>
+  <data name="checkBox8.ToolTip" xml:space="preserve">
+    <value>Toggle this color category on or off (placeholder swatch).</value>
+  </data>
+  <data name="checkBox9.ToolTip" xml:space="preserve">
+    <value>Toggle this color category on or off (placeholder swatch).</value>
+  </data>
 </root>

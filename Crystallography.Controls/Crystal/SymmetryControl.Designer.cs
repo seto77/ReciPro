@@ -71,6 +71,7 @@
             comboBoxSearchResult = new System.Windows.Forms.ComboBox();
             panel1 = new System.Windows.Forms.Panel();
             toolTip = new System.Windows.Forms.ToolTip(components);
+            toolTip.IsBalloon = true; // 260531Cl 追加: バルーン表示に統一
             groupBoxCellConstants.SuspendLayout();
             panel2.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
@@ -97,6 +98,7 @@
             // radioButtonNanoMeter
             // 
             resources.ApplyResources(radioButtonNanoMeter, "radioButtonNanoMeter");
+            toolTip.SetToolTip(radioButtonNanoMeter, resources.GetString("radioButtonNanoMeter.ToolTip")); // 260531Cl
             radioButtonNanoMeter.Name = "radioButtonNanoMeter";
             radioButtonNanoMeter.UseVisualStyleBackColor = true;
             radioButtonNanoMeter.CheckedChanged += radioButtonNanoMeter_CheckedChanged;
@@ -104,6 +106,7 @@
             // radioButtonAngstrom
             // 
             resources.ApplyResources(radioButtonAngstrom, "radioButtonAngstrom");
+            toolTip.SetToolTip(radioButtonAngstrom, resources.GetString("radioButtonAngstrom.ToolTip")); // 260531Cl
             radioButtonAngstrom.Checked = true;
             radioButtonAngstrom.Name = "radioButtonAngstrom";
             radioButtonAngstrom.TabStop = true;
@@ -204,6 +207,7 @@
             // numericBoxGammaErr
             // 
             resources.ApplyResources(numericBoxGammaErr, "numericBoxGammaErr");
+            toolTip.SetToolTip(numericBoxGammaErr, resources.GetString("numericBoxGammaErr.ToolTip")); // 260531Cl
             numericBoxGammaErr.BackColor = System.Drawing.SystemColors.Control;
             numericBoxGammaErr.FooterBackColor = System.Drawing.SystemColors.Control;
             numericBoxGammaErr.HeaderBackColor = System.Drawing.SystemColors.Control;
@@ -218,6 +222,7 @@
             // numericBoxAlphaErr
             // 
             resources.ApplyResources(numericBoxAlphaErr, "numericBoxAlphaErr");
+            toolTip.SetToolTip(numericBoxAlphaErr, resources.GetString("numericBoxAlphaErr.ToolTip")); // 260531Cl
             numericBoxAlphaErr.BackColor = System.Drawing.SystemColors.Control;
             numericBoxAlphaErr.FooterBackColor = System.Drawing.SystemColors.Control;
             numericBoxAlphaErr.HeaderBackColor = System.Drawing.SystemColors.Control;
@@ -232,6 +237,7 @@
             // numericBoxBetaErr
             // 
             resources.ApplyResources(numericBoxBetaErr, "numericBoxBetaErr");
+            toolTip.SetToolTip(numericBoxBetaErr, resources.GetString("numericBoxBetaErr.ToolTip")); // 260531Cl
             numericBoxBetaErr.BackColor = System.Drawing.SystemColors.Control;
             numericBoxBetaErr.FooterBackColor = System.Drawing.SystemColors.Control;
             numericBoxBetaErr.HeaderBackColor = System.Drawing.SystemColors.Control;
@@ -260,6 +266,7 @@
             // labelLengthUnitC
             // 
             resources.ApplyResources(labelLengthUnitC, "labelLengthUnitC");
+            toolTip.SetToolTip(labelLengthUnitC, resources.GetString("labelLengthUnitC.ToolTip")); // 260531Cl
             labelLengthUnitC.Name = "labelLengthUnitC";
             // 
             // numericBoxGamma
@@ -279,11 +286,13 @@
             // labelLengthUnitB
             // 
             resources.ApplyResources(labelLengthUnitB, "labelLengthUnitB");
+            toolTip.SetToolTip(labelLengthUnitB, resources.GetString("labelLengthUnitB.ToolTip")); // 260531Cl
             labelLengthUnitB.Name = "labelLengthUnitB";
             // 
             // numericBoxBErr
             // 
             resources.ApplyResources(numericBoxBErr, "numericBoxBErr");
+            toolTip.SetToolTip(numericBoxBErr, resources.GetString("numericBoxBErr.ToolTip")); // 260531Cl
             numericBoxBErr.BackColor = System.Drawing.SystemColors.Control;
             numericBoxBErr.FooterBackColor = System.Drawing.SystemColors.Control;
             numericBoxBErr.HeaderBackColor = System.Drawing.SystemColors.Control;
@@ -326,6 +335,7 @@
             // numericBoxCErr
             // 
             resources.ApplyResources(numericBoxCErr, "numericBoxCErr");
+            toolTip.SetToolTip(numericBoxCErr, resources.GetString("numericBoxCErr.ToolTip")); // 260531Cl
             numericBoxCErr.BackColor = System.Drawing.SystemColors.Control;
             numericBoxCErr.FooterBackColor = System.Drawing.SystemColors.Control;
             numericBoxCErr.HeaderBackColor = System.Drawing.SystemColors.Control;
@@ -340,6 +350,7 @@
             // numericBoxAErr
             // 
             resources.ApplyResources(numericBoxAErr, "numericBoxAErr");
+            toolTip.SetToolTip(numericBoxAErr, resources.GetString("numericBoxAErr.ToolTip")); // 260531Cl
             numericBoxAErr.BackColor = System.Drawing.SystemColors.Control;
             numericBoxAErr.FooterBackColor = System.Drawing.SystemColors.Control;
             numericBoxAErr.HeaderBackColor = System.Drawing.SystemColors.Control;
@@ -354,6 +365,7 @@
             // labelLengthUnitA
             // 
             resources.ApplyResources(labelLengthUnitA, "labelLengthUnitA");
+            toolTip.SetToolTip(labelLengthUnitA, resources.GetString("labelLengthUnitA.ToolTip")); // 260531Cl
             labelLengthUnitA.Name = "labelLengthUnitA";
             // 
             // labelLaTex2
@@ -465,6 +477,7 @@
             // comboBoxSearchResult
             // 
             resources.ApplyResources(comboBoxSearchResult, "comboBoxSearchResult");
+            toolTip.SetToolTip(comboBoxSearchResult, resources.GetString("comboBoxSearchResult.ToolTip")); // 260531Cl
             comboBoxSearchResult.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             comboBoxSearchResult.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             comboBoxSearchResult.DropDownWidth = 200;

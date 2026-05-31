@@ -150,6 +150,7 @@
             textBoxName = new System.Windows.Forms.TextBox();
             label22 = new System.Windows.Forms.Label();
             toolTip = new System.Windows.Forms.ToolTip(components);
+            toolTip.IsBalloon = true; // 260531Cl 追加: バルーン表示に統一
             buttonScatteringFactor = new System.Windows.Forms.Button();
             buttonSymmetryInfo = new System.Windows.Forms.Button();
             flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();

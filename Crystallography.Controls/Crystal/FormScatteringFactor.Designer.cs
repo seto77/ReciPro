@@ -64,6 +64,7 @@
             checkBoxBragBrentano = new System.Windows.Forms.CheckBox();
             waveLengthControl1 = new WaveLengthControl();
             toolTip = new System.Windows.Forms.ToolTip(components);
+            toolTip.IsBalloon = true; // 260531Cl 追加: バルーン表示に統一
             label8 = new System.Windows.Forms.Label();
             checkBoxTest = new System.Windows.Forms.CheckBox();
             label1 = new System.Windows.Forms.Label();
@@ -126,6 +127,7 @@
             dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             dataGridView.DefaultCellStyle = dataGridViewCellStyle13;
             resources.ApplyResources(dataGridView, "dataGridView");
+            toolTip.SetToolTip(dataGridView, resources.GetString("dataGridView.ToolTip")); // 260531Cl
             dataGridView.MultiSelect = false;
             dataGridView.Name = "dataGridView";
             dataGridView.ReadOnly = true;
@@ -278,6 +280,7 @@
             // checkBoxHideProhibitedPlanes
             // 
             resources.ApplyResources(checkBoxHideProhibitedPlanes, "checkBoxHideProhibitedPlanes");
+            toolTip.SetToolTip(checkBoxHideProhibitedPlanes, resources.GetString("checkBoxHideProhibitedPlanes.ToolTip")); // 260531Cl
             checkBoxHideProhibitedPlanes.Checked = true;
             checkBoxHideProhibitedPlanes.CheckState = System.Windows.Forms.CheckState.Checked;
             checkBoxHideProhibitedPlanes.Name = "checkBoxHideProhibitedPlanes";
@@ -286,6 +289,7 @@
             // checkBoxHideEquivalentPlane
             // 
             resources.ApplyResources(checkBoxHideEquivalentPlane, "checkBoxHideEquivalentPlane");
+            toolTip.SetToolTip(checkBoxHideEquivalentPlane, resources.GetString("checkBoxHideEquivalentPlane.ToolTip")); // 260531Cl
             checkBoxHideEquivalentPlane.Checked = true;
             checkBoxHideEquivalentPlane.CheckState = System.Windows.Forms.CheckState.Checked;
             checkBoxHideEquivalentPlane.Name = "checkBoxHideEquivalentPlane";
@@ -294,6 +298,7 @@
             // buttonCopyClipboard
             // 
             resources.ApplyResources(buttonCopyClipboard, "buttonCopyClipboard");
+            toolTip.SetToolTip(buttonCopyClipboard, resources.GetString("buttonCopyClipboard.ToolTip")); // 260531Cl
             buttonCopyClipboard.Name = "buttonCopyClipboard";
             buttonCopyClipboard.UseVisualStyleBackColor = true;
             buttonCopyClipboard.Click += buttonCopyClipboard_Click;
@@ -301,12 +306,14 @@
             // checkBoxBragBrentano
             // 
             resources.ApplyResources(checkBoxBragBrentano, "checkBoxBragBrentano");
+            toolTip.SetToolTip(checkBoxBragBrentano, resources.GetString("checkBoxBragBrentano.ToolTip")); // 260531Cl
             checkBoxBragBrentano.Name = "checkBoxBragBrentano";
             checkBoxBragBrentano.CheckedChanged += checkBoxBragBrentano_CheckedChanged;
             // 
             // waveLengthControl1
             //
             resources.ApplyResources(waveLengthControl1, "waveLengthControl1");
+            toolTip.SetToolTip(waveLengthControl1, resources.GetString("waveLengthControl1.ToolTip")); // 260531Cl
             captureExtender.SetCapture(waveLengthControl1, true); // 260524Cl: 波長/エネルギー選択を auto キャプチャ対象にする (旧: 手動キャプチャのみ)
             waveLengthControl1.Direction = System.Windows.Forms.FlowDirection.TopDown;
             waveLengthControl1.Energy = 8.04114721D;
@@ -328,6 +335,7 @@
             // checkBoxTest
             // 
             resources.ApplyResources(checkBoxTest, "checkBoxTest");
+            toolTip.SetToolTip(checkBoxTest, resources.GetString("checkBoxTest.ToolTip")); // 260531Cl
             checkBoxTest.Name = "checkBoxTest";
             checkBoxTest.UseVisualStyleBackColor = true;
             checkBoxTest.CheckedChanged += checkBoxTest_CheckedChanged;
@@ -335,31 +343,37 @@
             // label1
             // 
             resources.ApplyResources(label1, "label1");
+            toolTip.SetToolTip(label1, resources.GetString("label1.ToolTip")); // 260531Cl
             label1.Name = "label1";
             // 
             // label3
             // 
             resources.ApplyResources(label3, "label3");
+            toolTip.SetToolTip(label3, resources.GetString("label3.ToolTip")); // 260531Cl
             label3.Name = "label3";
             // 
             // label4
             // 
             resources.ApplyResources(label4, "label4");
+            toolTip.SetToolTip(label4, resources.GetString("label4.ToolTip")); // 260531Cl
             label4.Name = "label4";
             // 
             // label5
             // 
             resources.ApplyResources(label5, "label5");
+            toolTip.SetToolTip(label5, resources.GetString("label5.ToolTip")); // 260531Cl
             label5.Name = "label5";
             // 
             // label6
             // 
             resources.ApplyResources(label6, "label6");
+            toolTip.SetToolTip(label6, resources.GetString("label6.ToolTip")); // 260531Cl
             label6.Name = "label6";
             // 
             // label7
             // 
             resources.ApplyResources(label7, "label7");
+            toolTip.SetToolTip(label7, resources.GetString("label7.ToolTip")); // 260531Cl
             label7.Name = "label7";
             // 
             // panel1
@@ -387,6 +401,7 @@
             numericBoxL_step.BackColor = System.Drawing.Color.Transparent;
             numericBoxL_step.DecimalPlaces = 3;
             resources.ApplyResources(numericBoxL_step, "numericBoxL_step");
+            toolTip.SetToolTip(numericBoxL_step, resources.GetString("numericBoxL_step.ToolTip")); // 260531Cl
             numericBoxL_step.Maximum = 1D;
             numericBoxL_step.Minimum = 0.001D;
             numericBoxL_step.Name = "numericBoxL_step";
@@ -402,6 +417,7 @@
             numericBoxK_step.BackColor = System.Drawing.Color.Transparent;
             numericBoxK_step.DecimalPlaces = 3;
             resources.ApplyResources(numericBoxK_step, "numericBoxK_step");
+            toolTip.SetToolTip(numericBoxK_step, resources.GetString("numericBoxK_step.ToolTip")); // 260531Cl
             numericBoxK_step.Maximum = 1D;
             numericBoxK_step.Minimum = 0.001D;
             numericBoxK_step.Name = "numericBoxK_step";
@@ -417,6 +433,7 @@
             numericBoxH_step.BackColor = System.Drawing.Color.Transparent;
             numericBoxH_step.DecimalPlaces = 3;
             resources.ApplyResources(numericBoxH_step, "numericBoxH_step");
+            toolTip.SetToolTip(numericBoxH_step, resources.GetString("numericBoxH_step.ToolTip")); // 260531Cl
             numericBoxH_step.Maximum = 1D;
             numericBoxH_step.Minimum = 0.001D;
             numericBoxH_step.Name = "numericBoxH_step";
@@ -431,6 +448,7 @@
             // 
             numericBoxL_max.BackColor = System.Drawing.Color.Transparent;
             resources.ApplyResources(numericBoxL_max, "numericBoxL_max");
+            toolTip.SetToolTip(numericBoxL_max, resources.GetString("numericBoxL_max.ToolTip")); // 260531Cl
             numericBoxL_max.Name = "numericBoxL_max";
             numericBoxL_max.RadianValue = 0.017453292519943295D;
             numericBoxL_max.ShowUpDown = true;
@@ -442,6 +460,7 @@
             // 
             numericBoxK_max.BackColor = System.Drawing.Color.Transparent;
             resources.ApplyResources(numericBoxK_max, "numericBoxK_max");
+            toolTip.SetToolTip(numericBoxK_max, resources.GetString("numericBoxK_max.ToolTip")); // 260531Cl
             numericBoxK_max.Name = "numericBoxK_max";
             numericBoxK_max.ShowUpDown = true;
             numericBoxK_max.ValueFontSize = 9F;
@@ -451,6 +470,7 @@
             // 
             numericBoxL_min.BackColor = System.Drawing.Color.Transparent;
             resources.ApplyResources(numericBoxL_min, "numericBoxL_min");
+            toolTip.SetToolTip(numericBoxL_min, resources.GetString("numericBoxL_min.ToolTip")); // 260531Cl
             numericBoxL_min.Name = "numericBoxL_min";
             numericBoxL_min.ShowUpDown = true;
             numericBoxL_min.ValueFontSize = 9F;
@@ -460,6 +480,7 @@
             // 
             numericBoxK_min.BackColor = System.Drawing.Color.Transparent;
             resources.ApplyResources(numericBoxK_min, "numericBoxK_min");
+            toolTip.SetToolTip(numericBoxK_min, resources.GetString("numericBoxK_min.ToolTip")); // 260531Cl
             numericBoxK_min.Name = "numericBoxK_min";
             numericBoxK_min.ShowUpDown = true;
             numericBoxK_min.ValueFontSize = 9F;
@@ -469,6 +490,7 @@
             // 
             numericBoxH_max.BackColor = System.Drawing.Color.Transparent;
             resources.ApplyResources(numericBoxH_max, "numericBoxH_max");
+            toolTip.SetToolTip(numericBoxH_max, resources.GetString("numericBoxH_max.ToolTip")); // 260531Cl
             numericBoxH_max.Name = "numericBoxH_max";
             numericBoxH_max.ShowUpDown = true;
             numericBoxH_max.ValueFontSize = 9F;
@@ -478,6 +500,7 @@
             // 
             numericBoxH_min.BackColor = System.Drawing.Color.Transparent;
             resources.ApplyResources(numericBoxH_min, "numericBoxH_min");
+            toolTip.SetToolTip(numericBoxH_min, resources.GetString("numericBoxH_min.ToolTip")); // 260531Cl
             numericBoxH_min.Name = "numericBoxH_min";
             numericBoxH_min.ShowUpDown = true;
             numericBoxH_min.ValueFontSize = 9F;
@@ -494,6 +517,7 @@
             // radioButtonNanoMeter
             // 
             resources.ApplyResources(radioButtonNanoMeter, "radioButtonNanoMeter");
+            toolTip.SetToolTip(radioButtonNanoMeter, resources.GetString("radioButtonNanoMeter.ToolTip")); // 260531Cl
             radioButtonNanoMeter.Name = "radioButtonNanoMeter";
             radioButtonNanoMeter.UseVisualStyleBackColor = true;
             radioButtonNanoMeter.CheckedChanged += radioButtonNanoMeter_CheckedChanged;
@@ -501,6 +525,7 @@
             // radioButtonAngstrom
             // 
             resources.ApplyResources(radioButtonAngstrom, "radioButtonAngstrom");
+            toolTip.SetToolTip(radioButtonAngstrom, resources.GetString("radioButtonAngstrom.ToolTip")); // 260531Cl
             radioButtonAngstrom.Checked = true;
             radioButtonAngstrom.Name = "radioButtonAngstrom";
             radioButtonAngstrom.TabStop = true;
@@ -526,6 +551,7 @@
             numericBoxCutoffD.BackColor = System.Drawing.Color.Transparent;
             numericBoxCutoffD.DecimalPlaces = 3;
             resources.ApplyResources(numericBoxCutoffD, "numericBoxCutoffD");
+            toolTip.SetToolTip(numericBoxCutoffD, resources.GetString("numericBoxCutoffD.ToolTip")); // 260531Cl
             numericBoxCutoffD.Maximum = 10D;
             numericBoxCutoffD.Minimum = 0.001D;
             numericBoxCutoffD.Name = "numericBoxCutoffD";

@@ -172,4 +172,10 @@
   <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>372, 47</value>
   </data>
+  <data name="buttonNext.ToolTip" xml:space="preserve">
+    <value>次のヒントを表示します。</value>
+  </data>
+  <data name="checkBoxCloseWindow.ToolTip" xml:space="preserve">
+    <value>初期化が完了したら、この起動ウィンドウを自動的に閉じます。</value>
+  </data>
 </root>

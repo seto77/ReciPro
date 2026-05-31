@@ -24,6 +24,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormCalculator)); // 260531Cl
+            components = new System.ComponentModel.Container(); // (260531Ch)
+            toolTip = new System.Windows.Forms.ToolTip(components); // (260531Ch)
+            toolTip.IsBalloon = true; // 260531Cl 追加: バルーン表示に統一
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -146,6 +150,7 @@
             this.numericTextBox1.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.numericTextBox1.Multiline = true;
             this.numericTextBox1.Name = "numericTextBox1";
+            this.toolTip.SetToolTip(this.numericTextBox1, resources.GetString("numericTextBox1.ToolTip")); // 260531Cl
             this.numericTextBox1.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
             this.numericTextBox1.RoundErrorAccuracy = -1;
             this.numericTextBox1.Size = new System.Drawing.Size(245, 239);
@@ -177,6 +182,8 @@
         }
 
         #endregion
+
+        private System.Windows.Forms.ToolTip toolTip; // (260531Ch)
 
         private Crystallography.Controls.NumericBox numericTextBox1;
         private System.Windows.Forms.Label label1;

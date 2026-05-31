@@ -27,6 +27,7 @@
         {
             components = new System.ComponentModel.Container();
             toolTip = new System.Windows.Forms.ToolTip(components);
+            toolTip.IsBalloon = true; // 260531Cl 追加: バルーン表示に統一
             groupBoxDetectorAndOverlappedImage = new System.Windows.Forms.GroupBox();
             textBoxFileName = new System.Windows.Forms.TextBox();
             buttonClearPicture = new System.Windows.Forms.Button();

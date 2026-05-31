@@ -137,7 +137,8 @@
     <value>612, 325</value>
   </data>
   <data name="dataGridView.ToolTip" xml:space="preserve">
-    <value />
+    <value>登録済み境界面の一覧です。チェックで各面の有効/無効を
+切り替え、行を選ぶと上の入力欄に読み込みます。</value>
   </data>
   <data name="panel1.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 325</value>
@@ -152,7 +153,8 @@
     <value>追加</value>
   </data>
   <data name="buttonAddBond.ToolTip" xml:space="preserve">
-    <value />
+    <value>現在の指数・距離・色の設定から
+新しい境界面を一覧に追加します。</value>
   </data>
   <data name="numericBoxMaximumDistanceFromOrigin.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
@@ -183,10 +185,12 @@
     <value>201, 24</value>
   </data>
   <data name="numericBoxMaximumDistanceFromOrigin.ToolTip" xml:space="preserve">
-    <value>結晶面によって描画範囲が閉じていない場合、範囲はこの値で制限されます</value>
+    <value>結晶面によって描画範囲が閉じていな
+い場合、範囲はこの値で制限されます</value>
   </data>
   <data name="numericBoxMaximumDistanceFromOrigin.ToolTip1" xml:space="preserve">
-    <value>結晶面によって描画範囲が閉じていない場合、範囲はこの値で制限されます</value>
+    <value>結晶面によって描画範囲が閉じていな
+い場合、範囲はこの値で制限されます</value>
   </data>
   <data name="buttonChangeBond.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
@@ -243,7 +247,8 @@
     <value>79, 22</value>
   </data>
   <data name="numericBoxTranslation.ToolTip" xml:space="preserve">
-    <value>平行移動量</value>
+    <value>境界面を法線方向に平行移動させる量
+(Å)。正の値で原点から遠ざかります。</value>
   </data>
   <data name="label6.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
@@ -255,7 +260,8 @@
     <value>原点からの距離</value>
   </data>
   <data name="label6.ToolTip" xml:space="preserve">
-    <value />
+    <value>原点から境界面までの距離。d 間隔の倍数 (左)
+または Å の直接入力 (右) で設定します。</value>
   </data>
   <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
     <value>2, 11</value>
@@ -318,7 +324,8 @@
     <value>24, 36</value>
   </data>
   <data name="colorControl.ToolTip1" xml:space="preserve">
-    <value />
+    <value>この境界面 (結晶を切る面) を
+結晶表示で描画する色を設定します。</value>
   </data>
   <data name="flowLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
     <value>177, 22</value>
@@ -333,7 +340,8 @@
     <value>114, 22</value>
   </data>
   <data name="numericBoxDistanceD.ToolTip1" xml:space="preserve">
-    <value />
+    <value>原点から境界面までの距離を、その (hkl) 面間隔 d の
+倍数で入力します。右の絶対距離 (Å) と連動します。</value>
   </data>
   <data name="numericBoxDistance.Location" type="System.Drawing.Point, System.Drawing">
     <value>114, 0</value>
@@ -345,7 +353,8 @@
     <value>63, 22</value>
   </data>
   <data name="numericBoxDistance.ToolTip1" xml:space="preserve">
-    <value />
+    <value>原点から境界面までの距離をオングストローム (Å)
+で直接入力します。左の d 間隔倍数と連動します。</value>
   </data>
   <data name="panel2.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 354</value>
@@ -366,7 +375,8 @@
     <value>平行移動量</value>
   </data>
   <data name="label3.ToolTip" xml:space="preserve">
-    <value />
+    <value>境界面を法線方向に平行移動させる量
+(Å)。正の値で原点から遠ざかります。</value>
   </data>
   <data name="label7.Location" type="System.Drawing.Point, System.Drawing">
     <value>108, 2</value>
@@ -385,5 +395,21 @@
   </data>
   <data name="$this.ToolTip" xml:space="preserve">
     <value />
+  </data>
+  <data name="colorControl.ToolTip" xml:space="preserve">
+    <value>この境界面 (結晶を切る面) を
+結晶表示で描画する色を設定します。</value>
+  </data>
+  <data name="numericBoxDistance.ToolTip" xml:space="preserve">
+    <value>原点から境界面までの距離をオングストローム (Å)
+で直接入力します。左の d 間隔倍数と連動します。</value>
+  </data>
+  <data name="numericBoxDistanceD.ToolTip" xml:space="preserve">
+    <value>原点から境界面までの距離を、その (hkl) 面間隔 d の
+倍数で入力します。右の絶対距離 (Å) と連動します。</value>
+  </data>
+  <data name="indexControl1.ToolTip" xml:space="preserve">
+    <value>境界面の法線のミラー指数 (h k l) を入力し
+ます。結晶を切る面の向きを決めます。</value>
   </data>
 </root>

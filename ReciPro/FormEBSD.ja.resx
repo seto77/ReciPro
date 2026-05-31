@@ -1051,4 +1051,317 @@
         AAAAAAAAAAAAAA==
 </value>
   </data>
+  <data name="colorControlString.ToolTip" xml:space="preserve">
+    <value>オーバーレイの指数文字（菊池線指数・
+晶帯軸指数など）の色を設定します。</value>
+  </data>
+  <data name="colorControlBackGround.ToolTip" xml:space="preserve">
+    <value>背景色を設定します。</value>
+  </data>
+  <data name="numericBoxKikuchiThresholdOfLength.ToolTip" xml:space="preserve">
+    <value>逆格子長 1/d (nm^-1) のしきい値です。この値未満の 1/d
+をもつ菊池線（面間隔 d が大きい反射）だけを描画します。</value>
+  </data>
+  <data name="numericBoxThicknessStep.ToolTip" xml:space="preserve">
+    <value>試料厚みスキャンのステップ幅 (nm) です。
+Start から End までをこの増分で計算します。</value>
+  </data>
+  <data name="numericBoxMaxNumOfG.ToolTip" xml:space="preserve">
+    <value>Bloch 波動力学計算に含める回折波（g
+ベクトル）の本数 (1-2048) を設定します。多い
+ほど精度は上がりますが計算は遅くなります。</value>
+  </data>
+  <data name="numericBoxThicknessStart.ToolTip" xml:space="preserve">
+    <value>試料厚みスキャン範囲の開始値 (nm) です。Start、
+End、Step で計算する厚みの列を決めます。</value>
+  </data>
+  <data name="numericBoxThicknessEnd.ToolTip" xml:space="preserve">
+    <value>試料厚みスキャン範囲の終端値 (nm) です。Start、
+End、Step で計算する厚みの列を決めます。</value>
+  </data>
+  <data name="numericBoxEnergyEnd.ToolTip" xml:space="preserve">
+    <value>EBSD（電子線後方散乱回折）スキャンで使う後方散乱電子
+エネルギー範囲の終端（下限）値 (keV) です。</value>
+  </data>
+  <data name="numericBoxEnergyStart.ToolTip" xml:space="preserve">
+    <value>EBSD（電子線後方散乱回折）スキャンで使う後方散乱電子
+エネルギー範囲の開始（上限）値 (keV) です。</value>
+  </data>
+  <data name="numericBoxEnergyStep.ToolTip" xml:space="preserve">
+    <value>後方散乱電子のエネルギースキャンのステップ幅 (keV) で
+す。Start から End へこの増分で下げながら計算します。</value>
+  </data>
+  <data name="buttonCopyImage.ToolTip" xml:space="preserve">
+    <value>シミュレートしたEBSDパターン画像を
+クリップボードにコピーします。</value>
+  </data>
+  <data name="buttonCreateMasterPattern.ToolTip" xml:space="preserve">
+    <value>Monte-Carloに続くBloch波(Bethe)動力学
+回折計算でEBSDマスターパターン(全球の
+後方散乱強度マップ)を構築します。</value>
+  </data>
+  <data name="buttonFitNistElasticSampler.ToolTip" xml:space="preserve">
+    <value>開発者用: NIST弾性散乱断面積テーブル(E_*.TXT)を
+PCHIP補間で圧縮し、生成ソースを出力します。</value>
+  </data>
+  <data name="buttonFromX.ToolTip" xml:space="preserve">
+    <value>3D幾何ビューの視点を、X軸(試料の回転軸)方向に設定します。</value>
+  </data>
+  <data name="buttonMasterPattern2DCopy.ToolTip" xml:space="preserve">
+    <value>2D(Lambert投影)マスターパターン
+画像をクリップボードにコピーします。</value>
+  </data>
+  <data name="buttonMasterPattern3DCopy.ToolTip" xml:space="preserve">
+    <value>3D(球面)マスターパターンプレビュー
+をクリップボードにコピーします。</value>
+  </data>
+  <data name="buttonMasterPattern3DViewAlong.ToolTip" xml:space="preserve">
+    <value>右の[u v w]で指定したゾーン軸が視線方向を
+向くよう3Dマスターパターンを回転します。</value>
+  </data>
+  <data name="buttonSimulateBSE.ToolTip" xml:space="preserve">
+    <value>モンテカルロ法でBSE(後方散乱電子)の飛程を
+シミュレーションし、EBSDパターンの重み付けに
+使う脱出エネルギー分布・深さ分布を計算します。</value>
+  </data>
+  <data name="buttonStop.ToolTip" xml:space="preserve">
+    <value>実行中のマスターパターン(Monte-Carlo
+/ Bloch波)計算を中断します。</value>
+  </data>
+  <data name="buttonViewFromSurfaceNormal.ToolTip" xml:space="preserve">
+    <value>3D幾何ビューの視点を、試料表面の法線方向に設定します。</value>
+  </data>
+  <data name="buttonViewFromZ.ToolTip" xml:space="preserve">
+    <value>3D幾何ビューの視点を、Z軸(電子線方向)に設定します。</value>
+  </data>
+  <data name="buttonViewQuarter.ToolTip" xml:space="preserve">
+    <value>3D幾何ビューの視点を、斜め上からの鳥瞰に設定します。</value>
+  </data>
+  <data name="checkBoxDrawAxesInStereonet.ToolTip" xml:space="preserve">
+    <value>ステレオネット(BSE分布の立体投影図)上に
+結晶軸・参照軸を重ねて表示します。</value>
+  </data>
+  <data name="checkBoxDrawDetectorOutline.ToolTip" xml:space="preserve">
+    <value>検出器(蛍光スクリーン)の輪郭をパターン上に重ねて
+表示します。輪郭オプション群が有効になります。</value>
+  </data>
+  <data name="checkBoxKikuchiLine_Kinematical.ToolTip" xml:space="preserve">
+    <value>各菊池線の濃さを構造因子(運動学的回折強
+度=単位胞1個が散乱する振幅)で重み付けし
+ます。強い反射ほど濃く表示されます。</value>
+  </data>
+  <data name="checkBoxMasterPattern3DAxisArrows.ToolTip" xml:space="preserve">
+    <value>3Dマスターパターンビューに結晶軸
+a/b/c の矢印インセットを表示します。</value>
+  </data>
+  <data name="checkBoxMasterPattern3DAxisLabel.ToolTip" xml:space="preserve">
+    <value>3Dマスターパターンビュー上に
+a/b/c の軸ラベル文字を表示します。</value>
+  </data>
+  <data name="checkBoxNonLocalAbsorption.ToolTip" xml:space="preserve">
+    <value>マスターパターン構築時に非局所吸収モデル(熱散漫散乱を
+含む複素ポテンシャル吸収項)を使用します。</value>
+  </data>
+  <data name="checkBoxShowCircle.ToolTip" xml:space="preserve">
+    <value>検出器のアウトラインを示す円をパターン上に描画します。</value>
+  </data>
+  <data name="checkBoxShowDyanmicalEBSD.ToolTip" xml:space="preserve">
+    <value>マスターパターンから投影した動力学EBSD(後方散乱電子回
+折)パターンを表示します。オフでは背景のみになります。</value>
+  </data>
+  <data name="checkBoxShowGIndices.ToolTip" xml:space="preserve">
+    <value>各菊池線(菊池バンド)に対応する
+反射指数(h k l)のラベルを表示します。</value>
+  </data>
+  <data name="checkBoxShowKikuchiLines.ToolTip" xml:space="preserve">
+    <value>菊池線(非弾性散乱した電子が作る帯状の回折線)を
+表示します。菊池線オプション群が有効になります。</value>
+  </data>
+  <data name="checkBoxShowMesh.ToolTip" xml:space="preserve">
+    <value>検出器面の分割メッシュ(格子線)をパターン上に描画します。</value>
+  </data>
+  <data name="checkBoxShowOverlays.ToolTip" xml:space="preserve">
+    <value>パターン上に菊池線・指数・ゾーン軸・
+検出器アウトラインを重ねて表示します。</value>
+  </data>
+  <data name="checkBoxShowZoneAxisIndices.ToolTip" xml:space="preserve">
+    <value>菊池バンドの交点(晶帯軸)に晶帯軸指数
+[u v w] のラベルを表示します。</value>
+  </data>
+  <data name="checkBoxTDSBackground.ToolTip" xml:space="preserve">
+    <value>TDS(熱散漫散乱)バックグラウンド
+強度をマスターパターンに含めます。</value>
+  </data>
+  <data name="checkBoxWithBSEDistribution.ToolTip" xml:space="preserve">
+    <value>単一のエネルギー・深さスライスではなく、
+シミュレーションで得たBSE(後方散乱電子)のエネルギー・
+深さ分布で重み付けして全スライスを積算したEBSDパターン
+を表示します。先にSimulateで分布を計算してください。</value>
+  </data>
+  <data name="colorControlExcessLine.ToolTip" xml:space="preserve">
+    <value>菊池線の描画色を設定します。</value>
+  </data>
+  <data name="comboBoxGradient.ToolTip" xml:space="preserve">
+    <value>パターン強度の階調を Positive または
+Negative(白黒反転)から選択します。</value>
+  </data>
+  <data name="comboBoxMasterPattern2DHemisphere.ToolTip" xml:space="preserve">
+    <value>2Dビューに表示するマスターパターン
+の半球(+Z または -Z)を選択します。</value>
+  </data>
+  <data name="comboBoxMasterPatternGrid.ToolTip" xml:space="preserve">
+    <value>正方Lambertマスターパターングリッドの分解能(1辺あたりの
+ピクセル数、64～2048)。大きいほど高精細ですが低速です。</value>
+  </data>
+  <data name="comboBoxScale.ToolTip" xml:space="preserve">
+    <value>強度を色に対応させるカラースケール(Gray /
+Cold-Warm / Spectrum / Fire)を選択します。</value>
+  </data>
+  <data name="indexControl.ToolTip" xml:space="preserve">
+    <value>'View Along' ボタンで3Dマスターパターンを
+向けるゾーン軸指数 [u v w] を入力します。</value>
+  </data>
+  <data name="numericBoxDepth.ToolTip" xml:space="preserve">
+    <value>現在レンダリングしているEBSDパターンの深さ
+スライス(nm)を表示します(単一スライス表示時)。</value>
+  </data>
+  <data name="numericBoxDetRadius.ToolTip" xml:space="preserve">
+    <value>EBSD検出器(蛍光スクリーン)の半径をmm単位で設定しま
+す。捕捉する立体角と像の分解能(mm/画素)が決まります。</value>
+  </data>
+  <data name="numericBoxDetTilt.ToolTip" xml:space="preserve">
+    <value>検出器面の傾き角を度単位で設定します(電子線=Z軸に対す
+る傾き)。カメラ長や菊池バンドの投影形状に影響します。</value>
+  </data>
+  <data name="numericBoxEnergy.ToolTip" xml:space="preserve">
+    <value>現在レンダリングしているEBSDパターン
+のエネルギースライス(keV)を表示しま
+す(単一スライス表示時)。</value>
+  </data>
+  <data name="numericBoxKikuchiThresholdOfStructureFactor.ToolTip" xml:space="preserve">
+    <value>構造因子(単位胞1個が散乱する振幅)の大きい
+上位N本の反射を菊池線として描画する本数を
+設定します。大きいほど多くの線を表示します。</value>
+  </data>
+  <data name="numericBoxMasterPatternDepth.ToolTip" xml:space="preserve">
+    <value>プレビュー用にスライダーで選択中のマスターパターン
+深さスライスの値(nm)を表示します。</value>
+  </data>
+  <data name="numericBoxMasterPatternEnergy.ToolTip" xml:space="preserve">
+    <value>プレビュー用にスライダーで選択中の
+マスターパターンエネルギースライス
+の値(keV)を表示します。</value>
+  </data>
+  <data name="numericBoxSampleTilt.ToolTip" xml:space="preserve">
+    <value>SEM内での試料の傾斜角(°、-90～0、EBSDでは
+通常-70)。後方散乱投影の幾何を決めます。</value>
+  </data>
+  <data name="numericBoxYofDet.ToolTip" xml:space="preserve">
+    <value>検出器中心のY座標(試料からの
+横方向位置)をmm単位で設定します。</value>
+  </data>
+  <data name="numericBoxZofDet.ToolTip" xml:space="preserve">
+    <value>検出器中心のZ座標(電子線方向の位置)をmm単位で
+設定します。Yとあわせてカメラ長が決まります。</value>
+  </data>
+  <data name="radioButtonKikuchiThresholdOfLength.ToolTip" xml:space="preserve">
+    <value>菊池線に描く反射を、逆格子長 1/d のしきい値で選別します。</value>
+  </data>
+  <data name="radioButtonKikuchiThresholdOfStructureFactor.ToolTip" xml:space="preserve">
+    <value>菊池線に描く反射を、構造因子の大きい上位N本で選別します。</value>
+  </data>
+  <data name="trackBarIntensityBrightnessMax.ToolTip" xml:space="preserve">
+    <value>表示EBSD像の明るさ上限(白とびの位置)を強度レンジに対す
+る比率で設定します。この値以上の画素が白になります。</value>
+  </data>
+  <data name="trackBarIntensityBrightnessMin.ToolTip" xml:space="preserve">
+    <value>表示EBSD像の明るさ下限(黒つぶれの
+位置)を強度レンジに対する比率で設定し
+ます。この値以下の画素が黒になります。</value>
+  </data>
+  <data name="trackBarLineWidth.ToolTip" xml:space="preserve">
+    <value>菊池線の線幅(描画ペンの太さ)を設定します。</value>
+  </data>
+  <data name="trackBarMasterPatternDepth.ToolTip" xml:space="preserve">
+    <value>プレビューするマスターパターンの深さスライス
+(nm)を選択します。値はDepth欄に表示されます。</value>
+  </data>
+  <data name="trackBarMasterPatternEnergy.ToolTip" xml:space="preserve">
+    <value>プレビューするマスターパターンのエネルギースライス
+(keV)を選択します。値はEnergy欄に表示されます。</value>
+  </data>
+  <data name="trackBarOutputEnergy.ToolTip" xml:space="preserve">
+    <value>単一スライス表示時に、レンダリングする
+EBSDパターンのエネルギースライス(keV)を
+選択します。値はEnergy欄に表示されます。</value>
+  </data>
+  <data name="trackBarOutputThickness.ToolTip" xml:space="preserve">
+    <value>単一スライス表示時に、レンダリングする
+EBSDパターンの深さスライス(nm)を選択し
+ます。値はDepth欄に表示されます。</value>
+  </data>
+  <data name="trackBarStrSize.ToolTip" xml:space="preserve">
+    <value>オーバーレイ指数文字のフォントサイズを調整します。</value>
+  </data>
+  <data name="waveLengthControl.ToolTip" xml:space="preserve">
+    <value>入射電子の加速電圧/電子波長(EBSDシミュレーション
+の一次電子エネルギー)を設定します。</value>
+  </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value>オーバーレイ指数文字のフォントサイズを調整します。</value>
+  </data>
+  <data name="label10.ToolTip" xml:space="preserve">
+    <value>表示EBSD像の明るさ(黒・白クリップ)範囲を調整します。</value>
+  </data>
+  <data name="label11.ToolTip" xml:space="preserve">
+    <value>菊池線の線幅(描画ペンの太さ)を設定します。</value>
+  </data>
+  <data name="label13.ToolTip" xml:space="preserve">
+    <value>シミュレーションした後方散乱電子の
+最大侵入深さ(nm)の分布です。</value>
+  </data>
+  <data name="label14.ToolTip" xml:space="preserve">
+    <value>シミュレーションした後方散乱電子の
+エネルギー損失ΔE(keV)の分布です。</value>
+  </data>
+  <data name="label15.ToolTip" xml:space="preserve">
+    <value>このステレオネットでは、中心が
+試料表面の法線方向に対応します。</value>
+  </data>
+  <data name="label16.ToolTip" xml:space="preserve">
+    <value>EBSD検出器(蛍光スクリーン)の半径をmm単位で設定しま
+す。捕捉する立体角と像の分解能(mm/画素)が決まります。</value>
+  </data>
+  <data name="label17.ToolTip" xml:space="preserve">
+    <value>検出器面の傾き角を度単位で設定します(電子線=Z軸に対す
+る傾き)。カメラ長や菊池バンドの投影形状に影響します。</value>
+  </data>
+  <data name="label2.ToolTip" xml:space="preserve">
+    <value>試料を基準とした検出器中心の位置を、
+Y(横方向)とZ(電子線方向)のmmで指定します。</value>
+  </data>
+  <data name="label3.ToolTip" xml:space="preserve">
+    <value>表示像の階調を通常か反転(ネガ)かを選択します。</value>
+  </data>
+  <data name="label4.ToolTip" xml:space="preserve">
+    <value>強度を色に変換するカラースケール(Gray /
+Cold-Warm / Spectrum / Fire)を選択します。</value>
+  </data>
+  <data name="label7.ToolTip" xml:space="preserve">
+    <value>表示EBSD像の明るさ下限(黒つぶれの
+位置)を強度レンジに対する比率で設定し
+ます。この値以下の画素が黒になります。</value>
+  </data>
+  <data name="label8.ToolTip" xml:space="preserve">
+    <value>表示EBSD像の明るさ上限(白とびの位置)を強度レンジに対す
+る比率で設定します。この値以上の画素が白になります。</value>
+  </data>
+  <data name="labelMasterPattern2DHemisphere.ToolTip" xml:space="preserve">
+    <value>2Dビューに表示するマスターパターン
+の半球(+Z または -Z)を選択します。</value>
+  </data>
+  <data name="labelMasterPatternGrid.ToolTip" xml:space="preserve">
+    <value>正方Lambertマスターパターングリッドの
+分解能(1辺あたりのピクセル数、64～2048)。</value>
+  </data>
 </root>

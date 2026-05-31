@@ -24,6 +24,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ChemicalFormulaInputControl)); // 260531Cl
+            components = new System.ComponentModel.Container(); // (260531Ch)
+            toolTip = new System.Windows.Forms.ToolTip(components); // (260531Ch)
+            toolTip.IsBalloon = true; // 260531Cl 追加: バルーン表示に統一
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.label4 = new System.Windows.Forms.Label();
             this.comboBoxElement = new System.Windows.Forms.ComboBox();
@@ -73,6 +77,7 @@
             this.label4.Location = new System.Drawing.Point(3, 8);
             this.label4.Margin = new System.Windows.Forms.Padding(3, 8, 3, 0);
             this.label4.Name = "label4";
+            this.toolTip.SetToolTip(this.label4, resources.GetString("label4.ToolTip")); // 260531Cl
             this.label4.Size = new System.Drawing.Size(56, 18);
             this.label4.TabIndex = 1;
             this.label4.Text = "Element";
@@ -182,6 +187,7 @@
             this.comboBoxElement.Location = new System.Drawing.Point(65, 4);
             this.comboBoxElement.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.comboBoxElement.Name = "comboBoxElement";
+            this.toolTip.SetToolTip(this.comboBoxElement, resources.GetString("comboBoxElement.ToolTip")); // 260531Cl
             this.comboBoxElement.Size = new System.Drawing.Size(102, 26);
             this.comboBoxElement.TabIndex = 6;
             this.comboBoxElement.SelectedIndexChanged += new System.EventHandler(this.comboBoxElement_SelectedIndexChanged);
@@ -192,6 +198,7 @@
             this.label5.Location = new System.Drawing.Point(170, 8);
             this.label5.Margin = new System.Windows.Forms.Padding(0, 8, 0, 0);
             this.label5.Name = "label5";
+            this.toolTip.SetToolTip(this.label5, resources.GetString("label5.ToolTip")); // 260531Cl
             this.label5.Size = new System.Drawing.Size(52, 18);
             this.label5.TabIndex = 1;
             this.label5.Text = "Valence";
@@ -207,6 +214,7 @@
             this.numericBoxValence.MaximumSize = new System.Drawing.Size(1000, 25);
             this.numericBoxValence.MinimumSize = new System.Drawing.Size(1, 25);
             this.numericBoxValence.Name = "numericBoxValence";
+            this.toolTip.SetToolTip(this.numericBoxValence, resources.GetString("numericBoxValence.ToolTip")); // 260531Cl
             this.numericBoxValence.RoundErrorAccuracy = -1;
             this.numericBoxValence.ShowPositiveSign = true;
             this.numericBoxValence.Size = new System.Drawing.Size(1, 25);
@@ -222,6 +230,7 @@
             this.checkBoxCompound.Location = new System.Drawing.Point(230, 6);
             this.checkBoxCompound.Margin = new System.Windows.Forms.Padding(6, 6, 0, 4);
             this.checkBoxCompound.Name = "checkBoxCompound";
+            this.toolTip.SetToolTip(this.checkBoxCompound, resources.GetString("checkBoxCompound.ToolTip")); // 260531Cl
             this.checkBoxCompound.Size = new System.Drawing.Size(89, 22);
             this.checkBoxCompound.TabIndex = 7;
             this.checkBoxCompound.Text = "Compound";
@@ -257,6 +266,7 @@
             this.comboBoxCompound.Location = new System.Drawing.Point(3, 4);
             this.comboBoxCompound.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.comboBoxCompound.Name = "comboBoxCompound";
+            this.toolTip.SetToolTip(this.comboBoxCompound, resources.GetString("comboBoxCompound.ToolTip")); // 260531Cl
             this.comboBoxCompound.Size = new System.Drawing.Size(79, 26);
             this.comboBoxCompound.TabIndex = 6;
             this.comboBoxCompound.SelectedIndexChanged += new System.EventHandler(this.comboBoxCompound_SelectedIndexChanged);
@@ -266,6 +276,7 @@
             this.textBoxCompoundForm.Location = new System.Drawing.Point(88, 4);
             this.textBoxCompoundForm.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textBoxCompoundForm.Name = "textBoxCompoundForm";
+            this.toolTip.SetToolTip(this.textBoxCompoundForm, resources.GetString("textBoxCompoundForm.ToolTip")); // 260531Cl
             this.textBoxCompoundForm.ReadOnly = true;
             this.textBoxCompoundForm.Size = new System.Drawing.Size(112, 25);
             this.textBoxCompoundForm.TabIndex = 5;
@@ -301,6 +312,7 @@
             this.label6.Location = new System.Drawing.Point(3, 8);
             this.label6.Margin = new System.Windows.Forms.Padding(3, 8, 0, 0);
             this.label6.Name = "label6";
+            this.toolTip.SetToolTip(this.label6, resources.GetString("label6.ToolTip")); // 260531Cl
             this.label6.Size = new System.Drawing.Size(48, 18);
             this.label6.TabIndex = 1;
             this.label6.Text = "Weight";
@@ -315,6 +327,7 @@
             this.numericBoxWeight.MaximumSize = new System.Drawing.Size(1000, 27);
             this.numericBoxWeight.MinimumSize = new System.Drawing.Size(1, 25);
             this.numericBoxWeight.Name = "numericBoxWeight";
+            this.toolTip.SetToolTip(this.numericBoxWeight, resources.GetString("numericBoxWeight.ToolTip")); // 260531Cl
             this.numericBoxWeight.RoundErrorAccuracy = -1;
             this.numericBoxWeight.Size = new System.Drawing.Size(73, 27);
             this.numericBoxWeight.TabIndex = 8;
@@ -325,6 +338,7 @@
             this.label9.Location = new System.Drawing.Point(125, 8);
             this.label9.Margin = new System.Windows.Forms.Padding(0, 8, 0, 0);
             this.label9.Name = "label9";
+            this.toolTip.SetToolTip(this.label9, resources.GetString("label9.ToolTip")); // 260531Cl
             this.label9.Size = new System.Drawing.Size(20, 18);
             this.label9.TabIndex = 1;
             this.label9.Text = "%";
@@ -348,6 +362,7 @@
             this.label7.Location = new System.Drawing.Point(3, 8);
             this.label7.Margin = new System.Windows.Forms.Padding(3, 8, 3, 0);
             this.label7.Name = "label7";
+            this.toolTip.SetToolTip(this.label7, resources.GetString("label7.ToolTip")); // 260531Cl
             this.label7.Size = new System.Drawing.Size(71, 18);
             this.label7.TabIndex = 1;
             this.label7.Text = "Molar ratio";
@@ -362,6 +377,7 @@
             this.numericBoxMolarRatio.MaximumSize = new System.Drawing.Size(1000, 27);
             this.numericBoxMolarRatio.MinimumSize = new System.Drawing.Size(1, 25);
             this.numericBoxMolarRatio.Name = "numericBoxMolarRatio";
+            this.toolTip.SetToolTip(this.numericBoxMolarRatio, resources.GetString("numericBoxMolarRatio.ToolTip")); // 260531Cl
             this.numericBoxMolarRatio.RoundErrorAccuracy = -1;
             this.numericBoxMolarRatio.Size = new System.Drawing.Size(43, 27);
             this.numericBoxMolarRatio.TabIndex = 8;
@@ -421,6 +437,8 @@
         }
 
         #endregion
+
+        private System.Windows.Forms.ToolTip toolTip; // (260531Ch)
 
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Label label4;

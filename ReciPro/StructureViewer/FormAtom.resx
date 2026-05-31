@@ -120,4 +120,52 @@
   <metadata name="toolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
+  <data name="checkBoxIsDraw.ToolTip" xml:space="preserve">
+    <value>Show or hide this atom in the 3D
+view. This only toggles drawing; the
+crystal structure itself is unchanged.</value>
+  </data>
+  <data name="numericBoxAtomRadius.ToolTip" xml:space="preserve">
+    <value>Display radius of the atom sphere, in angstroms (0–9.9
+Å). Affects rendering only, not the scattering factor.</value>
+  </data>
+  <data name="radioButtonAllSameElement.ToolTip" xml:space="preserve">
+    <value>Apply the color, material and radius
+changes to every atom of the same element.</value>
+  </data>
+  <data name="radioButtonApplyEquivalentAtoms.ToolTip" xml:space="preserve">
+    <value>Apply the changes only to atoms at symmetry-equivalent
+positions (the same crystallographic site).</value>
+  </data>
+  <data name="radioButtonApplyThis.ToolTip" xml:space="preserve">
+    <value>Apply the changes only to the currently selected atom.</value>
+  </data>
+  <data name="numericBoxAtomAmbient.ToolTip" xml:space="preserve">
+    <value>Ambient lighting component of the atom sphere
+(0–1): brightness of faces not directly lit.</value>
+  </data>
+  <data name="numericBoxAtomDiffusion.ToolTip" xml:space="preserve">
+    <value>Diffuse reflection component (0–1): the main shading
+that brightens faces toward the light source.</value>
+  </data>
+  <data name="numericBoxAtomEmmision.ToolTip" xml:space="preserve">
+    <value>Self-emission component (0–1): brightness the atom
+emits on its own, independent of the light source.</value>
+  </data>
+  <data name="numericBoxAtomShininess.ToolTip" xml:space="preserve">
+    <value>Specular shininess exponent (0–50): higher
+values give a smaller, sharper highlight.</value>
+  </data>
+  <data name="numericBoxAtomSpecular.ToolTip" xml:space="preserve">
+    <value>Specular reflection strength (0–1): brightness
+of the glossy highlight on the atom surface
+(its sharpness is set by Shininess).</value>
+  </data>
+  <data name="numericBoxAtomTransparency.ToolTip" xml:space="preserve">
+    <value>Opacity (alpha) of the atom sphere
+(0–1): 1 = opaque, 0 = fully transparent.</value>
+  </data>
+  <data name="pictureBoxAtomColor.ToolTip" xml:space="preserve">
+    <value>Click to set the display color of this atom in the 3D view.</value>
+  </data>
 </root>

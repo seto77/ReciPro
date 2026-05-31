@@ -415,4 +415,26 @@
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
     <value>System.Windows.Forms.UserControl, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="checkBoxKeepAspect.ToolTip" xml:space="preserve">
+    <value>Lock the width-to-height aspect ratio;
+changing one dimension automatically
+updates the other to preserve the ratio.</value>
+  </data>
+  <data name="numericBoxHeight.ToolTip" xml:space="preserve">
+    <value>Image height in pixels (px); when aspect ratio
+is locked, the width follows automatically.</value>
+  </data>
+  <data name="numericBoxWidth.ToolTip" xml:space="preserve">
+    <value>Image width in pixels (px); when aspect ratio
+is locked, the height follows automatically.</value>
+  </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value>Image size: width × height in pixels (px).</value>
+  </data>
+  <data name="label2.ToolTip" xml:space="preserve">
+    <value>Image size: width × height in pixels (px).</value>
+  </data>
+  <data name="labelHeader.ToolTip" xml:space="preserve">
+    <value>Image size: width × height in pixels (px).</value>
+  </data>
 </root>

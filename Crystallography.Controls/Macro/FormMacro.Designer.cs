@@ -24,6 +24,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container(); // (260531Ch)
+            toolTip = new System.Windows.Forms.ToolTip(components); // (260531Ch)
+            toolTip.IsBalloon = true; // 260531Cl 追加: バルーン表示に統一
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMacro));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -115,6 +118,7 @@
             // listBoxMacro
             // 
             resources.ApplyResources(listBoxMacro, "listBoxMacro");
+            toolTip.SetToolTip(listBoxMacro, resources.GetString("listBoxMacro.ToolTip")); // 260531Cl
             listBoxMacro.FormattingEnabled = true;
             listBoxMacro.Name = "listBoxMacro";
             listBoxMacro.SelectedIndexChanged += listBox_SelectedIndexChanged;
@@ -130,6 +134,7 @@
             // buttonDeleteProfile
             // 
             resources.ApplyResources(buttonDeleteProfile, "buttonDeleteProfile");
+            toolTip.SetToolTip(buttonDeleteProfile, resources.GetString("buttonDeleteProfile.ToolTip")); // 260531Cl
             buttonDeleteProfile.BackColor = System.Drawing.Color.IndianRed;
             buttonDeleteProfile.ForeColor = System.Drawing.Color.White;
             buttonDeleteProfile.Name = "buttonDeleteProfile";
@@ -139,6 +144,7 @@
             // buttonAdd
             // 
             resources.ApplyResources(buttonAdd, "buttonAdd");
+            toolTip.SetToolTip(buttonAdd, resources.GetString("buttonAdd.ToolTip")); // 260531Cl
             buttonAdd.BackColor = System.Drawing.Color.SteelBlue;
             buttonAdd.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             buttonAdd.Name = "buttonAdd";
@@ -148,6 +154,7 @@
             // buttonChange
             // 
             resources.ApplyResources(buttonChange, "buttonChange");
+            toolTip.SetToolTip(buttonChange, resources.GetString("buttonChange.ToolTip")); // 260531Cl
             buttonChange.BackColor = System.Drawing.Color.SteelBlue;
             buttonChange.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             buttonChange.Name = "buttonChange";
@@ -165,18 +172,21 @@
             // buttonUpper
             // 
             resources.ApplyResources(buttonUpper, "buttonUpper");
+            toolTip.SetToolTip(buttonUpper, resources.GetString("buttonUpper.ToolTip")); // 260531Cl
             buttonUpper.Name = "buttonUpper";
             buttonUpper.Click += buttonUpper_Click;
             // 
             // buttonLower
             // 
             resources.ApplyResources(buttonLower, "buttonLower");
+            toolTip.SetToolTip(buttonLower, resources.GetString("buttonLower.ToolTip")); // 260531Cl
             buttonLower.Name = "buttonLower";
             buttonLower.Click += buttonLower_Click;
             // 
             // checkBoxSamples
             // 
             resources.ApplyResources(checkBoxSamples, "checkBoxSamples");
+            toolTip.SetToolTip(checkBoxSamples, resources.GetString("checkBoxSamples.ToolTip")); // 260531Cl
             checkBoxSamples.Name = "checkBoxSamples";
             checkBoxSamples.UseVisualStyleBackColor = true;
             checkBoxSamples.CheckedChanged += toggleSamplesMode;
@@ -184,6 +194,7 @@
             // pyRichTextBox
             // 
             resources.ApplyResources(pyRichTextBox, "pyRichTextBox");
+            toolTip.SetToolTip(pyRichTextBox, resources.GetString("pyRichTextBox.ToolTip")); // 260531Cl
             pyRichTextBox.Name = "pyRichTextBox";
             pyRichTextBox.TextChanged += markDirtyFromEdit;
             // 
@@ -204,11 +215,13 @@
             // label1
             // 
             resources.ApplyResources(label1, "label1");
+            toolTip.SetToolTip(label1, resources.GetString("label1.ToolTip")); // 260531Cl
             label1.Name = "label1";
             // 
             // textBoxMacroName
             // 
             resources.ApplyResources(textBoxMacroName, "textBoxMacroName");
+            toolTip.SetToolTip(textBoxMacroName, resources.GetString("textBoxMacroName.ToolTip")); // 260531Cl
             textBoxMacroName.Name = "textBoxMacroName";
             textBoxMacroName.TextChanged += markDirtyFromEdit;
             // 
@@ -221,6 +234,7 @@
             // label2
             // 
             resources.ApplyResources(label2, "label2");
+            toolTip.SetToolTip(label2, resources.GetString("label2.ToolTip")); // 260531Cl
             label2.Name = "label2";
             // 
             // splitContainer2
@@ -257,6 +271,7 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             dataGridViewDebug.DefaultCellStyle = dataGridViewCellStyle2;
             resources.ApplyResources(dataGridViewDebug, "dataGridViewDebug");
+            toolTip.SetToolTip(dataGridViewDebug, resources.GetString("dataGridViewDebug.ToolTip")); // 260531Cl
             dataGridViewDebug.MultiSelect = false;
             dataGridViewDebug.Name = "dataGridViewDebug";
             dataGridViewDebug.ReadOnly = true;
@@ -307,6 +322,7 @@
             // buttonStopMacro
             // 
             resources.ApplyResources(buttonStopMacro, "buttonStopMacro");
+            toolTip.SetToolTip(buttonStopMacro, resources.GetString("buttonStopMacro.ToolTip")); // 260531Cl
             buttonStopMacro.BackColor = System.Drawing.Color.IndianRed;
             buttonStopMacro.ForeColor = System.Drawing.Color.White;
             buttonStopMacro.Name = "buttonStopMacro";
@@ -316,6 +332,7 @@
             // buttonRunMacro
             // 
             resources.ApplyResources(buttonRunMacro, "buttonRunMacro");
+            toolTip.SetToolTip(buttonRunMacro, resources.GetString("buttonRunMacro.ToolTip")); // 260531Cl
             buttonRunMacro.Name = "buttonRunMacro";
             buttonRunMacro.UseVisualStyleBackColor = true;
             buttonRunMacro.Click += buttonRunMacro_Click;
@@ -323,6 +340,7 @@
             // buttonNextStep
             // 
             resources.ApplyResources(buttonNextStep, "buttonNextStep");
+            toolTip.SetToolTip(buttonNextStep, resources.GetString("buttonNextStep.ToolTip")); // 260531Cl
             buttonNextStep.Name = "buttonNextStep";
             buttonNextStep.UseVisualStyleBackColor = true;
             buttonNextStep.Click += buttonNextStep_Click;
@@ -330,6 +348,7 @@
             // buttonStepByStep
             // 
             resources.ApplyResources(buttonStepByStep, "buttonStepByStep");
+            toolTip.SetToolTip(buttonStepByStep, resources.GetString("buttonStepByStep.ToolTip")); // 260531Cl
             buttonStepByStep.Name = "buttonStepByStep";
             buttonStepByStep.UseVisualStyleBackColor = true;
             buttonStepByStep.Click += buttonStepByStep_Click;
@@ -354,6 +373,7 @@
             dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             dataGridView.DefaultCellStyle = dataGridViewCellStyle4;
             resources.ApplyResources(dataGridView, "dataGridView");
+            toolTip.SetToolTip(dataGridView, resources.GetString("dataGridView.ToolTip")); // 260531Cl
             dataGridView.MultiSelect = false;
             dataGridView.Name = "dataGridView";
             dataGridView.ReadOnly = true;
@@ -462,6 +482,8 @@
         }
 
         #endregion
+
+        private System.Windows.Forms.ToolTip toolTip; // (260531Ch)
 
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;

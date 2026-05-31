@@ -28,6 +28,9 @@
         // groupBox3 -> groupBoxAppearance
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container(); // (260531Ch)
+            toolTip = new System.Windows.Forms.ToolTip(components); // (260531Ch)
+            toolTip.IsBalloon = true; // 260531Cl 追加: バルーン表示に統一
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PoleFigureControl));
             this.radioButtonAxes = new System.Windows.Forms.RadioButton();
             this.radioButtonPlanes = new System.Windows.Forms.RadioButton();
@@ -74,6 +77,7 @@
             // radioButtonAxes
             // 
             resources.ApplyResources(this.radioButtonAxes, "radioButtonAxes");
+            this.toolTip.SetToolTip(this.radioButtonAxes, resources.GetString("radioButtonAxes.ToolTip")); // 260531Cl
             this.radioButtonAxes.Checked = true;
             this.radioButtonAxes.Name = "radioButtonAxes";
             this.radioButtonAxes.TabStop = true;
@@ -82,11 +86,13 @@
             // radioButtonPlanes
             // 
             resources.ApplyResources(this.radioButtonPlanes, "radioButtonPlanes");
+            this.toolTip.SetToolTip(this.radioButtonPlanes, resources.GetString("radioButtonPlanes.ToolTip")); // 260531Cl
             this.radioButtonPlanes.Name = "radioButtonPlanes";
             // 
             // numericUpDown2
             // 
             resources.ApplyResources(this.numericUpDown2, "numericUpDown2");
+            this.toolTip.SetToolTip(this.numericUpDown2, resources.GetString("numericUpDown2.ToolTip")); // 260531Cl
             this.numericUpDown2.Maximum = new decimal(new int[] {
             20,
             0,
@@ -103,6 +109,7 @@
             // numericUpDown3
             // 
             resources.ApplyResources(this.numericUpDown3, "numericUpDown3");
+            this.toolTip.SetToolTip(this.numericUpDown3, resources.GetString("numericUpDown3.ToolTip")); // 260531Cl
             this.numericUpDown3.Maximum = new decimal(new int[] {
             20,
             0,
@@ -124,11 +131,13 @@
             // labelV
             // 
             resources.ApplyResources(this.labelV, "labelV");
+            this.toolTip.SetToolTip(this.labelV, resources.GetString("labelV.ToolTip")); // 260531Cl
             this.labelV.Name = "labelV";
             // 
             // numericUpDown1
             // 
             resources.ApplyResources(this.numericUpDown1, "numericUpDown1");
+            this.toolTip.SetToolTip(this.numericUpDown1, resources.GetString("numericUpDown1.ToolTip")); // 260531Cl
             this.numericUpDown1.Maximum = new decimal(new int[] {
             20,
             0,
@@ -153,11 +162,13 @@
             // label1
             // 
             resources.ApplyResources(this.label1, "label1");
+            this.toolTip.SetToolTip(this.label1, resources.GetString("label1.ToolTip")); // 260531Cl
             this.label1.Name = "label1";
             // 
             // numericUpDownResolution
             // 
             resources.ApplyResources(this.numericUpDownResolution, "numericUpDownResolution");
+            this.toolTip.SetToolTip(this.numericUpDownResolution, resources.GetString("numericUpDownResolution.ToolTip")); // 260531Cl
             this.numericUpDownResolution.DecimalPlaces = 2;
             this.numericUpDownResolution.Maximum = new decimal(new int[] {
             60,
@@ -181,16 +192,19 @@
             // label2
             // 
             resources.ApplyResources(this.label2, "label2");
+            this.toolTip.SetToolTip(this.label2, resources.GetString("label2.ToolTip")); // 260531Cl
             this.label2.Name = "label2";
             // 
             // label3
             // 
             resources.ApplyResources(this.label3, "label3");
+            this.toolTip.SetToolTip(this.label3, resources.GetString("label3.ToolTip")); // 260531Cl
             this.label3.Name = "label3";
             // 
             // numericUpDownFullscale
             // 
             resources.ApplyResources(this.numericUpDownFullscale, "numericUpDownFullscale");
+            this.toolTip.SetToolTip(this.numericUpDownFullscale, resources.GetString("numericUpDownFullscale.ToolTip")); // 260531Cl
             this.numericUpDownFullscale.DecimalPlaces = 1;
             this.numericUpDownFullscale.Increment = new decimal(new int[] {
             1,
@@ -218,6 +232,7 @@
             // label4
             // 
             resources.ApplyResources(this.label4, "label4");
+            this.toolTip.SetToolTip(this.label4, resources.GetString("label4.ToolTip")); // 260531Cl
             this.label4.Name = "label4";
             // 
             // pictureBox1
@@ -230,6 +245,7 @@
             // radioButtonPoleFigure
             // 
             resources.ApplyResources(this.radioButtonPoleFigure, "radioButtonPoleFigure");
+            this.toolTip.SetToolTip(this.radioButtonPoleFigure, resources.GetString("radioButtonPoleFigure.ToolTip")); // 260531Cl
             this.radioButtonPoleFigure.Checked = true;
             this.radioButtonPoleFigure.Name = "radioButtonPoleFigure";
             this.radioButtonPoleFigure.TabStop = true;
@@ -238,11 +254,13 @@
             // radioButtonInversePoleFigure
             // 
             resources.ApplyResources(this.radioButtonInversePoleFigure, "radioButtonInversePoleFigure");
+            this.toolTip.SetToolTip(this.radioButtonInversePoleFigure, resources.GetString("radioButtonInversePoleFigure.ToolTip")); // 260531Cl
             this.radioButtonInversePoleFigure.Name = "radioButtonInversePoleFigure";
             // 
             // textBox1
             // 
             resources.ApplyResources(this.textBox1, "textBox1");
+            this.toolTip.SetToolTip(this.textBox1, resources.GetString("textBox1.ToolTip")); // 260531Cl
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
             // 
@@ -285,11 +303,13 @@
             // label7
             // 
             resources.ApplyResources(this.label7, "label7");
+            this.toolTip.SetToolTip(this.label7, resources.GetString("label7.ToolTip")); // 260531Cl
             this.label7.Name = "label7";
             // 
             // comboBoxScale
             // 
             resources.ApplyResources(this.comboBoxScale, "comboBoxScale");
+            this.toolTip.SetToolTip(this.comboBoxScale, resources.GetString("comboBoxScale.ToolTip")); // 260531Cl
             this.comboBoxScale.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxScale.FormattingEnabled = true;
             this.comboBoxScale.Items.AddRange(new object[] {
@@ -301,11 +321,13 @@
             // label9
             // 
             resources.ApplyResources(this.label9, "label9");
+            this.toolTip.SetToolTip(this.label9, resources.GetString("label9.ToolTip")); // 260531Cl
             this.label9.Name = "label9";
             // 
             // comboBoxColor
             // 
             resources.ApplyResources(this.comboBoxColor, "comboBoxColor");
+            this.toolTip.SetToolTip(this.comboBoxColor, resources.GetString("comboBoxColor.ToolTip")); // 260531Cl
             this.comboBoxColor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxColor.FormattingEnabled = true;
             this.comboBoxColor.Items.AddRange(new object[] {
@@ -331,11 +353,13 @@
             // labelU
             // 
             resources.ApplyResources(this.labelU, "labelU");
+            this.toolTip.SetToolTip(this.labelU, resources.GetString("labelU.ToolTip")); // 260531Cl
             this.labelU.Name = "labelU";
             // 
             // labelW
             // 
             resources.ApplyResources(this.labelW, "labelW");
+            this.toolTip.SetToolTip(this.labelW, resources.GetString("labelW.ToolTip")); // 260531Cl
             this.labelW.Name = "labelW";
             // 
             // groupBoxProjectionScheme
@@ -375,6 +399,8 @@
         }
 
         #endregion
+
+        private System.Windows.Forms.ToolTip toolTip; // (260531Ch)
         private System.Windows.Forms.RadioButton radioButtonAxes;
         private System.Windows.Forms.RadioButton radioButtonPlanes;
         public System.Windows.Forms.NumericUpDown numericUpDown2;

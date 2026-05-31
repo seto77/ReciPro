@@ -183,4 +183,30 @@
         AACAxwAA4wEAAP8BAAD+AAAA/gAAAP4AAAD/AQAA/wEAAP/HAAA=
 </value>
   </data>
+  <data name="checkBoxKeepAspect.ToolTip" xml:space="preserve">
+    <value>Keep width and height equal: changing
+one updates the other to match.</value>
+  </data>
+  <data name="numericUpDownHeight.ToolTip" xml:space="preserve">
+    <value>Image height in pixels (0–4096, step 256);
+width follows if Keep Aspect Ratio is on.</value>
+  </data>
+  <data name="numericUpDownWidth.ToolTip" xml:space="preserve">
+    <value>Image width in pixels (0–4096, step 256);
+height follows if Keep Aspect Ratio is on.</value>
+  </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value>Image width in pixels (0–4096, step 256);
+height follows if Keep Aspect Ratio is on.</value>
+  </data>
+  <data name="label2.ToolTip" xml:space="preserve">
+    <value>Image height in pixels (0–4096, step 256);
+width follows if Keep Aspect Ratio is on.</value>
+  </data>
+  <data name="label3.ToolTip" xml:space="preserve">
+    <value>Set the output image width in pixels (1-4096).</value>
+  </data>
+  <data name="label4.ToolTip" xml:space="preserve">
+    <value>Set the output image height in pixels (1-4096).</value>
+  </data>
 </root>

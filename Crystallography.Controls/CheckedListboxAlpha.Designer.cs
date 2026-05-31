@@ -24,6 +24,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CheckedListboxAlpha)); // 260531Cl
+            components = new System.ComponentModel.Container(); // (260531Ch)
+            toolTip = new System.Windows.Forms.ToolTip(components); // (260531Ch)
+            toolTip.IsBalloon = true; // 260531Cl 追加: バルーン表示に統一
             checkBox1 = new System.Windows.Forms.CheckBox();
             checkBox2 = new System.Windows.Forms.CheckBox();
             checkBox3 = new System.Windows.Forms.CheckBox();
@@ -48,6 +52,7 @@
             checkBox1.Location = new System.Drawing.Point(1, 1);
             checkBox1.Margin = new System.Windows.Forms.Padding(1);
             checkBox1.Name = "checkBox1";
+            toolTip.SetToolTip(checkBox1, resources.GetString("checkBox1.ToolTip")); // 260531Cl
             checkBox1.Size = new System.Drawing.Size(127, 19);
             checkBox1.TabIndex = 0;
             checkBox1.Text = "checkBox1000000";
@@ -60,6 +65,7 @@
             checkBox2.Location = new System.Drawing.Point(1, 22);
             checkBox2.Margin = new System.Windows.Forms.Padding(1);
             checkBox2.Name = "checkBox2";
+            toolTip.SetToolTip(checkBox2, resources.GetString("checkBox2.ToolTip")); // 260531Cl
             checkBox2.Size = new System.Drawing.Size(85, 19);
             checkBox2.TabIndex = 0;
             checkBox2.Text = "checkBox1";
@@ -72,6 +78,7 @@
             checkBox3.Location = new System.Drawing.Point(1, 43);
             checkBox3.Margin = new System.Windows.Forms.Padding(1);
             checkBox3.Name = "checkBox3";
+            toolTip.SetToolTip(checkBox3, resources.GetString("checkBox3.ToolTip")); // 260531Cl
             checkBox3.Size = new System.Drawing.Size(85, 19);
             checkBox3.TabIndex = 0;
             checkBox3.Text = "checkBox1";
@@ -84,6 +91,7 @@
             checkBox4.Location = new System.Drawing.Point(1, 127);
             checkBox4.Margin = new System.Windows.Forms.Padding(1);
             checkBox4.Name = "checkBox4";
+            toolTip.SetToolTip(checkBox4, resources.GetString("checkBox4.ToolTip")); // 260531Cl
             checkBox4.Size = new System.Drawing.Size(85, 19);
             checkBox4.TabIndex = 0;
             checkBox4.Text = "checkBox1";
@@ -96,6 +104,7 @@
             checkBox5.Location = new System.Drawing.Point(1, 148);
             checkBox5.Margin = new System.Windows.Forms.Padding(1);
             checkBox5.Name = "checkBox5";
+            toolTip.SetToolTip(checkBox5, resources.GetString("checkBox5.ToolTip")); // 260531Cl
             checkBox5.Size = new System.Drawing.Size(85, 19);
             checkBox5.TabIndex = 0;
             checkBox5.Text = "checkBox1";
@@ -133,6 +142,7 @@
             checkBox9.Location = new System.Drawing.Point(1, 64);
             checkBox9.Margin = new System.Windows.Forms.Padding(1);
             checkBox9.Name = "checkBox9";
+            toolTip.SetToolTip(checkBox9, resources.GetString("checkBox9.ToolTip")); // 260531Cl
             checkBox9.Size = new System.Drawing.Size(85, 19);
             checkBox9.TabIndex = 0;
             checkBox9.Text = "checkBox1";
@@ -145,6 +155,7 @@
             checkBox10.Location = new System.Drawing.Point(1, 85);
             checkBox10.Margin = new System.Windows.Forms.Padding(1);
             checkBox10.Name = "checkBox10";
+            toolTip.SetToolTip(checkBox10, resources.GetString("checkBox10.ToolTip")); // 260531Cl
             checkBox10.Size = new System.Drawing.Size(85, 19);
             checkBox10.TabIndex = 0;
             checkBox10.Text = "checkBox1";
@@ -157,6 +168,7 @@
             checkBox11.Location = new System.Drawing.Point(1, 106);
             checkBox11.Margin = new System.Windows.Forms.Padding(1);
             checkBox11.Name = "checkBox11";
+            toolTip.SetToolTip(checkBox11, resources.GetString("checkBox11.ToolTip")); // 260531Cl
             checkBox11.Size = new System.Drawing.Size(85, 19);
             checkBox11.TabIndex = 0;
             checkBox11.Text = "checkBox1";
@@ -169,6 +181,7 @@
             checkBox7.Location = new System.Drawing.Point(130, 1);
             checkBox7.Margin = new System.Windows.Forms.Padding(1);
             checkBox7.Name = "checkBox7";
+            toolTip.SetToolTip(checkBox7, resources.GetString("checkBox7.ToolTip")); // 260531Cl
             checkBox7.Size = new System.Drawing.Size(85, 19);
             checkBox7.TabIndex = 0;
             checkBox7.Text = "checkBox1";
@@ -181,6 +194,7 @@
             checkBox8.Location = new System.Drawing.Point(130, 22);
             checkBox8.Margin = new System.Windows.Forms.Padding(1);
             checkBox8.Name = "checkBox8";
+            toolTip.SetToolTip(checkBox8, resources.GetString("checkBox8.ToolTip")); // 260531Cl
             checkBox8.Size = new System.Drawing.Size(85, 19);
             checkBox8.TabIndex = 0;
             checkBox8.Text = "checkBox1";
@@ -193,6 +207,7 @@
             checkBox6.Location = new System.Drawing.Point(130, 43);
             checkBox6.Margin = new System.Windows.Forms.Padding(1);
             checkBox6.Name = "checkBox6";
+            toolTip.SetToolTip(checkBox6, resources.GetString("checkBox6.ToolTip")); // 260531Cl
             checkBox6.Size = new System.Drawing.Size(85, 19);
             checkBox6.TabIndex = 0;
             checkBox6.Text = "checkBox1";
@@ -205,6 +220,7 @@
             checkBox12.Location = new System.Drawing.Point(130, 64);
             checkBox12.Margin = new System.Windows.Forms.Padding(1);
             checkBox12.Name = "checkBox12";
+            toolTip.SetToolTip(checkBox12, resources.GetString("checkBox12.ToolTip")); // 260531Cl
             checkBox12.Size = new System.Drawing.Size(85, 19);
             checkBox12.TabIndex = 0;
             checkBox12.Text = "checkBox1";
@@ -217,6 +233,7 @@
             checkBox13.Location = new System.Drawing.Point(130, 85);
             checkBox13.Margin = new System.Windows.Forms.Padding(1);
             checkBox13.Name = "checkBox13";
+            toolTip.SetToolTip(checkBox13, resources.GetString("checkBox13.ToolTip")); // 260531Cl
             checkBox13.Size = new System.Drawing.Size(85, 19);
             checkBox13.TabIndex = 0;
             checkBox13.Text = "checkBox1";
@@ -242,6 +259,8 @@
         }
 
         #endregion
+
+        private System.Windows.Forms.ToolTip toolTip; // (260531Ch)
 
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.CheckBox checkBox2;

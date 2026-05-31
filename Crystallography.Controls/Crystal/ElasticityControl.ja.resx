@@ -1,0 +1,386 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="numericBox11.ToolTip" xml:space="preserve">
+    <value>弾性定数行列(Voigt表記)の c11 成分を設定します。
+スティフネス選択時は弾性スティフネス定数Cij、
+コンプライアンス選択時は弾性コンプライアンス
+定数Sij。対角成分で、単位はスティフネスがGPa、
+コンプライアンスがGPa^-1。高対称系では c22/c33
+などの等価成分の生成元にもなります。</value>
+  </data>
+  <data name="numericBox12.ToolTip" xml:space="preserve">
+    <value>弾性定数行列(Voigt表記)の c12 成分を設定します。
+モードに応じてスティフネスCijまたはコンプライアンス
+Sij。1軸と2軸を結合する非対角成分で、単位は
+GPa(スティフネス)/GPa^-1(コンプライアンス)。</value>
+  </data>
+  <data name="numericBox13.ToolTip" xml:space="preserve">
+    <value>弾性定数行列(Voigt表記)の c13 成分を設定します。モード
+に応じてスティフネスCijまたはコンプライアンスSij。
+1軸と3軸を結合する非対角成分で、単位はGPa/GPa^-1。</value>
+  </data>
+  <data name="numericBox14.ToolTip" xml:space="preserve">
+    <value>弾性定数行列(Voigt表記)の c14 成分を設定します。
+モードに応じてスティフネスCijまたはコンプライアンス
+Sij。垂直成分と剪断成分を結合する非対角成分(低対称
+・三方系で有効)で、単位はGPa/GPa^-1。</value>
+  </data>
+  <data name="numericBox15.ToolTip" xml:space="preserve">
+    <value>弾性定数行列(Voigt表記)の c15 成分を設定します。
+モードに応じてスティフネスCijまたはコンプライアンス
+Sij。垂直-剪断結合の非対角成分(低対称・三方系で
+有効)で、単位はGPa/GPa^-1。</value>
+  </data>
+  <data name="numericBox16.ToolTip" xml:space="preserve">
+    <value>弾性定数行列(Voigt表記)の c16 成分を設定します。
+モードに応じてスティフネスCijまたは
+コンプライアンスSij。垂直-剪断結合の
+非対角成分(低対称系で有効)で、単位はGPa/GPa^-1。</value>
+  </data>
+  <data name="numericBox22.ToolTip" xml:space="preserve">
+    <value>弾性定数行列(Voigt表記)の c22 成分を設定します。
+モードに応じてスティフネスCijまたはコンプライアンス
+Sij。2軸方向の対角成分で、多くの結晶系では c11 から
+自動算出され入力不可になります。単位はGPa/GPa^-1。</value>
+  </data>
+  <data name="numericBox23.ToolTip" xml:space="preserve">
+    <value>弾性定数行列(Voigt表記)の c23 成分を設定します。モード
+に応じてスティフネスCijまたはコンプライアンスSij。2軸と
+3軸を結合する非対角成分で、高対称系では c13(立方系では
+c12)から自動算出されます。単位はGPa/GPa^-1。</value>
+  </data>
+  <data name="numericBox24.ToolTip" xml:space="preserve">
+    <value>弾性定数行列(Voigt表記)の c24 成分を設定します。
+モードに応じてスティフネスCijまたはコンプライアンス
+Sij。垂直-剪断結合の非対角成分(三方系では -c14 に
+自動設定)で、単位はGPa/GPa^-1。</value>
+  </data>
+  <data name="numericBox25.ToolTip" xml:space="preserve">
+    <value>弾性定数行列(Voigt表記)の c25 成分を設定します。
+モードに応じてスティフネスCijまたはコンプライアンス
+Sij。垂直-剪断結合の非対角成分(三方 3/-3 では -c15
+に自動設定)で、単位はGPa/GPa^-1。</value>
+  </data>
+  <data name="numericBox26.ToolTip" xml:space="preserve">
+    <value>弾性定数行列(Voigt表記)の c26 成分を設定します。
+モードに応じてスティフネスCijまたはコンプライアンス
+Sij。垂直-剪断結合の非対角成分(正方 4/-4/4/m では
+-c16 に自動設定)で、単位はGPa/GPa^-1。</value>
+  </data>
+  <data name="numericBox33.ToolTip" xml:space="preserve">
+    <value>弾性定数行列(Voigt表記)の c33 成分を設定しま
+す。モードに応じてスティフネスCijまたは
+コンプライアンスSij。3軸方向の対角成分(立方系
+では c11 と等しくなる)で、単位はGPa/GPa^-1。</value>
+  </data>
+  <data name="numericBox34.ToolTip" xml:space="preserve">
+    <value>弾性定数行列(Voigt表記)の c34 成分を設定します。
+モードに応じてスティフネスCijまたは
+コンプライアンスSij。垂直-剪断結合の
+非対角成分(低対称系のみ有効)で、単位はGPa/GPa^-1。</value>
+  </data>
+  <data name="numericBox35.ToolTip" xml:space="preserve">
+    <value>弾性定数行列(Voigt表記)の c35 成分を設定します。
+モードに応じてスティフネスCijまたは
+コンプライアンスSij。垂直-剪断結合の
+非対角成分(低対称系のみ有効)で、単位はGPa/GPa^-1。</value>
+  </data>
+  <data name="numericBox36.ToolTip" xml:space="preserve">
+    <value>弾性定数行列(Voigt表記)の c36 成分を設定します。
+モードに応じてスティフネスCijまたは
+コンプライアンスSij。垂直-剪断結合の
+非対角成分(低対称系のみ有効)で、単位はGPa/GPa^-1。</value>
+  </data>
+  <data name="numericBox44.ToolTip" xml:space="preserve">
+    <value>弾性定数行列(Voigt表記)の c44 成分を設定します。モード
+に応じてスティフネスCijまたはコンプライアンスSij。
+剪断対角成分で、正方/六方/三方系では c55、立方系では
+c55=c66 の生成元になります。単位はGPa/GPa^-1。</value>
+  </data>
+  <data name="numericBox45.ToolTip" xml:space="preserve">
+    <value>弾性定数行列(Voigt表記)の c45 成分を設定します。
+モードに応じてスティフネスCijまたは
+コンプライアンスSij。剪断同士を結合する
+非対角成分(低対称系のみ有効)で、単位はGPa/GPa^-1。</value>
+  </data>
+  <data name="numericBox46.ToolTip" xml:space="preserve">
+    <value>弾性定数行列(Voigt表記)の c46 成分を設定します。
+モードに応じてスティフネスCijまたはコンプライアンス
+Sij。剪断同士を結合する非対角成分(三方 3/-3 では
+-c15 に自動設定)で、単位はGPa/GPa^-1。</value>
+  </data>
+  <data name="numericBox55.ToolTip" xml:space="preserve">
+    <value>弾性定数行列(Voigt表記)の c55 成分を設定します。
+モードに応じてスティフネスCijまたはコンプライアンス
+Sij。剪断対角成分で、正方/六方/三方/立方系では c44 か
+ら自動算出され入力不可になります。単位はGPa/GPa^-1。</value>
+  </data>
+  <data name="numericBox56.ToolTip" xml:space="preserve">
+    <value>弾性定数行列(Voigt表記)の c56 成分を設定します。
+モードに応じてスティフネスCijまたはコンプライアンス
+Sij。剪断同士を結合する非対角成分(三方系では c14 に
+自動設定)で、単位はGPa/GPa^-1。</value>
+  </data>
+  <data name="numericBox66.ToolTip" xml:space="preserve">
+    <value>弾性定数行列(Voigt表記)の c66 成分を設定します。
+モードに応じてスティフネスCijまたはコンプライアンス
+Sij。剪断対角成分で、六方/三方系では (c11-c12)/2、
+立方系では c44 に自動設定されます。単位はGPa/GPa^-1。</value>
+  </data>
+  <data name="radioButtonCompliance.ToolTip" xml:space="preserve">
+    <value>6x6行列を弾性コンプライアンス定数 Sij(ひずみ = S
+× 応力、スティフネステンソル C の逆、単位GPa^-1)と
+して解釈します。スティフネス行列 C はその逆行列と
+して保持されます。スティフネス選択とは排他です。</value>
+  </data>
+  <data name="radioButtonStiffness.ToolTip" xml:space="preserve">
+    <value>6x6行列を弾性スティフネス定数 Cij(応力 = C × ひ
+ずみ、剛性テンソル、単位GPa)として解釈します。
+コンプライアンス行列 S はその逆行列として保持さ
+れます。コンプライアンス選択とは排他です。</value>
+  </data>
+  <data name="label10.ToolTip" xml:space="preserve">
+    <value>弾性定数行列(Voigt表記)の c46 成分を設定します。
+モードに応じてスティフネスCijまたはコンプライアンス
+Sij。剪断同士を結合する非対角成分(三方 3/-3 では
+-c15 に自動設定)で、単位はGPa/GPa^-1。</value>
+  </data>
+  <data name="label100.ToolTip" xml:space="preserve">
+    <value>弾性定数行列(Voigt表記)の c11 成分を設定します。
+スティフネス選択時は弾性スティフネス定数Cij、
+コンプライアンス選択時は弾性コンプライアンス
+定数Sij。対角成分で、単位はスティフネスがGPa、
+コンプライアンスがGPa^-1。高対称系では c22/c33
+などの等価成分の生成元にもなります。</value>
+  </data>
+  <data name="label11.ToolTip" xml:space="preserve">
+    <value>弾性定数行列(Voigt表記)の c66 成分を設定します。
+モードに応じてスティフネスCijまたはコンプライアンス
+Sij。剪断対角成分で、六方/三方系では (c11-c12)/2、
+立方系では c44 に自動設定されます。単位はGPa/GPa^-1。</value>
+  </data>
+  <data name="label12.ToolTip" xml:space="preserve">
+    <value>弾性定数行列(Voigt表記)の c15 成分を設定します。
+モードに応じてスティフネスCijまたはコンプライアンス
+Sij。垂直-剪断結合の非対角成分(低対称・三方系で
+有効)で、単位はGPa/GPa^-1。</value>
+  </data>
+  <data name="label13.ToolTip" xml:space="preserve">
+    <value>弾性定数行列(Voigt表記)の c35 成分を設定します。
+モードに応じてスティフネスCijまたは
+コンプライアンスSij。垂直-剪断結合の
+非対角成分(低対称系のみ有効)で、単位はGPa/GPa^-1。</value>
+  </data>
+  <data name="label14.ToolTip" xml:space="preserve">
+    <value>弾性定数行列(Voigt表記)の c55 成分を設定します。
+モードに応じてスティフネスCijまたはコンプライアンス
+Sij。剪断対角成分で、正方/六方/三方/立方系では c44 か
+ら自動算出され入力不可になります。単位はGPa/GPa^-1。</value>
+  </data>
+  <data name="label15.ToolTip" xml:space="preserve">
+    <value>弾性定数行列(Voigt表記)の c25 成分を設定します。
+モードに応じてスティフネスCijまたはコンプライアンス
+Sij。垂直-剪断結合の非対角成分(三方 3/-3 では -c15
+に自動設定)で、単位はGPa/GPa^-1。</value>
+  </data>
+  <data name="label16.ToolTip" xml:space="preserve">
+    <value>弾性定数行列(Voigt表記)の c45 成分を設定します。
+モードに応じてスティフネスCijまたは
+コンプライアンスSij。剪断同士を結合する
+非対角成分(低対称系のみ有効)で、単位はGPa/GPa^-1。</value>
+  </data>
+  <data name="label18.ToolTip" xml:space="preserve">
+    <value>弾性定数行列(Voigt表記)の c14 成分を設定します。
+モードに応じてスティフネスCijまたはコンプライアンス
+Sij。垂直成分と剪断成分を結合する非対角成分(低対称
+・三方系で有効)で、単位はGPa/GPa^-1。</value>
+  </data>
+  <data name="label19.ToolTip" xml:space="preserve">
+    <value>弾性定数行列(Voigt表記)の c34 成分を設定します。
+モードに応じてスティフネスCijまたは
+コンプライアンスSij。垂直-剪断結合の
+非対角成分(低対称系のみ有効)で、単位はGPa/GPa^-1。</value>
+  </data>
+  <data name="label21.ToolTip" xml:space="preserve">
+    <value>弾性定数行列(Voigt表記)の c24 成分を設定します。
+モードに応じてスティフネスCijまたはコンプライアンス
+Sij。垂直-剪断結合の非対角成分(三方系では -c14 に
+自動設定)で、単位はGPa/GPa^-1。</value>
+  </data>
+  <data name="label22.ToolTip" xml:space="preserve">
+    <value>弾性定数行列(Voigt表記)の c44 成分を設定します。モード
+に応じてスティフネスCijまたはコンプライアンスSij。
+剪断対角成分で、正方/六方/三方系では c55、立方系では
+c55=c66 の生成元になります。単位はGPa/GPa^-1。</value>
+  </data>
+  <data name="label24.ToolTip" xml:space="preserve">
+    <value>弾性定数行列(Voigt表記)の c13 成分を設定します。モード
+に応じてスティフネスCijまたはコンプライアンスSij。
+1軸と3軸を結合する非対角成分で、単位はGPa/GPa^-1。</value>
+  </data>
+  <data name="label25.ToolTip" xml:space="preserve">
+    <value>弾性定数行列(Voigt表記)の c33 成分を設定しま
+す。モードに応じてスティフネスCijまたは
+コンプライアンスSij。3軸方向の対角成分(立方系
+では c11 と等しくなる)で、単位はGPa/GPa^-1。</value>
+  </data>
+  <data name="label27.ToolTip" xml:space="preserve">
+    <value>弾性定数行列(Voigt表記)の c23 成分を設定します。モード
+に応じてスティフネスCijまたはコンプライアンスSij。2軸と
+3軸を結合する非対角成分で、高対称系では c13(立方系では
+c12)から自動算出されます。単位はGPa/GPa^-1。</value>
+  </data>
+  <data name="label30.ToolTip" xml:space="preserve">
+    <value>弾性定数行列(Voigt表記)の c12 成分を設定します。
+モードに応じてスティフネスCijまたはコンプライアンス
+Sij。1軸と2軸を結合する非対角成分で、単位は
+GPa(スティフネス)/GPa^-1(コンプライアンス)。</value>
+  </data>
+  <data name="label33.ToolTip" xml:space="preserve">
+    <value>弾性定数行列(Voigt表記)の c22 成分を設定します。
+モードに応じてスティフネスCijまたはコンプライアンス
+Sij。2軸方向の対角成分で、多くの結晶系では c11 から
+自動算出され入力不可になります。単位はGPa/GPa^-1。</value>
+  </data>
+  <data name="label6.ToolTip" xml:space="preserve">
+    <value>弾性定数行列(Voigt表記)の c16 成分を設定します。
+モードに応じてスティフネスCijまたは
+コンプライアンスSij。垂直-剪断結合の
+非対角成分(低対称系で有効)で、単位はGPa/GPa^-1。</value>
+  </data>
+  <data name="label7.ToolTip" xml:space="preserve">
+    <value>弾性定数行列(Voigt表記)の c36 成分を設定します。
+モードに応じてスティフネスCijまたは
+コンプライアンスSij。垂直-剪断結合の
+非対角成分(低対称系のみ有効)で、単位はGPa/GPa^-1。</value>
+  </data>
+  <data name="label8.ToolTip" xml:space="preserve">
+    <value>弾性定数行列(Voigt表記)の c56 成分を設定します。
+モードに応じてスティフネスCijまたはコンプライアンス
+Sij。剪断同士を結合する非対角成分(三方系では c14 に
+自動設定)で、単位はGPa/GPa^-1。</value>
+  </data>
+  <data name="label9.ToolTip" xml:space="preserve">
+    <value>弾性定数行列(Voigt表記)の c26 成分を設定します。
+モードに応じてスティフネスCijまたはコンプライアンス
+Sij。垂直-剪断結合の非対角成分(正方 4/-4/4/m では
+-c16 に自動設定)で、単位はGPa/GPa^-1。</value>
+  </data>
+</root>

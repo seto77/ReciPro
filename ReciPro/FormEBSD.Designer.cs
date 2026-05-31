@@ -36,6 +36,8 @@
         {
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormEBSD));
+            toolTip = new System.Windows.Forms.ToolTip(components); // (260531Ch)
+            toolTip.IsBalloon = true; // 260531Cl 追加: バルーン表示に統一
             panelGeometry = new System.Windows.Forms.Panel();
             numericBoxSampleTilt = new NumericBox();
             waveLengthControl = new WaveLengthControl();
@@ -208,6 +210,7 @@
             // 
             numericBoxSampleTilt.BackColor = System.Drawing.Color.Transparent;
             resources.ApplyResources(numericBoxSampleTilt, "numericBoxSampleTilt");
+            toolTip.SetToolTip(numericBoxSampleTilt, resources.GetString("numericBoxSampleTilt.ToolTip")); // 260531Cl
             numericBoxSampleTilt.Maximum = 0D;
             numericBoxSampleTilt.Minimum = -90D;
             numericBoxSampleTilt.Name = "numericBoxSampleTilt";
@@ -220,6 +223,7 @@
             // waveLengthControl
             // 
             resources.ApplyResources(waveLengthControl, "waveLengthControl");
+            toolTip.SetToolTip(waveLengthControl, resources.GetString("waveLengthControl.ToolTip")); // 260531Cl
             waveLengthControl.Direction = System.Windows.Forms.FlowDirection.TopDown;
             waveLengthControl.Energy = 20D;
             waveLengthControl.Monochrome = true;
@@ -243,6 +247,7 @@
             // buttonViewQuarter
             // 
             resources.ApplyResources(buttonViewQuarter, "buttonViewQuarter");
+            toolTip.SetToolTip(buttonViewQuarter, resources.GetString("buttonViewQuarter.ToolTip")); // 260531Cl
             buttonViewQuarter.Name = "buttonViewQuarter";
             buttonViewQuarter.UseVisualStyleBackColor = true;
             buttonViewQuarter.Click += buttonViewQuarter_Click;
@@ -250,6 +255,7 @@
             // buttonViewFromSurfaceNormal
             // 
             resources.ApplyResources(buttonViewFromSurfaceNormal, "buttonViewFromSurfaceNormal");
+            toolTip.SetToolTip(buttonViewFromSurfaceNormal, resources.GetString("buttonViewFromSurfaceNormal.ToolTip")); // 260531Cl
             buttonViewFromSurfaceNormal.Name = "buttonViewFromSurfaceNormal";
             buttonViewFromSurfaceNormal.UseVisualStyleBackColor = true;
             buttonViewFromSurfaceNormal.Click += buttonFromSurfaceNormal_Click;
@@ -257,6 +263,7 @@
             // buttonFromX
             // 
             resources.ApplyResources(buttonFromX, "buttonFromX");
+            toolTip.SetToolTip(buttonFromX, resources.GetString("buttonFromX.ToolTip")); // 260531Cl
             buttonFromX.Name = "buttonFromX";
             buttonFromX.UseVisualStyleBackColor = true;
             buttonFromX.Click += buttonViewFromX_Click;
@@ -264,6 +271,7 @@
             // buttonViewFromZ
             // 
             resources.ApplyResources(buttonViewFromZ, "buttonViewFromZ");
+            toolTip.SetToolTip(buttonViewFromZ, resources.GetString("buttonViewFromZ.ToolTip")); // 260531Cl
             buttonViewFromZ.Name = "buttonViewFromZ";
             buttonViewFromZ.UseVisualStyleBackColor = true;
             buttonViewFromZ.Click += buttonViewFromZ_Click;
@@ -273,6 +281,7 @@
             buttonSimulateBSE.BackColor = System.Drawing.Color.SteelBlue;
             buttonSimulateBSE.ForeColor = System.Drawing.Color.White;
             resources.ApplyResources(buttonSimulateBSE, "buttonSimulateBSE");
+            toolTip.SetToolTip(buttonSimulateBSE, resources.GetString("buttonSimulateBSE.ToolTip")); // 260531Cl
             buttonSimulateBSE.Name = "buttonSimulateBSE";
             buttonSimulateBSE.UseVisualStyleBackColor = false;
             buttonSimulateBSE.Click += buttonBSE_Click;
@@ -280,6 +289,7 @@
             // buttonFitNistElasticSampler
             // 
             resources.ApplyResources(buttonFitNistElasticSampler, "buttonFitNistElasticSampler");
+            toolTip.SetToolTip(buttonFitNistElasticSampler, resources.GetString("buttonFitNistElasticSampler.ToolTip")); // 260531Cl
             buttonFitNistElasticSampler.Name = "buttonFitNistElasticSampler";
             buttonFitNistElasticSampler.UseVisualStyleBackColor = true;
             buttonFitNistElasticSampler.Click += buttonFitNistElasticSampler_Click;
@@ -384,6 +394,7 @@
             // checkBoxDrawAxesInStereonet
             // 
             resources.ApplyResources(checkBoxDrawAxesInStereonet, "checkBoxDrawAxesInStereonet");
+            toolTip.SetToolTip(checkBoxDrawAxesInStereonet, resources.GetString("checkBoxDrawAxesInStereonet.ToolTip")); // 260531Cl
             checkBoxDrawAxesInStereonet.BackColor = System.Drawing.Color.White;
             checkBoxDrawAxesInStereonet.Checked = true;
             checkBoxDrawAxesInStereonet.CheckState = System.Windows.Forms.CheckState.Checked;
@@ -394,6 +405,7 @@
             // 
             numericBoxDetTilt.BackColor = System.Drawing.Color.Transparent;
             resources.ApplyResources(numericBoxDetTilt, "numericBoxDetTilt");
+            toolTip.SetToolTip(numericBoxDetTilt, resources.GetString("numericBoxDetTilt.ToolTip")); // 260531Cl
             numericBoxDetTilt.Maximum = 180D;
             numericBoxDetTilt.Minimum = 0D;
             numericBoxDetTilt.Name = "numericBoxDetTilt";
@@ -407,6 +419,7 @@
             // 
             numericBoxDetRadius.BackColor = System.Drawing.Color.Transparent;
             resources.ApplyResources(numericBoxDetRadius, "numericBoxDetRadius");
+            toolTip.SetToolTip(numericBoxDetRadius, resources.GetString("numericBoxDetRadius.ToolTip")); // 260531Cl
             numericBoxDetRadius.Maximum = 180D;
             numericBoxDetRadius.Minimum = 0D;
             numericBoxDetRadius.Name = "numericBoxDetRadius";
@@ -420,6 +433,7 @@
             // 
             numericBoxZofDet.BackColor = System.Drawing.Color.Transparent;
             resources.ApplyResources(numericBoxZofDet, "numericBoxZofDet");
+            toolTip.SetToolTip(numericBoxZofDet, resources.GetString("numericBoxZofDet.ToolTip")); // 260531Cl
             numericBoxZofDet.Maximum = 1000D;
             numericBoxZofDet.Minimum = -1000D;
             numericBoxZofDet.Name = "numericBoxZofDet";
@@ -431,6 +445,7 @@
             // 
             numericBoxYofDet.BackColor = System.Drawing.Color.Transparent;
             resources.ApplyResources(numericBoxYofDet, "numericBoxYofDet");
+            toolTip.SetToolTip(numericBoxYofDet, resources.GetString("numericBoxYofDet.ToolTip")); // 260531Cl
             numericBoxYofDet.Maximum = 1000D;
             numericBoxYofDet.Minimum = -1000D;
             numericBoxYofDet.Name = "numericBoxYofDet";
@@ -443,6 +458,7 @@
             // label2
             // 
             resources.ApplyResources(label2, "label2");
+            toolTip.SetToolTip(label2, resources.GetString("label2.ToolTip")); // 260531Cl
             label2.Name = "label2";
             // 
             // graphicsBox
@@ -460,6 +476,7 @@
             // trackBarStrSize
             // 
             resources.ApplyResources(trackBarStrSize, "trackBarStrSize");
+            toolTip.SetToolTip(trackBarStrSize, resources.GetString("trackBarStrSize.ToolTip")); // 260531Cl
             trackBarStrSize.LargeChange = 50;
             trackBarStrSize.Maximum = 200;
             trackBarStrSize.Minimum = 1;
@@ -474,6 +491,7 @@
             // 
             colorControlExcessLine.Argb = -2039584;
             resources.ApplyResources(colorControlExcessLine, "colorControlExcessLine");
+            toolTip.SetToolTip(colorControlExcessLine, resources.GetString("colorControlExcessLine.ToolTip")); // 260531Cl
             colorControlExcessLine.BackColor = System.Drawing.SystemColors.Control;
             colorControlExcessLine.Blue = 224;
             colorControlExcessLine.BlueF = 0.8784314F;
@@ -489,6 +507,7 @@
             // trackBarLineWidth
             // 
             resources.ApplyResources(trackBarLineWidth, "trackBarLineWidth");
+            toolTip.SetToolTip(trackBarLineWidth, resources.GetString("trackBarLineWidth.ToolTip")); // 260531Cl
             trackBarLineWidth.Maximum = 10000;
             trackBarLineWidth.Minimum = 1;
             trackBarLineWidth.Name = "trackBarLineWidth";
@@ -499,6 +518,7 @@
             // label11
             // 
             resources.ApplyResources(label11, "label11");
+            toolTip.SetToolTip(label11, resources.GetString("label11.ToolTip")); // 260531Cl
             label11.Name = "label11";
             // 
             // colorControlString
@@ -513,6 +533,7 @@
             colorControlString.Green = 255;
             colorControlString.GreenF = 1F;
             colorControlString.Name = "colorControlString";
+            toolTip.SetToolTip(colorControlString, resources.GetString("colorControlString.ToolTip")); // (260531Ch)
             colorControlString.Red = 255;
             colorControlString.RedF = 1F;
             colorControlString.ColorChanged += colorControlExcessLine_ColorChanged;
@@ -529,6 +550,7 @@
             colorControlBackGround.Green = 32;
             colorControlBackGround.GreenF = 0.1254902F;
             colorControlBackGround.Name = "colorControlBackGround";
+            toolTip.SetToolTip(colorControlBackGround, resources.GetString("colorControlBackGround.ToolTip")); // (260531Ch)
             colorControlBackGround.Red = 32;
             colorControlBackGround.RedF = 0.1254902F;
             colorControlBackGround.ColorChanged += colorControlExcessLine_ColorChanged;
@@ -536,6 +558,7 @@
             // radioButtonKikuchiThresholdOfStructureFactor
             // 
             resources.ApplyResources(radioButtonKikuchiThresholdOfStructureFactor, "radioButtonKikuchiThresholdOfStructureFactor");
+            toolTip.SetToolTip(radioButtonKikuchiThresholdOfStructureFactor, resources.GetString("radioButtonKikuchiThresholdOfStructureFactor.ToolTip")); // 260531Cl
             radioButtonKikuchiThresholdOfStructureFactor.Checked = true;
             radioButtonKikuchiThresholdOfStructureFactor.Name = "radioButtonKikuchiThresholdOfStructureFactor";
             radioButtonKikuchiThresholdOfStructureFactor.TabStop = true;
@@ -545,6 +568,7 @@
             // checkBoxKikuchiLine_Kinematical
             // 
             resources.ApplyResources(checkBoxKikuchiLine_Kinematical, "checkBoxKikuchiLine_Kinematical");
+            toolTip.SetToolTip(checkBoxKikuchiLine_Kinematical, resources.GetString("checkBoxKikuchiLine_Kinematical.ToolTip")); // 260531Cl
             checkBoxKikuchiLine_Kinematical.Checked = true;
             checkBoxKikuchiLine_Kinematical.CheckState = System.Windows.Forms.CheckState.Checked;
             checkBoxKikuchiLine_Kinematical.Name = "checkBoxKikuchiLine_Kinematical";
@@ -554,6 +578,7 @@
             // radioButtonKikuchiThresholdOfLength
             // 
             resources.ApplyResources(radioButtonKikuchiThresholdOfLength, "radioButtonKikuchiThresholdOfLength");
+            toolTip.SetToolTip(radioButtonKikuchiThresholdOfLength, resources.GetString("radioButtonKikuchiThresholdOfLength.ToolTip")); // 260531Cl
             radioButtonKikuchiThresholdOfLength.Name = "radioButtonKikuchiThresholdOfLength";
             radioButtonKikuchiThresholdOfLength.UseVisualStyleBackColor = true;
             // 
@@ -561,6 +586,7 @@
             // 
             numericBoxKikuchiThresholdOfStructureFactor.BackColor = System.Drawing.Color.Transparent;
             resources.ApplyResources(numericBoxKikuchiThresholdOfStructureFactor, "numericBoxKikuchiThresholdOfStructureFactor");
+            toolTip.SetToolTip(numericBoxKikuchiThresholdOfStructureFactor, resources.GetString("numericBoxKikuchiThresholdOfStructureFactor.ToolTip")); // 260531Cl
             numericBoxKikuchiThresholdOfStructureFactor.Maximum = 1000D;
             numericBoxKikuchiThresholdOfStructureFactor.Minimum = 1D;
             numericBoxKikuchiThresholdOfStructureFactor.Name = "numericBoxKikuchiThresholdOfStructureFactor";
@@ -577,6 +603,7 @@
             numericBoxKikuchiThresholdOfLength.Maximum = 100D;
             numericBoxKikuchiThresholdOfLength.Minimum = 0D;
             numericBoxKikuchiThresholdOfLength.Name = "numericBoxKikuchiThresholdOfLength";
+            toolTip.SetToolTip(numericBoxKikuchiThresholdOfLength, resources.GetString("numericBoxKikuchiThresholdOfLength.ToolTip")); // (260531Ch)
             numericBoxKikuchiThresholdOfLength.RadianValue = 0.17453292519943295D;
             numericBoxKikuchiThresholdOfLength.ShowUpDown = true;
             numericBoxKikuchiThresholdOfLength.SmartIncrement = true;
@@ -586,6 +613,7 @@
             // label1
             // 
             resources.ApplyResources(label1, "label1");
+            toolTip.SetToolTip(label1, resources.GetString("label1.ToolTip")); // 260531Cl
             label1.Name = "label1";
             // 
             // numericBoxThicknessStep
@@ -598,6 +626,7 @@
             numericBoxThicknessStep.Maximum = 10D;
             numericBoxThicknessStep.Minimum = 0.001D;
             numericBoxThicknessStep.Name = "numericBoxThicknessStep";
+            toolTip.SetToolTip(numericBoxThicknessStep, resources.GetString("numericBoxThicknessStep.ToolTip")); // (260531Ch)
             numericBoxThicknessStep.RadianValue = 0.017453292519943295D;
             numericBoxThicknessStep.ShowUpDown = true;
             numericBoxThicknessStep.SmartIncrement = true;
@@ -614,6 +643,7 @@
             numericBoxMaxNumOfG.Maximum = 2048D;
             numericBoxMaxNumOfG.Minimum = 1D;
             numericBoxMaxNumOfG.Name = "numericBoxMaxNumOfG";
+            toolTip.SetToolTip(numericBoxMaxNumOfG, resources.GetString("numericBoxMaxNumOfG.ToolTip")); // (260531Ch)
             numericBoxMaxNumOfG.RadianValue = 0.55850536063818546D;
             numericBoxMaxNumOfG.ShowUpDown = true;
             numericBoxMaxNumOfG.SmartIncrement = true;
@@ -623,12 +653,14 @@
             // checkBoxNonLocalAbsorption
             // 
             resources.ApplyResources(checkBoxNonLocalAbsorption, "checkBoxNonLocalAbsorption");
+            toolTip.SetToolTip(checkBoxNonLocalAbsorption, resources.GetString("checkBoxNonLocalAbsorption.ToolTip")); // 260531Cl
             checkBoxNonLocalAbsorption.Name = "checkBoxNonLocalAbsorption";
             checkBoxNonLocalAbsorption.UseVisualStyleBackColor = true;
             // 
             // checkBoxTDSBackground
             // 
             resources.ApplyResources(checkBoxTDSBackground, "checkBoxTDSBackground");
+            toolTip.SetToolTip(checkBoxTDSBackground, resources.GetString("checkBoxTDSBackground.ToolTip")); // 260531Cl
             checkBoxTDSBackground.Name = "checkBoxTDSBackground";
             checkBoxTDSBackground.UseVisualStyleBackColor = true;
             // 
@@ -642,6 +674,7 @@
             numericBoxThicknessStart.Maximum = 1000D;
             numericBoxThicknessStart.Minimum = 0.001D;
             numericBoxThicknessStart.Name = "numericBoxThicknessStart";
+            toolTip.SetToolTip(numericBoxThicknessStart, resources.GetString("numericBoxThicknessStart.ToolTip")); // (260531Ch)
             numericBoxThicknessStart.RadianValue = 0.017453292519943295D;
             numericBoxThicknessStart.ShowUpDown = true;
             numericBoxThicknessStart.SmartIncrement = true;
@@ -659,6 +692,7 @@
             numericBoxThicknessEnd.Maximum = 1000D;
             numericBoxThicknessEnd.Minimum = 0.001D;
             numericBoxThicknessEnd.Name = "numericBoxThicknessEnd";
+            toolTip.SetToolTip(numericBoxThicknessEnd, resources.GetString("numericBoxThicknessEnd.ToolTip")); // (260531Ch)
             numericBoxThicknessEnd.RadianValue = 0.87266462599716477D;
             numericBoxThicknessEnd.ShowUpDown = true;
             numericBoxThicknessEnd.SmartIncrement = true;
@@ -669,6 +703,7 @@
             // buttonStop
             // 
             resources.ApplyResources(buttonStop, "buttonStop");
+            toolTip.SetToolTip(buttonStop, resources.GetString("buttonStop.ToolTip")); // 260531Cl
             buttonStop.BackColor = System.Drawing.Color.IndianRed;
             buttonStop.ForeColor = System.Drawing.Color.White;
             buttonStop.Name = "buttonStop";
@@ -704,6 +739,7 @@
             // 
             numericBoxEnergy.BackColor = System.Drawing.Color.Transparent;
             resources.ApplyResources(numericBoxEnergy, "numericBoxEnergy");
+            toolTip.SetToolTip(numericBoxEnergy, resources.GetString("numericBoxEnergy.ToolTip")); // 260531Cl
             numericBoxEnergy.Name = "numericBoxEnergy";
             numericBoxEnergy.ReadOnly = true;
             numericBoxEnergy.ValueBackColor = System.Drawing.SystemColors.Control;
@@ -711,6 +747,7 @@
             // trackBarOutputEnergy
             // 
             resources.ApplyResources(trackBarOutputEnergy, "trackBarOutputEnergy");
+            toolTip.SetToolTip(trackBarOutputEnergy, resources.GetString("trackBarOutputEnergy.ToolTip")); // 260531Cl
             trackBarOutputEnergy.LargeChange = 1;
             trackBarOutputEnergy.Maximum = 5;
             trackBarOutputEnergy.Name = "trackBarOutputEnergy";
@@ -720,6 +757,7 @@
             // 
             numericBoxDepth.BackColor = System.Drawing.Color.Transparent;
             resources.ApplyResources(numericBoxDepth, "numericBoxDepth");
+            toolTip.SetToolTip(numericBoxDepth, resources.GetString("numericBoxDepth.ToolTip")); // 260531Cl
             numericBoxDepth.Name = "numericBoxDepth";
             numericBoxDepth.ReadOnly = true;
             numericBoxDepth.ValueBackColor = System.Drawing.SystemColors.Control;
@@ -727,6 +765,7 @@
             // trackBarOutputThickness
             // 
             resources.ApplyResources(trackBarOutputThickness, "trackBarOutputThickness");
+            toolTip.SetToolTip(trackBarOutputThickness, resources.GetString("trackBarOutputThickness.ToolTip")); // 260531Cl
             trackBarOutputThickness.LargeChange = 1;
             trackBarOutputThickness.Maximum = 9;
             trackBarOutputThickness.Name = "trackBarOutputThickness";
@@ -735,16 +774,19 @@
             // label3
             // 
             resources.ApplyResources(label3, "label3");
+            toolTip.SetToolTip(label3, resources.GetString("label3.ToolTip")); // 260531Cl
             label3.Name = "label3";
             // 
             // label4
             // 
             resources.ApplyResources(label4, "label4");
+            toolTip.SetToolTip(label4, resources.GetString("label4.ToolTip")); // 260531Cl
             label4.Name = "label4";
             // 
             // checkBoxWithBSEDistribution
             // 
             resources.ApplyResources(checkBoxWithBSEDistribution, "checkBoxWithBSEDistribution");
+            toolTip.SetToolTip(checkBoxWithBSEDistribution, resources.GetString("checkBoxWithBSEDistribution.ToolTip")); // 260531Cl
             checkBoxWithBSEDistribution.Checked = true;
             checkBoxWithBSEDistribution.CheckState = System.Windows.Forms.CheckState.Checked;
             checkBoxWithBSEDistribution.Name = "checkBoxWithBSEDistribution";
@@ -755,6 +797,7 @@
             // 
             comboBoxGradient.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             resources.ApplyResources(comboBoxGradient, "comboBoxGradient");
+            toolTip.SetToolTip(comboBoxGradient, resources.GetString("comboBoxGradient.ToolTip")); // 260531Cl
             comboBoxGradient.FormattingEnabled = true;
             comboBoxGradient.Items.AddRange(new object[] { resources.GetString("comboBoxGradient.Items"), resources.GetString("comboBoxGradient.Items1") });
             comboBoxGradient.Name = "comboBoxGradient";
@@ -764,6 +807,7 @@
             // 
             comboBoxScale.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             resources.ApplyResources(comboBoxScale, "comboBoxScale");
+            toolTip.SetToolTip(comboBoxScale, resources.GetString("comboBoxScale.ToolTip")); // 260531Cl
             comboBoxScale.FormattingEnabled = true;
             comboBoxScale.Items.AddRange(new object[] { resources.GetString("comboBoxScale.Items"), resources.GetString("comboBoxScale.Items1"), resources.GetString("comboBoxScale.Items2"), resources.GetString("comboBoxScale.Items3") });
             comboBoxScale.Name = "comboBoxScale";
@@ -772,6 +816,7 @@
             // trackBarIntensityBrightnessMax
             // 
             resources.ApplyResources(trackBarIntensityBrightnessMax, "trackBarIntensityBrightnessMax");
+            toolTip.SetToolTip(trackBarIntensityBrightnessMax, resources.GetString("trackBarIntensityBrightnessMax.ToolTip")); // 260531Cl
             trackBarIntensityBrightnessMax.LargeChange = 10000;
             trackBarIntensityBrightnessMax.Maximum = 1000000;
             trackBarIntensityBrightnessMax.Minimum = 1;
@@ -784,6 +829,7 @@
             // trackBarIntensityBrightnessMin
             // 
             resources.ApplyResources(trackBarIntensityBrightnessMin, "trackBarIntensityBrightnessMin");
+            toolTip.SetToolTip(trackBarIntensityBrightnessMin, resources.GetString("trackBarIntensityBrightnessMin.ToolTip")); // 260531Cl
             trackBarIntensityBrightnessMin.LargeChange = 10000;
             trackBarIntensityBrightnessMin.Maximum = 999999;
             trackBarIntensityBrightnessMin.Name = "trackBarIntensityBrightnessMin";
@@ -794,21 +840,25 @@
             // label8
             // 
             resources.ApplyResources(label8, "label8");
+            toolTip.SetToolTip(label8, resources.GetString("label8.ToolTip")); // 260531Cl
             label8.Name = "label8";
             // 
             // label7
             // 
             resources.ApplyResources(label7, "label7");
+            toolTip.SetToolTip(label7, resources.GetString("label7.ToolTip")); // 260531Cl
             label7.Name = "label7";
             // 
             // label10
             // 
             resources.ApplyResources(label10, "label10");
+            toolTip.SetToolTip(label10, resources.GetString("label10.ToolTip")); // 260531Cl
             label10.Name = "label10";
             // 
             // checkBoxShowOverlays
             // 
             resources.ApplyResources(checkBoxShowOverlays, "checkBoxShowOverlays");
+            toolTip.SetToolTip(checkBoxShowOverlays, resources.GetString("checkBoxShowOverlays.ToolTip")); // 260531Cl
             checkBoxShowOverlays.Checked = true;
             checkBoxShowOverlays.CheckState = System.Windows.Forms.CheckState.Checked;
             checkBoxShowOverlays.Name = "checkBoxShowOverlays";
@@ -818,6 +868,7 @@
             // buttonCopyImage
             // 
             resources.ApplyResources(buttonCopyImage, "buttonCopyImage");
+            toolTip.SetToolTip(buttonCopyImage, resources.GetString("buttonCopyImage.ToolTip")); // 260531Cl
             buttonCopyImage.Name = "buttonCopyImage";
             buttonCopyImage.UseVisualStyleBackColor = true;
             buttonCopyImage.Click += buttonCopyImage_Click;
@@ -832,6 +883,7 @@
             numericBoxEnergyEnd.Maximum = 1000D;
             numericBoxEnergyEnd.Minimum = 0.001D;
             numericBoxEnergyEnd.Name = "numericBoxEnergyEnd";
+            toolTip.SetToolTip(numericBoxEnergyEnd, resources.GetString("numericBoxEnergyEnd.ToolTip")); // (260531Ch)
             numericBoxEnergyEnd.RadianValue = 0.26179938779914941D;
             numericBoxEnergyEnd.ShowUpDown = true;
             numericBoxEnergyEnd.SmartIncrement = true;
@@ -849,6 +901,7 @@
             numericBoxEnergyStart.Maximum = 1000D;
             numericBoxEnergyStart.Minimum = 1D;
             numericBoxEnergyStart.Name = "numericBoxEnergyStart";
+            toolTip.SetToolTip(numericBoxEnergyStart, resources.GetString("numericBoxEnergyStart.ToolTip")); // (260531Ch)
             numericBoxEnergyStart.RadianValue = 0.3490658503988659D;
             numericBoxEnergyStart.ShowUpDown = true;
             numericBoxEnergyStart.SmartIncrement = true;
@@ -867,6 +920,7 @@
             numericBoxEnergyStep.Maximum = 10D;
             numericBoxEnergyStep.Minimum = 0.001D;
             numericBoxEnergyStep.Name = "numericBoxEnergyStep";
+            toolTip.SetToolTip(numericBoxEnergyStep, resources.GetString("numericBoxEnergyStep.ToolTip")); // (260531Ch)
             numericBoxEnergyStep.RadianValue = 0.017453292519943295D;
             numericBoxEnergyStep.ShowUpDown = true;
             numericBoxEnergyStep.SmartIncrement = true;
@@ -877,18 +931,21 @@
             // label13
             // 
             resources.ApplyResources(label13, "label13");
+            toolTip.SetToolTip(label13, resources.GetString("label13.ToolTip")); // 260531Cl
             label13.BackColor = System.Drawing.Color.White;
             label13.Name = "label13";
             // 
             // label14
             // 
             resources.ApplyResources(label14, "label14");
+            toolTip.SetToolTip(label14, resources.GetString("label14.ToolTip")); // 260531Cl
             label14.BackColor = System.Drawing.Color.White;
             label14.Name = "label14";
             // 
             // checkBoxShowDyanmicalEBSD
             // 
             resources.ApplyResources(checkBoxShowDyanmicalEBSD, "checkBoxShowDyanmicalEBSD");
+            toolTip.SetToolTip(checkBoxShowDyanmicalEBSD, resources.GetString("checkBoxShowDyanmicalEBSD.ToolTip")); // 260531Cl
             checkBoxShowDyanmicalEBSD.Checked = true;
             checkBoxShowDyanmicalEBSD.CheckState = System.Windows.Forms.CheckState.Checked;
             checkBoxShowDyanmicalEBSD.Name = "checkBoxShowDyanmicalEBSD";
@@ -898,6 +955,7 @@
             // checkBoxDrawDetectorOutline
             // 
             resources.ApplyResources(checkBoxDrawDetectorOutline, "checkBoxDrawDetectorOutline");
+            toolTip.SetToolTip(checkBoxDrawDetectorOutline, resources.GetString("checkBoxDrawDetectorOutline.ToolTip")); // 260531Cl
             checkBoxDrawDetectorOutline.Checked = true;
             checkBoxDrawDetectorOutline.CheckState = System.Windows.Forms.CheckState.Checked;
             checkBoxDrawDetectorOutline.Name = "checkBoxDrawDetectorOutline";
@@ -942,11 +1000,13 @@
             // label17
             // 
             resources.ApplyResources(label17, "label17");
+            toolTip.SetToolTip(label17, resources.GetString("label17.ToolTip")); // 260531Cl
             label17.Name = "label17";
             // 
             // label16
             // 
             resources.ApplyResources(label16, "label16");
+            toolTip.SetToolTip(label16, resources.GetString("label16.ToolTip")); // 260531Cl
             label16.Name = "label16";
             // 
             // groupBoxSampleCondition
@@ -976,6 +1036,7 @@
             // label15
             // 
             resources.ApplyResources(label15, "label15");
+            toolTip.SetToolTip(label15, resources.GetString("label15.ToolTip")); // 260531Cl
             label15.BackColor = System.Drawing.Color.White;
             label15.Name = "label15";
             // 
@@ -1006,6 +1067,7 @@
             // checkBoxShowMesh
             // 
             resources.ApplyResources(checkBoxShowMesh, "checkBoxShowMesh");
+            toolTip.SetToolTip(checkBoxShowMesh, resources.GetString("checkBoxShowMesh.ToolTip")); // 260531Cl
             checkBoxShowMesh.Checked = true;
             checkBoxShowMesh.CheckState = System.Windows.Forms.CheckState.Checked;
             checkBoxShowMesh.Name = "checkBoxShowMesh";
@@ -1015,6 +1077,7 @@
             // checkBoxShowCircle
             // 
             resources.ApplyResources(checkBoxShowCircle, "checkBoxShowCircle");
+            toolTip.SetToolTip(checkBoxShowCircle, resources.GetString("checkBoxShowCircle.ToolTip")); // 260531Cl
             checkBoxShowCircle.Checked = true;
             checkBoxShowCircle.CheckState = System.Windows.Forms.CheckState.Checked;
             checkBoxShowCircle.Name = "checkBoxShowCircle";
@@ -1033,6 +1096,7 @@
             // checkBoxShowKikuchiLines
             // 
             resources.ApplyResources(checkBoxShowKikuchiLines, "checkBoxShowKikuchiLines");
+            toolTip.SetToolTip(checkBoxShowKikuchiLines, resources.GetString("checkBoxShowKikuchiLines.ToolTip")); // 260531Cl
             checkBoxShowKikuchiLines.Checked = true;
             checkBoxShowKikuchiLines.CheckState = System.Windows.Forms.CheckState.Checked;
             checkBoxShowKikuchiLines.Name = "checkBoxShowKikuchiLines";
@@ -1062,6 +1126,7 @@
             // checkBoxShowGIndices
             // 
             resources.ApplyResources(checkBoxShowGIndices, "checkBoxShowGIndices");
+            toolTip.SetToolTip(checkBoxShowGIndices, resources.GetString("checkBoxShowGIndices.ToolTip")); // 260531Cl
             checkBoxShowGIndices.Name = "checkBoxShowGIndices";
             checkBoxShowGIndices.UseVisualStyleBackColor = true;
             checkBoxShowGIndices.CheckedChanged += colorControlExcessLine_ColorChanged;
@@ -1069,6 +1134,7 @@
             // checkBoxShowZoneAxisIndices
             // 
             resources.ApplyResources(checkBoxShowZoneAxisIndices, "checkBoxShowZoneAxisIndices");
+            toolTip.SetToolTip(checkBoxShowZoneAxisIndices, resources.GetString("checkBoxShowZoneAxisIndices.ToolTip")); // 260531Cl
             checkBoxShowZoneAxisIndices.Checked = true;
             checkBoxShowZoneAxisIndices.CheckState = System.Windows.Forms.CheckState.Checked;
             checkBoxShowZoneAxisIndices.Name = "checkBoxShowZoneAxisIndices";
@@ -1103,12 +1169,14 @@
             // labelMasterPatternGrid
             // 
             resources.ApplyResources(labelMasterPatternGrid, "labelMasterPatternGrid");
+            toolTip.SetToolTip(labelMasterPatternGrid, resources.GetString("labelMasterPatternGrid.ToolTip")); // 260531Cl
             labelMasterPatternGrid.Name = "labelMasterPatternGrid";
             // 
             // comboBoxMasterPatternGrid
             // 
             comboBoxMasterPatternGrid.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             resources.ApplyResources(comboBoxMasterPatternGrid, "comboBoxMasterPatternGrid");
+            toolTip.SetToolTip(comboBoxMasterPatternGrid, resources.GetString("comboBoxMasterPatternGrid.ToolTip")); // 260531Cl
             comboBoxMasterPatternGrid.FormattingEnabled = true;
             comboBoxMasterPatternGrid.Items.AddRange(new object[] { resources.GetString("comboBoxMasterPatternGrid.Items"), resources.GetString("comboBoxMasterPatternGrid.Items1"), resources.GetString("comboBoxMasterPatternGrid.Items2"), resources.GetString("comboBoxMasterPatternGrid.Items3"), resources.GetString("comboBoxMasterPatternGrid.Items4"), resources.GetString("comboBoxMasterPatternGrid.Items5"), resources.GetString("comboBoxMasterPatternGrid.Items6"), resources.GetString("comboBoxMasterPatternGrid.Items7"), resources.GetString("comboBoxMasterPatternGrid.Items8"), resources.GetString("comboBoxMasterPatternGrid.Items9") });
             comboBoxMasterPatternGrid.Name = "comboBoxMasterPatternGrid";
@@ -1211,6 +1279,7 @@
             // 
             numericBoxMasterPatternEnergy.BackColor = System.Drawing.Color.Transparent;
             resources.ApplyResources(numericBoxMasterPatternEnergy, "numericBoxMasterPatternEnergy");
+            toolTip.SetToolTip(numericBoxMasterPatternEnergy, resources.GetString("numericBoxMasterPatternEnergy.ToolTip")); // 260531Cl
             numericBoxMasterPatternEnergy.Name = "numericBoxMasterPatternEnergy";
             numericBoxMasterPatternEnergy.ReadOnly = true;
             numericBoxMasterPatternEnergy.ValueBackColor = System.Drawing.SystemColors.Control;
@@ -1218,6 +1287,7 @@
             // trackBarMasterPatternEnergy
             // 
             resources.ApplyResources(trackBarMasterPatternEnergy, "trackBarMasterPatternEnergy");
+            toolTip.SetToolTip(trackBarMasterPatternEnergy, resources.GetString("trackBarMasterPatternEnergy.ToolTip")); // 260531Cl
             trackBarMasterPatternEnergy.LargeChange = 1;
             trackBarMasterPatternEnergy.Maximum = 0;
             trackBarMasterPatternEnergy.Name = "trackBarMasterPatternEnergy";
@@ -1227,6 +1297,7 @@
             // 
             numericBoxMasterPatternDepth.BackColor = System.Drawing.Color.Transparent;
             resources.ApplyResources(numericBoxMasterPatternDepth, "numericBoxMasterPatternDepth");
+            toolTip.SetToolTip(numericBoxMasterPatternDepth, resources.GetString("numericBoxMasterPatternDepth.ToolTip")); // 260531Cl
             numericBoxMasterPatternDepth.Name = "numericBoxMasterPatternDepth";
             numericBoxMasterPatternDepth.ReadOnly = true;
             numericBoxMasterPatternDepth.ValueBackColor = System.Drawing.SystemColors.Control;
@@ -1234,6 +1305,7 @@
             // trackBarMasterPatternDepth
             // 
             resources.ApplyResources(trackBarMasterPatternDepth, "trackBarMasterPatternDepth");
+            toolTip.SetToolTip(trackBarMasterPatternDepth, resources.GetString("trackBarMasterPatternDepth.ToolTip")); // 260531Cl
             trackBarMasterPatternDepth.LargeChange = 1;
             trackBarMasterPatternDepth.Maximum = 0;
             trackBarMasterPatternDepth.Name = "trackBarMasterPatternDepth";
@@ -1242,12 +1314,14 @@
             // labelMasterPattern2DHemisphere
             // 
             resources.ApplyResources(labelMasterPattern2DHemisphere, "labelMasterPattern2DHemisphere");
+            toolTip.SetToolTip(labelMasterPattern2DHemisphere, resources.GetString("labelMasterPattern2DHemisphere.ToolTip")); // 260531Cl
             labelMasterPattern2DHemisphere.Name = "labelMasterPattern2DHemisphere";
             // 
             // comboBoxMasterPattern2DHemisphere
             // 
             comboBoxMasterPattern2DHemisphere.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             resources.ApplyResources(comboBoxMasterPattern2DHemisphere, "comboBoxMasterPattern2DHemisphere");
+            toolTip.SetToolTip(comboBoxMasterPattern2DHemisphere, resources.GetString("comboBoxMasterPattern2DHemisphere.ToolTip")); // 260531Cl
             comboBoxMasterPattern2DHemisphere.FormattingEnabled = true;
             comboBoxMasterPattern2DHemisphere.Items.AddRange(new object[] { resources.GetString("comboBoxMasterPattern2DHemisphere.Items"), resources.GetString("comboBoxMasterPattern2DHemisphere.Items1") });
             comboBoxMasterPattern2DHemisphere.Name = "comboBoxMasterPattern2DHemisphere";
@@ -1256,6 +1330,7 @@
             // buttonCreateMasterPattern
             // 
             resources.ApplyResources(buttonCreateMasterPattern, "buttonCreateMasterPattern");
+            toolTip.SetToolTip(buttonCreateMasterPattern, resources.GetString("buttonCreateMasterPattern.ToolTip")); // 260531Cl
             buttonCreateMasterPattern.BackColor = System.Drawing.Color.SteelBlue;
             buttonCreateMasterPattern.ForeColor = System.Drawing.Color.White;
             buttonCreateMasterPattern.Name = "buttonCreateMasterPattern";
@@ -1302,6 +1377,7 @@
             // buttonMasterPattern2DCopy
             // 
             resources.ApplyResources(buttonMasterPattern2DCopy, "buttonMasterPattern2DCopy");
+            toolTip.SetToolTip(buttonMasterPattern2DCopy, resources.GetString("buttonMasterPattern2DCopy.ToolTip")); // 260531Cl
             buttonMasterPattern2DCopy.Name = "buttonMasterPattern2DCopy";
             buttonMasterPattern2DCopy.UseVisualStyleBackColor = true;
             // 
@@ -1316,12 +1392,14 @@
             // buttonMasterPattern3DCopy
             // 
             resources.ApplyResources(buttonMasterPattern3DCopy, "buttonMasterPattern3DCopy");
+            toolTip.SetToolTip(buttonMasterPattern3DCopy, resources.GetString("buttonMasterPattern3DCopy.ToolTip")); // 260531Cl
             buttonMasterPattern3DCopy.Name = "buttonMasterPattern3DCopy";
             buttonMasterPattern3DCopy.UseVisualStyleBackColor = true;
             // 
             // checkBoxMasterPattern3DAxisLabel
             // 
             resources.ApplyResources(checkBoxMasterPattern3DAxisLabel, "checkBoxMasterPattern3DAxisLabel");
+            toolTip.SetToolTip(checkBoxMasterPattern3DAxisLabel, resources.GetString("checkBoxMasterPattern3DAxisLabel.ToolTip")); // 260531Cl
             checkBoxMasterPattern3DAxisLabel.Checked = true;
             checkBoxMasterPattern3DAxisLabel.CheckState = System.Windows.Forms.CheckState.Checked;
             checkBoxMasterPattern3DAxisLabel.Name = "checkBoxMasterPattern3DAxisLabel";
@@ -1331,6 +1409,7 @@
             // checkBoxMasterPattern3DAxisArrows
             // 
             resources.ApplyResources(checkBoxMasterPattern3DAxisArrows, "checkBoxMasterPattern3DAxisArrows");
+            toolTip.SetToolTip(checkBoxMasterPattern3DAxisArrows, resources.GetString("checkBoxMasterPattern3DAxisArrows.ToolTip")); // 260531Cl
             checkBoxMasterPattern3DAxisArrows.Checked = true;
             checkBoxMasterPattern3DAxisArrows.CheckState = System.Windows.Forms.CheckState.Checked;
             checkBoxMasterPattern3DAxisArrows.Name = "checkBoxMasterPattern3DAxisArrows";
@@ -1354,6 +1433,7 @@
             // buttonMasterPattern3DViewAlong
             // 
             resources.ApplyResources(buttonMasterPattern3DViewAlong, "buttonMasterPattern3DViewAlong");
+            toolTip.SetToolTip(buttonMasterPattern3DViewAlong, resources.GetString("buttonMasterPattern3DViewAlong.ToolTip")); // 260531Cl
             buttonMasterPattern3DViewAlong.Name = "buttonMasterPattern3DViewAlong";
             buttonMasterPattern3DViewAlong.UseVisualStyleBackColor = true;
             buttonMasterPattern3DViewAlong.Click += buttonMasterPattern3DViewAlong_Click;
@@ -1361,6 +1441,7 @@
             // indexControl
             // 
             resources.ApplyResources(indexControl, "indexControl");
+            toolTip.SetToolTip(indexControl, resources.GetString("indexControl.ToolTip")); // 260531Cl
             indexControl.LabelVisible = false;
             indexControl.Name = "indexControl";
             indexControl.Values = ((int, int, int))resources.GetObject("indexControl.Values");
@@ -1478,6 +1559,8 @@
         }
 
         #endregion
+
+        private System.Windows.Forms.ToolTip toolTip; // (260531Ch)
 
         private System.Windows.Forms.Panel panelGeometry;
         private NumericBox numericBoxSampleTilt;

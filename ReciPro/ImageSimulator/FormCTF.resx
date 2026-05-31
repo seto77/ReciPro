@@ -485,4 +485,58 @@
         QgghKzA/eG30R5L8DUIIIWQB5geEEEII8TA/IIQQQojn/7idKkxGR/HtAAAAAElFTkSuQmCC
 </value>
   </data>
+  <data name="buttonCopyGraph.ToolTip" xml:space="preserve">
+    <value>Copy the plotted curves (u and each
+function value) as tab-separated text
+to the clipboard for pasting into Excel</value>
+  </data>
+  <data name="checkBoxACTF.ToolTip" xml:space="preserve">
+    <value>Plot the ACTF (Amplitude Contrast Transfer
+Function) = Cos[W(u)] x Es x Ec, the effective
+amplitude transfer within the aperture</value>
+  </data>
+  <data name="checkBoxCosW.ToolTip" xml:space="preserve">
+    <value>Plot Cos[W(u)], the cosine of the
+wave-aberration W(u): the amplitude-contrast
+component of the lens transfer</value>
+  </data>
+  <data name="checkBoxEc.ToolTip" xml:space="preserve">
+    <value>Plot Ec(u), the temporal (chromatic) coherence
+envelope: contrast damping from chromatic
+aberration and high-tension / energy spread</value>
+  </data>
+  <data name="checkBoxEs_HRTEM.ToolTip" xml:space="preserve">
+    <value>Plot Es(u), the spatial coherence envelope
+for HRTEM (High-Resolution TEM): contrast
+damping from beam-divergence (semi-angle beta)</value>
+  </data>
+  <data name="checkBoxEs_STEM.ToolTip" xml:space="preserve">
+    <value>Plot Es(u), the spatial coherence envelope
+for STEM (Scanning TEM): contrast damping
+from finite source size (sigma_s)</value>
+  </data>
+  <data name="checkBoxPCTF.ToolTip" xml:space="preserve">
+    <value>Plot the PCTF (Phase Contrast Transfer
+Function) = Sin[W(u)] x Es x Ec, the
+effective phase transfer within the aperture</value>
+  </data>
+  <data name="checkBoxSinW.ToolTip" xml:space="preserve">
+    <value>Plot Sin[W(u)], the sine of the wave-aberration W(u):
+the phase-contrast core of the transfer function</value>
+  </data>
+  <data name="numericBoxMaxU1.ToolTip" xml:space="preserve">
+    <value>Upper limit of the spatial-frequency axis u
+for the plot, in nm-1 (0-20); sets how far
+in reciprocal space the curves are drawn</value>
+  </data>
+  <data name="radioButtonCTF_Incoherent.ToolTip" xml:space="preserve">
+    <value>Treat STEM (Scanning TEM) as incoherent
+imaging: compute a single CTFI curve by
+integrating over the convergence aperture</value>
+  </data>
+  <data name="radioButtonCTF_coherent.ToolTip" xml:space="preserve">
+    <value>Treat STEM (Scanning TEM) as coherent
+imaging: show the Sin[W], Cos[W], Es,
+Ec, PCTF and ACTF curves as for HRTEM</value>
+  </data>
 </root>

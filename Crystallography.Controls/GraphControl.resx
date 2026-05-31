@@ -60,4 +60,20 @@
   <metadata name="contextMenuStripY.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
+  <data name="toolStripMenuItemLogScaleX.ToolTipText" xml:space="preserve">
+    <value>Toggle the X axis between linear
+and base-10 logarithmic scale.</value>
+  </data>
+  <data name="toolStripMenuItemLogScaleY.ToolTipText" xml:space="preserve">
+    <value>Toggle the Y axis between linear
+and base-10 logarithmic scale.</value>
+  </data>
+  <data name="toolStripMenuItemScaleLineX.ToolTipText" xml:space="preserve">
+    <value>Show or hide the vertical gridlines
+drawn at the X-axis tick marks.</value>
+  </data>
+  <data name="toolStripMenuItemScaleLineY.ToolTipText" xml:space="preserve">
+    <value>Show or hide the horizontal gridlines
+drawn at the Y-axis tick marks.</value>
+  </data>
 </root>

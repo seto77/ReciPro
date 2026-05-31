@@ -569,7 +569,9 @@ and the fitting range in the box on the right.</value>
     <value>617</value>
   </data>
   <data name="checkBoxIgnoreMultipleDiffraction.ToolTip" xml:space="preserve">
-    <value>Ignore systematic absences caused by multiple diffraction</value>
+    <value>Ignore kinematically forbidden reflections that
+can appear via multiple (dynamical) diffraction,
+excluding them from the calculated pattern.</value>
   </data>
   <data name="assignedSpotsDataGridViewTextBoxColumn.MinimumWidth" type="System.Int32, mscorlib">
     <value>8</value>
@@ -590,7 +592,9 @@ and the fitting range in the box on the right.</value>
     <value>     </value>
   </data>
   <data name="numericBoxSemiangle.ToolTip" xml:space="preserve">
-    <value>Semi-convergence angle for spot identification (mrad)</value>
+    <value>Angular half-range (the semi-convergence angle,
+in mrad) over which incident-beam directions are
+searched during thickness/orientation refinement.</value>
   </data>
   <data name="splitContainer1.Size" type="System.Drawing.Size, System.Drawing">
     <value>1407, 787</value>
@@ -827,7 +831,9 @@ and the fitting range in the box on the right.</value>
     <value>Segoe UI, 7pt</value>
   </data>
   <data name="numericBoxNearestNeighbor.ToolTip1" xml:space="preserve">
-    <value>Minimum distance between spots in pixel unit</value>
+    <value>Minimum separation (px) allowed between
+detected spots; peaks closer than this are
+merged so a single spot is not counted twice.</value>
   </data>
   <data name="&gt;&gt;panelSpotActions.Parent" xml:space="preserve">
     <value>groupBoxSpot</value>
@@ -1094,7 +1100,9 @@ and the fitting range in the box on the right.</value>
     <value>1, 20</value>
   </data>
   <data name="dataGridViewSpots.ToolTip" xml:space="preserve">
-    <value />
+    <value>Table of observed spots; tick 'Direct' to set the
+direct-beam spot, click a row's 'Fit' to fit its
+peak, or select a row to highlight it on the pattern</value>
   </data>
   <data name="numericBoxNearestNeighbor.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9.75pt</value>
@@ -1436,7 +1444,10 @@ and the fitting range in the box on the right.</value>
     <value>flowLayoutPanel9</value>
   </data>
   <data name="numericBoxDiffractedWaves.ToolTip" xml:space="preserve">
-    <value>ブロッホ波の最大数</value>
+    <value>Maximum number of diffracted beams (Bloch
+waves) included in the dynamical
+thickness/direction refinement; more waves give
+higher accuracy but slower computation (1-2048).</value>
   </data>
   <data name="numericBoxAcceptableError.HeaderText" xml:space="preserve">
     <value>Acceptable error</value>
@@ -1466,7 +1477,9 @@ and the fitting range in the box on the right.</value>
     <value>flowLayoutPanel5</value>
   </data>
   <data name="numericBoxDonut.ToolTip" xml:space="preserve">
-    <value />
+    <value>Width (px) of the outer annular ring
+around each spot used as the local
+background in donut subtraction (1-100).</value>
   </data>
   <data name="buttonClearSpots.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
@@ -1514,7 +1527,9 @@ and the fitting range in the box on the right.</value>
     <value>groupBoxIndex</value>
   </data>
   <data name="numericBoxPixelSize.ToolTip1" xml:space="preserve">
-    <value>Pixel size of the detector</value>
+    <value>Size of one detector pixel; the unit (mm or nm⁻¹)
+follows the radio buttons at right. Sets the
+reciprocal-space scale used for d-spacing and indexing.</value>
   </data>
   <data name="flowLayoutPanel3.Location" type="System.Drawing.Point, System.Drawing">
     <value>471, 0</value>
@@ -1550,7 +1565,10 @@ and the fitting range in the box on the right.</value>
     <value>True</value>
   </data>
   <data name="numericBoxDiffractedWaves.ToolTip1" xml:space="preserve">
-    <value>ブロッホ波の最大数</value>
+    <value>Maximum number of diffracted beams (Bloch
+waves) included in the dynamical
+thickness/direction refinement; more waves give
+higher accuracy but slower computation (1-2048).</value>
   </data>
   <data name="flowLayoutPanel3.Size" type="System.Drawing.Size, System.Drawing">
     <value>295, 27</value>
@@ -1715,7 +1733,9 @@ and the fitting range in the box on the right.</value>
     <value>toolStripStatusLabelFindSpot</value>
   </data>
   <data name="numericBoxFittingRange.ToolTip" xml:space="preserve">
-    <value>Set the fitting range (radius) in pixels.</value>
+    <value>Radius (in pixels, 0–100) of the circular region
+around each spot used for peak fitting; pixels inside
+this circle are fitted with the pseudo-Voigt function.</value>
   </data>
   <data name="buttonCopyToClipboard.Location" type="System.Drawing.Point, System.Drawing">
     <value>69, 0</value>
@@ -2039,7 +2059,8 @@ and the fitting range in the box on the right.</value>
     <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="buttonDeleteSpot.ToolTip" xml:space="preserve">
-    <value>Delete the selected spot.</value>
+    <value>Delete the currently selected spot from the
+list (use the Clear button to remove all spots).</value>
   </data>
   <data name="&gt;&gt;assignedSpotsDataGridViewTextBoxColumn.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -2054,10 +2075,13 @@ and the fitting range in the box on the right.</value>
     <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="dataGridViewCandidates.ToolTip" xml:space="preserve">
-    <value />
+    <value>List of indexing candidates found; select a
+row to show its grain orientation(s) below.</value>
   </data>
   <data name="numericBoxFittingRange.ToolTip1" xml:space="preserve">
-    <value>Set the fitting range (radius) in pixels.</value>
+    <value>Radius (in pixels, 0–100) of the circular region
+around each spot used for peak fitting; pixels inside
+this circle are fitted with the pseudo-Voigt function.</value>
   </data>
   <data name="numericBoxAcceptableError.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
@@ -2270,7 +2294,9 @@ and the fitting range in the box on the right.</value>
     <value>numericBoxDonut</value>
   </data>
   <data name="dataGridViewGrains.ToolTip" xml:space="preserve">
-    <value />
+    <value>Grain orientations in the selected candidate;
+selecting a row overlays its calculated spots
+and assigns hkl indices to the observed spots.</value>
   </data>
   <data name="numericBoxDiffractedWaves.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -2291,7 +2317,10 @@ and the fitting range in the box on the right.</value>
     <value>0, 4, 0, 0</value>
   </data>
   <data name="buttonRefineThicknessAndDirection.ToolTip" xml:space="preserve">
-    <value>Refine crystal thickness and beam direction</value>
+    <value>Refine specimen thickness (nm) and beam direction
+by matching observed spot intensities against
+dynamical (Bloch-wave) CBED calculations for the
+selected grain (electron diffraction only).</value>
   </data>
   <data name="&gt;&gt;splitContainer1.Panel2.ZOrder" xml:space="preserve">
     <value>1</value>
@@ -2543,7 +2572,9 @@ and the fitting range in the box on the right.</value>
     <value>buttonStop</value>
   </data>
   <data name="numericBoxAcceptableError.ToolTip" xml:space="preserve">
-    <value>Maximum acceptable error for spot matching</value>
+    <value>Maximum relative length (d-spacing) tolerance,
+in %, allowed when matching observed spots to
+candidate reflections (0.1–10%).</value>
   </data>
   <data name="checkBoxShowZoneAxis.Text" xml:space="preserve">
     <value>Show zone axis</value>
@@ -2765,7 +2796,8 @@ and the fitting range in the box on the right.</value>
     <value>3</value>
   </data>
   <data name="buttonResetRangeForAllSpots.ToolTip" xml:space="preserve">
-    <value>Apply the current fitting range to all spots.</value>
+    <value>Set every spot's fitting radius to the
+current 'Fitting range' value (px).</value>
   </data>
   <data name="flowLayoutPanel11.FlowDirection" type="System.Windows.Forms.FlowDirection, System.Windows.Forms">
     <value>TopDown</value>
@@ -2822,7 +2854,9 @@ and the fitting range in the box on the right.</value>
     <value>2</value>
   </data>
   <data name="numericBoxPixelSize.ToolTip" xml:space="preserve">
-    <value>Pixel size of the detector</value>
+    <value>Size of one detector pixel; the unit (mm or nm⁻¹)
+follows the radio buttons at right. Sets the
+reciprocal-space scale used for d-spacing and indexing.</value>
   </data>
   <data name="&gt;&gt;numericBoxPixelSize.Name" xml:space="preserve">
     <value>numericBoxPixelSize</value>
@@ -2915,7 +2949,9 @@ and the fitting range in the box on the right.</value>
     <value>0</value>
   </data>
   <data name="waveLengthControl1.ToolTip" xml:space="preserve">
-    <value />
+    <value>Radiation source and energy/voltage
+that set the wavelength used for
+indexing (default: electron, 200 kV).</value>
   </data>
   <data name="&gt;&gt;loadToolStripMenuItem.Name" xml:space="preserve">
     <value>loadToolStripMenuItem</value>
@@ -3098,7 +3134,9 @@ and the fitting range in the box on the right.</value>
     <value>bindingSourceCandidates</value>
   </data>
   <data name="numericBoxNearestNeighbor.ToolTip" xml:space="preserve">
-    <value>Minimum distance between spots in pixel unit</value>
+    <value>Minimum separation (px) allowed between
+detected spots; peaks closer than this are
+merged so a single spot is not counted twice.</value>
   </data>
   <data name="buttonIdentifySpots.Location" type="System.Drawing.Point, System.Drawing">
     <value>8, 20</value>
@@ -3107,7 +3145,9 @@ and the fitting range in the box on the right.</value>
     <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="numericBoxAcceptableError.ToolTip1" xml:space="preserve">
-    <value>Maximum acceptable error for spot matching</value>
+    <value>Maximum relative length (d-spacing) tolerance,
+in %, allowed when matching observed spots to
+candidate reflections (0.1–10%).</value>
   </data>
   <data name="groupBoxIndex.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 596</value>

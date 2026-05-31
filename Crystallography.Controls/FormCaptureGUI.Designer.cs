@@ -15,6 +15,10 @@ partial class FormCaptureGUI
 
     private void InitializeComponent()
     {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormCaptureGUI)); // 260531Cl
+            components = new System.ComponentModel.Container(); // (260531Ch)
+            toolTip = new System.Windows.Forms.ToolTip(components); // (260531Ch)
+            toolTip.IsBalloon = true; // 260531Cl 追加: バルーン表示に統一
         treeViewControls = new System.Windows.Forms.TreeView();
         buttonCapture = new System.Windows.Forms.Button();
         buttonSelectAll = new System.Windows.Forms.Button();
@@ -51,6 +55,7 @@ partial class FormCaptureGUI
         labelTargetForm.AutoSize = true;
         labelTargetForm.Location = new System.Drawing.Point(6, 11);
         labelTargetForm.Name = "labelTargetForm";
+        toolTip.SetToolTip(labelTargetForm, resources.GetString("labelTargetForm.ToolTip")); // 260531Cl
         labelTargetForm.Text = "Target form:";
         //
         // comboBoxTargetForm (260521Cl 追加: ActiveForm 制約を解消し、開いている全フォームから対象を選択する)
@@ -59,6 +64,7 @@ partial class FormCaptureGUI
         comboBoxTargetForm.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
         comboBoxTargetForm.Location = new System.Drawing.Point(82, 8);
         comboBoxTargetForm.Name = "comboBoxTargetForm";
+        toolTip.SetToolTip(comboBoxTargetForm, resources.GetString("comboBoxTargetForm.ToolTip")); // 260531Cl
         comboBoxTargetForm.Size = new System.Drawing.Size(412, 23);
         comboBoxTargetForm.TabIndex = 0;
         comboBoxTargetForm.SelectedIndexChanged += comboBoxTargetForm_SelectedIndexChanged;
@@ -67,6 +73,7 @@ partial class FormCaptureGUI
         //
         buttonSelectAll.Location = new System.Drawing.Point(6, 39);
         buttonSelectAll.Name = "buttonSelectAll";
+        toolTip.SetToolTip(buttonSelectAll, resources.GetString("buttonSelectAll.ToolTip")); // 260531Cl
         buttonSelectAll.Size = new System.Drawing.Size(80, 26);
         buttonSelectAll.TabIndex = 0;
         buttonSelectAll.Text = "Select All";
@@ -76,6 +83,7 @@ partial class FormCaptureGUI
         //
         buttonDeselectAll.Location = new System.Drawing.Point(92, 39);
         buttonDeselectAll.Name = "buttonDeselectAll";
+        toolTip.SetToolTip(buttonDeselectAll, resources.GetString("buttonDeselectAll.ToolTip")); // 260531Cl
         buttonDeselectAll.Size = new System.Drawing.Size(85, 26);
         buttonDeselectAll.TabIndex = 1;
         buttonDeselectAll.Text = "Deselect All";
@@ -85,6 +93,7 @@ partial class FormCaptureGUI
         //
         buttonRefresh.Location = new System.Drawing.Point(183, 39);
         buttonRefresh.Name = "buttonRefresh";
+        toolTip.SetToolTip(buttonRefresh, resources.GetString("buttonRefresh.ToolTip")); // 260531Cl
         buttonRefresh.Size = new System.Drawing.Size(75, 26);
         buttonRefresh.TabIndex = 2;
         buttonRefresh.Text = "Refresh";
@@ -118,6 +127,7 @@ partial class FormCaptureGUI
         textBoxOutputDir.Anchor = System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
         textBoxOutputDir.Location = new System.Drawing.Point(6, 6);
         textBoxOutputDir.Name = "textBoxOutputDir";
+        toolTip.SetToolTip(textBoxOutputDir, resources.GetString("textBoxOutputDir.ToolTip")); // 260531Cl
         textBoxOutputDir.Size = new System.Drawing.Size(406, 23);
         textBoxOutputDir.TabIndex = 0;
         textBoxOutputDir.ReadOnly = true;
@@ -127,6 +137,7 @@ partial class FormCaptureGUI
         buttonSelectDir.Anchor = System.Windows.Forms.AnchorStyles.Right;
         buttonSelectDir.Location = new System.Drawing.Point(418, 5);
         buttonSelectDir.Name = "buttonSelectDir";
+        toolTip.SetToolTip(buttonSelectDir, resources.GetString("buttonSelectDir.ToolTip")); // 260531Cl
         buttonSelectDir.Size = new System.Drawing.Size(75, 25);
         buttonSelectDir.TabIndex = 1;
         buttonSelectDir.Text = "Select...";
@@ -137,6 +148,7 @@ partial class FormCaptureGUI
         buttonCapture.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
         buttonCapture.Location = new System.Drawing.Point(6, 35);
         buttonCapture.Name = "buttonCapture";
+        toolTip.SetToolTip(buttonCapture, resources.GetString("buttonCapture.ToolTip")); // 260531Cl
         buttonCapture.Size = new System.Drawing.Size(120, 30);
         buttonCapture.TabIndex = 2;
         buttonCapture.Text = "Capture";
@@ -176,6 +188,8 @@ partial class FormCaptureGUI
     }
 
     #endregion
+
+        private System.Windows.Forms.ToolTip toolTip; // (260531Ch)
 
     private System.Windows.Forms.TreeView treeViewControls;
     private System.Windows.Forms.Button buttonCapture;

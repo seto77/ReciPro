@@ -24,6 +24,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NumericBoxWithMenu)); // 260531Cl
             this.components = new System.ComponentModel.Container();
             this.contextMenuStripUpDown = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.incrementToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -73,6 +74,7 @@
             this.smartIncrementToolStripMenuItem.CheckOnClick = true;
             this.smartIncrementToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.smartIncrementToolStripMenuItem.Name = "smartIncrementToolStripMenuItem";
+            this.smartIncrementToolStripMenuItem.ToolTipText = resources.GetString("smartIncrementToolStripMenuItem.ToolTipText"); // 260531Cl
             this.smartIncrementToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
             this.smartIncrementToolStripMenuItem.Text = "Smart increment";
             // 
@@ -105,6 +107,7 @@
             "10E+4"});
             this.toolStripComboBoxIncrement.MaxDropDownItems = 15;
             this.toolStripComboBoxIncrement.Name = "toolStripComboBoxIncrement";
+            this.toolStripComboBoxIncrement.ToolTipText = resources.GetString("toolStripComboBoxIncrement.ToolTipText"); // 260531Cl
             this.toolStripComboBoxIncrement.Size = new System.Drawing.Size(121, 23);
             this.toolStripComboBoxIncrement.SelectedIndexChanged += new System.EventHandler(this.toolStripComboBoxIncrement_SelectedIndexChanged);
             this.toolStripComboBoxIncrement.TextUpdate += new System.EventHandler(this.toolStripComboBoxIncrement_SelectedIndexChanged);
@@ -155,6 +158,7 @@
             "9",
             "10"});
             this.toolStripComboBoxDecimalPlaces.Name = "toolStripComboBoxDecimalPlaces";
+            this.toolStripComboBoxDecimalPlaces.ToolTipText = resources.GetString("toolStripComboBoxDecimalPlaces.ToolTipText"); // 260531Cl
             this.toolStripComboBoxDecimalPlaces.Size = new System.Drawing.Size(121, 23);
             this.toolStripComboBoxDecimalPlaces.SelectedIndexChanged += new System.EventHandler(this.toolStripComboBoxDecimalPlaces_SelectedIndexChanged);
             // 
@@ -179,6 +183,7 @@
             this.toolStripMenuItemRestrictLimit.CheckOnClick = true;
             this.toolStripMenuItemRestrictLimit.CheckState = System.Windows.Forms.CheckState.Checked;
             this.toolStripMenuItemRestrictLimit.Name = "toolStripMenuItemRestrictLimit";
+            this.toolStripMenuItemRestrictLimit.ToolTipText = resources.GetString("toolStripMenuItemRestrictLimit.ToolTipText"); // 260531Cl
             this.toolStripMenuItemRestrictLimit.Size = new System.Drawing.Size(184, 22);
             this.toolStripMenuItemRestrictLimit.Text = "Restrict limit";
             this.toolStripMenuItemRestrictLimit.CheckedChanged += new System.EventHandler(this.toolStripMenuItemRestrictLimit_CheckedChanged);
@@ -197,6 +202,7 @@
             this.toolStripTextBoxMaximum.BackColor = System.Drawing.SystemColors.Window;
             this.toolStripTextBoxMaximum.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.toolStripTextBoxMaximum.Name = "toolStripTextBoxMaximum";
+            this.toolStripTextBoxMaximum.ToolTipText = resources.GetString("toolStripTextBoxMaximum.ToolTipText"); // 260531Cl
             this.toolStripTextBoxMaximum.Size = new System.Drawing.Size(100, 23);
             this.toolStripTextBoxMaximum.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.toolStripTextBoxMaximum_KeyPress);
             // 
@@ -214,6 +220,7 @@
             this.toolStripTextBoxMimimum.BackColor = System.Drawing.SystemColors.Window;
             this.toolStripTextBoxMimimum.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.toolStripTextBoxMimimum.Name = "toolStripTextBoxMimimum";
+            this.toolStripTextBoxMimimum.ToolTipText = resources.GetString("toolStripTextBoxMimimum.ToolTipText"); // 260531Cl
             this.toolStripTextBoxMimimum.Size = new System.Drawing.Size(100, 23);
             this.toolStripTextBoxMimimum.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.toolStripTextBoxMaximum_KeyPress);
             // 
@@ -243,6 +250,7 @@
             // 
             this.toolStripTextBoxMouseSpeed.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.toolStripTextBoxMouseSpeed.Name = "toolStripTextBoxMouseSpeed";
+            this.toolStripTextBoxMouseSpeed.ToolTipText = resources.GetString("toolStripTextBoxMouseSpeed.ToolTipText"); // 260531Cl
             this.toolStripTextBoxMouseSpeed.Size = new System.Drawing.Size(100, 23);
             this.toolStripTextBoxMouseSpeed.Text = "1";
             this.toolStripTextBoxMouseSpeed.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.toolStripTextBoxMaximum_KeyPress);
@@ -263,6 +271,7 @@
             "Vertical",
             "Horizontal"});
             this.toolStripComboBoxMouseDirection.Name = "toolStripComboBoxMouseDirection";
+            this.toolStripComboBoxMouseDirection.ToolTipText = resources.GetString("toolStripComboBoxMouseDirection.ToolTipText"); // 260531Cl
             this.toolStripComboBoxMouseDirection.Size = new System.Drawing.Size(121, 23);
             // 
             // NumericBoxWithMenu

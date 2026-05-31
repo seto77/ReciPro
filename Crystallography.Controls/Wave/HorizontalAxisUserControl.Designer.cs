@@ -87,6 +87,7 @@
             numericBoxTofAngle = new NumericBox();
             numericBoxTofLength = new NumericBox();
             toolTip = new System.Windows.Forms.ToolTip(components);
+            toolTip.IsBalloon = true; // 260531Cl 追加: バルーン表示に統一
             flowLayoutPanelMain = new System.Windows.Forms.FlowLayoutPanel();
             groupBoxWaveProperty.SuspendLayout();
             flowLayoutPanelWaveProperty.SuspendLayout();

@@ -236,7 +236,8 @@
     <value>157, 17</value>
   </metadata>
   <data name="label1.ToolTip" xml:space="preserve">
-    <value>Select the length unit.</value>
+    <value>Select the length unit (Å or nm)
+for the cell constants a, b, c.</value>
   </data>
   <data name="&gt;&gt;label1.Name" xml:space="preserve">
     <value>label1</value>
@@ -299,7 +300,8 @@
     <value>Show Errors</value>
   </data>
   <data name="checkBoxShowError.ToolTip" xml:space="preserve">
-    <value>Show errors.</value>
+    <value>Show or hide the ± error (estimated standard
+deviation) fields for the cell constants.</value>
   </data>
   <data name="&gt;&gt;checkBoxShowError.Name" xml:space="preserve">
     <value>checkBoxShowError</value>
@@ -749,10 +751,14 @@
     <value>9</value>
   </data>
   <data name="numericBoxA.ToolTip" xml:space="preserve">
-    <value>Cell constant "a"</value>
+    <value>Unit-cell edge length a (in Å or nm,
+per the unit selector). Edits respect
+the crystal-system constraints.</value>
   </data>
   <data name="numericBoxA.ToolTip1" xml:space="preserve">
-    <value>Cell constant "a"</value>
+    <value>Unit-cell edge length a (in Å or nm,
+per the unit selector). Edits respect
+the crystal-system constraints.</value>
   </data>
   <data name="&gt;&gt;numericBoxA.Name" xml:space="preserve">
     <value>numericBoxA</value>
@@ -974,10 +980,12 @@
     <value>9</value>
   </data>
   <data name="numericBoxB.ToolTip" xml:space="preserve">
-    <value>Cell constant "b"</value>
+    <value>Unit-cell edge length b (in Å or nm, per the
+unit selector). May be locked to a by symmetry.</value>
   </data>
   <data name="numericBoxB.ToolTip1" xml:space="preserve">
-    <value>Cell constant "b"</value>
+    <value>Unit-cell edge length b (in Å or nm, per the
+unit selector). May be locked to a by symmetry.</value>
   </data>
   <data name="&gt;&gt;numericBoxB.Name" xml:space="preserve">
     <value>numericBoxB</value>
@@ -1028,10 +1036,12 @@
     <value>9</value>
   </data>
   <data name="numericBoxC.ToolTip" xml:space="preserve">
-    <value>Cell constant "c"</value>
+    <value>Unit-cell edge length c (in Å or nm, per the
+unit selector). May be locked to a by symmetry.</value>
   </data>
   <data name="numericBoxC.ToolTip1" xml:space="preserve">
-    <value>Cell constant "c"</value>
+    <value>Unit-cell edge length c (in Å or nm, per the
+unit selector). May be locked to a by symmetry.</value>
   </data>
   <data name="&gt;&gt;numericBoxC.Name" xml:space="preserve">
     <value>numericBoxC</value>
@@ -1403,7 +1413,8 @@
     <value>2</value>
   </data>
   <data name="comboBoxSpaceGroup.ToolTip" xml:space="preserve">
-    <value>Set space group in HM notation</value>
+    <value>Select the space group (number : Hermann–Mauguin (HM)
+symbol); it constrains the editable cell constants.</value>
   </data>
   <data name="&gt;&gt;comboBoxSpaceGroup.Name" xml:space="preserve">
     <value>comboBoxSpaceGroup</value>
@@ -1439,7 +1450,9 @@
     <value>1</value>
   </data>
   <data name="comboBoxPointGroup.ToolTip" xml:space="preserve">
-    <value>Set point group in HM notation</value>
+    <value>Select the crystallographic point group
+in Hermann–Mauguin (HM) notation; this
+filters the available space groups.</value>
   </data>
   <data name="&gt;&gt;comboBoxPointGroup.Name" xml:space="preserve">
     <value>comboBoxPointGroup</value>
@@ -1499,7 +1512,8 @@
     <value>0</value>
   </data>
   <data name="comboBoxCrystalSystem.ToolTip" xml:space="preserve">
-    <value>Set crystal system</value>
+    <value>Select the crystal system (triclinic … cubic);
+this sets which cell constants are independent.</value>
   </data>
   <data name="&gt;&gt;comboBoxCrystalSystem.Name" xml:space="preserve">
     <value>comboBoxCrystalSystem</value>
@@ -1535,7 +1549,8 @@
     <value>Space Group</value>
   </data>
   <data name="label20.ToolTip" xml:space="preserve">
-    <value>Set space group in HM notation</value>
+    <value>Select the space group (number : Hermann–Mauguin (HM)
+symbol); it constrains the editable cell constants.</value>
   </data>
   <data name="&gt;&gt;label20.Name" xml:space="preserve">
     <value>label20</value>
@@ -1571,7 +1586,9 @@
     <value>Search</value>
   </data>
   <data name="label17.ToolTip" xml:space="preserve">
-    <value>Search space group</value>
+    <value>Type characters of a Hermann–Mauguin (HM)
+symbol to search space groups; matches appear
+in the result list (use "sub" for a subscript).</value>
   </data>
   <data name="&gt;&gt;label17.Name" xml:space="preserve">
     <value>label17</value>
@@ -1607,7 +1624,8 @@
     <value>Crystal System</value>
   </data>
   <data name="label19.ToolTip" xml:space="preserve">
-    <value>Set crystal system</value>
+    <value>Select the crystal system (triclinic … cubic);
+this sets which cell constants are independent.</value>
   </data>
   <data name="&gt;&gt;label19.Name" xml:space="preserve">
     <value>label19</value>
@@ -1634,7 +1652,9 @@
     <value>3</value>
   </data>
   <data name="textBoxSearch.ToolTip" xml:space="preserve">
-    <value>Search space group</value>
+    <value>Type characters of a Hermann–Mauguin (HM)
+symbol to search space groups; matches appear
+in the result list (use "sub" for a subscript).</value>
   </data>
   <data name="&gt;&gt;textBoxSearch.Name" xml:space="preserve">
     <value>textBoxSearch</value>
@@ -1670,7 +1690,9 @@
     <value>Point Group</value>
   </data>
   <data name="label21.ToolTip" xml:space="preserve">
-    <value>Set point group in HM notation</value>
+    <value>Select the crystallographic point group
+in Hermann–Mauguin (HM) notation; this
+filters the available space groups.</value>
   </data>
   <data name="&gt;&gt;label21.Name" xml:space="preserve">
     <value>label21</value>
@@ -1800,5 +1822,54 @@
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
     <value>Crystallography.Controls.UserControlBase, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="comboBoxSearchResult.ToolTip" xml:space="preserve">
+    <value>Pick a space group from the search results (number
+: Hermann–Mauguin symbol) to apply it to the
+crystal system, point group and space group above.</value>
+  </data>
+  <data name="numericBoxAErr.ToolTip" xml:space="preserve">
+    <value>Estimated standard deviation (± error) of
+cell constant a, in the same length unit as a.</value>
+  </data>
+  <data name="numericBoxAlphaErr.ToolTip" xml:space="preserve">
+    <value>Estimated standard deviation (±
+error) of angle α, in degree.</value>
+  </data>
+  <data name="numericBoxBErr.ToolTip" xml:space="preserve">
+    <value>Estimated standard deviation (± error) of
+cell constant b, in the same length unit as b.</value>
+  </data>
+  <data name="numericBoxBetaErr.ToolTip" xml:space="preserve">
+    <value>Estimated standard deviation (±
+error) of angle β, in degree.</value>
+  </data>
+  <data name="numericBoxCErr.ToolTip" xml:space="preserve">
+    <value>Estimated standard deviation (± error) of
+cell constant c, in the same length unit as c.</value>
+  </data>
+  <data name="numericBoxGammaErr.ToolTip" xml:space="preserve">
+    <value>Estimated standard deviation (±
+error) of angle γ, in degree.</value>
+  </data>
+  <data name="radioButtonAngstrom.ToolTip" xml:space="preserve">
+    <value>Use ångström (Å) as the length unit for a, b,
+c; existing values are rescaled automatically.</value>
+  </data>
+  <data name="radioButtonNanoMeter.ToolTip" xml:space="preserve">
+    <value>Use nanometre (nm) as the length unit for a, b,
+c; existing values are rescaled automatically.</value>
+  </data>
+  <data name="labelLengthUnitA.ToolTip" xml:space="preserve">
+    <value>Current length unit for a (Å or
+nm; switch with the unit selector).</value>
+  </data>
+  <data name="labelLengthUnitB.ToolTip" xml:space="preserve">
+    <value>Current length unit for b (Å or
+nm; switch with the unit selector).</value>
+  </data>
+  <data name="labelLengthUnitC.ToolTip" xml:space="preserve">
+    <value>Current length unit for c (Å or
+nm; switch with the unit selector).</value>
   </data>
 </root>

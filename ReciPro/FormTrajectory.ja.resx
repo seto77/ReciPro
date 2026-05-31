@@ -419,4 +419,122 @@
   <data name="$this.Text" xml:space="preserve">
     <value>電子飛程シミュレータ (Monte Carlo Method)</value>
   </data>
+  <data name="buttonSimulate.ToolTip" xml:space="preserve">
+    <value>モンテカルロ計算を実行します。指定本数の
+入射電子を試料中で追跡し、統計値・
+分布グラフ・3D 軌跡表示を更新します。</value>
+  </data>
+  <data name="buttonSurfaceNormal.ToolTip" xml:space="preserve">
+    <value>3D 表示の視点を試料表面の法線方向（現在
+の傾斜角を反映）に設定します。</value>
+  </data>
+  <data name="buttonViewFromX.ToolTip" xml:space="preserve">
+    <value>3D 表示の視点を X 軸方向（試料の回転＝傾斜軸）に設定します。</value>
+  </data>
+  <data name="buttonViewFromZ.ToolTip" xml:space="preserve">
+    <value>3D 表示の視点を Z 軸方向（=入射ビーム方向）に設定します。</value>
+  </data>
+  <data name="checkBoxDrawAbsorved.ToolTip" xml:space="preserve">
+    <value>3D 表示で、後方散乱しなかった（試料内に
+吸収された）電子の飛程も描画します。
+オフでは後方散乱電子のみ表示します。</value>
+  </data>
+  <data name="checkBoxDrawAxes.ToolTip" xml:space="preserve">
+    <value>3D 軌跡表示に X（赤）・Y（緑）・Z=ビーム
+方向（紫）の座標軸を表示します。</value>
+  </data>
+  <data name="checkBoxDrawAxesInStereonet.ToolTip" xml:space="preserve">
+    <value>後方散乱電子の脱出方向のステレオ投影図（極点図）上
+に、±X/±Y/±Z 軸の位置マーカーを重ねて表示します。</value>
+  </data>
+  <data name="checkBoxDrawGuidCircles.ToolTip" xml:space="preserve">
+    <value>3D 表示で、試料表面に距離の目安となる同心スケール
+円（間隔は自動、nm/µm 表示）を描画します。</value>
+  </data>
+  <data name="checkBoxDrawPathAfterEscape.ToolTip" xml:space="preserve">
+    <value>3D 表示で、後方散乱電子が表面から脱出した後の進行方向を
+延長して描画します（脱出エネルギーで色分け）。</value>
+  </data>
+  <data name="labelBSEenergy.ToolTip" xml:space="preserve">
+    <value>試料表面から脱出する後方散乱電子
+(BSE) の平均エネルギー (keV)。</value>
+  </data>
+  <data name="labelBSEratio.ToolTip" xml:space="preserve">
+    <value>後方散乱係数 η: 入射電子のうち表面から
+後方散乱電子 (BSE) として再放出される
+割合。モンテカルロ計算による値です。</value>
+  </data>
+  <data name="labelCrossSection.ToolTip" xml:space="preserve">
+    <value>散乱断面積 σ_E: 入射エネルギーにおける弾性散乱の
+有効面積。大きいほど散乱が頻繁に起こります (nm²)。</value>
+  </data>
+  <data name="labelMeanFreePath.ToolTip" xml:space="preserve">
+    <value>弾性平均自由行程 λ: 入射エネルギーにおいて電子が
+弾性散乱を一回起こすまでに進む平均距離 (nm)。</value>
+  </data>
+  <data name="labelStoppingPower.ToolTip" xml:space="preserve">
+    <value>阻止能 dE/ds: 入射エネルギーにおいて電子が
+非弾性衝突で単位距離あたりに失うエネルギー (eV/nm)。</value>
+  </data>
+  <data name="numericBoxCalcNum.ToolTip" xml:space="preserve">
+    <value>計算する電子飛程の総本数 (100〜1,000,000)。多い
+ほど統計は滑らかになりますが計算時間が増えます。</value>
+  </data>
+  <data name="numericBoxDrawNum.ToolTip" xml:space="preserve">
+    <value>3D 表示に描画する飛程の本数の上限 (1〜100,
+000)。計算本数ではなく表示のみに影響し、
+少なくすると 3D 表示が軽くなります。</value>
+  </data>
+  <data name="numericBoxSampleTilt.ToolTip" xml:space="preserve">
+    <value>入射ビームに対する試料表面の傾斜角
+(0〜-90°)。0°=表面法線がビームと平行。傾ける
+と後方散乱電子の収率と方向分布が変化します。</value>
+  </data>
+  <data name="radioButtonAverageEnergy.ToolTip" xml:space="preserve">
+    <value>ステレオ投影図を、各方向へ脱出した後方散乱電子の
+平均エネルギー (keV) で着色します。</value>
+  </data>
+  <data name="radioButtonFrequency.ToolTip" xml:space="preserve">
+    <value>ステレオ投影図を頻度（各方向へ脱出し
+た後方散乱電子の数）で着色します。</value>
+  </data>
+  <data name="radioButtonStandardDeviation.ToolTip" xml:space="preserve">
+    <value>ステレオ投影図を、各方向へ脱出した後方散乱電子の
+エネルギーの標準偏差で着色します。</value>
+  </data>
+  <data name="toolStripStatusLabel1.ToolTipText" xml:space="preserve">
+    <value>ステータスバー: 直前の計算で要した飛程計算・グラフ
+描画・3D 描画それぞれの経過時間を表示します。</value>
+  </data>
+  <data name="waveLengthControl.ToolTip" xml:space="preserve">
+    <value>入射電子のエネルギー（加速電圧, keV）。
+飛程・散乱断面積・平均自由行程・阻止能の
+計算に用いる入射エネルギーです。高いほど
+試料への侵入が深くなります。</value>
+  </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value>計算する電子飛程の総本数 (100〜1,000,000)。多い
+ほど統計は滑らかになりますが計算時間が増えます。</value>
+  </data>
+  <data name="label2.ToolTip" xml:space="preserve">
+    <value>後方散乱係数 η: 入射電子のうち表面から
+後方散乱電子 (BSE) として再放出される
+割合。モンテカルロ計算による値です。</value>
+  </data>
+  <data name="label3.ToolTip" xml:space="preserve">
+    <value>試料表面から脱出する後方散乱電子
+(BSE) の平均エネルギー (keV)。</value>
+  </data>
+  <data name="label4.ToolTip" xml:space="preserve">
+    <value>弾性平均自由行程 λ: 入射エネルギーにおいて電子が
+弾性散乱を一回起こすまでに進む平均距離 (nm)。</value>
+  </data>
+  <data name="label5.ToolTip" xml:space="preserve">
+    <value>阻止能 dE/ds: 入射エネルギーにおいて電子が
+非弾性衝突で単位距離あたりに失うエネルギー (eV/nm)。</value>
+  </data>
+  <data name="label6.ToolTip" xml:space="preserve">
+    <value>散乱断面積 σ_E: 入射エネルギーにおける弾性散乱の
+有効面積。大きいほど散乱が頻繁に起こります (nm²)。</value>
+  </data>
 </root>

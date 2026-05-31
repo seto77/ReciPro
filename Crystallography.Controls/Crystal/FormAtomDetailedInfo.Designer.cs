@@ -24,6 +24,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormAtomDetailedInfo)); // 260531Cl
+            components = new System.ComponentModel.Container(); // (260531Ch)
+            toolTip = new System.Windows.Forms.ToolTip(components); // (260531Ch)
+            toolTip.IsBalloon = true; // 260531Cl 追加: バルーン表示に統一
             this.listBox = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
             this.listBox1 = new System.Windows.Forms.ListBox();
@@ -38,6 +42,7 @@
             this.listBox.ItemHeight = 15;
             this.listBox.Location = new System.Drawing.Point(0, 15);
             this.listBox.Name = "listBox";
+            this.toolTip.SetToolTip(this.listBox, resources.GetString("listBox.ToolTip")); // 260531Cl
             this.listBox.Size = new System.Drawing.Size(240, 209);
             this.listBox.TabIndex = 1;
             this.listBox.SelectedIndexChanged += new System.EventHandler(this.listBox_SelectedIndexChanged);
@@ -47,6 +52,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(2, 9);
             this.label1.Name = "label1";
+            this.toolTip.SetToolTip(this.label1, resources.GetString("label1.ToolTip")); // 260531Cl
             this.label1.Size = new System.Drawing.Size(0, 15);
             this.label1.TabIndex = 2;
             // 
@@ -59,6 +65,7 @@
             this.listBox1.ItemHeight = 15;
             this.listBox1.Location = new System.Drawing.Point(0, 0);
             this.listBox1.Name = "listBox1";
+            this.toolTip.SetToolTip(this.listBox1, resources.GetString("listBox1.ToolTip")); // 260531Cl
             this.listBox1.Size = new System.Drawing.Size(240, 15);
             this.listBox1.TabIndex = 3;
             // 
@@ -82,6 +89,8 @@
         }
 
         #endregion
+
+        private System.Windows.Forms.ToolTip toolTip; // (260531Ch)
 
         private System.Windows.Forms.ListBox listBox;
         private System.Windows.Forms.Label label1;

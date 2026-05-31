@@ -173,4 +173,176 @@
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>85</value>
   </metadata>
+  <data name="buttonCopyElements.ToolTip" xml:space="preserve">
+    <value>Copy the symmetry-element diagram to the clipboard
+in the selected format (emf vector or bmp bitmap).</value>
+  </data>
+  <data name="buttonCopyPositions.ToolTip" xml:space="preserve">
+    <value>Copy the general-position diagram to the clipboard
+in the selected format (emf vector or bmp bitmap).</value>
+  </data>
+  <data name="dataGridView1.ToolTip" xml:space="preserve">
+    <value>Wyckoff positions of this space group: each row
+gives a set of symmetry-equivalent atomic sites
+with its multiplicity, Wyckoff letter, site
+symmetry and fractional coordinates (read-only).</value>
+  </data>
+  <data name="indexControlAxis1.ToolTip" xml:space="preserve">
+    <value>Enter the direction indices (u₁ v₁ w₁)
+of axis 1; updates its length, the
+inter-axis angle and the common plane.</value>
+  </data>
+  <data name="indexControlAxis2.ToolTip" xml:space="preserve">
+    <value>Enter the direction indices (u₂ v₂ w₂)
+of axis 2; updates its length, the
+inter-axis angle and the common plane.</value>
+  </data>
+  <data name="indexControlPlane1.ToolTip" xml:space="preserve">
+    <value>Enter the Miller indices (h₁ k₁ l₁) of
+plane 1; updates its interplanar spacing,
+the inter-plane angle and the zone axis.</value>
+  </data>
+  <data name="indexControlPlane2.ToolTip" xml:space="preserve">
+    <value>Enter the Miller indices (h₂ k₂ l₂) of
+plane 2; updates its interplanar spacing,
+the inter-plane angle and the zone axis.</value>
+  </data>
+  <data name="label12.ToolTip" xml:space="preserve">
+    <value>Choose the image format used when copying a diagram
+to the clipboard: vector (emf) or bitmap (bmp).</value>
+  </data>
+  <data name="label49.ToolTip" xml:space="preserve">
+    <value>Reflection conditions (systematic absences) of this
+space group: which hkl reflections are allowed or
+extinguished by the lattice centering and symmetry.</value>
+  </data>
+  <data name="numericBoxAngleAxes.ToolTip" xml:space="preserve">
+    <value>Angle (in degrees) between axis 1 (u₁v₁w₁) and axis
+2 (u₂v₂w₂); computed automatically (read-only).</value>
+  </data>
+  <data name="numericBoxAnglePlaneAxis1.ToolTip" xml:space="preserve">
+    <value>Angle (in degrees) between plane 1 (h₁k₁l₁) and
+axis 1 (u₁v₁w₁); computed automatically (read-only).</value>
+  </data>
+  <data name="numericBoxAnglePlaneAxis2.ToolTip" xml:space="preserve">
+    <value>Angle (in degrees) between plane 2 (h₂k₂l₂) and
+axis 2 (u₂v₂w₂); computed automatically (read-only).</value>
+  </data>
+  <data name="numericBoxAnglePlanes.ToolTip" xml:space="preserve">
+    <value>Angle (in degrees) between plane 1 (h₁k₁l₁) and
+plane 2 (h₂k₂l₂); computed automatically (read-only).</value>
+  </data>
+  <data name="numericBoxLengthAxis1.ToolTip" xml:space="preserve">
+    <value>Length of the lattice direction vector
+for axis 1 (u₁v₁w₁), in ångström (Å);
+computed automatically (read-only).</value>
+  </data>
+  <data name="numericBoxLengthAxis2.ToolTip" xml:space="preserve">
+    <value>Length of the lattice direction vector
+for axis 2 (u₂v₂w₂), in ångström (Å);
+computed automatically (read-only).</value>
+  </data>
+  <data name="numericBoxLengthPlane1.ToolTip" xml:space="preserve">
+    <value>Interplanar spacing d of plane 1 (h₁k₁l₁), in
+ångström (Å); computed automatically (read-only).</value>
+  </data>
+  <data name="numericBoxLengthPlane2.ToolTip" xml:space="preserve">
+    <value>Interplanar spacing d of plane 2 (h₂k₂l₂), in
+ångström (Å); computed automatically (read-only).</value>
+  </data>
+  <data name="numericBoxPositionA.ToolTip" xml:space="preserve">
+    <value>Fractional coordinate x of the test point
+plotted in the general-position diagram
+(range -1 to 1; redraws the diagram).</value>
+  </data>
+  <data name="numericBoxPositionB.ToolTip" xml:space="preserve">
+    <value>Fractional coordinate y of the test point
+plotted in the general-position diagram
+(range -1 to 1; redraws the diagram).</value>
+  </data>
+  <data name="numericBoxPositionC.ToolTip" xml:space="preserve">
+    <value>Fractional coordinate z of the test point
+plotted in the general-position diagram
+(range -1 to 1; redraws the diagram).</value>
+  </data>
+  <data name="radioButtonBmp.ToolTip" xml:space="preserve">
+    <value>Copy diagrams to the clipboard as a bitmap
+(bmp) raster image (fixed resolution).</value>
+  </data>
+  <data name="radioButtonDirectionA.ToolTip" xml:space="preserve">
+    <value>Project the symmetry-element and
+general-position diagrams along the a-axis
+(available for orthorhombic crystals).</value>
+  </data>
+  <data name="radioButtonDirectionB.ToolTip" xml:space="preserve">
+    <value>Project the symmetry-element and
+general-position diagrams along the b-axis
+(available for orthorhombic crystals).</value>
+  </data>
+  <data name="radioButtonDirectionC.ToolTip" xml:space="preserve">
+    <value>Project the symmetry-element and
+general-position diagrams along the c-axis
+(default; selectable for orthorhombic crystals).</value>
+  </data>
+  <data name="radioButtonEmf.ToolTip" xml:space="preserve">
+    <value>Copy diagrams to the clipboard as an
+Enhanced Metafile (emf) vector image
+that scales without pixelation (default).</value>
+  </data>
+  <data name="textBoxZoneAxis.ToolTip" xml:space="preserve">
+    <value>Zone axis [uvw]: the crystal direction
+lying in both plane 1 and plane 2
+(their common zone), shown read-only.</value>
+  </data>
+  <data name="textBoxZonePlane.ToolTip" xml:space="preserve">
+    <value>Lattice plane (hkl) that contains both
+axis 1 and axis 2 (the plane common to
+the two directions), shown read-only.</value>
+  </data>
+  <data name="label.ToolTip" xml:space="preserve">
+    <value>Crystal system of the structure (e.g.
+cubic, hexagonal, orthorhombic).</value>
+  </data>
+  <data name="label10.ToolTip" xml:space="preserve">
+    <value>Hermann–Mauguin (HM) symbol of the point group (e.g. m-3m).</value>
+  </data>
+  <data name="label11.ToolTip" xml:space="preserve">
+    <value>Schoenflies (SF) symbol of the point group (e.g. O_h).</value>
+  </data>
+  <data name="label16.ToolTip" xml:space="preserve">
+    <value>Projection direction of the symmetry-element
+and general-position diagrams (selectable
+for orthorhombic crystals).</value>
+  </data>
+  <data name="label4.ToolTip" xml:space="preserve">
+    <value>Space-group number (1–230) from the
+International Tables for Crystallography,
+with its setting sub-number.</value>
+  </data>
+  <data name="label40.ToolTip" xml:space="preserve">
+    <value>Zone axis [uvw]: the crystal direction
+lying in both plane 1 and plane 2
+(their common zone), shown read-only.</value>
+  </data>
+  <data name="label42.ToolTip" xml:space="preserve">
+    <value>Lattice plane (hkl) that contains both
+axis 1 and axis 2 (the plane common to
+the two directions), shown read-only.</value>
+  </data>
+  <data name="label5.ToolTip" xml:space="preserve">
+    <value>Short Hermann–Mauguin (HM) symbol of the
+space group (international standard notation).</value>
+  </data>
+  <data name="label6.ToolTip" xml:space="preserve">
+    <value>Full Hermann–Mauguin (HM) symbol of the space group,
+listing the symmetry along each axis explicitly.</value>
+  </data>
+  <data name="label8.ToolTip" xml:space="preserve">
+    <value>Schoenflies (SF) symbol of the space group (e.g. O_h^7).</value>
+  </data>
+  <data name="label9.ToolTip" xml:space="preserve">
+    <value>Hall symbol of the space group: a
+compact notation that encodes the full
+set of generating symmetry operations.</value>
+  </data>
 </root>

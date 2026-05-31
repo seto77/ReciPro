@@ -27,6 +27,8 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
+            toolTip = new System.Windows.Forms.ToolTip(components); // (260531Ch)
+            toolTip.IsBalloon = true; // 260531Cl 追加: バルーン表示に統一
             panelSearch = new System.Windows.Forms.Panel();
             searchCrystalControl = new SearchCrystalControl();
             crystalDatabaseControl = new CrystalDatabaseControl();
@@ -121,6 +123,8 @@
         }
 
         #endregion
+
+        private System.Windows.Forms.ToolTip toolTip; // (260531Ch)
 
         private Crystallography.Controls.SearchCrystalControl searchCrystalControl;
         private Crystallography.Controls.CrystalDatabaseControl crystalDatabaseControl;

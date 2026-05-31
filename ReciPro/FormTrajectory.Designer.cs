@@ -34,6 +34,9 @@
         // panel2 -> panelStereonetOptions
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container(); // 260531Cl
+            toolTip = new System.Windows.Forms.ToolTip(components); // 260531Cl
+            toolTip.IsBalloon = true; // 260531Cl 追加: バルーン表示に統一
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormTrajectory));
             waveLengthControl = new WaveLengthControl();
             buttonSimulate = new System.Windows.Forms.Button();
@@ -93,6 +96,7 @@
             // waveLengthControl
             // 
             resources.ApplyResources(waveLengthControl, "waveLengthControl");
+            toolTip.SetToolTip(waveLengthControl, resources.GetString("waveLengthControl.ToolTip")); // 260531Cl
             waveLengthControl.Direction = System.Windows.Forms.FlowDirection.TopDown;
             waveLengthControl.Energy = 20D;
             waveLengthControl.Monochrome = true;
@@ -106,6 +110,7 @@
             // buttonSimulate
             // 
             resources.ApplyResources(buttonSimulate, "buttonSimulate");
+            toolTip.SetToolTip(buttonSimulate, resources.GetString("buttonSimulate.ToolTip")); // 260531Cl
             buttonSimulate.BackColor = System.Drawing.Color.SteelBlue;
             buttonSimulate.ForeColor = System.Drawing.Color.White;
             buttonSimulate.Name = "buttonSimulate";
@@ -115,6 +120,7 @@
             // numericBoxSampleTilt
             // 
             resources.ApplyResources(numericBoxSampleTilt, "numericBoxSampleTilt");
+            toolTip.SetToolTip(numericBoxSampleTilt, resources.GetString("numericBoxSampleTilt.ToolTip")); // 260531Cl
             numericBoxSampleTilt.BackColor = System.Drawing.Color.Transparent;
             numericBoxSampleTilt.Maximum = 0D;
             numericBoxSampleTilt.Minimum = -90D;
@@ -126,6 +132,7 @@
             // buttonViewFromX
             // 
             resources.ApplyResources(buttonViewFromX, "buttonViewFromX");
+            toolTip.SetToolTip(buttonViewFromX, resources.GetString("buttonViewFromX.ToolTip")); // 260531Cl
             buttonViewFromX.Name = "buttonViewFromX";
             buttonViewFromX.UseVisualStyleBackColor = true;
             buttonViewFromX.Click += buttonViewFromX_Click;
@@ -133,6 +140,7 @@
             // buttonViewFromZ
             // 
             resources.ApplyResources(buttonViewFromZ, "buttonViewFromZ");
+            toolTip.SetToolTip(buttonViewFromZ, resources.GetString("buttonViewFromZ.ToolTip")); // 260531Cl
             buttonViewFromZ.Name = "buttonViewFromZ";
             buttonViewFromZ.UseVisualStyleBackColor = true;
             buttonViewFromZ.Click += buttonViewFromZ_Click;
@@ -191,6 +199,7 @@
             // numericBoxCalcNum
             // 
             resources.ApplyResources(numericBoxCalcNum, "numericBoxCalcNum");
+            toolTip.SetToolTip(numericBoxCalcNum, resources.GetString("numericBoxCalcNum.ToolTip")); // 260531Cl
             numericBoxCalcNum.BackColor = System.Drawing.Color.Transparent;
             numericBoxCalcNum.DecimalPlaces = 0;
             numericBoxCalcNum.Maximum = 1000000D;
@@ -205,6 +214,7 @@
             // numericBoxDrawNum
             // 
             resources.ApplyResources(numericBoxDrawNum, "numericBoxDrawNum");
+            toolTip.SetToolTip(numericBoxDrawNum, resources.GetString("numericBoxDrawNum.ToolTip")); // 260531Cl
             numericBoxDrawNum.BackColor = System.Drawing.Color.Transparent;
             numericBoxDrawNum.DecimalPlaces = 0;
             numericBoxDrawNum.Maximum = 100000D;
@@ -349,6 +359,7 @@
             // checkBoxDrawAxes
             // 
             resources.ApplyResources(checkBoxDrawAxes, "checkBoxDrawAxes");
+            toolTip.SetToolTip(checkBoxDrawAxes, resources.GetString("checkBoxDrawAxes.ToolTip")); // 260531Cl
             checkBoxDrawAxes.Checked = true;
             checkBoxDrawAxes.CheckState = System.Windows.Forms.CheckState.Checked;
             checkBoxDrawAxes.Name = "checkBoxDrawAxes";
@@ -358,6 +369,7 @@
             // checkBoxDrawGuidCircles
             // 
             resources.ApplyResources(checkBoxDrawGuidCircles, "checkBoxDrawGuidCircles");
+            toolTip.SetToolTip(checkBoxDrawGuidCircles, resources.GetString("checkBoxDrawGuidCircles.ToolTip")); // 260531Cl
             checkBoxDrawGuidCircles.Checked = true;
             checkBoxDrawGuidCircles.CheckState = System.Windows.Forms.CheckState.Checked;
             checkBoxDrawGuidCircles.Name = "checkBoxDrawGuidCircles";
@@ -367,6 +379,7 @@
             // buttonSurfaceNormal
             // 
             resources.ApplyResources(buttonSurfaceNormal, "buttonSurfaceNormal");
+            toolTip.SetToolTip(buttonSurfaceNormal, resources.GetString("buttonSurfaceNormal.ToolTip")); // 260531Cl
             buttonSurfaceNormal.Name = "buttonSurfaceNormal";
             buttonSurfaceNormal.UseVisualStyleBackColor = true;
             buttonSurfaceNormal.Click += buttonViewFromSurfaceNormal_Click;
@@ -382,6 +395,7 @@
             // label1
             // 
             resources.ApplyResources(label1, "label1");
+            toolTip.SetToolTip(label1, resources.GetString("label1.ToolTip")); // 260531Cl
             label1.Name = "label1";
             // 
             // flowLayoutPanelProfiles
@@ -396,6 +410,7 @@
             // checkBoxDrawAbsorved
             // 
             resources.ApplyResources(checkBoxDrawAbsorved, "checkBoxDrawAbsorved");
+            toolTip.SetToolTip(checkBoxDrawAbsorved, resources.GetString("checkBoxDrawAbsorved.ToolTip")); // 260531Cl
             checkBoxDrawAbsorved.Name = "checkBoxDrawAbsorved";
             checkBoxDrawAbsorved.UseVisualStyleBackColor = true;
             checkBoxDrawAbsorved.CheckedChanged += checkBoxDrawAxes_CheckedChanged;
@@ -415,6 +430,7 @@
             // radioButtonStandardDeviation
             // 
             resources.ApplyResources(radioButtonStandardDeviation, "radioButtonStandardDeviation");
+            toolTip.SetToolTip(radioButtonStandardDeviation, resources.GetString("radioButtonStandardDeviation.ToolTip")); // 260531Cl
             radioButtonStandardDeviation.Name = "radioButtonStandardDeviation";
             radioButtonStandardDeviation.TabStop = true;
             radioButtonStandardDeviation.UseVisualStyleBackColor = true;
@@ -423,6 +439,7 @@
             // radioButtonAverageEnergy
             // 
             resources.ApplyResources(radioButtonAverageEnergy, "radioButtonAverageEnergy");
+            toolTip.SetToolTip(radioButtonAverageEnergy, resources.GetString("radioButtonAverageEnergy.ToolTip")); // 260531Cl
             radioButtonAverageEnergy.Name = "radioButtonAverageEnergy";
             radioButtonAverageEnergy.TabStop = true;
             radioButtonAverageEnergy.UseVisualStyleBackColor = true;
@@ -431,6 +448,7 @@
             // radioButtonFrequency
             // 
             resources.ApplyResources(radioButtonFrequency, "radioButtonFrequency");
+            toolTip.SetToolTip(radioButtonFrequency, resources.GetString("radioButtonFrequency.ToolTip")); // 260531Cl
             radioButtonFrequency.Checked = true;
             radioButtonFrequency.Name = "radioButtonFrequency";
             radioButtonFrequency.TabStop = true;
@@ -440,6 +458,7 @@
             // checkBoxDrawAxesInStereonet
             // 
             resources.ApplyResources(checkBoxDrawAxesInStereonet, "checkBoxDrawAxesInStereonet");
+            toolTip.SetToolTip(checkBoxDrawAxesInStereonet, resources.GetString("checkBoxDrawAxesInStereonet.ToolTip")); // 260531Cl
             checkBoxDrawAxesInStereonet.Checked = true;
             checkBoxDrawAxesInStereonet.CheckState = System.Windows.Forms.CheckState.Checked;
             checkBoxDrawAxesInStereonet.Name = "checkBoxDrawAxesInStereonet";
@@ -466,56 +485,67 @@
             // labelBSEenergy
             // 
             resources.ApplyResources(labelBSEenergy, "labelBSEenergy");
+            toolTip.SetToolTip(labelBSEenergy, resources.GetString("labelBSEenergy.ToolTip")); // 260531Cl
             labelBSEenergy.Name = "labelBSEenergy";
             // 
             // labelStoppingPower
             // 
             resources.ApplyResources(labelStoppingPower, "labelStoppingPower");
+            toolTip.SetToolTip(labelStoppingPower, resources.GetString("labelStoppingPower.ToolTip")); // 260531Cl
             labelStoppingPower.Name = "labelStoppingPower";
             // 
             // labelCrossSection
             // 
             resources.ApplyResources(labelCrossSection, "labelCrossSection");
+            toolTip.SetToolTip(labelCrossSection, resources.GetString("labelCrossSection.ToolTip")); // 260531Cl
             labelCrossSection.Name = "labelCrossSection";
             // 
             // labelMeanFreePath
             // 
             resources.ApplyResources(labelMeanFreePath, "labelMeanFreePath");
+            toolTip.SetToolTip(labelMeanFreePath, resources.GetString("labelMeanFreePath.ToolTip")); // 260531Cl
             labelMeanFreePath.Name = "labelMeanFreePath";
             // 
             // labelBSEratio
             // 
             resources.ApplyResources(labelBSEratio, "labelBSEratio");
+            toolTip.SetToolTip(labelBSEratio, resources.GetString("labelBSEratio.ToolTip")); // 260531Cl
             labelBSEratio.Name = "labelBSEratio";
             // 
             // label3
             // 
             resources.ApplyResources(label3, "label3");
+            toolTip.SetToolTip(label3, resources.GetString("label3.ToolTip")); // 260531Cl
             label3.Name = "label3";
             // 
             // label6
             // 
             resources.ApplyResources(label6, "label6");
+            toolTip.SetToolTip(label6, resources.GetString("label6.ToolTip")); // 260531Cl
             label6.Name = "label6";
             // 
             // label5
             // 
             resources.ApplyResources(label5, "label5");
+            toolTip.SetToolTip(label5, resources.GetString("label5.ToolTip")); // 260531Cl
             label5.Name = "label5";
             // 
             // label4
             // 
             resources.ApplyResources(label4, "label4");
+            toolTip.SetToolTip(label4, resources.GetString("label4.ToolTip")); // 260531Cl
             label4.Name = "label4";
             // 
             // label2
             // 
             resources.ApplyResources(label2, "label2");
+            toolTip.SetToolTip(label2, resources.GetString("label2.ToolTip")); // 260531Cl
             label2.Name = "label2";
             // 
             // checkBoxDrawPathAfterEscape
             // 
             resources.ApplyResources(checkBoxDrawPathAfterEscape, "checkBoxDrawPathAfterEscape");
+            toolTip.SetToolTip(checkBoxDrawPathAfterEscape, resources.GetString("checkBoxDrawPathAfterEscape.ToolTip")); // 260531Cl
             checkBoxDrawPathAfterEscape.Checked = true;
             checkBoxDrawPathAfterEscape.CheckState = System.Windows.Forms.CheckState.Checked;
             checkBoxDrawPathAfterEscape.Name = "checkBoxDrawPathAfterEscape";
@@ -583,6 +613,7 @@
         #endregion
 
         private WaveLengthControl waveLengthControl;
+        private System.Windows.Forms.ToolTip toolTip; // 260531Cl
         private System.Windows.Forms.Button buttonSimulate;
         private NumericBox numericBoxSampleTilt;
         private System.Windows.Forms.Button buttonViewFromX;

@@ -119,6 +119,7 @@
             numericBoxAtomRadius = new NumericBox();
             colorControlAtomColor = new ColorControl();
             toolTip = new System.Windows.Forms.ToolTip(components);
+            toolTip.IsBalloon = true; // 260531Cl 追加: バルーン表示に統一
             buttonApplyToSameElement = new System.Windows.Forms.Button();
             buttonAddAtom = new System.Windows.Forms.Button();
             buttonChange = new System.Windows.Forms.Button();
@@ -163,6 +164,7 @@
             // radioButtonIsotoropy
             // 
             resources.ApplyResources(radioButtonIsotoropy, "radioButtonIsotoropy");
+            toolTip.SetToolTip(radioButtonIsotoropy, resources.GetString("radioButtonIsotoropy.ToolTip")); // 260531Cl
             radioButtonIsotoropy.Checked = true;
             radioButtonIsotoropy.Name = "radioButtonIsotoropy";
             radioButtonIsotoropy.TabStop = true;
@@ -171,6 +173,7 @@
             // radioButtonAnisotropy
             // 
             resources.ApplyResources(radioButtonAnisotropy, "radioButtonAnisotropy");
+            toolTip.SetToolTip(radioButtonAnisotropy, resources.GetString("radioButtonAnisotropy.ToolTip")); // 260531Cl
             radioButtonAnisotropy.Name = "radioButtonAnisotropy";
             radioButtonAnisotropy.CheckedChanged += radioButtonIsotoropy_CheckedChanged;
             // 
@@ -184,6 +187,7 @@
             // numericBoxBiso
             // 
             resources.ApplyResources(numericBoxBiso, "numericBoxBiso");
+            toolTip.SetToolTip(numericBoxBiso, resources.GetString("numericBoxBiso.ToolTip")); // 260531Cl
             numericBoxBiso.BackColor = System.Drawing.SystemColors.Control;
             numericBoxBiso.FooterBackColor = System.Drawing.SystemColors.Control;
             numericBoxBiso.HeaderBackColor = System.Drawing.SystemColors.Control;
@@ -199,6 +203,7 @@
             numericBoxBisoerr.BackColor = System.Drawing.SystemColors.Control;
             numericBoxBisoerr.FooterBackColor = System.Drawing.SystemColors.Control;
             resources.ApplyResources(numericBoxBisoerr, "numericBoxBisoerr");
+            toolTip.SetToolTip(numericBoxBisoerr, resources.GetString("numericBoxBisoerr.ToolTip")); // 260531Cl
             numericBoxBisoerr.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxBisoerr.Name = "numericBoxBisoerr";
             numericBoxBisoerr.RoundErrorAccuracy = 8;
@@ -242,6 +247,7 @@
             // checkBoxDetailAtomicPositionError
             // 
             resources.ApplyResources(checkBoxDetailAtomicPositionError, "checkBoxDetailAtomicPositionError");
+            toolTip.SetToolTip(checkBoxDetailAtomicPositionError, resources.GetString("checkBoxDetailAtomicPositionError.ToolTip")); // 260531Cl
             checkBoxDetailAtomicPositionError.Name = "checkBoxDetailAtomicPositionError";
             checkBoxDetailAtomicPositionError.UseVisualStyleBackColor = true;
             checkBoxDetailAtomicPositionError.CheckedChanged += checkBoxAtomicPositionError_CheckedChanged;
@@ -292,6 +298,7 @@
             numericBoxOccerr.DecimalPlaces = 6;
             numericBoxOccerr.FooterBackColor = System.Drawing.SystemColors.Control;
             resources.ApplyResources(numericBoxOccerr, "numericBoxOccerr");
+            toolTip.SetToolTip(numericBoxOccerr, resources.GetString("numericBoxOccerr.ToolTip")); // 260531Cl
             numericBoxOccerr.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxOccerr.Name = "numericBoxOccerr";
             numericBoxOccerr.SkipEventDuringInput = false;
@@ -337,6 +344,7 @@
             numericBoxYerr.DecimalPlaces = 6;
             numericBoxYerr.FooterBackColor = System.Drawing.SystemColors.Control;
             resources.ApplyResources(numericBoxYerr, "numericBoxYerr");
+            toolTip.SetToolTip(numericBoxYerr, resources.GetString("numericBoxYerr.ToolTip")); // 260531Cl
             numericBoxYerr.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxYerr.Name = "numericBoxYerr";
             numericBoxYerr.SkipEventDuringInput = false;
@@ -351,6 +359,7 @@
             numericBoxXerr.DecimalPlaces = 6;
             numericBoxXerr.FooterBackColor = System.Drawing.SystemColors.Control;
             resources.ApplyResources(numericBoxXerr, "numericBoxXerr");
+            toolTip.SetToolTip(numericBoxXerr, resources.GetString("numericBoxXerr.ToolTip")); // 260531Cl
             numericBoxXerr.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxXerr.Name = "numericBoxXerr";
             numericBoxXerr.SkipEventDuringInput = false;
@@ -395,6 +404,7 @@
             numericBoxZerr.DecimalPlaces = 6;
             numericBoxZerr.FooterBackColor = System.Drawing.SystemColors.Control;
             resources.ApplyResources(numericBoxZerr, "numericBoxZerr");
+            toolTip.SetToolTip(numericBoxZerr, resources.GetString("numericBoxZerr.ToolTip")); // 260531Cl
             numericBoxZerr.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxZerr.Name = "numericBoxZerr";
             numericBoxZerr.SkipEventDuringInput = false;
@@ -434,6 +444,7 @@
             // radioButtonOriginShiftPlus
             // 
             resources.ApplyResources(radioButtonOriginShiftPlus, "radioButtonOriginShiftPlus");
+            toolTip.SetToolTip(radioButtonOriginShiftPlus, resources.GetString("radioButtonOriginShiftPlus.ToolTip")); // 260531Cl
             radioButtonOriginShiftPlus.Checked = true;
             radioButtonOriginShiftPlus.Name = "radioButtonOriginShiftPlus";
             radioButtonOriginShiftPlus.TabStop = true;
@@ -442,12 +453,14 @@
             // radioButtonOriginShiftMinus
             // 
             resources.ApplyResources(radioButtonOriginShiftMinus, "radioButtonOriginShiftMinus");
+            toolTip.SetToolTip(radioButtonOriginShiftMinus, resources.GetString("radioButtonOriginShiftMinus.ToolTip")); // 260531Cl
             radioButtonOriginShiftMinus.Name = "radioButtonOriginShiftMinus";
             radioButtonOriginShiftMinus.UseVisualStyleBackColor = true;
             // 
             // buttonOriginShift1
             // 
             resources.ApplyResources(buttonOriginShift1, "buttonOriginShift1");
+            toolTip.SetToolTip(buttonOriginShift1, resources.GetString("buttonOriginShift1.ToolTip")); // 260531Cl
             buttonOriginShift1.BackColor = System.Drawing.Color.MediumSeaGreen;
             buttonOriginShift1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             buttonOriginShift1.Name = "buttonOriginShift1";
@@ -458,6 +471,7 @@
             // buttonOriginShift2
             // 
             resources.ApplyResources(buttonOriginShift2, "buttonOriginShift2");
+            toolTip.SetToolTip(buttonOriginShift2, resources.GetString("buttonOriginShift2.ToolTip")); // 260531Cl
             buttonOriginShift2.BackColor = System.Drawing.Color.MediumSeaGreen;
             buttonOriginShift2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             buttonOriginShift2.Name = "buttonOriginShift2";
@@ -468,6 +482,7 @@
             // buttonOriginShift8
             // 
             resources.ApplyResources(buttonOriginShift8, "buttonOriginShift8");
+            toolTip.SetToolTip(buttonOriginShift8, resources.GetString("buttonOriginShift8.ToolTip")); // 260531Cl
             buttonOriginShift8.BackColor = System.Drawing.Color.MediumSeaGreen;
             buttonOriginShift8.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             buttonOriginShift8.Name = "buttonOriginShift8";
@@ -478,6 +493,7 @@
             // buttonOriginShift7
             // 
             resources.ApplyResources(buttonOriginShift7, "buttonOriginShift7");
+            toolTip.SetToolTip(buttonOriginShift7, resources.GetString("buttonOriginShift7.ToolTip")); // 260531Cl
             buttonOriginShift7.BackColor = System.Drawing.Color.MediumSeaGreen;
             buttonOriginShift7.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             buttonOriginShift7.Name = "buttonOriginShift7";
@@ -488,6 +504,7 @@
             // buttonOriginShift6
             // 
             resources.ApplyResources(buttonOriginShift6, "buttonOriginShift6");
+            toolTip.SetToolTip(buttonOriginShift6, resources.GetString("buttonOriginShift6.ToolTip")); // 260531Cl
             buttonOriginShift6.BackColor = System.Drawing.Color.MediumSeaGreen;
             buttonOriginShift6.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             buttonOriginShift6.Name = "buttonOriginShift6";
@@ -498,6 +515,7 @@
             // buttonOriginShift5
             // 
             resources.ApplyResources(buttonOriginShift5, "buttonOriginShift5");
+            toolTip.SetToolTip(buttonOriginShift5, resources.GetString("buttonOriginShift5.ToolTip")); // 260531Cl
             buttonOriginShift5.BackColor = System.Drawing.Color.MediumSeaGreen;
             buttonOriginShift5.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             buttonOriginShift5.Name = "buttonOriginShift5";
@@ -508,6 +526,7 @@
             // buttonOriginShift4
             // 
             resources.ApplyResources(buttonOriginShift4, "buttonOriginShift4");
+            toolTip.SetToolTip(buttonOriginShift4, resources.GetString("buttonOriginShift4.ToolTip")); // 260531Cl
             buttonOriginShift4.BackColor = System.Drawing.Color.MediumSeaGreen;
             buttonOriginShift4.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             buttonOriginShift4.Name = "buttonOriginShift4";
@@ -518,6 +537,7 @@
             // buttonOriginShift3
             // 
             resources.ApplyResources(buttonOriginShift3, "buttonOriginShift3");
+            toolTip.SetToolTip(buttonOriginShift3, resources.GetString("buttonOriginShift3.ToolTip")); // 260531Cl
             buttonOriginShift3.BackColor = System.Drawing.Color.MediumSeaGreen;
             buttonOriginShift3.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             buttonOriginShift3.Name = "buttonOriginShift3";
@@ -528,6 +548,7 @@
             // buttonOriginShift9
             // 
             resources.ApplyResources(buttonOriginShift9, "buttonOriginShift9");
+            toolTip.SetToolTip(buttonOriginShift9, resources.GetString("buttonOriginShift9.ToolTip")); // 260531Cl
             buttonOriginShift9.BackColor = System.Drawing.Color.MediumSeaGreen;
             buttonOriginShift9.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             buttonOriginShift9.Name = "buttonOriginShift9";
@@ -538,11 +559,13 @@
             // label7
             // 
             resources.ApplyResources(label7, "label7");
+            toolTip.SetToolTip(label7, resources.GetString("label7.ToolTip")); // 260531Cl
             label7.Name = "label7";
             // 
             // buttonOriginShiftCustom
             // 
             resources.ApplyResources(buttonOriginShiftCustom, "buttonOriginShiftCustom");
+            toolTip.SetToolTip(buttonOriginShiftCustom, resources.GetString("buttonOriginShiftCustom.ToolTip")); // 260531Cl
             buttonOriginShiftCustom.BackColor = System.Drawing.Color.MediumSeaGreen;
             buttonOriginShiftCustom.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             buttonOriginShiftCustom.Name = "buttonOriginShiftCustom";
@@ -553,6 +576,7 @@
             // numericBoxOriginShiftZ
             // 
             resources.ApplyResources(numericBoxOriginShiftZ, "numericBoxOriginShiftZ");
+            toolTip.SetToolTip(numericBoxOriginShiftZ, resources.GetString("numericBoxOriginShiftZ.ToolTip")); // 260531Cl
             numericBoxOriginShiftZ.BackColor = System.Drawing.SystemColors.Control;
             numericBoxOriginShiftZ.DecimalPlaces = 4;
             numericBoxOriginShiftZ.FooterBackColor = System.Drawing.SystemColors.Control;
@@ -569,6 +593,7 @@
             // numericBoxOriginShiftY
             // 
             resources.ApplyResources(numericBoxOriginShiftY, "numericBoxOriginShiftY");
+            toolTip.SetToolTip(numericBoxOriginShiftY, resources.GetString("numericBoxOriginShiftY.ToolTip")); // 260531Cl
             numericBoxOriginShiftY.BackColor = System.Drawing.SystemColors.Control;
             numericBoxOriginShiftY.DecimalPlaces = 4;
             numericBoxOriginShiftY.FooterBackColor = System.Drawing.SystemColors.Control;
@@ -585,6 +610,7 @@
             // numericBoxOriginShiftX
             // 
             resources.ApplyResources(numericBoxOriginShiftX, "numericBoxOriginShiftX");
+            toolTip.SetToolTip(numericBoxOriginShiftX, resources.GetString("numericBoxOriginShiftX.ToolTip")); // 260531Cl
             numericBoxOriginShiftX.BackColor = System.Drawing.SystemColors.Control;
             numericBoxOriginShiftX.DecimalPlaces = 4;
             numericBoxOriginShiftX.FooterBackColor = System.Drawing.SystemColors.Control;
@@ -622,11 +648,13 @@
             // label14
             // 
             resources.ApplyResources(label14, "label14");
+            toolTip.SetToolTip(label14, resources.GetString("label14.ToolTip")); // 260531Cl
             label14.Name = "label14";
             // 
             // labelDimension
             // 
             resources.ApplyResources(labelDimension, "labelDimension");
+            toolTip.SetToolTip(labelDimension, resources.GetString("labelDimension.ToolTip")); // 260531Cl
             labelDimension.Name = "labelDimension";
             // 
             // flowLayoutPanel5
@@ -640,6 +668,7 @@
             // label3
             // 
             resources.ApplyResources(label3, "label3");
+            toolTip.SetToolTip(label3, resources.GetString("label3.ToolTip")); // 260531Cl
             label3.Name = "label3";
             // 
             // radioButtonDebyeWallerTypeU
@@ -668,11 +697,13 @@
             // label13
             // 
             resources.ApplyResources(label13, "label13");
+            toolTip.SetToolTip(label13, resources.GetString("label13.ToolTip")); // 260531Cl
             label13.Name = "label13";
             // 
             // checkBoxDetailsDebyeWallerError
             // 
             resources.ApplyResources(checkBoxDetailsDebyeWallerError, "checkBoxDetailsDebyeWallerError");
+            toolTip.SetToolTip(checkBoxDetailsDebyeWallerError, resources.GetString("checkBoxDetailsDebyeWallerError.ToolTip")); // 260531Cl
             checkBoxDetailsDebyeWallerError.Name = "checkBoxDetailsDebyeWallerError";
             checkBoxDetailsDebyeWallerError.UseVisualStyleBackColor = true;
             checkBoxDetailsDebyeWallerError.CheckedChanged += checkBoxDebyeWallerError_CheckedChanged;
@@ -693,6 +724,7 @@
             numericBoxB22.BackColor = System.Drawing.SystemColors.Control;
             numericBoxB22.FooterBackColor = System.Drawing.SystemColors.Control;
             resources.ApplyResources(numericBoxB22, "numericBoxB22");
+            toolTip.SetToolTip(numericBoxB22, resources.GetString("numericBoxB22.ToolTip")); // 260531Cl
             numericBoxB22.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxB22.Name = "numericBoxB22";
             numericBoxB22.RoundErrorAccuracy = 8;
@@ -706,6 +738,7 @@
             numericBoxB22err.BackColor = System.Drawing.SystemColors.Control;
             numericBoxB22err.FooterBackColor = System.Drawing.SystemColors.Control;
             resources.ApplyResources(numericBoxB22err, "numericBoxB22err");
+            toolTip.SetToolTip(numericBoxB22err, resources.GetString("numericBoxB22err.ToolTip")); // 260531Cl
             numericBoxB22err.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxB22err.Name = "numericBoxB22err";
             numericBoxB22err.RoundErrorAccuracy = 8;
@@ -719,6 +752,7 @@
             numericBoxB23.BackColor = System.Drawing.SystemColors.Control;
             numericBoxB23.FooterBackColor = System.Drawing.SystemColors.Control;
             resources.ApplyResources(numericBoxB23, "numericBoxB23");
+            toolTip.SetToolTip(numericBoxB23, resources.GetString("numericBoxB23.ToolTip")); // 260531Cl
             numericBoxB23.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxB23.Name = "numericBoxB23";
             numericBoxB23.RoundErrorAccuracy = 8;
@@ -732,6 +766,7 @@
             numericBoxB23err.BackColor = System.Drawing.SystemColors.Control;
             numericBoxB23err.FooterBackColor = System.Drawing.SystemColors.Control;
             resources.ApplyResources(numericBoxB23err, "numericBoxB23err");
+            toolTip.SetToolTip(numericBoxB23err, resources.GetString("numericBoxB23err.ToolTip")); // 260531Cl
             numericBoxB23err.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxB23err.Name = "numericBoxB23err";
             numericBoxB23err.RoundErrorAccuracy = 8;
@@ -745,6 +780,7 @@
             numericBoxB33.BackColor = System.Drawing.SystemColors.Control;
             numericBoxB33.FooterBackColor = System.Drawing.SystemColors.Control;
             resources.ApplyResources(numericBoxB33, "numericBoxB33");
+            toolTip.SetToolTip(numericBoxB33, resources.GetString("numericBoxB33.ToolTip")); // 260531Cl
             numericBoxB33.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxB33.Name = "numericBoxB33";
             numericBoxB33.RoundErrorAccuracy = 8;
@@ -758,6 +794,7 @@
             numericBoxB33err.BackColor = System.Drawing.SystemColors.Control;
             numericBoxB33err.FooterBackColor = System.Drawing.SystemColors.Control;
             resources.ApplyResources(numericBoxB33err, "numericBoxB33err");
+            toolTip.SetToolTip(numericBoxB33err, resources.GetString("numericBoxB33err.ToolTip")); // 260531Cl
             numericBoxB33err.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxB33err.Name = "numericBoxB33err";
             numericBoxB33err.RoundErrorAccuracy = 8;
@@ -782,6 +819,7 @@
             numericBoxB11.BackColor = System.Drawing.SystemColors.Control;
             numericBoxB11.FooterBackColor = System.Drawing.SystemColors.Control;
             resources.ApplyResources(numericBoxB11, "numericBoxB11");
+            toolTip.SetToolTip(numericBoxB11, resources.GetString("numericBoxB11.ToolTip")); // 260531Cl
             numericBoxB11.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxB11.Name = "numericBoxB11";
             numericBoxB11.RoundErrorAccuracy = 8;
@@ -795,6 +833,7 @@
             numericBoxB11err.BackColor = System.Drawing.SystemColors.Control;
             numericBoxB11err.FooterBackColor = System.Drawing.SystemColors.Control;
             resources.ApplyResources(numericBoxB11err, "numericBoxB11err");
+            toolTip.SetToolTip(numericBoxB11err, resources.GetString("numericBoxB11err.ToolTip")); // 260531Cl
             numericBoxB11err.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxB11err.Name = "numericBoxB11err";
             numericBoxB11err.RoundErrorAccuracy = 8;
@@ -808,6 +847,7 @@
             numericBoxB12.BackColor = System.Drawing.SystemColors.Control;
             numericBoxB12.FooterBackColor = System.Drawing.SystemColors.Control;
             resources.ApplyResources(numericBoxB12, "numericBoxB12");
+            toolTip.SetToolTip(numericBoxB12, resources.GetString("numericBoxB12.ToolTip")); // 260531Cl
             numericBoxB12.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxB12.Name = "numericBoxB12";
             numericBoxB12.RoundErrorAccuracy = 8;
@@ -821,6 +861,7 @@
             numericBoxB12err.BackColor = System.Drawing.SystemColors.Control;
             numericBoxB12err.FooterBackColor = System.Drawing.SystemColors.Control;
             resources.ApplyResources(numericBoxB12err, "numericBoxB12err");
+            toolTip.SetToolTip(numericBoxB12err, resources.GetString("numericBoxB12err.ToolTip")); // 260531Cl
             numericBoxB12err.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxB12err.Name = "numericBoxB12err";
             numericBoxB12err.RoundErrorAccuracy = 8;
@@ -834,6 +875,7 @@
             numericBoxB13.BackColor = System.Drawing.SystemColors.Control;
             numericBoxB13.FooterBackColor = System.Drawing.SystemColors.Control;
             resources.ApplyResources(numericBoxB13, "numericBoxB13");
+            toolTip.SetToolTip(numericBoxB13, resources.GetString("numericBoxB13.ToolTip")); // 260531Cl
             numericBoxB13.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxB13.Name = "numericBoxB13";
             numericBoxB13.RoundErrorAccuracy = 8;
@@ -847,6 +889,7 @@
             numericBoxB13err.BackColor = System.Drawing.SystemColors.Control;
             numericBoxB13err.FooterBackColor = System.Drawing.SystemColors.Control;
             resources.ApplyResources(numericBoxB13err, "numericBoxB13err");
+            toolTip.SetToolTip(numericBoxB13err, resources.GetString("numericBoxB13err.ToolTip")); // 260531Cl
             numericBoxB13err.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxB13err.Name = "numericBoxB13err";
             numericBoxB13err.RoundErrorAccuracy = 8;
@@ -887,6 +930,7 @@
             // 
             buttonEditIsotopeAbundance.Cursor = System.Windows.Forms.Cursors.WaitCursor;
             resources.ApplyResources(buttonEditIsotopeAbundance, "buttonEditIsotopeAbundance");
+            toolTip.SetToolTip(buttonEditIsotopeAbundance, resources.GetString("buttonEditIsotopeAbundance.ToolTip")); // 260531Cl
             buttonEditIsotopeAbundance.Name = "buttonEditIsotopeAbundance";
             buttonEditIsotopeAbundance.UseVisualStyleBackColor = true;
             buttonEditIsotopeAbundance.Click += buttonEditIsotopeAbundance_Click;
@@ -894,6 +938,7 @@
             // label5
             // 
             resources.ApplyResources(label5, "label5");
+            toolTip.SetToolTip(label5, resources.GetString("label5.ToolTip")); // 260531Cl
             label5.Cursor = System.Windows.Forms.Cursors.WaitCursor;
             label5.Name = "label5";
             // 
@@ -913,6 +958,7 @@
             comboBoxNeutron.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             comboBoxNeutron.DropDownWidth = 120;
             resources.ApplyResources(comboBoxNeutron, "comboBoxNeutron");
+            toolTip.SetToolTip(comboBoxNeutron, resources.GetString("comboBoxNeutron.ToolTip")); // 260531Cl
             comboBoxNeutron.Items.AddRange(new object[] { resources.GetString("comboBoxNeutron.Items"), resources.GetString("comboBoxNeutron.Items1") });
             comboBoxNeutron.Name = "comboBoxNeutron";
             comboBoxNeutron.SelectedIndexChanged += comboBoxNeutron_SelectedIndexChanged;
@@ -930,12 +976,14 @@
             // label6
             // 
             resources.ApplyResources(label6, "label6");
+            toolTip.SetToolTip(label6, resources.GetString("label6.ToolTip")); // 260531Cl
             label6.Cursor = System.Windows.Forms.Cursors.WaitCursor;
             label6.Name = "label6";
             // 
             // label4
             // 
             resources.ApplyResources(label4, "label4");
+            toolTip.SetToolTip(label4, resources.GetString("label4.ToolTip")); // 260531Cl
             label4.Cursor = System.Windows.Forms.Cursors.WaitCursor;
             label4.Name = "label4";
             // 
@@ -963,6 +1011,7 @@
             // numericBoxAlpha
             // 
             resources.ApplyResources(numericBoxAlpha, "numericBoxAlpha");
+            toolTip.SetToolTip(numericBoxAlpha, resources.GetString("numericBoxAlpha.ToolTip")); // 260531Cl
             numericBoxAlpha.BackColor = System.Drawing.SystemColors.Control;
             numericBoxAlpha.DecimalPlaces = 1;
             numericBoxAlpha.FooterBackColor = System.Drawing.SystemColors.Control;
@@ -981,6 +1030,7 @@
             // numericBoxEmission
             // 
             resources.ApplyResources(numericBoxEmission, "numericBoxEmission");
+            toolTip.SetToolTip(numericBoxEmission, resources.GetString("numericBoxEmission.ToolTip")); // 260531Cl
             numericBoxEmission.BackColor = System.Drawing.SystemColors.Control;
             numericBoxEmission.DecimalPlaces = 1;
             numericBoxEmission.FooterBackColor = System.Drawing.SystemColors.Control;
@@ -999,6 +1049,7 @@
             // numericBoxShininess
             // 
             resources.ApplyResources(numericBoxShininess, "numericBoxShininess");
+            toolTip.SetToolTip(numericBoxShininess, resources.GetString("numericBoxShininess.ToolTip")); // 260531Cl
             numericBoxShininess.BackColor = System.Drawing.SystemColors.Control;
             numericBoxShininess.DecimalPlaces = 1;
             numericBoxShininess.FooterBackColor = System.Drawing.SystemColors.Control;
@@ -1017,6 +1068,7 @@
             // numericBoxSpecular
             // 
             resources.ApplyResources(numericBoxSpecular, "numericBoxSpecular");
+            toolTip.SetToolTip(numericBoxSpecular, resources.GetString("numericBoxSpecular.ToolTip")); // 260531Cl
             numericBoxSpecular.BackColor = System.Drawing.SystemColors.Control;
             numericBoxSpecular.DecimalPlaces = 1;
             numericBoxSpecular.FooterBackColor = System.Drawing.SystemColors.Control;
@@ -1035,6 +1087,7 @@
             // numericBoxDiffusion
             // 
             resources.ApplyResources(numericBoxDiffusion, "numericBoxDiffusion");
+            toolTip.SetToolTip(numericBoxDiffusion, resources.GetString("numericBoxDiffusion.ToolTip")); // 260531Cl
             numericBoxDiffusion.BackColor = System.Drawing.SystemColors.Control;
             numericBoxDiffusion.DecimalPlaces = 1;
             numericBoxDiffusion.FooterBackColor = System.Drawing.SystemColors.Control;
@@ -1053,6 +1106,7 @@
             // numericBoxAmbient
             // 
             resources.ApplyResources(numericBoxAmbient, "numericBoxAmbient");
+            toolTip.SetToolTip(numericBoxAmbient, resources.GetString("numericBoxAmbient.ToolTip")); // 260531Cl
             numericBoxAmbient.BackColor = System.Drawing.SystemColors.Control;
             numericBoxAmbient.DecimalPlaces = 1;
             numericBoxAmbient.FooterBackColor = System.Drawing.SystemColors.Control;
@@ -1071,37 +1125,44 @@
             // checkBoxShowLabel
             // 
             resources.ApplyResources(checkBoxShowLabel, "checkBoxShowLabel");
+            toolTip.SetToolTip(checkBoxShowLabel, resources.GetString("checkBoxShowLabel.ToolTip")); // 260531Cl
             checkBoxShowLabel.Name = "checkBoxShowLabel";
             checkBoxShowLabel.UseVisualStyleBackColor = true;
             // 
             // label10
             // 
             resources.ApplyResources(label10, "label10");
+            toolTip.SetToolTip(label10, resources.GetString("label10.ToolTip")); // 260531Cl
             label10.Name = "label10";
             // 
             // label37
             // 
             resources.ApplyResources(label37, "label37");
+            toolTip.SetToolTip(label37, resources.GetString("label37.ToolTip")); // 260531Cl
             label37.Name = "label37";
             // 
             // label38
             // 
             resources.ApplyResources(label38, "label38");
+            toolTip.SetToolTip(label38, resources.GetString("label38.ToolTip")); // 260531Cl
             label38.Name = "label38";
             // 
             // label11
             // 
             resources.ApplyResources(label11, "label11");
+            toolTip.SetToolTip(label11, resources.GetString("label11.ToolTip")); // 260531Cl
             label11.Name = "label11";
             // 
             // label35
             // 
             resources.ApplyResources(label35, "label35");
+            toolTip.SetToolTip(label35, resources.GetString("label35.ToolTip")); // 260531Cl
             label35.Name = "label35";
             // 
             // label36
             // 
             resources.ApplyResources(label36, "label36");
+            toolTip.SetToolTip(label36, resources.GetString("label36.ToolTip")); // 260531Cl
             label36.Name = "label36";
             // 
             // numericBoxAtomRadius
@@ -1124,6 +1185,7 @@
             // 
             colorControlAtomColor.Argb = -986896;
             resources.ApplyResources(colorControlAtomColor, "colorControlAtomColor");
+            toolTip.SetToolTip(colorControlAtomColor, resources.GetString("colorControlAtomColor.ToolTip")); // 260531Cl
             colorControlAtomColor.BackColor = System.Drawing.SystemColors.Control;
             colorControlAtomColor.Blue = 240;
             colorControlAtomColor.BlueF = 0.9411765F;
@@ -1222,6 +1284,7 @@
             dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { enabledColumn, labelDataGridViewTextBoxColumn, elementDataGridViewTextBoxColumn, xDataGridViewTextBoxColumn, yDataGridViewTextBoxColumn, zDataGridViewTextBoxColumn, occDataGridViewTextBoxColumn, multiDataGridViewTextBoxColumn, wyckLetDataGridViewTextBoxColumn, siteSymDataGridViewTextBoxColumn });
             dataGridView.DataSource = bindingSource;
             resources.ApplyResources(dataGridView, "dataGridView");
+            toolTip.SetToolTip(dataGridView, resources.GetString("dataGridView.ToolTip")); // 260531Cl
             dataGridView.MultiSelect = false;
             dataGridView.Name = "dataGridView";
             dataGridView.RowHeadersVisible = false;

@@ -57,4 +57,16 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="buttonCancel.ToolTip" xml:space="preserve">
+    <value>Close the dialog without changing the space-group setting.</value>
+  </data>
+  <data name="buttonOK.ToolTip" xml:space="preserve">
+    <value>Apply the selected alternative
+space-group setting and close the dialog.</value>
+  </data>
+  <data name="listBox.ToolTip" xml:space="preserve">
+    <value>List of alternative settings for this space
+group (e.g. different origin choice or axis
+convention); select one to convert to.</value>
+  </data>
 </root>

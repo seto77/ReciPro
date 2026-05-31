@@ -28,6 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(IndexControl)); // 260531Cl
+            components = new System.ComponentModel.Container(); // (260531Ch)
+            toolTip = new System.Windows.Forms.ToolTip(components); // (260531Ch)
+            toolTip.IsBalloon = true; // 260531Cl 追加: バルーン表示に統一
             numericBoxH = new NumericBox();
             tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             numericBoxL = new NumericBox();
@@ -60,6 +64,7 @@
             numericBoxH.Minimum = 0D;
             numericBoxH.MinimumSize = new System.Drawing.Size(1, 20);
             numericBoxH.Name = "numericBoxH";
+            toolTip.SetToolTip(numericBoxH, resources.GetString("numericBoxH.ToolTip")); // 260531Cl
             numericBoxH.Padding = new System.Windows.Forms.Padding(1, 0, 1, 0);
             numericBoxH.ShowUpDown = true;
             numericBoxH.Size = new System.Drawing.Size(38, 25);
@@ -120,6 +125,7 @@
             numericBoxL.Minimum = 0D;
             numericBoxL.MinimumSize = new System.Drawing.Size(1, 20);
             numericBoxL.Name = "numericBoxL";
+            toolTip.SetToolTip(numericBoxL, resources.GetString("numericBoxL.ToolTip")); // 260531Cl
             numericBoxL.Padding = new System.Windows.Forms.Padding(1, 0, 1, 0);
             numericBoxL.ShowUpDown = true;
             numericBoxL.Size = new System.Drawing.Size(38, 25);
@@ -163,6 +169,7 @@
             numericBoxI.Minimum = 0D;
             numericBoxI.MinimumSize = new System.Drawing.Size(1, 20);
             numericBoxI.Name = "numericBoxI";
+            toolTip.SetToolTip(numericBoxI, resources.GetString("numericBoxI.ToolTip")); // 260531Cl
             numericBoxI.Padding = new System.Windows.Forms.Padding(1, 0, 1, 0);
             numericBoxI.ReadOnly = true;
             numericBoxI.Size = new System.Drawing.Size(22, 25);
@@ -207,6 +214,7 @@
             numericBoxK.Minimum = 0D;
             numericBoxK.MinimumSize = new System.Drawing.Size(1, 20);
             numericBoxK.Name = "numericBoxK";
+            toolTip.SetToolTip(numericBoxK, resources.GetString("numericBoxK.ToolTip")); // 260531Cl
             numericBoxK.Padding = new System.Windows.Forms.Padding(1, 0, 1, 0);
             numericBoxK.ShowUpDown = true;
             numericBoxK.Size = new System.Drawing.Size(38, 25);
@@ -282,6 +290,8 @@
         }
 
         #endregion
+
+        private System.Windows.Forms.ToolTip toolTip; // (260531Ch)
         private NumericBox numericBoxH;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private LabelLaTeX labelLaTexX;

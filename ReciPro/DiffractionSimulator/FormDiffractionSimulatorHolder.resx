@@ -1154,7 +1154,8 @@ Direction</value>
     <value>91</value>
   </data>
   <data name="colorControl90DegLine.ToolTip" xml:space="preserve">
-    <value>Color of the 90° primary grid lines and outer circle of the stereonet.</value>
+    <value>Color of the 90° primary grid lines
+and outer circle of the stereonet.</value>
   </data>
   <data name="colorControl10DegLine.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1193,7 +1194,8 @@ Direction</value>
     <value>89</value>
   </data>
   <data name="colorControl10DegLine.ToolTip" xml:space="preserve">
-    <value>Color of the 10° intermediate grid lines drawn on the stereonet.</value>
+    <value>Color of the 10° intermediate
+grid lines drawn on the stereonet.</value>
   </data>
   <data name="colorControl1DegLine.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1782,34 +1784,45 @@ Active when "Show 1° Lines" is checked</value>
     <value>Crystallography.Controls.FormBase, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="colorControlGeneralAxis.ToolTip" xml:space="preserve">
-    <value>Color of general zone-axis points and labels (axes other than [100], [010], [001])</value>
+    <value>Color of general zone-axis points and
+labels (axes other than [100], [010], [001])</value>
   </data>
   <data name="colorControlTiltX.ToolTip" xml:space="preserve">
-    <value>Color of the Tilt-X (primary axis) direction arrow (shown when "Show tilt directions" is checked)</value>
+    <value>Color of the Tilt-X (primary axis) direction arrow
+(shown when "Show tilt directions" is checked)</value>
   </data>
   <data name="colorControlTiltY.ToolTip" xml:space="preserve">
-    <value>Color of the Tilt-Y (secondary axis) direction arrow (shown when "Show tilt directions" is checked)</value>
+    <value>Color of the Tilt-Y (secondary axis) direction
+arrow (shown when "Show tilt directions" is checked)</value>
   </data>
   <data name="checkBoxEnableArrow.ToolTip" xml:space="preserve">
-    <value>When checked, the arrow keys tilt the holder: Left/Right change Tilt X and Up/Down change Tilt Y by the arrow step.</value>
+    <value>When checked, the arrow keys tilt the
+holder: Left/Right change Tilt X and
+Up/Down change Tilt Y by the arrow step.</value>
   </data>
   <data name="numericBoxArrowStep.ToolTip" xml:space="preserve">
-    <value>Tilt angle increment (in degrees) applied per arrow-key press.</value>
+    <value>Tilt angle increment (in degrees)
+applied per arrow-key press.</value>
   </data>
   <data name="numericBoxTiltX.ToolTip" xml:space="preserve">
-    <value>Holder tilt angle about the primary (Tilt X) axis, in degrees.</value>
+    <value>Holder tilt angle about the
+primary (Tilt X) axis, in degrees.</value>
   </data>
   <data name="numericBoxTiltY.ToolTip" xml:space="preserve">
-    <value>Holder tilt angle about the secondary (Tilt Y) axis, in degrees.</value>
+    <value>Holder tilt angle about the
+secondary (Tilt Y) axis, in degrees.</value>
   </data>
   <data name="label19.ToolTip" xml:space="preserve">
-    <value>Holder tilt angle about the primary (Tilt X) axis, in degrees.</value>
+    <value>Holder tilt angle about the
+primary (Tilt X) axis, in degrees.</value>
   </data>
   <data name="label20.ToolTip" xml:space="preserve">
-    <value>Holder tilt angle about the secondary (Tilt Y) axis, in degrees.</value>
+    <value>Holder tilt angle about the
+secondary (Tilt Y) axis, in degrees.</value>
   </data>
   <data name="numericBoxTiltXDirection.ToolTip" xml:space="preserve">
-    <value>Azimuthal direction (in degrees) of the Tilt X (primary) axis on the stereonet.</value>
+    <value>Azimuthal direction (in degrees) of the
+Tilt X (primary) axis on the stereonet.</value>
   </data>
   <data name="radioButtonTiltY_Minus.ToolTip" xml:space="preserve">
     <value>Use negative polarity for the Tilt Y (secondary) axis.</value>
@@ -1818,10 +1831,12 @@ Active when "Show 1° Lines" is checked</value>
     <value>Use positive polarity for the Tilt Y (secondary) axis.</value>
   </data>
   <data name="label1.ToolTip" xml:space="preserve">
-    <value>Azimuthal direction (in degrees) of the Tilt X (primary) axis on the stereonet.</value>
+    <value>Azimuthal direction (in degrees) of the
+Tilt X (primary) axis on the stereonet.</value>
   </data>
   <data name="label4.ToolTip" xml:space="preserve">
-    <value>Polarity (sign) of the Tilt Y (secondary) axis; match it to your TEM goniometer convention.</value>
+    <value>Polarity (sign) of the Tilt Y (secondary) axis;
+match it to your TEM goniometer convention.</value>
   </data>
   <data name="trackBarPointSize.ToolTip" xml:space="preserve">
     <value>Radius of the zone-axis points drawn on the stereonet.</value>
@@ -1836,33 +1851,43 @@ Active when "Show 1° Lines" is checked</value>
     <value>Radius of the zone-axis points drawn on the stereonet.</value>
   </data>
   <data name="buttonLink.ToolTip" xml:space="preserve">
-    <value>Set the current holder tilt to the Link Tilt X/Y values and use the resulting orientation as the neutral direction.</value>
+    <value>Set the current holder tilt to the Link
+Tilt X/Y values and use the resulting
+orientation as the neutral direction.</value>
   </data>
   <data name="buttonRotate180.ToolTip" xml:space="preserve">
     <value>Rotate the crystal 180° about the beam ([001]) axis.</value>
   </data>
   <data name="numericBoxLinkTiltX.ToolTip" xml:space="preserve">
-    <value>Target Tilt X angle (in degrees) applied when the Link button is pressed.</value>
+    <value>Target Tilt X angle (in degrees)
+applied when the Link button is pressed.</value>
   </data>
   <data name="numericBoxLinkTiltY.ToolTip" xml:space="preserve">
-    <value>Target Tilt Y angle (in degrees) applied when the Link button is pressed.</value>
+    <value>Target Tilt Y angle (in degrees)
+applied when the Link button is pressed.</value>
   </data>
   <data name="checkBox1DegLine.ToolTip" xml:space="preserve">
-    <value>When checked, draws the 1° interval lines on the stereonet (color set by the 1° color control).</value>
+    <value>When checked, draws the 1° interval lines on the
+stereonet (color set by the 1° color control).</value>
   </data>
   <data name="checkBoxShowIndexLabels.ToolTip" xml:space="preserve">
-    <value>When checked, shows the [u v w] index label next to each zone-axis point.</value>
+    <value>When checked, shows the [u v w] index
+label next to each zone-axis point.</value>
   </data>
   <data name="checkBoxTiltDirections.ToolTip" xml:space="preserve">
-    <value>When checked, draws arrows on the stereonet showing the Tilt-X and Tilt-Y directions.</value>
+    <value>When checked, draws arrows on the stereonet
+showing the Tilt-X and Tilt-Y directions.</value>
   </data>
   <data name="numericBoxDrawingArea.ToolTip" xml:space="preserve">
-    <value>Half-angle (in degrees) of the stereonet area to display; smaller values zoom in.</value>
+    <value>Half-angle (in degrees) of the stereonet
+area to display; smaller values zoom in.</value>
   </data>
   <data name="graphicsBox.ToolTip" xml:space="preserve">
-    <value>Tilt-direction stereonet. Double-click a point to tilt the holder toward that direction.</value>
+    <value>Tilt-direction stereonet. Double-click a point
+to tilt the holder toward that direction.</value>
   </data>
   <data name="checkBoxIncludingEquivalent.ToolTip" xml:space="preserve">
-    <value>When checked, also generates symmetry-equivalent zone axes for each index.</value>
+    <value>When checked, also generates
+symmetry-equivalent zone axes for each index.</value>
   </data>
 </root>

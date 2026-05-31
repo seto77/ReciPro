@@ -1,0 +1,296 @@
+﻿<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="checkBox2.ToolTip" xml:space="preserve">
+    <value>Rz (θ) 軸を有効にします。試料を左右に
+「首ふり」揺動させます。下のモーター速度
+(°/s) と揺動範囲 (±°) で設定します。</value>
+  </data>
+  <data name="checkBox3.ToolTip" xml:space="preserve">
+    <value>Ry (ω) 軸を有効にします。試料を「うなず
+き」揺動させます。下のモーター速度 (°/s)・
+揺動範囲 (±°)・ステップ (°) で設定します。</value>
+  </data>
+  <data name="checkBoxCrystalNumPerStepThreshold.ToolTip" xml:space="preserve">
+    <value>焼きなまされた 'Num per Step' が右の閾値
+(%) を下回ったら、フィットを自動停止します。</value>
+  </data>
+  <data name="checkBoxDirectionalDensityThreshold.ToolTip" xml:space="preserve">
+    <value>焼きなまされた 'Directional density' が右の閾値
+(°) を下回ったら、フィットを自動停止します。</value>
+  </data>
+  <data name="checkBoxInheritabiliryThreshold.ToolTip" xml:space="preserve">
+    <value>'Inheritability' が右の閾値 (%) を
+上回ったら、フィットを自動停止します。</value>
+  </data>
+  <data name="checkBoxRefineCenterOffset.ToolTip" xml:space="preserve">
+    <value>ビーム中心のずれをフィットの自由パラメータに含め、
+回折パターンの中心位置を参照像に合うよう精密化します。</value>
+  </data>
+  <data name="checkBoxRefineConvergence.ToolTip" xml:space="preserve">
+    <value>ビームの収束角をフィットの自由パラメータに含め
+ます(入射ビームの収束度を精密化)。要確認。</value>
+  </data>
+  <data name="checkBoxRefineFilmBlur.ToolTip" xml:space="preserve">
+    <value>フィルム/検出器のぼけ(各スポットの点広が
+り)をフィットの自由パラメータに含めます。</value>
+  </data>
+  <data name="checkBoxRefinePreferredOrientation.ToolTip" xml:space="preserve">
+    <value>集合組織(LPO)の方位密度分布を精密化します。
+本フィットの中核で常に有効(オフにできません)。</value>
+  </data>
+  <data name="checkBoxRefineStress.ToolTip" xml:space="preserve">
+    <value>残留応力(回折環をシフト/広がらせる格子歪み)を
+フィットの自由パラメータに含めます。要確認。</value>
+  </data>
+  <data name="checkBoxYusaGonioScan.ToolTip" xml:space="preserve">
+    <value>揺動ゴニオメータ(Yusa型)をシミュレートし
+ます。下で設定する Rx(Φ:回転)・Rz(θ:首ふ
+り)・Ry(ω:うなずき)の動作で方位を積算し、
+実際の粉末/集合組織測定を模擬します。</value>
+  </data>
+  <data name="checkBoxYusaGonio_ValidRx.ToolTip" xml:space="preserve">
+    <value>Rx (Φ) 軸を有効にします。試料を面法線まわりに
+右のモーター速度 (°/s) で連続回転させます。</value>
+  </data>
+  <data name="comboBoxGradient.ToolTip" xml:space="preserve">
+    <value>強度表示の濃淡方向です。Positive は高強度を明、
+Negative は反転して高強度を暗で表示します。</value>
+  </data>
+  <data name="comboBoxScale1.ToolTip" xml:space="preserve">
+    <value>回折パターン表示の強度スケールです。
+対数(弱い反射を強調)またはリニアを選びます。</value>
+  </data>
+  <data name="comboBoxScale2.ToolTip" xml:space="preserve">
+    <value>回折パターン表示の配色です。グレースケールまたは
+Cold-Warm(寒色〜暖色)カラースケールを選びます。</value>
+  </data>
+  <data name="numericBoxCrystalNumPerStep.ToolTip" xml:space="preserve">
+    <value>集合組織(LPO: Lattice Preferred Orientation)
+フィットの各ステップで方位を変動させる結晶子の
+割合 (%) です。大きいほど1ステップの変化が大き
+く、収束に従い自動で縮小(×0.8)されます。</value>
+  </data>
+  <data name="numericBoxCrystalNumPerStepThreshold.ToolTip" xml:space="preserve">
+    <value>'Num per Step' の停止閾値 (%) です。パラメータ
+がこの値まで縮小したらフィットを停止します。</value>
+  </data>
+  <data name="numericBoxDirectionalDensity.ToolTip" xml:space="preserve">
+    <value>各ステップで加える方位バイアスの角度的な広がり
+(°) です。選んだ方位の密度を強める半値幅で、
+収束が進むと自動で縮小(×0.8)されます。</value>
+  </data>
+  <data name="numericBoxDirectionalDensityThreshold.ToolTip" xml:space="preserve">
+    <value>'Directional density' の停止閾値 (°) です。パラメータ
+がこの値まで縮小したらフィットを停止します。</value>
+  </data>
+  <data name="numericBoxInheritabiliry.ToolTip" xml:space="preserve">
+    <value>フィットの各ステップで、ランダムではなく既に
+密度の高い方位を選び直す(遺伝させる)確率 (%) で
+す。高いほど鋭い集合組織へ収束しやすくなります。</value>
+  </data>
+  <data name="numericBoxInheritabiliryThreshold.ToolTip" xml:space="preserve">
+    <value>'Inheritability' の停止閾値 (%) です。パラメータ
+がこの値を超えたらフィットを停止します。</value>
+  </data>
+  <data name="numericBoxRxSpeed.ToolTip" xml:space="preserve">
+    <value>Rx (Φ) 回転軸のモーター速度 (°/s)。速い
+ほど面内方位がより多く平均化されます。</value>
+  </data>
+  <data name="numericBoxYusaGonioRyOscillation.ToolTip" xml:space="preserve">
+    <value>Ry (ω) 軸の揺動(うなずき)範囲で
+す。中心に対し ±° で指定します。</value>
+  </data>
+  <data name="numericBoxYusaGonioRySpeed.ToolTip" xml:space="preserve">
+    <value>Ry (ω) うなずき軸のモーター速度 (°/s)。</value>
+  </data>
+  <data name="numericBoxYusaGonioRyStep.ToolTip" xml:space="preserve">
+    <value>Ry (ω) 揺動の角度ステップ (°)。走査中に ω を
+1回進める刻み幅で、小さいほど方位
+サンプリングが細かくなり計算は遅くなります。</value>
+  </data>
+  <data name="numericBoxYusaGonioRzOscillation.ToolTip" xml:space="preserve">
+    <value>Rz (θ) 軸の揺動(首ふり)範囲です。中心に対し
+±° で指定し、試料は −値〜+値の間を往復します。</value>
+  </data>
+  <data name="numericBoxYusaGonioRzSpeed.ToolTip" xml:space="preserve">
+    <value>Rz (θ) 首ふり軸のモーター速度 (°/s)。</value>
+  </data>
+  <data name="radioButtonZigzagScan.ToolTip" xml:space="preserve">
+    <value>ジグザグ走査の順序です。θ (Rz) を往復させな
+がら ω (Ry) を1往復ごとに進め、ゴニオメータ
+が方位空間をジグザグに走査します。</value>
+  </data>
+  <data name="button1.ToolTip" xml:space="preserve">
+    <value>デバッグ用: 選択結晶について単一のランダム
+方位の回折パターンを生成して表示します。</value>
+  </data>
+  <data name="buttonSimulateDebyeRing.ToolTip" xml:space="preserve">
+    <value>選択した結晶について多結晶の
+デバイ・リング(粉末)回折パターンを
+シミュレートし、現在のタブに表示します。</value>
+  </data>
+  <data name="buttonLoadSetting.ToolTip" xml:space="preserve">
+    <value>保存済みの方位フィッティング
+設定(.setting ファイル)を読み込みます。</value>
+  </data>
+  <data name="buttonSaveCurrentSetting.ToolTip" xml:space="preserve">
+    <value>現在の方位フィッティング設定(結晶・各パラメータ・
+残差履歴)を .setting ファイルに保存します。</value>
+  </data>
+  <data name="buttonSearch.ToolTip" xml:space="preserve">
+    <value>結晶方位分布(LPO: Lattice-Preferred Orientation)の
+フィッティングを開始/停止します。参照パターンとの
+残差が最小になるよう方位密度を反復改良します。
+実行中はもう一度押すと停止します。</value>
+  </data>
+  <data name="buttonAddRefferencePattern.ToolTip" xml:space="preserve">
+    <value>実測の参照回折パターン(.ipa 画像)をフィッティング
+対象として追加します。新しいタブで開きます。</value>
+  </data>
+  <data name="buttonRemoveReferrencePattern.ToolTip" xml:space="preserve">
+    <value>リストで選択中の参照回折パターン(と対応タブ)を削除します。</value>
+  </data>
+  <data name="listBoxReferrence.ToolTip" xml:space="preserve">
+    <value>読み込んだ参照回折パターンの一覧。選択す
+ると対応するタブに切り替わります。</value>
+  </data>
+  <data name="checkBox6.ToolTip" xml:space="preserve">
+    <value>フィッティング中に設定を定期的に自動保存します(現在は無効)。</value>
+  </data>
+  <data name="checkBoxAutomaticallyChangeParameter.ToolTip" xml:space="preserve">
+    <value>残差の改善が鈍ったとき、フィッティングパラメータ
+を自動的に縮小します(現在は固定で有効)。</value>
+  </data>
+  <data name="numericBoxChangeParameterThreshold.ToolTip" xml:space="preserve">
+    <value>パラメータ自動縮小のしきい値(0〜1, 既定 0.6)。
+残差(Rwp)の傾きの比(直近/前半)がこの値を下回る
+と、各パラメータを 0.8 倍に縮小します。</value>
+  </data>
+  <data name="textBox1.ToolTip" xml:space="preserve">
+    <value>読み取り専用のフィッティング経過表示。
+経過時間・速度(ms/step)・ステップ数・
+成功回数・残差(%)・S値を表示します。</value>
+  </data>
+  <data name="buttonSearchUnrelatedOrientations.ToolTip" xml:space="preserve">
+    <value>回折に寄与しない結晶子方位を反復的に探索・
+除外し、寄与する方位のみを残します。</value>
+  </data>
+  <data name="label26.ToolTip" xml:space="preserve">
+    <value>回折パターン表示の配色です。グレースケール
+または Cold-Warm カラースケールを選びます。</value>
+  </data>
+  <data name="label28.ToolTip" xml:space="preserve">
+    <value>回折パターン表示の強度スケールです。
+対数(弱い反射を強調)またはリニアを選びます。</value>
+  </data>
+  <data name="label30.ToolTip" xml:space="preserve">
+    <value>強度表示の濃淡方向です。Positive は高強度を
+明、Negative は反転して暗で表示します。</value>
+  </data>
+  <data name="label47.ToolTip" xml:space="preserve">
+    <value>Ry (ω) 軸の揺動(うなずき)範囲で
+す。中心に対し ±° で指定します。</value>
+  </data>
+  <data name="label48.ToolTip" xml:space="preserve">
+    <value>Rz (θ) 軸の揺動(首ふり)範囲で
+す。中心に対し ±° で指定します。</value>
+  </data>
+  <data name="label49.ToolTip" xml:space="preserve">
+    <value>Ry (ω) 揺動の角度ステップ (°)。小さいほど
+方位サンプリングが細かくなり計算は遅くなります。</value>
+  </data>
+  <data name="label50.ToolTip" xml:space="preserve">
+    <value>Ry (ω) 軸の揺動(うなずき)範囲で
+す。中心に対し ±° で指定します。</value>
+  </data>
+  <data name="label51.ToolTip" xml:space="preserve">
+    <value>Rz (θ) 軸の揺動(首ふり)範囲で
+す。中心に対し ±° で指定します。</value>
+  </data>
+  <data name="label52.ToolTip" xml:space="preserve">
+    <value>Rx (Φ) 回転軸のモーター速度 (°/s)。</value>
+  </data>
+  <data name="label53.ToolTip" xml:space="preserve">
+    <value>Ry (ω) 揺動の角度ステップ (°)。</value>
+  </data>
+  <data name="label54.ToolTip" xml:space="preserve">
+    <value>Ry (ω) うなずき軸のモーター速度 (°/s)。</value>
+  </data>
+  <data name="label55.ToolTip" xml:space="preserve">
+    <value>Ry (ω) 軸の揺動(うなずき)範囲で
+す。中心に対し ±° で指定します。</value>
+  </data>
+  <data name="label56.ToolTip" xml:space="preserve">
+    <value>Rz (θ) 首ふり軸のモーター速度 (°/s)。</value>
+  </data>
+  <data name="label57.ToolTip" xml:space="preserve">
+    <value>Rz (θ) 軸の揺動(首ふり)範囲で
+す。中心に対し ±° で指定します。</value>
+  </data>
+  <data name="label58.ToolTip" xml:space="preserve">
+    <value>Ry (ω) うなずき軸のモーター速度 (°/s)。</value>
+  </data>
+  <data name="label59.ToolTip" xml:space="preserve">
+    <value>Rz (θ) 首ふり軸のモーター速度 (°/s)。</value>
+  </data>
+  <data name="label60.ToolTip" xml:space="preserve">
+    <value>Rx (Φ) 回転軸のモーター速度 (°/s)。</value>
+  </data>
+</root>

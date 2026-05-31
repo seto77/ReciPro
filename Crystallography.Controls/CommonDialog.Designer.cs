@@ -24,6 +24,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container(); // (260531Ch)
+            toolTip = new System.Windows.Forms.ToolTip(components); // (260531Ch)
+            toolTip.IsBalloon = true; // 260531Cl 追加: バルーン表示に統一
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CommonDialog));
             progressBar = new System.Windows.Forms.ProgressBar();
             textBox = new System.Windows.Forms.TextBox();
@@ -81,6 +84,7 @@
             // buttonNext
             // 
             resources.ApplyResources(buttonNext, "buttonNext");
+            toolTip.SetToolTip(buttonNext, resources.GetString("buttonNext.ToolTip")); // 260531Cl
             buttonNext.Name = "buttonNext";
             buttonNext.UseVisualStyleBackColor = true;
             buttonNext.Click += buttonNext_Click;
@@ -88,6 +92,7 @@
             // checkBoxCloseWindow
             // 
             resources.ApplyResources(checkBoxCloseWindow, "checkBoxCloseWindow");
+            toolTip.SetToolTip(checkBoxCloseWindow, resources.GetString("checkBoxCloseWindow.ToolTip")); // 260531Cl
             checkBoxCloseWindow.Checked = true;
             checkBoxCloseWindow.CheckState = System.Windows.Forms.CheckState.Checked;
             checkBoxCloseWindow.Name = "checkBoxCloseWindow";
@@ -143,6 +148,8 @@
         }
 
         #endregion
+
+        private System.Windows.Forms.ToolTip toolTip; // (260531Ch)
 
         public System.Windows.Forms.ProgressBar progressBar;
         private System.Windows.Forms.TextBox textBox;

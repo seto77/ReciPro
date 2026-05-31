@@ -211,7 +211,7 @@
     <value>0, 5, 0, 0</value>
   </data>
   <data name="numericBoxCellVolumeNm.ToolTip" xml:space="preserve">
-    <value />
+    <value>単位胞の体積 (nm³)</value>
   </data>
   <data name="numericBoxCellMass.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 5, 0, 0</value>
@@ -226,7 +226,7 @@
     <value>0, 5, 0, 0</value>
   </data>
   <data name="numericBoxCellMass.HeaderText" xml:space="preserve">
-    <value>単位格子質量</value>
+    <value>単位胞質量</value>
   </data>
   <data name="numericBoxCellMass.Size" type="System.Drawing.Size, System.Drawing">
     <value>195, 25</value>
@@ -571,10 +571,12 @@
     <value>63, 24</value>
   </data>
   <data name="colorControl.ToolTip" xml:space="preserve">
-    <value>プロファイルの色</value>
+    <value>この結晶の表示色。3D 構造表示と
+回折プロファイル曲線の両方で使用されます。</value>
   </data>
   <data name="colorControl.ToolTip1" xml:space="preserve">
-    <value>プロファイルの色</value>
+    <value>この結晶の表示色。3D 構造表示と
+回折プロファイル曲線の両方で使用されます。</value>
   </data>
   <data name="textBoxFormula.Location" type="System.Drawing.Point, System.Drawing">
     <value>60, 0</value>
@@ -755,5 +757,136 @@
   </data>
   <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
     <value>470, 362</value>
+  </data>
+  <data name="numericUpDownAngleResolution.ToolTip" xml:space="preserve">
+    <value>多結晶方位分布・極点図の角度グリッド
+分解能（0.5〜45°）。小さいほど細かく
+サンプリングしますが計算は遅くなります。</value>
+  </data>
+  <data name="numericUpDownAngleSubDivision.ToolTip" xml:space="preserve">
+    <value>各方位セルをさらに細分してサブサンプリング
+する分割数（1〜45）。大きいほど分布が滑ら
+かになりますが計算負荷が増えます。</value>
+  </data>
+  <data name="numericUpDownCrystallineSize.ToolTip" xml:space="preserve">
+    <value>結晶子（グレイン）サイズ（nm、1〜1000）。逆格子点の
+広がり（ピーク幅）と回折の体積重みを決定します。</value>
+  </data>
+  <data name="buttonStressSet.ToolTip" xml:space="preserve">
+    <value>入力した歪み・応力・Hill 係数を結晶に適用します。</value>
+  </data>
+  <data name="numericBoxHill.ToolTip" xml:space="preserve">
+    <value>Voigt(均一歪み)モデルと Reuss(均一応力)モデルを
+混合する Hill 係数。0 で入力歪みのみ、1 で応力か
+ら計算した歪みのみを使用します（無次元）。</value>
+  </data>
+  <data name="numericBoxStrain11.ToolTip" xml:space="preserve">
+    <value>Voigt モデルで与える格子歪みテンソルの
+法線成分 ε11（a 軸方向、無次元）です。</value>
+  </data>
+  <data name="numericBoxStrain12.ToolTip" xml:space="preserve">
+    <value>Voigt モデルで与える格子歪みテンソル
+のせん断成分 ε12（無次元）です。</value>
+  </data>
+  <data name="numericBoxStrain13.ToolTip" xml:space="preserve">
+    <value>Voigt モデルで与える格子歪みテンソル
+のせん断成分 ε13（無次元）です。</value>
+  </data>
+  <data name="numericBoxStrain22.ToolTip" xml:space="preserve">
+    <value>Voigt モデルで与える格子歪みテンソルの
+法線成分 ε22（b 軸方向、無次元）です。</value>
+  </data>
+  <data name="numericBoxStrain23.ToolTip" xml:space="preserve">
+    <value>Voigt モデルで与える格子歪みテンソル
+のせん断成分 ε23（無次元）です。</value>
+  </data>
+  <data name="numericBoxStrain33.ToolTip" xml:space="preserve">
+    <value>Voigt モデルで与える格子歪みテンソルの
+法線成分 ε33（c 軸方向、無次元）です。</value>
+  </data>
+  <data name="numericBoxStress11.ToolTip" xml:space="preserve">
+    <value>Reuss モデルで与える応力テンソルの法線成分
+σ11（a 軸方向、弾性定数と同じ単位 GPa）です。</value>
+  </data>
+  <data name="numericBoxStress12.ToolTip" xml:space="preserve">
+    <value>Reuss モデルで与える応力テンソルのせん
+断成分 σ12（弾性定数と同じ単位 GPa）です。</value>
+  </data>
+  <data name="numericBoxStress13.ToolTip" xml:space="preserve">
+    <value>Reuss モデルで与える応力テンソルのせん
+断成分 σ13（弾性定数と同じ単位 GPa）です。</value>
+  </data>
+  <data name="numericBoxStress22.ToolTip" xml:space="preserve">
+    <value>Reuss モデルで与える応力テンソルの法線成分
+σ22（b 軸方向、弾性定数と同じ単位 GPa）です。</value>
+  </data>
+  <data name="numericBoxStress23.ToolTip" xml:space="preserve">
+    <value>Reuss モデルで与える応力テンソルのせん
+断成分 σ23（弾性定数と同じ単位 GPa）です。</value>
+  </data>
+  <data name="numericBoxStress33.ToolTip" xml:space="preserve">
+    <value>Reuss モデルで与える応力テンソルの法線成分
+σ33（c 軸方向、弾性定数と同じ単位 GPa）です。</value>
+  </data>
+  <data name="resetToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>全原子の Debye-Waller 因子（熱振動によ
+る回折強度の減衰）をゼロに設定します。</value>
+  </data>
+  <data name="buttonGenerateRandomOrientations.ToolTip" xml:space="preserve">
+    <value>ランダムな配向の結晶子集団を生成し、極点図に表示します。</value>
+  </data>
+  <data name="buttonChangeAxesOriginSetting.ToolTip" xml:space="preserve">
+    <value>同じ空間群内で軸や原点の取り方が異なる設定（例:
+別の原点選択やセル選択）へ結晶を変換します。</value>
+  </data>
+  <data name="buttonConvertToSubgroup.ToolTip" xml:space="preserve">
+    <value>結晶を部分群（対称性を下げた空間群）へ
+変換します。現在未実装（作成中）です。</value>
+  </data>
+  <data name="textBoxAuthor.ToolTip" xml:space="preserve">
+    <value>この結晶構造の出典文献の著者名です。</value>
+  </data>
+  <data name="textBoxJournal.ToolTip" xml:space="preserve">
+    <value>この結晶構造の出典文献が掲載された雑誌名です。</value>
+  </data>
+  <data name="textBoxMemo.ToolTip" xml:space="preserve">
+    <value>この結晶に関する自由記述のメモです。</value>
+  </data>
+  <data name="textBoxTitle.ToolTip" xml:space="preserve">
+    <value>この結晶構造の出典文献のタイトルです。</value>
+  </data>
+  <data name="label101.ToolTip" xml:space="preserve">
+    <value>結晶子（グレイン）サイズ（nm、1〜1000）。逆格子点の
+広がり（ピーク幅）と回折の体積重みを決定します。</value>
+  </data>
+  <data name="label29.ToolTip" xml:space="preserve">
+    <value>各方位セルをさらに細分してサブサンプリング
+する分割数（1〜45）。大きいほど分布が滑ら
+かになりますが計算負荷が増えます。</value>
+  </data>
+  <data name="label5.ToolTip" xml:space="preserve">
+    <value>多結晶方位分布・極点図の角度グリッド
+分解能（0.5〜45°）。小さいほど細かく
+サンプリングしますが計算は遅くなります。</value>
+  </data>
+  <data name="label99.ToolTip" xml:space="preserve">
+    <value>結晶子（グレイン）サイズ（nm、1〜1000）。逆格子点の
+広がり（ピーク幅）と回折の体積重みを決定します。</value>
+  </data>
+  <data name="label102.ToolTip" xml:space="preserve">
+    <value>Voigt（均一歪み）モデルで与える格子歪み
+テンソル。独立な 6 成分を入力します（無次元）。</value>
+  </data>
+  <data name="label109.ToolTip" xml:space="preserve">
+    <value>Reuss（均一応力）モデルで与える応力テンソル。
+独立な 6 成分を入力します（GPa）。</value>
+  </data>
+  <data name="label117.ToolTip" xml:space="preserve">
+    <value>Voigt（均一歪み）モデルと Reuss（均一応力）モデル
+を混合する Hill 係数。0 で入力歪みのみ、1 で
+応力から計算した歪みのみを使用します（無次元）。</value>
+  </data>
+  <data name="label22.ToolTip" xml:space="preserve">
+    <value>結晶の名前</value>
   </data>
 </root>

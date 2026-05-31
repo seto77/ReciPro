@@ -57,6 +57,7 @@
             numericBoxHeight.BackColor = System.Drawing.Color.Transparent;
             numericBoxHeight.DecimalPlaces = 0;
             resources.ApplyResources(numericBoxHeight, "numericBoxHeight");
+            toolTip.SetToolTip(numericBoxHeight, resources.GetString("numericBoxHeight.ToolTip")); // 260531Cl
             numericBoxHeight.Maximum = 9999D;
             numericBoxHeight.Minimum = 1D;
             numericBoxHeight.Name = "numericBoxHeight";
@@ -72,6 +73,7 @@
             numericBoxWidth.BackColor = System.Drawing.Color.Transparent;
             numericBoxWidth.DecimalPlaces = 0;
             resources.ApplyResources(numericBoxWidth, "numericBoxWidth");
+            toolTip.SetToolTip(numericBoxWidth, resources.GetString("numericBoxWidth.ToolTip")); // 260531Cl
             numericBoxWidth.Maximum = 9999D;
             numericBoxWidth.Minimum = 1D;
             numericBoxWidth.Name = "numericBoxWidth";
@@ -85,21 +87,25 @@
             // label1
             // 
             resources.ApplyResources(label1, "label1");
+            toolTip.SetToolTip(label1, resources.GetString("label1.ToolTip")); // 260531Cl
             label1.Name = "label1";
             // 
             // labelHeader
             // 
             resources.ApplyResources(labelHeader, "labelHeader");
+            toolTip.SetToolTip(labelHeader, resources.GetString("labelHeader.ToolTip")); // 260531Cl
             labelHeader.Name = "labelHeader";
             //
             // label2
             //
             resources.ApplyResources(label2, "label2");
+            toolTip.SetToolTip(label2, resources.GetString("label2.ToolTip")); // 260531Cl
             label2.Name = "label2";
             //
             // checkBoxKeepAspect  260521Cl 追加
             //
             resources.ApplyResources(checkBoxKeepAspect, "checkBoxKeepAspect");
+            toolTip.SetToolTip(checkBoxKeepAspect, resources.GetString("checkBoxKeepAspect.ToolTip")); // 260531Cl
             checkBoxKeepAspect.Name = "checkBoxKeepAspect";
             checkBoxKeepAspect.UseVisualStyleBackColor = true;
             checkBoxKeepAspect.CheckedChanged += checkBoxKeepAspect_CheckedChanged;

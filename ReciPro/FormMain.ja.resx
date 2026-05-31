@@ -552,10 +552,14 @@
     <value>134, 25</value>
   </data>
   <data name="numericBoxStep.ToolTip" xml:space="preserve">
-    <value>回転ボタンの角度ステップ（度）を設定します。アニメーション有効時は、同じ値を 1 秒あたりの回転速度（度/秒）として使います。</value>
+    <value>回転ボタンの角度ステップ（度）を設定しま
+す。アニメーション有効時は、同じ値を 1 秒あ
+たりの回転速度（度/秒）として使います。</value>
   </data>
   <data name="numericBoxStep.ToolTip1" xml:space="preserve">
-    <value>回転ボタンの角度ステップ（度）を設定します。アニメーション有効時は、同じ値を 1 秒あたりの回転速度（度/秒）として使います。</value>
+    <value>回転ボタンの角度ステップ（度）を設定しま
+す。アニメーション有効時は、同じ値を 1 秒あ
+たりの回転速度（度/秒）として使います。</value>
   </data>
   <data name="panelArrowStep.Location" type="System.Drawing.Point, System.Drawing">
     <value>2, 86</value>
@@ -588,7 +592,8 @@
     <value>アニメーション</value>
   </data>
   <data name="checkBoxAnimation.ToolTip" xml:space="preserve">
-    <value>チェックすると、上のボタンをクリックした際に結晶が一定速度で回転します</value>
+    <value>チェックすると、上のボタンをクリック
+した際に結晶が一定速度で回転します</value>
   </data>
   <data name="groupBoxArrows.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
@@ -624,7 +629,7 @@
     <value>90, 27</value>
   </data>
   <data name="numericBoxEulerPsi.ToolTip" xml:space="preserve">
-    <value>オイラー角を設定/表示します。</value>
+    <value>結晶方位を定義するオイラー角 ψ（度）を設定／表示します。</value>
   </data>
   <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
     <value>119, 5</value>
@@ -642,7 +647,7 @@
     <value>90, 27</value>
   </data>
   <data name="numericBoxEulerTheta.ToolTip" xml:space="preserve">
-    <value>オイラー角を設定/表示します。</value>
+    <value>結晶方位を定義するオイラー角 θ（度）を設定／表示します。</value>
   </data>
   <data name="numericBoxEulerPhi.Location" type="System.Drawing.Point, System.Drawing">
     <value>26, 1</value>
@@ -654,7 +659,7 @@
     <value>90, 27</value>
   </data>
   <data name="numericBoxEulerPhi.ToolTip" xml:space="preserve">
-    <value>オイラー角を設定/表示します。</value>
+    <value>結晶方位を定義するオイラー角 Φ（度）を設定／表示します。</value>
   </data>
   <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
     <value>119, 33</value>
@@ -696,19 +701,23 @@
     <value>135, 24</value>
   </data>
   <data name="numericBoxMaxUVW.ToolTip" xml:space="preserve">
-    <value>現在方向リストに表示する晶帯軸指数 [u v w] の |u|+|v|+|w| の上限です。大きいほど候補軸が多く表示されます。</value>
+    <value>視線方向に最も近い晶帯軸を探索する際の指数和
+|u|+|v|+|w| の上限を設定します。値を大きくするほど多く
+の候補晶帯軸を評価します（上の概略指数表示に反映）。</value>
   </data>
   <data name="numericBoxMaxUVW.ToolTip1" xml:space="preserve">
-    <value>現在方向リストに表示する晶帯軸指数 [u v w] の |u|+|v|+|w| の上限です。大きいほど候補軸が多く表示されます。</value>
+    <value>視線方向に最も近い晶帯軸を探索する際の指数和
+|u|+|v|+|w| の上限を設定します。値を大きくするほど多く
+の候補晶帯軸を評価します（上の概略指数表示に反映）。</value>
   </data>
   <data name="numericBoxEulerPhi.ToolTip1" xml:space="preserve">
-    <value>現在の結晶方位を表す Euler 角 Φ（phi, 度）を設定します。</value>
+    <value>結晶方位を定義するオイラー角 Φ（度）を設定／表示します。</value>
   </data>
   <data name="numericBoxEulerTheta.ToolTip1" xml:space="preserve">
-    <value>現在の結晶方位を表す Euler 角 θ（theta, 度）を設定します。</value>
+    <value>結晶方位を定義するオイラー角 θ（度）を設定／表示します。</value>
   </data>
   <data name="numericBoxEulerPsi.ToolTip1" xml:space="preserve">
-    <value>現在の結晶方位を表す Euler 角 ψ（psi, 度）を設定します。</value>
+    <value>結晶方位を定義するオイラー角 ψ（度）を設定／表示します。</value>
   </data>
   <data name="panelCrystalDirection.Size" type="System.Drawing.Size, System.Drawing">
     <value>135, 153</value>
@@ -953,7 +962,7 @@
 メーター</value>
   </data>
   <data name="toolStripButtonRotation.ToolTipText" xml:space="preserve">
-    <value>回転ジオメトリを開き、Euler 角・晶帯軸・回転ボタンで結晶方位を設定します。</value>
+    <value>「回転ジオメトリ」機能を開きます。</value>
   </data>
   <data name="toolStripSeparator8.Size" type="System.Drawing.Size, System.Drawing">
     <value>112, 6</value>
@@ -1004,7 +1013,8 @@
 (V)</value>
   </data>
   <data name="toolStripButtonStructureViewer.ToolTipText" xml:space="preserve">
-    <value>Structure Viewer (V) 結晶の三次元構造を描画します。</value>
+    <value>ストラクチャビューア（結晶の三次元構造表
+示）を開きます。Ctrl+Shift+V でも切替。</value>
   </data>
   <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
     <value>112, 6</value>
@@ -1046,7 +1056,7 @@
 ネット(S)</value>
   </data>
   <data name="toolStripButtonStereonet.ToolTipText" xml:space="preserve">
-    <value>ステレオネットを開き、結晶方向・晶面・菊池線対を球面投影上に表示します。</value>
+    <value>ステレオネット（ステレオ投影／ウルフ網）を開きます。</value>
   </data>
   <data name="toolStripSeparator7.Size" type="System.Drawing.Size, System.Drawing">
     <value>112, 6</value>
@@ -1121,8 +1131,7 @@
  シミュレータ</value>
   </data>
   <data name="toolStripButtonTrajectorySimulator.ToolTipText" xml:space="preserve">
-    <value>「軌道シミュレータ」
-機能を開く</value>
+    <value>「軌道シミュレータ」機能を開きます。</value>
   </data>
   <data name="toolStripSeparator10.Size" type="System.Drawing.Size, System.Drawing">
     <value>112, 6</value>
@@ -1194,7 +1203,9 @@
 シミュレータ</value>
   </data>
   <data name="toolStripButtonImageSimulator.ToolTipText" xml:space="preserve">
-    <value>HRTEM/STEM 画像シミュレータを開きます。HRTEM は高分解能透過電子顕微鏡像、STEM は走査透過電子顕微鏡像です。</value>
+    <value>HRTEM/STEM 画像シミュレータを開きま
+す。HRTEM は高分解能透過電子顕微鏡
+像、STEM は走査透過電子顕微鏡像です。</value>
   </data>
   <data name="toolStripSeparator13.Size" type="System.Drawing.Size, System.Drawing">
     <value>112, 6</value>
@@ -1354,7 +1365,9 @@ v2</value>
  シミュレータ</value>
   </data>
   <data name="toolStripButtonEBSD.ToolTipText" xml:space="preserve">
-    <value>EBSD（Electron Backscatter Diffraction, 後方散乱電子回折）シミュレータを開き、結晶方位に対応する後方散乱回折パターンを計算します。</value>
+    <value>EBSD（Electron Backscatter Diffraction,
+後方散乱電子回折）シミュレータを開き、結晶方位に
+対応する後方散乱回折パターンを計算します。</value>
   </data>
   <data name="toolStripSeparator19.Size" type="System.Drawing.Size, System.Drawing">
     <value>112, 6</value>
@@ -1525,7 +1538,8 @@ v2</value>
     <value>MKL ライブラリを使用</value>
   </data>
   <data name="toolStripMenuItemUseMKL.ToolTipText" xml:space="preserve">
-    <value>Intel MKL を有効化し行列計算を高速化します。初回使用時に約55MBダウンロードします。</value>
+    <value>Intel MKL を有効化し行列計算を高速化しま
+す。初回使用時に約55MBダウンロードします。</value>
   </data>
   <data name="toolStripMenuItemDarkMode.Size" type="System.Drawing.Size, System.Drawing">
     <value>362, 22</value>
@@ -1983,5 +1997,32 @@ v2</value>
         2gCl/yEA/gAAAAAAAAAAAAAAAAAAAPgfAADgBwAAwAMAAIABAACAAQAAAAAAAAAAAAAAAAAAAAAAAAAA
         AAAAAAAAgAEAAIABAADAAwAA4AcAAPgfAAA=
 </value>
+  </data>
+  <data name="indexControlAxis.ToolTip" xml:space="preserve">
+    <value>視線方向に向ける晶帯軸の指数 [u v w] を入力しま
+す。［Axis］を押すと、この方向が画面手前（視線
+方向）を向くよう結晶が回転します。</value>
+  </data>
+  <data name="indexControlPlane.ToolTip" xml:space="preserve">
+    <value>視線方向に向ける結晶面の指数 (h k l) を入力しま
+す。［Plane］を押すと、この面の法線が
+画面手前（視線方向）を向くよう結晶が回転します。</value>
+  </data>
+  <data name="label7.ToolTip" xml:space="preserve">
+    <value>結晶の現在の3次元回転姿勢を表すオイラー角(φ,
+θ, ψ)。値を編集すると方位を直接設定できます。</value>
+  </data>
+  <data name="label2.ToolTip" xml:space="preserve">
+    <value>結晶方位を定義するオイラー角 Φ（度）を設定／表示します。</value>
+  </data>
+  <data name="label5.ToolTip" xml:space="preserve">
+    <value>結晶方位を定義するオイラー角 θ（度）を設定／表示します。</value>
+  </data>
+  <data name="label6.ToolTip" xml:space="preserve">
+    <value>結晶方位を定義するオイラー角 ψ（度）を設定／表示します。</value>
+  </data>
+  <data name="toolStripMenuItemUseMillerBravais.ToolTipText" xml:space="preserve">
+    <value>有効にすると、六方晶／三方晶（六方軸）の指数を
+4指数のミラー・ブラベー (hkil) 表記で表示します。</value>
   </data>
 </root>

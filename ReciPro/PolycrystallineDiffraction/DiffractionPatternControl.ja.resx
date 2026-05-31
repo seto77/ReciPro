@@ -1,0 +1,458 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!--
+    Microsoft ResX Schema
+
+    Version 2.0
+
+    The primary goals of this format is to allow a simple XML format
+    that is mostly human readable. The generation and parsing of the
+    various data types are done through the TypeConverter classes
+    associated with the data types.
+
+    Example:
+
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+
+    There are any number of "resheader" rows that contain simple
+    name/value pairs.
+
+    Each data row contains a name, and value. The row also contains a
+    type or mimetype. Type corresponds to a .NET class that support
+    text/value conversion through the TypeConverter architecture.
+    Classes that don't support this are serialized and stored with the
+    mimetype set.
+
+    The mimetype is used for serialized objects, and tells the
+    ResXResourceReader how to depersist the object. This is currently not
+    extensible. For a given mimetype the value must be set accordingly:
+
+    Note - application/x-microsoft.net.object.binary.base64 is the format
+    that the ResXResourceWriter will generate, however the reader can
+    read any of the formats listed below.
+
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="buttonApplyMask.ToolTip" xml:space="preserve">
+    <value>プレビュー中の領域をマスクし、フィット(残差)計算から
+除外します。シミュレーション一致の対象外にします。</value>
+  </data>
+  <data name="buttonMaskAll.ToolTip" xml:space="preserve">
+    <value>画像の全ピクセルをマスクします
+(全域をフィット対象外にします)。</value>
+  </data>
+  <data name="buttonSaveMask.ToolTip" xml:space="preserve">
+    <value>現在のマスクを *.mas ファイルに保存し、
+後で再読み込みできるようにします。</value>
+  </data>
+  <data name="buttonUnmask.ToolTip" xml:space="preserve">
+    <value>プレビュー中の領域のマスクを解除し、フィット対象に戻します。</value>
+  </data>
+  <data name="buttonUnmaskAll.ToolTip" xml:space="preserve">
+    <value>すべてのマスクを解除し、全ピクセルをフィット対象に戻します。</value>
+  </data>
+  <data name="checkBoxFilmBlur.ToolTip" xml:space="preserve">
+    <value>フィルムにじみ(装置点像分布)を適用し、
+シミュレーションリングを右の幅(μm)のガウス関数で
+畳み込んで検出器・フィルムのにじみを再現します。</value>
+  </data>
+  <data name="checkBoxMaskDiffractionPeaks.ToolTip" xml:space="preserve">
+    <value>指定した回折ピーク(hkl 反射)の周辺をマスクするモード
+を有効にします。他のマスクモードとは排他です。</value>
+  </data>
+  <data name="checkBoxMaskDonut.ToolTip" xml:space="preserve">
+    <value>パターン中心からの半径 Start〜End の円環(ドーナツ)領域
+をマスクするモードです。他のマスクモードとは排他です。</value>
+  </data>
+  <data name="checkBoxMaskManual.ToolTip" xml:space="preserve">
+    <value>下で選んだ形状(スポット/円/矩形/ドーナツ)で
+マウスを使い画像上を直接なぞってマスクする
+モードです。他のマスクモードとは排他です。</value>
+  </data>
+  <data name="checkBoxMaskRectangle.ToolTip" xml:space="preserve">
+    <value>方向・帯幅・角度で指定した帯状(矩形)領域をマスク
+するモードです。他のマスクモードとは排他です。</value>
+  </data>
+  <data name="checkBoxRectangleIsBothSide.ToolTip" xml:space="preserve">
+    <value>帯マスクを中心線の両側に対称に適用します(片側のみではなく)。</value>
+  </data>
+  <data name="comboBoxRectangleDirection.ToolTip" xml:space="preserve">
+    <value>帯マスクの方向プリセット
+(Top/Bottom/Right/Left/Vertical/Horizontal/Free)
+を選びます。Free のときのみ角度を手入力できます。</value>
+  </data>
+  <data name="comboBoxSpotSize.ToolTip" xml:space="preserve">
+    <value>手動スポットマスクの半径をピクセル単位(1〜128)で選び
+ます。クリック点まわりの円形領域をマスクします。</value>
+  </data>
+  <data name="numericBoxCameraLength.ToolTip" xml:space="preserve">
+    <value>カメラ長(試料-検出器間距離)を mm 単位で設定しま
+す。検出器上の回折リング半径のスケールを決めます。</value>
+  </data>
+  <data name="numericBoxCenterX.ToolTip" xml:space="preserve">
+    <value>ダイレクトビーム(回折パターン)中心の X 座標をピクセル
+単位で設定します。回折リングの中心位置を決めます。</value>
+  </data>
+  <data name="numericBoxCenterY.ToolTip" xml:space="preserve">
+    <value>ダイレクトビーム(回折パターン)中心の Y 座標をピクセル
+単位で設定します。回折リングの中心位置を決めます。</value>
+  </data>
+  <data name="numericBoxFilmBlur.ToolTip" xml:space="preserve">
+    <value>フィルムにじみ量を μm 単位で設定します。
+リングをこの幅のガウス関数で畳み込み、
+ピーク幅(装置分解能)を再現します。</value>
+  </data>
+  <data name="numericBoxImageResolution.ToolTip" xml:space="preserve">
+    <value>元画像の解像度(1ピクセルの実寸)を
+mm/pixel 単位で設定します。カメラ長とと
+もに散乱角をピクセル半径へ換算します。</value>
+  </data>
+  <data name="numericBoxMonitorResolution.ToolTip" xml:space="preserve">
+    <value>画面表示の解像度を mm/pixel 単位で設定します。
+表示倍率(表示mm/pixel ÷ 画像mm/pixel)を決めます。</value>
+  </data>
+  <data name="numericBoxRectangleAngle.ToolTip" xml:space="preserve">
+    <value>帯マスクの角度を度単位(0〜360°)で設定します。帯の傾き
+を決めます。Direction が Free のときのみ編集できます。</value>
+  </data>
+  <data name="numericBoxRectangleBand.ToolTip" xml:space="preserve">
+    <value>帯マスクの幅をピクセル単位(0〜10000)で
+設定します。マスクする帯の太さを決めます。</value>
+  </data>
+  <data name="radioButtonManualCircle.ToolTip" xml:space="preserve">
+    <value>手動マスク形状を「円」にします。ドラッグで
+中心から半径を決めた円領域をマスクします。</value>
+  </data>
+  <data name="radioButtonManualDonut.ToolTip" xml:space="preserve">
+    <value>手動マスク形状を「ドーナツ」にします。パターン中心を
+基準に内外半径を決めた円環領域をマスクします。</value>
+  </data>
+  <data name="radioButtonManualRectangle.ToolTip" xml:space="preserve">
+    <value>手動マスク形状を「矩形」にします。ドラッグ
+した2点を対角とする矩形領域をマスクします。</value>
+  </data>
+  <data name="radioButtonManualSpot.ToolTip" xml:space="preserve">
+    <value>手動マスク形状を「スポット」(既定)にします。クリック
+で Size 半径の円をマスク(左)/解除(右)します。</value>
+  </data>
+  <data name="sizeControl1.ToolTip" xml:space="preserve">
+    <value>シミュレーション画像の幅×高さをピクセル
+単位(1〜10000)で設定します。生成する
+回折パターンの画像サイズを決めます。</value>
+  </data>
+  <data name="buttonSaveImage.ToolTip" xml:space="preserve">
+    <value>現在のシミュレーション回折パターンを IPA
+画像ファイル（*.ipa）として保存します
+（解像度・中心・カメラ長・波長を含む）。</value>
+  </data>
+  <data name="checkBoxShowMaskedArea.ToolTip" xml:space="preserve">
+    <value>マスク済み（フィット対象外）のピクセル領域を画像上に
+着色表示し、除外範囲を確認できるようにします。</value>
+  </data>
+  <data name="numericBoxMaxInt.ToolTip" xml:space="preserve">
+    <value>表示輝度ウィンドウの上限（最も明るい色に対応す
+る強度カウント）を設定します。表示コントラスト
+のみに作用し、データは変えません。</value>
+  </data>
+  <data name="numericBoxMinInt.ToolTip" xml:space="preserve">
+    <value>表示輝度ウィンドウの下限（最も暗い色に対応する
+強度カウント）を設定します。表示コントラストの
+みに作用し、データは変えません。</value>
+  </data>
+  <data name="trackBarBgA.ToolTip" xml:space="preserve">
+    <value>初期拡散バックグラウンド（ハロー）の振幅 A
+を対数スケールで設定します。フィット初期値と
+なるバックグラウンド環の高さを決めます。</value>
+  </data>
+  <data name="trackBarBgH.ToolTip" xml:space="preserve">
+    <value>初期拡散バックグラウンド（ハロー）の
+半値幅 H（ピクセル単位）を設定します。大き
+いほどバックグラウンド環が太くなります。</value>
+  </data>
+  <data name="trackBarBgR.ToolTip" xml:space="preserve">
+    <value>初期拡散バックグラウンド（ハロー）のリング
+半径 R（中心からのピクセル距離）を設定します。
+バックグラウンド環が盛り上がる位置を決めます。</value>
+  </data>
+  <data name="numericBoxCircleEnd.ToolTip" xml:space="preserve">
+    <value>円環（ドーナツ）マスクの外側半径を中心か
+らのピクセル距離で設定します。Start～End
+の半径範囲がマスク対象になります。</value>
+  </data>
+  <data name="numericBoxCircleStart.ToolTip" xml:space="preserve">
+    <value>円環（ドーナツ）マスクの内側半径を中心か
+らのピクセル距離で設定します。Start～End
+の半径範囲がマスク対象になります。</value>
+  </data>
+  <data name="numericBoxPhi.ToolTip" xml:space="preserve">
+    <value>試料／検出器の傾斜軸の方位角 φ を度単位で
+設定します。パターンを傾ける軸の向きを
+決め、回折環の歪みの方向に影響します。</value>
+  </data>
+  <data name="numericBoxTau.ToolTip" xml:space="preserve">
+    <value>φ軸まわりの試料／検出器の傾斜角 τ を度単位で設定し
+ます。大きいほどデバイ環が真円から楕円へ歪みます。</value>
+  </data>
+  <data name="buttonCheckAllIndices.ToolTip" xml:space="preserve">
+    <value>ピーク一覧のすべての反射 (hkl) 項目に
+チェックを入れ、一括選択します。</value>
+  </data>
+  <data name="buttonUncheckAllIndices.ToolTip" xml:space="preserve">
+    <value>ピーク一覧のすべての反射 (hkl) 項目の
+チェックを外し、選択を解除します。</value>
+  </data>
+  <data name="buttonUnmaskSelectedPeaks.ToolTip" xml:space="preserve">
+    <value>チェックした反射 (hkl) の回折環まわり
+の画像領域を選択し、マスク対象にしま
+す。（要確認：現状ハンドラは無効化）</value>
+  </data>
+  <data name="checkedListBoxPlaneList.ToolTip" xml:space="preserve">
+    <value>反射指数 (hkl) の一覧です。マスク選択し
+たい回折環のピークにチェックを入れま
+す。（要確認：現状未充填の可能性）</value>
+  </data>
+  <data name="numericBoxConvergentAngle.ToolTip" xml:space="preserve">
+    <value>入射線の収束半角（ビームの広がり）を
+度単位で設定します。大きいほどシミュレート
+されるデバイ環ピークが太くなります。</value>
+  </data>
+  <data name="numericBoxMonochromaticity.ToolTip" xml:space="preserve">
+    <value>線源の波長広がり（単色性 Δλ/λ）を % で設定します。
+大きいほどシミュレートされる回折環が太くなります。</value>
+  </data>
+  <data name="waveLengthControl.ToolTip" xml:space="preserve">
+    <value>デバイ環半径の計算に用いる線源（X線ま
+たは電子線）と波長を選択・設定します。</value>
+  </data>
+  <data name="checkBoxResidual.ToolTip" xml:space="preserve">
+    <value>残差（実測パターン − シミュレーション）
+を表示し、フィットの一致度を確認しま
+す。Simulation 表示とは排他です。</value>
+  </data>
+  <data name="checkBoxSimulation.ToolTip" xml:space="preserve">
+    <value>シミュレーションパターンを実測画像に重ねて
+表示します（Opacity スライダーで混合率を
+調整）。Residual 表示とは排他です。</value>
+  </data>
+  <data name="trackBarOpacity.ToolTip" xml:space="preserve">
+    <value>Simulation 表示時に、シミュレーションパターンを
+実測画像へ重ねる不透明度（0～100%）を調整します。</value>
+  </data>
+  <data name="buttonSaveBackGround.ToolTip" xml:space="preserve">
+    <value>現在のバックグラウンドパラメータを背景ファイル
+（*.bg）として保存し、後で再利用できるようにします。</value>
+  </data>
+  <data name="checkBoxInitialBackground.ToolTip" xml:space="preserve">
+    <value>バックグラウンドの初期値を手動設定するモード
+を有効にします。A/H/R スライダーが使えるよう
+になり、フィット前の背景環を指定できます。</value>
+  </data>
+  <data name="textBoxDiffractionInformation.ToolTip" xml:space="preserve">
+    <value>回折情報の読み取り専用の要約欄です。回折に
+寄与した結晶子数と各反射 (hkl) の割合を
+表示します。（要確認：現状ほぼ未出力）</value>
+  </data>
+  <data name="label11.ToolTip" xml:space="preserve">
+    <value>手動スポットマスクの半径(ピクセル)。</value>
+  </data>
+  <data name="label13.ToolTip" xml:space="preserve">
+    <value>ダイレクトビーム中心の座標(ピクセル
+単位)。回折リングの中心位置を示します。</value>
+  </data>
+  <data name="label17.ToolTip" xml:space="preserve">
+    <value>手動スポットマスクの半径(ピクセル)。</value>
+  </data>
+  <data name="label19.ToolTip" xml:space="preserve">
+    <value>画面表示の解像度(mm/pixel)。表示倍率を決めます。</value>
+  </data>
+  <data name="label2.ToolTip" xml:space="preserve">
+    <value>カメラ長(試料-検出器間距離、mm)。
+回折リング半径のスケールを決めます。</value>
+  </data>
+  <data name="label20.ToolTip" xml:space="preserve">
+    <value>画面表示の解像度(mm/pixel)。表示倍率を決めます。</value>
+  </data>
+  <data name="label22.ToolTip" xml:space="preserve">
+    <value>帯マスクの角度(度、0〜360°)。帯の傾き
+を決めます(Free 方向時のみ編集可)。</value>
+  </data>
+  <data name="label23.ToolTip" xml:space="preserve">
+    <value>帯マスクの幅(ピクセル)。マスクする帯の太さを決めます。</value>
+  </data>
+  <data name="label24.ToolTip" xml:space="preserve">
+    <value>帯マスクの方向プリセット。Free
+のときのみ角度を手入力できます。</value>
+  </data>
+  <data name="label31.ToolTip" xml:space="preserve">
+    <value>元画像の解像度(mm/pixel)。散乱角をピクセル半径に換算します。</value>
+  </data>
+  <data name="label32.ToolTip" xml:space="preserve">
+    <value>元画像の解像度(mm/pixel)。散乱角をピクセル半径に換算します。</value>
+  </data>
+  <data name="label33.ToolTip" xml:space="preserve">
+    <value>ダイレクトビーム中心の X
+座標(ピクセル)。リング中心を決めます。</value>
+  </data>
+  <data name="label37.ToolTip" xml:space="preserve">
+    <value>ダイレクトビーム中心の Y
+座標(ピクセル)。リング中心を決めます。</value>
+  </data>
+  <data name="label39.ToolTip" xml:space="preserve">
+    <value>カメラ長(試料-検出器間距離、mm)。
+回折リング半径のスケールを決めます。</value>
+  </data>
+  <data name="label40.ToolTip" xml:space="preserve">
+    <value>フィルムにじみ量(μm)。リングを畳み込みピーク幅を再現します。</value>
+  </data>
+  <data name="label25.ToolTip" xml:space="preserve">
+    <value>表示輝度ウィンドウの上限（最も明るい色に対応す
+る強度カウント）を設定します。表示コントラスト
+のみに作用し、データは変えません。</value>
+  </data>
+  <data name="label36.ToolTip" xml:space="preserve">
+    <value>表示輝度ウィンドウの下限（最も暗い色に対応する
+強度カウント）を設定します。表示コントラストの
+みに作用し、データは変えません。</value>
+  </data>
+  <data name="label6.ToolTip" xml:space="preserve">
+    <value>初期拡散バックグラウンド（ハロー）の
+半値幅 H（ピクセル単位）を設定します。大き
+いほどバックグラウンド環が太くなります。</value>
+  </data>
+  <data name="label7.ToolTip" xml:space="preserve">
+    <value>初期拡散バックグラウンド（ハロー）のリング
+半径 R（中心からのピクセル距離）を設定します。
+バックグラウンド環が盛り上がる位置を決めます。</value>
+  </data>
+  <data name="label8.ToolTip" xml:space="preserve">
+    <value>初期拡散バックグラウンド（ハロー）の振幅 A
+を対数スケールで設定します。フィット初期値と
+なるバックグラウンド環の高さを決めます。</value>
+  </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value>円環（ドーナツ）マスクの外側半径を中心か
+らのピクセル距離で設定します。Start～End
+の半径範囲がマスク対象になります。</value>
+  </data>
+  <data name="label21.ToolTip" xml:space="preserve">
+    <value>円環（ドーナツ）マスクの内側半径を中心か
+らのピクセル距離で設定します。Start～End
+の半径範囲がマスク対象になります。</value>
+  </data>
+  <data name="label9.ToolTip" xml:space="preserve">
+    <value>円環（ドーナツ）マスクの内側半径を中心か
+らのピクセル距離で設定します。Start～End
+の半径範囲がマスク対象になります。</value>
+  </data>
+  <data name="label28.ToolTip" xml:space="preserve">
+    <value>φ軸まわりの試料／検出器の傾斜角 τ を度単位で設定し
+ます。大きいほどデバイ環が真円から楕円へ歪みます。</value>
+  </data>
+  <data name="label29.ToolTip" xml:space="preserve">
+    <value>試料／検出器の傾斜軸の方位角 φ を度単位で
+設定します。パターンを傾ける軸の向きを
+決め、回折環の歪みの方向に影響します。</value>
+  </data>
+  <data name="label12.ToolTip" xml:space="preserve">
+    <value>入射線の収束半角（ビームの広がり）を
+度単位で設定します。大きいほどシミュレート
+されるデバイ環ピークが太くなります。</value>
+  </data>
+  <data name="label44.ToolTip" xml:space="preserve">
+    <value>線源の波長広がり（単色性 Δλ/λ）を % で設定します。
+大きいほどシミュレートされる回折環が太くなります。</value>
+  </data>
+  <data name="label45.ToolTip" xml:space="preserve">
+    <value>入射線の収束半角（ビームの広がり）を
+度単位で設定します。大きいほどシミュレート
+されるデバイ環ピークが太くなります。</value>
+  </data>
+  <data name="label46.ToolTip" xml:space="preserve">
+    <value>線源の波長広がり（単色性 Δλ/λ）を % で設定します。
+大きいほどシミュレートされる回折環が太くなります。</value>
+  </data>
+</root>

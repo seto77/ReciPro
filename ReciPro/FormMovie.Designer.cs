@@ -24,6 +24,9 @@ partial class FormMovie
     /// </summary>
     private void InitializeComponent()
     {
+            components = new System.ComponentModel.Container(); // 260531Cl
+            toolTip = new System.Windows.Forms.ToolTip(components); // 260531Cl
+            toolTip.IsBalloon = true; // 260531Cl 追加: バルーン表示に統一
         captureExtender.SetCapture(this, true); // 260521Cl 追加: GUI監査キャプチャ対象 (フォーム全体)
         System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMovie));
         buttonOK = new System.Windows.Forms.Button();
@@ -62,6 +65,7 @@ partial class FormMovie
         //buttonOK.Location = new System.Drawing.Point(100, 351);// 260520Cl 変更前 (縦並び右側)
         buttonOK.Location = new System.Drawing.Point(15, 382);// 260520Cl 変更: 横並び左OKに
         buttonOK.Name = "buttonOK";
+        toolTip.SetToolTip(buttonOK, resources.GetString("buttonOK.ToolTip")); // 260531Cl
         //buttonOK.Size = new System.Drawing.Size(75, 23);// 260520Cl 変更前
         buttonOK.Size = new System.Drawing.Size(75, 25);// 260520Cl 変更: 高さ統一(25)
         buttonOK.TabIndex = 0;
@@ -75,6 +79,7 @@ partial class FormMovie
         //buttonCancel.Location = new System.Drawing.Point(100, 328);// 260520Cl 変更前 (縦並びOKの上)
         buttonCancel.Location = new System.Drawing.Point(95, 382);// 260520Cl 変更: 横並び右Cancelに
         buttonCancel.Name = "buttonCancel";
+        toolTip.SetToolTip(buttonCancel, resources.GetString("buttonCancel.ToolTip")); // 260531Cl
         //buttonCancel.Size = new System.Drawing.Size(75, 23);// 260520Cl 変更前
         buttonCancel.Size = new System.Drawing.Size(75, 25);// 260520Cl 変更: 高さ統一(25)
         buttonCancel.TabIndex = 0;
@@ -98,6 +103,7 @@ partial class FormMovie
         numericBoxSpeed.Minimum = 0D;
         numericBoxSpeed.MinimumSize = new System.Drawing.Size(1, 20);
         numericBoxSpeed.Name = "numericBoxSpeed";
+        toolTip.SetToolTip(numericBoxSpeed, resources.GetString("numericBoxSpeed.ToolTip")); // 260531Cl
         numericBoxSpeed.RadianValue = 0.52359877559829882D;
         numericBoxSpeed.ShowUpDown = true;
         numericBoxSpeed.Size = new System.Drawing.Size(166, 27);
@@ -161,6 +167,7 @@ partial class FormMovie
         buttonAntiClock.Location = new System.Drawing.Point(39, 0);
         buttonAntiClock.Margin = new System.Windows.Forms.Padding(0);
         buttonAntiClock.Name = "buttonAntiClock";
+        toolTip.SetToolTip(buttonAntiClock, resources.GetString("buttonAntiClock.ToolTip")); // 260531Cl
         buttonAntiClock.Size = new System.Drawing.Size(39, 30);
         buttonAntiClock.TabIndex = 1;
         buttonAntiClock.Text = "⭯";
@@ -177,6 +184,7 @@ partial class FormMovie
         buttonClock.Location = new System.Drawing.Point(0, 0);
         buttonClock.Margin = new System.Windows.Forms.Padding(0);
         buttonClock.Name = "buttonClock";
+        toolTip.SetToolTip(buttonClock, resources.GetString("buttonClock.ToolTip")); // 260531Cl
         buttonClock.Size = new System.Drawing.Size(39, 30);
         buttonClock.TabIndex = 0;
         buttonClock.Text = "⭮";
@@ -193,6 +201,7 @@ partial class FormMovie
         buttonTopLeft.Location = new System.Drawing.Point(0, 0);
         buttonTopLeft.Margin = new System.Windows.Forms.Padding(0);
         buttonTopLeft.Name = "buttonTopLeft";
+        toolTip.SetToolTip(buttonTopLeft, resources.GetString("buttonTopLeft.ToolTip")); // 260531Cl
         buttonTopLeft.Size = new System.Drawing.Size(39, 30);
         buttonTopLeft.TabIndex = 0;
         buttonTopLeft.Text = "⭦";
@@ -209,6 +218,7 @@ partial class FormMovie
         buttonLeft.Location = new System.Drawing.Point(0, 30);
         buttonLeft.Margin = new System.Windows.Forms.Padding(0);
         buttonLeft.Name = "buttonLeft";
+        toolTip.SetToolTip(buttonLeft, resources.GetString("buttonLeft.ToolTip")); // 260531Cl
         buttonLeft.Size = new System.Drawing.Size(39, 30);
         buttonLeft.TabIndex = 1;
         buttonLeft.Text = "⭠";
@@ -225,6 +235,7 @@ partial class FormMovie
         buttonBottomLeft.Location = new System.Drawing.Point(0, 60);
         buttonBottomLeft.Margin = new System.Windows.Forms.Padding(0);
         buttonBottomLeft.Name = "buttonBottomLeft";
+        toolTip.SetToolTip(buttonBottomLeft, resources.GetString("buttonBottomLeft.ToolTip")); // 260531Cl
         buttonBottomLeft.Size = new System.Drawing.Size(39, 31);
         buttonBottomLeft.TabIndex = 2;
         buttonBottomLeft.Text = "⭩";
@@ -241,6 +252,7 @@ partial class FormMovie
         buttonBottom.Location = new System.Drawing.Point(39, 60);
         buttonBottom.Margin = new System.Windows.Forms.Padding(0);
         buttonBottom.Name = "buttonBottom";
+        toolTip.SetToolTip(buttonBottom, resources.GetString("buttonBottom.ToolTip")); // 260531Cl
         buttonBottom.Size = new System.Drawing.Size(78, 31);
         buttonBottom.TabIndex = 4;
         buttonBottom.Text = "⭣";
@@ -257,6 +269,7 @@ partial class FormMovie
         buttonBottomRight.Location = new System.Drawing.Point(117, 60);
         buttonBottomRight.Margin = new System.Windows.Forms.Padding(0);
         buttonBottomRight.Name = "buttonBottomRight";
+        toolTip.SetToolTip(buttonBottomRight, resources.GetString("buttonBottomRight.ToolTip")); // 260531Cl
         buttonBottomRight.Size = new System.Drawing.Size(39, 31);
         buttonBottomRight.TabIndex = 7;
         buttonBottomRight.Text = "⭨";
@@ -273,6 +286,7 @@ partial class FormMovie
         buttonTop.Location = new System.Drawing.Point(39, 0);
         buttonTop.Margin = new System.Windows.Forms.Padding(0);
         buttonTop.Name = "buttonTop";
+        toolTip.SetToolTip(buttonTop, resources.GetString("buttonTop.ToolTip")); // 260531Cl
         buttonTop.Size = new System.Drawing.Size(78, 30);
         buttonTop.TabIndex = 3;
         buttonTop.Text = "⭡";
@@ -289,6 +303,7 @@ partial class FormMovie
         buttonTopRight.Location = new System.Drawing.Point(117, 0);
         buttonTopRight.Margin = new System.Windows.Forms.Padding(0);
         buttonTopRight.Name = "buttonTopRight";
+        toolTip.SetToolTip(buttonTopRight, resources.GetString("buttonTopRight.ToolTip")); // 260531Cl
         buttonTopRight.Padding = new System.Windows.Forms.Padding(2, 0, 0, 0);
         buttonTopRight.Size = new System.Drawing.Size(39, 30);
         buttonTopRight.TabIndex = 5;
@@ -306,6 +321,7 @@ partial class FormMovie
         buttonRight.Location = new System.Drawing.Point(117, 30);
         buttonRight.Margin = new System.Windows.Forms.Padding(0);
         buttonRight.Name = "buttonRight";
+        toolTip.SetToolTip(buttonRight, resources.GetString("buttonRight.ToolTip")); // 260531Cl
         buttonRight.Size = new System.Drawing.Size(39, 30);
         buttonRight.TabIndex = 6;
         buttonRight.Text = "⭢";
@@ -328,6 +344,7 @@ partial class FormMovie
         numericBoxDuration.Minimum = 0.01D;
         numericBoxDuration.MinimumSize = new System.Drawing.Size(1, 20);
         numericBoxDuration.Name = "numericBoxDuration";
+        toolTip.SetToolTip(numericBoxDuration, resources.GetString("numericBoxDuration.ToolTip")); // 260531Cl
         numericBoxDuration.RadianValue = 0.20943951023931953D;
         numericBoxDuration.ShowUpDown = true;
         numericBoxDuration.Size = new System.Drawing.Size(156, 27);
@@ -343,6 +360,7 @@ partial class FormMovie
         radioButtonAxis.AutoSize = true;
         radioButtonAxis.Location = new System.Drawing.Point(6, 136);
         radioButtonAxis.Name = "radioButtonAxis";
+        toolTip.SetToolTip(radioButtonAxis, resources.GetString("radioButtonAxis.ToolTip")); // 260531Cl
         radioButtonAxis.Size = new System.Drawing.Size(105, 19);
         radioButtonAxis.TabIndex = 86;
         radioButtonAxis.Text = "Direction index";
@@ -354,6 +372,7 @@ partial class FormMovie
         radioButtonPlane.AutoSize = true;
         radioButtonPlane.Location = new System.Drawing.Point(6, 161);
         radioButtonPlane.Name = "radioButtonPlane";
+        toolTip.SetToolTip(radioButtonPlane, resources.GetString("radioButtonPlane.ToolTip")); // 260531Cl
         radioButtonPlane.Size = new System.Drawing.Size(92, 19);
         radioButtonPlane.TabIndex = 86;
         radioButtonPlane.Text = "Lattice plane";
@@ -366,6 +385,7 @@ partial class FormMovie
         radioButtonCurrent.Checked = true;
         radioButtonCurrent.Location = new System.Drawing.Point(6, 18);
         radioButtonCurrent.Name = "radioButtonCurrent";
+        toolTip.SetToolTip(radioButtonCurrent, resources.GetString("radioButtonCurrent.ToolTip")); // 260531Cl
         radioButtonCurrent.Size = new System.Drawing.Size(121, 19);
         radioButtonCurrent.TabIndex = 86;
         radioButtonCurrent.TabStop = true;
@@ -392,6 +412,7 @@ partial class FormMovie
         radioButtonH264.AutoSize = true;
         radioButtonH264.Location = new System.Drawing.Point(8, 302);
         radioButtonH264.Name = "radioButtonH264";
+        toolTip.SetToolTip(radioButtonH264, resources.GetString("radioButtonH264.ToolTip")); // 260531Cl
         radioButtonH264.Size = new System.Drawing.Size(52, 19);
         radioButtonH264.TabIndex = 90;
         radioButtonH264.Text = "H264";
@@ -403,6 +424,7 @@ partial class FormMovie
         radioButtonH265.Checked = true;
         radioButtonH265.Location = new System.Drawing.Point(66, 303);
         radioButtonH265.Name = "radioButtonH265";
+        toolTip.SetToolTip(radioButtonH265, resources.GetString("radioButtonH265.ToolTip")); // 260531Cl
         radioButtonH265.Size = new System.Drawing.Size(52, 19);
         radioButtonH265.TabIndex = 90;
         radioButtonH265.TabStop = true;
@@ -416,6 +438,7 @@ partial class FormMovie
         comboBoxSpeed.Items.AddRange(new object[] { "ultrafast", "superfast", "veryfast", "faster", "fast", "medium", "slow", "slower", "veryslow" });
         comboBoxSpeed.Location = new System.Drawing.Point(9, 350);
         comboBoxSpeed.Name = "comboBoxSpeed";
+        toolTip.SetToolTip(comboBoxSpeed, resources.GetString("comboBoxSpeed.ToolTip")); // 260531Cl
         comboBoxSpeed.Size = new System.Drawing.Size(75, 23);
         comboBoxSpeed.TabIndex = 91;
         // 
@@ -424,6 +447,7 @@ partial class FormMovie
         label1.AutoSize = true;
         label1.Location = new System.Drawing.Point(9, 332);
         label1.Name = "label1";
+        toolTip.SetToolTip(label1, resources.GetString("label1.ToolTip")); // 260531Cl
         label1.Size = new System.Drawing.Size(80, 15);
         label1.TabIndex = 92;
         label1.Text = "Encode speed";
@@ -438,6 +462,7 @@ partial class FormMovie
         indexControl.Margin = new System.Windows.Forms.Padding(0);
         indexControl.Mode = IndexControl.ModeEnum.Plane;
         indexControl.Name = "indexControl1";
+        toolTip.SetToolTip(indexControl, resources.GetString("indexControl1.ToolTip")); // 260531Cl
         indexControl.Size = new System.Drawing.Size(134, 41);
         indexControl.SubScript = "";
         indexControl.TabIndex = 93;
@@ -482,6 +507,7 @@ partial class FormMovie
 
     #endregion
 
+    private System.Windows.Forms.ToolTip toolTip; // 260531Cl
     private System.Windows.Forms.Button buttonOK;
     private System.Windows.Forms.Button buttonCancel;
     private NumericBox numericBoxSpeed;

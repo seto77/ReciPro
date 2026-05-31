@@ -24,6 +24,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container(); // 260531Cl
+            toolTip = new System.Windows.Forms.ToolTip(components); // 260531Cl
+            toolTip.IsBalloon = true; // 260531Cl 追加: バルーン表示に統一
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormCTF));
             flowLayoutPanelSTEM = new System.Windows.Forms.FlowLayoutPanel();
             radioButtonCTF_coherent = new System.Windows.Forms.RadioButton();
@@ -79,6 +82,7 @@
             radioButtonCTF_coherent.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             radioButtonCTF_coherent.Location = new System.Drawing.Point(3, 3);
             radioButtonCTF_coherent.Name = "radioButtonCTF_coherent";
+            toolTip.SetToolTip(radioButtonCTF_coherent, resources.GetString("radioButtonCTF_coherent.ToolTip")); // 260531Cl
             radioButtonCTF_coherent.Size = new System.Drawing.Size(130, 21);
             radioButtonCTF_coherent.TabIndex = 53;
             radioButtonCTF_coherent.TabStop = true;
@@ -93,6 +97,7 @@
             radioButtonCTF_Incoherent.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             radioButtonCTF_Incoherent.Location = new System.Drawing.Point(139, 3);
             radioButtonCTF_Incoherent.Name = "radioButtonCTF_Incoherent";
+            toolTip.SetToolTip(radioButtonCTF_Incoherent, resources.GetString("radioButtonCTF_Incoherent.ToolTip")); // 260531Cl
             radioButtonCTF_Incoherent.Size = new System.Drawing.Size(138, 21);
             radioButtonCTF_Incoherent.TabIndex = 53;
             radioButtonCTF_Incoherent.Text = "Incoherent imaging";
@@ -110,6 +115,7 @@
             checkBoxSinW.Location = new System.Drawing.Point(3, 1);
             checkBoxSinW.Margin = new System.Windows.Forms.Padding(0, 1, 0, 1);
             checkBoxSinW.Name = "checkBoxSinW";
+            toolTip.SetToolTip(checkBoxSinW, resources.GetString("checkBoxSinW.ToolTip")); // 260531Cl
             checkBoxSinW.Size = new System.Drawing.Size(312, 32);
             checkBoxSinW.TabIndex = 5;
             checkBoxSinW.UseVisualStyleBackColor = true;
@@ -126,6 +132,7 @@
             checkBoxEs_HRTEM.Location = new System.Drawing.Point(201, 35);
             checkBoxEs_HRTEM.Margin = new System.Windows.Forms.Padding(0, 1, 0, 1);
             checkBoxEs_HRTEM.Name = "checkBoxEs_HRTEM";
+            toolTip.SetToolTip(checkBoxEs_HRTEM, resources.GetString("checkBoxEs_HRTEM.ToolTip")); // 260531Cl
             checkBoxEs_HRTEM.Size = new System.Drawing.Size(304, 32);
             checkBoxEs_HRTEM.TabIndex = 6;
             checkBoxEs_HRTEM.UseVisualStyleBackColor = true;
@@ -142,6 +149,7 @@
             checkBoxEc.Location = new System.Drawing.Point(3, 69);
             checkBoxEc.Margin = new System.Windows.Forms.Padding(0, 1, 0, 1);
             checkBoxEc.Name = "checkBoxEc";
+            toolTip.SetToolTip(checkBoxEc, resources.GetString("checkBoxEc.ToolTip")); // 260531Cl
             checkBoxEc.Size = new System.Drawing.Size(288, 32);
             checkBoxEc.TabIndex = 7;
             checkBoxEc.UseVisualStyleBackColor = true;
@@ -158,6 +166,7 @@
             checkBoxPCTF.Location = new System.Drawing.Point(0, 1);
             checkBoxPCTF.Margin = new System.Windows.Forms.Padding(0, 1, 0, 1);
             checkBoxPCTF.Name = "checkBoxPCTF";
+            toolTip.SetToolTip(checkBoxPCTF, resources.GetString("checkBoxPCTF.ToolTip")); // 260531Cl
             checkBoxPCTF.Padding = new System.Windows.Forms.Padding(0, 10, 0, 0);
             checkBoxPCTF.Size = new System.Drawing.Size(349, 32);
             checkBoxPCTF.TabIndex = 8;
@@ -173,6 +182,7 @@
             buttonCopyGraph.Location = new System.Drawing.Point(658, 0);
             buttonCopyGraph.Margin = new System.Windows.Forms.Padding(0);
             buttonCopyGraph.Name = "buttonCopyGraph";
+            toolTip.SetToolTip(buttonCopyGraph, resources.GetString("buttonCopyGraph.ToolTip")); // 260531Cl
             buttonCopyGraph.Size = new System.Drawing.Size(48, 27);
             buttonCopyGraph.TabIndex = 58;
             buttonCopyGraph.Text = "Copy";
@@ -195,6 +205,7 @@
             numericBoxMaxU1.Minimum = 0D;
             numericBoxMaxU1.MinimumSize = new System.Drawing.Size(1, 20);
             numericBoxMaxU1.Name = "numericBoxMaxU1";
+            toolTip.SetToolTip(numericBoxMaxU1, resources.GetString("numericBoxMaxU1.ToolTip")); // 260531Cl
             numericBoxMaxU1.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
             numericBoxMaxU1.RadianValue = 0.10471975511965977D;
             numericBoxMaxU1.ShowUpDown = true;
@@ -280,6 +291,7 @@
             checkBoxCosW.Location = new System.Drawing.Point(315, 1);
             checkBoxCosW.Margin = new System.Windows.Forms.Padding(0, 1, 0, 1);
             checkBoxCosW.Name = "checkBoxCosW";
+            toolTip.SetToolTip(checkBoxCosW, resources.GetString("checkBoxCosW.ToolTip")); // 260531Cl
             checkBoxCosW.Size = new System.Drawing.Size(314, 32);
             checkBoxCosW.TabIndex = 14;
             checkBoxCosW.UseVisualStyleBackColor = true;
@@ -297,6 +309,7 @@
             checkBoxEs_STEM.Location = new System.Drawing.Point(3, 35);
             checkBoxEs_STEM.Margin = new System.Windows.Forms.Padding(0, 1, 0, 1);
             checkBoxEs_STEM.Name = "checkBoxEs_STEM";
+            toolTip.SetToolTip(checkBoxEs_STEM, resources.GetString("checkBoxEs_STEM.ToolTip")); // 260531Cl
             checkBoxEs_STEM.Size = new System.Drawing.Size(198, 29);
             checkBoxEs_STEM.TabIndex = 9;
             checkBoxEs_STEM.UseVisualStyleBackColor = true;
@@ -322,6 +335,7 @@
             checkBoxACTF.Location = new System.Drawing.Point(0, 35);
             checkBoxACTF.Margin = new System.Windows.Forms.Padding(0, 1, 0, 1);
             checkBoxACTF.Name = "checkBoxACTF";
+            toolTip.SetToolTip(checkBoxACTF, resources.GetString("checkBoxACTF.ToolTip")); // 260531Cl
             checkBoxACTF.Padding = new System.Windows.Forms.Padding(0, 10, 0, 0);
             checkBoxACTF.Size = new System.Drawing.Size(351, 31);
             checkBoxACTF.TabIndex = 8;
@@ -458,6 +472,7 @@
 
         #endregion
 
+        private System.Windows.Forms.ToolTip toolTip; // 260531Cl
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelSTEM;
         private System.Windows.Forms.RadioButton radioButtonCTF_coherent;
         private System.Windows.Forms.RadioButton radioButtonCTF_Incoherent;

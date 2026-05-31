@@ -118,7 +118,10 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="numericBoxMaxUVW.ToolTip1" xml:space="preserve">
-    <value>Maximum |u|+|v|+|w| limit for zone-axis indices displayed in the current-direction list; higher values show more candidate axes.</value>
+    <value>Upper limit of |u|+|v|+|w| used when searching
+for the zone axis nearest the viewing direction
+(shown as the approximate index above). Larger
+values test more candidate zone axes.</value>
   </data>
   <data name="&gt;&gt;resetRegistryToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -188,7 +191,8 @@
     <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxEulerPhi.ToolTip1" xml:space="preserve">
-    <value>Set Euler angle Φ (phi) in degrees for the current crystal orientation.</value>
+    <value>Set/show Euler angle Φ (deg), the first
+rotation defining the crystal orientation.</value>
   </data>
   <data name="&gt;&gt;exportAsCIFFormatToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -355,7 +359,9 @@
     <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="toolStripButtonImageSimulator.ToolTipText" xml:space="preserve">
-    <value>Open the HRTEM/STEM image simulator. HRTEM is high-resolution transmission electron microscopy; STEM is scanning transmission electron microscopy.</value>
+    <value>Open the HRTEM/STEM image simulator. HRTEM is
+high-resolution transmission electron microscopy;
+STEM is scanning transmission electron microscopy.</value>
   </data>
   <data name="groupBoxCurrentDirection.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -666,7 +672,8 @@ If an axis index is also specified, that axis direction is shown upward.</value>
     <value>138, 24</value>
   </data>
   <data name="label5.ToolTip" xml:space="preserve">
-    <value />
+    <value>Set/show Euler angle θ (deg), the second
+rotation defining the crystal orientation.</value>
   </data>
   <data name="toolStripButtonSpotIDv2.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>White</value>
@@ -693,7 +700,8 @@ If an axis index is also specified, that axis direction is shown upward.</value>
     <value>14</value>
   </data>
   <data name="numericBoxEulerPsi.ToolTip1" xml:space="preserve">
-    <value>Set Euler angle ψ (psi) in degrees for the current crystal orientation.</value>
+    <value>Set/show Euler angle ψ (deg), the third
+rotation defining the crystal orientation.</value>
   </data>
   <data name="&gt;&gt;toolStripSeparator5.Name" xml:space="preserve">
     <value>toolStripSeparator5</value>
@@ -1579,7 +1587,9 @@ If an axis index is also specified, that axis direction is shown upward.</value>
     <value>toolStrip1</value>
   </data>
   <data name="indexControlPlane.ToolTip" xml:space="preserve">
-    <value />
+    <value>Crystal-plane indices (h k l) to view along. Click
+'Plane' to rotate the crystal so this plane's
+normal points toward you (out of the screen).</value>
   </data>
   <data name="numericBoxStep.HeaderText" xml:space="preserve">
     <value>Step</value>
@@ -1890,10 +1900,12 @@ If an axis index is also specified, that axis direction is shown upward.</value>
     <value>toolStripContainer1.BottomToolStripPanel</value>
   </data>
   <data name="numericBoxStep.ToolTip" xml:space="preserve">
-    <value>Set the angle step in degrees for the rotation buttons; when animation is enabled, the same value is used as rotation speed in degrees per second.</value>
+    <value>Set the angle step in degrees for the rotation
+buttons; when animation is enabled, the same value
+is used as rotation speed in degrees per second.</value>
   </data>
   <data name="toolStripButtonStructureViewer.ToolTipText" xml:space="preserve">
-    <value>Open Structure Viewer</value>
+    <value>Open the Structure Viewer (3-D crystal structure).</value>
   </data>
   <data name="buttonSetAxis.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -2102,7 +2114,9 @@ If an axis index is also specified, that axis direction is shown upward.</value>
     <value>Horizontal</value>
   </data>
   <data name="label7.ToolTip" xml:space="preserve">
-    <value />
+    <value>Euler angles (φ, θ, ψ) describing
+the crystal's current 3-D rotation;
+edit to set the orientation directly.</value>
   </data>
   <data name="toolStripButtonTrajectorySimulator.Size" type="System.Drawing.Size, System.Drawing">
     <value>116, 36</value>
@@ -2435,7 +2449,9 @@ If an axis index is also specified, that axis direction is shown upward.</value>
     <value>groupBoxArrows</value>
   </data>
   <data name="indexControlAxis.ToolTip" xml:space="preserve">
-    <value />
+    <value>Zone-axis indices [u v w] to view along. Click
+'Axis' to rotate the crystal so this direction
+points toward you (out of the screen).</value>
   </data>
   <data name="&gt;&gt;saveCrystalDataToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -3210,7 +3226,8 @@ If an axis index is also specified, that axis direction is shown upward.</value>
     <value>32</value>
   </data>
   <data name="toolStripMenuItemUseMillerBravais.ToolTipText" xml:space="preserve">
-    <value>When enabled, hexagonal / trigonal (hexagonal axes) crystals show four-index Miller-Bravais indices.</value>
+    <value>When enabled, hexagonal / trigonal (hexagonal axes)
+crystals show four-index Miller-Bravais indices.</value>
   </data>
   <data name="labelCurrentIndex.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -3247,7 +3264,8 @@ If an axis index is also specified, that axis direction is shown upward.</value>
     <value>59, 27</value>
   </data>
   <data name="numericBoxEulerTheta.ToolTip" xml:space="preserve">
-    <value>Set Euler angle θ</value>
+    <value>Set/show Euler angle θ (deg), the second
+rotation defining the crystal orientation.</value>
   </data>
   <data name="toolStripButtonTrajectorySimulator.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -3350,7 +3368,7 @@ If a plane index is also specified, that plane direction is shown upward.</value
     <value>captureGUIToolStripMenuItem</value>
   </data>
   <data name="toolStripButtonRotation.ToolTipText" xml:space="preserve">
-    <value>Open Rotation Geometry to set crystal orientation with Euler angles, zone axes, and rotation buttons.</value>
+    <value>Open the Rotation Geometry tool.</value>
   </data>
   <data name="tableLayoutPanel2.Location" type="System.Drawing.Point, System.Drawing">
     <value>34, 24</value>
@@ -3422,7 +3440,9 @@ If a plane index is also specified, that plane direction is shown upward.</value
     <value>Fill</value>
   </data>
   <data name="numericBoxStep.ToolTip1" xml:space="preserve">
-    <value>Set the angle step in degrees for the rotation buttons; when animation is enabled, the same value is used as rotation speed in degrees per second.</value>
+    <value>Set the angle step in degrees for the rotation
+buttons; when animation is enabled, the same value
+is used as rotation speed in degrees per second.</value>
   </data>
   <data name="&gt;&gt;buttonAntiClock.Name" xml:space="preserve">
     <value>buttonAntiClock</value>
@@ -3470,7 +3490,8 @@ If a plane index is also specified, that plane direction is shown upward.</value
     <value>Open Scattering Factor</value>
   </data>
   <data name="toolStripMenuItemUseMKL.ToolTipText" xml:space="preserve">
-    <value>Enable Intel MKL for faster matrix calculations. Downloads ~55MB on first use.</value>
+    <value>Enable Intel MKL for faster matrix
+calculations. Downloads ~55MB on first use.</value>
   </data>
   <data name="&gt;&gt;powderDiffractionFunctionToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -3626,7 +3647,8 @@ If a plane index is also specified, that plane direction is shown upward.</value
     <value>0, 0, 0, 0</value>
   </data>
   <data name="label6.ToolTip" xml:space="preserve">
-    <value />
+    <value>Set/show Euler angle ψ (deg), the third
+rotation defining the crystal orientation.</value>
   </data>
   <data name="buttonBottom.Text" xml:space="preserve">
     <value>⭣</value>
@@ -3917,7 +3939,8 @@ To remove all crystals from the list, click 'Clear All'.</value>
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="numericBoxEulerPhi.ToolTip" xml:space="preserve">
-    <value>Set Euler angle Φ</value>
+    <value>Set/show Euler angle Φ (deg), the first
+rotation defining the crystal orientation.</value>
   </data>
   <data name="label6.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -3935,7 +3958,8 @@ To remove all crystals from the list, click 'Clear All'.</value>
     <value>Segoe UI Symbol, 11.25pt</value>
   </data>
   <data name="label2.ToolTip" xml:space="preserve">
-    <value />
+    <value>Set/show Euler angle Φ (deg), the first
+rotation defining the crystal orientation.</value>
   </data>
   <data name="&gt;&gt;indexControlAxis.Type" xml:space="preserve">
     <value>Crystallography.Controls.IndexControl, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
@@ -4059,7 +4083,8 @@ To remove all crystals from the list, click 'Clear All'.</value>
     <value>Segoe UI, 9pt</value>
   </data>
   <data name="numericBoxEulerPsi.ToolTip" xml:space="preserve">
-    <value>Set Euler angle ψ</value>
+    <value>Set/show Euler angle ψ (deg), the third
+rotation defining the crystal orientation.</value>
   </data>
   <data name="&gt;&gt;label5.Parent" xml:space="preserve">
     <value>tableLayoutPanel3</value>
@@ -4113,7 +4138,7 @@ To remove all crystals from the list, click 'Clear All'.</value>
     <value>True</value>
   </data>
   <data name="toolStripButtonTrajectorySimulator.ToolTipText" xml:space="preserve">
-    <value>Open Trajectory Simulator</value>
+    <value>Open the Trajectory Simulator.</value>
   </data>
   <data name="buttonClock.Size" type="System.Drawing.Size, System.Drawing">
     <value>34, 24</value>
@@ -4128,7 +4153,8 @@ To remove all crystals from the list, click 'Clear All'.</value>
     <value>0</value>
   </data>
   <data name="checkBoxAnimation.ToolTip" xml:space="preserve">
-    <value>When checked, clicking the buttons above rotates the crystal at a constant speed.</value>
+    <value>When checked, clicking the buttons above
+rotates the crystal at a constant speed.</value>
   </data>
   <data name="flowLayoutPanelSetPlane.Size" type="System.Drawing.Size, System.Drawing">
     <value>138, 34</value>
@@ -4458,7 +4484,9 @@ To remove all crystals from the list, click 'Clear All'.</value>
     <value>⭩</value>
   </data>
   <data name="toolStripButtonEBSD.ToolTipText" xml:space="preserve">
-    <value>Open the EBSD (Electron Backscatter Diffraction) simulator for backscattered-electron diffraction patterns from crystal orientation.</value>
+    <value>Open the EBSD (Electron Backscatter Diffraction)
+simulator for backscattered-electron diffraction
+patterns from crystal orientation.</value>
   </data>
   <data name="tableLayoutPanel2.RowCount" type="System.Int32, mscorlib">
     <value>1</value>
@@ -4506,10 +4534,14 @@ To remove all crystals from the list, click 'Clear All'.</value>
     <value>301, 6</value>
   </data>
   <data name="numericBoxEulerTheta.ToolTip1" xml:space="preserve">
-    <value>Set Euler angle θ (theta) in degrees for the current crystal orientation.</value>
+    <value>Set/show Euler angle θ (deg), the second
+rotation defining the crystal orientation.</value>
   </data>
   <data name="numericBoxMaxUVW.ToolTip" xml:space="preserve">
-    <value>Maximum sum of zone axis indices for display</value>
+    <value>Upper limit of |u|+|v|+|w| used when searching
+for the zone axis nearest the viewing direction
+(shown as the approximate index above). Larger
+values test more candidate zone axes.</value>
   </data>
   <data name="readCrystalFromCIFOrAMCFileToolStripMenuItem.Text" xml:space="preserve">
     <value>Import Crystal from a CIF or AMC File</value>
@@ -4575,13 +4607,14 @@ To remove all crystals from the list, click 'Clear All'.</value>
     <value>MiddleLeft</value>
   </data>
   <data name="buttonReplace.ToolTip" xml:space="preserve">
-    <value>Replace the selected crystal above with the new crystal below.</value>
+    <value>Replace the selected crystal
+above with the new crystal below.</value>
   </data>
   <data name="&gt;&gt;groupBoxArrows.Parent" xml:space="preserve">
     <value>panel1</value>
   </data>
   <data name="toolStripButtonStereonet.ToolTipText" xml:space="preserve">
-    <value>Open Stereonet to plot crystal directions, crystal planes, and Kikuchi-line pairs on a spherical projection.</value>
+    <value>Open the stereonet (stereographic projection / Wulff net).</value>
   </data>
   <data name="toolStripButtonSpotIDv2.ToolTipText" xml:space="preserve">
     <value>Open Spot ID v2</value>

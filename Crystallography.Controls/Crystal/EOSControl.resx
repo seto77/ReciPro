@@ -117,4 +117,147 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="checkBoxUseEOS.ToolTip" xml:space="preserve">
+    <value>Enable the equation of state (EOS): compute
+the pressure from the current unit-cell
+volume using the parameters set below.</value>
+  </data>
+  <data name="numericBox3rdVinetBeta.ToolTip" xml:space="preserve">
+    <value>Empirical parameter β of the 3rd-order Vinet equation
+of state (used only when '3rd Vinet' is selected).</value>
+  </data>
+  <data name="numericBox3rdVinetIta.ToolTip" xml:space="preserve">
+    <value>Empirical parameter η of the 3rd-order Vinet equation
+of state (used only when '3rd Vinet' is selected).</value>
+  </data>
+  <data name="numericBox3rdVinetPsi.ToolTip" xml:space="preserve">
+    <value>Empirical parameter ψ of the 3rd-order Vinet equation
+of state (used only when '3rd Vinet' is selected).</value>
+  </data>
+  <data name="numericBoxEOS_A.ToolTip" xml:space="preserve">
+    <value>Thermal-expansion coefficient a (in
+10⁻⁵/K) in α(T)=a+bT+c/T², used to expand
+the reference volume with temperature.</value>
+  </data>
+  <data name="numericBoxEOS_B.ToolTip" xml:space="preserve">
+    <value>Thermal-expansion coefficient b (in 10⁻⁹/K²),
+the temperature-linear term of α(T)=a+bT+c/T².</value>
+  </data>
+  <data name="numericBoxEOS_C.ToolTip" xml:space="preserve">
+    <value>Thermal-expansion coefficient c (in K), the c/T²
+term of α(T)=a+bT+c/T² (low-temperature correction).</value>
+  </data>
+  <data name="numericBoxEOS_Gamma0.ToolTip" xml:space="preserve">
+    <value>Grüneisen parameter γ₀ at the reference volume
+(dimensionless) — measures how strongly
+thermal vibrational energy contributes to
+pressure; used by the Mie–Grüneisen model.</value>
+  </data>
+  <data name="numericBoxEOS_K0.ToolTip" xml:space="preserve">
+    <value>Isothermal bulk modulus K₀ at the reference
+temperature T₀, in GPa — the resistance of the
+material to uniform compression (larger = stiffer).</value>
+  </data>
+  <data name="numericBoxEOS_Kp0.ToolTip" xml:space="preserve">
+    <value>First pressure derivative of the bulk modulus, K'₀
+= (∂K/∂P) at P=0 (dimensionless, typically ≈4) —
+how rapidly the material stiffens under pressure.</value>
+  </data>
+  <data name="numericBoxEOS_KpInfinity.ToolTip" xml:space="preserve">
+    <value>Limiting value K'∞ of the pressure derivative of the
+bulk modulus at infinite pressure (dimensionless);
+used by the Keane equation of state.</value>
+  </data>
+  <data name="numericBoxEOS_KperT.ToolTip" xml:space="preserve">
+    <value>Temperature derivative of the bulk modulus,
+∂K/∂T at P=0 (in GPa/K) — how much the stiffness
+K changes per kelvin (usually negative).</value>
+  </data>
+  <data name="numericBoxEOS_Kpp0.ToolTip" xml:space="preserve">
+    <value>Second pressure derivative of the bulk modulus,
+K''₀ = (∂²K/∂P²) at P=0, in 1/GPa; used by the
+4th-order Birch–Murnaghan equation of state.</value>
+  </data>
+  <data name="numericBoxEOS_Q.ToolTip" xml:space="preserve">
+    <value>Volume-dependence exponent q of the Grüneisen
+parameter, γ = γ₀·(V/V₀)^q (dimensionless).</value>
+  </data>
+  <data name="numericBoxEOS_T0.ToolTip" xml:space="preserve">
+    <value>Reference temperature T₀ (in K) at
+which the isothermal parameters V₀,
+K₀, K'₀ are defined (typically 300 K).</value>
+  </data>
+  <data name="numericBoxEOS_Theta0.ToolTip" xml:space="preserve">
+    <value>Debye temperature θ₀ at the reference volume (in K) —
+the characteristic temperature of lattice vibrations;
+used to evaluate the thermal (Mie–Grüneisen) pressure.</value>
+  </data>
+  <data name="numericBoxEOS_V0perCell.ToolTip" xml:space="preserve">
+    <value>Reference unit-cell volume V₀ at T₀ and P=0,
+in Å³ per cell. Click to edit this field (the
+cm³/mol field is then derived automatically).</value>
+  </data>
+  <data name="numericBoxEOS_V0perMol.ToolTip" xml:space="preserve">
+    <value>Reference molar volume V₀ at T₀ and P=0, in
+cm³/mol. Click to edit this field (the
+Å³/cell field is then derived automatically).</value>
+  </data>
+  <data name="numericBoxPressure.ToolTip" xml:space="preserve">
+    <value>Calculated pressure P (in GPa), derived by the
+equation of state from the current unit-cell
+volume and temperature (read-only output).</value>
+  </data>
+  <data name="numericBoxTemperature.ToolTip" xml:space="preserve">
+    <value>Target temperature T (in K) at which the
+pressure is evaluated; the thermal pressure
+is added from the difference T − T₀.</value>
+  </data>
+  <data name="radioButtonEOS_AP2.ToolTip" xml:space="preserve">
+    <value>Use the AP2 (2nd-order adapted polynomial
+/ Holzapfel) equation of state for the
+isothermal pressure–volume relation.</value>
+  </data>
+  <data name="radioButtonEOS_FourthBirchMunaghan.ToolTip" xml:space="preserve">
+    <value>Use the 4th-order Birch–Murnaghan (BM)
+equation of state for the isothermal
+pressure–volume relation (adds the K''₀ term).</value>
+  </data>
+  <data name="radioButtonEOS_Keane.ToolTip" xml:space="preserve">
+    <value>Use the Keane equation of state for the
+isothermal pressure–volume relation
+(uses the high-pressure limit K'∞).</value>
+  </data>
+  <data name="radioButtonEOS_ThirdBirchMurnaghan.ToolTip" xml:space="preserve">
+    <value>Use the 3rd-order Birch–Murnaghan (BM) equation
+of state for the isothermal pressure–volume
+relation (the standard choice; uses V₀, K₀, K'₀).</value>
+  </data>
+  <data name="radioButtonEOS_Vinet.ToolTip" xml:space="preserve">
+    <value>Use the Vinet equation of state for the isothermal
+pressure–volume relation (often preferred at
+strong compression; uses V₀, K₀, K'₀).</value>
+  </data>
+  <data name="radioButtonEOS_Vinet3rd.ToolTip" xml:space="preserve">
+    <value>Use the extended 3rd-order Vinet equation of
+state for the isothermal pressure–volume
+relation (uses the extra parameters η, β, ψ).</value>
+  </data>
+  <data name="radioButtonMieGruneisen.ToolTip" xml:space="preserve">
+    <value>Compute the thermal pressure from lattice
+vibrations using the Mie–Grüneisen model (with
+parameters γ₀, Debye temperature θ₀ and q).</value>
+  </data>
+  <data name="radioButtonTdependenceK0andV0.ToolTip" xml:space="preserve">
+    <value>Account for temperature by making the reference
+volume V₀ and bulk modulus K₀ temperature-dependent
+(uses thermal-expansion a,b,c and ∂K/∂T).</value>
+  </data>
+  <data name="textBoxEOS_Note.ToolTip" xml:space="preserve">
+    <value>Free-text note for this equation-of-state
+parameter set (e.g. literature source or comment).</value>
+  </data>
+  <data name="label83.ToolTip" xml:space="preserve">
+    <value>Free-text note for this equation-of-state
+parameter set (e.g. literature source or comment).</value>
+  </data>
 </root>

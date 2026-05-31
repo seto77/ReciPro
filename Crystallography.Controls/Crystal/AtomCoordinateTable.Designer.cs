@@ -26,6 +26,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AtomCoordinateTable)); // 260531Cl
+            components = new System.ComponentModel.Container(); // (260531Ch)
+            toolTip = new System.Windows.Forms.ToolTip(components); // (260531Ch)
+            toolTip.IsBalloon = true; // 260531Cl 追加: バルーン表示に統一
             this.comboBox = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             // this.dataGridView = new System.Windows.Forms.DataGridView(); // 260518Cl 旧実装: DPI変更時に列幅が追従しない
@@ -58,6 +62,7 @@
             this.comboBox.Location = new System.Drawing.Point(82, 1);
             this.comboBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.comboBox.Name = "comboBox";
+            this.toolTip.SetToolTip(this.comboBox, resources.GetString("comboBox.ToolTip")); // 260531Cl
             this.comboBox.Size = new System.Drawing.Size(121, 23);
             this.comboBox.TabIndex = 0;
             this.comboBox.SelectedIndexChanged += new System.EventHandler(this.comboBox_SelectedIndexChanged);
@@ -67,6 +72,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(3, 5);
             this.label1.Name = "label1";
+            this.toolTip.SetToolTip(this.label1, resources.GetString("label1.ToolTip")); // 260531Cl
             this.label1.Size = new System.Drawing.Size(71, 15);
             this.label1.TabIndex = 1;
             this.label1.Text = "Target Atom";
@@ -88,6 +94,7 @@
             this.dataGridView.DataSource = this.dataSet;
             this.dataGridView.Location = new System.Drawing.Point(3, 30);
             this.dataGridView.Name = "dataGridView";
+            this.toolTip.SetToolTip(this.dataGridView, resources.GetString("dataGridView.ToolTip")); // 260531Cl
             this.dataGridView.ReadOnly = true;
             this.dataGridView.RowHeadersVisible = false;
             //this.dataGridView.RowTemplate.Height = 21;                                                                                              // 260413Cl DPIスケーリング対応のため削除
@@ -158,6 +165,7 @@
             0,
             131072});
             this.numericUpDownWidth.Name = "numericUpDownWidth";
+            this.toolTip.SetToolTip(this.numericUpDownWidth, resources.GetString("numericUpDownWidth.ToolTip")); // 260531Cl
             this.numericUpDownWidth.Size = new System.Drawing.Size(58, 21);
             this.numericUpDownWidth.TabIndex = 4;
             this.numericUpDownWidth.Value = new decimal(new int[] {
@@ -177,6 +185,7 @@
             65536});
             this.numericUpDownMaxLength.Location = new System.Drawing.Point(466, 5);
             this.numericUpDownMaxLength.Name = "numericUpDownMaxLength";
+            this.toolTip.SetToolTip(this.numericUpDownMaxLength, resources.GetString("numericUpDownMaxLength.ToolTip")); // 260531Cl
             this.numericUpDownMaxLength.Size = new System.Drawing.Size(56, 21);
             this.numericUpDownMaxLength.TabIndex = 4;
             this.numericUpDownMaxLength.Value = new decimal(new int[] {
@@ -191,6 +200,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(230, 8);
             this.label2.Name = "label2";
+            this.toolTip.SetToolTip(this.label2, resources.GetString("label2.ToolTip")); // 260531Cl
             this.label2.Size = new System.Drawing.Size(57, 15);
             this.label2.TabIndex = 5;
             this.label2.Text = "Bar Wdth";
@@ -200,6 +210,7 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(379, 8);
             this.label3.Name = "label3";
+            this.toolTip.SetToolTip(this.label3, resources.GetString("label3.ToolTip")); // 260531Cl
             this.label3.Size = new System.Drawing.Size(81, 15);
             this.label3.TabIndex = 5;
             this.label3.Text = "Max. distance";
@@ -255,6 +266,8 @@
         }
 
         #endregion
+
+        private System.Windows.Forms.ToolTip toolTip; // (260531Ch)
 
         private System.Windows.Forms.ComboBox comboBox;
         private System.Windows.Forms.Label label1;

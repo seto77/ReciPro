@@ -1536,4 +1536,146 @@
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
     <value>Crystallography.Controls.UserControlBase, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
   </data>
+  <data name="buttonPeriodicTable.ToolTip" xml:space="preserve">
+    <value>Open the periodic table to choose which elements
+must be included or excluded in the search.</value>
+  </data>
+  <data name="buttonSearch.ToolTip" xml:space="preserve">
+    <value>Search the crystal database using all enabled
+criteria (name, reference, elements, crystal
+system, cell, d-spacing, density) combined,
+and show only the matching crystals.</value>
+  </data>
+  <data name="checkBoxD1.ToolTip" xml:space="preserve">
+    <value>Enable filtering by the 1st d-spacing value;
+activates its value and tolerance fields.</value>
+  </data>
+  <data name="checkBoxD2.ToolTip" xml:space="preserve">
+    <value>Enable filtering by the 2nd d-spacing value;
+activates its value and tolerance fields.</value>
+  </data>
+  <data name="checkBoxD3.ToolTip" xml:space="preserve">
+    <value>Enable filtering by the 3rd d-spacing value;
+activates its value and tolerance fields.</value>
+  </data>
+  <data name="checkBoxDensity.ToolTip" xml:space="preserve">
+    <value>Filter the database by measured/calculated
+density (g/cm³); enables the density input fields.</value>
+  </data>
+  <data name="checkBoxDspacing.ToolTip" xml:space="preserve">
+    <value>Filter by d-spacing (interplanar lattice spacing,
+in Å — the spacing that determines diffraction-peak
+positions); enables the d-spacing input fields.</value>
+  </data>
+  <data name="checkBoxIgnoreScatteringFactor.ToolTip" xml:space="preserve">
+    <value>When checked, the d-spacing search ignores the
+scattering factor (reflection intensity): every
+geometrically allowed d value is computed from
+the unit cell, including reflections that would
+be extinct (zero intensity).</value>
+  </data>
+  <data name="checkBoxSearchCellParameter.ToolTip" xml:space="preserve">
+    <value>Filter by unit-cell parameters (lengths
+a, b, c in Å and angles α, β, γ in °);
+enables the cell-parameter input fields.</value>
+  </data>
+  <data name="checkBoxSearchCrystalSystem.ToolTip" xml:space="preserve">
+    <value>Filter by crystal system (triclinic …
+cubic); enables the crystal-system selector.</value>
+  </data>
+  <data name="checkBoxSearchElements.ToolTip" xml:space="preserve">
+    <value>Filter by constituent elements; shows the
+Periodic Table button used to specify
+which elements to include or exclude.</value>
+  </data>
+  <data name="checkBoxSearchName.ToolTip" xml:space="preserve">
+    <value>Filter by mineral/compound name; shows a text box
+for a (case-insensitive, partial-match) name search.</value>
+  </data>
+  <data name="checkBoxSearchReference.ToolTip" xml:space="preserve">
+    <value>Filter by reference (journal, author or section
+text); shows a text box for the search term.</value>
+  </data>
+  <data name="comboBoxSearchCrystalSystem.ToolTip" xml:space="preserve">
+    <value>Select the crystal system to filter by
+(triclinic, monoclinic, orthorhombic,
+tetragonal, trigonal, hexagonal or cubic).</value>
+  </data>
+  <data name="numericBoxCellA.ToolTip" xml:space="preserve">
+    <value>Target unit-cell length a to search
+for, in Å (0 = ignore this parameter).</value>
+  </data>
+  <data name="numericBoxCellAlpha.ToolTip" xml:space="preserve">
+    <value>Target unit-cell angle α (between the b and
+c axes) to search for, in ° (0 = ignore).</value>
+  </data>
+  <data name="numericBoxCellAngleErr.ToolTip" xml:space="preserve">
+    <value>Tolerance for the cell-angle (α, β, γ)
+search, as ±° (note: degrees, unlike
+the length tolerance which is %).</value>
+  </data>
+  <data name="numericBoxCellB.ToolTip" xml:space="preserve">
+    <value>Target unit-cell length b to search
+for, in Å (0 = ignore this parameter).</value>
+  </data>
+  <data name="numericBoxCellBeta.ToolTip" xml:space="preserve">
+    <value>Target unit-cell angle β (between the a and
+c axes) to search for, in ° (0 = ignore).</value>
+  </data>
+  <data name="numericBoxCellC.ToolTip" xml:space="preserve">
+    <value>Target unit-cell length c to search
+for, in Å (0 = ignore this parameter).</value>
+  </data>
+  <data name="numericBoxCellGamma.ToolTip" xml:space="preserve">
+    <value>Target unit-cell angle γ (between the a and
+b axes) to search for, in ° (0 = ignore).</value>
+  </data>
+  <data name="numericBoxCellLengthErr.ToolTip" xml:space="preserve">
+    <value>Tolerance for the cell-length (a, b, c)
+search, as ±%; cells whose lengths fall
+within this relative range are matched.</value>
+  </data>
+  <data name="numericBoxD1.ToolTip" xml:space="preserve">
+    <value>Target value of the 1st d-spacing
+(interplanar spacing) to search for, in Å.</value>
+  </data>
+  <data name="numericBoxD1Err.ToolTip" xml:space="preserve">
+    <value>Tolerance for the 1st d-spacing
+search, as ±%; crystals having a d
+value within this range are matched.</value>
+  </data>
+  <data name="numericBoxD2.ToolTip" xml:space="preserve">
+    <value>Target value of the 2nd d-spacing
+(interplanar spacing) to search for, in Å.</value>
+  </data>
+  <data name="numericBoxD2Err.ToolTip" xml:space="preserve">
+    <value>Tolerance for the 2nd d-spacing
+search, as ±%; crystals having a d
+value within this range are matched.</value>
+  </data>
+  <data name="numericBoxD3.ToolTip" xml:space="preserve">
+    <value>Target value of the 3rd d-spacing
+(interplanar spacing) to search for, in Å.</value>
+  </data>
+  <data name="numericBoxD3Err.ToolTip" xml:space="preserve">
+    <value>Tolerance for the 3rd d-spacing
+search, as ±%; crystals having a d
+value within this range are matched.</value>
+  </data>
+  <data name="numericBoxDensity.ToolTip" xml:space="preserve">
+    <value>Target density to search for, in g/cm³.</value>
+  </data>
+  <data name="numericBoxDensityErr.ToolTip" xml:space="preserve">
+    <value>Tolerance for the density search, as
+±%; crystals whose density falls
+within this relative range are matched.</value>
+  </data>
+  <data name="textBoxSearchName.ToolTip" xml:space="preserve">
+    <value>Enter a mineral/compound name to search for (partial,
+case-insensitive match); press Enter to run the search.</value>
+  </data>
+  <data name="textBoxSearchReference.ToolTip" xml:space="preserve">
+    <value>Enter a reference term (journal, author or section)
+to search for; press Enter to run the search.</value>
+  </data>
 </root>

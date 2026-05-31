@@ -202,7 +202,8 @@
     <value>0</value>
   </data>
   <data name="numericBoxTofAngle.ToolTip" xml:space="preserve">
-    <value>Set TOF angle</value>
+    <value>Detector scattering angle 2θ (degrees) for
+neutron time-of-flight (TOF) measurement.</value>
   </data>
   <data name="&gt;&gt;radioButtonAngleUnitMilliRadian.ZOrder" xml:space="preserve">
     <value>3</value>
@@ -331,7 +332,8 @@
     <value>0, 0</value>
   </data>
   <data name="radioButtonNeutron.ToolTip" xml:space="preserve">
-    <value />
+    <value>Use a neutron beam as the radiation
+source (enables the time-of-flight axis).</value>
   </data>
   <data name="&gt;&gt;flowLayoutPanelNeutronTOF.ZOrder" xml:space="preserve">
     <value>4</value>
@@ -448,7 +450,7 @@
     <value>Neutron TOF</value>
   </data>
   <data name="radioButtonEnergyUnitMev.ToolTip" xml:space="preserve">
-    <value />
+    <value>Show the energy axis in mega-electron-volts (MeV).</value>
   </data>
   <data name="flowLayoutPanel1.WrapContents" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -484,7 +486,8 @@
     <value>0</value>
   </data>
   <data name="radioButtonEnergy.ToolTip" xml:space="preserve">
-    <value />
+    <value>Plot the horizontal axis as photon/particle
+energy (for energy-dispersive white-beam mode).</value>
   </data>
   <data name="flowLayoutPanelDspacing.TabIndex" type="System.Int32, mscorlib">
     <value>88</value>
@@ -652,7 +655,7 @@
     <value>Å</value>
   </data>
   <data name="radioButtonDspacingUnitNm.ToolTip" xml:space="preserve">
-    <value />
+    <value>Show the d-spacing axis in nanometres (nm).</value>
   </data>
   <data name="numericBoxTwoTheta.MaximumSize" type="System.Drawing.Size, System.Drawing">
     <value>1000, 30</value>
@@ -664,7 +667,7 @@
     <value>1</value>
   </data>
   <data name="radioButtonAngleUnitCentiDegree.ToolTip" xml:space="preserve">
-    <value />
+    <value>Show the 2θ axis in centi-degrees (1/100 of a degree).</value>
   </data>
   <data name="radioButtonEnergyUnitEv.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -703,7 +706,9 @@
     <value>0</value>
   </data>
   <data name="waveLengthControl.ToolTip" xml:space="preserve">
-    <value />
+    <value>Set the radiation wavelength here: enter it
+directly, via the electron accelerating voltage, or
+via a characteristic X-ray line (element + line).</value>
   </data>
   <data name="flowLayoutPanelAxisSelection.Size" type="System.Drawing.Size, System.Drawing">
     <value>126, 438</value>
@@ -727,7 +732,8 @@
     <value>NoControl</value>
   </data>
   <data name="numericBoxTofLength.ToolTip1" xml:space="preserve">
-    <value>Set TOF flight path length</value>
+    <value>Flight-path length L (metres) from source to detector
+for neutron time-of-flight (TOF) measurement.</value>
   </data>
   <data name="radioButtonMonochro.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -850,7 +856,9 @@
     <value>NoControl</value>
   </data>
   <data name="radioButtonTwoTheta.ToolTip" xml:space="preserve">
-    <value />
+    <value>Plot the horizontal axis as the diffraction
+angle 2θ (scattering angle between incident and
+diffracted beam); used in monochromatic mode.</value>
   </data>
   <data name="numericBoxTofLength.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 2, 0, 0</value>
@@ -1135,7 +1143,8 @@
     <value>53, 21</value>
   </data>
   <data name="radioButtonMonochro.ToolTip" xml:space="preserve">
-    <value />
+    <value>Use a single (monochromatic) wavelength;
+enables the 2θ and d-spacing axes.</value>
   </data>
   <data name="&gt;&gt;numericBoxTofLength.ZOrder" xml:space="preserve">
     <value>3</value>
@@ -1144,7 +1153,8 @@
     <value />
   </data>
   <data name="numericBoxTofAngle.ToolTip1" xml:space="preserve">
-    <value>Set TOF angle</value>
+    <value>Detector scattering angle 2θ (degrees) for
+neutron time-of-flight (TOF) measurement.</value>
   </data>
   <data name="radioButtonEnergyUnitMev.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1222,7 +1232,8 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxTwoTheta.ToolTip1" xml:space="preserve">
-    <value>Set 2θ value</value>
+    <value>Detector scattering (take-off) angle 2θ in degrees
+for energy-dispersive (white-beam) measurement.</value>
   </data>
   <data name="flowLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
     <value>0, 0</value>
@@ -1255,7 +1266,7 @@
     <value />
   </data>
   <data name="radioButtonWavenumberUnitNmInv.ToolTip" xml:space="preserve">
-    <value />
+    <value>Show the wavenumber q axis in inverse nanometres (nm⁻¹).</value>
   </data>
   <data name="&gt;&gt;numericBoxTofLength.Parent" xml:space="preserve">
     <value>flowLayoutPanelNeutronTOF</value>
@@ -1264,7 +1275,8 @@
     <value>0</value>
   </data>
   <data name="radioButtonDspacing.ToolTip" xml:space="preserve">
-    <value />
+    <value>Plot the horizontal axis as d-spacing
+(interplanar lattice spacing of each reflection).</value>
   </data>
   <data name="radioButtonTwoTheta.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
@@ -1285,7 +1297,7 @@
     <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="radioButtonTofUnitNanoSec.ToolTip" xml:space="preserve">
-    <value />
+    <value>Show the time-of-flight axis in nanoseconds (ns).</value>
   </data>
   <data name="groupBoxOption.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>120, 0</value>
@@ -1366,7 +1378,7 @@
     <value>True</value>
   </data>
   <data name="radioButtonAngleUnitMilliRadian.ToolTip" xml:space="preserve">
-    <value />
+    <value>Show the 2θ axis in milliradians (1/1000 of a radian).</value>
   </data>
   <data name="radioButtonEnergy.Text" xml:space="preserve">
     <value>Energy</value>
@@ -1378,7 +1390,7 @@
     <value>flowLayoutPanelMain</value>
   </data>
   <data name="radioButtonTofUnitMicroSec.ToolTip" xml:space="preserve">
-    <value />
+    <value>Show the time-of-flight axis in microseconds (μs).</value>
   </data>
   <data name="&gt;&gt;toolTip.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolTip, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -1450,13 +1462,14 @@
     <value>0, 0</value>
   </data>
   <data name="radioButtonElectron.ToolTip" xml:space="preserve">
-    <value />
+    <value>Use an electron beam as the radiation source
+(wavelength set by the accelerating voltage).</value>
   </data>
   <data name="radioButtonDspacingUnitNm.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
   <data name="radioButtonEnergyUnitKev.ToolTip" xml:space="preserve">
-    <value />
+    <value>Show the energy axis in kilo-electron-volts (keV).</value>
   </data>
   <data name="groupBoxTwoTheta.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -1498,7 +1511,7 @@
     <value />
   </data>
   <data name="radioButtonAngleUnitRadian.ToolTip" xml:space="preserve">
-    <value />
+    <value>Show the 2θ axis in radians (rad).</value>
   </data>
   <data name="radioButtonAngleUnitMilliRadian.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9.75pt</value>
@@ -1552,8 +1565,10 @@
     <value>True</value>
   </data>
   <data name="radioButtonFlatWhite.ToolTip" xml:space="preserve">
-    <value>For X-ray, the intensity per unit energy range of the incident beam is constant.
-For neutron, the number of incident neutrons per unit wavelength interval is constant.</value>
+    <value>Use a flat white spectrum: for X-rays the
+incident intensity per unit energy is constant;
+for neutrons the number of incident neutrons
+per unit wavelength interval is constant.</value>
   </data>
   <data name="&gt;&gt;radioButtonWavenumber.Type" xml:space="preserve">
     <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -1562,7 +1577,7 @@ For neutron, the number of incident neutrons per unit wavelength interval is con
     <value>2, 2, 0, 2</value>
   </data>
   <data name="radioButtonEnergyUnitEv.ToolTip" xml:space="preserve">
-    <value />
+    <value>Show the energy axis in electron-volts (eV).</value>
   </data>
   <data name="&gt;&gt;radioButtonTOF.Type" xml:space="preserve">
     <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -1637,7 +1652,8 @@ For neutron, the number of incident neutrons per unit wavelength interval is con
     <value>1000, 30</value>
   </data>
   <data name="numericBoxTwoTheta.ToolTip" xml:space="preserve">
-    <value>Set 2θ value</value>
+    <value>Detector scattering (take-off) angle 2θ in degrees
+for energy-dispersive (white-beam) measurement.</value>
   </data>
   <data name="radioButtonElectron.Size" type="System.Drawing.Size, System.Drawing">
     <value>73, 21</value>
@@ -1754,7 +1770,8 @@ For neutron, the number of incident neutrons per unit wavelength interval is con
     <value>flowLayoutPanelAxisType</value>
   </data>
   <data name="radioButtonCustomWhite.ToolTip" xml:space="preserve">
-    <value />
+    <value>Use a user-defined continuous (white)
+spectrum of wavelengths/energies.</value>
   </data>
   <data name="radioButtonEnergyUnitKev.Location" type="System.Drawing.Point, System.Drawing">
     <value>41, 0</value>
@@ -1766,7 +1783,7 @@ For neutron, the number of incident neutrons per unit wavelength interval is con
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="radioButtonAngleUnitDegree.ToolTip" xml:space="preserve">
-    <value />
+    <value>Show the 2θ axis in degrees (°).</value>
   </data>
   <data name="flowLayoutPanelAxisSelection.TabIndex" type="System.Int32, mscorlib">
     <value>94</value>
@@ -1787,7 +1804,7 @@ For neutron, the number of incident neutrons per unit wavelength interval is con
     <value>groupBoxTwoTheta</value>
   </data>
   <data name="radioButtonDspacingUnitAng.ToolTip" xml:space="preserve">
-    <value />
+    <value>Show the d-spacing axis in ångströms (Å, 0.1 nm).</value>
   </data>
   <data name="radioButtonDspacing.Size" type="System.Drawing.Size, System.Drawing">
     <value>84, 21</value>
@@ -1802,7 +1819,8 @@ For neutron, the number of incident neutrons per unit wavelength interval is con
     <value>44, 21</value>
   </data>
   <data name="numericBoxTofLength.ToolTip" xml:space="preserve">
-    <value>Set TOF flight path length</value>
+    <value>Flight-path length L (metres) from source to detector
+for neutron time-of-flight (TOF) measurement.</value>
   </data>
   <data name="radioButtonAngleUnitDegree.Text" xml:space="preserve">
     <value>Degree</value>
@@ -1871,7 +1889,8 @@ For neutron, the number of incident neutrons per unit wavelength interval is con
     <value>groupBoxTwoTheta</value>
   </data>
   <data name="radioButtonXray.ToolTip" xml:space="preserve">
-    <value />
+    <value>Use an X-ray beam as the radiation source
+(characteristic line or custom wavelength).</value>
   </data>
   <data name="&gt;&gt;radioButtonElectron.Name" xml:space="preserve">
     <value>radioButtonElectron</value>
@@ -1895,7 +1914,7 @@ For neutron, the number of incident neutrons per unit wavelength interval is con
     <value>54, 21</value>
   </data>
   <data name="radioButtonWavenumberAngInv.ToolTip" xml:space="preserve">
-    <value />
+    <value>Show the wavenumber q axis in inverse ångströms (Å⁻¹).</value>
   </data>
   <data name="&gt;&gt;radioButtonWavenumberUnitNmInv.ZOrder" xml:space="preserve">
     <value>1</value>
@@ -1976,7 +1995,8 @@ For neutron, the number of incident neutrons per unit wavelength interval is con
     <value>91</value>
   </data>
   <data name="radioButtonWavenumber.ToolTip" xml:space="preserve">
-    <value />
+    <value>Plot the horizontal axis as the scattering wavenumber
+q = 4π·sinθ/λ (magnitude of the scattering vector).</value>
   </data>
   <data name="&gt;&gt;radioButtonEnergy.Name" xml:space="preserve">
     <value>radioButtonEnergy</value>
@@ -1985,7 +2005,9 @@ For neutron, the number of incident neutrons per unit wavelength interval is con
     <value>77</value>
   </data>
   <data name="radioButtonTOF.ToolTip" xml:space="preserve">
-    <value />
+    <value>Plot the horizontal axis as neutron time-of-flight
+(TOF), the time for a neutron to travel the flight
+path; available for neutron white-beam mode.</value>
   </data>
   <data name="&gt;&gt;radioButtonMonochro.ZOrder" xml:space="preserve">
     <value>0</value>

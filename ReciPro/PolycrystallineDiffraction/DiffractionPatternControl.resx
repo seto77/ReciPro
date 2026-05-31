@@ -120,4 +120,368 @@
   <metadata name="captureExtender.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
+  <data name="buttonApplyMask.ToolTip" xml:space="preserve">
+    <value>Mask the currently previewed region: exclude
+those pixels from the fit (residual) so they
+are ignored when matching the simulation.</value>
+  </data>
+  <data name="buttonMaskAll.ToolTip" xml:space="preserve">
+    <value>Mask every pixel of the image (exclude
+the whole image from the fit).</value>
+  </data>
+  <data name="buttonSaveMask.ToolTip" xml:space="preserve">
+    <value>Save the current mask to a .mas
+file so it can be reloaded later.</value>
+  </data>
+  <data name="buttonUnmask.ToolTip" xml:space="preserve">
+    <value>Unmask the currently previewed region:
+include those pixels back into the fit.</value>
+  </data>
+  <data name="buttonUnmaskAll.ToolTip" xml:space="preserve">
+    <value>Clear all masks: include every pixel back into the fit.</value>
+  </data>
+  <data name="checkBoxFilmBlur.ToolTip" xml:space="preserve">
+    <value>Apply film blur: convolve the simulated rings with
+an instrumental point-spread (Gaussian) of the width
+set at right (µm) to mimic detector/film smearing.</value>
+  </data>
+  <data name="checkBoxMaskDiffractionPeaks.ToolTip" xml:space="preserve">
+    <value>Mask mode: select pixels around chosen
+diffraction peaks (hkl reflections) for masking;
+mutually exclusive with the other mask modes.</value>
+  </data>
+  <data name="checkBoxMaskDonut.ToolTip" xml:space="preserve">
+    <value>Mask mode: mask an annular (donut) ring between
+the Start and End radii from the pattern center;
+mutually exclusive with other mask modes.</value>
+  </data>
+  <data name="checkBoxMaskManual.ToolTip" xml:space="preserve">
+    <value>Mask mode: paint masks directly on the
+image with the mouse using the shape chosen
+below (spot/circle/rectangle/donut);
+mutually exclusive with other mask modes.</value>
+  </data>
+  <data name="checkBoxMaskRectangle.ToolTip" xml:space="preserve">
+    <value>Mask mode: mask a straight band (rectangle)
+defined by direction, band width and angle;
+mutually exclusive with other mask modes.</value>
+  </data>
+  <data name="checkBoxRectangleIsBothSide.ToolTip" xml:space="preserve">
+    <value>Apply the band mask symmetrically on both sides
+of the center line (instead of one side only).</value>
+  </data>
+  <data name="comboBoxRectangleDirection.ToolTip" xml:space="preserve">
+    <value>Direction preset for the band mask
+(Top/Bottom/Right/Left/Vertical/Horizontal/Free);
+presets fix the angle, Free lets you enter it manually.</value>
+  </data>
+  <data name="comboBoxSpotSize.ToolTip" xml:space="preserve">
+    <value>Radius (in pixels) of the manual spot
+mask painted at each mouse click (1–128).</value>
+  </data>
+  <data name="numericBoxCameraLength.ToolTip" xml:space="preserve">
+    <value>Camera length (sample-to-detector distance)
+in mm; scales the radius of the simulated
+diffraction rings on the detector.</value>
+  </data>
+  <data name="numericBoxCenterX.ToolTip" xml:space="preserve">
+    <value>X pixel coordinate of the direct-beam
+(pattern) center; sets where the
+diffraction rings are centered on the image.</value>
+  </data>
+  <data name="numericBoxCenterY.ToolTip" xml:space="preserve">
+    <value>Y pixel coordinate of the direct-beam
+(pattern) center; sets where the
+diffraction rings are centered on the image.</value>
+  </data>
+  <data name="numericBoxFilmBlur.ToolTip" xml:space="preserve">
+    <value>Film-blur width in µm: the Gaussian instrumental
+point-spread convolved with the rings to broaden
+peaks (detector/film resolution).</value>
+  </data>
+  <data name="numericBoxImageResolution.ToolTip" xml:space="preserve">
+    <value>Detector pixel size of the source image in
+mm/pixel; together with camera length it converts
+scattering angle to ring radius in pixels.</value>
+  </data>
+  <data name="numericBoxMonitorResolution.ToolTip" xml:space="preserve">
+    <value>On-screen display resolution in mm/pixel;
+sets the zoom factor (monitor mm/pixel ÷
+image mm/pixel) of the displayed pattern.</value>
+  </data>
+  <data name="numericBoxRectangleAngle.ToolTip" xml:space="preserve">
+    <value>Angle of the band mask in degrees (0–360°); sets the
+band orientation. Editable only when Direction is Free.</value>
+  </data>
+  <data name="numericBoxRectangleBand.ToolTip" xml:space="preserve">
+    <value>Width of the band mask in pixels (0–10000);
+sets how wide the masked strip is.</value>
+  </data>
+  <data name="radioButtonManualCircle.ToolTip" xml:space="preserve">
+    <value>Manual mask shape: drag to define a circle (from
+center to radius) and mask the enclosed area.</value>
+  </data>
+  <data name="radioButtonManualDonut.ToolTip" xml:space="preserve">
+    <value>Manual mask shape: drag two radii about the
+pattern center to mask an annular (donut) ring.</value>
+  </data>
+  <data name="radioButtonManualRectangle.ToolTip" xml:space="preserve">
+    <value>Manual mask shape: drag a rectangle (two
+corner points) and mask the enclosed area.</value>
+  </data>
+  <data name="radioButtonManualSpot.ToolTip" xml:space="preserve">
+    <value>Manual mask shape: click to mask (left)
+or unmask (right) a circular spot of the
+radius set by Size; the default mode.</value>
+  </data>
+  <data name="sizeControl1.ToolTip" xml:space="preserve">
+    <value>Width × height of the simulated image in
+pixels (1–10000); sets the canvas size
+of the generated diffraction pattern.</value>
+  </data>
+  <data name="buttonSaveImage.ToolTip" xml:space="preserve">
+    <value>Saves the current simulated diffraction pattern
+to an IPA image file (*.ipa), including
+resolution, center, camera length and wavelength.</value>
+  </data>
+  <data name="checkBoxShowMaskedArea.ToolTip" xml:space="preserve">
+    <value>Highlights the masked (excluded-from-fit) pixels on
+the image so you can see which regions are ignored.</value>
+  </data>
+  <data name="numericBoxMaxInt.ToolTip" xml:space="preserve">
+    <value>Upper intensity of the display brightness
+window (counts mapped to the brightest color).
+Affects display contrast only, not the data.</value>
+  </data>
+  <data name="numericBoxMinInt.ToolTip" xml:space="preserve">
+    <value>Lower intensity of the display brightness
+window (counts mapped to the darkest color).
+Affects display contrast only, not the data.</value>
+  </data>
+  <data name="trackBarBgA.ToolTip" xml:space="preserve">
+    <value>Amplitude (A) of the initial diffuse-background halo,
+on a logarithmic scale. Sets the peak height of the
+background ring used as a starting guess for fitting.</value>
+  </data>
+  <data name="trackBarBgH.ToolTip" xml:space="preserve">
+    <value>Width (H, full-width at half-maximum in pixels)
+of the initial diffuse-background halo. Larger
+values make the background ring broader.</value>
+  </data>
+  <data name="trackBarBgR.ToolTip" xml:space="preserve">
+    <value>Radius (R, in pixels from the center)
+of the initial diffuse-background halo.
+Sets where the background ring peaks.</value>
+  </data>
+  <data name="numericBoxCircleEnd.ToolTip" xml:space="preserve">
+    <value>Outer radius (in pixels from the center)
+of the annular mask. Pixels between Start
+and End radii are selected for masking.</value>
+  </data>
+  <data name="numericBoxCircleStart.ToolTip" xml:space="preserve">
+    <value>Inner radius (in pixels from the center)
+of the annular mask. Pixels between Start
+and End radii are selected for masking.</value>
+  </data>
+  <data name="numericBoxPhi.ToolTip" xml:space="preserve">
+    <value>Azimuth (phi) of the sample/detector tilt axis, in
+degrees. Sets the direction about which the pattern is
+tilted, affecting the orientation of ring distortion.</value>
+  </data>
+  <data name="numericBoxTau.ToolTip" xml:space="preserve">
+    <value>Magnitude (tau) of the sample/detector tilt about
+the phi axis, in degrees. Larger values distort
+the Debye rings from circles toward ellipses.</value>
+  </data>
+  <data name="buttonCheckAllIndices.ToolTip" xml:space="preserve">
+    <value>Checks every reflection (hkl) in the
+peak list, selecting all peaks at once.</value>
+  </data>
+  <data name="buttonUncheckAllIndices.ToolTip" xml:space="preserve">
+    <value>Unchecks every reflection (hkl) in
+the peak list, clearing the selection.</value>
+  </data>
+  <data name="buttonUnmaskSelectedPeaks.ToolTip" xml:space="preserve">
+    <value>Selects the image area around the rings of the
+checked reflections (hkl) so they can be masked.</value>
+  </data>
+  <data name="checkedListBoxPlaneList.ToolTip" xml:space="preserve">
+    <value>List of reflection indices (hkl);
+check the peaks whose surrounding ring
+area you want to select for masking.</value>
+  </data>
+  <data name="numericBoxConvergentAngle.ToolTip" xml:space="preserve">
+    <value>Beam convergence (half-angle) of the incident
+radiation, in degrees. Larger values broaden
+the simulated Debye-ring peaks.</value>
+  </data>
+  <data name="numericBoxMonochromaticity.ToolTip" xml:space="preserve">
+    <value>Wavelength spread (monochromaticity,
+Delta-lambda / lambda) of the source, in %.
+Larger values broaden the simulated rings.</value>
+  </data>
+  <data name="waveLengthControl.ToolTip" xml:space="preserve">
+    <value>Selects the radiation source (X-ray or electron) and
+its wavelength used to compute the Debye-ring radii.</value>
+  </data>
+  <data name="checkBoxResidual.ToolTip" xml:space="preserve">
+    <value>Displays the residual (experimental minus
+simulated pattern), so you can see how well the
+fit matches. Mutually exclusive with Simulation.</value>
+  </data>
+  <data name="checkBoxSimulation.ToolTip" xml:space="preserve">
+    <value>Overlays the simulated pattern on the
+experimental image, blended by the Opacity
+slider. Mutually exclusive with Residual.</value>
+  </data>
+  <data name="trackBarOpacity.ToolTip" xml:space="preserve">
+    <value>Blending opacity (0-100%) of the simulated pattern
+over the experimental image in Simulation mode.</value>
+  </data>
+  <data name="buttonSaveBackGround.ToolTip" xml:space="preserve">
+    <value>Saves the current background parameters to
+a background file (*.bg) for later reuse.</value>
+  </data>
+  <data name="checkBoxInitialBackground.ToolTip" xml:space="preserve">
+    <value>Enables manual setup of the initial background;
+activates the A/H/R sliders to define a
+starting background ring before refinement.</value>
+  </data>
+  <data name="textBoxDiffractionInformation.ToolTip" xml:space="preserve">
+    <value>Read-only summary of the diffraction:
+number of crystallites contributing and
+the fraction of each reflection (hkl).</value>
+  </data>
+  <data name="label11.ToolTip" xml:space="preserve">
+    <value>Radius (in pixels) of the manual spot
+mask painted at each mouse click.</value>
+  </data>
+  <data name="label13.ToolTip" xml:space="preserve">
+    <value>X/Y pixel coordinate of the direct-beam (pattern)
+center; sets where the diffraction rings are centered.</value>
+  </data>
+  <data name="label17.ToolTip" xml:space="preserve">
+    <value>Radius (in pixels) of the manual spot
+mask painted at each mouse click.</value>
+  </data>
+  <data name="label19.ToolTip" xml:space="preserve">
+    <value>On-screen display resolution in mm/pixel;
+sets the zoom factor of the displayed pattern.</value>
+  </data>
+  <data name="label2.ToolTip" xml:space="preserve">
+    <value>Camera length (sample-to-detector distance)
+in mm; scales the diffraction-ring radii.</value>
+  </data>
+  <data name="label20.ToolTip" xml:space="preserve">
+    <value>On-screen display resolution in mm/pixel;
+sets the zoom factor of the displayed pattern.</value>
+  </data>
+  <data name="label22.ToolTip" xml:space="preserve">
+    <value>Angle of the band mask in degrees
+(0–360°); sets the band orientation
+(editable only when Direction is Free).</value>
+  </data>
+  <data name="label23.ToolTip" xml:space="preserve">
+    <value>Width of the band mask in pixels;
+sets how wide the masked strip is.</value>
+  </data>
+  <data name="label24.ToolTip" xml:space="preserve">
+    <value>Direction preset for the band mask
+(Top/Bottom/Right/Left/Vertical/Horizontal/Free);
+Free lets you enter the angle manually.</value>
+  </data>
+  <data name="label31.ToolTip" xml:space="preserve">
+    <value>Detector pixel size of the source image in
+mm/pixel; converts scattering angle to ring radius.</value>
+  </data>
+  <data name="label32.ToolTip" xml:space="preserve">
+    <value>Detector pixel size of the source image in
+mm/pixel; converts scattering angle to ring radius.</value>
+  </data>
+  <data name="label33.ToolTip" xml:space="preserve">
+    <value>X pixel coordinate of the direct-beam
+center; sets the ring center.</value>
+  </data>
+  <data name="label37.ToolTip" xml:space="preserve">
+    <value>Y pixel coordinate of the direct-beam
+center; sets the ring center.</value>
+  </data>
+  <data name="label39.ToolTip" xml:space="preserve">
+    <value>Camera length (sample-to-detector distance)
+in mm; scales the diffraction-ring radii.</value>
+  </data>
+  <data name="label40.ToolTip" xml:space="preserve">
+    <value>Film-blur width in µm: Gaussian instrumental
+point-spread convolved with the rings to broaden peaks.</value>
+  </data>
+  <data name="label25.ToolTip" xml:space="preserve">
+    <value>Upper intensity of the display brightness
+window (counts mapped to the brightest color).
+Affects display contrast only, not the data.</value>
+  </data>
+  <data name="label36.ToolTip" xml:space="preserve">
+    <value>Lower intensity of the display brightness
+window (counts mapped to the darkest color).
+Affects display contrast only, not the data.</value>
+  </data>
+  <data name="label6.ToolTip" xml:space="preserve">
+    <value>Width (H, full-width at half-maximum in pixels)
+of the initial diffuse-background halo. Larger
+values make the background ring broader.</value>
+  </data>
+  <data name="label7.ToolTip" xml:space="preserve">
+    <value>Radius (R, in pixels from the center)
+of the initial diffuse-background halo.
+Sets where the background ring peaks.</value>
+  </data>
+  <data name="label8.ToolTip" xml:space="preserve">
+    <value>Amplitude (A) of the initial diffuse-background halo,
+on a logarithmic scale. Sets the peak height of the
+background ring used as a starting guess for fitting.</value>
+  </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value>Outer radius (in pixels from the center)
+of the annular mask. Pixels between Start
+and End radii are selected for masking.</value>
+  </data>
+  <data name="label21.ToolTip" xml:space="preserve">
+    <value>Inner radius (in pixels from the center)
+of the annular mask. Pixels between Start
+and End radii are selected for masking.</value>
+  </data>
+  <data name="label9.ToolTip" xml:space="preserve">
+    <value>Inner radius (in pixels from the center)
+of the annular mask. Pixels between Start
+and End radii are selected for masking.</value>
+  </data>
+  <data name="label28.ToolTip" xml:space="preserve">
+    <value>Magnitude (tau) of the sample/detector tilt about
+the phi axis, in degrees. Larger values distort
+the Debye rings from circles toward ellipses.</value>
+  </data>
+  <data name="label29.ToolTip" xml:space="preserve">
+    <value>Azimuth (phi) of the sample/detector tilt axis, in
+degrees. Sets the direction about which the pattern is
+tilted, affecting the orientation of ring distortion.</value>
+  </data>
+  <data name="label12.ToolTip" xml:space="preserve">
+    <value>Beam convergence (half-angle) of the incident
+radiation, in degrees. Larger values broaden
+the simulated Debye-ring peaks.</value>
+  </data>
+  <data name="label44.ToolTip" xml:space="preserve">
+    <value>Wavelength spread (monochromaticity,
+Delta-lambda / lambda) of the source, in %.
+Larger values broaden the simulated rings.</value>
+  </data>
+  <data name="label45.ToolTip" xml:space="preserve">
+    <value>Beam convergence (half-angle) of the incident
+radiation, in degrees. Larger values broaden
+the simulated Debye-ring peaks.</value>
+  </data>
+  <data name="label46.ToolTip" xml:space="preserve">
+    <value>Wavelength spread (monochromaticity,
+Delta-lambda / lambda) of the source, in %.
+Larger values broaden the simulated rings.</value>
+  </data>
 </root>

@@ -57,4 +57,14 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="numericBox.ToolTip" xml:space="preserve">
+    <value>Type the exact value; this spin box is linked to
+the adjacent slider so changing either keeps both
+in sync (units/range are set by the host form).</value>
+  </data>
+  <data name="trackBar.ToolTip" xml:space="preserve">
+    <value>Drag to set the value between its minimum and maximum;
+the linked numeric box updates to the same value as
+you slide (units/range are set by the host form).</value>
+  </data>
 </root>

@@ -117,4 +117,21 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="numericBoxH.ToolTip" xml:space="preserve">
+    <value>First index component: Miller index h (plane
+mode) or direction index u (axis mode).</value>
+  </data>
+  <data name="numericBoxI.ToolTip" xml:space="preserve">
+    <value>Miller–Bravais fourth index i = -(h+k),
+shown for hexagonal (hkil) notation.
+Read-only and computed automatically.</value>
+  </data>
+  <data name="numericBoxK.ToolTip" xml:space="preserve">
+    <value>Second index component: Miller index k (plane
+mode) or direction index v (axis mode).</value>
+  </data>
+  <data name="numericBoxL.ToolTip" xml:space="preserve">
+    <value>Third index component: Miller index l (plane
+mode) or direction index w (axis mode).</value>
+  </data>
 </root>

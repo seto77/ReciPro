@@ -24,6 +24,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormSpotIDv2Details)); // 260531Cl
+            components = new System.ComponentModel.Container(); // (260531Ch)
+            toolTip = new System.Windows.Forms.ToolTip(components); // (260531Ch)
+            toolTip.IsBalloon = true; // 260531Cl 追加: バルーン表示に統一
             captureExtender.SetCapture(this, true); // 260521Cl 追加: GUI監査キャプチャ対象 (フォーム全体)
             this.scalablePictureBoxAdvanced = new Crystallography.Controls.ScalablePictureBoxAdvanced();
             this.graphControlNWtoSE = new Crystallography.Controls.GraphControl();
@@ -283,6 +287,7 @@
             this.label1.ForeColor = System.Drawing.Color.Red;
             this.label1.Location = new System.Drawing.Point(3, 0);
             this.label1.Name = "label1";
+            this.toolTip.SetToolTip(this.label1, resources.GetString("label1.ToolTip")); // 260531Cl
             this.label1.Size = new System.Drawing.Size(51, 17);
             this.label1.TabIndex = 5;
             this.label1.Text = "N to S";
@@ -294,6 +299,7 @@
             this.label2.ForeColor = System.Drawing.Color.Orange;
             this.label2.Location = new System.Drawing.Point(3, 0);
             this.label2.Name = "label2";
+            this.toolTip.SetToolTip(this.label2, resources.GetString("label2.ToolTip")); // 260531Cl
             this.label2.Size = new System.Drawing.Size(53, 17);
             this.label2.TabIndex = 5;
             this.label2.Text = "W to E";
@@ -305,6 +311,7 @@
             this.label3.ForeColor = System.Drawing.Color.OrangeRed;
             this.label3.Location = new System.Drawing.Point(3, 0);
             this.label3.Name = "label3";
+            this.toolTip.SetToolTip(this.label3, resources.GetString("label3.ToolTip")); // 260531Cl
             this.label3.Size = new System.Drawing.Size(77, 17);
             this.label3.TabIndex = 5;
             this.label3.Text = "SW to NE ";
@@ -316,6 +323,7 @@
             this.label4.ForeColor = System.Drawing.Color.Purple;
             this.label4.Location = new System.Drawing.Point(3, 0);
             this.label4.Name = "label4";
+            this.toolTip.SetToolTip(this.label4, resources.GetString("label4.ToolTip")); // 260531Cl
             this.label4.Size = new System.Drawing.Size(72, 17);
             this.label4.TabIndex = 5;
             this.label4.Text = "NW to SE";
@@ -437,6 +445,8 @@
         }
 
         #endregion
+
+        private System.Windows.Forms.ToolTip toolTip; // (260531Ch)
         private Crystallography.Controls.GraphControl graphControlNtoS;
         private Crystallography.Controls.GraphControl graphControlWtoE;
         private Crystallography.Controls.GraphControl graphControlSWtoNE;

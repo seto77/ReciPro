@@ -182,4 +182,37 @@
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>165</value>
   </metadata>
+  <data name="bindingNavigatorMoveFirstItem.ToolTipText" xml:space="preserve">
+    <value>Move to the first crystal record in the list.</value>
+  </data>
+  <data name="bindingNavigatorMoveLastItem.ToolTipText" xml:space="preserve">
+    <value>Move to the last crystal record in the list.</value>
+  </data>
+  <data name="bindingNavigatorMoveNextItem.ToolTipText" xml:space="preserve">
+    <value>Move to the next crystal record.</value>
+  </data>
+  <data name="bindingNavigatorMovePreviousItem.ToolTipText" xml:space="preserve">
+    <value>Move to the previous crystal record.</value>
+  </data>
+  <data name="checkBoxAMCSD.ToolTip" xml:space="preserve">
+    <value>Load and show entries from the AMCSD (American
+Mineralogist Crystal Structure Database).</value>
+  </data>
+  <data name="checkBoxCOD.ToolTip" xml:space="preserve">
+    <value>Load and show entries from the COD
+(Crystallography Open Database); downloads
+it from the web if not present locally.</value>
+  </data>
+  <data name="dataGridView.ToolTip" xml:space="preserve">
+    <value>List of crystals in the database; select
+a row to load that crystal (cell
+parameters, space group, reference, etc.).</value>
+  </data>
+  <data name="bindingNavigatorCountItem.ToolTipText" xml:space="preserve">
+    <value>Total number of crystal records in the database.</value>
+  </data>
+  <data name="bindingNavigatorPositionItem.ToolTipText" xml:space="preserve">
+    <value>Current record number; type a
+number to jump to that crystal.</value>
+  </data>
 </root>

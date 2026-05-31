@@ -26,6 +26,8 @@
         {
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LatticePlaneControl));
+            toolTip = new System.Windows.Forms.ToolTip(components); // (260531Ch)
+            toolTip.IsBalloon = true; // 260531Cl 追加: バルーン表示に統一
             panel1 = new System.Windows.Forms.Panel();
             buttonAddBond = new System.Windows.Forms.Button();
             buttonChangeBond = new System.Windows.Forms.Button();
@@ -64,6 +66,7 @@
             // buttonAddBond
             // 
             resources.ApplyResources(buttonAddBond, "buttonAddBond");
+            toolTip.SetToolTip(buttonAddBond, resources.GetString("buttonAddBond.ToolTip")); // 260531Cl
             buttonAddBond.BackColor = System.Drawing.Color.SteelBlue;
             buttonAddBond.ForeColor = System.Drawing.Color.White;
             buttonAddBond.Name = "buttonAddBond";
@@ -73,6 +76,7 @@
             // buttonChangeBond
             // 
             resources.ApplyResources(buttonChangeBond, "buttonChangeBond");
+            toolTip.SetToolTip(buttonChangeBond, resources.GetString("buttonChangeBond.ToolTip")); // 260531Cl
             buttonChangeBond.BackColor = System.Drawing.Color.SteelBlue;
             buttonChangeBond.ForeColor = System.Drawing.Color.White;
             buttonChangeBond.Name = "buttonChangeBond";
@@ -82,6 +86,7 @@
             // buttonDeleteBond
             // 
             resources.ApplyResources(buttonDeleteBond, "buttonDeleteBond");
+            toolTip.SetToolTip(buttonDeleteBond, resources.GetString("buttonDeleteBond.ToolTip")); // 260531Cl
             buttonDeleteBond.BackColor = System.Drawing.Color.IndianRed;
             buttonDeleteBond.ForeColor = System.Drawing.Color.White;
             buttonDeleteBond.Name = "buttonDeleteBond";
@@ -99,6 +104,7 @@
             dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { enabledDataGridViewCheckBoxColumn, hDataGridViewTextBoxColumn, kDataGridViewTextBoxColumn, iDataGridViewTextBoxColumn, lDataGridViewTextBoxColumn, Translation, colorDataGridViewTextBoxColumn });
             dataGridView.DataSource = bindingSource;
             resources.ApplyResources(dataGridView, "dataGridView");
+            toolTip.SetToolTip(dataGridView, resources.GetString("dataGridView.ToolTip")); // 260531Cl
             dataGridView.MultiSelect = false;
             dataGridView.Name = "dataGridView";
             dataGridView.RowHeadersVisible = false;
@@ -185,6 +191,7 @@
             // numericBoxDistance
             // 
             resources.ApplyResources(numericBoxDistance, "numericBoxDistance");
+            toolTip.SetToolTip(numericBoxDistance, resources.GetString("numericBoxDistance.ToolTip")); // 260531Cl
             numericBoxDistance.BackColor = System.Drawing.SystemColors.Control;
             numericBoxDistance.FooterBackColor = System.Drawing.SystemColors.Control;
             numericBoxDistance.HeaderBackColor = System.Drawing.SystemColors.Control;
@@ -210,17 +217,20 @@
             colorControl.Green = 192;
             colorControl.GreenF = 0.7529412F;
             colorControl.Name = "colorControl";
+            toolTip.SetToolTip(colorControl, resources.GetString("colorControl.ToolTip")); // (260531Ch)
             colorControl.Red = 255;
             colorControl.RedF = 1F;
             // 
             // label6
             // 
             resources.ApplyResources(label6, "label6");
+            toolTip.SetToolTip(label6, resources.GetString("label6.ToolTip")); // 260531Cl
             label6.Name = "label6";
             // 
             // indexControl
             // 
             resources.ApplyResources(indexControl, "indexControl");
+            toolTip.SetToolTip(indexControl, resources.GetString("indexControl.ToolTip")); // 260531Cl
             indexControl.BoxWidth = 42;
             indexControl.Bracket = IndexControl.BracketEnum.Round;
             indexControl.Mode = IndexControl.ModeEnum.Plane;
@@ -250,6 +260,8 @@
         }
 
         #endregion
+
+        private System.Windows.Forms.ToolTip toolTip; // (260531Ch)
         private ColorControl colorControl;
         private NumericBox numericBoxDistance;
         private System.Windows.Forms.Panel panel1;

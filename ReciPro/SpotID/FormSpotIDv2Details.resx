@@ -57,4 +57,24 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value>Intensity line profile across the
+spot in the North–South direction
+(observed vs. fitted vs. background).</value>
+  </data>
+  <data name="label2.ToolTip" xml:space="preserve">
+    <value>Intensity line profile across the
+spot in the West–East direction
+(observed vs. fitted vs. background).</value>
+  </data>
+  <data name="label3.ToolTip" xml:space="preserve">
+    <value>Intensity line profile across the
+spot in the SW–NE diagonal direction
+(observed vs. fitted vs. background).</value>
+  </data>
+  <data name="label4.ToolTip" xml:space="preserve">
+    <value>Intensity line profile across the
+spot in the NW–SE diagonal direction
+(observed vs. fitted vs. background).</value>
+  </data>
 </root>

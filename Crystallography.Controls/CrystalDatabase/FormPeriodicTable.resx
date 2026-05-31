@@ -120,4 +120,48 @@
   <metadata name="captureExtender.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
+  <data name="buttonAc.ToolTip" xml:space="preserve">
+    <value>Placeholder for the actinide series (Ac-Lr),
+shown as a separate row below the main table.</value>
+  </data>
+  <data name="buttonLa.ToolTip" xml:space="preserve">
+    <value>Placeholder for the lanthanide series (La-Lu),
+shown as a separate row below the main table.</value>
+  </data>
+  <data name="buttonMayInclude.ToolTip" xml:space="preserve">
+    <value>Reset all elements to the neutral state
+(may or may not be present); clears all
+element constraints from the search.</value>
+  </data>
+  <data name="buttonMustExclude.ToolTip" xml:space="preserve">
+    <value>Mark every element as "must exclude";
+crystals containing any of them are
+removed from the search results.</value>
+  </data>
+  <data name="buttonMustInclude.ToolTip" xml:space="preserve">
+    <value>Mark every element as "must include"; only crystals
+containing them are kept in the search results.</value>
+  </data>
+  <data name="label3.ToolTip" xml:space="preserve">
+    <value>Mark every element as "must include"; only crystals
+containing them are kept in the search results.</value>
+  </data>
+  <data name="label4.ToolTip" xml:space="preserve">
+    <value>Mark every element as "must exclude";
+crystals containing any of them are
+removed from the search results.</value>
+  </data>
+  <data name="label5.ToolTip" xml:space="preserve">
+    <value>Reset all elements to the neutral state
+(may or may not be present); clears all
+element constraints from the search.</value>
+  </data>
+  <data name="labelAc.ToolTip" xml:space="preserve">
+    <value>Placeholder for the actinide series (Ac-Lr),
+shown as a separate row below the main table.</value>
+  </data>
+  <data name="labelLa.ToolTip" xml:space="preserve">
+    <value>Placeholder for the lanthanide series (La-Lu),
+shown as a separate row below the main table.</value>
+  </data>
 </root>

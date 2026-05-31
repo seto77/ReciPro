@@ -24,6 +24,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ElasticityControl)); // 260531Cl
+            components = new System.ComponentModel.Container(); // (260531Ch)
+            toolTip = new System.Windows.Forms.ToolTip(components); // (260531Ch)
+            toolTip.IsBalloon = true; // 260531Cl 追加: バルーン表示に統一
             this.label100 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -78,6 +82,7 @@
             this.label100.Location = new System.Drawing.Point(3, 3);
             this.label100.Margin = new System.Windows.Forms.Padding(0);
             this.label100.Name = "label100";
+            this.toolTip.SetToolTip(this.label100, resources.GetString("label100.ToolTip")); // 260531Cl
             this.label100.Size = new System.Drawing.Size(26, 15);
             this.label100.TabIndex = 83;
             this.label100.Text = "c11";
@@ -90,6 +95,7 @@
             this.label6.Location = new System.Drawing.Point(384, 3);
             this.label6.Margin = new System.Windows.Forms.Padding(0);
             this.label6.Name = "label6";
+            this.toolTip.SetToolTip(this.label6, resources.GetString("label6.ToolTip")); // 260531Cl
             this.label6.Size = new System.Drawing.Size(27, 15);
             this.label6.TabIndex = 83;
             this.label6.Text = "c16";
@@ -102,6 +108,7 @@
             this.label9.Location = new System.Drawing.Point(384, 27);
             this.label9.Margin = new System.Windows.Forms.Padding(0);
             this.label9.Name = "label9";
+            this.toolTip.SetToolTip(this.label9, resources.GetString("label9.ToolTip")); // 260531Cl
             this.label9.Size = new System.Drawing.Size(27, 15);
             this.label9.TabIndex = 83;
             this.label9.Text = "c26";
@@ -114,6 +121,7 @@
             this.label7.Location = new System.Drawing.Point(384, 51);
             this.label7.Margin = new System.Windows.Forms.Padding(0);
             this.label7.Name = "label7";
+            this.toolTip.SetToolTip(this.label7, resources.GetString("label7.ToolTip")); // 260531Cl
             this.label7.Size = new System.Drawing.Size(27, 15);
             this.label7.TabIndex = 83;
             this.label7.Text = "c36";
@@ -126,6 +134,7 @@
             this.label8.Location = new System.Drawing.Point(384, 99);
             this.label8.Margin = new System.Windows.Forms.Padding(0);
             this.label8.Name = "label8";
+            this.toolTip.SetToolTip(this.label8, resources.GetString("label8.ToolTip")); // 260531Cl
             this.label8.Size = new System.Drawing.Size(27, 15);
             this.label8.TabIndex = 83;
             this.label8.Text = "c56";
@@ -138,6 +147,7 @@
             this.label10.Location = new System.Drawing.Point(384, 75);
             this.label10.Margin = new System.Windows.Forms.Padding(0);
             this.label10.Name = "label10";
+            this.toolTip.SetToolTip(this.label10, resources.GetString("label10.ToolTip")); // 260531Cl
             this.label10.Size = new System.Drawing.Size(27, 15);
             this.label10.TabIndex = 83;
             this.label10.Text = "c46";
@@ -150,6 +160,7 @@
             this.label11.Location = new System.Drawing.Point(383, 123);
             this.label11.Margin = new System.Windows.Forms.Padding(0);
             this.label11.Name = "label11";
+            this.toolTip.SetToolTip(this.label11, resources.GetString("label11.ToolTip")); // 260531Cl
             this.label11.Size = new System.Drawing.Size(27, 15);
             this.label11.TabIndex = 83;
             this.label11.Text = "c66";
@@ -162,6 +173,7 @@
             this.label12.Location = new System.Drawing.Point(307, 3);
             this.label12.Margin = new System.Windows.Forms.Padding(0);
             this.label12.Name = "label12";
+            this.toolTip.SetToolTip(this.label12, resources.GetString("label12.ToolTip")); // 260531Cl
             this.label12.Size = new System.Drawing.Size(27, 15);
             this.label12.TabIndex = 83;
             this.label12.Text = "c15";
@@ -174,6 +186,7 @@
             this.label13.Location = new System.Drawing.Point(307, 51);
             this.label13.Margin = new System.Windows.Forms.Padding(0);
             this.label13.Name = "label13";
+            this.toolTip.SetToolTip(this.label13, resources.GetString("label13.ToolTip")); // 260531Cl
             this.label13.Size = new System.Drawing.Size(27, 15);
             this.label13.TabIndex = 83;
             this.label13.Text = "c35";
@@ -186,6 +199,7 @@
             this.label15.Location = new System.Drawing.Point(307, 27);
             this.label15.Margin = new System.Windows.Forms.Padding(0);
             this.label15.Name = "label15";
+            this.toolTip.SetToolTip(this.label15, resources.GetString("label15.ToolTip")); // 260531Cl
             this.label15.Size = new System.Drawing.Size(27, 15);
             this.label15.TabIndex = 83;
             this.label15.Text = "c25";
@@ -198,6 +212,7 @@
             this.label16.Location = new System.Drawing.Point(307, 75);
             this.label16.Margin = new System.Windows.Forms.Padding(0);
             this.label16.Name = "label16";
+            this.toolTip.SetToolTip(this.label16, resources.GetString("label16.ToolTip")); // 260531Cl
             this.label16.Size = new System.Drawing.Size(27, 15);
             this.label16.TabIndex = 83;
             this.label16.Text = "c45";
@@ -210,6 +225,7 @@
             this.label18.Location = new System.Drawing.Point(230, 3);
             this.label18.Margin = new System.Windows.Forms.Padding(0);
             this.label18.Name = "label18";
+            this.toolTip.SetToolTip(this.label18, resources.GetString("label18.ToolTip")); // 260531Cl
             this.label18.Size = new System.Drawing.Size(27, 15);
             this.label18.TabIndex = 83;
             this.label18.Text = "c14";
@@ -222,6 +238,7 @@
             this.label19.Location = new System.Drawing.Point(230, 51);
             this.label19.Margin = new System.Windows.Forms.Padding(0);
             this.label19.Name = "label19";
+            this.toolTip.SetToolTip(this.label19, resources.GetString("label19.ToolTip")); // 260531Cl
             this.label19.Size = new System.Drawing.Size(27, 15);
             this.label19.TabIndex = 83;
             this.label19.Text = "c34";
@@ -234,6 +251,7 @@
             this.label21.Location = new System.Drawing.Point(230, 27);
             this.label21.Margin = new System.Windows.Forms.Padding(0);
             this.label21.Name = "label21";
+            this.toolTip.SetToolTip(this.label21, resources.GetString("label21.ToolTip")); // 260531Cl
             this.label21.Size = new System.Drawing.Size(27, 15);
             this.label21.TabIndex = 83;
             this.label21.Text = "c24";
@@ -246,6 +264,7 @@
             this.label22.Location = new System.Drawing.Point(230, 75);
             this.label22.Margin = new System.Windows.Forms.Padding(0);
             this.label22.Name = "label22";
+            this.toolTip.SetToolTip(this.label22, resources.GetString("label22.ToolTip")); // 260531Cl
             this.label22.Size = new System.Drawing.Size(27, 15);
             this.label22.TabIndex = 83;
             this.label22.Text = "c44";
@@ -258,6 +277,7 @@
             this.label24.Location = new System.Drawing.Point(154, 3);
             this.label24.Margin = new System.Windows.Forms.Padding(0);
             this.label24.Name = "label24";
+            this.toolTip.SetToolTip(this.label24, resources.GetString("label24.ToolTip")); // 260531Cl
             this.label24.Size = new System.Drawing.Size(27, 15);
             this.label24.TabIndex = 83;
             this.label24.Text = "c13";
@@ -270,6 +290,7 @@
             this.label25.Location = new System.Drawing.Point(154, 51);
             this.label25.Margin = new System.Windows.Forms.Padding(0);
             this.label25.Name = "label25";
+            this.toolTip.SetToolTip(this.label25, resources.GetString("label25.ToolTip")); // 260531Cl
             this.label25.Size = new System.Drawing.Size(27, 15);
             this.label25.TabIndex = 83;
             this.label25.Text = "c33";
@@ -282,6 +303,7 @@
             this.label27.Location = new System.Drawing.Point(154, 27);
             this.label27.Margin = new System.Windows.Forms.Padding(0);
             this.label27.Name = "label27";
+            this.toolTip.SetToolTip(this.label27, resources.GetString("label27.ToolTip")); // 260531Cl
             this.label27.Size = new System.Drawing.Size(27, 15);
             this.label27.TabIndex = 83;
             this.label27.Text = "c23";
@@ -294,6 +316,7 @@
             this.label30.Location = new System.Drawing.Point(78, 3);
             this.label30.Margin = new System.Windows.Forms.Padding(0);
             this.label30.Name = "label30";
+            this.toolTip.SetToolTip(this.label30, resources.GetString("label30.ToolTip")); // 260531Cl
             this.label30.Size = new System.Drawing.Size(27, 15);
             this.label30.TabIndex = 83;
             this.label30.Text = "c12";
@@ -306,6 +329,7 @@
             this.label33.Location = new System.Drawing.Point(78, 27);
             this.label33.Margin = new System.Windows.Forms.Padding(0);
             this.label33.Name = "label33";
+            this.toolTip.SetToolTip(this.label33, resources.GetString("label33.ToolTip")); // 260531Cl
             this.label33.Size = new System.Drawing.Size(27, 15);
             this.label33.TabIndex = 83;
             this.label33.Text = "c22";
@@ -318,6 +342,7 @@
             this.label14.Location = new System.Drawing.Point(307, 99);
             this.label14.Margin = new System.Windows.Forms.Padding(0);
             this.label14.Name = "label14";
+            this.toolTip.SetToolTip(this.label14, resources.GetString("label14.ToolTip")); // 260531Cl
             this.label14.Size = new System.Drawing.Size(27, 15);
             this.label14.TabIndex = 83;
             this.label14.Text = "c55";
@@ -331,6 +356,7 @@
             this.numericBox66.MaximumSize = new System.Drawing.Size(1000, 22);
             this.numericBox66.MinimumSize = new System.Drawing.Size(1, 22);
                        this.numericBox66.Name = "numericBox66";
+                       this.toolTip.SetToolTip(this.numericBox66, resources.GetString("numericBox66.ToolTip")); // 260531Cl
             this.numericBox66.Padding = new System.Windows.Forms.Padding(1);
             this.numericBox66.RadianValue = 0D;
                         
@@ -349,6 +375,7 @@
             this.numericBox56.MaximumSize = new System.Drawing.Size(1000, 22);
             this.numericBox56.MinimumSize = new System.Drawing.Size(1, 22);
                        this.numericBox56.Name = "numericBox56";
+                       this.toolTip.SetToolTip(this.numericBox56, resources.GetString("numericBox56.ToolTip")); // 260531Cl
             this.numericBox56.Padding = new System.Windows.Forms.Padding(1);
             this.numericBox56.RadianValue = 0D;
                         
@@ -367,6 +394,7 @@
             this.numericBox46.MaximumSize = new System.Drawing.Size(1000, 22);
             this.numericBox46.MinimumSize = new System.Drawing.Size(1, 22);
                        this.numericBox46.Name = "numericBox46";
+                       this.toolTip.SetToolTip(this.numericBox46, resources.GetString("numericBox46.ToolTip")); // 260531Cl
             this.numericBox46.Padding = new System.Windows.Forms.Padding(1);
             this.numericBox46.RadianValue = 0D;
                         
@@ -385,6 +413,7 @@
             this.numericBox36.MaximumSize = new System.Drawing.Size(1000, 22);
             this.numericBox36.MinimumSize = new System.Drawing.Size(1, 22);
                        this.numericBox36.Name = "numericBox36";
+                       this.toolTip.SetToolTip(this.numericBox36, resources.GetString("numericBox36.ToolTip")); // 260531Cl
             this.numericBox36.Padding = new System.Windows.Forms.Padding(1);
             this.numericBox36.RadianValue = 0D;
                         
@@ -403,6 +432,7 @@
             this.numericBox26.MaximumSize = new System.Drawing.Size(1000, 22);
             this.numericBox26.MinimumSize = new System.Drawing.Size(1, 22);
                        this.numericBox26.Name = "numericBox26";
+                       this.toolTip.SetToolTip(this.numericBox26, resources.GetString("numericBox26.ToolTip")); // 260531Cl
             this.numericBox26.Padding = new System.Windows.Forms.Padding(1);
             this.numericBox26.RadianValue = 0D;
                         
@@ -421,6 +451,7 @@
             this.numericBox55.MaximumSize = new System.Drawing.Size(1000, 22);
             this.numericBox55.MinimumSize = new System.Drawing.Size(1, 22);
                        this.numericBox55.Name = "numericBox55";
+                       this.toolTip.SetToolTip(this.numericBox55, resources.GetString("numericBox55.ToolTip")); // 260531Cl
             this.numericBox55.Padding = new System.Windows.Forms.Padding(1);
             this.numericBox55.RadianValue = 0D;
                         
@@ -439,6 +470,7 @@
             this.numericBox45.MaximumSize = new System.Drawing.Size(1000, 22);
             this.numericBox45.MinimumSize = new System.Drawing.Size(1, 22);
                        this.numericBox45.Name = "numericBox45";
+                       this.toolTip.SetToolTip(this.numericBox45, resources.GetString("numericBox45.ToolTip")); // 260531Cl
             this.numericBox45.Padding = new System.Windows.Forms.Padding(1);
             this.numericBox45.RadianValue = 0D;
                         
@@ -457,6 +489,7 @@
             this.numericBox35.MaximumSize = new System.Drawing.Size(1000, 22);
             this.numericBox35.MinimumSize = new System.Drawing.Size(1, 22);
                        this.numericBox35.Name = "numericBox35";
+                       this.toolTip.SetToolTip(this.numericBox35, resources.GetString("numericBox35.ToolTip")); // 260531Cl
             this.numericBox35.Padding = new System.Windows.Forms.Padding(1);
             this.numericBox35.RadianValue = 0D;
                         
@@ -475,6 +508,7 @@
             this.numericBox16.MaximumSize = new System.Drawing.Size(1000, 22);
             this.numericBox16.MinimumSize = new System.Drawing.Size(1, 22);
                        this.numericBox16.Name = "numericBox16";
+                       this.toolTip.SetToolTip(this.numericBox16, resources.GetString("numericBox16.ToolTip")); // 260531Cl
             this.numericBox16.Padding = new System.Windows.Forms.Padding(1);
             this.numericBox16.RadianValue = 0D;
                         
@@ -493,6 +527,7 @@
             this.numericBox25.MaximumSize = new System.Drawing.Size(1000, 22);
             this.numericBox25.MinimumSize = new System.Drawing.Size(1, 22);
                        this.numericBox25.Name = "numericBox25";
+                       this.toolTip.SetToolTip(this.numericBox25, resources.GetString("numericBox25.ToolTip")); // 260531Cl
             this.numericBox25.Padding = new System.Windows.Forms.Padding(1);
             this.numericBox25.RadianValue = 0D;
                         
@@ -511,6 +546,7 @@
             this.numericBox44.MaximumSize = new System.Drawing.Size(1000, 22);
             this.numericBox44.MinimumSize = new System.Drawing.Size(1, 22);
                        this.numericBox44.Name = "numericBox44";
+                       this.toolTip.SetToolTip(this.numericBox44, resources.GetString("numericBox44.ToolTip")); // 260531Cl
             this.numericBox44.Padding = new System.Windows.Forms.Padding(1);
             this.numericBox44.RadianValue = 0D;
                         
@@ -529,6 +565,7 @@
             this.numericBox34.MaximumSize = new System.Drawing.Size(1000, 22);
             this.numericBox34.MinimumSize = new System.Drawing.Size(1, 22);
                        this.numericBox34.Name = "numericBox34";
+                       this.toolTip.SetToolTip(this.numericBox34, resources.GetString("numericBox34.ToolTip")); // 260531Cl
             this.numericBox34.Padding = new System.Windows.Forms.Padding(1);
             this.numericBox34.RadianValue = 0D;
                         
@@ -547,6 +584,7 @@
             this.numericBox15.MaximumSize = new System.Drawing.Size(1000, 22);
             this.numericBox15.MinimumSize = new System.Drawing.Size(1, 22);
                        this.numericBox15.Name = "numericBox15";
+                       this.toolTip.SetToolTip(this.numericBox15, resources.GetString("numericBox15.ToolTip")); // 260531Cl
             this.numericBox15.Padding = new System.Windows.Forms.Padding(1);
             this.numericBox15.RadianValue = 0D;
                         
@@ -565,6 +603,7 @@
             this.numericBox24.MaximumSize = new System.Drawing.Size(1000, 22);
             this.numericBox24.MinimumSize = new System.Drawing.Size(1, 22);
                        this.numericBox24.Name = "numericBox24";
+                       this.toolTip.SetToolTip(this.numericBox24, resources.GetString("numericBox24.ToolTip")); // 260531Cl
             this.numericBox24.Padding = new System.Windows.Forms.Padding(1);
             this.numericBox24.RadianValue = 0D;
                         
@@ -583,6 +622,7 @@
             this.numericBox33.MaximumSize = new System.Drawing.Size(1000, 22);
             this.numericBox33.MinimumSize = new System.Drawing.Size(1, 22);
                        this.numericBox33.Name = "numericBox33";
+                       this.toolTip.SetToolTip(this.numericBox33, resources.GetString("numericBox33.ToolTip")); // 260531Cl
             this.numericBox33.Padding = new System.Windows.Forms.Padding(1);
             this.numericBox33.RadianValue = 0D;
                         
@@ -601,6 +641,7 @@
             this.numericBox14.MaximumSize = new System.Drawing.Size(1000, 22);
             this.numericBox14.MinimumSize = new System.Drawing.Size(1, 22);
                        this.numericBox14.Name = "numericBox14";
+                       this.toolTip.SetToolTip(this.numericBox14, resources.GetString("numericBox14.ToolTip")); // 260531Cl
             this.numericBox14.Padding = new System.Windows.Forms.Padding(1);
             this.numericBox14.RadianValue = 0D;
                         
@@ -619,6 +660,7 @@
             this.numericBox23.MaximumSize = new System.Drawing.Size(1000, 22);
             this.numericBox23.MinimumSize = new System.Drawing.Size(1, 22);
                        this.numericBox23.Name = "numericBox23";
+                       this.toolTip.SetToolTip(this.numericBox23, resources.GetString("numericBox23.ToolTip")); // 260531Cl
             this.numericBox23.Padding = new System.Windows.Forms.Padding(1);
             this.numericBox23.RadianValue = 0D;
                         
@@ -637,6 +679,7 @@
             this.numericBox13.MaximumSize = new System.Drawing.Size(1000, 22);
             this.numericBox13.MinimumSize = new System.Drawing.Size(1, 22);
                        this.numericBox13.Name = "numericBox13";
+                       this.toolTip.SetToolTip(this.numericBox13, resources.GetString("numericBox13.ToolTip")); // 260531Cl
             this.numericBox13.Padding = new System.Windows.Forms.Padding(1);
             this.numericBox13.RadianValue = 0D;
                         
@@ -655,6 +698,7 @@
             this.numericBox22.MaximumSize = new System.Drawing.Size(1000, 22);
             this.numericBox22.MinimumSize = new System.Drawing.Size(1, 22);
                        this.numericBox22.Name = "numericBox22";
+                       this.toolTip.SetToolTip(this.numericBox22, resources.GetString("numericBox22.ToolTip")); // 260531Cl
             this.numericBox22.Padding = new System.Windows.Forms.Padding(1);
             this.numericBox22.RadianValue = 0D;
                         
@@ -673,6 +717,7 @@
             this.numericBox12.MaximumSize = new System.Drawing.Size(1000, 22);
             this.numericBox12.MinimumSize = new System.Drawing.Size(1, 22);
                        this.numericBox12.Name = "numericBox12";
+                       this.toolTip.SetToolTip(this.numericBox12, resources.GetString("numericBox12.ToolTip")); // 260531Cl
             this.numericBox12.Padding = new System.Windows.Forms.Padding(1);
             this.numericBox12.RadianValue = 0D;
                         
@@ -691,6 +736,7 @@
             this.numericBox11.MaximumSize = new System.Drawing.Size(1000, 22);
             this.numericBox11.MinimumSize = new System.Drawing.Size(1, 22);
                        this.numericBox11.Name = "numericBox11";
+                       this.toolTip.SetToolTip(this.numericBox11, resources.GetString("numericBox11.ToolTip")); // 260531Cl
             this.numericBox11.Padding = new System.Windows.Forms.Padding(1);
             this.numericBox11.RadianValue = 0D;
                         
@@ -706,6 +752,7 @@
             this.radioButtonCompliance.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.radioButtonCompliance.Location = new System.Drawing.Point(3, 121);
             this.radioButtonCompliance.Name = "radioButtonCompliance";
+            this.toolTip.SetToolTip(this.radioButtonCompliance, resources.GetString("radioButtonCompliance.ToolTip")); // 260531Cl
             this.radioButtonCompliance.Size = new System.Drawing.Size(179, 19);
             this.radioButtonCompliance.TabIndex = 84;
             this.radioButtonCompliance.Text = "Elastic compliance constant";
@@ -718,6 +765,7 @@
             this.radioButtonStiffness.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.radioButtonStiffness.Location = new System.Drawing.Point(3, 98);
             this.radioButtonStiffness.Name = "radioButtonStiffness";
+            this.toolTip.SetToolTip(this.radioButtonStiffness, resources.GetString("radioButtonStiffness.ToolTip")); // 260531Cl
             this.radioButtonStiffness.Size = new System.Drawing.Size(162, 19);
             this.radioButtonStiffness.TabIndex = 84;
             this.radioButtonStiffness.TabStop = true;
@@ -782,6 +830,8 @@
         }
 
         #endregion
+
+        private System.Windows.Forms.ToolTip toolTip; // (260531Ch)
 
         private System.Windows.Forms.Label label100;
         private NumericBox numericBox66;

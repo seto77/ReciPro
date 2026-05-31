@@ -444,4 +444,31 @@
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
     <value>System.Windows.Forms.UserControl, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="comboBoxColor.ToolTip" xml:space="preserve">
+    <value>Select the color scale for the pole figure: a
+cold-to-warm spectrum or a grayscale gradient.</value>
+  </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value>Shows the maximum and minimum pixel values
+currently rendered in the pole figure.</value>
+  </data>
+  <data name="numericBoxMax.ToolTip" xml:space="preserve">
+    <value>Upper limit of the color scale for the
+pole figure; values at or above this
+map to the warm/bright end of the bar.</value>
+  </data>
+  <data name="numericBoxMin.ToolTip" xml:space="preserve">
+    <value>Lower limit of the color scale for the
+pole figure; values at or below this
+map to the cold/dark end of the bar.</value>
+  </data>
+  <data name="numericBoxResolution.ToolTip" xml:space="preserve">
+    <value>Angular bin size in degrees for the
+pole-figure histogram; smaller values give
+finer (higher-resolution) bins (range 1–30°).</value>
+  </data>
+  <data name="label9.ToolTip" xml:space="preserve">
+    <value>Select the color scale for the pole figure: a
+cold-to-warm spectrum or a grayscale gradient.</value>
+  </data>
 </root>

@@ -57,4 +57,54 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="checkBoxCompound.ToolTip" xml:space="preserve">
+    <value>Treat the element as a cation and combine
+it with an anion group (oxide, hydroxide,
+etc.); shows the compound-formula row.</value>
+  </data>
+  <data name="comboBoxCompound.ToolTip" xml:space="preserve">
+    <value>Select the anion group (e.g. O²⁻, OH⁻,
+CO₃²⁻, SO₄²⁻) to combine with the cation;
+choose Custom to type the formula directly.</value>
+  </data>
+  <data name="comboBoxElement.ToolTip" xml:space="preserve">
+    <value>Select the chemical element (Z = 1-97); its
+typical valence is filled in automatically.</value>
+  </data>
+  <data name="numericBoxMolarRatio.ToolTip" xml:space="preserve">
+    <value>Set the molar ratio (relative
+number of moles) of this component.</value>
+  </data>
+  <data name="numericBoxValence.ToolTip" xml:space="preserve">
+    <value>Set the valence (oxidation state, ionic charge)
+of the selected element; determines the
+stoichiometry when combined with an anion group.</value>
+  </data>
+  <data name="numericBoxWeight.ToolTip" xml:space="preserve">
+    <value>Set the weight fraction of this component, in percent (%).</value>
+  </data>
+  <data name="textBoxCompoundForm.ToolTip" xml:space="preserve">
+    <value>Shows the compound chemical formula built
+from the cation and the selected anion
+group; editable only when Custom is selected.</value>
+  </data>
+  <data name="label4.ToolTip" xml:space="preserve">
+    <value>Select the chemical element (Z = 1-97); its
+typical valence is filled in automatically.</value>
+  </data>
+  <data name="label5.ToolTip" xml:space="preserve">
+    <value>Set the valence (oxidation state, ionic charge)
+of the selected element; determines the
+stoichiometry when combined with an anion group.</value>
+  </data>
+  <data name="label6.ToolTip" xml:space="preserve">
+    <value>Set the weight fraction of this component, in percent (%).</value>
+  </data>
+  <data name="label7.ToolTip" xml:space="preserve">
+    <value>Set the molar ratio (relative
+number of moles) of this component.</value>
+  </data>
+  <data name="label9.ToolTip" xml:space="preserve">
+    <value>Set the weight fraction of this component, in percent (%).</value>
+  </data>
 </root>

@@ -153,6 +153,8 @@ public partial class NumericBox : UserControlBase
 
     [DefaultValue("")]
     [Localizable(true)]
+    [Browsable(false)] // 260531Cl 追加: デザイナのプロパティグリッドから隠す。標準 ToolTip 拡張子("ToolTip on toolTip1")と二重に並んで「どちらに書くか」迷う問題を解消。Localizable は残すので既存 resx 値は従来通り適用され、子(textBox/ラベル)への配布=hover も維持される
+    [EditorBrowsable(EditorBrowsableState.Never)] // 260531Cl 追加: IntelliSense からも隠す(廃止予定プロパティ。ValueFont 等と同作法)
     [Category("Behavior")]
     public string ToolTip
     {
@@ -166,6 +168,13 @@ public partial class NumericBox : UserControlBase
 
         }
     }
+
+    // 260531Cl 追加: 配置先 Form が標準 ToolTip でこの NumericBox 本体にチップを設定した場合の配布先 (内部子)。
+    // これにより textBox/ラベル上で hover してもチップが表示される (UserControlBase.RelayHostToolTip 参照)。
+    protected override System.Windows.Forms.Control[] GetToolTipTargets() => new System.Windows.Forms.Control[] { textBox, labelHeader, labelFooter };
+
+    // 260531Cl 追加: 独自プロパティ由来の内部 ToolTip。親がチップを設定した場合はこれを抑止して親のバルーンへ一本化する。
+    protected internal override System.Windows.Forms.ToolTip InternalToolTip => toolTip;
 
     [Category("Value")]
     public double MinimalStep => DecimalPlaces >= 0 ? Math.Pow(10, -DecimalPlaces) : 1;

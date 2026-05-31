@@ -57,4 +57,36 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="numericBoxDvalue.ToolTip" xml:space="preserve">
+    <value>Lattice spacing d in Å (interplanar distance);
+back-computes the spot distance (mm) and
+g-length (nm⁻¹). Click to edit this field.</value>
+  </data>
+  <data name="numericBoxGlength.ToolTip" xml:space="preserve">
+    <value>Reciprocal-lattice vector length g = 1/d in
+nm⁻¹; back-computes the d-spacing (Å) and
+spot distance (mm). Click to edit this field.</value>
+  </data>
+  <data name="numericBoxLength.ToolTip" xml:space="preserve">
+    <value>Distance in mm from the pattern center to
+the spot; with camera length and wavelength
+it computes the d-spacing (Å) and g-length
+(nm⁻¹). Click to edit this field.</value>
+  </data>
+  <data name="label50.ToolTip" xml:space="preserve">
+    <value>Distance in mm from the pattern center to
+the spot; with camera length and wavelength
+it computes the d-spacing (Å) and g-length
+(nm⁻¹). Click to edit this field.</value>
+  </data>
+  <data name="label60.ToolTip" xml:space="preserve">
+    <value>Lattice spacing d in Å (interplanar distance);
+back-computes the spot distance (mm) and
+g-length (nm⁻¹). Click to edit this field.</value>
+  </data>
+  <data name="label64.ToolTip" xml:space="preserve">
+    <value>Reciprocal-lattice vector length g = 1/d in
+nm⁻¹; back-computes the d-spacing (Å) and
+spot distance (mm). Click to edit this field.</value>
+  </data>
 </root>

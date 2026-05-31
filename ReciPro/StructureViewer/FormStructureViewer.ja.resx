@@ -341,10 +341,12 @@
     <value>87, 77</value>
   </data>
   <data name="numericBoxCRange.ToolTip" xml:space="preserve">
-    <value>描画範囲を設定</value>
+    <value>表示領域の c 軸方向の半幅（分率座標）。
+中心 ± この値 の範囲内の原子を描画します。</value>
   </data>
   <data name="numericBoxCRange.ToolTip1" xml:space="preserve">
-    <value>描画範囲を設定</value>
+    <value>表示領域の c 軸方向の半幅（分率座標）。
+中心 ± この値 の範囲内の原子を描画します。</value>
   </data>
   <data name="numericBoxBRange.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
@@ -362,10 +364,12 @@
     <value>87, 51</value>
   </data>
   <data name="numericBoxBRange.ToolTip" xml:space="preserve">
-    <value>描画範囲を設定</value>
+    <value>表示領域の b 軸方向の半幅（分率座標）。
+中心 ± この値 の範囲内の原子を描画します。</value>
   </data>
   <data name="numericBoxBRange.ToolTip1" xml:space="preserve">
-    <value>描画範囲を設定</value>
+    <value>表示領域の b 軸方向の半幅（分率座標）。
+中心 ± この値 の範囲内の原子を描画します。</value>
   </data>
   <data name="numericBoxARange.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
@@ -383,10 +387,12 @@
     <value>87, 25</value>
   </data>
   <data name="numericBoxARange.ToolTip" xml:space="preserve">
-    <value>描画範囲を設定</value>
+    <value>表示領域の a 軸方向の半幅（分率座標）。
+中心 ± この値 の範囲内の原子を描画します。</value>
   </data>
   <data name="numericBoxARange.ToolTip1" xml:space="preserve">
-    <value>描画範囲を設定</value>
+    <value>表示領域の a 軸方向の半幅（分率座標）。
+中心 ± この値 の範囲内の原子を描画します。</value>
   </data>
   <data name="numericBoxCCenter.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
@@ -404,10 +410,12 @@
     <value>3, 77</value>
   </data>
   <data name="numericBoxCCenter.ToolTip" xml:space="preserve">
-    <value>中心位置を設定</value>
+    <value>表示領域の中心の c 軸成分（分率座標）。Range と
+組み合わせて描画範囲の上限／下限面を決めます。</value>
   </data>
   <data name="numericBoxCCenter.ToolTip1" xml:space="preserve">
-    <value>中心位置を設定</value>
+    <value>表示領域の中心の c 軸成分（分率座標）。Range と
+組み合わせて描画範囲の上限／下限面を決めます。</value>
   </data>
   <data name="numericBoxBCenter.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
@@ -425,10 +433,12 @@
     <value>3, 51</value>
   </data>
   <data name="numericBoxBCenter.ToolTip" xml:space="preserve">
-    <value>中心位置を設定</value>
+    <value>表示領域の中心の b 軸成分（分率座標）。Range と
+組み合わせて描画範囲の上限／下限面を決めます。</value>
   </data>
   <data name="numericBoxBCenter.ToolTip1" xml:space="preserve">
-    <value>中心位置を設定</value>
+    <value>表示領域の中心の b 軸成分（分率座標）。Range と
+組み合わせて描画範囲の上限／下限面を決めます。</value>
   </data>
   <data name="numericBoxACenter.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
@@ -446,10 +456,12 @@
     <value>3, 25</value>
   </data>
   <data name="numericBoxACenter.ToolTip" xml:space="preserve">
-    <value>中心位置を設定</value>
+    <value>表示領域の中心の a 軸成分（分率座標）。Range と
+組み合わせて描画範囲の上限／下限面を決めます。</value>
   </data>
   <data name="numericBoxACenter.ToolTip1" xml:space="preserve">
-    <value>中心位置を設定</value>
+    <value>表示領域の中心の a 軸成分（分率座標）。Range と
+組み合わせて描画範囲の上限／下限面を決めます。</value>
   </data>
   <data name="label2.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
@@ -464,7 +476,7 @@
     <value>範囲</value>
   </data>
   <data name="label2.ToolTip" xml:space="preserve">
-    <value />
+    <value>各単位胞軸方向の表示領域の半幅(分率座標)。</value>
   </data>
   <data name="label4.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
@@ -479,7 +491,7 @@
     <value>範囲を以下の値にセット</value>
   </data>
   <data name="label4.ToolTip" xml:space="preserve">
-    <value />
+    <value>表示範囲を各単位胞軸のプリセット割合に設定します。</value>
   </data>
   <data name="label3.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
@@ -494,7 +506,7 @@
     <value>中心を以下の値にセット</value>
   </data>
   <data name="label3.ToolTip" xml:space="preserve">
-    <value />
+    <value>表示中心をプリセットの分率座標位置に設定します。</value>
   </data>
   <data name="label1.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
@@ -509,7 +521,7 @@
     <value>中心</value>
   </data>
   <data name="label1.ToolTip" xml:space="preserve">
-    <value />
+    <value>各単位胞軸方向の表示領域の中心(分率座標)。</value>
   </data>
   <data name="tabPageBoundPlane.Size" type="System.Drawing.Size, System.Drawing">
     <value>505, 165</value>
@@ -593,7 +605,7 @@
     <value>描画範囲を単位胞単位で指定</value>
   </data>
   <data name="radioButtonBoundUnitCell.ToolTip" xml:space="preserve">
-    <value>チェックすると、描画範囲が単位格子に基づいて定義されます</value>
+    <value>チェックすると、描画範囲が単位胞に基づいて定義されます</value>
   </data>
   <data name="radioButtonBoundPlane.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
@@ -671,10 +683,10 @@
     <value>115, 21</value>
   </data>
   <data name="checkBoxUnitCell.Text" xml:space="preserve">
-    <value>単位格子を表示</value>
+    <value>単位胞を表示</value>
   </data>
   <data name="checkBoxUnitCell.ToolTip" xml:space="preserve">
-    <value>単位胞を表示</value>
+    <value>単位胞の枠線を3D構造に重ねて表示します。</value>
   </data>
   <data name="groupBoxShowUnitCell.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
@@ -752,10 +764,10 @@
     <value>33, 20</value>
   </data>
   <data name="colorControlCellPlaneA.ToolTip" xml:space="preserve">
-    <value>セル面の色を個別に設定</value>
+    <value>a 軸に垂直な単位胞面の色（「Each plane」選択時に使用）。</value>
   </data>
   <data name="colorControlCellPlaneA.ToolTip1" xml:space="preserve">
-    <value>セル面の色を個別に設定</value>
+    <value>a 軸に垂直な単位胞面の色（「Each plane」選択時に使用）。</value>
   </data>
   <data name="colorControlCellPlaneB.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
@@ -770,10 +782,10 @@
     <value>34, 20</value>
   </data>
   <data name="colorControlCellPlaneB.ToolTip" xml:space="preserve">
-    <value>セル面の色を個別に設定</value>
+    <value>b 軸に垂直な単位胞面の色（「Each plane」選択時に使用）。</value>
   </data>
   <data name="colorControlCellPlaneB.ToolTip1" xml:space="preserve">
-    <value>セル面の色を個別に設定</value>
+    <value>b 軸に垂直な単位胞面の色（「Each plane」選択時に使用）。</value>
   </data>
   <data name="colorControlCellPlaneC.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
@@ -788,10 +800,10 @@
     <value>33, 20</value>
   </data>
   <data name="colorControlCellPlaneC.ToolTip" xml:space="preserve">
-    <value>セル面の色を個別に設定</value>
+    <value>c 軸に垂直な単位胞面の色（「Each plane」選択時に使用）。</value>
   </data>
   <data name="colorControlCellPlaneC.ToolTip1" xml:space="preserve">
-    <value>セル面の色を個別に設定</value>
+    <value>c 軸に垂直な単位胞面の色（「Each plane」選択時に使用）。</value>
   </data>
   <data name="numericBoxCellPlaneAlpha.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
@@ -887,10 +899,10 @@
     <value>33, 20</value>
   </data>
   <data name="colorControlCellEdgeA.ToolTip" xml:space="preserve">
-    <value>セル辺の色を個別に設定</value>
+    <value>単位胞の a 軸方向の辺の色（「Each edge」選択時に使用）。</value>
   </data>
   <data name="colorControlCellEdgeA.ToolTip1" xml:space="preserve">
-    <value>セル辺の色を個別に設定</value>
+    <value>単位胞の a 軸方向の辺の色（「Each edge」選択時に使用）。</value>
   </data>
   <data name="colorControlCellEdgeB.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
@@ -908,10 +920,10 @@
     <value>34, 20</value>
   </data>
   <data name="colorControlCellEdgeB.ToolTip" xml:space="preserve">
-    <value>セル辺の色を個別に設定</value>
+    <value>単位胞の b 軸方向の辺の色（「Each edge」選択時に使用）。</value>
   </data>
   <data name="colorControlCellEdgeB.ToolTip1" xml:space="preserve">
-    <value>セル辺の色を個別に設定</value>
+    <value>単位胞の b 軸方向の辺の色（「Each edge」選択時に使用）。</value>
   </data>
   <data name="colorControlCellEdgeC.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
@@ -929,10 +941,10 @@
     <value>33, 20</value>
   </data>
   <data name="colorControlCellEdgeC.ToolTip" xml:space="preserve">
-    <value>セル辺の色を個別に設定</value>
+    <value>単位胞の c 軸方向の辺の色（「Each edge」選択時に使用）。</value>
   </data>
   <data name="colorControlCellEdgeC.ToolTip1" xml:space="preserve">
-    <value>セル辺の色を個別に設定</value>
+    <value>単位胞の c 軸方向の辺の色（「Each edge」選択時に使用）。</value>
   </data>
   <data name="label8.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
@@ -947,13 +959,13 @@
     <value>辺の太さ</value>
   </data>
   <data name="label8.ToolTip" xml:space="preserve">
-    <value />
+    <value>単位胞の辺の線幅 (1〜5)</value>
   </data>
   <data name="trackBarCellEdgeWidth.Location" type="System.Drawing.Point, System.Drawing">
     <value>378, 3</value>
   </data>
   <data name="trackBarCellEdgeWidth.ToolTip" xml:space="preserve">
-    <value>セル辺の線幅を設定</value>
+    <value>単位胞の辺の線幅（ピクセル、1〜5）。</value>
   </data>
   <data name="numericBoxCellTranslationC.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
@@ -965,10 +977,10 @@
     <value>239, 22</value>
   </data>
   <data name="numericBoxCellTranslationC.ToolTip" xml:space="preserve">
-    <value>単位格子を並進 (分率座標)</value>
+    <value>単位胞を並進 (分率座標)</value>
   </data>
   <data name="numericBoxCellTranslationC.ToolTip1" xml:space="preserve">
-    <value>単位格子を並進 (分率座標)</value>
+    <value>単位胞を並進 (分率座標)</value>
   </data>
   <data name="numericBoxCellTranslationB.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
@@ -980,10 +992,10 @@
     <value>169, 22</value>
   </data>
   <data name="numericBoxCellTranslationB.ToolTip" xml:space="preserve">
-    <value>単位格子を並進 (分率座標)</value>
+    <value>単位胞を並進 (分率座標)</value>
   </data>
   <data name="numericBoxCellTranslationB.ToolTip1" xml:space="preserve">
-    <value>単位格子を並進 (分率座標)</value>
+    <value>単位胞を並進 (分率座標)</value>
   </data>
   <data name="numericBoxCellTranslationA.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
@@ -995,10 +1007,10 @@
     <value>97, 22</value>
   </data>
   <data name="numericBoxCellTranslationA.ToolTip" xml:space="preserve">
-    <value>単位格子を並進 (分率座標)</value>
+    <value>単位胞を並進 (分率座標)</value>
   </data>
   <data name="numericBoxCellTranslationA.ToolTip1" xml:space="preserve">
-    <value>単位格子を並進 (分率座標)</value>
+    <value>単位胞を並進 (分率座標)</value>
   </data>
   <data name="checkBoxShowSubCell.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
@@ -1043,7 +1055,8 @@
     <value>50, 23</value>
   </data>
   <data name="numericBoxSubCellB.ToolTip" xml:space="preserve">
-    <value />
+    <value>サブセル格子を描く際の b 軸方向の分割数(整数、
+1〜10)。'Show Subcell' 有効時に表示されます。</value>
   </data>
   <data name="label10.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
@@ -1058,7 +1071,7 @@
     <value>平行移動</value>
   </data>
   <data name="label10.ToolTip" xml:space="preserve">
-    <value />
+    <value>単位胞枠を a, b, c 軸方向に並進します(分率座標)。</value>
   </data>
   <data name="checkBoxCellShowPlane.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
@@ -1088,7 +1101,8 @@
     <value>50, 23</value>
   </data>
   <data name="numericBoxSubCellC.ToolTip" xml:space="preserve">
-    <value />
+    <value>サブセル格子を描く際の c 軸方向の分割数(整数、
+1〜10)。'Show Subcell' 有効時に表示されます。</value>
   </data>
   <data name="numericBoxSubCellA.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
@@ -1103,7 +1117,8 @@
     <value>50, 23</value>
   </data>
   <data name="numericBoxSubCellA.ToolTip" xml:space="preserve">
-    <value />
+    <value>サブセル格子を描く際の a 軸方向の分割数(整数、
+1〜10)。'Show Subcell' 有効時に表示されます。</value>
   </data>
   <data name="label17.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
@@ -1115,7 +1130,7 @@
     <value>13, 15</value>
   </data>
   <data name="label17.ToolTip" xml:space="preserve">
-    <value />
+    <value>単位胞オプションの c 軸の行。</value>
   </data>
   <data name="label16.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
@@ -1127,7 +1142,7 @@
     <value>14, 15</value>
   </data>
   <data name="label16.ToolTip" xml:space="preserve">
-    <value />
+    <value>単位胞オプションの b 軸の行。</value>
   </data>
   <data name="label12.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
@@ -1139,7 +1154,7 @@
     <value>13, 15</value>
   </data>
   <data name="label12.ToolTip" xml:space="preserve">
-    <value />
+    <value>単位胞オプションの a 軸の行。</value>
   </data>
   <data name="tabPageLatticePlane.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
@@ -1319,10 +1334,12 @@
     <value>50, 25</value>
   </data>
   <data name="numericBoxProjectionCenterX.ToolTip" xml:space="preserve">
-    <value>単位胞を平行移動（分率座標）</value>
+    <value>投影中心の a 軸方向の分率座標。この点がビュー中心に
+配置されます（実質的に単位胞を平行移動します）。</value>
   </data>
   <data name="numericBoxProjectionCenterX.ToolTip1" xml:space="preserve">
-    <value>単位胞を平行移動（分率座標）</value>
+    <value>投影中心の a 軸方向の分率座標。この点がビュー中心に
+配置されます（実質的に単位胞を平行移動します）。</value>
   </data>
   <data name="numericBoxProjectionCenterY.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
@@ -1349,10 +1366,12 @@
     <value>50, 25</value>
   </data>
   <data name="numericBoxProjectionCenterY.ToolTip" xml:space="preserve">
-    <value>単位胞を平行移動（分率座標）</value>
+    <value>投影中心の b 軸方向の分率座標。この点がビュー中心に
+配置されます（実質的に単位胞を平行移動します）。</value>
   </data>
   <data name="numericBoxProjectionCenterY.ToolTip1" xml:space="preserve">
-    <value>単位胞を平行移動（分率座標）</value>
+    <value>投影中心の b 軸方向の分率座標。この点がビュー中心に
+配置されます（実質的に単位胞を平行移動します）。</value>
   </data>
   <data name="numericBoxProjectionCenterZ.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
@@ -1379,10 +1398,12 @@
     <value>50, 25</value>
   </data>
   <data name="numericBoxProjectionCenterZ.ToolTip" xml:space="preserve">
-    <value>単位胞を平行移動（分率座標）</value>
+    <value>投影中心の c 軸方向の分率座標。この点がビュー中心に
+配置されます（実質的に単位胞を平行移動します）。</value>
   </data>
   <data name="numericBoxProjectionCenterZ.ToolTip1" xml:space="preserve">
-    <value>単位胞を平行移動（分率座標）</value>
+    <value>投影中心の c 軸方向の分率座標。この点がビュー中心に
+配置されます（実質的に単位胞を平行移動します）。</value>
   </data>
   <data name="label9.Size" type="System.Drawing.Size, System.Drawing">
     <value>195, 17</value>
@@ -1391,7 +1412,8 @@
     <value>投影中心を以下の分率座標に設定</value>
   </data>
   <data name="label9.ToolTip" xml:space="preserve">
-    <value />
+    <value>投影中心を単位胞の分率座標で指定します。
+指定した点がビューの中心に配置されます。</value>
   </data>
   <data name="radioButtonProjectionCenterCustom.Location" type="System.Drawing.Point, System.Drawing">
     <value>193, 38</value>
@@ -1424,7 +1446,9 @@
     <value>正射影または透視投影を選択</value>
   </data>
   <data name="trackBarPerspective.ToolTip" xml:space="preserve">
-    <value>視点から描画オブジェクトまでの距離を調整します。</value>
+    <value>透視投影での視点から対象までの距離を調整します。
+距離が近いほどパース（遠近感）が強くなります。
+投影モードが Perspective のときのみ有効です。</value>
   </data>
   <data name="groupBoxTransparency.Location" type="System.Drawing.Point, System.Drawing">
     <value>386, 61</value>
@@ -1445,7 +1469,10 @@
     <value>高品質 (Per-Pixel Linked List, OpenGL 4.3+)</value>
   </data>
   <data name="comboBoxTransparency.ToolTip" xml:space="preserve">
-    <value>透過モードを設定</value>
+    <value>透明描画モードを選択します。近似（高速な
+Z 深度ソート）か、高品質な順序非依存方式
+（Dual Depth Peeling / Per-Pixel Linked
+List、新しい OpenGL が必要）かを選びます。</value>
   </data>
   <data name="checkBoxDepthFadingOut.Size" type="System.Drawing.Size, System.Drawing">
     <value>208, 21</value>
@@ -1454,7 +1481,9 @@
     <value>奥行き方向によるフェードアウト効果</value>
   </data>
   <data name="checkBoxDepthFadingOut.ToolTip" xml:space="preserve">
-    <value>チェックすると、奥のオブジェクトがフェードアウトします</value>
+    <value>デプスキューイング(フォグ)を有効にし、
+視点から遠いオブジェクトをフェードアウトさ
+せます。下の近/遠範囲設定が有効になります。</value>
   </data>
   <data name="groupBoxRenderingQuality.Text" xml:space="preserve">
     <value>描画品質</value>
@@ -1463,7 +1492,9 @@
     <value />
   </data>
   <data name="comboBoxRenderingQuality.ToolTip" xml:space="preserve">
-    <value>レンダリング品質を設定</value>
+    <value>描画品質（Low / Middle / High）を選択しま
+す。高品質ほど球や円柱が滑らかで透明度も
+正確になりますが、描画は重くなります。</value>
   </data>
   <data name="groupBoxDepthCueing.ToolTip" xml:space="preserve">
     <value />
@@ -1475,7 +1506,9 @@
     <value>Yu Gothic UI, 9.75pt</value>
   </data>
   <data name="trackBarAdvancedDepthCueingNear.ToolTip" xml:space="preserve">
-    <value>近いオブジェクトを不透明に</value>
+    <value>デプスキューイングの近方境界（Å）：これより近い
+オブジェクトは完全に不透明になります（−30〜30）。
+遠方境界と対で遠い原子をフェードします。</value>
   </data>
   <data name="label6.Location" type="System.Drawing.Point, System.Drawing">
     <value>9, 22</value>
@@ -1487,7 +1520,8 @@
     <value>最遠</value>
   </data>
   <data name="label6.ToolTip" xml:space="preserve">
-    <value>この値より遠いオブジェクトは完全に透明になります</value>
+    <value>デプスキューイングの遠方境界 (Å): これより遠い
+オブジェクトは完全に透明になります (-30〜30)</value>
   </data>
   <data name="trackBarAdvancedDepthCueingFar.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
@@ -1496,7 +1530,9 @@
     <value>Yu Gothic UI, 9.75pt</value>
   </data>
   <data name="trackBarAdvancedDepthCueingFar.ToolTip" xml:space="preserve">
-    <value>遠いオブジェクトを透明に</value>
+    <value>デプスキューイングの遠方境界（Å）：これより遠い
+オブジェクトは完全に透明になります（−30〜30）。
+近方境界と対で遠い原子をフェードします。</value>
   </data>
   <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
     <value>10, 49</value>
@@ -1508,7 +1544,8 @@
     <value>最近</value>
   </data>
   <data name="label5.ToolTip" xml:space="preserve">
-    <value>この値より近いオブジェクトは完全に不透明になります</value>
+    <value>デプスキューイングの近方境界 (Å): これより近い
+オブジェクトは完全に不透明になります (-30〜30)</value>
   </data>
   <data name="tabPageSymElems.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 22</value>
@@ -1541,7 +1578,8 @@
     <value>対称心</value>
   </data>
   <data name="checkBoxSymElems_Inversions.ToolTip" xml:space="preserve">
-    <value />
+    <value>対称要素のうち反転中心（座標 x を -x に写す
+対称中心）の表示/非表示を切り替えます。</value>
   </data>
   <data name="numericBoxInversionSymbolSize.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
@@ -1562,7 +1600,8 @@
     <value>147, 26</value>
   </data>
   <data name="numericBoxInversionSymbolSize.ToolTip1" xml:space="preserve">
-    <value />
+    <value>反転中心シンボルの大きさを百分率で
+設定します（100% = 標準サイズ）。</value>
   </data>
   <data name="colorControlInversion.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
@@ -1598,7 +1637,7 @@
     <value>映進面</value>
   </data>
   <data name="checkBoxSymElems_Glides.ToolTip" xml:space="preserve">
-    <value />
+    <value>空間群の映進面 (鏡映＋並進) シンボルを表示します</value>
   </data>
   <data name="numericBoxPlaneSymbolSize.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
@@ -1619,7 +1658,7 @@
     <value>146, 26</value>
   </data>
   <data name="numericBoxPlaneSymbolSize.ToolTip1" xml:space="preserve">
-    <value />
+    <value>対称面シンボルの表示サイズ (20〜500%)</value>
   </data>
   <data name="numericBoxPlaneLineWidth.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
@@ -1637,7 +1676,7 @@
     <value>線の太さ</value>
   </data>
   <data name="numericBoxPlaneLineWidth.ToolTip1" xml:space="preserve">
-    <value />
+    <value>対称面シンボルの線幅 (0.5〜10)</value>
   </data>
   <data name="checkBoxSymElems_Mirrors.Size" type="System.Drawing.Size, System.Drawing">
     <value>66, 21</value>
@@ -1646,7 +1685,7 @@
     <value>鏡映面</value>
   </data>
   <data name="checkBoxSymElems_Mirrors.ToolTip" xml:space="preserve">
-    <value />
+    <value>空間群の鏡映面シンボルを表示します</value>
   </data>
   <data name="colorControlPlane.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
@@ -1676,7 +1715,7 @@
     <value>回転軸</value>
   </data>
   <data name="checkBoxSymElems_Rotation.ToolTip" xml:space="preserve">
-    <value />
+    <value>空間群の回転軸 (2/3/4/6 回) シンボルを表示します</value>
   </data>
   <data name="numericBoxAxisSymbolSize.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
@@ -1697,7 +1736,7 @@
     <value>149, 26</value>
   </data>
   <data name="numericBoxAxisSymbolSize.ToolTip1" xml:space="preserve">
-    <value />
+    <value>対称軸シンボルの表示サイズ (20〜500%)</value>
   </data>
   <data name="numericBoxAxisLineWidth.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
@@ -1715,7 +1754,7 @@
     <value>線の太さ</value>
   </data>
   <data name="numericBoxAxisLineWidth.ToolTip1" xml:space="preserve">
-    <value />
+    <value>対称軸シンボルの線幅 (0.5〜10)</value>
   </data>
   <data name="checkBoxSymElems_Rotinversions.Size" type="System.Drawing.Size, System.Drawing">
     <value>66, 21</value>
@@ -1724,7 +1763,7 @@
     <value>回反軸</value>
   </data>
   <data name="checkBoxSymElems_Rotinversions.ToolTip" xml:space="preserve">
-    <value />
+    <value>空間群の回反軸 (回転＋反転) シンボルを表示します</value>
   </data>
   <data name="checkBoxSymElems_Screws.Location" type="System.Drawing.Point, System.Drawing">
     <value>83, 21</value>
@@ -1736,7 +1775,7 @@
     <value>らせん軸</value>
   </data>
   <data name="checkBoxSymElems_Screws.ToolTip" xml:space="preserve">
-    <value />
+    <value>空間群のらせん軸 (回転＋並進) シンボルを表示します</value>
   </data>
   <data name="colorControlAxisColor.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
@@ -1760,7 +1799,8 @@
     <value>対称要素を表示</value>
   </data>
   <data name="checkBoxShowSymmetryElements.ToolTip" xml:space="preserve">
-    <value />
+    <value>空間群の対称要素(回転軸・鏡面/映進面・
+反転中心)を3D表示に重ねて描画します。</value>
   </data>
   <data name="tabPageMisc.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 22</value>
@@ -1793,7 +1833,7 @@
     <value>326, 46</value>
   </data>
   <data name="colorControlLabelColor.ToolTip1" xml:space="preserve">
-    <value />
+    <value>原子ラベルに適用する固定色 (「Use fixed color」選択時に使用)</value>
   </data>
   <data name="checkBoxShowLabel.Location" type="System.Drawing.Point, System.Drawing">
     <value>9, 20</value>
@@ -1853,10 +1893,10 @@
     <value>87, 27</value>
   </data>
   <data name="numericBoxLabelSize.ToolTip" xml:space="preserve">
-    <value>凡例の文字サイズ</value>
+    <value>原子ラベルの文字サイズ（0〜200）。</value>
   </data>
   <data name="numericBoxLabelSize.ToolTip1" xml:space="preserve">
-    <value>凡例の文字サイズ</value>
+    <value>原子ラベルの文字サイズ（0〜200）。</value>
   </data>
   <data name="checkBoxLabelWhiteEdge.Location" type="System.Drawing.Point, System.Drawing">
     <value>134, 50</value>
@@ -2309,7 +2349,9 @@
     <value>ショートカットヒント</value>
   </data>
   <data name="sizeControl1.ToolTip" xml:space="preserve">
-    <value>シミュレーションパターンのピクセルサイズを設定</value>
+    <value>レンダリング画像のサイズ (幅×高さ) を
+ピクセル単位で設定します。ウィンドウ
+もそれに合わせてリサイズされます。</value>
   </data>
   <data name="printPreviewDialog1.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -2584,5 +2626,55 @@
   </data>
   <data name="$this.ToolTip" xml:space="preserve">
     <value />
+  </data>
+  <data name="colorControlAxisColor.ToolTip" xml:space="preserve">
+    <value>対称軸 (回転軸・らせん軸・回反軸)
+シンボルの表示色を設定します。</value>
+  </data>
+  <data name="colorControlPlane.ToolTip" xml:space="preserve">
+    <value>対称面 (鏡映面・映進面) シンボルの表示色を設定します。</value>
+  </data>
+  <data name="colorControlInversion.ToolTip" xml:space="preserve">
+    <value>反転中心シンボルの表示色を設定します。</value>
+  </data>
+  <data name="colorControlLabelColor.ToolTip" xml:space="preserve">
+    <value>原子ラベルに適用する固定色 (「Use fixed color」選択時に使用)</value>
+  </data>
+  <data name="numericBoxAxisLineWidth.ToolTip" xml:space="preserve">
+    <value>対称軸シンボルの線幅 (0.5〜10)</value>
+  </data>
+  <data name="numericBoxAxisSymbolSize.ToolTip" xml:space="preserve">
+    <value>対称軸シンボルの表示サイズ (20〜500%)</value>
+  </data>
+  <data name="numericBoxInversionSymbolSize.ToolTip" xml:space="preserve">
+    <value>反転中心シンボルの大きさを百分率で
+設定します（100% = 標準サイズ）。</value>
+  </data>
+  <data name="numericBoxPlaneLineWidth.ToolTip" xml:space="preserve">
+    <value>対称面シンボルの線幅 (0.5〜10)</value>
+  </data>
+  <data name="numericBoxPlaneSymbolSize.ToolTip" xml:space="preserve">
+    <value>対称面シンボルの表示サイズ (20〜500%)</value>
+  </data>
+  <data name="toolStripButtonAtomLabels.ToolTipText" xml:space="preserve">
+    <value>各原子に重ねて表示する原子ラベル
+(元素記号)の表示/非表示を切り替えます。</value>
+  </data>
+  <data name="toolStripButtonAtomObjects.ToolTipText" xml:space="preserve">
+    <value>3D モデル中の原子(球)の表示/非表示を切り替えます。</value>
+  </data>
+  <data name="toolStripButtonLikeVesta.ToolTipText" xml:space="preserve">
+    <value>原子半径・色・結合を VESTA 風の既定値にリセットし
+ます(VESTA は広く使われる結晶構造可視化ソフト)。</value>
+  </data>
+  <data name="toolStripButtonResetRotation.ToolTipText" xml:space="preserve">
+    <value>モデルの向きを既定(回転なし)にリセットします。</value>
+  </data>
+  <data name="toolStripButtonSymmetryElements.ToolTipText" xml:space="preserve">
+    <value>結晶の対称要素(回転軸・鏡面・らせん
+軸など)の表示/非表示を切り替えます。</value>
+  </data>
+  <data name="toolStripButtonUnitCell.ToolTipText" xml:space="preserve">
+    <value>単位胞(枠・面)の表示/非表示を切り替えます。</value>
   </data>
 </root>

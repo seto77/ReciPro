@@ -204,8 +204,9 @@
     <value>白色</value>
   </data>
   <data name="radioButtonFlatWhite.ToolTip" xml:space="preserve">
-    <value>X線の場合、入射ビームの単位エネルギー範囲あたりの強度が一定です。
-中性子の場合、単位波長間隔あたりの入射中性子数が一定です。</value>
+    <value>平坦な白色スペクトルを使用します。X線では入射ビーム
+の単位エネルギー範囲あたりの強度が一定、中性子では
+単位波長間隔あたりの入射中性子数が一定です。</value>
   </data>
   <data name="radioButtonCustomWhite.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
@@ -416,10 +417,12 @@
     <value>3, 124</value>
   </data>
   <data name="numericBoxTwoTheta.ToolTip" xml:space="preserve">
-    <value>2θ値を設定</value>
+    <value>エネルギー分散（白色ビーム）測定での検出器の
+散乱角（取り出し角）2θ を度単位で設定します。</value>
   </data>
   <data name="numericBoxTwoTheta.ToolTip1" xml:space="preserve">
-    <value>2θ値を設定</value>
+    <value>エネルギー分散（白色ビーム）測定での検出器の
+散乱角（取り出し角）2θ を度単位で設定します。</value>
   </data>
   <data name="flowLayoutPanelEnergy.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
@@ -428,16 +431,20 @@
     <value>3, 151</value>
   </data>
   <data name="numericBoxTofAngle.ToolTip" xml:space="preserve">
-    <value>TOF角度を設定</value>
+    <value>中性子 TOF（飛行時間, Time-Of-Flight）測定にお
+ける検出器の散乱角 2θ を度単位で設定します。</value>
   </data>
   <data name="numericBoxTofAngle.ToolTip1" xml:space="preserve">
-    <value>TOF角度を設定</value>
+    <value>中性子 TOF（飛行時間, Time-Of-Flight）測定にお
+ける検出器の散乱角 2θ を度単位で設定します。</value>
   </data>
   <data name="numericBoxTofLength.ToolTip" xml:space="preserve">
-    <value>TOF飛行経路長を設定</value>
+    <value>中性子 TOF（飛行時間）測定における線源から
+検出器までの飛行経路長 L を m 単位で設定します。</value>
   </data>
   <data name="numericBoxTofLength.ToolTip1" xml:space="preserve">
-    <value>TOF飛行経路長を設定</value>
+    <value>中性子 TOF（飛行時間）測定における線源から
+検出器までの飛行経路長 L を m 単位で設定します。</value>
   </data>
   <data name="flowLayoutPanelNeutronTOF.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
@@ -510,5 +517,86 @@
   </data>
   <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
     <value>350, 466</value>
+  </data>
+  <data name="radioButtonAngleUnitCentiDegree.ToolTip" xml:space="preserve">
+    <value>2θ 軸の角度単位をセンチ度（1/100 度）にします。</value>
+  </data>
+  <data name="radioButtonAngleUnitDegree.ToolTip" xml:space="preserve">
+    <value>2θ 軸の角度単位を度（°）にします。</value>
+  </data>
+  <data name="radioButtonAngleUnitMilliRadian.ToolTip" xml:space="preserve">
+    <value>2θ 軸の角度単位をミリラジアン（1/1000 ラジアン）にします。</value>
+  </data>
+  <data name="radioButtonAngleUnitRadian.ToolTip" xml:space="preserve">
+    <value>2θ 軸の角度単位をラジアン（rad）にします。</value>
+  </data>
+  <data name="radioButtonCustomWhite.ToolTip" xml:space="preserve">
+    <value>波長・エネルギーの分布をユーザー定義の
+連続（白色）スペクトルにします。</value>
+  </data>
+  <data name="radioButtonDspacing.ToolTip" xml:space="preserve">
+    <value>水平軸を d 値（各反射の格子面間隔 d-spacing）で表示します。</value>
+  </data>
+  <data name="radioButtonDspacingUnitAng.ToolTip" xml:space="preserve">
+    <value>d 値軸の長さ単位をオングストローム（Å = 0.1 nm）にします。</value>
+  </data>
+  <data name="radioButtonDspacingUnitNm.ToolTip" xml:space="preserve">
+    <value>d 値軸の長さ単位をナノメートル（nm）にします。</value>
+  </data>
+  <data name="radioButtonElectron.ToolTip" xml:space="preserve">
+    <value>線源を電子線にします（波長は加速電圧から決まります）。</value>
+  </data>
+  <data name="radioButtonEnergy.ToolTip" xml:space="preserve">
+    <value>水平軸をエネルギーで表示します
+（エネルギー分散・白色ビームモード用）。</value>
+  </data>
+  <data name="radioButtonEnergyUnitEv.ToolTip" xml:space="preserve">
+    <value>エネルギー軸の単位を eV（電子ボルト）にします。</value>
+  </data>
+  <data name="radioButtonEnergyUnitKev.ToolTip" xml:space="preserve">
+    <value>エネルギー軸の単位を keV（キロ電子ボルト）にします。</value>
+  </data>
+  <data name="radioButtonEnergyUnitMev.ToolTip" xml:space="preserve">
+    <value>エネルギー軸の単位を MeV（メガ電子ボルト）にします。</value>
+  </data>
+  <data name="radioButtonMonochro.ToolTip" xml:space="preserve">
+    <value>単色（単一波長）にします。2θ・d 軸が利用可能になります。</value>
+  </data>
+  <data name="radioButtonNeutron.ToolTip" xml:space="preserve">
+    <value>線源を中性子線にします（飛行時間
+TOF 軸が利用可能になります）。</value>
+  </data>
+  <data name="radioButtonTOF.ToolTip" xml:space="preserve">
+    <value>水平軸を中性子の飛行時間 TOF
+（Time-Of-Flight、検出器まで飛行する時間）で
+表示します。中性子・白色ビームモード専用。</value>
+  </data>
+  <data name="radioButtonTofUnitMicroSec.ToolTip" xml:space="preserve">
+    <value>TOF 軸の時間単位を μs（マイクロ秒）にします。</value>
+  </data>
+  <data name="radioButtonTofUnitNanoSec.ToolTip" xml:space="preserve">
+    <value>TOF 軸の時間単位を ns（ナノ秒）にします。</value>
+  </data>
+  <data name="radioButtonTwoTheta.ToolTip" xml:space="preserve">
+    <value>水平軸を回折角 2θ（入射ビームと回折ビームのな
+す散乱角）で表示します。単色ビームモード用。</value>
+  </data>
+  <data name="radioButtonWavenumber.ToolTip" xml:space="preserve">
+    <value>水平軸を散乱波数 q = 4π·sinθ/λ（散乱
+ベクトルの大きさ）で表示します。</value>
+  </data>
+  <data name="radioButtonWavenumberAngInv.ToolTip" xml:space="preserve">
+    <value>波数 q 軸の単位を Å⁻¹（逆オングストローム）にします。</value>
+  </data>
+  <data name="radioButtonWavenumberUnitNmInv.ToolTip" xml:space="preserve">
+    <value>波数 q 軸の単位を nm⁻¹（逆ナノメートル）にします。</value>
+  </data>
+  <data name="radioButtonXray.ToolTip" xml:space="preserve">
+    <value>線源を X 線にします（特性 X 線または任意波長を指定可能）。</value>
+  </data>
+  <data name="waveLengthControl.ToolTip" xml:space="preserve">
+    <value>線源の波長を設定します。波長の
+直接入力、電子線の加速電圧、または特性
+X 線（元素＋線種）から指定できます。</value>
   </data>
 </root>

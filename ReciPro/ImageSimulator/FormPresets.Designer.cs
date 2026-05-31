@@ -24,6 +24,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormPresets)); // 260531Cl
             components = new System.ComponentModel.Container();
             listBox = new System.Windows.Forms.ListBox();
             textBoxPresetName = new System.Windows.Forms.TextBox();
@@ -40,6 +41,7 @@
             panel2 = new System.Windows.Forms.Panel();
             checkBoxManageList = new System.Windows.Forms.CheckBox();
             toolTip = new System.Windows.Forms.ToolTip(components);
+            toolTip.IsBalloon = true; // 260531Cl 追加: バルーン表示に統一
             flowLayoutPanel1.SuspendLayout();
             flowLayoutPanelOkCancel.SuspendLayout();
             panelManageList.SuspendLayout();
@@ -53,6 +55,7 @@
             listBox.IntegralHeight = false;
             listBox.Location = new System.Drawing.Point(4, 5);
             listBox.Name = "listBox";
+            toolTip.SetToolTip(listBox, resources.GetString("listBox.ToolTip")); // 260531Cl
             listBox.Size = new System.Drawing.Size(233, 210);
             listBox.TabIndex = 1;
             listBox.SelectedIndexChanged += listBox_SelectedIndexChanged;
@@ -62,6 +65,7 @@
             textBoxPresetName.Dock = System.Windows.Forms.DockStyle.Fill;
             textBoxPresetName.Location = new System.Drawing.Point(43, 0);
             textBoxPresetName.Name = "textBoxPresetName";
+            toolTip.SetToolTip(textBoxPresetName, resources.GetString("textBoxPresetName.ToolTip")); // 260531Cl
             textBoxPresetName.Size = new System.Drawing.Size(190, 25);
             textBoxPresetName.TabIndex = 2;
             // 
@@ -71,6 +75,7 @@
             label1.Dock = System.Windows.Forms.DockStyle.Left;
             label1.Location = new System.Drawing.Point(0, 0);
             label1.Name = "label1";
+            toolTip.SetToolTip(label1, resources.GetString("label1.ToolTip")); // 260531Cl
             label1.Padding = new System.Windows.Forms.Padding(0, 3, 0, 0);
             label1.Size = new System.Drawing.Size(43, 20);
             label1.TabIndex = 3;
@@ -91,7 +96,7 @@
             buttonDelete.Size = new System.Drawing.Size(55, 27);
             buttonDelete.TabIndex = 8;
             buttonDelete.Text = "Delete";
-            toolTip.SetToolTip(buttonDelete, "Delete the selected preset");
+            toolTip.SetToolTip(buttonDelete, resources.GetString("buttonDelete.ToolTip")); // 260531Cl
             buttonDelete.UseVisualStyleBackColor = false;
             buttonDelete.Click += buttonDelete_Click;
             // 
@@ -110,7 +115,7 @@
             buttonAdd.Size = new System.Drawing.Size(42, 27);
             buttonAdd.TabIndex = 6;
             buttonAdd.Text = "Add";
-            toolTip.SetToolTip(buttonAdd, "Add the current setting as a new preset");
+            toolTip.SetToolTip(buttonAdd, resources.GetString("buttonAdd.ToolTip")); // 260531Cl
             buttonAdd.UseVisualStyleBackColor = false;
             buttonAdd.Click += buttonAdd_Click;
             // 
@@ -142,7 +147,7 @@
             buttonReplace.Size = new System.Drawing.Size(64, 27);
             buttonReplace.TabIndex = 6;
             buttonReplace.Text = "Replace";
-            toolTip.SetToolTip(buttonReplace, "Replace the selected preset with the current setting");
+            toolTip.SetToolTip(buttonReplace, resources.GetString("buttonReplace.ToolTip")); // 260531Cl
             buttonReplace.UseVisualStyleBackColor = false;
             buttonReplace.Click += buttonAdd_Click;
             // 
@@ -161,7 +166,7 @@
             buttonRename.Size = new System.Drawing.Size(65, 27);
             buttonRename.TabIndex = 6;
             buttonRename.Text = "Rename";
-            toolTip.SetToolTip(buttonRename, "Rename the selected preset");
+            toolTip.SetToolTip(buttonRename, resources.GetString("buttonRename.ToolTip")); // 260531Cl
             buttonRename.UseVisualStyleBackColor = false;
             buttonRename.Click += buttonRename_Click;
             // 
@@ -185,6 +190,7 @@
             buttonCancel.Location = new System.Drawing.Point(158, 0);
             buttonCancel.Margin = new System.Windows.Forms.Padding(0);
             buttonCancel.Name = "buttonCancel";
+            toolTip.SetToolTip(buttonCancel, resources.GetString("buttonCancel.ToolTip")); // 260531Cl
             buttonCancel.Size = new System.Drawing.Size(75, 25);
             buttonCancel.TabIndex = 0;
             buttonCancel.Text = "Cancel";
@@ -197,6 +203,7 @@
             buttonOK.Location = new System.Drawing.Point(83, 0);
             buttonOK.Margin = new System.Windows.Forms.Padding(0);
             buttonOK.Name = "buttonOK";
+            toolTip.SetToolTip(buttonOK, resources.GetString("buttonOK.ToolTip")); // 260531Cl
             buttonOK.Size = new System.Drawing.Size(75, 25);
             buttonOK.TabIndex = 0;
             buttonOK.Text = "OK";
@@ -231,6 +238,7 @@
             checkBoxManageList.Dock = System.Windows.Forms.DockStyle.Bottom;
             checkBoxManageList.Location = new System.Drawing.Point(4, 215);
             checkBoxManageList.Name = "checkBoxManageList";
+            toolTip.SetToolTip(checkBoxManageList, resources.GetString("checkBoxManageList.ToolTip")); // 260531Cl
             checkBoxManageList.Size = new System.Drawing.Size(233, 21);
             checkBoxManageList.TabIndex = 10;
             checkBoxManageList.Text = "Manage the preset list";

@@ -24,6 +24,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InputBox)); // 260531Cl
+            this.components = new System.ComponentModel.Container(); // 260531Cl
+            this.toolTip = new System.Windows.Forms.ToolTip(this.components); // 260531Cl
+            this.toolTip.IsBalloon = true; // 260531Cl 追加: バルーン表示に統一
             this.label64 = new System.Windows.Forms.Label();
             this.label60 = new System.Windows.Forms.Label();
             this.label50 = new System.Windows.Forms.Label();
@@ -40,6 +44,7 @@
             this.label64.Location = new System.Drawing.Point(203, 5);
             this.label64.Margin = new System.Windows.Forms.Padding(0);
             this.label64.Name = "label64";
+            this.toolTip.SetToolTip(this.label64, resources.GetString("label64.ToolTip")); // 260531Cl
             this.label64.Size = new System.Drawing.Size(33, 15);
             this.label64.TabIndex = 73;
             this.label64.Text = "nm⁻¹";
@@ -53,6 +58,7 @@
             this.label60.Location = new System.Drawing.Point(132, 6);
             this.label60.Margin = new System.Windows.Forms.Padding(0);
             this.label60.Name = "label60";
+            this.toolTip.SetToolTip(this.label60, resources.GetString("label60.ToolTip")); // 260531Cl
             this.label60.Size = new System.Drawing.Size(15, 15);
             this.label60.TabIndex = 74;
             this.label60.Text = "Å";
@@ -64,6 +70,7 @@
             this.label50.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label50.Location = new System.Drawing.Point(48, 4);
             this.label50.Name = "label50";
+            this.toolTip.SetToolTip(this.label50, resources.GetString("label50.ToolTip")); // 260531Cl
             this.label50.Size = new System.Drawing.Size(29, 15);
             this.label50.TabIndex = 71;
             this.label50.Text = "mm";
@@ -79,6 +86,7 @@
             this.numericBoxLength.MaximumSize = new System.Drawing.Size(1000, 27);
             this.numericBoxLength.MinimumSize = new System.Drawing.Size(1, 25);
             this.numericBoxLength.Name = "numericBoxLength";
+            this.toolTip.SetToolTip(this.numericBoxLength, resources.GetString("numericBoxLength.ToolTip")); // 260531Cl
             this.numericBoxLength.Padding = new System.Windows.Forms.Padding(1);
             this.numericBoxLength.RoundErrorAccuracy = -1;
             this.numericBoxLength.Size = new System.Drawing.Size(50, 27);
@@ -97,6 +105,7 @@
             this.numericBoxGlength.MaximumSize = new System.Drawing.Size(1000, 27);
             this.numericBoxGlength.MinimumSize = new System.Drawing.Size(1, 25);
             this.numericBoxGlength.Name = "numericBoxGlength";
+            this.toolTip.SetToolTip(this.numericBoxGlength, resources.GetString("numericBoxGlength.ToolTip")); // 260531Cl
             this.numericBoxGlength.Padding = new System.Windows.Forms.Padding(1);
             this.numericBoxGlength.RoundErrorAccuracy = -1;
             this.numericBoxGlength.Size = new System.Drawing.Size(50, 27);
@@ -114,6 +123,7 @@
             this.numericBoxDvalue.MaximumSize = new System.Drawing.Size(1000, 27);
             this.numericBoxDvalue.MinimumSize = new System.Drawing.Size(1, 25);
             this.numericBoxDvalue.Name = "numericBoxDvalue";
+            this.toolTip.SetToolTip(this.numericBoxDvalue, resources.GetString("numericBoxDvalue.ToolTip")); // 260531Cl
             this.numericBoxDvalue.Padding = new System.Windows.Forms.Padding(1);
             this.numericBoxDvalue.RoundErrorAccuracy = -1;
             this.numericBoxDvalue.Size = new System.Drawing.Size(50, 27);
@@ -142,6 +152,7 @@
         }
 
         #endregion
+        private System.Windows.Forms.ToolTip toolTip; // 260531Cl
         private System.Windows.Forms.Label label64;
         private System.Windows.Forms.Label label60;
         private System.Windows.Forms.Label label50;

@@ -704,10 +704,14 @@
     <value>5</value>
   </data>
   <data name="numericBoxCRange.ToolTip" xml:space="preserve">
-    <value>Set a drawing range</value>
+    <value>Half-width of the displayed region along
+the c-axis, in fractional coordinates;
+atoms within Center ± Range are drawn.</value>
   </data>
   <data name="numericBoxCRange.ToolTip1" xml:space="preserve">
-    <value>Set a drawing range</value>
+    <value>Half-width of the displayed region along
+the c-axis, in fractional coordinates;
+atoms within Center ± Range are drawn.</value>
   </data>
   <data name="&gt;&gt;numericBoxCRange.Name" xml:space="preserve">
     <value>numericBoxCRange</value>
@@ -761,10 +765,14 @@
     <value>4</value>
   </data>
   <data name="numericBoxBRange.ToolTip" xml:space="preserve">
-    <value>Set a drawing range</value>
+    <value>Half-width of the displayed region along
+the b-axis, in fractional coordinates;
+atoms within Center ± Range are drawn.</value>
   </data>
   <data name="numericBoxBRange.ToolTip1" xml:space="preserve">
-    <value>Set a drawing range</value>
+    <value>Half-width of the displayed region along
+the b-axis, in fractional coordinates;
+atoms within Center ± Range are drawn.</value>
   </data>
   <data name="&gt;&gt;numericBoxBRange.Name" xml:space="preserve">
     <value>numericBoxBRange</value>
@@ -818,10 +826,14 @@
     <value>3</value>
   </data>
   <data name="numericBoxARange.ToolTip" xml:space="preserve">
-    <value>Set a drawing range</value>
+    <value>Half-width of the displayed region along
+the a-axis, in fractional coordinates;
+atoms within Center ± Range are drawn.</value>
   </data>
   <data name="numericBoxARange.ToolTip1" xml:space="preserve">
-    <value>Set a drawing range</value>
+    <value>Half-width of the displayed region along
+the a-axis, in fractional coordinates;
+atoms within Center ± Range are drawn.</value>
   </data>
   <data name="&gt;&gt;numericBoxARange.Name" xml:space="preserve">
     <value>numericBoxARange</value>
@@ -875,10 +887,14 @@
     <value>2</value>
   </data>
   <data name="numericBoxCCenter.ToolTip" xml:space="preserve">
-    <value>Set a center position</value>
+    <value>Center of the displayed region along the c-axis, in
+fractional coordinates; combined with Range it sets
+the min/max bounding planes of the drawn structure.</value>
   </data>
   <data name="numericBoxCCenter.ToolTip1" xml:space="preserve">
-    <value>Set a center position</value>
+    <value>Center of the displayed region along the c-axis, in
+fractional coordinates; combined with Range it sets
+the min/max bounding planes of the drawn structure.</value>
   </data>
   <data name="&gt;&gt;numericBoxCCenter.Name" xml:space="preserve">
     <value>numericBoxCCenter</value>
@@ -932,10 +948,14 @@
     <value>1</value>
   </data>
   <data name="numericBoxBCenter.ToolTip" xml:space="preserve">
-    <value>Set a center position</value>
+    <value>Center of the displayed region along the b-axis, in
+fractional coordinates; combined with Range it sets
+the min/max bounding planes of the drawn structure.</value>
   </data>
   <data name="numericBoxBCenter.ToolTip1" xml:space="preserve">
-    <value>Set a center position</value>
+    <value>Center of the displayed region along the b-axis, in
+fractional coordinates; combined with Range it sets
+the min/max bounding planes of the drawn structure.</value>
   </data>
   <data name="&gt;&gt;numericBoxBCenter.Name" xml:space="preserve">
     <value>numericBoxBCenter</value>
@@ -989,10 +1009,14 @@
     <value>0</value>
   </data>
   <data name="numericBoxACenter.ToolTip" xml:space="preserve">
-    <value>Set a center position</value>
+    <value>Center of the displayed region along the a-axis, in
+fractional coordinates; combined with Range it sets
+the min/max bounding planes of the drawn structure.</value>
   </data>
   <data name="numericBoxACenter.ToolTip1" xml:space="preserve">
-    <value>Set a center position</value>
+    <value>Center of the displayed region along the a-axis, in
+fractional coordinates; combined with Range it sets
+the min/max bounding planes of the drawn structure.</value>
   </data>
   <data name="&gt;&gt;numericBoxACenter.Name" xml:space="preserve">
     <value>numericBoxACenter</value>
@@ -1427,7 +1451,8 @@
     <value>Bounds Defined by Unit Cell</value>
   </data>
   <data name="radioButtonBoundUnitCell.ToolTip" xml:space="preserve">
-    <value>If checked, drawing bounds are defined based on unit cell as follows</value>
+    <value>If checked, drawing bounds are
+defined based on unit cell as follows</value>
   </data>
   <data name="&gt;&gt;radioButtonBoundUnitCell.Name" xml:space="preserve">
     <value>radioButtonBoundUnitCell</value>
@@ -1463,7 +1488,8 @@
     <value>Bounds Defined by Crystal Planes</value>
   </data>
   <data name="radioButtonBoundPlane.ToolTip" xml:space="preserve">
-    <value>If checked, drawing bounds are defined based on crystal planes as follows</value>
+    <value>If checked, drawing bounds are defined
+based on crystal planes as follows</value>
   </data>
   <data name="&gt;&gt;radioButtonBoundPlane.Name" xml:space="preserve">
     <value>radioButtonBoundPlane</value>
@@ -1647,7 +1673,7 @@
     <value>Show Unit Cell</value>
   </data>
   <data name="checkBoxUnitCell.ToolTip" xml:space="preserve">
-    <value>Show unit cell</value>
+    <value>Show the unit-cell edges overlaid on the 3-D structure.</value>
   </data>
   <data name="&gt;&gt;checkBoxUnitCell.Name" xml:space="preserve">
     <value>checkBoxUnitCell</value>
@@ -1830,10 +1856,12 @@
     <value>6</value>
   </data>
   <data name="colorControlCellPlaneA.ToolTip" xml:space="preserve">
-    <value>Set the color of the cell planes individually</value>
+    <value>Color of the unit-cell face normal to the
+a-axis (used when 'Each plane' is selected).</value>
   </data>
   <data name="colorControlCellPlaneA.ToolTip1" xml:space="preserve">
-    <value>Set the color of the cell planes individually</value>
+    <value>Color of the unit-cell face normal to the
+a-axis (used when 'Each plane' is selected).</value>
   </data>
   <data name="&gt;&gt;colorControlCellPlaneA.Name" xml:space="preserve">
     <value>colorControlCellPlaneA</value>
@@ -1887,10 +1915,12 @@
     <value>6</value>
   </data>
   <data name="colorControlCellPlaneB.ToolTip" xml:space="preserve">
-    <value>Set the color of the cell planes individually</value>
+    <value>Color of the unit-cell face normal to the
+b-axis (used when 'Each plane' is selected).</value>
   </data>
   <data name="colorControlCellPlaneB.ToolTip1" xml:space="preserve">
-    <value>Set the color of the cell planes individually</value>
+    <value>Color of the unit-cell face normal to the
+b-axis (used when 'Each plane' is selected).</value>
   </data>
   <data name="&gt;&gt;colorControlCellPlaneB.Name" xml:space="preserve">
     <value>colorControlCellPlaneB</value>
@@ -1944,10 +1974,12 @@
     <value>6</value>
   </data>
   <data name="colorControlCellPlaneC.ToolTip" xml:space="preserve">
-    <value>Set the color of the cell planes individually</value>
+    <value>Color of the unit-cell face normal to the
+c-axis (used when 'Each plane' is selected).</value>
   </data>
   <data name="colorControlCellPlaneC.ToolTip1" xml:space="preserve">
-    <value>Set the color of the cell planes individually</value>
+    <value>Color of the unit-cell face normal to the
+c-axis (used when 'Each plane' is selected).</value>
   </data>
   <data name="&gt;&gt;colorControlCellPlaneC.Name" xml:space="preserve">
     <value>colorControlCellPlaneC</value>
@@ -2211,10 +2243,12 @@
     <value>6</value>
   </data>
   <data name="colorControlCellEdgeA.ToolTip" xml:space="preserve">
-    <value>Set the color of the cell edges individually</value>
+    <value>Color of the unit-cell edges along the
+a-axis (used when 'Each edge' is selected).</value>
   </data>
   <data name="colorControlCellEdgeA.ToolTip1" xml:space="preserve">
-    <value>Set the color of the cell edges individually</value>
+    <value>Color of the unit-cell edges along the
+a-axis (used when 'Each edge' is selected).</value>
   </data>
   <data name="&gt;&gt;colorControlCellEdgeA.Name" xml:space="preserve">
     <value>colorControlCellEdgeA</value>
@@ -2268,10 +2302,12 @@
     <value>6</value>
   </data>
   <data name="colorControlCellEdgeB.ToolTip" xml:space="preserve">
-    <value>Set the color of the cell edges individually</value>
+    <value>Color of the unit-cell edges along the
+b-axis (used when 'Each edge' is selected).</value>
   </data>
   <data name="colorControlCellEdgeB.ToolTip1" xml:space="preserve">
-    <value>Set the color of the cell edges individually</value>
+    <value>Color of the unit-cell edges along the
+b-axis (used when 'Each edge' is selected).</value>
   </data>
   <data name="&gt;&gt;colorControlCellEdgeB.Name" xml:space="preserve">
     <value>colorControlCellEdgeB</value>
@@ -2325,10 +2361,12 @@
     <value>6</value>
   </data>
   <data name="colorControlCellEdgeC.ToolTip" xml:space="preserve">
-    <value>Set the color of the cell edges individually</value>
+    <value>Color of the unit-cell edges along the
+c-axis (used when 'Each edge' is selected).</value>
   </data>
   <data name="colorControlCellEdgeC.ToolTip1" xml:space="preserve">
-    <value>Set the color of the cell edges individually</value>
+    <value>Color of the unit-cell edges along the
+c-axis (used when 'Each edge' is selected).</value>
   </data>
   <data name="&gt;&gt;colorControlCellEdgeC.Name" xml:space="preserve">
     <value>colorControlCellEdgeC</value>
@@ -2394,7 +2432,7 @@
     <value>8</value>
   </data>
   <data name="trackBarCellEdgeWidth.ToolTip" xml:space="preserve">
-    <value>Set a line width of cell edges</value>
+    <value>Line width of the unit-cell edges, in pixels (1–5).</value>
   </data>
   <data name="&gt;&gt;trackBarCellEdgeWidth.Name" xml:space="preserve">
     <value>trackBarCellEdgeWidth</value>
@@ -3393,10 +3431,14 @@
     <value>8</value>
   </data>
   <data name="numericBoxProjectionCenterX.ToolTip" xml:space="preserve">
-    <value>Set the projection center using fractional coordinates.</value>
+    <value>a-axis fractional coordinate of the projection
+center; this point is placed at the center of the
+view (equivalently it translates the unit cell).</value>
   </data>
   <data name="numericBoxProjectionCenterX.ToolTip1" xml:space="preserve">
-    <value>Set the projection center using fractional coordinates.</value>
+    <value>a-axis fractional coordinate of the projection
+center; this point is placed at the center of the
+view (equivalently it translates the unit cell).</value>
   </data>
   <data name="&gt;&gt;numericBoxProjectionCenterX.Name" xml:space="preserve">
     <value>numericBoxProjectionCenterX</value>
@@ -3447,10 +3489,14 @@
     <value>7</value>
   </data>
   <data name="numericBoxProjectionCenterY.ToolTip" xml:space="preserve">
-    <value>Set the projection center using fractional coordinates.</value>
+    <value>b-axis fractional coordinate of the projection
+center; this point is placed at the center of the
+view (equivalently it translates the unit cell).</value>
   </data>
   <data name="numericBoxProjectionCenterY.ToolTip1" xml:space="preserve">
-    <value>Set the projection center using fractional coordinates.</value>
+    <value>b-axis fractional coordinate of the projection
+center; this point is placed at the center of the
+view (equivalently it translates the unit cell).</value>
   </data>
   <data name="&gt;&gt;numericBoxProjectionCenterY.Name" xml:space="preserve">
     <value>numericBoxProjectionCenterY</value>
@@ -3501,10 +3547,14 @@
     <value>6</value>
   </data>
   <data name="numericBoxProjectionCenterZ.ToolTip" xml:space="preserve">
-    <value>Set the projection center using fractional coordinates.</value>
+    <value>c-axis fractional coordinate of the projection
+center; this point is placed at the center of the
+view (equivalently it translates the unit cell).</value>
   </data>
   <data name="numericBoxProjectionCenterZ.ToolTip1" xml:space="preserve">
-    <value>Set the projection center using fractional coordinates.</value>
+    <value>c-axis fractional coordinate of the projection
+center; this point is placed at the center of the
+view (equivalently it translates the unit cell).</value>
   </data>
   <data name="&gt;&gt;numericBoxProjectionCenterZ.Name" xml:space="preserve">
     <value>numericBoxProjectionCenterZ</value>
@@ -3753,7 +3803,10 @@
     <value>5</value>
   </data>
   <data name="trackBarPerspective.ToolTip" xml:space="preserve">
-    <value>Adjust the distance from the viewpoint to the drawing object.</value>
+    <value>Distance from the viewpoint to the object in
+perspective projection: a shorter distance
+exaggerates the perspective (foreshortening).
+Active only when Projection is set to Perspective.</value>
   </data>
   <data name="&gt;&gt;trackBarPerspective.Name" xml:space="preserve">
     <value>trackBarPerspective</value>
@@ -3810,7 +3863,10 @@
     <value>7</value>
   </data>
   <data name="comboBoxTransparency.ToolTip" xml:space="preserve">
-    <value>Set transparency mode</value>
+    <value>Transparency rendering mode: Approximate (fast
+Z-depth sorting) or a high-quality
+order-independent method (Dual Depth Peeling /
+Per-Pixel Linked List, which require newer OpenGL).</value>
   </data>
   <data name="&gt;&gt;comboBoxTransparency.Name" xml:space="preserve">
     <value>comboBoxTransparency</value>
@@ -3867,7 +3923,9 @@
     <value>Depth Fade</value>
   </data>
   <data name="checkBoxDepthFadingOut.ToolTip" xml:space="preserve">
-    <value>If checked, deep objects fade out</value>
+    <value>Enable depth cueing (fog): objects
+farther from the viewer fade out; the
+near/far range below becomes active.</value>
   </data>
   <data name="&gt;&gt;checkBoxDepthFadingOut.Name" xml:space="preserve">
     <value>checkBoxDepthFadingOut</value>
@@ -3900,7 +3958,9 @@
     <value>7</value>
   </data>
   <data name="comboBoxRenderingQuality.ToolTip" xml:space="preserve">
-    <value>Set rendering quality</value>
+    <value>Rendering quality (Low / Middle / High): higher
+quality gives smoother spheres and cylinders and
+more accurate transparency, but renders more slowly.</value>
   </data>
   <data name="&gt;&gt;comboBoxRenderingQuality.Name" xml:space="preserve">
     <value>comboBoxRenderingQuality</value>
@@ -3969,7 +4029,9 @@
     <value>7</value>
   </data>
   <data name="trackBarAdvancedDepthCueingNear.ToolTip" xml:space="preserve">
-    <value>Objects closer than this value are completely opaque</value>
+    <value>Depth-cueing near limit (Å): objects nearer
+than this depth stay fully opaque (−30 to 30).
+Pairs with the far limit to fade distant atoms.</value>
   </data>
   <data name="&gt;&gt;trackBarAdvancedDepthCueingNear.Name" xml:space="preserve">
     <value>trackBarAdvancedDepthCueingNear</value>
@@ -4002,7 +4064,8 @@
     <value>Far</value>
   </data>
   <data name="label6.ToolTip" xml:space="preserve">
-    <value>Objects farther away than this value are completely transparent</value>
+    <value>Depth-cueing far limit (Å): objects beyond this
+depth fade to fully transparent (-30 to 30)</value>
   </data>
   <data name="&gt;&gt;label6.Name" xml:space="preserve">
     <value>label6</value>
@@ -4047,7 +4110,9 @@
     <value>7</value>
   </data>
   <data name="trackBarAdvancedDepthCueingFar.ToolTip" xml:space="preserve">
-    <value>Objects farther away than this value are completely transparent</value>
+    <value>Depth-cueing far limit (Å): objects farther than
+this depth fade to fully transparent (−30 to 30).
+Pairs with the near limit to fade distant atoms.</value>
   </data>
   <data name="&gt;&gt;trackBarAdvancedDepthCueingFar.Name" xml:space="preserve">
     <value>trackBarAdvancedDepthCueingFar</value>
@@ -4080,7 +4145,8 @@
     <value>Near</value>
   </data>
   <data name="label5.ToolTip" xml:space="preserve">
-    <value>Objects closer than this value are completely opaque</value>
+    <value>Depth-cueing near limit (Å): objects nearer
+than this depth stay fully opaque (-30 to 30)</value>
   </data>
   <data name="&gt;&gt;label5.Name" xml:space="preserve">
     <value>label5</value>
@@ -4267,7 +4333,7 @@
     <value>6</value>
   </data>
   <data name="colorControlInversion.ToolTip" xml:space="preserve">
-    <value>Set the color of the cell planes individually</value>
+    <value>Set the display color of the inversion-center symbols.</value>
   </data>
   <data name="&gt;&gt;colorControlInversion.Name" xml:space="preserve">
     <value>colorControlInversion</value>
@@ -4507,7 +4573,8 @@
     <value>6</value>
   </data>
   <data name="colorControlPlane.ToolTip" xml:space="preserve">
-    <value>Set the color of the cell planes individually</value>
+    <value>Set the display color of the symmetry-plane
+symbols (mirror and glide planes).</value>
   </data>
   <data name="&gt;&gt;colorControlPlane.Name" xml:space="preserve">
     <value>colorControlPlane</value>
@@ -4780,7 +4847,8 @@
     <value>6</value>
   </data>
   <data name="colorControlAxisColor.ToolTip" xml:space="preserve">
-    <value>Set the color of the cell planes individually</value>
+    <value>Set the display color of the symmetry-axis
+symbols (rotation, screw, and rotoinversion axes).</value>
   </data>
   <data name="&gt;&gt;colorControlAxisColor.Name" xml:space="preserve">
     <value>colorControlAxisColor</value>
@@ -5065,10 +5133,10 @@
     <value>0</value>
   </data>
   <data name="numericBoxLabelSize.ToolTip" xml:space="preserve">
-    <value>Font size of legend letters</value>
+    <value>Font size of the atom labels (0–200).</value>
   </data>
   <data name="numericBoxLabelSize.ToolTip1" xml:space="preserve">
-    <value>Font size of legend letters</value>
+    <value>Font size of the atom labels (0–200).</value>
   </data>
   <data name="&gt;&gt;numericBoxLabelSize.Name" xml:space="preserve">
     <value>numericBoxLabelSize</value>
@@ -6218,7 +6286,8 @@ the boundaries</value>
     <value>99</value>
   </data>
   <data name="sizeControl1.ToolTip" xml:space="preserve">
-    <value>Set the pixel dimensions of the rendered image.</value>
+    <value>Set the rendered image size (width × height)
+in pixels; the window resizes to match.</value>
   </data>
   <data name="&gt;&gt;sizeControl1.Name" xml:space="preserve">
     <value>sizeControl1</value>
@@ -6629,5 +6698,129 @@ the boundaries</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
     <value>Crystallography.Controls.FormBase, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="checkBoxSymElems_Glides.ToolTip" xml:space="preserve">
+    <value>Show glide-plane symbols (reflection
+combined with translation) of the space group</value>
+  </data>
+  <data name="checkBoxSymElems_Inversions.ToolTip" xml:space="preserve">
+    <value>Show/hide inversion centers (points where
+the structure maps onto itself under x to
+-x) among the displayed symmetry elements.</value>
+  </data>
+  <data name="checkBoxSymElems_Mirrors.ToolTip" xml:space="preserve">
+    <value>Show mirror-plane symbols of the space group</value>
+  </data>
+  <data name="checkBoxSymElems_Rotation.ToolTip" xml:space="preserve">
+    <value>Show rotation-axis symbols (2-,
+3-, 4-, 6-fold) of the space group</value>
+  </data>
+  <data name="checkBoxSymElems_Rotinversions.ToolTip" xml:space="preserve">
+    <value>Show rotoinversion-axis symbols (rotation
+followed by inversion) of the space group</value>
+  </data>
+  <data name="checkBoxSymElems_Screws.ToolTip" xml:space="preserve">
+    <value>Show screw-axis symbols (rotation combined
+with translation) of the space group</value>
+  </data>
+  <data name="colorControlLabelColor.ToolTip" xml:space="preserve">
+    <value>Fixed color applied to atom labels (used
+when 'Use fixed color' is selected)</value>
+  </data>
+  <data name="numericBoxAxisLineWidth.ToolTip" xml:space="preserve">
+    <value>Line width of the symmetry-axis symbols (0.5-10)</value>
+  </data>
+  <data name="numericBoxAxisSymbolSize.ToolTip" xml:space="preserve">
+    <value>Display size of the symmetry-axis
+symbols, in percent (20-500%)</value>
+  </data>
+  <data name="numericBoxInversionSymbolSize.ToolTip" xml:space="preserve">
+    <value>Size of the inversion-center symbols,
+as a percentage (100% = default size).</value>
+  </data>
+  <data name="numericBoxPlaneLineWidth.ToolTip" xml:space="preserve">
+    <value>Line width of the symmetry-plane symbols (0.5-10)</value>
+  </data>
+  <data name="numericBoxPlaneSymbolSize.ToolTip" xml:space="preserve">
+    <value>Display size of the symmetry-plane
+symbols, in percent (20-500%)</value>
+  </data>
+  <data name="numericBoxSubCellA.ToolTip" xml:space="preserve">
+    <value>Number of subdivisions of the unit cell along
+the a-axis (integer, 1-10) for the sub-cell
+grid shown when 'Show Subcell' is enabled.</value>
+  </data>
+  <data name="numericBoxSubCellB.ToolTip" xml:space="preserve">
+    <value>Number of subdivisions of the unit cell along
+the b-axis (integer, 1-10) for the sub-cell
+grid shown when 'Show Subcell' is enabled.</value>
+  </data>
+  <data name="numericBoxSubCellC.ToolTip" xml:space="preserve">
+    <value>Number of subdivisions of the unit cell along
+the c-axis (integer, 1-10) for the sub-cell
+grid shown when 'Show Subcell' is enabled.</value>
+  </data>
+  <data name="toolStripButtonAtomLabels.ToolTipText" xml:space="preserve">
+    <value>Show/hide atom labels (element
+symbols) overlaid on each atom.</value>
+  </data>
+  <data name="toolStripButtonAtomObjects.ToolTipText" xml:space="preserve">
+    <value>Show/hide the atom spheres in the 3D model.</value>
+  </data>
+  <data name="toolStripButtonLikeVesta.ToolTipText" xml:space="preserve">
+    <value>Reset atom radii, colors, and bonds to
+VESTA-style defaults (VESTA is a widely used
+crystal-structure visualization program).</value>
+  </data>
+  <data name="toolStripButtonResetRotation.ToolTipText" xml:space="preserve">
+    <value>Reset the model orientation to the default (no rotation).</value>
+  </data>
+  <data name="toolStripButtonSymmetryElements.ToolTipText" xml:space="preserve">
+    <value>Show/hide the crystallographic symmetry elements
+(rotation axes, mirror planes, screw axes, etc.).</value>
+  </data>
+  <data name="toolStripButtonUnitCell.ToolTipText" xml:space="preserve">
+    <value>Show/hide the unit-cell frame and faces.</value>
+  </data>
+  <data name="checkBoxShowSymmetryElements.ToolTip" xml:space="preserve">
+    <value>Overlay the crystal's symmetry elements
+(rotation axes, mirror/glide planes,
+inversion centers) on the 3-D view.</value>
+  </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value>Center of the displayed region (fractional
+coordinates) along each unit-cell axis.</value>
+  </data>
+  <data name="label10.ToolTip" xml:space="preserve">
+    <value>Translate the unit-cell frame along the
+a, b, c axes (fractional coordinates).</value>
+  </data>
+  <data name="label12.ToolTip" xml:space="preserve">
+    <value>a-axis row of the unit-cell options.</value>
+  </data>
+  <data name="label16.ToolTip" xml:space="preserve">
+    <value>b-axis row of the unit-cell options.</value>
+  </data>
+  <data name="label17.ToolTip" xml:space="preserve">
+    <value>c-axis row of the unit-cell options.</value>
+  </data>
+  <data name="label2.ToolTip" xml:space="preserve">
+    <value>Half-width of the displayed region (fractional
+coordinates) along each unit-cell axis.</value>
+  </data>
+  <data name="label3.ToolTip" xml:space="preserve">
+    <value>Set the display center to a preset fractional position.</value>
+  </data>
+  <data name="label4.ToolTip" xml:space="preserve">
+    <value>Set the display range to a preset
+fraction of each unit-cell axis.</value>
+  </data>
+  <data name="label8.ToolTip" xml:space="preserve">
+    <value>Line width of the unit-cell edges (1-5)</value>
+  </data>
+  <data name="label9.ToolTip" xml:space="preserve">
+    <value>Set the projection center as a fractional
+coordinate of the unit cell; the chosen
+point is placed at the center of the view.</value>
   </data>
 </root>

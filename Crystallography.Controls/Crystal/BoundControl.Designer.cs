@@ -48,6 +48,7 @@
             buttonDeleteBond = new System.Windows.Forms.Button();
             checkBoxImmediateUpdate = new System.Windows.Forms.CheckBox();
             toolTip = new System.Windows.Forms.ToolTip(components);
+            toolTip.IsBalloon = true; // 260531Cl 追加: バルーン表示に統一
             checkBoxEquivalency = new System.Windows.Forms.CheckBox();
             numericBoxTranslation = new NumericBox();
             label6 = new System.Windows.Forms.Label();
@@ -81,6 +82,7 @@
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             dataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             resources.ApplyResources(dataGridView, "dataGridView");
+            toolTip.SetToolTip(dataGridView, resources.GetString("dataGridView.ToolTip")); // 260531Cl
             dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             // 260517Cl iDataGridViewTextBoxColumn を k と l の間に挿入 (LatticePlaneControl と同じ並び)
             dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { enabledDataGridViewCheckBoxColumn, hDataGridViewTextBoxColumn, kDataGridViewTextBoxColumn, iDataGridViewTextBoxColumn, lDataGridViewTextBoxColumn, equivalencyDataGridViewCheckBoxColumn, MultipleOfD, distanceDataGridViewTextBoxColumn, colorDataGridViewTextBoxColumn });
@@ -194,6 +196,7 @@
             // 
             buttonAddBond.BackColor = System.Drawing.Color.SteelBlue;
             resources.ApplyResources(buttonAddBond, "buttonAddBond");
+            toolTip.SetToolTip(buttonAddBond, resources.GetString("buttonAddBond.ToolTip")); // 260531Cl
             buttonAddBond.ForeColor = System.Drawing.Color.White;
             buttonAddBond.Name = "buttonAddBond";
             buttonAddBond.UseVisualStyleBackColor = false;
@@ -275,12 +278,14 @@
             // label6
             // 
             resources.ApplyResources(label6, "label6");
+            toolTip.SetToolTip(label6, resources.GetString("label6.ToolTip")); // 260531Cl
             label6.Name = "label6";
             // 
             // colorControl
             // 
             colorControl.Argb = -16728064;
             resources.ApplyResources(colorControl, "colorControl");
+            toolTip.SetToolTip(colorControl, resources.GetString("colorControl.ToolTip")); // 260531Cl
             colorControl.BackColor = System.Drawing.SystemColors.Control;
             colorControl.Blue = 0;
             colorControl.BlueF = 0F;
@@ -303,6 +308,7 @@
             // numericBoxDistanceD
             // 
             resources.ApplyResources(numericBoxDistanceD, "numericBoxDistanceD");
+            toolTip.SetToolTip(numericBoxDistanceD, resources.GetString("numericBoxDistanceD.ToolTip")); // 260531Cl
             numericBoxDistanceD.BackColor = System.Drawing.SystemColors.Control;
             numericBoxDistanceD.DecimalPlaces = 3;
             numericBoxDistanceD.FooterBackColor = System.Drawing.SystemColors.Control;
@@ -321,6 +327,7 @@
             // numericBoxDistance
             // 
             resources.ApplyResources(numericBoxDistance, "numericBoxDistance");
+            toolTip.SetToolTip(numericBoxDistance, resources.GetString("numericBoxDistance.ToolTip")); // 260531Cl
             numericBoxDistance.BackColor = System.Drawing.SystemColors.Control;
             numericBoxDistance.DecimalPlaces = 3;
             numericBoxDistance.FooterBackColor = System.Drawing.SystemColors.Control;
@@ -347,11 +354,13 @@
             // label3
             // 
             resources.ApplyResources(label3, "label3");
+            toolTip.SetToolTip(label3, resources.GetString("label3.ToolTip")); // 260531Cl
             label3.Name = "label3";
             // 
             // indexControl1
             // 
             resources.ApplyResources(indexControl, "indexControl1");
+            toolTip.SetToolTip(indexControl, resources.GetString("indexControl1.ToolTip")); // 260531Cl
             indexControl.BoxWidth = 38;
             indexControl.Bracket = IndexControl.BracketEnum.Round;
             indexControl.Mode = IndexControl.ModeEnum.Plane;
