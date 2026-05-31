@@ -21,11 +21,17 @@ The stereonet itself is a 2-D projection; an optional 3-D sphere can be shown wi
 | Middle-drag | Pan |
 | Move the mouse (no button) | Read off the (hkl)/[uvw] under the cursor — useful for indexing a measured spot |
 
-Dragging on the net rotates the **crystal** (it drives the shared orientation). The optional 3-D sphere uses ReciPro's standard [OpenGL view navigation](21-shortcuts.md) — left-drag rotate, right-drag / wheel zoom, <kbd>CTRL</kbd> + right double-click toggles projection — and rotates only the 3-D view, not the crystal.
+Dragging on the net rotates the **crystal**; the rotation state is shared across all windows.
+
+The 3-D rendering uses ReciPro's standard [OpenGL view navigation](21-shortcuts.md) (left-drag rotate, right-drag / wheel zoom, <kbd>CTRL</kbd> + right double-click toggles projection) and rotates only the 3-D view, not the crystal itself.
 
 The application-wide <kbd>CTRL</kbd>+<kbd>SHIFT</kbd> shortcuts from the [main window](0-main-window.md#keyboard-mouse-shortcuts) also work while this window is focused.
 
 → See **[21. Keyboard & mouse shortcuts](21-shortcuts.md)** for every window at a glance.
+
+## Main area
+
+The stereonet projection of the selected crystal's crystal planes, direction indices, and Kikuchi lines is displayed.
 
 ## File menu
 Save or copy in raster or vector format. Vector format allows editing font/line thickness in PowerPoint or other vector editors.
@@ -38,9 +44,9 @@ Save or copy in raster or vector format. Vector format allows editing font/line 
 
 Select what to project onto the net.
 
-- **Axis** — projects zone-axis directions [*uvw*].
-- **Plane** — projects crystal-plane normals {*hkl*}.
-- **Kikuchi line** — projects Kikuchi-line pairs (the (*hkl*) trace and its companion).
+- **Axes** — projects direction indices \([uvw]\).
+- **Planes** — projects crystal-plane normals \((hkl)\).
+- **Kikuchi line pairs** — projects Kikuchi-line pairs.
 
 ### Projection method
 
@@ -56,7 +62,7 @@ Choose **Upper** or **Lower** hemisphere as the projection source — switches w
 ### Display options
 
 - Show index labels.
-- Optionally weight each point by structure factor *F*ₕₖₗ when **Plane** is selected (set the wave source in the [Wave tab](#wave)).
+- When **Planes** or **Kikuchi line pairs** is selected, weight each point or line by the structure factor \(|F_{hkl}|\) (set the wave source and wavelength in the [Wave tab](#wave)).
 
 > For trigonal/hexagonal crystals, Miller–Bravais (4-index) notation can be enabled from **Option ▸ Use Miller-Bravais (hkil) index** in the main window.
 
@@ -68,15 +74,15 @@ Sets which crystal planes / axes are drawn.
 
 ### Range mode
 
-Specifies a range of [*u v w*] or {*h k l*} indices to be drawn. ReciPro enumerates every (*hkl*) within the limits and projects each one.
+Specify a range of \([uvw]\) or \((hkl)\) indices. ReciPro enumerates every index within the limits and projects each one.
 
 ### Specified mode
 
-Specifies particular axes or planes individually. Type an index, press **Add** to register it, or **Remove** to delete it. When **include equivalent indices** is checked, all crystallographically equivalent planes/axes are added at once.
+Specifies particular axes or planes individually. Type an index, press **Add** to register it, or **Remove** to delete it. When **include equivalent indices** is checked, all crystallographically equivalent indices are drawn as well.
 
-### Colour
+### Colour / Size
 
-Set the plot colour. Tick **Change colour automatically** to colour-code each set of equivalent axes/planes differently — useful for distinguishing families on a multi-index plot.
+Set the **colour** and **size** of the plotted points. Tick **Change colour automatically** to colour-code each set of equivalent axes/planes differently — useful for distinguishing families on a multi-index plot.
 
 ## 3D Options
 
@@ -98,7 +104,7 @@ How the stereonet outline is drawn — the bounding circle and the optional grea
 
 - **Size** — size of the index labels.
 - **Specify color** — use a single fixed colour for all index labels instead of the per-spot colour, useful when the points are colour-coded but you want all labels in one colour for readability.
-- **Delimiter** — character placed between Miller indices in each label: **None** (e.g. 100), **Space** (1 0 0), or **Comma** (1,0,0).
+- **Delimiter** — character placed between the indices in each label: **None** (e.g. 100), **Space** (1 0 0), or **Comma** (1,0,0).
 
 #### Kikuchi line mode
 
@@ -109,10 +115,10 @@ How the stereonet outline is drawn — the bounding circle and the optional grea
 
 ![Great Circle tab](../assets/cap-en-auto/FormStereonet.tabControl.tabPage2.png)
 
-Draw great circles and small circles. Specify either by **zone-axis index** [*uvw*] (the great circle of planes containing that axis) or by **two crystal-plane indices** that share the zone axis. The line width of the circles is also configurable via track bar.
+Draw great circles and small circles. Specify either by **zone-axis index** \([uvw]\) (the great circle formed by the zone of that axis) or by **two crystal-plane indices** that share the zone axis. The line width of the circles is also configurable via track bar.
 
 ### Wave {#wave}
 
 ![Wave tab](../assets/cap-en-auto/FormStereonet.tabControl.tabPage4.png)
 
-Available only when **Plane** is selected as the projection target. Sets the wave source (X-ray / electron / neutron) and the wavelength or energy required to compute the crystal structure factors used for the **structure-factor weighting** option in [Mode](#mode).
+Available only when **Planes** or **Kikuchi line pairs** is selected as the projection target. Sets the wave source (X-ray / electron / neutron) and the wavelength or energy required to compute the crystal structure factors used for the **structure-factor weighting** option in [Mode](#mode).

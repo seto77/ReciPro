@@ -125,8 +125,13 @@ Resets to initial: *c*-axis perpendicular to screen, *b*-axis upward.
 Displays closest zone axis to screen normal (e.g., *u*+*v*+*w* < 30).
 
 ### Euler angles (Z-X-Z)
-- **Psi**: Z-axis rotation, **Theta**: X-axis rotation, **Phi**: Z-axis rotation
-- See [3. Rotation Geometry](4-rotation-geometry.md) and [Appendix A1. Coordinate System](appendix/a1-coordinate-system/1-orientation.md).
+Set the crystal orientation with **Z–X–Z** Euler angles:
+
+- \(\Phi\): Z-axis rotation
+- \(\Theta\): X-axis rotation
+- \(\Psi\): Z-axis rotation
+
+The rotations are applied in the order \(\Psi \to \Theta \to \Phi\). See [Rotation Geometry](4-rotation-geometry.md) and [Appendix A1. Coordinate System](appendix/a1-coordinate-system/1-orientation.md) for details.
 
 ### Arrows
 
@@ -141,8 +146,8 @@ Rotate by angle Step. Check Animation for continuous rotation.
 Align a zone axis [*uvw*] or crystal plane (*hkl*) perpendicular to the screen.
 
 - **Fix**: when checked, the specified zone axis or plane is held spatially fixed during subsequent rotation operations.
-- **Axis ([uvw])**: the entered zone axis is placed perpendicular to the screen (pointing into the screen). If the plane field is also set and the plane is perpendicular to the axis, the plane direction is pointed upward on the screen.
-- **Plane ((hkl))**: the normal of the entered crystal plane is placed perpendicular to the screen. If **Axis** is set to 0, the zone axis is pointed upward on the screen.
+- **Axis**: places the entered zone axis \([uvw]\) perpendicular to the screen. If **Plane** is also set, that direction is pointed upward on the screen.
+- **Plane**: places the normal of the entered crystal plane \((hkl)\) perpendicular to the screen. If **Axis** is also set, that direction is pointed upward on the screen.
 
 ### Basic ways to set the orientation
 
@@ -176,8 +181,6 @@ See [Rotation Geometry](4-rotation-geometry.md) and [Appendix A1. Coordinate sys
 ---
 
 ## Crystal Information
-
-![Crystal Information](../assets/cap-en-auto/FormMain.toolStripContainer1.splitContainer.groupBoxCrystalInformation.png)
 
 Edit lattice parameters, symmetry, and atoms. Drag & drop CIF/AMC files.
 

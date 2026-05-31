@@ -1,6 +1,6 @@
 # EBSD Simulation
 
-**EBSD Simulator** simulates the electron backscatter diffraction (EBSD) patterns — Kikuchi patterns — obtained in a scanning electron microscope (SEM), from first principles. It computes the angular/energy/depth distribution of backscattered electrons (BSE) by a Monte-Carlo simulation, builds a dynamical (Bloch-wave) **master pattern** of the crystal, and projects it onto the detector for the current crystal orientation.
+**EBSD Simulator** simulates the electron backscatter diffraction (EBSD) patterns — Kikuchi patterns — obtained in a scanning electron microscope (SEM), using dynamical-theory calculations. It computes the angular/energy/depth distribution of backscattered electrons (BSE) by a Monte-Carlo simulation, builds a dynamical (Bloch-wave) **master pattern** of the crystal, and projects it onto the detector for the current crystal orientation.
 
 ![EBSD Simulator](../assets/cap-en-auto/FormEBSD.png)
 
@@ -56,8 +56,6 @@ The energy and depth ranges are set automatically in steps 1–2, but can be adj
 - **Wavelength** : electron wavelength (Å), linked to Energy.
 - **Sample tilt** : sample tilt angle (typically 70°). The large tilt in EBSD increases the backscattered-electron yield.
 
----
-
 ### EBSD geometry
 
 ![EBSD geometry](../assets/cap-en-auto/FormEBSD.tabControl1.tabPage1.groupBoxEBSDGeometry.png)
@@ -92,7 +90,7 @@ These distributions are computed by the same Monte-Carlo engine as [Electron tra
 
 ![Overlays](../assets/cap-en-auto/FormEBSD.tabControl1.tabPage3.png)
 
-The **Overlays** tab configures the annotations drawn on the pattern.
+The **Overlays** tab configures the annotations drawn on the EBSD pattern.
 
 - **Background color** : background colour.
 - **Detector outline** : the detector outline. **Show circle** (perimeter) / **Show mesh** (grid).
@@ -108,7 +106,7 @@ The **Overlays** tab configures the annotations drawn on the pattern.
 
 ![Master pattern](../assets/cap-en-auto/FormEBSD.groupBoxMasterPattern.png)
 
-The master pattern is the orientation-independent backscatter diffraction intensity over all directions, computed by the dynamical theory with **Build Master Pattern**.
+The master pattern is the backscatter diffraction intensity over all directions, computed in advance by the dynamical theory with **Build Master Pattern**.
 
 - **2D view** (left) : equal-area projection of a hemisphere. **Hemisphere** selects the projected hemisphere (+Z / −Z).
 - **3D view** (right) : a sphere with the intensity mapped onto it. It can be rotated with the mouse, and an inset at the top-right shows the synchronised crystal axes (a/b/c). **Axis Labels** / **Axis Arrows** toggle the labels/arrows, and **View Along** looks down a chosen zone axis [u v w].

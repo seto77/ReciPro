@@ -46,7 +46,7 @@ Select the radiation type (X-ray / electron / neutron) and set the energy or wav
 
 ### Camera length / Pixel size
 
-The camera length (mm) and detector pixel size (μm). When a Gatan DM file is loaded, these values are populated from the file header.
+The camera length (mm) and detector pixel size (mm or nm⁻¹). When a Gatan DM file is loaded, these values are populated from the file header.
 
 ---
 
@@ -54,11 +54,16 @@ The camera length (mm) and detector pixel size (μm). When a Gatan DM file is lo
 
 ![Spot information](../assets/cap-en-auto/FormSpotIDV2.splitContainer1.groupBoxSpot.png)
 
-- **Find spots**: Automatic spot detection with advanced peak-finding using local maxima and background subtraction.
-- **Donut filter**: Applies a donut-shaped (annular) filter to enhance ring-shaped diffraction features and suppress the central beam.
+- **Detect & Fit Spots**: Automatic spot detection using local maxima and background subtraction.
+- **Number**: The maximum number of spots to detect.
+- **Nearest neighbor**: The minimum separation (px) allowed between detected spots. Peaks closer than this are merged, preventing double-detection of the same spot.
+- **Fitting range (radius)**: The radius (px) of the circular region used to fit each spot's peak. Pixels inside this circle are fitted with a pseudo-Voigt function.
+- **Apply to All**: Sets the fitting radius of every spot to the current **Fitting range (radius)** value.
 - **Delete spot / Clear spots**: Remove individual or all detected spots.
-- **Reset range for all spots**: Reset the fitting range for all spots to default.
-- **Copy to clipboard**: Copy spot positions and intensities to the clipboard for external analysis.
+- **Copy to clipboard**: Copy spot positions and intensities to the clipboard.
+- **Details of the spot**: When checked, opens a window showing detailed information about the currently selected spot.
+
+![Details of the spot](../assets/cap-en-auto/FormSpotIDv2Details.png)
 
 ---
 
@@ -66,9 +71,10 @@ The camera length (mm) and detector pixel size (μm). When a Gatan DM file is lo
 
 ![Index](../assets/cap-en-auto/FormSpotIDV2.splitContainer1.groupBoxIndex.png)
 
-- **Crystal selection**: Choose which crystals from the crystal list to use as candidates for indexing.
-- **Search**: Run the indexing algorithm to find the best-matching crystal and zone axis.
-- **Tolerance**: Set the acceptable deviation in d-spacing and angle for a match.
+- **Identify Spots**: Run the indexing algorithm to find the best-matching crystal and zone axis.
+- **Acceptable error**: Set the acceptable deviation in d-spacing and angle for a match.
+- **Ignore prohibited reflections**: When checked, reflections forbidden by screw axes and glide planes are treated as not necessarily satisfied while searching for the zone axis.
+- **Single Grain / Multiple Grains**: Search for a single orientation (single crystal), or for several orientations (a polycrystalline / multi-grain region). For multiple grains, **Max. num. of grains** sets the upper limit on the number of grains to search for.
 - **Results**: The best matches are displayed with crystal name, zone axis [uvw], and individual spot indices (hkl).
 
 ---

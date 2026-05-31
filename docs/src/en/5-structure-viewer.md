@@ -1,6 +1,6 @@
 # Structure Viewer
 
-**Structure Viewer** draws the selected crystal as a three-dimensional image using OpenGL.
+**Structure Viewer** draws the structure of the selected crystal as a three-dimensional image using OpenGL.
 
 ![Structure Viewer](../assets/cap-en-auto/FormStructureViewer.png)
 
@@ -56,11 +56,9 @@ Save image, copy to clipboard (Ctrl+Shift+C), save movie (MP4).
 
 ## Tab menu
 
-### Bounds
+### Bounds defined by cell
 
-Drawing range by unit cell or crystal planes. Bound planes, clipping, hide atoms. Switch between the two modes with the radio buttons at the top.
-
-#### Bounds defined by cell
+Specify the drawing range of the crystal. There are two modes, switched with the radio buttons at the top.
 
 ![Bounds tab](../assets/cap-en-auto/FormStructureViewer.splitContainer1.tabControl.tabPageBounds.png)
 
@@ -70,23 +68,23 @@ In this mode the *a*, *b*, *c* axes of the unit cell are the unit of the drawing
 - **Range**: upper/lower limit for each of the *a*, *b*, *c* axes.
 - **Preset buttons** on the right give frequently used values (e.g. 1×1×1 cell, 2×2×2 cell).
 
-#### Bounds defined by crystal planes
+### Bounds defined by crystal planes
 
 ![Bounds by crystal planes](../assets/cap-en-auto/FormStructureViewer.splitContainer1.tabControl.tabPageBounds.tabControlBoundOption.tabPageBoundPlane.png)
 
 In this mode the drawing area is bounded by a set of crystal planes. If the planes do not define a spatially closed region, ReciPro automatically falls back to a one-unit-cell bound.
 
-##### Bound list
+#### Bound list
 
 All bound planes registered for the current crystal. Use **Add / Replace / Delete** to manipulate the list; the leftmost checkbox temporarily disables a plane without deleting it.
 
 > To save the changes permanently, you must also press **Add** or **Replace** in the **Main Window**. Otherwise the changes are lost the next time you change the selection in the main crystal list.
 
-##### H k l indices
+#### H k l indices
 
 Set the bound plane by its Miller index. The checkbox includes crystallographically equivalent planes generated from the selected (*hkl*).
 
-##### Distance from origin
+#### Distance from origin
 
 The distance from the centre of the crystal to the bound plane. The unit is selectable between **d** and **Å**. With **d**, the distance is the input value multiplied by the *d*-spacing of the selected (*hkl*). With **Å**, the value is the absolute distance. Changing one updates the other automatically.
 
@@ -233,6 +231,10 @@ Projection mode (orthographic/perspective), depth fading, rendering quality, tra
 
 Fades distant objects in the depth direction. Objects farther than **Far** are fully transparent; objects closer than **Near** are fully opaque; intermediate objects interpolate linearly.
 
+#### Projection center
+
+Sets the centre of projection to the specified coordinates. Turn on **Custom** to enter arbitrary coordinates.
+
 #### Rendering quality
 
 Drawing quality (mesh subdivision, anti-aliasing). Higher quality is slower — choose the setting that matches your GPU.
@@ -258,7 +260,9 @@ For each class you can adjust the symbol size, line width, and colour.
 
 ![Misc tab](../assets/cap-en-auto/FormStructureViewer.splitContainer1.tabControl.tabPageMisc.png)
 
-Accessory panel size, label settings, bonded atoms outside boundaries.
+- **Accessory controls**: set the display sizes (light ball, axes, legend). **Group by element** toggles the legend display.
+- **Bonded atoms**: **Show bonded atoms even if they are outside the boundaries** keeps drawing atoms that are bonded to atoms inside the drawing range, even when they fall outside it.
+- **Label**: set the font size, colour, and other properties of the atom labels.
 
 ---
 
