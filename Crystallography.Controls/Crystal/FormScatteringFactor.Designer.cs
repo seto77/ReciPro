@@ -65,6 +65,9 @@
             waveLengthControl1 = new WaveLengthControl();
             toolTip = new System.Windows.Forms.ToolTip(components);
             toolTip.IsBalloon = true; // 260531Cl 追加: バルーン表示に統一
+            toolTip.AutoPopDelay = 10000; // 260601Cl 追加: 長文表示時間を延長(共通標準値)
+            toolTip.InitialDelay = 500; // 260601Cl 追加
+            toolTip.ReshowDelay = 100; // 260601Cl 追加
             label8 = new System.Windows.Forms.Label();
             checkBoxTest = new System.Windows.Forms.CheckBox();
             label1 = new System.Windows.Forms.Label();

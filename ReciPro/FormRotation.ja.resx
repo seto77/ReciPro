@@ -316,36 +316,36 @@ Exp1 がこの軸まわりに適用されます）。</value>
 ・無次元）。ZXZオイラー角Φ・Θ・Ψから算出されます。</value>
   </data>
   <data name="numericBox12.ToolTip" xml:space="preserve">
-    <value>ReciPro座標系の回転（方位）行列の(1,2)成分（読取専
-用・無次元）。ZXZオイラー角から算出されます。</value>
+    <value>ReciPro座標系の回転（方位）行列の(1,2)成分（読取
+専用・無次元）。ZXZオイラー角から算出されます。</value>
   </data>
   <data name="numericBox13.ToolTip" xml:space="preserve">
-    <value>ReciPro座標系の回転（方位）行列の(1,3)成分（読取専
-用・無次元）。ZXZオイラー角から算出されます。</value>
+    <value>ReciPro座標系の回転（方位）行列の(1,3)成分（読取
+専用・無次元）。ZXZオイラー角から算出されます。</value>
   </data>
   <data name="numericBox21.ToolTip" xml:space="preserve">
-    <value>ReciPro座標系の回転（方位）行列の(2,1)成分（読取専
-用・無次元）。ZXZオイラー角から算出されます。</value>
+    <value>ReciPro座標系の回転（方位）行列の(2,1)成分（読取
+専用・無次元）。ZXZオイラー角から算出されます。</value>
   </data>
   <data name="numericBox22.ToolTip" xml:space="preserve">
-    <value>ReciPro座標系の回転（方位）行列の(2,2)成分（読取専
-用・無次元）。ZXZオイラー角から算出されます。</value>
+    <value>ReciPro座標系の回転（方位）行列の(2,2)成分（読取
+専用・無次元）。ZXZオイラー角から算出されます。</value>
   </data>
   <data name="numericBox23.ToolTip" xml:space="preserve">
-    <value>ReciPro座標系の回転（方位）行列の(2,3)成分（読取専
-用・無次元）。ZXZオイラー角から算出されます。</value>
+    <value>ReciPro座標系の回転（方位）行列の(2,3)成分（読取
+専用・無次元）。ZXZオイラー角から算出されます。</value>
   </data>
   <data name="numericBox31.ToolTip" xml:space="preserve">
-    <value>ReciPro座標系の回転（方位）行列の(3,1)成分（読取専
-用・無次元）。ZXZオイラー角から算出されます。</value>
+    <value>ReciPro座標系の回転（方位）行列の(3,1)成分（読取
+専用・無次元）。ZXZオイラー角から算出されます。</value>
   </data>
   <data name="numericBox32.ToolTip" xml:space="preserve">
-    <value>ReciPro座標系の回転（方位）行列の(3,2)成分（読取専
-用・無次元）。ZXZオイラー角から算出されます。</value>
+    <value>ReciPro座標系の回転（方位）行列の(3,2)成分（読取
+専用・無次元）。ZXZオイラー角から算出されます。</value>
   </data>
   <data name="numericBox33.ToolTip" xml:space="preserve">
-    <value>ReciPro座標系の回転（方位）行列の(3,3)成分（読取専
-用・無次元）。ZXZオイラー角から算出されます。</value>
+    <value>ReciPro座標系の回転（方位）行列の(3,3)成分（読取
+専用・無次元）。ZXZオイラー角から算出されます。</value>
   </data>
   <data name="label1.ToolTip" xml:space="preserve">
     <value>ReciPro座標系（ZXZ規約）の第2オイラー角Θ（度、

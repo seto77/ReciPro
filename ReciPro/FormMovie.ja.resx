@@ -166,7 +166,7 @@
 現行の Media Foundation エンコーダでは進捗表示に
 使われるのみで、実際のエンコードには影響しません。</value>
   </data>
-  <data name="indexControl.ToolTip" xml:space="preserve">
+  <data name="indexControl1.ToolTip" xml:space="preserve">
     <value>回転軸を定める指数を入力します。方向指数モード
 では方向 [uvw]、格子面モードでは格子面 (hkl)
 (その法線まわりに回転) として解釈されます。</value>

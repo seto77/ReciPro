@@ -422,7 +422,7 @@
   </data>
   <data name="buttonSearchAll.ToolTip" xml:space="preserve">
     <value>2枚または3枚の回折パターンとパターン間のホルダー
-傾斜角を同時に満たすゾーン軸の組み合わせを、
+傾斜角を同時に満たす晶帯軸の組み合わせを、
 全登録結晶について探索し、候補結果を表示します。</value>
   </data>
   <data name="buttonSearchPhoto1.ToolTip" xml:space="preserve">
@@ -463,12 +463,12 @@
   <data name="checkBoxPhoto2.ToolTip" xml:space="preserve">
     <value>2枚目の回折パターン(Photo 2)を有効化しま
 す。入力欄が表示され、2枚のパターンと相互の
-ホルダー傾斜からゾーン軸を探索できます。</value>
+ホルダー傾斜から晶帯軸を探索できます。</value>
   </data>
   <data name="checkBoxPhoto3.ToolTip" xml:space="preserve">
     <value>3枚目の回折パターン(Photo 3)を有効化します。
 入力欄が表示され、3枚のパターンと相互のホルダー
-傾斜からゾーン軸を探索できます(Photo 2 が必要)。</value>
+傾斜から晶帯軸を探索できます(Photo 2 が必要)。</value>
   </data>
   <data name="numericBoxAccVol.ToolTip" xml:space="preserve">
     <value>透過電子顕微鏡(TEM)の加速電圧(kV)。電子波長を
@@ -597,12 +597,12 @@ Sides and an Angle' モードでのみ有効です。</value>
   <data name="numericBoxPhoto3Tilt1Err.ToolTip" xml:space="preserve">
     <value>Photo 3 の Tilt 1 角度に対する
 許容誤差(±度, 0〜10)。ホルダー間角度がこの
-範囲内で一致するゾーン軸候補を採用します。</value>
+範囲内で一致する晶帯軸候補を採用します。</value>
   </data>
   <data name="numericBoxPhoto3Tilt2Err.ToolTip" xml:space="preserve">
     <value>Photo 3 の Tilt 2 角度に対する
 許容誤差(±度, 0〜10)。ホルダー間角度がこの
-範囲内で一致するゾーン軸候補を採用します。</value>
+範囲内で一致する晶帯軸候補を採用します。</value>
   </data>
   <data name="radioButtonPhoto1Mode1.ToolTip" xml:space="preserve">
     <value>Pattern 1 を 3 辺 L1・L2・L3 で指定するモード。角 θ は

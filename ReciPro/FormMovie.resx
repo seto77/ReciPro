@@ -221,10 +221,4 @@ axis: a direction [uvw] in Direction-index
 mode, or a lattice plane (hkl) (rotation
 about its normal) in Lattice-plane mode.</value>
   </data>
-  <data name="indexControl.ToolTip" xml:space="preserve">
-    <value>Enter the indices that define the rotation
-axis: a direction [uvw] in Direction-index
-mode, or a lattice plane (hkl) (rotation
-about its normal) in Lattice-plane mode.</value>
-  </data>
 </root>

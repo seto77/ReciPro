@@ -1116,7 +1116,7 @@ PCHIP補間で圧縮し、生成ソースを出力します。</value>
 をクリップボードにコピーします。</value>
   </data>
   <data name="buttonMasterPattern3DViewAlong.ToolTip" xml:space="preserve">
-    <value>右の[u v w]で指定したゾーン軸が視線方向を
+    <value>右の[u v w]で指定した晶帯軸が視線方向を
 向くよう3Dマスターパターンを回転します。</value>
   </data>
   <data name="buttonSimulateBSE.ToolTip" xml:space="preserve">
@@ -1146,9 +1146,9 @@ PCHIP補間で圧縮し、生成ソースを出力します。</value>
 表示します。輪郭オプション群が有効になります。</value>
   </data>
   <data name="checkBoxKikuchiLine_Kinematical.ToolTip" xml:space="preserve">
-    <value>各菊池線の濃さを構造因子(運動学的回折強
-度=単位胞1個が散乱する振幅)で重み付けし
-ます。強い反射ほど濃く表示されます。</value>
+    <value>各菊池線の濃さを構造因子(運動学的回折
+強度=単位胞1個が散乱する振幅)で重み付け
+します。強い反射ほど濃く表示されます。</value>
   </data>
   <data name="checkBoxMasterPattern3DAxisArrows.ToolTip" xml:space="preserve">
     <value>3Dマスターパターンビューに結晶軸
@@ -1166,8 +1166,8 @@ a/b/c の軸ラベル文字を表示します。</value>
     <value>検出器のアウトラインを示す円をパターン上に描画します。</value>
   </data>
   <data name="checkBoxShowDyanmicalEBSD.ToolTip" xml:space="preserve">
-    <value>マスターパターンから投影した動力学EBSD(後方散乱電子回
-折)パターンを表示します。オフでは背景のみになります。</value>
+    <value>マスターパターンから投影した動力学EBSD(後方散乱電子
+回折)パターンを表示します。オフでは背景のみになります。</value>
   </data>
   <data name="checkBoxShowGIndices.ToolTip" xml:space="preserve">
     <value>各菊池線(菊池バンド)に対応する
@@ -1181,7 +1181,7 @@ a/b/c の軸ラベル文字を表示します。</value>
     <value>検出器面の分割メッシュ(格子線)をパターン上に描画します。</value>
   </data>
   <data name="checkBoxShowOverlays.ToolTip" xml:space="preserve">
-    <value>パターン上に菊池線・指数・ゾーン軸・
+    <value>パターン上に菊池線・指数・晶帯軸・
 検出器アウトラインを重ねて表示します。</value>
   </data>
   <data name="checkBoxShowZoneAxisIndices.ToolTip" xml:space="preserve">
@@ -1219,7 +1219,7 @@ Cold-Warm / Spectrum / Fire)を選択します。</value>
   </data>
   <data name="indexControl.ToolTip" xml:space="preserve">
     <value>'View Along' ボタンで3Dマスターパターンを
-向けるゾーン軸指数 [u v w] を入力します。</value>
+向ける晶帯軸指数 [u v w] を入力します。</value>
   </data>
   <data name="numericBoxDepth.ToolTip" xml:space="preserve">
     <value>現在レンダリングしているEBSDパターンの深さ

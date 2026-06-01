@@ -90,23 +90,23 @@
 無次元）。変更すると格子定数と応力が再計算されます。</value>
   </data>
   <data name="numericBoxStrain12.ToolTip" xml:space="preserve">
-    <value>歪みテンソルのせん断歪み成分 ε12（a-b(x-y)面
-内、無次元。ε12=ε21 として対称に扱われます）。
-変更すると格子定数と応力が再計算されます。</value>
+    <value>歪みテンソルのせん断歪み成分 ε12（a-b(x-y)面内、
+無次元。ε12=ε21 として対称に扱われます）。変更す
+ると格子定数と応力が再計算されます。</value>
   </data>
   <data name="numericBoxStrain13.ToolTip" xml:space="preserve">
-    <value>歪みテンソルのせん断歪み成分 ε13（a-c(x-z)面
-内、無次元。ε13=ε31 として対称に扱われます）。
-変更すると格子定数と応力が再計算されます。</value>
+    <value>歪みテンソルのせん断歪み成分 ε13（a-c(x-z)面内、
+無次元。ε13=ε31 として対称に扱われます）。変更す
+ると格子定数と応力が再計算されます。</value>
   </data>
   <data name="numericBoxStrain22.ToolTip" xml:space="preserve">
     <value>歪みテンソルの垂直歪み成分 ε22（b(y)方向の伸び、
 無次元）。変更すると格子定数と応力が再計算されます。</value>
   </data>
   <data name="numericBoxStrain23.ToolTip" xml:space="preserve">
-    <value>歪みテンソルのせん断歪み成分 ε23（b-c(y-z)面
-内、無次元。ε23=ε32 として対称に扱われます）。
-変更すると格子定数と応力が再計算されます。</value>
+    <value>歪みテンソルのせん断歪み成分 ε23（b-c(y-z)面内、
+無次元。ε23=ε32 として対称に扱われます）。変更す
+ると格子定数と応力が再計算されます。</value>
   </data>
   <data name="numericBoxStrain33.ToolTip" xml:space="preserve">
     <value>歪みテンソルの垂直歪み成分 ε33（c(z)方向の伸び、

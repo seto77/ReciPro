@@ -79,6 +79,9 @@
             checkBoxEnableArrow = new System.Windows.Forms.CheckBox();
             toolTip1 = new System.Windows.Forms.ToolTip(components);
             toolTip1.IsBalloon = true; // 260531Cl 追加: バルーン表示に統一
+            toolTip1.AutoPopDelay = 10000; // 260601Cl 追加: 長文表示時間を延長(共通標準値)
+            toolTip1.InitialDelay = 500; // 260601Cl 追加
+            toolTip1.ReshowDelay = 100; // 260601Cl 追加
             ((System.ComponentModel.ISupportInitialize)graphicsBox).BeginInit();
             groupBoxTEMSettings.SuspendLayout();
             groupBoxLink.SuspendLayout();

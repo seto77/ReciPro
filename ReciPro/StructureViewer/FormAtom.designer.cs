@@ -54,6 +54,9 @@
             this.radioButtonAllSameElement = new System.Windows.Forms.RadioButton();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.toolTip1.IsBalloon = true; // 260531Cl 追加: バルーン表示に統一
+            toolTip1.AutoPopDelay = 10000; // 260601Cl 追加: 長文表示時間を延長(共通標準値)
+            toolTip1.InitialDelay = 500; // 260601Cl 追加
+            toolTip1.ReshowDelay = 100; // 260601Cl 追加
             this.groupBoxMaterial.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAtomColor)).BeginInit();                                                          // 260522Cl: numericBoxAtom* は NumericBox 化に伴い ISupportInitialize 不要
             this.SuspendLayout();

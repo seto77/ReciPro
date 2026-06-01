@@ -865,9 +865,6 @@
   <data name="colorControl3D_SpotsNear.ToolTip" xml:space="preserve">
     <value>エワルド球近傍の逆格子点の色を設定します。</value>
   </data>
-  <data name="colorControl3D_SpotsNear.ToolTip1" xml:space="preserve">
-    <value>背景色を設定</value>
-  </data>
   <data name="numericBox3D_SpotRadius.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 8pt</value>
   </data>
@@ -933,9 +930,6 @@
   <data name="numericBoxReciprocalThreshold.ToolTip" xml:space="preserve">
     <value>逆格子点を表示する相対強度のしきい値(%)を設定し
 ます。これより弱いスポットは非表示になります。</value>
-  </data>
-  <data name="numericBoxReciprocalThreshold.ToolTip1" xml:space="preserve">
-    <value>シミュレーションパターンのピクセルサイズを設定</value>
   </data>
   <data name="buttonAntiClock.Size" type="System.Drawing.Size, System.Drawing">
     <value>25, 21</value>
@@ -1085,9 +1079,6 @@
   </data>
   <data name="colorControl3D_lText.ToolTip" xml:space="preserve">
     <value>3D ビューの指数ラベル文字の色を設定します。</value>
-  </data>
-  <data name="colorControl3D_lText.ToolTip1" xml:space="preserve">
-    <value>背景色を設定</value>
   </data>
   <data name="checkBox3D_DirectionGuide.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
@@ -2635,8 +2626,8 @@ Beam/Top/Right の方向ガイド矢印を表示します。</value>
 ます。これより弱いスポットは非表示になります。</value>
   </data>
   <data name="checkBoxKikuchiLine_Kinematical.ToolTip" xml:space="preserve">
-    <value>チェックすると、各反射の運動学的相対強
-度に応じて菊池線の濃さを変化させます。</value>
+    <value>チェックすると、各反射の運動学的相対強度
+に応じて菊池線の濃さを変化させます。</value>
   </data>
   <data name="colorControlExcessLine.ToolTip" xml:space="preserve">
     <value>菊池線の色を設定します。</value>

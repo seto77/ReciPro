@@ -27,6 +27,10 @@
             components = new System.ComponentModel.Container();
             pictureBox = new System.Windows.Forms.PictureBox();
             toolTip = new System.Windows.Forms.ToolTip(components);
+            toolTip.IsBalloon = true; // 260601Cl 追加: バルーン統一
+            toolTip.AutoPopDelay = 10000; // 260601Cl 追加: 長文表示時間を延長(共通標準値)
+            toolTip.InitialDelay = 500; // 260601Cl 追加
+            toolTip.ReshowDelay = 100; // 260601Cl 追加
             labelHeader = new System.Windows.Forms.Label();
             flowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             labelFooter = new System.Windows.Forms.Label();

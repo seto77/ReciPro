@@ -31,6 +31,10 @@
             labelFooter = new System.Windows.Forms.Label();
             spinButtonPanel = new System.Windows.Forms.Panel();
             toolTip = new System.Windows.Forms.ToolTip(components);
+            toolTip.IsBalloon = true; // 260601Cl 追加: バルーン統一
+            toolTip.AutoPopDelay = 10000; // 260601Cl 追加: 長文表示時間を延長(共通標準値)
+            toolTip.InitialDelay = 500; // 260601Cl 追加
+            toolTip.ReshowDelay = 100; // 260601Cl 追加
             SuspendLayout();
             // 
             // textBox

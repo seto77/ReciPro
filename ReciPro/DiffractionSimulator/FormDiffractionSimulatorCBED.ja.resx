@@ -205,9 +205,6 @@
 波）の本数 (1〜2048) を設定します。多いほど
 精度は上がりますが計算は遅くなります。</value>
   </data>
-  <data name="numericBoxMaxNumOfG.ToolTip1" xml:space="preserve">
-    <value>計算する回折波の数を設定</value>
-  </data>
   <data name="numericBoxAlphaMax.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
   </data>
@@ -258,10 +255,6 @@
     <value>各ディスクを横切る 1 画素あたりの角度刻み (mrad/pixel)
 を設定します。小さいほど右に表示される直径方向の
 分割数が増え、精細になりますが計算は遅くなります。</value>
-  </data>
-  <data name="numericBoxDiskResolution.ToolTip1" xml:space="preserve">
-    <value>直径に沿った分割数を設定します。
-2次元の分割数が右に表示されます</value>
   </data>
   <data name="flowLayoutPanel1.Location" type="System.Drawing.Point, System.Drawing">
     <value>227, 3</value>

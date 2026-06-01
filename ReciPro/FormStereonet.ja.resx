@@ -1717,8 +1717,8 @@ Miller 指数 (h k l) としてラベル表示します。</value>
     <value>回転スキャンの角速度(°/秒)を設定します。</value>
   </data>
   <data name="numericBoxRadialAngle.ToolTip" xml:space="preserve">
-    <value>回転スキャンの半径方向傾斜角(中
-心からの開き角、°)を設定します。</value>
+    <value>回転スキャンの半径方向傾斜角(中心
+からの開き角、°)を設定します。</value>
   </data>
   <data name="numericBoxRxSpeed.ToolTip" xml:space="preserve">
     <value>Rx 軸(φ)モータの回転速度(°/秒)を設定します。</value>

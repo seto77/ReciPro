@@ -213,8 +213,8 @@ adapted polynomial)状態方程式(EOS)を使用します。</value>
 を使用します(高圧極限 K'∞ を用います)。</value>
   </data>
   <data name="radioButtonEOS_ThirdBirchMurnaghan.ToolTip" xml:space="preserve">
-    <value>等温の圧力–体積関係に3次 Birch–Murnaghan(BM)状態方程
-式(EOS)を使用します(最も標準的。V₀・K₀・K'₀ を使用)。</value>
+    <value>等温の圧力–体積関係に3次 Birch–Murnaghan(BM)状態方程式
+(EOS)を使用します(最も標準的。V₀・K₀・K'₀ を使用)。</value>
   </data>
   <data name="radioButtonEOS_Vinet.ToolTip" xml:space="preserve">
     <value>等温の圧力–体積関係に Vinet 状態方程式(EOS)を使用し

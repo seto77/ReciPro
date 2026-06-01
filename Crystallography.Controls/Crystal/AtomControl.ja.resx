@@ -888,8 +888,8 @@ Biso または Uiso として表示されます。</value>
     <value>等方性変位パラメータ Biso/Uiso の標準偏差（誤差, Å²）です。</value>
   </data>
   <data name="checkBoxDetailAtomicPositionError.ToolTip" xml:space="preserve">
-    <value>原子座標と占有率の誤差（標準偏差）入
-力欄の表示／非表示を切り替えます。</value>
+    <value>原子座標と占有率の誤差（標準偏差）
+入力欄の表示／非表示を切り替えます。</value>
   </data>
   <data name="buttonOriginShiftCustom.ToolTip" xml:space="preserve">
     <value>下に入力した任意の (x, y, z) 分数座標だけ全原子の

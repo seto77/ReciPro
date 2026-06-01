@@ -38,6 +38,9 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CrystalDatabaseControl));
             toolTip = new System.Windows.Forms.ToolTip(components); // (260531Ch)
             toolTip.IsBalloon = true; // 260531Cl 追加: バルーン表示に統一
+            toolTip.AutoPopDelay = 10000; // 260601Cl 追加: 長文表示時間を延長(共通標準値)
+            toolTip.InitialDelay = 500; // 260601Cl 追加
+            toolTip.ReshowDelay = 100; // 260601Cl 追加
             ReadDatabaseWorker = new System.ComponentModel.BackgroundWorker();
             // dataGridView = new System.Windows.Forms.DataGridView(); // 260518Cl 旧実装: DPI変更時に列幅が追従しない
             dataGridView = new DpiAwareDataGridView(); // 260518Cl

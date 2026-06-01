@@ -1013,8 +1013,8 @@
 (V)</value>
   </data>
   <data name="toolStripButtonStructureViewer.ToolTipText" xml:space="preserve">
-    <value>ストラクチャビューア（結晶の三次元構造表
-示）を開きます。Ctrl+Shift+V でも切替。</value>
+    <value>ストラクチャビューア（結晶の三次元構造
+表示）を開きます。Ctrl+Shift+V でも切替。</value>
   </data>
   <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
     <value>112, 6</value>
@@ -1204,8 +1204,8 @@
   </data>
   <data name="toolStripButtonImageSimulator.ToolTipText" xml:space="preserve">
     <value>HRTEM/STEM 画像シミュレータを開きま
-す。HRTEM は高分解能透過電子顕微鏡
-像、STEM は走査透過電子顕微鏡像です。</value>
+す。HRTEM は高分解能透過電子顕微鏡像、
+STEM は走査透過電子顕微鏡像です。</value>
   </data>
   <data name="toolStripSeparator13.Size" type="System.Drawing.Size, System.Drawing">
     <value>112, 6</value>

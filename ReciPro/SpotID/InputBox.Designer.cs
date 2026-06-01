@@ -28,6 +28,9 @@
             this.components = new System.ComponentModel.Container(); // 260531Cl
             this.toolTip = new System.Windows.Forms.ToolTip(this.components); // 260531Cl
             this.toolTip.IsBalloon = true; // 260531Cl 追加: バルーン表示に統一
+            toolTip.AutoPopDelay = 10000; // 260601Cl 追加: 長文表示時間を延長(共通標準値)
+            toolTip.InitialDelay = 500; // 260601Cl 追加
+            toolTip.ReshowDelay = 100; // 260601Cl 追加
             this.label64 = new System.Windows.Forms.Label();
             this.label60 = new System.Windows.Forms.Label();
             this.label50 = new System.Windows.Forms.Label();

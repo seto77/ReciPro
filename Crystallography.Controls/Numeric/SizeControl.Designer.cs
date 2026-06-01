@@ -38,6 +38,10 @@
             label2 = new System.Windows.Forms.Label();
             checkBoxKeepAspect = new System.Windows.Forms.CheckBox(); // 260521Cl 追加
             toolTip = new System.Windows.Forms.ToolTip(components); // 260521Cl 追加
+            toolTip.IsBalloon = true; // 260601Cl 追加: バルーン統一
+            toolTip.AutoPopDelay = 10000; // 260601Cl 追加: 長文表示時間を延長(共通標準値)
+            toolTip.InitialDelay = 500; // 260601Cl 追加
+            toolTip.ReshowDelay = 100; // 260601Cl 追加
             tableLayoutPanel1.SuspendLayout();
             SuspendLayout();
             // 

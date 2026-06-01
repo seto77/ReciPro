@@ -264,7 +264,7 @@ hkl 反射が許容/消滅するかを示します。</value>
     <value>空間群の Schoenflies (SF) 記号 (例: O_h^7) です。</value>
   </data>
   <data name="label9.ToolTip" xml:space="preserve">
-    <value>空間群の Hall 記号 (生成対称操作一
-式を簡潔に符号化した表記) です。</value>
+    <value>空間群の Hall 記号 (生成対称操作
+一式を簡潔に符号化した表記) です。</value>
   </data>
 </root>

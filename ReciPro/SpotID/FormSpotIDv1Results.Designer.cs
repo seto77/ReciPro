@@ -29,6 +29,9 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormSpotIDv1Results));
             toolTip = new System.Windows.Forms.ToolTip(components); // (260531Ch)
             toolTip.IsBalloon = true; // 260531Cl 追加: バルーン表示に統一
+            toolTip.AutoPopDelay = 10000; // 260601Cl 追加: 長文表示時間を延長(共通標準値)
+            toolTip.InitialDelay = 500; // 260601Cl 追加
+            toolTip.ReshowDelay = 100; // 260601Cl 追加
             this.bindingSource2 = new System.Windows.Forms.BindingSource(this.components);
             this.dataSet = new System.Data.DataSet();
             this.dataTable1 = new System.Data.DataTable();

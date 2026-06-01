@@ -534,9 +534,6 @@ included in the dynamical, multiple-scattering
 calculation, 1-2048. More waves improve
 accuracy but slow the computation.</value>
   </data>
-  <data name="numericBoxMaxNumOfG.ToolTip1" xml:space="preserve">
-    <value>Set the number of diffracted waves to be calculated</value>
-  </data>
   <data name="&gt;&gt;numericBoxMaxNumOfG.Name" xml:space="preserve">
     <value>numericBoxMaxNumOfG</value>
   </data>
@@ -674,10 +671,6 @@ accuracy but slow the computation.</value>
 disk (mrad/pixel). Smaller values give more
 diameter divisions, shown at right, for
 finer disks but longer calculation.</value>
-  </data>
-  <data name="numericBoxDiskResolution.ToolTip1" xml:space="preserve">
-    <value>Set the number of divisions along the diameter.
-The number of two-dimensional divisions is displayed on the right</value>
   </data>
   <data name="&gt;&gt;numericBoxDiskResolution.Name" xml:space="preserve">
     <value>numericBoxDiskResolution</value>

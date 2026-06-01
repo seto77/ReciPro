@@ -631,9 +631,6 @@ nm⁻¹）は右のラジオボタンに従います。d 値計算と
     <value>厚さ・方位の精密化で入射ビーム方向を
 探索する角度半径（半収束角、mrad）。</value>
   </data>
-  <data name="numericBoxSemiangle.ToolTip1" xml:space="preserve">
-    <value>スポット同定用の半収束角 (mrad)</value>
-  </data>
   <data name="flowLayoutPanel11.Location" type="System.Drawing.Point, System.Drawing">
     <value>131, 90</value>
   </data>

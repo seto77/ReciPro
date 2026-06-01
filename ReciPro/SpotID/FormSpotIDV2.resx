@@ -970,9 +970,6 @@ merged so a single spot is not counted twice.</value>
   <data name="&gt;&gt;saveAsBitmapToolStripMenuItem1.Name" xml:space="preserve">
     <value>saveAsBitmapToolStripMenuItem1</value>
   </data>
-  <data name="numericBoxSemiangle.ToolTip1" xml:space="preserve">
-    <value>Semi-convergence angle for spot identification (mrad)</value>
-  </data>
   <data name="flowLayoutPanel4.ToolTip" xml:space="preserve">
     <value />
   </data>

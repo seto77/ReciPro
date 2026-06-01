@@ -151,6 +151,9 @@
             label22 = new System.Windows.Forms.Label();
             toolTip = new System.Windows.Forms.ToolTip(components);
             toolTip.IsBalloon = true; // 260531Cl 追加: バルーン表示に統一
+            toolTip.AutoPopDelay = 10000; // 260601Cl 追加: 長文表示時間を延長(共通標準値)
+            toolTip.InitialDelay = 500; // 260601Cl 追加
+            toolTip.ReshowDelay = 100; // 260601Cl 追加
             buttonScatteringFactor = new System.Windows.Forms.Button();
             buttonSymmetryInfo = new System.Windows.Forms.Button();
             flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();

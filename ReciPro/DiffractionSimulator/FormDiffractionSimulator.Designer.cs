@@ -1103,7 +1103,7 @@
             colorControl3D_SpotsNear.Name = "colorControl3D_SpotsNear";
             colorControl3D_SpotsNear.Red = 255;
             colorControl3D_SpotsNear.RedF = 1F;
-            toolTip.SetToolTip(colorControl3D_SpotsNear, resources.GetString("colorControl3D_SpotsNear.ToolTip1"));
+            toolTip.SetToolTip(colorControl3D_SpotsNear, resources.GetString("colorControl3D_SpotsNear.ToolTip")); // 260601Cl 旧誤配線 .ToolTip1→.ToolTip
             colorControl3D_SpotsNear.ColorChanged += colorControlReciprocalBackground_ColorChanged;
             // 
             // numericBox3D_SpotRadius
@@ -1211,7 +1211,7 @@
             numericBoxReciprocalThreshold.ShowUpDown = true;
             numericBoxReciprocalThreshold.SmartIncrement = true;
             numericBoxReciprocalThreshold.ThousandsSeparator = true;
-            toolTip.SetToolTip(numericBoxReciprocalThreshold, resources.GetString("numericBoxReciprocalThreshold.ToolTip1"));
+            toolTip.SetToolTip(numericBoxReciprocalThreshold, resources.GetString("numericBoxReciprocalThreshold.ToolTip")); // 260601Cl 旧誤配線 .ToolTip1→.ToolTip
             numericBoxReciprocalThreshold.Value = 1D;
             numericBoxReciprocalThreshold.ValueFontSize = 9F;
             numericBoxReciprocalThreshold.ValueChanged += numericBoxReciprocalThreshold_ValueChanged;
@@ -1471,7 +1471,7 @@
             colorControl3D_lText.Name = "colorControl3D_lText";
             colorControl3D_lText.Red = 0;
             colorControl3D_lText.RedF = 0F;
-            toolTip.SetToolTip(colorControl3D_lText, resources.GetString("colorControl3D_lText.ToolTip1"));
+            toolTip.SetToolTip(colorControl3D_lText, resources.GetString("colorControl3D_lText.ToolTip")); // 260601Cl 旧誤配線 .ToolTip1→.ToolTip
             colorControl3D_lText.ColorChanged += colorControlReciprocalBackground_ColorChanged;
             // 
             // checkBox3D_DirectionGuide
