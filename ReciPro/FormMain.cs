@@ -339,6 +339,11 @@ public partial class FormMain : FormBase
     {
         if (DesignMode) return;
 
+        //260602Cl 追加: Portable ZIP 版は実行フォルダに README-PORTABLE.txt を同梱する (MSI 版には無い)。
+        //         この場合 MSI ベースの自動更新は成り立たないため「Check Updates」メニューを隠す。
+        if (File.Exists(Path.Combine(AppContext.BaseDirectory, "README-PORTABLE.txt")))
+            checkUpdatesToolStripMenuItem.Visible = false;
+
         Crystallography.Controls.FormCaptureGUI.InstallShortcutFilter(); // 260323Cl 追加: Ctrl+Shift+Alt+C ショートカット
 
         englishToolStripMenuItem.Checked = Thread.CurrentThread.CurrentUICulture.Name != "ja";

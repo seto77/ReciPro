@@ -1,5 +1,6 @@
 # 260405Cl Version.cs の History 先頭行が変わったら自動でインストーラをビルド・リリースする
-name: Build And Release Installer
+# 260602Cl portable ZIP も同じリリースに添付。MSI を主配布のまま (管理 PC 向けの代替として self-contained ZIP を追加)
+name: Build And Release Installer And Portable ZIP
 
 on:
   push:
@@ -71,7 +72,15 @@ jobs:
           # History の先頭行をリリースノートに使う
           $historyLine = ([regex]::Match($content, 'ver[^\r\n"]+').Value).Trim()
           $notesPath = Join-Path $env:RUNNER_TEMP "release-notes.txt"
-          $historyLine | Set-Content -Path $notesPath -Encoding UTF8
+          # $historyLine | Set-Content -Path $notesPath -Encoding UTF8 # 260602Cl 旧: 変更履歴 1 行のみ
+          @( # 260602Cl MSI を第一候補、portable ZIP を管理 PC 向け代替として release notes に明記
+            $historyLine
+            ""
+            "Assets:"
+            "- ReciProSetup.msi: recommended installer."
+            "- ReciPro-v.$ver-win-x64-portable.zip: no-install, self-contained alternative for managed Windows PCs."
+            "- SHA256SUMS.txt: SHA256 hashes for release files."
+          ) | Set-Content -Path $notesPath -Encoding UTF8
 
           # AssemblyVersion / FileVersion 用のタイムスタンプ (yyyy.M.d.HHmm UTC)
           $now = [System.DateTime]::UtcNow
@@ -216,13 +225,84 @@ jobs:
           Write-Host "MSI built: $($msi.FullName)"
           "msi_path=$($msi.FullName)" >> $env:GITHUB_OUTPUT
 
+      - name: Publish portable ZIP
+        if: steps.version.outputs.needed == 'true'
+        id: portable
+        shell: pwsh
+        run: |
+          # 260602Cl 管理された Windows PC 向けの代替配布。MSI が第一候補、ZIP は管理者権限や .NET Runtime 導入が難しい環境用。
+          # 260602Cl このステップは installer (MSI) ビルドより後に置く。self-contained publish は bin\Release を
+          #          ランタイム同梱の内容で汚染し (AppendRuntimeIdentifierToOutputPath=false で publish と build が
+          #          bin\Release を共有するため)、MSI ビルドより前に走らせると framework-dependent であるべき MSI に
+          #          ランタイムが紛れ込む。詳細は .project-guidance\ReciPro_MSI+PortableZip構築方針.md §4。
+          $publishDir = Join-Path $env:RUNNER_TEMP "ReciPro-portable\ReciPro"
+          $zipPath = Join-Path (Get-Location) "ReciPro-v.${{ steps.version.outputs.version }}-win-x64-portable.zip"
+
+          if (Test-Path $publishDir) { Remove-Item -LiteralPath $publishDir -Recurse -Force }
+          if (Test-Path $zipPath) { Remove-Item -LiteralPath $zipPath -Force }
+
+          # 260602Cl DebugType は csproj の既定 (ReciPro 本体は embedded) を使うため、PDIndexer のような
+          #          別 pdb 欠落による MSI ビルド失敗 (方針 §4-a) は起こらない。参照ライブラリ
+          #          (Crystallography 等) は分離 pdb を出すので、配布前に publish 出力から除去する (後述)。
+          dotnet publish ReciPro\ReciPro.csproj `
+            -c Release `
+            -r win-x64 `
+            --self-contained true `
+            -p:Platform=x64 `
+            -p:AssemblyVersion=${{ steps.version.outputs.assembly_version }} `
+            -p:FileVersion=${{ steps.version.outputs.assembly_version }} `
+            -p:PublishSingleFile=false `
+            -p:PublishTrimmed=false `
+            -o $publishDir
+
+          # 260602Cl ★ReciPro 固有: Crystallography.Native*.dll は ProjectReference でも Content でも PackageReference でもなく、
+          #          vcxproj の OutDir 経由で ReciPro\bin\Release に置かれるだけなので publish 出力には含まれない。
+          #          generic / avx2 / avx512 の 3 種を明示コピーする (NativeWrapper が起動時に CPU 判定で選択する)。
+          $nativeDir = "ReciPro\bin\Release"
+          $natives = Get-ChildItem -Path $nativeDir -Filter "Crystallography.Native*.dll" -ErrorAction SilentlyContinue
+          if (-not $natives) { throw "Native DLLs (Crystallography.Native*.dll) were not found in $nativeDir." }
+          foreach ($n in $natives) { Copy-Item $n.FullName $publishDir -Force; Write-Host "Bundled native: $($n.Name)" }
+
+          Copy-Item "LICENSE.md" $publishDir -Force
+          Copy-Item "README-PORTABLE.txt" $publishDir -Force
+
+          # 260602Cl 参照ライブラリの分離 pdb を配布物から除去 (ReciPro 本体は embedded のため元々 pdb なし)。
+          Get-ChildItem $publishDir -Filter "*.pdb" | Remove-Item -Force
+
+          Compress-Archive -Path (Join-Path (Split-Path $publishDir -Parent) "ReciPro") -DestinationPath $zipPath -Force
+
+          Write-Host "Portable ZIP built: $zipPath"
+          "zip_path=$zipPath" >> $env:GITHUB_OUTPUT
+
+      - name: Generate release checksums
+        if: steps.version.outputs.needed == 'true'
+        id: checksums
+        shell: pwsh
+        run: |
+          # 260602Cl MSI と portable ZIP の検証用 SHA256 を同梱する。
+          $checksums = Join-Path (Get-Location) "SHA256SUMS.txt"
+          $files = @(
+            "${{ steps.build_installer.outputs.msi_path }}",
+            "${{ steps.portable.outputs.zip_path }}"
+          )
+          $lines = foreach ($file in $files) {
+            $hash = Get-FileHash $file -Algorithm SHA256
+            "$($hash.Hash)  $(Split-Path $file -Leaf)"
+          }
+          $lines | Set-Content -Path $checksums -Encoding ASCII
+          Get-Content $checksums
+          "checksums_path=$checksums" >> $env:GITHUB_OUTPUT
+
       - name: Upload workflow artifacts
         if: steps.version.outputs.needed == 'true'
         # 260425Cl Node.js 20 廃止対応 (v6 で Node.js 24 がデフォルト)
         uses: actions/upload-artifact@v6
         with:
-          name: ReciPro-installer-v.${{ steps.version.outputs.version }}
-          path: ${{ steps.build_installer.outputs.msi_path }}
+          name: ReciPro-release-v.${{ steps.version.outputs.version }}
+          path: |
+            ${{ steps.build_installer.outputs.msi_path }}
+            ${{ steps.portable.outputs.zip_path }}
+            ${{ steps.checksums.outputs.checksums_path }}
 
       - name: Create tag and GitHub Release
         if: steps.version.outputs.needed == 'true'
@@ -242,8 +322,11 @@ jobs:
           #   git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           #   git tag -a $tag -m "ReciPro ${{ steps.version.outputs.version }}"
           #   git push origin $tag
+          # 260602Cl 第一候補の MSI に加え、portable ZIP と SHA256SUMS も添付する。
           gh release create $tag `
             "${{ steps.build_installer.outputs.msi_path }}" `
+            "${{ steps.portable.outputs.zip_path }}" `
+            "${{ steps.checksums.outputs.checksums_path }}" `
             --target $env:GITHUB_SHA `
             --title "ReciPro $tag" `
             --notes-file "${{ steps.version.outputs.notes_path }}"

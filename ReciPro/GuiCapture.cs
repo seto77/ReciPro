@@ -91,12 +91,25 @@ internal static class GuiCapture
                 Trace("[CAUTION] Screen capture is currently UNAVAILABLE. Bring the (RDP) session to the foreground now.");
         }
 
+        // 260602Cl 追加: 環境変数 RECIPRO_CAPTURE_ONLY (カンマ区切りの型名部分一致) が指定されたら、その対象だけを撮る。
+        // 1 フォームだけ撮り直したいとき (例: FormImageSimulator のモード別全体画像) に、全フォーム再撮影による
+        // 差分 churn と実行時間・途中クラッシュのリスクを避けるための開発者向け絞り込み。FormMain は後続フォームへ
+        // 親結晶 (spinel) を供給するため、フィルタ対象外でも必ず構築する。RECIPRO_GLDIAG と同様の env-var トグル方式。
+        var captureOnly = (Environment.GetEnvironmentVariable("RECIPRO_CAPTURE_ONLY") ?? "")
+            .Split(',', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries);
+        bool ShouldCapture(string typeName) => captureOnly.Length == 0
+            || captureOnly.Any(s => typeName.Contains(s, StringComparison.OrdinalIgnoreCase));
+        if (captureOnly.Length > 0)
+            Trace($"RECIPRO_CAPTURE_ONLY = {string.Join(",", captureOnly)}");
+
         // ReciPro アセンブリ内の、パラメータレスコンストラクタを持つ Form 派生型を対象にする。
         // FormMain を先頭に構築する (他フォームが静的に FormMain を参照する場合に備える)。
         var types = typeof(FormMain).Assembly.GetTypes()
             .Where(t => typeof(Form).IsAssignableFrom(t) && !t.IsAbstract && t.GetConstructor(Type.EmptyTypes) != null)
             .OrderBy(t => t == typeof(FormMain) ? 0 : 1).ThenBy(t => t.Name)
             .ToList();
+        if (captureOnly.Length > 0) // FormMain は親結晶供給に必須なので常に残す
+            types = types.Where(t => t == typeof(FormMain) || ShouldCapture(t.Name)).ToList();
         Trace($"{types.Count} form types (parameterless ctor)");
 
         int ok = 0, fail = 0;
@@ -129,18 +142,30 @@ internal static class GuiCapture
                 else if (form is FormSpotIDV2 spotID)
                     spotID.FormMain = captureFormMain; // 260524Cl: スポット同定機能等が FormMain を参照するため注入 (Show 時の NRE 回避)
 
-                CaptureForm(form, type.Name, outDir, Trace, closeAfterCapture: !ReferenceEquals(form, captureFormMain));
-                ok++;
-
-                // 260524Cl 追加: マクロエディタ (FormMacro) は FormMain 直後 (= 反射列挙の最初) に撮る。
-                // 引数付き ctor で reflection 単独生成できず、FormMain が Load で配線済みインスタンスを保持しているので
-                // ここで撮る。末尾の結晶依存ループまで待つと、GL 多用フォームの NativeWindow finalize で稀にプロセスが
-                // 落ちて撮り損ねるため、GL ウィンドウが溜まる前のこの時点で先に保存しておく。spinel 選択は FormMain の
-                // CaptureForm 内 (PrepareSpecialCaptureState) で済んでいる。
-                if (ReferenceEquals(form, captureFormMain) && captureFormMain.FormMacro != null)
+                if (ShouldCapture(type.Name))
                 {
-                    try { CaptureForm(captureFormMain.FormMacro, "FormMacro", outDir, Trace, closeAfterCapture: true); ok++; }
-                    catch (Exception ex) { fail++; Trace($"FormMacro\tFAIL\t{ex.GetType().Name}: {ex.Message}"); }
+                    CaptureForm(form, type.Name, outDir, Trace, closeAfterCapture: !ReferenceEquals(form, captureFormMain));
+                    ok++;
+
+                    // 260524Cl 追加: マクロエディタ (FormMacro) は FormMain 直後 (= 反射列挙の最初) に撮る。
+                    // 引数付き ctor で reflection 単独生成できず、FormMain が Load で配線済みインスタンスを保持しているので
+                    // ここで撮る。末尾の結晶依存ループまで待つと、GL 多用フォームの NativeWindow finalize で稀にプロセスが
+                    // 落ちて撮り損ねるため、GL ウィンドウが溜まる前のこの時点で先に保存しておく。spinel 選択は FormMain の
+                    // CaptureForm 内 (PrepareSpecialCaptureState) で済んでいる。
+                    if (ReferenceEquals(form, captureFormMain) && captureFormMain.FormMacro != null && ShouldCapture("FormMacro"))
+                    {
+                        try { CaptureForm(captureFormMain.FormMacro, "FormMacro", outDir, Trace, closeAfterCapture: true); ok++; }
+                        catch (Exception ex) { fail++; Trace($"FormMacro\tFAIL\t{ex.GetType().Name}: {ex.Message}"); }
+                    }
+                }
+                else if (ReferenceEquals(form, captureFormMain))
+                {
+                    // 260602Cl: FormMain がフィルタ対象外でも、後続フォーム (FormImageSimulator 等) の Simulate が
+                    // FormMain.Crystal を要るため、表示して spinel 選択だけ済ませ、開いたまま保持する (撮影・保存はしない)。
+                    try { form.Show(); } catch (Exception ex) { Trace($"FormMain\tWARN\tShow: {ex.GetType().Name}: {ex.Message}"); }
+                    Settle(form, FirstPaintSettleMs, Trace);
+                    PrepareSpecialCaptureState(form, Trace); // spinel 選択
+                    Settle(form, PrepareSettleMs, Trace);
                 }
             }
             catch (Exception ex)
@@ -163,6 +188,8 @@ internal static class GuiCapture
         {
             foreach (var child in captureFormMain.EnumerateCaptureCrystalDependentForms())
             {
+                if (!ShouldCapture(child.GetType().Name)) // 260602Cl: フィルタ対象外の結晶依存子フォームは撮らない
+                    continue;
                 try
                 {
                     CaptureForm(child, child.GetType().Name, outDir, Trace, closeAfterCapture: true);
@@ -220,10 +247,59 @@ internal static class GuiCapture
         var menuCount = CaptureToolStripItemCrops(form, name, outDir, trace); // 260527Cl: Capture=true の ToolStripItem (メニュー展開) クロップ
         trace($"{name}\t{(captured ? "OK" : "PARTIAL")}\t{bounds.Width}x{bounds.Height}\tCrops={cropCount}\tMenus={menuCount}");
 
+        // 260602Cl 追加: FormImageSimulator はモード (HRTEM/STEM/POTENTIAL) ごとに右側パネル構成が変わるため、
+        // 各モードの「全体フォーム画像」を追加で撮る (上で撮った全体画像は既定=HRTEM の 1 枚だけ)。
+        if (form is FormImageSimulator imageSimulatorForModeShots)
+            CaptureImageSimulatorModeShots(imageSimulatorForModeShots, name, outDir, trace);
+
         if (closeAfterCapture)
         {
             form.TopMost = false; // (260524Cl) 後続フォームの最前面化を妨げないよう閉じる前に解除
             form.Close();
+        }
+    }
+
+    /// <summary>
+    /// 260602Cl 追加: FormImageSimulator の「全体フォーム画像」をモードごとに撮る。
+    /// HRTEM / STEM / POTENTIAL を順に選び、各モードで Simulate → 画面安定待ち → ウィンドウ全体を CopyFromScreen し、
+    /// <c>FormImageSimulator-{hrtem|stem|potential}.png</c> として保存する。コントロール単体クロップは
+    /// <see cref="RenderHiddenControl"/> によりモード非依存で全 groupBox 分すでに撮れているため、ここでは追加しない。
+    /// STEM は計算が重いので、完了判定は既定モードと同じく <see cref="WaitUntilScreenStable"/> (画面が止まったら完了) に委ねる。
+    /// 既存の <c>FormImageSimulator.png</c> (既定=HRTEM の全体画像) はそのまま残す (index 等の既存参照を壊さない)。
+    /// </summary>
+    private static void CaptureImageSimulatorModeShots(FormImageSimulator sim, string baseName, string outDir, Action<string> trace)
+    {
+        var modes = new[]
+        {
+            (FormImageSimulator.ImageModes.HRTEM, "hrtem"),
+            (FormImageSimulator.ImageModes.STEM, "stem"),
+            (FormImageSimulator.ImageModes.POTENTIAL, "potential"),
+        };
+
+        foreach (var (mode, suffix) in modes)
+        {
+            var name = baseName + "-" + suffix; // 例: FormImageSimulator-stem
+            try
+            {
+                sim.ImageMode = mode;                  // ラジオ切替で右側パネルの可視性 (RadioButtonHRTEM_CheckedChanged) が更新される
+                Settle(sim, TabSwitchSettleMs, trace); // レイアウト反映を待つ
+                BringToFront(sim);
+                sim.PrepareCaptureForGuiAudit();       // 現在モードの Simulate を起動 (HRTEM/POTENTIAL は同期、STEM は非同期)
+                WaitUntilScreenStable(sim, trace);     // 計算完了 (= 画面が止まる) まで待つ
+                BringToFront(sim);
+                Settle(sim, TabSwitchSettleMs, trace);
+
+                var bmp = CaptureScreen(GetWindowVisualBounds(sim), sim, trace, name, retryIfSolid: true);
+                if (bmp != null)
+                    using (bmp) bmp.Save(Path.Combine(outDir, name + ".png"), ImageFormat.Png);
+                else
+                    trace($"{name}\tWARN\tmode full-form capture failed");
+            }
+            catch (Exception ex)
+            {
+                // 1 モードの失敗で残りを諦めない (GuiCapture 全体の「可能な限り次へ進む」方針)。
+                trace($"{name}\tWARN\tmode shot: {ex.GetType().Name}: {ex.Message}");
+            }
         }
     }
 

@@ -147,7 +147,11 @@ extern "C" {
 		auto rV4 = Map<VecR>((dcomplex*)(rowVec + n[3] * dim * 2), dim);
 		auto m = Map<Mat>((dcomplex*)sqMat, dim, dim);
 		auto cV = Map<Vec>((dcomplex*)colVec, dim);
-		Map<Mat>((dcomplex*)_result, 1, 1).noalias() = (r[0] * rV1 + r[1] * rV2 + r[2] * rV3 + r[3] * rV4) * m * cV;
+		// 260602Cl 修正: 従来は blend に共役が無く、managed の BlendAndConjugate (各 c を共役してブレンド) + RowVec_SqMat_ColVec
+		// 経路と数値不一致だった。r は実数なので conj(Σ r_k rV_k) = Σ r_k conj(rV_k)。各行ベクトルを共役してブレンドし、
+		// _BlendAndConjugate (= r0*c0.conjugate()+…) と同形にする。これで 2 つの P/Invoke を 1 つに融合できる。
+		// Map<Mat>((dcomplex*)_result, 1, 1).noalias() = (r[0] * rV1 + r[1] * rV2 + r[2] * rV3 + r[3] * rV4) * m * cV; // 260602Cl 変更前 (共役なし)
+		Map<Mat>((dcomplex*)_result, 1, 1).noalias() = (r[0] * rV1.conjugate() + r[1] * rV2.conjugate() + r[2] * rV3.conjugate() + r[3] * rV4.conjugate()) * m * cV;
 	}
 
 	//複素非対称行列のmat1とmat2の要素ごとの掛算(アダマール積)を取る

@@ -2,131 +2,144 @@
 
 **HRTEM (High-Resolution Transmission Electron Microscopy)** シミュレーションは、高分解能TEM格子縞像を計算します。[HRTEM/STEMシミュレータ](index.md) のメインモードです。
 
+![HRTEMモードのシミュレータ](../../assets/cap-ja-auto/FormImageSimulator-hrtem.png)
+
+> このページは、**イメージモード = HRTEM** を選んだときに右側に現れる設定項目をすべて掲載します。結果の表示・明るさ調整など左側の操作は [まとめページ](index.md#結果の表示調整左側パネル) を参照してください。
+
 ---
 
 ## 概要
 
-HRTEM像は、試料を透過した電子波が対物レンズの収差の影響を受けて結像することで形成されます。ReciProでは、ブロッホ波法で試料中の電子波伝搬を計算し、位相コントラスト伝達関数 (PCTF) を通してHRTEM像を生成します。
+HRTEM像は、試料を透過した電子波が対物レンズの収差の影響を受けて結像することで形成されます。ReciProでは、ブロッホ波法（Dynamical 計算）で試料中の電子波伝搬を計算し、位相コントラスト伝達関数 (PCTF) を通してHRTEM像を生成します。
 
----
+### 計算の流れ
 
-## 計算の流れ
-
-1. **ブロッホ波法**: 結晶ポテンシャル中の電子波伝搬を計算。出射波の振幅と位相を取得
+1. **ブロッホ波法**: 結晶ポテンシャル中の電子波伝搬を計算し、出射波の振幅と位相を取得
 2. **レンズ関数**: 対物レンズの収差（球面収差 $C_s$、デフォーカス $\Delta f$）を適用
 3. **部分コヒーレンス**: 光源の有限サイズ（空間コヒーレンス）とエネルギー揺らぎ（時間コヒーレンス）を考慮
 4. **像の形成**: 強度分布 $|\psi(\mathbf{r})|^2$ を計算
 
----
-
-## 試料パラメータ
-
-![試料パラメータ](../../assets/cap-ja-auto/FormImageSimulator.splitContainer1.flowLayoutPanelModeSelection.groupBoxSampleProperty.png)
-
-| パラメータ | 説明 |
-|-----------|------|
-| **厚み** | 試料厚さ (nm)。HRTEM像は厚さに強く依存 |
+理論の詳細は [Appendix A2.2 — HRTEM 像形成](../appendix/a2-bloch-wave/hrtem.md) を参照してください。
 
 ---
 
-## 光学パラメータ
+## 試料情報
 
-### TEM条件
+![試料情報](../../assets/cap-ja-auto/FormImageSimulator.splitContainer1.flowLayoutPanelModeSelection.groupBoxSampleProperty.png)
 
-![TEM条件](../../assets/cap-ja-auto/FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxTEMConditions.png)
-
-| パラメータ | 説明 |
-|-----------|------|
-| **加速電圧 (kV)** | 加速電圧。相対論補正された波長が右に表示される |
-| **デフォーカス Δf** | デフォーカス値 (nm)。シェルツァーデフォーカス値が下に参考値として表示 |
-
-| パラメータ | 説明 | 典型値 |
-|-----------|------|--------|
-| **Cs** | 球面収差係数 (mm) | 0.5–1.0 mm（通常TEM）、< 0.01 mm（Cs補正TEM） |
-| **Cc** | 色収差係数 (mm) | 1.0–2.0 mm |
-| **β** | 照射半角 (mrad) | 0.1–1.0 mrad |
-| **ΔE** | エネルギー揺らぎの1/*e*幅 (eV) | 0.5–2.0 eV |
+- **厚み** : 試料の厚さ (nm)。HRTEM像は厚さに強く依存します。**シリーズ画像** モードのときはこの値は無視され、後述の厚さリストが使われます。
 
 ---
 
-## 位相コントラスト伝達関数 (PCTF)
+## TEMの条件
 
-![位相コントラスト伝達関数 (PCTF)](../../assets/cap-ja-auto/FormCTF.png)
+![TEMの条件](../../assets/cap-ja-auto/FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxTEMConditions.png)
 
-レンズ関数タブに以下が表示されます：
+対物レンズの結像条件を設定します。
 
-- $\sin\chi(u)$: 位相コントラスト伝達関数（$\chi(u)$ はレンズの収差関数）
-- $E_\text{s}(u)$: 空間コヒーレンスのエンベロープ関数。光源の有限サイズによる減衰
-- $E_\text{c}(u)$: 時間コヒーレンスのエンベロープ関数。エネルギー揺らぎによる減衰
+| パラメータ | 説明 | 既定値 / 典型値 |
+|-----------|------|-----------------|
+| **加速電圧 (kV)** | 加速電圧。相対論補正された電子波長が右に表示されます | 200 kV |
+| **デフォーカス Δf** | 対物レンズのデフォーカス (nm)。下に **シェルツァーデフォーカス** の参考値が表示されます | −57.8 nm |
+| **Cs** | 球面収差係数 (mm)。CTFとシェルツァーデフォーカスに影響します | 0.5–1.0（通常）、< 0.01（Cs補正） |
+| **Cc** | 色収差係数 (mm)。エネルギー幅による像のぼけを決めます | 1.0–2.0 mm |
+| **β** | 照射半角 (mrad)。有限光源サイズ効果（空間コヒーレンス）を表します | 0.1–1.0 mrad |
+| **ΔV (FWHM)** | 電子線のエネルギー幅の半値全幅 (eV)。Cc とともに色収差による焦点広がりを決めます | 0.5–2.0 eV |
 
-シェルツァーデフォーカス（Scherzer defocus）: $\Delta f = -1.2\,\sqrt{C_s \lambda}$ で、PCTFが広い空間周波数範囲で負になる条件（暗いコントラスト = 原子位置）。
+> **右クリックメニュー**: TEMの条件パネルでは、**収差をすべて0に設定** / **デフォーカスをシェルツァー値に設定** / **デフォーカスを0 nmに設定** をワンクリックで行えます。条件プリセット（300kV ARM300F、200kV 2100F など）は左下の **条件プリセット** から呼び出せます。
 
----
+### シェルツァーデフォーカス
 
-## 対物絞り
+現在の波長と球面収差 $C_s$ から計算される、位相コントラストが最適となる付近のデフォーカス値（参考表示）です。
 
-![対物絞り](../../assets/cap-ja-auto/FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxHREMoption1.png)
+$$\Delta f_{\text{Scherzer}} = -1.2\,\sqrt{C_s \lambda}$$
 
-対物絞りのサイズ (mrad) と位置を設定できます。
-
-- 絞りを小さくすると高次回折波がカットされ、像のコントラストが向上するが分解能は低下
-- **絞り開放** で無限大（絞りなし）に設定
-- ブロッホ波法で考慮する回折波の数は絞り条件に依存
-
----
-
-## 部分コヒーレンスモデル
-
-![部分コヒーレンスモデル](../../assets/cap-ja-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.groupBoxHREMoption2.png)
-
-### 準コヒーレントモデル（線形像モデル）
-
-高速計算。弱位相近似が妥当な条件で有効。
-
-### 透過相互係数 (TCC) モデル
-
-より正確な計算。部分コヒーレンスの効果を厳密に取り込みます。計算時間は準コヒーレントモデルより長くなります。
+この条件では、PCTFが広い空間周波数範囲で負になり、原子位置が暗いコントラストとして得られます。
 
 ---
 
-## シミュレーションモード
+## レンズ関数 / コントラスト伝達関数 (CTF)
 
-![シミュレーションモード](../../assets/cap-ja-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.groupBoxSerialImage.png)
+**コントラスト伝達関数 (CTF)** をチェックすると、レンズ収差とデフォーカスが空間周波数ごとに像コントラストをどう伝達するかをプロットするウィンドウが開きます。
 
-### 単一画像
+![コントラスト伝達関数 (CTF)](../../assets/cap-ja-auto/FormCTF.png)
 
-現在の厚さとデフォーカスで1枚のHRTEM像を計算。
+- $\sin\chi(u)$ : 位相コントラスト伝達関数（$\chi(u)$ はレンズの収差関数）
+- $E_\text{s}(u)$ : 空間コヒーレンスのエンベロープ関数。光源の有限サイズ（$\beta$）による減衰
+- $E_\text{c}(u)$ : 時間コヒーレンスのエンベロープ関数。エネルギー揺らぎ（$C_c$, $\Delta V$）による減衰
 
-### シリーズ画像
-
-複数の厚さ・デフォーカスで連続的にHRTEM像を計算。
-
-| パラメータ | 説明 |
-|-----------|------|
-| **Start** | 開始値 |
-| **Step** | ステップ幅 |
-| **Num** | 枚数 |
-
-厚さとデフォーカスの両方をスイープすると、行×列のマトリクス画像が生成されます。
+横軸 $u$（空間周波数）の上限を変えると描画範囲が変わります。
 
 ---
 
-## 像の調整
+## 対物絞り (HRTEM オプション)
 
-![像の調整](../../assets/cap-ja-auto/FormImageSimulator.splitContainer1.panelDisplaySettings.groupBoxAdjust.png)
+![対物絞り (HRTEM オプション)](../../assets/cap-ja-auto/FormImageSimulator.splitContainer1.groupBoxOpticalProperty.groupBoxHREMoption1.png)
 
-| 設定 | 説明 |
+対物絞りを通過させる回折波を制限します。絞りで切る回折波の数によって、ブロッホ波計算に含めるスポット数も変わります（上限は **回折波の数** の最大ブロッホ波数）。
+
+- **絞り半径** : 対物絞りの半角 (mrad)。小さいほど高角度の回折波を切り、高分解能の細部がなだらかになります。逆空間半径 $\sin\theta/\lambda$ への換算値 (nm⁻¹) が表示されます。
+- **シフト X / Y** : 対物絞り中心のシフト量 (mrad)。暗視野・傾斜結像に使います。
+- **絞り開放** : 対物絞りを開放（無限大）にし、すべての回折波を結像に使います。
+- **スポット数** : 絞り内に入る回折ビーム（スポット）の本数（読み取り専用）。
+- **Spot info** : 絞り内に入る回折ビームの一覧テーブル（強度・複素振幅など）を開きます。
+
+> 対物絞りの大きさは **回折シミュレータ** 上にも表示されます。
+
+---
+
+## HREM オプション（部分コヒーレンスモデル）
+
+![HREM オプション](../../assets/cap-ja-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.groupBoxHREMoption2.png)
+
+入射ビームの全方向からの寄与を統合する際の干渉モデルを選びます。
+
+- **線形イメージモデル（準コヒーレント）** : 計算コストが低い。弱位相物体近似が成り立つ薄い試料に適し、PCTFに空間・時間コヒーレンスエンベロープを乗じます。
+- **透過交差係数 (TCC)** : 計算コストが高いがより正確。完全な透過交差係数を積分します。多くの強い回折波を励起する強散乱体に使うべきモデルです。
+
+詳細は [Appendix A2.2 — HRTEM 像形成](../appendix/a2-bloch-wave/hrtem.md) を参照。
+
+---
+
+## 画像モード（単一 / シリーズ画像）
+
+![画像モード](../../assets/cap-ja-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.groupBoxSerialImage.png)
+
+- **単一画像** : 現在の厚さとデフォーカスで1枚のHRTEM像を計算します。
+- **シリーズ画像** : 厚さ・デフォーカスを段階的に変えた一連の画像（through-thickness / through-focus シリーズ）を生成します。実験像とのベストマッチ条件探索に有用です。
+
+シリーズ画像では次を設定します。
+
+| 項目 | 説明 |
 |------|------|
-| **Min / Max** | 輝度の表示範囲（画像調整のトラックバー） |
-| **カラー** | グレースケール or Cold-Warm |
-| **ガウシアンぼかし(FWHM)** | ガウシアンフィルタの適用 |
-| **単位格子** | 単位格子グリッドの重畳表示 |
-| **スケール** | スケールバーの表示 |
+| **試料厚み (nm)** / **デフォーカス (nm)** | どちらをスイープするか（両方可） |
+| **Start / Step / Num** | 開始値・刻み幅・枚数。下のリスト欄に展開され、直接編集も可能 |
+| **横軸の方向** | 厚さとデフォーカスの両方をスイープしたとき、グリッドの横方向に並べる量（厚さ / デフォーカス） |
+
+厚さとデフォーカスの両方をスイープすると、行 × 列のマトリクス画像が生成されます。
+
+---
+
+## 生成画像
+
+![生成画像](../../assets/cap-ja-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.panelImageProperties.groupBoxImageProperty.png)
+
+- **Size (W×H)** : シミュレートする画像のピクセル数（既定 512×512）。
+- **解像度** : サンプリング分解能 (pm/px)。値を小さくすると格子縞は細かく描けますが、FFT 時間が比例して長くなります。
+
+---
+
+## 回折波の数
+
+![回折波の数](../../assets/cap-ja-auto/FormImageSimulator.splitContainer1.groupBoxSimulation.panelModeOptions.panelImageProperties.groupBoxDiffractedWaves.png)
+
+- **最大ブロッホ波数** : ベーテ法（Dynamical 計算）で使用するブロッホ波の最大数（既定 80）。多くするほど精度が上がりますが、固有値問題の解法時間が $O(N^3)$ で増加します。
 
 ---
 
 ## 関連項目
 
-- [HRTEM/STEMシミュレータ](index.md)
+- [HRTEM/STEMシミュレータ（まとめ）](index.md)
 - [STEMシミュレーション](2-stem-simulation.md)
 - [ポテンシャルシミュレーション](3-potential-simulation.md)
+- [Appendix A2.2 — HRTEM 像形成](../appendix/a2-bloch-wave/hrtem.md)
