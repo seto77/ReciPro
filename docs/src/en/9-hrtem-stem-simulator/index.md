@@ -244,4 +244,15 @@ Computation depends on: convergence angle, Bloch wave count, angular resolution.
 
 ![STEM simulation comparison: Dr. Probe vs ReciPro](../../assets/references/STEM_DrProbe_comparison.png)
 
-A more detailed report is available as a PDF: [Comparison of STEM simulations by Dr. Probe GUI (v1.10) and ReciPro (v4.854)](https://github.com/seto77/ReciPro/files/10976084/ComparisonSTEMsimulations.pdf). See [8.2. STEM simulation](2-stem-simulation.md) for details.
+A more detailed report is available as a PDF: [Comparison of STEM simulations by Dr. Probe GUI (v1.10) and ReciPro (v4.854)](https://github.com/seto77/ReciPro/files/10976084/ComparisonSTEMsimulations.pdf). See [STEM simulation](2-stem-simulation.md) for details.
+
+---
+
+## See also
+
+- [HRTEM simulation](1-hrtem-simulation.md)
+- [STEM simulation](2-stem-simulation.md)
+- [Potential simulation](3-potential-simulation.md)
+- [Dynamical diffraction (Bloch-wave)](../appendix/a2-bloch-wave/index.md)
+- [Diffraction simulator](../7-diffraction-simulator/index.md)
+- [Electron trajectory](../8-electron-trajectory.md)

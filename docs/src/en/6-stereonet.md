@@ -29,12 +29,19 @@ The application-wide <kbd>CTRL</kbd>+<kbd>SHIFT</kbd> shortcuts from the [main w
 
 → See **[21. Keyboard & mouse shortcuts](21-shortcuts.md)** for every window at a glance.
 
+---
+
 ## Main area
 
 The stereonet projection of the selected crystal's crystal planes, direction indices, and Kikuchi lines is displayed.
 
+---
+
 ## File menu
+
 Save or copy in raster or vector format. Vector format allows editing font/line thickness in PowerPoint or other vector editors.
+
+---
 
 ## Mode
 
@@ -66,6 +73,8 @@ Choose **Upper** or **Lower** hemisphere as the projection source — switches w
 
 > For trigonal/hexagonal crystals, Miller–Bravais (4-index) notation can be enabled from **Option ▸ Use Miller-Bravais (hkil) index** in the main window.
 
+---
+
 ## Indices
 
 ![Indices](../assets/cap-en-auto/FormStereonet.panel3.groupBoxIndices.png)
@@ -84,11 +93,15 @@ Specifies particular axes or planes individually. Type an index, press **Add** t
 
 Set the **colour** and **size** of the plotted points. Tick **Change colour automatically** to colour-code each set of equivalent axes/planes differently — useful for distinguishing families on a multi-index plot.
 
+---
+
 ## 3D Options
 
 ![3D Options](../assets/cap-en-auto/FormStereonet.panel3.panel3DOptions.png)
 
 Controls the 3D net (sphere) overlay — opacity of the sphere, axis indicators, etc.
+
+---
 
 ## Tab menu
 
@@ -122,3 +135,13 @@ Draw great circles and small circles. Specify either by **zone-axis index** \([u
 ![Wave tab](../assets/cap-en-auto/FormStereonet.tabControl.tabPage4.png)
 
 Available only when **Planes** or **Kikuchi line pairs** is selected as the projection target. Sets the wave source (X-ray / electron / neutron) and the wavelength or energy required to compute the crystal structure factors used for the **structure-factor weighting** option in [Mode](#mode).
+
+---
+
+## See also
+
+- [Main window](0-main-window.md)
+- [Rotation geometry](4-rotation-geometry.md)
+- [Structure viewer](5-structure-viewer.md)
+- [Diffraction simulator](7-diffraction-simulator/index.md)
+- [Basic coordinate system & crystal orientation](appendix/a1-coordinate-system/1-orientation.md)

@@ -56,7 +56,7 @@ The camera length (mm) and detector pixel size (mm or nm⁻¹). When a Gatan DM 
 
 - **Detect & Fit Spots**: Automatic spot detection using local maxima and background subtraction.
 - **Number**: The maximum number of spots to detect.
-- **Nearest neighbor**: The minimum separation (px) allowed between detected spots. Peaks closer than this are merged, preventing double-detection of the same spot.
+- **Nearest neighbour**: The minimum separation (px) allowed between detected spots. Peaks closer than this are merged, preventing double-detection of the same spot.
 - **Fitting range (radius)**: The radius (px) of the circular region used to fit each spot's peak. Pixels inside this circle are fitted with a pseudo-Voigt function.
 - **Apply to All**: Sets the fitting radius of every spot to the current **Fitting range (radius)** value.
 - **Delete spot / Clear spots**: Remove individual or all detected spots.
@@ -85,3 +85,12 @@ The camera length (mm) and detector pixel size (mm or nm⁻¹). When a Gatan DM 
 - More robust fitting algorithms with multiple profile shapes.
 - Faster indexing with optimized search algorithms.
 - Support for overlapping spots and satellite reflections.
+
+---
+
+## See also
+
+- [Spot ID v1](10-spot-id.md)
+- [Diffraction simulator](7-diffraction-simulator/index.md)
+- [Main window](0-main-window.md)
+- [Keyboard & mouse shortcuts](21-shortcuts.md)

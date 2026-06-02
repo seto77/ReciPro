@@ -135,3 +135,13 @@
 ![線源タブ](../assets/cap-ja-auto/FormStereonet.tabControl.tabPage4.png)
 
 投影対象として**結晶面**あるいは**菊池線**を選択している場合のみ有効です。[モード](#mode)の**構造因子による重み付け**で用いる結晶構造因子の計算に必要な、線源 (X線 / 電子線 / 中性子線) と波長 (またはエネルギー) を設定します。
+
+---
+
+## 関連項目
+
+- [メインウィンドウ](0-main-window.md)
+- [回転ジオメトリ](4-rotation-geometry.md)
+- [結晶構造ビューア](5-structure-viewer.md)
+- [回折シミュレータ](7-diffraction-simulator/index.md)
+- [基本座標系と結晶方位](appendix/a1-coordinate-system/1-orientation.md)

@@ -1,6 +1,6 @@
 # HRTEM Simulation
 
-Simulates high-resolution TEM lattice-fringe images. The primary mode of the [8. HRTEM/STEM simulator](index.md).
+Simulates high-resolution TEM lattice-fringe images. The primary mode of the [HRTEM/STEM simulator](index.md).
 
 ---
 
@@ -107,6 +107,7 @@ Set aperture size (mrad) and position. **Open aperture** removes it. The number 
 
 ## See also
 
-- [8. HRTEM/STEM simulator](index.md)
-- [8.2. STEM simulation](2-stem-simulation.md)
-- [8.3. Potential simulation](3-potential-simulation.md)
+- [HRTEM/STEM simulator (overview)](index.md)
+- [STEM simulation](2-stem-simulation.md)
+- [Potential simulation](3-potential-simulation.md)
+- [Appendix A2.2 — HRTEM image formation](../appendix/a2-bloch-wave/hrtem.md)

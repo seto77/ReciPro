@@ -97,3 +97,12 @@
 ### 密度
 
 質量密度 (g/cm³) と許容誤差で絞り込みます。
+
+---
+
+## 関連項目
+
+- [メインウィンドウ](0-main-window.md)
+- [対称性情報](2-symmetry-information.md)
+- [散乱因子](3-scattering-factor.md)
+- [結晶構造ビューア](5-structure-viewer.md)

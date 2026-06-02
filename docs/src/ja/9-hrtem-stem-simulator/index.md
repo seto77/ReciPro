@@ -151,3 +151,14 @@ STEMモードのときだけ表示されます。計算済みのSTEM像のうち
 
 - **HRTEMシミュレーションの基本原理** : HRTEM像形成の解説（[Appendix A2.2](../appendix/a2-bloch-wave/hrtem.md)）を開きます。
 - **計算ライブラリ** : 計算ライブラリを選択します。**Native code**（高速な C++/Eigen）または **Managed code**（.NET）。通常は Native が高速です。
+
+---
+
+## 関連項目
+
+- [HRTEMシミュレーション](1-hrtem-simulation.md)
+- [STEMシミュレーション](2-stem-simulation.md)
+- [ポテンシャルシミュレーション](3-potential-simulation.md)
+- [動力学回折(Bloch波法)](../appendix/a2-bloch-wave/index.md)
+- [回折シミュレータ](../7-diffraction-simulator/index.md)
+- [電子飛程](../8-electron-trajectory.md)

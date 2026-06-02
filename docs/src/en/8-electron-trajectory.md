@@ -103,3 +103,13 @@ Histogram of the final exit depth (nm) of the backscattered electrons. Used by t
 ### Energy profile
 
 Histogram of the energy loss ΔE (keV) of the backscattered electrons. Used by the EBSD simulator to weight the energy integration.
+
+---
+
+## See also
+
+- [EBSD simulation](12-ebsd-simulation.md)
+- [EBSD calculation](appendix/a2-bloch-wave/ebsd.md)
+- [Dynamical diffraction (Bloch-wave)](appendix/a2-bloch-wave/index.md)
+- [HRTEM/STEM simulator](9-hrtem-stem-simulator/index.md)
+- [Diffraction simulator](7-diffraction-simulator/index.md)

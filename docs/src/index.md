@@ -41,8 +41,8 @@
 
 This GitHub Pages manual is the current source of truth. Use the left navigation to browse by chapter, or use search in the header to find a function name or UI label. The old PDF manuals are kept for archival reference.
 
-* **Archived PDF (English):** https://raw.githubusercontent.com/seto77/ReciPro/master/ReciPro/doc/ReciProManual(en).pdf
-* **Archived PDF (Japanese):** https://raw.githubusercontent.com/seto77/ReciPro/master/ReciPro/doc/ReciProManual(ja).pdf
+* **Archived PDF (English):** <https://raw.githubusercontent.com/seto77/ReciPro/master/ReciPro/doc/ReciProManual(en).pdf>
+* **Archived PDF (Japanese):** <https://raw.githubusercontent.com/seto77/ReciPro/master/ReciPro/doc/ReciProManual(ja).pdf>
 
 ## Quick start
 1. Download and install from [Releases](https://github.com/seto77/ReciPro/releases/latest).
@@ -51,7 +51,7 @@ This GitHub Pages manual is the current source of truth. Use the left navigation
 4. Rotate the crystal by mouse drag or by entering zone-axis/plane indices.
 
 ## Reference
-> Y. Seto, "ReciPro: free and open-source multipurpose crystallographic software integrating a crystal operation interface and diffraction simulators," *J. Appl. Cryst.* **55**, 397-410 (2022). https://doi.org/10.1107/S1600576722000139
+> Y. Seto, "ReciPro: free and open-source multipurpose crystallographic software integrating a crystal operation interface and diffraction simulators," *J. Appl. Cryst.* **55**, 397–410 (2022). <https://doi.org/10.1107/S1600576722000139>
 
 ## License
 ReciPro is distributed under the [MIT License](https://github.com/seto77/ReciPro/blob/master/LICENSE.md).

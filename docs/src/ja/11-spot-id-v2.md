@@ -36,7 +36,7 @@
 
 ---
 
-## Optics
+## 光学系 (Optics)
 
 ![Optics](../assets/cap-ja-auto/FormSpotIDV2.splitContainer1.panel1.groupBoxOptics.png)
 
@@ -85,3 +85,12 @@
 - 複数のプロファイル形状に対応した、より堅牢なフィッティングアルゴリズム。
 - 最適化された検索アルゴリズムによる高速な指数付け。
 - 重なり合うスポットやサテライト反射のサポート。
+
+---
+
+## 関連項目
+
+- [Spot ID v1](10-spot-id.md)
+- [回折シミュレータ](7-diffraction-simulator/index.md)
+- [メインウィンドウ](0-main-window.md)
+- [キーボード・マウスショートカット](21-shortcuts.md)

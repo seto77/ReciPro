@@ -2,7 +2,7 @@
 
 **PED (Precession Electron Diffraction)** simulation calculates electron diffraction patterns obtained by precessing the incident beam in a cone around the optic axis.
 
-> This page lists every setting that appears on the right-hand side when you select **Wave = Electron beam, Incident beam = Precession (electron), Intensity = Dynamical (automatic)**. Note that **selecting Precession (electron) for the incident beam automatically switches the intensity calculation to Dynamical**. For window-wide operations such as drawing and saving, see the [summary page](index.md).
+> This page lists every setting that appears on the right-hand side when you select **Wave = Electron beam, Incident beam = Precession (electron), Intensity = Dynamical (automatic)**. Note that **selecting Precession (electron) for the incident beam automatically switches the intensity calculation to Dynamical**. For window-wide operations such as drawing and saving, see the [overview page](index.md).
 
 GUI conditions: **Wave = Electron beam, Incident beam = Precession (electron), Intensity = Dynamical (automatic)**
 
@@ -97,7 +97,7 @@ Controls how each diffraction spot is drawn.
 
 ## See also
 
-- [Diffraction simulator (summary)](index.md)
+- [Diffraction simulator (overview)](index.md)
 - [X-ray diffraction simulation](4-x-ray-neutron-diffraction.md)
 - [SAED simulation](1-saed-simulation.md)
 - [Dynamical calculation (Bloch-wave method)](../appendix/a2-bloch-wave/calculation.md)

@@ -73,3 +73,13 @@ Controls below the diagrams:
 
 - **Direction** (`a` / `b` / `c`) : choose the crystal axis to project along.
 - **Copy** each diagram to the clipboard as a vector image (**EMF**) or raster image (**BMP**); EMF can be ungrouped and edited in PowerPoint.
+
+---
+
+## See also
+
+- [Crystal database](1-crystal-database.md)
+- [Structure viewer](5-structure-viewer.md)
+- [Stereonet](6-stereonet.md)
+- [Rotation geometry](4-rotation-geometry.md)
+- [Main window](0-main-window.md)

@@ -2,7 +2,7 @@
 
 **Symmetry Information** は、選択した結晶の空間群対称性の詳細情報を表示し、さらに*International Tables for Crystallography* Vol. A の様式に沿った対称要素・一般位置の模式図を描画します。
 
-![対称性情報](../assets/cap-en-auto/FormSymmetryInformation.png)
+![対称性情報](../assets/cap-ja-auto/FormSymmetryInformation.png)
 
 ウィンドウは、空間群の情報（左上）、計算・表のタブ領域（右上）、2つの模式図（下部）から構成されます。
 
@@ -31,7 +31,7 @@
 
 ## Geometrics Calculation（幾何計算）
 
-![幾何計算](../assets/cap-en-auto/FormSymmetryInformation.panel2.tabControl.tabPageGeometrics.png)
+![幾何計算](../assets/cap-ja-auto/FormSymmetryInformation.panel2.tabControl.tabPageGeometrics.png)
 
 2つの結晶面 \((h_1, k_1, l_1)\),  \((h_2, k_2, l_2)\) または2つの方向指数 \([u_1, v_1, w_1]\),  \([u_2, v_2, w_2]\) を入力すると、次が得られます。
 
@@ -45,7 +45,7 @@
 
 ## Wyckoff Positions（ワイコフ位置）
 
-![ワイコフ位置](../assets/cap-en-auto/FormSymmetryInformation.panel2.tabControl.tabPageWyckoff.png)
+![ワイコフ位置](../assets/cap-ja-auto/FormSymmetryInformation.panel2.tabControl.tabPageWyckoff.png)
 
 すべてのワイコフ位置について、多重度・ワイコフ記号・サイト対称性・一般/特殊位置を一覧表示します。複合格子では 格子並進ベクトルがヘッダ行に示されます。
 
@@ -53,7 +53,7 @@
 
 ## Conditions（反射条件）
 
-![反射条件](../assets/cap-en-auto/FormSymmetryInformation.panel2.tabControl.tabPageConditions.png)
+![反射条件](../assets/cap-ja-auto/FormSymmetryInformation.panel2.tabControl.tabPageConditions.png)
 
 複合格子、らせん・映進などの対称操作に由来する反射（出現則）条件を表示します。
 
@@ -77,3 +77,13 @@
 
 - **Direction**（`a` / `b` / `c`） : 投影する結晶軸を選択します。
 - 各模式図を **EMF**（ベクター画像）または **BMP**（ラスター画像）でクリップボードにコピーできます。EMFはPowerPointでグループ解除して編集できます。
+
+---
+
+## 関連項目
+
+- [結晶データベース](1-crystal-database.md)
+- [結晶構造ビューア](5-structure-viewer.md)
+- [ステレオネット](6-stereonet.md)
+- [回転ジオメトリ](4-rotation-geometry.md)
+- [メインウィンドウ](0-main-window.md)

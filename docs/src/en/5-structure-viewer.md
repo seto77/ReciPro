@@ -281,3 +281,13 @@ For each class you can adjust the symbol size, line width, and colour.
 | Sym. Elems. | Toggle the symmetry-element overlay (see above) |
 | Reset Rotation | Return to the initial orientation |
 | Like Vesta | Vesta-style appearance |
+
+---
+
+## See also
+
+- [Main window](0-main-window.md)
+- [Crystal database](1-crystal-database.md)
+- [Symmetry information](2-symmetry-information.md)
+- [Diffraction simulator](7-diffraction-simulator/index.md)
+- [Keyboard & mouse shortcuts](21-shortcuts.md)

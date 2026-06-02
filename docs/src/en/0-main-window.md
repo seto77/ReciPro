@@ -14,7 +14,7 @@ When ReciPro launches, the main window appears. From this window you select the 
 
 ---
 
-## Keyboard & mouse shortcuts
+## Keyboard & mouse shortcuts {#keyboard-mouse-shortcuts}
 
 The main window installs several **application-wide** shortcuts. They keep working while the Structure Viewer, Stereonet, Diffraction Simulator, Spot ID, and Calculator windows are focused.
 
@@ -231,3 +231,14 @@ The vertical button strip on the right launches the analysis and simulation wind
 | Spot ID v2 | Spot detection & indexing | [11. Spot ID v2](11-spot-id-v2.md) |
 | EBSD Simulator | EBSD pattern simulation | [12. EBSD simulation](12-ebsd-simulation.md) |
 | Powder Diffraction | Polycrystalline (powder) diffraction — enable via **Option ▸ Powder diffraction function** | - |
+
+---
+
+## See also
+
+- [Crystal database](1-crystal-database.md)
+- [Rotation geometry](4-rotation-geometry.md)
+- [Structure viewer](5-structure-viewer.md)
+- [Diffraction simulator](7-diffraction-simulator/index.md)
+- [Keyboard & mouse shortcuts](21-shortcuts.md)
+- [Basic coordinate system & crystal orientation](appendix/a1-coordinate-system/1-orientation.md)

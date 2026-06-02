@@ -103,3 +103,13 @@
 ### エネルギープロファイル
 
 後方散乱電子のエネルギー損失 ΔE (keV) のヒストグラム。EBSD シミュレータのエネルギー積分の重み付けに利用されます。
+
+---
+
+## 関連項目
+
+- [EBSDシミュレーション](12-ebsd-simulation.md)
+- [EBSDの計算](appendix/a2-bloch-wave/ebsd.md)
+- [動力学回折(Bloch波法)](appendix/a2-bloch-wave/index.md)
+- [HRTEM/STEMシミュレータ](9-hrtem-stem-simulator/index.md)
+- [回折シミュレータ](7-diffraction-simulator/index.md)

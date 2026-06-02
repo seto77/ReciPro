@@ -9,7 +9,7 @@
 | 目的 | 最初に読むページ | 次に使う主な機能 |
 |------|------------------|------------------|
 | 結晶を読み込んで方位を合わせたい | [メインウィンドウ](0-main-window.md) | [回転ジオメトリ](4-rotation-geometry.md)、[Appendix A1. 座標系](appendix/a1-coordinate-system/1-orientation.md) |
-| 結晶構造を3Dで確認したい | [Structure Viewer](5-structure-viewer.md) | [対称性情報](2-symmetry-information.md) |
+| 結晶構造を3Dで確認したい | [結晶構造ビューア](5-structure-viewer.md) | [対称性情報](2-symmetry-information.md) |
 | SAED / XRD / PED / CBED を計算したい | [回折シミュレータ](7-diffraction-simulator/index.md) | [SAED](7-diffraction-simulator/1-saed-simulation.md)、[X線回折](7-diffraction-simulator/4-x-ray-neutron-diffraction.md)、[PED](7-diffraction-simulator/2-ped-simulation.md)、[CBED](7-diffraction-simulator/3-cbed-simulation.md) |
 | HRTEM / STEM 像を計算したい | [HRTEM/STEMシミュレータ](9-hrtem-stem-simulator/index.md) | [HRTEM](9-hrtem-stem-simulator/1-hrtem-simulation.md)、[STEM](9-hrtem-stem-simulator/2-stem-simulation.md) |
 | EBSDパターンを計算したい | [EBSDシミュレーション](12-ebsd-simulation.md) | [電子飛程](8-electron-trajectory.md)、[Appendix A2. EBSD の計算](appendix/a2-bloch-wave/ebsd.md) |
@@ -41,8 +41,8 @@
 
 この GitHub Pages 版が現在の正本です。画面左のナビゲーションから章を選ぶか、右上の検索で機能名やUIラベルを検索してください。旧PDF版は過去版の参照用です。
 
-* **旧PDF（英語）:** https://raw.githubusercontent.com/seto77/ReciPro/master/ReciPro/doc/ReciProManual(en).pdf
-* **旧PDF（日本語）:** https://raw.githubusercontent.com/seto77/ReciPro/master/ReciPro/doc/ReciProManual(ja).pdf
+* **旧PDF（英語）:** <https://raw.githubusercontent.com/seto77/ReciPro/master/ReciPro/doc/ReciProManual(en).pdf>
+* **旧PDF（日本語）:** <https://raw.githubusercontent.com/seto77/ReciPro/master/ReciPro/doc/ReciProManual(ja).pdf>
 
 ## クイックスタート
 1. [Releases](https://github.com/seto77/ReciPro/releases/latest) からダウンロード・インストール。
@@ -51,7 +51,7 @@
 4. マウスドラッグや晶帯軸・面指数の入力で結晶を回転。
 
 ## 引用文献
-> Y. Seto, "ReciPro: free and open-source multipurpose crystallographic software integrating a crystal operation interface and diffraction simulators," *J. Appl. Cryst.* **55**, 397–410 (2022). https://doi.org/10.1107/S1600576722000139
+> Y. Seto, "ReciPro: free and open-source multipurpose crystallographic software integrating a crystal operation interface and diffraction simulators," *J. Appl. Cryst.* **55**, 397–410 (2022). <https://doi.org/10.1107/S1600576722000139>
 
 ## ライセンス
 ReciProは [MITライセンス](https://github.com/seto77/ReciPro/blob/master/LICENSE.md) の下で配布されています。

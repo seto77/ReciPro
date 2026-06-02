@@ -95,3 +95,12 @@ When **Link** is checked, the ReciPro coordinate system and the Experimental coo
 2. Enter the laboratory goniometer's Euler angles in the Experimental coordinate system.
 3. In the Main window, rotate the crystal so that the *a*-axis faces the screen normal and the *b*-axis faces horizontal.
 4. Check **Link** — now, whenever you point the crystal to a different orientation in the Main window, the required goniometer angles are automatically displayed.
+
+---
+
+## See also
+
+- [Main window](0-main-window.md)
+- [Stereonet](6-stereonet.md)
+- [Basic coordinate system & crystal orientation](appendix/a1-coordinate-system/1-orientation.md)
+- [Keyboard & mouse shortcuts](21-shortcuts.md)

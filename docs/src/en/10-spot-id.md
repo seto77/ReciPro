@@ -103,3 +103,13 @@ Enter the geometry of the diffraction spots.
 **Three sides mode** : Enter the lengths of the three sides of a triangle with the direct spot as one vertex.
 
 **Two sides and an angle mode** : Enter the lengths of two sides (including the direct spot) and the angle between them.
+
+---
+
+## See also
+
+- [Spot ID v2](11-spot-id-v2.md)
+- [Diffraction simulator](7-diffraction-simulator/index.md)
+- [Main window](0-main-window.md)
+- [Crystal database](1-crystal-database.md)
+- [EBSD simulation](12-ebsd-simulation.md)
