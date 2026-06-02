@@ -96,12 +96,8 @@
     <Content Include="doc\Hrtem.pdf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="doc\ReciProManual(en).pdf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="doc\ReciProManual(ja).pdf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    <!-- 260602Cl: 同梱マニュアルPDF(2023年版)の出力同梱を廃止。マニュアルは GitHub Pages (https://seto77.github.io/ReciPro/) に移行済み。
+         旧: <Content Include="doc\ReciProManual(en).pdf"> / <Content Include="doc\ReciProManual(ja).pdf"> (CopyToOutputDirectory=PreserveNewest) -->
     <!-- 260530Cl GPL の ffmpeg DLL 同梱を廃止し Media Foundation へ移行。旧: <Content Include="ffmpeg\*.dll"> -->
     <Content Include="initial.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

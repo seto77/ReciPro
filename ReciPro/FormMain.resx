@@ -1609,9 +1609,6 @@ normal points toward you (out of the screen).</value>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
     <value>Crystallography.Controls.FormBase, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="githubWikiToolStripMenuItem.Text" xml:space="preserve">
-    <value>Help (Manual)</value>
-  </data>
   <data name="labelLaTex3.Text" xml:space="preserve">
     <value>\Phi</value>
   </data>
@@ -1665,9 +1662,6 @@ normal points toward you (out of the screen).</value>
   </data>
   <data name="numericBoxEulerPsi.Location" type="System.Drawing.Point, System.Drawing">
     <value>25, 56</value>
-  </data>
-  <data name="&gt;&gt;githubWikiToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="panel3.ToolTip" xml:space="preserve">
     <value />
@@ -1767,9 +1761,6 @@ normal points toward you (out of the screen).</value>
   </data>
   <data name="&gt;&gt;panel2.ZOrder" xml:space="preserve">
     <value>3</value>
-  </data>
-  <data name="githubWikiToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>294, 22</value>
   </data>
   <data name="&gt;&gt;optionToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -3476,9 +3467,6 @@ is used as rotation speed in degrees per second.</value>
   </data>
   <data name="&gt;&gt;buttonUp.Name" xml:space="preserve">
     <value>buttonUp</value>
-  </data>
-  <data name="&gt;&gt;githubWikiToolStripMenuItem.Name" xml:space="preserve">
-    <value>githubWikiToolStripMenuItem</value>
   </data>
   <data name="labelCurrentIndex.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9.75pt</value>

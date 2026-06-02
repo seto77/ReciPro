@@ -167,7 +167,6 @@
             reportBugsRequestsOrCommentsToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             toolStripSeparator17 = new System.Windows.Forms.ToolStripSeparator();
             helpwebToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            githubWikiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             languageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             englishToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             japaneseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -1194,7 +1193,7 @@
             // 
             resources.ApplyResources(helpToolStripMenuItem, "helpToolStripMenuItem");
             captureExtender.SetCapture(helpToolStripMenuItem, true);
-            helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { checkUpdatesToolStripMenuItem, toolStripSeparator16, hintToolStripMenuItem, versionHistoryToolStripMenuItem, licenseToolStripMenuItem, toolStripSeparator18, githubPageToolStripMenuItem, reportBugsRequestsOrCommentsToolStripMenuItem1, toolStripSeparator17, helpwebToolStripMenuItem, githubWikiToolStripMenuItem });
+            helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { checkUpdatesToolStripMenuItem, toolStripSeparator16, hintToolStripMenuItem, versionHistoryToolStripMenuItem, licenseToolStripMenuItem, toolStripSeparator18, githubPageToolStripMenuItem, reportBugsRequestsOrCommentsToolStripMenuItem1, toolStripSeparator17, helpwebToolStripMenuItem });
             helpToolStripMenuItem.Name = "helpToolStripMenuItem";
             // 
             // checkUpdatesToolStripMenuItem
@@ -1253,12 +1252,6 @@
             resources.ApplyResources(helpwebToolStripMenuItem, "helpwebToolStripMenuItem");
             helpwebToolStripMenuItem.Name = "helpwebToolStripMenuItem";
             helpwebToolStripMenuItem.Click += helpwebToolStripMenuItem_Click;
-            // 
-            // githubWikiToolStripMenuItem
-            // 
-            resources.ApplyResources(githubWikiToolStripMenuItem, "githubWikiToolStripMenuItem");
-            githubWikiToolStripMenuItem.Name = "githubWikiToolStripMenuItem";
-            githubWikiToolStripMenuItem.Click += githubWikiToolStripMenuItem_Click;
             // 
             // languageToolStripMenuItem
             // 
@@ -1537,7 +1530,6 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator22;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemDisableTextRendering;
         public System.Windows.Forms.ToolStripButton toolStripButtonTrajectorySimulator;
-        private System.Windows.Forms.ToolStripMenuItem githubWikiToolStripMenuItem;
         private System.Windows.Forms.Panel panelCrystalDirection;
         public System.Windows.Forms.ToolStripButton toolStripButtonEBSD;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator24;

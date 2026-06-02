@@ -1576,15 +1576,23 @@ public partial class FormMain : FormBase
 
     private void helpwebToolStripMenuItem_Click(object sender, EventArgs e)
     {
-        if (Language != Languages.English)
-            Process.Start(new ProcessStartInfo("https://yseto.net/soft/recipro/") { UseShellExecute = true });
-        else
-        {
-            var fn = "\\doc\\ReciProManual(" + (Language == Languages.English ? "en" : "ja") + ").pdf";
-            var appPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-            var f = new FormPDF(appPath + fn) { Text = "ReciPro manual" };
-            f.Show();
-        }
+        // 260602Cl: yseto.net 旧 web マニュアル(現在は GitHub Pages への移転スタブ)と同梱の旧 PDF(2023年版) を廃止し、
+        //           GitHub Pages のマニュアルを UI 言語別 (ja/en) に開くよう変更。
+        Process.Start(new ProcessStartInfo(
+            Thread.CurrentThread.CurrentUICulture.Name == "ja"
+                ? "https://seto77.github.io/ReciPro/ja/"
+                : "https://seto77.github.io/ReciPro/") { UseShellExecute = true });
+
+        // 260602Cl 旧コード (コメントアウト保存):
+        //if (Language != Languages.English)
+        //    Process.Start(new ProcessStartInfo("https://yseto.net/soft/recipro/") { UseShellExecute = true });
+        //else
+        //{
+        //    var fn = "\\doc\\ReciProManual(" + (Language == Languages.English ? "en" : "ja") + ").pdf";
+        //    var appPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+        //    var f = new FormPDF(appPath + fn) { Text = "ReciPro manual" };
+        //    f.Show();
+        //}
     }
     private void hintToolStripMenuItem_Click(object sender, EventArgs e)
     {
@@ -1634,15 +1642,7 @@ public partial class FormMain : FormBase
         => Process.Start(new ProcessStartInfo("https://github.com/seto77/ReciPro") { UseShellExecute = true });
     private void reportBugsRequestsOrCommentsToolStripMenuItem1_Click(object sender, EventArgs e)
         => Process.Start(new ProcessStartInfo("https://github.com/seto77/ReciPro/issues") { UseShellExecute = true });
-
-    // 260525Cl: GitHub Wiki は凍結しマニュアルを GitHub Pages へ移行。UI 言語に合わせて en/ja のページを開く。
-    // private void githubWikiToolStripMenuItem_Click(object sender, EventArgs e)
-    //     => Process.Start(new ProcessStartInfo("https://github.com/seto77/ReciPro/wiki") { UseShellExecute = true }); // 260525Cl 旧: Wiki
-    private void githubWikiToolStripMenuItem_Click(object sender, EventArgs e)
-        => Process.Start(new ProcessStartInfo(
-            Thread.CurrentThread.CurrentUICulture.Name == "ja"
-                ? "https://seto77.github.io/ReciPro/ja/"
-                : "https://seto77.github.io/ReciPro/") { UseShellExecute = true });
+    // 260602Cl: githubWikiToolStripMenuItem("Help (Manual)") は helpweb("使い方(WEB)") と同一の GitHub Pages を開く重複だったため削除。helpweb 側に統合。
 
 
     //260421Cl 追加: メニューチェック変更ハンドラ (Designer からバインド)
