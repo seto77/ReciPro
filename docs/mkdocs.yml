@@ -68,13 +68,17 @@ plugins:
         'en/11-symmetry-information.md': 'en/2-symmetry-information.md'
         'en/12-scattering-factor.md': 'en/3-scattering-factor.md'
         'en/3-rotation-geometry.md': 'en/4-rotation-geometry.md'
-        # 260526Cl: 7.1/7.2 入れ替え (7.1=X線回折 / 7.2=SAED)。旧フラットURL・直近のフォルダURLとも新ファイル名へ
-        'en/7-1-saed-simulation.md': 'en/7-diffraction-simulator/2-saed-simulation.md'
-        'en/7-2-x-ray-diffraction.md': 'en/7-diffraction-simulator/1-x-ray-diffraction.md'
-        'en/7-diffraction-simulator/1-saed-simulation.md': 'en/7-diffraction-simulator/2-saed-simulation.md'
-        'en/7-diffraction-simulator/2-x-ray-diffraction.md': 'en/7-diffraction-simulator/1-x-ray-diffraction.md'
-        'en/7-3-ped-simulation.md': 'en/7-diffraction-simulator/3-ped-simulation.md'
-        'en/7-4-cbed-simulation.md': 'en/7-diffraction-simulator/4-cbed-simulation.md'
+        # 260526Cl/260602Cl: 7章を SAED(7.1)/PED(7.2)/CBED(7.3)/X線・中性子(7.4) の順へ再編。旧フラット/フォルダURLを現ファイル名へ。
+        'en/7-1-saed-simulation.md': 'en/7-diffraction-simulator/1-saed-simulation.md'
+        'en/7-2-x-ray-diffraction.md': 'en/7-diffraction-simulator/4-x-ray-neutron-diffraction.md'
+        'en/7-3-ped-simulation.md': 'en/7-diffraction-simulator/2-ped-simulation.md'
+        'en/7-4-cbed-simulation.md': 'en/7-diffraction-simulator/3-cbed-simulation.md'
+        'en/7-diffraction-simulator/2-x-ray-diffraction.md': 'en/7-diffraction-simulator/4-x-ray-neutron-diffraction.md'
+        # 260602Cl: 本日公開した繰り上げ前 (7.1=X線/7.2=SAED/7.3=PED/7.4=CBED) の URL を現ファイル名へ。
+        'en/7-diffraction-simulator/1-x-ray-diffraction.md': 'en/7-diffraction-simulator/4-x-ray-neutron-diffraction.md'
+        'en/7-diffraction-simulator/2-saed-simulation.md': 'en/7-diffraction-simulator/1-saed-simulation.md'
+        'en/7-diffraction-simulator/3-ped-simulation.md': 'en/7-diffraction-simulator/2-ped-simulation.md'
+        'en/7-diffraction-simulator/4-cbed-simulation.md': 'en/7-diffraction-simulator/3-cbed-simulation.md'
         'en/8-1-hrtem-simulation.md': 'en/9-hrtem-stem-simulator/1-hrtem-simulation.md'
         'en/8-2-stem-simulation.md': 'en/9-hrtem-stem-simulator/2-stem-simulation.md'
         'en/8-3-potential-simulation.md': 'en/9-hrtem-stem-simulator/3-potential-simulation.md'
@@ -87,12 +91,16 @@ plugins:
         'ja/11-symmetry-information.md': 'ja/2-symmetry-information.md'
         'ja/12-scattering-factor.md': 'ja/3-scattering-factor.md'
         'ja/3-rotation-geometry.md': 'ja/4-rotation-geometry.md'
-        'ja/7-1-saed-simulation.md': 'ja/7-diffraction-simulator/2-saed-simulation.md'
-        'ja/7-2-x-ray-diffraction.md': 'ja/7-diffraction-simulator/1-x-ray-diffraction.md'
-        'ja/7-diffraction-simulator/1-saed-simulation.md': 'ja/7-diffraction-simulator/2-saed-simulation.md'
-        'ja/7-diffraction-simulator/2-x-ray-diffraction.md': 'ja/7-diffraction-simulator/1-x-ray-diffraction.md'
-        'ja/7-3-ped-simulation.md': 'ja/7-diffraction-simulator/3-ped-simulation.md'
-        'ja/7-4-cbed-simulation.md': 'ja/7-diffraction-simulator/4-cbed-simulation.md'
+        'ja/7-1-saed-simulation.md': 'ja/7-diffraction-simulator/1-saed-simulation.md'
+        'ja/7-2-x-ray-diffraction.md': 'ja/7-diffraction-simulator/4-x-ray-neutron-diffraction.md'
+        'ja/7-3-ped-simulation.md': 'ja/7-diffraction-simulator/2-ped-simulation.md'
+        'ja/7-4-cbed-simulation.md': 'ja/7-diffraction-simulator/3-cbed-simulation.md'
+        'ja/7-diffraction-simulator/2-x-ray-diffraction.md': 'ja/7-diffraction-simulator/4-x-ray-neutron-diffraction.md'
+        # 260602Cl: 本日公開した繰り上げ前の URL を現ファイル名へ。
+        'ja/7-diffraction-simulator/1-x-ray-diffraction.md': 'ja/7-diffraction-simulator/4-x-ray-neutron-diffraction.md'
+        'ja/7-diffraction-simulator/2-saed-simulation.md': 'ja/7-diffraction-simulator/1-saed-simulation.md'
+        'ja/7-diffraction-simulator/3-ped-simulation.md': 'ja/7-diffraction-simulator/2-ped-simulation.md'
+        'ja/7-diffraction-simulator/4-cbed-simulation.md': 'ja/7-diffraction-simulator/3-cbed-simulation.md'
         'ja/8-1-hrtem-simulation.md': 'ja/9-hrtem-stem-simulator/1-hrtem-simulation.md'
         'ja/8-2-stem-simulation.md': 'ja/9-hrtem-stem-simulator/2-stem-simulation.md'
         'ja/8-3-potential-simulation.md': 'ja/9-hrtem-stem-simulator/3-potential-simulation.md'
@@ -131,6 +139,13 @@ markdown_extensions:
   - tables
   - toc:
       permalink: true
+      # 260602Cl: 日本語見出しの slug を機能させる。既定 (python-markdown の ASCII slugify) では
+      #   日本語が NFKD→ASCII で消えてアンカーが連番化し、ページ間の `#日本語見出し` リンクが
+      #   すべてページ先頭へ落ちていた (mkdocs は INFO 止まりで strict も素通り)。
+      #   pymdownx の Unicode slugify へ切替えて日本語アンカーを有効化する (英語アンカーは lower 化で不変)。
+      slugify: !!python/object/apply:pymdownx.slugs.slugify
+        kwds:
+          case: lower
   - pymdownx.details
   - pymdownx.superfences
   - pymdownx.tabbed:
@@ -180,10 +195,10 @@ nav:
       - 6. Stereonet: en/6-stereonet.md
       - 7. Diffraction simulator:
           - en/7-diffraction-simulator/index.md
-          - 7.1. X ray diffraction: en/7-diffraction-simulator/1-x-ray-diffraction.md
-          - 7.2. SAED simulation: en/7-diffraction-simulator/2-saed-simulation.md
-          - 7.3. PED Simulation: en/7-diffraction-simulator/3-ped-simulation.md
-          - 7.4 CBED simulation: en/7-diffraction-simulator/4-cbed-simulation.md
+          - 7.1. SAED simulation: en/7-diffraction-simulator/1-saed-simulation.md
+          - 7.2. PED simulation: en/7-diffraction-simulator/2-ped-simulation.md
+          - 7.3. CBED simulation: en/7-diffraction-simulator/3-cbed-simulation.md
+          - 7.4. X-ray / neutron diffraction: en/7-diffraction-simulator/4-x-ray-neutron-diffraction.md
       - 8. Electron trajectory: en/8-electron-trajectory.md
       - 9. HRTEM/STEM simulator:
           - en/9-hrtem-stem-simulator/index.md
@@ -222,10 +237,10 @@ nav:
       - 6. ステレオネット: ja/6-stereonet.md
       - 7. 回折シミュレータ:
           - ja/7-diffraction-simulator/index.md
-          - 7.1. X線回折シミュレーション: ja/7-diffraction-simulator/1-x-ray-diffraction.md
-          - 7.2. SAEDシミュレーション: ja/7-diffraction-simulator/2-saed-simulation.md
-          - 7.3. PEDシミュレーション: ja/7-diffraction-simulator/3-ped-simulation.md
-          - 7.4 CBEDシミュレーション: ja/7-diffraction-simulator/4-cbed-simulation.md
+          - 7.1. SAEDシミュレーション: ja/7-diffraction-simulator/1-saed-simulation.md
+          - 7.2. PEDシミュレーション: ja/7-diffraction-simulator/2-ped-simulation.md
+          - 7.3. CBEDシミュレーション: ja/7-diffraction-simulator/3-cbed-simulation.md
+          - 7.4. X線・中性子線回折シミュレーション: ja/7-diffraction-simulator/4-x-ray-neutron-diffraction.md
       - 8. 電子飛程: ja/8-electron-trajectory.md
       - 9. HRTEM/STEMシミュレータ:
           - ja/9-hrtem-stem-simulator/index.md

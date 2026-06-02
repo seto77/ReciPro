@@ -76,4 +76,4 @@ CBED is therefore the most direct way to view the Bloch-wave result as a disk pa
 
 - [Dynamical calculation (common core)](calculation.md)
 - [Appendix A2. Dynamical Diffraction by the Bloch-Wave Method](index.md)
-- [7.4. CBED simulation](../../7-diffraction-simulator/4-cbed-simulation.md)
+- [7.4. CBED simulation](../../7-diffraction-simulator/3-cbed-simulation.md)

@@ -252,6 +252,11 @@ internal static class GuiCapture
         if (form is FormImageSimulator imageSimulatorForModeShots)
             CaptureImageSimulatorModeShots(imageSimulatorForModeShots, name, outDir, trace);
 
+        // 260602Cl 追加: FormDiffractionSimulator は波長×入射ビームの組合せでモード (SAED/PED/X線) ごとに右側パネル構成が
+        // 変わるため、各モードの「全体フォーム画像」を追加で撮る (上で撮った全体画像は既定モードの 1 枚だけ)。
+        if (form is FormDiffractionSimulator diffractionSimulatorForModeShots)
+            CaptureDiffractionSimulatorModeShots(diffractionSimulatorForModeShots, name, outDir, trace);
+
         if (closeAfterCapture)
         {
             form.TopMost = false; // (260524Cl) 後続フォームの最前面化を妨げないよう閉じる前に解除
@@ -285,6 +290,43 @@ internal static class GuiCapture
                 Settle(sim, TabSwitchSettleMs, trace); // レイアウト反映を待つ
                 BringToFront(sim);
                 sim.PrepareCaptureForGuiAudit();       // 現在モードの Simulate を起動 (HRTEM/POTENTIAL は同期、STEM は非同期)
+                WaitUntilScreenStable(sim, trace);     // 計算完了 (= 画面が止まる) まで待つ
+                BringToFront(sim);
+                Settle(sim, TabSwitchSettleMs, trace);
+
+                var bmp = CaptureScreen(GetWindowVisualBounds(sim), sim, trace, name, retryIfSolid: true);
+                if (bmp != null)
+                    using (bmp) bmp.Save(Path.Combine(outDir, name + ".png"), ImageFormat.Png);
+                else
+                    trace($"{name}\tWARN\tmode full-form capture failed");
+            }
+            catch (Exception ex)
+            {
+                // 1 モードの失敗で残りを諦めない (GuiCapture 全体の「可能な限り次へ進む」方針)。
+                trace($"{name}\tWARN\tmode shot: {ex.GetType().Name}: {ex.Message}");
+            }
+        }
+    }
+
+    /// <summary>
+    /// 260602Cl 追加: FormDiffractionSimulator の「全体フォーム画像」をモードごとに撮る。
+    /// SAED (電子線・平行) / X線 (X線・平行) / PED (電子線・歳差) を順に設定し、各モードで Draw → 画面安定待ち →
+    /// ウィンドウ全体を撮影し、<c>FormDiffractionSimulator-{saed|xray|ped}.png</c> として保存する。
+    /// コントロール単体クロップは <see cref="RenderHiddenControl"/> によりモード非依存で全 flowLayoutPanel 分すでに撮れているため
+    /// ここでは追加しない。PED は歳差の動力学計算で重いので最後に回し、完了判定は <see cref="WaitUntilScreenStable"/> に委ねる。
+    /// 既存の <c>FormDiffractionSimulator.png</c> (既定モードの全体画像) はそのまま残す (index 等の既存参照を壊さない)。
+    /// </summary>
+    private static void CaptureDiffractionSimulatorModeShots(FormDiffractionSimulator sim, string baseName, string outDir, Action<string> trace)
+    {
+        foreach (var suffix in new[] { "saed", "xray", "ped" })
+        {
+            var name = baseName + "-" + suffix; // 例: FormDiffractionSimulator-saed
+            try
+            {
+                sim.SetCaptureMode(suffix);            // 波長・入射ビーム・強度計算を代表状態へ (CheckedChanged で右側パネルの可視性も更新)
+                Settle(sim, TabSwitchSettleMs, trace); // レイアウト反映を待つ
+                BringToFront(sim);
+                sim.PrepareCaptureForGuiAudit();       // 現在モードで SetVector()+Draw() (PED は動力学計算で重い)
                 WaitUntilScreenStable(sim, trace);     // 計算完了 (= 画面が止まる) まで待つ
                 BringToFront(sim);
                 Settle(sim, TabSwitchSettleMs, trace);

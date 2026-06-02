@@ -519,6 +519,21 @@ public partial class FormDiffractionSimulator : FormBase
     }
 
     /// <summary>
+    /// 260602Cl 追加: --capture 用。モード別の全体図を撮るため、波長・入射ビーム・強度計算を代表状態へ設定する。
+    /// "saed"=電子線・平行・運動学的 / "ped"=電子線・歳差(BeamMode 設定で自動的に動力学的) / "xray"=X線・平行・運動学的。
+    /// 呼び出し元は GuiCapture に限定する (通常操作には使わない)。
+    /// </summary>
+    internal void SetCaptureMode(string mode)
+    {
+        switch (mode)
+        {
+            case "saed": Source = WaveSource.Electron; BeamMode = BeamModes.Parallel; CalcMode = CalcModes.Kinematical; break;
+            case "ped": Source = WaveSource.Electron; BeamMode = BeamModes.PrecessionElectron; break;
+            case "xray": Source = WaveSource.Xray; WaveLength = 0.154; BeamMode = BeamModes.Parallel; CalcMode = CalcModes.Kinematical; break; // 0.154 nm ≒ Cu Kα。波長を設定しないと電子線の 0.0025 nm が残り X線回折図にならない
+        }
+    }
+
+    /// <summary>
     /// 260524Cl 追加: --capture 用。回折スポット情報 (FormDiffractionBeamTable) の表は動力学計算をしないと空のまま。
     /// 「動力学効果」を選び、Bethe の回折波を計算 (UI の Draw 相当の計算部分) して配線済みの表を populate し、その表を返す。
     /// フォーム自体を表示しなくても表は埋まる (graphicsBox 描画は不要)。呼び出し元は GuiCapture (FormMain 経由) に限定する。
