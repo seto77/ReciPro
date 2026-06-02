@@ -4,6 +4,8 @@
 
 > This page lists all settings of the dedicated window that opens when you select **Wavelength = Electron** and **Incident beam = Convergence (CBED, electron only)** in the [Diffraction Simulator](index.md). Switching the incident beam to convergence automatically switches **Intensity calculation** to **Dynamical**, and this CBED settings window opens. For drawing and saving diffraction patterns and other operations common to the diffraction simulator, see the [overview page](index.md).
 
+GUI conditions: Wave Length = Electron · Incident beam = Convergence (CBED, electron only) · Intensity calculation = Dynamical (automatic)
+
 ![CBED Simulation](../../assets/cap-en-auto/FormDiffractionSimulatorCBED.png)
 
 ---
