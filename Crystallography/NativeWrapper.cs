@@ -72,6 +72,46 @@ public static partial class NativeWrapper
     [LibraryImport("Crystallography.Native.dll")]
     private static unsafe partial void _SubtractVV(int dim, double* vec1, double* vec2, double* result);
 
+    #region 260602Cl 追加: O(dim) leaf 関数の [SuppressGCTransition] 版 (同 EntryPoint・引数同一)
+    // SuppressGCTransition は managed↔native の GC transition を省き、極小・短命・leaf 呼び出しを高速化する。
+    // EigenFuncs.cpp 確認済: これら7関数は noalias 直接評価でヒープ確保なし・EIGEN_DONT_PARALLELIZE で内部スレッド無し
+    // ＝真の leaf。ただし属性は dim 非依存で常時効くため、巨大配列に付けると GC 抑止でレイテンシ悪化する。
+    // よって wrapper 側で「native が走査する raw 要素数 <= SuppressGCTransitionMaxElements」のときだけこちらを呼ぶ
+    // (threshold dispatch)。現状この層の leaf を実呼びするのは STEM の BlendAndConjugate のみ (dim=bLen は常に小)。
+    // O(dim²) の _PointwiseMultiply/_RowVec_SqMat_ColVec 等や、ヒープ確保ありの _GenerateTC1/2 は対象外。
+    // native 関数が走査する反復回数 (iteration count) の上限。各 wrapper はこの単位で渡す引数 (complex 数の関数は dim、
+    // raw double で渡す _Blend/_AddVV/_SubtractVV の Complex overload は dim*2) と比較して suppressed 経路を選ぶ。
+    private const int SuppressGCTransitionMaxElements = 4096;
+
+    [LibraryImport("Crystallography.Native.dll", EntryPoint = "_Blend")]
+    [SuppressGCTransition]
+    private static unsafe partial void _Blend_NoGC(int dim, double* c0, double* c1, double* c2, double* c3, double r0, double r1, double r2, double r3, double* result);
+
+    [LibraryImport("Crystallography.Native.dll", EntryPoint = "_BlendAndConjugate")]
+    [SuppressGCTransition]
+    private static unsafe partial void _BlendAndConjugate_NoGC(int dim, double* c0, double* c1, double* c2, double* c3, double r0, double r1, double r2, double r3, double* result);
+
+    [LibraryImport("Crystallography.Native.dll", EntryPoint = "_AddVV")]
+    [SuppressGCTransition]
+    private static unsafe partial void _AddVV_NoGC(int dim, double* vec1, double* vec2, double* result);
+
+    [LibraryImport("Crystallography.Native.dll", EntryPoint = "_SubtractVV")]
+    [SuppressGCTransition]
+    private static unsafe partial void _SubtractVV_NoGC(int dim, double* vec1, double* vec2, double* result);
+
+    [LibraryImport("Crystallography.Native.dll", EntryPoint = "_DivideVV")]
+    [SuppressGCTransition]
+    private static unsafe partial void _DivideVV_NoGC(int dim, double* vec1, double* vec2, double* result);
+
+    [LibraryImport("Crystallography.Native.dll", EntryPoint = "_MultiplyVV")]
+    [SuppressGCTransition]
+    private static unsafe partial void _MultiplyVV_NoGC(int dim, double* vec1, double* vec2, double* result);
+
+    [LibraryImport("Crystallography.Native.dll", EntryPoint = "_MultiplySV")]
+    [SuppressGCTransition]
+    private static unsafe partial void _MultiplySV_NoGC(int dim, double real, double imag, double* vec, double* result);
+    #endregion
+
 
     //[LibraryImport("Crystallography.Native.dll")]
     //private static unsafe partial void _Inverse(int dim, double[] mat, double[] matInv);
@@ -205,8 +245,27 @@ public static partial class NativeWrapper
     public static bool Enabled { get; }
     public static string? LastLoadError { get; private set; }
 
+    // 260602Cl 追加: この P/Invoke 層は全て Complex[] を (double*) として {real, imag} 連続 16 byte と仮定して再解釈する。
+    // この ABI 前提が崩れると全 native 呼び出しがメモリ破壊になるため、起動時に検証する。
+    private static unsafe bool VerifyComplexLayout()
+    {
+        if (sizeof(Complex) != 16)
+            return false;
+        var c = new Complex(1.0, 2.0);
+        double* p = (double*)&c;
+        return p[0] == 1.0 && p[1] == 2.0; // real が先頭、imag が次
+    }
+
     static NativeWrapper()
     {
+        // 260602Cl: Complex の ABI レイアウトが前提どおりか検証。崩れていれば native 呼び出しを一切有効化しない。
+        if (!VerifyComplexLayout())
+        {
+            LastLoadError = "System.Numerics.Complex memory layout is not {real, imag} 16-byte as assumed by the native interop.";
+            Enabled = false;
+            return;
+        }
+
         //var appPath = System.Reflection.Assembly.GetExecutingAssembly().Location.Replace(".dll", ".Native.dll");
         //if (!System.IO.File.Exists(appPath))
         NativeLibrary.SetDllImportResolver(typeof(NativeWrapper).Assembly, ResolveNativeLibrary);
@@ -409,13 +468,19 @@ public static partial class NativeWrapper
         fixed (Complex* vec1 = vector1)
         fixed (Complex* vec2 = vector2)
         fixed (Complex* res = &result)
-            _MultiplyVV(dim, (double*)vec1, (double*)vec2, (double*)res);
+            if (dim <= SuppressGCTransitionMaxElements) // 260602Cl
+                _MultiplyVV_NoGC(dim, (double*)vec1, (double*)vec2, (double*)res);
+            else
+                _MultiplyVV(dim, (double*)vec1, (double*)vec2, (double*)res);
     }
 
     unsafe static public Complex MultiplyVxV(int dim, Complex* vec1, Complex* vec2)
     {
         var result = new Complex();
-        _MultiplyVV(dim, (double*)vec1, (double*)vec2, (double*)&result);
+        if (dim <= SuppressGCTransitionMaxElements) // 260602Cl
+            _MultiplyVV_NoGC(dim, (double*)vec1, (double*)vec2, (double*)&result);
+        else
+            _MultiplyVV(dim, (double*)vec1, (double*)vec2, (double*)&result);
         return result;
     }
 
@@ -434,7 +499,10 @@ public static partial class NativeWrapper
     {
         fixed (Complex* p = v)
         fixed (Complex* res = result)
-            _MultiplySV(dim, s.Real, s.Imaginary, (double*)p, (double*)res);
+            if (dim <= SuppressGCTransitionMaxElements) // 260602Cl
+                _MultiplySV_NoGC(dim, s.Real, s.Imaginary, (double*)p, (double*)res);
+            else
+                _MultiplySV(dim, s.Real, s.Imaginary, (double*)p, (double*)res);
     }
 
     unsafe static public Complex[] MultiplySxV(int dim, in Complex s, in Complex[] v)
@@ -451,14 +519,20 @@ public static partial class NativeWrapper
         fixed (Complex* p1 = v1)
         fixed (Complex* p2 = v2)
         fixed (Complex* res = result)
-            _AddVV(dim * 2, (double*)p1, (double*)p2, (double*)res);
+            if (dim * 2 <= SuppressGCTransitionMaxElements) // 260602Cl: 小 dim は SuppressGCTransition 版
+                _AddVV_NoGC(dim * 2, (double*)p1, (double*)p2, (double*)res);
+            else
+                _AddVV(dim * 2, (double*)p1, (double*)p2, (double*)res);
     }
     unsafe static public void Add(int dim, in double[] v1, in double[] v2, ref double[] result)
     {
         fixed (double* p1 = v1)
         fixed (double* p2 = v2)
         fixed (double* res = result)
-            _AddVV(dim, p1, p2, res);
+            if (dim <= SuppressGCTransitionMaxElements) // 260602Cl
+                _AddVV_NoGC(dim, p1, p2, res);
+            else
+                _AddVV(dim, p1, p2, res);
     }
 
     unsafe static public void Subtract(int dim, in Complex[] v1, in Complex[] v2, ref Complex[] result)
@@ -466,7 +540,10 @@ public static partial class NativeWrapper
         fixed (Complex* p1 = v1)
         fixed (Complex* p2 = v2)
         fixed (Complex* res = result)
-            _SubtractVV(dim * 2, (double*)p1, (double*)p2, (double*)res);
+            if (dim * 2 <= SuppressGCTransitionMaxElements) // 260602Cl
+                _SubtractVV_NoGC(dim * 2, (double*)p1, (double*)p2, (double*)res);
+            else
+                _SubtractVV(dim * 2, (double*)p1, (double*)p2, (double*)res);
     }
 
     unsafe static public void Subtract(int dim, in double[] v1, in double[] v2, ref double[] result)
@@ -474,14 +551,20 @@ public static partial class NativeWrapper
         fixed (double* p1 = v1)
         fixed (double* p2 = v2)
         fixed (double* res = result)
-            _SubtractVV(dim, p1, p2, res);
+            if (dim <= SuppressGCTransitionMaxElements) // 260602Cl
+                _SubtractVV_NoGC(dim, p1, p2, res);
+            else
+                _SubtractVV(dim, p1, p2, res);
     }
     unsafe static public void Divide(int dim, in Complex[] v1, in Complex[] v2, ref Complex[] result)
     {
         fixed (Complex* p1 = v1)
         fixed (Complex* p2 = v2)
         fixed (Complex* res = result)
-            _DivideVV(dim, (double*)p1, (double*)p2, (double*)res);
+            if (dim <= SuppressGCTransitionMaxElements) // 260602Cl: _DivideVV の native dim は complex 数
+                _DivideVV_NoGC(dim, (double*)p1, (double*)p2, (double*)res);
+            else
+                _DivideVV(dim, (double*)p1, (double*)p2, (double*)res);
     }
 
     #endregion
@@ -490,30 +573,50 @@ public static partial class NativeWrapper
     unsafe static public void Blend(in int dim, in Complex[] c0, in Complex[] c1, in Complex[] c2, in Complex[] c3, in double r0, in double r1, in double r2, in double r3, ref Complex[] result)
     {
         fixed (Complex* p0 = c0, p1 = c1, p2 = c2, p3 = c3, res = result)
-            _Blend(dim * 2, (double*)p0, (double*)p1, (double*)p2, (double*)p3, r0, r1, r2, r3, (double*)res);
+            // 260602Cl: 小 dim は SuppressGCTransition 版 (native dim = dim*2 = raw double 数)
+            if (dim * 2 <= SuppressGCTransitionMaxElements)
+                _Blend_NoGC(dim * 2, (double*)p0, (double*)p1, (double*)p2, (double*)p3, r0, r1, r2, r3, (double*)res);
+            else
+                _Blend(dim * 2, (double*)p0, (double*)p1, (double*)p2, (double*)p3, r0, r1, r2, r3, (double*)res);
     }
 
     unsafe static public void Blend(in int dim, Complex* c0, Complex* c1, Complex* c2, Complex* c3, in double r0, in double r1, in double r2, in double r3, Complex* res)
     {
-        //fixed (Complex* p0 = c0, p1 = c1, p2 = c2, p3 = c3, res = result)
-        _Blend(dim * 2, (double*)c0, (double*)c1, (double*)c2, (double*)c3, r0, r1, r2, r3, (double*)res);
+        // 260602Cl: 小 dim は SuppressGCTransition 版 (native dim = dim*2 = raw double 数)
+        if (dim * 2 <= SuppressGCTransitionMaxElements)
+            _Blend_NoGC(dim * 2, (double*)c0, (double*)c1, (double*)c2, (double*)c3, r0, r1, r2, r3, (double*)res);
+        else
+            _Blend(dim * 2, (double*)c0, (double*)c1, (double*)c2, (double*)c3, r0, r1, r2, r3, (double*)res);
     }
 
     unsafe static public void Blend(in int dim, in double[] c0, in double[] c1, in double[] c2, in double[] c3, in double r0, in double r1, in double r2, in double r3, ref double[] result)
     {
         fixed (double* p0 = c0, p1 = c1, p2 = c2, p3 = c3, res = result)
-            _Blend(dim, p0, p1, p2, p3, r0, r1, r2, r3, res);
+            // 260602Cl: 小 dim は SuppressGCTransition 版 (native dim = dim = raw double 数)
+            if (dim <= SuppressGCTransitionMaxElements)
+                _Blend_NoGC(dim, p0, p1, p2, p3, r0, r1, r2, r3, res);
+            else
+                _Blend(dim, p0, p1, p2, p3, r0, r1, r2, r3, res);
     }
 
     unsafe static public void BlendAndConjugate(in int dim, in Complex[] c0, in Complex[] c1, in Complex[] c2, in Complex[] c3, in double r0, in double r1, in double r2, in double r3, ref Complex[] result)
     {
+        System.Diagnostics.Debug.Assert(result.Length >= dim && c0.Length >= dim && c1.Length >= dim && c2.Length >= dim && c3.Length >= dim, "BlendAndConjugate: buffer shorter than dim"); // 260602Cl
         fixed (Complex* p0 = c0, p1 = c1, p2 = c2, p3 = c3, res = result)
-            _BlendAndConjugate(dim, (double*)p0, (double*)p1, (double*)p2, (double*)p3, r0, r1, r2, r3, (double*)res);
+            // 260602Cl: 小 dim は SuppressGCTransition 版で GC transition を省く (threshold dispatch)
+            if (dim <= SuppressGCTransitionMaxElements)
+                _BlendAndConjugate_NoGC(dim, (double*)p0, (double*)p1, (double*)p2, (double*)p3, r0, r1, r2, r3, (double*)res);
+            else
+                _BlendAndConjugate(dim, (double*)p0, (double*)p1, (double*)p2, (double*)p3, r0, r1, r2, r3, (double*)res);
     }
 
     unsafe static public void BlendAndConjugate(in int dim, Complex* c0, in Complex* c1, in Complex* c2, in Complex* c3, in double r0, in double r1, in double r2, in double r3, Complex* res)
     {
-        _BlendAndConjugate(dim, (double*)c0, (double*)c1, (double*)c2, (double*)c3, r0, r1, r2, r3, (double*)res);
+        // 260602Cl: 小 dim は SuppressGCTransition 版で GC transition を省く (threshold dispatch)。STEM 内側の最頻出経路。
+        if (dim <= SuppressGCTransitionMaxElements)
+            _BlendAndConjugate_NoGC(dim, (double*)c0, (double*)c1, (double*)c2, (double*)c3, r0, r1, r2, r3, (double*)res);
+        else
+            _BlendAndConjugate(dim, (double*)c0, (double*)c1, (double*)c2, (double*)c3, r0, r1, r2, r3, (double*)res);
     }
     #endregion 
 

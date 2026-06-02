@@ -3,6 +3,8 @@ using System;
 using System.ComponentModel;
 using System.Linq;
 using System.Numerics;
+using System.Threading; // 260602Cl: Interlocked (plane 並列焼き込みの進捗カウンタ)
+using System.Threading.Tasks; // 260602Cl: Parallel.For (plane 並列焼き込み)
 #endregion
 namespace Crystallography;
 
@@ -305,53 +307,56 @@ public class EBSD
 
         bwMasterPattern.ReportProgress(0, "Compiling master planes"); // (260327Ch) 未使用の plane 数 state を持たない
 
-        for (int energyIndex = 0; energyIndex < request.Energies.Length; energyIndex++)
-            for (int depthIndex = 0; depthIndex < request.Depths.Length; depthIndex++)
+        // 260602Cl 変更: plane は planeIndex ごとに完全独立なので Parallel.For 化 (旧実装は逐次二重ループ)。
+        //   各 (energyIndex, depthIndex) は distinct な planeIndex を 1 回だけ書くので競合なし。
+        //   焼き込み済みの Disks[ei][di] は逐次 null 化して complex amplitudes (gridSize=512 で総計 ~2.6GB,
+        //   1024 で ~10GB 級) を早期解放し、ピークメモリを下げる。Disks は当 worker のみが消費する。
+        var depthsLen = request.Depths.Length;
+        var hemisphereLength = request.GridSize * request.GridSize;
+        var loopResult = Parallel.For(0, planeCount, (planeIndex, state) =>
+        {
+            if (bwMasterPattern.CancellationPending) { state.Stop(); return; }
+
+            int energyIndex = planeIndex / depthsLen, depthIndex = planeIndex % depthsLen;
+            var disk = argument.Disks[energyIndex][depthIndex];
+            if (disk?.Amplitudes == null)
             {
-                if (bwMasterPattern.CancellationPending)
-                {
-                    e.Cancel = true;
-                    return;
-                }
-
-                var planeIndex = energyIndex * request.Depths.Length + depthIndex;
-                var disk = argument.Disks[energyIndex][depthIndex];
-                if (disk?.Amplitudes == null)
-                {
-                    positivePlanes[planeIndex] = [];
-                    negativePlanes[planeIndex] = [];
-                    count += 2; // (260321Ch)
-                }
-                else
-                {
-                    var amplitudes = disk.Amplitudes;
-                    var hemisphereLength = request.GridSize * request.GridSize;
-                    // var positivePlane = new float[hemisphereLength]; // (260402Ch) 変更前
-                    // var negativePlane = new float[hemisphereLength]; // (260402Ch) 変更前
-                    var positivePlane = GC.AllocateUninitializedArray<float>(hemisphereLength); // (260402Ch) 直後に全要素を書き切るため未初期化で確保
-                    var negativePlane = GC.AllocateUninitializedArray<float>(hemisphereLength); // (260402Ch)
-                    for (int i = 0; i < hemisphereLength; i++)
-                    {
-                        var amplitude = i < amplitudes.Length ? amplitudes[i] : Complex.Zero; // (260321Ch) 念のため不足時は 0 で埋める
-                        positivePlane[i] = (float)(amplitude.Real * amplitude.Real + amplitude.Imaginary * amplitude.Imaginary);
-                    }
-                    for (int i = 0; i < hemisphereLength; i++)
-                    {
-                        int srcIndex = i + hemisphereLength;
-                        var amplitude = srcIndex < amplitudes.Length ? amplitudes[srcIndex] : Complex.Zero; // (260321Ch)
-                        negativePlane[i] = (float)(amplitude.Real * amplitude.Real + amplitude.Imaginary * amplitude.Imaginary);
-                    }
-                    positivePlanes[planeIndex] = positivePlane;
-                    negativePlanes[planeIndex] = negativePlane;
-                    count += 2; // (260321Ch)
-                }
-
-                if (count == planeCountForProgress || count == 1 || count % reportStep == 0)
-                {
-                    var progress = Math.Min(100, (int)Math.Round((double)count / planeCountForProgress * 100.0));
-                    bwMasterPattern.ReportProgress(progress, "Compiling master planes"); // (260327Ch)
-                }
+                positivePlanes[planeIndex] = [];
+                negativePlanes[planeIndex] = [];
             }
+            else
+            {
+                var amplitudes = disk.Amplitudes;
+                // var positivePlane = new float[hemisphereLength]; // (260402Ch) 変更前
+                // var negativePlane = new float[hemisphereLength]; // (260402Ch) 変更前
+                var positivePlane = GC.AllocateUninitializedArray<float>(hemisphereLength); // (260402Ch) 直後に全要素を書き切るため未初期化で確保
+                var negativePlane = GC.AllocateUninitializedArray<float>(hemisphereLength); // (260402Ch)
+                for (int i = 0; i < hemisphereLength; i++)
+                {
+                    var amplitude = i < amplitudes.Length ? amplitudes[i] : Complex.Zero; // (260321Ch) 念のため不足時は 0 で埋める
+                    positivePlane[i] = (float)(amplitude.Real * amplitude.Real + amplitude.Imaginary * amplitude.Imaginary);
+                }
+                for (int i = 0; i < hemisphereLength; i++)
+                {
+                    int srcIndex = i + hemisphereLength;
+                    var amplitude = srcIndex < amplitudes.Length ? amplitudes[srcIndex] : Complex.Zero; // (260321Ch)
+                    negativePlane[i] = (float)(amplitude.Real * amplitude.Real + amplitude.Imaginary * amplitude.Imaginary);
+                }
+                positivePlanes[planeIndex] = positivePlane;
+                negativePlanes[planeIndex] = negativePlane;
+                argument.Disks[energyIndex][depthIndex] = null; // 260602Cl: 焼き込み済み complex amplitudes を逐次解放
+            }
+
+            var done = Interlocked.Add(ref count, 2); // (260321Ch) +Z/-Z の 2 面。260602Cl: 並列化に伴い Interlocked 化
+            if (done == planeCountForProgress || done % reportStep == 0)
+                bwMasterPattern.ReportProgress(Math.Min(100, (int)Math.Round((double)done / planeCountForProgress * 100.0)), "Compiling master planes"); // (260327Ch)
+        });
+
+        if (!loopResult.IsCompleted || bwMasterPattern.CancellationPending)
+        {
+            e.Cancel = true;
+            return;
+        }
 
         e.Result = new MasterPatternCompilationResult(
             request,

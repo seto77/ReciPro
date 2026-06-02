@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks; // 260602Cl: Parallel.For (64 ビンフィットの並列化)
 using V3 = OpenTK.Mathematics.Vector3d;
 
 namespace Crystallography;
@@ -60,47 +61,55 @@ public sealed class EbsdMonteCarloDistribution
         BinAbsoluteSliceWeights = new double[binCount, binCount][]; // (260325Ch) model 2 用
         int eLen = energies.Length, dLen = depths.Length;
 
-        for (int bi = 0; bi < binCount; bi++)
-            for (int bj = 0; bj < binCount; bj++)
+        // 260602Cl 変更: 64 ビンは互いに独立 (distinct な BinWeights[bi,bj]/BinAbsoluteSliceWeights[bi,bj] へ書く) なので
+        //   Parallel.For 化。bins への集約 (上の foreach) は逐次のまま、ここはフィット段だけ並列化する。
+        Parallel.For(0, binCount * binCount, (int idx) =>
+        {
+            int bi = idx / binCount, bj = idx % binCount;
+            var binData = bins[bi, bj];
+            var weights = new double[eLen * dLen];
+            var absoluteSliceWeights = new double[eLen * dLen]; // (260325Ch) model 2 用
+            double binFraction = bseList.Length > 0 ? (double)binData.Count / bseList.Length : 0.0; // (260325Ch)
+
+            if (binData.Count < 10)
             {
-                var binData = bins[bi, bj];
-                var weights = new double[eLen * dLen];
-                var absoluteSliceWeights = new double[eLen * dLen]; // (260325Ch) model 2 用
-                double binFraction = bseList.Length > 0 ? (double)binData.Count / bseList.Length : 0.0; // (260325Ch)
+                double uniform = binData.Count > 0 ? 1.0 / (eLen * dLen) : 0.0;
+                Array.Fill(weights, uniform);
 
-                if (binData.Count < 10)
-                {
-                    double uniform = binData.Count > 0 ? 1.0 / (eLen * dLen) : 0.0;
-                    Array.Fill(weights, uniform);
-
-                    double absoluteUniform = binData.Count > 0 ? binFraction / (eLen * dLen) : 0.0; // (260325Ch)
-                    Array.Fill(absoluteSliceWeights, absoluteUniform);
-                }
-                else
-                {
-                    // FitBinDistribution(binData, beamEnergy, energies, depths, weights); // (260325Ch) 旧実装
-                    FitBinDistribution(binData, beamEnergy, energies, depths, weights);
-                    FitBinDistribution(binData, beamEnergy, energies, depths, absoluteSliceWeights, useSliceMass: true, totalScale: binFraction); // (260325Ch)
-                }
-
-                BinWeights[bi, bj] = weights;
-                BinAbsoluteSliceWeights[bi, bj] = absoluteSliceWeights; // (260325Ch)
+                double absoluteUniform = binData.Count > 0 ? binFraction / (eLen * dLen) : 0.0; // (260325Ch)
+                Array.Fill(absoluteSliceWeights, absoluteUniform);
             }
+            else
+            {
+                // FitBinDistribution(binData, beamEnergy, energies, depths, weights); // (260325Ch) 旧実装
+                // FitBinDistribution(binData, beamEnergy, energies, depths, absoluteSliceWeights, useSliceMass: true, totalScale: binFraction); // 260602Cl 変更前: 同一 binData に 2 回呼び meanE/sigma/gE/lambda を二重計算
+                FitBinDistribution(binData, beamEnergy, energies, depths, weights, absoluteSliceWeights, binFraction); // 260602Cl: 共通 fit から weights と absoluteSliceWeights を両方埋める
+            }
+
+            BinWeights[bi, bj] = weights;
+            BinAbsoluteSliceWeights[bi, bj] = absoluteSliceWeights; // (260325Ch)
+        });
     }
 
-    // private static void FitBinDistribution(... 旧シグネチャ同じ) // 260327Cl 最適化
+    // 260602Cl 変更: weights と absoluteSliceWeights を 1 回の共通 fit から両方埋める形へ統合。
+    //   旧実装は同一 binData に対して本メソッドを 2 回呼び (useSliceMass=false/true)、
+    //   meanE/sigmaL,R/gE[]/lambdaPerEnergy/FitLambdaPolynomial を二重計算していた。
+    //   これらは useSliceMass/totalScale に依存しない共通部 (Stage1) なので 1 回だけ計算し、
+    //   weights の書き込み (Stage2) のみ 2 種類行う。物理的な値は旧 2 回呼びと厳密一致。
+    // 旧シグネチャ: FitBinDistribution(data, beamEnergy, energies, depths, weights, bool useSliceMass=false, double totalScale=1.0)
     private static void FitBinDistribution(
         List<(double depth, double energy)> data,
         double beamEnergy,
         double[] energies, double[] depths,
-        double[] weights,
-        bool useSliceMass = false,
-        double totalScale = 1.0)
+        double[] weights,             // useSliceMass=false, totalScale=1.0 相当
+        double[] absoluteSliceWeights, // useSliceMass=true,  totalScale=binFraction 相当
+        double binFraction)
     {
-        int eLen = energies.Length, dLen = depths.Length;
+        int eLen = energies.Length; // 260602Cl: dLen は Stage2 (FillBinWeights) に移ったのでここでは不要
         int count = data.Count;
         if (count == 0) return;
 
+        #region Stage1: 共通 fit パラメータ (meanE, sigmaL/R, gE[], lambda 多項式 la/lb/lc)
         double sumE = 0;
         foreach (var d in data) sumE += d.energy;
         double meanE = sumE / count;
@@ -131,31 +140,76 @@ public sealed class EbsdMonteCarloDistribution
         }
 
         double eStep = eLen > 1 ? Math.Abs(energies[0] - energies[^1]) / (eLen - 1) : 1.0;
-        var lambdaPerEnergy = new double[eLen];
+        double halfStep = eStep * 0.5, e0 = energies[0];
 
-        // 260327Cl: List<double> 割り当てを除去し、カウント＋合計を直接計算
-        for (int ei = 0; ei < eLen; ei++)
+        // 260602Cl 変更: 旧実装は ei ごとに binData 全体を energy 窓でフルスキャン (O(eLen × N_bin))。
+        //   energies が ComputeGridFromRanges 由来 (beamEnergy から降順・ほぼ等間隔・0.1 丸め) の場合は、
+        //   各電子を 1 パスで energy 窓へ割り当てる高速経路 (O(N_bin)) を使う。候補 index cand を算出し、
+        //   現行と同じ半開窓 [energies[ei]-eStep/2, energies[ei]+eStep/2) を満たす ei (丸めズレ・窓の
+        //   微小な重なりを cand±2 で吸収) すべてに加算 → 旧ループと同一集合・同一加算順で bit 一致。
+        //   constructor は energies を外部受け取りなので、降順・ほぼ等間隔 (|δ'|<=eStep/2) でない、または
+        //   eStep<=0 のときは安全のため旧 eLen フルスキャンへ fallback する (任意 energies で常に正しい)。
+        var depthSumPerEnergy = new double[eLen];
+        var depthCountPerEnergy = new int[eLen];
+
+        bool uniformDescending = eStep > 0;
+        if (uniformDescending)
+            for (int ei = 0; ei < eLen; ei++)
+                if (Math.Abs(energies[ei] - (e0 - ei * eStep)) > halfStep) { uniformDescending = false; break; } // cand±2 が全マッチ窓を覆う前提を保証
+
+        if (uniformDescending)
         {
-            double eLow = energies[ei] - eStep * 0.5;
-            double eHigh = energies[ei] + eStep * 0.5;
-
-            int depthCount = 0;
-            double depthSum = 0;
-            foreach (var d in data)
-                if (d.energy >= eLow && d.energy < eHigh)
-                {
-                    depthSum += d.depth;
-                    depthCount++;
-                }
-
-            if (depthCount > 3)
-                lambdaPerEnergy[ei] = Math.Max(1.0, depthSum / depthCount);
-            else
-                lambdaPerEnergy[ei] = -1;
+            double invEStep = 1.0 / eStep;
+            foreach (var (depth, energy) in data)
+            {
+                int cand = (int)((e0 - energy) * invEStep); // 降順 energies に対する floor 候補 (energy<=e0)
+                for (int ei = cand - 2; ei <= cand + 2; ei++)
+                    if ((uint)ei < (uint)eLen && energy >= energies[ei] - halfStep && energy < energies[ei] + halfStep)
+                    {
+                        depthSumPerEnergy[ei] += depth;
+                        depthCountPerEnergy[ei]++;
+                    }
+            }
+        }
+        else
+        {
+            // fallback: 旧 eLen フルスキャン (任意 energies に対し常に正しい)
+            for (int ei = 0; ei < eLen; ei++)
+            {
+                double eLow = energies[ei] - halfStep, eHigh = energies[ei] + halfStep;
+                foreach (var (depth, energy) in data)
+                    if (energy >= eLow && energy < eHigh)
+                    {
+                        depthSumPerEnergy[ei] += depth;
+                        depthCountPerEnergy[ei]++;
+                    }
+            }
         }
 
-        FitLambdaPolynomial(energies, lambdaPerEnergy, out double la, out double lb, out double lc);
+        var lambdaPerEnergy = new double[eLen];
+        for (int ei = 0; ei < eLen; ei++)
+            lambdaPerEnergy[ei] = depthCountPerEnergy[ei] > 3 ? Math.Max(1.0, depthSumPerEnergy[ei] / depthCountPerEnergy[ei]) : -1;
 
+        FitLambdaPolynomial(energies, lambdaPerEnergy, out double la, out double lb, out double lc);
+        #endregion
+
+        #region Stage2: 共通パラメータから 2 種の weights を書き込み
+        FillBinWeights(weights, energies, depths, gE, la, lb, lc, useSliceMass: false, totalScale: 1.0);
+        FillBinWeights(absoluteSliceWeights, energies, depths, gE, la, lb, lc, useSliceMass: true, totalScale: binFraction);
+        #endregion
+    }
+
+    /// <summary>
+    /// 260602Cl 追加: 共通 fit パラメータ (gE, lambda 多項式 la/lb/lc) から 1 つの weights 配列を埋める。
+    /// useSliceMass=false: 連続深さ重み g(E)·exp(-z/λ)/λ。
+    /// useSliceMass=true : depth slice 区間質量 g(E)·(exp(-z_prev/λ) - exp(-z/λ))。
+    /// 旧 FitBinDistribution の weights 書き込み部 (Stage2) をそのまま切り出したもの。
+    /// </summary>
+    private static void FillBinWeights(
+        double[] weights, double[] energies, double[] depths, double[] gE,
+        double la, double lb, double lc, bool useSliceMass, double totalScale)
+    {
+        int eLen = energies.Length, dLen = depths.Length;
         double totalWeight = 0;
         for (int ei = 0; ei < eLen; ei++)
         {
@@ -166,7 +220,7 @@ public sealed class EbsdMonteCarloDistribution
             // 260327Cl: useSliceMass 時、隣接スライスで Exp 値を再利用
             if (useSliceMass)
             {
-                double expPrev = Math.Exp(0); // di==0 の lowerDepth=0 → exp(0)=1
+                double expPrev = 1.0; // di==0 の lowerDepth=0 → exp(0)=1
                 for (int di = 0; di < dLen; di++)
                 {
                     double expCur = Math.Exp(-depths[di] * invLambda);
@@ -270,11 +324,15 @@ public sealed class EbsdMonteCarloDistribution
             depths[i] = bseList[i].Depth;
         }
 
-        Array.Sort(losses);
-        Array.Sort(depths);
-
         int idxLoss80 = Math.Min((int)(n * 0.8), n - 1);
         int idxDepth99 = Math.Min((int)(n * 0.99), n - 1); // (260326Ch)
+
+        // 260602Cl 変更: 80%/99% パーセンタイルのためのフルソート 2 回を QuickSelect (nth_element) に置換。
+        //   QuickSelect.Execute(span, k, cmp) は span[k] に sorted index k の値を置く (前は <=, 後は >=) ので、
+        //   Array.Sort 後の losses[idxLoss80]/depths[idxDepth99] と同一値。O(n log n) → 平均 O(n)。
+        // Array.Sort(losses); Array.Sort(depths); // 260602Cl 変更前
+        QuickSelect.Execute(losses.AsSpan(), idxLoss80, static (a, b) => a.CompareTo(b));
+        QuickSelect.Execute(depths.AsSpan(), idxDepth99, static (a, b) => a.CompareTo(b));
 
         return (losses[idxLoss80], depths[idxDepth99]);
     }

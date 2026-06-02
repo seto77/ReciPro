@@ -1510,7 +1510,8 @@ public class BetheMethod
                             eigenMatrix = Shared.Rent(eigenMatrixLength); // (260321Ch)
                             threadLocalEigenMatrix.Value = eigenMatrix; // (260321Ch)
                         }
-                        getEigenMatrix(bLen, beams, ref eigenMatrix, potentialMatrix);
+                        // getEigenMatrix(bLen, beams, ref eigenMatrix, potentialMatrix); // 260602Cl 変更前: pooled potentialMatrix は長さ不一致で毎回ローカル再計算され非局所吸収を喪失していた
+                        getEigenMatrix(bLen, beams, gMap, baseLen, potentialMatrix, ref eigenMatrix); // 260602Cl: 事前計算済み basePotential から gMap で部分抽出 (再計算ゼロ・非局所吸収を保持)
 
                         Complex[] eigenValues, eigenVectors, alpha;
                         if (solver == Solver.Eigen_Eigen && EigenEnabled)
@@ -2650,12 +2651,20 @@ public class BetheMethod
         Parallel.For(0, qList.Count, qIndex =>
         {
             //U[qIndex] = GC.AllocateUninitializedArray<Complex>(bLen * bLen);
+            // 260602Cl 変更: qList[qIndex] + Beams[i] - Beams[j] の Beam 一時生成 (要素ごと2個) を除去。
+            //   combined index と元の3ベクトルを渡す getU overload で cache hit 時は割り当てゼロにする。
+            var (qh, qk, ql) = qList[qIndex].Index;
+            var vq = qList[qIndex].Vec;
             for (int j = 0; j < bLen; j++)
             {
+                var (jh, jk, jl) = Beams[j].Index;
+                var vj = Beams[j].Vec;
                 for (int i = 0; i < bLen; i++)
                 {
+                    var (ih, ik, il) = Beams[i].Index;
                     //局所形式
-                    U[qIndex * bLen2 + j * bLen + i] = getU(AccVoltage, qList[qIndex] + Beams[i] - Beams[j], null, detAngleInner, detAngleOuter).Imag.Conjugate();//共役とると、なぜかいい感じ。
+                    // U[qIndex * bLen2 + j * bLen + i] = getU(AccVoltage, qList[qIndex] + Beams[i] - Beams[j], null, detAngleInner, detAngleOuter).Imag.Conjugate(); // 260602Cl 変更前
+                    U[qIndex * bLen2 + j * bLen + i] = getU(AccVoltage, (qh + ih - jh, qk + ik - jk, ql + il - jl), vq, Beams[i].Vec, vj, detAngleInner, detAngleOuter).Imag.Conjugate();//共役とると、なぜかいい感じ。
                     //非局所形式
                     //U[qIndex * bLen2 + j * bLen + i] = getU(AccVoltage, qList[qIndex], -Beams[i] + Beams[j], detAngleInner, detAngleOuter).Imag.Conjugate();
                     //U[m][k++] = getU(AccVoltage, qList[m], -Beams[i] + Beams[j], detAngleInner, detAngleOuter).Imag;//非局所形式の場合
@@ -3285,6 +3294,25 @@ public class BetheMethod
         return getU(kV, new Beam(index, vec));
     }
 
+    /// <summary>
+    /// 260602Cl 追加: STEM 非弾性 U 行列向け。combined index と元の3つの逆格子ベクトル
+    /// (vq=qList[q], vi=Beams[i], vj=Beams[j]) を受け取り、局所 annular ポテンシャル U'(q+g_i-g_j) を返す。
+    /// 旧実装は getU(kV, qList[q] + Beams[i] - Beams[j], null, inner, outer) で要素ごとに Beam を
+    /// 2個ヒープ割り当てしていた (O(qList×bLen²) の GC 圧)。本 overload は cache hit 時に vec 計算もせず
+    /// 即返却し、miss 時のみ vec = vq + vi - vj と Beam を1度だけ生成する。
+    /// キー計算 (compose) は旧実装と同一なので結果は厳密に不変。
+    /// </summary>
+    public (Complex Real, Complex Imag) getU(in double kV, in (int h, int k, int l) index,
+        in Vector3DBase vq, in Vector3DBase vi, in Vector3DBase vj,
+        double inner, double outer, int nTheta = 60, int nPhi = 20)
+    {
+        var key1 = compose(index);
+        const int key2 = int.MaxValue; // h = null に相当するキー
+        if (uDictionary.TryGetValue((key1, key2), out (Complex real, Complex imag) U))
+            return U; // cache hit → vec 計算・割り当てゼロ
+        return getU(kV, new Beam(index, vq + vi - vj), null, inner, outer, nTheta, nPhi); // miss 時のみ vec/Beam を生成
+    }
+
     private readonly ConcurrentDictionary<(int Key1, int Key2), (Complex Real, Complex Imag)> uDictionary = [];
     #endregion
 
@@ -3392,6 +3420,36 @@ public class BetheMethod
         }
         if (isNull)
             Shared.Return(potentialMatrix);//potentialMatrixを返却
+    }
+
+    /// <summary>
+    /// 260602Cl 追加: 事前計算済み basePotential (baseLen×baseLen, column-major) から gMap で指定した
+    /// bLen 個のビーム部分集合を抽出して固有値問題行列を組む。EBSD のように beamsBase を P>0 で
+    /// フィルタした場合でも、非局所吸収を含む basePotential を再計算せずそのまま部分抽出できる。
+    /// 旧経路は getEigenMatrix(bLen, beams, ref eigenMatrix, pooledPotential) を呼んでいたが、
+    /// pooled 配列は長さが bLen*bLen と一致しないため毎回ローカル形式で再計算され、
+    /// UseNonLocalAbsorption=true のときに非局所吸収を静かに喪失していた。
+    /// </summary>
+    /// <param name="bLen">フィルタ後ビーム数</param>
+    /// <param name="beams">フィルタ後ビーム配列 (P,Q を持つ。pooled の可能性があるので [0,bLen) のみ参照)</param>
+    /// <param name="gMap">beams[g] が basePotential 内で対応する beamsBase インデックス</param>
+    /// <param name="baseLen">basePotential の論理次元 (column-major のストライド)</param>
+    /// <param name="basePotential">baseLen×baseLen のポテンシャル行列 (局所/非局所どちらでも可)</param>
+    /// <param name="eigenMatrix">出力先 (bLen*bLen 以上の長さ)</param>
+    private static void getEigenMatrix(int bLen, Beam[] beams, int[] gMap, int baseLen, Complex[] basePotential, ref Complex[] eigenMatrix)
+    {
+        // 前提: gMap は単射 (beamsBase は hkl 一意、P>0 フィルタは順序保存の部分集合)。よって row==col のとき
+        // gMap[row]==gMap[col] となり base 対角 (Real を含まない i*Imag) を、row≠col では base 非対角を読む。
+        // beams を並べ替えるとこの単射前提と呼び出し側の gMap 構築 (単調探索) が崩れるので並べ替えないこと。
+        for (int col = 0; col < bLen; col++)
+        {
+            var invP = 1.0 / beams[col].P;
+            var colBase = col * bLen;
+            var srcCol = gMap[col] * baseLen;
+            for (int row = 0; row < bLen; row++)
+                eigenMatrix[colBase + row] = basePotential[srcCol + gMap[row]] * invP;
+            eigenMatrix[colBase + col] += beams[col].Q * invP; // 対角に Q/P を加算
+        }
     }
 
 
