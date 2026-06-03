@@ -93,7 +93,7 @@ If you are new to ReciPro, refer to the following steps:
 | License | Display the MIT licence |
 | GitHub page | Open the ReciPro repository in a browser |
 | Report bugs, requests, or comments | Open the GitHub Issues page |
-| Help (Web) / Help (Wiki) | Open the online manual. The current source of truth is the GitHub Pages version. |
+| Help (Web) | Open the online manual on GitHub Pages, in the page matching the UI language. |
 
 Language is switched from the separate **Language** menu (English/Japanese, requires restart).
 
