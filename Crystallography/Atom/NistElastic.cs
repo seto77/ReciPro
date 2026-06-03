@@ -6,13 +6,15 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks; // 260603Cl 追加: PCHIP生成の元素並列化(Parallel.For)用
 #endregion
 
 namespace Crystallography;
 
 internal static class NistElasticPchip // (260401Ch) 生成・最適化・runtime 評価で共有する PCHIP 基本処理
 {
-    public const int EnergyCount = 101;
+    // public const int EnergyCount = 101; // 260603Cl 変更前 (50eV-20keV 対数101点)
+    public const int EnergyCount = 111; // 260603Cl 50eV-36.4keV へ拡張 (20keV超を NIST DCS から継ぎ足し, blockIndex 101-110)。LogEnergyStep は不変=等間隔延長
     public const int SourcePhiCount = 2001;
     public const int KnotCount = 51;
     public const int EvaluationCount = 4097;
@@ -306,17 +308,36 @@ public static class NistElasticSamplerPchipGenerator
         Directory.CreateDirectory(diagnosticsDirectory);
 
         var outputs = new List<string>();
-        for (int fileIndex = 0; fileIndex < normalizedSources.Length; fileIndex++)
+        // 260603Cl 並列化: 元素ごとに完全独立 (CompressElement/CompressBlock は static でローカル状態のみ=スレッドセーフ、
+        //   出力ファイルも PCHIP{NN}.cs と Diagnostics/{NN}.csv で元素別=競合なし)。32コア環境で劇的に高速化。
+        // 変更前 (逐次 for):
+        //   for (int fileIndex = 0; fileIndex < normalizedSources.Length; fileIndex++) {
+        //       var sourcePath = normalizedSources[fileIndex];
+        //       var atomicNumber = ParseAtomicNumberFromPath(sourcePath);
+        //       var elementResult = CompressElement(sourcePath, atomicNumber, fileIndex, normalizedSources.Length, progress);
+        //       outputs.Add(WriteGeneratedElementSource(generatedDirectory, elementResult));
+        //       outputs.Add(WriteDiagnosticsCsv(diagnosticsDirectory, elementResult));
+        //   }
+        var outputPairs = new (string Source, string Diagnostics)[normalizedSources.Length]; // 順序保持で並列結果を受ける
+        // 260603Cl CPU集約タスク(BasinHop)を ThreadPool 任せにすると starvation 誤検出でスレッドが100超まで膨張し
+        //   物理コアを奪い合って逆に激遅化する。MaxDegreeOfParallelism を論理プロセッサ数に固定してオーバーサブスクリプションを防ぐ。
+        var parallelOptions = new ParallelOptions { MaxDegreeOfParallelism = Environment.ProcessorCount };
+        Parallel.For(0, normalizedSources.Length, parallelOptions, fileIndex =>
         {
             var sourcePath = normalizedSources[fileIndex];
             var atomicNumber = ParseAtomicNumberFromPath(sourcePath);
             var elementResult = CompressElement(sourcePath, atomicNumber, fileIndex, normalizedSources.Length, progress);
-
-            outputs.Add(WriteGeneratedElementSource(generatedDirectory, elementResult));
-            outputs.Add(WriteDiagnosticsCsv(diagnosticsDirectory, elementResult));
+            outputPairs[fileIndex] = (
+                WriteGeneratedElementSource(generatedDirectory, elementResult),
+                WriteDiagnosticsCsv(diagnosticsDirectory, elementResult));
+        });
+        foreach (var (source, diagnostics) in outputPairs)
+        {
+            outputs.Add(source);
+            outputs.Add(diagnostics);
         }
 
-        outputs.Add(WriteGeneratedRegistrySource(generatedDirectory));
+        outputs.Add(WriteGeneratedRegistrySource(generatedDirectory)); // Registry は全 PCHIP{NN}.cs 生成後 (Parallel.For は barrier)
         return outputs;
     }
 

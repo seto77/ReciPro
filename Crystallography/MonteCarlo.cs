@@ -94,8 +94,8 @@ public class MonteCarlo
     public const double Th = 0.0000001; // 260401Cl 方向ベクトル回転時の特異点判定閾値。vZ ≈ -1 (ほぼ真下向き) のとき回転行列が退化するのを避ける
 
     private static readonly double log50 = Math.Log(50.0); // (260331Ch) NIST テーブルの最小エネルギー 50 eV の自然対数
-    private static readonly double log20000 = Math.Log(20000.0); // (260331Ch) NIST テーブルの最大エネルギー 20 keV の自然対数
-    private static readonly double LogNistElasticEnergyStep = (log20000 - log50) / 100.0; // (260331Ch) 対数エネルギー軸の 101 点間隔
+    private static readonly double log20000 = Math.Log(20000.0); // (260331Ch) sampler 基準点 20 keV の自然対数。260603Cl: テーブル上限ではなく対数刻みの基準 (50eV-20keV を100分割)
+    private static readonly double LogNistElasticEnergyStep = (log20000 - log50) / 100.0; // (260331Ch) 対数エネルギー軸の刻み。260603Cl: 20keV超も同刻みで等間隔延長 (blockIndex 0-110)
 
 
     // 260401Cl Jablonski (2008) 修正阻止能モデルのフィッティング定数 D1〜D5。
@@ -105,7 +105,9 @@ public class MonteCarlo
     private const double Jablonski2008D3 = 0.0545126; // (260331Ch)
     private const double Jablonski2008D4 = -0.0254488; // (260331Ch)
     private const double Jablonski2008D5 = 0.326907; // (260331Ch)
-    private const int NistElasticEnergyCount = 101; // (260331Ch) NIST sampler energies: 50 eV - 20 keV, log spaced
+    // private const int NistElasticEnergyCount = 101; // 260603Cl 変更前 (50eV-20keV, 101点)
+    private const int NistElasticEnergyCount = 111; // 260603Cl 50eV-36.4keV へ拡張 (20keV超を NIST DCS から継ぎ足し)。log spaced, step は不変
+    private static readonly double NistElasticMaxEnergyEv = Math.Exp(log50 + LogNistElasticEnergyStep * (NistElasticEnergyCount - 1)); // 260603Cl 追加: テーブル上限 = blockIndex 110 = 36411 eV
     #region お蔵入り // (260401Ch) オリジナル TXT の 2001 点 CDF は配布版ランタイムでは使わない
     // private const int NistElasticPhiCount = 2001; // (260331Ch) X = cos(theta) from +1 to -1 with step 0.001
     #endregion
@@ -203,7 +205,7 @@ public class MonteCarlo
     /// <summary>混合物中の各元素の原子番号・数密度・NIST散乱テーブルを保持する。Mott 散乱サンプリング時に元素選択と角度サンプリングに使用。</summary>
     private readonly record struct ElasticSpecies(int AtomicNumber, double NumberDensityPerNm3, NistElasticScatteringTable NistElasticTable); // (260331Ch) Mott/NIST sampler の毎イベント lock/dictionary lookup を避ける
 
-    /// <summary>NIST SRD 64 の弾性散乱データを保持するテーブル。101 エネルギー点 (50 eV〜20 keV, 対数等間隔) ごとに全断面積と累積角度分布を格納。</summary>
+    /// <summary>NIST SRD 64 の弾性散乱データを保持するテーブル。111 エネルギー点 (50 eV〜36.4 keV, 対数等間隔。50eV-20keVは sampler 由来、20keV超は DCS 由来。260603Cl 拡張) ごとに全断面積と累積角度分布を格納。</summary>
     private sealed class NistElasticScatteringTable // (260331Ch)
     {
         public int AtomicNumber;
@@ -262,11 +264,13 @@ public class MonteCarlo
     /// <param name="InelasticMeanFreePathNm">260401Cl 非弾性平均自由行程 λ_in [nm]。TPP-2M で計算。連続する非弾性散乱間の平均飛行距離</param>
     /// <param name="MeanInelasticLossKev">260401Cl 1 回の非弾性散乱あたりの平均エネルギー損失 &lt;ΔE&gt; = |dE/ds|·λ_in [keV]</param>
     /// <param name="TotalRate">260401Cl 弾性+非弾性の全散乱レート 1/λ_el + 1/λ_in [1/nm]。ホットループ内の除算を事前計算で除去</param>
+    /// <param name="InverseTotalRate">260603Cl 全散乱レートの逆数 1/TotalRate [nm]。ステップ長 s = -ln(R)·InverseTotalRate でホットループ内の除算を乗算に置換</param>
     /// <param name="ElasticProbability">260401Cl 散乱イベントが弾性である確率 = ElasticRate / TotalRate。ホットループ内の乗算を除去</param>
-    /// <param name="NearestNistElasticEnergyIndex">260401Cl NIST 101 エネルギー点上の最近傍インデックス。ホットループ内の Math.Log を事前計算で除去</param>
+    /// <param name="NearestNistElasticEnergyIndex">260401Cl NIST エネルギー点 (260603Cl 111 点に拡張) 上の最近傍インデックス。ホットループ内の Math.Log を事前計算で除去</param>
     private readonly record struct TransportParameters( // (260331Ch) 1 ステップで使う輸送パラメータをまとめて扱う
         double ScreeningParameter, double ElasticCrossSectionNm2, double ElasticMeanFreePathNm, double StoppingPowerKevPerNm, double InelasticMeanFreePathNm, double MeanInelasticLossKev,
-        double TotalRate, double ElasticProbability, int NearestNistElasticEnergyIndex); // 260401Cl 追加: ホットループの除算・Math.Log を排除
+        // double TotalRate, double ElasticProbability, int NearestNistElasticEnergyIndex); // 260401Cl 追加: ホットループの除算・Math.Log を排除 // 260603Cl 旧シグネチャ
+        double TotalRate, double InverseTotalRate, double ElasticProbability, int NearestNistElasticEnergyIndex); // 260603Cl 追加: InverseTotalRate でステップ長の除算を排除
     #endregion
 
     /// <summary>コンストラクタ</summary>
@@ -389,7 +393,7 @@ public class MonteCarlo
     }
 
     /// <summary>
-    /// NIST テーブルの 101 エネルギー点ごとに、混合物系の巨視的弾性散乱断面積 Σ_total と元素選択 CDF を事前計算する。
+    /// NIST テーブルの 111 エネルギー点 (260603Cl 拡張) ごとに、混合物系の巨視的弾性散乱断面積 Σ_total と元素選択 CDF を事前計算する。
     /// シミュレーション中のイベントごとの再計算を避けるためのキャッシュ。
     /// </summary>
     private MottElasticMixtureEntry[] BuildMottElasticMixtureCache()
@@ -398,7 +402,8 @@ public class MonteCarlo
             ElasticComponents.Length == 0 || !(TotalElasticNumberDensityPerNm3 > 0))
             return [];
 
-        var entries = new MottElasticMixtureEntry[101];
+        // var entries = new MottElasticMixtureEntry[101]; // 260603Cl 変更前: テーブル拡張時にハードコード 101 が残ると GetLowerNistElasticEnergyIndex の返す index(最大 EnergyCount-2)で範囲外
+        var entries = new MottElasticMixtureEntry[NistElasticEnergyCount]; // 260603Cl 111 点に追従 (SigmaA0Squared.Length と一致させる)
         var macroscopicCrossSections = new double[ElasticComponents.Length];
         for (int energyIndex = 0; energyIndex < entries.Length; energyIndex++)
         {
@@ -597,6 +602,21 @@ public class MonteCarlo
     }
 
     /// <summary>
+    /// 260603Cl 追加: ホットループ専用の輸送パラメータ参照取得。キャッシュ要素を <c>ref readonly</c> で返し、
+    /// 毎イベントの構造体値コピー (8 double + int ≈ 68 B) を回避する。
+    /// 飛程ループでは電子エネルギー e は InitialKev から単調減少し常にキャッシュ範囲内に収まるため、
+    /// 範囲外は理論上発生しないが、保険として末尾要素にクランプする (都度計算フォールバックは ref で返せないため)。
+    /// ビン丸めは値版 GetTransportParameters と同じ Math.Round を使い、旧挙動とビット単位で同一の輸送パラメータを返す。
+    /// </summary>
+    private ref readonly TransportParameters GetTransportParametersRef(double kev) // 260603Cl 追加
+    {
+        int energyEv = (int)Math.Round(kev * 1000.0); // 260603Cl 値版と同一丸め (物理不変を厳密に保つ)
+        if ((uint)energyEv >= (uint)TransportParameterCache.Length)
+            energyEv = TransportParameterCache.Length - 1;
+        return ref TransportParameterCache[energyEv];
+    }
+
+    /// <summary>
     /// 指定エネルギーでの全輸送パラメータを計算する。
     /// 弾性散乱: Screened Rutherford (α, σ_el, λ_el) または Mott/NIST (σ_el, λ_el)。
     /// 非弾性散乱: TPP-2M で λ_in を求め、阻止能との整合から平均損失 &lt;ΔE&gt; = |dE/ds|·λ_in を導出。
@@ -629,21 +649,23 @@ public class MonteCarlo
         var elasticRate = λ_el > 0 ? 1.0 / λ_el : 0.0;
         var inelasticRate = λ_in > 0 && meanLossKev > 0 ? 1.0 / λ_in : 0.0;
         var totalRate = elasticRate + inelasticRate;
+        var inverseTotalRate = totalRate > 0 ? 1.0 / totalRate : 0.0; // 260603Cl 追加: ステップ長 s = -ln(R)·InverseTotalRate でホットループの除算を排除
         var elasticProbability = totalRate > 0 ? elasticRate / totalRate : 1.0;
         var energyEv = kev * 1000.0;
-        var nearestNistIndex = energyEv >= 50.0 && energyEv <= 20000.0 ? GetNearestNistElasticEnergyIndex(energyEv) : 0;
-        return new TransportParameters(α, σ_E, λ_el, sp, λ_in, meanLossKev, totalRate, elasticProbability, nearestNistIndex);
+        var nearestNistIndex = energyEv >= 50.0 && energyEv <= NistElasticMaxEnergyEv ? GetNearestNistElasticEnergyIndex(energyEv) : 0; // 260603Cl 上限 20000→NistElasticMaxEnergyEv(36411eV)
+        // return new TransportParameters(α, σ_E, λ_el, sp, λ_in, meanLossKev, totalRate, elasticProbability, nearestNistIndex); // 260603Cl 旧
+        return new TransportParameters(α, σ_E, λ_el, sp, λ_in, meanLossKev, totalRate, inverseTotalRate, elasticProbability, nearestNistIndex); // 260603Cl InverseTotalRate 追加
     }
 
     /// <summary>
     /// Mott/NIST テーブルから弾性散乱全断面積と平均自由行程を取得する。
-    /// 対数エネルギー軸上で隣接 2 点の線形補間を行う。適用範囲は 50 eV〜20 keV。
+    /// 対数エネルギー軸上で隣接 2 点の線形補間を行う。適用範囲は 50 eV〜36.4 keV (260603Cl 20keV から拡張)。
     /// </summary>
     private bool TryGetMottElasticTransport(double kev, out double crossSectionNm2, out double meanFreePathNm)
     {
         crossSectionNm2 = meanFreePathNm = double.NaN;
         var energyEv = kev * 1000.0;
-        if (MottElasticMixtureCache.Length == 0 || !(TotalElasticNumberDensityPerNm3 > 0) || energyEv < 50.0 || energyEv > 20000.0)
+        if (MottElasticMixtureCache.Length == 0 || !(TotalElasticNumberDensityPerNm3 > 0) || energyEv < 50.0 || energyEv > NistElasticMaxEnergyEv) // 260603Cl 上限 20000→36411eV
             return false;
 
         int lowerIndex = GetLowerNistElasticEnergyIndex(energyEv, out var fraction);
@@ -685,7 +707,7 @@ public class MonteCarlo
             return false;
 
         var energyEv = kev * 1000.0;
-        if (energyEv < 50.0 || energyEv > 20000.0)
+        if (energyEv < 50.0 || energyEv > NistElasticMaxEnergyEv) // 260603Cl 上限 20000→36411eV
             return false;
 
         // int energyIndex = GetNearestNistElasticEnergyIndex(energyEv); // 260401Cl 事前計算済み
@@ -732,12 +754,12 @@ public class MonteCarlo
         return false; // (260401Ch) generated data が無ければ Mott sampler は失敗として上位で Screened Rutherford にフォールバック
     }
 
-    /// <summary>NIST テーブルの 101 エネルギー点のうち、指定エネルギーに最も近いインデックスを返す (対数軸上で最近傍)。</summary>
+    /// <summary>NIST テーブルの 111 エネルギー点 (260603Cl 拡張) のうち、指定エネルギーに最も近いインデックスを返す (対数軸上で最近傍)。</summary>
     private static int GetNearestNistElasticEnergyIndex(double energyEv)
     {
         var logEnergy = Math.Log(energyEv);
         int lowerIndex = (int)Math.Floor((logEnergy - log50) / LogNistElasticEnergyStep);
-        lowerIndex = Math.Clamp(lowerIndex, 0, 99);
+        lowerIndex = Math.Clamp(lowerIndex, 0, NistElasticEnergyCount - 2); // 260603Cl 99→EnergyCount-2(=109) に連動
         var lowerEnergy = log50 + lowerIndex * LogNistElasticEnergyStep;
         var upperEnergy = lowerEnergy + LogNistElasticEnergyStep;
         return logEnergy - lowerEnergy < upperEnergy - logEnergy ? lowerIndex : lowerIndex + 1;
@@ -748,7 +770,7 @@ public class MonteCarlo
     {
         var logEnergy = Math.Log(energyEv);
         int lowerIndex = (int)Math.Floor((logEnergy - log50) / LogNistElasticEnergyStep);
-        lowerIndex = Math.Clamp(lowerIndex, 0, 99);
+        lowerIndex = Math.Clamp(lowerIndex, 0, NistElasticEnergyCount - 2); // 260603Cl 99→EnergyCount-2(=109) に連動
         var lowerEnergy = log50 + lowerIndex * LogNistElasticEnergyStep;
         var upperEnergy = lowerEnergy + LogNistElasticEnergyStep;
         fraction = (logEnergy - lowerEnergy) / (upperEnergy - lowerEnergy);
@@ -1043,7 +1065,8 @@ public class MonteCarlo
 
         while (trajectory[^1].e > ThresholdKev && trajectory[^1].p.Y * tan >= trajectory[^1].p.Z)
         {
-            var parameters = GetTransportParameters(trajectory[^1].e);
+            // var parameters = GetTransportParameters(trajectory[^1].e); // 260603Cl 旧: 値コピー (68B)
+            ref readonly var parameters = ref GetTransportParametersRef(trajectory[^1].e); // 260603Cl ref readonly で構造体コピー回避
             // if (!(parameters.ElasticMeanFreePathNm > 0)) break; // 260401Cl TotalRate に統合
             // var elasticRate = 1.0 / parameters.ElasticMeanFreePathNm; // 260401Cl 事前計算済み
             // var inelasticRate = parameters.InelasticMeanFreePathNm > 0 && parameters.MeanInelasticLossKev > 0 // 260401Cl
@@ -1052,7 +1075,8 @@ public class MonteCarlo
             if (!(parameters.TotalRate > 0)) // 260401Cl
                 break;
 
-            var s = -Math.Log(Math.Max(Rnd.NextDouble(), double.Epsilon)) / parameters.TotalRate; // 260401Cl
+            // var s = -Math.Log(Math.Max(Rnd.NextDouble(), double.Epsilon)) / parameters.TotalRate; // 260401Cl // 260603Cl 旧: 除算
+            var s = -Math.Log(Math.Max(Rnd.NextDouble(), double.Epsilon)) * parameters.InverseTotalRate; // 260603Cl 除算→乗算
             var nextPoint = trajectory[^1].p + s * new V3(vX, vY, vZ);
             if (nextPoint.Y * tan < nextPoint.Z)
             {
@@ -1193,7 +1217,8 @@ public class MonteCarlo
 
         while (e > ThresholdKev)
         {
-            var parameters = GetTransportParameters(e);
+            // var parameters = GetTransportParameters(e); // 260603Cl 旧: 値コピー (68B)
+            ref readonly var parameters = ref GetTransportParametersRef(e); // 260603Cl ref readonly で構造体コピー回避
             // if (!(parameters.ElasticMeanFreePathNm > 0)) break; // 260401Cl TotalRate に統合
             // var elasticRate = 1.0 / parameters.ElasticMeanFreePathNm; // 260401Cl 事前計算済み
             // var inelasticRate = parameters.InelasticMeanFreePathNm > 0 && parameters.MeanInelasticLossKev > 0 // 260401Cl
@@ -1202,7 +1227,8 @@ public class MonteCarlo
             if (!(parameters.TotalRate > 0)) // 260401Cl
                 break;
 
-            var s = -Math.Log(Math.Max(Rnd.NextDouble(), double.Epsilon)) / parameters.TotalRate; // 260401Cl
+            // var s = -Math.Log(Math.Max(Rnd.NextDouble(), double.Epsilon)) / parameters.TotalRate; // 260401Cl // 260603Cl 旧: 除算
+            var s = -Math.Log(Math.Max(Rnd.NextDouble(), double.Epsilon)) * parameters.InverseTotalRate; // 260603Cl 除算→乗算
             var dtmp = d + s * (sin * vY - cos * vZ); // (260331Ch) 現在の進行方向で次イベント位置まで進む
             if (dtmp < 0)
                 break;
