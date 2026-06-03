@@ -1,7 +1,6 @@
 ﻿#region using
 using Crystallography.OpenGL;
 using IronPython.Runtime;
-using Microsoft.Scripting.Utils;
 using OpenTK.Mathematics;
 using System.Collections.Generic;
 using System.Diagnostics;

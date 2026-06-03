@@ -1,7 +1,6 @@
 ﻿#region using 
 using Crystallography;
 using MathNet.Numerics;
-using MemoryPack.Formatters;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;

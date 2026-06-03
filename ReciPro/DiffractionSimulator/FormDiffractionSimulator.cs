@@ -2,7 +2,6 @@
 using BitMiracle.LibTiff.Classic;
 using Crystallography.OpenGL;
 using MathNet.Numerics;
-using Microsoft.Scripting.Utils;
 using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics;

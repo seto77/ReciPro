@@ -12,8 +12,6 @@ using System.Runtime.InteropServices;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
-using ZLinq;
-using ZLinq.Simd;
 #endregion
 
 namespace Crystallography;

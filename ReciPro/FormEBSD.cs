@@ -13,10 +13,8 @@ using M4 = OpenTK.Mathematics.Matrix4d;
 using C4 = OpenTK.Mathematics.Color4;
 using System.Diagnostics;
 using System.Drawing.Drawing2D;
-using MathNet.Numerics;
 using System.Text;
 using System.Threading.Tasks;
-using Microsoft.Scripting.Utils;
 using ZLinq;
 #endregion
 
@@ -1998,26 +1996,45 @@ public partial class FormEBSD : FormBase
         var bseLists = new System.Collections.Concurrent.ConcurrentBag<List<(double Depth, V3 Vec, PointD Position, double Energy, double TotalEnergyLoss, bool HasLastInelasticEvent, double LastInelasticDepth, double LastInelasticEnergyBeforeLoss, double LastInelasticEnergyAfterLoss, V3 LastInelasticDirection)>>(); // (260331Ch) 最後の非弾性散乱情報も保持する
         var reportStep = reportProgress == null ? int.MaxValue : Math.Max(1, loop / 100); // (260327Ch) UI へは 1% ごとにだけ流す
         int completed = 0;
+        const int progressBatch = 1024; // 260603Cl 追加: 共有カウンタの Interlocked を worker ごとにまとめ、毎電子の cache-line 競合を解消する
+
+        // 260603Cl 追加: バッチ加算後の進捗通知 (本体と localFinally の共通処理)。reportStep(~1%) 境界を跨いだ時だけ通知し、微妙な境界判定を一元化する
+        void notifyProgress(int delta, int current)
+        {
+            if (reportProgress != null && (current >= loop || current / reportStep != (current - delta) / reportStep))
+                reportProgress(Math.Min(current, loop), loop); // (260327Ch) MasterPattern 前処理時だけ進捗を通知する
+        }
 
         Parallel.For(0, loop,
             new ParallelOptions { CancellationToken = cancellationToken }, // 260406Cl 追加: キャンセル対応
-            () => new List<(double Depth, V3 Vec, PointD Position, double Energy, double TotalEnergyLoss, bool HasLastInelasticEvent, double LastInelasticDepth, double LastInelasticEnergyBeforeLoss, double LastInelasticEnergyAfterLoss, V3 LastInelasticDirection)>(256),
-            (index, state, localList) =>
+            // () => new List<(...)>(256), // 260603Cl 旧: thread-local は List のみ
+            () => (list: new List<(double Depth, V3 Vec, PointD Position, double Energy, double TotalEnergyLoss, bool HasLastInelasticEvent, double LastInelasticDepth, double LastInelasticEnergyBeforeLoss, double LastInelasticEnergyAfterLoss, V3 LastInelasticDirection)>(256), pending: 0), // 260603Cl thread-local に進捗カウンタ pending を同梱
+            (index, state, local) =>
             {
                 var electron = monte.GetBackscatteredElectronDetail();
                 if (electron.Energy > energyThreshold)
-                    localList.Add((electron.Depth, electron.Direction, Stereonet.ConvertVectorToSchmidt(sampleRotation * electron.Direction), electron.Energy,
+                    local.list.Add((electron.Depth, electron.Direction, Stereonet.ConvertVectorToSchmidt(sampleRotation * electron.Direction), electron.Energy,
                         electron.TotalEnergyLoss, electron.HasLastInelasticEvent, electron.LastInelasticDepth, electron.LastInelasticEnergyBeforeLoss, electron.LastInelasticEnergyAfterLoss, electron.LastInelasticDirection)); // (260331Ch)
 
-                var current = System.Threading.Interlocked.Increment(ref completed);
-                if (reportProgress != null && (current == loop || current % reportStep == 0))
-                    reportProgress(current, loop); // (260327Ch) MasterPattern 前処理時だけ進捗を通知する
-                return localList;
+                // 260603Cl 旧: 毎電子で共有カウンタを Interlocked.Increment (全 worker が同一 cache-line を叩く)
+                // var current = System.Threading.Interlocked.Increment(ref completed);
+                // if (reportProgress != null && (current == loop || current % reportStep == 0))
+                //     reportProgress(current, loop);
+                if (++local.pending >= progressBatch) // 260603Cl progressBatch 電子貯めてから 1 回だけ共有カウンタへ加算
+                {
+                    int delta = local.pending;
+                    local.pending = 0;
+                    notifyProgress(delta, System.Threading.Interlocked.Add(ref completed, delta));
+                }
+                return local;
             },
-            localList =>
+            // localList => { if (localList.Count > 0) bseLists.Add(localList); }, // 260603Cl 旧
+            local =>
             {
-                if (localList.Count > 0)
-                    bseLists.Add(localList);
+                if (local.pending > 0) // 260603Cl worker 終了時に端数電子を共有カウンタへ反映
+                    notifyProgress(local.pending, System.Threading.Interlocked.Add(ref completed, local.pending));
+                if (local.list.Count > 0)
+                    bseLists.Add(local.list);
             });
 
         return [.. bseLists.SelectMany(localList => localList)];
