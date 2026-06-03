@@ -236,7 +236,7 @@ public partial class GraphControl : UserControlBase
     [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     [Category(" 垂直線")]
     [Description("垂直線の色")]
-    public Color VerticalLineColor { set; get; } = Color.Red;
+    public Color VerticalLineColor { set; get; } = Color.Red;//260603Cl レビューメモ: setterで Draw() を呼ばないため実行時の色変更が次回再描画まで反映されない(AxisLineColor / AxisTextColor / BackgroundColor も同様の不統一)。
 
     /// <summary>垂直線と各プロファイルの交点にマーカー(丸)と値を表示するかどうか</summary> //260603Cl 追加
     [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
@@ -678,6 +678,7 @@ public partial class GraphControl : UserControlBase
 
             if (!YLog)
             {
+                //260603Cl レビューメモ: 全データが負のとき MaximalY *= 1.1 は上方向でなく下方向に余白を広げてしまう(符号エッジケース)。max>=0/max<0 で場合分けが必要。
                 if (MinimalY > 0)
                     MinimalY = 0;
                 else
@@ -794,6 +795,7 @@ public partial class GraphControl : UserControlBase
 
         try
         {
+            //260603Cl レビューメモ: GDIリーク。旧 Bmp / G / pictureBox.Image を Dispose していない。高頻度再描画(縦線ドラッグ等)でハンドル/メモリが積み上がる。using化 or フィールド再利用+Dispose を検討。DrawDivision/DrawProfileLine 等の new Pen/SolidBrush/Font も都度生成・未Disposeで同様。
             Bmp = new Bitmap(PictureBoxSize.Width, PictureBoxSize.Height);
             G = Graphics.FromImage(Bmp);
             G.Clear(BackgroundColor);
@@ -818,7 +820,7 @@ public partial class GraphControl : UserControlBase
             }
             pictureBox.Image = Bmp;
         }
-        catch { }
+        catch { }//260603Cl レビューメモ: 全例外を握り潰しているため描画不具合が無言で「真っ白」になり追跡困難。最低限 Debug.WriteLine を出すべき。
     }
     #endregion
 
@@ -1049,7 +1051,7 @@ public partial class GraphControl : UserControlBase
             //先ずは無条件で有効数字0桁の目盛りを設定
             for (int i = (int)min; i < max; i++)
                 if (i > min)
-                    results.Add(i, "1E" + i.ToString());
+                    results.Add(i, "1E" + i.ToString());//260603Cl レビューメモ: キー重複で ArgumentException → Draw の catch{} で握り潰され「目盛りが出ない」症状になりうる。TryAdd 化を検討(本メソッド内の他の Add 箇所も同様)。
 
             //有効数字1桁の目盛り(2E1,3E1,4E1など)を設定
             for (int i = (int)Math.Floor(min); i < max + 1; i++)
@@ -1152,7 +1154,7 @@ public partial class GraphControl : UserControlBase
     public PointD MouseMovingStartPt;
     public bool MouseRangingMode = false;
     public bool MouseMovingMode = false;
-    public bool LineSelectMode = false;
+    public bool LineSelectMode = false;//260603Cl レビューメモ: これら内部モード状態が public フィールドで外部から書き換え可能(カプセル化が緩い)。get-only かメソッド経由が望ましい。
 
     #region コンテキストメニュー
 
@@ -1218,6 +1220,7 @@ public partial class GraphControl : UserControlBase
     /// <param name="upperX"></param>
     /// <param name="lowerX"></param>
     /// <returns></returns>
+    //260603Cl レビューメモ: メソッド名タイポ serchLineIndex→searchLineIndex。他にも Gradiation→Graduation, Visivle→Visible 等のタイポが点在。log軸時の lowerX<0 分岐(-Math.Pow(10,lowerX))も挙動が怪しく要確認。
     private int serchLineIndex(double upperX, double lowerX)
     {
         double dev = double.PositiveInfinity;
