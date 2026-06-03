@@ -1112,7 +1112,8 @@ public partial class GraphControl : UserControlBase
             pen = new Pen(AxisLineColor, 1);
             G.DrawLine(pen, OriginPosition.X - 8, ConvToPicBoxCoord(0, divisions.Keys[i]).Y, OriginPosition.X, ConvToPicBoxCoord(0, divisions.Keys[i]).Y);
 
-            if (horizontalGradiationTextVisivle)
+            //if (horizontalGradiationTextVisivle)//260603Cl 修正: Y軸ラベルの表示可否は vertical 側フラグで判定すべき (AxisYTextVisible が効くように)
+            if (verticalGradiationTextVisivle)//260603Cl
                 G.DrawString(divisions.Values[i], strFont, brush, 0, ConvToPicBoxCoord(0, divisions.Keys[i]).Y - 6);
 
             pen = new Pen(DivisionLineColor, 1);
@@ -1254,11 +1255,13 @@ public partial class GraphControl : UserControlBase
             x = IsIntegerX ? (int)(Math.Round(x)) : x;
 
             double y = pt.Y;
-            y = XLog ? Math.Pow(10, y) : y;
+            //y = XLog ? Math.Pow(10, y) : y;//260603Cl 修正: Y値はY軸の対数フラグで変換すべき (XLog→YLog)
+            y = YLog ? Math.Pow(10, y) : y;//260603Cl
             y = IsIntegerY ? (int)(Math.Round(y)) : y;
 
             labelXValue.Text = x.ToString((XLog ? "E" : "g") + (MousePositionXDigit == -1 ? "" : MousePositionXDigit.ToString()));
-            labelYValue.Text = y.ToString((YLog ? "E" : "g") + (MousePositionYDigit == -1 ? "" : MousePositionXDigit.ToString()));
+            //labelYValue.Text = y.ToString((YLog ? "E" : "g") + (MousePositionYDigit == -1 ? "" : MousePositionXDigit.ToString()));//260603Cl 修正: Y桁は MousePositionYDigit を使うべき
+            labelYValue.Text = y.ToString((YLog ? "E" : "g") + (MousePositionYDigit == -1 ? "" : MousePositionYDigit.ToString()));//260603Cl
         }
 
         if (MouseMovingMode)
