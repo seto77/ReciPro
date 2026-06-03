@@ -238,6 +238,19 @@ public partial class GraphControl : UserControlBase
     [Description("垂直線の色")]
     public Color VerticalLineColor { set; get; } = Color.Red;
 
+    /// <summary>垂直線と各プロファイルの交点にマーカー(丸)と値を表示するかどうか</summary> //260603Cl 追加
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
+    [Category(" 垂直線")]
+    [Description("垂直線と各プロファイルの交点にマーカー(丸)と値を表示するかどうか")]
+    public bool VerticalLineMarkerVisible { set { verticalLineMarkerVisible = value; Draw(); } get => verticalLineMarkerVisible; }
+    private bool verticalLineMarkerVisible = false;
+
+    /// <summary>交点マーカー(丸)の半径(ピクセル)</summary> //260603Cl 追加
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
+    [Category(" 垂直線")]
+    [Description("交点マーカー(丸)の半径(ピクセル)")]
+    public float VerticalLineMarkerRadius { set; get; } = 3.5f;
+
     private int selectedVerticalLineIndex = -1;
 
     #endregion
@@ -813,6 +826,10 @@ public partial class GraphControl : UserControlBase
     /// <summary>グラフ中にVerticalLineListで定義された垂直線を描く</summary>
     private void DrawLine()
     {
+        //260603Cl: 値表示の対象とする「活線」 (選択中の線。無ければ線が1本だけのときそれ)
+        int activeIndex = selectedVerticalLineIndex >= 0 && selectedVerticalLineIndex < verticalLineList.Count
+            ? selectedVerticalLineIndex : (verticalLineList.Count == 1 ? 0 : -1);
+
         for (int i = 0; i < verticalLineList.Count; i++)
         {
             double x = verticalLineList[i].X;
@@ -829,7 +846,62 @@ public partial class GraphControl : UserControlBase
             var ptEnd = new PointF((float)ptStart.X, (float)(pictureBox.Height - originPosition.Y));
             if (!double.IsNaN(ptStart.X) && !double.IsInfinity(ptStart.X))
                 G.DrawLine(new Pen(VerticalLineColor, selectedVerticalLineIndex == i ? 2f : 1f), ptStart, ptEnd);
+
+            //260603Cl 追加: 垂直線と各プロファイルの交点に丸マーカーを描画する (値はグラフに重ねず上部ラベルへ)
+            if (verticalLineMarkerVisible && !double.IsNaN(x) && !double.IsInfinity(x) && x >= LowerX && x <= UpperX)
+                DrawVerticalLineMarkers(x);
         }
+
+        //260603Cl 追加: 活線とプロファイルの交点座標を上部パネルのラベルに表示する
+        if (verticalLineMarkerVisible)
+            UpdateMarkerReadout(activeIndex);
+    }
+
+    /// <summary>垂直線と各プロファイルの交点に丸マーカーを描画する (260603Cl 追加)</summary>
+    /// <param name="transformedX">対数変換済みのX座標 (描画座標系。プロファイル点・ConvToPicBoxCoordと同じ系)</param>
+    private void DrawVerticalLineMarkers(double transformedX)
+    {
+        for (int j = 0; j < destProfileList.Count && j < srcProfileList.Count; j++)
+        {
+            var dp = destProfileList[j];
+            if (dp == null || dp.Pt == null || dp.Pt.Count < 2) continue;
+            if (transformedX < dp.Pt[0].X || transformedX > dp.Pt[^1].X) continue;//範囲外は外挿しない
+
+            double transformedY = dp.GetValue(transformedX, 2, 1);//隣接2点で線形補間 (描画される折れ線と一致)
+            if (double.IsNaN(transformedY) || double.IsInfinity(transformedY) || transformedY < LowerY || transformedY > UpperY) continue;
+
+            var color = srcProfileList[j] != null ? srcProfileList[j].Color : VerticalLineColor;
+            var p = ConvToPicBoxCoord(transformedX, transformedY);
+            float r = VerticalLineMarkerRadius;
+            G.FillEllipse(new SolidBrush(color), p.X - r, p.Y - r, r * 2, r * 2);
+            G.DrawEllipse(new Pen(Color.White, 1f), p.X - r, p.Y - r, r * 2, r * 2);
+        }
+    }
+
+    /// <summary>活線(activeIndex)と先頭の有効プロファイルの交点座標を上部パネルの labelXValue / labelYValue に表示する (260603Cl 追加)</summary>
+    private void UpdateMarkerReadout(int activeIndex)
+    {
+        if (!UpperPanelVisible) return;
+        if (activeIndex < 0 || activeIndex >= verticalLineList.Count)
+        {
+            labelXValue.Text = labelYValue.Text = "-";
+            return;
+        }
+        double realX = verticalLineList[activeIndex].X;
+        double tx = xLog ? (realX > 0 ? Math.Log10(realX) : double.NaN) : realX;
+        for (int j = 0; j < destProfileList.Count && j < srcProfileList.Count; j++)
+        {
+            var dp = destProfileList[j];
+            if (dp == null || dp.Pt == null || dp.Pt.Count < 2) continue;
+            if (double.IsNaN(tx) || tx < dp.Pt[0].X || tx > dp.Pt[^1].X) continue;
+            double ty = dp.GetValue(tx, 2, 1);
+            if (double.IsNaN(ty) || double.IsInfinity(ty)) continue;
+            double realY = yLog ? Math.Pow(10, ty) : ty;//実座標に戻す
+            labelXValue.Text = realX.ToString((xLog ? "E" : "g") + (MousePositionXDigit == -1 ? "" : MousePositionXDigit.ToString()));
+            labelYValue.Text = realY.ToString((yLog ? "E" : "g") + (MousePositionYDigit == -1 ? "" : MousePositionYDigit.ToString()));
+            return;//先頭の有効プロファイルのみ表示
+        }
+        labelXValue.Text = labelYValue.Text = "-";
     }
 
     /// <summary>グラフ中にpeaksで定義された釣鐘型曲線を描く</summary>
@@ -1175,7 +1247,7 @@ public partial class GraphControl : UserControlBase
         //マウスが動いたとき
         PointD pt = ConvToRealCoord(e.X, e.Y);
 
-        if (UpperPanelVisible)
+        if (UpperPanelVisible && !verticalLineMarkerVisible)//260603Cl: マーカー表示中は上部ラベルを交点座標が使うのでマウス座標で上書きしない
         {
             double x = pt.X;
             x = XLog ? Math.Pow(10, x) : x;
