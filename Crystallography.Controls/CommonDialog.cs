@@ -147,6 +147,9 @@ namespace Crystallography.Controls
 
         #region コンストラクタ、ロード、クローズ
 
+        //260604Cl 追加: スプラッシュ/履歴/ライセンス/ヒント表示用のダイアログには F1 ヘルプ案内 ("(F1: ヘルプ)") を出さない。
+        protected override bool ShowHelpSuffix => false;
+
         public CommonDialog()
         {
             InitializeComponent();
