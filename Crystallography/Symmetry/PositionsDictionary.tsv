@@ -1,4 +1,4 @@
-## PositionsDictionary — 空間群ごとの等価位置(Wyckoff position)テーブル
+﻿## PositionsDictionary — 空間群ごとの等価位置(Wyckoff position)テーブル
 ## '#N' 行 = 空間群(通し番号 series number = N)の開始。続く各行 = 1 つの Wyckoff 位置。
 ## 行内の各値(タブ区切り)= PositionStringList(等価座標文字列 'x,y,z' 等)への 0 始まりインデックス。
 ## 例: PositionsDictionary[N][j] の p 番目の値 v → 座標は PositionStringList[v]。

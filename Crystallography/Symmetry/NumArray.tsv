@@ -1,4 +1,4 @@
-## NumArray — 空間群の通し番号(行 = series number 0..540)ごとの番号メタ情報。1 行 6 列(タブ区切り)。
+﻿## NumArray — 空間群の通し番号(行 = series number 0..540)ごとの番号メタ情報。1 行 6 列(タブ区切り)。
 ## col0 = series number(通し番号, = 行番号)
 ## col1 = International Table 番号
 ## col2 = サブシリーズ番号

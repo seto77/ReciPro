@@ -1,4 +1,4 @@
-## SiteSymmetryDictionary — 空間群ごとの各 Wyckoff 位置のサイト対称テーブル
+﻿## SiteSymmetryDictionary — 空間群ごとの各 Wyckoff 位置のサイト対称テーブル
 ## 各 '#N name' = 空間群(通し番号 N, H-M 記号)。直後の 1 行が各 Wyckoff 位置(a,b,c… 順)のサイト対称。
 ## 行内の各値(タブ区切り)= SiteSymmetryList(サイト対称記号 '1','m','2/m' 等)への 0 始まりインデックス。
 #0 0  unk
