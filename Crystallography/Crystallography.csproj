@@ -63,6 +63,9 @@
     <EmbeddedResource Include="Symmetry\StrArray.csv">
       <LogicalName>Crystallography.StrArray.csv</LogicalName>
     </EmbeddedResource>
+    <EmbeddedResource Include="Symmetry\PositionStringList.csv">
+      <LogicalName>Crystallography.PositionStringList.csv</LogicalName>
+    </EmbeddedResource>
   </ItemGroup>
 
   <ItemGroup>

@@ -33,9 +33,9 @@ public readonly struct WyckoffPosition
     /// <summary>サイトシンメトリ</summary>
     public string SiteSymmetry { get; }
 
-    /// <summary>等価位置を生成するFuncの配列</summary>
+    /// <summary>等価位置を生成するアフィン対称操作の配列 (260604Cl: Func[] → AffineGen[]。デリゲート除去で高速・データ駆動)</summary>
     [XmlIgnore]
-    public Func<double, double, double, (double X, double Y, double Z)>[] PositionGenerator { get; }
+    public AffineGen[] PositionGenerator { get; }
 
     /// <summary>等価位置の文字列(x,y,zなど)の配列</summary>
     public string[] PositionStr { get; }
@@ -53,7 +53,7 @@ public readonly struct WyckoffPosition
     #region コンストラクタ
     public WyckoffPosition(int symSeries, string latticeType, string wykLetter, int wykNum, string siteSym,
         string[] coordStr,
-        Func<double, double, double, (double X, double Y, double Z)>[] generators,
+        AffineGen[] generators,
         SymmetryOperation[] operations = null)
     {
         SymmetrySeriesNumber = (ushort)symSeries;
@@ -96,7 +96,7 @@ public readonly struct WyckoffPosition
 
         for (int i = 0; i < PositionGenerator.Length; i++)
         {
-            var (X, Y, Z) = PositionGenerator[i](x, y, z);
+            var (X, Y, Z) = PositionGenerator[i].Apply(x, y, z);
 
             //当たり判定
             //if (pos.Count == 0 || pos.All(p => !chk(Z, p.Z) || !chk(X, p.X) || !chk(Y, p.Y)))
@@ -126,7 +126,7 @@ public readonly struct WyckoffPosition
         // (260320Ch) Any のラムダ割り当てを避ける
         foreach (var g in PositionGenerator)
         {
-            var (X, Y, Z) = g(x, y, z);
+            var (X, Y, Z) = g.Apply(x, y, z);
             if (chk(X, x) && chk(Y, y) && chk(Z, z))
                 return true;
         }
@@ -211,4 +211,78 @@ public readonly struct WyckoffPosition
     }
 
     #endregion
+}
+
+/// <summary>260604Cl アフィン対称操作 (X,Y,Z) = M·(x,y,z) + t + post。
+/// 旧 SymmetryStatic.PositionGeneratorList の 1,969 個のラムダと _PositionStringList の文字列を統合し、
+/// 可読 CSV(x,y,z 標準表記)から構築する。post は格子併進(A/B/C/I/R1/R2)を base 適用後に最後に加算する後置併進
+/// (旧コードの結合順と一致させ bit-exact を保つ)。struct のため JIT がインライン化でき、旧 Func[] より高速。</summary>
+public readonly struct AffineGen
+{
+    // 出力行 r = cxr*x + cyr*y + czr*z + tr + (後置併進)
+    readonly double cx0, cy0, cz0, t0;
+    readonly double cx1, cy1, cz1, t1;
+    readonly double cx2, cy2, cz2, t2;
+    readonly double px, py, pz; // 後置併進(格子センタリング)。base 生成器は 0。
+
+    private AffineGen(double cx0, double cy0, double cz0, double t0,
+                      double cx1, double cy1, double cz1, double t1,
+                      double cx2, double cy2, double cz2, double t2,
+                      double px, double py, double pz)
+    {
+        this.cx0 = cx0; this.cy0 = cy0; this.cz0 = cz0; this.t0 = t0;
+        this.cx1 = cx1; this.cy1 = cy1; this.cz1 = cz1; this.t1 = t1;
+        this.cx2 = cx2; this.cy2 = cy2; this.cz2 = cz2; this.t2 = t2;
+        this.px = px; this.py = py; this.pz = pz;
+    }
+
+    /// <summary>(X,Y,Z) = M·(x,y,z) + t + post。post は最後に加算(旧 base 適用→併進 の結合順に一致)。</summary>
+    public (double X, double Y, double Z) Apply(double x, double y, double z)
+        => (cx0 * x + cy0 * y + cz0 * z + t0 + px,
+            cx1 * x + cy1 * y + cz1 * z + t1 + py,
+            cx2 * x + cy2 * y + cz2 * z + t2 + pz);
+
+    /// <summary>格子併進を後置で加えた新生成器(A/B/C/I/R1/R2 用)。base 適用後に dx,dy,dz を最後に加算する。</summary>
+    public AffineGen AddTranslation(double dx, double dy, double dz)
+        => new(cx0, cy0, cz0, t0, cx1, cy1, cz1, t1, cx2, cy2, cz2, t2, px + dx, py + dy, pz + dz);
+
+    /// <summary>"a,b,c" の 3 成分(x,y,z 標準表記)からアフィン変換を構築。整数係数(2x 等)と分数併進(1/3 等)に対応。</summary>
+    public static AffineGen Parse(string a, string b, string c)
+    {
+        var (cx0, cy0, cz0, t0) = ParseComponent(a);
+        var (cx1, cy1, cz1, t1) = ParseComponent(b);
+        var (cx2, cy2, cz2, t2) = ParseComponent(c);
+        return new(cx0, cy0, cz0, t0, cx1, cy1, cz1, t1, cx2, cy2, cz2, t2, 0, 0, 0);
+    }
+
+    private static (double cx, double cy, double cz, double t) ParseComponent(string s)
+    {
+        double cx = 0, cy = 0, cz = 0, t = 0; int i = 0;
+        while (i < s.Length)
+        {
+            int sign = 1;
+            if (s[i] == '+') { i++; }
+            else if (s[i] == '-') { sign = -1; i++; }
+            else if (char.IsWhiteSpace(s[i])) { i++; continue; }
+            int ns = i;
+            while (i < s.Length && char.IsDigit(s[i])) i++;
+            string num = s[ns..i];
+            if (i < s.Length && (s[i] == 'x' || s[i] == 'y' || s[i] == 'z'))
+            {
+                double coef = sign * (num.Length > 0 ? int.Parse(num) : 1);
+                if (s[i] == 'x') cx += coef; else if (s[i] == 'y') cy += coef; else cz += coef;
+                i++;
+            }
+            else if (i < s.Length && s[i] == '/')
+            {
+                i++; int ds = i; while (i < s.Length && char.IsDigit(s[i])) i++;
+                t += sign * ((double)int.Parse(num) / (double)int.Parse(s[ds..i]));
+            }
+            else
+            {
+                t += sign * (num.Length > 0 ? int.Parse(num) : 0);
+            }
+        }
+        return (cx, cy, cz, t);
+    }
 }
