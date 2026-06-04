@@ -68,6 +68,7 @@ public static class SymmetryStatic
         System.Collections.Generic.List<ushort[]> cur = null;
         for (string line; (line = r.ReadLine()) != null;)
         {
+            if (line.StartsWith("##")) continue; // 260604Cl ドキュメント/列見出し行 (3 階層は '#' が外側グループ見出しなので '##' で区別)
             if (line.StartsWith('#')) { if (cur != null) outers.Add(cur.ToArray()); cur = []; continue; }
             if (line.Length == 0) { cur.Add([]); continue; }
             var p = line.Split('\t');

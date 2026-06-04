@@ -1,3 +1,11 @@
+## NumArray — 空間群の通し番号(行 = series number 0..540)ごとの番号メタ情報。1 行 6 列(タブ区切り)。
+## col0 = series number(通し番号, = 行番号)
+## col1 = International Table 番号
+## col2 = サブシリーズ番号
+## col3 = 点群番号(コンボボックス, 推定)
+## col4 = 結晶系番号(コンボボックス, 推定)
+## col5 = 結晶系/ラウエ群コード(5,6 = 六方・三方系の判定に使用)
+## コード参照: GetSeriesNumber(IT番号,サブ)=col1&&col2 一致行; IsHexBySeries=col5∈{5,6} && col2==1。
 0	0	0	0	0	0
 1	1	1	1	1	1
 2	2	1	2	1	1

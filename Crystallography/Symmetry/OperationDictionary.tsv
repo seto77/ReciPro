@@ -1,3 +1,6 @@
+## OperationDictionary — 空間群ごとの対称操作テーブル
+## 各 '#N name' = 空間群(通し番号 N, Hermann-Mauguin 記号 name)。直後の 1 行がその空間群の対称操作リスト。
+## 行内の各値(タブ区切り)= OperationList(対称操作 SymmetryOperation)への 0 始まりインデックス。
 #0 0 Unknown
 0
 #1 1 P1

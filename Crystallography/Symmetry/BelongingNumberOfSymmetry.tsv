@@ -1,3 +1,7 @@
+## BelongingNumberOfSymmetry — コンボボックス階層(結晶系→点群→空間群)から通し番号への対応
+## '#i' 行 = 結晶系 i(コンボボックス順)の開始。続く各行 j = 点群 j(コンボボックス順)。
+## 行内の k 番目の値 = (結晶系 i, 点群 j, 空間群 k) に対応する空間群の通し番号(series number)。
+## 参照: GetSystemAndGroupFromSeriesNumber(series) → (i, j, k)。
 #0
 0
 #1
