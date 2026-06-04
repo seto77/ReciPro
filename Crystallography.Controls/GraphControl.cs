@@ -875,8 +875,10 @@ public partial class GraphControl : UserControlBase
             var color = srcProfileList[j] != null ? srcProfileList[j].Color : VerticalLineColor;
             var p = ConvToPicBoxCoord(transformedX, transformedY);
             float r = VerticalLineMarkerRadius;
-            G.FillEllipse(new SolidBrush(color), p.X - r, p.Y - r, r * 2, r * 2);
-            G.DrawEllipse(new Pen(Color.White, 1f), p.X - r, p.Y - r, r * 2, r * 2);
+            //260604Cl 再描画ごとの GDI ハンドル蓄積を避ける: 白縁は共有 Pens.White、塗りは using で確実に解放
+            using (var brush = new SolidBrush(color))
+                G.FillEllipse(brush, p.X - r, p.Y - r, r * 2, r * 2);
+            G.DrawEllipse(Pens.White, p.X - r, p.Y - r, r * 2, r * 2);
         }
     }
 

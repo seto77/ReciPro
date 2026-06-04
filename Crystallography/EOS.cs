@@ -1366,13 +1366,7 @@ new([4.5, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19], [0, 0, -438.37
 
     public static double Ar_Ross(double a)
     {
-        /* if (SplineRossAr == null)
-        {
-            InitializeSpline(ref SplineRossAr, Ross);
-            string code = deveropper(SplineRossAr);
-            Clipboard.SetDataObject(code, true);
-        }*/
-
+        // 260604Cl: SplineRossAr は係数を焼き込んだ単一 Spline (他材料の Spline[] lazy 初期化とは別。元の生成コードは deveropper 廃止に伴い除去)
         return SplineRossAr.GetValue(UniversalConstants.A / 1.0E21 * a * a * a / 4);
     }
 

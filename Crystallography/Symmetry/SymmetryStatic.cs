@@ -51,32 +51,18 @@ public static class SymmetryStatic
         fields.Add(sb.ToString());
         return [.. fields];
     }
-    private static ushort[][] LoadUshortJagged2(string name)
+    // 260604Cl 型のみ異なっていた LoadUshortJagged2/LoadByteJagged2 を 1 つに集約 (要素変換は parse デリゲートで注入)。値は不変。
+    private static T[][] LoadJagged2<T>(string name, System.Func<string, T> parse)
     {
         using var r = OpenSymCsv(name);
-        var rows = new System.Collections.Generic.List<ushort[]>();
+        var rows = new System.Collections.Generic.List<T[]>();
         for (string line; (line = r.ReadLine()) != null;)
         {
             if (line.StartsWith('#')) continue;
             if (line.Length == 0) { rows.Add([]); continue; }
             var p = ParseCsvLine(line);
-            var row = new ushort[p.Length];
-            for (int i = 0; i < p.Length; i++) row[i] = ushort.Parse(p[i], System.Globalization.CultureInfo.InvariantCulture);
-            rows.Add(row);
-        }
-        return [.. rows];
-    }
-    private static byte[][] LoadByteJagged2(string name)
-    {
-        using var r = OpenSymCsv(name);
-        var rows = new System.Collections.Generic.List<byte[]>();
-        for (string line; (line = r.ReadLine()) != null;)
-        {
-            if (line.StartsWith('#')) continue;
-            if (line.Length == 0) { rows.Add([]); continue; }
-            var p = ParseCsvLine(line);
-            var row = new byte[p.Length];
-            for (int i = 0; i < p.Length; i++) row[i] = byte.Parse(p[i], System.Globalization.CultureInfo.InvariantCulture);
+            var row = new T[p.Length];
+            for (int i = 0; i < p.Length; i++) row[i] = parse(p[i]);
             rows.Add(row);
         }
         return [.. rows];
@@ -123,9 +109,7 @@ public static readonly ushort[][][] PositionsDictionary = LoadUshortJagged3("Pos
         public static readonly AffineGen[] Generators;
         static PositionData()
         {
-            using var r = new System.IO.StreamReader(
-                typeof(SymmetryStatic).Assembly.GetManifestResourceStream("Crystallography.PositionStringList.csv")
-                ?? throw new System.InvalidOperationException("Embedded resource not found: Crystallography.PositionStringList.csv"));
+            using var r = OpenSymCsv("PositionStringList"); // 260605Cl リソース展開を OpenSymCsv ヘルパーに集約 (旧: GetManifestResourceStream インライン再実装)
             var strs = new System.Collections.Generic.List<string>(2000);
             var gens = new System.Collections.Generic.List<AffineGen>(2000);
             for (string line; (line = r.ReadLine()) != null;)
@@ -150,7 +134,7 @@ public static readonly AffineGen[] PositionGeneratorList = PositionData.Generato
     public static ReadOnlySpan<string> PositionStringList => _PositionStringList;
     public static readonly string[] _PositionStringList = PositionData.Strings; // 260604Cl 可読 CSV から (旧: 1969 文字列リテラル)
 
-    public static readonly ushort[][] OperationDictionary = LoadUshortJagged2("OperationDictionary"); // 260604Cl 可読 .csv 埋め込みリソース化 (旧: コレクション式リテラル, git 履歴に保存)
+    public static readonly ushort[][] OperationDictionary = LoadJagged2("OperationDictionary", static s => ushort.Parse(s, System.Globalization.CultureInfo.InvariantCulture)); // 260604Cl 可読 .csv 埋め込みリソース化 (旧: コレクション式リテラル, git 履歴に保存)
 
     public static ReadOnlySpan<SO> OperationList => _OperationList;
     public static readonly SO[] _OperationList =
@@ -649,7 +633,7 @@ new(-4,-1,(0,1,0),((3.0/8.0),(1.0/8.0),(3.0/8.0)),(0,0,0)),//487
         #endregion
     ];
 
-    public static readonly byte[][] SiteSymmetryDictionary = LoadByteJagged2("SiteSymmetryDictionary"); // 260604Cl 可読 .csv 埋め込みリソース化 (旧: コレクション式リテラル, git 履歴に保存)
+    public static readonly byte[][] SiteSymmetryDictionary = LoadJagged2("SiteSymmetryDictionary", static s => byte.Parse(s, System.Globalization.CultureInfo.InvariantCulture)); // 260604Cl 可読 .csv 埋め込みリソース化 (旧: コレクション式リテラル, git 履歴に保存)
 
     public static ReadOnlySpan<string> SiteSymmetryList => _SiteSymmetryList;
     public static readonly string[] _SiteSymmetryList =
@@ -750,7 +734,7 @@ new(-4,-1,(0,1,0),((3.0/8.0),(1.0/8.0),(3.0/8.0)),(0,0,0)),//487
     public static readonly string[][] StrArray = LoadStringJagged2("StrArray"); // 260604Cl 可読 .csv 埋め込みリソース化 (旧: コレクション式リテラル, git 履歴に保存)
 
     /// <summary>0:通し番号 1:空間群番号 2:空間群のSub番号 3:点群番号 4:ラウエ群番号 5:結晶系番号</summary>
-    public static readonly ushort[][] NumArray = LoadUshortJagged2("NumArray"); // 260604Cl 可読 .csv 埋め込みリソース化 (旧: コレクション式リテラル, git 履歴に保存)
+    public static readonly ushort[][] NumArray = LoadJagged2("NumArray", static s => ushort.Parse(s, System.Globalization.CultureInfo.InvariantCulture)); // 260604Cl 可読 .csv 埋め込みリソース化 (旧: コレクション式リテラル, git 履歴に保存)
 
     public enum CrystalSystem { Unknown = 0, Triclinic = 1, Monoclinic = 2, Orthorhombic = 3, Tetragonal = 4, Trigonal = 5, Hexagonal = 6, Cubic = 7 };
 
