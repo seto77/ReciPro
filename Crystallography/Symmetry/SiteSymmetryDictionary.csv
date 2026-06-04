@@ -1,6 +1,7 @@
 ﻿## SiteSymmetryDictionary — 空間群ごとの各 Wyckoff 位置のサイト対称
 ## 各 '#N name' = 空間群(通し番号 N ・ H-M 記号)。直後の 1 行が各 Wyckoff 位置(a b c… 順)のサイト対称。
 ## 各値 = SiteSymmetryList への 0 始まりインデックス。
+## 各値=SiteSymmetryList索引（Wyckoff位置順）
 #0 0  unk
 0
 #1 1  P 1

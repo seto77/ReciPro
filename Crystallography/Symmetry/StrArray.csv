@@ -3,6 +3,7 @@
 ## col5=MainAxis  col6=LatticeType  col7=StrSE1p col8=StrSE1v col9=StrSE2p col10=StrSE2v col11=StrSE3p col12=StrSE3v
 ## col13=PointGroupHM  col14=PointGroupSF  col15=LaueGroup  col16=CrystalSystem
 ## 対応: Symmetry.cs の SpaceGroupHMsubStr..CrystalSystemStr。const(t/m/o/te/tr/c/h)は結晶系名へ解決済み。RFC4180 引用(" を含むセルあり)。
+## HMsub,SF,Hall,HM,HMfull,主軸,格子,SE1p,SE1v,SE2p,SE2v,SE3p,SE3v,点群HM,点群SF,Laue,結晶系
 ,Unknown,Unknown,Unknown,Unknown,,Unknown,Unknown,Unknown,Unknown,Unknown,Unknown,Unknown,Unknown,Unknown,Unknown,Unknown
 ,C1^1,P1,P1,P1,,P,1,,1,,1,,1,C1,-1,triclinic
 ,Ci^1,-P1,P-1,P-1,,P,-1,,1,,1,,-1,Ci,-1,triclinic

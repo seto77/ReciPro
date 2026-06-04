@@ -2,6 +2,7 @@
 ## col0=series number(=行)  col1=International Table 番号  col2=サブシリーズ番号
 ## col3=点群番号(推定)  col4=結晶系番号(推定)  col5=結晶系/ラウエ群コード(5 6=六方・三方系判定)
 ## コード参照: GetSeriesNumber=col1&&col2 一致行 ・ IsHexBySeries=col5∈{5 6} かつ col2==1。
+## series,IT番号,sub,点群,結晶系,系コード
 0,0,0,0,0,0
 1,1,1,1,1,1
 2,2,1,2,1,1
