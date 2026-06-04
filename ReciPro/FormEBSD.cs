@@ -3050,7 +3050,7 @@ public partial class FormEBSD : FormBase
 
     private void checkBoxShowKikuchiLines_CheckedChanged(object sender, EventArgs e)
     {
-        groupBoxKikuchiLines.Enabled=checkBoxShowKikuchiLines.Checked;
+        groupBoxKikuchiLines.Enabled = checkBoxShowKikuchiLines.Checked;
         Draw();
     }
 }
