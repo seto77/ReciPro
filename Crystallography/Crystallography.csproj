@@ -41,23 +41,27 @@
     </EmbeddedResource>
   </ItemGroup>
 
-  <!-- 260604Cl: SymmetryStatic の大きな整数ジャグ配列を可読 .tsv へ移し EmbeddedResource 化 (旧: C# コレクション式リテラル)。
-       ソースは人間可読・編集可・git diff 容易。実行時は SymmetryStatic の Load*Jagged* が同一の公開型へ構築。 -->
+  <!-- 260604Cl: SymmetryStatic の大きなテーブル(整数ジャグ配列 + StrArray 文字列表)を可読 .csv へ移し EmbeddedResource 化
+       (旧: C# コレクション式リテラル)。ソースは人間可読・Excel で開ける・編集可・git diff 容易。
+       実行時は SymmetryStatic の Load*Jagged2/3 が同一の公開型へ構築 (RFC4180 CSV パーサ)。 -->
   <ItemGroup>
-    <EmbeddedResource Include="Symmetry\PositionsDictionary.tsv">
-      <LogicalName>Crystallography.PositionsDictionary.tsv</LogicalName>
+    <EmbeddedResource Include="Symmetry\PositionsDictionary.csv">
+      <LogicalName>Crystallography.PositionsDictionary.csv</LogicalName>
     </EmbeddedResource>
-    <EmbeddedResource Include="Symmetry\OperationDictionary.tsv">
-      <LogicalName>Crystallography.OperationDictionary.tsv</LogicalName>
+    <EmbeddedResource Include="Symmetry\OperationDictionary.csv">
+      <LogicalName>Crystallography.OperationDictionary.csv</LogicalName>
     </EmbeddedResource>
-    <EmbeddedResource Include="Symmetry\SiteSymmetryDictionary.tsv">
-      <LogicalName>Crystallography.SiteSymmetryDictionary.tsv</LogicalName>
+    <EmbeddedResource Include="Symmetry\SiteSymmetryDictionary.csv">
+      <LogicalName>Crystallography.SiteSymmetryDictionary.csv</LogicalName>
     </EmbeddedResource>
-    <EmbeddedResource Include="Symmetry\BelongingNumberOfSymmetry.tsv">
-      <LogicalName>Crystallography.BelongingNumberOfSymmetry.tsv</LogicalName>
+    <EmbeddedResource Include="Symmetry\BelongingNumberOfSymmetry.csv">
+      <LogicalName>Crystallography.BelongingNumberOfSymmetry.csv</LogicalName>
     </EmbeddedResource>
-    <EmbeddedResource Include="Symmetry\NumArray.tsv">
-      <LogicalName>Crystallography.NumArray.tsv</LogicalName>
+    <EmbeddedResource Include="Symmetry\NumArray.csv">
+      <LogicalName>Crystallography.NumArray.csv</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Symmetry\StrArray.csv">
+      <LogicalName>Crystallography.StrArray.csv</LogicalName>
     </EmbeddedResource>
   </ItemGroup>
 
