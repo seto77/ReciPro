@@ -41,6 +41,26 @@
     </EmbeddedResource>
   </ItemGroup>
 
+  <!-- 260604Cl: SymmetryStatic の大きな整数ジャグ配列を可読 .tsv へ移し EmbeddedResource 化 (旧: C# コレクション式リテラル)。
+       ソースは人間可読・編集可・git diff 容易。実行時は SymmetryStatic の Load*Jagged* が同一の公開型へ構築。 -->
+  <ItemGroup>
+    <EmbeddedResource Include="Symmetry\PositionsDictionary.tsv">
+      <LogicalName>Crystallography.PositionsDictionary.tsv</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Symmetry\OperationDictionary.tsv">
+      <LogicalName>Crystallography.OperationDictionary.tsv</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Symmetry\SiteSymmetryDictionary.tsv">
+      <LogicalName>Crystallography.SiteSymmetryDictionary.tsv</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Symmetry\BelongingNumberOfSymmetry.tsv">
+      <LogicalName>Crystallography.BelongingNumberOfSymmetry.tsv</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Symmetry\NumArray.tsv">
+      <LogicalName>Crystallography.NumArray.tsv</LogicalName>
+    </EmbeddedResource>
+  </ItemGroup>
+
   <ItemGroup>
     <PackageReference Include="MathNet.Numerics" Version="6.0.0-beta2" />
     <PackageReference Include="MemoryPack" Version="1.21.4" />
