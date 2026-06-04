@@ -19,12 +19,16 @@
 | パス | 種別 | 説明 |
 |---|---|---|
 | `Original\E_01.TXT` … `E_96.TXT` | 元データ（**配布外**） | NIST SRD 64 sampler の生データ。Z=1..96。`.git/info/exclude` でローカル限定（git 非追跡） |
-| `PCHIP01.cs` … `PCHIP96.cs` | **自動生成** | `E_*.TXT` を 51 ノット PCHIP に圧縮した埋め込み配列。実行時に使うのはこちら |
-| `Registry.cs` | **自動生成** | `RegisterGeneratedNistElasticPchipE01..E96` のディスパッチャ |
+| `NistElasticPchip.bin` | **自動生成** | `E_*.TXT` を 51 ノット PCHIP に圧縮し、全 96 元素を 1 個の **Brotli 圧縮バイナリ**へ集約したもの。実行時に使うのはこちら（260604Cl: 旧 `PCHIP01..96.cs` + `Registry.cs` を置換） |
 | `Diagnostics\PCHIP01.csv` … | **自動生成** | 圧縮誤差の診断用 CSV |
 
-`PCHIP*.cs` / `Registry.cs` は通常の SDK glob でコンパイルされる（`Content`/`EmbeddedResource` 指定なし）。
-**配布版が実行時に使うのはこれらの埋め込み配列のみで、`Original\E_*.TXT` には依存しない。**
+`NistElasticPchip.bin` は [`Crystallography.csproj`](../../Crystallography.csproj) で `<EmbeddedResource>`（LogicalName=`Crystallography.NistElasticPchip.bin`）として埋め込まれ、実行時に [`NistElasticPchipResource`](../NistElastic.cs) が**元素単位で lazy 展開**する（展開結果は旧静的配列とビット完全一致）。
+**配布版が実行時に使うのはこの埋め込みリソースのみで、`Original\E_*.TXT` には依存しない。**
+
+> 260604Cl 経緯: 旧形式は 96 個の `PCHIP{NN}.cs` が `ushort[][]`/`float[][]` のコレクション式を直接初期化していたため、
+> ジャグ配列の内部配列ごとに `<PrivateImplementationDetails>` のハッシュ名フィールドが約 21,400 個生成され、
+> `#Strings` ヒープ（約 1.4MB）と初期化 IL が肥大化していた。1 個の Brotli リソースへ集約して **Crystallography.dll を約 3.5MB 削減**。
+> フォーマット: `magic "NEP3"` / `version` / `codec(1=brotli)` / `method(1=xKnot byte-plane shuffle)` / `energyCount` / `knotCount` / `count` / `index[(z,offset,length)…]` / `payload(元素別 Brotli blob)`。各 blob は展開後 `sigma(double LE) + phiKnotIndex(ushort LE) + xKnot(float, byte-plane shuffle)`。
 
 ---
 
@@ -88,14 +92,14 @@ git show 6dbf3b5e:tools/FetchNistElasticSampler.ps1   > tools/FetchNistElasticSa
 ./tools/FetchNistElasticSampler.ps1 -AtomicNumbers (1..96)
 #   → E_01.TXT .. E_96.TXT を Original\ に配置
 
-# (3) PCHIP*.cs / Registry.cs を再生成
+# (3) NistElasticPchip.bin を再生成（260604Cl: 旧 PCHIP*.cs/Registry.cs ではなく 1 個の Brotli リソース）
 #   FormEBSD（開発者導線）から NistElasticSamplerPchipGenerator.GenerateCompressedSources を実行
-#   （ReciPro/FormEBSD.cs L180-219 参照）
+#   （ReciPro/FormEBSD.cs L180-219 参照）。出力された NistElasticPchip.bin がそのまま埋め込まれる。
 ```
 
 生成ツール本体: [`NistElastic.cs`](../NistElastic.cs) `NistElasticSamplerPchipGenerator`
 （`ReadTextTable` → `CompressElement`/`CompressBlock`（2001点→51ノット PCHIP）→
-`WriteGeneratedElementSource` / `WriteGeneratedRegistrySource`）。
+`WriteGeneratedResource`（全元素を `NistElasticPchip.bin` へ集約）／`WriteDiagnosticsCsv`）。
 
 ---
 
@@ -103,7 +107,7 @@ git show 6dbf3b5e:tools/FetchNistElasticSampler.ps1   > tools/FetchNistElasticSa
 
 > **✅ 2026-06-03 (260603Cl) 実装完了**: 案 X で 50 eV–**36.4 keV / 111 点**へ拡張済み。
 > 全 96 元素 × blockIndex 101..110（21.2–36.4 keV）を NIST DCS から CDF 化して継ぎ足し、
-> `E_*.TXT`（バックアップ `Original_backup_260603\`）・`PCHIP01..96.cs`・`Registry.cs`・ランタイム定数を更新。
+> `E_*.TXT`（バックアップ `Original_backup_260603\`）・`PCHIP01..96.cs`・`Registry.cs`（260604Cl 以降は `NistElasticPchip.bin`）・ランタイム定数を更新。
 > MC 検証（`c:\tmp\PchipRegen`）で 30 keV を含む全域で Mott sampler が使われ、20 keV 境界も連続することを確認。
 > ⚠ 拡張時に `BuildMottElasticMixtureCache` の `new MottElasticMixtureEntry[101]` ハードコード（[`MonteCarlo.cs`](../../MonteCarlo.cs)）が
 > 取り残されて `atoms` 付き 20 keV 超構築で `IndexOutOfRange` クラッシュ → `[NistElasticEnergyCount]` に修正済み。

@@ -30,7 +30,7 @@ public static partial class AtomStatic // (260401Ch) generated NIST elastic samp
         //			AtomConstantsSub.LinearAbsorptionCoefficient[i][j][k] = new PointD(AtomConstantsSub.MassAbsorptionCoefficient[i][j][k]) * AtomStatic.NominalDensity(i);
         //	}
         //}
-        RegisterGeneratedNistElasticPchip(GeneratedNistElasticPchipElements); // (260401Ch) 開発者ツールで生成した圧縮 elastic sampler を静的初期化時に登録
+        // 260604Cl: PCHIP elastic sampler は埋め込みリソース NistElasticPchip.bin から元素単位 lazy decode に変更 (旧: RegisterGeneratedNistElasticPchip で cctor 一括登録)。NistElasticPchipResource 参照。
     }
     #endregion
 
