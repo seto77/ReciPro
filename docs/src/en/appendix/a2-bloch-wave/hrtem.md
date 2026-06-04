@@ -63,6 +63,30 @@ In the limit $\mathbf u' \to \mathbf u$ the TCC reduces to the quasi-coherent en
 
 ---
 
+## Reducing the cost of the TCC model
+
+The double sum of the TCC model evaluates $\mathrm{TCC}$ once per pair of beams, so it is expensive. Because the image intensity $I(\mathbf R)$ is real, the cost can be roughly halved.
+
+First, beams outside the objective aperture ($A(\mathbf K+\mathbf G)=0$) do not contribute, so it is sufficient to sum **only over the beams inside the aperture ($A=1$)**.
+
+Next, the TCC is Hermitian,
+
+$$\mathrm{TCC}(\mathbf u', \mathbf u) = \mathrm{TCC}(\mathbf u, \mathbf u')^{*}$$
+
+($A$ is real; $E_c, E_s$ are real functions invariant under $\mathbf u\leftrightarrow\mathbf u'$; the phase term $\exp[-i\{\chi(\mathbf u)-\chi(\mathbf u')\}]$ is complex-conjugated). Together with $\exp[2\pi i(\mathbf H-\mathbf G)\cdot\mathbf R]=\bigl(\exp[2\pi i(\mathbf G-\mathbf H)\cdot\mathbf R]\bigr)^{*}$ and $T_{\mathbf h}T_{\mathbf g}^{*}=\bigl(T_{\mathbf g}T_{\mathbf h}^{*}\bigr)^{*}$, the $(\mathbf g,\mathbf h)$ and $(\mathbf h,\mathbf g)$ terms are complex conjugates of each other, so their sum equals twice the real part:
+
+$$F(\mathbf g,\mathbf h) + F(\mathbf h,\mathbf g) = 2\,\mathrm{Re}\{F(\mathbf g,\mathbf h)\}, \qquad F(\mathbf g,\mathbf h) \equiv T_{\mathbf g}T_{\mathbf h}^{*}\,\exp[2\pi i(\mathbf G-\mathbf H)\cdot\mathbf R]\,\mathrm{TCC}(\mathbf K+\mathbf G,\ \mathbf K+\mathbf H)$$
+
+The double sum therefore reduces to the diagonal plus the upper triangle (one side, once an arbitrary ordering is assigned to the beams), halving the number of $\mathrm{TCC}$ evaluations:
+
+$$I(\mathbf R) = \sum_{\mathbf g} |T_{\mathbf g}|^2\,A(\mathbf K+\mathbf G)^2 \;+\; 2\sum_{\mathbf g}\sum_{\mathbf h > \mathbf g} \mathrm{Re}\!\left\{ T_{\mathbf g}T_{\mathbf h}^{*}\,\exp[2\pi i(\mathbf G-\mathbf H)\cdot\mathbf R]\,\mathrm{TCC}(\mathbf K+\mathbf G,\ \mathbf K+\mathbf H)\right\}$$
+
+For the diagonal term $\mathrm{TCC}(\mathbf u,\mathbf u)=A(\mathbf u)^2$, i.e. $|T_{\mathbf g}|^2$ inside the aperture.
+
+Furthermore, the phase factor $\exp[2\pi i(\mathbf G-\mathbf H)\cdot\mathbf R]$ takes the same value many times within this sum. Storing and reusing these values accelerates the computation further.
+
+---
+
 ## See also
 
 - [Dynamical calculation (common core)](calculation.md) — the shared Bloch-wave core and the transmission coefficients $T_{\mathbf g}$

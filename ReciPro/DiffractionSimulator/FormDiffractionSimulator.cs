@@ -2097,14 +2097,17 @@ public partial class FormDiffractionSimulator : FormBase
         FormDiffractionSimulatorDynamicCompression.Visible = true;
     }
 
-    /// <summary>ベーテ法を説明するPDFを表示</summary>
+    /// <summary>ベーテ法(動力学回折)の解説をオンライン付録で開く</summary> // 260604Cl PDF同梱を廃止しGitHub Pages付録へ誘導
     /// <param name="sender"></param>
     /// <param name="e"></param>
     private void basicConceptOfBethesMethodToolStripMenuItem_Click(object sender, EventArgs e)
     {
-        var appPath = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
-        var f = new FormPDF(appPath + @"\doc\bethe.pdf");
-        f.ShowDialog();
+        // 260604Cl bethe.pdf の同梱・表示を廃止。GitHub Pages の動力学回折(Bloch波法)付録を既定ブラウザで開く。
+        //var appPath = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
+        //var f = new FormPDF(appPath + @"\doc\bethe.pdf");
+        //f.ShowDialog();
+        var lang = System.Threading.Thread.CurrentThread.CurrentUICulture.Name == "ja" ? "ja" : "en";
+        Process.Start(new ProcessStartInfo($"https://seto77.github.io/ReciPro/{lang}/appendix/a2-bloch-wave/") { UseShellExecute = true });
     }
 
     /// <summary>プリセットメニュー</summary>

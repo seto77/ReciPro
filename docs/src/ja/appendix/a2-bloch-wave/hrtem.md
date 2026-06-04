@@ -65,6 +65,30 @@ $$E_s(\mathbf u, \mathbf u') = \exp\!\left[-\pi^2\beta^2\left\{\Delta f(\mathbf 
 
 ---
 
+## TCC モデルの計算量削減
+
+TCC モデルの二重和は波の対の数だけ $\mathrm{TCC}$ を評価するため計算量が大きくなりますが、像強度 $I(\mathbf R)$ が実数であることを利用して約半分に削減できます。
+
+まず、対物絞りの外側（$A(\mathbf K+\mathbf G)=0$）の波は寄与しないので、和は **絞りの内側（$A=1$）の波だけ** を対象にすれば十分です。
+
+つぎに $\mathrm{TCC}$ はエルミート対称性
+
+$$\mathrm{TCC}(\mathbf u', \mathbf u) = \mathrm{TCC}(\mathbf u, \mathbf u')^{*}$$
+
+を満たします（$A$ は実数、$E_c, E_s$ は $\mathbf u\leftrightarrow\mathbf u'$ の入れ替えで不変な実関数、位相項 $\exp[-i\{\chi(\mathbf u)-\chi(\mathbf u')\}]$ は複素共役になります）。あわせて $\exp[2\pi i(\mathbf H-\mathbf G)\cdot\mathbf R]=\bigl(\exp[2\pi i(\mathbf G-\mathbf H)\cdot\mathbf R]\bigr)^{*}$、$T_{\mathbf h}T_{\mathbf g}^{*}=\bigl(T_{\mathbf g}T_{\mathbf h}^{*}\bigr)^{*}$ なので、対 $(\mathbf g,\mathbf h)$ と $(\mathbf h,\mathbf g)$ の項は互いに複素共役です。よってその和は実部の 2 倍になります：
+
+$$F(\mathbf g,\mathbf h) + F(\mathbf h,\mathbf g) = 2\,\mathrm{Re}\{F(\mathbf g,\mathbf h)\}, \qquad F(\mathbf g,\mathbf h) \equiv T_{\mathbf g}T_{\mathbf h}^{*}\,\exp[2\pi i(\mathbf G-\mathbf H)\cdot\mathbf R]\,\mathrm{TCC}(\mathbf K+\mathbf G,\ \mathbf K+\mathbf H)$$
+
+これより二重和は対角項と上三角（波に任意の順序を付けたときの片側）だけで表せ、$\mathrm{TCC}$ の評価回数が約半分になります：
+
+$$I(\mathbf R) = \sum_{\mathbf g} |T_{\mathbf g}|^2\,A(\mathbf K+\mathbf G)^2 \;+\; 2\sum_{\mathbf g}\sum_{\mathbf h > \mathbf g} \mathrm{Re}\!\left\{ T_{\mathbf g}T_{\mathbf h}^{*}\,\exp[2\pi i(\mathbf G-\mathbf H)\cdot\mathbf R]\,\mathrm{TCC}(\mathbf K+\mathbf G,\ \mathbf K+\mathbf H)\right\}$$
+
+対角項では $\mathrm{TCC}(\mathbf u,\mathbf u)=A(\mathbf u)^2$ となり、絞りの内側では $|T_{\mathbf g}|^2$ に帰着します。
+
+さらに、この和の中では位相因子 $\exp[2\pi i(\mathbf G-\mathbf H)\cdot\mathbf R]$ が同じ値を何度も取ります。これらを保存して再利用することで、計算をいっそう高速化できます。
+
+---
+
 ## 関連項目
 
 - [動力学計算（共通コア）](calculation.md) — 共通の Bloch 波コアと透過係数 $T_{\mathbf g}$

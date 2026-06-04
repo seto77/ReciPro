@@ -1362,8 +1362,11 @@ public partial class FormImageSimulator : FormBase
     #region その他イベント
     private void DetailsOfHRTEMSimulationToolStripMenuItem_Click(object sender, EventArgs e)
     {
-        var appPath = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
-        new FormPDF(appPath + @"\doc\hrtem.pdf").ShowDialog();
+        // 260604Cl hrtem.pdf の同梱・表示を廃止。GitHub Pages の HRTEM像形成 付録を既定ブラウザで開く。
+        //var appPath = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
+        //new FormPDF(appPath + @"\doc\hrtem.pdf").ShowDialog();
+        var lang = Thread.CurrentThread.CurrentUICulture.Name == "ja" ? "ja" : "en";
+        Process.Start(new ProcessStartInfo($"https://seto77.github.io/ReciPro/{lang}/appendix/a2-bloch-wave/hrtem/") { UseShellExecute = true });
     }
 
 

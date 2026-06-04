@@ -52,9 +52,9 @@ HRTEM像は、試料を透過した電子波が対物レンズの収差の影響
 
 現在の波長と球面収差 $C_s$ から計算される、位相コントラストが最適となる付近のデフォーカス値（参考表示）です。
 
-$$\Delta f_{\text{Scherzer}} = -1.2\,\sqrt{C_s \lambda}$$
+$$\Delta f_{\text{Scherzer}} = -\sqrt{\tfrac{4}{3}\,C_s \lambda}\quad\left(\approx -1.155\,\sqrt{C_s \lambda}\right)$$
 
-この条件では、PCTFが広い空間周波数範囲で負になり、原子位置が暗いコントラストとして得られます。
+この条件では、PCTFが広い空間周波数範囲で負になり、原子位置が暗いコントラストとして得られます。ReciPro はこの原典の Scherzer 値（収差位相 $\chi$ の極小値を $-2\pi/3$ とする条件から導かれる）を採用しており、GUI に表示される値もこの式によります。なお、帯域をさらに広げた *extended Scherzer* 値 $-1.2\sqrt{C_s\lambda}$ を用いる流儀もあります。
 
 ---
 

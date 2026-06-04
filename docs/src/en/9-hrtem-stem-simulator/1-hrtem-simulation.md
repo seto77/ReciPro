@@ -57,7 +57,7 @@ Displayed in the lens-function tab:
 - $E_\text{s}(u)$: spatial coherence envelope
 - $E_\text{c}(u)$: temporal coherence envelope
 
-Scherzer defocus: $\Delta f = -1.2\,\sqrt{C_s \lambda}$, the condition giving a broad negative PCTF band (dark contrast = atom positions).
+Scherzer defocus: $\Delta f = -\sqrt{\tfrac{4}{3}\,C_s \lambda}\ (\approx -1.155\,\sqrt{C_s \lambda})$, the condition giving a broad negative PCTF band (dark contrast = atom positions). ReciPro uses this original Scherzer value — derived by setting the minimum of the aberration phase $\chi$ to $-2\pi/3$ — and the value shown in the GUI follows this formula; some references instead use the *extended Scherzer* value $-1.2\sqrt{C_s\lambda}$.
 
 ---
 

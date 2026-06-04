@@ -90,12 +90,15 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="doc\Bethe.pdf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="doc\Hrtem.pdf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    <!-- 260604Cl: bethe.pdf / hrtem.pdf の出力同梱を廃止。理論解説は GitHub Pages 付録 A2 (動力学回折/Bloch波法) へ移行済みで、
+         アプリ内のボタン (FormDiffractionSimulator / FormImageSimulator) もオンライン付録を開くよう変更した。ファイル自体は doc\ に残す。
+         旧:
+         <Content Include="doc\Bethe.pdf">
+           <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+         </Content>
+         <Content Include="doc\Hrtem.pdf">
+           <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+         </Content> -->
     <!-- 260602Cl: 同梱マニュアルPDF(2023年版)の出力同梱を廃止。マニュアルは GitHub Pages (https://seto77.github.io/ReciPro/) に移行済み。
          旧: <Content Include="doc\ReciProManual(en).pdf"> / <Content Include="doc\ReciProManual(ja).pdf"> (CopyToOutputDirectory=PreserveNewest) -->
     <!-- 260530Cl GPL の ffmpeg DLL 同梱を廃止し Media Foundation へ移行。旧: <Content Include="ffmpeg\*.dll"> -->

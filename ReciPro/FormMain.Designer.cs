@@ -404,8 +404,8 @@
             crystalControl.VisibleBasicInfoTab = true;
             crystalControl.VisibleBondsPolyhedraTab = false;
             crystalControl.VisibleBoundTab = false;
-            crystalControl.VisibleElasticityTab = true;
-            crystalControl.VisibleEOSTab = true;
+            crystalControl.VisibleElasticityTab = false; // 260604Cl 弾性定数タブは ReciPro では非表示。旧: = true
+            crystalControl.VisibleEOSTab = false; // 260604Cl EOS タブは ReciPro では非表示 (状態方程式は PDIndexer 用機能)。旧: = true
             crystalControl.VisibleLatticePlaneTab = false;
             crystalControl.VisiblePolycrystallineTab = false;
             crystalControl.VisibleReferenceTab = true;
