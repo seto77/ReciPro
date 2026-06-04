@@ -7,6 +7,7 @@ internal static class Version
     
     public const string History =
         "History" +
+        "\r\n ver4.936(2026/06/04)  冗長性を排除して、さらに配布サイズを削減." +
         "\r\n ver4.935(2026/06/02)  Added a portable ZIP distribution, improved the manual, and fixed bugs." +
         "\r\n ver4.934(2026/05/30)  Improved the video encoding engine and reduced the distribution size." +
         "\r\n ver4.933(2026/05/29)  Fixed OpenGL rendering corruption on Windows on ARM (x64 emulation)." +

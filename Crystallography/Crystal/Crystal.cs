@@ -412,6 +412,31 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
     public double GrainSize = 100;
 
     public int id = 0;
+
+    //260604Cl Reduce XML size: omit default-valued members on serialize
+    public bool ShouldSerializeReserved() => Reserved;
+    public bool ShouldSerializeResidual() => Residual != 0;
+    public bool ShouldSerializeRotationMatrix() => RotationMatrix == null || !(RotationMatrix.E11 == 1 && RotationMatrix.E22 == 1 && RotationMatrix.E33 == 1 && RotationMatrix.E12 == 0 && RotationMatrix.E13 == 0 && RotationMatrix.E21 == 0 && RotationMatrix.E23 == 0 && RotationMatrix.E31 == 0 && RotationMatrix.E32 == 0);
+    public bool ShouldSerializeStrain() => Strain != null && !(Strain.E11 == 0 && Strain.E12 == 0 && Strain.E13 == 0 && Strain.E21 == 0 && Strain.E22 == 0 && Strain.E23 == 0 && Strain.E31 == 0 && Strain.E32 == 0 && Strain.E33 == 0);
+    public bool ShouldSerializeStress() => Stress != null && !(Stress.E11 == 0 && Stress.E12 == 0 && Stress.E13 == 0 && Stress.E21 == 0 && Stress.E22 == 0 && Stress.E23 == 0 && Stress.E31 == 0 && Stress.E32 == 0 && Stress.E33 == 0);
+    public bool ShouldSerializeHillCoefficient() => HillCoefficient != 0;
+    public bool ShouldSerializeElasticStiffnessArray() => ElasticStiffnessArray != null && System.Array.Exists(ElasticStiffnessArray, v => v != 0);
+    public bool ShouldSerializeBounds() => Bounds != null && Bounds.Length > 0;
+    public bool ShouldSerializeLatticePlanes() => LatticePlanes != null && LatticePlanes.Length > 0;
+    public bool ShouldSerializeDoesUseEOS() => DoesUseEOS;
+    public bool ShouldSerializeAngleResolution() => AngleResolution != 2;
+    public bool ShouldSerializeSubDivision() => SubDivision != 4;
+    public bool ShouldSerializeGrainSize() => GrainSize != 100;
+    public bool ShouldSerializeid() => id != 0;
+    public bool ShouldSerializeNote() => !string.IsNullOrEmpty(Note);
+    public bool ShouldSerializePublAuthorName() => !string.IsNullOrEmpty(PublAuthorName);
+    public bool ShouldSerializePublSectionTitle() => !string.IsNullOrEmpty(PublSectionTitle);
+    public bool ShouldSerializeJournalName() => !string.IsNullOrEmpty(JournalName);
+    public bool ShouldSerializeJournalVolume() => !string.IsNullOrEmpty(JournalVolume);
+    public bool ShouldSerializeJournalIssue() => !string.IsNullOrEmpty(JournalIssue);
+    public bool ShouldSerializeJournalYear() => !string.IsNullOrEmpty(JournalYear);
+    public bool ShouldSerializeJournalPageFirst() => !string.IsNullOrEmpty(JournalPageFirst);
+    public bool ShouldSerializeJournalPageLast() => !string.IsNullOrEmpty(JournalPageLast);
     #endregion
 
     #region MillerBravais指数が可能かどうか

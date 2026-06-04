@@ -91,6 +91,32 @@ public class EOS
     /// <summary>Pressure in GPa</summary>
     public double Pressure { get; set; } = 0;
 
+    //260604Cl Reduce XML size: omit default-valued EOS members on serialize
+    public bool ShouldSerializeEnabled() => Enabled;
+    public bool ShouldSerializeCellVolume0() => CellVolume0 != 0;
+    public bool ShouldSerializeT0() => T0 != 300;
+    public bool ShouldSerializeK0() => K0 != 0;
+    public bool ShouldSerializeKp0() => Kp0 != 0;
+    public bool ShouldSerializeKpInfinity() => KpInfinity != 0;
+    public bool ShouldSerializeKpp0() => Kpp0 != 0;
+    public bool ShouldSerializeVinet3rd_Ita() => Vinet3rd_Ita != 0;
+    public bool ShouldSerializeVinet3rd_Beta() => Vinet3rd_Beta != 0;
+    public bool ShouldSerializeVinet3rd_Psi() => Vinet3rd_Psi != 0;
+    public bool ShouldSerializeGamma0() => Gamma0 != 0;
+    public bool ShouldSerializeTheta0() => Theta0 != 0;
+    public bool ShouldSerializeQ() => Q != 0;
+    public bool ShouldSerializeKperT() => KperT != 0;
+    public bool ShouldSerializeA() => A != 0;
+    public bool ShouldSerializeB() => B != 0;
+    public bool ShouldSerializeC() => C != 0;
+    public bool ShouldSerializeThermalPressureApproach() => ThermalPressureApproach != ThermalPressure.MieGruneisen;
+    public bool ShouldSerializeIsothermalPressureApproach() => IsothermalPressureApproach != IsothermalPressure.BM3;
+    public bool ShouldSerializeZ() => Z != 0;
+    public bool ShouldSerializeZe() => Ze != 0;
+    public bool ShouldSerializeN() => N != 0;
+    public bool ShouldSerializeTemperature() => Temperature != 300;
+    public bool ShouldSerializePressure() => Pressure != 0;
+
     #endregion 
 
     public EOS()

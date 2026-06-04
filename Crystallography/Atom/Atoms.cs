@@ -138,6 +138,24 @@ public class Atoms : System.IEquatable<Atoms>, ICloneable
 
     /// <summary>OpenGLの描画時に有効にするかどうか</summary>
     public bool GLEnabled = true;
+
+    //260604Cl Reduce XML size: omit default-valued render members on serialize
+    public bool ShouldSerializeArgb() => Argb != 0;
+    public bool ShouldSerializeRadius() => Radius != 0.6f;
+    public bool ShouldSerializeAmbient() => Ambient != Material.DefaultTexture.Ambient;
+    public bool ShouldSerializeDiffusion() => Diffusion != Material.DefaultTexture.Diffuse;
+    public bool ShouldSerializeEmission() => Emission != Material.DefaultTexture.Emission;
+    public bool ShouldSerializeShininess() => Shininess != Material.DefaultTexture.SpecularPow;
+    public bool ShouldSerializeSpecular() => Specular != Material.DefaultTexture.Specular;
+    public bool ShouldSerializeShowLabel() => ShowLabel;
+    public bool ShouldSerializeGLEnabled() => !GLEnabled;
+    public bool ShouldSerializeSubNumberXray() => SubNumberXray != 0;
+    public bool ShouldSerializeSubNumberElectron() => SubNumberElectron != 0;
+    public bool ShouldSerializeID() => ID != 0;
+    public bool ShouldSerializeX_err() => X_err != 0;
+    public bool ShouldSerializeY_err() => Y_err != 0;
+    public bool ShouldSerializeZ_err() => Z_err != 0;
+    public bool ShouldSerializeOcc_err() => Occ_err != 0;
     #endregion
 
     #region コンストラクタ
@@ -542,6 +560,24 @@ public class DiffuseScatteringFactor
 
     public bool UseIso { get; set; }
     public Type OriginalType { get; set; } = Type.B;
+
+    //260604Cl Reduce XML size: omit default-valued Dsf members on serialize
+    public bool ShouldSerializeIso() => Iso != 0;
+    public bool ShouldSerializeIso_err() => Iso_err != 0;
+    public bool ShouldSerializeAniso11() => Aniso11 != 0;
+    public bool ShouldSerializeAniso22() => Aniso22 != 0;
+    public bool ShouldSerializeAniso33() => Aniso33 != 0;
+    public bool ShouldSerializeAniso12() => Aniso12 != 0;
+    public bool ShouldSerializeAniso23() => Aniso23 != 0;
+    public bool ShouldSerializeAniso31() => Aniso31 != 0;
+    public bool ShouldSerializeAniso11_err() => Aniso11_err != 0;
+    public bool ShouldSerializeAniso22_err() => Aniso22_err != 0;
+    public bool ShouldSerializeAniso33_err() => Aniso33_err != 0;
+    public bool ShouldSerializeAniso12_err() => Aniso12_err != 0;
+    public bool ShouldSerializeAniso23_err() => Aniso23_err != 0;
+    public bool ShouldSerializeAniso31_err() => Aniso31_err != 0;
+    public bool ShouldSerializeUseIso() => UseIso;
+    public bool ShouldSerializeOriginalType() => OriginalType != Type.B;
 
     [XmlIgnore]
     public (double A, double B, double C, double Alpha, double Beta, double Gamma) Cell
