@@ -733,9 +733,7 @@ new ([-0.01,-0.005,0,0.005,0.01,0.015,0.02,0.025,0.03,0.035,0.04,0.045,0.05,0.05
     {
         if (SplineAuJamieson == null)
         {
-            InitializeSpline(ref SplineAuJamieson, AuJamieson);
-            string code = deveropper(SplineAuJamieson);
-            Clipboard.SetDataObject(code, true);
+            InitializeSpline(ref SplineAuJamieson, AuJamieson); // 260604Cl lazy 初期化 (旧: deveropper+Clipboard で係数を焼き込む開発コードを除去)
         }
         return GetPressureFromSplineMethods(SplineAuJamieson, 1 - a * a * a / a0 / a0 / a0, T);
     }
@@ -806,9 +804,7 @@ new( [-0.01,-0.005,0,0.005,0.01,0.015,0.02,0.025,0.03,0.035,0.04,0.045,0.05,0.05
     {
         if (SplinePtJamieson == null)
         {
-            InitializeSpline(ref SplinePtJamieson, PtJamieson);
-            string code = deveropper(SplinePtJamieson);
-            Clipboard.SetDataObject(code, true);
+            InitializeSpline(ref SplinePtJamieson, PtJamieson); // 260604Cl lazy 初期化 (deveropper+Clipboard 焼き込みコード除去)
         }
         return GetPressureFromSplineMethods(SplinePtJamieson, 1 - v * v * v / v0 / v0 / v0, T);
     }
@@ -881,9 +877,7 @@ new( [-0.01,-0.005,0,0.005,0.01,0.015,0.02,0.025,0.03,0.035,0.04,0.045,0.05,0.05
     {
         if (SplineMgOJamieson == null)
         {
-            InitializeSpline(ref SplineMgOJamieson, MgOJamieson);
-            string code = deveropper(SplineMgOJamieson);
-            Clipboard.SetDataObject(code, true);
+            InitializeSpline(ref SplineMgOJamieson, MgOJamieson); // 260604Cl lazy 初期化 (deveropper+Clipboard 焼き込みコード除去。MgO は元々 lazy=初回利用時のクリップボード奪取も解消)
         }
         return GetPressureFromSplineMethods(SplineMgOJamieson, 1 - v * v * v / v0 / v0 / v0, T);
     }
@@ -975,9 +969,7 @@ new ( [-0.1699,-0.1602,-0.1405,-0.121,-0.1013,-0.0818,-0.0671,-0.0524,-0.0426,-0
     {
         if (SplineBrown == null)
         {
-            InitializeSpline(ref SplineBrown, Brown);
-            string code = deveropper(SplineBrown);
-            Clipboard.SetDataObject(code, true);
+            InitializeSpline(ref SplineBrown, Brown); // 260604Cl lazy 初期化 (deveropper+Clipboard 焼き込みコード除去)
         }
         return GetPressureFromSplineMethods(SplineBrown, 1 - v * v * v / v0 / v0 / v0, T);
     }
@@ -1019,9 +1011,7 @@ new ( [0,0.02,0.04,0.06,0.08,0.1,0.12,0.14,0.16,0.18,0.2,0.22,0.24,0.26,0.28,0.3
     {
         if (SplineTsuchiya == null)
         {
-            InitializeSpline(ref SplineTsuchiya, Tsuchiya);
-            string code = deveropper(SplineTsuchiya);
-            Clipboard.SetDataObject(code, true);
+            InitializeSpline(ref SplineTsuchiya, Tsuchiya); // 260604Cl lazy 初期化 (deveropper+Clipboard 焼き込みコード除去)
         }
         return GetPressureFromSplineMethods(SplineTsuchiya, 1 - a * a * a / a0 / a0 / a0, T);
     }
@@ -1068,9 +1058,7 @@ new ( [0,0.01,0.02,0.03,0.04,0.05,0.06,0.07,0.08,0.09,0.1,0.11,0.12,0.13,0.14,0.
     {
         if (SplineZha == null)
         {
-            InitializeSpline(ref SplineZha, Zha);
-            string code = deveropper(SplineZha);
-            Clipboard.SetDataObject(code, true);
+            InitializeSpline(ref SplineZha, Zha); // 260604Cl lazy 初期化 (deveropper+Clipboard 焼き込みコード除去)
         }
         return GetPressureFromSplineMethods(SplineZha, 1 - v / v0, T);
     }
@@ -1219,9 +1207,7 @@ new( [0.08,0.1,0.12,0.14,0.16,0.18,0.2,0.22,0.24,0.26,0.28,0.3,0.32,0.34,0.36,0.
     {
         if (SplineAuYokoo == null)
         {
-            InitializeSpline(ref SplineAuYokoo, Table_Au_Yokoo);
-            string code = deveropper(SplineAuYokoo);
-            Clipboard.SetDataObject(code, true);
+            InitializeSpline(ref SplineAuYokoo, Table_Au_Yokoo); // 260604Cl lazy 初期化 (deveropper+Clipboard 焼き込みコード除去)
         }
         return GetPressureFromSplineMethods(SplineAuYokoo, 1 - v / v0, T);
         /*
@@ -1302,9 +1288,7 @@ new( [0,0.02,0.04,0.06,0.08,0.1,0.12,0.14,0.16,0.18,0.2,0.22,0.24,0.26,0.28,0.3,
     {
         if (SplinePtYokoo == null)
         {
-            InitializeSpline(ref SplinePtYokoo, Table_Pt_Yokoo);
-            string code = deveropper(SplinePtYokoo);
-            Clipboard.SetDataObject(code, true);
+            InitializeSpline(ref SplinePtYokoo, Table_Pt_Yokoo); // 260604Cl lazy 初期化 (deveropper+Clipboard 焼き込みコード除去)
         }
         return GetPressureFromSplineMethods(SplinePtYokoo, 1 - v / v0, T);
     }
@@ -1391,6 +1375,13 @@ new([4.5, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19], [0, 0, -438.37
         return deltaPth + Pst;
     }
 
+    // 260604Cl ★新しい EOS 材料データの追加手順（係数の焼き込み不要）:
+    //   (1) パラメタ表  private static readonly double[][] NewTable = [ ... ];  を追加
+    //   (2) private static Spline[] SplineNew;  を null のまま宣言
+    //   (3) 公開メソッド先頭で  if (SplineNew == null) InitializeSpline(ref SplineNew, NewTable);
+    //       のあと  return GetPressureFromSplineMethods(SplineNew, x, T);
+    //   スプライン係数は初回呼び出し時にこの InitializeSpline で実行時構築される（per-material lazy）。
+    //   旧来の deveropper()+Clipboard で係数文字列を生成して貼り戻す焼き込み作業は廃止した（260604Cl）。
     //与えられたパラメータから温度ごとのスプライン曲線を設定する関数
     private static void InitializeSpline(ref Spline[] Splines, double[][] param)
     {
@@ -1417,33 +1408,4 @@ new([4.5, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19], [0, 0, -438.37
         return Spline.GetSpline(p).GetValue(T);
     }
 
-    //以下は開発用の関数でSpline[] 型の初期化コードを吐き出してくれる
-    //260317Cl 変更: string連結 → StringBuilder
-    private static string deveropper(Spline[] s)
-    {
-        var sb = new System.Text.StringBuilder();
-
-        sb.Append("= new Spline[]{\r\n");
-
-        for (int i = 0; i < s.Length; i++)
-        {
-            sb.Append("new Spline( ");
-
-            sb.Append("new double[]{");
-            for (int j = 0; j < s[i].p.Length - 1; j++)
-                sb.Append(s[i].p[j]).Append(',');
-            sb.Append(s[i].p[^1]).Append("},");
-
-            sb.Append("new double[]{");
-            for (int j = 0; j < s[i].c.Length - 1; j++)
-                sb.Append(s[i].c[j]).Append(',');
-            sb.Append(s[i].c[^1]).Append("},");
-
-            if (i != s.Length - 1)
-                sb.Append(s[i].T).Append("),\r\n");
-            else
-                sb.Append(s[i].T).Append(") };\r\n");
-        }
-        return sb.ToString();
-    }
 }
