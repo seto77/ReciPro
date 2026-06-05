@@ -1309,30 +1309,61 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
                 gList.RemoveRange(0, i);
         }
         VectorOfG = new Vector3D[gList.Count * 2];
-        Parallel.For(0, gList.Count, i =>
-        {
-            var (key, x, y, z, glen) = gList[i];
-            var (h, k, l) = decomposeKey(key);
-            //260605Cl CheckExtinctionRule(string[]・毎回割り当て)→GetFirstExtinctionRule(string・割り当て無し)、Extinction→ExtinctionRule
-            //var extinction = Symmetry.CheckExtinctionRule(h, k, l);
-            //VectorOfG[i * 2] = new Vector3D(x, y, z, false) { Index = (h, k, l), d = 1 / glen, Extinction = extinction, Text = $"{h} {k} {l}" };
-            //VectorOfG[i * 2 + 1] = new Vector3D(-x, -y, -z, false) { Index = (-h, -k, -l), d = 1 / glen, Extinction = extinction, Text = $"{-h} {-k} {-l}" };
-            var rule = Symmetry.GetFirstExtinctionRule(h, k, l);
-            VectorOfG[i * 2] = new Vector3D(x, y, z, false) { Index = (h, k, l), d = 1 / glen, ExtinctionRule = rule, Text = $"{h} {k} {l}" };
-            VectorOfG[i * 2 + 1] = new Vector3D(-x, -y, -z, false) { Index = (-h, -k, -l), d = 1 / glen, ExtinctionRule = rule, Text = $"{-h} {-k} {-l}" };
-        });
-
-        if (VectorOfG != null && VectorOfG.Length > 0 && wavesource != WaveSource.None)//強度計算する場合 250msくらい
-        {
-            Parallel.ForEach(VectorOfG, _g =>
+        //260605Cl 生成・F計算・最大値reductionを1つの Parallel.For に融合(旧: 生成→F→Max→正規化の最大4走査 → 2走査)。
+        // Xray/Electron は散乱因子が実数 → F(-G)=conj(F(G)) が解析的に厳密(異方性ADP含む)なので -側を Conjugate で埋め、構造因子計算をほぼ半減。
+        // Neutron は複素散乱長があり得るため両側を別計算する。globalMax>0 ガードで旧 0/0=NaN を回避。
+        //【旧実装(commit 442e0d90)】
+        //Parallel.For(0, gList.Count, i => {
+        //    var (key, x, y, z, glen) = gList[i]; var (h, k, l) = decomposeKey(key);
+        //    var rule = Symmetry.GetFirstExtinctionRule(h, k, l);
+        //    VectorOfG[i*2]   = new Vector3D(x, y, z, false)    { Index=(h,k,l),    d=1/glen, ExtinctionRule=rule, Text=$"{h} {k} {l}" };
+        //    VectorOfG[i*2+1] = new Vector3D(-x, -y, -z, false) { Index=(-h,-k,-l), d=1/glen, ExtinctionRule=rule, Text=$"{-h} {-k} {-l}" };
+        //});
+        //if (VectorOfG != null && VectorOfG.Length > 0 && wavesource != WaveSource.None) {
+        //    Parallel.ForEach(VectorOfG, _g => { _g.F = _g.ExtinctionRule is null ? GetStructureFactor(wavesource, Atoms, _g.Index, _g.Length2 / 4.0) : 0; _g.RawIntensity = _g.F.MagnitudeSquared(); });
+        //    var maxIntensity = VectorOfG.Max(v => v.RawIntensity);
+        //    Parallel.ForEach(VectorOfG, _g => _g.RelativeIntensity = _g.RawIntensity / maxIntensity);
+        //}
+        bool calcF = wavesource != WaveSource.None;
+        bool conjugateMinus = calcF && wavesource != WaveSource.Neutron;//Xray/Electron は実数散乱因子 → -側は共役で代用
+        double globalMax = 0;
+        var maxLock = new Lock();
+        Parallel.For(0, gList.Count,
+            () => 0.0,
+            (i, _, localMax) =>
             {
-                _g.F = _g.ExtinctionRule is null ? GetStructureFactor(wavesource, Atoms, _g.Index, _g.Length2 / 4.0) : 0;//260605Cl 旧: _g.Extinction.Length == 0
-                _g.RawIntensity = _g.F.MagnitudeSquared();// _g.F.Magnitude2();
-            });
+                var (key, x, y, z, glen) = gList[i];
+                var (h, k, l) = decomposeKey(key);
+                var rule = Symmetry.GetFirstExtinctionRule(h, k, l);
+                var plus = new Vector3D(x, y, z, false) { Index = (h, k, l), d = 1 / glen, ExtinctionRule = rule, Text = $"{h} {k} {l}" };
+                var minus = new Vector3D(-x, -y, -z, false) { Index = (-h, -k, -l), d = 1 / glen, ExtinctionRule = rule, Text = $"{-h} {-k} {-l}" };
+                if (calcF && rule is null)//禁制でない反射のみ構造因子を計算(禁制は F=0, RawIntensity=0 のまま)
+                {
+                    var f = GetStructureFactor(wavesource, Atoms, (h, k, l), plus.Length2 / 4.0);//旧経路と同式(=x*x+y*y+z*z)で +側 bit 一致
+                    plus.F = f;
+                    plus.RawIntensity = f.MagnitudeSquared();
+                    if (conjugateMinus)
+                    {
+                        minus.F = Complex.Conjugate(f);
+                        minus.RawIntensity = plus.RawIntensity;//|conj(f)|^2 == |f|^2
+                    }
+                    else//Neutron は両側別計算
+                    {
+                        var fm = GetStructureFactor(wavesource, Atoms, (-h, -k, -l), minus.Length2 / 4.0);
+                        minus.F = fm;
+                        minus.RawIntensity = fm.MagnitudeSquared();
+                    }
+                    if (plus.RawIntensity > localMax) localMax = plus.RawIntensity;
+                    if (minus.RawIntensity > localMax) localMax = minus.RawIntensity;
+                }
+                VectorOfG[i * 2] = plus;
+                VectorOfG[i * 2 + 1] = minus;
+                return localMax;
+            },
+            localMax => { lock (maxLock) { if (localMax > globalMax) globalMax = localMax; } });
 
-            var maxIntensity = VectorOfG.Max(v => v.RawIntensity);
-            Parallel.ForEach(VectorOfG, _g => _g.RelativeIntensity = _g.RawIntensity / maxIntensity);
-        }
+        if (calcF && globalMax > 0)//全0(全禁制/全ゼロF)なら正規化スキップ → 旧 0/0=NaN を回避(RelativeIntensity は既定1のまま)
+            Parallel.ForEach(VectorOfG, _g => _g.RelativeIntensity = _g.RawIntensity / globalMax);
         VectorOfG_P = VectorOfG.AsParallel();
     }
 
