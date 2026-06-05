@@ -1955,13 +1955,13 @@ public partial class FormEBSD : FormBase
 
         var latticeType = crystal.Symmetry.LatticeTypeStr;
 
-        foreach (var gtemp in crystal.VectorOfG.Where(g => g.Extinction.Length == 0))
+        foreach (var gtemp in crystal.VectorOfG.Where(g => g.ExtinctionRule is null))//260605Cl 旧: g.Extinction.Length == 0
             gtemp.Flag1 = true;
 
-        foreach (var gtemp in crystal.VectorOfG.Where(g => g.Extinction.Length > 0 && g.Extinction[0] == latticeType))
+        foreach (var gtemp in crystal.VectorOfG.Where(g => g.ExtinctionRule != null && g.ExtinctionRule == latticeType))//260605Cl 旧: g.Extinction.Length > 0 && g.Extinction[0] == latticeType
             gtemp.Flag1 = false;
 
-        foreach (var gtemp in crystal.VectorOfG.Where(g => g.Extinction.Length > 0 && g.Extinction[0] != latticeType))
+        foreach (var gtemp in crystal.VectorOfG.Where(g => g.ExtinctionRule != null && g.ExtinctionRule != latticeType))//260605Cl 旧: g.Extinction.Length > 0 && g.Extinction[0] != latticeType
             gtemp.Flag1 = false;
 
         if (radioButtonKikuchiThresholdOfLength.Checked)

@@ -1626,12 +1626,12 @@ public partial class FormDiffractionSimulator : FormBase
                 var screwGlideColor = colorControlScrewGlide.Color.ToArgb();
                 foreach (var gtemp in crystal.VectorOfG)
                 {
-                    if (gtemp.Extinction.Length == 0)
+                    if (gtemp.ExtinctionRule is null)//260605Cl 旧: gtemp.Extinction.Length == 0
                     {
                         gtemp.Flag1 = true;
                         gtemp.Argb = noConditionColor;
                     }
-                    else if (gtemp.Extinction[0] == latticeType)
+                    else if (gtemp.ExtinctionRule == latticeType)//260605Cl 旧: gtemp.Extinction[0] == latticeType
                     {
                         gtemp.Flag1 = !checkBoxExtinctionLattice.Checked;
                         gtemp.Argb = latticeColor;
@@ -3089,9 +3089,9 @@ public partial class FormDiffractionSimulator : FormBase
                 var col = colFar; ;
                 if (radioButtonIntensityExcitation.Checked)
                 {
-                    if (g.Extinction.Length == 0)
+                    if (g.ExtinctionRule is null)//260605Cl 旧: g.Extinction.Length == 0
                         col = colGeneral;
-                    else if (g.Extinction[0].Length == 1)
+                    else if (g.ExtinctionRule.Length == 1)//260605Cl 旧: g.Extinction[0].Length == 1
                     {
                         if (checkBoxExtinctionLattice.Checked)
                             return;
