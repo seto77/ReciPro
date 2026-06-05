@@ -1022,7 +1022,7 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
                             var root = SymmetryStatic.IsRootPlane((h, k, l), Symmetry, out var indices);
                             //var extinction = Symmetry.CheckExtinctionRule(h, k, l);
                             // (260322Ch) 禁制面を除外しない場合は消滅則チェックを省略して割り当てを減らす
-                            var hasExtinction = excludeForbiddenPlane && Symmetry.CheckExtinctionRule(h, k, l).Length != 0;
+                            var hasExtinction = excludeForbiddenPlane && Symmetry.HasExtinction(h, k, l);//260605Cl 旧: CheckExtinctionRule(h,k,l).Length != 0 (bool判定のみなので割り当て無しのHasExtinctionへ)
                             if ((!excludeEquivalentPlane || root) && !hasExtinction)
                             {
                                 listPlane.Add(new Plane
@@ -1313,16 +1313,20 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
         {
             var (key, x, y, z, glen) = gList[i];
             var (h, k, l) = decomposeKey(key);
-            var extinction = Symmetry.CheckExtinctionRule(h, k, l);
-            VectorOfG[i * 2] = new Vector3D(x, y, z, false) { Index = (h, k, l), d = 1 / glen, Extinction = extinction, Text = $"{h} {k} {l}" };
-            VectorOfG[i * 2 + 1] = new Vector3D(-x, -y, -z, false) { Index = (-h, -k, -l), d = 1 / glen, Extinction = extinction, Text = $"{-h} {-k} {-l}" };
+            //260605Cl CheckExtinctionRule(string[]・毎回割り当て)→GetFirstExtinctionRule(string・割り当て無し)、Extinction→ExtinctionRule
+            //var extinction = Symmetry.CheckExtinctionRule(h, k, l);
+            //VectorOfG[i * 2] = new Vector3D(x, y, z, false) { Index = (h, k, l), d = 1 / glen, Extinction = extinction, Text = $"{h} {k} {l}" };
+            //VectorOfG[i * 2 + 1] = new Vector3D(-x, -y, -z, false) { Index = (-h, -k, -l), d = 1 / glen, Extinction = extinction, Text = $"{-h} {-k} {-l}" };
+            var rule = Symmetry.GetFirstExtinctionRule(h, k, l);
+            VectorOfG[i * 2] = new Vector3D(x, y, z, false) { Index = (h, k, l), d = 1 / glen, ExtinctionRule = rule, Text = $"{h} {k} {l}" };
+            VectorOfG[i * 2 + 1] = new Vector3D(-x, -y, -z, false) { Index = (-h, -k, -l), d = 1 / glen, ExtinctionRule = rule, Text = $"{-h} {-k} {-l}" };
         });
 
         if (VectorOfG != null && VectorOfG.Length > 0 && wavesource != WaveSource.None)//強度計算する場合 250msくらい
         {
             Parallel.ForEach(VectorOfG, _g =>
             {
-                _g.F = _g.Extinction.Length == 0 ? GetStructureFactor(wavesource, Atoms, _g.Index, _g.Length2 / 4.0) : 0;
+                _g.F = _g.ExtinctionRule is null ? GetStructureFactor(wavesource, Atoms, _g.Index, _g.Length2 / 4.0) : 0;//260605Cl 旧: _g.Extinction.Length == 0
                 _g.RawIntensity = _g.F.MagnitudeSquared();// _g.F.Magnitude2();
             });
 
@@ -1354,7 +1358,7 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
                         temp.d = 1 / temp.Length;
                         temp.Text = $"{h} {k} {l}";
                         temp.Index = (h, k, l);
-                        temp.Extinction = Symmetry.CheckExtinctionRule(h, k, l);
+                        temp.ExtinctionRule = Symmetry.GetFirstExtinctionRule(h, k, l);//260605Cl 旧: temp.Extinction = Symmetry.CheckExtinctionRule(h, k, l)
 
                         VectorOfG_KikuchiLine.Add(temp);
                     }
@@ -1365,7 +1369,7 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
 
         Parallel.ForEach(VectorOfG_KikuchiLine, _g =>
         {
-            _g.F = _g.Extinction.Length == 0 ? GetStructureFactor(wavesource, Atoms, _g.Index, _g.Length2 / 4.0) : 0;
+            _g.F = _g.ExtinctionRule is null ? GetStructureFactor(wavesource, Atoms, _g.Index, _g.Length2 / 4.0) : 0;//260605Cl 旧: _g.Extinction.Length == 0
             _g.RawIntensity = _g.F.MagnitudeSquared();// _g.F.Magnitude2();
         });
 
@@ -1408,7 +1412,7 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
                         outer.Add((h, k, l, gLen));
 
                         if (SymmetryStatic.IsRootPlane((h, k, l), Symmetry, out var indices))
-                            if (Symmetry.CheckExtinctionRule(h, k, l).Length == 0)
+                            if (!Symmetry.HasExtinction(h, k, l))//260605Cl 旧: Symmetry.CheckExtinctionRule(h, k, l).Length == 0
                             {
                                 double sinTheta = waveLength / 2 * gLen, twoTheta = 2 * Math.Asin(sinTheta), cosTwoTheta = 1 - 2 * sinTheta * sinTheta, sinTwoTheta = Math.Sin(twoTheta);
                                 var F2 = GetStructureFactor(WaveSource.Xray, Atoms, (h, k, l), gLen2 / 4.0).MagnitudeSquared();

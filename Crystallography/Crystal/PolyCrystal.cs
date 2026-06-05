@@ -185,13 +185,13 @@ public class Crystallite
         foreach (var g in crystal.VectorOfG)
             if (removeZeroIntensity)
             {
-                if (g.Extinction.Length == 0)
+                if (g.ExtinctionRule is null)//260605Cl 旧: g.Extinction.Length == 0
                     temp.Add(g);
             }
             else
             {
-                var s = g.Extinction;
-                if (s.Length == 0 || (s[0] != "I" && s[0] != "F" && s[0] != "A" && s[0] != "B" && s[0] != "C" && s[0] != "R"))
+                var s = g.ExtinctionRule;//260605Cl 旧: var s = g.Extinction (string[]) → ExtinctionRule (string)
+                if (s is null || (s != "I" && s != "F" && s != "A" && s != "B" && s != "C" && s != "R"))//260605Cl 旧: s.Length == 0 || (s[0] != "I" && ...)
                     temp.Add(g);
             }
 
