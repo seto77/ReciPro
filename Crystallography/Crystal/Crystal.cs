@@ -41,16 +41,27 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
     {
         if (o == null)
             return false;
-        if (A == o.A && B == o.B && C == o.C && Alpha == o.Alpha && Beta == o.Beta && Gamma == o.Gamma &&
-                   SymmetrySeriesNumber == o.SymmetrySeriesNumber && Name == o.Name && JournalName == o.JournalName && PublSectionTitle == o.PublSectionTitle && JournalName == o.JournalName && ChemicalFormulaSum == o.ChemicalFormulaSum
-                   && Density == o.Density)
-            if (Atoms.Length == o.Atoms.Length)
-                for (int l = 0; l < Atoms.Length; l++)
-                    if (Atoms[l].X == o.Atoms[l].X && Atoms[l].Y == o.Atoms[l].Y && Atoms[l].Z == o.Atoms[l].Z &&
-                        Atoms[l].Occ == o.Atoms[l].Occ && Atoms[l].Label == o.Atoms[l].Label && Atoms[l].SubNumberElectron == o.Atoms[l].SubNumberElectron)
-                        return true;
-        return false;
-
+        // 260605Cl 旧実装は最初の1原子が一致した時点で return true となり、全原子一致を確認していなかった（バグ）。
+        //if (A == o.A && B == o.B && C == o.C && Alpha == o.Alpha && Beta == o.Beta && Gamma == o.Gamma &&
+        //           SymmetrySeriesNumber == o.SymmetrySeriesNumber && Name == o.Name && JournalName == o.JournalName && PublSectionTitle == o.PublSectionTitle && JournalName == o.JournalName && ChemicalFormulaSum == o.ChemicalFormulaSum
+        //           && Density == o.Density)
+        //    if (Atoms.Length == o.Atoms.Length)
+        //        for (int l = 0; l < Atoms.Length; l++)
+        //            if (Atoms[l].X == o.Atoms[l].X && Atoms[l].Y == o.Atoms[l].Y && Atoms[l].Z == o.Atoms[l].Z &&
+        //                Atoms[l].Occ == o.Atoms[l].Occ && Atoms[l].Label == o.Atoms[l].Label && Atoms[l].SubNumberElectron == o.Atoms[l].SubNumberElectron)
+        //                return true;
+        //return false;
+        if (A != o.A || B != o.B || C != o.C || Alpha != o.Alpha || Beta != o.Beta || Gamma != o.Gamma ||
+            SymmetrySeriesNumber != o.SymmetrySeriesNumber || Name != o.Name || JournalName != o.JournalName ||
+            PublSectionTitle != o.PublSectionTitle || ChemicalFormulaSum != o.ChemicalFormulaSum || Density != o.Density)
+            return false;
+        if (Atoms.Length != o.Atoms.Length)
+            return false;
+        for (int l = 0; l < Atoms.Length; l++)
+            if (Atoms[l].X != o.Atoms[l].X || Atoms[l].Y != o.Atoms[l].Y || Atoms[l].Z != o.Atoms[l].Z ||
+                Atoms[l].Occ != o.Atoms[l].Occ || Atoms[l].Label != o.Atoms[l].Label || Atoms[l].SubNumberElectron != o.Atoms[l].SubNumberElectron)
+                return false;
+        return true;
     }
     public override bool Equals(object obj)
     {
@@ -62,7 +73,10 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
 
     public override int GetHashCode()
     {
-        return new { CellValue, Atoms, JournalInformation }.GetHashCode();
+        // 260605Cl 旧実装は Atoms 配列の参照ハッシュを含むため、内容が等しい結晶でも別ハッシュになり Equals と非整合だった。
+        // Equals が一致を要求するフィールドのみで構成し、配列参照を排除して整合性とゼロ割り当てを確保する。
+        //return new { CellValue, Atoms, JournalInformation }.GetHashCode();
+        return HashCode.Combine(A, B, C, Alpha, Beta, Gamma, SymmetrySeriesNumber, Atoms.Length);
     }
 
     public static bool operator ==(Crystal left, Crystal right)
@@ -1462,6 +1476,8 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
                 var temp = new Atoms[Atoms.Length - 1];
                 Array.Copy(Atoms, 0, temp, 0, i);
                 Array.Copy(Atoms, i + 1, temp, i, temp.Length - i);
+                Atoms = temp;//260605Cl Atoms = temp が欠落しており削除が無反映だったバグを修正
+                AtomsP = Atoms.AsParallel();//260605Cl 公開フィールドの一貫性維持のため更新
                 GetFormulaAndDensity();
                 return true;
             }

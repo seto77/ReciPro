@@ -119,14 +119,49 @@ public readonly struct Symmetry
         if (CheckExtinctionFunc is not { Count: > 0 })
             return [];
 
-        var result = new List<string>(CheckExtinctionFunc.Count);
+        // 260605Cl 消滅則に1つもヒットしない反射(大多数)で List と zero-length 配列を毎回確保していたのを回避。
+        // 最初のヒットまで List を作らず、ヒット0なら Array.Empty<string>() ([]) を返す。
+        //var result = new List<string>(CheckExtinctionFunc.Count);
+        //foreach (var check in CheckExtinctionFunc)
+        //{
+        //    var rule = check(h, k, l);
+        //    if (rule != null)
+        //        result.Add(rule);
+        //}
+        //return [.. result];
+        List<string> result = null;
         foreach (var check in CheckExtinctionFunc)
         {
             var rule = check(h, k, l);
             if (rule != null)
-                result.Add(rule);
+                (result ??= new List<string>(CheckExtinctionFunc.Count)).Add(rule);
         }
-        return [.. result];
+        return result is null ? [] : [.. result];
+    }
+
+    /// <summary>消滅則に抵触するか(=禁制反射か)を割り当てなしで判定する。CheckExtinctionRule(h,k,l).Length != 0 と同値。260605Cl 追加</summary>
+    public readonly bool HasExtinction(int h, int k, int l)
+    {
+        if (CheckExtinctionFunc is not { Count: > 0 })
+            return false;
+        foreach (var check in CheckExtinctionFunc)
+            if (check(h, k, l) != null)
+                return true;
+        return false;
+    }
+
+    /// <summary>最初に抵触した消滅則の文字列を返す(なければ null)。割り当てなし。CheckExtinctionRule(h,k,l) の先頭要素に相当。260605Cl 追加</summary>
+    public readonly string GetFirstExtinctionRule(int h, int k, int l)
+    {
+        if (CheckExtinctionFunc is not { Count: > 0 })
+            return null;
+        foreach (var check in CheckExtinctionFunc)
+        {
+            var rule = check(h, k, l);
+            if (rule != null)
+                return rule;
+        }
+        return null;
     }
     #endregion
 
