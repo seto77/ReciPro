@@ -891,8 +891,20 @@ public class Vector3D : Vector3DBase, IComparable<Vector3D>, ICloneable
     /// <summary>初期値は false</summary>
     public bool Flag2 { get; set; } = false;
 
+    // 260605Cl Extinction(string[]) を ExtinctionRule(string 単数)に縮約。
+    // 全消費側(Crystal/PolyCrystal/FormDiffractionSimulator/FormEBSD)は .Length(==0/>0) と [0] のみ参照していた
+    // (消滅則は反転に対し中心対称・先頭要素=格子型 "A/B/C/I/F/R")。Vector3D は [Serializable] のため backing field を NonSerialized 化。
     [XmlIgnore]
-    public string[] Extinction { get; set; }
+    [field: NonSerialized]
+    public string ExtinctionRule { get; set; }
+
+    // 260605Cl 後方互換の委譲プロパティ(旧 string[] Extinction)。消費側移行後に [Obsolete]/削除予定。
+    [XmlIgnore]
+    public string[] Extinction
+    {
+        get => ExtinctionRule is null ? [] : [ExtinctionRule];
+        set => ExtinctionRule = value is { Length: > 0 } ? value[0] : null;
+    }
 
     public int Argb { get; set; }
 
