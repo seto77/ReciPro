@@ -1089,72 +1089,38 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
 
         if (combineAdjacentPeak)//d値の近いピークを結合する
         {
-            if (horizontalAxis == HorizontalAxis.Angle && horizontalThreshold > 0 && horizontalParameter > 0) //閾値が角度の場合
-            {
-                double minDif = double.PositiveInfinity;
-                do
-                {
-                    minDif = double.PositiveInfinity;
-                    int k = 0;
-                    for (int i = 0; i < listPlane.Count - 1; i++)
-                        if (minDif > Math.Abs(Math.Asin(horizontalParameter / listPlane[i].d / 2.0) * 2 - Math.Asin(horizontalParameter / listPlane[i + 1].d / 2.0) * 2))
-                        {
-                            minDif = Math.Abs(Math.Asin(horizontalParameter / listPlane[i].d / 2.0) * 2 - Math.Asin(horizontalParameter / listPlane[i + 1].d / 2.0) * 2);
-                            k = i;
-                        }
-                    if (minDif < horizontalThreshold)
-                    {
-                        listPlane[k].d = (listPlane[k].d + listPlane[k + 1].d) / 2.0;
-                        listPlane[k].strHKL += " + " + listPlane[k + 1].strHKL;
-                        int[] multiplisity = new int[listPlane[k].Multi.Length + listPlane[k + 1].Multi.Length];
-                        listPlane[k].Multi.CopyTo(multiplisity, 0);
-                        listPlane[k + 1].Multi.CopyTo(multiplisity, listPlane[k].Multi.Length);
-                        listPlane[k].Multi = multiplisity;
-
-                        listPlane.RemoveAt(k + 1);
-                    }
-                } while (minDif < horizontalThreshold);
-            }
-            else if (horizontalAxis == HorizontalAxis.EnergyXray && horizontalThreshold > 0 && horizontalParameter > 0)//Energyの場合
-            {
-                double minDif = double.PositiveInfinity;
-                do
-                {
-                    minDif = double.PositiveInfinity;
-                    int k = 0;
-                    for (int i = 0; i < listPlane.Count - 1; i++)
-                        if (minDif > Math.Abs(UniversalConstants.Convert.DspacingToXrayEnergy(listPlane[i].d, horizontalParameter) - UniversalConstants.Convert.DspacingToXrayEnergy(listPlane[i + 1].d, horizontalParameter)))
-                        {
-                            minDif = Math.Abs(UniversalConstants.Convert.DspacingToXrayEnergy(listPlane[i].d, horizontalParameter) - UniversalConstants.Convert.DspacingToXrayEnergy(listPlane[i + 1].d, horizontalParameter));
-                            k = i;
-                        }
-                    if (minDif < horizontalThreshold)
-                    {
-                        listPlane[k].d = (listPlane[k].d + listPlane[k + 1].d) / 2.0;
-                        listPlane[k].strHKL += " + " + listPlane[k + 1].strHKL;
-                        int[] multiplisity = new int[listPlane[k].Multi.Length + listPlane[k + 1].Multi.Length];
-                        listPlane[k].Multi.CopyTo(multiplisity, 0);
-                        listPlane[k + 1].Multi.CopyTo(multiplisity, listPlane[k].Multi.Length);
-                        listPlane[k].Multi = multiplisity;
-
-                        listPlane.RemoveAt(k + 1);
-                    }
-                } while (minDif < horizontalThreshold);
-            }
+            //260605Cl Angle/EnergyXray/d の3ブロック(ほぼ同一・各約25行)を、横軸メトリックの delegate と inclusive(<=)フラグで1ループに統合。
+            // 変更前の3ブロックは git 履歴(commit 2b6a29d4)参照。メトリック式は旧と同式・同順、最小ペア選択のタイブレーク(先勝ち)、
+            // 終了条件(Angle/EnergyXray は < 、d は <=)、merge後に再sortしない点まで保存。メトリックは旧の2回計算を1回に。
+            Func<double, double> metric = null;
+            bool inclusive = false;//d のみ minDif <= threshold (Angle/EnergyXray は minDif < threshold)
+            if (horizontalAxis == HorizontalAxis.Angle && horizontalThreshold > 0 && horizontalParameter > 0)
+                metric = d => Math.Asin(horizontalParameter / d / 2.0) * 2;
+            else if (horizontalAxis == HorizontalAxis.EnergyXray && horizontalThreshold > 0 && horizontalParameter > 0)
+                metric = d => UniversalConstants.Convert.DspacingToXrayEnergy(d, horizontalParameter);
             else if (horizontalAxis == HorizontalAxis.d && horizontalThreshold >= 0)
             {
-                double minDif = double.PositiveInfinity;
+                metric = d => d;
+                inclusive = true;
+            }
+
+            if (metric != null)
+            {
+                double minDif;
                 do
                 {
                     minDif = double.PositiveInfinity;
                     int k = 0;
                     for (int i = 0; i < listPlane.Count - 1; i++)
-                        if (minDif > Math.Abs(listPlane[i].d - listPlane[i + 1].d))
+                    {
+                        var dif = Math.Abs(metric(listPlane[i].d) - metric(listPlane[i + 1].d));
+                        if (minDif > dif)
                         {
-                            minDif = Math.Abs(listPlane[i].d - listPlane[i + 1].d);
+                            minDif = dif;
                             k = i;
                         }
-                    if (minDif <= horizontalThreshold)
+                    }
+                    if (inclusive ? minDif <= horizontalThreshold : minDif < horizontalThreshold)
                     {
                         listPlane[k].d = (listPlane[k].d + listPlane[k + 1].d) / 2.0;
                         listPlane[k].strHKL += " + " + listPlane[k + 1].strHKL;
@@ -1165,8 +1131,7 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
 
                         listPlane.RemoveAt(k + 1);
                     }
-                } while (minDif <= horizontalThreshold);
-                ;
+                } while (inclusive ? minDif <= horizontalThreshold : minDif < horizontalThreshold);
             }
         }
 
