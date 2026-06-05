@@ -1326,6 +1326,8 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
         //}
         bool calcF = wavesource != WaveSource.None;
         bool conjugateMinus = calcF && wavesource != WaveSource.Neutron;//Xray/Electron は実数散乱因子 → -側は共役で代用
+        //260605Cl Neutron散乱因子は s2非依存なので site ごとに1回だけ事前計算し全反射で使い回す(反射ごとの isotope 加重和を回避)
+        var neutronFactors = wavesource == WaveSource.Neutron ? Atoms.Select(a => a.GetAtomicScatteringFactorForNeutron()).ToArray() : null;
         double globalMax = 0;
         var maxLock = new Lock();
         Parallel.For(0, gList.Count,
@@ -1339,7 +1341,7 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
                 var minus = new Vector3D(-x, -y, -z, false) { Index = (-h, -k, -l), d = 1 / glen, ExtinctionRule = rule, Text = $"{-h} {-k} {-l}" };
                 if (calcF && rule is null)//禁制でない反射のみ構造因子を計算(禁制は F=0, RawIntensity=0 のまま)
                 {
-                    var f = GetStructureFactor(wavesource, Atoms, (h, k, l), plus.Length2 / 4.0);//旧経路と同式(=x*x+y*y+z*z)で +側 bit 一致
+                    var f = GetStructureFactor(wavesource, Atoms, (h, k, l), plus.Length2 / 4.0, neutronFactors);//旧経路と同式(=x*x+y*y+z*z)で +側 bit 一致
                     plus.F = f;
                     plus.RawIntensity = f.MagnitudeSquared();
                     if (conjugateMinus)
@@ -1349,7 +1351,7 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
                     }
                     else//Neutron は両側別計算
                     {
-                        var fm = GetStructureFactor(wavesource, Atoms, (-h, -k, -l), minus.Length2 / 4.0);
+                        var fm = GetStructureFactor(wavesource, Atoms, (-h, -k, -l), minus.Length2 / 4.0, neutronFactors);
                         minus.F = fm;
                         minus.RawIntensity = fm.MagnitudeSquared();
                     }
@@ -1567,6 +1569,15 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
         imagSum += amplitude.Imaginary * cosPhase - amplitude.Real * sinPhase;
     }
 
+    //260605Cl 実数振幅(Xray/Electron は散乱因子が実数)用。amplitude.Imaginary==0 のとき上の複素版から虚部乗算を省いたもの。
+    // 値は厳密同一(x + 0.0*y == x、a + (-b) == a - b は IEEE で厳密)。内側ホットループ(Multiplicity×サイト×反射)の乗算を削減。
+    private static void AddStructureFactorContributionReal(ref double realSum, ref double imagSum, double amplitude, double phase)
+    {
+        var (sinPhase, cosPhase) = Math.SinCos(TwoPi * phase);
+        realSum += amplitude * cosPhase;
+        imagSum -= amplitude * sinPhase;
+    }
+
     //(h,k,l)の構造散乱因子(熱散漫散乱込み)のF (複素数) を計算する (h, k, lが非整数の場合に対応させたテストコード)
     /// <summary>構造因子を求める s2の単位はnm^-2</summary>
     /// <param name="wave"></param>
@@ -1644,9 +1655,11 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
     /// <param name="l"></param>
     /// <param name="s2">単位はnm^-2</param>
     /// <returns></returns>
-    private static Complex GetStructureFactor(WaveSource wave, Atoms[] atomsArray, (int h, int k, int l) index, double s2)
+    private static Complex GetStructureFactor(WaveSource wave, Atoms[] atomsArray, (int h, int k, int l) index, double s2, Complex[] neutronFactors = null)
     {
         #region
+        //260605Cl 実数振幅高速パス(Xray/Electron)＋Neutron散乱因子の事前計算対応で再構成。旧構造は直上の public double 版(未最適化)と同形、変更前は commit 87045348 参照。
+        // neutronFactors: wave==Neutron のとき呼び出し側(SetVectorOfG)が atomsArray と同順で事前計算した散乱因子(s2非依存)。null なら従来どおり都度計算。
         (int h, int k, int l) = index;
         //s2 = (sin(theta)/ramda)^2 = 1 / 4 /d^2
         if (atomsArray.Length == 0)
@@ -1654,9 +1667,11 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
         double realSum = 0, imagSum = 0;
         Complex f = 0;
         int atomicNum = -1, subNum = -1;
+        bool realAmp = wave != WaveSource.Neutron;//Xray/Electron は散乱因子が実数 → 虚部演算を省ける
 
-        foreach (var atoms in atomsArray)
+        for (int n = 0; n < atomsArray.Length; n++)
         {
+            var atoms = atomsArray[n];
             if (wave == WaveSource.Electron)
             {
                 if (atoms.AtomicNumber != atomicNum || atoms.SubNumberElectron != subNum)
@@ -1676,17 +1691,25 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
                 }
             }
             else
-                f = atoms.GetAtomicScatteringFactorForNeutron();
-
+                f = neutronFactors != null ? neutronFactors[n] : atoms.GetAtomicScatteringFactorForNeutron();//s2非依存。事前計算済みなら使い回す
 
             if (atoms.Dsf.UseIso)
             {
                 var T = Math.Exp(-atoms.Dsf.Biso * s2);
                 if (double.IsNaN(T))
                     T = 1;
-                var amplitude = f * T;
-                foreach (var atom in atoms.Atom)
-                    AddStructureFactorContribution(ref realSum, ref imagSum, amplitude, h * atom.X + k * atom.Y + l * atom.Z);
+                if (realAmp)
+                {
+                    var ampR = f.Real * T;
+                    foreach (var atom in atoms.Atom)
+                        AddStructureFactorContributionReal(ref realSum, ref imagSum, ampR, h * atom.X + k * atom.Y + l * atom.Z);
+                }
+                else
+                {
+                    var amplitude = f * T;
+                    foreach (var atom in atoms.Atom)
+                        AddStructureFactorContribution(ref realSum, ref imagSum, amplitude, h * atom.X + k * atom.Y + l * atom.Z);
+                }
             }
             else
             {
@@ -1697,7 +1720,11 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
                         + 2 * atoms.Dsf.B12 * H * K + 2 * atoms.Dsf.B23 * K * L + 2 * atoms.Dsf.B31 * L * H));
                     if (double.IsNaN(T))
                         T = 1;
-                    AddStructureFactorContribution(ref realSum, ref imagSum, f * T, h * atom.X + k * atom.Y + l * atom.Z);
+                    var ph = h * atom.X + k * atom.Y + l * atom.Z;
+                    if (realAmp)
+                        AddStructureFactorContributionReal(ref realSum, ref imagSum, f.Real * T, ph);
+                    else
+                        AddStructureFactorContribution(ref realSum, ref imagSum, f * T, ph);
                 }
             }
         }
