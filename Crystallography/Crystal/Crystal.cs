@@ -709,7 +709,7 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
         return Symmetry.CrystalSystemStr switch//場合分けしたほうが早いかな？
         {
             "cubic" => A / Math.Sqrt(h * h + k * k + l * l),
-            "tetragoanl" => 1 / Math.Sqrt((h * h + k * k) / A / A + l * l / C / C),
+            "tetragonal" => 1 / Math.Sqrt((h * h + k * k) / A / A + l * l / C / C),//260605Cl typo修正 "tetragoanl"→"tetragonal"(高速分岐が死んで一般式に落ちていた。値は標準的なtetragonal d式で正)
             "orthorhombic" => 1 / Math.Sqrt(h * h / A / A + k * k / B / B + l * l / C / C),
             _ => Math.Sqrt(1.0 / (h * h * sigma11 + k * k * sigma22 + l * l * sigma33 + 2 * k * l * sigma23 + 2 * l * h * sigma31 + 2 * h * k * sigma12) * CellVolumeSquare),
         };
@@ -1270,7 +1270,15 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
 
         #endregion
 
-        var shift = directions.Select(dir => (MatrixInverse * dir).Length).Max();
+        //260605Cl 小さな LINQ 割り当てを避け、各方向を直接走査して最大シフトを求める(SetPlanes と同形・shift値は bit 一致)
+        //var shift = directions.Select(dir => (MatrixInverse * dir).Length).Max();
+        var shift = 0.0;
+        foreach (var dir in directions)
+        {
+            var candidate = (MatrixInverse * dir).Length;
+            if (candidate > shift)
+                shift = candidate;
+        }
 
         //var maxNum = 250000;
         var zeroKey = (255 << 20) + (255 << 10) + 255;
@@ -1428,7 +1436,15 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
         var min = 0.0;
         var list = new List<(double D, double intensity)>(maxNum * 2);
 
-        var shift = directions.Select(dir => (MatrixInverse * dir).Length).Max();
+        //260605Cl 小さな LINQ 割り当てを避け、各方向を直接走査して最大シフトを求める(SetPlanes と同形・shift値は bit 一致)
+        //var shift = directions.Select(dir => (MatrixInverse * dir).Length).Max();
+        var shift = 0.0;
+        foreach (var dir in directions)
+        {
+            var candidate = (MatrixInverse * dir).Length;
+            if (candidate > shift)
+                shift = candidate;
+        }
 
         while (list.Count < maxNum)
         {
