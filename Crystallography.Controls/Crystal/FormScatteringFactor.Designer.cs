@@ -1016,7 +1016,7 @@
             //
             // colElecA
             //
-            colElecA.HeaderText = "A";
+            colElecA.HeaderText = "σ (nm²)";// 260606Cl A(原子量)→ 元素別弾性断面積 σ に変更 (§6.5。フィールド名は colElecAt との接頭辞衝突回避で colElecA 据え置き)
             colElecA.Name = "colElecA";
             //
             // dgvAttenNeutron

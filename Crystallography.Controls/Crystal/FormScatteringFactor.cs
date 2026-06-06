@@ -599,6 +599,7 @@ public partial class FormScatteringFactor : FormBase
         var C = DataGridViewContentAlignment.MiddleCenter;
         ConfigCol(colEdgeElem, default, fill: true); ConfigCol(colEdgeZ, R, "0"); ConfigCol(colEdgeEdge, C); ConfigCol(colEdgeKeV, R, "g4"); ConfigCol(colEdgeJump, R, "g3");
         ConfigCol(colElecElem, default, fill: true); ConfigCol(colElecZ, R, "0"); ConfigCol(colElecAt, R, "g3"); ConfigCol(colElecA, R, "g4");
+        colElecA.ToolTipText = "Elastic cross section σ_el (NIST Mott 50 eV–36 keV; screened Rutherford above 36 keV).";// 260606Cl §6.5 元素別弾性断面積。NIST範囲外は Rutherford 近似
         ConfigCol(colNeutElem, default, fill: true); ConfigCol(colNeutBcoh, R, "g4"); ConfigCol(colNeutScoh, R, "g4"); ConfigCol(colNeutAt, R, "g3");
 
         // 260606Cl 行数の多い元素別表 (元素数×行。Edges は最大 2×元素数) は縦スクロール許可 → 多元素結晶でもクリップしない
@@ -791,8 +792,13 @@ public partial class FormScatteringFactor : FormBase
             ["mean Z, A", $"{avgZ:g4}, {avgA:g4}"],
         ]);
 
+        //260606Cl 4列目を A(原子量)→ 元素別弾性断面積 σ_el[nm²] に変更 (§6.5)。NaN は null=空欄 (§11)。NIST範囲外(>36keV)は MonteCarlo 側で Rutherford 近似
         dgvAttenElectron.SetRows(els.OrderBy(x => x.z)
-            .Select(x => new object[] { AtomStatic.AtomicName(x.z), x.z, x.occ / totalOcc * 100, AtomStatic.AtomicWeight(x.z) }).ToList());
+            .Select(x =>
+            {
+                double sigma = MonteCarlo.ElasticCrossSectionNm2(x.z, kev);
+                return new object[] { AtomStatic.AtomicName(x.z), x.z, x.occ / totalOcc * 100, double.IsNaN(sigma) ? null : (object)sigma };
+            }).ToList());
 
         DrawElectronTransportGraph(mc, kev);
     }

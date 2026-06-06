@@ -624,6 +624,43 @@ public class MonteCarlo
         return double.IsFinite(rMicron) ? densityGramPerCm3 * rMicron * 1e-4 : double.NaN; // µm → cm
     }
 
+    /// <summary>元素 z 単体の電子 弾性散乱(全)断面積 σ_el [nm²] を加速電圧 keV で返す。260606Cl 追加
+    /// 50eV≤E≤36411eV は NIST SRD64 Mott テーブル(per-element, log-E 線形補間)、範囲外およびデータ無しは screened
+    /// Rutherford 近似 (GetParameters の混合物挙動と同じモデル切替。境界で不連続。TEM 域 100-300keV は常に Rutherford)。
+    /// z&lt;1 / keV≤0 は NaN。混合物の有効値が要るときは GetParameters を使うこと (本メソッドは元素別表示用)。</summary>
+    public static double ElasticCrossSectionNm2(int z, double kev)
+    {
+        if (z < 1 || !(kev > 0)) return double.NaN;
+        double energyEv = kev * 1000.0;
+        if (energyEv >= 50.0 && energyEv <= NistElasticMaxEnergyEv)
+        {
+            var sig = GetNistElasticScatteringTable(z)?.SigmaA0Squared; // NIST Mott (per-element, a₀²)
+            if (sig != null && sig.Length == NistElasticEnergyCount)
+            {
+                int i = GetLowerNistElasticEnergyIndex(energyEv, out double frac);
+                double a0sq = sig[i];
+                if (frac > 0 && i < sig.Length - 1)
+                    a0sq += frac * (sig[i + 1] - sig[i]); // 対数エネルギー軸で線形補間
+                if (a0sq > 0)
+                    return a0sq * NistElasticCrossSectionUnitNm2; // a₀² → nm²
+            }
+            // NIST 範囲内だがデータ無し → 下の Rutherford へフォールバック (GetParameters と同挙動)
+        }
+        return ScreenedRutherfordElasticCrossSectionNm2(z, kev);
+    }
+
+    /// <summary>screened Rutherford の単体元素 弾性散乱断面積 σ [nm²] (density 非依存、ComputeTransportParameters と同式)。260606Cl 追加</summary>
+    private static double ScreenedRutherfordElasticCrossSectionNm2(int z, double kev)
+    {
+        double coeff0 = 0.0034 * Math.Pow(z, 2.0 / 3.0);
+        double coeff1 = z * UniversalConstants.e0 * UniversalConstants.e0 / (8.0 * Math.PI * UniversalConstants.ε0);
+        double mv2 = UniversalConstants.Convert.EnergyToElectronMass(kev) * UniversalConstants.Convert.EnergyToElectronVelositySquared(kev);
+        double α = coeff0 / kev;
+        double tmp = 2 * coeff1 / mv2;
+        double σ = tmp * tmp * Math.PI / α / (α + 1) * 1E18; // nm²
+        return double.IsFinite(σ) && σ > 0 ? σ : double.NaN;
+    }
+
     /// <summary>キャッシュから輸送パラメータを取得する。キャッシュ範囲外のエネルギーでは都度計算にフォールバック。</summary>
     private TransportParameters GetTransportParameters(double kev)
     {
