@@ -54,6 +54,14 @@ The in-house native library `Crystallography.Native.dll` (and its `*.avx2.dll` /
 
 Other native runtime DLL that ships: `glfw3.dll` (zlib/libpng license), a runtime asset of OpenTK. (The previously-bundled ffmpeg / x264 / x265 / zlib / MinGW-runtime DLLs were removed on 2026-05-30 — see the [video encoding](#video-encoding-via-media-foundation) section.)
 
+### xraylib (bundled, third-party native data library)
+
+A standalone, permissively-licensed third-party native DLL that embeds X-ray physics reference-data tables. It is **not** built from this repository and is **not** re-signed by ReciPro.
+
+| Name | Version | Purpose | Bundled or downloaded | Upstream URL | License | Signed by ReciPro? | Notes |
+|------|---------|---------|-----------------------|--------------|---------|--------------------|-------|
+| xraylib | 4.2.1 (soname `libxrl-11`) | X-ray physics reference data for the "Beam Interaction" window: anomalous-dispersion factors (f′, f″), photon mass attenuation / interaction cross sections (total / photoelectric / Rayleigh / Compton / energy-absorption), atomic form and incoherent-scattering functions, fluorescence yields, characteristic-line energies and radiative rates, and absorption-edge energies and jump ratios. | **Bundled** — `libxrl-11.dll` (~14.8 MB; physical data tables embedded in the DLL). Shipped via `ReciPro.csproj` `<Content Include="libxrl-11.dll">` with `CopyToOutputDirectory` + `CopyToPublishDirectory=PreserveNewest` (self-contained publish does not otherwise pick up native DLLs). | https://github.com/tschoonj/xraylib | BSD-3-Clause | No (third-party) | Added 260606. Obtained from the conda-forge win-64 package (`xraylib-4.2.1`) and renamed from `xrl-11.dll` to `libxrl-11.dll` to match the upstream soname convention (the DLL does not reference its own name). Runtime dependencies are `VCRUNTIME140.dll` + UCRT + `KERNEL32` only (no conda-specific dependencies). The BSD-3-Clause license text ships alongside as `libxrl-11.LICENSE.txt`. Called from `Crystallography/Xraylib.cs` (P/Invoke, `ExactSpelling`). Recommended citation: T. Schoonjans et al. (2011) *Spectrochim. Acta Part B* **66**, 776-784, https://doi.org/10.1016/j.sab.2011.09.011. |
+
 ## Video encoding via Media Foundation
 
 ReciPro previously bundled a **GPL** ffmpeg build (linking libx264 / libx265) for rotation-animation video export, loaded through the FFMediaToolkit wrapper. **This was removed on 2026-05-30.** Video export now uses the operating system's built-in **Windows Media Foundation** H.264 / H.265 encoder (`MediaFoundationVideoEncoder` in `Crystallography.Controls`, via direct `mfplat.dll` / `mfreadwrite.dll` P/Invoke — no third-party library).
@@ -125,5 +133,6 @@ The intended code-signing scope is limited to ReciPro release artifacts and bina
 Third-party binaries must **not** be re-signed as if they were maintained by ReciPro. In particular:
 
 - The redistributed **NuGet runtime DLLs** (OpenTK and its `glfw3.dll`, MathNet.Numerics, IronPython, BitMiracle.LibTiff.NET, SimdLinq, ZLinq, MemoryPack, PureHDF, DynamicExpresso.Core, WpfMath, System.Management, etc.) keep their own upstream provenance and licenses as listed above and must not be re-signed or relicensed as ReciPro's MIT code.
+- The bundled **xraylib** native DLL (`libxrl-11.dll`, BSD-3-Clause), obtained from conda-forge, is a third-party binary that is not built from this repository and must not be re-signed or relicensed as ReciPro's MIT code.
 
 The MSI itself is not signed by Visual Studio (`SignOutput=FALSE` in the vdproj); the RID is pinned to `win-x64`, so no non-Windows/x86 runtime assets are emitted. See `CODE_SIGNING.md` for the release-artifact signing policy. This notice is not a substitute for the upstream license texts — refer to each upstream project or data provider for authoritative terms.
