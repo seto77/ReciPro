@@ -1301,6 +1301,9 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
         //260606Cl ±共役融合は撤廃。X線異常分散(f'/f'')有効時は F(−G)≠conj(F(+G)) (Bijvoet 差) のため、両 member を常に独立計算する(計算コストは非クリティカル・判定ロジックも削減)。
         //260605Cl Neutron散乱因子は s2非依存なので site ごとに1回だけ事前計算し全反射で使い回す(反射ごとの isotope 加重和を回避)
         var neutronFactors = wavesource == WaveSource.Neutron ? Atoms.Select(a => a.GetAtomicScatteringFactorForNeutron()).ToArray() : null;
+        //260606Cl X線異常分散 f'/f'' は (Z,energy) のみ依存=全反射でループ不変 → サイトごとに1回だけ事前計算(neutronFactors と同型)。Parallel.For 内の native 呼び(反射数×元素数)を回避。
+        var xrayDispFactors = wavesource == WaveSource.Xray && double.IsFinite(xrayEnergyKeV) && xrayEnergyKeV > 0 && Xraylib.Enabled
+            ? Atoms.Select(a => (fp: Xraylib.Fprime(a.AtomicNumber, xrayEnergyKeV), fpp: Xraylib.Fdoubleprime(a.AtomicNumber, xrayEnergyKeV))).ToArray() : null;
         double globalMax = 0;
         var maxLock = new Lock();
         Parallel.For(0, gList.Count,
@@ -1314,10 +1317,10 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
                 var minus = new Vector3D(-x, -y, -z, false) { Index = (-h, -k, -l), d = 1 / glen, ExtinctionRule = rule, Text = $"{-h} {-k} {-l}" };
                 if (calcF && rule is null)//禁制でない反射のみ構造因子を計算(禁制は F=0, RawIntensity=0 のまま)
                 {
-                    var f = GetStructureFactor(wavesource, Atoms, (h, k, l), plus.Length2 / 4.0, neutronFactors, xrayEnergyKeV);
+                    var f = GetStructureFactor(wavesource, Atoms, (h, k, l), plus.Length2 / 4.0, neutronFactors, xrayEnergyKeV, xrayDispFactors);
                     plus.F = f;
                     plus.RawIntensity = f.MagnitudeSquared();
-                    var fm = GetStructureFactor(wavesource, Atoms, (-h, -k, -l), minus.Length2 / 4.0, neutronFactors, xrayEnergyKeV);//260606Cl −側も独立計算(±共役撤廃)
+                    var fm = GetStructureFactor(wavesource, Atoms, (-h, -k, -l), minus.Length2 / 4.0, neutronFactors, xrayEnergyKeV, xrayDispFactors);//260606Cl −側も独立計算(±共役撤廃)
                     minus.F = fm;
                     minus.RawIntensity = fm.MagnitudeSquared();
                     if (plus.RawIntensity > localMax) localMax = plus.RawIntensity;
@@ -1551,6 +1554,11 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
         imagSum -= amplitude * sinPhase;
     }
 
+    //260606Cl X線異常分散込みの原子散乱因子: f = f0 + 0.1·Occ·(f' − i·f'')。電子単位→内部nm系へ ×0.1、f0 と同じ Occ 重み。
+    // exp(−2πi g·r) 規約のため f'' は負符号(International Tables の +規約と一致させる、検証済)。f'/f'' が NaN(範囲外/xraylib無効)なら該当項 0。
+    private static Complex XrayDispersionFactor(double f0, double occ, double fPrime, double fDoublePrime)
+        => new(f0 + (double.IsNaN(fPrime) ? 0 : 0.1 * occ * fPrime), double.IsNaN(fDoublePrime) ? 0 : -0.1 * occ * fDoublePrime);
+
     //(h,k,l)の構造散乱因子(熱散漫散乱込み)のF (複素数) を計算する (h, k, lが非整数の場合に対応させたテストコード)
     /// <summary>構造因子を求める s2の単位はnm^-2</summary>
     /// <param name="wave"></param>
@@ -1588,14 +1596,9 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
                 if (atoms.AtomicNumber != atomicNum || atoms.SubNumberXray != subNum)
                 {
                     double f0 = atoms.GetAtomicScatteringFactorForXray(s2);//WK·Occ (nm単位)
-                    if (xrayDisp)//260606Cl 異常分散: f = f0 + 0.1·Occ·(f' − i·f'') (exp(−2πi)規約で f'' は負符号)
-                    {
-                        double fp = Xraylib.Fprime(atoms.AtomicNumber, xrayEnergyKeV), fpp = Xraylib.Fdoubleprime(atoms.AtomicNumber, xrayEnergyKeV);
-                        double occ = atoms.Occ;
-                        f = new Complex(f0 + (double.IsNaN(fp) ? 0 : 0.1 * occ * fp), double.IsNaN(fpp) ? 0 : -0.1 * occ * fpp);
-                    }
-                    else
-                        f = new Complex(f0, 0);
+                    f = xrayDisp//260606Cl 異常分散込み(なければ f0 のみ)
+                        ? XrayDispersionFactor(f0, atoms.Occ, Xraylib.Fprime(atoms.AtomicNumber, xrayEnergyKeV), Xraylib.Fdoubleprime(atoms.AtomicNumber, xrayEnergyKeV))
+                        : new Complex(f0, 0);
                     atomicNum = atoms.AtomicNumber;
                     subNum = atoms.SubNumberXray;
                 }
@@ -1637,7 +1640,7 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
     /// <param name="l"></param>
     /// <param name="s2">単位はnm^-2</param>
     /// <returns></returns>
-    private static Complex GetStructureFactor(WaveSource wave, Atoms[] atomsArray, (int h, int k, int l) index, double s2, Complex[] neutronFactors = null, double xrayEnergyKeV = double.NaN)//260606Cl xrayEnergyKeV 追加(X線異常分散用, NaN=分散なし)
+    private static Complex GetStructureFactor(WaveSource wave, Atoms[] atomsArray, (int h, int k, int l) index, double s2, Complex[] neutronFactors = null, double xrayEnergyKeV = double.NaN, (double fp, double fpp)[] xrayDispFactors = null)//260606Cl xrayEnergyKeV/xrayDispFactors 追加(X線異常分散用, NaN/null=分散なし。xrayDispFactors は SetVectorOfG が事前計算したループ不変 f'/f'')
     {
         #region
         //260605Cl 実数振幅高速パス(Xray/Electron)＋Neutron散乱因子の事前計算対応で再構成。旧構造は直上の public double 版(未最適化)と同形、変更前は commit 87045348 参照。
@@ -1670,11 +1673,10 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
                 if (atoms.AtomicNumber != atomicNum || atoms.SubNumberXray != subNum)
                 {
                     double f0 = atoms.GetAtomicScatteringFactorForXray(s2);//WK·Occ (nm単位)
-                    if (xrayDisp)//260606Cl 異常分散: f = f0 + 0.1·Occ·(f' − i·f'') (電子単位→nm×0.1, exp(−2πi)規約で f'' は負符号)
+                    if (xrayDisp)//260606Cl 異常分散込み。f'/f'' はループ不変 → SetVectorOfG が事前計算した xrayDispFactors[n] を優先(無ければ都度 native 呼び)
                     {
-                        double fp = Xraylib.Fprime(atoms.AtomicNumber, xrayEnergyKeV), fpp = Xraylib.Fdoubleprime(atoms.AtomicNumber, xrayEnergyKeV);
-                        double occ = atoms.Occ;
-                        f = new Complex(f0 + (double.IsNaN(fp) ? 0 : 0.1 * occ * fp), double.IsNaN(fpp) ? 0 : -0.1 * occ * fpp);
+                        var (fp, fpp) = xrayDispFactors != null ? xrayDispFactors[n] : (Xraylib.Fprime(atoms.AtomicNumber, xrayEnergyKeV), Xraylib.Fdoubleprime(atoms.AtomicNumber, xrayEnergyKeV));
+                        f = XrayDispersionFactor(f0, atoms.Occ, fp, fpp);
                     }
                     else
                         f = new Complex(f0, 0);

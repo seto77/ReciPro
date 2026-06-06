@@ -55,6 +55,7 @@ public partial class FormScatteringFactor : FormBase
     private void crystalControl_CrystalChanged(object sender, EventArgs e)
     {
         numericBoxCutoffD.Minimum = (Crystal.A + Crystal.B + Crystal.C) / 20;
+        attenMc = null;//260606Cl 結晶変更で電子輸送 MonteCarlo を無効化(組成変化で ElasticComponents が古くなるため)
         if (Visible)
         {
             SetSortedPlanes();
@@ -528,7 +529,6 @@ public partial class FormScatteringFactor : FormBase
     // スカラ表(Quantity/Value)はヘッダ非表示 + コード SetColumns。
 
     private const double ClassicalElectronRadiusCm = 2.8179403262e-13; // r_e [cm]
-    private const double AvogadroPerMol = 6.02214076e23;               // N_A
     private MonteCarlo attenMc;                       // 電子輸送用 (物性タプルでキャッシュ)
     private (double z, double a, double rho)? attenMcKey;
 
@@ -589,7 +589,6 @@ public partial class FormScatteringFactor : FormBase
         ConfigCol(colEdgeElem, default, fill: true); ConfigCol(colEdgeZ, R, "0"); ConfigCol(colEdgeEdge, C); ConfigCol(colEdgeKeV, R, "g4"); ConfigCol(colEdgeJump, R, "g3");
         ConfigCol(colElecElem, default, fill: true); ConfigCol(colElecZ, R, "0"); ConfigCol(colElecAt, R, "g3"); ConfigCol(colElecA, R, "g4");
         ConfigCol(colNeutElem, default, fill: true); ConfigCol(colNeutBcoh, R, "g4"); ConfigCol(colNeutScoh, R, "g4"); ConfigCol(colNeutAt, R, "g3");
-        ConfigCol(colFlElem, default, fill: true); ConfigCol(colFlLine, C); ConfigCol(colFlE, R, "g4"); ConfigCol(colFlRelI, R, "g3"); ConfigCol(colFlOmega, R, "g3");
     }
 
     /// <summary>ビーム種に応じて Attenuation タブを更新する。260606Cl 追加。</summary>
@@ -651,7 +650,7 @@ public partial class FormScatteringFactor : FormBase
         double sumReal = 0, sumImag = 0;
         foreach (var (z, occ) in els)
         {
-            double n = rho * AvogadroPerMol * occ / totalMass; // atoms/cm³
+            double n = rho * UniversalConstants.A * occ / totalMass; // atoms/cm³
             double fp = xrl ? Xraylib.Fprime(z, e) : 0, fpp = xrl ? Xraylib.Fdoubleprime(z, e) : 0;
             if (xrl && (double.IsNaN(fp) || double.IsNaN(fpp))) dispNa = true;
             sumReal += n * (z + (double.IsNaN(fp) ? 0 : fp));
@@ -672,7 +671,7 @@ public partial class FormScatteringFactor : FormBase
             ["µ_en/ρ", xrl ? Q(muEnRho, "cm²/g") : "N/A"],
             ["δ (1−n)", dispNa ? "N/A" : Q(delta, "", "g4")],
             ["β", dispNa ? "N/A" : Q(beta, "", "g4")],
-            ["θc (critical)", dispNa ? "N/A" : Q(double.IsNaN(thetaC) ? double.NaN : thetaC * 1e3, "mrad")],
+            ["θc (critical)", dispNa ? "N/A" : Q(thetaC * 1e3, "mrad")],
             ["X-ray SLD (Re)", dispNa ? "N/A" : Q(sldReal * 1e6, "10⁻⁶Å⁻²", "g4")],
             ["source", xrl ? "xraylib" : "internal (photo)"],
         ]);
@@ -841,7 +840,7 @@ public partial class FormScatteringFactor : FormBase
             double bRe = NeutronB(z);
             if (double.IsNaN(bRe)) continue;
             bMean += occ / totalOcc * bRe;
-            double nA = rho * AvogadroPerMol * occ / totalMass * 1e-24; // atoms/Å³
+            double nA = rho * UniversalConstants.A * occ / totalMass * 1e-24; // atoms/Å³
             sld += nA * bRe * 1e-5; // b[fm]→Å ; SLD[Å⁻²]
         }
 
@@ -889,7 +888,13 @@ public partial class FormScatteringFactor : FormBase
     ];
 
     /// <summary>Fluorescence タブ初期化 (Load から)。列設定は InitializeAttenuationTab に集約。260606Cl 追加。</summary>
-    private void InitializeFluorescenceTab() { /* 配線・列設定は InitializeAttenuationTab で実施済み */ }
+    private void InitializeFluorescenceTab()
+    {
+        var R = DataGridViewContentAlignment.MiddleRight;
+        ConfigCol(colFlElem, default, fill: true);
+        ConfigCol(colFlLine, DataGridViewContentAlignment.MiddleCenter);
+        ConfigCol(colFlE, R, "g4"); ConfigCol(colFlRelI, R, "g3"); ConfigCol(colFlOmega, R, "g3");
+    }
 
     /// <summary>Fluorescence タブ更新。X線時のみ内容を出し、電子/中性子では無効メッセージ。260606Cl 追加。</summary>
     private void UpdateFluorescence()
@@ -931,7 +936,7 @@ public partial class FormScatteringFactor : FormBase
             double x = occ / totalOcc;
             foreach (var (eng, xline, shell, name) in FluorLines)
             {
-                double ekeV = AtomStatic.CharacteristicXrayEnergy(z, eng);
+                double ekeV = xrl ? Xraylib.LineEnergyKeV(z, xline) : AtomStatic.CharacteristicXrayEnergy(z, eng);//260606Cl xrl 有効時は線エネルギーも xraylib(RadRate/端と出所統一)
                 if (double.IsNaN(ekeV) || ekeV <= 0) continue;
                 double rate = xrl ? Xraylib.LineRadRate(z, xline) : double.NaN;
                 double yield = xrl ? Xraylib.FluorescenceYield(z, shell) : double.NaN;
