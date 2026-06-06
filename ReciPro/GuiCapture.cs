@@ -183,7 +183,7 @@ internal static class GuiCapture
         }
 
         // 260523Cl 追加: 親結晶が必要で reflection 列挙では撮れない子フォーム (FormSymmetryInformation /
-        // FormScatteringFactor / FormStructureViewer) を、spinel 選択済みの FormMain が持つ配線済みインスタンス経由で撮る。
+        // FormBeamInteraction / FormStructureViewer) を、spinel 選択済みの FormMain が持つ配線済みインスタンス経由で撮る。
         if (captureFormMain != null)
         {
             foreach (var child in captureFormMain.EnumerateCaptureCrystalDependentForms())

@@ -107,7 +107,7 @@
             toolStripSeparator14 = new System.Windows.Forms.ToolStripSeparator();
             toolStripButtonSymmetryInformation = new System.Windows.Forms.ToolStripButton();
             toolStripSeparator9 = new System.Windows.Forms.ToolStripSeparator();
-            toolStripButtonScatteringFactor = new System.Windows.Forms.ToolStripButton();
+            toolStripButtonBeamInteraction = new System.Windows.Forms.ToolStripButton();
             toolStripSeparator12 = new System.Windows.Forms.ToolStripSeparator();
             toolStripButtonRotation = new System.Windows.Forms.ToolStripButton();
             toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
@@ -396,7 +396,7 @@
             crystalControl.DefaultTabNumber = 0;
             crystalControl.Gamma = 0D;
             crystalControl.Name = "crystalControl";
-            crystalControl.ScatteringFactorVisible = false;
+            crystalControl.BeamInteractionVisible = false;
             crystalControl.SymmetryInformationVisible = false;
             crystalControl.SymmetrySeriesNumber = 0;
             toolTip.SetToolTip(crystalControl, resources.GetString("crystalControl.ToolTip"));
@@ -411,7 +411,7 @@
             crystalControl.VisibleReferenceTab = true;
             crystalControl.VisibleStressStrainTab = false;
             crystalControl.CrystalChanged += crystalControl_CrystalChanged;
-            crystalControl.ScatteringFactor_VisibleChanged += crystalControl_ScatteringFactor_VisibleChanged;
+            crystalControl.BeamInteraction_VisibleChanged += crystalControl_BeamInteraction_VisibleChanged;
             crystalControl.SymmetryInformation_VisibleChanged += CrystalControl_SymmetryInformation_VisibleChanged;
             // 
             // flowLayoutPanelCrystalEdit
@@ -859,7 +859,7 @@
             captureExtender.SetCapture(toolStrip1, true);
             toolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             toolStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { toolStripLabel1, toolStripSeparator15, toolStripButtonDatabase, toolStripSeparator14, toolStripButtonSymmetryInformation, toolStripSeparator9, toolStripButtonScatteringFactor, toolStripSeparator12, toolStripButtonRotation, toolStripSeparator8, toolStripButtonStructureViewer, toolStripSeparator1, toolStripButtonStereonet, toolStripSeparator7, toolStripButtonDiffractionSingle, toolStripSeparator4, toolStripButtonTrajectorySimulator, toolStripSeparator10, toolStripButtonImageSimulator, toolStripSeparator13, toolStripButtonSpotIDv1, toolStripSeparator2, toolStripButtonSpotIDv2, toolStripSeparator24, toolStripButtonEBSD, toolStripSeparator19, toolStripButtonDiffractionPoly });
+            toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { toolStripLabel1, toolStripSeparator15, toolStripButtonDatabase, toolStripSeparator14, toolStripButtonSymmetryInformation, toolStripSeparator9, toolStripButtonBeamInteraction, toolStripSeparator12, toolStripButtonRotation, toolStripSeparator8, toolStripButtonStructureViewer, toolStripSeparator1, toolStripButtonStereonet, toolStripSeparator7, toolStripButtonDiffractionSingle, toolStripSeparator4, toolStripButtonTrajectorySimulator, toolStripSeparator10, toolStripButtonImageSimulator, toolStripSeparator13, toolStripButtonSpotIDv1, toolStripSeparator2, toolStripButtonSpotIDv2, toolStripSeparator24, toolStripButtonEBSD, toolStripSeparator19, toolStripButtonDiffractionPoly });
             toolStrip1.Name = "toolStrip1";
             toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
             toolTip.SetToolTip(toolStrip1, resources.GetString("toolStrip1.ToolTip"));
@@ -897,11 +897,11 @@
             resources.ApplyResources(toolStripSeparator9, "toolStripSeparator9");
             toolStripSeparator9.Name = "toolStripSeparator9";
             // 
-            // toolStripButtonScatteringFactor
+            // toolStripButtonBeamInteraction
             // 
-            resources.ApplyResources(toolStripButtonScatteringFactor, "toolStripButtonScatteringFactor");
-            toolStripButtonScatteringFactor.Name = "toolStripButtonScatteringFactor";
-            toolStripButtonScatteringFactor.MouseDown += toolStripButtons_MouseDown;
+            resources.ApplyResources(toolStripButtonBeamInteraction, "toolStripButtonBeamInteraction");
+            toolStripButtonBeamInteraction.Name = "toolStripButtonBeamInteraction";
+            toolStripButtonBeamInteraction.MouseDown += toolStripButtons_MouseDown;
             // 
             // toolStripSeparator12
             // 
@@ -1459,7 +1459,7 @@
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel;
         public System.Windows.Forms.ToolStripButton toolStripButtonDiffractionPoly;
-        public System.Windows.Forms.ToolStripButton toolStripButtonScatteringFactor;
+        public System.Windows.Forms.ToolStripButton toolStripButtonBeamInteraction;
         public System.Windows.Forms.ToolStripButton toolStripButtonSymmetryInformation;
         private System.Windows.Forms.ToolStripMenuItem resetRegistryToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemExportCIF;

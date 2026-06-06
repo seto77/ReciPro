@@ -224,7 +224,7 @@ rotation defining the crystal orientation.</value>
   <data name="buttonUp.Location" type="System.Drawing.Point, System.Drawing">
     <value>291, 0</value>
   </data>
-  <data name="toolStripButtonScatteringFactor.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="toolStripButtonBeamInteraction.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>
   </data>
   <data name="buttonDuplicate.Font" type="System.Drawing.Font, System.Drawing">
@@ -254,7 +254,7 @@ rotation defining the crystal orientation.</value>
   <data name="groupBoxProjectAlong.Size" type="System.Drawing.Size, System.Drawing">
     <value>142, 161</value>
   </data>
-  <data name="toolStripButtonScatteringFactor.ImageScaling" type="System.Windows.Forms.ToolStripItemImageScaling, System.Windows.Forms">
+  <data name="toolStripButtonBeamInteraction.ImageScaling" type="System.Windows.Forms.ToolStripItemImageScaling, System.Windows.Forms">
     <value>None</value>
   </data>
   <data name="&gt;&gt;groupBoxCurrentDirection.Parent" xml:space="preserve">
@@ -786,7 +786,7 @@ rotation defining the crystal orientation.</value>
   <data name="label8.Size" type="System.Drawing.Size, System.Drawing">
     <value>111, 20</value>
   </data>
-  <data name="toolStripButtonScatteringFactor.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+  <data name="toolStripButtonBeamInteraction.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>White</value>
   </data>
   <data name="&gt;&gt;toolStripMenuItemReadInitialCrystalList.Name" xml:space="preserve">
@@ -1550,7 +1550,7 @@ rotation defining the crystal orientation.</value>
   <data name="toolStripButtonDiffractionPoly.ImageScaling" type="System.Windows.Forms.ToolStripItemImageScaling, System.Windows.Forms">
     <value>None</value>
   </data>
-  <data name="toolStripButtonScatteringFactor.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+  <data name="toolStripButtonBeamInteraction.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleLeft</value>
   </data>
   <data name="buttonUp.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
@@ -1600,7 +1600,7 @@ normal points toward you (out of the screen).</value>
   <data name="toolStripSeparator8.Size" type="System.Drawing.Size, System.Drawing">
     <value>116, 6</value>
   </data>
-  <data name="toolStripButtonScatteringFactor.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="toolStripButtonBeamInteraction.Size" type="System.Drawing.Size, System.Drawing">
     <value>116, 36</value>
   </data>
   <data name="buttonTop.Size" type="System.Drawing.Size, System.Drawing">
@@ -1836,7 +1836,7 @@ normal points toward you (out of the screen).</value>
   <data name="&gt;&gt;toolStripButtonImageSimulator.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="toolStripButtonScatteringFactor.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="toolStripButtonBeamInteraction.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
         vwAADr8BOAVTJAAAA51JREFUWEe9lltonFUQx394qbSKVbQVBPFSQS14CXT3zNkNDfSiFYM3zIuItVRj
@@ -2172,8 +2172,8 @@ edit to set the orientation directly.</value>
   <data name="&gt;&gt;readCrystalFromCIFOrAMCFileToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;toolStripButtonScatteringFactor.Name" xml:space="preserve">
-    <value>toolStripButtonScatteringFactor</value>
+  <data name="&gt;&gt;toolStripButtonBeamInteraction.Name" xml:space="preserve">
+    <value>toolStripButtonBeamInteraction</value>
   </data>
   <data name="buttonReset.Text" xml:space="preserve">
     <value>Reset Rotation</value>
@@ -3474,8 +3474,8 @@ is used as rotation speed in degrees per second.</value>
   <data name="buttonUp.ToolTip" xml:space="preserve">
     <value>Move the selected crystal upward</value>
   </data>
-  <data name="toolStripButtonScatteringFactor.ToolTipText" xml:space="preserve">
-    <value>Open Scattering Factor</value>
+  <data name="toolStripButtonBeamInteraction.ToolTipText" xml:space="preserve">
+    <value>Open Beam Interaction</value>
   </data>
   <data name="toolStripMenuItemUseMKL.ToolTipText" xml:space="preserve">
     <value>Enable Intel MKL for faster matrix
@@ -4482,7 +4482,7 @@ patterns from crystal orientation.</value>
   <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
     <value>13, 17</value>
   </data>
-  <data name="&gt;&gt;toolStripButtonScatteringFactor.Type" xml:space="preserve">
+  <data name="&gt;&gt;toolStripButtonBeamInteraction.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="buttonLeft.Size" type="System.Drawing.Size, System.Drawing">
@@ -4688,9 +4688,9 @@ above with the new crystal below.</value>
   <data name="&gt;&gt;buttonClearAllCrystals.Name" xml:space="preserve">
     <value>buttonClearAllCrystals</value>
   </data>
-  <data name="toolStripButtonScatteringFactor.Text" xml:space="preserve">
-    <value>  Scattering
-  Factor</value>
+  <data name="toolStripButtonBeamInteraction.Text" xml:space="preserve">
+    <value>  Beam
+  Interaction</value>
   </data>
   <data name="&gt;&gt;hintToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>

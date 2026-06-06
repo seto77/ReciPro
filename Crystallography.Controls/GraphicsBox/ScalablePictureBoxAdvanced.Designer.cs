@@ -376,7 +376,6 @@
             graphControl.AxisXTextVisible = true;
             graphControl.AxisYTextVisible = true;
             graphControl.BackgroundColor = System.Drawing.Color.White;
-            graphControl.BottomMargin = 0D;
             graphControl.DivisionLineColor = System.Drawing.Color.LightGray;
             graphControl.DivisionLineXVisible = true;
             graphControl.DivisionLineYVisible = true;
@@ -388,7 +387,6 @@
             graphControl.IsIntegerY = false;
             graphControl.LabelX = "X:";
             graphControl.LabelY = "Y:";
-            graphControl.LeftMargin = 0F;
             graphControl.LineWidth = 1F;
             graphControl.LowerX = 0D;
             graphControl.LowerY = 0D;

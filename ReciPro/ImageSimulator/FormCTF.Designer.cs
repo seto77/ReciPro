@@ -222,38 +222,12 @@
             // 
             // graphControl
             // 
-            graphControl.AllowMouseOperation = true;
-            graphControl.AxisLineColor = System.Drawing.Color.Gray;
-            graphControl.AxisTextColor = System.Drawing.Color.Black;
             graphControl.AxisTextFont = new System.Drawing.Font("Segoe UI", 8F);
-            graphControl.AxisXTextVisible = true;
-            graphControl.AxisYTextVisible = true;
-            graphControl.BackgroundColor = System.Drawing.Color.White;
-            graphControl.BottomMargin = 0D;
-            graphControl.DivisionLineColor = System.Drawing.Color.LightGray;
-            graphControl.DivisionLineXVisible = true;
-            graphControl.DivisionLineYVisible = true;
             graphControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            graphControl.FixRangeHorizontal = false;
-            graphControl.FixRangeVertical = false;
             graphControl.Font = new System.Drawing.Font("Segoe UI", 9F);
             graphControl.GraphTitle = "";
-            graphControl.IsIntegerX = false;
-            graphControl.IsIntegerY = false;
-            graphControl.LabelX = "X:";
-            graphControl.LabelY = "Y:";
-            graphControl.LeftMargin = 0F;
-            graphControl.LineWidth = 1F;
             graphControl.Location = new System.Drawing.Point(3, 280);
-            graphControl.LowerX = 0D;
-            graphControl.LowerY = 0D;
             graphControl.Margin = new System.Windows.Forms.Padding(0);
-            graphControl.MaximalX = 1D;
-            graphControl.MaximalY = 1D;
-            graphControl.MinimalX = 0D;
-            graphControl.MinimalY = 0D;
-            graphControl.Mode = GraphControl.DrawingMode.Line;
-            graphControl.MousePositionVisible = true;
             graphControl.MousePositionXDigit = 4;
             graphControl.MousePositionYDigit = 4;
             graphControl.Name = "graphControl";
@@ -261,16 +235,7 @@
             graphControl.Padding = new System.Windows.Forms.Padding(2, 0, 0, 2);
             graphControl.Size = new System.Drawing.Size(706, 176);
             graphControl.TabIndex = 57;
-            graphControl.UnitX = "nm⁻¹";
-            graphControl.UnitY = "";
-            graphControl.UpperPanelFont = new System.Drawing.Font("Segoe UI", 9F);
-            graphControl.UpperPanelVisible = true;
-            graphControl.UpperX = 1D;
-            graphControl.UpperY = 1D;
-            graphControl.UseLineWidth = true;
-            graphControl.VerticalLineColor = System.Drawing.Color.Red;
-            graphControl.XLog = false;
-            graphControl.YLog = false;
+            graphControl.UnitX = " nm⁻¹";
             // 
             // flowLayoutPanel1
             // 

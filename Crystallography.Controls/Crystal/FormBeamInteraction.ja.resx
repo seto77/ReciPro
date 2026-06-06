@@ -377,7 +377,7 @@ min から k max まで k step 刻みで計算します。</value>
     <value>Yu Gothic UI, 9.75pt</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>散乱因子</value>
+    <value>ビーム相互作用</value>
   </data>
   <data name="$this.ToolTip" xml:space="preserve">
     <value />

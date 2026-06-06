@@ -865,10 +865,10 @@
   <data name="toolStripSeparator9.Size" type="System.Drawing.Size, System.Drawing">
     <value>112, 6</value>
   </data>
-  <data name="toolStripButtonScatteringFactor.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="toolStripButtonBeamInteraction.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
   </data>
-  <data name="toolStripButtonScatteringFactor.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="toolStripButtonBeamInteraction.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
         YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAOdSURBVFhHvZZbaJxVEMd/eKm0ilW0FQTxUkEteAl098zZ
@@ -890,17 +890,17 @@
         AAAAAElFTkSuQmCC
 </value>
   </data>
-  <data name="toolStripButtonScatteringFactor.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+  <data name="toolStripButtonBeamInteraction.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleCenter</value>
   </data>
-  <data name="toolStripButtonScatteringFactor.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="toolStripButtonBeamInteraction.Size" type="System.Drawing.Size, System.Drawing">
     <value>112, 36</value>
   </data>
-  <data name="toolStripButtonScatteringFactor.Text" xml:space="preserve">
-    <value>散乱因子</value>
+  <data name="toolStripButtonBeamInteraction.Text" xml:space="preserve">
+    <value>ビーム相互作用</value>
   </data>
-  <data name="toolStripButtonScatteringFactor.ToolTipText" xml:space="preserve">
-    <value>「散乱因子」機能を開く</value>
+  <data name="toolStripButtonBeamInteraction.ToolTipText" xml:space="preserve">
+    <value>「ビーム相互作用」機能を開く</value>
   </data>
   <data name="toolStripSeparator12.Size" type="System.Drawing.Size, System.Drawing">
     <value>112, 6</value>

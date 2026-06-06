@@ -154,7 +154,7 @@
             this.crystalControl1.Location = new System.Drawing.Point(482, 0);
             this.crystalControl1.Margin = new System.Windows.Forms.Padding(0);
             this.crystalControl1.Name = "crystalControl1";
-            this.crystalControl1.ScatteringFactorVisible = false;
+            this.crystalControl1.BeamInteractionVisible = false;
             this.crystalControl1.Size = new System.Drawing.Size(486, 256);
             this.crystalControl1.SkipEvent = false;
             this.crystalControl1.SymmetryInformationVisible = false;

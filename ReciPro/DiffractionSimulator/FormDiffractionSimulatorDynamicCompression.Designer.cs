@@ -1081,36 +1081,12 @@ namespace ReciPro
             // 
             // graphControl
             // 
-            this.graphControl.AllowMouseOperation = true;
-            this.graphControl.BackgroundColor = System.Drawing.Color.White;
-            this.graphControl.BottomMargin = 0D;
-            this.graphControl.AxisLineColor = System.Drawing.Color.Gray;
-            this.graphControl.DivisionLineColor = System.Drawing.Color.LightGray;
-            this.graphControl.FixRangeHorizontal = false;
-            this.graphControl.FixRangeVertical = false;
             this.graphControl.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.graphControl.GraphTitle = "";
-            this.graphControl.AxisXTextVisible = true;
             this.graphControl.Interpolation = false;
-            this.graphControl.IsIntegerX = false;
-            this.graphControl.IsIntegerY = false;
-            this.graphControl.LabelX = "X:";
-            this.graphControl.LabelY = "Y:";
-            this.graphControl.LeftMargin = 0F;
-            this.graphControl.VerticalLineColor = System.Drawing.Color.Red;
-            this.graphControl.LineWidth = 1F;
             this.graphControl.Location = new System.Drawing.Point(72, 365);
-            this.graphControl.LowerX = 0D;
-            this.graphControl.LowerY = 0D;
             this.graphControl.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.graphControl.MaximalX = 1D;
-            this.graphControl.MaximalY = 1D;
-            this.graphControl.MinimalX = 0D;
-            this.graphControl.MinimalY = 0D;
-            this.graphControl.Mode = Crystallography.Controls.GraphControl.DrawingMode.Line;
-            this.graphControl.MousePositionVisible = true;
             this.graphControl.Name = "graphControl";
-            this.graphControl.OriginPosition = new System.Drawing.Point(40, 20);
             this.graphControl.Size = new System.Drawing.Size(475, 186);
             this.graphControl.Smoothing = false;
             this.graphControl.TabIndex = 0;
@@ -1118,14 +1094,6 @@ namespace ReciPro
             this.graphControl.UnitX = " nm";
             this.graphControl.UnitY = " MBar";
             this.graphControl.UpperPanelVisible = false;
-            this.graphControl.UpperX = 1D;
-            this.graphControl.UpperY = 1D;
-            this.graphControl.UseLineWidth = true;
-            this.graphControl.AxisYTextVisible = true;
-            this.graphControl.XLog = false;
-            this.graphControl.DivisionLineXVisible = true;
-            this.graphControl.YLog = false;
-            this.graphControl.DivisionLineYVisible = true;
             this.graphControl.LinePositionChanged += new Crystallography.Controls.GraphControl.LinePositionChengedEventHandler(this.graphControl1_LinePositionChanged);
             // 
             // groupBoxCompressionModel

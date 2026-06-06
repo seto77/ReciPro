@@ -264,7 +264,7 @@
             this.crystalControl1.Location = new System.Drawing.Point(3, 3);
             this.crystalControl1.Margin = new System.Windows.Forms.Padding(0);
             this.crystalControl1.Name = "crystalControl1";
-            this.crystalControl1.ScatteringFactorVisible = false;
+            this.crystalControl1.BeamInteractionVisible = false;
             this.crystalControl1.Size = new System.Drawing.Size(508, 517);
             this.crystalControl1.SkipEvent = false;
             this.crystalControl1.SymmetryInformationVisible = false;
@@ -777,54 +777,20 @@
             // 
             // graphControlResidual
             // 
-            this.graphControlResidual.AllowMouseOperation = true;
             this.graphControlResidual.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.graphControlResidual.BackgroundColor = System.Drawing.Color.White;
-            this.graphControlResidual.BottomMargin = 0D;
-            this.graphControlResidual.AxisLineColor = System.Drawing.Color.Gray;
-            this.graphControlResidual.DivisionLineColor = System.Drawing.Color.LightGray;
-            this.graphControlResidual.FixRangeHorizontal = false;
-            this.graphControlResidual.FixRangeVertical = false;
             this.graphControlResidual.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.graphControlResidual.GraphTitle = "";
-            this.graphControlResidual.AxisXTextVisible = true;
             this.graphControlResidual.Interpolation = false;
-            this.graphControlResidual.IsIntegerX = false;
-            this.graphControlResidual.IsIntegerY = false;
-            this.graphControlResidual.LabelX = "X:";
-            this.graphControlResidual.LabelY = "Y:";
-            this.graphControlResidual.LeftMargin = 0F;
-            this.graphControlResidual.VerticalLineColor = System.Drawing.Color.Red;
-            this.graphControlResidual.LineWidth = 1F;
             this.graphControlResidual.Location = new System.Drawing.Point(184, 4);
-            this.graphControlResidual.LowerX = 0D;
-            this.graphControlResidual.LowerY = 0D;
             this.graphControlResidual.Margin = new System.Windows.Forms.Padding(4);
-            this.graphControlResidual.MaximalX = 1D;
-            this.graphControlResidual.MaximalY = 1D;
-            this.graphControlResidual.MinimalX = 0D;
-            this.graphControlResidual.MinimalY = 0D;
-            this.graphControlResidual.Mode = Crystallography.Controls.GraphControl.DrawingMode.Line;
-            this.graphControlResidual.MousePositionVisible = true;
             this.graphControlResidual.Name = "graphControlResidual";
-            this.graphControlResidual.OriginPosition = new System.Drawing.Point(40, 20);
             this.graphControlResidual.Size = new System.Drawing.Size(322, 189);
             this.graphControlResidual.Smoothing = false;
             this.graphControlResidual.TabIndex = 163;
             this.graphControlResidual.UpperPanelFont = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.graphControlResidual.UnitX = "";
-            this.graphControlResidual.UnitY = "";
             this.graphControlResidual.UpperPanelVisible = false;
-            this.graphControlResidual.UpperX = 1D;
-            this.graphControlResidual.UpperY = 1D;
-            this.graphControlResidual.UseLineWidth = true;
-            this.graphControlResidual.AxisYTextVisible = true;
-            this.graphControlResidual.XLog = false;
-            this.graphControlResidual.DivisionLineXVisible = true;
-            this.graphControlResidual.YLog = false;
-            this.graphControlResidual.DivisionLineYVisible = true;
             // 
             // tabPage8
             // 

@@ -50,48 +50,56 @@ public partial class GraphControl : UserControlBase
     [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     [Category(" 描画範囲")]
     [Description("X軸の描画範囲")]
+    [DefaultValue(1.0)] //260607Cl 追加: 既定値と一致する冗長なデザイナ初期化を抑制
     public double UpperX { get => upperX; set { if (!double.IsNaN(value) && !double.IsInfinity(value)) upperX = value; } }
     private double upperX = 1;
 
     [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     [Category(" 描画範囲")]
     [Description("X軸の描画範囲")]
+    [DefaultValue(0.0)] //260607Cl 追加
     public double LowerX { get => lowerX; set { if (!double.IsNaN(value) && !double.IsInfinity(value)) lowerX = value; } }
     private double lowerX = 0;
 
     [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     [Category(" 描画範囲")]
     [Description("Y軸の描画範囲")]
+    [DefaultValue(1.0)] //260607Cl 追加
     public double UpperY { get => upperY; set { if (!double.IsNaN(value) && !double.IsInfinity(value)) upperY = value; } }
     private double upperY = 1;
 
     [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     [Category(" 描画範囲")]
     [Description("Y軸の描画範囲")]
+    [DefaultValue(0.0)] //260607Cl 追加
     public double LowerY { get => lowerY; set { if (!double.IsNaN(value) && !double.IsInfinity(value)) lowerY = value; } }
     private double lowerY = 0;
 
     [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     [Category(" 描画限度")]
     [Description("X軸の上下限")]
+    [DefaultValue(1.0)] //260607Cl 追加
     public double MaximalX { get => maximalX; set { if (!double.IsNaN(value) && !double.IsInfinity(value)) maximalX = value; } }
     private double maximalX = 1;
 
     [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     [Category(" 描画限度")]
     [Description("X軸の上下限")]
+    [DefaultValue(0.0)] //260607Cl 追加
     public double MinimalX { get => minimalX; set { if (!double.IsNaN(value) && !double.IsInfinity(value)) minimalX = value; } }
     private double minimalX = 0;
 
     [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     [Category(" 描画限度")]
     [Description("Y軸の上下限")]
+    [DefaultValue(1.0)] //260607Cl 追加
     public double MaximalY { get => maximalY; set { if (!double.IsNaN(value) && !double.IsInfinity(value)) maximalY = value; } }
     private double maximalY = 1;
 
     [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     [Category(" 描画限度")]
     [Description("Y軸の上下限")]
+    [DefaultValue(0.0)] //260607Cl 追加
     public double MinimalY { get => minimalY; set { if (!double.IsNaN(value) && !double.IsInfinity(value)) minimalY = value; } }
     private double minimalY = 0;
 
@@ -123,6 +131,17 @@ public partial class GraphControl : UserControlBase
                 return new RectangleD(0, 0, 1, 1);
         }
     }
+
+    /// <summary>描画範囲を数値入力するパネル(flowLayoutPanelRange)を表示するかどうか。既定はfalse。</summary> //260606Cl 追加
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
+    [Category(" 描画範囲")]
+    [Description("描画範囲を数値入力するパネル(X/Yの最小・最大)を表示するかどうか")]
+    [DefaultValue(false)]
+    public bool RangePanelVisible
+    {
+        set { flowLayoutPanelRange.Visible = value; if (value) updateRangeBoxes(); }
+        get => flowLayoutPanelRange.Visible;
+    }
     #endregion
 
     #region 上部パネル設定
@@ -131,24 +150,28 @@ public partial class GraphControl : UserControlBase
     [Description("上部パネルに表示する文字のフォント")]
 
     [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
-    public Font UpperPanelFont { set => labelGraphTitle.Font = labelX.Font = labelXValue.Font = labelY.Font = labelYValue.Font = value; get => labelX.Font; }
+    [DefaultValue(typeof(Font), "Segoe UI, 9pt")] //260607Cl 追加: 既定はlabelX1の継承フォント(GraphControl.Font=Segoe UI 9pt)
+    public Font UpperPanelFont { set => labelGraphTitle.Font = labelX1.Font = labelXValue.Font = labelY1.Font = labelYValue.Font = value; get => labelX1.Font; }
 
     /// <summary>グラフの名前</summary>
     [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     [Category(" 上部パネル")]
     [Description("グラフタイトル(上部パネルの最初に表示される)")]
+    [DefaultValue(" ")] //260607Cl 追加: 既定はlabelGraphTitle.Text=" "(Designer.cs)
     public string GraphTitle { set => labelGraphTitle.Text = value; get => labelGraphTitle.Text; }
 
     /// <summary>上部パネル(マウス位置やラベル情報が表示される)を表示するかどうか</summary>
     [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     [Category(" 上部パネル")]
     [Description("上部パネル(マウス位置やラベル情報が表示される)を表示するかどうか")]
-    public bool UpperPanelVisible { set => flowLayoutPanel.Visible = value; get => flowLayoutPanel.Visible; }
+    [DefaultValue(true)] //260607Cl 追加: panelUpper.Visibleは未設定=既定true
+    public bool UpperPanelVisible { set => panelUpper.Visible = value; get => panelUpper.Visible; }
 
     /// <summary>マウス位置を表示するかどうか</summary>
     [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     [Category(" 上部パネル")]
     [Description("マウス位置を表示するかどうか")]
+    [DefaultValue(true)] //260607Cl 追加: flowLayoutPanelMousePosition.Visibleは未設定=既定true
     public bool MousePositionVisible { set => flowLayoutPanelMousePosition.Visible = value; get => flowLayoutPanelMousePosition.Visible; }
 
     /// <summary>
@@ -157,6 +180,7 @@ public partial class GraphControl : UserControlBase
     [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     [Category(" 上部パネル")]
     [Description("マウスX位置の有効桁数 (-1で無指定)")]
+    [DefaultValue(-1)] //260607Cl 追加
     public int MousePositionXDigit { set; get; } = -1;
 
     /// <summary>
@@ -165,31 +189,56 @@ public partial class GraphControl : UserControlBase
     [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     [Category(" 上部パネル")]
     [Description("マウスYY位置の有効桁数 (-1で無指定)")]
+    [DefaultValue(-1)] //260607Cl 追加
     public int MousePositionYDigit { set; get; } = -1;
 
     /// <summary>X軸の単位</summary>
     [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     [Category(" 上部パネル")]
     [Description("X軸の単位")]
+    [DefaultValue("")] //260607Cl 追加
     public string UnitX { get; set; } = "";
 
     /// <summary>Y軸の単位</summary>
     [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     [Category(" 上部パネル")]
     [Description("Y軸の単位")]
+    [DefaultValue("")] //260607Cl 追加
     public string UnitY { get; set; } = "";
 
     /// <summary>X軸のラベル</summary>
     [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     [Category(" 上部パネル")]
     [Description("X軸のラベル")]
-    public string LabelX { set => labelX.Text = value; get => labelX.Text; }
+    [DefaultValue("X:")] //260607Cl 追加: 既定はlabelX1.Text="X:"(Designer.cs)
+    public string LabelX { set => labelX1.Text = labelX2.Text = value; get => labelX1.Text; }
 
     /// <summary>Y軸のラベル</summary>
     [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     [Category(" 上部パネル")]
     [Description("Y軸のラベル")]
-    public string LabelY { set => labelY.Text = value; get => labelY.Text; }
+    [DefaultValue("Y:")] //260607Cl 追加: 既定はlabelY1.Text="Y:"(Designer.cs)
+    public string LabelY { set => labelY1.Text = labelY2.Text = value; get => labelY1.Text; }
+
+    #endregion
+
+    #region 軸ラベル設定
+
+    /// <summary>X軸(下)に表示する説明ラベル。空でなければ下側の余白を自動で広げる。</summary> //260607Cl 追加
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
+    [Category(" 軸ラベル")]
+    [Description("X軸(下)に表示する説明ラベル(空なら非表示)")]
+    [DefaultValue("")]
+    public string AxisLabelX { set { axisLabelX = value ?? ""; Draw(); } get => axisLabelX; }
+    private string axisLabelX = "";
+
+    /// <summary>Y軸(左)に表示する説明ラベル(反時計回り90度)。空でなければ左側の余白を自動で広げる。</summary> //260607Cl 追加
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
+    [Category(" 軸ラベル")]
+    [Description("Y軸(左)に表示する説明ラベル(反時計回り90度。空なら非表示)")]
+    [DefaultValue("")]
+    public string AxisLabelY { set { axisLabelY = value ?? ""; Draw(); } get => axisLabelY; }
+    private string axisLabelY = "";
 
     #endregion
 
@@ -199,18 +248,21 @@ public partial class GraphControl : UserControlBase
     [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     [Category(" 動作")]
     [Description("マウス操作を受け付けるかどうか")]
+    [DefaultValue(true)] //260607Cl 追加
     public bool AllowMouseOperation { get; set; } = true;
 
     /// <summary>Profileを更新時、横軸を固定するかどうか(ただし、上限下限内で)</summary>
     [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     [Category(" 動作")]
     [Description("Profileを更新時、横軸を固定するかどうか(ただし、上限下限内で)")]
+    [DefaultValue(false)] //260607Cl 追加
     public bool FixRangeHorizontal { set; get; } = false;
 
     /// <summary>Profileを更新時、縦軸を固定するかどうか(ただし、上限下限内で)</summary>
     [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     [Category(" 動作")]
     [Description("Profileを更新時、縦軸を固定するかどうか(ただし、上限下限内で)")]
+    [DefaultValue(false)] //260607Cl 追加
     public bool FixRangeVertical { set; get; } = false;
     #endregion
 
@@ -237,12 +289,14 @@ public partial class GraphControl : UserControlBase
     [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     [Category(" 垂直線")]
     [Description("垂直線の色")]
+    [DefaultValue(typeof(Color), "Red")] //260607Cl 追加
     public Color VerticalLineColor { set; get; } = Color.Red;//260603Cl レビューメモ: setterで Draw() を呼ばないため実行時の色変更が次回再描画まで反映されない(AxisLineColor / AxisTextColor / BackgroundColor も同様の不統一)。
 
     /// <summary>垂直線と各プロファイルの交点にマーカー(丸)と値を表示するかどうか</summary> //260603Cl 追加
     [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     [Category(" 垂直線")]
     [Description("垂直線と各プロファイルの交点にマーカー(丸)と値を表示するかどうか")]
+    [DefaultValue(false)] //260607Cl 追加
     public bool VerticalLineMarkerVisible { set { verticalLineMarkerVisible = value; Draw(); } get => verticalLineMarkerVisible; }
     private bool verticalLineMarkerVisible = false;
 
@@ -250,9 +304,35 @@ public partial class GraphControl : UserControlBase
     [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     [Category(" 垂直線")]
     [Description("交点マーカー(丸)の半径(ピクセル)")]
+    [DefaultValue(3.5f)] //260607Cl 追加
     public float VerticalLineMarkerRadius { set; get; } = 3.5f;
 
     private int selectedVerticalLineIndex = -1;
+
+    #endregion
+
+    #region 注釈ラベル (任意位置テキスト) 260607Cl 追加
+
+    /// <summary>グラフ上の任意位置に描くテキスト注釈。X,Y はデータ座標。
+    /// Y が NaN のときはプロット領域の上端付近に描く (回折ピークの hkl ラベル等)。260607Cl 追加。</summary>
+    /// <param name="X">データ座標 X (Log 軸なら実座標で渡す。内部で log10 変換)</param>
+    /// <param name="Y">データ座標 Y。double.NaN なら上端付近に配置</param>
+    /// <param name="Text">描画する文字列</param>
+    /// <param name="Color">文字色 (兼ガイド線色)</param>
+    /// <param name="Vertical">true で反時計 90 度回転して描く (狭いピーク間隔向け)</param>
+    /// <param name="GuideLine">true で X 位置にプロット全高の薄い点線ガイド縦線を引く</param>
+    public readonly record struct GraphAnnotation(
+        double X, double Y, string Text, Color Color, bool Vertical = false, bool GuideLine = false);
+
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+    [Browsable(false)]
+    public GraphAnnotation[] Annotations
+    {
+        //260607Cl VerticalLines と同じく setter では再描画しない (呼び出し側が AddProfiles/Draw で一括描画。二重 Draw を避ける)
+        set { annotationList.Clear(); if (value != null) annotationList.AddRange(value); }
+        get => annotationList.ToArray();
+    }
+    private readonly List<GraphAnnotation> annotationList = [];
 
     #endregion
 
@@ -296,6 +376,7 @@ public partial class GraphControl : UserControlBase
     [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     [Category(" プロファイル")]
     [Description("共通のプロファイル描画線の太さ (UseLineWidthがtrueの場合に有効)")]
+    [DefaultValue(1f)] //260607Cl 追加
     public float LineWidth { set { lineWidth = value; Draw(); } get => lineWidth; }
     private float lineWidth = 1f;
 
@@ -303,6 +384,7 @@ public partial class GraphControl : UserControlBase
     [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     [Category(" プロファイル")]
     [Description("共通のプロファイル描画線太さを使うか (使わない場合は各ProfileのlineWidthを使う))")]
+    [DefaultValue(true)] //260607Cl 追加
     public bool UseLineWidth { set { useLineWidth = value; Draw(); } get => useLineWidth; }
     private bool useLineWidth = true;
 
@@ -313,12 +395,14 @@ public partial class GraphControl : UserControlBase
     [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     [Category(" 補助線")]
     [Description("目盛補助線の色")]
+    [DefaultValue(typeof(Color), "LightGray")] //260607Cl 追加
     public Color DivisionLineColor { set; get; } = Color.LightGray;
 
     /// <summary>X軸の補助目盛線を表示するかどうか</summary>
     [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     [Category(" 補助線")]
     [Description("X軸の補助目盛線を表示するかどうか")]
+    [DefaultValue(true)] //260607Cl 追加
     public bool DivisionLineXVisible
     {
         set
@@ -338,6 +422,7 @@ public partial class GraphControl : UserControlBase
     [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     [Category(" 補助線")]
     [Description("Y軸の補助目盛線を表示するかどうか")]
+    [DefaultValue(true)] //260607Cl 追加
     public bool DivisionLineYVisible
     {
         set
@@ -361,30 +446,35 @@ public partial class GraphControl : UserControlBase
     [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     [Category(" 軸設定")]
     [Description("軸線の色")]
+    [DefaultValue(typeof(Color), "Gray")] //260607Cl 追加
     public Color AxisLineColor { set; get; } = Color.Gray;
 
     /// <summary>軸文字の色</summary>
     [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     [Category(" 軸設定")]
     [Description("軸文字の色")]
+    [DefaultValue(typeof(Color), "Black")] //260607Cl 追加
     public Color AxisTextColor { set; get; } = Color.Black;
 
     /// <summary>軸文字の色</summary>
     [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     [Category(" 軸設定")]
     [Description("軸文字のフォント")]
+    [DefaultValue(typeof(Font), "Segoe UI, 9pt")] //260607Cl 追加
     public Font AxisTextFont { set; get; } = new Font("Segoe UI", 9);
 
 
     [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     [Category(" 軸設定")]
     [Description("X軸上の数値を表示するかどうか")]
+    [DefaultValue(true)] //260607Cl 追加
     public bool AxisXTextVisible { set { horizontalGradiationTextVisivle = value; Draw(); } get => horizontalGradiationTextVisivle; }
     private bool horizontalGradiationTextVisivle = true;
 
     [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     [Category(" 軸設定")]
     [Description("Y軸上の数値を表示するかどうか")]
+    [DefaultValue(true)] //260607Cl 追加
     public bool AxisYTextVisible { set { verticalGradiationTextVisivle = value; Draw(); } get => verticalGradiationTextVisivle; }
     private bool verticalGradiationTextVisivle = true;
 
@@ -392,6 +482,7 @@ public partial class GraphControl : UserControlBase
     [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     [Category(" 軸設定")]
     [Description("X軸が対数スケールかどうか")]
+    [DefaultValue(false)] //260607Cl 追加
     public bool XLog
     {
         set
@@ -414,6 +505,7 @@ public partial class GraphControl : UserControlBase
     [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     [Category(" 軸設定")]
     [Description("Y軸が対数スケールかどうか")]
+    [DefaultValue(false)] //260607Cl 追加
     public bool YLog
     {
         set
@@ -435,6 +527,7 @@ public partial class GraphControl : UserControlBase
     [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     [Category(" 軸設定")]
     [Description("Xの値が0以上の整数値かどうか")]
+    [DefaultValue(false)] //260607Cl 追加
     public bool IsIntegerX { set { isIntegerX = value; InitializeAxis(); resetDrawRange(); Draw(); } get => isIntegerX; }
     private bool isIntegerX = false;
 
@@ -442,6 +535,7 @@ public partial class GraphControl : UserControlBase
     [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     [Category(" 軸設定")]
     [Description("Yの値が0以上の整数値かどうか")]
+    [DefaultValue(false)] //260607Cl 追加
     public bool IsIntegerY { set { isIntegerY = value; InitializeAxis(); resetDrawRange(); Draw(); } get => isIntegerY; }
     private bool isIntegerY = false;
     #endregion
@@ -451,22 +545,11 @@ public partial class GraphControl : UserControlBase
     [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     [Category(" グラフ位置")]
     [Description("原点の位置(左下からのピクセル単位)")]
-    public Point OriginPosition { set { originPosition = value; Draw(); } get => originPosition; }
-    private Point originPosition = new(40, 20);
-
-    /// <summary>下側の余白(ピクセル単位)</summary>
-    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
-    [Category(" グラフ位置")]
-    [Description("下側の余白(ピクセル単位)")]
-    public double BottomMargin { set { bottomMargin = value; Draw(); } get => bottomMargin; }
-    private double bottomMargin = 0;
-
-    /// <summary>左側の余白(ピクセル単位)</summary>
-    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
-    [Category(" グラフ位置")]
-    [Description("左側の余白(ピクセル単位)")]
-    public float LeftMargin { set { leftMargin = value; Draw(); } get => leftMargin; }
-    private float leftMargin = 0f;
+    [DefaultValue(typeof(Point), "40, 20")] //260607Cl 追加
+    public Point OriginPosition { set { userOrigin = value; Draw(); } get => userOrigin; }//260607Cl: get/setはユーザー設定値(userOrigin)。描画用の実効原点(originPosition)はrecalcDrawOriginで軸ラベル余白を加算して算出
+    private Point userOrigin = new(40, 20);//260607Cl 追加: OriginPositionのユーザー設定値
+    private Point originPosition = new(40, 20);//描画・座標変換で使う実効原点(userOrigin + 軸ラベル余白。recalcDrawOriginで更新)
+    //260607Cl 削除: BottomMargin/LeftMargin プロパティを撤去。LeftMargin は座標変換で未使用(完全デッド)、BottomMargin は全アプリで0設定の死蔵で軸ラベル余白(mBottom)と混同を招くため。出自は PDIndexer FormMain の自前描画(結晶ピークバー領域確保)。
     #endregion
 
     #region その他
@@ -474,12 +557,14 @@ public partial class GraphControl : UserControlBase
     [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     [Category(" その他")]
     [Description(" グラフの背景色")]
+    [DefaultValue(typeof(Color), "White")] //260607Cl 追加
     public Color BackgroundColor { set; get; } = Color.White;
 
     /// <summary>グラフの描画モード</summary>
     [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     [Category(" その他")]
     [Description(" グラフの描画モード")]
+    [DefaultValue(DrawingMode.Line)] //260607Cl 追加
     public DrawingMode Mode { set { mode = value; Draw(); } get { return mode; } }
     private DrawingMode mode = DrawingMode.Line;
 
@@ -780,6 +865,39 @@ public partial class GraphControl : UserControlBase
 
         Draw();
     }
+
+    private bool updatingRangeBoxes = false;//260606Cl 追加: numericBoxへの表示更新中はValueChangedを無視するためのガード
+
+    /// <summary>現在の描画範囲(Lower/Upper)を4つのnumericBoxへ反映する。Log軸時は実座標(10^x)で表示する。 (260606Cl 追加)</summary>
+    private void updateRangeBoxes()
+    {
+        if (!flowLayoutPanelRange.Visible) return;//パネル非表示時は更新不要
+        updatingRangeBoxes = true;
+        numericBoxXMin.Value = XLog ? Math.Pow(10, LowerX) : LowerX;
+        numericBoxXMax.Value = XLog ? Math.Pow(10, UpperX) : UpperX;
+        numericBoxYMin.Value = YLog ? Math.Pow(10, LowerY) : LowerY;
+        numericBoxYMax.Value = YLog ? Math.Pow(10, UpperY) : UpperY;
+        updatingRangeBoxes = false;
+    }
+
+    /// <summary>4つのnumericBoxの入力値を描画範囲に取り込んで再描画する。Log軸時は実座標入力をlog10へ変換する。 (260606Cl 追加)</summary>
+    private void numericBoxRange_ValueChanged(object sender, EventArgs e)
+    {
+        if (updatingRangeBoxes) return;//表示更新由来の変更は無視 (無限ループ防止)
+
+        //実座標 → 描画座標系(Log軸ならlog10)へ変換。0以下でLogが取れない場合はfallback(現値)を維持
+        static double toAxis(double v, bool log, double fallback) => log ? (v > 0 ? Math.Log10(v) : fallback) : v;
+        double xmin = Math.Max(toAxis(numericBoxXMin.Value, XLog, LowerX), MinimalX);
+        double xmax = Math.Min(toAxis(numericBoxXMax.Value, XLog, UpperX), MaximalX);
+        double ymin = Math.Max(toAxis(numericBoxYMin.Value, YLog, LowerY), MinimalY);
+        double ymax = Math.Min(toAxis(numericBoxYMax.Value, YLog, UpperY), MaximalY);
+
+        if (xmin < xmax) { LowerX = xmin; UpperX = xmax; }
+        if (ymin < ymax) { LowerY = ymin; UpperY = ymax; }
+
+        Draw();//Draw内のupdateRangeBoxesでクランプ後の値がnumericBoxへ反映される
+        DrawingRangeChanged?.Invoke(new RectangleD(LowerX, LowerY, UpperX - LowerX, UpperY - LowerY));
+    }
     #endregion
 
     #region Draw
@@ -791,6 +909,8 @@ public partial class GraphControl : UserControlBase
             setDrawRangeLimit();
             resetDrawRange();
         }
+        recalcDrawOrigin();//260607Cl 追加: 軸ラベル余白を反映した実効原点を再計算 (マウス座標変換でも使うので早期return前に)
+        updateRangeBoxes();//260606Cl 追加: 現在の描画範囲を4つのnumericBoxへ反映 (パネル非表示時は即return)
         if (destProfileList == null || destProfileList.Count == 0 || destProfileList[0].Pt == null || destProfileList[0].Pt.Count == 0) return;
         if (PictureBoxSize.Width <= 0 || PictureBoxSize.Height <= 0) return;
 
@@ -799,29 +919,38 @@ public partial class GraphControl : UserControlBase
             //260603Cl レビューメモ: GDIリーク。旧 Bmp / G / pictureBox.Image を Dispose していない。高頻度再描画(縦線ドラッグ等)でハンドル/メモリが積み上がる。using化 or フィールド再利用+Dispose を検討。DrawDivision/DrawProfileLine 等の new Pen/SolidBrush/Font も都度生成・未Disposeで同様。
             Bmp = new Bitmap(PictureBoxSize.Width, PictureBoxSize.Height);
             G = Graphics.FromImage(Bmp);
-            G.Clear(BackgroundColor);
-
-            {
-                G.SmoothingMode = SmoothingMode.AntiAlias;
-                this.DoubleBuffered = true;
-
-                DrawDivision();
-                if (mode == DrawingMode.Histogram)
-                    DrawProfileHistogram();
-                else if (mode == DrawingMode.Line)
-                    DrawProfileLine();
-                else if (mode == DrawingMode.Point)
-                    DrawProfilePoint();
-
-                if (verticalLineList.Count != 0)
-                    DrawLine();
-
-                if (peaks.Count != 0)
-                    DrawPeaks();
-            }
+            this.DoubleBuffered = true;
+            renderGraph(G);//260607Cl: 描画本体を共通メソッド化 (Copy ボタンの metafile 出力と共用)
             pictureBox.Image = Bmp;
         }
         catch { }//260603Cl レビューメモ: 全例外を握り潰しているため描画不具合が無言で「真っ白」になり追跡困難。最低限 Debug.WriteLine を出すべき。
+    }
+
+    /// <summary>グラフ本体を描画する共通シーケンス。画面表示用 Bitmap と Copy 用 Metafile の双方から呼ぶ。</summary>
+    //260607Cl 追加: 旧 Draw() 内に直書きされていた描画シーケンスを切り出し。Draw* ヘルパは field G を参照するため、呼び出し側で G を退避・復帰すること (buttonCopy_Click 参照)。
+    private void renderGraph(Graphics g)
+    {
+        G = g;
+        G.Clear(BackgroundColor);
+        G.SmoothingMode = SmoothingMode.AntiAlias;
+
+        DrawDivision();
+        DrawAxisLabels();//260607Cl 追加: 軸の説明ラベル(下=X, 左=Y回転)を描画
+        if (mode == DrawingMode.Histogram)
+            DrawProfileHistogram();
+        else if (mode == DrawingMode.Line)
+            DrawProfileLine();
+        else if (mode == DrawingMode.Point)
+            DrawProfilePoint();
+
+        if (verticalLineList.Count != 0)
+            DrawLine();
+
+        if (peaks.Count != 0)
+            DrawPeaks();
+
+        if (annotationList.Count != 0)
+            DrawAnnotations();//260607Cl 追加: 任意位置テキスト注釈 (回折ピークの hkl 等)
     }
     #endregion
 
@@ -913,8 +1042,8 @@ public partial class GraphControl : UserControlBase
             labelXValue.Text = labelYValue.Text = "-";
             return;
         }
-        labelXValue.Text = realX.ToString((xLog ? "E" : "g") + (MousePositionXDigit == -1 ? "" : MousePositionXDigit.ToString()));
-        labelYValue.Text = string.Join(", ", yValues);
+        labelXValue.Text = realX.ToString((xLog ? "E" : "g") + (MousePositionXDigit == -1 ? "" : MousePositionXDigit.ToString())) + UnitX;//260607Cl: 数値の後ろに単位(UnitX)を連結
+        labelYValue.Text = string.Join(", ", yValues) + UnitY;//260607Cl: 末尾に単位(UnitY)を連結
     }
 
     /// <summary>グラフ中にpeaksで定義された釣鐘型曲線を描く</summary>
@@ -1100,61 +1229,160 @@ public partial class GraphControl : UserControlBase
         var pen = new Pen(AxisLineColor, 1);
 
         //ここよりX目盛りの描画
-        G.DrawLine(pen, OriginPosition.X, pictureBox.Height - OriginPosition.Y, PictureBoxSize.Width, pictureBox.Height - OriginPosition.Y);
+        G.DrawLine(pen, originPosition.X, pictureBox.Height - originPosition.Y, PictureBoxSize.Width, pictureBox.Height - originPosition.Y);
         int maxDivisionNumber = (this.Width - this.originPosition.X) / 60 + 1;
         var divisions = GetDivisions(LowerX, UpperX, maxDivisionNumber, XLog);
         for (int i = 0; i < divisions.Count; i++)
         {
             pen = new Pen(AxisLineColor, 1);
-            G.DrawLine(pen, ConvToPicBoxCoord(divisions.Keys[i], 0).X, PictureBoxSize.Height - OriginPosition.Y, ConvToPicBoxCoord(divisions.Keys[i], 0).X, PictureBoxSize.Height - OriginPosition.Y + 5);
+            G.DrawLine(pen, ConvToPicBoxCoord(divisions.Keys[i], 0).X, PictureBoxSize.Height - originPosition.Y, ConvToPicBoxCoord(divisions.Keys[i], 0).X, PictureBoxSize.Height - originPosition.Y + 5);
             if (horizontalGradiationTextVisivle)
-                G.DrawString(divisions.Values[i], strFont, brush, ConvToPicBoxCoord(divisions.Keys[i], 0).X - 2, PictureBoxSize.Height - OriginPosition.Y + 5);
+                G.DrawString(divisions.Values[i], strFont, brush, ConvToPicBoxCoord(divisions.Keys[i], 0).X - 2, PictureBoxSize.Height - originPosition.Y + 5);
 
             pen = new Pen(DivisionLineColor, 1);
             if (DivisionLineXVisible)
-                G.DrawLine(pen, ConvToPicBoxCoord(divisions.Keys[i], 0).X, PictureBoxSize.Height - OriginPosition.Y, ConvToPicBoxCoord(divisions.Keys[i], 0).X, 0);
+                G.DrawLine(pen, ConvToPicBoxCoord(divisions.Keys[i], 0).X, PictureBoxSize.Height - originPosition.Y, ConvToPicBoxCoord(divisions.Keys[i], 0).X, 0);
         }
 
         //ここよりY目盛りの描画
-        G.DrawLine(pen, OriginPosition.X, 0, OriginPosition.X, pictureBox.Height - OriginPosition.Y);
+        G.DrawLine(pen, originPosition.X, 0, originPosition.X, pictureBox.Height - originPosition.Y);
         maxDivisionNumber = (this.Height - this.originPosition.Y) / 30 + 1;
         divisions = GetDivisions(LowerY, UpperY, maxDivisionNumber, YLog);
 
         for (int i = 0; i < divisions.Count; i++)
         {
             pen = new Pen(AxisLineColor, 1);
-            G.DrawLine(pen, OriginPosition.X - 8, ConvToPicBoxCoord(0, divisions.Keys[i]).Y, OriginPosition.X, ConvToPicBoxCoord(0, divisions.Keys[i]).Y);
+            G.DrawLine(pen, originPosition.X - 8, ConvToPicBoxCoord(0, divisions.Keys[i]).Y, originPosition.X, ConvToPicBoxCoord(0, divisions.Keys[i]).Y);
 
             //if (horizontalGradiationTextVisivle)//260603Cl 修正: Y軸ラベルの表示可否は vertical 側フラグで判定すべき (AxisYTextVisible が効くように)
             if (verticalGradiationTextVisivle)//260603Cl
-                G.DrawString(divisions.Values[i], strFont, brush, 0, ConvToPicBoxCoord(0, divisions.Keys[i]).Y - 6);
+                G.DrawString(divisions.Values[i], strFont, brush, originPosition.X - userOrigin.X, ConvToPicBoxCoord(0, divisions.Keys[i]).Y - 6);//260607Cl: Y軸ラベル余白(originPosition.X - userOrigin.X)の分だけ目盛り数字を右へずらし、回転ラベルとの重なりを防ぐ
 
             pen = new Pen(DivisionLineColor, 1);
             if (DivisionLineYVisible)
-                G.DrawLine(pen, OriginPosition.X - 8, ConvToPicBoxCoord(0, divisions.Keys[i]).Y, PictureBoxSize.Width, ConvToPicBoxCoord(0, divisions.Keys[i]).Y);
+                G.DrawLine(pen, originPosition.X - 8, ConvToPicBoxCoord(0, divisions.Keys[i]).Y, PictureBoxSize.Width, ConvToPicBoxCoord(0, divisions.Keys[i]).Y);
         }
     }
+    #endregion
+
+    #region 軸ラベル描画 (260607Cl 追加)
+
+    /// <summary>軸ラベルの有無に応じて実効原点(originPosition)を userOrigin + ラベル余白 で再計算する。 (260607Cl 追加)</summary>
+    private void recalcDrawOrigin()
+    {
+        //ラベルが空ならその方向の余白は0。空でなければ文字高さ+2pxを余白に充てる(Y軸ラベルは回転するので占有幅=文字高さ)
+        int mLeft = string.IsNullOrEmpty(axisLabelY) ? 0 : TextRenderer.MeasureText(axisLabelY, AxisTextFont).Height + 2;
+        int mBottom = string.IsNullOrEmpty(axisLabelX) ? 0 : TextRenderer.MeasureText(axisLabelX, AxisTextFont).Height + 2;
+        originPosition = new Point(userOrigin.X + mLeft, userOrigin.Y + mBottom);
+    }
+
+    /// <summary>X軸(下・中央)とY軸(左・中央・反時計90度)の説明ラベルを描く。 (260607Cl 追加)</summary>
+    private void DrawAxisLabels()
+    {
+        if (string.IsNullOrEmpty(axisLabelX) && string.IsNullOrEmpty(axisLabelY)) return;
+        using var brush = new SolidBrush(AxisTextColor);
+        using var fmt = new StringFormat();//260607Cl: 初期化子でなく明示代入 (using中の初期化例外でリークさせない)
+        fmt.Alignment = fmt.LineAlignment = StringAlignment.Center;
+
+        if (!string.IsNullOrEmpty(axisLabelX))//X軸ラベル: グラフ領域の横中央・最下部
+        {
+            float h = TextRenderer.MeasureText(axisLabelX, AxisTextFont).Height;
+            G.DrawString(axisLabelX, AxisTextFont, brush, originPosition.X + (PictureBoxSize.Width - originPosition.X) / 2f, PictureBoxSize.Height - h / 2f, fmt);
+        }
+        if (!string.IsNullOrEmpty(axisLabelY))//Y軸ラベル: 左端・グラフ領域の縦中央・反時計90度
+        {
+            float h = TextRenderer.MeasureText(axisLabelY, AxisTextFont).Height;
+            var s = G.Save();
+            G.TranslateTransform(h / 2f, (PictureBoxSize.Height - originPosition.Y) / 2f);
+            G.RotateTransform(-90);//反時計回り90度
+            G.DrawString(axisLabelY, AxisTextFont, brush, 0, 0, fmt);
+            G.Restore(s);
+        }
+    }
+
+    /// <summary>Annotations を描く: 任意 (X,Y) 位置のテキスト (+任意でガイド縦線)。Y=NaN はプロット上端付近。 (260607Cl 追加)</summary>
+    private void DrawAnnotations()
+    {
+        using var fmt = new StringFormat();
+        float top = 2f;                                          // プロット領域の上端 (y ピクセル)
+        float bottom = PictureBoxSize.Height - originPosition.Y; // プロット領域の下端 (X 軸位置)
+        foreach (var a in annotationList)
+        {
+            double x = xLog ? (a.X > 0 ? Math.Log10(a.X) : double.NaN) : a.X;
+            if (double.IsNaN(x) || double.IsInfinity(x) || x < LowerX || x > UpperX) continue;//範囲外はスキップ
+            float px = ConvToPicBoxCoord(x, 0).X;
+
+            if (a.GuideLine)//薄い点線の縦ガイド
+                using (var pen = new Pen(Color.FromArgb(90, a.Color), 1f) { DashStyle = DashStyle.Dot })
+                    G.DrawLine(pen, px, top, px, bottom);
+
+            if (string.IsNullOrEmpty(a.Text)) continue;
+            using var brush = new SolidBrush(a.Color);
+
+            if (double.IsNaN(a.Y))//上端付近に配置 (回折ピークの hkl ラベル)
+            {
+                if (a.Vertical)//反時計 90 度: 文字列の末尾が上端に来るよう Far 寄せ
+                {
+                    var s = G.Save();
+                    G.TranslateTransform(px, top);
+                    G.RotateTransform(-90);
+                    fmt.Alignment = StringAlignment.Far;
+                    fmt.LineAlignment = StringAlignment.Center;
+                    G.DrawString(a.Text, AxisTextFont, brush, 0, 0, fmt);
+                    G.Restore(s);
+                }
+                else
+                {
+                    fmt.Alignment = StringAlignment.Center;
+                    fmt.LineAlignment = StringAlignment.Near;
+                    G.DrawString(a.Text, AxisTextFont, brush, px, top, fmt);
+                }
+            }
+            else//(X,Y) データ座標に配置
+            {
+                double y = yLog ? (a.Y > 0 ? Math.Log10(a.Y) : double.NaN) : a.Y;
+                if (double.IsNaN(y) || y < LowerY || y > UpperY) continue;
+                var p = ConvToPicBoxCoord(x, y);
+                fmt.LineAlignment = StringAlignment.Center;
+                if (a.Vertical)
+                {
+                    var s = G.Save();
+                    G.TranslateTransform(p.X, p.Y);
+                    G.RotateTransform(-90);
+                    fmt.Alignment = StringAlignment.Center;
+                    G.DrawString(a.Text, AxisTextFont, brush, 0, 0, fmt);
+                    G.Restore(s);
+                }
+                else
+                {
+                    fmt.Alignment = StringAlignment.Center;
+                    G.DrawString(a.Text, AxisTextFont, brush, p.X, p.Y, fmt);
+                }
+            }
+        }
+    }
+
     #endregion
 
     #region 座標変換関係
 
     private PointF ConvToPicBoxCoord(double x, double y)
     {//プロファイル座標をピクチャーボックスの座標系に変換
-        return new PointF((float)((PictureBoxSize.Width - originPosition.X) / (UpperX - LowerX) * (x - LowerX)) + OriginPosition.X,
-        (float)(PictureBoxSize.Height - originPosition.Y - BottomMargin - (PictureBoxSize.Height - OriginPosition.Y - BottomMargin) / (UpperY - LowerY) * (y - LowerY)));
+        return new PointF((float)((PictureBoxSize.Width - originPosition.X) / (UpperX - LowerX) * (x - LowerX)) + originPosition.X,
+        (float)(PictureBoxSize.Height - originPosition.Y - (PictureBoxSize.Height - originPosition.Y) / (UpperY - LowerY) * (y - LowerY)));//260607Cl: BottomMargin(常時0・廃止)を式から除去
     }
 
     private PointF ConvToPicBoxCoord(PointD p)
     {//ピクチャーボックスの座標系に変換
-        return new PointF((float)((PictureBoxSize.Width - OriginPosition.X) / (UpperX - LowerX) * (p.X - LowerX)) + OriginPosition.X,
-            (float)(PictureBoxSize.Height - OriginPosition.Y - BottomMargin - (PictureBoxSize.Height - OriginPosition.Y - BottomMargin) / (UpperY - LowerY) * (p.Y - LowerY)));
+        return new PointF((float)((PictureBoxSize.Width - originPosition.X) / (UpperX - LowerX) * (p.X - LowerX)) + originPosition.X,
+            (float)(PictureBoxSize.Height - originPosition.Y - (PictureBoxSize.Height - originPosition.Y) / (UpperY - LowerY) * (p.Y - LowerY)));//260607Cl: BottomMargin除去
     }
 
     private PointD ConvToRealCoord(int x, int y)
     {//マウス座標をオリジナルの座標系に変換
         return new PointD(
-            (double)(x - OriginPosition.X) / (PictureBoxSize.Width - OriginPosition.X) * (UpperX - LowerX) + LowerX,
-            (double)(PictureBoxSize.Height - y - OriginPosition.Y - BottomMargin) / (PictureBoxSize.Height - OriginPosition.Y - BottomMargin) * (UpperY - LowerY) + LowerY);
+            (double)(x - originPosition.X) / (PictureBoxSize.Width - originPosition.X) * (UpperX - LowerX) + LowerX,
+            (double)(PictureBoxSize.Height - y - originPosition.Y) / (PictureBoxSize.Height - originPosition.Y) * (UpperY - LowerY) + LowerY);//260607Cl: BottomMargin除去
     }
 
     #endregion 座標変換関係
@@ -1192,7 +1420,7 @@ public partial class GraphControl : UserControlBase
             return;
         }
 
-        if (e.Button == MouseButtons.Right && e.X - OriginPosition.X >= 0 && PictureBoxSize.Height - e.Y - OriginPosition.Y >= 0)
+        if (e.Button == MouseButtons.Right && e.X - originPosition.X >= 0 && PictureBoxSize.Height - e.Y - originPosition.Y >= 0)
         {
             MouseRangingMode = true;
             MouseRangeStart = new Point(e.X, e.Y);
@@ -1273,9 +1501,9 @@ public partial class GraphControl : UserControlBase
             y = YLog ? Math.Pow(10, y) : y;//260603Cl
             y = IsIntegerY ? (int)(Math.Round(y)) : y;
 
-            labelXValue.Text = x.ToString((XLog ? "E" : "g") + (MousePositionXDigit == -1 ? "" : MousePositionXDigit.ToString()));
+            labelXValue.Text = x.ToString((XLog ? "E" : "g") + (MousePositionXDigit == -1 ? "" : MousePositionXDigit.ToString())) + UnitX;//260607Cl: 数値の後ろに単位(UnitX)を連結
             //labelYValue.Text = y.ToString((YLog ? "E" : "g") + (MousePositionYDigit == -1 ? "" : MousePositionXDigit.ToString()));//260603Cl 修正: Y桁は MousePositionYDigit を使うべき
-            labelYValue.Text = y.ToString((YLog ? "E" : "g") + (MousePositionYDigit == -1 ? "" : MousePositionYDigit.ToString()));//260603Cl
+            labelYValue.Text = y.ToString((YLog ? "E" : "g") + (MousePositionYDigit == -1 ? "" : MousePositionYDigit.ToString())) + UnitY;//260603Cl //260607Cl: 数値の後ろに単位(UnitY)を連結
         }
 
         if (MouseMovingMode)
@@ -1316,7 +1544,7 @@ public partial class GraphControl : UserControlBase
             {
                 if (verticalLineList.Count > selectedVerticalLineIndex && selectedVerticalLineIndex >= 0)
                 {
-                    var x = XLog ? Math.Pow(10,pt.X) : pt.X;
+                    var x = XLog ? Math.Pow(10, pt.X) : pt.X;
                     verticalLineList[selectedVerticalLineIndex] = new PointD(x, verticalLineList[selectedVerticalLineIndex].Y);
 
                     Draw();
@@ -1381,12 +1609,12 @@ public partial class GraphControl : UserControlBase
                 DrawingRangeChanged?.Invoke(new RectangleD(LowerX, LowerY, UpperX - LowerX, UpperY - LowerY));
             }
         }
-        else if (e.Button == MouseButtons.Right && (e.X - OriginPosition.X) * (PictureBoxSize.Height - e.Y - OriginPosition.Y) < 0)
+        else if (e.Button == MouseButtons.Right && (e.X - originPosition.X) * (PictureBoxSize.Height - e.Y - originPosition.Y) < 0)
         {
-            toolStripMenuItemLogScaleX.Visible = e.X > OriginPosition.X && PictureBoxSize.Height - e.Y < OriginPosition.Y;
-            toolStripMenuItemScaleLineX.Visible = e.X > OriginPosition.X && PictureBoxSize.Height - e.Y < OriginPosition.Y;
-            toolStripMenuItemLogScaleY.Visible = e.X < OriginPosition.X && PictureBoxSize.Height - e.Y > OriginPosition.Y;
-            toolStripMenuItemScaleLineY.Visible = e.X < OriginPosition.X && PictureBoxSize.Height - e.Y > OriginPosition.Y;
+            toolStripMenuItemLogScaleX.Visible = e.X > originPosition.X && PictureBoxSize.Height - e.Y < originPosition.Y;
+            toolStripMenuItemScaleLineX.Visible = e.X > originPosition.X && PictureBoxSize.Height - e.Y < originPosition.Y;
+            toolStripMenuItemLogScaleY.Visible = e.X < originPosition.X && PictureBoxSize.Height - e.Y > originPosition.Y;
+            toolStripMenuItemScaleLineY.Visible = e.X < originPosition.X && PictureBoxSize.Height - e.Y > originPosition.Y;
             MouseRangingMode = false;
             contextMenuStripY.Show(this.pictureBox, e.X, e.Y);
         }
@@ -1418,4 +1646,23 @@ public partial class GraphControl : UserControlBase
         this.yLog = yLog;
     }
     #endregion
+
+    //260607Cl 追加: 描画領域をベクトル(EMF+)としてクリップボードへコピー。
+    //ReciPro 各所 (ScalablePictureBox / FormStereonet / FormDiffractionSimulator / FormImageSimulator) と同じ
+    //Crystallography.ClipboardMetafileHelper を使い、画面表示と同一の描画シーケンス(renderGraph)を metafile の Graphics に流す。
+    private void buttonCopy_Click(object sender, EventArgs e)
+    {
+        if (destProfileList == null || destProfileList.Count == 0 || destProfileList[0].Pt == null || destProfileList[0].Pt.Count == 0) return;
+        if (PictureBoxSize.Width <= 0 || PictureBoxSize.Height <= 0) return;
+
+        var savedG = G;//renderGraph が field G を上書きするため、画面用 Graphics を退避
+        try
+        {
+            ClipboardMetafileHelper.PutDrawingOnClipboardAsEnhMetafile(this.Handle, renderGraph);
+        }
+        finally
+        {
+            G = savedG;//画面用 Graphics へ復帰 (metafile の Graphics は helper 内で破棄済み)
+        }
+    }
 }

@@ -766,11 +766,11 @@
   <data name="contextMenuStrip.Size" type="System.Drawing.Size, System.Drawing">
     <value>279, 242</value>
   </data>
-  <data name="scatteringFactorToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="beamInteractionToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>278, 22</value>
   </data>
-  <data name="scatteringFactorToolStripMenuItem.Text" xml:space="preserve">
-    <value>散乱因子</value>
+  <data name="beamInteractionToolStripMenuItem.Text" xml:space="preserve">
+    <value>ビーム相互作用</value>
   </data>
   <data name="symmetryInformationToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>278, 22</value>
@@ -853,20 +853,20 @@
   <data name="label22.ToolTip" xml:space="preserve">
     <value>結晶の名前</value>
   </data>
-  <data name="buttonScatteringFactor.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="buttonBeamInteraction.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>
   </data>
-  <data name="buttonScatteringFactor.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="buttonBeamInteraction.Location" type="System.Drawing.Point, System.Drawing">
     <value>405, 0</value>
   </data>
-  <data name="buttonScatteringFactor.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="buttonBeamInteraction.Size" type="System.Drawing.Size, System.Drawing">
     <value>65, 26</value>
   </data>
-  <data name="buttonScatteringFactor.Text" xml:space="preserve">
-    <value>散乱因子</value>
+  <data name="buttonBeamInteraction.Text" xml:space="preserve">
+    <value>ビーム相互作用</value>
   </data>
-  <data name="buttonScatteringFactor.ToolTip" xml:space="preserve">
-    <value>構造因子を別ウィンドウで開く</value>
+  <data name="buttonBeamInteraction.ToolTip" xml:space="preserve">
+    <value>ビーム相互作用データを別ウィンドウで開く</value>
   </data>
   <data name="buttonSymmetryInfo.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>

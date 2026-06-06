@@ -284,7 +284,7 @@ public partial class FormMain : FormBase
         //260529Cl 追加: Crystallography.Controls 側 (CrystalControl 内) で生成される子フォームの
         //HelpPage は ReciPro からインスタンスに触れるここで設定する。
         crystalControl.FormSymmetryInformation.HelpPage = "2-symmetry-information";
-        crystalControl.FormScatteringFactor.HelpPage = "3-scattering-factor";
+        crystalControl.FormBeamInteraction.HelpPage = "3-scattering-factor";
 
         //260413Cl DPI スケーリング補正 (ListBox.ColumnWidth は自動スケール対象外)
         listBox.ColumnWidth = (int)(listBox.ColumnWidth * DeviceDpi / 96.0);
@@ -1089,7 +1089,7 @@ public partial class FormMain : FormBase
             SelectionMode.MultiExtended : SelectionMode.One;
     }
 
-    private void crystalControl_ScatteringFactor_VisibleChanged(object sender, EventArgs e) => toolStripButtonScatteringFactor.Checked = crystalControl.FormScatteringFactor.Visible;
+    private void crystalControl_BeamInteraction_VisibleChanged(object sender, EventArgs e) => toolStripButtonBeamInteraction.Checked = crystalControl.FormBeamInteraction.Visible;
 
     private void CrystalControl_SymmetryInformation_VisibleChanged(object sender, EventArgs e) => toolStripButtonSymmetryInformation.Checked = crystalControl.FormSymmetryInformation.Visible;
 
@@ -1106,8 +1106,8 @@ public partial class FormMain : FormBase
             form = FormCrystalDatabase;
         else if (button.Name.Contains("Symmetry"))
             form = crystalControl.FormSymmetryInformation;
-        else if (button.Name.Contains("Scattering"))
-            form = crystalControl.FormScatteringFactor;
+        else if (button.Name.Contains("BeamInteraction"))
+            form = crystalControl.FormBeamInteraction;
         else if (button.Name.Contains("Rotation"))
             form = FormRotation;
         else if (button.Name.Contains("Stereonet"))
@@ -1360,7 +1360,7 @@ public partial class FormMain : FormBase
 
     /// <summary>
     /// 260523Cl 追加: --capture 用。crystalControl が保持する結晶依存の子フォーム
-    /// (FormSymmetryInformation / FormScatteringFactor) を返す。
+    /// (FormSymmetryInformation / FormBeamInteraction) を返す。
     /// これらは Crystallography.Controls アセンブリにあり、かつ親から CrystalControl を注入されて
     /// 初めて動く (単独 reflection 生成では Load で NullReferenceException)。そのため --capture の
     /// reflection 列挙では撮れず、spinel 選択済みの FormMain が持つ配線済みインスタンスを GuiCapture へ渡す。
@@ -1371,8 +1371,8 @@ public partial class FormMain : FormBase
             yield break;
         if (crystalControl.FormSymmetryInformation != null)
             yield return crystalControl.FormSymmetryInformation;
-        if (crystalControl.FormScatteringFactor != null)
-            yield return crystalControl.FormScatteringFactor;
+        if (crystalControl.FormBeamInteraction != null)
+            yield return crystalControl.FormBeamInteraction;
         // 260524Cl 追加: FormStructureViewer は reflection 単独生成だと formMain=null で結晶が無く、原子タブ等が空で
         // クロップされない。FormMain が保持する配線済みインスタンスを渡すと、Show 時の VisibleChanged で
         // 現在結晶 (spinel) が SetGLObjects され、原子タブ含め代表状態で撮れる (reflection 版を上書き)。

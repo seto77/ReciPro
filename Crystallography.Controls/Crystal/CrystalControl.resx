@@ -3534,11 +3534,11 @@ structure view and in the diffraction-profile curves.</value>
   <metadata name="contextMenuStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>248, 17</value>
   </metadata>
-  <data name="scatteringFactorToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="beamInteractionToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>252, 22</value>
   </data>
-  <data name="scatteringFactorToolStripMenuItem.Text" xml:space="preserve">
-    <value>Scattering Factor</value>
+  <data name="beamInteractionToolStripMenuItem.Text" xml:space="preserve">
+    <value>Beam Interaction</value>
   </data>
   <data name="symmetryInformationToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>252, 22</value>
@@ -3696,52 +3696,52 @@ structure view and in the diffraction-profile curves.</value>
   <data name="&gt;&gt;label22.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="buttonScatteringFactor.AutoSize" type="System.Boolean, mscorlib">
+  <data name="buttonBeamInteraction.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="buttonScatteringFactor.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+  <data name="buttonBeamInteraction.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
-  <data name="buttonScatteringFactor.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+  <data name="buttonBeamInteraction.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Right</value>
   </data>
-  <data name="buttonScatteringFactor.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="buttonBeamInteraction.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9.75pt</value>
   </data>
-  <data name="buttonScatteringFactor.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+  <data name="buttonBeamInteraction.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>TopCenter</value>
   </data>
-  <data name="buttonScatteringFactor.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="buttonBeamInteraction.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="buttonScatteringFactor.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="buttonBeamInteraction.Location" type="System.Drawing.Point, System.Drawing">
     <value>353, 0</value>
   </data>
-  <data name="buttonScatteringFactor.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="buttonBeamInteraction.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
-  <data name="buttonScatteringFactor.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="buttonBeamInteraction.Size" type="System.Drawing.Size, System.Drawing">
     <value>114, 25</value>
   </data>
-  <data name="buttonScatteringFactor.TabIndex" type="System.Int32, mscorlib">
+  <data name="buttonBeamInteraction.TabIndex" type="System.Int32, mscorlib">
     <value>87</value>
   </data>
-  <data name="buttonScatteringFactor.Text" xml:space="preserve">
-    <value>Scattering factor</value>
+  <data name="buttonBeamInteraction.Text" xml:space="preserve">
+    <value>Beam interaction</value>
   </data>
-  <data name="buttonScatteringFactor.ToolTip" xml:space="preserve">
-    <value>Open the structure factors in a separate window.</value>
+  <data name="buttonBeamInteraction.ToolTip" xml:space="preserve">
+    <value>Open beam-interaction data in a separate window.</value>
   </data>
-  <data name="&gt;&gt;buttonScatteringFactor.Name" xml:space="preserve">
-    <value>buttonScatteringFactor</value>
+  <data name="&gt;&gt;buttonBeamInteraction.Name" xml:space="preserve">
+    <value>buttonBeamInteraction</value>
   </data>
-  <data name="&gt;&gt;buttonScatteringFactor.Type" xml:space="preserve">
+  <data name="&gt;&gt;buttonBeamInteraction.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;buttonScatteringFactor.Parent" xml:space="preserve">
+  <data name="&gt;&gt;buttonBeamInteraction.Parent" xml:space="preserve">
     <value>panelNameAndActions</value>
   </data>
-  <data name="&gt;&gt;buttonScatteringFactor.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;buttonBeamInteraction.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
   <data name="buttonSymmetryInfo.AutoSize" type="System.Boolean, mscorlib">
@@ -3912,10 +3912,10 @@ structure view and in the diffraction-profile curves.</value>
   <data name="&gt;&gt;asTXTFileallEulerAngleAndDensitySortedToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;scatteringFactorToolStripMenuItem.Name" xml:space="preserve">
-    <value>scatteringFactorToolStripMenuItem</value>
+  <data name="&gt;&gt;beamInteractionToolStripMenuItem.Name" xml:space="preserve">
+    <value>beamInteractionToolStripMenuItem</value>
   </data>
-  <data name="&gt;&gt;scatteringFactorToolStripMenuItem.Type" xml:space="preserve">
+  <data name="&gt;&gt;beamInteractionToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;symmetryInformationToolStripMenuItem.Name" xml:space="preserve">

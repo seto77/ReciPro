@@ -139,7 +139,7 @@
             label90 = new System.Windows.Forms.Label();
             numericBoxZnumber = new NumericBox();
             contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(components);
-            scatteringFactorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            beamInteractionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             symmetryInformationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             importCrystalFromCIFAMCToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -155,7 +155,7 @@
             textBoxName = new System.Windows.Forms.TextBox();
             label22 = new System.Windows.Forms.Label();
             toolTip = new System.Windows.Forms.ToolTip(components);
-            buttonScatteringFactor = new System.Windows.Forms.Button();
+            buttonBeamInteraction = new System.Windows.Forms.Button();
             buttonSymmetryInfo = new System.Windows.Forms.Button();
             flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             panelNameAndActions = new System.Windows.Forms.Panel();
@@ -1198,15 +1198,15 @@
             // contextMenuStrip
             // 
             contextMenuStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
-            contextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { scatteringFactorToolStripMenuItem, symmetryInformationToolStripMenuItem, toolStripSeparator2, importCrystalFromCIFAMCToolStripMenuItem, exportThisCrystalAsCIFToolStripMenuItem, sendThisCrystalToOtherSoftwareToolStripMenuItem, toolStripSeparator1, revertCellConstantsToolStripMenuItem, toolStripSeparator3, strainControlToolStripMenuItem, convertToP1SymmetryToolStripMenuItem, convertToSuperstructureToolStripMenuItem, convertToAnotherSpacegroupToolStripMenuItem });
+            contextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { beamInteractionToolStripMenuItem, symmetryInformationToolStripMenuItem, toolStripSeparator2, importCrystalFromCIFAMCToolStripMenuItem, exportThisCrystalAsCIFToolStripMenuItem, sendThisCrystalToOtherSoftwareToolStripMenuItem, toolStripSeparator1, revertCellConstantsToolStripMenuItem, toolStripSeparator3, strainControlToolStripMenuItem, convertToP1SymmetryToolStripMenuItem, convertToSuperstructureToolStripMenuItem, convertToAnotherSpacegroupToolStripMenuItem });
             contextMenuStrip.Name = "contextMenuStrip1";
             resources.ApplyResources(contextMenuStrip, "contextMenuStrip");
             // 
-            // scatteringFactorToolStripMenuItem
+            // beamInteractionToolStripMenuItem
             // 
-            scatteringFactorToolStripMenuItem.Name = "scatteringFactorToolStripMenuItem";
-            resources.ApplyResources(scatteringFactorToolStripMenuItem, "scatteringFactorToolStripMenuItem");
-            scatteringFactorToolStripMenuItem.Click += scatteringFactorToolStripMenuItem_Click;
+            beamInteractionToolStripMenuItem.Name = "beamInteractionToolStripMenuItem";
+            resources.ApplyResources(beamInteractionToolStripMenuItem, "beamInteractionToolStripMenuItem");
+            beamInteractionToolStripMenuItem.Click += beamInteractionToolStripMenuItem_Click;
             // 
             // symmetryInformationToolStripMenuItem
             // 
@@ -1296,15 +1296,15 @@
             toolTip.IsBalloon = true;
             toolTip.ReshowDelay = 100;
             // 
-            // buttonScatteringFactor
+            // buttonBeamInteraction
             // 
-            resources.ApplyResources(buttonScatteringFactor, "buttonScatteringFactor");
-            buttonScatteringFactor.BackColor = System.Drawing.Color.SteelBlue;
-            buttonScatteringFactor.ForeColor = System.Drawing.Color.White;
-            buttonScatteringFactor.Name = "buttonScatteringFactor";
-            toolTip.SetToolTip(buttonScatteringFactor, resources.GetString("buttonScatteringFactor.ToolTip"));
-            buttonScatteringFactor.UseVisualStyleBackColor = false;
-            buttonScatteringFactor.Click += buttonScatteringFactor_Click;
+            resources.ApplyResources(buttonBeamInteraction, "buttonBeamInteraction");
+            buttonBeamInteraction.BackColor = System.Drawing.Color.SteelBlue;
+            buttonBeamInteraction.ForeColor = System.Drawing.Color.White;
+            buttonBeamInteraction.Name = "buttonBeamInteraction";
+            toolTip.SetToolTip(buttonBeamInteraction, resources.GetString("buttonBeamInteraction.ToolTip"));
+            buttonBeamInteraction.UseVisualStyleBackColor = false;
+            buttonBeamInteraction.Click += buttonBeamInteraction_Click;
             // 
             // buttonSymmetryInfo
             // 
@@ -1325,7 +1325,7 @@
             // 
             panelNameAndActions.Controls.Add(textBoxName);
             panelNameAndActions.Controls.Add(buttonSymmetryInfo);
-            panelNameAndActions.Controls.Add(buttonScatteringFactor);
+            panelNameAndActions.Controls.Add(buttonBeamInteraction);
             panelNameAndActions.Controls.Add(label22);
             resources.ApplyResources(panelNameAndActions, "panelNameAndActions");
             panelNameAndActions.Name = "panelNameAndActions";
@@ -1419,7 +1419,7 @@
         private ColorControl colorControl;
         private System.Windows.Forms.ToolStripMenuItem importCrystalFromCIFAMCToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem sendThisCrystalToOtherSoftwareToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem scatteringFactorToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem beamInteractionToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip;
         private System.Windows.Forms.Panel panel3;
@@ -1499,7 +1499,7 @@
         private NumericBox numericBoxCellMass;
         private NumericBox numericBoxMolarMass;
         private System.Windows.Forms.Button buttonSymmetryInfo;
-        private System.Windows.Forms.Button buttonScatteringFactor;
+        private System.Windows.Forms.Button buttonBeamInteraction;
         private EOSControl eosControl;
         private System.Windows.Forms.Button buttonStressSet;
         private System.Windows.Forms.ToolStripMenuItem convertToP1SymmetryToolStripMenuItem;

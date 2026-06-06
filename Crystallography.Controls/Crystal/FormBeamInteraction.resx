@@ -264,6 +264,9 @@ and extinction condition for each reflection.</value>
   <data name="&gt;&gt;dataGridView.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <metadata name="dataSet.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>373, 17</value>
+  </metadata>
   <data name="checkBoxHideProhibitedPlanes.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -1445,6 +1448,62 @@ follows the length-unit selection (angstrom or nm).</value>
   <data name="&gt;&gt;checkBoxDebyeWaller.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
+  <data name="numAttenThickness.FooterFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9.75pt</value>
+  </data>
+  <data name="numAttenThickness.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 4, 0, 0</value>
+  </data>
+  <data name="numAttenThickness.FooterText" xml:space="preserve">
+    <value>µm</value>
+  </data>
+  <data name="numAttenThickness.HeaderFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9.75pt</value>
+  </data>
+  <data name="numAttenThickness.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 4, 0, 0</value>
+  </data>
+  <data name="numAttenThickness.HeaderText" xml:space="preserve">
+    <value>Thickness t</value>
+  </data>
+  <data name="numAttenThickness.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="numAttenThickness.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="numAttenThickness.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 100</value>
+  </data>
+  <data name="numAttenThickness.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>10, 20</value>
+  </data>
+  <data name="numAttenThickness.Size" type="System.Drawing.Size, System.Drawing">
+    <value>148, 30</value>
+  </data>
+  <data name="numAttenThickness.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="numAttenThickness.ToolTip" xml:space="preserve">
+    <value>Sample thickness for the X-ray transmission
+calculation I/I0 = exp(-µt). Unit: µm.</value>
+  </data>
+  <data name="numAttenThickness.ToolTip1" xml:space="preserve">
+    <value>Sample thickness for the X-ray transmission
+calculation I/I0 = exp(-µt). Unit: µm.</value>
+  </data>
+  <data name="&gt;&gt;numAttenThickness.Name" xml:space="preserve">
+    <value>numAttenThickness</value>
+  </data>
+  <data name="&gt;&gt;numAttenThickness.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numAttenThickness.Parent" xml:space="preserve">
+    <value>flowLayoutPanel9</value>
+  </data>
+  <data name="&gt;&gt;numAttenThickness.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="panel1.Location" type="System.Drawing.Point, System.Drawing">
     <value>57, 3</value>
   </data>
@@ -1469,6 +1528,366 @@ follows the length-unit selection (angstrom or nm).</value>
   <data name="&gt;&gt;panel1.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <data name="&gt;&gt;splitContainer1.Name" xml:space="preserve">
+    <value>splitContainer1</value>
+  </data>
+  <data name="&gt;&gt;splitContainer1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.SplitContainer, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;splitContainer1.Parent" xml:space="preserve">
+    <value>tabPageReflections</value>
+  </data>
+  <data name="&gt;&gt;splitContainer1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel3.Name" xml:space="preserve">
+    <value>flowLayoutPanel3</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel3.Parent" xml:space="preserve">
+    <value>tabPageReflections</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel3.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel2.Name" xml:space="preserve">
+    <value>flowLayoutPanel2</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel2.Parent" xml:space="preserve">
+    <value>tabPageReflections</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel2.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel1.Name" xml:space="preserve">
+    <value>flowLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel1.Parent" xml:space="preserve">
+    <value>tabPageReflections</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel1.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel4.Name" xml:space="preserve">
+    <value>flowLayoutPanel4</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel4.Parent" xml:space="preserve">
+    <value>tabPageReflections</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel4.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="tabPageReflections.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 26</value>
+  </data>
+  <data name="tabPageReflections.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="tabPageReflections.Size" type="System.Drawing.Size, System.Drawing">
+    <value>876, 544</value>
+  </data>
+  <data name="tabPageReflections.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="tabPageReflections.Text" xml:space="preserve">
+    <value>Reflections</value>
+  </data>
+  <data name="&gt;&gt;tabPageReflections.Name" xml:space="preserve">
+    <value>tabPageReflections</value>
+  </data>
+  <data name="&gt;&gt;tabPageReflections.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabPageReflections.Parent" xml:space="preserve">
+    <value>tabControl1</value>
+  </data>
+  <data name="&gt;&gt;tabPageReflections.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel8.Name" xml:space="preserve">
+    <value>flowLayoutPanel8</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel8.Type" xml:space="preserve">
+    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel8.Parent" xml:space="preserve">
+    <value>tabPageScatteringFactors</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel8.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;panel2.Name" xml:space="preserve">
+    <value>panel2</value>
+  </data>
+  <data name="&gt;&gt;panel2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panel2.Parent" xml:space="preserve">
+    <value>tabPageScatteringFactors</value>
+  </data>
+  <data name="&gt;&gt;panel2.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanelModel.Name" xml:space="preserve">
+    <value>flowLayoutPanelModel</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanelModel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanelModel.Parent" xml:space="preserve">
+    <value>tabPageScatteringFactors</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanelModel.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="tabPageScatteringFactors.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 26</value>
+  </data>
+  <data name="tabPageScatteringFactors.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="tabPageScatteringFactors.Size" type="System.Drawing.Size, System.Drawing">
+    <value>876, 544</value>
+  </data>
+  <data name="tabPageScatteringFactors.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="tabPageScatteringFactors.Text" xml:space="preserve">
+    <value>Scattering factors</value>
+  </data>
+  <data name="&gt;&gt;tabPageScatteringFactors.Name" xml:space="preserve">
+    <value>tabPageScatteringFactors</value>
+  </data>
+  <data name="&gt;&gt;tabPageScatteringFactors.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabPageScatteringFactors.Parent" xml:space="preserve">
+    <value>tabControl1</value>
+  </data>
+  <data name="&gt;&gt;tabPageScatteringFactors.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel9.Name" xml:space="preserve">
+    <value>flowLayoutPanel9</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel9.Type" xml:space="preserve">
+    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel9.Parent" xml:space="preserve">
+    <value>tabPageAttenuations</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel9.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;panel3.Name" xml:space="preserve">
+    <value>panel3</value>
+  </data>
+  <data name="&gt;&gt;panel3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panel3.Parent" xml:space="preserve">
+    <value>tabPageAttenuations</value>
+  </data>
+  <data name="&gt;&gt;panel3.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="tabPageAttenuations.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 26</value>
+  </data>
+  <data name="tabPageAttenuations.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="tabPageAttenuations.Size" type="System.Drawing.Size, System.Drawing">
+    <value>876, 544</value>
+  </data>
+  <data name="tabPageAttenuations.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="tabPageAttenuations.Text" xml:space="preserve">
+    <value>Attenuations &amp;&amp; Transport</value>
+  </data>
+  <data name="&gt;&gt;tabPageAttenuations.Name" xml:space="preserve">
+    <value>tabPageAttenuations</value>
+  </data>
+  <data name="&gt;&gt;tabPageAttenuations.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabPageAttenuations.Parent" xml:space="preserve">
+    <value>tabControl1</value>
+  </data>
+  <data name="&gt;&gt;tabPageAttenuations.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="flowLayoutPanel12.AutoScroll" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;dgvFluorScalars.Name" xml:space="preserve">
+    <value>dgvFluorScalars</value>
+  </data>
+  <data name="&gt;&gt;dgvFluorScalars.Type" xml:space="preserve">
+    <value>Crystallography.Controls.MiniTable, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;dgvFluorScalars.Parent" xml:space="preserve">
+    <value>flowLayoutPanel12</value>
+  </data>
+  <data name="&gt;&gt;dgvFluorScalars.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;dgvFluorLines.Name" xml:space="preserve">
+    <value>dgvFluorLines</value>
+  </data>
+  <data name="&gt;&gt;dgvFluorLines.Type" xml:space="preserve">
+    <value>Crystallography.Controls.MiniTable, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;dgvFluorLines.Parent" xml:space="preserve">
+    <value>flowLayoutPanel12</value>
+  </data>
+  <data name="&gt;&gt;dgvFluorLines.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="flowLayoutPanel12.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="flowLayoutPanel12.FlowDirection" type="System.Windows.Forms.FlowDirection, System.Windows.Forms">
+    <value>TopDown</value>
+  </data>
+  <data name="flowLayoutPanel12.Location" type="System.Drawing.Point, System.Drawing">
+    <value>563, 3</value>
+  </data>
+  <data name="flowLayoutPanel12.Size" type="System.Drawing.Size, System.Drawing">
+    <value>310, 538</value>
+  </data>
+  <data name="flowLayoutPanel12.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="flowLayoutPanel12.WrapContents" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel12.Name" xml:space="preserve">
+    <value>flowLayoutPanel12</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel12.Type" xml:space="preserve">
+    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel12.Parent" xml:space="preserve">
+    <value>tabPageFluorescence</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel12.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="graphFluor.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="graphFluor.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9pt</value>
+  </data>
+  <data name="graphFluor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="graphFluor.Size" type="System.Drawing.Size, System.Drawing">
+    <value>560, 538</value>
+  </data>
+  <data name="graphFluor.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;graphFluor.Name" xml:space="preserve">
+    <value>graphFluor</value>
+  </data>
+  <data name="&gt;&gt;graphFluor.Type" xml:space="preserve">
+    <value>Crystallography.Controls.GraphControl, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;graphFluor.Parent" xml:space="preserve">
+    <value>panel4</value>
+  </data>
+  <data name="&gt;&gt;graphFluor.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="panel4.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="panel4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
+  </data>
+  <data name="panel4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>560, 538</value>
+  </data>
+  <data name="panel4.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;panel4.Name" xml:space="preserve">
+    <value>panel4</value>
+  </data>
+  <data name="&gt;&gt;panel4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panel4.Parent" xml:space="preserve">
+    <value>tabPageFluorescence</value>
+  </data>
+  <data name="&gt;&gt;panel4.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="tabPageFluorescence.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 26</value>
+  </data>
+  <data name="tabPageFluorescence.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="tabPageFluorescence.Size" type="System.Drawing.Size, System.Drawing">
+    <value>876, 544</value>
+  </data>
+  <data name="tabPageFluorescence.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="tabPageFluorescence.Text" xml:space="preserve">
+    <value>Fluorescence</value>
+  </data>
+  <data name="&gt;&gt;tabPageFluorescence.Name" xml:space="preserve">
+    <value>tabPageFluorescence</value>
+  </data>
+  <data name="&gt;&gt;tabPageFluorescence.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabPageFluorescence.Parent" xml:space="preserve">
+    <value>tabControl1</value>
+  </data>
+  <data name="&gt;&gt;tabPageFluorescence.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="tabControl1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="tabControl1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 27</value>
+  </data>
+  <data name="tabControl1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>884, 574</value>
+  </data>
+  <data name="tabControl1.TabIndex" type="System.Int32, mscorlib">
+    <value>16</value>
+  </data>
+  <data name="&gt;&gt;tabControl1.Name" xml:space="preserve">
+    <value>tabControl1</value>
+  </data>
+  <data name="&gt;&gt;tabControl1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabControl1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;tabControl1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="splitContainer1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
@@ -1490,31 +1909,31 @@ follows the length-unit selection (angstrom or nm).</value>
   <data name="&gt;&gt;splitContainer1.Panel1.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="graphControl2.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+  <data name="graphControlReflections.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
-  <data name="graphControl2.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="graphControlReflections.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>
   </data>
-  <data name="graphControl2.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="graphControlReflections.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 29</value>
   </data>
-  <data name="graphControl2.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="graphControlReflections.Size" type="System.Drawing.Size, System.Drawing">
     <value>870, 160</value>
   </data>
-  <data name="graphControl2.TabIndex" type="System.Int32, mscorlib">
+  <data name="graphControlReflections.TabIndex" type="System.Int32, mscorlib">
     <value>20</value>
   </data>
-  <data name="&gt;&gt;graphControl2.Name" xml:space="preserve">
-    <value>graphControl2</value>
+  <data name="&gt;&gt;graphControlReflections.Name" xml:space="preserve">
+    <value>graphControlReflections</value>
   </data>
-  <data name="&gt;&gt;graphControl2.Type" xml:space="preserve">
+  <data name="&gt;&gt;graphControlReflections.Type" xml:space="preserve">
     <value>Crystallography.Controls.GraphControl, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;graphControl2.Parent" xml:space="preserve">
+  <data name="&gt;&gt;graphControlReflections.Parent" xml:space="preserve">
     <value>splitContainer1.Panel2</value>
   </data>
-  <data name="&gt;&gt;graphControl2.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;graphControlReflections.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <data name="flowLayoutPanel6.AutoSize" type="System.Boolean, mscorlib">
@@ -1522,18 +1941,6 @@ follows the length-unit selection (angstrom or nm).</value>
   </data>
   <data name="flowLayoutPanel6.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
-  </data>
-  <data name="button1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 3</value>
-  </data>
-  <data name="button1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 23</value>
-  </data>
-  <data name="button1.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="button1.Text" xml:space="preserve">
-    <value>button1</value>
   </data>
   <data name="&gt;&gt;button1.Name" xml:space="preserve">
     <value>button1</value>
@@ -1602,6 +2009,30 @@ follows the length-unit selection (angstrom or nm).</value>
     <value>tabPageReflections</value>
   </data>
   <data name="&gt;&gt;splitContainer1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="button1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
+  </data>
+  <data name="button1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="button1.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="button1.Text" xml:space="preserve">
+    <value>button1</value>
+  </data>
+  <data name="&gt;&gt;button1.Name" xml:space="preserve">
+    <value>button1</value>
+  </data>
+  <data name="&gt;&gt;button1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;button1.Parent" xml:space="preserve">
+    <value>flowLayoutPanel6</value>
+  </data>
+  <data name="&gt;&gt;button1.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <data name="flowLayoutPanel3.AutoSize" type="System.Boolean, mscorlib">
@@ -1718,31 +2149,103 @@ follows the length-unit selection (angstrom or nm).</value>
   <data name="&gt;&gt;flowLayoutPanel4.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
-  <data name="tabPageReflections.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 26</value>
+  <data name="flowLayoutPanel8.AutoScroll" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
-  <data name="tabPageReflections.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
+  <data name="&gt;&gt;miniTableScatteringFactorsXray.Name" xml:space="preserve">
+    <value>miniTableScatteringFactorsXray</value>
   </data>
-  <data name="tabPageReflections.Size" type="System.Drawing.Size, System.Drawing">
-    <value>876, 544</value>
+  <data name="&gt;&gt;miniTableScatteringFactorsXray.Type" xml:space="preserve">
+    <value>Crystallography.Controls.MiniTable, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="tabPageReflections.TabIndex" type="System.Int32, mscorlib">
+  <data name="&gt;&gt;miniTableScatteringFactorsXray.Parent" xml:space="preserve">
+    <value>flowLayoutPanel8</value>
+  </data>
+  <data name="&gt;&gt;miniTableScatteringFactorsXray.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="tabPageReflections.Text" xml:space="preserve">
-    <value>Reflections</value>
+  <data name="&gt;&gt;miniTableScatteringFactorsElectron.Name" xml:space="preserve">
+    <value>miniTableScatteringFactorsElectron</value>
   </data>
-  <data name="&gt;&gt;tabPageReflections.Name" xml:space="preserve">
-    <value>tabPageReflections</value>
+  <data name="&gt;&gt;miniTableScatteringFactorsElectron.Type" xml:space="preserve">
+    <value>Crystallography.Controls.MiniTable, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;tabPageReflections.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;miniTableScatteringFactorsElectron.Parent" xml:space="preserve">
+    <value>flowLayoutPanel8</value>
   </data>
-  <data name="&gt;&gt;tabPageReflections.Parent" xml:space="preserve">
-    <value>tabControl1</value>
+  <data name="&gt;&gt;miniTableScatteringFactorsElectron.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
-  <data name="&gt;&gt;tabPageReflections.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;miniTableScatteringFactorsNeutron.Name" xml:space="preserve">
+    <value>miniTableScatteringFactorsNeutron</value>
+  </data>
+  <data name="&gt;&gt;miniTableScatteringFactorsNeutron.Type" xml:space="preserve">
+    <value>Crystallography.Controls.MiniTable, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;miniTableScatteringFactorsNeutron.Parent" xml:space="preserve">
+    <value>flowLayoutPanel8</value>
+  </data>
+  <data name="&gt;&gt;miniTableScatteringFactorsNeutron.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="flowLayoutPanel8.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="flowLayoutPanel8.FlowDirection" type="System.Windows.Forms.FlowDirection, System.Windows.Forms">
+    <value>TopDown</value>
+  </data>
+  <data name="flowLayoutPanel8.Location" type="System.Drawing.Point, System.Drawing">
+    <value>545, 3</value>
+  </data>
+  <data name="flowLayoutPanel8.Size" type="System.Drawing.Size, System.Drawing">
+    <value>328, 538</value>
+  </data>
+  <data name="flowLayoutPanel8.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="flowLayoutPanel8.WrapContents" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel8.Name" xml:space="preserve">
+    <value>flowLayoutPanel8</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel8.Type" xml:space="preserve">
+    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel8.Parent" xml:space="preserve">
+    <value>tabPageScatteringFactors</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel8.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <metadata name="Column1.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="Column2.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="Column3.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="miniTableScatteringFactorsXray.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
+  </data>
+  <data name="miniTableScatteringFactorsXray.Size" type="System.Drawing.Size, System.Drawing">
+    <value>335, 192</value>
+  </data>
+  <data name="miniTableScatteringFactorsXray.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;miniTableScatteringFactorsXray.Name" xml:space="preserve">
+    <value>miniTableScatteringFactorsXray</value>
+  </data>
+  <data name="&gt;&gt;miniTableScatteringFactorsXray.Type" xml:space="preserve">
+    <value>Crystallography.Controls.MiniTable, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;miniTableScatteringFactorsXray.Parent" xml:space="preserve">
+    <value>flowLayoutPanel8</value>
+  </data>
+  <data name="&gt;&gt;miniTableScatteringFactorsXray.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <metadata name="Column1.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
@@ -1763,25 +2266,163 @@ follows the length-unit selection (angstrom or nm).</value>
   <data name="Column3.HeaderText" xml:space="preserve">
     <value>Column3</value>
   </data>
-  <data name="miniTable1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>533, 44</value>
+  <metadata name="dataGridViewTextBoxColumn1.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="dataGridViewTextBoxColumn2.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="dataGridViewTextBoxColumn3.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="miniTableScatteringFactorsElectron.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 201</value>
   </data>
-  <data name="miniTable1.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="miniTableScatteringFactorsElectron.Size" type="System.Drawing.Size, System.Drawing">
     <value>335, 192</value>
   </data>
-  <data name="miniTable1.TabIndex" type="System.Int32, mscorlib">
+  <data name="miniTableScatteringFactorsElectron.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
   </data>
-  <data name="&gt;&gt;miniTable1.Name" xml:space="preserve">
-    <value>miniTable1</value>
+  <data name="&gt;&gt;miniTableScatteringFactorsElectron.Name" xml:space="preserve">
+    <value>miniTableScatteringFactorsElectron</value>
   </data>
-  <data name="&gt;&gt;miniTable1.Type" xml:space="preserve">
+  <data name="&gt;&gt;miniTableScatteringFactorsElectron.Type" xml:space="preserve">
     <value>Crystallography.Controls.MiniTable, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;miniTable1.Parent" xml:space="preserve">
+  <data name="&gt;&gt;miniTableScatteringFactorsElectron.Parent" xml:space="preserve">
+    <value>flowLayoutPanel8</value>
+  </data>
+  <data name="&gt;&gt;miniTableScatteringFactorsElectron.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <metadata name="dataGridViewTextBoxColumn1.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="dataGridViewTextBoxColumn1.HeaderText" xml:space="preserve">
+    <value>Column1</value>
+  </data>
+  <metadata name="dataGridViewTextBoxColumn2.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="dataGridViewTextBoxColumn2.HeaderText" xml:space="preserve">
+    <value>Column2</value>
+  </data>
+  <metadata name="dataGridViewTextBoxColumn3.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="dataGridViewTextBoxColumn3.HeaderText" xml:space="preserve">
+    <value>Column3</value>
+  </data>
+  <metadata name="dataGridViewTextBoxColumn4.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="dataGridViewTextBoxColumn5.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="dataGridViewTextBoxColumn6.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="miniTableScatteringFactorsNeutron.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 399</value>
+  </data>
+  <data name="miniTableScatteringFactorsNeutron.Size" type="System.Drawing.Size, System.Drawing">
+    <value>335, 192</value>
+  </data>
+  <data name="miniTableScatteringFactorsNeutron.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;miniTableScatteringFactorsNeutron.Name" xml:space="preserve">
+    <value>miniTableScatteringFactorsNeutron</value>
+  </data>
+  <data name="&gt;&gt;miniTableScatteringFactorsNeutron.Type" xml:space="preserve">
+    <value>Crystallography.Controls.MiniTable, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;miniTableScatteringFactorsNeutron.Parent" xml:space="preserve">
+    <value>flowLayoutPanel8</value>
+  </data>
+  <data name="&gt;&gt;miniTableScatteringFactorsNeutron.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <metadata name="dataGridViewTextBoxColumn4.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="dataGridViewTextBoxColumn4.HeaderText" xml:space="preserve">
+    <value>Column1</value>
+  </data>
+  <metadata name="dataGridViewTextBoxColumn5.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="dataGridViewTextBoxColumn5.HeaderText" xml:space="preserve">
+    <value>Column2</value>
+  </data>
+  <metadata name="dataGridViewTextBoxColumn6.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="dataGridViewTextBoxColumn6.HeaderText" xml:space="preserve">
+    <value>Column3</value>
+  </data>
+  <data name="&gt;&gt;graphControlScatteringFactor.Name" xml:space="preserve">
+    <value>graphControlScatteringFactor</value>
+  </data>
+  <data name="&gt;&gt;graphControlScatteringFactor.Type" xml:space="preserve">
+    <value>Crystallography.Controls.GraphControl, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;graphControlScatteringFactor.Parent" xml:space="preserve">
+    <value>panel2</value>
+  </data>
+  <data name="&gt;&gt;graphControlScatteringFactor.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="panel2.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="panel2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
+  </data>
+  <data name="panel2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>542, 538</value>
+  </data>
+  <data name="panel2.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;panel2.Name" xml:space="preserve">
+    <value>panel2</value>
+  </data>
+  <data name="&gt;&gt;panel2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panel2.Parent" xml:space="preserve">
     <value>tabPageScatteringFactors</value>
   </data>
-  <data name="&gt;&gt;miniTable1.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;panel2.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="graphControlScatteringFactor.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="graphControlScatteringFactor.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9pt</value>
+  </data>
+  <data name="graphControlScatteringFactor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="graphControlScatteringFactor.Size" type="System.Drawing.Size, System.Drawing">
+    <value>542, 538</value>
+  </data>
+  <data name="graphControlScatteringFactor.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;graphControlScatteringFactor.Name" xml:space="preserve">
+    <value>graphControlScatteringFactor</value>
+  </data>
+  <data name="&gt;&gt;graphControlScatteringFactor.Type" xml:space="preserve">
+    <value>Crystallography.Controls.GraphControl, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;graphControlScatteringFactor.Parent" xml:space="preserve">
+    <value>panel2</value>
+  </data>
+  <data name="&gt;&gt;graphControlScatteringFactor.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <data name="flowLayoutPanelModel.AutoSize" type="System.Boolean, mscorlib">
@@ -1789,6 +2430,54 @@ follows the length-unit selection (angstrom or nm).</value>
   </data>
   <data name="flowLayoutPanelModel.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanelModel_Xray.Name" xml:space="preserve">
+    <value>flowLayoutPanelModel_Xray</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanelModel_Xray.Type" xml:space="preserve">
+    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanelModel_Xray.Parent" xml:space="preserve">
+    <value>flowLayoutPanelModel</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanelModel_Xray.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanelModel_Electron.Name" xml:space="preserve">
+    <value>flowLayoutPanelModel_Electron</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanelModel_Electron.Type" xml:space="preserve">
+    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanelModel_Electron.Parent" xml:space="preserve">
+    <value>flowLayoutPanelModel</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanelModel_Electron.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="flowLayoutPanelModel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>8, 6</value>
+  </data>
+  <data name="flowLayoutPanelModel.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="flowLayoutPanelModel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>531, 21</value>
+  </data>
+  <data name="flowLayoutPanelModel.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanelModel.Name" xml:space="preserve">
+    <value>flowLayoutPanelModel</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanelModel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanelModel.Parent" xml:space="preserve">
+    <value>tabPageScatteringFactors</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanelModel.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
   <data name="flowLayoutPanelModel_Xray.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1850,170 +2539,92 @@ follows the length-unit selection (angstrom or nm).</value>
   <data name="&gt;&gt;flowLayoutPanelModel_Electron.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="flowLayoutPanelModel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 6</value>
+  <data name="flowLayoutPanel9.AutoScroll" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
-  <data name="flowLayoutPanelModel.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
+  <data name="&gt;&gt;dgvAttenScalars.Name" xml:space="preserve">
+    <value>dgvAttenScalars</value>
   </data>
-  <data name="flowLayoutPanelModel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>531, 21</value>
+  <data name="&gt;&gt;dgvAttenScalars.Type" xml:space="preserve">
+    <value>Crystallography.Controls.MiniTable, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="flowLayoutPanelModel.TabIndex" type="System.Int32, mscorlib">
+  <data name="&gt;&gt;dgvAttenScalars.Parent" xml:space="preserve">
+    <value>flowLayoutPanel9</value>
+  </data>
+  <data name="&gt;&gt;dgvAttenScalars.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;dgvAttenEdges.Name" xml:space="preserve">
+    <value>dgvAttenEdges</value>
+  </data>
+  <data name="&gt;&gt;dgvAttenEdges.Type" xml:space="preserve">
+    <value>Crystallography.Controls.MiniTable, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;dgvAttenEdges.Parent" xml:space="preserve">
+    <value>flowLayoutPanel9</value>
+  </data>
+  <data name="&gt;&gt;dgvAttenEdges.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="&gt;&gt;flowLayoutPanelModel.Name" xml:space="preserve">
-    <value>flowLayoutPanelModel</value>
+  <data name="&gt;&gt;dgvAttenElectron.Name" xml:space="preserve">
+    <value>dgvAttenElectron</value>
   </data>
-  <data name="&gt;&gt;flowLayoutPanelModel.Type" xml:space="preserve">
+  <data name="&gt;&gt;dgvAttenElectron.Type" xml:space="preserve">
+    <value>Crystallography.Controls.MiniTable, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;dgvAttenElectron.Parent" xml:space="preserve">
+    <value>flowLayoutPanel9</value>
+  </data>
+  <data name="&gt;&gt;dgvAttenElectron.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;dgvAttenNeutron.Name" xml:space="preserve">
+    <value>dgvAttenNeutron</value>
+  </data>
+  <data name="&gt;&gt;dgvAttenNeutron.Type" xml:space="preserve">
+    <value>Crystallography.Controls.MiniTable, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;dgvAttenNeutron.Parent" xml:space="preserve">
+    <value>flowLayoutPanel9</value>
+  </data>
+  <data name="&gt;&gt;dgvAttenNeutron.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="flowLayoutPanel9.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="flowLayoutPanel9.FlowDirection" type="System.Windows.Forms.FlowDirection, System.Windows.Forms">
+    <value>TopDown</value>
+  </data>
+  <data name="flowLayoutPanel9.Location" type="System.Drawing.Point, System.Drawing">
+    <value>546, 3</value>
+  </data>
+  <data name="flowLayoutPanel9.Size" type="System.Drawing.Size, System.Drawing">
+    <value>327, 538</value>
+  </data>
+  <data name="flowLayoutPanel9.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="flowLayoutPanel9.WrapContents" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel9.Name" xml:space="preserve">
+    <value>flowLayoutPanel9</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel9.Type" xml:space="preserve">
     <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;flowLayoutPanelModel.Parent" xml:space="preserve">
-    <value>tabPageScatteringFactors</value>
+  <data name="&gt;&gt;flowLayoutPanel9.Parent" xml:space="preserve">
+    <value>tabPageAttenuations</value>
   </data>
-  <data name="&gt;&gt;flowLayoutPanelModel.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="graphControlScatteringFactor.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
-  </data>
-  <data name="graphControlScatteringFactor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 44</value>
-  </data>
-  <data name="graphControlScatteringFactor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>519, 494</value>
-  </data>
-  <data name="graphControlScatteringFactor.TabIndex" type="System.Int32, mscorlib">
+  <data name="&gt;&gt;flowLayoutPanel9.ZOrder" xml:space="preserve">
     <value>0</value>
-  </data>
-  <data name="&gt;&gt;graphControlScatteringFactor.Name" xml:space="preserve">
-    <value>graphControlScatteringFactor</value>
-  </data>
-  <data name="&gt;&gt;graphControlScatteringFactor.Type" xml:space="preserve">
-    <value>Crystallography.Controls.GraphControl, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;graphControlScatteringFactor.Parent" xml:space="preserve">
-    <value>tabPageScatteringFactors</value>
-  </data>
-  <data name="&gt;&gt;graphControlScatteringFactor.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="tabPageScatteringFactors.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 26</value>
-  </data>
-  <data name="tabPageScatteringFactors.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
-  </data>
-  <data name="tabPageScatteringFactors.Size" type="System.Drawing.Size, System.Drawing">
-    <value>876, 544</value>
-  </data>
-  <data name="tabPageScatteringFactors.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="tabPageScatteringFactors.Text" xml:space="preserve">
-    <value>Scattering factors</value>
-  </data>
-  <data name="&gt;&gt;tabPageScatteringFactors.Name" xml:space="preserve">
-    <value>tabPageScatteringFactors</value>
-  </data>
-  <data name="&gt;&gt;tabPageScatteringFactors.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabPageScatteringFactors.Parent" xml:space="preserve">
-    <value>tabControl1</value>
-  </data>
-  <data name="&gt;&gt;tabPageScatteringFactors.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="tlpAtten.ColumnCount" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="graphAtten.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="graphAtten.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
-  </data>
-  <data name="graphAtten.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 3</value>
-  </data>
-  <data name="graphAtten.Size" type="System.Drawing.Size, System.Drawing">
-    <value>533, 532</value>
-  </data>
-  <data name="graphAtten.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;graphAtten.Name" xml:space="preserve">
-    <value>graphAtten</value>
-  </data>
-  <data name="&gt;&gt;graphAtten.Type" xml:space="preserve">
-    <value>Crystallography.Controls.GraphControl, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;graphAtten.Parent" xml:space="preserve">
-    <value>tlpAtten</value>
-  </data>
-  <data name="&gt;&gt;graphAtten.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="numAttenThickness.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="numAttenThickness.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
-  </data>
-  <data name="numAttenThickness.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 4, 0, 0</value>
-  </data>
-  <data name="numAttenThickness.FooterText" xml:space="preserve">
-    <value>µm</value>
-  </data>
-  <data name="numAttenThickness.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
-  </data>
-  <data name="numAttenThickness.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 4, 0, 0</value>
-  </data>
-  <data name="numAttenThickness.HeaderText" xml:space="preserve">
-    <value>Thickness t</value>
-  </data>
-  <data name="numAttenThickness.Location" type="System.Drawing.Point, System.Drawing">
-    <value>539, 0</value>
-  </data>
-  <data name="numAttenThickness.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="numAttenThickness.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 100</value>
-  </data>
-  <data name="numAttenThickness.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>10, 20</value>
-  </data>
-  <data name="numAttenThickness.Size" type="System.Drawing.Size, System.Drawing">
-    <value>331, 30</value>
-  </data>
-  <data name="numAttenThickness.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;numAttenThickness.Name" xml:space="preserve">
-    <value>numAttenThickness</value>
-  </data>
-  <data name="&gt;&gt;numAttenThickness.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;numAttenThickness.Parent" xml:space="preserve">
-    <value>tlpAtten</value>
-  </data>
-  <data name="&gt;&gt;numAttenThickness.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="dgvAttenScalars.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
   </data>
   <data name="dgvAttenScalars.Location" type="System.Drawing.Point, System.Drawing">
-    <value>542, 33</value>
+    <value>3, 33</value>
   </data>
   <data name="dgvAttenScalars.Size" type="System.Drawing.Size, System.Drawing">
-    <value>325, 222</value>
+    <value>299, 222</value>
   </data>
   <data name="dgvAttenScalars.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -2025,130 +2636,181 @@ follows the length-unit selection (angstrom or nm).</value>
     <value>Crystallography.Controls.MiniTable, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;dgvAttenScalars.Parent" xml:space="preserve">
-    <value>tlpAtten</value>
+    <value>flowLayoutPanel9</value>
   </data>
   <data name="&gt;&gt;dgvAttenScalars.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>1</value>
   </data>
-  <data name="dgvAttenTable.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
+  <data name="dgvAttenEdges.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 261</value>
   </data>
-  <data name="dgvAttenTable.Location" type="System.Drawing.Point, System.Drawing">
-    <value>542, 261</value>
+  <data name="dgvAttenEdges.Size" type="System.Drawing.Size, System.Drawing">
+    <value>299, 185</value>
   </data>
-  <data name="dgvAttenTable.Size" type="System.Drawing.Size, System.Drawing">
-    <value>325, 274</value>
+  <data name="dgvAttenEdges.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
   </data>
-  <data name="dgvAttenTable.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
+  <data name="&gt;&gt;dgvAttenEdges.Name" xml:space="preserve">
+    <value>dgvAttenEdges</value>
   </data>
-  <data name="&gt;&gt;dgvAttenTable.Name" xml:space="preserve">
-    <value>dgvAttenTable</value>
-  </data>
-  <data name="&gt;&gt;dgvAttenTable.Type" xml:space="preserve">
+  <data name="&gt;&gt;dgvAttenEdges.Type" xml:space="preserve">
     <value>Crystallography.Controls.MiniTable, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;dgvAttenTable.Parent" xml:space="preserve">
-    <value>tlpAtten</value>
+  <data name="&gt;&gt;dgvAttenEdges.Parent" xml:space="preserve">
+    <value>flowLayoutPanel9</value>
   </data>
-  <data name="&gt;&gt;dgvAttenTable.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;dgvAttenEdges.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="colEdgeElem.HeaderText" xml:space="preserve">
+    <value>Elem</value>
+  </data>
+  <data name="colEdgeZ.HeaderText" xml:space="preserve">
+    <value>Z</value>
+  </data>
+  <data name="colEdgeEdge.HeaderText" xml:space="preserve">
+    <value>Edge</value>
+  </data>
+  <data name="colEdgeKeV.HeaderText" xml:space="preserve">
+    <value>keV</value>
+  </data>
+  <data name="colEdgeJump.HeaderText" xml:space="preserve">
+    <value>Jump</value>
+  </data>
+  <data name="dgvAttenElectron.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 452</value>
+  </data>
+  <data name="dgvAttenElectron.Size" type="System.Drawing.Size, System.Drawing">
+    <value>299, 185</value>
+  </data>
+  <data name="dgvAttenElectron.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;dgvAttenElectron.Name" xml:space="preserve">
+    <value>dgvAttenElectron</value>
+  </data>
+  <data name="&gt;&gt;dgvAttenElectron.Type" xml:space="preserve">
+    <value>Crystallography.Controls.MiniTable, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;dgvAttenElectron.Parent" xml:space="preserve">
+    <value>flowLayoutPanel9</value>
+  </data>
+  <data name="&gt;&gt;dgvAttenElectron.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="tlpAtten.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
+  <data name="colElecElem.HeaderText" xml:space="preserve">
+    <value>Elem</value>
   </data>
-  <data name="tlpAtten.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 3</value>
+  <data name="colElecZ.HeaderText" xml:space="preserve">
+    <value>Z</value>
   </data>
-  <data name="tlpAtten.RowCount" type="System.Int32, mscorlib">
-    <value>3</value>
+  <data name="colElecAt.HeaderText" xml:space="preserve">
+    <value>at%</value>
   </data>
-  <data name="tlpAtten.Size" type="System.Drawing.Size, System.Drawing">
-    <value>870, 538</value>
+  <data name="colElecA.HeaderText" xml:space="preserve">
+    <value>σ (nm²)</value>
   </data>
-  <data name="tlpAtten.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+  <data name="dgvAttenNeutron.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 643</value>
   </data>
-  <data name="&gt;&gt;tlpAtten.Name" xml:space="preserve">
-    <value>tlpAtten</value>
+  <data name="dgvAttenNeutron.Size" type="System.Drawing.Size, System.Drawing">
+    <value>299, 185</value>
   </data>
-  <data name="&gt;&gt;tlpAtten.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tlpAtten.Parent" xml:space="preserve">
-    <value>tabPageAttenuations</value>
-  </data>
-  <data name="&gt;&gt;tlpAtten.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="tlpAtten.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="graphAtten" Row="0" RowSpan="3" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="numAttenThickness" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="dgvAttenScalars" Row="1" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="dgvAttenTable" Row="2" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,62,Percent,38" /&gt;&lt;Rows Styles="AutoSize,0,Percent,45,Percent,55" /&gt;&lt;/TableLayoutSettings&gt;</value>
-  </data>
-  <data name="tabPageAttenuations.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 26</value>
-  </data>
-  <data name="tabPageAttenuations.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
-  </data>
-  <data name="tabPageAttenuations.Size" type="System.Drawing.Size, System.Drawing">
-    <value>876, 544</value>
-  </data>
-  <data name="tabPageAttenuations.TabIndex" type="System.Int32, mscorlib">
+  <data name="dgvAttenNeutron.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
-  <data name="tabPageAttenuations.Text" xml:space="preserve">
-    <value>Attenuations &amp;&amp; Transport</value>
+  <data name="&gt;&gt;dgvAttenNeutron.Name" xml:space="preserve">
+    <value>dgvAttenNeutron</value>
   </data>
-  <data name="&gt;&gt;tabPageAttenuations.Name" xml:space="preserve">
-    <value>tabPageAttenuations</value>
+  <data name="&gt;&gt;dgvAttenNeutron.Type" xml:space="preserve">
+    <value>Crystallography.Controls.MiniTable, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;tabPageAttenuations.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;dgvAttenNeutron.Parent" xml:space="preserve">
+    <value>flowLayoutPanel9</value>
   </data>
-  <data name="&gt;&gt;tabPageAttenuations.Parent" xml:space="preserve">
-    <value>tabControl1</value>
+  <data name="&gt;&gt;dgvAttenNeutron.ZOrder" xml:space="preserve">
+    <value>4</value>
   </data>
-  <data name="&gt;&gt;tabPageAttenuations.ZOrder" xml:space="preserve">
-    <value>2</value>
+  <data name="colNeutElem.HeaderText" xml:space="preserve">
+    <value>Elem</value>
   </data>
-  <data name="tlpFluor.ColumnCount" type="System.Int32, mscorlib">
-    <value>2</value>
+  <data name="colNeutBcoh.HeaderText" xml:space="preserve">
+    <value>b_coh (fm)</value>
   </data>
-  <data name="graphFluor.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
+  <data name="colNeutScoh.HeaderText" xml:space="preserve">
+    <value>σ_coh (barn)</value>
   </data>
-  <data name="graphFluor.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
+  <data name="colNeutAt.HeaderText" xml:space="preserve">
+    <value>at%</value>
   </data>
-  <data name="graphFluor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 3</value>
+  <data name="&gt;&gt;graphAtten.Name" xml:space="preserve">
+    <value>graphAtten</value>
   </data>
-  <data name="graphFluor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>533, 532</value>
-  </data>
-  <data name="graphFluor.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;graphFluor.Name" xml:space="preserve">
-    <value>graphFluor</value>
-  </data>
-  <data name="&gt;&gt;graphFluor.Type" xml:space="preserve">
+  <data name="&gt;&gt;graphAtten.Type" xml:space="preserve">
     <value>Crystallography.Controls.GraphControl, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;graphFluor.Parent" xml:space="preserve">
-    <value>tlpFluor</value>
+  <data name="&gt;&gt;graphAtten.Parent" xml:space="preserve">
+    <value>panel3</value>
   </data>
-  <data name="&gt;&gt;graphFluor.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;graphAtten.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="dgvFluorScalars.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+  <data name="panel3.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="panel3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
+  </data>
+  <data name="panel3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>543, 538</value>
+  </data>
+  <data name="panel3.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;panel3.Name" xml:space="preserve">
+    <value>panel3</value>
+  </data>
+  <data name="&gt;&gt;panel3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panel3.Parent" xml:space="preserve">
+    <value>tabPageAttenuations</value>
+  </data>
+  <data name="&gt;&gt;panel3.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="graphAtten.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
+  <data name="graphAtten.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9pt</value>
+  </data>
+  <data name="graphAtten.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="graphAtten.Size" type="System.Drawing.Size, System.Drawing">
+    <value>543, 538</value>
+  </data>
+  <data name="graphAtten.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;graphAtten.Name" xml:space="preserve">
+    <value>graphAtten</value>
+  </data>
+  <data name="&gt;&gt;graphAtten.Type" xml:space="preserve">
+    <value>Crystallography.Controls.GraphControl, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;graphAtten.Parent" xml:space="preserve">
+    <value>panel3</value>
+  </data>
+  <data name="&gt;&gt;graphAtten.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="dgvFluorScalars.Location" type="System.Drawing.Point, System.Drawing">
-    <value>542, 3</value>
+    <value>3, 3</value>
   </data>
   <data name="dgvFluorScalars.Size" type="System.Drawing.Size, System.Drawing">
-    <value>325, 209</value>
+    <value>325, 118</value>
   </data>
   <data name="dgvFluorScalars.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -2160,19 +2822,16 @@ follows the length-unit selection (angstrom or nm).</value>
     <value>Crystallography.Controls.MiniTable, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;dgvFluorScalars.Parent" xml:space="preserve">
-    <value>tlpFluor</value>
+    <value>flowLayoutPanel12</value>
   </data>
   <data name="&gt;&gt;dgvFluorScalars.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="dgvFluorLines.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
+    <value>0</value>
   </data>
   <data name="dgvFluorLines.Location" type="System.Drawing.Point, System.Drawing">
-    <value>542, 218</value>
+    <value>3, 127</value>
   </data>
   <data name="dgvFluorLines.Size" type="System.Drawing.Size, System.Drawing">
-    <value>325, 317</value>
+    <value>325, 180</value>
   </data>
   <data name="dgvFluorLines.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -2184,124 +2843,25 @@ follows the length-unit selection (angstrom or nm).</value>
     <value>Crystallography.Controls.MiniTable, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;dgvFluorLines.Parent" xml:space="preserve">
-    <value>tlpFluor</value>
+    <value>flowLayoutPanel12</value>
   </data>
   <data name="&gt;&gt;dgvFluorLines.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="tlpFluor.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="tlpFluor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 3</value>
-  </data>
-  <data name="tlpFluor.RowCount" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="tlpFluor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>870, 538</value>
-  </data>
-  <data name="tlpFluor.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;tlpFluor.Name" xml:space="preserve">
-    <value>tlpFluor</value>
-  </data>
-  <data name="&gt;&gt;tlpFluor.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tlpFluor.Parent" xml:space="preserve">
-    <value>tabPageFluorescence</value>
-  </data>
-  <data name="&gt;&gt;tlpFluor.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="tlpFluor.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="graphFluor" Row="0" RowSpan="2" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="dgvFluorScalars" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="dgvFluorLines" Row="1" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,62,Percent,38" /&gt;&lt;Rows Styles="Percent,40,Percent,60" /&gt;&lt;/TableLayoutSettings&gt;</value>
-  </data>
-  <data name="labelFluorNA.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="labelFluorNA.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 3</value>
-  </data>
-  <data name="labelFluorNA.Size" type="System.Drawing.Size, System.Drawing">
-    <value>870, 538</value>
-  </data>
-  <data name="labelFluorNA.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
-  <data name="labelFluorNA.Text" xml:space="preserve">
-    <value>Fluorescence applies to X-ray excitation only.</value>
+  <data name="colFlElem.HeaderText" xml:space="preserve">
+    <value>Elem</value>
   </data>
-  <data name="labelFluorNA.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleCenter</value>
+  <data name="colFlLine.HeaderText" xml:space="preserve">
+    <value>Line</value>
   </data>
-  <data name="labelFluorNA.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
+  <data name="colFlE.HeaderText" xml:space="preserve">
+    <value>E keV</value>
   </data>
-  <data name="&gt;&gt;labelFluorNA.Name" xml:space="preserve">
-    <value>labelFluorNA</value>
+  <data name="colFlRelI.HeaderText" xml:space="preserve">
+    <value>Rel.I</value>
   </data>
-  <data name="&gt;&gt;labelFluorNA.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;labelFluorNA.Parent" xml:space="preserve">
-    <value>tabPageFluorescence</value>
-  </data>
-  <data name="&gt;&gt;labelFluorNA.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="tabPageFluorescence.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 26</value>
-  </data>
-  <data name="tabPageFluorescence.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
-  </data>
-  <data name="tabPageFluorescence.Size" type="System.Drawing.Size, System.Drawing">
-    <value>876, 544</value>
-  </data>
-  <data name="tabPageFluorescence.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="tabPageFluorescence.Text" xml:space="preserve">
-    <value>Fluorescence</value>
-  </data>
-  <data name="&gt;&gt;tabPageFluorescence.Name" xml:space="preserve">
-    <value>tabPageFluorescence</value>
-  </data>
-  <data name="&gt;&gt;tabPageFluorescence.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabPageFluorescence.Parent" xml:space="preserve">
-    <value>tabControl1</value>
-  </data>
-  <data name="&gt;&gt;tabPageFluorescence.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="tabControl1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="tabControl1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 27</value>
-  </data>
-  <data name="tabControl1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>884, 574</value>
-  </data>
-  <data name="tabControl1.TabIndex" type="System.Int32, mscorlib">
-    <value>16</value>
-  </data>
-  <data name="&gt;&gt;tabControl1.Name" xml:space="preserve">
-    <value>tabControl1</value>
-  </data>
-  <data name="&gt;&gt;tabControl1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabControl1.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;tabControl1.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="colFlOmega.HeaderText" xml:space="preserve">
+    <value>ω</value>
   </data>
   <data name="flowLayoutPanel5.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2352,7 +2912,7 @@ follows the length-unit selection (angstrom or nm).</value>
     <value>Manual</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>Scattering Factor</value>
+    <value>Beam Interaction</value>
   </data>
   <data name="&gt;&gt;captureExtender.Name" xml:space="preserve">
     <value>captureExtender</value>
@@ -2480,18 +3040,154 @@ follows the length-unit selection (angstrom or nm).</value>
   <data name="&gt;&gt;Column3.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;dataGridViewTextBoxColumn1.Name" xml:space="preserve">
+    <value>dataGridViewTextBoxColumn1</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewTextBoxColumn1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewTextBoxColumn2.Name" xml:space="preserve">
+    <value>dataGridViewTextBoxColumn2</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewTextBoxColumn2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewTextBoxColumn3.Name" xml:space="preserve">
+    <value>dataGridViewTextBoxColumn3</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewTextBoxColumn3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewTextBoxColumn4.Name" xml:space="preserve">
+    <value>dataGridViewTextBoxColumn4</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewTextBoxColumn4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewTextBoxColumn5.Name" xml:space="preserve">
+    <value>dataGridViewTextBoxColumn5</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewTextBoxColumn5.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewTextBoxColumn6.Name" xml:space="preserve">
+    <value>dataGridViewTextBoxColumn6</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewTextBoxColumn6.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;colEdgeElem.Name" xml:space="preserve">
+    <value>colEdgeElem</value>
+  </data>
+  <data name="&gt;&gt;colEdgeElem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;colEdgeZ.Name" xml:space="preserve">
+    <value>colEdgeZ</value>
+  </data>
+  <data name="&gt;&gt;colEdgeZ.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;colEdgeEdge.Name" xml:space="preserve">
+    <value>colEdgeEdge</value>
+  </data>
+  <data name="&gt;&gt;colEdgeEdge.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;colEdgeKeV.Name" xml:space="preserve">
+    <value>colEdgeKeV</value>
+  </data>
+  <data name="&gt;&gt;colEdgeKeV.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;colEdgeJump.Name" xml:space="preserve">
+    <value>colEdgeJump</value>
+  </data>
+  <data name="&gt;&gt;colEdgeJump.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;colElecElem.Name" xml:space="preserve">
+    <value>colElecElem</value>
+  </data>
+  <data name="&gt;&gt;colElecElem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;colElecZ.Name" xml:space="preserve">
+    <value>colElecZ</value>
+  </data>
+  <data name="&gt;&gt;colElecZ.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;colElecAt.Name" xml:space="preserve">
+    <value>colElecAt</value>
+  </data>
+  <data name="&gt;&gt;colElecAt.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;colElecA.Name" xml:space="preserve">
+    <value>colElecA</value>
+  </data>
+  <data name="&gt;&gt;colElecA.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;colNeutElem.Name" xml:space="preserve">
+    <value>colNeutElem</value>
+  </data>
+  <data name="&gt;&gt;colNeutElem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;colNeutBcoh.Name" xml:space="preserve">
+    <value>colNeutBcoh</value>
+  </data>
+  <data name="&gt;&gt;colNeutBcoh.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;colNeutScoh.Name" xml:space="preserve">
+    <value>colNeutScoh</value>
+  </data>
+  <data name="&gt;&gt;colNeutScoh.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;colNeutAt.Name" xml:space="preserve">
+    <value>colNeutAt</value>
+  </data>
+  <data name="&gt;&gt;colNeutAt.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;colFlElem.Name" xml:space="preserve">
+    <value>colFlElem</value>
+  </data>
+  <data name="&gt;&gt;colFlElem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;colFlLine.Name" xml:space="preserve">
+    <value>colFlLine</value>
+  </data>
+  <data name="&gt;&gt;colFlLine.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;colFlE.Name" xml:space="preserve">
+    <value>colFlE</value>
+  </data>
+  <data name="&gt;&gt;colFlE.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;colFlRelI.Name" xml:space="preserve">
+    <value>colFlRelI</value>
+  </data>
+  <data name="&gt;&gt;colFlRelI.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;colFlOmega.Name" xml:space="preserve">
+    <value>colFlOmega</value>
+  </data>
+  <data name="&gt;&gt;colFlOmega.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>FormScatteringFactor</value>
+    <value>FormBeamInteraction</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
     <value>Crystallography.Controls.FormBase, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="numAttenThickness.ToolTip" xml:space="preserve">
-    <value>Sample thickness for the X-ray transmission
-calculation I/I0 = exp(-µt). Unit: µm.</value>
-  </data>
-  <data name="numAttenThickness.ToolTip1" xml:space="preserve">
-    <value>Sample thickness for the X-ray transmission
-calculation I/I0 = exp(-µt). Unit: µm.</value>
   </data>
 </root>

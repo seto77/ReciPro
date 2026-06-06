@@ -156,48 +156,13 @@
             // graphControlEnergyProfile
             // 
             resources.ApplyResources(graphControlEnergyProfile, "graphControlEnergyProfile");
-            graphControlEnergyProfile.AllowMouseOperation = true;
-            graphControlEnergyProfile.AxisLineColor = System.Drawing.Color.Gray;
-            graphControlEnergyProfile.AxisTextColor = System.Drawing.Color.Black;
-            graphControlEnergyProfile.AxisTextFont = new System.Drawing.Font("Segoe UI", 9F);
-            graphControlEnergyProfile.AxisXTextVisible = true;
-            graphControlEnergyProfile.AxisYTextVisible = true;
-            graphControlEnergyProfile.BackgroundColor = System.Drawing.Color.White;
-            graphControlEnergyProfile.BottomMargin = 0D;
-            graphControlEnergyProfile.DivisionLineColor = System.Drawing.Color.LightGray;
-            graphControlEnergyProfile.DivisionLineXVisible = true;
-            graphControlEnergyProfile.DivisionLineYVisible = true;
-            graphControlEnergyProfile.FixRangeHorizontal = false;
-            graphControlEnergyProfile.FixRangeVertical = false;
             graphControlEnergyProfile.GraphTitle = "";
-            graphControlEnergyProfile.IsIntegerX = false;
-            graphControlEnergyProfile.IsIntegerY = false;
             graphControlEnergyProfile.LabelX = "kev: ";
             graphControlEnergyProfile.LabelY = "freq.: ";
-            graphControlEnergyProfile.LeftMargin = 0F;
-            graphControlEnergyProfile.LineWidth = 1F;
-            graphControlEnergyProfile.LowerX = 0D;
-            graphControlEnergyProfile.LowerY = 0D;
-            graphControlEnergyProfile.MaximalX = 1D;
-            graphControlEnergyProfile.MaximalY = 1D;
-            graphControlEnergyProfile.MinimalX = 0D;
-            graphControlEnergyProfile.MinimalY = 0D;
             graphControlEnergyProfile.Mode = GraphControl.DrawingMode.Histogram;
-            graphControlEnergyProfile.MousePositionVisible = true;
             graphControlEnergyProfile.MousePositionXDigit = 3;
             graphControlEnergyProfile.MousePositionYDigit = 3;
             graphControlEnergyProfile.Name = "graphControlEnergyProfile";
-            graphControlEnergyProfile.OriginPosition = new System.Drawing.Point(40, 20);
-            graphControlEnergyProfile.UnitX = "";
-            graphControlEnergyProfile.UnitY = "";
-            graphControlEnergyProfile.UpperPanelFont = new System.Drawing.Font("Segoe UI", 9F);
-            graphControlEnergyProfile.UpperPanelVisible = true;
-            graphControlEnergyProfile.UpperX = 1D;
-            graphControlEnergyProfile.UpperY = 1D;
-            graphControlEnergyProfile.UseLineWidth = true;
-            graphControlEnergyProfile.VerticalLineColor = System.Drawing.Color.Red;
-            graphControlEnergyProfile.XLog = false;
-            graphControlEnergyProfile.YLog = false;
             // 
             // numericBoxCalcNum
             // 
@@ -247,48 +212,15 @@
             // graphControlDepthProfile
             // 
             resources.ApplyResources(graphControlDepthProfile, "graphControlDepthProfile");
-            graphControlDepthProfile.AllowMouseOperation = true;
-            graphControlDepthProfile.AxisLineColor = System.Drawing.Color.Gray;
-            graphControlDepthProfile.AxisTextColor = System.Drawing.Color.Black;
-            graphControlDepthProfile.AxisTextFont = new System.Drawing.Font("Segoe UI", 9F);
-            graphControlDepthProfile.AxisXTextVisible = true;
-            graphControlDepthProfile.AxisYTextVisible = true;
-            graphControlDepthProfile.BackgroundColor = System.Drawing.Color.White;
-            graphControlDepthProfile.BottomMargin = 0D;
-            graphControlDepthProfile.DivisionLineColor = System.Drawing.Color.LightGray;
-            graphControlDepthProfile.DivisionLineXVisible = true;
-            graphControlDepthProfile.DivisionLineYVisible = true;
-            graphControlDepthProfile.FixRangeHorizontal = false;
-            graphControlDepthProfile.FixRangeVertical = false;
             graphControlDepthProfile.GraphTitle = "";
-            graphControlDepthProfile.IsIntegerX = false;
-            graphControlDepthProfile.IsIntegerY = false;
-            graphControlDepthProfile.LabelX = "µm: ";
-            graphControlDepthProfile.LabelY = "freq.:";
-            graphControlDepthProfile.LeftMargin = 0F;
-            graphControlDepthProfile.LineWidth = 1F;
-            graphControlDepthProfile.LowerX = 0D;
-            graphControlDepthProfile.LowerY = 0D;
-            graphControlDepthProfile.MaximalX = 1D;
-            graphControlDepthProfile.MaximalY = 1D;
-            graphControlDepthProfile.MinimalX = 0D;
-            graphControlDepthProfile.MinimalY = 0D;
+            graphControlDepthProfile.LabelX = "depth: ";
+            graphControlDepthProfile.LabelY = "freq.: ";
             graphControlDepthProfile.Mode = GraphControl.DrawingMode.Histogram;
-            graphControlDepthProfile.MousePositionVisible = true;
             graphControlDepthProfile.MousePositionXDigit = 3;
             graphControlDepthProfile.MousePositionYDigit = 3;
             graphControlDepthProfile.Name = "graphControlDepthProfile";
-            graphControlDepthProfile.OriginPosition = new System.Drawing.Point(40, 20);
-            graphControlDepthProfile.UnitX = "µm";
-            graphControlDepthProfile.UnitY = "%";
-            graphControlDepthProfile.UpperPanelFont = new System.Drawing.Font("Segoe UI", 9F);
-            graphControlDepthProfile.UpperPanelVisible = true;
-            graphControlDepthProfile.UpperX = 1D;
-            graphControlDepthProfile.UpperY = 1D;
-            graphControlDepthProfile.UseLineWidth = true;
-            graphControlDepthProfile.VerticalLineColor = System.Drawing.Color.Red;
-            graphControlDepthProfile.XLog = false;
-            graphControlDepthProfile.YLog = false;
+            graphControlDepthProfile.UnitX = " µm";
+            graphControlDepthProfile.UnitY = " %";
             // 
             // statusStrip1
             // 
@@ -311,48 +243,15 @@
             // graphControlDistance
             // 
             resources.ApplyResources(graphControlDistance, "graphControlDistance");
-            graphControlDistance.AllowMouseOperation = true;
-            graphControlDistance.AxisLineColor = System.Drawing.Color.Gray;
-            graphControlDistance.AxisTextColor = System.Drawing.Color.Black;
-            graphControlDistance.AxisTextFont = new System.Drawing.Font("Segoe UI", 9F);
-            graphControlDistance.AxisXTextVisible = true;
-            graphControlDistance.AxisYTextVisible = true;
-            graphControlDistance.BackgroundColor = System.Drawing.Color.White;
-            graphControlDistance.BottomMargin = 0D;
-            graphControlDistance.DivisionLineColor = System.Drawing.Color.LightGray;
-            graphControlDistance.DivisionLineXVisible = true;
-            graphControlDistance.DivisionLineYVisible = true;
-            graphControlDistance.FixRangeHorizontal = false;
-            graphControlDistance.FixRangeVertical = false;
             graphControlDistance.GraphTitle = "";
-            graphControlDistance.IsIntegerX = false;
-            graphControlDistance.IsIntegerY = false;
-            graphControlDistance.LabelX = "µm: ";
-            graphControlDistance.LabelY = "freq.:";
-            graphControlDistance.LeftMargin = 0F;
-            graphControlDistance.LineWidth = 1F;
-            graphControlDistance.LowerX = 0D;
-            graphControlDistance.LowerY = 0D;
-            graphControlDistance.MaximalX = 1D;
-            graphControlDistance.MaximalY = 1D;
-            graphControlDistance.MinimalX = 0D;
-            graphControlDistance.MinimalY = 0D;
+            graphControlDistance.LabelX = "dist.: ";
+            graphControlDistance.LabelY = "freq.: ";
             graphControlDistance.Mode = GraphControl.DrawingMode.Histogram;
-            graphControlDistance.MousePositionVisible = true;
             graphControlDistance.MousePositionXDigit = 3;
             graphControlDistance.MousePositionYDigit = 3;
             graphControlDistance.Name = "graphControlDistance";
-            graphControlDistance.OriginPosition = new System.Drawing.Point(40, 20);
-            graphControlDistance.UnitX = "nm";
-            graphControlDistance.UnitY = "%";
-            graphControlDistance.UpperPanelFont = new System.Drawing.Font("Segoe UI", 9F);
-            graphControlDistance.UpperPanelVisible = true;
-            graphControlDistance.UpperX = 1D;
-            graphControlDistance.UpperY = 1D;
-            graphControlDistance.UseLineWidth = true;
-            graphControlDistance.VerticalLineColor = System.Drawing.Color.Red;
-            graphControlDistance.XLog = false;
-            graphControlDistance.YLog = false;
+            graphControlDistance.UnitX = " nm";
+            graphControlDistance.UnitY = " %";
             // 
             // poleFigureControl
             // 
