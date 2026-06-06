@@ -1576,6 +1576,10 @@ public partial class FormDiffractionSimulator : FormBase
     {
         if (formMain == null) return;
         if (CancelSetVector) return;
+
+        //260606Cl X線異常分散トグルの有効状態を更新(単色X線=平行/X線歳差 のみ。Back Laue は多色で無効)。SetVector は全 beam/source 変更で呼ばれる単一ポイント。
+        checkBoxAnomalousDispersion.Enabled = Source == WaveSource.Xray && !radioButtonBeamBackLaue.Checked;
+
         var sw = new Stopwatch();
         sw.Start();
 
@@ -1606,6 +1610,9 @@ public partial class FormDiffractionSimulator : FormBase
             }.Min());
         //最大、最小のd値を決定 ここまで
 
+        //260606Cl X線異常分散 f'/f'' を構造因子へ反映するか。単色X線(平行/X線歳差)かつチェックON時のみ。Back Laue(多色)は単一エネルギーが無いので無効。
+        bool useAnomalousDispersion = checkBoxAnomalousDispersion.Checked && Source == WaveSource.Xray && !radioButtonBeamBackLaue.Checked;
+
         if (toolStripButtonDiffractionSpots.Checked)
         {
             if (radioButtonBeamBackLaue.Checked)//Back Laueのとき
@@ -1616,7 +1623,7 @@ public partial class FormDiffractionSimulator : FormBase
 
             foreach (var crystal in formMain.Crystals)
             {
-                crystal.SetVectorOfG(minD, maxD, Source);
+                crystal.SetVectorOfG(minD, maxD, Source, xrayEnergyKeV: Energy, anomalousDispersion: useAnomalousDispersion);//260606Cl X線異常分散(f'/f'')を反映(既定ON, チェックOFF/非X線/Back Laue で無効)
 
                 var latticeType = crystal.Symmetry.LatticeTypeStr;
 
@@ -1648,7 +1655,7 @@ public partial class FormDiffractionSimulator : FormBase
         if (toolStripButtonDebyeRing.Checked)
         {
             formMain.Crystal.SetPlanes(double.PositiveInfinity, minD, true, true, false, true, HorizontalAxis.d, 0.00000000, WaveLength);
-            formMain.Crystal.SetPeakIntensity(Source, WaveColor.Monochrome, WaveLength, null);
+            formMain.Crystal.SetPeakIntensity(Source, WaveColor.Monochrome, WaveLength, null, xrayEnergyKeV: Energy, anomalousDispersion: useAnomalousDispersion);//260606Cl Debye リングにも X線異常分散を反映
             for (int j = 0; j < formMain.Crystal.Plane.Count; j++)
                 if (formMain.Crystal.Plane[j].Intensity < 1E-6)
                     formMain.Crystal.Plane.RemoveAt(j--);
@@ -2348,6 +2355,7 @@ public partial class FormDiffractionSimulator : FormBase
             radioButtonBeamPrecessionXray.Visible = false;//歳差(X線)は非表示
             radioButtonBeamBackLaue.Visible = false;//バックラウエは非表示
             radioButtonIntensityDynamical.Visible = true;//動力学計算は表示
+            checkBoxAnomalousDispersion.Visible = false;//異常分散は非表示
         }
         else if (Source == WaveSource.Xray)//X線が選択された場合
         {
@@ -2358,6 +2366,9 @@ public partial class FormDiffractionSimulator : FormBase
 
             if (radioButtonIntensityDynamical.Checked)//動力学計算が選択されていた場合は運動学に変更
                 radioButtonIntensityKinematical.Checked = true;
+
+            checkBoxAnomalousDispersion.Visible = true;//異常分散は表示
+
         }
         else//中性子が選択された場合
         {
@@ -2367,6 +2378,8 @@ public partial class FormDiffractionSimulator : FormBase
             radioButtonIntensityDynamical.Visible = false;//動力学計算は非表示
             if (radioButtonIntensityDynamical.Checked)//動力学計算が選択されていた場合は運動学に変更
                 radioButtonIntensityKinematical.Checked = true;
+            checkBoxAnomalousDispersion.Visible = false;//異常分散は非表示
+
         }
     }
     #endregion
@@ -2538,6 +2551,13 @@ public partial class FormDiffractionSimulator : FormBase
         }
         else
             checkBoxExtinctionLattice.Enabled = true;
+        SetVector();
+        Draw();
+    }
+
+    //260606Cl 追加: X線異常分散(f'/f'')の ON/OFF。OFF で従来動作(分散なし)に戻る。
+    private void checkBoxAnomalousDispersion_CheckedChanged(object sender, EventArgs e)
+    {
         SetVector();
         Draw();
     }

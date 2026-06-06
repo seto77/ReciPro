@@ -1190,13 +1190,13 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
     /// <param name="dMin"></param>
     /// <param name="wavesource"></param>
     /// <param name="excludeLatticeCondition"></param>
-    public void SetVectorOfG(double dMin, WaveSource wavesource, int maxNum = 25000, double xrayEnergyKeV = double.NaN)  => SetVectorOfG(dMin, double.PositiveInfinity, wavesource, maxNum, xrayEnergyKeV);//260606Cl xrayEnergyKeV 追加
+    public void SetVectorOfG(double dMin, WaveSource wavesource, int maxNum = 25000, double xrayEnergyKeV = double.NaN, bool anomalousDispersion = true)  => SetVectorOfG(dMin, double.PositiveInfinity, wavesource, maxNum, xrayEnergyKeV, anomalousDispersion);//260606Cl xrayEnergyKeV 追加 / anomalousDispersion 追加(既定ON=正しい物理。false で従来動作)
 
     /// <summary>dMin以上、dMax以下の範囲で逆格子ベクトルを計算し、wavesorceに従って、構造因子を計算</summary>
     /// <param name="dMin"></param>
     /// <param name="dMax"></param>
     /// <param name="wavesource"></param>
-    public void SetVectorOfG(double dMin, double dMax, WaveSource wavesource, int maxNum = 25000, double xrayEnergyKeV = double.NaN)//260606Cl xrayEnergyKeV 追加(X線異常分散用)
+    public void SetVectorOfG(double dMin, double dMax, WaveSource wavesource, int maxNum = 25000, double xrayEnergyKeV = double.NaN, bool anomalousDispersion = true)//260606Cl xrayEnergyKeV 追加(X線異常分散用) / anomalousDispersion 追加(既定ON。false で従来=分散なし)
     {
         if (double.IsNaN(dMin)) return;
 
@@ -1301,8 +1301,8 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
         //260606Cl ±共役融合は撤廃。X線異常分散(f'/f'')有効時は F(−G)≠conj(F(+G)) (Bijvoet 差) のため、両 member を常に独立計算する(計算コストは非クリティカル・判定ロジックも削減)。
         //260605Cl Neutron散乱因子は s2非依存なので site ごとに1回だけ事前計算し全反射で使い回す(反射ごとの isotope 加重和を回避)
         var neutronFactors = wavesource == WaveSource.Neutron ? Atoms.Select(a => a.GetAtomicScatteringFactorForNeutron()).ToArray() : null;
-        //260606Cl X線異常分散 f'/f'' は (Z,energy) のみ依存=全反射でループ不変 → サイトごとに1回だけ事前計算(neutronFactors と同型)。Parallel.For 内の native 呼び(反射数×元素数)を回避。
-        var xrayDispFactors = wavesource == WaveSource.Xray && double.IsFinite(xrayEnergyKeV) && xrayEnergyKeV > 0 && Xraylib.Enabled
+        //260606Cl X線異常分散 f'/f'' は (Z,energy) のみ依存=全反射でループ不変 → サイトごとに1回だけ事前計算(neutronFactors と同型)。Parallel.For 内の native 呼び(反射数×元素数)を回避。anomalousDispersion=false なら null(=分散なし=従来動作)。
+        var xrayDispFactors = IsXrayDispersionActive(wavesource, xrayEnergyKeV, anomalousDispersion)
             ? Atoms.Select(a => (fp: Xraylib.Fprime(a.AtomicNumber, xrayEnergyKeV), fpp: Xraylib.Fdoubleprime(a.AtomicNumber, xrayEnergyKeV))).ToArray() : null;
         double globalMax = 0;
         var maxLock = new Lock();
@@ -1317,10 +1317,10 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
                 var minus = new Vector3D(-x, -y, -z, false) { Index = (-h, -k, -l), d = 1 / glen, ExtinctionRule = rule, Text = $"{-h} {-k} {-l}" };
                 if (calcF && rule is null)//禁制でない反射のみ構造因子を計算(禁制は F=0, RawIntensity=0 のまま)
                 {
-                    var f = GetStructureFactor(wavesource, Atoms, (h, k, l), plus.Length2 / 4.0, neutronFactors, xrayEnergyKeV, xrayDispFactors);
+                    var f = GetStructureFactor(wavesource, Atoms, (h, k, l), plus.Length2 / 4.0, neutronFactors, xrayEnergyKeV, xrayDispFactors, anomalousDispersion);
                     plus.F = f;
                     plus.RawIntensity = f.MagnitudeSquared();
-                    var fm = GetStructureFactor(wavesource, Atoms, (-h, -k, -l), minus.Length2 / 4.0, neutronFactors, xrayEnergyKeV, xrayDispFactors);//260606Cl −側も独立計算(±共役撤廃)
+                    var fm = GetStructureFactor(wavesource, Atoms, (-h, -k, -l), minus.Length2 / 4.0, neutronFactors, xrayEnergyKeV, xrayDispFactors, anomalousDispersion);//260606Cl −側も独立計算(±共役撤廃)
                     minus.F = fm;
                     minus.RawIntensity = fm.MagnitudeSquared();
                     if (plus.RawIntensity > localMax) localMax = plus.RawIntensity;
@@ -1559,6 +1559,10 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
     private static Complex XrayDispersionFactor(double f0, double occ, double fPrime, double fDoublePrime)
         => new(f0 + (double.IsNaN(fPrime) ? 0 : 0.1 * occ * fPrime), double.IsNaN(fDoublePrime) ? 0 : -0.1 * occ * fDoublePrime);
 
+    //260606Cl X線異常分散(f'/f'')を適用するかの統一判定。SetVectorOfG / SetPeakIntensity / GetStructureFactor(2版)で共有し、correctness-sensitive な条件の二重管理を防ぐ。
+    private static bool IsXrayDispersionActive(WaveSource wave, double xrayEnergyKeV, bool anomalousDispersion)
+        => anomalousDispersion && wave == WaveSource.Xray && double.IsFinite(xrayEnergyKeV) && xrayEnergyKeV > 0 && Xraylib.Enabled;
+
     //(h,k,l)の構造散乱因子(熱散漫散乱込み)のF (複素数) を計算する (h, k, lが非整数の場合に対応させたテストコード)
     /// <summary>構造因子を求める s2の単位はnm^-2</summary>
     /// <param name="wave"></param>
@@ -1568,7 +1572,7 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
     /// <param name="l"></param>
     /// <param name="s2">単位はnm^-2</param>
     /// <returns></returns>
-    public static Complex GetStructureFactor(WaveSource wave, Atoms[] atomsArray, (double h, double k, double l) index, double s2, double xrayEnergyKeV = double.NaN)//260606Cl xrayEnergyKeV 追加(X線異常分散用, NaN=分散なし)
+    public static Complex GetStructureFactor(WaveSource wave, Atoms[] atomsArray, (double h, double k, double l) index, double s2, double xrayEnergyKeV = double.NaN, bool anomalousDispersion = true)//260606Cl xrayEnergyKeV 追加(X線異常分散用, NaN=分散なし) / anomalousDispersion 追加(既定ON。false で従来動作)
     {
         #region
         (double h, double k, double l) = index;
@@ -1578,7 +1582,7 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
         double realSum = 0, imagSum = 0;
         Complex f = 0;
         int atomicNum = -1, subNum = -1;
-        bool xrayDisp = wave == WaveSource.Xray && double.IsFinite(xrayEnergyKeV) && xrayEnergyKeV > 0 && Xraylib.Enabled;//260606Cl 異常分散の有効判定
+        bool xrayDisp = IsXrayDispersionActive(wave, xrayEnergyKeV, anomalousDispersion);//260606Cl 異常分散の有効判定(anomalousDispersion=false で従来動作)
 
         foreach (var atoms in atomsArray)
         {
@@ -1640,7 +1644,7 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
     /// <param name="l"></param>
     /// <param name="s2">単位はnm^-2</param>
     /// <returns></returns>
-    private static Complex GetStructureFactor(WaveSource wave, Atoms[] atomsArray, (int h, int k, int l) index, double s2, Complex[] neutronFactors = null, double xrayEnergyKeV = double.NaN, (double fp, double fpp)[] xrayDispFactors = null)//260606Cl xrayEnergyKeV/xrayDispFactors 追加(X線異常分散用, NaN/null=分散なし。xrayDispFactors は SetVectorOfG が事前計算したループ不変 f'/f'')
+    private static Complex GetStructureFactor(WaveSource wave, Atoms[] atomsArray, (int h, int k, int l) index, double s2, Complex[] neutronFactors = null, double xrayEnergyKeV = double.NaN, (double fp, double fpp)[] xrayDispFactors = null, bool anomalousDispersion = true)//260606Cl xrayEnergyKeV/xrayDispFactors 追加(X線異常分散用, NaN/null=分散なし。xrayDispFactors は SetVectorOfG が事前計算したループ不変 f'/f'') / anomalousDispersion 追加(既定ON。false で従来動作)
     {
         #region
         //260605Cl 実数振幅高速パス(Xray/Electron)＋Neutron散乱因子の事前計算対応で再構成。旧構造は直上の public double 版(未最適化)と同形、変更前は commit 87045348 参照。
@@ -1652,8 +1656,8 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
         double realSum = 0, imagSum = 0;
         Complex f = 0;
         int atomicNum = -1, subNum = -1;
-        // 260606Cl X線異常分散(f'/f'')有効時は虚部を持つので複素経路へ。電子は実数のまま、中性子は従来どおり複素。
-        bool xrayDisp = wave == WaveSource.Xray && double.IsFinite(xrayEnergyKeV) && xrayEnergyKeV > 0 && Xraylib.Enabled;
+        // 260606Cl X線異常分散(f'/f'')有効時は虚部を持つので複素経路へ。電子は実数のまま、中性子は従来どおり複素。anomalousDispersion=false で従来動作。
+        bool xrayDisp = IsXrayDispersionActive(wave, xrayEnergyKeV, anomalousDispersion);
         bool realAmp = wave == WaveSource.Electron || (wave == WaveSource.Xray && !xrayDisp);
 
         for (int n = 0; n < atomsArray.Length; n++)
@@ -1729,18 +1733,23 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
     /// <param name="index"></param>
     /// <param name="waveSource"></param>
     /// <returns></returns>
-    public Complex GetStructureFactor(WaveSource waveSource, (int h, int k, int l) index, double xrayEnergyKeV = double.NaN)//260606Cl xrayEnergyKeV 追加
+    public Complex GetStructureFactor(WaveSource waveSource, (int h, int k, int l) index, double xrayEnergyKeV = double.NaN, bool anomalousDispersion = true)//260606Cl xrayEnergyKeV 追加 / anomalousDispersion 追加(既定ON。false で従来動作)
     {
         var vec = index.h * A_Star + index.k * B_Star + index.l * C_Star;
-        return GetStructureFactor(waveSource, Atoms, index, vec.Length2 / 4.0, null, xrayEnergyKeV);
+        return GetStructureFactor(waveSource, Atoms, index, vec.Length2 / 4.0, null, xrayEnergyKeV, null, anomalousDispersion);
     }
 
     /// <summary>粉末回折実験における(h,k,l)の回折強度と位置を計算する</summary>
     /// <param name="ramda">波長</param>
-    public void SetPeakIntensity(WaveSource waveSource, WaveColor waveColor, double ramda, Profile whiteProfile)
+    public void SetPeakIntensity(WaveSource waveSource, WaveColor waveColor, double ramda, Profile whiteProfile, double xrayEnergyKeV = double.NaN, bool anomalousDispersion = true)//260606Cl xrayEnergyKeV/anomalousDispersion 追加(X線異常分散用, 既定ON。energy 未指定 or false で従来=分散なし)
     {
         #region
         if (Atoms == null || Atoms.Length == 0 || Plane == null || Plane.Count == 0) return;
+
+        //260606Cl X線異常分散 f'/f'' を事前計算(Z,energy のみ依存=ループ不変。SetVectorOfG と同型)。条件を満たさなければ null=従来動作(分散なし)。
+        //⚠粉末では Friedel 対 (hkl)/(−h−k−l) が同一 2θ に重なるため、代表反射の |F|² 変化(f' シフト+f'' 付加)を反映する近似。Bijvoet 非対称の多重度平均までは行わない。
+        var xrayDispFactors = IsXrayDispersionActive(waveSource, xrayEnergyKeV, anomalousDispersion)
+            ? Atoms.Select(a => (fp: Xraylib.Fprime(a.AtomicNumber, xrayEnergyKeV), fpp: Xraylib.Fdoubleprime(a.AtomicNumber, xrayEnergyKeV))).ToArray() : null;
 
         for (int i = 0; i < Plane.Count; i++)
         {
@@ -1759,12 +1768,12 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
             for (int j = 0; j < s.Length; j++)
             {
                 if (s.Length == 1)
-                    Plane[i].F[j] = GetStructureFactor(waveSource, Atoms, (Plane[i].h, Plane[i].k, Plane[i].l), 1 / d2 / 4.0);
+                    Plane[i].F[j] = GetStructureFactor(waveSource, Atoms, (Plane[i].h, Plane[i].k, Plane[i].l), 1 / d2 / 4.0, null, xrayEnergyKeV, xrayDispFactors, anomalousDispersion);//260606Cl 異常分散 f'/f'' を反映(既定ON)
                 else
                 {
                     var hkl = s[j].Split(' ', true);
                     int h = Convert.ToInt32(hkl[0]), k = Convert.ToInt32(hkl[1]), l = Convert.ToInt32(hkl[2]);
-                    Plane[i].F[j] = GetStructureFactor(waveSource, Atoms, (h, k, l), 1 / d2 / 4.0);
+                    Plane[i].F[j] = GetStructureFactor(waveSource, Atoms, (h, k, l), 1 / d2 / 4.0, null, xrayEnergyKeV, xrayDispFactors, anomalousDispersion);//260606Cl 異常分散 f'/f'' を反映(既定ON)
                 }
 
                 Plane[i].F2[j] = Plane[i].F[j].MagnitudeSquared();

@@ -215,7 +215,7 @@ public partial class FormScatteringFactor : FormBase
                     var gLength = (h * c.A_Star + k * c.B_Star + l * c.C_Star).Length;
                     var d = 1 / gLength;
                     var twoTheta = 2 * Math.Asin(gLength * waveLength / 2) / Math.PI * 180;
-                    var f = Crystal.GetStructureFactor(waveSource, c.Atoms, (h, k, l), 1 / d / d / 4.0);
+                    var f = Crystal.GetStructureFactor(waveSource, c.Atoms, (h, k, l), 1 / d / d / 4.0, xrayEnergyKeV: waveLengthControl1.Energy);//260606Cl 異常分散を本表(SetSortedPlanes)と整合させる(X線時のみ有効, 既定ON)
 
                     dataSet.DataTableScatteringFactor.Add(h, k, l, 1, d, twoTheta, f, f.MagnitudeSquared(), []);
                 }
@@ -287,6 +287,7 @@ public partial class FormScatteringFactor : FormBase
         if (!radioButtonElectronPeng.Checked && !radioButtonElectronKirkland.Checked && !radioButtonElectronEightGaussian.Checked) radioButtonElectronPeng.Checked = true; // 既定: Peng
 
         graphControlScatteringFactor.VerticalLineMarkerVisible = true; // 各曲線にカーソル交点マーカー
+        miniTable1.AllowVerticalScroll = true; // 260606Cl 元素別散乱因子表 (元素数×行) は縦スクロール許可 → 多元素結晶でクリップしない
     }
 
     private ElectronModel CurrentElectronModel()
@@ -530,7 +531,7 @@ public partial class FormScatteringFactor : FormBase
 
     private const double ClassicalElectronRadiusCm = 2.8179403262e-13; // r_e [cm]
     private MonteCarlo attenMc;                       // 電子輸送用 (物性タプルでキャッシュ)
-    private (double z, double a, double rho)? attenMcKey;
+    private (double z, double a, double rho, double nv)? attenMcKey;//260606Cl nv(質量重み平均価電子数)もキャッシュキーに含める
 
     /// <summary>構成元素を (Z, 占有数合計) で集約 (Occ 込み)。260606Cl 追加。</summary>
     private (int z, double occ)[] AggregateElements()
@@ -589,6 +590,10 @@ public partial class FormScatteringFactor : FormBase
         ConfigCol(colEdgeElem, default, fill: true); ConfigCol(colEdgeZ, R, "0"); ConfigCol(colEdgeEdge, C); ConfigCol(colEdgeKeV, R, "g4"); ConfigCol(colEdgeJump, R, "g3");
         ConfigCol(colElecElem, default, fill: true); ConfigCol(colElecZ, R, "0"); ConfigCol(colElecAt, R, "g3"); ConfigCol(colElecA, R, "g4");
         ConfigCol(colNeutElem, default, fill: true); ConfigCol(colNeutBcoh, R, "g4"); ConfigCol(colNeutScoh, R, "g4"); ConfigCol(colNeutAt, R, "g3");
+
+        // 260606Cl 行数の多い元素別表 (元素数×行。Edges は最大 2×元素数) は縦スクロール許可 → 多元素結晶でもクリップしない
+        foreach (var t in new[] { dgvAttenEdges, dgvAttenElectron, dgvAttenNeutron })
+            t.AllowVerticalScroll = true;
     }
 
     /// <summary>ビーム種に応じて Attenuation タブを更新する。260606Cl 追加。</summary>
@@ -684,7 +689,7 @@ public partial class FormScatteringFactor : FormBase
             {
                 double ee = xrl ? Xraylib.EdgeEnergyKeV(z, shell) : AtomStatic.CharacteristicXrayEnergy(z, edge);
                 if (double.IsNaN(ee) || ee <= 0) continue;
-                double jf = xrl ? Xraylib.EdgeJumpFactor(z, shell) : double.NaN;
+                double jf = xrl ? Xraylib.EdgeJumpFactor(z, shell) : AtomStatic.AbsorptionJumpRatio(z, edge);//260606Cl xraylib 無効時は内蔵 FFAST テーブルからジャンプ比をフォールバック(未収載は NaN→空欄)
                 rows.Add([AtomStatic.AtomicName(z), z, name, ee, double.IsNaN(jf) ? (object)null : jf]);
             }
         dgvAttenEdges.SetRows(rows);
@@ -755,7 +760,8 @@ public partial class FormScatteringFactor : FormBase
         double avgA = els.Sum(x => x.occ * AtomStatic.AtomicWeight(x.z)) / totalOcc;
         double rho = Crystal.Density;
 
-        var mc = GetAttenMonteCarlo(avgZ, avgA, rho);
+        double nv = MonteCarlo.EstimateAverageValenceElectronCount(els.Select(x => (x.z, x.occ * AtomStatic.AtomicWeight(x.z))));//260606Cl 質量重み平均価電子数 Nv(plasma E/IMFP の TPP-2M 精度向上。旧: avgZ 単一推定)
+        var mc = GetAttenMonteCarlo(avgZ, avgA, rho, nv);
         var (_, sigma, mfp, dEds) = mc.GetParameters(kev);
         double imfpA = mc.GetInelasticMeanFreePathAngstrom(kev * 1000); // keV → eV
         double lambdaNm = UniversalConstants.Convert.EnergyToElectronWaveLength(kev);
@@ -781,12 +787,12 @@ public partial class FormScatteringFactor : FormBase
     }
 
     /// <summary>物性タプル (avgZ,avgA,ρ) でキャッシュした MonteCarlo (固定 30keV 構築・混合系 atoms 渡し)。260606Cl 追加。</summary>
-    private MonteCarlo GetAttenMonteCarlo(double avgZ, double avgA, double rho)
+    private MonteCarlo GetAttenMonteCarlo(double avgZ, double avgA, double rho, double valenceElectronCount)//260606Cl valenceElectronCount 追加(質量重み Nv で plasma/IMFP 精度向上)
     {
-        var key = (avgZ, avgA, rho);
+        var key = (avgZ, avgA, rho, valenceElectronCount);
         if (attenMc == null || attenMcKey != key)
         {
-            attenMc = new MonteCarlo(avgZ, avgA, rho, 30, 0, atoms: Crystal.Atoms);
+            attenMc = new MonteCarlo(avgZ, avgA, rho, 30, 0, valenceElectronCount: valenceElectronCount, atoms: Crystal.Atoms);//260606Cl 旧: valenceElectronCount 未指定(=avgZ 単一推定)。質量重み Nv を渡す
             attenMcKey = key;
         }
         return attenMc;
@@ -894,6 +900,7 @@ public partial class FormScatteringFactor : FormBase
         ConfigCol(colFlElem, default, fill: true);
         ConfigCol(colFlLine, DataGridViewContentAlignment.MiddleCenter);
         ConfigCol(colFlE, R, "g4"); ConfigCol(colFlRelI, R, "g3"); ConfigCol(colFlOmega, R, "g3");
+        dgvFluorLines.AllowVerticalScroll = true; // 260606Cl 特性線表 (発光線×元素数=行数多) は縦スクロール許可
     }
 
     /// <summary>Fluorescence タブ更新。X線時のみ内容を出し、電子/中性子では無効メッセージ。260606Cl 追加。</summary>

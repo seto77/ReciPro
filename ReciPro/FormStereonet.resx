@@ -555,6 +555,14 @@ labels instead of the spot color.</value>
   <data name="colorControlIndexLabel.TabIndex" type="System.Int32, mscorlib">
     <value>50</value>
   </data>
+  <data name="colorControlIndexLabel.ToolTip" xml:space="preserve">
+    <value>Set the fixed color used for index
+labels when 'Specify color' is enabled.</value>
+  </data>
+  <data name="colorControlIndexLabel.ToolTip1" xml:space="preserve">
+    <value>Set the fixed color used for index
+labels when 'Specify color' is enabled.</value>
+  </data>
   <data name="&gt;&gt;colorControlIndexLabel.Name" xml:space="preserve">
     <value>colorControlIndexLabel</value>
   </data>
@@ -601,7 +609,7 @@ labels instead of the spot color.</value>
     <value>3, 93</value>
   </data>
   <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>271, 72</value>
+    <value>271, 74</value>
   </data>
   <data name="groupBox1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -762,6 +770,12 @@ labels instead of the spot color.</value>
   <data name="colorControlBackGround.TabIndex" type="System.Int32, mscorlib">
     <value>50</value>
   </data>
+  <data name="colorControlBackGround.ToolTip" xml:space="preserve">
+    <value>Set the background color of the stereonet drawing area.</value>
+  </data>
+  <data name="colorControlBackGround.ToolTip1" xml:space="preserve">
+    <value>Set the background color of the stereonet drawing area.</value>
+  </data>
   <data name="&gt;&gt;colorControlBackGround.Name" xml:space="preserve">
     <value>colorControlBackGround</value>
   </data>
@@ -809,6 +823,14 @@ labels instead of the spot color.</value>
   </data>
   <data name="colorControl90DegLine.TabIndex" type="System.Int32, mscorlib">
     <value>50</value>
+  </data>
+  <data name="colorControl90DegLine.ToolTip" xml:space="preserve">
+    <value>Set the color of the 90° lines (outer primitive
+circle and principal axes, the thickest lines).</value>
+  </data>
+  <data name="colorControl90DegLine.ToolTip1" xml:space="preserve">
+    <value>Set the color of the 90° lines (outer primitive
+circle and principal axes, the thickest lines).</value>
   </data>
   <data name="&gt;&gt;colorControl90DegLine.Name" xml:space="preserve">
     <value>colorControl90DegLine</value>
@@ -858,6 +880,14 @@ labels instead of the spot color.</value>
   <data name="colorControl10DegLine.TabIndex" type="System.Int32, mscorlib">
     <value>50</value>
   </data>
+  <data name="colorControl10DegLine.ToolTip" xml:space="preserve">
+    <value>Set the color of the 10° grid lines
+(latitude/longitude every 10°) of the stereonet.</value>
+  </data>
+  <data name="colorControl10DegLine.ToolTip1" xml:space="preserve">
+    <value>Set the color of the 10° grid lines
+(latitude/longitude every 10°) of the stereonet.</value>
+  </data>
   <data name="&gt;&gt;colorControl10DegLine.Name" xml:space="preserve">
     <value>colorControl10DegLine</value>
   </data>
@@ -905,6 +935,14 @@ labels instead of the spot color.</value>
   </data>
   <data name="colorControl1DegLine.TabIndex" type="System.Int32, mscorlib">
     <value>50</value>
+  </data>
+  <data name="colorControl1DegLine.ToolTip" xml:space="preserve">
+    <value>Set the color of the 1° grid lines (fine
+lines, shown only when '1° Lines' is enabled).</value>
+  </data>
+  <data name="colorControl1DegLine.ToolTip1" xml:space="preserve">
+    <value>Set the color of the 1° grid lines (fine
+lines, shown only when '1° Lines' is enabled).</value>
   </data>
   <data name="&gt;&gt;colorControl1DegLine.Name" xml:space="preserve">
     <value>colorControl1DegLine</value>
@@ -1271,10 +1309,10 @@ on the lower hemisphere of the stereonet.</value>
     <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="groupBoxSphere.Location" type="System.Drawing.Point, System.Drawing">
-    <value>153, 88</value>
+    <value>168, 88</value>
   </data>
   <data name="groupBoxSphere.Size" type="System.Drawing.Size, System.Drawing">
-    <value>103, 70</value>
+    <value>105, 70</value>
   </data>
   <data name="groupBoxSphere.TabIndex" type="System.Int32, mscorlib">
     <value>54</value>
@@ -1412,10 +1450,10 @@ on the lower hemisphere of the stereonet.</value>
     <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="groupBoxProjectionScheme.Location" type="System.Drawing.Point, System.Drawing">
-    <value>153, 21</value>
+    <value>168, 21</value>
   </data>
   <data name="groupBoxProjectionScheme.Size" type="System.Drawing.Size, System.Drawing">
-    <value>103, 67</value>
+    <value>105, 67</value>
   </data>
   <data name="groupBoxProjectionScheme.TabIndex" type="System.Int32, mscorlib">
     <value>54</value>
@@ -1439,7 +1477,7 @@ on the lower hemisphere of the stereonet.</value>
     <value>Left</value>
   </data>
   <data name="panel2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>149, 21</value>
+    <value>164, 21</value>
   </data>
   <data name="panel2.Size" type="System.Drawing.Size, System.Drawing">
     <value>4, 138</value>
@@ -1461,6 +1499,45 @@ on the lower hemisphere of the stereonet.</value>
   </data>
   <data name="groupBoxProjectionObject.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
+  </data>
+  <data name="checkBoxAnomalousDispersion.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBoxAnomalousDispersion.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="checkBoxAnomalousDispersion.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="checkBoxAnomalousDispersion.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 8pt</value>
+  </data>
+  <data name="checkBoxAnomalousDispersion.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 117</value>
+  </data>
+  <data name="checkBoxAnomalousDispersion.Size" type="System.Drawing.Size, System.Drawing">
+    <value>154, 17</value>
+  </data>
+  <data name="checkBoxAnomalousDispersion.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="checkBoxAnomalousDispersion.Text" xml:space="preserve">
+    <value>Anomalous dispersion</value>
+  </data>
+  <data name="checkBoxAnomalousDispersion.ToolTip" xml:space="preserve">
+    <value>Add the energy-dependent X-ray anomalous-dispersion terms (f', f'') to the structure factor. Near an absorption edge Friedel's law breaks, giving Bijvoet (hkl vs -h-k-l) intensity differences. Uncheck for the classical dispersion-free result.</value>
+  </data>
+  <data name="&gt;&gt;checkBoxAnomalousDispersion.Name" xml:space="preserve">
+    <value>checkBoxAnomalousDispersion</value>
+  </data>
+  <data name="&gt;&gt;checkBoxAnomalousDispersion.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxAnomalousDispersion.Parent" xml:space="preserve">
+    <value>groupBoxProjectionObject</value>
+  </data>
+  <data name="&gt;&gt;checkBoxAnomalousDispersion.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="checkBoxReflectStructureFactor.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1484,15 +1561,14 @@ on the lower hemisphere of the stereonet.</value>
     <value>0, 0, 0, 0</value>
   </data>
   <data name="checkBoxReflectStructureFactor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>139, 43</value>
+    <value>154, 30</value>
   </data>
   <data name="checkBoxReflectStructureFactor.TabIndex" type="System.Int32, mscorlib">
     <value>48</value>
   </data>
   <data name="checkBoxReflectStructureFactor.Text" xml:space="preserve">
     <value>Apply structure factors
-to spot size or
-Kikuchi line intensity</value>
+to intensity</value>
   </data>
   <data name="checkBoxReflectStructureFactor.ToolTip" xml:space="preserve">
     <value>Scale each spot's size by its structure
@@ -1509,7 +1585,7 @@ cell), so stronger reflections appear larger.</value>
     <value>groupBoxProjectionObject</value>
   </data>
   <data name="&gt;&gt;checkBoxReflectStructureFactor.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="checkBoxShowIndexLabels.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1527,13 +1603,17 @@ cell), so stronger reflections appear larger.</value>
     <value>0, 3, 0, 0</value>
   </data>
   <data name="checkBoxShowIndexLabels.Size" type="System.Drawing.Size, System.Drawing">
-    <value>139, 22</value>
+    <value>154, 22</value>
   </data>
   <data name="checkBoxShowIndexLabels.TabIndex" type="System.Int32, mscorlib">
     <value>54</value>
   </data>
   <data name="checkBoxShowIndexLabels.Text" xml:space="preserve">
     <value>Draw index labels</value>
+  </data>
+  <data name="checkBoxShowIndexLabels.ToolTip" xml:space="preserve">
+    <value>Draw the index label ([uvw] or
+(hkl)) beside each plotted point.</value>
   </data>
   <data name="&gt;&gt;checkBoxShowIndexLabels.Name" xml:space="preserve">
     <value>checkBoxShowIndexLabels</value>
@@ -1545,7 +1625,7 @@ cell), so stronger reflections appear larger.</value>
     <value>groupBoxProjectionObject</value>
   </data>
   <data name="&gt;&gt;checkBoxShowIndexLabels.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="flowLayoutPanelProjectionObject.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
@@ -1681,7 +1761,7 @@ inelastically scattered electrons.</value>
     <value>3, 0, 0, 0</value>
   </data>
   <data name="flowLayoutPanelProjectionObject.Size" type="System.Drawing.Size, System.Drawing">
-    <value>139, 44</value>
+    <value>154, 44</value>
   </data>
   <data name="flowLayoutPanelProjectionObject.TabIndex" type="System.Int32, mscorlib">
     <value>53</value>
@@ -1696,7 +1776,7 @@ inelastically scattered electrons.</value>
     <value>groupBoxProjectionObject</value>
   </data>
   <data name="&gt;&gt;flowLayoutPanelProjectionObject.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="groupBoxProjectionObject.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Left</value>
@@ -1708,7 +1788,7 @@ inelastically scattered electrons.</value>
     <value>4, 21</value>
   </data>
   <data name="groupBoxProjectionObject.Size" type="System.Drawing.Size, System.Drawing">
-    <value>145, 138</value>
+    <value>160, 138</value>
   </data>
   <data name="groupBoxProjectionObject.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -1741,7 +1821,7 @@ inelastically scattered electrons.</value>
     <value>4, 3, 3, 3</value>
   </data>
   <data name="groupBoxMode.Size" type="System.Drawing.Size, System.Drawing">
-    <value>259, 162</value>
+    <value>276, 162</value>
   </data>
   <data name="groupBoxMode.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -1775,6 +1855,10 @@ inelastically scattered electrons.</value>
   </data>
   <data name="labelXYpos.TabIndex" type="System.Int32, mscorlib">
     <value>63</value>
+  </data>
+  <data name="labelXYpos.ToolTip" xml:space="preserve">
+    <value>Tilt and azimuth angles (in degrees) at
+the cursor position on the stereonet.</value>
   </data>
   <data name="&gt;&gt;labelXYpos.Name" xml:space="preserve">
     <value>labelXYpos</value>
@@ -1934,6 +2018,14 @@ drawn for Kikuchi-line pairs.</value>
   <data name="colorControlKikuchiPoints.TabIndex" type="System.Int32, mscorlib">
     <value>50</value>
   </data>
+  <data name="colorControlKikuchiPoints.ToolTip" xml:space="preserve">
+    <value>Set the color of the poles and
+lines drawn in Kikuchi-line mode.</value>
+  </data>
+  <data name="colorControlKikuchiPoints.ToolTip1" xml:space="preserve">
+    <value>Set the color of the poles and
+lines drawn in Kikuchi-line mode.</value>
+  </data>
   <data name="&gt;&gt;colorControlKikuchiPoints.Name" xml:space="preserve">
     <value>colorControlKikuchiPoints</value>
   </data>
@@ -1982,6 +2074,16 @@ drawn for Kikuchi-line pairs.</value>
   <data name="colorControlKikuchiLabel.TabIndex" type="System.Int32, mscorlib">
     <value>50</value>
   </data>
+  <data name="colorControlKikuchiLabel.ToolTip" xml:space="preserve">
+    <value>Set the color of the zone-axis labels in
+Kikuchi-line mode (Kikuchi lines: diffraction
+bands from inelastically scattered electrons).</value>
+  </data>
+  <data name="colorControlKikuchiLabel.ToolTip1" xml:space="preserve">
+    <value>Set the color of the zone-axis labels in
+Kikuchi-line mode (Kikuchi lines: diffraction
+bands from inelastically scattered electrons).</value>
+  </data>
   <data name="&gt;&gt;colorControlKikuchiLabel.Name" xml:space="preserve">
     <value>colorControlKikuchiLabel</value>
   </data>
@@ -2028,7 +2130,7 @@ drawn for Kikuchi-line pairs.</value>
     <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="groupBoxColor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 165</value>
+    <value>3, 167</value>
   </data>
   <data name="groupBoxColor.Size" type="System.Drawing.Size, System.Drawing">
     <value>271, 56</value>
@@ -2094,7 +2196,7 @@ drawn for Kikuchi-line pairs.</value>
     <value>3, 3</value>
   </data>
   <data name="checkedListBoxCircles.Size" type="System.Drawing.Size, System.Drawing">
-    <value>199, 144</value>
+    <value>0, 0</value>
   </data>
   <data name="checkedListBoxCircles.TabIndex" type="System.Int32, mscorlib">
     <value>45</value>
@@ -2183,7 +2285,7 @@ lattice planes) to the stereographic projection.</value>
     <value>NoControl</value>
   </data>
   <data name="buttonDeleteCircle.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 27</value>
+    <value>42, 0</value>
   </data>
   <data name="buttonDeleteCircle.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -2231,9 +2333,6 @@ from the stereographic projection.</value>
   <data name="colorControlGreatCircle.FooterText" xml:space="preserve">
     <value>Color</value>
   </data>
-  <data name="colorControlGreatCircle.ToolTip" xml:space="preserve">
-    <value>Set the drawing color of the great circles.</value>
-  </data>
   <data name="colorControlGreatCircle.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>
   </data>
@@ -2241,7 +2340,7 @@ from the stereographic projection.</value>
     <value>0, 0, 0, 0</value>
   </data>
   <data name="colorControlGreatCircle.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 58</value>
+    <value>111, 4</value>
   </data>
   <data name="colorControlGreatCircle.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 4, 0, 0</value>
@@ -2251,6 +2350,12 @@ from the stereographic projection.</value>
   </data>
   <data name="colorControlGreatCircle.TabIndex" type="System.Int32, mscorlib">
     <value>52</value>
+  </data>
+  <data name="colorControlGreatCircle.ToolTip" xml:space="preserve">
+    <value>Set the drawing color of the great circles.</value>
+  </data>
+  <data name="colorControlGreatCircle.ToolTip1" xml:space="preserve">
+    <value>Set the drawing color of the great circles.</value>
   </data>
   <data name="&gt;&gt;colorControlGreatCircle.Name" xml:space="preserve">
     <value>colorControlGreatCircle</value>
@@ -2274,7 +2379,7 @@ from the stereographic projection.</value>
     <value>NoControl</value>
   </data>
   <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 82</value>
+    <value>170, 4</value>
   </data>
   <data name="label5.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 4, 3, 0</value>
@@ -2310,7 +2415,7 @@ from the stereographic projection.</value>
     <value>NoControl</value>
   </data>
   <data name="trackBarGreatCircleLineWidth.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 99</value>
+    <value>242, 0</value>
   </data>
   <data name="trackBarGreatCircleLineWidth.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 0, 3, 3</value>
@@ -2346,10 +2451,10 @@ from the stereographic projection.</value>
     <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="flowLayoutPanel10.Location" type="System.Drawing.Point, System.Drawing">
-    <value>202, 3</value>
+    <value>-116, 3</value>
   </data>
   <data name="flowLayoutPanel10.Size" type="System.Drawing.Size, System.Drawing">
-    <value>72, 144</value>
+    <value>305, 0</value>
   </data>
   <data name="flowLayoutPanel10.TabIndex" type="System.Int32, mscorlib">
     <value>55</value>
@@ -2423,10 +2528,15 @@ contains all planes sharing that axis.</value>
     <value>0, 0, 0, 0</value>
   </data>
   <data name="indexControlAxis.Size" type="System.Drawing.Size, System.Drawing">
-    <value>134, 26</value>
+    <value>134, 25</value>
   </data>
   <data name="indexControlAxis.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
+  </data>
+  <data name="indexControlAxis.ToolTip" xml:space="preserve">
+    <value>Zone-axis direction [uvw]; the great
+circle perpendicular to this axis (its
+zone circle) is added to the stereonet</value>
   </data>
   <data name="indexControlAxis.Values" mimetype="application/x-microsoft.net.object.binary.base64">
     <value>
@@ -2442,11 +2552,6 @@ contains all planes sharing that axis.</value>
   <data name="&gt;&gt;indexControlAxis.Name" xml:space="preserve">
     <value>indexControlAxis</value>
   </data>
-  <data name="indexControlAxis.ToolTip" xml:space="preserve">
-    <value>Zone-axis direction [uvw]; the great
-circle perpendicular to this axis (its
-zone circle) is added to the stereonet</value>
-  </data>
   <data name="&gt;&gt;indexControlAxis.Type" xml:space="preserve">
     <value>Crystallography.Controls.IndexControl, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
   </data>
@@ -2457,10 +2562,10 @@ zone circle) is added to the stereonet</value>
     <value>0</value>
   </data>
   <data name="flowLayoutPanelCircleAxis.Location" type="System.Drawing.Point, System.Drawing">
-    <value>114, 3</value>
+    <value>3, 28</value>
   </data>
   <data name="flowLayoutPanelCircleAxis.Size" type="System.Drawing.Size, System.Drawing">
-    <value>134, 26</value>
+    <value>134, 25</value>
   </data>
   <data name="flowLayoutPanelCircleAxis.TabIndex" type="System.Int32, mscorlib">
     <value>61</value>
@@ -2487,7 +2592,7 @@ zone circle) is added to the stereonet</value>
     <value>NoControl</value>
   </data>
   <data name="radioButtonCircleByPlanes.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 35</value>
+    <value>3, 59</value>
   </data>
   <data name="radioButtonCircleByPlanes.Size" type="System.Drawing.Size, System.Drawing">
     <value>98, 34</value>
@@ -2540,10 +2645,15 @@ their common zone axis (cross product) sets the circle.</value>
     <value>0, 0, 0, 0</value>
   </data>
   <data name="indexControlCirclePlane1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>140, 26</value>
+    <value>140, 25</value>
   </data>
   <data name="indexControlCirclePlane1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
+  </data>
+  <data name="indexControlCirclePlane1.ToolTip" xml:space="preserve">
+    <value>First crystal plane index (hkl) of the pair; the
+line common to plane 1 and plane 2 defines the
+zone-axis great circle drawn on the stereonet</value>
   </data>
   <data name="indexControlCirclePlane1.Values" mimetype="application/x-microsoft.net.object.binary.base64">
     <value>
@@ -2558,11 +2668,6 @@ their common zone axis (cross product) sets the circle.</value>
   </data>
   <data name="&gt;&gt;indexControlCirclePlane1.Name" xml:space="preserve">
     <value>indexControlCirclePlane1</value>
-  </data>
-  <data name="indexControlCirclePlane1.ToolTip" xml:space="preserve">
-    <value>First crystal plane index (hkl) of the pair; the
-line common to plane 1 and plane 2 defines the
-zone-axis great circle drawn on the stereonet</value>
   </data>
   <data name="&gt;&gt;indexControlCirclePlane1.Type" xml:space="preserve">
     <value>Crystallography.Controls.IndexControl, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
@@ -2580,7 +2685,7 @@ zone-axis great circle drawn on the stereonet</value>
     <value>0, 0, 0, 0</value>
   </data>
   <data name="flowLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>140, 26</value>
+    <value>140, 25</value>
   </data>
   <data name="flowLayoutPanel1.TabIndex" type="System.Int32, mscorlib">
     <value>61</value>
@@ -2616,10 +2721,15 @@ zone-axis great circle drawn on the stereonet</value>
     <value>0, 0, 0, 0</value>
   </data>
   <data name="indexControlCirclePlane2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>140, 26</value>
+    <value>140, 25</value>
   </data>
   <data name="indexControlCirclePlane2.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
+  </data>
+  <data name="indexControlCirclePlane2.ToolTip" xml:space="preserve">
+    <value>Second crystal plane index (hkl) of the pair;
+together with plane 1 its cross product defines
+the zone-axis great circle on the stereonet</value>
   </data>
   <data name="indexControlCirclePlane2.Values" mimetype="application/x-microsoft.net.object.binary.base64">
     <value>
@@ -2635,11 +2745,6 @@ zone-axis great circle drawn on the stereonet</value>
   <data name="&gt;&gt;indexControlCirclePlane2.Name" xml:space="preserve">
     <value>indexControlCirclePlane2</value>
   </data>
-  <data name="indexControlCirclePlane2.ToolTip" xml:space="preserve">
-    <value>Second crystal plane index (hkl) of the pair;
-together with plane 1 its cross product defines
-the zone-axis great circle on the stereonet</value>
-  </data>
   <data name="&gt;&gt;indexControlCirclePlane2.Type" xml:space="preserve">
     <value>Crystallography.Controls.IndexControl, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
   </data>
@@ -2650,13 +2755,13 @@ the zone-axis great circle on the stereonet</value>
     <value>0</value>
   </data>
   <data name="flowLayoutPanel2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 26</value>
+    <value>140, 0</value>
   </data>
   <data name="flowLayoutPanel2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
   <data name="flowLayoutPanel2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>140, 26</value>
+    <value>140, 25</value>
   </data>
   <data name="flowLayoutPanel2.TabIndex" type="System.Int32, mscorlib">
     <value>61</value>
@@ -2680,13 +2785,13 @@ the zone-axis great circle on the stereonet</value>
     <value>TopDown</value>
   </data>
   <data name="flowLayoutPanelCirclePlanes.Location" type="System.Drawing.Point, System.Drawing">
-    <value>104, 32</value>
+    <value>0, 96</value>
   </data>
   <data name="flowLayoutPanelCirclePlanes.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
   <data name="flowLayoutPanelCirclePlanes.Size" type="System.Drawing.Size, System.Drawing">
-    <value>140, 52</value>
+    <value>280, 25</value>
   </data>
   <data name="flowLayoutPanelCirclePlanes.TabIndex" type="System.Int32, mscorlib">
     <value>62</value>
@@ -2707,10 +2812,10 @@ the zone-axis great circle on the stereonet</value>
     <value>Bottom</value>
   </data>
   <data name="flowLayoutPanel7.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 147</value>
+    <value>3, -20</value>
   </data>
   <data name="flowLayoutPanel7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>271, 88</value>
+    <value>186, 88</value>
   </data>
   <data name="flowLayoutPanel7.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -2734,7 +2839,7 @@ the zone-axis great circle on the stereonet</value>
     <value>3, 3, 3, 3</value>
   </data>
   <data name="tabPage2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>277, 238</value>
+    <value>192, 71</value>
   </data>
   <data name="tabPage2.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -2778,6 +2883,10 @@ the zone-axis great circle on the stereonet</value>
   <data name="buttonYusaModeStop.Text" xml:space="preserve">
     <value>Stop</value>
   </data>
+  <data name="buttonYusaModeStop.ToolTip" xml:space="preserve">
+    <value>Stop the tilt-scan simulation and copy the recorded
+pole trajectory coordinates to the clipboard.</value>
+  </data>
   <data name="&gt;&gt;buttonYusaModeStop.Name" xml:space="preserve">
     <value>buttonYusaModeStop</value>
   </data>
@@ -2814,6 +2923,11 @@ the zone-axis great circle on the stereonet</value>
   <data name="buttonYusaModeStart.Text" xml:space="preserve">
     <value>Start</value>
   </data>
+  <data name="buttonYusaModeStart.ToolTip" xml:space="preserve">
+    <value>Start the goniometer tilt-scan simulation:
+animates the selected poles and records
+their stereographic trajectories.</value>
+  </data>
   <data name="&gt;&gt;buttonYusaModeStart.Name" xml:space="preserve">
     <value>buttonYusaModeStart</value>
   </data>
@@ -2846,6 +2960,11 @@ the zone-axis great circle on the stereonet</value>
   </data>
   <data name="radioButtonRotationalScan.Text" xml:space="preserve">
     <value>θ^2 + ω^2 = constant (Rotational scan)</value>
+  </data>
+  <data name="radioButtonRotationalScan.ToolTip" xml:space="preserve">
+    <value>Rotational scan mode: sweeps the tilt
+at a fixed radius (θ²+ω²=constant),
+tracing a circle on the stereonet.</value>
   </data>
   <data name="&gt;&gt;radioButtonRotationalScan.Name" xml:space="preserve">
     <value>radioButtonRotationalScan</value>
@@ -2880,6 +2999,10 @@ the zone-axis great circle on the stereonet</value>
   <data name="radioButtonZigzagScan.Text" xml:space="preserve">
     <value>+θ &gt; +ω &gt; -θ &gt; +ω .... (Zigzag scan)</value>
   </data>
+  <data name="radioButtonZigzagScan.ToolTip" xml:space="preserve">
+    <value>Zigzag (raster) scan mode: steps θ back and
+forth while advancing ω (+θ → +ω → -θ → +ω …).</value>
+  </data>
   <data name="&gt;&gt;radioButtonZigzagScan.Name" xml:space="preserve">
     <value>radioButtonZigzagScan</value>
   </data>
@@ -2912,6 +3035,9 @@ the zone-axis great circle on the stereonet</value>
   </data>
   <data name="checkBox3.Text" xml:space="preserve">
     <value>Ry (ω)</value>
+  </data>
+  <data name="checkBox3.ToolTip" xml:space="preserve">
+    <value>Enable rotation about the Ry axis (angle ω) during the scan.</value>
   </data>
   <data name="&gt;&gt;checkBox3.Name" xml:space="preserve">
     <value>checkBox3</value>
@@ -2946,6 +3072,9 @@ the zone-axis great circle on the stereonet</value>
   <data name="checkBox2.Text" xml:space="preserve">
     <value>Rz (θ)</value>
   </data>
+  <data name="checkBox2.ToolTip" xml:space="preserve">
+    <value>Enable rotation about the Rz axis (angle θ) during the scan.</value>
+  </data>
   <data name="&gt;&gt;checkBox2.Name" xml:space="preserve">
     <value>checkBox2</value>
   </data>
@@ -2978,6 +3107,10 @@ the zone-axis great circle on the stereonet</value>
   </data>
   <data name="checkBox1.Text" xml:space="preserve">
     <value>Rx (φ)</value>
+  </data>
+  <data name="checkBox1.ToolTip" xml:space="preserve">
+    <value>Enable rotation about the Rx axis
+(tilt angle φ) during the scan.</value>
   </data>
   <data name="&gt;&gt;checkBox1.Name" xml:space="preserve">
     <value>checkBox1</value>
@@ -3012,6 +3145,10 @@ the zone-axis great circle on the stereonet</value>
   <data name="label25.Text" xml:space="preserve">
     <value>motor speed</value>
   </data>
+  <data name="label25.ToolTip" xml:space="preserve">
+    <value>Rotation speed of the Rx (φ)
+motor, in degrees per second (°/s).</value>
+  </data>
   <data name="&gt;&gt;label25.Name" xml:space="preserve">
     <value>label25</value>
   </data>
@@ -3044,6 +3181,10 @@ the zone-axis great circle on the stereonet</value>
   </data>
   <data name="label22.Text" xml:space="preserve">
     <value>°/s</value>
+  </data>
+  <data name="label22.ToolTip" xml:space="preserve">
+    <value>Rotation speed of the Rx (φ)
+motor, in degrees per second (°/s).</value>
   </data>
   <data name="&gt;&gt;label22.Name" xml:space="preserve">
     <value>label22</value>
@@ -3092,6 +3233,14 @@ the zone-axis great circle on the stereonet</value>
   </data>
   <data name="numericBoxRxSpeed.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
+  </data>
+  <data name="numericBoxRxSpeed.ToolTip" xml:space="preserve">
+    <value>Rotation speed of the Rx (φ)
+motor, in degrees per second (°/s).</value>
+  </data>
+  <data name="numericBoxRxSpeed.ToolTip1" xml:space="preserve">
+    <value>Rotation speed of the Rx (φ)
+motor, in degrees per second (°/s).</value>
   </data>
   <data name="&gt;&gt;numericBoxRxSpeed.Name" xml:space="preserve">
     <value>numericBoxRxSpeed</value>
@@ -3147,6 +3296,14 @@ the zone-axis great circle on the stereonet</value>
   <data name="numericBoxRySpeed.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
   </data>
+  <data name="numericBoxRySpeed.ToolTip" xml:space="preserve">
+    <value>Rotation speed of the Ry (ω)
+motor, in degrees per second (°/s).</value>
+  </data>
+  <data name="numericBoxRySpeed.ToolTip1" xml:space="preserve">
+    <value>Rotation speed of the Ry (ω)
+motor, in degrees per second (°/s).</value>
+  </data>
   <data name="&gt;&gt;numericBoxRySpeed.Name" xml:space="preserve">
     <value>numericBoxRySpeed</value>
   </data>
@@ -3200,6 +3357,14 @@ the zone-axis great circle on the stereonet</value>
   </data>
   <data name="numericBoxRzSpeed.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
+  </data>
+  <data name="numericBoxRzSpeed.ToolTip" xml:space="preserve">
+    <value>Rotation speed of the Rz (θ)
+motor, in degrees per second (°/s).</value>
+  </data>
+  <data name="numericBoxRzSpeed.ToolTip1" xml:space="preserve">
+    <value>Rotation speed of the Rz (θ)
+motor, in degrees per second (°/s).</value>
   </data>
   <data name="&gt;&gt;numericBoxRzSpeed.Name" xml:space="preserve">
     <value>numericBoxRzSpeed</value>
@@ -3255,6 +3420,12 @@ the zone-axis great circle on the stereonet</value>
   <data name="numericBoxTotalTime.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
   </data>
+  <data name="numericBoxTotalTime.ToolTip" xml:space="preserve">
+    <value>Total duration of the scan, in seconds.</value>
+  </data>
+  <data name="numericBoxTotalTime.ToolTip1" xml:space="preserve">
+    <value>Total duration of the scan, in seconds.</value>
+  </data>
   <data name="&gt;&gt;numericBoxTotalTime.Name" xml:space="preserve">
     <value>numericBoxTotalTime</value>
   </data>
@@ -3308,6 +3479,14 @@ the zone-axis great circle on the stereonet</value>
   </data>
   <data name="numericBoxAngularSpeed.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
+  </data>
+  <data name="numericBoxAngularSpeed.ToolTip" xml:space="preserve">
+    <value>Angular speed of the rotational
+scan, in degrees per second (°/s).</value>
+  </data>
+  <data name="numericBoxAngularSpeed.ToolTip1" xml:space="preserve">
+    <value>Angular speed of the rotational
+scan, in degrees per second (°/s).</value>
   </data>
   <data name="&gt;&gt;numericBoxAngularSpeed.Name" xml:space="preserve">
     <value>numericBoxAngularSpeed</value>
@@ -3363,6 +3542,12 @@ the zone-axis great circle on the stereonet</value>
   <data name="numericBoxRyStep.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
   </data>
+  <data name="numericBoxRyStep.ToolTip" xml:space="preserve">
+    <value>Angular step of the Ry (ω) scan per increment, in degrees.</value>
+  </data>
+  <data name="numericBoxRyStep.ToolTip1" xml:space="preserve">
+    <value>Angular step of the Ry (ω) scan per increment, in degrees.</value>
+  </data>
   <data name="&gt;&gt;numericBoxRyStep.Name" xml:space="preserve">
     <value>numericBoxRyStep</value>
   </data>
@@ -3416,6 +3601,14 @@ the zone-axis great circle on the stereonet</value>
   </data>
   <data name="numericBoxRadialAngle.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
+  </data>
+  <data name="numericBoxRadialAngle.ToolTip" xml:space="preserve">
+    <value>Radial tilt angle (cone half-angle from the
+center) of the rotational scan, in degrees.</value>
+  </data>
+  <data name="numericBoxRadialAngle.ToolTip1" xml:space="preserve">
+    <value>Radial tilt angle (cone half-angle from the
+center) of the rotational scan, in degrees.</value>
   </data>
   <data name="&gt;&gt;numericBoxRadialAngle.Name" xml:space="preserve">
     <value>numericBoxRadialAngle</value>
@@ -3471,6 +3664,12 @@ the zone-axis great circle on the stereonet</value>
   <data name="numericBoxRyOscillation.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
   </data>
+  <data name="numericBoxRyOscillation.ToolTip" xml:space="preserve">
+    <value>Oscillation amplitude (±) of the Ry (ω) axis, in degrees.</value>
+  </data>
+  <data name="numericBoxRyOscillation.ToolTip1" xml:space="preserve">
+    <value>Oscillation amplitude (±) of the Ry (ω) axis, in degrees.</value>
+  </data>
   <data name="&gt;&gt;numericBoxRyOscillation.Name" xml:space="preserve">
     <value>numericBoxRyOscillation</value>
   </data>
@@ -3524,6 +3723,12 @@ the zone-axis great circle on the stereonet</value>
   </data>
   <data name="numericBoxRzOscillation.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
+  </data>
+  <data name="numericBoxRzOscillation.ToolTip" xml:space="preserve">
+    <value>Oscillation amplitude (±) of the Rz (θ) axis, in degrees.</value>
+  </data>
+  <data name="numericBoxRzOscillation.ToolTip1" xml:space="preserve">
+    <value>Oscillation amplitude (±) of the Rz (θ) axis, in degrees.</value>
   </data>
   <data name="&gt;&gt;numericBoxRzOscillation.Name" xml:space="preserve">
     <value>numericBoxRzOscillation</value>
@@ -3589,10 +3794,15 @@ the zone-axis great circle on the stereonet</value>
     <value>210, 0</value>
   </data>
   <data name="waveLengthControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>210, 76</value>
+    <value>210, 102</value>
   </data>
   <data name="waveLengthControl.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
+  </data>
+  <data name="waveLengthControl.ToolTip" xml:space="preserve">
+    <value>Set the radiation source and wavelength used to
+compute structure-factor intensities and the
+Ewald-sphere reflection list shown on the stereonet</value>
   </data>
   <data name="waveLengthControl.ValueFontSize" type="System.Single, mscorlib">
     <value>9.75</value>
@@ -3911,6 +4121,805 @@ factors correspond to stronger reflections.</value>
   <data name="&gt;&gt;radioButtonHighStructureFactor.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
+  <data name="listBoxSpecifiedIndices.ColumnWidth" type="System.Int32, mscorlib">
+    <value>70</value>
+  </data>
+  <data name="listBoxSpecifiedIndices.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="listBoxSpecifiedIndices.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9pt</value>
+  </data>
+  <data name="listBoxSpecifiedIndices.IntegralHeight" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="listBoxSpecifiedIndices.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 0</value>
+  </data>
+  <data name="listBoxSpecifiedIndices.Size" type="System.Drawing.Size, System.Drawing">
+    <value>177, 66</value>
+  </data>
+  <data name="listBoxSpecifiedIndices.TabIndex" type="System.Int32, mscorlib">
+    <value>53</value>
+  </data>
+  <data name="listBoxSpecifiedIndices.ToolTip" xml:space="preserve">
+    <value>List of user-specified indices projected on the
+stereonet; select rows to recolor or remove them</value>
+  </data>
+  <data name="&gt;&gt;listBoxSpecifiedIndices.Name" xml:space="preserve">
+    <value>listBoxSpecifiedIndices</value>
+  </data>
+  <data name="&gt;&gt;listBoxSpecifiedIndices.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ListBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;listBoxSpecifiedIndices.Parent" xml:space="preserve">
+    <value>panelSpecifiedIndices</value>
+  </data>
+  <data name="&gt;&gt;listBoxSpecifiedIndices.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="buttonAddIndex.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="buttonAddIndex.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="buttonAddIndex.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9pt</value>
+  </data>
+  <data name="buttonAddIndex.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="buttonAddIndex.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="buttonAddIndex.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="buttonAddIndex.Size" type="System.Drawing.Size, System.Drawing">
+    <value>39, 25</value>
+  </data>
+  <data name="buttonAddIndex.TabIndex" type="System.Int32, mscorlib">
+    <value>54</value>
+  </data>
+  <data name="buttonAddIndex.Text" xml:space="preserve">
+    <value>Add</value>
+  </data>
+  <data name="buttonAddIndex.ToolTip" xml:space="preserve">
+    <value>Add the index entered above to the list
+of specified indices to be plotted.</value>
+  </data>
+  <data name="buttonAddIndex.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;buttonAddIndex.Name" xml:space="preserve">
+    <value>buttonAddIndex</value>
+  </data>
+  <data name="&gt;&gt;buttonAddIndex.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonAddIndex.Parent" xml:space="preserve">
+    <value>flowLayoutPanelAddRemove</value>
+  </data>
+  <data name="&gt;&gt;buttonAddIndex.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="buttonRemoveIndex.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="buttonRemoveIndex.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="buttonRemoveIndex.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9pt</value>
+  </data>
+  <data name="buttonRemoveIndex.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="buttonRemoveIndex.Location" type="System.Drawing.Point, System.Drawing">
+    <value>39, 0</value>
+  </data>
+  <data name="buttonRemoveIndex.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="buttonRemoveIndex.Size" type="System.Drawing.Size, System.Drawing">
+    <value>60, 25</value>
+  </data>
+  <data name="buttonRemoveIndex.TabIndex" type="System.Int32, mscorlib">
+    <value>54</value>
+  </data>
+  <data name="buttonRemoveIndex.Text" xml:space="preserve">
+    <value>Remove</value>
+  </data>
+  <data name="buttonRemoveIndex.ToolTip" xml:space="preserve">
+    <value>Remove the selected index from
+the list of specified indices.</value>
+  </data>
+  <data name="buttonRemoveIndex.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;buttonRemoveIndex.Name" xml:space="preserve">
+    <value>buttonRemoveIndex</value>
+  </data>
+  <data name="&gt;&gt;buttonRemoveIndex.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonRemoveIndex.Parent" xml:space="preserve">
+    <value>flowLayoutPanelAddRemove</value>
+  </data>
+  <data name="&gt;&gt;buttonRemoveIndex.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="colorControlIndex.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="colorControlIndex.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="colorControlIndex.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9.75pt</value>
+  </data>
+  <data name="colorControlIndex.FooterFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9pt</value>
+  </data>
+  <data name="colorControlIndex.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="colorControlIndex.FooterText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="colorControlIndex.HeaderFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9pt</value>
+  </data>
+  <data name="colorControlIndex.HeaderMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 2, 0, 0</value>
+  </data>
+  <data name="colorControlIndex.HeaderText" xml:space="preserve">
+    <value>Color</value>
+  </data>
+  <data name="colorControlIndex.Location" type="System.Drawing.Point, System.Drawing">
+    <value>99, 2</value>
+  </data>
+  <data name="colorControlIndex.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 2, 0, 0</value>
+  </data>
+  <data name="colorControlIndex.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 4, 3, 0</value>
+  </data>
+  <data name="colorControlIndex.Size" type="System.Drawing.Size, System.Drawing">
+    <value>59, 20</value>
+  </data>
+  <data name="colorControlIndex.TabIndex" type="System.Int32, mscorlib">
+    <value>55</value>
+  </data>
+  <data name="colorControlIndex.ToolTip" xml:space="preserve">
+    <value>Set the plot color for the index being added or
+currently selected (used when 'Rotate color' is off).</value>
+  </data>
+  <data name="colorControlIndex.ToolTip1" xml:space="preserve">
+    <value>Set the plot color for the index being added or
+currently selected (used when 'Rotate color' is off).</value>
+  </data>
+  <data name="&gt;&gt;colorControlIndex.Name" xml:space="preserve">
+    <value>colorControlIndex</value>
+  </data>
+  <data name="&gt;&gt;colorControlIndex.Type" xml:space="preserve">
+    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;colorControlIndex.Parent" xml:space="preserve">
+    <value>flowLayoutPanelAddRemove</value>
+  </data>
+  <data name="&gt;&gt;colorControlIndex.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="checkBoxRotateColor.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBoxRotateColor.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9pt</value>
+  </data>
+  <data name="checkBoxRotateColor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 53</value>
+  </data>
+  <data name="checkBoxRotateColor.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="checkBoxRotateColor.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 0, 0</value>
+  </data>
+  <data name="checkBoxRotateColor.Size" type="System.Drawing.Size, System.Drawing">
+    <value>93, 22</value>
+  </data>
+  <data name="checkBoxRotateColor.TabIndex" type="System.Int32, mscorlib">
+    <value>55</value>
+  </data>
+  <data name="checkBoxRotateColor.Text" xml:space="preserve">
+    <value>Rotate color</value>
+  </data>
+  <data name="checkBoxRotateColor.ToolTip" xml:space="preserve">
+    <value>Assign a rotating palette color to each
+index automatically; when off, all use
+the single color chosen at right.</value>
+  </data>
+  <data name="&gt;&gt;checkBoxRotateColor.Name" xml:space="preserve">
+    <value>checkBoxRotateColor</value>
+  </data>
+  <data name="&gt;&gt;checkBoxRotateColor.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxRotateColor.Parent" xml:space="preserve">
+    <value>flowLayoutPanelAddRemove</value>
+  </data>
+  <data name="&gt;&gt;checkBoxRotateColor.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="numericBoxHighStructureFactor.FooterFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9pt</value>
+  </data>
+  <data name="numericBoxHighStructureFactor.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 5, 0, 0</value>
+  </data>
+  <data name="numericBoxHighStructureFactor.HeaderFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9pt</value>
+  </data>
+  <data name="numericBoxHighStructureFactor.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 5, 0, 0</value>
+  </data>
+  <data name="numericBoxHighStructureFactor.HeaderText" xml:space="preserve">
+    <value>Top</value>
+  </data>
+  <data name="numericBoxHighStructureFactor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>116, 21</value>
+  </data>
+  <data name="numericBoxHighStructureFactor.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="numericBoxHighStructureFactor.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 28</value>
+  </data>
+  <data name="numericBoxHighStructureFactor.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1, 18</value>
+  </data>
+  <data name="numericBoxHighStructureFactor.Size" type="System.Drawing.Size, System.Drawing">
+    <value>72, 26</value>
+  </data>
+  <data name="numericBoxHighStructureFactor.TabIndex" type="System.Int32, mscorlib">
+    <value>87</value>
+  </data>
+  <data name="numericBoxHighStructureFactor.ToolTip" xml:space="preserve">
+    <value>Number of reflections to display, taken from the
+top of the structure-factor ranking (1–1000).</value>
+  </data>
+  <data name="numericBoxHighStructureFactor.ToolTip1" xml:space="preserve">
+    <value>Number of reflections to display, taken from the
+top of the structure-factor ranking (1–1000).</value>
+  </data>
+  <data name="numericBoxHighStructureFactor.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;numericBoxHighStructureFactor.Name" xml:space="preserve">
+    <value>numericBoxHighStructureFactor</value>
+  </data>
+  <data name="&gt;&gt;numericBoxHighStructureFactor.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericBoxHighStructureFactor.Parent" xml:space="preserve">
+    <value>flowLayoutPanelIndexFilter</value>
+  </data>
+  <data name="&gt;&gt;numericBoxHighStructureFactor.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="indexControlDrawing.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="indexControlDrawing.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="indexControlDrawing.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="indexControlDrawing.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 47</value>
+  </data>
+  <data name="indexControlDrawing.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="indexControlDrawing.Size" type="System.Drawing.Size, System.Drawing">
+    <value>194, 41</value>
+  </data>
+  <data name="indexControlDrawing.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="indexControlDrawing.ToolTip" xml:space="preserve">
+    <value>Enter the index to plot — a single [uvw]/(hkl) in
+'Specified' mode, or the maximum h,k,l in 'Range' mode.</value>
+  </data>
+  <data name="indexControlDrawing.Values" mimetype="application/x-microsoft.net.object.binary.base64">
+    <value>
+        AAEAAAD/////AQAAAAAAAAAEAQAAAKgCU3lzdGVtLlZhbHVlVHVwbGVgM1tbU3lzdGVtLkludDMyLCBt
+        c2NvcmxpYiwgVmVyc2lvbj00LjAuMC4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3
+        N2E1YzU2MTkzNGUwODldLFtTeXN0ZW0uSW50MzIsIG1zY29ybGliLCBWZXJzaW9uPTQuMC4wLjAsIEN1
+        bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49Yjc3YTVjNTYxOTM0ZTA4OV0sW1N5c3RlbS5JbnQz
+        MiwgbXNjb3JsaWIsIFZlcnNpb249NC4wLjAuMCwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tl
+        bj1iNzdhNWM1NjE5MzRlMDg5XV0DAAAABUl0ZW0xBUl0ZW0yBUl0ZW0zAAAACAgIAgAAAAIAAAACAAAA
+        Cw==
+</value>
+  </data>
+  <data name="&gt;&gt;indexControlDrawing.Name" xml:space="preserve">
+    <value>indexControlDrawing</value>
+  </data>
+  <data name="&gt;&gt;indexControlDrawing.Type" xml:space="preserve">
+    <value>Crystallography.Controls.IndexControl, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;indexControlDrawing.Parent" xml:space="preserve">
+    <value>flowLayoutPanelIndices</value>
+  </data>
+  <data name="&gt;&gt;indexControlDrawing.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="checkBoxIncludingEquivalentPlanes.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBoxIncludingEquivalentPlanes.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9pt</value>
+  </data>
+  <data name="checkBoxIncludingEquivalentPlanes.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="checkBoxIncludingEquivalentPlanes.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 88</value>
+  </data>
+  <data name="checkBoxIncludingEquivalentPlanes.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="checkBoxIncludingEquivalentPlanes.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 0, 0</value>
+  </data>
+  <data name="checkBoxIncludingEquivalentPlanes.Size" type="System.Drawing.Size, System.Drawing">
+    <value>166, 22</value>
+  </data>
+  <data name="checkBoxIncludingEquivalentPlanes.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="checkBoxIncludingEquivalentPlanes.Text" xml:space="preserve">
+    <value>Include equivalent indices</value>
+  </data>
+  <data name="checkBoxIncludingEquivalentPlanes.ToolTip" xml:space="preserve">
+    <value>Also plot all symmetry-equivalent indices (the full
+{hkl} or &lt;uvw&gt; family), not just the one entered.</value>
+  </data>
+  <data name="checkBoxIncludingEquivalentPlanes.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;checkBoxIncludingEquivalentPlanes.Name" xml:space="preserve">
+    <value>checkBoxIncludingEquivalentPlanes</value>
+  </data>
+  <data name="&gt;&gt;checkBoxIncludingEquivalentPlanes.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxIncludingEquivalentPlanes.Parent" xml:space="preserve">
+    <value>flowLayoutPanelIndices</value>
+  </data>
+  <data name="&gt;&gt;checkBoxIncludingEquivalentPlanes.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="checkBoxDisplay3D.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBoxDisplay3D.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9.75pt</value>
+  </data>
+  <data name="checkBoxDisplay3D.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
+  </data>
+  <data name="checkBoxDisplay3D.Size" type="System.Drawing.Size, System.Drawing">
+    <value>74, 21</value>
+  </data>
+  <data name="checkBoxDisplay3D.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="checkBoxDisplay3D.Text" xml:space="preserve">
+    <value>3D View</value>
+  </data>
+  <data name="checkBoxDisplay3D.ToolTip" xml:space="preserve">
+    <value>Show the 3D (OpenGL) view of the crystal
+alongside the stereographic projection;
+unchecked shows the 2D stereonet only</value>
+  </data>
+  <data name="&gt;&gt;checkBoxDisplay3D.Name" xml:space="preserve">
+    <value>checkBoxDisplay3D</value>
+  </data>
+  <data name="&gt;&gt;checkBoxDisplay3D.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxDisplay3D.Parent" xml:space="preserve">
+    <value>panel3DOptions</value>
+  </data>
+  <data name="&gt;&gt;checkBoxDisplay3D.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="button3D_reset.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="button3D_reset.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="button3D_reset.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9pt</value>
+  </data>
+  <data name="button3D_reset.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
+  </data>
+  <data name="button3D_reset.Size" type="System.Drawing.Size, System.Drawing">
+    <value>45, 25</value>
+  </data>
+  <data name="button3D_reset.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="button3D_reset.Text" xml:space="preserve">
+    <value>Reset</value>
+  </data>
+  <data name="button3D_reset.ToolTip" xml:space="preserve">
+    <value>Reset the 3-D view to its default orientation and zoom.</value>
+  </data>
+  <data name="&gt;&gt;button3D_reset.Name" xml:space="preserve">
+    <value>button3D_reset</value>
+  </data>
+  <data name="&gt;&gt;button3D_reset.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;button3D_reset.Parent" xml:space="preserve">
+    <value>flowLayoutPanel9</value>
+  </data>
+  <data name="&gt;&gt;button3D_reset.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="checkBox3dOptionLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBox3dOptionLabel.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9.75pt</value>
+  </data>
+  <data name="checkBox3dOptionLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="checkBox3dOptionLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 34</value>
+  </data>
+  <data name="checkBox3dOptionLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>58, 21</value>
+  </data>
+  <data name="checkBox3dOptionLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="checkBox3dOptionLabel.Text" xml:space="preserve">
+    <value>Label</value>
+  </data>
+  <data name="checkBox3dOptionLabel.ToolTip" xml:space="preserve">
+    <value>In the 3-D view, draw the index labels
+([uvw] or (hkl)) next to each plotted pole.</value>
+  </data>
+  <data name="&gt;&gt;checkBox3dOptionLabel.Name" xml:space="preserve">
+    <value>checkBox3dOptionLabel</value>
+  </data>
+  <data name="&gt;&gt;checkBox3dOptionLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBox3dOptionLabel.Parent" xml:space="preserve">
+    <value>flowLayoutPanel9</value>
+  </data>
+  <data name="&gt;&gt;checkBox3dOptionLabel.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="checkBox3dOptionSemisphere.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBox3dOptionSemisphere.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9.75pt</value>
+  </data>
+  <data name="checkBox3dOptionSemisphere.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="checkBox3dOptionSemisphere.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 61</value>
+  </data>
+  <data name="checkBox3dOptionSemisphere.Size" type="System.Drawing.Size, System.Drawing">
+    <value>97, 21</value>
+  </data>
+  <data name="checkBox3dOptionSemisphere.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="checkBox3dOptionSemisphere.Text" xml:space="preserve">
+    <value>Hemisphere</value>
+  </data>
+  <data name="checkBox3dOptionSemisphere.ToolTip" xml:space="preserve">
+    <value>In the 3-D view, plot only the points on the upper
+hemisphere (Z&gt;0) instead of the whole sphere.</value>
+  </data>
+  <data name="&gt;&gt;checkBox3dOptionSemisphere.Name" xml:space="preserve">
+    <value>checkBox3dOptionSemisphere</value>
+  </data>
+  <data name="&gt;&gt;checkBox3dOptionSemisphere.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBox3dOptionSemisphere.Parent" xml:space="preserve">
+    <value>flowLayoutPanel9</value>
+  </data>
+  <data name="&gt;&gt;checkBox3dOptionSemisphere.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="checkBox3dOptionStereonet.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBox3dOptionStereonet.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9.75pt</value>
+  </data>
+  <data name="checkBox3dOptionStereonet.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="checkBox3dOptionStereonet.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 88</value>
+  </data>
+  <data name="checkBox3dOptionStereonet.Size" type="System.Drawing.Size, System.Drawing">
+    <value>83, 21</value>
+  </data>
+  <data name="checkBox3dOptionStereonet.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="checkBox3dOptionStereonet.Text" xml:space="preserve">
+    <value>Stereonet</value>
+  </data>
+  <data name="checkBox3dOptionStereonet.ToolTip" xml:space="preserve">
+    <value>In the 3-D view, also draw the flat stereonet disk
+(the projection plane) with the projected points on it.</value>
+  </data>
+  <data name="&gt;&gt;checkBox3dOptionStereonet.Name" xml:space="preserve">
+    <value>checkBox3dOptionStereonet</value>
+  </data>
+  <data name="&gt;&gt;checkBox3dOptionStereonet.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBox3dOptionStereonet.Parent" xml:space="preserve">
+    <value>flowLayoutPanel9</value>
+  </data>
+  <data name="&gt;&gt;checkBox3dOptionStereonet.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="checkBox3dOptionSphere.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBox3dOptionSphere.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9.75pt</value>
+  </data>
+  <data name="checkBox3dOptionSphere.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
+  </data>
+  <data name="checkBox3dOptionSphere.Size" type="System.Drawing.Size, System.Drawing">
+    <value>72, 38</value>
+  </data>
+  <data name="checkBox3dOptionSphere.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="checkBox3dOptionSphere.Text" xml:space="preserve">
+    <value>Sphere 
+outline</value>
+  </data>
+  <data name="checkBox3dOptionSphere.ToolTip" xml:space="preserve">
+    <value>In the 3-D view, draw the outline (latitude/longitude
+wireframe) of the reference sphere.</value>
+  </data>
+  <data name="&gt;&gt;checkBox3dOptionSphere.Name" xml:space="preserve">
+    <value>checkBox3dOptionSphere</value>
+  </data>
+  <data name="&gt;&gt;checkBox3dOptionSphere.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBox3dOptionSphere.Parent" xml:space="preserve">
+    <value>flowLayoutPanel8</value>
+  </data>
+  <data name="&gt;&gt;checkBox3dOptionSphere.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="checkBox3dOptionProjectionLine.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBox3dOptionProjectionLine.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9.75pt</value>
+  </data>
+  <data name="checkBox3dOptionProjectionLine.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 47</value>
+  </data>
+  <data name="checkBox3dOptionProjectionLine.Size" type="System.Drawing.Size, System.Drawing">
+    <value>89, 38</value>
+  </data>
+  <data name="checkBox3dOptionProjectionLine.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="checkBox3dOptionProjectionLine.Text" xml:space="preserve">
+    <value>Projection 
+lines</value>
+  </data>
+  <data name="checkBox3dOptionProjectionLine.ToolTip" xml:space="preserve">
+    <value>In the 3-D view, draw the projection rays
+connecting each pole on the sphere to its
+plotted point on the stereonet disk.</value>
+  </data>
+  <data name="&gt;&gt;checkBox3dOptionProjectionLine.Name" xml:space="preserve">
+    <value>checkBox3dOptionProjectionLine</value>
+  </data>
+  <data name="&gt;&gt;checkBox3dOptionProjectionLine.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBox3dOptionProjectionLine.Parent" xml:space="preserve">
+    <value>flowLayoutPanel8</value>
+  </data>
+  <data name="&gt;&gt;checkBox3dOptionProjectionLine.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="label29.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label29.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9.75pt</value>
+  </data>
+  <data name="label29.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 88</value>
+  </data>
+  <data name="label29.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 17</value>
+  </data>
+  <data name="label29.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="label29.Text" xml:space="preserve">
+    <value>Depth Fade</value>
+  </data>
+  <data name="label29.ToolTip" xml:space="preserve">
+    <value>Adjust depth cueing: how strongly objects
+fade with distance (depth) in the 3-D view.</value>
+  </data>
+  <data name="&gt;&gt;label29.Name" xml:space="preserve">
+    <value>label29</value>
+  </data>
+  <data name="&gt;&gt;label29.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label29.Parent" xml:space="preserve">
+    <value>flowLayoutPanel8</value>
+  </data>
+  <data name="&gt;&gt;label29.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="trackBarDepthFadingOut.AutoSize" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="trackBarDepthFadingOut.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 108</value>
+  </data>
+  <data name="trackBarDepthFadingOut.Size" type="System.Drawing.Size, System.Drawing">
+    <value>79, 20</value>
+  </data>
+  <data name="trackBarDepthFadingOut.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="trackBarDepthFadingOut.ToolTip" xml:space="preserve">
+    <value>Adjust depth cueing: how strongly objects
+fade with distance (depth) in the 3-D view.</value>
+  </data>
+  <data name="&gt;&gt;trackBarDepthFadingOut.Name" xml:space="preserve">
+    <value>trackBarDepthFadingOut</value>
+  </data>
+  <data name="&gt;&gt;trackBarDepthFadingOut.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TrackBar, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;trackBarDepthFadingOut.Parent" xml:space="preserve">
+    <value>flowLayoutPanel8</value>
+  </data>
+  <data name="&gt;&gt;trackBarDepthFadingOut.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="labelAxisPlane.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9.75pt</value>
+  </data>
+  <data name="labelAxisPlane.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="labelAxisPlane.Location" type="System.Drawing.Point, System.Drawing">
+    <value>615, 34</value>
+  </data>
+  <data name="labelAxisPlane.Size" type="System.Drawing.Size, System.Drawing">
+    <value>137, 16</value>
+  </data>
+  <data name="labelAxisPlane.TabIndex" type="System.Int32, mscorlib">
+    <value>60</value>
+  </data>
+  <data name="labelAxisPlane.ToolTip" xml:space="preserve">
+    <value>Zone axis [uvw] and lattice plane (hkl)
+nearest the cursor position on the stereonet.</value>
+  </data>
+  <data name="&gt;&gt;labelAxisPlane.Name" xml:space="preserve">
+    <value>labelAxisPlane</value>
+  </data>
+  <data name="&gt;&gt;labelAxisPlane.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelAxisPlane.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;labelAxisPlane.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="label2.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9.75pt</value>
+  </data>
+  <data name="label2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>461, 33</value>
+  </data>
+  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>155, 16</value>
+  </data>
+  <data name="label2.TabIndex" type="System.Int32, mscorlib">
+    <value>60</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Zone axis / Lattice plane: </value>
+  </data>
+  <data name="label2.ToolTip" xml:space="preserve">
+    <value>Zone axis [uvw] and lattice plane (hkl)
+nearest the cursor position on the stereonet.</value>
+  </data>
+  <data name="&gt;&gt;label2.Name" xml:space="preserve">
+    <value>label2</value>
+  </data>
+  <data name="&gt;&gt;label2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label2.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="label3.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label3.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9.75pt</value>
+  </data>
+  <data name="label3.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>286, 33</value>
+  </data>
+  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>52, 17</value>
+  </data>
+  <data name="label3.TabIndex" type="System.Int32, mscorlib">
+    <value>63</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>Tilt X/Y:</value>
+  </data>
+  <data name="label3.ToolTip" xml:space="preserve">
+    <value>Tilt and azimuth angles (in degrees) at
+the cursor position on the stereonet.</value>
+  </data>
+  <data name="&gt;&gt;label3.Name" xml:space="preserve">
+    <value>label3</value>
+  </data>
+  <data name="&gt;&gt;label3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label3.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <metadata name="printPreviewDialog1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>771, 17</value>
   </metadata>
@@ -4111,179 +5120,8 @@ factors correspond to stronger reflections.</value>
   <data name="&gt;&gt;printPreviewDialog1.Type" xml:space="preserve">
     <value>System.Windows.Forms.PrintPreviewDialog, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="listBoxSpecifiedIndices.ColumnWidth" type="System.Int32, mscorlib">
-    <value>70</value>
-  </data>
-  <data name="listBoxSpecifiedIndices.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="listBoxSpecifiedIndices.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
-  </data>
-  <data name="listBoxSpecifiedIndices.IntegralHeight" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="listBoxSpecifiedIndices.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 0</value>
-  </data>
-  <data name="listBoxSpecifiedIndices.Size" type="System.Drawing.Size, System.Drawing">
-    <value>194, 66</value>
-  </data>
-  <data name="listBoxSpecifiedIndices.TabIndex" type="System.Int32, mscorlib">
-    <value>53</value>
-  </data>
-  <data name="&gt;&gt;listBoxSpecifiedIndices.Name" xml:space="preserve">
-    <value>listBoxSpecifiedIndices</value>
-  </data>
-  <data name="&gt;&gt;listBoxSpecifiedIndices.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ListBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;listBoxSpecifiedIndices.Parent" xml:space="preserve">
-    <value>panelSpecifiedIndices</value>
-  </data>
-  <data name="&gt;&gt;listBoxSpecifiedIndices.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <data name="flowLayoutPanelAddRemove.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
-  </data>
-  <data name="buttonAddIndex.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="buttonAddIndex.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="buttonAddIndex.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
-  </data>
-  <data name="buttonAddIndex.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="buttonAddIndex.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="buttonAddIndex.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="buttonAddIndex.Size" type="System.Drawing.Size, System.Drawing">
-    <value>39, 25</value>
-  </data>
-  <data name="buttonAddIndex.TabIndex" type="System.Int32, mscorlib">
-    <value>54</value>
-  </data>
-  <data name="buttonAddIndex.Text" xml:space="preserve">
-    <value>Add</value>
-  </data>
-  <data name="buttonAddIndex.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;buttonAddIndex.Name" xml:space="preserve">
-    <value>buttonAddIndex</value>
-  </data>
-  <data name="&gt;&gt;buttonAddIndex.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;buttonAddIndex.Parent" xml:space="preserve">
-    <value>flowLayoutPanelAddRemove</value>
-  </data>
-  <data name="&gt;&gt;buttonAddIndex.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="buttonRemoveIndex.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="buttonRemoveIndex.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="buttonRemoveIndex.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
-  </data>
-  <data name="buttonRemoveIndex.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="buttonRemoveIndex.Location" type="System.Drawing.Point, System.Drawing">
-    <value>39, 0</value>
-  </data>
-  <data name="buttonRemoveIndex.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="buttonRemoveIndex.Size" type="System.Drawing.Size, System.Drawing">
-    <value>60, 25</value>
-  </data>
-  <data name="buttonRemoveIndex.TabIndex" type="System.Int32, mscorlib">
-    <value>54</value>
-  </data>
-  <data name="buttonRemoveIndex.Text" xml:space="preserve">
-    <value>Remove</value>
-  </data>
-  <data name="buttonRemoveIndex.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;buttonRemoveIndex.Name" xml:space="preserve">
-    <value>buttonRemoveIndex</value>
-  </data>
-  <data name="&gt;&gt;buttonRemoveIndex.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;buttonRemoveIndex.Parent" xml:space="preserve">
-    <value>flowLayoutPanelAddRemove</value>
-  </data>
-  <data name="&gt;&gt;buttonRemoveIndex.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="colorControlIndex.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="colorControlIndex.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="colorControlIndex.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
-  </data>
-  <data name="colorControlIndex.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
-  </data>
-  <data name="colorControlIndex.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="colorControlIndex.FooterText" xml:space="preserve">
-    <value />
-  </data>
-  <data name="colorControlIndex.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
-  </data>
-  <data name="colorControlIndex.HeaderMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 2, 0, 0</value>
-  </data>
-  <data name="colorControlIndex.HeaderText" xml:space="preserve">
-    <value>Color</value>
-  </data>
-  <data name="colorControlIndex.Location" type="System.Drawing.Point, System.Drawing">
-    <value>99, 2</value>
-  </data>
-  <data name="colorControlIndex.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 2, 0, 0</value>
-  </data>
-  <data name="colorControlIndex.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 4, 3, 0</value>
-  </data>
-  <data name="colorControlIndex.Size" type="System.Drawing.Size, System.Drawing">
-    <value>59, 20</value>
-  </data>
-  <data name="colorControlIndex.TabIndex" type="System.Int32, mscorlib">
-    <value>55</value>
-  </data>
-  <data name="&gt;&gt;colorControlIndex.Name" xml:space="preserve">
-    <value>colorControlIndex</value>
-  </data>
-  <data name="&gt;&gt;colorControlIndex.Type" xml:space="preserve">
-    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;colorControlIndex.Parent" xml:space="preserve">
-    <value>flowLayoutPanelAddRemove</value>
-  </data>
-  <data name="&gt;&gt;colorControlIndex.ZOrder" xml:space="preserve">
-    <value>2</value>
   </data>
   <data name="flowLayoutPanel6.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -4312,42 +5150,6 @@ factors correspond to stronger reflections.</value>
   <data name="&gt;&gt;flowLayoutPanel6.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="checkBoxRotateColor.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="checkBoxRotateColor.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
-  </data>
-  <data name="checkBoxRotateColor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 53</value>
-  </data>
-  <data name="checkBoxRotateColor.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="checkBoxRotateColor.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 0, 0</value>
-  </data>
-  <data name="checkBoxRotateColor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>93, 22</value>
-  </data>
-  <data name="checkBoxRotateColor.TabIndex" type="System.Int32, mscorlib">
-    <value>55</value>
-  </data>
-  <data name="checkBoxRotateColor.Text" xml:space="preserve">
-    <value>Rotate color</value>
-  </data>
-  <data name="&gt;&gt;checkBoxRotateColor.Name" xml:space="preserve">
-    <value>checkBoxRotateColor</value>
-  </data>
-  <data name="&gt;&gt;checkBoxRotateColor.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkBoxRotateColor.Parent" xml:space="preserve">
-    <value>flowLayoutPanelAddRemove</value>
-  </data>
-  <data name="&gt;&gt;checkBoxRotateColor.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
   <data name="flowLayoutPanelAddRemove.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Bottom</value>
   </data>
@@ -4358,7 +5160,7 @@ factors correspond to stronger reflections.</value>
     <value>0, 0, 0, 0</value>
   </data>
   <data name="flowLayoutPanelAddRemove.Size" type="System.Drawing.Size, System.Drawing">
-    <value>194, 75</value>
+    <value>177, 75</value>
   </data>
   <data name="flowLayoutPanelAddRemove.TabIndex" type="System.Int32, mscorlib">
     <value>55</value>
@@ -4388,7 +5190,7 @@ factors correspond to stronger reflections.</value>
     <value>4, 0, 0, 0</value>
   </data>
   <data name="panelSpecifiedIndices.Size" type="System.Drawing.Size, System.Drawing">
-    <value>198, 141</value>
+    <value>181, 141</value>
   </data>
   <data name="panelSpecifiedIndices.TabIndex" type="System.Int32, mscorlib">
     <value>55</value>
@@ -4413,58 +5215,6 @@ factors correspond to stronger reflections.</value>
   </data>
   <data name="flowLayoutPanelIndexFilter.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
-  </data>
-  <data name="numericBoxHighStructureFactor.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
-  </data>
-  <data name="numericBoxHighStructureFactor.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 5, 0, 0</value>
-  </data>
-  <data name="numericBoxHighStructureFactor.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
-  </data>
-  <data name="numericBoxHighStructureFactor.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 5, 0, 0</value>
-  </data>
-  <data name="numericBoxHighStructureFactor.HeaderText" xml:space="preserve">
-    <value>Top</value>
-  </data>
-  <data name="numericBoxHighStructureFactor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>116, 21</value>
-  </data>
-  <data name="numericBoxHighStructureFactor.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="numericBoxHighStructureFactor.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 28</value>
-  </data>
-  <data name="numericBoxHighStructureFactor.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 18</value>
-  </data>
-  <data name="numericBoxHighStructureFactor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>72, 26</value>
-  </data>
-  <data name="numericBoxHighStructureFactor.TabIndex" type="System.Int32, mscorlib">
-    <value>87</value>
-  </data>
-  <data name="numericBoxHighStructureFactor.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="numericBoxHighStructureFactor.ToolTip" xml:space="preserve">
-    <value>Number of reflections to display, taken from the
-top of the structure-factor ranking (1–1000).</value>
-  </data>
-  <data name="&gt;&gt;numericBoxHighStructureFactor.Name" xml:space="preserve">
-    <value>numericBoxHighStructureFactor</value>
-  </data>
-  <data name="&gt;&gt;numericBoxHighStructureFactor.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;numericBoxHighStructureFactor.Parent" xml:space="preserve">
-    <value>flowLayoutPanelIndexFilter</value>
-  </data>
-  <data name="&gt;&gt;numericBoxHighStructureFactor.ZOrder" xml:space="preserve">
-    <value>3</value>
   </data>
   <data name="flowLayoutPanelIndexFilter.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
@@ -4492,92 +5242,6 @@ top of the structure-factor ranking (1–1000).</value>
   </data>
   <data name="&gt;&gt;flowLayoutPanelIndexFilter.ZOrder" xml:space="preserve">
     <value>0</value>
-  </data>
-  <data name="indexControlDrawing.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="indexControlDrawing.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="indexControlDrawing.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="indexControlDrawing.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 47</value>
-  </data>
-  <data name="indexControlDrawing.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="indexControlDrawing.Size" type="System.Drawing.Size, System.Drawing">
-    <value>194, 41</value>
-  </data>
-  <data name="indexControlDrawing.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="indexControlDrawing.Values" mimetype="application/x-microsoft.net.object.binary.base64">
-    <value>
-        AAEAAAD/////AQAAAAAAAAAEAQAAAKgCU3lzdGVtLlZhbHVlVHVwbGVgM1tbU3lzdGVtLkludDMyLCBt
-        c2NvcmxpYiwgVmVyc2lvbj00LjAuMC4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3
-        N2E1YzU2MTkzNGUwODldLFtTeXN0ZW0uSW50MzIsIG1zY29ybGliLCBWZXJzaW9uPTQuMC4wLjAsIEN1
-        bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49Yjc3YTVjNTYxOTM0ZTA4OV0sW1N5c3RlbS5JbnQz
-        MiwgbXNjb3JsaWIsIFZlcnNpb249NC4wLjAuMCwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tl
-        bj1iNzdhNWM1NjE5MzRlMDg5XV0DAAAABUl0ZW0xBUl0ZW0yBUl0ZW0zAAAACAgIAgAAAAIAAAACAAAA
-        Cw==
-</value>
-  </data>
-  <data name="&gt;&gt;indexControlDrawing.Name" xml:space="preserve">
-    <value>indexControlDrawing</value>
-  </data>
-  <data name="&gt;&gt;indexControlDrawing.Type" xml:space="preserve">
-    <value>Crystallography.Controls.IndexControl, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;indexControlDrawing.Parent" xml:space="preserve">
-    <value>flowLayoutPanelIndices</value>
-  </data>
-  <data name="&gt;&gt;indexControlDrawing.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="checkBoxIncludingEquivalentPlanes.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="checkBoxIncludingEquivalentPlanes.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
-  </data>
-  <data name="checkBoxIncludingEquivalentPlanes.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="checkBoxIncludingEquivalentPlanes.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 88</value>
-  </data>
-  <data name="checkBoxIncludingEquivalentPlanes.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="checkBoxIncludingEquivalentPlanes.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 0, 0</value>
-  </data>
-  <data name="checkBoxIncludingEquivalentPlanes.Size" type="System.Drawing.Size, System.Drawing">
-    <value>166, 22</value>
-  </data>
-  <data name="checkBoxIncludingEquivalentPlanes.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="checkBoxIncludingEquivalentPlanes.Text" xml:space="preserve">
-    <value>Include equivalent indices</value>
-  </data>
-  <data name="checkBoxIncludingEquivalentPlanes.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;checkBoxIncludingEquivalentPlanes.Name" xml:space="preserve">
-    <value>checkBoxIncludingEquivalentPlanes</value>
-  </data>
-  <data name="&gt;&gt;checkBoxIncludingEquivalentPlanes.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkBoxIncludingEquivalentPlanes.Parent" xml:space="preserve">
-    <value>flowLayoutPanelIndices</value>
-  </data>
-  <data name="&gt;&gt;checkBoxIncludingEquivalentPlanes.ZOrder" xml:space="preserve">
-    <value>2</value>
   </data>
   <data name="flowLayoutPanelIndices.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Left</value>
@@ -4619,7 +5283,7 @@ top of the structure-factor ranking (1–1000).</value>
     <value>Segoe UI, 9.75pt, style=Bold</value>
   </data>
   <data name="groupBoxIndices.Location" type="System.Drawing.Point, System.Drawing">
-    <value>269, 0</value>
+    <value>286, 0</value>
   </data>
   <data name="groupBoxIndices.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>5, 0, 0, 0</value>
@@ -4628,7 +5292,7 @@ top of the structure-factor ranking (1–1000).</value>
     <value>3, 0, 3, 3</value>
   </data>
   <data name="groupBoxIndices.Size" type="System.Drawing.Size, System.Drawing">
-    <value>401, 162</value>
+    <value>384, 162</value>
   </data>
   <data name="groupBoxIndices.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -4676,7 +5340,7 @@ top of the structure-factor ranking (1–1000).</value>
     <value>Left</value>
   </data>
   <data name="panel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>264, 0</value>
+    <value>281, 0</value>
   </data>
   <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
     <value>5, 162</value>
@@ -4702,170 +5366,8 @@ top of the structure-factor ranking (1–1000).</value>
   <data name="panel3DOptions.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
-  <data name="checkBoxDisplay3D.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="checkBoxDisplay3D.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
-  </data>
-  <data name="checkBoxDisplay3D.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 3</value>
-  </data>
-  <data name="checkBoxDisplay3D.Size" type="System.Drawing.Size, System.Drawing">
-    <value>74, 21</value>
-  </data>
-  <data name="checkBoxDisplay3D.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="checkBoxDisplay3D.Text" xml:space="preserve">
-    <value>3D View</value>
-  </data>
-  <data name="&gt;&gt;checkBoxDisplay3D.Name" xml:space="preserve">
-    <value>checkBoxDisplay3D</value>
-  </data>
-  <data name="&gt;&gt;checkBoxDisplay3D.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkBoxDisplay3D.Parent" xml:space="preserve">
-    <value>panel3DOptions</value>
-  </data>
-  <data name="&gt;&gt;checkBoxDisplay3D.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <data name="groupBox3DOptions.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
-  </data>
-  <data name="button3D_reset.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="button3D_reset.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="button3D_reset.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
-  </data>
-  <data name="button3D_reset.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 3</value>
-  </data>
-  <data name="button3D_reset.Size" type="System.Drawing.Size, System.Drawing">
-    <value>45, 25</value>
-  </data>
-  <data name="button3D_reset.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="button3D_reset.Text" xml:space="preserve">
-    <value>Reset</value>
-  </data>
-  <data name="&gt;&gt;button3D_reset.Name" xml:space="preserve">
-    <value>button3D_reset</value>
-  </data>
-  <data name="&gt;&gt;button3D_reset.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;button3D_reset.Parent" xml:space="preserve">
-    <value>flowLayoutPanel9</value>
-  </data>
-  <data name="&gt;&gt;button3D_reset.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="checkBox3dOptionLabel.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="checkBox3dOptionLabel.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
-  </data>
-  <data name="checkBox3dOptionLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="checkBox3dOptionLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 34</value>
-  </data>
-  <data name="checkBox3dOptionLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>58, 21</value>
-  </data>
-  <data name="checkBox3dOptionLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="checkBox3dOptionLabel.Text" xml:space="preserve">
-    <value>Label</value>
-  </data>
-  <data name="&gt;&gt;checkBox3dOptionLabel.Name" xml:space="preserve">
-    <value>checkBox3dOptionLabel</value>
-  </data>
-  <data name="&gt;&gt;checkBox3dOptionLabel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkBox3dOptionLabel.Parent" xml:space="preserve">
-    <value>flowLayoutPanel9</value>
-  </data>
-  <data name="&gt;&gt;checkBox3dOptionLabel.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="checkBox3dOptionSemisphere.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="checkBox3dOptionSemisphere.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
-  </data>
-  <data name="checkBox3dOptionSemisphere.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="checkBox3dOptionSemisphere.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 61</value>
-  </data>
-  <data name="checkBox3dOptionSemisphere.Size" type="System.Drawing.Size, System.Drawing">
-    <value>97, 21</value>
-  </data>
-  <data name="checkBox3dOptionSemisphere.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="checkBox3dOptionSemisphere.Text" xml:space="preserve">
-    <value>Hemisphere</value>
-  </data>
-  <data name="&gt;&gt;checkBox3dOptionSemisphere.Name" xml:space="preserve">
-    <value>checkBox3dOptionSemisphere</value>
-  </data>
-  <data name="&gt;&gt;checkBox3dOptionSemisphere.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkBox3dOptionSemisphere.Parent" xml:space="preserve">
-    <value>flowLayoutPanel9</value>
-  </data>
-  <data name="&gt;&gt;checkBox3dOptionSemisphere.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="checkBox3dOptionStereonet.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="checkBox3dOptionStereonet.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
-  </data>
-  <data name="checkBox3dOptionStereonet.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="checkBox3dOptionStereonet.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 88</value>
-  </data>
-  <data name="checkBox3dOptionStereonet.Size" type="System.Drawing.Size, System.Drawing">
-    <value>83, 21</value>
-  </data>
-  <data name="checkBox3dOptionStereonet.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="checkBox3dOptionStereonet.Text" xml:space="preserve">
-    <value>Stereonet</value>
-  </data>
-  <data name="&gt;&gt;checkBox3dOptionStereonet.Name" xml:space="preserve">
-    <value>checkBox3dOptionStereonet</value>
-  </data>
-  <data name="&gt;&gt;checkBox3dOptionStereonet.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkBox3dOptionStereonet.Parent" xml:space="preserve">
-    <value>flowLayoutPanel9</value>
-  </data>
-  <data name="&gt;&gt;checkBox3dOptionStereonet.ZOrder" xml:space="preserve">
-    <value>3</value>
   </data>
   <data name="flowLayoutPanel9.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -4893,122 +5395,6 @@ top of the structure-factor ranking (1–1000).</value>
   </data>
   <data name="&gt;&gt;flowLayoutPanel9.ZOrder" xml:space="preserve">
     <value>0</value>
-  </data>
-  <data name="checkBox3dOptionSphere.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="checkBox3dOptionSphere.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
-  </data>
-  <data name="checkBox3dOptionSphere.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 3</value>
-  </data>
-  <data name="checkBox3dOptionSphere.Size" type="System.Drawing.Size, System.Drawing">
-    <value>72, 38</value>
-  </data>
-  <data name="checkBox3dOptionSphere.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="checkBox3dOptionSphere.Text" xml:space="preserve">
-    <value>Sphere 
-outline</value>
-  </data>
-  <data name="&gt;&gt;checkBox3dOptionSphere.Name" xml:space="preserve">
-    <value>checkBox3dOptionSphere</value>
-  </data>
-  <data name="&gt;&gt;checkBox3dOptionSphere.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkBox3dOptionSphere.Parent" xml:space="preserve">
-    <value>flowLayoutPanel8</value>
-  </data>
-  <data name="&gt;&gt;checkBox3dOptionSphere.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="checkBox3dOptionProjectionLine.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="checkBox3dOptionProjectionLine.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
-  </data>
-  <data name="checkBox3dOptionProjectionLine.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 47</value>
-  </data>
-  <data name="checkBox3dOptionProjectionLine.Size" type="System.Drawing.Size, System.Drawing">
-    <value>89, 38</value>
-  </data>
-  <data name="checkBox3dOptionProjectionLine.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="checkBox3dOptionProjectionLine.Text" xml:space="preserve">
-    <value>Projection 
-lines</value>
-  </data>
-  <data name="&gt;&gt;checkBox3dOptionProjectionLine.Name" xml:space="preserve">
-    <value>checkBox3dOptionProjectionLine</value>
-  </data>
-  <data name="&gt;&gt;checkBox3dOptionProjectionLine.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkBox3dOptionProjectionLine.Parent" xml:space="preserve">
-    <value>flowLayoutPanel8</value>
-  </data>
-  <data name="&gt;&gt;checkBox3dOptionProjectionLine.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="label29.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label29.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
-  </data>
-  <data name="label29.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 88</value>
-  </data>
-  <data name="label29.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 17</value>
-  </data>
-  <data name="label29.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="label29.Text" xml:space="preserve">
-    <value>Depth Fade</value>
-  </data>
-  <data name="&gt;&gt;label29.Name" xml:space="preserve">
-    <value>label29</value>
-  </data>
-  <data name="&gt;&gt;label29.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label29.Parent" xml:space="preserve">
-    <value>flowLayoutPanel8</value>
-  </data>
-  <data name="&gt;&gt;label29.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="trackBarDepthFadingOut.AutoSize" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="trackBarDepthFadingOut.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 108</value>
-  </data>
-  <data name="trackBarDepthFadingOut.Size" type="System.Drawing.Size, System.Drawing">
-    <value>79, 20</value>
-  </data>
-  <data name="trackBarDepthFadingOut.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;trackBarDepthFadingOut.Name" xml:space="preserve">
-    <value>trackBarDepthFadingOut</value>
-  </data>
-  <data name="&gt;&gt;trackBarDepthFadingOut.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TrackBar, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;trackBarDepthFadingOut.Parent" xml:space="preserve">
-    <value>flowLayoutPanel8</value>
-  </data>
-  <data name="&gt;&gt;trackBarDepthFadingOut.ZOrder" xml:space="preserve">
-    <value>3</value>
   </data>
   <data name="flowLayoutPanel8.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Left</value>
@@ -5111,96 +5497,6 @@ lines</value>
   </data>
   <data name="&gt;&gt;panel3.ZOrder" xml:space="preserve">
     <value>4</value>
-  </data>
-  <data name="labelAxisPlane.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
-  </data>
-  <data name="labelAxisPlane.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="labelAxisPlane.Location" type="System.Drawing.Point, System.Drawing">
-    <value>615, 34</value>
-  </data>
-  <data name="labelAxisPlane.Size" type="System.Drawing.Size, System.Drawing">
-    <value>137, 16</value>
-  </data>
-  <data name="labelAxisPlane.TabIndex" type="System.Int32, mscorlib">
-    <value>60</value>
-  </data>
-  <data name="&gt;&gt;labelAxisPlane.Name" xml:space="preserve">
-    <value>labelAxisPlane</value>
-  </data>
-  <data name="&gt;&gt;labelAxisPlane.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;labelAxisPlane.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;labelAxisPlane.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="label2.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
-  </data>
-  <data name="label2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>461, 33</value>
-  </data>
-  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>155, 16</value>
-  </data>
-  <data name="label2.TabIndex" type="System.Int32, mscorlib">
-    <value>60</value>
-  </data>
-  <data name="label2.Text" xml:space="preserve">
-    <value>Zone axis / Lattice plane: </value>
-  </data>
-  <data name="&gt;&gt;label2.Name" xml:space="preserve">
-    <value>label2</value>
-  </data>
-  <data name="&gt;&gt;label2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label2.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="label3.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label3.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
-  </data>
-  <data name="label3.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>286, 33</value>
-  </data>
-  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>52, 17</value>
-  </data>
-  <data name="label3.TabIndex" type="System.Int32, mscorlib">
-    <value>63</value>
-  </data>
-  <data name="label3.Text" xml:space="preserve">
-    <value>Tilt X/Y:</value>
-  </data>
-  <data name="&gt;&gt;label3.Name" xml:space="preserve">
-    <value>label3</value>
-  </data>
-  <data name="&gt;&gt;label3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label3.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
-    <value>0</value>
   </data>
   <metadata name="pageSetupDialog1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>362, 17</value>
@@ -5428,192 +5724,5 @@ lines</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
     <value>Crystallography.Controls.FormBase, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="button3D_reset.ToolTip" xml:space="preserve">
-    <value>Reset the 3-D view to its default orientation and zoom.</value>
-  </data>
-  <data name="buttonAddIndex.ToolTip" xml:space="preserve">
-    <value>Add the index entered above to the list
-of specified indices to be plotted.</value>
-  </data>
-  <data name="buttonRemoveIndex.ToolTip" xml:space="preserve">
-    <value>Remove the selected index from
-the list of specified indices.</value>
-  </data>
-  <data name="buttonYusaModeStart.ToolTip" xml:space="preserve">
-    <value>Start the goniometer tilt-scan simulation:
-animates the selected poles and records
-their stereographic trajectories.</value>
-  </data>
-  <data name="buttonYusaModeStop.ToolTip" xml:space="preserve">
-    <value>Stop the tilt-scan simulation and copy the recorded
-pole trajectory coordinates to the clipboard.</value>
-  </data>
-  <data name="checkBox1.ToolTip" xml:space="preserve">
-    <value>Enable rotation about the Rx axis
-(tilt angle φ) during the scan.</value>
-  </data>
-  <data name="checkBox2.ToolTip" xml:space="preserve">
-    <value>Enable rotation about the Rz axis (angle θ) during the scan.</value>
-  </data>
-  <data name="checkBox3.ToolTip" xml:space="preserve">
-    <value>Enable rotation about the Ry axis (angle ω) during the scan.</value>
-  </data>
-  <data name="checkBox3dOptionLabel.ToolTip" xml:space="preserve">
-    <value>In the 3-D view, draw the index labels
-([uvw] or (hkl)) next to each plotted pole.</value>
-  </data>
-  <data name="checkBox3dOptionProjectionLine.ToolTip" xml:space="preserve">
-    <value>In the 3-D view, draw the projection rays
-connecting each pole on the sphere to its
-plotted point on the stereonet disk.</value>
-  </data>
-  <data name="checkBox3dOptionSemisphere.ToolTip" xml:space="preserve">
-    <value>In the 3-D view, plot only the points on the upper
-hemisphere (Z&gt;0) instead of the whole sphere.</value>
-  </data>
-  <data name="checkBox3dOptionSphere.ToolTip" xml:space="preserve">
-    <value>In the 3-D view, draw the outline (latitude/longitude
-wireframe) of the reference sphere.</value>
-  </data>
-  <data name="checkBox3dOptionStereonet.ToolTip" xml:space="preserve">
-    <value>In the 3-D view, also draw the flat stereonet disk
-(the projection plane) with the projected points on it.</value>
-  </data>
-  <data name="checkBoxIncludingEquivalentPlanes.ToolTip" xml:space="preserve">
-    <value>Also plot all symmetry-equivalent indices (the full
-{hkl} or &lt;uvw&gt; family), not just the one entered.</value>
-  </data>
-  <data name="checkBoxRotateColor.ToolTip" xml:space="preserve">
-    <value>Assign a rotating palette color to each
-index automatically; when off, all use
-the single color chosen at right.</value>
-  </data>
-  <data name="checkBoxShowIndexLabels.ToolTip" xml:space="preserve">
-    <value>Draw the index label ([uvw] or
-(hkl)) beside each plotted point.</value>
-  </data>
-  <data name="colorControl10DegLine.ToolTip" xml:space="preserve">
-    <value>Set the color of the 10° grid lines
-(latitude/longitude every 10°) of the stereonet.</value>
-  </data>
-  <data name="colorControl1DegLine.ToolTip" xml:space="preserve">
-    <value>Set the color of the 1° grid lines (fine
-lines, shown only when '1° Lines' is enabled).</value>
-  </data>
-  <data name="colorControl90DegLine.ToolTip" xml:space="preserve">
-    <value>Set the color of the 90° lines (outer primitive
-circle and principal axes, the thickest lines).</value>
-  </data>
-  <data name="colorControlBackGround.ToolTip" xml:space="preserve">
-    <value>Set the background color of the stereonet drawing area.</value>
-  </data>
-  <data name="colorControlIndex.ToolTip" xml:space="preserve">
-    <value>Set the plot color for the index being added or
-currently selected (used when 'Rotate color' is off).</value>
-  </data>
-  <data name="colorControlIndexLabel.ToolTip" xml:space="preserve">
-    <value>Set the fixed color used for index
-labels when 'Specify color' is enabled.</value>
-  </data>
-  <data name="colorControlKikuchiLabel.ToolTip" xml:space="preserve">
-    <value>Set the color of the zone-axis labels in
-Kikuchi-line mode (Kikuchi lines: diffraction
-bands from inelastically scattered electrons).</value>
-  </data>
-  <data name="colorControlKikuchiPoints.ToolTip" xml:space="preserve">
-    <value>Set the color of the poles and
-lines drawn in Kikuchi-line mode.</value>
-  </data>
-  <data name="indexControlDrawing.ToolTip" xml:space="preserve">
-    <value>Enter the index to plot — a single [uvw]/(hkl) in
-'Specified' mode, or the maximum h,k,l in 'Range' mode.</value>
-  </data>
-  <data name="label2.ToolTip" xml:space="preserve">
-    <value>Zone axis [uvw] and lattice plane (hkl)
-nearest the cursor position on the stereonet.</value>
-  </data>
-  <data name="label3.ToolTip" xml:space="preserve">
-    <value>Tilt and azimuth angles (in degrees) at
-the cursor position on the stereonet.</value>
-  </data>
-  <data name="labelAxisPlane.ToolTip" xml:space="preserve">
-    <value>Zone axis [uvw] and lattice plane (hkl)
-nearest the cursor position on the stereonet.</value>
-  </data>
-  <data name="labelXYpos.ToolTip" xml:space="preserve">
-    <value>Tilt and azimuth angles (in degrees) at
-the cursor position on the stereonet.</value>
-  </data>
-  <data name="numericBoxAngularSpeed.ToolTip" xml:space="preserve">
-    <value>Angular speed of the rotational
-scan, in degrees per second (°/s).</value>
-  </data>
-  <data name="numericBoxRadialAngle.ToolTip" xml:space="preserve">
-    <value>Radial tilt angle (cone half-angle from the
-center) of the rotational scan, in degrees.</value>
-  </data>
-  <data name="numericBoxRxSpeed.ToolTip" xml:space="preserve">
-    <value>Rotation speed of the Rx (φ)
-motor, in degrees per second (°/s).</value>
-  </data>
-  <data name="numericBoxRyOscillation.ToolTip" xml:space="preserve">
-    <value>Oscillation amplitude (±) of the Ry (ω) axis, in degrees.</value>
-  </data>
-  <data name="numericBoxRySpeed.ToolTip" xml:space="preserve">
-    <value>Rotation speed of the Ry (ω)
-motor, in degrees per second (°/s).</value>
-  </data>
-  <data name="numericBoxRyStep.ToolTip" xml:space="preserve">
-    <value>Angular step of the Ry (ω) scan per increment, in degrees.</value>
-  </data>
-  <data name="numericBoxRzOscillation.ToolTip" xml:space="preserve">
-    <value>Oscillation amplitude (±) of the Rz (θ) axis, in degrees.</value>
-  </data>
-  <data name="numericBoxRzSpeed.ToolTip" xml:space="preserve">
-    <value>Rotation speed of the Rz (θ)
-motor, in degrees per second (°/s).</value>
-  </data>
-  <data name="numericBoxTotalTime.ToolTip" xml:space="preserve">
-    <value>Total duration of the scan, in seconds.</value>
-  </data>
-  <data name="radioButtonRotationalScan.ToolTip" xml:space="preserve">
-    <value>Rotational scan mode: sweeps the tilt
-at a fixed radius (θ²+ω²=constant),
-tracing a circle on the stereonet.</value>
-  </data>
-  <data name="radioButtonZigzagScan.ToolTip" xml:space="preserve">
-    <value>Zigzag (raster) scan mode: steps θ back and
-forth while advancing ω (+θ → +ω → -θ → +ω …).</value>
-  </data>
-  <data name="trackBarDepthFadingOut.ToolTip" xml:space="preserve">
-    <value>Adjust depth cueing: how strongly objects
-fade with distance (depth) in the 3-D view.</value>
-  </data>
-  <data name="checkBoxDisplay3D.ToolTip" xml:space="preserve">
-    <value>Show the 3D (OpenGL) view of the crystal
-alongside the stereographic projection;
-unchecked shows the 2D stereonet only</value>
-  </data>
-  <data name="listBoxSpecifiedIndices.ToolTip" xml:space="preserve">
-    <value>List of user-specified indices projected on the
-stereonet; select rows to recolor or remove them</value>
-  </data>
-  <data name="waveLengthControl.ToolTip" xml:space="preserve">
-    <value>Set the radiation source and wavelength used to
-compute structure-factor intensities and the
-Ewald-sphere reflection list shown on the stereonet</value>
-  </data>
-  <data name="label22.ToolTip" xml:space="preserve">
-    <value>Rotation speed of the Rx (φ)
-motor, in degrees per second (°/s).</value>
-  </data>
-  <data name="label25.ToolTip" xml:space="preserve">
-    <value>Rotation speed of the Rx (φ)
-motor, in degrees per second (°/s).</value>
-  </data>
-  <data name="label29.ToolTip" xml:space="preserve">
-    <value>Adjust depth cueing: how strongly objects
-fade with distance (depth) in the 3-D view.</value>
   </data>
 </root>

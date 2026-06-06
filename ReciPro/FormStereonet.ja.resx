@@ -418,6 +418,9 @@
     <value>チェックするとステレオネットに 1° 間隔の細かいグリッド
 線を追加します。オフでは粗いグリッドのみ表示します。</value>
   </data>
+  <data name="checkBoxAnomalousDispersion.ToolTip" xml:space="preserve">
+    <value>構造因子にエネルギー依存の X 線異常分散項 (f', f'') を加える。吸収端近傍では Friedel 則が破れ、hkl と -h-k-l の間に Bijvoet 強度差が生じる。オフで従来の分散なしの結果に戻る。</value>
+  </data>
   <data name="flowLayoutPanel13.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 19</value>
   </data>

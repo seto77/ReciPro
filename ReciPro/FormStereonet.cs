@@ -967,13 +967,14 @@ public partial class FormStereonet : FormBase
             if (radioButtonHighStructureFactor.Checked)
                 radioButtonRange.Checked = true;
             checkBoxReflectStructureFactor.Enabled = false;
+            //checkBoxAnomalousDispersion.Enabled = false;//260606Cl Enabled は setVector() で一元管理(X線 && Plane)。ここで設定しても末尾の setVector() に上書きされ競合するため撤去
         }
         else
         {
             indexControlDrawing.Mode = IndexControl.ModeEnum.Plane;
             radioButtonHighStructureFactor.Visible = true;
             checkBoxReflectStructureFactor.Enabled = true;
-
+            //checkBoxAnomalousDispersion.Enabled = true;//260606Cl Enabled は setVector() で一元管理(同上)
         }
         setVector();
         Draw();
@@ -1204,6 +1205,13 @@ public partial class FormStereonet : FormBase
         setVector();
         Draw();
     }
+
+    //260606Cl 追加: X線異常分散(f'/f'')の ON/OFF。OFF で従来動作(分散なし)に戻る。
+    private void checkBoxAnomalousDispersion_CheckedChanged(object sender, EventArgs e)
+    {
+        setVector();
+        Draw();
+    }
     #endregion
 
     #region リストボックス近辺のイベント
@@ -1296,6 +1304,13 @@ public partial class FormStereonet : FormBase
     {
         if (formMain.Crystal.A * formMain.Crystal.B * formMain.Crystal.C == 0)
             return;
+
+        //260606Cl X線異常分散トグルの有効状態を更新。異常分散は X線のみ、かつ構造因子を計算する Plane モード(=軸モードでない)でのみ意味を持つ。
+        //setVector は WaveSource 変更/Axes・Plane 切替/チェック操作など全イベントで呼ばれる単一ポイント → ここを Enabled の唯一の真実とする(radioButtonAxes_CheckedChanged 側の個別設定は撤去)。
+        checkBoxAnomalousDispersion.Enabled = waveLengthControl.WaveSource == WaveSource.Xray && !radioButtonAxes.Checked;
+        //260606Cl X線異常分散 f'/f'' を構造因子へ反映するか(X線・チェックON・Plane モードのみ。上の Enabled 条件と一致させる)。
+        bool useAnomalousDispersion = checkBoxAnomalousDispersion.Checked && waveLengthControl.WaveSource == WaveSource.Xray && !radioButtonAxes.Checked;
+
         if (!radioButtonHighStructureFactor.Checked)
         {
             //範囲指定モードの時
@@ -1405,7 +1420,7 @@ public partial class FormStereonet : FormBase
             if (!radioButtonAxes.Checked && ProjectedObjects.Count > 0)//軸モード出ないときは構造因子も計算
             {
                 foreach (var obj in ProjectedObjects)
-                    obj.Intensity = formMain.Crystal.GetStructureFactor(waveLengthControl.WaveSource, obj.Indices[0]).MagnitudeSquared();
+                    obj.Intensity = formMain.Crystal.GetStructureFactor(waveLengthControl.WaveSource, obj.Indices[0], xrayEnergyKeV: waveLengthControl.Energy, anomalousDispersion: useAnomalousDispersion).MagnitudeSquared();//260606Cl X線異常分散を反映(既定ON)
                 var max = ProjectedObjects.Max(o => o.Intensity);
                 foreach (var obj in ProjectedObjects)
                     obj.Intensity /= max;
@@ -1417,7 +1432,7 @@ public partial class FormStereonet : FormBase
         {
             int n = numericBoxHighStructureFactor.ValueInteger;
 
-            formMain.Crystal.SetVectorOfG(0.0001, waveLengthControl.WaveSource, n * 40);
+            formMain.Crystal.SetVectorOfG(0.0001, waveLengthControl.WaveSource, n * 40, xrayEnergyKeV: waveLengthControl.Energy, anomalousDispersion: useAnomalousDispersion);//260606Cl X線異常分散を反映(既定ON)
             var vec = formMain.Crystal.VectorOfG;
 
             Array.Sort(vec, (g1, g2) => g2.RawIntensity.CompareTo(g1.RawIntensity));

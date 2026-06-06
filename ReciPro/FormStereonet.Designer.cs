@@ -83,6 +83,7 @@ namespace ReciPro
             radioButtonSchmidt = new System.Windows.Forms.RadioButton();
             panel2 = new System.Windows.Forms.Panel();
             groupBoxProjectionObject = new System.Windows.Forms.GroupBox();
+            checkBoxAnomalousDispersion = new System.Windows.Forms.CheckBox();
             checkBoxReflectStructureFactor = new System.Windows.Forms.CheckBox();
             checkBoxShowIndexLabels = new System.Windows.Forms.CheckBox();
             flowLayoutPanelProjectionObject = new System.Windows.Forms.FlowLayoutPanel();
@@ -155,38 +156,22 @@ namespace ReciPro
             printPreviewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             printToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             toolTip = new System.Windows.Forms.ToolTip(components);
-            toolTip.IsBalloon = true; // 260531Cl 追加: バルーン表示に統一
             radioButtonRange = new System.Windows.Forms.RadioButton();
             radioButtonSpecifiedIndices = new System.Windows.Forms.RadioButton();
             radioButtonHighStructureFactor = new System.Windows.Forms.RadioButton();
-            printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
-            printDocument1 = new System.Drawing.Printing.PrintDocument();
-            groupBoxIndices = new System.Windows.Forms.GroupBox();
-            panelSpecifiedIndices = new System.Windows.Forms.Panel();
             listBoxSpecifiedIndices = new System.Windows.Forms.ListBox();
-            flowLayoutPanelAddRemove = new System.Windows.Forms.FlowLayoutPanel();
             buttonAddIndex = new System.Windows.Forms.Button();
             buttonRemoveIndex = new System.Windows.Forms.Button();
             colorControlIndex = new ColorControl();
-            flowLayoutPanel6 = new System.Windows.Forms.FlowLayoutPanel();
             checkBoxRotateColor = new System.Windows.Forms.CheckBox();
-            flowLayoutPanelIndices = new System.Windows.Forms.FlowLayoutPanel();
-            flowLayoutPanelIndexFilter = new System.Windows.Forms.FlowLayoutPanel();
             numericBoxHighStructureFactor = new NumericBox();
             indexControlDrawing = new IndexControl();
             checkBoxIncludingEquivalentPlanes = new System.Windows.Forms.CheckBox();
-            panel3 = new System.Windows.Forms.Panel();
-            panel4 = new System.Windows.Forms.Panel();
-            panel1 = new System.Windows.Forms.Panel();
-            panel3DOptions = new System.Windows.Forms.Panel();
             checkBoxDisplay3D = new System.Windows.Forms.CheckBox();
-            groupBox3DOptions = new System.Windows.Forms.GroupBox();
-            flowLayoutPanel9 = new System.Windows.Forms.FlowLayoutPanel();
             button3D_reset = new System.Windows.Forms.Button();
             checkBox3dOptionLabel = new System.Windows.Forms.CheckBox();
             checkBox3dOptionSemisphere = new System.Windows.Forms.CheckBox();
             checkBox3dOptionStereonet = new System.Windows.Forms.CheckBox();
-            flowLayoutPanel8 = new System.Windows.Forms.FlowLayoutPanel();
             checkBox3dOptionSphere = new System.Windows.Forms.CheckBox();
             checkBox3dOptionProjectionLine = new System.Windows.Forms.CheckBox();
             label29 = new System.Windows.Forms.Label();
@@ -194,6 +179,21 @@ namespace ReciPro
             labelAxisPlane = new System.Windows.Forms.Label();
             label2 = new System.Windows.Forms.Label();
             label3 = new System.Windows.Forms.Label();
+            printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
+            printDocument1 = new System.Drawing.Printing.PrintDocument();
+            groupBoxIndices = new System.Windows.Forms.GroupBox();
+            panelSpecifiedIndices = new System.Windows.Forms.Panel();
+            flowLayoutPanelAddRemove = new System.Windows.Forms.FlowLayoutPanel();
+            flowLayoutPanel6 = new System.Windows.Forms.FlowLayoutPanel();
+            flowLayoutPanelIndices = new System.Windows.Forms.FlowLayoutPanel();
+            flowLayoutPanelIndexFilter = new System.Windows.Forms.FlowLayoutPanel();
+            panel3 = new System.Windows.Forms.Panel();
+            panel4 = new System.Windows.Forms.Panel();
+            panel1 = new System.Windows.Forms.Panel();
+            panel3DOptions = new System.Windows.Forms.Panel();
+            groupBox3DOptions = new System.Windows.Forms.GroupBox();
+            flowLayoutPanel9 = new System.Windows.Forms.FlowLayoutPanel();
+            flowLayoutPanel8 = new System.Windows.Forms.FlowLayoutPanel();
             pageSetupDialog1 = new System.Windows.Forms.PageSetupDialog();
             printDialog1 = new System.Windows.Forms.PrintDialog();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
@@ -233,6 +233,7 @@ namespace ReciPro
             tabPage3.SuspendLayout();
             tabPage4.SuspendLayout();
             menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)trackBarDepthFadingOut).BeginInit();
             groupBoxIndices.SuspendLayout();
             panelSpecifiedIndices.SuspendLayout();
             flowLayoutPanelAddRemove.SuspendLayout();
@@ -244,7 +245,6 @@ namespace ReciPro
             groupBox3DOptions.SuspendLayout();
             flowLayoutPanel9.SuspendLayout();
             flowLayoutPanel8.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)trackBarDepthFadingOut).BeginInit();
             SuspendLayout();
             // 
             // splitContainer1
@@ -352,7 +352,6 @@ namespace ReciPro
             // 
             colorControlIndexLabel.Argb = -16777088;
             resources.ApplyResources(colorControlIndexLabel, "colorControlIndexLabel");
-            toolTip.SetToolTip(colorControlIndexLabel, resources.GetString("colorControlIndexLabel.ToolTip")); // 260531Cl
             colorControlIndexLabel.BackColor = System.Drawing.Color.White;
             colorControlIndexLabel.Blue = 128;
             colorControlIndexLabel.BlueF = 0.5019608F;
@@ -364,6 +363,7 @@ namespace ReciPro
             colorControlIndexLabel.Red = 0;
             colorControlIndexLabel.RedF = 0F;
             colorControlIndexLabel.TabStop = false;
+            toolTip.SetToolTip(colorControlIndexLabel, resources.GetString("colorControlIndexLabel.ToolTip1"));
             colorControlIndexLabel.ColorChanged += colorControl_ColorChanged;
             // 
             // groupBoxOutline
@@ -412,7 +412,6 @@ namespace ReciPro
             // 
             colorControlBackGround.Argb = -1;
             resources.ApplyResources(colorControlBackGround, "colorControlBackGround");
-            toolTip.SetToolTip(colorControlBackGround, resources.GetString("colorControlBackGround.ToolTip")); // 260531Cl
             colorControlBackGround.BackColor = System.Drawing.Color.White;
             colorControlBackGround.Blue = 255;
             colorControlBackGround.BlueF = 1F;
@@ -424,13 +423,13 @@ namespace ReciPro
             colorControlBackGround.Red = 255;
             colorControlBackGround.RedF = 1F;
             colorControlBackGround.TabStop = false;
+            toolTip.SetToolTip(colorControlBackGround, resources.GetString("colorControlBackGround.ToolTip1"));
             colorControlBackGround.ColorChanged += colorControl_ColorChanged;
             // 
             // colorControl90DegLine
             // 
             colorControl90DegLine.Argb = -12829441;
             resources.ApplyResources(colorControl90DegLine, "colorControl90DegLine");
-            toolTip.SetToolTip(colorControl90DegLine, resources.GetString("colorControl90DegLine.ToolTip")); // 260531Cl
             colorControl90DegLine.BackColor = System.Drawing.Color.Blue;
             colorControl90DegLine.Blue = 255;
             colorControl90DegLine.BlueF = 1F;
@@ -442,13 +441,13 @@ namespace ReciPro
             colorControl90DegLine.Red = 60;
             colorControl90DegLine.RedF = 0.235294119F;
             colorControl90DegLine.TabStop = false;
+            toolTip.SetToolTip(colorControl90DegLine, resources.GetString("colorControl90DegLine.ToolTip1"));
             colorControl90DegLine.ColorChanged += colorControl_ColorChanged;
             // 
             // colorControl10DegLine
             // 
             colorControl10DegLine.Argb = -7697665;
             resources.ApplyResources(colorControl10DegLine, "colorControl10DegLine");
-            toolTip.SetToolTip(colorControl10DegLine, resources.GetString("colorControl10DegLine.ToolTip")); // 260531Cl
             colorControl10DegLine.BackColor = System.Drawing.Color.FromArgb(128, 128, 255);
             colorControl10DegLine.Blue = 255;
             colorControl10DegLine.BlueF = 1F;
@@ -460,13 +459,13 @@ namespace ReciPro
             colorControl10DegLine.Red = 138;
             colorControl10DegLine.RedF = 0.5411765F;
             colorControl10DegLine.TabStop = false;
+            toolTip.SetToolTip(colorControl10DegLine, resources.GetString("colorControl10DegLine.ToolTip1"));
             colorControl10DegLine.ColorChanged += colorControl_ColorChanged;
             // 
             // colorControl1DegLine
             // 
             colorControl1DegLine.Argb = -4144897;
             resources.ApplyResources(colorControl1DegLine, "colorControl1DegLine");
-            toolTip.SetToolTip(colorControl1DegLine, resources.GetString("colorControl1DegLine.ToolTip")); // 260531Cl
             colorControl1DegLine.BackColor = System.Drawing.Color.FromArgb(192, 192, 255);
             colorControl1DegLine.Blue = 255;
             colorControl1DegLine.BlueF = 1F;
@@ -478,6 +477,7 @@ namespace ReciPro
             colorControl1DegLine.Red = 192;
             colorControl1DegLine.RedF = 0.7529412F;
             colorControl1DegLine.TabStop = false;
+            toolTip.SetToolTip(colorControl1DegLine, resources.GetString("colorControl1DegLine.ToolTip1"));
             colorControl1DegLine.ColorChanged += colorControl_ColorChanged;
             // 
             // flowLayoutPanel13
@@ -598,26 +598,37 @@ namespace ReciPro
             // groupBoxProjectionObject
             // 
             resources.ApplyResources(groupBoxProjectionObject, "groupBoxProjectionObject");
+            groupBoxProjectionObject.Controls.Add(checkBoxAnomalousDispersion);
             groupBoxProjectionObject.Controls.Add(checkBoxReflectStructureFactor);
             groupBoxProjectionObject.Controls.Add(checkBoxShowIndexLabels);
             groupBoxProjectionObject.Controls.Add(flowLayoutPanelProjectionObject);
             groupBoxProjectionObject.Name = "groupBoxProjectionObject";
             groupBoxProjectionObject.TabStop = false;
             // 
+            // checkBoxAnomalousDispersion
+            // 
+            resources.ApplyResources(checkBoxAnomalousDispersion, "checkBoxAnomalousDispersion");
+            checkBoxAnomalousDispersion.Checked = true;
+            checkBoxAnomalousDispersion.CheckState = System.Windows.Forms.CheckState.Checked;
+            checkBoxAnomalousDispersion.Name = "checkBoxAnomalousDispersion";
+            toolTip.SetToolTip(checkBoxAnomalousDispersion, resources.GetString("checkBoxAnomalousDispersion.ToolTip"));// 260606Cl ツールチップ配線
+            checkBoxAnomalousDispersion.UseVisualStyleBackColor = true;
+            checkBoxAnomalousDispersion.CheckedChanged += checkBoxAnomalousDispersion_CheckedChanged;
+            // 
             // checkBoxReflectStructureFactor
             // 
             resources.ApplyResources(checkBoxReflectStructureFactor, "checkBoxReflectStructureFactor");
             checkBoxReflectStructureFactor.Name = "checkBoxReflectStructureFactor";
-            toolTip.SetToolTip(checkBoxReflectStructureFactor, resources.GetString("checkBoxReflectStructureFactor.ToolTip")); // (260531Ch)
+            toolTip.SetToolTip(checkBoxReflectStructureFactor, resources.GetString("checkBoxReflectStructureFactor.ToolTip"));
             checkBoxReflectStructureFactor.CheckedChanged += checkBoxReflectStructureFactor_CheckedChanged;
             // 
             // checkBoxShowIndexLabels
             // 
             resources.ApplyResources(checkBoxShowIndexLabels, "checkBoxShowIndexLabels");
-            toolTip.SetToolTip(checkBoxShowIndexLabels, resources.GetString("checkBoxShowIndexLabels.ToolTip")); // 260531Cl
             checkBoxShowIndexLabels.Checked = true;
             checkBoxShowIndexLabels.CheckState = System.Windows.Forms.CheckState.Checked;
             checkBoxShowIndexLabels.Name = "checkBoxShowIndexLabels";
+            toolTip.SetToolTip(checkBoxShowIndexLabels, resources.GetString("checkBoxShowIndexLabels.ToolTip"));
             checkBoxShowIndexLabels.UseVisualStyleBackColor = true;
             checkBoxShowIndexLabels.CheckedChanged += checkBoxShowIndexLabels_CheckedChanged;
             // 
@@ -655,8 +666,8 @@ namespace ReciPro
             // labelXYpos
             // 
             resources.ApplyResources(labelXYpos, "labelXYpos");
-            toolTip.SetToolTip(labelXYpos, resources.GetString("labelXYpos.ToolTip")); // 260531Cl
             labelXYpos.Name = "labelXYpos";
+            toolTip.SetToolTip(labelXYpos, resources.GetString("labelXYpos.ToolTip"));
             // 
             // label6
             // 
@@ -723,7 +734,6 @@ namespace ReciPro
             // 
             colorControlKikuchiPoints.Argb = -16777088;
             resources.ApplyResources(colorControlKikuchiPoints, "colorControlKikuchiPoints");
-            toolTip.SetToolTip(colorControlKikuchiPoints, resources.GetString("colorControlKikuchiPoints.ToolTip")); // 260531Cl
             colorControlKikuchiPoints.BackColor = System.Drawing.Color.White;
             colorControlKikuchiPoints.Blue = 128;
             colorControlKikuchiPoints.BlueF = 0.5019608F;
@@ -735,13 +745,13 @@ namespace ReciPro
             colorControlKikuchiPoints.Red = 0;
             colorControlKikuchiPoints.RedF = 0F;
             colorControlKikuchiPoints.TabStop = false;
+            toolTip.SetToolTip(colorControlKikuchiPoints, resources.GetString("colorControlKikuchiPoints.ToolTip1"));
             colorControlKikuchiPoints.ColorChanged += colorControl_ColorChanged;
             // 
             // colorControlKikuchiLabel
             // 
             colorControlKikuchiLabel.Argb = -16777088;
             resources.ApplyResources(colorControlKikuchiLabel, "colorControlKikuchiLabel");
-            toolTip.SetToolTip(colorControlKikuchiLabel, resources.GetString("colorControlKikuchiLabel.ToolTip")); // 260531Cl
             colorControlKikuchiLabel.BackColor = System.Drawing.Color.White;
             colorControlKikuchiLabel.Blue = 128;
             colorControlKikuchiLabel.BlueF = 0.5019608F;
@@ -753,6 +763,7 @@ namespace ReciPro
             colorControlKikuchiLabel.Red = 0;
             colorControlKikuchiLabel.RedF = 0F;
             colorControlKikuchiLabel.TabStop = false;
+            toolTip.SetToolTip(colorControlKikuchiLabel, resources.GetString("colorControlKikuchiLabel.ToolTip1"));
             colorControlKikuchiLabel.ColorChanged += colorControl_ColorChanged;
             // 
             // tabPage2
@@ -770,7 +781,7 @@ namespace ReciPro
             resources.ApplyResources(checkedListBoxCircles, "checkedListBoxCircles");
             checkedListBoxCircles.FormattingEnabled = true;
             checkedListBoxCircles.Name = "checkedListBoxCircles";
-            toolTip.SetToolTip(checkedListBoxCircles, resources.GetString("checkedListBoxCircles.ToolTip")); // (260531Ch)
+            toolTip.SetToolTip(checkedListBoxCircles, resources.GetString("checkedListBoxCircles.ToolTip"));
             checkedListBoxCircles.ItemCheck += checkedListBoxCircles_ItemCheck;
             // 
             // flowLayoutPanel10
@@ -789,7 +800,7 @@ namespace ReciPro
             buttonAddCircle.BackColor = System.Drawing.Color.SteelBlue;
             buttonAddCircle.ForeColor = System.Drawing.SystemColors.HighlightText;
             buttonAddCircle.Name = "buttonAddCircle";
-            toolTip.SetToolTip(buttonAddCircle, resources.GetString("buttonAddCircle.ToolTip")); // (260531Ch)
+            toolTip.SetToolTip(buttonAddCircle, resources.GetString("buttonAddCircle.ToolTip"));
             buttonAddCircle.UseVisualStyleBackColor = false;
             buttonAddCircle.Click += buttonAddCircle_Click;
             // 
@@ -799,7 +810,7 @@ namespace ReciPro
             buttonDeleteCircle.BackColor = System.Drawing.Color.IndianRed;
             buttonDeleteCircle.ForeColor = System.Drawing.Color.White;
             buttonDeleteCircle.Name = "buttonDeleteCircle";
-            toolTip.SetToolTip(buttonDeleteCircle, resources.GetString("buttonDeleteCircle.ToolTip")); // (260531Ch)
+            toolTip.SetToolTip(buttonDeleteCircle, resources.GetString("buttonDeleteCircle.ToolTip"));
             buttonDeleteCircle.UseVisualStyleBackColor = false;
             buttonDeleteCircle.Click += buttonDeleteCircle_Click;
             // 
@@ -815,9 +826,9 @@ namespace ReciPro
             colorControlGreatCircle.Green = 128;
             colorControlGreatCircle.GreenF = 0.5019608F;
             colorControlGreatCircle.Name = "colorControlGreatCircle";
-            toolTip.SetToolTip(colorControlGreatCircle, resources.GetString("colorControlGreatCircle.ToolTip")); // (260531Ch)
             colorControlGreatCircle.Red = 255;
             colorControlGreatCircle.RedF = 1F;
+            toolTip.SetToolTip(colorControlGreatCircle, resources.GetString("colorControlGreatCircle.ToolTip1"));
             colorControlGreatCircle.ColorChanged += colorControl_ColorChanged;
             // 
             // label5
@@ -852,7 +863,7 @@ namespace ReciPro
             radioButtonCircleByAxis.Checked = true;
             radioButtonCircleByAxis.Name = "radioButtonCircleByAxis";
             radioButtonCircleByAxis.TabStop = true;
-            toolTip.SetToolTip(radioButtonCircleByAxis, resources.GetString("radioButtonCircleByAxis.ToolTip")); // (260531Ch)
+            toolTip.SetToolTip(radioButtonCircleByAxis, resources.GetString("radioButtonCircleByAxis.ToolTip"));
             radioButtonCircleByAxis.UseVisualStyleBackColor = true;
             radioButtonCircleByAxis.CheckedChanged += radioButtonCircleByAxis_CheckedChanged;
             // 
@@ -869,14 +880,14 @@ namespace ReciPro
             indexControlAxis.LabelVisible = false;
             indexControlAxis.Mode = IndexControl.ModeEnum.Axis;
             indexControlAxis.Name = "indexControlAxis";
-            toolTip.SetToolTip(indexControlAxis, resources.GetString("indexControlAxis.ToolTip")); // (260531Ch)
+            toolTip.SetToolTip(indexControlAxis, resources.GetString("indexControlAxis.ToolTip"));
             indexControlAxis.Values = ((int, int, int))resources.GetObject("indexControlAxis.Values");
             // 
             // radioButtonCircleByPlanes
             // 
             resources.ApplyResources(radioButtonCircleByPlanes, "radioButtonCircleByPlanes");
             radioButtonCircleByPlanes.Name = "radioButtonCircleByPlanes";
-            toolTip.SetToolTip(radioButtonCircleByPlanes, resources.GetString("radioButtonCircleByPlanes.ToolTip")); // (260531Ch)
+            toolTip.SetToolTip(radioButtonCircleByPlanes, resources.GetString("radioButtonCircleByPlanes.ToolTip"));
             radioButtonCircleByPlanes.UseVisualStyleBackColor = true;
             // 
             // flowLayoutPanelCirclePlanes
@@ -898,8 +909,8 @@ namespace ReciPro
             indexControlCirclePlane1.BoxWidth = 42;
             indexControlCirclePlane1.LabelVisible = false;
             indexControlCirclePlane1.Name = "indexControlCirclePlane1";
-            toolTip.SetToolTip(indexControlCirclePlane1, resources.GetString("indexControlCirclePlane1.ToolTip")); // (260531Ch)
             indexControlCirclePlane1.SubScript = "1";
+            toolTip.SetToolTip(indexControlCirclePlane1, resources.GetString("indexControlCirclePlane1.ToolTip"));
             indexControlCirclePlane1.Values = ((int, int, int))resources.GetObject("indexControlCirclePlane1.Values");
             // 
             // flowLayoutPanel2
@@ -914,8 +925,8 @@ namespace ReciPro
             indexControlCirclePlane2.BoxWidth = 42;
             indexControlCirclePlane2.LabelVisible = false;
             indexControlCirclePlane2.Name = "indexControlCirclePlane2";
-            toolTip.SetToolTip(indexControlCirclePlane2, resources.GetString("indexControlCirclePlane2.ToolTip")); // (260531Ch)
             indexControlCirclePlane2.SubScript = "2";
+            toolTip.SetToolTip(indexControlCirclePlane2, resources.GetString("indexControlCirclePlane2.ToolTip"));
             indexControlCirclePlane2.Values = ((int, int, int))resources.GetObject("indexControlCirclePlane2.Values");
             // 
             // tabPage3
@@ -945,74 +956,73 @@ namespace ReciPro
             // buttonYusaModeStop
             // 
             resources.ApplyResources(buttonYusaModeStop, "buttonYusaModeStop");
-            toolTip.SetToolTip(buttonYusaModeStop, resources.GetString("buttonYusaModeStop.ToolTip")); // 260531Cl
             buttonYusaModeStop.Name = "buttonYusaModeStop";
+            toolTip.SetToolTip(buttonYusaModeStop, resources.GetString("buttonYusaModeStop.ToolTip"));
             buttonYusaModeStop.UseVisualStyleBackColor = true;
             buttonYusaModeStop.Click += buttonYusaModeStop_Click;
             // 
             // buttonYusaModeStart
             // 
             resources.ApplyResources(buttonYusaModeStart, "buttonYusaModeStart");
-            toolTip.SetToolTip(buttonYusaModeStart, resources.GetString("buttonYusaModeStart.ToolTip")); // 260531Cl
             buttonYusaModeStart.BackColor = System.Drawing.Color.SteelBlue;
             buttonYusaModeStart.ForeColor = System.Drawing.Color.White;
             buttonYusaModeStart.Name = "buttonYusaModeStart";
+            toolTip.SetToolTip(buttonYusaModeStart, resources.GetString("buttonYusaModeStart.ToolTip"));
             buttonYusaModeStart.UseVisualStyleBackColor = false;
             buttonYusaModeStart.Click += buttonYusaModeStart_Click;
             // 
             // radioButtonRotationalScan
             // 
             resources.ApplyResources(radioButtonRotationalScan, "radioButtonRotationalScan");
-            toolTip.SetToolTip(radioButtonRotationalScan, resources.GetString("radioButtonRotationalScan.ToolTip")); // 260531Cl
             radioButtonRotationalScan.Name = "radioButtonRotationalScan";
+            toolTip.SetToolTip(radioButtonRotationalScan, resources.GetString("radioButtonRotationalScan.ToolTip"));
             radioButtonRotationalScan.UseVisualStyleBackColor = true;
             // 
             // radioButtonZigzagScan
             // 
             resources.ApplyResources(radioButtonZigzagScan, "radioButtonZigzagScan");
-            toolTip.SetToolTip(radioButtonZigzagScan, resources.GetString("radioButtonZigzagScan.ToolTip")); // 260531Cl
             radioButtonZigzagScan.Checked = true;
             radioButtonZigzagScan.Name = "radioButtonZigzagScan";
             radioButtonZigzagScan.TabStop = true;
+            toolTip.SetToolTip(radioButtonZigzagScan, resources.GetString("radioButtonZigzagScan.ToolTip"));
             radioButtonZigzagScan.UseVisualStyleBackColor = true;
             // 
             // checkBox3
             // 
             resources.ApplyResources(checkBox3, "checkBox3");
-            toolTip.SetToolTip(checkBox3, resources.GetString("checkBox3.ToolTip")); // 260531Cl
             checkBox3.Name = "checkBox3";
+            toolTip.SetToolTip(checkBox3, resources.GetString("checkBox3.ToolTip"));
             checkBox3.UseVisualStyleBackColor = true;
             // 
             // checkBox2
             // 
             resources.ApplyResources(checkBox2, "checkBox2");
-            toolTip.SetToolTip(checkBox2, resources.GetString("checkBox2.ToolTip")); // 260531Cl
             checkBox2.Name = "checkBox2";
+            toolTip.SetToolTip(checkBox2, resources.GetString("checkBox2.ToolTip"));
             checkBox2.UseVisualStyleBackColor = true;
             // 
             // checkBox1
             // 
             resources.ApplyResources(checkBox1, "checkBox1");
-            toolTip.SetToolTip(checkBox1, resources.GetString("checkBox1.ToolTip")); // 260531Cl
             checkBox1.Name = "checkBox1";
+            toolTip.SetToolTip(checkBox1, resources.GetString("checkBox1.ToolTip"));
             checkBox1.UseVisualStyleBackColor = true;
             // 
             // label25
             // 
             resources.ApplyResources(label25, "label25");
-            toolTip.SetToolTip(label25, resources.GetString("label25.ToolTip")); // 260531Cl
             label25.Name = "label25";
+            toolTip.SetToolTip(label25, resources.GetString("label25.ToolTip"));
             // 
             // label22
             // 
             resources.ApplyResources(label22, "label22");
-            toolTip.SetToolTip(label22, resources.GetString("label22.ToolTip")); // 260531Cl
             label22.Name = "label22";
+            toolTip.SetToolTip(label22, resources.GetString("label22.ToolTip"));
             // 
             // numericBoxRxSpeed
             // 
             resources.ApplyResources(numericBoxRxSpeed, "numericBoxRxSpeed");
-            toolTip.SetToolTip(numericBoxRxSpeed, resources.GetString("numericBoxRxSpeed.ToolTip")); // 260531Cl
             numericBoxRxSpeed.BackColor = System.Drawing.SystemColors.Control;
             numericBoxRxSpeed.FooterBackColor = System.Drawing.SystemColors.Control;
             numericBoxRxSpeed.HeaderBackColor = System.Drawing.SystemColors.Control;
@@ -1021,13 +1031,13 @@ namespace ReciPro
             numericBoxRxSpeed.SkipEventDuringInput = false;
             numericBoxRxSpeed.SmartIncrement = true;
             numericBoxRxSpeed.ThousandsSeparator = true;
+            toolTip.SetToolTip(numericBoxRxSpeed, resources.GetString("numericBoxRxSpeed.ToolTip1"));
             numericBoxRxSpeed.Value = 18D;
             numericBoxRxSpeed.ValueFontSize = 8F;
             // 
             // numericBoxRySpeed
             // 
             resources.ApplyResources(numericBoxRySpeed, "numericBoxRySpeed");
-            toolTip.SetToolTip(numericBoxRySpeed, resources.GetString("numericBoxRySpeed.ToolTip")); // 260531Cl
             numericBoxRySpeed.BackColor = System.Drawing.SystemColors.Control;
             numericBoxRySpeed.FooterBackColor = System.Drawing.SystemColors.Control;
             numericBoxRySpeed.HeaderBackColor = System.Drawing.SystemColors.Control;
@@ -1036,13 +1046,13 @@ namespace ReciPro
             numericBoxRySpeed.SkipEventDuringInput = false;
             numericBoxRySpeed.SmartIncrement = true;
             numericBoxRySpeed.ThousandsSeparator = true;
+            toolTip.SetToolTip(numericBoxRySpeed, resources.GetString("numericBoxRySpeed.ToolTip1"));
             numericBoxRySpeed.Value = 1D;
             numericBoxRySpeed.ValueFontSize = 8F;
             // 
             // numericBoxRzSpeed
             // 
             resources.ApplyResources(numericBoxRzSpeed, "numericBoxRzSpeed");
-            toolTip.SetToolTip(numericBoxRzSpeed, resources.GetString("numericBoxRzSpeed.ToolTip")); // 260531Cl
             numericBoxRzSpeed.BackColor = System.Drawing.SystemColors.Control;
             numericBoxRzSpeed.FooterBackColor = System.Drawing.SystemColors.Control;
             numericBoxRzSpeed.HeaderBackColor = System.Drawing.SystemColors.Control;
@@ -1051,13 +1061,13 @@ namespace ReciPro
             numericBoxRzSpeed.SkipEventDuringInput = false;
             numericBoxRzSpeed.SmartIncrement = true;
             numericBoxRzSpeed.ThousandsSeparator = true;
+            toolTip.SetToolTip(numericBoxRzSpeed, resources.GetString("numericBoxRzSpeed.ToolTip1"));
             numericBoxRzSpeed.Value = 2D;
             numericBoxRzSpeed.ValueFontSize = 8F;
             // 
             // numericBoxTotalTime
             // 
             resources.ApplyResources(numericBoxTotalTime, "numericBoxTotalTime");
-            toolTip.SetToolTip(numericBoxTotalTime, resources.GetString("numericBoxTotalTime.ToolTip")); // 260531Cl
             numericBoxTotalTime.BackColor = System.Drawing.SystemColors.Control;
             numericBoxTotalTime.FooterBackColor = System.Drawing.SystemColors.Control;
             numericBoxTotalTime.HeaderBackColor = System.Drawing.SystemColors.Control;
@@ -1066,13 +1076,13 @@ namespace ReciPro
             numericBoxTotalTime.SkipEventDuringInput = false;
             numericBoxTotalTime.SmartIncrement = true;
             numericBoxTotalTime.ThousandsSeparator = true;
+            toolTip.SetToolTip(numericBoxTotalTime, resources.GetString("numericBoxTotalTime.ToolTip1"));
             numericBoxTotalTime.Value = 100D;
             numericBoxTotalTime.ValueFontSize = 8F;
             // 
             // numericBoxAngularSpeed
             // 
             resources.ApplyResources(numericBoxAngularSpeed, "numericBoxAngularSpeed");
-            toolTip.SetToolTip(numericBoxAngularSpeed, resources.GetString("numericBoxAngularSpeed.ToolTip")); // 260531Cl
             numericBoxAngularSpeed.BackColor = System.Drawing.SystemColors.Control;
             numericBoxAngularSpeed.FooterBackColor = System.Drawing.SystemColors.Control;
             numericBoxAngularSpeed.HeaderBackColor = System.Drawing.SystemColors.Control;
@@ -1081,13 +1091,13 @@ namespace ReciPro
             numericBoxAngularSpeed.SkipEventDuringInput = false;
             numericBoxAngularSpeed.SmartIncrement = true;
             numericBoxAngularSpeed.ThousandsSeparator = true;
+            toolTip.SetToolTip(numericBoxAngularSpeed, resources.GetString("numericBoxAngularSpeed.ToolTip1"));
             numericBoxAngularSpeed.Value = 30D;
             numericBoxAngularSpeed.ValueFontSize = 8F;
             // 
             // numericBoxRyStep
             // 
             resources.ApplyResources(numericBoxRyStep, "numericBoxRyStep");
-            toolTip.SetToolTip(numericBoxRyStep, resources.GetString("numericBoxRyStep.ToolTip")); // 260531Cl
             numericBoxRyStep.BackColor = System.Drawing.SystemColors.Control;
             numericBoxRyStep.FooterBackColor = System.Drawing.SystemColors.Control;
             numericBoxRyStep.HeaderBackColor = System.Drawing.SystemColors.Control;
@@ -1096,13 +1106,13 @@ namespace ReciPro
             numericBoxRyStep.SkipEventDuringInput = false;
             numericBoxRyStep.SmartIncrement = true;
             numericBoxRyStep.ThousandsSeparator = true;
+            toolTip.SetToolTip(numericBoxRyStep, resources.GetString("numericBoxRyStep.ToolTip1"));
             numericBoxRyStep.Value = 0.2D;
             numericBoxRyStep.ValueFontSize = 8F;
             // 
             // numericBoxRadialAngle
             // 
             resources.ApplyResources(numericBoxRadialAngle, "numericBoxRadialAngle");
-            toolTip.SetToolTip(numericBoxRadialAngle, resources.GetString("numericBoxRadialAngle.ToolTip")); // 260531Cl
             numericBoxRadialAngle.BackColor = System.Drawing.SystemColors.Control;
             numericBoxRadialAngle.FooterBackColor = System.Drawing.SystemColors.Control;
             numericBoxRadialAngle.HeaderBackColor = System.Drawing.SystemColors.Control;
@@ -1111,13 +1121,13 @@ namespace ReciPro
             numericBoxRadialAngle.SkipEventDuringInput = false;
             numericBoxRadialAngle.SmartIncrement = true;
             numericBoxRadialAngle.ThousandsSeparator = true;
+            toolTip.SetToolTip(numericBoxRadialAngle, resources.GetString("numericBoxRadialAngle.ToolTip1"));
             numericBoxRadialAngle.Value = 8D;
             numericBoxRadialAngle.ValueFontSize = 8F;
             // 
             // numericBoxRyOscillation
             // 
             resources.ApplyResources(numericBoxRyOscillation, "numericBoxRyOscillation");
-            toolTip.SetToolTip(numericBoxRyOscillation, resources.GetString("numericBoxRyOscillation.ToolTip")); // 260531Cl
             numericBoxRyOscillation.BackColor = System.Drawing.SystemColors.Control;
             numericBoxRyOscillation.FooterBackColor = System.Drawing.SystemColors.Control;
             numericBoxRyOscillation.HeaderBackColor = System.Drawing.SystemColors.Control;
@@ -1126,13 +1136,13 @@ namespace ReciPro
             numericBoxRyOscillation.SkipEventDuringInput = false;
             numericBoxRyOscillation.SmartIncrement = true;
             numericBoxRyOscillation.ThousandsSeparator = true;
+            toolTip.SetToolTip(numericBoxRyOscillation, resources.GetString("numericBoxRyOscillation.ToolTip1"));
             numericBoxRyOscillation.Value = 8D;
             numericBoxRyOscillation.ValueFontSize = 8F;
             // 
             // numericBoxRzOscillation
             // 
             resources.ApplyResources(numericBoxRzOscillation, "numericBoxRzOscillation");
-            toolTip.SetToolTip(numericBoxRzOscillation, resources.GetString("numericBoxRzOscillation.ToolTip")); // 260531Cl
             numericBoxRzOscillation.BackColor = System.Drawing.SystemColors.Control;
             numericBoxRzOscillation.FooterBackColor = System.Drawing.SystemColors.Control;
             numericBoxRzOscillation.HeaderBackColor = System.Drawing.SystemColors.Control;
@@ -1141,6 +1151,7 @@ namespace ReciPro
             numericBoxRzOscillation.SkipEventDuringInput = false;
             numericBoxRzOscillation.SmartIncrement = true;
             numericBoxRzOscillation.ThousandsSeparator = true;
+            toolTip.SetToolTip(numericBoxRzOscillation, resources.GetString("numericBoxRzOscillation.ToolTip1"));
             numericBoxRzOscillation.Value = 8D;
             numericBoxRzOscillation.ValueFontSize = 8F;
             // 
@@ -1155,12 +1166,11 @@ namespace ReciPro
             // waveLengthControl
             // 
             resources.ApplyResources(waveLengthControl, "waveLengthControl");
-            toolTip.SetToolTip(waveLengthControl, resources.GetString("waveLengthControl.ToolTip")); // 260531Cl
-            waveLengthControl.DirectionWhole = System.Windows.Forms.FlowDirection.TopDown;
             waveLengthControl.Energy = 20D;
             waveLengthControl.Monochrome = true;
             waveLengthControl.Name = "waveLengthControl";
             waveLengthControl.ShowWaveSource = true;
+            toolTip.SetToolTip(waveLengthControl, resources.GetString("waveLengthControl.ToolTip"));
             waveLengthControl.WaveLength = 0.008588514105D;
             waveLengthControl.WaveSource = WaveSource.Electron;
             waveLengthControl.XrayWaveSourceElementNumber = 0;
@@ -1267,6 +1277,7 @@ namespace ReciPro
             // 
             toolTip.AutoPopDelay = 10000;
             toolTip.InitialDelay = 500;
+            toolTip.IsBalloon = true;
             toolTip.ReshowDelay = 100;
             // 
             // radioButtonRange
@@ -1295,6 +1306,197 @@ namespace ReciPro
             radioButtonHighStructureFactor.UseVisualStyleBackColor = true;
             radioButtonHighStructureFactor.CheckedChanged += radioButtonRange_CheckedChanged;
             // 
+            // listBoxSpecifiedIndices
+            // 
+            resources.ApplyResources(listBoxSpecifiedIndices, "listBoxSpecifiedIndices");
+            listBoxSpecifiedIndices.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            listBoxSpecifiedIndices.FormattingEnabled = true;
+            listBoxSpecifiedIndices.MultiColumn = true;
+            listBoxSpecifiedIndices.Name = "listBoxSpecifiedIndices";
+            listBoxSpecifiedIndices.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
+            toolTip.SetToolTip(listBoxSpecifiedIndices, resources.GetString("listBoxSpecifiedIndices.ToolTip"));
+            listBoxSpecifiedIndices.DrawItem += listBoxSpecifiedIndices_DrawItem;
+            listBoxSpecifiedIndices.SelectedIndexChanged += listBoxSpecifiedIndices_SelectedIndexChanged;
+            // 
+            // buttonAddIndex
+            // 
+            resources.ApplyResources(buttonAddIndex, "buttonAddIndex");
+            buttonAddIndex.BackColor = System.Drawing.Color.SteelBlue;
+            buttonAddIndex.ForeColor = System.Drawing.Color.White;
+            buttonAddIndex.Name = "buttonAddIndex";
+            toolTip.SetToolTip(buttonAddIndex, resources.GetString("buttonAddIndex.ToolTip"));
+            buttonAddIndex.UseVisualStyleBackColor = false;
+            buttonAddIndex.Click += buttonAddIndex_Click;
+            // 
+            // buttonRemoveIndex
+            // 
+            resources.ApplyResources(buttonRemoveIndex, "buttonRemoveIndex");
+            buttonRemoveIndex.BackColor = System.Drawing.Color.IndianRed;
+            buttonRemoveIndex.ForeColor = System.Drawing.Color.White;
+            buttonRemoveIndex.Name = "buttonRemoveIndex";
+            toolTip.SetToolTip(buttonRemoveIndex, resources.GetString("buttonRemoveIndex.ToolTip"));
+            buttonRemoveIndex.UseVisualStyleBackColor = false;
+            buttonRemoveIndex.Click += buttonRemoveIndex_Click;
+            // 
+            // colorControlIndex
+            // 
+            colorControlIndex.Argb = -65536;
+            resources.ApplyResources(colorControlIndex, "colorControlIndex");
+            colorControlIndex.BackColor = System.Drawing.SystemColors.Control;
+            colorControlIndex.Blue = 0;
+            colorControlIndex.BlueF = 0F;
+            colorControlIndex.BoxSize = new System.Drawing.Size(20, 20);
+            colorControlIndex.Color = System.Drawing.Color.FromArgb(255, 0, 0);
+            colorControlIndex.Green = 0;
+            colorControlIndex.GreenF = 0F;
+            colorControlIndex.Name = "colorControlIndex";
+            colorControlIndex.Red = 255;
+            colorControlIndex.RedF = 1F;
+            toolTip.SetToolTip(colorControlIndex, resources.GetString("colorControlIndex.ToolTip1"));
+            colorControlIndex.ColorChanged += colorControlIndex_ColorChanged;
+            // 
+            // checkBoxRotateColor
+            // 
+            resources.ApplyResources(checkBoxRotateColor, "checkBoxRotateColor");
+            checkBoxRotateColor.Name = "checkBoxRotateColor";
+            toolTip.SetToolTip(checkBoxRotateColor, resources.GetString("checkBoxRotateColor.ToolTip"));
+            checkBoxRotateColor.UseVisualStyleBackColor = true;
+            checkBoxRotateColor.CheckedChanged += checkBoxRotateColor_CheckedChanged;
+            // 
+            // numericBoxHighStructureFactor
+            // 
+            numericBoxHighStructureFactor.BackColor = System.Drawing.Color.Transparent;
+            resources.ApplyResources(numericBoxHighStructureFactor, "numericBoxHighStructureFactor");
+            numericBoxHighStructureFactor.Maximum = 1000D;
+            numericBoxHighStructureFactor.Minimum = 1D;
+            numericBoxHighStructureFactor.Name = "numericBoxHighStructureFactor";
+            numericBoxHighStructureFactor.RadianValue = 1.7453292519943295D;
+            numericBoxHighStructureFactor.ShowUpDown = true;
+            numericBoxHighStructureFactor.SmartIncrement = true;
+            toolTip.SetToolTip(numericBoxHighStructureFactor, resources.GetString("numericBoxHighStructureFactor.ToolTip1"));
+            numericBoxHighStructureFactor.Value = 100D;
+            numericBoxHighStructureFactor.ValueFontSize = 9F;
+            numericBoxHighStructureFactor.ValueChanged += numericBoxHighStructureFactor_ValueChanged;
+            // 
+            // indexControlDrawing
+            // 
+            resources.ApplyResources(indexControlDrawing, "indexControlDrawing");
+            indexControlDrawing.BoxWidth = 42;
+            indexControlDrawing.Mode = IndexControl.ModeEnum.Axis;
+            indexControlDrawing.Name = "indexControlDrawing";
+            indexControlDrawing.PlusMinus = true;
+            toolTip.SetToolTip(indexControlDrawing, resources.GetString("indexControlDrawing.ToolTip"));
+            indexControlDrawing.Values = ((int, int, int))resources.GetObject("indexControlDrawing.Values");
+            indexControlDrawing.ValueChanged += numericUpDown_ValueChanged;
+            // 
+            // checkBoxIncludingEquivalentPlanes
+            // 
+            resources.ApplyResources(checkBoxIncludingEquivalentPlanes, "checkBoxIncludingEquivalentPlanes");
+            checkBoxIncludingEquivalentPlanes.Checked = true;
+            checkBoxIncludingEquivalentPlanes.CheckState = System.Windows.Forms.CheckState.Checked;
+            checkBoxIncludingEquivalentPlanes.Name = "checkBoxIncludingEquivalentPlanes";
+            toolTip.SetToolTip(checkBoxIncludingEquivalentPlanes, resources.GetString("checkBoxIncludingEquivalentPlanes.ToolTip"));
+            checkBoxIncludingEquivalentPlanes.UseVisualStyleBackColor = true;
+            checkBoxIncludingEquivalentPlanes.CheckedChanged += checkBoxIncludingEquivalentPlanes_CheckedChanged;
+            // 
+            // checkBoxDisplay3D
+            // 
+            resources.ApplyResources(checkBoxDisplay3D, "checkBoxDisplay3D");
+            checkBoxDisplay3D.Name = "checkBoxDisplay3D";
+            toolTip.SetToolTip(checkBoxDisplay3D, resources.GetString("checkBoxDisplay3D.ToolTip"));
+            checkBoxDisplay3D.UseVisualStyleBackColor = true;
+            checkBoxDisplay3D.CheckedChanged += checkBoxDisplay3D_CheckedChanged;
+            // 
+            // button3D_reset
+            // 
+            resources.ApplyResources(button3D_reset, "button3D_reset");
+            button3D_reset.Name = "button3D_reset";
+            toolTip.SetToolTip(button3D_reset, resources.GetString("button3D_reset.ToolTip"));
+            button3D_reset.UseVisualStyleBackColor = true;
+            button3D_reset.Click += button3D_reset_Click;
+            // 
+            // checkBox3dOptionLabel
+            // 
+            resources.ApplyResources(checkBox3dOptionLabel, "checkBox3dOptionLabel");
+            checkBox3dOptionLabel.Checked = true;
+            checkBox3dOptionLabel.CheckState = System.Windows.Forms.CheckState.Checked;
+            checkBox3dOptionLabel.Name = "checkBox3dOptionLabel";
+            toolTip.SetToolTip(checkBox3dOptionLabel, resources.GetString("checkBox3dOptionLabel.ToolTip"));
+            checkBox3dOptionLabel.UseVisualStyleBackColor = true;
+            checkBox3dOptionLabel.CheckedChanged += checkBox3dOptionSphere_CheckedChanged;
+            // 
+            // checkBox3dOptionSemisphere
+            // 
+            resources.ApplyResources(checkBox3dOptionSemisphere, "checkBox3dOptionSemisphere");
+            checkBox3dOptionSemisphere.Checked = true;
+            checkBox3dOptionSemisphere.CheckState = System.Windows.Forms.CheckState.Checked;
+            checkBox3dOptionSemisphere.Name = "checkBox3dOptionSemisphere";
+            toolTip.SetToolTip(checkBox3dOptionSemisphere, resources.GetString("checkBox3dOptionSemisphere.ToolTip"));
+            checkBox3dOptionSemisphere.UseVisualStyleBackColor = true;
+            checkBox3dOptionSemisphere.CheckedChanged += checkBox3dOptionSphere_CheckedChanged;
+            // 
+            // checkBox3dOptionStereonet
+            // 
+            resources.ApplyResources(checkBox3dOptionStereonet, "checkBox3dOptionStereonet");
+            checkBox3dOptionStereonet.Checked = true;
+            checkBox3dOptionStereonet.CheckState = System.Windows.Forms.CheckState.Checked;
+            checkBox3dOptionStereonet.Name = "checkBox3dOptionStereonet";
+            toolTip.SetToolTip(checkBox3dOptionStereonet, resources.GetString("checkBox3dOptionStereonet.ToolTip"));
+            checkBox3dOptionStereonet.UseVisualStyleBackColor = true;
+            checkBox3dOptionStereonet.CheckedChanged += checkBox3dOptionSphere_CheckedChanged;
+            // 
+            // checkBox3dOptionSphere
+            // 
+            resources.ApplyResources(checkBox3dOptionSphere, "checkBox3dOptionSphere");
+            checkBox3dOptionSphere.Checked = true;
+            checkBox3dOptionSphere.CheckState = System.Windows.Forms.CheckState.Checked;
+            checkBox3dOptionSphere.Name = "checkBox3dOptionSphere";
+            toolTip.SetToolTip(checkBox3dOptionSphere, resources.GetString("checkBox3dOptionSphere.ToolTip"));
+            checkBox3dOptionSphere.UseVisualStyleBackColor = true;
+            checkBox3dOptionSphere.CheckedChanged += checkBox3dOptionSphere_CheckedChanged;
+            // 
+            // checkBox3dOptionProjectionLine
+            // 
+            resources.ApplyResources(checkBox3dOptionProjectionLine, "checkBox3dOptionProjectionLine");
+            checkBox3dOptionProjectionLine.Checked = true;
+            checkBox3dOptionProjectionLine.CheckState = System.Windows.Forms.CheckState.Checked;
+            checkBox3dOptionProjectionLine.Name = "checkBox3dOptionProjectionLine";
+            toolTip.SetToolTip(checkBox3dOptionProjectionLine, resources.GetString("checkBox3dOptionProjectionLine.ToolTip"));
+            checkBox3dOptionProjectionLine.UseVisualStyleBackColor = true;
+            checkBox3dOptionProjectionLine.CheckedChanged += checkBox3dOptionProjectionLine_CheckedChanged;
+            // 
+            // label29
+            // 
+            resources.ApplyResources(label29, "label29");
+            label29.Name = "label29";
+            toolTip.SetToolTip(label29, resources.GetString("label29.ToolTip"));
+            // 
+            // trackBarDepthFadingOut
+            // 
+            resources.ApplyResources(trackBarDepthFadingOut, "trackBarDepthFadingOut");
+            trackBarDepthFadingOut.Name = "trackBarDepthFadingOut";
+            toolTip.SetToolTip(trackBarDepthFadingOut, resources.GetString("trackBarDepthFadingOut.ToolTip"));
+            trackBarDepthFadingOut.Value = 5;
+            trackBarDepthFadingOut.Scroll += trackBarDepthFadingOut_Scroll;
+            // 
+            // labelAxisPlane
+            // 
+            resources.ApplyResources(labelAxisPlane, "labelAxisPlane");
+            labelAxisPlane.Name = "labelAxisPlane";
+            toolTip.SetToolTip(labelAxisPlane, resources.GetString("labelAxisPlane.ToolTip"));
+            // 
+            // label2
+            // 
+            resources.ApplyResources(label2, "label2");
+            label2.Name = "label2";
+            toolTip.SetToolTip(label2, resources.GetString("label2.ToolTip"));
+            // 
+            // label3
+            // 
+            resources.ApplyResources(label3, "label3");
+            label3.Name = "label3";
+            toolTip.SetToolTip(label3, resources.GetString("label3.ToolTip"));
+            // 
             // printPreviewDialog1
             // 
             resources.ApplyResources(printPreviewDialog1, "printPreviewDialog1");
@@ -1321,18 +1523,6 @@ namespace ReciPro
             resources.ApplyResources(panelSpecifiedIndices, "panelSpecifiedIndices");
             panelSpecifiedIndices.Name = "panelSpecifiedIndices";
             // 
-            // listBoxSpecifiedIndices
-            // 
-            resources.ApplyResources(listBoxSpecifiedIndices, "listBoxSpecifiedIndices");
-            toolTip.SetToolTip(listBoxSpecifiedIndices, resources.GetString("listBoxSpecifiedIndices.ToolTip")); // 260531Cl
-            listBoxSpecifiedIndices.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            listBoxSpecifiedIndices.FormattingEnabled = true;
-            listBoxSpecifiedIndices.MultiColumn = true;
-            listBoxSpecifiedIndices.Name = "listBoxSpecifiedIndices";
-            listBoxSpecifiedIndices.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            listBoxSpecifiedIndices.DrawItem += listBoxSpecifiedIndices_DrawItem;
-            listBoxSpecifiedIndices.SelectedIndexChanged += listBoxSpecifiedIndices_SelectedIndexChanged;
-            // 
             // flowLayoutPanelAddRemove
             // 
             resources.ApplyResources(flowLayoutPanelAddRemove, "flowLayoutPanelAddRemove");
@@ -1343,57 +1533,12 @@ namespace ReciPro
             flowLayoutPanelAddRemove.Controls.Add(checkBoxRotateColor);
             flowLayoutPanelAddRemove.Name = "flowLayoutPanelAddRemove";
             // 
-            // buttonAddIndex
-            // 
-            resources.ApplyResources(buttonAddIndex, "buttonAddIndex");
-            toolTip.SetToolTip(buttonAddIndex, resources.GetString("buttonAddIndex.ToolTip")); // 260531Cl
-            buttonAddIndex.BackColor = System.Drawing.Color.SteelBlue;
-            buttonAddIndex.ForeColor = System.Drawing.Color.White;
-            buttonAddIndex.Name = "buttonAddIndex";
-            buttonAddIndex.UseVisualStyleBackColor = false;
-            buttonAddIndex.Click += buttonAddIndex_Click;
-            // 
-            // buttonRemoveIndex
-            // 
-            resources.ApplyResources(buttonRemoveIndex, "buttonRemoveIndex");
-            toolTip.SetToolTip(buttonRemoveIndex, resources.GetString("buttonRemoveIndex.ToolTip")); // 260531Cl
-            buttonRemoveIndex.BackColor = System.Drawing.Color.IndianRed;
-            buttonRemoveIndex.ForeColor = System.Drawing.Color.White;
-            buttonRemoveIndex.Name = "buttonRemoveIndex";
-            buttonRemoveIndex.UseVisualStyleBackColor = false;
-            buttonRemoveIndex.Click += buttonRemoveIndex_Click;
-            // 
-            // colorControlIndex
-            // 
-            colorControlIndex.Argb = -65536;
-            resources.ApplyResources(colorControlIndex, "colorControlIndex");
-            toolTip.SetToolTip(colorControlIndex, resources.GetString("colorControlIndex.ToolTip")); // 260531Cl
-            colorControlIndex.BackColor = System.Drawing.SystemColors.Control;
-            colorControlIndex.Blue = 0;
-            colorControlIndex.BlueF = 0F;
-            colorControlIndex.BoxSize = new System.Drawing.Size(20, 20);
-            colorControlIndex.Color = System.Drawing.Color.FromArgb(255, 0, 0);
-            colorControlIndex.Green = 0;
-            colorControlIndex.GreenF = 0F;
-            colorControlIndex.Name = "colorControlIndex";
-            colorControlIndex.Red = 255;
-            colorControlIndex.RedF = 1F;
-            colorControlIndex.ColorChanged += colorControlIndex_ColorChanged;
-            // 
             // flowLayoutPanel6
             // 
             resources.ApplyResources(flowLayoutPanel6, "flowLayoutPanel6");
             flowLayoutPanel6.Controls.Add(label6);
             flowLayoutPanel6.Controls.Add(trackBarPointSize);
             flowLayoutPanel6.Name = "flowLayoutPanel6";
-            // 
-            // checkBoxRotateColor
-            // 
-            resources.ApplyResources(checkBoxRotateColor, "checkBoxRotateColor");
-            toolTip.SetToolTip(checkBoxRotateColor, resources.GetString("checkBoxRotateColor.ToolTip")); // 260531Cl
-            checkBoxRotateColor.Name = "checkBoxRotateColor";
-            checkBoxRotateColor.UseVisualStyleBackColor = true;
-            checkBoxRotateColor.CheckedChanged += checkBoxRotateColor_CheckedChanged;
             // 
             // flowLayoutPanelIndices
             // 
@@ -1411,42 +1556,6 @@ namespace ReciPro
             flowLayoutPanelIndexFilter.Controls.Add(radioButtonHighStructureFactor);
             flowLayoutPanelIndexFilter.Controls.Add(numericBoxHighStructureFactor);
             flowLayoutPanelIndexFilter.Name = "flowLayoutPanelIndexFilter";
-            // 
-            // numericBoxHighStructureFactor
-            // 
-            numericBoxHighStructureFactor.BackColor = System.Drawing.Color.Transparent;
-            resources.ApplyResources(numericBoxHighStructureFactor, "numericBoxHighStructureFactor");
-            numericBoxHighStructureFactor.Maximum = 1000D;
-            numericBoxHighStructureFactor.Minimum = 1D;
-            numericBoxHighStructureFactor.Name = "numericBoxHighStructureFactor";
-            toolTip.SetToolTip(numericBoxHighStructureFactor, resources.GetString("numericBoxHighStructureFactor.ToolTip")); // (260531Ch)
-            numericBoxHighStructureFactor.RadianValue = 1.7453292519943295D;
-            numericBoxHighStructureFactor.ShowUpDown = true;
-            numericBoxHighStructureFactor.SmartIncrement = true;
-            numericBoxHighStructureFactor.Value = 100D;
-            numericBoxHighStructureFactor.ValueFontSize = 9F;
-            numericBoxHighStructureFactor.ValueChanged += numericBoxHighStructureFactor_ValueChanged;
-            // 
-            // indexControlDrawing
-            // 
-            resources.ApplyResources(indexControlDrawing, "indexControlDrawing");
-            toolTip.SetToolTip(indexControlDrawing, resources.GetString("indexControlDrawing.ToolTip")); // 260531Cl
-            indexControlDrawing.BoxWidth = 42;
-            indexControlDrawing.Mode = IndexControl.ModeEnum.Axis;
-            indexControlDrawing.Name = "indexControlDrawing";
-            indexControlDrawing.PlusMinus = true;
-            indexControlDrawing.Values = ((int, int, int))resources.GetObject("indexControlDrawing.Values");
-            indexControlDrawing.ValueChanged += numericUpDown_ValueChanged;
-            // 
-            // checkBoxIncludingEquivalentPlanes
-            // 
-            resources.ApplyResources(checkBoxIncludingEquivalentPlanes, "checkBoxIncludingEquivalentPlanes");
-            toolTip.SetToolTip(checkBoxIncludingEquivalentPlanes, resources.GetString("checkBoxIncludingEquivalentPlanes.ToolTip")); // 260531Cl
-            checkBoxIncludingEquivalentPlanes.Checked = true;
-            checkBoxIncludingEquivalentPlanes.CheckState = System.Windows.Forms.CheckState.Checked;
-            checkBoxIncludingEquivalentPlanes.Name = "checkBoxIncludingEquivalentPlanes";
-            checkBoxIncludingEquivalentPlanes.UseVisualStyleBackColor = true;
-            checkBoxIncludingEquivalentPlanes.CheckedChanged += checkBoxIncludingEquivalentPlanes_CheckedChanged;
             // 
             // panel3
             // 
@@ -1476,14 +1585,6 @@ namespace ReciPro
             panel3DOptions.Controls.Add(groupBox3DOptions);
             panel3DOptions.Name = "panel3DOptions";
             // 
-            // checkBoxDisplay3D
-            // 
-            resources.ApplyResources(checkBoxDisplay3D, "checkBoxDisplay3D");
-            toolTip.SetToolTip(checkBoxDisplay3D, resources.GetString("checkBoxDisplay3D.ToolTip")); // 260531Cl
-            checkBoxDisplay3D.Name = "checkBoxDisplay3D";
-            checkBoxDisplay3D.UseVisualStyleBackColor = true;
-            checkBoxDisplay3D.CheckedChanged += checkBoxDisplay3D_CheckedChanged;
-            // 
             // groupBox3DOptions
             // 
             resources.ApplyResources(groupBox3DOptions, "groupBox3DOptions");
@@ -1501,44 +1602,6 @@ namespace ReciPro
             resources.ApplyResources(flowLayoutPanel9, "flowLayoutPanel9");
             flowLayoutPanel9.Name = "flowLayoutPanel9";
             // 
-            // button3D_reset
-            // 
-            resources.ApplyResources(button3D_reset, "button3D_reset");
-            toolTip.SetToolTip(button3D_reset, resources.GetString("button3D_reset.ToolTip")); // 260531Cl
-            button3D_reset.Name = "button3D_reset";
-            button3D_reset.UseVisualStyleBackColor = true;
-            button3D_reset.Click += button3D_reset_Click;
-            // 
-            // checkBox3dOptionLabel
-            // 
-            resources.ApplyResources(checkBox3dOptionLabel, "checkBox3dOptionLabel");
-            toolTip.SetToolTip(checkBox3dOptionLabel, resources.GetString("checkBox3dOptionLabel.ToolTip")); // 260531Cl
-            checkBox3dOptionLabel.Checked = true;
-            checkBox3dOptionLabel.CheckState = System.Windows.Forms.CheckState.Checked;
-            checkBox3dOptionLabel.Name = "checkBox3dOptionLabel";
-            checkBox3dOptionLabel.UseVisualStyleBackColor = true;
-            checkBox3dOptionLabel.CheckedChanged += checkBox3dOptionSphere_CheckedChanged;
-            // 
-            // checkBox3dOptionSemisphere
-            // 
-            resources.ApplyResources(checkBox3dOptionSemisphere, "checkBox3dOptionSemisphere");
-            toolTip.SetToolTip(checkBox3dOptionSemisphere, resources.GetString("checkBox3dOptionSemisphere.ToolTip")); // 260531Cl
-            checkBox3dOptionSemisphere.Checked = true;
-            checkBox3dOptionSemisphere.CheckState = System.Windows.Forms.CheckState.Checked;
-            checkBox3dOptionSemisphere.Name = "checkBox3dOptionSemisphere";
-            checkBox3dOptionSemisphere.UseVisualStyleBackColor = true;
-            checkBox3dOptionSemisphere.CheckedChanged += checkBox3dOptionSphere_CheckedChanged;
-            // 
-            // checkBox3dOptionStereonet
-            // 
-            resources.ApplyResources(checkBox3dOptionStereonet, "checkBox3dOptionStereonet");
-            toolTip.SetToolTip(checkBox3dOptionStereonet, resources.GetString("checkBox3dOptionStereonet.ToolTip")); // 260531Cl
-            checkBox3dOptionStereonet.Checked = true;
-            checkBox3dOptionStereonet.CheckState = System.Windows.Forms.CheckState.Checked;
-            checkBox3dOptionStereonet.Name = "checkBox3dOptionStereonet";
-            checkBox3dOptionStereonet.UseVisualStyleBackColor = true;
-            checkBox3dOptionStereonet.CheckedChanged += checkBox3dOptionSphere_CheckedChanged;
-            // 
             // flowLayoutPanel8
             // 
             flowLayoutPanel8.Controls.Add(checkBox3dOptionSphere);
@@ -1547,58 +1610,6 @@ namespace ReciPro
             flowLayoutPanel8.Controls.Add(trackBarDepthFadingOut);
             resources.ApplyResources(flowLayoutPanel8, "flowLayoutPanel8");
             flowLayoutPanel8.Name = "flowLayoutPanel8";
-            // 
-            // checkBox3dOptionSphere
-            // 
-            resources.ApplyResources(checkBox3dOptionSphere, "checkBox3dOptionSphere");
-            toolTip.SetToolTip(checkBox3dOptionSphere, resources.GetString("checkBox3dOptionSphere.ToolTip")); // 260531Cl
-            checkBox3dOptionSphere.Checked = true;
-            checkBox3dOptionSphere.CheckState = System.Windows.Forms.CheckState.Checked;
-            checkBox3dOptionSphere.Name = "checkBox3dOptionSphere";
-            checkBox3dOptionSphere.UseVisualStyleBackColor = true;
-            checkBox3dOptionSphere.CheckedChanged += checkBox3dOptionSphere_CheckedChanged;
-            // 
-            // checkBox3dOptionProjectionLine
-            // 
-            resources.ApplyResources(checkBox3dOptionProjectionLine, "checkBox3dOptionProjectionLine");
-            toolTip.SetToolTip(checkBox3dOptionProjectionLine, resources.GetString("checkBox3dOptionProjectionLine.ToolTip")); // 260531Cl
-            checkBox3dOptionProjectionLine.Checked = true;
-            checkBox3dOptionProjectionLine.CheckState = System.Windows.Forms.CheckState.Checked;
-            checkBox3dOptionProjectionLine.Name = "checkBox3dOptionProjectionLine";
-            checkBox3dOptionProjectionLine.UseVisualStyleBackColor = true;
-            checkBox3dOptionProjectionLine.CheckedChanged += checkBox3dOptionProjectionLine_CheckedChanged;
-            // 
-            // label29
-            // 
-            resources.ApplyResources(label29, "label29");
-            toolTip.SetToolTip(label29, resources.GetString("label29.ToolTip")); // 260531Cl
-            label29.Name = "label29";
-            // 
-            // trackBarDepthFadingOut
-            // 
-            resources.ApplyResources(trackBarDepthFadingOut, "trackBarDepthFadingOut");
-            toolTip.SetToolTip(trackBarDepthFadingOut, resources.GetString("trackBarDepthFadingOut.ToolTip")); // 260531Cl
-            trackBarDepthFadingOut.Name = "trackBarDepthFadingOut";
-            trackBarDepthFadingOut.Value = 5;
-            trackBarDepthFadingOut.Scroll += trackBarDepthFadingOut_Scroll;
-            // 
-            // labelAxisPlane
-            // 
-            resources.ApplyResources(labelAxisPlane, "labelAxisPlane");
-            toolTip.SetToolTip(labelAxisPlane, resources.GetString("labelAxisPlane.ToolTip")); // 260531Cl
-            labelAxisPlane.Name = "labelAxisPlane";
-            // 
-            // label2
-            // 
-            resources.ApplyResources(label2, "label2");
-            toolTip.SetToolTip(label2, resources.GetString("label2.ToolTip")); // 260531Cl
-            label2.Name = "label2";
-            // 
-            // label3
-            // 
-            resources.ApplyResources(label3, "label3");
-            toolTip.SetToolTip(label3, resources.GetString("label3.ToolTip")); // 260531Cl
-            label3.Name = "label3";
             // 
             // pageSetupDialog1
             // 
@@ -1692,6 +1703,7 @@ namespace ReciPro
             tabPage4.PerformLayout();
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)trackBarDepthFadingOut).EndInit();
             groupBoxIndices.ResumeLayout(false);
             panelSpecifiedIndices.ResumeLayout(false);
             panelSpecifiedIndices.PerformLayout();
@@ -1712,7 +1724,6 @@ namespace ReciPro
             flowLayoutPanel9.PerformLayout();
             flowLayoutPanel8.ResumeLayout(false);
             flowLayoutPanel8.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)trackBarDepthFadingOut).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -1784,6 +1795,7 @@ namespace ReciPro
         private System.Windows.Forms.Button buttonAddIndex;
         private System.Windows.Forms.ListBox listBoxSpecifiedIndices;
         private System.Windows.Forms.CheckBox checkBoxIncludingEquivalentPlanes;
+        private System.Windows.Forms.CheckBox checkBoxAnomalousDispersion;//260606Cl 追加: X線異常分散トグル
         public NumericBox numericBoxTotalTime;
         public NumericBox numericBoxAngularSpeed;
         public NumericBox numericBoxRadialAngle;
