@@ -594,6 +594,36 @@ public class MonteCarlo
     private static (double ScreeningParameter, double CrossSection, double MeanFreePath, double StoppingPower) GetParameters(TransportParameters parameters)
         => (parameters.ScreeningParameter, parameters.ElasticCrossSectionNm2, parameters.ElasticMeanFreePathNm, parameters.StoppingPowerKevPerNm); // (260331Ch)
 
+    /// <summary>連続減速近似 (CSDA) の電子飛程 [µm]。阻止能を R = ∫_{cutoff}^{E} dE'/|dE/ds(E')| で積分した経路長。
+    /// 後方散乱込みの侵入深さ近似である Kanaya-Okayama とは別物 (CSDA は経路長で常に KO より長め)。
+    /// Bethe/Joy-Luo は数百 eV 以下で発散・非物理なので lowerCutoffKeV 以下は積分しない (UI で注記要)。
+    /// 被積分 1/|dE/ds| が低 E で大きいので log-E 等間隔格子 + (非等間隔) 台形則。dE/ds が非有限/≧0 の区間は寄与に含めない。260606Cl 追加</summary>
+    public double GetCsdaRangeMicron(double keV, double lowerCutoffKeV = 0.2, int samplesPerDecade = 64)
+    {
+        if (!(keV > lowerCutoffKeV) || !(lowerCutoffKeV > 0)) return double.NaN;
+        double logLo = Math.Log10(lowerCutoffKeV), logHi = Math.Log10(keV);
+        int n = Math.Max(2, (int)Math.Ceiling((logHi - logLo) * samplesPerDecade));
+        double rangeNm = 0.0;
+        double prevE = double.NaN, prevG = double.NaN; // g = 1/|dE/ds| [nm/keV]
+        for (int i = 0; i <= n; i++)
+        {
+            double e = Math.Pow(10, logLo + (logHi - logLo) * i / n);
+            double sp = GetParameters(e).StoppingPower; // keV/nm (損失なので負)
+            double g = double.IsFinite(sp) && sp < 0 ? -1.0 / sp : double.NaN; // nm/keV
+            if (i > 0 && double.IsFinite(g) && double.IsFinite(prevG))
+                rangeNm += 0.5 * (g + prevG) * (e - prevE); // 台形 (e 格子は非等間隔)
+            prevE = e; prevG = g;
+        }
+        return rangeNm > 0 ? rangeNm / 1000.0 : double.NaN; // nm → µm
+    }
+
+    /// <summary>CSDA の質量飛程 [g/cm²] = ρ·R。密度依存を外に出して可搬にする (R[µm]→cm は ×1e-4)。260606Cl 追加</summary>
+    public double GetCsdaMassRangeGramPerCm2(double keV, double densityGramPerCm3, double lowerCutoffKeV = 0.2, int samplesPerDecade = 64)
+    {
+        double rMicron = GetCsdaRangeMicron(keV, lowerCutoffKeV, samplesPerDecade);
+        return double.IsFinite(rMicron) ? densityGramPerCm3 * rMicron * 1e-4 : double.NaN; // µm → cm
+    }
+
     /// <summary>キャッシュから輸送パラメータを取得する。キャッシュ範囲外のエネルギーでは都度計算にフォールバック。</summary>
     private TransportParameters GetTransportParameters(double kev)
     {

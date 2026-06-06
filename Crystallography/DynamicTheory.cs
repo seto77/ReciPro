@@ -378,7 +378,7 @@
                         toIndex[e[i]] = i;
                         double[] temp = new double[(int)(range1 / step + 0.01)];
                         for (int j = 0; j < temp.Length; j++)
-                            temp[j] = AtomConstants.ElectronScatteringKirkrand[ElementNumber[i]].ProjectedPotential(j * step * 10);
+                            temp[j] = AtomConstants.ElectronScatteringKirkland[ElementNumber[i]].ProjectedPotential(j * step * 10);//260606Cl 綴り修正 Kirkrand→Kirkland
                         temp[0] = temp[1];
                         potentialTemp[i] = temp;
                     }

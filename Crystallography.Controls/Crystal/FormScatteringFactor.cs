@@ -519,7 +519,7 @@ public partial class FormScatteringFactor : FormBase
             switch (model)
             {
                 case ElectronModel.Kirkland:
-                    var k = AtomStatic.ElectronScatteringKirkrand;
+                    var k = AtomStatic.ElectronScatteringKirkland;//260606Cl 綴り修正 Kirkrand→Kirkland
                     return z < k.Length ? k[z]?.Factor : null;
                 case ElectronModel.EightGaussian:
                     var g = AtomStatic.ElectronScatteringEightGaussian;
@@ -787,6 +787,7 @@ public partial class FormScatteringFactor : FormBase
             ["Plasma E", mc.PlasmaEnergyEv > 0 ? Q(mc.PlasmaEnergyEv, "eV") : "N/A"],
             ["J (mean exc.)", mc.J > 0 ? Q(mc.J, "eV") : "N/A"],
             ["Range (Kanaya-Okayama)", Q(rangeKO, "µm")],
+            ["Range (CSDA path)", Q(mc.GetCsdaRangeMicron(kev), "µm")],//260606Cl 追加: 阻止能を ∫dE/|dE/ds| 積分した経路長。KO(後方散乱込みの侵入深さ近似)とは別物
             ["mean Z, A", $"{avgZ:g4}, {avgA:g4}"],
         ]);
 
@@ -849,30 +850,52 @@ public partial class FormScatteringFactor : FormBase
         double totalMass = els.Sum(x => x.occ * AtomStatic.AtomicWeight(x.z));
         double rho = Crystal.Density;
 
+        double lambdaAng = waveLengthControl1.WaveLength * 10.0; // nm → Å (σ_abs の 1/v 評価用)。260606Cl 追加
+
         double bMean = 0, sld = 0;
+        double sCoh = 0, sInc = 0, sAbs = 0; // 260606Cl 原子分率加重の平均断面積 [barn/atom] (Σ x_i σ_i)
+        bool anyResonant = false;            // 260606Cl 1/v 破れの共鳴吸収核(Cd/Sm/Eu/Gd)を含むか
         foreach (var (z, occ) in els)
         {
+            double x = occ / totalOcc;
             double bRe = NeutronB(z);
-            if (double.IsNaN(bRe)) continue;
-            bMean += occ / totalOcc * bRe;
-            double nA = rho * UniversalConstants.A * occ / totalMass * 1e-24; // atoms/Å³
-            sld += nA * bRe * 1e-5; // b[fm]→Å ; SLD[Å⁻²]
+            if (!double.IsNaN(bRe))
+            {
+                bMean += x * bRe;
+                double nA = rho * UniversalConstants.A * occ / totalMass * 1e-24; // atoms/Å³
+                sld += nA * bRe * 1e-5; // b[fm]→Å ; SLD[Å⁻²]
+            }
+            sCoh += x * AtomStatic.NeutronCoherentCrossSection(z);          // 260606Cl
+            sInc += x * AtomStatic.NeutronIncoherentCrossSection(z);        // 260606Cl
+            sAbs += x * AtomStatic.NeutronAbsorptionCrossSection(z, lambdaAng); // 260606Cl
+            if (AtomStatic.NeutronIsResonantAbsorber(z)) anyResonant = true;
         }
+        double sTot = sCoh + sInc + sAbs; // σ_tot/atom [barn] (欠落元素を含むと NaN 伝播=§11)。260606Cl
+        // 260606Cl マクロ断面積 Σ [cm⁻¹] = N_atoms·σ̄·1e-24, N_atoms[atoms/cm³] = ρ·N_A/Ā (Ā=平均原子量 g/mol)。透過の removal 近似 (Bragg/前方/小角/多重散乱は無視)。
+        double aBar = totalMass / totalOcc;
+        double nAtomsCm3 = rho > 0 ? rho * UniversalConstants.A / aBar : double.NaN;
+        double sigmaTotMacro = nAtomsCm3 * sTot * 1e-24; // cm⁻¹
+        double attenLenCm = sigmaTotMacro > 0 ? 1.0 / sigmaTotMacro : double.NaN;
 
         dgvAttenScalars.SetRows(
         [
             ["b̄ (coherent)", Q(bMean, "fm")],
             ["Coherent SLD", Q(sld * 1e6, "10⁻⁶Å⁻²", "g4")],
-            ["σ_incoh", "N/A (Sears DB)"],
-            ["σ_abs", "N/A (Sears DB)"],
-            ["source", "internal (bound coherent b)"],
+            ["σ̄_coh", Q(sCoh, "barn")],                                   // 260606Cl 4π|b|² (複素対応)
+            ["σ̄_incoh", Q(sInc, "barn")],                                 // 260606Cl periodictable nsf
+            [$"σ̄_abs (1/v, {lambdaAng:g3}Å)" + (anyResonant ? " *" : ""), Q(sAbs, "barn")], // 260606Cl 虚部から導出
+            ["σ̄_total", Q(sTot, "barn")],                                 // 260606Cl
+            ["Σ_total (macro)", Q(sigmaTotMacro, "cm⁻¹")],                 // 260606Cl
+            ["Atten. length (1/Σ)", QLen(attenLenCm)],                     // 260606Cl
+            ["source", anyResonant ? "periodictable nsf (* 1/v invalid: Cd/Sm/Eu/Gd)" : "periodictable nsf (Sears 1992)"],
         ]);
 
         dgvAttenNeutron.SetRows(els.OrderBy(x => x.z).Select(x =>
         {
             double b = NeutronB(x.z);
             object bCell = double.IsNaN(b) ? null : b;
-            object sCell = double.IsNaN(b) ? null : 4 * Math.PI * b * b / 100; // fm² → barn
+            double sc = AtomStatic.NeutronCoherentCrossSection(x.z); // 260606Cl tabulated σ_coh (旧 4π·b.Real²/100 は共鳴核 Gd/Eu で誤り)
+            object sCell = double.IsNaN(sc) ? null : sc;
             return new object[] { AtomStatic.AtomicName(x.z), bCell, sCell, x.occ / totalOcc * 100 };
         }).ToList());
 

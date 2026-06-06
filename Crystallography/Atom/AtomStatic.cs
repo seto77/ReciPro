@@ -1639,8 +1639,12 @@ new(1.59158,   2.99874,   0.556367  ,   3.41054,   0.180994  ,   1.01462,   3.81
         #endregion
     ];
 
-    /// <summary>電子線による原子散乱因子 ElectronScatteringKirkrand[AtomicNumber]</summary>
-    public static readonly ES[] ElectronScatteringKirkrand =
+    /// <summary>電子線による原子散乱因子 ElectronScatteringKirkland[AtomicNumber]
+    /// <para>出典: E. J. Kirkland, "Advanced Computing in Electron Microscopy", Plenum/Springer (1st ed. 1998, 2nd ed. 2010), Appendix C のデータファイル fparams.dat。</para>
+    /// <para>3 Lorentzian + 3 Gaussian フィット f_e(q)=Σ a_i/(q²+b_i)+Σ c_i·exp(-d_i·q²), 変数は q = 2sinθ/λ = 1/d [Å⁻¹] (Peng/Eight-gaussian の s = sinθ/λ とは q = 2s の関係)。各要素 12 個の並びは a1,a2,a3, b1,b2,b3, c1,c2,c3, d1,d2,d3 (単位 a_i,c_i:Å, b_i:Å⁻², d_i:Å²)。計算式は ES(...,3 lorentzian + 3 gaussian コンストラクタ) を参照。</para>
+    /// </summary>
+    //260606Cl ElectronScatteringKirkrand から綴り修正 (Kirkrand → Kirkland)
+    public static readonly ES[] ElectronScatteringKirkland =
     [
 				#region
 		new(0,0,0,
@@ -2575,6 +2579,82 @@ new(4.86738014,0.319974401,4.58872425,
             #endregion
         ];
 
+    #region 中性子 非干渉性/吸収/全断面積 (260606Cl 追加)
+    /// <summary>2200 m/s 熱中性子の波長 [Å]。中性子吸収断面積 σ_abs の 1/v 基準波長。260606Cl 追加</summary>
+    public const double NeutronThermalWavelengthAngstrom = 1.798;
+
+    /// <summary>中性子 非干渉性散乱断面積 σ_inc [barn] (天然元素, spin+同位体 incoherence 込み)。
+    /// source: periodictable 2.1.0 nsf table (Sears 1992 / Neutron Data Booklet 系) = NeutronCoherentScattering と同源。
+    /// 同源性は全96元素の b_c_complex を再生成し既存 literal と完全一致を確認済 (c:\tmp\neutron_gen)。
+    /// 未収録 (Po/At/Rn/Fr/Ac) は NaN。260606Cl 追加</summary>
+    private static readonly double[] neutronIncoherentXs =
+    [
+        double.NaN, 80.26, 0.0, 0.92, 0.0018, 1.7, 0.001, 0.5,  // 0-7
+        0.0, 0.0008, 0.008, 1.62, 0.08, 0.0082, 0.004, 0.005,  // 8-15
+        0.007, 5.3, 0.225, 0.27, 0.05, 4.5, 2.87, 5.08,  // 16-23
+        1.83, 0.4, 0.4, 4.8, 5.2, 0.55, 0.077, 0.16,  // 24-31
+        0.18, 0.06, 0.32, 0.1, 0.01, 0.5, 0.06, 0.15,  // 32-39
+        0.02, 0.0024, 0.04, 0.5, 0.4, 0.3, 0.093, 0.58,  // 40-47
+        3.46, 0.54, 0.022, 0.0, 0.09, 0.31, 0.0, 0.21,  // 48-55
+        0.15, 1.13, 0.0, 0.015, 9.2, 1.3, 39.0, 2.5,  // 56-63
+        151.0, 0.004, 54.4, 0.36, 1.1, 0.1, 4.0, 0.7,  // 64-71
+        2.6, 0.01, 1.63, 0.9, 0.3, 0.0, 0.13, 0.43,  // 72-79
+        6.6, 0.21, 0.003, 0.0084, double.NaN, double.NaN, double.NaN, double.NaN,  // 80-87
+        0.0, double.NaN, 0.0, 0.1, 0.005, 0.5, 0.2, 0.3,  // 88-95
+        0.0,  // 96-96
+    ];
+
+    /// <summary>中性子 干渉性散乱断面積 σ_coh [barn] (天然元素, bound)。source: periodictable 2.1.0 nsf (同上)。
+    /// ⚠ 4π·b_c² で算出してはならない: 共鳴核 (Gd/Eu 等) では tabulated σ_coh が b_c から導けず乖離 (Gd: 4π|b|²≈35.3 vs tabulated 29.3)。
+    /// 未収録 (Po/At/Rn/Fr/Ac) は NaN。260606Cl 追加</summary>
+    private static readonly double[] neutronCoherentXs =
+    [
+        double.NaN, 1.7568, 1.2065, 0.454, 7.63, 3.54, 5.551, 11.01,  // 0-7
+        4.232, 4.017, 2.62, 1.66, 3.631, 1.495, 2.1633, 3.307,  // 8-15
+        1.0186, 11.528, 0.458, 1.69, 2.78, 19.0, 1.485, 0.01838,  // 16-23
+        1.66, 1.75, 11.22, 0.779, 13.3, 7.485, 4.054, 6.675,  // 24-31
+        8.42, 5.44, 7.98, 5.8, 7.67, 6.32, 6.19, 7.55,  // 32-39
+        6.44, 6.253, 5.67, 5.8, 6.21, 4.34, 4.39, 4.407,  // 40-47
+        3.04, 2.08, 4.871, 3.9, 4.23, 3.5, 3.04, 3.69,  // 48-55
+        3.23, 8.53, 2.94, 2.64, 7.43, 20.0, 0.422, 6.57,  // 56-63
+        29.3, 6.84, 35.9, 8.06, 7.63, 6.28, 19.42, 6.53,  // 64-71
+        7.6, 6.0, 2.97, 10.6, 14.4, 14.1, 11.58, 7.32,  // 72-79
+        20.24, 9.678, 11.115, 9.148, double.NaN, double.NaN, double.NaN, double.NaN,  // 80-87
+        13.0, double.NaN, 13.36, 10.4, 8.903, 14.0, 7.5, 8.7,  // 88-95
+        11.3,  // 96-96
+    ];
+
+    /// <summary>1/v 近似の破れる共鳴吸収核 (periodictable is_energy_dependent): Cd/Sm/Eu/Gd。260606Cl 追加</summary>
+    private static readonly HashSet<int> neutronResonantZ = [48, 62, 63, 64];
+
+    /// <summary>元素 z の中性子 非干渉性散乱断面積 σ_inc [barn] (天然元素)。無ければ NaN。260606Cl 追加</summary>
+    public static double NeutronIncoherentCrossSection(int z)
+        => z >= 1 && z < neutronIncoherentXs.Length ? neutronIncoherentXs[z] : double.NaN;
+
+    /// <summary>元素 z の中性子 干渉性散乱断面積 σ_coh [barn] (bound, 天然元素)。periodictable nsf の tabulated 値。
+    /// ⚠ 4π·b_c² で算出してはならない (共鳴核で乖離。neutronCoherentXs の注記参照)。無ければ NaN。260606Cl 追加</summary>
+    public static double NeutronCoherentCrossSection(int z)
+        => z >= 1 && z < neutronCoherentXs.Length ? neutronCoherentXs[z] : double.NaN;
+
+    /// <summary>元素 z の中性子 吸収断面積 σ_abs [barn]。NeutronCoherentScattering の虚部 (= −σ_a/(2000·λ_th)) から
+    /// σ_abs(λ) = −Im(b)·2000·λ で復元する (1/v 則; λ を現在波長にすれば 1/v 補正込みの値が直接出る)。
+    /// ⚠ Cd/Sm/Eu/Gd 等の共鳴核では 1/v が破れる (NeutronIsResonantAbsorber で判定)。無ければ NaN。260606Cl 追加</summary>
+    public static double NeutronAbsorptionCrossSection(int z, double lambdaAngstrom = NeutronThermalWavelengthAngstrom)
+    {
+        var t = NeutronCoherentScattering;
+        if (z < 1 || z >= t.Length || t[z] == null || t[z].Length == 0) return double.NaN;
+        return -t[z][0].Imaginary * 2000.0 * lambdaAngstrom; // barn
+    }
+
+    /// <summary>元素 z が 1/v 近似の破れる共鳴吸収核か (Cd/Sm/Eu/Gd)。UI の σ_abs 注記用。260606Cl 追加</summary>
+    public static bool NeutronIsResonantAbsorber(int z) => neutronResonantZ.Contains(z);
+
+    /// <summary>元素 z の中性子 全 (ビーム除去) 断面積 σ_tot = σ_coh + σ_inc + σ_abs [barn]。
+    /// 透過減衰用 (散乱も前方ビームから除去)。σ_inc/σ_abs 欠落は 0 とせず NaN を伝播する。260606Cl 追加</summary>
+    public static double NeutronTotalRemovalCrossSection(int z, double lambdaAngstrom = NeutronThermalWavelengthAngstrom)
+        => NeutronCoherentCrossSection(z) + NeutronIncoherentCrossSection(z) + NeutronAbsorptionCrossSection(z, lambdaAngstrom);
+    #endregion
+
     /// <summary>(260331Ch) TPP-2M の平均価電子数 Nv。Jablonski / Tanuma / Powell の IMFP 論文の元素表を優先し、未収録元素は後段の簡易推定へフォールバックする</summary>
     public static readonly Dictionary<int, (double ValenceElectrons, double BandGapEv)> ElementInelasticParameters = new()
     {
@@ -2692,7 +2772,11 @@ new(4.86738014,0.319974401,4.58872425,
             Factor = new Func<double, double>(s2 => Prms.Sum(p => p.A * Math.Exp(-s2 * 0.01 * p.B)) * 0.1);//0.1倍や0.01倍は単位の修正
         }
 
-        /// <summary>電子線用のコンストラクタ (3 lorentian, 3 gaussian)</summary>
+        /// <summary>電子線用のコンストラクタ (3 lorentzian + 3 gaussian)
+        /// <para>出典: E. J. Kirkland, "Advanced Computing in Electron Microscopy", Plenum/Springer (1st ed. 1998, 2nd ed. 2010), Appendix C.</para>
+        /// <para>散乱因子 f_e(q) = Σ a_i/(q²+b_i) + Σ c_i·exp(-d_i·q²) [式 C.15], 投影ポテンシャル v_z(r) = 4π²a0·e·Σ a_i·K0(2πr√b_i) + 2π²a0·e·Σ (c_i/d_i)·exp(-π²r²/d_i) [式 C.20]。</para>
+        /// <para>重要: Kirkland の独立変数 q は q = 2sinθ/λ = 1/d (逆格子ベクトル長, 単位 Å⁻¹) であり, Peng/Eight-gaussian が用いる s = sinθ/λ とは異なる (q = 2s)。パラメータの単位は a_i,c_i: Å, b_i: Å⁻², d_i: Å²。</para>
+        /// </summary>
         /// <param name="a1"></param>
         /// <param name="a2"></param>
         /// <param name="a3"></param>
@@ -2707,8 +2791,19 @@ new(4.86738014,0.319974401,4.58872425,
         /// <param name="d3"></param>
         public ES(double a1, double a2, double a3, double b1, double b2, double b3, double c1, double c2, double c3, double d1, double d2, double d3)
         {
-            Factor = new Func<double, double>(
-                S2 => a1 / (S2 + b1) + a2 / (S2 + b2) + a3 / (S2 + b3) + c1 * Math.Exp(-S2 * d1) + c2 * Math.Exp(-S2 * d2) + c3 * Math.Exp(-S2 * d3));
+            //260606Cl 修正: Kirkland の独立変数は q = 2sinθ/λ = 1/d [Å⁻¹], パラメータ単位は Å 系。
+            //  引数 S2 = s²(=(sinθ/λ)², 単位 nm⁻²) なので, q² = (2s)² を Å⁻² で渡す必要がある:
+            //  q²[Å⁻²] = 4·s²[Å⁻²] = 4·(S2·0.01) = 0.04·S2。 さらに出力 [Å] を [nm] へ ×0.1。
+            //  旧コードは S2 をそのまま q² に入れ, 単位変換(×0.01)・q=2s 規約(×4)・出力変換(×0.1) を全て欠いていたため,
+            //  Eight-gaussian 等 (s 規約) と大きく食い違っていた (本番は ProjectedPotential のみ使用するため実害なし)。
+            //Factor = new Func<double, double>(
+            //    S2 => a1 / (S2 + b1) + a2 / (S2 + b2) + a3 / (S2 + b3) + c1 * Math.Exp(-S2 * d1) + c2 * Math.Exp(-S2 * d2) + c3 * Math.Exp(-S2 * d3));
+            Factor = new Func<double, double>(S2 =>
+            {
+                var q2 = S2 * 0.04;//s²(nm⁻²) → ×0.01 で Å⁻², ×4 で Kirkland の q=2s 規約 → 計 ×0.04
+                return (a1 / (q2 + b1) + a2 / (q2 + b2) + a3 / (q2 + b3)
+                      + c1 * Math.Exp(-q2 * d1) + c2 * Math.Exp(-q2 * d2) + c3 * Math.Exp(-q2 * d3)) * 0.1;//Å → nm
+            });
 
             double a0 = UniversalConstants.a0 * 1E10, e = UniversalConstants.Ry * 2 * a0;
             double sqrtB1 = Math.Sqrt(b1), sqrtB2 = Math.Sqrt(b2), sqrtB3 = Math.Sqrt(b3);
