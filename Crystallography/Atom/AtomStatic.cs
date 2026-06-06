@@ -36,7 +36,12 @@ public static partial class AtomStatic // (260401Ch) generated NIST elastic samp
 
     #region static readonly フィールド
 
-    /// <summary>同位体存在度. IsotopeAbundance[z][a]: z 原子番号, a 質量数</summary>
+    /// <summary>同位体存在度 (天然存在比). IsotopeAbundance[z][a]: z 原子番号, a 質量数
+    /// <para>出典: IUPAC (CIAAW) の同位体組成表 (Isotopic Compositions of the Elements)。
+    /// 一次文献例: M. Berglund and M. E. Wieser (2011), "Isotopic compositions of the elements 2009 (IUPAC Technical Report)",
+    /// Pure Appl. Chem. 83, 397-410 (DOI:10.1351/PAC-REP-10-06-02)。オンライン: https://www.ciaaw.org/isotopic-abundances.htm ,
+    /// NIST: https://www.nist.gov/pml/atomic-weights-and-isotopic-compositions-relative-atomic-masses 。※収録版の特定は要確認。260606Cl 出典追記</para>
+    /// </summary>
     public static readonly Dictionary<int, double>[] IsotopeAbundance = [
 			#region
 			new() {{0,0}},
@@ -447,6 +452,11 @@ public static partial class AtomStatic // (260401Ch) generated NIST elastic samp
 #endregion
 		];
 
+    // 電子線マイクロアナリシス(EPMA)の後方散乱係数 R 用の多項式係数 [5][6] (BackScatteredFactor が使用)。
+    // u = Ec/E0 の多項式 × (Z/100)^i の形。出典: P. Duncumb and S. J. B. Reed (1968),
+    // "The calculation of stopping power and backscatter effects in electron probe microanalysis",
+    // in K. F. J. Heinrich (ed.), Quantitative Electron Probe Microanalysis, NBS Special Publication 298, pp.133-154
+    // ( https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nbsspecialpublication298.pdf )。260606Cl 出典追記
     private static readonly double[][] Ducumb = [
     
 			#region
@@ -458,6 +468,11 @@ public static partial class AtomStatic // (260401Ch) generated NIST elastic samp
             #endregion
     ];
 
+    // EPMA 後方散乱/阻止能補正の係数 [5][5]。出典: H. E. Bishop (1966), "Some electron backscattering measurements
+    // for solid targets", in R. Castaing, P. Deschamps and J. Philibert (eds.), X-Ray Optics and Microanalysis
+    // (Proc. 4th Int. Congr. on X-ray Optics and Microanalysis), Hermann, Paris, pp.153-158 (cf. H. E. Bishop (1967),
+    // Br. J. Appl. Phys. 18, 703-715, DOI:10.1088/0508-3443/18/6/302)。
+    // ⚠ 260606Cl: このテーブルは現在どこからも参照されていない (デッドコード)。BackScatteredFactor は Ducumb を使用。
     private static readonly double[][] Bishop1966 = [
 			#region
 			[1.0088E2,-7.6070E-1,-3.5702E-3,1.6329E-4,-9.6521E-7],
@@ -468,7 +483,10 @@ public static partial class AtomStatic // (260401Ch) generated NIST elastic samp
 			#endregion
 		];
 
-    /// <summary>純元素の密度</summary>
+    /// <summary>純元素の密度 [g/cm^3] (室温・標準状態の代表値)
+    /// <para>出典: 標準的なハンドブック値 (CRC Handbook of Chemistry and Physics, "Physical Constants of Inorganic Compounds" / WebElements https://www.webelements.com 系)。
+    /// 気体元素は液体/固体換算等の代表値。※正確な版・典拠は要確認。260606Cl 出典追記</para>
+    /// </summary>
     public static readonly double[] NominalDensity = [
             #region
             0 ,
@@ -567,7 +585,10 @@ public static partial class AtomStatic // (260401Ch) generated NIST elastic samp
             #endregion
         ];
 
-    /// <summary>X線による原子散乱因子 XrayScattering[AtomicNumber][SubNumber]</summary>
+    /// <summary>X線による原子散乱因子 XrayScattering[AtomicNumber][SubNumber]
+    /// <para>4 Gaussian + 定数 c の解析近似 f(s) = Σ a_i exp(-b_i s^2) + c (s = sinθ/λ [Å^-1])。method 欄の RHF/HF/DS は元データの計算手法 (Relativistic Hartree-Fock 等)、末尾はイオン価数。</para>
+    /// <para>出典: D. T. Cromer and J. T. Mann (1968), "X-ray scattering factors computed from numerical Hartree-Fock wave functions", Acta Cryst. A24, 321-324 (DOI:10.1107/S0567739468000550)。表として International Tables for Crystallography, Vol. C, Table 6.1.1.4 に収録。260606Cl 出典追記</para>
+    /// </summary>
     public static readonly ES[][] XrayScattering =
         [
     
@@ -887,8 +908,9 @@ public static partial class AtomStatic // (260401Ch) generated NIST elastic samp
     ];
 
     /// <summary>
-    /// X線による原子散乱因子 XrayScattering[AtomicNumber][SubNumber] 
-    /// Waasmaier and Kirfel (1995)  Acta Cryst. (1995). A51, 416-413
+    /// X線による原子散乱因子 XrayScattering[AtomicNumber][SubNumber] (5 Gaussian + 定数 c, s = sinθ/λ [Å^-1])
+    /// <para>出典: D. Waasmaier and A. Kirfel (1995), "New analytical scattering-factor functions for free atoms and ions",
+    /// Acta Cryst. A51, 416-431 (DOI:10.1107/S0108767394013292)。260606Cl ページ範囲を 416-413 から 416-431 に訂正 + DOI 追記</para>
     /// </summary>
     public static readonly ES[][] XrayScatteringWK =
 
@@ -1212,8 +1234,11 @@ public static partial class AtomStatic // (260401Ch) generated NIST elastic samp
 
     /// <summary>
     /// 電子線による原子散乱因子 ElectronScattering[AtomicNumber][SubNumber]  5 gaussian
-    /// Peng 1996,1998
-    /// a1,a2,a3,a4,a5,b1,b2,b3,b4,b5,valence,method 
+    /// a1,a2,a3,a4,a5,b1,b2,b3,b4,b5,valence,method (f_e(s) = Σ a_i exp(-b_i s^2), s = sinθ/λ [Å^-1])
+    /// <para>出典: 中性原子 = L.-M. Peng, G. Ren, S. L. Dudarev and M. J. Whelan (1996),
+    /// "Robust parameterization of elastic and absorptive electron atomic scattering factors", Acta Cryst. A52, 257-276
+    /// (DOI:10.1107/S0108767395014371; 5 Gaussian, s 最大 6 Å^-1)。イオン = L.-M. Peng (1998), Acta Cryst. A54, 481-485
+    /// (DOI:10.1107/S0108767398001901)。表は International Tables for Crystallography Vol. C, Table 4.3.2.2 にも収録。260606Cl 出典詳細化</para>
     /// </summary>
     public static readonly ES[][] ElectronScatteringPeng =
         [
@@ -1527,7 +1552,8 @@ public static partial class AtomStatic // (260401Ch) generated NIST elastic samp
 
     /// <summary>
     /// 電子線による原子散乱因子 ElectronScattering[AtomicNumber]  8 gaussian
-    /// a1,a2,a3,a4,a5,a6,a7,a8,b1,b2,b3,b4,b5,b6,b7,b8
+    /// a1,a2,a3,a4,a5,a6,a7,a8,b1,b2,b3,b4,b5,b6,b7,b8 (f_e(s) = Σ a_i exp(-b_i s^2), s = sinθ/λ [Å^-1])
+    /// <para>出典: Dr. Ohtsuka より個人的に提供されたデータ (private communication)。公表文献なし。260606Cl 出典追記</para>
     /// </summary>
     public static readonly ES[] ElectronScatteringEightGaussian =
     [
@@ -2070,6 +2096,8 @@ new(4.86738014,0.319974401,4.58872425,
     /// <remarks>
     /// (260531Ch) Rauch / periodictable 2.1.0 系の bound coherent scattering length (b_c) に統一。
     /// 虚部は periodictable と同じく 1.798 Å の吸収断面積から b_c - i sigma_a/(2000 lambda) として導出し、b_c 未収録の同位体は 0 とする。
+    /// 一次文献: V. F. Sears (1992), "Neutron scattering lengths and cross sections", Neutron News 3(3), 26-37
+    /// (DOI:10.1080/10448639208218770); H. Rauch and W. Waschkowski, Neutron Data Booklet (ILL) も参照。260606Cl 一次文献追記
     /// </remarks>
     public static readonly Complex[][] NeutronCoherentScattering =
         [
@@ -2655,7 +2683,10 @@ new(4.86738014,0.319974401,4.58872425,
         => NeutronCoherentCrossSection(z) + NeutronIncoherentCrossSection(z) + NeutronAbsorptionCrossSection(z, lambdaAngstrom);
     #endregion
 
-    /// <summary>(260331Ch) TPP-2M の平均価電子数 Nv。Jablonski / Tanuma / Powell の IMFP 論文の元素表を優先し、未収録元素は後段の簡易推定へフォールバックする</summary>
+    /// <summary>(260331Ch) TPP-2M の平均価電子数 Nv とバンドギャップ Eg [eV]。Jablonski / Tanuma / Powell の IMFP 論文の元素表を優先し、未収録元素は後段の簡易推定へフォールバックする。
+    /// <para>出典: S. Tanuma, C. J. Powell and D. R. Penn (1994), "Calculations of electron inelastic mean free paths. V. Data for 14 organic compounds over the 50-2000 eV range",
+    /// Surf. Interface Anal. 21, 165-176 (DOI:10.1002/sia.740210302) ほか TPP-2M 系列 (Tanuma-Powell-Penn) の Nv 値。260606Cl 一次文献追記</para>
+    /// </summary>
     public static readonly Dictionary<int, (double ValenceElectrons, double BandGapEv)> ElementInelasticParameters = new()
     {
         [3] = (1.0, 0.0),
@@ -3068,6 +3099,11 @@ new(4.86738014,0.319974401,4.58872425,
     #region 静的メソッド
 
     #region Vestaの色とサイズを取得
+    /// <summary>VESTA の既定の原子半径 [Å] (×0.4 で縮尺) と CPK 風の表示色 (ARGB) を返す。
+    /// <para>出典: 結晶構造可視化ソフト VESTA の既定値。K. Momma and F. Izumi (2011),
+    /// "VESTA 3 for three-dimensional visualization of crystal, volumetric and morphology data",
+    /// J. Appl. Crystallogr. 44, 1272-1276 (DOI:10.1107/S0021889811038970)。https://jp-minerals.org/vesta/ 。260606Cl 出典追記</para>
+    /// </summary>
     public static (float Radius, int Argb) GetVesta(int z) => z switch
     {
         01 => ((float)(0.46 * 0.4), (255 << 24) + (255 << 16) + (204 << 8) + 204),
@@ -3171,7 +3207,11 @@ new(4.86738014,0.319974401,4.58872425,
     #endregion
 
     #region　原子量
-    /// <summary>原子量を返す　引数は原子番号</summary>
+    /// <summary>原子量 (標準原子量) を返す　引数は原子番号
+    /// <para>出典: IUPAC (CIAAW) の標準原子量。数値は「値＋末尾に括弧内不確かさ桁を連結」した形式 (例 1.007947 = 1.00794(7), 55.8473 = 55.847(3))。
+    /// Fe=55.847(3) 等は 2005 年改訂前の値であり、1990年代 (おおむね 1993/1995) 版に相当。
+    /// 一次文献例: IUPAC Commission, "Atomic weights of the elements 1995", Pure Appl. Chem. 68 (1996) 2339-2359。https://www.ciaaw.org/atomic-weights.htm 。260606Cl 出典追記</para>
+    /// </summary>
     /// <param name="z"></param>
     /// <returns></returns>
     public static double AtomicWeight(int z) => z switch
@@ -3556,7 +3596,10 @@ new(4.86738014,0.319974401,4.58872425,
     #endregion
 
     #region イオン半径
-    /// <summary>イオン半径</summary>
+    /// <summary>イオン半径 (※名称・summary は誤り)
+    /// <para>⚠ 260606Cl: この関数は名称に反して「原子量」を返しており (H=1.007947, Fe=55.8473 …)、中身は AtomicWeight(int) と同一値。
+    /// イオン半径のデータではない。さらに呼び出し元が全リポジトリに存在しないデッドコード。出典は AtomicWeight 参照 (IUPAC 標準原子量)。要削除検討。</para>
+    /// </summary>
     /// <param name="z"></param>
     /// <returns></returns>
     public static double AtomicRadius(int z) => z switch
@@ -3670,7 +3713,9 @@ new(4.86738014,0.319974401,4.58872425,
         #endregion
     };
 
-    /// <summary>イオン半径</summary>
+    /// <summary>イオン半径 (※名称・summary は誤り)
+    /// <para>⚠ 260606Cl: AtomicRadius(int) と同じく中身は「原子量」(AtomicWeight と同値) で、イオン半径ではない。呼び出し元なしのデッドコード。要削除検討。</para>
+    /// </summary>
     /// <param name="AtomicName"></param>
     /// <returns></returns>
     public static double AtomicRadius(string AtomicName) => AtomicName switch
@@ -3785,6 +3830,14 @@ new(4.86738014,0.319974401,4.58872425,
     #endregion
 
     #region 特性X線エネルギー、波長、吸収端エネルギー
+    // 260606Cl 出典: 吸収端エネルギーの数値テーブル (CharacteristicXrayEnergy(int, Edge) の switch) と質量吸収係数は
+    //   NIST FFAST (C. T. Chantler) から ReadChantlerData で生成 ( http://physics.nist.gov/PhysRefData/FFast/html/form.html )。
+    //   一次文献: C. T. Chantler (1995) J. Phys. Chem. Ref. Data 24, 71-643 (DOI:10.1063/1.555974);
+    //   C. T. Chantler (2000) J. Phys. Chem. Ref. Data 29, 597-1056 (DOI:10.1063/1.1321055)。
+    //   特性X線波長 (CharacteristicXrayWavelength の表) の古典的一次文献は J. A. Bearden (1967),
+    //   "X-Ray Wavelengths", Rev. Mod. Phys. 39, 78-124 (DOI:10.1103/RevModPhys.39.78); 原子準位/吸収端は
+    //   J. A. Bearden and A. F. Burr (1967), Rev. Mod. Phys. 39, 125-142 (DOI:10.1103/RevModPhys.39.125)。
+    //   近代評価: R. D. Deslattes et al. (2003), Rev. Mod. Phys. 75, 35-99 (NIST X-ray Transition Energies DB)。
     /// <summary>原子番号 z, 線種 line を入力すると 特性X線エネルギー (kev) を返す。 対応する原子、線種がない場合はNaNを返す</summary>
     /// <param name="z"></param>
     /// <param name="line"></param>
@@ -5520,6 +5573,7 @@ new(4.86738014,0.319974401,4.58872425,
     /// <param name="z"></param>
     /// <param name="line"></param>
     /// <returns></returns>
+    // 260606Cl 出典: J. A. Bearden (1967), "X-Ray Wavelengths", Rev. Mod. Phys. 39, 78-124 (DOI:10.1103/RevModPhys.39.78) 系の特性X線波長 (region 先頭コメント参照)
     public static double CharacteristicXrayWavelength(int z, XrayLine line)
     {
         if (line == XrayLine.Ka)
@@ -7594,7 +7648,12 @@ new(4.86738014,0.319974401,4.58872425,
             return massAbsorption[z] ??= new ConcurrentDictionary<double, double>();
     }
 
-    /// <summary>エネルギー(keV)と吸収体元素を与えて、質量吸収係数を返す</summary>
+    /// <summary>エネルギー(keV)と吸収体元素を与えて、質量吸収係数 [cm^2/g] を返す
+    /// <para>データ実体は AtomStaticSub.cs の MassAbsorptionCoefficient (区分対数補間)。出典: NIST FFAST (C. T. Chantler) を
+    /// ReadChantlerData で取り込んだもの ( http://physics.nist.gov/PhysRefData/FFast/html/form.html )。
+    /// 一次文献: C. T. Chantler (1995) J. Phys. Chem. Ref. Data 24, 71-643 (DOI:10.1063/1.555974);
+    /// C. T. Chantler (2000) J. Phys. Chem. Ref. Data 29, 597-1056 (DOI:10.1063/1.1321055)。260606Cl 出典追記</para>
+    /// </summary>
     /// <param name="energy"></param>
     /// <param name="z"></param>
     /// <returns></returns>
@@ -7692,7 +7751,12 @@ new(4.86738014,0.319974401,4.58872425,
     #endregion
 
     #region MeanExcitationEnergy
-    /// <summary>平均イオン化エネルギー(keV), mode 1: Ducumb et al. 1968, mode 2: Berger 1964, mode 3: Pouchou and Pichoir 1991</summary>
+    /// <summary>平均イオン化エネルギー J [keV] (引数 mode で式を選択。既定 mode=0)
+    /// <para>260606Cl: 旧 summary の出典対応 (mode1:Ducumb / mode2:Berger / mode3:Pouchou-Pichoir) は誤りだったので訂正。各 mode の実際の式と出典:</para>
+    /// <para>mode 0: J = Z[14(1-exp(-0.1Z)) + 75.5/Z^(Z/7.5) - Z/(Z+100)] — Duncumb 式 (P. Duncumb, P. K. Shields-Mason and C. da Casa, 1969, Proc. 5th ICXOM, p.146; NBS SP-460 でも Duncumb equation として記載)。</para>
+    /// <para>mode 1: J = Z(9.76 + 58.8 Z^-0.19) — Berger and Seltzer (1964), "Tables of Energy Losses and Ranges of Electrons and Positrons", NASA SP-3012 / NAS-NRC Publ. 1133。</para>
+    /// <para>その他 (mode 2 等, 既定 else): J = Z[10.04 + 8.25 exp(-Z/11.22)] — Zeller (unpublished), J. Ruste and M. Gantois (1975), J. Phys. D 8, 872-890 経由; PAP モデル J.-L. Pouchou and F. Pichoir (1991), "Quantitative Analysis ... model PAP", in Electron Probe Quantitation, Plenum, pp.31-75 で採用。</para>
+    /// </summary>
     /// <param name="z"></param>
     /// <returns></returns>
     public static double MeanExcitationEnergy(int z, int mode = 0) => mode switch
@@ -7704,7 +7768,11 @@ new(4.86738014,0.319974401,4.58872425,
     #endregion
 
     #region Stopping Power Factor
-    /// <summary>Stopping Power Factor</summary>
+    /// <summary>Stopping Power Factor (EPMA の阻止能補正項)
+    /// <para>Bethe の阻止能式に基づく簡略形 (Z/A)·ln[1.166·(2E0+Ec)/(3·J)] (平均エネルギー (2E0+Ec)/3、J は MeanExcitationEnergy)。
+    /// 出典: H. A. Bethe (1930); EPMA での定式化は P. Duncumb and S. J. B. Reed (1968), NBS Special Publication 298, pp.133-154
+    /// および S. J. B. Reed, "Electron Microprobe Analysis", Cambridge Univ. Press。260606Cl 出典追記</para>
+    /// </summary>
     /// <param name="z"></param>
     /// <param name="line"></param>
     /// <param name="incidentEnergy"></param>
@@ -7714,7 +7782,11 @@ new(4.86738014,0.319974401,4.58872425,
     #endregion
 
     #region Back Scattered Factor
-    /// <summary>Back Scattered Factor</summary> Ec臨界励起エネルギー, E0入射エネルギー, z原子番号
+    /// <summary>Back Scattered Factor (EPMA の後方散乱補正係数 R)。Ec 臨界励起エネルギー, E0 入射エネルギー, z 原子番号
+    /// <para>u = Ec/E0 の多項式 × (Z/100)^i (係数は Ducumb テーブル)。出典: P. Duncumb and S. J. B. Reed (1968),
+    /// "The calculation of stopping power and backscatter effects in electron probe microanalysis",
+    /// NBS Special Publication 298, pp.133-154 ( https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nbsspecialpublication298.pdf )。260606Cl 出典追記</para>
+    /// </summary>
     /// <param name="z"></param>
     /// <param name="line"></param>
     /// <param name="incidentEnergy"></param>
@@ -7735,6 +7807,8 @@ new(4.86738014,0.319974401,4.58872425,
     #endregion
 
     #region AbsorptionJumpRatio
+    /// <summary>吸収端ジャンプ比 (端の高エネルギー側 / 低エネルギー側の質量吸収係数の比) を返す。
+    /// MassAbsorptionCoefficient (NIST FFAST / Chantler) から直接算出した派生量。出典は MassAbsorption 参照。260606Cl 出典追記</summary>
     public static double AbsorptionJumpRatio(int z, XrayLineEdge edge)
     {
         double ec = CharacteristicXrayEnergy(z, edge);
