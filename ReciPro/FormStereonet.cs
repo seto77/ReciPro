@@ -967,15 +967,14 @@ public partial class FormStereonet : FormBase
             if (radioButtonHighStructureFactor.Checked)
                 radioButtonRange.Checked = true;
             checkBoxReflectStructureFactor.Enabled = false;
-            //checkBoxAnomalousDispersion.Enabled = false;//260606Cl Enabled は setVector() で一元管理(X線 && Plane)。ここで設定しても末尾の setVector() に上書きされ競合するため撤去
         }
         else
         {
             indexControlDrawing.Mode = IndexControl.ModeEnum.Plane;
             radioButtonHighStructureFactor.Visible = true;
             checkBoxReflectStructureFactor.Enabled = true;
-            //checkBoxAnomalousDispersion.Enabled = true;//260606Cl Enabled は setVector() で一元管理(同上)
         }
+        //260606Cl checkBoxAnomalousDispersion.Enabled は下の setVector() で一元管理(Axes/Plane どちらでもここでは設定しない。設定しても setVector() に上書きされ競合するため)
         setVector();
         Draw();
     }
@@ -1308,8 +1307,8 @@ public partial class FormStereonet : FormBase
         //260606Cl X線異常分散トグルの有効状態を更新。異常分散は X線のみ、かつ構造因子を計算する Plane モード(=軸モードでない)でのみ意味を持つ。
         //setVector は WaveSource 変更/Axes・Plane 切替/チェック操作など全イベントで呼ばれる単一ポイント → ここを Enabled の唯一の真実とする(radioButtonAxes_CheckedChanged 側の個別設定は撤去)。
         checkBoxAnomalousDispersion.Enabled = waveLengthControl.WaveSource == WaveSource.Xray && !radioButtonAxes.Checked;
-        //260606Cl X線異常分散 f'/f'' を構造因子へ反映するか(X線・チェックON・Plane モードのみ。上の Enabled 条件と一致させる)。
-        bool useAnomalousDispersion = checkBoxAnomalousDispersion.Checked && waveLengthControl.WaveSource == WaveSource.Xray && !radioButtonAxes.Checked;
+        //260606Cl X線異常分散 f'/f'' を構造因子へ反映するか。上で設定した Enabled(X線・Plane モードのみ)に集約済みの条件を再利用し二重管理を避ける。
+        bool useAnomalousDispersion = checkBoxAnomalousDispersion.Checked && checkBoxAnomalousDispersion.Enabled;
 
         if (!radioButtonHighStructureFactor.Checked)
         {

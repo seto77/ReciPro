@@ -1610,8 +1610,8 @@ public partial class FormDiffractionSimulator : FormBase
             }.Min());
         //最大、最小のd値を決定 ここまで
 
-        //260606Cl X線異常分散 f'/f'' を構造因子へ反映するか。単色X線(平行/X線歳差)かつチェックON時のみ。Back Laue(多色)は単一エネルギーが無いので無効。
-        bool useAnomalousDispersion = checkBoxAnomalousDispersion.Checked && Source == WaveSource.Xray && !radioButtonBeamBackLaue.Checked;
+        //260606Cl X線異常分散 f'/f'' を構造因子へ反映するか。上で設定した Enabled(単色X線=平行/X線歳差のみ。Back Laue 等で無効)に集約済みの条件を再利用し二重管理を避ける。
+        bool useAnomalousDispersion = checkBoxAnomalousDispersion.Checked && checkBoxAnomalousDispersion.Enabled;
 
         if (toolStripButtonDiffractionSpots.Checked)
         {

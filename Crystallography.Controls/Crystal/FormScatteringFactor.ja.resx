@@ -240,19 +240,6 @@
     <value>放射線源(X線・電子線など)と波長・エネルギーを
 設定します。2θ や回折強度の計算に使われます。</value>
   </data>
-  <data name="label8.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="label8.Size" type="System.Drawing.Size, System.Drawing">
-    <value>31, 20</value>
-  </data>
-  <data name="label8.Text" xml:space="preserve">
-    <value>単位</value>
-  </data>
-  <data name="label8.ToolTip" xml:space="preserve">
-    <value>d 値表示と d-spacing カットオフ入力に使う
-長さの単位 (Å または nm) を選択します。</value>
-  </data>
   <data name="checkBoxTest.ToolTip" xml:space="preserve">
     <value>テストモードを有効にし、任意の h/k/l 指数範囲(小数も
 可)を走査して構造因子を計算するパネルを表示します。</value>
@@ -308,20 +295,6 @@ min から k max まで k step 刻みで計算します。</value>
   <data name="numericBoxH_min.ToolTip" xml:space="preserve">
     <value>テストモードで走査する反射指数 h の下限値。h min か
 ら h max まで h step 刻みで構造因子を計算します。</value>
-  </data>
-  <data name="radioButtonNanoMeter.Location" type="System.Drawing.Point, System.Drawing">
-    <value>67, 0</value>
-  </data>
-  <data name="radioButtonNanoMeter.ToolTip" xml:space="preserve">
-    <value>長さの単位をナノメートル (1 nm = 10 Å) にします。d
-値と d-spacing カットオフの表示・入力に反映されます。</value>
-  </data>
-  <data name="radioButtonAngstrom.Location" type="System.Drawing.Point, System.Drawing">
-    <value>31, 0</value>
-  </data>
-  <data name="radioButtonAngstrom.ToolTip" xml:space="preserve">
-    <value>長さの単位をオングストローム (1 Å = 0.1 nm) にします。
-d 値と d-spacing カットオフの表示・入力に反映されます。</value>
   </data>
   <data name="numericBoxCutoffD.ToolTip" xml:space="preserve">
     <value>反射リストに含める最小の面間隔 d を設定します。

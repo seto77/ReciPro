@@ -51,6 +51,8 @@ public partial class FormScatteringFactor : FormBase
     #endregion 
 
     #region 共通: Crystal / 波長変更の追従 (両タブを更新)
+    /// <summary>Scattering / Attenuation / Fluorescence の各タブを更新 (各メソッドが選択タブ以外を自己 return)。260606Cl 追加。</summary>
+    private void UpdateAllTabs() { UpdateScatteringFactors(); UpdateAttenuation(); UpdateFluorescence(); }
     // CrystalControl で Crystal が変更されたとき
     private void crystalControl_CrystalChanged(object sender, EventArgs e)
     {
@@ -59,7 +61,7 @@ public partial class FormScatteringFactor : FormBase
         if (Visible)
         {
             SetSortedPlanes();
-            UpdateScatteringFactors(); UpdateAttenuation(); UpdateFluorescence(); // 260606Cl
+            UpdateAllTabs(); // 260606Cl
         }
     }
     // 表示時に再計算
@@ -68,14 +70,14 @@ public partial class FormScatteringFactor : FormBase
         if (Visible)
         {
             SetSortedPlanes();
-            UpdateScatteringFactors(); UpdateAttenuation(); UpdateFluorescence(); // 260606Cl
+            UpdateAllTabs(); // 260606Cl
         }
     }
     // 上部帯の波長 / ビーム変更 → 両タブを再計算
     private void waveLengthControl1_WavelengthChanged(object sender, EventArgs e)
     {
         SetSortedPlanes();
-        UpdateScatteringFactors(); UpdateAttenuation(); UpdateFluorescence(); // 260606Cl
+        UpdateAllTabs(); // 260606Cl
     }
     #endregion
 
@@ -272,6 +274,8 @@ public partial class FormScatteringFactor : FormBase
     // MiniTable のカーソル再計算用に現在の構成元素を保持
     private readonly record struct ScatElement(string Name, int Z, int Sub, double Biso, Color Color);
     private ScatElement[] scatElements = [];
+    //260606Cl X線異常分散 f'/f''((Z,energy)依存=カーソル s 非依存)を scatElements と同順で事前計算したキャッシュ。電子線時は空。カーソルドラッグ毎の native 呼びを避ける。
+    private (double fp, double fpp)[] scatXrayDisp = [];
     private double scatCursorS = 0.5; // カーソル縦線位置 (s, Å⁻¹)。ドラッグで更新 (0 だと Y 軸に重なり掴みにくいので 0.5 始点)
     private bool scatColsElectron, scatColsReady; // MiniTable 列構成のキャッシュ
 
@@ -310,6 +314,7 @@ public partial class FormScatteringFactor : FormBase
     private void UpdateScatteringFactors()
     {
         if (!IsHandleCreated || Crystal == null) return;
+        if (tabControl1.SelectedTab != tabPageScatteringFactors) return; // 260606Cl 追加: 非表示タブは計算しない (Attenuation/Fluorescence と同様。タブ切替時に SelectedIndexChanged で更新)
 
         var src = waveLengthControl1.WaveSource;
 
@@ -329,11 +334,16 @@ public partial class FormScatteringFactor : FormBase
         bool fqsq = !electron && radioButtonXrayFqSq.Checked; // F(q)+S(q) は xraylib 待ち (P4)
 
         scatElements = BuildScatElements(electron);
+        //260606Cl f'/f''((Z,energy)依存・s 非依存)を1回だけ事前計算しキャッシュ。UpdateScatteringTable はこれを使い、カーソルドラッグ毎の native 呼びを回避する。
+        scatXrayDisp = electron
+            ? []
+            : [.. scatElements.Select(el => (Xraylib.Fprime(el.Z, waveLengthControl1.Energy), Xraylib.Fdoubleprime(el.Z, waveLengthControl1.Energy)))];
+
+        //260606Cl 縦線(カーソル)を AddProfiles より前に設定し、AddProfiles 内部の Draw() で曲線・縦線・交点マーカーを一括描画する(旧: AddProfiles 後に縦線設定→明示 Draw() で二重描画していた)。
+        graphControlScatteringFactor.VerticalLines = [new PointD(scatCursorS, double.NaN)];
         DrawScatteringCurves(electron, fqsq);
 
         SetupScatColumns(electron);
-        graphControlScatteringFactor.VerticalLines = [new PointD(scatCursorS, double.NaN)];
-        graphControlScatteringFactor.Draw(); // 縦線 + 交点マーカーを反映
         UpdateScatteringTable(scatCursorS);
     }
 
@@ -470,12 +480,11 @@ public partial class FormScatteringFactor : FormBase
         var model = electron ? CurrentElectronModel() : default;
         var modelName = model == ElectronModel.EightGaussian ? "8-Gauss" : model.ToString();
         double s2 = sAng * sAng * 100.0;
-        // X線時のみ: 現在ビームの光子エネルギー [keV]。異常分散 f′(E)/f″(E) (xraylib) に使う (s 非依存)。260606Cl
-        double energyKeV = electron ? double.NaN : waveLengthControl1.Energy;
 
         var rows = new List<object[]>(scatElements.Length);
-        foreach (var el in scatElements)
+        for (int i = 0; i < scatElements.Length; i++)
         {
+            var el = scatElements[i];
             var factor = GetFactor(el.Z, el.Sub, electron, model);
             double f = double.NaN;
             if (factor != null)
@@ -489,7 +498,8 @@ public partial class FormScatteringFactor : FormBase
             else
             {
                 // f′ = Fi、慣用 f″ = −Fii (Xraylib 内で符号反転済)。利用不可は NaN → 空欄。260606Cl
-                double fp = Xraylib.Fprime(el.Z, energyKeV), fpp = Xraylib.Fdoubleprime(el.Z, energyKeV);
+                //260606Cl s 非依存の f'/f'' は UpdateScatteringFactors が事前計算した scatXrayDisp を参照(ドラッグ毎の native 呼びを回避)。旧: double fp = Xraylib.Fprime(el.Z, energyKeV), fpp = Xraylib.Fdoubleprime(el.Z, energyKeV);
+                var (fp, fpp) = i < scatXrayDisp.Length ? scatXrayDisp[i] : (double.NaN, double.NaN);
                 rows.Add([el.Name, el.Z, fCell, double.IsNaN(fp) ? null : fp, double.IsNaN(fpp) ? null : fpp]);
             }
         }
@@ -574,7 +584,7 @@ public partial class FormScatteringFactor : FormBase
     private void InitializeAttenuationTab()
     {
         numAttenThickness.ValueChanged += (_, _) => UpdateAttenuation();
-        tabControl1.SelectedIndexChanged += (_, _) => { UpdateAttenuation(); UpdateFluorescence(); }; // 選択タブのみ計算 (両タブ共通)
+        tabControl1.SelectedIndexChanged += (_, _) => UpdateAllTabs(); // 260606Cl 散乱タブも含めタブ切替で更新 (各メソッドが選択タブ以外を自己 return)
 
         // スカラ表: ヘッダ非表示 (Quantity/Value は自明) + コード列 + 縦スクロール許可
         foreach (var t in new[] { dgvAttenScalars, dgvFluorScalars })
@@ -739,8 +749,8 @@ public partial class FormScatteringFactor : FormBase
         if (pPho.Count > 0) profiles.Add(new Profile(pPho) { Color = Color.FromArgb(0xd6, 0x27, 0x28), text = "photo" });
         if (pRay.Count > 0) profiles.Add(new Profile(pRay) { Color = Color.FromArgb(0x2c, 0xa0, 0x2c), text = "Rayleigh" });
         if (pCom.Count > 0) profiles.Add(new Profile(pCom) { Color = Color.FromArgb(0x1f, 0x77, 0xb4), text = "Compton" });
-        graphAtten.AddProfiles([.. profiles]);
 
+        //260606Cl 縦線(現在エネルギー + 各元素の吸収端)を AddProfiles より前に設定し、AddProfiles 内部の Draw() で一括描画(旧: AddProfiles 後に設定→明示 Draw() で二重描画していた)。
         var vlines = new List<PointD> { new(currentE, double.NaN) };
         foreach (var (z, _) in els)
             foreach (var edge in new[] { XrayLineEdge.K, XrayLineEdge.L3 })
@@ -749,7 +759,7 @@ public partial class FormScatteringFactor : FormBase
                 if (!double.IsNaN(ee) && ee > eMin && ee < eMax) vlines.Add(new PointD(ee, double.NaN));
             }
         graphAtten.VerticalLines = [.. vlines];
-        graphAtten.Draw();
+        graphAtten.AddProfiles([.. profiles]);
     }
 
     // ---- 電子: 弾性断面積 / MFP / dE·ds / IMFP / 飛程 ----
@@ -824,14 +834,13 @@ public partial class FormScatteringFactor : FormBase
         graphAtten.LabelX = "E (keV)";
         graphAtten.LabelY = "normalized";
         graphAtten.GraphTitle = "σ / MFP / dE·ds vs E (each normalized; absolute in table)";
+        graphAtten.VerticalLines = [new PointD(currentKev, double.NaN)];//260606Cl 縦線を AddProfiles より前に設定し内部 Draw() で一括描画(旧: AddProfiles 後に設定→明示 Draw() で二重描画)
         graphAtten.AddProfiles(
         [
             new Profile(sig) { Color = Color.FromArgb(0xd6, 0x27, 0x28), text = "σ elastic" },
             new Profile(mfp) { Color = Color.FromArgb(0x1f, 0x77, 0xb4), text = "elastic MFP" },
             new Profile(des) { Color = Color.FromArgb(0x2c, 0xa0, 0x2c), text = "dE/ds" },
         ]);
-        graphAtten.VerticalLines = [new PointD(currentKev, double.NaN)];
-        graphAtten.Draw();
     }
 
     // ---- 中性子: 散乱長 / 断面積 (グラフ無) ----
@@ -976,6 +985,8 @@ public partial class FormScatteringFactor : FormBase
         graphFluor.LabelX = "E (keV)";
         graphFluor.LabelY = "relative intensity";
         graphFluor.GraphTitle = xrl ? "EDX sticks (qualitative: x·RadRate·ω)" : "EDX: requires xraylib";
+        //260606Cl 縦線(現在エネルギー)を AddProfiles/ClearProfile より前に設定し内部 Draw() で一括描画(旧: 後に設定→明示 Draw() で二重描画)
+        graphFluor.VerticalLines = [new PointD(waveLengthControl1.Energy, double.NaN)];
         if (sticks.Count > 0 && hMax > 0)
         {
             var profiles = sticks.Select(s => new Profile(new List<PointD> { new(s.e, 0), new(s.e, s.h / hMax) })
@@ -984,8 +995,6 @@ public partial class FormScatteringFactor : FormBase
         }
         else
             graphFluor.ClearProfile();
-        graphFluor.VerticalLines = [new PointD(waveLengthControl1.Energy, double.NaN)];
-        graphFluor.Draw();
     }
     #endregion
 }

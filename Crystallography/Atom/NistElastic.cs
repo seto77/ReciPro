@@ -230,11 +230,14 @@ internal static class NistElasticPchipResource
             var asm = typeof(NistElasticPchipResource).Assembly;
             using var stream = asm.GetManifestResourceStream(ResourceName)
                 ?? throw new InvalidOperationException($"Embedded resource not found: {ResourceName}");
-            using var copy = new MemoryStream();
-            stream.CopyTo(copy);
-            var blob = copy.ToArray();
+            // 260606Cl: copy(MemoryStream)→ToArray の二段コピーを廃し、resource stream を 1 回で blob へ読込 (起動時の一過性割当を半減)
+            //using var copy = new MemoryStream(); // 260606Cl 変更前
+            //stream.CopyTo(copy); // 260606Cl 変更前
+            //var blob = copy.ToArray(); // 260606Cl 変更前
+            var blob = new byte[stream.Length];
+            stream.ReadExactly(blob);
 
-            using var reader = new BinaryReader(new MemoryStream(blob));
+            using var reader = new BinaryReader(new MemoryStream(blob, writable: false));
             if (reader.ReadInt32() != Magic)
                 throw new InvalidDataException("NistElasticPchip resource: bad magic.");
             reader.ReadInt32(); // version

@@ -140,15 +140,17 @@ public readonly struct Symmetry
     }
 
     /// <summary>消滅則に抵触するか(=禁制反射か)を割り当てなしで判定する。CheckExtinctionRule(h,k,l).Length != 0 と同値。260605Cl 追加</summary>
-    public readonly bool HasExtinction(int h, int k, int l)
-    {
-        if (CheckExtinctionFunc is not { Count: > 0 })
-            return false;
-        foreach (var check in CheckExtinctionFunc)
-            if (check(h, k, l) != null)
-                return true;
-        return false;
-    }
+    // 260606Cl GetFirstExtinctionRule への委譲に変更し、ほぼ同一だった判定ループの二重管理を解消。委譲先も割り当てなし(rule 文字列の参照を返すだけ)なので性能は同等。
+    //public readonly bool HasExtinction(int h, int k, int l)
+    //{
+    //    if (CheckExtinctionFunc is not { Count: > 0 })
+    //        return false;
+    //    foreach (var check in CheckExtinctionFunc)
+    //        if (check(h, k, l) != null)
+    //            return true;
+    //    return false;
+    //}
+    public readonly bool HasExtinction(int h, int k, int l) => GetFirstExtinctionRule(h, k, l) is not null;
 
     /// <summary>最初に抵触した消滅則の文字列を返す(なければ null)。割り当てなし。CheckExtinctionRule(h,k,l) の先頭要素に相当。260605Cl 追加</summary>
     public readonly string GetFirstExtinctionRule(int h, int k, int l)

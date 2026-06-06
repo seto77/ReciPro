@@ -38,25 +38,27 @@ public partial class WaveLengthControl : UserControlBase
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
     [Category("Appearance")]
     [Description("線種要素の配置方向 (LeftToRight: 横並び / TopDown: 縦並び)。")]                                                              // 260522Cl 追加
-    [DefaultValue(FlowDirection.LeftToRight)] // 260606Cl 追加: 既定値 (backing field の初期値) を明示
+    [DefaultValue(FlowDirection.LeftToRight)] // 260606Cl: 既定値 (flowLayoutPanelWaveSource の初期 FlowDirection) を明示
     public FlowDirection DirectionWaveSource
     {
-        set => directionWaveSource = flowLayoutPanelWaveSource.FlowDirection = value;
-        get => directionWaveSource;
+        // 260606Cl 状態の複製を解消: backing field を廃し子パネルの FlowDirection を単一の真実とする (直下 LengthUnit がラジオから導出するのと同形)。
+        // 旧: set => directionWaveSource = flowLayoutPanelWaveSource.FlowDirection = value; get => directionWaveSource; (private FlowDirection directionWaveSource = FlowDirection.LeftToRight;)
+        set => flowLayoutPanelWaveSource.FlowDirection = value;
+        get => flowLayoutPanelWaveSource.FlowDirection;
     }
-    private FlowDirection directionWaveSource = FlowDirection.LeftToRight;
 
     /// <summary>コントロールの配置をLeftToRightか、TopDownにするか</summary>
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
     [Category("Appearance")]
     [Description("波長&エネルギーコントロールの要素の配置方向 (LeftToRight: 横並び / TopDown: 縦並び)。")]                                                              // 260522Cl 追加
-    [DefaultValue(FlowDirection.TopDown)] // 260606Cl 追加: 既定値 (backing field の初期値) を明示
+    [DefaultValue(FlowDirection.TopDown)] // 260606Cl: 既定値 (flowLayoutPanelWaveEnergy の初期 FlowDirection) を明示
     public FlowDirection DirectionWaveEnergy
     {
-        set => directionWaveEnergy = flowLayoutPanelWaveEnergy.FlowDirection = value;
-        get => directionWaveEnergy;
+        // 260606Cl 状態の複製を解消: backing field を廃し子パネルの FlowDirection を単一の真実とする (直下 LengthUnit がラジオから導出するのと同形)。
+        // 旧: set => directionWaveEnergy = flowLayoutPanelWaveEnergy.FlowDirection = value; get => directionWaveEnergy; (private FlowDirection directionWaveEnergy = FlowDirection.TopDown;)
+        set => flowLayoutPanelWaveEnergy.FlowDirection = value;
+        get => flowLayoutPanelWaveEnergy.FlowDirection;
     }
-    private FlowDirection directionWaveEnergy = FlowDirection.TopDown;
 
 
     #endregion
