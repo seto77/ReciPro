@@ -4,8 +4,8 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>net10.0-windows</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
-    <AssemblyVersion>2026.5.29.0440</AssemblyVersion>
-    <FileVersion>2026.5.29.0440</FileVersion>
+    <AssemblyVersion>2026.6.6.0411</AssemblyVersion>
+    <FileVersion>2026.6.6.0411</FileVersion>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <ApplicationIcon>App.ico</ApplicationIcon>
@@ -107,6 +107,17 @@
     </Content>
     <Content Include="AMCSD.cdb3">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <!-- 260606Cl 追加: xraylib (BSD, 4.2.1) ネイティブ DLL を同梱。異常分散 f'/f'' (Fi/Fii) ほかを Crystallography/Xraylib.cs から P/Invoke する。
+         self-contained publish では native DLL が自動で拾われないため CopyToPublishDirectory も明示 (既存ネイティブ DLL と同方針)。
+         ライセンス表記は libxrl-11.LICENSE.txt を同梱。 -->
+    <Content Include="libxrl-11.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="libxrl-11.LICENSE.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
     <!--
     <Content Include="NistElasticSampler\E_*.TXT">

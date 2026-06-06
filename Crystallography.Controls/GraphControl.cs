@@ -10,6 +10,7 @@ using System.Windows.Forms;
 
 namespace Crystallography.Controls;
 
+[ToolboxItem(true)] // 260605Cl 追加: 基底 UserControlBase の [ToolboxItem(false)] 継承を打ち消しデザイナのツールボックスに表示
 public partial class GraphControl : UserControlBase
 {
 
@@ -893,6 +894,10 @@ public partial class GraphControl : UserControlBase
         }
         double realX = verticalLineList[activeIndex].X;
         double tx = xLog ? (realX > 0 ? Math.Log10(realX) : double.NaN) : realX;
+
+        // 260606Cl: 全プロファイルの交点 Y 値をカンマ区切りで表示 (旧: 先頭の有効プロファイル1本のみ)
+        var yFormat = (yLog ? "E" : "g") + (MousePositionYDigit == -1 ? "" : MousePositionYDigit.ToString());
+        var yValues = new List<string>();
         for (int j = 0; j < destProfileList.Count && j < srcProfileList.Count; j++)
         {
             var dp = destProfileList[j];
@@ -901,11 +906,15 @@ public partial class GraphControl : UserControlBase
             double ty = dp.GetValue(tx, 2, 1);
             if (double.IsNaN(ty) || double.IsInfinity(ty)) continue;
             double realY = yLog ? Math.Pow(10, ty) : ty;//実座標に戻す
-            labelXValue.Text = realX.ToString((xLog ? "E" : "g") + (MousePositionXDigit == -1 ? "" : MousePositionXDigit.ToString()));
-            labelYValue.Text = realY.ToString((yLog ? "E" : "g") + (MousePositionYDigit == -1 ? "" : MousePositionYDigit.ToString()));
-            return;//先頭の有効プロファイルのみ表示
+            yValues.Add(realY.ToString(yFormat));
         }
-        labelXValue.Text = labelYValue.Text = "-";
+        if (yValues.Count == 0)
+        {
+            labelXValue.Text = labelYValue.Text = "-";
+            return;
+        }
+        labelXValue.Text = realX.ToString((xLog ? "E" : "g") + (MousePositionXDigit == -1 ? "" : MousePositionXDigit.ToString()));
+        labelYValue.Text = string.Join(", ", yValues);
     }
 
     /// <summary>グラフ中にpeaksで定義された釣鐘型曲線を描く</summary>

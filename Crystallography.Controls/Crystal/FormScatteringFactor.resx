@@ -170,7 +170,7 @@
     <value>q (2π/d)</value>
   </data>
   <data name="dataGridViewTextBoxColumnQ.Width" type="System.Int32, mscorlib">
-    <value>75</value>
+    <value>85</value>
   </data>
   <data name="dataGridViewTextBoxColumnTwoTheta.HeaderText" xml:space="preserve">
     <value>2θ (°)</value>
@@ -211,9 +211,6 @@
   <data name="dataGridViewTextBoxColumnIntPercent.HeaderText" xml:space="preserve">
     <value>Rel. Int. (%)</value>
   </data>
-  <data name="dataGridViewTextBoxColumnIntPercent.Width" type="System.Int32, mscorlib">
-    <value>90</value>
-  </data>
   <metadata name="dataGridViewTextBoxColumnIntCondition.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -238,13 +235,22 @@
     <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="dataGridView.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 116</value>
+    <value>0, 0</value>
   </data>
   <data name="dataGridView.Size" type="System.Drawing.Size, System.Drawing">
-    <value>857, 282</value>
+    <value>870, 193</value>
   </data>
   <data name="dataGridView.TabIndex" type="System.Int32, mscorlib">
     <value>14</value>
+  </data>
+  <metadata name="toolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>466, 17</value>
+  </metadata>
+  <data name="dataGridView.ToolTip" xml:space="preserve">
+    <value>Reflection table: Miller indices, d-spacing,
+q, 2-theta, structure factor
+(real/imaginary/|F|/F^2), relative intensity,
+and extinction condition for each reflection.</value>
   </data>
   <data name="&gt;&gt;dataGridView.Name" xml:space="preserve">
     <value>dataGridView</value>
@@ -253,40 +259,10 @@
     <value>Crystallography.Controls.DpiAwareDataGridView, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;dataGridView.Parent" xml:space="preserve">
-    <value>$this</value>
+    <value>splitContainer1.Panel1</value>
   </data>
   <data name="&gt;&gt;dataGridView.ZOrder" xml:space="preserve">
     <value>0</value>
-  </data>
-  <data name="label2.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label2.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
-  </data>
-  <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>433, 1</value>
-  </data>
-  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>106, 17</value>
-  </data>
-  <data name="label2.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <data name="label2.Text" xml:space="preserve">
-    <value>d-Spacing Cutoff</value>
-  </data>
-  <data name="&gt;&gt;label2.Name" xml:space="preserve">
-    <value>label2</value>
-  </data>
-  <data name="&gt;&gt;label2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label2.Parent" xml:space="preserve">
-    <value>panel3</value>
-  </data>
-  <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
-    <value>9</value>
   </data>
   <data name="checkBoxHideProhibitedPlanes.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -295,11 +271,11 @@
     <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="checkBoxHideProhibitedPlanes.Location" type="System.Drawing.Point, System.Drawing">
-    <value>229, 62</value>
+    <value>341, 0</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="checkBoxHideProhibitedPlanes.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 4, 3, 4</value>
+    <value>0, 0, 0, 0</value>
   </data>
   <data name="checkBoxHideProhibitedPlanes.Size" type="System.Drawing.Size, System.Drawing">
     <value>161, 21</value>
@@ -310,6 +286,11 @@
   <data name="checkBoxHideProhibitedPlanes.Text" xml:space="preserve">
     <value>Hide prohibited planes</value>
   </data>
+  <data name="checkBoxHideProhibitedPlanes.ToolTip" xml:space="preserve">
+    <value>Hide systematically absent (forbidden)
+reflections - those extinguished by
+the space-group reflection conditions.</value>
+  </data>
   <data name="&gt;&gt;checkBoxHideProhibitedPlanes.Name" xml:space="preserve">
     <value>checkBoxHideProhibitedPlanes</value>
   </data>
@@ -317,10 +298,10 @@
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;checkBoxHideProhibitedPlanes.Parent" xml:space="preserve">
-    <value>panel3</value>
+    <value>flowLayoutPanel1</value>
   </data>
   <data name="&gt;&gt;checkBoxHideProhibitedPlanes.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>1</value>
   </data>
   <data name="checkBoxHideEquivalentPlane.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -329,10 +310,10 @@
     <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="checkBoxHideEquivalentPlane.Location" type="System.Drawing.Point, System.Drawing">
-    <value>229, 38</value>
+    <value>502, 0</value>
   </data>
   <data name="checkBoxHideEquivalentPlane.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 4, 3, 4</value>
+    <value>0, 0, 0, 0</value>
   </data>
   <data name="checkBoxHideEquivalentPlane.Size" type="System.Drawing.Size, System.Drawing">
     <value>159, 21</value>
@@ -343,6 +324,11 @@
   <data name="checkBoxHideEquivalentPlane.Text" xml:space="preserve">
     <value>Hide equivalent planes</value>
   </data>
+  <data name="checkBoxHideEquivalentPlane.ToolTip" xml:space="preserve">
+    <value>Hide symmetry-equivalent reflections
+(planes related by symmetry), showing
+only one representative of each set.</value>
+  </data>
   <data name="&gt;&gt;checkBoxHideEquivalentPlane.Name" xml:space="preserve">
     <value>checkBoxHideEquivalentPlane</value>
   </data>
@@ -350,19 +336,19 @@
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;checkBoxHideEquivalentPlane.Parent" xml:space="preserve">
-    <value>panel3</value>
+    <value>flowLayoutPanel1</value>
   </data>
   <data name="&gt;&gt;checkBoxHideEquivalentPlane.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>2</value>
   </data>
   <data name="buttonCopyClipboard.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="buttonCopyClipboard.Location" type="System.Drawing.Point, System.Drawing">
-    <value>430, 76</value>
+    <value>203, 0</value>
   </data>
   <data name="buttonCopyClipboard.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 4, 3, 4</value>
+    <value>3, 0, 3, 0</value>
   </data>
   <data name="buttonCopyClipboard.Size" type="System.Drawing.Size, System.Drawing">
     <value>141, 28</value>
@@ -373,6 +359,10 @@
   <data name="buttonCopyClipboard.Text" xml:space="preserve">
     <value>Copy to Clipboard</value>
   </data>
+  <data name="buttonCopyClipboard.ToolTip" xml:space="preserve">
+    <value>Copy the reflection table (visible
+columns, tab-separated) to the clipboard.</value>
+  </data>
   <data name="&gt;&gt;buttonCopyClipboard.Name" xml:space="preserve">
     <value>buttonCopyClipboard</value>
   </data>
@@ -380,10 +370,10 @@
     <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;buttonCopyClipboard.Parent" xml:space="preserve">
-    <value>panel3</value>
+    <value>flowLayoutPanel2</value>
   </data>
   <data name="&gt;&gt;buttonCopyClipboard.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>1</value>
   </data>
   <data name="checkBoxBragBrentano.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -392,20 +382,25 @@
     <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="checkBoxBragBrentano.Location" type="System.Drawing.Point, System.Drawing">
-    <value>228, -1</value>
+    <value>0, 0</value>
   </data>
   <data name="checkBoxBragBrentano.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 4, 3, 4</value>
+    <value>0, 0, 0, 0</value>
   </data>
   <data name="checkBoxBragBrentano.Size" type="System.Drawing.Size, System.Drawing">
-    <value>196, 38</value>
+    <value>341, 21</value>
   </data>
   <data name="checkBoxBragBrentano.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
   </data>
   <data name="checkBoxBragBrentano.Text" xml:space="preserve">
-    <value>Powder Diffraction Intensities
-(Bragg-Brentano Optics)</value>
+    <value>Powder Diffraction Intensities (Bragg-Brentano Optics)</value>
+  </data>
+  <data name="checkBoxBragBrentano.ToolTip" xml:space="preserve">
+    <value>Show powder diffraction intensities computed
+for Bragg-Brentano focusing optics (includes
+the Lorentz-polarization factor); also forces
+hiding of equivalent and forbidden reflections.</value>
   </data>
   <data name="&gt;&gt;checkBoxBragBrentano.Name" xml:space="preserve">
     <value>checkBoxBragBrentano</value>
@@ -414,10 +409,10 @@
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;checkBoxBragBrentano.Parent" xml:space="preserve">
-    <value>panel3</value>
+    <value>flowLayoutPanel1</value>
   </data>
   <data name="&gt;&gt;checkBoxBragBrentano.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>0</value>
   </data>
   <data name="waveLengthControl1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -428,6 +423,9 @@
   <data name="waveLengthControl1.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>
   </data>
+  <data name="waveLengthControl1.LabelFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9.75pt</value>
+  </data>
   <data name="waveLengthControl1.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
@@ -435,19 +433,24 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="waveLengthControl1.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>500, 500</value>
+    <value>1500, 500</value>
   </data>
   <data name="waveLengthControl1.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>200, 0</value>
   </data>
   <data name="waveLengthControl1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>200, 101</value>
+    <value>873, 27</value>
   </data>
   <data name="waveLengthControl1.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
   </data>
-  <data name="waveLengthControl1.LabelFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.75pt</value>
+  <data name="waveLengthControl1.ToolTip" xml:space="preserve">
+    <value>Select the radiation source (X-ray, electron,
+etc.) and its wavelength/energy used to
+compute 2-theta and diffraction intensities.</value>
+  </data>
+  <data name="waveLengthControl1.ValueFontSize" type="System.Single, mscorlib">
+    <value>9.75</value>
   </data>
   <data name="&gt;&gt;waveLengthControl1.Name" xml:space="preserve">
     <value>waveLengthControl1</value>
@@ -456,62 +459,16 @@
     <value>Crystallography.Controls.WaveLengthControl, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;waveLengthControl1.Parent" xml:space="preserve">
-    <value>panel3</value>
+    <value>flowLayoutPanel5</value>
   </data>
   <data name="&gt;&gt;waveLengthControl1.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <metadata name="toolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>466, 17</value>
-  </metadata>
-  <data name="label8.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label8.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Left</value>
-  </data>
-  <data name="label8.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
-  </data>
-  <data name="label8.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label8.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="label8.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 5, 0, 0</value>
-  </data>
-  <data name="label8.Size" type="System.Drawing.Size, System.Drawing">
-    <value>29, 21</value>
-  </data>
-  <data name="label8.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="label8.Text" xml:space="preserve">
-    <value>Unit</value>
-  </data>
-  <data name="label8.ToolTip" xml:space="preserve">
-    <value>Select the length unit (angstrom or nanometer)
-for the d-spacing display and the cutoff input.</value>
-  </data>
-  <data name="&gt;&gt;label8.Name" xml:space="preserve">
-    <value>label8</value>
-  </data>
-  <data name="&gt;&gt;label8.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label8.Parent" xml:space="preserve">
-    <value>panel2</value>
-  </data>
-  <data name="&gt;&gt;label8.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>0</value>
   </data>
   <data name="checkBoxTest.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="checkBoxTest.Location" type="System.Drawing.Point, System.Drawing">
-    <value>590, 0</value>
+    <value>3, 3</value>
   </data>
   <data name="checkBoxTest.Size" type="System.Drawing.Size, System.Drawing">
     <value>48, 21</value>
@@ -522,6 +479,11 @@ for the d-spacing display and the cutoff input.</value>
   <data name="checkBoxTest.Text" xml:space="preserve">
     <value>test</value>
   </data>
+  <data name="checkBoxTest.ToolTip" xml:space="preserve">
+    <value>Enable test mode: show the panel for scanning an
+arbitrary h/k/l index range (including fractional
+indices) and compute structure factors.</value>
+  </data>
   <data name="&gt;&gt;checkBoxTest.Name" xml:space="preserve">
     <value>checkBoxTest</value>
   </data>
@@ -529,7 +491,7 @@ for the d-spacing display and the cutoff input.</value>
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;checkBoxTest.Parent" xml:space="preserve">
-    <value>panel3</value>
+    <value>flowLayoutPanel3</value>
   </data>
   <data name="&gt;&gt;checkBoxTest.ZOrder" xml:space="preserve">
     <value>0</value>
@@ -551,6 +513,10 @@ for the d-spacing display and the cutoff input.</value>
   </data>
   <data name="label1.Text" xml:space="preserve">
     <value>Min</value>
+  </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value>Lower bound of the reflection
+indices h, k, l scanned in test mode.</value>
   </data>
   <data name="&gt;&gt;label1.Name" xml:space="preserve">
     <value>label1</value>
@@ -582,6 +548,10 @@ for the d-spacing display and the cutoff input.</value>
   <data name="label3.Text" xml:space="preserve">
     <value>Max</value>
   </data>
+  <data name="label3.ToolTip" xml:space="preserve">
+    <value>Upper bound of the reflection
+indices h, k, l scanned in test mode.</value>
+  </data>
   <data name="&gt;&gt;label3.Name" xml:space="preserve">
     <value>label3</value>
   </data>
@@ -611,6 +581,10 @@ for the d-spacing display and the cutoff input.</value>
   </data>
   <data name="label4.Text" xml:space="preserve">
     <value>Step</value>
+  </data>
+  <data name="label4.ToolTip" xml:space="preserve">
+    <value>Step size for scanning the reflection
+indices h, k, l in test mode (0.001-1).</value>
   </data>
   <data name="&gt;&gt;label4.Name" xml:space="preserve">
     <value>label4</value>
@@ -642,6 +616,10 @@ for the d-spacing display and the cutoff input.</value>
   <data name="label5.Text" xml:space="preserve">
     <value>h</value>
   </data>
+  <data name="label5.ToolTip" xml:space="preserve">
+    <value>Range (min/max/step) of the reflection
+index h scanned in test mode.</value>
+  </data>
   <data name="&gt;&gt;label5.Name" xml:space="preserve">
     <value>label5</value>
   </data>
@@ -672,6 +650,10 @@ for the d-spacing display and the cutoff input.</value>
   <data name="label6.Text" xml:space="preserve">
     <value>k</value>
   </data>
+  <data name="label6.ToolTip" xml:space="preserve">
+    <value>Range (min/max/step) of the reflection
+index k scanned in test mode.</value>
+  </data>
   <data name="&gt;&gt;label6.Name" xml:space="preserve">
     <value>label6</value>
   </data>
@@ -701,6 +683,10 @@ for the d-spacing display and the cutoff input.</value>
   </data>
   <data name="label7.Text" xml:space="preserve">
     <value>l</value>
+  </data>
+  <data name="label7.ToolTip" xml:space="preserve">
+    <value>Range (min/max/step) of the reflection
+index l scanned in test mode.</value>
   </data>
   <data name="&gt;&gt;label7.Name" xml:space="preserve">
     <value>label7</value>
@@ -744,6 +730,14 @@ for the d-spacing display and the cutoff input.</value>
   <data name="numericBoxL_step.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
   </data>
+  <data name="numericBoxL_step.ToolTip" xml:space="preserve">
+    <value>Step size for scanning the reflection
+index l in test mode (0.001-1).</value>
+  </data>
+  <data name="numericBoxL_step.ToolTip1" xml:space="preserve">
+    <value>Step size for scanning the reflection
+index l in test mode (0.001-1).</value>
+  </data>
   <data name="&gt;&gt;numericBoxL_step.Name" xml:space="preserve">
     <value>numericBoxL_step</value>
   </data>
@@ -785,6 +779,14 @@ for the d-spacing display and the cutoff input.</value>
   </data>
   <data name="numericBoxK_step.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
+  </data>
+  <data name="numericBoxK_step.ToolTip" xml:space="preserve">
+    <value>Step size for scanning the reflection
+index k in test mode (0.001-1).</value>
+  </data>
+  <data name="numericBoxK_step.ToolTip1" xml:space="preserve">
+    <value>Step size for scanning the reflection
+index k in test mode (0.001-1).</value>
   </data>
   <data name="&gt;&gt;numericBoxK_step.Name" xml:space="preserve">
     <value>numericBoxK_step</value>
@@ -828,6 +830,14 @@ for the d-spacing display and the cutoff input.</value>
   <data name="numericBoxH_step.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
   </data>
+  <data name="numericBoxH_step.ToolTip" xml:space="preserve">
+    <value>Step size for scanning the reflection
+index h in test mode (0.001-1).</value>
+  </data>
+  <data name="numericBoxH_step.ToolTip1" xml:space="preserve">
+    <value>Step size for scanning the reflection
+index h in test mode (0.001-1).</value>
+  </data>
   <data name="&gt;&gt;numericBoxH_step.Name" xml:space="preserve">
     <value>numericBoxH_step</value>
   </data>
@@ -869,6 +879,12 @@ for the d-spacing display and the cutoff input.</value>
   </data>
   <data name="numericBoxL_max.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
+  </data>
+  <data name="numericBoxL_max.ToolTip" xml:space="preserve">
+    <value>Upper bound of the reflection index l scanned in test mode.</value>
+  </data>
+  <data name="numericBoxL_max.ToolTip1" xml:space="preserve">
+    <value>Upper bound of the reflection index l scanned in test mode.</value>
   </data>
   <data name="&gt;&gt;numericBoxL_max.Name" xml:space="preserve">
     <value>numericBoxL_max</value>
@@ -912,6 +928,12 @@ for the d-spacing display and the cutoff input.</value>
   <data name="numericBoxK_max.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
   </data>
+  <data name="numericBoxK_max.ToolTip" xml:space="preserve">
+    <value>Upper bound of the reflection index k scanned in test mode.</value>
+  </data>
+  <data name="numericBoxK_max.ToolTip1" xml:space="preserve">
+    <value>Upper bound of the reflection index k scanned in test mode.</value>
+  </data>
   <data name="&gt;&gt;numericBoxK_max.Name" xml:space="preserve">
     <value>numericBoxK_max</value>
   </data>
@@ -953,6 +975,14 @@ for the d-spacing display and the cutoff input.</value>
   </data>
   <data name="numericBoxL_min.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
+  </data>
+  <data name="numericBoxL_min.ToolTip" xml:space="preserve">
+    <value>Lower bound of the reflection index l scanned in
+test mode (from l min to l max in steps of l step).</value>
+  </data>
+  <data name="numericBoxL_min.ToolTip1" xml:space="preserve">
+    <value>Lower bound of the reflection index l scanned in
+test mode (from l min to l max in steps of l step).</value>
   </data>
   <data name="&gt;&gt;numericBoxL_min.Name" xml:space="preserve">
     <value>numericBoxL_min</value>
@@ -996,6 +1026,14 @@ for the d-spacing display and the cutoff input.</value>
   <data name="numericBoxK_min.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
   </data>
+  <data name="numericBoxK_min.ToolTip" xml:space="preserve">
+    <value>Lower bound of the reflection index k scanned in
+test mode (from k min to k max in steps of k step).</value>
+  </data>
+  <data name="numericBoxK_min.ToolTip1" xml:space="preserve">
+    <value>Lower bound of the reflection index k scanned in
+test mode (from k min to k max in steps of k step).</value>
+  </data>
   <data name="&gt;&gt;numericBoxK_min.Name" xml:space="preserve">
     <value>numericBoxK_min</value>
   </data>
@@ -1037,6 +1075,12 @@ for the d-spacing display and the cutoff input.</value>
   </data>
   <data name="numericBoxH_max.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
+  </data>
+  <data name="numericBoxH_max.ToolTip" xml:space="preserve">
+    <value>Upper bound of the reflection index h scanned in test mode.</value>
+  </data>
+  <data name="numericBoxH_max.ToolTip1" xml:space="preserve">
+    <value>Upper bound of the reflection index h scanned in test mode.</value>
   </data>
   <data name="&gt;&gt;numericBoxH_max.Name" xml:space="preserve">
     <value>numericBoxH_max</value>
@@ -1080,6 +1124,14 @@ for the d-spacing display and the cutoff input.</value>
   <data name="numericBoxH_min.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
   </data>
+  <data name="numericBoxH_min.ToolTip" xml:space="preserve">
+    <value>Lower bound of the reflection index h scanned in
+test mode (from h min to h max in steps of h step).</value>
+  </data>
+  <data name="numericBoxH_min.ToolTip1" xml:space="preserve">
+    <value>Lower bound of the reflection index h scanned in
+test mode (from h min to h max in steps of h step).</value>
+  </data>
   <data name="&gt;&gt;numericBoxH_min.Name" xml:space="preserve">
     <value>numericBoxH_min</value>
   </data>
@@ -1091,141 +1143,6 @@ for the d-spacing display and the cutoff input.</value>
   </data>
   <data name="&gt;&gt;numericBoxH_min.ZOrder" xml:space="preserve">
     <value>8</value>
-  </data>
-  <data name="panel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>607, 6</value>
-  </data>
-  <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>202, 97</value>
-  </data>
-  <data name="panel1.TabIndex" type="System.Int32, mscorlib">
-    <value>12</value>
-  </data>
-  <data name="panel1.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;panel1.Name" xml:space="preserve">
-    <value>panel1</value>
-  </data>
-  <data name="&gt;&gt;panel1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;panel1.Parent" xml:space="preserve">
-    <value>panel3</value>
-  </data>
-  <data name="&gt;&gt;panel1.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="panel2.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="radioButtonNanoMeter.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="radioButtonNanoMeter.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Left</value>
-  </data>
-  <data name="radioButtonNanoMeter.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
-  </data>
-  <data name="radioButtonNanoMeter.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="radioButtonNanoMeter.Location" type="System.Drawing.Point, System.Drawing">
-    <value>65, 0</value>
-  </data>
-  <data name="radioButtonNanoMeter.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="radioButtonNanoMeter.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 0, 0, 0</value>
-  </data>
-  <data name="radioButtonNanoMeter.Size" type="System.Drawing.Size, System.Drawing">
-    <value>45, 25</value>
-  </data>
-  <data name="radioButtonNanoMeter.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="radioButtonNanoMeter.Text" xml:space="preserve">
-    <value>nm</value>
-  </data>
-  <data name="&gt;&gt;radioButtonNanoMeter.Name" xml:space="preserve">
-    <value>radioButtonNanoMeter</value>
-  </data>
-  <data name="&gt;&gt;radioButtonNanoMeter.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;radioButtonNanoMeter.Parent" xml:space="preserve">
-    <value>panel2</value>
-  </data>
-  <data name="&gt;&gt;radioButtonNanoMeter.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="radioButtonAngstrom.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="radioButtonAngstrom.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Left</value>
-  </data>
-  <data name="radioButtonAngstrom.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
-  </data>
-  <data name="radioButtonAngstrom.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="radioButtonAngstrom.Location" type="System.Drawing.Point, System.Drawing">
-    <value>29, 0</value>
-  </data>
-  <data name="radioButtonAngstrom.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="radioButtonAngstrom.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 0, 0, 0</value>
-  </data>
-  <data name="radioButtonAngstrom.Size" type="System.Drawing.Size, System.Drawing">
-    <value>36, 25</value>
-  </data>
-  <data name="radioButtonAngstrom.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="radioButtonAngstrom.Text" xml:space="preserve">
-    <value>Å</value>
-  </data>
-  <data name="&gt;&gt;radioButtonAngstrom.Name" xml:space="preserve">
-    <value>radioButtonAngstrom</value>
-  </data>
-  <data name="&gt;&gt;radioButtonAngstrom.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;radioButtonAngstrom.Parent" xml:space="preserve">
-    <value>panel2</value>
-  </data>
-  <data name="&gt;&gt;radioButtonAngstrom.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="panel2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>227, 82</value>
-  </data>
-  <data name="panel2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="panel2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>111, 25</value>
-  </data>
-  <data name="panel2.TabIndex" type="System.Int32, mscorlib">
-    <value>13</value>
-  </data>
-  <data name="&gt;&gt;panel2.Name" xml:space="preserve">
-    <value>panel2</value>
-  </data>
-  <data name="&gt;&gt;panel2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;panel2.Parent" xml:space="preserve">
-    <value>panel3</value>
-  </data>
-  <data name="&gt;&gt;panel2.ZOrder" xml:space="preserve">
-    <value>3</value>
   </data>
   <data name="numericBoxCutoffD.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9.75pt</value>
@@ -1243,10 +1160,10 @@ for the d-spacing display and the cutoff input.</value>
     <value>0, 4, 0, 0</value>
   </data>
   <data name="numericBoxCutoffD.HeaderText" xml:space="preserve">
-    <value>&gt;</value>
+    <value>d-Spacing Cutoff &gt;</value>
   </data>
   <data name="numericBoxCutoffD.Location" type="System.Drawing.Point, System.Drawing">
-    <value>469, 24</value>
+    <value>0, 0</value>
   </data>
   <data name="numericBoxCutoffD.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -1258,10 +1175,20 @@ for the d-spacing display and the cutoff input.</value>
     <value>10, 20</value>
   </data>
   <data name="numericBoxCutoffD.Size" type="System.Drawing.Size, System.Drawing">
-    <value>102, 26</value>
+    <value>200, 26</value>
   </data>
   <data name="numericBoxCutoffD.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
+  </data>
+  <data name="numericBoxCutoffD.ToolTip" xml:space="preserve">
+    <value>Minimum d-spacing (lattice plane interval) to
+include; reflections with smaller d are omitted. Unit
+follows the length-unit selection (angstrom or nm).</value>
+  </data>
+  <data name="numericBoxCutoffD.ToolTip1" xml:space="preserve">
+    <value>Minimum d-spacing (lattice plane interval) to
+include; reflections with smaller d are omitted. Unit
+follows the length-unit selection (angstrom or nm).</value>
   </data>
   <data name="&gt;&gt;numericBoxCutoffD.Name" xml:space="preserve">
     <value>numericBoxCutoffD</value>
@@ -1270,33 +1197,837 @@ for the d-spacing display and the cutoff input.</value>
     <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxCutoffD.Parent" xml:space="preserve">
-    <value>panel3</value>
+    <value>flowLayoutPanel2</value>
   </data>
   <data name="&gt;&gt;numericBoxCutoffD.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>0</value>
   </data>
-  <data name="panel3.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
+  <data name="panel1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>57, 3</value>
   </data>
-  <data name="panel3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
+  <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>202, 97</value>
   </data>
-  <data name="panel3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>857, 116</value>
+  <data name="panel1.TabIndex" type="System.Int32, mscorlib">
+    <value>12</value>
   </data>
-  <data name="panel3.TabIndex" type="System.Int32, mscorlib">
-    <value>15</value>
+  <data name="panel1.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
-  <data name="&gt;&gt;panel3.Name" xml:space="preserve">
-    <value>panel3</value>
+  <data name="&gt;&gt;panel1.Name" xml:space="preserve">
+    <value>panel1</value>
   </data>
-  <data name="&gt;&gt;panel3.Type" xml:space="preserve">
+  <data name="&gt;&gt;panel1.Type" xml:space="preserve">
     <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;panel3.Parent" xml:space="preserve">
+  <data name="&gt;&gt;panel1.Parent" xml:space="preserve">
+    <value>flowLayoutPanel3</value>
+  </data>
+  <data name="&gt;&gt;panel1.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="splitContainer1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="splitContainer1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 52</value>
+  </data>
+  <data name="splitContainer1.Orientation" type="System.Windows.Forms.Orientation, System.Windows.Forms">
+    <value>Horizontal</value>
+  </data>
+  <data name="&gt;&gt;splitContainer1.Panel1.Name" xml:space="preserve">
+    <value>splitContainer1.Panel1</value>
+  </data>
+  <data name="&gt;&gt;splitContainer1.Panel1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.SplitterPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;splitContainer1.Panel1.Parent" xml:space="preserve">
+    <value>splitContainer1</value>
+  </data>
+  <data name="&gt;&gt;splitContainer1.Panel1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="graphControl2.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="graphControl2.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9pt</value>
+  </data>
+  <data name="graphControl2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 29</value>
+  </data>
+  <data name="graphControl2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>870, 160</value>
+  </data>
+  <data name="graphControl2.TabIndex" type="System.Int32, mscorlib">
+    <value>20</value>
+  </data>
+  <data name="&gt;&gt;graphControl2.Name" xml:space="preserve">
+    <value>graphControl2</value>
+  </data>
+  <data name="&gt;&gt;graphControl2.Type" xml:space="preserve">
+    <value>Crystallography.Controls.GraphControl, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;graphControl2.Parent" xml:space="preserve">
+    <value>splitContainer1.Panel2</value>
+  </data>
+  <data name="&gt;&gt;graphControl2.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="flowLayoutPanel6.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="flowLayoutPanel6.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="button1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
+  </data>
+  <data name="button1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="button1.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="button1.Text" xml:space="preserve">
+    <value>button1</value>
+  </data>
+  <data name="&gt;&gt;button1.Name" xml:space="preserve">
+    <value>button1</value>
+  </data>
+  <data name="&gt;&gt;button1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;button1.Parent" xml:space="preserve">
+    <value>flowLayoutPanel6</value>
+  </data>
+  <data name="&gt;&gt;button1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="flowLayoutPanel6.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="flowLayoutPanel6.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="flowLayoutPanel6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>870, 29</value>
+  </data>
+  <data name="flowLayoutPanel6.TabIndex" type="System.Int32, mscorlib">
+    <value>21</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel6.Name" xml:space="preserve">
+    <value>flowLayoutPanel6</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel6.Type" xml:space="preserve">
+    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel6.Parent" xml:space="preserve">
+    <value>splitContainer1.Panel2</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel6.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;splitContainer1.Panel2.Name" xml:space="preserve">
+    <value>splitContainer1.Panel2</value>
+  </data>
+  <data name="&gt;&gt;splitContainer1.Panel2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.SplitterPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;splitContainer1.Panel2.Parent" xml:space="preserve">
+    <value>splitContainer1</value>
+  </data>
+  <data name="&gt;&gt;splitContainer1.Panel2.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="splitContainer1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>870, 386</value>
+  </data>
+  <data name="splitContainer1.SplitterDistance" type="System.Int32, mscorlib">
+    <value>193</value>
+  </data>
+  <data name="splitContainer1.TabIndex" type="System.Int32, mscorlib">
+    <value>21</value>
+  </data>
+  <data name="&gt;&gt;splitContainer1.Name" xml:space="preserve">
+    <value>splitContainer1</value>
+  </data>
+  <data name="&gt;&gt;splitContainer1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.SplitContainer, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;splitContainer1.Parent" xml:space="preserve">
+    <value>tabPageReflections</value>
+  </data>
+  <data name="&gt;&gt;splitContainer1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="flowLayoutPanel3.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="flowLayoutPanel3.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="flowLayoutPanel3.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Bottom</value>
+  </data>
+  <data name="flowLayoutPanel3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 438</value>
+  </data>
+  <data name="flowLayoutPanel3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>870, 103</value>
+  </data>
+  <data name="flowLayoutPanel3.TabIndex" type="System.Int32, mscorlib">
+    <value>18</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel3.Name" xml:space="preserve">
+    <value>flowLayoutPanel3</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel3.Parent" xml:space="preserve">
+    <value>tabPageReflections</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel3.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="flowLayoutPanel2.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="flowLayoutPanel2.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="flowLayoutPanel2.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="flowLayoutPanel2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 24</value>
+  </data>
+  <data name="flowLayoutPanel2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>870, 28</value>
+  </data>
+  <data name="flowLayoutPanel2.TabIndex" type="System.Int32, mscorlib">
+    <value>17</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel2.Name" xml:space="preserve">
+    <value>flowLayoutPanel2</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel2.Parent" xml:space="preserve">
+    <value>tabPageReflections</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel2.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="flowLayoutPanel1.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="flowLayoutPanel1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="flowLayoutPanel1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
+  </data>
+  <data name="flowLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>870, 21</value>
+  </data>
+  <data name="flowLayoutPanel1.TabIndex" type="System.Int32, mscorlib">
+    <value>16</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel1.Name" xml:space="preserve">
+    <value>flowLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel1.Parent" xml:space="preserve">
+    <value>tabPageReflections</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel1.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="flowLayoutPanel4.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="flowLayoutPanel4.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="flowLayoutPanel4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
+  </data>
+  <data name="flowLayoutPanel4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>870, 0</value>
+  </data>
+  <data name="flowLayoutPanel4.TabIndex" type="System.Int32, mscorlib">
+    <value>19</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel4.Name" xml:space="preserve">
+    <value>flowLayoutPanel4</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel4.Parent" xml:space="preserve">
+    <value>tabPageReflections</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel4.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="tabPageReflections.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 26</value>
+  </data>
+  <data name="tabPageReflections.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="tabPageReflections.Size" type="System.Drawing.Size, System.Drawing">
+    <value>876, 544</value>
+  </data>
+  <data name="tabPageReflections.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="tabPageReflections.Text" xml:space="preserve">
+    <value>Reflections</value>
+  </data>
+  <data name="&gt;&gt;tabPageReflections.Name" xml:space="preserve">
+    <value>tabPageReflections</value>
+  </data>
+  <data name="&gt;&gt;tabPageReflections.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabPageReflections.Parent" xml:space="preserve">
+    <value>tabControl1</value>
+  </data>
+  <data name="&gt;&gt;tabPageReflections.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <metadata name="Column1.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="Column1.HeaderText" xml:space="preserve">
+    <value>Column1</value>
+  </data>
+  <metadata name="Column2.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="Column2.HeaderText" xml:space="preserve">
+    <value>Column2</value>
+  </data>
+  <metadata name="Column3.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="Column3.HeaderText" xml:space="preserve">
+    <value>Column3</value>
+  </data>
+  <data name="miniTable1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>533, 44</value>
+  </data>
+  <data name="miniTable1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>335, 192</value>
+  </data>
+  <data name="miniTable1.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;miniTable1.Name" xml:space="preserve">
+    <value>miniTable1</value>
+  </data>
+  <data name="&gt;&gt;miniTable1.Type" xml:space="preserve">
+    <value>Crystallography.Controls.MiniTable, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;miniTable1.Parent" xml:space="preserve">
+    <value>tabPageScatteringFactors</value>
+  </data>
+  <data name="&gt;&gt;miniTable1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="flowLayoutPanelModel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="flowLayoutPanelModel.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="labelModel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="labelModel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 0</value>
+  </data>
+  <data name="labelModel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>46, 17</value>
+  </data>
+  <data name="labelModel.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="labelModel.Text" xml:space="preserve">
+    <value>Model</value>
+  </data>
+  <data name="&gt;&gt;labelModel.Name" xml:space="preserve">
+    <value>labelModel</value>
+  </data>
+  <data name="&gt;&gt;labelModel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelModel.Parent" xml:space="preserve">
+    <value>flowLayoutPanelModel</value>
+  </data>
+  <data name="&gt;&gt;labelModel.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="flowLayoutPanelModel_Xray.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="flowLayoutPanelModel_Xray.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="radioButtonXrayFs.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="radioButtonXrayFs.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="radioButtonXrayFs.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="radioButtonXrayFs.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="radioButtonXrayFs.Size" type="System.Drawing.Size, System.Drawing">
+    <value>44, 21</value>
+  </data>
+  <data name="radioButtonXrayFs.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="radioButtonXrayFs.Text" xml:space="preserve">
+    <value>f(s)</value>
+  </data>
+  <data name="labelModel.ToolTip" xml:space="preserve">
+    <value>Atomic scattering-factor model. The available choices switch between X-ray (f(s), F(q)+S(q)) and electron (Peng / Kirkland / 8-Gaussian) according to the selected beam.</value>
+  </data>
+  <data name="radioButtonXrayFs.ToolTip" xml:space="preserve">
+    <value>Plot the X-ray atomic scattering factor f(s) (elastic). s = sinθ/λ in Å⁻¹; f(0) equals the atomic number Z (electron units).</value>
+  </data>
+  <data name="radioButtonXrayFqSq.ToolTip" xml:space="preserve">
+    <value>Plot the X-ray coherent form factor F(q) and the incoherent (Compton) scattering function S(q) from xraylib. Disabled when xraylib is unavailable.</value>
+  </data>
+  <data name="radioButtonElectronPeng.ToolTip" xml:space="preserve">
+    <value>Electron atomic scattering factor fe(s) from Peng's 5-Gaussian parameterization (default).</value>
+  </data>
+  <data name="radioButtonElectronKirkland.ToolTip" xml:space="preserve">
+    <value>Electron atomic scattering factor fe(s) from Kirkland's parameterization (3 Lorentzians + 3 Gaussians).</value>
+  </data>
+  <data name="radioButtonElectronEightGaussian.ToolTip" xml:space="preserve">
+    <value>Electron atomic scattering factor fe(s) from an 8-Gaussian fit.</value>
+  </data>
+  <data name="checkBoxDebyeWaller.ToolTip" xml:space="preserve">
+    <value>Multiply the curves by the Debye-Waller factor exp(-B·s²) to include thermal-vibration damping (B = isotropic displacement parameter Biso).</value>
+  </data>
+  <data name="&gt;&gt;radioButtonXrayFs.Name" xml:space="preserve">
+    <value>radioButtonXrayFs</value>
+  </data>
+  <data name="&gt;&gt;radioButtonXrayFs.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;radioButtonXrayFs.Parent" xml:space="preserve">
+    <value>flowLayoutPanelModel_Xray</value>
+  </data>
+  <data name="&gt;&gt;radioButtonXrayFs.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="radioButtonXrayFqSq.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="radioButtonXrayFqSq.Location" type="System.Drawing.Point, System.Drawing">
+    <value>44, 0</value>
+  </data>
+  <data name="radioButtonXrayFqSq.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="radioButtonXrayFqSq.Size" type="System.Drawing.Size, System.Drawing">
+    <value>80, 21</value>
+  </data>
+  <data name="radioButtonXrayFqSq.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="radioButtonXrayFqSq.Text" xml:space="preserve">
+    <value>F(q)+S(q)</value>
+  </data>
+  <data name="&gt;&gt;radioButtonXrayFqSq.Name" xml:space="preserve">
+    <value>radioButtonXrayFqSq</value>
+  </data>
+  <data name="&gt;&gt;radioButtonXrayFqSq.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;radioButtonXrayFqSq.Parent" xml:space="preserve">
+    <value>flowLayoutPanelModel_Xray</value>
+  </data>
+  <data name="&gt;&gt;radioButtonXrayFqSq.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="flowLayoutPanelModel_Xray.Location" type="System.Drawing.Point, System.Drawing">
+    <value>52, 0</value>
+  </data>
+  <data name="flowLayoutPanelModel_Xray.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 10, 0</value>
+  </data>
+  <data name="flowLayoutPanelModel_Xray.Size" type="System.Drawing.Size, System.Drawing">
+    <value>124, 21</value>
+  </data>
+  <data name="flowLayoutPanelModel_Xray.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanelModel_Xray.Name" xml:space="preserve">
+    <value>flowLayoutPanelModel_Xray</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanelModel_Xray.Type" xml:space="preserve">
+    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanelModel_Xray.Parent" xml:space="preserve">
+    <value>flowLayoutPanelModel</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanelModel_Xray.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="flowLayoutPanelModel_Electron.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="flowLayoutPanelModel_Electron.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="radioButtonElectronPeng.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="radioButtonElectronPeng.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="radioButtonElectronPeng.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="radioButtonElectronPeng.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="radioButtonElectronPeng.Size" type="System.Drawing.Size, System.Drawing">
+    <value>55, 21</value>
+  </data>
+  <data name="radioButtonElectronPeng.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="radioButtonElectronPeng.Text" xml:space="preserve">
+    <value>Peng</value>
+  </data>
+  <data name="&gt;&gt;radioButtonElectronPeng.Name" xml:space="preserve">
+    <value>radioButtonElectronPeng</value>
+  </data>
+  <data name="&gt;&gt;radioButtonElectronPeng.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;radioButtonElectronPeng.Parent" xml:space="preserve">
+    <value>flowLayoutPanelModel_Electron</value>
+  </data>
+  <data name="&gt;&gt;radioButtonElectronPeng.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="radioButtonElectronKirkland.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="radioButtonElectronKirkland.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="radioButtonElectronKirkland.Location" type="System.Drawing.Point, System.Drawing">
+    <value>55, 0</value>
+  </data>
+  <data name="radioButtonElectronKirkland.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="radioButtonElectronKirkland.Size" type="System.Drawing.Size, System.Drawing">
+    <value>73, 21</value>
+  </data>
+  <data name="radioButtonElectronKirkland.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="radioButtonElectronKirkland.Text" xml:space="preserve">
+    <value>Kirkland</value>
+  </data>
+  <data name="&gt;&gt;radioButtonElectronKirkland.Name" xml:space="preserve">
+    <value>radioButtonElectronKirkland</value>
+  </data>
+  <data name="&gt;&gt;radioButtonElectronKirkland.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;radioButtonElectronKirkland.Parent" xml:space="preserve">
+    <value>flowLayoutPanelModel_Electron</value>
+  </data>
+  <data name="&gt;&gt;radioButtonElectronKirkland.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="radioButtonElectronEightGaussian.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="radioButtonElectronEightGaussian.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="radioButtonElectronEightGaussian.Location" type="System.Drawing.Point, System.Drawing">
+    <value>128, 0</value>
+  </data>
+  <data name="radioButtonElectronEightGaussian.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="radioButtonElectronEightGaussian.Size" type="System.Drawing.Size, System.Drawing">
+    <value>96, 21</value>
+  </data>
+  <data name="radioButtonElectronEightGaussian.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="radioButtonElectronEightGaussian.Text" xml:space="preserve">
+    <value>8-Gaussians</value>
+  </data>
+  <data name="&gt;&gt;radioButtonElectronEightGaussian.Name" xml:space="preserve">
+    <value>radioButtonElectronEightGaussian</value>
+  </data>
+  <data name="&gt;&gt;radioButtonElectronEightGaussian.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;radioButtonElectronEightGaussian.Parent" xml:space="preserve">
+    <value>flowLayoutPanelModel_Electron</value>
+  </data>
+  <data name="&gt;&gt;radioButtonElectronEightGaussian.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="flowLayoutPanelModel_Electron.Location" type="System.Drawing.Point, System.Drawing">
+    <value>186, 0</value>
+  </data>
+  <data name="flowLayoutPanelModel_Electron.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 10, 0</value>
+  </data>
+  <data name="flowLayoutPanelModel_Electron.Size" type="System.Drawing.Size, System.Drawing">
+    <value>224, 21</value>
+  </data>
+  <data name="flowLayoutPanelModel_Electron.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanelModel_Electron.Name" xml:space="preserve">
+    <value>flowLayoutPanelModel_Electron</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanelModel_Electron.Type" xml:space="preserve">
+    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanelModel_Electron.Parent" xml:space="preserve">
+    <value>flowLayoutPanelModel</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanelModel_Electron.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="checkBoxDebyeWaller.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBoxDebyeWaller.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="checkBoxDebyeWaller.Location" type="System.Drawing.Point, System.Drawing">
+    <value>423, 0</value>
+  </data>
+  <data name="checkBoxDebyeWaller.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 0, 3, 0</value>
+  </data>
+  <data name="checkBoxDebyeWaller.Size" type="System.Drawing.Size, System.Drawing">
+    <value>105, 21</value>
+  </data>
+  <data name="checkBoxDebyeWaller.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="checkBoxDebyeWaller.Text" xml:space="preserve">
+    <value>Debye-Waller</value>
+  </data>
+  <data name="&gt;&gt;checkBoxDebyeWaller.Name" xml:space="preserve">
+    <value>checkBoxDebyeWaller</value>
+  </data>
+  <data name="&gt;&gt;checkBoxDebyeWaller.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxDebyeWaller.Parent" xml:space="preserve">
+    <value>flowLayoutPanelModel</value>
+  </data>
+  <data name="&gt;&gt;checkBoxDebyeWaller.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="flowLayoutPanelModel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>8, 6</value>
+  </data>
+  <data name="flowLayoutPanelModel.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="flowLayoutPanelModel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>531, 21</value>
+  </data>
+  <data name="flowLayoutPanelModel.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanelModel.Name" xml:space="preserve">
+    <value>flowLayoutPanelModel</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanelModel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanelModel.Parent" xml:space="preserve">
+    <value>tabPageScatteringFactors</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanelModel.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="graphControlScatteringFactor.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9pt</value>
+  </data>
+  <data name="graphControlScatteringFactor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>8, 44</value>
+  </data>
+  <data name="graphControlScatteringFactor.Size" type="System.Drawing.Size, System.Drawing">
+    <value>519, 494</value>
+  </data>
+  <data name="graphControlScatteringFactor.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;graphControlScatteringFactor.Name" xml:space="preserve">
+    <value>graphControlScatteringFactor</value>
+  </data>
+  <data name="&gt;&gt;graphControlScatteringFactor.Type" xml:space="preserve">
+    <value>Crystallography.Controls.GraphControl, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;graphControlScatteringFactor.Parent" xml:space="preserve">
+    <value>tabPageScatteringFactors</value>
+  </data>
+  <data name="&gt;&gt;graphControlScatteringFactor.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="tabPageScatteringFactors.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 26</value>
+  </data>
+  <data name="tabPageScatteringFactors.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="tabPageScatteringFactors.Size" type="System.Drawing.Size, System.Drawing">
+    <value>876, 544</value>
+  </data>
+  <data name="tabPageScatteringFactors.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="tabPageScatteringFactors.Text" xml:space="preserve">
+    <value>Scattering factors</value>
+  </data>
+  <data name="&gt;&gt;tabPageScatteringFactors.Name" xml:space="preserve">
+    <value>tabPageScatteringFactors</value>
+  </data>
+  <data name="&gt;&gt;tabPageScatteringFactors.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabPageScatteringFactors.Parent" xml:space="preserve">
+    <value>tabControl1</value>
+  </data>
+  <data name="&gt;&gt;tabPageScatteringFactors.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="tabPageAttenuations.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 26</value>
+  </data>
+  <data name="tabPageAttenuations.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="tabPageAttenuations.Size" type="System.Drawing.Size, System.Drawing">
+    <value>876, 544</value>
+  </data>
+  <data name="tabPageAttenuations.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="tabPageAttenuations.Text" xml:space="preserve">
+    <value>Attenuations &amp;&amp; Transport</value>
+  </data>
+  <data name="&gt;&gt;tabPageAttenuations.Name" xml:space="preserve">
+    <value>tabPageAttenuations</value>
+  </data>
+  <data name="&gt;&gt;tabPageAttenuations.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabPageAttenuations.Parent" xml:space="preserve">
+    <value>tabControl1</value>
+  </data>
+  <data name="&gt;&gt;tabPageAttenuations.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="tabPageFluorescence.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 26</value>
+  </data>
+  <data name="tabPageFluorescence.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="tabPageFluorescence.Size" type="System.Drawing.Size, System.Drawing">
+    <value>876, 544</value>
+  </data>
+  <data name="tabPageFluorescence.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="tabPageFluorescence.Text" xml:space="preserve">
+    <value>Fluorescence</value>
+  </data>
+  <data name="&gt;&gt;tabPageFluorescence.Name" xml:space="preserve">
+    <value>tabPageFluorescence</value>
+  </data>
+  <data name="&gt;&gt;tabPageFluorescence.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabPageFluorescence.Parent" xml:space="preserve">
+    <value>tabControl1</value>
+  </data>
+  <data name="&gt;&gt;tabPageFluorescence.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="tabControl1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="tabControl1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 27</value>
+  </data>
+  <data name="tabControl1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>884, 574</value>
+  </data>
+  <data name="tabControl1.TabIndex" type="System.Int32, mscorlib">
+    <value>16</value>
+  </data>
+  <data name="&gt;&gt;tabControl1.Name" xml:space="preserve">
+    <value>tabControl1</value>
+  </data>
+  <data name="&gt;&gt;tabControl1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabControl1.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;panel3.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;tabControl1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="flowLayoutPanel5.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="flowLayoutPanel5.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="flowLayoutPanel5.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="flowLayoutPanel5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>884, 27</value>
+  </data>
+  <data name="flowLayoutPanel5.TabIndex" type="System.Int32, mscorlib">
+    <value>17</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel5.Name" xml:space="preserve">
+    <value>flowLayoutPanel5</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel5.Type" xml:space="preserve">
+    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel5.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel5.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
@@ -1309,7 +2040,7 @@ for the d-spacing display and the cutoff input.</value>
     <value>96, 96</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>857, 398</value>
+    <value>884, 601</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9.75pt</value>
@@ -1431,116 +2162,28 @@ for the d-spacing display and the cutoff input.</value>
   <data name="&gt;&gt;toolTip.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolTip, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;Column1.Name" xml:space="preserve">
+    <value>Column1</value>
+  </data>
+  <data name="&gt;&gt;Column1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Column2.Name" xml:space="preserve">
+    <value>Column2</value>
+  </data>
+  <data name="&gt;&gt;Column2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Column3.Name" xml:space="preserve">
+    <value>Column3</value>
+  </data>
+  <data name="&gt;&gt;Column3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>FormScatteringFactor</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
     <value>Crystallography.Controls.FormBase, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="buttonCopyClipboard.ToolTip" xml:space="preserve">
-    <value>Copy the reflection table (visible
-columns, tab-separated) to the clipboard.</value>
-  </data>
-  <data name="checkBoxBragBrentano.ToolTip" xml:space="preserve">
-    <value>Show powder diffraction intensities computed
-for Bragg-Brentano focusing optics (includes
-the Lorentz-polarization factor); also forces
-hiding of equivalent and forbidden reflections.</value>
-  </data>
-  <data name="checkBoxHideEquivalentPlane.ToolTip" xml:space="preserve">
-    <value>Hide symmetry-equivalent reflections
-(planes related by symmetry), showing
-only one representative of each set.</value>
-  </data>
-  <data name="checkBoxHideProhibitedPlanes.ToolTip" xml:space="preserve">
-    <value>Hide systematically absent (forbidden)
-reflections - those extinguished by
-the space-group reflection conditions.</value>
-  </data>
-  <data name="checkBoxTest.ToolTip" xml:space="preserve">
-    <value>Enable test mode: show the panel for scanning an
-arbitrary h/k/l index range (including fractional
-indices) and compute structure factors.</value>
-  </data>
-  <data name="dataGridView.ToolTip" xml:space="preserve">
-    <value>Reflection table: Miller indices, d-spacing,
-q, 2-theta, structure factor
-(real/imaginary/|F|/F^2), relative intensity,
-and extinction condition for each reflection.</value>
-  </data>
-  <data name="numericBoxCutoffD.ToolTip" xml:space="preserve">
-    <value>Minimum d-spacing (lattice plane interval) to
-include; reflections with smaller d are omitted. Unit
-follows the length-unit selection (angstrom or nm).</value>
-  </data>
-  <data name="numericBoxH_max.ToolTip" xml:space="preserve">
-    <value>Upper bound of the reflection index h scanned in test mode.</value>
-  </data>
-  <data name="numericBoxH_min.ToolTip" xml:space="preserve">
-    <value>Lower bound of the reflection index h scanned in
-test mode (from h min to h max in steps of h step).</value>
-  </data>
-  <data name="numericBoxH_step.ToolTip" xml:space="preserve">
-    <value>Step size for scanning the reflection
-index h in test mode (0.001-1).</value>
-  </data>
-  <data name="numericBoxK_max.ToolTip" xml:space="preserve">
-    <value>Upper bound of the reflection index k scanned in test mode.</value>
-  </data>
-  <data name="numericBoxK_min.ToolTip" xml:space="preserve">
-    <value>Lower bound of the reflection index k scanned in
-test mode (from k min to k max in steps of k step).</value>
-  </data>
-  <data name="numericBoxK_step.ToolTip" xml:space="preserve">
-    <value>Step size for scanning the reflection
-index k in test mode (0.001-1).</value>
-  </data>
-  <data name="numericBoxL_max.ToolTip" xml:space="preserve">
-    <value>Upper bound of the reflection index l scanned in test mode.</value>
-  </data>
-  <data name="numericBoxL_min.ToolTip" xml:space="preserve">
-    <value>Lower bound of the reflection index l scanned in
-test mode (from l min to l max in steps of l step).</value>
-  </data>
-  <data name="numericBoxL_step.ToolTip" xml:space="preserve">
-    <value>Step size for scanning the reflection
-index l in test mode (0.001-1).</value>
-  </data>
-  <data name="radioButtonAngstrom.ToolTip" xml:space="preserve">
-    <value>Use angstrom (1 angstrom = 0.1 nm) as the length
-unit for d-spacing display and the cutoff input.</value>
-  </data>
-  <data name="radioButtonNanoMeter.ToolTip" xml:space="preserve">
-    <value>Use nanometer (1 nm = 10 angstrom) as the length
-unit for d-spacing display and the cutoff input.</value>
-  </data>
-  <data name="waveLengthControl1.ToolTip" xml:space="preserve">
-    <value>Select the radiation source (X-ray, electron,
-etc.) and its wavelength/energy used to
-compute 2-theta and diffraction intensities.</value>
-  </data>
-  <data name="label1.ToolTip" xml:space="preserve">
-    <value>Lower bound of the reflection
-indices h, k, l scanned in test mode.</value>
-  </data>
-  <data name="label3.ToolTip" xml:space="preserve">
-    <value>Upper bound of the reflection
-indices h, k, l scanned in test mode.</value>
-  </data>
-  <data name="label4.ToolTip" xml:space="preserve">
-    <value>Step size for scanning the reflection
-indices h, k, l in test mode (0.001-1).</value>
-  </data>
-  <data name="label5.ToolTip" xml:space="preserve">
-    <value>Range (min/max/step) of the reflection
-index h scanned in test mode.</value>
-  </data>
-  <data name="label6.ToolTip" xml:space="preserve">
-    <value>Range (min/max/step) of the reflection
-index k scanned in test mode.</value>
-  </data>
-  <data name="label7.ToolTip" xml:space="preserve">
-    <value>Range (min/max/step) of the reflection
-index l scanned in test mode.</value>
   </data>
 </root>

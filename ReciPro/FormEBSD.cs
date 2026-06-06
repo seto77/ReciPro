@@ -2245,6 +2245,9 @@ public partial class FormEBSD : FormBase
     {
         var cry = FormMain.Crystal;
         cry.GetFormulaAndDensity();
+        // 260606Cl 注意【既知の不具合・未修正・別件】: 下記 z(平均原子番号)/a(平均原子量) と valenceElectronCount の集計は
+        // a.Multiplicity だけを使い Occupancy(.Occ) を考慮していない。占有率<1 のサイト(部分占有・固溶体)で実組成とずれる。
+        // 正しくは Multiplicity*Occ で加重すべき(Crystal.GetFormulaAndDensity と同じ規約)。FormTrajectory.cs にも同じ不具合あり。修正は別 PR で対応予定。
         var sum1 = cry.Atoms.Sum(a => AtomStatic.AtomicWeight(a.AtomicNumber) * a.Multiplicity * a.AtomicNumber);
         var sum2 = cry.Atoms.Sum(a => AtomStatic.AtomicWeight(a.AtomicNumber) * a.Multiplicity);
         var sum3 = cry.Atoms.Sum(a => a.Multiplicity);

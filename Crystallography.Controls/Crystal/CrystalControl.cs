@@ -11,6 +11,7 @@ using System.Windows.Forms;
 namespace Crystallography.Controls;
 
 [TypeConverter(typeof(DefinitionOrderTypeConverter))]
+[ToolboxItem(true)] // 260605Cl 追加: 基底 UserControlBase の [ToolboxItem(false)] 継承を打ち消しデザイナのツールボックスに表示
 public partial class CrystalControl : UserControlBase
 {
     #region プロパティ、フィールド、イベントハンドラ
@@ -213,6 +214,22 @@ public partial class CrystalControl : UserControlBase
         numericBoxZnumber.Value = Crystal.ChemicalFormulaZ;
         numericBoxMolarMass.Value = numericBoxDensity.Value * numericBoxMolarVolume.Value;
         numericBoxCellMass.Value = numericBoxDensity.Value * numericBoxVolumeAng.Value;
+
+        // 260606Cl 追加: 平均原子番号(個数/質量加重)・平均原子量・原子数密度・電子数密度。
+        // ElementNum は Multiplicity*Occ (占有率込み) なので、これらの量も占有率を反映する。
+        double sumN = 0, sumNZ = 0, sumNA = 0, sumNAZ = 0;
+        if (Crystal.ElementName != null)
+            for (int i = 0; i < Crystal.ElementName.Length; i++)
+            {
+                int z = AtomStatic.AtomicNumber(Crystal.ElementName[i]);
+                double n = Crystal.ElementNum[i], aw = AtomStatic.AtomicWeight(z);
+                sumN += n; sumNZ += n * z; sumNA += n * aw; sumNAZ += n * aw * z;
+            }
+        numericBoxMeanZnumber.Value = sumN > 0 ? sumNZ / sumN : 0;        // 平均原子番号 (個数平均)
+        numericBoxMeanZmass.Value = sumNA > 0 ? sumNAZ / sumNA : 0;       // 平均原子番号 (質量平均)
+        numericBoxMeanAtomicWeight.Value = sumN > 0 ? sumNA / sumN : 0;   // 平均原子量 (原子あたり, g/mol。Molar Mass=式単位あたり とは別物)
+        numericBoxAtomicNumberDensity.Value = Crystal.Volume > 0 ? sumN / Crystal.Volume : 0;   // atoms/nm³
+        numericBoxElectronDensity.Value = Crystal.Volume > 0 ? sumNZ / Crystal.Volume : 0;      // electrons/nm³
 
         SymmetrySeriesNumber = Crystal.SymmetrySeriesNumber; // setter 内でコンボボックスをセットする (20170526)
 

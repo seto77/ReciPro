@@ -5,69 +5,85 @@ using System.Windows.Forms;
 
 namespace Crystallography.Controls;
 
+[ToolboxItem(true)] // 260605Cl 追加: 基底 UserControlBase の [ToolboxItem(false)] 継承を打ち消しデザイナのツールボックスに表示
 public partial class WaveLengthControl : UserControlBase
 {
 
     public event EventHandler WavelengthChanged;
     public event EventHandler WaveSourceChanged;
+    public event EventHandler WavelengthUnitChanged;
 
     #region プロパティ
 
-    // 260426Cl 削除: DesignMode は UserControlBase で同等の実装を提供しているため重複定義を撤去
-    //public new bool DesignMode
-    //{
-    //    get
-    //    {
-    //        if (LicenseManager.UsageMode == LicenseUsageMode.Designtime)
-    //            return true;
-    //        Control ctrl = this;
-    //        while (ctrl != null)
-    //        {
-    //            if (ctrl.Site != null && ctrl.Site.DesignMode)
-    //                return true;
-    //            ctrl = ctrl.Parent;
-    //        }
-    //        return false;
-    //    }
-    //}
+    #region FlowDirection プロパティ (コントロールの配置方向)
 
     /// <summary>コントロールの配置をLeftToRightか、TopDownにするか</summary>
-    // 260426Cl 修正: 文字化けしていたコメント (旧: WFO1000 関連の壊れたコメント) を整理
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
     [Category("Appearance")]
-    [Description("コントロール内要素の配置方向 (LeftToRight: 横並び / TopDown: 縦並び)。")]                                                              // 260522Cl 追加
-    public FlowDirection Direction
+    [Description("全体の配置方向 (LeftToRight: 横並び / TopDown: 縦並び)。")]                                                              // 260522Cl 追加
+    [DefaultValue(FlowDirection.TopDown)] // 260606Cl 追加: 既定値を明示し、既定のままなら消費側 InitializeComponent へ serialize されないようにする (グリッドの太字/Reset も正常化)
+    public FlowDirection DirectionWhole
     {
         set
         {
-            direction = value;
-            if (direction == FlowDirection.LeftToRight)
-            {
-                this.AutoSize = false;
-                flowLayoutPanelWaveSource.FlowDirection = FlowDirection.TopDown;
-                flowLayoutPanelWaveSource.Dock = DockStyle.Left;
-            }
-            else
-            {
-                this.AutoSize = true;
-                flowLayoutPanelWaveSource.FlowDirection = FlowDirection.LeftToRight;
-                flowLayoutPanelWaveSource.Dock = DockStyle.Top;
-            }
+            // 260606Cl: 旧実装は配置方向に応じて this.AutoSize を切替えていたが、3 方向プロパティ + Dock ベースのレイアウトに移行したため AutoSize 操作は廃止 (Dock だけで意図どおり配置される)。
+            directionWhole = value;
+            flowLayoutPanelWaveSource.Dock = directionWhole == FlowDirection.LeftToRight ? DockStyle.Left : DockStyle.Top;
         }
-        // 260426Cl 整理: 旧コードは LeftToRight 以外を必ず TopDown へ縮約していたが、
-        // direction 自身は厳密に LeftToRight / TopDown のいずれかしか格納されないので素直に返す
-        //get
-        //{
-        //    if (direction == FlowDirection.LeftToRight)
-        //        return FlowDirection.LeftToRight;
-        //    else
-        //        return FlowDirection.TopDown;
-        //}
-        get => direction;
+        get => directionWhole;
     }
-    // 260426Cl 修正: public フィールドを private に変更 (外部参照なしを確認済み)
-    //public FlowDirection direction = FlowDirection.TopDown;
-    private FlowDirection direction = FlowDirection.TopDown;
+    private FlowDirection directionWhole = FlowDirection.TopDown;
+
+    /// <summary>コントロールの配置をLeftToRightか、TopDownにするか</summary>
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
+    [Category("Appearance")]
+    [Description("線種要素の配置方向 (LeftToRight: 横並び / TopDown: 縦並び)。")]                                                              // 260522Cl 追加
+    [DefaultValue(FlowDirection.LeftToRight)] // 260606Cl 追加: 既定値 (backing field の初期値) を明示
+    public FlowDirection DirectionWaveSource
+    {
+        set => directionWaveSource = flowLayoutPanelWaveSource.FlowDirection = value;
+        get => directionWaveSource;
+    }
+    private FlowDirection directionWaveSource = FlowDirection.LeftToRight;
+
+    /// <summary>コントロールの配置をLeftToRightか、TopDownにするか</summary>
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
+    [Category("Appearance")]
+    [Description("波長&エネルギーコントロールの要素の配置方向 (LeftToRight: 横並び / TopDown: 縦並び)。")]                                                              // 260522Cl 追加
+    [DefaultValue(FlowDirection.TopDown)] // 260606Cl 追加: 既定値 (backing field の初期値) を明示
+    public FlowDirection DirectionWaveEnergy
+    {
+        set => directionWaveEnergy = flowLayoutPanelWaveEnergy.FlowDirection = value;
+        get => directionWaveEnergy;
+    }
+    private FlowDirection directionWaveEnergy = FlowDirection.TopDown;
+
+
+    #endregion
+
+
+
+    /// <summary>波長の表示単位 (Å / nm)。表示値とフッタ単位ラベルを切り替えるだけで、物理波長 (WaveLength は常に nm) は不変。</summary>
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
+    [Category("Appearance")]
+    [Description("波長の表示単位 (Angstrom: Å / NanoMeter: nm)。WaveLength プロパティは表示単位に依らず常に nm を返す。")] // 260606Cl 追加
+    [DefaultValue(LengthUnitEnum.Angstrom)] // 260606Cl 追加: 既定値 (radioButtonUnitAngstrom.Checked) を明示
+    public LengthUnitEnum LengthUnit
+    {
+        get => radioButtonUnitAngstrom.Checked ? LengthUnitEnum.Angstrom : LengthUnitEnum.NanoMeter;
+        set
+        {
+            if (value == LengthUnitEnum.Angstrom)
+                radioButtonUnitAngstrom.Checked = true;
+            else
+                radioButtonUnitNanoMeter.Checked = true;
+        }
+    }
+
+    // 260606Cl 追加: numericBoxWaveLength.Value(=表示単位) と物理波長(nm) の換算係数。Å表示=10, nm表示=1 (1 nm = 10 Å)。
+    // エネルギー変換関数は nm 入力/出力なので、表示値→nm は ÷係数、nm→表示値は ×係数で一貫させる。
+    private double waveLengthUnitPerNm => LengthUnit == LengthUnitEnum.Angstrom ? 10.0 : 1.0;
+
 
     private bool monochrome = true;
     /// <summary>単色モードかどうか falseの場合は白色モード</summary>
@@ -133,23 +149,27 @@ public partial class WaveLengthControl : UserControlBase
     // この public フィールドはどこからも参照されない死コードだったため撤去
     //public string waveLengthText = "0.4";
 
-    /// <summary>波長をÅ単位のテキスト形式で取得/設定</summary>
+    /// <summary>波長をÅ単位のテキスト形式で取得/設定。表示単位 (LengthUnit) に依らず常にÅで入出力する。</summary>
     [Browsable(false)]
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public string WaveLengthText
     {
         set
         {
+            // 260606Cl 堅牢化: value は常にÅ文字列。WaveLength(nm) = Å/10 経由で設定し表示単位に依らず正しくスケールされるようにする。
             // 260426Cl 修正: 空文字や数値変換失敗で発生する例外型に絞り込み
+            //numericBoxWaveLength.Value = Convert.ToDouble(value); // 260606Cl 旧: 表示単位に直接代入でスケールずれ
             try
             {
-                numericBoxWaveLength.Value = Convert.ToDouble(value);
+                WaveLength = Convert.ToDouble(value) / 10.0; // Å → nm
                 comboBoxXRayElement.SelectedIndex = 0;
             }
             catch (FormatException) { }
             catch (OverflowException) { }
         }
-        get => numericBoxWaveLength.Text;
+        // 260606Cl 堅牢化: 表示単位に依らず常にÅ文字列を返す (WaveLength は nm → ×10 で Å へ変換)
+        //get => numericBoxWaveLength.Text; // 260606Cl 旧: nm表示時に nm テキストを返してしまいずれが生じた
+        get => (WaveLength * 10.0).ToString();
     }
 
     /// <summary>波長をnm単位のdoubleで取得/設定</summary>
@@ -167,10 +187,13 @@ public partial class WaveLengthControl : UserControlBase
                     comboBoxXRayElement.SelectedIndex = 0;
                 skipEvent = false;
 
-                numericBoxWaveLength.Value = value * 10.0;
+                // 260606Cl 修正: 表示単位 (Å/nm) を考慮し、固定係数 10 を waveLengthUnitPerNm に置換 (WaveLength は常に nm)
+                //numericBoxWaveLength.Value = value * 10.0;
+                numericBoxWaveLength.Value = value * waveLengthUnitPerNm;
             }
         }
-        get => numericBoxWaveLength.Value / 10.0;
+        //get => numericBoxWaveLength.Value / 10.0; // 260606Cl 修正
+        get => numericBoxWaveLength.Value / waveLengthUnitPerNm;
     }
 
     WaveSource waveSource = WaveSource.Xray;
@@ -370,8 +393,11 @@ public partial class WaveLengthControl : UserControlBase
             if (!double.IsNaN(d))
             {
                 skipEvent = true;
-                numericBoxWaveLength.Value = d;
-                numericBoxEnergy.Value = UniversalConstants.Convert.WavelengthToXrayEnergy(numericBoxWaveLength.Value / 10) / 1000;
+                // 260606Cl 修正: CharacteristicXrayWavelength は Å を返す。表示単位へ換算する (Å→nm = d/10、nm→表示値 = ×waveLengthUnitPerNm)
+                //numericBoxWaveLength.Value = d;
+                numericBoxWaveLength.Value = d / 10.0 * waveLengthUnitPerNm;
+                //numericBoxEnergy.Value = UniversalConstants.Convert.WavelengthToXrayEnergy(numericBoxWaveLength.Value / 10) / 1000; // 260606Cl 修正
+                numericBoxEnergy.Value = UniversalConstants.Convert.WavelengthToXrayEnergy(numericBoxWaveLength.Value / waveLengthUnitPerNm) / 1000;
                 skipEvent = false;
                 WavelengthChanged?.Invoke(this, EventArgs.Empty);
             }
@@ -420,11 +446,11 @@ public partial class WaveLengthControl : UserControlBase
 
         skipEvent = true;
         if (radioButtonXray.Checked)
-            numericBoxEnergy.Value = UniversalConstants.Convert.WavelengthToXrayEnergy(numericBoxWaveLength.Value / 10) / 1000;
+            numericBoxEnergy.Value = UniversalConstants.Convert.WavelengthToXrayEnergy(numericBoxWaveLength.Value / waveLengthUnitPerNm) / 1000;
         else if (radioButtonElectron.Checked)
-            numericBoxEnergy.Value = UniversalConstants.Convert.WaveLengthToElectronEnergy(numericBoxWaveLength.Value / 10);
+            numericBoxEnergy.Value = UniversalConstants.Convert.WaveLengthToElectronEnergy(numericBoxWaveLength.Value / waveLengthUnitPerNm);
         else
-            numericBoxEnergy.Value = UniversalConstants.Convert.WaveLengthToNeutronEnergy(numericBoxWaveLength.Value / 10) / 1.0E6;
+            numericBoxEnergy.Value = UniversalConstants.Convert.WaveLengthToNeutronEnergy(numericBoxWaveLength.Value / waveLengthUnitPerNm) / 1.0E6;
         skipEvent = false;
         WavelengthChanged?.Invoke(this, EventArgs.Empty);
     }
@@ -437,13 +463,27 @@ public partial class WaveLengthControl : UserControlBase
         if (skipEvent) return;
         skipEvent = true;
         if (radioButtonXray.Checked) //X線の時
-            numericBoxWaveLength.Value = UniversalConstants.Convert.EnergyToXrayWaveLength(numericBoxEnergy.Value * 1000) * 10;
+            numericBoxWaveLength.Value = UniversalConstants.Convert.EnergyToXrayWaveLength(numericBoxEnergy.Value * 1000) * waveLengthUnitPerNm;
         else if (radioButtonElectron.Checked)//電子線の時
-            numericBoxWaveLength.Value = UniversalConstants.Convert.EnergyToElectronWaveLength(numericBoxEnergy.Value) * 10;
+            numericBoxWaveLength.Value = UniversalConstants.Convert.EnergyToElectronWaveLength(numericBoxEnergy.Value) * waveLengthUnitPerNm;
         else//中性子
-            numericBoxWaveLength.Value = UniversalConstants.Convert.EnergyToNeutronWaveLength(numericBoxEnergy.Value * 1.0E6) * 10;
+            numericBoxWaveLength.Value = UniversalConstants.Convert.EnergyToNeutronWaveLength(numericBoxEnergy.Value * 1.0E6) * waveLengthUnitPerNm;
         skipEvent = false;
         WavelengthChanged?.Invoke(this, EventArgs.Empty);
+    }
+
+    /// <summary>波長の表示単位 (Å / nm) が切り替わったとき。表示値を新単位へ換算し、フッタ単位ラベルを更新する。</summary>
+    // 260606Cl 追加実装: Å/nm の2択ラジオで Å 側の CheckedChanged のみ購読しているため、どちらへ切り替えても本ハンドラが1回だけ発火する。
+    // ハンドラ発火時点で LengthUnit は既に新しい状態を返す。物理波長 (nm) は不変に保ちたいので表示値だけを再スケールする:
+    //   Angstrom になった (nm→Å) → ×10、NanoMeter になった (Å→nm) → ÷10。
+    private void radioButtonUnitAngstrom_CheckedChanged(object sender, EventArgs e)
+    {
+        skipEvent = true; // 物理波長は不変なので、エネルギー再計算と WavelengthChanged の発火を抑止する
+        numericBoxWaveLength.Value *= LengthUnit == LengthUnitEnum.Angstrom ? 10.0 : 0.1;
+        numericBoxWaveLength.FooterText = LengthUnit == LengthUnitEnum.Angstrom ? "Å" : "nm";
+        skipEvent = false;
+
+        WavelengthUnitChanged?.Invoke(this, EventArgs.Empty);
     }
 }
 

@@ -206,12 +206,12 @@ custom」で任意のエネルギー・波長を入力できます。</value>
     <value>151, 27</value>
   </data>
   <data name="numericBoxWaveLength.ToolTip" xml:space="preserve">
-    <value>波長をオングストローム (Å) 単位で入力しま
-す。エネルギーが自動的に再計算されます。</value>
+    <value>波長を入力します（表示単位は Å / nm ラジオボタンで切り替え）。
+ビームエネルギーが自動的に再計算されます。</value>
   </data>
   <data name="numericBoxWaveLength.ToolTip1" xml:space="preserve">
-    <value>波長をオングストローム (Å) 単位で入力しま
-す。エネルギーが自動的に再計算されます。</value>
+    <value>波長を入力します（表示単位は Å / nm ラジオボタンで切り替え）。
+ビームエネルギーが自動的に再計算されます。</value>
   </data>
   <data name="radioButtonNeutron.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
@@ -232,22 +232,33 @@ custom」で任意のエネルギー・波長を入力できます。</value>
     <value>白色光 (連続スペクトル) モードを示します。
 単一波長でなく平坦な広帯域ビームを用います。</value>
   </data>
-  <data name="flowLayoutPanelWaveSource.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="flowLayoutPanelElement.Size" type="System.Drawing.Size, System.Drawing">
     <value>162, 25</value>
   </data>
-  <data name="flowLayoutPanelElement.ToolTip" xml:space="preserve">
-    <value />
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="flowLayoutPanelWaveEnergy.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
-  <data name="flowLayoutPanel2.ToolTip" xml:space="preserve">
-    <value />
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="flowLayoutPanelWaveEnergy.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
   </data>
-  <data name="panel1.ToolTip" xml:space="preserve">
-    <value />
+  <data name="flowLayoutPanelWaveEnergy.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
   </data>
-  <data name="$this.ToolTip" xml:space="preserve">
-    <value />
+  <data name="flowLayoutPanelWaveEnergy.FlowDirection" type="System.Windows.Forms.FlowDirection, System.Windows.Forms">
+    <value>TopDown</value>
+  </data>
+  <data name="flowLayoutPanelWaveEnergy.Size" type="System.Drawing.Size, System.Drawing">
+    <value>210, 96</value>
+  </data>
+  <data name="flowLayoutPanelWaveEnergy.WrapContents" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="radioButtonUnitAngstrom.ToolTip" xml:space="preserve">
+    <value>波長の表示単位をオングストローム (Å) にします。物理波長・エネルギーは変わりません（1 nm = 10 Å）。</value>
+  </data>
+  <data name="radioButtonUnitNanoMeter.ToolTip" xml:space="preserve">
+    <value>波長の表示単位をナノメートル (nm) にします。物理波長・エネルギーは変わりません（1 nm = 10 Å）。</value>
   </data>
 </root>

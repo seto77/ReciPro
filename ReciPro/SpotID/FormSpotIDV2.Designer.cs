@@ -813,7 +813,7 @@ namespace ReciPro
             // waveLengthControl1
             // 
             resources.ApplyResources(waveLengthControl1, "waveLengthControl1");
-            waveLengthControl1.Direction = System.Windows.Forms.FlowDirection.LeftToRight;
+            waveLengthControl1.DirectionWhole = System.Windows.Forms.FlowDirection.LeftToRight;
             waveLengthControl1.Energy = 494.36741727D;
             waveLengthControl1.Monochrome = true;
             waveLengthControl1.Name = "waveLengthControl1";

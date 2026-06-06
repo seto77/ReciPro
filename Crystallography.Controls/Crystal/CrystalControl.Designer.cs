@@ -53,6 +53,11 @@
             numericBoxMolarVolume = new NumericBox();
             numericBoxMolarMass = new NumericBox();
             numericBoxDensity = new NumericBox();
+            numericBoxMeanZnumber = new NumericBox();
+            numericBoxMeanZmass = new NumericBox();
+            numericBoxMeanAtomicWeight = new NumericBox();
+            numericBoxAtomicNumberDensity = new NumericBox();
+            numericBoxElectronDensity = new NumericBox();
             flowLayoutPanelSymmetryActions = new System.Windows.Forms.FlowLayoutPanel();
             buttonConvertToSubgroup = new System.Windows.Forms.Button();
             buttonChangeAxesOriginSetting = new System.Windows.Forms.Button();
@@ -150,10 +155,6 @@
             textBoxName = new System.Windows.Forms.TextBox();
             label22 = new System.Windows.Forms.Label();
             toolTip = new System.Windows.Forms.ToolTip(components);
-            toolTip.IsBalloon = true; // 260531Cl 追加: バルーン表示に統一
-            toolTip.AutoPopDelay = 10000; // 260601Cl 追加: 長文表示時間を延長(共通標準値)
-            toolTip.InitialDelay = 500; // 260601Cl 追加
-            toolTip.ReshowDelay = 100; // 260601Cl 追加
             buttonScatteringFactor = new System.Windows.Forms.Button();
             buttonSymmetryInfo = new System.Windows.Forms.Button();
             flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
@@ -200,24 +201,18 @@
             // 
             // splitContainer1.Panel1
             // 
-            resources.ApplyResources(splitContainer1.Panel1, "splitContainer1.Panel1");
             splitContainer1.Panel1.Controls.Add(groupBoxAuthors);
-            toolTip.SetToolTip(splitContainer1.Panel1, resources.GetString("splitContainer1.Panel1.ToolTip"));
             // 
             // splitContainer1.Panel2
             // 
-            resources.ApplyResources(splitContainer1.Panel2, "splitContainer1.Panel2");
             splitContainer1.Panel2.Controls.Add(groupBoxTitle);
-            toolTip.SetToolTip(splitContainer1.Panel2, resources.GetString("splitContainer1.Panel2.ToolTip"));
-            toolTip.SetToolTip(splitContainer1, resources.GetString("splitContainer1.ToolTip"));
             // 
             // groupBoxAuthors
             // 
-            resources.ApplyResources(groupBoxAuthors, "groupBoxAuthors");
             groupBoxAuthors.Controls.Add(textBoxAuthor);
+            resources.ApplyResources(groupBoxAuthors, "groupBoxAuthors");
             groupBoxAuthors.Name = "groupBoxAuthors";
             groupBoxAuthors.TabStop = false;
-            toolTip.SetToolTip(groupBoxAuthors, resources.GetString("groupBoxAuthors.ToolTip"));
             // 
             // textBoxAuthor
             // 
@@ -228,11 +223,10 @@
             // 
             // groupBoxTitle
             // 
-            resources.ApplyResources(groupBoxTitle, "groupBoxTitle");
             groupBoxTitle.Controls.Add(textBoxTitle);
+            resources.ApplyResources(groupBoxTitle, "groupBoxTitle");
             groupBoxTitle.Name = "groupBoxTitle";
             groupBoxTitle.TabStop = false;
-            toolTip.SetToolTip(groupBoxTitle, resources.GetString("groupBoxTitle.ToolTip"));
             // 
             // textBoxTitle
             // 
@@ -243,7 +237,6 @@
             // 
             // tabControl
             // 
-            resources.ApplyResources(tabControl, "tabControl");
             tabControl.AllowDrop = true;
             tabControl.Controls.Add(tabPageBasicInfo);
             tabControl.Controls.Add(tabPageAtom);
@@ -255,30 +248,29 @@
             tabControl.Controls.Add(tabPagePolycrystalline);
             tabControl.Controls.Add(tabPageBounds);
             tabControl.Controls.Add(tabPageLatticePlane);
+            resources.ApplyResources(tabControl, "tabControl");
             tabControl.HotTrack = true;
             tabControl.Name = "tabControl";
             tabControl.SelectedIndex = 0;
-            toolTip.SetToolTip(tabControl, resources.GetString("tabControl.ToolTip"));
             tabControl.DragDrop += FormCrystal_DragDrop;
             tabControl.DragEnter += FormCrystal_DragEnter;
             // 
             // tabPageBasicInfo
             // 
-            resources.ApplyResources(tabPageBasicInfo, "tabPageBasicInfo");
             tabPageBasicInfo.BackColor = System.Drawing.SystemColors.Control;
             captureExtender.SetCapture(tabPageBasicInfo, true);
             tabPageBasicInfo.Controls.Add(panelSymmetryInfo);
+            resources.ApplyResources(tabPageBasicInfo, "tabPageBasicInfo");
             tabPageBasicInfo.Name = "tabPageBasicInfo";
             toolTip.SetToolTip(tabPageBasicInfo, resources.GetString("tabPageBasicInfo.ToolTip"));
             // 
             // panelSymmetryInfo
             // 
-            resources.ApplyResources(panelSymmetryInfo, "panelSymmetryInfo");
             panelSymmetryInfo.Controls.Add(flowLayoutPanelCellProperties);
             panelSymmetryInfo.Controls.Add(flowLayoutPanelSymmetryActions);
             panelSymmetryInfo.Controls.Add(symmetryControl);
+            resources.ApplyResources(panelSymmetryInfo, "panelSymmetryInfo");
             panelSymmetryInfo.Name = "panelSymmetryInfo";
-            toolTip.SetToolTip(panelSymmetryInfo, resources.GetString("panelSymmetryInfo.ToolTip"));
             // 
             // flowLayoutPanelCellProperties
             // 
@@ -289,8 +281,12 @@
             flowLayoutPanelCellProperties.Controls.Add(numericBoxMolarVolume);
             flowLayoutPanelCellProperties.Controls.Add(numericBoxMolarMass);
             flowLayoutPanelCellProperties.Controls.Add(numericBoxDensity);
+            flowLayoutPanelCellProperties.Controls.Add(numericBoxMeanZnumber);
+            flowLayoutPanelCellProperties.Controls.Add(numericBoxMeanZmass);
+            flowLayoutPanelCellProperties.Controls.Add(numericBoxMeanAtomicWeight);
+            flowLayoutPanelCellProperties.Controls.Add(numericBoxAtomicNumberDensity);
+            flowLayoutPanelCellProperties.Controls.Add(numericBoxElectronDensity);
             flowLayoutPanelCellProperties.Name = "flowLayoutPanelCellProperties";
-            toolTip.SetToolTip(flowLayoutPanelCellProperties, resources.GetString("flowLayoutPanelCellProperties.ToolTip"));
             // 
             // numericBoxVolumeAng
             // 
@@ -305,9 +301,9 @@
             numericBoxVolumeAng.SkipEventDuringInput = false;
             numericBoxVolumeAng.SmartIncrement = true;
             numericBoxVolumeAng.TabStop = false;
+            toolTip.SetToolTip(numericBoxVolumeAng, resources.GetString("numericBoxVolumeAng.ToolTip"));
             numericBoxVolumeAng.ValueBackColor = System.Drawing.SystemColors.Control;
             numericBoxVolumeAng.ValueFontSize = 9F;
-            toolTip.SetToolTip(numericBoxVolumeAng, resources.GetString("numericBoxVolumeAng.ToolTip"));
             // 
             // numericBoxCellVolumeNm
             // 
@@ -322,9 +318,9 @@
             numericBoxCellVolumeNm.SkipEventDuringInput = false;
             numericBoxCellVolumeNm.SmartIncrement = true;
             numericBoxCellVolumeNm.TabStop = false;
+            toolTip.SetToolTip(numericBoxCellVolumeNm, resources.GetString("numericBoxCellVolumeNm.ToolTip"));
             numericBoxCellVolumeNm.ValueBackColor = System.Drawing.SystemColors.Control;
             numericBoxCellVolumeNm.ValueFontSize = 9F;
-            toolTip.SetToolTip(numericBoxCellVolumeNm, resources.GetString("numericBoxCellVolumeNm.ToolTip"));
             // 
             // numericBoxCellMass
             // 
@@ -339,9 +335,9 @@
             numericBoxCellMass.SkipEventDuringInput = false;
             numericBoxCellMass.SmartIncrement = true;
             numericBoxCellMass.TabStop = false;
+            toolTip.SetToolTip(numericBoxCellMass, resources.GetString("numericBoxCellMass.ToolTip"));
             numericBoxCellMass.ValueBackColor = System.Drawing.SystemColors.Control;
             numericBoxCellMass.ValueFontSize = 9F;
-            toolTip.SetToolTip(numericBoxCellMass, resources.GetString("numericBoxCellMass.ToolTip"));
             // 
             // numericBoxMolarVolume
             // 
@@ -356,9 +352,9 @@
             numericBoxMolarVolume.SkipEventDuringInput = false;
             numericBoxMolarVolume.SmartIncrement = true;
             numericBoxMolarVolume.TabStop = false;
+            toolTip.SetToolTip(numericBoxMolarVolume, resources.GetString("numericBoxMolarVolume.ToolTip"));
             numericBoxMolarVolume.ValueBackColor = System.Drawing.SystemColors.Control;
             numericBoxMolarVolume.ValueFontSize = 9F;
-            toolTip.SetToolTip(numericBoxMolarVolume, resources.GetString("numericBoxMolarVolume.ToolTip"));
             // 
             // numericBoxMolarMass
             // 
@@ -373,9 +369,9 @@
             numericBoxMolarMass.SkipEventDuringInput = false;
             numericBoxMolarMass.SmartIncrement = true;
             numericBoxMolarMass.TabStop = false;
+            toolTip.SetToolTip(numericBoxMolarMass, resources.GetString("numericBoxMolarMass.ToolTip"));
             numericBoxMolarMass.ValueBackColor = System.Drawing.SystemColors.Control;
             numericBoxMolarMass.ValueFontSize = 9F;
-            toolTip.SetToolTip(numericBoxMolarMass, resources.GetString("numericBoxMolarMass.ToolTip"));
             // 
             // numericBoxDensity
             // 
@@ -387,10 +383,97 @@
             numericBoxDensity.SkipEventDuringInput = false;
             numericBoxDensity.SmartIncrement = true;
             numericBoxDensity.TabStop = false;
-            numericBoxDensity.ValueBackColor = System.Drawing.SystemColors.Control;
-            numericBoxDensity.ValueFontSize = 9F;
             numericBoxDensity.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxDensity, resources.GetString("numericBoxDensity.ToolTip"));
+            numericBoxDensity.ValueBackColor = System.Drawing.SystemColors.Control;
+            numericBoxDensity.ValueFontSize = 9F;
+            // 
+            // numericBoxMeanZnumber
+            // 
+            resources.ApplyResources(numericBoxMeanZnumber, "numericBoxMeanZnumber");
+            numericBoxMeanZnumber.BackColor = System.Drawing.SystemColors.Control;
+            numericBoxMeanZnumber.DecimalPlaces = 3;
+            numericBoxMeanZnumber.FooterBackColor = System.Drawing.SystemColors.Control;
+            numericBoxMeanZnumber.HeaderBackColor = System.Drawing.SystemColors.Control;
+            numericBoxMeanZnumber.Name = "numericBoxMeanZnumber";
+            numericBoxMeanZnumber.ReadOnly = true;
+            numericBoxMeanZnumber.RestrictLimitValue = false;
+            numericBoxMeanZnumber.SkipEventDuringInput = false;
+            numericBoxMeanZnumber.SmartIncrement = true;
+            numericBoxMeanZnumber.TabStop = false;
+            toolTip.SetToolTip(numericBoxMeanZnumber, resources.GetString("numericBoxMeanZnumber.ToolTip"));
+            numericBoxMeanZnumber.ValueBackColor = System.Drawing.SystemColors.Control;
+            numericBoxMeanZnumber.ValueFontSize = 9F;
+            // 
+            // numericBoxMeanZmass
+            // 
+            resources.ApplyResources(numericBoxMeanZmass, "numericBoxMeanZmass");
+            numericBoxMeanZmass.BackColor = System.Drawing.SystemColors.Control;
+            numericBoxMeanZmass.DecimalPlaces = 3;
+            numericBoxMeanZmass.FooterBackColor = System.Drawing.SystemColors.Control;
+            numericBoxMeanZmass.HeaderBackColor = System.Drawing.SystemColors.Control;
+            numericBoxMeanZmass.Name = "numericBoxMeanZmass";
+            numericBoxMeanZmass.ReadOnly = true;
+            numericBoxMeanZmass.RestrictLimitValue = false;
+            numericBoxMeanZmass.SkipEventDuringInput = false;
+            numericBoxMeanZmass.SmartIncrement = true;
+            numericBoxMeanZmass.TabStop = false;
+            toolTip.SetToolTip(numericBoxMeanZmass, resources.GetString("numericBoxMeanZmass.ToolTip"));
+            numericBoxMeanZmass.ValueBackColor = System.Drawing.SystemColors.Control;
+            numericBoxMeanZmass.ValueFontSize = 9F;
+            //
+            // numericBoxMeanAtomicWeight
+            //
+            resources.ApplyResources(numericBoxMeanAtomicWeight, "numericBoxMeanAtomicWeight");
+            numericBoxMeanAtomicWeight.BackColor = System.Drawing.SystemColors.Control;
+            numericBoxMeanAtomicWeight.DecimalPlaces = 4;
+            numericBoxMeanAtomicWeight.FooterBackColor = System.Drawing.SystemColors.Control;
+            numericBoxMeanAtomicWeight.HeaderBackColor = System.Drawing.SystemColors.Control;
+            numericBoxMeanAtomicWeight.Name = "numericBoxMeanAtomicWeight";
+            numericBoxMeanAtomicWeight.ReadOnly = true;
+            numericBoxMeanAtomicWeight.RestrictLimitValue = false;
+            numericBoxMeanAtomicWeight.SkipEventDuringInput = false;
+            numericBoxMeanAtomicWeight.SmartIncrement = true;
+            numericBoxMeanAtomicWeight.TabStop = false;
+            toolTip.SetToolTip(numericBoxMeanAtomicWeight, resources.GetString("numericBoxMeanAtomicWeight.ToolTip"));
+            numericBoxMeanAtomicWeight.ValueBackColor = System.Drawing.SystemColors.Control;
+            numericBoxMeanAtomicWeight.ValueFontSize = 9F;
+            //
+            // numericBoxAtomicNumberDensity
+            // 
+            resources.ApplyResources(numericBoxAtomicNumberDensity, "numericBoxAtomicNumberDensity");
+            numericBoxAtomicNumberDensity.BackColor = System.Drawing.SystemColors.Control;
+            numericBoxAtomicNumberDensity.DecimalPlaces = 4;
+            numericBoxAtomicNumberDensity.FooterBackColor = System.Drawing.SystemColors.Control;
+            numericBoxAtomicNumberDensity.HeaderBackColor = System.Drawing.SystemColors.Control;
+            numericBoxAtomicNumberDensity.Name = "numericBoxAtomicNumberDensity";
+            numericBoxAtomicNumberDensity.ReadOnly = true;
+            numericBoxAtomicNumberDensity.RestrictLimitValue = false;
+            numericBoxAtomicNumberDensity.SkipEventDuringInput = false;
+            numericBoxAtomicNumberDensity.SmartIncrement = true;
+            numericBoxAtomicNumberDensity.TabStop = false;
+            numericBoxAtomicNumberDensity.ThousandsSeparator = true;
+            toolTip.SetToolTip(numericBoxAtomicNumberDensity, resources.GetString("numericBoxAtomicNumberDensity.ToolTip"));
+            numericBoxAtomicNumberDensity.ValueBackColor = System.Drawing.SystemColors.Control;
+            numericBoxAtomicNumberDensity.ValueFontSize = 9F;
+            // 
+            // numericBoxElectronDensity
+            // 
+            resources.ApplyResources(numericBoxElectronDensity, "numericBoxElectronDensity");
+            numericBoxElectronDensity.BackColor = System.Drawing.SystemColors.Control;
+            numericBoxElectronDensity.DecimalPlaces = 3;
+            numericBoxElectronDensity.FooterBackColor = System.Drawing.SystemColors.Control;
+            numericBoxElectronDensity.HeaderBackColor = System.Drawing.SystemColors.Control;
+            numericBoxElectronDensity.Name = "numericBoxElectronDensity";
+            numericBoxElectronDensity.ReadOnly = true;
+            numericBoxElectronDensity.RestrictLimitValue = false;
+            numericBoxElectronDensity.SkipEventDuringInput = false;
+            numericBoxElectronDensity.SmartIncrement = true;
+            numericBoxElectronDensity.TabStop = false;
+            numericBoxElectronDensity.ThousandsSeparator = true;
+            toolTip.SetToolTip(numericBoxElectronDensity, resources.GetString("numericBoxElectronDensity.ToolTip"));
+            numericBoxElectronDensity.ValueBackColor = System.Drawing.SystemColors.Control;
+            numericBoxElectronDensity.ValueFontSize = 9F;
             // 
             // flowLayoutPanelSymmetryActions
             // 
@@ -398,7 +481,6 @@
             flowLayoutPanelSymmetryActions.Controls.Add(buttonConvertToSubgroup);
             flowLayoutPanelSymmetryActions.Controls.Add(buttonChangeAxesOriginSetting);
             flowLayoutPanelSymmetryActions.Name = "flowLayoutPanelSymmetryActions";
-            toolTip.SetToolTip(flowLayoutPanelSymmetryActions, resources.GetString("flowLayoutPanelSymmetryActions.ToolTip"));
             // 
             // buttonConvertToSubgroup
             // 
@@ -418,32 +500,30 @@
             // symmetryControl
             // 
             symmetryControl.A = 0D;
-            resources.ApplyResources(symmetryControl, "symmetryControl");
             symmetryControl.Alpha = 0D;
             symmetryControl.B = 0D;
             symmetryControl.Beta = 0D;
             symmetryControl.C = 0D;
+            resources.ApplyResources(symmetryControl, "symmetryControl");
             symmetryControl.Gamma = 0D;
             symmetryControl.LengthUnit = LengthUnitEnum.Angstrom;
             symmetryControl.Name = "symmetryControl";
             symmetryControl.ShowError = false;
             symmetryControl.SymmetrySeriesNumber = 0;
-            toolTip.SetToolTip(symmetryControl, resources.GetString("symmetryControl.ToolTip"));
             symmetryControl.ItemChanged += symmetryControl_ItemChanged;
             // 
             // tabPageAtom
             // 
-            resources.ApplyResources(tabPageAtom, "tabPageAtom");
             tabPageAtom.BackColor = System.Drawing.SystemColors.Control;
             captureExtender.SetCapture(tabPageAtom, true);
             tabPageAtom.Controls.Add(atomControl);
             tabPageAtom.Controls.Add(panelAtom);
+            resources.ApplyResources(tabPageAtom, "tabPageAtom");
             tabPageAtom.Name = "tabPageAtom";
             toolTip.SetToolTip(tabPageAtom, resources.GetString("tabPageAtom.ToolTip"));
             // 
             // atomControl
             // 
-            resources.ApplyResources(atomControl, "atomControl");
             atomControl.Alpha = 0F;
             atomControl.Ambient = 0F;
             atomControl.Aniso11 = 0D;
@@ -464,6 +544,7 @@
             atomControl.AtomNo = 0;
             atomControl.AtomSubNoElectron = -1;
             atomControl.AtomSubNoXray = -1;
+            resources.ApplyResources(atomControl, "atomControl");
             atomControl.DebyeWallerError = false;
             atomControl.DebyeWallerTabVisible = true;
             atomControl.Diffusion = 0F;
@@ -482,7 +563,6 @@
             atomControl.Shininess = 0F;
             atomControl.ShowLabel = false;
             atomControl.Specular = 0F;
-            toolTip.SetToolTip(atomControl, resources.GetString("atomControl.ToolTip"));
             atomControl.UseIsotropy = false;
             atomControl.UseTypeU = false;
             atomControl.X = 0D;
@@ -498,14 +578,12 @@
             resources.ApplyResources(panelAtom, "panelAtom");
             panelAtom.Controls.Add(panel3);
             panelAtom.Name = "panelAtom";
-            toolTip.SetToolTip(panelAtom, resources.GetString("panelAtom.ToolTip"));
             // 
             // panel3
             // 
             resources.ApplyResources(panel3, "panel3");
             panel3.ContextMenuStrip = contextMenuStrip2;
             panel3.Name = "panel3";
-            toolTip.SetToolTip(panel3, resources.GetString("panel3.ToolTip"));
             // 
             // contextMenuStrip2
             // 
@@ -513,47 +591,42 @@
             contextMenuStrip2.ImageScalingSize = new System.Drawing.Size(20, 20);
             contextMenuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { resetToolStripMenuItem });
             contextMenuStrip2.Name = "contextMenuStrip2";
-            toolTip.SetToolTip(contextMenuStrip2, resources.GetString("contextMenuStrip2.ToolTip"));
             // 
             // resetToolStripMenuItem
             // 
-            resources.ApplyResources(resetToolStripMenuItem, "resetToolStripMenuItem");
             resetToolStripMenuItem.Name = "resetToolStripMenuItem";
+            resources.ApplyResources(resetToolStripMenuItem, "resetToolStripMenuItem");
             resetToolStripMenuItem.Click += resetToolStripMenuItem_Click;
             // 
             // tabPageBondsPolyhedra
             // 
-            resources.ApplyResources(tabPageBondsPolyhedra, "tabPageBondsPolyhedra");
             tabPageBondsPolyhedra.BackColor = System.Drawing.SystemColors.Control;
             captureExtender.SetCapture(tabPageBondsPolyhedra, true);
             tabPageBondsPolyhedra.Controls.Add(bondControl);
+            resources.ApplyResources(tabPageBondsPolyhedra, "tabPageBondsPolyhedra");
             tabPageBondsPolyhedra.Name = "tabPageBondsPolyhedra";
-            toolTip.SetToolTip(tabPageBondsPolyhedra, resources.GetString("tabPageBondsPolyhedra.ToolTip"));
             // 
             // bondControl
             // 
             resources.ApplyResources(bondControl, "bondControl");
             bondControl.Name = "bondControl";
-            toolTip.SetToolTip(bondControl, resources.GetString("bondControl.ToolTip"));
             // 
             // tabPageReference
             // 
-            resources.ApplyResources(tabPageReference, "tabPageReference");
             tabPageReference.BackColor = System.Drawing.SystemColors.Control;
             captureExtender.SetCapture(tabPageReference, true);
             tabPageReference.Controls.Add(splitContainer1);
             tabPageReference.Controls.Add(groupBoxJournal);
             tabPageReference.Controls.Add(groupBoxNote);
+            resources.ApplyResources(tabPageReference, "tabPageReference");
             tabPageReference.Name = "tabPageReference";
-            toolTip.SetToolTip(tabPageReference, resources.GetString("tabPageReference.ToolTip"));
             // 
             // groupBoxJournal
             // 
-            resources.ApplyResources(groupBoxJournal, "groupBoxJournal");
             groupBoxJournal.Controls.Add(textBoxJournal);
+            resources.ApplyResources(groupBoxJournal, "groupBoxJournal");
             groupBoxJournal.Name = "groupBoxJournal";
             groupBoxJournal.TabStop = false;
-            toolTip.SetToolTip(groupBoxJournal, resources.GetString("groupBoxJournal.ToolTip"));
             // 
             // textBoxJournal
             // 
@@ -564,11 +637,10 @@
             // 
             // groupBoxNote
             // 
-            resources.ApplyResources(groupBoxNote, "groupBoxNote");
             groupBoxNote.Controls.Add(textBoxMemo);
+            resources.ApplyResources(groupBoxNote, "groupBoxNote");
             groupBoxNote.Name = "groupBoxNote";
             groupBoxNote.TabStop = false;
-            toolTip.SetToolTip(groupBoxNote, resources.GetString("groupBoxNote.ToolTip"));
             // 
             // textBoxMemo
             // 
@@ -578,27 +650,24 @@
             // 
             // tabPageEOS
             // 
-            resources.ApplyResources(tabPageEOS, "tabPageEOS");
             tabPageEOS.BackColor = System.Drawing.SystemColors.Control;
             captureExtender.SetCapture(tabPageEOS, true);
             tabPageEOS.Controls.Add(eosControl);
+            resources.ApplyResources(tabPageEOS, "tabPageEOS");
             tabPageEOS.Name = "tabPageEOS";
-            toolTip.SetToolTip(tabPageEOS, resources.GetString("tabPageEOS.ToolTip"));
             // 
             // eosControl
             // 
             resources.ApplyResources(eosControl, "eosControl");
             eosControl.Name = "eosControl";
-            toolTip.SetToolTip(eosControl, resources.GetString("eosControl.ToolTip"));
             // 
             // tabPageElasticity
             // 
-            resources.ApplyResources(tabPageElasticity, "tabPageElasticity");
             tabPageElasticity.BackColor = System.Drawing.SystemColors.Control;
             captureExtender.SetCapture(tabPageElasticity, true);
             tabPageElasticity.Controls.Add(elasticityControl1);
+            resources.ApplyResources(tabPageElasticity, "tabPageElasticity");
             tabPageElasticity.Name = "tabPageElasticity";
-            toolTip.SetToolTip(tabPageElasticity, resources.GetString("tabPageElasticity.ToolTip"));
             // 
             // elasticityControl1
             // 
@@ -606,12 +675,10 @@
             elasticityControl1.Mode = Elasticity.Mode.Stiffness;
             elasticityControl1.Name = "elasticityControl1";
             elasticityControl1.SymmetrySeriesNumber = 1;
-            toolTip.SetToolTip(elasticityControl1, resources.GetString("elasticityControl1.ToolTip"));
             elasticityControl1.ValueChanged += elasticityControl1_ValueChanged;
             // 
             // tabPageStrainStress
             // 
-            resources.ApplyResources(tabPageStrainStress, "tabPageStrainStress");
             tabPageStrainStress.BackColor = System.Drawing.SystemColors.Control;
             captureExtender.SetCapture(tabPageStrainStress, true);
             tabPageStrainStress.Controls.Add(numericBoxStress33);
@@ -644,8 +711,8 @@
             tabPageStrainStress.Controls.Add(label117);
             tabPageStrainStress.Controls.Add(label109);
             tabPageStrainStress.Controls.Add(label102);
+            resources.ApplyResources(tabPageStrainStress, "tabPageStrainStress");
             tabPageStrainStress.Name = "tabPageStrainStress";
-            toolTip.SetToolTip(tabPageStrainStress, resources.GetString("tabPageStrainStress.ToolTip"));
             // 
             // numericBoxStress33
             // 
@@ -796,91 +863,78 @@
             resources.ApplyResources(labelLaTex6, "labelLaTex6");
             labelLaTex6.Name = "labelLaTex6";
             labelLaTex6.Thickness = 0.5D;
-            toolTip.SetToolTip(labelLaTex6, resources.GetString("labelLaTex6.ToolTip"));
             // 
             // labelLaTex5
             // 
             resources.ApplyResources(labelLaTex5, "labelLaTex5");
             labelLaTex5.Name = "labelLaTex5";
             labelLaTex5.Thickness = 0.5D;
-            toolTip.SetToolTip(labelLaTex5, resources.GetString("labelLaTex5.ToolTip"));
             // 
             // labelLaTex3
             // 
             resources.ApplyResources(labelLaTex3, "labelLaTex3");
             labelLaTex3.Name = "labelLaTex3";
             labelLaTex3.Thickness = 0.5D;
-            toolTip.SetToolTip(labelLaTex3, resources.GetString("labelLaTex3.ToolTip"));
             // 
             // labelLaTex4
             // 
             resources.ApplyResources(labelLaTex4, "labelLaTex4");
             labelLaTex4.Name = "labelLaTex4";
             labelLaTex4.Thickness = 0.5D;
-            toolTip.SetToolTip(labelLaTex4, resources.GetString("labelLaTex4.ToolTip"));
             // 
             // labelLaTex2
             // 
             resources.ApplyResources(labelLaTex2, "labelLaTex2");
             labelLaTex2.Name = "labelLaTex2";
             labelLaTex2.Thickness = 0.5D;
-            toolTip.SetToolTip(labelLaTex2, resources.GetString("labelLaTex2.ToolTip"));
             // 
             // labelLaTex13
             // 
             resources.ApplyResources(labelLaTex13, "labelLaTex13");
             labelLaTex13.Name = "labelLaTex13";
             labelLaTex13.Thickness = 0.5D;
-            toolTip.SetToolTip(labelLaTex13, resources.GetString("labelLaTex13.ToolTip"));
             // 
             // labelLaTex12
             // 
             resources.ApplyResources(labelLaTex12, "labelLaTex12");
             labelLaTex12.Name = "labelLaTex12";
             labelLaTex12.Thickness = 0.5D;
-            toolTip.SetToolTip(labelLaTex12, resources.GetString("labelLaTex12.ToolTip"));
             // 
             // labelLaTex11
             // 
             resources.ApplyResources(labelLaTex11, "labelLaTex11");
             labelLaTex11.Name = "labelLaTex11";
             labelLaTex11.Thickness = 0.5D;
-            toolTip.SetToolTip(labelLaTex11, resources.GetString("labelLaTex11.ToolTip"));
             // 
             // labelLaTex10
             // 
             resources.ApplyResources(labelLaTex10, "labelLaTex10");
             labelLaTex10.Name = "labelLaTex10";
             labelLaTex10.Thickness = 0.5D;
-            toolTip.SetToolTip(labelLaTex10, resources.GetString("labelLaTex10.ToolTip"));
             // 
             // labelLaTex9
             // 
             resources.ApplyResources(labelLaTex9, "labelLaTex9");
             labelLaTex9.Name = "labelLaTex9";
             labelLaTex9.Thickness = 0.5D;
-            toolTip.SetToolTip(labelLaTex9, resources.GetString("labelLaTex9.ToolTip"));
             // 
             // labelLaTex8
             // 
             resources.ApplyResources(labelLaTex8, "labelLaTex8");
             labelLaTex8.Name = "labelLaTex8";
             labelLaTex8.Thickness = 0.5D;
-            toolTip.SetToolTip(labelLaTex8, resources.GetString("labelLaTex8.ToolTip"));
             // 
             // labelLaTex7
             // 
             resources.ApplyResources(labelLaTex7, "labelLaTex7");
             labelLaTex7.Name = "labelLaTex7";
             labelLaTex7.Thickness = 0.5D;
-            toolTip.SetToolTip(labelLaTex7, resources.GetString("labelLaTex7.ToolTip"));
             // 
             // labelLaTex1
             // 
             resources.ApplyResources(labelLaTex1, "labelLaTex1");
             labelLaTex1.Name = "labelLaTex1";
             labelLaTex1.Thickness = 0.5D;
-            toolTip.SetToolTip(labelLaTex1, resources.GetString("labelLaTex1.ToolTip"));
             // 
             // buttonStressSet
             // 
@@ -924,72 +978,68 @@
             // 
             // tabPagePolycrystalline
             // 
-            resources.ApplyResources(tabPagePolycrystalline, "tabPagePolycrystalline");
             tabPagePolycrystalline.BackColor = System.Drawing.SystemColors.Control;
             captureExtender.SetCapture(tabPagePolycrystalline, true);
             tabPagePolycrystalline.ContextMenuStrip = contextMenuStripPoleFigure;
             tabPagePolycrystalline.Controls.Add(poleFigureControl);
             tabPagePolycrystalline.Controls.Add(flowLayoutPanelRandomOrientationActions);
             tabPagePolycrystalline.Controls.Add(flowLayoutPanelRandomOrientationSettings);
+            resources.ApplyResources(tabPagePolycrystalline, "tabPagePolycrystalline");
             tabPagePolycrystalline.Name = "tabPagePolycrystalline";
-            toolTip.SetToolTip(tabPagePolycrystalline, resources.GetString("tabPagePolycrystalline.ToolTip"));
             // 
             // contextMenuStripPoleFigure
             // 
-            resources.ApplyResources(contextMenuStripPoleFigure, "contextMenuStripPoleFigure");
             contextMenuStripPoleFigure.ImageScalingSize = new System.Drawing.Size(20, 20);
             contextMenuStripPoleFigure.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { loadToolStripMenuItem, saveToolStripMenuItem, exportToolStripMenuItem });
             contextMenuStripPoleFigure.Name = "contextMenuStripPoleFigure";
-            toolTip.SetToolTip(contextMenuStripPoleFigure, resources.GetString("contextMenuStripPoleFigure.ToolTip"));
+            resources.ApplyResources(contextMenuStripPoleFigure, "contextMenuStripPoleFigure");
             // 
             // loadToolStripMenuItem
             // 
-            resources.ApplyResources(loadToolStripMenuItem, "loadToolStripMenuItem");
             loadToolStripMenuItem.Name = "loadToolStripMenuItem";
+            resources.ApplyResources(loadToolStripMenuItem, "loadToolStripMenuItem");
             loadToolStripMenuItem.Click += loadToolStripMenuItem_Click;
             // 
             // saveToolStripMenuItem
             // 
-            resources.ApplyResources(saveToolStripMenuItem, "saveToolStripMenuItem");
             saveToolStripMenuItem.Name = "saveToolStripMenuItem";
+            resources.ApplyResources(saveToolStripMenuItem, "saveToolStripMenuItem");
             saveToolStripMenuItem.Click += saveToolStripMenuItem_Click;
             // 
             // exportToolStripMenuItem
             // 
-            resources.ApplyResources(exportToolStripMenuItem, "exportToolStripMenuItem");
             exportToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { asCTFFilecomatibleToCHANNEL5FileToolStripMenuItem, asTXTFileAllEulerAngleAndDensityToolStripMenuItem, asTXTFileallEulerAngleAndDensitySortedToolStripMenuItem });
             exportToolStripMenuItem.Name = "exportToolStripMenuItem";
+            resources.ApplyResources(exportToolStripMenuItem, "exportToolStripMenuItem");
             // 
             // asCTFFilecomatibleToCHANNEL5FileToolStripMenuItem
             // 
-            resources.ApplyResources(asCTFFilecomatibleToCHANNEL5FileToolStripMenuItem, "asCTFFilecomatibleToCHANNEL5FileToolStripMenuItem");
             asCTFFilecomatibleToCHANNEL5FileToolStripMenuItem.Name = "asCTFFilecomatibleToCHANNEL5FileToolStripMenuItem";
+            resources.ApplyResources(asCTFFilecomatibleToCHANNEL5FileToolStripMenuItem, "asCTFFilecomatibleToCHANNEL5FileToolStripMenuItem");
             asCTFFilecomatibleToCHANNEL5FileToolStripMenuItem.Click += asCTFFilecomatibleToCHANNEL5FileToolStripMenuItem_Click;
             // 
             // asTXTFileAllEulerAngleAndDensityToolStripMenuItem
             // 
-            resources.ApplyResources(asTXTFileAllEulerAngleAndDensityToolStripMenuItem, "asTXTFileAllEulerAngleAndDensityToolStripMenuItem");
             asTXTFileAllEulerAngleAndDensityToolStripMenuItem.Name = "asTXTFileAllEulerAngleAndDensityToolStripMenuItem";
+            resources.ApplyResources(asTXTFileAllEulerAngleAndDensityToolStripMenuItem, "asTXTFileAllEulerAngleAndDensityToolStripMenuItem");
             asTXTFileAllEulerAngleAndDensityToolStripMenuItem.Click += asTXTFileAllEulerAngleAndDensityToolStripMenuItem_Click;
             // 
             // asTXTFileallEulerAngleAndDensitySortedToolStripMenuItem
             // 
-            resources.ApplyResources(asTXTFileallEulerAngleAndDensitySortedToolStripMenuItem, "asTXTFileallEulerAngleAndDensitySortedToolStripMenuItem");
             asTXTFileallEulerAngleAndDensitySortedToolStripMenuItem.Name = "asTXTFileallEulerAngleAndDensitySortedToolStripMenuItem";
+            resources.ApplyResources(asTXTFileallEulerAngleAndDensitySortedToolStripMenuItem, "asTXTFileallEulerAngleAndDensitySortedToolStripMenuItem");
             asTXTFileallEulerAngleAndDensitySortedToolStripMenuItem.Click += asTXTFileAllEulerAngleAndDensityToolStripMenuItem_Click;
             // 
             // poleFigureControl
             // 
             resources.ApplyResources(poleFigureControl, "poleFigureControl");
             poleFigureControl.Name = "poleFigureControl";
-            toolTip.SetToolTip(poleFigureControl, resources.GetString("poleFigureControl.ToolTip"));
             // 
             // flowLayoutPanelRandomOrientationActions
             // 
             resources.ApplyResources(flowLayoutPanelRandomOrientationActions, "flowLayoutPanelRandomOrientationActions");
             flowLayoutPanelRandomOrientationActions.Controls.Add(buttonGenerateRandomOrientations);
             flowLayoutPanelRandomOrientationActions.Name = "flowLayoutPanelRandomOrientationActions";
-            toolTip.SetToolTip(flowLayoutPanelRandomOrientationActions, resources.GetString("flowLayoutPanelRandomOrientationActions.ToolTip"));
             // 
             // buttonGenerateRandomOrientations
             // 
@@ -1010,7 +1060,6 @@
             flowLayoutPanelRandomOrientationSettings.Controls.Add(numericUpDownCrystallineSize);
             flowLayoutPanelRandomOrientationSettings.Controls.Add(label99);
             flowLayoutPanelRandomOrientationSettings.Name = "flowLayoutPanelRandomOrientationSettings";
-            toolTip.SetToolTip(flowLayoutPanelRandomOrientationSettings, resources.GetString("flowLayoutPanelRandomOrientationSettings.ToolTip"));
             // 
             // label5
             // 
@@ -1020,8 +1069,8 @@
             // 
             // numericUpDownAngleResolution
             // 
-            resources.ApplyResources(numericUpDownAngleResolution, "numericUpDownAngleResolution");
             numericUpDownAngleResolution.DecimalPlaces = 1;
+            resources.ApplyResources(numericUpDownAngleResolution, "numericUpDownAngleResolution");
             numericUpDownAngleResolution.Increment = new decimal(new int[] { 5, 0, 0, 65536 });
             numericUpDownAngleResolution.Maximum = new decimal(new int[] { 45, 0, 0, 0 });
             numericUpDownAngleResolution.Minimum = new decimal(new int[] { 5, 0, 0, 65536 });
@@ -1071,36 +1120,32 @@
             // 
             // tabPageBounds
             // 
-            resources.ApplyResources(tabPageBounds, "tabPageBounds");
             captureExtender.SetCapture(tabPageBounds, true);
             tabPageBounds.Controls.Add(boundControl);
+            resources.ApplyResources(tabPageBounds, "tabPageBounds");
             tabPageBounds.Name = "tabPageBounds";
-            toolTip.SetToolTip(tabPageBounds, resources.GetString("tabPageBounds.ToolTip"));
             // 
             // boundControl
             // 
             resources.ApplyResources(boundControl, "boundControl");
             boundControl.Name = "boundControl";
-            toolTip.SetToolTip(boundControl, resources.GetString("boundControl.ToolTip"));
             // 
             // tabPageLatticePlane
             // 
-            resources.ApplyResources(tabPageLatticePlane, "tabPageLatticePlane");
             tabPageLatticePlane.Controls.Add(latticePlaneControl);
+            resources.ApplyResources(tabPageLatticePlane, "tabPageLatticePlane");
             tabPageLatticePlane.Name = "tabPageLatticePlane";
-            toolTip.SetToolTip(tabPageLatticePlane, resources.GetString("tabPageLatticePlane.ToolTip"));
             // 
             // latticePlaneControl
             // 
-            resources.ApplyResources(latticePlaneControl, "latticePlaneControl");
             captureExtender.SetCapture(latticePlaneControl, true);
+            resources.ApplyResources(latticePlaneControl, "latticePlaneControl");
             latticePlaneControl.Name = "latticePlaneControl";
-            toolTip.SetToolTip(latticePlaneControl, resources.GetString("latticePlaneControl.ToolTip"));
             // 
             // colorControl
             // 
-            resources.ApplyResources(colorControl, "colorControl");
             colorControl.Argb = -986896;
+            resources.ApplyResources(colorControl, "colorControl");
             colorControl.BackColor = System.Drawing.SystemColors.Control;
             colorControl.Blue = 240;
             colorControl.BlueF = 0.9411765F;
@@ -1115,13 +1160,12 @@
             // 
             // panelFormula
             // 
-            resources.ApplyResources(panelFormula, "panelFormula");
             panelFormula.Controls.Add(textBoxFormula);
             panelFormula.Controls.Add(label90);
             panelFormula.Controls.Add(numericBoxZnumber);
             panelFormula.Controls.Add(colorControl);
+            resources.ApplyResources(panelFormula, "panelFormula");
             panelFormula.Name = "panelFormula";
-            toolTip.SetToolTip(panelFormula, resources.GetString("panelFormula.ToolTip"));
             // 
             // textBoxFormula
             // 
@@ -1146,92 +1190,91 @@
             numericBoxZnumber.SkipEventDuringInput = false;
             numericBoxZnumber.SmartIncrement = true;
             numericBoxZnumber.TabStop = false;
-            numericBoxZnumber.ValueBackColor = System.Drawing.SystemColors.Control;
-            numericBoxZnumber.ValueFontSize = 9F;
             numericBoxZnumber.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxZnumber, resources.GetString("numericBoxZnumber.ToolTip1"));
+            numericBoxZnumber.ValueBackColor = System.Drawing.SystemColors.Control;
+            numericBoxZnumber.ValueFontSize = 9F;
             // 
             // contextMenuStrip
             // 
-            resources.ApplyResources(contextMenuStrip, "contextMenuStrip");
             contextMenuStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
             contextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { scatteringFactorToolStripMenuItem, symmetryInformationToolStripMenuItem, toolStripSeparator2, importCrystalFromCIFAMCToolStripMenuItem, exportThisCrystalAsCIFToolStripMenuItem, sendThisCrystalToOtherSoftwareToolStripMenuItem, toolStripSeparator1, revertCellConstantsToolStripMenuItem, toolStripSeparator3, strainControlToolStripMenuItem, convertToP1SymmetryToolStripMenuItem, convertToSuperstructureToolStripMenuItem, convertToAnotherSpacegroupToolStripMenuItem });
             contextMenuStrip.Name = "contextMenuStrip1";
-            toolTip.SetToolTip(contextMenuStrip, resources.GetString("contextMenuStrip.ToolTip"));
+            resources.ApplyResources(contextMenuStrip, "contextMenuStrip");
             // 
             // scatteringFactorToolStripMenuItem
             // 
-            resources.ApplyResources(scatteringFactorToolStripMenuItem, "scatteringFactorToolStripMenuItem");
             scatteringFactorToolStripMenuItem.Name = "scatteringFactorToolStripMenuItem";
+            resources.ApplyResources(scatteringFactorToolStripMenuItem, "scatteringFactorToolStripMenuItem");
             scatteringFactorToolStripMenuItem.Click += scatteringFactorToolStripMenuItem_Click;
             // 
             // symmetryInformationToolStripMenuItem
             // 
-            resources.ApplyResources(symmetryInformationToolStripMenuItem, "symmetryInformationToolStripMenuItem");
             symmetryInformationToolStripMenuItem.Name = "symmetryInformationToolStripMenuItem";
+            resources.ApplyResources(symmetryInformationToolStripMenuItem, "symmetryInformationToolStripMenuItem");
             symmetryInformationToolStripMenuItem.Click += symmetryInformationToolStripMenuItem_Click;
             // 
             // toolStripSeparator2
             // 
-            resources.ApplyResources(toolStripSeparator2, "toolStripSeparator2");
             toolStripSeparator2.Name = "toolStripSeparator2";
+            resources.ApplyResources(toolStripSeparator2, "toolStripSeparator2");
             // 
             // importCrystalFromCIFAMCToolStripMenuItem
             // 
-            resources.ApplyResources(importCrystalFromCIFAMCToolStripMenuItem, "importCrystalFromCIFAMCToolStripMenuItem");
             importCrystalFromCIFAMCToolStripMenuItem.Name = "importCrystalFromCIFAMCToolStripMenuItem";
+            resources.ApplyResources(importCrystalFromCIFAMCToolStripMenuItem, "importCrystalFromCIFAMCToolStripMenuItem");
             importCrystalFromCIFAMCToolStripMenuItem.Click += importCrystalFromCIFAMCToolStripMenuItem_Click;
             // 
             // exportThisCrystalAsCIFToolStripMenuItem
             // 
-            resources.ApplyResources(exportThisCrystalAsCIFToolStripMenuItem, "exportThisCrystalAsCIFToolStripMenuItem");
             exportThisCrystalAsCIFToolStripMenuItem.Name = "exportThisCrystalAsCIFToolStripMenuItem";
+            resources.ApplyResources(exportThisCrystalAsCIFToolStripMenuItem, "exportThisCrystalAsCIFToolStripMenuItem");
             exportThisCrystalAsCIFToolStripMenuItem.Click += exportThisCrystalAsCIFToolStripMenuItem_Click;
             // 
             // sendThisCrystalToOtherSoftwareToolStripMenuItem
             // 
-            resources.ApplyResources(sendThisCrystalToOtherSoftwareToolStripMenuItem, "sendThisCrystalToOtherSoftwareToolStripMenuItem");
             sendThisCrystalToOtherSoftwareToolStripMenuItem.Name = "sendThisCrystalToOtherSoftwareToolStripMenuItem";
+            resources.ApplyResources(sendThisCrystalToOtherSoftwareToolStripMenuItem, "sendThisCrystalToOtherSoftwareToolStripMenuItem");
             sendThisCrystalToOtherSoftwareToolStripMenuItem.Click += sendThisCrystalToOtherSoftwareToolStripMenuItem_Click;
             // 
             // toolStripSeparator1
             // 
-            resources.ApplyResources(toolStripSeparator1, "toolStripSeparator1");
             toolStripSeparator1.Name = "toolStripSeparator1";
+            resources.ApplyResources(toolStripSeparator1, "toolStripSeparator1");
             // 
             // revertCellConstantsToolStripMenuItem
             // 
-            resources.ApplyResources(revertCellConstantsToolStripMenuItem, "revertCellConstantsToolStripMenuItem");
             revertCellConstantsToolStripMenuItem.Name = "revertCellConstantsToolStripMenuItem";
+            resources.ApplyResources(revertCellConstantsToolStripMenuItem, "revertCellConstantsToolStripMenuItem");
             revertCellConstantsToolStripMenuItem.Click += revertCellConstantsToolStripMenuItem_Click;
             // 
             // toolStripSeparator3
             // 
-            resources.ApplyResources(toolStripSeparator3, "toolStripSeparator3");
             toolStripSeparator3.Name = "toolStripSeparator3";
+            resources.ApplyResources(toolStripSeparator3, "toolStripSeparator3");
             // 
             // strainControlToolStripMenuItem
             // 
-            resources.ApplyResources(strainControlToolStripMenuItem, "strainControlToolStripMenuItem");
             strainControlToolStripMenuItem.Name = "strainControlToolStripMenuItem";
+            resources.ApplyResources(strainControlToolStripMenuItem, "strainControlToolStripMenuItem");
             strainControlToolStripMenuItem.Click += strainControlToolStripMenuItem_Click;
             // 
             // convertToP1SymmetryToolStripMenuItem
             // 
-            resources.ApplyResources(convertToP1SymmetryToolStripMenuItem, "convertToP1SymmetryToolStripMenuItem");
             convertToP1SymmetryToolStripMenuItem.Name = "convertToP1SymmetryToolStripMenuItem";
+            resources.ApplyResources(convertToP1SymmetryToolStripMenuItem, "convertToP1SymmetryToolStripMenuItem");
             convertToP1SymmetryToolStripMenuItem.Click += convertToP1ToolStripMenuItem_Click;
             // 
             // convertToSuperstructureToolStripMenuItem
             // 
-            resources.ApplyResources(convertToSuperstructureToolStripMenuItem, "convertToSuperstructureToolStripMenuItem");
             convertToSuperstructureToolStripMenuItem.Name = "convertToSuperstructureToolStripMenuItem";
+            resources.ApplyResources(convertToSuperstructureToolStripMenuItem, "convertToSuperstructureToolStripMenuItem");
             convertToSuperstructureToolStripMenuItem.Click += convertToSuperstructureToolStripMenuItem_Click;
             // 
             // convertToAnotherSpacegroupToolStripMenuItem
             // 
-            resources.ApplyResources(convertToAnotherSpacegroupToolStripMenuItem, "convertToAnotherSpacegroupToolStripMenuItem");
             convertToAnotherSpacegroupToolStripMenuItem.Name = "convertToAnotherSpacegroupToolStripMenuItem";
+            resources.ApplyResources(convertToAnotherSpacegroupToolStripMenuItem, "convertToAnotherSpacegroupToolStripMenuItem");
             convertToAnotherSpacegroupToolStripMenuItem.Click += convertToAnotherSpacegroupToolStripMenuItem_Click;
             // 
             // textBoxName
@@ -1245,6 +1288,13 @@
             resources.ApplyResources(label22, "label22");
             label22.Name = "label22";
             toolTip.SetToolTip(label22, resources.GetString("label22.ToolTip"));
+            // 
+            // toolTip
+            // 
+            toolTip.AutoPopDelay = 10000;
+            toolTip.InitialDelay = 500;
+            toolTip.IsBalloon = true;
+            toolTip.ReshowDelay = 100;
             // 
             // buttonScatteringFactor
             // 
@@ -1270,22 +1320,20 @@
             // 
             resources.ApplyResources(flowLayoutPanel1, "flowLayoutPanel1");
             flowLayoutPanel1.Name = "flowLayoutPanel1";
-            toolTip.SetToolTip(flowLayoutPanel1, resources.GetString("flowLayoutPanel1.ToolTip"));
             // 
             // panelNameAndActions
             // 
-            resources.ApplyResources(panelNameAndActions, "panelNameAndActions");
             panelNameAndActions.Controls.Add(textBoxName);
             panelNameAndActions.Controls.Add(buttonSymmetryInfo);
             panelNameAndActions.Controls.Add(buttonScatteringFactor);
             panelNameAndActions.Controls.Add(label22);
+            resources.ApplyResources(panelNameAndActions, "panelNameAndActions");
             panelNameAndActions.Name = "panelNameAndActions";
-            toolTip.SetToolTip(panelNameAndActions, resources.GetString("panelNameAndActions.ToolTip"));
             // 
             // CrystalControl
             // 
-            resources.ApplyResources(this, "$this");
             AllowDrop = true;
+            resources.ApplyResources(this, "$this");
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             captureExtender.SetCapture(this, true);
             ContextMenuStrip = contextMenuStrip;
@@ -1295,7 +1343,6 @@
             Controls.Add(flowLayoutPanel1);
             DoubleBuffered = true;
             Name = "CrystalControl";
-            toolTip.SetToolTip(this, resources.GetString("$this.ToolTip"));
             Load += CrystalForm_Load;
             DragDrop += FormCrystal_DragDrop;
             DragEnter += FormCrystal_DragEnter;
@@ -1441,6 +1488,11 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelCellProperties;
         private NumericBox numericBoxZnumber;
         private NumericBox numericBoxDensity;
+        private NumericBox numericBoxMeanZnumber; // 260606Cl 追加
+        private NumericBox numericBoxMeanZmass; // 260606Cl 追加
+        private NumericBox numericBoxMeanAtomicWeight; // 260606Cl 追加
+        private NumericBox numericBoxAtomicNumberDensity; // 260606Cl 追加
+        private NumericBox numericBoxElectronDensity; // 260606Cl 追加
         public SymmetryControl symmetryControl;
         private System.Windows.Forms.Panel panelFormula;
         private NumericBox numericBoxMolarVolume;

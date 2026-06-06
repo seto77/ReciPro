@@ -823,7 +823,7 @@
             // 
             waveLengthControl.AutoSize = true;
             waveLengthControl.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            waveLengthControl.Direction = System.Windows.Forms.FlowDirection.TopDown;
+            waveLengthControl.DirectionWhole = System.Windows.Forms.FlowDirection.TopDown;
             waveLengthControl.Energy = 30D;
             waveLengthControl.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
             waveLengthControl.Location = new System.Drawing.Point(2, 17);

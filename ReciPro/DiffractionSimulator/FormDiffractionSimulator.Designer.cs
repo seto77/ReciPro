@@ -2175,7 +2175,7 @@
             // waveLengthControl
             // 
             resources.ApplyResources(waveLengthControl, "waveLengthControl");
-            waveLengthControl.Direction = System.Windows.Forms.FlowDirection.TopDown;
+            waveLengthControl.DirectionWhole = System.Windows.Forms.FlowDirection.TopDown;
             waveLengthControl.Energy = 199.99999993D;
             waveLengthControl.Monochrome = true;
             waveLengthControl.Name = "waveLengthControl";

@@ -873,7 +873,8 @@ public class MonteCarlo
     /// TPP-2M (Tanuma-Powell-Penn) 式で非弾性平均自由行程 λ_in [Å] を計算する。
     /// λ_in(E) = E / {Ep²·[β·ln(γE) - C/E + D/E²]}。Ep はプラズマエネルギー。
     /// </summary>
-    private double GetInelasticMeanFreePathAngstrom(double energyEv)
+    // 260605Cl private→public 化 (IMFP universal curve のグラフ表示用)。旧: private double GetInelasticMeanFreePathAngstrom(double energyEv)
+    public double GetInelasticMeanFreePathAngstrom(double energyEv)
     {
         var gammaE = TppGamma * energyEv;
         if (!(gammaE > 1.0))

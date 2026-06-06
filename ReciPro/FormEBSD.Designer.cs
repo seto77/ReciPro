@@ -227,7 +227,7 @@
             // 
             resources.ApplyResources(waveLengthControl, "waveLengthControl");
             toolTip.SetToolTip(waveLengthControl, resources.GetString("waveLengthControl.ToolTip")); // 260531Cl
-            waveLengthControl.Direction = System.Windows.Forms.FlowDirection.TopDown;
+            waveLengthControl.DirectionWhole = System.Windows.Forms.FlowDirection.TopDown;
             waveLengthControl.Energy = 20D;
             waveLengthControl.Monochrome = true;
             waveLengthControl.Name = "waveLengthControl";
