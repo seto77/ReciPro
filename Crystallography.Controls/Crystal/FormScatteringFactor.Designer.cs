@@ -77,6 +77,13 @@
             numericBoxH_max = new NumericBox();
             numericBoxH_min = new NumericBox();
             numericBoxCutoffD = new NumericBox();
+            labelModel = new System.Windows.Forms.Label();
+            radioButtonXrayFs = new System.Windows.Forms.RadioButton();
+            radioButtonXrayFqSq = new System.Windows.Forms.RadioButton();
+            radioButtonElectronPeng = new System.Windows.Forms.RadioButton();
+            radioButtonElectronKirkland = new System.Windows.Forms.RadioButton();
+            radioButtonElectronEightGaussian = new System.Windows.Forms.RadioButton();
+            checkBoxDebyeWaller = new System.Windows.Forms.CheckBox();
             panel1 = new System.Windows.Forms.Panel();
             tabControl1 = new System.Windows.Forms.TabControl();
             tabPageReflections = new System.Windows.Forms.TabPage();
@@ -94,18 +101,42 @@
             Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             flowLayoutPanelModel = new System.Windows.Forms.FlowLayoutPanel();
-            labelModel = new System.Windows.Forms.Label();
             flowLayoutPanelModel_Xray = new System.Windows.Forms.FlowLayoutPanel();
-            radioButtonXrayFs = new System.Windows.Forms.RadioButton();
-            radioButtonXrayFqSq = new System.Windows.Forms.RadioButton();
             flowLayoutPanelModel_Electron = new System.Windows.Forms.FlowLayoutPanel();
-            radioButtonElectronPeng = new System.Windows.Forms.RadioButton();
-            radioButtonElectronKirkland = new System.Windows.Forms.RadioButton();
-            radioButtonElectronEightGaussian = new System.Windows.Forms.RadioButton();
-            checkBoxDebyeWaller = new System.Windows.Forms.CheckBox();
             graphControlScatteringFactor = new GraphControl();
             tabPageAttenuations = new System.Windows.Forms.TabPage();
+            tlpAtten = new System.Windows.Forms.TableLayoutPanel();
+            graphAtten = new GraphControl();
+            numAttenThickness = new NumericBox();
+            dgvAttenScalars = new MiniTable();
+            flowAttenDetail = new System.Windows.Forms.FlowLayoutPanel();
+            dgvAttenEdges = new MiniTable();
+            colEdgeElem = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            colEdgeZ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            colEdgeEdge = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            colEdgeKeV = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            colEdgeJump = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            dgvAttenElectron = new MiniTable();
+            colElecElem = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            colElecZ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            colElecAt = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            colElecA = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            dgvAttenNeutron = new MiniTable();
+            colNeutElem = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            colNeutBcoh = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            colNeutScoh = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            colNeutAt = new System.Windows.Forms.DataGridViewTextBoxColumn();
             tabPageFluorescence = new System.Windows.Forms.TabPage();
+            tlpFluor = new System.Windows.Forms.TableLayoutPanel();
+            graphFluor = new GraphControl();
+            dgvFluorScalars = new MiniTable();
+            dgvFluorLines = new MiniTable();
+            colFlElem = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            colFlLine = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            colFlE = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            colFlRelI = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            colFlOmega = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            labelFluorNA = new System.Windows.Forms.Label();
             flowLayoutPanel5 = new System.Windows.Forms.FlowLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)dataGridView).BeginInit();
             ((System.ComponentModel.ISupportInitialize)bindingSourceScatteringFactor).BeginInit();
@@ -126,6 +157,17 @@
             flowLayoutPanelModel.SuspendLayout();
             flowLayoutPanelModel_Xray.SuspendLayout();
             flowLayoutPanelModel_Electron.SuspendLayout();
+            tabPageAttenuations.SuspendLayout();
+            tlpAtten.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvAttenScalars).BeginInit();
+            flowAttenDetail.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvAttenEdges).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvAttenElectron).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvAttenNeutron).BeginInit();
+            tabPageFluorescence.SuspendLayout();
+            tlpFluor.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvFluorScalars).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvFluorLines).BeginInit();
             flowLayoutPanel5.SuspendLayout();
             SuspendLayout();
             // 
@@ -516,6 +558,59 @@
             numericBoxCutoffD.Value = 1D;
             numericBoxCutoffD.ValueChanged += numericBoxCutoffD_ValueChanged;
             // 
+            // labelModel
+            // 
+            resources.ApplyResources(labelModel, "labelModel");
+            labelModel.Name = "labelModel";
+            toolTip.SetToolTip(labelModel, resources.GetString("labelModel.ToolTip"));
+            // 
+            // radioButtonXrayFs
+            // 
+            resources.ApplyResources(radioButtonXrayFs, "radioButtonXrayFs");
+            radioButtonXrayFs.Name = "radioButtonXrayFs";
+            radioButtonXrayFs.TabStop = true;
+            toolTip.SetToolTip(radioButtonXrayFs, resources.GetString("radioButtonXrayFs.ToolTip"));
+            radioButtonXrayFs.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonXrayFqSq
+            // 
+            resources.ApplyResources(radioButtonXrayFqSq, "radioButtonXrayFqSq");
+            radioButtonXrayFqSq.Name = "radioButtonXrayFqSq";
+            radioButtonXrayFqSq.TabStop = true;
+            toolTip.SetToolTip(radioButtonXrayFqSq, resources.GetString("radioButtonXrayFqSq.ToolTip"));
+            radioButtonXrayFqSq.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonElectronPeng
+            // 
+            resources.ApplyResources(radioButtonElectronPeng, "radioButtonElectronPeng");
+            radioButtonElectronPeng.Name = "radioButtonElectronPeng";
+            radioButtonElectronPeng.TabStop = true;
+            toolTip.SetToolTip(radioButtonElectronPeng, resources.GetString("radioButtonElectronPeng.ToolTip"));
+            radioButtonElectronPeng.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonElectronKirkland
+            // 
+            resources.ApplyResources(radioButtonElectronKirkland, "radioButtonElectronKirkland");
+            radioButtonElectronKirkland.Name = "radioButtonElectronKirkland";
+            radioButtonElectronKirkland.TabStop = true;
+            toolTip.SetToolTip(radioButtonElectronKirkland, resources.GetString("radioButtonElectronKirkland.ToolTip"));
+            radioButtonElectronKirkland.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonElectronEightGaussian
+            // 
+            resources.ApplyResources(radioButtonElectronEightGaussian, "radioButtonElectronEightGaussian");
+            radioButtonElectronEightGaussian.Name = "radioButtonElectronEightGaussian";
+            radioButtonElectronEightGaussian.TabStop = true;
+            toolTip.SetToolTip(radioButtonElectronEightGaussian, resources.GetString("radioButtonElectronEightGaussian.ToolTip"));
+            radioButtonElectronEightGaussian.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxDebyeWaller
+            // 
+            resources.ApplyResources(checkBoxDebyeWaller, "checkBoxDebyeWaller");
+            checkBoxDebyeWaller.Name = "checkBoxDebyeWaller";
+            toolTip.SetToolTip(checkBoxDebyeWaller, resources.GetString("checkBoxDebyeWaller.ToolTip"));
+            checkBoxDebyeWaller.UseVisualStyleBackColor = true;
+            // 
             // panel1
             // 
             panel1.Controls.Add(numericBoxL_step);
@@ -702,34 +797,12 @@
             flowLayoutPanelModel.Controls.Add(checkBoxDebyeWaller);
             flowLayoutPanelModel.Name = "flowLayoutPanelModel";
             // 
-            // labelModel
-            // 
-            resources.ApplyResources(labelModel, "labelModel");
-            labelModel.Name = "labelModel";
-            toolTip.SetToolTip(labelModel, resources.GetString("labelModel.ToolTip")); // 260606Cl 追加
-            //
             // flowLayoutPanelModel_Xray
             // 
             resources.ApplyResources(flowLayoutPanelModel_Xray, "flowLayoutPanelModel_Xray");
             flowLayoutPanelModel_Xray.Controls.Add(radioButtonXrayFs);
             flowLayoutPanelModel_Xray.Controls.Add(radioButtonXrayFqSq);
             flowLayoutPanelModel_Xray.Name = "flowLayoutPanelModel_Xray";
-            // 
-            // radioButtonXrayFs
-            // 
-            resources.ApplyResources(radioButtonXrayFs, "radioButtonXrayFs");
-            radioButtonXrayFs.Name = "radioButtonXrayFs";
-            radioButtonXrayFs.TabStop = true;
-            radioButtonXrayFs.UseVisualStyleBackColor = true;
-            toolTip.SetToolTip(radioButtonXrayFs, resources.GetString("radioButtonXrayFs.ToolTip")); // 260606Cl 追加
-            // 
-            // radioButtonXrayFqSq
-            // 
-            resources.ApplyResources(radioButtonXrayFqSq, "radioButtonXrayFqSq");
-            radioButtonXrayFqSq.Name = "radioButtonXrayFqSq";
-            radioButtonXrayFqSq.TabStop = true;
-            radioButtonXrayFqSq.UseVisualStyleBackColor = true;
-            toolTip.SetToolTip(radioButtonXrayFqSq, resources.GetString("radioButtonXrayFqSq.ToolTip")); // 260606Cl 追加
             // 
             // flowLayoutPanelModel_Electron
             // 
@@ -738,37 +811,6 @@
             flowLayoutPanelModel_Electron.Controls.Add(radioButtonElectronKirkland);
             flowLayoutPanelModel_Electron.Controls.Add(radioButtonElectronEightGaussian);
             flowLayoutPanelModel_Electron.Name = "flowLayoutPanelModel_Electron";
-            // 
-            // radioButtonElectronPeng
-            // 
-            resources.ApplyResources(radioButtonElectronPeng, "radioButtonElectronPeng");
-            radioButtonElectronPeng.Name = "radioButtonElectronPeng";
-            radioButtonElectronPeng.TabStop = true;
-            radioButtonElectronPeng.UseVisualStyleBackColor = true;
-            toolTip.SetToolTip(radioButtonElectronPeng, resources.GetString("radioButtonElectronPeng.ToolTip")); // 260606Cl 追加
-            // 
-            // radioButtonElectronKirkland
-            // 
-            resources.ApplyResources(radioButtonElectronKirkland, "radioButtonElectronKirkland");
-            radioButtonElectronKirkland.Name = "radioButtonElectronKirkland";
-            radioButtonElectronKirkland.TabStop = true;
-            radioButtonElectronKirkland.UseVisualStyleBackColor = true;
-            toolTip.SetToolTip(radioButtonElectronKirkland, resources.GetString("radioButtonElectronKirkland.ToolTip")); // 260606Cl 追加
-            // 
-            // radioButtonElectronEightGaussian
-            // 
-            resources.ApplyResources(radioButtonElectronEightGaussian, "radioButtonElectronEightGaussian");
-            radioButtonElectronEightGaussian.Name = "radioButtonElectronEightGaussian";
-            radioButtonElectronEightGaussian.TabStop = true;
-            radioButtonElectronEightGaussian.UseVisualStyleBackColor = true;
-            toolTip.SetToolTip(radioButtonElectronEightGaussian, resources.GetString("radioButtonElectronEightGaussian.ToolTip")); // 260606Cl 追加
-            // 
-            // checkBoxDebyeWaller
-            // 
-            resources.ApplyResources(checkBoxDebyeWaller, "checkBoxDebyeWaller");
-            checkBoxDebyeWaller.Name = "checkBoxDebyeWaller";
-            checkBoxDebyeWaller.UseVisualStyleBackColor = true;
-            toolTip.SetToolTip(checkBoxDebyeWaller, resources.GetString("checkBoxDebyeWaller.ToolTip")); // 260606Cl 追加
             // 
             // graphControlScatteringFactor
             // 
@@ -820,15 +862,299 @@
             // 
             // tabPageAttenuations
             // 
+            tabPageAttenuations.Controls.Add(tlpAtten);
             resources.ApplyResources(tabPageAttenuations, "tabPageAttenuations");
             tabPageAttenuations.Name = "tabPageAttenuations";
             tabPageAttenuations.UseVisualStyleBackColor = true;
             // 
+            // tlpAtten
+            // 
+            resources.ApplyResources(tlpAtten, "tlpAtten");
+            tlpAtten.Controls.Add(graphAtten, 0, 0);
+            tlpAtten.Controls.Add(numAttenThickness, 1, 0);
+            tlpAtten.Controls.Add(dgvAttenScalars, 1, 1);
+            tlpAtten.Controls.Add(flowAttenDetail, 1, 2);
+            tlpAtten.Name = "tlpAtten";
+            // 
+            // graphAtten
+            // 
+            graphAtten.AllowMouseOperation = true;
+            graphAtten.AxisLineColor = System.Drawing.Color.Gray;
+            graphAtten.AxisTextColor = System.Drawing.Color.Black;
+            graphAtten.AxisTextFont = new System.Drawing.Font("Segoe UI", 9F);
+            graphAtten.AxisXTextVisible = true;
+            graphAtten.AxisYTextVisible = true;
+            graphAtten.BackgroundColor = System.Drawing.Color.White;
+            graphAtten.BottomMargin = 0D;
+            graphAtten.DivisionLineColor = System.Drawing.Color.LightGray;
+            graphAtten.DivisionLineXVisible = true;
+            graphAtten.DivisionLineYVisible = true;
+            resources.ApplyResources(graphAtten, "graphAtten");
+            graphAtten.FixRangeHorizontal = false;
+            graphAtten.FixRangeVertical = false;
+            graphAtten.GraphTitle = "";
+            graphAtten.IsIntegerX = false;
+            graphAtten.IsIntegerY = false;
+            graphAtten.LabelX = "X:";
+            graphAtten.LabelY = "Y:";
+            graphAtten.LeftMargin = 0F;
+            graphAtten.LineWidth = 1F;
+            graphAtten.LowerX = 0D;
+            graphAtten.LowerY = 0D;
+            graphAtten.MaximalX = 1D;
+            graphAtten.MaximalY = 1D;
+            graphAtten.MinimalX = 0D;
+            graphAtten.MinimalY = 0D;
+            graphAtten.Mode = GraphControl.DrawingMode.Line;
+            graphAtten.MousePositionVisible = true;
+            graphAtten.MousePositionXDigit = -1;
+            graphAtten.MousePositionYDigit = -1;
+            graphAtten.Name = "graphAtten";
+            graphAtten.OriginPosition = new System.Drawing.Point(40, 20);
+            tlpAtten.SetRowSpan(graphAtten, 3);
+            graphAtten.UnitX = "";
+            graphAtten.UnitY = "";
+            graphAtten.UpperPanelFont = new System.Drawing.Font("Segoe UI", 9F);
+            graphAtten.UpperPanelVisible = true;
+            graphAtten.UpperX = 1D;
+            graphAtten.UpperY = 1D;
+            graphAtten.UseLineWidth = true;
+            graphAtten.VerticalLineColor = System.Drawing.Color.Red;
+            graphAtten.VerticalLineMarkerRadius = 3.5F;
+            graphAtten.VerticalLineMarkerVisible = false;
+            graphAtten.XLog = false;
+            graphAtten.YLog = false;
+            // 
+            // numAttenThickness
+            // 
+            numAttenThickness.BackColor = System.Drawing.Color.Transparent;
+            resources.ApplyResources(numAttenThickness, "numAttenThickness");
+            numAttenThickness.Maximum = 10000000D;
+            numAttenThickness.Minimum = 0D;
+            numAttenThickness.Name = "numAttenThickness";
+            numAttenThickness.RadianValue = 1.7453292519943295D;
+            numAttenThickness.Value = 100D;
+            // 
+            // dgvAttenScalars
+            // 
+            resources.ApplyResources(dgvAttenScalars, "dgvAttenScalars");
+            dgvAttenScalars.Name = "dgvAttenScalars";
+            dgvAttenScalars.TabStop = false;
+            //
+            // flowAttenDetail
+            //
+            flowAttenDetail.AutoScroll = true;
+            flowAttenDetail.Controls.Add(dgvAttenEdges);
+            flowAttenDetail.Controls.Add(dgvAttenElectron);
+            flowAttenDetail.Controls.Add(dgvAttenNeutron);
+            flowAttenDetail.Dock = System.Windows.Forms.DockStyle.Fill;
+            flowAttenDetail.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            flowAttenDetail.Location = new System.Drawing.Point(369, 205);
+            flowAttenDetail.Name = "flowAttenDetail";
+            flowAttenDetail.Size = new System.Drawing.Size(222, 192);
+            flowAttenDetail.TabIndex = 4;
+            flowAttenDetail.WrapContents = false;
+            //
+            // dgvAttenEdges
+            //
+            dgvAttenEdges.AllowVerticalScroll = true;
+            dgvAttenEdges.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { colEdgeElem, colEdgeZ, colEdgeEdge, colEdgeKeV, colEdgeJump });
+            dgvAttenEdges.Location = new System.Drawing.Point(3, 3);
+            dgvAttenEdges.Name = "dgvAttenEdges";
+            dgvAttenEdges.Size = new System.Drawing.Size(210, 185);
+            dgvAttenEdges.TabStop = false;
+            //
+            // colEdgeElem
+            //
+            colEdgeElem.HeaderText = "Elem";
+            colEdgeElem.Name = "colEdgeElem";
+            //
+            // colEdgeZ
+            //
+            colEdgeZ.HeaderText = "Z";
+            colEdgeZ.Name = "colEdgeZ";
+            //
+            // colEdgeEdge
+            //
+            colEdgeEdge.HeaderText = "Edge";
+            colEdgeEdge.Name = "colEdgeEdge";
+            //
+            // colEdgeKeV
+            //
+            colEdgeKeV.HeaderText = "keV";
+            colEdgeKeV.Name = "colEdgeKeV";
+            //
+            // colEdgeJump
+            //
+            colEdgeJump.HeaderText = "Jump";
+            colEdgeJump.Name = "colEdgeJump";
+            //
+            // dgvAttenElectron
+            //
+            dgvAttenElectron.AllowVerticalScroll = true;
+            dgvAttenElectron.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { colElecElem, colElecZ, colElecAt, colElecA });
+            dgvAttenElectron.Location = new System.Drawing.Point(3, 194);
+            dgvAttenElectron.Name = "dgvAttenElectron";
+            dgvAttenElectron.Size = new System.Drawing.Size(210, 185);
+            dgvAttenElectron.TabStop = false;
+            //
+            // colElecElem
+            //
+            colElecElem.HeaderText = "Elem";
+            colElecElem.Name = "colElecElem";
+            //
+            // colElecZ
+            //
+            colElecZ.HeaderText = "Z";
+            colElecZ.Name = "colElecZ";
+            //
+            // colElecAt
+            //
+            colElecAt.HeaderText = "at%";
+            colElecAt.Name = "colElecAt";
+            //
+            // colElecA
+            //
+            colElecA.HeaderText = "A";
+            colElecA.Name = "colElecA";
+            //
+            // dgvAttenNeutron
+            //
+            dgvAttenNeutron.AllowVerticalScroll = true;
+            dgvAttenNeutron.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { colNeutElem, colNeutBcoh, colNeutScoh, colNeutAt });
+            dgvAttenNeutron.Location = new System.Drawing.Point(3, 385);
+            dgvAttenNeutron.Name = "dgvAttenNeutron";
+            dgvAttenNeutron.Size = new System.Drawing.Size(210, 185);
+            dgvAttenNeutron.TabStop = false;
+            //
+            // colNeutElem
+            //
+            colNeutElem.HeaderText = "Elem";
+            colNeutElem.Name = "colNeutElem";
+            //
+            // colNeutBcoh
+            //
+            colNeutBcoh.HeaderText = "b_coh (fm)";
+            colNeutBcoh.Name = "colNeutBcoh";
+            //
+            // colNeutScoh
+            //
+            colNeutScoh.HeaderText = "σ_coh (barn)";
+            colNeutScoh.Name = "colNeutScoh";
+            //
+            // colNeutAt
+            //
+            colNeutAt.HeaderText = "at%";
+            colNeutAt.Name = "colNeutAt";
+            // 
             // tabPageFluorescence
             // 
+            tabPageFluorescence.Controls.Add(tlpFluor);
+            tabPageFluorescence.Controls.Add(labelFluorNA);
             resources.ApplyResources(tabPageFluorescence, "tabPageFluorescence");
             tabPageFluorescence.Name = "tabPageFluorescence";
             tabPageFluorescence.UseVisualStyleBackColor = true;
+            // 
+            // tlpFluor
+            // 
+            resources.ApplyResources(tlpFluor, "tlpFluor");
+            tlpFluor.Controls.Add(graphFluor, 0, 0);
+            tlpFluor.Controls.Add(dgvFluorScalars, 1, 0);
+            tlpFluor.Controls.Add(dgvFluorLines, 1, 1);
+            tlpFluor.Name = "tlpFluor";
+            // 
+            // graphFluor
+            // 
+            graphFluor.AllowMouseOperation = true;
+            graphFluor.AxisLineColor = System.Drawing.Color.Gray;
+            graphFluor.AxisTextColor = System.Drawing.Color.Black;
+            graphFluor.AxisTextFont = new System.Drawing.Font("Segoe UI", 9F);
+            graphFluor.AxisXTextVisible = true;
+            graphFluor.AxisYTextVisible = true;
+            graphFluor.BackgroundColor = System.Drawing.Color.White;
+            graphFluor.BottomMargin = 0D;
+            graphFluor.DivisionLineColor = System.Drawing.Color.LightGray;
+            graphFluor.DivisionLineXVisible = true;
+            graphFluor.DivisionLineYVisible = true;
+            resources.ApplyResources(graphFluor, "graphFluor");
+            graphFluor.FixRangeHorizontal = false;
+            graphFluor.FixRangeVertical = false;
+            graphFluor.GraphTitle = "";
+            graphFluor.IsIntegerX = false;
+            graphFluor.IsIntegerY = false;
+            graphFluor.LabelX = "X:";
+            graphFluor.LabelY = "Y:";
+            graphFluor.LeftMargin = 0F;
+            graphFluor.LineWidth = 1F;
+            graphFluor.LowerX = 0D;
+            graphFluor.LowerY = 0D;
+            graphFluor.MaximalX = 1D;
+            graphFluor.MaximalY = 1D;
+            graphFluor.MinimalX = 0D;
+            graphFluor.MinimalY = 0D;
+            graphFluor.Mode = GraphControl.DrawingMode.Line;
+            graphFluor.MousePositionVisible = false;
+            graphFluor.MousePositionXDigit = -1;
+            graphFluor.MousePositionYDigit = -1;
+            graphFluor.Name = "graphFluor";
+            graphFluor.OriginPosition = new System.Drawing.Point(40, 20);
+            tlpFluor.SetRowSpan(graphFluor, 2);
+            graphFluor.UnitX = "";
+            graphFluor.UnitY = "";
+            graphFluor.UpperPanelFont = new System.Drawing.Font("Segoe UI", 9F);
+            graphFluor.UpperPanelVisible = false;
+            graphFluor.UpperX = 1D;
+            graphFluor.UpperY = 1D;
+            graphFluor.UseLineWidth = true;
+            graphFluor.VerticalLineColor = System.Drawing.Color.Red;
+            graphFluor.VerticalLineMarkerRadius = 3.5F;
+            graphFluor.VerticalLineMarkerVisible = false;
+            graphFluor.XLog = false;
+            graphFluor.YLog = false;
+            // 
+            // dgvFluorScalars
+            // 
+            resources.ApplyResources(dgvFluorScalars, "dgvFluorScalars");
+            dgvFluorScalars.Name = "dgvFluorScalars";
+            dgvFluorScalars.TabStop = false;
+            //
+            // dgvFluorLines
+            //
+            dgvFluorLines.AllowVerticalScroll = true;
+            dgvFluorLines.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { colFlElem, colFlLine, colFlE, colFlRelI, colFlOmega });
+            resources.ApplyResources(dgvFluorLines, "dgvFluorLines");
+            dgvFluorLines.Name = "dgvFluorLines";
+            dgvFluorLines.TabStop = false;
+            //
+            // colFlElem
+            //
+            colFlElem.HeaderText = "Elem";
+            colFlElem.Name = "colFlElem";
+            //
+            // colFlLine
+            //
+            colFlLine.HeaderText = "Line";
+            colFlLine.Name = "colFlLine";
+            //
+            // colFlE
+            //
+            colFlE.HeaderText = "E keV";
+            colFlE.Name = "colFlE";
+            //
+            // colFlRelI
+            //
+            colFlRelI.HeaderText = "Rel.I";
+            colFlRelI.Name = "colFlRelI";
+            //
+            // colFlOmega
+            //
+            colFlOmega.HeaderText = "ω";
+            colFlOmega.Name = "colFlOmega";
+            // 
+            // labelFluorNA
+            // 
+            resources.ApplyResources(labelFluorNA, "labelFluorNA");
+            labelFluorNA.Name = "labelFluorNA";
             // 
             // flowLayoutPanel5
             // 
@@ -876,6 +1202,17 @@
             flowLayoutPanelModel_Xray.PerformLayout();
             flowLayoutPanelModel_Electron.ResumeLayout(false);
             flowLayoutPanelModel_Electron.PerformLayout();
+            tabPageAttenuations.ResumeLayout(false);
+            tlpAtten.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dgvAttenScalars).EndInit();
+            flowAttenDetail.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dgvAttenEdges).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvAttenElectron).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvAttenNeutron).EndInit();
+            tabPageFluorescence.ResumeLayout(false);
+            tlpFluor.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dgvFluorScalars).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvFluorLines).EndInit();
             flowLayoutPanel5.ResumeLayout(false);
             flowLayoutPanel5.PerformLayout();
             ResumeLayout(false);
@@ -941,6 +1278,37 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TabPage tabPageAttenuations;
         private System.Windows.Forms.TabPage tabPageFluorescence;
+        private System.Windows.Forms.TableLayoutPanel tlpAtten;     // 260606Cl
+        private GraphControl graphAtten;                            // 260606Cl
+        private NumericBox numAttenThickness;                       // 260606Cl
+        private MiniTable dgvAttenScalars;                          // 260606Cl
+        private System.Windows.Forms.FlowLayoutPanel flowAttenDetail; // 260606Cl
+        private MiniTable dgvAttenEdges;                            // 260606Cl
+        private System.Windows.Forms.DataGridViewTextBoxColumn colEdgeElem;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colEdgeZ;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colEdgeEdge;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colEdgeKeV;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colEdgeJump;
+        private MiniTable dgvAttenElectron;                         // 260606Cl
+        private System.Windows.Forms.DataGridViewTextBoxColumn colElecElem;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colElecZ;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colElecAt;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colElecA;
+        private MiniTable dgvAttenNeutron;                          // 260606Cl
+        private System.Windows.Forms.DataGridViewTextBoxColumn colNeutElem;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colNeutBcoh;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colNeutScoh;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colNeutAt;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colFlElem;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colFlLine;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colFlE;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colFlRelI;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colFlOmega;
+        private System.Windows.Forms.TableLayoutPanel tlpFluor;     // 260606Cl
+        private GraphControl graphFluor;                            // 260606Cl
+        private MiniTable dgvFluorScalars;                          // 260606Cl
+        private MiniTable dgvFluorLines;                            // 260606Cl
+        private System.Windows.Forms.Label labelFluorNA;            // 260606Cl
         // private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel8; // 260606Cl 旧名(リネーム取りこぼし)
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelModel_Electron; // 260606Cl
         private System.Windows.Forms.RadioButton radioButtonElectronPeng;

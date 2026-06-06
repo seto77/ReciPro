@@ -164,6 +164,8 @@ public class MonteCarlo
     /// <summary>260401Cl TPP-2M (Tanuma-Powell-Penn, 2M パラメータ版) の材料定数。非弾性平均自由行程 λ_in(E) = E / {Ep²·[β·ln(γE) - C/E + D/E²]} で使用</summary>
     /// <summary>260401Cl 自由電子プラズマエネルギー Ep = 28.8·√(Nv·ρ/A) [eV]。価電子のプラズモン励起エネルギーに対応</summary>
     private readonly double TppPlasmaEnergyEv;
+    /// <summary>260606Cl 追加: 自由電子プラズマエネルギー Ep [eV] の読み取り公開 (Beam Interaction の電子輸送スカラ表示用)。</summary>
+    public double PlasmaEnergyEv => TppPlasmaEnergyEv;
     /// <summary>260401Cl TPP-2M の β パラメータ。ln(γE) の係数で、IMFP のエネルギー依存の主項を制御</summary>
     private readonly double TppBeta;
     /// <summary>260401Cl TPP-2M の γ パラメータ [1/eV]。γE が対数項の引数で、密度依存 (0.191·ρ^(-0.5))</summary>

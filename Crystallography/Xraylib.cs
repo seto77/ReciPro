@@ -43,6 +43,31 @@ public static class Xraylib
     [DllImport(Dll, CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
     private static extern double SF_Compt(int Z, double q, IntPtr error);
 
+    // 260606Cl 追加 (P4 残: Attenuation & transport / Fluorescence タブ用)。すべて電子単位ではなく物理単位 (cm²/g, keV, 無次元)。
+    // 質量減衰断面積 [cm²/g] (元素別, E は keV)。_CP (化合物文字列版) は当面使わず per-Z を ElementNum で質量加重する。
+    [DllImport(Dll, CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+    private static extern double CS_Total(int Z, double E, IntPtr error);   // 全減衰 µ/ρ
+    [DllImport(Dll, CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+    private static extern double CS_Photo(int Z, double E, IntPtr error);   // 光電吸収
+    [DllImport(Dll, CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+    private static extern double CS_Rayl(int Z, double E, IntPtr error);    // Rayleigh (弾性)
+    [DllImport(Dll, CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+    private static extern double CS_Compt(int Z, double E, IntPtr error);   // Compton (非弾性)
+    [DllImport(Dll, CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+    private static extern double CS_Energy(int Z, double E, IntPtr error);  // 質量エネルギー吸収 µ_en/ρ (≠ µ/ρ)
+
+    // 吸収端・特性線・蛍光。shell / line は整数マクロ (xraylib.h)。⚠発光線マクロは負値・殻マクロは 0 始まり (XrlLine/XrlShell enum で型安全化)。
+    [DllImport(Dll, CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+    private static extern double EdgeEnergy(int Z, int shell, IntPtr error); // 吸収端エネルギー [keV]
+    [DllImport(Dll, CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+    private static extern double JumpFactor(int Z, int shell, IntPtr error); // 吸収端ジャンプ比 (無次元)
+    [DllImport(Dll, CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+    private static extern double LineEnergy(int Z, int line, IntPtr error);  // 特性線エネルギー [keV]
+    [DllImport(Dll, CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+    private static extern double RadRate(int Z, int line, IntPtr error);     // 殻内 radiative rate (分率)
+    [DllImport(Dll, CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
+    private static extern double FluorYield(int Z, int shell, IntPtr error); // 蛍光収率 ω (≤1)
+
     /// <summary>xraylib ネイティブ DLL が読み込めて self-test に通ったか。260606Cl 追加。</summary>
     public static bool Enabled { get; }
 
@@ -102,4 +127,39 @@ public static class Xraylib
         double v = SF_Compt(z, qInvAng, IntPtr.Zero);
         return double.IsFinite(v) ? v : double.NaN;
     }
+
+    // ===== 260606Cl 追加: 質量減衰係数・吸収端・特性線 (P4 残: Attenuation & transport / Fluorescence) =====
+
+    /// <summary>xraylib の特性線 (Siegbahn) 整数マクロ。⚠発光線は負値 (xraylib.h, NOT xraylib-lines.h)。260606Cl 追加。</summary>
+    public enum XrlLine { Ka1 = -3, Ka2 = -2, Kb1 = -6, La1 = -90, La2 = -89, Lb1 = -63 }
+
+    /// <summary>xraylib の殻 (shell) 整数マクロ。0 始まり (K=0)。260606Cl 追加。</summary>
+    public enum XrlShell { K = 0, L1 = 1, L2 = 2, L3 = 3, M1 = 4, M2 = 5, M3 = 6, M4 = 7, M5 = 8 }
+
+    // 範囲外で xraylib は error でなく 0.0 を返す → 物理的に正の量は ≤0/非有限を NaN("N/A") に畳む共通ガード。
+    private static double Pos(double v) => v > 0 && double.IsFinite(v) ? v : double.NaN;
+    private static bool BadZe(int z, double energyKeV) => !Enabled || z < 1 || z > 99 || !(energyKeV > 0);
+    private static bool BadZ(int z) => !Enabled || z < 1 || z > 99;
+
+    /// <summary>質量全減衰係数 µ/ρ [cm²/g] (元素別, E は keV)。利用不可・範囲外は NaN。260606Cl 追加。</summary>
+    public static double MassAttenuationTotal(int z, double energyKeV) => BadZe(z, energyKeV) ? double.NaN : Pos(CS_Total(z, energyKeV, IntPtr.Zero));
+    /// <summary>光電吸収の質量減衰 [cm²/g]。260606Cl 追加。</summary>
+    public static double MassAttenuationPhoto(int z, double energyKeV) => BadZe(z, energyKeV) ? double.NaN : Pos(CS_Photo(z, energyKeV, IntPtr.Zero));
+    /// <summary>Rayleigh (弾性) 散乱の質量減衰 [cm²/g]。260606Cl 追加。</summary>
+    public static double MassAttenuationRayleigh(int z, double energyKeV) => BadZe(z, energyKeV) ? double.NaN : Pos(CS_Rayl(z, energyKeV, IntPtr.Zero));
+    /// <summary>Compton (非弾性) 散乱の質量減衰 [cm²/g]。260606Cl 追加。</summary>
+    public static double MassAttenuationCompton(int z, double energyKeV) => BadZe(z, energyKeV) ? double.NaN : Pos(CS_Compt(z, energyKeV, IntPtr.Zero));
+    /// <summary>質量エネルギー吸収係数 µ_en/ρ [cm²/g] (≠ µ/ρ)。260606Cl 追加。</summary>
+    public static double MassEnergyAbsorption(int z, double energyKeV) => BadZe(z, energyKeV) ? double.NaN : Pos(CS_Energy(z, energyKeV, IntPtr.Zero));
+
+    /// <summary>吸収端エネルギー [keV]。利用不可は NaN。260606Cl 追加。</summary>
+    public static double EdgeEnergyKeV(int z, XrlShell shell) => BadZ(z) ? double.NaN : Pos(EdgeEnergy(z, (int)shell, IntPtr.Zero));
+    /// <summary>吸収端ジャンプ比 (無次元, >1)。260606Cl 追加。</summary>
+    public static double EdgeJumpFactor(int z, XrlShell shell) => BadZ(z) ? double.NaN : Pos(JumpFactor(z, (int)shell, IntPtr.Zero));
+    /// <summary>特性線エネルギー [keV]。260606Cl 追加。</summary>
+    public static double LineEnergyKeV(int z, XrlLine line) => BadZ(z) ? double.NaN : Pos(LineEnergy(z, (int)line, IntPtr.Zero));
+    /// <summary>殻内 radiative rate (分率, 0〜1)。260606Cl 追加。</summary>
+    public static double LineRadRate(int z, XrlLine line) => BadZ(z) ? double.NaN : Pos(RadRate(z, (int)line, IntPtr.Zero));
+    /// <summary>蛍光収率 ω (≤1)。260606Cl 追加。</summary>
+    public static double FluorescenceYield(int z, XrlShell shell) => BadZ(z) ? double.NaN : Pos(FluorYield(z, (int)shell, IntPtr.Zero));
 }

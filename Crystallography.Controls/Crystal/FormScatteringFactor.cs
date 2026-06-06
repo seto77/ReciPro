@@ -38,6 +38,8 @@ public partial class FormScatteringFactor : FormBase
         CrystalControl.CrystalChanged += crystalControl_CrystalChanged;
         typeof(DataGridView).GetProperty("DoubleBuffered", BindingFlags.Instance | BindingFlags.NonPublic).SetValue(dataGridView, true, null);
         InitializeScatteringFactorsTab(); // 260606Cl
+        InitializeAttenuationTab();       // 260606Cl
+        InitializeFluorescenceTab();      // 260606Cl
     }
 
     private void FormCrystallographicInformation_FormClosing(object sender, FormClosingEventArgs e)
@@ -56,7 +58,7 @@ public partial class FormScatteringFactor : FormBase
         if (Visible)
         {
             SetSortedPlanes();
-            UpdateScatteringFactors(); // 260606Cl
+            UpdateScatteringFactors(); UpdateAttenuation(); UpdateFluorescence(); // 260606Cl
         }
     }
     // 表示時に再計算
@@ -65,14 +67,14 @@ public partial class FormScatteringFactor : FormBase
         if (Visible)
         {
             SetSortedPlanes();
-            UpdateScatteringFactors(); // 260606Cl
+            UpdateScatteringFactors(); UpdateAttenuation(); UpdateFluorescence(); // 260606Cl
         }
     }
     // 上部帯の波長 / ビーム変更 → 両タブを再計算
     private void waveLengthControl1_WavelengthChanged(object sender, EventArgs e)
     {
         SetSortedPlanes();
-        UpdateScatteringFactors(); // 260606Cl
+        UpdateScatteringFactors(); UpdateAttenuation(); UpdateFluorescence(); // 260606Cl
     }
     #endregion
 
@@ -123,7 +125,7 @@ public partial class FormScatteringFactor : FormBase
         var waveSource = waveLengthControl1.WaveSource;
         var cutoffD = LengthUnit == LengthUnitEnum.NanoMeter ? numericBoxCutoffD.Value : numericBoxCutoffD.Value / 10; // (260426Ch) 1 回だけの CutoffD helper をローカル化
 
-        c.SetVectorOfG(cutoffD, waveSource);
+        c.SetVectorOfG(cutoffD, waveSource, xrayEnergyKeV: waveLengthControl1.Energy);//260606Cl X線異常分散(f'/f'')を反射表へ反映 (X線時のみ有効, 他ビームでは無視)
 
         Array.Sort(c.VectorOfG, (g1, g2) => g2.d.CompareTo(g1.d));
 
@@ -518,5 +520,460 @@ public partial class FormScatteringFactor : FormBase
         catch { return null; }
     }
 
+    #endregion
+
+    #region Attenuations & Transport タブ (X線減衰・屈折率 / 電子輸送 / 中性子断面積) 260606Cl 追加
+    // GUI コントロールは Designer.cs 定義。線種(ビーム)別に列ヘッダが異なる元素別表は dgvAttenEdges/Electron/Neutron を
+    // FlowLayoutPanel(flowAttenDetail)に置き Visible で切替 (ヘッダをデザイナ固定列にして resx 翻訳可能にするため)。
+    // スカラ表(Quantity/Value)はヘッダ非表示 + コード SetColumns。
+
+    private const double ClassicalElectronRadiusCm = 2.8179403262e-13; // r_e [cm]
+    private const double AvogadroPerMol = 6.02214076e23;               // N_A
+    private MonteCarlo attenMc;                       // 電子輸送用 (物性タプルでキャッシュ)
+    private (double z, double a, double rho)? attenMcKey;
+
+    /// <summary>構成元素を (Z, 占有数合計) で集約 (Occ 込み)。260606Cl 追加。</summary>
+    private (int z, double occ)[] AggregateElements()
+    {
+        var d = new Dictionary<int, double>();
+        foreach (var a in Crystal.Atoms)
+        {
+            int z = a.AtomicNumber;
+            if (z < 1 || z > 99) continue;
+            d[z] = d.TryGetValue(z, out var v) ? v + a.Occ : a.Occ;
+        }
+        return d.Select(kv => (kv.Key, kv.Value)).ToArray();
+    }
+
+    /// <summary>値+単位を整形 (NaN/Inf は "N/A")。260606Cl 追加。</summary>
+    private static string Q(double v, string unit, string fmt = "g4")
+        => double.IsNaN(v) || double.IsInfinity(v) ? "N/A" : $"{v.ToString(fmt)} {unit}".TrimEnd();
+
+    /// <summary>長さ [cm] を桁に応じ自動スケールして整形。260606Cl 追加。</summary>
+    private static string QLen(double cm)
+    {
+        if (double.IsNaN(cm) || double.IsInfinity(cm)) return "N/A";
+        double a = Math.Abs(cm);
+        if (a < 1e-4) return $"{cm * 1e7:g4} nm";
+        if (a < 1e-1) return $"{cm * 1e4:g4} µm";
+        if (a < 1e2) return $"{cm * 1e1:g4} mm";
+        return $"{cm * 1e-2:g4} m";
+    }
+
+    /// <summary>デザイナ定義列の表示属性 (整列/書式/AutoSize/非ソート) をコードで設定 (ヘッダ文字は resx)。260606Cl 追加。</summary>
+    private static void ConfigCol(DataGridViewColumn c, DataGridViewContentAlignment align, string fmt = null, bool fill = false)
+    {
+        c.DefaultCellStyle.Alignment = align;
+        if (fmt != null) c.DefaultCellStyle.Format = fmt;
+        c.AutoSizeMode = fill ? DataGridViewAutoSizeColumnMode.Fill : DataGridViewAutoSizeColumnMode.AllCells;
+        c.SortMode = DataGridViewColumnSortMode.NotSortable;
+    }
+
+    /// <summary>Attenuation タブのイベント配線と列設定 (Load から)。260606Cl 追加。</summary>
+    private void InitializeAttenuationTab()
+    {
+        numAttenThickness.ValueChanged += (_, _) => UpdateAttenuation();
+        tabControl1.SelectedIndexChanged += (_, _) => { UpdateAttenuation(); UpdateFluorescence(); }; // 選択タブのみ計算 (両タブ共通)
+
+        // スカラ表: ヘッダ非表示 (Quantity/Value は自明) + コード列 + 縦スクロール許可
+        foreach (var t in new[] { dgvAttenScalars, dgvFluorScalars })
+        {
+            t.ColumnHeadersVisible = false;
+            t.AllowVerticalScroll = true;
+            t.SetColumns(new MiniTable.Col("Quantity", Fill: true), new MiniTable.Col("Value", DataGridViewContentAlignment.MiddleRight));
+        }
+
+        // デザイナ定義列の整列/書式 (ヘッダ翻訳は resx)
+        var R = DataGridViewContentAlignment.MiddleRight;
+        var C = DataGridViewContentAlignment.MiddleCenter;
+        ConfigCol(colEdgeElem, default, fill: true); ConfigCol(colEdgeZ, R, "0"); ConfigCol(colEdgeEdge, C); ConfigCol(colEdgeKeV, R, "g4"); ConfigCol(colEdgeJump, R, "g3");
+        ConfigCol(colElecElem, default, fill: true); ConfigCol(colElecZ, R, "0"); ConfigCol(colElecAt, R, "g3"); ConfigCol(colElecA, R, "g4");
+        ConfigCol(colNeutElem, default, fill: true); ConfigCol(colNeutBcoh, R, "g4"); ConfigCol(colNeutScoh, R, "g4"); ConfigCol(colNeutAt, R, "g3");
+        ConfigCol(colFlElem, default, fill: true); ConfigCol(colFlLine, C); ConfigCol(colFlE, R, "g4"); ConfigCol(colFlRelI, R, "g3"); ConfigCol(colFlOmega, R, "g3");
+    }
+
+    /// <summary>ビーム種に応じて Attenuation タブを更新する。260606Cl 追加。</summary>
+    private void UpdateAttenuation()
+    {
+        if (!IsHandleCreated || !Visible || Crystal == null || graphAtten == null) return;
+        if (tabControl1.SelectedTab != tabPageAttenuations) return; // 非表示タブは計算しない
+
+        var src = waveLengthControl1.WaveSource;
+        dgvAttenEdges.Visible = src == WaveSource.Xray;
+        dgvAttenElectron.Visible = src == WaveSource.Electron;
+        dgvAttenNeutron.Visible = src == WaveSource.Neutron;
+        numAttenThickness.Visible = src == WaveSource.Xray;
+
+        var els = AggregateElements();
+        double totalOcc = els.Sum(x => x.occ);
+        if (els.Length == 0 || totalOcc <= 0 || !(Crystal.Density > 0)) // 退化入力ガード
+        {
+            graphAtten.VerticalLines = [];
+            graphAtten.ClearProfile();
+            dgvAttenScalars.ClearRows(); dgvAttenEdges.ClearRows(); dgvAttenElectron.ClearRows(); dgvAttenNeutron.ClearRows();
+            return;
+        }
+
+        switch (src)
+        {
+            case WaveSource.Xray: UpdateAttenuationXray(els); break;
+            case WaveSource.Electron: UpdateAttenuationElectron(els, totalOcc); break;
+            case WaveSource.Neutron: UpdateAttenuationNeutron(els, totalOcc); break;
+            default:
+                graphAtten.VerticalLines = [];
+                graphAtten.ClearProfile();
+                dgvAttenScalars.ClearRows();
+                break;
+        }
+    }
+
+    // ---- X線: 質量減衰 + 屈折率 + 吸収端 ----
+    private void UpdateAttenuationXray((int z, double occ)[] els)
+    {
+        double e = waveLengthControl1.Energy;          // 光子エネルギー [keV]
+        double rho = Crystal.Density;                  // [g/cm³]
+        double lambdaCm = waveLengthControl1.WaveLength * 1e-7; // nm → cm
+        double totalMass = els.Sum(x => x.occ * AtomStatic.AtomicWeight(x.z));
+        bool xrl = Xraylib.Enabled;
+
+        double muRhoTot = 0, muEnRho = 0;
+        foreach (var (z, occ) in els)
+        {
+            double w = occ * AtomStatic.AtomicWeight(z) / totalMass;
+            if (xrl) { muRhoTot += w * Xraylib.MassAttenuationTotal(z, e); muEnRho += w * Xraylib.MassEnergyAbsorption(z, e); }
+            else muRhoTot += w * AtomStatic.MassAbsorption(e, z); // 光電のみ (fallback)
+        }
+        double muLin = muRhoTot * rho;                 // [1/cm]
+        double tCm = numAttenThickness.Value * 1e-4;   // µm → cm
+
+        // 屈折率 δ, β, θc, SLD。f'/f'' は xraylib 必須・一部 NaN なら吸収側不明 → N/A。
+        bool dispNa = !xrl;
+        double sumReal = 0, sumImag = 0;
+        foreach (var (z, occ) in els)
+        {
+            double n = rho * AvogadroPerMol * occ / totalMass; // atoms/cm³
+            double fp = xrl ? Xraylib.Fprime(z, e) : 0, fpp = xrl ? Xraylib.Fdoubleprime(z, e) : 0;
+            if (xrl && (double.IsNaN(fp) || double.IsNaN(fpp))) dispNa = true;
+            sumReal += n * (z + (double.IsNaN(fp) ? 0 : fp));
+            sumImag += n * (double.IsNaN(fpp) ? 0 : fpp);
+        }
+        double pref = ClassicalElectronRadiusCm * lambdaCm * lambdaCm / (2 * Math.PI);
+        double delta = pref * sumReal, beta = pref * sumImag;
+        double thetaC = delta > 0 ? Math.Sqrt(2 * delta) : double.NaN; // [rad]
+        double sldReal = ClassicalElectronRadiusCm * sumReal * 1e-16;  // cm⁻² → Å⁻²
+
+        dgvAttenScalars.SetRows(
+        [
+            ["µ/ρ (total)", Q(muRhoTot, "cm²/g")],
+            ["µ (linear)", Q(muLin, "cm⁻¹")],
+            ["Attenuation length", QLen(1 / muLin)],
+            ["HVL", QLen(Math.Log(2) / muLin)],
+            [$"Transmission (t={numAttenThickness.Value:g4} µm)", Q(Math.Exp(-muLin * tCm) * 100, "%", "g4")],
+            ["µ_en/ρ", xrl ? Q(muEnRho, "cm²/g") : "N/A"],
+            ["δ (1−n)", dispNa ? "N/A" : Q(delta, "", "g4")],
+            ["β", dispNa ? "N/A" : Q(beta, "", "g4")],
+            ["θc (critical)", dispNa ? "N/A" : Q(double.IsNaN(thetaC) ? double.NaN : thetaC * 1e3, "mrad")],
+            ["X-ray SLD (Re)", dispNa ? "N/A" : Q(sldReal * 1e6, "10⁻⁶Å⁻²", "g4")],
+            ["source", xrl ? "xraylib" : "internal (photo)"],
+        ]);
+
+        // 吸収端 (K/L3): xrl 有効時はエネルギーも xraylib から (ジャンプ比と整合)
+        var edges = new[] { (Xraylib.XrlShell.K, XrayLineEdge.K, "K"), (Xraylib.XrlShell.L3, XrayLineEdge.L3, "L3") };
+        var rows = new List<object[]>();
+        foreach (var (z, _) in els.OrderBy(x => x.z))
+            foreach (var (shell, edge, name) in edges)
+            {
+                double ee = xrl ? Xraylib.EdgeEnergyKeV(z, shell) : AtomStatic.CharacteristicXrayEnergy(z, edge);
+                if (double.IsNaN(ee) || ee <= 0) continue;
+                double jf = xrl ? Xraylib.EdgeJumpFactor(z, shell) : double.NaN;
+                rows.Add([AtomStatic.AtomicName(z), z, name, ee, double.IsNaN(jf) ? (object)null : jf]);
+            }
+        dgvAttenEdges.SetRows(rows);
+
+        DrawXrayAttenuationGraph(els, totalMass, e);
+    }
+
+    private void DrawXrayAttenuationGraph((int z, double occ)[] els, double totalMass, double currentE)
+    {
+        const double eMin = 1, eMax = 60;
+        const int n = 300;
+        bool xrl = Xraylib.Enabled;
+        var pTot = new List<PointD>(n + 1);
+        var pPho = new List<PointD>(n + 1);
+        var pRay = new List<PointD>(n + 1);
+        var pCom = new List<PointD>(n + 1);
+        for (int i = 0; i <= n; i++)
+        {
+            double e = eMin * Math.Pow(eMax / eMin, (double)i / n); // log 等間隔
+            double t = 0, p = 0, r = 0, c = 0;
+            foreach (var (z, occ) in els)
+            {
+                double w = occ * AtomStatic.AtomicWeight(z) / totalMass;
+                if (xrl)
+                {
+                    t += w * Xraylib.MassAttenuationTotal(z, e);
+                    p += w * Xraylib.MassAttenuationPhoto(z, e);
+                    r += w * Xraylib.MassAttenuationRayleigh(z, e);
+                    c += w * Xraylib.MassAttenuationCompton(z, e);
+                }
+                else
+                    t += w * AtomStatic.MassAbsorption(e, z);
+            }
+            if (t > 0) pTot.Add(new PointD(e, t));
+            if (xrl)
+            {
+                if (p > 0) pPho.Add(new PointD(e, p));
+                if (r > 0) pRay.Add(new PointD(e, r));
+                if (c > 0) pCom.Add(new PointD(e, c));
+            }
+        }
+        graphAtten.YLog = true;
+        graphAtten.LabelX = "E (keV)";
+        graphAtten.LabelY = "µ/ρ (cm²/g)";
+        graphAtten.GraphTitle = xrl ? "µ/ρ total (bold) / photo / Rayleigh / Compton" : "µ/ρ photoabsorption (internal)";
+        var profiles = new List<Profile> { new(pTot) { Color = Color.Black, LineWidth = 1.8f, text = "total" } };
+        if (pPho.Count > 0) profiles.Add(new Profile(pPho) { Color = Color.FromArgb(0xd6, 0x27, 0x28), text = "photo" });
+        if (pRay.Count > 0) profiles.Add(new Profile(pRay) { Color = Color.FromArgb(0x2c, 0xa0, 0x2c), text = "Rayleigh" });
+        if (pCom.Count > 0) profiles.Add(new Profile(pCom) { Color = Color.FromArgb(0x1f, 0x77, 0xb4), text = "Compton" });
+        graphAtten.AddProfiles([.. profiles]);
+
+        var vlines = new List<PointD> { new(currentE, double.NaN) };
+        foreach (var (z, _) in els)
+            foreach (var edge in new[] { XrayLineEdge.K, XrayLineEdge.L3 })
+            {
+                double ee = AtomStatic.CharacteristicXrayEnergy(z, edge);
+                if (!double.IsNaN(ee) && ee > eMin && ee < eMax) vlines.Add(new PointD(ee, double.NaN));
+            }
+        graphAtten.VerticalLines = [.. vlines];
+        graphAtten.Draw();
+    }
+
+    // ---- 電子: 弾性断面積 / MFP / dE·ds / IMFP / 飛程 ----
+    private void UpdateAttenuationElectron((int z, double occ)[] els, double totalOcc)
+    {
+        double kev = waveLengthControl1.Energy;
+        double avgZ = els.Sum(x => x.occ * x.z) / totalOcc;
+        double avgA = els.Sum(x => x.occ * AtomStatic.AtomicWeight(x.z)) / totalOcc;
+        double rho = Crystal.Density;
+
+        var mc = GetAttenMonteCarlo(avgZ, avgA, rho);
+        var (_, sigma, mfp, dEds) = mc.GetParameters(kev);
+        double imfpA = mc.GetInelasticMeanFreePathAngstrom(kev * 1000); // keV → eV
+        double lambdaNm = UniversalConstants.Convert.EnergyToElectronWaveLength(kev);
+        double rangeKO = 0.0276 * avgA * Math.Pow(kev, 1.67) / (Math.Pow(avgZ, 0.89) * rho); // Kanaya-Okayama [µm]
+
+        dgvAttenScalars.SetRows(
+        [
+            ["λ (electron)", Q(lambdaNm * 1000, "pm")],
+            ["σ elastic", Q(sigma, "nm²")],
+            ["Elastic MFP", Q(mfp, "nm")],
+            ["dE/ds (loss)", Q(dEds, "keV/nm")],
+            ["IMFP", Q(imfpA / 10, "nm")],
+            ["Plasma E", mc.PlasmaEnergyEv > 0 ? Q(mc.PlasmaEnergyEv, "eV") : "N/A"],
+            ["J (mean exc.)", mc.J > 0 ? Q(mc.J, "eV") : "N/A"],
+            ["Range (Kanaya-Okayama)", Q(rangeKO, "µm")],
+            ["mean Z, A", $"{avgZ:g4}, {avgA:g4}"],
+        ]);
+
+        dgvAttenElectron.SetRows(els.OrderBy(x => x.z)
+            .Select(x => new object[] { AtomStatic.AtomicName(x.z), x.z, x.occ / totalOcc * 100, AtomStatic.AtomicWeight(x.z) }).ToList());
+
+        DrawElectronTransportGraph(mc, kev);
+    }
+
+    /// <summary>物性タプル (avgZ,avgA,ρ) でキャッシュした MonteCarlo (固定 30keV 構築・混合系 atoms 渡し)。260606Cl 追加。</summary>
+    private MonteCarlo GetAttenMonteCarlo(double avgZ, double avgA, double rho)
+    {
+        var key = (avgZ, avgA, rho);
+        if (attenMc == null || attenMcKey != key)
+        {
+            attenMc = new MonteCarlo(avgZ, avgA, rho, 30, 0, atoms: Crystal.Atoms);
+            attenMcKey = key;
+        }
+        return attenMc;
+    }
+
+    private void DrawElectronTransportGraph(MonteCarlo mc, double currentKev)
+    {
+        const double kMin = 1, kMax = 30;
+        const int n = 200;
+        var sig = new List<PointD>(n + 1);
+        var mfp = new List<PointD>(n + 1);
+        var des = new List<PointD>(n + 1);
+        double sMax = 0, mMax = 0, dMax = 0;
+        var raw = new (double k, double s, double m, double d)[n + 1];
+        for (int i = 0; i <= n; i++)
+        {
+            double k = kMin + (kMax - kMin) * i / n;
+            var (_, s, m, d) = mc.GetParameters(k);
+            raw[i] = (k, s, m, d);
+            sMax = Math.Max(sMax, s); mMax = Math.Max(mMax, m); dMax = Math.Max(dMax, d);
+        }
+        foreach (var (k, s, m, d) in raw) // 3 量はスケール差大 → 各最大で正規化して重ね描き (絶対値は表)
+        {
+            if (sMax > 0) sig.Add(new PointD(k, s / sMax));
+            if (mMax > 0) mfp.Add(new PointD(k, m / mMax));
+            if (dMax > 0) des.Add(new PointD(k, d / dMax));
+        }
+        graphAtten.YLog = false;
+        graphAtten.LabelX = "E (keV)";
+        graphAtten.LabelY = "normalized";
+        graphAtten.GraphTitle = "σ / MFP / dE·ds vs E (each normalized; absolute in table)";
+        graphAtten.AddProfiles(
+        [
+            new Profile(sig) { Color = Color.FromArgb(0xd6, 0x27, 0x28), text = "σ elastic" },
+            new Profile(mfp) { Color = Color.FromArgb(0x1f, 0x77, 0xb4), text = "elastic MFP" },
+            new Profile(des) { Color = Color.FromArgb(0x2c, 0xa0, 0x2c), text = "dE/ds" },
+        ]);
+        graphAtten.VerticalLines = [new PointD(currentKev, double.NaN)];
+        graphAtten.Draw();
+    }
+
+    // ---- 中性子: 散乱長 / 断面積 (グラフ無) ----
+    private void UpdateAttenuationNeutron((int z, double occ)[] els, double totalOcc)
+    {
+        double totalMass = els.Sum(x => x.occ * AtomStatic.AtomicWeight(x.z));
+        double rho = Crystal.Density;
+
+        double bMean = 0, sld = 0;
+        foreach (var (z, occ) in els)
+        {
+            double bRe = NeutronB(z);
+            if (double.IsNaN(bRe)) continue;
+            bMean += occ / totalOcc * bRe;
+            double nA = rho * AvogadroPerMol * occ / totalMass * 1e-24; // atoms/Å³
+            sld += nA * bRe * 1e-5; // b[fm]→Å ; SLD[Å⁻²]
+        }
+
+        dgvAttenScalars.SetRows(
+        [
+            ["b̄ (coherent)", Q(bMean, "fm")],
+            ["Coherent SLD", Q(sld * 1e6, "10⁻⁶Å⁻²", "g4")],
+            ["σ_incoh", "N/A (Sears DB)"],
+            ["σ_abs", "N/A (Sears DB)"],
+            ["source", "internal (bound coherent b)"],
+        ]);
+
+        dgvAttenNeutron.SetRows(els.OrderBy(x => x.z).Select(x =>
+        {
+            double b = NeutronB(x.z);
+            object bCell = double.IsNaN(b) ? null : b;
+            object sCell = double.IsNaN(b) ? null : 4 * Math.PI * b * b / 100; // fm² → barn
+            return new object[] { AtomStatic.AtomicName(x.z), bCell, sCell, x.occ / totalOcc * 100 };
+        }).ToList());
+
+        graphAtten.VerticalLines = [];
+        graphAtten.GraphTitle = "Neutron: no energy-dependent graph";
+        graphAtten.ClearProfile();
+    }
+
+    /// <summary>元素 z の束縛コヒーレント散乱長 b の実部 [fm] (自然存在比, [z][0])。無ければ NaN。260606Cl 追加。</summary>
+    private static double NeutronB(int z)
+    {
+        var t = AtomStatic.NeutronCoherentScattering;
+        if (z < 1 || z >= t.Length || t[z] == null || t[z].Length == 0) return double.NaN;
+        return t[z][0].Real;
+    }
+    #endregion
+
+    #region Fluorescence タブ (特性X線・蛍光収率・EDX スティック, X線専用) 260606Cl 追加
+    // 表示する特性線: (内蔵エネルギー用 XrayLine, xraylib 線マクロ, その線が空孔を作る殻, 表示名)。codex: Kα/Kβ→K, Lα→L3, Lβ1→L2。
+    private static readonly (XrayLine eng, Xraylib.XrlLine xrl, Xraylib.XrlShell shell, string name)[] FluorLines =
+    [
+        (XrayLine.Ka1, Xraylib.XrlLine.Ka1, Xraylib.XrlShell.K, "Kα1"),
+        (XrayLine.Ka2, Xraylib.XrlLine.Ka2, Xraylib.XrlShell.K, "Kα2"),
+        (XrayLine.Kb1, Xraylib.XrlLine.Kb1, Xraylib.XrlShell.K, "Kβ1"),
+        (XrayLine.La1, Xraylib.XrlLine.La1, Xraylib.XrlShell.L3, "Lα1"),
+        (XrayLine.La2, Xraylib.XrlLine.La2, Xraylib.XrlShell.L3, "Lα2"),
+        (XrayLine.Lb1, Xraylib.XrlLine.Lb1, Xraylib.XrlShell.L2, "Lβ1"),
+    ];
+
+    /// <summary>Fluorescence タブ初期化 (Load から)。列設定は InitializeAttenuationTab に集約。260606Cl 追加。</summary>
+    private void InitializeFluorescenceTab() { /* 配線・列設定は InitializeAttenuationTab で実施済み */ }
+
+    /// <summary>Fluorescence タブ更新。X線時のみ内容を出し、電子/中性子では無効メッセージ。260606Cl 追加。</summary>
+    private void UpdateFluorescence()
+    {
+        if (!IsHandleCreated || !Visible || Crystal == null || graphFluor == null) return;
+        if (tabControl1.SelectedTab != tabPageFluorescence) return;
+
+        if (waveLengthControl1.WaveSource != WaveSource.Xray)
+        {
+            tlpFluor.Visible = false;
+            labelFluorNA.Visible = true;
+            return;
+        }
+        tlpFluor.Visible = true;
+        labelFluorNA.Visible = false;
+
+        bool xrl = Xraylib.Enabled;
+        var els = AggregateElements();
+        double totalOcc = els.Sum(x => x.occ);
+        if (els.Length == 0 || totalOcc <= 0)
+        {
+            graphFluor.VerticalLines = [];
+            graphFluor.ClearProfile();
+            dgvFluorScalars.ClearRows(); dgvFluorLines.ClearRows();
+            return;
+        }
+
+        // 特性線テーブル + EDX スティック (強度 ∝ 原子分率 x · RadRate · ω。励起断面積/検出効率は無視: 定性表示)
+        var lineRows = new List<object[]>();
+        var sticks = new List<(double e, double h, int z)>();
+        double hMax = 0;
+        string strongest = "—";
+        double strongestI = 0;
+        var colorOf = new Dictionary<int, Color>();
+        int ci = 0;
+        foreach (var (z, occ) in els.OrderBy(x => x.z))
+        {
+            colorOf[z] = scatPalette[ci++ % scatPalette.Length];
+            double x = occ / totalOcc;
+            foreach (var (eng, xline, shell, name) in FluorLines)
+            {
+                double ekeV = AtomStatic.CharacteristicXrayEnergy(z, eng);
+                if (double.IsNaN(ekeV) || ekeV <= 0) continue;
+                double rate = xrl ? Xraylib.LineRadRate(z, xline) : double.NaN;
+                double yield = xrl ? Xraylib.FluorescenceYield(z, shell) : double.NaN;
+                lineRows.Add([AtomStatic.AtomicName(z), name, ekeV,
+                    double.IsNaN(rate) ? (object)null : rate * 100,
+                    double.IsNaN(yield) ? (object)null : yield]);
+                if (!double.IsNaN(rate) && !double.IsNaN(yield))
+                {
+                    double inten = x * rate * yield;
+                    sticks.Add((ekeV, inten, z));
+                    hMax = Math.Max(hMax, inten);
+                    if (inten > strongestI) { strongestI = inten; strongest = $"{AtomStatic.AtomicName(z)} {name} ({ekeV:g4} keV)"; }
+                }
+            }
+        }
+        dgvFluorLines.SetRows(lineRows);
+
+        var scalarRows = new List<object[]>();
+        foreach (var (z, _) in els.OrderBy(x => x.z))
+        {
+            double wk = xrl ? Xraylib.FluorescenceYield(z, Xraylib.XrlShell.K) : double.NaN;
+            scalarRows.Add([$"ω_K ({AtomStatic.AtomicName(z)})", double.IsNaN(wk) ? "N/A" : wk.ToString("g3")]);
+        }
+        scalarRows.Add(["strongest line", strongest]);
+        scalarRows.Add(["source", xrl ? "internal (E) / xraylib (I, ω)" : "internal (E only)"]);
+        dgvFluorScalars.SetRows(scalarRows);
+
+        // EDX スティック: 各線を (E,0)-(E,h) の 2 点プロファイルで描く (高さは最大で正規化)
+        graphFluor.YLog = false;
+        graphFluor.LabelX = "E (keV)";
+        graphFluor.LabelY = "relative intensity";
+        graphFluor.GraphTitle = xrl ? "EDX sticks (qualitative: x·RadRate·ω)" : "EDX: requires xraylib";
+        if (sticks.Count > 0 && hMax > 0)
+        {
+            var profiles = sticks.Select(s => new Profile(new List<PointD> { new(s.e, 0), new(s.e, s.h / hMax) })
+            { Color = colorOf[s.z], LineWidth = 1.4f }).ToArray();
+            graphFluor.AddProfiles(profiles);
+        }
+        else
+            graphFluor.ClearProfile();
+        graphFluor.VerticalLines = [new PointD(waveLengthControl1.Energy, double.NaN)];
+        graphFluor.Draw();
+    }
     #endregion
 }

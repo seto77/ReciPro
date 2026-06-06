@@ -61,6 +61,16 @@ public class MiniTable : DpiAwareDataGridView
     [DefaultValue(false), Category("MiniTable")]
     public bool AutoFitHeight { get; set; }
 
+    private bool allowVerticalScroll;
+    /// <summary>行数がコントロール高さを超えるとき縦スクロールバーを許可するか (opt-in)。既定 false (=表示専用で非表示)。
+    /// 固定高さのセルに置き行数が増減する表 (Beam Interaction のスカラ/線表など) で true にする。260606Cl 追加。</summary>
+    [DefaultValue(false), Category("MiniTable")]
+    public bool AllowVerticalScroll
+    {
+        get => allowVerticalScroll;
+        set { allowVerticalScroll = value; base.ScrollBars = value ? ScrollBars.Vertical : ScrollBars.None; }
+    }
+
     #endregion
 
     #region 配色 / CellStyle の一元化
