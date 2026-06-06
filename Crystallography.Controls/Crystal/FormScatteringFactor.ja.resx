@@ -430,4 +430,12 @@ d 値と d-spacing カットオフの表示・入力に反映されます。</va
   <data name="checkBoxDebyeWaller.ToolTip" xml:space="preserve">
     <value>曲線に Debye-Waller 因子 exp(-B·s²) を掛け、熱振動による減衰を反映（B = 等方性変位パラメータ Biso）。</value>
   </data>
+  <data name="numAttenThickness.ToolTip" xml:space="preserve">
+    <value>X線の透過率 I/I0 = exp(-µt) を計算するときの
+試料の厚さ。単位は µm。</value>
+  </data>
+  <data name="numAttenThickness.ToolTip1" xml:space="preserve">
+    <value>X線の透過率 I/I0 = exp(-µt) を計算するときの
+試料の厚さ。単位は µm。</value>
+  </data>
 </root>

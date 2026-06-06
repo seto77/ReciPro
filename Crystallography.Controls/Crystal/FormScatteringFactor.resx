@@ -2486,4 +2486,12 @@ follows the length-unit selection (angstrom or nm).</value>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
     <value>Crystallography.Controls.FormBase, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
   </data>
+  <data name="numAttenThickness.ToolTip" xml:space="preserve">
+    <value>Sample thickness for the X-ray transmission
+calculation I/I0 = exp(-µt). Unit: µm.</value>
+  </data>
+  <data name="numAttenThickness.ToolTip1" xml:space="preserve">
+    <value>Sample thickness for the X-ray transmission
+calculation I/I0 = exp(-µt). Unit: µm.</value>
+  </data>
 </root>

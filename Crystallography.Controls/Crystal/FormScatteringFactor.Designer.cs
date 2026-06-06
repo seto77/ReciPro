@@ -934,6 +934,7 @@
             numAttenThickness.Name = "numAttenThickness";
             numAttenThickness.RadianValue = 1.7453292519943295D;
             numAttenThickness.Value = 100D;
+            toolTip.SetToolTip(numAttenThickness, resources.GetString("numAttenThickness.ToolTip1"));//260606Cl ツールチップ配線
             // 
             // dgvAttenScalars
             // 

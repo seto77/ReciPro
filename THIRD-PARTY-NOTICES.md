@@ -14,6 +14,8 @@ Last reviewed: 2026-05-30. This is a detailed inventory derived from the actual 
 
 Video export was migrated from a bundled GPL ffmpeg to the OS-provided **Windows Media Foundation** encoder (2026-05-30). As a result, **no ffmpeg / libx264 / libx265 / GPL binaries are bundled or distributed**, and the former GPL source-availability obligation no longer applies (see the [video encoding](#video-encoding-via-media-foundation) section). The COD citation has been added to the README and both manuals, the neutron scattering-length source has been updated to periodictable / Rauch data, and AMCSD bulk redistribution is permitted (permission obtained from one of the AMCSD maintainers). The remaining items are the minor **`TODO: confirm`** notes below (exact license texts, and the NIST SRD-64 / ITA citations).
 
+**Update 2026-06-06:** xraylib 4.2.1 (BSD-3-Clause) was bundled as the native DLL `libxrl-11.dll` to provide X-ray physics reference data (anomalous-dispersion factors, photon attenuation / interaction cross sections, and fluorescence parameters) for the "Beam Interaction" window. It is a permissively-licensed third-party binary; see the [xraylib](#xraylib-bundled-third-party-native-data-library) entry under Native libraries and the not-re-signed note in [Code-signing note](#code-signing-note).
+
 ## NuGet / managed libraries
 
 These ship as managed assemblies inside the MSI (packaged through the ReciPro publish output) and are built from their respective upstream NuGet packages. No central package management is in use (no `Directory.Packages.props` / `Directory.Build.props` / `nuget.config`); versions are pinned inline per project and are consistent across projects for shared packages.
