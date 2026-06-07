@@ -32,187 +32,187 @@
             toolTip.ReshowDelay = 100; // 260601Cl 追加
             captureExtender.SetCapture(this, true); // 260521Cl 追加: GUI監査キャプチャ対象 (フォーム全体)
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormResolution));
-            this.buttonOK = new System.Windows.Forms.Button();
-            this.buttonCancel = new System.Windows.Forms.Button();
-            this.numericUpDownWidth = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDownHeight = new System.Windows.Forms.NumericUpDown();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.checkBoxKeepAspect = new System.Windows.Forms.CheckBox();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownWidth)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownHeight)).BeginInit();
-            this.SuspendLayout();
+            buttonOK = new System.Windows.Forms.Button();
+            buttonCancel = new System.Windows.Forms.Button();
+            numericUpDownWidth = new System.Windows.Forms.NumericUpDown();
+            numericUpDownHeight = new System.Windows.Forms.NumericUpDown();
+            label1 = new System.Windows.Forms.Label();
+            label2 = new System.Windows.Forms.Label();
+            label4 = new System.Windows.Forms.Label();
+            label3 = new System.Windows.Forms.Label();
+            label5 = new System.Windows.Forms.Label();
+            checkBoxKeepAspect = new System.Windows.Forms.CheckBox();
+            ((System.ComponentModel.ISupportInitialize)(numericUpDownWidth)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(numericUpDownHeight)).BeginInit();
+            SuspendLayout();
             // 
             // buttonOK
             // 
-            this.buttonOK.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.buttonOK.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonOK.Location = new System.Drawing.Point(126, 47);
-            this.buttonOK.Name = "buttonOK";
-            this.buttonOK.Size = new System.Drawing.Size(65, 25);
-            this.buttonOK.TabIndex = 0;
-            this.buttonOK.Text = "OK";
-            this.buttonOK.UseVisualStyleBackColor = true;
+            buttonOK.DialogResult = System.Windows.Forms.DialogResult.OK;
+            buttonOK.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            buttonOK.Location = new System.Drawing.Point(126, 47);
+            buttonOK.Name = "buttonOK";
+            buttonOK.Size = new System.Drawing.Size(65, 25);
+            buttonOK.TabIndex = 0;
+            buttonOK.Text = "OK";
+            buttonOK.UseVisualStyleBackColor = true;
             // 
             // buttonCancel
             // 
-            this.buttonCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.buttonCancel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonCancel.Location = new System.Drawing.Point(193, 47);
-            this.buttonCancel.Name = "buttonCancel";
-            this.buttonCancel.Size = new System.Drawing.Size(65, 25);
-            this.buttonCancel.TabIndex = 0;
-            this.buttonCancel.Text = "Cancel";
-            this.buttonCancel.UseVisualStyleBackColor = true;
+            buttonCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            buttonCancel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            buttonCancel.Location = new System.Drawing.Point(193, 47);
+            buttonCancel.Name = "buttonCancel";
+            buttonCancel.Size = new System.Drawing.Size(65, 25);
+            buttonCancel.TabIndex = 0;
+            buttonCancel.Text = "Cancel";
+            buttonCancel.UseVisualStyleBackColor = true;
             // 
             // numericUpDownWidth
             // 
-            this.numericUpDownWidth.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericUpDownWidth.Increment = new decimal(new int[] {
+            numericUpDownWidth.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            numericUpDownWidth.Increment = new decimal(new int[] {
             256,
             0,
             0,
             0});
-            this.numericUpDownWidth.Location = new System.Drawing.Point(47, 22);
-            this.numericUpDownWidth.Maximum = new decimal(new int[] {
+            numericUpDownWidth.Location = new System.Drawing.Point(47, 22);
+            numericUpDownWidth.Maximum = new decimal(new int[] {
             4096,
             0,
             0,
             0});
-            this.numericUpDownWidth.Name = "numericUpDownWidth";
-            this.toolTip.SetToolTip(this.numericUpDownWidth, resources.GetString("numericUpDownWidth.ToolTip")); // 260531Cl
-            this.numericUpDownWidth.Size = new System.Drawing.Size(47, 21);
-            this.numericUpDownWidth.TabIndex = 1;
-            this.numericUpDownWidth.Value = new decimal(new int[] {
+            numericUpDownWidth.Name = "numericUpDownWidth";
+            toolTip.SetToolTip(numericUpDownWidth, resources.GetString("numericUpDownWidth.ToolTip")); // 260531Cl
+            numericUpDownWidth.Size = new System.Drawing.Size(47, 21);
+            numericUpDownWidth.TabIndex = 1;
+            numericUpDownWidth.Value = new decimal(new int[] {
             1024,
             0,
             0,
             0});
-            this.numericUpDownWidth.ValueChanged += new System.EventHandler(this.numericUpDownWidth_ValueChanged);
+            numericUpDownWidth.ValueChanged += new System.EventHandler(numericUpDownWidth_ValueChanged);
             // 
             // numericUpDownHeight
             // 
-            this.numericUpDownHeight.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericUpDownHeight.Increment = new decimal(new int[] {
+            numericUpDownHeight.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            numericUpDownHeight.Increment = new decimal(new int[] {
             256,
             0,
             0,
             0});
-            this.numericUpDownHeight.Location = new System.Drawing.Point(179, 22);
-            this.numericUpDownHeight.Maximum = new decimal(new int[] {
+            numericUpDownHeight.Location = new System.Drawing.Point(179, 22);
+            numericUpDownHeight.Maximum = new decimal(new int[] {
             4096,
             0,
             0,
             0});
-            this.numericUpDownHeight.Name = "numericUpDownHeight";
-            this.toolTip.SetToolTip(this.numericUpDownHeight, resources.GetString("numericUpDownHeight.ToolTip")); // 260531Cl
-            this.numericUpDownHeight.Size = new System.Drawing.Size(47, 21);
-            this.numericUpDownHeight.TabIndex = 1;
-            this.numericUpDownHeight.Value = new decimal(new int[] {
+            numericUpDownHeight.Name = "numericUpDownHeight";
+            toolTip.SetToolTip(numericUpDownHeight, resources.GetString("numericUpDownHeight.ToolTip")); // 260531Cl
+            numericUpDownHeight.Size = new System.Drawing.Size(47, 21);
+            numericUpDownHeight.TabIndex = 1;
+            numericUpDownHeight.Value = new decimal(new int[] {
             1024,
             0,
             0,
             0});
-            this.numericUpDownHeight.ValueChanged += new System.EventHandler(this.numericUpDownHeight_ValueChanged);
+            numericUpDownHeight.ValueChanged += new System.EventHandler(numericUpDownHeight_ValueChanged);
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(8, 24);
-            this.label1.Name = "label1";
-            this.toolTip.SetToolTip(this.label1, resources.GetString("label1.ToolTip")); // 260531Cl
-            this.label1.Size = new System.Drawing.Size(38, 15);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Width";
+            label1.AutoSize = true;
+            label1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            label1.Location = new System.Drawing.Point(8, 24);
+            label1.Name = "label1";
+            toolTip.SetToolTip(label1, resources.GetString("label1.ToolTip")); // 260531Cl
+            label1.Size = new System.Drawing.Size(38, 15);
+            label1.TabIndex = 2;
+            label1.Text = "Width";
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(134, 24);
-            this.label2.Name = "label2";
-            this.toolTip.SetToolTip(this.label2, resources.GetString("label2.ToolTip")); // 260531Cl
-            this.label2.Size = new System.Drawing.Size(43, 15);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Height";
+            label2.AutoSize = true;
+            label2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            label2.Location = new System.Drawing.Point(134, 24);
+            label2.Name = "label2";
+            toolTip.SetToolTip(label2, resources.GetString("label2.ToolTip")); // 260531Cl
+            label2.Size = new System.Drawing.Size(43, 15);
+            label2.TabIndex = 2;
+            label2.Text = "Height";
             // 
             // label4
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(226, 24);
-            this.label4.Name = "label4";
-            this.toolTip.SetToolTip(this.label4, resources.GetString("label4.ToolTip")); // 260531Cl
-            this.label4.Size = new System.Drawing.Size(32, 15);
-            this.label4.TabIndex = 2;
-            this.label4.Text = "pixel";
+            label4.AutoSize = true;
+            label4.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            label4.Location = new System.Drawing.Point(226, 24);
+            label4.Name = "label4";
+            toolTip.SetToolTip(label4, resources.GetString("label4.ToolTip")); // 260531Cl
+            label4.Size = new System.Drawing.Size(32, 15);
+            label4.TabIndex = 2;
+            label4.Text = "pixel";
             // 
             // label3
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(96, 24);
-            this.label3.Name = "label3";
-            this.toolTip.SetToolTip(this.label3, resources.GetString("label3.ToolTip")); // 260531Cl
-            this.label3.Size = new System.Drawing.Size(32, 15);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "pixel";
+            label3.AutoSize = true;
+            label3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            label3.Location = new System.Drawing.Point(96, 24);
+            label3.Name = "label3";
+            toolTip.SetToolTip(label3, resources.GetString("label3.ToolTip")); // 260531Cl
+            label3.Size = new System.Drawing.Size(32, 15);
+            label3.TabIndex = 2;
+            label3.Text = "pixel";
             // 
             // label5
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(1, 2);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(88, 15);
-            this.label5.TabIndex = 2;
-            this.label5.Text = "Set image size";
+            label5.AutoSize = true;
+            label5.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            label5.Location = new System.Drawing.Point(1, 2);
+            label5.Name = "label5";
+            label5.Size = new System.Drawing.Size(88, 15);
+            label5.TabIndex = 2;
+            label5.Text = "Set image size";
             // 
             // checkBoxKeepAspect
             // 
-            this.checkBoxKeepAspect.AutoSize = true;
-            this.checkBoxKeepAspect.Checked = true;
-            this.checkBoxKeepAspect.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxKeepAspect.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBoxKeepAspect.Location = new System.Drawing.Point(0, 52);
-            this.checkBoxKeepAspect.Name = "checkBoxKeepAspect";
-            this.toolTip.SetToolTip(this.checkBoxKeepAspect, resources.GetString("checkBoxKeepAspect.ToolTip")); // 260531Cl
-            this.checkBoxKeepAspect.Size = new System.Drawing.Size(126, 19);
-            this.checkBoxKeepAspect.TabIndex = 3;
-            this.checkBoxKeepAspect.Text = "Keep Aspect Ratio";
-            this.checkBoxKeepAspect.UseVisualStyleBackColor = true;
+            checkBoxKeepAspect.AutoSize = true;
+            checkBoxKeepAspect.Checked = true;
+            checkBoxKeepAspect.CheckState = System.Windows.Forms.CheckState.Checked;
+            checkBoxKeepAspect.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            checkBoxKeepAspect.Location = new System.Drawing.Point(0, 52);
+            checkBoxKeepAspect.Name = "checkBoxKeepAspect";
+            toolTip.SetToolTip(checkBoxKeepAspect, resources.GetString("checkBoxKeepAspect.ToolTip")); // 260531Cl
+            checkBoxKeepAspect.Size = new System.Drawing.Size(126, 19);
+            checkBoxKeepAspect.TabIndex = 3;
+            checkBoxKeepAspect.Text = "Keep Aspect Ratio";
+            checkBoxKeepAspect.UseVisualStyleBackColor = true;
             // 
             // FormResolution
             // 
-            this.AcceptButton = this.buttonOK;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.CancelButton = this.buttonCancel;
-            this.ClientSize = new System.Drawing.Size(259, 76);
-            this.ControlBox = false;
-            this.Controls.Add(this.checkBoxKeepAspect);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.numericUpDownHeight);
-            this.Controls.Add(this.numericUpDownWidth);
-            this.Controls.Add(this.buttonCancel);
-            this.Controls.Add(this.buttonOK);
-            this.Controls.Add(this.label1);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
-            this.Name = "FormResolution";
-            this.Text = "Image Size";
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownWidth)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownHeight)).EndInit();
-            this.ResumeLayout(false);
-            this.PerformLayout();
+            AcceptButton = buttonOK;
+            AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            CancelButton = buttonCancel;
+            ClientSize = new System.Drawing.Size(259, 76);
+            ControlBox = false;
+            Controls.Add(checkBoxKeepAspect);
+            Controls.Add(label3);
+            Controls.Add(label4);
+            Controls.Add(label2);
+            Controls.Add(label5);
+            Controls.Add(numericUpDownHeight);
+            Controls.Add(numericUpDownWidth);
+            Controls.Add(buttonCancel);
+            Controls.Add(buttonOK);
+            Controls.Add(label1);
+            Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            MaximizeBox = false;
+            MinimizeBox = false;
+            Name = "FormResolution";
+            Text = "Image Size";
+            ((System.ComponentModel.ISupportInitialize)(numericUpDownWidth)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(numericUpDownHeight)).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
 
         }
 

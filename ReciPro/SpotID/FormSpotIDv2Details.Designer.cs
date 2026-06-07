@@ -32,286 +32,286 @@
             toolTip.InitialDelay = 500; // 260601Cl 追加
             toolTip.ReshowDelay = 100; // 260601Cl 追加
             captureExtender.SetCapture(this, true); // 260521Cl 追加: GUI監査キャプチャ対象 (フォーム全体)
-            this.scalablePictureBoxAdvanced = new Crystallography.Controls.ScalablePictureBoxAdvanced();
-            this.graphControlNWtoSE = new Crystallography.Controls.GraphControl();
-            this.graphControlWtoE = new Crystallography.Controls.GraphControl();
-            this.graphControlSWtoNE = new Crystallography.Controls.GraphControl();
-            this.graphControlNtoS = new Crystallography.Controls.GraphControl();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
-            this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
-            this.flowLayoutPanel5 = new System.Windows.Forms.FlowLayoutPanel();
-            this.flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
-            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.flowLayoutPanel1.SuspendLayout();
-            this.flowLayoutPanel2.SuspendLayout();
-            this.flowLayoutPanel3.SuspendLayout();
-            this.flowLayoutPanel5.SuspendLayout();
-            this.flowLayoutPanel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
-            this.splitContainer1.Panel1.SuspendLayout();
-            this.splitContainer1.Panel2.SuspendLayout();
-            this.splitContainer1.SuspendLayout();
-            this.SuspendLayout();
+            scalablePictureBoxAdvanced = new Crystallography.Controls.ScalablePictureBoxAdvanced();
+            graphControlNWtoSE = new Crystallography.Controls.GraphControl();
+            graphControlWtoE = new Crystallography.Controls.GraphControl();
+            graphControlSWtoNE = new Crystallography.Controls.GraphControl();
+            graphControlNtoS = new Crystallography.Controls.GraphControl();
+            label1 = new System.Windows.Forms.Label();
+            label2 = new System.Windows.Forms.Label();
+            label3 = new System.Windows.Forms.Label();
+            label4 = new System.Windows.Forms.Label();
+            flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
+            flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
+            flowLayoutPanel5 = new System.Windows.Forms.FlowLayoutPanel();
+            flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
+            splitContainer1 = new System.Windows.Forms.SplitContainer();
+            flowLayoutPanel1.SuspendLayout();
+            flowLayoutPanel2.SuspendLayout();
+            flowLayoutPanel3.SuspendLayout();
+            flowLayoutPanel5.SuspendLayout();
+            flowLayoutPanel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(splitContainer1)).BeginInit();
+            splitContainer1.Panel1.SuspendLayout();
+            splitContainer1.Panel2.SuspendLayout();
+            splitContainer1.SuspendLayout();
+            SuspendLayout();
             // 
             // scalablePictureBoxAdvanced
             // 
-            this.scalablePictureBoxAdvanced.Cursor = System.Windows.Forms.Cursors.Default;
-            this.scalablePictureBoxAdvanced.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.scalablePictureBoxAdvanced.FixZoomAndCenter = false;
-            this.scalablePictureBoxAdvanced.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.scalablePictureBoxAdvanced.FrequencyGraphVisible = false;
-            this.scalablePictureBoxAdvanced.ImageFilter_DustAndScratches = false;
-            this.scalablePictureBoxAdvanced.ImageFilter_DustAndScratchesRadius = 1D;
-            this.scalablePictureBoxAdvanced.ImageFilter_DustAndScratchesThreshold = 3D;
-            this.scalablePictureBoxAdvanced.ImageFilter_DustAndScratchesVisible = false;
-            this.scalablePictureBoxAdvanced.ImageFilter_GaussianBlur = false;
-            this.scalablePictureBoxAdvanced.ImageFilter_GaussianBlurRadius = 1D;
-            this.scalablePictureBoxAdvanced.ImageFilter_GaussianBlurVisible = false;
-            this.scalablePictureBoxAdvanced.ImageFilterVisible = false;
-            this.scalablePictureBoxAdvanced.Location = new System.Drawing.Point(0, 0);
-            this.scalablePictureBoxAdvanced.LogScaleBar = false;
-            this.scalablePictureBoxAdvanced.LowerIntensity = 0D;
-            this.scalablePictureBoxAdvanced.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.scalablePictureBoxAdvanced.MaximumIntensity = 255D;
-            this.scalablePictureBoxAdvanced.MinimumIntensity = 0D;
-            this.scalablePictureBoxAdvanced.MousePositionLabelVisible = false;
-            this.scalablePictureBoxAdvanced.Name = "scalablePictureBoxAdvanced";
-            this.scalablePictureBoxAdvanced.ShowGradiaent = true;
-            this.scalablePictureBoxAdvanced.Size = new System.Drawing.Size(391, 474);
-            this.scalablePictureBoxAdvanced.StatusLabel = " ";
-            this.scalablePictureBoxAdvanced.StatusProgress = 0D;
-            this.scalablePictureBoxAdvanced.StatusVisible = false;
-            this.scalablePictureBoxAdvanced.TabIndex = 3;
-            this.scalablePictureBoxAdvanced.TrackBarVisible = true;
-            this.scalablePictureBoxAdvanced.UpperIntensity = 255D;
-            this.scalablePictureBoxAdvanced.VisibleGradient = true;
+            scalablePictureBoxAdvanced.Cursor = System.Windows.Forms.Cursors.Default;
+            scalablePictureBoxAdvanced.Dock = System.Windows.Forms.DockStyle.Fill;
+            scalablePictureBoxAdvanced.FixZoomAndCenter = false;
+            scalablePictureBoxAdvanced.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            scalablePictureBoxAdvanced.FrequencyGraphVisible = false;
+            scalablePictureBoxAdvanced.ImageFilter_DustAndScratches = false;
+            scalablePictureBoxAdvanced.ImageFilter_DustAndScratchesRadius = 1D;
+            scalablePictureBoxAdvanced.ImageFilter_DustAndScratchesThreshold = 3D;
+            scalablePictureBoxAdvanced.ImageFilter_DustAndScratchesVisible = false;
+            scalablePictureBoxAdvanced.ImageFilter_GaussianBlur = false;
+            scalablePictureBoxAdvanced.ImageFilter_GaussianBlurRadius = 1D;
+            scalablePictureBoxAdvanced.ImageFilter_GaussianBlurVisible = false;
+            scalablePictureBoxAdvanced.ImageFilterVisible = false;
+            scalablePictureBoxAdvanced.Location = new System.Drawing.Point(0, 0);
+            scalablePictureBoxAdvanced.LogScaleBar = false;
+            scalablePictureBoxAdvanced.LowerIntensity = 0D;
+            scalablePictureBoxAdvanced.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            scalablePictureBoxAdvanced.MaximumIntensity = 255D;
+            scalablePictureBoxAdvanced.MinimumIntensity = 0D;
+            scalablePictureBoxAdvanced.MousePositionLabelVisible = false;
+            scalablePictureBoxAdvanced.Name = "scalablePictureBoxAdvanced";
+            scalablePictureBoxAdvanced.ShowGradiaent = true;
+            scalablePictureBoxAdvanced.Size = new System.Drawing.Size(391, 474);
+            scalablePictureBoxAdvanced.StatusLabel = " ";
+            scalablePictureBoxAdvanced.StatusProgress = 0D;
+            scalablePictureBoxAdvanced.StatusVisible = false;
+            scalablePictureBoxAdvanced.TabIndex = 3;
+            scalablePictureBoxAdvanced.TrackBarVisible = true;
+            scalablePictureBoxAdvanced.UpperIntensity = 255D;
+            scalablePictureBoxAdvanced.VisibleGradient = true;
             // 
             // graphControlNWtoSE
             // 
-            this.graphControlNWtoSE.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.graphControlNWtoSE.GraphTitle = "";
-            this.graphControlNWtoSE.Interpolation = false;
-            this.graphControlNWtoSE.Location = new System.Drawing.Point(1, 18);
-            this.graphControlNWtoSE.Margin = new System.Windows.Forms.Padding(1);
-            this.graphControlNWtoSE.MousePositionVisible = false;
-            this.graphControlNWtoSE.Name = "graphControlNWtoSE";
-            this.graphControlNWtoSE.Size = new System.Drawing.Size(250, 208);
-            this.graphControlNWtoSE.Smoothing = false;
-            this.graphControlNWtoSE.TabIndex = 2;
-            this.graphControlNWtoSE.UpperPanelFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.graphControlNWtoSE.UpperPanelVisible = false;
+            graphControlNWtoSE.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            graphControlNWtoSE.GraphTitle = "";
+            graphControlNWtoSE.Interpolation = false;
+            graphControlNWtoSE.Location = new System.Drawing.Point(1, 18);
+            graphControlNWtoSE.Margin = new System.Windows.Forms.Padding(1);
+            graphControlNWtoSE.MousePositionVisible = false;
+            graphControlNWtoSE.Name = "graphControlNWtoSE";
+            graphControlNWtoSE.Size = new System.Drawing.Size(250, 208);
+            graphControlNWtoSE.Smoothing = false;
+            graphControlNWtoSE.TabIndex = 2;
+            graphControlNWtoSE.UpperPanelFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            graphControlNWtoSE.UpperPanelVisible = false;
             // 
             // graphControlWtoE
             // 
-            this.graphControlWtoE.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.graphControlWtoE.GraphTitle = "";
-            this.graphControlWtoE.Interpolation = false;
-            this.graphControlWtoE.Location = new System.Drawing.Point(1, 18);
-            this.graphControlWtoE.Margin = new System.Windows.Forms.Padding(1);
-            this.graphControlWtoE.MousePositionVisible = false;
-            this.graphControlWtoE.Name = "graphControlWtoE";
-            this.graphControlWtoE.Size = new System.Drawing.Size(250, 208);
-            this.graphControlWtoE.Smoothing = false;
-            this.graphControlWtoE.TabIndex = 2;
-            this.graphControlWtoE.UpperPanelFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.graphControlWtoE.UpperPanelVisible = false;
+            graphControlWtoE.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            graphControlWtoE.GraphTitle = "";
+            graphControlWtoE.Interpolation = false;
+            graphControlWtoE.Location = new System.Drawing.Point(1, 18);
+            graphControlWtoE.Margin = new System.Windows.Forms.Padding(1);
+            graphControlWtoE.MousePositionVisible = false;
+            graphControlWtoE.Name = "graphControlWtoE";
+            graphControlWtoE.Size = new System.Drawing.Size(250, 208);
+            graphControlWtoE.Smoothing = false;
+            graphControlWtoE.TabIndex = 2;
+            graphControlWtoE.UpperPanelFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            graphControlWtoE.UpperPanelVisible = false;
             // 
             // graphControlSWtoNE
             // 
-            this.graphControlSWtoNE.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.graphControlSWtoNE.GraphTitle = "";
-            this.graphControlSWtoNE.Interpolation = false;
-            this.graphControlSWtoNE.Location = new System.Drawing.Point(1, 18);
-            this.graphControlSWtoNE.Margin = new System.Windows.Forms.Padding(1);
-            this.graphControlSWtoNE.MousePositionVisible = false;
-            this.graphControlSWtoNE.Name = "graphControlSWtoNE";
-            this.graphControlSWtoNE.Size = new System.Drawing.Size(250, 208);
-            this.graphControlSWtoNE.Smoothing = false;
-            this.graphControlSWtoNE.TabIndex = 2;
-            this.graphControlSWtoNE.UpperPanelFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.graphControlSWtoNE.UpperPanelVisible = false;
+            graphControlSWtoNE.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            graphControlSWtoNE.GraphTitle = "";
+            graphControlSWtoNE.Interpolation = false;
+            graphControlSWtoNE.Location = new System.Drawing.Point(1, 18);
+            graphControlSWtoNE.Margin = new System.Windows.Forms.Padding(1);
+            graphControlSWtoNE.MousePositionVisible = false;
+            graphControlSWtoNE.Name = "graphControlSWtoNE";
+            graphControlSWtoNE.Size = new System.Drawing.Size(250, 208);
+            graphControlSWtoNE.Smoothing = false;
+            graphControlSWtoNE.TabIndex = 2;
+            graphControlSWtoNE.UpperPanelFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            graphControlSWtoNE.UpperPanelVisible = false;
             // 
             // graphControlNtoS
             // 
-            this.graphControlNtoS.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.graphControlNtoS.GraphTitle = "";
-            this.graphControlNtoS.Interpolation = false;
-            this.graphControlNtoS.Location = new System.Drawing.Point(1, 18);
-            this.graphControlNtoS.Margin = new System.Windows.Forms.Padding(1);
-            this.graphControlNtoS.MousePositionVisible = false;
-            this.graphControlNtoS.Name = "graphControlNtoS";
-            this.graphControlNtoS.Size = new System.Drawing.Size(250, 208);
-            this.graphControlNtoS.Smoothing = false;
-            this.graphControlNtoS.TabIndex = 2;
-            this.graphControlNtoS.UpperPanelFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.graphControlNtoS.UpperPanelVisible = false;
+            graphControlNtoS.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            graphControlNtoS.GraphTitle = "";
+            graphControlNtoS.Interpolation = false;
+            graphControlNtoS.Location = new System.Drawing.Point(1, 18);
+            graphControlNtoS.Margin = new System.Windows.Forms.Padding(1);
+            graphControlNtoS.MousePositionVisible = false;
+            graphControlNtoS.Name = "graphControlNtoS";
+            graphControlNtoS.Size = new System.Drawing.Size(250, 208);
+            graphControlNtoS.Smoothing = false;
+            graphControlNtoS.TabIndex = 2;
+            graphControlNtoS.UpperPanelFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            graphControlNtoS.UpperPanelVisible = false;
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.ForeColor = System.Drawing.Color.Red;
-            this.label1.Location = new System.Drawing.Point(3, 0);
-            this.label1.Name = "label1";
-            this.toolTip.SetToolTip(this.label1, resources.GetString("label1.ToolTip")); // 260531Cl
-            this.label1.Size = new System.Drawing.Size(51, 17);
-            this.label1.TabIndex = 5;
-            this.label1.Text = "N to S";
+            label1.AutoSize = true;
+            label1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            label1.ForeColor = System.Drawing.Color.Red;
+            label1.Location = new System.Drawing.Point(3, 0);
+            label1.Name = "label1";
+            toolTip.SetToolTip(label1, resources.GetString("label1.ToolTip")); // 260531Cl
+            label1.Size = new System.Drawing.Size(51, 17);
+            label1.TabIndex = 5;
+            label1.Text = "N to S";
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label2.ForeColor = System.Drawing.Color.Orange;
-            this.label2.Location = new System.Drawing.Point(3, 0);
-            this.label2.Name = "label2";
-            this.toolTip.SetToolTip(this.label2, resources.GetString("label2.ToolTip")); // 260531Cl
-            this.label2.Size = new System.Drawing.Size(53, 17);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "W to E";
+            label2.AutoSize = true;
+            label2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            label2.ForeColor = System.Drawing.Color.Orange;
+            label2.Location = new System.Drawing.Point(3, 0);
+            label2.Name = "label2";
+            toolTip.SetToolTip(label2, resources.GetString("label2.ToolTip")); // 260531Cl
+            label2.Size = new System.Drawing.Size(53, 17);
+            label2.TabIndex = 5;
+            label2.Text = "W to E";
             // 
             // label3
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label3.ForeColor = System.Drawing.Color.OrangeRed;
-            this.label3.Location = new System.Drawing.Point(3, 0);
-            this.label3.Name = "label3";
-            this.toolTip.SetToolTip(this.label3, resources.GetString("label3.ToolTip")); // 260531Cl
-            this.label3.Size = new System.Drawing.Size(77, 17);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "SW to NE ";
+            label3.AutoSize = true;
+            label3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            label3.ForeColor = System.Drawing.Color.OrangeRed;
+            label3.Location = new System.Drawing.Point(3, 0);
+            label3.Name = "label3";
+            toolTip.SetToolTip(label3, resources.GetString("label3.ToolTip")); // 260531Cl
+            label3.Size = new System.Drawing.Size(77, 17);
+            label3.TabIndex = 5;
+            label3.Text = "SW to NE ";
             // 
             // label4
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label4.ForeColor = System.Drawing.Color.Purple;
-            this.label4.Location = new System.Drawing.Point(3, 0);
-            this.label4.Name = "label4";
-            this.toolTip.SetToolTip(this.label4, resources.GetString("label4.ToolTip")); // 260531Cl
-            this.label4.Size = new System.Drawing.Size(72, 17);
-            this.label4.TabIndex = 5;
-            this.label4.Text = "NW to SE";
-            this.label4.Click += new System.EventHandler(this.label4_Click);
+            label4.AutoSize = true;
+            label4.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            label4.ForeColor = System.Drawing.Color.Purple;
+            label4.Location = new System.Drawing.Point(3, 0);
+            label4.Name = "label4";
+            toolTip.SetToolTip(label4, resources.GetString("label4.ToolTip")); // 260531Cl
+            label4.Size = new System.Drawing.Size(72, 17);
+            label4.TabIndex = 5;
+            label4.Text = "NW to SE";
+            label4.Click += new System.EventHandler(label4_Click);
             // 
             // flowLayoutPanel1
             // 
-            this.flowLayoutPanel1.Controls.Add(this.flowLayoutPanel2);
-            this.flowLayoutPanel1.Controls.Add(this.flowLayoutPanel3);
-            this.flowLayoutPanel1.Controls.Add(this.flowLayoutPanel5);
-            this.flowLayoutPanel1.Controls.Add(this.flowLayoutPanel4);
-            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(524, 474);
-            this.flowLayoutPanel1.TabIndex = 6;
+            flowLayoutPanel1.Controls.Add(flowLayoutPanel2);
+            flowLayoutPanel1.Controls.Add(flowLayoutPanel3);
+            flowLayoutPanel1.Controls.Add(flowLayoutPanel5);
+            flowLayoutPanel1.Controls.Add(flowLayoutPanel4);
+            flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            flowLayoutPanel1.Name = "flowLayoutPanel1";
+            flowLayoutPanel1.Size = new System.Drawing.Size(524, 474);
+            flowLayoutPanel1.TabIndex = 6;
             // 
             // flowLayoutPanel2
             // 
-            this.flowLayoutPanel2.AutoSize = true;
-            this.flowLayoutPanel2.Controls.Add(this.label1);
-            this.flowLayoutPanel2.Controls.Add(this.graphControlNtoS);
-            this.flowLayoutPanel2.Cursor = System.Windows.Forms.Cursors.Default;
-            this.flowLayoutPanel2.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(1, 1);
-            this.flowLayoutPanel2.Margin = new System.Windows.Forms.Padding(1);
-            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(252, 227);
-            this.flowLayoutPanel2.TabIndex = 6;
+            flowLayoutPanel2.AutoSize = true;
+            flowLayoutPanel2.Controls.Add(label1);
+            flowLayoutPanel2.Controls.Add(graphControlNtoS);
+            flowLayoutPanel2.Cursor = System.Windows.Forms.Cursors.Default;
+            flowLayoutPanel2.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            flowLayoutPanel2.Location = new System.Drawing.Point(1, 1);
+            flowLayoutPanel2.Margin = new System.Windows.Forms.Padding(1);
+            flowLayoutPanel2.Name = "flowLayoutPanel2";
+            flowLayoutPanel2.Size = new System.Drawing.Size(252, 227);
+            flowLayoutPanel2.TabIndex = 6;
             // 
             // flowLayoutPanel3
             // 
-            this.flowLayoutPanel3.AutoSize = true;
-            this.flowLayoutPanel3.Controls.Add(this.label2);
-            this.flowLayoutPanel3.Controls.Add(this.graphControlWtoE);
-            this.flowLayoutPanel3.Cursor = System.Windows.Forms.Cursors.Default;
-            this.flowLayoutPanel3.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flowLayoutPanel3.Location = new System.Drawing.Point(255, 1);
-            this.flowLayoutPanel3.Margin = new System.Windows.Forms.Padding(1);
-            this.flowLayoutPanel3.Name = "flowLayoutPanel3";
-            this.flowLayoutPanel3.Size = new System.Drawing.Size(252, 227);
-            this.flowLayoutPanel3.TabIndex = 6;
+            flowLayoutPanel3.AutoSize = true;
+            flowLayoutPanel3.Controls.Add(label2);
+            flowLayoutPanel3.Controls.Add(graphControlWtoE);
+            flowLayoutPanel3.Cursor = System.Windows.Forms.Cursors.Default;
+            flowLayoutPanel3.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            flowLayoutPanel3.Location = new System.Drawing.Point(255, 1);
+            flowLayoutPanel3.Margin = new System.Windows.Forms.Padding(1);
+            flowLayoutPanel3.Name = "flowLayoutPanel3";
+            flowLayoutPanel3.Size = new System.Drawing.Size(252, 227);
+            flowLayoutPanel3.TabIndex = 6;
             // 
             // flowLayoutPanel5
             // 
-            this.flowLayoutPanel5.AutoSize = true;
-            this.flowLayoutPanel5.Controls.Add(this.label3);
-            this.flowLayoutPanel5.Controls.Add(this.graphControlSWtoNE);
-            this.flowLayoutPanel5.Cursor = System.Windows.Forms.Cursors.Default;
-            this.flowLayoutPanel5.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flowLayoutPanel5.Location = new System.Drawing.Point(1, 230);
-            this.flowLayoutPanel5.Margin = new System.Windows.Forms.Padding(1);
-            this.flowLayoutPanel5.Name = "flowLayoutPanel5";
-            this.flowLayoutPanel5.Size = new System.Drawing.Size(252, 227);
-            this.flowLayoutPanel5.TabIndex = 6;
+            flowLayoutPanel5.AutoSize = true;
+            flowLayoutPanel5.Controls.Add(label3);
+            flowLayoutPanel5.Controls.Add(graphControlSWtoNE);
+            flowLayoutPanel5.Cursor = System.Windows.Forms.Cursors.Default;
+            flowLayoutPanel5.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            flowLayoutPanel5.Location = new System.Drawing.Point(1, 230);
+            flowLayoutPanel5.Margin = new System.Windows.Forms.Padding(1);
+            flowLayoutPanel5.Name = "flowLayoutPanel5";
+            flowLayoutPanel5.Size = new System.Drawing.Size(252, 227);
+            flowLayoutPanel5.TabIndex = 6;
             // 
             // flowLayoutPanel4
             // 
-            this.flowLayoutPanel4.AutoSize = true;
-            this.flowLayoutPanel4.Controls.Add(this.label4);
-            this.flowLayoutPanel4.Controls.Add(this.graphControlNWtoSE);
-            this.flowLayoutPanel4.Cursor = System.Windows.Forms.Cursors.Default;
-            this.flowLayoutPanel4.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flowLayoutPanel4.Location = new System.Drawing.Point(255, 230);
-            this.flowLayoutPanel4.Margin = new System.Windows.Forms.Padding(1);
-            this.flowLayoutPanel4.Name = "flowLayoutPanel4";
-            this.flowLayoutPanel4.Size = new System.Drawing.Size(252, 227);
-            this.flowLayoutPanel4.TabIndex = 6;
+            flowLayoutPanel4.AutoSize = true;
+            flowLayoutPanel4.Controls.Add(label4);
+            flowLayoutPanel4.Controls.Add(graphControlNWtoSE);
+            flowLayoutPanel4.Cursor = System.Windows.Forms.Cursors.Default;
+            flowLayoutPanel4.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            flowLayoutPanel4.Location = new System.Drawing.Point(255, 230);
+            flowLayoutPanel4.Margin = new System.Windows.Forms.Padding(1);
+            flowLayoutPanel4.Name = "flowLayoutPanel4";
+            flowLayoutPanel4.Size = new System.Drawing.Size(252, 227);
+            flowLayoutPanel4.TabIndex = 6;
             // 
             // splitContainer1
             // 
-            this.splitContainer1.Cursor = System.Windows.Forms.Cursors.VSplit;
-            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
-            this.splitContainer1.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer1.Name = "splitContainer1";
+            splitContainer1.Cursor = System.Windows.Forms.Cursors.VSplit;
+            splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            splitContainer1.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            splitContainer1.Location = new System.Drawing.Point(0, 0);
+            splitContainer1.Name = "splitContainer1";
             // 
             // splitContainer1.Panel1
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.scalablePictureBoxAdvanced);
-            this.splitContainer1.Panel1.Cursor = System.Windows.Forms.Cursors.Default;
+            splitContainer1.Panel1.Controls.Add(scalablePictureBoxAdvanced);
+            splitContainer1.Panel1.Cursor = System.Windows.Forms.Cursors.Default;
             // 
             // splitContainer1.Panel2
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.flowLayoutPanel1);
-            this.splitContainer1.Panel2.Cursor = System.Windows.Forms.Cursors.Default;
-            this.splitContainer1.Size = new System.Drawing.Size(919, 474);
-            this.splitContainer1.SplitterDistance = 391;
-            this.splitContainer1.TabIndex = 7;
+            splitContainer1.Panel2.Controls.Add(flowLayoutPanel1);
+            splitContainer1.Panel2.Cursor = System.Windows.Forms.Cursors.Default;
+            splitContainer1.Size = new System.Drawing.Size(919, 474);
+            splitContainer1.SplitterDistance = 391;
+            splitContainer1.TabIndex = 7;
             // 
             // FormSpotDetails
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(919, 474);
-            this.Controls.Add(this.splitContainer1);
-            this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Name = "FormSpotDetails";
-            this.Text = "FormSpotDetails";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormSpotDetails_FormClosing);
-            this.VisibleChanged += new System.EventHandler(this.FormSpotDetails_VisibleChanged);
-            this.flowLayoutPanel1.ResumeLayout(false);
-            this.flowLayoutPanel1.PerformLayout();
-            this.flowLayoutPanel2.ResumeLayout(false);
-            this.flowLayoutPanel2.PerformLayout();
-            this.flowLayoutPanel3.ResumeLayout(false);
-            this.flowLayoutPanel3.PerformLayout();
-            this.flowLayoutPanel5.ResumeLayout(false);
-            this.flowLayoutPanel5.PerformLayout();
-            this.flowLayoutPanel4.ResumeLayout(false);
-            this.flowLayoutPanel4.PerformLayout();
-            this.splitContainer1.Panel1.ResumeLayout(false);
-            this.splitContainer1.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
-            this.splitContainer1.ResumeLayout(false);
-            this.ResumeLayout(false);
+            AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            ClientSize = new System.Drawing.Size(919, 474);
+            Controls.Add(splitContainer1);
+            Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            Name = "FormSpotDetails";
+            Text = "FormSpotDetails";
+            FormClosing += new System.Windows.Forms.FormClosingEventHandler(FormSpotDetails_FormClosing);
+            VisibleChanged += new System.EventHandler(FormSpotDetails_VisibleChanged);
+            flowLayoutPanel1.ResumeLayout(false);
+            flowLayoutPanel1.PerformLayout();
+            flowLayoutPanel2.ResumeLayout(false);
+            flowLayoutPanel2.PerformLayout();
+            flowLayoutPanel3.ResumeLayout(false);
+            flowLayoutPanel3.PerformLayout();
+            flowLayoutPanel5.ResumeLayout(false);
+            flowLayoutPanel5.PerformLayout();
+            flowLayoutPanel4.ResumeLayout(false);
+            flowLayoutPanel4.PerformLayout();
+            splitContainer1.Panel1.ResumeLayout(false);
+            splitContainer1.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(splitContainer1)).EndInit();
+            splitContainer1.ResumeLayout(false);
+            ResumeLayout(false);
 
         }
 

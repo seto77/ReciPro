@@ -25,402 +25,402 @@
         private void InitializeComponent()
         {
             captureExtender.SetCapture(this, true); // 260521Cl 追加: GUI監査キャプチャ対象 (フォーム全体)
-            this.components = new System.ComponentModel.Container();
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormSpotIDv1Results));
             toolTip = new System.Windows.Forms.ToolTip(components); // (260531Ch)
             toolTip.IsBalloon = true; // 260531Cl 追加: バルーン表示に統一
             toolTip.AutoPopDelay = 10000; // 260601Cl 追加: 長文表示時間を延長(共通標準値)
             toolTip.InitialDelay = 500; // 260601Cl 追加
             toolTip.ReshowDelay = 100; // 260601Cl 追加
-            this.bindingSource2 = new System.Windows.Forms.BindingSource(this.components);
-            this.dataSet = new System.Data.DataSet();
-            this.dataTable1 = new System.Data.DataTable();
-            this.dataColumnNumber = new System.Data.DataColumn();
-            this.dataColumnZoneAxis = new System.Data.DataColumn();
-            this.dataColumnG1 = new System.Data.DataColumn();
-            this.dataColumnD1 = new System.Data.DataColumn();
-            this.dataColumnG2 = new System.Data.DataColumn();
-            this.dataColumnD2 = new System.Data.DataColumn();
-            this.dataColumnG3 = new System.Data.DataColumn();
-            this.dataColumnD3 = new System.Data.DataColumn();
-            this.dataColumnTheta = new System.Data.DataColumn();
-            this.dataColumn1 = new System.Data.DataColumn();
-            this.dataTable2 = new System.Data.DataTable();
-            this.dataColumnID = new System.Data.DataColumn();
-            this.dataColumnPhoto1ZoneAxis = new System.Data.DataColumn();
-            this.dataColumnPhoto2ZoneAxis = new System.Data.DataColumn();
-            this.dataColumnPhoto3ZoneAxis = new System.Data.DataColumn();
-            this.dataColumnAngleBet12 = new System.Data.DataColumn();
-            this.dataColumnAngleBet23 = new System.Data.DataColumn();
-            this.dataColumnAngleBet31 = new System.Data.DataColumn();
-            this.dataColumn2 = new System.Data.DataColumn();
-            this.label1 = new System.Windows.Forms.Label();
+            bindingSource2 = new System.Windows.Forms.BindingSource(components);
+            dataSet = new System.Data.DataSet();
+            dataTable1 = new System.Data.DataTable();
+            dataColumnNumber = new System.Data.DataColumn();
+            dataColumnZoneAxis = new System.Data.DataColumn();
+            dataColumnG1 = new System.Data.DataColumn();
+            dataColumnD1 = new System.Data.DataColumn();
+            dataColumnG2 = new System.Data.DataColumn();
+            dataColumnD2 = new System.Data.DataColumn();
+            dataColumnG3 = new System.Data.DataColumn();
+            dataColumnD3 = new System.Data.DataColumn();
+            dataColumnTheta = new System.Data.DataColumn();
+            dataColumn1 = new System.Data.DataColumn();
+            dataTable2 = new System.Data.DataTable();
+            dataColumnID = new System.Data.DataColumn();
+            dataColumnPhoto1ZoneAxis = new System.Data.DataColumn();
+            dataColumnPhoto2ZoneAxis = new System.Data.DataColumn();
+            dataColumnPhoto3ZoneAxis = new System.Data.DataColumn();
+            dataColumnAngleBet12 = new System.Data.DataColumn();
+            dataColumnAngleBet23 = new System.Data.DataColumn();
+            dataColumnAngleBet31 = new System.Data.DataColumn();
+            dataColumn2 = new System.Data.DataColumn();
+            label1 = new System.Windows.Forms.Label();
             // this.dataGridView1 = new System.Windows.Forms.DataGridView(); // 260518Cl 旧実装: DPI変更時に列幅が追従しない
-            this.dataGridView1 = new Crystallography.Controls.DpiAwareDataGridView(); // 260518Cl
-            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            dataGridView1 = new Crystallography.Controls.DpiAwareDataGridView(); // 260518Cl
+            bindingSource1 = new System.Windows.Forms.BindingSource(components);
             // this.dataGridView2 = new System.Windows.Forms.DataGridView(); // 260518Cl 旧実装
-            this.dataGridView2 = new Crystallography.Controls.DpiAwareDataGridView(); // 260518Cl
-            this.Phase = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.zoneAxisDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.g1DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.d1DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.g2DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.d2DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.g3DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.d3DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.θDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.photo1ZoneAxisDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.photo2ZoneAxisDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.photo3ZoneAxisDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.angleBetweenPhoto12DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.angleBetweenPhoto23DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.angleBetweenPhoto31DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataTable1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataTable2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
-            this.SuspendLayout();
+            dataGridView2 = new Crystallography.Controls.DpiAwareDataGridView(); // 260518Cl
+            Phase = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            zoneAxisDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            g1DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            d1DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            g2DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            d2DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            g3DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            d3DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            θDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            photo1ZoneAxisDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            photo2ZoneAxisDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            photo3ZoneAxisDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            angleBetweenPhoto12DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            angleBetweenPhoto23DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            angleBetweenPhoto31DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)(bindingSource2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(dataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(dataTable1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(dataTable2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(bindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(dataGridView2)).BeginInit();
+            SuspendLayout();
             // 
             // bindingSource2
             // 
-            this.bindingSource2.DataMember = "Table2";
-            this.bindingSource2.DataSource = this.dataSet;
+            bindingSource2.DataMember = "Table2";
+            bindingSource2.DataSource = dataSet;
             // 
             // dataSet
             // 
-            this.dataSet.DataSetName = "NewDataSet";
-            this.dataSet.Tables.AddRange(new System.Data.DataTable[] {
-            this.dataTable1,
-            this.dataTable2});
+            dataSet.DataSetName = "NewDataSet";
+            dataSet.Tables.AddRange(new System.Data.DataTable[] {
+            dataTable1,
+            dataTable2});
             // 
             // dataTable1
             // 
-            this.dataTable1.Columns.AddRange(new System.Data.DataColumn[] {
-            this.dataColumnNumber,
-            this.dataColumnZoneAxis,
-            this.dataColumnG1,
-            this.dataColumnD1,
-            this.dataColumnG2,
-            this.dataColumnD2,
-            this.dataColumnG3,
-            this.dataColumnD3,
-            this.dataColumnTheta,
-            this.dataColumn1});
-            this.dataTable1.TableName = "Table1";
+            dataTable1.Columns.AddRange(new System.Data.DataColumn[] {
+            dataColumnNumber,
+            dataColumnZoneAxis,
+            dataColumnG1,
+            dataColumnD1,
+            dataColumnG2,
+            dataColumnD2,
+            dataColumnG3,
+            dataColumnD3,
+            dataColumnTheta,
+            dataColumn1});
+            dataTable1.TableName = "Table1";
             // 
             // dataColumnNumber
             // 
-            this.dataColumnNumber.ColumnName = "Number";
-            this.dataColumnNumber.DataType = typeof(int);
+            dataColumnNumber.ColumnName = "Number";
+            dataColumnNumber.DataType = typeof(int);
             // 
             // dataColumnZoneAxis
             // 
-            this.dataColumnZoneAxis.ColumnName = "Zone Axis";
+            dataColumnZoneAxis.ColumnName = "Zone Axis";
             // 
             // dataColumnG1
             // 
-            this.dataColumnG1.ColumnName = "g1";
+            dataColumnG1.ColumnName = "g1";
             // 
             // dataColumnD1
             // 
-            this.dataColumnD1.ColumnName = "d1";
+            dataColumnD1.ColumnName = "d1";
             // 
             // dataColumnG2
             // 
-            this.dataColumnG2.Caption = "g2";
-            this.dataColumnG2.ColumnName = "g2";
+            dataColumnG2.Caption = "g2";
+            dataColumnG2.ColumnName = "g2";
             // 
             // dataColumnD2
             // 
-            this.dataColumnD2.ColumnName = "d2";
+            dataColumnD2.ColumnName = "d2";
             // 
             // dataColumnG3
             // 
-            this.dataColumnG3.Caption = "g3";
-            this.dataColumnG3.ColumnName = "g3";
+            dataColumnG3.Caption = "g3";
+            dataColumnG3.ColumnName = "g3";
             // 
             // dataColumnD3
             // 
-            this.dataColumnD3.ColumnName = "d3";
+            dataColumnD3.ColumnName = "d3";
             // 
             // dataColumnTheta
             // 
-            this.dataColumnTheta.ColumnName = "θ";
+            dataColumnTheta.ColumnName = "θ";
             // 
             // dataColumn1
             // 
-            this.dataColumn1.Caption = "Phase";
-            this.dataColumn1.ColumnName = "Phase";
+            dataColumn1.Caption = "Phase";
+            dataColumn1.ColumnName = "Phase";
             // 
             // dataTable2
             // 
-            this.dataTable2.Columns.AddRange(new System.Data.DataColumn[] {
-            this.dataColumnID,
-            this.dataColumnPhoto1ZoneAxis,
-            this.dataColumnPhoto2ZoneAxis,
-            this.dataColumnPhoto3ZoneAxis,
-            this.dataColumnAngleBet12,
-            this.dataColumnAngleBet23,
-            this.dataColumnAngleBet31,
-            this.dataColumn2});
-            this.dataTable2.TableName = "Table2";
+            dataTable2.Columns.AddRange(new System.Data.DataColumn[] {
+            dataColumnID,
+            dataColumnPhoto1ZoneAxis,
+            dataColumnPhoto2ZoneAxis,
+            dataColumnPhoto3ZoneAxis,
+            dataColumnAngleBet12,
+            dataColumnAngleBet23,
+            dataColumnAngleBet31,
+            dataColumn2});
+            dataTable2.TableName = "Table2";
             // 
             // dataColumnID
             // 
-            this.dataColumnID.ColumnName = "Number";
-            this.dataColumnID.DataType = typeof(int);
+            dataColumnID.ColumnName = "Number";
+            dataColumnID.DataType = typeof(int);
             // 
             // dataColumnPhoto1ZoneAxis
             // 
-            this.dataColumnPhoto1ZoneAxis.ColumnName = "Photo 1 Zone Axis";
+            dataColumnPhoto1ZoneAxis.ColumnName = "Photo 1 Zone Axis";
             // 
             // dataColumnPhoto2ZoneAxis
             // 
-            this.dataColumnPhoto2ZoneAxis.ColumnName = "Photo 2 Zone Axis";
+            dataColumnPhoto2ZoneAxis.ColumnName = "Photo 2 Zone Axis";
             // 
             // dataColumnPhoto3ZoneAxis
             // 
-            this.dataColumnPhoto3ZoneAxis.ColumnName = "Photo 3 Zone Axis";
+            dataColumnPhoto3ZoneAxis.ColumnName = "Photo 3 Zone Axis";
             // 
             // dataColumnAngleBet12
             // 
-            this.dataColumnAngleBet12.ColumnName = "Angle Between Photo 1 & 2";
+            dataColumnAngleBet12.ColumnName = "Angle Between Photo 1 & 2";
             // 
             // dataColumnAngleBet23
             // 
-            this.dataColumnAngleBet23.ColumnName = "Angle Between Photo 2 & 3";
+            dataColumnAngleBet23.ColumnName = "Angle Between Photo 2 & 3";
             // 
             // dataColumnAngleBet31
             // 
-            this.dataColumnAngleBet31.ColumnName = "Angle Between Photo 3 & 1";
+            dataColumnAngleBet31.ColumnName = "Angle Between Photo 3 & 1";
             // 
             // dataColumn2
             // 
-            this.dataColumn2.Caption = "Phase";
-            this.dataColumn2.ColumnName = "Phase";
+            dataColumn2.Caption = "Phase";
+            dataColumn2.ColumnName = "Phase";
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(5, 5);
-            this.label1.Name = "label1";
-            this.toolTip.SetToolTip(this.label1, resources.GetString("label1.ToolTip")); // 260531Cl
-            this.label1.Size = new System.Drawing.Size(38, 15);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "label1";
+            label1.AutoSize = true;
+            label1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            label1.Location = new System.Drawing.Point(5, 5);
+            label1.Name = "label1";
+            toolTip.SetToolTip(label1, resources.GetString("label1.ToolTip")); // 260531Cl
+            label1.Size = new System.Drawing.Size(38, 15);
+            label1.TabIndex = 1;
+            label1.Text = "label1";
             // 
             // dataGridView1
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            dataGridView1.AllowUserToAddRows = false;
+            dataGridView1.AllowUserToDeleteRows = false;
+            dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridView1.AutoGenerateColumns = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Phase,
-            this.zoneAxisDataGridViewTextBoxColumn,
-            this.g1DataGridViewTextBoxColumn,
-            this.d1DataGridViewTextBoxColumn,
-            this.g2DataGridViewTextBoxColumn,
-            this.d2DataGridViewTextBoxColumn,
-            this.g3DataGridViewTextBoxColumn,
-            this.d3DataGridViewTextBoxColumn,
-            this.θDataGridViewTextBoxColumn});
-            this.dataGridView1.DataSource = this.bindingSource1;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 31);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.dataGridView1.MultiSelect = false;
-            this.dataGridView1.Name = "dataGridView1";
-            this.toolTip.SetToolTip(this.dataGridView1, resources.GetString("dataGridView1.ToolTip")); // 260531Cl
-            this.dataGridView1.ReadOnly = true;
+            dataGridView1.AutoGenerateColumns = false;
+            dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            Phase,
+            zoneAxisDataGridViewTextBoxColumn,
+            g1DataGridViewTextBoxColumn,
+            d1DataGridViewTextBoxColumn,
+            g2DataGridViewTextBoxColumn,
+            d2DataGridViewTextBoxColumn,
+            g3DataGridViewTextBoxColumn,
+            d3DataGridViewTextBoxColumn,
+            θDataGridViewTextBoxColumn});
+            dataGridView1.DataSource = bindingSource1;
+            dataGridView1.Location = new System.Drawing.Point(0, 31);
+            dataGridView1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            dataGridView1.MultiSelect = false;
+            dataGridView1.Name = "dataGridView1";
+            toolTip.SetToolTip(dataGridView1, resources.GetString("dataGridView1.ToolTip")); // 260531Cl
+            dataGridView1.ReadOnly = true;
             //this.dataGridView1.RowTemplate.Height = 21;                                                                                             // 260413Cl DPIスケーリング対応のため削除
-            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(974, 309);
-            this.dataGridView1.TabIndex = 2;
-            this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
+            dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            dataGridView1.Size = new System.Drawing.Size(974, 309);
+            dataGridView1.TabIndex = 2;
+            dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(dataGridView1_CellDoubleClick);
             // 
             // bindingSource1
             // 
-            this.bindingSource1.DataMember = "Table1";
-            this.bindingSource1.DataSource = this.dataSet;
+            bindingSource1.DataMember = "Table1";
+            bindingSource1.DataSource = dataSet;
             // 
             // dataGridView2
             // 
-            this.dataGridView2.AllowUserToAddRows = false;
-            this.dataGridView2.AllowUserToDeleteRows = false;
-            this.dataGridView2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            dataGridView2.AllowUserToAddRows = false;
+            dataGridView2.AllowUserToDeleteRows = false;
+            dataGridView2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridView2.AutoGenerateColumns = false;
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1,
-            this.photo1ZoneAxisDataGridViewTextBoxColumn1,
-            this.photo2ZoneAxisDataGridViewTextBoxColumn,
-            this.photo3ZoneAxisDataGridViewTextBoxColumn,
-            this.angleBetweenPhoto12DataGridViewTextBoxColumn,
-            this.angleBetweenPhoto23DataGridViewTextBoxColumn,
-            this.angleBetweenPhoto31DataGridViewTextBoxColumn});
-            this.dataGridView2.DataSource = this.bindingSource2;
-            this.dataGridView2.Location = new System.Drawing.Point(0, 31);
-            this.dataGridView2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.dataGridView2.MultiSelect = false;
-            this.dataGridView2.Name = "dataGridView2";
-            this.toolTip.SetToolTip(this.dataGridView2, resources.GetString("dataGridView2.ToolTip")); // 260531Cl
-            this.dataGridView2.ReadOnly = true;
+            dataGridView2.AutoGenerateColumns = false;
+            dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            dataGridViewTextBoxColumn1,
+            photo1ZoneAxisDataGridViewTextBoxColumn1,
+            photo2ZoneAxisDataGridViewTextBoxColumn,
+            photo3ZoneAxisDataGridViewTextBoxColumn,
+            angleBetweenPhoto12DataGridViewTextBoxColumn,
+            angleBetweenPhoto23DataGridViewTextBoxColumn,
+            angleBetweenPhoto31DataGridViewTextBoxColumn});
+            dataGridView2.DataSource = bindingSource2;
+            dataGridView2.Location = new System.Drawing.Point(0, 31);
+            dataGridView2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            dataGridView2.MultiSelect = false;
+            dataGridView2.Name = "dataGridView2";
+            toolTip.SetToolTip(dataGridView2, resources.GetString("dataGridView2.ToolTip")); // 260531Cl
+            dataGridView2.ReadOnly = true;
             //this.dataGridView2.RowTemplate.Height = 21;                                                                                             // 260413Cl DPIスケーリング対応のため削除
-            this.dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView2.Size = new System.Drawing.Size(974, 309);
-            this.dataGridView2.TabIndex = 3;
-            this.dataGridView2.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellDoubleClick);
+            dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            dataGridView2.Size = new System.Drawing.Size(974, 309);
+            dataGridView2.TabIndex = 3;
+            dataGridView2.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(dataGridView2_CellDoubleClick);
             // 
             // Phase
             // 
-            this.Phase.DataPropertyName = "Phase";
-            this.Phase.HeaderText = "Phase";
-            this.Phase.Name = "Phase";
-            this.Phase.ReadOnly = true;
+            Phase.DataPropertyName = "Phase";
+            Phase.HeaderText = "Phase";
+            Phase.Name = "Phase";
+            Phase.ReadOnly = true;
             // 
             // zoneAxisDataGridViewTextBoxColumn
             // 
-            this.zoneAxisDataGridViewTextBoxColumn.DataPropertyName = "Zone Axis";
-            this.zoneAxisDataGridViewTextBoxColumn.HeaderText = "Zone Axis";
-            this.zoneAxisDataGridViewTextBoxColumn.Name = "zoneAxisDataGridViewTextBoxColumn";
-            this.zoneAxisDataGridViewTextBoxColumn.ReadOnly = true;
+            zoneAxisDataGridViewTextBoxColumn.DataPropertyName = "Zone Axis";
+            zoneAxisDataGridViewTextBoxColumn.HeaderText = "Zone Axis";
+            zoneAxisDataGridViewTextBoxColumn.Name = "zoneAxisDataGridViewTextBoxColumn";
+            zoneAxisDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // g1DataGridViewTextBoxColumn
             // 
-            this.g1DataGridViewTextBoxColumn.DataPropertyName = "g1";
-            this.g1DataGridViewTextBoxColumn.HeaderText = "g1";
-            this.g1DataGridViewTextBoxColumn.Name = "g1DataGridViewTextBoxColumn";
-            this.g1DataGridViewTextBoxColumn.ReadOnly = true;
+            g1DataGridViewTextBoxColumn.DataPropertyName = "g1";
+            g1DataGridViewTextBoxColumn.HeaderText = "g1";
+            g1DataGridViewTextBoxColumn.Name = "g1DataGridViewTextBoxColumn";
+            g1DataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // d1DataGridViewTextBoxColumn
             // 
-            this.d1DataGridViewTextBoxColumn.DataPropertyName = "d1";
-            this.d1DataGridViewTextBoxColumn.HeaderText = "d1";
-            this.d1DataGridViewTextBoxColumn.Name = "d1DataGridViewTextBoxColumn";
-            this.d1DataGridViewTextBoxColumn.ReadOnly = true;
+            d1DataGridViewTextBoxColumn.DataPropertyName = "d1";
+            d1DataGridViewTextBoxColumn.HeaderText = "d1";
+            d1DataGridViewTextBoxColumn.Name = "d1DataGridViewTextBoxColumn";
+            d1DataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // g2DataGridViewTextBoxColumn
             // 
-            this.g2DataGridViewTextBoxColumn.DataPropertyName = "g2";
-            this.g2DataGridViewTextBoxColumn.HeaderText = "g2";
-            this.g2DataGridViewTextBoxColumn.Name = "g2DataGridViewTextBoxColumn";
-            this.g2DataGridViewTextBoxColumn.ReadOnly = true;
+            g2DataGridViewTextBoxColumn.DataPropertyName = "g2";
+            g2DataGridViewTextBoxColumn.HeaderText = "g2";
+            g2DataGridViewTextBoxColumn.Name = "g2DataGridViewTextBoxColumn";
+            g2DataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // d2DataGridViewTextBoxColumn
             // 
-            this.d2DataGridViewTextBoxColumn.DataPropertyName = "d2";
-            this.d2DataGridViewTextBoxColumn.HeaderText = "d2";
-            this.d2DataGridViewTextBoxColumn.Name = "d2DataGridViewTextBoxColumn";
-            this.d2DataGridViewTextBoxColumn.ReadOnly = true;
+            d2DataGridViewTextBoxColumn.DataPropertyName = "d2";
+            d2DataGridViewTextBoxColumn.HeaderText = "d2";
+            d2DataGridViewTextBoxColumn.Name = "d2DataGridViewTextBoxColumn";
+            d2DataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // g3DataGridViewTextBoxColumn
             // 
-            this.g3DataGridViewTextBoxColumn.DataPropertyName = "g3";
-            this.g3DataGridViewTextBoxColumn.HeaderText = "g3";
-            this.g3DataGridViewTextBoxColumn.Name = "g3DataGridViewTextBoxColumn";
-            this.g3DataGridViewTextBoxColumn.ReadOnly = true;
+            g3DataGridViewTextBoxColumn.DataPropertyName = "g3";
+            g3DataGridViewTextBoxColumn.HeaderText = "g3";
+            g3DataGridViewTextBoxColumn.Name = "g3DataGridViewTextBoxColumn";
+            g3DataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // d3DataGridViewTextBoxColumn
             // 
-            this.d3DataGridViewTextBoxColumn.DataPropertyName = "d3";
-            this.d3DataGridViewTextBoxColumn.HeaderText = "d3";
-            this.d3DataGridViewTextBoxColumn.Name = "d3DataGridViewTextBoxColumn";
-            this.d3DataGridViewTextBoxColumn.ReadOnly = true;
+            d3DataGridViewTextBoxColumn.DataPropertyName = "d3";
+            d3DataGridViewTextBoxColumn.HeaderText = "d3";
+            d3DataGridViewTextBoxColumn.Name = "d3DataGridViewTextBoxColumn";
+            d3DataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // θDataGridViewTextBoxColumn
             // 
-            this.θDataGridViewTextBoxColumn.DataPropertyName = "θ";
-            this.θDataGridViewTextBoxColumn.HeaderText = "θ";
-            this.θDataGridViewTextBoxColumn.Name = "θDataGridViewTextBoxColumn";
-            this.θDataGridViewTextBoxColumn.ReadOnly = true;
+            θDataGridViewTextBoxColumn.DataPropertyName = "θ";
+            θDataGridViewTextBoxColumn.HeaderText = "θ";
+            θDataGridViewTextBoxColumn.Name = "θDataGridViewTextBoxColumn";
+            θDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // dataGridViewTextBoxColumn1
             // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "Phase";
-            this.dataGridViewTextBoxColumn1.HeaderText = "Phase";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            dataGridViewTextBoxColumn1.DataPropertyName = "Phase";
+            dataGridViewTextBoxColumn1.HeaderText = "Phase";
+            dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            dataGridViewTextBoxColumn1.ReadOnly = true;
             // 
             // photo1ZoneAxisDataGridViewTextBoxColumn1
             // 
-            this.photo1ZoneAxisDataGridViewTextBoxColumn1.DataPropertyName = "Photo 1 Zone Axis";
-            this.photo1ZoneAxisDataGridViewTextBoxColumn1.HeaderText = "Photo 1 Zone Axis";
-            this.photo1ZoneAxisDataGridViewTextBoxColumn1.Name = "photo1ZoneAxisDataGridViewTextBoxColumn1";
-            this.photo1ZoneAxisDataGridViewTextBoxColumn1.ReadOnly = true;
-            this.photo1ZoneAxisDataGridViewTextBoxColumn1.Width = 125;
+            photo1ZoneAxisDataGridViewTextBoxColumn1.DataPropertyName = "Photo 1 Zone Axis";
+            photo1ZoneAxisDataGridViewTextBoxColumn1.HeaderText = "Photo 1 Zone Axis";
+            photo1ZoneAxisDataGridViewTextBoxColumn1.Name = "photo1ZoneAxisDataGridViewTextBoxColumn1";
+            photo1ZoneAxisDataGridViewTextBoxColumn1.ReadOnly = true;
+            photo1ZoneAxisDataGridViewTextBoxColumn1.Width = 125;
             // 
             // photo2ZoneAxisDataGridViewTextBoxColumn
             // 
-            this.photo2ZoneAxisDataGridViewTextBoxColumn.DataPropertyName = "Photo 2 Zone Axis";
-            this.photo2ZoneAxisDataGridViewTextBoxColumn.HeaderText = "Photo 2 Zone Axis";
-            this.photo2ZoneAxisDataGridViewTextBoxColumn.Name = "photo2ZoneAxisDataGridViewTextBoxColumn";
-            this.photo2ZoneAxisDataGridViewTextBoxColumn.ReadOnly = true;
-            this.photo2ZoneAxisDataGridViewTextBoxColumn.Width = 125;
+            photo2ZoneAxisDataGridViewTextBoxColumn.DataPropertyName = "Photo 2 Zone Axis";
+            photo2ZoneAxisDataGridViewTextBoxColumn.HeaderText = "Photo 2 Zone Axis";
+            photo2ZoneAxisDataGridViewTextBoxColumn.Name = "photo2ZoneAxisDataGridViewTextBoxColumn";
+            photo2ZoneAxisDataGridViewTextBoxColumn.ReadOnly = true;
+            photo2ZoneAxisDataGridViewTextBoxColumn.Width = 125;
             // 
             // photo3ZoneAxisDataGridViewTextBoxColumn
             // 
-            this.photo3ZoneAxisDataGridViewTextBoxColumn.DataPropertyName = "Photo 3 Zone Axis";
-            this.photo3ZoneAxisDataGridViewTextBoxColumn.HeaderText = "Photo 3 Zone Axis";
-            this.photo3ZoneAxisDataGridViewTextBoxColumn.Name = "photo3ZoneAxisDataGridViewTextBoxColumn";
-            this.photo3ZoneAxisDataGridViewTextBoxColumn.ReadOnly = true;
-            this.photo3ZoneAxisDataGridViewTextBoxColumn.Width = 125;
+            photo3ZoneAxisDataGridViewTextBoxColumn.DataPropertyName = "Photo 3 Zone Axis";
+            photo3ZoneAxisDataGridViewTextBoxColumn.HeaderText = "Photo 3 Zone Axis";
+            photo3ZoneAxisDataGridViewTextBoxColumn.Name = "photo3ZoneAxisDataGridViewTextBoxColumn";
+            photo3ZoneAxisDataGridViewTextBoxColumn.ReadOnly = true;
+            photo3ZoneAxisDataGridViewTextBoxColumn.Width = 125;
             // 
             // angleBetweenPhoto12DataGridViewTextBoxColumn
             // 
-            this.angleBetweenPhoto12DataGridViewTextBoxColumn.DataPropertyName = "Angle Between Photo 1 & 2";
-            this.angleBetweenPhoto12DataGridViewTextBoxColumn.HeaderText = "Angle Between Photo 1 & 2";
-            this.angleBetweenPhoto12DataGridViewTextBoxColumn.Name = "angleBetweenPhoto12DataGridViewTextBoxColumn";
-            this.angleBetweenPhoto12DataGridViewTextBoxColumn.ReadOnly = true;
-            this.angleBetweenPhoto12DataGridViewTextBoxColumn.Width = 130;
+            angleBetweenPhoto12DataGridViewTextBoxColumn.DataPropertyName = "Angle Between Photo 1 & 2";
+            angleBetweenPhoto12DataGridViewTextBoxColumn.HeaderText = "Angle Between Photo 1 & 2";
+            angleBetweenPhoto12DataGridViewTextBoxColumn.Name = "angleBetweenPhoto12DataGridViewTextBoxColumn";
+            angleBetweenPhoto12DataGridViewTextBoxColumn.ReadOnly = true;
+            angleBetweenPhoto12DataGridViewTextBoxColumn.Width = 130;
             // 
             // angleBetweenPhoto23DataGridViewTextBoxColumn
             // 
-            this.angleBetweenPhoto23DataGridViewTextBoxColumn.DataPropertyName = "Angle Between Photo 2 & 3";
-            this.angleBetweenPhoto23DataGridViewTextBoxColumn.HeaderText = "Angle Between Photo 2 & 3";
-            this.angleBetweenPhoto23DataGridViewTextBoxColumn.Name = "angleBetweenPhoto23DataGridViewTextBoxColumn";
-            this.angleBetweenPhoto23DataGridViewTextBoxColumn.ReadOnly = true;
-            this.angleBetweenPhoto23DataGridViewTextBoxColumn.Width = 130;
+            angleBetweenPhoto23DataGridViewTextBoxColumn.DataPropertyName = "Angle Between Photo 2 & 3";
+            angleBetweenPhoto23DataGridViewTextBoxColumn.HeaderText = "Angle Between Photo 2 & 3";
+            angleBetweenPhoto23DataGridViewTextBoxColumn.Name = "angleBetweenPhoto23DataGridViewTextBoxColumn";
+            angleBetweenPhoto23DataGridViewTextBoxColumn.ReadOnly = true;
+            angleBetweenPhoto23DataGridViewTextBoxColumn.Width = 130;
             // 
             // angleBetweenPhoto31DataGridViewTextBoxColumn
             // 
-            this.angleBetweenPhoto31DataGridViewTextBoxColumn.DataPropertyName = "Angle Between Photo 3 & 1";
-            this.angleBetweenPhoto31DataGridViewTextBoxColumn.HeaderText = "Angle Between Photo 3 & 1";
-            this.angleBetweenPhoto31DataGridViewTextBoxColumn.Name = "angleBetweenPhoto31DataGridViewTextBoxColumn";
-            this.angleBetweenPhoto31DataGridViewTextBoxColumn.ReadOnly = true;
-            this.angleBetweenPhoto31DataGridViewTextBoxColumn.Width = 130;
+            angleBetweenPhoto31DataGridViewTextBoxColumn.DataPropertyName = "Angle Between Photo 3 & 1";
+            angleBetweenPhoto31DataGridViewTextBoxColumn.HeaderText = "Angle Between Photo 3 & 1";
+            angleBetweenPhoto31DataGridViewTextBoxColumn.Name = "angleBetweenPhoto31DataGridViewTextBoxColumn";
+            angleBetweenPhoto31DataGridViewTextBoxColumn.ReadOnly = true;
+            angleBetweenPhoto31DataGridViewTextBoxColumn.Width = 130;
             // 
             // FormTEMIDResults
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F); // 260329Cl 変更: Font→Dpi, 96dpi基準に統一
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(976, 341);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.dataGridView2);
-            this.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Name = "FormTEMIDResults";
-            this.Text = "FormTEMIDResults";
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataTable1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataTable2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
-            this.ResumeLayout(false);
-            this.PerformLayout();
+            AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F); // 260329Cl 変更: Font→Dpi, 96dpi基準に統一
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            ClientSize = new System.Drawing.Size(976, 341);
+            Controls.Add(label1);
+            Controls.Add(dataGridView1);
+            Controls.Add(dataGridView2);
+            Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            Name = "FormTEMIDResults";
+            Text = "FormTEMIDResults";
+            ((System.ComponentModel.ISupportInitialize)(bindingSource2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(dataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(dataTable1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(dataTable2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(bindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(dataGridView2)).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
 
         }
 
