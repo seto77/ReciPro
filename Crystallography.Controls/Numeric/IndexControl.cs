@@ -95,6 +95,10 @@ namespace Crystallography.Controls
             // 260517Cl 追加: タプル代入で H/K/L を一括設定 (各 set が ValueChanged を発火し、i も自動更新される)
             set => (numericBoxH.Value, numericBoxK.Value, numericBoxL.Value) = (value.X, value.Y, value.Z);
         }
+        // 260607Cl 追加: 既定 (0,0,0) のときはデザイナへ直列化しない。ValueTuple は [DefaultValue] を付けられないため
+        // ShouldSerialize/Reset で代用する (TypeConverter による設計時編集はそのまま維持)。
+        private bool ShouldSerializeValues() => Values != (0, 0, 0);
+        private void ResetValues() => Values = (0, 0, 0);
 
         // 260517Cl 追加: (h, k, l) == (0, 0, 0) のとき true。指数 (0,0,0) は無効値として弾く用途で頻出するため公開する。
         [Browsable(false)]

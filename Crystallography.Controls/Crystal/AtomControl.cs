@@ -154,7 +154,7 @@ public partial class AtomControl : UserControlBase
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)] [Category("Material properties")] [DefaultValue(0f)] public float Emission { get => (float)numericBoxEmission.Value; set => numericBoxEmission.Value = value; } // 260607Cl
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)] [Category("Material properties")] [DefaultValue(0f)] public float Alpha { get => (float)numericBoxAlpha.Value; set => numericBoxAlpha.Value = value; } // 260607Cl
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)] [Category("Material properties")] [DefaultValue(0.0)] public double Radius { get => numericBoxAtomRadius.Value; set => numericBoxAtomRadius.Value = value; } // 260607Cl
-    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)] [Category("Material properties")] public Color AtomColor { get => colorControlAtomColor.Color; set => colorControlAtomColor.Color = value; }
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)] [Category("Material properties")] [DefaultValue(typeof(Color), "240, 240, 240")] public Color AtomColor { get => colorControlAtomColor.Color; set => colorControlAtomColor.Color = value; } // 260607Cl: 既定はテーマ非依存の固定 (240,240,240)
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)] [Category("Material properties")] [DefaultValue(false)] public bool ShowLabel { get => checkBoxShowLabel.Checked; set => checkBoxShowLabel.Checked = value; } // 260607Cl
     #endregion
 

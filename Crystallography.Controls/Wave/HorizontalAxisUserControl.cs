@@ -83,6 +83,7 @@ public partial class HorizontalAxisUserControl : UserControlBase
     /// <summary>現在の軸の情報を返すプロパティ</summary>
     // 260426Cl 修正: 文字化けしていたコメント (旧: WFO1000 関連の壊れたコメント) を整理
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
+    [DefaultValue(HorizontalAxis.Angle)] // 260607Cl
     public HorizontalAxis AxisMode
     {
         set
@@ -149,6 +150,7 @@ public partial class HorizontalAxisUserControl : UserControlBase
 
     /// <summary>nm単位の実数で取得/設定</summary>
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
+    [DefaultValue(0.154187106667)] // 260607Cl
     public double WaveLength
     {
         set
@@ -180,6 +182,7 @@ public partial class HorizontalAxisUserControl : UserControlBase
 
     /// <summary>EDXの取り出し角 ラジアン単位で取得/設定</summary>
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
+    [DefaultValue(0.0)] // 260607Cl
     public double TakeoffAngle
     {
         set
@@ -197,6 +200,7 @@ public partial class HorizontalAxisUserControl : UserControlBase
 
     /// <summary>エネルギーの単位</summary>
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
+    [DefaultValue(EnergyUnitEnum.eV)] // 260607Cl
     public EnergyUnitEnum EnergyUnit
     {
         set
@@ -222,6 +226,7 @@ public partial class HorizontalAxisUserControl : UserControlBase
 
     /// <summary>d値の単位</summary>
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
+    [DefaultValue(LengthUnitEnum.Angstrom)] // 260607Cl
     public LengthUnitEnum DspacingUnit
     {
         set
@@ -244,6 +249,7 @@ public partial class HorizontalAxisUserControl : UserControlBase
 
     /// <summary>波数の単位 (1/nmか1/Aかのどちらか)</summary>
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
+    [DefaultValue(LengthUnitEnum.AngstromInverse)] // 260607Cl
     public LengthUnitEnum WaveNumberUnit
     {
         set
@@ -266,6 +272,7 @@ public partial class HorizontalAxisUserControl : UserControlBase
 
 
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
+    [DefaultValue(AngleUnitEnum.Degree)] // 260607Cl
     public AngleUnitEnum TwoThetaUnit
     {
         set
@@ -295,6 +302,7 @@ public partial class HorizontalAxisUserControl : UserControlBase
     }
     /// <summary>TOF時間の単位</summary>
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
+    [DefaultValue(TimeUnitEnum.MicroSecond)] // 260607Cl
     public TimeUnitEnum TofTimeUnit
     {
         set
@@ -338,6 +346,7 @@ public partial class HorizontalAxisUserControl : UserControlBase
 
     /// <summary>TOFの取り出し角 ラジアン単位で取得/設定</summary>
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
+    [DefaultValue(1.5707963267948966)] // 260607Cl
     public double TofAngle
     {
         set
@@ -353,6 +362,7 @@ public partial class HorizontalAxisUserControl : UserControlBase
 
     /// <summary>TOFの検出距離 mm単位で取得/設定</summary>
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
+    [DefaultValue(42.0)] // 260607Cl
     public double TofLength
     {
         set
@@ -372,6 +382,7 @@ public partial class HorizontalAxisUserControl : UserControlBase
 
     /// <summary>線源を取得/設定</summary>
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
+    [DefaultValue(WaveSource.Xray)] // 260607Cl
     public WaveSource WaveSource
     {
         set
@@ -401,6 +412,7 @@ public partial class HorizontalAxisUserControl : UserControlBase
     }
 
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
+    [DefaultValue(WaveColor.Monochrome)] // 260607Cl
     public WaveColor WaveColor
     {
         set
@@ -431,6 +443,7 @@ public partial class HorizontalAxisUserControl : UserControlBase
 
     /// <summary>X線の線源を取得/設定</summary>
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
+    [DefaultValue(29)] // 260607Cl
     public int XrayNumber
     {
         set
@@ -445,6 +458,7 @@ public partial class HorizontalAxisUserControl : UserControlBase
 
     /// <summary>X線の線源を取得/設定</summary>
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
+    [DefaultValue(XrayLine.Ka)] // 260607Cl
     public XrayLine XrayLine
     {
         set
@@ -459,6 +473,7 @@ public partial class HorizontalAxisUserControl : UserControlBase
 
     /// <summary>電子線加速電圧(kV)を取得/設定</summary>
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
+    [DefaultValue(8.04114721)] // 260607Cl
     public double ElectronAccVol
     {
         set

@@ -97,7 +97,7 @@ public partial class ColorControl : UserControlBase
     }
 
     // (260322Ch) WFO1000: Microsoft ??????????????????? ???????????
-    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Hidden)] // 260607Cl 変更: Visible→Hidden。Color の冗長な別表現(同一色を Argb/Red/Green/Blue/*F の8通りで二重直列化)を抑止し Color 1本へ集約。実行時挙動は不変(既存 Designer.cs 行はそのまま動作、再シリアライズ時に書き出さなくなるのみ)
     [Category("Color")]
     public int Argb
     {
@@ -105,7 +105,7 @@ public partial class ColorControl : UserControlBase
         get => Color.ToArgb();
     }
 
-    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Hidden)] // 260607Cl 変更: Color のエイリアス→Hidden
     [Category("Color")]
     public int Red
     {
@@ -113,7 +113,7 @@ public partial class ColorControl : UserControlBase
         get => Inversion ? 255 - pictureBox.BackColor.R : pictureBox.BackColor.R;
     }
 
-    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Hidden)] // 260607Cl 変更: Color のエイリアス→Hidden
     [Category("Color")]
     public int Green
     {
@@ -121,7 +121,7 @@ public partial class ColorControl : UserControlBase
         get => Inversion ? 255 - pictureBox.BackColor.G : pictureBox.BackColor.G;
     }
 
-    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Hidden)] // 260607Cl 変更: Color のエイリアス→Hidden
     [Category("Color")]
     public int Blue
     {
@@ -129,7 +129,7 @@ public partial class ColorControl : UserControlBase
         get => Inversion ? 255 - pictureBox.BackColor.B : pictureBox.BackColor.B;
     }
 
-    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Hidden)] // 260607Cl 変更: Color のエイリアス→Hidden
     [Category("Color")]
     public float RedF
     {
@@ -137,7 +137,7 @@ public partial class ColorControl : UserControlBase
         get => Inversion ? 1 - pictureBox.BackColor.R / 255f : pictureBox.BackColor.R / 255f;
     }
 
-    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Hidden)] // 260607Cl 変更: Color のエイリアス→Hidden
     [Category("Color")]
     public float GreenF
     {
@@ -145,7 +145,7 @@ public partial class ColorControl : UserControlBase
         get => Inversion ? 1 - pictureBox.BackColor.G / 255f : pictureBox.BackColor.G / 255f;
     }
 
-    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Hidden)] // 260607Cl 変更: Color のエイリアス→Hidden
     [Category("Color")]
     public float BlueF
     {
