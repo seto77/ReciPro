@@ -471,6 +471,15 @@ public partial class NumericBox : UserControlBase
         labelHeader.UseCompatibleTextRendering = false;
         labelFooter.UseCompatibleTextRendering = false;
 
+        // 260607Cl 追加: labelHeader/labelFooter の BackColor を Label 標準既定 (SystemColors.Control) に明示固定する。
+        // 未設定だと親 NumericBox.BackColor=Transparent を継承して実行時は Transparent に解決される一方、
+        // 設計時シリアライザは (親未接続のタイミングで) DefaultBackColor=Control を返すため設計時/実行時で
+        // getter 値が食い違い、消費側 Designer.cs に "HeaderBackColor = Control" が大量直列化されていた。
+        // 明示的に Control を設定して両者を一致させ、[DefaultValue(Control)] が冗長直列化を正しく抑止する。
+        // (260607Cl: 旧来の見た目=灰背景を維持。透明にしたい場合は SystemColors.Control → Color.Transparent + DefaultValue を Transparent に)
+        labelHeader.BackColor = SystemColors.Control;
+        labelFooter.BackColor = SystemColors.Control;
+
         applyLabelOrientation();                                                                                                                      // 260428Cl 追加: orientation 別の Dock/TextAlign を初期化
 
         labelHeader.FontChanged += (_, _) => updateLabelBaselines();

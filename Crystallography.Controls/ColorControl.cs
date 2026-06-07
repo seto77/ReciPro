@@ -47,7 +47,8 @@ public partial class ColorControl : UserControlBase
     [Localizable(true)]
     public string HeaderText { set { labelHeader.Text = value; labelHeader.Visible = value != ""; } get => labelHeader.Text; }
 
-    [DefaultValue("")]
+    //[DefaultValue("")] // 260607Cl 修正: Font プロパティに空文字の DefaultValue は不正(型不一致で常に直列化)。リフレクション検証で構築直後の labelHeader.Font は Segoe UI 9pt
+    [DefaultValue(typeof(Font), "Segoe UI, 9pt")]
     [Category("Header/footer text")]
     [Localizable(true)]
     public Font HeaderFont { set => labelHeader.Font = value; get => labelHeader.Font; }

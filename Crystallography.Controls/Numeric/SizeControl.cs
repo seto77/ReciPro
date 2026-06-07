@@ -35,7 +35,8 @@ namespace Crystallography.Controls
 
 
 
-        [Category("Appearance"), Localizable(true), DefaultValue("")]
+        // 260607Cl 修正: DefaultValue("") を除去。実既定は resx のローカライズ文字列 (neutral "Size (W×H)" / ja "サイズ (横×縦)") でカルチャ依存のため定数 DefaultValue は不可。"" は §7.4 の罠 (空文字を設定すると黙って resx 既定へ戻る)。消費側はカスタマイズ ("Detector"/"Size") するので Hidden 不可・通常直列化に戻す
+        [Category("Appearance"), Localizable(true)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         [Description("Width/Height の手前に表示する見出しテキスト。")]
         public string HeaderText { get => labelHeader.Text; set => labelHeader.Text = value; }
@@ -47,9 +48,10 @@ namespace Crystallography.Controls
         public string UnitText { get => label2.Text; set => label2.Text = value; }
 
         // 260521Cl 追加: ToolTip パススルー。子コントロール全体に同じツールチップを表示する (NumericBox.ToolTip と同じ作法)。
-        [Category("Appearance"), Localizable(true), DefaultValue("")]
+        [Category("Appearance"), Localizable(true)] // 260607Cl 修正: DefaultValue("") を除去 (実既定はローカライズ tooltip でカルチャ依存)
         [Browsable(false)] // 260531Cl 追加: デザイナのプロパティグリッドから隠す(標準 ToolTip 拡張子と二重表示の混乱を解消)。Localizable は残すので既存 resx 値は従来通り子コントロールへ適用され hover も維持
         [EditorBrowsable(EditorBrowsableState.Never)] // 260531Cl 追加: IntelliSense からも隠す(廃止予定プロパティ。NumericBox.ValueFont 等と同作法)
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)] // 260607Cl 追加: 廃止予定パススルーを今後一切直列化しない (NumericBox.ToolTip と同作法。未カスタマイズ・resx 駆動)
         [Description("コントロール全体に表示するツールチップ。")]
         public string ToolTip
         {

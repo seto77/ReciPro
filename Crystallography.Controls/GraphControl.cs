@@ -150,7 +150,8 @@ public partial class GraphControl : UserControlBase
     [Description("上部パネルに表示する文字のフォント")]
 
     [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
-    [DefaultValue(typeof(Font), "Segoe UI, 9pt")] //260607Cl 追加: 既定はlabelX1の継承フォント(GraphControl.Font=Segoe UI 9pt)
+    //[DefaultValue(typeof(Font), "Segoe UI, 9pt")] //260607Cl 追加: 既定はlabelX1の継承フォント(GraphControl.Font=Segoe UI 9pt)
+    [DefaultValue(typeof(Font), "Segoe UI, 9.5pt")] //260607Cl 修正: リフレクション検証で構築直後の labelX1.Font は 9.5pt と判明 (9pt は誤り)。実値に一致させ冗長直列化を正しく抑止
     public Font UpperPanelFont { set => labelGraphTitle.Font = labelX1.Font = labelXValue.Font = labelY1.Font = labelYValue.Font = value; get => labelX1.Font; }
 
     /// <summary>グラフの名前</summary>
