@@ -25,123 +25,123 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InputBox)); // 260531Cl
-            this.components = new System.ComponentModel.Container(); // 260531Cl
-            this.toolTip = new System.Windows.Forms.ToolTip(this.components); // 260531Cl
-            this.toolTip.IsBalloon = true; // 260531Cl 追加: バルーン表示に統一
+            components = new System.ComponentModel.Container(); // 260531Cl
+            toolTip = new System.Windows.Forms.ToolTip(components); // 260531Cl
+            toolTip.IsBalloon = true; // 260531Cl 追加: バルーン表示に統一
             toolTip.AutoPopDelay = 10000; // 260601Cl 追加: 長文表示時間を延長(共通標準値)
             toolTip.InitialDelay = 500; // 260601Cl 追加
             toolTip.ReshowDelay = 100; // 260601Cl 追加
-            this.label64 = new System.Windows.Forms.Label();
-            this.label60 = new System.Windows.Forms.Label();
-            this.label50 = new System.Windows.Forms.Label();
-            this.numericBoxLength = new Crystallography.Controls.NumericBox();
-            this.numericBoxGlength = new Crystallography.Controls.NumericBox();
-            this.numericBoxDvalue = new Crystallography.Controls.NumericBox();
-            this.SuspendLayout();
+            label64 = new System.Windows.Forms.Label();
+            label60 = new System.Windows.Forms.Label();
+            label50 = new System.Windows.Forms.Label();
+            numericBoxLength = new Crystallography.Controls.NumericBox();
+            numericBoxGlength = new Crystallography.Controls.NumericBox();
+            numericBoxDvalue = new Crystallography.Controls.NumericBox();
+            SuspendLayout();
             // 
             // label64
             // 
-            this.label64.AutoSize = true;
-            this.label64.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label64.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label64.Location = new System.Drawing.Point(203, 5);
-            this.label64.Margin = new System.Windows.Forms.Padding(0);
-            this.label64.Name = "label64";
-            this.toolTip.SetToolTip(this.label64, resources.GetString("label64.ToolTip")); // 260531Cl
-            this.label64.Size = new System.Drawing.Size(33, 15);
-            this.label64.TabIndex = 73;
-            this.label64.Text = "nm⁻¹";
-            this.label64.Click += new System.EventHandler(this.label50_Click);
+            label64.AutoSize = true;
+            label64.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            label64.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            label64.Location = new System.Drawing.Point(203, 5);
+            label64.Margin = new System.Windows.Forms.Padding(0);
+            label64.Name = "label64";
+            toolTip.SetToolTip(label64, resources.GetString("label64.ToolTip")); // 260531Cl
+            label64.Size = new System.Drawing.Size(33, 15);
+            label64.TabIndex = 73;
+            label64.Text = "nm⁻¹";
+            label64.Click += new System.EventHandler(label50_Click);
             // 
             // label60
             // 
-            this.label60.AutoSize = true;
-            this.label60.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label60.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label60.Location = new System.Drawing.Point(132, 6);
-            this.label60.Margin = new System.Windows.Forms.Padding(0);
-            this.label60.Name = "label60";
-            this.toolTip.SetToolTip(this.label60, resources.GetString("label60.ToolTip")); // 260531Cl
-            this.label60.Size = new System.Drawing.Size(15, 15);
-            this.label60.TabIndex = 74;
-            this.label60.Text = "Å";
-            this.label60.Click += new System.EventHandler(this.label50_Click);
+            label60.AutoSize = true;
+            label60.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            label60.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            label60.Location = new System.Drawing.Point(132, 6);
+            label60.Margin = new System.Windows.Forms.Padding(0);
+            label60.Name = "label60";
+            toolTip.SetToolTip(label60, resources.GetString("label60.ToolTip")); // 260531Cl
+            label60.Size = new System.Drawing.Size(15, 15);
+            label60.TabIndex = 74;
+            label60.Text = "Å";
+            label60.Click += new System.EventHandler(label50_Click);
             // 
             // label50
             // 
-            this.label50.AutoSize = true;
-            this.label50.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label50.Location = new System.Drawing.Point(48, 4);
-            this.label50.Name = "label50";
-            this.toolTip.SetToolTip(this.label50, resources.GetString("label50.ToolTip")); // 260531Cl
-            this.label50.Size = new System.Drawing.Size(29, 15);
-            this.label50.TabIndex = 71;
-            this.label50.Text = "mm";
-            this.label50.Click += new System.EventHandler(this.label50_Click);
+            label50.AutoSize = true;
+            label50.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            label50.Location = new System.Drawing.Point(48, 4);
+            label50.Name = "label50";
+            toolTip.SetToolTip(label50, resources.GetString("label50.ToolTip")); // 260531Cl
+            label50.Size = new System.Drawing.Size(29, 15);
+            label50.TabIndex = 71;
+            label50.Text = "mm";
+            label50.Click += new System.EventHandler(label50_Click);
             // 
             // numericBoxLength
             // 
-            this.numericBoxLength.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxLength.Location = new System.Drawing.Point(0, 0);
-            this.numericBoxLength.Margin = new System.Windows.Forms.Padding(1);
-            this.numericBoxLength.MaximumSize = new System.Drawing.Size(1000, 27);
-            this.numericBoxLength.MinimumSize = new System.Drawing.Size(1, 25);
-            this.numericBoxLength.Name = "numericBoxLength";
-            this.toolTip.SetToolTip(this.numericBoxLength, resources.GetString("numericBoxLength.ToolTip")); // 260531Cl
-            this.numericBoxLength.Padding = new System.Windows.Forms.Padding(1);
-            this.numericBoxLength.Size = new System.Drawing.Size(50, 27);
-            this.numericBoxLength.TabIndex = 75;
+            numericBoxLength.BackColor = System.Drawing.SystemColors.Control;
+            numericBoxLength.Location = new System.Drawing.Point(0, 0);
+            numericBoxLength.Margin = new System.Windows.Forms.Padding(1);
+            numericBoxLength.MaximumSize = new System.Drawing.Size(1000, 27);
+            numericBoxLength.MinimumSize = new System.Drawing.Size(1, 25);
+            numericBoxLength.Name = "numericBoxLength";
+            toolTip.SetToolTip(numericBoxLength, resources.GetString("numericBoxLength.ToolTip")); // 260531Cl
+            numericBoxLength.Padding = new System.Windows.Forms.Padding(1);
+            numericBoxLength.Size = new System.Drawing.Size(50, 27);
+            numericBoxLength.TabIndex = 75;
             // 260522Cl: numericBox の ValueFont(Yu Gothic UI) ハードコードを撤去
-            this.numericBoxLength.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxLength_ValueChanged);
-            this.numericBoxLength.Click2 += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxlength_Click);
+            numericBoxLength.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(numericBoxLength_ValueChanged);
+            numericBoxLength.Click2 += new Crystallography.Controls.NumericBox.MyEventHandler(numericBoxlength_Click);
             // 
             // numericBoxGlength
             // 
-            this.numericBoxGlength.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxGlength.Location = new System.Drawing.Point(154, 0);
-            this.numericBoxGlength.Margin = new System.Windows.Forms.Padding(1);
-            this.numericBoxGlength.MaximumSize = new System.Drawing.Size(1000, 27);
-            this.numericBoxGlength.MinimumSize = new System.Drawing.Size(1, 25);
-            this.numericBoxGlength.Name = "numericBoxGlength";
-            this.toolTip.SetToolTip(this.numericBoxGlength, resources.GetString("numericBoxGlength.ToolTip")); // 260531Cl
-            this.numericBoxGlength.Padding = new System.Windows.Forms.Padding(1);
-            this.numericBoxGlength.Size = new System.Drawing.Size(50, 27);
-            this.numericBoxGlength.TabIndex = 75;
-            this.numericBoxGlength.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxGlength_ValueChanged);
-            this.numericBoxGlength.Click2 += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxGlength_Click);
+            numericBoxGlength.BackColor = System.Drawing.SystemColors.Control;
+            numericBoxGlength.Location = new System.Drawing.Point(154, 0);
+            numericBoxGlength.Margin = new System.Windows.Forms.Padding(1);
+            numericBoxGlength.MaximumSize = new System.Drawing.Size(1000, 27);
+            numericBoxGlength.MinimumSize = new System.Drawing.Size(1, 25);
+            numericBoxGlength.Name = "numericBoxGlength";
+            toolTip.SetToolTip(numericBoxGlength, resources.GetString("numericBoxGlength.ToolTip")); // 260531Cl
+            numericBoxGlength.Padding = new System.Windows.Forms.Padding(1);
+            numericBoxGlength.Size = new System.Drawing.Size(50, 27);
+            numericBoxGlength.TabIndex = 75;
+            numericBoxGlength.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(numericBoxGlength_ValueChanged);
+            numericBoxGlength.Click2 += new Crystallography.Controls.NumericBox.MyEventHandler(numericBoxGlength_Click);
             // 
             // numericBoxDvalue
             // 
-            this.numericBoxDvalue.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxDvalue.Location = new System.Drawing.Point(82, 0);
-            this.numericBoxDvalue.Margin = new System.Windows.Forms.Padding(1);
-            this.numericBoxDvalue.MaximumSize = new System.Drawing.Size(1000, 27);
-            this.numericBoxDvalue.MinimumSize = new System.Drawing.Size(1, 25);
-            this.numericBoxDvalue.Name = "numericBoxDvalue";
-            this.toolTip.SetToolTip(this.numericBoxDvalue, resources.GetString("numericBoxDvalue.ToolTip")); // 260531Cl
-            this.numericBoxDvalue.Padding = new System.Windows.Forms.Padding(1);
-            this.numericBoxDvalue.Size = new System.Drawing.Size(50, 27);
-            this.numericBoxDvalue.TabIndex = 75;
-            this.numericBoxDvalue.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxDvalue_ValueChanged);
-            this.numericBoxDvalue.Click2 += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxDvalue_Click);
+            numericBoxDvalue.BackColor = System.Drawing.SystemColors.Control;
+            numericBoxDvalue.Location = new System.Drawing.Point(82, 0);
+            numericBoxDvalue.Margin = new System.Windows.Forms.Padding(1);
+            numericBoxDvalue.MaximumSize = new System.Drawing.Size(1000, 27);
+            numericBoxDvalue.MinimumSize = new System.Drawing.Size(1, 25);
+            numericBoxDvalue.Name = "numericBoxDvalue";
+            toolTip.SetToolTip(numericBoxDvalue, resources.GetString("numericBoxDvalue.ToolTip")); // 260531Cl
+            numericBoxDvalue.Padding = new System.Windows.Forms.Padding(1);
+            numericBoxDvalue.Size = new System.Drawing.Size(50, 27);
+            numericBoxDvalue.TabIndex = 75;
+            numericBoxDvalue.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(numericBoxDvalue_ValueChanged);
+            numericBoxDvalue.Click2 += new Crystallography.Controls.NumericBox.MyEventHandler(numericBoxDvalue_Click);
             // 
             // InputBox
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.AutoSize = true;
-            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.Controls.Add(this.numericBoxGlength);
-            this.Controls.Add(this.numericBoxDvalue);
-            this.Controls.Add(this.numericBoxLength);
-            this.Controls.Add(this.label64);
-            this.Controls.Add(this.label60);
-            this.Controls.Add(this.label50);
-            this.Name = "InputBox";
-            this.Size = new System.Drawing.Size(236, 28);
-            this.Click += new System.EventHandler(this.InputBox_Click);
-            this.ResumeLayout(false);
-            this.PerformLayout();
+            AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            AutoSize = true;
+            AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            Controls.Add(numericBoxGlength);
+            Controls.Add(numericBoxDvalue);
+            Controls.Add(numericBoxLength);
+            Controls.Add(label64);
+            Controls.Add(label60);
+            Controls.Add(label50);
+            Name = "InputBox";
+            Size = new System.Drawing.Size(236, 28);
+            Click += new System.EventHandler(InputBox_Click);
+            ResumeLayout(false);
+            PerformLayout();
 
         }
 

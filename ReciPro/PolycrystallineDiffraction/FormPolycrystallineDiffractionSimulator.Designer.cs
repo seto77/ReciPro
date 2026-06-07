@@ -33,1457 +33,1457 @@
         private void InitializeComponent()
         {
             captureExtender.SetCapture(this, true); // 260521Cl 追加: GUI監査キャプチャ対象 (フォーム全体)
-            this.components = new System.ComponentModel.Container();
-            this.toolTip = new System.Windows.Forms.ToolTip(this.components); // 260531Cl
-            this.toolTip.IsBalloon = true; // 260531Cl 追加: バルーン表示に統一
+            components = new System.ComponentModel.Container();
+            toolTip = new System.Windows.Forms.ToolTip(components); // 260531Cl
+            toolTip.IsBalloon = true; // 260531Cl 追加: バルーン表示に統一
             toolTip.AutoPopDelay = 10000; // 260601Cl 追加: 長文表示時間を延長(共通標準値)
             toolTip.InitialDelay = 500; // 260601Cl 追加
             toolTip.ReshowDelay = 100; // 260601Cl 追加
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormPolycrystallineDiffractionSimulator));
-            this.backgroundWorkerMain = new System.ComponentModel.BackgroundWorker();
-            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.groupBoxCrystalProperty = new System.Windows.Forms.GroupBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.buttonSimulateDebyeRing = new System.Windows.Forms.Button();
-            this.tabControlCrystals = new System.Windows.Forms.TabControl();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.crystalControl1 = new Crystallography.Controls.CrystalControl();
-            this.groupBoxOrientationFitting = new System.Windows.Forms.GroupBox();
-            this.buttonLoadSetting = new System.Windows.Forms.Button();
-            this.buttonSaveCurrentSetting = new System.Windows.Forms.Button();
-            this.buttonSearch = new System.Windows.Forms.Button();
-            this.tabControl3 = new System.Windows.Forms.TabControl();
-            this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.groupBoxPreferredOrientation = new System.Windows.Forms.GroupBox();
-            this.checkBoxCrystalNumPerStepThreshold = new System.Windows.Forms.CheckBox();
-            this.numericBoxCrystalNumPerStep = new Crystallography.Controls.NumericBox();
-            this.numericBoxInheritabiliry = new Crystallography.Controls.NumericBox();
-            this.checkBoxInheritabiliryThreshold = new System.Windows.Forms.CheckBox();
-            this.numericBoxInheritabiliryThreshold = new Crystallography.Controls.NumericBox();
-            this.checkBoxDirectionalDensityThreshold = new System.Windows.Forms.CheckBox();
-            this.numericBoxDirectionalDensity = new Crystallography.Controls.NumericBox();
-            this.numericBoxCrystalNumPerStepThreshold = new Crystallography.Controls.NumericBox();
-            this.numericBoxDirectionalDensityThreshold = new Crystallography.Controls.NumericBox();
-            this.groupBoxFittingOptions = new System.Windows.Forms.GroupBox();
-            this.checkBoxRefineConvergence = new System.Windows.Forms.CheckBox();
-            this.checkBoxRefineStress = new System.Windows.Forms.CheckBox();
-            this.checkBoxRefineCenterOffset = new System.Windows.Forms.CheckBox();
-            this.checkBoxRefinePreferredOrientation = new System.Windows.Forms.CheckBox();
-            this.checkBoxRefineFilmBlur = new System.Windows.Forms.CheckBox();
-            this.checkBox6 = new System.Windows.Forms.CheckBox();
-            this.checkBoxAutomaticallyChangeParameter = new System.Windows.Forms.CheckBox();
-            this.numericBoxChangeParameterThreshold = new Crystallography.Controls.NumericBox();                                                       // 260522Cl 変更: NumericUpDown → NumericBox
-            this.tabPage6 = new System.Windows.Forms.TabPage();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.graphControlResidual = new Crystallography.Controls.GraphControl();
-            this.tabPage8 = new System.Windows.Forms.TabPage();
-            this.buttonSearchUnrelatedOrientations = new System.Windows.Forms.Button();
-            this.groupBoxGonioScan = new System.Windows.Forms.GroupBox();
-            this.checkBoxYusaGonioScan = new System.Windows.Forms.CheckBox();
-            this.numericBoxRxSpeed = new Crystallography.Controls.NumericBox();
-            this.checkBoxYusaGonio_ValidRx = new System.Windows.Forms.CheckBox();
-            this.label52 = new System.Windows.Forms.Label();
-            this.numericBoxYusaGonioRySpeed = new Crystallography.Controls.NumericBox();
-            this.label51 = new System.Windows.Forms.Label();
-            this.numericBoxYusaGonioRzSpeed = new Crystallography.Controls.NumericBox();
-            this.label53 = new System.Windows.Forms.Label();
-            this.label50 = new System.Windows.Forms.Label();
-            this.radioButtonZigzagScan = new System.Windows.Forms.RadioButton();
-            this.label54 = new System.Windows.Forms.Label();
-            this.label49 = new System.Windows.Forms.Label();
-            this.numericBoxYusaGonioRyStep = new Crystallography.Controls.NumericBox();
-            this.label55 = new System.Windows.Forms.Label();
-            this.label48 = new System.Windows.Forms.Label();
-            this.numericBoxYusaGonioRyOscillation = new Crystallography.Controls.NumericBox();
-            this.label56 = new System.Windows.Forms.Label();
-            this.label60 = new System.Windows.Forms.Label();
-            this.label47 = new System.Windows.Forms.Label();
-            this.numericBoxYusaGonioRzOscillation = new Crystallography.Controls.NumericBox();
-            this.label57 = new System.Windows.Forms.Label();
-            this.label59 = new System.Windows.Forms.Label();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.checkBox3 = new System.Windows.Forms.CheckBox();
-            this.label58 = new System.Windows.Forms.Label();
-            this.groupBoxPatterns = new System.Windows.Forms.GroupBox();
-            this.groupBoxAppearance = new System.Windows.Forms.GroupBox();
-            this.comboBoxScale2 = new System.Windows.Forms.ComboBox();
-            this.label26 = new System.Windows.Forms.Label();
-            this.comboBoxGradient = new System.Windows.Forms.ComboBox();
-            this.label30 = new System.Windows.Forms.Label();
-            this.comboBoxScale1 = new System.Windows.Forms.ComboBox();
-            this.label28 = new System.Windows.Forms.Label();
-            this.listBoxReferrence = new System.Windows.Forms.ListBox();
-            this.buttonAddRefferencePattern = new System.Windows.Forms.Button();
-            this.buttonRemoveReferrencePattern = new System.Windows.Forms.Button();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.diffractionPatternControlSimulation = new ReciPro.DiffractionPatternControl();
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripProgressBar = new System.Windows.Forms.ToolStripProgressBar();
-            this.toolStripStatusLabelProgress = new System.Windows.Forms.ToolStripStatusLabel();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
-            this.splitContainer1.Panel1.SuspendLayout();
-            this.splitContainer1.Panel2.SuspendLayout();
-            this.splitContainer1.SuspendLayout();
-            this.groupBoxCrystalProperty.SuspendLayout();
-            this.tabControlCrystals.SuspendLayout();
-            this.tabPage2.SuspendLayout();
-            this.groupBoxOrientationFitting.SuspendLayout();
-            this.tabControl3.SuspendLayout();
-            this.tabPage4.SuspendLayout();
-            this.groupBoxPreferredOrientation.SuspendLayout();
-            this.groupBoxFittingOptions.SuspendLayout();
-            this.tabPage6.SuspendLayout();
-            this.tabPage8.SuspendLayout();
-            this.groupBoxGonioScan.SuspendLayout();
-            this.groupBoxPatterns.SuspendLayout();
-            this.groupBoxAppearance.SuspendLayout();
-            this.tabControl1.SuspendLayout();
-            this.tabPage1.SuspendLayout();
-            this.statusStrip1.SuspendLayout();
-            this.SuspendLayout();
+            backgroundWorkerMain = new System.ComponentModel.BackgroundWorker();
+            splitContainer1 = new System.Windows.Forms.SplitContainer();
+            groupBoxCrystalProperty = new System.Windows.Forms.GroupBox();
+            button1 = new System.Windows.Forms.Button();
+            buttonSimulateDebyeRing = new System.Windows.Forms.Button();
+            tabControlCrystals = new System.Windows.Forms.TabControl();
+            tabPage2 = new System.Windows.Forms.TabPage();
+            crystalControl1 = new Crystallography.Controls.CrystalControl();
+            groupBoxOrientationFitting = new System.Windows.Forms.GroupBox();
+            buttonLoadSetting = new System.Windows.Forms.Button();
+            buttonSaveCurrentSetting = new System.Windows.Forms.Button();
+            buttonSearch = new System.Windows.Forms.Button();
+            tabControl3 = new System.Windows.Forms.TabControl();
+            tabPage4 = new System.Windows.Forms.TabPage();
+            groupBoxPreferredOrientation = new System.Windows.Forms.GroupBox();
+            checkBoxCrystalNumPerStepThreshold = new System.Windows.Forms.CheckBox();
+            numericBoxCrystalNumPerStep = new Crystallography.Controls.NumericBox();
+            numericBoxInheritabiliry = new Crystallography.Controls.NumericBox();
+            checkBoxInheritabiliryThreshold = new System.Windows.Forms.CheckBox();
+            numericBoxInheritabiliryThreshold = new Crystallography.Controls.NumericBox();
+            checkBoxDirectionalDensityThreshold = new System.Windows.Forms.CheckBox();
+            numericBoxDirectionalDensity = new Crystallography.Controls.NumericBox();
+            numericBoxCrystalNumPerStepThreshold = new Crystallography.Controls.NumericBox();
+            numericBoxDirectionalDensityThreshold = new Crystallography.Controls.NumericBox();
+            groupBoxFittingOptions = new System.Windows.Forms.GroupBox();
+            checkBoxRefineConvergence = new System.Windows.Forms.CheckBox();
+            checkBoxRefineStress = new System.Windows.Forms.CheckBox();
+            checkBoxRefineCenterOffset = new System.Windows.Forms.CheckBox();
+            checkBoxRefinePreferredOrientation = new System.Windows.Forms.CheckBox();
+            checkBoxRefineFilmBlur = new System.Windows.Forms.CheckBox();
+            checkBox6 = new System.Windows.Forms.CheckBox();
+            checkBoxAutomaticallyChangeParameter = new System.Windows.Forms.CheckBox();
+            numericBoxChangeParameterThreshold = new Crystallography.Controls.NumericBox();                                                       // 260522Cl 変更: NumericUpDown → NumericBox
+            tabPage6 = new System.Windows.Forms.TabPage();
+            textBox1 = new System.Windows.Forms.TextBox();
+            graphControlResidual = new Crystallography.Controls.GraphControl();
+            tabPage8 = new System.Windows.Forms.TabPage();
+            buttonSearchUnrelatedOrientations = new System.Windows.Forms.Button();
+            groupBoxGonioScan = new System.Windows.Forms.GroupBox();
+            checkBoxYusaGonioScan = new System.Windows.Forms.CheckBox();
+            numericBoxRxSpeed = new Crystallography.Controls.NumericBox();
+            checkBoxYusaGonio_ValidRx = new System.Windows.Forms.CheckBox();
+            label52 = new System.Windows.Forms.Label();
+            numericBoxYusaGonioRySpeed = new Crystallography.Controls.NumericBox();
+            label51 = new System.Windows.Forms.Label();
+            numericBoxYusaGonioRzSpeed = new Crystallography.Controls.NumericBox();
+            label53 = new System.Windows.Forms.Label();
+            label50 = new System.Windows.Forms.Label();
+            radioButtonZigzagScan = new System.Windows.Forms.RadioButton();
+            label54 = new System.Windows.Forms.Label();
+            label49 = new System.Windows.Forms.Label();
+            numericBoxYusaGonioRyStep = new Crystallography.Controls.NumericBox();
+            label55 = new System.Windows.Forms.Label();
+            label48 = new System.Windows.Forms.Label();
+            numericBoxYusaGonioRyOscillation = new Crystallography.Controls.NumericBox();
+            label56 = new System.Windows.Forms.Label();
+            label60 = new System.Windows.Forms.Label();
+            label47 = new System.Windows.Forms.Label();
+            numericBoxYusaGonioRzOscillation = new Crystallography.Controls.NumericBox();
+            label57 = new System.Windows.Forms.Label();
+            label59 = new System.Windows.Forms.Label();
+            checkBox2 = new System.Windows.Forms.CheckBox();
+            checkBox3 = new System.Windows.Forms.CheckBox();
+            label58 = new System.Windows.Forms.Label();
+            groupBoxPatterns = new System.Windows.Forms.GroupBox();
+            groupBoxAppearance = new System.Windows.Forms.GroupBox();
+            comboBoxScale2 = new System.Windows.Forms.ComboBox();
+            label26 = new System.Windows.Forms.Label();
+            comboBoxGradient = new System.Windows.Forms.ComboBox();
+            label30 = new System.Windows.Forms.Label();
+            comboBoxScale1 = new System.Windows.Forms.ComboBox();
+            label28 = new System.Windows.Forms.Label();
+            listBoxReferrence = new System.Windows.Forms.ListBox();
+            buttonAddRefferencePattern = new System.Windows.Forms.Button();
+            buttonRemoveReferrencePattern = new System.Windows.Forms.Button();
+            tabControl1 = new System.Windows.Forms.TabControl();
+            tabPage1 = new System.Windows.Forms.TabPage();
+            diffractionPatternControlSimulation = new ReciPro.DiffractionPatternControl();
+            statusStrip1 = new System.Windows.Forms.StatusStrip();
+            toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            toolStripProgressBar = new System.Windows.Forms.ToolStripProgressBar();
+            toolStripStatusLabelProgress = new System.Windows.Forms.ToolStripStatusLabel();
+            ((System.ComponentModel.ISupportInitialize)(splitContainer1)).BeginInit();
+            splitContainer1.Panel1.SuspendLayout();
+            splitContainer1.Panel2.SuspendLayout();
+            splitContainer1.SuspendLayout();
+            groupBoxCrystalProperty.SuspendLayout();
+            tabControlCrystals.SuspendLayout();
+            tabPage2.SuspendLayout();
+            groupBoxOrientationFitting.SuspendLayout();
+            tabControl3.SuspendLayout();
+            tabPage4.SuspendLayout();
+            groupBoxPreferredOrientation.SuspendLayout();
+            groupBoxFittingOptions.SuspendLayout();
+            tabPage6.SuspendLayout();
+            tabPage8.SuspendLayout();
+            groupBoxGonioScan.SuspendLayout();
+            groupBoxPatterns.SuspendLayout();
+            groupBoxAppearance.SuspendLayout();
+            tabControl1.SuspendLayout();
+            tabPage1.SuspendLayout();
+            statusStrip1.SuspendLayout();
+            SuspendLayout();
             // 
             // backgroundWorkerMain
             // 
-            this.backgroundWorkerMain.WorkerReportsProgress = true;
-            this.backgroundWorkerMain.WorkerSupportsCancellation = true;
-            this.backgroundWorkerMain.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorkerMain_DoWork);
-            this.backgroundWorkerMain.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorkerMain_ProgressChanged);
-            this.backgroundWorkerMain.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorkerMain_RunWorkerCompleted);
+            backgroundWorkerMain.WorkerReportsProgress = true;
+            backgroundWorkerMain.WorkerSupportsCancellation = true;
+            backgroundWorkerMain.DoWork += new System.ComponentModel.DoWorkEventHandler(backgroundWorkerMain_DoWork);
+            backgroundWorkerMain.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(backgroundWorkerMain_ProgressChanged);
+            backgroundWorkerMain.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(backgroundWorkerMain_RunWorkerCompleted);
             // 
             // splitContainer1
             // 
-            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
-            this.splitContainer1.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer1.Margin = new System.Windows.Forms.Padding(4);
-            this.splitContainer1.Name = "splitContainer1";
+            splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            splitContainer1.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            splitContainer1.Location = new System.Drawing.Point(0, 0);
+            splitContainer1.Margin = new System.Windows.Forms.Padding(4);
+            splitContainer1.Name = "splitContainer1";
             // 
             // splitContainer1.Panel1
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.groupBoxCrystalProperty);
-            this.splitContainer1.Panel1.Controls.Add(this.groupBoxOrientationFitting);
-            this.splitContainer1.Panel1.Controls.Add(this.groupBoxGonioScan);
-            this.splitContainer1.Panel1MinSize = 334;
+            splitContainer1.Panel1.Controls.Add(groupBoxCrystalProperty);
+            splitContainer1.Panel1.Controls.Add(groupBoxOrientationFitting);
+            splitContainer1.Panel1.Controls.Add(groupBoxGonioScan);
+            splitContainer1.Panel1MinSize = 334;
             // 
             // splitContainer1.Panel2
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.groupBoxPatterns);
-            this.splitContainer1.Size = new System.Drawing.Size(1538, 911);
-            this.splitContainer1.SplitterDistance = 532;
-            this.splitContainer1.SplitterWidth = 5;
-            this.splitContainer1.TabIndex = 132;
+            splitContainer1.Panel2.Controls.Add(groupBoxPatterns);
+            splitContainer1.Size = new System.Drawing.Size(1538, 911);
+            splitContainer1.SplitterDistance = 532;
+            splitContainer1.SplitterWidth = 5;
+            splitContainer1.TabIndex = 132;
             // 
             // groupBoxCrystalProperty
             // 
-            this.groupBoxCrystalProperty.Controls.Add(this.button1);
-            this.groupBoxCrystalProperty.Controls.Add(this.buttonSimulateDebyeRing);
-            this.groupBoxCrystalProperty.Controls.Add(this.tabControlCrystals);
-            this.groupBoxCrystalProperty.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBoxCrystalProperty.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.groupBoxCrystalProperty.Location = new System.Drawing.Point(0, 0);
-            this.groupBoxCrystalProperty.Margin = new System.Windows.Forms.Padding(0);
-            this.groupBoxCrystalProperty.Name = "groupBoxCrystalProperty";
-            this.groupBoxCrystalProperty.Padding = new System.Windows.Forms.Padding(5, 6, 5, 6);
-            this.groupBoxCrystalProperty.Size = new System.Drawing.Size(532, 609);
-            this.groupBoxCrystalProperty.TabIndex = 129;
-            this.groupBoxCrystalProperty.TabStop = false;
-            this.groupBoxCrystalProperty.Text = "Crystal property";
+            groupBoxCrystalProperty.Controls.Add(button1);
+            groupBoxCrystalProperty.Controls.Add(buttonSimulateDebyeRing);
+            groupBoxCrystalProperty.Controls.Add(tabControlCrystals);
+            groupBoxCrystalProperty.Dock = System.Windows.Forms.DockStyle.Fill;
+            groupBoxCrystalProperty.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            groupBoxCrystalProperty.Location = new System.Drawing.Point(0, 0);
+            groupBoxCrystalProperty.Margin = new System.Windows.Forms.Padding(0);
+            groupBoxCrystalProperty.Name = "groupBoxCrystalProperty";
+            groupBoxCrystalProperty.Padding = new System.Windows.Forms.Padding(5, 6, 5, 6);
+            groupBoxCrystalProperty.Size = new System.Drawing.Size(532, 609);
+            groupBoxCrystalProperty.TabIndex = 129;
+            groupBoxCrystalProperty.TabStop = false;
+            groupBoxCrystalProperty.Text = "Crystal property";
             // 
             // button1
             // 
-            this.button1.AutoSize = true;
-            this.button1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.button1.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button1.Location = new System.Drawing.Point(468, 15);
-            this.button1.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
-            this.button1.Name = "button1";
-            this.toolTip.SetToolTip(this.button1, resources.GetString("button1.ToolTip")); // 260531Cl
-            this.button1.Size = new System.Drawing.Size(38, 26);
-            this.button1.TabIndex = 1003;
-            this.button1.Text = "test";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            button1.AutoSize = true;
+            button1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            button1.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            button1.Location = new System.Drawing.Point(468, 15);
+            button1.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
+            button1.Name = "button1";
+            toolTip.SetToolTip(button1, resources.GetString("button1.ToolTip")); // 260531Cl
+            button1.Size = new System.Drawing.Size(38, 26);
+            button1.TabIndex = 1003;
+            button1.Text = "test";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += new System.EventHandler(button1_Click);
             // 
             // buttonSimulateDebyeRing
             // 
-            this.buttonSimulateDebyeRing.AutoSize = true;
-            this.buttonSimulateDebyeRing.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.buttonSimulateDebyeRing.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.buttonSimulateDebyeRing.Location = new System.Drawing.Point(155, 15);
-            this.buttonSimulateDebyeRing.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
-            this.buttonSimulateDebyeRing.Name = "buttonSimulateDebyeRing";
-            this.toolTip.SetToolTip(this.buttonSimulateDebyeRing, resources.GetString("buttonSimulateDebyeRing.ToolTip")); // 260531Cl
-            this.buttonSimulateDebyeRing.Size = new System.Drawing.Size(177, 26);
-            this.buttonSimulateDebyeRing.TabIndex = 1003;
-            this.buttonSimulateDebyeRing.Text = "Simulate Debye ring pattern";
-            this.buttonSimulateDebyeRing.BackColor = System.Drawing.Color.SteelBlue; // 260520Cl: 主要アクション色を統一
-            this.buttonSimulateDebyeRing.ForeColor = System.Drawing.Color.White;
-            this.buttonSimulateDebyeRing.UseVisualStyleBackColor = false;
-            this.buttonSimulateDebyeRing.Click += new System.EventHandler(this.buttonSimulateDebyeRing_Click);
+            buttonSimulateDebyeRing.AutoSize = true;
+            buttonSimulateDebyeRing.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            buttonSimulateDebyeRing.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            buttonSimulateDebyeRing.Location = new System.Drawing.Point(155, 15);
+            buttonSimulateDebyeRing.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
+            buttonSimulateDebyeRing.Name = "buttonSimulateDebyeRing";
+            toolTip.SetToolTip(buttonSimulateDebyeRing, resources.GetString("buttonSimulateDebyeRing.ToolTip")); // 260531Cl
+            buttonSimulateDebyeRing.Size = new System.Drawing.Size(177, 26);
+            buttonSimulateDebyeRing.TabIndex = 1003;
+            buttonSimulateDebyeRing.Text = "Simulate Debye ring pattern";
+            buttonSimulateDebyeRing.BackColor = System.Drawing.Color.SteelBlue; // 260520Cl: 主要アクション色を統一
+            buttonSimulateDebyeRing.ForeColor = System.Drawing.Color.White;
+            buttonSimulateDebyeRing.UseVisualStyleBackColor = false;
+            buttonSimulateDebyeRing.Click += new System.EventHandler(buttonSimulateDebyeRing_Click);
             // 
             // tabControlCrystals
             // 
-            this.tabControlCrystals.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            tabControlCrystals.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tabControlCrystals.Controls.Add(this.tabPage2);
-            this.tabControlCrystals.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.tabControlCrystals.Location = new System.Drawing.Point(5, 50);
-            this.tabControlCrystals.Multiline = true;
-            this.tabControlCrystals.Name = "tabControlCrystals";
-            this.tabControlCrystals.SelectedIndex = 0;
-            this.tabControlCrystals.Size = new System.Drawing.Size(522, 553);
-            this.tabControlCrystals.TabIndex = 1005;
+            tabControlCrystals.Controls.Add(tabPage2);
+            tabControlCrystals.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            tabControlCrystals.Location = new System.Drawing.Point(5, 50);
+            tabControlCrystals.Multiline = true;
+            tabControlCrystals.Name = "tabControlCrystals";
+            tabControlCrystals.SelectedIndex = 0;
+            tabControlCrystals.Size = new System.Drawing.Size(522, 553);
+            tabControlCrystals.TabIndex = 1005;
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.crystalControl1);
-            this.tabPage2.Location = new System.Drawing.Point(4, 26);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(514, 523);
-            this.tabPage2.TabIndex = 0;
-            this.tabPage2.Text = "tabPage2";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            tabPage2.Controls.Add(crystalControl1);
+            tabPage2.Location = new System.Drawing.Point(4, 26);
+            tabPage2.Name = "tabPage2";
+            tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            tabPage2.Size = new System.Drawing.Size(514, 523);
+            tabPage2.TabIndex = 0;
+            tabPage2.Text = "tabPage2";
+            tabPage2.UseVisualStyleBackColor = true;
             // 
             // crystalControl1
             // 
-            this.crystalControl1.A = 0D;
-            this.crystalControl1.AllowDrop = true;
-            this.crystalControl1.Alpha = 0D;
-            this.crystalControl1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.crystalControl1.B = 0D;
-            this.crystalControl1.Beta = 0D;
-            this.crystalControl1.C = 0D;
-            this.crystalControl1.DefaultTabNumber = 0;
-            this.crystalControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.crystalControl1.Enabled = false;
-            this.crystalControl1.Gamma = 0D;
-            this.crystalControl1.Location = new System.Drawing.Point(3, 3);
-            this.crystalControl1.Margin = new System.Windows.Forms.Padding(0);
-            this.crystalControl1.Name = "crystalControl1";
-            this.crystalControl1.BeamInteractionVisible = false;
-            this.crystalControl1.Size = new System.Drawing.Size(508, 517);
-            this.crystalControl1.SkipEvent = false;
-            this.crystalControl1.SymmetryInformationVisible = false;
-            this.crystalControl1.SymmetrySeriesNumber = 0;
-            this.crystalControl1.TabIndex = 1002;
-            this.crystalControl1.VisibleAtomTab = true;
-            this.crystalControl1.VisibleBasicInfoTab = true;
-            this.crystalControl1.VisibleBondsPolyhedraTab = false;
-            this.crystalControl1.VisibleBoundTab = false;
-            this.crystalControl1.VisibleElasticityTab = true;
-            this.crystalControl1.VisibleEOSTab = false;
-            this.crystalControl1.VisibleLatticePlaneTab = false;
-            this.crystalControl1.VisiblePolycrystallineTab = true;
-            this.crystalControl1.VisibleReferenceTab = false;
-            this.crystalControl1.VisibleStressStrainTab = true;
-            this.crystalControl1.VisibleChanged += new System.EventHandler(this.crystalControl1_VisibleChanged);
+            crystalControl1.A = 0D;
+            crystalControl1.AllowDrop = true;
+            crystalControl1.Alpha = 0D;
+            crystalControl1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            crystalControl1.B = 0D;
+            crystalControl1.Beta = 0D;
+            crystalControl1.C = 0D;
+            crystalControl1.DefaultTabNumber = 0;
+            crystalControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            crystalControl1.Enabled = false;
+            crystalControl1.Gamma = 0D;
+            crystalControl1.Location = new System.Drawing.Point(3, 3);
+            crystalControl1.Margin = new System.Windows.Forms.Padding(0);
+            crystalControl1.Name = "crystalControl1";
+            crystalControl1.BeamInteractionVisible = false;
+            crystalControl1.Size = new System.Drawing.Size(508, 517);
+            crystalControl1.SkipEvent = false;
+            crystalControl1.SymmetryInformationVisible = false;
+            crystalControl1.SymmetrySeriesNumber = 0;
+            crystalControl1.TabIndex = 1002;
+            crystalControl1.VisibleAtomTab = true;
+            crystalControl1.VisibleBasicInfoTab = true;
+            crystalControl1.VisibleBondsPolyhedraTab = false;
+            crystalControl1.VisibleBoundTab = false;
+            crystalControl1.VisibleElasticityTab = true;
+            crystalControl1.VisibleEOSTab = false;
+            crystalControl1.VisibleLatticePlaneTab = false;
+            crystalControl1.VisiblePolycrystallineTab = true;
+            crystalControl1.VisibleReferenceTab = false;
+            crystalControl1.VisibleStressStrainTab = true;
+            crystalControl1.VisibleChanged += new System.EventHandler(crystalControl1_VisibleChanged);
             // 
             // groupBoxOrientationFitting
             // 
-            this.groupBoxOrientationFitting.Controls.Add(this.buttonLoadSetting);
-            this.groupBoxOrientationFitting.Controls.Add(this.buttonSaveCurrentSetting);
-            this.groupBoxOrientationFitting.Controls.Add(this.buttonSearch);
-            this.groupBoxOrientationFitting.Controls.Add(this.tabControl3);
-            this.groupBoxOrientationFitting.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.groupBoxOrientationFitting.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.groupBoxOrientationFitting.Location = new System.Drawing.Point(0, 609);
-            this.groupBoxOrientationFitting.Margin = new System.Windows.Forms.Padding(0);
-            this.groupBoxOrientationFitting.Name = "groupBoxOrientationFitting";
-            this.groupBoxOrientationFitting.Padding = new System.Windows.Forms.Padding(5, 6, 5, 6);
-            this.groupBoxOrientationFitting.Size = new System.Drawing.Size(532, 302);
-            this.groupBoxOrientationFitting.TabIndex = 129;
-            this.groupBoxOrientationFitting.TabStop = false;
-            this.groupBoxOrientationFitting.Text = "Fitting orientations";
+            groupBoxOrientationFitting.Controls.Add(buttonLoadSetting);
+            groupBoxOrientationFitting.Controls.Add(buttonSaveCurrentSetting);
+            groupBoxOrientationFitting.Controls.Add(buttonSearch);
+            groupBoxOrientationFitting.Controls.Add(tabControl3);
+            groupBoxOrientationFitting.Dock = System.Windows.Forms.DockStyle.Bottom;
+            groupBoxOrientationFitting.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            groupBoxOrientationFitting.Location = new System.Drawing.Point(0, 609);
+            groupBoxOrientationFitting.Margin = new System.Windows.Forms.Padding(0);
+            groupBoxOrientationFitting.Name = "groupBoxOrientationFitting";
+            groupBoxOrientationFitting.Padding = new System.Windows.Forms.Padding(5, 6, 5, 6);
+            groupBoxOrientationFitting.Size = new System.Drawing.Size(532, 302);
+            groupBoxOrientationFitting.TabIndex = 129;
+            groupBoxOrientationFitting.TabStop = false;
+            groupBoxOrientationFitting.Text = "Fitting orientations";
             // 
             // buttonLoadSetting
             // 
-            this.buttonLoadSetting.AutoSize = true;
-            this.buttonLoadSetting.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.buttonLoadSetting.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.buttonLoadSetting.Location = new System.Drawing.Point(291, 21);
-            this.buttonLoadSetting.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
-            this.buttonLoadSetting.Name = "buttonLoadSetting";
-            this.toolTip.SetToolTip(this.buttonLoadSetting, resources.GetString("buttonLoadSetting.ToolTip")); // 260531Cl
-            this.buttonLoadSetting.Size = new System.Drawing.Size(86, 26);
-            this.buttonLoadSetting.TabIndex = 68;
-            this.buttonLoadSetting.Text = "Load setting";
-            this.buttonLoadSetting.UseVisualStyleBackColor = true;
-            this.buttonLoadSetting.Click += new System.EventHandler(this.buttonLoadSetting_Click);
+            buttonLoadSetting.AutoSize = true;
+            buttonLoadSetting.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            buttonLoadSetting.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            buttonLoadSetting.Location = new System.Drawing.Point(291, 21);
+            buttonLoadSetting.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
+            buttonLoadSetting.Name = "buttonLoadSetting";
+            toolTip.SetToolTip(buttonLoadSetting, resources.GetString("buttonLoadSetting.ToolTip")); // 260531Cl
+            buttonLoadSetting.Size = new System.Drawing.Size(86, 26);
+            buttonLoadSetting.TabIndex = 68;
+            buttonLoadSetting.Text = "Load setting";
+            buttonLoadSetting.UseVisualStyleBackColor = true;
+            buttonLoadSetting.Click += new System.EventHandler(buttonLoadSetting_Click);
             // 
             // buttonSaveCurrentSetting
             // 
-            this.buttonSaveCurrentSetting.AutoSize = true;
-            this.buttonSaveCurrentSetting.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.buttonSaveCurrentSetting.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.buttonSaveCurrentSetting.Location = new System.Drawing.Point(388, 21);
-            this.buttonSaveCurrentSetting.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
-            this.buttonSaveCurrentSetting.Name = "buttonSaveCurrentSetting";
-            this.toolTip.SetToolTip(this.buttonSaveCurrentSetting, resources.GetString("buttonSaveCurrentSetting.ToolTip")); // 260531Cl
-            this.buttonSaveCurrentSetting.Size = new System.Drawing.Size(132, 26);
-            this.buttonSaveCurrentSetting.TabIndex = 68;
-            this.buttonSaveCurrentSetting.Text = "Save current setting";
-            this.buttonSaveCurrentSetting.UseVisualStyleBackColor = true;
-            this.buttonSaveCurrentSetting.Click += new System.EventHandler(this.buttonSaveCurrentSetting_Click);
+            buttonSaveCurrentSetting.AutoSize = true;
+            buttonSaveCurrentSetting.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            buttonSaveCurrentSetting.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            buttonSaveCurrentSetting.Location = new System.Drawing.Point(388, 21);
+            buttonSaveCurrentSetting.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
+            buttonSaveCurrentSetting.Name = "buttonSaveCurrentSetting";
+            toolTip.SetToolTip(buttonSaveCurrentSetting, resources.GetString("buttonSaveCurrentSetting.ToolTip")); // 260531Cl
+            buttonSaveCurrentSetting.Size = new System.Drawing.Size(132, 26);
+            buttonSaveCurrentSetting.TabIndex = 68;
+            buttonSaveCurrentSetting.Text = "Save current setting";
+            buttonSaveCurrentSetting.UseVisualStyleBackColor = true;
+            buttonSaveCurrentSetting.Click += new System.EventHandler(buttonSaveCurrentSetting_Click);
             // 
             // buttonSearch
             // 
-            this.buttonSearch.AutoSize = true;
-            this.buttonSearch.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.buttonSearch.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.buttonSearch.Location = new System.Drawing.Point(14, 21);
-            this.buttonSearch.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
-            this.buttonSearch.Name = "buttonSearch";
-            this.toolTip.SetToolTip(this.buttonSearch, resources.GetString("buttonSearch.ToolTip")); // 260531Cl
-            this.buttonSearch.Size = new System.Drawing.Size(146, 26);
-            this.buttonSearch.TabIndex = 68;
-            this.buttonSearch.Text = "Search Orientations";
-            this.buttonSearch.BackColor = System.Drawing.Color.SteelBlue; // 260520Cl 追加: 主要アクション(検索)を水色に統一
-            this.buttonSearch.ForeColor = System.Drawing.Color.White; // 260520Cl 追加
-            this.buttonSearch.UseVisualStyleBackColor = false; // 260520Cl 変更: BackColor有効化のため
-            this.buttonSearch.Click += new System.EventHandler(this.buttonSearch_Click);
+            buttonSearch.AutoSize = true;
+            buttonSearch.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            buttonSearch.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            buttonSearch.Location = new System.Drawing.Point(14, 21);
+            buttonSearch.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
+            buttonSearch.Name = "buttonSearch";
+            toolTip.SetToolTip(buttonSearch, resources.GetString("buttonSearch.ToolTip")); // 260531Cl
+            buttonSearch.Size = new System.Drawing.Size(146, 26);
+            buttonSearch.TabIndex = 68;
+            buttonSearch.Text = "Search Orientations";
+            buttonSearch.BackColor = System.Drawing.Color.SteelBlue; // 260520Cl 追加: 主要アクション(検索)を水色に統一
+            buttonSearch.ForeColor = System.Drawing.Color.White; // 260520Cl 追加
+            buttonSearch.UseVisualStyleBackColor = false; // 260520Cl 変更: BackColor有効化のため
+            buttonSearch.Click += new System.EventHandler(buttonSearch_Click);
             // 
             // tabControl3
             // 
-            this.tabControl3.Controls.Add(this.tabPage4);
-            this.tabControl3.Controls.Add(this.tabPage6);
-            this.tabControl3.Controls.Add(this.tabPage8);
-            this.tabControl3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.tabControl3.Location = new System.Drawing.Point(5, 57);
-            this.tabControl3.Margin = new System.Windows.Forms.Padding(4);
-            this.tabControl3.Name = "tabControl3";
-            this.tabControl3.SelectedIndex = 0;
-            this.tabControl3.Size = new System.Drawing.Size(522, 239);
-            this.tabControl3.TabIndex = 166;
+            tabControl3.Controls.Add(tabPage4);
+            tabControl3.Controls.Add(tabPage6);
+            tabControl3.Controls.Add(tabPage8);
+            tabControl3.Dock = System.Windows.Forms.DockStyle.Bottom;
+            tabControl3.Location = new System.Drawing.Point(5, 57);
+            tabControl3.Margin = new System.Windows.Forms.Padding(4);
+            tabControl3.Name = "tabControl3";
+            tabControl3.SelectedIndex = 0;
+            tabControl3.Size = new System.Drawing.Size(522, 239);
+            tabControl3.TabIndex = 166;
             // 
             // tabPage4
             // 
-            this.tabPage4.BackColor = System.Drawing.SystemColors.Control;
-            this.tabPage4.Controls.Add(this.groupBoxPreferredOrientation);
-            this.tabPage4.Controls.Add(this.groupBoxFittingOptions);
-            this.tabPage4.Controls.Add(this.checkBox6);
-            this.tabPage4.Controls.Add(this.checkBoxAutomaticallyChangeParameter);
-            this.tabPage4.Controls.Add(this.numericBoxChangeParameterThreshold);
-            this.tabPage4.Location = new System.Drawing.Point(4, 25);
-            this.tabPage4.Margin = new System.Windows.Forms.Padding(4);
-            this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Padding = new System.Windows.Forms.Padding(4);
-            this.tabPage4.Size = new System.Drawing.Size(514, 210);
-            this.tabPage4.TabIndex = 0;
-            this.tabPage4.Text = "Refinement option";
+            tabPage4.BackColor = System.Drawing.SystemColors.Control;
+            tabPage4.Controls.Add(groupBoxPreferredOrientation);
+            tabPage4.Controls.Add(groupBoxFittingOptions);
+            tabPage4.Controls.Add(checkBox6);
+            tabPage4.Controls.Add(checkBoxAutomaticallyChangeParameter);
+            tabPage4.Controls.Add(numericBoxChangeParameterThreshold);
+            tabPage4.Location = new System.Drawing.Point(4, 25);
+            tabPage4.Margin = new System.Windows.Forms.Padding(4);
+            tabPage4.Name = "tabPage4";
+            tabPage4.Padding = new System.Windows.Forms.Padding(4);
+            tabPage4.Size = new System.Drawing.Size(514, 210);
+            tabPage4.TabIndex = 0;
+            tabPage4.Text = "Refinement option";
             // 
             // groupBoxPreferredOrientation
             // 
-            this.groupBoxPreferredOrientation.Controls.Add(this.checkBoxCrystalNumPerStepThreshold);
-            this.groupBoxPreferredOrientation.Controls.Add(this.numericBoxCrystalNumPerStep);
-            this.groupBoxPreferredOrientation.Controls.Add(this.numericBoxInheritabiliry);
-            this.groupBoxPreferredOrientation.Controls.Add(this.checkBoxInheritabiliryThreshold);
-            this.groupBoxPreferredOrientation.Controls.Add(this.numericBoxInheritabiliryThreshold);
-            this.groupBoxPreferredOrientation.Controls.Add(this.checkBoxDirectionalDensityThreshold);
-            this.groupBoxPreferredOrientation.Controls.Add(this.numericBoxDirectionalDensity);
-            this.groupBoxPreferredOrientation.Controls.Add(this.numericBoxCrystalNumPerStepThreshold);
-            this.groupBoxPreferredOrientation.Controls.Add(this.numericBoxDirectionalDensityThreshold);
-            this.groupBoxPreferredOrientation.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.groupBoxPreferredOrientation.Location = new System.Drawing.Point(138, 4);
-            this.groupBoxPreferredOrientation.Name = "groupBoxPreferredOrientation";
-            this.groupBoxPreferredOrientation.Size = new System.Drawing.Size(371, 121);
-            this.groupBoxPreferredOrientation.TabIndex = 409;
-            this.groupBoxPreferredOrientation.TabStop = false;
-            this.groupBoxPreferredOrientation.Text = "Fitting parameters for preferred orientation"; // 260521Cl Phase7: orientatin→orientation typo
+            groupBoxPreferredOrientation.Controls.Add(checkBoxCrystalNumPerStepThreshold);
+            groupBoxPreferredOrientation.Controls.Add(numericBoxCrystalNumPerStep);
+            groupBoxPreferredOrientation.Controls.Add(numericBoxInheritabiliry);
+            groupBoxPreferredOrientation.Controls.Add(checkBoxInheritabiliryThreshold);
+            groupBoxPreferredOrientation.Controls.Add(numericBoxInheritabiliryThreshold);
+            groupBoxPreferredOrientation.Controls.Add(checkBoxDirectionalDensityThreshold);
+            groupBoxPreferredOrientation.Controls.Add(numericBoxDirectionalDensity);
+            groupBoxPreferredOrientation.Controls.Add(numericBoxCrystalNumPerStepThreshold);
+            groupBoxPreferredOrientation.Controls.Add(numericBoxDirectionalDensityThreshold);
+            groupBoxPreferredOrientation.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            groupBoxPreferredOrientation.Location = new System.Drawing.Point(138, 4);
+            groupBoxPreferredOrientation.Name = "groupBoxPreferredOrientation";
+            groupBoxPreferredOrientation.Size = new System.Drawing.Size(371, 121);
+            groupBoxPreferredOrientation.TabIndex = 409;
+            groupBoxPreferredOrientation.TabStop = false;
+            groupBoxPreferredOrientation.Text = "Fitting parameters for preferred orientation"; // 260521Cl Phase7: orientatin→orientation typo
             // 
             // checkBoxCrystalNumPerStepThreshold
             // 
-            this.checkBoxCrystalNumPerStepThreshold.AutoSize = true;
-            this.checkBoxCrystalNumPerStepThreshold.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.checkBoxCrystalNumPerStepThreshold.Location = new System.Drawing.Point(201, 28);
-            this.checkBoxCrystalNumPerStepThreshold.Name = "checkBoxCrystalNumPerStepThreshold";
-            this.toolTip.SetToolTip(this.checkBoxCrystalNumPerStepThreshold, resources.GetString("checkBoxCrystalNumPerStepThreshold.ToolTip")); // 260531Cl
-            this.checkBoxCrystalNumPerStepThreshold.Size = new System.Drawing.Size(83, 20);
-            this.checkBoxCrystalNumPerStepThreshold.TabIndex = 408;
-            this.checkBoxCrystalNumPerStepThreshold.Text = "Threshold";
-            this.checkBoxCrystalNumPerStepThreshold.UseVisualStyleBackColor = true;
-            this.checkBoxCrystalNumPerStepThreshold.CheckedChanged += new System.EventHandler(this.checkBoxCrystalNumPerStepThreshold_CheckedChanged);
+            checkBoxCrystalNumPerStepThreshold.AutoSize = true;
+            checkBoxCrystalNumPerStepThreshold.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            checkBoxCrystalNumPerStepThreshold.Location = new System.Drawing.Point(201, 28);
+            checkBoxCrystalNumPerStepThreshold.Name = "checkBoxCrystalNumPerStepThreshold";
+            toolTip.SetToolTip(checkBoxCrystalNumPerStepThreshold, resources.GetString("checkBoxCrystalNumPerStepThreshold.ToolTip")); // 260531Cl
+            checkBoxCrystalNumPerStepThreshold.Size = new System.Drawing.Size(83, 20);
+            checkBoxCrystalNumPerStepThreshold.TabIndex = 408;
+            checkBoxCrystalNumPerStepThreshold.Text = "Threshold";
+            checkBoxCrystalNumPerStepThreshold.UseVisualStyleBackColor = true;
+            checkBoxCrystalNumPerStepThreshold.CheckedChanged += new System.EventHandler(checkBoxCrystalNumPerStepThreshold_CheckedChanged);
             // 
             // numericBoxCrystalNumPerStep
             // 
-            this.numericBoxCrystalNumPerStep.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxCrystalNumPerStep.DecimalPlaces = 3;
-            this.numericBoxCrystalNumPerStep.FooterFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.numericBoxCrystalNumPerStep.FooterText = "%";
-            this.numericBoxCrystalNumPerStep.HeaderFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.numericBoxCrystalNumPerStep.HeaderText = "Num per Step";
-            this.numericBoxCrystalNumPerStep.Location = new System.Drawing.Point(18, 27);
-            this.numericBoxCrystalNumPerStep.Margin = new System.Windows.Forms.Padding(0);
-            this.numericBoxCrystalNumPerStep.Maximum = 10D;
-            this.numericBoxCrystalNumPerStep.MaximumSize = new System.Drawing.Size(1000, 25);
-            this.numericBoxCrystalNumPerStep.Minimum = 1E-06D;
-            this.numericBoxCrystalNumPerStep.MinimumSize = new System.Drawing.Size(1, 23);
-            this.numericBoxCrystalNumPerStep.Name = "numericBoxCrystalNumPerStep";
-            this.toolTip.SetToolTip(this.numericBoxCrystalNumPerStep, resources.GetString("numericBoxCrystalNumPerStep.ToolTip")); // 260531Cl
-            this.numericBoxCrystalNumPerStep.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
-            this.numericBoxCrystalNumPerStep.RadianValue = 0.0087266462599716477D;
-            this.numericBoxCrystalNumPerStep.ShowUpDown = true;
-            this.numericBoxCrystalNumPerStep.Size = new System.Drawing.Size(168, 25);
-            this.numericBoxCrystalNumPerStep.SkipEventDuringInput = false;
-            this.numericBoxCrystalNumPerStep.SmartIncrement = true;
-            this.numericBoxCrystalNumPerStep.TabIndex = 407;
-            this.numericBoxCrystalNumPerStep.ValueFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.numericBoxCrystalNumPerStep.ThousandsSeparator = true;
-            this.numericBoxCrystalNumPerStep.Value = 0.5D;
+            numericBoxCrystalNumPerStep.BackColor = System.Drawing.SystemColors.Control;
+            numericBoxCrystalNumPerStep.DecimalPlaces = 3;
+            numericBoxCrystalNumPerStep.FooterFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            numericBoxCrystalNumPerStep.FooterText = "%";
+            numericBoxCrystalNumPerStep.HeaderFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            numericBoxCrystalNumPerStep.HeaderText = "Num per Step";
+            numericBoxCrystalNumPerStep.Location = new System.Drawing.Point(18, 27);
+            numericBoxCrystalNumPerStep.Margin = new System.Windows.Forms.Padding(0);
+            numericBoxCrystalNumPerStep.Maximum = 10D;
+            numericBoxCrystalNumPerStep.MaximumSize = new System.Drawing.Size(1000, 25);
+            numericBoxCrystalNumPerStep.Minimum = 1E-06D;
+            numericBoxCrystalNumPerStep.MinimumSize = new System.Drawing.Size(1, 23);
+            numericBoxCrystalNumPerStep.Name = "numericBoxCrystalNumPerStep";
+            toolTip.SetToolTip(numericBoxCrystalNumPerStep, resources.GetString("numericBoxCrystalNumPerStep.ToolTip")); // 260531Cl
+            numericBoxCrystalNumPerStep.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
+            numericBoxCrystalNumPerStep.RadianValue = 0.0087266462599716477D;
+            numericBoxCrystalNumPerStep.ShowUpDown = true;
+            numericBoxCrystalNumPerStep.Size = new System.Drawing.Size(168, 25);
+            numericBoxCrystalNumPerStep.SkipEventDuringInput = false;
+            numericBoxCrystalNumPerStep.SmartIncrement = true;
+            numericBoxCrystalNumPerStep.TabIndex = 407;
+            numericBoxCrystalNumPerStep.ValueFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            numericBoxCrystalNumPerStep.ThousandsSeparator = true;
+            numericBoxCrystalNumPerStep.Value = 0.5D;
             // 
             // numericBoxInheritabiliry
             // 
-            this.numericBoxInheritabiliry.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxInheritabiliry.DecimalPlaces = 2;
-            this.numericBoxInheritabiliry.FooterFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.numericBoxInheritabiliry.FooterText = "%";
-            this.numericBoxInheritabiliry.HeaderFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.numericBoxInheritabiliry.HeaderText = "Inheritability";
-            this.numericBoxInheritabiliry.Location = new System.Drawing.Point(18, 57);
-            this.numericBoxInheritabiliry.Margin = new System.Windows.Forms.Padding(0);
-            this.numericBoxInheritabiliry.Maximum = 100D;
-            this.numericBoxInheritabiliry.MaximumSize = new System.Drawing.Size(1000, 25);
-            this.numericBoxInheritabiliry.Minimum = 0D;
-            this.numericBoxInheritabiliry.MinimumSize = new System.Drawing.Size(1, 23);
-            this.numericBoxInheritabiliry.Name = "numericBoxInheritabiliry";
-            this.toolTip.SetToolTip(this.numericBoxInheritabiliry, resources.GetString("numericBoxInheritabiliry.ToolTip")); // 260531Cl
-            this.numericBoxInheritabiliry.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
-            this.numericBoxInheritabiliry.RadianValue = 0.17453292519943295D;
-            this.numericBoxInheritabiliry.ShowUpDown = true;
-            this.numericBoxInheritabiliry.Size = new System.Drawing.Size(168, 25);
-            this.numericBoxInheritabiliry.SkipEventDuringInput = false;
-            this.numericBoxInheritabiliry.SmartIncrement = true;
-            this.numericBoxInheritabiliry.TabIndex = 407;
-            this.numericBoxInheritabiliry.ValueFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.numericBoxInheritabiliry.ThousandsSeparator = true;
-            this.numericBoxInheritabiliry.Value = 10D;
+            numericBoxInheritabiliry.BackColor = System.Drawing.SystemColors.Control;
+            numericBoxInheritabiliry.DecimalPlaces = 2;
+            numericBoxInheritabiliry.FooterFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            numericBoxInheritabiliry.FooterText = "%";
+            numericBoxInheritabiliry.HeaderFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            numericBoxInheritabiliry.HeaderText = "Inheritability";
+            numericBoxInheritabiliry.Location = new System.Drawing.Point(18, 57);
+            numericBoxInheritabiliry.Margin = new System.Windows.Forms.Padding(0);
+            numericBoxInheritabiliry.Maximum = 100D;
+            numericBoxInheritabiliry.MaximumSize = new System.Drawing.Size(1000, 25);
+            numericBoxInheritabiliry.Minimum = 0D;
+            numericBoxInheritabiliry.MinimumSize = new System.Drawing.Size(1, 23);
+            numericBoxInheritabiliry.Name = "numericBoxInheritabiliry";
+            toolTip.SetToolTip(numericBoxInheritabiliry, resources.GetString("numericBoxInheritabiliry.ToolTip")); // 260531Cl
+            numericBoxInheritabiliry.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
+            numericBoxInheritabiliry.RadianValue = 0.17453292519943295D;
+            numericBoxInheritabiliry.ShowUpDown = true;
+            numericBoxInheritabiliry.Size = new System.Drawing.Size(168, 25);
+            numericBoxInheritabiliry.SkipEventDuringInput = false;
+            numericBoxInheritabiliry.SmartIncrement = true;
+            numericBoxInheritabiliry.TabIndex = 407;
+            numericBoxInheritabiliry.ValueFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            numericBoxInheritabiliry.ThousandsSeparator = true;
+            numericBoxInheritabiliry.Value = 10D;
             // 
             // checkBoxInheritabiliryThreshold
             // 
-            this.checkBoxInheritabiliryThreshold.AutoSize = true;
-            this.checkBoxInheritabiliryThreshold.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.checkBoxInheritabiliryThreshold.Location = new System.Drawing.Point(201, 58);
-            this.checkBoxInheritabiliryThreshold.Name = "checkBoxInheritabiliryThreshold";
-            this.toolTip.SetToolTip(this.checkBoxInheritabiliryThreshold, resources.GetString("checkBoxInheritabiliryThreshold.ToolTip")); // 260531Cl
-            this.checkBoxInheritabiliryThreshold.Size = new System.Drawing.Size(83, 20);
-            this.checkBoxInheritabiliryThreshold.TabIndex = 408;
-            this.checkBoxInheritabiliryThreshold.Text = "Threshold";
-            this.checkBoxInheritabiliryThreshold.UseVisualStyleBackColor = true;
-            this.checkBoxInheritabiliryThreshold.CheckedChanged += new System.EventHandler(this.checkBoxInheritabiliryThreshold_CheckedChanged);
+            checkBoxInheritabiliryThreshold.AutoSize = true;
+            checkBoxInheritabiliryThreshold.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            checkBoxInheritabiliryThreshold.Location = new System.Drawing.Point(201, 58);
+            checkBoxInheritabiliryThreshold.Name = "checkBoxInheritabiliryThreshold";
+            toolTip.SetToolTip(checkBoxInheritabiliryThreshold, resources.GetString("checkBoxInheritabiliryThreshold.ToolTip")); // 260531Cl
+            checkBoxInheritabiliryThreshold.Size = new System.Drawing.Size(83, 20);
+            checkBoxInheritabiliryThreshold.TabIndex = 408;
+            checkBoxInheritabiliryThreshold.Text = "Threshold";
+            checkBoxInheritabiliryThreshold.UseVisualStyleBackColor = true;
+            checkBoxInheritabiliryThreshold.CheckedChanged += new System.EventHandler(checkBoxInheritabiliryThreshold_CheckedChanged);
             // 
             // numericBoxInheritabiliryThreshold
             // 
-            this.numericBoxInheritabiliryThreshold.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxInheritabiliryThreshold.DecimalPlaces = 2;
-            this.numericBoxInheritabiliryThreshold.FooterFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.numericBoxInheritabiliryThreshold.FooterText = "%";
-            this.numericBoxInheritabiliryThreshold.HeaderFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.numericBoxInheritabiliryThreshold.Location = new System.Drawing.Point(288, 57);
-            this.numericBoxInheritabiliryThreshold.Margin = new System.Windows.Forms.Padding(0);
-            this.numericBoxInheritabiliryThreshold.Maximum = 100D;
-            this.numericBoxInheritabiliryThreshold.MaximumSize = new System.Drawing.Size(1000, 25);
-            this.numericBoxInheritabiliryThreshold.Minimum = 0D;
-            this.numericBoxInheritabiliryThreshold.MinimumSize = new System.Drawing.Size(1, 23);
-            this.numericBoxInheritabiliryThreshold.Name = "numericBoxInheritabiliryThreshold";
-            this.toolTip.SetToolTip(this.numericBoxInheritabiliryThreshold, resources.GetString("numericBoxInheritabiliryThreshold.ToolTip")); // 260531Cl
-            this.numericBoxInheritabiliryThreshold.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
-            this.numericBoxInheritabiliryThreshold.RadianValue = 1.6755160819145563D;
-            this.numericBoxInheritabiliryThreshold.ShowUpDown = true;
-            this.numericBoxInheritabiliryThreshold.Size = new System.Drawing.Size(79, 25);
-            this.numericBoxInheritabiliryThreshold.SkipEventDuringInput = false;
-            this.numericBoxInheritabiliryThreshold.SmartIncrement = true;
-            this.numericBoxInheritabiliryThreshold.TabIndex = 407;
-            this.numericBoxInheritabiliryThreshold.ValueFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.numericBoxInheritabiliryThreshold.ThousandsSeparator = true;
-            this.numericBoxInheritabiliryThreshold.Value = 96D;
-            this.numericBoxInheritabiliryThreshold.Visible = false;
+            numericBoxInheritabiliryThreshold.BackColor = System.Drawing.SystemColors.Control;
+            numericBoxInheritabiliryThreshold.DecimalPlaces = 2;
+            numericBoxInheritabiliryThreshold.FooterFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            numericBoxInheritabiliryThreshold.FooterText = "%";
+            numericBoxInheritabiliryThreshold.HeaderFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            numericBoxInheritabiliryThreshold.Location = new System.Drawing.Point(288, 57);
+            numericBoxInheritabiliryThreshold.Margin = new System.Windows.Forms.Padding(0);
+            numericBoxInheritabiliryThreshold.Maximum = 100D;
+            numericBoxInheritabiliryThreshold.MaximumSize = new System.Drawing.Size(1000, 25);
+            numericBoxInheritabiliryThreshold.Minimum = 0D;
+            numericBoxInheritabiliryThreshold.MinimumSize = new System.Drawing.Size(1, 23);
+            numericBoxInheritabiliryThreshold.Name = "numericBoxInheritabiliryThreshold";
+            toolTip.SetToolTip(numericBoxInheritabiliryThreshold, resources.GetString("numericBoxInheritabiliryThreshold.ToolTip")); // 260531Cl
+            numericBoxInheritabiliryThreshold.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
+            numericBoxInheritabiliryThreshold.RadianValue = 1.6755160819145563D;
+            numericBoxInheritabiliryThreshold.ShowUpDown = true;
+            numericBoxInheritabiliryThreshold.Size = new System.Drawing.Size(79, 25);
+            numericBoxInheritabiliryThreshold.SkipEventDuringInput = false;
+            numericBoxInheritabiliryThreshold.SmartIncrement = true;
+            numericBoxInheritabiliryThreshold.TabIndex = 407;
+            numericBoxInheritabiliryThreshold.ValueFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            numericBoxInheritabiliryThreshold.ThousandsSeparator = true;
+            numericBoxInheritabiliryThreshold.Value = 96D;
+            numericBoxInheritabiliryThreshold.Visible = false;
             // 
             // checkBoxDirectionalDensityThreshold
             // 
-            this.checkBoxDirectionalDensityThreshold.AutoSize = true;
-            this.checkBoxDirectionalDensityThreshold.Checked = true;
-            this.checkBoxDirectionalDensityThreshold.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxDirectionalDensityThreshold.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.checkBoxDirectionalDensityThreshold.Location = new System.Drawing.Point(201, 88);
-            this.checkBoxDirectionalDensityThreshold.Name = "checkBoxDirectionalDensityThreshold";
-            this.toolTip.SetToolTip(this.checkBoxDirectionalDensityThreshold, resources.GetString("checkBoxDirectionalDensityThreshold.ToolTip")); // 260531Cl
-            this.checkBoxDirectionalDensityThreshold.Size = new System.Drawing.Size(83, 20);
-            this.checkBoxDirectionalDensityThreshold.TabIndex = 408;
-            this.checkBoxDirectionalDensityThreshold.Text = "Threshold";
-            this.checkBoxDirectionalDensityThreshold.UseVisualStyleBackColor = true;
-            this.checkBoxDirectionalDensityThreshold.CheckedChanged += new System.EventHandler(this.checkBoxDirectionalDensityThreshold_CheckedChanged);
+            checkBoxDirectionalDensityThreshold.AutoSize = true;
+            checkBoxDirectionalDensityThreshold.Checked = true;
+            checkBoxDirectionalDensityThreshold.CheckState = System.Windows.Forms.CheckState.Checked;
+            checkBoxDirectionalDensityThreshold.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            checkBoxDirectionalDensityThreshold.Location = new System.Drawing.Point(201, 88);
+            checkBoxDirectionalDensityThreshold.Name = "checkBoxDirectionalDensityThreshold";
+            toolTip.SetToolTip(checkBoxDirectionalDensityThreshold, resources.GetString("checkBoxDirectionalDensityThreshold.ToolTip")); // 260531Cl
+            checkBoxDirectionalDensityThreshold.Size = new System.Drawing.Size(83, 20);
+            checkBoxDirectionalDensityThreshold.TabIndex = 408;
+            checkBoxDirectionalDensityThreshold.Text = "Threshold";
+            checkBoxDirectionalDensityThreshold.UseVisualStyleBackColor = true;
+            checkBoxDirectionalDensityThreshold.CheckedChanged += new System.EventHandler(checkBoxDirectionalDensityThreshold_CheckedChanged);
             // 
             // numericBoxDirectionalDensity
             // 
-            this.numericBoxDirectionalDensity.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxDirectionalDensity.DecimalPlaces = 2;
-            this.numericBoxDirectionalDensity.FooterFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.numericBoxDirectionalDensity.FooterText = "°";
-            this.numericBoxDirectionalDensity.HeaderFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.numericBoxDirectionalDensity.HeaderText = "Directional density";
-            this.numericBoxDirectionalDensity.Location = new System.Drawing.Point(2, 88);
-            this.numericBoxDirectionalDensity.Margin = new System.Windows.Forms.Padding(0);
-            this.numericBoxDirectionalDensity.Maximum = 720D;
-            this.numericBoxDirectionalDensity.MaximumSize = new System.Drawing.Size(1000, 25);
-            this.numericBoxDirectionalDensity.Minimum = 0.1D;
-            this.numericBoxDirectionalDensity.MinimumSize = new System.Drawing.Size(1, 23);
-            this.numericBoxDirectionalDensity.Name = "numericBoxDirectionalDensity";
-            this.toolTip.SetToolTip(this.numericBoxDirectionalDensity, resources.GetString("numericBoxDirectionalDensity.ToolTip")); // 260531Cl
-            this.numericBoxDirectionalDensity.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
-            this.numericBoxDirectionalDensity.RadianValue = 0.3490658503988659D;
-            this.numericBoxDirectionalDensity.ShowUpDown = true;
-            this.numericBoxDirectionalDensity.Size = new System.Drawing.Size(179, 25);
-            this.numericBoxDirectionalDensity.SkipEventDuringInput = false;
-            this.numericBoxDirectionalDensity.SmartIncrement = true;
-            this.numericBoxDirectionalDensity.TabIndex = 407;
-            this.numericBoxDirectionalDensity.ValueFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.numericBoxDirectionalDensity.ThousandsSeparator = true;
-            this.numericBoxDirectionalDensity.Value = 20D;
+            numericBoxDirectionalDensity.BackColor = System.Drawing.SystemColors.Control;
+            numericBoxDirectionalDensity.DecimalPlaces = 2;
+            numericBoxDirectionalDensity.FooterFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            numericBoxDirectionalDensity.FooterText = "°";
+            numericBoxDirectionalDensity.HeaderFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            numericBoxDirectionalDensity.HeaderText = "Directional density";
+            numericBoxDirectionalDensity.Location = new System.Drawing.Point(2, 88);
+            numericBoxDirectionalDensity.Margin = new System.Windows.Forms.Padding(0);
+            numericBoxDirectionalDensity.Maximum = 720D;
+            numericBoxDirectionalDensity.MaximumSize = new System.Drawing.Size(1000, 25);
+            numericBoxDirectionalDensity.Minimum = 0.1D;
+            numericBoxDirectionalDensity.MinimumSize = new System.Drawing.Size(1, 23);
+            numericBoxDirectionalDensity.Name = "numericBoxDirectionalDensity";
+            toolTip.SetToolTip(numericBoxDirectionalDensity, resources.GetString("numericBoxDirectionalDensity.ToolTip")); // 260531Cl
+            numericBoxDirectionalDensity.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
+            numericBoxDirectionalDensity.RadianValue = 0.3490658503988659D;
+            numericBoxDirectionalDensity.ShowUpDown = true;
+            numericBoxDirectionalDensity.Size = new System.Drawing.Size(179, 25);
+            numericBoxDirectionalDensity.SkipEventDuringInput = false;
+            numericBoxDirectionalDensity.SmartIncrement = true;
+            numericBoxDirectionalDensity.TabIndex = 407;
+            numericBoxDirectionalDensity.ValueFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            numericBoxDirectionalDensity.ThousandsSeparator = true;
+            numericBoxDirectionalDensity.Value = 20D;
             // 
             // numericBoxCrystalNumPerStepThreshold
             // 
-            this.numericBoxCrystalNumPerStepThreshold.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxCrystalNumPerStepThreshold.DecimalPlaces = 3;
-            this.numericBoxCrystalNumPerStepThreshold.FooterFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.numericBoxCrystalNumPerStepThreshold.FooterText = "%";
-            this.numericBoxCrystalNumPerStepThreshold.HeaderFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.numericBoxCrystalNumPerStepThreshold.Location = new System.Drawing.Point(288, 28);
-            this.numericBoxCrystalNumPerStepThreshold.Margin = new System.Windows.Forms.Padding(0);
-            this.numericBoxCrystalNumPerStepThreshold.Maximum = 10D;
-            this.numericBoxCrystalNumPerStepThreshold.MaximumSize = new System.Drawing.Size(1000, 25);
-            this.numericBoxCrystalNumPerStepThreshold.Minimum = 1E-06D;
-            this.numericBoxCrystalNumPerStepThreshold.MinimumSize = new System.Drawing.Size(1, 23);
-            this.numericBoxCrystalNumPerStepThreshold.Name = "numericBoxCrystalNumPerStepThreshold";
-            this.toolTip.SetToolTip(this.numericBoxCrystalNumPerStepThreshold, resources.GetString("numericBoxCrystalNumPerStepThreshold.ToolTip")); // 260531Cl
-            this.numericBoxCrystalNumPerStepThreshold.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
-            this.numericBoxCrystalNumPerStepThreshold.RadianValue = 0.0004363323129985824D;
-            this.numericBoxCrystalNumPerStepThreshold.ShowUpDown = true;
-            this.numericBoxCrystalNumPerStepThreshold.Size = new System.Drawing.Size(79, 25);
-            this.numericBoxCrystalNumPerStepThreshold.SkipEventDuringInput = false;
-            this.numericBoxCrystalNumPerStepThreshold.SmartIncrement = true;
-            this.numericBoxCrystalNumPerStepThreshold.TabIndex = 407;
-            this.numericBoxCrystalNumPerStepThreshold.ValueFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.numericBoxCrystalNumPerStepThreshold.ThousandsSeparator = true;
-            this.numericBoxCrystalNumPerStepThreshold.Value = 0.025D;
-            this.numericBoxCrystalNumPerStepThreshold.Visible = false;
+            numericBoxCrystalNumPerStepThreshold.BackColor = System.Drawing.SystemColors.Control;
+            numericBoxCrystalNumPerStepThreshold.DecimalPlaces = 3;
+            numericBoxCrystalNumPerStepThreshold.FooterFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            numericBoxCrystalNumPerStepThreshold.FooterText = "%";
+            numericBoxCrystalNumPerStepThreshold.HeaderFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            numericBoxCrystalNumPerStepThreshold.Location = new System.Drawing.Point(288, 28);
+            numericBoxCrystalNumPerStepThreshold.Margin = new System.Windows.Forms.Padding(0);
+            numericBoxCrystalNumPerStepThreshold.Maximum = 10D;
+            numericBoxCrystalNumPerStepThreshold.MaximumSize = new System.Drawing.Size(1000, 25);
+            numericBoxCrystalNumPerStepThreshold.Minimum = 1E-06D;
+            numericBoxCrystalNumPerStepThreshold.MinimumSize = new System.Drawing.Size(1, 23);
+            numericBoxCrystalNumPerStepThreshold.Name = "numericBoxCrystalNumPerStepThreshold";
+            toolTip.SetToolTip(numericBoxCrystalNumPerStepThreshold, resources.GetString("numericBoxCrystalNumPerStepThreshold.ToolTip")); // 260531Cl
+            numericBoxCrystalNumPerStepThreshold.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
+            numericBoxCrystalNumPerStepThreshold.RadianValue = 0.0004363323129985824D;
+            numericBoxCrystalNumPerStepThreshold.ShowUpDown = true;
+            numericBoxCrystalNumPerStepThreshold.Size = new System.Drawing.Size(79, 25);
+            numericBoxCrystalNumPerStepThreshold.SkipEventDuringInput = false;
+            numericBoxCrystalNumPerStepThreshold.SmartIncrement = true;
+            numericBoxCrystalNumPerStepThreshold.TabIndex = 407;
+            numericBoxCrystalNumPerStepThreshold.ValueFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            numericBoxCrystalNumPerStepThreshold.ThousandsSeparator = true;
+            numericBoxCrystalNumPerStepThreshold.Value = 0.025D;
+            numericBoxCrystalNumPerStepThreshold.Visible = false;
             // 
             // numericBoxDirectionalDensityThreshold
             // 
-            this.numericBoxDirectionalDensityThreshold.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxDirectionalDensityThreshold.DecimalPlaces = 2;
-            this.numericBoxDirectionalDensityThreshold.FooterFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.numericBoxDirectionalDensityThreshold.FooterText = "°";
-            this.numericBoxDirectionalDensityThreshold.HeaderFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.numericBoxDirectionalDensityThreshold.Location = new System.Drawing.Point(288, 88);
-            this.numericBoxDirectionalDensityThreshold.Margin = new System.Windows.Forms.Padding(0);
-            this.numericBoxDirectionalDensityThreshold.Maximum = 720D;
-            this.numericBoxDirectionalDensityThreshold.MaximumSize = new System.Drawing.Size(1000, 25);
-            this.numericBoxDirectionalDensityThreshold.Minimum = 0.1D;
-            this.numericBoxDirectionalDensityThreshold.MinimumSize = new System.Drawing.Size(1, 23);
-            this.numericBoxDirectionalDensityThreshold.Name = "numericBoxDirectionalDensityThreshold";
-            this.toolTip.SetToolTip(this.numericBoxDirectionalDensityThreshold, resources.GetString("numericBoxDirectionalDensityThreshold.ToolTip")); // 260531Cl
-            this.numericBoxDirectionalDensityThreshold.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
-            this.numericBoxDirectionalDensityThreshold.RadianValue = 0.017453292519943295D;
-            this.numericBoxDirectionalDensityThreshold.ShowUpDown = true;
-            this.numericBoxDirectionalDensityThreshold.Size = new System.Drawing.Size(75, 25);
-            this.numericBoxDirectionalDensityThreshold.SkipEventDuringInput = false;
-            this.numericBoxDirectionalDensityThreshold.SmartIncrement = true;
-            this.numericBoxDirectionalDensityThreshold.TabIndex = 407;
-            this.numericBoxDirectionalDensityThreshold.ValueFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.numericBoxDirectionalDensityThreshold.ThousandsSeparator = true;
-            this.numericBoxDirectionalDensityThreshold.Value = 1D;
+            numericBoxDirectionalDensityThreshold.BackColor = System.Drawing.SystemColors.Control;
+            numericBoxDirectionalDensityThreshold.DecimalPlaces = 2;
+            numericBoxDirectionalDensityThreshold.FooterFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            numericBoxDirectionalDensityThreshold.FooterText = "°";
+            numericBoxDirectionalDensityThreshold.HeaderFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            numericBoxDirectionalDensityThreshold.Location = new System.Drawing.Point(288, 88);
+            numericBoxDirectionalDensityThreshold.Margin = new System.Windows.Forms.Padding(0);
+            numericBoxDirectionalDensityThreshold.Maximum = 720D;
+            numericBoxDirectionalDensityThreshold.MaximumSize = new System.Drawing.Size(1000, 25);
+            numericBoxDirectionalDensityThreshold.Minimum = 0.1D;
+            numericBoxDirectionalDensityThreshold.MinimumSize = new System.Drawing.Size(1, 23);
+            numericBoxDirectionalDensityThreshold.Name = "numericBoxDirectionalDensityThreshold";
+            toolTip.SetToolTip(numericBoxDirectionalDensityThreshold, resources.GetString("numericBoxDirectionalDensityThreshold.ToolTip")); // 260531Cl
+            numericBoxDirectionalDensityThreshold.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
+            numericBoxDirectionalDensityThreshold.RadianValue = 0.017453292519943295D;
+            numericBoxDirectionalDensityThreshold.ShowUpDown = true;
+            numericBoxDirectionalDensityThreshold.Size = new System.Drawing.Size(75, 25);
+            numericBoxDirectionalDensityThreshold.SkipEventDuringInput = false;
+            numericBoxDirectionalDensityThreshold.SmartIncrement = true;
+            numericBoxDirectionalDensityThreshold.TabIndex = 407;
+            numericBoxDirectionalDensityThreshold.ValueFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            numericBoxDirectionalDensityThreshold.ThousandsSeparator = true;
+            numericBoxDirectionalDensityThreshold.Value = 1D;
             // 
             // groupBoxFittingOptions
             // 
-            this.groupBoxFittingOptions.Controls.Add(this.checkBoxRefineConvergence);
-            this.groupBoxFittingOptions.Controls.Add(this.checkBoxRefineStress);
-            this.groupBoxFittingOptions.Controls.Add(this.checkBoxRefineCenterOffset);
-            this.groupBoxFittingOptions.Controls.Add(this.checkBoxRefinePreferredOrientation);
-            this.groupBoxFittingOptions.Controls.Add(this.checkBoxRefineFilmBlur);
-            this.groupBoxFittingOptions.Location = new System.Drawing.Point(4, 4);
-            this.groupBoxFittingOptions.Margin = new System.Windows.Forms.Padding(4);
-            this.groupBoxFittingOptions.Name = "groupBoxFittingOptions";
-            this.groupBoxFittingOptions.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBoxFittingOptions.Size = new System.Drawing.Size(127, 198);
-            this.groupBoxFittingOptions.TabIndex = 166;
-            this.groupBoxFittingOptions.TabStop = false;
-            this.groupBoxFittingOptions.Text = "Fitting option"; // 260521Cl Phase7: Title→sentence case
+            groupBoxFittingOptions.Controls.Add(checkBoxRefineConvergence);
+            groupBoxFittingOptions.Controls.Add(checkBoxRefineStress);
+            groupBoxFittingOptions.Controls.Add(checkBoxRefineCenterOffset);
+            groupBoxFittingOptions.Controls.Add(checkBoxRefinePreferredOrientation);
+            groupBoxFittingOptions.Controls.Add(checkBoxRefineFilmBlur);
+            groupBoxFittingOptions.Location = new System.Drawing.Point(4, 4);
+            groupBoxFittingOptions.Margin = new System.Windows.Forms.Padding(4);
+            groupBoxFittingOptions.Name = "groupBoxFittingOptions";
+            groupBoxFittingOptions.Padding = new System.Windows.Forms.Padding(4);
+            groupBoxFittingOptions.Size = new System.Drawing.Size(127, 198);
+            groupBoxFittingOptions.TabIndex = 166;
+            groupBoxFittingOptions.TabStop = false;
+            groupBoxFittingOptions.Text = "Fitting option"; // 260521Cl Phase7: Title→sentence case
             // 
             // checkBoxRefineConvergence
             // 
-            this.checkBoxRefineConvergence.AutoSize = true;
-            this.checkBoxRefineConvergence.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.checkBoxRefineConvergence.Location = new System.Drawing.Point(8, 62);
-            this.checkBoxRefineConvergence.Margin = new System.Windows.Forms.Padding(4);
-            this.checkBoxRefineConvergence.Name = "checkBoxRefineConvergence";
-            this.toolTip.SetToolTip(this.checkBoxRefineConvergence, resources.GetString("checkBoxRefineConvergence.ToolTip")); // 260531Cl
-            this.checkBoxRefineConvergence.Size = new System.Drawing.Size(102, 36);
-            this.checkBoxRefineConvergence.TabIndex = 409;
-            this.checkBoxRefineConvergence.Text = "Beam\r\n convergence";
-            this.checkBoxRefineConvergence.UseVisualStyleBackColor = true;
+            checkBoxRefineConvergence.AutoSize = true;
+            checkBoxRefineConvergence.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            checkBoxRefineConvergence.Location = new System.Drawing.Point(8, 62);
+            checkBoxRefineConvergence.Margin = new System.Windows.Forms.Padding(4);
+            checkBoxRefineConvergence.Name = "checkBoxRefineConvergence";
+            toolTip.SetToolTip(checkBoxRefineConvergence, resources.GetString("checkBoxRefineConvergence.ToolTip")); // 260531Cl
+            checkBoxRefineConvergence.Size = new System.Drawing.Size(102, 36);
+            checkBoxRefineConvergence.TabIndex = 409;
+            checkBoxRefineConvergence.Text = "Beam\r\n convergence";
+            checkBoxRefineConvergence.UseVisualStyleBackColor = true;
             // 
             // checkBoxRefineStress
             // 
-            this.checkBoxRefineStress.AutoSize = true;
-            this.checkBoxRefineStress.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.checkBoxRefineStress.Location = new System.Drawing.Point(8, 161);
-            this.checkBoxRefineStress.Margin = new System.Windows.Forms.Padding(4);
-            this.checkBoxRefineStress.Name = "checkBoxRefineStress";
-            this.toolTip.SetToolTip(this.checkBoxRefineStress, resources.GetString("checkBoxRefineStress.ToolTip")); // 260531Cl
-            this.checkBoxRefineStress.Size = new System.Drawing.Size(62, 20);
-            this.checkBoxRefineStress.TabIndex = 412;
-            this.checkBoxRefineStress.Text = "Stress";
-            this.checkBoxRefineStress.UseVisualStyleBackColor = true;
+            checkBoxRefineStress.AutoSize = true;
+            checkBoxRefineStress.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            checkBoxRefineStress.Location = new System.Drawing.Point(8, 161);
+            checkBoxRefineStress.Margin = new System.Windows.Forms.Padding(4);
+            checkBoxRefineStress.Name = "checkBoxRefineStress";
+            toolTip.SetToolTip(checkBoxRefineStress, resources.GetString("checkBoxRefineStress.ToolTip")); // 260531Cl
+            checkBoxRefineStress.Size = new System.Drawing.Size(62, 20);
+            checkBoxRefineStress.TabIndex = 412;
+            checkBoxRefineStress.Text = "Stress";
+            checkBoxRefineStress.UseVisualStyleBackColor = true;
             // 
             // checkBoxRefineCenterOffset
             // 
-            this.checkBoxRefineCenterOffset.AutoSize = true;
-            this.checkBoxRefineCenterOffset.Checked = true;
-            this.checkBoxRefineCenterOffset.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxRefineCenterOffset.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.checkBoxRefineCenterOffset.Location = new System.Drawing.Point(8, 133);
-            this.checkBoxRefineCenterOffset.Margin = new System.Windows.Forms.Padding(4);
-            this.checkBoxRefineCenterOffset.Name = "checkBoxRefineCenterOffset";
-            this.toolTip.SetToolTip(this.checkBoxRefineCenterOffset, resources.GetString("checkBoxRefineCenterOffset.ToolTip")); // 260531Cl
-            this.checkBoxRefineCenterOffset.Size = new System.Drawing.Size(100, 20);
-            this.checkBoxRefineCenterOffset.TabIndex = 411;
-            this.checkBoxRefineCenterOffset.Text = "Center offset";
-            this.checkBoxRefineCenterOffset.UseVisualStyleBackColor = true;
+            checkBoxRefineCenterOffset.AutoSize = true;
+            checkBoxRefineCenterOffset.Checked = true;
+            checkBoxRefineCenterOffset.CheckState = System.Windows.Forms.CheckState.Checked;
+            checkBoxRefineCenterOffset.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            checkBoxRefineCenterOffset.Location = new System.Drawing.Point(8, 133);
+            checkBoxRefineCenterOffset.Margin = new System.Windows.Forms.Padding(4);
+            checkBoxRefineCenterOffset.Name = "checkBoxRefineCenterOffset";
+            toolTip.SetToolTip(checkBoxRefineCenterOffset, resources.GetString("checkBoxRefineCenterOffset.ToolTip")); // 260531Cl
+            checkBoxRefineCenterOffset.Size = new System.Drawing.Size(100, 20);
+            checkBoxRefineCenterOffset.TabIndex = 411;
+            checkBoxRefineCenterOffset.Text = "Center offset";
+            checkBoxRefineCenterOffset.UseVisualStyleBackColor = true;
             // 
             // checkBoxRefinePreferredOrientation
             // 
-            this.checkBoxRefinePreferredOrientation.AutoSize = true;
-            this.checkBoxRefinePreferredOrientation.Checked = true;
-            this.checkBoxRefinePreferredOrientation.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxRefinePreferredOrientation.Enabled = false;
-            this.checkBoxRefinePreferredOrientation.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.checkBoxRefinePreferredOrientation.Location = new System.Drawing.Point(8, 22);
-            this.checkBoxRefinePreferredOrientation.Margin = new System.Windows.Forms.Padding(4);
-            this.checkBoxRefinePreferredOrientation.Name = "checkBoxRefinePreferredOrientation";
-            this.toolTip.SetToolTip(this.checkBoxRefinePreferredOrientation, resources.GetString("checkBoxRefinePreferredOrientation.ToolTip")); // 260531Cl
-            this.checkBoxRefinePreferredOrientation.Size = new System.Drawing.Size(91, 36);
-            this.checkBoxRefinePreferredOrientation.TabIndex = 408;
-            this.checkBoxRefinePreferredOrientation.Text = "Preferred \r\n orientation";
-            this.checkBoxRefinePreferredOrientation.UseVisualStyleBackColor = true;
+            checkBoxRefinePreferredOrientation.AutoSize = true;
+            checkBoxRefinePreferredOrientation.Checked = true;
+            checkBoxRefinePreferredOrientation.CheckState = System.Windows.Forms.CheckState.Checked;
+            checkBoxRefinePreferredOrientation.Enabled = false;
+            checkBoxRefinePreferredOrientation.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            checkBoxRefinePreferredOrientation.Location = new System.Drawing.Point(8, 22);
+            checkBoxRefinePreferredOrientation.Margin = new System.Windows.Forms.Padding(4);
+            checkBoxRefinePreferredOrientation.Name = "checkBoxRefinePreferredOrientation";
+            toolTip.SetToolTip(checkBoxRefinePreferredOrientation, resources.GetString("checkBoxRefinePreferredOrientation.ToolTip")); // 260531Cl
+            checkBoxRefinePreferredOrientation.Size = new System.Drawing.Size(91, 36);
+            checkBoxRefinePreferredOrientation.TabIndex = 408;
+            checkBoxRefinePreferredOrientation.Text = "Preferred \r\n orientation";
+            checkBoxRefinePreferredOrientation.UseVisualStyleBackColor = true;
             // 
             // checkBoxRefineFilmBlur
             // 
-            this.checkBoxRefineFilmBlur.AutoSize = true;
-            this.checkBoxRefineFilmBlur.Checked = true;
-            this.checkBoxRefineFilmBlur.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxRefineFilmBlur.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.checkBoxRefineFilmBlur.Location = new System.Drawing.Point(8, 105);
-            this.checkBoxRefineFilmBlur.Margin = new System.Windows.Forms.Padding(4);
-            this.checkBoxRefineFilmBlur.Name = "checkBoxRefineFilmBlur";
-            this.toolTip.SetToolTip(this.checkBoxRefineFilmBlur, resources.GetString("checkBoxRefineFilmBlur.ToolTip")); // 260531Cl
-            this.checkBoxRefineFilmBlur.Size = new System.Drawing.Size(76, 20);
-            this.checkBoxRefineFilmBlur.TabIndex = 410;
-            this.checkBoxRefineFilmBlur.Text = "Film blur";
-            this.checkBoxRefineFilmBlur.UseVisualStyleBackColor = true;
+            checkBoxRefineFilmBlur.AutoSize = true;
+            checkBoxRefineFilmBlur.Checked = true;
+            checkBoxRefineFilmBlur.CheckState = System.Windows.Forms.CheckState.Checked;
+            checkBoxRefineFilmBlur.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            checkBoxRefineFilmBlur.Location = new System.Drawing.Point(8, 105);
+            checkBoxRefineFilmBlur.Margin = new System.Windows.Forms.Padding(4);
+            checkBoxRefineFilmBlur.Name = "checkBoxRefineFilmBlur";
+            toolTip.SetToolTip(checkBoxRefineFilmBlur, resources.GetString("checkBoxRefineFilmBlur.ToolTip")); // 260531Cl
+            checkBoxRefineFilmBlur.Size = new System.Drawing.Size(76, 20);
+            checkBoxRefineFilmBlur.TabIndex = 410;
+            checkBoxRefineFilmBlur.Text = "Film blur";
+            checkBoxRefineFilmBlur.UseVisualStyleBackColor = true;
             // 
             // checkBox6
             // 
-            this.checkBox6.AutoSize = true;
-            this.checkBox6.Checked = true;
-            this.checkBox6.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox6.Enabled = false;
-            this.checkBox6.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.checkBox6.Location = new System.Drawing.Point(145, 180);
-            this.checkBox6.Margin = new System.Windows.Forms.Padding(4);
-            this.checkBox6.Name = "checkBox6";
-            this.toolTip.SetToolTip(this.checkBox6, resources.GetString("checkBox6.ToolTip")); // 260531Cl
-            this.checkBox6.Size = new System.Drawing.Size(174, 20);
-            this.checkBox6.TabIndex = 406;
-            this.checkBox6.Text = "Automatically save setting";
-            this.checkBox6.UseVisualStyleBackColor = true;
+            checkBox6.AutoSize = true;
+            checkBox6.Checked = true;
+            checkBox6.CheckState = System.Windows.Forms.CheckState.Checked;
+            checkBox6.Enabled = false;
+            checkBox6.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            checkBox6.Location = new System.Drawing.Point(145, 180);
+            checkBox6.Margin = new System.Windows.Forms.Padding(4);
+            checkBox6.Name = "checkBox6";
+            toolTip.SetToolTip(checkBox6, resources.GetString("checkBox6.ToolTip")); // 260531Cl
+            checkBox6.Size = new System.Drawing.Size(174, 20);
+            checkBox6.TabIndex = 406;
+            checkBox6.Text = "Automatically save setting";
+            checkBox6.UseVisualStyleBackColor = true;
             // 
             // checkBoxAutomaticallyChangeParameter
             // 
-            this.checkBoxAutomaticallyChangeParameter.AutoSize = true;
-            this.checkBoxAutomaticallyChangeParameter.Checked = true;
-            this.checkBoxAutomaticallyChangeParameter.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxAutomaticallyChangeParameter.Enabled = false;
-            this.checkBoxAutomaticallyChangeParameter.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.checkBoxAutomaticallyChangeParameter.Location = new System.Drawing.Point(146, 146);
-            this.checkBoxAutomaticallyChangeParameter.Margin = new System.Windows.Forms.Padding(4);
-            this.checkBoxAutomaticallyChangeParameter.Name = "checkBoxAutomaticallyChangeParameter";
-            this.toolTip.SetToolTip(this.checkBoxAutomaticallyChangeParameter, resources.GetString("checkBoxAutomaticallyChangeParameter.ToolTip")); // 260531Cl
-            this.checkBoxAutomaticallyChangeParameter.Size = new System.Drawing.Size(211, 20);
-            this.checkBoxAutomaticallyChangeParameter.TabIndex = 405;
-            this.checkBoxAutomaticallyChangeParameter.Text = "Automatically change parameter";
-            this.checkBoxAutomaticallyChangeParameter.UseVisualStyleBackColor = true;
+            checkBoxAutomaticallyChangeParameter.AutoSize = true;
+            checkBoxAutomaticallyChangeParameter.Checked = true;
+            checkBoxAutomaticallyChangeParameter.CheckState = System.Windows.Forms.CheckState.Checked;
+            checkBoxAutomaticallyChangeParameter.Enabled = false;
+            checkBoxAutomaticallyChangeParameter.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            checkBoxAutomaticallyChangeParameter.Location = new System.Drawing.Point(146, 146);
+            checkBoxAutomaticallyChangeParameter.Margin = new System.Windows.Forms.Padding(4);
+            checkBoxAutomaticallyChangeParameter.Name = "checkBoxAutomaticallyChangeParameter";
+            toolTip.SetToolTip(checkBoxAutomaticallyChangeParameter, resources.GetString("checkBoxAutomaticallyChangeParameter.ToolTip")); // 260531Cl
+            checkBoxAutomaticallyChangeParameter.Size = new System.Drawing.Size(211, 20);
+            checkBoxAutomaticallyChangeParameter.TabIndex = 405;
+            checkBoxAutomaticallyChangeParameter.Text = "Automatically change parameter";
+            checkBoxAutomaticallyChangeParameter.UseVisualStyleBackColor = true;
             //
             // numericBoxChangeParameterThreshold
             //
             // 260522Cl 変更: NumericUpDown → NumericBox (Increment→UpDown_Increment, decimal→double, Font(Tahoma)はテーマ任せに撤去, ShowUpDown=true で UpDown 表示を維持)
-            this.numericBoxChangeParameterThreshold.DecimalPlaces = 2;
-            this.numericBoxChangeParameterThreshold.Location = new System.Drawing.Point(363, 146);
-            this.numericBoxChangeParameterThreshold.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
-            this.numericBoxChangeParameterThreshold.Maximum = 1D;
-            this.numericBoxChangeParameterThreshold.Name = "numericBoxChangeParameterThreshold";
-            this.toolTip.SetToolTip(this.numericBoxChangeParameterThreshold, resources.GetString("numericBoxChangeParameterThreshold.ToolTip")); // 260531Cl
-            this.numericBoxChangeParameterThreshold.ShowUpDown = true;
-            this.numericBoxChangeParameterThreshold.Size = new System.Drawing.Size(52, 22);
-            this.numericBoxChangeParameterThreshold.TabIndex = 404;
-            this.numericBoxChangeParameterThreshold.ThousandsSeparator = true;
-            this.numericBoxChangeParameterThreshold.UpDown_Increment = 0.05D;
-            this.numericBoxChangeParameterThreshold.Value = 0.6D;
+            numericBoxChangeParameterThreshold.DecimalPlaces = 2;
+            numericBoxChangeParameterThreshold.Location = new System.Drawing.Point(363, 146);
+            numericBoxChangeParameterThreshold.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
+            numericBoxChangeParameterThreshold.Maximum = 1D;
+            numericBoxChangeParameterThreshold.Name = "numericBoxChangeParameterThreshold";
+            toolTip.SetToolTip(numericBoxChangeParameterThreshold, resources.GetString("numericBoxChangeParameterThreshold.ToolTip")); // 260531Cl
+            numericBoxChangeParameterThreshold.ShowUpDown = true;
+            numericBoxChangeParameterThreshold.Size = new System.Drawing.Size(52, 22);
+            numericBoxChangeParameterThreshold.TabIndex = 404;
+            numericBoxChangeParameterThreshold.ThousandsSeparator = true;
+            numericBoxChangeParameterThreshold.UpDown_Increment = 0.05D;
+            numericBoxChangeParameterThreshold.Value = 0.6D;
             // 
             // tabPage6
             // 
-            this.tabPage6.Controls.Add(this.textBox1);
-            this.tabPage6.Controls.Add(this.graphControlResidual);
-            this.tabPage6.Location = new System.Drawing.Point(4, 25);
-            this.tabPage6.Margin = new System.Windows.Forms.Padding(4);
-            this.tabPage6.Name = "tabPage6";
-            this.tabPage6.Padding = new System.Windows.Forms.Padding(4);
-            this.tabPage6.Size = new System.Drawing.Size(514, 210);
-            this.tabPage6.TabIndex = 1;
-            this.tabPage6.Text = "Refinement results"; // 260521Cl Phase7: Refinment→Refinement typo
-            this.tabPage6.UseVisualStyleBackColor = true;
+            tabPage6.Controls.Add(textBox1);
+            tabPage6.Controls.Add(graphControlResidual);
+            tabPage6.Location = new System.Drawing.Point(4, 25);
+            tabPage6.Margin = new System.Windows.Forms.Padding(4);
+            tabPage6.Name = "tabPage6";
+            tabPage6.Padding = new System.Windows.Forms.Padding(4);
+            tabPage6.Size = new System.Drawing.Size(514, 210);
+            tabPage6.TabIndex = 1;
+            tabPage6.Text = "Refinement results"; // 260521Cl Phase7: Refinment→Refinement typo
+            tabPage6.UseVisualStyleBackColor = true;
             // 
             // textBox1
             // 
-            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.textBox1.Location = new System.Drawing.Point(3, 4);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.toolTip.SetToolTip(this.textBox1, resources.GetString("textBox1.ToolTip")); // 260531Cl
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(174, 190);
-            this.textBox1.TabIndex = 164;
+            textBox1.Location = new System.Drawing.Point(3, 4);
+            textBox1.Multiline = true;
+            textBox1.Name = "textBox1";
+            toolTip.SetToolTip(textBox1, resources.GetString("textBox1.ToolTip")); // 260531Cl
+            textBox1.ReadOnly = true;
+            textBox1.Size = new System.Drawing.Size(174, 190);
+            textBox1.TabIndex = 164;
             // 
             // graphControlResidual
             // 
-            this.graphControlResidual.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            graphControlResidual.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.graphControlResidual.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.graphControlResidual.GraphTitle = "";
-            this.graphControlResidual.Interpolation = false;
-            this.graphControlResidual.Location = new System.Drawing.Point(184, 4);
-            this.graphControlResidual.Margin = new System.Windows.Forms.Padding(4);
-            this.graphControlResidual.Name = "graphControlResidual";
-            this.graphControlResidual.Size = new System.Drawing.Size(322, 189);
-            this.graphControlResidual.Smoothing = false;
-            this.graphControlResidual.TabIndex = 163;
-            this.graphControlResidual.UpperPanelFont = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.graphControlResidual.UpperPanelVisible = false;
+            graphControlResidual.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            graphControlResidual.GraphTitle = "";
+            graphControlResidual.Interpolation = false;
+            graphControlResidual.Location = new System.Drawing.Point(184, 4);
+            graphControlResidual.Margin = new System.Windows.Forms.Padding(4);
+            graphControlResidual.Name = "graphControlResidual";
+            graphControlResidual.Size = new System.Drawing.Size(322, 189);
+            graphControlResidual.Smoothing = false;
+            graphControlResidual.TabIndex = 163;
+            graphControlResidual.UpperPanelFont = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            graphControlResidual.UpperPanelVisible = false;
             // 
             // tabPage8
             // 
-            this.tabPage8.Controls.Add(this.buttonSearchUnrelatedOrientations);
-            this.tabPage8.Location = new System.Drawing.Point(4, 25);
-            this.tabPage8.Margin = new System.Windows.Forms.Padding(4);
-            this.tabPage8.Name = "tabPage8";
-            this.tabPage8.Padding = new System.Windows.Forms.Padding(4);
-            this.tabPage8.Size = new System.Drawing.Size(514, 210);
-            this.tabPage8.TabIndex = 2;
-            this.tabPage8.Text = "Debug";
-            this.tabPage8.UseVisualStyleBackColor = true;
+            tabPage8.Controls.Add(buttonSearchUnrelatedOrientations);
+            tabPage8.Location = new System.Drawing.Point(4, 25);
+            tabPage8.Margin = new System.Windows.Forms.Padding(4);
+            tabPage8.Name = "tabPage8";
+            tabPage8.Padding = new System.Windows.Forms.Padding(4);
+            tabPage8.Size = new System.Drawing.Size(514, 210);
+            tabPage8.TabIndex = 2;
+            tabPage8.Text = "Debug";
+            tabPage8.UseVisualStyleBackColor = true;
             // 
             // buttonSearchUnrelatedOrientations
             // 
-            this.buttonSearchUnrelatedOrientations.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.buttonSearchUnrelatedOrientations.Location = new System.Drawing.Point(5, 32);
-            this.buttonSearchUnrelatedOrientations.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
-            this.buttonSearchUnrelatedOrientations.Name = "buttonSearchUnrelatedOrientations";
-            this.toolTip.SetToolTip(this.buttonSearchUnrelatedOrientations, resources.GetString("buttonSearchUnrelatedOrientations.ToolTip")); // 260531Cl
-            this.buttonSearchUnrelatedOrientations.Size = new System.Drawing.Size(281, 35);
-            this.buttonSearchUnrelatedOrientations.TabIndex = 68;
-            this.buttonSearchUnrelatedOrientations.Text = "Search unrelated orientation";
-            this.buttonSearchUnrelatedOrientations.BackColor = System.Drawing.Color.SteelBlue; // 260520Cl 追加: 主要アクション(検索)を水色に統一
-            this.buttonSearchUnrelatedOrientations.ForeColor = System.Drawing.Color.White; // 260520Cl 追加
-            this.buttonSearchUnrelatedOrientations.UseVisualStyleBackColor = false; // 260520Cl 変更: BackColor有効化のため
-            this.buttonSearchUnrelatedOrientations.Click += new System.EventHandler(this.buttonSearchUnrelatedOrientations_Click);
+            buttonSearchUnrelatedOrientations.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            buttonSearchUnrelatedOrientations.Location = new System.Drawing.Point(5, 32);
+            buttonSearchUnrelatedOrientations.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
+            buttonSearchUnrelatedOrientations.Name = "buttonSearchUnrelatedOrientations";
+            toolTip.SetToolTip(buttonSearchUnrelatedOrientations, resources.GetString("buttonSearchUnrelatedOrientations.ToolTip")); // 260531Cl
+            buttonSearchUnrelatedOrientations.Size = new System.Drawing.Size(281, 35);
+            buttonSearchUnrelatedOrientations.TabIndex = 68;
+            buttonSearchUnrelatedOrientations.Text = "Search unrelated orientation";
+            buttonSearchUnrelatedOrientations.BackColor = System.Drawing.Color.SteelBlue; // 260520Cl 追加: 主要アクション(検索)を水色に統一
+            buttonSearchUnrelatedOrientations.ForeColor = System.Drawing.Color.White; // 260520Cl 追加
+            buttonSearchUnrelatedOrientations.UseVisualStyleBackColor = false; // 260520Cl 変更: BackColor有効化のため
+            buttonSearchUnrelatedOrientations.Click += new System.EventHandler(buttonSearchUnrelatedOrientations_Click);
             // 
             // groupBoxGonioScan
             // 
-            this.groupBoxGonioScan.Controls.Add(this.checkBoxYusaGonioScan);
-            this.groupBoxGonioScan.Controls.Add(this.numericBoxRxSpeed);
-            this.groupBoxGonioScan.Controls.Add(this.checkBoxYusaGonio_ValidRx);
-            this.groupBoxGonioScan.Controls.Add(this.label52);
-            this.groupBoxGonioScan.Controls.Add(this.numericBoxYusaGonioRySpeed);
-            this.groupBoxGonioScan.Controls.Add(this.label51);
-            this.groupBoxGonioScan.Controls.Add(this.numericBoxYusaGonioRzSpeed);
-            this.groupBoxGonioScan.Controls.Add(this.label53);
-            this.groupBoxGonioScan.Controls.Add(this.label50);
-            this.groupBoxGonioScan.Controls.Add(this.radioButtonZigzagScan);
-            this.groupBoxGonioScan.Controls.Add(this.label54);
-            this.groupBoxGonioScan.Controls.Add(this.label49);
-            this.groupBoxGonioScan.Controls.Add(this.numericBoxYusaGonioRyStep);
-            this.groupBoxGonioScan.Controls.Add(this.label55);
-            this.groupBoxGonioScan.Controls.Add(this.label48);
-            this.groupBoxGonioScan.Controls.Add(this.numericBoxYusaGonioRyOscillation);
-            this.groupBoxGonioScan.Controls.Add(this.label56);
-            this.groupBoxGonioScan.Controls.Add(this.label60);
-            this.groupBoxGonioScan.Controls.Add(this.label47);
-            this.groupBoxGonioScan.Controls.Add(this.numericBoxYusaGonioRzOscillation);
-            this.groupBoxGonioScan.Controls.Add(this.label57);
-            this.groupBoxGonioScan.Controls.Add(this.label59);
-            this.groupBoxGonioScan.Controls.Add(this.checkBox2);
-            this.groupBoxGonioScan.Controls.Add(this.checkBox3);
-            this.groupBoxGonioScan.Controls.Add(this.label58);
-            this.groupBoxGonioScan.Location = new System.Drawing.Point(6, 1026);
-            this.groupBoxGonioScan.Margin = new System.Windows.Forms.Padding(4);
-            this.groupBoxGonioScan.Name = "groupBoxGonioScan";
-            this.groupBoxGonioScan.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBoxGonioScan.Size = new System.Drawing.Size(312, 182);
-            this.groupBoxGonioScan.TabIndex = 1001;
-            this.groupBoxGonioScan.TabStop = false;
-            this.groupBoxGonioScan.Text = "groupBoxGonioScan";
+            groupBoxGonioScan.Controls.Add(checkBoxYusaGonioScan);
+            groupBoxGonioScan.Controls.Add(numericBoxRxSpeed);
+            groupBoxGonioScan.Controls.Add(checkBoxYusaGonio_ValidRx);
+            groupBoxGonioScan.Controls.Add(label52);
+            groupBoxGonioScan.Controls.Add(numericBoxYusaGonioRySpeed);
+            groupBoxGonioScan.Controls.Add(label51);
+            groupBoxGonioScan.Controls.Add(numericBoxYusaGonioRzSpeed);
+            groupBoxGonioScan.Controls.Add(label53);
+            groupBoxGonioScan.Controls.Add(label50);
+            groupBoxGonioScan.Controls.Add(radioButtonZigzagScan);
+            groupBoxGonioScan.Controls.Add(label54);
+            groupBoxGonioScan.Controls.Add(label49);
+            groupBoxGonioScan.Controls.Add(numericBoxYusaGonioRyStep);
+            groupBoxGonioScan.Controls.Add(label55);
+            groupBoxGonioScan.Controls.Add(label48);
+            groupBoxGonioScan.Controls.Add(numericBoxYusaGonioRyOscillation);
+            groupBoxGonioScan.Controls.Add(label56);
+            groupBoxGonioScan.Controls.Add(label60);
+            groupBoxGonioScan.Controls.Add(label47);
+            groupBoxGonioScan.Controls.Add(numericBoxYusaGonioRzOscillation);
+            groupBoxGonioScan.Controls.Add(label57);
+            groupBoxGonioScan.Controls.Add(label59);
+            groupBoxGonioScan.Controls.Add(checkBox2);
+            groupBoxGonioScan.Controls.Add(checkBox3);
+            groupBoxGonioScan.Controls.Add(label58);
+            groupBoxGonioScan.Location = new System.Drawing.Point(6, 1026);
+            groupBoxGonioScan.Margin = new System.Windows.Forms.Padding(4);
+            groupBoxGonioScan.Name = "groupBoxGonioScan";
+            groupBoxGonioScan.Padding = new System.Windows.Forms.Padding(4);
+            groupBoxGonioScan.Size = new System.Drawing.Size(312, 182);
+            groupBoxGonioScan.TabIndex = 1001;
+            groupBoxGonioScan.TabStop = false;
+            groupBoxGonioScan.Text = "groupBoxGonioScan";
             // 
             // checkBoxYusaGonioScan
             // 
-            this.checkBoxYusaGonioScan.AutoSize = true;
-            this.checkBoxYusaGonioScan.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.checkBoxYusaGonioScan.Location = new System.Drawing.Point(8, 25);
-            this.checkBoxYusaGonioScan.Margin = new System.Windows.Forms.Padding(4);
-            this.checkBoxYusaGonioScan.Name = "checkBoxYusaGonioScan";
-            this.toolTip.SetToolTip(this.checkBoxYusaGonioScan, resources.GetString("checkBoxYusaGonioScan.ToolTip")); // 260531Cl
-            this.checkBoxYusaGonioScan.Size = new System.Drawing.Size(142, 20);
-            this.checkBoxYusaGonioScan.TabIndex = 101;
-            this.checkBoxYusaGonioScan.Text = "Use YusaGonio Scan";
-            this.checkBoxYusaGonioScan.UseVisualStyleBackColor = true;
+            checkBoxYusaGonioScan.AutoSize = true;
+            checkBoxYusaGonioScan.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            checkBoxYusaGonioScan.Location = new System.Drawing.Point(8, 25);
+            checkBoxYusaGonioScan.Margin = new System.Windows.Forms.Padding(4);
+            checkBoxYusaGonioScan.Name = "checkBoxYusaGonioScan";
+            toolTip.SetToolTip(checkBoxYusaGonioScan, resources.GetString("checkBoxYusaGonioScan.ToolTip")); // 260531Cl
+            checkBoxYusaGonioScan.Size = new System.Drawing.Size(142, 20);
+            checkBoxYusaGonioScan.TabIndex = 101;
+            checkBoxYusaGonioScan.Text = "Use YusaGonio Scan";
+            checkBoxYusaGonioScan.UseVisualStyleBackColor = true;
             // 
             // numericBoxRxSpeed
             // 
-            this.numericBoxRxSpeed.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxRxSpeed.Location = new System.Drawing.Point(126, 94);
-            this.numericBoxRxSpeed.Margin = new System.Windows.Forms.Padding(1);
-            this.numericBoxRxSpeed.MaximumSize = new System.Drawing.Size(1000, 24);
-            this.numericBoxRxSpeed.MinimumSize = new System.Drawing.Size(1, 22);
-            this.numericBoxRxSpeed.Name = "numericBoxRxSpeed";
-            this.toolTip.SetToolTip(this.numericBoxRxSpeed, resources.GetString("numericBoxRxSpeed.ToolTip")); // 260531Cl
-            this.numericBoxRxSpeed.Padding = new System.Windows.Forms.Padding(1);
-            this.numericBoxRxSpeed.RadianValue = 0.31415926535897931D;
-            this.numericBoxRxSpeed.Size = new System.Drawing.Size(61, 24);
-            this.numericBoxRxSpeed.SkipEventDuringInput = false;
-            this.numericBoxRxSpeed.SmartIncrement = true;
-            this.numericBoxRxSpeed.TabIndex = 103;
-            this.numericBoxRxSpeed.ValueFont = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.numericBoxRxSpeed.ThousandsSeparator = true;
-            this.numericBoxRxSpeed.Value = 18D;
+            numericBoxRxSpeed.BackColor = System.Drawing.SystemColors.Control;
+            numericBoxRxSpeed.Location = new System.Drawing.Point(126, 94);
+            numericBoxRxSpeed.Margin = new System.Windows.Forms.Padding(1);
+            numericBoxRxSpeed.MaximumSize = new System.Drawing.Size(1000, 24);
+            numericBoxRxSpeed.MinimumSize = new System.Drawing.Size(1, 22);
+            numericBoxRxSpeed.Name = "numericBoxRxSpeed";
+            toolTip.SetToolTip(numericBoxRxSpeed, resources.GetString("numericBoxRxSpeed.ToolTip")); // 260531Cl
+            numericBoxRxSpeed.Padding = new System.Windows.Forms.Padding(1);
+            numericBoxRxSpeed.RadianValue = 0.31415926535897931D;
+            numericBoxRxSpeed.Size = new System.Drawing.Size(61, 24);
+            numericBoxRxSpeed.SkipEventDuringInput = false;
+            numericBoxRxSpeed.SmartIncrement = true;
+            numericBoxRxSpeed.TabIndex = 103;
+            numericBoxRxSpeed.ValueFont = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            numericBoxRxSpeed.ThousandsSeparator = true;
+            numericBoxRxSpeed.Value = 18D;
             // 
             // checkBoxYusaGonio_ValidRx
             // 
-            this.checkBoxYusaGonio_ValidRx.AutoSize = true;
-            this.checkBoxYusaGonio_ValidRx.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.checkBoxYusaGonio_ValidRx.Location = new System.Drawing.Point(28, 70);
-            this.checkBoxYusaGonio_ValidRx.Margin = new System.Windows.Forms.Padding(4);
-            this.checkBoxYusaGonio_ValidRx.Name = "checkBoxYusaGonio_ValidRx";
-            this.toolTip.SetToolTip(this.checkBoxYusaGonio_ValidRx, resources.GetString("checkBoxYusaGonio_ValidRx.ToolTip")); // 260531Cl
-            this.checkBoxYusaGonio_ValidRx.Size = new System.Drawing.Size(63, 20);
-            this.checkBoxYusaGonio_ValidRx.TabIndex = 102;
-            this.checkBoxYusaGonio_ValidRx.Text = "Rx (φ)";
-            this.checkBoxYusaGonio_ValidRx.UseVisualStyleBackColor = true;
+            checkBoxYusaGonio_ValidRx.AutoSize = true;
+            checkBoxYusaGonio_ValidRx.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            checkBoxYusaGonio_ValidRx.Location = new System.Drawing.Point(28, 70);
+            checkBoxYusaGonio_ValidRx.Margin = new System.Windows.Forms.Padding(4);
+            checkBoxYusaGonio_ValidRx.Name = "checkBoxYusaGonio_ValidRx";
+            toolTip.SetToolTip(checkBoxYusaGonio_ValidRx, resources.GetString("checkBoxYusaGonio_ValidRx.ToolTip")); // 260531Cl
+            checkBoxYusaGonio_ValidRx.Size = new System.Drawing.Size(63, 20);
+            checkBoxYusaGonio_ValidRx.TabIndex = 102;
+            checkBoxYusaGonio_ValidRx.Text = "Rx (φ)";
+            checkBoxYusaGonio_ValidRx.UseVisualStyleBackColor = true;
             // 
             // label52
             // 
-            this.label52.AutoSize = true;
-            this.label52.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label52.Location = new System.Drawing.Point(20, 99);
-            this.label52.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label52.Name = "label52";
-            this.toolTip.SetToolTip(this.label52, resources.GetString("label52.ToolTip")); // 260531Cl
-            this.label52.Size = new System.Drawing.Size(79, 16);
-            this.label52.TabIndex = 14;
-            this.label52.Text = "motor speed";
+            label52.AutoSize = true;
+            label52.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            label52.Location = new System.Drawing.Point(20, 99);
+            label52.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            label52.Name = "label52";
+            toolTip.SetToolTip(label52, resources.GetString("label52.ToolTip")); // 260531Cl
+            label52.Size = new System.Drawing.Size(79, 16);
+            label52.TabIndex = 14;
+            label52.Text = "motor speed";
             // 
             // numericBoxYusaGonioRySpeed
             // 
-            this.numericBoxYusaGonioRySpeed.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxYusaGonioRySpeed.Location = new System.Drawing.Point(149, 276);
-            this.numericBoxYusaGonioRySpeed.Margin = new System.Windows.Forms.Padding(1);
-            this.numericBoxYusaGonioRySpeed.MaximumSize = new System.Drawing.Size(1000, 24);
-            this.numericBoxYusaGonioRySpeed.MinimumSize = new System.Drawing.Size(1, 22);
-            this.numericBoxYusaGonioRySpeed.Name = "numericBoxYusaGonioRySpeed";
-            this.toolTip.SetToolTip(this.numericBoxYusaGonioRySpeed, resources.GetString("numericBoxYusaGonioRySpeed.ToolTip")); // 260531Cl
-            this.numericBoxYusaGonioRySpeed.Padding = new System.Windows.Forms.Padding(1);
-            this.numericBoxYusaGonioRySpeed.RadianValue = 0.017453292519943295D;
-            this.numericBoxYusaGonioRySpeed.Size = new System.Drawing.Size(61, 24);
-            this.numericBoxYusaGonioRySpeed.SkipEventDuringInput = false;
-            this.numericBoxYusaGonioRySpeed.SmartIncrement = true;
-            this.numericBoxYusaGonioRySpeed.TabIndex = 109;
-            this.numericBoxYusaGonioRySpeed.ValueFont = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.numericBoxYusaGonioRySpeed.ThousandsSeparator = true;
-            this.numericBoxYusaGonioRySpeed.Value = 1D;
+            numericBoxYusaGonioRySpeed.BackColor = System.Drawing.SystemColors.Control;
+            numericBoxYusaGonioRySpeed.Location = new System.Drawing.Point(149, 276);
+            numericBoxYusaGonioRySpeed.Margin = new System.Windows.Forms.Padding(1);
+            numericBoxYusaGonioRySpeed.MaximumSize = new System.Drawing.Size(1000, 24);
+            numericBoxYusaGonioRySpeed.MinimumSize = new System.Drawing.Size(1, 22);
+            numericBoxYusaGonioRySpeed.Name = "numericBoxYusaGonioRySpeed";
+            toolTip.SetToolTip(numericBoxYusaGonioRySpeed, resources.GetString("numericBoxYusaGonioRySpeed.ToolTip")); // 260531Cl
+            numericBoxYusaGonioRySpeed.Padding = new System.Windows.Forms.Padding(1);
+            numericBoxYusaGonioRySpeed.RadianValue = 0.017453292519943295D;
+            numericBoxYusaGonioRySpeed.Size = new System.Drawing.Size(61, 24);
+            numericBoxYusaGonioRySpeed.SkipEventDuringInput = false;
+            numericBoxYusaGonioRySpeed.SmartIncrement = true;
+            numericBoxYusaGonioRySpeed.TabIndex = 109;
+            numericBoxYusaGonioRySpeed.ValueFont = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            numericBoxYusaGonioRySpeed.ThousandsSeparator = true;
+            numericBoxYusaGonioRySpeed.Value = 1D;
             // 
             // label51
             // 
-            this.label51.AutoSize = true;
-            this.label51.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label51.Location = new System.Drawing.Point(44, 226);
-            this.label51.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label51.Name = "label51";
-            this.toolTip.SetToolTip(this.label51, resources.GetString("label51.ToolTip")); // 260531Cl
-            this.label51.Size = new System.Drawing.Size(63, 16);
-            this.label51.TabIndex = 16;
-            this.label51.Text = "oscillation";
+            label51.AutoSize = true;
+            label51.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            label51.Location = new System.Drawing.Point(44, 226);
+            label51.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            label51.Name = "label51";
+            toolTip.SetToolTip(label51, resources.GetString("label51.ToolTip")); // 260531Cl
+            label51.Size = new System.Drawing.Size(63, 16);
+            label51.TabIndex = 16;
+            label51.Text = "oscillation";
             // 
             // numericBoxYusaGonioRzSpeed
             // 
-            this.numericBoxYusaGonioRzSpeed.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxYusaGonioRzSpeed.Location = new System.Drawing.Point(149, 196);
-            this.numericBoxYusaGonioRzSpeed.Margin = new System.Windows.Forms.Padding(1);
-            this.numericBoxYusaGonioRzSpeed.MaximumSize = new System.Drawing.Size(1000, 24);
-            this.numericBoxYusaGonioRzSpeed.MinimumSize = new System.Drawing.Size(1, 22);
-            this.numericBoxYusaGonioRzSpeed.Name = "numericBoxYusaGonioRzSpeed";
-            this.toolTip.SetToolTip(this.numericBoxYusaGonioRzSpeed, resources.GetString("numericBoxYusaGonioRzSpeed.ToolTip")); // 260531Cl
-            this.numericBoxYusaGonioRzSpeed.Padding = new System.Windows.Forms.Padding(1);
-            this.numericBoxYusaGonioRzSpeed.RadianValue = 0.034906585039886591D;
-            this.numericBoxYusaGonioRzSpeed.Size = new System.Drawing.Size(61, 24);
-            this.numericBoxYusaGonioRzSpeed.SkipEventDuringInput = false;
-            this.numericBoxYusaGonioRzSpeed.SmartIncrement = true;
-            this.numericBoxYusaGonioRzSpeed.TabIndex = 106;
-            this.numericBoxYusaGonioRzSpeed.ValueFont = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.numericBoxYusaGonioRzSpeed.ThousandsSeparator = true;
-            this.numericBoxYusaGonioRzSpeed.Value = 2D;
+            numericBoxYusaGonioRzSpeed.BackColor = System.Drawing.SystemColors.Control;
+            numericBoxYusaGonioRzSpeed.Location = new System.Drawing.Point(149, 196);
+            numericBoxYusaGonioRzSpeed.Margin = new System.Windows.Forms.Padding(1);
+            numericBoxYusaGonioRzSpeed.MaximumSize = new System.Drawing.Size(1000, 24);
+            numericBoxYusaGonioRzSpeed.MinimumSize = new System.Drawing.Size(1, 22);
+            numericBoxYusaGonioRzSpeed.Name = "numericBoxYusaGonioRzSpeed";
+            toolTip.SetToolTip(numericBoxYusaGonioRzSpeed, resources.GetString("numericBoxYusaGonioRzSpeed.ToolTip")); // 260531Cl
+            numericBoxYusaGonioRzSpeed.Padding = new System.Windows.Forms.Padding(1);
+            numericBoxYusaGonioRzSpeed.RadianValue = 0.034906585039886591D;
+            numericBoxYusaGonioRzSpeed.Size = new System.Drawing.Size(61, 24);
+            numericBoxYusaGonioRzSpeed.SkipEventDuringInput = false;
+            numericBoxYusaGonioRzSpeed.SmartIncrement = true;
+            numericBoxYusaGonioRzSpeed.TabIndex = 106;
+            numericBoxYusaGonioRzSpeed.ValueFont = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            numericBoxYusaGonioRzSpeed.ThousandsSeparator = true;
+            numericBoxYusaGonioRzSpeed.Value = 2D;
             // 
             // label53
             // 
-            this.label53.AutoSize = true;
-            this.label53.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label53.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label53.Location = new System.Drawing.Point(214, 341);
-            this.label53.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label53.Name = "label53";
-            this.toolTip.SetToolTip(this.label53, resources.GetString("label53.ToolTip")); // 260531Cl
-            this.label53.Size = new System.Drawing.Size(29, 13);
-            this.label53.TabIndex = 15;
-            this.label53.Text = "deg.";
+            label53.AutoSize = true;
+            label53.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            label53.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            label53.Location = new System.Drawing.Point(214, 341);
+            label53.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            label53.Name = "label53";
+            toolTip.SetToolTip(label53, resources.GetString("label53.ToolTip")); // 260531Cl
+            label53.Size = new System.Drawing.Size(29, 13);
+            label53.TabIndex = 15;
+            label53.Text = "deg.";
             // 
             // label50
             // 
-            this.label50.AutoSize = true;
-            this.label50.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label50.Location = new System.Drawing.Point(44, 311);
-            this.label50.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label50.Name = "label50";
-            this.toolTip.SetToolTip(this.label50, resources.GetString("label50.ToolTip")); // 260531Cl
-            this.label50.Size = new System.Drawing.Size(63, 16);
-            this.label50.TabIndex = 18;
-            this.label50.Text = "oscillation";
+            label50.AutoSize = true;
+            label50.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            label50.Location = new System.Drawing.Point(44, 311);
+            label50.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            label50.Name = "label50";
+            toolTip.SetToolTip(label50, resources.GetString("label50.ToolTip")); // 260531Cl
+            label50.Size = new System.Drawing.Size(63, 16);
+            label50.TabIndex = 18;
+            label50.Text = "oscillation";
             // 
             // radioButtonZigzagScan
             // 
-            this.radioButtonZigzagScan.Checked = true;
-            this.radioButtonZigzagScan.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.radioButtonZigzagScan.Location = new System.Drawing.Point(28, 122);
-            this.radioButtonZigzagScan.Margin = new System.Windows.Forms.Padding(4);
-            this.radioButtonZigzagScan.Name = "radioButtonZigzagScan";
-            this.toolTip.SetToolTip(this.radioButtonZigzagScan, resources.GetString("radioButtonZigzagScan.ToolTip")); // 260531Cl
-            this.radioButtonZigzagScan.Size = new System.Drawing.Size(205, 52);
-            this.radioButtonZigzagScan.TabIndex = 104;
-            this.radioButtonZigzagScan.TabStop = true;
-            this.radioButtonZigzagScan.Text = "+θ > +ω > -θ > +ω .... (Zigzag scan)";
-            this.radioButtonZigzagScan.UseVisualStyleBackColor = true;
+            radioButtonZigzagScan.Checked = true;
+            radioButtonZigzagScan.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            radioButtonZigzagScan.Location = new System.Drawing.Point(28, 122);
+            radioButtonZigzagScan.Margin = new System.Windows.Forms.Padding(4);
+            radioButtonZigzagScan.Name = "radioButtonZigzagScan";
+            toolTip.SetToolTip(radioButtonZigzagScan, resources.GetString("radioButtonZigzagScan.ToolTip")); // 260531Cl
+            radioButtonZigzagScan.Size = new System.Drawing.Size(205, 52);
+            radioButtonZigzagScan.TabIndex = 104;
+            radioButtonZigzagScan.TabStop = true;
+            radioButtonZigzagScan.Text = "+θ > +ω > -θ > +ω .... (Zigzag scan)";
+            radioButtonZigzagScan.UseVisualStyleBackColor = true;
             // 
             // label54
             // 
-            this.label54.AutoSize = true;
-            this.label54.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label54.Location = new System.Drawing.Point(42, 281);
-            this.label54.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label54.Name = "label54";
-            this.toolTip.SetToolTip(this.label54, resources.GetString("label54.ToolTip")); // 260531Cl
-            this.label54.Size = new System.Drawing.Size(79, 16);
-            this.label54.TabIndex = 19;
-            this.label54.Text = "motor speed";
+            label54.AutoSize = true;
+            label54.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            label54.Location = new System.Drawing.Point(42, 281);
+            label54.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            label54.Name = "label54";
+            toolTip.SetToolTip(label54, resources.GetString("label54.ToolTip")); // 260531Cl
+            label54.Size = new System.Drawing.Size(79, 16);
+            label54.TabIndex = 19;
+            label54.Text = "motor speed";
             // 
             // label49
             // 
-            this.label49.AutoSize = true;
-            this.label49.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label49.Location = new System.Drawing.Point(60, 342);
-            this.label49.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label49.Name = "label49";
-            this.toolTip.SetToolTip(this.label49, resources.GetString("label49.ToolTip")); // 260531Cl
-            this.label49.Size = new System.Drawing.Size(31, 16);
-            this.label49.TabIndex = 25;
-            this.label49.Text = "step";
+            label49.AutoSize = true;
+            label49.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            label49.Location = new System.Drawing.Point(60, 342);
+            label49.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            label49.Name = "label49";
+            toolTip.SetToolTip(label49, resources.GetString("label49.ToolTip")); // 260531Cl
+            label49.Size = new System.Drawing.Size(31, 16);
+            label49.TabIndex = 25;
+            label49.Text = "step";
             // 
             // numericBoxYusaGonioRyStep
             // 
-            this.numericBoxYusaGonioRyStep.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxYusaGonioRyStep.Location = new System.Drawing.Point(149, 336);
-            this.numericBoxYusaGonioRyStep.Margin = new System.Windows.Forms.Padding(1);
-            this.numericBoxYusaGonioRyStep.MaximumSize = new System.Drawing.Size(1000, 24);
-            this.numericBoxYusaGonioRyStep.MinimumSize = new System.Drawing.Size(1, 22);
-            this.numericBoxYusaGonioRyStep.Name = "numericBoxYusaGonioRyStep";
-            this.toolTip.SetToolTip(this.numericBoxYusaGonioRyStep, resources.GetString("numericBoxYusaGonioRyStep.ToolTip")); // 260531Cl
-            this.numericBoxYusaGonioRyStep.Padding = new System.Windows.Forms.Padding(1);
-            this.numericBoxYusaGonioRyStep.RadianValue = 0.0034906585039886592D;
-            this.numericBoxYusaGonioRyStep.Size = new System.Drawing.Size(61, 24);
-            this.numericBoxYusaGonioRyStep.SkipEventDuringInput = false;
-            this.numericBoxYusaGonioRyStep.SmartIncrement = true;
-            this.numericBoxYusaGonioRyStep.TabIndex = 111;
-            this.numericBoxYusaGonioRyStep.ValueFont = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.numericBoxYusaGonioRyStep.ThousandsSeparator = true;
-            this.numericBoxYusaGonioRyStep.Value = 0.2D;
+            numericBoxYusaGonioRyStep.BackColor = System.Drawing.SystemColors.Control;
+            numericBoxYusaGonioRyStep.Location = new System.Drawing.Point(149, 336);
+            numericBoxYusaGonioRyStep.Margin = new System.Windows.Forms.Padding(1);
+            numericBoxYusaGonioRyStep.MaximumSize = new System.Drawing.Size(1000, 24);
+            numericBoxYusaGonioRyStep.MinimumSize = new System.Drawing.Size(1, 22);
+            numericBoxYusaGonioRyStep.Name = "numericBoxYusaGonioRyStep";
+            toolTip.SetToolTip(numericBoxYusaGonioRyStep, resources.GetString("numericBoxYusaGonioRyStep.ToolTip")); // 260531Cl
+            numericBoxYusaGonioRyStep.Padding = new System.Windows.Forms.Padding(1);
+            numericBoxYusaGonioRyStep.RadianValue = 0.0034906585039886592D;
+            numericBoxYusaGonioRyStep.Size = new System.Drawing.Size(61, 24);
+            numericBoxYusaGonioRyStep.SkipEventDuringInput = false;
+            numericBoxYusaGonioRyStep.SmartIncrement = true;
+            numericBoxYusaGonioRyStep.TabIndex = 111;
+            numericBoxYusaGonioRyStep.ValueFont = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            numericBoxYusaGonioRyStep.ThousandsSeparator = true;
+            numericBoxYusaGonioRyStep.Value = 0.2D;
             // 
             // label55
             // 
-            this.label55.AutoSize = true;
-            this.label55.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label55.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label55.Location = new System.Drawing.Point(214, 310);
-            this.label55.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label55.Name = "label55";
-            this.toolTip.SetToolTip(this.label55, resources.GetString("label55.ToolTip")); // 260531Cl
-            this.label55.Size = new System.Drawing.Size(29, 13);
-            this.label55.TabIndex = 23;
-            this.label55.Text = "deg.";
+            label55.AutoSize = true;
+            label55.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            label55.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            label55.Location = new System.Drawing.Point(214, 310);
+            label55.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            label55.Name = "label55";
+            toolTip.SetToolTip(label55, resources.GetString("label55.ToolTip")); // 260531Cl
+            label55.Size = new System.Drawing.Size(29, 13);
+            label55.TabIndex = 23;
+            label55.Text = "deg.";
             // 
             // label48
             // 
-            this.label48.AutoSize = true;
-            this.label48.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label48.Location = new System.Drawing.Point(128, 231);
-            this.label48.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label48.Name = "label48";
-            this.toolTip.SetToolTip(this.label48, resources.GetString("label48.ToolTip")); // 260531Cl
-            this.label48.Size = new System.Drawing.Size(15, 16);
-            this.label48.TabIndex = 27;
-            this.label48.Text = "±";
+            label48.AutoSize = true;
+            label48.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            label48.Location = new System.Drawing.Point(128, 231);
+            label48.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            label48.Name = "label48";
+            toolTip.SetToolTip(label48, resources.GetString("label48.ToolTip")); // 260531Cl
+            label48.Size = new System.Drawing.Size(15, 16);
+            label48.TabIndex = 27;
+            label48.Text = "±";
             // 
             // numericBoxYusaGonioRyOscillation
             // 
-            this.numericBoxYusaGonioRyOscillation.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxYusaGonioRyOscillation.Location = new System.Drawing.Point(149, 306);
-            this.numericBoxYusaGonioRyOscillation.Margin = new System.Windows.Forms.Padding(1);
-            this.numericBoxYusaGonioRyOscillation.MaximumSize = new System.Drawing.Size(1000, 24);
-            this.numericBoxYusaGonioRyOscillation.MinimumSize = new System.Drawing.Size(1, 22);
-            this.numericBoxYusaGonioRyOscillation.Name = "numericBoxYusaGonioRyOscillation";
-            this.toolTip.SetToolTip(this.numericBoxYusaGonioRyOscillation, resources.GetString("numericBoxYusaGonioRyOscillation.ToolTip")); // 260531Cl
-            this.numericBoxYusaGonioRyOscillation.Padding = new System.Windows.Forms.Padding(1);
-            this.numericBoxYusaGonioRyOscillation.RadianValue = 0.069813170079773182D;
-            this.numericBoxYusaGonioRyOscillation.Size = new System.Drawing.Size(61, 24);
-            this.numericBoxYusaGonioRyOscillation.SkipEventDuringInput = false;
-            this.numericBoxYusaGonioRyOscillation.SmartIncrement = true;
-            this.numericBoxYusaGonioRyOscillation.TabIndex = 110;
-            this.numericBoxYusaGonioRyOscillation.ValueFont = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.numericBoxYusaGonioRyOscillation.ThousandsSeparator = true;
-            this.numericBoxYusaGonioRyOscillation.Value = 4D;
+            numericBoxYusaGonioRyOscillation.BackColor = System.Drawing.SystemColors.Control;
+            numericBoxYusaGonioRyOscillation.Location = new System.Drawing.Point(149, 306);
+            numericBoxYusaGonioRyOscillation.Margin = new System.Windows.Forms.Padding(1);
+            numericBoxYusaGonioRyOscillation.MaximumSize = new System.Drawing.Size(1000, 24);
+            numericBoxYusaGonioRyOscillation.MinimumSize = new System.Drawing.Size(1, 22);
+            numericBoxYusaGonioRyOscillation.Name = "numericBoxYusaGonioRyOscillation";
+            toolTip.SetToolTip(numericBoxYusaGonioRyOscillation, resources.GetString("numericBoxYusaGonioRyOscillation.ToolTip")); // 260531Cl
+            numericBoxYusaGonioRyOscillation.Padding = new System.Windows.Forms.Padding(1);
+            numericBoxYusaGonioRyOscillation.RadianValue = 0.069813170079773182D;
+            numericBoxYusaGonioRyOscillation.Size = new System.Drawing.Size(61, 24);
+            numericBoxYusaGonioRyOscillation.SkipEventDuringInput = false;
+            numericBoxYusaGonioRyOscillation.SmartIncrement = true;
+            numericBoxYusaGonioRyOscillation.TabIndex = 110;
+            numericBoxYusaGonioRyOscillation.ValueFont = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            numericBoxYusaGonioRyOscillation.ThousandsSeparator = true;
+            numericBoxYusaGonioRyOscillation.Value = 4D;
             // 
             // label56
             // 
-            this.label56.AutoSize = true;
-            this.label56.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label56.Location = new System.Drawing.Point(42, 196);
-            this.label56.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label56.Name = "label56";
-            this.toolTip.SetToolTip(this.label56, resources.GetString("label56.ToolTip")); // 260531Cl
-            this.label56.Size = new System.Drawing.Size(79, 16);
-            this.label56.TabIndex = 24;
-            this.label56.Text = "motor speed";
+            label56.AutoSize = true;
+            label56.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            label56.Location = new System.Drawing.Point(42, 196);
+            label56.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            label56.Name = "label56";
+            toolTip.SetToolTip(label56, resources.GetString("label56.ToolTip")); // 260531Cl
+            label56.Size = new System.Drawing.Size(79, 16);
+            label56.TabIndex = 24;
+            label56.Text = "motor speed";
             // 
             // label60
             // 
-            this.label60.AutoSize = true;
-            this.label60.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label60.Location = new System.Drawing.Point(192, 99);
-            this.label60.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label60.Name = "label60";
-            this.toolTip.SetToolTip(this.label60, resources.GetString("label60.ToolTip")); // 260531Cl
-            this.label60.Size = new System.Drawing.Size(68, 16);
-            this.label60.TabIndex = 1000;
-            this.label60.Text = "°/s"; // 260520Cl: unit unification (deg. / sec. → °/s)
+            label60.AutoSize = true;
+            label60.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            label60.Location = new System.Drawing.Point(192, 99);
+            label60.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            label60.Name = "label60";
+            toolTip.SetToolTip(label60, resources.GetString("label60.ToolTip")); // 260531Cl
+            label60.Size = new System.Drawing.Size(68, 16);
+            label60.TabIndex = 1000;
+            label60.Text = "°/s"; // 260520Cl: unit unification (deg. / sec. → °/s)
             // 
             // label47
             // 
-            this.label47.AutoSize = true;
-            this.label47.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label47.Location = new System.Drawing.Point(128, 311);
-            this.label47.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label47.Name = "label47";
-            this.toolTip.SetToolTip(this.label47, resources.GetString("label47.ToolTip")); // 260531Cl
-            this.label47.Size = new System.Drawing.Size(15, 16);
-            this.label47.TabIndex = 26;
-            this.label47.Text = "±";
+            label47.AutoSize = true;
+            label47.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            label47.Location = new System.Drawing.Point(128, 311);
+            label47.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            label47.Name = "label47";
+            toolTip.SetToolTip(label47, resources.GetString("label47.ToolTip")); // 260531Cl
+            label47.Size = new System.Drawing.Size(15, 16);
+            label47.TabIndex = 26;
+            label47.Text = "±";
             // 
             // numericBoxYusaGonioRzOscillation
             // 
-            this.numericBoxYusaGonioRzOscillation.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxYusaGonioRzOscillation.Location = new System.Drawing.Point(149, 226);
-            this.numericBoxYusaGonioRzOscillation.Margin = new System.Windows.Forms.Padding(1);
-            this.numericBoxYusaGonioRzOscillation.MaximumSize = new System.Drawing.Size(1000, 24);
-            this.numericBoxYusaGonioRzOscillation.MinimumSize = new System.Drawing.Size(1, 22);
-            this.numericBoxYusaGonioRzOscillation.Name = "numericBoxYusaGonioRzOscillation";
-            this.toolTip.SetToolTip(this.numericBoxYusaGonioRzOscillation, resources.GetString("numericBoxYusaGonioRzOscillation.ToolTip")); // 260531Cl
-            this.numericBoxYusaGonioRzOscillation.Padding = new System.Windows.Forms.Padding(1);
-            this.numericBoxYusaGonioRzOscillation.RadianValue = 0.069813170079773182D;
-            this.numericBoxYusaGonioRzOscillation.Size = new System.Drawing.Size(61, 24);
-            this.numericBoxYusaGonioRzOscillation.SkipEventDuringInput = false;
-            this.numericBoxYusaGonioRzOscillation.SmartIncrement = true;
-            this.numericBoxYusaGonioRzOscillation.TabIndex = 107;
-            this.numericBoxYusaGonioRzOscillation.ValueFont = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.numericBoxYusaGonioRzOscillation.ThousandsSeparator = true;
-            this.numericBoxYusaGonioRzOscillation.Value = 4D;
+            numericBoxYusaGonioRzOscillation.BackColor = System.Drawing.SystemColors.Control;
+            numericBoxYusaGonioRzOscillation.Location = new System.Drawing.Point(149, 226);
+            numericBoxYusaGonioRzOscillation.Margin = new System.Windows.Forms.Padding(1);
+            numericBoxYusaGonioRzOscillation.MaximumSize = new System.Drawing.Size(1000, 24);
+            numericBoxYusaGonioRzOscillation.MinimumSize = new System.Drawing.Size(1, 22);
+            numericBoxYusaGonioRzOscillation.Name = "numericBoxYusaGonioRzOscillation";
+            toolTip.SetToolTip(numericBoxYusaGonioRzOscillation, resources.GetString("numericBoxYusaGonioRzOscillation.ToolTip")); // 260531Cl
+            numericBoxYusaGonioRzOscillation.Padding = new System.Windows.Forms.Padding(1);
+            numericBoxYusaGonioRzOscillation.RadianValue = 0.069813170079773182D;
+            numericBoxYusaGonioRzOscillation.Size = new System.Drawing.Size(61, 24);
+            numericBoxYusaGonioRzOscillation.SkipEventDuringInput = false;
+            numericBoxYusaGonioRzOscillation.SmartIncrement = true;
+            numericBoxYusaGonioRzOscillation.TabIndex = 107;
+            numericBoxYusaGonioRzOscillation.ValueFont = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            numericBoxYusaGonioRzOscillation.ThousandsSeparator = true;
+            numericBoxYusaGonioRzOscillation.Value = 4D;
             // 
             // label57
             // 
-            this.label57.AutoSize = true;
-            this.label57.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label57.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label57.Location = new System.Drawing.Point(214, 230);
-            this.label57.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label57.Name = "label57";
-            this.toolTip.SetToolTip(this.label57, resources.GetString("label57.ToolTip")); // 260531Cl
-            this.label57.Size = new System.Drawing.Size(29, 13);
-            this.label57.TabIndex = 1000;
-            this.label57.Text = "°"; // 260520Cl: unit unification (deg. → °)
+            label57.AutoSize = true;
+            label57.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            label57.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            label57.Location = new System.Drawing.Point(214, 230);
+            label57.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            label57.Name = "label57";
+            toolTip.SetToolTip(label57, resources.GetString("label57.ToolTip")); // 260531Cl
+            label57.Size = new System.Drawing.Size(29, 13);
+            label57.TabIndex = 1000;
+            label57.Text = "°"; // 260520Cl: unit unification (deg. → °)
             // 
             // label59
             // 
-            this.label59.AutoSize = true;
-            this.label59.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label59.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label59.Location = new System.Drawing.Point(214, 201);
-            this.label59.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label59.Name = "label59";
-            this.toolTip.SetToolTip(this.label59, resources.GetString("label59.ToolTip")); // 260531Cl
-            this.label59.Size = new System.Drawing.Size(59, 13);
-            this.label59.TabIndex = 1000;
-            this.label59.Text = "°/s"; // 260520Cl: unit unification (deg. / sec. → °/s)
+            label59.AutoSize = true;
+            label59.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            label59.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            label59.Location = new System.Drawing.Point(214, 201);
+            label59.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            label59.Name = "label59";
+            toolTip.SetToolTip(label59, resources.GetString("label59.ToolTip")); // 260531Cl
+            label59.Size = new System.Drawing.Size(59, 13);
+            label59.TabIndex = 1000;
+            label59.Text = "°/s"; // 260520Cl: unit unification (deg. / sec. → °/s)
             // 
             // checkBox2
             // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.checkBox2.Location = new System.Drawing.Point(44, 171);
-            this.checkBox2.Margin = new System.Windows.Forms.Padding(4);
-            this.checkBox2.Name = "checkBox2";
-            this.toolTip.SetToolTip(this.checkBox2, resources.GetString("checkBox2.ToolTip")); // 260531Cl
-            this.checkBox2.Size = new System.Drawing.Size(61, 20);
-            this.checkBox2.TabIndex = 105;
-            this.checkBox2.Text = "Rz (θ)";
-            this.checkBox2.UseVisualStyleBackColor = true;
+            checkBox2.AutoSize = true;
+            checkBox2.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            checkBox2.Location = new System.Drawing.Point(44, 171);
+            checkBox2.Margin = new System.Windows.Forms.Padding(4);
+            checkBox2.Name = "checkBox2";
+            toolTip.SetToolTip(checkBox2, resources.GetString("checkBox2.ToolTip")); // 260531Cl
+            checkBox2.Size = new System.Drawing.Size(61, 20);
+            checkBox2.TabIndex = 105;
+            checkBox2.Text = "Rz (θ)";
+            checkBox2.UseVisualStyleBackColor = true;
             // 
             // checkBox3
             // 
-            this.checkBox3.AutoSize = true;
-            this.checkBox3.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.checkBox3.Location = new System.Drawing.Point(44, 255);
-            this.checkBox3.Margin = new System.Windows.Forms.Padding(4);
-            this.checkBox3.Name = "checkBox3";
-            this.toolTip.SetToolTip(this.checkBox3, resources.GetString("checkBox3.ToolTip")); // 260531Cl
-            this.checkBox3.Size = new System.Drawing.Size(63, 20);
-            this.checkBox3.TabIndex = 108;
-            this.checkBox3.Text = "Ry (ω)";
-            this.checkBox3.UseVisualStyleBackColor = true;
+            checkBox3.AutoSize = true;
+            checkBox3.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            checkBox3.Location = new System.Drawing.Point(44, 255);
+            checkBox3.Margin = new System.Windows.Forms.Padding(4);
+            checkBox3.Name = "checkBox3";
+            toolTip.SetToolTip(checkBox3, resources.GetString("checkBox3.ToolTip")); // 260531Cl
+            checkBox3.Size = new System.Drawing.Size(63, 20);
+            checkBox3.TabIndex = 108;
+            checkBox3.Text = "Ry (ω)";
+            checkBox3.UseVisualStyleBackColor = true;
             // 
             // label58
             // 
-            this.label58.AutoSize = true;
-            this.label58.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label58.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label58.Location = new System.Drawing.Point(214, 281);
-            this.label58.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label58.Name = "label58";
-            this.toolTip.SetToolTip(this.label58, resources.GetString("label58.ToolTip")); // 260531Cl
-            this.label58.Size = new System.Drawing.Size(59, 13);
-            this.label58.TabIndex = 20;
-            this.label58.Text = "°/s"; // 260520Cl: unit unification (deg. / sec. → °/s)
+            label58.AutoSize = true;
+            label58.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            label58.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            label58.Location = new System.Drawing.Point(214, 281);
+            label58.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            label58.Name = "label58";
+            toolTip.SetToolTip(label58, resources.GetString("label58.ToolTip")); // 260531Cl
+            label58.Size = new System.Drawing.Size(59, 13);
+            label58.TabIndex = 20;
+            label58.Text = "°/s"; // 260520Cl: unit unification (deg. / sec. → °/s)
             // 
             // groupBoxPatterns
             // 
-            this.groupBoxPatterns.Controls.Add(this.groupBoxAppearance);
-            this.groupBoxPatterns.Controls.Add(this.listBoxReferrence);
-            this.groupBoxPatterns.Controls.Add(this.buttonAddRefferencePattern);
-            this.groupBoxPatterns.Controls.Add(this.buttonRemoveReferrencePattern);
-            this.groupBoxPatterns.Controls.Add(this.tabControl1);
-            this.groupBoxPatterns.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBoxPatterns.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.groupBoxPatterns.Location = new System.Drawing.Point(0, 0);
-            this.groupBoxPatterns.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
-            this.groupBoxPatterns.Name = "groupBoxPatterns";
-            this.groupBoxPatterns.Padding = new System.Windows.Forms.Padding(5, 6, 5, 6);
-            this.groupBoxPatterns.Size = new System.Drawing.Size(1001, 911);
-            this.groupBoxPatterns.TabIndex = 129;
-            this.groupBoxPatterns.TabStop = false;
-            this.groupBoxPatterns.Text = "Simulated / refference patterns";
+            groupBoxPatterns.Controls.Add(groupBoxAppearance);
+            groupBoxPatterns.Controls.Add(listBoxReferrence);
+            groupBoxPatterns.Controls.Add(buttonAddRefferencePattern);
+            groupBoxPatterns.Controls.Add(buttonRemoveReferrencePattern);
+            groupBoxPatterns.Controls.Add(tabControl1);
+            groupBoxPatterns.Dock = System.Windows.Forms.DockStyle.Fill;
+            groupBoxPatterns.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            groupBoxPatterns.Location = new System.Drawing.Point(0, 0);
+            groupBoxPatterns.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
+            groupBoxPatterns.Name = "groupBoxPatterns";
+            groupBoxPatterns.Padding = new System.Windows.Forms.Padding(5, 6, 5, 6);
+            groupBoxPatterns.Size = new System.Drawing.Size(1001, 911);
+            groupBoxPatterns.TabIndex = 129;
+            groupBoxPatterns.TabStop = false;
+            groupBoxPatterns.Text = "Simulated / refference patterns";
             // 
             // groupBoxAppearance
             // 
-            this.groupBoxAppearance.Controls.Add(this.comboBoxScale2);
-            this.groupBoxAppearance.Controls.Add(this.label26);
-            this.groupBoxAppearance.Controls.Add(this.comboBoxGradient);
-            this.groupBoxAppearance.Controls.Add(this.label30);
-            this.groupBoxAppearance.Controls.Add(this.comboBoxScale1);
-            this.groupBoxAppearance.Controls.Add(this.label28);
-            this.groupBoxAppearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.groupBoxAppearance.Location = new System.Drawing.Point(305, 28);
-            this.groupBoxAppearance.Margin = new System.Windows.Forms.Padding(4);
-            this.groupBoxAppearance.Name = "groupBoxAppearance";
-            this.groupBoxAppearance.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBoxAppearance.Size = new System.Drawing.Size(650, 60);
-            this.groupBoxAppearance.TabIndex = 130;
-            this.groupBoxAppearance.TabStop = false;
-            this.groupBoxAppearance.Text = "Appearance";
+            groupBoxAppearance.Controls.Add(comboBoxScale2);
+            groupBoxAppearance.Controls.Add(label26);
+            groupBoxAppearance.Controls.Add(comboBoxGradient);
+            groupBoxAppearance.Controls.Add(label30);
+            groupBoxAppearance.Controls.Add(comboBoxScale1);
+            groupBoxAppearance.Controls.Add(label28);
+            groupBoxAppearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            groupBoxAppearance.Location = new System.Drawing.Point(305, 28);
+            groupBoxAppearance.Margin = new System.Windows.Forms.Padding(4);
+            groupBoxAppearance.Name = "groupBoxAppearance";
+            groupBoxAppearance.Padding = new System.Windows.Forms.Padding(4);
+            groupBoxAppearance.Size = new System.Drawing.Size(650, 60);
+            groupBoxAppearance.TabIndex = 130;
+            groupBoxAppearance.TabStop = false;
+            groupBoxAppearance.Text = "Appearance";
             // 
             // comboBoxScale2
             // 
-            this.comboBoxScale2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxScale2.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.comboBoxScale2.FormattingEnabled = true;
-            this.comboBoxScale2.Items.AddRange(new object[] {
+            comboBoxScale2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            comboBoxScale2.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            comboBoxScale2.FormattingEnabled = true;
+            comboBoxScale2.Items.AddRange(new object[] {
             "Gray scale",
             "Cold-Warm scale"});
-            this.comboBoxScale2.Location = new System.Drawing.Point(498, 22);
-            this.comboBoxScale2.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.comboBoxScale2.Name = "comboBoxScale2";
-            this.toolTip.SetToolTip(this.comboBoxScale2, resources.GetString("comboBoxScale2.ToolTip")); // 260531Cl
-            this.comboBoxScale2.Size = new System.Drawing.Size(134, 22);
-            this.comboBoxScale2.TabIndex = 303;
-            this.comboBoxScale2.SelectedIndexChanged += new System.EventHandler(this.comboBoxScale_SelectedIndexChanged);
+            comboBoxScale2.Location = new System.Drawing.Point(498, 22);
+            comboBoxScale2.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            comboBoxScale2.Name = "comboBoxScale2";
+            toolTip.SetToolTip(comboBoxScale2, resources.GetString("comboBoxScale2.ToolTip")); // 260531Cl
+            comboBoxScale2.Size = new System.Drawing.Size(134, 22);
+            comboBoxScale2.TabIndex = 303;
+            comboBoxScale2.SelectedIndexChanged += new System.EventHandler(comboBoxScale_SelectedIndexChanged);
             // 
             // label26
             // 
-            this.label26.AutoSize = true;
-            this.label26.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label26.Location = new System.Drawing.Point(432, 26);
-            this.label26.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label26.Name = "label26";
-            this.toolTip.SetToolTip(this.label26, resources.GetString("label26.ToolTip")); // 260531Cl
-            this.label26.Size = new System.Drawing.Size(46, 14);
-            this.label26.TabIndex = 152;
-            this.label26.Text = "Scale 2";
+            label26.AutoSize = true;
+            label26.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            label26.Location = new System.Drawing.Point(432, 26);
+            label26.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            label26.Name = "label26";
+            toolTip.SetToolTip(label26, resources.GetString("label26.ToolTip")); // 260531Cl
+            label26.Size = new System.Drawing.Size(46, 14);
+            label26.TabIndex = 152;
+            label26.Text = "Scale 2";
             // 
             // comboBoxGradient
             // 
-            this.comboBoxGradient.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxGradient.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.comboBoxGradient.FormattingEnabled = true;
-            this.comboBoxGradient.Items.AddRange(new object[] {
+            comboBoxGradient.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            comboBoxGradient.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            comboBoxGradient.FormattingEnabled = true;
+            comboBoxGradient.Items.AddRange(new object[] {
             "Positive",
             "Negative"});
-            this.comboBoxGradient.Location = new System.Drawing.Point(80, 22);
-            this.comboBoxGradient.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.comboBoxGradient.Name = "comboBoxGradient";
-            this.toolTip.SetToolTip(this.comboBoxGradient, resources.GetString("comboBoxGradient.ToolTip")); // 260531Cl
-            this.comboBoxGradient.Size = new System.Drawing.Size(135, 22);
-            this.comboBoxGradient.TabIndex = 301;
-            this.comboBoxGradient.SelectedIndexChanged += new System.EventHandler(this.comboBoxScale_SelectedIndexChanged);
+            comboBoxGradient.Location = new System.Drawing.Point(80, 22);
+            comboBoxGradient.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            comboBoxGradient.Name = "comboBoxGradient";
+            toolTip.SetToolTip(comboBoxGradient, resources.GetString("comboBoxGradient.ToolTip")); // 260531Cl
+            comboBoxGradient.Size = new System.Drawing.Size(135, 22);
+            comboBoxGradient.TabIndex = 301;
+            comboBoxGradient.SelectedIndexChanged += new System.EventHandler(comboBoxScale_SelectedIndexChanged);
             // 
             // label30
             // 
-            this.label30.AutoSize = true;
-            this.label30.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label30.Location = new System.Drawing.Point(8, 26);
-            this.label30.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label30.Name = "label30";
-            this.toolTip.SetToolTip(this.label30, resources.GetString("label30.ToolTip")); // 260531Cl
-            this.label30.Size = new System.Drawing.Size(53, 14);
-            this.label30.TabIndex = 149;
-            this.label30.Text = "Gradient";
+            label30.AutoSize = true;
+            label30.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            label30.Location = new System.Drawing.Point(8, 26);
+            label30.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            label30.Name = "label30";
+            toolTip.SetToolTip(label30, resources.GetString("label30.ToolTip")); // 260531Cl
+            label30.Size = new System.Drawing.Size(53, 14);
+            label30.TabIndex = 149;
+            label30.Text = "Gradient";
             // 
             // comboBoxScale1
             // 
-            this.comboBoxScale1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxScale1.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.comboBoxScale1.FormattingEnabled = true;
-            this.comboBoxScale1.Items.AddRange(new object[] {
+            comboBoxScale1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            comboBoxScale1.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            comboBoxScale1.FormattingEnabled = true;
+            comboBoxScale1.Items.AddRange(new object[] {
             "Log Scale",
             "Linear Scale"}); // 260521Cl Phase7: Liner→Linear typo
-            this.comboBoxScale1.Location = new System.Drawing.Point(289, 22);
-            this.comboBoxScale1.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.comboBoxScale1.Name = "comboBoxScale1";
-            this.toolTip.SetToolTip(this.comboBoxScale1, resources.GetString("comboBoxScale1.ToolTip")); // 260531Cl
-            this.comboBoxScale1.Size = new System.Drawing.Size(135, 22);
-            this.comboBoxScale1.TabIndex = 302;
-            this.comboBoxScale1.SelectedIndexChanged += new System.EventHandler(this.comboBoxScale_SelectedIndexChanged);
+            comboBoxScale1.Location = new System.Drawing.Point(289, 22);
+            comboBoxScale1.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            comboBoxScale1.Name = "comboBoxScale1";
+            toolTip.SetToolTip(comboBoxScale1, resources.GetString("comboBoxScale1.ToolTip")); // 260531Cl
+            comboBoxScale1.Size = new System.Drawing.Size(135, 22);
+            comboBoxScale1.TabIndex = 302;
+            comboBoxScale1.SelectedIndexChanged += new System.EventHandler(comboBoxScale_SelectedIndexChanged);
             // 
             // label28
             // 
-            this.label28.AutoSize = true;
-            this.label28.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label28.Location = new System.Drawing.Point(224, 26);
-            this.label28.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label28.Name = "label28";
-            this.toolTip.SetToolTip(this.label28, resources.GetString("label28.ToolTip")); // 260531Cl
-            this.label28.Size = new System.Drawing.Size(46, 14);
-            this.label28.TabIndex = 151;
-            this.label28.Text = "Scale 1";
+            label28.AutoSize = true;
+            label28.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            label28.Location = new System.Drawing.Point(224, 26);
+            label28.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            label28.Name = "label28";
+            toolTip.SetToolTip(label28, resources.GetString("label28.ToolTip")); // 260531Cl
+            label28.Size = new System.Drawing.Size(46, 14);
+            label28.TabIndex = 151;
+            label28.Text = "Scale 1";
             // 
             // listBoxReferrence
             // 
-            this.listBoxReferrence.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.listBoxReferrence.FormattingEnabled = true;
-            this.listBoxReferrence.ItemHeight = 16;
-            this.listBoxReferrence.Location = new System.Drawing.Point(10, 29);
-            this.listBoxReferrence.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
-            this.listBoxReferrence.Name = "listBoxReferrence";
-            this.toolTip.SetToolTip(this.listBoxReferrence, resources.GetString("listBoxReferrence.ToolTip")); // 260531Cl
-            this.listBoxReferrence.Size = new System.Drawing.Size(190, 36);
-            this.listBoxReferrence.TabIndex = 162;
-            this.listBoxReferrence.SelectedIndexChanged += new System.EventHandler(this.listBoxReferrence_SelectedIndexChanged);
+            listBoxReferrence.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            listBoxReferrence.FormattingEnabled = true;
+            listBoxReferrence.ItemHeight = 16;
+            listBoxReferrence.Location = new System.Drawing.Point(10, 29);
+            listBoxReferrence.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            listBoxReferrence.Name = "listBoxReferrence";
+            toolTip.SetToolTip(listBoxReferrence, resources.GetString("listBoxReferrence.ToolTip")); // 260531Cl
+            listBoxReferrence.Size = new System.Drawing.Size(190, 36);
+            listBoxReferrence.TabIndex = 162;
+            listBoxReferrence.SelectedIndexChanged += new System.EventHandler(listBoxReferrence_SelectedIndexChanged);
             // 
             // buttonAddRefferencePattern
             // 
-            this.buttonAddRefferencePattern.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.buttonAddRefferencePattern.Location = new System.Drawing.Point(204, 28);
-            this.buttonAddRefferencePattern.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.buttonAddRefferencePattern.Name = "buttonAddRefferencePattern";
-            this.toolTip.SetToolTip(this.buttonAddRefferencePattern, resources.GetString("buttonAddRefferencePattern.ToolTip")); // 260531Cl
-            this.buttonAddRefferencePattern.Size = new System.Drawing.Size(94, 34);
-            this.buttonAddRefferencePattern.TabIndex = 142;
-            this.buttonAddRefferencePattern.Text = "Add";
-            this.buttonAddRefferencePattern.UseVisualStyleBackColor = true;
-            this.buttonAddRefferencePattern.Click += new System.EventHandler(this.buttonAddRefferencePattern_Click);
+            buttonAddRefferencePattern.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            buttonAddRefferencePattern.Location = new System.Drawing.Point(204, 28);
+            buttonAddRefferencePattern.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            buttonAddRefferencePattern.Name = "buttonAddRefferencePattern";
+            toolTip.SetToolTip(buttonAddRefferencePattern, resources.GetString("buttonAddRefferencePattern.ToolTip")); // 260531Cl
+            buttonAddRefferencePattern.Size = new System.Drawing.Size(94, 34);
+            buttonAddRefferencePattern.TabIndex = 142;
+            buttonAddRefferencePattern.Text = "Add";
+            buttonAddRefferencePattern.UseVisualStyleBackColor = true;
+            buttonAddRefferencePattern.Click += new System.EventHandler(buttonAddRefferencePattern_Click);
             // 
             // buttonRemoveReferrencePattern
             // 
-            this.buttonRemoveReferrencePattern.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.buttonRemoveReferrencePattern.Location = new System.Drawing.Point(204, 61);
-            this.buttonRemoveReferrencePattern.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.buttonRemoveReferrencePattern.Name = "buttonRemoveReferrencePattern";
-            this.toolTip.SetToolTip(this.buttonRemoveReferrencePattern, resources.GetString("buttonRemoveReferrencePattern.ToolTip")); // 260531Cl
-            this.buttonRemoveReferrencePattern.Size = new System.Drawing.Size(94, 34);
-            this.buttonRemoveReferrencePattern.TabIndex = 142;
-            this.buttonRemoveReferrencePattern.Text = "Remove";
-            this.buttonRemoveReferrencePattern.UseVisualStyleBackColor = true;
-            this.buttonRemoveReferrencePattern.Click += new System.EventHandler(this.buttonRemoveReferrencePattern_Click);
+            buttonRemoveReferrencePattern.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            buttonRemoveReferrencePattern.Location = new System.Drawing.Point(204, 61);
+            buttonRemoveReferrencePattern.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            buttonRemoveReferrencePattern.Name = "buttonRemoveReferrencePattern";
+            toolTip.SetToolTip(buttonRemoveReferrencePattern, resources.GetString("buttonRemoveReferrencePattern.ToolTip")); // 260531Cl
+            buttonRemoveReferrencePattern.Size = new System.Drawing.Size(94, 34);
+            buttonRemoveReferrencePattern.TabIndex = 142;
+            buttonRemoveReferrencePattern.Text = "Remove";
+            buttonRemoveReferrencePattern.UseVisualStyleBackColor = true;
+            buttonRemoveReferrencePattern.Click += new System.EventHandler(buttonRemoveReferrencePattern_Click);
             // 
             // tabControl1
             // 
-            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Font = new System.Drawing.Font("Tahoma", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
-            this.tabControl1.Location = new System.Drawing.Point(9, 103);
-            this.tabControl1.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(987, 805);
-            this.tabControl1.TabIndex = 162;
-            this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
-            this.tabControl1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.tabControl1_MouseDoubleClick);
+            tabControl1.Controls.Add(tabPage1);
+            tabControl1.Font = new System.Drawing.Font("Tahoma", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
+            tabControl1.Location = new System.Drawing.Point(9, 103);
+            tabControl1.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            tabControl1.Name = "tabControl1";
+            tabControl1.SelectedIndex = 0;
+            tabControl1.Size = new System.Drawing.Size(987, 805);
+            tabControl1.TabIndex = 162;
+            tabControl1.SelectedIndexChanged += new System.EventHandler(tabControl1_SelectedIndexChanged);
+            tabControl1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(tabControl1_MouseDoubleClick);
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.diffractionPatternControlSimulation);
-            this.tabPage1.Location = new System.Drawing.Point(4, 25);
-            this.tabPage1.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(4, 2, 4, 2);
-            this.tabPage1.Size = new System.Drawing.Size(979, 776);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Simulated Pattern";
-            this.tabPage1.UseVisualStyleBackColor = true;
+            tabPage1.Controls.Add(diffractionPatternControlSimulation);
+            tabPage1.Location = new System.Drawing.Point(4, 25);
+            tabPage1.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            tabPage1.Name = "tabPage1";
+            tabPage1.Padding = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            tabPage1.Size = new System.Drawing.Size(979, 776);
+            tabPage1.TabIndex = 0;
+            tabPage1.Text = "Simulated Pattern";
+            tabPage1.UseVisualStyleBackColor = true;
             // 
             // diffractionPatternControlSimulation
             // 
-            this.diffractionPatternControlSimulation.BackColor = System.Drawing.SystemColors.Control;
-            this.diffractionPatternControlSimulation.Cameralength = 450D;
+            diffractionPatternControlSimulation.BackColor = System.Drawing.SystemColors.Control;
+            diffractionPatternControlSimulation.Cameralength = 450D;
             // this.diffractionPatternControlSimulation.Center = ((Crystallography.PointD)(resources.GetObject("diffractionPatternControlSimulation.Center"))); // (260322Ch) Hidden 指定プロパティは Designer 非依存に戻す
-            this.diffractionPatternControlSimulation.Convergence = 0.0008726646259971648D;
-            this.diffractionPatternControlSimulation.ConvergenceDegree = 0.05D;
-            this.diffractionPatternControlSimulation.Crystals = null;
+            diffractionPatternControlSimulation.Convergence = 0.0008726646259971648D;
+            diffractionPatternControlSimulation.ConvergenceDegree = 0.05D;
+            diffractionPatternControlSimulation.Crystals = null;
             // this.diffractionPatternControlSimulation.DetectorProperty = ((Crystallography.AreaDetector)(resources.GetObject("diffractionPatternControlSimulation.DetectorProperty"))); // (260322Ch) Hidden 指定プロパティは Designer 非依存に戻す
-            this.diffractionPatternControlSimulation.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.diffractionPatternControlSimulation.FilmBlur = 200D;
-            this.diffractionPatternControlSimulation.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.diffractionPatternControlSimulation.ImageHeight = 900;
-            this.diffractionPatternControlSimulation.ImageWidth = 900;
-            this.diffractionPatternControlSimulation.IsReferrenceImage = false;
-            this.diffractionPatternControlSimulation.Location = new System.Drawing.Point(4, 2);
-            this.diffractionPatternControlSimulation.Margin = new System.Windows.Forms.Padding(4);
-            this.diffractionPatternControlSimulation.Monochromaticity = 1E-05D;
-            this.diffractionPatternControlSimulation.Name = "diffractionPatternControlSimulation";
-            this.diffractionPatternControlSimulation.Phi = 0D;
-            this.diffractionPatternControlSimulation.Resolution = 0.3D;
-            this.diffractionPatternControlSimulation.SimulationCheck = false;
-            this.diffractionPatternControlSimulation.Size = new System.Drawing.Size(971, 772);
-            this.diffractionPatternControlSimulation.TabIndex = 0;
-            this.diffractionPatternControlSimulation.Tau = 0D;
-            this.diffractionPatternControlSimulation.Wavelength = 0.041328040768899996D;
+            diffractionPatternControlSimulation.Dock = System.Windows.Forms.DockStyle.Fill;
+            diffractionPatternControlSimulation.FilmBlur = 200D;
+            diffractionPatternControlSimulation.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            diffractionPatternControlSimulation.ImageHeight = 900;
+            diffractionPatternControlSimulation.ImageWidth = 900;
+            diffractionPatternControlSimulation.IsReferrenceImage = false;
+            diffractionPatternControlSimulation.Location = new System.Drawing.Point(4, 2);
+            diffractionPatternControlSimulation.Margin = new System.Windows.Forms.Padding(4);
+            diffractionPatternControlSimulation.Monochromaticity = 1E-05D;
+            diffractionPatternControlSimulation.Name = "diffractionPatternControlSimulation";
+            diffractionPatternControlSimulation.Phi = 0D;
+            diffractionPatternControlSimulation.Resolution = 0.3D;
+            diffractionPatternControlSimulation.SimulationCheck = false;
+            diffractionPatternControlSimulation.Size = new System.Drawing.Size(971, 772);
+            diffractionPatternControlSimulation.TabIndex = 0;
+            diffractionPatternControlSimulation.Tau = 0D;
+            diffractionPatternControlSimulation.Wavelength = 0.041328040768899996D;
             // this.diffractionPatternControlSimulation.WaveProperty = ((Crystallography.WaveProperty)(resources.GetObject("diffractionPatternControlSimulation.WaveProperty"))); // (260322Ch) Hidden 指定プロパティは Designer 非依存に戻す
-            this.diffractionPatternControlSimulation.WaveSource = Crystallography.WaveSource.Xray;
+            diffractionPatternControlSimulation.WaveSource = Crystallography.WaveSource.Xray;
             // 
             // statusStrip1
             // 
-            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripStatusLabel,
-            this.toolStripProgressBar,
-            this.toolStripStatusLabelProgress});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 911);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Padding = new System.Windows.Forms.Padding(1, 0, 18, 0);
-            this.statusStrip1.Size = new System.Drawing.Size(1538, 22);
-            this.statusStrip1.TabIndex = 133;
-            this.statusStrip1.Text = "statusStrip1";
+            statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            toolStripStatusLabel,
+            toolStripProgressBar,
+            toolStripStatusLabelProgress});
+            statusStrip1.Location = new System.Drawing.Point(0, 911);
+            statusStrip1.Name = "statusStrip1";
+            statusStrip1.Padding = new System.Windows.Forms.Padding(1, 0, 18, 0);
+            statusStrip1.Size = new System.Drawing.Size(1538, 22);
+            statusStrip1.TabIndex = 133;
+            statusStrip1.Text = "statusStrip1";
             // 
             // toolStripStatusLabel
             // 
-            this.toolStripStatusLabel.Name = "toolStripStatusLabel";
-            this.toolStripStatusLabel.Size = new System.Drawing.Size(10, 17);
-            this.toolStripStatusLabel.Text = " ";
+            toolStripStatusLabel.Name = "toolStripStatusLabel";
+            toolStripStatusLabel.Size = new System.Drawing.Size(10, 17);
+            toolStripStatusLabel.Text = " ";
             // 
             // toolStripProgressBar
             // 
-            this.toolStripProgressBar.Name = "toolStripProgressBar";
-            this.toolStripProgressBar.Size = new System.Drawing.Size(125, 16);
+            toolStripProgressBar.Name = "toolStripProgressBar";
+            toolStripProgressBar.Size = new System.Drawing.Size(125, 16);
             // 
             // toolStripStatusLabelProgress
             // 
-            this.toolStripStatusLabelProgress.Name = "toolStripStatusLabelProgress";
-            this.toolStripStatusLabelProgress.Size = new System.Drawing.Size(13, 17);
-            this.toolStripStatusLabelProgress.Text = "  ";
+            toolStripStatusLabelProgress.Name = "toolStripStatusLabelProgress";
+            toolStripStatusLabelProgress.Size = new System.Drawing.Size(13, 17);
+            toolStripStatusLabelProgress.Text = "  ";
             // 
             // FormPolycrystallineDiffractionSimulator
             // 
-            this.AllowDrop = true;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F); // 260329Cl 追加: None→Dpi, 96dpi基準に統一
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(1538, 933);
-            this.Controls.Add(this.splitContainer1);
-            this.Controls.Add(this.statusStrip1);
-            this.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
-            this.Name = "FormPolycrystallineDiffractionSimulator";
-            this.Text = "Powder Diffraction Simulator";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormPolycrystallineDiffractionSimulator_FormClosing);
-            this.Load += new System.EventHandler(this.FormPolycrystallineDiffractionSimulator_Load);
-            this.VisibleChanged += new System.EventHandler(this.FormPolycrystallineDiffractionSimulator_VisibleChanged);
-            this.DragDrop += new System.Windows.Forms.DragEventHandler(this.FormPolycrystallineDiffractionSimulator_DragDrop);
-            this.DragEnter += new System.Windows.Forms.DragEventHandler(this.FormPolycrystallineDiffractionSimulator_DragEnter);
-            this.splitContainer1.Panel1.ResumeLayout(false);
-            this.splitContainer1.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
-            this.splitContainer1.ResumeLayout(false);
-            this.groupBoxCrystalProperty.ResumeLayout(false);
-            this.groupBoxCrystalProperty.PerformLayout();
-            this.tabControlCrystals.ResumeLayout(false);
-            this.tabPage2.ResumeLayout(false);
-            this.groupBoxOrientationFitting.ResumeLayout(false);
-            this.groupBoxOrientationFitting.PerformLayout();
-            this.tabControl3.ResumeLayout(false);
-            this.tabPage4.ResumeLayout(false);
-            this.tabPage4.PerformLayout();
-            this.groupBoxPreferredOrientation.ResumeLayout(false);
-            this.groupBoxPreferredOrientation.PerformLayout();
-            this.groupBoxFittingOptions.ResumeLayout(false);
-            this.groupBoxFittingOptions.PerformLayout();
-            this.tabPage6.ResumeLayout(false);
-            this.tabPage6.PerformLayout();
-            this.tabPage8.ResumeLayout(false);
-            this.groupBoxGonioScan.ResumeLayout(false);
-            this.groupBoxGonioScan.PerformLayout();
-            this.groupBoxPatterns.ResumeLayout(false);
-            this.groupBoxAppearance.ResumeLayout(false);
-            this.groupBoxAppearance.PerformLayout();
-            this.tabControl1.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
-            this.statusStrip1.ResumeLayout(false);
-            this.statusStrip1.PerformLayout();
-            this.ResumeLayout(false);
-            this.PerformLayout();
+            AllowDrop = true;
+            AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F); // 260329Cl 追加: None→Dpi, 96dpi基準に統一
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            ClientSize = new System.Drawing.Size(1538, 933);
+            Controls.Add(splitContainer1);
+            Controls.Add(statusStrip1);
+            Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
+            Name = "FormPolycrystallineDiffractionSimulator";
+            Text = "Powder Diffraction Simulator";
+            FormClosing += new System.Windows.Forms.FormClosingEventHandler(FormPolycrystallineDiffractionSimulator_FormClosing);
+            Load += new System.EventHandler(FormPolycrystallineDiffractionSimulator_Load);
+            VisibleChanged += new System.EventHandler(FormPolycrystallineDiffractionSimulator_VisibleChanged);
+            DragDrop += new System.Windows.Forms.DragEventHandler(FormPolycrystallineDiffractionSimulator_DragDrop);
+            DragEnter += new System.Windows.Forms.DragEventHandler(FormPolycrystallineDiffractionSimulator_DragEnter);
+            splitContainer1.Panel1.ResumeLayout(false);
+            splitContainer1.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(splitContainer1)).EndInit();
+            splitContainer1.ResumeLayout(false);
+            groupBoxCrystalProperty.ResumeLayout(false);
+            groupBoxCrystalProperty.PerformLayout();
+            tabControlCrystals.ResumeLayout(false);
+            tabPage2.ResumeLayout(false);
+            groupBoxOrientationFitting.ResumeLayout(false);
+            groupBoxOrientationFitting.PerformLayout();
+            tabControl3.ResumeLayout(false);
+            tabPage4.ResumeLayout(false);
+            tabPage4.PerformLayout();
+            groupBoxPreferredOrientation.ResumeLayout(false);
+            groupBoxPreferredOrientation.PerformLayout();
+            groupBoxFittingOptions.ResumeLayout(false);
+            groupBoxFittingOptions.PerformLayout();
+            tabPage6.ResumeLayout(false);
+            tabPage6.PerformLayout();
+            tabPage8.ResumeLayout(false);
+            groupBoxGonioScan.ResumeLayout(false);
+            groupBoxGonioScan.PerformLayout();
+            groupBoxPatterns.ResumeLayout(false);
+            groupBoxAppearance.ResumeLayout(false);
+            groupBoxAppearance.PerformLayout();
+            tabControl1.ResumeLayout(false);
+            tabPage1.ResumeLayout(false);
+            statusStrip1.ResumeLayout(false);
+            statusStrip1.PerformLayout();
+            ResumeLayout(false);
+            PerformLayout();
 
         }
 
