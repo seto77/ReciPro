@@ -189,7 +189,7 @@ nav:
       - 0. Main window: en/0-main-window.md
       - 1. Crystal database: en/1-crystal-database.md
       - 2. Symmetry information: en/2-symmetry-information.md
-      - 3. Scattering factor: en/3-scattering-factor.md
+      - 3. Beam interaction: en/3-scattering-factor.md
       - 4. Rotation Geometry: en/4-rotation-geometry.md
       - 5. Structure viewer: en/5-structure-viewer.md
       - 6. Stereonet: en/6-stereonet.md
@@ -231,7 +231,7 @@ nav:
       - 0. メインウィンドウ: ja/0-main-window.md
       - 1. 結晶データベース: ja/1-crystal-database.md
       - 2. 対称性情報: ja/2-symmetry-information.md
-      - 3. 散乱因子: ja/3-scattering-factor.md
+      - 3. ビーム相互作用: ja/3-scattering-factor.md
       - 4. 回転ジオメトリ: ja/4-rotation-geometry.md
       - 5. 結晶構造ビューア: ja/5-structure-viewer.md
       - 6. ステレオネット: ja/6-stereonet.md

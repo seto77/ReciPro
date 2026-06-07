@@ -247,7 +247,7 @@ Right-click an empty area of the control for these main actions:
 
 | Menu item | Action |
 |-----------|------|
-| Scattering factor | Open the [Scattering Factor](3-scattering-factor.md) window. |
+| Beam Interaction | Open the [Beam Interaction](3-scattering-factor.md) window. |
 | Symmetry information | Open the [Symmetry Information](2-symmetry-information.md) window. |
 | Import from CIF, AMC | Load a crystal from a CIF / AMC file. |
 | Export to CIF | Export the current crystal as CIF. |
@@ -268,7 +268,7 @@ The vertical button strip on the right launches the analysis and simulation wind
 |--------|-------------|---------|
 | Crystal Database | Search and import crystals from the bundled / online databases | [1. Crystal database](1-crystal-database.md) |
 | Symmetry Information | Space-group info and ITC Vol. A symmetry diagrams | [2. Symmetry information](2-symmetry-information.md) |
-| Scattering Factor | Crystal planes & structure factors | [3. Scattering factor](3-scattering-factor.md) |
+| Beam Interaction | Beam–crystal interaction: reflections, attenuation, scattering factors, fluorescence | [3. Beam interaction](3-scattering-factor.md) |
 | Rotation Geometry | 3D rotation matrix / goniometer angles | [4. Rotation Geometry](4-rotation-geometry.md) |
 | Structure Viewer | 3D crystal structure | [5. Structure viewer](5-structure-viewer.md) |
 | Stereonet | Stereographic projection | [6. Stereonet](6-stereonet.md) |

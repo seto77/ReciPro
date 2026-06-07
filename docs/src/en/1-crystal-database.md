@@ -102,5 +102,5 @@ Filter by mass density (g/cm³) within an acceptable error band.
 
 - [Main window](0-main-window.md)
 - [Symmetry information](2-symmetry-information.md)
-- [Scattering factor](3-scattering-factor.md)
+- [Beam interaction](3-scattering-factor.md)
 - [Structure viewer](5-structure-viewer.md)
