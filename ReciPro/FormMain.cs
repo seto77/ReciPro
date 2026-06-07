@@ -174,7 +174,9 @@ public partial class FormMain : FormBase
     }
 
     /// <summary>UseMillerBravais が有効かつ現在結晶が 4 指数対応の場合のみ true</summary>
-    public bool MillerBravaisActive => UseMillerBravais && Crystal.MillerBravaisCapable;
+    // 260607Cl: 起動時の Registry(Read) で UseMillerBravais が復元されると結晶ロード前に
+    // CheckedChanged → UpdatePlaneIndices が走り、Crystal が null で NRE になっていた。null ガードを追加。
+    public bool MillerBravaisActive => UseMillerBravais && Crystal != null && Crystal.MillerBravaisCapable;
 
     //260421Cl 追加: 面 (hkl) を 3 指数 / 4 指数どちらで表示するかを useMB で切替えるヘルパー。
     public static string PlaneString(int h, int k, int l, bool useMB, string sep = " ")

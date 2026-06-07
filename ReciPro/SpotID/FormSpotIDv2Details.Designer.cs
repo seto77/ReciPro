@@ -90,7 +90,6 @@
             graphControlNWtoSE.Smoothing = false;
             graphControlNWtoSE.TabIndex = 2;
             graphControlNWtoSE.UpperPanelFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            graphControlNWtoSE.UpperPanelVisible = false;
             // 
             // graphControlWtoE
             // 
@@ -105,7 +104,6 @@
             graphControlWtoE.Smoothing = false;
             graphControlWtoE.TabIndex = 2;
             graphControlWtoE.UpperPanelFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            graphControlWtoE.UpperPanelVisible = false;
             // 
             // graphControlSWtoNE
             // 
@@ -120,7 +118,6 @@
             graphControlSWtoNE.Smoothing = false;
             graphControlSWtoNE.TabIndex = 2;
             graphControlSWtoNE.UpperPanelFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            graphControlSWtoNE.UpperPanelVisible = false;
             // 
             // graphControlNtoS
             // 
@@ -135,7 +132,6 @@
             graphControlNtoS.Smoothing = false;
             graphControlNtoS.TabIndex = 2;
             graphControlNtoS.UpperPanelFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            graphControlNtoS.UpperPanelVisible = false;
             // 
             // label1
             // 

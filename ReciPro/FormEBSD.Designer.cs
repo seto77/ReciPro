@@ -301,7 +301,6 @@
             graphControlDepthProfile.GraphTitle = "";
             graphControlDepthProfile.MousePositionVisible = false;
             graphControlDepthProfile.Name = "graphControlDepthProfile";
-            graphControlDepthProfile.UpperPanelVisible = false;
             // 
             // poleFigureControl
             // 
@@ -314,7 +313,6 @@
             graphControlEnergyProfile.GraphTitle = "";
             graphControlEnergyProfile.MousePositionVisible = false;
             graphControlEnergyProfile.Name = "graphControlEnergyProfile";
-            graphControlEnergyProfile.UpperPanelVisible = false;
             // 
             // checkBoxDrawAxesInStereonet
             // 

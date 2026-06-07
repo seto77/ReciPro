@@ -19,7 +19,7 @@ public partial class FormBeamInteraction : FormBase
     /// <summary>長さの単位の get/set</summary>
     [Browsable(false)]
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-    public LengthUnitEnum LengthUnit => waveLengthControl1.LengthUnit;
+    public LengthUnitEnum LengthUnit => waveLengthControl.LengthUnit;
 
     // 260425Cl WFO1000 対策: デザイナのシリアライゼーション対象から除外
     [Browsable(false)]
@@ -35,11 +35,14 @@ public partial class FormBeamInteraction : FormBase
     private void FormBeamInteraction_Load(object sender, EventArgs e)
     {
         // (260426Ch) 古い EventHandler 明示生成とコメント typo を整理
+        // CrystalControl は外部から代入される参照 (このフォームの子コントロールでない) ためデザイナ登録不可 → コードで配線。260607Cl
         CrystalControl.CrystalChanged += crystalControl_CrystalChanged;
         typeof(DataGridView).GetProperty("DoubleBuffered", BindingFlags.Instance | BindingFlags.NonPublic).SetValue(dataGridView, true, null);
+        InitializeReflectionsTab();       // 260607Cl
         InitializeScatteringFactorsTab(); // 260606Cl
         InitializeAttenuationTab();       // 260606Cl
         InitializeFluorescenceTab();      // 260606Cl
+        ApplyBeamDependentVisibility();   // 260607Ch 追加: 初期表示でも中性子/X線専用表示を反映
     }
 
     private void FormBeamInteraction_FormClosing(object sender, FormClosingEventArgs e)
@@ -52,7 +55,46 @@ public partial class FormBeamInteraction : FormBase
 
     #region 共通: Crystal / 波長変更の追従 (両タブを更新)
     /// <summary>Scattering / Attenuation / Fluorescence の各タブを更新 (各メソッドが選択タブ以外を自己 return)。260606Cl 追加。</summary>
-    private void UpdateAllTabs() { UpdateScatteringFactors(); UpdateAttenuation(); UpdateFluorescence(); }
+    private void UpdateAllTabs() { ApplyBeamDependentVisibility(); UpdateScatteringFactors(); UpdateAttenuation(); UpdateFluorescence(); }//260607Ch 変更: ビーム種依存の表示切替を先に適用 (旧: UpdateScatteringFactors(); UpdateAttenuation(); UpdateFluorescence();)
+
+    /// <summary>ビーム種に応じて、グラフ領域や X線専用タブの表示を切り替える。260607Ch 追加。</summary>
+    private void ApplyBeamDependentVisibility()
+    {
+        var neutron = waveLengthControl.WaveSource == WaveSource.Neutron;
+        //260607Ch 中性子ではエネルギー依存グラフを出さず、元素別表だけを見せる。
+        graphControlAtten.Visible = !neutron;
+        graphControlScatteringFactor.Visible = !neutron;
+        flowLayoutPanelAttenuationModel.Visible = !neutron;
+        flowLayoutPanelScatteringFactorModel.Visible = !neutron;
+
+        //260607Ch Fluorescence は X線専用。TabPage.Visible ではなく TabPages から外してタブヘッダ自体を消す。
+        var xray = waveLengthControl.WaveSource == WaveSource.Xray;
+        if (xray)
+        {
+            //260608Cl タブ順崩れ修正: Fluorescence は canonical 順(Reflections/ScatteringFactors/Attenuations/Fluorescence)の末尾。
+            //          TabControl.TabPages.Insert はタブ順を壊す既知不具合があるため使わず、末尾 Add で復帰させる
+            //          (他3タブは削除しないので Add=正位置)。
+            if (!tabControl.TabPages.Contains(tabPageFluorescence))
+                tabControl.TabPages.Add(tabPageFluorescence);
+            //{ // 260607Ch 旧: Insert は再表示時にタブ順が崩れる
+            //    var index = tabControl.TabPages.IndexOf(tabPageAttenuations);
+            //    tabControl.TabPages.Insert(index >= 0 ? index + 1 : tabControl.TabPages.Count, tabPageFluorescence);
+            //}
+        }
+        else if (tabControl.TabPages.Contains(tabPageFluorescence))
+        {
+            if (tabControl.SelectedTab == tabPageFluorescence)
+                tabControl.SelectedTab = tabPageReflections;
+            tabControl.TabPages.Remove(tabPageFluorescence);
+        }
+    }
+
+    /// <summary>UIカルチャ(ja)に応じてグラフ見出し・ツールチップ・コンボ項目の日本語/英語を返す。260607Cl 追加。</summary>
+    private static string Loc(string en, string ja) => System.Globalization.CultureInfo.CurrentUICulture.Name == "ja" ? ja : en;
+    //260607Ch 追加: 実行時に変わる GraphControl の表示文言も FormBeamInteraction.resx / .ja.resx から取得する。
+    private readonly ComponentResourceManager runtimeResources = new(typeof(FormBeamInteraction));
+    private string R(string name) => runtimeResources.GetString(name) ?? "";
+
     // CrystalControl で Crystal が変更されたとき
     private void crystalControl_CrystalChanged(object sender, EventArgs e)
     {
@@ -124,11 +166,11 @@ public partial class FormBeamInteraction : FormBase
         }
 
         var c = (Crystal)Crystal.Clone();
-        var waveLength = waveLengthControl1.WaveLength;
-        var waveSource = waveLengthControl1.WaveSource;
+        var waveLength = waveLengthControl.WaveLength;
+        var waveSource = waveLengthControl.WaveSource;
         var cutoffD = LengthUnit == LengthUnitEnum.NanoMeter ? numericBoxCutoffD.Value : numericBoxCutoffD.Value / 10; // (260426Ch) 1 回だけの CutoffD helper をローカル化
 
-        c.SetVectorOfG(cutoffD, waveSource, xrayEnergyKeV: waveLengthControl1.Energy);//260606Cl X線異常分散(f'/f'')を反射表へ反映 (X線時のみ有効, 他ビームでは無視)
+        c.SetVectorOfG(cutoffD, waveSource, xrayEnergyKeV: waveLengthControl.Energy);//260606Cl X線異常分散(f'/f'')を反射表へ反映 (X線時のみ有効, 他ビームでは無視)
 
         Array.Sort(c.VectorOfG, (g1, g2) => g2.d.CompareTo(g1.d));
 
@@ -198,17 +240,43 @@ public partial class FormBeamInteraction : FormBase
         DrawReflectionsGraph(peaks);//260607Cl 反射表と同じデータで graphControlReflections に回折ピーク(2θスティック+hkl)を描画
     }
 
+    //260607Cl X軸/対数トグル変更時に再計算せず再描画するため、直近の反射リストを保持
+    private List<(double twoTheta, double inten, int h, int k, int l)> lastReflPeaks;
+    private bool lastReflShowLabels = true;
+
     /// <summary>反射リスト (2θ, 相対強度, hkl) から graphControlReflections に回折ピーク(スティック)と強度上位の hkl ラベルを描く。
+    /// X軸は comboBoxReflXAxis (2θ / d / Q)、強度軸は checkBoxReflLog で線形/対数を切替。
     /// showLabels=false でラベルを付けない (テスト掃引は分数指数があり得るため)。260607Cl 追加。</summary>
     private void DrawReflectionsGraph(List<(double twoTheta, double inten, int h, int k, int l)> peaks, bool showLabels = true)
     {
+        lastReflPeaks = peaks; lastReflShowLabels = showLabels;//260607Cl 軸/対数トグル時の再描画用に保持
+
+        int axisMode = comboBoxReflXAxis?.SelectedIndex ?? 0;// 0:2θ 1:d 2:Q  260607Cl
+        bool logI = checkBoxReflLog?.Checked ?? false;       //260607Cl 強度を対数表示
+        bool ang = LengthUnit == LengthUnitEnum.Angstrom;
+        double lambda = waveLengthControl.WaveLength;       // nm
+
         graphControlReflections.GraphTitle = "";
-        graphControlReflections.AxisLabelX = "2θ (°)";
-        graphControlReflections.LabelX = "2θ:";
-        graphControlReflections.UnitX = " °";
-        graphControlReflections.AxisLabelY = "Relative intensity";
-        graphControlReflections.LabelY = "I:";
+        switch (axisMode)//260607Cl X軸ラベル/単位をモードで切替
+        {
+            case 1:
+                //260607Ch resx 化 (旧: graphControlReflections.AxisLabelX = ang ? "d (Å)" : "d (nm)")
+                graphControlReflections.AxisLabelX = R(ang ? "Graph.Axis.D.Angstrom" : "Graph.Axis.D.Nm");
+                graphControlReflections.LabelX = R("Graph.Label.D"); graphControlReflections.UnitX = R(ang ? "Graph.Unit.Angstrom" : "Graph.Unit.Nm"); break;
+            case 2:
+                //260607Ch resx 化 (旧: graphControlReflections.AxisLabelX = ang ? "Q = 4π·sinθ/λ (Å⁻¹)" : "Q = 4π·sinθ/λ (nm⁻¹)")
+                graphControlReflections.AxisLabelX = R(ang ? "Graph.Axis.Q.AngstromInv" : "Graph.Axis.Q.NmInv");
+                graphControlReflections.LabelX = R("Graph.Label.Q"); graphControlReflections.UnitX = R(ang ? "Graph.Unit.AngstromInv" : "Graph.Unit.NmInv"); break;
+            default:
+                //260607Ch resx 化 (旧: graphControlReflections.AxisLabelX = "2θ (°)")
+                graphControlReflections.AxisLabelX = R("Graph.Axis.TwoTheta");
+                graphControlReflections.LabelX = R("Graph.Label.TwoTheta"); graphControlReflections.UnitX = R("Graph.Unit.Degree"); break;
+        }
+        graphControlReflections.AxisLabelY = R("Graph.Axis.RelativeIntensity");//260607Ch resx 化
+        graphControlReflections.LabelY = R("Graph.Label.I");
         graphControlReflections.UnitY = "";
+        graphControlReflections.YLog = logI;//260607Cl 対数強度
+        graphControlReflections.FixLowerXToZero = axisMode != 1;//260607Cl 2θ/Q は0始点、d は実データ範囲
 
         // 回折する反射のみ (2θ が有限。d < λ/2 は NaN→PositiveInfinity で除外)
         var valid = peaks.Where(p => !double.IsNaN(p.twoTheta) && !double.IsInfinity(p.twoTheta) && p.inten > 0).ToList();
@@ -220,16 +288,54 @@ public partial class FormBeamInteraction : FormBase
         }
         double maxI = valid.Max(p => p.inten);
         if (!(maxI > 0)) maxI = 1;
+        double baseY = logI ? 1e-4 : 0;//260607Cl 対数では0始点(=log−∞)が使えないので微小フロアから立てる(正規化強度0..1に対し1e-4)
+
+        // 2θ[deg] → 選択中X軸の値 (260607Cl)
+        double X(double twoTheta)
+        {
+            if (axisMode == 0) return twoTheta;
+            double sinT = Math.Sin(twoTheta / 2 * Math.PI / 180);
+            if (axisMode == 1) { double dNm = lambda / (2 * sinT); return ang ? dNm * 10 : dNm; }   // d [nm]→[Å]
+            double qNm = 4 * Math.PI * sinT / lambda; return ang ? qNm / 10 : qNm;                   // Q [nm⁻¹]→[Å⁻¹]
+        }
 
         // hkl ラベルは強度上位のみ (スティックが密でも読めるように)。AddProfiles 前に設定し内部 Draw() で一括描画。
         graphControlReflections.Annotations = showLabels
             ? [.. valid.OrderByDescending(p => p.inten).Take(scatMaxPeakLabels)
-                .Select(p => new GraphControl.GraphAnnotation(p.twoTheta, double.NaN, HklLabel(p.h, p.k, p.l), Color.FromArgb(0x55, 0x55, 0x55), Vertical: true, GuideLine: false))]
+                .Select(p => new GraphControl.GraphAnnotation(X(p.twoTheta), double.NaN, HklLabel(p.h, p.k, p.l), Color.FromArgb(0x55, 0x55, 0x55), Vertical: true, GuideLine: false))]
             : [];
 
-        // 各反射を (2θ,0)-(2θ,I) の縦スティックで描く (相対強度に正規化)
+        // 各反射を (X,baseY)-(X,I) の縦スティックで描く (相対強度に正規化。対数時は下端をフロアに)
         graphControlReflections.AddProfiles([.. valid.Select(p =>
-            new Profile(new List<PointD> { new(p.twoTheta, 0), new(p.twoTheta, p.inten / maxI) }) { Color = Color.FromArgb(0x1f, 0x77, 0xb4), LineWidth = 1f })]);
+            new Profile(new List<PointD> { new(X(p.twoTheta), baseY), new(X(p.twoTheta), Math.Max(p.inten / maxI, baseY)) }) { Color = Color.FromArgb(0x1f, 0x77, 0xb4), LineWidth = 1f })]);
+    }
+
+    /// <summary>Reflections タブの X軸/対数トグル変更時に直近データで再描画する (再計算なし)。260607Cl 追加。</summary>
+    private void reflectionsView_OptionChanged(object sender, EventArgs e)
+    {
+        if (lastReflPeaks != null) DrawReflectionsGraph(lastReflPeaks, lastReflShowLabels);
+    }
+
+    /// <summary>Reflections タブの X軸切替コンボ・対数チェックの初期化と配線 (Load から)。260607Cl 追加。</summary>
+    private void InitializeReflectionsTab()
+    {
+        comboBoxReflXAxis.Items.Clear();
+        comboBoxReflXAxis.Items.AddRange(["2θ", "d", "Q"]);
+        comboBoxReflXAxis.SelectedIndex = 0;// 既定 2θ (旧来の表示)。260607Cl イベントはデザイナ登録 (Load 時発火も lastReflPeaks==null で無害)
+        toolTip.SetToolTip(comboBoxReflXAxis, Loc(
+            "Choose the horizontal axis of the diffraction-peak plot. The three options describe the SAME set of reflections; only the horizontal scale changes.\n" +
+            "  • 2θ — the scattering angle in degrees, i.e. how far the beam is bent. This is what a diffractometer reads directly.\n" +
+            "  • d — the spacing between the crystal lattice planes that produce the reflection (large d = low angle = planes far apart).\n" +
+            "  • Q = 4π·sinθ/λ — the 'scattering vector' (momentum transfer). Common in synchrotron and pair-distribution studies; large Q = high angle.",
+            "回折ピークの横軸を選びます。3つの選択肢は同じ反射群を表し、横軸の取り方だけが変わります。\n" +
+            "  • 2θ — 散乱角(度)。ビームがどれだけ曲がるか。回折計が直接読む値です。\n" +
+            "  • d — その反射を作る結晶格子面の間隔(d が大きい=低角=面の間隔が広い)。\n" +
+            "  • Q = 4π·sinθ/λ — 「散乱ベクトル」(運動量遷移)。放射光や二体分布関数でよく使う。Q が大きい=高角。"));
+        toolTip.SetToolTip(checkBoxReflLog, Loc(
+            "Switch the vertical (intensity) axis between a linear scale and a logarithmic scale (…, ×0.01, ×0.1, ×1).\n" +
+            "Diffraction intensities span many orders of magnitude: a few peaks are very strong and most are weak. On a linear scale the weak peaks are flattened against the baseline; a logarithmic scale stretches the bottom so you can still see them.",
+            "縦軸(強度)を線形と対数(…, ×0.01, ×0.1, ×1)で切り替えます。\n" +
+            "回折強度は桁が大きく異なり、強いピークは少数で大半は弱いものです。線形では弱いピークが底に潰れて見えませんが、対数にすると下側が引き伸ばされ、弱いピークも確認できます。"));
     }
 
     #region テストコード (手動 h,k,l 掃引)
@@ -237,8 +343,8 @@ public partial class FormBeamInteraction : FormBase
     private void numericBoxH_min_ValueChanged(object sender, EventArgs e)
     {
         var c = (Crystal)Crystal.Clone();
-        var waveLength = waveLengthControl1.WaveLength;
-        var waveSource = waveLengthControl1.WaveSource;
+        var waveLength = waveLengthControl.WaveLength;
+        var waveSource = waveLengthControl.WaveSource;
 
         // 一旦 bindingSource を解除
         var dataMember = bindingSourceScatteringFactor.DataMember;
@@ -256,7 +362,7 @@ public partial class FormBeamInteraction : FormBase
                     var gLength = (h * c.A_Star + k * c.B_Star + l * c.C_Star).Length;
                     var d = 1 / gLength;
                     var twoTheta = 2 * Math.Asin(gLength * waveLength / 2) / Math.PI * 180;
-                    var f = Crystal.GetStructureFactor(waveSource, c.Atoms, (h, k, l), 1 / d / d / 4.0, xrayEnergyKeV: waveLengthControl1.Energy);//260606Cl 異常分散を本表(SetSortedPlanes)と整合させる(X線時のみ有効, 既定ON)
+                    var f = Crystal.GetStructureFactor(waveSource, c.Atoms, (h, k, l), 1 / d / d / 4.0, xrayEnergyKeV: waveLengthControl.Energy);//260606Cl 異常分散を本表(SetSortedPlanes)と整合させる(X線時のみ有効, 既定ON)
 
                     dataSet.DataTableScatteringFactor.Add(h, k, l, 1, d, twoTheta, f, f.MagnitudeSquared(), []);
                     peaks.Add((twoTheta, f.MagnitudeSquared(), 0, 0, 0));//260607Cl 強度=|F|² (指数は未使用)
@@ -323,34 +429,18 @@ public partial class FormBeamInteraction : FormBase
     /// <summary>Scattering factors タブのイベント結線と初期化 (Load から)。Designer を触らずコード側で配線する。</summary>
     private void InitializeScatteringFactorsTab()
     {
-        foreach (var rb in new[] { radioButtonXrayFs, radioButtonXrayFqSq, radioButtonElectronPeng, radioButtonElectronKirkland, radioButtonElectronEightGaussian })
-            rb.CheckedChanged += scattering_OptionChanged;
-        checkBoxDebyeWaller.CheckedChanged += scattering_OptionChanged;
-        graphControlScatteringFactor.LinePositionChanged += scattering_LinePositionChanged;
-
+        //260607Cl ラジオ/チェック/LinePositionChanged のイベントはデザイナ登録へ移動 (Form 全体でデザイナ登録に統一)
         if (!radioButtonXrayFs.Checked && !radioButtonXrayFqSq.Checked) radioButtonXrayFs.Checked = true;                  // 既定: f(s)
         if (!radioButtonElectronPeng.Checked && !radioButtonElectronKirkland.Checked && !radioButtonElectronEightGaussian.Checked) radioButtonElectronPeng.Checked = true; // 既定: Peng
 
         graphControlScatteringFactor.VerticalLineMarkerVisible = true; // 各曲線にカーソル交点マーカー
 
-        //260607Cl 線種別に 3 つの MiniTable の列を 1 回だけ定義する (旧: Xray 表 1 個を SetupScatColumns で列差替えして兼用)。
+        //260607Cl 線種別 3 表の列はデザイナ定義 (ヘッダ翻訳は resx/.ja.resx)。ここでは整列/書式/AutoSize/非ソートだけコードで設定する。
+        //          元素/モデル列は内容フィット (AllCells)、数値列は Fill で伸縮 (相対幅はデザイナの FillWeight で微調整可)。
         var R = DataGridViewContentAlignment.MiddleRight;
-        miniTableScatteringFactorsXray.SetColumns(
-            new MiniTable.Col("Element", Fill: true),
-            new MiniTable.Col("Z", R, "0"),
-            new MiniTable.Col("f(s)", R, "g4"),
-            new MiniTable.Col("f'(E)", R, "g3"),
-            new MiniTable.Col("f''(E)", R, "g3"));
-        miniTableScatteringFactorsElectron.SetColumns(
-            new MiniTable.Col("Element", Fill: true),
-            new MiniTable.Col("Z", R, "0"),
-            new MiniTable.Col("fe(s) nm", R, "g4"),
-            new MiniTable.Col("model"));
-        miniTableScatteringFactorsNeutron.SetColumns(
-            new MiniTable.Col("Element", Fill: true),
-            new MiniTable.Col("b_coh (fm)", R, "g4"),
-            new MiniTable.Col("σ_coh (barn)", R, "g4"),
-            new MiniTable.Col("σ_inc (barn)", R, "g4"));
+        ConfigCol(colSfxElem, default); ConfigCol(colSfxZ, R, "0", true); ConfigCol(colSfxFs, R, "g4", true); ConfigCol(colSfxFp, R, "g3", true); ConfigCol(colSfxFpp, R, "g3", true);
+        ConfigCol(colSfeElem, default); ConfigCol(colSfeZ, R, "0", true); ConfigCol(colSfeFe, R, "g4", true); ConfigCol(colSfeModel, default);
+        ConfigCol(colSfnElem, default); ConfigCol(colSfnBcoh, R, "g4", true); ConfigCol(colSfnScoh, R, "g4", true); ConfigCol(colSfnSinc, R, "g4", true);
 
         // 元素数×行で増減する表は縦スクロール許可 → 多元素結晶でクリップしない
         foreach (var t in new[] { miniTableScatteringFactorsXray, miniTableScatteringFactorsElectron, miniTableScatteringFactorsNeutron })
@@ -377,9 +467,9 @@ public partial class FormBeamInteraction : FormBase
     private void UpdateScatteringFactors()
     {
         if (!IsHandleCreated || Crystal == null) return;
-        if (tabControl1.SelectedTab != tabPageScatteringFactors) return; // 260606Cl 追加: 非表示タブは計算しない (Attenuation/Fluorescence と同様。タブ切替時に SelectedIndexChanged で更新)
+        if (tabControl.SelectedTab != tabPageScatteringFactors) return; // 260606Cl 追加: 非表示タブは計算しない (Attenuation/Fluorescence と同様。タブ切替時に SelectedIndexChanged で更新)
 
-        var src = waveLengthControl1.WaveSource;
+        var src = waveLengthControl.WaveSource;
 
         // モード切替ラジオ (flowLayoutPanel) をビームで表示/非表示
         flowLayoutPanelModel_Xray.Visible = src == WaveSource.Xray;
@@ -408,7 +498,7 @@ public partial class FormBeamInteraction : FormBase
         //260606Cl f'/f''((Z,energy)依存・s 非依存)を1回だけ事前計算しキャッシュ。UpdateScatteringTable はこれを使い、カーソルドラッグ毎の native 呼びを回避する。
         scatXrayDisp = electron
             ? []
-            : [.. scatElements.Select(el => (Xraylib.Fprime(el.Z, waveLengthControl1.Energy), Xraylib.Fdoubleprime(el.Z, waveLengthControl1.Energy)))];
+            : [.. scatElements.Select(el => (Xraylib.Fprime(el.Z, waveLengthControl.Energy), Xraylib.Fdoubleprime(el.Z, waveLengthControl.Energy)))];
 
         //260606Cl 縦線(カーソル)を AddProfiles より前に設定し、AddProfiles 内部の Draw() で曲線・縦線・交点マーカーを一括描画する(旧: AddProfiles 後に縦線設定→明示 Draw() で二重描画していた)。
         graphControlScatteringFactor.VerticalLines = [new PointD(scatCursorS, double.NaN)];
@@ -469,12 +559,13 @@ public partial class FormBeamInteraction : FormBase
 
         graphControlScatteringFactor.GraphTitle = "";
         //260607Cl AxisLabel=軸上の完全表示(単位込), Label=量名, Unit=単位(先頭スペース込)に分離
-        graphControlScatteringFactor.AxisLabelX = "s = sinθ/λ (Å⁻¹)";
-        graphControlScatteringFactor.LabelX = "s:";
-        graphControlScatteringFactor.UnitX = " Å⁻¹";
-        graphControlScatteringFactor.AxisLabelY = electron ? "fe(s) (nm)" : "f(s) (electrons)";
-        graphControlScatteringFactor.LabelY = electron ? "fe(s):" : "f(s):";
-        graphControlScatteringFactor.UnitY = electron ? " nm" : " electrons";
+        //260607Ch resx 化 (旧: 軸/単位文字列をコード内リテラルで設定)
+        graphControlScatteringFactor.AxisLabelX = R("Graph.Axis.S.AngstromInv");
+        graphControlScatteringFactor.LabelX = R("Graph.Label.S");
+        graphControlScatteringFactor.UnitX = R("Graph.Unit.AngstromInv");
+        graphControlScatteringFactor.AxisLabelY = R(electron ? "Graph.Axis.ElectronFeNm" : "Graph.Axis.XrayFElectrons");
+        graphControlScatteringFactor.LabelY = R(electron ? "Graph.Label.Fe" : "Graph.Label.F");
+        graphControlScatteringFactor.UnitY = R(electron ? "Graph.Unit.Nm" : "Graph.Unit.Electrons");
         if (profiles.Count > 0)
             graphControlScatteringFactor.AddProfiles([.. profiles]);
         else
@@ -489,7 +580,7 @@ public partial class FormBeamInteraction : FormBase
         if (!Xraylib.Enabled)
         {
             graphControlScatteringFactor.ClearProfile();
-            graphControlScatteringFactor.GraphTitle = "F(q)+S(q): xraylib unavailable";
+            graphControlScatteringFactor.GraphTitle = R("Graph.Title.FqSqXraylibUnavailable");//260607Ch resx 化
             return;
         }
 
@@ -512,13 +603,13 @@ public partial class FormBeamInteraction : FormBase
             if (sPts.Count > 0) profiles.Add(new Profile(sPts) { Color = Pale(el.Color), LineWidth = 1f, text = el.Name + " S(q)" });
         }
 
-        graphControlScatteringFactor.GraphTitle = "F(q) bold (coherent) / S(q) pale (incoherent)";
-        graphControlScatteringFactor.AxisLabelX = "s = sinθ/λ (Å⁻¹)";//260607Cl AxisLabel/Label/Unit 分離
-        graphControlScatteringFactor.LabelX = "s:";
-        graphControlScatteringFactor.UnitX = " Å⁻¹";
-        graphControlScatteringFactor.AxisLabelY = "F(q), S(q) (electrons)";
-        graphControlScatteringFactor.LabelY = "F(q),S(q):";
-        graphControlScatteringFactor.UnitY = " electrons";
+        graphControlScatteringFactor.GraphTitle = R("Graph.Title.FqSq");//260607Ch resx 化
+        graphControlScatteringFactor.AxisLabelX = R("Graph.Axis.S.AngstromInv");//260607Ch AxisLabel/Label/Unit 分離値を resx 化
+        graphControlScatteringFactor.LabelX = R("Graph.Label.S");
+        graphControlScatteringFactor.UnitX = R("Graph.Unit.AngstromInv");
+        graphControlScatteringFactor.AxisLabelY = R("Graph.Axis.FqSqElectrons");
+        graphControlScatteringFactor.LabelY = R("Graph.Label.FqSq");
+        graphControlScatteringFactor.UnitY = R("Graph.Unit.Electrons");
         if (profiles.Count > 0)
             graphControlScatteringFactor.AddProfiles([.. profiles]);
         else
@@ -531,7 +622,7 @@ public partial class FormBeamInteraction : FormBase
     /// <summary>カーソル位置 s での各元素 f(s) を線種別 MiniTable に書き出す (X線→Xray表 / 電子→Electron表)。260607Cl</summary>
     private void UpdateScatteringTable(double sAng)
     {
-        var src = waveLengthControl1.WaveSource;
+        var src = waveLengthControl.WaveSource;
         if (src != WaveSource.Xray && src != WaveSource.Electron) return;//260607Cl 中性子は UpdateNeutronScatteringTable が担当
         bool electron = src == WaveSource.Electron;
         var model = electron ? CurrentElectronModel() : default;
@@ -581,7 +672,7 @@ public partial class FormBeamInteraction : FormBase
     private void DrawNeutronScatteringInfo()
     {
         graphControlScatteringFactor.ClearProfile();
-        graphControlScatteringFactor.GraphTitle = "Neutron scattering length: no s/angle dependence (see table)";
+        graphControlScatteringFactor.GraphTitle = R("Graph.Title.NeutronScatteringNoGraph");//260607Ch resx 化
         graphControlScatteringFactor.AxisLabelX = graphControlScatteringFactor.AxisLabelY = "";//グラフ無し状態は軸ラベル/単位を空に
         graphControlScatteringFactor.LabelX = graphControlScatteringFactor.LabelY = "";
         graphControlScatteringFactor.UnitX = graphControlScatteringFactor.UnitY = "";
@@ -624,7 +715,7 @@ public partial class FormBeamInteraction : FormBase
     #endregion
 
     #region Attenuations & Transport タブ (X線減衰・屈折率 / 電子輸送 / 中性子断面積) 260606Cl 追加
-    // GUI コントロールは Designer.cs 定義。線種(ビーム)別に列ヘッダが異なる元素別表は dgvAttenEdges/Electron/Neutron を
+    // GUI コントロールは Designer.cs 定義。線種(ビーム)別に列ヘッダが異なる元素別表は miniTableAttenEdges/Electron/Neutron を
     // FlowLayoutPanel(flowAttenDetail)に置き Visible で切替 (ヘッダをデザイナ固定列にして resx 翻訳可能にするため)。
     // スカラ表(Quantity/Value)はヘッダ非表示 + コード SetColumns。
 
@@ -672,11 +763,46 @@ public partial class FormBeamInteraction : FormBase
     /// <summary>Attenuation タブのイベント配線と列設定 (Load から)。260606Cl 追加。</summary>
     private void InitializeAttenuationTab()
     {
-        numAttenThickness.ValueChanged += (_, _) => UpdateAttenuation();
-        tabControl1.SelectedIndexChanged += (_, _) => UpdateAllTabs(); // 260606Cl 散乱タブも含めタブ切替で更新 (各メソッドが選択タブ以外を自己 return)
+        //260607Cl numericBoxAttenThickness.ValueChanged / tabControl.SelectedIndexChanged / 係数ラジオ CheckedChanged はデザイナ登録へ移動
+        if (!radioButtonAttenMassMu.Checked && !radioButtonAttenLinMu.Checked && !radioButtonAttenTrans.Checked) radioButtonAttenMassMu.Checked = true;
+        toolTip.SetToolTip(radioButtonAttenMassMu, Loc(
+            "Plot the MASS attenuation coefficient µ/ρ (unit: cm²/g).\n" +
+            "This measures how strongly the material removes X-rays from the beam (by absorption and scattering) per gram of material, so it does not depend on how densely the material is packed. It is the value listed in reference tables. Multiply it by the density ρ to obtain the linear coefficient µ.",
+            "質量吸収係数 µ/ρ(単位: cm²/g)を表示します。\n" +
+            "物質1グラムあたりに X線がどれだけ減衰(吸収+散乱)されるかを表し、物質の詰まり具合(密度)によりません。データ集に載るのはこの値です。密度 ρ を掛けると線吸収係数 µ になります。"));
+        toolTip.SetToolTip(radioButtonAttenLinMu, Loc(
+            "Plot the LINEAR attenuation coefficient µ = (µ/ρ)·ρ (unit: cm⁻¹).\n" +
+            "This is the attenuation per centimetre of the actual material at its real density. The transmitted intensity follows I = I₀·exp(−µ·t), where t is the path length, and 1/µ is the distance over which the beam intensity falls to about 37% (1/e).",
+            "線吸収係数 µ = (µ/ρ)·ρ(単位: cm⁻¹)を表示します。\n" +
+            "実際の密度の物質を1cm通るごとの減衰量です。透過強度は I = I₀·exp(−µ·t)(t=通過距離)に従い、1/µ は強度が約37%(1/e)になる距離に相当します。"));
+        toolTip.SetToolTip(radioButtonAttenTrans, Loc(
+            "Plot the TRANSMISSION T = exp(−µ·t) in percent — the fraction of the X-ray beam that passes through the sample without being absorbed or scattered, for the sample thickness t set in the 'Thickness t' box below.\n" +
+            "100% = the sample is transparent to the beam; 0% = the beam is fully blocked. Use this to judge a sensible sample thickness at the current energy.",
+            "透過率 T = exp(−µ·t) を%で表示します。下の「Thickness t」で設定した試料厚 t に対し、吸収も散乱もされずに通り抜ける X線の割合です。\n" +
+            "100%=試料はビームに透明、0%=ビームは完全に遮られる。現在のエネルギーで適切な試料厚を決める目安になります。"));
+
+        //260607Cl 電子の表示量セレクタ: combo を 6 ラジオ (flowLayoutPanelElecQuantity) に変更。テキストは resx、既定は radioButtonElecAll (Designer で Checked)、イベントもデザイナ登録。各ラジオに個別ツールチップを付ける。
+        toolTip.SetToolTip(radioButtonElecAll, Loc(
+            "Overlay the three curves below, each rescaled to its own maximum so their SHAPES can be compared on one plot (read absolute values from the table).",
+            "下の3曲線を各最大で正規化して重ね、形を1枚で比較できます(絶対値は表で確認)。"));
+        toolTip.SetToolTip(radioButtonElecSigma, Loc(
+            "σ elastic — elastic scattering cross section: how likely a single atom is to deflect the electron (bigger = scatters more).",
+            "σ 弾性 — 弾性散乱断面積: 原子1個が電子を曲げる起こりやすさ(大きいほどよく散乱)。"));
+        toolTip.SetToolTip(radioButtonElecEMFP, Loc(
+            "Elastic MFP — mean free path: the average distance the electron travels between elastic scattering events.",
+            "弾性MFP — 平均自由行程: 弾性散乱が起きる平均間隔の距離。"));
+        toolTip.SetToolTip(radioButtonElecDeds, Loc(
+            "dE/ds — stopping power: the energy the electron loses per nanometre of travel.",
+            "dE/ds — 阻止能: 電子が1nm進むごとに失うエネルギー。"));
+        toolTip.SetToolTip(radioButtonElecIMFP, Loc(
+            "IMFP — inelastic mean free path: average distance between energy-losing collisions.",
+            "IMFP — 非弾性平均自由行程: エネルギーを失う衝突の平均間隔。"));
+        toolTip.SetToolTip(radioButtonElecRange, Loc(
+            "Range (CSDA) — the total path length the electron travels before it stops.",
+            "飛程(CSDA) — 電子が止まるまでに進む総経路長。"));
 
         // スカラ表: ヘッダ非表示 (Quantity/Value は自明) + コード列 + 縦スクロール許可
-        foreach (var t in new[] { dgvAttenScalars, dgvFluorScalars })
+        foreach (var t in new[] { miniTableAttenScalars, miniTableFluorScalars })
         {
             t.ColumnHeadersVisible = false;
             t.AllowVerticalScroll = true;
@@ -692,29 +818,30 @@ public partial class FormBeamInteraction : FormBase
         ConfigCol(colNeutElem, default, fill: true); ConfigCol(colNeutBcoh, R, "g4"); ConfigCol(colNeutScoh, R, "g4"); ConfigCol(colNeutAt, R, "g3");
 
         // 260606Cl 行数の多い元素別表 (元素数×行。Edges は最大 2×元素数) は縦スクロール許可 → 多元素結晶でもクリップしない
-        foreach (var t in new[] { dgvAttenEdges, dgvAttenElectron, dgvAttenNeutron })
+        foreach (var t in new[] { miniTableAttenEdges, miniTableAttenElectron, miniTableAttenNeutron })
             t.AllowVerticalScroll = true;
     }
 
     /// <summary>ビーム種に応じて Attenuation タブを更新する。260606Cl 追加。</summary>
     private void UpdateAttenuation()
     {
-        if (!IsHandleCreated || !Visible || Crystal == null || graphAtten == null) return;
-        if (tabControl1.SelectedTab != tabPageAttenuations) return; // 非表示タブは計算しない
+        if (!IsHandleCreated || !Visible || Crystal == null || graphControlAtten == null) return;
+        if (tabControl.SelectedTab != tabPageAttenuations) return; // 非表示タブは計算しない
 
-        var src = waveLengthControl1.WaveSource;
-        dgvAttenEdges.Visible = src == WaveSource.Xray;
-        dgvAttenElectron.Visible = src == WaveSource.Electron;
-        dgvAttenNeutron.Visible = src == WaveSource.Neutron;
-        numAttenThickness.Visible = src == WaveSource.Xray;
+        var src = waveLengthControl.WaveSource;
+        miniTableAttenEdges.Visible = src == WaveSource.Xray;
+        miniTableAttenElectron.Visible = src == WaveSource.Electron;
+        miniTableAttenNeutron.Visible = src == WaveSource.Neutron;
+        flowLayoutPanelAttenCoeff.Visible = src == WaveSource.Xray;//260607Cl 係数モードラジオは X線時のみ
+        flowLayoutPanelElecQuantity.Visible = src == WaveSource.Electron;//260607Cl 電子量セレクタ(ラジオ群)は電子時のみ
 
         var els = AggregateElements();
         double totalOcc = els.Sum(x => x.occ);
         if (els.Length == 0 || totalOcc <= 0 || !(Crystal.Density > 0)) // 退化入力ガード
         {
-            graphAtten.VerticalLines = [];
-            graphAtten.ClearProfile();
-            dgvAttenScalars.ClearRows(); dgvAttenEdges.ClearRows(); dgvAttenElectron.ClearRows(); dgvAttenNeutron.ClearRows();
+            graphControlAtten.VerticalLines = [];
+            graphControlAtten.ClearProfile();
+            miniTableAttenScalars.ClearRows(); miniTableAttenEdges.ClearRows(); miniTableAttenElectron.ClearRows(); miniTableAttenNeutron.ClearRows();
             return;
         }
 
@@ -724,9 +851,9 @@ public partial class FormBeamInteraction : FormBase
             case WaveSource.Electron: UpdateAttenuationElectron(els, totalOcc); break;
             case WaveSource.Neutron: UpdateAttenuationNeutron(els, totalOcc); break;
             default:
-                graphAtten.VerticalLines = [];
-                graphAtten.ClearProfile();
-                dgvAttenScalars.ClearRows();
+                graphControlAtten.VerticalLines = [];
+                graphControlAtten.ClearProfile();
+                miniTableAttenScalars.ClearRows();
                 break;
         }
     }
@@ -734,9 +861,9 @@ public partial class FormBeamInteraction : FormBase
     // ---- X線: 質量減衰 + 屈折率 + 吸収端 ----
     private void UpdateAttenuationXray((int z, double occ)[] els)
     {
-        double e = waveLengthControl1.Energy;          // 光子エネルギー [keV]
+        double e = waveLengthControl.Energy;          // 光子エネルギー [keV]
         double rho = Crystal.Density;                  // [g/cm³]
-        double lambdaCm = waveLengthControl1.WaveLength * 1e-7; // nm → cm
+        double lambdaCm = waveLengthControl.WaveLength * 1e-7; // nm → cm
         double totalMass = els.Sum(x => x.occ * AtomStatic.AtomicWeight(x.z));
         bool xrl = Xraylib.Enabled;
 
@@ -748,7 +875,7 @@ public partial class FormBeamInteraction : FormBase
             else muRhoTot += w * AtomStatic.MassAbsorption(e, z); // 光電のみ (fallback)
         }
         double muLin = muRhoTot * rho;                 // [1/cm]
-        double tCm = numAttenThickness.Value * 1e-4;   // µm → cm
+        double tCm = numericBoxAttenThickness.Value * 1e-4;   // µm → cm
 
         // 屈折率 δ, β, θc, SLD。f'/f'' は xraylib 必須・一部 NaN なら吸収側不明 → N/A。
         bool dispNa = !xrl;
@@ -766,13 +893,13 @@ public partial class FormBeamInteraction : FormBase
         double thetaC = delta > 0 ? Math.Sqrt(2 * delta) : double.NaN; // [rad]
         double sldReal = ClassicalElectronRadiusCm * sumReal * 1e-16;  // cm⁻² → Å⁻²
 
-        dgvAttenScalars.SetRows(
+        miniTableAttenScalars.SetRows(
         [
             ["µ/ρ (total)", Q(muRhoTot, "cm²/g")],
             ["µ (linear)", Q(muLin, "cm⁻¹")],
             ["Attenuation length", QLen(1 / muLin)],
             ["HVL", QLen(Math.Log(2) / muLin)],
-            [$"Transmission (t={numAttenThickness.Value:g4} µm)", Q(Math.Exp(-muLin * tCm) * 100, "%", "g4")],
+            [$"Transmission (t={numericBoxAttenThickness.Value:g4} µm)", Q(Math.Exp(-muLin * tCm) * 100, "%", "g4")],
             ["µ_en/ρ", xrl ? Q(muEnRho, "cm²/g") : "N/A"],
             ["δ (1−n)", dispNa ? "N/A" : Q(delta, "", "g4")],
             ["β", dispNa ? "N/A" : Q(beta, "", "g4")],
@@ -792,20 +919,44 @@ public partial class FormBeamInteraction : FormBase
                 double jf = xrl ? Xraylib.EdgeJumpFactor(z, shell) : AtomStatic.AbsorptionJumpRatio(z, edge);//260606Cl xraylib 無効時は内蔵 FFAST テーブルからジャンプ比をフォールバック(未収載は NaN→空欄)
                 rows.Add([AtomStatic.AtomicName(z), z, name, ee, double.IsNaN(jf) ? (object)null : jf]);
             }
-        dgvAttenEdges.SetRows(rows);
+        miniTableAttenEdges.SetRows(rows);
 
         DrawXrayAttenuationGraph(els, totalMass, e);
     }
+
+    /// <summary>X線係数モードラジオの状態 (0:µ/ρ質量 1:µ線 2:透過率)。260607Cl 追加。</summary>
+    private int AttenCoeffMode() => radioButtonAttenLinMu.Checked ? 1 : radioButtonAttenTrans.Checked ? 2 : 0;
+
+    /// <summary>係数モードラジオの変更ハンドラ (解除側は無視)。260607Cl 追加。</summary>
+    private void attenCoeff_OptionChanged(object sender, EventArgs e)
+    {
+        if (sender is RadioButton { Checked: false }) return;
+        UpdateAttenuation();
+    }
+
+    //260607Cl ラムダをデザイナ登録可能な名前付きハンドラへ (Form 全体でイベントはデザイナ登録に統一)
+    private void numericBoxAttenThickness_ValueChanged(object sender, EventArgs e) => UpdateAttenuation();
+    private void elecQuantity_OptionChanged(object sender, EventArgs e)
+    {
+        if (sender is RadioButton { Checked: false }) return;
+        UpdateAttenuation();
+    }
+    private void tabControl_SelectedIndexChanged(object sender, EventArgs e) => UpdateAllTabs(); // 散乱タブも含めタブ切替で更新 (各 Update は非選択タブを自己 return)
 
     private void DrawXrayAttenuationGraph((int z, double occ)[] els, double totalMass, double currentE)
     {
         const double eMin = 1, eMax = 60;
         const int n = 300;
         bool xrl = Xraylib.Enabled;
+        int mode = AttenCoeffMode();                 //260607Cl 0:µ/ρ 1:µ 2:透過率
+        double rho = Crystal.Density;                // [g/cm³]
+        double tCm = numericBoxAttenThickness.Value * 1e-4; // µm → cm (透過率用)
+        double scale = mode == 1 ? rho : 1.0;        // 線吸収係数 µ = (µ/ρ)·ρ
         var pTot = new List<PointD>(n + 1);
         var pPho = new List<PointD>(n + 1);
         var pRay = new List<PointD>(n + 1);
         var pCom = new List<PointD>(n + 1);
+        var pTrans = new List<PointD>(n + 1);
         for (int i = 0; i <= n; i++)
         {
             double e = eMin * Math.Pow(eMax / eMin, (double)i / n); // log 等間隔
@@ -823,22 +974,46 @@ public partial class FormBeamInteraction : FormBase
                 else
                     t += w * AtomStatic.MassAbsorption(e, z);
             }
-            if (t > 0) pTot.Add(new PointD(e, t));
-            if (xrl)
+            if (mode == 2)//260607Cl 透過率 T = exp(−µt)·100 (total のみ)
             {
-                if (p > 0) pPho.Add(new PointD(e, p));
-                if (r > 0) pRay.Add(new PointD(e, r));
-                if (c > 0) pCom.Add(new PointD(e, c));
+                if (t > 0) pTrans.Add(new PointD(e, Math.Exp(-t * rho * tCm) * 100));
+            }
+            else
+            {
+                if (t > 0) pTot.Add(new PointD(e, t * scale));
+                if (xrl)
+                {
+                    if (p > 0) pPho.Add(new PointD(e, p * scale));
+                    if (r > 0) pRay.Add(new PointD(e, r * scale));
+                    if (c > 0) pCom.Add(new PointD(e, c * scale));
+                }
             }
         }
-        graphAtten.YLog = true;
-        graphAtten.AxisLabelX = "E (keV)"; graphAtten.LabelX = "E:"; graphAtten.UnitX = " keV";//260607Cl AxisLabel/Label/Unit 分離
-        graphAtten.AxisLabelY = "µ/ρ (cm²/g)"; graphAtten.LabelY = "µ/ρ:"; graphAtten.UnitY = " cm²/g";
-        graphAtten.GraphTitle = xrl ? "µ/ρ total (bold) / photo / Rayleigh / Compton" : "µ/ρ photoabsorption (internal)";
-        var profiles = new List<Profile> { new(pTot) { Color = Color.Black, LineWidth = 1.8f, text = "total" } };
-        if (pPho.Count > 0) profiles.Add(new Profile(pPho) { Color = Color.FromArgb(0xd6, 0x27, 0x28), text = "photo" });
-        if (pRay.Count > 0) profiles.Add(new Profile(pRay) { Color = Color.FromArgb(0x2c, 0xa0, 0x2c), text = "Rayleigh" });
-        if (pCom.Count > 0) profiles.Add(new Profile(pCom) { Color = Color.FromArgb(0x1f, 0x77, 0xb4), text = "Compton" });
+        //260607Ch resx 化 (旧: graphControlAtten.AxisLabelX = "E (keV)"; graphControlAtten.LabelX = "E:"; graphControlAtten.UnitX = " keV")
+        graphControlAtten.AxisLabelX = R("Graph.Axis.EKeV"); graphControlAtten.LabelX = R("Graph.Label.E"); graphControlAtten.UnitX = R("Graph.Unit.KeV");
+
+        List<Profile> profiles;
+        if (mode == 2)//透過率モード
+        {
+            graphControlAtten.YLog = false;
+            graphControlAtten.AxisLabelY = R("Graph.Axis.TransmissionPercent"); graphControlAtten.LabelY = R("Graph.Label.Transmission"); graphControlAtten.UnitY = R("Graph.Unit.Percent");//260607Ch resx 化
+            graphControlAtten.GraphTitle = string.Format(System.Globalization.CultureInfo.CurrentCulture, R("Graph.Title.TransmissionThroughThickness"), numericBoxAttenThickness.Value);//260607Ch resx 書式文字列化
+            profiles = [new Profile(pTrans) { Color = Color.Black, LineWidth = 1.8f, text = "transmission" }];
+        }
+        else//260608Cl µ(mode1) と µ/ρ(mode0,既定) は Y軸ラベル・タイトルのみ異なりプロファイル構成は同一 → 1分岐に統合 (旧: mode==1/else で同じ4プロファイルを二重定義)
+        {
+            bool lin = mode == 1;// 線吸収係数 µ か 質量吸収係数 µ/ρ か
+            graphControlAtten.YLog = true;
+            graphControlAtten.AxisLabelY = R(lin ? "Graph.Axis.MuCmInv" : "Graph.Axis.MuRhoCm2G");
+            graphControlAtten.LabelY = R(lin ? "Graph.Label.Mu" : "Graph.Label.MuRho");
+            graphControlAtten.UnitY = R(lin ? "Graph.Unit.CmInv" : "Graph.Unit.Cm2G");
+            graphControlAtten.GraphTitle = R(lin ? (xrl ? "Graph.Title.MuTotal" : "Graph.Title.MuPhotoInternal")
+                                          : (xrl ? "Graph.Title.MuRhoTotal" : "Graph.Title.MuRhoPhotoInternal"));
+            profiles = [new(pTot) { Color = Color.Black, LineWidth = 1.8f, text = "total" }];
+            if (pPho.Count > 0) profiles.Add(new Profile(pPho) { Color = Color.FromArgb(0xd6, 0x27, 0x28), text = "photo" });
+            if (pRay.Count > 0) profiles.Add(new Profile(pRay) { Color = Color.FromArgb(0x2c, 0xa0, 0x2c), text = "Rayleigh" });
+            if (pCom.Count > 0) profiles.Add(new Profile(pCom) { Color = Color.FromArgb(0x1f, 0x77, 0xb4), text = "Compton" });
+        }
 
         //260606Cl 縦線(現在エネルギー + 各元素の吸収端)を AddProfiles より前に設定し、AddProfiles 内部の Draw() で一括描画(旧: AddProfiles 後に設定→明示 Draw() で二重描画していた)。
         var vlines = new List<PointD> { new(currentE, double.NaN) };
@@ -848,14 +1023,14 @@ public partial class FormBeamInteraction : FormBase
                 double ee = AtomStatic.CharacteristicXrayEnergy(z, edge);
                 if (!double.IsNaN(ee) && ee > eMin && ee < eMax) vlines.Add(new PointD(ee, double.NaN));
             }
-        graphAtten.VerticalLines = [.. vlines];
-        graphAtten.AddProfiles([.. profiles]);
+        graphControlAtten.VerticalLines = [.. vlines];
+        graphControlAtten.AddProfiles([.. profiles]);
     }
 
     // ---- 電子: 弾性断面積 / MFP / dE·ds / IMFP / 飛程 ----
     private void UpdateAttenuationElectron((int z, double occ)[] els, double totalOcc)
     {
-        double kev = waveLengthControl1.Energy;
+        double kev = waveLengthControl.Energy;
         double avgZ = els.Sum(x => x.occ * x.z) / totalOcc;
         double avgA = els.Sum(x => x.occ * AtomStatic.AtomicWeight(x.z)) / totalOcc;
         double rho = Crystal.Density;
@@ -867,7 +1042,7 @@ public partial class FormBeamInteraction : FormBase
         double lambdaNm = UniversalConstants.Convert.EnergyToElectronWaveLength(kev);
         double rangeKO = 0.0276 * avgA * Math.Pow(kev, 1.67) / (Math.Pow(avgZ, 0.89) * rho); // Kanaya-Okayama [µm]
 
-        dgvAttenScalars.SetRows(
+        miniTableAttenScalars.SetRows(
         [
             ["λ (electron)", Q(lambdaNm * 1000, "pm")],
             ["σ elastic", Q(sigma, "nm²")],
@@ -882,7 +1057,7 @@ public partial class FormBeamInteraction : FormBase
         ]);
 
         //260606Cl 4列目を A(原子量)→ 元素別弾性断面積 σ_el[nm²] に変更 (§6.5)。NaN は null=空欄 (§11)。NIST範囲外(>36keV)は MonteCarlo 側で Rutherford 近似
-        dgvAttenElectron.SetRows(els.OrderBy(x => x.z)
+        miniTableAttenElectron.SetRows(els.OrderBy(x => x.z)
             .Select(x =>
             {
                 double sigma = MonteCarlo.ElasticCrossSectionNm2(x.z, kev);
@@ -908,35 +1083,63 @@ public partial class FormBeamInteraction : FormBase
     {
         const double kMin = 1, kMax = 30;
         const int n = 200;
-        var sig = new List<PointD>(n + 1);
-        var mfp = new List<PointD>(n + 1);
-        var des = new List<PointD>(n + 1);
-        double sMax = 0, mMax = 0, dMax = 0;
-        var raw = new (double k, double s, double m, double d)[n + 1];
+        //260607Cl 0:全正規化 1:σ 2:MFP 3:dE/ds 4:IMFP 5:Range (combo→ラジオ群に変更。既定は radioButtonElecAll=0)
+        int q = radioButtonElecSigma.Checked ? 1 : radioButtonElecEMFP.Checked ? 2 : radioButtonElecDeds.Checked ? 3 : radioButtonElecIMFP.Checked ? 4 : radioButtonElecRange.Checked ? 5 : 0;
+        var raw = new (double k, double s, double m, double d, double imfp, double range)[n + 1];
         for (int i = 0; i <= n; i++)
         {
             double k = kMin + (kMax - kMin) * i / n;
             var (_, s, m, d) = mc.GetParameters(k);
-            raw[i] = (k, s, m, d);
-            sMax = Math.Max(sMax, s); mMax = Math.Max(mMax, m); dMax = Math.Max(dMax, d);
+            //260608Cl IMFP/Range は該当量を選択中のときだけ計算 (q==4/5 以外では未使用。全点での native 呼びを省く。旧: 常に両方を収集)
+            double imfp = q == 4 ? mc.GetInelasticMeanFreePathAngstrom(k * 1000) / 10 : double.NaN;//IMFP[nm]
+            double range = q == 5 ? mc.GetCsdaRangeMicron(k) : double.NaN;//Range[µm]
+            raw[i] = (k, s, m, d, imfp, range);
         }
-        foreach (var (k, s, m, d) in raw) // 3 量はスケール差大 → 各最大で正規化して重ね描き (絶対値は表)
+
+        //260607Ch resx 化 (旧: graphControlAtten.AxisLabelX = "E (keV)"; graphControlAtten.LabelX = "E:"; graphControlAtten.UnitX = " keV")
+        graphControlAtten.AxisLabelX = R("Graph.Axis.EKeV"); graphControlAtten.LabelX = R("Graph.Label.E"); graphControlAtten.UnitX = R("Graph.Unit.KeV");
+        graphControlAtten.VerticalLines = [new PointD(currentKev, double.NaN)];//260606Cl 縦線を AddProfiles より前に設定し内部 Draw() で一括描画
+
+        if (q == 0)//全正規化重ね描き (従来の既定)
         {
-            if (sMax > 0) sig.Add(new PointD(k, s / sMax));
-            if (mMax > 0) mfp.Add(new PointD(k, m / mMax));
-            if (dMax > 0) des.Add(new PointD(k, d / dMax));
+            double sMax = 0, mMax = 0, dMax = 0;
+            foreach (var r in raw) { sMax = Math.Max(sMax, r.s); mMax = Math.Max(mMax, r.m); dMax = Math.Max(dMax, r.d); }
+            var sig = new List<PointD>(n + 1); var mfp = new List<PointD>(n + 1); var des = new List<PointD>(n + 1);
+            foreach (var r in raw) // 3 量はスケール差大 → 各最大で正規化して重ね描き (絶対値は表)
+            {
+                if (sMax > 0) sig.Add(new PointD(r.k, r.s / sMax));
+                if (mMax > 0) mfp.Add(new PointD(r.k, r.m / mMax));
+                if (dMax > 0) des.Add(new PointD(r.k, r.d / dMax));
+            }
+            graphControlAtten.YLog = false;
+            graphControlAtten.AxisLabelY = R("Graph.Axis.Normalized"); graphControlAtten.LabelY = R("Graph.Label.Normalized"); graphControlAtten.UnitY = "";//260607Ch resx 化
+            graphControlAtten.GraphTitle = R("Graph.Title.ElectronTransportNormalized");
+            graphControlAtten.AddProfiles(
+            [
+                new Profile(sig) { Color = Color.FromArgb(0xd6, 0x27, 0x28), text = "σ elastic" },
+                new Profile(mfp) { Color = Color.FromArgb(0x1f, 0x77, 0xb4), text = "elastic MFP" },
+                new Profile(des) { Color = Color.FromArgb(0x2c, 0xa0, 0x2c), text = "dE/ds" },
+            ]);
         }
-        graphAtten.YLog = false;
-        graphAtten.AxisLabelX = "E (keV)"; graphAtten.LabelX = "E:"; graphAtten.UnitX = " keV";//260607Cl AxisLabel/Label/Unit 分離
-        graphAtten.AxisLabelY = "Normalized"; graphAtten.LabelY = "Normalized:"; graphAtten.UnitY = "";
-        graphAtten.GraphTitle = "σ / MFP / dE·ds vs E (each normalized; absolute in table)";
-        graphAtten.VerticalLines = [new PointD(currentKev, double.NaN)];//260606Cl 縦線を AddProfiles より前に設定し内部 Draw() で一括描画(旧: AddProfiles 後に設定→明示 Draw() で二重描画)
-        graphAtten.AddProfiles(
-        [
-            new Profile(sig) { Color = Color.FromArgb(0xd6, 0x27, 0x28), text = "σ elastic" },
-            new Profile(mfp) { Color = Color.FromArgb(0x1f, 0x77, 0xb4), text = "elastic MFP" },
-            new Profile(des) { Color = Color.FromArgb(0x2c, 0xa0, 0x2c), text = "dE/ds" },
-        ]);
+        else//単一量を絶対値で表示
+        {
+            // 選択量ごとに 値セレクタ / 軸ラベル(EN,JA) / 単位 / ラベル / 色 を決める  260607Cl
+            Func<int, double> sel; string axisKey, unitKey, labelKey; Color color;//260607Ch axisEn/axisJa を resx キーへ変更
+            switch (q)
+            {
+                case 1: sel = i => raw[i].s; axisKey = "Graph.Axis.SigmaElasticNm2"; unitKey = "Graph.Unit.Nm2"; labelKey = "Graph.Label.Sigma"; color = Color.FromArgb(0xd6, 0x27, 0x28); break;
+                case 2: sel = i => raw[i].m; axisKey = "Graph.Axis.ElasticMfpNm"; unitKey = "Graph.Unit.Nm"; labelKey = "Graph.Label.Mfp"; color = Color.FromArgb(0x1f, 0x77, 0xb4); break;
+                case 3: sel = i => raw[i].d; axisKey = "Graph.Axis.DedsKevNm"; unitKey = "Graph.Unit.KeVPerNm"; labelKey = "Graph.Label.Deds"; color = Color.FromArgb(0x2c, 0xa0, 0x2c); break;
+                case 4: sel = i => raw[i].imfp; axisKey = "Graph.Axis.ImfpNm"; unitKey = "Graph.Unit.Nm"; labelKey = "Graph.Label.Imfp"; color = Color.FromArgb(0x94, 0x67, 0xbd); break;
+                default: sel = i => raw[i].range; axisKey = "Graph.Axis.RangeCsdaMicron"; unitKey = "Graph.Unit.Micron"; labelKey = "Graph.Label.Range"; color = Color.FromArgb(0x8c, 0x56, 0x4b); break;
+            }
+            var pts = new List<PointD>(n + 1);
+            for (int i = 0; i <= n; i++) { double v = sel(i); if (!double.IsNaN(v) && !double.IsInfinity(v)) pts.Add(new PointD(raw[i].k, v)); }
+            graphControlAtten.YLog = false;
+            graphControlAtten.AxisLabelY = R(axisKey); graphControlAtten.LabelY = R(labelKey); graphControlAtten.UnitY = R(unitKey);//260607Ch resx 化
+            graphControlAtten.GraphTitle = string.Format(System.Globalization.CultureInfo.CurrentCulture, R("Graph.Title.QuantityVsE"), graphControlAtten.AxisLabelY);
+            graphControlAtten.AddProfiles([new Profile(pts) { Color = color, LineWidth = 1.6f, text = graphControlAtten.LabelY.TrimEnd(':') }]);
+        }
     }
 
     // ---- 中性子: 散乱長 / 断面積 (グラフ無) ----
@@ -945,7 +1148,7 @@ public partial class FormBeamInteraction : FormBase
         double totalMass = els.Sum(x => x.occ * AtomStatic.AtomicWeight(x.z));
         double rho = Crystal.Density;
 
-        double lambdaAng = waveLengthControl1.WaveLength * 10.0; // nm → Å (σ_abs の 1/v 評価用)。260606Cl 追加
+        double lambdaAng = waveLengthControl.WaveLength * 10.0; // nm → Å (σ_abs の 1/v 評価用)。260606Cl 追加
 
         double bMean = 0, sld = 0;
         double sCoh = 0, sInc = 0, sAbs = 0; // 260606Cl 原子分率加重の平均断面積 [barn/atom] (Σ x_i σ_i)
@@ -972,7 +1175,7 @@ public partial class FormBeamInteraction : FormBase
         double sigmaTotMacro = nAtomsCm3 * sTot * 1e-24; // cm⁻¹
         double attenLenCm = sigmaTotMacro > 0 ? 1.0 / sigmaTotMacro : double.NaN;
 
-        dgvAttenScalars.SetRows(
+        miniTableAttenScalars.SetRows(
         [
             ["b̄ (coherent)", Q(bMean, "fm")],
             ["Coherent SLD", Q(sld * 1e6, "10⁻⁶Å⁻²", "g4")],
@@ -985,7 +1188,7 @@ public partial class FormBeamInteraction : FormBase
             ["source", anyResonant ? "periodictable nsf (* 1/v invalid: Cd/Sm/Eu/Gd)" : "periodictable nsf (Sears 1992)"],
         ]);
 
-        dgvAttenNeutron.SetRows(els.OrderBy(x => x.z).Select(x =>
+        miniTableAttenNeutron.SetRows(els.OrderBy(x => x.z).Select(x =>
         {
             double b = NeutronB(x.z);
             object bCell = double.IsNaN(b) ? null : b;
@@ -994,11 +1197,11 @@ public partial class FormBeamInteraction : FormBase
             return new object[] { AtomStatic.AtomicName(x.z), bCell, sCell, x.occ / totalOcc * 100 };
         }).ToList());
 
-        graphAtten.VerticalLines = [];
-        graphAtten.GraphTitle = "Neutron: no energy-dependent graph";
-        graphAtten.AxisLabelX = graphAtten.AxisLabelY = "";//260607Cl グラフ無し状態は軸ラベル/単位を空に (前線種の残留を防ぐ)
-        graphAtten.LabelX = graphAtten.LabelY = graphAtten.UnitX = graphAtten.UnitY = "";
-        graphAtten.ClearProfile();
+        graphControlAtten.VerticalLines = [];
+        graphControlAtten.GraphTitle = R("Graph.Title.NeutronNoEnergyGraph");//260607Ch resx 化
+        graphControlAtten.AxisLabelX = graphControlAtten.AxisLabelY = "";//260607Cl グラフ無し状態は軸ラベル/単位を空に (前線種の残留を防ぐ)
+        graphControlAtten.LabelX = graphControlAtten.LabelY = graphControlAtten.UnitX = graphControlAtten.UnitY = "";
+        graphControlAtten.ClearProfile();
     }
 
     /// <summary>元素 z の束縛コヒーレント散乱長 b の実部 [fm] (自然存在比, [z][0])。無ければ NaN。260606Cl 追加。</summary>
@@ -1029,30 +1232,25 @@ public partial class FormBeamInteraction : FormBase
         ConfigCol(colFlElem, default, fill: true);
         ConfigCol(colFlLine, DataGridViewContentAlignment.MiddleCenter);
         ConfigCol(colFlE, R, "g4"); ConfigCol(colFlRelI, R, "g3"); ConfigCol(colFlOmega, R, "g3");
-        dgvFluorLines.AllowVerticalScroll = true; // 260606Cl 特性線表 (発光線×元素数=行数多) は縦スクロール許可
+        miniTableFluorLines.AllowVerticalScroll = true; // 260606Cl 特性線表 (発光線×元素数=行数多) は縦スクロール許可
     }
 
     /// <summary>Fluorescence タブ更新。X線時のみ内容を出し、電子/中性子では無効メッセージ。260606Cl 追加。</summary>
     private void UpdateFluorescence()
     {
-        if (!IsHandleCreated || !Visible || Crystal == null || graphFluor == null) return;
-        if (tabControl1.SelectedTab != tabPageFluorescence) return;
+        if (!IsHandleCreated || !Visible || Crystal == null || graphControlFluor == null) return;
+        if (tabControl.SelectedTab != tabPageFluorescence) return;
 
-        if (waveLengthControl1.WaveSource != WaveSource.Xray)
-        {
-            tabPageFluorescence.Visible = false;
-            return;
-        }
-        tabPageFluorescence.Visible = true;
+        if (waveLengthControl.WaveSource != WaveSource.Xray) return;//260607Ch タブ自体は ApplyBeamDependentVisibility で TabControl から外す
 
         bool xrl = Xraylib.Enabled;
         var els = AggregateElements();
         double totalOcc = els.Sum(x => x.occ);
         if (els.Length == 0 || totalOcc <= 0)
         {
-            graphFluor.VerticalLines = [];
-            graphFluor.ClearProfile();
-            dgvFluorScalars.ClearRows(); dgvFluorLines.ClearRows();
+            graphControlFluor.VerticalLines = [];
+            graphControlFluor.ClearProfile();
+            miniTableFluorScalars.ClearRows(); miniTableFluorLines.ClearRows();
             return;
         }
 
@@ -1086,7 +1284,7 @@ public partial class FormBeamInteraction : FormBase
                 }
             }
         }
-        dgvFluorLines.SetRows(lineRows);
+        miniTableFluorLines.SetRows(lineRows);
 
         var scalarRows = new List<object[]>();
         foreach (var (z, _) in els.OrderBy(x => x.z))
@@ -1096,23 +1294,25 @@ public partial class FormBeamInteraction : FormBase
         }
         scalarRows.Add(["strongest line", strongest]);
         scalarRows.Add(["source", xrl ? "internal (E) / xraylib (I, ω)" : "internal (E only)"]);
-        dgvFluorScalars.SetRows(scalarRows);
+        miniTableFluorScalars.SetRows(scalarRows);
 
         // EDX スティック: 各線を (E,0)-(E,h) の 2 点プロファイルで描く (高さは最大で正規化)
-        graphFluor.YLog = false;
-        graphFluor.AxisLabelX = "E (keV)"; graphFluor.LabelX = "E:"; graphFluor.UnitX = " keV";//260607Cl AxisLabel/Label/Unit 分離
-        graphFluor.AxisLabelY = "Relative intensity"; graphFluor.LabelY = "Intensity:"; graphFluor.UnitY = "";
-        graphFluor.GraphTitle = xrl ? "EDX sticks (qualitative: x·RadRate·ω)" : "EDX: requires xraylib";
+        graphControlFluor.YLog = false;
+        //260607Ch resx 化 (旧: E (keV), Relative intensity, EDX タイトルをコード内リテラル/Loc で設定)
+        graphControlFluor.AxisLabelX = R("Graph.Axis.EKeV"); graphControlFluor.LabelX = R("Graph.Label.E"); graphControlFluor.UnitX = R("Graph.Unit.KeV");
+        graphControlFluor.AxisLabelY = R("Graph.Axis.RelativeIntensity"); graphControlFluor.LabelY = R("Graph.Label.Intensity"); graphControlFluor.UnitY = "";
+        graphControlFluor.GraphTitle = R(xrl ? "Graph.Title.EdxSticks" : "Graph.Title.EdxRequiresXraylib");
         //260606Cl 縦線(現在エネルギー)を AddProfiles/ClearProfile より前に設定し内部 Draw() で一括描画(旧: 後に設定→明示 Draw() で二重描画)
-        graphFluor.VerticalLines = [new PointD(waveLengthControl1.Energy, double.NaN)];
+        graphControlFluor.VerticalLines = [new PointD(waveLengthControl.Energy, double.NaN)];
         if (sticks.Count > 0 && hMax > 0)
         {
             var profiles = sticks.Select(s => new Profile(new List<PointD> { new(s.e, 0), new(s.e, s.h / hMax) })
             { Color = colorOf[s.z], LineWidth = 1.4f }).ToArray();
-            graphFluor.AddProfiles(profiles);
+            graphControlFluor.AddProfiles(profiles);
         }
         else
-            graphFluor.ClearProfile();
+            graphControlFluor.ClearProfile();
     }
+
     #endregion
 }

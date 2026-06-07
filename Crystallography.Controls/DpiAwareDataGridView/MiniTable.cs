@@ -61,6 +61,11 @@ public class MiniTable : DpiAwareDataGridView
     [DefaultValue(false), Category("MiniTable")]
     public bool AutoFitHeight { get; set; }
 
+    /// <summary><see cref="SetRows"/> 後にコントロール幅を「全列の内容幅」にフィットさせるか。既定 false。260607Cl 追加 (実験的)。</summary>
+    /// <remarks>内容フィット (AllCells) 主体の表向け。Fill 列を含む表は親幅に追従させる設計なので噛み合わない (無効化推奨)。</remarks>
+    [DefaultValue(false), Category("MiniTable")]
+    public bool AutoFitWidth { get; set; }
+
     private bool allowVerticalScroll;
     /// <summary>行数がコントロール高さを超えるとき縦スクロールバーを許可するか (opt-in)。既定 false (=表示専用で非表示)。
     /// 固定高さのセルに置き行数が増減する表 (Beam Interaction のスカラ/線表など) で true にする。260606Cl 追加。</summary>
@@ -162,6 +167,8 @@ public class MiniTable : DpiAwareDataGridView
         {
             ResumeLayout();
         }
+        if (AutoFitWidth)
+            FitWidthToColumns();
         if (AutoFitHeight)
             FitHeightToRows();
     }
@@ -177,6 +184,27 @@ public class MiniTable : DpiAwareDataGridView
         Height = chrome
             + (ColumnHeadersVisible ? ColumnHeadersHeight : 0)
             + Rows.GetRowsHeight(DataGridViewElementStates.Visible)
+            + 2;
+    }
+
+    /// <summary>コントロール幅を「現在の全 (可視) 列幅の合計」に合わせる (横スクロールなし前提)。<see cref="FitHeightToRows"/> の幅版。
+    /// 手動 <see cref="AddRow"/> 後は明示的に呼ぶ。260607Cl 追加 (実験的)。</summary>
+    /// <remarks>
+    /// 各列は自身の <see cref="DataGridViewColumn.AutoSizeMode"/> 通りに既に幅が決まっており、本メソッドはその合計に枠を足して
+    /// コントロール幅へ反映するだけ。よって列ごとの指定がそのまま効く:
+    /// <list type="bullet">
+    /// <item>None + Width=N : 絶対 N px を固定で寄与。</item>
+    /// <item>AllCells : 内容幅で寄与 (この合計に縮める対象)。</item>
+    /// <item>Fill : 「残り幅を埋める」ため常にコントロール幅へ追従し合計は client 幅と一致 → 縮まない。Fill 列を含む表では無効化推奨。</item>
+    /// </list>
+    /// 一律内容幅に潰す <c>AutoResizeColumns(AllCells)</c> は None の絶対幅や Fill の按分を壊すため呼ばない。
+    /// </remarks>
+    public void FitWidthToColumns()
+    {
+        var chrome = Width - ClientSize.Width; // 枠 + (表示中の) 縦スクロールバー
+        Width = chrome
+            + (RowHeadersVisible ? RowHeadersWidth : 0)
+            + Columns.GetColumnsWidth(DataGridViewElementStates.Visible)
             + 2;
     }
 

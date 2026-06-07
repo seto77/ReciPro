@@ -757,7 +757,7 @@
             graphControlResidual.Smoothing = false;
             graphControlResidual.TabIndex = 163;
             graphControlResidual.UpperPanelFont = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            graphControlResidual.UpperPanelVisible = false;
+            graphControlResidual.MousePositionVisible = false;
             // 
             // tabPage8
             // 

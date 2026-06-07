@@ -945,7 +945,7 @@ namespace ReciPro
             graphControl.UpperPanelFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             graphControl.UnitX = " nm";
             graphControl.UnitY = " MBar";
-            graphControl.UpperPanelVisible = false;
+            graphControl.MousePositionVisible = false;
             graphControl.LinePositionChanged += new Crystallography.Controls.GraphControl.LinePositionChengedEventHandler(graphControl1_LinePositionChanged);
             // 
             // groupBoxCompressionModel

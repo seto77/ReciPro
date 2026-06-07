@@ -1430,7 +1430,6 @@
             graphControlFrequency.Size = new System.Drawing.Size(297, 80);
             graphControlFrequency.TabIndex = 164;
             graphControlFrequency.UpperPanelFont = new System.Drawing.Font("Segoe UI", 9.75F);
-            graphControlFrequency.UpperPanelVisible = false;
             graphControlFrequency.XLog = true;
             graphControlFrequency.YLog = true;
             graphControlFrequency.LinePositionChanged += graphControlFrequency_LinePositionChanged;
