@@ -36,8 +36,10 @@ public partial class CrystalDatabaseControl : UserControlBase
     #region フィールド、メソッド、イベント
     // (260322Ch) WFO1000: Microsoft ??????????????????? ???????????
     [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
+    [DefaultValue(false)] // 260607Cl
     public bool AMCSD_Checked {get=> checkBoxAMCSD.Checked; set => checkBoxAMCSD.Checked = value; }
     [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
+    [DefaultValue(false)] // 260607Cl
     public bool COD_Checked {get=>checkBoxCOD.Checked;set => checkBoxCOD.Checked = value; }
 
     [System.ComponentModel.Browsable(false)]
@@ -68,6 +70,7 @@ public partial class CrystalDatabaseControl : UserControlBase
     public string DataTypeFilter;
 
     [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
+    [DefaultValue(9.75f)] // 260607Cl
     public float FontSize
     {
         get => dataGridView.Font.Size;
@@ -90,6 +93,7 @@ public partial class CrystalDatabaseControl : UserControlBase
     public event ProgressChangedEventHandler ProgressChanged;
 
     [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
+    [DefaultValue(false)] // 260607Cl
     public bool DatabaseSelection { set => flowLayoutPanelDatabase.Visible = value; get => flowLayoutPanelDatabase.Visible; }
 
     #endregion

@@ -53,22 +53,26 @@ public partial class ColorControl : UserControlBase
     [Localizable(true)]
     public Font HeaderFont { set => labelHeader.Font = value; get => labelHeader.Font; }
 
+    [DefaultValue(typeof(System.Windows.Forms.Padding), "0, 0, 0, 0")] // 260607Cl
     [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     [Category("Header/footer text")]
     [Localizable(true)]
     public Padding HeaderMargin { set => labelHeader.Margin = value; get => labelHeader.Margin; }
 
+    [DefaultValue("")] // 260607Cl
     [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     [Category("Header/footer text")]
     [Localizable(true)]
     public string FooterText { set { labelFooter.Text = value; labelFooter.Visible = value != ""; } get => labelFooter.Text; }
 
 
+    [DefaultValue(typeof(Font), "Segoe UI, 9.75pt")] // 260607Cl
     [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     [Localizable(true)]
     [Category("Header/footer text")]
     public Font FooterFont { set => labelFooter.Font = value; get => labelFooter.Font; }
 
+    [DefaultValue(typeof(System.Windows.Forms.Padding), "0, 0, 0, 0")] // 260607Cl
     [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     [Localizable(true)]
     [Category("Header/footer text")]
@@ -79,6 +83,7 @@ public partial class ColorControl : UserControlBase
     [Category("Color")]
     public bool Inversion { set; get; } = false;
 
+    [DefaultValue(typeof(Color), "Control")] // 260607Cl
     [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     [Category("Color")]
     public Color Color

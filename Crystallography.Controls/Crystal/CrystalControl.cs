@@ -21,39 +21,53 @@ public partial class CrystalControl : UserControlBase
     public bool SkipEvent { get; set; } = false;
 
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
+    [DefaultValue(false)] // 260607Cl
     public bool SymmetryInformationVisible { get => FormSymmetryInformation.Visible; set => FormSymmetryInformation.Visible = value; }
 
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
+    [DefaultValue(false)] // 260607Cl
     public bool BeamInteractionVisible { get => FormBeamInteraction.Visible; set => FormBeamInteraction.Visible = value; }
 
     public bool StrainControlVisible => formStrain.Visible;
 
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
+    [DefaultValue(true)] // 260607Cl
     public bool ColorControlVisible { get => colorControl.Visible; set => colorControl.Visible = value; }
 
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
+    [DefaultValue(0)] // 260607Cl
     public int SymmetrySeriesNumber { get => symmetryControl.SymmetrySeriesNumber; set => symmetryControl.SymmetrySeriesNumber = value; }
 
     #region Tab ページの表示/非表示
 
+    [DefaultValue(true)] // 260607Cl
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)] public bool VisibleBasicInfoTab { get => visibleBasicInfoTab; set { visibleBasicInfoTab = value; setTabPages(); } }
     private bool visibleBasicInfoTab = true;
+    [DefaultValue(true)] // 260607Cl
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)] public bool VisibleAtomTab { get => visibleAtomTab; set { visibleAtomTab = value; setTabPages(); } }
     private bool visibleAtomTab = true;
+    [DefaultValue(true)] // 260607Cl
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)] public bool VisibleElasticityTab { get => visibleElasticityTab; set { visibleElasticityTab = value; setTabPages(); } }
     private bool visibleElasticityTab = true;
+    [DefaultValue(true)] // 260607Cl
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)] public bool VisibleBondsPolyhedraTab { get => visibleBondsPolyhedraTab; set { visibleBondsPolyhedraTab = value; setTabPages(); } }
     private bool visibleBondsPolyhedraTab = true;
+    [DefaultValue(true)] // 260607Cl
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)] public bool VisibleReferenceTab { get => visibleReferenceTab; set { visibleReferenceTab = value; setTabPages(); } }
     private bool visibleReferenceTab = true;
+    [DefaultValue(true)] // 260607Cl
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)] public bool VisibleEOSTab { get => visibleEOSTab; set { visibleEOSTab = value; setTabPages(); } }
     private bool visibleEOSTab = true;
+    [DefaultValue(false)] // 260607Cl
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)] public bool VisibleStressStrainTab { get => visibleStressStrainTab; set { visibleStressStrainTab = value; setTabPages(); } }
     private bool visibleStressStrainTab = false;
+    [DefaultValue(false)] // 260607Cl
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)] public bool VisiblePolycrystallineTab { get => visiblePolycrystallineTab; set { visiblePolycrystallineTab = value; setTabPages(); } }
     private bool visiblePolycrystallineTab = false;
+    [DefaultValue(false)] // 260607Cl
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)] public bool VisibleBoundTab { get => visibleBoundTab; set { visibleBoundTab = value; setTabPages(); } }
     private bool visibleBoundTab = false;
+    [DefaultValue(false)] // 260607Cl
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)] public bool VisibleLatticePlaneTab { get => visibleLatticePlaneTab; set { visibleLatticePlaneTab = value; setTabPages(); } }
     private bool visibleLatticePlaneTab = false;
 
@@ -105,14 +119,21 @@ public partial class CrystalControl : UserControlBase
         set => symmetryControl.CellConstants = value;
     }
 
+    [DefaultValue(0.0)] // 260607Cl
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)] public double A { get => symmetryControl.A; set => symmetryControl.A = value; }
+    [DefaultValue(0.0)] // 260607Cl
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)] public double B { get => symmetryControl.B; set => symmetryControl.B = value; }
+    [DefaultValue(0.0)] // 260607Cl
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)] public double C { get => symmetryControl.C; set => symmetryControl.C = value; }
+    [DefaultValue(0.0)] // 260607Cl
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)] public double Alpha { get => symmetryControl.Alpha; set => symmetryControl.Alpha = value; }
+    [DefaultValue(0.0)] // 260607Cl
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)] public double Beta { get => symmetryControl.Beta; set => symmetryControl.Beta = value; }
+    [DefaultValue(0.0)] // 260607Cl
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)] public double Gamma { get => symmetryControl.Gamma; set => symmetryControl.Gamma = value; }
 
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
+    [DefaultValue(0)] // 260607Cl
     public int DefaultTabNumber { get => tabControl.SelectedIndex; set => tabControl.SelectedIndex = value; }
 
     public event EventHandler CrystalChanged;

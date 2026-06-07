@@ -83,6 +83,7 @@ namespace Crystallography.Controls
         [Category("Behavior")]
         [Description("画像サイズ (Width × Height)。Property Grid からは \"幅, 高さ\" 形式で編集する。")]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
+        [DefaultValue(typeof(System.Drawing.Size), "1, 1")] // 260607Cl
         public Size Value
         {
             get => new(numericBoxWidth.ValueInteger, numericBoxHeight.ValueInteger);

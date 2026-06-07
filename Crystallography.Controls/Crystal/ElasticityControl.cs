@@ -18,6 +18,7 @@ public partial class ElasticityControl : UserControlBase
     private int symmetrySeriesNumber = 1;
 
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
+    [DefaultValue(1)] // 260607Cl
     public int SymmetrySeriesNumber
     {
         get => symmetrySeriesNumber;
@@ -25,6 +26,7 @@ public partial class ElasticityControl : UserControlBase
     }
 
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
+    [DefaultValue(Elasticity.Mode.Stiffness)] // 260607Cl
     public Elasticity.Mode Mode
     {
         get => radioButtonCompliance.Checked ? Elasticity.Mode.Compliance : Elasticity.Mode.Stiffness;

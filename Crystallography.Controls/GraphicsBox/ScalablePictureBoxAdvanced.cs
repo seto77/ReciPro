@@ -53,6 +53,7 @@ public partial class ScalablePictureBoxAdvanced : UserControlBase
 
     /// <summary>スクロールバーをログスケールで動かすかどうか</summary>
     [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
+    [DefaultValue(false)] // 260607Cl
     public bool LogScaleBar { get => trackBarAdvancedMaximum.LogScrollBar; set => trackBarAdvancedMaximum.LogScrollBar = trackBarAdvancedMinimum.LogScrollBar = value; }
 
     /// <summary>描画しているソース画像の範囲を取得/設定する</summary>
@@ -60,6 +61,7 @@ public partial class ScalablePictureBoxAdvanced : UserControlBase
 
     /// <summary>マウス位置の情報を表示するかどうか</summary>
     [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
+    [DefaultValue(true)] // 260607Cl
     public bool MousePositionLabelVisible
     {
         get => label.Visible;
@@ -71,6 +73,7 @@ public partial class ScalablePictureBoxAdvanced : UserControlBase
     }
 
     [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
+    [DefaultValue(true)] // 260607Cl
     public bool MagInfoVisible { set => panelMagInfo.Visible = value; get => panelMagInfo.Visible; }
 
     /// <summary>コピーボタンを表示するかどうか</summary>
@@ -87,74 +90,90 @@ public partial class ScalablePictureBoxAdvanced : UserControlBase
     /// <summary> Polarity, Scale, Colorを表示するかどうか (互換性確保のために残している) </summary>
     [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     [Category("Gradient")]
+    [DefaultValue(true)] // 260607Cl
     public bool ShowGradiaent { get=> flowLayoutPanelGradient.Visible; set=> flowLayoutPanelGradient.Visible=value; }
 
     [Category("Gradient")]
     /// <summary>Polarity, Scale, Colorを表示するかどうか</summary>
     [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
+    [DefaultValue(true)] // 260607Cl
     public bool GradiaentVisible { get => flowLayoutPanelGradient.Visible; set => flowLayoutPanelGradient.Visible = value; }
 
     /// <summary>スケール(Log, Linear) 切り替えコンボボックスを表示するかどうか </summary>
     [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     [Category("Gradient")]
+    [DefaultValue(true)] // 260607Cl
     public bool ScaleVisible { set => flowLayoutPanelScale.Visible = value; get => flowLayoutPanelScale.Visible; }
 
     /// <summary>カラー切り替えコンボボックスを表示するかどうか </summary>
     // (260322Ch) WFO1000: Microsoft ??????????????????? ???????????
     [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     [Category("Gradient")]
+    [DefaultValue(true)] // 260607Cl
     public bool ColorVisible { set => flowLayoutPanelColor.Visible = value; get => flowLayoutPanelColor.Visible; }
    
     /// <summary>ネガ/ポジ切り替えコンボボックスを表示するかどうか </summary>
     [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     [Category("Gradient")]
+    [DefaultValue(true)] // 260607Cl
     public bool PolarityVisible { set => flowLayoutPanelPolarity.Visible = value; get => flowLayoutPanelPolarity.Visible; }
 
     [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
+    [DefaultValue(true)] // 260607Cl
     public bool TrackBarVisible { set => panelTrackBar.Visible = value; get => panelTrackBar.Visible; }
 
     [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
+    [DefaultValue(true)] // 260607Cl
     public bool FrequencyGraphVisible { set => graphControl.Visible = value; get => graphControl.Visible; }
 
     [Category("Image Filter")]
     /// <summary>ImageFilterを有効にするかどうか</summary>
     [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
+    [DefaultValue(true)] // 260607Cl
     public bool ImageFilterVisible { set => flowLayoutPanelImageFilter.Visible = value; get => flowLayoutPanelImageFilter.Visible; }
 
     [Category("Image Filter")]
     /// <summary>GaussianFilterを有効にするかどうか</summary>
     [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
+    [DefaultValue(false)] // 260607Cl
     public bool ImageFilter_GaussianBlur { set => checkBoxGaussianBlur.Checked = value; get => checkBoxGaussianBlur.Checked; }
 
     [Category("Image Filter")]
     /// <summary>GaussianFilterを有効にするかどうか</summary>
     [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
+    [DefaultValue(true)] // 260607Cl
     public bool ImageFilter_GaussianBlurVisible { set => checkBoxGaussianBlur.Visible = value; get => checkBoxGaussianBlur.Visible; }
 
     [Category("Image Filter")]
     /// <summary>GaussianFilterの</summary>
     [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
+    [DefaultValue(1.0)] // 260607Cl
     public double ImageFilter_GaussianBlurRadius { set => numericBoxGaussianFWHM.Value = value; get => numericBoxGaussianFWHM.Value; }
 
     [Category("Image Filter")]
     /// <summary>Dust＆Scratchesを有効にするかどうか</summary>
     [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
+    [DefaultValue(false)] // 260607Cl
     public bool ImageFilter_DustAndScratches { set => checkBoxDustScratches.Checked = value; get => checkBoxDustScratches.Checked; }
 
     [Category("Image Filter")]
     /// <summary>Dust＆Scratchesを有効にするかどうか</summary>
     [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
+    [DefaultValue(true)] // 260607Cl
     public bool ImageFilter_DustAndScratchesVisible { set => checkBoxDustScratches.Visible = value; get => checkBoxDustScratches.Visible; }
 
     [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     [Category("Image Filter")]
+    [DefaultValue(1.0)] // 260607Cl
     public double ImageFilter_DustAndScratchesRadius { set => numericBoxDustScratchesRadius.Value = value; get => numericBoxDustScratchesRadius.Value; }
 
     [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     [Category("Image Filter")]
+    [DefaultValue(3.0)] // 260607Cl
     public double ImageFilter_DustAndScratchesThreshold { set => numericBoxDustScratchesThreshold.Value = value; get => numericBoxDustScratchesThreshold.Value; }
 
     [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
+    [DefaultValue(true)] // 260607Cl
     public bool VisibleGradient { set => flowLayoutPanelGradient.Visible = value; get => flowLayoutPanelGradient.Visible; }
 
     //[System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)] // 260329Cl 変更: Visible→Hidden+ReadOnly (Designer.csへのシリアライズを抑止。resources.ApplyResources()で設定したSizeを上書きしてしまうため)
@@ -192,6 +211,7 @@ public partial class ScalablePictureBoxAdvanced : UserControlBase
 
     /// <summary>ZoomやCenter位置を固定するかどうか</summary>
     [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
+    [DefaultValue(false)] // 260607Cl
     public bool FixZoomAndCenter { get => scalablePictureBox.FixZoomAndCenter; set => scalablePictureBox.FixZoomAndCenter = value; }
 
     /// <summary>新しい画像を設定したとき、現在の強度レンジをその画像のデータ範囲へクランプするかどうか</summary>
@@ -204,6 +224,7 @@ public partial class ScalablePictureBoxAdvanced : UserControlBase
     [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     [Category("Intensity")]
     // public bool ClampIntensityRange { get; set; } = true; // (260322Ch) 旧名
+    [DefaultValue(true)] // 260607Cl
     public bool ClampIntensityRangeToNewData { get; set; } = true; // (260322Ch) 既定では従来どおり新しい画像データ範囲へクランプする
 
 
@@ -213,6 +234,7 @@ public partial class ScalablePictureBoxAdvanced : UserControlBase
 
     [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     [Category("Intensity")]
+    [DefaultValue(255.0)] // 260607Cl
     public double UpperIntensity
     {
         set
@@ -238,6 +260,7 @@ public partial class ScalablePictureBoxAdvanced : UserControlBase
 
     [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     [Category("Intensity")]
+    [DefaultValue(0.0)] // 260607Cl
     public double LowerIntensity
     {
         set
@@ -264,6 +287,7 @@ public partial class ScalablePictureBoxAdvanced : UserControlBase
 
     [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     [Category("Intensity")]
+    [DefaultValue(255.0)] // 260607Cl
     public double MaximumIntensity
     {
         get => maximumIntensity;
@@ -279,6 +303,7 @@ public partial class ScalablePictureBoxAdvanced : UserControlBase
 
     [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     [Category("Intensity")]
+    [DefaultValue(0.0)] // 260607Cl
     public double MinimumIntensity
     {
         get => minimumIntensity;
@@ -291,6 +316,7 @@ public partial class ScalablePictureBoxAdvanced : UserControlBase
 
     [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     [Category("Intensity")]
+    [DefaultValue(0)] // 260607Cl
     public int DecimalPlacesForIntensity { get => trackBarAdvancedMaximum.DecimalPlaces; set => trackBarAdvancedMaximum.DecimalPlaces = trackBarAdvancedMinimum.DecimalPlaces = value; }
 
     #endregion
@@ -335,10 +361,12 @@ public partial class ScalablePictureBoxAdvanced : UserControlBase
     }
 
     [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
+    [DefaultValue(true)] // 260607Cl
     public bool StatusVisible { set => statusStrip1.Visible = value; get => statusStrip1.Visible; }
 
 
     [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
+    [DefaultValue(false)] // 260607Cl
     public bool TitleVisible { get => scalablePictureBox.TitleVisible; set => scalablePictureBox.TitleVisible = value; }
     [System.ComponentModel.Browsable(false)]
     [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Hidden)]

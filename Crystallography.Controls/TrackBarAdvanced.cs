@@ -45,6 +45,7 @@ namespace Crystallography.Controls
 
         /// <summary>スクロールバーがログスケールで動くかどうか</summary>
         [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
+        [DefaultValue(false)] // 260607Cl
         public bool LogScrollBar
         {
             set { logScrollBar = value; }
@@ -52,40 +53,50 @@ namespace Crystallography.Controls
         }
 
         [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
+        [DefaultValue(-1)] // 260607Cl
         public int DecimalPlaces { get { return numericBox.DecimalPlaces; } set { numericBox.DecimalPlaces = value; } }
 
         [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
         [Localizable(true)]
+        [DefaultValue("")] // 260607Cl
         public string HeaderText { get { return numericBox.HeaderText; } set { numericBox.HeaderText = value; } }
 
         [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
         [Localizable(true)]
+        [DefaultValue(typeof(Font), "Segoe UI, 9.75pt")] // 260607Cl
         public Font HeaderFont { get { return numericBox.HeaderFont; } set { numericBox.HeaderFont = value; } }
 
         [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
         [Localizable(true)]
+        [DefaultValue("")] // 260607Cl
         public string FooterText { get { return numericBox.FooterText; } set { numericBox.FooterText = value; } }
 
         [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
         [Localizable(true)]
+        [DefaultValue(typeof(Font), "Segoe UI, 9.75pt")] // 260607Cl
         public Font FooterFont { get { return numericBox.FooterFont; } set { numericBox.FooterFont = value; } }
 
         [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
+        [DefaultValue(84)] // 260607Cl
         public int NumericBoxSize { get { return splitContainer.SplitterDistance; } set { splitContainer.SplitterDistance = value; } }
 
         [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
+        [DefaultValue(Orientation.Vertical)] // 260607Cl
         public Orientation Orientation { get { return splitContainer.Orientation; } set { splitContainer.Orientation = value; } }
 
         // (260322Ch) WFO1000: Microsoft ??????????????????? ???????????
         [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
+        [DefaultValue(27)] // 260607Cl
         public int ControlHeight { get { return this.Height; } set { this.Height = value; } }
 
         [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
+        [DefaultValue(TickStyle.BottomRight)] // 260607Cl
         public TickStyle TickStyle { get { return trackBar.TickStyle; } set { trackBar.TickStyle = value; } }
 
         private double _value = 0;
 
         [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
+        [DefaultValue(0.0)] // 260607Cl
         public double Value
         {
             get { return _value; }
@@ -139,6 +150,7 @@ namespace Crystallography.Controls
 
         //private double maximum = 65535;
         [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
+        [DefaultValue(double.PositiveInfinity)] // 260607Cl
         public double Maximum
         {
             get => numericBox.Maximum;
@@ -152,6 +164,7 @@ namespace Crystallography.Controls
 
         //private double minimum = 0;
         [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
+        [DefaultValue(double.NegativeInfinity)] // 260607Cl
         public double Minimum
         {
             get => numericBox.Minimum;
@@ -164,10 +177,12 @@ namespace Crystallography.Controls
         }
 
         [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
+        [DefaultValue(1.0)] // 260607Cl
         public double UpDown_Increment
         { get => numericBox.UpDown_Increment; set => numericBox.UpDown_Increment = value; }
 
         [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
+        [DefaultValue(true)] // 260607Cl
         public bool Smart_Increment
         { get => numericBox.SmartIncrement; set => numericBox.SmartIncrement = value; }
 

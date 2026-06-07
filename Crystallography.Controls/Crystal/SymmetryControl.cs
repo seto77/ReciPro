@@ -20,6 +20,7 @@ public partial class SymmetryControl : UserControlBase
     public int SpaceGroupIndex => comboBoxSpaceGroup.SelectedIndex;
 
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
+    [DefaultValue(0)] // 260607Cl
     public int SymmetrySeriesNumber
     {
         get => (CrystalSystemIndex >= 0 && PointGroupIndex >= 0 && SpaceGroupIndex >= 0)
@@ -47,6 +48,7 @@ public partial class SymmetryControl : UserControlBase
 
     /// <summary>長さの単位の get/set</summary>
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
+    [DefaultValue(LengthUnitEnum.Angstrom)] // 260607Cl
     public LengthUnitEnum LengthUnit
     {
         get => radioButtonAngstrom.Checked ? LengthUnitEnum.Angstrom : LengthUnitEnum.NanoMeter;
@@ -82,21 +84,27 @@ public partial class SymmetryControl : UserControlBase
     }
 
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
+    [DefaultValue(0.0)] // 260607Cl
     public double A { get => numericBoxA.Value * LengthScale; set => numericBoxA.Value = value / LengthScale; }
 
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
+    [DefaultValue(0.0)] // 260607Cl
     public double B { get => numericBoxB.Value * LengthScale; set => numericBoxB.Value = value / LengthScale; }
 
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
+    [DefaultValue(0.0)] // 260607Cl
     public double C { get => numericBoxC.Value * LengthScale; set => numericBoxC.Value = value / LengthScale; }
 
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
+    [DefaultValue(0.0)] // 260607Cl
     public double Alpha { get => numericBoxAlpha.RadianValue; set => numericBoxAlpha.RadianValue = value; }
 
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
+    [DefaultValue(0.0)] // 260607Cl
     public double Beta { get => numericBoxBeta.RadianValue; set => numericBoxBeta.RadianValue = value; }
 
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
+    [DefaultValue(0.0)] // 260607Cl
     public double Gamma { get => numericBoxGamma.RadianValue; set => numericBoxGamma.RadianValue = value; }
 
     /// <summary>Cell constants error の get/set. 単位は nm, radian.</summary>
@@ -120,6 +128,7 @@ public partial class SymmetryControl : UserControlBase
     }
 
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
+    [DefaultValue(false)] // 260607Cl
     public bool ShowError
     {
         get => checkBoxShowError.Checked;

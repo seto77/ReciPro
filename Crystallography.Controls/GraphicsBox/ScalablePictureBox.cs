@@ -157,6 +157,7 @@ public partial class ScalablePictureBox : UserControlBase
 
     /// <summary>上下方向の反転をするかどうか</summary>
     [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
+    [DefaultValue(false)] // 260607Cl
     public bool VerticalFlip
     {
         // set { PseudoBitmap.VerticalFlip = value; drawPictureBox(); } // (260322Ch) 旧コード: 再描画だけ行い scrollbar 側の状態同期は呼んでいなかった
@@ -172,6 +173,7 @@ public partial class ScalablePictureBox : UserControlBase
 
     /// <summary>上下方向の反転をするかどうか</summary>
     [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
+    [DefaultValue(false)] // 260607Cl
     public bool HorizontalFlip
     {
         // set { PseudoBitmap.HorizontalFlip = value; drawPictureBox(); } // (260322Ch) 旧コード: scrollbar 計算に使う状態と setter の更新先が分かれていた
@@ -190,6 +192,7 @@ public partial class ScalablePictureBox : UserControlBase
 
     /// <summary>表示倍率</summary>
     [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
+    [DefaultValue(1.0)] // 260607Cl
     public double Zoom
     {
         set
@@ -235,18 +238,21 @@ public partial class ScalablePictureBox : UserControlBase
 
     /// <summary>ZoomやCenter位置を固定するかどうか</summary>
     [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
+    [DefaultValue(false)] // 260607Cl
     public bool FixZoomAndCenter { get; set; } = false;
 
     public Size CanvasSize { get { return pictureBox.ClientSize; } }
 
     /// <summary>フォーカスイベント(Enter)を有効にするかどうか</summary>
     [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
+    [DefaultValue(false)] // 260607Cl
     public bool FocusEventEnabled { get; set; } = false;
 
     private bool showFocusRectangle = false;
 
     /// <summary>外枠を表示する</summary>
     [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
+    [DefaultValue(false)] // 260607Cl
     public bool ShowRimRentangle
     {
         get => showFocusRectangle;
@@ -264,6 +270,7 @@ public partial class ScalablePictureBox : UserControlBase
 
     /// <summary>AreaRectangleで指定した矩形を表示するかどうか</summary>
     [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
+    [DefaultValue(false)] // 260607Cl
     public bool ShowAreaRectangle
     {
         set
@@ -323,10 +330,12 @@ public partial class ScalablePictureBox : UserControlBase
 
     /// <summary>マウスによるスケーリングが可能かどうか</summary>
     [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
+    [DefaultValue(false)] // 260607Cl
     public bool MouseScaling { set; get; }//マウスによるスケーリングが可能かどうか
 
     /// <summary>マウスによる平行移動が可能かどうか </summary>
     [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
+    [DefaultValue(false)] // 260607Cl
     public bool MouseTranslation { set; get; }
 
     private bool hScrollBarVisible = false;
@@ -334,6 +343,7 @@ public partial class ScalablePictureBox : UserControlBase
 
     /// <summary>クライアント領域の左上にタイトルを表示するか</summary>
     [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
+    [DefaultValue(false)] // 260607Cl
     public bool TitleVisible { get; set; } = false;
     [System.ComponentModel.Browsable(false)]
     [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
@@ -570,6 +580,7 @@ public partial class ScalablePictureBox : UserControlBase
     private bool manualSpotMode = false;
 
     [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
+    [DefaultValue(false)] // 260607Cl
     public bool ManualSpotMode
     {
         set { manualSpotMode = value; if (manualSpotMode) MouseRangeMode = false; }

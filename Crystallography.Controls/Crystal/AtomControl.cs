@@ -41,6 +41,7 @@ public partial class AtomControl : UserControlBase
     public bool SkipEvent { get; set; } = false;
 
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
+    [DefaultValue(false)] // 260607Cl
     public bool AtomicPositionError
     {
         get => atmicPositionError;
@@ -67,6 +68,7 @@ public partial class AtomControl : UserControlBase
     private bool atmicPositionError = false;
 
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
+    [DefaultValue(false)] // 260607Cl
     public bool DebyeWallerError
     {
         get => debyeWallerError;
@@ -81,6 +83,7 @@ public partial class AtomControl : UserControlBase
     private bool debyeWallerError = false;
 
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
+    [DefaultValue(true)] // 260607Cl
     public bool UseIsotropy
     {
         get => radioButtonIsotoropy.Checked;
@@ -88,6 +91,7 @@ public partial class AtomControl : UserControlBase
     }
 
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
+    [DefaultValue(false)] // 260607Cl
     public bool UseTypeU
     {
         get => radioButtonDebyeWallerTypeU.Checked;
@@ -95,37 +99,37 @@ public partial class AtomControl : UserControlBase
     }
 
     #region 温度因子 プロパティ
-    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)] [Category("Atom")] public double Iso { get => numericBoxBiso.Value; set => numericBoxBiso.Value = value; }
-    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)] [Category("Atom")] public double IsoErr { get => numericBoxBisoerr.Value; set => numericBoxBisoerr.Value = value; }
-    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)] [Category("Atom")] public double Aniso11 { get => numericBoxB11.Value; set => numericBoxB11.Value = value; }
-    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)] [Category("Atom")] public double Aniso11Err { get => numericBoxB11err.Value; set => numericBoxB11err.Value = value; }
-    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)] [Category("Atom")] public double Aniso12 { get => numericBoxB12.Value; set => numericBoxB12.Value = value; }
-    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)] [Category("Atom")] public double Aniso12Err { get => numericBoxB12err.Value; set => numericBoxB12err.Value = value; }
-    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)] [Category("Atom")] public double Aniso13 { get => numericBoxB13.Value; set => numericBoxB13.Value = value; }
-    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)] [Category("Atom")] public double Aniso13Err { get => numericBoxB13err.Value; set => numericBoxB13err.Value = value; }
-    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)] [Category("Atom")] public double Aniso22 { get => numericBoxB22.Value; set => numericBoxB22.Value = value; }
-    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)] [Category("Atom")] public double Aniso22Err { get => numericBoxB22err.Value; set => numericBoxB22err.Value = value; }
-    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)] [Category("Atom")] public double Aniso23 { get => numericBoxB23.Value; set => numericBoxB23.Value = value; }
-    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)] [Category("Atom")] public double Aniso23Err { get => numericBoxB23err.Value; set => numericBoxB23err.Value = value; }
-    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)] [Category("Atom")] public double Aniso33 { get => numericBoxB33.Value; set => numericBoxB33.Value = value; }
-    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)] [Category("Atom")] public double Aniso33Err { get => numericBoxB33err.Value; set => numericBoxB33err.Value = value; }
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)] [Category("Atom")] [DefaultValue(0.0)] public double Iso { get => numericBoxBiso.Value; set => numericBoxBiso.Value = value; } // 260607Cl
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)] [Category("Atom")] [DefaultValue(0.0)] public double IsoErr { get => numericBoxBisoerr.Value; set => numericBoxBisoerr.Value = value; } // 260607Cl
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)] [Category("Atom")] [DefaultValue(0.0)] public double Aniso11 { get => numericBoxB11.Value; set => numericBoxB11.Value = value; } // 260607Cl
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)] [Category("Atom")] [DefaultValue(0.0)] public double Aniso11Err { get => numericBoxB11err.Value; set => numericBoxB11err.Value = value; } // 260607Cl
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)] [Category("Atom")] [DefaultValue(0.0)] public double Aniso12 { get => numericBoxB12.Value; set => numericBoxB12.Value = value; } // 260607Cl
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)] [Category("Atom")] [DefaultValue(0.0)] public double Aniso12Err { get => numericBoxB12err.Value; set => numericBoxB12err.Value = value; } // 260607Cl
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)] [Category("Atom")] [DefaultValue(0.0)] public double Aniso13 { get => numericBoxB13.Value; set => numericBoxB13.Value = value; } // 260607Cl
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)] [Category("Atom")] [DefaultValue(0.0)] public double Aniso13Err { get => numericBoxB13err.Value; set => numericBoxB13err.Value = value; } // 260607Cl
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)] [Category("Atom")] [DefaultValue(0.0)] public double Aniso22 { get => numericBoxB22.Value; set => numericBoxB22.Value = value; } // 260607Cl
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)] [Category("Atom")] [DefaultValue(0.0)] public double Aniso22Err { get => numericBoxB22err.Value; set => numericBoxB22err.Value = value; } // 260607Cl
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)] [Category("Atom")] [DefaultValue(0.0)] public double Aniso23 { get => numericBoxB23.Value; set => numericBoxB23.Value = value; } // 260607Cl
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)] [Category("Atom")] [DefaultValue(0.0)] public double Aniso23Err { get => numericBoxB23err.Value; set => numericBoxB23err.Value = value; } // 260607Cl
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)] [Category("Atom")] [DefaultValue(0.0)] public double Aniso33 { get => numericBoxB33.Value; set => numericBoxB33.Value = value; } // 260607Cl
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)] [Category("Atom")] [DefaultValue(0.0)] public double Aniso33Err { get => numericBoxB33err.Value; set => numericBoxB33err.Value = value; } // 260607Cl
     #endregion
 
     #region 原子位置 プロパティ
-    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)] [Category("Atom")] public double X { get => numericBoxX.Value; set => numericBoxX.Value = value; }
-    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)] [Category("Atom")] public double XErr { get => numericBoxXerr.Value; set => numericBoxXerr.Value = value; }
-    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)] [Category("Atom")] public double Y { get => numericBoxY.Value; set => numericBoxY.Value = value; }
-    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)] [Category("Atom")] public double YErr { get => numericBoxYerr.Value; set => numericBoxYerr.Value = value; }
-    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)] [Category("Atom")] public double Z { get => numericBoxZ.Value; set => numericBoxZ.Value = value; }
-    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)] [Category("Atom")] public double ZErr { get => numericBoxZerr.Value; set => numericBoxZerr.Value = value; }
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)] [Category("Atom")] [DefaultValue(0.0)] public double X { get => numericBoxX.Value; set => numericBoxX.Value = value; } // 260607Cl
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)] [Category("Atom")] [DefaultValue(0.0)] public double XErr { get => numericBoxXerr.Value; set => numericBoxXerr.Value = value; } // 260607Cl
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)] [Category("Atom")] [DefaultValue(0.0)] public double Y { get => numericBoxY.Value; set => numericBoxY.Value = value; } // 260607Cl
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)] [Category("Atom")] [DefaultValue(0.0)] public double YErr { get => numericBoxYerr.Value; set => numericBoxYerr.Value = value; } // 260607Cl
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)] [Category("Atom")] [DefaultValue(0.0)] public double Z { get => numericBoxZ.Value; set => numericBoxZ.Value = value; } // 260607Cl
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)] [Category("Atom")] [DefaultValue(0.0)] public double ZErr { get => numericBoxZerr.Value; set => numericBoxZerr.Value = value; } // 260607Cl
     #endregion
 
-    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)] [Category("Atom")] public double Occ { get => numericBoxOcc.Value; set => numericBoxOcc.Value = value; }
-    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)] [Category("Atom")] public double OccErr { get => numericBoxOccerr.Value; set => numericBoxOccerr.Value = value; }
-    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)] [Category("Atom")] public string Label { get => textBoxLabel.Text; set => textBoxLabel.Text = value; }
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)] [Category("Atom")] [DefaultValue(0.0)] public double Occ { get => numericBoxOcc.Value; set => numericBoxOcc.Value = value; } // 260607Cl
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)] [Category("Atom")] [DefaultValue(0.0)] public double OccErr { get => numericBoxOccerr.Value; set => numericBoxOccerr.Value = value; } // 260607Cl
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)] [Category("Atom")] [DefaultValue("")] public string Label { get => textBoxLabel.Text; set => textBoxLabel.Text = value; } // 260607Cl
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)] [Category("Atom")] public int AtomNo { get => comboBoxAtom.SelectedIndex + 1; set => comboBoxAtom.SelectedIndex = value - 1; }
-    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)] [Category("Atom")] public int AtomSubNoXray { get => comboBoxScatteringFactorXray.SelectedIndex; set => comboBoxScatteringFactorXray.SelectedIndex = value; }
-    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)] [Category("Atom")] public int AtomSubNoElectron { get => comboBoxScatteringFactorElectron.SelectedIndex; set => comboBoxScatteringFactorElectron.SelectedIndex = value; }
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)] [Category("Atom")] [DefaultValue(-1)] public int AtomSubNoXray { get => comboBoxScatteringFactorXray.SelectedIndex; set => comboBoxScatteringFactorXray.SelectedIndex = value; } // 260607Cl
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)] [Category("Atom")] [DefaultValue(-1)] public int AtomSubNoElectron { get => comboBoxScatteringFactorElectron.SelectedIndex; set => comboBoxScatteringFactorElectron.SelectedIndex = value; } // 260607Cl
 
     private double[] isotopicComposition;
 
@@ -143,34 +147,34 @@ public partial class AtomControl : UserControlBase
     }
 
     #region マテリアル プロパティ
-    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)] [Category("Material properties")] public float Ambient { get => (float)numericBoxAmbient.Value; set => numericBoxAmbient.Value = value; }
-    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)] [Category("Material properties")] public float Diffusion { get => (float)numericBoxDiffusion.Value; set => numericBoxDiffusion.Value = value; }
-    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)] [Category("Material properties")] public float Specular { get => (float)numericBoxSpecular.Value; set => numericBoxSpecular.Value = value; }
-    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)] [Category("Material properties")] public float Shininess { get => (float)numericBoxShininess.Value; set => numericBoxShininess.Value = value; }
-    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)] [Category("Material properties")] public float Emission { get => (float)numericBoxEmission.Value; set => numericBoxEmission.Value = value; }
-    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)] [Category("Material properties")] public float Alpha { get => (float)numericBoxAlpha.Value; set => numericBoxAlpha.Value = value; }
-    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)] [Category("Material properties")] public double Radius { get => numericBoxAtomRadius.Value; set => numericBoxAtomRadius.Value = value; }
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)] [Category("Material properties")] [DefaultValue(0f)] public float Ambient { get => (float)numericBoxAmbient.Value; set => numericBoxAmbient.Value = value; } // 260607Cl
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)] [Category("Material properties")] [DefaultValue(0f)] public float Diffusion { get => (float)numericBoxDiffusion.Value; set => numericBoxDiffusion.Value = value; } // 260607Cl
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)] [Category("Material properties")] [DefaultValue(0f)] public float Specular { get => (float)numericBoxSpecular.Value; set => numericBoxSpecular.Value = value; } // 260607Cl
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)] [Category("Material properties")] [DefaultValue(0f)] public float Shininess { get => (float)numericBoxShininess.Value; set => numericBoxShininess.Value = value; } // 260607Cl
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)] [Category("Material properties")] [DefaultValue(0f)] public float Emission { get => (float)numericBoxEmission.Value; set => numericBoxEmission.Value = value; } // 260607Cl
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)] [Category("Material properties")] [DefaultValue(0f)] public float Alpha { get => (float)numericBoxAlpha.Value; set => numericBoxAlpha.Value = value; } // 260607Cl
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)] [Category("Material properties")] [DefaultValue(0.0)] public double Radius { get => numericBoxAtomRadius.Value; set => numericBoxAtomRadius.Value = value; } // 260607Cl
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)] [Category("Material properties")] public Color AtomColor { get => colorControlAtomColor.Color; set => colorControlAtomColor.Color = value; }
-    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)] [Category("Material properties")] public bool ShowLabel { get => checkBoxShowLabel.Checked; set => checkBoxShowLabel.Checked = value; }
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)] [Category("Material properties")] [DefaultValue(false)] public bool ShowLabel { get => checkBoxShowLabel.Checked; set => checkBoxShowLabel.Checked = value; } // 260607Cl
     #endregion
 
     #region Tab の表示/非表示 プロパティ
-    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)] [Category("Tab")] public bool ElementAndPositionTabVisible { get => elementAndPositionTabVisible; set { elementAndPositionTabVisible = value; setTabPages(); } }
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)] [Category("Tab")] [DefaultValue(true)] public bool ElementAndPositionTabVisible { get => elementAndPositionTabVisible; set { elementAndPositionTabVisible = value; setTabPages(); } } // 260607Cl
     private bool elementAndPositionTabVisible = true;
 
-    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)] [Category("Tab")] public bool OriginShiftVisible { get => originShiftTabVisible; set { originShiftTabVisible = value; setTabPages(); } }
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)] [Category("Tab")] [DefaultValue(true)] public bool OriginShiftVisible { get => originShiftTabVisible; set { originShiftTabVisible = value; setTabPages(); } } // 260607Cl
     private bool originShiftTabVisible = true;
 
-    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)] [Category("Tab")] public bool DebyeWallerTabVisible { get => debyeWallerTabVisible; set { debyeWallerTabVisible = value; setTabPages(); } }
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)] [Category("Tab")] [DefaultValue(true)] public bool DebyeWallerTabVisible { get => debyeWallerTabVisible; set { debyeWallerTabVisible = value; setTabPages(); } } // 260607Cl
     private bool debyeWallerTabVisible = true;
 
-    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)] [Category("Tab")] public bool ScatteringFactorTabVisible { get => scatteringFactorTabVisible; set { scatteringFactorTabVisible = value; setTabPages(); } }
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)] [Category("Tab")] [DefaultValue(true)] public bool ScatteringFactorTabVisible { get => scatteringFactorTabVisible; set { scatteringFactorTabVisible = value; setTabPages(); } } // 260607Cl
     private bool scatteringFactorTabVisible = true;
 
-    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)] [Category("Tab")] public bool AppearanceTabVisible { get => appearanceTabVisible; set { appearanceTabVisible = value; setTabPages(); } }
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)] [Category("Tab")] [DefaultValue(true)] public bool AppearanceTabVisible { get => appearanceTabVisible; set { appearanceTabVisible = value; setTabPages(); } } // 260607Cl
     private bool appearanceTabVisible = true;
 
-    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)] [Category("Tab")] public int SelectedTabIndex { get => tabControl.SelectedIndex; set => tabControl.SelectedIndex = value; }
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)] [Category("Tab")] [DefaultValue(0)] public int SelectedTabIndex { get => tabControl.SelectedIndex; set => tabControl.SelectedIndex = value; } // 260607Cl
     #endregion
 
     /// <summary>原子のパラメータが変更された時のイベント</summary>
