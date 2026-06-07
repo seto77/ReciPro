@@ -450,6 +450,10 @@
             // 
             resources.ApplyResources(waveLengthControl, "waveLengthControl");
             captureExtender.SetCapture(waveLengthControl, true);
+            // 260608Cl 追加: 新規3タブ(散乱因子/減衰/蛍光)を単体クロップ対象にする (マニュアル用)。TabPage は親 TabControl 全体(タブ見出し込み)で撮影される。
+            captureExtender.SetCapture(tabPageScatteringFactors, true);
+            captureExtender.SetCapture(tabPageAttenuations, true);
+            captureExtender.SetCapture(tabPageFluorescence, true);
             waveLengthControl.DirectionWaveEnergy = System.Windows.Forms.FlowDirection.LeftToRight;
             waveLengthControl.DirectionWhole = System.Windows.Forms.FlowDirection.LeftToRight;
             waveLengthControl.Energy = 8.04114721D;
