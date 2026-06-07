@@ -416,19 +416,12 @@
             // 
             // colorControlExcessLine
             // 
-            colorControlExcessLine.Argb = -2039584;
             resources.ApplyResources(colorControlExcessLine, "colorControlExcessLine");
             toolTip.SetToolTip(colorControlExcessLine, resources.GetString("colorControlExcessLine.ToolTip")); // 260531Cl
             colorControlExcessLine.BackColor = System.Drawing.SystemColors.Control;
-            colorControlExcessLine.Blue = 224;
-            colorControlExcessLine.BlueF = 0.8784314F;
             colorControlExcessLine.BoxSize = new System.Drawing.Size(20, 20);
             colorControlExcessLine.Color = System.Drawing.Color.FromArgb(224, 224, 224);
-            colorControlExcessLine.Green = 224;
-            colorControlExcessLine.GreenF = 0.8784314F;
             colorControlExcessLine.Name = "colorControlExcessLine";
-            colorControlExcessLine.Red = 224;
-            colorControlExcessLine.RedF = 0.8784314F;
             colorControlExcessLine.ColorChanged += colorControlExcessLine_ColorChanged;
             // 
             // trackBarLineWidth
@@ -450,36 +443,22 @@
             // 
             // colorControlString
             // 
-            colorControlString.Argb = -1;
             resources.ApplyResources(colorControlString, "colorControlString");
             colorControlString.BackColor = System.Drawing.SystemColors.Control;
-            colorControlString.Blue = 255;
-            colorControlString.BlueF = 1F;
             colorControlString.BoxSize = new System.Drawing.Size(20, 20);
             colorControlString.Color = System.Drawing.Color.FromArgb(255, 255, 255);
-            colorControlString.Green = 255;
-            colorControlString.GreenF = 1F;
             colorControlString.Name = "colorControlString";
             toolTip.SetToolTip(colorControlString, resources.GetString("colorControlString.ToolTip")); // (260531Ch)
-            colorControlString.Red = 255;
-            colorControlString.RedF = 1F;
             colorControlString.ColorChanged += colorControlExcessLine_ColorChanged;
             // 
             // colorControlBackGround
             // 
-            colorControlBackGround.Argb = -14671840;
             resources.ApplyResources(colorControlBackGround, "colorControlBackGround");
             colorControlBackGround.BackColor = System.Drawing.SystemColors.Control;
-            colorControlBackGround.Blue = 32;
-            colorControlBackGround.BlueF = 0.1254902F;
             colorControlBackGround.BoxSize = new System.Drawing.Size(20, 20);
             colorControlBackGround.Color = System.Drawing.Color.FromArgb(32, 32, 32);
-            colorControlBackGround.Green = 32;
-            colorControlBackGround.GreenF = 0.1254902F;
             colorControlBackGround.Name = "colorControlBackGround";
             toolTip.SetToolTip(colorControlBackGround, resources.GetString("colorControlBackGround.ToolTip")); // (260531Ch)
-            colorControlBackGround.Red = 32;
-            colorControlBackGround.RedF = 0.1254902F;
             colorControlBackGround.ColorChanged += colorControlExcessLine_ColorChanged;
             // 
             // radioButtonKikuchiThresholdOfStructureFactor

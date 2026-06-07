@@ -350,18 +350,11 @@ namespace ReciPro
             // 
             // colorControlIndexLabel
             // 
-            colorControlIndexLabel.Argb = -16777088;
             resources.ApplyResources(colorControlIndexLabel, "colorControlIndexLabel");
             colorControlIndexLabel.BackColor = System.Drawing.Color.White;
-            colorControlIndexLabel.Blue = 128;
-            colorControlIndexLabel.BlueF = 0.5019608F;
             colorControlIndexLabel.BoxSize = new System.Drawing.Size(20, 20);
             colorControlIndexLabel.Color = System.Drawing.Color.FromArgb(0, 0, 128);
-            colorControlIndexLabel.Green = 0;
-            colorControlIndexLabel.GreenF = 0F;
             colorControlIndexLabel.Name = "colorControlIndexLabel";
-            colorControlIndexLabel.Red = 0;
-            colorControlIndexLabel.RedF = 0F;
             colorControlIndexLabel.TabStop = false;
             toolTip.SetToolTip(colorControlIndexLabel, resources.GetString("colorControlIndexLabel.ToolTip1"));
             colorControlIndexLabel.ColorChanged += colorControl_ColorChanged;
@@ -410,72 +403,44 @@ namespace ReciPro
             // 
             // colorControlBackGround
             // 
-            colorControlBackGround.Argb = -1;
             resources.ApplyResources(colorControlBackGround, "colorControlBackGround");
             colorControlBackGround.BackColor = System.Drawing.Color.White;
-            colorControlBackGround.Blue = 255;
-            colorControlBackGround.BlueF = 1F;
             colorControlBackGround.BoxSize = new System.Drawing.Size(20, 20);
             colorControlBackGround.Color = System.Drawing.Color.FromArgb(255, 255, 255);
-            colorControlBackGround.Green = 255;
-            colorControlBackGround.GreenF = 1F;
             colorControlBackGround.Name = "colorControlBackGround";
-            colorControlBackGround.Red = 255;
-            colorControlBackGround.RedF = 1F;
             colorControlBackGround.TabStop = false;
             toolTip.SetToolTip(colorControlBackGround, resources.GetString("colorControlBackGround.ToolTip1"));
             colorControlBackGround.ColorChanged += colorControl_ColorChanged;
             // 
             // colorControl90DegLine
             // 
-            colorControl90DegLine.Argb = -12829441;
             resources.ApplyResources(colorControl90DegLine, "colorControl90DegLine");
             colorControl90DegLine.BackColor = System.Drawing.Color.Blue;
-            colorControl90DegLine.Blue = 255;
-            colorControl90DegLine.BlueF = 1F;
             colorControl90DegLine.BoxSize = new System.Drawing.Size(20, 20);
             colorControl90DegLine.Color = System.Drawing.Color.FromArgb(60, 60, 255);
-            colorControl90DegLine.Green = 60;
-            colorControl90DegLine.GreenF = 0.235294119F;
             colorControl90DegLine.Name = "colorControl90DegLine";
-            colorControl90DegLine.Red = 60;
-            colorControl90DegLine.RedF = 0.235294119F;
             colorControl90DegLine.TabStop = false;
             toolTip.SetToolTip(colorControl90DegLine, resources.GetString("colorControl90DegLine.ToolTip1"));
             colorControl90DegLine.ColorChanged += colorControl_ColorChanged;
             // 
             // colorControl10DegLine
             // 
-            colorControl10DegLine.Argb = -7697665;
             resources.ApplyResources(colorControl10DegLine, "colorControl10DegLine");
             colorControl10DegLine.BackColor = System.Drawing.Color.FromArgb(128, 128, 255);
-            colorControl10DegLine.Blue = 255;
-            colorControl10DegLine.BlueF = 1F;
             colorControl10DegLine.BoxSize = new System.Drawing.Size(20, 20);
             colorControl10DegLine.Color = System.Drawing.Color.FromArgb(138, 138, 255);
-            colorControl10DegLine.Green = 138;
-            colorControl10DegLine.GreenF = 0.5411765F;
             colorControl10DegLine.Name = "colorControl10DegLine";
-            colorControl10DegLine.Red = 138;
-            colorControl10DegLine.RedF = 0.5411765F;
             colorControl10DegLine.TabStop = false;
             toolTip.SetToolTip(colorControl10DegLine, resources.GetString("colorControl10DegLine.ToolTip1"));
             colorControl10DegLine.ColorChanged += colorControl_ColorChanged;
             // 
             // colorControl1DegLine
             // 
-            colorControl1DegLine.Argb = -4144897;
             resources.ApplyResources(colorControl1DegLine, "colorControl1DegLine");
             colorControl1DegLine.BackColor = System.Drawing.Color.FromArgb(192, 192, 255);
-            colorControl1DegLine.Blue = 255;
-            colorControl1DegLine.BlueF = 1F;
             colorControl1DegLine.BoxSize = new System.Drawing.Size(20, 20);
             colorControl1DegLine.Color = System.Drawing.Color.FromArgb(192, 192, 255);
-            colorControl1DegLine.Green = 192;
-            colorControl1DegLine.GreenF = 0.7529412F;
             colorControl1DegLine.Name = "colorControl1DegLine";
-            colorControl1DegLine.Red = 192;
-            colorControl1DegLine.RedF = 0.7529412F;
             colorControl1DegLine.TabStop = false;
             toolTip.SetToolTip(colorControl1DegLine, resources.GetString("colorControl1DegLine.ToolTip1"));
             colorControl1DegLine.ColorChanged += colorControl_ColorChanged;
@@ -732,36 +697,22 @@ namespace ReciPro
             // 
             // colorControlKikuchiPoints
             // 
-            colorControlKikuchiPoints.Argb = -16777088;
             resources.ApplyResources(colorControlKikuchiPoints, "colorControlKikuchiPoints");
             colorControlKikuchiPoints.BackColor = System.Drawing.Color.White;
-            colorControlKikuchiPoints.Blue = 128;
-            colorControlKikuchiPoints.BlueF = 0.5019608F;
             colorControlKikuchiPoints.BoxSize = new System.Drawing.Size(20, 20);
             colorControlKikuchiPoints.Color = System.Drawing.Color.FromArgb(0, 0, 128);
-            colorControlKikuchiPoints.Green = 0;
-            colorControlKikuchiPoints.GreenF = 0F;
             colorControlKikuchiPoints.Name = "colorControlKikuchiPoints";
-            colorControlKikuchiPoints.Red = 0;
-            colorControlKikuchiPoints.RedF = 0F;
             colorControlKikuchiPoints.TabStop = false;
             toolTip.SetToolTip(colorControlKikuchiPoints, resources.GetString("colorControlKikuchiPoints.ToolTip1"));
             colorControlKikuchiPoints.ColorChanged += colorControl_ColorChanged;
             // 
             // colorControlKikuchiLabel
             // 
-            colorControlKikuchiLabel.Argb = -16777088;
             resources.ApplyResources(colorControlKikuchiLabel, "colorControlKikuchiLabel");
             colorControlKikuchiLabel.BackColor = System.Drawing.Color.White;
-            colorControlKikuchiLabel.Blue = 128;
-            colorControlKikuchiLabel.BlueF = 0.5019608F;
             colorControlKikuchiLabel.BoxSize = new System.Drawing.Size(20, 20);
             colorControlKikuchiLabel.Color = System.Drawing.Color.FromArgb(0, 0, 128);
-            colorControlKikuchiLabel.Green = 0;
-            colorControlKikuchiLabel.GreenF = 0F;
             colorControlKikuchiLabel.Name = "colorControlKikuchiLabel";
-            colorControlKikuchiLabel.Red = 0;
-            colorControlKikuchiLabel.RedF = 0F;
             colorControlKikuchiLabel.TabStop = false;
             toolTip.SetToolTip(colorControlKikuchiLabel, resources.GetString("colorControlKikuchiLabel.ToolTip1"));
             colorControlKikuchiLabel.ColorChanged += colorControl_ColorChanged;
@@ -816,18 +767,11 @@ namespace ReciPro
             // 
             // colorControlGreatCircle
             // 
-            colorControlGreatCircle.Argb = -32768;
             resources.ApplyResources(colorControlGreatCircle, "colorControlGreatCircle");
             colorControlGreatCircle.BackColor = System.Drawing.SystemColors.Control;
-            colorControlGreatCircle.Blue = 0;
-            colorControlGreatCircle.BlueF = 0F;
             colorControlGreatCircle.BoxSize = new System.Drawing.Size(20, 20);
             colorControlGreatCircle.Color = System.Drawing.Color.FromArgb(255, 128, 0);
-            colorControlGreatCircle.Green = 128;
-            colorControlGreatCircle.GreenF = 0.5019608F;
             colorControlGreatCircle.Name = "colorControlGreatCircle";
-            colorControlGreatCircle.Red = 255;
-            colorControlGreatCircle.RedF = 1F;
             toolTip.SetToolTip(colorControlGreatCircle, resources.GetString("colorControlGreatCircle.ToolTip1"));
             colorControlGreatCircle.ColorChanged += colorControl_ColorChanged;
             // 
@@ -1322,18 +1266,11 @@ namespace ReciPro
             // 
             // colorControlIndex
             // 
-            colorControlIndex.Argb = -65536;
             resources.ApplyResources(colorControlIndex, "colorControlIndex");
             colorControlIndex.BackColor = System.Drawing.SystemColors.Control;
-            colorControlIndex.Blue = 0;
-            colorControlIndex.BlueF = 0F;
             colorControlIndex.BoxSize = new System.Drawing.Size(20, 20);
             colorControlIndex.Color = System.Drawing.Color.FromArgb(255, 0, 0);
-            colorControlIndex.Green = 0;
-            colorControlIndex.GreenF = 0F;
             colorControlIndex.Name = "colorControlIndex";
-            colorControlIndex.Red = 255;
-            colorControlIndex.RedF = 1F;
             toolTip.SetToolTip(colorControlIndex, resources.GetString("colorControlIndex.ToolTip1"));
             colorControlIndex.ColorChanged += colorControlIndex_ColorChanged;
             // 

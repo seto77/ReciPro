@@ -209,20 +209,13 @@
             // 
             // colorControl
             // 
-            colorControl.Argb = -16192;
             resources.ApplyResources(colorControl, "colorControl");
             colorControl.BackColor = System.Drawing.SystemColors.Control;
-            colorControl.Blue = 192;
-            colorControl.BlueF = 0.7529412F;
             colorControl.BoxSize = new System.Drawing.Size(20, 20);
             colorControl.Color = System.Drawing.Color.FromArgb(255, 192, 192);
             colorControl.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            colorControl.Green = 192;
-            colorControl.GreenF = 0.7529412F;
             colorControl.Name = "colorControl";
             toolTip.SetToolTip(colorControl, resources.GetString("colorControl.ToolTip")); // (260531Ch)
-            colorControl.Red = 255;
-            colorControl.RedF = 1F;
             // 
             // label6
             // 

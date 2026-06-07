@@ -676,18 +676,11 @@ namespace ReciPro
             // 
             // colorControlScale
             // 
-            colorControlScale.Argb = -7877126;
             resources.ApplyResources(colorControlScale, "colorControlScale");
             colorControlScale.BackColor = System.Drawing.SystemColors.Control;
-            colorControlScale.Blue = 250;
-            colorControlScale.BlueF = 0.980392158F;
             colorControlScale.BoxSize = new System.Drawing.Size(20, 20);
             colorControlScale.Color = System.Drawing.Color.FromArgb(135, 205, 250);
-            colorControlScale.Green = 205;
-            colorControlScale.GreenF = 0.8039216F;
             colorControlScale.Name = "colorControlScale";
-            colorControlScale.Red = 135;
-            colorControlScale.RedF = 0.5294118F;
             toolTip.SetToolTip(colorControlScale, resources.GetString("colorControlScale.ToolTip1"));
             colorControlScale.ColorChanged += CheckBoxShowLabel_CheckedChanged;
             // 
@@ -721,18 +714,11 @@ namespace ReciPro
             // 
             // colorControlLabel
             // 
-            colorControlLabel.Argb = -5374161;
             resources.ApplyResources(colorControlLabel, "colorControlLabel");
             colorControlLabel.BackColor = System.Drawing.SystemColors.Control;
-            colorControlLabel.Blue = 47;
-            colorControlLabel.BlueF = 0.184313729F;
             colorControlLabel.BoxSize = new System.Drawing.Size(20, 20);
             colorControlLabel.Color = System.Drawing.Color.FromArgb(173, 255, 47);
-            colorControlLabel.Green = 255;
-            colorControlLabel.GreenF = 1F;
             colorControlLabel.Name = "colorControlLabel";
-            colorControlLabel.Red = 173;
-            colorControlLabel.RedF = 0.6784314F;
             toolTip.SetToolTip(colorControlLabel, resources.GetString("colorControlLabel.ToolTip1"));
             colorControlLabel.ColorChanged += CheckBoxShowLabel_CheckedChanged;
             // 

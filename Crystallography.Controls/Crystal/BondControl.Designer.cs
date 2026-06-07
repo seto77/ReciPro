@@ -464,48 +464,27 @@
             // 
             // colorControlEdges
             // 
-            colorControlEdges.Argb = -986896;
             resources.ApplyResources(colorControlEdges, "colorControlEdges");
             colorControlEdges.BackColor = System.Drawing.SystemColors.Control;
-            colorControlEdges.Blue = 240;
-            colorControlEdges.BlueF = 0.9411765F;
             colorControlEdges.BoxSize = new System.Drawing.Size(20, 20);
             colorControlEdges.Color = System.Drawing.Color.FromArgb(240, 240, 240);
-            colorControlEdges.Green = 240;
-            colorControlEdges.GreenF = 0.9411765F;
             colorControlEdges.Name = "colorControlEdges";
-            colorControlEdges.Red = 240;
-            colorControlEdges.RedF = 0.9411765F;
             // 
             // colorControlPolyhedron
             // 
-            colorControlPolyhedron.Argb = -986896;
             resources.ApplyResources(colorControlPolyhedron, "colorControlPolyhedron");
             colorControlPolyhedron.BackColor = System.Drawing.SystemColors.Control;
-            colorControlPolyhedron.Blue = 240;
-            colorControlPolyhedron.BlueF = 0.9411765F;
             colorControlPolyhedron.BoxSize = new System.Drawing.Size(20, 20);
             colorControlPolyhedron.Color = System.Drawing.Color.FromArgb(240, 240, 240);
-            colorControlPolyhedron.Green = 240;
-            colorControlPolyhedron.GreenF = 0.9411765F;
             colorControlPolyhedron.Name = "colorControlPolyhedron";
-            colorControlPolyhedron.Red = 240;
-            colorControlPolyhedron.RedF = 0.9411765F;
             // 
             // colorControlBond
             // 
-            colorControlBond.Argb = -986896;
             resources.ApplyResources(colorControlBond, "colorControlBond");
             colorControlBond.BackColor = System.Drawing.SystemColors.Control;
-            colorControlBond.Blue = 240;
-            colorControlBond.BlueF = 0.9411765F;
             colorControlBond.BoxSize = new System.Drawing.Size(20, 20);
             colorControlBond.Color = System.Drawing.Color.FromArgb(240, 240, 240);
-            colorControlBond.Green = 240;
-            colorControlBond.GreenF = 0.9411765F;
             colorControlBond.Name = "colorControlBond";
-            colorControlBond.Red = 240;
-            colorControlBond.RedF = 0.9411765F;
             // 
             // panel2
             // 

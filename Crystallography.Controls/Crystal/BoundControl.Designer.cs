@@ -286,19 +286,12 @@
             // 
             // colorControl
             // 
-            colorControl.Argb = -16728064;
             resources.ApplyResources(colorControl, "colorControl");
             toolTip.SetToolTip(colorControl, resources.GetString("colorControl.ToolTip")); // 260531Cl
             colorControl.BackColor = System.Drawing.SystemColors.Control;
-            colorControl.Blue = 0;
-            colorControl.BlueF = 0F;
             colorControl.Color = System.Drawing.Color.FromArgb(0, 192, 0);
             colorControl.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            colorControl.Green = 192;
-            colorControl.GreenF = 0.7529412F;
             colorControl.Name = "colorControl";
-            colorControl.Red = 0;
-            colorControl.RedF = 0F;
             colorControl.ColorChanged += colorControl_ColorChanged;
             // 
             // flowLayoutPanel1

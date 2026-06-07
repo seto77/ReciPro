@@ -624,18 +624,11 @@
             // 
             // colorControlString
             // 
-            colorControlString.Argb = -1;
             resources.ApplyResources(colorControlString, "colorControlString");
             colorControlString.BackColor = System.Drawing.SystemColors.Control;
-            colorControlString.Blue = 255;
-            colorControlString.BlueF = 1F;
             colorControlString.BoxSize = new System.Drawing.Size(20, 20);
             colorControlString.Color = System.Drawing.Color.FromArgb(255, 255, 255);
-            colorControlString.Green = 255;
-            colorControlString.GreenF = 1F;
             colorControlString.Name = "colorControlString";
-            colorControlString.Red = 255;
-            colorControlString.RedF = 1F;
             toolTip.SetToolTip(colorControlString, resources.GetString("colorControlString.ToolTip1"));
             colorControlString.ColorChanged += Draw;
             // 
@@ -647,35 +640,21 @@
             // 
             // colorControlOrigin
             // 
-            colorControlOrigin.Argb = -65536;
             resources.ApplyResources(colorControlOrigin, "colorControlOrigin");
             colorControlOrigin.BackColor = System.Drawing.Color.Transparent;
-            colorControlOrigin.Blue = 0;
-            colorControlOrigin.BlueF = 0F;
             colorControlOrigin.BoxSize = new System.Drawing.Size(20, 20);
             colorControlOrigin.Color = System.Drawing.Color.FromArgb(255, 0, 0);
-            colorControlOrigin.Green = 0;
-            colorControlOrigin.GreenF = 0F;
             colorControlOrigin.Name = "colorControlOrigin";
-            colorControlOrigin.Red = 255;
-            colorControlOrigin.RedF = 1F;
             toolTip.SetToolTip(colorControlOrigin, resources.GetString("colorControlOrigin.ToolTip1"));
             colorControlOrigin.ColorChanged += Draw;
             // 
             // colorControlFoot
             // 
-            colorControlFoot.Argb = -16728064;
             resources.ApplyResources(colorControlFoot, "colorControlFoot");
             colorControlFoot.BackColor = System.Drawing.SystemColors.Control;
-            colorControlFoot.Blue = 0;
-            colorControlFoot.BlueF = 0F;
             colorControlFoot.BoxSize = new System.Drawing.Size(20, 20);
             colorControlFoot.Color = System.Drawing.Color.FromArgb(0, 192, 0);
-            colorControlFoot.Green = 192;
-            colorControlFoot.GreenF = 0.7529412F;
             colorControlFoot.Name = "colorControlFoot";
-            colorControlFoot.Red = 0;
-            colorControlFoot.RedF = 0F;
             colorControlFoot.ColorChanged += Draw;
             // 
             // checkBoxShowFootPosition
@@ -700,18 +679,11 @@
             // 
             // colorControlBackGround
             // 
-            colorControlBackGround.Argb = -14671840;
             resources.ApplyResources(colorControlBackGround, "colorControlBackGround");
             colorControlBackGround.BackColor = System.Drawing.SystemColors.Control;
-            colorControlBackGround.Blue = 32;
-            colorControlBackGround.BlueF = 0.1254902F;
             colorControlBackGround.BoxSize = new System.Drawing.Size(20, 20);
             colorControlBackGround.Color = System.Drawing.Color.FromArgb(32, 32, 32);
-            colorControlBackGround.Green = 32;
-            colorControlBackGround.GreenF = 0.1254902F;
             colorControlBackGround.Name = "colorControlBackGround";
-            colorControlBackGround.Red = 32;
-            colorControlBackGround.RedF = 0.1254902F;
             toolTip.SetToolTip(colorControlBackGround, resources.GetString("colorControlBackGround.ToolTip1"));
             colorControlBackGround.ColorChanged += Draw;
             // 
@@ -789,18 +761,11 @@
             // 
             // colorControlExcessLine
             // 
-            colorControlExcessLine.Argb = -2039584;
             resources.ApplyResources(colorControlExcessLine, "colorControlExcessLine");
             colorControlExcessLine.BackColor = System.Drawing.SystemColors.Control;
-            colorControlExcessLine.Blue = 224;
-            colorControlExcessLine.BlueF = 0.8784314F;
             colorControlExcessLine.BoxSize = new System.Drawing.Size(20, 20);
             colorControlExcessLine.Color = System.Drawing.Color.FromArgb(224, 224, 224);
-            colorControlExcessLine.Green = 224;
-            colorControlExcessLine.GreenF = 0.8784314F;
             colorControlExcessLine.Name = "colorControlExcessLine";
-            colorControlExcessLine.Red = 224;
-            colorControlExcessLine.RedF = 0.8784314F;
             colorControlExcessLine.ColorChanged += Draw;
             // 
             // trackBarLineWidth
@@ -834,18 +799,11 @@
             // 
             // colorControlDebyeRing
             // 
-            colorControlDebyeRing.Argb = -256;
             resources.ApplyResources(colorControlDebyeRing, "colorControlDebyeRing");
             colorControlDebyeRing.BackColor = System.Drawing.SystemColors.Control;
-            colorControlDebyeRing.Blue = 0;
-            colorControlDebyeRing.BlueF = 0F;
             colorControlDebyeRing.BoxSize = new System.Drawing.Size(20, 20);
             colorControlDebyeRing.Color = System.Drawing.Color.FromArgb(255, 255, 0);
-            colorControlDebyeRing.Green = 255;
-            colorControlDebyeRing.GreenF = 1F;
             colorControlDebyeRing.Name = "colorControlDebyeRing";
-            colorControlDebyeRing.Red = 255;
-            colorControlDebyeRing.RedF = 1F;
             toolTip.SetToolTip(colorControlDebyeRing, resources.GetString("colorControlDebyeRing.ToolTip1"));
             colorControlDebyeRing.ColorChanged += Draw;
             // 
@@ -964,35 +922,21 @@
             // 
             // colorControlScaleAzimuth
             // 
-            colorControlScaleAzimuth.Argb = -8960954;
             resources.ApplyResources(colorControlScaleAzimuth, "colorControlScaleAzimuth");
             colorControlScaleAzimuth.BackColor = System.Drawing.SystemColors.Control;
-            colorControlScaleAzimuth.Blue = 70;
-            colorControlScaleAzimuth.BlueF = 0.274509817F;
             colorControlScaleAzimuth.BoxSize = new System.Drawing.Size(20, 20);
             colorControlScaleAzimuth.Color = System.Drawing.Color.FromArgb(119, 68, 70);
-            colorControlScaleAzimuth.Green = 68;
-            colorControlScaleAzimuth.GreenF = 0.266666681F;
             colorControlScaleAzimuth.Name = "colorControlScaleAzimuth";
-            colorControlScaleAzimuth.Red = 119;
-            colorControlScaleAzimuth.RedF = 0.466666669F;
             toolTip.SetToolTip(colorControlScaleAzimuth, resources.GetString("colorControlScaleAzimuth.ToolTip1"));
             colorControlScaleAzimuth.ColorChanged += Draw;
             // 
             // colorControlScale2Theta
             // 
-            colorControlScale2Theta.Argb = -12303240;
             resources.ApplyResources(colorControlScale2Theta, "colorControlScale2Theta");
             colorControlScale2Theta.BackColor = System.Drawing.SystemColors.Control;
-            colorControlScale2Theta.Blue = 120;
-            colorControlScale2Theta.BlueF = 0.470588237F;
             colorControlScale2Theta.BoxSize = new System.Drawing.Size(20, 20);
             colorControlScale2Theta.Color = System.Drawing.Color.FromArgb(68, 68, 120);
-            colorControlScale2Theta.Green = 68;
-            colorControlScale2Theta.GreenF = 0.266666681F;
             colorControlScale2Theta.Name = "colorControlScale2Theta";
-            colorControlScale2Theta.Red = 68;
-            colorControlScale2Theta.RedF = 0.266666681F;
             toolTip.SetToolTip(colorControlScale2Theta, resources.GetString("colorControlScale2Theta.ToolTip1"));
             colorControlScale2Theta.ColorChanged += Draw;
             // 
@@ -1052,18 +996,11 @@
             // 
             // colorControl3D_SpotsNear
             // 
-            colorControl3D_SpotsNear.Argb = -256;
             resources.ApplyResources(colorControl3D_SpotsNear, "colorControl3D_SpotsNear");
             colorControl3D_SpotsNear.BackColor = System.Drawing.SystemColors.Control;
-            colorControl3D_SpotsNear.Blue = 0;
-            colorControl3D_SpotsNear.BlueF = 0F;
             colorControl3D_SpotsNear.BoxSize = new System.Drawing.Size(20, 20);
             colorControl3D_SpotsNear.Color = System.Drawing.Color.FromArgb(255, 255, 0);
-            colorControl3D_SpotsNear.Green = 255;
-            colorControl3D_SpotsNear.GreenF = 1F;
             colorControl3D_SpotsNear.Name = "colorControl3D_SpotsNear";
-            colorControl3D_SpotsNear.Red = 255;
-            colorControl3D_SpotsNear.RedF = 1F;
             toolTip.SetToolTip(colorControl3D_SpotsNear, resources.GetString("colorControl3D_SpotsNear.ToolTip1"));
             colorControl3D_SpotsNear.ColorChanged += colorControlReciprocalBackground_ColorChanged;
             // 
@@ -1112,18 +1049,11 @@
             // 
             // colorControl3D_SpotsFar
             // 
-            colorControl3D_SpotsFar.Argb = -4144960;
             resources.ApplyResources(colorControl3D_SpotsFar, "colorControl3D_SpotsFar");
             colorControl3D_SpotsFar.BackColor = System.Drawing.SystemColors.Control;
-            colorControl3D_SpotsFar.Blue = 192;
-            colorControl3D_SpotsFar.BlueF = 0.7529412F;
             colorControl3D_SpotsFar.BoxSize = new System.Drawing.Size(20, 20);
             colorControl3D_SpotsFar.Color = System.Drawing.Color.FromArgb(192, 192, 192);
-            colorControl3D_SpotsFar.Green = 192;
-            colorControl3D_SpotsFar.GreenF = 0.7529412F;
             colorControl3D_SpotsFar.Name = "colorControl3D_SpotsFar";
-            colorControl3D_SpotsFar.Red = 192;
-            colorControl3D_SpotsFar.RedF = 0.7529412F;
             colorControl3D_SpotsFar.ColorChanged += colorControlReciprocalBackground_ColorChanged;
             // 
             // checkBox3D_MakeSpotsTransparent
@@ -1138,18 +1068,11 @@
             // 
             // colorControl3D_Background
             // 
-            colorControl3D_Background.Argb = -1;
             resources.ApplyResources(colorControl3D_Background, "colorControl3D_Background");
             colorControl3D_Background.BackColor = System.Drawing.SystemColors.Control;
-            colorControl3D_Background.Blue = 255;
-            colorControl3D_Background.BlueF = 1F;
             colorControl3D_Background.BoxSize = new System.Drawing.Size(20, 20);
             colorControl3D_Background.Color = System.Drawing.Color.FromArgb(255, 255, 255);
-            colorControl3D_Background.Green = 255;
-            colorControl3D_Background.GreenF = 1F;
             colorControl3D_Background.Name = "colorControl3D_Background";
-            colorControl3D_Background.Red = 255;
-            colorControl3D_Background.RedF = 1F;
             toolTip.SetToolTip(colorControl3D_Background, resources.GetString("colorControl3D_Background.ToolTip1"));
             colorControl3D_Background.ColorChanged += colorControlReciprocalBackground_ColorChanged;
             // 
@@ -1317,98 +1240,56 @@
             // 
             // colorControl3D_EwaldSphere
             // 
-            colorControl3D_EwaldSphere.Argb = -8355585;
             resources.ApplyResources(colorControl3D_EwaldSphere, "colorControl3D_EwaldSphere");
             colorControl3D_EwaldSphere.BackColor = System.Drawing.SystemColors.Control;
-            colorControl3D_EwaldSphere.Blue = 255;
-            colorControl3D_EwaldSphere.BlueF = 1F;
             colorControl3D_EwaldSphere.BoxSize = new System.Drawing.Size(20, 20);
             colorControl3D_EwaldSphere.Color = System.Drawing.Color.FromArgb(128, 128, 255);
-            colorControl3D_EwaldSphere.Green = 128;
-            colorControl3D_EwaldSphere.GreenF = 0.5019608F;
             colorControl3D_EwaldSphere.Name = "colorControl3D_EwaldSphere";
-            colorControl3D_EwaldSphere.Red = 128;
-            colorControl3D_EwaldSphere.RedF = 0.5019608F;
             colorControl3D_EwaldSphere.ColorChanged += colorControlReciprocalBackground_ColorChanged;
             // 
             // colorControl3D_Origin
             // 
-            colorControl3D_Origin.Argb = -65536;
             resources.ApplyResources(colorControl3D_Origin, "colorControl3D_Origin");
             colorControl3D_Origin.BackColor = System.Drawing.SystemColors.Control;
-            colorControl3D_Origin.Blue = 0;
-            colorControl3D_Origin.BlueF = 0F;
             colorControl3D_Origin.BoxSize = new System.Drawing.Size(20, 20);
             colorControl3D_Origin.Color = System.Drawing.Color.FromArgb(255, 0, 0);
-            colorControl3D_Origin.Green = 0;
-            colorControl3D_Origin.GreenF = 0F;
             colorControl3D_Origin.Name = "colorControl3D_Origin";
-            colorControl3D_Origin.Red = 255;
-            colorControl3D_Origin.RedF = 1F;
             colorControl3D_Origin.ColorChanged += colorControlReciprocalBackground_ColorChanged;
             // 
             // colorControl3D_rightDirection
             // 
-            colorControl3D_rightDirection.Argb = -8323200;
             resources.ApplyResources(colorControl3D_rightDirection, "colorControl3D_rightDirection");
             colorControl3D_rightDirection.BackColor = System.Drawing.SystemColors.Control;
-            colorControl3D_rightDirection.Blue = 128;
-            colorControl3D_rightDirection.BlueF = 0.5019608F;
             colorControl3D_rightDirection.BoxSize = new System.Drawing.Size(20, 20);
             colorControl3D_rightDirection.Color = System.Drawing.Color.FromArgb(128, 255, 128);
-            colorControl3D_rightDirection.Green = 255;
-            colorControl3D_rightDirection.GreenF = 1F;
             colorControl3D_rightDirection.Name = "colorControl3D_rightDirection";
-            colorControl3D_rightDirection.Red = 128;
-            colorControl3D_rightDirection.RedF = 0.5019608F;
             colorControl3D_rightDirection.ColorChanged += colorControlReciprocalBackground_ColorChanged;
             // 
             // colorControl3D_topDirection
             // 
-            colorControl3D_topDirection.Argb = -16129;
             resources.ApplyResources(colorControl3D_topDirection, "colorControl3D_topDirection");
             colorControl3D_topDirection.BackColor = System.Drawing.SystemColors.Control;
-            colorControl3D_topDirection.Blue = 255;
-            colorControl3D_topDirection.BlueF = 1F;
             colorControl3D_topDirection.BoxSize = new System.Drawing.Size(20, 20);
             colorControl3D_topDirection.Color = System.Drawing.Color.FromArgb(255, 192, 255);
-            colorControl3D_topDirection.Green = 192;
-            colorControl3D_topDirection.GreenF = 0.7529412F;
             colorControl3D_topDirection.Name = "colorControl3D_topDirection";
-            colorControl3D_topDirection.Red = 255;
-            colorControl3D_topDirection.RedF = 1F;
             colorControl3D_topDirection.ColorChanged += colorControlReciprocalBackground_ColorChanged;
             // 
             // colorControl3D_beamDirection
             // 
-            colorControl3D_beamDirection.Argb = -32768;
             resources.ApplyResources(colorControl3D_beamDirection, "colorControl3D_beamDirection");
             colorControl3D_beamDirection.BackColor = System.Drawing.SystemColors.Control;
-            colorControl3D_beamDirection.Blue = 0;
-            colorControl3D_beamDirection.BlueF = 0F;
             colorControl3D_beamDirection.BoxSize = new System.Drawing.Size(20, 20);
             colorControl3D_beamDirection.Color = System.Drawing.Color.FromArgb(255, 128, 0);
-            colorControl3D_beamDirection.Green = 128;
-            colorControl3D_beamDirection.GreenF = 0.5019608F;
             colorControl3D_beamDirection.Name = "colorControl3D_beamDirection";
-            colorControl3D_beamDirection.Red = 255;
-            colorControl3D_beamDirection.RedF = 1F;
             colorControl3D_beamDirection.ColorChanged += colorControlReciprocalBackground_ColorChanged;
             // 
             // colorControl3D_lText
             // 
-            colorControl3D_lText.Argb = -16777216;
             resources.ApplyResources(colorControl3D_lText, "colorControl3D_lText");
             colorControl3D_lText.BackColor = System.Drawing.SystemColors.Control;
-            colorControl3D_lText.Blue = 0;
-            colorControl3D_lText.BlueF = 0F;
             colorControl3D_lText.BoxSize = new System.Drawing.Size(20, 20);
             colorControl3D_lText.Color = System.Drawing.Color.FromArgb(0, 0, 0);
-            colorControl3D_lText.Green = 0;
-            colorControl3D_lText.GreenF = 0F;
             colorControl3D_lText.Name = "colorControl3D_lText";
-            colorControl3D_lText.Red = 0;
-            colorControl3D_lText.RedF = 0F;
             toolTip.SetToolTip(colorControl3D_lText, resources.GetString("colorControl3D_lText.ToolTip1"));
             colorControl3D_lText.ColorChanged += colorControlReciprocalBackground_ColorChanged;
             // 
@@ -2436,52 +2317,31 @@
             // 
             // colorControlNoCondition
             // 
-            colorControlNoCondition.Argb = -1;
             resources.ApplyResources(colorControlNoCondition, "colorControlNoCondition");
             colorControlNoCondition.BackColor = System.Drawing.SystemColors.Control;
-            colorControlNoCondition.Blue = 255;
-            colorControlNoCondition.BlueF = 1F;
             colorControlNoCondition.BoxSize = new System.Drawing.Size(20, 20);
             colorControlNoCondition.Color = System.Drawing.Color.FromArgb(255, 255, 255);
-            colorControlNoCondition.Green = 255;
-            colorControlNoCondition.GreenF = 1F;
             colorControlNoCondition.Name = "colorControlNoCondition";
-            colorControlNoCondition.Red = 255;
-            colorControlNoCondition.RedF = 1F;
             toolTip.SetToolTip(colorControlNoCondition, resources.GetString("colorControlNoCondition.ToolTip1"));
             colorControlNoCondition.ColorChanged += Draw;
             // 
             // colorControlScrewGlide
             // 
-            colorControlScrewGlide.Argb = -16192;
             resources.ApplyResources(colorControlScrewGlide, "colorControlScrewGlide");
             colorControlScrewGlide.BackColor = System.Drawing.SystemColors.Control;
-            colorControlScrewGlide.Blue = 192;
-            colorControlScrewGlide.BlueF = 0.7529412F;
             colorControlScrewGlide.BoxSize = new System.Drawing.Size(20, 20);
             colorControlScrewGlide.Color = System.Drawing.Color.FromArgb(255, 192, 192);
-            colorControlScrewGlide.Green = 192;
-            colorControlScrewGlide.GreenF = 0.7529412F;
             colorControlScrewGlide.Name = "colorControlScrewGlide";
-            colorControlScrewGlide.Red = 255;
-            colorControlScrewGlide.RedF = 1F;
             toolTip.SetToolTip(colorControlScrewGlide, resources.GetString("colorControlScrewGlide.ToolTip1"));
             colorControlScrewGlide.ColorChanged += Draw;
             // 
             // colorControlForbiddenLattice
             // 
-            colorControlForbiddenLattice.Argb = -4144897;
             resources.ApplyResources(colorControlForbiddenLattice, "colorControlForbiddenLattice");
             colorControlForbiddenLattice.BackColor = System.Drawing.SystemColors.Control;
-            colorControlForbiddenLattice.Blue = 255;
-            colorControlForbiddenLattice.BlueF = 1F;
             colorControlForbiddenLattice.BoxSize = new System.Drawing.Size(20, 20);
             colorControlForbiddenLattice.Color = System.Drawing.Color.FromArgb(192, 192, 255);
-            colorControlForbiddenLattice.Green = 192;
-            colorControlForbiddenLattice.GreenF = 0.7529412F;
             colorControlForbiddenLattice.Name = "colorControlForbiddenLattice";
-            colorControlForbiddenLattice.Red = 192;
-            colorControlForbiddenLattice.RedF = 0.7529412F;
             toolTip.SetToolTip(colorControlForbiddenLattice, resources.GetString("colorControlForbiddenLattice.ToolTip1"));
             colorControlForbiddenLattice.ColorChanged += Draw;
             // 

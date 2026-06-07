@@ -275,153 +275,90 @@
             // 
             // colorControlBackGround
             // 
-            colorControlBackGround.Argb = -1;
             resources.ApplyResources(colorControlBackGround, "colorControlBackGround");
             colorControlBackGround.BackColor = System.Drawing.Color.White;
-            colorControlBackGround.Blue = 255;
-            colorControlBackGround.BlueF = 1F;
             colorControlBackGround.BoxSize = new System.Drawing.Size(20, 20);
             colorControlBackGround.Color = System.Drawing.Color.FromArgb(255, 255, 255);
-            colorControlBackGround.Green = 255;
-            colorControlBackGround.GreenF = 1F;
             colorControlBackGround.Name = "colorControlBackGround";
-            colorControlBackGround.Red = 255;
-            colorControlBackGround.RedF = 1F;
             colorControlBackGround.TabStop = false;
             colorControlBackGround.ColorChanged += colorControlUniqueAxis_ColorChanged;
             // 
             // colorControlHolder
             // 
-            colorControlHolder.Argb = -32768;
             resources.ApplyResources(colorControlHolder, "colorControlHolder");
             colorControlHolder.BackColor = System.Drawing.Color.White;
-            colorControlHolder.Blue = 0;
-            colorControlHolder.BlueF = 0F;
             colorControlHolder.BoxSize = new System.Drawing.Size(20, 20);
             colorControlHolder.Color = System.Drawing.Color.FromArgb(255, 128, 0);
-            colorControlHolder.Green = 128;
-            colorControlHolder.GreenF = 0.5019608F;
             colorControlHolder.Name = "colorControlHolder";
-            colorControlHolder.Red = 255;
-            colorControlHolder.RedF = 1F;
             colorControlHolder.TabStop = false;
             colorControlHolder.ColorChanged += colorControlUniqueAxis_ColorChanged;
             // 
             // colorControl90DegLine
             // 
-            colorControl90DegLine.Argb = -16776961;
             resources.ApplyResources(colorControl90DegLine, "colorControl90DegLine");
             colorControl90DegLine.BackColor = System.Drawing.Color.Blue;
-            colorControl90DegLine.Blue = 255;
-            colorControl90DegLine.BlueF = 1F;
             colorControl90DegLine.BoxSize = new System.Drawing.Size(20, 20);
             colorControl90DegLine.Color = System.Drawing.Color.FromArgb(0, 0, 255);
-            colorControl90DegLine.Green = 0;
-            colorControl90DegLine.GreenF = 0F;
             colorControl90DegLine.Name = "colorControl90DegLine";
-            colorControl90DegLine.Red = 0;
-            colorControl90DegLine.RedF = 0F;
             colorControl90DegLine.TabStop = false;
             colorControl90DegLine.ColorChanged += colorControlUniqueAxis_ColorChanged;
             // 
             // colorControl10DegLine
             // 
-            colorControl10DegLine.Argb = -8355585;
             resources.ApplyResources(colorControl10DegLine, "colorControl10DegLine");
             colorControl10DegLine.BackColor = System.Drawing.Color.FromArgb(128, 128, 255);
-            colorControl10DegLine.Blue = 255;
-            colorControl10DegLine.BlueF = 1F;
             colorControl10DegLine.BoxSize = new System.Drawing.Size(20, 20);
             colorControl10DegLine.Color = System.Drawing.Color.FromArgb(128, 128, 255);
-            colorControl10DegLine.Green = 128;
-            colorControl10DegLine.GreenF = 0.5019608F;
             colorControl10DegLine.Name = "colorControl10DegLine";
-            colorControl10DegLine.Red = 128;
-            colorControl10DegLine.RedF = 0.5019608F;
             colorControl10DegLine.TabStop = false;
             colorControl10DegLine.ColorChanged += colorControlUniqueAxis_ColorChanged;
             // 
             // colorControl1DegLine
             // 
-            colorControl1DegLine.Argb = -4144897;
             resources.ApplyResources(colorControl1DegLine, "colorControl1DegLine");
             colorControl1DegLine.BackColor = System.Drawing.Color.FromArgb(192, 192, 255);
-            colorControl1DegLine.Blue = 255;
-            colorControl1DegLine.BlueF = 1F;
             colorControl1DegLine.BoxSize = new System.Drawing.Size(20, 20);
             colorControl1DegLine.Color = System.Drawing.Color.FromArgb(192, 192, 255);
-            colorControl1DegLine.Green = 192;
-            colorControl1DegLine.GreenF = 0.7529412F;
             colorControl1DegLine.Name = "colorControl1DegLine";
-            colorControl1DegLine.Red = 192;
-            colorControl1DegLine.RedF = 0.7529412F;
             colorControl1DegLine.TabStop = false;
             colorControl1DegLine.ColorChanged += colorControlUniqueAxis_ColorChanged;
             // 
             // colorControlUniqueAxis
             // 
-            colorControlUniqueAxis.Argb = -7667712;
             resources.ApplyResources(colorControlUniqueAxis, "colorControlUniqueAxis");
             colorControlUniqueAxis.BackColor = System.Drawing.Color.Red;
-            colorControlUniqueAxis.Blue = 0;
-            colorControlUniqueAxis.BlueF = 0F;
             colorControlUniqueAxis.BoxSize = new System.Drawing.Size(20, 20);
             colorControlUniqueAxis.Color = System.Drawing.Color.FromArgb(139, 0, 0);
-            colorControlUniqueAxis.Green = 0;
-            colorControlUniqueAxis.GreenF = 0F;
             colorControlUniqueAxis.Name = "colorControlUniqueAxis";
-            colorControlUniqueAxis.Red = 139;
-            colorControlUniqueAxis.RedF = 0.545098066F;
             colorControlUniqueAxis.TabStop = false;
             colorControlUniqueAxis.ColorChanged += colorControlUniqueAxis_ColorChanged;
             // 
             // colorControlGeneralAxis
             // 
-            colorControlGeneralAxis.Argb = -65536;
             resources.ApplyResources(colorControlGeneralAxis, "colorControlGeneralAxis");
             colorControlGeneralAxis.BackColor = System.Drawing.Color.FromArgb(255, 128, 128);
-            colorControlGeneralAxis.Blue = 0;
-            colorControlGeneralAxis.BlueF = 0F;
             colorControlGeneralAxis.BoxSize = new System.Drawing.Size(20, 20);
             colorControlGeneralAxis.Color = System.Drawing.Color.FromArgb(255, 0, 0);
-            colorControlGeneralAxis.Green = 0;
-            colorControlGeneralAxis.GreenF = 0F;
             colorControlGeneralAxis.Name = "colorControlGeneralAxis";
-            colorControlGeneralAxis.Red = 255;
-            colorControlGeneralAxis.RedF = 1F;
             colorControlGeneralAxis.TabStop = false;
             colorControlGeneralAxis.ColorChanged += colorControlUniqueAxis_ColorChanged;
             // 
             // colorControlTiltX
             // 
-            colorControlTiltX.Argb = -16726016;
             resources.ApplyResources(colorControlTiltX, "colorControlTiltX");
             colorControlTiltX.BackColor = System.Drawing.Color.Lime;
-            colorControlTiltX.Blue = 0;
-            colorControlTiltX.BlueF = 0F;
             colorControlTiltX.BoxSize = new System.Drawing.Size(20, 20);
             colorControlTiltX.Color = System.Drawing.Color.FromArgb(0, 200, 0);
-            colorControlTiltX.Green = 200;
-            colorControlTiltX.GreenF = 0.784313738F;
             colorControlTiltX.Name = "colorControlTiltX";
-            colorControlTiltX.Red = 0;
-            colorControlTiltX.RedF = 0F;
             colorControlTiltX.TabStop = false;
             // 
             // colorControlTiltY
             // 
-            colorControlTiltY.Argb = -65281;
             resources.ApplyResources(colorControlTiltY, "colorControlTiltY");
             colorControlTiltY.BackColor = System.Drawing.Color.Lime;
-            colorControlTiltY.Blue = 255;
-            colorControlTiltY.BlueF = 1F;
             colorControlTiltY.BoxSize = new System.Drawing.Size(20, 20);
             colorControlTiltY.Color = System.Drawing.Color.FromArgb(255, 0, 255);
-            colorControlTiltY.Green = 0;
-            colorControlTiltY.GreenF = 0F;
             colorControlTiltY.Name = "colorControlTiltY";
-            colorControlTiltY.Red = 255;
-            colorControlTiltY.RedF = 1F;
             colorControlTiltY.TabStop = false;
             // 
             // label17

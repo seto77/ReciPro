@@ -1144,18 +1144,11 @@
             // 
             // colorControl
             // 
-            colorControl.Argb = -986896;
             resources.ApplyResources(colorControl, "colorControl");
             colorControl.BackColor = System.Drawing.SystemColors.Control;
-            colorControl.Blue = 240;
-            colorControl.BlueF = 0.9411765F;
             colorControl.BoxSize = new System.Drawing.Size(20, 20);
             colorControl.Color = System.Drawing.Color.FromArgb(240, 240, 240);
-            colorControl.Green = 240;
-            colorControl.GreenF = 0.9411765F;
             colorControl.Name = "colorControl";
-            colorControl.Red = 240;
-            colorControl.RedF = 0.9411765F;
             toolTip.SetToolTip(colorControl, resources.GetString("colorControl.ToolTip1"));
             // 
             // panelFormula

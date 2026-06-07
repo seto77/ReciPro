@@ -746,18 +746,11 @@
             // 
             // colorControlCellPlane
             // 
-            colorControlCellPlane.Argb = -4144960;
             resources.ApplyResources(colorControlCellPlane, "colorControlCellPlane");
             colorControlCellPlane.BackColor = System.Drawing.SystemColors.Control;
-            colorControlCellPlane.Blue = 192;
-            colorControlCellPlane.BlueF = 0.7529412F;
             colorControlCellPlane.BoxSize = new System.Drawing.Size(20, 20);
             colorControlCellPlane.Color = System.Drawing.Color.FromArgb(192, 192, 192);
-            colorControlCellPlane.Green = 192;
-            colorControlCellPlane.GreenF = 0.7529412F;
             colorControlCellPlane.Name = "colorControlCellPlane";
-            colorControlCellPlane.Red = 192;
-            colorControlCellPlane.RedF = 0.7529412F;
             toolTip.SetToolTip(colorControlCellPlane, resources.GetString("colorControlCellPlane.ToolTip1"));
             colorControlCellPlane.ColorChanged += unitCell_PropertyChanged;
             // 
@@ -771,52 +764,31 @@
             // 
             // colorControlCellPlaneA
             // 
-            colorControlCellPlaneA.Argb = -65536;
             resources.ApplyResources(colorControlCellPlaneA, "colorControlCellPlaneA");
             colorControlCellPlaneA.BackColor = System.Drawing.SystemColors.Control;
-            colorControlCellPlaneA.Blue = 0;
-            colorControlCellPlaneA.BlueF = 0F;
             colorControlCellPlaneA.BoxSize = new System.Drawing.Size(20, 20);
             colorControlCellPlaneA.Color = System.Drawing.Color.FromArgb(255, 0, 0);
-            colorControlCellPlaneA.Green = 0;
-            colorControlCellPlaneA.GreenF = 0F;
             colorControlCellPlaneA.Name = "colorControlCellPlaneA";
-            colorControlCellPlaneA.Red = 255;
-            colorControlCellPlaneA.RedF = 1F;
             toolTip.SetToolTip(colorControlCellPlaneA, resources.GetString("colorControlCellPlaneA.ToolTip1"));
             colorControlCellPlaneA.ColorChanged += unitCell_PropertyChanged;
             // 
             // colorControlCellPlaneB
             // 
-            colorControlCellPlaneB.Argb = -16744448;
             resources.ApplyResources(colorControlCellPlaneB, "colorControlCellPlaneB");
             colorControlCellPlaneB.BackColor = System.Drawing.SystemColors.Control;
-            colorControlCellPlaneB.Blue = 0;
-            colorControlCellPlaneB.BlueF = 0F;
             colorControlCellPlaneB.BoxSize = new System.Drawing.Size(20, 20);
             colorControlCellPlaneB.Color = System.Drawing.Color.FromArgb(0, 128, 0);
-            colorControlCellPlaneB.Green = 128;
-            colorControlCellPlaneB.GreenF = 0.5019608F;
             colorControlCellPlaneB.Name = "colorControlCellPlaneB";
-            colorControlCellPlaneB.Red = 0;
-            colorControlCellPlaneB.RedF = 0F;
             toolTip.SetToolTip(colorControlCellPlaneB, resources.GetString("colorControlCellPlaneB.ToolTip1"));
             colorControlCellPlaneB.ColorChanged += unitCell_PropertyChanged;
             // 
             // colorControlCellPlaneC
             // 
-            colorControlCellPlaneC.Argb = -16776961;
             resources.ApplyResources(colorControlCellPlaneC, "colorControlCellPlaneC");
             colorControlCellPlaneC.BackColor = System.Drawing.SystemColors.Control;
-            colorControlCellPlaneC.Blue = 255;
-            colorControlCellPlaneC.BlueF = 1F;
             colorControlCellPlaneC.BoxSize = new System.Drawing.Size(20, 20);
             colorControlCellPlaneC.Color = System.Drawing.Color.FromArgb(0, 0, 255);
-            colorControlCellPlaneC.Green = 0;
-            colorControlCellPlaneC.GreenF = 0F;
             colorControlCellPlaneC.Name = "colorControlCellPlaneC";
-            colorControlCellPlaneC.Red = 0;
-            colorControlCellPlaneC.RedF = 0F;
             toolTip.SetToolTip(colorControlCellPlaneC, resources.GetString("colorControlCellPlaneC.ToolTip1"));
             colorControlCellPlaneC.ColorChanged += unitCell_PropertyChanged;
             // 
@@ -860,18 +832,11 @@
             // 
             // colorControlCellEdge
             // 
-            colorControlCellEdge.Argb = -8355712;
             resources.ApplyResources(colorControlCellEdge, "colorControlCellEdge");
             colorControlCellEdge.BackColor = System.Drawing.SystemColors.Control;
-            colorControlCellEdge.Blue = 128;
-            colorControlCellEdge.BlueF = 0.5019608F;
             colorControlCellEdge.BoxSize = new System.Drawing.Size(20, 20);
             colorControlCellEdge.Color = System.Drawing.Color.FromArgb(128, 128, 128);
-            colorControlCellEdge.Green = 128;
-            colorControlCellEdge.GreenF = 0.5019608F;
             colorControlCellEdge.Name = "colorControlCellEdge";
-            colorControlCellEdge.Red = 128;
-            colorControlCellEdge.RedF = 0.5019608F;
             toolTip.SetToolTip(colorControlCellEdge, resources.GetString("colorControlCellEdge.ToolTip1"));
             colorControlCellEdge.ColorChanged += unitCell_PropertyChanged;
             // 
@@ -887,52 +852,31 @@
             // 
             // colorControlCellEdgeA
             // 
-            colorControlCellEdgeA.Argb = -65536;
             resources.ApplyResources(colorControlCellEdgeA, "colorControlCellEdgeA");
             colorControlCellEdgeA.BackColor = System.Drawing.SystemColors.Control;
-            colorControlCellEdgeA.Blue = 0;
-            colorControlCellEdgeA.BlueF = 0F;
             colorControlCellEdgeA.BoxSize = new System.Drawing.Size(20, 20);
             colorControlCellEdgeA.Color = System.Drawing.Color.FromArgb(255, 0, 0);
-            colorControlCellEdgeA.Green = 0;
-            colorControlCellEdgeA.GreenF = 0F;
             colorControlCellEdgeA.Name = "colorControlCellEdgeA";
-            colorControlCellEdgeA.Red = 255;
-            colorControlCellEdgeA.RedF = 1F;
             toolTip.SetToolTip(colorControlCellEdgeA, resources.GetString("colorControlCellEdgeA.ToolTip1"));
             colorControlCellEdgeA.ColorChanged += unitCell_PropertyChanged;
             // 
             // colorControlCellEdgeB
             // 
-            colorControlCellEdgeB.Argb = -16744448;
             resources.ApplyResources(colorControlCellEdgeB, "colorControlCellEdgeB");
             colorControlCellEdgeB.BackColor = System.Drawing.SystemColors.Control;
-            colorControlCellEdgeB.Blue = 0;
-            colorControlCellEdgeB.BlueF = 0F;
             colorControlCellEdgeB.BoxSize = new System.Drawing.Size(20, 20);
             colorControlCellEdgeB.Color = System.Drawing.Color.FromArgb(0, 128, 0);
-            colorControlCellEdgeB.Green = 128;
-            colorControlCellEdgeB.GreenF = 0.5019608F;
             colorControlCellEdgeB.Name = "colorControlCellEdgeB";
-            colorControlCellEdgeB.Red = 0;
-            colorControlCellEdgeB.RedF = 0F;
             toolTip.SetToolTip(colorControlCellEdgeB, resources.GetString("colorControlCellEdgeB.ToolTip1"));
             colorControlCellEdgeB.ColorChanged += unitCell_PropertyChanged;
             // 
             // colorControlCellEdgeC
             // 
-            colorControlCellEdgeC.Argb = -16776961;
             resources.ApplyResources(colorControlCellEdgeC, "colorControlCellEdgeC");
             colorControlCellEdgeC.BackColor = System.Drawing.SystemColors.Control;
-            colorControlCellEdgeC.Blue = 255;
-            colorControlCellEdgeC.BlueF = 1F;
             colorControlCellEdgeC.BoxSize = new System.Drawing.Size(20, 20);
             colorControlCellEdgeC.Color = System.Drawing.Color.FromArgb(0, 0, 255);
-            colorControlCellEdgeC.Green = 0;
-            colorControlCellEdgeC.GreenF = 0F;
             colorControlCellEdgeC.Name = "colorControlCellEdgeC";
-            colorControlCellEdgeC.Red = 0;
-            colorControlCellEdgeC.RedF = 0F;
             toolTip.SetToolTip(colorControlCellEdgeC, resources.GetString("colorControlCellEdgeC.ToolTip1"));
             colorControlCellEdgeC.ColorChanged += unitCell_PropertyChanged;
             // 
@@ -1446,18 +1390,11 @@
             // 
             // colorControlInversion
             // 
-            colorControlInversion.Argb = -16760768;
             resources.ApplyResources(colorControlInversion, "colorControlInversion");
             colorControlInversion.BackColor = System.Drawing.SystemColors.Control;
-            colorControlInversion.Blue = 64;
-            colorControlInversion.BlueF = 0.2509804F;
             colorControlInversion.BoxSize = new System.Drawing.Size(20, 20);
             colorControlInversion.Color = System.Drawing.Color.FromArgb(0, 64, 64);
-            colorControlInversion.Green = 64;
-            colorControlInversion.GreenF = 0.2509804F;
             colorControlInversion.Name = "colorControlInversion";
-            colorControlInversion.Red = 0;
-            colorControlInversion.RedF = 0F;
             colorControlInversion.ColorChanged += symmetryElement_PropertyChanged;
             // 
             // groupBoxPlanes
@@ -1522,18 +1459,11 @@
             // 
             // colorControlPlane
             // 
-            colorControlPlane.Argb = -16777088;
             resources.ApplyResources(colorControlPlane, "colorControlPlane");
             colorControlPlane.BackColor = System.Drawing.SystemColors.Control;
-            colorControlPlane.Blue = 128;
-            colorControlPlane.BlueF = 0.5019608F;
             colorControlPlane.BoxSize = new System.Drawing.Size(20, 20);
             colorControlPlane.Color = System.Drawing.Color.FromArgb(0, 0, 128);
-            colorControlPlane.Green = 0;
-            colorControlPlane.GreenF = 0F;
             colorControlPlane.Name = "colorControlPlane";
-            colorControlPlane.Red = 0;
-            colorControlPlane.RedF = 0F;
             colorControlPlane.ColorChanged += symmetryElement_PropertyChanged;
             // 
             // groupBoxAxes
@@ -1609,18 +1539,11 @@
             // 
             // colorControlAxisColor
             // 
-            colorControlAxisColor.Argb = -8388608;
             resources.ApplyResources(colorControlAxisColor, "colorControlAxisColor");
             colorControlAxisColor.BackColor = System.Drawing.SystemColors.Control;
-            colorControlAxisColor.Blue = 0;
-            colorControlAxisColor.BlueF = 0F;
             colorControlAxisColor.BoxSize = new System.Drawing.Size(20, 20);
             colorControlAxisColor.Color = System.Drawing.Color.FromArgb(128, 0, 0);
-            colorControlAxisColor.Green = 0;
-            colorControlAxisColor.GreenF = 0F;
             colorControlAxisColor.Name = "colorControlAxisColor";
-            colorControlAxisColor.Red = 128;
-            colorControlAxisColor.RedF = 0.5019608F;
             colorControlAxisColor.ColorChanged += symmetryElement_PropertyChanged;
             // 
             // checkBoxShowSymmetryElements
@@ -1655,19 +1578,12 @@
             // 
             // colorControlLabelColor
             // 
-            colorControlLabelColor.Argb = -16777216;
             resources.ApplyResources(colorControlLabelColor, "colorControlLabelColor");
             toolTip.SetToolTip(colorControlLabelColor, resources.GetString("colorControlLabelColor.ToolTip")); // 260531Cl
             colorControlLabelColor.BackColor = System.Drawing.SystemColors.Control;
-            colorControlLabelColor.Blue = 0;
-            colorControlLabelColor.BlueF = 0F;
             colorControlLabelColor.BoxSize = new System.Drawing.Size(20, 20);
             colorControlLabelColor.Color = System.Drawing.Color.FromArgb(0, 0, 0);
-            colorControlLabelColor.Green = 0;
-            colorControlLabelColor.GreenF = 0F;
             colorControlLabelColor.Name = "colorControlLabelColor";
-            colorControlLabelColor.Red = 0;
-            colorControlLabelColor.RedF = 0F;
             colorControlLabelColor.ColorChanged += numericBoxLabelSize_ValueChanged;
             // 
             // checkBoxShowLabel

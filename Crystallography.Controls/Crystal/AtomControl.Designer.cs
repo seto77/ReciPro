@@ -1186,19 +1186,12 @@
             // 
             // colorControlAtomColor
             // 
-            colorControlAtomColor.Argb = -986896;
             resources.ApplyResources(colorControlAtomColor, "colorControlAtomColor");
             toolTip.SetToolTip(colorControlAtomColor, resources.GetString("colorControlAtomColor.ToolTip")); // 260531Cl
             colorControlAtomColor.BackColor = System.Drawing.SystemColors.Control;
-            colorControlAtomColor.Blue = 240;
-            colorControlAtomColor.BlueF = 0.9411765F;
             colorControlAtomColor.BoxSize = new System.Drawing.Size(20, 20);
             colorControlAtomColor.Color = System.Drawing.Color.FromArgb(240, 240, 240);
-            colorControlAtomColor.Green = 240;
-            colorControlAtomColor.GreenF = 0.9411765F;
             colorControlAtomColor.Name = "colorControlAtomColor";
-            colorControlAtomColor.Red = 240;
-            colorControlAtomColor.RedF = 0.9411765F;
             // 
             // buttonApplyToSameElement
             // 
