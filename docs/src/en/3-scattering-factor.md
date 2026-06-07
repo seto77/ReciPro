@@ -4,7 +4,7 @@
 
 ![Beam Interaction](../assets/cap-en-auto/FormBeamInteraction.png)
 
-The incident beam is selected in the band at the top of the window; the four tabs below — **Reflections**, **Attenuations & Transport**, **Scattering factors**, and **Fluorescence** — show the different aspects of the interaction. Every value updates immediately when the crystal, the beam, or a tab option changes.
+The incident beam is selected in the band at the top of the window; the four tabs below — **Reflections**, **Attenuations & Transport**, **Scattering factors**, and **Fluorescence** — show the different aspects of the interaction. Each tab section below shows the tab under **X-ray / Electron / Neutron** beams (use the tabs in each figure); the content changes markedly with the beam.
 
 !!! note "X-ray data and the bundled xraylib library"
     Many of the X-ray quantities (anomalous dispersion $f'/f''$, the $F(q)+S(q)$ scattering split, the photo / Rayleigh / Compton breakdown of the mass attenuation, absorption-edge jumps, and fluorescence yields) are evaluated with the bundled **[xraylib](https://github.com/tschoonj/xraylib)** library. If xraylib is unavailable, ReciPro falls back to its internal tables (photoabsorption-only attenuation, characteristic-line energies only) and the affected cells show **N/A**. The **source** row of each table states which data set was used.
@@ -44,7 +44,16 @@ The **Fluorescence** tab is X-ray-only and disappears for electron and neutron b
 
 ## Reflections tab
 
-Lists the allowed crystal planes (reflections) of the crystal and the **structure factor** and diffraction intensity of each. For X-rays the structure factor now includes the **anomalous dispersion** terms $f'/f''$ at the current energy, so `F_inv` (the imaginary part) is generally non-zero near an absorption edge.
+Lists the allowed crystal planes (reflections) of the crystal and the **structure factor** and diffraction intensity of each. For X-rays the structure factor now includes the **anomalous dispersion** terms $f'/f''$ at the current energy, so `F_inv` (the imaginary part) is generally non-zero near an absorption edge. The layout is the same for every beam; only the structure-factor values and the 2θ of each reflection change.
+
+=== "X-ray"
+    ![Reflections — X-ray](../assets/cap-en-auto/FormBeamInteraction-xray-reflections.png)
+
+=== "Electron"
+    ![Reflections — electron](../assets/cap-en-auto/FormBeamInteraction-electron-reflections.png)
+
+=== "Neutron"
+    ![Reflections — neutron](../assets/cap-en-auto/FormBeamInteraction-neutron-reflections.png)
 
 **Options**
 
@@ -80,7 +89,14 @@ Each row is one reflection (or a group of symmetry-equivalent planes):
 
 How far the beam penetrates the material and how it loses energy. The content depends on the beam.
 
-![Attenuations & Transport tab](../assets/cap-en-auto/FormBeamInteraction.tabControl.tabPageAttenuations.png)
+=== "X-ray"
+    ![Attenuations & Transport — X-ray](../assets/cap-en-auto/FormBeamInteraction-xray-attenuations.png)
+
+=== "Electron"
+    ![Attenuations & Transport — electron](../assets/cap-en-auto/FormBeamInteraction-electron-attenuations.png)
+
+=== "Neutron"
+    ![Attenuations & Transport — neutron](../assets/cap-en-auto/FormBeamInteraction-neutron-attenuations.png)
 
 ### X-ray
 
@@ -90,9 +106,7 @@ The radio buttons choose the plotted coefficient against photon energy (1–60 k
 - **µ** — the **linear** attenuation coefficient $\mu = (\mu/\rho)\cdot\rho$ (cm⁻¹): the attenuation per centimetre of the actual material at its real density. The transmitted intensity follows $I = I_0\,e^{-\mu t}$, and $1/\mu$ is the distance over which the intensity falls to about 37 % (1/e).
 - **T %** — the **transmission** $T = e^{-\mu t}$ in percent for the sample thickness **t** set in the **Thickness t** box (µm). 100 % = transparent, 0 % = fully blocked; use this to judge a sensible sample thickness at the current energy.
 
-The vertical lines mark the current energy and each element's **absorption edges**.
-
-The scalar table on the left lists, at the current energy: **µ/ρ (total)**, **µ (linear)**, **Attenuation length** ($1/\mu$), **HVL** (half-value layer, $\ln 2/\mu$), **Transmission** at thickness *t*, **µ_en/ρ** (mass energy-absorption coefficient), the X-ray refractive-index decrements **δ** and **β** ($n = 1-\delta+i\beta$), the **θc (critical)** angle for total external reflection, and the real **X-ray SLD** (scattering-length density). The lower table lists the **K** and **L3** absorption **edge** energies and their **Jump** ratios for each element.
+The vertical lines mark the current energy and each element's **absorption edges**. The scalar table on the left lists, at the current energy: **µ/ρ (total)**, **µ (linear)**, **Attenuation length** ($1/\mu$), **HVL** (half-value layer, $\ln 2/\mu$), **Transmission** at thickness *t*, **µ_en/ρ** (mass energy-absorption coefficient), the X-ray refractive-index decrements **δ** and **β** ($n = 1-\delta+i\beta$), the **θc (critical)** angle for total external reflection, and the real **X-ray SLD** (scattering-length density). The lower table lists the **K** and **L3** absorption **edge** energies and their **Jump** ratios for each element.
 
 ### Electron
 
@@ -117,7 +131,14 @@ Neutron interaction is set by nuclear cross sections rather than an energy-depen
 
 The atomic scattering factor of each constituent element, plotted against $s = \sin\theta/\lambda$ (Å⁻¹). Each element is drawn in its own colour, and the **vertical cursor line** can be dragged to read off the scattering factor of every element at that position into the table on the left.
 
-![Scattering factors tab](../assets/cap-en-auto/FormBeamInteraction.tabControl.tabPageScatteringFactors.png)
+=== "X-ray"
+    ![Scattering factors — X-ray](../assets/cap-en-auto/FormBeamInteraction-xray-scattering.png)
+
+=== "Electron"
+    ![Scattering factors — electron](../assets/cap-en-auto/FormBeamInteraction-electron-scattering.png)
+
+=== "Neutron"
+    ![Scattering factors — neutron](../assets/cap-en-auto/FormBeamInteraction-neutron-scattering.png)
 
 - **X-ray** offers two **Model** modes: **f(s)** plots the conventional X-ray atomic scattering factor (in electron units); **F(q)+S(q)** plots the Rayleigh **coherent** form factor $F(q)$ together with the Compton **incoherent** scattering function $S(q)$ (from xraylib). The table also lists the anomalous-dispersion terms **f'(E)** and **f''(E)** at the current energy.
 - **Electron** offers three parametrizations of the electron scattering factor: **Peng**, **Kirkland**, and **8-Gaussians**. The table shows $f_e(s)$ (nm) and which **model** produced it.
@@ -130,7 +151,7 @@ The atomic scattering factor of each constituent element, plotted against $s = \
 
 For an X-ray beam, the characteristic **fluorescence** emission of the sample. (This tab is hidden for electron and neutron beams.)
 
-![Fluorescence tab](../assets/cap-en-auto/FormBeamInteraction.tabControl.tabPageFluorescence.png)
+![Fluorescence (X-ray)](../assets/cap-en-auto/FormBeamInteraction-xray-fluorescence.png)
 
 The **EDX emission lines** plot draws the characteristic lines (Kα1, Kα2, Kβ1, Lα1, Lα2, Lβ1) of every element as sticks at their photon energies, with the height proportional to the atomic fraction × radiative rate × fluorescence yield (a qualitative EDX-style preview; excitation cross section and detector efficiency are not modelled). The lower table lists, per line, the element, line name, energy **E keV**, relative intensity **Rel.I**, and the fluorescence yield **ω**. The scalar table reports the K-shell yield **ω_K** of each element and the **strongest line** in the spectrum.
 
