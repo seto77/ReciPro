@@ -257,6 +257,11 @@ internal static class GuiCapture
         if (form is FormDiffractionSimulator diffractionSimulatorForModeShots)
             CaptureDiffractionSimulatorModeShots(diffractionSimulatorForModeShots, name, outDir, trace);
 
+        // 260608Cl 追加: FormBeamInteraction は線種 (X線/電子線/中性子線) でタブ内容が大きく変わる (減衰・輸送/散乱因子の曲線・表が
+        // 別物、蛍光は X線専用) ため、線種×タブごとに TabControl 全体をクロップ撮影する。
+        if (form is Crystallography.Controls.FormBeamInteraction beamInteractionForModeShots)
+            CaptureBeamInteractionModeShots(beamInteractionForModeShots, name, outDir, trace);
+
         if (closeAfterCapture)
         {
             form.TopMost = false; // (260524Cl) 後続フォームの最前面化を妨げないよう閉じる前に解除
@@ -344,6 +349,63 @@ internal static class GuiCapture
             }
         }
     }
+
+    /// <summary>
+    /// 260608Cl 追加: FormBeamInteraction を「線種 (X線/電子線/中性子線) × タブ」ごとに撮る。
+    /// 各タブの内容は線種で大きく変わる (減衰・輸送/散乱因子は曲線・表が別物、蛍光は X線専用で電子/中性子では消える) ため、
+    /// 線源を切り替え → 表示中の各 TabPage を選択 → TabControl 全体 (タブ見出し込み) をクロップし、
+    /// <c>FormBeamInteraction-{xray|electron|neutron}-{reflections|attenuations|scattering|fluorescence}.png</c> として保存する。
+    /// マニュアルの各タブ節 (X線/電子線/中性子線の content-tab) から参照する。標準の全体画像・波長コントロールクロップは
+    /// CaptureForm 側で既に撮れている。線種で TabPages が増減する (蛍光は X線のみ) ので ToArray でスナップショットして列挙する。
+    /// </summary>
+    private static void CaptureBeamInteractionModeShots(Crystallography.Controls.FormBeamInteraction form, string baseName, string outDir, Action<string> trace)
+    {
+        var beams = new[]
+        {
+            (Crystallography.WaveSource.Xray, "xray"),
+            (Crystallography.WaveSource.Electron, "electron"),
+            (Crystallography.WaveSource.Neutron, "neutron"),
+        };
+        foreach (var (src, beamSuffix) in beams)
+        {
+            try
+            {
+                form.SetCaptureBeam(src);              // 線源切替 → ApplyBeamDependentVisibility で蛍光タブの増減 (X線のみ) も反映
+                Settle(form, TabSwitchSettleMs, trace);
+                BringToFront(form);
+                var tc = form.CaptureTabControl;
+                foreach (var tab in tc.TabPages.Cast<TabPage>().ToArray()) // 線種で増減するのでスナップショット
+                {
+                    var name = baseName + "-" + beamSuffix + "-" + BeamInteractionTabKey(tab.Name);
+                    try
+                    {
+                        tc.SelectedTab = tab;             // SelectedIndexChanged → UpdateAllTabs で当該タブを計算
+                        Settle(form, TabSwitchSettleMs, trace);
+                        BringToFront(form);
+                        Settle(form, TabSwitchSettleMs, trace);
+                        var bmp = CaptureScreen(new Rectangle(GetScreenLocation(tc), tc.Size), form, trace, name, retryIfSolid: true);
+                        if (bmp != null)
+                            using (bmp) bmp.Save(Path.Combine(outDir, name + ".png"), ImageFormat.Png);
+                        else
+                            trace($"{name}\tWARN\tbeam-tab capture failed");
+                    }
+                    catch (System.Exception ex) { trace($"{name}\tWARN\tbeam-tab shot: {ex.GetType().Name}: {ex.Message}"); }
+                }
+            }
+            catch (System.Exception ex) { trace($"{baseName}-{beamSuffix}\tWARN\tbeam mode: {ex.GetType().Name}: {ex.Message}"); }
+        }
+        try { form.SetCaptureBeam(Crystallography.WaveSource.Xray); } catch { /* 撮影後 close 前に既定 (X線) へ戻す */ }
+    }
+
+    /// <summary>TabPage 名 → ファイル名サフィックス。260608Cl 追加。</summary>
+    private static string BeamInteractionTabKey(string tabPageName) => tabPageName switch
+    {
+        "tabPageReflections" => "reflections",
+        "tabPageAttenuations" => "attenuations",
+        "tabPageScatteringFactors" => "scattering",
+        "tabPageFluorescence" => "fluorescence",
+        _ => tabPageName,
+    };
 
     /// <summary>260524Cl 追加: CopyFromScreen の前に対象フォームを通常表示・最前面・アクティブ化する。</summary>
     private static void BringToFront(Form form)

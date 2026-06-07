@@ -51,7 +51,29 @@ public partial class FormBeamInteraction : FormBase
         Visible = false;
     }
 
-    #endregion 
+    #endregion
+
+    #region --capture 用 (GuiCapture の線種別モード撮影) 260608Cl 追加
+    /// <summary>--capture 用: 線源を設定して全タブを再計算する (GuiCapture.CaptureBeamInteractionModeShots から呼ぶ)。
+    /// 線源切替で ApplyBeamDependentVisibility が走り、蛍光タブの増減 (X線のみ) も反映される。
+    /// 既定の Cu Kα (8 keV) は電子線では MonteCarlo の低エネルギー端で退化し輸送グラフが NaN になるため、
+    /// マニュアル用に線種ごとの代表値へ設定する (電子線=20 keV / X線=Cu Kα / 中性子=熱中性子 ~1.8 Å)。260608Cl 追加。</summary>
+    public void SetCaptureBeam(WaveSource source)
+    {
+        waveLengthControl.WaveSource = source;
+        if (source == WaveSource.Electron)
+            waveLengthControl.Energy = 20.0;            // 代表的な電子線エネルギー (MC の 1–30 keV 範囲内・輸送量が健全)
+        else if (source == WaveSource.Xray)
+            waveLengthControl.Energy = 8.04114721;      // Cu Kα 相当 (既定)
+        else // Neutron: グラフ無し。σ_abs(1/v) 用に熱中性子の波長 (nm) を据える (電子線の短波長を引き継がせない)
+            waveLengthControl.WaveLength = 0.18;
+        SetSortedPlanes();
+        UpdateAllTabs();
+    }
+
+    /// <summary>--capture 用: 線種×タブのクロップを撮るために TabControl を公開する。260608Cl 追加。</summary>
+    public TabControl CaptureTabControl => tabControl;
+    #endregion
 
     #region 共通: Crystal / 波長変更の追従 (両タブを更新)
     /// <summary>Scattering / Attenuation / Fluorescence の各タブを更新 (各メソッドが選択タブ以外を自己 return)。260606Cl 追加。</summary>
@@ -1102,14 +1124,23 @@ public partial class FormBeamInteraction : FormBase
 
         if (q == 0)//全正規化重ね描き (従来の既定)
         {
+            //260608Cl 堅牢化: 低エネルギー端 (k≈1keV) で GetParameters が NaN/Inf/負値 (dE/ds は損失で符号負) を返すと、
+            //          旧 Math.Max(.., NaN) が max を NaN 汚染 → `>0` ガードで全曲線が空 → 軸レンジが NaN ("NaNE-2147483648") 化していた。
+            //          NaN/Inf を除外し、dE/ds は絶対値 (損失の大きさ) で正規化する。
+            static bool Ok(double v) => !double.IsNaN(v) && !double.IsInfinity(v);
             double sMax = 0, mMax = 0, dMax = 0;
-            foreach (var r in raw) { sMax = Math.Max(sMax, r.s); mMax = Math.Max(mMax, r.m); dMax = Math.Max(dMax, r.d); }
+            foreach (var r in raw)
+            {
+                if (Ok(r.s)) sMax = Math.Max(sMax, Math.Abs(r.s));
+                if (Ok(r.m)) mMax = Math.Max(mMax, Math.Abs(r.m));
+                if (Ok(r.d)) dMax = Math.Max(dMax, Math.Abs(r.d));
+            }
             var sig = new List<PointD>(n + 1); var mfp = new List<PointD>(n + 1); var des = new List<PointD>(n + 1);
             foreach (var r in raw) // 3 量はスケール差大 → 各最大で正規化して重ね描き (絶対値は表)
             {
-                if (sMax > 0) sig.Add(new PointD(r.k, r.s / sMax));
-                if (mMax > 0) mfp.Add(new PointD(r.k, r.m / mMax));
-                if (dMax > 0) des.Add(new PointD(r.k, r.d / dMax));
+                if (sMax > 0 && Ok(r.s)) sig.Add(new PointD(r.k, Math.Abs(r.s) / sMax));
+                if (mMax > 0 && Ok(r.m)) mfp.Add(new PointD(r.k, Math.Abs(r.m) / mMax));
+                if (dMax > 0 && Ok(r.d)) des.Add(new PointD(r.k, Math.Abs(r.d) / dMax));
             }
             graphControlAtten.YLog = false;
             graphControlAtten.AxisLabelY = R("Graph.Axis.Normalized"); graphControlAtten.LabelY = R("Graph.Label.Normalized"); graphControlAtten.UnitY = "";//260607Ch resx 化
