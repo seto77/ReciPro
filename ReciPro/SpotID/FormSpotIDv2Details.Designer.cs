@@ -62,34 +62,20 @@
             // 
             scalablePictureBoxAdvanced.Cursor = System.Windows.Forms.Cursors.Default;
             scalablePictureBoxAdvanced.Dock = System.Windows.Forms.DockStyle.Fill;
-            scalablePictureBoxAdvanced.FixZoomAndCenter = false;
             scalablePictureBoxAdvanced.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             scalablePictureBoxAdvanced.FrequencyGraphVisible = false;
-            scalablePictureBoxAdvanced.ImageFilter_DustAndScratches = false;
-            scalablePictureBoxAdvanced.ImageFilter_DustAndScratchesRadius = 1D;
-            scalablePictureBoxAdvanced.ImageFilter_DustAndScratchesThreshold = 3D;
             scalablePictureBoxAdvanced.ImageFilter_DustAndScratchesVisible = false;
-            scalablePictureBoxAdvanced.ImageFilter_GaussianBlur = false;
-            scalablePictureBoxAdvanced.ImageFilter_GaussianBlurRadius = 1D;
             scalablePictureBoxAdvanced.ImageFilter_GaussianBlurVisible = false;
             scalablePictureBoxAdvanced.ImageFilterVisible = false;
             scalablePictureBoxAdvanced.Location = new System.Drawing.Point(0, 0);
-            scalablePictureBoxAdvanced.LogScaleBar = false;
-            scalablePictureBoxAdvanced.LowerIntensity = 0D;
             scalablePictureBoxAdvanced.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            scalablePictureBoxAdvanced.MaximumIntensity = 255D;
-            scalablePictureBoxAdvanced.MinimumIntensity = 0D;
             scalablePictureBoxAdvanced.MousePositionLabelVisible = false;
             scalablePictureBoxAdvanced.Name = "scalablePictureBoxAdvanced";
-            scalablePictureBoxAdvanced.ShowGradiaent = true;
             scalablePictureBoxAdvanced.Size = new System.Drawing.Size(391, 474);
             scalablePictureBoxAdvanced.StatusLabel = " ";
             scalablePictureBoxAdvanced.StatusProgress = 0D;
             scalablePictureBoxAdvanced.StatusVisible = false;
             scalablePictureBoxAdvanced.TabIndex = 3;
-            scalablePictureBoxAdvanced.TrackBarVisible = true;
-            scalablePictureBoxAdvanced.UpperIntensity = 255D;
-            scalablePictureBoxAdvanced.VisibleGradient = true;
             // 
             // graphControlNWtoSE
             // 

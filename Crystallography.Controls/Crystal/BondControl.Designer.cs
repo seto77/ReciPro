@@ -467,7 +467,6 @@
             resources.ApplyResources(colorControlEdges, "colorControlEdges");
             colorControlEdges.BackColor = System.Drawing.SystemColors.Control;
             colorControlEdges.BoxSize = new System.Drawing.Size(20, 20);
-            colorControlEdges.Color = System.Drawing.Color.FromArgb(240, 240, 240);
             colorControlEdges.Name = "colorControlEdges";
             // 
             // colorControlPolyhedron
@@ -475,7 +474,6 @@
             resources.ApplyResources(colorControlPolyhedron, "colorControlPolyhedron");
             colorControlPolyhedron.BackColor = System.Drawing.SystemColors.Control;
             colorControlPolyhedron.BoxSize = new System.Drawing.Size(20, 20);
-            colorControlPolyhedron.Color = System.Drawing.Color.FromArgb(240, 240, 240);
             colorControlPolyhedron.Name = "colorControlPolyhedron";
             // 
             // colorControlBond
@@ -483,7 +481,6 @@
             resources.ApplyResources(colorControlBond, "colorControlBond");
             colorControlBond.BackColor = System.Drawing.SystemColors.Control;
             colorControlBond.BoxSize = new System.Drawing.Size(20, 20);
-            colorControlBond.Color = System.Drawing.Color.FromArgb(240, 240, 240);
             colorControlBond.Name = "colorControlBond";
             // 
             // panel2

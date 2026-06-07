@@ -1968,14 +1968,11 @@
             // 
             resources.ApplyResources(waveLengthControl, "waveLengthControl");
             waveLengthControl.Energy = 199.99999993D;
-            waveLengthControl.Monochrome = true;
             waveLengthControl.Name = "waveLengthControl";
-            waveLengthControl.ShowWaveSource = true;
             toolTip.SetToolTip(waveLengthControl, resources.GetString("waveLengthControl.ToolTip"));
             waveLengthControl.WaveLength = 0.0025079347460000003D;
             waveLengthControl.WaveSource = WaveSource.Electron;
             waveLengthControl.XrayWaveSourceElementNumber = 0;
-            waveLengthControl.XrayWaveSourceLine = XrayLine.Ka1;
             waveLengthControl.WavelengthChanged += waveLengthControl_WavelengthChanged;
             waveLengthControl.WaveSourceChanged += WaveLengthControl_WaveSourceChanged;
             // 

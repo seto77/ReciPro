@@ -824,7 +824,6 @@
             waveLengthControl.Margin = new System.Windows.Forms.Padding(0);
             waveLengthControl.MaximumSize = new System.Drawing.Size(500, 500);
             waveLengthControl.MinimumSize = new System.Drawing.Size(190, 0);
-            waveLengthControl.Monochrome = true;
             waveLengthControl.Name = "waveLengthControl";
             toolTip.SetToolTip(waveLengthControl, resources.GetString("waveLengthControl.ToolTip")); // 260531Cl
             waveLengthControl.ShowWaveSource = false;
@@ -832,9 +831,7 @@
             waveLengthControl.TabIndex = 72;
             waveLengthControl.LabelFont = new System.Drawing.Font("Tahoma", 9.75F);
             waveLengthControl.WaveLength = 0.041328040768899996D;
-            waveLengthControl.WaveSource = WaveSource.Xray;
             waveLengthControl.XrayWaveSourceElementNumber = 0;
-            waveLengthControl.XrayWaveSourceLine = XrayLine.Ka1;
             // 
             // numericBoxMonochromaticity
             // 
@@ -1442,21 +1439,12 @@
             // 
             scalablePictureBox.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
             scalablePictureBox.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            scalablePictureBox.FixZoomAndCenter = false;
-            scalablePictureBox.FocusEventEnabled = false;
-            scalablePictureBox.HorizontalFlip = false;
             scalablePictureBox.Location = new System.Drawing.Point(0, 0);
-            scalablePictureBox.ManualSpotMode = false;
             scalablePictureBox.Margin = new System.Windows.Forms.Padding(0);
             scalablePictureBox.MouseScaling = true;
-            scalablePictureBox.MouseTranslation = false;
             scalablePictureBox.Name = "scalablePictureBox";
-            scalablePictureBox.ShowAreaRectangle = false;
-            scalablePictureBox.ShowRimRentangle = false;
             scalablePictureBox.Size = new System.Drawing.Size(676, 701);
             scalablePictureBox.TabIndex = 169;
-            scalablePictureBox.TitleVisible = false;
-            scalablePictureBox.VerticalFlip = false;
             scalablePictureBox.Zoom = 128D;
             scalablePictureBox.Paint2 += scalablePictureBox_Paint2;
             scalablePictureBox.MouseMove2 += scalablePictureBox_MouseMove2;

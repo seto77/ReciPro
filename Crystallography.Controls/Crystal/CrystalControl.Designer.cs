@@ -499,17 +499,8 @@
             // 
             // symmetryControl
             // 
-            symmetryControl.A = 0D;
-            symmetryControl.Alpha = 0D;
-            symmetryControl.B = 0D;
-            symmetryControl.Beta = 0D;
-            symmetryControl.C = 0D;
             resources.ApplyResources(symmetryControl, "symmetryControl");
-            symmetryControl.Gamma = 0D;
-            symmetryControl.LengthUnit = LengthUnitEnum.Angstrom;
             symmetryControl.Name = "symmetryControl";
-            symmetryControl.ShowError = false;
-            symmetryControl.SymmetrySeriesNumber = 0;
             symmetryControl.ItemChanged += symmetryControl_ItemChanged;
             // 
             // tabPageAtom
@@ -524,53 +515,11 @@
             // 
             // atomControl
             // 
-            atomControl.Alpha = 0F;
-            atomControl.Ambient = 0F;
-            atomControl.Aniso11 = 0D;
-            atomControl.Aniso11Err = 0D;
-            atomControl.Aniso12 = 0D;
-            atomControl.Aniso12Err = 0D;
-            atomControl.Aniso13 = 0D;
-            atomControl.Aniso13Err = 0D;
-            atomControl.Aniso22 = 0D;
-            atomControl.Aniso22Err = 0D;
-            atomControl.Aniso23 = 0D;
-            atomControl.Aniso23Err = 0D;
-            atomControl.Aniso33 = 0D;
-            atomControl.Aniso33Err = 0D;
             atomControl.AppearanceTabVisible = false;
-            atomControl.AtomColor = System.Drawing.Color.FromArgb(240, 240, 240);
-            atomControl.AtomicPositionError = false;
             atomControl.AtomNo = 0;
-            atomControl.AtomSubNoElectron = -1;
-            atomControl.AtomSubNoXray = -1;
             resources.ApplyResources(atomControl, "atomControl");
-            atomControl.DebyeWallerError = false;
-            atomControl.DebyeWallerTabVisible = true;
-            atomControl.Diffusion = 0F;
-            atomControl.ElementAndPositionTabVisible = true;
-            atomControl.Emission = 0F;
-            atomControl.Iso = 0D;
-            atomControl.IsoErr = 0D;
-            atomControl.Label = "";
             atomControl.Name = "atomControl";
-            atomControl.Occ = 0D;
-            atomControl.OccErr = 0D;
-            atomControl.OriginShiftVisible = true;
-            atomControl.Radius = 0D;
-            atomControl.ScatteringFactorTabVisible = true;
-            atomControl.SelectedTabIndex = 0;
-            atomControl.Shininess = 0F;
-            atomControl.ShowLabel = false;
-            atomControl.Specular = 0F;
             atomControl.UseIsotropy = false;
-            atomControl.UseTypeU = false;
-            atomControl.X = 0D;
-            atomControl.XErr = 0D;
-            atomControl.Y = 0D;
-            atomControl.YErr = 0D;
-            atomControl.Z = 0D;
-            atomControl.ZErr = 0D;
             atomControl.ItemsChanged += atomControl_AtomsChanged;
             // 
             // panelAtom
@@ -672,9 +621,7 @@
             // elasticityControl1
             // 
             resources.ApplyResources(elasticityControl1, "elasticityControl1");
-            elasticityControl1.Mode = Elasticity.Mode.Stiffness;
             elasticityControl1.Name = "elasticityControl1";
-            elasticityControl1.SymmetrySeriesNumber = 1;
             elasticityControl1.ValueChanged += elasticityControl1_ValueChanged;
             // 
             // tabPageStrainStress
@@ -1147,7 +1094,6 @@
             resources.ApplyResources(colorControl, "colorControl");
             colorControl.BackColor = System.Drawing.SystemColors.Control;
             colorControl.BoxSize = new System.Drawing.Size(20, 20);
-            colorControl.Color = System.Drawing.Color.FromArgb(240, 240, 240);
             colorControl.Name = "colorControl";
             toolTip.SetToolTip(colorControl, resources.GetString("colorControl.ToolTip1"));
             // 

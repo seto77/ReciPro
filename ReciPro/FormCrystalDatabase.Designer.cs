@@ -66,12 +66,9 @@
             // 
             // crystalDatabaseControl
             // 
-            crystalDatabaseControl.AMCSD_Checked = false;
-            crystalDatabaseControl.COD_Checked = false;
             crystalDatabaseControl.DatabaseSelection = true;
             crystalDatabaseControl.Dock = System.Windows.Forms.DockStyle.Fill;
             crystalDatabaseControl.Font = new System.Drawing.Font("Segoe UI", 9.75F);
-            crystalDatabaseControl.FontSize = 9.75F;
             crystalDatabaseControl.Location = new System.Drawing.Point(0, 0);
             crystalDatabaseControl.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             crystalDatabaseControl.Name = "crystalDatabaseControl";

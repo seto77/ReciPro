@@ -386,12 +386,9 @@
             waveLengthControl1.DirectionWaveEnergy = System.Windows.Forms.FlowDirection.LeftToRight;
             waveLengthControl1.DirectionWhole = System.Windows.Forms.FlowDirection.LeftToRight;
             waveLengthControl1.Energy = 8.04114721D;
-            waveLengthControl1.Monochrome = true;
             waveLengthControl1.Name = "waveLengthControl1";
-            waveLengthControl1.ShowWaveSource = true;
             toolTip.SetToolTip(waveLengthControl1, resources.GetString("waveLengthControl1.ToolTip"));
             waveLengthControl1.WaveLength = 0.154187106667D;
-            waveLengthControl1.WaveSource = WaveSource.Xray;
             waveLengthControl1.XrayWaveSourceElementNumber = 29;
             waveLengthControl1.XrayWaveSourceLine = XrayLine.Ka;
             waveLengthControl1.WavelengthChanged += waveLengthControl1_WavelengthChanged;

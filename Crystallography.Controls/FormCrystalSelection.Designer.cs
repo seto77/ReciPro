@@ -140,36 +140,16 @@
             // 
             // crystalControl1
             // 
-            this.crystalControl1.A = 0D;
             this.crystalControl1.AllowDrop = true;
-            this.crystalControl1.Alpha = 0D;
             this.crystalControl1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.crystalControl1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.crystalControl1.B = 0D;
-            this.crystalControl1.Beta = 0D;
-            this.crystalControl1.C = 0D;
-            this.crystalControl1.DefaultTabNumber = 0;
-            this.crystalControl1.Gamma = 0D;
             this.crystalControl1.Location = new System.Drawing.Point(482, 0);
             this.crystalControl1.Margin = new System.Windows.Forms.Padding(0);
             this.crystalControl1.Name = "crystalControl1";
-            this.crystalControl1.BeamInteractionVisible = false;
             this.crystalControl1.Size = new System.Drawing.Size(486, 256);
             this.crystalControl1.SkipEvent = false;
-            this.crystalControl1.SymmetryInformationVisible = false;
-            this.crystalControl1.SymmetrySeriesNumber = 0;
             this.crystalControl1.TabIndex = 1;
-            this.crystalControl1.VisibleAtomTab = true;
-            this.crystalControl1.VisibleBasicInfoTab = true;
-            this.crystalControl1.VisibleBondsPolyhedraTab = true;
-            this.crystalControl1.VisibleBoundTab = false;
-            this.crystalControl1.VisibleElasticityTab = true;
-            this.crystalControl1.VisibleEOSTab = true;
-            this.crystalControl1.VisibleLatticePlaneTab = false;
-            this.crystalControl1.VisiblePolycrystallineTab = false;
-            this.crystalControl1.VisibleReferenceTab = true;
-            this.crystalControl1.VisibleStressStrainTab = false;
             // 
             // panel1
             // 

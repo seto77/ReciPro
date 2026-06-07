@@ -1302,16 +1302,11 @@
             resources.ApplyResources(trackBarAdvancedDepthCueingNear, "trackBarAdvancedDepthCueingNear");
             trackBarAdvancedDepthCueingNear.ControlHeight = 25;
             trackBarAdvancedDepthCueingNear.DecimalPlaces = 1;
-            trackBarAdvancedDepthCueingNear.LogScrollBar = false;
             trackBarAdvancedDepthCueingNear.Maximum = 30D;
             trackBarAdvancedDepthCueingNear.Minimum = -30D;
             trackBarAdvancedDepthCueingNear.Name = "trackBarAdvancedDepthCueingNear";
             trackBarAdvancedDepthCueingNear.NumericBoxSize = 105;
-            trackBarAdvancedDepthCueingNear.Orientation = System.Windows.Forms.Orientation.Vertical;
-            trackBarAdvancedDepthCueingNear.Smart_Increment = true;
-            trackBarAdvancedDepthCueingNear.TickStyle = System.Windows.Forms.TickStyle.BottomRight;
             toolTip.SetToolTip(trackBarAdvancedDepthCueingNear, resources.GetString("trackBarAdvancedDepthCueingNear.ToolTip"));
-            trackBarAdvancedDepthCueingNear.UpDown_Increment = 1D;
             trackBarAdvancedDepthCueingNear.Value = 5D;
             trackBarAdvancedDepthCueingNear.ValueChanged += trackBarAdvanced2_ValueChanged;
             // 
@@ -1326,16 +1321,11 @@
             resources.ApplyResources(trackBarAdvancedDepthCueingFar, "trackBarAdvancedDepthCueingFar");
             trackBarAdvancedDepthCueingFar.ControlHeight = 25;
             trackBarAdvancedDepthCueingFar.DecimalPlaces = 1;
-            trackBarAdvancedDepthCueingFar.LogScrollBar = false;
             trackBarAdvancedDepthCueingFar.Maximum = 30D;
             trackBarAdvancedDepthCueingFar.Minimum = -30D;
             trackBarAdvancedDepthCueingFar.Name = "trackBarAdvancedDepthCueingFar";
             trackBarAdvancedDepthCueingFar.NumericBoxSize = 105;
-            trackBarAdvancedDepthCueingFar.Orientation = System.Windows.Forms.Orientation.Vertical;
-            trackBarAdvancedDepthCueingFar.Smart_Increment = true;
-            trackBarAdvancedDepthCueingFar.TickStyle = System.Windows.Forms.TickStyle.BottomRight;
             toolTip.SetToolTip(trackBarAdvancedDepthCueingFar, resources.GetString("trackBarAdvancedDepthCueingFar.ToolTip"));
-            trackBarAdvancedDepthCueingFar.UpDown_Increment = 1D;
             trackBarAdvancedDepthCueingFar.Value = -15D;
             trackBarAdvancedDepthCueingFar.ValueChanged += trackBarAdvanced2_ValueChanged;
             // 

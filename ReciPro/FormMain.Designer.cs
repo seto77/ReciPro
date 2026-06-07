@@ -385,31 +385,14 @@
             // 
             // crystalControl
             // 
-            crystalControl.A = 0D;
             resources.ApplyResources(crystalControl, "crystalControl");
             crystalControl.AllowDrop = true;
-            crystalControl.Alpha = 0D;
-            crystalControl.B = 0D;
-            crystalControl.Beta = 0D;
-            crystalControl.C = 0D;
             crystalControl.ColorControlVisible = false;
-            crystalControl.DefaultTabNumber = 0;
-            crystalControl.Gamma = 0D;
             crystalControl.Name = "crystalControl";
-            crystalControl.BeamInteractionVisible = false;
-            crystalControl.SymmetryInformationVisible = false;
-            crystalControl.SymmetrySeriesNumber = 0;
             toolTip.SetToolTip(crystalControl, resources.GetString("crystalControl.ToolTip"));
-            crystalControl.VisibleAtomTab = true;
-            crystalControl.VisibleBasicInfoTab = true;
             crystalControl.VisibleBondsPolyhedraTab = false;
-            crystalControl.VisibleBoundTab = false;
             crystalControl.VisibleElasticityTab = false; // 260604Cl 弾性定数タブは ReciPro では非表示。旧: = true
             crystalControl.VisibleEOSTab = false; // 260604Cl EOS タブは ReciPro では非表示 (状態方程式は PDIndexer 用機能)。旧: = true
-            crystalControl.VisibleLatticePlaneTab = false;
-            crystalControl.VisiblePolycrystallineTab = false;
-            crystalControl.VisibleReferenceTab = true;
-            crystalControl.VisibleStressStrainTab = false;
             crystalControl.CrystalChanged += crystalControl_CrystalChanged;
             crystalControl.BeamInteraction_VisibleChanged += crystalControl_BeamInteraction_VisibleChanged;
             crystalControl.SymmetryInformation_VisibleChanged += CrystalControl_SymmetryInformation_VisibleChanged;

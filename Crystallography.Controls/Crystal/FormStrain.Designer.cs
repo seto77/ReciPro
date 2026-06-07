@@ -370,10 +370,8 @@
             // 
             this.elasticityControl1.AutoSize = true;
             this.elasticityControl1.Location = new System.Drawing.Point(6, 24);
-            this.elasticityControl1.Mode = Crystallography.Elasticity.Mode.Stiffness;
             this.elasticityControl1.Name = "elasticityControl1";
             this.elasticityControl1.Size = new System.Drawing.Size(460, 145);
-            this.elasticityControl1.SymmetrySeriesNumber = 1;
             this.elasticityControl1.TabIndex = 291;
             this.elasticityControl1.ValueChanged += new Crystallography.Controls.ElasticityControl.MyEventHandler(this.elasticityControl1_ValueChanged);
             // 

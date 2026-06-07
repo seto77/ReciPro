@@ -229,36 +229,17 @@ namespace ReciPro
             // scalablePictureBoxAdvanced
             // 
             resources.ApplyResources(scalablePictureBoxAdvanced, "scalablePictureBoxAdvanced");
-            scalablePictureBoxAdvanced.ClampIntensityRangeToNewData = true;
-            scalablePictureBoxAdvanced.ColorVisible = true;
-            scalablePictureBoxAdvanced.DecimalPlacesForIntensity = 0;
-            scalablePictureBoxAdvanced.FixZoomAndCenter = false;
             scalablePictureBoxAdvanced.FrequencyGraphVisible = false;
-            scalablePictureBoxAdvanced.GradiaentVisible = true;
             scalablePictureBoxAdvanced.ImageFilter_DustAndScratches = true;
             scalablePictureBoxAdvanced.ImageFilter_DustAndScratchesRadius = 1.5D;
-            scalablePictureBoxAdvanced.ImageFilter_DustAndScratchesThreshold = 3D;
-            scalablePictureBoxAdvanced.ImageFilter_DustAndScratchesVisible = true;
             scalablePictureBoxAdvanced.ImageFilter_GaussianBlur = true;
             scalablePictureBoxAdvanced.ImageFilter_GaussianBlurRadius = 3D;
-            scalablePictureBoxAdvanced.ImageFilter_GaussianBlurVisible = true;
-            scalablePictureBoxAdvanced.ImageFilterVisible = true;
             scalablePictureBoxAdvanced.LogScaleBar = true;
-            scalablePictureBoxAdvanced.LowerIntensity = 0D;
-            scalablePictureBoxAdvanced.MagInfoVisible = true;
             scalablePictureBoxAdvanced.MaximumIntensity = 18285.576171875D;
             scalablePictureBoxAdvanced.MinimumIntensity = -2306.3408203125D;
-            scalablePictureBoxAdvanced.MousePositionLabelVisible = true;
             scalablePictureBoxAdvanced.Name = "scalablePictureBoxAdvanced";
-            scalablePictureBoxAdvanced.PolarityVisible = true;
-            scalablePictureBoxAdvanced.ScaleVisible = true;
-            scalablePictureBoxAdvanced.ShowGradiaent = true;
             scalablePictureBoxAdvanced.StatusVisible = false;
-            scalablePictureBoxAdvanced.TitleVisible = false;
             toolTip.SetToolTip(scalablePictureBoxAdvanced, resources.GetString("scalablePictureBoxAdvanced.ToolTip"));
-            scalablePictureBoxAdvanced.TrackBarVisible = true;
-            scalablePictureBoxAdvanced.UpperIntensity = 255D;
-            scalablePictureBoxAdvanced.VisibleGradient = true;
             scalablePictureBoxAdvanced.MouseDown2 += scalablePictureBoxAdvanced1_MouseDown2;
             scalablePictureBoxAdvanced.StatusChanged += scalablePictureBoxAdvanced_StatusChanged;
             scalablePictureBoxAdvanced.FilterChanged += ScalablePictureBoxAdvanced_FilterChanged;
@@ -803,14 +784,10 @@ namespace ReciPro
             resources.ApplyResources(waveLengthControl1, "waveLengthControl1");
             waveLengthControl1.DirectionWhole = System.Windows.Forms.FlowDirection.LeftToRight;
             waveLengthControl1.Energy = 494.36741727D;
-            waveLengthControl1.Monochrome = true;
             waveLengthControl1.Name = "waveLengthControl1";
-            waveLengthControl1.ShowWaveSource = true;
             toolTip.SetToolTip(waveLengthControl1, resources.GetString("waveLengthControl1.ToolTip"));
             waveLengthControl1.WaveLength = 0.0025079347460000003D;
-            waveLengthControl1.WaveSource = WaveSource.Xray;
             waveLengthControl1.XrayWaveSourceElementNumber = 0;
-            waveLengthControl1.XrayWaveSourceLine = XrayLine.Ka1;
             waveLengthControl1.WavelengthChanged += WaveLengthControl1_WavelengthChanged;
             // 
             // flowLayoutPanel5

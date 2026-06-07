@@ -102,13 +102,11 @@
             toolTip.SetToolTip(waveLengthControl, resources.GetString("waveLengthControl.ToolTip")); // 260531Cl
             waveLengthControl.DirectionWhole = System.Windows.Forms.FlowDirection.TopDown;
             waveLengthControl.Energy = 20D;
-            waveLengthControl.Monochrome = true;
             waveLengthControl.Name = "waveLengthControl";
             waveLengthControl.ShowWaveSource = false;
             waveLengthControl.WaveLength = 0.0085885141045000009D;
             waveLengthControl.WaveSource = WaveSource.Electron;
             waveLengthControl.XrayWaveSourceElementNumber = 0;
-            waveLengthControl.XrayWaveSourceLine = XrayLine.Ka1;
             // 
             // buttonSimulate
             // 

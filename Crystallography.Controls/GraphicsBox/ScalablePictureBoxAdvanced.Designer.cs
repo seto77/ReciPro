@@ -114,16 +114,9 @@
             toolTip.SetToolTip(trackBarAdvancedMinimum, resources.GetString("trackBarAdvancedMinimum.ToolTip")); // 260531Cl
             trackBarAdvancedMinimum.ControlHeight = 22;
             trackBarAdvancedMinimum.DecimalPlaces = 0;
-            trackBarAdvancedMinimum.LogScrollBar = false;
             trackBarAdvancedMinimum.Maximum = 65D;
             trackBarAdvancedMinimum.Minimum = 0D;
             trackBarAdvancedMinimum.Name = "trackBarAdvancedMinimum";
-            trackBarAdvancedMinimum.NumericBoxSize = 84;
-            trackBarAdvancedMinimum.Orientation = System.Windows.Forms.Orientation.Vertical;
-            trackBarAdvancedMinimum.Smart_Increment = true;
-            trackBarAdvancedMinimum.TickStyle = System.Windows.Forms.TickStyle.BottomRight;
-            trackBarAdvancedMinimum.UpDown_Increment = 1D;
-            trackBarAdvancedMinimum.Value = 0D;
             trackBarAdvancedMinimum.ValueChanged += trackBarAdvancedMinimum_ValueChanged;
             // 
             // trackBarAdvancedMaximum
@@ -132,16 +125,9 @@
             toolTip.SetToolTip(trackBarAdvancedMaximum, resources.GetString("trackBarAdvancedMaximum.ToolTip")); // 260531Cl
             trackBarAdvancedMaximum.ControlHeight = 22;
             trackBarAdvancedMaximum.DecimalPlaces = 0;
-            trackBarAdvancedMaximum.LogScrollBar = false;
             trackBarAdvancedMaximum.Maximum = 65535D;
             trackBarAdvancedMaximum.Minimum = 0D;
             trackBarAdvancedMaximum.Name = "trackBarAdvancedMaximum";
-            trackBarAdvancedMaximum.NumericBoxSize = 84;
-            trackBarAdvancedMaximum.Orientation = System.Windows.Forms.Orientation.Vertical;
-            trackBarAdvancedMaximum.Smart_Increment = true;
-            trackBarAdvancedMaximum.TickStyle = System.Windows.Forms.TickStyle.BottomRight;
-            trackBarAdvancedMaximum.UpDown_Increment = 1D;
-            trackBarAdvancedMaximum.Value = 0D;
             trackBarAdvancedMaximum.ValueChanged += trackBarAdvancedMaximum_ValueChanged;
             // 
             // label
@@ -348,17 +334,9 @@
             // 
             resources.ApplyResources(scalablePictureBox, "scalablePictureBox");
             scalablePictureBox.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            scalablePictureBox.FixZoomAndCenter = false;
-            scalablePictureBox.FocusEventEnabled = false;
-            scalablePictureBox.HorizontalFlip = false;
-            scalablePictureBox.ManualSpotMode = false;
             scalablePictureBox.MouseScaling = true;
             scalablePictureBox.MouseTranslation = true;
             scalablePictureBox.Name = "scalablePictureBox";
-            scalablePictureBox.ShowAreaRectangle = false;
-            scalablePictureBox.ShowRimRentangle = false;
-            scalablePictureBox.TitleVisible = false;
-            scalablePictureBox.VerticalFlip = false;
             scalablePictureBox.Zoom = 128D;
             scalablePictureBox.Paint2 += scalablePictureBox_Paint2;
             scalablePictureBox.MouseMove2 += scalablePictureBox1_MouseMove2;

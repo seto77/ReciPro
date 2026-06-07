@@ -229,13 +229,11 @@
             toolTip.SetToolTip(waveLengthControl, resources.GetString("waveLengthControl.ToolTip")); // 260531Cl
             waveLengthControl.DirectionWhole = System.Windows.Forms.FlowDirection.TopDown;
             waveLengthControl.Energy = 20D;
-            waveLengthControl.Monochrome = true;
             waveLengthControl.Name = "waveLengthControl";
             waveLengthControl.ShowWaveSource = false;
             waveLengthControl.WaveLength = 0.008588514105D;
             waveLengthControl.WaveSource = WaveSource.Electron;
             waveLengthControl.XrayWaveSourceElementNumber = 0;
-            waveLengthControl.XrayWaveSourceLine = XrayLine.Ka1;
             waveLengthControl.WavelengthChanged += waveLengthControl_WavelengthChanged;
             // 
             // flowLayoutPanelViewAlong
@@ -1127,35 +1125,19 @@
             // scalablePictureBoxAdvancedMasterPattern2D
             // 
             scalablePictureBoxAdvancedMasterPattern2D.ClampIntensityRangeToNewData = false;
-            scalablePictureBoxAdvancedMasterPattern2D.ColorVisible = true;
             scalablePictureBoxAdvancedMasterPattern2D.DecimalPlacesForIntensity = 5;
-            scalablePictureBoxAdvancedMasterPattern2D.FixZoomAndCenter = false;
             resources.ApplyResources(scalablePictureBoxAdvancedMasterPattern2D, "scalablePictureBoxAdvancedMasterPattern2D");
             scalablePictureBoxAdvancedMasterPattern2D.FrequencyGraphVisible = false;
-            scalablePictureBoxAdvancedMasterPattern2D.GradiaentVisible = true;
-            scalablePictureBoxAdvancedMasterPattern2D.ImageFilter_DustAndScratches = false;
-            scalablePictureBoxAdvancedMasterPattern2D.ImageFilter_DustAndScratchesRadius = 1D;
-            scalablePictureBoxAdvancedMasterPattern2D.ImageFilter_DustAndScratchesThreshold = 3D;
             scalablePictureBoxAdvancedMasterPattern2D.ImageFilter_DustAndScratchesVisible = false;
-            scalablePictureBoxAdvancedMasterPattern2D.ImageFilter_GaussianBlur = false;
-            scalablePictureBoxAdvancedMasterPattern2D.ImageFilter_GaussianBlurRadius = 1D;
             scalablePictureBoxAdvancedMasterPattern2D.ImageFilter_GaussianBlurVisible = false;
             scalablePictureBoxAdvancedMasterPattern2D.ImageFilterVisible = false;
-            scalablePictureBoxAdvancedMasterPattern2D.LogScaleBar = false;
-            scalablePictureBoxAdvancedMasterPattern2D.LowerIntensity = 0D;
             scalablePictureBoxAdvancedMasterPattern2D.MagInfoVisible = false;
             scalablePictureBoxAdvancedMasterPattern2D.MaximumIntensity = 1D;
-            scalablePictureBoxAdvancedMasterPattern2D.MinimumIntensity = 0D;
             scalablePictureBoxAdvancedMasterPattern2D.MousePositionLabelVisible = false;
             scalablePictureBoxAdvancedMasterPattern2D.Name = "scalablePictureBoxAdvancedMasterPattern2D";
-            scalablePictureBoxAdvancedMasterPattern2D.PolarityVisible = true;
             scalablePictureBoxAdvancedMasterPattern2D.ScaleVisible = false;
-            scalablePictureBoxAdvancedMasterPattern2D.ShowGradiaent = true;
             scalablePictureBoxAdvancedMasterPattern2D.StatusVisible = false;
-            scalablePictureBoxAdvancedMasterPattern2D.TitleVisible = false;
-            scalablePictureBoxAdvancedMasterPattern2D.TrackBarVisible = true;
             scalablePictureBoxAdvancedMasterPattern2D.UpperIntensity = 1D;
-            scalablePictureBoxAdvancedMasterPattern2D.VisibleGradient = true;
             scalablePictureBoxAdvancedMasterPattern2D.BrightnessAndColorChanged += scalablePictureBoxAdvancedMasterPattern2D_BrightnessAndColorChanged;
             // 
             // flowLayoutPanelMasterPatternSelectors

@@ -1190,7 +1190,6 @@
             toolTip.SetToolTip(colorControlAtomColor, resources.GetString("colorControlAtomColor.ToolTip")); // 260531Cl
             colorControlAtomColor.BackColor = System.Drawing.SystemColors.Control;
             colorControlAtomColor.BoxSize = new System.Drawing.Size(20, 20);
-            colorControlAtomColor.Color = System.Drawing.Color.FromArgb(240, 240, 240);
             colorControlAtomColor.Name = "colorControlAtomColor";
             // 
             // buttonApplyToSameElement

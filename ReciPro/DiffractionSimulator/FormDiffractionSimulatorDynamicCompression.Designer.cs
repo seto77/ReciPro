@@ -884,21 +884,14 @@ namespace ReciPro
             trackBarAdvancedBack.ControlHeight = 26;
             trackBarAdvancedBack.DecimalPlaces = 2;
             trackBarAdvancedBack.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128))); // 260522Cl 変更: Yu Gothic UI → Segoe UI (英語GUI)
-            trackBarAdvancedBack.FooterText = "";
-            trackBarAdvancedBack.HeaderText = "";
             trackBarAdvancedBack.Location = new System.Drawing.Point(36, 586);
-            trackBarAdvancedBack.LogScrollBar = false;
             trackBarAdvancedBack.Margin = new System.Windows.Forms.Padding(0);
             trackBarAdvancedBack.Maximum = 100D;
             trackBarAdvancedBack.Minimum = 0D;
             trackBarAdvancedBack.Name = "trackBarAdvancedBack";
             trackBarAdvancedBack.NumericBoxSize = 60;
-            trackBarAdvancedBack.Orientation = System.Windows.Forms.Orientation.Vertical;
             trackBarAdvancedBack.Size = new System.Drawing.Size(517, 26);
-            trackBarAdvancedBack.Smart_Increment = true;
             trackBarAdvancedBack.TabIndex = 1;
-            trackBarAdvancedBack.TickStyle = System.Windows.Forms.TickStyle.BottomRight;
-            trackBarAdvancedBack.UpDown_Increment = 1D;
             trackBarAdvancedBack.Value = 10D;
             trackBarAdvancedBack.ValueChanged += new Crystallography.Controls.TrackBarAdvanced.ValueChangedDelegate(trackBarAdvancedBack_ValueChanged);
             // 
@@ -911,19 +904,15 @@ namespace ReciPro
             trackBarAdvancedTime.FooterText = "ns";
             trackBarAdvancedTime.HeaderText = "Time";
             trackBarAdvancedTime.Location = new System.Drawing.Point(0, 335);
-            trackBarAdvancedTime.LogScrollBar = false;
             trackBarAdvancedTime.Margin = new System.Windows.Forms.Padding(0);
             trackBarAdvancedTime.Maximum = 100D;
             trackBarAdvancedTime.Minimum = 0D;
             trackBarAdvancedTime.Name = "trackBarAdvancedTime";
             trackBarAdvancedTime.NumericBoxSize = 128;
-            trackBarAdvancedTime.Orientation = System.Windows.Forms.Orientation.Vertical;
             trackBarAdvancedTime.Size = new System.Drawing.Size(547, 26);
             trackBarAdvancedTime.Smart_Increment = false;
             trackBarAdvancedTime.TabIndex = 1;
-            trackBarAdvancedTime.TickStyle = System.Windows.Forms.TickStyle.BottomRight;
             trackBarAdvancedTime.UpDown_Increment = 0.005D;
-            trackBarAdvancedTime.Value = 0D;
             trackBarAdvancedTime.ValueChanged += new Crystallography.Controls.TrackBarAdvanced.ValueChangedDelegate(trackBarAdvancedTime_ValueChanged);
             // 
             // trackBarAdvancedFront
@@ -932,22 +921,14 @@ namespace ReciPro
             trackBarAdvancedFront.ControlHeight = 26;
             trackBarAdvancedFront.DecimalPlaces = 2;
             trackBarAdvancedFront.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128))); // 260522Cl 変更: Yu Gothic UI → Segoe UI (英語GUI)
-            trackBarAdvancedFront.FooterText = "";
-            trackBarAdvancedFront.HeaderText = "";
             trackBarAdvancedFront.Location = new System.Drawing.Point(36, 555);
-            trackBarAdvancedFront.LogScrollBar = false;
             trackBarAdvancedFront.Margin = new System.Windows.Forms.Padding(0);
             trackBarAdvancedFront.Maximum = 100D;
             trackBarAdvancedFront.Minimum = 0D;
             trackBarAdvancedFront.Name = "trackBarAdvancedFront";
             trackBarAdvancedFront.NumericBoxSize = 60;
-            trackBarAdvancedFront.Orientation = System.Windows.Forms.Orientation.Vertical;
             trackBarAdvancedFront.Size = new System.Drawing.Size(517, 26);
-            trackBarAdvancedFront.Smart_Increment = true;
             trackBarAdvancedFront.TabIndex = 1;
-            trackBarAdvancedFront.TickStyle = System.Windows.Forms.TickStyle.BottomRight;
-            trackBarAdvancedFront.UpDown_Increment = 1D;
-            trackBarAdvancedFront.Value = 0D;
             trackBarAdvancedFront.ValueChanged += new Crystallography.Controls.TrackBarAdvanced.ValueChangedDelegate(trackBarAdvancedBack_ValueChanged);
             // 
             // graphControl

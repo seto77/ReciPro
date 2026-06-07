@@ -479,15 +479,10 @@ namespace ReciPro
             resources.ApplyResources(trackBarAdvancedMax, "trackBarAdvancedMax");
             toolTip.SetToolTip(trackBarAdvancedMax, resources.GetString("trackBarAdvancedMax.ToolTip")); // 260531Cl
             trackBarAdvancedMax.ControlHeight = 25;
-            trackBarAdvancedMax.DecimalPlaces = -1;
-            trackBarAdvancedMax.LogScrollBar = false;
             trackBarAdvancedMax.Maximum = 1D;
             trackBarAdvancedMax.Minimum = 0D;
             trackBarAdvancedMax.Name = "trackBarAdvancedMax";
             trackBarAdvancedMax.NumericBoxSize = 95;
-            trackBarAdvancedMax.Orientation = System.Windows.Forms.Orientation.Vertical;
-            trackBarAdvancedMax.Smart_Increment = true;
-            trackBarAdvancedMax.TickStyle = System.Windows.Forms.TickStyle.BottomRight;
             trackBarAdvancedMax.UpDown_Increment = 0.01D;
             trackBarAdvancedMax.Value = 1D;
             trackBarAdvancedMax.ValueChanged += TrackBarAdvancedMin_ValueChanged;
@@ -497,17 +492,10 @@ namespace ReciPro
             resources.ApplyResources(trackBarAdvancedMin, "trackBarAdvancedMin");
             toolTip.SetToolTip(trackBarAdvancedMin, resources.GetString("trackBarAdvancedMin.ToolTip")); // 260531Cl
             trackBarAdvancedMin.ControlHeight = 25;
-            trackBarAdvancedMin.DecimalPlaces = -1;
-            trackBarAdvancedMin.LogScrollBar = false;
             trackBarAdvancedMin.Maximum = 65535D;
             trackBarAdvancedMin.Minimum = 0D;
             trackBarAdvancedMin.Name = "trackBarAdvancedMin";
             trackBarAdvancedMin.NumericBoxSize = 95;
-            trackBarAdvancedMin.Orientation = System.Windows.Forms.Orientation.Vertical;
-            trackBarAdvancedMin.Smart_Increment = true;
-            trackBarAdvancedMin.TickStyle = System.Windows.Forms.TickStyle.BottomRight;
-            trackBarAdvancedMin.UpDown_Increment = 1D;
-            trackBarAdvancedMin.Value = 0D;
             trackBarAdvancedMin.ValueChanged += TrackBarAdvancedMin_ValueChanged;
             // 
             // checkBoxGaussianBlur

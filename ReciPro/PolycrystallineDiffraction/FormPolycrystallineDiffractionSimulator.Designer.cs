@@ -250,33 +250,18 @@
             // 
             // crystalControl1
             // 
-            crystalControl1.A = 0D;
             crystalControl1.AllowDrop = true;
-            crystalControl1.Alpha = 0D;
             crystalControl1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            crystalControl1.B = 0D;
-            crystalControl1.Beta = 0D;
-            crystalControl1.C = 0D;
-            crystalControl1.DefaultTabNumber = 0;
             crystalControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             crystalControl1.Enabled = false;
-            crystalControl1.Gamma = 0D;
             crystalControl1.Location = new System.Drawing.Point(3, 3);
             crystalControl1.Margin = new System.Windows.Forms.Padding(0);
             crystalControl1.Name = "crystalControl1";
-            crystalControl1.BeamInteractionVisible = false;
             crystalControl1.Size = new System.Drawing.Size(508, 517);
             crystalControl1.SkipEvent = false;
-            crystalControl1.SymmetryInformationVisible = false;
-            crystalControl1.SymmetrySeriesNumber = 0;
             crystalControl1.TabIndex = 1002;
-            crystalControl1.VisibleAtomTab = true;
-            crystalControl1.VisibleBasicInfoTab = true;
             crystalControl1.VisibleBondsPolyhedraTab = false;
-            crystalControl1.VisibleBoundTab = false;
-            crystalControl1.VisibleElasticityTab = true;
             crystalControl1.VisibleEOSTab = false;
-            crystalControl1.VisibleLatticePlaneTab = false;
             crystalControl1.VisiblePolycrystallineTab = true;
             crystalControl1.VisibleReferenceTab = false;
             crystalControl1.VisibleStressStrainTab = true;
