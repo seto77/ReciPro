@@ -142,8 +142,6 @@
             resources.ApplyResources(numericBoxPsi, "numericBoxPsi");
             numericBoxPsi.BackColor = System.Drawing.SystemColors.Control;
             numericBoxPsi.DecimalPlaces = 3;
-            numericBoxPsi.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxPsi.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxPsi.Name = "numericBoxPsi";
             numericBoxPsi.ReadOnly = true;
             numericBoxPsi.SkipEventDuringInput = false;
@@ -157,8 +155,6 @@
             resources.ApplyResources(numericBoxTheta, "numericBoxTheta");
             numericBoxTheta.BackColor = System.Drawing.SystemColors.Control;
             numericBoxTheta.DecimalPlaces = 3;
-            numericBoxTheta.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxTheta.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxTheta.Name = "numericBoxTheta";
             numericBoxTheta.ReadOnly = true;
             numericBoxTheta.SkipEventDuringInput = false;
@@ -172,8 +168,6 @@
             resources.ApplyResources(numericBoxPhi, "numericBoxPhi");
             numericBoxPhi.BackColor = System.Drawing.SystemColors.Control;
             numericBoxPhi.DecimalPlaces = 3;
-            numericBoxPhi.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxPhi.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxPhi.Name = "numericBoxPhi";
             numericBoxPhi.ReadOnly = true;
             numericBoxPhi.SkipEventDuringInput = false;
@@ -187,8 +181,6 @@
             resources.ApplyResources(numericBoxExp1, "numericBoxExp1");
             numericBoxExp1.BackColor = System.Drawing.SystemColors.Control;
             numericBoxExp1.DecimalPlaces = 3;
-            numericBoxExp1.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxExp1.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxExp1.Name = "numericBoxExp1";
             numericBoxExp1.ShowUpDown = true;
             numericBoxExp1.SkipEventDuringInput = false;
@@ -201,8 +193,6 @@
             resources.ApplyResources(numericBoxExp2, "numericBoxExp2");
             numericBoxExp2.BackColor = System.Drawing.SystemColors.Control;
             numericBoxExp2.DecimalPlaces = 3;
-            numericBoxExp2.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxExp2.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxExp2.Name = "numericBoxExp2";
             numericBoxExp2.ShowUpDown = true;
             numericBoxExp2.SkipEventDuringInput = false;
@@ -215,8 +205,6 @@
             resources.ApplyResources(numericBoxExp3, "numericBoxExp3");
             numericBoxExp3.BackColor = System.Drawing.SystemColors.Control;
             numericBoxExp3.DecimalPlaces = 3;
-            numericBoxExp3.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxExp3.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxExp3.Name = "numericBoxExp3";
             numericBoxExp3.ShowUpDown = true;
             numericBoxExp3.SkipEventDuringInput = false;
@@ -423,8 +411,6 @@
             toolTip.SetToolTip(numericBox11, resources.GetString("numericBox11.ToolTip")); // 260531Cl
             numericBox11.BackColor = System.Drawing.SystemColors.Control;
             numericBox11.DecimalPlaces = 5;
-            numericBox11.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBox11.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBox11.Name = "numericBox11";
             numericBox11.ReadOnly = true;
             numericBox11.SkipEventDuringInput = false;
@@ -439,8 +425,6 @@
             toolTip.SetToolTip(numericBox12, resources.GetString("numericBox12.ToolTip")); // 260531Cl
             numericBox12.BackColor = System.Drawing.SystemColors.Control;
             numericBox12.DecimalPlaces = 5;
-            numericBox12.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBox12.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBox12.Name = "numericBox12";
             numericBox12.ReadOnly = true;
             numericBox12.SkipEventDuringInput = false;
@@ -455,8 +439,6 @@
             toolTip.SetToolTip(numericBox13, resources.GetString("numericBox13.ToolTip")); // 260531Cl
             numericBox13.BackColor = System.Drawing.SystemColors.Control;
             numericBox13.DecimalPlaces = 5;
-            numericBox13.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBox13.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBox13.Name = "numericBox13";
             numericBox13.ReadOnly = true;
             numericBox13.SkipEventDuringInput = false;
@@ -471,8 +453,6 @@
             toolTip.SetToolTip(numericBox21, resources.GetString("numericBox21.ToolTip")); // 260531Cl
             numericBox21.BackColor = System.Drawing.SystemColors.Control;
             numericBox21.DecimalPlaces = 5;
-            numericBox21.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBox21.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBox21.Name = "numericBox21";
             numericBox21.ReadOnly = true;
             numericBox21.SkipEventDuringInput = false;
@@ -487,8 +467,6 @@
             toolTip.SetToolTip(numericBox22, resources.GetString("numericBox22.ToolTip")); // 260531Cl
             numericBox22.BackColor = System.Drawing.SystemColors.Control;
             numericBox22.DecimalPlaces = 5;
-            numericBox22.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBox22.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBox22.Name = "numericBox22";
             numericBox22.ReadOnly = true;
             numericBox22.SkipEventDuringInput = false;
@@ -503,8 +481,6 @@
             toolTip.SetToolTip(numericBox33, resources.GetString("numericBox33.ToolTip")); // 260531Cl
             numericBox33.BackColor = System.Drawing.SystemColors.Control;
             numericBox33.DecimalPlaces = 5;
-            numericBox33.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBox33.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBox33.Name = "numericBox33";
             numericBox33.ReadOnly = true;
             numericBox33.SkipEventDuringInput = false;
@@ -519,8 +495,6 @@
             toolTip.SetToolTip(numericBox23, resources.GetString("numericBox23.ToolTip")); // 260531Cl
             numericBox23.BackColor = System.Drawing.SystemColors.Control;
             numericBox23.DecimalPlaces = 5;
-            numericBox23.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBox23.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBox23.Name = "numericBox23";
             numericBox23.ReadOnly = true;
             numericBox23.SkipEventDuringInput = false;
@@ -535,8 +509,6 @@
             toolTip.SetToolTip(numericBox31, resources.GetString("numericBox31.ToolTip")); // 260531Cl
             numericBox31.BackColor = System.Drawing.SystemColors.Control;
             numericBox31.DecimalPlaces = 5;
-            numericBox31.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBox31.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBox31.Name = "numericBox31";
             numericBox31.ReadOnly = true;
             numericBox31.SkipEventDuringInput = false;
@@ -551,8 +523,6 @@
             toolTip.SetToolTip(numericBox32, resources.GetString("numericBox32.ToolTip")); // 260531Cl
             numericBox32.BackColor = System.Drawing.SystemColors.Control;
             numericBox32.DecimalPlaces = 5;
-            numericBox32.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBox32.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBox32.Name = "numericBox32";
             numericBox32.ReadOnly = true;
             numericBox32.SkipEventDuringInput = false;

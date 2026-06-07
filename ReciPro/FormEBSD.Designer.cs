@@ -548,8 +548,6 @@
             resources.ApplyResources(numericBoxThicknessStep, "numericBoxThicknessStep");
             numericBoxThicknessStep.BackColor = System.Drawing.SystemColors.Control;
             numericBoxThicknessStep.DecimalPlaces = 2;
-            numericBoxThicknessStep.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxThicknessStep.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxThicknessStep.Maximum = 10D;
             numericBoxThicknessStep.Minimum = 0.001D;
             numericBoxThicknessStep.Name = "numericBoxThicknessStep";
@@ -565,8 +563,6 @@
             // 
             resources.ApplyResources(numericBoxMaxNumOfG, "numericBoxMaxNumOfG");
             numericBoxMaxNumOfG.BackColor = System.Drawing.SystemColors.Control;
-            numericBoxMaxNumOfG.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxMaxNumOfG.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxMaxNumOfG.Maximum = 2048D;
             numericBoxMaxNumOfG.Minimum = 1D;
             numericBoxMaxNumOfG.Name = "numericBoxMaxNumOfG";
@@ -596,8 +592,6 @@
             resources.ApplyResources(numericBoxThicknessStart, "numericBoxThicknessStart");
             numericBoxThicknessStart.BackColor = System.Drawing.SystemColors.Control;
             numericBoxThicknessStart.DecimalPlaces = 2;
-            numericBoxThicknessStart.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxThicknessStart.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxThicknessStart.Maximum = 1000D;
             numericBoxThicknessStart.Minimum = 0.001D;
             numericBoxThicknessStart.Name = "numericBoxThicknessStart";
@@ -614,8 +608,6 @@
             resources.ApplyResources(numericBoxThicknessEnd, "numericBoxThicknessEnd");
             numericBoxThicknessEnd.BackColor = System.Drawing.SystemColors.Control;
             numericBoxThicknessEnd.DecimalPlaces = 2;
-            numericBoxThicknessEnd.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxThicknessEnd.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxThicknessEnd.Maximum = 1000D;
             numericBoxThicknessEnd.Minimum = 0.001D;
             numericBoxThicknessEnd.Name = "numericBoxThicknessEnd";
@@ -805,8 +797,6 @@
             resources.ApplyResources(numericBoxEnergyEnd, "numericBoxEnergyEnd");
             numericBoxEnergyEnd.BackColor = System.Drawing.SystemColors.Control;
             numericBoxEnergyEnd.DecimalPlaces = 2;
-            numericBoxEnergyEnd.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxEnergyEnd.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxEnergyEnd.Maximum = 1000D;
             numericBoxEnergyEnd.Minimum = 0.001D;
             numericBoxEnergyEnd.Name = "numericBoxEnergyEnd";
@@ -823,8 +813,6 @@
             resources.ApplyResources(numericBoxEnergyStart, "numericBoxEnergyStart");
             numericBoxEnergyStart.BackColor = System.Drawing.SystemColors.Control;
             numericBoxEnergyStart.DecimalPlaces = 2;
-            numericBoxEnergyStart.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxEnergyStart.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxEnergyStart.Maximum = 1000D;
             numericBoxEnergyStart.Minimum = 1D;
             numericBoxEnergyStart.Name = "numericBoxEnergyStart";
@@ -842,8 +830,6 @@
             resources.ApplyResources(numericBoxEnergyStep, "numericBoxEnergyStep");
             numericBoxEnergyStep.BackColor = System.Drawing.SystemColors.Control;
             numericBoxEnergyStep.DecimalPlaces = 2;
-            numericBoxEnergyStep.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxEnergyStep.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxEnergyStep.Maximum = 10D;
             numericBoxEnergyStep.Minimum = 0.001D;
             numericBoxEnergyStep.Name = "numericBoxEnergyStep";

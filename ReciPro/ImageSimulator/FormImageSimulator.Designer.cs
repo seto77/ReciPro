@@ -462,8 +462,6 @@ namespace ReciPro
             toolTip.SetToolTip(numericBoxGaussianBlurRadius, resources.GetString("numericBoxGaussianBlurRadius.ToolTip")); // 260531Cl
             numericBoxGaussianBlurRadius.BackColor = System.Drawing.SystemColors.Control;
             numericBoxGaussianBlurRadius.DecimalPlaces = 1;
-            numericBoxGaussianBlurRadius.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxGaussianBlurRadius.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxGaussianBlurRadius.Maximum = 100D;
             numericBoxGaussianBlurRadius.Minimum = 0D;
             numericBoxGaussianBlurRadius.Name = "numericBoxGaussianBlurRadius";
@@ -584,8 +582,6 @@ namespace ReciPro
             resources.ApplyResources(numericBoxIntensityMin, "numericBoxIntensityMin");
             numericBoxIntensityMin.BackColor = System.Drawing.SystemColors.Control;
             numericBoxIntensityMin.DecimalPlaces = 0;
-            numericBoxIntensityMin.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxIntensityMin.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxIntensityMin.Maximum = 65535D;
             numericBoxIntensityMin.Minimum = 0D;
             numericBoxIntensityMin.Name = "numericBoxIntensityMin";
@@ -611,8 +607,6 @@ namespace ReciPro
             resources.ApplyResources(numericBoxIntensityMax, "numericBoxIntensityMax");
             numericBoxIntensityMax.BackColor = System.Drawing.SystemColors.Control;
             numericBoxIntensityMax.DecimalPlaces = 0;
-            numericBoxIntensityMax.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxIntensityMax.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxIntensityMax.Maximum = 65535D;
             numericBoxIntensityMax.Minimum = 1D;
             numericBoxIntensityMax.Name = "numericBoxIntensityMax";
@@ -702,8 +696,6 @@ namespace ReciPro
             resources.ApplyResources(numericBoxScaleLength, "numericBoxScaleLength");
             numericBoxScaleLength.BackColor = System.Drawing.SystemColors.Control;
             numericBoxScaleLength.DecimalPlaces = 1;
-            numericBoxScaleLength.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxScaleLength.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxScaleLength.Maximum = 100D;
             numericBoxScaleLength.Minimum = 0.2D;
             numericBoxScaleLength.Name = "numericBoxScaleLength";
@@ -749,8 +741,6 @@ namespace ReciPro
             resources.ApplyResources(numericBoxLabelFontSize, "numericBoxLabelFontSize");
             numericBoxLabelFontSize.BackColor = System.Drawing.SystemColors.Control;
             numericBoxLabelFontSize.DecimalPlaces = 0;
-            numericBoxLabelFontSize.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxLabelFontSize.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxLabelFontSize.Maximum = 20D;
             numericBoxLabelFontSize.Minimum = 1D;
             numericBoxLabelFontSize.Name = "numericBoxLabelFontSize";
@@ -834,8 +824,6 @@ namespace ReciPro
             toolTip.SetToolTip(numericBoxDefocusNum, resources.GetString("numericBoxDefocusNum.ToolTip")); // 260531Cl
             numericBoxDefocusNum.BackColor = System.Drawing.SystemColors.Control;
             numericBoxDefocusNum.DecimalPlaces = 0;
-            numericBoxDefocusNum.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxDefocusNum.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxDefocusNum.Maximum = 20D;
             numericBoxDefocusNum.Minimum = 1D;
             numericBoxDefocusNum.Name = "numericBoxDefocusNum";
@@ -852,8 +840,6 @@ namespace ReciPro
             toolTip.SetToolTip(numericBoxDefocusStep, resources.GetString("numericBoxDefocusStep.ToolTip")); // 260531Cl
             numericBoxDefocusStep.BackColor = System.Drawing.SystemColors.Control;
             numericBoxDefocusStep.DecimalPlaces = 1;
-            numericBoxDefocusStep.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxDefocusStep.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxDefocusStep.Maximum = 100D;
             numericBoxDefocusStep.Minimum = -100D;
             numericBoxDefocusStep.Name = "numericBoxDefocusStep";
@@ -871,8 +857,6 @@ namespace ReciPro
             toolTip.SetToolTip(numericBoxDefocusStart, resources.GetString("numericBoxDefocusStart.ToolTip")); // 260531Cl
             numericBoxDefocusStart.BackColor = System.Drawing.SystemColors.Control;
             numericBoxDefocusStart.DecimalPlaces = 1;
-            numericBoxDefocusStart.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxDefocusStart.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxDefocusStart.Maximum = 1000D;
             numericBoxDefocusStart.Minimum = -1000D;
             numericBoxDefocusStart.Name = "numericBoxDefocusStart";
@@ -905,8 +889,6 @@ namespace ReciPro
             toolTip.SetToolTip(numericBoxThicknessNum, resources.GetString("numericBoxThicknessNum.ToolTip")); // 260531Cl
             numericBoxThicknessNum.BackColor = System.Drawing.SystemColors.Control;
             numericBoxThicknessNum.DecimalPlaces = 0;
-            numericBoxThicknessNum.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxThicknessNum.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxThicknessNum.Maximum = 20D;
             numericBoxThicknessNum.Minimum = 0.1D;
             numericBoxThicknessNum.Name = "numericBoxThicknessNum";
@@ -923,8 +905,6 @@ namespace ReciPro
             toolTip.SetToolTip(numericBoxThicknessStep, resources.GetString("numericBoxThicknessStep.ToolTip")); // 260531Cl
             numericBoxThicknessStep.BackColor = System.Drawing.SystemColors.Control;
             numericBoxThicknessStep.DecimalPlaces = 1;
-            numericBoxThicknessStep.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxThicknessStep.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxThicknessStep.Maximum = 1000D;
             numericBoxThicknessStep.Minimum = 1D;
             numericBoxThicknessStep.Name = "numericBoxThicknessStep";
@@ -942,8 +922,6 @@ namespace ReciPro
             toolTip.SetToolTip(numericBoxThicknessStart, resources.GetString("numericBoxThicknessStart.ToolTip")); // 260531Cl
             numericBoxThicknessStart.BackColor = System.Drawing.SystemColors.Control;
             numericBoxThicknessStart.DecimalPlaces = 1;
-            numericBoxThicknessStart.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxThicknessStart.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxThicknessStart.Maximum = 1000D;
             numericBoxThicknessStart.Minimum = 0.1D;
             numericBoxThicknessStart.Name = "numericBoxThicknessStart";
@@ -1276,9 +1254,7 @@ namespace ReciPro
             // 
             numericBoxSTEM_AngleResolution.BackColor = System.Drawing.SystemColors.Control;
             numericBoxSTEM_AngleResolution.DecimalPlaces = 3;
-            numericBoxSTEM_AngleResolution.FooterBackColor = System.Drawing.SystemColors.Control;
             resources.ApplyResources(numericBoxSTEM_AngleResolution, "numericBoxSTEM_AngleResolution");
-            numericBoxSTEM_AngleResolution.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxSTEM_AngleResolution.Maximum = 1D;
             numericBoxSTEM_AngleResolution.Minimum = 0.001D;
             numericBoxSTEM_AngleResolution.Name = "numericBoxSTEM_AngleResolution";
@@ -1295,8 +1271,6 @@ namespace ReciPro
             resources.ApplyResources(numericBoxSTEM_SliceThicknessForInelastic, "numericBoxSTEM_SliceThicknessForInelastic");
             numericBoxSTEM_SliceThicknessForInelastic.BackColor = System.Drawing.SystemColors.Control;
             numericBoxSTEM_SliceThicknessForInelastic.DecimalPlaces = 1;
-            numericBoxSTEM_SliceThicknessForInelastic.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxSTEM_SliceThicknessForInelastic.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxSTEM_SliceThicknessForInelastic.Maximum = 10D;
             numericBoxSTEM_SliceThicknessForInelastic.Minimum = 0.1D;
             numericBoxSTEM_SliceThicknessForInelastic.Name = "numericBoxSTEM_SliceThicknessForInelastic";
@@ -1377,8 +1351,6 @@ namespace ReciPro
             resources.ApplyResources(numericBoxResolution, "numericBoxResolution");
             numericBoxResolution.BackColor = System.Drawing.SystemColors.Control;
             numericBoxResolution.DecimalPlaces = 3;
-            numericBoxResolution.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxResolution.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxResolution.Maximum = 100D;
             numericBoxResolution.Minimum = 0.01D;
             numericBoxResolution.Name = "numericBoxResolution";
@@ -1407,8 +1379,6 @@ namespace ReciPro
             // 
             resources.ApplyResources(numericBoxNumOfBlochWave, "numericBoxNumOfBlochWave");
             numericBoxNumOfBlochWave.BackColor = System.Drawing.SystemColors.Control;
-            numericBoxNumOfBlochWave.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxNumOfBlochWave.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxNumOfBlochWave.Maximum = 1024D;
             numericBoxNumOfBlochWave.Minimum = 2D;
             numericBoxNumOfBlochWave.Name = "numericBoxNumOfBlochWave";
@@ -1497,8 +1467,6 @@ namespace ReciPro
             resources.ApplyResources(numericBoxSTEM_DetectorOuterAngle, "numericBoxSTEM_DetectorOuterAngle");
             numericBoxSTEM_DetectorOuterAngle.BackColor = System.Drawing.SystemColors.Control;
             numericBoxSTEM_DetectorOuterAngle.DecimalPlaces = 1;
-            numericBoxSTEM_DetectorOuterAngle.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxSTEM_DetectorOuterAngle.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxSTEM_DetectorOuterAngle.Maximum = 1570D;
             numericBoxSTEM_DetectorOuterAngle.Minimum = 0.5D;
             numericBoxSTEM_DetectorOuterAngle.Name = "numericBoxSTEM_DetectorOuterAngle";
@@ -1517,8 +1485,6 @@ namespace ReciPro
             resources.ApplyResources(numericBoxSTEM_EffectiveSourceSize, "numericBoxSTEM_EffectiveSourceSize");
             numericBoxSTEM_EffectiveSourceSize.BackColor = System.Drawing.SystemColors.Control;
             numericBoxSTEM_EffectiveSourceSize.DecimalPlaces = 1;
-            numericBoxSTEM_EffectiveSourceSize.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxSTEM_EffectiveSourceSize.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxSTEM_EffectiveSourceSize.Maximum = 1000D;
             numericBoxSTEM_EffectiveSourceSize.Minimum = 0D;
             numericBoxSTEM_EffectiveSourceSize.Name = "numericBoxSTEM_EffectiveSourceSize";
@@ -1538,8 +1504,6 @@ namespace ReciPro
             resources.ApplyResources(numericBoxSTEM_ConvergenceAngle, "numericBoxSTEM_ConvergenceAngle");
             numericBoxSTEM_ConvergenceAngle.BackColor = System.Drawing.SystemColors.Control;
             numericBoxSTEM_ConvergenceAngle.DecimalPlaces = 1;
-            numericBoxSTEM_ConvergenceAngle.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxSTEM_ConvergenceAngle.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxSTEM_ConvergenceAngle.Maximum = 1570D;
             numericBoxSTEM_ConvergenceAngle.Minimum = 0.1D;
             numericBoxSTEM_ConvergenceAngle.Name = "numericBoxSTEM_ConvergenceAngle";
@@ -1627,8 +1591,6 @@ namespace ReciPro
             resources.ApplyResources(numericBoxSTEM_DetectorInnerAngle, "numericBoxSTEM_DetectorInnerAngle");
             numericBoxSTEM_DetectorInnerAngle.BackColor = System.Drawing.SystemColors.Control;
             numericBoxSTEM_DetectorInnerAngle.DecimalPlaces = 1;
-            numericBoxSTEM_DetectorInnerAngle.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxSTEM_DetectorInnerAngle.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxSTEM_DetectorInnerAngle.Maximum = 1570D;
             numericBoxSTEM_DetectorInnerAngle.Minimum = 0D;
             numericBoxSTEM_DetectorInnerAngle.Name = "numericBoxSTEM_DetectorInnerAngle";
@@ -1675,8 +1637,6 @@ namespace ReciPro
             toolTip.SetToolTip(numericBoxHRTEM_ObjAperX, resources.GetString("numericBoxHRTEM_ObjAperX.ToolTip")); // 260531Cl
             numericBoxHRTEM_ObjAperX.BackColor = System.Drawing.SystemColors.Control;
             numericBoxHRTEM_ObjAperX.DecimalPlaces = 1;
-            numericBoxHRTEM_ObjAperX.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxHRTEM_ObjAperX.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxHRTEM_ObjAperX.Maximum = 100D;
             numericBoxHRTEM_ObjAperX.Minimum = -100D;
             numericBoxHRTEM_ObjAperX.Name = "numericBoxHRTEM_ObjAperX";
@@ -1692,8 +1652,6 @@ namespace ReciPro
             resources.ApplyResources(numericBoxObjAperRadius, "numericBoxObjAperRadius");
             numericBoxObjAperRadius.BackColor = System.Drawing.SystemColors.Control;
             numericBoxObjAperRadius.DecimalPlaces = 1;
-            numericBoxObjAperRadius.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxObjAperRadius.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxObjAperRadius.Maximum = 500D;
             numericBoxObjAperRadius.Minimum = 0.5D;
             numericBoxObjAperRadius.Name = "numericBoxObjAperRadius";
@@ -1713,8 +1671,6 @@ namespace ReciPro
             toolTip.SetToolTip(numericBoxHRTEM_ObjAperY, resources.GetString("numericBoxHRTEM_ObjAperY.ToolTip")); // 260531Cl
             numericBoxHRTEM_ObjAperY.BackColor = System.Drawing.SystemColors.Control;
             numericBoxHRTEM_ObjAperY.DecimalPlaces = 1;
-            numericBoxHRTEM_ObjAperY.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxHRTEM_ObjAperY.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxHRTEM_ObjAperY.Maximum = 100D;
             numericBoxHRTEM_ObjAperY.Minimum = -100D;
             numericBoxHRTEM_ObjAperY.Name = "numericBoxHRTEM_ObjAperY";
@@ -1876,8 +1832,6 @@ namespace ReciPro
             resources.ApplyResources(numericBoxCc, "numericBoxCc");
             numericBoxCc.BackColor = System.Drawing.SystemColors.Control;
             numericBoxCc.DecimalPlaces = 2;
-            numericBoxCc.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxCc.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxCc.Maximum = 10D;
             numericBoxCc.Minimum = 0D;
             numericBoxCc.Name = "numericBoxCc";
@@ -1897,8 +1851,6 @@ namespace ReciPro
             resources.ApplyResources(numericBoxDeltaV, "numericBoxDeltaV");
             numericBoxDeltaV.BackColor = System.Drawing.SystemColors.Control;
             numericBoxDeltaV.DecimalPlaces = 2;
-            numericBoxDeltaV.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxDeltaV.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxDeltaV.Maximum = 10D;
             numericBoxDeltaV.Minimum = 0D;
             numericBoxDeltaV.Name = "numericBoxDeltaV";
@@ -1918,8 +1870,6 @@ namespace ReciPro
             resources.ApplyResources(numericBoxHRTEM_BetaAgnle, "numericBoxHRTEM_BetaAgnle");
             numericBoxHRTEM_BetaAgnle.BackColor = System.Drawing.SystemColors.Control;
             numericBoxHRTEM_BetaAgnle.DecimalPlaces = 2;
-            numericBoxHRTEM_BetaAgnle.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxHRTEM_BetaAgnle.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxHRTEM_BetaAgnle.Maximum = 100D;
             numericBoxHRTEM_BetaAgnle.Minimum = 0D;
             numericBoxHRTEM_BetaAgnle.Name = "numericBoxHRTEM_BetaAgnle";
@@ -1936,8 +1886,6 @@ namespace ReciPro
             resources.ApplyResources(numericBoxCs, "numericBoxCs");
             numericBoxCs.BackColor = System.Drawing.SystemColors.Control;
             numericBoxCs.DecimalPlaces = 2;
-            numericBoxCs.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxCs.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxCs.Maximum = 20D;
             numericBoxCs.Minimum = -20D;
             numericBoxCs.Name = "numericBoxCs";
@@ -1956,8 +1904,6 @@ namespace ReciPro
             resources.ApplyResources(numericBoxDefocus, "numericBoxDefocus");
             numericBoxDefocus.BackColor = System.Drawing.SystemColors.Control;
             numericBoxDefocus.DecimalPlaces = 2;
-            numericBoxDefocus.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxDefocus.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxDefocus.Maximum = 1000D;
             numericBoxDefocus.Minimum = -1000D;
             numericBoxDefocus.Name = "numericBoxDefocus";
@@ -1974,8 +1920,6 @@ namespace ReciPro
             // 
             resources.ApplyResources(numericBoxAccVol, "numericBoxAccVol");
             numericBoxAccVol.BackColor = System.Drawing.SystemColors.Control;
-            numericBoxAccVol.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxAccVol.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxAccVol.Maximum = 1000D;
             numericBoxAccVol.Minimum = 1D;
             numericBoxAccVol.Name = "numericBoxAccVol";
@@ -2104,8 +2048,6 @@ namespace ReciPro
             resources.ApplyResources(numericBoxThickness, "numericBoxThickness");
             numericBoxThickness.BackColor = System.Drawing.SystemColors.Control;
             numericBoxThickness.DecimalPlaces = 2;
-            numericBoxThickness.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxThickness.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxThickness.Maximum = 1000D;
             numericBoxThickness.Minimum = 0.001D;
             numericBoxThickness.Name = "numericBoxThickness";

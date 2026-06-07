@@ -411,10 +411,8 @@
             // 
             this.numericBoxCrystalNumPerStep.BackColor = System.Drawing.SystemColors.Control;
             this.numericBoxCrystalNumPerStep.DecimalPlaces = 3;
-            this.numericBoxCrystalNumPerStep.FooterBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxCrystalNumPerStep.FooterFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxCrystalNumPerStep.FooterText = "%";
-            this.numericBoxCrystalNumPerStep.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxCrystalNumPerStep.HeaderFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxCrystalNumPerStep.HeaderText = "Num per Step";
             this.numericBoxCrystalNumPerStep.Location = new System.Drawing.Point(18, 27);
@@ -427,7 +425,6 @@
             this.toolTip.SetToolTip(this.numericBoxCrystalNumPerStep, resources.GetString("numericBoxCrystalNumPerStep.ToolTip")); // 260531Cl
             this.numericBoxCrystalNumPerStep.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
             this.numericBoxCrystalNumPerStep.RadianValue = 0.0087266462599716477D;
-            this.numericBoxCrystalNumPerStep.RoundErrorAccuracy = -1;
             this.numericBoxCrystalNumPerStep.ShowUpDown = true;
             this.numericBoxCrystalNumPerStep.Size = new System.Drawing.Size(168, 25);
             this.numericBoxCrystalNumPerStep.SkipEventDuringInput = false;
@@ -441,10 +438,8 @@
             // 
             this.numericBoxInheritabiliry.BackColor = System.Drawing.SystemColors.Control;
             this.numericBoxInheritabiliry.DecimalPlaces = 2;
-            this.numericBoxInheritabiliry.FooterBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxInheritabiliry.FooterFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxInheritabiliry.FooterText = "%";
-            this.numericBoxInheritabiliry.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxInheritabiliry.HeaderFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxInheritabiliry.HeaderText = "Inheritability";
             this.numericBoxInheritabiliry.Location = new System.Drawing.Point(18, 57);
@@ -457,7 +452,6 @@
             this.toolTip.SetToolTip(this.numericBoxInheritabiliry, resources.GetString("numericBoxInheritabiliry.ToolTip")); // 260531Cl
             this.numericBoxInheritabiliry.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
             this.numericBoxInheritabiliry.RadianValue = 0.17453292519943295D;
-            this.numericBoxInheritabiliry.RoundErrorAccuracy = -1;
             this.numericBoxInheritabiliry.ShowUpDown = true;
             this.numericBoxInheritabiliry.Size = new System.Drawing.Size(168, 25);
             this.numericBoxInheritabiliry.SkipEventDuringInput = false;
@@ -484,10 +478,8 @@
             // 
             this.numericBoxInheritabiliryThreshold.BackColor = System.Drawing.SystemColors.Control;
             this.numericBoxInheritabiliryThreshold.DecimalPlaces = 2;
-            this.numericBoxInheritabiliryThreshold.FooterBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxInheritabiliryThreshold.FooterFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxInheritabiliryThreshold.FooterText = "%";
-            this.numericBoxInheritabiliryThreshold.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxInheritabiliryThreshold.HeaderFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxInheritabiliryThreshold.Location = new System.Drawing.Point(288, 57);
             this.numericBoxInheritabiliryThreshold.Margin = new System.Windows.Forms.Padding(0);
@@ -499,7 +491,6 @@
             this.toolTip.SetToolTip(this.numericBoxInheritabiliryThreshold, resources.GetString("numericBoxInheritabiliryThreshold.ToolTip")); // 260531Cl
             this.numericBoxInheritabiliryThreshold.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
             this.numericBoxInheritabiliryThreshold.RadianValue = 1.6755160819145563D;
-            this.numericBoxInheritabiliryThreshold.RoundErrorAccuracy = -1;
             this.numericBoxInheritabiliryThreshold.ShowUpDown = true;
             this.numericBoxInheritabiliryThreshold.Size = new System.Drawing.Size(79, 25);
             this.numericBoxInheritabiliryThreshold.SkipEventDuringInput = false;
@@ -529,10 +520,8 @@
             // 
             this.numericBoxDirectionalDensity.BackColor = System.Drawing.SystemColors.Control;
             this.numericBoxDirectionalDensity.DecimalPlaces = 2;
-            this.numericBoxDirectionalDensity.FooterBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxDirectionalDensity.FooterFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxDirectionalDensity.FooterText = "°";
-            this.numericBoxDirectionalDensity.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxDirectionalDensity.HeaderFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxDirectionalDensity.HeaderText = "Directional density";
             this.numericBoxDirectionalDensity.Location = new System.Drawing.Point(2, 88);
@@ -545,7 +534,6 @@
             this.toolTip.SetToolTip(this.numericBoxDirectionalDensity, resources.GetString("numericBoxDirectionalDensity.ToolTip")); // 260531Cl
             this.numericBoxDirectionalDensity.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
             this.numericBoxDirectionalDensity.RadianValue = 0.3490658503988659D;
-            this.numericBoxDirectionalDensity.RoundErrorAccuracy = -1;
             this.numericBoxDirectionalDensity.ShowUpDown = true;
             this.numericBoxDirectionalDensity.Size = new System.Drawing.Size(179, 25);
             this.numericBoxDirectionalDensity.SkipEventDuringInput = false;
@@ -559,10 +547,8 @@
             // 
             this.numericBoxCrystalNumPerStepThreshold.BackColor = System.Drawing.SystemColors.Control;
             this.numericBoxCrystalNumPerStepThreshold.DecimalPlaces = 3;
-            this.numericBoxCrystalNumPerStepThreshold.FooterBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxCrystalNumPerStepThreshold.FooterFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxCrystalNumPerStepThreshold.FooterText = "%";
-            this.numericBoxCrystalNumPerStepThreshold.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxCrystalNumPerStepThreshold.HeaderFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxCrystalNumPerStepThreshold.Location = new System.Drawing.Point(288, 28);
             this.numericBoxCrystalNumPerStepThreshold.Margin = new System.Windows.Forms.Padding(0);
@@ -574,7 +560,6 @@
             this.toolTip.SetToolTip(this.numericBoxCrystalNumPerStepThreshold, resources.GetString("numericBoxCrystalNumPerStepThreshold.ToolTip")); // 260531Cl
             this.numericBoxCrystalNumPerStepThreshold.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
             this.numericBoxCrystalNumPerStepThreshold.RadianValue = 0.0004363323129985824D;
-            this.numericBoxCrystalNumPerStepThreshold.RoundErrorAccuracy = -1;
             this.numericBoxCrystalNumPerStepThreshold.ShowUpDown = true;
             this.numericBoxCrystalNumPerStepThreshold.Size = new System.Drawing.Size(79, 25);
             this.numericBoxCrystalNumPerStepThreshold.SkipEventDuringInput = false;
@@ -589,10 +574,8 @@
             // 
             this.numericBoxDirectionalDensityThreshold.BackColor = System.Drawing.SystemColors.Control;
             this.numericBoxDirectionalDensityThreshold.DecimalPlaces = 2;
-            this.numericBoxDirectionalDensityThreshold.FooterBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxDirectionalDensityThreshold.FooterFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxDirectionalDensityThreshold.FooterText = "°";
-            this.numericBoxDirectionalDensityThreshold.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxDirectionalDensityThreshold.HeaderFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxDirectionalDensityThreshold.Location = new System.Drawing.Point(288, 88);
             this.numericBoxDirectionalDensityThreshold.Margin = new System.Windows.Forms.Padding(0);
@@ -604,7 +587,6 @@
             this.toolTip.SetToolTip(this.numericBoxDirectionalDensityThreshold, resources.GetString("numericBoxDirectionalDensityThreshold.ToolTip")); // 260531Cl
             this.numericBoxDirectionalDensityThreshold.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
             this.numericBoxDirectionalDensityThreshold.RadianValue = 0.017453292519943295D;
-            this.numericBoxDirectionalDensityThreshold.RoundErrorAccuracy = -1;
             this.numericBoxDirectionalDensityThreshold.ShowUpDown = true;
             this.numericBoxDirectionalDensityThreshold.Size = new System.Drawing.Size(75, 25);
             this.numericBoxDirectionalDensityThreshold.SkipEventDuringInput = false;
@@ -871,8 +853,6 @@
             // numericBoxRxSpeed
             // 
             this.numericBoxRxSpeed.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxRxSpeed.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxRxSpeed.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxRxSpeed.Location = new System.Drawing.Point(126, 94);
             this.numericBoxRxSpeed.Margin = new System.Windows.Forms.Padding(1);
             this.numericBoxRxSpeed.MaximumSize = new System.Drawing.Size(1000, 24);
@@ -881,7 +861,6 @@
             this.toolTip.SetToolTip(this.numericBoxRxSpeed, resources.GetString("numericBoxRxSpeed.ToolTip")); // 260531Cl
             this.numericBoxRxSpeed.Padding = new System.Windows.Forms.Padding(1);
             this.numericBoxRxSpeed.RadianValue = 0.31415926535897931D;
-            this.numericBoxRxSpeed.RoundErrorAccuracy = -1;
             this.numericBoxRxSpeed.Size = new System.Drawing.Size(61, 24);
             this.numericBoxRxSpeed.SkipEventDuringInput = false;
             this.numericBoxRxSpeed.SmartIncrement = true;
@@ -918,8 +897,6 @@
             // numericBoxYusaGonioRySpeed
             // 
             this.numericBoxYusaGonioRySpeed.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxYusaGonioRySpeed.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxYusaGonioRySpeed.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxYusaGonioRySpeed.Location = new System.Drawing.Point(149, 276);
             this.numericBoxYusaGonioRySpeed.Margin = new System.Windows.Forms.Padding(1);
             this.numericBoxYusaGonioRySpeed.MaximumSize = new System.Drawing.Size(1000, 24);
@@ -928,7 +905,6 @@
             this.toolTip.SetToolTip(this.numericBoxYusaGonioRySpeed, resources.GetString("numericBoxYusaGonioRySpeed.ToolTip")); // 260531Cl
             this.numericBoxYusaGonioRySpeed.Padding = new System.Windows.Forms.Padding(1);
             this.numericBoxYusaGonioRySpeed.RadianValue = 0.017453292519943295D;
-            this.numericBoxYusaGonioRySpeed.RoundErrorAccuracy = -1;
             this.numericBoxYusaGonioRySpeed.Size = new System.Drawing.Size(61, 24);
             this.numericBoxYusaGonioRySpeed.SkipEventDuringInput = false;
             this.numericBoxYusaGonioRySpeed.SmartIncrement = true;
@@ -952,8 +928,6 @@
             // numericBoxYusaGonioRzSpeed
             // 
             this.numericBoxYusaGonioRzSpeed.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxYusaGonioRzSpeed.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxYusaGonioRzSpeed.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxYusaGonioRzSpeed.Location = new System.Drawing.Point(149, 196);
             this.numericBoxYusaGonioRzSpeed.Margin = new System.Windows.Forms.Padding(1);
             this.numericBoxYusaGonioRzSpeed.MaximumSize = new System.Drawing.Size(1000, 24);
@@ -962,7 +936,6 @@
             this.toolTip.SetToolTip(this.numericBoxYusaGonioRzSpeed, resources.GetString("numericBoxYusaGonioRzSpeed.ToolTip")); // 260531Cl
             this.numericBoxYusaGonioRzSpeed.Padding = new System.Windows.Forms.Padding(1);
             this.numericBoxYusaGonioRzSpeed.RadianValue = 0.034906585039886591D;
-            this.numericBoxYusaGonioRzSpeed.RoundErrorAccuracy = -1;
             this.numericBoxYusaGonioRzSpeed.Size = new System.Drawing.Size(61, 24);
             this.numericBoxYusaGonioRzSpeed.SkipEventDuringInput = false;
             this.numericBoxYusaGonioRzSpeed.SmartIncrement = true;
@@ -1037,8 +1010,6 @@
             // numericBoxYusaGonioRyStep
             // 
             this.numericBoxYusaGonioRyStep.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxYusaGonioRyStep.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxYusaGonioRyStep.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxYusaGonioRyStep.Location = new System.Drawing.Point(149, 336);
             this.numericBoxYusaGonioRyStep.Margin = new System.Windows.Forms.Padding(1);
             this.numericBoxYusaGonioRyStep.MaximumSize = new System.Drawing.Size(1000, 24);
@@ -1047,7 +1018,6 @@
             this.toolTip.SetToolTip(this.numericBoxYusaGonioRyStep, resources.GetString("numericBoxYusaGonioRyStep.ToolTip")); // 260531Cl
             this.numericBoxYusaGonioRyStep.Padding = new System.Windows.Forms.Padding(1);
             this.numericBoxYusaGonioRyStep.RadianValue = 0.0034906585039886592D;
-            this.numericBoxYusaGonioRyStep.RoundErrorAccuracy = -1;
             this.numericBoxYusaGonioRyStep.Size = new System.Drawing.Size(61, 24);
             this.numericBoxYusaGonioRyStep.SkipEventDuringInput = false;
             this.numericBoxYusaGonioRyStep.SmartIncrement = true;
@@ -1084,8 +1054,6 @@
             // numericBoxYusaGonioRyOscillation
             // 
             this.numericBoxYusaGonioRyOscillation.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxYusaGonioRyOscillation.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxYusaGonioRyOscillation.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxYusaGonioRyOscillation.Location = new System.Drawing.Point(149, 306);
             this.numericBoxYusaGonioRyOscillation.Margin = new System.Windows.Forms.Padding(1);
             this.numericBoxYusaGonioRyOscillation.MaximumSize = new System.Drawing.Size(1000, 24);
@@ -1094,7 +1062,6 @@
             this.toolTip.SetToolTip(this.numericBoxYusaGonioRyOscillation, resources.GetString("numericBoxYusaGonioRyOscillation.ToolTip")); // 260531Cl
             this.numericBoxYusaGonioRyOscillation.Padding = new System.Windows.Forms.Padding(1);
             this.numericBoxYusaGonioRyOscillation.RadianValue = 0.069813170079773182D;
-            this.numericBoxYusaGonioRyOscillation.RoundErrorAccuracy = -1;
             this.numericBoxYusaGonioRyOscillation.Size = new System.Drawing.Size(61, 24);
             this.numericBoxYusaGonioRyOscillation.SkipEventDuringInput = false;
             this.numericBoxYusaGonioRyOscillation.SmartIncrement = true;
@@ -1142,8 +1109,6 @@
             // numericBoxYusaGonioRzOscillation
             // 
             this.numericBoxYusaGonioRzOscillation.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxYusaGonioRzOscillation.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxYusaGonioRzOscillation.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxYusaGonioRzOscillation.Location = new System.Drawing.Point(149, 226);
             this.numericBoxYusaGonioRzOscillation.Margin = new System.Windows.Forms.Padding(1);
             this.numericBoxYusaGonioRzOscillation.MaximumSize = new System.Drawing.Size(1000, 24);
@@ -1152,7 +1117,6 @@
             this.toolTip.SetToolTip(this.numericBoxYusaGonioRzOscillation, resources.GetString("numericBoxYusaGonioRzOscillation.ToolTip")); // 260531Cl
             this.numericBoxYusaGonioRzOscillation.Padding = new System.Windows.Forms.Padding(1);
             this.numericBoxYusaGonioRzOscillation.RadianValue = 0.069813170079773182D;
-            this.numericBoxYusaGonioRzOscillation.RoundErrorAccuracy = -1;
             this.numericBoxYusaGonioRzOscillation.Size = new System.Drawing.Size(61, 24);
             this.numericBoxYusaGonioRzOscillation.SkipEventDuringInput = false;
             this.numericBoxYusaGonioRzOscillation.SmartIncrement = true;

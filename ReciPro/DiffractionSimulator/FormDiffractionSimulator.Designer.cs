@@ -1072,8 +1072,6 @@
             resources.ApplyResources(numericBox3D_SpotRadius, "numericBox3D_SpotRadius");
             numericBox3D_SpotRadius.BackColor = System.Drawing.SystemColors.Control;
             numericBox3D_SpotRadius.DecimalPlaces = 4;
-            numericBox3D_SpotRadius.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBox3D_SpotRadius.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBox3D_SpotRadius.Maximum = 1D;
             numericBox3D_SpotRadius.Minimum = 0.01D;
             numericBox3D_SpotRadius.Name = "numericBox3D_SpotRadius";
@@ -1160,8 +1158,6 @@
             resources.ApplyResources(numericBoxReciprocalThreshold, "numericBoxReciprocalThreshold");
             numericBoxReciprocalThreshold.BackColor = System.Drawing.SystemColors.Control;
             numericBoxReciprocalThreshold.DecimalPlaces = 2;
-            numericBoxReciprocalThreshold.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxReciprocalThreshold.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxReciprocalThreshold.Maximum = 100D;
             numericBoxReciprocalThreshold.Minimum = 0D;
             numericBoxReciprocalThreshold.Name = "numericBoxReciprocalThreshold";
@@ -1294,8 +1290,6 @@
             // 
             resources.ApplyResources(numericBoxStep, "numericBoxStep");
             numericBoxStep.BackColor = System.Drawing.SystemColors.Control;
-            numericBoxStep.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxStep.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxStep.Maximum = 360D;
             numericBoxStep.Minimum = 0.001D;
             numericBoxStep.Name = "numericBoxStep";
@@ -1669,8 +1663,6 @@
             resources.ApplyResources(numericBoxResolution, "numericBoxResolution");
             numericBoxResolution.BackColor = System.Drawing.SystemColors.Control;
             numericBoxResolution.DecimalPlaces = 6;
-            numericBoxResolution.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxResolution.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxResolution.Maximum = 10D;
             numericBoxResolution.Minimum = 1E-05D;
             numericBoxResolution.Name = "numericBoxResolution";
@@ -1793,8 +1785,6 @@
             // 
             resources.ApplyResources(numericBoxDev, "numericBoxDev");
             numericBoxDev.BackColor = System.Drawing.SystemColors.Control;
-            numericBoxDev.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxDev.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxDev.Name = "numericBoxDev";
             numericBoxDev.RadianValue = 0.023911010752322315D;
             numericBoxDev.SkipEventDuringInput = false;
@@ -1814,8 +1804,6 @@
             // 
             resources.ApplyResources(numericBoxAcc, "numericBoxAcc");
             numericBoxAcc.BackColor = System.Drawing.SystemColors.Control;
-            numericBoxAcc.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxAcc.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxAcc.Name = "numericBoxAcc";
             numericBoxAcc.RadianValue = 216.42082724729684D;
             numericBoxAcc.SkipEventDuringInput = false;
@@ -2189,8 +2177,6 @@
             // 
             resources.ApplyResources(numericBoxPED_Semiangle, "numericBoxPED_Semiangle");
             numericBoxPED_Semiangle.BackColor = System.Drawing.SystemColors.Control;
-            numericBoxPED_Semiangle.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxPED_Semiangle.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxPED_Semiangle.Maximum = 500D;
             numericBoxPED_Semiangle.Minimum = 0.1D;
             numericBoxPED_Semiangle.Name = "numericBoxPED_Semiangle";
@@ -2207,8 +2193,6 @@
             resources.ApplyResources(numericBoxPED_Step, "numericBoxPED_Step");
             numericBoxPED_Step.BackColor = System.Drawing.SystemColors.Control;
             numericBoxPED_Step.DecimalPlaces = 0;
-            numericBoxPED_Step.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxPED_Step.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxPED_Step.Maximum = 1080D;
             numericBoxPED_Step.Minimum = 2D;
             numericBoxPED_Step.Name = "numericBoxPED_Step";
@@ -2240,8 +2224,6 @@
             // 
             resources.ApplyResources(numericBoxNumOfBlochWave, "numericBoxNumOfBlochWave");
             numericBoxNumOfBlochWave.BackColor = System.Drawing.SystemColors.Control;
-            numericBoxNumOfBlochWave.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxNumOfBlochWave.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxNumOfBlochWave.Maximum = 1000D;
             numericBoxNumOfBlochWave.Minimum = 8D;
             numericBoxNumOfBlochWave.Name = "numericBoxNumOfBlochWave";
@@ -2258,8 +2240,6 @@
             resources.ApplyResources(numericBoxThickness, "numericBoxThickness");
             numericBoxThickness.BackColor = System.Drawing.SystemColors.Control;
             numericBoxThickness.DecimalPlaces = 2;
-            numericBoxThickness.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxThickness.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxThickness.Maximum = 10000D;
             numericBoxThickness.Minimum = 0.01D;
             numericBoxThickness.Name = "numericBoxThickness";
@@ -2350,8 +2330,6 @@
             resources.ApplyResources(numericBoxSpotRadius, "numericBoxSpotRadius");
             numericBoxSpotRadius.BackColor = System.Drawing.SystemColors.Control;
             numericBoxSpotRadius.DecimalPlaces = 4;
-            numericBoxSpotRadius.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxSpotRadius.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxSpotRadius.Maximum = 1D;
             numericBoxSpotRadius.Minimum = 0.01D;
             numericBoxSpotRadius.Name = "numericBoxSpotRadius";

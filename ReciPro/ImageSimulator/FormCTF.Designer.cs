@@ -197,9 +197,7 @@
             numericBoxMaxU1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             numericBoxMaxU1.BackColor = System.Drawing.SystemColors.Control;
             numericBoxMaxU1.DecimalPlaces = 1;
-            numericBoxMaxU1.FooterBackColor = System.Drawing.SystemColors.Control;
             numericBoxMaxU1.FooterText = "nm⁻¹";
-            numericBoxMaxU1.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxMaxU1.HeaderText = "Max u";
             numericBoxMaxU1.Location = new System.Drawing.Point(522, 0);
             numericBoxMaxU1.Margin = new System.Windows.Forms.Padding(3, 0, 0, 0);

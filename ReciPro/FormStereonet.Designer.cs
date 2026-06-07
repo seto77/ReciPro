@@ -1024,8 +1024,6 @@ namespace ReciPro
             // 
             resources.ApplyResources(numericBoxRxSpeed, "numericBoxRxSpeed");
             numericBoxRxSpeed.BackColor = System.Drawing.SystemColors.Control;
-            numericBoxRxSpeed.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxRxSpeed.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxRxSpeed.Name = "numericBoxRxSpeed";
             numericBoxRxSpeed.RadianValue = 0.31415926535897931D;
             numericBoxRxSpeed.SkipEventDuringInput = false;
@@ -1039,8 +1037,6 @@ namespace ReciPro
             // 
             resources.ApplyResources(numericBoxRySpeed, "numericBoxRySpeed");
             numericBoxRySpeed.BackColor = System.Drawing.SystemColors.Control;
-            numericBoxRySpeed.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxRySpeed.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxRySpeed.Name = "numericBoxRySpeed";
             numericBoxRySpeed.RadianValue = 0.017453292519943295D;
             numericBoxRySpeed.SkipEventDuringInput = false;
@@ -1054,8 +1050,6 @@ namespace ReciPro
             // 
             resources.ApplyResources(numericBoxRzSpeed, "numericBoxRzSpeed");
             numericBoxRzSpeed.BackColor = System.Drawing.SystemColors.Control;
-            numericBoxRzSpeed.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxRzSpeed.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxRzSpeed.Name = "numericBoxRzSpeed";
             numericBoxRzSpeed.RadianValue = 0.034906585039886591D;
             numericBoxRzSpeed.SkipEventDuringInput = false;
@@ -1069,8 +1063,6 @@ namespace ReciPro
             // 
             resources.ApplyResources(numericBoxTotalTime, "numericBoxTotalTime");
             numericBoxTotalTime.BackColor = System.Drawing.SystemColors.Control;
-            numericBoxTotalTime.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxTotalTime.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxTotalTime.Name = "numericBoxTotalTime";
             numericBoxTotalTime.RadianValue = 1.7453292519943295D;
             numericBoxTotalTime.SkipEventDuringInput = false;
@@ -1084,8 +1076,6 @@ namespace ReciPro
             // 
             resources.ApplyResources(numericBoxAngularSpeed, "numericBoxAngularSpeed");
             numericBoxAngularSpeed.BackColor = System.Drawing.SystemColors.Control;
-            numericBoxAngularSpeed.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxAngularSpeed.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxAngularSpeed.Name = "numericBoxAngularSpeed";
             numericBoxAngularSpeed.RadianValue = 0.52359877559829882D;
             numericBoxAngularSpeed.SkipEventDuringInput = false;
@@ -1099,8 +1089,6 @@ namespace ReciPro
             // 
             resources.ApplyResources(numericBoxRyStep, "numericBoxRyStep");
             numericBoxRyStep.BackColor = System.Drawing.SystemColors.Control;
-            numericBoxRyStep.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxRyStep.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxRyStep.Name = "numericBoxRyStep";
             numericBoxRyStep.RadianValue = 0.0034906585039886592D;
             numericBoxRyStep.SkipEventDuringInput = false;
@@ -1114,8 +1102,6 @@ namespace ReciPro
             // 
             resources.ApplyResources(numericBoxRadialAngle, "numericBoxRadialAngle");
             numericBoxRadialAngle.BackColor = System.Drawing.SystemColors.Control;
-            numericBoxRadialAngle.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxRadialAngle.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxRadialAngle.Name = "numericBoxRadialAngle";
             numericBoxRadialAngle.RadianValue = 0.13962634015954636D;
             numericBoxRadialAngle.SkipEventDuringInput = false;
@@ -1129,8 +1115,6 @@ namespace ReciPro
             // 
             resources.ApplyResources(numericBoxRyOscillation, "numericBoxRyOscillation");
             numericBoxRyOscillation.BackColor = System.Drawing.SystemColors.Control;
-            numericBoxRyOscillation.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxRyOscillation.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxRyOscillation.Name = "numericBoxRyOscillation";
             numericBoxRyOscillation.RadianValue = 0.13962634015954636D;
             numericBoxRyOscillation.SkipEventDuringInput = false;
@@ -1144,8 +1128,6 @@ namespace ReciPro
             // 
             resources.ApplyResources(numericBoxRzOscillation, "numericBoxRzOscillation");
             numericBoxRzOscillation.BackColor = System.Drawing.SystemColors.Control;
-            numericBoxRzOscillation.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxRzOscillation.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxRzOscillation.Name = "numericBoxRzOscillation";
             numericBoxRzOscillation.RadianValue = 0.13962634015954636D;
             numericBoxRzOscillation.SkipEventDuringInput = false;

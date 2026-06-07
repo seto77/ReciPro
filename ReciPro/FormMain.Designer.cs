@@ -666,8 +666,6 @@
             // 
             resources.ApplyResources(numericBoxStep, "numericBoxStep");
             numericBoxStep.BackColor = System.Drawing.SystemColors.Control;
-            numericBoxStep.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxStep.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxStep.Maximum = 360D;
             numericBoxStep.Minimum = 0.001D;
             numericBoxStep.Name = "numericBoxStep";
@@ -738,8 +736,6 @@
             resources.ApplyResources(numericBoxEulerPsi, "numericBoxEulerPsi");
             numericBoxEulerPsi.BackColor = System.Drawing.SystemColors.Control;
             numericBoxEulerPsi.DecimalPlaces = 3;
-            numericBoxEulerPsi.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxEulerPsi.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxEulerPsi.Maximum = 360D;
             numericBoxEulerPsi.Minimum = -360D;
             numericBoxEulerPsi.Name = "numericBoxEulerPsi";
@@ -758,8 +754,6 @@
             resources.ApplyResources(numericBoxEulerTheta, "numericBoxEulerTheta");
             numericBoxEulerTheta.BackColor = System.Drawing.SystemColors.Control;
             numericBoxEulerTheta.DecimalPlaces = 3;
-            numericBoxEulerTheta.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxEulerTheta.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxEulerTheta.Maximum = 360D;
             numericBoxEulerTheta.Minimum = -360D;
             numericBoxEulerTheta.Name = "numericBoxEulerTheta";
@@ -772,8 +766,6 @@
             resources.ApplyResources(numericBoxEulerPhi, "numericBoxEulerPhi");
             numericBoxEulerPhi.BackColor = System.Drawing.SystemColors.Control;
             numericBoxEulerPhi.DecimalPlaces = 3;
-            numericBoxEulerPhi.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxEulerPhi.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxEulerPhi.Maximum = 360D;
             numericBoxEulerPhi.Minimum = -360D;
             numericBoxEulerPhi.Name = "numericBoxEulerPhi";
@@ -826,8 +818,6 @@
             // 
             resources.ApplyResources(numericBoxMaxUVW, "numericBoxMaxUVW");
             numericBoxMaxUVW.BackColor = System.Drawing.SystemColors.Control;
-            numericBoxMaxUVW.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxMaxUVW.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxMaxUVW.Maximum = 100D;
             numericBoxMaxUVW.Minimum = 1D;
             numericBoxMaxUVW.Name = "numericBoxMaxUVW";

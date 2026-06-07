@@ -259,8 +259,6 @@
             numericBoxP1Theta.BackColor = System.Drawing.SystemColors.Control;
             resources.ApplyResources(numericBoxP1Theta, "numericBoxP1Theta");
             toolTip.SetToolTip(numericBoxP1Theta, resources.GetString("numericBoxP1Theta.ToolTip")); // 260531Cl
-            numericBoxP1Theta.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxP1Theta.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxP1Theta.Name = "numericBoxP1Theta";
             numericBoxP1Theta.SkipEventDuringInput = false;
             numericBoxP1Theta.SmartIncrement = true;
@@ -558,8 +556,6 @@
             numericBoxP1Tilt2.BackColor = System.Drawing.SystemColors.Control;
             resources.ApplyResources(numericBoxP1Tilt2, "numericBoxP1Tilt2");
             toolTip.SetToolTip(numericBoxP1Tilt2, resources.GetString("numericBoxP1Tilt2.ToolTip")); // 260531Cl
-            numericBoxP1Tilt2.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxP1Tilt2.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxP1Tilt2.Name = "numericBoxP1Tilt2";
             numericBoxP1Tilt2.SkipEventDuringInput = false;
             numericBoxP1Tilt2.SmartIncrement = true;
@@ -571,8 +567,6 @@
             numericBoxP1Tilt1.BackColor = System.Drawing.SystemColors.Control;
             resources.ApplyResources(numericBoxP1Tilt1, "numericBoxP1Tilt1");
             toolTip.SetToolTip(numericBoxP1Tilt1, resources.GetString("numericBoxP1Tilt1.ToolTip")); // 260531Cl
-            numericBoxP1Tilt1.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxP1Tilt1.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxP1Tilt1.Name = "numericBoxP1Tilt1";
             numericBoxP1Tilt1.SkipEventDuringInput = false;
             numericBoxP1Tilt1.SmartIncrement = true;
@@ -748,8 +742,6 @@
             numericBoxP2Theta.BackColor = System.Drawing.SystemColors.Control;
             resources.ApplyResources(numericBoxP2Theta, "numericBoxP2Theta");
             toolTip.SetToolTip(numericBoxP2Theta, resources.GetString("numericBoxP2Theta.ToolTip")); // 260531Cl
-            numericBoxP2Theta.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxP2Theta.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxP2Theta.Name = "numericBoxP2Theta";
             numericBoxP2Theta.SkipEventDuringInput = false;
             numericBoxP2Theta.SmartIncrement = true;
@@ -957,8 +949,6 @@
             numericBoxP2Tilt2.BackColor = System.Drawing.SystemColors.Control;
             resources.ApplyResources(numericBoxP2Tilt2, "numericBoxP2Tilt2");
             toolTip.SetToolTip(numericBoxP2Tilt2, resources.GetString("numericBoxP2Tilt2.ToolTip")); // 260531Cl
-            numericBoxP2Tilt2.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxP2Tilt2.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxP2Tilt2.Name = "numericBoxP2Tilt2";
             numericBoxP2Tilt2.SkipEventDuringInput = false;
             numericBoxP2Tilt2.SmartIncrement = true;
@@ -970,8 +960,6 @@
             numericBoxP2Tilt1.BackColor = System.Drawing.SystemColors.Control;
             resources.ApplyResources(numericBoxP2Tilt1, "numericBoxP2Tilt1");
             toolTip.SetToolTip(numericBoxP2Tilt1, resources.GetString("numericBoxP2Tilt1.ToolTip")); // 260531Cl
-            numericBoxP2Tilt1.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxP2Tilt1.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxP2Tilt1.Name = "numericBoxP2Tilt1";
             numericBoxP2Tilt1.SkipEventDuringInput = false;
             numericBoxP2Tilt1.SmartIncrement = true;
@@ -1097,8 +1085,6 @@
             numericBoxP3Theta.BackColor = System.Drawing.SystemColors.Control;
             resources.ApplyResources(numericBoxP3Theta, "numericBoxP3Theta");
             toolTip.SetToolTip(numericBoxP3Theta, resources.GetString("numericBoxP3Theta.ToolTip")); // 260531Cl
-            numericBoxP3Theta.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxP3Theta.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxP3Theta.Name = "numericBoxP3Theta";
             numericBoxP3Theta.SkipEventDuringInput = false;
             numericBoxP3Theta.SmartIncrement = true;
@@ -1298,8 +1284,6 @@
             numericBoxP3Tilt2.BackColor = System.Drawing.SystemColors.Control;
             resources.ApplyResources(numericBoxP3Tilt2, "numericBoxP3Tilt2");
             toolTip.SetToolTip(numericBoxP3Tilt2, resources.GetString("numericBoxP3Tilt2.ToolTip")); // 260531Cl
-            numericBoxP3Tilt2.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxP3Tilt2.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxP3Tilt2.Name = "numericBoxP3Tilt2";
             numericBoxP3Tilt2.SkipEventDuringInput = false;
             numericBoxP3Tilt2.SmartIncrement = true;
@@ -1317,8 +1301,6 @@
             numericBoxP3Tilt1.BackColor = System.Drawing.SystemColors.Control;
             resources.ApplyResources(numericBoxP3Tilt1, "numericBoxP3Tilt1");
             toolTip.SetToolTip(numericBoxP3Tilt1, resources.GetString("numericBoxP3Tilt1.ToolTip")); // 260531Cl
-            numericBoxP3Tilt1.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxP3Tilt1.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxP3Tilt1.Name = "numericBoxP3Tilt1";
             numericBoxP3Tilt1.SkipEventDuringInput = false;
             numericBoxP3Tilt1.SmartIncrement = true;

@@ -184,8 +184,6 @@
             // 
             resources.ApplyResources(numericBoxMaxNumOfG, "numericBoxMaxNumOfG");
             numericBoxMaxNumOfG.BackColor = System.Drawing.SystemColors.Control;
-            numericBoxMaxNumOfG.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxMaxNumOfG.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxMaxNumOfG.Maximum = 2048D;
             numericBoxMaxNumOfG.Minimum = 1D;
             numericBoxMaxNumOfG.Name = "numericBoxMaxNumOfG";
@@ -225,9 +223,7 @@
             // 
             numericBoxDiskResolution.BackColor = System.Drawing.SystemColors.Control;
             numericBoxDiskResolution.DecimalPlaces = 3;
-            numericBoxDiskResolution.FooterBackColor = System.Drawing.SystemColors.Control;
             resources.ApplyResources(numericBoxDiskResolution, "numericBoxDiskResolution");
-            numericBoxDiskResolution.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxDiskResolution.Maximum = 100D;
             numericBoxDiskResolution.Minimum = 0.001D;
             numericBoxDiskResolution.Name = "numericBoxDiskResolution";
@@ -275,8 +271,6 @@
             // 
             resources.ApplyResources(numericBoxWholeThicknessStart, "numericBoxWholeThicknessStart");
             numericBoxWholeThicknessStart.BackColor = System.Drawing.SystemColors.Control;
-            numericBoxWholeThicknessStart.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxWholeThicknessStart.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxWholeThicknessStart.Maximum = 1000D;
             numericBoxWholeThicknessStart.Minimum = 1D;
             numericBoxWholeThicknessStart.Name = "numericBoxWholeThicknessStart";
@@ -293,8 +287,6 @@
             // 
             resources.ApplyResources(numericBoxThicknessEnd, "numericBoxThicknessEnd");
             numericBoxThicknessEnd.BackColor = System.Drawing.SystemColors.Control;
-            numericBoxThicknessEnd.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxThicknessEnd.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxThicknessEnd.Maximum = 1000D;
             numericBoxThicknessEnd.Minimum = 1D;
             numericBoxThicknessEnd.Name = "numericBoxThicknessEnd";
@@ -311,8 +303,6 @@
             // 
             resources.ApplyResources(numericBoxThicknessStep, "numericBoxThicknessStep");
             numericBoxThicknessStep.BackColor = System.Drawing.SystemColors.Control;
-            numericBoxThicknessStep.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxThicknessStep.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxThicknessStep.Maximum = 1000D;
             numericBoxThicknessStep.Minimum = 1D;
             numericBoxThicknessStep.Name = "numericBoxThicknessStep";
@@ -340,8 +330,6 @@
             resources.ApplyResources(numericBoxThread, "numericBoxThread");
             numericBoxThread.BackColor = System.Drawing.SystemColors.Control;
             numericBoxThread.DecimalPlaces = 0;
-            numericBoxThread.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxThread.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxThread.Maximum = 128D;
             numericBoxThread.Minimum = 1D;
             numericBoxThread.Name = "numericBoxThread";

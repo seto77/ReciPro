@@ -311,12 +311,8 @@
             // numericBoxFootY
             // 
             numericBoxFootY.BackColor = System.Drawing.SystemColors.Control;
-            numericBoxFootY.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxFootY.FooterFont = new System.Drawing.Font("Segoe UI", 9.75F);
             numericBoxFootY.FooterPadding = new System.Windows.Forms.Padding(0, 2, 0, 0);
             numericBoxFootY.FooterText = "px";
-            numericBoxFootY.HeaderBackColor = System.Drawing.SystemColors.Control;
-            numericBoxFootY.HeaderFont = new System.Drawing.Font("Segoe UI", 9.75F);
             numericBoxFootY.HeaderPadding = new System.Windows.Forms.Padding(0, 2, 0, 0);
             numericBoxFootY.HeaderText = "fy";
             numericBoxFootY.Location = new System.Drawing.Point(342, 3);
@@ -350,12 +346,8 @@
             // numericBoxFootX
             // 
             numericBoxFootX.BackColor = System.Drawing.SystemColors.Control;
-            numericBoxFootX.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxFootX.FooterFont = new System.Drawing.Font("Segoe UI", 9.75F);
             numericBoxFootX.FooterPadding = new System.Windows.Forms.Padding(0, 2, 0, 0);
             numericBoxFootX.FooterText = "px";
-            numericBoxFootX.HeaderBackColor = System.Drawing.SystemColors.Control;
-            numericBoxFootX.HeaderFont = new System.Drawing.Font("Segoe UI", 9.75F);
             numericBoxFootX.HeaderPadding = new System.Windows.Forms.Padding(0, 2, 0, 0);
             numericBoxFootX.HeaderText = "Foot:  fx";
             numericBoxFootX.Location = new System.Drawing.Point(202, 3);
@@ -375,12 +367,8 @@
             // numericBoxPixelSize
             // 
             numericBoxPixelSize.BackColor = System.Drawing.SystemColors.Control;
-            numericBoxPixelSize.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxPixelSize.FooterFont = new System.Drawing.Font("Segoe UI", 9.75F);
             numericBoxPixelSize.FooterPadding = new System.Windows.Forms.Padding(0, 2, 0, 0);
             numericBoxPixelSize.FooterText = "mm";
-            numericBoxPixelSize.HeaderBackColor = System.Drawing.SystemColors.Control;
-            numericBoxPixelSize.HeaderFont = new System.Drawing.Font("Segoe UI", 9.75F);
             numericBoxPixelSize.HeaderPadding = new System.Windows.Forms.Padding(0, 2, 0, 0);
             numericBoxPixelSize.HeaderText = "pix. size";
             numericBoxPixelSize.Location = new System.Drawing.Point(448, 0);
@@ -413,12 +401,8 @@
             // numericBoxCameraLength2
             // 
             numericBoxCameraLength2.BackColor = System.Drawing.SystemColors.Control;
-            numericBoxCameraLength2.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxCameraLength2.FooterFont = new System.Drawing.Font("Segoe UI", 9.75F);
             numericBoxCameraLength2.FooterPadding = new System.Windows.Forms.Padding(0, 3, 0, 0);
             numericBoxCameraLength2.FooterText = "mm";
-            numericBoxCameraLength2.HeaderBackColor = System.Drawing.SystemColors.Control;
-            numericBoxCameraLength2.HeaderFont = new System.Drawing.Font("Segoe UI", 9.75F);
             numericBoxCameraLength2.HeaderPadding = new System.Windows.Forms.Padding(0, 3, 0, 0);
             numericBoxCameraLength2.HeaderText = "Camera length 2";
             numericBoxCameraLength2.Location = new System.Drawing.Point(0, 0);
@@ -441,11 +425,8 @@
             // numericBoxTau
             // 
             numericBoxTau.BackColor = System.Drawing.SystemColors.Control;
-            numericBoxTau.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxTau.FooterFont = new System.Drawing.Font("Segoe UI", 9.75F);
             numericBoxTau.FooterPadding = new System.Windows.Forms.Padding(0, 3, 0, 0);
             numericBoxTau.FooterText = "°";
-            numericBoxTau.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxTau.HeaderFont = new System.Drawing.Font("Segoe UI", 11F);
             numericBoxTau.HeaderPadding = new System.Windows.Forms.Padding(0, 1, 0, 0);
             numericBoxTau.HeaderText = "τ";
@@ -508,11 +489,8 @@
             // numericBoxPhi
             // 
             numericBoxPhi.BackColor = System.Drawing.SystemColors.Control;
-            numericBoxPhi.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxPhi.FooterFont = new System.Drawing.Font("Segoe UI", 9.75F);
             numericBoxPhi.FooterPadding = new System.Windows.Forms.Padding(0, 3, 0, 0);
             numericBoxPhi.FooterText = "°";
-            numericBoxPhi.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxPhi.HeaderFont = new System.Drawing.Font("Segoe UI", 11F);
             numericBoxPhi.HeaderPadding = new System.Windows.Forms.Padding(0, 1, 0, 0);
             numericBoxPhi.HeaderText = "φ";

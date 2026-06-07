@@ -554,8 +554,6 @@
             // 
             numericBoxTau.BackColor = System.Drawing.SystemColors.Control;
             numericBoxTau.DecimalPlaces = 1;
-            numericBoxTau.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxTau.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxTau.Location = new System.Drawing.Point(126, 16);
             numericBoxTau.Margin = new System.Windows.Forms.Padding(0);
             numericBoxTau.MaximumSize = new System.Drawing.Size(1000, 23);
@@ -570,8 +568,6 @@
             // 
             numericBoxPhi.BackColor = System.Drawing.SystemColors.Control;
             numericBoxPhi.DecimalPlaces = 1;
-            numericBoxPhi.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxPhi.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxPhi.Location = new System.Drawing.Point(24, 17);
             numericBoxPhi.Margin = new System.Windows.Forms.Padding(0);
             numericBoxPhi.MaximumSize = new System.Drawing.Size(1000, 23);
@@ -758,8 +754,6 @@
             // numericBoxConvergentAngle
             // 
             numericBoxConvergentAngle.BackColor = System.Drawing.SystemColors.Control;
-            numericBoxConvergentAngle.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxConvergentAngle.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxConvergentAngle.Location = new System.Drawing.Point(129, 114);
             numericBoxConvergentAngle.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             numericBoxConvergentAngle.MaximumSize = new System.Drawing.Size(1000, 23);
@@ -845,8 +839,6 @@
             // numericBoxMonochromaticity
             // 
             numericBoxMonochromaticity.BackColor = System.Drawing.SystemColors.Control;
-            numericBoxMonochromaticity.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxMonochromaticity.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxMonochromaticity.Location = new System.Drawing.Point(130, 142);
             numericBoxMonochromaticity.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             numericBoxMonochromaticity.MaximumSize = new System.Drawing.Size(1000, 23);
@@ -913,8 +905,6 @@
             // 
             numericBoxImageResolution.BackColor = System.Drawing.SystemColors.Control;
             numericBoxImageResolution.DecimalPlaces = 5;
-            numericBoxImageResolution.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxImageResolution.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxImageResolution.Location = new System.Drawing.Point(119, 124);
             numericBoxImageResolution.Margin = new System.Windows.Forms.Padding(0);
             numericBoxImageResolution.MaximumSize = new System.Drawing.Size(1000, 23);
@@ -931,8 +921,6 @@
             // 
             numericBoxMonitorResolution.BackColor = System.Drawing.SystemColors.Control;
             numericBoxMonitorResolution.DecimalPlaces = 5;
-            numericBoxMonitorResolution.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxMonitorResolution.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxMonitorResolution.Location = new System.Drawing.Point(119, 156);
             numericBoxMonitorResolution.Margin = new System.Windows.Forms.Padding(0);
             numericBoxMonitorResolution.MaximumSize = new System.Drawing.Size(1000, 23);
@@ -986,8 +974,6 @@
             // 
             numericBoxCameraLength.BackColor = System.Drawing.SystemColors.Control;
             numericBoxCameraLength.DecimalPlaces = 5;
-            numericBoxCameraLength.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxCameraLength.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxCameraLength.Location = new System.Drawing.Point(116, 20);
             numericBoxCameraLength.Margin = new System.Windows.Forms.Padding(0);
             numericBoxCameraLength.MaximumSize = new System.Drawing.Size(1000, 23);
@@ -1028,8 +1014,6 @@
             // numericBoxCenterY
             // 
             numericBoxCenterY.BackColor = System.Drawing.SystemColors.Control;
-            numericBoxCenterY.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxCenterY.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxCenterY.Location = new System.Drawing.Point(165, 87);
             numericBoxCenterY.Margin = new System.Windows.Forms.Padding(0);
             numericBoxCenterY.MaximumSize = new System.Drawing.Size(1000, 23);
@@ -1045,8 +1029,6 @@
             // numericBoxCenterX
             // 
             numericBoxCenterX.BackColor = System.Drawing.SystemColors.Control;
-            numericBoxCenterX.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxCenterX.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxCenterX.Location = new System.Drawing.Point(55, 87);
             numericBoxCenterX.Margin = new System.Windows.Forms.Padding(0);
             numericBoxCenterX.MaximumSize = new System.Drawing.Size(1000, 23);
@@ -1124,8 +1106,6 @@
             // numericBoxFilmBlur
             // 
             numericBoxFilmBlur.BackColor = System.Drawing.SystemColors.Control;
-            numericBoxFilmBlur.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxFilmBlur.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxFilmBlur.Location = new System.Drawing.Point(108, 187);
             numericBoxFilmBlur.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             numericBoxFilmBlur.MaximumSize = new System.Drawing.Size(1000, 23);

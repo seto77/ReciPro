@@ -472,8 +472,6 @@
             resources.ApplyResources(numericBoxCRange, "numericBoxCRange");
             numericBoxCRange.BackColor = System.Drawing.SystemColors.Control;
             numericBoxCRange.DecimalPlaces = 2;
-            numericBoxCRange.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxCRange.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxCRange.Maximum = 10D;
             numericBoxCRange.Minimum = 0D;
             numericBoxCRange.Name = "numericBoxCRange";
@@ -491,8 +489,6 @@
             resources.ApplyResources(numericBoxBRange, "numericBoxBRange");
             numericBoxBRange.BackColor = System.Drawing.SystemColors.Control;
             numericBoxBRange.DecimalPlaces = 2;
-            numericBoxBRange.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxBRange.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxBRange.Maximum = 10D;
             numericBoxBRange.Minimum = 0D;
             numericBoxBRange.Name = "numericBoxBRange";
@@ -510,8 +506,6 @@
             resources.ApplyResources(numericBoxARange, "numericBoxARange");
             numericBoxARange.BackColor = System.Drawing.SystemColors.Control;
             numericBoxARange.DecimalPlaces = 2;
-            numericBoxARange.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxARange.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxARange.Maximum = 10D;
             numericBoxARange.Minimum = 0D;
             numericBoxARange.Name = "numericBoxARange";
@@ -529,8 +523,6 @@
             resources.ApplyResources(numericBoxCCenter, "numericBoxCCenter");
             numericBoxCCenter.BackColor = System.Drawing.SystemColors.Control;
             numericBoxCCenter.DecimalPlaces = 2;
-            numericBoxCCenter.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxCCenter.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxCCenter.Maximum = 10D;
             numericBoxCCenter.Minimum = 0D;
             numericBoxCCenter.Name = "numericBoxCCenter";
@@ -546,8 +538,6 @@
             resources.ApplyResources(numericBoxBCenter, "numericBoxBCenter");
             numericBoxBCenter.BackColor = System.Drawing.SystemColors.Control;
             numericBoxBCenter.DecimalPlaces = 2;
-            numericBoxBCenter.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxBCenter.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxBCenter.Maximum = 10D;
             numericBoxBCenter.Minimum = 0D;
             numericBoxBCenter.Name = "numericBoxBCenter";
@@ -563,8 +553,6 @@
             resources.ApplyResources(numericBoxACenter, "numericBoxACenter");
             numericBoxACenter.BackColor = System.Drawing.SystemColors.Control;
             numericBoxACenter.DecimalPlaces = 2;
-            numericBoxACenter.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxACenter.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxACenter.Maximum = 10D;
             numericBoxACenter.Minimum = 0D;
             numericBoxACenter.Name = "numericBoxACenter";
@@ -627,8 +615,6 @@
             resources.ApplyResources(numericBoxBoundPlanesOpacity, "numericBoxBoundPlanesOpacity");
             numericBoxBoundPlanesOpacity.BackColor = System.Drawing.SystemColors.Control;
             numericBoxBoundPlanesOpacity.DecimalPlaces = 1;
-            numericBoxBoundPlanesOpacity.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxBoundPlanesOpacity.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxBoundPlanesOpacity.Maximum = 1D;
             numericBoxBoundPlanesOpacity.Minimum = 0D;
             numericBoxBoundPlanesOpacity.Name = "numericBoxBoundPlanesOpacity";
@@ -972,8 +958,6 @@
             resources.ApplyResources(numericBoxCellTranslationC, "numericBoxCellTranslationC");
             numericBoxCellTranslationC.BackColor = System.Drawing.SystemColors.Control;
             numericBoxCellTranslationC.DecimalPlaces = 2;
-            numericBoxCellTranslationC.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxCellTranslationC.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxCellTranslationC.Maximum = 10D;
             numericBoxCellTranslationC.Minimum = -10D;
             numericBoxCellTranslationC.Name = "numericBoxCellTranslationC";
@@ -988,8 +972,6 @@
             resources.ApplyResources(numericBoxCellTranslationB, "numericBoxCellTranslationB");
             numericBoxCellTranslationB.BackColor = System.Drawing.SystemColors.Control;
             numericBoxCellTranslationB.DecimalPlaces = 2;
-            numericBoxCellTranslationB.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxCellTranslationB.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxCellTranslationB.Maximum = 10D;
             numericBoxCellTranslationB.Minimum = -10D;
             numericBoxCellTranslationB.Name = "numericBoxCellTranslationB";
@@ -1004,8 +986,6 @@
             resources.ApplyResources(numericBoxCellTranslationA, "numericBoxCellTranslationA");
             numericBoxCellTranslationA.BackColor = System.Drawing.SystemColors.Control;
             numericBoxCellTranslationA.DecimalPlaces = 2;
-            numericBoxCellTranslationA.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxCellTranslationA.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxCellTranslationA.Maximum = 10D;
             numericBoxCellTranslationA.Minimum = -10D;
             numericBoxCellTranslationA.Name = "numericBoxCellTranslationA";
@@ -1213,8 +1193,6 @@
             resources.ApplyResources(numericBoxProjectionCenterX, "numericBoxProjectionCenterX");
             numericBoxProjectionCenterX.BackColor = System.Drawing.SystemColors.Control;
             numericBoxProjectionCenterX.DecimalPlaces = 2;
-            numericBoxProjectionCenterX.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxProjectionCenterX.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxProjectionCenterX.Maximum = 1D;
             numericBoxProjectionCenterX.Minimum = -1D;
             numericBoxProjectionCenterX.Name = "numericBoxProjectionCenterX";
@@ -1231,8 +1209,6 @@
             resources.ApplyResources(numericBoxProjectionCenterY, "numericBoxProjectionCenterY");
             numericBoxProjectionCenterY.BackColor = System.Drawing.SystemColors.Control;
             numericBoxProjectionCenterY.DecimalPlaces = 2;
-            numericBoxProjectionCenterY.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxProjectionCenterY.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxProjectionCenterY.Maximum = 1D;
             numericBoxProjectionCenterY.Minimum = -1D;
             numericBoxProjectionCenterY.Name = "numericBoxProjectionCenterY";
@@ -1249,8 +1225,6 @@
             resources.ApplyResources(numericBoxProjectionCenterZ, "numericBoxProjectionCenterZ");
             numericBoxProjectionCenterZ.BackColor = System.Drawing.SystemColors.Control;
             numericBoxProjectionCenterZ.DecimalPlaces = 2;
-            numericBoxProjectionCenterZ.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxProjectionCenterZ.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxProjectionCenterZ.Maximum = 1D;
             numericBoxProjectionCenterZ.Minimum = -1D;
             numericBoxProjectionCenterZ.Name = "numericBoxProjectionCenterZ";

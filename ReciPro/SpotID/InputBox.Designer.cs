@@ -82,8 +82,6 @@
             // numericBoxLength
             // 
             this.numericBoxLength.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxLength.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxLength.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxLength.Location = new System.Drawing.Point(0, 0);
             this.numericBoxLength.Margin = new System.Windows.Forms.Padding(1);
             this.numericBoxLength.MaximumSize = new System.Drawing.Size(1000, 27);
@@ -91,7 +89,6 @@
             this.numericBoxLength.Name = "numericBoxLength";
             this.toolTip.SetToolTip(this.numericBoxLength, resources.GetString("numericBoxLength.ToolTip")); // 260531Cl
             this.numericBoxLength.Padding = new System.Windows.Forms.Padding(1);
-            this.numericBoxLength.RoundErrorAccuracy = -1;
             this.numericBoxLength.Size = new System.Drawing.Size(50, 27);
             this.numericBoxLength.TabIndex = 75;
             // 260522Cl: numericBox の ValueFont(Yu Gothic UI) ハードコードを撤去
@@ -101,8 +98,6 @@
             // numericBoxGlength
             // 
             this.numericBoxGlength.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxGlength.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxGlength.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxGlength.Location = new System.Drawing.Point(154, 0);
             this.numericBoxGlength.Margin = new System.Windows.Forms.Padding(1);
             this.numericBoxGlength.MaximumSize = new System.Drawing.Size(1000, 27);
@@ -110,7 +105,6 @@
             this.numericBoxGlength.Name = "numericBoxGlength";
             this.toolTip.SetToolTip(this.numericBoxGlength, resources.GetString("numericBoxGlength.ToolTip")); // 260531Cl
             this.numericBoxGlength.Padding = new System.Windows.Forms.Padding(1);
-            this.numericBoxGlength.RoundErrorAccuracy = -1;
             this.numericBoxGlength.Size = new System.Drawing.Size(50, 27);
             this.numericBoxGlength.TabIndex = 75;
             this.numericBoxGlength.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxGlength_ValueChanged);
@@ -119,8 +113,6 @@
             // numericBoxDvalue
             // 
             this.numericBoxDvalue.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxDvalue.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxDvalue.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxDvalue.Location = new System.Drawing.Point(82, 0);
             this.numericBoxDvalue.Margin = new System.Windows.Forms.Padding(1);
             this.numericBoxDvalue.MaximumSize = new System.Drawing.Size(1000, 27);
@@ -128,7 +120,6 @@
             this.numericBoxDvalue.Name = "numericBoxDvalue";
             this.toolTip.SetToolTip(this.numericBoxDvalue, resources.GetString("numericBoxDvalue.ToolTip")); // 260531Cl
             this.numericBoxDvalue.Padding = new System.Windows.Forms.Padding(1);
-            this.numericBoxDvalue.RoundErrorAccuracy = -1;
             this.numericBoxDvalue.Size = new System.Drawing.Size(50, 27);
             this.numericBoxDvalue.TabIndex = 75;
             this.numericBoxDvalue.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxDvalue_ValueChanged);

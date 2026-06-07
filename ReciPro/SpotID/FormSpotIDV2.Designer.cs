@@ -550,8 +550,6 @@ namespace ReciPro
             // 
             resources.ApplyResources(numericBoxDonut, "numericBoxDonut");
             numericBoxDonut.BackColor = System.Drawing.SystemColors.Control;
-            numericBoxDonut.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxDonut.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxDonut.Maximum = 100D;
             numericBoxDonut.Minimum = 1D;
             numericBoxDonut.Name = "numericBoxDonut";
@@ -673,8 +671,6 @@ namespace ReciPro
             resources.ApplyResources(numericBoxNumberOfSpots, "numericBoxNumberOfSpots");
             numericBoxNumberOfSpots.BackColor = System.Drawing.SystemColors.Control;
             numericBoxNumberOfSpots.DecimalPlaces = 0;
-            numericBoxNumberOfSpots.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxNumberOfSpots.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxNumberOfSpots.Maximum = 1000D;
             numericBoxNumberOfSpots.Minimum = 1D;
             numericBoxNumberOfSpots.Name = "numericBoxNumberOfSpots";
@@ -691,8 +687,6 @@ namespace ReciPro
             resources.ApplyResources(numericBoxNearestNeighbor, "numericBoxNearestNeighbor");
             numericBoxNearestNeighbor.BackColor = System.Drawing.SystemColors.Control;
             numericBoxNearestNeighbor.DecimalPlaces = 0;
-            numericBoxNearestNeighbor.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxNearestNeighbor.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxNearestNeighbor.Maximum = 1000D;
             numericBoxNearestNeighbor.Minimum = 1D;
             numericBoxNearestNeighbor.Name = "numericBoxNearestNeighbor";
@@ -709,8 +703,6 @@ namespace ReciPro
             resources.ApplyResources(numericBoxFittingRange, "numericBoxFittingRange");
             numericBoxFittingRange.BackColor = System.Drawing.SystemColors.Control;
             numericBoxFittingRange.DecimalPlaces = 1;
-            numericBoxFittingRange.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxFittingRange.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxFittingRange.Maximum = 100D;
             numericBoxFittingRange.Minimum = 0D;
             numericBoxFittingRange.Name = "numericBoxFittingRange";
@@ -780,8 +772,6 @@ namespace ReciPro
             // 
             resources.ApplyResources(numericBoxCameraLength, "numericBoxCameraLength");
             numericBoxCameraLength.BackColor = System.Drawing.SystemColors.Control;
-            numericBoxCameraLength.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxCameraLength.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxCameraLength.Maximum = 10000D;
             numericBoxCameraLength.Minimum = 0D;
             numericBoxCameraLength.Name = "numericBoxCameraLength";
@@ -797,8 +787,6 @@ namespace ReciPro
             // 
             resources.ApplyResources(numericBoxPixelSize, "numericBoxPixelSize");
             numericBoxPixelSize.BackColor = System.Drawing.SystemColors.Control;
-            numericBoxPixelSize.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxPixelSize.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxPixelSize.Maximum = 100D;
             numericBoxPixelSize.Minimum = 0D;
             numericBoxPixelSize.Name = "numericBoxPixelSize";
@@ -900,8 +888,6 @@ namespace ReciPro
             // 
             resources.ApplyResources(numericBoxDiffractedWaves, "numericBoxDiffractedWaves");
             numericBoxDiffractedWaves.BackColor = System.Drawing.SystemColors.Control;
-            numericBoxDiffractedWaves.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxDiffractedWaves.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxDiffractedWaves.Maximum = 2048D;
             numericBoxDiffractedWaves.Minimum = 1D;
             numericBoxDiffractedWaves.Name = "numericBoxDiffractedWaves";
@@ -917,8 +903,6 @@ namespace ReciPro
             resources.ApplyResources(numericBoxSemiangle, "numericBoxSemiangle");
             numericBoxSemiangle.BackColor = System.Drawing.SystemColors.Control;
             numericBoxSemiangle.DecimalPlaces = 1;
-            numericBoxSemiangle.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxSemiangle.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxSemiangle.Maximum = 10D;
             numericBoxSemiangle.Minimum = 1D;
             numericBoxSemiangle.Name = "numericBoxSemiangle";
@@ -951,8 +935,6 @@ namespace ReciPro
             // 
             resources.ApplyResources(numericBoxAcceptableError, "numericBoxAcceptableError");
             numericBoxAcceptableError.BackColor = System.Drawing.SystemColors.Control;
-            numericBoxAcceptableError.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxAcceptableError.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxAcceptableError.Maximum = 10D;
             numericBoxAcceptableError.Minimum = 0.1D;
             numericBoxAcceptableError.Name = "numericBoxAcceptableError";
@@ -1002,8 +984,6 @@ namespace ReciPro
             // 
             resources.ApplyResources(numericBoxMaxGrainNum, "numericBoxMaxGrainNum");
             numericBoxMaxGrainNum.BackColor = System.Drawing.SystemColors.Control;
-            numericBoxMaxGrainNum.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxMaxGrainNum.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxMaxGrainNum.Maximum = 10D;
             numericBoxMaxGrainNum.Minimum = 0.1D;
             numericBoxMaxGrainNum.Name = "numericBoxMaxGrainNum";

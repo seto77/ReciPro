@@ -178,17 +178,11 @@ namespace ReciPro
                        this.numericBoxCompressedThetaB.Name = "numericBoxCompressedThetaB";
             this.numericBoxCompressedThetaB.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
             this.numericBoxCompressedThetaB.RadianValue = 0.0087266462599716477D;
-                        this.numericBoxCompressedThetaB.RestrictLimitValue = true;
-            this.numericBoxCompressedThetaB.ShowFraction = false;
-            this.numericBoxCompressedThetaB.ShowPositiveSign = false;
                         this.numericBoxCompressedThetaB.Size = new System.Drawing.Size(120, 25);
             this.numericBoxCompressedThetaB.SkipEventDuringInput = false;
             this.numericBoxCompressedThetaB.SmartIncrement = true;
             this.numericBoxCompressedThetaB.TabIndex = 2;
-                        this.numericBoxCompressedThetaB.ValueForeColor = System.Drawing.SystemColors.WindowText;
                         this.numericBoxCompressedThetaB.ThousandsSeparator = true;
-            this.numericBoxCompressedThetaB.ToolTip = "";
-            this.numericBoxCompressedThetaB.UpDown_Increment = 1D;
             this.numericBoxCompressedThetaB.Value = 0.5D;
                         // 
             // numericBoxCompressedOmega
@@ -206,17 +200,11 @@ namespace ReciPro
                        this.numericBoxCompressedOmega.Name = "numericBoxCompressedOmega";
             this.numericBoxCompressedOmega.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
             this.numericBoxCompressedOmega.RadianValue = 0.00017453292519943296D;
-                        this.numericBoxCompressedOmega.RestrictLimitValue = true;
-            this.numericBoxCompressedOmega.ShowFraction = false;
-            this.numericBoxCompressedOmega.ShowPositiveSign = false;
                         this.numericBoxCompressedOmega.Size = new System.Drawing.Size(124, 25);
             this.numericBoxCompressedOmega.SkipEventDuringInput = false;
             this.numericBoxCompressedOmega.SmartIncrement = true;
             this.numericBoxCompressedOmega.TabIndex = 2;
-                        this.numericBoxCompressedOmega.ValueForeColor = System.Drawing.SystemColors.WindowText;
                         this.numericBoxCompressedOmega.ThousandsSeparator = true;
-            this.numericBoxCompressedOmega.ToolTip = "";
-            this.numericBoxCompressedOmega.UpDown_Increment = 1D;
             this.numericBoxCompressedOmega.Value = 0.01D;
                         // 
             // numericBoxCompressedThetaA
@@ -233,18 +221,11 @@ namespace ReciPro
             this.numericBoxCompressedThetaA.MinimumSize = new System.Drawing.Size(1, 25);
                        this.numericBoxCompressedThetaA.Name = "numericBoxCompressedThetaA";
             this.numericBoxCompressedThetaA.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
-            this.numericBoxCompressedThetaA.RadianValue = 0D;
-                        this.numericBoxCompressedThetaA.RestrictLimitValue = true;
-            this.numericBoxCompressedThetaA.ShowFraction = false;
-            this.numericBoxCompressedThetaA.ShowPositiveSign = false;
                         this.numericBoxCompressedThetaA.Size = new System.Drawing.Size(102, 25);
             this.numericBoxCompressedThetaA.SkipEventDuringInput = false;
             this.numericBoxCompressedThetaA.SmartIncrement = true;
             this.numericBoxCompressedThetaA.TabIndex = 2;
-                        this.numericBoxCompressedThetaA.ValueForeColor = System.Drawing.SystemColors.WindowText;
                         this.numericBoxCompressedThetaA.ThousandsSeparator = true;
-            this.numericBoxCompressedThetaA.ToolTip = "";
-            this.numericBoxCompressedThetaA.UpDown_Increment = 1D;
                                     // 
             // numericBoxCompressedOmegaSigma
             // 
@@ -261,17 +242,11 @@ namespace ReciPro
                        this.numericBoxCompressedOmegaSigma.Name = "numericBoxCompressedOmegaSigma";
             this.numericBoxCompressedOmegaSigma.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
             this.numericBoxCompressedOmegaSigma.RadianValue = 0.00017453292519943296D;
-                        this.numericBoxCompressedOmegaSigma.RestrictLimitValue = true;
-            this.numericBoxCompressedOmegaSigma.ShowFraction = false;
-            this.numericBoxCompressedOmegaSigma.ShowPositiveSign = false;
                         this.numericBoxCompressedOmegaSigma.Size = new System.Drawing.Size(136, 25);
             this.numericBoxCompressedOmegaSigma.SkipEventDuringInput = false;
             this.numericBoxCompressedOmegaSigma.SmartIncrement = true;
             this.numericBoxCompressedOmegaSigma.TabIndex = 2;
-                        this.numericBoxCompressedOmegaSigma.ValueForeColor = System.Drawing.SystemColors.WindowText;
                         this.numericBoxCompressedOmegaSigma.ThousandsSeparator = true;
-            this.numericBoxCompressedOmegaSigma.ToolTip = "";
-            this.numericBoxCompressedOmegaSigma.UpDown_Increment = 1D;
             this.numericBoxCompressedOmegaSigma.Value = 0.01D;
                         // 
             // groupBoxReleasedRotation
@@ -302,17 +277,11 @@ namespace ReciPro
                        this.numericBoxReleasedThetaB.Name = "numericBoxReleasedThetaB";
             this.numericBoxReleasedThetaB.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
             this.numericBoxReleasedThetaB.RadianValue = 0.0087266462599716477D;
-                        this.numericBoxReleasedThetaB.RestrictLimitValue = true;
-            this.numericBoxReleasedThetaB.ShowFraction = false;
-            this.numericBoxReleasedThetaB.ShowPositiveSign = false;
                         this.numericBoxReleasedThetaB.Size = new System.Drawing.Size(120, 25);
             this.numericBoxReleasedThetaB.SkipEventDuringInput = false;
             this.numericBoxReleasedThetaB.SmartIncrement = true;
             this.numericBoxReleasedThetaB.TabIndex = 2;
-                        this.numericBoxReleasedThetaB.ValueForeColor = System.Drawing.SystemColors.WindowText;
                         this.numericBoxReleasedThetaB.ThousandsSeparator = true;
-            this.numericBoxReleasedThetaB.ToolTip = "";
-            this.numericBoxReleasedThetaB.UpDown_Increment = 1D;
             this.numericBoxReleasedThetaB.Value = 0.5D;
                         // 
             // numericBoxReleasedOmegaSigma
@@ -330,17 +299,11 @@ namespace ReciPro
                        this.numericBoxReleasedOmegaSigma.Name = "numericBoxReleasedOmegaSigma";
             this.numericBoxReleasedOmegaSigma.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
             this.numericBoxReleasedOmegaSigma.RadianValue = 0.0087266462599716477D;
-                        this.numericBoxReleasedOmegaSigma.RestrictLimitValue = true;
-            this.numericBoxReleasedOmegaSigma.ShowFraction = false;
-            this.numericBoxReleasedOmegaSigma.ShowPositiveSign = false;
                         this.numericBoxReleasedOmegaSigma.Size = new System.Drawing.Size(136, 25);
             this.numericBoxReleasedOmegaSigma.SkipEventDuringInput = false;
             this.numericBoxReleasedOmegaSigma.SmartIncrement = true;
             this.numericBoxReleasedOmegaSigma.TabIndex = 2;
-                        this.numericBoxReleasedOmegaSigma.ValueForeColor = System.Drawing.SystemColors.WindowText;
                         this.numericBoxReleasedOmegaSigma.ThousandsSeparator = true;
-            this.numericBoxReleasedOmegaSigma.ToolTip = "";
-            this.numericBoxReleasedOmegaSigma.UpDown_Increment = 1D;
             this.numericBoxReleasedOmegaSigma.Value = 0.5D;
                         // 
             // numericBoxReleasedOmega
@@ -358,17 +321,11 @@ namespace ReciPro
                        this.numericBoxReleasedOmega.Name = "numericBoxReleasedOmega";
             this.numericBoxReleasedOmega.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
             this.numericBoxReleasedOmega.RadianValue = 0.0087266462599716477D;
-                        this.numericBoxReleasedOmega.RestrictLimitValue = true;
-            this.numericBoxReleasedOmega.ShowFraction = false;
-            this.numericBoxReleasedOmega.ShowPositiveSign = false;
                         this.numericBoxReleasedOmega.Size = new System.Drawing.Size(124, 25);
             this.numericBoxReleasedOmega.SkipEventDuringInput = false;
             this.numericBoxReleasedOmega.SmartIncrement = true;
             this.numericBoxReleasedOmega.TabIndex = 2;
-                        this.numericBoxReleasedOmega.ValueForeColor = System.Drawing.SystemColors.WindowText;
                         this.numericBoxReleasedOmega.ThousandsSeparator = true;
-            this.numericBoxReleasedOmega.ToolTip = "";
-            this.numericBoxReleasedOmega.UpDown_Increment = 1D;
             this.numericBoxReleasedOmega.Value = 0.5D;
                         // 
             // numericBoxReleasedThetaA
@@ -385,18 +342,11 @@ namespace ReciPro
             this.numericBoxReleasedThetaA.MinimumSize = new System.Drawing.Size(1, 25);
                        this.numericBoxReleasedThetaA.Name = "numericBoxReleasedThetaA";
             this.numericBoxReleasedThetaA.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
-            this.numericBoxReleasedThetaA.RadianValue = 0D;
-                        this.numericBoxReleasedThetaA.RestrictLimitValue = true;
-            this.numericBoxReleasedThetaA.ShowFraction = false;
-            this.numericBoxReleasedThetaA.ShowPositiveSign = false;
                         this.numericBoxReleasedThetaA.Size = new System.Drawing.Size(102, 25);
             this.numericBoxReleasedThetaA.SkipEventDuringInput = false;
             this.numericBoxReleasedThetaA.SmartIncrement = true;
             this.numericBoxReleasedThetaA.TabIndex = 2;
-                        this.numericBoxReleasedThetaA.ValueForeColor = System.Drawing.SystemColors.WindowText;
                         this.numericBoxReleasedThetaA.ThousandsSeparator = true;
-            this.numericBoxReleasedThetaA.ToolTip = "";
-            this.numericBoxReleasedThetaA.UpDown_Increment = 1D;
                                     // 
             // groupBoxEOS
             // 
@@ -424,17 +374,11 @@ namespace ReciPro
                        this.numericBoxEOS_K0.Name = "numericBoxEOS_K0";
             this.numericBoxEOS_K0.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
             this.numericBoxEOS_K0.RadianValue = 0.647866218340295D;
-                        this.numericBoxEOS_K0.RestrictLimitValue = true;
-            this.numericBoxEOS_K0.ShowFraction = false;
-            this.numericBoxEOS_K0.ShowPositiveSign = false;
                         this.numericBoxEOS_K0.Size = new System.Drawing.Size(114, 25);
             this.numericBoxEOS_K0.SkipEventDuringInput = false;
             this.numericBoxEOS_K0.SmartIncrement = true;
             this.numericBoxEOS_K0.TabIndex = 2;
-                        this.numericBoxEOS_K0.ValueForeColor = System.Drawing.SystemColors.WindowText;
                         this.numericBoxEOS_K0.ThousandsSeparator = true;
-            this.numericBoxEOS_K0.ToolTip = "";
-            this.numericBoxEOS_K0.UpDown_Increment = 1D;
             this.numericBoxEOS_K0.Value = 37.12D;
                         // 
             // numericBoxEOS_Kprime
@@ -451,17 +395,11 @@ namespace ReciPro
                        this.numericBoxEOS_Kprime.Name = "numericBoxEOS_Kprime";
             this.numericBoxEOS_Kprime.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
             this.numericBoxEOS_Kprime.RadianValue = 0.10454522219446034D;
-                        this.numericBoxEOS_Kprime.RestrictLimitValue = true;
-            this.numericBoxEOS_Kprime.ShowFraction = false;
-            this.numericBoxEOS_Kprime.ShowPositiveSign = false;
                         this.numericBoxEOS_Kprime.Size = new System.Drawing.Size(83, 25);
             this.numericBoxEOS_Kprime.SkipEventDuringInput = false;
             this.numericBoxEOS_Kprime.SmartIncrement = true;
             this.numericBoxEOS_Kprime.TabIndex = 2;
-                        this.numericBoxEOS_Kprime.ValueForeColor = System.Drawing.SystemColors.WindowText;
                         this.numericBoxEOS_Kprime.ThousandsSeparator = true;
-            this.numericBoxEOS_Kprime.ToolTip = "";
-            this.numericBoxEOS_Kprime.UpDown_Increment = 1D;
             this.numericBoxEOS_Kprime.Value = 5.99D;
                         // 
             // groupBoxShockedPlane
@@ -491,25 +429,17 @@ namespace ReciPro
                        this.numericBoxShockedPlaneH.Name = "numericBoxShockedPlaneH";
             this.numericBoxShockedPlaneH.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
             this.numericBoxShockedPlaneH.RadianValue = 0.017453292519943295D;
-                        this.numericBoxShockedPlaneH.RestrictLimitValue = true;
-            this.numericBoxShockedPlaneH.ShowFraction = false;
-            this.numericBoxShockedPlaneH.ShowPositiveSign = false;
             this.numericBoxShockedPlaneH.ShowUpDown = true;
             this.numericBoxShockedPlaneH.Size = new System.Drawing.Size(50, 25);
             this.numericBoxShockedPlaneH.SkipEventDuringInput = false;
-            this.numericBoxShockedPlaneH.SmartIncrement = false;
             this.numericBoxShockedPlaneH.TabIndex = 2;
-                        this.numericBoxShockedPlaneH.ValueForeColor = System.Drawing.SystemColors.WindowText;
                         this.numericBoxShockedPlaneH.ThousandsSeparator = true;
-            this.numericBoxShockedPlaneH.ToolTip = "";
-            this.numericBoxShockedPlaneH.UpDown_Increment = 1D;
             this.numericBoxShockedPlaneH.Value = 1D;
                         // 
             // numericBoxShockedPlaneK
             // 
                        this.numericBoxShockedPlaneK.BackColor = System.Drawing.SystemColors.Control;
             this.numericBoxShockedPlaneK.DecimalPlaces = -2;
-                                                this.numericBoxShockedPlaneK.HeaderText = "";
             this.numericBoxShockedPlaneK.Location = new System.Drawing.Point(53, 33);
             this.numericBoxShockedPlaneK.Margin = new System.Windows.Forms.Padding(0);
             this.numericBoxShockedPlaneK.Maximum = 10D;
@@ -518,26 +448,17 @@ namespace ReciPro
             this.numericBoxShockedPlaneK.MinimumSize = new System.Drawing.Size(1, 25);
                        this.numericBoxShockedPlaneK.Name = "numericBoxShockedPlaneK";
             this.numericBoxShockedPlaneK.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
-            this.numericBoxShockedPlaneK.RadianValue = 0D;
-                        this.numericBoxShockedPlaneK.RestrictLimitValue = true;
-            this.numericBoxShockedPlaneK.ShowFraction = false;
-            this.numericBoxShockedPlaneK.ShowPositiveSign = false;
             this.numericBoxShockedPlaneK.ShowUpDown = true;
             this.numericBoxShockedPlaneK.Size = new System.Drawing.Size(38, 25);
             this.numericBoxShockedPlaneK.SkipEventDuringInput = false;
-            this.numericBoxShockedPlaneK.SmartIncrement = false;
             this.numericBoxShockedPlaneK.TabIndex = 2;
-                        this.numericBoxShockedPlaneK.ValueForeColor = System.Drawing.SystemColors.WindowText;
                         this.numericBoxShockedPlaneK.ThousandsSeparator = true;
-            this.numericBoxShockedPlaneK.ToolTip = "";
-            this.numericBoxShockedPlaneK.UpDown_Increment = 1D;
                                     // 
             // numericBoxShockedPlaneL
             // 
                        this.numericBoxShockedPlaneL.BackColor = System.Drawing.SystemColors.Control;
             this.numericBoxShockedPlaneL.DecimalPlaces = -2;
                         this.numericBoxShockedPlaneL.FooterText = ")";
-                        this.numericBoxShockedPlaneL.HeaderText = "";
             this.numericBoxShockedPlaneL.Location = new System.Drawing.Point(91, 33);
             this.numericBoxShockedPlaneL.Margin = new System.Windows.Forms.Padding(0);
             this.numericBoxShockedPlaneL.Maximum = 1000D;
@@ -546,19 +467,11 @@ namespace ReciPro
             this.numericBoxShockedPlaneL.MinimumSize = new System.Drawing.Size(1, 25);
                        this.numericBoxShockedPlaneL.Name = "numericBoxShockedPlaneL";
             this.numericBoxShockedPlaneL.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
-            this.numericBoxShockedPlaneL.RadianValue = 0D;
-                        this.numericBoxShockedPlaneL.RestrictLimitValue = true;
-            this.numericBoxShockedPlaneL.ShowFraction = false;
-            this.numericBoxShockedPlaneL.ShowPositiveSign = false;
             this.numericBoxShockedPlaneL.ShowUpDown = true;
             this.numericBoxShockedPlaneL.Size = new System.Drawing.Size(50, 25);
             this.numericBoxShockedPlaneL.SkipEventDuringInput = false;
-            this.numericBoxShockedPlaneL.SmartIncrement = false;
             this.numericBoxShockedPlaneL.TabIndex = 2;
-                        this.numericBoxShockedPlaneL.ValueForeColor = System.Drawing.SystemColors.WindowText;
                         this.numericBoxShockedPlaneL.ThousandsSeparator = true;
-            this.numericBoxShockedPlaneL.ToolTip = "";
-            this.numericBoxShockedPlaneL.UpDown_Increment = 1D;
                                     // 
             // buttonSimulate
             // 
@@ -657,17 +570,11 @@ namespace ReciPro
                        this.numericBoxUp.Name = "numericBoxUp";
             this.numericBoxUp.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
             this.numericBoxUp.RadianValue = 0.09599310885968812D;
-                        this.numericBoxUp.RestrictLimitValue = true;
-            this.numericBoxUp.ShowFraction = false;
-            this.numericBoxUp.ShowPositiveSign = false;
                         this.numericBoxUp.Size = new System.Drawing.Size(143, 25);
             this.numericBoxUp.SkipEventDuringInput = false;
             this.numericBoxUp.SmartIncrement = true;
             this.numericBoxUp.TabIndex = 2;
-                        this.numericBoxUp.ValueForeColor = System.Drawing.SystemColors.WindowText;
                         this.numericBoxUp.ThousandsSeparator = true;
-            this.numericBoxUp.ToolTip = "";
-            this.numericBoxUp.UpDown_Increment = 1D;
             this.numericBoxUp.Value = 5.5D;
                         // 
             // groupBoxReleasedArea
@@ -708,17 +615,11 @@ namespace ReciPro
                        this.numericBoxUr.Name = "numericBoxUr";
             this.numericBoxUr.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
             this.numericBoxUr.RadianValue = 0.09599310885968812D;
-                        this.numericBoxUr.RestrictLimitValue = true;
-            this.numericBoxUr.ShowFraction = false;
-            this.numericBoxUr.ShowPositiveSign = false;
                         this.numericBoxUr.Size = new System.Drawing.Size(143, 25);
             this.numericBoxUr.SkipEventDuringInput = false;
             this.numericBoxUr.SmartIncrement = true;
             this.numericBoxUr.TabIndex = 2;
-                        this.numericBoxUr.ValueForeColor = System.Drawing.SystemColors.WindowText;
                         this.numericBoxUr.ThousandsSeparator = true;
-            this.numericBoxUr.ToolTip = "";
-            this.numericBoxUr.UpDown_Increment = 1D;
             this.numericBoxUr.Value = 5.5D;
                         // 
             // radioButtonReleasedUniaxial
@@ -751,7 +652,6 @@ namespace ReciPro
                        this.numericBoxMassAbsorption.BackColor = System.Drawing.SystemColors.Control;
             this.numericBoxMassAbsorption.DecimalPlaces = -2;
                         this.numericBoxMassAbsorption.FooterText = "cm^2/g";
-                        this.numericBoxMassAbsorption.HeaderText = "";
             this.numericBoxMassAbsorption.Location = new System.Drawing.Point(76, 187);
             this.numericBoxMassAbsorption.Margin = new System.Windows.Forms.Padding(0);
             this.numericBoxMassAbsorption.Maximum = 10000D;
@@ -761,17 +661,11 @@ namespace ReciPro
                        this.numericBoxMassAbsorption.Name = "numericBoxMassAbsorption";
             this.numericBoxMassAbsorption.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
             this.numericBoxMassAbsorption.RadianValue = 0.33196162372932142D;
-                        this.numericBoxMassAbsorption.RestrictLimitValue = true;
-            this.numericBoxMassAbsorption.ShowFraction = false;
-            this.numericBoxMassAbsorption.ShowPositiveSign = false;
                         this.numericBoxMassAbsorption.Size = new System.Drawing.Size(97, 25);
             this.numericBoxMassAbsorption.SkipEventDuringInput = false;
             this.numericBoxMassAbsorption.SmartIncrement = true;
             this.numericBoxMassAbsorption.TabIndex = 2;
-                        this.numericBoxMassAbsorption.ValueForeColor = System.Drawing.SystemColors.WindowText;
                         this.numericBoxMassAbsorption.ThousandsSeparator = true;
-            this.numericBoxMassAbsorption.ToolTip = "";
-            this.numericBoxMassAbsorption.UpDown_Increment = 1D;
             this.numericBoxMassAbsorption.Value = 19.02D;
                         // 
             // label4
@@ -887,7 +781,6 @@ namespace ReciPro
                        this.numericBoxOmegaStep.BackColor = System.Drawing.SystemColors.Control;
             this.numericBoxOmegaStep.DecimalPlaces = 2;
                         this.numericBoxOmegaStep.FooterText = "° step ×";
-                        this.numericBoxOmegaStep.HeaderText = "";
             this.numericBoxOmegaStep.Location = new System.Drawing.Point(0, 0);
             this.numericBoxOmegaStep.Margin = new System.Windows.Forms.Padding(0);
             this.numericBoxOmegaStep.Maximum = 360D;
@@ -897,17 +790,13 @@ namespace ReciPro
                        this.numericBoxOmegaStep.Name = "numericBoxOmegaStep";
             this.numericBoxOmegaStep.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
             this.numericBoxOmegaStep.RadianValue = 0.0017453292519943296D;
-                        this.numericBoxOmegaStep.RestrictLimitValue = true;
-            this.numericBoxOmegaStep.ShowFraction = false;
             this.numericBoxOmegaStep.ShowPositiveSign = true;
             this.numericBoxOmegaStep.ShowUpDown = true;
             this.numericBoxOmegaStep.Size = new System.Drawing.Size(116, 25);
             this.numericBoxOmegaStep.SkipEventDuringInput = false;
             this.numericBoxOmegaStep.SmartIncrement = true;
             this.numericBoxOmegaStep.TabIndex = 2;
-                        this.numericBoxOmegaStep.ValueForeColor = System.Drawing.SystemColors.WindowText;
                         this.numericBoxOmegaStep.ThousandsSeparator = true;
-            this.numericBoxOmegaStep.ToolTip = "";
             this.numericBoxOmegaStep.UpDown_Increment = 0.1D;
             this.numericBoxOmegaStep.Value = 0.1D;
                         // 
@@ -916,7 +805,6 @@ namespace ReciPro
                        this.numericBoxOmegaTimes.BackColor = System.Drawing.SystemColors.Control;
             this.numericBoxOmegaTimes.DecimalPlaces = 0;
                         this.numericBoxOmegaTimes.FooterText = "times";
-                        this.numericBoxOmegaTimes.HeaderText = "";
             this.numericBoxOmegaTimes.Location = new System.Drawing.Point(116, 0);
             this.numericBoxOmegaTimes.Margin = new System.Windows.Forms.Padding(0);
             this.numericBoxOmegaTimes.Maximum = 100D;
@@ -926,17 +814,12 @@ namespace ReciPro
                        this.numericBoxOmegaTimes.Name = "numericBoxOmegaTimes";
             this.numericBoxOmegaTimes.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
             this.numericBoxOmegaTimes.RadianValue = 0.17453292519943295D;
-                        this.numericBoxOmegaTimes.RestrictLimitValue = true;
-            this.numericBoxOmegaTimes.ShowFraction = false;
-            this.numericBoxOmegaTimes.ShowPositiveSign = false;
             this.numericBoxOmegaTimes.ShowUpDown = true;
             this.numericBoxOmegaTimes.Size = new System.Drawing.Size(95, 25);
             this.numericBoxOmegaTimes.SkipEventDuringInput = false;
             this.numericBoxOmegaTimes.SmartIncrement = true;
             this.numericBoxOmegaTimes.TabIndex = 2;
-                        this.numericBoxOmegaTimes.ValueForeColor = System.Drawing.SystemColors.WindowText;
                         this.numericBoxOmegaTimes.ThousandsSeparator = true;
-            this.numericBoxOmegaTimes.ToolTip = "";
             this.numericBoxOmegaTimes.UpDown_Increment = 0.1D;
             this.numericBoxOmegaTimes.Value = 10D;
                         // 
@@ -965,18 +848,12 @@ namespace ReciPro
                        this.numericBoxDivisionOfRotationAngle.Name = "numericBoxDivisionOfRotationAngle";
             this.numericBoxDivisionOfRotationAngle.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
             this.numericBoxDivisionOfRotationAngle.RadianValue = 0.17453292519943295D;
-                        this.numericBoxDivisionOfRotationAngle.RestrictLimitValue = true;
-            this.numericBoxDivisionOfRotationAngle.ShowFraction = false;
-            this.numericBoxDivisionOfRotationAngle.ShowPositiveSign = false;
             this.numericBoxDivisionOfRotationAngle.ShowUpDown = true;
             this.numericBoxDivisionOfRotationAngle.Size = new System.Drawing.Size(138, 25);
             this.numericBoxDivisionOfRotationAngle.SkipEventDuringInput = false;
             this.numericBoxDivisionOfRotationAngle.SmartIncrement = true;
             this.numericBoxDivisionOfRotationAngle.TabIndex = 2;
-                        this.numericBoxDivisionOfRotationAngle.ValueForeColor = System.Drawing.SystemColors.WindowText;
                         this.numericBoxDivisionOfRotationAngle.ThousandsSeparator = true;
-            this.numericBoxDivisionOfRotationAngle.ToolTip = "";
-            this.numericBoxDivisionOfRotationAngle.UpDown_Increment = 1D;
             this.numericBoxDivisionOfRotationAngle.Value = 10D;
                         // 
             // numericBoxDivisionOfRotationAxis
@@ -993,18 +870,12 @@ namespace ReciPro
                        this.numericBoxDivisionOfRotationAxis.Name = "numericBoxDivisionOfRotationAxis";
             this.numericBoxDivisionOfRotationAxis.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
             this.numericBoxDivisionOfRotationAxis.RadianValue = 1.0471975511965976D;
-                        this.numericBoxDivisionOfRotationAxis.RestrictLimitValue = true;
-            this.numericBoxDivisionOfRotationAxis.ShowFraction = false;
-            this.numericBoxDivisionOfRotationAxis.ShowPositiveSign = false;
             this.numericBoxDivisionOfRotationAxis.ShowUpDown = true;
             this.numericBoxDivisionOfRotationAxis.Size = new System.Drawing.Size(195, 25);
             this.numericBoxDivisionOfRotationAxis.SkipEventDuringInput = false;
             this.numericBoxDivisionOfRotationAxis.SmartIncrement = true;
             this.numericBoxDivisionOfRotationAxis.TabIndex = 2;
-                        this.numericBoxDivisionOfRotationAxis.ValueForeColor = System.Drawing.SystemColors.WindowText;
                         this.numericBoxDivisionOfRotationAxis.ThousandsSeparator = true;
-            this.numericBoxDivisionOfRotationAxis.ToolTip = "";
-            this.numericBoxDivisionOfRotationAxis.UpDown_Increment = 1D;
             this.numericBoxDivisionOfRotationAxis.Value = 60D;
                         // 
             // trackBarAdvancedBack
@@ -1161,25 +1032,17 @@ namespace ReciPro
                        this.numericBoxSlipPlaneH.Name = "numericBoxSlipPlaneH";
             this.numericBoxSlipPlaneH.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
             this.numericBoxSlipPlaneH.RadianValue = 0.017453292519943295D;
-                        this.numericBoxSlipPlaneH.RestrictLimitValue = true;
-            this.numericBoxSlipPlaneH.ShowFraction = false;
-            this.numericBoxSlipPlaneH.ShowPositiveSign = false;
             this.numericBoxSlipPlaneH.ShowUpDown = true;
             this.numericBoxSlipPlaneH.Size = new System.Drawing.Size(50, 25);
             this.numericBoxSlipPlaneH.SkipEventDuringInput = false;
-            this.numericBoxSlipPlaneH.SmartIncrement = false;
             this.numericBoxSlipPlaneH.TabIndex = 2;
-                        this.numericBoxSlipPlaneH.ValueForeColor = System.Drawing.SystemColors.WindowText;
                         this.numericBoxSlipPlaneH.ThousandsSeparator = true;
-            this.numericBoxSlipPlaneH.ToolTip = "";
-            this.numericBoxSlipPlaneH.UpDown_Increment = 1D;
             this.numericBoxSlipPlaneH.Value = 1D;
                         // 
             // numericBoxSlipPlaneK
             // 
                        this.numericBoxSlipPlaneK.BackColor = System.Drawing.SystemColors.Control;
             this.numericBoxSlipPlaneK.DecimalPlaces = -2;
-                                                this.numericBoxSlipPlaneK.HeaderText = "";
             this.numericBoxSlipPlaneK.Location = new System.Drawing.Point(53, 33);
             this.numericBoxSlipPlaneK.Margin = new System.Windows.Forms.Padding(0);
             this.numericBoxSlipPlaneK.Maximum = 10D;
@@ -1188,26 +1051,17 @@ namespace ReciPro
             this.numericBoxSlipPlaneK.MinimumSize = new System.Drawing.Size(1, 25);
                        this.numericBoxSlipPlaneK.Name = "numericBoxSlipPlaneK";
             this.numericBoxSlipPlaneK.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
-            this.numericBoxSlipPlaneK.RadianValue = 0D;
-                        this.numericBoxSlipPlaneK.RestrictLimitValue = true;
-            this.numericBoxSlipPlaneK.ShowFraction = false;
-            this.numericBoxSlipPlaneK.ShowPositiveSign = false;
             this.numericBoxSlipPlaneK.ShowUpDown = true;
             this.numericBoxSlipPlaneK.Size = new System.Drawing.Size(38, 25);
             this.numericBoxSlipPlaneK.SkipEventDuringInput = false;
-            this.numericBoxSlipPlaneK.SmartIncrement = false;
             this.numericBoxSlipPlaneK.TabIndex = 2;
-                        this.numericBoxSlipPlaneK.ValueForeColor = System.Drawing.SystemColors.WindowText;
                         this.numericBoxSlipPlaneK.ThousandsSeparator = true;
-            this.numericBoxSlipPlaneK.ToolTip = "";
-            this.numericBoxSlipPlaneK.UpDown_Increment = 1D;
                                     // 
             // numericBoxSlipPlaneL
             // 
                        this.numericBoxSlipPlaneL.BackColor = System.Drawing.SystemColors.Control;
             this.numericBoxSlipPlaneL.DecimalPlaces = -2;
                         this.numericBoxSlipPlaneL.FooterText = ")";
-                        this.numericBoxSlipPlaneL.HeaderText = "";
             this.numericBoxSlipPlaneL.Location = new System.Drawing.Point(91, 33);
             this.numericBoxSlipPlaneL.Margin = new System.Windows.Forms.Padding(0);
             this.numericBoxSlipPlaneL.Maximum = 1000D;
@@ -1216,19 +1070,11 @@ namespace ReciPro
             this.numericBoxSlipPlaneL.MinimumSize = new System.Drawing.Size(1, 25);
                        this.numericBoxSlipPlaneL.Name = "numericBoxSlipPlaneL";
             this.numericBoxSlipPlaneL.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
-            this.numericBoxSlipPlaneL.RadianValue = 0D;
-                        this.numericBoxSlipPlaneL.RestrictLimitValue = true;
-            this.numericBoxSlipPlaneL.ShowFraction = false;
-            this.numericBoxSlipPlaneL.ShowPositiveSign = false;
             this.numericBoxSlipPlaneL.ShowUpDown = true;
             this.numericBoxSlipPlaneL.Size = new System.Drawing.Size(50, 25);
             this.numericBoxSlipPlaneL.SkipEventDuringInput = false;
-            this.numericBoxSlipPlaneL.SmartIncrement = false;
             this.numericBoxSlipPlaneL.TabIndex = 2;
-                        this.numericBoxSlipPlaneL.ValueForeColor = System.Drawing.SystemColors.WindowText;
                         this.numericBoxSlipPlaneL.ThousandsSeparator = true;
-            this.numericBoxSlipPlaneL.ToolTip = "";
-            this.numericBoxSlipPlaneL.UpDown_Increment = 1D;
                                     // 
             // label5
             // 
