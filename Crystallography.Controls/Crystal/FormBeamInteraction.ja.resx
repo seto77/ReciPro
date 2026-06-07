@@ -779,4 +779,67 @@ B は結晶データの等方性変位パラメータ(Biso)です。オフのと
   <data name="Graph.Title.EdxRequiresXraylib" xml:space="preserve">
     <value>EDX には xraylib が必要です</value>
   </data>
+  <data name="tabPageReflections.Text" xml:space="preserve">
+    <value>反射</value>
+  </data>
+  <data name="tabPageScatteringFactors.Text" xml:space="preserve">
+    <value>散乱因子</value>
+  </data>
+  <data name="tabPageAttenuations.Text" xml:space="preserve">
+    <value>減衰・輸送</value>
+  </data>
+  <data name="tabPageFluorescence.Text" xml:space="preserve">
+    <value>蛍光</value>
+  </data>
+  <data name="labelModel.Text" xml:space="preserve">
+    <value>モデル</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>最小</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>最大</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>刻み</value>
+  </data>
+  <data name="dataGridViewTextBoxColumnMulti.HeaderText" xml:space="preserve">
+    <value>多重度</value>
+  </data>
+  <data name="dataGridViewTextBoxColumnIntPercent.HeaderText" xml:space="preserve">
+    <value>相対強度 (%)</value>
+  </data>
+  <data name="dataGridViewTextBoxColumnIntCondition.HeaderText" xml:space="preserve">
+    <value>消滅条件</value>
+  </data>
+  <data name="numericBoxCutoffD.HeaderText" xml:space="preserve">
+    <value>d 下限 &gt;</value>
+  </data>
+  <data name="numericBoxAttenThickness.HeaderText" xml:space="preserve">
+    <value>厚さ t</value>
+  </data>
+  <data name="colEdgeEdge.HeaderText" xml:space="preserve">
+    <value>吸収端</value>
+  </data>
+  <data name="colEdgeJump.HeaderText" xml:space="preserve">
+    <value>ジャンプ比</value>
+  </data>
+  <data name="colEdgeElem.HeaderText" xml:space="preserve">
+    <value>元素</value>
+  </data>
+  <data name="colElecElem.HeaderText" xml:space="preserve">
+    <value>元素</value>
+  </data>
+  <data name="colNeutElem.HeaderText" xml:space="preserve">
+    <value>元素</value>
+  </data>
+  <data name="colFlElem.HeaderText" xml:space="preserve">
+    <value>元素</value>
+  </data>
+  <data name="colFlLine.HeaderText" xml:space="preserve">
+    <value>線</value>
+  </data>
+  <data name="colFlRelI.HeaderText" xml:space="preserve">
+    <value>相対強度</value>
+  </data>
 </root>

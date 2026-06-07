@@ -814,7 +814,7 @@ public partial class FormBeamInteraction : FormBase
         var C = DataGridViewContentAlignment.MiddleCenter;
         ConfigCol(colEdgeElem, default, fill: true); ConfigCol(colEdgeZ, R, "0"); ConfigCol(colEdgeEdge, C); ConfigCol(colEdgeKeV, R, "g4"); ConfigCol(colEdgeJump, R, "g3");
         ConfigCol(colElecElem, default, fill: true); ConfigCol(colElecZ, R, "0"); ConfigCol(colElecAt, R, "g3"); ConfigCol(colElecA, R, "g4");
-        colElecA.ToolTipText = "Elastic cross section σ_el (NIST Mott 50 eV–36 keV; screened Rutherford above 36 keV).";// 260606Cl §6.5 元素別弾性断面積。NIST範囲外は Rutherford 近似
+        colElecA.ToolTipText = Loc("Elastic cross section σ_el (NIST Mott 50 eV–36 keV; screened Rutherford above 36 keV).", "弾性散乱断面積 σ_el (NIST Mott 50 eV–36 keV、36 keV 超は遮蔽 Rutherford 近似)");// 260608Cl Loc()化。260606Cl §6.5 元素別弾性断面積・NIST範囲外は Rutherford 近似
         ConfigCol(colNeutElem, default, fill: true); ConfigCol(colNeutBcoh, R, "g4"); ConfigCol(colNeutScoh, R, "g4"); ConfigCol(colNeutAt, R, "g3");
 
         // 260606Cl 行数の多い元素別表 (元素数×行。Edges は最大 2×元素数) は縦スクロール許可 → 多元素結晶でもクリップしない
@@ -893,19 +893,19 @@ public partial class FormBeamInteraction : FormBase
         double thetaC = delta > 0 ? Math.Sqrt(2 * delta) : double.NaN; // [rad]
         double sldReal = ClassicalElectronRadiusCm * sumReal * 1e-16;  // cm⁻² → Å⁻²
 
-        miniTableAttenScalars.SetRows(
+        miniTableAttenScalars.SetRows(  //260608Cl スカラ行ラベルを Loc() 化 (記号・固有名・確立略語 SLD/HVL は据置)
         [
-            ["µ/ρ (total)", Q(muRhoTot, "cm²/g")],
-            ["µ (linear)", Q(muLin, "cm⁻¹")],
-            ["Attenuation length", QLen(1 / muLin)],
+            [Loc("µ/ρ (total)", "µ/ρ (全)"), Q(muRhoTot, "cm²/g")],
+            [Loc("µ (linear)", "µ (線)"), Q(muLin, "cm⁻¹")],
+            [Loc("Attenuation length", "減衰長"), QLen(1 / muLin)],
             ["HVL", QLen(Math.Log(2) / muLin)],
-            [$"Transmission (t={numericBoxAttenThickness.Value:g4} µm)", Q(Math.Exp(-muLin * tCm) * 100, "%", "g4")],
+            [Loc("Transmission", "透過率") + $" (t={numericBoxAttenThickness.Value:g4} µm)", Q(Math.Exp(-muLin * tCm) * 100, "%", "g4")],
             ["µ_en/ρ", xrl ? Q(muEnRho, "cm²/g") : "N/A"],
             ["δ (1−n)", dispNa ? "N/A" : Q(delta, "", "g4")],
             ["β", dispNa ? "N/A" : Q(beta, "", "g4")],
-            ["θc (critical)", dispNa ? "N/A" : Q(thetaC * 1e3, "mrad")],
-            ["X-ray SLD (Re)", dispNa ? "N/A" : Q(sldReal * 1e6, "10⁻⁶Å⁻²", "g4")],
-            ["source", xrl ? "xraylib" : "internal (photo)"],
+            [Loc("θc (critical)", "θc (臨界角)"), dispNa ? "N/A" : Q(thetaC * 1e3, "mrad")],
+            [Loc("X-ray SLD (Re)", "X線 SLD (実部)"), dispNa ? "N/A" : Q(sldReal * 1e6, "10⁻⁶Å⁻²", "g4")],
+            [Loc("source", "出典"), xrl ? "xraylib" : "internal (photo)"],
         ]);
 
         // 吸収端 (K/L3): xrl 有効時はエネルギーも xraylib から (ジャンプ比と整合)
@@ -1042,18 +1042,18 @@ public partial class FormBeamInteraction : FormBase
         double lambdaNm = UniversalConstants.Convert.EnergyToElectronWaveLength(kev);
         double rangeKO = 0.0276 * avgA * Math.Pow(kev, 1.67) / (Math.Pow(avgZ, 0.89) * rho); // Kanaya-Okayama [µm]
 
-        miniTableAttenScalars.SetRows(
+        miniTableAttenScalars.SetRows(  //260608Cl ラベルを Loc() 化 (ラジオ訳 弾性MFP/非弾性MFP/飛程CSDA と整合)
         [
-            ["λ (electron)", Q(lambdaNm * 1000, "pm")],
-            ["σ elastic", Q(sigma, "nm²")],
-            ["Elastic MFP", Q(mfp, "nm")],
-            ["dE/ds (loss)", Q(dEds, "keV/nm")],
-            ["IMFP", Q(imfpA / 10, "nm")],
-            ["Plasma E", mc.PlasmaEnergyEv > 0 ? Q(mc.PlasmaEnergyEv, "eV") : "N/A"],
-            ["J (mean exc.)", mc.J > 0 ? Q(mc.J, "eV") : "N/A"],
-            ["Range (Kanaya-Okayama)", Q(rangeKO, "µm")],
-            ["Range (CSDA path)", Q(mc.GetCsdaRangeMicron(kev), "µm")],//260606Cl 追加: 阻止能を ∫dE/|dE/ds| 積分した経路長。KO(後方散乱込みの侵入深さ近似)とは別物
-            ["mean Z, A", $"{avgZ:g4}, {avgA:g4}"],
+            [Loc("λ (electron)", "λ (電子)"), Q(lambdaNm * 1000, "pm")],
+            [Loc("σ elastic", "σ 弾性"), Q(sigma, "nm²")],
+            [Loc("Elastic MFP", "弾性MFP"), Q(mfp, "nm")],
+            [Loc("dE/ds (loss)", "dE/ds (損失)"), Q(dEds, "keV/nm")],
+            [Loc("IMFP", "非弾性MFP"), Q(imfpA / 10, "nm")],
+            [Loc("Plasma E", "プラズマ E"), mc.PlasmaEnergyEv > 0 ? Q(mc.PlasmaEnergyEv, "eV") : "N/A"],
+            [Loc("J (mean exc.)", "J (平均励起)"), mc.J > 0 ? Q(mc.J, "eV") : "N/A"],
+            [Loc("Range (Kanaya-Okayama)", "飛程 (Kanaya-Okayama)"), Q(rangeKO, "µm")],
+            [Loc("Range (CSDA path)", "飛程 (CSDA経路)"), Q(mc.GetCsdaRangeMicron(kev), "µm")],//260606Cl 追加: 阻止能を ∫dE/|dE/ds| 積分した経路長。KO(後方散乱込みの侵入深さ近似)とは別物
+            [Loc("mean Z, A", "平均 Z, A"), $"{avgZ:g4}, {avgA:g4}"],
         ]);
 
         //260606Cl 4列目を A(原子量)→ 元素別弾性断面積 σ_el[nm²] に変更 (§6.5)。NaN は null=空欄 (§11)。NIST範囲外(>36keV)は MonteCarlo 側で Rutherford 近似
@@ -1177,15 +1177,15 @@ public partial class FormBeamInteraction : FormBase
 
         miniTableAttenScalars.SetRows(
         [
-            ["b̄ (coherent)", Q(bMean, "fm")],
-            ["Coherent SLD", Q(sld * 1e6, "10⁻⁶Å⁻²", "g4")],
+            [Loc("b̄ (coherent)", "b̄ (コヒーレント)"), Q(bMean, "fm")],  //260608Cl ラベルを Loc() 化 (σ̄/Σ 等の記号は据置)
+            [Loc("Coherent SLD", "コヒーレント SLD"), Q(sld * 1e6, "10⁻⁶Å⁻²", "g4")],
             ["σ̄_coh", Q(sCoh, "barn")],                                   // 260606Cl 4π|b|² (複素対応)
             ["σ̄_incoh", Q(sInc, "barn")],                                 // 260606Cl periodictable nsf
             [$"σ̄_abs (1/v, {lambdaAng:g3}Å)" + (anyResonant ? " *" : ""), Q(sAbs, "barn")], // 260606Cl 虚部から導出
             ["σ̄_total", Q(sTot, "barn")],                                 // 260606Cl
-            ["Σ_total (macro)", Q(sigmaTotMacro, "cm⁻¹")],                 // 260606Cl
-            ["Atten. length (1/Σ)", QLen(attenLenCm)],                     // 260606Cl
-            ["source", anyResonant ? "periodictable nsf (* 1/v invalid: Cd/Sm/Eu/Gd)" : "periodictable nsf (Sears 1992)"],
+            [Loc("Σ_total (macro)", "Σ_total (マクロ)"), Q(sigmaTotMacro, "cm⁻¹")],                 // 260606Cl
+            [Loc("Atten. length (1/Σ)", "減衰長 (1/Σ)"), QLen(attenLenCm)],                     // 260606Cl
+            [Loc("source", "出典"), anyResonant ? "periodictable nsf (* 1/v invalid: Cd/Sm/Eu/Gd)" : "periodictable nsf (Sears 1992)"],
         ]);
 
         miniTableAttenNeutron.SetRows(els.OrderBy(x => x.z).Select(x =>
@@ -1292,8 +1292,8 @@ public partial class FormBeamInteraction : FormBase
             double wk = xrl ? Xraylib.FluorescenceYield(z, Xraylib.XrlShell.K) : double.NaN;
             scalarRows.Add([$"ω_K ({AtomStatic.AtomicName(z)})", double.IsNaN(wk) ? "N/A" : wk.ToString("g3")]);
         }
-        scalarRows.Add(["strongest line", strongest]);
-        scalarRows.Add(["source", xrl ? "internal (E) / xraylib (I, ω)" : "internal (E only)"]);
+        scalarRows.Add([Loc("strongest line", "最強線"), strongest]);  //260608Cl ラベルを Loc() 化 (ω_K は記号で据置)
+        scalarRows.Add([Loc("source", "出典"), xrl ? "internal (E) / xraylib (I, ω)" : "internal (E only)"]);
         miniTableFluorScalars.SetRows(scalarRows);
 
         // EDX スティック: 各線を (E,0)-(E,h) の 2 点プロファイルで描く (高さは最大で正規化)
