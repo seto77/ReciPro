@@ -168,6 +168,9 @@ public static class Ring
         /// <summary>NeXus Data Format (拡張子nxs), X-Spectrum社　LAMBDAX線検出器　. (\references\ImageExsample\LAMBDA (20250516平尾さんより))</summary>
         NXS,
 
+        /// <summary>Rigaku 2D-PXD Image Header Format / d*TREK extended 系. (\references\ImageExsample\20260608平尾さんより))</summary>
+        PXD,
+
 
         #endregion 画像タイプ
     }

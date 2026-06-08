@@ -145,6 +145,29 @@ public static partial class ImageIO
         return (temp[0] == 0x49 && temp[1] == 0x49) || (temp[0] == 0x4D && temp[1] == 0x4D);
     }
 
+    /// <summary>
+    /// Rigaku 2D-PXD d*TREK extended IMG
+    /// </summary>
+    /// <param name="fileName"></param>
+    /// <returns></returns>
+    public static bool IsRigakuPXD(string fileName)
+    {
+        using var br = new BinaryReader(new FileStream(fileName, FileMode.Open, FileAccess.Read));
+        br.BaseStream.Position = 0;
+        var temp = new string(br.ReadChars(16));
+        br.Close();
+        if (temp != "{\nHEADER_BYTES= ")
+            return false;
+
+        using var sr = new StreamReader(new FileStream(fileName, FileMode.Open, FileAccess.Read));
+        for (int i = 0; i < 5; i++)//5行以内に"Rigaku 2D-PXD Image Header Format"が含まれているはずなので、5行読む
+            if (sr.ReadLine().Contains("Rigaku 2D-PXD Image Header Format"))
+                return true;
+        return false;
+    }
+
+
+
     public static bool Check_PF_RAW(string fileName)
     {
         //references\ImageExsample\BL18c 柴咲さん　のヘッダ情報を参考
@@ -204,12 +227,15 @@ public static partial class ImageIO
                 result = RintRapid2Unroll(str);
             else if (IsADXVImage(str))
                 result = ADXV(str);
+            else if (IsRigakuPXD(str))
+                result = RigakuPXD(str);
             else if (IsITEXImage(str))
                 result = ITEX(str);
             else if (IsADSCImage(str))
                 result = ADSC(str);
             else if (IsTiffImage(str))
                 result = Tiff(str);
+
             else
                 return false;
         }
@@ -320,6 +346,71 @@ public static partial class ImageIO
             Ring.SrcImgSize = new Size(imageWidth, imageHeight);
             Ring.ImageType = Ring.ImageTypeEnum.SMV;
             Ring.Comments = "Num. of Frame: " + numberOfFrame.ToString(); ;
+        }
+        catch (Exception e)
+        {
+            MessageBox.Show(e.Message);
+            return false;
+        }
+        return true;
+    }
+    #endregion
+
+
+
+    #region PXD
+    private static bool RigakuPXD(string filename)
+    {
+        try
+        {
+            int headersize = 0;
+            using (var sr = new StreamReader(new FileStream(filename, FileMode.Open, FileAccess.Read)))
+            {
+                if (sr.ReadLine() != "{")
+                    return false;
+                var str = sr.ReadLine();
+                if (!str.StartsWith("HEADER_BYTES="))
+                    return false;
+                headersize = Convert.ToInt32(str.Split(['=', ';'])[1]);
+            }
+
+            using BinaryReader br = new(new FileStream(filename, FileMode.Open, FileAccess.Read));
+            var headers = new string(br.ReadChars(headersize)).Split(['{', '}', '\n', ';'], StringSplitOptions.RemoveEmptyEntries);
+
+
+
+            var little_endian = headers.First(h => h.StartsWith("BYTE_ORDER=")).Contains("little_endian");
+            var size1 = Convert.ToInt32(headers.First(h => h.StartsWith("SIZE1=")).Split(['='])[1]);
+            var size2 = Convert.ToInt32(headers.First(h => h.StartsWith("SIZE2=")).Split(['='])[1]);
+
+
+            var type = headers.First(h => h.StartsWith("Data_type=")).Split(separator)[1].TrimStart().TrimEnd();
+
+
+            int imageWidth = size1, imageHeight = size2;
+            long length = imageWidth * imageHeight;
+
+            Func<double> read = type switch
+            {
+                "unsigned long int" => new Func<double>(() => br.ReadUInt32()),
+                "long int" => new Func<double>(() => br.ReadInt32()),
+                _ => throw new NotImplementedException()
+            };
+
+            br.BaseStream.Position = headersize;
+
+            if (Ring.Intensity.Length != length)//前回と同じサイズではないとき
+                Ring.Intensity = new double[length];
+            for (int i = 0; i < length; i++)
+                Ring.Intensity[i] = read();
+
+
+
+            Ring.BitsPerPixels = type == "unsigned long int" ? 4 : 0;
+
+            Ring.SrcImgSize = new Size(imageWidth, imageHeight);
+            Ring.ImageType = Ring.ImageTypeEnum.SMV;
+            //Ring.Comments = "Num. of Frame: " + numberOfFrame.ToString(); ;
         }
         catch (Exception e)
         {
