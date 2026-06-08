@@ -8,7 +8,7 @@ ReciPro's diffraction and imaging simulators share a common **Bloch-wave (Bethe)
 - [STEM](stem.md)
 - [EBSD](ebsd.md)
 
-For the underlying theory (Schrödinger equation, Bloch's theorem, Bethe's dynamical equation, the eigenvalue problem, and the Ewald-sphere definitions), see [Appendix A2. Dynamical Diffraction by the Bloch-Wave Method](index.md).
+For the underlying theory (Schrödinger equation, Bloch's theorem, Bethe's dynamical equation, the eigenvalue problem, and the Ewald-sphere definitions), see [Appendix A3. Dynamical Diffraction by the Bloch-Wave Method](index.md).
 
 ---
 
@@ -63,13 +63,13 @@ with the **absorptive scattering factor**
 
 $$f'_k(\mathbf g,\mathbf h) = \frac{2h}{\beta\, m_0\, c}\sum_i\sum_j a_i a_j\left[\frac{1}{b_i+b_j}\exp\!\left\{-\frac{b_i b_j}{b_i+b_j}\,\frac{|\mathbf g-\mathbf h|^2}{4}\right\} - \frac{1}{b_i+b_j+2M_k}\exp\!\left\{-\frac{b_i b_j - M_k^2}{b_i+b_j+2M_k}\,\frac{|\mathbf g-\mathbf h|^2}{4}\right\}\right]$$
 
-Here $h$ in the prefactor $2h/(\beta m_0 c)$ is **Planck's constant** (not a beam index). The $U^{C}$ and $U'$ coefficients are the entries of the structure matrix $\mathbf A$ in [Appendix A2](index.md).
+Here $h$ in the prefactor $2h/(\beta m_0 c)$ is **Planck's constant** (not a beam index). The $U^{C}$ and $U'$ coefficients are the entries of the structure matrix $\mathbf A$ in [Appendix A3](index.md).
 
 ---
 
 ## From the eigensolution to the diffracted intensity
 
-Diagonalising the structure matrix (see [Appendix A2](index.md)) gives the eigenvalues $\lambda^{(j)}$ and the Bloch-wave amplitudes $C_{\mathbf g}^{(j)}$. The wave amplitudes on the exit surface — the **transmission coefficients** $T_{\mathbf g}$ — at specimen thickness $t$ are
+Diagonalising the structure matrix (see [Appendix A3](index.md)) gives the eigenvalues $\lambda^{(j)}$ and the Bloch-wave amplitudes $C_{\mathbf g}^{(j)}$. The wave amplitudes on the exit surface — the **transmission coefficients** $T_{\mathbf g}$ — at specimen thickness $t$ are
 
 $$\begin{pmatrix} T_0\\ T_g\\ T_h\\ \vdots\end{pmatrix}
 = e^{-2\pi i(\mathbf k_{vac}\cdot\mathbf n)\,t}
@@ -168,7 +168,7 @@ For STEM, check this together with the detector-angle setting. For CBED, inspect
 
 ## See also
 
-- [Appendix A2. Dynamical Diffraction by the Bloch-Wave Method](index.md)
+- [Appendix A3. Dynamical Diffraction by the Bloch-Wave Method](index.md)
 - [7.2. SAED simulation](../../7-diffraction-simulator/1-saed-simulation.md)
 - [7.4. CBED simulation](../../7-diffraction-simulator/3-cbed-simulation.md)
 - [7. Diffraction simulator](../../7-diffraction-simulator/index.md)

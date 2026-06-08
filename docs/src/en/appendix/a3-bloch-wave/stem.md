@@ -89,5 +89,5 @@ In ReciPro, STEM is easiest to understand as follows: start with the same conver
 ## See also
 
 - [Dynamical calculation (common core)](calculation.md)
-- [Appendix A2. Dynamical Diffraction by the Bloch-Wave Method](index.md)
+- [Appendix A3. Dynamical Diffraction by the Bloch-Wave Method](index.md)
 - [9.2. STEM simulation](../../9-hrtem-stem-simulator/2-stem-simulation.md)

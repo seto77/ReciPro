@@ -92,5 +92,5 @@ $$I(\mathbf R) = \sum_{\mathbf g} |T_{\mathbf g}|^2\,A(\mathbf K+\mathbf G)^2 \;
 ## 関連項目
 
 - [動力学計算（共通コア）](calculation.md) — 共通の Bloch 波コアと透過係数 $T_{\mathbf g}$
-- [付録 A2. Bloch波法による動力学計算の概要](index.md)
+- [付録 A3. Bloch波法による動力学計算の概要](index.md)
 - [9.1. HRTEMシミュレーション](../../9-hrtem-stem-simulator/1-hrtem-simulation.md)

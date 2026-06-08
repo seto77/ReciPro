@@ -49,11 +49,11 @@ title: HRTEM/STEMシミュレータ
 
 | 目的 | 最初に設定する場所 | 参照ページ |
 |------|------------------|------------|
-| HRTEM像を1枚計算する | **イメージモード**を **HRTEM**、**TEMの条件**で加速電圧とデフォーカスを設定 | [HRTEMシミュレーション](1-hrtem-simulation.md)、[HRTEM 像形成](../appendix/a2-bloch-wave/hrtem.md) |
-| STEM像を計算する | **イメージモード**を **STEM**、**STEMオプション**で収束角と検出器を設定 | [STEMシミュレーション](2-stem-simulation.md)、[STEM の計算](../appendix/a2-bloch-wave/stem.md) |
+| HRTEM像を1枚計算する | **イメージモード**を **HRTEM**、**TEMの条件**で加速電圧とデフォーカスを設定 | [HRTEMシミュレーション](1-hrtem-simulation.md)、[HRTEM 像形成](../appendix/a3-bloch-wave/hrtem.md) |
+| STEM像を計算する | **イメージモード**を **STEM**、**STEMオプション**で収束角と検出器を設定 | [STEMシミュレーション](2-stem-simulation.md)、[STEM の計算](../appendix/a3-bloch-wave/stem.md) |
 | 投影ポテンシャルを見る | **イメージモード**を **ポテンシャル** にする | [ポテンシャルシミュレーション](3-potential-simulation.md) |
 | 厚さ・デフォーカスシリーズを作る | HRTEMで **画像モード**の **単一 / シリーズ画像** と画像条件を設定 | [HRTEMシミュレーション](1-hrtem-simulation.md) |
-| TDSを含むHAADF-STEMを扱う | 原子の温度因子を非ゼロにし、STEM検出器を LAADF / HAADF 側へ設定 | [STEM の計算](../appendix/a2-bloch-wave/stem.md) |
+| TDSを含むHAADF-STEMを扱う | 原子の温度因子を非ゼロにし、STEM検出器を LAADF / HAADF 側へ設定 | [STEM の計算](../appendix/a3-bloch-wave/stem.md) |
 
 ---
 
@@ -149,7 +149,7 @@ STEMモードのときだけ表示されます。計算済みのSTEM像のうち
 
 ![ヘルプメニュー](../../assets/cap-ja-auto/FormImageSimulator.menuStrip1.helpToolStripMenuItem.png)
 
-- **HRTEMシミュレーションの基本原理** : HRTEM像形成の解説（[Appendix A2.2](../appendix/a2-bloch-wave/hrtem.md)）を開きます。
+- **HRTEMシミュレーションの基本原理** : HRTEM像形成の解説（[Appendix A3.2](../appendix/a3-bloch-wave/hrtem.md)）を開きます。
 - **計算ライブラリ** : 計算ライブラリを選択します。**Native code**（高速な C++/Eigen）または **Managed code**（.NET）。通常は Native が高速です。
 
 ---
@@ -159,6 +159,6 @@ STEMモードのときだけ表示されます。計算済みのSTEM像のうち
 - [HRTEMシミュレーション](1-hrtem-simulation.md)
 - [STEMシミュレーション](2-stem-simulation.md)
 - [ポテンシャルシミュレーション](3-potential-simulation.md)
-- [動力学回折(Bloch波法)](../appendix/a2-bloch-wave/index.md)
+- [動力学回折(Bloch波法)](../appendix/a3-bloch-wave/index.md)
 - [回折シミュレータ](../7-diffraction-simulator/index.md)
 - [電子飛程](../8-electron-trajectory.md)

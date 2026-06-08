@@ -19,7 +19,7 @@ HRTEM像は、試料を透過した電子波が対物レンズの収差の影響
 3. **部分コヒーレンス**: 光源の有限サイズ（空間コヒーレンス）とエネルギー揺らぎ（時間コヒーレンス）を考慮
 4. **像の形成**: 強度分布 $|\psi(\mathbf{r})|^2$ を計算
 
-理論の詳細は [Appendix A2.2 — HRTEM 像形成](../appendix/a2-bloch-wave/hrtem.md) を参照してください。
+理論の詳細は [Appendix A3.2 — HRTEM 像形成](../appendix/a3-bloch-wave/hrtem.md) を参照してください。
 
 ---
 
@@ -97,7 +97,7 @@ $$\Delta f_{\text{Scherzer}} = -\sqrt{\tfrac{4}{3}\,C_s \lambda}\quad\left(\appr
 - **線形イメージモデル（準コヒーレント）** : 計算コストが低い。弱位相物体近似が成り立つ薄い試料に適し、PCTFに空間・時間コヒーレンスエンベロープを乗じます。
 - **透過交差係数 (TCC)** : 計算コストが高いがより正確。完全な透過交差係数を積分します。多くの強い回折波を励起する強散乱体に使うべきモデルです。
 
-詳細は [Appendix A2.2 — HRTEM 像形成](../appendix/a2-bloch-wave/hrtem.md) を参照。
+詳細は [Appendix A3.2 — HRTEM 像形成](../appendix/a3-bloch-wave/hrtem.md) を参照。
 
 ---
 
@@ -142,4 +142,4 @@ $$\Delta f_{\text{Scherzer}} = -\sqrt{\tfrac{4}{3}\,C_s \lambda}\quad\left(\appr
 - [HRTEM/STEMシミュレータ（まとめ）](index.md)
 - [STEMシミュレーション](2-stem-simulation.md)
 - [ポテンシャルシミュレーション](3-potential-simulation.md)
-- [Appendix A2.2 — HRTEM 像形成](../appendix/a2-bloch-wave/hrtem.md)
+- [Appendix A3.2 — HRTEM 像形成](../appendix/a3-bloch-wave/hrtem.md)

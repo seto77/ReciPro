@@ -34,11 +34,11 @@ Results are shown as one or more image panes. They use ReciPro's standard [image
 
 | Goal | Start from | Reference |
 |------|------------|-----------|
-| Calculate one HRTEM image | Set **Image mode** to **HRTEM**, then set accelerating voltage and defocus in **TEM conditions** | [HRTEM simulation](1-hrtem-simulation.md), [HRTEM image formation](../appendix/a2-bloch-wave/hrtem.md) |
-| Calculate a STEM image | Set **Image mode** to **STEM**, then set convergence angle and detector in **STEM options** | [STEM simulation](2-stem-simulation.md), [STEM calculation](../appendix/a2-bloch-wave/stem.md) |
+| Calculate one HRTEM image | Set **Image mode** to **HRTEM**, then set accelerating voltage and defocus in **TEM conditions** | [HRTEM simulation](1-hrtem-simulation.md), [HRTEM image formation](../appendix/a3-bloch-wave/hrtem.md) |
+| Calculate a STEM image | Set **Image mode** to **STEM**, then set convergence angle and detector in **STEM options** | [STEM simulation](2-stem-simulation.md), [STEM calculation](../appendix/a3-bloch-wave/stem.md) |
 | View projected potential | Set **Image mode** to **Potential** | [Potential simulation](3-potential-simulation.md) |
 | Generate a thickness / defocus series | Configure **Single / Serial** and the image conditions in **HRTEM options** | [HRTEM simulation](1-hrtem-simulation.md) |
-| Use HAADF-STEM with TDS | Set non-zero atomic temperature factors and use an LAADF / HAADF detector | [STEM calculation](../appendix/a2-bloch-wave/stem.md) |
+| Use HAADF-STEM with TDS | Set non-zero atomic temperature factors and use an LAADF / HAADF detector | [STEM calculation](../appendix/a3-bloch-wave/stem.md) |
 
 ---
 
@@ -167,7 +167,7 @@ How wave interference is treated when combining the contributions from all incid
 - **Quasi-coherent** — fast, approximate model that multiplies the phase-contrast transfer function by spatial- and temporal-coherence envelopes.
 - **Transmission cross coefficient (TCC)** — more accurate model that integrates over the full transmission cross coefficient. Slower but exact in the linear-imaging regime.
 
-See [Appendix A2.2 — HRTEM image formation](../appendix/a2-bloch-wave/hrtem.md).
+See [Appendix A3.2 — HRTEM image formation](../appendix/a3-bloch-wave/hrtem.md).
 
 #### Single / Serial mode
 
@@ -253,6 +253,6 @@ A more detailed report is available as a PDF: [Comparison of STEM simulations by
 - [HRTEM simulation](1-hrtem-simulation.md)
 - [STEM simulation](2-stem-simulation.md)
 - [Potential simulation](3-potential-simulation.md)
-- [Dynamical diffraction (Bloch-wave)](../appendix/a2-bloch-wave/index.md)
+- [Dynamical diffraction (Bloch-wave)](../appendix/a3-bloch-wave/index.md)
 - [Diffraction simulator](../7-diffraction-simulator/index.md)
 - [Electron trajectory](../8-electron-trajectory.md)

@@ -75,5 +75,5 @@ CBED では、Bloch 波解の厚さ依存性がディスク内部の強度分布
 ## 関連項目
 
 - [動力学計算（共通コア）](calculation.md)
-- [付録 A2. Bloch波法による動力学計算の概要](index.md)
+- [付録 A3. Bloch波法による動力学計算の概要](index.md)
 - [7.4 CBEDシミュレーション](../../7-diffraction-simulator/3-cbed-simulation.md)

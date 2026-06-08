@@ -1,4 +1,4 @@
-# Appendix A2. Dynamical Diffraction by the Bloch-Wave Method
+# Appendix A3. Dynamical Diffraction by the Bloch-Wave Method
 
 This appendix gives an overview of the dynamical electron-diffraction theory used by ReciPro's **Crystal Diffraction**, **CBED**, and **HRTEM/STEM** simulators. ReciPro follows the **Bethe / Bloch-wave** formulation. The step-by-step calculation (optical potential, transmission coefficients, intensities) is described in [Dynamical calculation (common core)](calculation.md).
 

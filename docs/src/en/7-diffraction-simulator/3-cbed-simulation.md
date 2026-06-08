@@ -55,7 +55,7 @@ Once the calculation completes, the output parameters become available. All of t
 
 In CBED, the incident beam is regarded as a cone of plane waves with different directions. For each direction (each point within the convergence aperture = a partial incident plane wave), the Bloch wave method solves the electron Schrödinger equation inside the crystal, and the results are rearranged as diffraction disks. HOLZ (higher-order Laue zone) lines appear as fine dark/bright lines within the disks, arising from reflections in upper Laue zones. They are sensitive to the lattice parameter along the $c$ axis and are useful for three-dimensional structure analysis.
 
-For the theoretical details, see [CBED calculation](../appendix/a2-bloch-wave/cbed.md).
+For the theoretical details, see [CBED calculation](../appendix/a3-bloch-wave/cbed.md).
 
 ---
 
@@ -64,4 +64,4 @@ For the theoretical details, see [CBED calculation](../appendix/a2-bloch-wave/cb
 - [Diffraction simulator (overview)](index.md)
 - [SAED simulation](1-saed-simulation.md)
 - [PED simulation](2-ped-simulation.md)
-- [CBED calculation](../appendix/a2-bloch-wave/cbed.md)
+- [CBED calculation](../appendix/a3-bloch-wave/cbed.md)

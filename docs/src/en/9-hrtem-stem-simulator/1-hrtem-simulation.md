@@ -110,4 +110,4 @@ Set aperture size (mrad) and position. **Open aperture** removes it. The number 
 - [HRTEM/STEM simulator (overview)](index.md)
 - [STEM simulation](2-stem-simulation.md)
 - [Potential simulation](3-potential-simulation.md)
-- [Appendix A2.2 — HRTEM image formation](../appendix/a2-bloch-wave/hrtem.md)
+- [Appendix A3.2 — HRTEM image formation](../appendix/a3-bloch-wave/hrtem.md)

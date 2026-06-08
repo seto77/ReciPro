@@ -110,5 +110,5 @@ When `UseNonLocalAbsorption` is enabled, the absorptive potential is treated not
 ## See also
 
 - [Dynamical calculation (common core)](calculation.md)
-- [Appendix A2. Dynamical Diffraction by the Bloch-Wave Method](index.md)
+- [Appendix A3. Dynamical Diffraction by the Bloch-Wave Method](index.md)
 - [12. EBSD simulation](../../12-ebsd-simulation.md)

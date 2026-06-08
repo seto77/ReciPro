@@ -110,5 +110,5 @@ $$\pi/2\leq\theta\leq\pi$$
 ## 関連項目
 
 - [動力学計算（共通コア）](calculation.md)
-- [付録 A2. Bloch波法による動力学計算の概要](index.md)
+- [付録 A3. Bloch波法による動力学計算の概要](index.md)
 - [12. EBSDシミュレーション](../../12-ebsd-simulation.md)

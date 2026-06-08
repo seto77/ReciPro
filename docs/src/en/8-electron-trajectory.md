@@ -109,7 +109,7 @@ Histogram of the energy loss ΔE (keV) of the backscattered electrons. Used by t
 ## See also
 
 - [EBSD simulation](12-ebsd-simulation.md)
-- [EBSD calculation](appendix/a2-bloch-wave/ebsd.md)
-- [Dynamical diffraction (Bloch-wave)](appendix/a2-bloch-wave/index.md)
+- [EBSD calculation](appendix/a3-bloch-wave/ebsd.md)
+- [Dynamical diffraction (Bloch-wave)](appendix/a3-bloch-wave/index.md)
 - [HRTEM/STEM simulator](9-hrtem-stem-simulator/index.md)
 - [Diffraction simulator](7-diffraction-simulator/index.md)

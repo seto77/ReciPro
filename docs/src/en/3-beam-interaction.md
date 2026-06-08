@@ -6,6 +6,9 @@
 
 The incident beam is selected in the band at the top of the window; the four tabs below — **Reflections**, **Attenuations & Transport**, **Scattering factors**, and **Fluorescence** — show the different aspects of the interaction. Each tab section below shows the tab under **X-ray / Electron / Neutron** beams (use the tabs in each figure); the content changes markedly with the beam.
 
+!!! tip "Solid-state background (Appendix A2)"
+    The scattering and solid-state physics behind these four tabs — atomic scattering factors, the structure factor, beam attenuation and transport, and fluorescence — are explained in **[Appendix A2. Beam interaction (solid-state background)](appendix/a2-beam-interaction/index.md)**.
+
 !!! note "X-ray data and the bundled xraylib library"
     Many of the X-ray quantities (anomalous dispersion $f'/f''$, the $F(q)+S(q)$ scattering split, the photo / Rayleigh / Compton breakdown of the mass attenuation, absorption-edge jumps, and fluorescence yields) are evaluated with the bundled **[xraylib](https://github.com/tschoonj/xraylib)** library. If xraylib is unavailable, ReciPro falls back to its internal tables (photoabsorption-only attenuation, characteristic-line energies only) and the affected cells show **N/A**. The **source** row of each table states which data set was used.
 
@@ -167,3 +170,4 @@ Each tab has a **Copy** button that copies its table to the clipboard as text th
 
 - [Crystal database](1-crystal-database.md) — defining the crystal whose interaction is calculated.
 - [Diffraction simulator](7-diffraction-simulator/index.md) — simulating diffraction patterns using the structure factors.
+- [Appendix A2. Beam interaction (solid-state background)](appendix/a2-beam-interaction/index.md) — the scattering and solid-state physics behind every tab.

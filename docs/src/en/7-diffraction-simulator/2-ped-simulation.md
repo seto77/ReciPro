@@ -62,7 +62,7 @@ The moment **Precession (electron)** is selected, **Intensity = Dynamical (autom
 | **No. of diffracted waves** | Number of Bloch waves included in the eigenvalue problem. Larger values give more accurate intensities but the computation time grows as $O(N^3)$ | 50–200 |
 | **Thickness** | Specimen thickness used in the dynamical calculation (nm) | — |
 
-The computational cost is roughly "number of steps × Bloch-wave calculation per direction". For details of the dynamical calculation, see [Dynamical calculation (Bloch-wave method)](../appendix/a2-bloch-wave/calculation.md).
+The computational cost is roughly "number of steps × Bloch-wave calculation per direction". For details of the dynamical calculation, see [Dynamical calculation (Bloch-wave method)](../appendix/a3-bloch-wave/calculation.md).
 
 ---
 
@@ -100,4 +100,4 @@ Controls how each diffraction spot is drawn.
 - [Diffraction simulator (overview)](index.md)
 - [X-ray diffraction simulation](4-x-ray-neutron-diffraction.md)
 - [SAED simulation](1-saed-simulation.md)
-- [Dynamical calculation (Bloch-wave method)](../appendix/a2-bloch-wave/calculation.md)
+- [Dynamical calculation (Bloch-wave method)](../appendix/a3-bloch-wave/calculation.md)

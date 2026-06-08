@@ -18,7 +18,7 @@ A convergent electron beam is scanned across the specimen, and the transmitted a
 2. Integrate the scattered intensity over the detector's angular range.
 3. Both elastic and thermal-diffuse scattering (TDS) contributions can be computed.
 
-See [Appendix A2.4 — STEM calculation](../appendix/a2-bloch-wave/stem.md) for the theory.
+See [Appendix A3.4 — STEM calculation](../appendix/a3-bloch-wave/stem.md) for the theory.
 
 ---
 
@@ -163,5 +163,5 @@ A more detailed report is available as a PDF: [Comparison of STEM simulations by
 - [HRTEM/STEM simulator (overview)](index.md)
 - [HRTEM simulation](1-hrtem-simulation.md)
 - [Potential simulation](3-potential-simulation.md)
-- [Appendix A2.4 — STEM calculation](../appendix/a2-bloch-wave/stem.md)
-- [Appendix A2.4 — STEM calculation](../appendix/a2-bloch-wave/stem.md)
+- [Appendix A3.4 — STEM calculation](../appendix/a3-bloch-wave/stem.md)
+- [Appendix A3.4 — STEM calculation](../appendix/a3-bloch-wave/stem.md)

@@ -80,11 +80,11 @@ The application-wide <kbd>CTRL</kbd>+<kbd>SHIFT</kbd> shortcuts of the main wind
 
 | Goal | Start from | Reference |
 |------|------------|-----------|
-| Produce parallel-beam electron diffraction (SAED) | Set **Incident beam** to **Parallel** and **Wavelength** to electron | [SAED Simulation](1-saed-simulation.md), [parallel-beam SAED calculation](../appendix/a2-bloch-wave/calculation.md) |
+| Produce parallel-beam electron diffraction (SAED) | Set **Incident beam** to **Parallel** and **Wavelength** to electron | [SAED Simulation](1-saed-simulation.md), [parallel-beam SAED calculation](../appendix/a3-bloch-wave/calculation.md) |
 | Produce single-crystal X-ray diffraction | Switch **Wavelength** to X-ray / Synchrotron | [X-ray Diffraction Simulation](4-x-ray-neutron-diffraction.md) |
 | Produce precession electron diffraction (PED) | Set **Incident beam** to **Precession (electron)**, then set the semi-angle and step | [PED Simulation](2-ped-simulation.md) |
-| Produce convergent-beam electron diffraction (CBED) | Set **Incident beam** to **Convergence (CBED, electron only)** and set the conditions in the CBED window | [CBED Simulation](3-cbed-simulation.md), [CBED calculation](../appendix/a2-bloch-wave/cbed.md) |
-| Inspect the reflection list from the dynamical calculation | Select **Dynamical** and open **Spot Details** or **Details** | [Dynamical calculation (shared core)](../appendix/a2-bloch-wave/calculation.md) |
+| Produce convergent-beam electron diffraction (CBED) | Set **Incident beam** to **Convergence (CBED, electron only)** and set the conditions in the CBED window | [CBED Simulation](3-cbed-simulation.md), [CBED calculation](../appendix/a3-bloch-wave/cbed.md) |
+| Inspect the reflection list from the dynamical calculation | Select **Dynamical** and open **Spot Details** or **Details** | [Dynamical calculation (shared core)](../appendix/a3-bloch-wave/calculation.md) |
 | Match detector geometry against an experimental image | Open the detector-geometry settings from **Details** and use the overlay image | [Detector coordinate system](../appendix/a1-coordinate-system/2-diffraction.md) |
 
 ---
@@ -298,5 +298,5 @@ A window for scrubbing the pressure/time profile of a high-pressure (dynamic-com
 - [SAED Simulation](1-saed-simulation.md)
 - [PED Simulation](2-ped-simulation.md)
 - [CBED Simulation](3-cbed-simulation.md)
-- [Dynamical calculation (shared core)](../appendix/a2-bloch-wave/calculation.md)
+- [Dynamical calculation (shared core)](../appendix/a3-bloch-wave/calculation.md)
 - [Detector coordinate system](../appendix/a1-coordinate-system/2-diffraction.md)

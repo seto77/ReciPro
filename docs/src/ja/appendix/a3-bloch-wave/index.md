@@ -1,4 +1,4 @@
-# 付録 A2. Bloch波法による動力学計算の概要
+# 付録 A3. Bloch波法による動力学計算の概要
 
 この付録では、ReciProの **Crystal Diffraction**・**CBED**・**HRTEM/STEM** シミュレータが用いる動力学的電子回折理論の概要を解説します。ReciProは **Bethe / Bloch波** の定式化に従います。実際の計算手順（光学ポテンシャル・透過係数・強度）は [動力学計算（共通コア）](calculation.md) で説明します。
 

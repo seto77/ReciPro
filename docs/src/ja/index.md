@@ -12,9 +12,9 @@
 | 結晶構造を3Dで確認したい | [結晶構造ビューア](5-structure-viewer.md) | [対称性情報](2-symmetry-information.md) |
 | SAED / XRD / PED / CBED を計算したい | [回折シミュレータ](7-diffraction-simulator/index.md) | [SAED](7-diffraction-simulator/1-saed-simulation.md)、[X線回折](7-diffraction-simulator/4-x-ray-neutron-diffraction.md)、[PED](7-diffraction-simulator/2-ped-simulation.md)、[CBED](7-diffraction-simulator/3-cbed-simulation.md) |
 | HRTEM / STEM 像を計算したい | [HRTEM/STEMシミュレータ](9-hrtem-stem-simulator/index.md) | [HRTEM](9-hrtem-stem-simulator/1-hrtem-simulation.md)、[STEM](9-hrtem-stem-simulator/2-stem-simulation.md) |
-| EBSDパターンを計算したい | [EBSDシミュレーション](12-ebsd-simulation.md) | [電子飛程](8-electron-trajectory.md)、[Appendix A2. EBSD の計算](appendix/a2-bloch-wave/ebsd.md) |
+| EBSDパターンを計算したい | [EBSDシミュレーション](12-ebsd-simulation.md) | [電子飛程](8-electron-trajectory.md)、[Appendix A3. EBSD の計算](appendix/a3-bloch-wave/ebsd.md) |
 | 実験回折像を指数付けしたい | [Spot ID v1](10-spot-id.md)、[Spot ID v2](11-spot-id-v2.md) | [回折シミュレータ](7-diffraction-simulator/index.md) |
-| 動力学計算の式を確認したい | [Appendix A2. Bloch波法](appendix/a2-bloch-wave/index.md) | [動力学計算](appendix/a2-bloch-wave/calculation.md)、[CBED](appendix/a2-bloch-wave/cbed.md)、[STEM](appendix/a2-bloch-wave/stem.md)、[EBSD](appendix/a2-bloch-wave/ebsd.md) |
+| 動力学計算の式を確認したい | [Appendix A3. Bloch波法](appendix/a3-bloch-wave/index.md) | [動力学計算](appendix/a3-bloch-wave/calculation.md)、[CBED](appendix/a3-bloch-wave/cbed.md)、[STEM](appendix/a3-bloch-wave/stem.md)、[EBSD](appendix/a3-bloch-wave/ebsd.md) |
 
 ## 主な機能
 * **Full GUI** : すべての操作はグラフィカルインターフェースで行います。ファイルの入出力はドラッグ＆ドロップに対応。

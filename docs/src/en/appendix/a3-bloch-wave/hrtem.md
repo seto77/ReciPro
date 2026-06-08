@@ -90,5 +90,5 @@ Furthermore, the phase factor $\exp[2\pi i(\mathbf G-\mathbf H)\cdot\mathbf R]$ 
 ## See also
 
 - [Dynamical calculation (common core)](calculation.md) — the shared Bloch-wave core and the transmission coefficients $T_{\mathbf g}$
-- [Appendix A2. Dynamical Diffraction by the Bloch-Wave Method](index.md)
+- [Appendix A3. Dynamical Diffraction by the Bloch-Wave Method](index.md)
 - [9.1. HRTEM simulation](../../9-hrtem-stem-simulator/1-hrtem-simulation.md)

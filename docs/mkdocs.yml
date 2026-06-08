@@ -66,7 +66,7 @@ plugins:
         'en/0-main-window/1-crystal-orientation-control.md': 'en/0-main-window.md'
         'ja/0-main-window/1-crystal-orientation-control.md': 'ja/0-main-window.md'
         'en/11-symmetry-information.md': 'en/2-symmetry-information.md'
-        'en/12-scattering-factor.md': 'en/3-scattering-factor.md'
+        'en/12-scattering-factor.md': 'en/3-beam-interaction.md'
         'en/3-rotation-geometry.md': 'en/4-rotation-geometry.md'
         # 260526Cl/260602Cl: 7章を SAED(7.1)/PED(7.2)/CBED(7.3)/X線・中性子(7.4) の順へ再編。旧フラット/フォルダURLを現ファイル名へ。
         'en/7-1-saed-simulation.md': 'en/7-diffraction-simulator/1-saed-simulation.md'
@@ -89,7 +89,7 @@ plugins:
         'en/20-1-built-in-functions.md': 'en/20-macro/1-built-in-functions.md'
         'en/20-2-examples.md': 'en/20-macro/2-examples.md'
         'ja/11-symmetry-information.md': 'ja/2-symmetry-information.md'
-        'ja/12-scattering-factor.md': 'ja/3-scattering-factor.md'
+        'ja/12-scattering-factor.md': 'ja/3-beam-interaction.md'
         'ja/3-rotation-geometry.md': 'ja/4-rotation-geometry.md'
         'ja/7-1-saed-simulation.md': 'ja/7-diffraction-simulator/1-saed-simulation.md'
         'ja/7-2-x-ray-diffraction.md': 'ja/7-diffraction-simulator/4-x-ray-neutron-diffraction.md'
@@ -121,11 +121,27 @@ plugins:
         'ja/appendix/a1-coordinate-system.md': 'ja/appendix/a1-coordinate-system/1-orientation.md'
         'ja/appendix-a2-detector-coordinate-system.md': 'ja/appendix/a1-coordinate-system/2-diffraction.md'
         'ja/appendix/a2-detector-coordinate-system.md': 'ja/appendix/a1-coordinate-system/2-diffraction.md'
-        # 260526Cl: A2(概要)とA3(計算)を1つの a2-bloch-wave セクションへ統合。旧URLを新ページへ
-        'en/appendix/a2-bloch-wave-method.md': 'en/appendix/a2-bloch-wave/index.md'
-        'ja/appendix/a2-bloch-wave-method.md': 'ja/appendix/a2-bloch-wave/index.md'
-        'en/appendix/a3-bloch-wave-calculation.md': 'en/appendix/a2-bloch-wave/calculation.md'
-        'ja/appendix/a3-bloch-wave-calculation.md': 'ja/appendix/a2-bloch-wave/calculation.md'
+        # 260526Cl: A2(概要)とA3(計算)を1つの bloch-wave セクションへ統合。旧URLを新ページへ
+        # 260608Cl: Bloch波 appendix を A2→A3 へ改番 (A2 は新設 beam-interaction を割当)。旧 a2-bloch-wave URL を a3 へ。
+        'en/appendix/a2-bloch-wave-method.md': 'en/appendix/a3-bloch-wave/index.md'
+        'ja/appendix/a2-bloch-wave-method.md': 'ja/appendix/a3-bloch-wave/index.md'
+        'en/appendix/a3-bloch-wave-calculation.md': 'en/appendix/a3-bloch-wave/calculation.md'
+        'ja/appendix/a3-bloch-wave-calculation.md': 'ja/appendix/a3-bloch-wave/calculation.md'
+        'en/appendix/a2-bloch-wave/index.md': 'en/appendix/a3-bloch-wave/index.md'
+        'en/appendix/a2-bloch-wave/calculation.md': 'en/appendix/a3-bloch-wave/calculation.md'
+        'en/appendix/a2-bloch-wave/hrtem.md': 'en/appendix/a3-bloch-wave/hrtem.md'
+        'en/appendix/a2-bloch-wave/cbed.md': 'en/appendix/a3-bloch-wave/cbed.md'
+        'en/appendix/a2-bloch-wave/stem.md': 'en/appendix/a3-bloch-wave/stem.md'
+        'en/appendix/a2-bloch-wave/ebsd.md': 'en/appendix/a3-bloch-wave/ebsd.md'
+        'ja/appendix/a2-bloch-wave/index.md': 'ja/appendix/a3-bloch-wave/index.md'
+        'ja/appendix/a2-bloch-wave/calculation.md': 'ja/appendix/a3-bloch-wave/calculation.md'
+        'ja/appendix/a2-bloch-wave/hrtem.md': 'ja/appendix/a3-bloch-wave/hrtem.md'
+        'ja/appendix/a2-bloch-wave/cbed.md': 'ja/appendix/a3-bloch-wave/cbed.md'
+        'ja/appendix/a2-bloch-wave/stem.md': 'ja/appendix/a3-bloch-wave/stem.md'
+        'ja/appendix/a2-bloch-wave/ebsd.md': 'ja/appendix/a3-bloch-wave/ebsd.md'
+        # 260608Cl: 本編 3-scattering-factor を 3-beam-interaction にリネーム。旧URLを新名へ。
+        'en/3-scattering-factor.md': 'en/3-beam-interaction.md'
+        'ja/3-scattering-factor.md': 'ja/3-beam-interaction.md'
 
 # 260525Cl: ページ先頭の言語切替リンク (🌐 English | 日本語) は廃止。ヘッダーの言語セレクタ (extra.alternate) と
 #   機能が重複するため。これに伴い docs/hooks/language_switch.py とその参照を削除した。
@@ -189,7 +205,7 @@ nav:
       - 0. Main window: en/0-main-window.md
       - 1. Crystal database: en/1-crystal-database.md
       - 2. Symmetry information: en/2-symmetry-information.md
-      - 3. Beam interaction: en/3-scattering-factor.md
+      - 3. Beam interaction: en/3-beam-interaction.md
       - 4. Rotation Geometry: en/4-rotation-geometry.md
       - 5. Structure viewer: en/5-structure-viewer.md
       - 6. Stereonet: en/6-stereonet.md
@@ -218,20 +234,26 @@ nav:
           - Appendix A1. Coordinate systems:
               - A1.1. Basic coordinate system and crystal orientation: en/appendix/a1-coordinate-system/1-orientation.md
               - A1.2. Coordinate system for diffraction simulation: en/appendix/a1-coordinate-system/2-diffraction.md
-          - Appendix A2. Dynamical diffraction (Bloch-wave method):
-              - en/appendix/a2-bloch-wave/index.md
-              - A2.1. Dynamical calculation: en/appendix/a2-bloch-wave/calculation.md
-              - A2.2. HRTEM image formation: en/appendix/a2-bloch-wave/hrtem.md
-              - A2.3. CBED: en/appendix/a2-bloch-wave/cbed.md
-              - A2.4. STEM: en/appendix/a2-bloch-wave/stem.md
-              - A2.5. EBSD: en/appendix/a2-bloch-wave/ebsd.md
+          - Appendix A2. Beam interaction (solid-state background):
+              - en/appendix/a2-beam-interaction/index.md
+              - A2.1. Atomic scattering factors: en/appendix/a2-beam-interaction/scattering-factor.md
+              - A2.2. Structure factor: en/appendix/a2-beam-interaction/structure-factor.md
+              - A2.3. Attenuation & transport: en/appendix/a2-beam-interaction/attenuation-transport.md
+              - A2.4. Fluorescence: en/appendix/a2-beam-interaction/fluorescence.md
+          - Appendix A3. Dynamical diffraction (Bloch-wave method):
+              - en/appendix/a3-bloch-wave/index.md
+              - A3.1. Dynamical calculation: en/appendix/a3-bloch-wave/calculation.md
+              - A3.2. HRTEM image formation: en/appendix/a3-bloch-wave/hrtem.md
+              - A3.3. CBED: en/appendix/a3-bloch-wave/cbed.md
+              - A3.4. STEM: en/appendix/a3-bloch-wave/stem.md
+              - A3.5. EBSD: en/appendix/a3-bloch-wave/ebsd.md
       - Troubleshooting: en/troubleshooting.md
   - 日本語:
       - ホーム: ja/index.md
       - 0. メインウィンドウ: ja/0-main-window.md
       - 1. 結晶データベース: ja/1-crystal-database.md
       - 2. 対称性情報: ja/2-symmetry-information.md
-      - 3. ビーム相互作用: ja/3-scattering-factor.md
+      - 3. ビーム相互作用: ja/3-beam-interaction.md
       - 4. 回転ジオメトリ: ja/4-rotation-geometry.md
       - 5. 結晶構造ビューア: ja/5-structure-viewer.md
       - 6. ステレオネット: ja/6-stereonet.md
@@ -260,11 +282,17 @@ nav:
           - Appendix A1. 座標系の定義:
               - A1.1. 基本座標系と結晶方位の定義: ja/appendix/a1-coordinate-system/1-orientation.md
               - A1.2. 回折シミュレーションにおける座標系の定義: ja/appendix/a1-coordinate-system/2-diffraction.md
-          - Appendix A2. 動力学回折（Bloch波法）:
-              - ja/appendix/a2-bloch-wave/index.md
-              - A2.1. 動力学計算: ja/appendix/a2-bloch-wave/calculation.md
-              - A2.2. HRTEM 像形成: ja/appendix/a2-bloch-wave/hrtem.md
-              - A2.3. CBED: ja/appendix/a2-bloch-wave/cbed.md
-              - A2.4. STEM: ja/appendix/a2-bloch-wave/stem.md
-              - A2.5. EBSD: ja/appendix/a2-bloch-wave/ebsd.md
+          - Appendix A2. ビーム相互作用（固体物理的背景）:
+              - ja/appendix/a2-beam-interaction/index.md
+              - A2.1. 原子散乱因子: ja/appendix/a2-beam-interaction/scattering-factor.md
+              - A2.2. 構造因子: ja/appendix/a2-beam-interaction/structure-factor.md
+              - A2.3. 減衰・輸送: ja/appendix/a2-beam-interaction/attenuation-transport.md
+              - A2.4. 蛍光: ja/appendix/a2-beam-interaction/fluorescence.md
+          - Appendix A3. 動力学回折（Bloch波法）:
+              - ja/appendix/a3-bloch-wave/index.md
+              - A3.1. 動力学計算: ja/appendix/a3-bloch-wave/calculation.md
+              - A3.2. HRTEM 像形成: ja/appendix/a3-bloch-wave/hrtem.md
+              - A3.3. CBED: ja/appendix/a3-bloch-wave/cbed.md
+              - A3.4. STEM: ja/appendix/a3-bloch-wave/stem.md
+              - A3.5. EBSD: ja/appendix/a3-bloch-wave/ebsd.md
       - トラブルシューティング: ja/troubleshooting.md

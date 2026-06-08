@@ -50,7 +50,7 @@ In addition to the excitation error, the kinematical structure factor $\lvert F_
 
 ### Dynamical (Bloch-wave method, electron only)
 
-A rigorous dynamical calculation by the Bloch-wave method (Bethe method). It reproduces multiple scattering and the thickness-dependent variation of intensity, and is required for thick specimens or strong diffraction. Available only when Electron is selected. For the theory, see [Appendix A2. Bloch-wave method](../appendix/a2-bloch-wave/calculation.md).
+A rigorous dynamical calculation by the Bloch-wave method (Bethe method). It reproduces multiple scattering and the thickness-dependent variation of intensity, and is required for thick specimens or strong diffraction. Available only when Electron is selected. For the theory, see [Appendix A3. Bloch-wave method](../appendix/a3-bloch-wave/calculation.md).
 
 > **Note**: When **Dynamical** is selected, a **Bloch wave settings** panel appears below.
 
@@ -109,7 +109,7 @@ Detector information, flipping, reciprocal-space display, Kikuchi lines, Debye r
 ## See also
 
 - [Diffraction simulator (overview)](index.md)
-- [Parallel-beam SAED calculation](../appendix/a2-bloch-wave/calculation.md#parallel-beam-saed)
+- [Parallel-beam SAED calculation](../appendix/a3-bloch-wave/calculation.md#parallel-beam-saed)
 - [X-ray diffraction simulation](4-x-ray-neutron-diffraction.md)
 - [Precession electron diffraction (PED) simulation](2-ped-simulation.md)
 - [Definition of the coordinate system](../appendix/a1-coordinate-system/1-orientation.md)

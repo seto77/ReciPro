@@ -104,5 +104,5 @@
 
 - [メインウィンドウ](0-main-window.md)
 - [対称性情報](2-symmetry-information.md)
-- [ビーム相互作用](3-scattering-factor.md)
+- [ビーム相互作用](3-beam-interaction.md)
 - [結晶構造ビューア](5-structure-viewer.md)

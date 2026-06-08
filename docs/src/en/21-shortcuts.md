@@ -94,7 +94,7 @@ Used by the [HRTEM/STEM](9-hrtem-stem-simulator/index.md) result panes, the [Spo
 
 ### 2. Symmetry information · 3. Beam interaction
 Symmetry information has no special key/mouse combinations. In Beam Interaction, besides <kbd>F1</kbd> and the **Copy** buttons, the vertical cursor on the **Scattering factors** graph can be dragged to read off each element's value.
-[Symmetry →](2-symmetry-information.md) · [Beam interaction →](3-scattering-factor.md)
+[Symmetry →](2-symmetry-information.md) · [Beam interaction →](3-beam-interaction.md)
 
 ### 4. Rotation geometry
 [Open page →](4-rotation-geometry.md) — six **linked** [3-D views](#3d); rotating any one rotates all six together. The small *Axes* / *Objects* views have zoom and pan disabled.
