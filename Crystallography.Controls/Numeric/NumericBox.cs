@@ -389,6 +389,26 @@ public partial class NumericBox : UserControlBase
     }
     private int decimalPlaces = -1;
 
+    /// <summary>
+    /// 数値書式指定子 (.NET の数値書式文字列。例: "f3", "e2", "0.###", "N0")。
+    /// 空文字 (既定) または不正な書式の場合は <see cref="DecimalPlaces"/> に従う従来どおりの挙動。
+    /// 有効な書式が指定されている場合は <see cref="DecimalPlaces"/> を無視してこちらを優先する。
+    /// </summary>
+    [DefaultValue("")]
+    [Category("Value format")]
+    public string FormatSpecifier // 260608Cl 追加
+    {
+        set
+        {
+            formatSpecifier = value ?? "";
+            formatSpecifierValid = IsValidFormatSpecifier(formatSpecifier); // 有効性を判定してキャッシュ (判定は UserControlBase に集約)
+            textBox.Text = GetString();
+        }
+        get => formatSpecifier;
+    }
+    private string formatSpecifier = ""; // 260608Cl 追加
+    private bool formatSpecifierValid = false; // 260608Cl 追加 FormatSpecifier が有効な書式かどうかのキャッシュ (判定は UserControlBase.IsValidFormatSpecifier)
+
     /// <summary>小数点以下のゼロの記号を削除するかどうか</summary>
     [DefaultValue(false)]
     [Category("Value format")]
@@ -710,7 +730,11 @@ public partial class NumericBox : UserControlBase
 
         if (text.Length == 0)
         {
-            text = numericalValue.ToString(DecimalPlaces >= 0 ? $"f{DecimalPlaces}" : "");
+            // 260608Cl 変更: FormatSpecifier が有効ならそちらを優先し DecimalPlaces を無視する。
+            //               無効/空文字の場合は従来どおり DecimalPlaces ベースの書式を使う。
+            //text = numericalValue.ToString(DecimalPlaces >= 0 ? $"f{DecimalPlaces}" : "");
+            var format = formatSpecifierValid ? formatSpecifier : (DecimalPlaces >= 0 ? $"f{DecimalPlaces}" : "");
+            text = numericalValue.ToString(format);
             if (TrimEndZero && text.Contains('.'))
                 text = text.TrimEnd(['0']).TrimEnd(['.']);
 

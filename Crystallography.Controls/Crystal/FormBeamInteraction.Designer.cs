@@ -825,6 +825,9 @@
             resources.ApplyResources(graphControlAtten, "graphControlAtten");
             graphControlAtten.CopyVisible = true;
             graphControlAtten.FixLowerXToZero = true;
+            graphControlAtten.MousePositionVisible = true; // 260608Cl 追加: マウス位置の座標読取りを表示
+            graphControlAtten.MousePositionX_FormatSpecifier = "g8"; // 260608Cl 追加: 座標読取りの書式 (有効桁8)
+            graphControlAtten.MousePositionY_FormatSpecifier = "g8"; // 260608Cl 追加
             graphControlAtten.Name = "graphControlAtten";
             graphControlAtten.RangePanelVisible = true;
             toolTip.SetToolTip(graphControlAtten, resources.GetString("graphControlAtten.ToolTip"));
@@ -1089,6 +1092,9 @@
             resources.ApplyResources(graphControlScatteringFactor, "graphControlScatteringFactor");
             graphControlScatteringFactor.CopyVisible = true;
             graphControlScatteringFactor.FixLowerXToZero = true;
+            graphControlScatteringFactor.MousePositionVisible = true; // 260608Cl 追加: マウス位置の座標読取りを表示
+            graphControlScatteringFactor.MousePositionX_FormatSpecifier = "g8"; // 260608Cl 追加: 座標読取りの書式 (有効桁8)
+            graphControlScatteringFactor.MousePositionY_FormatSpecifier = "g8"; // 260608Cl 追加
             graphControlScatteringFactor.Name = "graphControlScatteringFactor";
             graphControlScatteringFactor.RangePanelVisible = true;
             toolTip.SetToolTip(graphControlScatteringFactor, resources.GetString("graphControlScatteringFactor.ToolTip"));
@@ -1276,7 +1282,7 @@
             graphControlFluor.Name = "graphControlFluor";
             graphControlFluor.RangePanelVisible = true;
             toolTip.SetToolTip(graphControlFluor, resources.GetString("graphControlFluor.ToolTip"));
-            graphControlFluor.VerticalLineMarkerVisible = true;
+            //graphControlFluor.VerticalLineMarkerVisible = true; // 260608Cl 撤去: 蛍光タブは縦線不要 (.cs で VerticalLines=[] に変更したのに合わせマーカー表示も無効化)
             // 
             // flowLayoutPanel7
             // 

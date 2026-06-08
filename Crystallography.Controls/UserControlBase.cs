@@ -26,6 +26,19 @@ public partial class UserControlBase : UserControl
         }
     }
 
+    /// <summary>
+    /// 260608Cl 追加: .NET 数値書式文字列が double.ToString で例外を投げない「有効な書式」か判定する。
+    /// 空文字は「書式指定なし(各コントロールの桁数指定へフォールバック)」を意味するので無効扱い(false)とする。
+    /// (単独の未知標準書式指定子は FormatException を投げるため、これでタイプミス等を弾ける)
+    /// NumericBox.FormatSpecifier / GraphControl.MousePosition*_FormatSpecifier が共用 (旧: 各クラスに重複実装)。
+    /// </summary>
+    protected static bool IsValidFormatSpecifier(string format)
+    {
+        if (string.IsNullOrEmpty(format)) return false;
+        try { _ = 0.0.ToString(format); return true; }
+        catch (FormatException) { return false; }
+    }
+
     #region 260531Cl 追加: 配置先 Form/親で設定された標準 ToolTip を内部子コントロールへ反映する仕組み
 
     // 独自 ToolTip プロパティ([Browsable(false)] でデザイナのプロパティグリッドから隠した) を将来的に廃止するための代替経路。

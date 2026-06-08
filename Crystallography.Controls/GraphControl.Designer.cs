@@ -248,12 +248,12 @@
             flowLayoutPanelMousePosition.Controls.Add(labelBlank);
             flowLayoutPanelMousePosition.Controls.Add(labelY1);
             flowLayoutPanelMousePosition.Controls.Add(labelYValue);
-            flowLayoutPanelMousePosition.Dock = System.Windows.Forms.DockStyle.Left;
+            flowLayoutPanelMousePosition.Dock = System.Windows.Forms.DockStyle.Fill;
             flowLayoutPanelMousePosition.Font = new System.Drawing.Font("Segoe UI", 9.5F);
             flowLayoutPanelMousePosition.Location = new System.Drawing.Point(0, 0);
             flowLayoutPanelMousePosition.Name = "flowLayoutPanelMousePosition";
             flowLayoutPanelMousePosition.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            flowLayoutPanelMousePosition.Size = new System.Drawing.Size(159, 25);
+            flowLayoutPanelMousePosition.Size = new System.Drawing.Size(523, 25);
             flowLayoutPanelMousePosition.TabIndex = 8;
             flowLayoutPanelMousePosition.Visible = false;
             flowLayoutPanelMousePosition.WrapContents = false;

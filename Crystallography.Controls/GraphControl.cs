@@ -171,6 +171,26 @@ public partial class GraphControl : UserControlBase
     public int MousePositionXDigit { set; get; } = -1;
 
     /// <summary>
+    /// マウスX位置の書式指定子 (.NET 数値書式文字列。例: "f3", "e2", "0.###")。
+    /// 空文字 (既定) または不正な書式の場合は MousePositionXDigit に従う従来挙動。
+    /// 有効な書式が指定されている場合は MousePositionXDigit を無視してこちらを優先する。
+    /// </summary>
+    [Category(" 4. 上部パネル")]
+    [Description("マウスX位置の書式指定子 (空/不正なら MousePositionXDigit にフォールバック)")]
+    [DefaultValue("")]
+    public string MousePositionX_FormatSpecifier // 260608Cl 追加
+    {
+        get => mousePositionX_FormatSpecifier;
+        set
+        {
+            mousePositionX_FormatSpecifier = value ?? "";
+            mousePositionX_FormatSpecifierValid = IsValidFormatSpecifier(mousePositionX_FormatSpecifier); // 有効性を判定してキャッシュ (判定は UserControlBase に集約)
+        }
+    }
+    private string mousePositionX_FormatSpecifier = ""; // 260608Cl 追加
+    private bool mousePositionX_FormatSpecifierValid = false; // 260608Cl 追加
+
+    /// <summary>
     /// マウス位置の有効桁数 (-1で無指定)
     /// /// </summary>
     [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
@@ -178,6 +198,36 @@ public partial class GraphControl : UserControlBase
     [Description("マウスYY位置の有効桁数 (-1で無指定)")]
     [DefaultValue(-1)] //260607Cl 追加
     public int MousePositionYDigit { set; get; } = -1;
+
+    /// <summary>
+    /// マウスY位置の書式指定子 (.NET 数値書式文字列。例: "f3", "e2", "0.###")。
+    /// 空文字 (既定) または不正な書式の場合は MousePositionYDigit に従う従来挙動。
+    /// 有効な書式が指定されている場合は MousePositionYDigit を無視してこちらを優先する。
+    /// </summary>
+    [Category(" 4. 上部パネル")]
+    [Description("マウスY位置の書式指定子 (空/不正なら MousePositionYDigit にフォールバック)")]
+    [DefaultValue("")]
+    public string MousePositionY_FormatSpecifier // 260608Cl 追加
+    {
+        get => mousePositionY_FormatSpecifier;
+        set
+        {
+            mousePositionY_FormatSpecifier = value ?? "";
+            mousePositionY_FormatSpecifierValid = IsValidFormatSpecifier(mousePositionY_FormatSpecifier); // 有効性を判定してキャッシュ (判定は UserControlBase に集約)
+        }
+    }
+    private string mousePositionY_FormatSpecifier = ""; // 260608Cl 追加
+    private bool mousePositionY_FormatSpecifierValid = false; // 260608Cl 追加 (判定は UserControlBase.IsValidFormatSpecifier)
+
+    // 260608Cl 追加: マウス/マーカー座標の表示書式を解決する。
+    // FormatSpecifier が有効ならそれを優先、無効/空文字なら従来どおり (log? "E":"g")+桁数 を使う。
+    private string resolveXFormat(bool log) =>
+        mousePositionX_FormatSpecifierValid ? mousePositionX_FormatSpecifier
+        : (log ? "E" : "g") + (MousePositionXDigit == -1 ? "" : MousePositionXDigit.ToString());
+
+    private string resolveYFormat(bool log) =>
+        mousePositionY_FormatSpecifierValid ? mousePositionY_FormatSpecifier
+        : (log ? "E" : "g") + (MousePositionYDigit == -1 ? "" : MousePositionYDigit.ToString());
 
     /// <summary>X軸の単位</summary>
     [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
@@ -1050,7 +1100,8 @@ public partial class GraphControl : UserControlBase
         double tx = xLog ? (realX > 0 ? Math.Log10(realX) : double.NaN) : realX;
 
         // 260606Cl: 全プロファイルの交点 Y 値をカンマ区切りで表示 (旧: 先頭の有効プロファイル1本のみ)
-        var yFormat = (yLog ? "E" : "g") + (MousePositionYDigit == -1 ? "" : MousePositionYDigit.ToString());
+        //var yFormat = (yLog ? "E" : "g") + (MousePositionYDigit == -1 ? "" : MousePositionYDigit.ToString());
+        var yFormat = resolveYFormat(yLog); // 260608Cl 変更: FormatSpecifier 優先
         var yValues = new List<string>();
         for (int j = 0; j < destProfileList.Count && j < srcProfileList.Count; j++)
         {
@@ -1067,7 +1118,8 @@ public partial class GraphControl : UserControlBase
             labelXValue.Text = labelYValue.Text = "-";
             return;
         }
-        labelXValue.Text = realX.ToString((xLog ? "E" : "g") + (MousePositionXDigit == -1 ? "" : MousePositionXDigit.ToString())) + UnitX;//260607Cl: 数値の後ろに単位(UnitX)を連結
+        //labelXValue.Text = realX.ToString((xLog ? "E" : "g") + (MousePositionXDigit == -1 ? "" : MousePositionXDigit.ToString())) + UnitX;//260607Cl: 数値の後ろに単位(UnitX)を連結
+        labelXValue.Text = realX.ToString(resolveXFormat(xLog)) + UnitX; // 260608Cl 変更: FormatSpecifier 優先 //260607Cl: 数値の後ろに単位(UnitX)を連結
         labelYValue.Text = string.Join(", ", yValues) + UnitY;//260607Cl: 末尾に単位(UnitY)を連結
     }
 
@@ -1526,9 +1578,10 @@ public partial class GraphControl : UserControlBase
             y = YLog ? Math.Pow(10, y) : y;//260603Cl
             y = IsIntegerY ? (int)(Math.Round(y)) : y;
 
-            labelXValue.Text = x.ToString((XLog ? "E" : "g") + (MousePositionXDigit == -1 ? "" : MousePositionXDigit.ToString())) + UnitX;//260607Cl: 数値の後ろに単位(UnitX)を連結
+            //labelXValue.Text = x.ToString((XLog ? "E" : "g") + (MousePositionXDigit == -1 ? "" : MousePositionXDigit.ToString())) + UnitX;//260607Cl: 数値の後ろに単位(UnitX)を連結
+            labelXValue.Text = x.ToString(resolveXFormat(XLog)) + UnitX; // 260608Cl 変更: FormatSpecifier 優先 //260607Cl: 数値の後ろに単位(UnitX)を連結
             //labelYValue.Text = y.ToString((YLog ? "E" : "g") + (MousePositionYDigit == -1 ? "" : MousePositionXDigit.ToString()));//260603Cl 修正: Y桁は MousePositionYDigit を使うべき
-            labelYValue.Text = y.ToString((YLog ? "E" : "g") + (MousePositionYDigit == -1 ? "" : MousePositionYDigit.ToString())) + UnitY;//260603Cl //260607Cl: 数値の後ろに単位(UnitY)を連結
+            labelYValue.Text = y.ToString(resolveYFormat(YLog)) + UnitY; // 260608Cl 変更: FormatSpecifier 優先 //260603Cl //260607Cl: 数値の後ろに単位(UnitY)を連結
         }
 
         if (MouseMovingMode)

@@ -113,9 +113,83 @@ public partial class FormBeamInteraction : FormBase
 
     /// <summary>UIカルチャ(ja)に応じてグラフ見出し・ツールチップ・コンボ項目の日本語/英語を返す。260607Cl 追加。</summary>
     private static string Loc(string en, string ja) => System.Globalization.CultureInfo.CurrentUICulture.Name == "ja" ? ja : en;
-    //260607Ch 追加: 実行時に変わる GraphControl の表示文言も FormBeamInteraction.resx / .ja.resx から取得する。
-    private readonly ComponentResourceManager runtimeResources = new(typeof(FormBeamInteraction));
-    private string R(string name) => runtimeResources.GetString(name) ?? "";
+    // 260608Cl 変更: グラフ見出し文字列を resx から「コード内テーブル」へ移行。
+    // 理由: これらは FormBeamInteraction.resx に手書きで追加していたが、VS デザイナでフォームを
+    //       編集すると resx 再シリアライズ時に巻き込まれて消える事故が起きたため (260607Ch の resx 化を撤回)。
+    //       日本語訳は既存の Loc(en, ja) で出し分ける。EN のみのキーはリテラルを返す。
+    private string R(string name) => name switch
+    {
+        // --- 軸ラベル(AxisLabel*) ---
+        "Graph.Axis.D.Angstrom" => "d (Å)",
+        "Graph.Axis.D.Nm" => "d (nm)",
+        "Graph.Axis.DedsKevNm" => "dE/ds (keV/nm)",
+        "Graph.Axis.EKeV" => "E (keV)",
+        "Graph.Axis.ElasticMfpNm" => Loc("Elastic MFP (nm)", "弾性MFP (nm)"),
+        "Graph.Axis.ElectronFeNm" => "fe (nm)",
+        "Graph.Axis.FqSqElectrons" => Loc("F(q), S(q) (electrons)", "F(q), S(q) (電子数)"),
+        "Graph.Axis.ImfpNm" => Loc("IMFP (nm)", "非弾性MFP (nm)"),
+        "Graph.Axis.MuCmInv" => "µ (cm⁻¹)",
+        "Graph.Axis.MuRhoCm2G" => "µ/ρ (cm²/g)",
+        "Graph.Axis.Normalized" => Loc("Normalized", "正規化"),
+        "Graph.Axis.Q.AngstromInv" => "Q = 4π·sinθ/λ (Å⁻¹)",
+        "Graph.Axis.Q.NmInv" => "Q = 4π·sinθ/λ (nm⁻¹)",
+        "Graph.Axis.RangeCsdaMicron" => Loc("Range CSDA (µm)", "飛程 CSDA (µm)"),
+        "Graph.Axis.RelativeIntensity" => Loc("Relative intensity", "相対強度"),
+        "Graph.Axis.S.AngstromInv" => "s = sinθ/λ (Å⁻¹)",
+        "Graph.Axis.SigmaElasticNm2" => Loc("σ elastic (nm²)", "σ 弾性 (nm²)"),
+        "Graph.Axis.TransmissionPercent" => Loc("Transmission (%)", "透過率 (%)"),
+        "Graph.Axis.TwoTheta" => "2θ (°)",
+        "Graph.Axis.XrayFElectrons" => Loc("f (electrons)", "f (電子数)"),
+        // --- 凡例ラベル(Label*) ---
+        "Graph.Label.D" => "d:",
+        "Graph.Label.Deds" => "dE/ds:",
+        "Graph.Label.E" => "E:",
+        "Graph.Label.F" => "f:",
+        "Graph.Label.Fe" => "fe:",
+        "Graph.Label.FqSq" => "F,S:",
+        "Graph.Label.I" => "I:",
+        "Graph.Label.Imfp" => "IMFP:",
+        "Graph.Label.Intensity" => "I:",
+        "Graph.Label.Mfp" => "MFP:",
+        "Graph.Label.Mu" => "µ:",
+        "Graph.Label.MuRho" => "µ/ρ:",
+        "Graph.Label.Normalized" => Loc("norm:", "正規化:"),
+        "Graph.Label.Q" => "Q:",
+        "Graph.Label.Range" => Loc("Range:", "飛程:"),
+        "Graph.Label.S" => "s:",
+        "Graph.Label.Sigma" => "σ:",
+        "Graph.Label.Transmission" => "T:",
+        "Graph.Label.TwoTheta" => "2θ:",
+        // --- グラフタイトル(GraphTitle) ---
+        "Graph.Title.EdxRequiresXraylib" => Loc("EDX requires xraylib", "EDX には xraylib が必要です"),
+        "Graph.Title.EdxSticks" => Loc("EDX emission lines", "EDX 発光線"),
+        "Graph.Title.ElectronTransportNormalized" => Loc("Electron transport (normalized: σ, elastic MFP, dE/ds)", "電子輸送 (正規化: σ・弾性MFP・dE/ds)"),
+        "Graph.Title.FqSq" => Loc("F(q) coherent and S(q) incoherent scattering", "F(q) 干渉性・S(q) 非干渉性散乱"),
+        "Graph.Title.FqSqXraylibUnavailable" => Loc("F(q)+S(q) requires xraylib", "F(q)+S(q) には xraylib が必要です"),
+        "Graph.Title.MuPhotoInternal" => Loc("Linear attenuation coefficient µ (photoabsorption only)", "線吸収係数 µ (光電吸収のみ)"),
+        "Graph.Title.MuRhoPhotoInternal" => Loc("Mass attenuation coefficient µ/ρ (photoabsorption only)", "質量吸収係数 µ/ρ (光電吸収のみ)"),
+        "Graph.Title.MuRhoTotal" => Loc("Mass attenuation coefficient µ/ρ (total)", "質量吸収係数 µ/ρ (全)"),
+        "Graph.Title.MuTotal" => Loc("Linear attenuation coefficient µ (total)", "線吸収係数 µ (全)"),
+        "Graph.Title.NeutronNoEnergyGraph" => Loc("Neutron cross sections are listed in the table (no energy graph)", "中性子断面積は表に表示します (エネルギーグラフなし)"),
+        "Graph.Title.NeutronScatteringNoGraph" => Loc("Neutron scattering length b does not depend on s (no curve)", "中性子散乱長 b は s に依存しません (曲線なし)"),
+        "Graph.Title.QuantityVsE" => Loc("{0} vs electron energy", "{0} 対 電子エネルギー"),
+        "Graph.Title.TransmissionThroughThickness" => Loc("Transmission for thickness t = {0}", "厚さ t = {0} の透過率"),
+        // --- 単位(Unit*) ---
+        "Graph.Unit.Angstrom" => " Å",
+        "Graph.Unit.AngstromInv" => " Å⁻¹",
+        "Graph.Unit.Cm2G" => " cm²/g",
+        "Graph.Unit.CmInv" => " cm⁻¹",
+        "Graph.Unit.Degree" => " °",
+        "Graph.Unit.Electrons" => Loc(" electrons", " 電子数"),
+        "Graph.Unit.KeV" => " keV",
+        "Graph.Unit.KeVPerNm" => " keV/nm",
+        "Graph.Unit.Micron" => " µm",
+        "Graph.Unit.Nm" => " nm",
+        "Graph.Unit.Nm2" => " nm²",
+        "Graph.Unit.NmInv" => " nm⁻¹",
+        "Graph.Unit.Percent" => " %",
+        _ => "",
+    };
 
     // CrystalControl で Crystal が変更されたとき
     private void crystalControl_CrystalChanged(object sender, EventArgs e)
@@ -1037,15 +1111,17 @@ public partial class FormBeamInteraction : FormBase
             if (pCom.Count > 0) profiles.Add(new Profile(pCom) { Color = Color.FromArgb(0x1f, 0x77, 0xb4), text = "Compton" });
         }
 
-        //260606Cl 縦線(現在エネルギー + 各元素の吸収端)を AddProfiles より前に設定し、AddProfiles 内部の Draw() で一括描画(旧: AddProfiles 後に設定→明示 Draw() で二重描画していた)。
-        var vlines = new List<PointD> { new(currentE, double.NaN) };
-        foreach (var (z, _) in els)
-            foreach (var edge in new[] { XrayLineEdge.K, XrayLineEdge.L3 })
-            {
-                double ee = AtomStatic.CharacteristicXrayEnergy(z, edge);
-                if (!double.IsNaN(ee) && ee > eMin && ee < eMax) vlines.Add(new PointD(ee, double.NaN));
-            }
-        graphControlAtten.VerticalLines = [.. vlines];
+        //260608Cl 縦線は現在エネルギーの1本のみ表示 (交点マーカー値の読取りを1本に集約)。AddProfiles より前に設定し内部 Draw() で一括描画。
+        //          旧: 現在エネルギーに加えて各元素の吸収端(K/L3)も縦線で描いていた → 1本に変更
+        //var vlines = new List<PointD> { new(currentE, double.NaN) };
+        //foreach (var (z, _) in els)
+        //    foreach (var edge in new[] { XrayLineEdge.K, XrayLineEdge.L3 })
+        //    {
+        //        double ee = AtomStatic.CharacteristicXrayEnergy(z, edge);
+        //        if (!double.IsNaN(ee) && ee > eMin && ee < eMax) vlines.Add(new PointD(ee, double.NaN));
+        //    }
+        //graphControlAtten.VerticalLines = [.. vlines];
+        graphControlAtten.VerticalLines = [new PointD(currentE, double.NaN)];
         graphControlAtten.AddProfiles([.. profiles]);
     }
 
@@ -1333,8 +1409,8 @@ public partial class FormBeamInteraction : FormBase
         graphControlFluor.AxisLabelX = R("Graph.Axis.EKeV"); graphControlFluor.LabelX = R("Graph.Label.E"); graphControlFluor.UnitX = R("Graph.Unit.KeV");
         graphControlFluor.AxisLabelY = R("Graph.Axis.RelativeIntensity"); graphControlFluor.LabelY = R("Graph.Label.Intensity"); graphControlFluor.UnitY = "";
         graphControlFluor.GraphTitle = R(xrl ? "Graph.Title.EdxSticks" : "Graph.Title.EdxRequiresXraylib");
-        //260606Cl 縦線(現在エネルギー)を AddProfiles/ClearProfile より前に設定し内部 Draw() で一括描画(旧: 後に設定→明示 Draw() で二重描画)
-        graphControlFluor.VerticalLines = [new PointD(waveLengthControl.Energy, double.NaN)];
+        //260608Cl 蛍光タブは縦線不要 (旧: 現在エネルギーの縦線を表示 graphControlFluor.VerticalLines = [new PointD(waveLengthControl.Energy, double.NaN)];)
+        graphControlFluor.VerticalLines = [];
         if (sticks.Count > 0 && hMax > 0)
         {
             var profiles = sticks.Select(s => new Profile(new List<PointD> { new(s.e, 0), new(s.e, s.h / hMax) })
