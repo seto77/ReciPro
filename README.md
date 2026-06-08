@@ -2,6 +2,12 @@
 
 [![Documentation](https://img.shields.io/badge/%F0%9F%93%96_Documentation-blue)](https://seto77.github.io/ReciPro/)
 [![Latest Release](https://img.shields.io/github/v/release/seto77/ReciPro?logo=github)](https://github.com/seto77/ReciPro/releases/latest)
+[![Release date](https://img.shields.io/github/release-date/seto77/ReciPro?logo=github)](https://github.com/seto77/ReciPro/releases/latest)
+[![Total downloads](https://img.shields.io/github/downloads/seto77/ReciPro/total?logo=github&label=GitHub%20downloads)](https://github.com/seto77/ReciPro/releases)
+[![Latest-release downloads](https://img.shields.io/github/downloads/seto77/ReciPro/latest/total?logo=github&label=latest%20release%20downloads)](https://github.com/seto77/ReciPro/releases/latest)
+[![GitHub Stars](https://img.shields.io/github/stars/seto77/ReciPro?style=social)](https://github.com/seto77/ReciPro/stargazers)
+[![GitHub Forks](https://img.shields.io/github/forks/seto77/ReciPro?style=social)](https://github.com/seto77/ReciPro/forks)
+[![Last commit](https://img.shields.io/github/last-commit/seto77/ReciPro?logo=github)](https://github.com/seto77/ReciPro/commits/master)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green)](https://github.com/seto77/ReciPro/blob/master/LICENSE.md)
 
 *ReciPro* is a free and open-source GUI-based multipurpose crystallographic software that provides seamless access to functions to explore crystal databases, visualize crystal structures and goniometer settings, simulate diffraction patterns and high-resolution microscope images, and analyze diffraction data. These features are linked through a user-friendly GUI, and the results can be synchronously displayed almost in real time. *ReciPro* will assist a wide range of crystallographers (including beginners) using X-ray, electron and neutron diffraction crystallography and TEM.
@@ -11,6 +17,22 @@
 ***[See the manual to learn how to use!](https://seto77.github.io/ReciPro/)***
 
 [Various simulations being performed in real time (sample: SrTiO3)](https://user-images.githubusercontent.com/44538886/123412384-7e20a980-d5ec-11eb-86fd-921c37ce460c.mp4)
+
+## Public metrics
+
+The links and badges below are provided to make the public adoption and academic impact of *ReciPro* easier to track. GitHub-based badges are updated automatically by Shields.io; citation and altmetric services may update at different intervals.
+
+### Repository and release metrics
+
+* **Total GitHub downloads:** [all release assets](https://github.com/seto77/ReciPro/releases) are counted by GitHub release-download badges.
+* **Latest release downloads:** tracked separately on the [latest release page](https://github.com/seto77/ReciPro/releases/latest).
+* **Repository visibility:** [stars](https://github.com/seto77/ReciPro/stargazers), [forks](https://github.com/seto77/ReciPro/forks), [issues](https://github.com/seto77/ReciPro/issues), and [commit activity](https://github.com/seto77/ReciPro/commits/master) provide public indicators of community interest and development activity.
+
+### Academic impact
+
+* **Peer-reviewed software paper:** [Seto, Y. & Ohtsuka, M. (2022), *Journal of Applied Crystallography*, **55**, 397-410](https://doi.org/10.1107/S1600576722000139).
+* **Citing papers:** [Google Scholar citing articles](https://scholar.google.jp/scholar?cites=12625594477623342627).
+* **Article attention:** [Altmetric details](https://www.altmetric.com/details/123778746).
 
 ## Authors
 
