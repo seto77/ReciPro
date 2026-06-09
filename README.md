@@ -18,23 +18,6 @@
 
 [Various simulations being performed in real time (sample: SrTiO3)](https://user-images.githubusercontent.com/44538886/123412384-7e20a980-d5ec-11eb-86fd-921c37ce460c.mp4)
 
-## Public metrics
-
-The links and badges below are provided to make the public adoption and academic impact of *ReciPro* easier to track. GitHub-based badges are updated automatically by Shields.io. The manually maintained figures are rounded down and intended as stable headline indicators between README updates.
-
-### Key figures (last manually checked: June 2026)
-
-| Metric | Headline value |
-| --- | --- |
-| Development history | Continuously developed since 2002 |
-| GitHub availability | Publicly available on GitHub since March 2020 |
-| Total GitHub downloads | 27,000+ downloads |
-| Known user base | Hundreds of users in more than a dozen university and company laboratories |
-| Peer-reviewed software paper | Published in *Journal of Applied Crystallography* in 2022 |
-| Google Scholar citations | 170+ citations |
-| Dimensions citations | 160+ citations |
-| Mendeley readers | 90+ readers |
-
 
 ## Authors
 
@@ -220,7 +203,7 @@ The bundled AMCSD database and all core features work entirely offline.
 * **Electron Range Simulator**: Monte Carlo simulation of electron range in materials.
 * **EBSD** (Electron Backscatter Diffraction): Under development.
 
-***
+
 
 ## Technical Details
 
@@ -230,11 +213,7 @@ The bundled AMCSD database and all core features work entirely offline.
 * Uses a right-handed Cartesian coordinate system (X: right, Y: up, Z: front) with Z–X–Z Euler angle convention.
 * Coordinate definitions are compatible with EBSD software by Thermo Fisher Scientific.
 
-### Repository and release metrics
 
-* **Total GitHub downloads:** [all release assets](https://github.com/seto77/ReciPro/releases) are counted by GitHub release-download badges.
-* **Latest release downloads:** tracked separately on the [latest release page](https://github.com/seto77/ReciPro/releases/latest).
-* **Repository visibility:** [stars](https://github.com/seto77/ReciPro/stargazers), [forks](https://github.com/seto77/ReciPro/forks), [issues](https://github.com/seto77/ReciPro/issues), and [commit activity](https://github.com/seto77/ReciPro/commits/master) provide public indicators of community interest and development activity.
 
 ### Academic impact
 
@@ -259,3 +238,28 @@ https://scholar.google.jp/scholar?cites=12625594477623342627
 <img src="https://seto77.github.io/ReciPro/assets/cap-en-auto/FormSpotIDV2.png" height="320px" alt="Spot ID v2">
 <img src="https://seto77.github.io/ReciPro/assets/cap-en-auto/FormMacro.png" height="320px" alt="Macro">
 <img src="https://seto77.github.io/ReciPro/assets/cap-en-auto/FormTrajectory.png" height="320px" alt="Electron Range Simulator">
+
+***
+
+## Public metrics
+
+The links and badges below are provided to make the public adoption and academic impact of *ReciPro* easier to track. GitHub-based badges are updated automatically by Shields.io. The manually maintained figures are rounded down and intended as stable headline indicators between README updates.
+
+### Key figures (last manually checked: June 2026)
+
+| Metric | Headline value |
+| --- | --- |
+| Development history | Continuously developed since 2002 |
+| GitHub availability | Publicly available on GitHub since March 2020 |
+| Total GitHub downloads | 27,000+ downloads |
+| Known user base | Hundreds of users in more than a dozen university and company laboratories |
+| Peer-reviewed software paper | Published in *Journal of Applied Crystallography* in 2022 |
+| Google Scholar citations | 170+ citations |
+| Dimensions citations | 160+ citations |
+| Mendeley readers | 90+ readers |
+
+### Repository and release metrics
+
+* **Total GitHub downloads:** [all release assets](https://github.com/seto77/ReciPro/releases) are counted by GitHub release-download badges.
+* **Latest release downloads:** tracked separately on the [latest release page](https://github.com/seto77/ReciPro/releases/latest).
+* **Repository visibility:** [stars](https://github.com/seto77/ReciPro/stargazers), [forks](https://github.com/seto77/ReciPro/forks), [issues](https://github.com/seto77/ReciPro/issues), and [commit activity](https://github.com/seto77/ReciPro/commits/master) provide public indicators of community interest and development activity.
