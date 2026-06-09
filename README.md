@@ -12,7 +12,7 @@
 
 *ReciPro* is a free and open-source GUI-based multipurpose crystallographic software that provides seamless access to functions to explore crystal databases, visualize crystal structures and goniometer settings, simulate diffraction patterns and high-resolution microscope images, and analyze diffraction data. These features are linked through a user-friendly GUI, and the results can be synchronously displayed almost in real time. *ReciPro* will assist a wide range of crystallographers (including beginners) using X-ray, electron and neutron diffraction crystallography and TEM.
 
-*ReciPro* has been continuously developed since 2002 and has been available on GitHub since March 2020. It has been downloaded more than 25,000 times from GitHub, and is used by hundreds of users in more than a dozen laboratories at universities and companies.
+*ReciPro* has been continuously developed since 2002 and has been available on GitHub since March 2020. It has been downloaded more than 27,000 times from GitHub, and is used by hundreds of users in more than a dozen laboratories at universities and companies.
 
 ***[See the manual to learn how to use!](https://seto77.github.io/ReciPro/)***
 
@@ -20,7 +20,20 @@
 
 ## Public metrics
 
-The links and badges below are provided to make the public adoption and academic impact of *ReciPro* easier to track. GitHub-based badges are updated automatically by Shields.io; citation and altmetric services may update at different intervals.
+The links and badges below are provided to make the public adoption and academic impact of *ReciPro* easier to track. GitHub-based badges are updated automatically by Shields.io. The manually maintained figures are rounded down and intended as stable headline indicators between README updates.
+
+### Key figures (last manually checked: June 2026)
+
+| Metric | Headline value |
+| --- | --- |
+| Development history | Continuously developed since 2002 |
+| GitHub availability | Publicly available on GitHub since March 2020 |
+| Total GitHub downloads | 27,000+ downloads |
+| Known user base | Hundreds of users in more than a dozen university and company laboratories |
+| Peer-reviewed software paper | Published in *Journal of Applied Crystallography* in 2022 |
+| Google Scholar citations | 170+ citations |
+| Dimensions citations | 160+ citations |
+| Mendeley readers | 90+ readers |
 
 ### Repository and release metrics
 
