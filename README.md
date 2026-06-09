@@ -258,8 +258,3 @@ The links and badges below are provided to make the public adoption and academic
 | Dimensions citations | 160+ citations |
 | Mendeley readers | 90+ readers |
 
-### Repository and release metrics
-
-* **Total GitHub downloads:** [all release assets](https://github.com/seto77/ReciPro/releases) are counted by GitHub release-download badges.
-* **Latest release downloads:** tracked separately on the [latest release page](https://github.com/seto77/ReciPro/releases/latest).
-* **Repository visibility:** [stars](https://github.com/seto77/ReciPro/stargazers), [forks](https://github.com/seto77/ReciPro/forks), [issues](https://github.com/seto77/ReciPro/issues), and [commit activity](https://github.com/seto77/ReciPro/commits/master) provide public indicators of community interest and development activity.
