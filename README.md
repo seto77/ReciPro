@@ -210,8 +210,6 @@ The bundled AMCSD database and all core features work entirely offline.
 * Uses a right-handed Cartesian coordinate system (X: right, Y: up, Z: front) with Z–X–Z Euler angle convention.
 * Coordinate definitions are compatible with EBSD software by Thermo Fisher Scientific.
 
-
-
 ### Academic impact
 
 * **Peer-reviewed software paper:** [Seto, Y. & Ohtsuka, M. (2022), *Journal of Applied Crystallography*, **55**, 397-410](https://doi.org/10.1107/S1600576722000139).
@@ -237,10 +235,6 @@ https://scholar.google.jp/scholar?cites=12625594477623342627
 <img src="https://seto77.github.io/ReciPro/assets/cap-en-auto/FormTrajectory.png" height="320px" alt="Electron Range Simulator">
 
 ***
-
-## Public metrics
-
-The links and badges below are provided to make the public adoption and academic impact of *ReciPro* easier to track. GitHub-based badges are updated automatically by Shields.io. The manually maintained figures are rounded down and intended as stable headline indicators between README updates.
 
 ### Key figures (last manually checked: June 2026)
 
