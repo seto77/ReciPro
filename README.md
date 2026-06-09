@@ -200,8 +200,6 @@ The bundled AMCSD database and all core features work entirely offline.
 * **Electron Range Simulator**: Monte Carlo simulation of electron range in materials.
 * **EBSD** (Electron Backscatter Diffraction): Under development.
 
-
-
 ## Technical Details
 
 * Written in **C++**, **C#**, and **OpenGL Shading Language (GLSL)**.
@@ -215,10 +213,12 @@ The bundled AMCSD database and all core features work entirely offline.
 * **Peer-reviewed software paper:** [Seto, Y. & Ohtsuka, M. (2022), *Journal of Applied Crystallography*, **55**, 397-410](https://doi.org/10.1107/S1600576722000139).
 * **Citing papers:** [Google Scholar citing articles](https://scholar.google.jp/scholar?cites=12625594477623342627).
 * **Article attention:** [Altmetric details](https://www.altmetric.com/details/123778746).
-
-## Papers using ReciPro
-
-https://scholar.google.jp/scholar?cites=12625594477623342627
+| Metric | Headline value |
+| --- | --- |
+| Total GitHub downloads | 27,000+ downloads |
+| Google Scholar citations | 170+ citations |
+| Dimensions citations | 160+ citations |
+| Mendeley readers | 90+ readers |
 
 ## Screenshots
 
@@ -236,16 +236,4 @@ https://scholar.google.jp/scholar?cites=12625594477623342627
 
 ***
 
-### Key figures (last manually checked: June 2026)
-
-| Metric | Headline value |
-| --- | --- |
-| Development history | Continuously developed since 2002 |
-| GitHub availability | Publicly available on GitHub since March 2020 |
-| Total GitHub downloads | 27,000+ downloads |
-| Known user base | Hundreds of users in more than a dozen university and company laboratories |
-| Peer-reviewed software paper | Published in *Journal of Applied Crystallography* in 2022 |
-| Google Scholar citations | 170+ citations |
-| Dimensions citations | 160+ citations |
-| Mendeley readers | 90+ readers |
 
