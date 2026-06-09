@@ -35,17 +35,6 @@ The links and badges below are provided to make the public adoption and academic
 | Dimensions citations | 160+ citations |
 | Mendeley readers | 90+ readers |
 
-### Repository and release metrics
-
-* **Total GitHub downloads:** [all release assets](https://github.com/seto77/ReciPro/releases) are counted by GitHub release-download badges.
-* **Latest release downloads:** tracked separately on the [latest release page](https://github.com/seto77/ReciPro/releases/latest).
-* **Repository visibility:** [stars](https://github.com/seto77/ReciPro/stargazers), [forks](https://github.com/seto77/ReciPro/forks), [issues](https://github.com/seto77/ReciPro/issues), and [commit activity](https://github.com/seto77/ReciPro/commits/master) provide public indicators of community interest and development activity.
-
-### Academic impact
-
-* **Peer-reviewed software paper:** [Seto, Y. & Ohtsuka, M. (2022), *Journal of Applied Crystallography*, **55**, 397-410](https://doi.org/10.1107/S1600576722000139).
-* **Citing papers:** [Google Scholar citing articles](https://scholar.google.jp/scholar?cites=12625594477623342627).
-* **Article attention:** [Altmetric details](https://www.altmetric.com/details/123778746).
 
 ## Authors
 
@@ -240,6 +229,18 @@ The bundled AMCSD database and all core features work entirely offline.
 * All functional windows update synchronously in real time when crystal orientation changes.
 * Uses a right-handed Cartesian coordinate system (X: right, Y: up, Z: front) with Z–X–Z Euler angle convention.
 * Coordinate definitions are compatible with EBSD software by Thermo Fisher Scientific.
+
+### Repository and release metrics
+
+* **Total GitHub downloads:** [all release assets](https://github.com/seto77/ReciPro/releases) are counted by GitHub release-download badges.
+* **Latest release downloads:** tracked separately on the [latest release page](https://github.com/seto77/ReciPro/releases/latest).
+* **Repository visibility:** [stars](https://github.com/seto77/ReciPro/stargazers), [forks](https://github.com/seto77/ReciPro/forks), [issues](https://github.com/seto77/ReciPro/issues), and [commit activity](https://github.com/seto77/ReciPro/commits/master) provide public indicators of community interest and development activity.
+
+### Academic impact
+
+* **Peer-reviewed software paper:** [Seto, Y. & Ohtsuka, M. (2022), *Journal of Applied Crystallography*, **55**, 397-410](https://doi.org/10.1107/S1600576722000139).
+* **Citing papers:** [Google Scholar citing articles](https://scholar.google.jp/scholar?cites=12625594477623342627).
+* **Article attention:** [Altmetric details](https://www.altmetric.com/details/123778746).
 
 ## Papers using ReciPro
 
