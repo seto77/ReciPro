@@ -213,6 +213,7 @@ The bundled AMCSD database and all core features work entirely offline.
 * **Peer-reviewed software paper:** [Seto, Y. & Ohtsuka, M. (2022), *Journal of Applied Crystallography*, **55**, 397-410](https://doi.org/10.1107/S1600576722000139).
 * **Citing papers:** [Google Scholar citing articles](https://scholar.google.jp/scholar?cites=12625594477623342627).
 * **Article attention:** [Altmetric details](https://www.altmetric.com/details/123778746).
+  
 | Metric | Headline value |
 | --- | --- |
 | Total GitHub downloads | 27,000+ downloads |
