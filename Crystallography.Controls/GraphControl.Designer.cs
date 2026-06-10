@@ -172,7 +172,7 @@
             // labelBlank
             // 
             labelBlank.AutoSize = true;
-            labelBlank.Location = new System.Drawing.Point(73, 0);
+            labelBlank.Location = new System.Drawing.Point(66, 0);
             labelBlank.Name = "labelBlank";
             labelBlank.Size = new System.Drawing.Size(24, 17);
             labelBlank.TabIndex = 8;
@@ -181,7 +181,7 @@
             // labelY1
             // 
             labelY1.AutoSize = true;
-            labelY1.Location = new System.Drawing.Point(103, 0);
+            labelY1.Location = new System.Drawing.Point(96, 0);
             labelY1.Name = "labelY1";
             labelY1.Size = new System.Drawing.Size(18, 17);
             labelY1.TabIndex = 1;
@@ -190,7 +190,7 @@
             // labelYValue
             // 
             labelYValue.AutoSize = true;
-            labelYValue.Location = new System.Drawing.Point(127, 0);
+            labelYValue.Location = new System.Drawing.Point(120, 0);
             labelYValue.Name = "labelYValue";
             labelYValue.Size = new System.Drawing.Size(29, 17);
             labelYValue.TabIndex = 1;
@@ -199,7 +199,7 @@
             // labelXValue
             // 
             labelXValue.AutoSize = true;
-            labelXValue.Location = new System.Drawing.Point(38, 0);
+            labelXValue.Location = new System.Drawing.Point(31, 0);
             labelXValue.Name = "labelXValue";
             labelXValue.Size = new System.Drawing.Size(29, 17);
             labelXValue.TabIndex = 5;
@@ -208,17 +208,19 @@
             // labelGraphTitle
             // 
             labelGraphTitle.AutoSize = true;
-            labelGraphTitle.Dock = System.Windows.Forms.DockStyle.Left;
+            labelGraphTitle.Dock = System.Windows.Forms.DockStyle.Top;
             labelGraphTitle.Font = new System.Drawing.Font("Segoe UI", 9.5F);
             labelGraphTitle.Location = new System.Drawing.Point(0, 0);
             labelGraphTitle.Name = "labelGraphTitle";
-            labelGraphTitle.Size = new System.Drawing.Size(0, 17);
+            labelGraphTitle.Padding = new System.Windows.Forms.Padding(3, 0, 0, 0);
+            labelGraphTitle.Size = new System.Drawing.Size(3, 17);
             labelGraphTitle.TabIndex = 8;
+            labelGraphTitle.Visible = false; // 260610Cl 追加: 「visible ⇔ タイトル非空」の不変条件を構築時から成立させる (Dock=Top 化により空 Text でも 17px の空行が出るため)
             // 
             // labelX1
             // 
             labelX1.AutoSize = true;
-            labelX1.Location = new System.Drawing.Point(13, 0);
+            labelX1.Location = new System.Drawing.Point(6, 0);
             labelX1.Name = "labelX1";
             labelX1.Size = new System.Drawing.Size(19, 17);
             labelX1.TabIndex = 1;
@@ -231,7 +233,7 @@
             pictureBox.Location = new System.Drawing.Point(0, 0);
             pictureBox.Margin = new System.Windows.Forms.Padding(0);
             pictureBox.Name = "pictureBox";
-            pictureBox.Size = new System.Drawing.Size(519, 146);
+            pictureBox.Size = new System.Drawing.Size(519, 137);
             pictureBox.TabIndex = 4;
             pictureBox.TabStop = false;
             pictureBox.Paint += pictureBox_Paint;
@@ -248,15 +250,15 @@
             flowLayoutPanelMousePosition.Controls.Add(labelBlank);
             flowLayoutPanelMousePosition.Controls.Add(labelY1);
             flowLayoutPanelMousePosition.Controls.Add(labelYValue);
-            flowLayoutPanelMousePosition.Dock = System.Windows.Forms.DockStyle.Fill;
+            flowLayoutPanelMousePosition.Dock = System.Windows.Forms.DockStyle.Top;
             flowLayoutPanelMousePosition.Font = new System.Drawing.Font("Segoe UI", 9.5F);
-            flowLayoutPanelMousePosition.Location = new System.Drawing.Point(0, 0);
+            flowLayoutPanelMousePosition.Location = new System.Drawing.Point(0, 17);
             flowLayoutPanelMousePosition.Name = "flowLayoutPanelMousePosition";
-            flowLayoutPanelMousePosition.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            flowLayoutPanelMousePosition.Size = new System.Drawing.Size(523, 25);
+            flowLayoutPanelMousePosition.Padding = new System.Windows.Forms.Padding(3, 0, 0, 0);
+            flowLayoutPanelMousePosition.Size = new System.Drawing.Size(523, 17);
             flowLayoutPanelMousePosition.TabIndex = 8;
             flowLayoutPanelMousePosition.Visible = false;
-            flowLayoutPanelMousePosition.WrapContents = false;
+            flowLayoutPanelMousePosition.WrapContents = false; // 260610Cl 復元: 既定 true のため削除は挙動変更 (長い読取り文字列が固定高 17px の 2 行目へ折り返して丸ごと消える)。右端クリップの旧挙動を維持
             // 
             // contextMenuStripY
             // 
@@ -310,9 +312,9 @@
             panelMain.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             panelMain.Controls.Add(pictureBox);
             panelMain.Dock = System.Windows.Forms.DockStyle.Fill;
-            panelMain.Location = new System.Drawing.Point(0, 50);
+            panelMain.Location = new System.Drawing.Point(0, 59);
             panelMain.Name = "panelMain";
-            panelMain.Size = new System.Drawing.Size(523, 150);
+            panelMain.Size = new System.Drawing.Size(523, 141);
             panelMain.TabIndex = 11;
             // 
             // flowLayoutPanelRange
@@ -403,6 +405,7 @@
             // 
             // panelTitleAndMouse
             // 
+            panelTitleAndMouse.AutoSize = true;
             panelTitleAndMouse.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             panelTitleAndMouse.Controls.Add(flowLayoutPanelMousePosition);
             panelTitleAndMouse.Controls.Add(labelGraphTitle);
@@ -410,7 +413,7 @@
             panelTitleAndMouse.Location = new System.Drawing.Point(0, 0);
             panelTitleAndMouse.Margin = new System.Windows.Forms.Padding(0);
             panelTitleAndMouse.Name = "panelTitleAndMouse";
-            panelTitleAndMouse.Size = new System.Drawing.Size(523, 25);
+            panelTitleAndMouse.Size = new System.Drawing.Size(523, 34);
             panelTitleAndMouse.TabIndex = 14;
             panelTitleAndMouse.Visible = false;
             // 
@@ -420,7 +423,7 @@
             panelRangeAndCopy.Controls.Add(flowLayoutPanelRange);
             panelRangeAndCopy.Controls.Add(buttonCopy);
             panelRangeAndCopy.Dock = System.Windows.Forms.DockStyle.Top;
-            panelRangeAndCopy.Location = new System.Drawing.Point(0, 25);
+            panelRangeAndCopy.Location = new System.Drawing.Point(0, 34);
             panelRangeAndCopy.Name = "panelRangeAndCopy";
             panelRangeAndCopy.Size = new System.Drawing.Size(523, 25);
             panelRangeAndCopy.TabIndex = 15;
@@ -449,6 +452,7 @@
             panelRangeAndCopy.ResumeLayout(false);
             panelRangeAndCopy.PerformLayout();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion

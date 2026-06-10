@@ -117,6 +117,159 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="buttonSimulate.ToolTip" xml:space="preserve">
+    <value>Run the dynamic-compression diffraction
+simulation and accumulate the pattern.</value>
+  </data>
+  <data name="checkBoxSkipDrawing.ToolTip" xml:space="preserve">
+    <value>When checked, skips on-screen drawing
+during the calculation to speed it up.</value>
+  </data>
+  <data name="label2.ToolTip" xml:space="preserve">
+    <value>Depth of the front boundary separating
+the uncompressed and compressed regions.</value>
+  </data>
+  <data name="label3.ToolTip" xml:space="preserve">
+    <value>Depth of the back boundary separating
+the compressed and released regions.</value>
+  </data>
+  <data name="buttonSetFolder.ToolTip" xml:space="preserve">
+    <value>Choose the output folder where
+simulated TIFF patterns are saved.</value>
+  </data>
+  <data name="textBoxFileName.ToolTip" xml:space="preserve">
+    <value>Base file name for the saved TIFF
+pattern; '.tif' is appended automatically.</value>
+  </data>
+  <data name="label8.ToolTip" xml:space="preserve">
+    <value>Base file name for the saved TIFF
+pattern; '.tif' is appended automatically.</value>
+  </data>
+  <data name="numericBoxCompressedOmega.ToolTip" xml:space="preserve">
+    <value>Mean crystal rotation rate ω in
+the compressed region (°/ns).</value>
+  </data>
+  <data name="numericBoxCompressedOmegaSigma.ToolTip" xml:space="preserve">
+    <value>Standard deviation σ_ω of the rotation
+rate in the compressed region (°/ns).</value>
+  </data>
+  <data name="numericBoxCompressedThetaA.ToolTip" xml:space="preserve">
+    <value>Constant term a (°) of the rotation-axis spread
+σ_θ for the compressed region (2019 model).</value>
+  </data>
+  <data name="numericBoxCompressedThetaB.ToolTip" xml:space="preserve">
+    <value>Time coefficient b (°/ns) of the rotation-axis
+spread σ_θ for the compressed region (2019 model).</value>
+  </data>
+  <data name="checkBoxOmegaStep.ToolTip" xml:space="preserve">
+    <value>When checked, repeats the simulation while
+incrementing the overall Ω angle by a fixed step.</value>
+  </data>
+  <data name="checkBoxSaveSimulatedPattern.ToolTip" xml:space="preserve">
+    <value>When checked, saves each simulated pattern
+as a TIFF file to the chosen folder.</value>
+  </data>
+  <data name="numericBoxDivisionOfRotationAngle.ToolTip" xml:space="preserve">
+    <value>Number of sampling divisions for integrating
+over the rotation-rate (speed) distribution.</value>
+  </data>
+  <data name="numericBoxDivisionOfRotationAxis.ToolTip" xml:space="preserve">
+    <value>Number of azimuthal sampling
+divisions for the rotation axis.</value>
+  </data>
+  <data name="numericBoxReleasedOmega.ToolTip" xml:space="preserve">
+    <value>Mean crystal rotation rate ω in the released region (°/ns).</value>
+  </data>
+  <data name="numericBoxReleasedOmegaSigma.ToolTip" xml:space="preserve">
+    <value>Standard deviation σ_ω of the rotation
+rate in the released region (°/ns).</value>
+  </data>
+  <data name="numericBoxReleasedThetaA.ToolTip" xml:space="preserve">
+    <value>Constant term a (°) of the rotation-axis spread
+σ_θ for the released region (2019 model).</value>
+  </data>
+  <data name="numericBoxReleasedThetaB.ToolTip" xml:space="preserve">
+    <value>Time coefficient b (°/ns) of the rotation-axis
+spread σ_θ for the released region (2019 model).</value>
+  </data>
+  <data name="numericBoxShockedPlaneH.ToolTip" xml:space="preserve">
+    <value>Miller index h of the shocked (compression) plane normal.</value>
+  </data>
+  <data name="numericBoxShockedPlaneK.ToolTip" xml:space="preserve">
+    <value>Miller index k of the shocked (compression) plane normal.</value>
+  </data>
+  <data name="numericBoxShockedPlaneL.ToolTip" xml:space="preserve">
+    <value>Miller index l of the shocked (compression) plane normal.</value>
+  </data>
+  <data name="numericBoxSlipPlaneH.ToolTip" xml:space="preserve">
+    <value>Miller index h of the slip-plane normal (used
+to define the rotation axis in the 2019 model).</value>
+  </data>
+  <data name="numericBoxSlipPlaneK.ToolTip" xml:space="preserve">
+    <value>Miller index k of the slip-plane normal (used
+to define the rotation axis in the 2019 model).</value>
+  </data>
+  <data name="numericBoxSlipPlaneL.ToolTip" xml:space="preserve">
+    <value>Miller index l of the slip-plane normal (used
+to define the rotation axis in the 2019 model).</value>
+  </data>
+  <data name="numericBoxUp.ToolTip" xml:space="preserve">
+    <value>Shock (compression) wave speed Us
+(km/s) used to convert depth into
+elapsed time in the compressed region.</value>
+  </data>
+  <data name="radioButtonCompressedIsotropic.ToolTip" xml:space="preserve">
+    <value>Apply isotropic (hydrostatic) compression
+of the lattice in the compressed region.</value>
+  </data>
+  <data name="radioButtonCompressedUniaxial.ToolTip" xml:space="preserve">
+    <value>Apply uniaxial compression of the lattice along
+the shocked-plane normal in the compressed region.</value>
+  </data>
+  <data name="numericBoxUr.ToolTip" xml:space="preserve">
+    <value>Release wave speed Ur (km/s) used to convert
+depth into elapsed time in the released region.</value>
+  </data>
+  <data name="radioButtonReleasedIsotropic.ToolTip" xml:space="preserve">
+    <value>Apply isotropic (hydrostatic) compression
+of the lattice in the released region.</value>
+  </data>
+  <data name="radioButtonReleasedUniaxial.ToolTip" xml:space="preserve">
+    <value>Apply uniaxial compression of the lattice along
+the shocked-plane normal in the released region.</value>
+  </data>
+  <data name="numericBoxOmegaStep.ToolTip" xml:space="preserve">
+    <value>Ω angle increment (°) applied per
+repeat when 'Increment Ω' is enabled.</value>
+  </data>
+  <data name="numericBoxOmegaTimes.ToolTip" xml:space="preserve">
+    <value>Number of repeats when 'Increment Ω' is enabled.</value>
+  </data>
+  <data name="radioButton2018Model.ToolTip" xml:space="preserve">
+    <value>Use the 2018 rotation model (rotation axes
+perpendicular to the compression axis).</value>
+  </data>
+  <data name="radioButton2019Model.ToolTip" xml:space="preserve">
+    <value>Use the 2019 rotation model (rotation axis
+from the slip-plane / compression-plane
+cross product, with θ,φ spread).</value>
+  </data>
+  <data name="numericBoxEOS_K0.ToolTip" xml:space="preserve">
+    <value>Bulk modulus K0 (GPa) for the third-order
+Birch–Murnaghan equation of state.</value>
+  </data>
+  <data name="numericBoxEOS_Kprime.ToolTip" xml:space="preserve">
+    <value>Pressure derivative of the bulk modulus K'0 for
+the third-order Birch–Murnaghan equation of state.</value>
+  </data>
+  <data name="numericBoxMassAbsorption.ToolTip" xml:space="preserve">
+    <value>Mass absorption coefficient (cm²/g) of the sample
+used to attenuate intensities through the layers.</value>
+  </data>
+  <data name="label4.ToolTip" xml:space="preserve">
+    <value>Mass absorption coefficient (cm²/g) of the sample
+used to attenuate intensities through the layers.</value>
+  </data>
   <metadata name="statusStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>

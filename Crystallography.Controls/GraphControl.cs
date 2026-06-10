@@ -151,14 +151,34 @@ public partial class GraphControl : UserControlBase
     [Category(" 4. 上部パネル")]
     [Description("グラフタイトル(上部パネルの最初に表示される)")]
     [DefaultValue("")] //260607Cl 修正: 実際の既定は labelGraphTitle.Text="" (Designer.cs から Text=" " を撤去済)
-    public string GraphTitle { set { labelGraphTitle.Text = value ?? ""; panelTitleAndMouse.Visible = !string.IsNullOrEmpty(labelGraphTitle.Text) || mousePositionVisible; } get => labelGraphTitle.Text; }//260607Ch 変更: 上部パネルはタイトルまたはマウス位置表示が有効な時だけ表示
+    public string GraphTitle
+    {
+        set
+        {
+            labelGraphTitle.Text = value ?? "";
+            labelGraphTitle.Visible = !string.IsNullOrEmpty(labelGraphTitle.Text);
+            //panelTitleAndMouse.Visible = labelGraphTitle.Visible || mousePositionVisible;
+            panelTitleAndMouse.Visible = !string.IsNullOrEmpty(labelGraphTitle.Text) || mousePositionVisible;// 260610Cl 修正: Control.Visible の getter は親 (panelTitleAndMouse) が非表示だと set 直後でも false を返すため、意図値 (Text) から判定
+        }
+        get => labelGraphTitle.Text;
+    }//260607Ch 変更: 上部パネルはタイトルまたはマウス位置表示が有効な時だけ表示
 
     /// <summary>マウス位置を表示するかどうか</summary>
     [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     [Category(" 4. 上部パネル")]
     [Description("マウス位置を表示するかどうか")]
     [DefaultValue(false)] //260607Cl 修正: 実際の既定は flowLayoutPanelMousePosition.Visible=false (Designer.cs)
-    public bool MousePositionVisible { set { mousePositionVisible = value; flowLayoutPanelMousePosition.Visible = value; panelTitleAndMouse.Visible = !string.IsNullOrEmpty(labelGraphTitle.Text) || mousePositionVisible; } get => mousePositionVisible; }//260607Ch 変更: 親パネル非表示時も意図値を保持し、上部パネルを自動判定
+    public bool MousePositionVisible
+    {
+        set
+        {
+            mousePositionVisible = value;
+            flowLayoutPanelMousePosition.Visible = value;
+            //panelTitleAndMouse.Visible = labelGraphTitle.Visible || mousePositionVisible;
+            panelTitleAndMouse.Visible = !string.IsNullOrEmpty(labelGraphTitle.Text) || mousePositionVisible;// 260610Cl 修正: 同上 (意図値から判定)
+        }
+        get => mousePositionVisible;
+    }//260607Ch 変更: 親パネル非表示時も意図値を保持し、上部パネルを自動判定
     private bool mousePositionVisible = false;
 
     /// <summary>

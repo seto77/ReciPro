@@ -450,10 +450,6 @@
             // 
             resources.ApplyResources(waveLengthControl, "waveLengthControl");
             captureExtender.SetCapture(waveLengthControl, true);
-            // 260608Cl 追加: 新規3タブ(散乱因子/減衰/蛍光)を単体クロップ対象にする (マニュアル用)。TabPage は親 TabControl 全体(タブ見出し込み)で撮影される。
-            captureExtender.SetCapture(tabPageScatteringFactors, true);
-            captureExtender.SetCapture(tabPageAttenuations, true);
-            captureExtender.SetCapture(tabPageFluorescence, true);
             waveLengthControl.DirectionWaveEnergy = System.Windows.Forms.FlowDirection.LeftToRight;
             waveLengthControl.DirectionWhole = System.Windows.Forms.FlowDirection.LeftToRight;
             waveLengthControl.Energy = 8.04114721D;
@@ -813,6 +809,7 @@
             // tabPageAttenuations
             // 
             resources.ApplyResources(tabPageAttenuations, "tabPageAttenuations");
+            captureExtender.SetCapture(tabPageAttenuations, true);
             tabPageAttenuations.Controls.Add(graphControlAtten);
             tabPageAttenuations.Controls.Add(flowLayoutPanel9);
             tabPageAttenuations.Controls.Add(flowLayoutPanelAttenuationModel);
@@ -825,9 +822,9 @@
             resources.ApplyResources(graphControlAtten, "graphControlAtten");
             graphControlAtten.CopyVisible = true;
             graphControlAtten.FixLowerXToZero = true;
-            graphControlAtten.MousePositionVisible = true; // 260608Cl 追加: マウス位置の座標読取りを表示
-            graphControlAtten.MousePositionX_FormatSpecifier = "g8"; // 260608Cl 追加: 座標読取りの書式 (有効桁8)
-            graphControlAtten.MousePositionY_FormatSpecifier = "g8"; // 260608Cl 追加
+            graphControlAtten.MousePositionVisible = true;
+            graphControlAtten.MousePositionX_FormatSpecifier = "g6";
+            graphControlAtten.MousePositionY_FormatSpecifier = "g6";
             graphControlAtten.Name = "graphControlAtten";
             graphControlAtten.RangePanelVisible = true;
             toolTip.SetToolTip(graphControlAtten, resources.GetString("graphControlAtten.ToolTip"));
@@ -1080,6 +1077,7 @@
             // tabPageScatteringFactors
             // 
             resources.ApplyResources(tabPageScatteringFactors, "tabPageScatteringFactors");
+            captureExtender.SetCapture(tabPageScatteringFactors, true);
             tabPageScatteringFactors.Controls.Add(graphControlScatteringFactor);
             tabPageScatteringFactors.Controls.Add(flowLayoutPanel8);
             tabPageScatteringFactors.Controls.Add(flowLayoutPanelScatteringFactorModel);
@@ -1092,9 +1090,9 @@
             resources.ApplyResources(graphControlScatteringFactor, "graphControlScatteringFactor");
             graphControlScatteringFactor.CopyVisible = true;
             graphControlScatteringFactor.FixLowerXToZero = true;
-            graphControlScatteringFactor.MousePositionVisible = true; // 260608Cl 追加: マウス位置の座標読取りを表示
-            graphControlScatteringFactor.MousePositionX_FormatSpecifier = "g8"; // 260608Cl 追加: 座標読取りの書式 (有効桁8)
-            graphControlScatteringFactor.MousePositionY_FormatSpecifier = "g8"; // 260608Cl 追加
+            graphControlScatteringFactor.MousePositionVisible = true;
+            graphControlScatteringFactor.MousePositionX_FormatSpecifier = "g6";
+            graphControlScatteringFactor.MousePositionY_FormatSpecifier = "g6";
             graphControlScatteringFactor.Name = "graphControlScatteringFactor";
             graphControlScatteringFactor.RangePanelVisible = true;
             toolTip.SetToolTip(graphControlScatteringFactor, resources.GetString("graphControlScatteringFactor.ToolTip"));
@@ -1261,6 +1259,7 @@
             // tabPageFluorescence
             // 
             resources.ApplyResources(tabPageFluorescence, "tabPageFluorescence");
+            captureExtender.SetCapture(tabPageFluorescence, true);
             tabPageFluorescence.Controls.Add(panel4);
             tabPageFluorescence.Controls.Add(flowLayoutPanel7);
             tabPageFluorescence.Name = "tabPageFluorescence";
@@ -1282,7 +1281,6 @@
             graphControlFluor.Name = "graphControlFluor";
             graphControlFluor.RangePanelVisible = true;
             toolTip.SetToolTip(graphControlFluor, resources.GetString("graphControlFluor.ToolTip"));
-            //graphControlFluor.VerticalLineMarkerVisible = true; // 260608Cl 撤去: 蛍光タブは縦線不要 (.cs で VerticalLines=[] に変更したのに合わせマーカー表示も無効化)
             // 
             // flowLayoutPanel7
             // 

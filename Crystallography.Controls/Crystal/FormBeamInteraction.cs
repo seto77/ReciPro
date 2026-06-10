@@ -173,6 +173,8 @@ public partial class FormBeamInteraction : FormBase
         "Graph.Title.NeutronNoEnergyGraph" => Loc("Neutron cross sections are listed in the table (no energy graph)", "中性子断面積は表に表示します (エネルギーグラフなし)"),
         "Graph.Title.NeutronScatteringNoGraph" => Loc("Neutron scattering length b does not depend on s (no curve)", "中性子散乱長 b は s に依存しません (曲線なし)"),
         "Graph.Title.QuantityVsE" => Loc("{0} vs electron energy", "{0} 対 電子エネルギー"),
+        "Graph.Title.ScatteringFactorElectron" => Loc("Electron scattering factor fe(s)", "電子散乱因子 fe(s)"),//260608Cl 追加
+        "Graph.Title.ScatteringFactorXray" => Loc("X-ray atomic scattering factor f(s)", "X線原子散乱因子 f(s)"),//260608Cl 追加
         "Graph.Title.TransmissionThroughThickness" => Loc("Transmission for thickness t = {0}", "厚さ t = {0} の透過率"),
         // --- 単位(Unit*) ---
         "Graph.Unit.Angstrom" => " Å",
@@ -418,20 +420,7 @@ public partial class FormBeamInteraction : FormBase
         comboBoxReflXAxis.Items.Clear();
         comboBoxReflXAxis.Items.AddRange(["2θ", "d", "Q"]);
         comboBoxReflXAxis.SelectedIndex = 0;// 既定 2θ (旧来の表示)。260607Cl イベントはデザイナ登録 (Load 時発火も lastReflPeaks==null で無害)
-        toolTip.SetToolTip(comboBoxReflXAxis, Loc(
-            "Choose the horizontal axis of the diffraction-peak plot. The three options describe the SAME set of reflections; only the horizontal scale changes.\n" +
-            "  • 2θ — the scattering angle in degrees, i.e. how far the beam is bent. This is what a diffractometer reads directly.\n" +
-            "  • d — the spacing between the crystal lattice planes that produce the reflection (large d = low angle = planes far apart).\n" +
-            "  • Q = 4π·sinθ/λ — the 'scattering vector' (momentum transfer). Common in synchrotron and pair-distribution studies; large Q = high angle.",
-            "回折ピークの横軸を選びます。3つの選択肢は同じ反射群を表し、横軸の取り方だけが変わります。\n" +
-            "  • 2θ — 散乱角(度)。ビームがどれだけ曲がるか。回折計が直接読む値です。\n" +
-            "  • d — その反射を作る結晶格子面の間隔(d が大きい=低角=面の間隔が広い)。\n" +
-            "  • Q = 4π·sinθ/λ — 「散乱ベクトル」(運動量遷移)。放射光や二体分布関数でよく使う。Q が大きい=高角。"));
-        toolTip.SetToolTip(checkBoxReflLog, Loc(
-            "Switch the vertical (intensity) axis between a linear scale and a logarithmic scale (…, ×0.01, ×0.1, ×1).\n" +
-            "Diffraction intensities span many orders of magnitude: a few peaks are very strong and most are weak. On a linear scale the weak peaks are flattened against the baseline; a logarithmic scale stretches the bottom so you can still see them.",
-            "縦軸(強度)を線形と対数(…, ×0.01, ×0.1, ×1)で切り替えます。\n" +
-            "回折強度は桁が大きく異なり、強いピークは少数で大半は弱いものです。線形では弱いピークが底に潰れて見えませんが、対数にすると下側が引き伸ばされ、弱いピークも確認できます。"));
+        // 260608Ch 固定 tooltip は Designer の resources.GetString(...) と FormBeamInteraction*.resx に集約。
     }
 
     #region テストコード (手動 h,k,l 掃引)
@@ -623,15 +612,18 @@ public partial class FormBeamInteraction : FormBase
     /// <summary>各元素の f(s) / fₑ(s) 曲線を graphControl に描く。</summary>
     private void DrawScatteringCurves(bool electron, bool fqsq)
     {
-        if (scatElements.Length == 0)
-        {
-            graphControlScatteringFactor.ClearProfile();
-            graphControlScatteringFactor.GraphTitle = "";
-            return;
-        }
         if (fqsq) // 260606Cl: X線 F(q)+S(q) モード (xraylib) は専用描画へ
         {
             DrawFqSqCurves();
+            return;
+        }
+
+        //260608Cl どのモードでもタイトルを表示する (旧: GraphTitle="" で空欄だった)。元素ゼロ時もモード名は出す。
+        graphControlScatteringFactor.GraphTitle = R(electron ? "Graph.Title.ScatteringFactorElectron" : "Graph.Title.ScatteringFactorXray");
+
+        if (scatElements.Length == 0)
+        {
+            graphControlScatteringFactor.ClearProfile();
             return;
         }
 
@@ -653,7 +645,7 @@ public partial class FormBeamInteraction : FormBase
             profiles.Add(new Profile(pts) { Color = el.Color });
         }
 
-        graphControlScatteringFactor.GraphTitle = "";
+        //260608Cl GraphTitle はメソッド先頭でモード別に設定済 (旧: ここで "" にしていた)
         //260607Cl AxisLabel=軸上の完全表示(単位込), Label=量名, Unit=単位(先頭スペース込)に分離
         //260607Ch resx 化 (旧: 軸/単位文字列をコード内リテラルで設定)
         graphControlScatteringFactor.AxisLabelX = R("Graph.Axis.S.AngstromInv");
@@ -861,41 +853,8 @@ public partial class FormBeamInteraction : FormBase
     {
         //260607Cl numericBoxAttenThickness.ValueChanged / tabControl.SelectedIndexChanged / 係数ラジオ CheckedChanged はデザイナ登録へ移動
         if (!radioButtonAttenMassMu.Checked && !radioButtonAttenLinMu.Checked && !radioButtonAttenTrans.Checked) radioButtonAttenMassMu.Checked = true;
-        toolTip.SetToolTip(radioButtonAttenMassMu, Loc(
-            "Plot the MASS attenuation coefficient µ/ρ (unit: cm²/g).\n" +
-            "This measures how strongly the material removes X-rays from the beam (by absorption and scattering) per gram of material, so it does not depend on how densely the material is packed. It is the value listed in reference tables. Multiply it by the density ρ to obtain the linear coefficient µ.",
-            "質量吸収係数 µ/ρ(単位: cm²/g)を表示します。\n" +
-            "物質1グラムあたりに X線がどれだけ減衰(吸収+散乱)されるかを表し、物質の詰まり具合(密度)によりません。データ集に載るのはこの値です。密度 ρ を掛けると線吸収係数 µ になります。"));
-        toolTip.SetToolTip(radioButtonAttenLinMu, Loc(
-            "Plot the LINEAR attenuation coefficient µ = (µ/ρ)·ρ (unit: cm⁻¹).\n" +
-            "This is the attenuation per centimetre of the actual material at its real density. The transmitted intensity follows I = I₀·exp(−µ·t), where t is the path length, and 1/µ is the distance over which the beam intensity falls to about 37% (1/e).",
-            "線吸収係数 µ = (µ/ρ)·ρ(単位: cm⁻¹)を表示します。\n" +
-            "実際の密度の物質を1cm通るごとの減衰量です。透過強度は I = I₀·exp(−µ·t)(t=通過距離)に従い、1/µ は強度が約37%(1/e)になる距離に相当します。"));
-        toolTip.SetToolTip(radioButtonAttenTrans, Loc(
-            "Plot the TRANSMISSION T = exp(−µ·t) in percent — the fraction of the X-ray beam that passes through the sample without being absorbed or scattered, for the sample thickness t set in the 'Thickness t' box below.\n" +
-            "100% = the sample is transparent to the beam; 0% = the beam is fully blocked. Use this to judge a sensible sample thickness at the current energy.",
-            "透過率 T = exp(−µ·t) を%で表示します。下の「Thickness t」で設定した試料厚 t に対し、吸収も散乱もされずに通り抜ける X線の割合です。\n" +
-            "100%=試料はビームに透明、0%=ビームは完全に遮られる。現在のエネルギーで適切な試料厚を決める目安になります。"));
 
-        //260607Cl 電子の表示量セレクタ: combo を 6 ラジオ (flowLayoutPanelElecQuantity) に変更。テキストは resx、既定は radioButtonElecAll (Designer で Checked)、イベントもデザイナ登録。各ラジオに個別ツールチップを付ける。
-        toolTip.SetToolTip(radioButtonElecAll, Loc(
-            "Overlay the three curves below, each rescaled to its own maximum so their SHAPES can be compared on one plot (read absolute values from the table).",
-            "下の3曲線を各最大で正規化して重ね、形を1枚で比較できます(絶対値は表で確認)。"));
-        toolTip.SetToolTip(radioButtonElecSigma, Loc(
-            "σ elastic — elastic scattering cross section: how likely a single atom is to deflect the electron (bigger = scatters more).",
-            "σ 弾性 — 弾性散乱断面積: 原子1個が電子を曲げる起こりやすさ(大きいほどよく散乱)。"));
-        toolTip.SetToolTip(radioButtonElecEMFP, Loc(
-            "Elastic MFP — mean free path: the average distance the electron travels between elastic scattering events.",
-            "弾性MFP — 平均自由行程: 弾性散乱が起きる平均間隔の距離。"));
-        toolTip.SetToolTip(radioButtonElecDeds, Loc(
-            "dE/ds — stopping power: the energy the electron loses per nanometre of travel.",
-            "dE/ds — 阻止能: 電子が1nm進むごとに失うエネルギー。"));
-        toolTip.SetToolTip(radioButtonElecIMFP, Loc(
-            "IMFP — inelastic mean free path: average distance between energy-losing collisions.",
-            "IMFP — 非弾性平均自由行程: エネルギーを失う衝突の平均間隔。"));
-        toolTip.SetToolTip(radioButtonElecRange, Loc(
-            "Range (CSDA) — the total path length the electron travels before it stops.",
-            "飛程(CSDA) — 電子が止まるまでに進む総経路長。"));
+        // 260608Ch 固定 tooltip は Designer の resources.GetString(...) と FormBeamInteraction*.resx に集約。
 
         // スカラ表: ヘッダ非表示 (Quantity/Value は自明) + コード列 + 縦スクロール許可
         foreach (var t in new[] { miniTableAttenScalars, miniTableFluorScalars })
@@ -910,7 +869,7 @@ public partial class FormBeamInteraction : FormBase
         var C = DataGridViewContentAlignment.MiddleCenter;
         ConfigCol(colEdgeElem, default, fill: true); ConfigCol(colEdgeZ, R, "0"); ConfigCol(colEdgeEdge, C); ConfigCol(colEdgeKeV, R, "g4"); ConfigCol(colEdgeJump, R, "g3");
         ConfigCol(colElecElem, default, fill: true); ConfigCol(colElecZ, R, "0"); ConfigCol(colElecAt, R, "g3"); ConfigCol(colElecA, R, "g4");
-        colElecA.ToolTipText = Loc("Elastic cross section σ_el (NIST Mott 50 eV–36 keV; screened Rutherford above 36 keV).", "弾性散乱断面積 σ_el (NIST Mott 50 eV–36 keV、36 keV 超は遮蔽 Rutherford 近似)");// 260608Cl Loc()化。260606Cl §6.5 元素別弾性断面積・NIST範囲外は Rutherford 近似
+        // 260608Ch colElecA.ToolTipText は resx の colElecA.ToolTipText に集約。
         ConfigCol(colNeutElem, default, fill: true); ConfigCol(colNeutBcoh, R, "g4"); ConfigCol(colNeutScoh, R, "g4"); ConfigCol(colNeutAt, R, "g3");
 
         // 260606Cl 行数の多い元素別表 (元素数×行。Edges は最大 2×元素数) は縦スクロール許可 → 多元素結晶でもクリップしない

@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="comboBoxGradient.ToolTip" xml:space="preserve">
+    <value>重ね合わせ画像のフィルム階調を正/負から
+選びます(負は表示強度スケールを反転)。</value>
+  </data>
+  <data name="comboBoxScale1.ToolTip" xml:space="preserve">
+    <value>重ね合わせ画像の強度マッピングを
+対数スケールと線形スケールで切り替えます。</value>
+  </data>
+  <data name="comboBoxScale2.ToolTip" xml:space="preserve">
+    <value>重ね合わせ画像の描画に使うカラースケール
+(Gray、Cold-Warm、Spectrum、Fire)を選びます。</value>
+  </data>
+  <data name="trackBarPictureOpacity1.ToolTip" xml:space="preserve">
+    <value>回折パターン上に重ねる画像の不透明度(0-100%)を調整します。</value>
+  </data>
+  <data name="label10.ToolTip" xml:space="preserve">
+    <value>回折パターン上に重ねる画像の不透明度(0-100%)を調整します。</value>
+  </data>
+  <data name="label24.ToolTip" xml:space="preserve">
+    <value>重ね合わせ画像のフィルム階調を正/負から
+選びます(負は表示強度スケールを反転)。</value>
+  </data>
+  <data name="label23.ToolTip" xml:space="preserve">
+    <value>重ね合わせ画像の強度マッピングを
+対数スケールと線形スケールで切り替えます。</value>
+  </data>
+  <data name="label22.ToolTip" xml:space="preserve">
+    <value>重ね合わせ画像の描画に使うカラースケール
+(Gray、Cold-Warm、Spectrum、Fire)を選びます。</value>
+  </data>
+  <data name="numericBoxFootX.ToolTip" xml:space="preserve">
+    <value>検出器上のフットポイント(直接ビーム
+中心)の X ピクセル座標を設定します。</value>
+  </data>
+  <data name="numericBoxFootY.ToolTip" xml:space="preserve">
+    <value>検出器上のフットポイント(直接ビーム
+中心)の Y ピクセル座標を設定します。</value>
+  </data>
+  <data name="numericBoxPixelSize.ToolTip" xml:space="preserve">
+    <value>1検出器ピクセルの物理サイズを mm 単位で設定します。</value>
+  </data>
+  <data name="sizeControl1.ToolTip" xml:space="preserve">
+    <value>検出器サイズ(幅×高さ)をピクセル単位で設定します。</value>
+  </data>
+  <data name="buttonClearPicture.ToolTip" xml:space="preserve">
+    <value>読み込んだ重ね合わせ画像をクリアします。</value>
+  </data>
+  <data name="buttonLoadPicture.ToolTip" xml:space="preserve">
+    <value>回折パターン上に重ねる画像ファイルを読み込みます。</value>
+  </data>
+  <data name="buttonRot90.ToolTip" xml:space="preserve">
+    <value>重ね合わせ画像と検出器寸法を 90 度回転します。</value>
+  </data>
+  <data name="textBoxFileName.ToolTip" xml:space="preserve">
+    <value>読み込んだ重ね合わせ画像のファイルパス
+を表示します(読み取り専用)。</value>
+  </data>
+  <data name="trackBarMaxInt.ToolTip" xml:space="preserve">
+    <value>重ね合わせ画像を表示する強度の上限を設定します。</value>
+  </data>
+  <data name="trackBarMinInt.ToolTip" xml:space="preserve">
+    <value>重ね合わせ画像を表示する強度の下限を設定します。</value>
+  </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value>重ね合わせ画像を表示する強度の上限を設定します。</value>
+  </data>
+  <data name="label2.ToolTip" xml:space="preserve">
+    <value>重ね合わせ画像を表示する強度の下限を設定します。</value>
+  </data>
+  <data name="checkBoxSchematicDiagram.ToolTip" xml:space="preserve">
+    <value>オンにすると、検出器ジオメトリの模式図を表示します。</value>
+  </data>
+  <data name="numericBoxCameraLength2.ToolTip" xml:space="preserve">
+    <value>検出器面までのカメラ長を mm 単位で設定します。</value>
+  </data>
+  <data name="numericBoxPhi.ToolTip" xml:space="preserve">
+    <value>検出器傾斜軸の方位角 phi を度単位で設定します。</value>
+  </data>
+  <data name="numericBoxTau.ToolTip" xml:space="preserve">
+    <value>傾斜軸まわりの検出器傾斜角 tau を度単位で設定します。</value>
+  </data>
+  <data name="label4.ToolTip" xml:space="preserve">
+    <value>重ね合わせ画像を表示する強度の上限を設定します。</value>
+  </data>
+  <data name="checkBoxDetectorSizePosition.ToolTip" xml:space="preserve">
+    <value>オンにすると、回折パターン上に検出器範囲を
+描画し、重ね合わせ画像の設定を有効にします。</value>
+  </data>
+</root>

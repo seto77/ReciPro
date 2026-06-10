@@ -38,6 +38,7 @@ namespace ReciPro
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormDiffractionSimulatorDynamicCompression)); // 260608Ch tooltip resx 化
             toolTip = new System.Windows.Forms.ToolTip(components);
             toolTip.IsBalloon = true; // 260531Cl 追加: バルーン表示に統一
             toolTip.AutoPopDelay = 10000; // 260601Cl 追加: 長文表示時間を延長(共通標準値)
@@ -1119,46 +1120,46 @@ namespace ReciPro
             groupBoxCompressionModel.PerformLayout();
             groupBoxSlipPlane.ResumeLayout(false);
             groupBoxSlipPlane.PerformLayout();
-            // 260530Cl 追加: ツールチップ (SetToolTip方式)
-            toolTip.SetToolTip(buttonSimulate, "Run the dynamic-compression diffraction simulation and accumulate the pattern.");
-            toolTip.SetToolTip(checkBoxSkipDrawing, "When checked, skips on-screen drawing during the calculation to speed it up.");
-            toolTip.SetToolTip(label2, "Depth of the front boundary separating the uncompressed and compressed regions.");
-            toolTip.SetToolTip(label3, "Depth of the back boundary separating the compressed and released regions.");
-            toolTip.SetToolTip(buttonSetFolder, "Choose the output folder where simulated TIFF patterns are saved.");
-            toolTip.SetToolTip(textBoxFileName, "Base file name for the saved TIFF pattern; '.tif' is appended automatically.");
-            toolTip.SetToolTip(label8, "Base file name for the saved TIFF pattern; '.tif' is appended automatically.");
-            toolTip.SetToolTip(numericBoxCompressedOmega, "Mean crystal rotation rate ω in the compressed region (°/ns).");
-            toolTip.SetToolTip(numericBoxCompressedOmegaSigma, "Standard deviation σ_ω of the rotation rate in the compressed region (°/ns).");
-            toolTip.SetToolTip(numericBoxCompressedThetaA, "Constant term a (°) of the rotation-axis spread σ_θ for the compressed region (2019 model).");
-            toolTip.SetToolTip(numericBoxCompressedThetaB, "Time coefficient b (°/ns) of the rotation-axis spread σ_θ for the compressed region (2019 model).");
-            toolTip.SetToolTip(checkBoxOmegaStep, "When checked, repeats the simulation while incrementing the overall Ω angle by a fixed step.");
-            toolTip.SetToolTip(checkBoxSaveSimulatedPattern, "When checked, saves each simulated pattern as a TIFF file to the chosen folder.");
-            toolTip.SetToolTip(numericBoxDivisionOfRotationAngle, "Number of sampling divisions for integrating over the rotation-rate (speed) distribution.");
-            toolTip.SetToolTip(numericBoxDivisionOfRotationAxis, "Number of azimuthal sampling divisions for the rotation axis.");
-            toolTip.SetToolTip(numericBoxReleasedOmega, "Mean crystal rotation rate ω in the released region (°/ns).");
-            toolTip.SetToolTip(numericBoxReleasedOmegaSigma, "Standard deviation σ_ω of the rotation rate in the released region (°/ns).");
-            toolTip.SetToolTip(numericBoxReleasedThetaA, "Constant term a (°) of the rotation-axis spread σ_θ for the released region (2019 model).");
-            toolTip.SetToolTip(numericBoxReleasedThetaB, "Time coefficient b (°/ns) of the rotation-axis spread σ_θ for the released region (2019 model).");
-            toolTip.SetToolTip(numericBoxShockedPlaneH, "Miller index h of the shocked (compression) plane normal.");
-            toolTip.SetToolTip(numericBoxShockedPlaneK, "Miller index k of the shocked (compression) plane normal.");
-            toolTip.SetToolTip(numericBoxShockedPlaneL, "Miller index l of the shocked (compression) plane normal.");
-            toolTip.SetToolTip(numericBoxSlipPlaneH, "Miller index h of the slip-plane normal (used to define the rotation axis in the 2019 model).");
-            toolTip.SetToolTip(numericBoxSlipPlaneK, "Miller index k of the slip-plane normal (used to define the rotation axis in the 2019 model).");
-            toolTip.SetToolTip(numericBoxSlipPlaneL, "Miller index l of the slip-plane normal (used to define the rotation axis in the 2019 model).");
-            toolTip.SetToolTip(numericBoxUp, "Shock (compression) wave speed Us (km/s) used to convert depth into elapsed time in the compressed region.");
-            toolTip.SetToolTip(radioButtonCompressedIsotropic, "Apply isotropic (hydrostatic) compression of the lattice in the compressed region.");
-            toolTip.SetToolTip(radioButtonCompressedUniaxial, "Apply uniaxial compression of the lattice along the shocked-plane normal in the compressed region.");
-            toolTip.SetToolTip(numericBoxUr, "Release wave speed Ur (km/s) used to convert depth into elapsed time in the released region.");
-            toolTip.SetToolTip(radioButtonReleasedIsotropic, "Apply isotropic (hydrostatic) compression of the lattice in the released region.");
-            toolTip.SetToolTip(radioButtonReleasedUniaxial, "Apply uniaxial compression of the lattice along the shocked-plane normal in the released region.");
-            toolTip.SetToolTip(numericBoxOmegaStep, "Ω angle increment (°) applied per repeat when 'Increment Ω' is enabled.");
-            toolTip.SetToolTip(numericBoxOmegaTimes, "Number of repeats when 'Increment Ω' is enabled.");
-            toolTip.SetToolTip(radioButton2018Model, "Use the 2018 rotation model (rotation axes perpendicular to the compression axis).");
-            toolTip.SetToolTip(radioButton2019Model, "Use the 2019 rotation model (rotation axis from the slip-plane / compression-plane cross product, with θ,φ spread).");
-            toolTip.SetToolTip(numericBoxEOS_K0, "Bulk modulus K0 (GPa) for the third-order Birch–Murnaghan equation of state.");
-            toolTip.SetToolTip(numericBoxEOS_Kprime, "Pressure derivative of the bulk modulus K'0 for the third-order Birch–Murnaghan equation of state.");
-            toolTip.SetToolTip(numericBoxMassAbsorption, "Mass absorption coefficient (cm²/g) of the sample used to attenuate intensities through the layers.");
-            toolTip.SetToolTip(label4, "Mass absorption coefficient (cm²/g) of the sample used to attenuate intensities through the layers.");
+            // 260608Ch 固定 tooltip 本文は FormDiffractionSimulatorDynamicCompression*.resx に集約。
+            toolTip.SetToolTip(buttonSimulate, resources.GetString("buttonSimulate.ToolTip"));
+            toolTip.SetToolTip(checkBoxSkipDrawing, resources.GetString("checkBoxSkipDrawing.ToolTip"));
+            toolTip.SetToolTip(label2, resources.GetString("label2.ToolTip"));
+            toolTip.SetToolTip(label3, resources.GetString("label3.ToolTip"));
+            toolTip.SetToolTip(buttonSetFolder, resources.GetString("buttonSetFolder.ToolTip"));
+            toolTip.SetToolTip(textBoxFileName, resources.GetString("textBoxFileName.ToolTip"));
+            toolTip.SetToolTip(label8, resources.GetString("label8.ToolTip"));
+            toolTip.SetToolTip(numericBoxCompressedOmega, resources.GetString("numericBoxCompressedOmega.ToolTip"));
+            toolTip.SetToolTip(numericBoxCompressedOmegaSigma, resources.GetString("numericBoxCompressedOmegaSigma.ToolTip"));
+            toolTip.SetToolTip(numericBoxCompressedThetaA, resources.GetString("numericBoxCompressedThetaA.ToolTip"));
+            toolTip.SetToolTip(numericBoxCompressedThetaB, resources.GetString("numericBoxCompressedThetaB.ToolTip"));
+            toolTip.SetToolTip(checkBoxOmegaStep, resources.GetString("checkBoxOmegaStep.ToolTip"));
+            toolTip.SetToolTip(checkBoxSaveSimulatedPattern, resources.GetString("checkBoxSaveSimulatedPattern.ToolTip"));
+            toolTip.SetToolTip(numericBoxDivisionOfRotationAngle, resources.GetString("numericBoxDivisionOfRotationAngle.ToolTip"));
+            toolTip.SetToolTip(numericBoxDivisionOfRotationAxis, resources.GetString("numericBoxDivisionOfRotationAxis.ToolTip"));
+            toolTip.SetToolTip(numericBoxReleasedOmega, resources.GetString("numericBoxReleasedOmega.ToolTip"));
+            toolTip.SetToolTip(numericBoxReleasedOmegaSigma, resources.GetString("numericBoxReleasedOmegaSigma.ToolTip"));
+            toolTip.SetToolTip(numericBoxReleasedThetaA, resources.GetString("numericBoxReleasedThetaA.ToolTip"));
+            toolTip.SetToolTip(numericBoxReleasedThetaB, resources.GetString("numericBoxReleasedThetaB.ToolTip"));
+            toolTip.SetToolTip(numericBoxShockedPlaneH, resources.GetString("numericBoxShockedPlaneH.ToolTip"));
+            toolTip.SetToolTip(numericBoxShockedPlaneK, resources.GetString("numericBoxShockedPlaneK.ToolTip"));
+            toolTip.SetToolTip(numericBoxShockedPlaneL, resources.GetString("numericBoxShockedPlaneL.ToolTip"));
+            toolTip.SetToolTip(numericBoxSlipPlaneH, resources.GetString("numericBoxSlipPlaneH.ToolTip"));
+            toolTip.SetToolTip(numericBoxSlipPlaneK, resources.GetString("numericBoxSlipPlaneK.ToolTip"));
+            toolTip.SetToolTip(numericBoxSlipPlaneL, resources.GetString("numericBoxSlipPlaneL.ToolTip"));
+            toolTip.SetToolTip(numericBoxUp, resources.GetString("numericBoxUp.ToolTip"));
+            toolTip.SetToolTip(radioButtonCompressedIsotropic, resources.GetString("radioButtonCompressedIsotropic.ToolTip"));
+            toolTip.SetToolTip(radioButtonCompressedUniaxial, resources.GetString("radioButtonCompressedUniaxial.ToolTip"));
+            toolTip.SetToolTip(numericBoxUr, resources.GetString("numericBoxUr.ToolTip"));
+            toolTip.SetToolTip(radioButtonReleasedIsotropic, resources.GetString("radioButtonReleasedIsotropic.ToolTip"));
+            toolTip.SetToolTip(radioButtonReleasedUniaxial, resources.GetString("radioButtonReleasedUniaxial.ToolTip"));
+            toolTip.SetToolTip(numericBoxOmegaStep, resources.GetString("numericBoxOmegaStep.ToolTip"));
+            toolTip.SetToolTip(numericBoxOmegaTimes, resources.GetString("numericBoxOmegaTimes.ToolTip"));
+            toolTip.SetToolTip(radioButton2018Model, resources.GetString("radioButton2018Model.ToolTip"));
+            toolTip.SetToolTip(radioButton2019Model, resources.GetString("radioButton2019Model.ToolTip"));
+            toolTip.SetToolTip(numericBoxEOS_K0, resources.GetString("numericBoxEOS_K0.ToolTip"));
+            toolTip.SetToolTip(numericBoxEOS_Kprime, resources.GetString("numericBoxEOS_Kprime.ToolTip"));
+            toolTip.SetToolTip(numericBoxMassAbsorption, resources.GetString("numericBoxMassAbsorption.ToolTip"));
+            toolTip.SetToolTip(label4, resources.GetString("label4.ToolTip"));
             ResumeLayout(false);
             PerformLayout();
 

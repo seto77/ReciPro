@@ -26,6 +26,7 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormDiffractionSimulatorGeometry)); // 260608Ch tooltip resx 化
             toolTip = new System.Windows.Forms.ToolTip(components);
             toolTip.IsBalloon = true; // 260531Cl 追加: バルーン表示に統一
             toolTip.AutoPopDelay = 10000; // 260601Cl 追加: 長文表示時間を延長(共通標準値)
@@ -627,33 +628,33 @@
             flowLayoutPanel3.PerformLayout();
             flowLayoutPanel4.ResumeLayout(false);
             flowLayoutPanel4.PerformLayout();
-            // 260530Cl 追加: ツールチップ (SetToolTip方式)
-            toolTip.SetToolTip(comboBoxGradient, "Selects positive or negative film gradient (negative inverts the displayed intensity scale of the overlapped image).");
-            toolTip.SetToolTip(comboBoxScale1, "Switches the intensity mapping of the overlapped image between logarithmic and linear scale.");
-            toolTip.SetToolTip(comboBoxScale2, "Selects the color scale (Gray, Cold-Warm, Spectrum, or Fire) used to render the overlapped image.");
-            toolTip.SetToolTip(trackBarPictureOpacity1, "Adjusts the opacity (0-100%) of the overlapped image on the diffraction pattern.");
-            toolTip.SetToolTip(label10, "Adjusts the opacity (0-100%) of the overlapped image on the diffraction pattern.");
-            toolTip.SetToolTip(label24, "Selects positive or negative film gradient (negative inverts the displayed intensity scale of the overlapped image).");
-            toolTip.SetToolTip(label23, "Switches the intensity mapping of the overlapped image between logarithmic and linear scale.");
-            toolTip.SetToolTip(label22, "Selects the color scale (Gray, Cold-Warm, Spectrum, or Fire) used to render the overlapped image.");
-            toolTip.SetToolTip(numericBoxFootX, "Sets the X pixel coordinate of the foot point (direct-beam center) on the detector.");
-            toolTip.SetToolTip(numericBoxFootY, "Sets the Y pixel coordinate of the foot point (direct-beam center) on the detector.");
-            toolTip.SetToolTip(numericBoxPixelSize, "Sets the physical size of one detector pixel in millimeters.");
-            toolTip.SetToolTip(sizeControl1, "Sets the detector size (width x height) in pixels.");
-            toolTip.SetToolTip(buttonClearPicture, "Clears the loaded overlapped image.");
-            toolTip.SetToolTip(buttonLoadPicture, "Loads an image file to overlap on the diffraction pattern.");
-            toolTip.SetToolTip(buttonRot90, "Rotates the overlapped image and detector dimensions by 90 degrees.");
-            toolTip.SetToolTip(textBoxFileName, "Shows the file path of the loaded overlapped image (read-only).");
-            toolTip.SetToolTip(trackBarMaxInt, "Sets the upper intensity limit for displaying the overlapped image.");
-            toolTip.SetToolTip(trackBarMinInt, "Sets the lower intensity limit for displaying the overlapped image.");
-            toolTip.SetToolTip(label1, "Sets the upper intensity limit for displaying the overlapped image.");
-            toolTip.SetToolTip(label2, "Sets the lower intensity limit for displaying the overlapped image.");
-            toolTip.SetToolTip(checkBoxSchematicDiagram, "When checked, shows the schematic diagram of the detector geometry.");
-            toolTip.SetToolTip(numericBoxCameraLength2, "Sets the camera length to the detector plane in millimeters.");
-            toolTip.SetToolTip(numericBoxPhi, "Sets the azimuthal angle phi of the detector tilt axis in degrees.");
-            toolTip.SetToolTip(numericBoxTau, "Sets the detector tilt angle tau about the tilt axis in degrees.");
-            toolTip.SetToolTip(label4, "Sets the upper intensity limit for displaying the overlapped image.");
-            toolTip.SetToolTip(checkBoxDetectorSizePosition, "When checked, draws the detector area on the diffraction pattern and enables the overlapped-image settings.");
+            // 260608Ch 固定 tooltip 本文は FormDiffractionSimulatorGeometry*.resx に集約。
+            toolTip.SetToolTip(comboBoxGradient, resources.GetString("comboBoxGradient.ToolTip"));
+            toolTip.SetToolTip(comboBoxScale1, resources.GetString("comboBoxScale1.ToolTip"));
+            toolTip.SetToolTip(comboBoxScale2, resources.GetString("comboBoxScale2.ToolTip"));
+            toolTip.SetToolTip(trackBarPictureOpacity1, resources.GetString("trackBarPictureOpacity1.ToolTip"));
+            toolTip.SetToolTip(label10, resources.GetString("label10.ToolTip"));
+            toolTip.SetToolTip(label24, resources.GetString("label24.ToolTip"));
+            toolTip.SetToolTip(label23, resources.GetString("label23.ToolTip"));
+            toolTip.SetToolTip(label22, resources.GetString("label22.ToolTip"));
+            toolTip.SetToolTip(numericBoxFootX, resources.GetString("numericBoxFootX.ToolTip"));
+            toolTip.SetToolTip(numericBoxFootY, resources.GetString("numericBoxFootY.ToolTip"));
+            toolTip.SetToolTip(numericBoxPixelSize, resources.GetString("numericBoxPixelSize.ToolTip"));
+            toolTip.SetToolTip(sizeControl1, resources.GetString("sizeControl1.ToolTip"));
+            toolTip.SetToolTip(buttonClearPicture, resources.GetString("buttonClearPicture.ToolTip"));
+            toolTip.SetToolTip(buttonLoadPicture, resources.GetString("buttonLoadPicture.ToolTip"));
+            toolTip.SetToolTip(buttonRot90, resources.GetString("buttonRot90.ToolTip"));
+            toolTip.SetToolTip(textBoxFileName, resources.GetString("textBoxFileName.ToolTip"));
+            toolTip.SetToolTip(trackBarMaxInt, resources.GetString("trackBarMaxInt.ToolTip"));
+            toolTip.SetToolTip(trackBarMinInt, resources.GetString("trackBarMinInt.ToolTip"));
+            toolTip.SetToolTip(label1, resources.GetString("label1.ToolTip"));
+            toolTip.SetToolTip(label2, resources.GetString("label2.ToolTip"));
+            toolTip.SetToolTip(checkBoxSchematicDiagram, resources.GetString("checkBoxSchematicDiagram.ToolTip"));
+            toolTip.SetToolTip(numericBoxCameraLength2, resources.GetString("numericBoxCameraLength2.ToolTip"));
+            toolTip.SetToolTip(numericBoxPhi, resources.GetString("numericBoxPhi.ToolTip"));
+            toolTip.SetToolTip(numericBoxTau, resources.GetString("numericBoxTau.ToolTip"));
+            toolTip.SetToolTip(label4, resources.GetString("label4.ToolTip"));
+            toolTip.SetToolTip(checkBoxDetectorSizePosition, resources.GetString("checkBoxDetectorSizePosition.ToolTip"));
             ResumeLayout(false);
             PerformLayout();
         }

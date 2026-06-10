@@ -121,12 +121,18 @@
   <data name="splitContainer1.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 53</value>
   </data>
+  <data name="dataGridViewTextBoxColumnMulti.HeaderText" xml:space="preserve">
+    <value>多重度</value>
+  </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="dataGridViewTextBoxColumnMulti.Width" type="System.Int32, mscorlib">
+    <value>70</value>
+  </data>
   <data name="dataGridViewTextBoxColumnD.Width" type="System.Int32, mscorlib">
     <value>75</value>
   </data>
   <data name="dataGridViewTextBoxColumnQ.Width" type="System.Int32, mscorlib">
-    <value>75</value>
+    <value>80</value>
   </data>
   <data name="dataGridViewTextBoxColumnTwoTheta.Width" type="System.Int32, mscorlib">
     <value>75</value>
@@ -142,6 +148,12 @@
   </data>
   <data name="dataGridViewTextBoxColumnFsq.Width" type="System.Int32, mscorlib">
     <value>65</value>
+  </data>
+  <data name="dataGridViewTextBoxColumnIntPercent.HeaderText" xml:space="preserve">
+    <value>相対強度 (%)</value>
+  </data>
+  <data name="dataGridViewTextBoxColumnIntCondition.HeaderText" xml:space="preserve">
+    <value>消滅条件</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="dataGridView.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
@@ -160,35 +172,14 @@
 構造因子(単位胞が散乱する波の振幅)、相対強度、消滅則(反射が禁制かどうか)などが
 あります。左のチェックボックスで等価反射や禁制反射を隠せます。</value>
   </data>
-  <data name="splitContainer1.Panel1.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="graphControlReflections.Size" type="System.Drawing.Size, System.Drawing">
     <value>870, 121</value>
-  </data>
-  <data name="graphControlReflections.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="comboBoxReflXAxis.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="checkBoxReflLog.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="flowLayoutPanel6.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="splitContainer1.Panel2.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="splitContainer1.Size" type="System.Drawing.Size, System.Drawing">
     <value>870, 307</value>
   </data>
   <data name="splitContainer1.SplitterDistance" type="System.Int32, mscorlib">
     <value>151</value>
-  </data>
-  <data name="splitContainer1.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="checkBoxHideProhibitedPlanes.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9.75pt</value>
@@ -270,16 +261,50 @@ Excel やテキストエディタにそのまま貼り付けられます。</val
   <data name="waveLengthControl.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>200, 0</value>
   </data>
+  <data name="waveLengthControl.ToolTip" xml:space="preserve">
+    <value>プローブ(線源)とその波長・エネルギーを選びます。
+プローブは X線・電子線・中性子から選べ、切り替えると原子の散乱の仕方や有効なタブが
+変わります。
+X線・中性子では波長 λ(または光子エネルギー)を、電子線では加速電圧を設定します。
+波長は回折角を決め、この画面のすべての計算に使われます。</value>
+  </data>
   <data name="checkBoxTest.ToolTip" xml:space="preserve">
     <value>テストモードを有効にします。物理的に許される反射だけでなく、任意の h, k, l 指数の範囲
 (非整数=分数の値も含む)を走査できるパネルが現れます。
 構造因子の挙動確認に便利です。通常はオフのままで構いません。</value>
   </data>
+  <data name="label1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>34, 17</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>最小</value>
+  </data>
   <data name="label1.ToolTip" xml:space="preserve">
     <value>下の「min」列は、テストモード走査で使う h, k, l 指数の下限を設定します。</value>
   </data>
+  <data name="label3.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>34, 17</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>最大</value>
+  </data>
   <data name="label3.ToolTip" xml:space="preserve">
     <value>下の「max」列は、テストモード走査で使う h, k, l 指数の上限を設定します。</value>
+  </data>
+  <data name="label4.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>33, 17</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>刻み</value>
   </data>
   <data name="label4.ToolTip" xml:space="preserve">
     <value>下の「step」列は、テストモード走査で h, k, l を変える刻み幅(0.001〜1。1未満で分数指数に
@@ -327,11 +352,20 @@ Excel やテキストエディタにそのまま貼り付けられます。</val
     <value>テストモード走査での指数 h の最小値
 (h min から h max まで h step 刻みで進みます)。</value>
   </data>
+  <data name="numericBoxCutoffD.HeaderText" xml:space="preserve">
+    <value>d 下限 &gt;</value>
+  </data>
   <data name="numericBoxCutoffD.ToolTip" xml:space="preserve">
     <value>反射リストに含める最小の面間隔 d。これより面の間隔が狭い反射(高角側に現れる)は
 除外されます。
 カットオフを下げると高角の反射が増え、上げると低角の反射だけになります。
 単位は長さ単位設定に従い nm または Å。</value>
+  </data>
+  <data name="labelModel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>38, 17</value>
+  </data>
+  <data name="labelModel.Text" xml:space="preserve">
+    <value>モデル</value>
   </data>
   <data name="labelModel.ToolTip" xml:space="preserve">
     <value>原子散乱因子(1個の原子が角度に応じてどれだけビームを散乱するか)を計算する式
@@ -366,31 +400,34 @@ fe(s)。
     <value>8つのガウス関数によるフィットの電子の原子散乱因子 fe(s)。
 別のパラメータ化で、Peng・Kirkland と比べてモデル選択が結果にどれだけ効くか確認できます。</value>
   </data>
+  <data name="checkBoxDebyeWaller.Location" type="System.Drawing.Point, System.Drawing">
+    <value>415, 0</value>
+  </data>
   <data name="checkBoxDebyeWaller.ToolTip" xml:space="preserve">
     <value>散乱因子の曲線に Debye-Waller 因子 exp(-B·s²) を掛けます。これは原子の熱振動を取り入れる
 項です。
 振動する原子はぼやけるため、見かけの散乱能は高角ほど速く減衰します。
 B は結晶データの等方性変位パラメータ(Biso)です。オフのとき原子は静止として扱われます。</value>
   </data>
+  <data name="numericBoxAttenThickness.FooterFont" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="numericBoxAttenThickness.HeaderFont" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="numericBoxAttenThickness.HeaderText" xml:space="preserve">
+    <value>厚さ t</value>
+  </data>
   <data name="numericBoxAttenThickness.ToolTip" xml:space="preserve">
     <value>X線の透過率計算 T = exp(-µ·t) に使う試料厚です(µ は線吸収係数、t がこの厚み)。
 表の「Transmission (t = ...)」の値と、透過率対エネルギー曲線に反映されます。
 単位: µm(マイクロメートル)。</value>
   </data>
-  <data name="panel1.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="panel5.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 28</value>
   </data>
-  <data name="panel5.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="flowLayoutPanel3.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 360</value>
-  </data>
-  <data name="flowLayoutPanel3.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="flowLayoutPanel1.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 4</value>
@@ -398,98 +435,74 @@ B は結晶データの等方性変位パラメータ(Biso)です。オフのと
   <data name="flowLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
     <value>870, 25</value>
   </data>
-  <data name="flowLayoutPanel1.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="flowLayoutPanel4.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
-  </data>
-  <data name="flowLayoutPanel4.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="tabPageReflections.Size" type="System.Drawing.Size, System.Drawing">
     <value>876, 466</value>
   </data>
-  <data name="tabPageReflections.ToolTip" xml:space="preserve">
-    <value />
+  <data name="tabPageReflections.Text" xml:space="preserve">
+    <value>反射</value>
   </data>
   <data name="graphControlAtten.Location" type="System.Drawing.Point, System.Drawing">
-    <value>306, 58</value>
+    <value>315, 62</value>
   </data>
   <data name="graphControlAtten.Size" type="System.Drawing.Size, System.Drawing">
-    <value>567, 405</value>
-  </data>
-  <data name="graphControlAtten.ToolTip" xml:space="preserve">
-    <value />
+    <value>558, 401</value>
   </data>
   <data name="miniTableAttenScalars.Size" type="System.Drawing.Size, System.Drawing">
-    <value>327, 88</value>
+    <value>298, 88</value>
   </data>
-  <data name="miniTableAttenScalars.ToolTip" xml:space="preserve">
-    <value />
+  <data name="colEdgeElem.HeaderText" xml:space="preserve">
+    <value>元素</value>
+  </data>
+  <data name="colEdgeEdge.HeaderText" xml:space="preserve">
+    <value>吸収端</value>
+  </data>
+  <data name="colEdgeJump.HeaderText" xml:space="preserve">
+    <value>ジャンプ比</value>
   </data>
   <data name="miniTableAttenEdges.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 100</value>
   </data>
   <data name="miniTableAttenEdges.Size" type="System.Drawing.Size, System.Drawing">
-    <value>327, 91</value>
+    <value>298, 91</value>
   </data>
-  <data name="miniTableAttenEdges.ToolTip" xml:space="preserve">
-    <value />
+  <data name="colElecElem.HeaderText" xml:space="preserve">
+    <value>元素</value>
   </data>
   <data name="miniTableAttenElectron.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 197</value>
   </data>
   <data name="miniTableAttenElectron.Size" type="System.Drawing.Size, System.Drawing">
-    <value>327, 91</value>
+    <value>298, 91</value>
   </data>
-  <data name="miniTableAttenElectron.ToolTip" xml:space="preserve">
-    <value />
+  <data name="colNeutElem.HeaderText" xml:space="preserve">
+    <value>元素</value>
   </data>
   <data name="miniTableAttenNeutron.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 294</value>
   </data>
   <data name="miniTableAttenNeutron.Size" type="System.Drawing.Size, System.Drawing">
-    <value>327, 104</value>
-  </data>
-  <data name="miniTableAttenNeutron.ToolTip" xml:space="preserve">
-    <value />
+    <value>298, 104</value>
   </data>
   <data name="flowLayoutPanel9.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 58</value>
+    <value>3, 62</value>
   </data>
   <data name="flowLayoutPanel9.Size" type="System.Drawing.Size, System.Drawing">
-    <value>303, 405</value>
-  </data>
-  <data name="flowLayoutPanel9.ToolTip" xml:space="preserve">
-    <value />
+    <value>312, 401</value>
   </data>
   <data name="flowLayoutPanelAttenuationModel.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
-  <data name="radioButtonAttenMassMu.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="radioButtonAttenLinMu.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="radioButtonAttenTrans.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="flowLayoutPanelAttenCoeff.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 3</value>
-  </data>
-  <data name="flowLayoutPanelAttenCoeff.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="radioButtonElecAll.Size" type="System.Drawing.Size, System.Drawing">
     <value>100, 21</value>
   </data>
   <data name="radioButtonElecAll.Text" xml:space="preserve">
     <value>全て (正規化)</value>
-  </data>
-  <data name="radioButtonElecAll.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="radioButtonElecSigma.Location" type="System.Drawing.Point, System.Drawing">
     <value>106, 0</value>
@@ -500,9 +513,6 @@ B は結晶データの等方性変位パラメータ(Biso)です。オフのと
   <data name="radioButtonElecSigma.Text" xml:space="preserve">
     <value>σ 弾性 (nm²)</value>
   </data>
-  <data name="radioButtonElecSigma.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="radioButtonElecEMFP.Location" type="System.Drawing.Point, System.Drawing">
     <value>207, 0</value>
   </data>
@@ -512,14 +522,8 @@ B は結晶データの等方性変位パラメータ(Biso)です。オフのと
   <data name="radioButtonElecEMFP.Text" xml:space="preserve">
     <value>弾性MFP (nm)</value>
   </data>
-  <data name="radioButtonElecEMFP.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="radioButtonElecDeds.Location" type="System.Drawing.Point, System.Drawing">
     <value>317, 0</value>
-  </data>
-  <data name="radioButtonElecDeds.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="radioButtonElecIMFP.Location" type="System.Drawing.Point, System.Drawing">
     <value>436, 0</value>
@@ -530,9 +534,6 @@ B は結晶データの等方性変位パラメータ(Biso)です。オフのと
   <data name="radioButtonElecIMFP.Text" xml:space="preserve">
     <value>非弾性MFP (nm)</value>
   </data>
-  <data name="radioButtonElecIMFP.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="radioButtonElecRange.Location" type="System.Drawing.Point, System.Drawing">
     <value>559, 0</value>
   </data>
@@ -542,29 +543,20 @@ B は結晶データの等方性変位パラメータ(Biso)です。オフのと
   <data name="radioButtonElecRange.Text" xml:space="preserve">
     <value>飛程 CSDA (µm)</value>
   </data>
-  <data name="radioButtonElecRange.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="flowLayoutPanelElecQuantity.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 30</value>
   </data>
   <data name="flowLayoutPanelElecQuantity.Size" type="System.Drawing.Size, System.Drawing">
     <value>678, 21</value>
   </data>
-  <data name="flowLayoutPanelElecQuantity.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="flowLayoutPanelAttenuationModel.FlowDirection" type="System.Windows.Forms.FlowDirection, System.Windows.Forms">
     <value>TopDown</value>
   </data>
   <data name="flowLayoutPanelAttenuationModel.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 4</value>
+    <value>3, 3, 3, 8</value>
   </data>
   <data name="flowLayoutPanelAttenuationModel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>870, 55</value>
-  </data>
-  <data name="flowLayoutPanelAttenuationModel.ToolTip" xml:space="preserve">
-    <value />
+    <value>870, 59</value>
   </data>
   <data name="flowLayoutPanelAttenuationModel.WrapContents" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -572,26 +564,20 @@ B は結晶データの等方性変位パラメータ(Biso)です。オフのと
   <data name="tabPageAttenuations.Size" type="System.Drawing.Size, System.Drawing">
     <value>876, 466</value>
   </data>
-  <data name="tabPageAttenuations.ToolTip" xml:space="preserve">
-    <value />
+  <data name="tabPageAttenuations.Text" xml:space="preserve">
+    <value>減衰・輸送</value>
   </data>
   <data name="graphControlScatteringFactor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>339, 28</value>
+    <value>345, 32</value>
   </data>
   <data name="graphControlScatteringFactor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>534, 435</value>
-  </data>
-  <data name="graphControlScatteringFactor.ToolTip" xml:space="preserve">
-    <value />
+    <value>528, 431</value>
   </data>
   <data name="colSfxElem.HeaderText" xml:space="preserve">
     <value>元素</value>
   </data>
   <data name="miniTableScatteringFactorsXray.Size" type="System.Drawing.Size, System.Drawing">
     <value>328, 113</value>
-  </data>
-  <data name="miniTableScatteringFactorsXray.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="colSfeElem.HeaderText" xml:space="preserve">
     <value>元素</value>
@@ -605,9 +591,6 @@ B は結晶データの等方性変位パラメータ(Biso)です。オフのと
   <data name="miniTableScatteringFactorsElectron.Size" type="System.Drawing.Size, System.Drawing">
     <value>328, 113</value>
   </data>
-  <data name="miniTableScatteringFactorsElectron.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="colSfnElem.HeaderText" xml:space="preserve">
     <value>元素</value>
   </data>
@@ -617,65 +600,50 @@ B は結晶データの等方性変位パラメータ(Biso)です。オフのと
   <data name="miniTableScatteringFactorsNeutron.Size" type="System.Drawing.Size, System.Drawing">
     <value>328, 113</value>
   </data>
-  <data name="miniTableScatteringFactorsNeutron.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="flowLayoutPanel8.Size" type="System.Drawing.Size, System.Drawing">
-    <value>336, 435</value>
+    <value>342, 431</value>
   </data>
-  <data name="flowLayoutPanel8.ToolTip" xml:space="preserve">
-    <value />
+  <data name="flowLayoutPanelModel_Xray.Location" type="System.Drawing.Point, System.Drawing">
+    <value>44, 0</value>
   </data>
-  <data name="flowLayoutPanelModel_Xray.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="flowLayoutPanelModel_Electron.ToolTip" xml:space="preserve">
-    <value />
+  <data name="flowLayoutPanelModel_Electron.Location" type="System.Drawing.Point, System.Drawing">
+    <value>178, 0</value>
   </data>
   <data name="flowLayoutPanelScatteringFactorModel.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
-  <data name="flowLayoutPanelScatteringFactorModel.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="tabPageScatteringFactors.Size" type="System.Drawing.Size, System.Drawing">
     <value>876, 466</value>
   </data>
-  <data name="tabPageScatteringFactors.ToolTip" xml:space="preserve">
-    <value />
+  <data name="tabPageScatteringFactors.Text" xml:space="preserve">
+    <value>散乱因子</value>
   </data>
   <data name="graphControlFluor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>549, 460</value>
-  </data>
-  <data name="graphControlFluor.ToolTip" xml:space="preserve">
-    <value />
+    <value>542, 460</value>
   </data>
   <data name="panel4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>324, 3</value>
+    <value>331, 3</value>
   </data>
   <data name="panel4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>549, 460</value>
-  </data>
-  <data name="panel4.ToolTip" xml:space="preserve">
-    <value />
+    <value>542, 460</value>
   </data>
   <data name="miniTableFluorScalars.Size" type="System.Drawing.Size, System.Drawing">
     <value>311, 118</value>
   </data>
-  <data name="miniTableFluorScalars.ToolTip" xml:space="preserve">
-    <value />
+  <data name="colFlElem.HeaderText" xml:space="preserve">
+    <value>元素</value>
+  </data>
+  <data name="colFlLine.HeaderText" xml:space="preserve">
+    <value>線</value>
+  </data>
+  <data name="colFlRelI.HeaderText" xml:space="preserve">
+    <value>相対強度</value>
   </data>
   <data name="miniTableFluorLines.Size" type="System.Drawing.Size, System.Drawing">
     <value>311, 180</value>
   </data>
-  <data name="miniTableFluorLines.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="flowLayoutPanel7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>321, 460</value>
-  </data>
-  <data name="flowLayoutPanel7.ToolTip" xml:space="preserve">
-    <value />
+    <value>328, 460</value>
   </data>
   <data name="flowLayoutPanel7.WrapContents" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -683,14 +651,11 @@ B は結晶データの等方性変位パラメータ(Biso)です。オフのと
   <data name="tabPageFluorescence.Size" type="System.Drawing.Size, System.Drawing">
     <value>876, 466</value>
   </data>
-  <data name="tabPageFluorescence.ToolTip" xml:space="preserve">
-    <value />
+  <data name="tabPageFluorescence.Text" xml:space="preserve">
+    <value>蛍光</value>
   </data>
   <data name="tabControl.Size" type="System.Drawing.Size, System.Drawing">
     <value>884, 496</value>
-  </data>
-  <data name="tabControl.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
     <value>884, 523</value>
@@ -701,70 +666,56 @@ B は結晶データの等方性変位パラメータ(Biso)です。オフのと
   <data name="$this.Text" xml:space="preserve">
     <value>ビーム相互作用</value>
   </data>
-  <data name="$this.ToolTip" xml:space="preserve">
-    <value />
+  <data name="comboBoxReflXAxis.ToolTip" xml:space="preserve">
+    <value>回折ピークの横軸を選びます。3つの選択肢は同じ反射群を表し、横軸の取り方だけが変わります。
+  • 2θ — 散乱角(度)。ビームがどれだけ曲がるか。回折計が直接読む値です。
+  • d — その反射を作る結晶格子面の間隔(d が大きい=低角=面の間隔が広い)。
+  • Q = 4π·sinθ/λ — 「散乱ベクトル」(運動量遷移)。放射光や二体分布関数で
+    よく使う。Q が大きい=高角。</value>
   </data>
-  <data name="tabPageReflections.Text" xml:space="preserve">
-    <value>反射</value>
+  <data name="checkBoxReflLog.ToolTip" xml:space="preserve">
+    <value>縦軸(強度)を線形と対数(…, ×0.01, ×0.1, ×1)で切り替えます。
+回折強度は桁が大きく異なり、強いピークは少数で大半は弱いものです。線形では
+弱いピークが底に潰れて見えませんが、対数にすると下側が引き伸ばされ、弱い
+ピークも確認できます。</value>
   </data>
-  <data name="tabPageScatteringFactors.Text" xml:space="preserve">
-    <value>散乱因子</value>
+  <data name="radioButtonAttenMassMu.ToolTip" xml:space="preserve">
+    <value>質量吸収係数 µ/ρ(単位: cm²/g)を表示します。
+物質1グラムあたりに X線がどれだけ減衰(吸収+散乱)されるかを表し、物質の
+詰まり具合(密度)によりません。データ集に載るのはこの値です。密度 ρ を
+掛けると線吸収係数 µ になります。</value>
   </data>
-  <data name="tabPageAttenuations.Text" xml:space="preserve">
-    <value>減衰・輸送</value>
+  <data name="radioButtonAttenLinMu.ToolTip" xml:space="preserve">
+    <value>線吸収係数 µ = (µ/ρ)·ρ(単位: cm⁻¹)を表示します。
+実際の密度の物質を1cm通るごとの減衰量です。透過強度は I = I₀·exp(−µ·t)
+(t=通過距離)に従い、1/µ は強度が約37%(1/e)になる距離に相当します。</value>
   </data>
-  <data name="tabPageFluorescence.Text" xml:space="preserve">
-    <value>蛍光</value>
+  <data name="radioButtonAttenTrans.ToolTip" xml:space="preserve">
+    <value>透過率 T = exp(−µ·t) を%で表示します。下の「Thickness t」で設定した試料厚 t
+に対し、吸収も散乱もされずに通り抜ける X線の割合です。
+100%=試料はビームに透明、0%=ビームは完全に遮られる。現在のエネルギーで
+適切な試料厚を決める目安になります。</value>
   </data>
-  <data name="labelModel.Text" xml:space="preserve">
-    <value>モデル</value>
+  <data name="radioButtonElecAll.ToolTip" xml:space="preserve">
+    <value>下の3曲線を各最大で正規化して重ね、形を1枚で比較できます(絶対値は表で確認)。</value>
   </data>
-  <data name="label1.Text" xml:space="preserve">
-    <value>最小</value>
+  <data name="radioButtonElecSigma.ToolTip" xml:space="preserve">
+    <value>σ 弾性 — 弾性散乱断面積: 原子1個が電子を曲げる起こりやすさ
+(大きいほどよく散乱)。</value>
   </data>
-  <data name="label3.Text" xml:space="preserve">
-    <value>最大</value>
+  <data name="radioButtonElecEMFP.ToolTip" xml:space="preserve">
+    <value>弾性MFP — 平均自由行程: 弾性散乱が起きる平均間隔の距離。</value>
   </data>
-  <data name="label4.Text" xml:space="preserve">
-    <value>刻み</value>
+  <data name="radioButtonElecDeds.ToolTip" xml:space="preserve">
+    <value>dE/ds — 阻止能: 電子が1nm進むごとに失うエネルギー。</value>
   </data>
-  <data name="dataGridViewTextBoxColumnMulti.HeaderText" xml:space="preserve">
-    <value>多重度</value>
+  <data name="radioButtonElecIMFP.ToolTip" xml:space="preserve">
+    <value>IMFP — 非弾性平均自由行程: エネルギーを失う衝突の平均間隔。</value>
   </data>
-  <data name="dataGridViewTextBoxColumnIntPercent.HeaderText" xml:space="preserve">
-    <value>相対強度 (%)</value>
+  <data name="radioButtonElecRange.ToolTip" xml:space="preserve">
+    <value>飛程(CSDA) — 電子が止まるまでに進む総経路長。</value>
   </data>
-  <data name="dataGridViewTextBoxColumnIntCondition.HeaderText" xml:space="preserve">
-    <value>消滅条件</value>
-  </data>
-  <data name="numericBoxCutoffD.HeaderText" xml:space="preserve">
-    <value>d 下限 &gt;</value>
-  </data>
-  <data name="numericBoxAttenThickness.HeaderText" xml:space="preserve">
-    <value>厚さ t</value>
-  </data>
-  <data name="colEdgeEdge.HeaderText" xml:space="preserve">
-    <value>吸収端</value>
-  </data>
-  <data name="colEdgeJump.HeaderText" xml:space="preserve">
-    <value>ジャンプ比</value>
-  </data>
-  <data name="colEdgeElem.HeaderText" xml:space="preserve">
-    <value>元素</value>
-  </data>
-  <data name="colElecElem.HeaderText" xml:space="preserve">
-    <value>元素</value>
-  </data>
-  <data name="colNeutElem.HeaderText" xml:space="preserve">
-    <value>元素</value>
-  </data>
-  <data name="colFlElem.HeaderText" xml:space="preserve">
-    <value>元素</value>
-  </data>
-  <data name="colFlLine.HeaderText" xml:space="preserve">
-    <value>線</value>
-  </data>
-  <data name="colFlRelI.HeaderText" xml:space="preserve">
-    <value>相対強度</value>
+  <data name="colElecA.ToolTipText" xml:space="preserve">
+    <value>弾性散乱断面積 σ_el (NIST Mott 50 eV–36 keV、36 keV 超は遮蔽 Rutherford 近似)。</value>
   </data>
 </root>

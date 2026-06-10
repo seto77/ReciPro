@@ -117,6 +117,108 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="comboBoxGradient.ToolTip" xml:space="preserve">
+    <value>Selects positive or negative film
+gradient (negative inverts the displayed
+intensity scale of the overlapped image).</value>
+  </data>
+  <data name="comboBoxScale1.ToolTip" xml:space="preserve">
+    <value>Switches the intensity mapping of the overlapped
+image between logarithmic and linear scale.</value>
+  </data>
+  <data name="comboBoxScale2.ToolTip" xml:space="preserve">
+    <value>Selects the color scale (Gray, Cold-Warm, Spectrum,
+or Fire) used to render the overlapped image.</value>
+  </data>
+  <data name="trackBarPictureOpacity1.ToolTip" xml:space="preserve">
+    <value>Adjusts the opacity (0-100%) of the
+overlapped image on the diffraction pattern.</value>
+  </data>
+  <data name="label10.ToolTip" xml:space="preserve">
+    <value>Adjusts the opacity (0-100%) of the
+overlapped image on the diffraction pattern.</value>
+  </data>
+  <data name="label24.ToolTip" xml:space="preserve">
+    <value>Selects positive or negative film
+gradient (negative inverts the displayed
+intensity scale of the overlapped image).</value>
+  </data>
+  <data name="label23.ToolTip" xml:space="preserve">
+    <value>Switches the intensity mapping of the overlapped
+image between logarithmic and linear scale.</value>
+  </data>
+  <data name="label22.ToolTip" xml:space="preserve">
+    <value>Selects the color scale (Gray, Cold-Warm, Spectrum,
+or Fire) used to render the overlapped image.</value>
+  </data>
+  <data name="numericBoxFootX.ToolTip" xml:space="preserve">
+    <value>Sets the X pixel coordinate of the foot
+point (direct-beam center) on the detector.</value>
+  </data>
+  <data name="numericBoxFootY.ToolTip" xml:space="preserve">
+    <value>Sets the Y pixel coordinate of the foot
+point (direct-beam center) on the detector.</value>
+  </data>
+  <data name="numericBoxPixelSize.ToolTip" xml:space="preserve">
+    <value>Sets the physical size of one detector pixel in millimeters.</value>
+  </data>
+  <data name="sizeControl1.ToolTip" xml:space="preserve">
+    <value>Sets the detector size (width x height) in pixels.</value>
+  </data>
+  <data name="buttonClearPicture.ToolTip" xml:space="preserve">
+    <value>Clears the loaded overlapped image.</value>
+  </data>
+  <data name="buttonLoadPicture.ToolTip" xml:space="preserve">
+    <value>Loads an image file to overlap on the diffraction pattern.</value>
+  </data>
+  <data name="buttonRot90.ToolTip" xml:space="preserve">
+    <value>Rotates the overlapped image and
+detector dimensions by 90 degrees.</value>
+  </data>
+  <data name="textBoxFileName.ToolTip" xml:space="preserve">
+    <value>Shows the file path of the loaded
+overlapped image (read-only).</value>
+  </data>
+  <data name="trackBarMaxInt.ToolTip" xml:space="preserve">
+    <value>Sets the upper intensity limit for
+displaying the overlapped image.</value>
+  </data>
+  <data name="trackBarMinInt.ToolTip" xml:space="preserve">
+    <value>Sets the lower intensity limit for
+displaying the overlapped image.</value>
+  </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value>Sets the upper intensity limit for
+displaying the overlapped image.</value>
+  </data>
+  <data name="label2.ToolTip" xml:space="preserve">
+    <value>Sets the lower intensity limit for
+displaying the overlapped image.</value>
+  </data>
+  <data name="checkBoxSchematicDiagram.ToolTip" xml:space="preserve">
+    <value>When checked, shows the schematic
+diagram of the detector geometry.</value>
+  </data>
+  <data name="numericBoxCameraLength2.ToolTip" xml:space="preserve">
+    <value>Sets the camera length to the detector plane in millimeters.</value>
+  </data>
+  <data name="numericBoxPhi.ToolTip" xml:space="preserve">
+    <value>Sets the azimuthal angle phi of
+the detector tilt axis in degrees.</value>
+  </data>
+  <data name="numericBoxTau.ToolTip" xml:space="preserve">
+    <value>Sets the detector tilt angle tau
+about the tilt axis in degrees.</value>
+  </data>
+  <data name="label4.ToolTip" xml:space="preserve">
+    <value>Sets the upper intensity limit for
+displaying the overlapped image.</value>
+  </data>
+  <data name="checkBoxDetectorSizePosition.ToolTip" xml:space="preserve">
+    <value>When checked, draws the detector area
+on the diffraction pattern and
+enables the overlapped-image settings.</value>
+  </data>
   <metadata name="captureExtender.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>

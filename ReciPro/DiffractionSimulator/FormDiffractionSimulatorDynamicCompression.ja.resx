@@ -1,0 +1,145 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="buttonSimulate.ToolTip" xml:space="preserve">
+    <value>動的圧縮回折シミュレーションを実行し、パターンを積算します。</value>
+  </data>
+  <data name="checkBoxSkipDrawing.ToolTip" xml:space="preserve">
+    <value>オンにすると、計算中の画面描画を省略して計算を高速化します。</value>
+  </data>
+  <data name="label2.ToolTip" xml:space="preserve">
+    <value>未圧縮領域と圧縮領域を分ける前方境界の深さです。</value>
+  </data>
+  <data name="label3.ToolTip" xml:space="preserve">
+    <value>圧縮領域と解放領域を分ける後方境界の深さです。</value>
+  </data>
+  <data name="buttonSetFolder.ToolTip" xml:space="preserve">
+    <value>シミュレーションした TIFF パターン
+の保存先フォルダを選びます。</value>
+  </data>
+  <data name="textBoxFileName.ToolTip" xml:space="preserve">
+    <value>保存する TIFF パターンのベースファイル
+名です。'.tif' は自動で付加されます。</value>
+  </data>
+  <data name="label8.ToolTip" xml:space="preserve">
+    <value>保存する TIFF パターンのベースファイル
+名です。'.tif' は自動で付加されます。</value>
+  </data>
+  <data name="numericBoxCompressedOmega.ToolTip" xml:space="preserve">
+    <value>圧縮領域での結晶回転速度 ω の平均値(°/ns)。</value>
+  </data>
+  <data name="numericBoxCompressedOmegaSigma.ToolTip" xml:space="preserve">
+    <value>圧縮領域での回転速度の標準偏差 σ_ω (°/ns)。</value>
+  </data>
+  <data name="numericBoxCompressedThetaA.ToolTip" xml:space="preserve">
+    <value>圧縮領域の回転軸広がり σ_θ の定数項 a (°、2019年モデル)。</value>
+  </data>
+  <data name="numericBoxCompressedThetaB.ToolTip" xml:space="preserve">
+    <value>圧縮領域の回転軸広がり σ_θ の
+時間係数 b (°/ns、2019年モデル)。</value>
+  </data>
+  <data name="checkBoxOmegaStep.ToolTip" xml:space="preserve">
+    <value>オンにすると、全体の Ω 角を一定刻みで増や
+しながらシミュレーションを繰り返します。</value>
+  </data>
+  <data name="checkBoxSaveSimulatedPattern.ToolTip" xml:space="preserve">
+    <value>オンにすると、各シミュレーションパターンを
+選択フォルダへ TIFF ファイルとして保存します。</value>
+  </data>
+  <data name="numericBoxDivisionOfRotationAngle.ToolTip" xml:space="preserve">
+    <value>回転速度分布を積分するためのサンプリング分割数です。</value>
+  </data>
+  <data name="numericBoxDivisionOfRotationAxis.ToolTip" xml:space="preserve">
+    <value>回転軸の方位角サンプリング分割数です。</value>
+  </data>
+  <data name="numericBoxReleasedOmega.ToolTip" xml:space="preserve">
+    <value>解放領域での結晶回転速度 ω の平均値(°/ns)。</value>
+  </data>
+  <data name="numericBoxReleasedOmegaSigma.ToolTip" xml:space="preserve">
+    <value>解放領域での回転速度の標準偏差 σ_ω (°/ns)。</value>
+  </data>
+  <data name="numericBoxReleasedThetaA.ToolTip" xml:space="preserve">
+    <value>解放領域の回転軸広がり σ_θ の定数項 a (°、2019年モデル)。</value>
+  </data>
+  <data name="numericBoxReleasedThetaB.ToolTip" xml:space="preserve">
+    <value>解放領域の回転軸広がり σ_θ の
+時間係数 b (°/ns、2019年モデル)。</value>
+  </data>
+  <data name="numericBoxShockedPlaneH.ToolTip" xml:space="preserve">
+    <value>衝撃(圧縮)面法線のミラー指数 h。</value>
+  </data>
+  <data name="numericBoxShockedPlaneK.ToolTip" xml:space="preserve">
+    <value>衝撃(圧縮)面法線のミラー指数 k。</value>
+  </data>
+  <data name="numericBoxShockedPlaneL.ToolTip" xml:space="preserve">
+    <value>衝撃(圧縮)面法線のミラー指数 l。</value>
+  </data>
+  <data name="numericBoxSlipPlaneH.ToolTip" xml:space="preserve">
+    <value>すべり面法線のミラー指数 h(2019年モデル
+で回転軸を定義するために使用)。</value>
+  </data>
+  <data name="numericBoxSlipPlaneK.ToolTip" xml:space="preserve">
+    <value>すべり面法線のミラー指数 k(2019年モデル
+で回転軸を定義するために使用)。</value>
+  </data>
+  <data name="numericBoxSlipPlaneL.ToolTip" xml:space="preserve">
+    <value>すべり面法線のミラー指数 l(2019年モデル
+で回転軸を定義するために使用)。</value>
+  </data>
+  <data name="numericBoxUp.ToolTip" xml:space="preserve">
+    <value>圧縮領域で深さを経過時間へ変換す
+る衝撃(圧縮)波速度 Us (km/s)。</value>
+  </data>
+  <data name="radioButtonCompressedIsotropic.ToolTip" xml:space="preserve">
+    <value>圧縮領域の格子へ等方的(静水圧的)圧縮を適用します。</value>
+  </data>
+  <data name="radioButtonCompressedUniaxial.ToolTip" xml:space="preserve">
+    <value>圧縮領域の格子へ、衝撃面法線に沿った一軸圧縮を適用します。</value>
+  </data>
+  <data name="numericBoxUr.ToolTip" xml:space="preserve">
+    <value>解放領域で深さを経過時間へ変換する解放波速度 Ur (km/s)。</value>
+  </data>
+  <data name="radioButtonReleasedIsotropic.ToolTip" xml:space="preserve">
+    <value>解放領域の格子へ等方的(静水圧的)圧縮を適用します。</value>
+  </data>
+  <data name="radioButtonReleasedUniaxial.ToolTip" xml:space="preserve">
+    <value>解放領域の格子へ、衝撃面法線に沿った一軸圧縮を適用します。</value>
+  </data>
+  <data name="numericBoxOmegaStep.ToolTip" xml:space="preserve">
+    <value>'Increment Ω' が有効なとき、繰り
+返しごとに加える Ω 角の刻み(°)。</value>
+  </data>
+  <data name="numericBoxOmegaTimes.ToolTip" xml:space="preserve">
+    <value>'Increment Ω' が有効なときの繰り返し回数です。</value>
+  </data>
+  <data name="radioButton2018Model.ToolTip" xml:space="preserve">
+    <value>2018年回転モデルを使います(回転軸は圧縮軸に垂直)。</value>
+  </data>
+  <data name="radioButton2019Model.ToolTip" xml:space="preserve">
+    <value>2019年回転モデルを使います(すべり面と圧縮面の
+外積から回転軸を定義し、θ,φ の広がりを含む)。</value>
+  </data>
+  <data name="numericBoxEOS_K0.ToolTip" xml:space="preserve">
+    <value>3次 Birch-Murnaghan 状態方程式の体積弾性率 K0 (GPa)。</value>
+  </data>
+  <data name="numericBoxEOS_Kprime.ToolTip" xml:space="preserve">
+    <value>3次 Birch-Murnaghan 状態方程式の体積弾性率の圧力微分 K'0。</value>
+  </data>
+  <data name="numericBoxMassAbsorption.ToolTip" xml:space="preserve">
+    <value>各層を通る強度減衰に使う試料の質量吸収係数(cm²/g)。</value>
+  </data>
+  <data name="label4.ToolTip" xml:space="preserve">
+    <value>各層を通る強度減衰に使う試料の質量吸収係数(cm²/g)。</value>
+  </data>
+</root>
