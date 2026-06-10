@@ -43,6 +43,10 @@ extern "C" {
 	EIGEN_FUNCS_API void _PartialPivLuSolve(int dim, double mat[], double vec[], double result[]);
 
 	EIGEN_FUNCS_API void _GenerateTC1(int dim, double thickness, double _kg_z[], double _val[], double _vec[], double _tc_k[]);
+	// 260610Cl 追加: _GenerateTC1 の改良版 (thread_local workspace + a⊙(M·b) 評価順)
+	EIGEN_FUNCS_API void _GenerateTC1B(int dim, double thickness, double _kg_z[], double _val[], double _vec[], double _tc_k[]);
+	// 260610Cl 追加: STEM 非弾性の q 単位一括計算 (W=Uq×TC_sub の列タイル GEMM → エントリごとに 4 dot → sumD 累積)
+	EIGEN_FUNCS_API void _STEM_InelasticQ(int dim, int lDim, int entryCount, double Uq[], double tcAll[], int kIndices[], int n4[], double r4[], double lenzAll[], double sumD[]);
 	EIGEN_FUNCS_API void _GenerateTC2(int dim, double thickness, double _kg_z[], double _val[], double _vec[], double _tc_k[], double _tc_kq[]);
 	EIGEN_FUNCS_API void _RowVec_SqMat_ColVec(int dim, double rowVec[], double sqMat[], double colVec[], double _result[]);
 	EIGEN_FUNCS_API void _SqMat_ColVec(int dim, double sqMat[], double colVec[], double _result[]);

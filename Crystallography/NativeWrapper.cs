@@ -180,6 +180,18 @@ public static partial class NativeWrapper
                                             double[] rVec,
                                             double[] results);
 
+    // 260610Cl 追加 (Phase2 候補B-native): 等間隔グリッド前提の grid 版 (行方向の位相回転再帰で sincos を行頭のみに削減)
+    [LibraryImport("Crystallography.Native.dll")]
+    private static unsafe partial void _HRTEMSolverQuasiGrid(int gDim, int lDim, int width, int rowCount,
+                                            double startX, double startY, double stepX, double stepY,
+                                            double[] gPsi, double[] gVec, double[] gLenz, double[] results);
+
+    // 260610Cl 追加 (Phase2 候補B-native)
+    [LibraryImport("Crystallography.Native.dll")]
+    private static unsafe partial void _HRTEMSolverTccGrid(int gDim, int lDim, int width, int rowCount,
+                                            double startX, double startY, double stepX, double stepY,
+                                            double[] gPsi, double[] gVec, double[] gLenz, double[] results);
+
 
     [LibraryImport("Crystallography.Native.dll")]
     private static unsafe partial void _Histogram(
@@ -198,6 +210,14 @@ public static partial class NativeWrapper
 
     [LibraryImport("Crystallography.Native.dll")]
     private static unsafe partial void _GenerateTC1(int dim, double thickness, double* _kg_z, double* _val, double* _vec, double* _tc_k);
+
+    // 260610Cl 追加 (Phase2 候補M): _GenerateTC1 の改良版 (thread_local workspace 再利用 + a⊙(M·b) 評価順で一時行列なし)
+    [LibraryImport("Crystallography.Native.dll")]
+    private static unsafe partial void _GenerateTC1B(int dim, double thickness, double* _kg_z, double* _val, double* _vec, double* _tc_k);
+
+    // 260610Cl 追加 (Phase2 候補A): STEM 非弾性を q 単位で一括計算 (W_q=U_q×TC_sub の列タイル GEMM → 4 dot → sumD 累積)
+    [LibraryImport("Crystallography.Native.dll")]
+    private static unsafe partial void _STEM_InelasticQ(int dim, int lDim, int entryCount, double* Uq, double* tcAll, int* kIndices, int* n4, double* r4, double* lenzAll, double* sumD);
 
     [LibraryImport("Crystallography.Native.dll")]
     private static unsafe partial void _GenerateTC2(int dim, double thickness, double* _kg_z, double* _val, double* _vec, double* _tc_k, double* _tc_kq);
@@ -816,6 +836,26 @@ public static partial class NativeWrapper
             _GenerateTC1(dim, thickness, _kg_z, (double*)_val, (double*)_vec, (double*)_tc_k);
     }
 
+    /// <summary>260610Cl 追加 (Phase2 候補M): _GenerateTC1 の改良版。thread_local workspace 再利用 + a⊙(M·b) 評価順 (数学的に同一・丸めのみ僅差)</summary>
+    unsafe static public void GenerateTC1B(in int dim, in double thickness, double* _kg_z, Complex* _val, Complex* _vec, Complex* _tc_k)
+    {
+        if (Enabled)
+            _GenerateTC1B(dim, thickness, _kg_z, (double*)_val, (double*)_vec, (double*)_tc_k);
+    }
+
+    /// <summary>
+    /// 260610Cl 追加 (Phase2 候補A): STEM 非弾性を q 単位で一括計算。
+    /// W_q = Uq(dim×dim) × TC_sub(dim×entryCount) を列タイル GEMM で計算し、エントリ e ごとに
+    /// tmp = Σ_m r4[4e+m]·dot(conj(tcAll列 n4[4e+m]), W_q列e) を取り、sumD[d] += tmp·lenzAll[e·lDim+d] まで native 内で完結する。
+    /// 旧経路 (BlendAndConjugate + RowVec_SqMat_ColVec ×エントリ数) と総和順序の入れ替えのみで数学的に等価。
+    /// sumD は呼び出し側でゼロ初期化した q 専有スライスを渡すこと (slice 間の累積は sumD 側に残る)。
+    /// </summary>
+    unsafe static public void STEM_InelasticQ(in int dim, in int lDim, in int entryCount, Complex* Uq, Complex* tcAll, int* kIndices, int* n4, double* r4, Complex* lenzAll, Complex* sumD)
+    {
+        if (Enabled)
+            _STEM_InelasticQ(dim, lDim, entryCount, (double*)Uq, (double*)tcAll, kIndices, n4, r4, (double*)lenzAll, (double*)sumD);
+    }
+
     unsafe static public void GenerateTC2(in int dim, in double thickness, double* _kg_z, Complex* _val, Complex* _vec, Complex* _tc_k, Complex* _tc_kq)
     {
         if (Enabled)
@@ -942,6 +982,27 @@ public static partial class NativeWrapper
             _HRTEMSolverQuasi(gDim, lDim, rDim, gPsi, gVec, gLenz, rVec, results);
         else
             _HRTEMSolverTcc(gDim, lDim, rDim, gPsi, gVec, gLenz, rVec, results);
+
+        return results;
+    }
+
+    /// <summary>
+    /// 260610Cl 追加 (Phase2 候補B-native): 等間隔グリッド版 HRTEM solver。
+    /// 画素 (x, row) の座標は (startX + x·stepX, startY + row·stepY)。native 側は行方向の位相回転再帰
+    /// (256 画素ごとに再アンカー) で sincos を行頭のみに削減し、画素ごとの heap 確保も行わない。
+    /// 戻り値レイアウトは results[l·rowCount·width + row·width + x] (旧 HRTEM_Solver と同じ l-major)。
+    /// </summary>
+    static public double[] HRTEM_SolverGrid(double[] gPsi, double[] gVec, double[] gLenz, int width, int rowCount,
+        double startX, double startY, double stepX, double stepY, bool quasiMode)
+    {
+        var gDim = gPsi.Length / 2;
+        var lDim = gLenz.Length / gPsi.Length;
+        var results = new double[(long)lDim * width * rowCount];
+
+        if (quasiMode)
+            _HRTEMSolverQuasiGrid(gDim, lDim, width, rowCount, startX, startY, stepX, stepY, gPsi, gVec, gLenz, results);
+        else
+            _HRTEMSolverTccGrid(gDim, lDim, width, rowCount, startX, startY, stepX, stepY, gPsi, gVec, gLenz, results);
 
         return results;
     }

@@ -102,6 +102,73 @@ extern "C" {
 		Map<Vec>((dcomplex*)_tc_k, dim).noalias() = exp_kgz.asDiagonal() * m * exp_val;
 	}
 
+	//STEM用の特殊関数. 透過係数を求める (260610Cl 追加: _GenerateTC1 の改良版)
+	// 旧 _GenerateTC1 は呼び出しごとに Eigen Vec を2本 heap 確保し、exp_kgz.asDiagonal()*m*exp_val の
+	// 左結合評価で一時行列が生じ得た。thread_local workspace 再利用 + a⊙(M·b) の評価順に変更 (数学的に同一、丸めのみ僅差)
+	EIGEN_FUNCS_API void _GenerateTC1B(int dim, double thickness, double _kg_z[], double _val[], double _vec[], double _tc_k[])
+	{
+		static thread_local std::vector<dcomplex> work;
+		if ((int)work.size() < dim)
+			work.resize(dim);
+
+		auto val = (dcomplex*)_val;
+		for (int i = 0; i < dim; ++i)
+			work[i] = exp(two_pi_i * thickness * val[i]);
+
+		auto tc = (dcomplex*)_tc_k;
+		Map<Vec>(tc, dim).noalias() = Map<Mat>((dcomplex*)_vec, dim, dim) * Map<Vec>(work.data(), dim);
+		for (int i = 0; i < dim; ++i)
+			tc[i] *= exp(two_pi_i * thickness * _kg_z[i]);
+	}
+
+	//STEMの非弾性散乱を q 単位で一括計算 (260610Cl 追加)
+	// W = Uq(dim×dim) × TC_sub(dim×entryCount) を列タイル GEMM で計算し、エントリ e ごとに
+	//   tmp = Σ_m r4[4e+m]·dot(conj(tcAll列 n4[4e+m]), W列e)   (Eigen の dot は第1引数を共役する)
+	// を取り、sumD[d] += tmp·lenzAll[e·lDim+d] まで native 内で完結する。
+	// 旧経路 (_BlendAndConjugate + _RowVec_SqMat_ColVec をエントリごとに P/Invoke 2回) と
+	// 総和順序の入れ替えのみで数学的に等価。GEMV (メモリバウンド) の列挙を GEMM (高計算強度) に置き換える。
+	EIGEN_FUNCS_API void _STEM_InelasticQ(int dim, int lDim, int entryCount,
+		double _Uq[], double _tcAll[], int kIndices[], int n4[], double r4[], double _lenzAll[], double _sumD[])
+	{
+		constexpr int TILE = 64;
+		static thread_local std::vector<dcomplex> tcTile, wTile;
+		if ((int)tcTile.size() < dim * TILE)
+		{
+			tcTile.resize((size_t)dim * TILE);
+			wTile.resize((size_t)dim * TILE);
+		}
+
+		auto U = Map<Mat>((dcomplex*)_Uq, dim, dim);
+		auto tcAll = (dcomplex*)_tcAll;
+		auto lenzAll = (dcomplex*)_lenzAll;
+		auto sumD = (dcomplex*)_sumD;
+
+		for (int e0 = 0; e0 < entryCount; e0 += TILE)
+		{
+			const int cols = entryCount - e0 < TILE ? entryCount - e0 : TILE;
+			for (int c = 0; c < cols; ++c)//対象 k 列を連続バッファへ pack (コスト O(dim·cols) ≪ GEMM O(dim²·cols))
+				memcpy(tcTile.data() + (size_t)c * dim, tcAll + (size_t)kIndices[e0 + c] * dim, sizeof(dcomplex) * dim);
+
+			Map<Mat> TC(tcTile.data(), dim, cols);
+			Map<Mat> W(wTile.data(), dim, cols);
+			W.noalias() = U * TC;
+
+			for (int c = 0; c < cols; ++c)
+			{
+				const int e = e0 + c;
+				auto w = W.col(c);
+				dcomplex tmp(0, 0);
+				for (int m = 0; m < 4; ++m)
+				{
+					auto tcn = Map<Vec>(tcAll + (size_t)n4[e * 4 + m] * dim, dim);
+					tmp += r4[e * 4 + m] * tcn.dot(w);//dot = Σ conj(tc_n)·w
+				}
+				for (int d = 0; d < lDim; ++d)
+					sumD[d] += tmp * lenzAll[(size_t)e * lDim + d];
+			}
+		}
+	}
+
 	//STEM用の特殊関数. 透過係数を求める
 	EIGEN_FUNCS_API void _GenerateTC2(int dim, double thickness, double _kg_z[], double _val[], double _vec[], double _tc_k[], double _tc_kq[])
 	{

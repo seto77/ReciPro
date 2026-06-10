@@ -42,6 +42,9 @@ public class BetheMethod
     public static bool EigenEnabled, MklEnabled, BlasEnabled, CudaEnabled;
 
     public static readonly int ProcessorCount = Environment.ProcessorCount;
+
+    // 260610Cl 追加: 行方向の位相回転再帰でこの画素数ごとに Exp で再アンカー (位相ドリフト ~256·eps 抑制)
+    private const int PhaseReanchor = 256;
     #endregion
 
     #region フィールド、プロパティ
@@ -447,6 +450,24 @@ public class BetheMethod
                 }
             });
 
+            // 260610Cl 追加: Rect 同士の交差グラフを事前計算 (O(G²) 1回)。pos は必ず自ディスクの Rect 内にあるので、
+            //   Rect が交差しない g2 に対して IsInside(pos) が真になることはなく、隣接のみの走査は厳密に等価。
+            var neighbors = new int[Beams.Length][];
+            Parallel.For(0, Beams.Length, g1 =>
+            {
+                if (!bwCBED.CancellationPending)
+                {
+                    var rect1 = diskTemp[g1].Rect;
+                    var lst = new List<int>();
+                    for (int g2 = 0; g2 < Beams.Length; g2++)
+                        if (g2 != g1 && diskTemp[g2].Pos is not null &&
+                            rect1.X <= diskTemp[g2].Rect.UpperX && diskTemp[g2].Rect.X <= rect1.UpperX &&
+                            rect1.Y <= diskTemp[g2].Rect.UpperY && diskTemp[g2].Rect.Y <= rect1.UpperY)
+                            lst.Add(g2);
+                    neighbors[g1] = [.. lst];
+                }
+            });
+
             //g1のディスク中のピクセル(r1)に対して、他のディスク(g2)の重なるピクセル(r2)を足し合わせていく。
             Parallel.For(0, Beams.Length, g1 =>  //for(int g1=0; g1<Beams.Length;g1++)
             {
@@ -469,8 +490,10 @@ public class BetheMethod
                         if (Disks[0][g1].RawAmplitudes[r1] != 0)
                         {
                             var pos = diskTemp[g1].Pos[r1];
-                            for (int g2 = 0; g2 < Beams.Length; g2++)
-                                if (g2 != g1 && diskTemp[g2].Rect.IsInside(pos))
+                            // for (int g2 = 0; g2 < Beams.Length; g2++) // 260610Cl 変更前: 全 g2 を走査 (O(G²·R) の IsInside 判定)
+                            //     if (g2 != g1 && diskTemp[g2].Rect.IsInside(pos))
+                            foreach (var g2 in neighbors[g1] ?? []) // 260610Cl 変更: Rect 交差グラフの隣接のみ走査 (null はキャンセル時のみ)
+                                if (diskTemp[g2].Rect.IsInside(pos))
                                 {
                                     var r2 = getIndex(pos.X,pos.Y, diskTemp[g2].Pos, width);
                                     if (r2 >= 0 && Disks[0][g2].RawAmplitudes[r2] != 0)
@@ -2507,7 +2530,23 @@ public class BetheMethod
         //    qList.RemoveRange(Beams.Length, qList.Count - Beams.Length);
 
         //g_q_index (あるq[m]に対して、g-qの反射は、Beams配列で何番目か)
-        var g_qIndex = qList.Select(q => Beams.Select((g1, n) => (g: n, g_q: Array.FindIndex(Beams, g2 => g2.Index == (g1 - q).Index))).Where(e => e.g_q != -1).ToArray()).ToArray();
+        // var g_qIndex = qList.Select(q => Beams.Select((g1, n) => (g: n, g_q: Array.FindIndex(Beams, g2 => g2.Index == (g1 - q).Index))).Where(e => e.g_q != -1).ToArray()).ToArray(); // 260610Cl 変更前: Array.FindIndex (O(N)) を q×g1 の全組合せで呼ぶため O(Q·N²)
+        // 260610Cl 変更: hkl→配列位置 の辞書で O(Q·N) に削減。Beams の hkl は一意 (Find_gVectors 由来) なので FindIndex の「最初の一致」と同一結果。Beam 一時生成 (g1 - q) も除去
+        var beamIndexDic = new Dictionary<(int H, int K, int L), int>(Beams.Length);
+        for (int n = 0; n < Beams.Length; n++)
+            beamIndexDic.TryAdd(Beams[n].Index, n);
+        var g_qIndex = qList.Select(q =>
+        {
+            var lst = new List<(int g, int g_q)>(Beams.Length);
+            var (qH, qK, qL) = q.Index;
+            for (int n = 0; n < Beams.Length; n++)
+            {
+                var (h, k, l) = Beams[n].Index;
+                if (beamIndexDic.TryGetValue((h - qH, k - qK, l - qL), out var g_q))
+                    lst.Add((n, g_q));
+            }
+            return lst.ToArray();
+        }).ToArray();
         #endregion
 
         #region 検証用コード
@@ -2598,12 +2637,16 @@ public class BetheMethod
                 foreach (var (qIndex, n, r, lenz) in CollectionsMarshal.AsSpan(list[kIndex]))
                 {
                     iElas.AsSpan(0, tLen).Clear(); // (260403Ch) 使用範囲だけ初期化する
-                    foreach (var (g, g_q) in g_qIndex[qIndex].Where(e => D(Beams[e.g].Vec.ToPointD + k_xy[kIndex])))
+                    // foreach (var (g, g_q) in g_qIndex[qIndex].Where(e => D(Beams[e.g].Vec.ToPointD + k_xy[kIndex]))) // 260610Cl 変更前: ホットループ内で Where + クロージャ (kIndex キャプチャ) をエントリごとに確保していた
+                    foreach (var (g, g_q) in g_qIndex[qIndex]) // 260610Cl 変更: 判定を手書きループに展開してアロケーション除去 (結果は厳密に等価)
+                    {
+                        if (!D(Beams[g].Vec.ToPointD + k_xy[kIndex])) continue; // 260610Cl
                         for (int t = 0; t < tLen; t++)
                         {
                             //i_Elas[t] += 1;
                             iElas[t] += tc[kIndex][t][g] * (r[0] * tc[n[0]][t][g_q] + r[1] * tc[n[1]][t][g_q] + r[2] * tc[n[2]][t][g_q] + r[3] * tc[n[3]][t][g_q]).Conjugate();
                         }
+                    }
                     // lock (lockObj1) // 260420Cl 旧実装: 単一ロックで全 qIndex を直列化していた
                     lock (qIndexLocks[qIndex])
                         for (int t = 0; t < tLen; t++)
@@ -2706,7 +2749,47 @@ public class BetheMethod
             #region 各種変数の設定
             var tc_k = GC.AllocateUninitializedArray<Complex>(tc.Length * bLen);
             var validTc = list.Where(e1 => e1 is not null).SelectMany(e2 => e2.SelectMany(e3 => e3.N)).Distinct().ToList().AsParallel();
-            var total = _thick.Sum(e => e.Length) * tcPArray.Length;
+            // var total = _thick.Sum(e => e.Length) * tcPArray.Length; // 260610Cl 変更前: k 単位の進捗だった
+            #endregion
+
+            #region 260610Cl 追加 (Phase2 候補A): list (k 単位) を q 単位に反転
+            // _STEM_InelasticQ は q 単位で W_q = U_q×TC_sub を GEMM 計算するため、
+            // 「この q を持つ全エントリ (kIndex, 近傍4点 n, 比率 r, レンズ関数)」を q ごとの平坦配列にまとめておく。
+            // tcPArray の順に詰めるので順序は決定的。
+            var qEntryK = new int[qList.Count][];
+            var qEntryN4 = new int[qList.Count][];
+            var qEntryR4 = new double[qList.Count][];
+            var qEntryLenz = new Complex[qList.Count][];
+            if (EigenEnabled)
+            {
+                var qCounts = new int[qList.Count];
+                foreach (var kIndex in tcPArray)
+                    foreach (var (qIndex, _, _, _) in CollectionsMarshal.AsSpan(list[kIndex]))
+                        qCounts[qIndex]++;
+                for (int q = 0; q < qList.Count; q++)
+                    if (qCounts[q] > 0)
+                    {
+                        qEntryK[q] = new int[qCounts[q]];
+                        qEntryN4[q] = new int[qCounts[q] * 4];
+                        qEntryR4[q] = new double[qCounts[q] * 4];
+                        qEntryLenz[q] = new Complex[qCounts[q] * dLen];
+                        qCounts[q] = 0;//以降は書き込み位置として再利用
+                    }
+                foreach (var kIndex in tcPArray)
+                    foreach (var (qIndex, n, r, lenz) in CollectionsMarshal.AsSpan(list[kIndex]))
+                    {
+                        var pos = qCounts[qIndex]++;
+                        qEntryK[qIndex][pos] = kIndex;
+                        for (int m = 0; m < 4; m++)
+                        {
+                            qEntryN4[qIndex][pos * 4 + m] = n[m];
+                            qEntryR4[qIndex][pos * 4 + m] = r[m];
+                        }
+                        lenz.CopyTo(qEntryLenz[qIndex], pos * dLen);
+                    }
+            }
+            var activeQCount = qEntryK.Count(e => e is not null);
+            var total = _thick.Sum(e => e.Length) * (EigenEnabled ? activeQCount : tcPArray.Length); // 260610Cl: 新経路は q 単位の進捗
             count = 0;
             #endregion
 
@@ -2737,7 +2820,8 @@ public class BetheMethod
                                 {
                                     fixed (Complex* _tc_k = tc_k, _eVal = eVal[kIndex], _eVec = eVec[kIndex])
                                     fixed (double* _kg_z = kg_z[kIndex])
-                                        NativeWrapper.GenerateTC1(bLen, thickness, _kg_z, _eVal, _eVec, _tc_k + kIndex * bLen);
+                                        // NativeWrapper.GenerateTC1(bLen, thickness, _kg_z, _eVal, _eVec, _tc_k + kIndex * bLen); // 260610Cl 変更前: 呼び出しごとに Eigen Vec 2本を heap 確保し、diag×M の一時行列も生じ得た
+                                        NativeWrapper.GenerateTC1B(bLen, thickness, _kg_z, _eVal, _eVec, _tc_k + kIndex * bLen); // 260610Cl 変更 (Phase2 候補M): thread_local workspace + a⊙(M·b) 評価順 (数学的に同一・丸めのみ僅差)
                                 }
                                 else
                                 {
@@ -2759,6 +2843,25 @@ public class BetheMethod
                             });
                             #endregion
 
+                            if (EigenEnabled)
+                            {
+                                // 260610Cl 変更 (Phase2 候補A): 旧実装はエントリ (k,q) ごとに BlendAndConjugate + RowVec_SqMat_ColVec の
+                                //   P/Invoke 2回 (メモリバウンド GEMV ×数百万回) + per-qIndex lock で sum へ累積していた。
+                                //   q 単位の native API _STEM_InelasticQ (W_q=U_q×TC_sub を列タイル GEMM → エントリごとに 4 dot →
+                                //   sumD[d] += tmp·lenz まで native 内で完結) へ置換。sum の q スライスは q 専有なのでロック不要。
+                                //   総和順序の入れ替えのみで数学的に等価 (BetheBench で検証)。旧経路は下の else (非 Eigen fallback) に残存。
+                                Parallel.For(0, qList.Count, qIndex =>
+                                {
+                                    var entryCount = qEntryK[qIndex]?.Length ?? 0;
+                                    if (entryCount == 0 || bwSTEM.CancellationPending) return;
+                                    fixed (Complex* _tc_k = tc_k, _U = U, _sum = sum, _lenz = qEntryLenz[qIndex])
+                                    fixed (int* _k = qEntryK[qIndex], _n4 = qEntryN4[qIndex])
+                                    fixed (double* _r4 = qEntryR4[qIndex])
+                                        NativeWrapper.STEM_InelasticQ(bLen, dLen, entryCount, _U + qIndex * bLen2, _tc_k, _k, _n4, _r4, _lenz, _sum + qIndex * dLen);
+                                    if (Interlocked.Increment(ref count) % 100 == 0) bwSTEM.ReportProgress((int)(1E6 / total * count), "Calculating I_inelastic(Q)");//状況を報告
+                                });
+                            }
+                            else // 260610Cl: 非 Eigen (managed fallback) は従来経路のまま (内側の if (EigenEnabled) 分岐は到達しない)
                             tcP.ForAll(kIndex =>
                             {
                                 var sumTmpLength = list[kIndex].Count * dLen;
@@ -2945,25 +3048,76 @@ public class BetheMethod
 
         double cX = width / 2.0, cY = height / 2.0, radiusPix2 = radiusPix * radiusPix;
         var shift = (Crystal.RotationMatrix * (Crystal.A_Axis + Crystal.B_Axis + Crystal.C_Axis) / 2).ToPointD;
+        // 260610Cl 変更前: Exp(q·r·2πi) を t,d ループの内側で計算していたため W×H×T×D×Q 回の Exp が発生していた
+        // Parallel.For(0, height, y =>
+        // {
+        //     for (int x = 0; x < width; x++)
+        //     {
+        //         var rVec = new PointD(resolution * (x - cX), -resolution * (y - cY)) + shift;//Y座標はマイナス。
+        //         for (int t = 0; t < Thicknesses.Length; t++)
+        //             for (int d = 0; d < dLen; d++)
+        //             {
+        //                 Complex elas = new(), tds = new();
+        //                 for (int qIndex = 0; qIndex < qList.Count; qIndex++)
+        //                 {
+        //                     var tmp = Exp(qList[qIndex].Vec.ToPointD * rVec * TwoPiI);
+        //                     elas += I_Elas[qIndex, t, d] * tmp;
+        //                     tds += I_Inel[qIndex, t, d] * tmp;
+        //                 }
+        //                 image_ela[t][d][x + y * width] = elas.Magnitude / radiusPix2;
+        //                 image_tds[t][d][x + y * width] = tds.Magnitude / radiusPix2;
+        //             }
+        //     }
+        // });
+        // 260610Cl 変更: (1) q·r は t,d 非依存なので位相計算を t,d ループの外 (画素×q 単位) へ。
+        //   (2) 行方向は等間隔 (Δ(q·r) = q.X·resolution) なので位相回転再帰 (複素乗算1回/画素/q) に置換し、
+        //       Exp は行頭と 256 画素ごとの再アンカーのみに削減。位相ドリフトは 256·eps ~ 1e-13 オーダー。
+        //   (3) q を外側ループにして I_Elas/I_Inel の (t,d) 連続アクセス化。各 (t,d) 加算器への q 加算順序は従来と同一。
+        int qLen = qList.Count, tdLen = Thicknesses.Length * dLen;
+        var qVecXY = new PointD[qLen];
+        var stepPhasor = new Complex[qLen];
+        for (int qIndex = 0; qIndex < qLen; qIndex++)
+        {
+            qVecXY[qIndex] = qList[qIndex].Vec.ToPointD;
+            stepPhasor[qIndex] = Exp(qVecXY[qIndex].X * resolution * TwoPiI);//x が 1 画素進むときの位相回転
+        }
         Parallel.For(0, height, y =>
         {
-            for (int x = 0; x < width; x++)
+            Complex[] phasor = Shared.Rent(qLen), elasAcc = Shared.Rent(tdLen), tdsAcc = Shared.Rent(tdLen);
+            try
             {
-                var rVec = new PointD(resolution * (x - cX), -resolution * (y - cY)) + shift;//Y座標はマイナス。
-                for (int t = 0; t < Thicknesses.Length; t++)
-                    for (int d = 0; d < dLen; d++)
+                for (int x = 0; x < width; x++)
+                {
+                    if (x % PhaseReanchor == 0)//行頭と PhaseReanchor 画素ごとに Exp で位相を再アンカー (ドリフト抑制)
                     {
-                        Complex elas = new(), tds = new();
-                        for (int qIndex = 0; qIndex < qList.Count; qIndex++)
-                        {
-                            var tmp = Exp(qList[qIndex].Vec.ToPointD * rVec * TwoPiI);
-                            elas += I_Elas[qIndex, t, d] * tmp;
-                            tds += I_Inel[qIndex, t, d] * tmp;
-                        }
-                        image_ela[t][d][x + y * width] = elas.Magnitude / radiusPix2;
-                        image_tds[t][d][x + y * width] = tds.Magnitude / radiusPix2;
+                        var rVec = new PointD(resolution * (x - cX), -resolution * (y - cY)) + shift;//Y座標はマイナス。
+                        for (int qIndex = 0; qIndex < qLen; qIndex++)
+                            phasor[qIndex] = Exp(qVecXY[qIndex] * rVec * TwoPiI);
                     }
+                    elasAcc.AsSpan(0, tdLen).Clear();
+                    tdsAcc.AsSpan(0, tdLen).Clear();
+                    for (int qIndex = 0; qIndex < qLen; qIndex++)
+                    {
+                        var tmp = phasor[qIndex];
+                        int i = 0;
+                        for (int t = 0; t < Thicknesses.Length; t++)
+                            for (int d = 0; d < dLen; d++, i++)
+                            {
+                                elasAcc[i] += I_Elas[qIndex, t, d] * tmp;
+                                tdsAcc[i] += I_Inel[qIndex, t, d] * tmp;
+                            }
+                        phasor[qIndex] *= stepPhasor[qIndex];//次の x へ位相を回転
+                    }
+                    int j = 0;
+                    for (int t = 0; t < Thicknesses.Length; t++)
+                        for (int d = 0; d < dLen; d++, j++)
+                        {
+                            image_ela[t][d][x + y * width] = elasAcc[j].Magnitude / radiusPix2;
+                            image_tds[t][d][x + y * width] = tdsAcc[j].Magnitude / radiusPix2;
+                        }
+                }
             }
+            finally { Shared.Return(phasor); Shared.Return(elasAcc); Shared.Return(tdsAcc); }
         });
 
         //ガウスブラーを適用
@@ -3003,22 +3157,61 @@ public class BetheMethod
 
         var shift = Crystal.RotationMatrix * (Crystal.A_Axis + Crystal.B_Axis + Crystal.C_Axis) / 2;
         double cX = width / 2.0, cY = height / 2.0;
-        Parallel.For(0, width * height, n =>
+        // 260610Cl 変更前: 画素ごとに gList 全件の Exp を計算していた (W×H×G 回)
+        // Parallel.For(0, width * height, n =>
+        // {
+        //     //単位格子軸の0.5倍だけシフトさせておく
+        //     var r = new PointD(-(n % width - cX) * res + shift.X, -(height - 1 - n / width - cY) * res + shift.Y);
+        //     //var sums = new Complex[2]; // 260402Cl 変更前
+        //     Complex sumCry = default, sumTher = default; // 260402Cl ヒープ割り当て廃止
+        //     foreach (var (uCry, uTher, vec) in gList)
+        //     {
+        //         var exp = Exp(vec * r * TwoPiI);
+        //         sumCry += uCry * exp; // 260402Cl sums[0] → sumCry
+        //         sumTher += uTher * exp; // 260402Cl sums[1] → sumTher
+        //     }
+        //     images[0][n] = phase ? sumCry.Magnitude : sumCry.Real; // 260402Cl 展開
+        //     images[1][n] = phase ? sumCry.Phase : sumCry.Imaginary;
+        //     images[2][n] = phase ? sumTher.Magnitude : sumTher.Real;
+        //     images[3][n] = phase ? sumTher.Phase : sumTher.Imaginary;
+        // });
+        // 260610Cl 変更: 行方向は等間隔 (x が 1 進むと Δr.X = -res) なので位相回転再帰 (複素乗算1回/画素/g) に置換。
+        //   Exp は行頭と 256 画素ごとの再アンカーのみ (位相ドリフト ~1e-13 オーダー)。行単位の並列化に変更
+        int gLen = gList.Count;
+        var stepPhasor = new Complex[gLen];
+        for (int g = 0; g < gLen; g++)
+            stepPhasor[g] = Exp(gList[g].Item3.X * -res * TwoPiI);//x が 1 画素進むときの位相回転
+        Parallel.For(0, height, y =>
         {
-            //単位格子軸の0.5倍だけシフトさせておく
-            var r = new PointD(-(n % width - cX) * res + shift.X, -(height - 1 - n / width - cY) * res + shift.Y);
-            //var sums = new Complex[2]; // 260402Cl 変更前
-            Complex sumCry = default, sumTher = default; // 260402Cl ヒープ割り当て廃止
-            foreach (var (uCry, uTher, vec) in gList)
+            var phasor = Shared.Rent(gLen);
+            try
             {
-                var exp = Exp(vec * r * TwoPiI);
-                sumCry += uCry * exp; // 260402Cl sums[0] → sumCry
-                sumTher += uTher * exp; // 260402Cl sums[1] → sumTher
+                double rY = -(height - 1 - y - cY) * res + shift.Y;//単位格子軸の0.5倍だけシフトさせておく
+                for (int x = 0; x < width; x++)
+                {
+                    if (x % PhaseReanchor == 0)//行頭と PhaseReanchor 画素ごとに Exp で位相を再アンカー (ドリフト抑制)
+                    {
+                        var r = new PointD(-(x - cX) * res + shift.X, rY);
+                        for (int g = 0; g < gLen; g++)
+                            phasor[g] = Exp(gList[g].Item3 * r * TwoPiI);
+                    }
+                    Complex sumCry = default, sumTher = default;
+                    for (int g = 0; g < gLen; g++)
+                    {
+                        var (uCry, uTher, _) = gList[g];
+                        var exp = phasor[g];
+                        sumCry += uCry * exp;
+                        sumTher += uTher * exp;
+                        phasor[g] *= stepPhasor[g];//次の x へ位相を回転
+                    }
+                    int n = y * width + x;
+                    images[0][n] = phase ? sumCry.Magnitude : sumCry.Real;
+                    images[1][n] = phase ? sumCry.Phase : sumCry.Imaginary;
+                    images[2][n] = phase ? sumTher.Magnitude : sumTher.Real;
+                    images[3][n] = phase ? sumTher.Phase : sumTher.Imaginary;
+                }
             }
-            images[0][n] = phase ? sumCry.Magnitude : sumCry.Real; // 260402Cl 展開
-            images[1][n] = phase ? sumCry.Phase : sumCry.Imaginary;
-            images[2][n] = phase ? sumTher.Magnitude : sumTher.Real;
-            images[3][n] = phase ? sumTher.Phase : sumTher.Imaginary;
+            finally { Shared.Return(phasor); }
         });
         return images;
     }
@@ -3044,7 +3237,8 @@ public class BetheMethod
                                    bool quasiMode = true, bool native = true)
     {
         int width = size.Width, height = size.Height;
-        double rambda = UniversalConstants.Convert.EnergyToElectronWaveLength(AccVoltage), rambdaSq = rambda * rambda;
+        // double rambda = UniversalConstants.Convert.EnergyToElectronWaveLength(AccVoltage), rambdaSq = rambda * rambda; // 260610Cl 変更前: フィールド AccVoltage は内部の GetDifractedBeamAmpriltudes 呼び出しまで未設定 (新規インスタンスでは 0 → λ=∞ で全画素 NaN)。直前に別電圧で計算済みの場合も誤った波長で包絡関数を計算していた
+        double rambda = UniversalConstants.Convert.EnergyToElectronWaveLength(AccVol), rambdaSq = rambda * rambda; // 260610Cl 変更: 引数 AccVol を使用
         double deltaSq = delta * delta, betaSq = beta * beta;
         var k = new PointD(0, 0);//入射ベクトルKのXY成分
         var defLen = defocusses.Length;
@@ -3115,42 +3309,56 @@ public class BetheMethod
             if (native && EigenEnabled)//ネイティブC++で実行 3倍速い
             {
                 var (gPsi, gVec, gLenz) = NativeWrapper.HRTEM_Helper(gList);
-                int divTotal = Environment.ProcessorCount * 4, step = width * height / divTotal;
-                var threadLocalRVec = new ThreadLocal<double[]>(() => null, true); // (260403Ch) ネイティブ solver 入力座標をスレッドごとに再利用する
-                try
+                // 260610Cl 変更 (Phase2 候補B-native): 旧実装は画素ごとの座標配列 rVec を組み立てて _HRTEMSolverQuasi/Tcc を呼び、
+                //   native 側は画素×ビームごとに cos/sin + 画素ごとに vector<double> 2本の heap 確保が発生していた。
+                //   等間隔グリッド前提 (始点+刻み) を渡す grid 版 API に置換し、行方向は位相回転再帰
+                //   (256 画素ごとに再アンカー、数値差 ~1e-13 オーダー) で sincos を行頭のみに削減。
+                int rowChunk = Math.Max(1, height / (ProcessorCount * 4));
+                Parallel.For(0, (height + rowChunk - 1) / rowChunk, chunk =>
                 {
-                    Parallel.For(0, divTotal, div =>
-                    {
-                        int start = step * div, count = div == divTotal - 1 ? width * height - start : step;
-                        int vecLength = count * 2;
-                        var rVec = threadLocalRVec.Value;
-                        if (rVec is null || rVec.Length < vecLength)
-                        {
-                            if (rVec != null)
-                                ArrayPool<double>.Shared.Return(rVec); // (260403Ch)
-                            // var rVec = ValueEnumerable.Range(start, count).SelectMany(n => new[] { res * (n % width - cX) + shift.X, -res * (n / width - cY) + shift.Y }).ToArray(); // (260403Ch) 変更前
-                            rVec = ArrayPool<double>.Shared.Rent(vecLength); // (260403Ch)
-                            threadLocalRVec.Value = rVec; // (260403Ch)
-                        }
-                        for (int n = 0; n < count; n++)
-                        {
-                            int pixel = start + n;
-                            int offset = n * 2;
-                            rVec[offset] = res * (pixel % width - cX) + shift.X; // (260403Ch) Y座標はマイナス。
-                            rVec[offset + 1] = -res * (pixel / width - cY) + shift.Y; // (260403Ch)
-                        }
-                        var results = NativeWrapper.HRTEM_Solver(gPsi, gVec, gLenz, rVec, quasiMode, vecLength); // (260403Ch) ArrayPool バッファの使用長を明示する
-                        for (var i = 0; i < defLen; i++)
-                            //260317Cl 変更: Array.Copy → Span.CopyTo
-                            results.AsSpan(i * count, count).CopyTo(_images[t][i].AsSpan(start, count));
-                    });
-                }
-                finally
-                {
-                    foreach (var rVec in threadLocalRVec.Values.OfType<double[]>()) // (260403Ch)
-                        ArrayPool<double>.Shared.Return(rVec);
-                    threadLocalRVec.Dispose(); // (260403Ch)
-                }
+                    int rowStart = chunk * rowChunk, rows = Math.Min(rowChunk, height - rowStart);
+                    double startX = -res * cX + shift.X, startY = -res * (rowStart - cY) + shift.Y;//Y座標はマイナス。
+                    var results = NativeWrapper.HRTEM_SolverGrid(gPsi, gVec, gLenz, width, rows, startX, startY, res, -res, quasiMode);
+                    for (var i = 0; i < defLen; i++)
+                        results.AsSpan(i * rows * width, rows * width).CopyTo(_images[t][i].AsSpan(rowStart * width, rows * width));
+                });
+                #region 260610Cl 変更前: 画素ごとの座標配列を渡す旧経路
+                //int divTotal = Environment.ProcessorCount * 4, step = width * height / divTotal;
+                //var threadLocalRVec = new ThreadLocal<double[]>(() => null, true); // (260403Ch) ネイティブ solver 入力座標をスレッドごとに再利用する
+                //try
+                //{
+                //    Parallel.For(0, divTotal, div =>
+                //    {
+                //        int start = step * div, count = div == divTotal - 1 ? width * height - start : step;
+                //        int vecLength = count * 2;
+                //        var rVec = threadLocalRVec.Value;
+                //        if (rVec is null || rVec.Length < vecLength)
+                //        {
+                //            if (rVec != null)
+                //                ArrayPool<double>.Shared.Return(rVec); // (260403Ch)
+                //            rVec = ArrayPool<double>.Shared.Rent(vecLength); // (260403Ch)
+                //            threadLocalRVec.Value = rVec; // (260403Ch)
+                //        }
+                //        for (int n = 0; n < count; n++)
+                //        {
+                //            int pixel = start + n;
+                //            int offset = n * 2;
+                //            rVec[offset] = res * (pixel % width - cX) + shift.X; // (260403Ch) Y座標はマイナス。
+                //            rVec[offset + 1] = -res * (pixel / width - cY) + shift.Y; // (260403Ch)
+                //        }
+                //        var results = NativeWrapper.HRTEM_Solver(gPsi, gVec, gLenz, rVec, quasiMode, vecLength); // (260403Ch) ArrayPool バッファの使用長を明示する
+                //        for (var i = 0; i < defLen; i++)
+                //            //260317Cl 変更: Array.Copy → Span.CopyTo
+                //            results.AsSpan(i * count, count).CopyTo(_images[t][i].AsSpan(start, count));
+                //    });
+                //}
+                //finally
+                //{
+                //    foreach (var rVec in threadLocalRVec.Values.OfType<double[]>()) // (260403Ch)
+                //        ArrayPool<double>.Shared.Return(rVec);
+                //    threadLocalRVec.Dispose(); // (260403Ch)
+                //}
+                #endregion
             }
             else//Managed
             {
