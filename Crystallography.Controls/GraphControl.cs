@@ -552,7 +552,7 @@ public partial class GraphControl : UserControlBase
     [Category(" 2. 軸")]
     [Description("軸文字のフォント")]
     [DefaultValue(typeof(Font), "Segoe UI, 9pt")] //260607Cl 追加
-    public Font AxisTextFont { set; get; } = new Font("Segoe UI", 9);
+    public Font AxisTextFont { set; get; } = new Font(WineCompat.Resolve("Segoe UI"), 9); //260610Cl Wine時フォント切替 (Windowsでは従来どおり Segoe UI)
 
 
     [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]

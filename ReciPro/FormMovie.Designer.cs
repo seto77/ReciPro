@@ -171,7 +171,7 @@ partial class FormMovie
         toolTip.SetToolTip(buttonAntiClock, resources.GetString("buttonAntiClock.ToolTip")); // 260531Cl
         buttonAntiClock.Size = new System.Drawing.Size(39, 30);
         buttonAntiClock.TabIndex = 1;
-        buttonAntiClock.Text = "⭯";
+        buttonAntiClock.Text = "↺"; // 260610Cl 変更: 本フォームの方向ボタン10個の三角頭矢印(U+2B6x, Segoe UI Symbol専用)を汎用矢印(U+219x/21BA/21BB)へ置換 (Wine/macOS文字化け対策)
         buttonAntiClock.UseVisualStyleBackColor = false;
         buttonAntiClock.Click += buttonDirection_Click;
         // 
@@ -188,7 +188,7 @@ partial class FormMovie
         toolTip.SetToolTip(buttonClock, resources.GetString("buttonClock.ToolTip")); // 260531Cl
         buttonClock.Size = new System.Drawing.Size(39, 30);
         buttonClock.TabIndex = 0;
-        buttonClock.Text = "⭮";
+        buttonClock.Text = "↻";
         buttonClock.UseVisualStyleBackColor = false;
         buttonClock.Click += buttonDirection_Click;
         // 
@@ -205,7 +205,7 @@ partial class FormMovie
         toolTip.SetToolTip(buttonTopLeft, resources.GetString("buttonTopLeft.ToolTip")); // 260531Cl
         buttonTopLeft.Size = new System.Drawing.Size(39, 30);
         buttonTopLeft.TabIndex = 0;
-        buttonTopLeft.Text = "⭦";
+        buttonTopLeft.Text = "↖";
         buttonTopLeft.UseVisualStyleBackColor = false;
         buttonTopLeft.Click += buttonDirection_Click;
         // 
@@ -222,7 +222,7 @@ partial class FormMovie
         toolTip.SetToolTip(buttonLeft, resources.GetString("buttonLeft.ToolTip")); // 260531Cl
         buttonLeft.Size = new System.Drawing.Size(39, 30);
         buttonLeft.TabIndex = 1;
-        buttonLeft.Text = "⭠";
+        buttonLeft.Text = "←";
         buttonLeft.UseVisualStyleBackColor = false;
         buttonLeft.Click += buttonDirection_Click;
         // 
@@ -239,7 +239,7 @@ partial class FormMovie
         toolTip.SetToolTip(buttonBottomLeft, resources.GetString("buttonBottomLeft.ToolTip")); // 260531Cl
         buttonBottomLeft.Size = new System.Drawing.Size(39, 31);
         buttonBottomLeft.TabIndex = 2;
-        buttonBottomLeft.Text = "⭩";
+        buttonBottomLeft.Text = "↙";
         buttonBottomLeft.UseVisualStyleBackColor = false;
         buttonBottomLeft.Click += buttonDirection_Click;
         // 
@@ -256,7 +256,7 @@ partial class FormMovie
         toolTip.SetToolTip(buttonBottom, resources.GetString("buttonBottom.ToolTip")); // 260531Cl
         buttonBottom.Size = new System.Drawing.Size(78, 31);
         buttonBottom.TabIndex = 4;
-        buttonBottom.Text = "⭣";
+        buttonBottom.Text = "↓";
         buttonBottom.UseVisualStyleBackColor = false;
         buttonBottom.Click += buttonDirection_Click;
         // 
@@ -273,7 +273,7 @@ partial class FormMovie
         toolTip.SetToolTip(buttonBottomRight, resources.GetString("buttonBottomRight.ToolTip")); // 260531Cl
         buttonBottomRight.Size = new System.Drawing.Size(39, 31);
         buttonBottomRight.TabIndex = 7;
-        buttonBottomRight.Text = "⭨";
+        buttonBottomRight.Text = "↘";
         buttonBottomRight.UseVisualStyleBackColor = false;
         buttonBottomRight.Click += buttonDirection_Click;
         // 
@@ -290,7 +290,7 @@ partial class FormMovie
         toolTip.SetToolTip(buttonTop, resources.GetString("buttonTop.ToolTip")); // 260531Cl
         buttonTop.Size = new System.Drawing.Size(78, 30);
         buttonTop.TabIndex = 3;
-        buttonTop.Text = "⭡";
+        buttonTop.Text = "↑";
         buttonTop.UseVisualStyleBackColor = false;
         buttonTop.Click += buttonDirection_Click;
         // 
@@ -308,7 +308,7 @@ partial class FormMovie
         buttonTopRight.Padding = new System.Windows.Forms.Padding(2, 0, 0, 0);
         buttonTopRight.Size = new System.Drawing.Size(39, 30);
         buttonTopRight.TabIndex = 5;
-        buttonTopRight.Text = "⭧";
+        buttonTopRight.Text = "↗";
         buttonTopRight.UseVisualStyleBackColor = false;
         buttonTopRight.Click += buttonDirection_Click;
         // 
@@ -325,7 +325,7 @@ partial class FormMovie
         toolTip.SetToolTip(buttonRight, resources.GetString("buttonRight.ToolTip")); // 260531Cl
         buttonRight.Size = new System.Drawing.Size(39, 30);
         buttonRight.TabIndex = 6;
-        buttonRight.Text = "⭢";
+        buttonRight.Text = "→";
         buttonRight.UseVisualStyleBackColor = false;
         buttonRight.Click += buttonDirection_Click;
         // 

@@ -724,7 +724,7 @@ enter the energy or wavelength freely.</value>
     <value>0, 4, 0, 0</value>
   </data>
   <data name="numericBoxWaveLength.FooterText" xml:space="preserve">
-    <value>Å</value>
+    <value>Å</value>
   </data>
   <data name="numericBoxWaveLength.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9.75pt</value>
@@ -917,7 +917,7 @@ instead of a single wavelength.</value>
     <value>1</value>
   </data>
   <data name="radioButtonUnitAngstrom.Text" xml:space="preserve">
-    <value>Å</value>
+    <value>Å</value>
   </data>
   <data name="radioButtonUnitAngstrom.ToolTip" xml:space="preserve">
     <value>Show the wavelength in Ångstrom (Å). Display only — the physical wavelength and energy are unchanged (1 nm = 10 Å).</value>

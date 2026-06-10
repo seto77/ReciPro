@@ -1170,7 +1170,7 @@ high angle. Disabled when xraylib is unavailable.</value>
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="numericBoxCutoffD.FooterText" xml:space="preserve">
-    <value>Å</value>
+    <value>Å</value>
   </data>
   <data name="&gt;&gt;numericBoxL_max.Name" xml:space="preserve">
     <value>numericBoxL_max</value>
@@ -3177,7 +3177,7 @@ symmetry-equivalent or forbidden reflections.</value>
     <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="dataGridViewTextBoxColumnD.HeaderText" xml:space="preserve">
-    <value>d (Å)</value>
+    <value>d (Å)</value>
   </data>
   <data name="flowLayoutPanelElecQuantity.ToolTip" xml:space="preserve">
     <value />

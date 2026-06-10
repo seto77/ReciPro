@@ -1671,7 +1671,7 @@ public partial class FormEBSD : FormBase
 
             var penExcess = new Pen(new SolidBrush(colorControlExcessLine.Color), (float)(trackBarLineWidth.Value * Resolution / 2000f));
             var diag = Resolution * Math.Sqrt(graphicsBox.ClientSize.Width * graphicsBox.ClientSize.Width + graphicsBox.ClientSize.Height * graphicsBox.ClientSize.Height) / 2;
-            var font = new Font("Tahoma", (float)(trackBarStrSize.Value / 8.0 * Resolution));
+            var font = new Font(WineCompat.Resolve("Tahoma"), (float)(trackBarStrSize.Value / 8.0 * Resolution)); //260610Cl Wine時フォント切替
             var brush = new SolidBrush(colorControlString.Color);
 
             var Tau = numericBoxDetTilt.RadianValue - numericBoxSampleTilt.RadianValue;

@@ -3890,7 +3890,7 @@ for the X-ray diffraction calculation of this atom.</value>
     <value>0, 4, 0, 0</value>
   </data>
   <data name="numericBoxAtomRadius.FooterText" xml:space="preserve">
-    <value>Å</value>
+    <value>Å</value>
   </data>
   <data name="numericBoxAtomRadius.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>

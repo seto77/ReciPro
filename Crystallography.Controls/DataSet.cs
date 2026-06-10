@@ -104,8 +104,8 @@ public partial class DataSet
             dr[EnabledColumn] = bonds.Enabled;
             dr[CenterColumn] = bonds.Element1;
             dr[VertexColumn] = bonds.Element2;
-            dr[_Max_len_Column] = (bonds.MaxLength * 10.0).ToString("f4");//表示はÅ単位
-            dr[_Min_len_Column] = (bonds.MinLength * 10.0).ToString("f4");//表示はÅ単位
+            dr[_Max_len_Column] = (bonds.MaxLength * 10.0).ToString("f4");//表示はÅ単位
+            dr[_Min_len_Column] = (bonds.MinLength * 10.0).ToString("f4");//表示はÅ単位
             dr[Show_bondsColumn] = bonds.ShowBond;
             dr[Show_PolyhedronColumn] = bonds.ShowPolyhedron;
 

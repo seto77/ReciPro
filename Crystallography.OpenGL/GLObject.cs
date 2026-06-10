@@ -1939,7 +1939,7 @@ public class TextObject : GLObject
             }
             else //辞書に登録されていない場合
             {
-                using var fnt = new Font("Tahoma", fontSize);// (260319Ch) GDI オブジェクトの解放漏れを防ぐ
+                using var fnt = new Font(WineCompat.Resolve("Tahoma"), fontSize);// (260319Ch) GDI オブジェクトの解放漏れを防ぐ 260610Cl Wine時フォント切替
                 var strSize = TextRenderer.MeasureText(text, fnt, new Size(600, 100),
                     TextFormatFlags.Left); //文字列を描画するときの大体の大きさを計測する
 

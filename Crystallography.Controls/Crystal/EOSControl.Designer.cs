@@ -532,7 +532,7 @@
             this.numericBoxEOS_V0perCell.BackColor = System.Drawing.SystemColors.Control;
             this.numericBoxEOS_V0perCell.FooterBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxEOS_V0perCell.FooterFont = new System.Drawing.Font("Segoe UI", 9F);
-            this.numericBoxEOS_V0perCell.FooterText = "Å³/cell";
+            this.numericBoxEOS_V0perCell.FooterText = "Å³/cell";
             this.numericBoxEOS_V0perCell.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxEOS_V0perCell.HeaderFont = new System.Drawing.Font("Segoe UI", 9F);
             this.numericBoxEOS_V0perCell.HeaderText = "V₀";

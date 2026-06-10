@@ -124,7 +124,7 @@
     <value>距離 (dの倍数)</value>
   </data>
   <data name="distanceDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
-    <value>距離 (Å)</value>
+    <value>距離 (Å)</value>
   </data>
   <data name="colorDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
     <value>色</value>

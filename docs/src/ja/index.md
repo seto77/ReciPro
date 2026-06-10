@@ -37,6 +37,8 @@
 | メモリ | — | 16 GB以上 |
 | CPU | — | 8コア以上（動力学計算時） |
 
+**macOS（非公式）** : ReciProの公式サポートはWindowsのみですが、ポータブルZIP版をWineラッパーの Sikarugir と OpenGL互換ドライバ Mesa3D と組み合わせることで、macOS（Apple Silicon）上で動作したという報告があります。ユーザーによる導入手順が <https://github.com/Ryo-fkushima/ReciPro_macOS_memo> で公開されています。なお、この方法は公式サポート外で、一部の記号（Å・上付き文字・矢印など）が文字化けする既知の問題があります。
+
 ## マニュアルの読み方
 
 この GitHub Pages 版が現在の正本です。画面左のナビゲーションから章を選ぶか、右上の検索で機能名やUIラベルを検索してください。旧PDF版は過去版の参照用です。

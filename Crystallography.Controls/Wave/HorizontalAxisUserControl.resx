@@ -652,7 +652,7 @@ energy (for energy-dispersive white-beam mode).</value>
     <value>0, 0</value>
   </data>
   <data name="radioButtonDspacingUnitAng.Text" xml:space="preserve">
-    <value>Å</value>
+    <value>Å</value>
   </data>
   <data name="radioButtonDspacingUnitNm.ToolTip" xml:space="preserve">
     <value>Show the d-spacing axis in nanometres (nm).</value>
@@ -1104,7 +1104,7 @@ diffracted beam); used in monochromatic mode.</value>
     <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="radioButtonWavenumberAngInv.Text" xml:space="preserve">
-    <value>Å⁻¹</value>
+    <value>Å⁻¹</value>
   </data>
   <data name="groupBoxHorizontalAxis.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 10pt, style=Bold</value>

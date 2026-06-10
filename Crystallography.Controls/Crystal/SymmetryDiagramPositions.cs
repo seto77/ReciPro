@@ -28,7 +28,7 @@ public class SymmetryDiagramPositions : SymmetryDiagramCommon
     /// <summary>(260502Cl) 立方晶系は等価点が多く重なりやすいため、円・コンマ点・ラベルフォントを縮める。</summary>
     private const float CubicScale         = 0.8f;
     /// <summary>(260502Cl) 立方晶用の高さラベルフォント (ClusterLabelFont の CubicScale 倍)。</summary>
-    private static readonly Font CubicClusterLabelFont = new("Times New Roman", 13f * CubicScale);
+    private static readonly Font CubicClusterLabelFont = new(WineCompat.Resolve("Times New Roman"), 13f * CubicScale); //260610Cl Wine時フォント切替
 
     // (260503Cl) 結晶軸 a/b/c の色 (VESTA / CrystalMaker 慣用: a=赤, b=緑, c=青)。
     //   index 0/1/2 が ProjectionAxis.A/B/C および 変数 x/y/z と一対一対応する点が肝で、

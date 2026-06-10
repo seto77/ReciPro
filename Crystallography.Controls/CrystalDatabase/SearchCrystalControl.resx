@@ -604,7 +604,7 @@
     <value>GrowAndShrink</value>
   </data>
   <data name="numericBoxCellC.FooterText" xml:space="preserve">
-    <value>Å</value>
+    <value>Å</value>
   </data>
   <data name="numericBoxCellC.HeaderText" xml:space="preserve">
     <value>c</value>
@@ -730,7 +730,7 @@
     <value>GrowAndShrink</value>
   </data>
   <data name="numericBoxCellB.FooterText" xml:space="preserve">
-    <value>Å</value>
+    <value>Å</value>
   </data>
   <data name="numericBoxCellB.HeaderText" xml:space="preserve">
     <value>b</value>
@@ -772,7 +772,7 @@
     <value>GrowAndShrink</value>
   </data>
   <data name="numericBoxCellA.FooterText" xml:space="preserve">
-    <value>Å</value>
+    <value>Å</value>
   </data>
   <data name="numericBoxCellA.HeaderText" xml:space="preserve">
     <value>a</value>
@@ -1108,7 +1108,7 @@
     <value>GrowAndShrink</value>
   </data>
   <data name="numericBoxD3.FooterText" xml:space="preserve">
-    <value>Å</value>
+    <value>Å</value>
   </data>
   <data name="numericBoxD3.Location" type="System.Drawing.Point, System.Drawing">
     <value>29, 69</value>
@@ -1147,7 +1147,7 @@
     <value>GrowAndShrink</value>
   </data>
   <data name="numericBoxD2.FooterText" xml:space="preserve">
-    <value>Å</value>
+    <value>Å</value>
   </data>
   <data name="numericBoxD2.Location" type="System.Drawing.Point, System.Drawing">
     <value>29, 40</value>
@@ -1186,7 +1186,7 @@
     <value>GrowAndShrink</value>
   </data>
   <data name="numericBoxD1.FooterText" xml:space="preserve">
-    <value>Å</value>
+    <value>Å</value>
   </data>
   <data name="numericBoxD1.Location" type="System.Drawing.Point, System.Drawing">
     <value>29, 10</value>

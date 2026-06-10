@@ -163,7 +163,7 @@ public partial class FormDiffractionSimulatorHolder : FormBase
         g.Transform = new Matrix((float)mag, 0, 0, (float)mag, (float)(boxWidth / 2.0 - mag * centerPt.X), (float)(boxHeight / 2.0 + mag * centerPt.Y));
         var rot = HolderRotation * crystal.RotationMatrix;
 
-        var font = new Font("Tahoma", trackBarStrSize.Value / (float)mag / 7f);
+        var font = new Font(WineCompat.Resolve("Tahoma"), trackBarStrSize.Value / (float)mag / 7f); //260610Cl Wine時フォント切替
         var brushUnique = new SolidBrush(colorControlUniqueAxis.Color);
         var brushGeneral = new SolidBrush(colorControlGeneralAxis.Color);
         var radius = trackBarPointSize.Value / mag;

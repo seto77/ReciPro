@@ -491,7 +491,7 @@ If an axis index is also specified, that axis direction is shown upward.</value>
     <value>toolStripSeparator13</value>
   </data>
   <data name="buttonTop.Text" xml:space="preserve">
-    <value>⭡</value>
+    <value>↑</value>
   </data>
   <data name="&gt;&gt;reportBugsRequestsOrCommentsToolStripMenuItem1.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -2087,7 +2087,7 @@ is used as rotation speed in degrees per second.</value>
     <value>System</value>
   </data>
   <data name="buttonRight.Text" xml:space="preserve">
-    <value>⭢</value>
+    <value>→</value>
   </data>
   <data name="buttonTopLeft.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>System</value>
@@ -2490,7 +2490,7 @@ points toward you (out of the screen).</value>
     <value>11, 31</value>
   </data>
   <data name="buttonClock.Text" xml:space="preserve">
-    <value>⭮</value>
+    <value>↻</value>
   </data>
   <data name="&gt;&gt;licenseToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -3124,7 +3124,7 @@ points toward you (out of the screen).</value>
     <value>englishToolStripMenuItem</value>
   </data>
   <data name="buttonTopLeft.Text" xml:space="preserve">
-    <value>⭦</value>
+    <value>↖</value>
   </data>
   <data name="&gt;&gt;languageToolStripMenuItem.Name" xml:space="preserve">
     <value>languageToolStripMenuItem</value>
@@ -3295,7 +3295,7 @@ rotation defining the crystal orientation.</value>
     <value>Rotation Control</value>
   </data>
   <data name="buttonTopRight.Text" xml:space="preserve">
-    <value>⭧</value>
+    <value>↗</value>
   </data>
   <data name="flowLayoutPanelCrystalEdit.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
@@ -3639,7 +3639,7 @@ calculations. Downloads ~55MB on first use.</value>
 rotation defining the crystal orientation.</value>
   </data>
   <data name="buttonBottom.Text" xml:space="preserve">
-    <value>⭣</value>
+    <value>↓</value>
   </data>
   <data name="&gt;&gt;toolStripMenuItemReadInitialCrystalList.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -3693,7 +3693,7 @@ rotation defining the crystal orientation.</value>
     <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="buttonAntiClock.Text" xml:space="preserve">
-    <value>⭯</value>
+    <value>↺</value>
   </data>
   <data name="toolStripButtonStructureViewer.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -3812,7 +3812,7 @@ rotation defining the crystal orientation.</value>
     <value>0</value>
   </data>
   <data name="buttonBottomRight.Text" xml:space="preserve">
-    <value>⭨</value>
+    <value>↘</value>
   </data>
   <data name="numericBoxStep.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 20</value>
@@ -3860,7 +3860,7 @@ rotation defining the crystal orientation.</value>
     <value>2, 117</value>
   </data>
   <data name="buttonLeft.Text" xml:space="preserve">
-    <value>⭠</value>
+    <value>←</value>
   </data>
   <data name="buttonTopLeft.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
@@ -4469,7 +4469,7 @@ rotates the crystal at a constant speed.</value>
     <value>0</value>
   </data>
   <data name="buttonBottomLeft.Text" xml:space="preserve">
-    <value>⭩</value>
+    <value>↙</value>
   </data>
   <data name="toolStripButtonEBSD.ToolTipText" xml:space="preserve">
     <value>Open the EBSD (Electron Backscatter Diffraction)

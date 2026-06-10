@@ -38,7 +38,7 @@
             // this.dataGridView = new System.Windows.Forms.DataGridView(); // 260518Cl 旧実装: DPI変更時に列幅が追従しない
             this.dataGridView = new DpiAwareDataGridView(); // 260518Cl
             this.atomLabelDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lengthÅDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lengthÅDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataSet = new System.Data.DataSet();
             this.dataTable1 = new System.Data.DataTable();
             this.dataColumn1 = new System.Data.DataColumn();
@@ -92,7 +92,7 @@
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.atomLabelDataGridViewTextBoxColumn,
-            this.lengthÅDataGridViewTextBoxColumn});
+            this.lengthÅDataGridViewTextBoxColumn});
             this.dataGridView.DataMember = "Table1";
             this.dataGridView.DataSource = this.dataSet;
             this.dataGridView.Location = new System.Drawing.Point(3, 30);
@@ -112,12 +112,12 @@
             this.atomLabelDataGridViewTextBoxColumn.Name = "atomLabelDataGridViewTextBoxColumn";
             this.atomLabelDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // lengthÅDataGridViewTextBoxColumn
+            // lengthÅDataGridViewTextBoxColumn
             // 
-            this.lengthÅDataGridViewTextBoxColumn.DataPropertyName = "Length (Å)";
-            this.lengthÅDataGridViewTextBoxColumn.HeaderText = "Length (Å)";
-            this.lengthÅDataGridViewTextBoxColumn.Name = "lengthÅDataGridViewTextBoxColumn";
-            this.lengthÅDataGridViewTextBoxColumn.ReadOnly = true;
+            this.lengthÅDataGridViewTextBoxColumn.DataPropertyName = "Length (Å)";
+            this.lengthÅDataGridViewTextBoxColumn.HeaderText = "Length (Å)";
+            this.lengthÅDataGridViewTextBoxColumn.Name = "lengthÅDataGridViewTextBoxColumn";
+            this.lengthÅDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // dataSet
             // 
@@ -138,7 +138,7 @@
             // 
             // dataColumn2
             // 
-            this.dataColumn2.ColumnName = "Length (Å)";
+            this.dataColumn2.ColumnName = "Length (Å)";
             // 
             // pictureBox
             // 
@@ -226,7 +226,7 @@
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(15, 15);
             this.label4.TabIndex = 5;
-            this.label4.Text = "Å";
+            this.label4.Text = "Å";
             // 
             // label5
             // 
@@ -236,7 +236,7 @@
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(15, 15);
             this.label5.TabIndex = 5;
-            this.label5.Text = "Å";
+            this.label5.Text = "Å";
             // 
             // AtomCoordinateTable
             // 
@@ -277,7 +277,7 @@
         // private System.Windows.Forms.DataGridView dataGridView; // 260518Cl 旧実装
         private DpiAwareDataGridView dataGridView; // 260518Cl
         private System.Windows.Forms.DataGridViewTextBoxColumn atomLabelDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn lengthÅDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn lengthÅDataGridViewTextBoxColumn;
         private System.Data.DataSet dataSet;
         private System.Data.DataTable dataTable1;
         private System.Data.DataColumn dataColumn1;

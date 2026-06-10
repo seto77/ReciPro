@@ -517,7 +517,7 @@ Tilt Y</value>
     <value>83</value>
   </data>
   <data name="buttonRotate180.Text" xml:space="preserve">
-    <value>⭮ rotate 180°</value>
+    <value>↻ rotate 180°</value>
   </data>
   <data name="buttonLink.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>

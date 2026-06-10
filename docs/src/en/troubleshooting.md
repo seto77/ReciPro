@@ -170,7 +170,19 @@ If settings become corrupted:
 
 ### Is there a Mac (or Linux) version?
 
-No. ReciPro depends on the **.NET Desktop Runtime**, which currently runs on Windows only, so a cross-platform version is not available at present. It may become possible if that dependency becomes cross-platform in the future. (Issue [#12](https://github.com/seto77/ReciPro/issues/12))
+There is no official Mac or Linux version. ReciPro depends on the **.NET Desktop Runtime**, which currently runs on Windows only. (Issue [#12](https://github.com/seto77/ReciPro/issues/12))
+
+However, an unofficial route has been reported to work on macOS: the **portable ZIP** distribution (available on the [releases page](https://github.com/seto77/ReciPro/releases/latest)) runs on macOS (Apple Silicon) using the **Sikarugir** Wine wrapper combined with the **Mesa3D** OpenGL driver — no Windows license or virtual machine required. A step-by-step setup guide published by a user is available at <https://github.com/Ryo-fkushima/ReciPro_macOS_memo>.
+
+Note that this configuration is not officially supported or fully verified. A known limitation is that some symbols (Å, superscripts, arrows) may be displayed incorrectly.
+
+**Fixing the garbled symbols (Å, superscripts, arrows):** The cause is that the Windows fonts ReciPro normally uses (Segoe UI, Yu Gothic UI, etc.) are missing from the Wine environment, and Wine's built-in substitute fonts lack some scientific glyphs. ReciPro automatically switches to widely-covered fonts **when it detects that it is running under Wine**, so the fix is simply to make those fonts available in the Wine prefix:
+
+1. Install **DejaVu Sans** / **DejaVu Serif** (covers Å, superscripts, arrows, fraction labels) and, for the Japanese UI, **Noto Sans CJK JP** (or **Noto Sans JP**).
+2. The simplest way is to copy the downloaded `.ttf`/`.otf` files into the prefix's font folder — `…/drive_c/windows/Fonts/` inside the Sikarugir wrapper — then relaunch ReciPro. (`winetricks` can also install some of these.)
+3. On restart ReciPro picks them up automatically; no ReciPro setting needs to be changed.
+
+If the fonts are not installed, ReciPro keeps its default font names, so nothing gets worse — the symbols simply remain garbled.
 
 ### Does ReciPro run on Windows on ARM (ARM64)?
 

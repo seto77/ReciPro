@@ -1176,7 +1176,7 @@ public partial class FormImageSimulator : FormBase
         //ラベル
         if (checkBoxShowLabel.Checked)
         {
-            var font = new Font("Segoe UI Symbol", (float)numericBoxLabelFontSize.Value);
+            var font = new Font(WineCompat.Resolve("Segoe UI Symbol"), (float)numericBoxLabelFontSize.Value); //260610Cl Wine時フォント切替
             var sb = new SolidBrush(colorControlLabel.Color);
             g.DrawString(imageInfo.Text, font, sb, merge ? conv(new PointD(4, 8)).ToPointF() : new PointF(4f, 8f));
         }

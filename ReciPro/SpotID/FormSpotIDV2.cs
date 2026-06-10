@@ -1470,7 +1470,7 @@ public partial class FormSpotIDV2 : FormBase
             }
 
             scalablePictureBoxAdvanced.Symbols.AddRange(calcSpots);
-            scalablePictureBoxAdvanced.Title = (FormMain.CurrentZoneAxis, new Font("Arial", 20f), Color.White, Color.Red);
+            scalablePictureBoxAdvanced.Title = (FormMain.CurrentZoneAxis, new Font(WineCompat.Resolve("Arial"), 20f), Color.White, Color.Red); //260610Cl Wine時フォント切替
 
             checkBoxShowObsSpots_CheckedChanged(sender, e);
             //scalablePictureBoxAdvanced.Refresh(); //上のイベントで呼ばれるので、コメントアウト

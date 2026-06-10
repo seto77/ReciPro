@@ -152,7 +152,7 @@ namespace Crystallography.Controls
             {
                 button[i].AutoSize = true;
                 button[i].AutoSizeMode = AutoSizeMode.GrowAndShrink;
-                button[i].Font = new Font("Segoe UI Symbol", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+                button[i].Font = new Font(WineCompat.Resolve("Segoe UI Symbol"), 9F, FontStyle.Regular, GraphicsUnit.Point, 0); //260610Cl Wine時フォント切替
                 if (i != 0)
                 {
                     Controls.Add(button[i]);

@@ -213,7 +213,7 @@
     <value>80, 25</value>
   </data>
   <data name="buttonRotate180.Text" xml:space="preserve">
-    <value>⭮ 180° 回転</value>
+    <value>↻ 180° 回転</value>
   </data>
   <data name="buttonLink.Font" type="System.Drawing.Font, System.Drawing">
     <value>Yu Gothic UI, 9pt</value>

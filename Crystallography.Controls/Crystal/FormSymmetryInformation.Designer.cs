@@ -541,7 +541,7 @@
             numericBoxLengthPlane2.DecimalPlaces = 4;
             numericBoxLengthPlane2.FooterFont = new System.Drawing.Font("Segoe UI", 9.75F);
             numericBoxLengthPlane2.FooterPadding = new System.Windows.Forms.Padding(0, 4, 0, 0);
-            numericBoxLengthPlane2.FooterText = "Å";
+            numericBoxLengthPlane2.FooterText = "Å";
             numericBoxLengthPlane2.HeaderFont = new System.Drawing.Font("Segoe UI", 9.75F);
             numericBoxLengthPlane2.HeaderPadding = new System.Windows.Forms.Padding(0, 4, 0, 0);
             numericBoxLengthPlane2.Location = new System.Drawing.Point(128, 13);
@@ -599,7 +599,7 @@
             numericBoxLengthAxis2.DecimalPlaces = 4;
             numericBoxLengthAxis2.FooterFont = new System.Drawing.Font("Segoe UI", 9.75F);
             numericBoxLengthAxis2.FooterPadding = new System.Windows.Forms.Padding(0, 4, 0, 0);
-            numericBoxLengthAxis2.FooterText = "Å";
+            numericBoxLengthAxis2.FooterText = "Å";
             numericBoxLengthAxis2.HeaderFont = new System.Drawing.Font("Segoe UI", 9.75F);
             numericBoxLengthAxis2.HeaderPadding = new System.Windows.Forms.Padding(0, 4, 0, 0);
             numericBoxLengthAxis2.Location = new System.Drawing.Point(128, 13);
@@ -668,7 +668,7 @@
             numericBoxLengthAxis1.DecimalPlaces = 4;
             numericBoxLengthAxis1.FooterFont = new System.Drawing.Font("Segoe UI", 9.75F);
             numericBoxLengthAxis1.FooterPadding = new System.Windows.Forms.Padding(0, 4, 0, 0);
-            numericBoxLengthAxis1.FooterText = "Å";
+            numericBoxLengthAxis1.FooterText = "Å";
             numericBoxLengthAxis1.HeaderFont = new System.Drawing.Font("Segoe UI", 9.75F);
             numericBoxLengthAxis1.HeaderPadding = new System.Windows.Forms.Padding(0, 4, 0, 0);
             numericBoxLengthAxis1.Location = new System.Drawing.Point(128, 13);
@@ -737,7 +737,7 @@
             numericBoxLengthPlane1.DecimalPlaces = 4;
             numericBoxLengthPlane1.FooterFont = new System.Drawing.Font("Segoe UI", 9.75F);
             numericBoxLengthPlane1.FooterPadding = new System.Windows.Forms.Padding(0, 4, 0, 0);
-            numericBoxLengthPlane1.FooterText = "Å";
+            numericBoxLengthPlane1.FooterText = "Å";
             numericBoxLengthPlane1.HeaderFont = new System.Drawing.Font("Segoe UI", 9.75F);
             numericBoxLengthPlane1.HeaderPadding = new System.Windows.Forms.Padding(0, 4, 0, 0);
             numericBoxLengthPlane1.Location = new System.Drawing.Point(128, 13);

@@ -738,7 +738,7 @@ vertices (the coordinated ligand atoms).</value>
     <value>Segoe UI, 9pt</value>
   </data>
   <data name="numericBoxBondRadius.FooterText" xml:space="preserve">
-    <value>Å</value>
+    <value>Å</value>
   </data>
   <data name="numericBoxBondRadius.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>
@@ -795,7 +795,7 @@ vertices (the coordinated ligand atoms).</value>
     <value>Segoe UI, 9pt</value>
   </data>
   <data name="numericBoxBondMaxLength.FooterText" xml:space="preserve">
-    <value>Å</value>
+    <value>Å</value>
   </data>
   <data name="numericBoxBondMaxLength.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>

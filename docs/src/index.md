@@ -37,6 +37,8 @@
 | Memory | - | 16 GB or more |
 | CPU | - | 8+ cores (for dynamical calculations) |
 
+**macOS (unofficial)** : ReciPro officially supports Windows only, but the portable ZIP package has been reported to run on macOS (Apple Silicon) using the Sikarugir Wine wrapper combined with the Mesa3D OpenGL driver. A user-published setup guide is available at <https://github.com/Ryo-fkushima/ReciPro_macOS_memo>. Note that this route is not officially supported, and some symbols (Å, superscripts, arrows) may be displayed incorrectly.
+
 ## How to Use This Manual
 
 This GitHub Pages manual is the current source of truth. Use the left navigation to browse by chapter, or use search in the header to find a function name or UI label. The old PDF manuals are kept for archival reference.

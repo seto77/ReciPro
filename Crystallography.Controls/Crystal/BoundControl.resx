@@ -197,7 +197,7 @@
     <value>150</value>
   </data>
   <data name="distanceDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
-    <value>Distance (Å)</value>
+    <value>Distance (Å)</value>
   </data>
   <data name="distanceDataGridViewTextBoxColumn.MinimumWidth" type="System.Int32, mscorlib">
     <value>6</value>
@@ -302,7 +302,7 @@
     <value>0, 4, 0, 0</value>
   </data>
   <data name="numericBoxMaximumDistanceFromOrigin.FooterText" xml:space="preserve">
-    <value>Å</value>
+    <value>Å</value>
   </data>
   <data name="numericBoxMaximumDistanceFromOrigin.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9.75pt</value>
@@ -556,7 +556,7 @@ limit it by this distance from the origin.</value>
     <value>0, 4, 0, 0</value>
   </data>
   <data name="numericBoxTranslation.FooterText" xml:space="preserve">
-    <value>Å</value>
+    <value>Å</value>
   </data>
   <data name="numericBoxTranslation.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9.75pt</value>
@@ -759,7 +759,7 @@ distance (Å); positive moves it away from the origin.</value>
     <value>0, 4, 0, 0</value>
   </data>
   <data name="numericBoxDistance.FooterText" xml:space="preserve">
-    <value>Å)</value>
+    <value>Å)</value>
   </data>
   <data name="numericBoxDistance.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9.75pt</value>

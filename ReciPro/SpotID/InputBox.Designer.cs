@@ -64,7 +64,7 @@
             toolTip.SetToolTip(label60, resources.GetString("label60.ToolTip")); // 260531Cl
             label60.Size = new System.Drawing.Size(15, 15);
             label60.TabIndex = 74;
-            label60.Text = "Å";
+            label60.Text = "Å";
             label60.Click += new System.EventHandler(label50_Click);
             // 
             // label50

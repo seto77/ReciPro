@@ -1274,7 +1274,7 @@ public partial record struct HorizontalAxisProperty
     public LengthUnitEnum DspacingUnit { get; set; } = LengthUnitEnum.Angstrom;
     public string DspacingUnitText => DspacingUnit switch
     {
-        LengthUnitEnum.Angstrom => "Å",
+        LengthUnitEnum.Angstrom => "Å",
         LengthUnitEnum.NanoMeter => "nm",
         _ => "",
     };
@@ -1284,7 +1284,7 @@ public partial record struct HorizontalAxisProperty
     public readonly string WaveNumberUnitText => WaveNumberUnit switch
     {
         LengthUnitEnum.NanoMeterInverse => "nm⁻¹",
-        LengthUnitEnum.AngstromInverse => "Å⁻¹",
+        LengthUnitEnum.AngstromInverse => "Å⁻¹",
         _ => "",
     };
 

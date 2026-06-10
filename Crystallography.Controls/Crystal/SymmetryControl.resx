@@ -191,7 +191,7 @@
     <value>0</value>
   </data>
   <data name="radioButtonAngstrom.Text" xml:space="preserve">
-    <value>Å</value>
+    <value>Å</value>
   </data>
   <data name="&gt;&gt;radioButtonAngstrom.Name" xml:space="preserve">
     <value>radioButtonAngstrom</value>
@@ -791,7 +791,7 @@ the crystal-system constraints.</value>
     <value>12</value>
   </data>
   <data name="labelLengthUnitC.Text" xml:space="preserve">
-    <value>Å</value>
+    <value>Å</value>
   </data>
   <data name="&gt;&gt;labelLengthUnitC.Name" xml:space="preserve">
     <value>labelLengthUnitC</value>
@@ -878,7 +878,7 @@ the crystal-system constraints.</value>
     <value>13</value>
   </data>
   <data name="labelLengthUnitB.Text" xml:space="preserve">
-    <value>Å</value>
+    <value>Å</value>
   </data>
   <data name="&gt;&gt;labelLengthUnitB.Name" xml:space="preserve">
     <value>labelLengthUnitB</value>
@@ -1176,7 +1176,7 @@ unit selector). May be locked to a by symmetry.</value>
     <value>14</value>
   </data>
   <data name="labelLengthUnitA.Text" xml:space="preserve">
-    <value>Å</value>
+    <value>Å</value>
   </data>
   <data name="&gt;&gt;labelLengthUnitA.Name" xml:space="preserve">
     <value>labelLengthUnitA</value>

@@ -265,7 +265,7 @@
     <value>5</value>
   </data>
   <data name="label13.Text" xml:space="preserve">
-    <value>Atom information (all coordinates are in Å)</value>
+    <value>Atom information (all coordinates are in Å)</value>
   </data>
   <data name="&gt;&gt;label13.Name" xml:space="preserve">
     <value>label13</value>
@@ -4008,7 +4008,7 @@ more accurate transparency, but renders more slowly.</value>
     <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="trackBarAdvancedDepthCueingNear.FooterText" xml:space="preserve">
-    <value>Å</value>
+    <value>Å</value>
   </data>
   <data name="trackBarAdvancedDepthCueingNear.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9.75pt</value>
@@ -4089,7 +4089,7 @@ depth fade to fully transparent (-30 to 30)</value>
     <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="trackBarAdvancedDepthCueingFar.FooterText" xml:space="preserve">
-    <value>Å</value>
+    <value>Å</value>
   </data>
   <data name="trackBarAdvancedDepthCueingFar.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9.75pt</value>

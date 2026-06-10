@@ -392,7 +392,7 @@ namespace Crystallography.Controls
             Pen pen = new Pen(DivisionLineColor, 1);
 
             G.DrawLine(pen, OriginPosition.X, pictureBox.Height - OriginPosition.Y, pictureBox.Width, pictureBox.Height - OriginPosition.Y);
-            Font strFont = new Font(new FontFamily("tahoma"), 8);
+            Font strFont = new Font(new FontFamily(WineCompat.Resolve("tahoma")), 8); //260610Cl Wine時フォント切替
             for (int i = (int)(LowerX / xGradiation) + 1; i < UpperX / xGradiation; i++)
             {
                 pen = new Pen(DivisionLineColor, 1);

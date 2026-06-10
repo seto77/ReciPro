@@ -33,9 +33,9 @@ public partial class FormAnotherSpaceGroup : FormBase
 
     #region 群の記号を斜体、上付き、下付などに整形する
 
-    private static readonly Font fontSub = new("Times New Roman", 8f, FontStyle.Regular);
-    private static readonly Font fontItalic = new("Times New Roman", 11f, FontStyle.Italic);
-    private static readonly Font fontRegular = new("Times New Roman", 11f, FontStyle.Regular);
+    private static readonly Font fontSub = new(WineCompat.Resolve("Times New Roman"), 8f, FontStyle.Regular); //260610Cl Wine時フォント切替
+    private static readonly Font fontItalic = new(WineCompat.Resolve("Times New Roman"), 11f, FontStyle.Italic); //260610Cl Wine時フォント切替
+    private static readonly Font fontRegular = new(WineCompat.Resolve("Times New Roman"), 11f, FontStyle.Regular); //260610Cl Wine時フォント切替
 
     private void listBoxSpaceGroup_DrawItem(object sender, DrawItemEventArgs e)
     {

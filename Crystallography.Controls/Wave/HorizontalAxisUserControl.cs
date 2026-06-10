@@ -136,7 +136,7 @@ public partial class HorizontalAxisUserControl : UserControlBase
         }
     }
 
-    /// <summary>波長をÅ単位のテキストで取得/設定</summary>
+    /// <summary>波長をÅ単位のテキストで取得/設定</summary>
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
     public string WaveLengthText
     {

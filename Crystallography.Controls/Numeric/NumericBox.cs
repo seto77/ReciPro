@@ -302,7 +302,7 @@ public partial class NumericBox : UserControlBase
     public float ValueFontSize
     {
         get => textBox.Font.Size;
-        set => textBox.Font = new Font("Segoe UI", value, textBox.Font.Style);
+        set => textBox.Font = new Font(WineCompat.Resolve("Segoe UI"), value, textBox.Font.Style); //260610Cl Wine時フォント切替
     }
 
     // 260428Cl 追加: NumericBox 全体の Font プロパティはデザイナから非表示にする。

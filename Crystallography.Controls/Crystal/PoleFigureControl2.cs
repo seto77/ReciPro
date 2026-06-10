@@ -273,7 +273,7 @@ public partial class PoleFigureControl2 : UserControlBase
                     g.DrawCircle(s.Color, p, s.Radius);
                 if (s.Text != "")
                 {
-                    using var font = new Font("Tahoma", 0.08f);
+                    using var font = new Font(WineCompat.Resolve("Tahoma"), 0.08f); //260610Cl Wine時フォント切替
                     using var brush = new SolidBrush(s.Color);
                     g.DrawString(s.Text, font, brush, p.ToPointF());
                 }
@@ -304,7 +304,7 @@ public partial class PoleFigureControl2 : UserControlBase
                 gScale.DrawLine(pen, new Point(leftMargin + i, 0), new Point(leftMargin + i, scaleHeight));
             }
 
-            using var tickFont = new Font("Tahoma", 8f);
+            using var tickFont = new Font(WineCompat.Resolve("Tahoma"), 8f); //260610Cl Wine時フォント切替
             for (int i = 0; i < 5; i++)
             {
                 var x = i / 4f * scaleWidth;

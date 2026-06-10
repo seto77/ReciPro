@@ -30,7 +30,7 @@ public abstract class SymmetryDiagramCommon
     private const int MinBitmapSize = 16;
     /// <summary>(260505Cl 整理) <see cref="DrawUpperLeftQuadrantLabel"/> の左上ラベルのオフセットとフォント。</summary>
     private const float QuadrantLabelOffset = 4f;
-    private static readonly Font QuadrantLabelFont = new("Segoe UI", 8f);
+    private static readonly Font QuadrantLabelFont = new(WineCompat.Resolve("Segoe UI"), 8f); //260610Cl Wine時フォント切替
     /// <summary>(260505Ch) セル軸ラベル ("o", a, b, c) とセル枠の隙間 (pixel)。</summary>
     private const float AxisLabelGap = 2f;
 
@@ -50,14 +50,14 @@ public abstract class SymmetryDiagramCommon
     // 図中フォント (260502Cl) — 全ての描画箇所で共有して使う長寿命インスタンス。
     //----------------------------------------------------------------------
     /// <summary>高さラベル (¼, ½ などの分数文字)。inversion 中心、紙面内軸矢印、紙面平行 mirror 等で使用。</summary>
-    protected static readonly Font HeightLabelFont = new("Times New Roman",  13f);
+    protected static readonly Font HeightLabelFont = new(WineCompat.Resolve("Times New Roman"),  13f); //260610Cl Wine時フォント切替
     /// <summary>セル枠の 軸ラベル (a, b, c の文字)。</summary>
-    protected static readonly Font AxisLabelFont = new("Times New Roman", 13f, FontStyle.Italic);
+    protected static readonly Font AxisLabelFont = new(WineCompat.Resolve("Times New Roman"), 13f, FontStyle.Italic); //260610Cl Wine時フォント切替
 
     /// <summary>一般位置図のクラスタラベル (proper/improper の添字など)。</summary>
-    protected static readonly Font ClusterLabelFont = new("Times New Roman",  13f);
+    protected static readonly Font ClusterLabelFont = new(WineCompat.Resolve("Times New Roman"),  13f); //260610Cl Wine時フォント切替
     /// <summary>空図時のエラーメッセージ表示用。</summary>
-    protected static readonly Font ErrorMessageFont = new("Segoe UI", 9f);
+    protected static readonly Font ErrorMessageFont = new(WineCompat.Resolve("Segoe UI"), 9f); //260610Cl Wine時フォント切替
 
     /// <summary>高さラベル用の典型分数 (8 分は I4_1/acd 等で必要)。
     /// (260502Cl) 12 分系は Unicode に precomposed 一文字版が無いため、superscript + fraction slash (U+2044) + subscript の合成で擬似的に一文字化。</summary>

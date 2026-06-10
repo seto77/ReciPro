@@ -319,7 +319,7 @@ crystal structure is taken from.</value>
     <value>0, 5, 0, 0</value>
   </data>
   <data name="numericBoxVolumeAng.FooterText" xml:space="preserve">
-    <value>Å³</value>
+    <value>Å³</value>
   </data>
   <data name="numericBoxVolumeAng.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>
@@ -352,10 +352,10 @@ crystal structure is taken from.</value>
     <value>90</value>
   </data>
   <data name="numericBoxVolumeAng.ToolTip" xml:space="preserve">
-    <value>Cell volume in Å³</value>
+    <value>Cell volume in Å³</value>
   </data>
   <data name="numericBoxVolumeAng.ToolTip1" xml:space="preserve">
-    <value>Cell volume in Å³</value>
+    <value>Cell volume in Å³</value>
   </data>
   <data name="&gt;&gt;numericBoxVolumeAng.Name" xml:space="preserve">
     <value>numericBoxVolumeAng</value>

@@ -280,8 +280,8 @@ public partial class AtomControl : UserControlBase
         int n = 0;
         var abundance = AtomStatic.IsotopeAbundance[AtomNo];
         bool useCustomIso = comboBoxNeutron.SelectedIndex == 1 && isotopicComposition != null && isotopicComposition.Length == abundance.Count;
-        var fontSmall = new Font("Tahoma", 6f, FontStyle.Regular);
-        var fontNormal = new Font("Tahoma", 9f, FontStyle.Regular);
+        var fontSmall = new Font(WineCompat.Resolve("Tahoma"), 6f, FontStyle.Regular); //260610Cl Wine時フォント切替
+        var fontNormal = new Font(WineCompat.Resolve("Tahoma"), 9f, FontStyle.Regular); //260610Cl Wine時フォント切替
         var elementName = AtomStatic.AtomicName(AtomNo);
         foreach (int z in abundance.Keys)
         {

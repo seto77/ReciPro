@@ -154,25 +154,25 @@ public partial class WaveLengthControl : UserControlBase
     // この public フィールドはどこからも参照されない死コードだったため撤去
     //public string waveLengthText = "0.4";
 
-    /// <summary>波長をÅ単位のテキスト形式で取得/設定。表示単位 (LengthUnit) に依らず常にÅで入出力する。</summary>
+    /// <summary>波長をÅ単位のテキスト形式で取得/設定。表示単位 (LengthUnit) に依らず常にÅで入出力する。</summary>
     [Browsable(false)]
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public string WaveLengthText
     {
         set
         {
-            // 260606Cl 堅牢化: value は常にÅ文字列。WaveLength(nm) = Å/10 経由で設定し表示単位に依らず正しくスケールされるようにする。
+            // 260606Cl 堅牢化: value は常にÅ文字列。WaveLength(nm) = Å/10 経由で設定し表示単位に依らず正しくスケールされるようにする。
             // 260426Cl 修正: 空文字や数値変換失敗で発生する例外型に絞り込み
             //numericBoxWaveLength.Value = Convert.ToDouble(value); // 260606Cl 旧: 表示単位に直接代入でスケールずれ
             try
             {
-                WaveLength = Convert.ToDouble(value) / 10.0; // Å → nm
+                WaveLength = Convert.ToDouble(value) / 10.0; // Å → nm
                 comboBoxXRayElement.SelectedIndex = 0;
             }
             catch (FormatException) { }
             catch (OverflowException) { }
         }
-        // 260606Cl 堅牢化: 表示単位に依らず常にÅ文字列を返す (WaveLength は nm → ×10 で Å へ変換)
+        // 260606Cl 堅牢化: 表示単位に依らず常にÅ文字列を返す (WaveLength は nm → ×10 で Å へ変換)
         //get => numericBoxWaveLength.Text; // 260606Cl 旧: nm表示時に nm テキストを返してしまいずれが生じた
         get => (WaveLength * 10.0).ToString();
     }

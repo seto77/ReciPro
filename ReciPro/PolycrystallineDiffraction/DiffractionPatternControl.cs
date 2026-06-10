@@ -1875,7 +1875,7 @@ public partial class DiffractionPatternControl : UserControlBase
         if (checkedListBoxPlaneList.Items.Count>0 && polyCrystal.BaseCrystal!=null)
         {
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-            Font font = new Font("Tahoma", 10);
+            Font font = new Font(WineCompat.Resolve("Tahoma"), 10); //260610Cl Wine時フォント切替
             Color stringColor = Color.Green, lineColor = Color.Green;
             PointD centerSrc = scalablePictureBox.ConvertToClientPt(Center);
             double phi = Math.Atan2(scalablePictureBox.Height / 2.0 - centerSrc.Y, scalablePictureBox.Width / 2.0 - centerSrc.X);

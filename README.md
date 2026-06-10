@@ -37,9 +37,17 @@ You may also cite the software repository itself when appropriate:
 
 * Access https://github.com/seto77/ReciPro/releases/latest, download *ReciProSetup.msi*, and execute it.
 * *ReciPro* runs on Windows OS with ***.Net Desktop Runtime 10.0*** (NOT ***.Net Runtime 10.0***), which can be installed from [here](https://dotnet.microsoft.com/download/dotnet/10.0).
+* If you cannot run an installer (e.g. on permission-managed PCs), a **portable ZIP** package (*ReciPro-v.X.XXX-win-x64-portable.zip*) is also available on the releases page: self-contained, no installation and no .NET runtime required — just unzip and run.
 * *ReciPro* is distributed under the **MIT license** (free for anyone to use, modify, and redistribute).
 * For code-signing status and installer verification, see [Code signing policy](CODE_SIGNING.md).
 * For bundled or referenced third-party components and data, see [Third-party notices](THIRD-PARTY-NOTICES.md).
+
+### macOS (unofficial)
+
+* *ReciPro* officially supports only Windows, but it has been reported to run on macOS (Apple Silicon) by combining the **portable ZIP** package with the **Sikarugir** Wine wrapper and the **Mesa3D** OpenGL driver — no Windows license or virtual machine required.
+* See the step-by-step setup guide published by Ryo Fukushima (JAMSTEC): https://github.com/Ryo-fkushima/ReciPro_macOS_memo
+* This configuration is not officially supported or fully verified. A known limitation is that some symbols (Å, superscripts, arrows) may be displayed incorrectly.
+* The garbled symbols can be fixed by installing fonts with broad glyph coverage (**DejaVu Sans/Serif**, and **Noto Sans CJK JP** for the Japanese UI) into the Wine prefix — ReciPro detects the Wine environment and switches to them automatically. See [Troubleshooting](https://seto77.github.io/ReciPro/en/troubleshooting/) for details.
 
 ### Note on Windows Security Warnings
 

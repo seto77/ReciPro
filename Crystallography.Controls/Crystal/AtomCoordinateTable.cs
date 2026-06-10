@@ -197,7 +197,7 @@ public partial class AtomCoordinateTable : UserControlBase
         var prevPt = new PointF(-10, -10);
         int times = 1;
         const int shiftY = 15;
-        using var font = new Font("Tahoma", 9);
+        using var font = new Font(WineCompat.Resolve("Tahoma"), 9); //260610Cl Wine時フォント切替
         for (int i = 0; i < atoms.Count; i++)
         {
             // 同じラベルかつほぼ同じ距離の原子は (n) でまとめる
@@ -238,7 +238,7 @@ public partial class AtomCoordinateTable : UserControlBase
         // 角度方向の目盛り
         float angleGrad = ChooseGradiation(UpperX - LowerX, [1.1, 2.2, 5.0]);
         g.DrawLine(Pens.Black, OriginPos.X, pictureBox.Height - OriginPos.Y, pictureBox.Width, pictureBox.Height - OriginPos.Y);
-        using var strFont = new Font(new FontFamily("tahoma"), 8);
+        using var strFont = new Font(new FontFamily(WineCompat.Resolve("tahoma")), 8); //260610Cl Wine時フォント切替
         for (int i = (int)(LowerX / angleGrad) + 1; i < UpperX / angleGrad; i++)
         {
             float x = ConvToPicBoxCoord(i * angleGrad, 0).X;

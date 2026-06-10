@@ -2502,7 +2502,7 @@ which reciprocal-lattice spots are hidden.</value>
     <value>1</value>
   </data>
   <data name="buttonAntiClock.Text" xml:space="preserve">
-    <value>⭯</value>
+    <value>↺</value>
   </data>
   <data name="buttonAntiClock.ToolTip" xml:space="preserve">
     <value>Rotate the crystal in the direction of the arrow.</value>
@@ -2544,7 +2544,7 @@ which reciprocal-lattice spots are hidden.</value>
     <value>0</value>
   </data>
   <data name="buttonClock.Text" xml:space="preserve">
-    <value>⭮</value>
+    <value>↻</value>
   </data>
   <data name="buttonClock.ToolTip" xml:space="preserve">
     <value>Rotate the crystal in the direction of the arrow.</value>
@@ -2619,7 +2619,7 @@ which reciprocal-lattice spots are hidden.</value>
     <value>0</value>
   </data>
   <data name="buttonTopLeft.Text" xml:space="preserve">
-    <value>⭦</value>
+    <value>↖</value>
   </data>
   <data name="buttonTopLeft.ToolTip" xml:space="preserve">
     <value>Rotate the crystal in the direction of the arrow.</value>
@@ -2661,7 +2661,7 @@ which reciprocal-lattice spots are hidden.</value>
     <value>1</value>
   </data>
   <data name="buttonLeft.Text" xml:space="preserve">
-    <value>⭠</value>
+    <value>←</value>
   </data>
   <data name="buttonLeft.ToolTip" xml:space="preserve">
     <value>Rotate the crystal in the direction of the arrow.
@@ -2704,7 +2704,7 @@ which reciprocal-lattice spots are hidden.</value>
     <value>2</value>
   </data>
   <data name="buttonBottomLeft.Text" xml:space="preserve">
-    <value>⭩</value>
+    <value>↙</value>
   </data>
   <data name="buttonBottomLeft.ToolTip" xml:space="preserve">
     <value>Rotate the crystal in the direction of the arrow.</value>
@@ -2746,7 +2746,7 @@ which reciprocal-lattice spots are hidden.</value>
     <value>4</value>
   </data>
   <data name="buttonBottom.Text" xml:space="preserve">
-    <value>⭣</value>
+    <value>↓</value>
   </data>
   <data name="buttonBottom.ToolTip" xml:space="preserve">
     <value>Rotate the crystal in the direction of the arrow.
@@ -2789,7 +2789,7 @@ which reciprocal-lattice spots are hidden.</value>
     <value>7</value>
   </data>
   <data name="buttonBottomRight.Text" xml:space="preserve">
-    <value>⭨</value>
+    <value>↘</value>
   </data>
   <data name="buttonBottomRight.ToolTip" xml:space="preserve">
     <value>Rotate the crystal in the direction of the arrow.</value>
@@ -2831,7 +2831,7 @@ which reciprocal-lattice spots are hidden.</value>
     <value>3</value>
   </data>
   <data name="buttonTop.Text" xml:space="preserve">
-    <value>⭡</value>
+    <value>↑</value>
   </data>
   <data name="buttonTop.ToolTip" xml:space="preserve">
     <value>Rotate the crystal in the direction of the arrow.
@@ -2874,7 +2874,7 @@ which reciprocal-lattice spots are hidden.</value>
     <value>5</value>
   </data>
   <data name="buttonTopRight.Text" xml:space="preserve">
-    <value>⭧</value>
+    <value>↗</value>
   </data>
   <data name="buttonTopRight.ToolTip" xml:space="preserve">
     <value>Rotate the crystal in the direction of the arrow.</value>
@@ -2916,7 +2916,7 @@ which reciprocal-lattice spots are hidden.</value>
     <value>6</value>
   </data>
   <data name="buttonRight.Text" xml:space="preserve">
-    <value>⭢</value>
+    <value>→</value>
   </data>
   <data name="buttonRight.ToolTip" xml:space="preserve">
     <value>Rotate the crystal in the direction of the arrow.

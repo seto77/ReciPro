@@ -673,7 +673,7 @@
             toolTip.SetToolTip(label16, resources.GetString("label16.ToolTip")); // 260531Cl
             label16.Size = new System.Drawing.Size(569, 19);
             label16.TabIndex = 2;
-            label16.Text = "Note 1: Unit of length is \"nm\", not \"Å\".   Note 2: Unit of wavenumber  is \"1/nm\", not \"2π/nm\".";
+            label16.Text = "Note 1: Unit of length is \"nm\", not \"Å\".   Note 2: Unit of wavenumber  is \"1/nm\", not \"2π/nm\".";
             // 
             // pictureBox
             // 

@@ -473,7 +473,7 @@ public partial class FormStereonet : FormBase
         var matBase = radioButtonAxes.Checked ? crystal.RotationMatrix * crystal.MatrixReal : crystal.RotationMatrix * crystal.MatrixInverseTransposed;
 
         var drawString = trackBarStrSize.Value != 1 && checkBoxShowIndexLabels.Checked;
-        using var font = new Font("Times New Roman", trackBarStrSize.Value / (float)mag / 7f);
+        using var font = new Font(WineCompat.Resolve("Times New Roman"), trackBarStrSize.Value / (float)mag / 7f); //260610Cl Wine時フォント切替
 
         Func<Vector3DBase, PointD> conv = radioButtonWulff.Checked ? Stereonet.ConvertVectorToWulff : Stereonet.ConvertVectorToSchmidt;
 
@@ -845,7 +845,7 @@ public partial class FormStereonet : FormBase
     #region Appearanceタブ関連
     private void trackBarStrSize_Scroll(object sender, EventArgs e)
     {
-        strFont = new Font("Tahoma", trackBarStrSize.Value / 9f);
+        strFont = new Font(WineCompat.Resolve("Tahoma"), trackBarStrSize.Value / 9f); //260610Cl Wine時フォント切替
         pointSize = trackBarPointSize.Value;
         Draw();
     }

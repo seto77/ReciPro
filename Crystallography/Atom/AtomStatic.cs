@@ -5569,7 +5569,7 @@ new(4.86738014,0.319974401,4.58872425,
         #endregion
     }
 
-    /// <summary>原子番号 z, 線種 line を入力すると 波長 (Å) を返す。 対応する原子、線種がない場合はNaNを返す</summary>
+    /// <summary>原子番号 z, 線種 line を入力すると 波長 (Å) を返す。 対応する原子、線種がない場合はNaNを返す</summary>
     /// <param name="z"></param>
     /// <param name="line"></param>
     /// <returns></returns>

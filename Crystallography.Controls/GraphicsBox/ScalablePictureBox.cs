@@ -15,7 +15,7 @@ namespace Crystallography.Controls;
 [ToolboxItem(true)] // 260605Cl 追加: 基底 UserControlBase の [ToolboxItem(false)] 継承を打ち消しデザイナのツールボックスに表示
 public partial class ScalablePictureBox : UserControlBase
 {
-    private const string SymbolFontName = "Arial"; // (260322Ch) overlay 描画で使うフォント名を一箇所へ集約する
+    private static readonly string SymbolFontName = WineCompat.Resolve("Arial"); // (260322Ch) overlay 描画で使うフォント名を一箇所へ集約する 260610Cl const→readonly化: Wine時フォント切替
     public bool SkipEvent = false;
     public bool SkipDrawing = false;
     public enum SymbolShape { Circle, Cross, Line, CircleAndCross };
