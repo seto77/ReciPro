@@ -356,6 +356,24 @@ public class MonteCarlo
         return weightSum > 0 ? sum / weightSum : double.NaN;
     }
 
+    /// <summary>結晶の原子リスト(非対称単位)から、MC 計算に渡す平均原子番号 Z(質量加重)・平均原子量 A・平均価電子数 Nv(質量加重)を
+    /// Multiplicity×Occ 加重で求める (Crystal.GetFormulaAndDensity と同じ規約)。260612Cl 追加
+    /// (FormTrajectory/FormEBSD で重複していた sum1/sum2/sum3 集計を集約)</summary>
+    public static (double Z, double A, double Nv) GetMeanAtomicParameters(IEnumerable<Atoms> atoms)
+    {
+        double sumWZ = 0, sumW = 0, sumN = 0, sumNv = 0, sumNvW = 0;
+        foreach (var atom in atoms)
+        {
+            var count = atom.Multiplicity * atom.Occ;
+            var w = AtomStatic.AtomicWeight(atom.AtomicNumber) * count;
+            sumWZ += w * atom.AtomicNumber;
+            sumW += w;
+            sumN += count;
+            if (w > 0) { sumNv += EstimateElementValenceElectronCount(atom.AtomicNumber) * w; sumNvW += w; }
+        }
+        return (sumWZ / sumW, sumW / sumN, sumNvW > 0 ? sumNv / sumNvW : double.NaN);
+    }
+
     /// <summary>
     /// 結晶の原子リストから Mott 散乱サンプリング用の元素別数密度 n_i [1/nm³] を構築する。
     /// n_i = ρ·N_A·(多重度×占有率)_i / (式量) で計算。

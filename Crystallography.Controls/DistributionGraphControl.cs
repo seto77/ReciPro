@@ -352,8 +352,11 @@ namespace Crystallography.Controls
         {
             if (pictureBox.Width <= 0 || pictureBox.Height <= 0) return;
 
-            Bmp = new Bitmap(pictureBox.Width, pictureBox.Height);
-            G = Graphics.FromImage(Bmp);
+            //Bmp = new Bitmap(pictureBox.Width, pictureBox.Height); // (260611Ch) 旧: 再描画ごとに古い Bitmap/Graphics が未解放
+            var oldBmp = Bmp; // (260611Ch)
+            var oldG = G; // (260611Ch)
+            Bmp = new Bitmap(pictureBox.Width, pictureBox.Height); // (260611Ch)
+            G = Graphics.FromImage(Bmp); // (260611Ch)
             G.Clear(BackgroundColor);
 
             if (destData != null && destData.Length > 2)
@@ -365,6 +368,8 @@ namespace Crystallography.Controls
                 DrawEllipses();
             }
             pictureBox.Image = Bmp;
+            oldG?.Dispose(); // (260611Ch)
+            oldBmp?.Dispose(); // (260611Ch)
         }
 
         private void DrawEllipses()
@@ -374,8 +379,11 @@ namespace Crystallography.Controls
                 PointF p = ConvToPicBoxCoord(destData[i].Center.X, destData[i].Center.Y);
                 if (p.X > originPosition.X && p.X < pictureBox.ClientSize.Width && p.Y > 0 && p.Y < pictureBox.ClientSize.Height - originPosition.Y)
                 {
-                    G.FillEllipse(new SolidBrush(destData[i].FillColor), p.X, p.Y, (float)destData[i].Width, (float)destData[i].Height);
-                    G.DrawEllipse(new Pen(destData[i].LineColor, (float)destData[i].LineWidth), p.X, p.Y, (float)destData[i].Width, (float)destData[i].Height);
+                    //G.FillEllipse(new SolidBrush(destData[i].FillColor), p.X, p.Y, (float)destData[i].Width, (float)destData[i].Height); // (260611Ch) 旧: SolidBrush/Pen が未解放
+                    using var fill = new SolidBrush(destData[i].FillColor); // (260611Ch)
+                    using var pen = new Pen(destData[i].LineColor, (float)destData[i].LineWidth); // (260611Ch)
+                    G.FillEllipse(fill, p.X, p.Y, (float)destData[i].Width, (float)destData[i].Height);
+                    G.DrawEllipse(pen, p.X, p.Y, (float)destData[i].Width, (float)destData[i].Height);
                 }
             }
         }
@@ -389,14 +397,17 @@ namespace Crystallography.Controls
             else if (d < 8.0) xGradiation = (float)(5 * Math.Pow(10, (int)Math.Log10(UpperX - LowerX) - 1));
             else xGradiation = (float)(10 * Math.Pow(10, (int)Math.Log10(UpperX - LowerX) - 1));
 
-            Pen pen = new Pen(DivisionLineColor, 1);
+            //Pen pen = new Pen(DivisionLineColor, 1); // (260611Ch) 旧: 再代入ごとの Pen が未解放
+            using var divisionPen = new Pen(DivisionLineColor, 1); // (260611Ch)
+            using var subLinePen = new Pen(DivisionSubLineColor, 1); // (260611Ch)
 
-            G.DrawLine(pen, OriginPosition.X, pictureBox.Height - OriginPosition.Y, pictureBox.Width, pictureBox.Height - OriginPosition.Y);
-            Font strFont = new Font(new FontFamily(WineCompat.Resolve("tahoma")), 8); //260610Cl Wine時フォント切替
+            G.DrawLine(divisionPen, OriginPosition.X, pictureBox.Height - OriginPosition.Y, pictureBox.Width, pictureBox.Height - OriginPosition.Y);
+            //using var strFont = new Font(new FontFamily(WineCompat.Resolve("tahoma")), 8); //260610Cl Wine時フォント切替 // (260611Ch) 旧: FontFamily 一時生成が不要
+            using var strFont = new Font(WineCompat.Resolve("tahoma"), 8); //260610Cl Wine時フォント切替 // (260611Ch)
             for (int i = (int)(LowerX / xGradiation) + 1; i < UpperX / xGradiation; i++)
             {
-                pen = new Pen(DivisionLineColor, 1);
-                G.DrawLine(pen, ConvToPicBoxCoord(i * xGradiation, 0).X, pictureBox.Height - OriginPosition.Y, ConvToPicBoxCoord(i * xGradiation, 0).X, pictureBox.Height - OriginPosition.Y + 5);
+                //pen = new Pen(DivisionLineColor, 1); // (260611Ch) 旧: ループ内 Pen が未解放
+                G.DrawLine(divisionPen, ConvToPicBoxCoord(i * xGradiation, 0).X, pictureBox.Height - OriginPosition.Y, ConvToPicBoxCoord(i * xGradiation, 0).X, pictureBox.Height - OriginPosition.Y + 5); // (260611Ch)
                 string str = "";
 
                 if (!xLog)
@@ -410,9 +421,8 @@ namespace Crystallography.Controls
                     str = "1.E" + Math.Round(i * xGradiation, 5).ToString("g");
                 G.DrawString(str, strFont, DivisionTextBrush, ConvToPicBoxCoord(i * xGradiation, 0).X - 2, pictureBox.Height - OriginPosition.Y + 5);
 
-                pen = new Pen(divisionSubLineColor, 1);
                 //if (checkBoxShowScaleLine.Checked)
-                G.DrawLine(pen, ConvToPicBoxCoord(i * xGradiation, 0).X, pictureBox.Height - OriginPosition.Y, ConvToPicBoxCoord(i * xGradiation, 0).X, 0);
+                G.DrawLine(subLinePen, ConvToPicBoxCoord(i * xGradiation, 0).X, pictureBox.Height - OriginPosition.Y, ConvToPicBoxCoord(i * xGradiation, 0).X, 0); // (260611Ch)
             }
 
             float yGradiation;//ここより強度目盛りの描画
@@ -422,12 +432,11 @@ namespace Crystallography.Controls
             else if (d < 8.0) yGradiation = (float)(5 * Math.Pow(10, (int)Math.Log10(UpperY - LowerY) - 1));
             else yGradiation = (float)(10 * Math.Pow(10, (int)Math.Log10(UpperY - LowerY) - 1));
 
-            pen = new Pen(DivisionLineColor, 1);
-            G.DrawLine(pen, OriginPosition.X, 0, OriginPosition.X, pictureBox.Height - OriginPosition.Y);
+            G.DrawLine(divisionPen, OriginPosition.X, 0, OriginPosition.X, pictureBox.Height - OriginPosition.Y);
             for (int i = (int)(LowerY / yGradiation) + 1; i < UpperY / yGradiation; i++)
             {
-                pen = new Pen(DivisionLineColor, 1);
-                G.DrawLine(pen, OriginPosition.X - 8, ConvToPicBoxCoord(0, i * yGradiation).Y, OriginPosition.X, ConvToPicBoxCoord(0, i * yGradiation).Y);
+                //pen = new Pen(DivisionLineColor, 1); // (260611Ch) 旧: ループ内 Pen が未解放
+                G.DrawLine(divisionPen, OriginPosition.X - 8, ConvToPicBoxCoord(0, i * yGradiation).Y, OriginPosition.X, ConvToPicBoxCoord(0, i * yGradiation).Y); // (260611Ch)
                 string str = "";
                 if (!yLog)
                 {
@@ -441,9 +450,8 @@ namespace Crystallography.Controls
 
                 G.DrawString(str, strFont, DivisionTextBrush, 0, ConvToPicBoxCoord(0, i * yGradiation).Y - 6);
 
-                pen = new Pen(DivisionSubLineColor, 1);
                 //if (checkBoxShowScaleLine.Checked)
-                G.DrawLine(pen, OriginPosition.X - 8, ConvToPicBoxCoord(0, i * yGradiation).Y, pictureBox.Width, ConvToPicBoxCoord(0, i * yGradiation).Y);
+                G.DrawLine(subLinePen, OriginPosition.X - 8, ConvToPicBoxCoord(0, i * yGradiation).Y, pictureBox.Width, ConvToPicBoxCoord(0, i * yGradiation).Y); // (260611Ch)
             }
         }
 
@@ -596,7 +604,8 @@ namespace Crystallography.Controls
         {
             if (MouseRangingMode)
             {
-                var pen = new Pen(Brushes.Gray) { DashStyle = DashStyle.Dash };
+                //var pen = new Pen(Brushes.Gray) { DashStyle = DashStyle.Dash }; // (260611Ch) 旧: Pen が未解放
+                using var pen = new Pen(Brushes.Gray) { DashStyle = DashStyle.Dash }; // (260611Ch)
                 e.Graphics.DrawRectangle(pen, Math.Min(MouseRangeStart.X, MouseRangeEnd.X), Math.Min(MouseRangeStart.Y, MouseRangeEnd.Y),
                     Math.Abs(MouseRangeStart.X - MouseRangeEnd.X), Math.Abs(MouseRangeStart.Y - MouseRangeEnd.Y));
             }

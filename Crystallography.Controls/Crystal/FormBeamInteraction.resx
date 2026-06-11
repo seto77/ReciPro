@@ -968,7 +968,7 @@ Multiply it by the density ρ to obtain the linear coefficient µ.</value>
     <value>flowLayoutPanelAttenCoeff</value>
   </data>
   <data name="radioButtonElecDeds.Text" xml:space="preserve">
-    <value>dE/ds (keV/nm)</value>
+    <value>|dE/ds| (keV/nm)</value>
   </data>
   <data name="&gt;&gt;flowLayoutPanel6.Parent" xml:space="preserve">
     <value>splitContainer1.Panel2</value>
@@ -2205,7 +2205,7 @@ Range 0.001-1; a value below 1 produces fractional indices.</value>
     <value>flowLayoutPanelElecQuantity</value>
   </data>
   <data name="radioButtonElecDeds.ToolTip" xml:space="preserve">
-    <value>dE/ds — stopping power: the energy the electron loses per nanometre of travel.</value>
+    <value>|dE/ds| — stopping power magnitude: the energy the electron loses per nanometre of travel.</value>
   </data>
   <data name="&gt;&gt;miniTableScatteringFactorsNeutron.Parent" xml:space="preserve">
     <value>flowLayoutPanel8</value>

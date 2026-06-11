@@ -63,9 +63,11 @@ public partial class PoleFigureControl : UserControlBase
         using (var g = Graphics.FromImage(bmp))
         {
             g.SmoothingMode = SmoothingMode.HighQuality;
-            g.Transform = new Matrix((float)magnification, 0, 0, -(float)magnification,
+            //g.Transform = new Matrix((float)magnification, 0, 0, -(float)magnification, ...); // (260611Ch) 旧: Matrix が未解放
+            using var transform = new Matrix((float)magnification, 0, 0, -(float)magnification, // (260611Ch)
                 (float)(pictureBox.ClientSize.Width / 2.0 - center.X * magnification),
                 (float)(pictureBox.ClientSize.Height / 2.0 - center.Y * magnification));
+            g.Transform = transform; // (260611Ch)
             g.Clear(Color.White);
 
             if (renewDensityPixels)
@@ -85,7 +87,9 @@ public partial class PoleFigureControl : UserControlBase
         using (var g = Graphics.FromImage(bmp))
         {
             g.SmoothingMode = SmoothingMode.HighQuality;
-            g.Transform = new Matrix(mag, 0, 0, -mag, 512, 512);
+            //g.Transform = new Matrix(mag, 0, 0, -mag, 512, 512); // (260611Ch) 旧: Matrix が未解放
+            using var transform = new Matrix(mag, 0, 0, -mag, 512, 512); // (260611Ch)
+            g.Transform = transform; // (260611Ch)
             g.Clear(Color.White);
             pixels = generateDensityArrayNormal(Math.PI / 180.0 * (double)numericUpDownResolution.Value);
             DrawDensity(g, pixels);

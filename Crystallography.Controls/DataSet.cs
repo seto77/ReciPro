@@ -15,7 +15,8 @@ public partial class DataSet
     public static Bitmap ColorImage(int argb)
     {
         var bmp = new Bitmap(40, 15);
-        var g = Graphics.FromImage(bmp);
+        //var g = Graphics.FromImage(bmp); // (260611Ch) 旧: Graphics が未解放
+        using var g = Graphics.FromImage(bmp); // (260611Ch) Bitmap は戻り値なので Graphics だけ解放
         g.Clear(Color.FromArgb(argb));
         return bmp;
     }

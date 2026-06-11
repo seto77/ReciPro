@@ -122,7 +122,7 @@ public partial class FormBeamInteraction : FormBase
         // --- 軸ラベル(AxisLabel*) ---
         "Graph.Axis.D.Angstrom" => "d (Å)",
         "Graph.Axis.D.Nm" => "d (nm)",
-        "Graph.Axis.DedsKevNm" => "dE/ds (keV/nm)",
+        "Graph.Axis.DedsKevNm" => "|dE/ds| (keV/nm)", // (260611Ch) 損失の大きさを描くため絶対値表記に統一
         "Graph.Axis.EKeV" => "E (keV)",
         "Graph.Axis.ElasticMfpNm" => Loc("Elastic MFP (nm)", "弾性MFP (nm)"),
         "Graph.Axis.ElectronFeNm" => "fe (nm)",
@@ -142,7 +142,7 @@ public partial class FormBeamInteraction : FormBase
         "Graph.Axis.XrayFElectrons" => Loc("f (electrons)", "f (電子数)"),
         // --- 凡例ラベル(Label*) ---
         "Graph.Label.D" => "d:",
-        "Graph.Label.Deds" => "dE/ds:",
+        "Graph.Label.Deds" => "|dE/ds|:", // (260611Ch)
         "Graph.Label.E" => "E:",
         "Graph.Label.F" => "f:",
         "Graph.Label.Fe" => "fe:",
@@ -825,7 +825,8 @@ public partial class FormBeamInteraction : FormBase
     private MonteCarlo attenMc;                       // 電子輸送用 (物性タプルでキャッシュ)
     private (double z, double a, double rho, double nv)? attenMcKey;//260606Cl nv(質量重み平均価電子数)もキャッシュキーに含める
 
-    /// <summary>構成元素を (Z, 占有数合計) で集約 (Occ 込み)。260606Cl 追加。</summary>
+    /// <summary>構成元素を (Z, 単位胞内原子数合計) で集約 (Multiplicity×Occ)。260606Cl 追加。
+    /// 260612Cl サイト多重度を乗算 (旧: Occ のみ集計→多重度が元素間で異なる結晶で組成が歪み、GeO2 の透過率が GeO 相当になるバグ)。</summary>
     private (int z, double occ)[] AggregateElements()
     {
         var d = new Dictionary<int, double>();
@@ -833,7 +834,8 @@ public partial class FormBeamInteraction : FormBase
         {
             int z = a.AtomicNumber;
             if (z < 1 || z > 99) continue;
-            d[z] = d.TryGetValue(z, out var v) ? v + a.Occ : a.Occ;
+            //d[z] = d.TryGetValue(z, out var v) ? v + a.Occ : a.Occ;
+            d[z] = d.TryGetValue(z, out var v) ? v + a.Multiplicity * a.Occ : a.Multiplicity * a.Occ;//260612Cl Crystal.GetFormulaAndDensity と同じ重み
         }
         return d.Select(kv => (kv.Key, kv.Value)).ToArray();
     }
@@ -1119,7 +1121,7 @@ public partial class FormBeamInteraction : FormBase
             [Loc("λ (electron)", "λ (電子)"), Q(lambdaNm * 1000, "pm")],
             [Loc("σ elastic", "σ 弾性"), Q(sigma, "nm²")],
             [Loc("Elastic MFP", "弾性MFP"), Q(mfp, "nm")],
-            [Loc("dE/ds (loss)", "dE/ds (損失)"), Q(dEds, "keV/nm")],
+            [Loc("|dE/ds| (loss)", "|dE/ds| (損失)"), Q(Math.Abs(dEds), "keV/nm")], // (260611Ch)
             [Loc("IMFP", "非弾性MFP"), Q(imfpA / 10, "nm")],
             [Loc("Plasma E", "プラズマ E"), mc.PlasmaEnergyEv > 0 ? Q(mc.PlasmaEnergyEv, "eV") : "N/A"],
             [Loc("J (mean exc.)", "J (平均励起)"), mc.J > 0 ? Q(mc.J, "eV") : "N/A"],
@@ -1201,7 +1203,7 @@ public partial class FormBeamInteraction : FormBase
             [
                 new Profile(sig) { Color = Color.FromArgb(0xd6, 0x27, 0x28), text = "σ elastic" },
                 new Profile(mfp) { Color = Color.FromArgb(0x1f, 0x77, 0xb4), text = "elastic MFP" },
-                new Profile(des) { Color = Color.FromArgb(0x2c, 0xa0, 0x2c), text = "dE/ds" },
+                new Profile(des) { Color = Color.FromArgb(0x2c, 0xa0, 0x2c), text = "|dE/ds|" }, // (260611Ch)
             ], new RectangleD(0, double.NaN, 20, double.NaN), showLegend: true, minimalX: 0, maximalX: kMax);//260611Cl 追加: 曲線名を曲線色の凡例ラベルとしてタイトル行に表示。X軸 0〜50 keV・初期表示 0-20
         }
         else//単一量を絶対値で表示
@@ -1212,7 +1214,7 @@ public partial class FormBeamInteraction : FormBase
             {
                 case 1: sel = i => raw[i].s; axisKey = "Graph.Axis.SigmaElasticNm2"; unitKey = "Graph.Unit.Nm2"; labelKey = "Graph.Label.Sigma"; color = Color.FromArgb(0xd6, 0x27, 0x28); break;
                 case 2: sel = i => raw[i].m; axisKey = "Graph.Axis.ElasticMfpNm"; unitKey = "Graph.Unit.Nm"; labelKey = "Graph.Label.Mfp"; color = Color.FromArgb(0x1f, 0x77, 0xb4); break;
-                case 3: sel = i => raw[i].d; axisKey = "Graph.Axis.DedsKevNm"; unitKey = "Graph.Unit.KeVPerNm"; labelKey = "Graph.Label.Deds"; color = Color.FromArgb(0x2c, 0xa0, 0x2c); break;
+                case 3: sel = i => Math.Abs(raw[i].d); axisKey = "Graph.Axis.DedsKevNm"; unitKey = "Graph.Unit.KeVPerNm"; labelKey = "Graph.Label.Deds"; color = Color.FromArgb(0x2c, 0xa0, 0x2c); break; // (260611Ch)
                 case 4: sel = i => raw[i].imfp; axisKey = "Graph.Axis.ImfpNm"; unitKey = "Graph.Unit.Nm"; labelKey = "Graph.Label.Imfp"; color = Color.FromArgb(0x94, 0x67, 0xbd); break;
                 default: sel = i => raw[i].range; axisKey = "Graph.Axis.RangeCsdaMicron"; unitKey = "Graph.Unit.Micron"; labelKey = "Graph.Label.Range"; color = Color.FromArgb(0x8c, 0x56, 0x4b); break;
             }

@@ -13,8 +13,9 @@
             {
                 components.Dispose();
             }
-            if (bmp != null)
-                bmp.Dispose();
+            //if (bmp != null) bmp.Dispose(); // (260611Ch) 旧: Graphics フィールドが未解放
+            g?.Dispose(); // (260611Ch)
+            bmp?.Dispose(); // (260611Ch)
             base.Dispose(disposing);
         }
 

@@ -707,7 +707,7 @@ B は結晶データの等方性変位パラメータ(Biso)です。オフのと
     <value>弾性MFP — 平均自由行程: 弾性散乱が起きる平均間隔の距離。</value>
   </data>
   <data name="radioButtonElecDeds.ToolTip" xml:space="preserve">
-    <value>dE/ds — 阻止能: 電子が1nm進むごとに失うエネルギー。</value>
+    <value>|dE/ds| — 阻止能の大きさ: 電子が1nm進むごとに失うエネルギー。</value>
   </data>
   <data name="radioButtonElecIMFP.ToolTip" xml:space="preserve">
     <value>IMFP — 非弾性平均自由行程: エネルギーを失う衝突の平均間隔。</value>

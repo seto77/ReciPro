@@ -107,27 +107,24 @@ public partial class FormTrajectory : FormBase
     {
         var cry = FormMain.Crystal;
         cry.GetFormulaAndDensity();
-        // 260606Cl 注意【既知の不具合・未修正・別件】: 下記 avgZ/avgA の集計は a.Multiplicity だけを使い Occupancy(a.Occ) を考慮していない。
-        // 占有率<1 のサイト(部分占有・固溶体)を持つ結晶では実組成とずれる。正しくは Multiplicity*Occ で加重すべき(Crystal.GetFormulaAndDensity と同じ規約)。
-        // valenceElectronCount(下方)も同様に Occ 抜け。FormEBSD.cs の同等箇所にも同じ不具合あり。修正は別 PR で対応予定。
-        var sum1 = cry.Atoms.Sum(a => AtomStatic.AtomicWeight(a.AtomicNumber) * a.Multiplicity * a.AtomicNumber);
-        var sum2 = cry.Atoms.Sum(a => AtomStatic.AtomicWeight(a.AtomicNumber) * a.Multiplicity);
-        var sum3 = cry.Atoms.Sum(a => a.Multiplicity);
-        //試料の平均原子番号. 各元素の重量比で加重平均//double Z = 79;// 79 29 13;
-        double Z = sum1 / sum2;
-        //試料の平均原子量 (g/mol)
-        double A = sum2 / sum3; //196.96 63.55 26.98;
+        // 260612Cl 平均原子番号 Z(質量加重)/平均原子量 A/平均価電子数 Nv は MonteCarlo.GetMeanAtomicParameters (Multiplicity×Occ 加重) に集約。
+        // 旧: sum1/sum2/sum3 + EstimateAverageValenceElectronCount を直書きし、Multiplicity のみで Occ 抜け (部分占有・固溶体で実組成とずれた)。
+        //var sum1 = cry.Atoms.Sum(a => AtomStatic.AtomicWeight(a.AtomicNumber) * a.Multiplicity * a.AtomicNumber);
+        //var sum2 = cry.Atoms.Sum(a => AtomStatic.AtomicWeight(a.AtomicNumber) * a.Multiplicity);
+        //var sum3 = cry.Atoms.Sum(a => a.Multiplicity);
+        //double Z = sum1 / sum2;       //試料の平均原子番号. 各元素の重量比で加重平均//double Z = 79;// 79 29 13;
+        //double A = sum2 / sum3;       //試料の平均原子量 (g/mol)。196.96 63.55 26.98;
+        //var valenceElectronCount = MonteCarlo.EstimateAverageValenceElectronCount(
+        //    cry.Atoms.Select(a => (a.AtomicNumber, AtomStatic.AtomicWeight(a.AtomicNumber) * a.Multiplicity))); // (260331Ch) Jablonski/TPP-2M 用の平均 Nv
+        var (Z, A, valenceElectronCount) = MonteCarlo.GetMeanAtomicParameters(cry.Atoms);//260612Cl
         //試料の密度 (g/cm^3)
-        double ρ = cry.Density; // 19.32 8.96 2.70 
+        double ρ = cry.Density; // 19.32 8.96 2.70
 
         //入射電子のエネルギー (kev)
         double energy = waveLengthControl.Energy;
-        
+
         //サンプルの傾き
         double tilt = numericBoxSampleTilt.RadianValue, cosTilt = Math.Cos(tilt), sinTilt = Math.Sin(tilt);
-
-        var valenceElectronCount = MonteCarlo.EstimateAverageValenceElectronCount(
-            cry.Atoms.Select(a => (a.AtomicNumber, AtomStatic.AtomicWeight(a.AtomicNumber) * a.Multiplicity))); // (260331Ch) Jablonski/TPP-2M 用の平均 Nv
         var monte = new MonteCarlo(Z, A, ρ, energy, tilt,2,
             MonteCarlo.StoppingPowerModels.JablonskiModified2008,
             MonteCarlo.ElasticScatteringModels.MottNistSampler2023,

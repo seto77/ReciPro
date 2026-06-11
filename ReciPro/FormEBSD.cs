@@ -270,11 +270,14 @@ public partial class FormEBSD : FormBase
 
         var cry = FormMain.Crystal;
         cry.GetFormulaAndDensity();
-        var sum1 = cry.Atoms.Sum(a => AtomStatic.AtomicWeight(a.AtomicNumber) * a.Multiplicity * a.AtomicNumber);
-        var sum2 = cry.Atoms.Sum(a => AtomStatic.AtomicWeight(a.AtomicNumber) * a.Multiplicity);
-        var sum3 = cry.Atoms.Sum(a => a.Multiplicity);
-        var z = sum1 / sum2;
-        var a = sum2 / sum3;
+        // 260612Cl z(平均原子番号)/a(平均原子量)/valenceElectronCount は MonteCarlo.GetMeanAtomicParameters (Multiplicity×Occ 加重) に集約。
+        // 旧: 下記 sum1/sum2/sum3 + EstimateAverageValenceElectronCount を直書きし、Multiplicity のみで Occ 抜け (部分占有・固溶体で実組成とずれた)。
+        //var sum1 = cry.Atoms.Sum(a => AtomStatic.AtomicWeight(a.AtomicNumber) * a.Multiplicity * a.AtomicNumber);
+        //var sum2 = cry.Atoms.Sum(a => AtomStatic.AtomicWeight(a.AtomicNumber) * a.Multiplicity);
+        //var sum3 = cry.Atoms.Sum(a => a.Multiplicity);
+        //var valenceElectronCount = MonteCarlo.EstimateAverageValenceElectronCount(
+        //    atoms.Select(atom => (atom.AtomicNumber, AtomStatic.AtomicWeight(atom.AtomicNumber) * atom.Multiplicity))); // (260401Ch)
+        var (z, a, valenceElectronCount) = MonteCarlo.GetMeanAtomicParameters(cry.Atoms);//260612Cl
         var rho = cry.Density;
         var energy = Voltage;
         var sampleTilt = SmpTilt;
@@ -282,8 +285,6 @@ public partial class FormEBSD : FormBase
         var sampleRotation = M3.CreateRotationX(sampleTilt);
         var loop = Math.Min(ElasticSamplerBenchmarkLoopCount, BackscatterMonteCarloLoopCount);
         var atoms = cry.Atoms.ToArray();
-        var valenceElectronCount = MonteCarlo.EstimateAverageValenceElectronCount(
-            atoms.Select(atom => (atom.AtomicNumber, AtomStatic.AtomicWeight(atom.AtomicNumber) * atom.Multiplicity))); // (260401Ch)
         var fileStem = $"NistElasticSamplerBenchmark_{DateTime.Now:yyyyMMdd_HHmmss}_E{energy.ToString("0.0", CultureInfo.InvariantCulture)}keV"; // (260401Ch)
 
         buttonFitNistElasticSampler.Enabled = false;
@@ -1634,10 +1635,12 @@ public partial class FormEBSD : FormBase
         if (g != null && graphicsBox.ClientSize.Width != 0 && graphicsBox.ClientSize.Height != 0)
             try
             {
-                g.Transform = new Matrix(
+                //g.Transform = new Matrix(...); // (260611Ch) 旧: Matrix が未解放
+                using var transform = new Matrix( // (260611Ch)
                 (float)(1 / Resolution), 0, 0, (float)(1 / Resolution),
                 (float)(graphicsBox.ClientSize.Width / 2.0 + Foot.X / Resolution),
                 (float)(graphicsBox.ClientSize.Height / 2.0 + Foot.Y / Resolution));
+                g.Transform = transform; // (260611Ch)
             }
             catch { return false; }
         return true;
@@ -1669,10 +1672,12 @@ public partial class FormEBSD : FormBase
             graphics.SmoothingMode = SmoothingMode.HighQuality;
             graphics.InterpolationMode = InterpolationMode.HighQualityBicubic;
 
-            var penExcess = new Pen(new SolidBrush(colorControlExcessLine.Color), (float)(trackBarLineWidth.Value * Resolution / 2000f));
+            //var penExcess = new Pen(new SolidBrush(colorControlExcessLine.Color), (float)(trackBarLineWidth.Value * Resolution / 2000f)); // (260611Ch) 旧: Pen/内部 SolidBrush が未解放
+            using var penExcess = new Pen(colorControlExcessLine.Color, (float)(trackBarLineWidth.Value * Resolution / 2000f)); // (260611Ch)
             var diag = Resolution * Math.Sqrt(graphicsBox.ClientSize.Width * graphicsBox.ClientSize.Width + graphicsBox.ClientSize.Height * graphicsBox.ClientSize.Height) / 2;
-            var font = new Font(WineCompat.Resolve("Tahoma"), (float)(trackBarStrSize.Value / 8.0 * Resolution)); //260610Cl Wine時フォント切替
-            var brush = new SolidBrush(colorControlString.Color);
+            //var font = new Font(WineCompat.Resolve("Tahoma"), (float)(trackBarStrSize.Value / 8.0 * Resolution)); //260610Cl Wine時フォント切替 // (260611Ch) 旧: 未解放
+            using var font = new Font(WineCompat.Resolve("Tahoma"), (float)(trackBarStrSize.Value / 8.0 * Resolution)); //260610Cl Wine時フォント切替 // (260611Ch)
+            using var brush = new SolidBrush(colorControlString.Color); // (260611Ch)
 
             var Tau = numericBoxDetTilt.RadianValue - numericBoxSampleTilt.RadianValue;
 
@@ -1816,21 +1821,29 @@ public partial class FormEBSD : FormBase
             {
                 //検出器を示す円を描画
                 if (checkBoxShowCircle.Checked)
-                    graphics.DrawArc(new Pen(Color.Yellow, ResolutionF * 2), -DetR, -DetR - Foot.Y, DetR * 2, DetR * 2, 0, 360);
+                {
+                    //graphics.DrawArc(new Pen(Color.Yellow, ResolutionF * 2), -DetR, -DetR - Foot.Y, DetR * 2, DetR * 2, 0, 360); // (260611Ch) 旧: Pen が未解放
+                    using var circlePen = new Pen(Color.Yellow, ResolutionF * 2); // (260611Ch)
+                    graphics.DrawArc(circlePen, -DetR, -DetR - Foot.Y, DetR * 2, DetR * 2, 0, 360);
+                }
                 //検出器の分割線
                 if (checkBoxShowMesh.Checked)
                 {
+                    using var meshPen = new Pen(Color.Orange, ResolutionF); // (260611Ch)
                     for (int n = 0; n < DetectorDivision; n++)
                     {
                         var x = 2.0 * n / DetectorDivision - 1;
-                        graphics.DrawLine(new Pen(Color.Orange, ResolutionF), -DetR, x * DetR - Foot.Y, DetR, x * DetR - Foot.Y);
-                        graphics.DrawLine(new Pen(Color.Orange, ResolutionF), x * DetR, -DetR - Foot.Y, x * DetR, DetR - Foot.Y);
+                        //graphics.DrawLine(new Pen(Color.Orange, ResolutionF), -DetR, x * DetR - Foot.Y, DetR, x * DetR - Foot.Y); // (260611Ch) 旧: ループ内 Pen が未解放
+                        graphics.DrawLine(meshPen, -DetR, x * DetR - Foot.Y, DetR, x * DetR - Foot.Y); // (260611Ch)
+                        graphics.DrawLine(meshPen, x * DetR, -DetR - Foot.Y, x * DetR, DetR - Foot.Y); // (260611Ch)
                     }
                     if ((uint)i < (uint)DetectorDivision && (uint)j < (uint)DetectorDivision)
                     {
                         double x = 2.0 * i / DetectorDivision - 1, y = 2.0 * j / DetectorDivision - 1;
 
-                        graphics.FillRectangle(new SolidBrush(Color.FromArgb(32, Color.Orange)), DetR * x, DetR * y - Foot.Y, 2 * DetR / DetectorDivision, 2 * DetR / DetectorDivision);
+                        //graphics.FillRectangle(new SolidBrush(Color.FromArgb(32, Color.Orange)), DetR * x, DetR * y - Foot.Y, 2 * DetR / DetectorDivision, 2 * DetR / DetectorDivision); // (260611Ch) 旧: SolidBrush が未解放
+                        using var selectedCellBrush = new SolidBrush(Color.FromArgb(32, Color.Orange)); // (260611Ch)
+                        graphics.FillRectangle(selectedCellBrush, DetR * x, DetR * y - Foot.Y, 2 * DetR / DetectorDivision, 2 * DetR / DetectorDivision);
                     }
                 }
             }
@@ -2245,15 +2258,16 @@ public partial class FormEBSD : FormBase
     {
         var cry = FormMain.Crystal;
         cry.GetFormulaAndDensity();
-        // 260606Cl 注意【既知の不具合・未修正・別件】: 下記 z(平均原子番号)/a(平均原子量) と valenceElectronCount の集計は
-        // a.Multiplicity だけを使い Occupancy(.Occ) を考慮していない。占有率<1 のサイト(部分占有・固溶体)で実組成とずれる。
-        // 正しくは Multiplicity*Occ で加重すべき(Crystal.GetFormulaAndDensity と同じ規約)。FormTrajectory.cs にも同じ不具合あり。修正は別 PR で対応予定。
-        var sum1 = cry.Atoms.Sum(a => AtomStatic.AtomicWeight(a.AtomicNumber) * a.Multiplicity * a.AtomicNumber);
-        var sum2 = cry.Atoms.Sum(a => AtomStatic.AtomicWeight(a.AtomicNumber) * a.Multiplicity);
-        var sum3 = cry.Atoms.Sum(a => a.Multiplicity);
-        double z = sum1 / sum2, a = sum2 / sum3, rho = cry.Density;
-        var valenceElectronCount = MonteCarlo.EstimateAverageValenceElectronCount(
-            cry.Atoms.Select(atom => (atom.AtomicNumber, AtomStatic.AtomicWeight(atom.AtomicNumber) * atom.Multiplicity))); // (260331Ch)
+        // 260612Cl z(平均原子番号)/a(平均原子量)/valenceElectronCount は MonteCarlo.GetMeanAtomicParameters (Multiplicity×Occ 加重) に集約。
+        // 旧: sum1/sum2/sum3 + EstimateAverageValenceElectronCount を直書きし、Multiplicity のみで Occ 抜け (部分占有・固溶体で実組成とずれた)。
+        //var sum1 = cry.Atoms.Sum(a => AtomStatic.AtomicWeight(a.AtomicNumber) * a.Multiplicity * a.AtomicNumber);
+        //var sum2 = cry.Atoms.Sum(a => AtomStatic.AtomicWeight(a.AtomicNumber) * a.Multiplicity);
+        //var sum3 = cry.Atoms.Sum(a => a.Multiplicity);
+        //double z = sum1 / sum2, a = sum2 / sum3;
+        //var valenceElectronCount = MonteCarlo.EstimateAverageValenceElectronCount(
+        //    cry.Atoms.Select(atom => (atom.AtomicNumber, AtomStatic.AtomicWeight(atom.AtomicNumber) * atom.Multiplicity))); // (260331Ch)
+        var (z, a, valenceElectronCount) = MonteCarlo.GetMeanAtomicParameters(cry.Atoms);//260612Cl
+        double rho = cry.Density;
         double energy = Voltage, sampleTilt = SmpTilt, detectorTilt = DetTilt, detectorY = DetY, detectorZ = DetZ, detectorR = DetR, energyThreshold = EnergyThreshold;
         var loop = BackscatterMonteCarloLoopCount;
         var sampleRotation = M3.CreateRotationX(sampleTilt);

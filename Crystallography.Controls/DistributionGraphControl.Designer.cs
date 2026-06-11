@@ -13,8 +13,10 @@
             {
                 components.Dispose();
             }
-            Bmp.Dispose();
-            divisionTextBrush.Dispose();
+            //Bmp.Dispose(); // (260611Ch) 旧: 未描画時 null 例外の可能性 + Graphics G が未解放
+            G?.Dispose(); // (260611Ch)
+            Bmp?.Dispose(); // (260611Ch)
+            divisionTextBrush?.Dispose(); // (260611Ch)
             base.Dispose(disposing);
         }
 

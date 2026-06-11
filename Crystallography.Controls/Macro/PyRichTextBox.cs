@@ -126,16 +126,17 @@ public partial class PyRichTextBox : RichTextBox
         //背景を描画する
         //項目が選択されている時は強調表示される
         e.DrawBackground();
-        Brush b = new SolidBrush(e.ForeColor);
+        //Brush b = new SolidBrush(e.ForeColor); // (260611Ch) 旧: DrawString 例外時に Dispose されない
+        using var b = new SolidBrush(e.ForeColor); // (260611Ch)
         //描画する文字列の取得
         string txt = ((ListBox)sender).Items[e.Index].ToString();
         //文字列の描画
         e.Graphics.DrawString(txt, e.Font, b, e.Bounds);
-        //後始末
-        b.Dispose();
+        //b.Dispose(); // (260611Ch) using var で後始末
 
-        if (listBox.ClientSize.Width < (int)e.Graphics.MeasureString(txt, e.Font).Width + 20)
-            listBox.Width = (int)e.Graphics.MeasureString(txt, e.Font).Width + 40;
+        var textWidth = e.Graphics.MeasureString(txt, e.Font).Width; // (260611Ch)
+        if (listBox.ClientSize.Width < (int)textWidth + 20)
+            listBox.Width = (int)textWidth + 40;
 
         if ((e.State & DrawItemState.Selected) == DrawItemState.Selected)
         {

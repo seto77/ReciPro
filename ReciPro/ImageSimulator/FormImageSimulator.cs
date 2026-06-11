@@ -1176,8 +1176,9 @@ public partial class FormImageSimulator : FormBase
         //ラベル
         if (checkBoxShowLabel.Checked)
         {
-            var font = new Font(WineCompat.Resolve("Segoe UI Symbol"), (float)numericBoxLabelFontSize.Value); //260610Cl Wine時フォント切替
-            var sb = new SolidBrush(colorControlLabel.Color);
+            //var font = new Font(WineCompat.Resolve("Segoe UI Symbol"), (float)numericBoxLabelFontSize.Value); //260610Cl Wine時フォント切替 // (260611Ch) 旧: 未解放
+            using var font = new Font(WineCompat.Resolve("Segoe UI Symbol"), (float)numericBoxLabelFontSize.Value); //260610Cl Wine時フォント切替 // (260611Ch)
+            using var sb = new SolidBrush(colorControlLabel.Color); // (260611Ch)
             g.DrawString(imageInfo.Text, font, sb, merge ? conv(new PointD(4, 8)).ToPointF() : new PointF(4f, 8f));
         }
 
@@ -1185,7 +1186,8 @@ public partial class FormImageSimulator : FormBase
 
         if (checkBoxShowScale.Checked)
         {
-            var pen = new Pen(colorControlScale.Color, 3);
+            //var pen = new Pen(colorControlScale.Color, 3); // (260611Ch) 旧: Pen が未解放
+            using var pen = new Pen(colorControlScale.Color, 3); // (260611Ch)
             var pt1 = merge ? conv(new PointD(4, 4)) : new PointD(4f, 4f);
             var pt2 = new PointD(pt1.X + numericBoxScaleLength.Value / reso * zoom, pt1.Y);
             g.DrawLine(pen, (float)pt1.X, (float)pt1.Y, (float)pt2.X, (float)pt2.Y);
@@ -1234,17 +1236,16 @@ public partial class FormImageSimulator : FormBase
             //メタファイルをセーブしたりコピーしたりするときのアクション
             var actionForMetafile = new Action<PseudoBitmap, string>((p, filename) =>
             {
-                var grfx = CreateGraphics();
+                //var grfx = CreateGraphics(); // (260611Ch) 旧: 明示 Dispose を using var へ整理
+                using var grfx = CreateGraphics(); // (260611Ch)
                 var ipHdc = grfx.GetHdc();
                 var ms = new MemoryStream();
                 var mf = new Metafile(ms, ipHdc, EmfType.EmfPlusDual);
                 grfx.ReleaseHdc(ipHdc);
-                grfx.Dispose();
-                var g = Graphics.FromImage(mf);
-
-                draw(g, p);
-
-                g.Dispose();
+                //grfx.Dispose(); // (260611Ch) using var へ移行
+                //var g = Graphics.FromImage(mf); // (260611Ch) 旧: 手動 Dispose
+                using (var g = Graphics.FromImage(mf)) // (260611Ch) EMF 内容を確定してから clipboard/file へ渡す
+                    draw(g, p);
 
                 if (filename.Length == 0)//finenameが""の時はコピー
                     ClipboardMetafileHelper.PutEnhMetafileOnClipboard(this.Handle, mf);
@@ -1312,8 +1313,10 @@ public partial class FormImageSimulator : FormBase
                         for (int c = 0; c < col; c++)
                             if (pseudo[r, c].Width != 0)
                             {
-                                var bmp = new Bitmap(width, height);
-                                draw(Graphics.FromImage(bmp), pseudo[r, c]);
+                                //var bmp = new Bitmap(width, height); // (260611Ch) 旧: 保存後も Bitmap/Graphics が未解放
+                                using var bmp = new Bitmap(width, height); // (260611Ch)
+                                using (var g = Graphics.FromImage(bmp)) // (260611Ch)
+                                    draw(g, pseudo[r, c]);
                                 var text = (pseudo[r, c].Tag as ImageInfo).Text.Replace("\r\n", ", ");
                                 bmp.Save(filename.Replace(".png", " (" + text + ").png"), ImageFormat.Png);
                             }
@@ -1321,9 +1324,14 @@ public partial class FormImageSimulator : FormBase
                 else//全体保存 or 全体コピー
                 {
                     var bmp = new Bitmap(col * width, row * height);
-                    draw(Graphics.FromImage(bmp), null);
+                    //draw(Graphics.FromImage(bmp), null); // (260611Ch) 旧: Graphics が未解放
+                    using (var g = Graphics.FromImage(bmp)) // (260611Ch) Bitmap は Clipboard に渡す場合があるため Graphics だけ先に解放
+                        draw(g, null);
                     if (action == ActionEnum.Save)
+                    {
                         bmp.Save(filename, ImageFormat.Png);
+                        bmp.Dispose(); // (260611Ch) 保存だけで完結する Bitmap はここで解放
+                    }
                     else
                         Clipboard.SetDataObject(bmp);
                 }

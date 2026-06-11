@@ -804,7 +804,14 @@ public partial class GraphControl : UserControlBase
         srcProfileList.Clear();
         destProfileList.Clear();
         SetLegend(null);//260611Cl 追加: 凡例ラベルも消去
-        pictureBox.Image = new Bitmap(PictureBoxSize.Width, PictureBoxSize.Height);
+        //pictureBox.Image = new Bitmap(PictureBoxSize.Width, PictureBoxSize.Height); // (260611Ch) 旧: 旧 Image/Bmp/G が未解放
+        var oldBmp = Bmp; // (260611Ch)
+        var oldG = G; // (260611Ch)
+        Bmp = new Bitmap(PictureBoxSize.Width, PictureBoxSize.Height); // (260611Ch)
+        G = null; // (260611Ch)
+        pictureBox.Image = Bmp; // (260611Ch)
+        oldG?.Dispose(); // (260611Ch)
+        oldBmp?.Dispose(); // (260611Ch)
         UpperX = UpperY = MaximalX = MaximalY = 1;
         LowerX = LowerY = MinimalX = MinimalY = 0;
         Draw();
@@ -1079,16 +1086,25 @@ public partial class GraphControl : UserControlBase
         if (destProfileList == null || destProfileList.Count == 0 || destProfileList[0].Pt == null || destProfileList[0].Pt.Count == 0) return;
         if (PictureBoxSize.Width <= 0 || PictureBoxSize.Height <= 0) return;
 
+        var oldBmp = Bmp; // (260611Ch)
+        var oldG = G; // (260611Ch)
+        Bitmap newBmp = null; // (260611Ch)
+        Graphics newG = null; // (260611Ch)
         try
         {
             //260603Cl レビューメモ: GDIリーク。旧 Bmp / G / pictureBox.Image を Dispose していない。高頻度再描画(縦線ドラッグ等)でハンドル/メモリが積み上がる。using化 or フィールド再利用+Dispose を検討。DrawDivision/DrawProfileLine 等の new Pen/SolidBrush/Font も都度生成・未Disposeで同様。
-            Bmp = new Bitmap(PictureBoxSize.Width, PictureBoxSize.Height);
-            G = Graphics.FromImage(Bmp);
+            //Bmp = new Bitmap(PictureBoxSize.Width, PictureBoxSize.Height); // (260611Ch) 旧: 再描画ごとに古い Bitmap/Graphics が未解放
+            newBmp = new Bitmap(PictureBoxSize.Width, PictureBoxSize.Height); // (260611Ch)
+            newG = Graphics.FromImage(newBmp); // (260611Ch)
+            Bmp = newBmp; // (260611Ch)
+            G = newG; // (260611Ch)
             this.DoubleBuffered = true;
             renderGraph(G);//260607Cl: 描画本体を共通メソッド化 (Copy ボタンの metafile 出力と共用)
             pictureBox.Image = Bmp;
+            oldG?.Dispose(); // (260611Ch)
+            oldBmp?.Dispose(); // (260611Ch)
         }
-        catch { }//260603Cl レビューメモ: 全例外を握り潰しているため描画不具合が無言で「真っ白」になり追跡困難。最低限 Debug.WriteLine を出すべき。
+        catch { newG?.Dispose(); newBmp?.Dispose(); G = oldG; Bmp = oldBmp; }//260603Cl レビューメモ: 全例外を握り潰しているため描画不具合が無言で「真っ白」になり追跡困難。最低限 Debug.WriteLine を出すべき。 // (260611Ch) 描画失敗時は旧表示を維持
     }
 
     /// <summary>グラフ本体を描画する共通シーケンス。画面表示用 Bitmap と Copy 用 Metafile の双方から呼ぶ。</summary>
@@ -1142,7 +1158,11 @@ public partial class GraphControl : UserControlBase
                 ptStart.Y = 0;
             var ptEnd = new PointF((float)ptStart.X, (float)(pictureBox.Height - originPosition.Y));
             if (!double.IsNaN(ptStart.X) && !double.IsInfinity(ptStart.X))
-                G.DrawLine(new Pen(VerticalLineColor, selectedVerticalLineIndex == i ? 2f : 1f), ptStart, ptEnd);
+            {
+                //G.DrawLine(new Pen(VerticalLineColor, selectedVerticalLineIndex == i ? 2f : 1f), ptStart, ptEnd); // (260611Ch) 旧: Pen が未解放
+                using var pen = new Pen(VerticalLineColor, selectedVerticalLineIndex == i ? 2f : 1f); // (260611Ch)
+                G.DrawLine(pen, ptStart, ptEnd);
+            }
 
             //260603Cl 追加: 垂直線と各プロファイルの交点に丸マーカーを描画する (値はグラフに重ねず上部ラベルへ)
             if (verticalLineMarkerVisible && !double.IsNaN(x) && !double.IsInfinity(x) && x >= LowerX && x <= UpperX)
@@ -1218,12 +1238,14 @@ public partial class GraphControl : UserControlBase
     /// <summary>グラフ中にpeaksで定義された釣鐘型曲線を描く</summary>
     private void DrawPeaks()
     {
+        //G.DrawLine(new Pen(VerticalLineColor, 2f), ...); // (260611Ch) 旧: ループ内 Pen が未解放
+        using var peakPen = new Pen(VerticalLineColor, 2f); // (260611Ch)
         for (int i = 0; i < peaks.Count; i++)
         {
             double step = peaks[i].range / 100.0;
             for (double x = peaks[i].X - peaks[i].range; x < peaks[i].X + peaks[i].range; x += step)
             {
-                G.DrawLine(new Pen(VerticalLineColor, 2f), ConvToPicBoxCoord(x, peaks[i].GetValue(x, x == peaks[i].X - peaks[i].range, true)), ConvToPicBoxCoord(x + step, peaks[i].GetValue(x + step, false, true)));
+                G.DrawLine(peakPen, ConvToPicBoxCoord(x, peaks[i].GetValue(x, x == peaks[i].X - peaks[i].range, true)), ConvToPicBoxCoord(x + step, peaks[i].GetValue(x + step, false, true))); // (260611Ch)
             }
         }
     }
@@ -1239,7 +1261,8 @@ public partial class GraphControl : UserControlBase
             PointD[] pt = [.. destProfileList[j].Pt];
             if (pt.Length > 0)
             {
-                Brush brush = new SolidBrush(srcProfileList[j].Color);
+                //Brush brush = new SolidBrush(srcProfileList[j].Color); // (260611Ch) 旧: SolidBrush が未解放
+                using var brush = new SolidBrush(srcProfileList[j].Color); // (260611Ch)
                 for (int i = 0; i < pt.Length; i++)
                 {
                     PointF p = ConvToPicBoxCoord(pt[i]);
@@ -1272,7 +1295,8 @@ public partial class GraphControl : UserControlBase
             var pt = destProfileList[(int)sort[j].Y].Pt.ToArray();
             if (pt.Length > 0)
             {
-                var brush = new SolidBrush(srcProfileList[(int)sort[j].Y].Color);
+                //var brush = new SolidBrush(srcProfileList[(int)sort[j].Y].Color); // (260611Ch) 旧: SolidBrush が未解放
+                using var brush = new SolidBrush(srcProfileList[(int)sort[j].Y].Color); // (260611Ch)
                 //var pointList = new List<List<PointF>>();
                 var beforePt = ConvToPicBoxCoord(pt[0].X, pt[0].Y);
                 var presentPt = ConvToPicBoxCoord(pt[0].X, pt[0].Y);
@@ -1308,7 +1332,8 @@ public partial class GraphControl : UserControlBase
             {
                 //if (!Interpolation)//補間モードではないとき
                 //{
-                var pen = new Pen(srcProfileList[j].Color, UseLineWidth ? LineWidth : srcProfileList[j].LineWidth) { LineJoin = LineJoin.Round };
+                //var pen = new Pen(srcProfileList[j].Color, UseLineWidth ? LineWidth : srcProfileList[j].LineWidth) { LineJoin = LineJoin.Round }; // (260611Ch) 旧: Pen が未解放
+                using var pen = new Pen(srcProfileList[j].Color, UseLineWidth ? LineWidth : srcProfileList[j].LineWidth) { LineJoin = LineJoin.Round }; // (260611Ch)
                 var pts = destProfileList[j].GetPointsWithinRectangle(rect);
                 for (int i = 0; i < pts.Length; i++)
                     if (pts[i].Length > 1)
@@ -1394,42 +1419,42 @@ public partial class GraphControl : UserControlBase
     public void DrawDivision()
     {
         var strFont = AxisTextFont;
-        var brush = new SolidBrush(AxisTextColor);
-        var pen = new Pen(AxisLineColor, 1);
+        //var brush = new SolidBrush(AxisTextColor); // (260611Ch) 旧: SolidBrush/Pen が未解放
+        using var brush = new SolidBrush(AxisTextColor); // (260611Ch)
+        using var axisPen = new Pen(AxisLineColor, 1); // (260611Ch)
+        using var divisionPen = new Pen(DivisionLineColor, 1); // (260611Ch)
 
         //ここよりX目盛りの描画
-        G.DrawLine(pen, originPosition.X, pictureBox.Height - originPosition.Y, PictureBoxSize.Width, pictureBox.Height - originPosition.Y);
+        G.DrawLine(axisPen, originPosition.X, pictureBox.Height - originPosition.Y, PictureBoxSize.Width, pictureBox.Height - originPosition.Y);
         int maxDivisionNumber = (this.Width - this.originPosition.X) / 60 + 1;
         var divisions = GetDivisions(LowerX, UpperX, maxDivisionNumber, XLog);
         for (int i = 0; i < divisions.Count; i++)
         {
-            pen = new Pen(AxisLineColor, 1);
-            G.DrawLine(pen, ConvToPicBoxCoord(divisions.Keys[i], 0).X, PictureBoxSize.Height - originPosition.Y, ConvToPicBoxCoord(divisions.Keys[i], 0).X, PictureBoxSize.Height - originPosition.Y + 5);
+            //pen = new Pen(AxisLineColor, 1); // (260611Ch) 旧: ループ内 Pen が未解放
+            G.DrawLine(axisPen, ConvToPicBoxCoord(divisions.Keys[i], 0).X, PictureBoxSize.Height - originPosition.Y, ConvToPicBoxCoord(divisions.Keys[i], 0).X, PictureBoxSize.Height - originPosition.Y + 5); // (260611Ch)
             if (horizontalGradiationTextVisivle)
                 G.DrawString(divisions.Values[i], strFont, brush, ConvToPicBoxCoord(divisions.Keys[i], 0).X - 2, PictureBoxSize.Height - originPosition.Y + 5);
 
-            pen = new Pen(DivisionLineColor, 1);
             if (DivisionLineXVisible)
-                G.DrawLine(pen, ConvToPicBoxCoord(divisions.Keys[i], 0).X, PictureBoxSize.Height - originPosition.Y, ConvToPicBoxCoord(divisions.Keys[i], 0).X, 0);
+                G.DrawLine(divisionPen, ConvToPicBoxCoord(divisions.Keys[i], 0).X, PictureBoxSize.Height - originPosition.Y, ConvToPicBoxCoord(divisions.Keys[i], 0).X, 0); // (260611Ch)
         }
 
         //ここよりY目盛りの描画
-        G.DrawLine(pen, originPosition.X, 0, originPosition.X, pictureBox.Height - originPosition.Y);
+        G.DrawLine(axisPen, originPosition.X, 0, originPosition.X, pictureBox.Height - originPosition.Y);
         maxDivisionNumber = (this.Height - this.originPosition.Y) / 30 + 1;
         divisions = GetDivisions(LowerY, UpperY, maxDivisionNumber, YLog);
 
         for (int i = 0; i < divisions.Count; i++)
         {
-            pen = new Pen(AxisLineColor, 1);
-            G.DrawLine(pen, originPosition.X - 8, ConvToPicBoxCoord(0, divisions.Keys[i]).Y, originPosition.X, ConvToPicBoxCoord(0, divisions.Keys[i]).Y);
+            //pen = new Pen(AxisLineColor, 1); // (260611Ch) 旧: ループ内 Pen が未解放
+            G.DrawLine(axisPen, originPosition.X - 8, ConvToPicBoxCoord(0, divisions.Keys[i]).Y, originPosition.X, ConvToPicBoxCoord(0, divisions.Keys[i]).Y); // (260611Ch)
 
             //if (horizontalGradiationTextVisivle)//260603Cl 修正: Y軸ラベルの表示可否は vertical 側フラグで判定すべき (AxisYTextVisible が効くように)
             if (verticalGradiationTextVisivle)//260603Cl
                 G.DrawString(divisions.Values[i], strFont, brush, originPosition.X - userOrigin.X, ConvToPicBoxCoord(0, divisions.Keys[i]).Y - 6);//260607Cl: Y軸ラベル余白(originPosition.X - userOrigin.X)の分だけ目盛り数字を右へずらし、回転ラベルとの重なりを防ぐ
 
-            pen = new Pen(DivisionLineColor, 1);
             if (DivisionLineYVisible)
-                G.DrawLine(pen, originPosition.X - 8, ConvToPicBoxCoord(0, divisions.Keys[i]).Y, PictureBoxSize.Width, ConvToPicBoxCoord(0, divisions.Keys[i]).Y);
+                G.DrawLine(divisionPen, originPosition.X - 8, ConvToPicBoxCoord(0, divisions.Keys[i]).Y, PictureBoxSize.Width, ConvToPicBoxCoord(0, divisions.Keys[i]).Y); // (260611Ch)
         }
     }
     #endregion

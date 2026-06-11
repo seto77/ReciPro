@@ -573,10 +573,12 @@ public partial class FormDiffractionSimulator : FormBase
         if (g != null && graphicsBox.ClientSize.Width != 0 && graphicsBox.ClientSize.Height != 0)
             try
             {
-                g.Transform = new Matrix(
+                //g.Transform = new Matrix(...); // (260611Ch) 旧: Matrix が未解放
+                using var transform = new Matrix( // (260611Ch)
                 (float)(xSign / Resolution), 0, 0, (float)(ySign / Resolution),
                 (float)(graphicsBox.ClientSize.Width / 2.0 + xSign * Foot.X / Resolution),
                 (float)(graphicsBox.ClientSize.Height / 2.0 + ySign * Foot.Y / Resolution));
+                g.Transform = transform; // (260611Ch)
             }
             catch { return false; }
         return true;
@@ -624,7 +626,9 @@ public partial class FormDiffractionSimulator : FormBase
             var width = (float)Math.Abs(topleft.X - bottomright.X);
             var height = (float)Math.Abs(topleft.Y - bottomright.Y);
 
-            g.FillRectangle(new SolidBrush(colorControlBackGround.Color), new RectangleF(left, top, width, height));
+            //g.FillRectangle(new SolidBrush(colorControlBackGround.Color), new RectangleF(left, top, width, height)); // (260611Ch) 旧: SolidBrush が未解放
+            using var backgroundBrush = new SolidBrush(colorControlBackGround.Color); // (260611Ch)
+            g.FillRectangle(backgroundBrush, new RectangleF(left, top, width, height));
             //g.Clear(colorControlBackGround.Color);
         }
 
@@ -642,7 +646,8 @@ public partial class FormDiffractionSimulator : FormBase
             var cm = new ColorMatrix();//ColorMatrixオブジェクトの作成
             cm.Matrix00 = cm.Matrix11 = cm.Matrix22 = cm.Matrix44 = 1;
             cm.Matrix33 = fdsg.ImageOpacity;
-            var ia = new ImageAttributes();//ImageAttributesオブジェクトの作成
+            //var ia = new ImageAttributes();//ImageAttributesオブジェクトの作成 // (260611Ch) 旧: ImageAttributes が未解放
+            using var ia = new ImageAttributes();//ImageAttributesオブジェクトの作成 // (260611Ch)
             ia.SetColorMatrix(cm);  //ColorMatrixを設定する
             var dest = new PointF[] { start.ToPointF(), new((float)end.X, (float)start.Y), new((float)start.X, (float)end.Y) };//左上、右上、左下の順番
             g.DrawImage(fdsg.OverlappedImage, dest, new RectangleF(0, 0, fdsg.OverlappedImage.Width, fdsg.OverlappedImage.Height), GraphicsUnit.Pixel, ia);
@@ -680,14 +685,16 @@ public partial class FormDiffractionSimulator : FormBase
         {
             start = new PointD(-fdsg.DetectorPixelSize * fdsg.FootX, -fdsg.DetectorPixelSize * fdsg.FootY);
             end = new PointD(fdsg.DetectorPixelSize * (fdsg.DetectorWidth - fdsg.FootX), fdsg.DetectorPixelSize * (fdsg.DetectorHeight - fdsg.FootY));
-            var pen = new Pen(Brushes.LightGreen, (float)Resolution);
+            //var pen = new Pen(Brushes.LightGreen, (float)Resolution); // (260611Ch) 旧: Pen が未解放
+            using var pen = new Pen(Brushes.LightGreen, (float)Resolution); // (260611Ch)
             g.DrawRectangle(pen, (float)Math.Min(start.X, end.X), (float)Math.Min(start.Y, end.Y), (float)Math.Abs(start.X - end.X), (float)Math.Abs(start.Y - end.Y));
         }
 
         //マウスの選択範囲描画
         if (MouseRangingMode)
         {
-            var pen = new Pen(Brushes.Gray, (float)Resolution) { DashStyle = DashStyle.Dash };
+            //var pen = new Pen(Brushes.Gray, (float)Resolution) { DashStyle = DashStyle.Dash }; // (260611Ch) 旧: Pen が未解放
+            using var pen = new Pen(Brushes.Gray, (float)Resolution) { DashStyle = DashStyle.Dash }; // (260611Ch)
             var rangeStart = convertScreenToDetector(MouseRangeStart).ToPointF();
             var rangeEnd = convertScreenToDetector(MouseRangeEnd).ToPointF();
             g.DrawRectangle(pen, Math.Min(rangeStart.X, rangeEnd.X), Math.Min(rangeStart.Y, rangeEnd.Y), Math.Abs(rangeStart.X - rangeEnd.X), Math.Abs(rangeStart.Y - rangeEnd.Y));
@@ -701,7 +708,8 @@ public partial class FormDiffractionSimulator : FormBase
             var aperX = CameraLength2 * Math.Tan(formMain.FormImageSimulator.HRTEM_ObjAperX);
             var aperY = CameraLength2 * Math.Tan(formMain.FormImageSimulator.HRTEM_ObjAperY);
 
-            var pen = new Pen(Brushes.LightGreen, (float)Resolution);
+            //var pen = new Pen(Brushes.LightGreen, (float)Resolution); // (260611Ch) 旧: Pen が未解放
+            using var pen = new Pen(Brushes.LightGreen, (float)Resolution); // (260611Ch)
             g.DrawEllipse(pen, (float)(aperX - aperR), (float)(-aperY - aperR), (float)(aperR * 2), (float)(aperR * 2));
         }
 
@@ -763,8 +771,9 @@ public partial class FormDiffractionSimulator : FormBase
         #region ガウス関数で描画するローカル関数
         //int bgR = colorControlBackGround.Color.R, bgG = colorControlBackGround.Color.G, bgB = colorControlBackGround.Color.B;
         int gradation = 32;
-        var reuseBrush = new SolidBrush(Color.Black); //260403Cl GDIオブジェクト再利用
-        var reusePath = new GraphicsPath(); //260403Cl GDIオブジェクト再利用
+        //var reuseBrush = new SolidBrush(Color.Black); //260403Cl GDIオブジェクト再利用 // (260611Ch) 旧: メソッド終了時に未解放
+        using var reuseBrush = new SolidBrush(Color.Black); //260403Cl GDIオブジェクト再利用 // (260611Ch)
+        using var reusePath = new GraphicsPath(); //260403Cl GDIオブジェクト再利用 // (260611Ch)
         double fillCircleSpread(Color c, PointD pt, double intensity, double sigma)
         {
             //計算する二次元ガウス関数は、 f(x,y) = intensity/ (2 pi sigma^2) *  e^{- (x^2+y^2) /2/sigma^2)
@@ -936,7 +945,11 @@ public partial class FormDiffractionSimulator : FormBase
                 //ダイレクトスポットの描画
                 var origin = convertReciprocalToDetector(new Vector3DBase(0, 0, 0));
                 if (IsScreenArea(origin))
-                    graphics.DrawCross(new Pen(colorControlOrigin.Color, (float)Resolution), origin, spotRadiusOnDetector);
+                {
+                    //graphics.DrawCross(new Pen(colorControlOrigin.Color, (float)Resolution), origin, spotRadiusOnDetector); // (260611Ch) 旧: Pen が未解放
+                    using var originPen = new Pen(colorControlOrigin.Color, (float)Resolution); // (260611Ch)
+                    graphics.DrawCross(originPen, origin, spotRadiusOnDetector);
+                }
                 return null;
                 #endregion
             }
@@ -1026,7 +1039,11 @@ public partial class FormDiffractionSimulator : FormBase
                                     if (!FormDiffractionSimulatorCBED.LACBED || g.Index == (0, 0, 0))
                                         graphics.DrawCircle(Color.Yellow, pt, radiusCBED);
                                     else
-                                        graphics.DrawCross(new Pen(Color.Yellow, (float)Resolution), pt, spotRadiusOnDetector);
+                                    {
+                                        //graphics.DrawCross(new Pen(Color.Yellow, (float)Resolution), pt, spotRadiusOnDetector); // (260611Ch) 旧: Pen が未解放
+                                        using var guidePen = new Pen(Color.Yellow, (float)Resolution); // (260611Ch)
+                                        graphics.DrawCross(guidePen, pt, spotRadiusOnDetector);
+                                    }
                                 }
                             }
                             //ダイナミックコンプレッションモードがONの時は、描画しないで強度と座標だけを格納する
@@ -1120,7 +1137,9 @@ public partial class FormDiffractionSimulator : FormBase
             var ptOrigin = convertReciprocalToDetector(new Vector3DBase(0, 0, 0));
             if (IsScreenArea(ptOrigin))
             {
-                graphics.DrawCross(new Pen(colorControlOrigin.Color, (float)Resolution), ptOrigin, spotRadiusOnDetector);
+                //graphics.DrawCross(new Pen(colorControlOrigin.Color, (float)Resolution), ptOrigin, spotRadiusOnDetector); // (260611Ch) 旧: Pen が未解放
+                using var originPen = new Pen(colorControlOrigin.Color, (float)Resolution); // (260611Ch)
+                graphics.DrawCross(originPen, ptOrigin, spotRadiusOnDetector);
                 if (toolStripButtonIndexLabels.Checked && trackBarStrSize.Value != 1 && !radioButtonIntensityDynamical.Checked)
                 {
                     var pt = convertDetectorToScreen(ptOrigin) + new PointD(spotRadiusOnDetectorF / 2.0, spotRadiusOnDetectorF / 2f) / Resolution;
@@ -1135,7 +1154,9 @@ public partial class FormDiffractionSimulator : FormBase
         {
             if (Tau != 0 && IsScreenArea(new PointD(0, 0)))
             {
-                graphics.DrawCross(new Pen(colorControlFoot.Color, (float)Resolution), 0, 0, spotRadiusOnDetector);
+                //graphics.DrawCross(new Pen(colorControlFoot.Color, (float)Resolution), 0, 0, spotRadiusOnDetector); // (260611Ch) 旧: Pen が未解放
+                using var footPen = new Pen(colorControlFoot.Color, (float)Resolution); // (260611Ch)
+                graphics.DrawCross(footPen, 0, 0, spotRadiusOnDetector);
                 if (toolStripButtonIndexLabels.Checked && trackBarStrSize.Value != 1)
                 {
                     var pt = new PointD(spotRadiusOnDetectorF / 2.0, spotRadiusOnDetectorF / 2f) / Resolution;
@@ -1185,10 +1206,12 @@ public partial class FormDiffractionSimulator : FormBase
 
     private void DrawKikuchiLine(Graphics graphics)
     {
-        var penExcess = new Pen(new SolidBrush(colorControlExcessLine.Color), (float)(trackBarLineWidth.Value * Resolution / 2000f));
+        //var penExcess = new Pen(new SolidBrush(colorControlExcessLine.Color), (float)(trackBarLineWidth.Value * Resolution / 2000f)); // (260611Ch) 旧: Pen/内部 SolidBrush が未解放
+        using var penExcess = new Pen(colorControlExcessLine.Color, (float)(trackBarLineWidth.Value * Resolution / 2000f)); // (260611Ch)
         var diag = Resolution * Math.Sqrt(graphicsBox.ClientSize.Width * graphicsBox.ClientSize.Width + graphicsBox.ClientSize.Height * graphicsBox.ClientSize.Height) / 2;
-        var font = new Font(WineCompat.Resolve("Tahoma"), (float)(trackBarStrSize.Value / 8.0 * Resolution)); //260610Cl Wine時フォント切替
-        var brush = new SolidBrush(colorControlString.Color);
+        //var font = new Font(WineCompat.Resolve("Tahoma"), (float)(trackBarStrSize.Value / 8.0 * Resolution)); //260610Cl Wine時フォント切替 // (260611Ch) 旧: 未解放
+        using var font = new Font(WineCompat.Resolve("Tahoma"), (float)(trackBarStrSize.Value / 8.0 * Resolution)); //260610Cl Wine時フォント切替 // (260611Ch)
+        using var brush = new SolidBrush(colorControlString.Color); // (260611Ch)
         foreach (var g in formMain.Crystal.VectorOfG_KikuchiLine)
         {
             double sinTheta = WaveLength * g.Length / 2, sin2Theta = sinTheta * sinTheta;
@@ -1314,7 +1337,8 @@ public partial class FormDiffractionSimulator : FormBase
             var red = (int)(ringR * intensity + bgR * (1 - intensity));
             var green = (int)(ringG * intensity + bgG * (1 - intensity));
             var blue = (int)(ringB * intensity + bgB * (1 - intensity));
-            var pen = new Pen(new SolidBrush(Color.FromArgb(red, green, blue)), (float)(trackBarDebyeRingWidth.Value * Resolution / 2f));
+            //var pen = new Pen(new SolidBrush(Color.FromArgb(red, green, blue)), (float)(trackBarDebyeRingWidth.Value * Resolution / 2f)); // (260611Ch) 旧: Pen/内部 SolidBrush が未解放
+            using var pen = new Pen(Color.FromArgb(red, green, blue), (float)(trackBarDebyeRingWidth.Value * Resolution / 2f)); // (260611Ch)
 
             foreach (var pts in ptsArray)
                 g.DrawLines(pen, pts.ToArray());
@@ -1360,7 +1384,8 @@ public partial class FormDiffractionSimulator : FormBase
 
         //Azimuthのスケールライン ここから
         int azimuthStep = radioButtonScaleDivisionFine.Checked ? 5 : radioButtonScaleDivisionMedium.Checked ? 15 : 30;
-        var pen = new Pen(new SolidBrush(colorControlScaleAzimuth.Color), (float)(trackBarScaleLineWidth.Value * Resolution / 2f));
+        //var pen = new Pen(new SolidBrush(colorControlScaleAzimuth.Color), (float)(trackBarScaleLineWidth.Value * Resolution / 2f)); // (260611Ch) 旧: Pen/内部 SolidBrush が未解放
+        using var pen = new Pen(colorControlScaleAzimuth.Color, (float)(trackBarScaleLineWidth.Value * Resolution / 2f)); // (260611Ch)
 
         var length = new[] { (cornerReals[0]- cornerReals[1]).Length, (cornerReals[1] - cornerReals[2]).Length,
                 (cornerReals[2] - cornerReals[3]).Length, (cornerReals[3] - cornerReals[0]).Length };
@@ -1437,7 +1462,8 @@ public partial class FormDiffractionSimulator : FormBase
         int startN = (int)(min2Theta / stepInteger / Math.Pow(10, stepPow));
         int endN = (int)(max2Theta / stepInteger / Math.Pow(10, stepPow)) + 1;
 
-        pen.Brush = new SolidBrush(colorControlScale2Theta.Color);
+        //pen.Brush = new SolidBrush(colorControlScale2Theta.Color); // (260611Ch) 旧: 差し替え SolidBrush が未解放
+        using var twoThetaPen = new Pen(colorControlScale2Theta.Color, (float)(trackBarScaleLineWidth.Value * Resolution / 2f)); // (260611Ch)
 
         if (originSrc.IsNaN)
             originSrc = convertReciprocalToDetector(new Vector3DBase(0, 0, 2 * EwaldRadius));
@@ -1451,7 +1477,7 @@ public partial class FormDiffractionSimulator : FormBase
                 ptsArray = [[.. Enumerable.Range(0, 3600).Select(i => 2 * CameraLength2 * Math.Sin(twoTheta / 360 * Math.PI) * new PointD(Math.Cos(i / 1800.0 * Math.PI), Math.Sin(i / 1800.0 * Math.PI)))],];
 
             foreach (var pts in ptsArray)
-                g.DrawLines(pen, pts.ToArray());
+                g.DrawLines(twoThetaPen, pts.ToArray()); // (260611Ch)
 
             //var labelPosition = getLabelPosition(ptsArray.SelectMany(p => p).Where(p => IsScreenArea(p, 20)), originSrc, -135);
             var labelPosition = getLabelPosition(ptsArray.SelectMany(p => p).Where(p => IsScreenArea(p, 20)), originSrc, -135);
@@ -2297,30 +2323,26 @@ public partial class FormDiffractionSimulator : FormBase
         var txt = tab.TabPages[e.Index].Text;
 
         //StringFormatを作成 //水平垂直方向の中央に表示する
-        var sf = new StringFormat()
+        using var sf = new StringFormat() // (260611Ch) DrawItem ごとの GDI オブジェクトを確実に解放
         {
             LineAlignment = StringAlignment.Center,
             Alignment = StringAlignment.Center,
             //FormatFlags = StringFormatFlags.LineLimit // 260611Cl 変更前
-            // 260611Cl 変更: LineLimit は「行が完全に収まる場合のみ描画」のため、高 DPI 環境 (WoA Surface 150%+) で
-            // 未選択タブの bounds 高さが行高を下回ると一行も描画されず空白タブになる (ItemSize は resx 固定値で
-            // WinForms の DPI 自動スケール対象外)。タブ文字は 1 行なので折り返し不要、高さ不足でも常に描画する
-            FormatFlags = StringFormatFlags.NoWrap | StringFormatFlags.NoClip
+            FormatFlags = StringFormatFlags.NoWrap | StringFormatFlags.NoClip // 260611Ch: 高 DPI で高さ不足でも単一行タブ文字を描く
         };
         e.Graphics.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
         e.Graphics.PixelOffsetMode = PixelOffsetMode.HighQuality;
         //背景の描画
-        if (tab.SelectedIndex == e.Index)
-            e.Graphics.FillRectangle(new SolidBrush(Color.White), e.Bounds);
-        else
-            e.Graphics.FillRectangle(new SolidBrush(tabControl.BackColor), e.Bounds);
+        //if (tab.SelectedIndex == e.Index) e.Graphics.FillRectangle(new SolidBrush(Color.White), e.Bounds); else e.Graphics.FillRectangle(new SolidBrush(tabControl.BackColor), e.Bounds); // (260611Ch) 旧: SolidBrush が未解放
+        using var backBrush = new SolidBrush(tab.SelectedIndex == e.Index ? Color.White : tabControl.BackColor); // (260611Ch)
+        e.Graphics.FillRectangle(backBrush, e.Bounds);
 
         //文字色を設定
-        var brush = new SolidBrush(tabControl.ForeColor);
-        if ((!toolStripButtonDebyeRing.Checked && txt == tabPageDebye.Text) ||
+        var disabledTab = (!toolStripButtonDebyeRing.Checked && txt == tabPageDebye.Text) || // (260611Ch)
             (!toolStripButtonScale.Checked && txt == tabPageScale.Text) ||
-             (!toolStripButtonKikuchiLines.Checked && txt == tabPageKikuchi.Text))
-            brush = new SolidBrush(Color.Gray);
+             (!toolStripButtonKikuchiLines.Checked && txt == tabPageKikuchi.Text);
+        //var brush = new SolidBrush(tabControl.ForeColor); if (disabledTab) brush = new SolidBrush(Color.Gray); // (260611Ch) 旧: 再代入時も含め SolidBrush が未解放
+        using var brush = new SolidBrush(disabledTab ? Color.Gray : tabControl.ForeColor); // (260611Ch)
 
         //Textの描画
         e.Graphics.DrawString(txt, tabControl.Font, brush, e.Bounds, sf);
@@ -2818,8 +2840,9 @@ public partial class FormDiffractionSimulator : FormBase
         if (isImage)
         {
             var bmp = new Bitmap(graphicsBox.ClientSize.Width, graphicsBox.ClientSize.Height);
-            var g = Graphics.FromImage(bmp);
-            Draw(g, true, drawOverlappedImage);
+            //var g = Graphics.FromImage(bmp); // (260611Ch) 旧: Graphics が未解放
+            using (var g = Graphics.FromImage(bmp)) // (260611Ch) Bitmap は Clipboard に渡す場合があるため Graphics だけ先に解放
+                Draw(g, true, drawOverlappedImage);
             if (bmp != null)
             {
                 if (save)
@@ -2851,9 +2874,11 @@ public partial class FormDiffractionSimulator : FormBase
             Metafile mf = new(ms, ipHdc, EmfType.EmfPlusDual);
             grfx.ReleaseHdc(ipHdc);
             grfx.Dispose();
-            var g = Graphics.FromImage(mf);
-            Draw(g, true, drawOverlappedImage);
-            g.Dispose();
+            //var g = Graphics.FromImage(mf); Draw(g, true, drawOverlappedImage); g.Dispose(); // (260611Ch) 旧: 手動 Dispose
+            using (var g = Graphics.FromImage(mf)) // (260611Ch)
+            {
+                Draw(g, true, drawOverlappedImage);
+            }
 
             if (save)
             {
@@ -2960,8 +2985,10 @@ public partial class FormDiffractionSimulator : FormBase
         {
             waveLengthControl.Energy = numericBoxAcc.Value + numericBoxAcc.Value * numericBoxDev.Value / 100.0 * s;
 
-            var bmp = new Bitmap(graphicsBox.ClientSize.Width, graphicsBox.ClientSize.Height);
-            Draw(Graphics.FromImage(bmp), false, false);
+            //var bmp = new Bitmap(graphicsBox.ClientSize.Width, graphicsBox.ClientSize.Height); // (260611Ch) 旧: ループ内 Bitmap/Graphics が未解放
+            using var bmp = new Bitmap(graphicsBox.ClientSize.Width, graphicsBox.ClientSize.Height); // (260611Ch)
+            using var g = Graphics.FromImage(bmp); // (260611Ch)
+            Draw(g, false, false);
             var gray = BitmapConverter.ToByteGray(bmp);
 
             var temp = gray.Select(intensity => intensity * step / Math.Sqrt(2.0 * Math.PI) * Math.Exp(-s * s / 2)).ToArray();
@@ -3263,7 +3290,9 @@ public partial class FormDiffractionSimulator : FormBase
         var func = new Func<Bitmap>(() =>
         {
             var bmp = new Bitmap(graphicsBox.ClientSize.Width, graphicsBox.ClientSize.Height);
-            Draw(Graphics.FromImage(bmp), true, true);
+            //Draw(Graphics.FromImage(bmp), true, true); // (260611Ch) 旧: Graphics が未解放
+            using var g = Graphics.FromImage(bmp); // (260611Ch)
+            Draw(g, true, true);
             return bmp;
         });
         formMain.FormMovie.Execute(func, this);

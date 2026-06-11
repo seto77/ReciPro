@@ -160,11 +160,12 @@ public partial class FormStereonet : FormBase
         if (g != null && graphicsBox.ClientSize.Width != 0 && graphicsBox.ClientSize.Height != 0)
             try
             {
-                g.Transform =
-            new Matrix(
+                //g.Transform = new Matrix(...); // (260611Ch) 旧: Matrix が未解放
+                using var transform = new Matrix( // (260611Ch)
                 (float)mag, 0, 0, (float)mag,
                 (float)(graphicsBox.ClientSize.Width / 2.0 - mag * centerPt.X),
                 (float)(graphicsBox.ClientSize.Height / 2.0 + mag * centerPt.Y));
+                g.Transform = transform; // (260611Ch)
             }
             catch { return false; }
         return true;
@@ -998,9 +999,10 @@ public partial class FormStereonet : FormBase
     #region ファイルメニュー
     private void saveImageToolStripMenuItem_Click(object sender, EventArgs e)
     {
-        var bmp = new Bitmap(graphicsBox.ClientSize.Width, graphicsBox.ClientSize.Height);
-        var g = Graphics.FromImage(bmp);
-        Draw(g);
+        //var bmp = new Bitmap(graphicsBox.ClientSize.Width, graphicsBox.ClientSize.Height); // (260611Ch) 旧: 保存後も Bitmap/Graphics が未解放
+        using var bmp = new Bitmap(graphicsBox.ClientSize.Width, graphicsBox.ClientSize.Height); // (260611Ch)
+        using (var g = Graphics.FromImage(bmp)) // (260611Ch)
+            Draw(g);
         if (bmp != null)
         {
             var dialog = new SaveFileDialog() { Filter = "Picture File[*.png]|*.png;" };
@@ -1016,8 +1018,9 @@ public partial class FormStereonet : FormBase
     private void copyImageToClipboardToolStripMenuItem_Click(object sender, EventArgs e)
     {
         var bmp = new Bitmap(graphicsBox.ClientSize.Width, graphicsBox.ClientSize.Height);
-        var g = Graphics.FromImage(bmp);
-        Draw(g);
+        //var g = Graphics.FromImage(bmp); // (260611Ch) 旧: Graphics が未解放
+        using (var g = Graphics.FromImage(bmp)) // (260611Ch) Bitmap は Clipboard に渡すため Graphics だけ先に解放
+            Draw(g);
         if (bmp != null)
             Clipboard.SetDataObject(bmp);
     }
@@ -1030,9 +1033,11 @@ public partial class FormStereonet : FormBase
         var mf = new Metafile(ms, ipHdc, EmfType.EmfPlusDual);
         grfx.ReleaseHdc(ipHdc);
         grfx.Dispose();
-        var g = Graphics.FromImage(mf);
-        Draw(g);
-        g.Dispose();
+        //var g = Graphics.FromImage(mf); Draw(g); g.Dispose(); // (260611Ch) 旧: 手動 Dispose
+        using (var g = Graphics.FromImage(mf)) // (260611Ch)
+        {
+            Draw(g);
+        }
         ClipboardMetafileHelper.PutEnhMetafileOnClipboard(this.Handle, mf);
     }
 
@@ -1085,8 +1090,9 @@ public partial class FormStereonet : FormBase
         var func = new Func<Bitmap>(() =>
         {
             var bmp = new Bitmap(graphicsBox.ClientSize.Width, graphicsBox.ClientSize.Height);
-            var g = Graphics.FromImage(bmp);
-            Draw(g, true);
+            //var g = Graphics.FromImage(bmp); // (260611Ch) 旧: Graphics が未解放
+            using (var g = Graphics.FromImage(bmp)) // (260611Ch)
+                Draw(g, true);
             return bmp;
         });
         formMain.FormMovie.Execute(func, this);

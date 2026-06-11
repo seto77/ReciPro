@@ -107,11 +107,14 @@ public partial class FormDiffractionSimulatorHolder : FormBase
     {
         var (sin, cos) = Math.SinCos(PrimaryAxisDirection);
         var (magSin, magCos) = ((float)(mag * sin), (float)(mag * cos));
-        g.Transform = new Matrix(magCos, -magSin, magSin, magCos, (float)(boxWidth / 2.0 - mag * centerPt.X), (float)(boxHeight / 2.0 + mag * centerPt.Y));
+        //g.Transform = new Matrix(magCos, -magSin, magSin, magCos, (float)(boxWidth / 2.0 - mag * centerPt.X), (float)(boxHeight / 2.0 + mag * centerPt.Y)); // (260611Ch) 旧: Matrix が未解放
+        using var transform = new Matrix(magCos, -magSin, magSin, magCos, (float)(boxWidth / 2.0 - mag * centerPt.X), (float)(boxHeight / 2.0 + mag * centerPt.Y)); // (260611Ch)
+        g.Transform = transform; // (260611Ch)
 
-        var pen1 = new Pen(new SolidBrush(colorControl1DegLine.Color), (float)(1 / mag));
-        var pen10 = new Pen(new SolidBrush(colorControl10DegLine.Color), (float)(2 / mag));
-        var pen90 = new Pen(new SolidBrush(colorControl90DegLine.Color), (float)(3 / mag));
+        //var pen1 = new Pen(new SolidBrush(colorControl1DegLine.Color), (float)(1 / mag)); // (260611Ch) 旧: Pen/内部 SolidBrush が未解放
+        using var pen1 = new Pen(colorControl1DegLine.Color, (float)(1 / mag)); // (260611Ch)
+        using var pen10 = new Pen(colorControl10DegLine.Color, (float)(2 / mag)); // (260611Ch)
+        using var pen90 = new Pen(colorControl90DegLine.Color, (float)(3 / mag)); // (260611Ch)
 
         var wList = new List<int>();
         for (int i = 1; i < 90; i++)
@@ -140,12 +143,14 @@ public partial class FormDiffractionSimulatorHolder : FormBase
 
         if (checkBoxTiltDirections.Checked)
         {
-            var penTiltX = new Pen(new SolidBrush(colorControlTiltX.Color), (float)(2 / mag));
+            //var penTiltX = new Pen(new SolidBrush(colorControlTiltX.Color), (float)(2 / mag)); // (260611Ch) 旧: Pen/内部 SolidBrush が未解放
+            using var penTiltX = new Pen(colorControlTiltX.Color, (float)(2 / mag)); // (260611Ch)
             g.DrawLine(penTiltX, 0f, 0f, 50 / mag, 0);
             g.DrawLine(penTiltX, 50 / mag, 0, 40 / mag, 5 / mag);
             g.DrawLine(penTiltX, 50 / mag, 0f, 40 / mag, -5 / mag);
 
-            var penTiltY = new Pen(new SolidBrush(colorControlTiltY.Color), (float)(2 / mag));
+            //var penTiltY = new Pen(new SolidBrush(colorControlTiltY.Color), (float)(2 / mag)); // (260611Ch) 旧: Pen/内部 SolidBrush が未解放
+            using var penTiltY = new Pen(colorControlTiltY.Color, (float)(2 / mag)); // (260611Ch)
             var sign = radioButtonTiltY_Plus.Checked ? -1 : 1;
             g.DrawLine(penTiltY, 0f, 0f, 0f, sign * 50 / mag);
             g.DrawLine(penTiltY, 0f, sign * 50 / mag, 5 / mag, sign * 40 / mag);
@@ -160,12 +165,15 @@ public partial class FormDiffractionSimulatorHolder : FormBase
     {
         if (ZoneAxes.Count == 0)
             setVector();
-        g.Transform = new Matrix((float)mag, 0, 0, (float)mag, (float)(boxWidth / 2.0 - mag * centerPt.X), (float)(boxHeight / 2.0 + mag * centerPt.Y));
+        //g.Transform = new Matrix((float)mag, 0, 0, (float)mag, (float)(boxWidth / 2.0 - mag * centerPt.X), (float)(boxHeight / 2.0 + mag * centerPt.Y)); // (260611Ch) 旧: Matrix が未解放
+        using var transform = new Matrix((float)mag, 0, 0, (float)mag, (float)(boxWidth / 2.0 - mag * centerPt.X), (float)(boxHeight / 2.0 + mag * centerPt.Y)); // (260611Ch)
+        g.Transform = transform; // (260611Ch)
         var rot = HolderRotation * crystal.RotationMatrix;
 
-        var font = new Font(WineCompat.Resolve("Tahoma"), trackBarStrSize.Value / (float)mag / 7f); //260610Cl Wine時フォント切替
-        var brushUnique = new SolidBrush(colorControlUniqueAxis.Color);
-        var brushGeneral = new SolidBrush(colorControlGeneralAxis.Color);
+        //var font = new Font(WineCompat.Resolve("Tahoma"), trackBarStrSize.Value / (float)mag / 7f); //260610Cl Wine時フォント切替 // (260611Ch) 旧: 未解放
+        using var font = new Font(WineCompat.Resolve("Tahoma"), trackBarStrSize.Value / (float)mag / 7f); //260610Cl Wine時フォント切替 // (260611Ch)
+        using var brushUnique = new SolidBrush(colorControlUniqueAxis.Color); // (260611Ch)
+        using var brushGeneral = new SolidBrush(colorControlGeneralAxis.Color); // (260611Ch)
         var radius = trackBarPointSize.Value / mag;
 
         //晶帯軸の描画
@@ -190,7 +198,8 @@ public partial class FormDiffractionSimulatorHolder : FormBase
         //ホルダー位置の描画
         radius *= 1.5;
         var ptHolder = Stereonet.ConvertVectorToWulff(HolderRotation * new Vector3DBase(0, 0, 1));
-        var penHolder = new Pen(new SolidBrush(colorControlHolder.Color), (float)(3 / mag));
+        //var penHolder = new Pen(new SolidBrush(colorControlHolder.Color), (float)(3 / mag)); // (260611Ch) 旧: Pen/内部 SolidBrush が未解放
+        using var penHolder = new Pen(colorControlHolder.Color, (float)(3 / mag)); // (260611Ch)
         g.DrawEllipse(penHolder, new RectangleD(ptHolder.X - radius, -ptHolder.Y - radius, radius * 2, radius * 2));
     }
 

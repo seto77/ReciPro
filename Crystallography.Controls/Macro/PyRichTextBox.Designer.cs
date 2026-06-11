@@ -15,6 +15,7 @@ namespace Crystallography.Controls
             {
                 components.Dispose();
             }
+            _gutterFont?.Dispose(); // (260611Ch) AttachGutter で作ったフォントを破棄
             base.Dispose(disposing);
         }
 

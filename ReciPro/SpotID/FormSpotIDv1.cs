@@ -131,7 +131,8 @@ public partial class FormSpotIDv1 : FormBase
     private static Bitmap DrawPic(PhotoInformation photo, Size size, double mag)
     {
         var bmp = new Bitmap(size.Width, size.Height);
-        var g = Graphics.FromImage(bmp);
+        //var g = Graphics.FromImage(bmp); // (260611Ch) 旧: Graphics が未解放
+        using var g = Graphics.FromImage(bmp); // (260611Ch) Bitmap は戻り値なので Graphics だけ解放
         g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
         if (photo.Paintable)
             g.Clear(Color.White);
@@ -151,8 +152,9 @@ public partial class FormSpotIDv1 : FormBase
         var offset = new PointF(-(p1.X + p2.X) / 3f + bmp.Width / 2f, -(p1.Y + p2.Y) / 3f + bmp.Height / 2f);
 
         //補助線を書く
-        var penArc = new Pen(Brushes.Gray, 1 / 10f);
-        var penLine = new Pen(Brushes.Gray, 1 / 10f);
+        //var penArc = new Pen(Brushes.Gray, 1 / 10f); // (260611Ch) 旧: Pen が未解放
+        using var penArc = new Pen(Brushes.Gray, 1 / 10f); // (260611Ch)
+        using var penLine = new Pen(Brushes.Gray, 1 / 10f); // (260611Ch)
 
         string str;
         //p1
@@ -199,20 +201,23 @@ public partial class FormSpotIDv1 : FormBase
                     var p = new PointF(p1.X * i + p2.X * j, p1.Y * i + p2.Y * j);
                     if (g.IsVisible(p))
                     {
-                        g.FillEllipse(new SolidBrush(Color.Black), p.X - ptSize / 2, p.Y - ptSize / 2, ptSize, ptSize);
+                        //g.FillEllipse(new SolidBrush(Color.Black), p.X - ptSize / 2, p.Y - ptSize / 2, ptSize, ptSize); // (260611Ch) 旧: SolidBrush が未解放
+                        g.FillEllipse(Brushes.Black, p.X - ptSize / 2, p.Y - ptSize / 2, ptSize, ptSize); // (260611Ch)
                         flag = false;
                     }
                 }
             if (flag)
             {
-                g.FillEllipse(new SolidBrush(Color.Red), -ptSize / 2, -ptSize / 2, ptSize, ptSize);
+                //g.FillEllipse(new SolidBrush(Color.Red), -ptSize / 2, -ptSize / 2, ptSize, ptSize); // (260611Ch) 旧: SolidBrush が未解放
+                g.FillEllipse(Brushes.Red, -ptSize / 2, -ptSize / 2, ptSize, ptSize); // (260611Ch)
                 break;
             }
         }
 
         //最後に字を書く
-        var strFont = new Font(WineCompat.Resolve("Tahoma"), 7.5f, FontStyle.Regular); //260610Cl Wine時フォント切替
-        var brush = new SolidBrush(Color.SlateBlue);
+        //var strFont = new Font(WineCompat.Resolve("Tahoma"), 7.5f, FontStyle.Regular); //260610Cl Wine時フォント切替 // (260611Ch) 旧: 未解放
+        using var strFont = new Font(WineCompat.Resolve("Tahoma"), 7.5f, FontStyle.Regular); //260610Cl Wine時フォント切替 // (260611Ch)
+        using var brush = new SolidBrush(Color.SlateBlue); // (260611Ch)
         g.Transform = new System.Drawing.Drawing2D.Matrix(1, 0, 0, 1, 0, 0);
         if (!photo.Paintable)
         {

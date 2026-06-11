@@ -130,8 +130,9 @@ public partial class AtomCoordinateTable : UserControlBase
         if (pictureBox.Width <= 0 || pictureBox.Height <= 0 || atoms.Count == 0) return;
         // 前回の bmp/g を破棄してリーク防止 (pictureBox.Image にも握られているため Image を先に外す)
         pictureBox.Image = null;
-        bmp?.Dispose();
-        g?.Dispose();
+        //bmp?.Dispose(); g?.Dispose(); // (260611Ch) 旧: Graphics より先に Bitmap を破棄していた
+        g?.Dispose(); // (260611Ch)
+        bmp?.Dispose(); // (260611Ch)
         bmp = new Bitmap(pictureBox.Width, pictureBox.Height);
         g = Graphics.FromImage(bmp);
         g.Clear(Color.White);
@@ -238,7 +239,8 @@ public partial class AtomCoordinateTable : UserControlBase
         // 角度方向の目盛り
         float angleGrad = ChooseGradiation(UpperX - LowerX, [1.1, 2.2, 5.0]);
         g.DrawLine(Pens.Black, OriginPos.X, pictureBox.Height - OriginPos.Y, pictureBox.Width, pictureBox.Height - OriginPos.Y);
-        using var strFont = new Font(new FontFamily(WineCompat.Resolve("tahoma")), 8); //260610Cl Wine時フォント切替
+        //using var strFont = new Font(new FontFamily(WineCompat.Resolve("tahoma")), 8); //260610Cl Wine時フォント切替 // (260611Ch) 旧: FontFamily 一時生成が不要
+        using var strFont = new Font(WineCompat.Resolve("tahoma"), 8); //260610Cl Wine時フォント切替 // (260611Ch)
         for (int i = (int)(LowerX / angleGrad) + 1; i < UpperX / angleGrad; i++)
         {
             float x = ConvToPicBoxCoord(i * angleGrad, 0).X;
