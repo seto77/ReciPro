@@ -176,10 +176,13 @@ jobs:
           if (-not $dumpbin) { throw "dumpbin.exe was not found (needed for CRT/export verification)." }
           foreach ($f in @((Join-Path $publishDir "Crystallography.Native.dll"), "ReciPro\native\win-arm64\libxrl-11.dll", "ReciPro\native\win-arm64\glfw3.dll")) {
             $deps = & $dumpbin /dependents $f | Out-String
+            # 260612Cl dumpbin 自体の失敗を即時検出 (失敗で $deps が空だと CRT 検査が空振り pass する、codex レビュー指摘)
+            if ($LASTEXITCODE -ne 0) { throw "dumpbin /dependents failed for $f (exit $LASTEXITCODE)." }
             Write-Host "--- $(Split-Path $f -Leaf) dependents ---"; Write-Host $deps
             if ($deps -match "VCRUNTIME|MSVCP") { throw "$f depends on the dynamic CRT (expected static /MT, see ARM64 policy section 3.5)" }
           }
           $exports = & $dumpbin /exports (Join-Path $publishDir "Crystallography.Native.dll") | Out-String
+          if ($LASTEXITCODE -ne 0) { throw "dumpbin /exports failed (exit $LASTEXITCODE)." } # 260612Cl
           foreach ($sym in @("_CBEDSolver_Eigen", "_Inverse", "_EigenSolver")) {
             if ($exports -notmatch [regex]::Escape($sym)) { throw "Crystallography.Native.dll is missing expected export: $sym" }
           }
