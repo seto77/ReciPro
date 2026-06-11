@@ -243,6 +243,10 @@
       <ResolvedFileToPublish Include="$(Arm64NativeOut)">
         <RelativePath>Crystallography.Native.dll</RelativePath>
         <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+        <!-- 260611Cl 追加: PublishSingleFile でもバンドルに入れず exe 横に置く。NativeWrapper の resolver は
+             AppContext.BaseDirectory の絶対パスを第一候補に解決するため、外置きが確実 (x64 も release.yml の
+             後コピー方式で外置き = 構成を揃える)。libxrl/glfw はバンドル内 (既定解決の抽出ロードを動作確認済み) -->
+        <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       </ResolvedFileToPublish>
     </ItemGroup>
   </Target>

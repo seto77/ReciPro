@@ -88,6 +88,10 @@ jobs:
           # ローカライズリソースを 13 言語分 (~18MB) 同梱するが、アプリが提供する UI は neutral(en)+ja のみなので
           # ja だけ残す (アプリ自身のサテライト ja\*.resources.dll は維持される)。csproj には入れず publish 引数に
           # 留める: x64 MSI (vdproj の LocalizedResourceDlls 自動収集) のビルド経路に影響させないため
+          # 260611Cl PublishSingleFile=true: フラット 292 ファイルから「ReciPro.exe + データ数個 + native」へ
+          # (Surface 検証での作者要望)。ランタイム・managed DLL・ja サテライト・libxrl/glfw は exe に埋め込み。
+          # Crystallography.Native.dll のみ csproj の ExcludeFromSingleFile で exe 横に外置き (NativeWrapper の
+          # BaseDirectory 解決を確実に通すため。x64 release.yml の後コピー方式と構成を揃える)
           $publishDir = Join-Path $env:RUNNER_TEMP "ReciPro-arm64-portable\ReciPro"
           dotnet publish ReciPro\ReciPro.csproj `
             -c Release `
@@ -96,55 +100,75 @@ jobs:
             --self-contained true `
             -p:AssemblyVersion=${{ steps.version.outputs.assembly_version }} `
             -p:FileVersion=${{ steps.version.outputs.assembly_version }} `
-            -p:PublishSingleFile=false `
+            -p:PublishSingleFile=true `
             -p:PublishTrimmed=false `
             -p:SatelliteResourceLanguages=ja `
             -o $publishDir
           "dir=$publishDir" >> $env:GITHUB_OUTPUT
 
-      - name: Verify publish output (required DLLs, PE machine, no x64 leakage)
+      - name: Verify publish output (required files, PE machine, bundled natives, no x64 leakage)
         shell: pwsh
         run: |
           $publishDir = "${{ steps.publish.outputs.dir }}"
 
-          # 必須ネイティブ DLL の存在検査 (方針 §6.3。欠落は「ビルド緑・実行時死亡」型なのでここで止める)。
-          # hostfxr/hostpolicy は self-contained apphost の起動に直結 (codex レビュー指摘で追加)
-          $required = @("ReciPro.exe", "Crystallography.Native.dll", "libxrl-11.dll", "glfw3.dll", "coreclr.dll", "hostfxr.dll", "hostpolicy.dll")
+          # 必須ファイルの存在検査 (方針 §6.3。欠落は「ビルド緑・実行時死亡」型なのでここで止める)。
+          # 260611Cl single-file 化に伴い改訂: ランタイム (coreclr/hostfxr 等)・libxrl・glfw は exe に埋め込まれ、
+          # 外に残るのは ReciPro.exe + 外置き native (Crystallography.Native.dll) + コンテンツのみ
+          $required = @("ReciPro.exe", "Crystallography.Native.dll", "AMCSD.cdb3", "initial.xml")
           foreach ($f in $required) {
             if (-not (Test-Path (Join-Path $publishDir $f))) { throw "Required file missing from publish output: $f" }
+          }
+
+          # single-file バンドルの健全性: exe サイズ (self-contained ランタイム埋め込みなら >150MB) と、
+          # バンドルマニフェスト内のファイル名 (ASCII) で libxrl/glfw の同梱を確認 (無警告欠落の防止)
+          $exePath = Join-Path $publishDir "ReciPro.exe"
+          $exeSize = (Get-Item $exePath).Length
+          "ReciPro.exe size: {0:f1} MB" -f ($exeSize / 1MB)
+          if ($exeSize -lt 150MB) { throw "ReciPro.exe is too small ($([math]::Round($exeSize/1MB)) MB) - single-file self-contained bundling did not happen?" }
+          $exeText = [Text.Encoding]::ASCII.GetString([IO.File]::ReadAllBytes($exePath))
+          foreach ($n in @("libxrl-11.dll", "glfw3.dll", "ReciPro.resources.dll")) {
+            if (-not $exeText.Contains($n)) { throw "Bundled file '$n' not found inside the single-file exe." }
+            Write-Host "bundled: $n"
           }
 
           # x64 専用 flavor (avx2/avx512) が紛れていないこと (arm64 は generic/NEON 1 本のみ)
           $avx = Get-ChildItem $publishDir -Filter "Crystallography.Native.avx*.dll" -ErrorAction SilentlyContinue
           if ($avx) { throw "x64 AVX flavors leaked into arm64 publish: $($avx.Name -join ', ')" }
 
-          # ネイティブ PE が全て ARM64 (machine=0xAA64) であること
+          # ネイティブ PE が ARM64 (machine=0xAA64) であること。バンドル内 native は供給元 (リポの native\win-arm64\) を検査
           function Get-PEMachine([string]$path) {
             $b = [IO.File]::ReadAllBytes($path)
             $pe = [BitConverter]::ToInt32($b, 0x3C)
             return [BitConverter]::ToUInt16($b, $pe + 4)
           }
-          foreach ($f in @("ReciPro.exe", "Crystallography.Native.dll", "libxrl-11.dll", "glfw3.dll", "coreclr.dll", "clrjit.dll", "hostfxr.dll", "hostpolicy.dll")) {
-            $m = Get-PEMachine (Join-Path $publishDir $f)
-            "{0}: machine=0x{1:X4}" -f $f, $m
+          $peTargets = @(
+            (Join-Path $publishDir "ReciPro.exe"),
+            (Join-Path $publishDir "Crystallography.Native.dll"),
+            "ReciPro\native\win-arm64\libxrl-11.dll",
+            "ReciPro\native\win-arm64\glfw3.dll"
+          )
+          foreach ($f in $peTargets) {
+            $m = Get-PEMachine $f
+            "{0}: machine=0x{1:X4}" -f (Split-Path $f -Leaf), $m
             if ($m -ne 0xAA64) { throw "$f is not ARM64 (machine=0x$($m.ToString('X4')))" }
           }
 
-          # 自前ビルド native 3 本の CRT 静的リンク (/MT) 検査: VCRUNTIME/MSVCP 依存が出たら
+          # 自前ビルド native の CRT 静的リンク (/MT) 検査: VCRUNTIME/MSVCP 依存が出たら
           # クリーン WoA (arm64 VC redist 無し) で黙殺フォールバックする型の故障 (方針 §3.5)。
+          # libxrl/glfw はバンドル内のため供給元 (native\win-arm64\) を検査する。
           # 併せて Crystallography.Native.dll の代表 export を確認 (AA64 だが P/Invoke で死ぬ型を検出)
           $dumpbin = (& "${env:ProgramFiles(x86)}\Microsoft Visual Studio\Installer\vswhere.exe" -latest -products * -find "**\Hostx64\x64\dumpbin.exe" | Select-Object -First 1)
           if (-not $dumpbin) { throw "dumpbin.exe was not found (needed for CRT/export verification)." }
-          foreach ($f in @("Crystallography.Native.dll", "libxrl-11.dll", "glfw3.dll")) {
-            $deps = & $dumpbin /dependents (Join-Path $publishDir $f) | Out-String
-            Write-Host "--- $f dependents ---"; Write-Host $deps
+          foreach ($f in @((Join-Path $publishDir "Crystallography.Native.dll"), "ReciPro\native\win-arm64\libxrl-11.dll", "ReciPro\native\win-arm64\glfw3.dll")) {
+            $deps = & $dumpbin /dependents $f | Out-String
+            Write-Host "--- $(Split-Path $f -Leaf) dependents ---"; Write-Host $deps
             if ($deps -match "VCRUNTIME|MSVCP") { throw "$f depends on the dynamic CRT (expected static /MT, see ARM64 policy section 3.5)" }
           }
           $exports = & $dumpbin /exports (Join-Path $publishDir "Crystallography.Native.dll") | Out-String
           foreach ($sym in @("_CBEDSolver_Eigen", "_Inverse", "_EigenSolver")) {
             if ($exports -notmatch [regex]::Escape($sym)) { throw "Crystallography.Native.dll is missing expected export: $sym" }
           }
-          Write-Host "Publish output verified: all native PEs are ARM64, static CRT, exports present, no AVX flavors."
+          Write-Host "Publish output verified: single-file bundle complete, all native PEs ARM64, static CRT, exports present."
 
       - name: Prepare portable folder
         id: portable

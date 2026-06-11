@@ -17,19 +17,23 @@ How to run
 2. Run ReciPro.exe from the extracted ReciPro folder.
 
 3. Do not run ReciPro.exe directly from inside the ZIP viewer.
-   Extract the full folder first so that the bundled DLLs (including the
-   native compute libraries Crystallography.Native*.dll), the crystal
-   database (AMCSD.cdb3), localization files, and manuals remain next to
-   ReciPro.exe.
+   Extract the full folder first so that the native compute libraries
+   (Crystallography.Native*.dll), the crystal database (AMCSD.cdb3),
+   and the other data files remain next to ReciPro.exe.
 
 Runtime
 -------
 
 This portable package is self-contained for Windows x64. A separate .NET
-Desktop Runtime 10 installation is not required; the required .NET runtime
-files are bundled in this folder. When Microsoft releases .NET runtime
-security updates, this package should be rebuilt and redistributed so that
-the bundled runtime is also updated. (260602Cl)
+Desktop Runtime 10 installation is not required: the .NET runtime and most
+libraries are embedded inside ReciPro.exe (single-file publish), which is
+why the folder contains only a handful of files. When Microsoft releases
+.NET runtime security updates, this package should be rebuilt and
+redistributed so that the embedded runtime is also updated. (260602Cl/260611Cl)
+
+The first launch may take somewhat longer than usual: embedded native
+components are unpacked to a per-user cache folder once, and antivirus
+software may scan the large executable on first run.
 
 The bundled native libraries ship in three flavors (generic / AVX2 / AVX512);
 ReciPro automatically selects the fastest one supported by your CPU at

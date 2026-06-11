@@ -247,6 +247,11 @@ jobs:
           # 260611Cl SatelliteResourceLanguages=ja: self-contained publish が同梱する .NET ランタイムの
           #          ローカライズ 13 言語 (~18MB) を、アプリが提供する neutral(en)+ja に合わせて ja のみに絞る。
           #          publish 引数に留める (csproj に入れない) ことで MSI ビルド経路には影響させない。
+          # 260611Cl PublishSingleFile=true: フラット ~290 ファイルでは ReciPro.exe が探しにくいという作者要望
+          #          (arm64 Surface 検証) を受け、ランタイム・managed DLL・ja サテライト・libxrl を exe に埋め込む。
+          #          Crystallography.Native*.dll (3 flavors) は従来どおり後コピーで exe 横に外置き
+          #          (NativeWrapper の BaseDirectory 解決と CPU 判定 flavor 選択をそのまま使うため)。
+          #          ビルド出力 (bin\Release) や MSI には影響しない (PublishSingleFile は publish 専用)。
           dotnet publish ReciPro\ReciPro.csproj `
             -c Release `
             -r win-x64 `
@@ -254,7 +259,7 @@ jobs:
             -p:Platform=x64 `
             -p:AssemblyVersion=${{ steps.version.outputs.assembly_version }} `
             -p:FileVersion=${{ steps.version.outputs.assembly_version }} `
-            -p:PublishSingleFile=false `
+            -p:PublishSingleFile=true `
             -p:PublishTrimmed=false `
             -p:SatelliteResourceLanguages=ja `
             -o $publishDir
