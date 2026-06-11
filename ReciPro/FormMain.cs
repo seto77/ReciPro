@@ -545,9 +545,13 @@ public partial class FormMain : FormBase
         // 260420Cl 追加: レジストリから復元した Bounds が画面外 (モニタ構成変更や最小化 Bounds=-32000 の残存) の場合にプライマリ画面へ再配置する (#55 関連)。
         WindowLocation.EnsureVisible(this);
 
-        Text = "ReciPro  " + Version.VersionAndDate;
-        if (glControlAxes == null)
-            Text += "  (3D rendering disable mode)";
+        //Text = "ReciPro  " + Version.VersionAndDate; // 260612Cl 変更前
+        //if (glControlAxes == null)
+        //    Text += "  (3D rendering disable mode)";
+        // 260612Cl 変更: += の 2 段階追記だと、1 回目の代入直後に FormBase が末尾へ付ける "(F1: Help)" 案内の
+        // 後ろに追記する形になり、案内が中間に残ったまま末尾へ二重付与される (StripHelpSuffix は末尾一致のみ)。
+        // タイトルは一括で組み立てて 1 回だけ代入する (3D 無効モード = Mac/Wine や CI smoke で発症していた)
+        Text = "ReciPro  " + Version.VersionAndDate + (glControlAxes == null ? "  (3D rendering disable mode)" : "");
 
         commonDialog.Progress = ("Initializing has been finished successfully. You can close this window.", 1.0);
         if (commonDialog.AutomaticallyClose)
