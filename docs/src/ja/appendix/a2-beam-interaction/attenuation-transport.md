@@ -85,7 +85,7 @@ $$\Sigma_\text{el} = \sum_i n_i\,\sigma_{\text{el},i}, \qquad \lambda_\text{el} 
 
 $$S(E) = -\frac{dE}{ds} > 0$$
 
-と定義されます。ここで $s$ は軌跡に沿った **経路長**(タブの *dE/ds* 曲線の変数)で、この付録の他の箇所で使う散乱変数 $\sin\theta/\lambda$ とは別物です。エネルギー勾配 $dE/ds$ は負ですが、タブは $S$ を上向きに描きます。keV 領域では概念的に **Bethe** 形
+と定義されます。ここで $s$ は軌跡に沿った **経路長**(タブの *|dE/ds|* 曲線の変数)で、この付録の他の箇所で使う散乱変数 $\sin\theta/\lambda$ とは別物です。エネルギー勾配 $dE/ds$ は負ですが、タブは $S$ を上向きに描きます。keV 領域では概念的に **Bethe** 形
 
 $$S(E) \;\propto\; \frac{Z\rho}{A}\,\frac{1}{E}\,\ln\!\frac{E}{J}$$
 

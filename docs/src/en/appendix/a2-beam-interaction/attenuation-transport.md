@@ -85,7 +85,7 @@ Energy is lost mainly to electronic excitations (ionisation, plasmons). The **st
 
 $$S(E) = -\frac{dE}{ds} > 0,$$
 
-where here $s$ is the **path length** along the trajectory (the variable of the tab's *dE/ds* curve), not the scattering variable $\sin\theta/\lambda$ used elsewhere in this appendix. The energy gradient $dE/ds$ is negative, so the tab plots $S$ upward. At keV energies it follows, in concept, the **Bethe** form
+where here $s$ is the **path length** along the trajectory (the variable of the tab's *|dE/ds|* curve), not the scattering variable $\sin\theta/\lambda$ used elsewhere in this appendix. The energy gradient $dE/ds$ is negative, so the tab plots $S$ upward. At keV energies it follows, in concept, the **Bethe** form
 
 $$S(E) \;\propto\; \frac{Z\rho}{A}\,\frac{1}{E}\,\ln\!\frac{E}{J},$$
 

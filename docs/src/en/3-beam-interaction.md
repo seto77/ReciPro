@@ -38,7 +38,7 @@ The chosen beam also decides which tabs and curves are meaningful:
 | Beam | Reflections | Attenuations & Transport | Scattering factors | Fluorescence |
 |------|------|------|------|------|
 | **X-ray** | structure factors incl. anomalous dispersion | µ/ρ, µ, transmission + absorption edges (vs energy) | $f(s)$ or $F(q)+S(q)$ | characteristic lines + EDX sticks |
-| **Electron** | electron structure factors | σ, MFP, dE/ds, IMFP, range (vs energy) | Peng / Kirkland / 8-Gaussians | — (hidden) |
+| **Electron** | electron structure factors | σ, MFP, \|dE/ds\|, IMFP, range (vs energy) | Peng / Kirkland / 8-Gaussians | — (hidden) |
 | **Neutron** | nuclear structure factors | scattering lengths & cross sections (no energy curve) | scattering lengths (no *s* dependence) | — (hidden) |
 
 The **Fluorescence** tab is X-ray-only and disappears for electron and neutron beams. For neutrons the energy-dependent graphs in **Attenuations & Transport** and **Scattering factors** are replaced by element tables, because the nuclear scattering length does not depend on scattering angle or energy.
@@ -118,11 +118,11 @@ The quantity selector chooses what is plotted against beam energy (1–30 keV):
 - **All (normalized)** — overlays the three curves below, each rescaled to its own maximum so the shapes can be compared on one plot (read absolute values from the table).
 - **σ elastic (nm²)** — elastic scattering cross section: how likely a single atom is to deflect the electron.
 - **Elastic MFP (nm)** — mean free path: the average distance the electron travels between elastic scattering events.
-- **dE/ds (keV/nm)** — stopping power: the energy the electron loses per nanometre of travel.
+- **|dE/ds| (keV/nm)** — stopping power magnitude: the energy the electron loses per nanometre of travel.
 - **IMFP (nm)** — inelastic mean free path: the average distance between energy-losing collisions.
 - **Range CSDA (µm)** — the total path length the electron travels before it stops.
 
-The scalar table lists the electron **wavelength**, **σ elastic**, **Elastic MFP**, **dE/ds**, **IMFP**, the **Plasma E** and mean excitation energy **J**, two electron **ranges** (the Kanaya–Okayama penetration estimate and the CSDA integrated path length), and the mean **Z, A**. The per-element table gives each element's atomic fraction and elastic cross section σ. The elastic cross sections use the **NIST Mott** data (50 eV–36 keV) and fall back to **screened Rutherford** above 36 keV.
+The scalar table lists the electron **wavelength**, **σ elastic**, **Elastic MFP**, **|dE/ds|**, **IMFP**, the **Plasma E** and mean excitation energy **J**, two electron **ranges** (the Kanaya–Okayama penetration estimate and the CSDA integrated path length), and the mean **Z, A**. The per-element table gives each element's atomic fraction and elastic cross section σ. The elastic cross sections use the **NIST Mott** data (50 eV–36 keV) and fall back to **screened Rutherford** above 36 keV.
 
 ### Neutron
 
