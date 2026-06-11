@@ -230,32 +230,81 @@ jobs:
         run: |
           # 起動即死 (例外ダイアログ前のクラッシュ等) の検出。ウィンドウ生成までを確認して終了する。
           # GL 検証はしない (3D フォームを開かない限り GL 初期化は走らない)
+          # 260612Cl 初回 dry_run (run 27382975111) の知見で改訂:
+          #   - FormMain_Load は進捗ダイアログ (Owner 付き = Process.MainWindowHandle に数えられない) を出した後、
+          #     全子フォームを構築してから FormMain を表示する。Process.MainWindowHandle 頼みでは進捗が見えない
+          #   - → EnumWindows でプロセスの全トップレベルウィンドウ (hidden/owned 含む) と CPU 時間を定期ログし、
+          #     「unowned + visible + タイトル 'ReciPro*'」(= Load 完了後の FormMain) を合格条件にする。
+          #     タイトル検査はエラーダイアログの誤合格防止 (codex レビュー指摘) を兼ねる
+          #   - タイムアウト時はデスクトップをスクリーンショットして artifact 化 (次ステップ)
+          Add-Type -TypeDefinition @'
+          using System;
+          using System.Collections.Generic;
+          using System.Runtime.InteropServices;
+          using System.Text;
+          public static class WinEnum {
+            delegate bool EnumProc(IntPtr h, IntPtr lp);
+            [DllImport("user32.dll")] static extern bool EnumWindows(EnumProc cb, IntPtr lp);
+            [DllImport("user32.dll")] static extern uint GetWindowThreadProcessId(IntPtr h, out uint pid);
+            [DllImport("user32.dll")] static extern bool IsWindowVisible(IntPtr h);
+            [DllImport("user32.dll", CharSet = CharSet.Unicode)] static extern int GetWindowText(IntPtr h, StringBuilder sb, int n);
+            [DllImport("user32.dll")] static extern IntPtr GetWindow(IntPtr h, uint cmd);
+            public static List<string> List(int pid) {
+              var r = new List<string>();
+              EnumWindows((h, lp) => {
+                uint wpid; GetWindowThreadProcessId(h, out wpid);
+                if (wpid == pid) {
+                  var sb = new StringBuilder(512); GetWindowText(h, sb, 512);
+                  r.Add((IsWindowVisible(h) ? "visible" : "hidden") + "|" + (GetWindow(h, 4) != IntPtr.Zero ? "owned" : "unowned") + "|" + sb);
+                }
+                return true;
+              }, IntPtr.Zero);
+              return r;
+            }
+          }
+          '@
           $dir = Join-Path $env:RUNNER_TEMP "arm64-artifact/ReciPro"
           $p = Start-Process -FilePath (Join-Path $dir "ReciPro.exe") -WorkingDirectory $dir -PassThru
-          $deadline = (Get-Date).AddSeconds(240) # 初回起動は結晶リスト読込などで時間がかかり得る
+          $deadline = (Get-Date).AddSeconds(480) # 初回起動は全子フォーム構築 + JIT で CI の非力な VM では数分かかり得る
           $shown = $false
+          $lastLog = [DateTime]::MinValue
           while ((Get-Date) -lt $deadline) {
             if ($p.HasExited) { throw "ReciPro.exe exited prematurely (exit $($p.ExitCode))." }
-            $p.Refresh()
-            if ($p.MainWindowHandle -ne [IntPtr]::Zero) { $shown = $true; break }
+            $windows = [WinEnum]::List($p.Id)
+            if ($windows | Where-Object { $_ -like 'visible|unowned|ReciPro*' }) { $shown = $true; break }
+            if (((Get-Date) - $lastLog).TotalSeconds -ge 30) {
+              $p.Refresh()
+              Write-Host ("t={0:f0}s cpu={1:f1}s windows: {2}" -f ((Get-Date) - $p.StartTime).TotalSeconds, $p.TotalProcessorTime.TotalSeconds, ($windows -join ' / '))
+              $lastLog = Get-Date
+            }
             Start-Sleep -Seconds 3
           }
           if (-not $shown) {
+            # 失敗診断: デスクトップのスクリーンショット (hosted runner は interactive desktop session) と最終ウィンドウ一覧
+            Write-Host "Final window list: $(([WinEnum]::List($p.Id)) -join ' / ')"
+            Add-Type -AssemblyName System.Windows.Forms, System.Drawing
+            $bounds = [System.Windows.Forms.SystemInformation]::VirtualScreen
+            $bmp = New-Object System.Drawing.Bitmap $bounds.Width, $bounds.Height
+            [System.Drawing.Graphics]::FromImage($bmp).CopyFromScreen($bounds.X, $bounds.Y, 0, 0, $bmp.Size)
+            $bmp.Save((Join-Path $env:RUNNER_TEMP "smoke3-desktop.png"))
             Stop-Process -Id $p.Id -Force
-            throw "Main window did not appear within 240 s."
+            throw "ReciPro main window did not appear within 480 s (see logged window lists and smoke3-desktop.png artifact)."
           }
-          # タイトル検査 (codex レビュー指摘): MainWindowHandle だけだと起動時例外ダイアログや
-          # 警告ダイアログでも「ウィンドウが出た」として通ってしまう。FormMain は Text='ReciPro ...'
-          $title = $p.MainWindowTitle
-          Write-Host "Main window appeared: '$title'"
-          if ($title -notlike 'ReciPro*') {
-            Stop-Process -Id $p.Id -Force
-            throw "Unexpected main window title '$title' (expected 'ReciPro*'). An error dialog may have appeared instead of the main form."
-          }
+          Write-Host "Main window appeared: $(([WinEnum]::List($p.Id) | Where-Object { $_ -like 'visible|*' }) -join ' / ')"
           Start-Sleep -Seconds 10 # 表示直後のクラッシュ検出
           if ($p.HasExited) { throw "ReciPro.exe crashed shortly after showing the main window (exit $($p.ExitCode))." }
           Stop-Process -Id $p.Id -Force
           Write-Host "GUI launch smoke OK."
+
+      - name: Upload smoke diagnostics on failure
+        if: failure()
+        uses: actions/upload-artifact@v6
+        with:
+          name: smoke3-diagnostics
+          path: |
+            ${{ runner.temp }}/smoke3-desktop.png
+            ${{ runner.temp }}/smoke-result.txt
+          if-no-files-found: ignore
 
       - name: Create release ZIP and checksum file
         id: assets
