@@ -244,6 +244,9 @@ jobs:
           # 260602Cl DebugType は csproj の既定 (ReciPro 本体は embedded) を使うため、PDIndexer のような
           #          別 pdb 欠落による MSI ビルド失敗 (方針 §4-a) は起こらない。参照ライブラリ
           #          (Crystallography 等) は分離 pdb を出すので、配布前に publish 出力から除去する (後述)。
+          # 260611Cl SatelliteResourceLanguages=ja: self-contained publish が同梱する .NET ランタイムの
+          #          ローカライズ 13 言語 (~18MB) を、アプリが提供する neutral(en)+ja に合わせて ja のみに絞る。
+          #          publish 引数に留める (csproj に入れない) ことで MSI ビルド経路には影響させない。
           dotnet publish ReciPro\ReciPro.csproj `
             -c Release `
             -r win-x64 `
@@ -253,6 +256,7 @@ jobs:
             -p:FileVersion=${{ steps.version.outputs.assembly_version }} `
             -p:PublishSingleFile=false `
             -p:PublishTrimmed=false `
+            -p:SatelliteResourceLanguages=ja `
             -o $publishDir
 
           # 260602Cl ★ReciPro 固有: Crystallography.Native*.dll は ProjectReference でも Content でも PackageReference でもなく、
