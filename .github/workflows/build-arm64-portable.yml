@@ -84,6 +84,10 @@ jobs:
           #   - AddArm64CrystallographyNativeToPublish ターゲット: native 欠落時は Error
           #   - native\win-arm64\ の libxrl-11.dll / glfw3.dll / glfw3.LICENSE.txt を RID 条件 Content で平坦化
           #   - x64 用 libxrl-11.dll (リポルート) は RID 排他条件で混入しない
+          # 260611Cl SatelliteResourceLanguages=ja: self-contained publish は .NET ランタイム (WinForms/WPF) の
+          # ローカライズリソースを 13 言語分 (~18MB) 同梱するが、アプリが提供する UI は neutral(en)+ja のみなので
+          # ja だけ残す (アプリ自身のサテライト ja\*.resources.dll は維持される)。csproj には入れず publish 引数に
+          # 留める: x64 MSI (vdproj の LocalizedResourceDlls 自動収集) のビルド経路に影響させないため
           $publishDir = Join-Path $env:RUNNER_TEMP "ReciPro-arm64-portable\ReciPro"
           dotnet publish ReciPro\ReciPro.csproj `
             -c Release `
@@ -94,6 +98,7 @@ jobs:
             -p:FileVersion=${{ steps.version.outputs.assembly_version }} `
             -p:PublishSingleFile=false `
             -p:PublishTrimmed=false `
+            -p:SatelliteResourceLanguages=ja `
             -o $publishDir
           "dir=$publishDir" >> $env:GITHUB_OUTPUT
 
