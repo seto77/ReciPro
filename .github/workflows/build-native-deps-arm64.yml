@@ -1,0 +1,138 @@
+# 260611Cl 追加: win-arm64 用ネイティブ依存 DLL (xraylib / GLFW) を windows-11-arm ランナーでソースからビルドする。
+# workflow_dispatch 専用。成果物 (libxrl-11.dll / glfw3.dll / glfw3.LICENSE.txt / *.PROVENANCE.txt) を
+# Actions artifact として取得し、ReciPro\native\win-arm64\ にコミットして使う。
+# 方針: .project-guidance/ReciPro_ARM64化方針.md §4-§5 (このワークフロー自体が再現可能な手順書を兼ねる)。
+# 静的 CRT (/MT): WoA 素環境に arm64 VC redist が無くても動くようにするため (方針 §3.5)。
+name: Build ARM64 native deps (xraylib + GLFW)
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  XRAYLIB_VERSION: "4.2.1"
+  XRAYLIB_URL: https://github.com/tschoonj/xraylib/releases/download/xraylib-4.2.1/xraylib-4.2.1.tar.xz
+  XRAYLIB_SHA256: 64F3FFDDB327F265C13F05D17B356125A85634D0295BE0F0D07BF4B7F9DAEB77
+  GLFW_VERSION: "3.4"
+  GLFW_URL: https://github.com/glfw/glfw/releases/download/3.4/glfw-3.4.zip
+  GLFW_SHA256: B5EC004B2712FD08E8861DC271428F048775200A2DF719CCF575143BA749A3E9
+
+jobs:
+  build:
+    runs-on: windows-11-arm
+    timeout-minutes: 40
+
+    steps:
+      - name: Setup Python (meson/ninja 用)
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install meson + ninja
+        shell: pwsh
+        run: pip install meson ninja
+
+      # ネイティブ arm64 ホスト上で MSVC ARM64 環境を有効化 (クロスではない)
+      - name: Setup MSVC ARM64 environment
+        uses: ilammy/msvc-dev-cmd@v1
+        with:
+          arch: arm64
+
+      - name: Download and verify sources (SHA256 pin)
+        shell: pwsh
+        run: |
+          $ProgressPreference = 'SilentlyContinue'
+          Invoke-WebRequest -Uri $env:XRAYLIB_URL -OutFile xraylib.tar.xz
+          Invoke-WebRequest -Uri $env:GLFW_URL -OutFile glfw.zip
+          $xh = (Get-FileHash xraylib.tar.xz -Algorithm SHA256).Hash
+          $gh = (Get-FileHash glfw.zip -Algorithm SHA256).Hash
+          if ($xh -ne $env:XRAYLIB_SHA256) { throw "xraylib SHA256 mismatch: $xh" }
+          if ($gh -ne $env:GLFW_SHA256) { throw "glfw SHA256 mismatch: $gh" }
+          tar -xf xraylib.tar.xz
+          Expand-Archive glfw.zip -DestinationPath .
+
+      # 純 C ライブラリのみの最小ビルド (bindings 3 種 disabled)。データはビルド時に prdata が
+      # xrayglob_inline.c を生成して DLL へ埋め込むため、成果物は自己完結 (実行時データファイル不要)
+      - name: Build xraylib (meson, C library only, /MT)
+        shell: pwsh
+        run: |
+          cd xraylib-$env:XRAYLIB_VERSION
+          meson setup build --buildtype=release `
+            -Dfortran-bindings=disabled -Dpython-bindings=disabled -Dpython-numpy-bindings=disabled `
+            -Db_vscrt=static_from_buildtype
+          ninja -C build
+          meson test -C build --print-errorlogs
+
+      - name: Build GLFW (CMake + Ninja, shared DLL, /MT)
+        shell: pwsh
+        run: |
+          cmake -S glfw-$env:GLFW_VERSION -B glfw-build -G Ninja `
+            -D CMAKE_BUILD_TYPE=Release `
+            -D BUILD_SHARED_LIBS=ON `
+            -D USE_MSVC_RUNTIME_LIBRARY_DLL=OFF `
+            -D GLFW_BUILD_EXAMPLES=OFF -D GLFW_BUILD_TESTS=OFF -D GLFW_BUILD_DOCS=OFF
+          cmake --build glfw-build
+
+      - name: Collect outputs, verify PE machine, write provenance
+        shell: pwsh
+        run: |
+          New-Item -ItemType Directory -Force out | Out-Null
+          Copy-Item "xraylib-$env:XRAYLIB_VERSION\build\src\xrl-11.dll" out\libxrl-11.dll
+          Copy-Item "glfw-build\src\glfw3.dll" out\glfw3.dll
+          Copy-Item "glfw-$env:GLFW_VERSION\LICENSE.md" out\glfw3.LICENSE.txt
+
+          function Get-PEMachine([string]$path) {
+            $b = [IO.File]::ReadAllBytes($path)
+            $pe = [BitConverter]::ToInt32($b, 0x3C)
+            return [BitConverter]::ToUInt16($b, $pe + 4)
+          }
+          foreach ($f in @("out\libxrl-11.dll", "out\glfw3.dll")) {
+            $m = Get-PEMachine $f
+            "{0}: machine=0x{1:X4}" -f $f, $m
+            if ($m -ne 0xAA64) { throw "$f is not ARM64 (machine=0x$($m.ToString('X4')))" }
+          }
+          # /MT 確認用に依存 DLL を表示 (KERNEL32 程度であること。VCRUNTIME140 が出たら /MT が効いていない)
+          if (Get-Command dumpbin -ErrorAction SilentlyContinue) {
+            dumpbin /dependents out\libxrl-11.dll
+            dumpbin /dependents out\glfw3.dll
+          } else { "dumpbin not found - check dependents manually" }
+
+          $runUrl = "$env:GITHUB_SERVER_URL/$env:GITHUB_REPOSITORY/actions/runs/$env:GITHUB_RUN_ID"
+          $clVer = (& cl 2>&1 | Select-Object -First 1) -join ' '
+          $date = Get-Date -Format yyyy-MM-dd
+
+          @(
+            "xraylib $env:XRAYLIB_VERSION win-arm64 build provenance"
+            "date: $date"
+            "source: $env:XRAYLIB_URL"
+            "source sha256: $env:XRAYLIB_SHA256"
+            "compiler: $clVer (MSVC, arm64 native, windows-11-arm GitHub-hosted runner)"
+            "build: meson setup build --buildtype=release -Dfortran-bindings=disabled -Dpython-bindings=disabled -Dpython-numpy-bindings=disabled -Db_vscrt=static_from_buildtype (/MT)"
+            "output: xrl-11.dll renamed to libxrl-11.dll (P/Invoke name compatibility with conda-forge win-64 binary)"
+            "output sha256: $((Get-FileHash out\libxrl-11.dll -Algorithm SHA256).Hash)"
+            "actions run: $runUrl"
+            "license: BSD-3-Clause (see libxrl-11.LICENSE.txt in repo root)"
+          ) | Set-Content out\libxrl-11.arm64.PROVENANCE.txt
+
+          @(
+            "GLFW $env:GLFW_VERSION win-arm64 build provenance"
+            "date: $date"
+            "source: $env:GLFW_URL"
+            "source sha256: $env:GLFW_SHA256"
+            "compiler: $clVer (MSVC, arm64 native, windows-11-arm GitHub-hosted runner)"
+            "build: cmake -G Ninja -D CMAKE_BUILD_TYPE=Release -D BUILD_SHARED_LIBS=ON -D USE_MSVC_RUNTIME_LIBRARY_DLL=OFF (/MT)"
+            "reason: OpenTK.redist.glfw has no win-arm64 runtime asset; GLFW provides no official arm64 binaries (glfw/glfw#2163)"
+            "output sha256: $((Get-FileHash out\glfw3.dll -Algorithm SHA256).Hash)"
+            "actions run: $runUrl"
+            "license: zlib/libpng (glfw3.LICENSE.txt)"
+          ) | Set-Content out\glfw3.arm64.PROVENANCE.txt
+
+          Get-Content out\libxrl-11.arm64.PROVENANCE.txt, out\glfw3.arm64.PROVENANCE.txt
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v6
+        with:
+          name: native-deps-win-arm64
+          path: out/

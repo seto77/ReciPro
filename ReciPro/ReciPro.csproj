@@ -40,6 +40,10 @@
     <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
     <!-- (260320Ch) Installer に不要な非 Windows / win-x86 ランタイム資産を出さないため、RID を win-x64 に固定 -->
     <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+    <!-- 260611Cl 追加: restore グラフを両 RID 対応にする (build 出力には無影響)。これが無いと arm64 publish (-r win-arm64) の
+         implicit restore が obj\project.assets.json を単一 RID で書き換え、直後の no-restore 付き x64 ビルドが NETSDK1047 で死ぬ。
+         RID 自体は無条件 win-x64 のまま。CLI の -r win-arm64 は global property としてこれを上書きする (方針 §3.1) -->
+    <RuntimeIdentifiers>win-x64;win-arm64</RuntimeIdentifiers>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)'=='Debug'">
@@ -48,6 +52,12 @@
 
   <PropertyGroup Condition="'$(Configuration)'=='Release'">
     <OutputPath>bin\Release\</OutputPath>
+  </PropertyGroup>
+
+  <!-- 260611Cl 追加: ARM64 ビルドは bin\Release を共有しない (x64 MSI/ZIP への arm64 アセンブリ混入防止、方針 §3.2)。
+       条件付き PropertyGroup は後勝ちのため、必ず上の Release 条件グループより後に置くこと -->
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">
+    <OutputPath>bin\ARM64\Release\</OutputPath>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -111,7 +121,9 @@
     <!-- 260606Cl 追加: xraylib (BSD, 4.2.1) ネイティブ DLL を同梱。異常分散 f'/f'' (Fi/Fii) ほかを Crystallography/Xraylib.cs から P/Invoke する。
          self-contained publish では native DLL が自動で拾われないため CopyToPublishDirectory も明示 (既存ネイティブ DLL と同方針)。
          ライセンス表記は libxrl-11.LICENSE.txt を同梱。 -->
-    <Content Include="libxrl-11.dll">
+    <!-- 260611Cl RID 排他条件を付与: arm64 publish に x64 バイナリが混入して BadImageFormatException になるのを防ぐ (方針 §3.7)。
+         旧: <Content Include="libxrl-11.dll"> (無条件) -->
+    <Content Include="libxrl-11.dll" Condition="'$(RuntimeIdentifier)' == '' Or '$(RuntimeIdentifier)' == 'win-x64'">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
@@ -195,5 +207,44 @@
   <ItemGroup>
     <RuntimeHostConfigurationOption Include="System.GC.DynamicAdaptationMode" Value="0" />
   </ItemGroup>
+
+  <!-- 260611Cl 追加: win-arm64 用ネイティブ DLL の配線 (方針 §3.7「案B改」)。
+       arm64 自前ビルド品は native\win-arm64\ にコミット (build-native-deps-arm64.yml で生成、PROVENANCE 同梱)。
+       loose Content は runtimes\ 規約の対象外なので TargetPath で publish ルートへ平坦化する。
+       glfw3.dll: OpenTK.redist.glfw に win-arm64 資産が無く、publish は無警告で欠落するため自前供給が必須。
+       ファイル欠落時は MSB3030 でビルドが落ちる (fail-loud、意図通り) -->
+  <ItemGroup Condition="'$(RuntimeIdentifier)' == 'win-arm64'">
+    <Content Include="native\win-arm64\libxrl-11.dll" TargetPath="libxrl-11.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="native\win-arm64\glfw3.dll" TargetPath="glfw3.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="native\win-arm64\glfw3.LICENSE.txt" TargetPath="glfw3.LICENSE.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+
+  <!-- 260611Cl 追加: Crystallography.Native (vcxproj 成果物, generic/NEON 1本) を arm64 publish に注入 (方針 §3.7)。
+       現行 x64 は release.yml が bin\Release\ から後コピーする方式のため publish 単独では native が入らないが、
+       arm64 はこのターゲットで「ローカル dotnet publish -r win-arm64 単独で完全な出力」を保証する。欠落時は Error で落とす -->
+  <Target Name="AddArm64CrystallographyNativeToPublish"
+          BeforeTargets="ComputeFilesToPublish"
+          Condition="'$(RuntimeIdentifier)' == 'win-arm64'">
+    <PropertyGroup>
+      <Arm64NativeOut>$(MSBuildProjectDirectory)\bin\Release\ARM64\Crystallography.Native.dll</Arm64NativeOut>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(Arm64NativeOut)')"
+           Text="Crystallography.Native.dll (ARM64) not found at $(Arm64NativeOut). Build Crystallography.Native with Release|ARM64 first (devenv ReciPro.sln /Build &quot;Release|ARM64&quot; /Project Crystallography.Native)." />
+    <ItemGroup>
+      <ResolvedFileToPublish Include="$(Arm64NativeOut)">
+        <RelativePath>Crystallography.Native.dll</RelativePath>
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      </ResolvedFileToPublish>
+    </ItemGroup>
+  </Target>
 
 </Project>

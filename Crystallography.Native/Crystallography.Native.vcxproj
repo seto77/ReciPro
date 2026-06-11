@@ -9,6 +9,11 @@
       <Configuration>Release</Configuration>
       <Platform>x64</Platform>
     </ProjectConfiguration>
+    <!-- 260611Cl 追加: win-arm64 ポータブル配布用 (generic/NEON 1本のみ。avx2/avx512 flavor は x86 専用)。方針: ReciPro/.project-guidance/ReciPro_ARM64化方針.md -->
+    <ProjectConfiguration Include="Release|ARM64">
+      <Configuration>Release</Configuration>
+      <Platform>ARM64</Platform>
+    </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
@@ -59,6 +64,14 @@
     <!-- 260514Cl LLVMToolsVersion を明示すると環境ごとの clang バージョン差で MSB8073 が出るため指定しない。
          VS Insiders (clang 22) / VS Enterprise stable (clang 20) ともにバンドル clang をそのまま使う -->
   </PropertyGroup>
+  <!-- 260611Cl 追加: ARM64 構成 (x64 のコピーではなく最小構成で新規。Intel 系プロパティ・AVX フラグは持ち込まない) -->
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>ClangCL</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
   </ImportGroup>
@@ -67,6 +80,9 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
@@ -95,6 +111,17 @@
     <OutDir>$(SolutionDir)$(SolutionName)\bin\$(Configuration)\</OutDir>
     <EnableManagedIncrementalBuild>true</EnableManagedIncrementalBuild>
     <RunCodeAnalysis>true</RunCodeAnalysis>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">
+    <LinkIncremental>
+    </LinkIncremental>
+    <TargetExt>.dll</TargetExt>
+    <!-- 260611Cl TargetName は明示する (NativeOutputName は Release|x64 条件の PropertyGroup 内のため ARM64 では未定義) -->
+    <TargetName>Crystallography.Native</TargetName>
+    <!-- 260611Cl OutDir は x64 (bin\Release\) と共有しない: arm64 DLL が x64 generic を同名上書きし MSI/x64 ZIP に混入する事故の防止。
+         vdproj / release.yml は bin\Release\ 直下を参照しており、この分離により無修正で安全になる -->
+    <OutDir>$(SolutionDir)$(SolutionName)\bin\$(Configuration)\ARM64\</OutDir>
+    <EnableManagedIncrementalBuild>true</EnableManagedIncrementalBuild>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -244,6 +271,37 @@
       <Command>
       </Command>
     </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <!-- 260611Cl 追加: ARM64 のコンパイル/リンク設定。x64 Release の verbatim コピーは禁止 (Intel 系残骸 IntelJCCErratum/UseIntelOptimizedHeaders/
+       EnableMatrixMultiplyLibraryCall/Mtune 等と /arch:AVX* を引き込むため)。Eigen は __ARM_NEON (ClangCL が定義) で NEON を自動有効化する。
+       RuntimeLibrary=MultiThreaded (/MT 静的CRT) は WoA に arm64 VC redist が無い環境対策 — CRT ヒープを跨ぐ API を追加しないこと (方針 §3.5) -->
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">
+    <ClCompile>
+      <WarningLevel>Level1</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>NDEBUG;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <BufferSecurityCheck>false</BufferSecurityCheck>
+      <InterproceduralOptimization>true</InterproceduralOptimization>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <AdditionalIncludeDirectories>Crystallography.Native;Eigen;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OmitFramePointers>true</OmitFramePointers>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
+      <LanguageStandard_C>stdclatest</LanguageStandard_C>
+      <AdditionalOptions>-Wno-nonportable-include-path %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <LinkTimeCodeGeneration>UseLinkTimeCodeGeneration</LinkTimeCodeGeneration>
+    </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="EigenFuncs.h" />
