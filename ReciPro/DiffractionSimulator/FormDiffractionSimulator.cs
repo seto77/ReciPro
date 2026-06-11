@@ -2296,12 +2296,16 @@ public partial class FormDiffractionSimulator : FormBase
         //タブページのテキストを取得
         var txt = tab.TabPages[e.Index].Text;
 
-        //StringFormatを作成 //水平垂直方向の中央に、行が完全に表示されるようにする
+        //StringFormatを作成 //水平垂直方向の中央に表示する
         var sf = new StringFormat()
         {
             LineAlignment = StringAlignment.Center,
             Alignment = StringAlignment.Center,
-            FormatFlags = StringFormatFlags.LineLimit
+            //FormatFlags = StringFormatFlags.LineLimit // 260611Cl 変更前
+            // 260611Cl 変更: LineLimit は「行が完全に収まる場合のみ描画」のため、高 DPI 環境 (WoA Surface 150%+) で
+            // 未選択タブの bounds 高さが行高を下回ると一行も描画されず空白タブになる (ItemSize は resx 固定値で
+            // WinForms の DPI 自動スケール対象外)。タブ文字は 1 行なので折り返し不要、高さ不足でも常に描画する
+            FormatFlags = StringFormatFlags.NoWrap | StringFormatFlags.NoClip
         };
         e.Graphics.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
         e.Graphics.PixelOffsetMode = PixelOffsetMode.HighQuality;
