@@ -16,11 +16,22 @@ internal static class Program
     // 260523Cl 追加: GUI 監査用スクショ一括取得モードの起動引数 (Main 内で 2 箇所判定するため定数化)
     private const string CaptureArg = "--capture";
 
+    // 260612Cl 追加: CI 用の起動診断モードの引数 (attach-arm64-experimental.yml の windows-11-arm smoke が使用)
+    private const string SmokeArg = "--smoke";
+
     /// <summary>アプリケーションのメイン エントリ ポイントです。</summary>
     // private static void Main() // 260521Cl 旧シグネチャ (--capture 引数対応のため string[] args を追加)
     [STAThread]
     private static void Main(string[] args)
     {
+        // 260612Cl 追加: CI 用の起動 smoke。NativeWrapper/Xraylib はロード失敗時に黙って Enabled=false へ
+        // フォールバックする型のため、配布前検査として明示的に検査し、結果をファイルへ書き出す
+        // (OutputType=WinExe のためコンソール出力は使えない)。GUI は一切起動しない。
+        //   ReciPro.exe --smoke [出力ファイル]
+        // 終了コード: 0=native/xraylib とも有効、2=いずれか無効 (詳細は出力ファイル参照)
+        if (args.Length >= 1 && args[0] == SmokeArg)
+            RunSmoke(args.Length >= 2 ? args[1] : "smoke-result.txt");
+
         // 260522Cl 追加 / 260525Cl 改修: --capture の言語指定を SetDefaultFont より前に反映する。
         //   ReciPro.exe --capture [出力ディレクトリ] [カルチャ(en/ja)]   (出力先を明示)
         //   ReciPro.exe --capture [カルチャ(en/ja)]                      (出力先省略=既定の docs/src/assets/cap-*-auto)
@@ -63,6 +74,39 @@ internal static class Program
         }
 
         Application.Run(new FormMain());
+    }
+
+    // 260612Cl 追加: --smoke の本体。Enabled プロパティの参照が static ctor (DLL ロード + self-test) を
+    // 起動するので、これだけで「実機で native/xraylib が本当にロードできるか」の検査になる。
+    private static void RunSmoke(string outPath)
+    {
+        // glfw3.dll は single-file exe のバンドル内にあり、3D フォームを開くまでロードされない。
+        // GL コンテキストは作らず glfwInit/Terminate だけで「バンドルから抽出した実物がロード・初期化できる」
+        // ことを検査する (codex レビュー指摘: リポ側 DLL の LoadLibrary では配布物の検査にならない)
+        var glfwEnabled = false;
+        string glfwError;
+        try
+        {
+            glfwEnabled = OpenTK.Windowing.GraphicsLibraryFramework.GLFW.Init();
+            if (glfwEnabled)
+                OpenTK.Windowing.GraphicsLibraryFramework.GLFW.Terminate();
+            glfwError = glfwEnabled ? "" : "glfwInit returned false";
+        }
+        catch (Exception ex) { glfwError = ex.Message; }
+
+        System.IO.File.WriteAllLines(outPath,
+        [
+            $"arch={System.Runtime.InteropServices.RuntimeInformation.ProcessArchitecture}",
+            $"baseDir={AppContext.BaseDirectory}",
+            $"nativeEnabled={NativeWrapper.Enabled}",
+            $"nativeLibrary={NativeWrapper.LoadedNativeLibrary}",
+            $"nativeError={NativeWrapper.LastLoadError}",
+            $"xraylibEnabled={Xraylib.Enabled}",
+            $"xraylibError={Xraylib.LastLoadError}",
+            $"glfwEnabled={glfwEnabled}",
+            $"glfwError={glfwError}",
+        ]);
+        Environment.Exit(NativeWrapper.Enabled && Xraylib.Enabled && glfwEnabled ? 0 : 2);
     }
 
     // 260428Cl 追加

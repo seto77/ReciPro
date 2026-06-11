@@ -9,12 +9,27 @@ name: Build ARM64 portable ZIP (experimental, artifact only)
 
 on:
   workflow_dispatch:
+  # 260612Cl 追加: attach-arm64-experimental.yml (配布の段階 2) から reusable workflow として呼び出し、
+  # ビルド + 検査ロジックを 1 か所に保つ (二重保守の回避)。outputs は呼び出し側が ZIP 命名と
+  # 「添付先 release tag との版数一致」検査に使う
+  workflow_call:
+    outputs:
+      version:
+        description: "Version.cs の History 先頭から解析したバージョン (例: 4.926)"
+        value: ${{ jobs.build.outputs.version }}
+      artifact_name:
+        description: "upload-artifact 名 (中身は ReciPro フォルダ 1 個)"
+        value: ${{ jobs.build.outputs.artifact_name }}
 
 permissions:
   contents: read
 
 jobs:
   build:
+    # 260612Cl 追加: workflow_call 用の outputs (workflow_dispatch 単独実行では未使用)
+    outputs:
+      version: ${{ steps.version.outputs.version }}
+      artifact_name: ReciPro-v.${{ steps.version.outputs.version }}-win-arm64-experimental-portable
     # release.yml と同じイメージ (VC.Tools.ARM64 + ClangCL プリインストール、x64 ホストから ARM64 クロスビルド可。方針 §1.3)
     # 注意: windows-2025-vs2026 は VS2026 移行期の一時ラベル。release.yml を windows-2025 へ戻すときはここも揃えること
     runs-on: windows-2025-vs2026

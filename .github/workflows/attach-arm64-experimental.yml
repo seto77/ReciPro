@@ -1,0 +1,302 @@
+# 260612Cl 追加: win-arm64 portable ZIP を既存 release へ後付け添付する (配布の段階導入の第 2 段階、方針 §6.1-6.2)。
+#   段階 1 = build-arm64-portable.yml (artifact のみ。本ワークフローが reusable workflow として再利用する)
+#   段階 3 = release.yml の後続 job へ統合 (数リリース安定後)
+# 設計の要点 (方針 .project-guidance/ReciPro_ARM64化方針.md):
+#   - tag は作らない: 既存 release tag へ gh release upload するだけなので、v* tag 削除禁止 ruleset と
+#     原子的 release 設計 (260530Cl) に一切干渉しない。x64 配布物にも触れない
+#   - smoke は upload の前 (windows-11-arm = arm64 ネイティブランナー): 想定故障モードが全て
+#     「ビルド緑・実行時死亡」型 (BadImageFormat / DLL 黙殺フォールバック / 起動即死) のため、
+#     PE 検査 + LoadLibrary + ReciPro.exe --smoke (NativeWrapper/Xraylib 明示アサート) + GUI 起動を実機で行う。
+#     GL のフル検証は含めない (GLOn12 の flakiness、方針 §6.3。実機検証 = Phase 2 で完了済み)
+#   - checksum は SHA256SUMS-win-arm64-experimental.txt の別ファイル: x64 の SHA256SUMS.txt は変更しない
+#     (--clobber での後差し替えは、ダウンロード済みユーザーの検証ファイルが時間で変わるため禁止)
+#   - 添付失敗・やり直しは asset の手動削除 (gh release delete-asset <tag> <name>) → 再実行で復旧する
+name: Attach ARM64 portable ZIP to release (experimental)
+
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "添付先 release tag (例: v.4.926)。空なら最新 release"
+        type: string
+        required: false
+        default: ""
+      dry_run:
+        description: "smoke と ZIP 生成まで実行し、release への upload はしない (artifact で検分可能)"
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+# 同時二重実行による部分アップロード競合を防ぐ
+concurrency:
+  group: attach-arm64-experimental
+  cancel-in-progress: false
+
+jobs:
+  # ---- 1. 事前検査: 8 分のビルドを走らせる前に「添付できない理由」を全て洗い出して即失敗させる ----
+  preflight:
+    runs-on: ubuntu-latest # 解析と gh API だけなので最速のランナーで (pwsh は ubuntu にもプリインストール)
+    timeout-minutes: 5
+    outputs:
+      tag: ${{ steps.check.outputs.tag }}
+      version: ${{ steps.check.outputs.version }}
+      zip_name: ${{ steps.check.outputs.zip_name }}
+      sums_name: ${{ steps.check.outputs.sums_name }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 0 # tag commit の解決と ancestry 検査に全履歴 + tags が必要
+
+      - name: Resolve target release and verify preconditions
+        id: check
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          DRY_RUN: ${{ inputs.dry_run }}
+          TAG_INPUT: ${{ inputs.tag }} # 式の直接展開ではなく env 経由で渡す (クォート事故防止の定石)
+        run: |
+          # dry_run はワークフロー自体の実走テスト用に検査を警告へ緩和する (release 無し・版数不一致でも続行)。
+          # 本添付 (dry_run=false) は全検査を強制
+          $dryRun = $env:DRY_RUN -eq 'true'
+
+          # 本添付は master からのみ許可 (release 資産は master の歴史と対応するため)
+          if ($env:GITHUB_REF_NAME -ne 'master' -and -not $dryRun) {
+            throw "Real attach must run from master (current: $env:GITHUB_REF_NAME). Use dry_run for branch testing."
+          }
+
+          # release.yml と同じ規則で Version.cs からバージョンを得る
+          $content = Get-Content "ReciPro/Version.cs" -Raw
+          if ($content -notmatch 'ver(\d+\.\d+)\(') {
+            throw "Could not parse version from Version.cs History."
+          }
+          $ver = $Matches[1]
+
+          # 添付先 tag: 入力が空なら最新 release
+          $tag = $env:TAG_INPUT
+          if (-not $tag) {
+            $tag = (gh release view --json tagName -q '.tagName')
+            if ($LASTEXITCODE -ne 0 -or -not $tag) {
+              $global:LASTEXITCODE = 0
+              if ($dryRun) { $tag = "v.$ver"; Write-Warning "No release found; dry_run continues with synthesized tag '$tag' (used for naming only)." }
+              else { throw "No existing release found (and no tag input given)." }
+            }
+          }
+
+          # release の存在確認 (入力 tag の typo もここで止まる)
+          gh release view $tag --json name | Out-Null
+          $releaseExists = ($LASTEXITCODE -eq 0)
+          $global:LASTEXITCODE = 0
+          if (-not $releaseExists -and -not $dryRun) { throw "Release '$tag' does not exist." }
+
+          # ビルドされる exe / ZIP 名のバージョンと添付先 release の版数一致を強制
+          # (古い release に新しいバイナリを付ける事故、およびその逆を防ぐ)
+          if ("v.$ver" -ne $tag) {
+            if ($dryRun) { Write-Warning "Version mismatch: Version.cs=v.$ver, target=$tag (dry_run continues)." }
+            else { throw "Version mismatch: Version.cs says v.$ver but target release is $tag. Attach only to the matching release." }
+          }
+
+          if ($releaseExists) {
+            # ancestry 検査 (codex レビュー指摘): 添付する arm64 ZIP は「release 時点の commit」ではなく
+            # 「今の master (GITHUB_SHA)」からビルドされる。arm64 ビルド基盤が release 後に入ったため
+            # tag からのビルドは不可能で、これは backfill の宿命として受容する。その代わり
+            #   ① tag の commit がビルド commit の祖先であること (別系列の歴史への添付を拒否)
+            #   ② 出所 (両 SHA) を step summary に明記すること
+            # で「同名バージョンの無関係バイナリ」を防ぐ。段階 3 (release.yml 統合) では同一 run ビルドになり自然解消
+            $tagSha = (git rev-list -n 1 $tag 2>$null)
+            if ($LASTEXITCODE -ne 0 -or -not $tagSha) { throw "Tag '$tag' was not found in the git history." }
+            git merge-base --is-ancestor $tagSha $env:GITHUB_SHA
+            if ($LASTEXITCODE -ne 0) { throw "Release tag commit $tagSha is not an ancestor of build commit $($env:GITHUB_SHA)." }
+            @(
+              "## ARM64 attach provenance"
+              "- Target release: $tag (commit $tagSha)"
+              "- ARM64 ZIP built from: $($env:GITHUB_SHA) ($($env:GITHUB_REF_NAME))"
+              if ($tagSha -ne $env:GITHUB_SHA) { "- Note: the ARM64 binary includes commits made after the release (experimental backfill)." }
+            ) | Add-Content $env:GITHUB_STEP_SUMMARY
+          }
+
+          # asset 衝突検査: --clobber による差し替えはしない方針のため、既存なら手動削除を促して失敗
+          $zipName  = "ReciPro-v.$ver-win-arm64-experimental-portable.zip"
+          $sumsName = "SHA256SUMS-win-arm64-experimental.txt"
+          if ($releaseExists) {
+            $assets = @(gh release view $tag --json assets -q '.assets[].name')
+            foreach ($name in @($zipName, $sumsName)) {
+              if ($assets -contains $name) {
+                if ($dryRun) { Write-Warning "Asset '$name' already exists on $tag (dry_run continues)." }
+                else { throw "Asset '$name' already exists on $tag. Delete it manually first (gh release delete-asset $tag $name) and re-run." }
+              }
+            }
+          }
+
+          Write-Host "Target: $tag / version $ver / zip $zipName"
+          "tag=$tag"            >> $env:GITHUB_OUTPUT
+          "version=$ver"        >> $env:GITHUB_OUTPUT
+          "zip_name=$zipName"   >> $env:GITHUB_OUTPUT
+          "sums_name=$sumsName" >> $env:GITHUB_OUTPUT
+
+  # ---- 2. ビルド: 段階 1 のワークフローをそのまま再利用 (検査込み。二重保守を作らない) ----
+  build:
+    needs: preflight
+    uses: ./.github/workflows/build-arm64-portable.yml
+    permissions:
+      contents: read
+
+  # ---- 3. arm64 実機 smoke → 合格時のみ release へ添付 ----
+  smoke-and-attach:
+    needs: [preflight, build]
+    runs-on: windows-11-arm # arm64 ネイティブランナー (public repo 無料、方針 §1.3)
+    timeout-minutes: 30
+    permissions:
+      contents: write # gh release upload に必要 (他 job は read のまま)
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5 # native\win-arm64\ の LoadLibrary 検査用 (バンドル内 DLL と同一ソース)
+
+      - name: Verify version consistency between preflight and build
+        shell: pwsh
+        run: |
+          # 同一 SHA から解析しているので一致するはずだが、出力配線のミスをここで検出する
+          if ('${{ needs.preflight.outputs.version }}' -ne '${{ needs.build.outputs.version }}') {
+            throw "Version mismatch: preflight=${{ needs.preflight.outputs.version }} build=${{ needs.build.outputs.version }}"
+          }
+
+      - name: Download build artifact
+        # v7 = upload-artifact@v6 と同日リリースの Node 24 対 (download 側は 2025-08 の v5 breaking の分 major が 1 進んでいる)。
+        # 同一 run 内 (reusable workflow がアップロードした artifact を含む) は name 指定だけで取得できる
+        uses: actions/download-artifact@v7
+        with:
+          name: ${{ needs.build.outputs.artifact_name }}
+          path: ${{ runner.temp }}/arm64-artifact
+
+      - name: "Smoke 1: PE machine + native LoadLibrary (arm64-native pwsh)"
+        shell: pwsh
+        run: |
+          $dir = Join-Path $env:RUNNER_TEMP "arm64-artifact/ReciPro"
+          if (-not (Test-Path (Join-Path $dir "ReciPro.exe"))) {
+            throw "Artifact layout unexpected: ReciPro.exe not found in $dir"
+          }
+
+          # PE machine 再検査 (ビルド側でも検査済みだが、artifact 往復後の実物を添付直前に確認する)
+          function Get-PEMachine([string]$path) {
+            $b = [IO.File]::ReadAllBytes($path)
+            $pe = [BitConverter]::ToInt32($b, 0x3C)
+            return [BitConverter]::ToUInt16($b, $pe + 4)
+          }
+          foreach ($f in @("ReciPro.exe", "Crystallography.Native.dll")) {
+            $m = Get-PEMachine (Join-Path $dir $f)
+            "{0}: machine=0x{1:X4}" -f $f, $m
+            if ($m -ne 0xAA64) { throw "$f is not ARM64 (machine=0x$($m.ToString('X4')))" }
+          }
+
+          # arm64 ネイティブの pwsh で実 LoadLibrary (= AA64 PE + /MT 静的 CRT がクリーン環境で本当にロードできるか)。
+          # libxrl/glfw のリポ側コピーはここで検査し、単一ファイル exe バンドル内の実物は後続の --smoke が検査する
+          # (xraylib self-test + glfwInit。リポ側だけでは配布物の検査にならない、codex レビュー指摘)
+          foreach ($dll in @(
+            (Join-Path $dir "Crystallography.Native.dll"),
+            "ReciPro\native\win-arm64\libxrl-11.dll",
+            "ReciPro\native\win-arm64\glfw3.dll")) {
+            $abs = (Resolve-Path $dll).Path
+            $h = [System.Runtime.InteropServices.NativeLibrary]::Load($abs)
+            [System.Runtime.InteropServices.NativeLibrary]::Free($h)
+            Write-Host "LoadLibrary OK: $abs"
+          }
+
+      - name: "Smoke 2: ReciPro.exe --smoke (NativeWrapper / Xraylib explicit assertion)"
+        shell: pwsh
+        run: |
+          # 黙殺フォールバック型 (動くが native 無効で異常に遅い) を CI で確実に検出する (方針 §7)。
+          # 初回起動は単一ファイルバンドルの抽出 + Defender スキャンで時間がかかるためタイムアウトは長めに
+          $dir = Join-Path $env:RUNNER_TEMP "arm64-artifact/ReciPro"
+          $out = Join-Path $env:RUNNER_TEMP "smoke-result.txt"
+          # 引数はパスに空白が入っても壊れないよう明示的にクォートする (Start-Process は自動クォートしない)
+          $p = Start-Process -FilePath (Join-Path $dir "ReciPro.exe") -ArgumentList @("--smoke", "`"$out`"") -WorkingDirectory $dir -PassThru
+          if (-not $p.WaitForExit(600000)) {
+            Stop-Process -Id $p.Id -Force
+            throw "--smoke did not finish within 10 minutes."
+          }
+          if (-not (Test-Path $out)) { throw "--smoke produced no output file (exit $($p.ExitCode))." }
+          $result = Get-Content $out -Raw
+          Write-Host $result
+          if ($p.ExitCode -ne 0) { throw "--smoke reported failure (exit $($p.ExitCode)). See output above." }
+          # glfwEnabled は単一ファイルバンドル内の glfw3.dll を実際に抽出・glfwInit して検査した結果
+          foreach ($expect in @("arch=Arm64", "nativeEnabled=True", "xraylibEnabled=True", "glfwEnabled=True")) {
+            if ($result -notmatch [regex]::Escape($expect)) { throw "--smoke output missing expected '$expect'." }
+          }
+
+      - name: "Smoke 3: GUI launch (main window appears and survives)"
+        shell: pwsh
+        run: |
+          # 起動即死 (例外ダイアログ前のクラッシュ等) の検出。ウィンドウ生成までを確認して終了する。
+          # GL 検証はしない (3D フォームを開かない限り GL 初期化は走らない)
+          $dir = Join-Path $env:RUNNER_TEMP "arm64-artifact/ReciPro"
+          $p = Start-Process -FilePath (Join-Path $dir "ReciPro.exe") -WorkingDirectory $dir -PassThru
+          $deadline = (Get-Date).AddSeconds(240) # 初回起動は結晶リスト読込などで時間がかかり得る
+          $shown = $false
+          while ((Get-Date) -lt $deadline) {
+            if ($p.HasExited) { throw "ReciPro.exe exited prematurely (exit $($p.ExitCode))." }
+            $p.Refresh()
+            if ($p.MainWindowHandle -ne [IntPtr]::Zero) { $shown = $true; break }
+            Start-Sleep -Seconds 3
+          }
+          if (-not $shown) {
+            Stop-Process -Id $p.Id -Force
+            throw "Main window did not appear within 240 s."
+          }
+          # タイトル検査 (codex レビュー指摘): MainWindowHandle だけだと起動時例外ダイアログや
+          # 警告ダイアログでも「ウィンドウが出た」として通ってしまう。FormMain は Text='ReciPro ...'
+          $title = $p.MainWindowTitle
+          Write-Host "Main window appeared: '$title'"
+          if ($title -notlike 'ReciPro*') {
+            Stop-Process -Id $p.Id -Force
+            throw "Unexpected main window title '$title' (expected 'ReciPro*'). An error dialog may have appeared instead of the main form."
+          }
+          Start-Sleep -Seconds 10 # 表示直後のクラッシュ検出
+          if ($p.HasExited) { throw "ReciPro.exe crashed shortly after showing the main window (exit $($p.ExitCode))." }
+          Stop-Process -Id $p.Id -Force
+          Write-Host "GUI launch smoke OK."
+
+      - name: Create release ZIP and checksum file
+        id: assets
+        shell: pwsh
+        run: |
+          # x64 portable ZIP (release.yml) と同じ構造 (ZIP 直下に ReciPro\ フォルダ) と checksum 形式に合わせる
+          $zip  = Join-Path $env:RUNNER_TEMP "${{ needs.preflight.outputs.zip_name }}"
+          $sums = Join-Path $env:RUNNER_TEMP "${{ needs.preflight.outputs.sums_name }}"
+          Compress-Archive -Path (Join-Path $env:RUNNER_TEMP "arm64-artifact/ReciPro") -DestinationPath $zip -Force
+          $hash = (Get-FileHash $zip -Algorithm SHA256).Hash
+          "$hash  ${{ needs.preflight.outputs.zip_name }}" | Set-Content -Path $sums -Encoding ASCII
+          Get-Content $sums
+          "zip=$zip"   >> $env:GITHUB_OUTPUT
+          "sums=$sums" >> $env:GITHUB_OUTPUT
+
+      - name: Upload release assets as workflow artifact (inspection record)
+        # dry_run の検分用 + 実添付時の記録。release に上がる実物と bit 同一
+        uses: actions/upload-artifact@v6
+        with:
+          name: release-assets-${{ needs.preflight.outputs.tag }}-win-arm64-experimental
+          path: |
+            ${{ steps.assets.outputs.zip }}
+            ${{ steps.assets.outputs.sums }}
+
+      - name: Attach to release
+        if: ${{ !inputs.dry_run }}
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          $tag = '${{ needs.preflight.outputs.tag }}'
+
+          # preflight から時間が経っているため、直前にもう一度 asset 衝突を検査する
+          $assets = @(gh release view $tag --json assets -q '.assets[].name')
+          foreach ($name in @('${{ needs.preflight.outputs.zip_name }}', '${{ needs.preflight.outputs.sums_name }}')) {
+            if ($assets -contains $name) {
+              throw "Asset '$name' appeared on $tag after preflight. Delete it manually (gh release delete-asset $tag $name) and re-run."
+            }
+          }
+
+          # --clobber は使わない (方針 §6.2)。部分失敗時は手動で delete-asset → 再実行
+          gh release upload $tag "${{ steps.assets.outputs.zip }}" "${{ steps.assets.outputs.sums }}"
+          if ($LASTEXITCODE -ne 0) { throw "gh release upload failed (exit $LASTEXITCODE)." }
+          Write-Host "Attached to https://github.com/${{ github.repository }}/releases/tag/$tag"
