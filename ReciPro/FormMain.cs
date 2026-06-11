@@ -497,7 +497,11 @@ public partial class FormMain : FormBase
         Crystal = new Crystal();
 
         commonDialog.Progress = ("Now Loading...Setting default crystal list.", 0.85);
-        var appPath = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location) + @"\";
+        //var appPath = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location) + @"\"; // 260612Cl 変更前
+        // 260612Cl 変更: single-file publish では Assembly.Location が空文字になり (IL3000)、appPath が壊れて
+        // 直後の initial.xml / AMCSD.cdb3 のコピーが失敗する。AppContext.BaseDirectory は single-file でも
+        // 通常配置でも exe のフォルダを返す
+        var appPath = AppContext.BaseDirectory;
         //default.xmlをinitial.xmlとしてコピー
         //if (!File.Exists(UserAppDataPath + "initial.xml"))
         File.Copy(appPath + "initial.xml", UserAppDataPath + "initial.xml", true);
