@@ -144,7 +144,17 @@ public partial class GraphControl : UserControlBase
     [Description("上部パネルに表示する文字のフォント")]
     [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     [DefaultValue(typeof(Font), "Segoe UI, 9.5pt")] //260607Cl 修正: リフレクション検証で構築直後の labelX1.Font は 9.5pt と判明 (9pt は誤り)。実値に一致させ冗長直列化を正しく抑止
-    public Font UpperPanelFont { set => labelGraphTitle.Font = labelX1.Font = labelXValue.Font = labelY1.Font = labelYValue.Font = value; get => labelX1.Font; }
+    //public Font UpperPanelFont { set => labelGraphTitle.Font = labelX1.Font = labelXValue.Font = labelY1.Font = labelYValue.Font = value; get => labelX1.Font; }//260611Cl 旧: 凡例ラベルにも反映するため block body 化
+    public Font UpperPanelFont
+    {
+        set
+        {
+            labelGraphTitle.Font = labelX1.Font = labelXValue.Font = labelY1.Font = labelYValue.Font = value;
+            foreach (var label in legendLabels)
+                label.Font = value;//260611Ch 整理: 動的凡例ラベルにも適用
+        }
+        get => labelX1.Font;
+    }
 
     /// <summary>グラフの名前</summary>
     [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
@@ -156,12 +166,58 @@ public partial class GraphControl : UserControlBase
         set
         {
             labelGraphTitle.Text = value ?? "";
-            labelGraphTitle.Visible = !string.IsNullOrEmpty(labelGraphTitle.Text);
-            //panelTitleAndMouse.Visible = labelGraphTitle.Visible || mousePositionVisible;
-            panelTitleAndMouse.Visible = !string.IsNullOrEmpty(labelGraphTitle.Text) || mousePositionVisible;// 260610Cl 修正: Control.Visible の getter は親 (panelTitleAndMouse) が非表示だと set 直後でも false を返すため、意図値 (Text) から判定
+            //labelGraphTitle.Visible = !string.IsNullOrEmpty(labelGraphTitle.Text);//260611Ch 旧: タイトル行と親パネルの表示更新へ集約
+            updateUpperPanelVisibility();// 260611Ch 整理: タイトル/凡例/マウス位置の意図値から一括更新
         }
         get => labelGraphTitle.Text;
     }//260607Ch 変更: 上部パネルはタイトルまたはマウス位置表示が有効な時だけ表示
+
+    /// <summary>タイトル行(flowLayoutPanelTitle)に動的に並べた凡例ラベル (labelGraphTitle1, labelGraphTitle2, ...)。260611Cl 追加。</summary>
+    private readonly List<Label> legendLabels = [];
+
+    /// <summary>タイトルの右に、曲線名を曲線色で表示する凡例ラベルを並べる。引数なし(または null)で消去。
+    /// ラベルが横幅に収まらないときは次の行へ折り返す (flowLayoutPanelTitle.WrapContents=既定true + AutoSize 連鎖)。260611Cl 追加。</summary>
+    public void SetLegend(params (string Text, Color Color)[] items)
+    {
+        flowLayoutPanelTitle.SuspendLayout();//260611Cl 追加: 削除・追加のたびの再フロー計算 (折り返し有効化で増加) を一括化
+        foreach (var label in legendLabels)
+        {
+            flowLayoutPanelTitle.Controls.Remove(label);
+            label.Dispose();
+        }
+        legendLabels.Clear();
+
+        if (items != null)
+        {
+            foreach (var (text, color) in items)
+            {
+                var label = new Label
+                {
+                    AutoSize = true,
+                    Font = labelGraphTitle.Font,
+                    ForeColor = color,
+                    Margin = new Padding(12, 0, 0, 0),//タイトル・前の凡例との間隔
+                    Name = $"labelGraphTitle{legendLabels.Count + 1}",
+                    Text = text,
+                };
+                legendLabels.Add(label);
+                flowLayoutPanelTitle.Controls.Add(label);
+            }
+        }
+        flowLayoutPanelTitle.ResumeLayout();//260611Cl 追加
+        updateUpperPanelVisibility();
+    }
+
+    /// <summary>タイトル行(タイトル文字列または凡例あり)と上部パネルの表示状態を一括更新する。260611Cl 追加。</summary>
+    private void updateUpperPanelVisibility()
+    {
+        bool hasTitle = !string.IsNullOrEmpty(labelGraphTitle.Text);
+        bool hasTitleRow = hasTitle || legendLabels.Count > 0;//260611Ch 整理: Visible getter は親非表示時に false になるため意図値で判定
+
+        labelGraphTitle.Visible = hasTitle;
+        flowLayoutPanelTitle.Visible = hasTitleRow;
+        panelTitleAndMouse.Visible = hasTitleRow || mousePositionVisible;
+    }
 
     /// <summary>マウス位置を表示するかどうか</summary>
     [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
@@ -174,8 +230,8 @@ public partial class GraphControl : UserControlBase
         {
             mousePositionVisible = value;
             flowLayoutPanelMousePosition.Visible = value;
-            //panelTitleAndMouse.Visible = labelGraphTitle.Visible || mousePositionVisible;
-            panelTitleAndMouse.Visible = !string.IsNullOrEmpty(labelGraphTitle.Text) || mousePositionVisible;// 260610Cl 修正: 同上 (意図値から判定)
+            //panelTitleAndMouse.Visible = !string.IsNullOrEmpty(labelGraphTitle.Text) || mousePositionVisible;// 260610Cl 修正: 同上 (意図値から判定)
+            updateUpperPanelVisibility();// 260611Ch 整理: 表示判定を共通メソッドへ集約
         }
         get => mousePositionVisible;
     }//260607Ch 変更: 親パネル非表示時も意図値を保持し、上部パネルを自動判定
@@ -700,15 +756,27 @@ public partial class GraphControl : UserControlBase
         Draw();
     }
 
-    public void AddProfiles(Profile[] p, RectangleD drawingRange = new RectangleD())
+    //public void AddProfiles(Profile[] p, RectangleD drawingRange = new RectangleD(), bool showLegend = false)//260611Cl 旧シグネチャ: minimalX/maximalX 追加
+    /// <param name="drawingRange">初期表示範囲。NaN の成分は全範囲のまま (例: X だけ狭めるなら new RectangleD(0, double.NaN, 2, double.NaN))。既定 (Width=0) は全範囲表示。</param>
+    /// <param name="minimalX">X軸のパン・ズーム下限。NaN なら従来どおりデータ範囲から自動 (データ最小 −1% 余白)。260611Cl 追加。</param>
+    /// <param name="maximalX">X軸のパン・ズーム上限。NaN なら従来どおりデータ範囲から自動 (データ最大 +1% 余白)。260611Cl 追加。</param>
+    public void AddProfiles(Profile[] p, RectangleD drawingRange = new RectangleD(), bool showLegend = false, double minimalX = double.NaN, double maximalX = double.NaN)
     {
         srcProfileList.Clear();
         srcProfileList.AddRange(p);
+        //260611Cl 追加: showLegend=true なら各 Profile.text を曲線色の凡例ラベルとしてタイトル行に表示 (false なら既存凡例を消去)
+        SetLegend(showLegend ? [.. p.Where(q => !string.IsNullOrEmpty(q?.text)).Select(q => (q.text, q.Color))] : null);
         InitializeAxis();
         setDrawRangeLimit();
-        if (drawingRange.Width == 0)
-            resetDrawRange();
-        else
+        //260611Cl 追加: X軸の上下限を明示指定 (データ由来の自動値を上書き)
+        if (!double.IsNaN(minimalX)) MinimalX = minimalX;
+        if (!double.IsNaN(maximalX)) MaximalX = maximalX;
+        //if (drawingRange.Width == 0)//260611Cl 旧: drawingRange 指定時は resetDrawRange を呼ばず、Y の表示範囲が前回値のまま残った
+        //    resetDrawRange();
+        //else
+        //    DrawingRange = drawingRange;
+        resetDrawRange();//常に全範囲へリセットした後、drawingRange の非 NaN 成分だけ上書き (DrawingRange セッターは NaN/範囲外を無視)
+        if (drawingRange.Width != 0)
             DrawingRange = drawingRange;
         Draw();
     }
@@ -735,6 +803,7 @@ public partial class GraphControl : UserControlBase
     {
         srcProfileList.Clear();
         destProfileList.Clear();
+        SetLegend(null);//260611Cl 追加: 凡例ラベルも消去
         pictureBox.Image = new Bitmap(PictureBoxSize.Width, PictureBoxSize.Height);
         UpperX = UpperY = MaximalX = MaximalY = 1;
         LowerX = LowerY = MinimalX = MinimalY = 0;
@@ -871,13 +940,14 @@ public partial class GraphControl : UserControlBase
                 if (!IsIntegerY)
                 {
                     double space = (MaximalY - MinimalY) * 0.01;
-                    MinimalY = 0;
+                    //MinimalY = 0;//260611Cl 修正: log軸で下限を 0 (=実値1) に固定すると 1 未満のデータ(X線 Rayleigh 散乱の µ/ρ 等)が描画範囲外に隠れる → XLog と同様にデータ最小値ベースへ
+                    MinimalY -= space;
                     MaximalY += space;
                 }
                 else
                 {
                     double space = (MaximalY - MinimalY) * 0.01;
-                    MinimalY = 0;
+                    MinimalY = 0;//カウント系(整数)は従来どおり実値1(log=0)を下限に維持
                     MaximalY += space;
                 }
             }
@@ -1140,6 +1210,8 @@ public partial class GraphControl : UserControlBase
         }
         //labelXValue.Text = realX.ToString((xLog ? "E" : "g") + (MousePositionXDigit == -1 ? "" : MousePositionXDigit.ToString())) + UnitX;//260607Cl: 数値の後ろに単位(UnitX)を連結
         labelXValue.Text = realX.ToString(resolveXFormat(xLog)) + UnitX; // 260608Cl 変更: FormatSpecifier 優先 //260607Cl: 数値の後ろに単位(UnitX)を連結
+        //labelYValue.Text = string.Join(", ", yValues) + UnitY;//260611Ch 旧: 長い値列の折り返し幅が未設定だった
+        labelYValue.MaximumSize = new Size(Math.Max(60, flowLayoutPanelMousePosition.ClientSize.Width - labelYValue.Left - 6), 0);//260611Ch 整理: 旧 setLabelYValueText をインライン化
         labelYValue.Text = string.Join(", ", yValues) + UnitY;//260607Cl: 末尾に単位(UnitY)を連結
     }
 
@@ -1601,6 +1673,8 @@ public partial class GraphControl : UserControlBase
             //labelXValue.Text = x.ToString((XLog ? "E" : "g") + (MousePositionXDigit == -1 ? "" : MousePositionXDigit.ToString())) + UnitX;//260607Cl: 数値の後ろに単位(UnitX)を連結
             labelXValue.Text = x.ToString(resolveXFormat(XLog)) + UnitX; // 260608Cl 変更: FormatSpecifier 優先 //260607Cl: 数値の後ろに単位(UnitX)を連結
             //labelYValue.Text = y.ToString((YLog ? "E" : "g") + (MousePositionYDigit == -1 ? "" : MousePositionXDigit.ToString()));//260603Cl 修正: Y桁は MousePositionYDigit を使うべき
+            //labelYValue.Text = y.ToString(resolveYFormat(YLog)) + UnitY; // 260611Ch 旧: 折り返し幅が未設定だった
+            labelYValue.MaximumSize = new Size(Math.Max(60, flowLayoutPanelMousePosition.ClientSize.Width - labelYValue.Left - 6), 0);//260611Ch 整理: 旧 setLabelYValueText をインライン化
             labelYValue.Text = y.ToString(resolveYFormat(YLog)) + UnitY; // 260608Cl 変更: FormatSpecifier 優先 //260603Cl //260607Cl: 数値の後ろに単位(UnitY)を連結
         }
 

@@ -163,13 +163,16 @@ public partial class FormBeamInteraction : FormBase
         // --- グラフタイトル(GraphTitle) ---
         "Graph.Title.EdxRequiresXraylib" => Loc("EDX requires xraylib", "EDX には xraylib が必要です"),
         "Graph.Title.EdxSticks" => Loc("EDX emission lines", "EDX 発光線"),
-        "Graph.Title.ElectronTransportNormalized" => Loc("Electron transport (normalized: σ, elastic MFP, dE/ds)", "電子輸送 (正規化: σ・弾性MFP・dE/ds)"),
+        //"Graph.Title.ElectronTransportNormalized" => Loc("Electron transport (normalized: σ, elastic MFP, dE/ds)", "電子輸送 (正規化: σ・弾性MFP・dE/ds)"),//260611Cl 旧: 括弧内の曲線列挙は色付き凡例ラベルへ統合 (正規化は Y 軸ラベルが示す)
+        "Graph.Title.ElectronTransportNormalized" => Loc("Electron transport", "電子輸送"),
         "Graph.Title.FqSq" => Loc("F(q) coherent and S(q) incoherent scattering", "F(q) 干渉性・S(q) 非干渉性散乱"),
         "Graph.Title.FqSqXraylibUnavailable" => Loc("F(q)+S(q) requires xraylib", "F(q)+S(q) には xraylib が必要です"),
         "Graph.Title.MuPhotoInternal" => Loc("Linear attenuation coefficient µ (photoabsorption only)", "線吸収係数 µ (光電吸収のみ)"),
         "Graph.Title.MuRhoPhotoInternal" => Loc("Mass attenuation coefficient µ/ρ (photoabsorption only)", "質量吸収係数 µ/ρ (光電吸収のみ)"),
-        "Graph.Title.MuRhoTotal" => Loc("Mass attenuation coefficient µ/ρ (total)", "質量吸収係数 µ/ρ (全)"),
-        "Graph.Title.MuTotal" => Loc("Linear attenuation coefficient µ (total)", "線吸収係数 µ (全)"),
+        //"Graph.Title.MuRhoTotal" => Loc("Mass attenuation coefficient µ/ρ (total)", "質量吸収係数 µ/ρ (全)"),//260611Cl 旧: "(total)"/"(全)" は凡例 total と重複し余計なので削除 (キー名は xraylib 有効=全成分込みの識別子として据置)
+        //"Graph.Title.MuTotal" => Loc("Linear attenuation coefficient µ (total)", "線吸収係数 µ (全)"),//260611Cl 旧: 同上
+        "Graph.Title.MuRhoTotal" => Loc("Mass attenuation coefficient µ/ρ", "質量吸収係数 µ/ρ"),
+        "Graph.Title.MuTotal" => Loc("Linear attenuation coefficient µ", "線吸収係数 µ"),
         "Graph.Title.NeutronNoEnergyGraph" => Loc("Neutron cross sections are listed in the table (no energy graph)", "中性子断面積は表に表示します (エネルギーグラフなし)"),
         "Graph.Title.NeutronScatteringNoGraph" => Loc("Neutron scattering length b does not depend on s (no curve)", "中性子散乱長 b は s に依存しません (曲線なし)"),
         "Graph.Title.QuantityVsE" => Loc("{0} vs electron energy", "{0} 対 電子エネルギー"),
@@ -489,8 +492,10 @@ public partial class FormBeamInteraction : FormBase
     #region Scattering factors タブ (X線 / 電子線) 260606Cl 追加
 
     // 曲線描画の s 範囲 (s = sinθ/λ, 単位 Å⁻¹) と分割数
-    private const double scatSMaxAng = 2.0;
-    private const int scatPoints = 200;
+    //private const double scatSMaxAng = 2.0;//260611Cl 旧: X線/電子で別の上限に分割 (X線は WK が s=6Å⁻¹ まで有効なので 4 へ拡大)
+    //private const int scatPoints = 200;//260611Cl 旧: 上限に応じた点密度 (100点/Å⁻¹) に変更
+    private const double scatSMaxXray = 4.0, scatSMaxElectron = 2.0;//260611Cl X軸のパン・ズーム上限 [Å⁻¹]。初期表示はその半分 (0-2 / 0-1)
+    private const int scatPointsPerAng = 100;//260611Cl 1Å⁻¹ あたりの分割数
 
     // 元素ごとの曲線色 (matplotlib tab10 相当)
     private static readonly Color[] scatPalette =
@@ -628,21 +633,25 @@ public partial class FormBeamInteraction : FormBase
         }
 
         var model = electron ? CurrentElectronModel() : default;
+        double sMax = electron ? scatSMaxElectron : scatSMaxXray;//260611Cl 追加: 線種別の X 軸上限
+        int nPt = (int)(sMax * scatPointsPerAng);//260611Cl 追加
         var profiles = new List<Profile>(scatElements.Length);
         foreach (var el in scatElements)
         {
             var factor = GetFactor(el.Z, el.Sub, electron, model);
             if (factor == null) continue;
-            var pts = new List<PointD>(scatPoints + 1);
-            for (int i = 0; i <= scatPoints; i++)
+            var pts = new List<PointD>(nPt + 1);
+            for (int i = 0; i <= nPt; i++)
             {
-                double sAng = scatSMaxAng * i / scatPoints;          // s = sinθ/λ [Å⁻¹]
+                //double sAng = scatSMaxAng * i / scatPoints;          // s = sinθ/λ [Å⁻¹] //260611Cl 旧
+                double sAng = sMax * i / nPt;                        // s = sinθ/λ [Å⁻¹]
                 double s2 = sAng * sAng * 100.0;                     // [nm⁻²] (1 Å⁻¹ = 10 nm⁻¹)
                 double y = factor(s2) * (electron ? 1.0 : 10.0);     // X線は電子単位へ ×10、電子は nm そのまま
                 if (checkBoxDebyeWaller.Checked) y *= Math.Exp(-el.Biso * s2); // Debye-Waller exp(-B·s²)
                 pts.Add(new PointD(sAng, y));
             }
-            profiles.Add(new Profile(pts) { Color = el.Color });
+            //profiles.Add(new Profile(pts) { Color = el.Color });//260611Cl 旧: text なし
+            profiles.Add(new Profile(pts) { Color = el.Color, text = el.Name });//260611Cl 変更: 凡例ラベル用に元素名を設定
         }
 
         //260608Cl GraphTitle はメソッド先頭でモード別に設定済 (旧: ここで "" にしていた)
@@ -655,7 +664,8 @@ public partial class FormBeamInteraction : FormBase
         graphControlScatteringFactor.LabelY = R(electron ? "Graph.Label.Fe" : "Graph.Label.F");
         graphControlScatteringFactor.UnitY = R(electron ? "Graph.Unit.Nm" : "Graph.Unit.Electrons");
         if (profiles.Count > 0)
-            graphControlScatteringFactor.AddProfiles([.. profiles]);
+            //graphControlScatteringFactor.AddProfiles([.. profiles], showLegend: true);//260611Cl 旧: X軸全範囲表示
+            graphControlScatteringFactor.AddProfiles([.. profiles], new RectangleD(0, double.NaN, sMax / 2, double.NaN), showLegend: true, minimalX: 0, maximalX: sMax);//260611Cl 変更: X軸の上下限を 0〜sMax (X線4/電子2 Å⁻¹) に固定し、初期表示はその半分 (0-2/0-1)
         else
             graphControlScatteringFactor.ClearProfile();
     }
@@ -672,14 +682,17 @@ public partial class FormBeamInteraction : FormBase
             return;
         }
 
+        const double sMax = scatSMaxXray;//260611Cl 追加: F(q)+S(q) は X線専用
+        const int nPt = (int)(sMax * scatPointsPerAng);//260611Cl 追加
         var profiles = new List<Profile>(scatElements.Length * 2);
         foreach (var el in scatElements)
         {
-            var fPts = new List<PointD>(scatPoints + 1);
-            var sPts = new List<PointD>(scatPoints + 1);
-            for (int i = 0; i <= scatPoints; i++)
+            var fPts = new List<PointD>(nPt + 1);
+            var sPts = new List<PointD>(nPt + 1);
+            for (int i = 0; i <= nPt; i++)
             {
-                double q = scatSMaxAng * i / scatPoints; // q = sinθ/λ [Å⁻¹] (xraylib の q と同一)
+                //double q = scatSMaxAng * i / scatPoints; // q = sinθ/λ [Å⁻¹] (xraylib の q と同一) //260611Cl 旧
+                double q = sMax * i / nPt; // q = sinθ/λ [Å⁻¹] (xraylib の q と同一)
                 double f = Xraylib.FormFactorRayl(el.Z, q);
                 double s = Xraylib.IncoherentSF(el.Z, q);
                 if (checkBoxDebyeWaller.Checked && !double.IsNaN(f))
@@ -699,7 +712,8 @@ public partial class FormBeamInteraction : FormBase
         graphControlScatteringFactor.LabelY = R("Graph.Label.FqSq");
         graphControlScatteringFactor.UnitY = R("Graph.Unit.Electrons");
         if (profiles.Count > 0)
-            graphControlScatteringFactor.AddProfiles([.. profiles]);
+            //graphControlScatteringFactor.AddProfiles([.. profiles], showLegend: true);//260611Cl 旧: X軸全範囲表示
+            graphControlScatteringFactor.AddProfiles([.. profiles], new RectangleD(0, double.NaN, sMax / 2, double.NaN), showLegend: true, minimalX: 0, maximalX: sMax);//260611Cl 変更: f(s) と同じく X軸 0〜4 Å⁻¹・初期表示 0-2
         else
             graphControlScatteringFactor.ClearProfile();
     }
@@ -1081,7 +1095,8 @@ public partial class FormBeamInteraction : FormBase
         //    }
         //graphControlAtten.VerticalLines = [.. vlines];
         graphControlAtten.VerticalLines = [new PointD(currentE, double.NaN)];
-        graphControlAtten.AddProfiles([.. profiles]);
+        //graphControlAtten.AddProfiles([.. profiles], showLegend: mode != 2);//260611Cl 旧: 上限がデータ最大+1% (60.59) だった
+        graphControlAtten.AddProfiles([.. profiles], showLegend: mode != 2, maximalX: eMax);//260611Cl 変更: µ/µρ モードは total/photo/Rayleigh/Compton の凡例を曲線色で表示 (透過率は1本で自明なので非表示)。X軸上限はきっちり 60 keV (下限 0 は FixLowerXToZero)
     }
 
     // ---- 電子: 弾性断面積 / MFP / dE·ds / IMFP / 飛程 ----
@@ -1138,8 +1153,10 @@ public partial class FormBeamInteraction : FormBase
 
     private void DrawElectronTransportGraph(MonteCarlo mc, double currentKev)
     {
-        const double kMin = 1, kMax = 30;
-        const int n = 200;
+        //const double kMin = 1, kMax = 30;//260611Cl 旧: 上限 30→50 keV へ拡大 (X軸下限は 0、初期表示は 0-20)
+        //const int n = 200;//260611Cl 旧: 範囲拡大に合わせ点密度をほぼ維持
+        const double kMin = 1, kMax = 50;
+        const int n = 250;
         //260607Cl 0:全正規化 1:σ 2:MFP 3:dE/ds 4:IMFP 5:Range (combo→ラジオ群に変更。既定は radioButtonElecAll=0)
         int q = radioButtonElecSigma.Checked ? 1 : radioButtonElecEMFP.Checked ? 2 : radioButtonElecDeds.Checked ? 3 : radioButtonElecIMFP.Checked ? 4 : radioButtonElecRange.Checked ? 5 : 0;
         var raw = new (double k, double s, double m, double d, double imfp, double range)[n + 1];
@@ -1185,7 +1202,7 @@ public partial class FormBeamInteraction : FormBase
                 new Profile(sig) { Color = Color.FromArgb(0xd6, 0x27, 0x28), text = "σ elastic" },
                 new Profile(mfp) { Color = Color.FromArgb(0x1f, 0x77, 0xb4), text = "elastic MFP" },
                 new Profile(des) { Color = Color.FromArgb(0x2c, 0xa0, 0x2c), text = "dE/ds" },
-            ]);
+            ], new RectangleD(0, double.NaN, 20, double.NaN), showLegend: true, minimalX: 0, maximalX: kMax);//260611Cl 追加: 曲線名を曲線色の凡例ラベルとしてタイトル行に表示。X軸 0〜50 keV・初期表示 0-20
         }
         else//単一量を絶対値で表示
         {
@@ -1204,7 +1221,9 @@ public partial class FormBeamInteraction : FormBase
             graphControlAtten.YLog = false;
             graphControlAtten.AxisLabelY = R(axisKey); graphControlAtten.LabelY = R(labelKey); graphControlAtten.UnitY = R(unitKey);//260607Ch resx 化
             graphControlAtten.GraphTitle = string.Format(System.Globalization.CultureInfo.CurrentCulture, R("Graph.Title.QuantityVsE"), graphControlAtten.AxisLabelY);
-            graphControlAtten.AddProfiles([new Profile(pts) { Color = color, LineWidth = 1.6f, text = graphControlAtten.LabelY.TrimEnd(':') }]);
+            //graphControlAtten.AddProfiles([new Profile(pts) { Color = color, LineWidth = 1.6f, text = graphControlAtten.LabelY.TrimEnd(':') }]);//260611Cl 旧: X軸全範囲表示
+            graphControlAtten.AddProfiles([new Profile(pts) { Color = color, LineWidth = 1.6f, text = graphControlAtten.LabelY.TrimEnd(':') }],
+                new RectangleD(0, double.NaN, 20, double.NaN), minimalX: 0, maximalX: kMax);//260611Cl 変更: 全正規化モードと同じく X軸 0〜50 keV・初期表示 0-20
         }
     }
 
@@ -1374,7 +1393,16 @@ public partial class FormBeamInteraction : FormBase
         {
             var profiles = sticks.Select(s => new Profile(new List<PointD> { new(s.e, 0), new(s.e, s.h / hMax) })
             { Color = colorOf[s.z], LineWidth = 1.4f }).ToArray();
-            graphControlFluor.AddProfiles(profiles);
+            //260611Cl 追加: X軸を 0〜(最大特性線エネルギーに応じたキリの良い上限) に固定し、初期表示も同じ全範囲にする。
+            //             上限 = 最大線が 10 keV 以下なら次の 1 の倍数、40 keV 以下なら次の 5 の倍数、それ以上は次の 10 の倍数。
+            double eMax = sticks.Max(s => s.e);
+            //double axisMax = eMax <= 1 ? 1 : eMax <= 5 ? 5 : Math.Floor(eMax / 10) * 10 + 10;//260611Cl 旧ルール (≤1→1, ≤5→5, 他は次の10の倍数)
+            double axisMax = eMax <= 10 ? Math.Floor(eMax) + 1 : eMax <= 40 ? Math.Floor(eMax / 5) * 5 + 5 : Math.Floor(eMax / 10) * 10 + 10;
+            //graphControlFluor.AddProfiles(profiles);//260611Cl 旧: データ範囲 (最小線−1%〜最大線+1%) のまま
+            graphControlFluor.AddProfiles(profiles, minimalX: 0, maximalX: axisMax);
+            //260611Cl 追加: 元素ごとの色対応凡例。スティックは元素あたり複数本 (Kα1/Kα2/...) あるため
+            //              AddProfiles の showLegend (Profile 単位) ではなく元素単位で明示設定する (AddProfiles 内の凡例消去後に呼ぶ)。
+            graphControlFluor.SetLegend([.. els.OrderBy(x => x.z).Select(x => (AtomStatic.AtomicName(x.z), colorOf[x.z]))]);
         }
         else
             graphControlFluor.ClearProfile();

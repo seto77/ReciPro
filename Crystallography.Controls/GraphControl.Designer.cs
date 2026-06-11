@@ -40,6 +40,7 @@
             labelGraphTitle = new System.Windows.Forms.Label();
             labelX1 = new System.Windows.Forms.Label();
             pictureBox = new System.Windows.Forms.PictureBox();
+            flowLayoutPanelTitle = new System.Windows.Forms.FlowLayoutPanel(); // 260611Cl 追加: タイトルと凡例ラベルを横一列に並べる
             flowLayoutPanelMousePosition = new System.Windows.Forms.FlowLayoutPanel();
             contextMenuStripY = new System.Windows.Forms.ContextMenuStrip(components);
             toolStripMenuItemLogScaleX = new System.Windows.Forms.ToolStripMenuItem();
@@ -58,6 +59,7 @@
             panelTitleAndMouse = new System.Windows.Forms.Panel();
             panelRangeAndCopy = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)pictureBox).BeginInit();
+            flowLayoutPanelTitle.SuspendLayout(); // 260611Cl 追加
             flowLayoutPanelMousePosition.SuspendLayout();
             contextMenuStripY.SuspendLayout();
             panelMain.SuspendLayout();
@@ -204,18 +206,33 @@
             labelXValue.Size = new System.Drawing.Size(29, 17);
             labelXValue.TabIndex = 5;
             labelXValue.Text = "000";
-            // 
+            //
             // labelGraphTitle
-            // 
+            //
             labelGraphTitle.AutoSize = true;
-            labelGraphTitle.Dock = System.Windows.Forms.DockStyle.Top;
+            //labelGraphTitle.Dock = System.Windows.Forms.DockStyle.Top; // 260611Cl 削除: flowLayoutPanelTitle 内へ移設 (凡例ラベルと横並びにするため Dock 不要)
             labelGraphTitle.Font = new System.Drawing.Font("Segoe UI", 9.5F);
             labelGraphTitle.Location = new System.Drawing.Point(0, 0);
+            labelGraphTitle.Margin = new System.Windows.Forms.Padding(0); // 260611Cl 追加: 旧 Dock=Top 時と同じ左端位置を保つ
             labelGraphTitle.Name = "labelGraphTitle";
             labelGraphTitle.Padding = new System.Windows.Forms.Padding(3, 0, 0, 0);
             labelGraphTitle.Size = new System.Drawing.Size(3, 17);
             labelGraphTitle.TabIndex = 8;
             labelGraphTitle.Visible = false; // 260610Cl 追加: 「visible ⇔ タイトル非空」の不変条件を構築時から成立させる (Dock=Top 化により空 Text でも 17px の空行が出るため)
+            //
+            // flowLayoutPanelTitle
+            // 260611Cl 追加: タイトル(labelGraphTitle)と動的凡例ラベル(labelGraphTitle1, 2, ...)を横一列に並べるパネル
+            //
+            flowLayoutPanelTitle.AutoSize = true;
+            flowLayoutPanelTitle.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            flowLayoutPanelTitle.Controls.Add(labelGraphTitle);
+            flowLayoutPanelTitle.Dock = System.Windows.Forms.DockStyle.Top;
+            flowLayoutPanelTitle.Location = new System.Drawing.Point(0, 0);
+            flowLayoutPanelTitle.Name = "flowLayoutPanelTitle";
+            flowLayoutPanelTitle.Size = new System.Drawing.Size(523, 17);
+            flowLayoutPanelTitle.TabIndex = 9;
+            flowLayoutPanelTitle.Visible = false; // タイトル非空または凡例ありのときのみ表示 (GraphControl.cs の updateUpperPanelVisibility)
+            //flowLayoutPanelTitle.WrapContents = false; // 260611Cl 削除: 既定 true に戻し、凡例ラベルが多い時 (多元素の F(q)+S(q) 等) はラベル単位で次の行へ折り返す (AutoSize 連鎖で行高も自動拡張)
             // 
             // labelX1
             // 
@@ -408,7 +425,8 @@
             panelTitleAndMouse.AutoSize = true;
             panelTitleAndMouse.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             panelTitleAndMouse.Controls.Add(flowLayoutPanelMousePosition);
-            panelTitleAndMouse.Controls.Add(labelGraphTitle);
+            //panelTitleAndMouse.Controls.Add(labelGraphTitle); // 260611Cl 変更: labelGraphTitle は flowLayoutPanelTitle 内へ移設
+            panelTitleAndMouse.Controls.Add(flowLayoutPanelTitle);
             panelTitleAndMouse.Dock = System.Windows.Forms.DockStyle.Top;
             panelTitleAndMouse.Location = new System.Drawing.Point(0, 0);
             panelTitleAndMouse.Margin = new System.Windows.Forms.Padding(0);
@@ -441,6 +459,8 @@
             Size = new System.Drawing.Size(523, 200);
             Resize += GraphControl_Resize;
             ((System.ComponentModel.ISupportInitialize)pictureBox).EndInit();
+            flowLayoutPanelTitle.ResumeLayout(false); // 260611Cl 追加
+            flowLayoutPanelTitle.PerformLayout(); // 260611Cl 追加
             flowLayoutPanelMousePosition.ResumeLayout(false);
             flowLayoutPanelMousePosition.PerformLayout();
             contextMenuStripY.ResumeLayout(false);
@@ -460,6 +480,7 @@
         private System.Windows.Forms.ToolTip toolTip; // (260531Ch)
 
         private System.Windows.Forms.Label labelGraphTitle;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelTitle; // 260611Cl 追加
         private System.Windows.Forms.Label labelX1;
         private System.Windows.Forms.Label labelY1;
         private System.Windows.Forms.Label labelYValue;
