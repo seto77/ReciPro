@@ -1,4 +1,5 @@
-# 260611Cl 追加: win-arm64 portable ZIP を Actions artifact のみで出力する (release には一切触れない)。
+# 260611Cl 追加: win-arm64 portable ビルドを Actions artifact のみで出力する (release には一切触れない)。
+# artifact は GitHub が ZIP で包んで配るため、自前の ZIP 化はしない (二重 ZIP 回避)。
 # 配布の段階導入 (方針 §6.1) の第 1 段階: WoA 実機 (Snapdragon Surface 等) での検証用ビルドを CI で再現可能にする。
 #   段階 2 = attach-arm64-experimental.yml で既存 release へ後付け添付 (実機検証の安定後)
 #   段階 3 = release.yml の後続 job へ統合 (数リリース安定後)
@@ -140,36 +141,26 @@ jobs:
           }
           Write-Host "Publish output verified: all native PEs are ARM64, static CRT, exports present, no AVX flavors."
 
-      - name: Package portable ZIP
+      - name: Prepare portable folder
         id: portable
         shell: pwsh
         run: |
           $publishDir = "${{ steps.publish.outputs.dir }}"
-          # 命名は方針 §6.2: experimental を名前に含める (notes 更新が無くてもファイル名で伝わる)
-          $zipPath = Join-Path (Get-Location) "ReciPro-v.${{ steps.version.outputs.version }}-win-arm64-experimental-portable.zip"
-
           # x64 の portable ZIP (release.yml) と同じ整形: 分離 pdb 除去 + LICENSE + README (arm64 専用版)。
-          # README は ZIP 内では README-PORTABLE.txt の名前で置く: FormMain.cs:352 がこの固定名の存在で
+          # README は配布フォルダ内では README-PORTABLE.txt の名前で置く: FormMain.cs:352 がこの固定名の存在で
           # portable 判定して Check Updates メニューを隠すため (codex レビュー指摘)
           Get-ChildItem $publishDir -Filter "*.pdb" | Remove-Item -Force
           Copy-Item "LICENSE.md" $publishDir -Force
           Copy-Item "README-PORTABLE-ARM64.txt" (Join-Path $publishDir "README-PORTABLE.txt") -Force
 
-          Compress-Archive -Path (Join-Path (Split-Path $publishDir -Parent) "ReciPro") -DestinationPath $zipPath -Force
-
-          # チェックサムは x64 の SHA256SUMS.txt とは別ファイル (方針 §6.2: 既存 release の checksum を後から変えない)
-          $checksums = Join-Path (Get-Location) "SHA256SUMS-win-arm64-experimental.txt"
-          $hash = Get-FileHash $zipPath -Algorithm SHA256
-          "$($hash.Hash)  $(Split-Path $zipPath -Leaf)" | Set-Content -Path $checksums -Encoding ASCII
-          Get-Content $checksums
-
-          "zip_path=$zipPath" >> $env:GITHUB_OUTPUT
-          "checksums_path=$checksums" >> $env:GITHUB_OUTPUT
+          # 260611Cl 自前の ZIP 化はしない: Actions artifact はダウンロード時に GitHub が必ず ZIP で包むため、
+          # ここで ZIP を作ると二重 ZIP (2 回解凍) になる (Surface 検証で指摘)。フォルダのまま artifact に渡し、
+          # release 添付用の ZIP 化 + SHA256SUMS-win-arm64-experimental.txt は段階 2 (attach-arm64-experimental.yml) で行う。
+          # 親フォルダを渡すことで artifact ZIP 直下に ReciPro\ フォルダが入る (x64 portable ZIP と同じ構造)
+          "root=$(Split-Path $publishDir -Parent)" >> $env:GITHUB_OUTPUT
 
       - name: Upload artifact
         uses: actions/upload-artifact@v6
         with:
-          name: ReciPro-win-arm64-experimental-v.${{ steps.version.outputs.version }}
-          path: |
-            ${{ steps.portable.outputs.zip_path }}
-            ${{ steps.portable.outputs.checksums_path }}
+          name: ReciPro-v.${{ steps.version.outputs.version }}-win-arm64-experimental-portable
+          path: ${{ steps.portable.outputs.root }}
