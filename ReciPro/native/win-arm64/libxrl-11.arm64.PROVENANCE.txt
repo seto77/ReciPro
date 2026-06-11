@@ -1,0 +1,10 @@
+xraylib 4.2.1 win-arm64 build provenance
+date: 2026-06-11
+source: https://github.com/tschoonj/xraylib/releases/download/xraylib-4.2.1/xraylib-4.2.1.tar.xz
+source sha256: 64F3FFDDB327F265C13F05D17B356125A85634D0295BE0F0D07BF4B7F9DAEB77
+compiler: usage: cl [ option... ] filename... [ /link linkoption... ] (MSVC, arm64 native, windows-11-arm GitHub-hosted runner)
+build: meson setup build --buildtype=release -Dfortran-bindings=disabled -Dpython-bindings=disabled -Dpython-numpy-bindings=disabled -Db_vscrt=static_from_buildtype (/MT)
+output: xrl-11.dll renamed to libxrl-11.dll (P/Invoke name compatibility with conda-forge win-64 binary)
+output sha256: 390255CF4FBF010A2123B0BF75D3E7A861879023F860A1C7D6C38FCA15C1FC99
+actions run: https://github.com/seto77/ReciPro/actions/runs/27325590833
+license: BSD-3-Clause (see libxrl-11.LICENSE.txt in repo root)

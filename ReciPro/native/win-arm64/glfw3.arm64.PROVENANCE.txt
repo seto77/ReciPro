@@ -1,0 +1,10 @@
+GLFW 3.4 win-arm64 build provenance
+date: 2026-06-11
+source: https://github.com/glfw/glfw/releases/download/3.4/glfw-3.4.zip
+source sha256: B5EC004B2712FD08E8861DC271428F048775200A2DF719CCF575143BA749A3E9
+compiler: usage: cl [ option... ] filename... [ /link linkoption... ] (MSVC, arm64 native, windows-11-arm GitHub-hosted runner)
+build: cmake -G Ninja -D CMAKE_BUILD_TYPE=Release -D BUILD_SHARED_LIBS=ON -D USE_MSVC_RUNTIME_LIBRARY_DLL=OFF (/MT)
+reason: OpenTK.redist.glfw has no win-arm64 runtime asset; GLFW provides no official arm64 binaries (glfw/glfw#2163)
+output sha256: 418D28D0CC052A9A8D183D5B682963810FD72D237C269E2E82734D1A9F6087CF
+actions run: https://github.com/seto77/ReciPro/actions/runs/27325590833
+license: zlib/libpng (glfw3.LICENSE.txt)

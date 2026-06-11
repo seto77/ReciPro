@@ -100,7 +100,8 @@ jobs:
           } else { "dumpbin not found - check dependents manually" }
 
           $runUrl = "$env:GITHUB_SERVER_URL/$env:GITHUB_REPOSITORY/actions/runs/$env:GITHUB_RUN_ID"
-          $clVer = (& cl 2>&1 | Select-Object -First 1) -join ' '
+          # 260611Cl cl のバージョン文字列は stderr 側 ("Compiler Version" 行)。初回 run は usage 行を拾ってしまった
+          $clVer = ((& cl 2>&1 | Select-String "Compiler Version" | Select-Object -First 1) ?? "unknown") -replace '^\s+', ''
           $date = Get-Date -Format yyyy-MM-dd
 
           @(
