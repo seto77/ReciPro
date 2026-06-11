@@ -43,6 +43,12 @@ public class BetheMethod
 
     public static readonly int ProcessorCount = Environment.ProcessorCount;
 
+    //260611Cl 追加: ステータスバー報告用のソルバー表示名。MKL 系 solver でも MKL ネイティブが無い場合は
+    //MathNet が managed 実装で動くため "Eigen_Managed"/"MtxExp_Managed" と表示する (x64 の MKL 未導入時・arm64 は常時)
+    private static string SolverLabel(Solver solver) => MklEnabled
+        ? solver.ToString()
+        : solver switch { Solver.Eigen_MKL => "Eigen_Managed", Solver.MtxExp_MKL => "MtxExp_Managed", _ => solver.ToString() };
+
     // 260610Cl 追加: 行方向の位相回転再帰でこの画素数ごとに Exp で再アンカー (位相ドリフト ~256·eps 抑制)
     private const int PhaseReanchor = 256;
     #endregion
@@ -290,7 +296,7 @@ public class BetheMethod
             else
                 (solver, thread) = (Solver.Eigen_MKL, MklEnabled ? Math.Max(1, ProcessorCount / 4) : ProcessorCount);
         }
-        var reportString = $"{solver}{thread}";
+        var reportString = $"{SolverLabel(solver)}{thread}"; //260611Cl 旧: $"{solver}{thread}" (MKL 不在時の managed 実行を可視化)
         #endregion
 
         int bLen = Beams.Length, tLen = Thicknesses.Length;
@@ -1281,7 +1287,7 @@ public class BetheMethod
             else
                 (solver, thread) = (Solver.Eigen_MKL, MklEnabled ? Math.Max(1, ProcessorCount / 4) : ProcessorCount);
         }
-        var reportString = $"{solver}{thread}";
+        var reportString = $"{SolverLabel(solver)}{thread}"; //260611Cl 旧: $"{solver}{thread}" (MKL 不在時の managed 実行を可視化)
         // var beamDirectionsP = BeamDirections.AsParallel().WithDegreeOfParallelism(thread); // (260321Ch) 旧実装: PLINQ の Select(...).ToArray() を使っていた
         var directionOptions = new ParallelOptions { MaxDegreeOfParallelism = thread }; // (260321Ch) 明示的な Parallel.For で各方向を埋める
         #endregion
@@ -1970,7 +1976,7 @@ public class BetheMethod
             else
                 (solver, thread) = (Solver.Eigen_MKL, MklEnabled ? Math.Max(1, ProcessorCount / 4) : ProcessorCount);
         }
-        var reportString = $"{solver}{thread}";
+        var reportString = $"{SolverLabel(solver)}{thread}"; //260611Cl 旧: $"{solver}{thread}" (MKL 不在時の managed 実行を可視化)
         #endregion
 
         for (int vIndex = 0; vIndex < voltages.Length; vIndex++)
@@ -2428,7 +2434,7 @@ public class BetheMethod
 
         (solver, thread) = EigenEnabled && bLen < 512 ? (Solver.Eigen_Eigen, ProcessorCount) : (Solver.Eigen_MKL, Math.Max(1, ProcessorCount / 4));
 
-        var reportString = $"{solver}{thread}";
+        var reportString = $"{SolverLabel(solver)}{thread}"; //260611Cl 旧: $"{solver}{thread}" (MKL 不在時の managed 実行を可視化)
         #endregion
 
         #region 固有値固有ベクトルの計算

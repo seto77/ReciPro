@@ -132,10 +132,20 @@ public partial class FormDiffractionSimulatorCBED : FormBase
         HelpPage = "7-diffraction-simulator/4-cbed-simulation"; //260529Cl 追加
         NumericBoxDivision_ValueChanged(new object(), new EventArgs());
 
+        //260611Cl 追加: ARM64 には MKL ネイティブが存在しない (x86/x64 専用) ため、MKL の選択肢自体を出さない
+        if (System.Runtime.InteropServices.RuntimeInformation.ProcessArchitecture == System.Runtime.InteropServices.Architecture.Arm64)
+            for (var i = comboBoxSolver.Items.Count - 1; i >= 0; i--)
+                if ($"{comboBoxSolver.Items[i]}".Contains("MKL"))
+                    comboBoxSolver.Items.RemoveAt(i);
+
         if (!BetheMethod.EigenEnabled)
         {
-            comboBoxSolver.Items.RemoveAt(3);
-            comboBoxSolver.Items.RemoveAt(1);
+            //comboBoxSolver.Items.RemoveAt(3);
+            //comboBoxSolver.Items.RemoveAt(1);
+            //260611Cl 固定インデックスは ARM64 の MKL 項目除去後にずれるため、内容ベースの除去に変更
+            for (var i = comboBoxSolver.Items.Count - 1; i >= 0; i--)
+                if ($"{comboBoxSolver.Items[i]}".Contains("Eigen lib"))
+                    comboBoxSolver.Items.RemoveAt(i);
         }
         comboBoxSolver.SelectedIndex = 0;
         comboBoxScale.SelectedIndex = 0;
