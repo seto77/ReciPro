@@ -17,7 +17,8 @@ using System.Runtime.Intrinsics.X86;
 public static partial class NativeWrapper
 {
     private const string NativeLibraryFileName = "Crystallography.Native.dll";
-    private static readonly string[] NativeLibraryCandidates = GetNativeLibraryCandidates();
+    //private static readonly string[] NativeLibraryCandidates = GetNativeLibraryCandidates(); // 260611Cl 変更前
+    private static readonly string[] NativeLibraryCandidates; // 260611Cl 変更: flavor 強制の検証エラーを扱うため静的コンストラクタで初期化
 
     #region LibraryImport
 
@@ -265,6 +266,9 @@ public static partial class NativeWrapper
     public static bool Enabled { get; }
     public static string? LastLoadError { get; private set; }
 
+    /// <summary>260611Cl 追加: 実際にロードされた native DLL のファイル名 (generic/avx2/avx512 のどの flavor が選ばれたかの確認用)。未ロードなら null</summary>
+    public static string? LoadedNativeLibrary { get; private set; }
+
     // 260602Cl 追加: この P/Invoke 層は全て Complex[] を (double*) として {real, imag} 連続 16 byte と仮定して再解釈する。
     // この ABI 前提が崩れると全 native 呼び出しがメモリ破壊になるため、起動時に検証する。
     private static unsafe bool VerifyComplexLayout()
@@ -278,6 +282,17 @@ public static partial class NativeWrapper
 
     static NativeWrapper()
     {
+        // 260611Cl 追加: 候補決定 (環境変数による flavor 強制を含む)。不正値・CPU 非対応 flavor は
+        // 黙ってロードすると illegal instruction でプロセスごと落ちるため、ここで Enabled=false に倒す。
+        string? flavorError;
+        (NativeLibraryCandidates, flavorError) = GetNativeLibraryCandidates();
+        if (flavorError != null)
+        {
+            LastLoadError = flavorError;
+            Enabled = false;
+            return;
+        }
+
         // 260602Cl: Complex の ABI レイアウトが前提どおりか検証。崩れていれば native 呼び出しを一切有効化しない。
         if (!VerifyComplexLayout())
         {
@@ -321,10 +336,16 @@ public static partial class NativeWrapper
         {
             var absolutePath = Path.Combine(AppContext.BaseDirectory, candidate);
             if (NativeLibrary.TryLoad(absolutePath, out var handle))
+            {
+                LoadedNativeLibrary = candidate; // 260611Cl 追加
                 return handle;
+            }
 
             if (NativeLibrary.TryLoad(candidate, assembly, searchPath, out handle))
+            {
+                LoadedNativeLibrary = candidate; // 260611Cl 追加
                 return handle;
+            }
         }
 
         LastLoadError = $"Failed to resolve native library. BaseDir={AppContext.BaseDirectory}, Candidates={string.Join(",", NativeLibraryCandidates)}";
@@ -332,13 +353,26 @@ public static partial class NativeWrapper
         return IntPtr.Zero;
     }
 
-    private static string[] GetNativeLibraryCandidates()
+    //private static string[] GetNativeLibraryCandidates() // 260611Cl 変更前シグネチャ
+    /// <summary>260611Cl 変更: 環境変数 CRYSTALLOGRAPHY_NATIVE_FLAVOR (=generic|avx2|avx512、診断専用) で候補を 1 つに強制できる
+    /// (BetheBench の flavor 間スプレッド実測用)。CPU 非対応 flavor や不正値はロードせず Error を返す (silent ignore しない)</summary>
+    private static (string[] Candidates, string? Error) GetNativeLibraryCandidates()
     {
+        var flavor = Environment.GetEnvironmentVariable("CRYSTALLOGRAPHY_NATIVE_FLAVOR");
+        if (!string.IsNullOrEmpty(flavor))
+            return flavor.ToLowerInvariant() switch
+            {
+                "generic" => ([NativeLibraryFileName], null),
+                "avx2" when Avx2.IsSupported => (["Crystallography.Native.avx2.dll"], null),
+                "avx512" when Avx512F.IsSupported => (["Crystallography.Native.avx512.dll"], null),
+                _ => ([], $"CRYSTALLOGRAPHY_NATIVE_FLAVOR='{flavor}' is invalid or not supported by this CPU."),
+            };
+
         if (Avx512F.IsSupported)
-            return ["Crystallography.Native.avx512.dll", "Crystallography.Native.avx2.dll", NativeLibraryFileName];
+            return (["Crystallography.Native.avx512.dll", "Crystallography.Native.avx2.dll", NativeLibraryFileName], null);
         if (Avx2.IsSupported)
-            return ["Crystallography.Native.avx2.dll", NativeLibraryFileName];
-        return [NativeLibraryFileName];
+            return (["Crystallography.Native.avx2.dll", NativeLibraryFileName], null);
+        return ([NativeLibraryFileName], null);
     }
 
     private static string? GetExistingNativeLibraryPath()
