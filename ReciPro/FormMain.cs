@@ -639,7 +639,12 @@ public partial class FormMain : FormBase
                 rw(() => DisableNative);
                 BetheMethod.EigenEnabled = !toolStripMenuItemDisableNative.Checked;
             }
-            else if (mode == Reg.Mode.Write)
+            //else if (mode == Reg.Mode.Write)
+            //    rw(() => DisableNative);
+            //260611Cl ロード失敗時 (メニュー無効+強制チェック) の状態をユーザー設定として永続化しない。
+            //         native 欠落ビルドを一度起動すると DisableNative=true が保存され、以後 DLL が正常な起動でも
+            //         EigenEnabled=false (CBED の Auto が Eigen_MKL=MathNet 経路に倒れる) が再現する事故が WoA 検証で発生
+            else if (mode == Reg.Mode.Write && toolStripMenuItemDisableNative.Enabled)
                 rw(() => DisableNative);
 
             //260405Cl MKLライブラリを使うかどうか
