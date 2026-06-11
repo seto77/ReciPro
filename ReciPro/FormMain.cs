@@ -299,6 +299,12 @@ public partial class FormMain : FormBase
                 toolStripMenuItemDisableNative.ToolTipText = NativeWrapper.LastLoadError;
         }
 
+        //260611Cl 追加: ARM64 には MKL ネイティブが存在しない (x86/x64 専用、ダウンロード先 nupkg も x64 固定) ため
+        //Use MKL メニューを非表示にする。レジストリに残った UseMKL=true (同一マシンの x64 エミュ実行が保存し得る) は
+        //起動時の既存フォールバック (DLL 不在 → チェック解除) が無害化する
+        if (RuntimeInformation.ProcessArchitecture == Architecture.Arm64)
+            toolStripMenuItemUseMKL.Visible = false;
+
 
         if (DesignMode)
             return;
@@ -648,7 +654,11 @@ public partial class FormMain : FormBase
                 rw(() => DisableNative);
 
             //260405Cl MKLライブラリを使うかどうか
-            rw(() => UseMKL);
+            //rw(() => UseMKL);
+            //260611Cl ARM64 (メニュー非表示) では保存しない: 同一マシンの x64 エミュ実行が保存した UseMKL 設定を
+            //arm64 実行が false で上書きしないため (DisableNative の交差汚染と同類の対策)。読込は従来通り
+            if (mode == Reg.Mode.Read || toolStripMenuItemUseMKL.Visible)
+                rw(() => UseMKL);
 
             //260421Cl Miller-Bravais (4指数) 表記を使うかどうか
             rw(() => UseMillerBravais);
