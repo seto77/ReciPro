@@ -229,11 +229,12 @@ jobs:
         shell: pwsh
         run: |
           # 起動即死 (例外ダイアログ前のクラッシュ等) の検出。ウィンドウ生成までを確認して終了する。
-          # GL 検証はしない (方針 §6.3): GPU 無しの hosted runner は GDI Generic GL 1.1 のみで、FormMain が
-          # 起動時に作る glControlAxes の GL コンテキスト作成が WndProc 内で失敗 → ThreadExceptionDialog
-          # ("Microsoft .NET") がモーダル表示されて起動がブロックする (run 27383602242 で実証)。
-          # RECIPRO_DISABLE_OPENGL=1 (260612Cl FormMain.cs) で 3D 無効モードの起動経路を検査する。
-          # GL の実機検証は Phase 2 (Surface) で完了済み、バンドル内 glfw3.dll のロードは Smoke 2 が検査済み
+          # GL 検証はしない (方針 §6.3): GPU 無しの hosted runner は GDI Generic GL 1.1 のみで、
+          # GLControlAlpha の静的初期化 (checkSupportedVersion = GL コンテキスト実生成) が WndProc 内例外
+          # → ThreadExceptionDialog ("Microsoft .NET") のモーダル表示で永久ブロックする (run 27383602242/27384362544 で実証)。
+          # CRYSTALLOGRAPHY_DISABLE_OPENGL=1 (260612Cl GLControlAlpha + FormMain) で GL 判定を丸ごとスキップし
+          # 3D 無効モードの起動経路を検査する。GL の実機検証は Phase 2 (Surface) で完了済み、
+          # バンドル内 glfw3.dll のロードは Smoke 2 (glfwInit) が検査済み
           # 260612Cl 初回 dry_run (run 27382975111) の知見で改訂:
           #   - FormMain_Load は進捗ダイアログ (Owner 付き = Process.MainWindowHandle に数えられない) を出した後、
           #     全子フォームを構築してから FormMain を表示する。Process.MainWindowHandle 頼みでは進捗が見えない
@@ -268,7 +269,7 @@ jobs:
           }
           '@
           $dir = Join-Path $env:RUNNER_TEMP "arm64-artifact/ReciPro"
-          $env:RECIPRO_DISABLE_OPENGL = "1" # 上記コメント参照 (タイトルは "ReciPro  ...  (3D rendering disable mode)" になる)
+          $env:CRYSTALLOGRAPHY_DISABLE_OPENGL = "1" # 上記コメント参照 (タイトルは "ReciPro  ...  (3D rendering disable mode)" になる)
           $p = Start-Process -FilePath (Join-Path $dir "ReciPro.exe") -WorkingDirectory $dir -PassThru
           $deadline = (Get-Date).AddSeconds(480) # 初回起動は全子フォーム構築 + JIT で CI の非力な VM では数分かかり得る
           $shown = $false

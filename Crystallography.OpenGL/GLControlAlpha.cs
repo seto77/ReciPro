@@ -620,6 +620,18 @@ public unsafe partial class GLControlAlpha : UserControl
     /// <summary>静的コンストラクタ. バージョン情報などはここでチェック</summary>
     static GLControlAlpha()
     {
+        // 260612Cl 追加: GL 無し環境 (CI の GUI smoke 等) 用の明示スキップ。checkSupportedVersion は
+        // GL コンテキストを実生成して判定するが、GPU 無しの hosted runner (GDI Generic 1.1) では
+        // 例外が WndProc 内で発生して ThreadExceptionDialog ("Microsoft .NET") がモーダル表示され、
+        // 静的初期化ごと永久ブロックする (ReciPro attach-arm64-experimental.yml run 27384362544 で実証)。
+        // 環境変数で WMI/GL 判定を丸ごとスキップし、既存の OpenGL 無効フォールバック (issues #48 #55 と
+        // 同じ DisablingOpenGL=true 経路) へ直行する。通常環境では完全 no-op
+        if (Environment.GetEnvironmentVariable("CRYSTALLOGRAPHY_DISABLE_OPENGL") == "1")
+        {
+            DisablingOpenGL = true;
+            return;
+        }
+
         // 260420Cl WMI/OpenGL 初期化を try/catch で囲む。
         //   issues #48 #55 で Windows 10 環境において WMI リポジトリ破損等で
         //   ManagementException("Classe non valide") が発生し、静的コンストラクタが
