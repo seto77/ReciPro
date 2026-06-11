@@ -387,6 +387,12 @@ public partial class FormMain : FormBase
             DisableOpenGL = true;
             Registry(Reg.Mode.Write);
         }
+        // 260612Cl 追加: CI の GUI 起動 smoke (attach-arm64-experimental.yml) 用に、環境変数でも 3D を無効化
+        // できるようにする。GPU 無しの hosted runner では GL コンテキスト作成が WndProc 内で失敗して
+        // ThreadExceptionDialog ("Microsoft .NET") がモーダル表示され、起動がブロックするため (run 27383602242)。
+        // Ctrl キー強制と違い一時的な診断用なのでレジストリには保存しない
+        if (Environment.GetEnvironmentVariable("RECIPRO_DISABLE_OPENGL") == "1")
+            DisableOpenGL = true;
         GLControlAlpha.DisableTextRendering = DisableTextRendering;
 
         #region ここでglControlコントロールを追加. Mac環境の対応のため。
