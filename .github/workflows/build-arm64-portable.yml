@@ -1,0 +1,175 @@
+# 260611Cl 追加: win-arm64 portable ZIP を Actions artifact のみで出力する (release には一切触れない)。
+# 配布の段階導入 (方針 §6.1) の第 1 段階: WoA 実機 (Snapdragon Surface 等) での検証用ビルドを CI で再現可能にする。
+#   段階 2 = attach-arm64-experimental.yml で既存 release へ後付け添付 (実機検証の安定後)
+#   段階 3 = release.yml の後続 job へ統合 (数リリース安定後)
+# x64 リリース (release.yml) とは完全に独立。bin\Release は共有しない (csproj/vcxproj 側で出力分離済み、方針 §3.2)。
+# 方針: .project-guidance/ReciPro_ARM64化方針.md §6
+name: Build ARM64 portable ZIP (experimental, artifact only)
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    # release.yml と同じイメージ (VC.Tools.ARM64 + ClangCL プリインストール、x64 ホストから ARM64 クロスビルド可。方針 §1.3)
+    # 注意: windows-2025-vs2026 は VS2026 移行期の一時ラベル。release.yml を windows-2025 へ戻すときはここも揃えること
+    runs-on: windows-2025-vs2026
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Parse version
+        id: version
+        shell: pwsh
+        run: |
+          # release.yml と同じ規則で Version.cs の History 先頭からバージョンを得る (release の存在確認はしない: artifact のみのため)
+          $content = Get-Content "ReciPro\Version.cs" -Raw
+          if ($content -notmatch 'ver(\d+\.\d+)\(') {
+            throw "Could not parse version from Version.cs History."
+          }
+          $ver = $Matches[1]
+
+          # AssemblyVersion / FileVersion 用のタイムスタンプ (release.yml と同形式、ビルド追跡用)
+          $now = [System.DateTime]::UtcNow
+          $assemblyVer = "$($now.Year).$($now.Month).$($now.Day).$($now.ToString('HHmm'))"
+
+          Write-Host "Version: $ver (assembly: $assemblyVer)"
+          "version=$ver"                  >> $env:GITHUB_OUTPUT
+          "assembly_version=$assemblyVer" >> $env:GITHUB_OUTPUT
+
+      - name: Setup .NET 10
+        uses: actions/setup-dotnet@v5
+        with:
+          dotnet-version: "10.0.x"
+
+      - name: Restore managed dependencies
+        shell: pwsh
+        run: dotnet restore ReciPro\ReciPro.csproj
+
+      - name: Find devenv.com
+        id: devenv
+        shell: pwsh
+        run: |
+          $devenvExe = (& "${env:ProgramFiles(x86)}\Microsoft Visual Studio\Installer\vswhere.exe" -latest -products * -property productPath).Trim()
+          if (-not $devenvExe) { throw "Visual Studio was not found." }
+          $cli = [System.IO.Path]::ChangeExtension($devenvExe, ".com")
+          if (-not (Test-Path $cli)) { throw "devenv.com was not found." }
+          Write-Host "devenv.com: $cli"
+          "cli=$cli" >> $env:GITHUB_OUTPUT
+
+      - name: Build native ARM64 binary (Crystallography.Native, ClangCL cross-build)
+        shell: pwsh
+        run: |
+          # sln の Release|ARM64 構成 (260611Cl 追加) は Crystallography.Native のみ Build.0。
+          # 出力は ReciPro\bin\Release\ARM64\ に分離され、x64 の bin\Release は汚れない (方針 §3.2)
+          $log = Join-Path $env:RUNNER_TEMP "devenv-native-arm64.log"
+          & "${{ steps.devenv.outputs.cli }}" "ReciPro.sln" /Build "Release|ARM64" /Project "Crystallography.Native" /Out $log
+          if (Test-Path $log) { Get-Content $log }
+          if ($LASTEXITCODE -ne 0) { throw "Crystallography.Native ARM64 build failed (exit $LASTEXITCODE)." }
+          if (-not (Test-Path "ReciPro\bin\Release\ARM64\Crystallography.Native.dll")) {
+            throw "ReciPro\bin\Release\ARM64\Crystallography.Native.dll was not produced."
+          }
+
+      - name: Publish win-arm64 self-contained
+        id: publish
+        shell: pwsh
+        run: |
+          # csproj 側の配線 (方針 §3.7) が publish 単独での完全性を保証する:
+          #   - AddArm64CrystallographyNativeToPublish ターゲット: native 欠落時は Error
+          #   - native\win-arm64\ の libxrl-11.dll / glfw3.dll / glfw3.LICENSE.txt を RID 条件 Content で平坦化
+          #   - x64 用 libxrl-11.dll (リポルート) は RID 排他条件で混入しない
+          $publishDir = Join-Path $env:RUNNER_TEMP "ReciPro-arm64-portable\ReciPro"
+          dotnet publish ReciPro\ReciPro.csproj `
+            -c Release `
+            -r win-arm64 `
+            -p:Platform=ARM64 `
+            --self-contained true `
+            -p:AssemblyVersion=${{ steps.version.outputs.assembly_version }} `
+            -p:FileVersion=${{ steps.version.outputs.assembly_version }} `
+            -p:PublishSingleFile=false `
+            -p:PublishTrimmed=false `
+            -o $publishDir
+          "dir=$publishDir" >> $env:GITHUB_OUTPUT
+
+      - name: Verify publish output (required DLLs, PE machine, no x64 leakage)
+        shell: pwsh
+        run: |
+          $publishDir = "${{ steps.publish.outputs.dir }}"
+
+          # 必須ネイティブ DLL の存在検査 (方針 §6.3。欠落は「ビルド緑・実行時死亡」型なのでここで止める)。
+          # hostfxr/hostpolicy は self-contained apphost の起動に直結 (codex レビュー指摘で追加)
+          $required = @("ReciPro.exe", "Crystallography.Native.dll", "libxrl-11.dll", "glfw3.dll", "coreclr.dll", "hostfxr.dll", "hostpolicy.dll")
+          foreach ($f in $required) {
+            if (-not (Test-Path (Join-Path $publishDir $f))) { throw "Required file missing from publish output: $f" }
+          }
+
+          # x64 専用 flavor (avx2/avx512) が紛れていないこと (arm64 は generic/NEON 1 本のみ)
+          $avx = Get-ChildItem $publishDir -Filter "Crystallography.Native.avx*.dll" -ErrorAction SilentlyContinue
+          if ($avx) { throw "x64 AVX flavors leaked into arm64 publish: $($avx.Name -join ', ')" }
+
+          # ネイティブ PE が全て ARM64 (machine=0xAA64) であること
+          function Get-PEMachine([string]$path) {
+            $b = [IO.File]::ReadAllBytes($path)
+            $pe = [BitConverter]::ToInt32($b, 0x3C)
+            return [BitConverter]::ToUInt16($b, $pe + 4)
+          }
+          foreach ($f in @("ReciPro.exe", "Crystallography.Native.dll", "libxrl-11.dll", "glfw3.dll", "coreclr.dll", "clrjit.dll", "hostfxr.dll", "hostpolicy.dll")) {
+            $m = Get-PEMachine (Join-Path $publishDir $f)
+            "{0}: machine=0x{1:X4}" -f $f, $m
+            if ($m -ne 0xAA64) { throw "$f is not ARM64 (machine=0x$($m.ToString('X4')))" }
+          }
+
+          # 自前ビルド native 3 本の CRT 静的リンク (/MT) 検査: VCRUNTIME/MSVCP 依存が出たら
+          # クリーン WoA (arm64 VC redist 無し) で黙殺フォールバックする型の故障 (方針 §3.5)。
+          # 併せて Crystallography.Native.dll の代表 export を確認 (AA64 だが P/Invoke で死ぬ型を検出)
+          $dumpbin = (& "${env:ProgramFiles(x86)}\Microsoft Visual Studio\Installer\vswhere.exe" -latest -products * -find "**\Hostx64\x64\dumpbin.exe" | Select-Object -First 1)
+          if (-not $dumpbin) { throw "dumpbin.exe was not found (needed for CRT/export verification)." }
+          foreach ($f in @("Crystallography.Native.dll", "libxrl-11.dll", "glfw3.dll")) {
+            $deps = & $dumpbin /dependents (Join-Path $publishDir $f) | Out-String
+            Write-Host "--- $f dependents ---"; Write-Host $deps
+            if ($deps -match "VCRUNTIME|MSVCP") { throw "$f depends on the dynamic CRT (expected static /MT, see ARM64 policy section 3.5)" }
+          }
+          $exports = & $dumpbin /exports (Join-Path $publishDir "Crystallography.Native.dll") | Out-String
+          foreach ($sym in @("_CBEDSolver_Eigen", "_Inverse", "_EigenSolver")) {
+            if ($exports -notmatch [regex]::Escape($sym)) { throw "Crystallography.Native.dll is missing expected export: $sym" }
+          }
+          Write-Host "Publish output verified: all native PEs are ARM64, static CRT, exports present, no AVX flavors."
+
+      - name: Package portable ZIP
+        id: portable
+        shell: pwsh
+        run: |
+          $publishDir = "${{ steps.publish.outputs.dir }}"
+          # 命名は方針 §6.2: experimental を名前に含める (notes 更新が無くてもファイル名で伝わる)
+          $zipPath = Join-Path (Get-Location) "ReciPro-v.${{ steps.version.outputs.version }}-win-arm64-experimental-portable.zip"
+
+          # x64 の portable ZIP (release.yml) と同じ整形: 分離 pdb 除去 + LICENSE + README (arm64 専用版)。
+          # README は ZIP 内では README-PORTABLE.txt の名前で置く: FormMain.cs:352 がこの固定名の存在で
+          # portable 判定して Check Updates メニューを隠すため (codex レビュー指摘)
+          Get-ChildItem $publishDir -Filter "*.pdb" | Remove-Item -Force
+          Copy-Item "LICENSE.md" $publishDir -Force
+          Copy-Item "README-PORTABLE-ARM64.txt" (Join-Path $publishDir "README-PORTABLE.txt") -Force
+
+          Compress-Archive -Path (Join-Path (Split-Path $publishDir -Parent) "ReciPro") -DestinationPath $zipPath -Force
+
+          # チェックサムは x64 の SHA256SUMS.txt とは別ファイル (方針 §6.2: 既存 release の checksum を後から変えない)
+          $checksums = Join-Path (Get-Location) "SHA256SUMS-win-arm64-experimental.txt"
+          $hash = Get-FileHash $zipPath -Algorithm SHA256
+          "$($hash.Hash)  $(Split-Path $zipPath -Leaf)" | Set-Content -Path $checksums -Encoding ASCII
+          Get-Content $checksums
+
+          "zip_path=$zipPath" >> $env:GITHUB_OUTPUT
+          "checksums_path=$checksums" >> $env:GITHUB_OUTPUT
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v6
+        with:
+          name: ReciPro-win-arm64-experimental-v.${{ steps.version.outputs.version }}
+          path: |
+            ${{ steps.portable.outputs.zip_path }}
+            ${{ steps.portable.outputs.checksums_path }}
