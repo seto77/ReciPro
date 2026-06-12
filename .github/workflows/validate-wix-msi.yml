@@ -139,7 +139,8 @@ jobs:
           $wi = New-Object -ComObject WindowsInstaller.Installer
           function Get-MsiProp($db, $name) {
             $view = $db.GetType().InvokeMember('OpenView','InvokeMethod',$null,$db,@("SELECT Value FROM Property WHERE Property='$name'"))
-            $view.GetType().InvokeMember('Execute','InvokeMethod',$null,$view,$null)
+            # Execute の戻り値が関数の出力に混入して戻り値が配列化するため Out-Null 必須 (260612Cl 実測)
+            $view.GetType().InvokeMember('Execute','InvokeMethod',$null,$view,$null) | Out-Null
             $rec = $view.GetType().InvokeMember('Fetch','InvokeMethod',$null,$view,$null)
             if ($rec) { $rec.GetType().InvokeMember('StringData','GetProperty',$null,$rec,@(1)) } else { $null }
           }
