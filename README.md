@@ -53,13 +53,7 @@ You may also cite the software repository itself when appropriate:
 
 * Please download *ReciPro* only from the official GitHub Releases page: https://github.com/seto77/ReciPro/releases/latest
 * On some Windows systems, Microsoft Defender SmartScreen or Smart App Control may display a warning before the installer is executed. This may happen for newly built or narrowly distributed research software, and the warning itself does not necessarily mean that the installer is malicious.
-* If you would like to verify the downloaded installer yourself, you can calculate its SHA256 hash in PowerShell:
-
-```powershell
-Get-FileHash .\ReciProSetup.msi -Algorithm SHA256
-```
-
-* For an additional check, you may also scan the installer with a multi-engine service such as VirusTotal.
+* If you would like to verify the downloaded installer yourself, you may scan it with a multi-engine service such as VirusTotal.
 
 ## Privacy
 

@@ -7,6 +7,7 @@ internal static class Version
     
     public const string History =
         "History" +
+        "\r\n ver4.939(2026/06/13)  Arm64環境への対応を強化。Beam Interactionsのバグ修正. " +
         "\r\n ver4.938(2026/06/11)  Slightly accelerated STEM simulation and other calculations, and added experimental support for running on macOS via Wine." +
         "\r\n ver4.937(2026/06/08)  Substantially overhauled 'Scattering Factor' and released it as 'Beam Interaction', now including information on absorption coefficients and fluorescence." +
         "\r\n ver4.936(2026/06/04)  Further reduced the distribution size by eliminating redundant data." +

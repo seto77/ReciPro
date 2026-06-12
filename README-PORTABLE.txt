@@ -61,11 +61,3 @@ Notes for managed PCs
   warn about newly downloaded unsigned research software. Download ReciPro
   only from the official GitHub Releases page:
   https://github.com/seto77/ReciPro/releases/latest
-
-Verification
-------------
-
-If SHA256SUMS.txt is provided with the release, you can verify the downloaded
-ZIP file in PowerShell:
-
-  Get-FileHash .\ReciPro-*-x64.zip -Algorithm SHA256

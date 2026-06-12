@@ -202,7 +202,7 @@ jobs:
 
           # 260611Cl 自前の ZIP 化はしない: Actions artifact はダウンロード時に GitHub が必ず ZIP で包むため、
           # ここで ZIP を作ると二重 ZIP (2 回解凍) になる (Surface 検証で指摘)。フォルダのまま artifact に渡し、
-          # release 添付用の ZIP 化 + SHA256SUMS-arm64.txt は段階 2 (attach-arm64-experimental.yml) で行う。
+          # release 添付用の ZIP 化は段階 2 (attach-arm64-experimental.yml) で行う (260613Cl checksum は公開廃止)。
           # 親フォルダを渡すことで artifact ZIP 直下に ReciPro\ フォルダが入る (x64 portable ZIP と同じ構造)
           "root=$(Split-Path $publishDir -Parent)" >> $env:GITHUB_OUTPUT
 

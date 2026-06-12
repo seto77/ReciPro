@@ -63,16 +63,6 @@ ReciPro is a local desktop application and does not collect or transmit any pers
 
 ## Verifying an installer
 
-### Hash check
-
-Users can compute the SHA256 hash of a downloaded installer in PowerShell:
-
-```powershell
-Get-FileHash .\ReciProSetup.msi -Algorithm SHA256
-```
-
-The hash can then be compared with the value published in the corresponding GitHub Release, if provided.
-
 ### Digital-signature check after signing is enabled
 
 After code signing is enabled for a release, users can inspect the installer from Windows Explorer:

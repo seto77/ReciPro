@@ -74,12 +74,12 @@ jobs:
           $notesPath = Join-Path $env:RUNNER_TEMP "release-notes.txt"
           # $historyLine | Set-Content -Path $notesPath -Encoding UTF8 # 260602Cl 旧: 変更履歴 1 行のみ
           @( # 260602Cl MSI を第一候補、portable ZIP を管理 PC 向け代替として release notes に明記
+            # 260613Cl SHA256SUMS.txt の行を削除 (checksum 公開廃止: 同一チャネル配布では改竄対策にならず、初心者を惑わすため)
             $historyLine
             ""
             "Assets:"
             "- ReciProSetup.msi: recommended installer."
             "- ReciPro-v.$ver-x64.zip: no-install, self-contained portable alternative for managed Windows PCs."
-            "- SHA256SUMS.txt: SHA256 hashes for release files."
           ) | Set-Content -Path $notesPath -Encoding UTF8
 
           # AssemblyVersion / FileVersion 用のタイムスタンプ (yyyy.M.d.HHmm UTC)
@@ -242,24 +242,10 @@ jobs:
           Write-Host "Portable ZIP built: $zipPath"
           "zip_path=$zipPath" >> $env:GITHUB_OUTPUT
 
-      - name: Generate release checksums
-        if: steps.version.outputs.needed == 'true'
-        id: checksums
-        shell: pwsh
-        run: |
-          # 260602Cl MSI と portable ZIP の検証用 SHA256 を同梱する。
-          $checksums = Join-Path (Get-Location) "SHA256SUMS.txt"
-          $files = @(
-            "${{ steps.build_installer.outputs.msi_path }}",
-            "${{ steps.portable.outputs.zip_path }}"
-          )
-          $lines = foreach ($file in $files) {
-            $hash = Get-FileHash $file -Algorithm SHA256
-            "$($hash.Hash)  $(Split-Path $file -Leaf)"
-          }
-          $lines | Set-Content -Path $checksums -Encoding ASCII
-          Get-Content $checksums
-          "checksums_path=$checksums" >> $env:GITHUB_OUTPUT
+      # 260613Cl 「Generate release checksums」ステップを廃止 (SHA256SUMS.txt の公開をやめる)。
+      #   理由: 同一チャネル (同じ release ページ) に置く checksum は改竄対策にならず、
+      #   リリースページで初心者を惑わす悪影響の方が大きい (作者決定)。真正性保証は SignPath 署名 (Phase D) で行う。
+      #   本文は git 履歴 b3c35d22 以前を参照。
 
       - name: Upload workflow artifacts
         if: steps.version.outputs.needed == 'true'
@@ -270,7 +256,6 @@ jobs:
           path: |
             ${{ steps.build_installer.outputs.msi_path }}
             ${{ steps.portable.outputs.zip_path }}
-            ${{ steps.checksums.outputs.checksums_path }}
 
       - name: Create tag and GitHub Release
         if: steps.version.outputs.needed == 'true'
@@ -290,11 +275,11 @@ jobs:
           #   git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           #   git tag -a $tag -m "ReciPro ${{ steps.version.outputs.version }}"
           #   git push origin $tag
-          # 260602Cl 第一候補の MSI に加え、portable ZIP と SHA256SUMS も添付する。
+          # 260602Cl 第一候補の MSI に加え、portable ZIP も添付する。
+          # 260613Cl SHA256SUMS.txt の添付を廃止 (checksum 公開廃止)。
           gh release create $tag `
             "${{ steps.build_installer.outputs.msi_path }}" `
             "${{ steps.portable.outputs.zip_path }}" `
-            "${{ steps.checksums.outputs.checksums_path }}" `
             --target $env:GITHUB_SHA `
             --title "ReciPro $tag" `
             --notes-file "${{ steps.version.outputs.notes_path }}"

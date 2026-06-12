@@ -8,8 +8,8 @@
 #     「ビルド緑・実行時死亡」型 (BadImageFormat / DLL 黙殺フォールバック / 起動即死) のため、
 #     PE 検査 + LoadLibrary + ReciPro.exe --smoke (NativeWrapper/Xraylib 明示アサート) + GUI 起動を実機で行う。
 #     GL のフル検証は含めない (GLOn12 の flakiness、方針 §6.3。実機検証 = Phase 2 で完了済み)
-#   - checksum は SHA256SUMS-arm64.txt の別ファイル: x64 の SHA256SUMS.txt は変更しない (260613Cl 命名簡素化)
-#     (--clobber での後差し替えは、ダウンロード済みユーザーの検証ファイルが時間で変わるため禁止)
+#   - 260613Cl checksum (SHA256SUMS-arm64.txt) の生成・添付を廃止 (checksum 公開は同一チャネルでは
+#     改竄対策にならず、リリースページで初心者を惑わすため。作者決定。真正性保証は SignPath 署名で行う)
 #   - 添付失敗・やり直しは asset の手動削除 (gh release delete-asset <tag> <name>) → 再実行で復旧する
 name: Attach ARM64 portable ZIP to release (experimental)
 
@@ -43,7 +43,6 @@ jobs:
       tag: ${{ steps.check.outputs.tag }}
       version: ${{ steps.check.outputs.version }}
       zip_name: ${{ steps.check.outputs.zip_name }}
-      sums_name: ${{ steps.check.outputs.sums_name }}
     steps:
       - name: Checkout
         uses: actions/checkout@v5
@@ -118,16 +117,13 @@ jobs:
           }
 
           # asset 衝突検査: --clobber による差し替えはしない方針のため、既存なら手動削除を促して失敗
-          # 260613Cl 作者指示で命名簡素化 (旧: ReciPro-v.X-win-arm64-experimental-portable.zip / SHA256SUMS-win-arm64-experimental.txt)
+          # 260613Cl 作者指示で命名簡素化 (旧: ReciPro-v.X-win-arm64-experimental-portable.zip)。checksum は公開廃止
           $zipName  = "ReciPro-v.$ver-arm64.zip"
-          $sumsName = "SHA256SUMS-arm64.txt"
           if ($releaseExists) {
             $assets = @(gh release view $tag --json assets -q '.assets[].name')
-            foreach ($name in @($zipName, $sumsName)) {
-              if ($assets -contains $name) {
-                if ($dryRun) { Write-Warning "Asset '$name' already exists on $tag (dry_run continues)." }
-                else { throw "Asset '$name' already exists on $tag. Delete it manually first (gh release delete-asset $tag $name) and re-run." }
-              }
+            if ($assets -contains $zipName) {
+              if ($dryRun) { Write-Warning "Asset '$zipName' already exists on $tag (dry_run continues)." }
+              else { throw "Asset '$zipName' already exists on $tag. Delete it manually first (gh release delete-asset $tag $zipName) and re-run." }
             }
           }
 
@@ -135,7 +131,6 @@ jobs:
           "tag=$tag"            >> $env:GITHUB_OUTPUT
           "version=$ver"        >> $env:GITHUB_OUTPUT
           "zip_name=$zipName"   >> $env:GITHUB_OUTPUT
-          "sums_name=$sumsName" >> $env:GITHUB_OUTPUT
 
   # ---- 2. ビルド: 段階 1 のワークフローをそのまま再利用 (検査込み。二重保守を作らない) ----
   build:
@@ -313,19 +308,15 @@ jobs:
             ${{ runner.temp }}/smoke-result.txt
           if-no-files-found: ignore
 
-      - name: Create release ZIP and checksum file
+      - name: Create release ZIP
         id: assets
         shell: pwsh
         run: |
-          # x64 portable ZIP (release.yml) と同じ構造 (ZIP 直下に ReciPro\ フォルダ) と checksum 形式に合わせる
+          # x64 portable ZIP (release.yml) と同じ構造 (ZIP 直下に ReciPro\ フォルダ) に合わせる
+          # 260613Cl checksum (SHA256SUMS-arm64.txt) の生成を廃止
           $zip  = Join-Path $env:RUNNER_TEMP "${{ needs.preflight.outputs.zip_name }}"
-          $sums = Join-Path $env:RUNNER_TEMP "${{ needs.preflight.outputs.sums_name }}"
           Compress-Archive -Path (Join-Path $env:RUNNER_TEMP "arm64-artifact/ReciPro") -DestinationPath $zip -Force
-          $hash = (Get-FileHash $zip -Algorithm SHA256).Hash
-          "$hash  ${{ needs.preflight.outputs.zip_name }}" | Set-Content -Path $sums -Encoding ASCII
-          Get-Content $sums
           "zip=$zip"   >> $env:GITHUB_OUTPUT
-          "sums=$sums" >> $env:GITHUB_OUTPUT
 
       - name: Upload release assets as workflow artifact (inspection record)
         # dry_run の検分用 + 実添付時の記録。release に上がる実物と bit 同一
@@ -334,7 +325,6 @@ jobs:
           name: release-assets-${{ needs.preflight.outputs.tag }}-win-arm64-experimental
           path: |
             ${{ steps.assets.outputs.zip }}
-            ${{ steps.assets.outputs.sums }}
 
       - name: Attach to release
         if: ${{ !inputs.dry_run }}
@@ -346,13 +336,13 @@ jobs:
 
           # preflight から時間が経っているため、直前にもう一度 asset 衝突を検査する
           $assets = @(gh release view $tag --json assets -q '.assets[].name')
-          foreach ($name in @('${{ needs.preflight.outputs.zip_name }}', '${{ needs.preflight.outputs.sums_name }}')) {
-            if ($assets -contains $name) {
-              throw "Asset '$name' appeared on $tag after preflight. Delete it manually (gh release delete-asset $tag $name) and re-run."
-            }
+          $name = '${{ needs.preflight.outputs.zip_name }}'
+          if ($assets -contains $name) {
+            throw "Asset '$name' appeared on $tag after preflight. Delete it manually (gh release delete-asset $tag $name) and re-run."
           }
 
           # --clobber は使わない (方針 §6.2)。部分失敗時は手動で delete-asset → 再実行
-          gh release upload $tag "${{ steps.assets.outputs.zip }}" "${{ steps.assets.outputs.sums }}"
+          # 260613Cl checksum の添付を廃止 (ZIP のみ)
+          gh release upload $tag "${{ steps.assets.outputs.zip }}"
           if ($LASTEXITCODE -ne 0) { throw "gh release upload failed (exit $LASTEXITCODE)." }
           Write-Host "Attached to https://github.com/${{ github.repository }}/releases/tag/$tag"
