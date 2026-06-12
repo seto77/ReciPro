@@ -9,7 +9,8 @@
     <DefineConstants>ProductVersion=$(ProductVersion)</DefineConstants>
     <OutputName>ReciProSetup</OutputName>
     <!-- arm64 は資産名を分離 (x64 の ReciProSetup.msi は自動更新固定URLのため不変) -->
-    <OutputName Condition="'$(InstallerPlatform)'=='arm64'">ReciProSetup-win-arm64</OutputName>
+    <!-- 260613Cl 作者指示で win- 接頭辞を除去 (.msi で Windows 用は自明)。旧: ReciProSetup-win-arm64 -->
+    <OutputName Condition="'$(InstallerPlatform)'=='arm64'">ReciProSetup-arm64</OutputName>
     <!-- x64/arm64 連続ビルドの obj 混在防止 -->
     <IntermediateOutputPath>obj\$(InstallerPlatform)\</IntermediateOutputPath>
     <!-- 実測で出た ICE のみ抑止 (260612Cl)。per-user (LocalAppData) + Files 収集の既知制約:

@@ -139,7 +139,7 @@ jobs:
             -p:ProductVersion=${{ steps.version.outputs.product_version }} `
             -p:StagingDir="$PWD\artifacts\staging-msi-arm64"
           if ($LASTEXITCODE -ne 0) { throw "WiX arm64 build failed." }
-          if (-not (Test-Path "ReciProSetup.Wix\bin\Release\ReciProSetup-win-arm64.msi")) { throw "ReciProSetup-win-arm64.msi not produced." }
+          if (-not (Test-Path "ReciProSetup.Wix\bin\Release\ReciProSetup-arm64.msi")) { throw "ReciProSetup-arm64.msi not produced." }
 
       - name: Verify MSI properties (Template / UpgradeCode / version / per-user)
         shell: pwsh
@@ -166,7 +166,7 @@ jobs:
             if ([int]$schema -lt 500) { throw "Schema $schema < 500" }
           }
           Test-Msi "ReciProSetup.Wix\bin\Release\ReciProSetup.msi" 'x64' '${{ steps.version.outputs.test_product_version }}'
-          Test-Msi "ReciProSetup.Wix\bin\Release\ReciProSetup-win-arm64.msi" 'Arm64' '${{ steps.version.outputs.product_version }}'
+          Test-Msi "ReciProSetup.Wix\bin\Release\ReciProSetup-arm64.msi" 'Arm64' '${{ steps.version.outputs.product_version }}'
 
       - name: Download latest released vdproj MSI
         shell: pwsh
@@ -258,5 +258,5 @@ jobs:
           name: wix-msi-phase-a
           path: |
             ReciProSetup.Wix/bin/Release/ReciProSetup.msi
-            ReciProSetup.Wix/bin/Release/ReciProSetup-win-arm64.msi
+            ReciProSetup.Wix/bin/Release/ReciProSetup-arm64.msi
             artifacts/msi-content-diff.txt
