@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 260612Cl 追加: vdproj (ReciProSetup.vdproj) の WiX v7 等価再現。
+     仕様の根拠と設計判断は .project-guidance/ReciPro_WiX移行計画.md を参照。
+     不可侵: UpgradeCode / per-user (LocalAppData) / framework-dependent / 出力名 ReciProSetup.msi (x64) -->
+<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs"
+     xmlns:ui="http://wixtoolset.org/schemas/v4/wxs/ui">
+
+  <Package Name="ReciPro" Manufacturer="Crystallography Software"
+           Version="$(var.ProductVersion)"
+           UpgradeCode="A81303DC-E1CA-44F3-AE3A-6C7CAC08E8D8"
+           Scope="perUser" Language="1033" Compressed="yes">
+
+    <SummaryInformation Description="ReciProSetup" />
+
+    <!-- AllowSameVersionUpgrades: x64⇔arm64 の same-version cross-grade (同一 UpgradeCode・別 ProductCode) を許可。
+         IgnoreLanguage: 旧 vdproj MSI は ProductLanguage=0 (neutral) のため言語不問で検出。
+         旧 vdproj と異なりダウングレードはブロックする (仕様改善、計画書 D2)。 -->
+    <MajorUpgrade AllowSameVersionUpgrades="yes" IgnoreLanguage="yes"
+                  Schedule="afterInstallInitialize"
+                  DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
+
+    <MediaTemplate EmbedCab="yes" />
+
+    <Icon Id="AppIcon.ico" SourceFile="..\ReciPro\App.ico" />
+
+    <!-- per-user 固定: %LocalAppData%\Crystallography Software\ReciPro (vdproj の DefaultLocation を踏襲) -->
+    <StandardDirectory Id="LocalAppDataFolder">
+      <Directory Id="ManufacturerFolder" Name="Crystallography Software">
+        <Directory Id="INSTALLFOLDER" Name="ReciPro">
+          <!-- exe のみ明示 File (ショートカット/Launch CA の参照 Id を固定するため) -->
+          <Component Id="MainExe">
+            <File Id="ReciProExe" Source="!(bindpath.staging)\ReciPro.exe" KeyPath="yes" />
+          </Component>
+          <!-- 残り全部をワイルドカード収集 (staging の内容が正。exe は重複登録になるため除外) -->
+          <Files Include="!(bindpath.staging)\**">
+            <Exclude Files="!(bindpath.staging)\ReciPro.exe" />
+          </Files>
+        </Directory>
+      </Directory>
+    </StandardDirectory>
+
+    <!-- ショートカット: デスクトップ + スタートメニュー (vdproj と同一の2箇所、icon=exe 相当は App.ico で代替) -->
+    <StandardDirectory Id="DesktopFolder">
+      <Component Id="DesktopShortcutComp">
+        <Shortcut Id="DesktopShortcut" Name="ReciPro" Target="[#ReciProExe]"
+                  WorkingDirectory="INSTALLFOLDER" Icon="AppIcon.ico" />
+        <RegistryValue Root="HKCU" Key="Software\Crystallography Software\ReciPro"
+                       Name="installed" Type="integer" Value="1" KeyPath="yes" />
+      </Component>
+    </StandardDirectory>
+    <StandardDirectory Id="ProgramMenuFolder">
+      <Directory Id="VendorMenuFolder" Name="Crystallography Software">
+        <Component Id="StartMenuShortcutComp">
+          <Shortcut Id="StartMenuShortcut" Name="ReciPro" Target="[#ReciProExe]"
+                    WorkingDirectory="INSTALLFOLDER" Icon="AppIcon.ico" />
+          <RemoveFolder Id="RemoveVendorMenuFolder" On="uninstall" />
+          <RegistryValue Root="HKCU" Key="Software\Crystallography Software\ReciPro"
+                         Name="startmenu" Type="integer" Value="1" KeyPath="yes" />
+        </Component>
+      </Directory>
+    </StandardDirectory>
+
+    <!-- UI: WixUI_InstallDir (Everyone/Just me ラジオは廃止し per-user 固定、計画書 D6)。
+         REQUIREMENT.rtf は専用ダイアログを設けずファイル同梱のみ (staging 経由)。 -->
+    <ui:WixUI Id="WixUI_InstallDir" InstallDirectory="INSTALLFOLDER" />
+    <WixVariable Id="WixUILicenseRtf" Value="..\ReciProSetup\LICENSE.rtf" />
+
+    <!-- 完了画面「Launch ReciPro」既定 ON (旧 EnableLaunchApplication.js が MSI に注入していた CA の等価再現) -->
+    <Property Id="WIXUI_EXITDIALOGOPTIONALCHECKBOX" Value="1" />
+    <Property Id="WIXUI_EXITDIALOGOPTIONALCHECKBOXTEXT" Value="Launch ReciPro" />
+    <Property Id="WixShellExecTarget" Value="[#ReciProExe]" />
+    <CustomAction Id="LaunchApp" DllEntry="WixShellExec" Impersonate="yes"
+                  Execute="immediate" Return="check"
+                  BinaryRef="Wix4UtilCA_$(sys.BUILDARCHSHORT)" />
+    <UI>
+      <Publish Dialog="ExitDialog" Control="Finish" Event="DoAction" Value="LaunchApp"
+               Condition="WIXUI_EXITDIALOGOPTIONALCHECKBOX = 1 and NOT Installed" />
+    </UI>
+
+  </Package>
+</Wix>

@@ -1,0 +1,253 @@
+# 260612Cl WiX 移行 Phase A 検証ワークフロー (計画書 .project-guidance/ReciPro_WiX移行計画.md §6 Phase A / §7)
+#   - WiX v7 で x64/arm64 両 MSI をビルドし、旧 vdproj MSI (最新 release) と内容 diff
+#   - クリーンランナー上で「vdproj 旧版 install → WiX 新版で Major Upgrade → uninstall」の連鎖テスト
+#   - release には一切触れない (artifact のみ・contents: read)。Phase B で release.yml に置換するまでの並行検証用
+#   - x64⇔arm64 cross-grade テストは windows-11-arm が必要なため Phase C の smoke で実施 (ここでは不可)
+name: Validate WiX MSI (Phase A)
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: windows-2025-vs2026 # release.yml とイメージを揃える (native vcxproj ビルドに devenv が必要)
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Parse version
+        id: version
+        shell: pwsh
+        run: |
+          $content = Get-Content "ReciPro\Version.cs" -Raw
+          if ($content -notmatch 'ver(\d+\.\d+)\(') { throw "Could not parse version from Version.cs History." }
+          $ver = $Matches[1]
+          # アップグレード連鎖テスト用に build 番号を +1 した版数も用意 (旧 release MSI より必ず新しくする)
+          $parts = $ver.Split('.')
+          $bumped = "$($parts[0]).$([int]$parts[1] + 1)"
+          Write-Host "version=$ver bumped=$bumped"
+          "version=$ver"                  >> $env:GITHUB_OUTPUT
+          "product_version=0.$ver"        >> $env:GITHUB_OUTPUT
+          "test_product_version=0.$bumped" >> $env:GITHUB_OUTPUT
+
+      - name: Setup .NET 10
+        uses: actions/setup-dotnet@v5
+        with:
+          dotnet-version: "10.0.x"
+
+      - name: Restore managed dependencies
+        shell: pwsh
+        run: dotnet restore ReciPro\ReciPro.csproj
+
+      - name: Find devenv.com
+        id: devenv
+        shell: pwsh
+        run: |
+          $devenvExe = (& "${env:ProgramFiles(x86)}\Microsoft Visual Studio\Installer\vswhere.exe" -latest -products * -property productPath).Trim()
+          if (-not $devenvExe) { throw "Visual Studio was not found." }
+          $cli = [System.IO.Path]::ChangeExtension($devenvExe, ".com")
+          if (-not (Test-Path $cli)) { throw "devenv.com was not found." }
+          "cli=$cli" >> $env:GITHUB_OUTPUT
+
+      - name: Build native runtime binaries (x64)
+        shell: pwsh
+        run: |
+          $log = Join-Path $env:RUNNER_TEMP "devenv-native-x64.log"
+          & "${{ steps.devenv.outputs.cli }}" "ReciPro.sln" /Build "Release|x64" /Project "Crystallography.Native" /Out $log
+          if (Test-Path $log) { Get-Content $log }
+          if ($LASTEXITCODE -ne 0) { throw "Crystallography.Native x64 build failed (exit $LASTEXITCODE)." }
+
+      - name: Build native runtime binary (ARM64 cross-build)
+        shell: pwsh
+        run: |
+          $log = Join-Path $env:RUNNER_TEMP "devenv-native-arm64.log"
+          & "${{ steps.devenv.outputs.cli }}" "ReciPro.sln" /Build "Release|ARM64" /Project "Crystallography.Native" /Out $log
+          if (Test-Path $log) { Get-Content $log }
+          if ($LASTEXITCODE -ne 0) { throw "Crystallography.Native ARM64 build failed (exit $LASTEXITCODE)." }
+
+      - name: Stage x64 MSI payload (framework-dependent publish)
+        shell: pwsh
+        run: |
+          $s = "artifacts\staging-msi-x64"
+          dotnet publish ReciPro\ReciPro.csproj -c Release -p:Platform=x64 --self-contained false -o $s --no-restore
+          if ($LASTEXITCODE -ne 0) { throw "x64 publish failed." }
+          # Crystallography.Native 3 flavor は publish グラフ外 (vcxproj が bin\Release へ後置き) → 明示コピー
+          $native = Get-ChildItem "ReciPro\bin\Release" -Filter "Crystallography.Native*.dll" -File
+          if ($native.Count -ne 3) { throw "native DLL count != 3: $($native.Count)" }
+          $native | Copy-Item -Destination $s
+          Copy-Item ReciProSetup\LICENSE.rtf, ReciProSetup\REQUIREMENT.rtf $s
+          # 旧 vdproj MSI と内容を揃える: 参照プロジェクトの分離 pdb は同梱しない (portable ZIP と同方針)
+          Get-ChildItem $s -Filter *.pdb | Remove-Item
+          # 出荷前検査 (計画書 §3 D3)
+          if (Test-Path "$s\README-PORTABLE.txt") { throw "README-PORTABLE.txt leaked (portable marker must not be in MSI)" }
+          if (Test-Path "$s\coreclr.dll") { throw "self-contained runtime leaked into framework-dependent staging" }
+          if (-not (Test-Path "$s\ReciPro.exe")) { throw "ReciPro.exe missing from staging" }
+          Write-Host "x64 staging OK: $((Get-ChildItem $s -Recurse -File).Count) files"
+
+      - name: Stage arm64 MSI payload (framework-dependent publish)
+        shell: pwsh
+        run: |
+          $s = "artifacts\staging-msi-arm64"
+          dotnet publish ReciPro\ReciPro.csproj -c Release -r win-arm64 -p:Platform=ARM64 --self-contained false -o $s
+          if ($LASTEXITCODE -ne 0) { throw "arm64 publish failed." }
+          Copy-Item ReciProSetup\LICENSE.rtf, ReciProSetup\REQUIREMENT.rtf $s
+          Get-ChildItem $s -Filter *.pdb | Remove-Item
+          if (Test-Path "$s\README-PORTABLE.txt") { throw "README-PORTABLE.txt leaked" }
+          if (Test-Path "$s\coreclr.dll") { throw "self-contained runtime leaked" }
+          # arm64 は generic 1 本のみ (csproj 注入ターゲットが publish に追加する)。avx flavor 混入は BadImageFormat の元
+          $nat = Get-ChildItem $s -Filter "Crystallography.Native*.dll"
+          if ($nat.Count -ne 1) { throw "arm64 native DLL count != 1: $($nat.Count)" }
+          if (-not (Test-Path "$s\libxrl-11.dll") -or -not (Test-Path "$s\glfw3.dll")) { throw "arm64 native deps (libxrl/glfw) missing" }
+          # PE machine 検査 (0xAA64)
+          function Get-PEMachine($path) {
+            $fs = [System.IO.File]::OpenRead($path); $br = New-Object System.IO.BinaryReader($fs)
+            $fs.Seek(0x3C,0) | Out-Null; $peOff = $br.ReadInt32(); $fs.Seek($peOff+4,0) | Out-Null
+            $m = $br.ReadUInt16(); $fs.Close(); $m
+          }
+          foreach ($f in 'ReciPro.exe','Crystallography.Native.dll','libxrl-11.dll','glfw3.dll') {
+            $m = Get-PEMachine (Join-Path $PWD "$s\$f")
+            if ($m -ne 0xAA64) { throw ("{0}: PE machine 0x{1:X4} != 0xAA64" -f $f, $m) }
+          }
+          Write-Host "arm64 staging OK: $((Get-ChildItem $s -Recurse -File).Count) files"
+
+      - name: Build WiX x64 MSI (bumped version for upgrade test)
+        shell: pwsh
+        run: |
+          dotnet build ReciProSetup.Wix\ReciProSetup.wixproj -c Release -p:InstallerPlatform=x64 `
+            -p:ProductVersion=${{ steps.version.outputs.test_product_version }} `
+            -p:StagingDir="$PWD\artifacts\staging-msi-x64"
+          if ($LASTEXITCODE -ne 0) { throw "WiX x64 build failed." }
+          if (-not (Test-Path "ReciProSetup.Wix\bin\Release\ReciProSetup.msi")) { throw "ReciProSetup.msi not produced." }
+
+      - name: Build WiX arm64 MSI (cross-build)
+        shell: pwsh
+        run: |
+          dotnet build ReciProSetup.Wix\ReciProSetup.wixproj -c Release -p:InstallerPlatform=arm64 `
+            -p:ProductVersion=${{ steps.version.outputs.product_version }} `
+            -p:StagingDir="$PWD\artifacts\staging-msi-arm64"
+          if ($LASTEXITCODE -ne 0) { throw "WiX arm64 build failed." }
+          if (-not (Test-Path "ReciProSetup.Wix\bin\Release\ReciProSetup-win-arm64.msi")) { throw "ReciProSetup-win-arm64.msi not produced." }
+
+      - name: Verify MSI properties (Template / UpgradeCode / version / per-user)
+        shell: pwsh
+        run: |
+          $wi = New-Object -ComObject WindowsInstaller.Installer
+          function Get-MsiProp($db, $name) {
+            $view = $db.GetType().InvokeMember('OpenView','InvokeMethod',$null,$db,@("SELECT Value FROM Property WHERE Property='$name'"))
+            $view.GetType().InvokeMember('Execute','InvokeMethod',$null,$view,$null)
+            $rec = $view.GetType().InvokeMember('Fetch','InvokeMethod',$null,$view,$null)
+            if ($rec) { $rec.GetType().InvokeMember('StringData','GetProperty',$null,$rec,@(1)) } else { $null }
+          }
+          function Test-Msi($path, $expectTemplate, $expectVersion) {
+            $db = $wi.GetType().InvokeMember('OpenDatabase','InvokeMethod',$null,$wi,@($path,0))
+            $si = $db.GetType().InvokeMember('SummaryInformation','GetProperty',$null,$db,@(0))
+            $template = $si.GetType().InvokeMember('Property','GetProperty',$null,$si,@(7))
+            $schema = $si.GetType().InvokeMember('Property','GetProperty',$null,$si,@(14))
+            $uc = Get-MsiProp $db 'UpgradeCode'; $pv = Get-MsiProp $db 'ProductVersion'; $au = Get-MsiProp $db 'ALLUSERS'
+            Write-Host "$path : Template=$template Schema=$schema UpgradeCode=$uc Version=$pv ALLUSERS=$au"
+            if ($template -notlike "$expectTemplate*") { throw "Template mismatch: $template (expected $expectTemplate)" }
+            if ($uc -ne '{A81303DC-E1CA-44F3-AE3A-6C7CAC08E8D8}') { throw "UpgradeCode mismatch: $uc" }
+            if ($pv -ne $expectVersion) { throw "ProductVersion mismatch: $pv (expected $expectVersion)" }
+            if ($au) { throw "ALLUSERS must be unset for per-user package (got $au)" }
+            if ([int]$schema -lt 500) { throw "Schema $schema < 500" }
+          }
+          Test-Msi "ReciProSetup.Wix\bin\Release\ReciProSetup.msi" 'x64' '${{ steps.version.outputs.test_product_version }}'
+          Test-Msi "ReciProSetup.Wix\bin\Release\ReciProSetup-win-arm64.msi" 'Arm64' '${{ steps.version.outputs.product_version }}'
+
+      - name: Download latest released vdproj MSI
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          New-Item -ItemType Directory -Force "$env:RUNNER_TEMP\old-msi" | Out-Null
+          gh release download --pattern ReciProSetup.msi -D "$env:RUNNER_TEMP\old-msi"
+          if (-not (Test-Path "$env:RUNNER_TEMP\old-msi\ReciProSetup.msi")) { throw "Failed to download released MSI." }
+
+      - name: Diff file lists (old vdproj MSI vs WiX staging)
+        shell: pwsh
+        run: |
+          # 旧 MSI を管理展開 (msiexec /a) してファイル一覧を取り、staging と比較する (計画書 §7-12 のゲート)
+          $extract = "$env:RUNNER_TEMP\old-extract"
+          $p = Start-Process msiexec -ArgumentList '/a', "$env:RUNNER_TEMP\old-msi\ReciProSetup.msi", '/qn', "TARGETDIR=$extract" -Wait -PassThru
+          if ($p.ExitCode -ne 0) { throw "Admin extract failed: $($p.ExitCode)" }
+          $old = Get-ChildItem $extract -Recurse -File | Where-Object { $_.Name -ne 'ReciProSetup.msi' } |
+            ForEach-Object { $_.FullName.Substring((Resolve-Path $extract).Path.Length + 1) } |
+            ForEach-Object { $_ -replace '^.*?\\Crystallography Software\\ReciPro\\', '' } | Sort-Object
+          $new = Get-ChildItem artifacts\staging-msi-x64 -Recurse -File |
+            ForEach-Object { $_.FullName.Substring((Resolve-Path artifacts\staging-msi-x64).Path.Length + 1) } | Sort-Object
+          $diff = Compare-Object $old $new
+          $report = Join-Path $env:RUNNER_TEMP "msi-content-diff.txt"
+          @("old(vdproj release) count: $($old.Count) / new(WiX staging) count: $($new.Count)", "") +
+            ($diff | ForEach-Object { "{0} {1}" -f $_.SideIndicator, $_.InputObject }) | Set-Content $report
+          Get-Content $report
+          Copy-Item $report artifacts\
+          if ($diff) { throw "MSI content differs from released vdproj MSI. Review msi-content-diff.txt (every diff must be explained and accepted)." }
+
+      - name: Upgrade chain test (vdproj old -> WiX new -> uninstall)
+        shell: pwsh
+        run: |
+          $wi = New-Object -ComObject WindowsInstaller.Installer
+          function Get-ReciProProducts {
+            $found = @()
+            foreach ($pc in $wi.GetType().InvokeMember('Products','GetProperty',$null,$wi,$null)) {
+              try { $name = $wi.GetType().InvokeMember('ProductInfo','GetProperty',$null,$wi,@($pc,'ProductName')) } catch { continue }
+              if ($name -eq 'ReciPro') { $found += [pscustomobject]@{ Code=$pc; Version=$wi.GetType().InvokeMember('ProductInfo','GetProperty',$null,$wi,@($pc,'VersionString')) } }
+            }
+            $found
+          }
+          $appDir = "$env:LOCALAPPDATA\Crystallography Software\ReciPro"
+          $desktopLnk = Join-Path ([Environment]::GetFolderPath('DesktopDirectory')) 'ReciPro.lnk'
+          $startLnk = "$env:APPDATA\Microsoft\Windows\Start Menu\Programs\Crystallography Software\ReciPro.lnk"
+
+          # 1) 旧 vdproj MSI を per-user silent install
+          $p = Start-Process msiexec -ArgumentList '/i', "$env:RUNNER_TEMP\old-msi\ReciProSetup.msi", '/qn', '/l*v', "$env:RUNNER_TEMP\install-old.log" -Wait -PassThru
+          if ($p.ExitCode -ne 0) { throw "old MSI install failed: $($p.ExitCode)" }
+          $prods = Get-ReciProProducts
+          if ($prods.Count -ne 1) { throw "expected 1 product after old install, got $($prods.Count)" }
+          Write-Host "old installed: v$($prods[0].Version) $($prods[0].Code)"
+          if (-not (Test-Path "$appDir\ReciPro.exe")) { throw "old install: exe missing" }
+
+          # 2) WiX 新版 (bumped version) で Major Upgrade
+          $p = Start-Process msiexec -ArgumentList '/i', "$PWD\ReciProSetup.Wix\bin\Release\ReciProSetup.msi", '/qn', '/l*v', "$env:RUNNER_TEMP\install-new.log" -Wait -PassThru
+          if ($p.ExitCode -ne 0) { throw "WiX MSI upgrade install failed: $($p.ExitCode)" }
+          $prods = Get-ReciProProducts
+          if ($prods.Count -ne 1) { throw "expected exactly 1 product after upgrade (ARP must be replaced), got $($prods.Count): $($prods | ConvertTo-Json -Compress)" }
+          if ($prods[0].Version -ne '${{ steps.version.outputs.test_product_version }}') { throw "upgraded version mismatch: $($prods[0].Version)" }
+          Write-Host "upgraded: v$($prods[0].Version) $($prods[0].Code)"
+          foreach ($f in 'ReciPro.exe','Crystallography.Native.dll','Crystallography.Native.avx2.dll','Crystallography.Native.avx512.dll','initial.xml','AMCSD.cdb3','LICENSE.rtf','REQUIREMENT.rtf') {
+            if (-not (Test-Path "$appDir\$f")) { throw "upgrade: $f missing in install dir" }
+          }
+          if (-not (Test-Path $desktopLnk)) { throw "upgrade: desktop shortcut missing" }
+          if (-not (Test-Path $startLnk)) { throw "upgrade: start menu shortcut missing" }
+
+          # 3) アンインストールで残骸ゼロ
+          $code = $prods[0].Code
+          $p = Start-Process msiexec -ArgumentList '/x', $code, '/qn', '/l*v', "$env:RUNNER_TEMP\uninstall.log" -Wait -PassThru
+          if ($p.ExitCode -ne 0) { throw "uninstall failed: $($p.ExitCode)" }
+          if ((Get-ReciProProducts).Count -ne 0) { throw "product still registered after uninstall" }
+          if (Test-Path "$appDir\ReciPro.exe") { throw "uninstall: exe remains" }
+          if (Test-Path $desktopLnk) { throw "uninstall: desktop shortcut remains" }
+          if (Test-Path $startLnk) { throw "uninstall: start menu shortcut remains" }
+          Write-Host "Upgrade chain test PASSED."
+
+      - name: Upload MSI logs on failure
+        if: failure()
+        uses: actions/upload-artifact@v6
+        with:
+          name: wix-validate-logs
+          path: ${{ runner.temp }}/*.log
+          if-no-files-found: ignore
+
+      - name: Upload artifacts (MSIs + diff report)
+        uses: actions/upload-artifact@v6
+        with:
+          name: wix-msi-phase-a
+          path: |
+            ReciProSetup.Wix/bin/Release/ReciProSetup.msi
+            ReciProSetup.Wix/bin/Release/ReciProSetup-win-arm64.msi
+            artifacts/msi-content-diff.txt

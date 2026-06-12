@@ -1,0 +1,34 @@
+<!-- 260612Cl 追加: WiX v7 による MSI ビルド (vdproj 置換、計画書 .project-guidance/ReciPro_WiX移行計画.md) -->
+<Project Sdk="WixToolset.Sdk/7.0.0">
+  <PropertyGroup>
+    <!-- OSMF EULA 受諾 (収益$10k未満の無償OSSは支払い免除、受諾操作のみ必須) -->
+    <AcceptEula>wix7</AcceptEula>
+    <InstallerPlatform Condition="'$(InstallerPlatform)'==''">x64</InstallerPlatform>
+    <!-- CI が -p:ProductVersion=0.X.YYY を注入する (Version.cs 由来) -->
+    <ProductVersion Condition="'$(ProductVersion)'==''">0.0.0</ProductVersion>
+    <DefineConstants>ProductVersion=$(ProductVersion)</DefineConstants>
+    <OutputName>ReciProSetup</OutputName>
+    <!-- arm64 は資産名を分離 (x64 の ReciProSetup.msi は自動更新固定URLのため不変) -->
+    <OutputName Condition="'$(InstallerPlatform)'=='arm64'">ReciProSetup-win-arm64</OutputName>
+    <!-- x64/arm64 連続ビルドの obj 混在防止 -->
+    <IntermediateOutputPath>obj\$(InstallerPlatform)\</IntermediateOutputPath>
+    <!-- 実測で出た ICE のみ抑止 (260612Cl)。per-user (LocalAppData) + Files 収集の既知制約:
+         ICE38(error) = user profile 配下の File KeyPath / ICE64(error) = user profile 配下ディレクトリの RemoveFile 未登録 /
+         ICE91(warning×104) = ALLUSERS で変化しない per-user ディレクトリへの配置 (本パッケージは Scope=perUser 固定なので無関係)。
+         本製品は HKLM/COM/サービス無しの純 per-user アプリで、いずれも実害なし (計画書 D7)。
+         ICE61 (same-version upgrade) / ICE69 (コンポーネント跨ぎ参照) は意図的に表示のまま残す -->
+    <SuppressIces>ICE38;ICE64;ICE91</SuppressIces>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="WixToolset.UI.wixext" Version="7.0.0" />
+    <PackageReference Include="WixToolset.Util.wixext" Version="7.0.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <!-- ハーベスト元 = framework-dependent publish + 後処理済みの staging フォルダ (-p:StagingDir で注入) -->
+    <BindPath Include="$(StagingDir)" BindName="staging" />
+  </ItemGroup>
+  <Target Name="RequireStagingDir" BeforeTargets="PrepareForBuild">
+    <Error Condition="'$(StagingDir)'=='' OR !Exists('$(StagingDir)')"
+           Text="StagingDir must point to an existing publish staging folder (pass -p:StagingDir=...)." />
+  </Target>
+</Project>
