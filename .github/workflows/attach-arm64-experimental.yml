@@ -311,28 +311,14 @@ jobs:
           Stop-Process -Id $p.Id -Force
           Write-Host "GUI launch smoke OK."
 
-      - name: "Smoke 4: arm64 MSI (Template check, per-user install, --smoke, uninstall)" # 260613Cl Phase C
+      - name: "Smoke 4: arm64 MSI (per-user install, --smoke, uninstall)" # 260613Cl Phase C
         shell: pwsh
         run: |
-          # MSI の Template/プロパティ検査 (x64 機での誤実行は Windows Installer が拒否するが、配布前に自前でも確認)
+          # 260613Cl MSI の Template/UpgradeCode/ProductVersion 検査はビルド側 (x64 ランナー) で実施済み:
+          #   windows-11-arm の COM 遅延バインディングは OpenDatabase が DISP_E_TYPEMISMATCH で失敗する
+          #   (dry_run 27427847939 で実測)。ここでは COM を使わず install/uninstall とも MSI パス指定で行う
           $msi = Join-Path $env:RUNNER_TEMP "arm64-msi/${{ needs.preflight.outputs.msi_name }}"
           if (-not (Test-Path $msi)) { throw "MSI artifact not found: $msi" }
-          $wi = New-Object -ComObject WindowsInstaller.Installer
-          $db = $wi.GetType().InvokeMember('OpenDatabase','InvokeMethod',$null,$wi,@($msi,0))
-          $si = $db.GetType().InvokeMember('SummaryInformation','GetProperty',$null,$db,@(0))
-          $template = $si.GetType().InvokeMember('Property','GetProperty',$null,$si,@(7))
-          Write-Host "MSI Template = $template"
-          if ($template -notlike 'Arm64*') { throw "MSI Template is not Arm64: $template" }
-          function Get-MsiProp($name) {
-            $view = $db.GetType().InvokeMember('OpenView','InvokeMethod',$null,$db,@("SELECT Value FROM Property WHERE Property='$name'"))
-            $view.GetType().InvokeMember('Execute','InvokeMethod',$null,$view,$null) | Out-Null
-            $rec = $view.GetType().InvokeMember('Fetch','InvokeMethod',$null,$view,$null)
-            if ($rec) { $rec.GetType().InvokeMember('StringData','GetProperty',$null,$rec,@(1)) } else { $null }
-          }
-          $uc = Get-MsiProp 'UpgradeCode'
-          if ($uc -ne '{A81303DC-E1CA-44F3-AE3A-6C7CAC08E8D8}') { throw "UpgradeCode mismatch: $uc" }
-          $pv = Get-MsiProp 'ProductVersion'
-          if ($pv -ne '0.${{ needs.preflight.outputs.version }}') { throw "ProductVersion mismatch: $pv" }
 
           # MSI 版は framework-dependent → smoke 実行に .NET 10 Desktop Runtime (arm64) が必要。
           # ランナーに無ければ dotnet-install で導入 (DOTNET_ROOT は同一ステップ内の子プロセスに引き継がれる)
@@ -363,9 +349,8 @@ jobs:
             if ($result -notmatch [regex]::Escape($expect)) { throw "--smoke output missing expected '$expect'." }
           }
 
-          # アンインストールしてランナーを汚さない (残骸検査込み)
-          $code = Get-MsiProp 'ProductCode'
-          $p = Start-Process msiexec -ArgumentList '/x', $code, '/qn', '/l*v', "$env:RUNNER_TEMP\msi-uninstall.log" -Wait -PassThru
+          # アンインストールしてランナーを汚さない (残骸検査込み)。ProductCode は不要 (MSI パス指定で /x できる)
+          $p = Start-Process msiexec -ArgumentList '/x', "`"$msi`"", '/qn', '/l*v', "$env:RUNNER_TEMP\msi-uninstall.log" -Wait -PassThru
           if ($p.ExitCode -ne 0) { throw "MSI uninstall failed (exit $($p.ExitCode))." }
           if (Test-Path "$appDir\ReciPro.exe") { throw "uninstall left ReciPro.exe behind" }
           Write-Host "MSI smoke OK (install -> --smoke -> uninstall)."

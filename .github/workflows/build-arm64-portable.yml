@@ -271,6 +271,27 @@ jobs:
           if (-not $msi) { throw "ReciProSetup-arm64.msi was not produced." }
           Write-Host "MSI built: $($msi.FullName) ($($msi.Length) bytes)"
 
+          # 260613Cl MSI プロパティ検査はここ (x64 ランナー) で行う: windows-11-arm の COM 遅延バインディングは
+          # OpenDatabase が DISP_E_TYPEMISMATCH で失敗する (dry_run 27427847939 で実測) ため、smoke 側では COM を使わない
+          $wi = New-Object -ComObject WindowsInstaller.Installer
+          $db = $wi.GetType().InvokeMember('OpenDatabase','InvokeMethod',$null,$wi,@($msi.FullName,0))
+          $si = $db.GetType().InvokeMember('SummaryInformation','GetProperty',$null,$db,@(0))
+          $template = $si.GetType().InvokeMember('Property','GetProperty',$null,$si,@(7))
+          $schema = $si.GetType().InvokeMember('Property','GetProperty',$null,$si,@(14))
+          function Get-MsiProp($name) {
+            $view = $db.GetType().InvokeMember('OpenView','InvokeMethod',$null,$db,@("SELECT Value FROM Property WHERE Property='$name'"))
+            $view.GetType().InvokeMember('Execute','InvokeMethod',$null,$view,$null) | Out-Null
+            $rec = $view.GetType().InvokeMember('Fetch','InvokeMethod',$null,$view,$null)
+            if ($rec) { $rec.GetType().InvokeMember('StringData','GetProperty',$null,$rec,@(1)) } else { $null }
+          }
+          $uc = Get-MsiProp 'UpgradeCode'; $pv = Get-MsiProp 'ProductVersion'; $au = Get-MsiProp 'ALLUSERS'
+          Write-Host "Template=$template Schema=$schema UpgradeCode=$uc ProductVersion=$pv ALLUSERS=$au"
+          if ($template -notlike 'Arm64*') { throw "MSI Template is not Arm64: $template" }
+          if ([int]$schema -lt 500) { throw "Schema $schema < 500 (Arm64 requirement)" }
+          if ($uc -ne '{A81303DC-E1CA-44F3-AE3A-6C7CAC08E8D8}') { throw "UpgradeCode mismatch: $uc" }
+          if ($pv -ne '0.${{ steps.version.outputs.version }}') { throw "ProductVersion mismatch: $pv" }
+          if ($au) { throw "ALLUSERS must be unset for per-user package (got $au)" }
+
       - name: Upload arm64 MSI artifact
         uses: actions/upload-artifact@v6
         with:
