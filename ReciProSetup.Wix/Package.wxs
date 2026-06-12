@@ -19,7 +19,8 @@
                   Schedule="afterInstallInitialize"
                   DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
 
-    <MediaTemplate EmbedCab="yes" />
+    <!-- CompressionLevel=high: 既定 mszip より高圧縮の LZX:21。MSI サイズ最小化 (展開速度より配布サイズ優先) -->
+    <MediaTemplate EmbedCab="yes" CompressionLevel="high" />
 
     <Icon Id="AppIcon.ico" SourceFile="..\ReciPro\App.ico" />
 
