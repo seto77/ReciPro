@@ -18,7 +18,7 @@ How to run
    the downloaded ZIP -> Properties -> check "Unblock" -> OK, before
    extracting. In PowerShell the same can be done with:
 
-     Unblock-File .\ReciPro-*-win-arm64-experimental-portable.zip
+     Unblock-File .\ReciPro-*-arm64.zip
 
    If you already extracted a blocked ZIP, unblock the extracted files:
 
@@ -84,8 +84,8 @@ Notes
 Verification
 ------------
 
-SHA256SUMS-win-arm64-experimental.txt is published next to this
+SHA256SUMS-arm64.txt is published next to this
 package on the GitHub Releases page. You can verify the downloaded
 ZIP file in PowerShell:
 
-  Get-FileHash .\ReciPro-*-win-arm64-experimental-portable.zip -Algorithm SHA256
+  Get-FileHash .\ReciPro-*-arm64.zip -Algorithm SHA256

@@ -37,7 +37,7 @@
 | メモリ | — | 16 GB以上 |
 | CPU | — | 8コア以上（動力学計算時） |
 
-**Windows on ARM（ネイティブ・実験的）** : ネイティブARM64ビルドのポータブル版（`ReciPro-v.X-win-arm64-experimental-portable.zip`、self-contained のため .NET Runtime のインストール不要）を[リリースページ](https://github.com/seto77/ReciPro/releases/latest)で実験的に公開しています。通常のx64版もARM64版Windows内蔵のエミュレーションで動作します。導入手順と制限は[トラブルシューティング](troubleshooting.md#windows-on-arm)を参照してください。
+**Windows on ARM（ネイティブ・実験的）** : ネイティブARM64ビルドのポータブル版（`ReciPro-v.X-arm64.zip`、self-contained のため .NET Runtime のインストール不要）を[リリースページ](https://github.com/seto77/ReciPro/releases/latest)で実験的に公開しています。通常のx64版もARM64版Windows内蔵のエミュレーションで動作します。導入手順と制限は[トラブルシューティング](troubleshooting.md#windows-on-arm)を参照してください。
 
 **macOS（非公式）** : ReciProの公式サポートはWindowsのみですが、**win-x64版**ポータブルZIPをWineラッパーの Sikarugir と OpenGL互換ドライバ Mesa3D と組み合わせることで、macOS（Apple Silicon）上で動作したという報告があります。ユーザーによる導入手順が <https://github.com/Ryo-fkushima/ReciPro_macOS_memo> で公開されています。なお、この方法は公式サポート外で、一部の記号（Å・上付き文字・矢印など）が文字化けする既知の問題があります。ARM64版ZIPは macOS + Wine では**動作しません**。また、現行の「x64版 + Rosetta 2」方式は macOS 28（2027年秋）以降は動作しなくなる見込みです — 詳細は[トラブルシューティング](troubleshooting.md#mac-linux)を参照してください。
 

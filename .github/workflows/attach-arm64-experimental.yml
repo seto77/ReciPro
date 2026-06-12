@@ -8,7 +8,7 @@
 #     「ビルド緑・実行時死亡」型 (BadImageFormat / DLL 黙殺フォールバック / 起動即死) のため、
 #     PE 検査 + LoadLibrary + ReciPro.exe --smoke (NativeWrapper/Xraylib 明示アサート) + GUI 起動を実機で行う。
 #     GL のフル検証は含めない (GLOn12 の flakiness、方針 §6.3。実機検証 = Phase 2 で完了済み)
-#   - checksum は SHA256SUMS-win-arm64-experimental.txt の別ファイル: x64 の SHA256SUMS.txt は変更しない
+#   - checksum は SHA256SUMS-arm64.txt の別ファイル: x64 の SHA256SUMS.txt は変更しない (260613Cl 命名簡素化)
 #     (--clobber での後差し替えは、ダウンロード済みユーザーの検証ファイルが時間で変わるため禁止)
 #   - 添付失敗・やり直しは asset の手動削除 (gh release delete-asset <tag> <name>) → 再実行で復旧する
 name: Attach ARM64 portable ZIP to release (experimental)
@@ -118,8 +118,9 @@ jobs:
           }
 
           # asset 衝突検査: --clobber による差し替えはしない方針のため、既存なら手動削除を促して失敗
-          $zipName  = "ReciPro-v.$ver-win-arm64-experimental-portable.zip"
-          $sumsName = "SHA256SUMS-win-arm64-experimental.txt"
+          # 260613Cl 作者指示で命名簡素化 (旧: ReciPro-v.X-win-arm64-experimental-portable.zip / SHA256SUMS-win-arm64-experimental.txt)
+          $zipName  = "ReciPro-v.$ver-arm64.zip"
+          $sumsName = "SHA256SUMS-arm64.txt"
           if ($releaseExists) {
             $assets = @(gh release view $tag --json assets -q '.assets[].name')
             foreach ($name in @($zipName, $sumsName)) {

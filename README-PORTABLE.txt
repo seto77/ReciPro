@@ -43,7 +43,7 @@ when OpenGL initialization fails.
 
 On Windows on ARM devices this x64 package runs under the built-in x64
 emulation; an experimental native ARM64 portable package
-(ReciPro-*-win-arm64-experimental-portable.zip) is also available on the
+(ReciPro-*-arm64.zip) is also available on the
 GitHub Releases page. (260612Cl)
 
 Notes for managed PCs
@@ -68,4 +68,4 @@ Verification
 If SHA256SUMS.txt is provided with the release, you can verify the downloaded
 ZIP file in PowerShell:
 
-  Get-FileHash .\ReciPro-*-win-x64-portable.zip -Algorithm SHA256
+  Get-FileHash .\ReciPro-*-x64.zip -Algorithm SHA256

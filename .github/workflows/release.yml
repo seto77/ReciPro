@@ -78,7 +78,7 @@ jobs:
             ""
             "Assets:"
             "- ReciProSetup.msi: recommended installer."
-            "- ReciPro-v.$ver-win-x64-portable.zip: no-install, self-contained alternative for managed Windows PCs."
+            "- ReciPro-v.$ver-x64.zip: no-install, self-contained portable alternative for managed Windows PCs."
             "- SHA256SUMS.txt: SHA256 hashes for release files."
           ) | Set-Content -Path $notesPath -Encoding UTF8
 
@@ -194,7 +194,8 @@ jobs:
           # 260613Cl ↑の順序制約は WiX 移行で解消済み (MSI は専用 staging から作り bin\Release を参照しない)。
           #          位置は当面維持 (変更を最小にするため)。
           $publishDir = Join-Path $env:RUNNER_TEMP "ReciPro-portable\ReciPro"
-          $zipPath = Join-Path (Get-Location) "ReciPro-v.${{ steps.version.outputs.version }}-win-x64-portable.zip"
+          # 260613Cl 作者指示で命名簡素化 (旧: ReciPro-v.X-win-x64-portable.zip)。自動更新は MSI 固定 URL のみで ZIP 名に依存しない
+          $zipPath = Join-Path (Get-Location) "ReciPro-v.${{ steps.version.outputs.version }}-x64.zip"
 
           if (Test-Path $publishDir) { Remove-Item -LiteralPath $publishDir -Recurse -Force }
           if (Test-Path $zipPath) { Remove-Item -LiteralPath $zipPath -Force }
