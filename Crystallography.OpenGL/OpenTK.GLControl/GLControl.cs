@@ -603,7 +603,9 @@ namespace OpenTK.GLControl
 
             // Last-ditch attempt:  Is the process named `devenv` or `VisualStudio`?
             // These are bad, hacky tests, but they *can* work sometimes.
-            if (System.Reflection.Assembly.GetExecutingAssembly().Location.Contains("VisualStudio", StringComparison.OrdinalIgnoreCase))
+            //260613Cl IL3000 対策: Assembly.Location は single-file publish で常に空文字 (警告の提案どおり AppContext.BaseDirectory へ)
+            //if (System.Reflection.Assembly.GetExecutingAssembly().Location.Contains("VisualStudio", StringComparison.OrdinalIgnoreCase))
+            if (System.AppContext.BaseDirectory.Contains("VisualStudio", StringComparison.OrdinalIgnoreCase))
                 return true;
             if (string.Equals(System.Diagnostics.Process.GetCurrentProcess().ProcessName, "devenv", StringComparison.OrdinalIgnoreCase))
                 return true;
