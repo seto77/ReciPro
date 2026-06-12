@@ -1810,7 +1810,10 @@ public partial class FormMain : FormBase
     {
         toolStripProgressBar.Visible = true;
 
-        (var Title, var Message, var NeedUpdate, var URL, var Path) = ProgramUpdates.Check(Version.Software, Version.VersionAndDate);
+        //260613Cl arm64 ビルドはアーキ専用インストーラを取得する (WiX 移行 Phase C)。x64 (エミュ実行含む) は従来どおり ReciProSetup.msi
+        //(var Title, var Message, var NeedUpdate, var URL, var Path) = ProgramUpdates.Check(Version.Software, Version.VersionAndDate);
+        var installerAsset = RuntimeInformation.ProcessArchitecture == Architecture.Arm64 ? "ReciProSetup-arm64.msi" : "";
+        (var Title, var Message, var NeedUpdate, var URL, var Path) = ProgramUpdates.Check(Version.Software, Version.VersionAndDate, installerAsset);
 
         if (!NeedUpdate)
             MessageBox.Show(Message, Title, MessageBoxButtons.OK);

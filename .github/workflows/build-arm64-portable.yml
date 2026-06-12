@@ -5,7 +5,7 @@
 #   段階 3 = release.yml の後続 job へ統合 (数リリース安定後)
 # x64 リリース (release.yml) とは完全に独立。bin\Release は共有しない (csproj/vcxproj 側で出力分離済み、方針 §3.2)。
 # 方針: .project-guidance/ReciPro_ARM64化方針.md §6
-name: Build ARM64 portable ZIP (experimental, artifact only)
+name: Build ARM64 portable ZIP and MSI (experimental, artifact only)
 
 on:
   workflow_dispatch:
@@ -20,6 +20,10 @@ on:
       artifact_name:
         description: "upload-artifact 名 (中身は ReciPro フォルダ 1 個)"
         value: ${{ jobs.build.outputs.artifact_name }}
+      # 260613Cl Phase C: arm64 MSI (WiX) の artifact 名 (中身は ReciProSetup-arm64.msi 1 個)
+      msi_artifact_name:
+        description: "arm64 MSI の upload-artifact 名"
+        value: ${{ jobs.build.outputs.msi_artifact_name }}
 
 permissions:
   contents: read
@@ -30,6 +34,7 @@ jobs:
     outputs:
       version: ${{ steps.version.outputs.version }}
       artifact_name: ReciPro-v.${{ steps.version.outputs.version }}-win-arm64-experimental-portable
+      msi_artifact_name: ReciProSetup-arm64-msi-v.${{ steps.version.outputs.version }}
     # release.yml と同じイメージ (VC.Tools.ARM64 + ClangCL プリインストール、x64 ホストから ARM64 クロスビルド可。方針 §1.3)
     # 注意: windows-2025-vs2026 は VS2026 移行期の一時ラベル。release.yml を windows-2025 へ戻すときはここも揃えること
     runs-on: windows-2025-vs2026
@@ -50,8 +55,24 @@ jobs:
           }
           $ver = $Matches[1]
 
-          # AssemblyVersion / FileVersion 用のタイムスタンプ (release.yml と同形式、ビルド追跡用)
-          $now = [System.DateTime]::UtcNow
+          # AssemblyVersion / FileVersion 用のタイムスタンプ (release.yml と同形式)
+          # 260613Cl Phase C: x64⇔arm64 の same-version cross-grade には両 MSI の FileVersion 完全一致が必要
+          #   (WiX計画 Phase A 実測)。release.yml は release commit の時刻を使うため、ここでは tag v.<ver> の
+          #   commit 時刻に合わせる (tag は GITHUB_SHA に作られるので一致する)。tag 未作成 (リリース前の
+          #   単独 dispatch / dry_run) は UtcNow フォールバック (release には添付されないため影響なし)
+          # 旧: $now = [System.DateTime]::UtcNow
+          $tag = "v.$ver"
+          git fetch origin "refs/tags/${tag}:refs/tags/${tag}" --depth=1 2>$null
+          $global:LASTEXITCODE = 0
+          $iso = (git log -1 --format=%cI $tag 2>$null)
+          $global:LASTEXITCODE = 0
+          if ($iso) {
+            $now = ([System.DateTimeOffset]::Parse($iso)).UtcDateTime
+            Write-Host "FileVersion anchored to tag $tag commit time ($iso)."
+          } else {
+            $now = [System.DateTime]::UtcNow
+            Write-Warning "Tag $tag not found; using UtcNow (fine for artifact-only runs; do not attach this MSI to a release)."
+          }
           $assemblyVer = "$($now.Year).$($now.Month).$($now.Day).$($now.ToString('HHmm'))"
 
           Write-Host "Version: $ver (assembly: $assemblyVer)"
@@ -211,3 +232,47 @@ jobs:
         with:
           name: ReciPro-v.${{ steps.version.outputs.version }}-win-arm64-experimental-portable
           path: ${{ steps.portable.outputs.root }}
+
+      # ---- 260613Cl Phase C: arm64 MSI (WiX、計画書 .project-guidance/ReciPro_WiX移行計画.md §5.2) ----
+      # MSI は x64 と同じ framework-dependent (portable ZIP の self-contained と役割分担)。
+      # 検査セットは validate-wix-msi.yml の arm64 staging と同一
+      - name: Stage arm64 MSI payload (framework-dependent publish)
+        shell: pwsh
+        run: |
+          $s = "artifacts\staging-msi-arm64"
+          dotnet publish ReciPro\ReciPro.csproj -c Release -r win-arm64 -p:Platform=ARM64 --self-contained false -o $s `
+            -p:AssemblyVersion=${{ steps.version.outputs.assembly_version }} -p:FileVersion=${{ steps.version.outputs.assembly_version }}
+          if ($LASTEXITCODE -ne 0) { throw "arm64 framework-dependent publish failed." }
+          Copy-Item ReciProSetup.Wix\LICENSE.rtf, ReciProSetup.Wix\REQUIREMENT.rtf $s
+          Get-ChildItem $s -Filter *.pdb | Remove-Item
+          if (Test-Path "$s\README-PORTABLE.txt") { throw "README-PORTABLE.txt leaked (portable marker must not be in MSI)" }
+          if (Test-Path "$s\coreclr.dll") { throw "self-contained runtime leaked into framework-dependent staging" }
+          $nat = Get-ChildItem $s -Filter "Crystallography.Native*.dll"
+          if ($nat.Count -ne 1) { throw "arm64 native DLL count != 1: $($nat.Count)" }
+          if (-not (Test-Path "$s\libxrl-11.dll") -or -not (Test-Path "$s\glfw3.dll")) { throw "arm64 native deps (libxrl/glfw) missing" }
+          function Get-PEMachine([string]$path) {
+            $b = [IO.File]::ReadAllBytes($path)
+            return [BitConverter]::ToUInt16($b, [BitConverter]::ToInt32($b, 0x3C) + 4)
+          }
+          foreach ($f in 'ReciPro.exe','Crystallography.Native.dll','libxrl-11.dll','glfw3.dll') {
+            $m = Get-PEMachine (Join-Path $PWD "$s\$f")
+            if ($m -ne 0xAA64) { throw ("{0}: PE machine 0x{1:X4} != 0xAA64" -f $f, $m) }
+          }
+          Write-Host "arm64 MSI staging OK: $((Get-ChildItem $s -Recurse -File).Count) files"
+
+      - name: Build arm64 MSI with WiX
+        shell: pwsh
+        run: |
+          dotnet build ReciProSetup.Wix\ReciProSetup.wixproj -c Release -p:InstallerPlatform=arm64 `
+            -p:ProductVersion=0.${{ steps.version.outputs.version }} `
+            -p:StagingDir="$PWD\artifacts\staging-msi-arm64"
+          if ($LASTEXITCODE -ne 0) { throw "WiX arm64 build failed (exit $LASTEXITCODE)." }
+          $msi = Get-Item "ReciProSetup.Wix\bin\Release\ReciProSetup-arm64.msi" -ErrorAction SilentlyContinue
+          if (-not $msi) { throw "ReciProSetup-arm64.msi was not produced." }
+          Write-Host "MSI built: $($msi.FullName) ($($msi.Length) bytes)"
+
+      - name: Upload arm64 MSI artifact
+        uses: actions/upload-artifact@v6
+        with:
+          name: ReciProSetup-arm64-msi-v.${{ steps.version.outputs.version }}
+          path: ReciProSetup.Wix/bin/Release/ReciProSetup-arm64.msi

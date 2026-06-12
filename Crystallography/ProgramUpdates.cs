@@ -16,7 +16,10 @@ public static class ProgramUpdates
     //260317Cl HttpClientはstaticで再利用するのがベストプラクティス
     private static readonly HttpClient httpClient = new();
 
-    public static (string Title, string Message, bool NeedUpdate, string URL, string Path) Check(string software, string version)
+    //260613Cl installerAssetName 追加 (デフォルト引数、既存呼び出しは無変更): アーキ別インストーラ資産名。
+    //          空なら従来どおり {software}Setup.msi。ReciPro の arm64 ビルドは "ReciProSetup-arm64.msi" を渡す。
+    //旧シグネチャ: public static (string Title, string Message, bool NeedUpdate, string URL, string Path) Check(string software, string version)
+    public static (string Title, string Message, bool NeedUpdate, string URL, string Path) Check(string software, string version, string installerAssetName = "")
     {
         try
         {
@@ -36,10 +39,26 @@ public static class ProgramUpdates
             if (Convert.ToDouble(newVersion) <= Convert.ToDouble(version.Substring(3, 5)))
                 return ("Update checked!", $"You are running the latest version of {software}. Thank you!", false, "", "");
             else
+            {
+                //260613Cl アーキ別インストーラ対応 + 資産存在チェック。
+                //          arm64 MSI は release 作成後に実機 smoke 合格を待って後付け添付されるため、
+                //          「新版は出ているが当該アーキのインストーラが未添付」の時間窓がある。
+                //          DL を 404 で失敗させる前に GET (ヘッダのみ) で存在を確認して案内する。
+                var asset = string.IsNullOrEmpty(installerAssetName) ? software + "Setup.msi" : installerAssetName;
+                var url = $"http://github.com/seto77/{software}/releases/download/v.{newVersion}/{asset}";
+                using (var res = httpClient.Send(new HttpRequestMessage(HttpMethod.Get, url), HttpCompletionOption.ResponseHeadersRead))
+                    if (!res.IsSuccessStatusCode)
+                        return ("Update checked!", $"New version {newVersion} is available, but the installer for this architecture ({asset}) " +
+                            $"has not been published yet. Please try again later, or download the latest package from\r\nhttps://github.com/seto77/{software}/releases/latest", false, "", "");
                 return ($"Update checked!", $"Now, new version {newVersion} is available.\r\n" +
                      $"If you press 'Yes', the current {software} will be closed immediately and the installer of new {software} launched.", true,
-                     $"http://github.com/seto77/{software}/releases/download/v.{newVersion}/{software}Setup.msi",
-                     UserAppDataPath + software + "Setup.msi");
+                     url, UserAppDataPath + asset);
+                //260613Cl 旧コード:
+                //return ($"Update checked!", $"Now, new version {newVersion} is available.\r\n" +
+                //     $"If you press 'Yes', the current {software} will be closed immediately and the installer of new {software} launched.", true,
+                //     $"http://github.com/seto77/{software}/releases/download/v.{newVersion}/{software}Setup.msi",
+                //     UserAppDataPath + software + "Setup.msi");
+            }
         }
         catch
         {

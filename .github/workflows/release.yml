@@ -75,15 +75,23 @@ jobs:
           # $historyLine | Set-Content -Path $notesPath -Encoding UTF8 # 260602Cl 旧: 変更履歴 1 行のみ
           @( # 260602Cl MSI を第一候補、portable ZIP を管理 PC 向け代替として release notes に明記
             # 260613Cl SHA256SUMS.txt の行を削除 (checksum 公開廃止: 同一チャネル配布では改竄対策にならず、初心者を惑わすため)
+            # 260613Cl Phase C: arm64 資産 (後付け添付) の案内行を追加
             $historyLine
             ""
             "Assets:"
             "- ReciProSetup.msi: recommended installer."
             "- ReciPro-v.$ver.zip: no-install, self-contained portable alternative for managed Windows PCs."
+            "- ReciProSetup-arm64.msi / ReciPro-v.$ver-arm64.zip: native Arm64 builds (attached after on-device verification; may appear slightly later than the x64 assets)."
           ) | Set-Content -Path $notesPath -Encoding UTF8
 
           # AssemblyVersion / FileVersion 用のタイムスタンプ (yyyy.M.d.HHmm UTC)
-          $now = [System.DateTime]::UtcNow
+          # 260613Cl ビルド時刻 → release commit (GITHUB_SHA) の commit 時刻に変更 (決定論化、Phase C)。
+          #   x64⇔arm64 の same-version cross-grade には両 MSI の FileVersion 完全一致が必要 (WiX計画 Phase A 実測:
+          #   incoming が古いと自前アセンブリの FileCopy が costing で省略され REP 削除後に欠落する)。
+          #   tag は GITHUB_SHA に作られるため、後続の arm64 ビルド (attach 経由) が tag の commit 時刻を
+          #   使うことで完全一致する。同一コミットの再実行でも同一 FileVersion になり再現性も向上。
+          # 旧: $now = [System.DateTime]::UtcNow
+          $now = ([System.DateTimeOffset]::Parse((git log -1 --format=%cI $env:GITHUB_SHA))).UtcDateTime
           $assemblyVer = "$($now.Year).$($now.Month).$($now.Day).$($now.ToString('HHmm'))"
 
           Write-Host "New version detected: $ver (tag: $tag, assembly: $assemblyVer)"

@@ -1,4 +1,5 @@
 # 260612Cl 追加: win-arm64 portable ZIP を既存 release へ後付け添付する (配布の段階導入の第 2 段階、方針 §6.1-6.2)。
+# 260613Cl Phase C: arm64 MSI (WiX、ReciProSetup-arm64.msi) も同時に添付する (WiX計画 §5.2)。
 #   段階 1 = build-arm64-portable.yml (artifact のみ。本ワークフローが reusable workflow として再利用する)
 #   段階 3 = release.yml の後続 job へ統合 (数リリース安定後)
 # 設計の要点 (方針 .project-guidance/ReciPro_ARM64化方針.md):
@@ -11,7 +12,7 @@
 #   - 260613Cl checksum (SHA256SUMS-arm64.txt) の生成・添付を廃止 (checksum 公開は同一チャネルでは
 #     改竄対策にならず、リリースページで初心者を惑わすため。作者決定。真正性保証は SignPath 署名で行う)
 #   - 添付失敗・やり直しは asset の手動削除 (gh release delete-asset <tag> <name>) → 再実行で復旧する
-name: Attach ARM64 portable ZIP to release (experimental)
+name: Attach ARM64 assets (ZIP + MSI) to release (experimental)
 
 on:
   workflow_dispatch:
@@ -43,6 +44,7 @@ jobs:
       tag: ${{ steps.check.outputs.tag }}
       version: ${{ steps.check.outputs.version }}
       zip_name: ${{ steps.check.outputs.zip_name }}
+      msi_name: ${{ steps.check.outputs.msi_name }} # 260613Cl Phase C: arm64 MSI
     steps:
       - name: Checkout
         uses: actions/checkout@v5
@@ -118,19 +120,24 @@ jobs:
 
           # asset 衝突検査: --clobber による差し替えはしない方針のため、既存なら手動削除を促して失敗
           # 260613Cl 作者指示で命名簡素化 (旧: ReciPro-v.X-win-arm64-experimental-portable.zip)。checksum は公開廃止
+          # 260613Cl Phase C: arm64 MSI (WiX) も添付対象に追加
           $zipName  = "ReciPro-v.$ver-arm64.zip"
+          $msiName  = "ReciProSetup-arm64.msi"
           if ($releaseExists) {
             $assets = @(gh release view $tag --json assets -q '.assets[].name')
-            if ($assets -contains $zipName) {
-              if ($dryRun) { Write-Warning "Asset '$zipName' already exists on $tag (dry_run continues)." }
-              else { throw "Asset '$zipName' already exists on $tag. Delete it manually first (gh release delete-asset $tag $zipName) and re-run." }
+            foreach ($name in @($zipName, $msiName)) {
+              if ($assets -contains $name) {
+                if ($dryRun) { Write-Warning "Asset '$name' already exists on $tag (dry_run continues)." }
+                else { throw "Asset '$name' already exists on $tag. Delete it manually first (gh release delete-asset $tag $name) and re-run." }
+              }
             }
           }
 
-          Write-Host "Target: $tag / version $ver / zip $zipName"
+          Write-Host "Target: $tag / version $ver / zip $zipName / msi $msiName"
           "tag=$tag"            >> $env:GITHUB_OUTPUT
           "version=$ver"        >> $env:GITHUB_OUTPUT
           "zip_name=$zipName"   >> $env:GITHUB_OUTPUT
+          "msi_name=$msiName"   >> $env:GITHUB_OUTPUT
 
   # ---- 2. ビルド: 段階 1 のワークフローをそのまま再利用 (検査込み。二重保守を作らない) ----
   build:
@@ -165,6 +172,12 @@ jobs:
         with:
           name: ${{ needs.build.outputs.artifact_name }}
           path: ${{ runner.temp }}/arm64-artifact
+
+      - name: Download arm64 MSI artifact # 260613Cl Phase C
+        uses: actions/download-artifact@v7
+        with:
+          name: ${{ needs.build.outputs.msi_artifact_name }}
+          path: ${{ runner.temp }}/arm64-msi
 
       - name: "Smoke 1: PE machine + native LoadLibrary (arm64-native pwsh)"
         shell: pwsh
@@ -298,6 +311,65 @@ jobs:
           Stop-Process -Id $p.Id -Force
           Write-Host "GUI launch smoke OK."
 
+      - name: "Smoke 4: arm64 MSI (Template check, per-user install, --smoke, uninstall)" # 260613Cl Phase C
+        shell: pwsh
+        run: |
+          # MSI の Template/プロパティ検査 (x64 機での誤実行は Windows Installer が拒否するが、配布前に自前でも確認)
+          $msi = Join-Path $env:RUNNER_TEMP "arm64-msi/${{ needs.preflight.outputs.msi_name }}"
+          if (-not (Test-Path $msi)) { throw "MSI artifact not found: $msi" }
+          $wi = New-Object -ComObject WindowsInstaller.Installer
+          $db = $wi.GetType().InvokeMember('OpenDatabase','InvokeMethod',$null,$wi,@($msi,0))
+          $si = $db.GetType().InvokeMember('SummaryInformation','GetProperty',$null,$db,@(0))
+          $template = $si.GetType().InvokeMember('Property','GetProperty',$null,$si,@(7))
+          Write-Host "MSI Template = $template"
+          if ($template -notlike 'Arm64*') { throw "MSI Template is not Arm64: $template" }
+          function Get-MsiProp($name) {
+            $view = $db.GetType().InvokeMember('OpenView','InvokeMethod',$null,$db,@("SELECT Value FROM Property WHERE Property='$name'"))
+            $view.GetType().InvokeMember('Execute','InvokeMethod',$null,$view,$null) | Out-Null
+            $rec = $view.GetType().InvokeMember('Fetch','InvokeMethod',$null,$view,$null)
+            if ($rec) { $rec.GetType().InvokeMember('StringData','GetProperty',$null,$rec,@(1)) } else { $null }
+          }
+          $uc = Get-MsiProp 'UpgradeCode'
+          if ($uc -ne '{A81303DC-E1CA-44F3-AE3A-6C7CAC08E8D8}') { throw "UpgradeCode mismatch: $uc" }
+          $pv = Get-MsiProp 'ProductVersion'
+          if ($pv -ne '0.${{ needs.preflight.outputs.version }}') { throw "ProductVersion mismatch: $pv" }
+
+          # MSI 版は framework-dependent → smoke 実行に .NET 10 Desktop Runtime (arm64) が必要。
+          # ランナーに無ければ dotnet-install で導入 (DOTNET_ROOT は同一ステップ内の子プロセスに引き継がれる)
+          $hasDesktop = $false
+          try { $hasDesktop = ((dotnet --list-runtimes) | Select-String "Microsoft.WindowsDesktop.App 10\.") -ne $null } catch {}
+          if (-not $hasDesktop) {
+            Write-Host "Installing .NET 10 Desktop Runtime (arm64) for the smoke test..."
+            Invoke-WebRequest https://dot.net/v1/dotnet-install.ps1 -OutFile "$env:RUNNER_TEMP\dotnet-install.ps1"
+            & "$env:RUNNER_TEMP\dotnet-install.ps1" -Runtime windowsdesktop -Channel 10.0 -Architecture arm64 -InstallDir "$env:RUNNER_TEMP\dotnet"
+            $env:DOTNET_ROOT = "$env:RUNNER_TEMP\dotnet"
+          }
+
+          # per-user silent install (ALLUSERS/MSIINSTALLPERUSER は渡さない = per-user 固定パッケージの既定)
+          $p = Start-Process msiexec -ArgumentList '/i', "`"$msi`"", '/qn', '/l*v', "$env:RUNNER_TEMP\msi-install.log" -Wait -PassThru
+          if ($p.ExitCode -ne 0) { throw "MSI install failed (exit $($p.ExitCode)). See msi-install.log artifact." }
+          $appDir = "$env:LOCALAPPDATA\Crystallography Software\ReciPro"
+          if (-not (Test-Path "$appDir\ReciPro.exe")) { throw "installed ReciPro.exe missing in $appDir" }
+
+          # インストール実体で --smoke (黙殺フォールバック型故障の検出。Smoke 2 と同一アサート)
+          $out = Join-Path $env:RUNNER_TEMP "msi-smoke-result.txt"
+          $p = Start-Process -FilePath "$appDir\ReciPro.exe" -ArgumentList @("--smoke", "`"$out`"") -WorkingDirectory $appDir -PassThru
+          if (-not $p.WaitForExit(600000)) { Stop-Process -Id $p.Id -Force; throw "--smoke (MSI install) did not finish within 10 minutes." }
+          if (-not (Test-Path $out)) { throw "--smoke produced no output file (exit $($p.ExitCode))." }
+          $result = Get-Content $out -Raw
+          Write-Host $result
+          if ($p.ExitCode -ne 0) { throw "--smoke reported failure (exit $($p.ExitCode))." }
+          foreach ($expect in @("arch=Arm64", "nativeEnabled=True", "xraylibEnabled=True", "glfwEnabled=True")) {
+            if ($result -notmatch [regex]::Escape($expect)) { throw "--smoke output missing expected '$expect'." }
+          }
+
+          # アンインストールしてランナーを汚さない (残骸検査込み)
+          $code = Get-MsiProp 'ProductCode'
+          $p = Start-Process msiexec -ArgumentList '/x', $code, '/qn', '/l*v', "$env:RUNNER_TEMP\msi-uninstall.log" -Wait -PassThru
+          if ($p.ExitCode -ne 0) { throw "MSI uninstall failed (exit $($p.ExitCode))." }
+          if (Test-Path "$appDir\ReciPro.exe") { throw "uninstall left ReciPro.exe behind" }
+          Write-Host "MSI smoke OK (install -> --smoke -> uninstall)."
+
       - name: Upload smoke diagnostics on failure
         if: failure()
         uses: actions/upload-artifact@v6
@@ -306,6 +378,9 @@ jobs:
           path: |
             ${{ runner.temp }}/smoke3-desktop.png
             ${{ runner.temp }}/smoke-result.txt
+            ${{ runner.temp }}/msi-smoke-result.txt
+            ${{ runner.temp }}/msi-install.log
+            ${{ runner.temp }}/msi-uninstall.log
           if-no-files-found: ignore
 
       - name: Create release ZIP
@@ -317,6 +392,10 @@ jobs:
           $zip  = Join-Path $env:RUNNER_TEMP "${{ needs.preflight.outputs.zip_name }}"
           Compress-Archive -Path (Join-Path $env:RUNNER_TEMP "arm64-artifact/ReciPro") -DestinationPath $zip -Force
           "zip=$zip"   >> $env:GITHUB_OUTPUT
+          # 260613Cl Phase C: smoke 済み MSI も添付対象に
+          $msi = Join-Path $env:RUNNER_TEMP "arm64-msi/${{ needs.preflight.outputs.msi_name }}"
+          if (-not (Test-Path $msi)) { throw "MSI not found: $msi" }
+          "msi=$msi"   >> $env:GITHUB_OUTPUT
 
       - name: Upload release assets as workflow artifact (inspection record)
         # dry_run の検分用 + 実添付時の記録。release に上がる実物と bit 同一
@@ -325,6 +404,7 @@ jobs:
           name: release-assets-${{ needs.preflight.outputs.tag }}-win-arm64-experimental
           path: |
             ${{ steps.assets.outputs.zip }}
+            ${{ steps.assets.outputs.msi }}
 
       - name: Attach to release
         if: ${{ !inputs.dry_run }}
@@ -336,13 +416,14 @@ jobs:
 
           # preflight から時間が経っているため、直前にもう一度 asset 衝突を検査する
           $assets = @(gh release view $tag --json assets -q '.assets[].name')
-          $name = '${{ needs.preflight.outputs.zip_name }}'
-          if ($assets -contains $name) {
-            throw "Asset '$name' appeared on $tag after preflight. Delete it manually (gh release delete-asset $tag $name) and re-run."
+          foreach ($name in @('${{ needs.preflight.outputs.zip_name }}', '${{ needs.preflight.outputs.msi_name }}')) {
+            if ($assets -contains $name) {
+              throw "Asset '$name' appeared on $tag after preflight. Delete it manually (gh release delete-asset $tag $name) and re-run."
+            }
           }
 
           # --clobber は使わない (方針 §6.2)。部分失敗時は手動で delete-asset → 再実行
-          # 260613Cl checksum の添付を廃止 (ZIP のみ)
-          gh release upload $tag "${{ steps.assets.outputs.zip }}"
+          # 260613Cl checksum の添付は廃止。Phase C: ZIP + MSI を添付
+          gh release upload $tag "${{ steps.assets.outputs.zip }}" "${{ steps.assets.outputs.msi }}"
           if ($LASTEXITCODE -ne 0) { throw "gh release upload failed (exit $LASTEXITCODE)." }
           Write-Host "Attached to https://github.com/${{ github.repository }}/releases/tag/$tag"
