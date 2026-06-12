@@ -31,7 +31,7 @@ Release artifacts will be signed using Windows Authenticode signing and then pub
 The intended signing scope is:
 
 - `ReciProSetup.msi`
-- ReciPro executable files built from this repository
+- ReciPro executable files built from this repository, including the single-file `ReciPro.exe` inside the portable ZIP packages (win-x64; the experimental win-arm64 package may remain unsigned until it graduates from experimental status)
 - ReciPro libraries built from this repository
 
 Third-party binaries should not be re-signed as if they were maintained by ReciPro unless their provenance and redistribution terms explicitly permit that use. See `THIRD-PARTY-NOTICES.md` for bundled or referenced third-party components and data.

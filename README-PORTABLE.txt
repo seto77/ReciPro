@@ -41,6 +41,11 @@ startup. Structure Viewer and related 3D views require OpenGL provided by
 your graphics driver; ReciPro still starts and runs the other functions even
 when OpenGL initialization fails.
 
+On Windows on ARM devices this x64 package runs under the built-in x64
+emulation; an experimental native ARM64 portable package
+(ReciPro-*-win-arm64-experimental-portable.zip) is also available on the
+GitHub Releases page. (260612Cl)
+
 Notes for managed PCs
 ---------------------
 

@@ -1,4 +1,4 @@
-ReciPro portable ZIP package for Windows on ARM (experimental) (260611Cl)
+ReciPro portable ZIP package for Windows on ARM (experimental) (260612Cl)
 ==========================================================================
 
 This package is an EXPERIMENTAL native ARM64 build of ReciPro for
@@ -22,7 +22,7 @@ How to run
 
    If you already extracted a blocked ZIP, unblock the extracted files:
 
-     Get-ChildItem .\ReciPro -Recurse | Unblock-File
+     Get-ChildItem .\ReciPro -Recurse -File | Unblock-File
 
 3. Run ReciPro.exe from the extracted ReciPro folder.
    Do not run ReciPro.exe directly from inside the ZIP viewer; extract
@@ -74,17 +74,18 @@ Notes
   the same PC (under emulation).
 - The in-app "Check Updates" menu is hidden in the portable package.
   To update, download the latest ARM64 package from the official
-  ReciPro GitHub repository.
+  ReciPro GitHub Releases page:
+  https://github.com/seto77/ReciPro/releases/latest
 - Windows Defender SmartScreen or institutional security software may
   warn about newly downloaded unsigned research software. Download
-  ReciPro only from the official GitHub repository (the Releases page,
-  or its Actions artifacts while this ARM64 package is experimental):
-  https://github.com/seto77/ReciPro
+  ReciPro only from the official GitHub Releases page:
+  https://github.com/seto77/ReciPro/releases/latest
 
 Verification
 ------------
 
-If SHA256SUMS-win-arm64-experimental.txt is provided alongside this
-package, you can verify the downloaded ZIP file in PowerShell:
+SHA256SUMS-win-arm64-experimental.txt is published next to this
+package on the GitHub Releases page. You can verify the downloaded
+ZIP file in PowerShell:
 
   Get-FileHash .\ReciPro-*-win-arm64-experimental-portable.zip -Algorithm SHA256
