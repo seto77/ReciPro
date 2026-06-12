@@ -141,6 +141,13 @@ jobs:
           if ($LASTEXITCODE -ne 0) { throw "WiX arm64 build failed." }
           if (-not (Test-Path "ReciProSetup.Wix\bin\Release\ReciProSetup-win-arm64.msi")) { throw "ReciProSetup-win-arm64.msi not produced." }
 
+      - name: Report MSI sizes
+        shell: pwsh
+        run: |
+          Get-ChildItem ReciProSetup.Wix\bin\Release\*.msi | ForEach-Object {
+            Write-Host ("{0}: {1:N0} bytes ({2:N2} MB)" -f $_.Name, $_.Length, ($_.Length / 1MB))
+          }
+
       - name: Verify MSI properties (Template / UpgradeCode / version / per-user)
         shell: pwsh
         run: |
