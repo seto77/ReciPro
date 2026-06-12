@@ -87,7 +87,7 @@ jobs:
           $native = Get-ChildItem "ReciPro\bin\Release" -Filter "Crystallography.Native*.dll" -File
           if ($native.Count -ne 3) { throw "native DLL count != 3: $($native.Count)" }
           $native | Copy-Item -Destination $s
-          Copy-Item ReciProSetup\LICENSE.rtf, ReciProSetup\REQUIREMENT.rtf $s
+          Copy-Item ReciProSetup.Wix\LICENSE.rtf, ReciProSetup.Wix\REQUIREMENT.rtf $s
           # 旧 vdproj MSI と内容を揃える: 参照プロジェクトの分離 pdb は同梱しない (portable ZIP と同方針)
           Get-ChildItem $s -Filter *.pdb | Remove-Item
           # 出荷前検査 (計画書 §3 D3)
@@ -103,7 +103,7 @@ jobs:
           dotnet publish ReciPro\ReciPro.csproj -c Release -r win-arm64 -p:Platform=ARM64 --self-contained false -o $s `
             -p:AssemblyVersion=${{ steps.version.outputs.assembly_version }} -p:FileVersion=${{ steps.version.outputs.assembly_version }}
           if ($LASTEXITCODE -ne 0) { throw "arm64 publish failed." }
-          Copy-Item ReciProSetup\LICENSE.rtf, ReciProSetup\REQUIREMENT.rtf $s
+          Copy-Item ReciProSetup.Wix\LICENSE.rtf, ReciProSetup.Wix\REQUIREMENT.rtf $s
           Get-ChildItem $s -Filter *.pdb | Remove-Item
           if (Test-Path "$s\README-PORTABLE.txt") { throw "README-PORTABLE.txt leaked" }
           if (Test-Path "$s\coreclr.dll") { throw "self-contained runtime leaked" }

@@ -64,7 +64,8 @@
     <!-- UI: WixUI_InstallDir (Everyone/Just me ラジオは廃止し per-user 固定、計画書 D6)。
          REQUIREMENT.rtf は専用ダイアログを設けずファイル同梱のみ (staging 経由)。 -->
     <ui:WixUI Id="WixUI_InstallDir" InstallDirectory="INSTALLFOLDER" />
-    <WixVariable Id="WixUILicenseRtf" Value="..\ReciProSetup\LICENSE.rtf" />
+    <!-- 260613Cl vdproj 削除 (Phase B-3) に伴い rtf を本フォルダへ移動 (旧: ..\ReciProSetup\LICENSE.rtf) -->
+    <WixVariable Id="WixUILicenseRtf" Value="LICENSE.rtf" />
 
     <!-- 完了画面「Launch ReciPro」既定 ON (旧 EnableLaunchApplication.js が MSI に注入していた CA の等価再現) -->
     <Property Id="WIXUI_EXITDIALOGOPTIONALCHECKBOX" Value="1" />

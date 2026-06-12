@@ -16,12 +16,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Crystallography.OpenGL", "C
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Crystallography.Native", "Crystallography.Native\Crystallography.Native.vcxproj", "{0A6070E5-8843-4C4B-A4ED-4ABC55BFDBDD}"
 EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "ReciProSetup", "ReciProSetup\ReciProSetup.vdproj", "{8083E96B-786B-4351-87EF-8546C9C8B297}"
-	ProjectSection(ProjectDependencies) = postProject
-		{3AABEFB0-E84E-4AF6-8496-4D1F33C8F517} = {3AABEFB0-E84E-4AF6-8496-4D1F33C8F517}
-		{BE7CC301-70E0-4BAA-9349-FDA49B38CC93} = {BE7CC301-70E0-4BAA-9349-FDA49B38CC93}
-	EndProjectSection
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{D7784657-1E02-4C1F-A476-D3BE1F94FA27}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
@@ -78,11 +72,6 @@ Global
 		{0A6070E5-8843-4C4B-A4ED-4ABC55BFDBDD}.Release|ARM64.ActiveCfg = Release|ARM64
 		{0A6070E5-8843-4C4B-A4ED-4ABC55BFDBDD}.Release|ARM64.Build.0 = Release|ARM64
 		{0A6070E5-8843-4C4B-A4ED-4ABC55BFDBDD}.Release|x64.ActiveCfg = Release|x64
-		{8083E96B-786B-4351-87EF-8546C9C8B297}.Debug|Any CPU.ActiveCfg = Debug
-		{8083E96B-786B-4351-87EF-8546C9C8B297}.Debug|x64.ActiveCfg = Debug
-		{8083E96B-786B-4351-87EF-8546C9C8B297}.Release|Any CPU.ActiveCfg = Release
-		{8083E96B-786B-4351-87EF-8546C9C8B297}.Release|ARM64.ActiveCfg = Release
-		{8083E96B-786B-4351-87EF-8546C9C8B297}.Release|x64.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
