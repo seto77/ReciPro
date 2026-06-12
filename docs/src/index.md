@@ -37,7 +37,9 @@
 | Memory | - | 16 GB or more |
 | CPU | - | 8+ cores (for dynamical calculations) |
 
-**macOS (unofficial)** : ReciPro officially supports Windows only, but the portable ZIP package has been reported to run on macOS (Apple Silicon) using the Sikarugir Wine wrapper combined with the Mesa3D OpenGL driver. A user-published setup guide is available at <https://github.com/Ryo-fkushima/ReciPro_macOS_memo>. Note that this route is not officially supported, and some symbols (Å, superscripts, arrows) may be displayed incorrectly.
+**Windows on ARM (native, experimental)** : An experimental native ARM64 portable package (`ReciPro-v.X-win-arm64-experimental-portable.zip`, self-contained — no .NET Runtime installation required) is available on the [releases page](https://github.com/seto77/ReciPro/releases/latest). The regular x64 packages also run on ARM64 Windows under the built-in emulation. See [Troubleshooting](en/troubleshooting.md#windows-on-arm) for setup notes and limitations.
+
+**macOS (unofficial)** : ReciPro officially supports Windows only, but the **win-x64** portable ZIP package has been reported to run on macOS (Apple Silicon) using the Sikarugir Wine wrapper combined with the Mesa3D OpenGL driver. A user-published setup guide is available at <https://github.com/Ryo-fkushima/ReciPro_macOS_memo>. Note that this route is not officially supported, and some symbols (Å, superscripts, arrows) may be displayed incorrectly. The ARM64 ZIP does **not** run on macOS + Wine, and the current x64 + Rosetta 2 route is expected to stop working from macOS 28 (autumn 2027) — see [Troubleshooting](en/troubleshooting.md#mac-linux) for details.
 
 ## How to Use This Manual
 

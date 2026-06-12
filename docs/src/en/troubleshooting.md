@@ -168,11 +168,11 @@ If settings become corrupted:
 
 ## Frequently asked questions
 
-### Is there a Mac (or Linux) version?
+### Is there a Mac (or Linux) version? {#mac-linux}
 
 There is no official Mac or Linux version. ReciPro depends on the **.NET Desktop Runtime**, which currently runs on Windows only. (Issue [#12](https://github.com/seto77/ReciPro/issues/12))
 
-However, an unofficial route has been reported to work on macOS: the **portable ZIP** distribution (available on the [releases page](https://github.com/seto77/ReciPro/releases/latest)) runs on macOS (Apple Silicon) using the **Sikarugir** Wine wrapper combined with the **Mesa3D** OpenGL driver — no Windows license or virtual machine required. A step-by-step setup guide published by a user is available at <https://github.com/Ryo-fkushima/ReciPro_macOS_memo>.
+However, an unofficial route has been reported to work on macOS: the **win-x64 portable ZIP** distribution (available on the [releases page](https://github.com/seto77/ReciPro/releases/latest)) runs on macOS (Apple Silicon) using the **Sikarugir** Wine wrapper combined with the **Mesa3D** OpenGL driver — no Windows license or virtual machine required. A step-by-step setup guide published by a user is available at <https://github.com/Ryo-fkushima/ReciPro_macOS_memo>.
 
 Note that this configuration is not officially supported or fully verified. A known limitation is that some symbols (Å, superscripts, arrows) may be displayed incorrectly.
 
@@ -184,9 +184,23 @@ Note that this configuration is not officially supported or fully verified. A kn
 
 If the fonts are not installed, ReciPro keeps its default font names, so nothing gets worse — the symbols simply remain garbled.
 
-### Does ReciPro run on Windows on ARM (ARM64)?
+**Outlook for this route — two honest notes:**
 
-Yes. Recent versions run on ARM64 Windows with the .NET Desktop Runtime (x64) installed (confirmed working from around v4.913 with .NET 10). (Issue [#47](https://github.com/seto77/ReciPro/issues/47))
+- The experimental **win-arm64** ZIP does **not** run on current Macs, even on Apple Silicon: today's macOS Wine builds (including Sikarugir) execute x86_64 Windows binaries through Rosetta 2 and have no mechanism to run ARM64 Windows binaries. On a Mac, always use the **win-x64** portable ZIP.
+- Apple is phasing out Rosetta 2. macOS 27 (autumn 2026) is announced as the last version with full Rosetta 2 support, so the current x64 + Rosetta route is expected to stop working from macOS 28 (autumn 2027). A native ARM64 Wine for macOS is under development upstream; if it materializes, the win-arm64 ZIP may become the successor on Mac, but that cannot be promised yet.
+
+### Does ReciPro run on Windows on ARM (ARM64)? {#windows-on-arm}
+
+Yes — there are two routes:
+
+- **Native ARM64 package (experimental, recommended)**: from v4.938, an experimental native ARM64 portable package (`ReciPro-v.X-win-arm64-experimental-portable.zip`) is published on the [releases page](https://github.com/seto77/ReciPro/releases/latest). It is self-contained, so no .NET Runtime installation is required — extract the ZIP to a user-writable folder and run `ReciPro.exe`. If Windows blocks the downloaded ZIP (Mark of the Web), right-click the ZIP → **Properties** → check **Unblock** → **OK** *before* extracting (or run `Unblock-File .\ReciPro-*-win-arm64-experimental-portable.zip` in PowerShell). Details are in the bundled `README-PORTABLE.txt`.
+- **x64 package under emulation**: the regular MSI installer and the win-x64 portable ZIP also run on ARM64 Windows through the built-in x64 emulation, with the .NET Desktop Runtime (x64) installed (confirmed from around v4.913 with .NET 10). Heavy computations run slower than the native build. (Issue [#47](https://github.com/seto77/ReciPro/issues/47))
+
+Notes on the native ARM64 package:
+
+- Intel MKL does not exist for ARM64, so the corresponding solver options and menu items are hidden. Dynamical calculations use the bundled NEON-optimized native library; in representative validation cases its results matched the x64 build within the expected floating-point tolerance.
+- 3D views (Structure Viewer and related windows) can run, but Windows on ARM provides OpenGL only through a Direct3D 12 translation layer (GLOn12 / Mesa), so 3D rendering is noticeably slower than on a PC with a native OpenGL driver — this is a platform limitation, not a bug, and a native ARM64 build cannot change it. The **High quality (Per-Pixel Linked List)** transparency mode in Structure Viewer is particularly slow on this driver stack; the default **Approximate** mode is recommended. If 3D views fail to start, install "OpenCL, OpenGL, and Vulkan Compatibility Pack" from the Microsoft Store.
+- The ARM64 package does **not** run on macOS + Wine (see the previous question). On a Mac, use the win-x64 portable ZIP.
 
 ### How should I cite ReciPro?
 
