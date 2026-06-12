@@ -30,10 +30,16 @@ jobs:
           # アップグレード連鎖テスト用に build 番号を +1 した版数も用意 (旧 release MSI より必ず新しくする)
           $parts = $ver.Split('.')
           $bumped = "$($parts[0]).$([int]$parts[1] + 1)"
-          Write-Host "version=$ver bumped=$bumped"
+          # FileVersion 注入は必須 (260612Cl 実測): 注入しないと csproj 静的値 (過去日付) が使われ、
+          # 旧 release (より新しい FileVersion) からのアップグレードで MSI のファイルバージョン規則により
+          # 自前アセンブリ 7 本の FileCopy が costing 段階で省略され、REP 削除後に欠落する
+          $now = [System.DateTime]::UtcNow
+          $assemblyVer = "$($now.Year).$($now.Month).$($now.Day).$($now.ToString('HHmm'))"
+          Write-Host "version=$ver bumped=$bumped assembly=$assemblyVer"
           "version=$ver"                  >> $env:GITHUB_OUTPUT
           "product_version=0.$ver"        >> $env:GITHUB_OUTPUT
           "test_product_version=0.$bumped" >> $env:GITHUB_OUTPUT
+          "assembly_version=$assemblyVer" >> $env:GITHUB_OUTPUT
 
       - name: Setup .NET 10
         uses: actions/setup-dotnet@v5
@@ -74,7 +80,8 @@ jobs:
         shell: pwsh
         run: |
           $s = "artifacts\staging-msi-x64"
-          dotnet publish ReciPro\ReciPro.csproj -c Release -p:Platform=x64 --self-contained false -o $s --no-restore
+          dotnet publish ReciPro\ReciPro.csproj -c Release -p:Platform=x64 --self-contained false -o $s --no-restore `
+            -p:AssemblyVersion=${{ steps.version.outputs.assembly_version }} -p:FileVersion=${{ steps.version.outputs.assembly_version }}
           if ($LASTEXITCODE -ne 0) { throw "x64 publish failed." }
           # Crystallography.Native 3 flavor は publish グラフ外 (vcxproj が bin\Release へ後置き) → 明示コピー
           $native = Get-ChildItem "ReciPro\bin\Release" -Filter "Crystallography.Native*.dll" -File
@@ -93,7 +100,8 @@ jobs:
         shell: pwsh
         run: |
           $s = "artifacts\staging-msi-arm64"
-          dotnet publish ReciPro\ReciPro.csproj -c Release -r win-arm64 -p:Platform=ARM64 --self-contained false -o $s
+          dotnet publish ReciPro\ReciPro.csproj -c Release -r win-arm64 -p:Platform=ARM64 --self-contained false -o $s `
+            -p:AssemblyVersion=${{ steps.version.outputs.assembly_version }} -p:FileVersion=${{ steps.version.outputs.assembly_version }}
           if ($LASTEXITCODE -ne 0) { throw "arm64 publish failed." }
           Copy-Item ReciProSetup\LICENSE.rtf, ReciProSetup\REQUIREMENT.rtf $s
           Get-ChildItem $s -Filter *.pdb | Remove-Item
