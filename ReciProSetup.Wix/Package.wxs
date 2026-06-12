@@ -19,7 +19,8 @@
                   Schedule="afterInstallInitialize"
                   DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
 
-    <MediaTemplate EmbedCab="yes" />
+    <!-- CompressionLevel 既定 (mszip) では旧 vdproj MSI より ~0.8MB 大きかったため high を明示 (260613Cl) -->
+    <MediaTemplate EmbedCab="yes" CompressionLevel="high" />
 
     <Icon Id="AppIcon.ico" SourceFile="..\ReciPro\App.ico" />
 
