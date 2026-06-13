@@ -151,6 +151,7 @@
             disableOpneGLToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             toolStripMenuItemDisableTextRendering = new System.Windows.Forms.ToolStripMenuItem();
             toolStripMenuItemUseMKL = new System.Windows.Forms.ToolStripMenuItem();
+            toolStripMenuItemIonicScattering = new System.Windows.Forms.ToolStripMenuItem();
             toolStripMenuItemDarkMode = new System.Windows.Forms.ToolStripMenuItem();
             toolStripSeparator20 = new System.Windows.Forms.ToolStripSeparator();
             powderDiffractionFunctionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -1077,7 +1078,7 @@
             // 
             resources.ApplyResources(optionToolStripMenuItem, "optionToolStripMenuItem");
             captureExtender.SetCapture(optionToolStripMenuItem, true);
-            optionToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { toolTipToolStripMenuItem, toolStripMenuItemUseMillerBravais, toolStripSeparator11, resetRegistryToolStripMenuItem, toolStripMenuItemDisableNative, disableOpneGLToolStripMenuItem, toolStripMenuItemDisableTextRendering, toolStripMenuItemUseMKL, toolStripMenuItemDarkMode, toolStripSeparator20, powderDiffractionFunctionToolStripMenuItem, toolStripSeparatorCapture, captureGUIToolStripMenuItem });
+            optionToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { toolTipToolStripMenuItem, toolStripMenuItemUseMillerBravais, toolStripSeparator11, resetRegistryToolStripMenuItem, toolStripMenuItemDisableNative, disableOpneGLToolStripMenuItem, toolStripMenuItemDisableTextRendering, toolStripMenuItemUseMKL, toolStripMenuItemIonicScattering, toolStripMenuItemDarkMode, toolStripSeparator20, powderDiffractionFunctionToolStripMenuItem, toolStripSeparatorCapture, captureGUIToolStripMenuItem });
             optionToolStripMenuItem.Name = "optionToolStripMenuItem";
             // 
             // toolTipToolStripMenuItem
@@ -1131,9 +1132,16 @@
             toolStripMenuItemUseMKL.CheckOnClick = true;
             toolStripMenuItemUseMKL.Name = "toolStripMenuItemUseMKL";
             toolStripMenuItemUseMKL.CheckedChanged += toolStripMenuItemUseMKL_CheckedChanged;
-            // 
+            //
+            // toolStripMenuItemIonicScattering
+            //
+            resources.ApplyResources(toolStripMenuItemIonicScattering, "toolStripMenuItemIonicScattering");
+            toolStripMenuItemIonicScattering.CheckOnClick = true;
+            toolStripMenuItemIonicScattering.Name = "toolStripMenuItemIonicScattering";
+            toolStripMenuItemIonicScattering.CheckedChanged += toolStripMenuItemIonicScattering_CheckedChanged;
+            //
             // toolStripMenuItemDarkMode
-            // 
+            //
             resources.ApplyResources(toolStripMenuItemDarkMode, "toolStripMenuItemDarkMode");
             toolStripMenuItemDarkMode.CheckOnClick = true;
             toolStripMenuItemDarkMode.Name = "toolStripMenuItemDarkMode";
@@ -1515,6 +1523,7 @@
         private System.Windows.Forms.ToolStripMenuItem renameToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemDisableNative;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemUseMKL;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemIonicScattering; // 260613Cl 追加
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemDarkMode; // 260428Cl 追加
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemUseMillerBravais;                                                                 // 260421Cl 追加
         private System.Windows.Forms.ToolStripSeparator toolStripSeparatorCapture; // 260323Cl 追加

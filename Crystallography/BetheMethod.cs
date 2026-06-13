@@ -24,6 +24,22 @@ using DVec = MathNet.Numerics.LinearAlgebra.Complex.DenseVector;
 
 namespace Crystallography;
 
+/// <summary>
+/// 弾性電子散乱因子におけるイオンの扱い (260613Cl 追加)。
+/// 物理・文献的根拠は .project-guidance/ReciPro_イオン散乱因子設計.md を参照。
+/// </summary>
+public enum ElasticIonModel
+{
+    /// <summary>中性原子 IAM (既定)。割当イオンでも中性原子の Peng 因子を使う (sub→0)。abTEM/Kirkland のデファクト標準で最も堅牢。</summary>
+    Neutral,
+    /// <summary>割当イオンの Peng 有限部分のみ (旧既定挙動)。イオンの電子密度収縮形は持つが裸単極子テールを欠く中間近似。
+    /// UI には出さないが (FormMain は Neutral/IonFull の 2 状態トグル)、IonFull で単位胞が非中性 (Σq≠0) のときの自動フォールバック先がこの挙動。macro からは明示選択可。</summary>
+    IonScreened,
+    /// <summary>割当イオンの有限部分 + g≠0 の Mott-Bethe 単極子 0.2393366·ΔZ/s² [nm]。g=0(平均内部ポテンシャル)は別管理、単位胞電荷中性 Σq=0 を要求。
+    /// Σq≠0 の結晶では単極子が ill-defined になるため getU が自動的に単極子を落とし <see cref="IonScreened"/> 相当へフォールバックする。</summary>
+    IonFull,
+}
+
 /// <summary>Bethe法による動力学計算を提供するクラス。すべて、単位はnm</summary>
 [Serializable]
 public class BetheMethod
@@ -94,6 +110,33 @@ public class BetheMethod
     /// 重い元素ではバックグラウンドが相対的に大きく、菊池バンドのコントラストが低下する。
     /// </summary>
     public bool IncludeTDSBackground { get; set; }
+
+    //260613Cl 追加
+    private static ElasticIonModel _elasticIonModel = ElasticIonModel.Neutral;
+    /// <summary>
+    /// 弾性散乱因子のイオンの扱い (260613Cl 追加, グローバル設定・既定 = Neutral)。FormMain のオプションメニューで切替。
+    /// Neutral = 中性原子 IAM / IonScreened = 割当イオンの有限部分 (旧挙動) / IonFull = 有限 + g≠0 の Mott-Bethe 単極子。
+    /// プロセス全体で共有 (全結晶の getU が参照)。動力学計算は開始時に uDictionary を Clear するので切替後も整合する。
+    /// 計算せず表示だけ更新する経路 (SpotInfo 等) 向けには切替側で <see cref="ClearUCache"/> を呼ぶ。意味は <see cref="ElasticIonModel"/> enum 参照。
+    /// </summary>
+    public static ElasticIonModel ElasticIonModel { get => _elasticIonModel; set => _elasticIonModel = value; }
+
+    /// <summary>U のキャッシュ (uDictionary) を破棄する。260613Cl 追加: ElasticIonModel 切替後に再計算なしで表示を更新する経路向け。</summary>
+    public void ClearUCache() => uDictionary.Clear();
+
+    /// <summary>単位胞の正味電荷 Σ(Multiplicity·Occ·Valence) を返す。260613Cl 追加: IonFull の電荷中性 (Σq=0) チェック用。</summary>
+    public double NetCellCharge()
+    {
+        double q = 0;
+        var peng = AtomStatic.ElectronScatteringPeng;
+        foreach (var a in Crystal.Atoms)
+        {
+            int z = a.AtomicNumber, sub = a.SubNumberElectron;
+            if (z >= 1 && z < peng.Length && peng[z] != null && sub >= 0 && sub < peng[z].Length)
+                q += a.Multiplicity * a.Occ * peng[z][sub].Valence;
+        }
+        return q;
+    }
 
     /// <summary>
     /// EBSD 計算で、近傍方向ごとに Find_gVectors の事前計算結果を共有するブロックサイズ。
@@ -3431,12 +3474,25 @@ public class BetheMethod
             //var k0 = UniversalConstants.Convert.EnergyToElectronWaveNumber(kV);
             double a = Crystal.A, b = Crystal.B, c = Crystal.C;
 
+            //260614Cl IonFull で単位胞が非中性 (Σq≠0) のときは単極子を足さず IonScreened (有限部分のみ) にフォールバックする。
+            //  g≠0 の裸単極子は単位胞電荷中性 Σq=0 を前提とし、非中性では周期格子の正味電荷で ill-defined になるため。
+            //  有限部分 (es.Factor) は Σq に依らず well-defined なので維持。判定は uDictionary キャッシュミス時 (= 計算実体時) に毎回行うので
+            //  原子編集 (AddAtoms/DeleteAtoms) にも追従し、static モデルの per-instance キャッシュとも鮮度が一致する。
+            bool addMonopole = _elasticIonModel == ElasticIonModel.IonFull && Math.Abs(NetCellCharge()) <= 1e-6;
+
             Complex fReal = 0, fImag = 0;
             foreach (var atoms in Crystal.Atoms)
             {
-                var es = AtomStatic.ElectronScatteringPeng[atoms.AtomicNumber][atoms.SubNumberElectron];//5 gaussian
+                //260613Cl ElasticIonModel 分岐: Neutral=中性原子(sub→0 強制, [z][0] は常に中性エントリ) / IonScreened(旧挙動)=割当イオンの有限部分 / IonFull=有限+g≠0 単極子
+                int sub = _elasticIonModel == ElasticIonModel.Neutral ? 0 : atoms.SubNumberElectron;
+                var es = AtomStatic.ElectronScatteringPeng[atoms.AtomicNumber][sub];//5 gaussian
+                //var es = AtomStatic.ElectronScatteringPeng[atoms.AtomicNumber][atoms.SubNumberElectron];//260613Cl 旧: 常に割当イオン (= IonScreened 固定)
                 //var es = AtomStatic.ElectronScatteringEightGaussian[atoms.AtomicNumber];//8 gaussian
-                var real = es.Factor(s2);//弾性散乱因子
+                var real = es.Factor(s2);//弾性散乱因子 (Peng 有限部分)
+                //260613Cl IonFull: Mott-Bethe 単極子 (AtomStatic.MottBetheMonopoleCoefficient·ΔZ/s² [nm]) を g≠0 のみ加算。s2==0 ⇔ g==0 が自動ハード分岐 → u0(平均内部ポテンシャル)は従来の有限部分和のまま不変。
+                //260614Cl 非中性結晶では addMonopole=false で単極子を落とす (IonScreened フォールバック)。
+                if (addMonopole && es.Valence != 0 && s2 > 0)
+                    real += AtomStatic.MottBetheMonopoleCoefficient * es.Valence / s2;
 
                 var dsf = atoms.Dsf;
                 var zero = dsf.IsZero;

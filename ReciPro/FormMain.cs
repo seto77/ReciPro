@@ -173,6 +173,14 @@ public partial class FormMain : FormBase
         set => toolStripMenuItemUseMillerBravais.Checked = value;
     }
 
+    // 260613Cl 追加: 動力学計算でイオン散乱因子 (Peng IonFull) を使うか。OFF(既定)=中性原子 IAM。レジストリに保存。
+    // 切替は BetheMethod.ElasticIonModel (static, 全結晶共有) を Neutral⇔IonFull に変える。詳細は ElasticIonModel enum。
+    public bool UseIonicScattering
+    {
+        get => toolStripMenuItemIonicScattering != null && toolStripMenuItemIonicScattering.Checked;
+        set => toolStripMenuItemIonicScattering.Checked = value;
+    }
+
     /// <summary>UseMillerBravais が有効かつ現在結晶が 4 指数対応の場合のみ true</summary>
     // 260607Cl: 起動時の Registry(Read) で UseMillerBravais が復元されると結晶ロード前に
     // CheckedChanged → UpdatePlaneIndices が走り、Crystal が null で NRE になっていた。null ガードを追加。
@@ -543,6 +551,10 @@ public partial class FormMain : FormBase
         //ReadInitialRegistry();
         Registry(Reg.Mode.Read);
 
+        //260613Cl イオン散乱因子: Registry 復元後に static モデルを確定させ、以降のユーザー操作では Σq 警告を出す (起動復元では出さない)。
+        BetheMethod.ElasticIonModel = UseIonicScattering ? ElasticIonModel.IonFull : ElasticIonModel.Neutral;
+        ionMenuReady = true;
+
         // 260420Cl 追加: レジストリから復元した Bounds が画面外 (モニタ構成変更や最小化 Bounds=-32000 の残存) の場合にプライマリ画面へ再配置する (#55 関連)。
         WindowLocation.EnsureVisible(this);
 
@@ -677,6 +689,9 @@ public partial class FormMain : FormBase
 
             //260421Cl Miller-Bravais (4指数) 表記を使うかどうか
             rw(() => UseMillerBravais);
+
+            //260613Cl 動力学計算でイオン散乱因子 (Peng IonFull) を使うかどうか
+            rw(() => UseIonicScattering);
 
             //260415Cl Reg.RW(key, mode, commonDialog, nameof(commonDialog.AutomaticallyClose), commonDialog.AutomaticallyClose);
             rw(() => commonDialog.AutomaticallyClose);
@@ -1684,6 +1699,29 @@ public partial class FormMain : FormBase
         // 現在の結晶が 4 指数非対応の場合、トグルしても描画結果は変わらないので Draw() 省略    // 260422Cl
         if (FormDiffractionSimulator != null && FormDiffractionSimulator.Visible && MillerBravaisActive)
             FormDiffractionSimulator.Draw();
+    }
+
+    // 260613Cl 追加: イオン散乱因子 (Peng IonFull) の有効/無効切替。BetheMethod.ElasticIonModel は static (全結晶の getU が参照)。
+    // 動力学計算は開始時に uDictionary を Clear するが、計算せず表示だけ更新する経路 (SpotInfo 等) のため現結晶のキャッシュもここで破棄する。
+    private bool ionMenuReady = false;// 起動時の Registry 復元では Σq 警告を出さないためのフラグ
+    private void toolStripMenuItemIonicScattering_CheckedChanged(object sender, EventArgs e)
+    {
+        BetheMethod.ElasticIonModel = UseIonicScattering ? ElasticIonModel.IonFull : ElasticIonModel.Neutral;
+        Crystal?.Bethe?.ClearUCache();
+        // 260614Cl IonFull の g≠0 単極子は電荷中性 (Σq=0) を前提とする。非中性結晶では getU が自動的に単極子を落とし
+        //   有限部分のみ (IonScreened) にフォールバックする。ここでは「そう振る舞う」ことをユーザーに知らせる (起動時の復元では出さない)。
+        if (ionMenuReady && UseIonicScattering && Crystal?.Bethe != null)
+        {
+            double q = Crystal.Bethe.NetCellCharge();
+            if (Math.Abs(q) > 1e-6)
+            {
+                bool ja = Thread.CurrentThread.CurrentUICulture.Name == "ja";
+                MessageBox.Show(this,
+                    ja ? $"単位胞の正味電荷が 0 ではありません (Σq = {q.ToString("+0.###;-0.###")})。\ng≠0 の単極子項は電荷中性 (Σq=0) を前提とするため、この結晶では単極子を加えず、割当イオンの有限部分のみ (遮蔽イオン形) で動力学計算します。"
+                       : $"The unit cell is not charge-neutral (Σq = {q.ToString("+0.###;-0.###")}).\nThe g≠0 monopole term assumes a neutral cell (Σq = 0), so for this crystal the monopole is dropped and only the finite ionic parts (screened-ion form) are used in the dynamical calculation.",
+                    ja ? "イオン散乱因子" : "Ionic scattering factor", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
     }
 
     // 260428Cl 追加: ダークモード切替ハンドラ。レジストリに保存し、再起動を促す。

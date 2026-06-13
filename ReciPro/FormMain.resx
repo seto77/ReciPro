@@ -3496,6 +3496,19 @@ calculations. Downloads ~55MB on first use.</value>
   <data name="toolStripMenuItemUseMKL.Text" xml:space="preserve">
     <value>Use MKL Library</value>
   </data>
+  <data name="toolStripMenuItemIonicScattering.Text" xml:space="preserve">
+    <value>Use ionic scattering factors</value>
+  </data>
+  <data name="toolStripMenuItemIonicScattering.ToolTipText" xml:space="preserve">
+    <value>Use ionic (full Peng) electron scattering factors in dynamical
+calculations instead of neutral atoms. Off = neutral-atom IAM (default).</value>
+  </data>
+  <data name="&gt;&gt;toolStripMenuItemIonicScattering.Name" xml:space="preserve">
+    <value>toolStripMenuItemIonicScattering</value>
+  </data>
+  <data name="&gt;&gt;toolStripMenuItemIonicScattering.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;toolStripSeparator8.Name" xml:space="preserve">
     <value>toolStripSeparator8</value>
   </data>

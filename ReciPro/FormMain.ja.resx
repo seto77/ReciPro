@@ -1537,6 +1537,13 @@ v2</value>
   <data name="toolStripMenuItemUseMKL.Text" xml:space="preserve">
     <value>MKL ライブラリを使用</value>
   </data>
+  <data name="toolStripMenuItemIonicScattering.Text" xml:space="preserve">
+    <value>イオン散乱因子を使用</value>
+  </data>
+  <data name="toolStripMenuItemIonicScattering.ToolTipText" xml:space="preserve">
+    <value>動力学計算で中性原子の代わりにイオン (完全 Peng) の
+電子散乱因子を使う。OFF = 中性原子 IAM (既定)。</value>
+  </data>
   <data name="toolStripMenuItemUseMKL.ToolTipText" xml:space="preserve">
     <value>Intel MKL を有効化し行列計算を高速化しま
 す。初回使用時に約55MBダウンロードします。</value>
