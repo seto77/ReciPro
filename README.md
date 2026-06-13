@@ -35,7 +35,7 @@ You may also cite the software repository itself when appropriate:
 
 ## Install
 
-* Access https://github.com/seto77/ReciPro/releases/latest, download *ReciProSetup.msi*, and execute it.
+* Download [*ReciPro-setup.msi*](https://github.com/seto77/ReciPro/releases/latest/download/ReciPro-setup.msi) (direct link to the latest version) and execute it. You can also find it on the [releases page](https://github.com/seto77/ReciPro/releases/latest). (Up to v.4.939, the installer was named *ReciProSetup.msi*.)
 * *ReciPro* runs on Windows OS with ***.Net Desktop Runtime 10.0*** (NOT ***.Net Runtime 10.0***), which can be installed from [here](https://dotnet.microsoft.com/download/dotnet/10.0).
 * If you cannot run an installer (e.g. on permission-managed PCs), a **portable ZIP** package (*ReciPro-v.X.XXX.zip*) is also available on the releases page: self-contained, no installation and no .NET runtime required — just unzip and run.
 * *ReciPro* is distributed under the **MIT license** (free for anyone to use, modify, and redistribute).

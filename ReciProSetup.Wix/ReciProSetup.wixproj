@@ -7,10 +7,14 @@
     <!-- CI が -p:ProductVersion=0.X.YYY を注入する (Version.cs 由来) -->
     <ProductVersion Condition="'$(ProductVersion)'==''">0.0.0</ProductVersion>
     <DefineConstants>ProductVersion=$(ProductVersion)</DefineConstants>
-    <OutputName>ReciProSetup</OutputName>
-    <!-- arm64 は資産名を分離 (x64 の ReciProSetup.msi は自動更新固定URLのため不変) -->
-    <!-- 260613Cl 作者指示で win- 接頭辞を除去 (.msi で Windows 用は自明)。旧: ReciProSetup-win-arm64 -->
-    <OutputName Condition="'$(InstallerPlatform)'=='arm64'">ReciProSetup-arm64</OutputName>
+    <!-- 260613Cl アセット改名 (作者決定): リリースページのアルファベット順ソートで MSI 群が ZIP 群 (ReciPro-v.*)
+         より上に並ぶよう、主名称を ReciPro-setup.msi へ変更。アーキ接尾辞は _ (ピリオドより後・英字より前に
+         ソートされる) を使い、無印 x64 がペアの上に来るようにする。
+         旧クライアントの自動更新は {software}Setup.msi 固定参照のため、旧名 ReciProSetup.msi は
+         release.yml が同一バイトのコピーを数年間 (目安 2029 頃まで) 併置して互換維持する。
+         旧: <OutputName>ReciProSetup</OutputName> / ReciProSetup-arm64 -->
+    <OutputName>ReciPro-setup</OutputName>
+    <OutputName Condition="'$(InstallerPlatform)'=='arm64'">ReciPro-setup_arm64</OutputName>
     <!-- x64/arm64 連続ビルドの obj 混在防止 -->
     <IntermediateOutputPath>obj\$(InstallerPlatform)\</IntermediateOutputPath>
     <!-- 実測で出た ICE のみ抑止 (260612Cl)。per-user (LocalAppData) + Files 収集の既知制約:

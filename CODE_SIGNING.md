@@ -6,7 +6,7 @@ This document describes the code-signing policy for ReciPro release artifacts.
 
 ReciPro is preparing code signing for Windows installer releases.
 
-Unless a GitHub Release explicitly states that `ReciProSetup.msi` is digitally signed, users should not assume that the installer is signed.
+Unless a GitHub Release explicitly states that `ReciPro-setup.msi` (named `ReciProSetup.msi` up to v.4.939) is digitally signed, users should not assume that the installer is signed.
 
 ## Official downloads
 
@@ -30,7 +30,7 @@ Release artifacts will be signed using Windows Authenticode signing and then pub
 
 The intended signing scope is:
 
-- `ReciProSetup.msi`
+- `ReciPro-setup.msi` and `ReciPro-setup_arm64.msi` (including the legacy-named copy `ReciProSetup.msi`, which is the identical x64 installer kept for auto-update compatibility with older versions)
 - ReciPro executable files built from this repository, including the single-file `ReciPro.exe` inside the portable ZIP packages (win-x64; the experimental win-arm64 package may remain unsigned until it graduates from experimental status)
 - ReciPro libraries built from this repository
 
@@ -67,7 +67,7 @@ ReciPro is a local desktop application and does not collect or transmit any pers
 
 After code signing is enabled for a release, users can inspect the installer from Windows Explorer:
 
-1. Right-click `ReciProSetup.msi`.
+1. Right-click `ReciPro-setup.msi`.
 2. Open **Properties**.
 3. Open the **Digital Signatures** tab.
 4. Confirm that the signature is valid and that the signer matches the signer documented for that release.
@@ -75,7 +75,7 @@ After code signing is enabled for a release, users can inspect the installer fro
 Advanced users can also verify the installer with the Windows SDK `signtool` utility:
 
 ```powershell
-signtool verify /pa /all ReciProSetup.msi
+signtool verify /pa /all ReciPro-setup.msi
 ```
 
 ## Reporting suspicious artifacts

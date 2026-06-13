@@ -130,7 +130,8 @@ jobs:
             -p:ProductVersion=${{ steps.version.outputs.test_product_version }} `
             -p:StagingDir="$PWD\artifacts\staging-msi-x64"
           if ($LASTEXITCODE -ne 0) { throw "WiX x64 build failed." }
-          if (-not (Test-Path "ReciProSetup.Wix\bin\Release\ReciProSetup.msi")) { throw "ReciProSetup.msi not produced." }
+          # 260613Cl アセット改名 (旧: ReciProSetup.msi)
+          if (-not (Test-Path "ReciProSetup.Wix\bin\Release\ReciPro-setup.msi")) { throw "ReciPro-setup.msi not produced." }
 
       - name: Build WiX arm64 MSI (cross-build)
         shell: pwsh
@@ -139,7 +140,8 @@ jobs:
             -p:ProductVersion=${{ steps.version.outputs.product_version }} `
             -p:StagingDir="$PWD\artifacts\staging-msi-arm64"
           if ($LASTEXITCODE -ne 0) { throw "WiX arm64 build failed." }
-          if (-not (Test-Path "ReciProSetup.Wix\bin\Release\ReciProSetup-arm64.msi")) { throw "ReciProSetup-arm64.msi not produced." }
+          # 260613Cl アセット改名 (旧: ReciProSetup-arm64.msi)
+          if (-not (Test-Path "ReciProSetup.Wix\bin\Release\ReciPro-setup_arm64.msi")) { throw "ReciPro-setup_arm64.msi not produced." }
 
       - name: Verify MSI properties (Template / UpgradeCode / version / per-user)
         shell: pwsh
@@ -165,8 +167,9 @@ jobs:
             if ($au) { throw "ALLUSERS must be unset for per-user package (got $au)" }
             if ([int]$schema -lt 500) { throw "Schema $schema < 500" }
           }
-          Test-Msi "ReciProSetup.Wix\bin\Release\ReciProSetup.msi" 'x64' '${{ steps.version.outputs.test_product_version }}'
-          Test-Msi "ReciProSetup.Wix\bin\Release\ReciProSetup-arm64.msi" 'Arm64' '${{ steps.version.outputs.product_version }}'
+          # 260613Cl アセット改名 (旧: ReciProSetup.msi / ReciProSetup-arm64.msi)
+          Test-Msi "ReciProSetup.Wix\bin\Release\ReciPro-setup.msi" 'x64' '${{ steps.version.outputs.test_product_version }}'
+          Test-Msi "ReciProSetup.Wix\bin\Release\ReciPro-setup_arm64.msi" 'Arm64' '${{ steps.version.outputs.product_version }}'
 
       - name: Download latest released vdproj MSI
         shell: pwsh
@@ -174,6 +177,8 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           New-Item -ItemType Directory -Force "$env:RUNNER_TEMP\old-msi" | Out-Null
+          # 260613Cl アセット改名後も pattern は ReciProSetup.msi のまま: 改名前 release では唯一の MSI、
+          #   改名後 release では旧名互換コピー (同一バイト) に一致し、どちらでもアップグレード元として有効
           gh release download --pattern ReciProSetup.msi -D "$env:RUNNER_TEMP\old-msi"
           if (-not (Test-Path "$env:RUNNER_TEMP\old-msi\ReciProSetup.msi")) { throw "Failed to download released MSI." }
 
@@ -221,8 +226,8 @@ jobs:
           Write-Host "old installed: v$($prods[0].Version) $($prods[0].Code)"
           if (-not (Test-Path "$appDir\ReciPro.exe")) { throw "old install: exe missing" }
 
-          # 2) WiX 新版 (bumped version) で Major Upgrade
-          $p = Start-Process msiexec -ArgumentList '/i', "$PWD\ReciProSetup.Wix\bin\Release\ReciProSetup.msi", '/qn', '/l*v', "$env:RUNNER_TEMP\install-new.log" -Wait -PassThru
+          # 2) WiX 新版 (bumped version) で Major Upgrade (260613Cl アセット改名: ReciPro-setup.msi)
+          $p = Start-Process msiexec -ArgumentList '/i', "$PWD\ReciProSetup.Wix\bin\Release\ReciPro-setup.msi", '/qn', '/l*v', "$env:RUNNER_TEMP\install-new.log" -Wait -PassThru
           if ($p.ExitCode -ne 0) { throw "WiX MSI upgrade install failed: $($p.ExitCode)" }
           $prods = Get-ReciProProducts
           if ($prods.Count -ne 1) { throw "expected exactly 1 product after upgrade (ARP must be replaced), got $($prods.Count): $($prods | ConvertTo-Json -Compress)" }
@@ -256,7 +261,8 @@ jobs:
         uses: actions/upload-artifact@v6
         with:
           name: wix-msi-phase-a
+          # 260613Cl アセット改名 (旧: ReciProSetup.msi / ReciProSetup-arm64.msi)
           path: |
-            ReciProSetup.Wix/bin/Release/ReciProSetup.msi
-            ReciProSetup.Wix/bin/Release/ReciProSetup-arm64.msi
+            ReciProSetup.Wix/bin/Release/ReciPro-setup.msi
+            ReciProSetup.Wix/bin/Release/ReciPro-setup_arm64.msi
             artifacts/msi-content-diff.txt

@@ -1812,7 +1812,11 @@ public partial class FormMain : FormBase
 
         //260613Cl arm64 ビルドはアーキ専用インストーラを取得する (WiX 移行 Phase C)。x64 (エミュ実行含む) は従来どおり ReciProSetup.msi
         //(var Title, var Message, var NeedUpdate, var URL, var Path) = ProgramUpdates.Check(Version.Software, Version.VersionAndDate);
-        var installerAsset = RuntimeInformation.ProcessArchitecture == Architecture.Arm64 ? "ReciProSetup-arm64.msi" : "";
+        //260613Cl アセット改名 (作者決定): 新クライアントは新名称 (ReciPro-setup.msi / ReciPro-setup_arm64.msi) を明示参照する。
+        //         旧名 ReciProSetup.msi は旧クライアント (installerAsset 空 = ProgramUpdates 既定の {software}Setup.msi) の
+        //         自動更新互換のため release に同一バイトのコピーとして数年間併置される (release.yml)
+        //var installerAsset = RuntimeInformation.ProcessArchitecture == Architecture.Arm64 ? "ReciProSetup-arm64.msi" : "";
+        var installerAsset = RuntimeInformation.ProcessArchitecture == Architecture.Arm64 ? "ReciPro-setup_arm64.msi" : "ReciPro-setup.msi";
         (var Title, var Message, var NeedUpdate, var URL, var Path) = ProgramUpdates.Check(Version.Software, Version.VersionAndDate, installerAsset);
 
         if (!NeedUpdate)

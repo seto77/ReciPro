@@ -20,7 +20,8 @@ on:
       artifact_name:
         description: "upload-artifact 名 (中身は ReciPro フォルダ 1 個)"
         value: ${{ jobs.build.outputs.artifact_name }}
-      # 260613Cl Phase C: arm64 MSI (WiX) の artifact 名 (中身は ReciProSetup-arm64.msi 1 個)
+      # 260613Cl Phase C: arm64 MSI (WiX) の artifact 名 (中身は ReciPro-setup_arm64.msi 1 個。
+      # アセット改名 260613Cl: 旧 ReciProSetup-arm64.msi)
       msi_artifact_name:
         description: "arm64 MSI の upload-artifact 名"
         value: ${{ jobs.build.outputs.msi_artifact_name }}
@@ -34,7 +35,8 @@ jobs:
     outputs:
       version: ${{ steps.version.outputs.version }}
       artifact_name: ReciPro-v.${{ steps.version.outputs.version }}-win-arm64-experimental-portable
-      msi_artifact_name: ReciProSetup-arm64-msi-v.${{ steps.version.outputs.version }}
+      # 260613Cl アセット改名 (旧: ReciProSetup-arm64-msi-v.X)
+      msi_artifact_name: ReciPro-setup_arm64-msi-v.${{ steps.version.outputs.version }}
     # release.yml と同じイメージ (VC.Tools.ARM64 + ClangCL プリインストール、x64 ホストから ARM64 クロスビルド可。方針 §1.3)
     # 注意: windows-2025-vs2026 は VS2026 移行期の一時ラベル。release.yml を windows-2025 へ戻すときはここも揃えること
     runs-on: windows-2025-vs2026
@@ -267,8 +269,9 @@ jobs:
             -p:ProductVersion=0.${{ steps.version.outputs.version }} `
             -p:StagingDir="$PWD\artifacts\staging-msi-arm64"
           if ($LASTEXITCODE -ne 0) { throw "WiX arm64 build failed (exit $LASTEXITCODE)." }
-          $msi = Get-Item "ReciProSetup.Wix\bin\Release\ReciProSetup-arm64.msi" -ErrorAction SilentlyContinue
-          if (-not $msi) { throw "ReciProSetup-arm64.msi was not produced." }
+          # 260613Cl アセット改名 (旧: ReciProSetup-arm64.msi)
+          $msi = Get-Item "ReciProSetup.Wix\bin\Release\ReciPro-setup_arm64.msi" -ErrorAction SilentlyContinue
+          if (-not $msi) { throw "ReciPro-setup_arm64.msi was not produced." }
           Write-Host "MSI built: $($msi.FullName) ($($msi.Length) bytes)"
 
           # 260613Cl MSI プロパティ検査はここ (x64 ランナー) で行う: windows-11-arm の COM 遅延バインディングは
@@ -295,5 +298,6 @@ jobs:
       - name: Upload arm64 MSI artifact
         uses: actions/upload-artifact@v6
         with:
-          name: ReciProSetup-arm64-msi-v.${{ steps.version.outputs.version }}
-          path: ReciProSetup.Wix/bin/Release/ReciProSetup-arm64.msi
+          # 260613Cl アセット改名 (旧: ReciProSetup-arm64-msi-v.X / ReciProSetup-arm64.msi)
+          name: ReciPro-setup_arm64-msi-v.${{ steps.version.outputs.version }}
+          path: ReciProSetup.Wix/bin/Release/ReciPro-setup_arm64.msi

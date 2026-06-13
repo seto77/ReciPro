@@ -1,5 +1,5 @@
 # 260612Cl 追加: win-arm64 portable ZIP を既存 release へ後付け添付する (配布の段階導入の第 2 段階、方針 §6.1-6.2)。
-# 260613Cl Phase C: arm64 MSI (WiX、ReciProSetup-arm64.msi) も同時に添付する (WiX計画 §5.2)。
+# 260613Cl Phase C: arm64 MSI (WiX、ReciPro-setup_arm64.msi。アセット改名 260613Cl、旧 ReciProSetup-arm64.msi) も同時に添付する (WiX計画 §5.2)。
 #   段階 1 = build-arm64-portable.yml (artifact のみ。本ワークフローが reusable workflow として再利用する)
 #   段階 3 = release.yml の後続 job へ統合 (数リリース安定後)
 # 設計の要点 (方針 .project-guidance/ReciPro_ARM64化方針.md):
@@ -121,8 +121,11 @@ jobs:
           # asset 衝突検査: --clobber による差し替えはしない方針のため、既存なら手動削除を促して失敗
           # 260613Cl 作者指示で命名簡素化 (旧: ReciPro-v.X-win-arm64-experimental-portable.zip)。checksum は公開廃止
           # 260613Cl Phase C: arm64 MSI (WiX) も添付対象に追加
-          $zipName  = "ReciPro-v.$ver-arm64.zip"
-          $msiName  = "ReciProSetup-arm64.msi"
+          # 260613Cl アセット改名 (作者決定): アーキ接尾辞を -arm64 → _arm64 へ (_ は . より後・英字より前に
+          #   ソートされるため、リリースページで無印 x64 が各ペアの上に来る)。MSI は ReciPro-setup_arm64.msi
+          #   旧: $zipName = "ReciPro-v.$ver-arm64.zip" / $msiName = "ReciProSetup-arm64.msi"
+          $zipName  = "ReciPro-v.${ver}_arm64.zip"
+          $msiName  = "ReciPro-setup_arm64.msi"
           if ($releaseExists) {
             $assets = @(gh release view $tag --json assets -q '.assets[].name')
             foreach ($name in @($zipName, $msiName)) {

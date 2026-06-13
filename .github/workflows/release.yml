@@ -75,13 +75,26 @@ jobs:
           # $historyLine | Set-Content -Path $notesPath -Encoding UTF8 # 260602Cl 旧: 変更履歴 1 行のみ
           @( # 260602Cl MSI を第一候補、portable ZIP を管理 PC 向け代替として release notes に明記
             # 260613Cl SHA256SUMS.txt の行を削除 (checksum 公開廃止: 同一チャネル配布では改竄対策にならず、初心者を惑わすため)
-            # 260613Cl Phase C: arm64 資産 (後付け添付) の案内行を追加
+            # 260613Cl アセット改名 (ReciPro-setup.msi 系、作者決定) に伴い直リンク付き Download 表へ全面改訂 (文案は作者承認済み)。
+            #   本文はアセット一覧の真上に表示されるため実質的な目次になる。arm64 の 2 資産は後付け添付
+            #   (attach-arm64-experimental.yml) のため添付完了までリンクは一時 404 († 注記でカバー)。
+            #   旧名 ReciProSetup.msi は旧クライアント自動更新互換の同一バイトコピー (リンク無しで DL 対象外を暗示)。
+            #   旧 (260613Cl 以前のプレーンテキスト3行):
+            #   "Assets:"
+            #   "- ReciProSetup.msi: recommended installer."
+            #   "- ReciPro-v.$ver.zip: no-install, self-contained portable alternative for managed Windows PCs."
+            #   "- ReciProSetup-arm64.msi / ReciPro-v.$ver-arm64.zip: native Arm64 builds (attached after on-device verification; may appear slightly later than the x64 assets)."
             $historyLine
             ""
-            "Assets:"
-            "- ReciProSetup.msi: recommended installer."
-            "- ReciPro-v.$ver.zip: no-install, self-contained portable alternative for managed Windows PCs."
-            "- ReciProSetup-arm64.msi / ReciPro-v.$ver-arm64.zip: native Arm64 builds (attached after on-device verification; may appear slightly later than the x64 assets)."
+            "| Download | Description |"
+            "|---|---|"
+            "| **[ReciPro-setup.msi](https://github.com/seto77/ReciPro/releases/download/v.$ver/ReciPro-setup.msi)** | **Recommended.** Installer for ordinary (x64) Windows PCs. |"
+            "| [ReciPro-setup_arm64.msi](https://github.com/seto77/ReciPro/releases/download/v.$ver/ReciPro-setup_arm64.msi) | Installer for Windows on Arm: Snapdragon PCs such as some Surface models (Surface Pro X / Pro 11 / Laptop 7), or Apple Silicon Macs running Windows via Parallels, etc.† |"
+            "| [ReciPro-v.$ver.zip](https://github.com/seto77/ReciPro/releases/download/v.$ver/ReciPro-v.$ver.zip) | Portable (x64): no installation, self-contained. Suitable for PCs where you have no administrator rights. May also run on macOS via a Wine wrapper (see [ReciPro_macOS_memo](https://github.com/Ryo-fkushima/ReciPro_macOS_memo)). |"
+            "| [ReciPro-v.${ver}_arm64.zip](https://github.com/seto77/ReciPro/releases/download/v.$ver/ReciPro-v.${ver}_arm64.zip) | Portable for Windows on Arm: no installation, no administrator rights needed.† |"
+            "| ReciProSetup.msi | Identical to ReciPro-setup.msi (legacy name for auto-update from older versions). |"
+            ""
+            "† Arm64 files are attached after on-device verification and may appear slightly later than the x64 files."
           ) | Set-Content -Path $notesPath -Encoding UTF8
 
           # AssemblyVersion / FileVersion 用のタイムスタンプ (yyyy.M.d.HHmm UTC)
@@ -183,11 +196,18 @@ jobs:
             -p:StagingDir="$PWD\artifacts\staging-msi-x64"
           if ($LASTEXITCODE -ne 0) { throw "WiX build failed (exit $LASTEXITCODE)." }
 
-          # MSI の存在確認 (出力名 ReciProSetup.msi は自動更新の固定 URL なので不変)
-          $msi = Get-Item "ReciProSetup.Wix\bin\Release\ReciProSetup.msi" -ErrorAction SilentlyContinue
-          if (-not $msi) { throw "ReciProSetup.msi was not found." }
+          # 260613Cl アセット改名 (作者決定): 主名称は ReciPro-setup.msi (wixproj OutputName 変更)。
+          #   旧クライアントの自動更新は ProgramUpdates 既定の {software}Setup.msi を固定参照するため、
+          #   同一バイトのコピーを旧名 ReciProSetup.msi でも添付して互換維持する (数年間併置、目安 2029 頃まで。
+          #   260613Cl 以降の新クライアントは FormMain が新名称を明示参照)
+          # 旧: $msi = Get-Item "ReciProSetup.Wix\bin\Release\ReciProSetup.msi" -ErrorAction SilentlyContinue
+          $msi = Get-Item "ReciProSetup.Wix\bin\Release\ReciPro-setup.msi" -ErrorAction SilentlyContinue
+          if (-not $msi) { throw "ReciPro-setup.msi was not found." }
           Write-Host "MSI built: $($msi.FullName) ($($msi.Length) bytes)"
           "msi_path=$($msi.FullName)" >> $env:GITHUB_OUTPUT
+          $legacy = Join-Path (Split-Path $msi.FullName) "ReciProSetup.msi"
+          Copy-Item $msi.FullName $legacy -Force
+          "legacy_msi_path=$legacy" >> $env:GITHUB_OUTPUT
 
       - name: Publish portable ZIP
         if: steps.version.outputs.needed == 'true'
@@ -286,8 +306,10 @@ jobs:
           #   git push origin $tag
           # 260602Cl 第一候補の MSI に加え、portable ZIP も添付する。
           # 260613Cl SHA256SUMS.txt の添付を廃止 (checksum 公開廃止)。
+          # 260613Cl アセット改名: 旧名 ReciProSetup.msi (同一バイトコピー) も旧クライアント自動更新互換のため添付
           gh release create $tag `
             "${{ steps.build_installer.outputs.msi_path }}" `
+            "${{ steps.build_installer.outputs.legacy_msi_path }}" `
             "${{ steps.portable.outputs.zip_path }}" `
             --target $env:GITHUB_SHA `
             --title "ReciPro $tag" `
