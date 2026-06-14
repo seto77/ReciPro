@@ -21,8 +21,14 @@
          ICE38(error) = user profile 配下の File KeyPath / ICE64(error) = user profile 配下ディレクトリの RemoveFile 未登録 /
          ICE91(warning×104) = ALLUSERS で変化しない per-user ディレクトリへの配置 (本パッケージは Scope=perUser 固定なので無関係)。
          本製品は HKLM/COM/サービス無しの純 per-user アプリで、いずれも実害なし (計画書 D7)。
-         ICE61 (same-version upgrade) / ICE69 (コンポーネント跨ぎ参照) は意図的に表示のまま残す -->
-    <SuppressIces>ICE38;ICE64;ICE91</SuppressIces>
+         260615Cl 追加抑止: ICE61 / ICE69 も良性だが、毎ビルド 6 件 (3種×2 MSI) のノイズが新規警告の
+         見落としを招くため抑止に追加 (作者判断、当初は意図表示のため残していた)。
+         ・ICE61 (same-version upgrade): MajorUpgrade AllowSameVersionUpgrades="yes" の既知の副作用。
+           x64⇔arm64 の同一版クロスグレード (Package.wxs 参照) に必須なので除去できない。
+         ・ICE69 (コンポーネント跨ぎ参照): デスクトップ/スタートメニューのショートカットが別コンポーネント
+           MainExe の exe を Target="[#ReciProExe]" 参照する件。両コンポーネントは同一 feature のため
+           ショートカット導入時に exe は必ず存在し、参照は常に解決する (構造上の良性警告)。 -->
+    <SuppressIces>ICE38;ICE64;ICE91;ICE61;ICE69</SuppressIces>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="WixToolset.UI.wixext" Version="7.0.0" />
