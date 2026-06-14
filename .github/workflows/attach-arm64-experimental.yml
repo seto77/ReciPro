@@ -1,7 +1,10 @@
 # 260612Cl 追加: win-arm64 portable ZIP を既存 release へ後付け添付する (配布の段階導入の第 2 段階、方針 §6.1-6.2)。
 # 260613Cl Phase C: arm64 MSI (WiX、ReciPro-setup_arm64.msi。アセット改名 260613Cl、旧 ReciProSetup-arm64.msi) も同時に添付する (WiX計画 §5.2)。
 #   段階 1 = build-arm64-portable.yml (artifact のみ。本ワークフローが reusable workflow として再利用する)
-#   段階 3 = release.yml の後続 job へ統合 (数リリース安定後)
+#   段階 3 = 260615Cl 自動トリガ化: x64 release.yml の成功を workflow_run でフックし、本ワークフローを自動起動する
+#     (下記 on: の workflow_run 参照)。reusable workflow としての分離はそのまま (x64 リリース経路から隔離され、
+#      arm64 が失敗しても x64 配布物は無傷)。release.yml への完全 inline 統合 (同一 run ビルドで backfill 注記を
+#      消す案) は将来の任意改善として保留。
 # 設計の要点 (方針 .project-guidance/ReciPro_ARM64化方針.md):
 #   - tag は作らない: 既存 release tag へ gh release upload するだけなので、v* tag 削除禁止 ruleset と
 #     原子的 release 設計 (260530Cl) に一切干渉しない。x64 配布物にも触れない
@@ -26,6 +29,15 @@ on:
         description: "smoke と ZIP 生成まで実行し、release への upload はしない (artifact で検分可能)"
         type: boolean
         default: false
+  # 260615Cl 段階3 (自動トリガ): x64 リリースワークフローが成功したら arm64 を自動で後付け添付する。
+  #   workflow_run を使う理由 = release.yml は GITHUB_TOKEN で gh release create するが、GITHUB_TOKEN が
+  #   起こしたイベント (release: published 等) は連鎖ワークフローを起動しない GitHub の仕様 (再帰防止) のため、
+  #   release トリガでは発火しない。workflow_run はワークフロー完了をフックするのでこの制約を受けない。
+  #   下の preflight の if: で「master での成功」に限定し、それ以外 (失敗・他ブランチ) は何もしない。
+  #   tag 入力なし → preflight は最新 release を解決する = 直前に作られたばかりの release に添付される。
+  workflow_run:
+    workflows: ["Build And Release Installer And Portable ZIP"]
+    types: [completed]
 
 permissions:
   contents: read
@@ -38,6 +50,12 @@ concurrency:
 jobs:
   # ---- 1. 事前検査: 8 分のビルドを走らせる前に「添付できない理由」を全て洗い出して即失敗させる ----
   preflight:
+    # 260615Cl 自動トリガの起動条件: 手動 dispatch、または x64 リリースが master で成功完了したときのみ。
+    #   release.yml の失敗・他ブランチ実行では preflight 自体が skip され、needs 連鎖で build/smoke も走らない。
+    #   workflow_dispatch では github.event.workflow_run が無い (null) ので第2項は false、第1項で通る。
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      (github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.head_branch == 'master')
     runs-on: ubuntu-latest # 解析と gh API だけなので最速のランナーで (pwsh は ubuntu にもプリインストール)
     timeout-minutes: 5
     outputs:
