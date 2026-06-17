@@ -31,11 +31,13 @@ jobs:
         run: |
           $out = "artifacts/to-sign"
           if (Test-Path $out) { Remove-Item $out -Recurse -Force }
-          # release.yml の portable publish と同等 (native DLL の後コピーは署名に不要なので省略)
+          # release.yml の portable publish と同等 (native DLL の後コピーは署名に不要なので省略)。
+          # 260618Cl SatelliteResourceLanguages のセミコロンは MSBuild の property 区切りと衝突するため %3B でエスケープ。
+          #   引用符ではセミコロンが MSBuild に素通りして MSB1006 "Switch: ja" で失敗する (release.yml の 11 言語版も要同修正)。
           dotnet publish ReciPro/ReciPro.csproj `
             -c Release -r win-x64 --self-contained true -p:Platform=x64 `
             -p:PublishSingleFile=true -p:PublishTrimmed=false `
-            -p:SatelliteResourceLanguages='en;ja;de;fr;es;pt;it;ru;zh-Hans;zh-Hant;ko' `
+            -p:SatelliteResourceLanguages=en%3Bja%3Bde%3Bfr%3Bes%3Bpt%3Bit%3Bru%3Bzh-Hans%3Bzh-Hant%3Bko `
             -o $out
           if ($LASTEXITCODE -ne 0) { throw "publish failed (exit $LASTEXITCODE)" }
           if (-not (Test-Path "$out/ReciPro.exe")) { throw "ReciPro.exe not produced" }
