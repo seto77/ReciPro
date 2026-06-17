@@ -232,9 +232,12 @@ jobs:
           # 260602Cl DebugType は csproj の既定 (ReciPro 本体は embedded) を使うため、PDIndexer のような
           #          別 pdb 欠落による MSI ビルド失敗 (方針 §4-a) は起こらない。参照ライブラリ
           #          (Crystallography 等) は分離 pdb を出すので、配布前に publish 出力から除去する (後述)。
-          # 260611Cl SatelliteResourceLanguages=ja: self-contained publish が同梱する .NET ランタイムの
-          #          ローカライズ 13 言語 (~18MB) を、アプリが提供する neutral(en)+ja に合わせて ja のみに絞る。
+          # 260611Cl / 260617Cl SatelliteResourceLanguages: self-contained publish が同梱する .NET ランタイムの
+          #          ローカライズ 13 言語 (~18MB) を、アプリが提供する言語 (Crystallography.SupportedCultures) に合わせて絞る。
+          #          ★この一覧から外れた言語は、アプリ自身のサテライト DLL も含めて publish/ZIP から無言で除外される。
+          #          新言語を出荷する際は必ずここへ追加すること (多言語化方針 Phase 0)。en は neutral でサテライト無し。
           #          publish 引数に留める (csproj に入れない) ことで MSI ビルド経路には影響させない。
+          #          PowerShell では ';' が文番号区切りになるため、値全体を単一引用符で囲む。
           # 260611Cl PublishSingleFile=true: フラット ~290 ファイルでは ReciPro.exe が探しにくいという作者要望
           #          (arm64 Surface 検証) を受け、ランタイム・managed DLL・ja サテライト・libxrl を exe に埋め込む。
           #          Crystallography.Native*.dll (3 flavors) は従来どおり後コピーで exe 横に外置き
@@ -249,7 +252,7 @@ jobs:
             -p:FileVersion=${{ steps.version.outputs.assembly_version }} `
             -p:PublishSingleFile=true `
             -p:PublishTrimmed=false `
-            -p:SatelliteResourceLanguages=ja `
+            -p:SatelliteResourceLanguages='en;ja;de;fr;es;pt;it;ru;zh-Hans;zh-Hant;ko' `
             -o $publishDir
 
           # 260602Cl ★ReciPro 固有: Crystallography.Native*.dll は ProjectReference でも Content でも PackageReference でもなく、

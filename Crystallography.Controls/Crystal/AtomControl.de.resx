@@ -1,0 +1,163 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 260617Cl: 多言語化 Phase1/3 (de) text-only リソース。レイアウト(Size/Location/Font)は neutral へフォールバック。結晶学/電子回折用語は IUCr Online Dictionary 準拠。 -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="radioButtonIsotoropy.Text" xml:space="preserve">
+    <value>Isotrop</value>
+  </data>
+  <data name="radioButtonAnisotropy.Text" xml:space="preserve">
+    <value>Anisotrop</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Beschriftung: </value>
+  </data>
+  <data name="checkBoxDetailAtomicPositionError.Text" xml:space="preserve">
+    <value>Fehler
+anzeigen</value>
+  </data>
+  <data name="label7.Text" xml:space="preserve">
+    <value>Alle Atome verschieben um:</value>
+  </data>
+  <data name="tabPageOriginShift.Text" xml:space="preserve">
+    <value>Ursprungsverschiebung</value>
+  </data>
+  <data name="label13.Text" xml:space="preserve">
+    <value>Modell: </value>
+  </data>
+  <data name="checkBoxDetailsDebyeWallerError.Text" xml:space="preserve">
+    <value>Fehler
+anzeigen</value>
+  </data>
+  <data name="tabPageDebyeWaller.Text" xml:space="preserve">
+    <value>Debye-Waller-Faktor</value>
+  </data>
+  <data name="buttonEditIsotopeAbundance.Text" xml:space="preserve">
+    <value>Bearbeiten</value>
+  </data>
+  <data name="label5.Text" xml:space="preserve">
+    <value> Röntgen:</value>
+  </data>
+  <data name="label6.Text" xml:space="preserve">
+    <value>Neutronen:</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>Elektronen:</value>
+  </data>
+  <data name="tabPageScatteringFactor.Text" xml:space="preserve">
+    <value>Streufaktor</value>
+  </data>
+  <data name="checkBoxShowLabel.Text" xml:space="preserve">
+    <value>Beschriftungen anzeigen</value>
+  </data>
+  <data name="label10.Text" xml:space="preserve">
+    <value>Umgebungslicht</value>
+  </data>
+  <data name="label38.Text" xml:space="preserve">
+    <value>Glanz</value>
+  </data>
+  <data name="label11.Text" xml:space="preserve">
+    <value>Diffus</value>
+  </data>
+  <data name="label36.Text" xml:space="preserve">
+    <value>Glanzgrad</value>
+  </data>
+  <data name="colorControlAtomColor.HeaderText" xml:space="preserve">
+    <value>Farbe</value>
+  </data>
+  <data name="tabPageAppearance.Text" xml:space="preserve">
+    <value>Darstellung</value>
+  </data>
+  <data name="buttonApplyToSameElement.Text" xml:space="preserve">
+    <value>Auf gleiches Element anwenden</value>
+  </data>
+  <data name="buttonAddAtom.Text" xml:space="preserve">
+    <value>Hinzufügen</value>
+  </data>
+  <data name="buttonChange.Text" xml:space="preserve">
+    <value>Ersetzen</value>
+  </data>
+  <data name="buttonApplyToAllElements.Text" xml:space="preserve">
+    <value>Auf alle Elemente anwenden</value>
+  </data>
+  <data name="buttonAtomUp.Text" xml:space="preserve">
+    <value>Hoch</value>
+  </data>
+  <data name="buttonAtomDown.Text" xml:space="preserve">
+    <value>Runter</value>
+  </data>
+  <data name="buttonDeleteAtom.Text" xml:space="preserve">
+    <value>Löschen</value>
+  </data>
+  <data name="labelDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
+    <value>Beschriftung</value>
+  </data>
+  <data name="occDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
+    <value>Bes.</value>
+  </data>
+  <data name="multiDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
+    <value>Mult.</value>
+  </data>
+  <data name="wyckLetDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
+    <value>Wyck.-Buchst.</value>
+  </data>
+  <data name="siteSymDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
+    <value>Lagesym.</value>
+  </data>
+</root>

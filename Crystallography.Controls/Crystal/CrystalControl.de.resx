@@ -1,0 +1,161 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 260617Cl: 多言語化 Phase1/3 (de) text-only リソース。レイアウト(Size/Location/Font)は neutral へフォールバック。結晶学/電子回折用語は IUCr Online Dictionary 準拠。 -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="groupBoxAuthors.Text" xml:space="preserve">
+    <value>Autoren</value>
+  </data>
+  <data name="groupBoxTitle.Text" xml:space="preserve">
+    <value>Titel</value>
+  </data>
+  <data name="tabPageBasicInfo.Text" xml:space="preserve">
+    <value>Basisinfo</value>
+  </data>
+  <data name="numericBoxVolumeAng.HeaderText" xml:space="preserve">
+    <value>Zellvolumen</value>
+  </data>
+  <data name="numericBoxCellMass.HeaderText" xml:space="preserve">
+    <value>Zellmasse</value>
+  </data>
+  <data name="numericBoxMolarVolume.HeaderText" xml:space="preserve">
+    <value>Molvolumen</value>
+  </data>
+  <data name="numericBoxMolarMass.HeaderText" xml:space="preserve">
+    <value>Molmasse</value>
+  </data>
+  <data name="numericBoxDensity.HeaderText" xml:space="preserve">
+    <value>Dichte</value>
+  </data>
+  <data name="tabPageAtom.Text" xml:space="preserve">
+    <value>Atominfo</value>
+  </data>
+  <data name="resetToolStripMenuItem.Text" xml:space="preserve">
+    <value>Debye-Waller-Faktoren auf null setzen</value>
+  </data>
+  <data name="tabPageBondsPolyhedra.Text" xml:space="preserve">
+    <value>Bindungen &amp; Polyeder</value>
+  </data>
+  <data name="tabPageReference.Text" xml:space="preserve">
+    <value>Lit.</value>
+  </data>
+  <data name="groupBoxJournal.Text" xml:space="preserve">
+    <value>Zeitschrift</value>
+  </data>
+  <data name="tabPageElasticity.Text" xml:space="preserve">
+    <value>Elastizität</value>
+  </data>
+  <data name="label29.Text" xml:space="preserve">
+    <value>Unterteilung</value>
+  </data>
+  <data name="colorControl.HeaderText" xml:space="preserve">
+    <value>Farbe</value>
+  </data>
+  <data name="label90.Text" xml:space="preserve">
+    <value>Summenformel</value>
+  </data>
+  <data name="beamInteractionToolStripMenuItem.Text" xml:space="preserve">
+    <value>Strahlwechselwirkung</value>
+  </data>
+  <data name="symmetryInformationToolStripMenuItem.Text" xml:space="preserve">
+    <value>Symmetrieinformation</value>
+  </data>
+  <data name="importCrystalFromCIFAMCToolStripMenuItem.Text" xml:space="preserve">
+    <value>Aus CIF oder AMC importieren...</value>
+  </data>
+  <data name="exportThisCrystalAsCIFToolStripMenuItem.Text" xml:space="preserve">
+    <value>Als CIF exportieren</value>
+  </data>
+  <data name="revertCellConstantsToolStripMenuItem.Text" xml:space="preserve">
+    <value>Gitterkonstanten zurücksetzen</value>
+  </data>
+  <data name="strainControlToolStripMenuItem.Text" xml:space="preserve">
+    <value>Verzerrungssteuerung</value>
+  </data>
+  <data name="convertToP1SymmetryToolStripMenuItem.Text" xml:space="preserve">
+    <value>In Raumgruppe P1 umwandeln</value>
+  </data>
+  <data name="convertToSuperstructureToolStripMenuItem.Text" xml:space="preserve">
+    <value>In eine Überstruktur umwandeln</value>
+  </data>
+  <data name="convertToAnotherSpacegroupToolStripMenuItem.Text" xml:space="preserve">
+    <value>Achsen-/Ursprungseinstellung ändern</value>
+  </data>
+  <data name="buttonBeamInteraction.Text" xml:space="preserve">
+    <value>Strahlwechselwirkung</value>
+  </data>
+  <data name="buttonSymmetryInfo.Text" xml:space="preserve">
+    <value>Symmetrieinfo</value>
+  </data>
+  <data name="numericBoxMeanZnumber.HeaderText" xml:space="preserve">
+    <value>Mittleres Z (Anzahl)</value>
+  </data>
+  <data name="numericBoxMeanZmass.HeaderText" xml:space="preserve">
+    <value>Mittleres Z (Masse)</value>
+  </data>
+  <data name="numericBoxMeanAtomicWeight.HeaderText" xml:space="preserve">
+    <value>Mittleres A</value>
+  </data>
+  <data name="numericBoxAtomicNumberDensity.HeaderText" xml:space="preserve">
+    <value>Atomdichte</value>
+  </data>
+  <data name="numericBoxElectronDensity.HeaderText" xml:space="preserve">
+    <value>Elektronendichte</value>
+  </data>
+</root>

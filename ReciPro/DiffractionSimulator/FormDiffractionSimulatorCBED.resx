@@ -136,7 +136,7 @@
     <value>3, 5, 3, 5</value>
   </data>
   <data name="buttonSimulate.Size" type="System.Drawing.Size, System.Drawing">
-    <value>70, 28</value>
+    <value>100, 28</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="buttonSimulate.TabIndex" type="System.Int32, mscorlib">
@@ -354,7 +354,7 @@ calculation, 1-128. Disabled when Solver is Auto.</value>
     <value>2</value>
   </data>
   <data name="flowLayoutPanel13.Location" type="System.Drawing.Point, System.Drawing">
-    <value>82, 21</value>
+    <value>112, 21</value>
   </data>
   <data name="flowLayoutPanel13.Size" type="System.Drawing.Size, System.Drawing">
     <value>303, 25</value>
@@ -1048,7 +1048,7 @@ finer disks but longer calculation.</value>
     <value>6, 24</value>
   </data>
   <data name="buttonStop.Size" type="System.Drawing.Size, System.Drawing">
-    <value>70, 28</value>
+    <value>100, 28</value>
   </data>
   <data name="buttonStop.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
@@ -1081,7 +1081,7 @@ finer disks but longer calculation.</value>
     <value>4, -1</value>
   </data>
   <data name="groupBoxInputParameters.Size" type="System.Drawing.Size, System.Drawing">
-    <value>401, 180</value>
+    <value>431, 180</value>
   </data>
   <data name="groupBoxInputParameters.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -1952,7 +1952,7 @@ applied to each individual disk.</value>
     <value>Segoe UI, 9.75pt, style=Bold</value>
   </data>
   <data name="groupBoxOutput.Location" type="System.Drawing.Point, System.Drawing">
-    <value>409, -1</value>
+    <value>439, -1</value>
   </data>
   <data name="groupBoxOutput.Size" type="System.Drawing.Size, System.Drawing">
     <value>373, 180</value>
@@ -2003,7 +2003,7 @@ applied to each individual disk.</value>
     <value>1, 0, 18, 0</value>
   </data>
   <data name="statusStrip2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>787, 22</value>
+    <value>817, 22</value>
   </data>
   <data name="statusStrip2.TabIndex" type="System.Int32, mscorlib">
     <value>33</value>
@@ -2033,7 +2033,7 @@ applied to each individual disk.</value>
     <value>96, 96</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>787, 201</value>
+    <value>817, 201</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 10pt</value>

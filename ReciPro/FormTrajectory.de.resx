@@ -1,0 +1,142 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 260617Cl: 多言語化 Phase1/3 (de) text-only リソース。レイアウト(Size/Location/Font)は neutral へフォールバック。結晶学/電子回折用語は IUCr Online Dictionary 準拠。 -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="groupBoxPenetrationDepth.Text" xml:space="preserve">
+    <value>Maximale BSE-Eindringtiefe</value>
+  </data>
+  <data name="radioButtonAverageEnergy.Text" xml:space="preserve">
+    <value>Mittlere Energie</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>Mittlere BSE-Energie</value>
+  </data>
+  <data name="groupBoxDirectionDistribution.Text" xml:space="preserve">
+    <value>BSE-Richtungsverteilung (das Stereonetz-Zentrum entspricht der Oberflächennormalen-Richtung)</value>
+  </data>
+  <data name="buttonSurfaceNormal.Text" xml:space="preserve">
+    <value>Von der Oberflächennormalen</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Trajektorien-Simulator (Monte-Carlo-Methode)</value>
+  </data>
+  <data name="checkBoxDrawAxesInStereonet.Text" xml:space="preserve">
+    <value>Achsen
+zeichnen</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Anzahl der zu berechnenden
+Trajektorien</value>
+  </data>
+  <data name="numericBoxSampleTilt.HeaderText" xml:space="preserve">
+    <value>Probenkippung</value>
+  </data>
+  <data name="buttonViewFromZ.Text" xml:space="preserve">
+    <value>Von der Z-Achse (=Strahlrichtung)</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Rückstreukoeffizient, η</value>
+  </data>
+  <data name="label6.Text" xml:space="preserve">
+    <value>Streuquerschnitt (σ_E)</value>
+  </data>
+  <data name="buttonSimulate.Text" xml:space="preserve">
+    <value>Trajektorien simulieren</value>
+  </data>
+  <data name="label5.Text" xml:space="preserve">
+    <value>Bremsvermögen (dE/ds)</value>
+  </data>
+  <data name="checkBoxDrawGuidCircles.Text" xml:space="preserve">
+    <value>Hilfskreise zeichnen</value>
+  </data>
+  <data name="groupBoxSurfaceDistance.Text" xml:space="preserve">
+    <value>Maximale oberflächenparallele BSE-Distanz</value>
+  </data>
+  <data name="checkBoxDrawAbsorved.Text" xml:space="preserve">
+    <value>In der Probe absorbierte Trajektorien zeichnen</value>
+  </data>
+  <data name="checkBoxDrawPathAfterEscape.Text" xml:space="preserve">
+    <value>Pfad nach dem Austritt zeichnen</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>Elastische mittlere freie Weglänge (λ)</value>
+  </data>
+  <data name="groupBoxEnergyDistribution.Text" xml:space="preserve">
+    <value>BSE-Energieverteilung beim Austritt</value>
+  </data>
+  <data name="buttonViewFromX.Text" xml:space="preserve">
+    <value>Von der X-Achse (Rotationsachse)</value>
+  </data>
+  <data name="checkBoxDrawAxes.Text" xml:space="preserve">
+    <value>Achsen zeichnen</value>
+  </data>
+  <data name="radioButtonFrequency.Text" xml:space="preserve">
+    <value>Häufigkeit</value>
+  </data>
+  <data name="groupBoxStatistics.Text" xml:space="preserve">
+    <value>Statistik</value>
+  </data>
+  <data name="numericBoxDrawNum.HeaderText" xml:space="preserve">
+    <value>Anzahl der zu zeichnenden Trajektorien</value>
+  </data>
+  <data name="radioButtonStandardDeviation.Text" xml:space="preserve">
+    <value>Energie-Standardabweichung</value>
+  </data>
+</root>

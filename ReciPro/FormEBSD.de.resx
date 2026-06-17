@@ -1,0 +1,258 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 260617Cl: 多言語化 Phase1/3 (de) text-only リソース。レイアウト(Size/Location/Font)は neutral へフォールバック。結晶学/電子回折用語は IUCr Online Dictionary 準拠。 -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="numericBoxSampleTilt.HeaderText" xml:space="preserve">
+    <value>Probenkippung</value>
+  </data>
+  <data name="buttonViewQuarter.Text" xml:space="preserve">
+    <value>Vogelperspektive</value>
+  </data>
+  <data name="buttonViewFromSurfaceNormal.Text" xml:space="preserve">
+    <value>Flächennormale</value>
+  </data>
+  <data name="buttonFromX.Text" xml:space="preserve">
+    <value>X-Achse (Drehachse)</value>
+  </data>
+  <data name="buttonViewFromZ.Text" xml:space="preserve">
+    <value>Z-Achse (Strahlrichtung)</value>
+  </data>
+  <data name="buttonSimulateBSE.Text" xml:space="preserve">
+    <value>Simulieren</value>
+  </data>
+  <data name="buttonFitNistElasticSampler.Text" xml:space="preserve">
+    <value>Dev: PCHIP-Komprimierung</value>
+  </data>
+  <data name="checkBoxDrawAxesInStereonet.Text" xml:space="preserve">
+    <value>Achsen zeichnen</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Detektorzentrum</value>
+  </data>
+  <data name="label11.Text" xml:space="preserve">
+    <value>Linienbreite</value>
+  </data>
+  <data name="radioButtonKikuchiThresholdOfStructureFactor.Text" xml:space="preserve">
+    <value>Strukturfaktor</value>
+  </data>
+  <data name="checkBoxKikuchiLine_Kinematical.Text" xml:space="preserve">
+    <value>Strukturfaktoren auf
+Kikuchi-Linien-Intensität anwenden</value>
+  </data>
+  <data name="radioButtonKikuchiThresholdOfLength.Text" xml:space="preserve">
+    <value>1/d-Grenzwert</value>
+  </data>
+  <data name="numericBoxKikuchiThresholdOfStructureFactor.HeaderText" xml:space="preserve">
+    <value>Oben</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Textgröße</value>
+  </data>
+  <data name="numericBoxThicknessStep.HeaderText" xml:space="preserve">
+    <value>mit Schritt von</value>
+  </data>
+  <data name="numericBoxMaxNumOfG.HeaderText" xml:space="preserve">
+    <value>Anzahl gebeugter Wellen</value>
+  </data>
+  <data name="checkBoxNonLocalAbsorption.Text" xml:space="preserve">
+    <value>Nicht-lokales Absorptionsmodell verwenden</value>
+  </data>
+  <data name="checkBoxTDSBackground.Text" xml:space="preserve">
+    <value>TDS-Hintergrundintensitäten einbeziehen</value>
+  </data>
+  <data name="numericBoxThicknessStart.HeaderText" xml:space="preserve">
+    <value>Dicke von</value>
+  </data>
+  <data name="numericBoxThicknessEnd.HeaderText" xml:space="preserve">
+    <value>bis</value>
+  </data>
+  <data name="buttonStop.Text" xml:space="preserve">
+    <value>Stopp</value>
+  </data>
+  <data name="numericBoxEnergy.HeaderText" xml:space="preserve">
+    <value>Energie</value>
+  </data>
+  <data name="numericBoxDepth.HeaderText" xml:space="preserve">
+    <value>Tiefe</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>Polarität</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>Farbe</value>
+  </data>
+  <data name="checkBoxWithBSEDistribution.Text" xml:space="preserve">
+    <value>Bild mit BSE-Winkel-/Energieverteilungen anzeigen</value>
+  </data>
+  <data name="label10.Text" xml:space="preserve">
+    <value>Helligkeit</value>
+  </data>
+  <data name="groupBoxOutput.Text" xml:space="preserve">
+    <value>Ausgabeparameter</value>
+  </data>
+  <data name="checkBoxShowOverlays.Text" xml:space="preserve">
+    <value>Overlays anzeigen</value>
+  </data>
+  <data name="buttonCopyImage.Text" xml:space="preserve">
+    <value>Kopieren</value>
+  </data>
+  <data name="numericBoxEnergyEnd.HeaderText" xml:space="preserve">
+    <value>bis</value>
+  </data>
+  <data name="numericBoxEnergyStart.HeaderText" xml:space="preserve">
+    <value>Energie von</value>
+  </data>
+  <data name="numericBoxEnergyStep.HeaderText" xml:space="preserve">
+    <value>mit Schritt von</value>
+  </data>
+  <data name="label13.Text" xml:space="preserve">
+    <value>Tiefe (nm)</value>
+  </data>
+  <data name="checkBoxShowDyanmicalEBSD.Text" xml:space="preserve">
+    <value>Dynamisches EBSD-Muster anzeigen (Master-Pattern erforderlich)</value>
+  </data>
+  <data name="checkBoxDrawDetectorOutline.Text" xml:space="preserve">
+    <value>Detektorumriss</value>
+  </data>
+  <data name="label17.Text" xml:space="preserve">
+    <value>Detektorkippung</value>
+  </data>
+  <data name="label16.Text" xml:space="preserve">
+    <value>Detektorradius</value>
+  </data>
+  <data name="groupBoxEBSDGeometry.Text" xml:space="preserve">
+    <value>EBSD-Geometrie</value>
+  </data>
+  <data name="groupBoxSampleCondition.Text" xml:space="preserve">
+    <value>SEM &amp;&amp; Probenbedingungen</value>
+  </data>
+  <data name="tabPage1.Text" xml:space="preserve">
+    <value>Geometrie</value>
+  </data>
+  <data name="label15.Text" xml:space="preserve">
+    <value>Das Stereonetz-Zentrum ist die Flächennormalenrichtung</value>
+  </data>
+  <data name="tabPage2.Text" xml:space="preserve">
+    <value>BSE-Verteilung</value>
+  </data>
+  <data name="checkBoxShowMesh.Text" xml:space="preserve">
+    <value>Raster anzeigen</value>
+  </data>
+  <data name="checkBoxShowCircle.Text" xml:space="preserve">
+    <value>Kreis anzeigen</value>
+  </data>
+  <data name="groupBox2.Text" xml:space="preserve">
+    <value>Texteinstellungen</value>
+  </data>
+  <data name="checkBoxShowKikuchiLines.Text" xml:space="preserve">
+    <value>Kikuchi-Linien anzeigen</value>
+  </data>
+  <data name="groupBoxLatticePlanes.Text" xml:space="preserve">
+    <value>Kikuchi-Linien-Kriterien</value>
+  </data>
+  <data name="checkBoxShowGIndices.Text" xml:space="preserve">
+    <value>Kikuchi-Linien-Indizes anzeigen</value>
+  </data>
+  <data name="checkBoxShowZoneAxisIndices.Text" xml:space="preserve">
+    <value>Zonenachsen-Indizes anzeigen</value>
+  </data>
+  <data name="labelMasterPatternGrid.Text" xml:space="preserve">
+    <value>Raster</value>
+  </data>
+  <data name="groupBoxSimulationParameters.Text" xml:space="preserve">
+    <value>Dynamische Simulationsparameter</value>
+  </data>
+  <data name="numericBoxMasterPatternEnergy.HeaderText" xml:space="preserve">
+    <value>Energie</value>
+  </data>
+  <data name="numericBoxMasterPatternDepth.HeaderText" xml:space="preserve">
+    <value>Tiefe</value>
+  </data>
+  <data name="labelMasterPattern2DHemisphere.Text" xml:space="preserve">
+    <value>Halbkugel</value>
+  </data>
+  <data name="buttonCreateMasterPattern.Text" xml:space="preserve">
+    <value>Master-Pattern erstellen</value>
+  </data>
+  <data name="buttonMasterPattern2DCopy.Text" xml:space="preserve">
+    <value>Kopieren</value>
+  </data>
+  <data name="buttonMasterPattern3DCopy.Text" xml:space="preserve">
+    <value>Kopieren</value>
+  </data>
+  <data name="checkBoxMasterPattern3DAxisLabel.Text" xml:space="preserve">
+    <value>Achsenbeschriftungen</value>
+  </data>
+  <data name="checkBoxMasterPattern3DAxisArrows.Text" xml:space="preserve">
+    <value>Achsenpfeile</value>
+  </data>
+  <data name="buttonMasterPattern3DViewAlong.Text" xml:space="preserve">
+    <value>Blick entlang</value>
+  </data>
+  <data name="groupBoxMasterPattern.Text" xml:space="preserve">
+    <value>Master-Pattern</value>
+  </data>
+  <data name="groupBoxEBSDPattern.Text" xml:space="preserve">
+    <value>EBSD-Muster</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>EBSD-Simulator</value>
+  </data>
+</root>

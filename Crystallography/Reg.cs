@@ -85,7 +85,10 @@ public static class Reg
                 }
                 else
                 {
-                    Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(val.ToString().ToLower().StartsWith("ja") ? "ja" : "en");
+                    // 260617Cl 変更: 二値 ja/en 潰しを廃止し、SupportedCultures の allow-list で復元する
+                    //   (新言語を選んでも再起動で英語に戻ってしまうバグの修正。Phase 0)。
+                    // 旧: Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(val.ToString().ToLower().StartsWith("ja") ? "ja" : "en");
+                    Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(SupportedCultures.Resolve(val?.ToString()).Name);
                 }
             }
             catch { return; }

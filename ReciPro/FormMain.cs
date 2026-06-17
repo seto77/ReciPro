@@ -362,8 +362,11 @@ public partial class FormMain : FormBase
 
         Crystallography.Controls.FormCaptureGUI.InstallShortcutFilter(); // 260323Cl 追加: Ctrl+Shift+Alt+C ショートカット
 
-        englishToolStripMenuItem.Checked = Thread.CurrentThread.CurrentUICulture.Name != "ja";
-        japaneseToolStripMenuItem.Checked = Thread.CurrentThread.CurrentUICulture.Name == "ja";
+        // 260617Cl 変更: 二値 ja/en 判定から SupportedCultures.Current 駆動へ (Phase 0)。
+        //   新言語の言語メニュー項目を Designer で追加する際は、その Tag に CultureInfo 名 (例 "de") を設定すれば
+        //   下の languageToolStripMenuItem_Click ハンドラおよびここのチェック更新と整合する。
+        // 旧: englishToolStripMenuItem.Checked = ...Name != "ja"; japaneseToolStripMenuItem.Checked = ...Name == "ja";
+        UpdateLanguageMenuChecks(Crystallography.SupportedCultures.Current.Name);
 
         // 260428Cl 追加: ダークモード設定の復元 (CheckedChanged で書込が走らないようハンドラを一旦外す)。
         toolStripMenuItemDarkMode.CheckedChanged -= toolStripMenuItemDarkMode_CheckedChanged;
@@ -1578,7 +1581,8 @@ public partial class FormMain : FormBase
             }
             catch
             {
-                MessageBox.Show("ファイルが書き込みません");
+                // 260617Cl 変更: 日本語固定リテラルは英語(neutral)UIで未翻訳に見えるため英語化 (Phase 0)。本格 localize は Phase 4。
+                MessageBox.Show("Failed to write the file."); // 旧: "ファイルが書き込みません"
             }
         }
     }
@@ -1681,10 +1685,29 @@ public partial class FormMain : FormBase
 
     private void languageToolStripMenuItem_Click(object sender, EventArgs e)
     {
-        englishToolStripMenuItem.Checked = ((ToolStripMenuItem)sender).Name.Contains("english");
-        japaneseToolStripMenuItem.Checked = !englishToolStripMenuItem.Checked;
-        Thread.CurrentThread.CurrentUICulture = englishToolStripMenuItem.Checked ? new System.Globalization.CultureInfo("en") : new System.Globalization.CultureInfo("ja");
+        // 260617Cl 変更: english/japanese 二択固定から、項目の Tag (CultureInfo 名) 駆動の N 言語対応へ (Phase 0)。
+        // 切替は CurrentUICulture を更新するのみ (構築済みフォームは再ローカライズしない=従来通り再起動方式)。
+        // 旧:
+        //   englishToolStripMenuItem.Checked = ((ToolStripMenuItem)sender).Name.Contains("english");
+        //   japaneseToolStripMenuItem.Checked = !englishToolStripMenuItem.Checked;
+        //   Thread.CurrentThread.CurrentUICulture = englishToolStripMenuItem.Checked ? new System.Globalization.CultureInfo("en") : new System.Globalization.CultureInfo("ja");
+        var culture = Crystallography.SupportedCultures.Resolve(LanguageMenuItemCulture((ToolStripMenuItem)sender));
+        Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(culture.Name);
+        UpdateLanguageMenuChecks(culture.Name);
     }
+
+    // 260617Cl 追加: 言語メニュー各項目のチェックを現在カルチャに合わせて更新する (Load 時と切替時で共用。Phase 0)。
+    private void UpdateLanguageMenuChecks(string currentName)
+    {
+        foreach (ToolStripItem it in languageToolStripMenuItem.DropDownItems)
+            if (it is ToolStripMenuItem mi)
+                mi.Checked = LanguageMenuItemCulture(mi) == currentName;
+    }
+
+    // 260617Cl 追加: 言語メニュー項目が表すカルチャ名。Tag (CultureInfo 名) を優先し、未設定の既存項目は Name から
+    //   english/japanese を後方互換で解決する。新言語は Designer 項目の Tag に "de" 等を設定すれば自動追従する。
+    private static string LanguageMenuItemCulture(ToolStripMenuItem item)
+        => (item.Tag as string) ?? (item.Name.Contains("english") ? "en" : item.Name.Contains("japanese") ? "ja" : null);
     private void githubPageToolStripMenuItem_Click(object sender, EventArgs e)
         => Process.Start(new ProcessStartInfo("https://github.com/seto77/ReciPro") { UseShellExecute = true });
     private void reportBugsRequestsOrCommentsToolStripMenuItem1_Click(object sender, EventArgs e)

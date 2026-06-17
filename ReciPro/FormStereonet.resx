@@ -4825,7 +4825,7 @@ fade with distance (depth) in the 3-D view.</value>
     <value>NoControl</value>
   </data>
   <data name="labelAxisPlane.Location" type="System.Drawing.Point, System.Drawing">
-    <value>615, 34</value>
+    <value>632, 34</value>
   </data>
   <data name="labelAxisPlane.Size" type="System.Drawing.Size, System.Drawing">
     <value>137, 16</value>
@@ -4859,7 +4859,7 @@ nearest the cursor position on the stereonet.</value>
     <value>461, 33</value>
   </data>
   <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>155, 16</value>
+    <value>170, 16</value>
   </data>
   <data name="label2.TabIndex" type="System.Int32, mscorlib">
     <value>60</value>

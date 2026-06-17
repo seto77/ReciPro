@@ -1,0 +1,143 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 260617Cl: 多言語化 Phase1/3 (de) text-only リソース。レイアウト(Size/Location/Font)は neutral へフォールバック。結晶学/電子回折用語は IUCr Online Dictionary 準拠。 -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="dataGridViewTextBoxColumnMulti.HeaderText" xml:space="preserve">
+    <value>Mult.</value>
+  </data>
+  <data name="dataGridViewTextBoxColumnIntCondition.HeaderText" xml:space="preserve">
+    <value>Bedingung</value>
+  </data>
+  <data name="checkBoxHideProhibitedPlanes.Text" xml:space="preserve">
+    <value>Verbotene Ebenen ausblenden</value>
+  </data>
+  <data name="checkBoxHideEquivalentPlane.Text" xml:space="preserve">
+    <value>Äquivalente Ebenen ausblenden</value>
+  </data>
+  <data name="buttonCopyClipboard.Text" xml:space="preserve">
+    <value>Kopieren</value>
+  </data>
+  <data name="checkBoxBragBrentano.Text" xml:space="preserve">
+    <value>Pulverbeugungsintensitäten (Bragg-Brentano-Optik)</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>Schritt</value>
+  </data>
+  <data name="numericBoxCutoffD.HeaderText" xml:space="preserve">
+    <value>d-Wert-Untergrenze &gt;</value>
+  </data>
+  <data name="labelModel.Text" xml:space="preserve">
+    <value>Modell</value>
+  </data>
+  <data name="numericBoxAttenThickness.HeaderText" xml:space="preserve">
+    <value>Dicke  t</value>
+  </data>
+  <data name="tabPageReflections.Text" xml:space="preserve">
+    <value>Reflexe</value>
+  </data>
+  <data name="colEdgeElem.HeaderText" xml:space="preserve">
+    <value>El.</value>
+  </data>
+  <data name="colEdgeEdge.HeaderText" xml:space="preserve">
+    <value>Kante</value>
+  </data>
+  <data name="colEdgeJump.HeaderText" xml:space="preserve">
+    <value>Sprung</value>
+  </data>
+  <data name="colElecElem.HeaderText" xml:space="preserve">
+    <value>El.</value>
+  </data>
+  <data name="colNeutElem.HeaderText" xml:space="preserve">
+    <value>El.</value>
+  </data>
+  <data name="radioButtonElecAll.Text" xml:space="preserve">
+    <value>Alle (normiert)</value>
+  </data>
+  <data name="radioButtonElecSigma.Text" xml:space="preserve">
+    <value>σ elastisch (nm²)</value>
+  </data>
+  <data name="radioButtonElecEMFP.Text" xml:space="preserve">
+    <value>Elastische MFP (nm)</value>
+  </data>
+  <data name="radioButtonElecRange.Text" xml:space="preserve">
+    <value>Reichweite CSDA (µm)</value>
+  </data>
+  <data name="tabPageAttenuations.Text" xml:space="preserve">
+    <value>Schwächung &amp;&amp; Transport</value>
+  </data>
+  <data name="colSfeModel.HeaderText" xml:space="preserve">
+    <value>Modell</value>
+  </data>
+  <data name="tabPageScatteringFactors.Text" xml:space="preserve">
+    <value>Streufaktoren</value>
+  </data>
+  <data name="colFlElem.HeaderText" xml:space="preserve">
+    <value>El.</value>
+  </data>
+  <data name="colFlLine.HeaderText" xml:space="preserve">
+    <value>Linie</value>
+  </data>
+  <data name="tabPageFluorescence.Text" xml:space="preserve">
+    <value>Fluoreszenz</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Strahlwechselwirkung</value>
+  </data>
+</root>

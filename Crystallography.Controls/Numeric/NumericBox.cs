@@ -213,6 +213,21 @@ public partial class NumericBox : UserControlBase
         get => labelHeader.Text;
     }
 
+    /// <summary>ヘッダラベル(labelHeader)の固定幅(論理px)。-1 (既定) で従来どおり AutoSize=true。
+    /// >=0 で labelHeader.AutoSize=false にして Width をこの値(論理px→DPIスケール)に固定する。
+    /// NumericBox を縦に並べたとき、ヘッダ文字長に依らず数値欄(textBox)の開始 X 位置を揃える用途。
+    /// Horizontal 配置(ヘッダ=Left)のときのみ有効。Vertical 配置(ヘッダ=Top)では無視され従来どおり AutoSize。
+    /// 文字が幅に収まらない場合は ellipsis でクリップし、hover で全文を tooltip 表示する。</summary>
+    [DefaultValue(-1)]                                                                                                                                // 260617Cl 追加
+    [Category("Header && Footer")]
+    [Description("ヘッダラベルの固定幅(論理px)。-1 で従来どおり AutoSize。>=0 で Width を固定し、縦並び時に数値欄の開始位置を揃える。")] // 260617Cl 追加
+    public int HeaderWidth                                                                                                                            // 260617Cl 追加
+    {
+        get => headerWidth;
+        set { if (headerWidth == value) return; headerWidth = value; applyWidthMode(); }                                                              // ヘッダ/数値欄幅モードへ一括反映
+    }
+    private int headerWidth = -1;                                                                                                                     // 260617Cl 追加 -1=AutoSize(従来), >=0=固定幅
+
     [Category("Header && Footer")]
     [Localizable(true)]
     //[DefaultValue(typeof(Padding), "0,2,0,0")] // 260428Cl 変更: TextAlign=Middle 化に伴い既定 Padding を 0 に
@@ -529,6 +544,11 @@ public partial class NumericBox : UserControlBase
         textBox.SizeChanged += (_, _) => alignSpinButton();
         spinButtonPanel.SizeChanged += (_, _) => alignSpinButton();
         alignSpinButton();
+
+        // 260617Cl 追加: 数値欄幅モード (多言語化対応) の配線。親が確定したら(Flow/Table 判定のため)再適用、全幅変化で M2 ヘッダ幅を追従。
+        ParentChanged += (_, _) => applyWidthMode();
+        SizeChanged += (_, _) => refreshWidthMode();
+        applyWidthMode();
     }
 
     // (260428Ch) Visible切替でDock順が変わることがあるため、spinButtonPanelをlabelFooterの左に戻す。
@@ -578,6 +598,7 @@ public partial class NumericBox : UserControlBase
             labelHeader.TextAlign = ContentAlignment.TopLeft;
             labelFooter.TextAlign = ContentAlignment.TopRight;
         }
+        applyWidthMode();                                                                                                                             // 260617Cl 追加: 配置変更時にヘッダ固定幅(HeaderWidth)/数値欄幅モードを再評価 (Vertical では固定解除→AutoSize へ)
         updateLabelVisibility();
         updateLabelBaselines();                                                                                                                       // 260428Cl 追加: 配置変更時にも再計算
     }
@@ -589,7 +610,181 @@ public partial class NumericBox : UserControlBase
         labelHeader.Visible = !string.IsNullOrEmpty(labelHeader.Text);
         labelFooter.Visible = !string.IsNullOrEmpty(labelFooter.Text);
         applyDockOrder();                                                                                                                             // (260428Ch) Visible更新でRight dockのfooter/spin順が入れ替わるのを防ぐ
+        refreshWidthMode();                                                                                                                           // 260617Cl: ヘッダ/フッタ可視変化を数値欄幅モードへ反映
     }
+
+    #region 260617Cl 追加: 多言語化対応の「数値欄幅モード」
+    // 問題: 既定では labelHeader(Dock=Left,AutoSize) | textBox(Dock=Fill) | spin/footer(Right) で全幅固定のため、
+    //       HeaderText が翻訳で伸びると数値欄(Fill)が縮んで数値が読めなくなる (多言語化の最大の切れリスク)。
+    // 対処: 数値欄に最低固定幅を持たせ、ヘッダの伸長を「数値欄の縮小」でなく
+    //       M3=全幅の伸長(Flow/TableLayoutPanel でリフロー) / M2=ヘッダのクリップ(絶対配置で格子維持・tooltip 救済) に変える。
+    // レイアウト構造(Dock)は壊さず、ヘッダの AutoSize/幅と本体の AutoSize/GetPreferredSize だけで実現する (低リスク)。
+    // 詳細は .project-guidance/ReciPro_多言語化方針.md (Phase 1)。既定 OFF で従来挙動と完全一致。
+
+    private int valueBoxWidth = -1;
+    private bool autoSizeWidth = false;
+
+    /// <summary>静的既定: アプリ起動時に >=0 (論理px) を設定すると、ValueBoxWidth 未指定の全 NumericBox に最低数値欄幅を一括適用する。
+    /// 親が Flow/TableLayoutPanel なら全幅を伸ばし(リフロー)、絶対配置なら数値欄を死守してヘッダをクリップ(tooltip で全文救済)。
+    /// 既定 -1 = 無効 (従来挙動)。アプリ側で 1 行設定するだけで全数値欄に最低可読幅を保証する。</summary>
+    public static int DefaultValueBoxWidth { get; set; } = -1;
+
+    /// <summary>数値欄(textBox)の固定幅(論理px)。-1 (既定) で従来どおり残り幅を Fill。
+    /// >=0 でヘッダ伸長時も数値欄をこの幅に死守する。未指定(-1)でも <see cref="DefaultValueBoxWidth"/> が効く。</summary>
+    [DefaultValue(-1)]
+    [Category("Value box")]
+    [Description("数値欄の固定幅(論理px)。-1 で従来どおり(残り幅を Fill)。>=0 でヘッダ伸長時も数値欄を死守する。")]
+    public int ValueBoxWidth
+    {
+        get => valueBoxWidth;
+        set { if (valueBoxWidth == value) return; valueBoxWidth = value; applyWidthMode(); }
+    }
+
+    /// <summary>true で数値欄を固定し全幅を AutoSize で伸ばす(Flow/TableLayoutPanel 内向け=リフローで完全可読)。
+    /// false(既定)で全幅固定のままヘッダをクリップ。ValueBoxWidth 未指定+DefaultValueBoxWidth 有効時は、親が Flow/Table なら自動で true 相当に振る舞う。</summary>
+    [DefaultValue(false)]
+    [Category("Value box")]
+    [Description("数値欄を固定し全幅を AutoSize で伸ばす(Flow/TableLayoutPanel 内向け)。false なら全幅固定でヘッダをクリップ。")]
+    public bool AutoSizeWidth
+    {
+        get => autoSizeWidth;
+        set { if (autoSizeWidth == value) return; autoSizeWidth = value; applyWidthMode(); }
+    }
+
+    // 有効な数値欄幅 (インスタンス指定優先、無ければ静的既定)。<0 ならモード無効=従来挙動。
+    private int effectiveValueBoxWidth => valueBoxWidth >= 0 ? valueBoxWidth : DefaultValueBoxWidth;
+    // 設計時は適用しない (Designer の再シリアライズ汚染を避け、実行時のみ反映)。
+    private bool widthModeActive => effectiveValueBoxWidth >= 0 && !DesignMode;
+    // M3(全幅 AutoSize): 明示 AutoSizeWidth、または静的既定経由で親が Flow/Table のとき。
+    private bool useAutoSizeWidth => autoSizeWidth || (valueBoxWidth < 0 && Parent is FlowLayoutPanel or TableLayoutPanel);
+
+    // 260617Cl 追加: HeaderWidth(>=0) によるヘッダ固定幅モードが有効か。Horizontal 配置のときのみ
+    // (Vertical では labelHeader.Dock=Top で Width が無意味かつ AutoSize=false が高さを壊すため不可)。
+    // DesignMode は問わない (デザイナ上でも数値欄の整列を確認できるようにする。labelHeader は内部子のため
+    //  消費側フォームの Designer.cs には直列化されず、再シリアライズ汚染は起きない)。
+    private bool headerWidthFixed => headerWidth >= 0 && labelOrientation == NumericBoxOrientation.Horizontal;
+
+    private void applyWidthMode()
+    {
+        if (labelHeader == null || textBox == null) return;
+
+        // 260617Cl 追加: Vertical 配置ではヘッダは独立行(Dock=Top)で「ヘッダ vs 数値欄」の横幅競合が無い。
+        // よって幅モード(HeaderWidth/ValueBoxWidth=M2/M3)は一切適用せず、ヘッダは常に AutoSize=true に保つ。
+        // (Dock=Top で AutoSize=false にするとヘッダ高さがテキスト/フォントに追従せず壊れるため必須のガード。
+        //  headerWidthFixed は Horizontal を要求するが、併存する M2 経路には orientation ガードが無かった—ここで一元的に塞ぐ)。
+        if (labelOrientation != NumericBoxOrientation.Horizontal)
+        {
+            if (!labelHeader.AutoSize) labelHeader.AutoSize = true;
+            labelHeader.AutoEllipsis = false;
+            if (AutoSize) AutoSize = false;
+            return;
+        }
+
+        // --- 以下 Horizontal 配置のみ ---
+        // 260617Cl 追加: HeaderWidth(>=0, Horizontal) によるヘッダ固定幅モード。
+        // 有効ならヘッダの AutoSize/Width をここで確定し、以降の widthMode(ValueBoxWidth)系の
+        // ヘッダ操作(M1 の AutoSize=true / M2 の動的クリップ)は抑止して固定幅を死守する。
+        // (HeaderWidth と ValueBoxWidth が両方有効な場合: M3 なら GetPreferredSize が header+box+… を返し両立。
+        //  M2 では全幅固定のためヘッダ固定が優先され、数値欄の最低幅は保証されない=固定幅指定側の責務)。
+        bool fixedHeader = headerWidthFixed;
+        if (fixedHeader)
+        {
+            if (labelHeader.AutoSize) labelHeader.AutoSize = false;
+            labelHeader.AutoEllipsis = true;                                                                                                          // はみ出しは ellipsis(+hover tooltip)でクリップ
+            int hw = LogicalToDeviceUnits(headerWidth);                                                                                               // 高DPI対応 (論理px→デバイスpx)
+            if (labelHeader.Width != hw) labelHeader.Width = hw;
+        }
+
+        if (!widthModeActive)
+        {
+            // M1 (従来): ヘッダ AutoSize、全幅固定、ellipsis 無し。
+            if (!fixedHeader)
+            {
+                if (!labelHeader.AutoSize) labelHeader.AutoSize = true;
+                labelHeader.AutoEllipsis = false;
+            }
+            if (AutoSize) AutoSize = false;
+            return;
+        }
+        if (useAutoSizeWidth)
+        {
+            // M3: ヘッダ AutoSize のまま(固定時を除く)、本体 AutoSize=true → GetPreferredSize が header+box+spin+footer を返す。
+            if (!fixedHeader)
+            {
+                if (!labelHeader.AutoSize) labelHeader.AutoSize = true;
+                labelHeader.AutoEllipsis = false;
+            }
+            if (!AutoSize) AutoSize = true;
+            PerformLayout();
+        }
+        else
+        {
+            // M2: 全幅固定。ヘッダを固定幅+ellipsis にし、Fill の数値欄を effectiveValueBoxWidth に死守する。
+            if (AutoSize) AutoSize = false;
+            if (!fixedHeader)
+            {
+                labelHeader.AutoSize = false;
+                labelHeader.AutoEllipsis = true;
+                layoutM2HeaderWidth();
+            }
+        }
+    }
+
+    // M2: ヘッダ(Dock=Left,AutoSize=false)を「必要幅まで縮め、足りなければクリップ」して、Fill の数値欄を最低 box に死守する。
+    // ヘッダ幅 = min(ヘッダ必要幅, 全幅 − box − spin − footer)。
+    //  - ヘッダが短いフォーム: ヘッダ=必要幅 → 数値欄 = 残り(自然な広い幅) を温存 (=従来と同じ。広い数値欄を不要に削らない)。
+    //  - ヘッダが長い/翻訳で伸びた場合: ヘッダ=上限でクリップ(ellipsis+tooltip) → 数値欄は最低 box を死守。
+    // ＝ box は「固定」でなく「下限」。これにより既存の見た目を壊さず、翻訳で縮む時だけ保護が効く。
+    private void layoutM2HeaderWidth()
+    {
+        if (!widthModeActive || useAutoSizeWidth || labelHeader == null) return;
+        if (headerWidthFixed) return;                                                                                                                 // 260617Cl: ヘッダ固定幅モードでは applyWidthMode が幅を確定済み (動的クリップしない)
+        int box = LogicalToDeviceUnits(effectiveValueBoxWidth); // 高DPI対応
+        int footerW = labelFooter is { Visible: true } ? labelFooter.Width : 0;
+        int spinW = spinButtonPanel is { Visible: true } ? spinButtonPanel.Width : 0;
+        int maxHeader = Math.Max(0, ClientSize.Width - box - footerW - spinW);
+        int desired = labelHeader.Visible ? Math.Min(labelHeader.PreferredWidth, maxHeader) : 0;
+        if (labelHeader.Width != desired) labelHeader.Width = desired;
+    }
+
+    // 全幅変化(M2)/ヘッダ・フッタ可視変化 を幅モードへ反映する軽量フック。
+    private void refreshWidthMode()
+    {
+        if (!widthModeActive || labelOrientation != NumericBoxOrientation.Horizontal) return;                                                        // 260617Cl: Vertical は幅モード非対象
+        if (useAutoSizeWidth) PerformLayout(); else layoutM2HeaderWidth();
+    }
+
+    // M3: 親(Flow/Table)が問い合わせる優先サイズ = ヘッダ実必要幅 + 数値欄 + spin + footer。
+    public override Size GetPreferredSize(Size proposedSize)
+    {
+        if (widthModeActive && useAutoSizeWidth && labelHeader != null && labelOrientation == NumericBoxOrientation.Horizontal)                       // 260617Cl: Vertical は横方向集計しない(ラベルは縦積み)
+        {
+            int box = LogicalToDeviceUnits(effectiveValueBoxWidth);
+            int hw = labelHeader.Visible ? (headerWidthFixed ? LogicalToDeviceUnits(headerWidth) : labelHeader.PreferredWidth) : 0; // 260617Cl: 固定幅時は HeaderWidth を加算
+            int fw = labelFooter is { Visible: true } ? labelFooter.PreferredWidth : 0;
+            int sw = spinButtonPanel is { Visible: true } ? spinButtonPanel.Width : 0;
+            return new Size(hw + box + fw + sw, Height);
+        }
+        return base.GetPreferredSize(proposedSize);
+    }
+
+    // 260617Cl 追加: Handle 作成時 / Per-Monitor DPI 変化時に幅モードを再適用する。
+    // HeaderWidth(固定ヘッダ幅)・ValueBoxWidth(数値欄幅) は LogicalToDeviceUnits でデバイスpx化するが、
+    // プロパティ設定/ParentChanged はハンドル生成前(DeviceDpi=96)に走るため、その時点では論理値=物理値のまま
+    // stamp されてしまう。実際の DPI が確定する OnHandleCreated と、モニタ移動時の OnDpiChangedAfterParent で
+    // 再計算しないと高DPIでヘッダ幅がずれ、縦並びの数値欄整列が崩れる (姉妹コントロール IndexControl.cs:276-289 と同じ定石)。
+    protected override void OnHandleCreated(EventArgs e)
+    {
+        base.OnHandleCreated(e);                                                                                                                      // UserControlBase の ToolTip relay を維持
+        applyWidthMode();
+    }
+
+    protected override void OnDpiChangedAfterParent(EventArgs e)
+    {
+        base.OnDpiChangedAfterParent(e);
+        applyWidthMode();
+    }
+    #endregion
 
 
 

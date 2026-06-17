@@ -4394,7 +4394,7 @@ Larger values result in slower calculation speed but higher accuracy.</value>
     <value>0, 0, 0, 0</value>
   </data>
   <data name="groupBoxDiffractedWaves.Size" type="System.Drawing.Size, System.Drawing">
-    <value>102, 80</value>
+    <value>116, 80</value>
   </data>
   <data name="groupBoxDiffractedWaves.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>

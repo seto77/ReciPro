@@ -1,0 +1,371 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 260617Cl: 多言語化 Phase1/3 (de) text-only リソース。レイアウト(Size/Location/Font)は neutral へフォールバック。結晶学/電子回折用語は IUCr Online Dictionary 準拠。 -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="label27.Text" xml:space="preserve">
+    <value>Hoch</value>
+  </data>
+  <data name="label30.Text" xml:space="preserve">
+    <value>Niedrig</value>
+  </data>
+  <data name="checkBoxGaussianBlur.Text" xml:space="preserve">
+    <value>Gauß-Unschärfe (FWHM)</value>
+  </data>
+  <data name="label25.Text" xml:space="preserve">
+    <value>Farbe</value>
+  </data>
+  <data name="groupBoxAdjust.Text" xml:space="preserve">
+    <value>Anpassen</value>
+  </data>
+  <data name="checkBoxNormarizeIndividually.Text" xml:space="preserve">
+    <value>Für jedes Bild</value>
+  </data>
+  <data name="groupBoxNormalization.Text" xml:space="preserve">
+    <value>Normierung</value>
+  </data>
+  <data name="radioButtonSTEM_target_elas.Text" xml:space="preserve">
+    <value>Elastisch</value>
+  </data>
+  <data name="radioButtonSTEM_target_both.Text" xml:space="preserve">
+    <value>Elastisch
+&amp;&amp;TDS</value>
+  </data>
+  <data name="groupBoxSTEMoption3.Text" xml:space="preserve">
+    <value>STEM-Bild</value>
+  </data>
+  <data name="colorControlScale.HeaderText" xml:space="preserve">
+    <value>Farbe</value>
+  </data>
+  <data name="numericBoxScaleLength.HeaderText" xml:space="preserve">
+    <value>Länge</value>
+  </data>
+  <data name="checkBoxShowScale.Text" xml:space="preserve">
+    <value>Maßstabsbalken</value>
+  </data>
+  <data name="colorControlLabel.HeaderText" xml:space="preserve">
+    <value>Farbe</value>
+  </data>
+  <data name="numericBoxLabelFontSize.HeaderText" xml:space="preserve">
+    <value>Größe</value>
+  </data>
+  <data name="checkBoxShowLabel.Text" xml:space="preserve">
+    <value>Beschriftung</value>
+  </data>
+  <data name="checkBoxShowUnitcell.Text" xml:space="preserve">
+    <value>Elementarzelle</value>
+  </data>
+  <data name="groupBoxDisplay.Text" xml:space="preserve">
+    <value>Anzeige</value>
+  </data>
+  <data name="numericBoxDefocusNum.HeaderText" xml:space="preserve">
+    <value>Anz</value>
+  </data>
+  <data name="numericBoxDefocusStep.HeaderText" xml:space="preserve">
+    <value>Schritt</value>
+  </data>
+  <data name="numericBoxThicknessNum.HeaderText" xml:space="preserve">
+    <value>Anz</value>
+  </data>
+  <data name="numericBoxThicknessStep.HeaderText" xml:space="preserve">
+    <value>Schritt</value>
+  </data>
+  <data name="checkBoxSerialThickness.Text" xml:space="preserve">
+    <value>Dicke (nm)</value>
+  </data>
+  <data name="checkBoxSerialDefocus.Text" xml:space="preserve">
+    <value>Defokus (nm)</value>
+  </data>
+  <data name="label6.Text" xml:space="preserve">
+    <value>Horizontale Richtung:</value>
+  </data>
+  <data name="radioButtonHorizontalDefocus.Text" xml:space="preserve">
+    <value>Defokus</value>
+  </data>
+  <data name="radioButtonHorizontalThickness.Text" xml:space="preserve">
+    <value>Dicke</value>
+  </data>
+  <data name="radioButtonSingleMode.Text" xml:space="preserve">
+    <value>Einzelbild</value>
+  </data>
+  <data name="radioButtonSerialMode.Text" xml:space="preserve">
+    <value>Serienbild</value>
+  </data>
+  <data name="groupBoxSerialImage.Text" xml:space="preserve">
+    <value>Einzel-/Serienmodus</value>
+  </data>
+  <data name="radioButtonPotentialModeMagAndPhase.Text" xml:space="preserve">
+    <value>Betrag und Phase</value>
+  </data>
+  <data name="radioButtonPotentialShowMagAndPhase.Text" xml:space="preserve">
+    <value>Beide</value>
+  </data>
+  <data name="radioButtonPotentialShowMag.Text" xml:space="preserve">
+    <value>Nur Betrag</value>
+  </data>
+  <data name="radioButtonPotentialShowPhase.Text" xml:space="preserve">
+    <value>Nur Phase</value>
+  </data>
+  <data name="label10.Text" xml:space="preserve">
+    <value>Skala der Phase</value>
+  </data>
+  <data name="radioButtonPotentialModeRealAndImag.Text" xml:space="preserve">
+    <value>Real- und Imaginärteil</value>
+  </data>
+  <data name="radioButtonPotentialShowRealAndImag.Text" xml:space="preserve">
+    <value>Beide</value>
+  </data>
+  <data name="radioButtonPotentialShowReal.Text" xml:space="preserve">
+    <value>Nur Realteil</value>
+  </data>
+  <data name="radioButtonPotentialShowImag.Text" xml:space="preserve">
+    <value>Nur Imaginärteil</value>
+  </data>
+  <data name="checkBoxPotentialUgPrime.Text" xml:space="preserve">
+    <value>U'g: Imaginäres (Absorptions-)Potential für TDS</value>
+  </data>
+  <data name="checkBoxPotentialUg.Text" xml:space="preserve">
+    <value>Ug: Kristallpotential für elastische Streuung</value>
+  </data>
+  <data name="groupBoxPotentialOption.Text" xml:space="preserve">
+    <value>Potential-Optionen</value>
+  </data>
+  <data name="numericBoxSTEM_AngleResolution.HeaderText" xml:space="preserve">
+    <value>Winkelauflösung der einfallenden Elektronen</value>
+  </data>
+  <data name="numericBoxSTEM_SliceThicknessForInelastic.HeaderText" xml:space="preserve">
+    <value>Schichtdicke für TDS-Berechnung</value>
+  </data>
+  <data name="groupBoxSTEMoption2.Text" xml:space="preserve">
+    <value>STEM-Optionen</value>
+  </data>
+  <data name="radioButtonModeQuasiCoherent.Text" xml:space="preserve">
+    <value>Lineares Bild</value>
+  </data>
+  <data name="radioButtonModeTransmissionCrossCoefficient.Text" xml:space="preserve">
+    <value>Transmissions-Kreuzkoeffizient</value>
+  </data>
+  <data name="label32.Text" xml:space="preserve">
+    <value>Modell partieller Kohärenz</value>
+  </data>
+  <data name="groupBoxHREMoption2.Text" xml:space="preserve">
+    <value>HRTEM-Optionen</value>
+  </data>
+  <data name="sizeControl1.HeaderText" xml:space="preserve">
+    <value>Größe (B×H)</value>
+  </data>
+  <data name="numericBoxResolution.HeaderText" xml:space="preserve">
+    <value>Auflösung</value>
+  </data>
+  <data name="groupBoxImageProperty.Text" xml:space="preserve">
+    <value>Bildeigenschaften</value>
+  </data>
+  <data name="groupBoxDiffractedWaves.Text" xml:space="preserve">
+    <value>Gebeugte Wellen</value>
+  </data>
+  <data name="groupBoxSimulation.Text" xml:space="preserve">
+    <value>Simulationseinstellungen</value>
+  </data>
+  <data name="label5.Text" xml:space="preserve">
+    <value>Effektive Quellengröße (σs,  FWHM)</value>
+  </data>
+  <data name="label34.Text" xml:space="preserve">
+    <value>α (Konvergenzwinkel
+ des einfallenden Strahls)</value>
+  </data>
+  <data name="numericBoxSTEM_DetectorOuterAngle.HeaderText" xml:space="preserve">
+    <value>Außen</value>
+  </data>
+  <data name="numericBoxSTEM_DetectorInnerAngle.HeaderText" xml:space="preserve">
+    <value>Innen</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Radiusbereich des
+Ringdetektors</value>
+  </data>
+  <data name="groupBoxSTEMoption1.Text" xml:space="preserve">
+    <value>STEM-Optionen</value>
+  </data>
+  <data name="checkBoxOpenAperture.Text" xml:space="preserve">
+    <value>Blende offen</value>
+  </data>
+  <data name="numericBoxHRTEM_ObjAperX.HeaderText" xml:space="preserve">
+    <value>Versatz  X</value>
+  </data>
+  <data name="numericBoxObjAperRadius.HeaderText" xml:space="preserve">
+    <value>Größe</value>
+  </data>
+  <data name="label9.Text" xml:space="preserve">
+    <value>Reflexe innerhalb</value>
+  </data>
+  <data name="buttonDetailsOfSpots.Text" xml:space="preserve">
+    <value>Reflex-Info</value>
+  </data>
+  <data name="label8.Text" xml:space="preserve">
+    <value>Der Blendenumriss wird
+im "Diffraction
+Simulator" angezeigt</value>
+  </data>
+  <data name="groupBoxHREMoption1.Text" xml:space="preserve">
+    <value>Objektivblende (HRTEM-Option)</value>
+  </data>
+  <data name="setoZeroDefocusToolStripMenuItem.Text" xml:space="preserve">
+    <value>Defokus auf 0 nm setzen</value>
+  </data>
+  <data name="setoScherzerDefocusToolStripMenuItem.Text" xml:space="preserve">
+    <value>Defokus auf Scherzer-Wert setzen</value>
+  </data>
+  <data name="setAllAToolStripMenuItem.Text" xml:space="preserve">
+    <value>Alle Aberrationen auf Null setzen</value>
+  </data>
+  <data name="presets1ToolStripMenuItem.Text" xml:space="preserve">
+    <value>300kV Cold-FEG Cs-frei (Cs 0, Cc 2.8, ΔE 0.3) ARM300F</value>
+  </data>
+  <data name="checkBoxCTF.Text" xml:space="preserve">
+    <value>Kontrastübertragungsfunktion (CTF)</value>
+  </data>
+  <data name="numericBoxDefocus.HeaderText" xml:space="preserve">
+    <value>Defokus Δf</value>
+  </data>
+  <data name="numericBoxAccVol.HeaderText" xml:space="preserve">
+    <value>Beschl.-Spannung (kV)</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>Scherzer-
+ Defokus</value>
+  </data>
+  <data name="groupBoxTEMConditions.Text" xml:space="preserve">
+    <value>TEM-Bedingungen</value>
+  </data>
+  <data name="groupBoxOpticalProperty.Text" xml:space="preserve">
+    <value>Optische Eigenschaften</value>
+  </data>
+  <data name="groupBoxImageMode.Text" xml:space="preserve">
+    <value>Bildmodus</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Dicke</value>
+  </data>
+  <data name="groupBoxSampleProperty.Text" xml:space="preserve">
+    <value>Probe</value>
+  </data>
+  <data name="checkBoxPreset.Text" xml:space="preserve">
+    <value>Voreinstellungen</value>
+  </data>
+  <data name="checkBoxRealTimeSimulation.Text" xml:space="preserve">
+    <value>Echtzeit-Simulation</value>
+  </data>
+  <data name="buttonSimulate.Text" xml:space="preserve">
+    <value>Simulieren</value>
+  </data>
+  <data name="toolStripMenuItemSavePNG.Text" xml:space="preserve">
+    <value>als Bild (PNG-Format)</value>
+  </data>
+  <data name="toolStripMenuItemSaveTIFF.Text" xml:space="preserve">
+    <value>als Bild (TIFF-Format)</value>
+  </data>
+  <data name="toolStripMenuItemSaveMetafile.Text" xml:space="preserve">
+    <value>als Metadatei (EMF)</value>
+  </data>
+  <data name="toolStripMenuItemSaveIndividually.Text" xml:space="preserve">
+    <value>   Einzeln speichern im Serienbildmodus </value>
+  </data>
+  <data name="toolStripMenuItemSave.Text" xml:space="preserve">
+    <value>Bild speichern</value>
+  </data>
+  <data name="toolStripMenuItemCopyImage.Text" xml:space="preserve">
+    <value>als Bild</value>
+  </data>
+  <data name="toolStripMenuItemCopyMetafile.Text" xml:space="preserve">
+    <value>als Metadatei (EMF)</value>
+  </data>
+  <data name="copyImageToolStripMenuItem.Text" xml:space="preserve">
+    <value>Bild kopieren</value>
+  </data>
+  <data name="toolStripMenuItemOverprintSymbols.Text" xml:space="preserve">
+    <value>      Symbole überdrucken</value>
+  </data>
+  <data name="loadTEMParameterToolStripMenuItem.Text" xml:space="preserve">
+    <value>TEM-Parameter laden</value>
+  </data>
+  <data name="saveTEMParametersToolStripMenuItem.Text" xml:space="preserve">
+    <value>TEM-Parameter speichern</value>
+  </data>
+  <data name="fileToolStripMenuItem.Text" xml:space="preserve">
+    <value>Datei</value>
+  </data>
+  <data name="detailsOfHRTEMSimulationToolStripMenuItem.Text" xml:space="preserve">
+    <value>Grundkonzept der HRTEM-Simulation</value>
+  </data>
+  <data name="calculationLibraryToolStripMenuItem.Text" xml:space="preserve">
+    <value>Berechnungsbibliothek</value>
+  </data>
+  <data name="helpToolStripMenuItem.Text" xml:space="preserve">
+    <value>Hilfe</value>
+  </data>
+  <data name="buttonStop.Text" xml:space="preserve">
+    <value>Stopp</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>HRTEM/STEM-Simulator</value>
+  </data>
+  <data name="labelMousePositionValue.Text" xml:space="preserve">
+    <value>Wert: </value>
+  </data>
+</root>

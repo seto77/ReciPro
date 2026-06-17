@@ -17,7 +17,8 @@ namespace ReciPro;
 /// 重なり合うコントロールの z-order も反転していた (FormCaptureGUI.cs:575 のコメント参照)。
 /// そこで対話ツール FormCaptureGUI と同じ CopyFromScreen 方式へ統一した。通常起動 (引数なし) では一切実行されない。
 /// </summary>
-internal static class GuiCapture
+// 260617Cl: 多言語化のオーバーフロー診断 (GuiCapture.Diagnose.cs) と内部機構を共有するため partial 化。
+internal static partial class GuiCapture
 {
     /// <summary>
     /// 260522Cl 追加: --capture で言語を強制指定 (en/ja) した場合のカルチャ。
@@ -37,7 +38,9 @@ internal static class GuiCapture
     private static string DefaultAutoCaptureDir()
     {
         var culture = ForcedUICulture ?? System.Threading.Thread.CurrentThread.CurrentUICulture;
-        var langDir = culture.Name == "ja" ? "cap-ja-auto" : "cap-en-auto";
+        // 260617Cl 変更: en/ja 固定から SupportedCultures 駆動へ (新言語は cap-de-auto 等。Phase 0)。
+        // 旧: var langDir = culture.Name == "ja" ? "cap-ja-auto" : "cap-en-auto";
+        var langDir = "cap-" + Crystallography.SupportedCultures.Resolve(culture.Name).Name + "-auto";
         var dir = new DirectoryInfo(AppDomain.CurrentDomain.BaseDirectory);
         while (dir != null && dir.Name != "bin")
             dir = dir.Parent;
@@ -125,22 +128,8 @@ internal static class GuiCapture
                 form = (Form)Activator.CreateInstance(type);
                 if (form is FormMain mainForm)
                     captureFormMain = mainForm; // (260523Ch) reflection 順の先頭で作った FormMain を後続フォームの親情報として再利用する
-                else if (form is FormTrajectory trajectory)
-                    trajectory.FormMain = captureFormMain; // (260523Ch) FormTrajectory は単独生成だと Simulate 時に FormMain.Crystal を参照できない
-                else if (form is FormEBSD ebsd)
-                    ebsd.FormMain = captureFormMain; // 260524Cl: Build MasterPattern が FormMain.Crystal を参照するため注入 (Show 時の NRE も解消)
-                else if (form is FormImageSimulator imageSimulator)
-                    imageSimulator.FormMain = captureFormMain; // 260524Cl: Simulate が FormMain.Crystal を参照するため注入 (Show 時の NRE も解消)
-                else if (form is FormStereonet stereonet)
-                    stereonet.formMain = captureFormMain; // 260524Cl: 軸/極のプロットは formMain.Crystal が必要 (未注入だと網だけで軸が描かれない。Show 時の NRE も解消)
-                else if (form is FormRotationMatrix rotation)
-                    rotation.FormMain = captureFormMain; // 260524Cl: GL のトーラス/軸/球の描画 (SetRotation) は FormMain の Euler 角を参照するため注入
-                else if (form is FormDiffractionSimulator diffractionSimulator)
-                    diffractionSimulator.formMain = captureFormMain; // 260524Cl: 回折スポットの描画 (Draw) は formMain.Crystal が必要 (未注入だと描画ボックスが灰色のまま)
-                else if (form is FormDiffractionSimulatorHolder holder)
-                    holder.FormDiffractionSimulator = captureFormMain?.FormDiffractionSimulator; // 260524Cl: ステレオネット描画は親 FormDiffractionSimulator.formMain.Crystal を参照するため配線
-                else if (form is FormSpotIDV2 spotID)
-                    spotID.FormMain = captureFormMain; // 260524Cl: スポット同定機能等が FormMain を参照するため注入 (Show 時の NRE 回避)
+                else
+                    WireCrystalDependencies(form, captureFormMain); // 260617Cl: 子フォームへの FormMain/親情報注入を共通化 (--capture と --diagnose で共用)
 
                 if (ShouldCapture(type.Name))
                 {

@@ -1,0 +1,453 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 260617Cl: 多言語化 Phase1/3 (de) text-only リソース。レイアウト(Size/Location/Font)は neutral へフォールバック。結晶学/電子回折用語は IUCr Online Dictionary 準拠。 -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="toolStripButtonDiffractionSpots.Text" xml:space="preserve">
+    <value>Reflexe</value>
+  </data>
+  <data name="toolStripButtonKikuchiLines.Text" xml:space="preserve">
+    <value>Kikuchi-Linien</value>
+  </data>
+  <data name="toolStripButtonDebyeRing.Text" xml:space="preserve">
+    <value>Debye-Ringe</value>
+  </data>
+  <data name="toolStripButtonScale.Text" xml:space="preserve">
+    <value>Maßstab</value>
+  </data>
+  <data name="toolStripButtonDistance.Text" xml:space="preserve">
+    <value>Abstand</value>
+  </data>
+  <data name="toolStripButtonExcitationError.Text" xml:space="preserve">
+    <value>Anr.-Fehler</value>
+  </data>
+  <data name="groupBoxStringSize.Text" xml:space="preserve">
+    <value>Textgröße</value>
+  </data>
+  <data name="label14.Text" xml:space="preserve">
+    <value>Lotfußpunkt
+von der Probe</value>
+  </data>
+  <data name="groupBoxColor.Text" xml:space="preserve">
+    <value>Farbe</value>
+  </data>
+  <data name="tabPageGeneral.Text" xml:space="preserve">
+    <value>Allgemein</value>
+  </data>
+  <data name="radioButtonKikuchiThresholdOfStructureFactor.Text" xml:space="preserve">
+    <value>Strukturfaktor</value>
+  </data>
+  <data name="checkBoxKikuchiLine_Kinematical.Text" xml:space="preserve">
+    <value>Kinematische Intensität auf Kikuchi-Linien anwenden</value>
+  </data>
+  <data name="radioButtonKikuchiThresholdOfLength.Text" xml:space="preserve">
+    <value>1/d-Grenzwert</value>
+  </data>
+  <data name="numericBoxKikuchiThresholdOfStructureFactor.HeaderText" xml:space="preserve">
+    <value>Oben</value>
+  </data>
+  <data name="label11.Text" xml:space="preserve">
+    <value>Linienbreite</value>
+  </data>
+  <data name="tabPageKikuchi.Text" xml:space="preserve">
+    <value>Kikuchi-Linien</value>
+  </data>
+  <data name="checkBoxDebyeRingLabel.Text" xml:space="preserve">
+    <value>Index-Beschriftungen anzeigen</value>
+  </data>
+  <data name="checkBoxDebyeRingIgnoreIntensity.Text" xml:space="preserve">
+    <value>Beugungsintensität ignorieren
+</value>
+  </data>
+  <data name="label6.Text" xml:space="preserve">
+    <value>Linienbreite</value>
+  </data>
+  <data name="tabPageDebye.Text" xml:space="preserve">
+    <value>Debye-Ringe</value>
+  </data>
+  <data name="checkBoxScaleLabel.Text" xml:space="preserve">
+    <value>Maßstabsbeschriftungen anzeigen</value>
+  </data>
+  <data name="label12.Text" xml:space="preserve">
+    <value>Teilung</value>
+  </data>
+  <data name="label16.Text" xml:space="preserve">
+    <value>Linienbreite</value>
+  </data>
+  <data name="radioButtonScaleDivisionFine.Text" xml:space="preserve">
+    <value>Fein</value>
+  </data>
+  <data name="radioButtonScaleDivisionMedium.Text" xml:space="preserve">
+    <value>Mittel</value>
+  </data>
+  <data name="radioButtonScaleDivisionCoarse.Text" xml:space="preserve">
+    <value>Grob</value>
+  </data>
+  <data name="tabPageScale.Text" xml:space="preserve">
+    <value>Maßstab</value>
+  </data>
+  <data name="numericBox3D_SpotRadius.HeaderText" xml:space="preserve">
+    <value>Reflexradius</value>
+  </data>
+  <data name="checkBox3D_ShowIndices.Text" xml:space="preserve">
+    <value>Beschriftung</value>
+  </data>
+  <data name="checkBox3D_MakeSpotsTransparent.Text" xml:space="preserve">
+    <value>Reflexe fern der 
+Ewald-Kugel transparent machen</value>
+  </data>
+  <data name="numericBoxStep.HeaderText" xml:space="preserve">
+    <value>Schritt</value>
+  </data>
+  <data name="buttonResetAngle.Text" xml:space="preserve">
+    <value>Zurücksetzen</value>
+  </data>
+  <data name="groupBoxViewDirection.Text" xml:space="preserve">
+    <value>Blickrichtung</value>
+  </data>
+  <data name="label21.Text" xml:space="preserve">
+    <value>Schwellenwert der
+relativen Intensität</value>
+  </data>
+  <data name="checkBox3D_DirectionGuide.Text" xml:space="preserve">
+    <value>Richtungshilfe</value>
+  </data>
+  <data name="checkBox3D_EwaldSphere.Text" xml:space="preserve">
+    <value>Ewald-Kugel</value>
+  </data>
+  <data name="groupBoxOptions.Text" xml:space="preserve">
+    <value>Optionen</value>
+  </data>
+  <data name="checkBoxReciprocalSpace.Text" xml:space="preserve">
+    <value>Reziproker Raum</value>
+  </data>
+  <data name="label24.Text" xml:space="preserve">
+    <value>Mausposition:</value>
+  </data>
+  <data name="label17.Text" xml:space="preserve">
+    <value>Realraum-Koordinaten in mm (Ursprung: Kristall):</value>
+  </data>
+  <data name="label20.Text" xml:space="preserve">
+    <value>Reziprokraum-Koordinaten in nm⁻¹:</value>
+  </data>
+  <data name="label9.Text" xml:space="preserve">
+    <value>Detektorkoord. in mm (Ursprung: Lotfuß):</value>
+  </data>
+  <data name="checkBoxFlipHorizontally.Text" xml:space="preserve">
+    <value>Horizontal spiegeln</value>
+  </data>
+  <data name="checkBoxFlipVertically.Text" xml:space="preserve">
+    <value>Vertikal spiegeln</value>
+  </data>
+  <data name="checkBoxNegativeImage.Text" xml:space="preserve">
+    <value>Negativbild</value>
+  </data>
+  <data name="buttonResetCenter.Text" xml:space="preserve">
+    <value>Zentrum setzen auf</value>
+  </data>
+  <data name="checkBoxFixCenter.Text" xml:space="preserve">
+    <value>Fest</value>
+  </data>
+  <data name="sizeControl1.HeaderText" xml:space="preserve">
+    <value>Größe (B×H)</value>
+  </data>
+  <data name="numericBoxResolution.HeaderText" xml:space="preserve">
+    <value>Auflösung</value>
+  </data>
+  <data name="groupBoxMonitor.Text" xml:space="preserve">
+    <value>Anzeigeeinstellungen</value>
+  </data>
+  <data name="buttonHolderSimulation.Text" xml:space="preserve">
+    <value>TEM-Halter-
+simulation</value>
+  </data>
+  <data name="label23.Text" xml:space="preserve">
+    <value>Rotationsempfindlichkeit</value>
+  </data>
+  <data name="groupBoxMisc.Text" xml:space="preserve">
+    <value>Sonstiges</value>
+  </data>
+  <data name="numericBoxCameraLength2.HeaderText" xml:space="preserve">
+    <value>Kameralänge 2</value>
+  </data>
+  <data name="groupBoxDetectorGeometry.Text" xml:space="preserve">
+    <value>Detektorgeometrie &amp;&amp; Überlagerungsbild</value>
+  </data>
+  <data name="groupBoxDeveloperCode.Text" xml:space="preserve">
+    <value>Entwicklercode</value>
+  </data>
+  <data name="saveAsImageToolStripMenuItem.Text" xml:space="preserve">
+    <value>als Bild (PNG-Format)</value>
+  </data>
+  <data name="saveAsMetafileToolStripMenuItem.Text" xml:space="preserve">
+    <value>als Metadatei (EMF)</value>
+  </data>
+  <data name="saveImageToolStripMenuItem.Text" xml:space="preserve">
+    <value>Bild speichern</value>
+  </data>
+  <data name="saveDetectorAsImageToolStripMenuItem.Text" xml:space="preserve">
+    <value>als Bild  (PNG-Format)</value>
+  </data>
+  <data name="saveDetectorAsMetafileToolStripMenuItem.Text" xml:space="preserve">
+    <value>als Metadatei (EMF)</value>
+  </data>
+  <data name="saveDetectorAreaToolStripMenuItem.Text" xml:space="preserve">
+    <value>Detektorbereich speichern</value>
+  </data>
+  <data name="saveCBEDasPngToolStripMenuItem.Text" xml:space="preserve">
+    <value>als Einzelbilder (PNG-Format)</value>
+  </data>
+  <data name="saveCBEDasTiffToolStripMenuItem.Text" xml:space="preserve">
+    <value>als Einzelbilder (TIFF-Format)</value>
+  </data>
+  <data name="asPixelByPixelImagePNGFormatToolStripMenuItem.Text" xml:space="preserve">
+    <value>als Sammelbild (PNG-Format)</value>
+  </data>
+  <data name="asCollectiveImageTiffFormatToolStripMenuItem.Text" xml:space="preserve">
+    <value>als Sammelbild (TIFF-Format)</value>
+  </data>
+  <data name="saveCBEDPatternToolStripMenuItem.Text" xml:space="preserve">
+    <value>CBED-Scheiben speichern</value>
+  </data>
+  <data name="copyAsImageToolStripMenuItem.Text" xml:space="preserve">
+    <value>als Bild</value>
+  </data>
+  <data name="copyAsMetafileToolStripMenuItem.Text" xml:space="preserve">
+    <value>als Metadatei (EMF)</value>
+  </data>
+  <data name="copyImageToClipboardToolStripMenuItem.Text" xml:space="preserve">
+    <value>Kopieren</value>
+  </data>
+  <data name="copyDetectorAsImageToolStripMenuItem.Text" xml:space="preserve">
+    <value>als Bild</value>
+  </data>
+  <data name="copyDetectorAsMetafileToolStripMenuItem.Text" xml:space="preserve">
+    <value>als Metadatei (EMF)</value>
+  </data>
+  <data name="copyDetectorAreaToolStripMenuItem.Text" xml:space="preserve">
+    <value>Detektorbereich kopieren</value>
+  </data>
+  <data name="copyCBEDasImageToolStripMenuItem.Text" xml:space="preserve">
+    <value>als Sammelbild</value>
+  </data>
+  <data name="copyCBEDPatternToolStripMenuItem.Text" xml:space="preserve">
+    <value>CBED-Scheiben kopieren</value>
+  </data>
+  <data name="toolStripMenuItemSaveMovieDiffractionPattern.Text" xml:space="preserve">
+    <value>Beugungsmuster</value>
+  </data>
+  <data name="toolStripMenuItemSaveMovieReciprocalSpace.Text" xml:space="preserve">
+    <value>Reziproker Raum</value>
+  </data>
+  <data name="toolStripMenuItem1.Text" xml:space="preserve">
+    <value>Video speichern</value>
+  </data>
+  <data name="pageSetupToolStripMenuItem.Text" xml:space="preserve">
+    <value>Seite einrichten</value>
+  </data>
+  <data name="printPreviewToolStripMenuItem.Text" xml:space="preserve">
+    <value>Druckvorschau</value>
+  </data>
+  <data name="printToolStripMenuItem.Text" xml:space="preserve">
+    <value>Drucken</value>
+  </data>
+  <data name="fileToolStripMenuItem.Text" xml:space="preserve">
+    <value>Datei</value>
+  </data>
+  <data name="dynamicCompressionToolStripMenuItem.Text" xml:space="preserve">
+    <value>Dynamische Kompression</value>
+  </data>
+  <data name="optionToolStripMenuItem.Text" xml:space="preserve">
+    <value>Optionen</value>
+  </data>
+  <data name="electron300KVToolStripMenuItem.Text" xml:space="preserve">
+    <value>Elektron 300 kV</value>
+  </data>
+  <data name="electron200KVToolStripMenuItem.Text" xml:space="preserve">
+    <value>Elektron 200 kV</value>
+  </data>
+  <data name="electron120KeVToolStripMenuItem.Text" xml:space="preserve">
+    <value>Elektron 120 keV</value>
+  </data>
+  <data name="xray30KeVToolStripMenuItem.Text" xml:space="preserve">
+    <value>Röntgen 30 keV</value>
+  </data>
+  <data name="xray20KeVToolStripMenuItem.Text" xml:space="preserve">
+    <value>Röntgen 20 keV</value>
+  </data>
+  <data name="xrayMoKαToolStripMenuItem.Text" xml:space="preserve">
+    <value>Röntgen 17.48 keV (MoKα₁)</value>
+  </data>
+  <data name="xrayCuKαToolStripMenuItem.Text" xml:space="preserve">
+    <value>Röntgen 8.041 keV (CuKα₁)</value>
+  </data>
+  <data name="presetToolStripMenuItem.Text" xml:space="preserve">
+    <value>Voreinstellungen</value>
+  </data>
+  <data name="basicConceptOfBethesMethodToolStripMenuItem.Text" xml:space="preserve">
+    <value>Grundkonzept der Bethe-Methode</value>
+  </data>
+  <data name="helpToolStripMenuItem.Text" xml:space="preserve">
+    <value>Hilfe</value>
+  </data>
+  <data name="radioButtonIntensityDynamical.Text" xml:space="preserve">
+    <value>Dynamische Theorie</value>
+  </data>
+  <data name="checkBoxUseCrystalColor.Text" xml:space="preserve">
+    <value>Zugewiesene Farbe für jeden Kristall verwenden</value>
+  </data>
+  <data name="checkBoxAnomalousDispersion.Text" xml:space="preserve">
+    <value>Anomale Dispersion (f', f'')</value>
+  </data>
+  <data name="checkBoxExtinctionAll.Text" xml:space="preserve">
+    <value>Alle verbotenen Reflexe ausschließen</value>
+  </data>
+  <data name="checkBoxExtinctionLattice.Text" xml:space="preserve">
+    <value>Durch Gitterzentrierung verbotene
+ Reflexe ausschließen</value>
+  </data>
+  <data name="label5.Text" xml:space="preserve">
+    <value>Präzessionseigenschaft</value>
+  </data>
+  <data name="numericBoxPED_Semiangle.HeaderText" xml:space="preserve">
+    <value>Halbwinkel</value>
+  </data>
+  <data name="numericBoxPED_Step.HeaderText" xml:space="preserve">
+    <value>Schritt</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Bloch-Wellen-Einstellungen</value>
+  </data>
+  <data name="numericBoxNumOfBlochWave.HeaderText" xml:space="preserve">
+    <value>Anzahl gebeugter Wellen</value>
+  </data>
+  <data name="numericBoxThickness.HeaderText" xml:space="preserve">
+    <value>Dicke</value>
+  </data>
+  <data name="label19.Text" xml:space="preserve">
+    <value>Darstellung</value>
+  </data>
+  <data name="radioButtonCircleArea.Text" xml:space="preserve">
+    <value>Vollkugel</value>
+  </data>
+  <data name="radioButtonPointSpread.Text" xml:space="preserve">
+    <value>Gauß</value>
+  </data>
+  <data name="label8.Text" xml:space="preserve">
+    <value>Deckkraft</value>
+  </data>
+  <data name="numericBoxSpotRadius.HeaderText" xml:space="preserve">
+    <value>Reflexradius</value>
+  </data>
+  <data name="checkBoxDrawSameSize.Text" xml:space="preserve">
+    <value>Alle Reflexe mit gleichem 
+Radius zeichnen</value>
+  </data>
+  <data name="label10.Text" xml:space="preserve">
+    <value>Helligkeit</value>
+  </data>
+  <data name="label25.Text" xml:space="preserve">
+    <value>Farbskala</value>
+  </data>
+  <data name="checkBoxLogScale.Text" xml:space="preserve">
+    <value>Log-Skala</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Reflexfarbe</value>
+  </data>
+  <data name="label7.Text" xml:space="preserve">
+    <value>Intensitätsberechnung</value>
+  </data>
+  <data name="radioButtonIntensityExcitation.Text" xml:space="preserve">
+    <value>Nur Anregungsfehler</value>
+  </data>
+  <data name="radioButtonIntensityKinematical.Text" xml:space="preserve">
+    <value>Kinematisch &amp;&amp; Anregungsfehler</value>
+  </data>
+  <data name="buttonDetailsOfSpots.Text" xml:space="preserve">
+    <value>Reflexdetails</value>
+  </data>
+  <data name="label13.Text" xml:space="preserve">
+    <value>Optik</value>
+  </data>
+  <data name="radioButtonBeamParallel.Text" xml:space="preserve">
+    <value>Paralleler Strahl</value>
+  </data>
+  <data name="radioButtonBeamPrecessionElectron.Text" xml:space="preserve">
+    <value>Präzession (Elektron)</value>
+  </data>
+  <data name="radioButtonBeamConvergence.Text" xml:space="preserve">
+    <value>Konvergenz (Elektron)</value>
+  </data>
+  <data name="radioButtonBeamBackLaue.Text" xml:space="preserve">
+    <value>Rück-Laue (Röntgen)</value>
+  </data>
+  <data name="radioButtonBeamPrecessionXray.Text" xml:space="preserve">
+    <value>Präzession (Röntgen, ZOLZ)</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>Wellenquelle</value>
+  </data>
+  <data name="groupBoxSpotProperty.Text" xml:space="preserve">
+    <value>Simulationseinstellungen</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Beugungssimulator</value>
+  </data>
+</root>

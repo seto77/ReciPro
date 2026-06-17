@@ -19,6 +19,9 @@ internal static class Program
     // 260612Cl 追加: CI 用の起動診断モードの引数 (attach-arm64-experimental.yml の windows-11-arm smoke が使用)
     private const string SmokeArg = "--smoke";
 
+    // 260617Cl 追加: 多言語化のオーバーフロー診断モードの引数 (GuiCapture.Diagnose)。
+    private const string DiagnoseArg = "--diagnose";
+
     /// <summary>アプリケーションのメイン エントリ ポイントです。</summary>
     // private static void Main() // 260521Cl 旧シグネチャ (--capture 引数対応のため string[] args を追加)
     [STAThread]
@@ -39,8 +42,11 @@ internal static class Program
         string captureDir = null, captureCulture = null;  // 260525Cl 追加
         if (args.Length >= 2 && args[0] == CaptureArg)
         {
-            // args[1] が en/ja なら「カルチャのみ指定 (出力先は既定)」、それ以外なら出力先ディレクトリとみなす。
-            if (args[1] is "en" or "ja") captureCulture = args[1];
+            // args[1] が対応カルチャ名なら「カルチャのみ指定 (出力先は既定)」、それ以外なら出力先ディレクトリとみなす。
+            // 260617Cl 変更: en/ja 固定判定から SupportedCultures 駆動へ (Phase 0。--capture <dir> de 等が通る)。
+            // 旧: if (args[1] is "en" or "ja") captureCulture = args[1];
+            if (Array.Exists(Crystallography.SupportedCultures.All, c => string.Equals(c.Name, args[1], StringComparison.OrdinalIgnoreCase)))
+                captureCulture = args[1];
             else { captureDir = args[1]; captureCulture = args.Length >= 3 ? args[2] : null; }
         }
         // if (args.Length >= 3 && args[0] == CaptureArg) { var ci = new System.Globalization.CultureInfo(args[2]); ... } // 260525Cl 旧: dir 必須だった
@@ -50,6 +56,28 @@ internal static class Program
             System.Threading.Thread.CurrentThread.CurrentUICulture = ci;
             System.Globalization.CultureInfo.DefaultThreadCurrentUICulture = ci;
             GuiCapture.ForcedUICulture = ci;
+        }
+
+        // 260617Cl 追加: 多言語化のオーバーフロー診断モード。--capture 同様 SetDefaultFont 前に言語を確定させる。
+        //   ReciPro.exe --diagnose [カルチャ] [水増し%]
+        //   水増し%(疑似ローカライズ): 例 140 で「文字が 40% 長くなったら切れるか」を実翻訳が無くても先出しする。
+        bool doDiagnose = false; double diagnoseInflate = 1.0;
+        if (args.Length >= 1 && args[0] == DiagnoseArg)
+        {
+            doDiagnose = true;
+            string diagnoseCulture = null;
+            if (args.Length >= 2 && Array.Exists(Crystallography.SupportedCultures.All, c => string.Equals(c.Name, args[1], StringComparison.OrdinalIgnoreCase)))
+                diagnoseCulture = args[1];
+            // 水増し% は、カルチャを伴うなら args[2]、伴わない (= args[1] が数値) なら args[1]。
+            var pctArg = diagnoseCulture != null ? (args.Length >= 3 ? args[2] : null) : (args.Length >= 2 ? args[1] : null);
+            if (int.TryParse(pctArg, out var pct) && pct > 0) diagnoseInflate = pct / 100.0;
+            if (diagnoseCulture != null)
+            {
+                var ci = new System.Globalization.CultureInfo(diagnoseCulture);
+                System.Threading.Thread.CurrentThread.CurrentUICulture = ci;
+                System.Globalization.CultureInfo.DefaultThreadCurrentUICulture = ci;
+                GuiCapture.ForcedUICulture = ci;
+            }
         }
 
         Application.EnableVisualStyles();
@@ -62,6 +90,20 @@ internal static class Program
         // 260428Cl 追加: 言語別 UI フォント (Designer 未指定コントロール用のデフォルト)。
         // Designer/resx で明示指定されたコントロールには適用されない (それらは文字列置換で対応済み)。
         Application.SetDefaultFont(Crystallography.Controls.FontHelper.GetUIFont());
+
+        // 260617Cl 追加: 多言語化対応の全体レバー。全 NumericBox の数値欄に最低固定幅(論理px)を保証し、
+        // ヘッダ翻訳で数値欄が縮む問題を解消する (親が Flow/Table なら全幅を伸ばしリフロー、絶対配置なら数値欄死守+ヘッダは tooltip 救済)。
+        // ValueBoxWidth を明示設定した個別 NumericBox はそちらが優先。詳細は .project-guidance/ReciPro_多言語化方針.md Phase 1。
+        Crystallography.Controls.NumericBox.DefaultValueBoxWidth = 54;
+
+        // 260617Cl 追加: 多言語化のオーバーフロー診断モード本体。通常起動には一切影響しない。
+        if (doDiagnose)
+        {
+            var cult = (GuiCapture.ForcedUICulture ?? System.Threading.Thread.CurrentThread.CurrentUICulture).Name;
+            var outFile = System.IO.Path.Combine(System.IO.Path.GetTempPath(), $"recipro-diagnose-{cult}-x{(int)(diagnoseInflate * 100)}.tsv");
+            GuiCapture.Diagnose(outFile, diagnoseInflate);
+            Environment.Exit(0);
+        }
 
         // 260521Cl 追加: GUI 監査用スクショ一括取得モード。通常起動 (引数なし) には一切影響しない。
         //   ReciPro.exe --capture [出力ディレクトリ] [カルチャ(en/ja)]

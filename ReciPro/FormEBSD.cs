@@ -181,7 +181,9 @@ public partial class FormEBSD : FormBase
             ?? NistElasticSamplerPchipGenerator.TryFindRepositoryRoot(Environment.CurrentDirectory);
         if (repositoryRoot == null)
         {
-            MessageBox.Show(this, "ReciPro.sln が見つからず、generated source の出力先を特定できませんでした。", "NIST elastic sampler compression", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            // 260617Cl 変更: 日本語固定リテラルは英語(neutral)UIで未翻訳に見えるため英語化 (Phase 0)。開発者向け診断のため英語固定で十分。
+            // 旧: "ReciPro.sln が見つからず、generated source の出力先を特定できませんでした。"
+            MessageBox.Show(this, "ReciPro.sln was not found; could not determine the output location for the generated source.", "NIST elastic sampler compression", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             return;
         }
 
