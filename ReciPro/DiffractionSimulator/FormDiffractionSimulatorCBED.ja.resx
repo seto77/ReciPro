@@ -318,4 +318,18 @@ Eigen/MKL ライブラリ）を選択します。結果は同じになる
   <data name="label5.ToolTip" xml:space="preserve">
     <value>明るさが最大値として表示される強度を設定します。</value>
   </data>
+  <data name="numericBoxWholeThicknessStart.ToolTip1" xml:space="preserve">
+    <value>試料の厚さの範囲とステップを設定</value>
+  </data>
+  <data name="numericBoxThicknessEnd.ToolTip1" xml:space="preserve">
+    <value>試料の厚さの範囲とステップを設定</value>
+  </data>
+  <data name="numericBoxThicknessStep.ToolTip1" xml:space="preserve">
+    <value>試料の厚さの範囲とステップを設定</value>
+  </data>
+  <data name="numericBoxThread.ToolTip1" xml:space="preserve">
+    <value>CBED（収束電子回折）の Bloch 波計算に
+使う CPU スレッド数 (1〜128) を設定しま
+す。Solver が Auto のときは無効です。</value>
+  </data>
 </root>

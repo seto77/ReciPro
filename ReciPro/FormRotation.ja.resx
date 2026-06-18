@@ -267,4 +267,28 @@ X軸まわりの回転）。結晶方位を決めます。</value>
     <value>実験座標系の第1ゴニオメータ軸まわりの回転角（度、
 -180〜180）。選択したX/Y/Z軸まわりに結晶を傾けます。</value>
   </data>
+  <data name="numericBoxPsi.ToolTip1" xml:space="preserve">
+    <value>ReciPro 座標系（ZXZ 規約）の第3オイラー角 Ψ（度、
+最後の Z 軸まわりの回転）。結晶方位を決めます。</value>
+  </data>
+  <data name="numericBoxTheta.ToolTip1" xml:space="preserve">
+    <value>ReciPro 座標系（ZXZ 規約）の第2オイラー角 Θ（度、
+中間の X 軸まわりの回転）。結晶方位を決めます。</value>
+  </data>
+  <data name="numericBoxPhi.ToolTip1" xml:space="preserve">
+    <value>ReciPro 座標系（ZXZ 規約）の第1オイラー角 Φ（度）。
+Θ・Ψ とともに結晶方位（回転行列）を決めます。</value>
+  </data>
+  <data name="numericBoxExp1.ToolTip1" xml:space="preserve">
+    <value>実験座標系の第1ゴニオメータ軸まわりの回転角（度、
+−180〜180）。選択した X/Y/Z 軸まわりに結晶を傾けます。</value>
+  </data>
+  <data name="numericBoxExp2.ToolTip1" xml:space="preserve">
+    <value>実験座標系の第2ゴニオメータ軸まわりの回転角（度、
+−180〜180）。選択した X/Y/Z 軸まわりに結晶を傾けます。</value>
+  </data>
+  <data name="numericBoxExp3.ToolTip1" xml:space="preserve">
+    <value>実験座標系の第3ゴニオメータ軸まわりの回転角（度、
+-180〜180）。選択したX/Y/Z軸まわりに結晶を傾けます。</value>
+  </data>
 </root>

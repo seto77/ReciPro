@@ -915,4 +915,122 @@ List、新しい OpenGL が必要）かを選びます。</value>
   <data name="toolStripButtonUnitCell.ToolTipText" xml:space="preserve">
     <value>単位胞(枠・面)の表示/非表示を切り替えます。</value>
   </data>
+  <data name="numericBoxCRange.ToolTip1" xml:space="preserve">
+    <value>表示領域の c 軸方向の半幅（分率座標）。
+中心 ± この値 の範囲内の原子を描画します。</value>
+  </data>
+  <data name="numericBoxBRange.ToolTip1" xml:space="preserve">
+    <value>表示領域の b 軸方向の半幅（分率座標）。
+中心 ± この値 の範囲内の原子を描画します。</value>
+  </data>
+  <data name="numericBoxARange.ToolTip1" xml:space="preserve">
+    <value>表示領域の a 軸方向の半幅（分率座標）。
+中心 ± この値 の範囲内の原子を描画します。</value>
+  </data>
+  <data name="numericBoxCCenter.ToolTip1" xml:space="preserve">
+    <value>表示領域の中心の c 軸成分（分率座標）。Range と
+組み合わせて描画範囲の上限／下限面を決めます。</value>
+  </data>
+  <data name="numericBoxBCenter.ToolTip1" xml:space="preserve">
+    <value>表示領域の中心の b 軸成分（分率座標）。Range と
+組み合わせて描画範囲の上限／下限面を決めます。</value>
+  </data>
+  <data name="numericBoxACenter.ToolTip1" xml:space="preserve">
+    <value>表示領域の中心の a 軸成分（分率座標）。Range と
+組み合わせて描画範囲の上限／下限面を決めます。</value>
+  </data>
+  <data name="numericBoxBoundPlanesOpacity.ToolTip1" xml:space="preserve">
+    <value>境界面の不透明度（0=透明、1=不透明）</value>
+  </data>
+  <data name="colorControlCellPlane.ToolTip1" xml:space="preserve">
+    <value>すべてのセル面の色を設定</value>
+  </data>
+  <data name="colorControlCellPlaneA.ToolTip1" xml:space="preserve">
+    <value>a 軸に垂直な単位胞面の色（「Each plane」選択時に使用）。</value>
+  </data>
+  <data name="colorControlCellPlaneB.ToolTip1" xml:space="preserve">
+    <value>b 軸に垂直な単位胞面の色（「Each plane」選択時に使用）。</value>
+  </data>
+  <data name="colorControlCellPlaneC.ToolTip1" xml:space="preserve">
+    <value>c 軸に垂直な単位胞面の色（「Each plane」選択時に使用）。</value>
+  </data>
+  <data name="numericBoxCellPlaneAlpha.ToolTip1" xml:space="preserve">
+    <value>格子面の不透明度 (1: 不透明, 0: 透明)</value>
+  </data>
+  <data name="colorControlCellEdge.ToolTip1" xml:space="preserve">
+    <value>すべてのセル辺の色を設定</value>
+  </data>
+  <data name="colorControlCellEdgeA.ToolTip1" xml:space="preserve">
+    <value>単位胞の a 軸方向の辺の色（「Each edge」選択時に使用）。</value>
+  </data>
+  <data name="colorControlCellEdgeB.ToolTip1" xml:space="preserve">
+    <value>単位胞の b 軸方向の辺の色（「Each edge」選択時に使用）。</value>
+  </data>
+  <data name="colorControlCellEdgeC.ToolTip1" xml:space="preserve">
+    <value>単位胞の c 軸方向の辺の色（「Each edge」選択時に使用）。</value>
+  </data>
+  <data name="numericBoxCellTranslationC.ToolTip1" xml:space="preserve">
+    <value>単位胞を並進 (分率座標)</value>
+  </data>
+  <data name="numericBoxCellTranslationB.ToolTip1" xml:space="preserve">
+    <value>単位胞を並進 (分率座標)</value>
+  </data>
+  <data name="numericBoxCellTranslationA.ToolTip1" xml:space="preserve">
+    <value>単位胞を並進 (分率座標)</value>
+  </data>
+  <data name="numericBoxLatticePlaneOpacity.ToolTip1" xml:space="preserve">
+    <value>格子面の不透明度（0=透明、1=不透明）</value>
+  </data>
+  <data name="numericBoxProjectionCenterX.ToolTip1" xml:space="preserve">
+    <value>投影中心の a 軸方向の分率座標。この点がビュー中心に
+配置されます（実質的に単位胞を平行移動します）。</value>
+  </data>
+  <data name="numericBoxProjectionCenterY.ToolTip1" xml:space="preserve">
+    <value>投影中心の b 軸方向の分率座標。この点がビュー中心に
+配置されます（実質的に単位胞を平行移動します）。</value>
+  </data>
+  <data name="numericBoxProjectionCenterZ.ToolTip1" xml:space="preserve">
+    <value>投影中心の c 軸方向の分率座標。この点がビュー中心に
+配置されます（実質的に単位胞を平行移動します）。</value>
+  </data>
+  <data name="numericBoxInversionSymbolSize.ToolTip1" xml:space="preserve">
+    <value>反転中心シンボルの大きさを百分率で
+設定します（100% = 標準サイズ）。</value>
+  </data>
+  <data name="colorControlInversion.ToolTip1" xml:space="preserve">
+    <value />
+  </data>
+  <data name="numericBoxPlaneSymbolSize.ToolTip1" xml:space="preserve">
+    <value>対称面シンボルの表示サイズ (20〜500%)</value>
+  </data>
+  <data name="numericBoxPlaneLineWidth.ToolTip1" xml:space="preserve">
+    <value>対称面シンボルの線幅 (0.5〜10)</value>
+  </data>
+  <data name="colorControlPlane.ToolTip1" xml:space="preserve">
+    <value />
+  </data>
+  <data name="numericBoxAxisSymbolSize.ToolTip1" xml:space="preserve">
+    <value>対称軸シンボルの表示サイズ (20〜500%)</value>
+  </data>
+  <data name="numericBoxAxisLineWidth.ToolTip1" xml:space="preserve">
+    <value>対称軸シンボルの線幅 (0.5〜10)</value>
+  </data>
+  <data name="colorControlAxisColor.ToolTip1" xml:space="preserve">
+    <value />
+  </data>
+  <data name="colorControlLabelColor.ToolTip1" xml:space="preserve">
+    <value>原子ラベルに適用する固定色 (「Use fixed color」選択時に使用)</value>
+  </data>
+  <data name="numericBoxLabelSize.ToolTip1" xml:space="preserve">
+    <value>原子ラベルの文字サイズ（0〜200）。</value>
+  </data>
+  <data name="numericBoxLegendSize.ToolTip1" xml:space="preserve">
+    <value>凡例の表示サイズ (右)</value>
+  </data>
+  <data name="numericBoxAxesSize.ToolTip1" xml:space="preserve">
+    <value>結晶軸の表示サイズ (左下)</value>
+  </data>
+  <data name="numericBoxLightSize.ToolTip1" xml:space="preserve">
+    <value>光源球の表示サイズ (左上)</value>
+  </data>
 </root>

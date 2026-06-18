@@ -750,4 +750,93 @@ STEMプローブの有限光源ぼけを表します。</value>
 code(高速な C++/Eigen ネイティブ)または
 Managed code(.NET)。通常は Native が高速です。</value>
   </data>
+  <data name="numericBoxIntensityMin.ToolTip1" xml:space="preserve">
+    <value>正規化の強度下限値。左のMinに
+チェックしたときに有効になります。</value>
+  </data>
+  <data name="numericBoxIntensityMax.ToolTip1" xml:space="preserve">
+    <value>シミュレーション画像の最大強度</value>
+  </data>
+  <data name="colorControlScale.ToolTip1" xml:space="preserve">
+    <value>スケールバーの色</value>
+  </data>
+  <data name="numericBoxScaleLength.ToolTip1" xml:space="preserve">
+    <value>スケールバーの長さ (nm)</value>
+  </data>
+  <data name="colorControlLabel.ToolTip1" xml:space="preserve">
+    <value>ラベルの色</value>
+  </data>
+  <data name="numericBoxLabelFontSize.ToolTip1" xml:space="preserve">
+    <value>ラベルのフォントサイズをポイントで設定</value>
+  </data>
+  <data name="numericBoxSTEM_AngleResolution.ToolTip1" xml:space="preserve">
+    <value>入射プローブ方向の角度サンプリング分解能
+(mrad) を設定します。小さいほど STEM プローブを
+細かくサンプリングしますが計算は遅くなります。</value>
+  </data>
+  <data name="numericBoxSTEM_SliceThicknessForInelastic.ToolTip1" xml:space="preserve">
+    <value>TDS（thermal diffuse scattering,
+熱散漫散乱による非弾性）電子強度を計算する
+際の試料スライス厚さ (nm) を設定します。小さ
+いほど精度は上がりますが計算は遅くなります。</value>
+  </data>
+  <data name="numericBoxResolution.ToolTip1" xml:space="preserve">
+    <value>シミュレーション画像の分解能 (pm/pixel)</value>
+  </data>
+  <data name="numericBoxNumOfBlochWave.ToolTip1" xml:space="preserve">
+    <value>ベーテ法で使用するブロッホ波の最大数。
+値が大きいほど計算速度は遅くなりますが、精度が向上します。</value>
+  </data>
+  <data name="numericBoxSTEM_DetectorOuterAngle.ToolTip1" xml:space="preserve">
+    <value>環状 STEM 検出器の外側取り込み半角 (mrad) を設定し
+ます。この角度より外側の信号は除外されます。</value>
+  </data>
+  <data name="numericBoxSTEM_EffectiveSourceSize.ToolTip1" xml:space="preserve">
+    <value>有効電子源サイズ (nm) を設定します。大きいほど STEM
+プローブがぼけ、細部のコントラストが低下します。</value>
+  </data>
+  <data name="numericBoxSTEM_ConvergenceAngle.ToolTip1" xml:space="preserve">
+    <value>STEM 入射プローブの収束半角 (mrad) を設定します。大きい
+ほどプローブは細くなり、回折コントラストも変わります。</value>
+  </data>
+  <data name="numericBoxSTEM_DetectorInnerAngle.ToolTip1" xml:space="preserve">
+    <value>環状 STEM 検出器の内側取り込み半角 (mrad) を設定し
+ます。この角度より内側の信号は除外されます。</value>
+  </data>
+  <data name="numericBoxObjAperRadius.ToolTip1" xml:space="preserve">
+    <value>対物絞りの半角 (mrad) を設定します。小さいほど高角度の
+回折波を切り、高分解能の細部がなだらかになります。</value>
+  </data>
+  <data name="numericBoxCc.ToolTip1" xml:space="preserve">
+    <value>対物レンズの色収差係数 Cc (mm) を設定します。
+大きいほどエネルギー幅による像のぼけが増えます。</value>
+  </data>
+  <data name="numericBoxDeltaV.ToolTip1" xml:space="preserve">
+    <value>ΔV：電子線のエネルギー幅の半値全幅
+(FWHM)（単位は eV）。色収差係数 Cc とともに、
+色収差による焦点広がり（像のボケ）を決めます。</value>
+  </data>
+  <data name="numericBoxHRTEM_BetaAgnle.ToolTip1" xml:space="preserve">
+    <value>β: 有限光源サイズ効果による
+照射半角 (mrad)</value>
+  </data>
+  <data name="numericBoxCs.ToolTip1" xml:space="preserve">
+    <value>対物レンズの球面収差係数 Cs (mm) を設定します。
+CTF（contrast transfer function, コントラスト
+伝達関数）と Scherzer デフォーカスに影響します。</value>
+  </data>
+  <data name="numericBoxDefocus.ToolTip1" xml:space="preserve">
+    <value>対物レンズのデフォーカス量 (nm) を設定し
+ます。値を変えると CTF（コントラスト
+伝達関数）と像コントラストが変化します。</value>
+  </data>
+  <data name="numericBoxAccVol.ToolTip1" xml:space="preserve">
+    <value>TEM（transmission electron microscope,
+透過電子顕微鏡）の加速電圧 (kV) を設定しま
+す。電子波長と像コントラストが変わります。</value>
+  </data>
+  <data name="numericBoxThickness.ToolTip1" xml:space="preserve">
+    <value>試料の厚さ
+「連続画像」モードが選択されている場合、この値は無視されます。</value>
+  </data>
 </root>

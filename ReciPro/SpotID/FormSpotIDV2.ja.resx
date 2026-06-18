@@ -389,4 +389,31 @@ nm⁻¹）は右のラジオボタンに従います。d 値計算と
     <value>指数付けに用いる波長を決める線源とエネルギー
 ／加速電圧（既定: 電子線・200 kV）。</value>
   </data>
+  <data name="numericBoxNumberOfSpots.ToolTip1" xml:space="preserve">
+    <value>検出するスポット数を指定</value>
+  </data>
+  <data name="numericBoxNearestNeighbor.ToolTip1" xml:space="preserve">
+    <value>検出スポット間に許す最小間隔 (px)。これより近接した
+ピークは統合され、同一スポットの二重検出を防ぎます。</value>
+  </data>
+  <data name="numericBoxFittingRange.ToolTip1" xml:space="preserve">
+    <value>各スポットのピーク当てはめに用いる円領域の
+半径（ピクセル、0〜100）。この円内のピクセル
+を擬 Voigt 関数でフィッティングします。</value>
+  </data>
+  <data name="numericBoxCameraLength.ToolTip1" xml:space="preserve">
+    <value>回折パターンのカメラ長 (mm)</value>
+  </data>
+  <data name="numericBoxPixelSize.ToolTip1" xml:space="preserve">
+    <value>検出器1ピクセルの大きさ。単位（mm または
+nm⁻¹）は右のラジオボタンに従います。d 値計算と
+指数付けに使う逆空間スケールを決めます。</value>
+  </data>
+  <data name="numericBoxAcceptableError.ToolTip1" xml:space="preserve">
+    <value>観測スポットを候補反射と照合する際に許容する長さ
+（d 値）の相対誤差（%、0.1〜10）を設定します。</value>
+  </data>
+  <data name="numericBoxMaxGrainNum.ToolTip1" xml:space="preserve">
+    <value>探索する結晶粒方位の最大数</value>
+  </data>
 </root>

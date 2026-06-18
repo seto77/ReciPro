@@ -1120,4 +1120,111 @@ PED（プリセッション電子回折）モードとは別です。</value>
   <data name="$this.ToolTip" xml:space="preserve">
     <value />
   </data>
+  <data name="colorControlString.ToolTip1" xml:space="preserve">
+    <value>文字列の色を設定</value>
+  </data>
+  <data name="colorControlOrigin.ToolTip1" xml:space="preserve">
+    <value>透過スポットの色を設定</value>
+  </data>
+  <data name="colorControlFoot.ToolTip1" xml:space="preserve">
+    <value />
+  </data>
+  <data name="colorControlBackGround.ToolTip1" xml:space="preserve">
+    <value>背景色を設定</value>
+  </data>
+  <data name="numericBoxKikuchiThresholdOfStructureFactor.ToolTip1" xml:space="preserve">
+    <value />
+  </data>
+  <data name="numericBoxKikuchiThresholdOfLength.ToolTip1" xml:space="preserve">
+    <value>1/d（逆格子長, nm⁻¹）がこの値未満の反射のみ菊池線を
+描画します（= d 値が 1/値 より大きい反射）。</value>
+  </data>
+  <data name="colorControlExcessLine.ToolTip1" xml:space="preserve">
+    <value />
+  </data>
+  <data name="colorControlDebyeRing.ToolTip1" xml:space="preserve">
+    <value>デバイリングの色を設定</value>
+  </data>
+  <data name="colorControlScaleAzimuth.ToolTip1" xml:space="preserve">
+    <value>方位角スケール線の色を設定</value>
+  </data>
+  <data name="colorControlScale2Theta.ToolTip1" xml:space="preserve">
+    <value>2θスケール線の色を設定</value>
+  </data>
+  <data name="numericBox3D_SpotRadius.ToolTip1" xml:space="preserve">
+    <value>3D 逆空間ビューで描画する回折スポット球の半径
+(nm⁻¹) を設定します。この距離内に Ewald 球があ
+る点は近傍点として着色・ラベル表示できます。</value>
+  </data>
+  <data name="colorControl3D_SpotsFar.ToolTip1" xml:space="preserve">
+    <value />
+  </data>
+  <data name="colorControl3D_Background.ToolTip1" xml:space="preserve">
+    <value>背景色を設定</value>
+  </data>
+  <data name="numericBoxStep.ToolTip1" xml:space="preserve">
+    <value>上のボタンの角度ステップ、または回転速度を設定</value>
+  </data>
+  <data name="colorControl3D_EwaldSphere.ToolTip1" xml:space="preserve">
+    <value />
+  </data>
+  <data name="colorControl3D_Origin.ToolTip1" xml:space="preserve">
+    <value />
+  </data>
+  <data name="colorControl3D_rightDirection.ToolTip1" xml:space="preserve">
+    <value />
+  </data>
+  <data name="colorControl3D_topDirection.ToolTip1" xml:space="preserve">
+    <value />
+  </data>
+  <data name="colorControl3D_beamDirection.ToolTip1" xml:space="preserve">
+    <value />
+  </data>
+  <data name="sizeControl1.ToolTip1" xml:space="preserve">
+    <value />
+  </data>
+  <data name="numericBoxResolution.ToolTip1" xml:space="preserve">
+    <value>シミュレーションパターンの解像度を設定</value>
+  </data>
+  <data name="numericBoxCameraLength2.ToolTip1" xml:space="preserve">
+    <value>カメラ長2(試料から検出器(モニター)までの距離)を設定します。</value>
+  </data>
+  <data name="numericBoxDev.ToolTip1" xml:space="preserve">
+    <value />
+  </data>
+  <data name="numericBoxAcc.ToolTip1" xml:space="preserve">
+    <value />
+  </data>
+  <data name="numericBoxPED_Semiangle.ToolTip1" xml:space="preserve">
+    <value>PED（プリセッション電子回折）シミュレーション
+のプリセッション半角 (mrad) を設定します。
+入射ビームを傾けて積分する円錐の半頂角です。</value>
+  </data>
+  <data name="numericBoxPED_Step.ToolTip1" xml:space="preserve">
+    <value>PED（プリセッション電子回折）シミュレーションで、
+プリセッション円錐を方位方向に分割する数を設定し
+ます。多いほど滑らかですが計算は遅くなります。</value>
+  </data>
+  <data name="numericBoxNumOfBlochWave.ToolTip1" xml:space="preserve">
+    <value>動力学的な多重散乱計算に含める
+回折波（Bloch 波）の本数を設定します。多い
+ほど精度は上がりますが計算は遅くなります。</value>
+  </data>
+  <data name="numericBoxThickness.ToolTip1" xml:space="preserve">
+    <value>試料の厚さを設定</value>
+  </data>
+  <data name="numericBoxSpotRadius.ToolTip1" xml:space="preserve">
+    <value>回折スポットの半径または Gaussian の sigma を
+逆空間単位（表示時は nm⁻¹）で設定します。大きいほど
+スポットが太くなり、励起誤差の許容幅も広がります。</value>
+  </data>
+  <data name="colorControlNoCondition.ToolTip1" xml:space="preserve">
+    <value>一般的なスポットの色を設定</value>
+  </data>
+  <data name="colorControlScrewGlide.ToolTip1" xml:space="preserve">
+    <value>消滅スポット（らせん・映進）の色を設定</value>
+  </data>
+  <data name="colorControlForbiddenLattice.ToolTip1" xml:space="preserve">
+    <value>消滅スポット（格子心取り）の色を設定</value>
+  </data>
 </root>

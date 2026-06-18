@@ -505,4 +505,23 @@ v2</value>
     <value>有効にすると、六方晶／三方晶（六方軸）の指数を
 4指数のミラー・ブラベー (hkil) 表記で表示します。</value>
   </data>
+  <data name="numericBoxStep.ToolTip1" xml:space="preserve">
+    <value>回転ボタンの角度ステップ（度）を設定しま
+す。アニメーション有効時は、同じ値を 1 秒あ
+たりの回転速度（度/秒）として使います。</value>
+  </data>
+  <data name="numericBoxMaxUVW.ToolTip1" xml:space="preserve">
+    <value>視線方向に最も近い晶帯軸を探索する際の指数和
+|u|+|v|+|w| の上限を設定します。値を大きくするほど多く
+の候補晶帯軸を評価します（上の概略指数表示に反映）。</value>
+  </data>
+  <data name="numericBoxEulerPhi.ToolTip1" xml:space="preserve">
+    <value>結晶方位を定義するオイラー角 Φ（度）を設定／表示します。</value>
+  </data>
+  <data name="numericBoxEulerTheta.ToolTip1" xml:space="preserve">
+    <value>結晶方位を定義するオイラー角 θ（度）を設定／表示します。</value>
+  </data>
+  <data name="numericBoxEulerPsi.ToolTip1" xml:space="preserve">
+    <value>結晶方位を定義するオイラー角 ψ（度）を設定／表示します。</value>
+  </data>
 </root>

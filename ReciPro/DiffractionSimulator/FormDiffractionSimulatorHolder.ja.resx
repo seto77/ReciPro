@@ -314,4 +314,25 @@ Tilt-Y の傾斜方向を示す矢印を表示します。</value>
     <value>チェックすると各指数について結晶対称で
 等価な晶帯軸も生成・表示します。</value>
   </data>
+  <data name="numericBoxTiltXDirection.ToolTip1" xml:space="preserve">
+    <value />
+  </data>
+  <data name="numericBoxLinkTiltX.ToolTip1" xml:space="preserve">
+    <value />
+  </data>
+  <data name="numericBoxLinkTiltY.ToolTip1" xml:space="preserve">
+    <value />
+  </data>
+  <data name="numericBoxDrawingArea.ToolTip1" xml:space="preserve">
+    <value />
+  </data>
+  <data name="numericBoxArrowStep.ToolTip1" xml:space="preserve">
+    <value />
+  </data>
+  <data name="numericBoxTiltX.ToolTip1" xml:space="preserve">
+    <value />
+  </data>
+  <data name="numericBoxTiltY.ToolTip1" xml:space="preserve">
+    <value />
+  </data>
 </root>
