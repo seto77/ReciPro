@@ -467,7 +467,7 @@
     <value>5, 85</value>
   </data>
   <data name="checkBoxDrawPathAfterEscape.Location" type="System.Drawing.Point, System.Drawing">
-    <value>298, 55</value>
+    <value>3, 76</value>
   </data>
   <data name="poleFigureControl.TabIndex" type="System.Int32, mscorlib">
     <value>104</value>
@@ -727,7 +727,7 @@ to calculate</value>
     <value>Fill</value>
   </data>
   <data name="checkBoxDrawAxesInStereonet.Location" type="System.Drawing.Point, System.Drawing">
-    <value>270, 43</value>
+    <value>240, 43</value>
   </data>
   <data name="buttonViewFromX.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>
@@ -1213,7 +1213,7 @@ to calculate</value>
     <value>numericBoxDrawNum</value>
   </data>
   <data name="panelDrawingOptions.Size" type="System.Drawing.Size, System.Drawing">
-    <value>513, 78</value>
+    <value>513, 99</value>
   </data>
   <data name="numericBoxDrawNum.TabIndex" type="System.Int32, mscorlib">
     <value>101</value>

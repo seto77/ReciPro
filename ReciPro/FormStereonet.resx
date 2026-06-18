@@ -1312,7 +1312,7 @@ on the lower hemisphere of the stereonet.</value>
     <value>168, 88</value>
   </data>
   <data name="groupBoxSphere.Size" type="System.Drawing.Size, System.Drawing">
-    <value>105, 70</value>
+    <value>150, 70</value>
   </data>
   <data name="groupBoxSphere.TabIndex" type="System.Int32, mscorlib">
     <value>54</value>
@@ -1453,7 +1453,7 @@ on the lower hemisphere of the stereonet.</value>
     <value>168, 21</value>
   </data>
   <data name="groupBoxProjectionScheme.Size" type="System.Drawing.Size, System.Drawing">
-    <value>105, 67</value>
+    <value>150, 67</value>
   </data>
   <data name="groupBoxProjectionScheme.TabIndex" type="System.Int32, mscorlib">
     <value>54</value>
@@ -1821,7 +1821,7 @@ inelastically scattered electrons.</value>
     <value>4, 3, 3, 3</value>
   </data>
   <data name="groupBoxMode.Size" type="System.Drawing.Size, System.Drawing">
-    <value>276, 162</value>
+    <value>321, 162</value>
   </data>
   <data name="groupBoxMode.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -5283,7 +5283,7 @@ the cursor position on the stereonet.</value>
     <value>Segoe UI, 9.75pt, style=Bold</value>
   </data>
   <data name="groupBoxIndices.Location" type="System.Drawing.Point, System.Drawing">
-    <value>286, 0</value>
+    <value>331, 0</value>
   </data>
   <data name="groupBoxIndices.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>5, 0, 0, 0</value>
@@ -5316,7 +5316,7 @@ the cursor position on the stereonet.</value>
     <value>Right</value>
   </data>
   <data name="panel4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>670, 0</value>
+    <value>715, 0</value>
   </data>
   <data name="panel4.Size" type="System.Drawing.Size, System.Drawing">
     <value>5, 162</value>
@@ -5340,7 +5340,7 @@ the cursor position on the stereonet.</value>
     <value>Left</value>
   </data>
   <data name="panel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>281, 0</value>
+    <value>326, 0</value>
   </data>
   <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
     <value>5, 162</value>
@@ -5451,7 +5451,7 @@ the cursor position on the stereonet.</value>
     <value>Right</value>
   </data>
   <data name="panel3DOptions.Location" type="System.Drawing.Point, System.Drawing">
-    <value>675, 0</value>
+    <value>720, 0</value>
   </data>
   <data name="panel3DOptions.Size" type="System.Drawing.Size, System.Drawing">
     <value>203, 162</value>
@@ -5514,7 +5514,7 @@ the cursor position on the stereonet.</value>
     <value>96, 96</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>883, 687</value>
+    <value>928, 687</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9.75pt</value>
