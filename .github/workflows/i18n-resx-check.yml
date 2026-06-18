@@ -1,0 +1,25 @@
+# 260618Cl 追加: 多言語化 resx の規約を CI で検出する (pre-commit フックのバックストップ)。
+#   (1) culture resx が text-only か (Size/Location/Font 等の混入を弾く)。
+#   (2) neutral resx の Font サイズが 5 段階ティアに正規化されているか。
+# 修復はしない (CI はリポを書き換えない)。違反時は exit 1 で落とし、ローカルで --fix を促す。
+# ローカルの自動修復は tools/git-hooks/pre-commit (git config core.hooksPath tools/git-hooks)。
+name: i18n resx check
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  resx-textonly-and-tiers:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+      - name: Culture resx are text-only (de/fr/es/pt/zh-Hans, ReciPro + Controls)
+        run: python tools/check_resx_textonly.py
+      - name: Culture resx are text-only (ja, ReciPro app only)
+        run: python tools/check_resx_textonly.py --lang ja --root ReciPro
+      - name: Neutral resx font sizes are tier-normalized (ReciPro app only)
+        run: python tools/snap_neutral_font_tiers.py --root ReciPro
