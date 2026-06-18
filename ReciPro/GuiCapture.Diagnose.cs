@@ -132,6 +132,13 @@ internal static partial class GuiCapture
 
     private static void DiagnoseForm(Form form, string name, string culture, double inflate, List<string> rows)
     {
+        // 260618Cl 追加: 診断側で UiFont.Apply を冪等に再適用してフォント sweep を保証する。
+        //   FormBase.OnLoad は base.OnLoad(e) の後に UiFont.Apply(this) を呼ぶが、base.OnLoad が
+        //   Load ハンドラ内で例外 (GL 無効時の NRE 等。FormStructureViewer/FormEBSD で発生) を投げると
+        //   Apply に到達せず、フォントが resx(Segoe UI) のまま測定され CJK overflow を過少報告する。
+        //   ここで再適用すれば Load 失敗フォームでも実カルチャのフォントで測れる
+        //   (正常 Load 済みは Resolve が同一インスタンスを返すので no-op)。
+        try { Crystallography.Controls.UiFont.Apply(form); } catch { /* 部分構築フォームは測れる範囲で測る */ }
         try { form.PerformLayout(); } catch { /* レイアウト例外は無視して測れるものだけ測る */ }
         // EnumerateControls (root を含む) / EnumerateToolStripItems(Form) は GuiCapture.cs 側 (capture と共用) を再利用。
         foreach (var c in EnumerateControls(form))

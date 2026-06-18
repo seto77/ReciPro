@@ -1,0 +1,376 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 260617Cl: 多言語化 Phase1/3 (es) text-only リソース。レイアウト(Size/Location/Font)は neutral へフォールバック。結晶学/電子回折用語は IUCr Online Dictionary 準拠。 -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="label11.Text" xml:space="preserve">
+    <value>Registro de rendimiento</value>
+  </data>
+  <data name="label13.Text" xml:space="preserve">
+    <value>Información de átomos (todas las coordenadas en Å)</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Rango</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>Fijar rango en</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>Fijar centro en</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Centro</value>
+  </data>
+  <data name="checkBoxShowBoundPlanes.Text" xml:space="preserve">
+    <value>Mostrar planos límite</value>
+  </data>
+  <data name="numericBoxBoundPlanesOpacity.HeaderText" xml:space="preserve">
+    <value>Opacidad</value>
+  </data>
+  <data name="checkBoxClipObjects.Text" xml:space="preserve">
+    <value>Recortar objetos por planos límite</value>
+  </data>
+  <data name="radioButtonBoundUnitCell.Text" xml:space="preserve">
+    <value>Límites definidos por la celda unidad</value>
+  </data>
+  <data name="radioButtonBoundPlane.Text" xml:space="preserve">
+    <value>Límites definidos por planos cristalinos</value>
+  </data>
+  <data name="tabPageBounds.Text" xml:space="preserve">
+    <value>Límites</value>
+  </data>
+  <data name="labelMessage.Text" xml:space="preserve">
+    <value>Este control se muestra ahora
+ en la ventana "Structure Viewer".</value>
+  </data>
+  <data name="tabPageAtom.Text" xml:space="preserve">
+    <value>Átomos</value>
+  </data>
+  <data name="tabPageBond.Text" xml:space="preserve">
+    <value>Enlaces y poliedros</value>
+  </data>
+  <data name="checkBoxUnitCell.Text" xml:space="preserve">
+    <value>Mostrar celda unidad</value>
+  </data>
+  <data name="radioButtonCellPlaneColorAll.Text" xml:space="preserve">
+    <value>Todos los planos</value>
+  </data>
+  <data name="radioButtonCellPlaneColorEach.Text" xml:space="preserve">
+    <value>Cada plano</value>
+  </data>
+  <data name="numericBoxCellPlaneAlpha.HeaderText" xml:space="preserve">
+    <value>Opacidad</value>
+  </data>
+  <data name="radioButtonCellEdgeColorAll.Text" xml:space="preserve">
+    <value>Todas las aristas</value>
+  </data>
+  <data name="radioButtonCellEdgeColorEach.Text" xml:space="preserve">
+    <value>Cada arista</value>
+  </data>
+  <data name="label8.Text" xml:space="preserve">
+    <value>Anchura de arista</value>
+  </data>
+  <data name="checkBoxShowSubCell.Text" xml:space="preserve">
+    <value>Mostrar subcelda</value>
+  </data>
+  <data name="checkBoxCellShowEdge.Text" xml:space="preserve">
+    <value>Mostrar arista de celda</value>
+  </data>
+  <data name="checkBoxCellShowPlane.Text" xml:space="preserve">
+    <value>Mostrar plano de celda</value>
+  </data>
+  <data name="tabPageUnitCell.Text" xml:space="preserve">
+    <value>Celda unidad</value>
+  </data>
+  <data name="numericBoxLatticePlaneOpacity.HeaderText" xml:space="preserve">
+    <value>Opacidad </value>
+  </data>
+  <data name="tabPageLatticePlane.Text" xml:space="preserve">
+    <value>Planos reticulares</value>
+  </data>
+  <data name="tabPageCoordinateInformation.Text" xml:space="preserve">
+    <value>Coordinación</value>
+  </data>
+  <data name="labelGraphicsCard.Text" xml:space="preserve">
+    <value>Tarjeta gráfica:  </value>
+  </data>
+  <data name="labelGraphicsDriver.Text" xml:space="preserve">
+    <value>Controlador gráfico:  </value>
+  </data>
+  <data name="labelOpenGLversion.Text" xml:space="preserve">
+    <value>Versión de OpenGL:  </value>
+  </data>
+  <data name="label9.Text" xml:space="preserve">
+    <value>Fijar el centro de proyección en las coordenadas fraccionarias</value>
+  </data>
+  <data name="radioButtonProjectionCenterCustom.Text" xml:space="preserve">
+    <value>Personalizado</value>
+  </data>
+  <data name="groupBoxProjectionCenter.Text" xml:space="preserve">
+    <value>Centro de proyección</value>
+  </data>
+  <data name="groupBoxProjection.Text" xml:space="preserve">
+    <value>Proyección</value>
+  </data>
+  <data name="groupBoxTransparency.Text" xml:space="preserve">
+    <value>Modo de transparencia</value>
+  </data>
+  <data name="checkBoxDepthFadingOut.Text" xml:space="preserve">
+    <value>Atenuación por profundidad</value>
+  </data>
+  <data name="groupBoxRenderingQuality.Text" xml:space="preserve">
+    <value>Calidad de renderizado</value>
+  </data>
+  <data name="label6.Text" xml:space="preserve">
+    <value>Lejos</value>
+  </data>
+  <data name="label5.Text" xml:space="preserve">
+    <value>Cerca</value>
+  </data>
+  <data name="tabPageProjection.Text" xml:space="preserve">
+    <value>Proyección</value>
+  </data>
+  <data name="checkBoxSymElems_Inversions.Text" xml:space="preserve">
+    <value>Centros de inversión
+</value>
+  </data>
+  <data name="numericBoxInversionSymbolSize.HeaderText" xml:space="preserve">
+    <value>Tamaño de símbolo</value>
+  </data>
+  <data name="groupBoxInversion.Text" xml:space="preserve">
+    <value>Centros de inversión</value>
+  </data>
+  <data name="checkBoxSymElems_Glides.Text" xml:space="preserve">
+    <value>Deslizamientos</value>
+  </data>
+  <data name="numericBoxPlaneSymbolSize.HeaderText" xml:space="preserve">
+    <value>Tamaño de símbolo</value>
+  </data>
+  <data name="numericBoxPlaneLineWidth.HeaderText" xml:space="preserve">
+    <value>Anchura de línea</value>
+  </data>
+  <data name="checkBoxSymElems_Mirrors.Text" xml:space="preserve">
+    <value>Reflexiones</value>
+  </data>
+  <data name="groupBoxPlanes.Text" xml:space="preserve">
+    <value>Planos</value>
+  </data>
+  <data name="checkBoxSymElems_Rotation.Text" xml:space="preserve">
+    <value>Rotaciones</value>
+  </data>
+  <data name="numericBoxAxisSymbolSize.HeaderText" xml:space="preserve">
+    <value>Tamaño de símbolo</value>
+  </data>
+  <data name="numericBoxAxisLineWidth.HeaderText" xml:space="preserve">
+    <value>Anchura de línea</value>
+  </data>
+  <data name="checkBoxSymElems_Rotinversions.Text" xml:space="preserve">
+    <value>Rotoinversiones</value>
+  </data>
+  <data name="checkBoxSymElems_Screws.Text" xml:space="preserve">
+    <value>Helicoidales</value>
+  </data>
+  <data name="groupBoxAxes.Text" xml:space="preserve">
+    <value>Ejes de simetría</value>
+  </data>
+  <data name="checkBoxShowSymmetryElements.Text" xml:space="preserve">
+    <value>Mostrar elementos de simetría</value>
+  </data>
+  <data name="tabPageSymElems.Text" xml:space="preserve">
+    <value>Elem. sim.</value>
+  </data>
+  <data name="checkBoxShowLabel.Text" xml:space="preserve">
+    <value>Mostrar etiqueta</value>
+  </data>
+  <data name="radioButtonUseMaterialColor.Text" xml:space="preserve">
+    <value>Usar color del material</value>
+  </data>
+  <data name="radioButtonLabelUseFixedColor.Text" xml:space="preserve">
+    <value>Usar color fijo</value>
+  </data>
+  <data name="numericBoxLabelSize.HeaderText" xml:space="preserve">
+    <value>Tamaño de fuente</value>
+  </data>
+  <data name="checkBoxLabelWhiteEdge.Text" xml:space="preserve">
+    <value>Borde blanco</value>
+  </data>
+  <data name="label7.Text" xml:space="preserve">
+    <value>(Haga clic en una entrada de la leyenda
+para ajustarla individualmente)</value>
+  </data>
+  <data name="groupBoxLabel.Text" xml:space="preserve">
+    <value>Etiqueta</value>
+  </data>
+  <data name="checkBoxShowBondedAtoms.Text" xml:space="preserve">
+    <value>Mostrar átomos enlazados 
+aunque estén fuera 
+de los límites</value>
+  </data>
+  <data name="groupBoxBondedAtoms.Text" xml:space="preserve">
+    <value>Átomos enlazados</value>
+  </data>
+  <data name="checkBoxGroupByElement.Text" xml:space="preserve">
+    <value>Agrupar por elemento</value>
+  </data>
+  <data name="numericBoxLegendSize.HeaderText" xml:space="preserve">
+    <value>Tamaño de leyenda</value>
+  </data>
+  <data name="numericBoxAxesSize.HeaderText" xml:space="preserve">
+    <value>Tamaño de ejes</value>
+  </data>
+  <data name="numericBoxLightSize.HeaderText" xml:space="preserve">
+    <value>Tamaño esfera de luz</value>
+  </data>
+  <data name="groupBoxAccessoryControls.Text" xml:space="preserve">
+    <value>Controles accesorios</value>
+  </data>
+  <data name="tabPageMisc.Text" xml:space="preserve">
+    <value>Varios</value>
+  </data>
+  <data name="toolStripButtonCrystalAxes.Text" xml:space="preserve">
+    <value>Ejes</value>
+  </data>
+  <data name="toolStripButtonLightDirection.Text" xml:space="preserve">
+    <value>Luz</value>
+  </data>
+  <data name="toolStripButtonLegend.Text" xml:space="preserve">
+    <value>Leyenda</value>
+  </data>
+  <data name="toolStripButtonLikeVesta.Text" xml:space="preserve">
+    <value>Como Vesta</value>
+  </data>
+  <data name="toolStripButtonResetRotation.Text" xml:space="preserve">
+    <value>Restablecer rotación</value>
+  </data>
+  <data name="toolStripButtonAtomObjects.Text" xml:space="preserve">
+    <value>Átomos</value>
+  </data>
+  <data name="toolStripButtonAtomLabels.Text" xml:space="preserve">
+    <value>Etiquetas</value>
+  </data>
+  <data name="toolStripButtonUnitCell.Text" xml:space="preserve">
+    <value>Celda unidad</value>
+  </data>
+  <data name="toolStripButtonSymmetryElements.Text" xml:space="preserve">
+    <value>Elem. sim.</value>
+  </data>
+  <data name="saveMainToolStripMenuItem.Text" xml:space="preserve">
+    <value>Imagen principal</value>
+  </data>
+  <data name="saveLegendToolStripMenuItem.Text" xml:space="preserve">
+    <value>Leyenda</value>
+  </data>
+  <data name="saveAxesToolStripMenuItem.Text" xml:space="preserve">
+    <value>Ejes cristalinos</value>
+  </data>
+  <data name="saveLightToolStripMenuItem.Text" xml:space="preserve">
+    <value>Dirección de la luz</value>
+  </data>
+  <data name="saveImageToolStripMenuItem1.Text" xml:space="preserve">
+    <value>Guardar imagen</value>
+  </data>
+  <data name="copyMainToolStripMenuItem.Text" xml:space="preserve">
+    <value>Imagen principal</value>
+  </data>
+  <data name="copyLegendToolStripMenuItem1.Text" xml:space="preserve">
+    <value>Leyenda</value>
+  </data>
+  <data name="copyAxesToolStripMenuItem.Text" xml:space="preserve">
+    <value>Ejes cristalinos</value>
+  </data>
+  <data name="copyLightToolStripMenuItem.Text" xml:space="preserve">
+    <value>Dirección de la luz</value>
+  </data>
+  <data name="copyToClipboardToolStripMenuItem.Text" xml:space="preserve">
+    <value>Copiar imagen principal al portapapeles</value>
+  </data>
+  <data name="SaveMovieMainImageToolStripMenuItem.Text" xml:space="preserve">
+    <value>Imagen principal</value>
+  </data>
+  <data name="SaveMovieCrystalAxesToolStripMenuItem.Text" xml:space="preserve">
+    <value>Ejes cristalinos</value>
+  </data>
+  <data name="saveMovieToolStripMenuItem.Text" xml:space="preserve">
+    <value>Guardar vídeo</value>
+  </data>
+  <data name="saveImageToolStripMenuItem.Text" xml:space="preserve">
+    <value>Archivo</value>
+  </data>
+  <data name="iLikeVESTAToolStripMenuItem.Text" xml:space="preserve">
+    <value>Me gusta VESTA</value>
+  </data>
+  <data name="toolToolStripMenuItem.Text" xml:space="preserve">
+    <value>Herramientas</value>
+  </data>
+  <data name="cTRLSHIFTcMainImageToClipboardCTRLRightDoubleClickChangePerspectiveOrthogonalAlternatelyToolStripMenuItem.Text" xml:space="preserve">
+    <value>CTRL+MAYÚS+c:  Copiar imagen principal al portapapeles</value>
+  </data>
+  <data name="cTRLRightDoubleClickChangePerspectiveOrthogonalAlternatelyToolStripMenuItem.Text" xml:space="preserve">
+    <value>CTRL+ doble clic derecho del ratón:  Cambiar entre proyección perspectiva &lt;=&gt; ortogonal</value>
+  </data>
+  <data name="toolStripMenuItem2.Text" xml:space="preserve">
+    <value>CTRL+ botón derecho del ratón arriba/abajo:  Cambiar el grado de perspectiva</value>
+  </data>
+  <data name="helpToolStripMenuItem.Text" xml:space="preserve">
+    <value>Sugerencias de atajos</value>
+  </data>
+  <data name="sizeControl1.HeaderText" xml:space="preserve">
+    <value>Tamaño (An×Al)</value>
+  </data>
+</root>

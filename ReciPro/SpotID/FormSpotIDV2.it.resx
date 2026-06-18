@@ -1,0 +1,239 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 260617Cl: 多言語化 Phase1/3 (it) text-only リソース。レイアウト(Size/Location/Font)は neutral へフォールバック。結晶学/電子回折用語は IUCr Online Dictionary 準拠。 -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="toolStripMenuItem3.Text" xml:space="preserve">
+    <value>Ctrl + clic destro : rimuovi la riflessione</value>
+  </data>
+  <data name="Column2.HeaderText" xml:space="preserve">
+    <value>Di- retto</value>
+  </data>
+  <data name="checkBoxIgnoreMultipleDiffraction.Text" xml:space="preserve">
+    <value>Ignora riflessioni proibite</value>
+  </data>
+  <data name="groupBoxSpot.Text" xml:space="preserve">
+    <value>Informazioni riflessione</value>
+  </data>
+  <data name="Range.HeaderText" xml:space="preserve">
+    <value>Intervallo (raggio)</value>
+  </data>
+  <data name="AssignedSpots.HeaderText" xml:space="preserve">
+    <value>Riflessioni assegnate</value>
+  </data>
+  <data name="numericBoxSemiangle.HeaderText" xml:space="preserve">
+    <value>Intervallo angolo di ricerca</value>
+  </data>
+  <data name="buttonRefineThicknessAndDirection.Text" xml:space="preserve">
+    <value>Affina spessore &amp;&amp; direzione (solo per SAED)</value>
+  </data>
+  <data name="numericBoxPixelSize.HeaderText" xml:space="preserve">
+    <value>Dimensione pixel</value>
+  </data>
+  <data name="doubleClickAddSpotToolStripMenuItem.Text" xml:space="preserve">
+    <value>Trascina sinistro : trascina l'immagine</value>
+  </data>
+  <data name="noDataGridViewTextBoxColumn2.HeaderText" xml:space="preserve">
+    <value>N.</value>
+  </data>
+  <data name="radioButtonMultiGrain.Text" xml:space="preserve">
+    <value>Grani multipli</value>
+  </data>
+  <data name="copyAsMetafileToolStripMenuItem.Text" xml:space="preserve">
+    <value>come Metafile (EMF)</value>
+  </data>
+  <data name="checkBoxShowCalcSpotLabel.Text" xml:space="preserve">
+    <value>Mostra etichetta</value>
+  </data>
+  <data name="buttonResetRangeForAllSpots.Text" xml:space="preserve">
+    <value>Applica a tutti</value>
+  </data>
+  <data name="buttonCopmprehensiveFitting.Text" xml:space="preserve">
+    <value>Riadatta tutto</value>
+  </data>
+  <data name="buttonSaveToFile.Text" xml:space="preserve">
+    <value>Salva</value>
+  </data>
+  <data name="numericBoxDiffractedWaves.HeaderText" xml:space="preserve">
+    <value>Onde diffratte</value>
+  </data>
+  <data name="numericBoxCameraLength.HeaderText" xml:space="preserve">
+    <value>Lunghezza camera</value>
+  </data>
+  <data name="Column1.HeaderText" xml:space="preserve">
+    <value>Adat.    </value>
+  </data>
+  <data name="numericBoxNumberOfSpots.HeaderText" xml:space="preserve">
+    <value>Numero</value>
+  </data>
+  <data name="buttonFindSpots.Text" xml:space="preserve">
+    <value>Rileva &amp;&amp; adatta riflessioni</value>
+  </data>
+  <data name="toolStripMenuItem1.Text" xml:space="preserve">
+    <value>Clic destro : riduci zoom</value>
+  </data>
+  <data name="numericBoxAcceptableError.HeaderText" xml:space="preserve">
+    <value>Errore accettabile</value>
+  </data>
+  <data name="toolStripMenuItem7.Text" xml:space="preserve">
+    <value>Trascina destro: aumenta zoom</value>
+  </data>
+  <data name="toolStripMenuItem4.Text" xml:space="preserve">
+    <value>Ctrl + doppio clic sinistro : aggiungi la riflessione diretta</value>
+  </data>
+  <data name="checkBoxGuideCircles.Text" xml:space="preserve">
+    <value>Mostra cerchi guida</value>
+  </data>
+  <data name="numericBoxNearestNeighbor.HeaderText" xml:space="preserve">
+    <value>Primo vicino  &gt;</value>
+  </data>
+  <data name="buttonDeleteSpot.Text" xml:space="preserve">
+    <value>Elimina</value>
+  </data>
+  <data name="buttonClearSpots.Text" xml:space="preserve">
+    <value>Cancella tutte le riflessioni</value>
+  </data>
+  <data name="checkBoxShowObsSpotSymbol.Text" xml:space="preserve">
+    <value>Mostra simboli</value>
+  </data>
+  <data name="shortcutHintsToolStripMenuItem.Text" xml:space="preserve">
+    <value>Suggerimenti scorciatoie</value>
+  </data>
+  <data name="noDataGridViewTextBoxColumn1.HeaderText" xml:space="preserve">
+    <value>N.</value>
+  </data>
+  <data name="copyAsBitmapToolStripMenuItem.Text" xml:space="preserve">
+    <value>come Immagine</value>
+  </data>
+  <data name="buttonGlobalFit.Text" xml:space="preserve">
+    <value>Adattamento globale  (sperimentale)</value>
+  </data>
+  <data name="CrystalName.HeaderText" xml:space="preserve">
+    <value>Nome cristallo</value>
+  </data>
+  <data name="saveAsMetafileToolStripMenuItem.Text" xml:space="preserve">
+    <value>come Metafile (EMF)</value>
+  </data>
+  <data name="radioButtonSingleGrain.Text" xml:space="preserve">
+    <value>Grano singolo</value>
+  </data>
+  <data name="checkBoxDetailsOfFunction.Text" xml:space="preserve">
+    <value>Dettagli della funzione di adattamento</value>
+  </data>
+  <data name="checkBoxDetailsOfSpot.Text" xml:space="preserve">
+    <value>Dettagli della riflessione</value>
+  </data>
+  <data name="numericBoxFittingRange.HeaderText" xml:space="preserve">
+    <value>Intervallo di adattamento (raggio)</value>
+  </data>
+  <data name="checkBoxShowZoneAxis.Text" xml:space="preserve">
+    <value>Mostra asse di zona</value>
+  </data>
+  <data name="numericBoxMaxGrainNum.HeaderText" xml:space="preserve">
+    <value>N. max. di grani</value>
+  </data>
+  <data name="A.HeaderText" xml:space="preserve">
+    <value>A (intensità)</value>
+  </data>
+  <data name="assignedSpotsDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
+    <value>Riflessioni assegnate</value>
+  </data>
+  <data name="saveAsBitmapToolStripMenuItem1.Text" xml:space="preserve">
+    <value>come Immagine (formato PNG)</value>
+  </data>
+  <data name="groupBoxOptics.Text" xml:space="preserve">
+    <value>Ottica</value>
+  </data>
+  <data name="checkBoxShowDebyeRing.Text" xml:space="preserve">
+    <value>Mostra anelli di Debye</value>
+  </data>
+  <data name="buttonDonut.Text" xml:space="preserve">
+    <value>Donut  (sperimentale)</value>
+  </data>
+  <data name="buttonIdentifySpots.Text" xml:space="preserve">
+    <value>Identifica riflessioni</value>
+  </data>
+  <data name="loadToolStripMenuItem.Text" xml:space="preserve">
+    <value>Carica</value>
+  </data>
+  <data name="noDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
+    <value>N.</value>
+  </data>
+  <data name="saveToolStripMenuItem.Text" xml:space="preserve">
+    <value>Salva</value>
+  </data>
+  <data name="toolStripMenuItem6.Text" xml:space="preserve">
+    <value>Clic sinistro : seleziona una riflessione</value>
+  </data>
+  <data name="checkBoxShowCalcSpotSymbol.Text" xml:space="preserve">
+    <value>Mostra simbolo</value>
+  </data>
+  <data name="copyToolStripMenuItem.Text" xml:space="preserve">
+    <value>Copia</value>
+  </data>
+  <data name="toolStripMenuItem5.Text" xml:space="preserve">
+    <value>Doppio clic sinistro : aggiungi una riflessione</value>
+  </data>
+  <data name="buttonCopyToClipboard.Text" xml:space="preserve">
+    <value>Copia</value>
+  </data>
+  <data name="checkBoxShowObsSpotLabel.Text" xml:space="preserve">
+    <value>Mostra numeri</value>
+  </data>
+</root>

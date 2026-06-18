@@ -1,0 +1,262 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 260617Cl: 多言語化 Phase1/3 (fr) text-only リソース。レイアウト(Size/Location/Font)は neutral へフォールバック。結晶学/電子回折用語は IUCr Online Dictionary 準拠。 -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="toolStripMenuItemExportCIF.Text" xml:space="preserve">
+    <value>Exporter le cristal sélectionné en fichier CIF</value>
+  </data>
+  <data name="licenseToolStripMenuItem.Text" xml:space="preserve">
+    <value>Licence</value>
+  </data>
+  <data name="buttonUp.Text" xml:space="preserve">
+    <value>Monter</value>
+  </data>
+  <data name="toolStripButtonStereonet.Text" xml:space="preserve">
+    <value>  Stéréonet</value>
+  </data>
+  <data name="hintToolStripMenuItem.Text" xml:space="preserve">
+    <value>Astuces</value>
+  </data>
+  <data name="toolStripButtonSymmetryInformation.Text" xml:space="preserve">
+    <value>  Informations
+  de symétrie</value>
+  </data>
+  <data name="toolStripButtonDatabase.Text" xml:space="preserve">
+    <value>  Base de
+  cristaux</value>
+  </data>
+  <data name="checkBoxFixePlane.Text" xml:space="preserve">
+    <value>Fixer</value>
+  </data>
+  <data name="fileToolStripMenuItem.Text" xml:space="preserve">
+    <value>Fichier</value>
+  </data>
+  <data name="githubPageToolStripMenuItem.Text" xml:space="preserve">
+    <value>Dépôt GitHub</value>
+  </data>
+  <data name="buttonDelete.Text" xml:space="preserve">
+    <value>Supprimer</value>
+  </data>
+  <data name="resetRegistryToolStripMenuItem.Text" xml:space="preserve">
+    <value>Réinitialiser les réglages du registre à la fermeture (effectif après redémarrage)</value>
+  </data>
+  <data name="disableOpneGLToolStripMenuItem.Text" xml:space="preserve">
+    <value>Désactiver tout le rendu OpenGL (redémarrage requis)</value>
+  </data>
+  <data name="buttonDuplicate.Text" xml:space="preserve">
+    <value>Dupliquer</value>
+  </data>
+  <data name="buttonSetAxis.Text" xml:space="preserve">
+    <value>Axe</value>
+  </data>
+  <data name="buttonDown.Text" xml:space="preserve">
+    <value>Descendre</value>
+  </data>
+  <data name="toolStripButtonStructureViewer.Text" xml:space="preserve">
+    <value>  Visualiseur
+  de structure</value>
+  </data>
+  <data name="numericBoxStep.HeaderText" xml:space="preserve">
+    <value>Pas</value>
+  </data>
+  <data name="groupBoxCrystalList.Text" xml:space="preserve">
+    <value>Liste des cristaux</value>
+  </data>
+  <data name="buttonAdd.Text" xml:space="preserve">
+    <value>↑ Ajouter ↑</value>
+  </data>
+  <data name="checkUpdatesToolStripMenuItem.Text" xml:space="preserve">
+    <value>Rechercher des mises à jour</value>
+  </data>
+  <data name="readCrystalDataToolStripMenuItem.Text" xml:space="preserve">
+    <value>Charger la liste des cristaux (remplacer la liste actuelle)</value>
+  </data>
+  <data name="toolStripMenuItemDarkMode.Text" xml:space="preserve">
+    <value>Mode sombre</value>
+  </data>
+  <data name="helpToolStripMenuItem.Text" xml:space="preserve">
+    <value>Aide</value>
+  </data>
+  <data name="label7.Text" xml:space="preserve">
+    <value>Angles d'Euler</value>
+  </data>
+  <data name="exportAsCIFFormatToolStripMenuItem.Text" xml:space="preserve">
+    <value>Exporter en CIF</value>
+  </data>
+  <data name="buttonReset.Text" xml:space="preserve">
+    <value>Réinitialiser la rotation</value>
+  </data>
+  <data name="groupBoxProjectAlong.Text" xml:space="preserve">
+    <value>Vue selon</value>
+  </data>
+  <data name="groupBoxCurrentDirection.Text" xml:space="preserve">
+    <value>Orientation actuelle</value>
+  </data>
+  <data name="duplicateToolStripMenuItem.Text" xml:space="preserve">
+    <value>Dupliquer</value>
+  </data>
+  <data name="toolStripLabel1.Text" xml:space="preserve">
+    <value>Fonctions</value>
+  </data>
+  <data name="readCrystalDataAndAddToolStripMenuItem.Text" xml:space="preserve">
+    <value>Charger la liste des cristaux (ajouter à la liste actuelle)</value>
+  </data>
+  <data name="buttonClearAllCrystals.Text" xml:space="preserve">
+    <value>Effacer tous les cristaux</value>
+  </data>
+  <data name="languageToolStripMenuItem.Text" xml:space="preserve">
+    <value>Langue</value>
+  </data>
+  <data name="toolStripStatusLabel.Text" xml:space="preserve">
+    <value>Temps de calcul : </value>
+  </data>
+  <data name="checkBoxFixAxis.Text" xml:space="preserve">
+    <value>Fixer</value>
+  </data>
+  <data name="toolStripButtonDiffractionPoly.Text" xml:space="preserve">
+    <value> Diffraction
+ sur poudre</value>
+  </data>
+  <data name="toolStripButtonDiffractionSingle.Text" xml:space="preserve">
+    <value>  Simulateur de
+  diffraction</value>
+  </data>
+  <data name="toolStripButtonRotation.Text" xml:space="preserve">
+    <value>  Géométrie de
+  rotation</value>
+  </data>
+  <data name="label8.Text" xml:space="preserve">
+    <value>Commande de rotation</value>
+  </data>
+  <data name="toolStripMenuItemDisableTextRendering.Text" xml:space="preserve">
+    <value>Désactiver le rendu de texte OpenGL (redémarrage requis)</value>
+  </data>
+  <data name="powderDiffractionFunctionToolStripMenuItem.Text" xml:space="preserve">
+    <value>Fonction de diffraction sur poudre (en développement)</value>
+  </data>
+  <data name="deleteToolStripMenuItem.Text" xml:space="preserve">
+    <value>Supprimer</value>
+  </data>
+  <data name="toolStripMenuItemReadInitialCrystalList.Text" xml:space="preserve">
+    <value>Réinitialiser à la liste de cristaux initiale</value>
+  </data>
+  <data name="saveCrystalDataToolStripMenuItem.Text" xml:space="preserve">
+    <value>Enregistrer la liste des cristaux</value>
+  </data>
+  <data name="toolStripMenuItemUseMKL.Text" xml:space="preserve">
+    <value>Utiliser la bibliothèque MKL</value>
+  </data>
+  <data name="toolStripMenuItemIonicScattering.Text" xml:space="preserve">
+    <value>Utiliser les facteurs de diffusion ioniques</value>
+  </data>
+  <data name="toolStripMenuItem1.Text" xml:space="preserve">
+    <value>Effacer tous les cristaux</value>
+  </data>
+  <data name="toolStripMenuItemUseMillerBravais.Text" xml:space="preserve">
+    <value>Utiliser l'indice de Miller-Bravais (hkil)</value>
+  </data>
+  <data name="captureGUIToolStripMenuItem.Text" xml:space="preserve">
+    <value>Capturer les composants de l'interface...</value>
+  </data>
+  <data name="groupBoxCrystalInformation.Text" xml:space="preserve">
+    <value>Informations sur le cristal</value>
+  </data>
+  <data name="toolTipToolStripMenuItem.Text" xml:space="preserve">
+    <value>Afficher les info-bulles</value>
+  </data>
+  <data name="toolStripButtonTrajectorySimulator.Text" xml:space="preserve">
+    <value>  Simulateur de
+  trajectoire</value>
+  </data>
+  <data name="groupBoxArrows.Text" xml:space="preserve">
+    <value>Flèches</value>
+  </data>
+  <data name="buttonReplace.Text" xml:space="preserve">
+    <value>↑ Remplacer ↑</value>
+  </data>
+  <data name="buttonSetPlane.Text" xml:space="preserve">
+    <value>Plan</value>
+  </data>
+  <data name="readCrystalFromCIFOrAMCFileToolStripMenuItem.Text" xml:space="preserve">
+    <value>Importer un cristal depuis un fichier CIF ou AMC</value>
+  </data>
+  <data name="renameToolStripMenuItem.Text" xml:space="preserve">
+    <value>Renommer</value>
+  </data>
+  <data name="exitToolStripMenuItem.Text" xml:space="preserve">
+    <value>Quitter</value>
+  </data>
+  <data name="reportBugsRequestsOrCommentsToolStripMenuItem1.Text" xml:space="preserve">
+    <value>Signaler des bogues, demandes ou commentaires</value>
+  </data>
+  <data name="toolStripMenuItemDisableNative.Text" xml:space="preserve">
+    <value>Désactiver la bibliothèque Crystallography.Native (redémarrage requis)</value>
+  </data>
+  <data name="versionHistoryToolStripMenuItem.Text" xml:space="preserve">
+    <value>Historique des versions</value>
+  </data>
+  <data name="helpwebToolStripMenuItem.Text" xml:space="preserve">
+    <value>Aide (Web)</value>
+  </data>
+  <data name="toolStripButtonBeamInteraction.Text" xml:space="preserve">
+    <value>  Interaction
+  du faisceau</value>
+  </data>
+</root>

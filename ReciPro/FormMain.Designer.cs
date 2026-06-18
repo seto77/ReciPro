@@ -169,8 +169,8 @@
             toolStripSeparator17 = new System.Windows.Forms.ToolStripSeparator();
             helpwebToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             languageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            englishToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            japaneseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            // 260618Cl: 言語サブメニュー項目 (english/japanese/german) は Designer 固定をやめ、
+            //   FormMain.PopulateLanguageMenu() が SupportedCultures.All.Where(Released) から動的生成する。
             macroToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             editorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             toolStripSeparator22 = new System.Windows.Forms.ToolStripSeparator();
@@ -1239,21 +1239,11 @@
             resources.ApplyResources(languageToolStripMenuItem, "languageToolStripMenuItem");
             languageToolStripMenuItem.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             captureExtender.SetCapture(languageToolStripMenuItem, true);
-            languageToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { englishToolStripMenuItem, japaneseToolStripMenuItem });
             languageToolStripMenuItem.Name = "languageToolStripMenuItem";
-            // 
-            // englishToolStripMenuItem
-            // 
-            resources.ApplyResources(englishToolStripMenuItem, "englishToolStripMenuItem");
-            englishToolStripMenuItem.Name = "englishToolStripMenuItem";
-            englishToolStripMenuItem.Click += languageToolStripMenuItem_Click;
-            // 
-            // japaneseToolStripMenuItem
-            // 
-            resources.ApplyResources(japaneseToolStripMenuItem, "japaneseToolStripMenuItem");
-            japaneseToolStripMenuItem.Name = "japaneseToolStripMenuItem";
-            japaneseToolStripMenuItem.Click += languageToolStripMenuItem_Click;
-            // 
+            // 260618Cl: 言語サブメニュー項目は Designer 固定 (english/japanese/german) を廃止し、
+            //   FormMain.PopulateLanguageMenu() が SupportedCultures.All.Where(Released) から動的生成する
+            //   (旧 DropDownItems.AddRange / 各項目の ApplyResources・Tag・Click 配線はそちらへ移動)。
+            //
             // macroToolStripMenuItem
             // 
             resources.ApplyResources(macroToolStripMenuItem, "macroToolStripMenuItem");
@@ -1458,8 +1448,7 @@
         private System.Windows.Forms.GroupBox groupBoxCurrentDirection;
         private System.Windows.Forms.Panel panelArrowStep;
         private System.Windows.Forms.ToolStripMenuItem languageToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem englishToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem japaneseToolStripMenuItem;
+        // 260618Cl: english/japanese/german の各フィールドは廃止 (言語メニューは FormMain.PopulateLanguageMenu で動的生成)。
         public System.Windows.Forms.ToolStripButton toolStripButtonSpotIDv1;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.Label labelCurrentIndex;

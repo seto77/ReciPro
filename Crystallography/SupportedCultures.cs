@@ -51,7 +51,7 @@ public static class SupportedCultures
     {
         new("en",      "English",   "Segoe UI",              "en", true ),
         new("ja",      "日本語",     "Yu Gothic UI",          "ja", true ),
-        new("de",      "Deutsch",   "Segoe UI",              "en", false),
+        new("de",      "Deutsch",   "Segoe UI",              "en", true ), // 260618Cl: 翻訳 resx 整備済→言語メニューに追加(Released=true)
         new("fr",      "Français",  "Segoe UI",              "en", false),
         new("es",      "Español",   "Segoe UI",              "en", false),
         new("pt",      "Português", "Segoe UI",              "en", false),

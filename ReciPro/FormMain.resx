@@ -311,17 +311,6 @@ rotation defining the crystal orientation.</value>
   <data name="&gt;&gt;buttonClock.Parent" xml:space="preserve">
     <value>tableLayoutPanel2</value>
   </data>
-  <data name="englishToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABMAAAASCAYAAAC5DOVpAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAA
-        qAAAAKgBefSzxgAAAT9JREFUOE9jYAhq+Y8Lg8A1Bk04BgF0NSgYpMCmeiGmRFDLf/+OVf+fxlcSZRhY
-        DkxCAboCYgwDOeT7+WtgeQaYIhjQzp9JtGEgAJP7+/Xbf4abIlZgzvv561AMxWeYf/uq/z/vPUYRB8u1
-        rD78/9+/fxgSIJA0ZTOGYSAA4/96+BRFPQOyk28ruIAVvemaC1eAbhiYzagFlwcBlaypEK+jiGIB6Ibh
-        A+AIoBamrmGf1u/5jw8/cEyAK0aXQ8fwCIBFAgxcZ9f//8A+DmuYIfNRcg8sFcPA3+8/UBRjMwwEnkSV
-        gMUeOMSD+RixeY1JG6wAlD1AAFuijepfj6wFRQ5s2L8/f1AEjUvn4M0B6EHy0DUZLM9wg98MzPi4ajuK
-        YkKGgTAo9yADeEaHp2ISDEN3Jdib6JKkGgbC+XN3/gcA46WQ4mYS36cAAAAASUVORK5CYII=
-</value>
-  </data>
   <data name="toolStripButtonDiffractionSingle.ImageScaling" type="System.Windows.Forms.ToolStripItemImageScaling, System.Windows.Forms">
     <value>None</value>
   </data>
@@ -1580,9 +1569,6 @@ rotation defining the crystal orientation.</value>
   <data name="toolStripButtonDiffractionPoly.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleLeft</value>
   </data>
-  <data name="&gt;&gt;japaneseToolStripMenuItem.Name" xml:space="preserve">
-    <value>japaneseToolStripMenuItem</value>
-  </data>
   <data name="&gt;&gt;toolStrip1.Name" xml:space="preserve">
     <value>toolStrip1</value>
   </data>
@@ -1756,9 +1742,6 @@ normal points toward you (out of the screen).</value>
   <data name="buttonTopLeft.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
-  <data name="englishToolStripMenuItem.Text" xml:space="preserve">
-    <value>English (requires restart)</value>
-  </data>
   <data name="&gt;&gt;panel2.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
@@ -1829,9 +1812,6 @@ normal points toward you (out of the screen).</value>
   </data>
   <data name="&gt;&gt;numericBoxMaxUVW.Name" xml:space="preserve">
     <value>numericBoxMaxUVW</value>
-  </data>
-  <data name="englishToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>236, 26</value>
   </data>
   <data name="&gt;&gt;toolStripButtonImageSimulator.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -2219,9 +2199,6 @@ edit to set the orientation directly.</value>
   </data>
   <data name="&gt;&gt;indexControlAxis.ZOrder" xml:space="preserve">
     <value>2</value>
-  </data>
-  <data name="japaneseToolStripMenuItem.Text" xml:space="preserve">
-    <value>Japanese (requires restart)</value>
   </data>
   <data name="buttonSetAxis.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 0</value>
@@ -3103,14 +3080,6 @@ points toward you (out of the screen).</value>
   <data name="&gt;&gt;label6.Name" xml:space="preserve">
     <value>label6</value>
   </data>
-  <data name="japaneseToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABMAAAASCAYAAAC5DOVpAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAA
-        qAAAAKgBefSzxgAAAG5JREFUOE/tjMENgDAMA/Poo8N0sM7QETp0g4pUBI5DQfCDk/xx4hN9EcHiCb9M
-        VUNQFTnmBP+KkgtCfsnZCjAEpyVjDMFpyRhDcFoyxhB425od71MrLla4rFOKlfTEiJ8bvmyQ0lQymMtu
-        8BHZAo1V0r8sVkWOAAAAAElFTkSuQmCC
-</value>
-  </data>
   <data name="buttonUp.Size" type="System.Drawing.Size, System.Drawing">
     <value>34, 27</value>
   </data>
@@ -3119,9 +3088,6 @@ points toward you (out of the screen).</value>
   </data>
   <data name="toolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
     <value>304, 22</value>
-  </data>
-  <data name="&gt;&gt;englishToolStripMenuItem.Name" xml:space="preserve">
-    <value>englishToolStripMenuItem</value>
   </data>
   <data name="buttonTopLeft.Text" xml:space="preserve">
     <value>↖</value>
@@ -3560,9 +3526,6 @@ calculations instead of neutral atoms. Off = neutral-atom IAM (default).</value>
   <data name="toolStripSeparator14.Size" type="System.Drawing.Size, System.Drawing">
     <value>116, 6</value>
   </data>
-  <data name="japaneseToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>236, 26</value>
-  </data>
   <data name="&gt;&gt;buttonReset.Name" xml:space="preserve">
     <value>buttonReset</value>
   </data>
@@ -3574,9 +3537,6 @@ calculations instead of neutral atoms. Off = neutral-atom IAM (default).</value>
   </data>
   <data name="checkBoxFixePlane.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 2, 0, 0</value>
-  </data>
-  <data name="&gt;&gt;englishToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="labelLaTex1.Text" xml:space="preserve">
     <value>\Theta</value>
@@ -4512,9 +4472,6 @@ patterns from crystal orientation.</value>
   </data>
   <data name="&gt;&gt;toolStripSeparator6.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;japaneseToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;buttonTopLeft.Name" xml:space="preserve">
     <value>buttonTopLeft</value>

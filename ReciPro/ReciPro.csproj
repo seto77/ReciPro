@@ -4,8 +4,8 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>net10.0-windows</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
-    <AssemblyVersion>2026.6.8.0716</AssemblyVersion>
-    <FileVersion>2026.6.8.0716</FileVersion>
+    <AssemblyVersion>2026.6.18.1149</AssemblyVersion>
+    <FileVersion>2026.6.18.1149</FileVersion>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <ApplicationIcon>App.ico</ApplicationIcon>
@@ -231,14 +231,11 @@
   <!-- 260611Cl 追加: Crystallography.Native (vcxproj 成果物, generic/NEON 1本) を arm64 publish に注入 (方針 §3.7)。
        現行 x64 は release.yml が bin\Release\ から後コピーする方式のため publish 単独では native が入らないが、
        arm64 はこのターゲットで「ローカル dotnet publish -r win-arm64 単独で完全な出力」を保証する。欠落時は Error で落とす -->
-  <Target Name="AddArm64CrystallographyNativeToPublish"
-          BeforeTargets="ComputeFilesToPublish"
-          Condition="'$(RuntimeIdentifier)' == 'win-arm64'">
+  <Target Name="AddArm64CrystallographyNativeToPublish" BeforeTargets="ComputeFilesToPublish" Condition="'$(RuntimeIdentifier)' == 'win-arm64'">
     <PropertyGroup>
       <Arm64NativeOut>$(MSBuildProjectDirectory)\bin\Release\ARM64\Crystallography.Native.dll</Arm64NativeOut>
     </PropertyGroup>
-    <Error Condition="!Exists('$(Arm64NativeOut)')"
-           Text="Crystallography.Native.dll (ARM64) not found at $(Arm64NativeOut). Build Crystallography.Native with Release|ARM64 first (devenv ReciPro.sln /Build &quot;Release|ARM64&quot; /Project Crystallography.Native)." />
+    <Error Condition="!Exists('$(Arm64NativeOut)')" Text="Crystallography.Native.dll (ARM64) not found at $(Arm64NativeOut). Build Crystallography.Native with Release|ARM64 first (devenv ReciPro.sln /Build &quot;Release|ARM64&quot; /Project Crystallography.Native)." />
     <ItemGroup>
       <ResolvedFileToPublish Include="$(Arm64NativeOut)">
         <RelativePath>Crystallography.Native.dll</RelativePath>
@@ -254,16 +251,12 @@
   <!-- 260611Cl 追加: build 出力 (bin\ARM64\Release\) にも native をコピーする。publish 内部の build が生成する
        この中間出力は self-contained 構成で起動可能に見えるため、UNC 実機テストで publish フォルダと取り違えると
        native 欠落で黙殺フォールバックになる (260611 Surface 検証で実際に発生)。欠落時は警告のみ (publish 側は Error) -->
-  <Target Name="CopyArm64CrystallographyNativeToBuildOutput"
-          AfterTargets="Build"
-          Condition="'$(RuntimeIdentifier)' == 'win-arm64'">
+  <Target Name="CopyArm64CrystallographyNativeToBuildOutput" AfterTargets="Build" Condition="'$(RuntimeIdentifier)' == 'win-arm64'">
     <PropertyGroup>
       <Arm64NativeSrc>$(MSBuildProjectDirectory)\bin\Release\ARM64\Crystallography.Native.dll</Arm64NativeSrc>
     </PropertyGroup>
-    <Copy SourceFiles="$(Arm64NativeSrc)" DestinationFolder="$(OutDir)" SkipUnchangedFiles="true"
-          Condition="Exists('$(Arm64NativeSrc)')" />
-    <Warning Condition="!Exists('$(Arm64NativeSrc)')"
-             Text="Crystallography.Native.dll (ARM64) not found at $(Arm64NativeSrc) - build Crystallography.Native Release|ARM64 first." />
+    <Copy SourceFiles="$(Arm64NativeSrc)" DestinationFolder="$(OutDir)" SkipUnchangedFiles="true" Condition="Exists('$(Arm64NativeSrc)')" />
+    <Warning Condition="!Exists('$(Arm64NativeSrc)')" Text="Crystallography.Native.dll (ARM64) not found at $(Arm64NativeSrc) - build Crystallography.Native Release|ARM64 first." />
   </Target>
 
 </Project>

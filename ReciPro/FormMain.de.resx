@@ -137,9 +137,6 @@
   <data name="toolStripMenuItemDarkMode.Text" xml:space="preserve">
     <value>Dunkler Modus</value>
   </data>
-  <data name="englishToolStripMenuItem.Text" xml:space="preserve">
-    <value>Englisch (Neustart erforderlich)</value>
-  </data>
   <data name="helpToolStripMenuItem.Text" xml:space="preserve">
     <value>Hilfe</value>
   </data>
@@ -157,9 +154,6 @@
   </data>
   <data name="groupBoxCurrentDirection.Text" xml:space="preserve">
     <value>Aktuelle Orientierung</value>
-  </data>
-  <data name="japaneseToolStripMenuItem.Text" xml:space="preserve">
-    <value>Japanisch (Neustart erforderlich)</value>
   </data>
   <data name="duplicateToolStripMenuItem.Text" xml:space="preserve">
     <value>Duplizieren</value>

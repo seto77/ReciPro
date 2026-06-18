@@ -99,12 +99,22 @@ namespace Crystallography.Controls
 
             if (control is DataGridView dgv)
             {
+                // 260618Cl 拡充: フォント family 差替を DataGridView の全 CellStyle 経路へ広げる
+                //   (多言語化: CJK で Segoe UI のまま残ると Han グリフが font-linking で不揃いになるため)。
+                //   各 getter は null のとき空スタイルを遅延生成するが、Apply は Font==null を素通しするので無害。
                 Apply(dgv.ColumnHeadersDefaultCellStyle);
                 Apply(dgv.RowHeadersDefaultCellStyle);
                 Apply(dgv.DefaultCellStyle);
+                Apply(dgv.RowsDefaultCellStyle);              // 260618Cl 追加
+                Apply(dgv.AlternatingRowsDefaultCellStyle);   // 260618Cl 追加
+                Apply(dgv.RowTemplate.DefaultCellStyle);      // 260618Cl 追加
                 foreach (DataGridViewColumn col in dgv.Columns)
+                {
                     if (col.HasDefaultCellStyle)
                         Apply(col.DefaultCellStyle);
+                    if (col.HeaderCell != null)
+                        Apply(col.HeaderCell.Style);          // 260618Cl 追加: 列見出しセルの個別スタイル
+                }
             }
             else if (control is ToolStrip ts) // MenuStrip / StatusStrip / ContextMenuStrip を含む
             {
@@ -133,6 +143,10 @@ namespace Crystallography.Controls
             var mapped = Resolve(item.Font);
             if (!ReferenceEquals(mapped, item.Font))
                 item.Font = mapped;
+            // 260618Cl 追加: ToolStripComboBox / ToolStripTextBox 等のホストされた実コントロールにも適用する
+            //   (item.Font だけでは内側の ComboBox/TextBox の描画フォントが変わらないため)。
+            if (item is ToolStripControlHost host && host.Control != null)
+                Apply(host.Control);
             if (item is ToolStripDropDownItem dd)
                 foreach (ToolStripItem sub in dd.DropDownItems)
                     Apply(sub);

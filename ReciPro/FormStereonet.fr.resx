@@ -1,0 +1,297 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 260617Cl: 多言語化 Phase1/3 (fr) text-only リソース。レイアウト(Size/Location/Font)は neutral へフォールバック。結晶学/電子回折用語は IUCr Online Dictionary 準拠。 -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Stéréonet</value>
+  </data>
+  <data name="fileToolStripMenuItem.Text" xml:space="preserve">
+    <value>Fichier</value>
+  </data>
+  <data name="asBitmapToolStripMenuItem.Text" xml:space="preserve">
+    <value>Comme image</value>
+  </data>
+  <data name="asImageToolStripMenuItem.Text" xml:space="preserve">
+    <value>comme image (format PNG)</value>
+  </data>
+  <data name="asMetafileToolStripMenuItem.Text" xml:space="preserve">
+    <value>comme métafichier (EMF)</value>
+  </data>
+  <data name="asMetafileToolStripMenuItem1.Text" xml:space="preserve">
+    <value>comme métafichier (EMF)</value>
+  </data>
+  <data name="saveImageToolStripMenuItem.Text" xml:space="preserve">
+    <value>Enregistrer l'image</value>
+  </data>
+  <data name="pageSetupToolStripMenuItem.Text" xml:space="preserve">
+    <value>Mise en page</value>
+  </data>
+  <data name="printPreviewToolStripMenuItem.Text" xml:space="preserve">
+    <value>Aperçu avant impression</value>
+  </data>
+  <data name="printToolStripMenuItem.Text" xml:space="preserve">
+    <value>Imprimer</value>
+  </data>
+  <data name="toolStripMenuItem1.Text" xml:space="preserve">
+    <value>Copier dans le presse-papiers</value>
+  </data>
+  <data name="toolStripMenuItem2.Text" xml:space="preserve">
+    <value>Enregistrer la vidéo</value>
+  </data>
+  <data name="toolStripMenuItemSaveMovieStereonet.Text" xml:space="preserve">
+    <value>Stéréonet</value>
+  </data>
+  <data name="groupBoxProjectionObject.Text" xml:space="preserve">
+    <value>Objet de projection</value>
+  </data>
+  <data name="groupBoxProjectionScheme.Text" xml:space="preserve">
+    <value>Type de projection</value>
+  </data>
+  <data name="groupBoxSphere.Text" xml:space="preserve">
+    <value>Sphère</value>
+  </data>
+  <data name="radioButtonWulff.Text" xml:space="preserve">
+    <value>Équiangle</value>
+  </data>
+  <data name="radioButtonSchmidt.Text" xml:space="preserve">
+    <value>Équiaire</value>
+  </data>
+  <data name="radioButtonUpperSphere.Text" xml:space="preserve">
+    <value>Supérieure</value>
+  </data>
+  <data name="radioButtonLowerSphere.Text" xml:space="preserve">
+    <value>Inférieure</value>
+  </data>
+  <data name="radioButtonPlanes.Text" xml:space="preserve">
+    <value>Plans</value>
+  </data>
+  <data name="groupBoxOutline.Text" xml:space="preserve">
+    <value>Contour</value>
+  </data>
+  <data name="radioButtonOutlinePole.Text" xml:space="preserve">
+    <value>Pôle</value>
+  </data>
+  <data name="radioButtonOutlineEquator.Text" xml:space="preserve">
+    <value>Équateur</value>
+  </data>
+  <data name="checkBoxDisplay3D.Text" xml:space="preserve">
+    <value>Vue 3D</value>
+  </data>
+  <data name="checkBox3dOptionStereonet.Text" xml:space="preserve">
+    <value>Stéréonet</value>
+  </data>
+  <data name="checkBox3dOptionSemisphere.Text" xml:space="preserve">
+    <value>Hémisphère</value>
+  </data>
+  <data name="checkBox3dOptionSphere.Text" xml:space="preserve">
+    <value>Contour de 
+la sphère</value>
+  </data>
+  <data name="checkBox3dOptionProjectionLine.Text" xml:space="preserve">
+    <value>Lignes de 
+projection</value>
+  </data>
+  <data name="checkBox3dOptionLabel.Text" xml:space="preserve">
+    <value>Étiquette</value>
+  </data>
+  <data name="label29.Text" xml:space="preserve">
+    <value>Estompage en profondeur</value>
+  </data>
+  <data name="button3D_reset.Text" xml:space="preserve">
+    <value>Réinitialiser</value>
+  </data>
+  <data name="tabPage1.Text" xml:space="preserve">
+    <value>Apparence</value>
+  </data>
+  <data name="tabPage2.Text" xml:space="preserve">
+    <value>Grand cercle</value>
+  </data>
+  <data name="tabPage4.Text" xml:space="preserve">
+    <value>Onde</value>
+  </data>
+  <data name="groupBox1.Text" xml:space="preserve">
+    <value>Étiquettes d'indices</value>
+  </data>
+  <data name="checkBoxShowIndexLabels.Text" xml:space="preserve">
+    <value>Tracer les étiquettes d'indices</value>
+  </data>
+  <data name="checkBoxSpecifyLabelColor.Text" xml:space="preserve">
+    <value>Choisir la couleur</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Taille</value>
+  </data>
+  <data name="label6.Text" xml:space="preserve">
+    <value>Taille</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>Largeur de ligne</value>
+  </data>
+  <data name="label5.Text" xml:space="preserve">
+    <value>Largeur de ligne</value>
+  </data>
+  <data name="label8.Text" xml:space="preserve">
+    <value>Taille des points</value>
+  </data>
+  <data name="label7.Text" xml:space="preserve">
+    <value>Séparateur</value>
+  </data>
+  <data name="radioButtonDelimiterComma.Text" xml:space="preserve">
+    <value>Virgule</value>
+  </data>
+  <data name="radioButtonDelimiterSpace.Text" xml:space="preserve">
+    <value>Espace</value>
+  </data>
+  <data name="radioButtonDelimiterNone.Text" xml:space="preserve">
+    <value>Aucun</value>
+  </data>
+  <data name="checkBox1DegLine.Text" xml:space="preserve">
+    <value>Lignes à 1°</value>
+  </data>
+  <data name="checkBoxIncludingEquivalentPlanes.Text" xml:space="preserve">
+    <value>Inclure les indices équivalents</value>
+  </data>
+  <data name="buttonAddIndex.Text" xml:space="preserve">
+    <value>Ajouter</value>
+  </data>
+  <data name="buttonRemoveIndex.Text" xml:space="preserve">
+    <value>Supprimer</value>
+  </data>
+  <data name="buttonAddCircle.Text" xml:space="preserve">
+    <value>Ajouter</value>
+  </data>
+  <data name="buttonDeleteCircle.Text" xml:space="preserve">
+    <value>Supprimer</value>
+  </data>
+  <data name="radioButtonSpecifiedIndices.Text" xml:space="preserve">
+    <value>Spécifiés</value>
+  </data>
+  <data name="radioButtonRange.Text" xml:space="preserve">
+    <value>Plage</value>
+  </data>
+  <data name="radioButtonCircleByAxis.Text" xml:space="preserve">
+    <value>Indice d'axe de zone</value>
+  </data>
+  <data name="radioButtonCircleByPlanes.Text" xml:space="preserve">
+    <value>Zone définie 
+par deux plans</value>
+  </data>
+  <data name="checkBoxRotateColor.Text" xml:space="preserve">
+    <value>Rotation des couleurs</value>
+  </data>
+  <data name="colorControlIndex.HeaderText" xml:space="preserve">
+    <value>Couleur</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Axe de zone / Plan réticulaire : </value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>Inclinaison X/Y :</value>
+  </data>
+  <data name="groupBoxColor.Text" xml:space="preserve">
+    <value>Mode lignes de Kikuchi</value>
+  </data>
+  <data name="radioButtonKikuchiLinePairs.Text" xml:space="preserve">
+    <value>Paires de lignes de Kikuchi</value>
+  </data>
+  <data name="radioButtonHighStructureFactor.Text" xml:space="preserve">
+    <value>Facteur de structure</value>
+  </data>
+  <data name="numericBoxHighStructureFactor.HeaderText" xml:space="preserve">
+    <value>Max.</value>
+  </data>
+  <data name="checkBoxReflectStructureFactor.Text" xml:space="preserve">
+    <value>Appliquer les facteurs de structure
+à l'intensité</value>
+  </data>
+  <data name="checkBoxAnomalousDispersion.Text" xml:space="preserve">
+    <value>Dispersion anomale</value>
+  </data>
+  <data name="buttonYusaModeStop.Text" xml:space="preserve">
+    <value>Arrêter</value>
+  </data>
+  <data name="label25.Text" xml:space="preserve">
+    <value>vitesse du moteur</value>
+  </data>
+  <data name="numericBoxRySpeed.HeaderText" xml:space="preserve">
+    <value>vitesse du moteur</value>
+  </data>
+  <data name="numericBoxRzSpeed.HeaderText" xml:space="preserve">
+    <value>vitesse du moteur</value>
+  </data>
+  <data name="numericBoxRyStep.HeaderText" xml:space="preserve">
+    <value>pas</value>
+  </data>
+  <data name="numericBoxTotalTime.HeaderText" xml:space="preserve">
+    <value>temps total</value>
+  </data>
+  <data name="numericBoxAngularSpeed.HeaderText" xml:space="preserve">
+    <value>vitesse angulaire </value>
+  </data>
+  <data name="numericBoxRadialAngle.HeaderText" xml:space="preserve">
+    <value>angle radial</value>
+  </data>
+  <data name="radioButtonRotationalScan.Text" xml:space="preserve">
+    <value>θ^2 + ω^2 = constante (balayage rotatif)</value>
+  </data>
+  <data name="radioButtonZigzagScan.Text" xml:space="preserve">
+    <value>+θ &gt; +ω &gt; -θ &gt; +ω .... (balayage en zigzag)</value>
+  </data>
+</root>

@@ -189,7 +189,10 @@ public partial class FormMain : FormBase
     //260421Cl 追加: 面 (hkl) を 3 指数 / 4 指数どちらで表示するかを useMB で切替えるヘルパー。
     public static string PlaneString(int h, int k, int l, bool useMB, string sep = " ")
         => useMB ? $"{h}{sep}{k}{sep}{-(h + k)}{sep}{l}" : $"{h}{sep}{k}{sep}{l}";
-    public static Languages Language => Thread.CurrentThread.CurrentUICulture.Name == "en" ? Languages.English : Languages.Japanese;
+    //260618Cl 変更: 二値 (非en→Japanese) から「ja のみ Japanese・他は English fallback」へ (多言語化 §11.4 step5)。
+    //  旧式だと新言語 (de/fr/…) で Macro サンプル等が日本語側へ落ちてしまうため、英語をフォールバックにする。
+    //旧: public static Languages Language => Thread.CurrentThread.CurrentUICulture.Name == "en" ? Languages.English : Languages.Japanese;
+    public static Languages Language => Thread.CurrentThread.CurrentUICulture.Name == "ja" ? Languages.Japanese : Languages.English;
     // 260519Cl 変更: NumericUpDown → NumericBox に伴い RadianValue で簡略化
     //public double Phi { get => (double)numericUpDownEulerPhi.Value / 180.0 * Math.PI; set => numericUpDownEulerPhi.Value = (decimal)(value / Math.PI * 180.0); }
     //public double Theta { get => (double)numericUpDownEulerTheta.Value / 180.0 * Math.PI; set => numericUpDownEulerTheta.Value = (decimal)(value / Math.PI * 180.0); }
@@ -362,10 +365,11 @@ public partial class FormMain : FormBase
 
         Crystallography.Controls.FormCaptureGUI.InstallShortcutFilter(); // 260323Cl 追加: Ctrl+Shift+Alt+C ショートカット
 
-        // 260617Cl 変更: 二値 ja/en 判定から SupportedCultures.Current 駆動へ (Phase 0)。
-        //   新言語の言語メニュー項目を Designer で追加する際は、その Tag に CultureInfo 名 (例 "de") を設定すれば
-        //   下の languageToolStripMenuItem_Click ハンドラおよびここのチェック更新と整合する。
+        // 260617Cl 変更 / 260618Cl: 二値 ja/en 判定から SupportedCultures 駆動へ。言語メニュー項目を
+        //   Designer 固定でなく PopulateLanguageMenu で動的生成し、その後に現在カルチャのチェックを付ける
+        //   (多言語化 §11.4 step6: 言語を増やすときは SupportedCultures.cs で Released=true にするだけ)。
         // 旧: englishToolStripMenuItem.Checked = ...Name != "ja"; japaneseToolStripMenuItem.Checked = ...Name == "ja";
+        PopulateLanguageMenu(); // 260618Cl 追加
         UpdateLanguageMenuChecks(Crystallography.SupportedCultures.Current.Name);
 
         // 260428Cl 追加: ダークモード設定の復元 (CheckedChanged で書込が走らないようハンドラを一旦外す)。
@@ -1704,8 +1708,26 @@ public partial class FormMain : FormBase
                 mi.Checked = LanguageMenuItemCulture(mi) == currentName;
     }
 
-    // 260617Cl 追加: 言語メニュー項目が表すカルチャ名。Tag (CultureInfo 名) を優先し、未設定の既存項目は Name から
-    //   english/japanese を後方互換で解決する。新言語は Designer 項目の Tag に "de" 等を設定すれば自動追従する。
+    // 260618Cl 追加: 言語メニュー項目を中央 allow-list (SupportedCultures) から動的生成する (多言語化 §11.4 step6)。
+    //   Released=true の言語だけを各々の自言語表記 (NativeName) で並べ、Tag に CultureInfo 名を入れて
+    //   既存の Tag 駆動の切替 (languageToolStripMenuItem_Click) / チェック更新 (UpdateLanguageMenuChecks) に乗せる。
+    //   → 言語を増やすときは SupportedCultures.cs で Released=true にするだけでメニューに出る (Designer 編集不要)。
+    //   切替は再起動方式 (CurrentUICulture を更新するのみ) なので各項目に再起動の注記を付す。
+    private void PopulateLanguageMenu()
+    {
+        languageToolStripMenuItem.DropDownItems.Clear();
+        foreach (var c in Crystallography.SupportedCultures.All)
+        {
+            if (!c.Released)
+                continue;
+            var item = new ToolStripMenuItem($"{c.NativeName} (requires restart)") { Tag = c.Name, Name = c.Name + "ToolStripMenuItem" };
+            item.Click += languageToolStripMenuItem_Click;
+            languageToolStripMenuItem.DropDownItems.Add(item);
+        }
+    }
+
+    // 260617Cl 追加 / 260618Cl: 言語メニュー項目が表すカルチャ名。PopulateLanguageMenu が生成する項目は
+    //   Tag (CultureInfo 名) を必ず持つ。Name からの english/japanese 解決は旧 Designer 項目向けの後方互換。
     private static string LanguageMenuItemCulture(ToolStripMenuItem item)
         => (item.Tag as string) ?? (item.Name.Contains("english") ? "en" : item.Name.Contains("japanese") ? "ja" : null);
     private void githubPageToolStripMenuItem_Click(object sender, EventArgs e)
