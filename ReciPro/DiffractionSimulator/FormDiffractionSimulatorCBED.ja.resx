@@ -17,15 +17,6 @@
     <resheader name="version">2.0</resheader>
     <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
     <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
-    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
-    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
-    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
-        <value>[base64 mime encoded serialized .NET Framework object]</value>
-    </data>
-    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
-        <comment>This is a comment</comment>
-    </data>
 
     There are any number of "resheader" rows that contain simple
     name/value pairs.
@@ -124,302 +115,84 @@
     <value>CBEDシミュレーションを実行</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="checkBoxDrawGuideCircles.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="checkBoxDrawGuideCircles.Location" type="System.Drawing.Point, System.Drawing">
-    <value>128, 2</value>
-  </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="checkBoxDrawGuideCircles.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="checkBoxDrawGuideCircles.Size" type="System.Drawing.Size, System.Drawing">
-    <value>142, 21</value>
-  </data>
   <data name="checkBoxDrawGuideCircles.Text" xml:space="preserve">
     <value>ディスクの輪郭を描画 </value>
   </data>
   <data name="checkBoxDrawGuideCircles.ToolTip" xml:space="preserve">
     <value>各回折ディスクの境界を示す円を描画</value>
   </data>
-  <data name="groupBoxInputParameters.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt, style=Bold</value>
-  </data>
   <data name="groupBoxInputParameters.Text" xml:space="preserve">
     <value>入力パラメータ</value>
-  </data>
-  <data name="flowLayoutPanel6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>378, 106</value>
-  </data>
-  <data name="flowLayoutPanel5.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 2, 0, 0</value>
-  </data>
-  <data name="flowLayoutPanel5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>270, 23</value>
-  </data>
-  <data name="radioButtonCBED.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 2</value>
-  </data>
-  <data name="radioButtonCBED.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
   </data>
   <data name="radioButtonCBED.ToolTip" xml:space="preserve">
     <value>CBED（収束電子回折）モード：各 Bragg
 反射をディスクとして描き、入射ビーム傾斜に
 応じたディスク内強度分布を計算します。</value>
   </data>
-  <data name="radioButtonLACBED.Location" type="System.Drawing.Point, System.Drawing">
-    <value>57, 2</value>
-  </data>
-  <data name="radioButtonLACBED.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
   <data name="radioButtonLACBED.ToolTip" xml:space="preserve">
     <value>LACBED（大角度収束電子回折）モード：より広い収束角を
 使い、1つの反射を広い角度範囲にわたって記録します。</value>
   </data>
-  <data name="flowLayoutPanel4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 27</value>
-  </data>
-  <data name="flowLayoutPanel4.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 3, 0, 0</value>
-  </data>
-  <data name="flowLayoutPanel4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>360, 25</value>
-  </data>
-  <data name="numericBoxMaxNumOfG.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
   <data name="numericBoxMaxNumOfG.HeaderText" xml:space="preserve">
     <value>回折波の数</value>
-  </data>
-  <data name="numericBoxMaxNumOfG.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 3</value>
-  </data>
-  <data name="numericBoxMaxNumOfG.Size" type="System.Drawing.Size, System.Drawing">
-    <value>159, 22</value>
   </data>
   <data name="numericBoxMaxNumOfG.ToolTip" xml:space="preserve">
     <value>動力学的な多重散乱計算に含める回折波（Bloch
 波）の本数 (1〜2048) を設定します。多いほど
 精度は上がりますが計算は遅くなります。</value>
   </data>
-  <data name="numericBoxAlphaMax.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="numericBoxAlphaMax.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 5, 0, 0</value>
-  </data>
   <data name="numericBoxAlphaMax.HeaderText" xml:space="preserve">
     <value>収束電子の半頂角</value>
   </data>
-  <data name="numericBoxAlphaMax.Location" type="System.Drawing.Point, System.Drawing">
-    <value>163, 3</value>
-  </data>
-  <data name="numericBoxAlphaMax.Size" type="System.Drawing.Size, System.Drawing">
-    <value>197, 22</value>
-  </data>
-  <data name="flowLayoutPanel3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 54</value>
-  </data>
-  <data name="flowLayoutPanel3.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 3, 0, 0</value>
-  </data>
-  <data name="flowLayoutPanel3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>335, 25</value>
-  </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="numericBoxDiskResolution.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="numericBoxDiskResolution.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="numericBoxDiskResolution.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 5, 0, 0</value>
-  </data>
   <data name="numericBoxDiskResolution.HeaderText" xml:space="preserve">
     <value>ディスクの解像度</value>
-  </data>
-  <data name="numericBoxDiskResolution.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 3</value>
-  </data>
-  <data name="numericBoxDiskResolution.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 1, 0</value>
-  </data>
-  <data name="numericBoxDiskResolution.Size" type="System.Drawing.Size, System.Drawing">
-    <value>227, 22</value>
   </data>
   <data name="numericBoxDiskResolution.ToolTip" xml:space="preserve">
     <value>各ディスクを横切る 1 画素あたりの角度刻み (mrad/pixel)
 を設定します。小さいほど右に表示される直径方向の
 分割数が増え、精細になりますが計算は遅くなります。</value>
   </data>
-  <data name="flowLayoutPanel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>227, 3</value>
-  </data>
-  <data name="flowLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>108, 19</value>
-  </data>
-  <data name="label2.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 4</value>
-  </data>
-  <data name="label2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 4, 0, 0</value>
-  </data>
-  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>71, 15</value>
-  </data>
   <data name="label2.Text" xml:space="preserve">
     <value>総ピクセル数:</value>
-  </data>
-  <data name="labelDivisionNumber.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="labelDivisionNumber.Location" type="System.Drawing.Point, System.Drawing">
-    <value>71, 4</value>
-  </data>
-  <data name="labelDivisionNumber.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 4, 0, 0</value>
-  </data>
-  <data name="labelDivisionNumber.Size" type="System.Drawing.Size, System.Drawing">
-    <value>37, 15</value>
-  </data>
-  <data name="flowLayoutPanel2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 81</value>
-  </data>
-  <data name="flowLayoutPanel2.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 3, 0, 0</value>
-  </data>
-  <data name="flowLayoutPanel2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>372, 25</value>
-  </data>
-  <data name="numericBoxWholeThicknessStart.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="numericBoxWholeThicknessStart.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 5, 0, 0</value>
   </data>
   <data name="numericBoxWholeThicknessStart.FooterText" xml:space="preserve">
     <value>nm</value>
   </data>
-  <data name="numericBoxWholeThicknessStart.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="numericBoxWholeThicknessStart.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 5, 0, 0</value>
-  </data>
   <data name="numericBoxWholeThicknessStart.HeaderText" xml:space="preserve">
     <value>試料厚み</value>
-  </data>
-  <data name="numericBoxWholeThicknessStart.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 3</value>
-  </data>
-  <data name="numericBoxWholeThicknessStart.Size" type="System.Drawing.Size, System.Drawing">
-    <value>133, 22</value>
   </data>
   <data name="numericBoxWholeThicknessStart.ToolTip" xml:space="preserve">
     <value>試料の厚さの範囲とステップを設定</value>
   </data>
-  <data name="numericBoxWholeThicknessStart.ToolTip1" xml:space="preserve">
-    <value>試料の厚さの範囲とステップを設定</value>
-  </data>
-  <data name="numericBoxThicknessEnd.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="numericBoxThicknessEnd.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 5, 0, 0</value>
-  </data>
   <data name="numericBoxThicknessEnd.FooterText" xml:space="preserve">
     <value>nmまで</value>
-  </data>
-  <data name="numericBoxThicknessEnd.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="numericBoxThicknessEnd.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 5, 0, 0</value>
   </data>
   <data name="numericBoxThicknessEnd.HeaderText" xml:space="preserve">
     <value>から</value>
   </data>
-  <data name="numericBoxThicknessEnd.Location" type="System.Drawing.Point, System.Drawing">
-    <value>133, 3</value>
-  </data>
-  <data name="numericBoxThicknessEnd.Size" type="System.Drawing.Size, System.Drawing">
-    <value>132, 22</value>
-  </data>
   <data name="numericBoxThicknessEnd.ToolTip" xml:space="preserve">
     <value>試料の厚さの範囲とステップを設定</value>
-  </data>
-  <data name="numericBoxThicknessEnd.ToolTip1" xml:space="preserve">
-    <value>試料の厚さの範囲とステップを設定</value>
-  </data>
-  <data name="numericBoxThicknessStep.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="numericBoxThicknessStep.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 5, 0, 0</value>
   </data>
   <data name="numericBoxThicknessStep.FooterText" xml:space="preserve">
     <value>nm 刻み</value>
   </data>
-  <data name="numericBoxThicknessStep.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="numericBoxThicknessStep.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 5, 0, 0</value>
-  </data>
   <data name="numericBoxThicknessStep.HeaderText" xml:space="preserve">
     <value />
   </data>
-  <data name="numericBoxThicknessStep.Location" type="System.Drawing.Point, System.Drawing">
-    <value>265, 3</value>
-  </data>
-  <data name="numericBoxThicknessStep.Size" type="System.Drawing.Size, System.Drawing">
-    <value>107, 22</value>
-  </data>
   <data name="numericBoxThicknessStep.ToolTip" xml:space="preserve">
     <value>試料の厚さの範囲とステップを設定</value>
-  </data>
-  <data name="numericBoxThicknessStep.ToolTip1" xml:space="preserve">
-    <value>試料の厚さの範囲とステップを設定</value>
-  </data>
-  <data name="comboBoxSolver.Size" type="System.Drawing.Size, System.Drawing">
-    <value>153, 21</value>
   </data>
   <data name="comboBoxSolver.ToolTip" xml:space="preserve">
     <value>Bloch 波方程式の解き方（固有値問題/行列指数、
 Eigen/MKL ライブラリ）を選択します。結果は同じになる
 想定ですが速度が異なります。通常は Auto を使います。</value>
   </data>
-  <data name="numericBoxThread.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 2, 0, 0</value>
-  </data>
-  <data name="numericBoxThread.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="numericBoxThread.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 2, 0, 0</value>
-  </data>
   <data name="numericBoxThread.HeaderText" xml:space="preserve">
     <value>スレッド</value>
   </data>
-  <data name="numericBoxThread.Location" type="System.Drawing.Point, System.Drawing">
-    <value>283, 28</value>
-  </data>
-  <data name="numericBoxThread.Size" type="System.Drawing.Size, System.Drawing">
-    <value>87, 22</value>
-  </data>
   <data name="numericBoxThread.ToolTip" xml:space="preserve">
-    <value>CBED（収束電子回折）の Bloch 波計算に
-使う CPU スレッド数 (1〜128) を設定しま
-す。Solver が Auto のときは無効です。</value>
-  </data>
-  <data name="numericBoxThread.ToolTip1" xml:space="preserve">
     <value>CBED（収束電子回折）の Bloch 波計算に
 使う CPU スレッド数 (1〜128) を設定しま
 す。Solver が Auto のときは無効です。</value>
@@ -430,137 +203,50 @@ Eigen/MKL ライブラリ）を選択します。結果は同じになる
   <data name="buttonStop.ToolTip" xml:space="preserve">
     <value>現在のシミュレーションを停止</value>
   </data>
-  <data name="label13.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="label13.Location" type="System.Drawing.Point, System.Drawing">
-    <value>86, 29</value>
-  </data>
-  <data name="label13.Size" type="System.Drawing.Size, System.Drawing">
-    <value>39, 17</value>
-  </data>
   <data name="label13.Text" xml:space="preserve">
     <value>ソルバ</value>
-  </data>
-  <data name="groupBoxOutput.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt, style=Bold</value>
   </data>
   <data name="groupBoxOutput.Text" xml:space="preserve">
     <value>出力パラメータ</value>
   </data>
-  <data name="label3.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>47, 17</value>
-  </data>
   <data name="label3.Text" xml:space="preserve">
     <value>スケール</value>
-  </data>
-  <data name="comboBoxGradient.Location" type="System.Drawing.Point, System.Drawing">
-    <value>47, 2</value>
   </data>
   <data name="comboBoxGradient.ToolTip" xml:space="preserve">
     <value>強度階調の向きを選択します。Positive は明るいほど
 強く、Negative は反転して暗いほど強く表示します。</value>
   </data>
-  <data name="label11.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="label11.Location" type="System.Drawing.Point, System.Drawing">
-    <value>131, 4</value>
-  </data>
-  <data name="label11.Size" type="System.Drawing.Size, System.Drawing">
-    <value>35, 17</value>
-  </data>
   <data name="label11.Text" xml:space="preserve">
     <value>カラー</value>
-  </data>
-  <data name="comboBoxScale.Location" type="System.Drawing.Point, System.Drawing">
-    <value>166, 2</value>
   </data>
   <data name="comboBoxScale.ToolTip" xml:space="preserve">
     <value>ディスク強度を表示色に対応づけるカラースケール
 （Gray / Cold-Warm / Spectrum / Fire）を選択します。</value>
   </data>
-  <data name="labelGamma.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="labelGamma.Size" type="System.Drawing.Size, System.Drawing">
-    <value>128, 17</value>
-  </data>
   <data name="labelGamma.Text" xml:space="preserve">
     <value>γ (外側ディスクの強調)</value>
-  </data>
-  <data name="trackBarGamma.Location" type="System.Drawing.Point, System.Drawing">
-    <value>134, 5</value>
-  </data>
-  <data name="trackBarGamma.Size" type="System.Drawing.Size, System.Drawing">
-    <value>200, 18</value>
   </data>
   <data name="trackBarGamma.ToolTip" xml:space="preserve">
     <value>ガンマ値を設定します。
 この値が大きいほど、外側のディスクが明るく見えます。</value>
   </data>
-  <data name="label5.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>34, 17</value>
-  </data>
   <data name="label5.Text" xml:space="preserve">
     <value>輝度</value>
-  </data>
-  <data name="flowLayoutPanel9.Location" type="System.Drawing.Point, System.Drawing">
-    <value>47, 2</value>
-  </data>
-  <data name="label7.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>34, 17</value>
   </data>
   <data name="label7.Text" xml:space="preserve">
     <value>最大</value>
   </data>
-  <data name="trackBarIntensityBrightnessMin.Location" type="System.Drawing.Point, System.Drawing">
-    <value>43, 3</value>
-  </data>
   <data name="trackBarIntensityBrightnessMin.ToolTip" xml:space="preserve">
     <value>明るさがゼロとして表示される強度を設定します。</value>
-  </data>
-  <data name="label8.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="label8.Size" type="System.Drawing.Size, System.Drawing">
-    <value>34, 17</value>
   </data>
   <data name="label8.Text" xml:space="preserve">
     <value>最小</value>
   </data>
-  <data name="trackBarIntensityBrightnessMax.Location" type="System.Drawing.Point, System.Drawing">
-    <value>43, 25</value>
-  </data>
   <data name="trackBarIntensityBrightnessMax.ToolTip" xml:space="preserve">
     <value>明るさが最大値として表示される強度を設定します。</value>
   </data>
-  <data name="label1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>60, 17</value>
-  </data>
   <data name="label1.Text" xml:space="preserve">
     <value>輝度調整</value>
-  </data>
-  <data name="radioButtonAllDisks.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="radioButtonAllDisks.Location" type="System.Drawing.Point, System.Drawing">
-    <value>63, 2</value>
-  </data>
-  <data name="radioButtonAllDisks.Size" type="System.Drawing.Size, System.Drawing">
-    <value>103, 21</value>
   </data>
   <data name="radioButtonAllDisks.Text" xml:space="preserve">
     <value>全ディスク共通</value>
@@ -569,41 +255,14 @@ Eigen/MKL ライブラリ）を選択します。結果は同じになる
     <value>すべてのディスクに同じ明るさ
 レベル（最小/最大）を適用します。</value>
   </data>
-  <data name="radioButtonIndividualDisk.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="radioButtonIndividualDisk.Location" type="System.Drawing.Point, System.Drawing">
-    <value>166, 2</value>
-  </data>
-  <data name="radioButtonIndividualDisk.Size" type="System.Drawing.Size, System.Drawing">
-    <value>81, 21</value>
-  </data>
   <data name="radioButtonIndividualDisk.Text" xml:space="preserve">
     <value>ディスクごと</value>
   </data>
   <data name="radioButtonIndividualDisk.ToolTip" xml:space="preserve">
     <value>各ディスクの上限/下限に個別の明るさレベルを適用します。</value>
   </data>
-  <data name="label4.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>71, 20</value>
-  </data>
   <data name="label4.Text" xml:space="preserve">
     <value>試料の厚さ </value>
-  </data>
-  <data name="textBoxThickness.Location" type="System.Drawing.Point, System.Drawing">
-    <value>74, 5</value>
-  </data>
-  <data name="label6.Location" type="System.Drawing.Point, System.Drawing">
-    <value>113, 5</value>
-  </data>
-  <data name="trackBarOutputThickness.Location" type="System.Drawing.Point, System.Drawing">
-    <value>139, 8</value>
-  </data>
-  <data name="trackBarOutputThickness.Size" type="System.Drawing.Size, System.Drawing">
-    <value>210, 20</value>
   </data>
   <data name="trackBarOutputThickness.ToolTip" xml:space="preserve">
     <value>表示する試料の厚さを選択します。</value>

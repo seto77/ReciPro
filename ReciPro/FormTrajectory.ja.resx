@@ -17,15 +17,6 @@
     <resheader name="version">2.0</resheader>
     <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
     <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
-    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
-    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
-    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
-        <value>[base64 mime encoded serialized .NET Framework object]</value>
-    </data>
-    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
-        <comment>This is a comment</comment>
-    </data>
 
     There are any number of "resheader" rows that contain simple
     name/value pairs.
@@ -118,303 +109,72 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="buttonSimulate.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="buttonSimulate.Size" type="System.Drawing.Size, System.Drawing">
-    <value>117, 27</value>
-  </data>
   <data name="buttonSimulate.Text" xml:space="preserve">
     <value>電子の軌跡を計算</value>
-  </data>
-  <data name="numericBoxSampleTilt.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
   </data>
   <data name="numericBoxSampleTilt.HeaderText" xml:space="preserve">
     <value>サンプルの傾き</value>
   </data>
-  <data name="numericBoxSampleTilt.Location" type="System.Drawing.Point, System.Drawing">
-    <value>5, 34</value>
-  </data>
-  <data name="numericBoxSampleTilt.Size" type="System.Drawing.Size, System.Drawing">
-    <value>149, 26</value>
-  </data>
-  <data name="graphControlEnergyProfile.Size" type="System.Drawing.Size, System.Drawing">
-    <value>394, 134</value>
-  </data>
-  <data name="numericBoxDrawNum.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
   <data name="numericBoxDrawNum.HeaderText" xml:space="preserve">
     <value>描画する飛程の数</value>
-  </data>
-  <data name="numericBoxDrawNum.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1, 28</value>
-  </data>
-  <data name="numericBoxDrawNum.Size" type="System.Drawing.Size, System.Drawing">
-    <value>168, 25</value>
-  </data>
-  <data name="groupBoxEnergyDistribution.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="groupBoxEnergyDistribution.Size" type="System.Drawing.Size, System.Drawing">
-    <value>400, 158</value>
   </data>
   <data name="groupBoxEnergyDistribution.Text" xml:space="preserve">
     <value>後方散乱電子の試料脱出時のエネルギー</value>
   </data>
-  <data name="graphControlDepthProfile.Size" type="System.Drawing.Size, System.Drawing">
-    <value>394, 134</value>
-  </data>
-  <data name="groupBoxPenetrationDepth.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="groupBoxPenetrationDepth.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 331</value>
-  </data>
-  <data name="groupBoxPenetrationDepth.Size" type="System.Drawing.Size, System.Drawing">
-    <value>400, 158</value>
-  </data>
   <data name="groupBoxPenetrationDepth.Text" xml:space="preserve">
     <value>後方散乱電子の飛程における表面垂直な方向の最大距離 (深さ)</value>
-  </data>
-  <data name="statusStrip1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 665</value>
-  </data>
-  <data name="statusStrip1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1274, 22</value>
-  </data>
-  <data name="graphControlDistance.Size" type="System.Drawing.Size, System.Drawing">
-    <value>394, 134</value>
-  </data>
-  <data name="groupBoxSurfaceDistance.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="groupBoxSurfaceDistance.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 167</value>
-  </data>
-  <data name="groupBoxSurfaceDistance.Size" type="System.Drawing.Size, System.Drawing">
-    <value>400, 158</value>
   </data>
   <data name="groupBoxSurfaceDistance.Text" xml:space="preserve">
     <value>後方散乱電子の飛程における表面平行な方向の最大距離</value>
   </data>
-  <data name="poleFigureControl.Location" type="System.Drawing.Point, System.Drawing">
-    <value>5, 73</value>
-  </data>
-  <data name="checkBoxDrawAxes.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="checkBoxDrawAxes.Location" type="System.Drawing.Point, System.Drawing">
-    <value>261, 31</value>
-  </data>
-  <data name="checkBoxDrawAxes.Size" type="System.Drawing.Size, System.Drawing">
-    <value>76, 21</value>
-  </data>
   <data name="checkBoxDrawAxes.Text" xml:space="preserve">
     <value>軸を描画</value>
-  </data>
-  <data name="checkBoxDrawGuidCircles.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="checkBoxDrawGuidCircles.Location" type="System.Drawing.Point, System.Drawing">
-    <value>354, 32</value>
-  </data>
-  <data name="checkBoxDrawGuidCircles.Size" type="System.Drawing.Size, System.Drawing">
-    <value>103, 21</value>
   </data>
   <data name="checkBoxDrawGuidCircles.Text" xml:space="preserve">
     <value>ガイド円を描画</value>
   </data>
-  <data name="flowLayoutPanelViewAlong.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="label1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>374, 8</value>
-  </data>
-  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>118, 17</value>
-  </data>
   <data name="label1.Text" xml:space="preserve">
     <value>計算する飛程の総数</value>
-  </data>
-  <data name="flowLayoutPanelProfiles.Size" type="System.Drawing.Size, System.Drawing">
-    <value>406, 492</value>
-  </data>
-  <data name="checkBoxDrawAbsorved.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="checkBoxDrawAbsorved.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 57</value>
-  </data>
-  <data name="checkBoxDrawAbsorved.Size" type="System.Drawing.Size, System.Drawing">
-    <value>232, 21</value>
   </data>
   <data name="checkBoxDrawAbsorved.Text" xml:space="preserve">
     <value>試料内で吸収された電子の飛程を描画</value>
   </data>
-  <data name="radioButtonStandardDeviation.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="radioButtonStandardDeviation.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 46</value>
-  </data>
-  <data name="radioButtonStandardDeviation.Size" type="System.Drawing.Size, System.Drawing">
-    <value>140, 21</value>
-  </data>
   <data name="radioButtonStandardDeviation.Text" xml:space="preserve">
     <value>エネルギーの標準偏差</value>
-  </data>
-  <data name="radioButtonAverageEnergy.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="radioButtonAverageEnergy.Location" type="System.Drawing.Point, System.Drawing">
-    <value>62, 24</value>
-  </data>
-  <data name="radioButtonAverageEnergy.Size" type="System.Drawing.Size, System.Drawing">
-    <value>103, 21</value>
   </data>
   <data name="radioButtonAverageEnergy.Text" xml:space="preserve">
     <value>平均エネルギー</value>
   </data>
-  <data name="radioButtonFrequency.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="radioButtonFrequency.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 23</value>
-  </data>
-  <data name="radioButtonFrequency.Size" type="System.Drawing.Size, System.Drawing">
-    <value>52, 21</value>
-  </data>
   <data name="radioButtonFrequency.Text" xml:space="preserve">
     <value>頻度</value>
-  </data>
-  <data name="checkBoxDrawAxesInStereonet.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="checkBoxDrawAxesInStereonet.Location" type="System.Drawing.Point, System.Drawing">
-    <value>243, 24</value>
-  </data>
-  <data name="checkBoxDrawAxesInStereonet.Size" type="System.Drawing.Size, System.Drawing">
-    <value>76, 38</value>
   </data>
   <data name="checkBoxDrawAxesInStereonet.Text" xml:space="preserve">
     <value>軸方向を
 描画</value>
   </data>
-  <data name="groupBoxDirectionDistribution.Location" type="System.Drawing.Point, System.Drawing">
-    <value>522, 147</value>
-  </data>
-  <data name="groupBoxDirectionDistribution.Size" type="System.Drawing.Size, System.Drawing">
-    <value>333, 513</value>
-  </data>
   <data name="groupBoxDirectionDistribution.Text" xml:space="preserve">
     <value>後方散乱電子の方位分布 (ネット中心は表面法線方向)</value>
-  </data>
-  <data name="labelBSEenergy.Location" type="System.Drawing.Point, System.Drawing">
-    <value>201, 104</value>
-  </data>
-  <data name="labelBSEenergy.Size" type="System.Drawing.Size, System.Drawing">
-    <value>59, 15</value>
-  </data>
-  <data name="labelStoppingPower.Location" type="System.Drawing.Point, System.Drawing">
-    <value>159, 64</value>
-  </data>
-  <data name="labelStoppingPower.Size" type="System.Drawing.Size, System.Drawing">
-    <value>127, 15</value>
-  </data>
-  <data name="labelCrossSection.Location" type="System.Drawing.Point, System.Drawing">
-    <value>168, 24</value>
-  </data>
-  <data name="labelCrossSection.Size" type="System.Drawing.Size, System.Drawing">
-    <value>114, 15</value>
-  </data>
-  <data name="labelMeanFreePath.Location" type="System.Drawing.Point, System.Drawing">
-    <value>166, 44</value>
-  </data>
-  <data name="labelMeanFreePath.Size" type="System.Drawing.Size, System.Drawing">
-    <value>110, 15</value>
-  </data>
-  <data name="labelBSEratio.Location" type="System.Drawing.Point, System.Drawing">
-    <value>185, 84</value>
-  </data>
-  <data name="labelBSEratio.Size" type="System.Drawing.Size, System.Drawing">
-    <value>51, 15</value>
-  </data>
-  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>160, 15</value>
   </data>
   <data name="label3.Text" xml:space="preserve">
     <value>後方散乱電子の平均エネルギー</value>
   </data>
-  <data name="label6.Location" type="System.Drawing.Point, System.Drawing">
-    <value>5, 24</value>
-  </data>
-  <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>108, 15</value>
-  </data>
   <data name="label6.Text" xml:space="preserve">
     <value>総散乱断面積 (σ_E)</value>
-  </data>
-  <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>5, 64</value>
-  </data>
-  <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>84, 15</value>
   </data>
   <data name="label5.Text" xml:space="preserve">
     <value>阻止能 (dE/ds)</value>
   </data>
-  <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>5, 44</value>
-  </data>
-  <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>120, 15</value>
-  </data>
   <data name="label4.Text" xml:space="preserve">
     <value>弾性平均自由行程 (λ)</value>
-  </data>
-  <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>5, 84</value>
-  </data>
-  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>116, 15</value>
   </data>
   <data name="label2.Text" xml:space="preserve">
     <value>後方散乱電子係数, η</value>
   </data>
-  <data name="groupBoxStatistics.Size" type="System.Drawing.Size, System.Drawing">
-    <value>333, 136</value>
-  </data>
   <data name="groupBoxStatistics.Text" xml:space="preserve">
     <value>統計情報</value>
   </data>
-  <data name="checkBoxDrawPathAfterEscape.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt</value>
-  </data>
-  <data name="checkBoxDrawPathAfterEscape.Location" type="System.Drawing.Point, System.Drawing">
-    <value>237, 57</value>
-  </data>
-  <data name="checkBoxDrawPathAfterEscape.Size" type="System.Drawing.Size, System.Drawing">
-    <value>266, 21</value>
-  </data>
   <data name="checkBoxDrawPathAfterEscape.Text" xml:space="preserve">
     <value>試料から脱出した電子(後方散乱電子)を描画</value>
-  </data>
-  <data name="panelDrawingOptions.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 578</value>
-  </data>
-  <data name="panelDrawingOptions.Size" type="System.Drawing.Size, System.Drawing">
-    <value>513, 84</value>
-  </data>
-  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>1274, 687</value>
-  </data>
-  <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>電子飛程シミュレータ (Monte Carlo Method)</value>

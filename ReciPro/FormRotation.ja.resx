@@ -58,77 +58,29 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="buttonCopy.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="buttonCopy.Location" type="System.Drawing.Point, System.Drawing">
-    <value>287, 16</value>
-  </data>
-  <data name="buttonCopy.Size" type="System.Drawing.Size, System.Drawing">
-    <value>102, 46</value>
-  </data>
   <data name="buttonCopy.Text" xml:space="preserve">
     <value>エクセル形式で
 コピー</value>
-  </data>
-  <data name="buttonPaste.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="buttonPaste.Size" type="System.Drawing.Size, System.Drawing">
-    <value>102, 46</value>
   </data>
   <data name="buttonPaste.Text" xml:space="preserve">
     <value>エクセル形式を
 張り付け</value>
   </data>
-  <data name="groupBoxReciProCoordinate.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt, style=Bold</value>
-  </data>
   <data name="groupBoxReciProCoordinate.Text" xml:space="preserve">
     <value>ReciProの座標系 (ZXZ)</value>
   </data>
-  <data name="groupBoxExperimentalCoordinate.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt, style=Bold</value>
-  </data>
   <data name="groupBoxExperimentalCoordinate.Text" xml:space="preserve">
     <value>実験室座標系</value>
-  </data>
-  <data name="buttonResetExpEuler.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="buttonResetExpEuler.Location" type="System.Drawing.Point, System.Drawing">
-    <value>351, 60</value>
-  </data>
-  <data name="buttonResetExpEuler.Size" type="System.Drawing.Size, System.Drawing">
-    <value>66, 46</value>
   </data>
   <data name="buttonResetExpEuler.Text" xml:space="preserve">
     <value>角度
 リセット</value>
   </data>
-  <data name="checkBoxFix3rd.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="checkBoxFix3rd.Size" type="System.Drawing.Size, System.Drawing">
-    <value>51, 22</value>
-  </data>
   <data name="checkBoxFix3rd.Text" xml:space="preserve">
     <value>固定</value>
   </data>
-  <data name="checkBoxFix2nd.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="checkBoxFix2nd.Size" type="System.Drawing.Size, System.Drawing">
-    <value>51, 22</value>
-  </data>
   <data name="checkBoxFix2nd.Text" xml:space="preserve">
     <value>固定</value>
-  </data>
-  <data name="checkBoxFix1st.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
-  <data name="checkBoxFix1st.Size" type="System.Drawing.Size, System.Drawing">
-    <value>51, 22</value>
   </data>
   <data name="checkBoxFix1st.Text" xml:space="preserve">
     <value>固定</value>
@@ -152,15 +104,7 @@
     <value>ReciPro 座標系（ZXZ 規約）の第3オイラー角 Ψ（度、
 最後の Z 軸まわりの回転）。結晶方位を決めます。</value>
   </data>
-  <data name="numericBoxPsi.ToolTip1" xml:space="preserve">
-    <value>ReciPro 座標系（ZXZ 規約）の第3オイラー角 Ψ（度、
-最後の Z 軸まわりの回転）。結晶方位を決めます。</value>
-  </data>
   <data name="numericBoxTheta.ToolTip" xml:space="preserve">
-    <value>ReciPro 座標系（ZXZ 規約）の第2オイラー角 Θ（度、
-中間の X 軸まわりの回転）。結晶方位を決めます。</value>
-  </data>
-  <data name="numericBoxTheta.ToolTip1" xml:space="preserve">
     <value>ReciPro 座標系（ZXZ 規約）の第2オイラー角 Θ（度、
 中間の X 軸まわりの回転）。結晶方位を決めます。</value>
   </data>
@@ -168,15 +112,7 @@
     <value>ReciPro 座標系（ZXZ 規約）の第1オイラー角 Φ（度）。
 Θ・Ψ とともに結晶方位（回転行列）を決めます。</value>
   </data>
-  <data name="numericBoxPhi.ToolTip1" xml:space="preserve">
-    <value>ReciPro 座標系（ZXZ 規約）の第1オイラー角 Φ（度）。
-Θ・Ψ とともに結晶方位（回転行列）を決めます。</value>
-  </data>
   <data name="numericBoxExp1.ToolTip" xml:space="preserve">
-    <value>実験座標系の第1ゴニオメータ軸まわりの回転角（度、
-−180〜180）。選択した X/Y/Z 軸まわりに結晶を傾けます。</value>
-  </data>
-  <data name="numericBoxExp1.ToolTip1" xml:space="preserve">
     <value>実験座標系の第1ゴニオメータ軸まわりの回転角（度、
 −180〜180）。選択した X/Y/Z 軸まわりに結晶を傾けます。</value>
   </data>
@@ -184,15 +120,7 @@
     <value>実験座標系の第2ゴニオメータ軸まわりの回転角（度、
 −180〜180）。選択した X/Y/Z 軸まわりに結晶を傾けます。</value>
   </data>
-  <data name="numericBoxExp2.ToolTip1" xml:space="preserve">
-    <value>実験座標系の第2ゴニオメータ軸まわりの回転角（度、
-−180〜180）。選択した X/Y/Z 軸まわりに結晶を傾けます。</value>
-  </data>
   <data name="numericBoxExp3.ToolTip" xml:space="preserve">
-    <value>実験座標系の第3ゴニオメータ軸まわりの回転角（度、
--180〜180）。選択したX/Y/Z軸まわりに結晶を傾けます。</value>
-  </data>
-  <data name="numericBoxExp3.ToolTip1" xml:space="preserve">
     <value>実験座標系の第3ゴニオメータ軸まわりの回転角（度、
 -180〜180）。選択したX/Y/Z軸まわりに結晶を傾けます。</value>
   </data>
@@ -259,50 +187,26 @@ Exp1 がこの軸まわりに適用されます）。</value>
     <value>すべての角度をゼロにリセット</value>
   </data>
   <!-- 260520Cl 追加: 未翻訳項目を日本語化 + フォントを Yu Gothic UI に override -->
-  <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
   <data name="$this.Text" xml:space="preserve">
     <value>回転ジオメトリ</value>
-  </data>
-  <data name="label2.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="label2.Text" xml:space="preserve">
     <value>回転行列</value>
   </data>
-  <data name="buttonViewAlongBeam.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
   <data name="buttonViewAlongBeam.Text" xml:space="preserve">
     <value>ビーム軸方向</value>
-  </data>
-  <data name="buttonViewIsometric.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="buttonViewIsometric.Text" xml:space="preserve">
     <value>アイソメトリック</value>
   </data>
-  <data name="checkBoxLink.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9.75pt, style=Bold</value>
-  </data>
   <data name="checkBoxLink.Text" xml:space="preserve">
     <value>リンク</value>
-  </data>
-  <data name="label5.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="label5.Text" xml:space="preserve">
     <value>第1軸</value>
   </data>
-  <data name="checkBoxEnable2nd.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
-  </data>
   <data name="checkBoxEnable2nd.Text" xml:space="preserve">
     <value>第2軸</value>
-  </data>
-  <data name="checkBoxEnable3rd.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="checkBoxEnable3rd.Text" xml:space="preserve">
     <value>第3軸</value>
