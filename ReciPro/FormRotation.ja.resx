@@ -291,4 +291,97 @@ X軸まわりの回転）。結晶方位を決めます。</value>
     <value>実験座標系の第3ゴニオメータ軸まわりの回転角（度、
 -180〜180）。選択したX/Y/Z軸まわりに結晶を傾けます。</value>
   </data>
+  <data name="buttonViewAlongBeam.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="buttonViewIsometric.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="checkBoxLink.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt, style=Bold</value>
+  </data>
+  <data name="buttonCopy.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="buttonPaste.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="checkBoxEnable2nd.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="checkBoxFix1st.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="checkBoxFix2nd.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="checkBoxFix3rd.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="checkBoxEnable3rd.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="radioButton3rdZ.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Times New Roman, 9pt, style=Bold</value>
+  </data>
+  <data name="radioButton3rdY.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Times New Roman, 9pt, style=Bold</value>
+  </data>
+  <data name="radioButton3rdX.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Times New Roman, 9pt, style=Bold</value>
+  </data>
+  <data name="radioButton2ndZ.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Times New Roman, 9pt, style=Bold</value>
+  </data>
+  <data name="radioButton2ndY.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Times New Roman, 9pt, style=Bold</value>
+  </data>
+  <data name="radioButton2ndX.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Times New Roman, 9pt, style=Bold</value>
+  </data>
+  <data name="radioButton1stZ.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Times New Roman, 9pt, style=Bold</value>
+  </data>
+  <data name="radioButton1stY.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Times New Roman, 9pt, style=Bold</value>
+  </data>
+  <data name="radioButton1stX.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Times New Roman, 9pt, style=Bold</value>
+  </data>
+  <data name="buttonResetExpEuler.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="label1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Times New Roman, 9.75pt, style=Italic</value>
+  </data>
+  <data name="label4.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Times New Roman, 9.75pt, style=Italic</value>
+  </data>
+  <data name="label3.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Times New Roman, 9.75pt, style=Italic</value>
+  </data>
+  <data name="label2.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="groupBoxReciProCoordinate.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt, style=Bold</value>
+  </data>
+  <data name="flowLayoutPanelFirstAxis.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 8.25pt</value>
+  </data>
+  <data name="flowLayoutPanelSecondAxis.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 8.25pt</value>
+  </data>
+  <data name="flowLayoutPanelThirdAxis.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 8.25pt</value>
+  </data>
+  <data name="label5.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="groupBoxExperimentalCoordinate.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt, style=Bold</value>
+  </data>
+  <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
 </root>

@@ -416,4 +416,103 @@ nm⁻¹）は右のラジオボタンに従います。d 値計算と
   <data name="numericBoxMaxGrainNum.ToolTip1" xml:space="preserve">
     <value>探索する結晶粒方位の最大数</value>
   </data>
+  <data name="dataGridViewCandidates.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 7pt</value>
+  </data>
+  <data name="radioButtonMultiGrain.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="buttonResetRangeForAllSpots.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="buttonDonut.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 7pt</value>
+  </data>
+  <data name="checkBoxGuideCircles.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="buttonFindSpots.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="checkBoxShowCalcSpotLabel.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="waveLengthControl1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 7pt</value>
+  </data>
+  <data name="groupBoxOptics.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="checkBoxIgnoreMultipleDiffraction.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="buttonCopmprehensiveFitting.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="checkBoxShowZoneAxis.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="radioButtonSingleGrain.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="checkBoxDetailsOfSpot.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="checkBoxShowDebyeRing.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="dataGridViewSpots.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 7pt</value>
+  </data>
+  <data name="buttonClearSpots.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="buttonRefineThicknessAndDirection.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="buttonDeleteSpot.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="buttonGlobalFit.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 7pt</value>
+  </data>
+  <data name="checkBoxDetailsOfFunction.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="checkBoxShowObsSpotSymbol.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="buttonSaveToFile.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="buttonCopyToClipboard.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="checkBoxShowObsSpotLabel.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="scalablePictureBoxAdvanced.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 7pt</value>
+  </data>
+  <data name="groupBoxSpot.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="buttonIdentifySpots.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="flowLayoutPanel3.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 7pt</value>
+  </data>
+  <data name="dataGridViewGrains.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 7pt</value>
+  </data>
+  <data name="checkBoxShowCalcSpotSymbol.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="groupBoxIndex.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
 </root>

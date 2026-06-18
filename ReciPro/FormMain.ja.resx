@@ -524,4 +524,190 @@ v2</value>
   <data name="numericBoxEulerPsi.ToolTip1" xml:space="preserve">
     <value>結晶方位を定義するオイラー角 ψ（度）を設定／表示します。</value>
   </data>
+  <data name="label5.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="buttonClock.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 11.25pt</value>
+  </data>
+  <data name="toolStripButtonBeamInteraction.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="buttonDuplicate.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="buttonDown.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="toolStripButtonTrajectorySimulator.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="checkBoxFixAxis.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="groupBoxProjectAlong.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="macroToolStripMenuItem.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="buttonClearAllCrystals.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="tableLayoutPanel3.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Times New Roman, 6.5pt</value>
+  </data>
+  <data name="contextMenuStripListBox.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="toolStripContainer1.TopToolStripPanel.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 7pt</value>
+  </data>
+  <data name="toolStripButtonImageSimulator.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="buttonReplace.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="labelLaTex1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Times New Roman, 10pt</value>
+  </data>
+  <data name="label8.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt, style=Bold</value>
+  </data>
+  <data name="buttonLeft.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 11.25pt</value>
+  </data>
+  <data name="buttonSetAxis.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="buttonDelete.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="toolStripButtonSymmetryInformation.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="buttonBottomLeft.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 11.25pt</value>
+  </data>
+  <data name="toolStripStatusLabel.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 7pt</value>
+  </data>
+  <data name="groupBoxCrystalList.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt, style=Bold</value>
+  </data>
+  <data name="toolStripButtonRotation.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="checkBoxFixePlane.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="buttonSetPlane.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="toolStripLabel1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt, style=Bold</value>
+  </data>
+  <data name="label6.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="labelLaTex3.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Times New Roman, 10pt</value>
+  </data>
+  <data name="buttonUp.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="statusStrip1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 7pt</value>
+  </data>
+  <data name="menuStrip1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="buttonAntiClock.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 11.25pt</value>
+  </data>
+  <data name="buttonBottomRight.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 11.25pt</value>
+  </data>
+  <data name="toolStripButtonDiffractionSingle.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="indexControlAxis.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="buttonAdd.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="labelCurrentIndex.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="labelLaTex2.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Times New Roman, 10pt</value>
+  </data>
+  <data name="buttonTopLeft.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 11.25pt</value>
+  </data>
+  <data name="groupBoxCrystalInformation.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt, style=Bold</value>
+  </data>
+  <data name="toolStripProgressBar.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 7pt</value>
+  </data>
+  <data name="buttonTopRight.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 11.25pt</value>
+  </data>
+  <data name="toolStripButtonEBSD.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="groupBoxArrows.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="toolStripButtonDatabase.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="toolStripButtonStructureViewer.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="toolStripButtonSpotIDv2.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="toolStripButtonSpotIDv1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="buttonBottom.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 11.25pt</value>
+  </data>
+  <data name="buttonReset.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="toolStripButtonDiffractionPoly.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="listBox.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="toolStrip1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 7pt</value>
+  </data>
+  <data name="buttonTop.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 11.25pt</value>
+  </data>
+  <data name="buttonRight.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 11.25pt</value>
+  </data>
+  <data name="indexControlPlane.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="toolStripButtonStereonet.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="label2.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="groupBoxCurrentDirection.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
 </root>

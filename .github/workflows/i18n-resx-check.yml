@@ -1,5 +1,6 @@
 # 260618Cl 追加: 多言語化 resx の規約を CI で検出する (pre-commit フックのバックストップ)。
-#   (1) culture resx が text-only か (Size/Location/Font 等の混入を弾く)。
+#   (1) culture resx が規約形か。他言語=完全 text-only (Size/Location/Font 等の混入を弾く)。
+#       ja のみ .Font を許容するが、値が正規化済 (Yu Gothic UI + 5 段階ティア) でなければ弾く。
 #   (2) neutral resx の Font サイズが 5 段階ティアに正規化されているか。
 # 修復はしない (CI はリポを書き換えない)。違反時は exit 1 で落とし、ローカルで --fix を促す。
 # ローカルの自動修復は tools/git-hooks/pre-commit (git config core.hooksPath tools/git-hooks)。
@@ -17,9 +18,13 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.x"
-      # 260618Cl: ja を既定スコープへ格上げ (ReciPro 本体・Controls とも text-only 化済) し、
-      #   neutral snap も両ルートへ拡大。以前の ja 専用ステップ / --root ReciPro 限定は解消。
-      - name: Culture resx are text-only (de/fr/es/pt/zh-Hans/ja, ReciPro + Controls)
+      # 260618Cl: ja を既定スコープへ格上げ (両ルート)。他言語=完全 text-only、
+      #   ja のみ .Font を保持 (値は Yu Gothic UI + ティアへ正規化必須)。neutral snap も両ルート。
+      - name: Culture resx conform (de/fr/es/pt/zh-Hans=text-only, ja=text+normalized Font; ReciPro + Controls)
         run: python tools/check_resx_textonly.py
       - name: Neutral resx font sizes are tier-normalized (ReciPro + Controls)
         run: python tools/snap_neutral_font_tiers.py
+      # 260618Cl: ja.resx の .Font が neutral と完全ミラーか (neutral にあって ja に無い穴=日本語デザイナで
+      #   Segoe フォールバック→実行時 Yu Gothic とズレる、を検出)。未同期なら fail → ローカルで --fix。
+      - name: ja resx fonts mirror neutral (designer == runtime)
+        run: python tools/restore_ja_fonts.py
