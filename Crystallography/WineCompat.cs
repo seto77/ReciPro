@@ -57,6 +57,8 @@ public static class WineCompat
         ["Meiryo UI"] = ["Noto Sans CJK JP", "Noto Sans JP", "Source Han Sans JP"],
         // セリフ系 (空間群図・ステレオネットのラベル)。AddString 経路はフォールバック皆無なのでここが効く
         ["Times New Roman"] = ["DejaVu Serif", "Noto Serif", "Liberation Serif"],
+        // 等幅系。260618Cl 追加: 旧候補に欠落していた (アプリ内で Courier New を使う箇所が Wine で豆腐化しうる)
+        ["Courier New"] = ["DejaVu Sans Mono", "Liberation Mono", "Noto Sans Mono"],
     };
 
     private static readonly Dictionary<string, string> cache = new(StringComparer.OrdinalIgnoreCase);

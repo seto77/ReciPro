@@ -51,11 +51,13 @@ public partial class FormBase : Form
         InitializeComponent();
         HelpRequested += FormBase_HelpRequested; //260529Cl 追加: F1 キー (HelpRequested) を購読
 
-        //260610Cl 追加: Wine (macOS/Linux) 環境では、派生フォームの InitializeComponent 完了後 (Load 時) に
-        //全コントロールのフォントを収録グリフの広い代替へ一括切替する (Windows では IsWine=false で完全 no-op)。
-        //resx/Designer 由来の日英フォント (Segoe UI / Yu Gothic UI 等) はここで一元的に賄う。
-        if (WineCompat.IsWine)
-            Load += (s, e) => { try { WineCompat.ApplyTo(this); } catch { } };
+        //260610Cl 追加 / 260618Cl 変更: 派生フォームの InitializeComponent 完了後 (Load 時) に、
+        //全コントロールのフォントを UiFont.Apply で一元解決する。言語軸(Segoe UI↔Yu Gothic UI↔YaHei …)+
+        //サイズ(5段階ティア)+プラットフォーム軸(Wine→Noto/DejaVu)を統合し、bold/italic は保持する。
+        //旧 WineCompat.ApplyTo は Wine 時のみ走る no-op ガードだったが、言語軸(明示フォントの書体差替)と
+        //ティアを Windows でも効かせるためガードを外し UiFont.Apply へ集約した。
+        //旧: if (WineCompat.IsWine) Load += (s, e) => { try { WineCompat.ApplyTo(this); } catch { } };
+        Load += (s, e) => { try { UiFont.Apply(this); } catch { } };
 
         //260604Cl 追加: F1 でヘルプが開けるフォームは、タイトル右端に案内 ("(F1: Help)" / 日本語 UI なら "(F1: ヘルプ)") を出して存在を知らせる。
         //表示時点では HelpPage / HelpUrlResolver が確定しているので Shown で初回付与し、タイトル変更や幅変更でも付け直す。
