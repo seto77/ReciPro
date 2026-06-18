@@ -157,31 +157,47 @@ internal static partial class GuiCapture
 
         if (c.AutoSize)
         {
-            // AutoSize は文字に合わせて伸びるので「切れ」ない。代わりに、テキストが inflate 倍に伸びたとき
-            // 「右隣 (同じ行) のコントロールと衝突するか」を予測する。現状で衝突していない限り baseline では出ない
-            // (現在の Bounds 交差ではなく予測なので、意図的に重ねた配置を誤検出しない)。
+            // AutoSize は文字に合わせて伸びるので自テキストには「切れ」ない。代わりに 2 つを見る:
+            //   (1) WouldCollide: 直親が固定(再配置/成長しない)なら、伸びた分だけ右隣兄弟へ食い込むか予測。
+            //   (2) ClippedByParent: 祖先を遡り、最初の固定祖先のクライアント右端で切れるか
+            //       (AutoSize/Flow の祖先は子に合わせ成長/再配置するので、その祖先の右端を上位へ持ち上げて評価)。
             var p = c.Parent;
-            if (p == null || p is FlowLayoutPanel || p is TableLayoutPanel) return; // コンテナが再配置するので衝突しない
-            if (p.AutoSize) return; // 親自身が AutoSize(例: NumericBox の M3) なら子の伸長を全幅で吸収=内部衝突しない
-            // 260617Cl: 「翻訳で伸びた分 (inflation 増分) だけ右隣へ食い込むか」を現状幅 (c.Right) 基準で予測する。
-            //   旧 `c.Left + measure*inflate + glyph` は inflate=1.0 でも glyph 分はみ出し、入力欄の直左に置かれた
-            //   AutoSize ラベル (label「θ」「l1」「±」→入力欄) を baseline で誤検出していた (コメントの「baseline では出ない」に反する)。
-            //   c.Right + 増分なら inflate=1.0 で増分0 → deficit≤tol となり baseline はクリーン。glyph fudge も廃止。
+            if (p == null) return;
+            // 260617Cl: 「翻訳で伸びた分 (inflation 増分) だけ右へ食い込むか」を現状幅 (c.Right) 基準で予測する。
+            //   c.Right + 増分なら inflate=1.0 で増分0 → deficit≤tol となり baseline はクリーン。
             int growth = (int)Math.Ceiling(TextRenderer.MeasureText(c.Text, c.Font).Width * (inflate - 1.0));
             int grownRight = c.Right + growth;
-            Control nearest = null;
-            foreach (Control s in p.Controls)
+
+            // (1) 右隣兄弟との衝突は、直親が再配置/成長しない場合のみ予測する (Flow/Table/AutoSize 親は吸収する)。
+            if (p is not FlowLayoutPanel and not TableLayoutPanel && !p.AutoSize)
             {
-                if (ReferenceEquals(s, c) || !s.Visible || s.Width == 0) continue;
-                if (s.Left < c.Right - OverflowTolerancePx) continue;  // 右隣のみ (左/既に重なるものは除外)
-                if (s.Bottom <= c.Top || s.Top >= c.Bottom) continue;  // 垂直に重ならない = 別の行
-                if (nearest == null || s.Left < nearest.Left) nearest = s;
+                Control nearest = null;
+                foreach (Control s in p.Controls)
+                {
+                    if (ReferenceEquals(s, c) || !s.Visible || s.Width == 0) continue;
+                    if (s.Left < c.Right - OverflowTolerancePx) continue;  // 右隣のみ (左/既に重なるものは除外)
+                    if (s.Bottom <= c.Top || s.Top >= c.Bottom) continue;  // 垂直に重ならない = 別の行
+                    if (nearest == null || s.Left < nearest.Left) nearest = s;
+                }
+                if (nearest != null)
+                {
+                    int deficit = grownRight - nearest.Left;
+                    if (deficit > OverflowTolerancePx)
+                    {
+                        rows.Add(Row(culture, form, c.Name, c.GetType().Name, c.Text, c.Font, c.Width, c.Width + growth, deficit,
+                            deficit > OverflowErrorPx ? "Error" : "Warning", $"WouldCollide:{nearest.Name}"));
+                        return;
+                    }
+                }
             }
-            if (nearest == null) return; // 右隣が無ければ伸びても衝突相手がいない
-            int deficit = grownRight - nearest.Left;
-            if (deficit <= OverflowTolerancePx) return;
-            rows.Add(Row(culture, form, c.Name, c.GetType().Name, c.Text, c.Font, c.Width, c.Width + growth, deficit,
-                deficit > OverflowErrorPx ? "Error" : "Warning", $"WouldCollide:{nearest.Name}"));
+
+            // (2) 260618Cl 追加: 祖先のクライアント右端で切れるか。groupBox 内で唯一/最右の AutoSize コントロール
+            //   や、AutoSize FlowLayoutPanel が固定 groupBox を食み出す例 (ja の「等角投影 (Wulff)」ラジオ) を拾う。
+            //   従来は Flow/Table/AutoSize 親を丸ごと早期 return しており、これらの入れ子クリップを見逃していた。
+            var (clipDeficit, clipper) = AncestorRightClip(c, grownRight);
+            if (clipDeficit > OverflowTolerancePx)
+                rows.Add(Row(culture, form, c.Name, c.GetType().Name, c.Text, c.Font, c.Width, c.Width + growth, clipDeficit,
+                    clipDeficit > OverflowErrorPx ? "Error" : "Warning", $"ClippedByParent:{clipper}"));
         }
         else if (c is Label or LinkLabel)
         {
@@ -223,6 +239,27 @@ internal static partial class GuiCapture
         if (deficit <= OverflowTolerancePx) return;
         rows.Add(Row(culture, form, it.Name, it.GetType().Name, it.Text, it.Font, it.Width, neededW, deficit,
             deficit > OverflowErrorPx ? "Error" : "Warning", "ToolStripTextClipped"));
+    }
+
+    // 260618Cl 追加: c の右端が、いずれかの祖先のクライアント右端で切れるか (＝親にクリップされるか) を遡って判定。
+    //   AutoSize/AutoSize-FlowLayoutPanel の祖先は子に合わせて成長/再配置するので切らず、その祖先自身の右端
+    //   (予測はみ出し分を足して) を上位へ持ち上げ、最初の「固定 (AutoSize でない)」祖先で確定する。
+    //   AutoScroll 祖先はスクロール可なのでクリップなし。grownRight は c.Parent のクライアント座標での予測右端。
+    private static (int deficit, string clipper) AncestorRightClip(Control c, int grownRight)
+    {
+        int right = grownRight;
+        for (var p = c.Parent; p != null; p = p.Parent)
+        {
+            if (p is ScrollableControl { AutoScroll: true }) return (0, "");
+            int deficit = right - p.ClientSize.Width;
+            if (!p.AutoSize)
+                return deficit > OverflowTolerancePx ? (deficit, p.Name) : (0, "");
+            // p は AutoSize で c を吸収 (c は p に収まる)。c "自身" の右端を p の親座標へ変換 (p.Left を足す) して
+            // 継続する。コンテナの右端 (p.Right) でなく c の右端を追うことで、行の中央にある通過コントロール
+            // (例: 「×」「px」) を誤検出せず、実際に祖先右端を越える最右コントロールだけを拾う。
+            right += p.Left;
+        }
+        return (0, "");
     }
 
     // 260617Cl 追加: テキストが (幅不足時に) 複数行へ折り返せる改行機会を持つか。
