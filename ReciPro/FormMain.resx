@@ -983,7 +983,7 @@ rotation defining the crystal orientation.</value>
     <value>81</value>
   </data>
   <data name="toolStripContainer1.TopToolStripPanel.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 6.666667pt</value>
+    <value>Segoe UI, 7pt</value>
   </data>
   <data name="macroToolStripMenuItem.Text" xml:space="preserve">
     <value>Macro</value>
@@ -2451,7 +2451,7 @@ points toward you (out of the screen).</value>
     <value>116, 6</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 6.5pt</value>
+    <value>Segoe UI, 7pt</value>
   </data>
   <data name="toolStrip1.ToolTip" xml:space="preserve">
     <value />
@@ -3068,7 +3068,7 @@ points toward you (out of the screen).</value>
     <value>System.Windows.Forms.ToolStripContainer, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="statusStrip1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 6pt</value>
+    <value>Segoe UI, 7pt</value>
   </data>
   <data name="toolStripButtonSpotIDv1.Size" type="System.Drawing.Size, System.Drawing">
     <value>116, 37</value>
@@ -3849,7 +3849,7 @@ rotation defining the crystal orientation.</value>
     <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="toolStripProgressBar.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 6.5pt</value>
+    <value>Segoe UI, 7pt</value>
   </data>
   <data name="numericBoxStep.TabIndex" type="System.Int32, mscorlib">
     <value>21</value>
@@ -4404,7 +4404,7 @@ rotates the crystal at a constant speed.</value>
     <value>291, 6</value>
   </data>
   <data name="toolStrip1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 6.5pt</value>
+    <value>Segoe UI, 7pt</value>
   </data>
   <data name="buttonUp.TabIndex" type="System.Int32, mscorlib">
     <value>53</value>

@@ -239,7 +239,7 @@
     <value>True</value>
   </data>
   <data name="label33.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 8pt</value>
+    <value>Segoe UI, 8.25pt</value>
   </data>
   <data name="label33.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -344,7 +344,7 @@
     <value>True</value>
   </data>
   <data name="label31.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 8pt</value>
+    <value>Segoe UI, 8.25pt</value>
   </data>
   <data name="label31.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -383,7 +383,7 @@
     <value>True</value>
   </data>
   <data name="label27.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 8pt</value>
+    <value>Segoe UI, 8.25pt</value>
   </data>
   <data name="label27.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -422,7 +422,7 @@
     <value>True</value>
   </data>
   <data name="label30.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 8pt</value>
+    <value>Segoe UI, 8.25pt</value>
   </data>
   <data name="label30.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -461,7 +461,7 @@
     <value>True</value>
   </data>
   <data name="label29.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 8pt</value>
+    <value>Segoe UI, 8.25pt</value>
   </data>
   <data name="label29.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -500,7 +500,7 @@
     <value>True</value>
   </data>
   <data name="label26.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 8pt</value>
+    <value>Segoe UI, 8.25pt</value>
   </data>
   <data name="label26.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -539,7 +539,7 @@
     <value>True</value>
   </data>
   <data name="label28.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 8pt</value>
+    <value>Segoe UI, 8.25pt</value>
   </data>
   <data name="label28.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -905,7 +905,7 @@
     <value>Top</value>
   </data>
   <data name="checkBoxNormarizeIndividually.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 8pt</value>
+    <value>Segoe UI, 8.25pt</value>
   </data>
   <data name="checkBoxNormarizeIndividually.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 64</value>
@@ -2915,7 +2915,7 @@ image contrast to the crystal lattice.</value>
     <value>True</value>
   </data>
   <data name="label24.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 8pt</value>
+    <value>Segoe UI, 8.25pt</value>
   </data>
   <data name="label24.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -2951,7 +2951,7 @@ image contrast to the crystal lattice.</value>
     <value>True</value>
   </data>
   <data name="label23.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 8pt</value>
+    <value>Segoe UI, 8.25pt</value>
   </data>
   <data name="label23.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -2987,7 +2987,7 @@ image contrast to the crystal lattice.</value>
     <value>True</value>
   </data>
   <data name="label22.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 8pt</value>
+    <value>Segoe UI, 8.25pt</value>
   </data>
   <data name="label22.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -3023,7 +3023,7 @@ image contrast to the crystal lattice.</value>
     <value>True</value>
   </data>
   <data name="label21.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 8pt</value>
+    <value>Segoe UI, 8.25pt</value>
   </data>
   <data name="label21.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -3059,7 +3059,7 @@ image contrast to the crystal lattice.</value>
     <value>True</value>
   </data>
   <data name="label20.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 8pt</value>
+    <value>Segoe UI, 8.25pt</value>
   </data>
   <data name="label20.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -3095,7 +3095,7 @@ image contrast to the crystal lattice.</value>
     <value>True</value>
   </data>
   <data name="label19.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 8pt</value>
+    <value>Segoe UI, 8.25pt</value>
   </data>
   <data name="label19.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -3131,7 +3131,7 @@ image contrast to the crystal lattice.</value>
     <value>True</value>
   </data>
   <data name="label18.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 8pt</value>
+    <value>Segoe UI, 8.25pt</value>
   </data>
   <data name="label18.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -3194,7 +3194,7 @@ image contrast to the crystal lattice.</value>
     <value>True</value>
   </data>
   <data name="label17.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 8pt</value>
+    <value>Segoe UI, 8.25pt</value>
   </data>
   <data name="label17.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -3230,7 +3230,7 @@ image contrast to the crystal lattice.</value>
     <value>True</value>
   </data>
   <data name="label16.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 8pt</value>
+    <value>Segoe UI, 8.25pt</value>
   </data>
   <data name="label16.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -3266,7 +3266,7 @@ image contrast to the crystal lattice.</value>
     <value>True</value>
   </data>
   <data name="label15.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 8pt</value>
+    <value>Segoe UI, 8.25pt</value>
   </data>
   <data name="label15.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -3302,7 +3302,7 @@ image contrast to the crystal lattice.</value>
     <value>True</value>
   </data>
   <data name="label14.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 8pt</value>
+    <value>Segoe UI, 8.25pt</value>
   </data>
   <data name="label14.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -3338,7 +3338,7 @@ image contrast to the crystal lattice.</value>
     <value>True</value>
   </data>
   <data name="label11.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 8pt</value>
+    <value>Segoe UI, 8.25pt</value>
   </data>
   <data name="label11.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -3374,7 +3374,7 @@ image contrast to the crystal lattice.</value>
     <value>True</value>
   </data>
   <data name="label12.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 8pt</value>
+    <value>Segoe UI, 8.25pt</value>
   </data>
   <data name="label12.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -3410,7 +3410,7 @@ image contrast to the crystal lattice.</value>
     <value>True</value>
   </data>
   <data name="label13.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 8pt</value>
+    <value>Segoe UI, 8.25pt</value>
   </data>
   <data name="label13.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -3446,7 +3446,7 @@ image contrast to the crystal lattice.</value>
     <value>True</value>
   </data>
   <data name="label10.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 8pt</value>
+    <value>Segoe UI, 8.25pt</value>
   </data>
   <data name="label10.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -5490,7 +5490,7 @@ beams and smooths high-resolution image detail.</value>
     <value>GrowAndShrink</value>
   </data>
   <data name="buttonDetailsOfSpots.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 8pt</value>
+    <value>Segoe UI, 8.25pt</value>
   </data>
   <data name="buttonDetailsOfSpots.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -5646,7 +5646,7 @@ beams and smooths high-resolution image detail.</value>
     <value>True</value>
   </data>
   <data name="label8.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 8pt</value>
+    <value>Segoe UI, 8.25pt</value>
   </data>
   <data name="label8.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -5774,7 +5774,7 @@ Simulator"</value>
     <value>True</value>
   </data>
   <data name="label35.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 8pt</value>
+    <value>Segoe UI, 8.25pt</value>
   </data>
   <data name="label35.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -6942,7 +6942,7 @@ immediately as the crystal rotates.</value>
     <value>Right</value>
   </data>
   <data name="buttonSimulate.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 10pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="buttonSimulate.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -7200,7 +7200,7 @@ and scale bar on the saved image.</value>
     <value>Bottom, Right</value>
   </data>
   <data name="buttonStop.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 10pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="buttonStop.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>

@@ -2013,7 +2013,7 @@ displayed at the same intensity.</value>
     <value>Fill</value>
   </data>
   <data name="graphicsBox.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 11pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="graphicsBox.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -3565,7 +3565,7 @@ in the 3D reciprocal-lattice view.</value>
     <value>Bottom</value>
   </data>
   <data name="groupBoxOptions.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 10pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="groupBoxOptions.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 148</value>
@@ -6038,7 +6038,7 @@ using each crystal's assigned color.</value>
     <value>True</value>
   </data>
   <data name="checkBoxExtinctionAll.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 8pt</value>
+    <value>Segoe UI, 8.25pt</value>
   </data>
   <data name="checkBoxExtinctionAll.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleLeft</value>
@@ -6081,7 +6081,7 @@ by the space group are hidden.</value>
     <value>True</value>
   </data>
   <data name="checkBoxExtinctionLattice.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 8pt</value>
+    <value>Segoe UI, 8.25pt</value>
   </data>
   <data name="checkBoxExtinctionLattice.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -7610,7 +7610,7 @@ the structure factor and the excitation error.</value>
     <value>GrowAndShrink</value>
   </data>
   <data name="buttonDetailsOfSpots.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9.25pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="buttonDetailsOfSpots.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -8336,7 +8336,7 @@ accelerating voltage (wavelength).</value>
     <value>840, 733</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 11pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

@@ -1510,7 +1510,7 @@ on the lower hemisphere of the stereonet.</value>
     <value>False</value>
   </data>
   <data name="checkBoxAnomalousDispersion.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 8pt</value>
+    <value>Segoe UI, 8.25pt</value>
   </data>
   <data name="checkBoxAnomalousDispersion.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 117</value>
@@ -1549,7 +1549,7 @@ on the lower hemisphere of the stereonet.</value>
     <value>False</value>
   </data>
   <data name="checkBoxReflectStructureFactor.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 8pt</value>
+    <value>Segoe UI, 8.25pt</value>
   </data>
   <data name="checkBoxReflectStructureFactor.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>

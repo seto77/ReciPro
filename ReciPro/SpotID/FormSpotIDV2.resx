@@ -156,7 +156,7 @@
     <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="dataGridViewCandidates.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 6.5pt</value>
+    <value>Segoe UI, 7pt</value>
   </data>
   <data name="&gt;&gt;numericBoxMaxGrainNum.Name" xml:space="preserve">
     <value>numericBoxMaxGrainNum</value>
@@ -747,7 +747,7 @@ searched during thickness/orientation refinement.</value>
     <value>1000, 100</value>
   </data>
   <data name="waveLengthControl1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 6pt</value>
+    <value>Segoe UI, 7pt</value>
   </data>
   <data name="numericBoxSemiangle.HeaderText" xml:space="preserve">
     <value>Search angle range</value>
@@ -1384,7 +1384,7 @@ peak, or select a row to highlight it on the pattern</value>
     <value>9.75</value>
   </data>
   <data name="dataGridViewSpots.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 6.5pt</value>
+    <value>Segoe UI, 7pt</value>
   </data>
   <data name="flowLayoutPanel2.Location" type="System.Drawing.Point, System.Drawing">
     <value>501, 27</value>
@@ -2099,7 +2099,7 @@ this circle are fitted with the pseudo-Voigt function.</value>
     <value>True</value>
   </data>
   <data name="scalablePictureBoxAdvanced.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 6pt</value>
+    <value>Segoe UI, 7pt</value>
   </data>
   <data name="&gt;&gt;pictureBox1.Parent" xml:space="preserve">
     <value>groupBoxSpot</value>
@@ -2601,7 +2601,7 @@ candidate reflections (0.1–10%).</value>
     <value>nm⁻¹</value>
   </data>
   <data name="flowLayoutPanel3.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 6pt</value>
+    <value>Segoe UI, 7pt</value>
   </data>
   <data name="waveLengthControl1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -2775,7 +2775,7 @@ candidate reflections (0.1–10%).</value>
     <value>14</value>
   </data>
   <data name="dataGridViewGrains.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 6.5pt</value>
+    <value>Segoe UI, 7pt</value>
   </data>
   <data name="flowLayoutPanel11.Size" type="System.Drawing.Size, System.Drawing">
     <value>271, 80</value>

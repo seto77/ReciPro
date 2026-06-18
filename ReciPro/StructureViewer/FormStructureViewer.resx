@@ -132,7 +132,7 @@
     <value>Fill</value>
   </data>
   <data name="textBoxCalcInformation.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 8pt</value>
+    <value>Segoe UI, 8.25pt</value>
   </data>
   <data name="textBoxCalcInformation.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 17</value>
@@ -3236,7 +3236,7 @@ c-axis (used when 'Each edge' is selected).</value>
     <value>True</value>
   </data>
   <data name="labelGraphicsCard.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 8pt</value>
+    <value>Segoe UI, 8.25pt</value>
   </data>
   <data name="labelGraphicsCard.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -3269,7 +3269,7 @@ c-axis (used when 'Each edge' is selected).</value>
     <value>True</value>
   </data>
   <data name="labelGraphicsDriver.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 8pt</value>
+    <value>Segoe UI, 8.25pt</value>
   </data>
   <data name="labelGraphicsDriver.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -3302,7 +3302,7 @@ c-axis (used when 'Each edge' is selected).</value>
     <value>True</value>
   </data>
   <data name="labelOpenGLversion.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 8pt</value>
+    <value>Segoe UI, 8.25pt</value>
   </data>
   <data name="labelOpenGLversion.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -5187,7 +5187,7 @@ symbols (rotation, screw, and rotoinversion axes).</value>
     <value>True</value>
   </data>
   <data name="label7.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 8pt</value>
+    <value>Segoe UI, 8.25pt</value>
   </data>
   <data name="label7.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>

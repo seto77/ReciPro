@@ -3046,7 +3046,7 @@ from Start down to End by this increment.</value>
     <value>Left</value>
   </data>
   <data name="tabControl1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 10pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="tabControl1.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 4</value>
@@ -3307,7 +3307,7 @@ from Start down to End by this increment.</value>
     <value>0</value>
   </data>
   <data name="groupBoxSimulationParameters.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 10pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="groupBoxSimulationParameters.Location" type="System.Drawing.Point, System.Drawing">
     <value>11, 471</value>
@@ -4080,7 +4080,7 @@ from Start down to End by this increment.</value>
     <value>Right</value>
   </data>
   <data name="groupBoxMasterPattern.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 10pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="groupBoxMasterPattern.Location" type="System.Drawing.Point, System.Drawing">
     <value>852, 4</value>
@@ -4140,7 +4140,7 @@ from Start down to End by this increment.</value>
     <value>Fill</value>
   </data>
   <data name="groupBoxEBSDPattern.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 10pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="groupBoxEBSDPattern.Location" type="System.Drawing.Point, System.Drawing">
     <value>324, 4</value>

@@ -242,7 +242,7 @@
     <value>0</value>
   </data>
   <data name="comboBoxSolver.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 8pt</value>
+    <value>Segoe UI, 8.25pt</value>
   </data>
   <data name="comboBoxSolver.Items" xml:space="preserve">
     <value>Auto</value>
@@ -1982,7 +1982,7 @@ applied to each individual disk.</value>
     <value>200, 16</value>
   </data>
   <data name="toolStripStatusLabel2.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 8pt</value>
+    <value>Segoe UI, 8.25pt</value>
   </data>
   <data name="toolStripStatusLabel2.Size" type="System.Drawing.Size, System.Drawing">
     <value>19, 17</value>
@@ -2036,7 +2036,7 @@ applied to each individual disk.</value>
     <value>817, 201</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 10pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 5, 3, 5</value>
